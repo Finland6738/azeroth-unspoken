@@ -211,6 +211,8 @@ function Wizard:Render()
 	local number = 0
 	for i = 1, step do if Visible(i) then number = number + 1 end end
 	frame.title:SetText(NS:L("wiz_title") .. " - " .. NS:L("wiz_step", number, total) .. ": " .. NS:L(page.title))
+	frame.skip:SetText(NS:L("wiz_skip"))
+	frame.back:SetText(NS:L("wiz_back"))
 	frame.back:SetShown(Neighbour(step, -1) ~= nil)
 	frame.next:SetText(Neighbour(step, 1) and NS:L("wiz_next") or NS:L("wiz_finish"))
 end

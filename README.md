@@ -7,7 +7,7 @@ Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, 
 Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `16001`). Contiene un motore narrativo locale e un database di frasi curate, in italiano e in inglese, che reagiscono a luoghi, eventi e alla storia del personaggio.
 
 - **Offline.** Nessuna connessione a internet, nessun servizio esterno, nessuna IA online.
-- **Rispettoso.** Nulla va in chat pubblica senza un'azione del giocatore.
+- **Rispettoso.** Le frasi compaiono in un narratore privato. Nulla va in chat pubblica senza un'azione del giocatore: il Chat Gateway offre solo proposte da confermare, modificare o scartare.
 - **Espandibile.** Nuove frasi, lingue ed eventi si aggiungono con pacchetti locali.
 - **Total RP 3.** Integrazione facoltativa: l'addon funziona anche senza.
 
@@ -26,6 +26,8 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 
 Copia `AzerothUnspoken` (e, se vuoi, `AzerothUnspoken_Example`) in
 `World of Warcraft\_forever_\Interface\AddOns\`, poi in gioco scrivi `/au`.
+Al primo avvio compare una procedura guidata (saltabile); si riapre con `/au benvenuto`.
+Per provare l'addon nel client vero segui [docs/G1_checklist.md](docs/G1_checklist.md).
 
 ## Test fuori dal gioco
 

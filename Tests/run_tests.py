@@ -64,6 +64,14 @@ check("An immersive roleplay companion for World of Warcraft" in toc_text, "mott
 check("## SavedVariables: AzerothUnspokenDB" in toc_text, "SavedVariables globali")
 check("## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB" in toc_text, "SavedVariables per personaggio")
 check(not re.search(r"^\s*Data\\Classes\.lua", toc_text, re.M), "Classes.lua resta fuori dal .toc fino a S3")
+bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
+check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
+check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
+for f in toc_files(ADDON, ADDON_NAME):
+    check(os.path.isfile(os.path.join(ADDON, f.replace("\\", "/"))), f"file del .toc esistente: {f}")
+for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Director.lua", "UI\\Wizard.lua"):
+    check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc")
+check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
 check(G.AzerothUnspokenDB.schemaVersion == 2, "schemaVersion globale")

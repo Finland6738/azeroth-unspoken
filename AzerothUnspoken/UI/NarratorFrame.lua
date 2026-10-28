@@ -121,6 +121,10 @@ function Narrator:Refresh()
 		frame.text:SetText(cur.display)
 	end
 	frame.pauseBtn:SetText(NS.paused and ">" or "||")
+	-- i testi dei pulsanti seguono la lingua scelta
+	frame.sendBtn:SetText(NS:L("btn_send"))
+	frame.editBtn:SetText(NS:L("btn_edit"))
+	frame.discardBtn:SetText(NS:L("btn_discard"))
 	self:Layout()
 end
 

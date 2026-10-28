@@ -46,7 +46,8 @@ Dove il GDD e questo file non coincidono, vale questo file.
 5. Total RP 3 è facoltativo: l'addon funziona al 100% anche senza.
 6. Stile letterario originale, nello spirito del fantasy epico e del tono di Warcraft, senza citazioni copiate. Registri e "quattro voci" come nel §5 del GDD.
 7. Gli step si eseguono **uno alla volta**, ognuno in una sessione separata, perché toccano gli stessi file.
-8. Il progetto vive nel repository git `E:epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
+8. Il progetto vive nel repository git `E:
+epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
    L'utente ha autorizzato commit, push e merge **automatici**, senza chiedere conferma: il PC non è presidiato.
 
 ## Regole per ogni sessione di step
@@ -81,8 +82,8 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | Step | Milestone | Contenuto | Modello / effort | Stato |
 |---|---|---|---|---|
 | S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
-| S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | da fare |
-| ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05 | utente | da fare |
+| S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
+| ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | da fare |
 | S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | da fare |
 | S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
@@ -164,8 +165,38 @@ Dove il GDD e questo file non coincidono, vale questo file.
 - Il pulsante e il tasto "pronuncia" del prototipo diventano la conferma del Chat Gateway.
 - **Fatto quando:** con le impostazioni predefinite nulla viene pubblicato in chat senza un'azione del giocatore, le frasi appaiono nel narratore privato e i test coprono le modalità del Chat Gateway.
 
+#### Esito di S2 e note per S3
+- **Dove sta il codice** (ordine nel `.toc`: `Integration\ChatGateway`, `Systems\Director`, `Systems\Triggers`, `UI\Widgets`, `UI\NarratorFrame`, `UI\SpeakButton`, `UI\Wizard`, `UI\SettingsFrame`, `UI\Commands`):
+  - `Integration/ChatGateway.lua` (`NS.Gateway`):
+    - modalità `chat.mode`: `PRIVATE` (predefinita), `PREVIEW`, `CONFIRM_TO_SEND`, `AUTO_ONLY_IF_ALLOWED`. `output.mode` non esiste più (migrazione di schema 1 → 2: `self` → `PRIVATE`, qualunque altro valore → `CONFIRM_TO_SEND`, `autoPublicSay` forzato a `false`).
+    - `PRIVATE`: solo narratore, mai proposte. `PREVIEW`: la frase pubblica diventa una proposta e il tasto "pronuncia" apre l'editor (si invia con Invio). `CONFIRM_TO_SEND`: il tasto o il pulsante inviano la proposta. `AUTO_ONLY_IF_ALLOWED`: parte da sola solo l'emote (ovunque) e `/say`/`/yell` nelle istanze, e solo con `output.autoPublicSay` (secondo consenso, acceso da `Gateway:SetMode`); il resto resta una proposta.
+    - Le voci `inner` e `npc` non diventano mai proposte. Il modulo `publicChat` spento equivale a `PRIVATE`.
+    - **L'invio da gesto del giocatore passa solo da `Gateway:PlayerAction(fn)`** (clic, tasto, comando, Invio nell'editor). `Gateway:Send` fuori da quell'ambito rifiuta tutto tranne `EMOTE` e, in istanza, `SAY`/`YELL` (motivo `needs_action`): un timer o un evento non può inviare in chat pubblica. Il codice nuovo che invia deve passare da `Gateway:Send`/`SendPending`.
+    - Anti-flood: `chat.floodSeconds` (4) tra due invii, `chat.maxPerMinute` (6), `chat.autoMaxPerMinute` (2). Proposta in attesa per `chat.pendingSeconds` (25); una nuova sostituisce la vecchia. Testo di al massimo 255 byte (UTF-8 intatto). Rifiuta con blocco chat, canale non disponibile, errore del client (registrato in diagnostica, la proposta resta).
+    - Entrate: `Gateway:Narrate(event, ctx, {auto, form, privateOnly})`, `Gateway:Propose(rec, ctx, opts)`, `Gateway:Confirm()` (= `AzerothUnspoken_Speak`, tasto e pulsante), `Gateway:Improvise()`, `NS:Trigger(event, extra)`. `NS:Perform`, `NS:SetPending`, `NS:GetPending` e il parametro `hw` non esistono più.
+  - `Engine`: `Engine:PickEntry(event, ctx, form)` restituisce `{ text, speaker, form, id, event }`; `Engine:Pick` ne restituisce solo il testo. Lo `speaker` provvisorio è assegnato in `AddPhrase`: `say` → `character`, `emote` → `narrator`; un pacchetto può indicarlo (`narrator`/`inner`/`character`/`npc`), valori sconosciuti tornano alla regola. Una frase parlata dentro una cornice è `narrator`. Le 374 frasi sono 354 parlate e 20 narrative.
+  - `UI/NarratorFrame.lua` (`NS.Narrator`): `Present(rec)`, `Notice(testo)`, `Clear`, `Refresh`, `OpenEditor`, `ToggleHistory`, `ShowTest`, `ApplySettings`, `ResetPosition`. La cronologia è solo in memoria (`ui.narrator.historySize`, 30), mai salvata, e non è `cdb.history`. Con `output.privateNarrator = false`, o se il riquadro non si può costruire, le frasi vanno nella chat locale. Solo l'intestazione e i pulsanti ricevono il mouse.
+  - `Systems/Director.lua` (`NS.Director`) è **il punto di aggancio per S4**: `Director:Evaluate(event)` → `{ allow, chanceMul, cooldownMul }` oppure `{ allow = false, reason }`. Oggi: intensità 0 = silenzio per gli eventi spontanei, probabilità = `intensità / 50`, pause = `1.5 − intensità / 100`, gli eventi in `NS.BYPASS_GLOBAL` non scendono sotto 1; pausa immediata (`NS.paused`, solo di sessione); i moduli `personal` e `world` spenti filtrano gli eventi (`Director.EVENT_MODULE`, predefinito `personal`). `Triggers.lua` chiama solo `Evaluate`. S4 ne sostituisce il corpo (gate, budget, priorità, fattori `P`/`S`, poi `R` in S6b) e può passare a `Gateway:PickRecord`/`Narrate`. Le richieste esplicite (`/au saluto`, tasto, `Trigger`) ignorano pausa e intensità, come da GDD §4.2.
+  - `Core/Config.lua`: `SCHEMA_VERSION = 2`; nuove sezioni `chat`, `ui.narrator`, `ui.wizardDone`; `Config.CHAT_MODES`, `CHAT_CHANNELS`, `presets`, `ApplyPreset`. `output.publicChatPreview` resta ma non fa nulla (l'interruttore è il modulo `publicChat`).
+  - `UI/Wizard.lua`: 7 passi come nel §12.1, il 6° solo se esiste `AddOn_TotalRP3`; "Salta" sempre disponibile; si riapre con `/au benvenuto`. `UI/SettingsFrame.lua`: lingua, intensità, profondità, pausa tra le frasi, chat e canale, narratore (durata, opacità, testo, blocco, cronologia, prova), moduli, pausa immediata. Solo `personal`, `world`, `publicChat` e `totalRP3` hanno oggi un effetto; gli altri moduli si impostano ma sono segnati con `*`.
+  - Comandi nuovi: `/au chat`, `canale`, `intensita`, `profondita`, `pausa`, `narratore [cronologia|reset|pulisci]`, `benvenuto`, `annulla`; `/au modo` è un alias di `/au chat`. Tasto nuovo in `Bindings.xml`: `AZEROTHUNSPOKEN_PAUSE` (`AzerothUnspoken_TogglePause`). `/au debug` stampa anche la riga `Chat Gateway`.
+- **Cosa deve sapere S3:**
+  - la profondità (`proseDepth`) è salvata e scelta nel wizard, ma **nessuna frase la usa ancora**: lo schema v2 deve portare `depth` sulle frasi e il contesto deve esporre `ctx.depth` (e magari `ctx.intensity`) per le condizioni;
+  - lo schema v2 deve mantenere il contratto di `PickEntry` e la semantica di `speaker` (il Gateway usa `rec.form` per scegliere `/s` o `/e` e per mostrare il testo, e `rec.speaker` per decidere se può uscire in chat);
+  - con soli 20 testi narrativi su 374 il narratore parla quasi sempre con la voce del personaggio: S3/S7 devono bilanciare le voci e dare davvero testi a `inner`;
+  - il validatore dovrebbe controllare gli `speaker` ammessi;
+  - i testi dell'interfaccia stanno in `Data/itIT/Interface.lua` e `Data/enUS/Interface.lua` (chiavi `gw_*`, `voice_*`, `wiz_*`, `chatmode_*`).
+- **Test** (dalla radice del progetto: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): oltre a quelli di S1, `TestChatGateway.lua` (modalità, modifica, canali, flood, nessun invio senza azione per ogni combinazione di modalità, forma e voce), `TestNarrator.lua` (riquadro, durata, cronologia, pausa, editor, pulsanti, impostazioni, wizard) e `TestDirector.lua` (scala dell'intensità, pausa, moduli). `TestConfig.lua` copre la migrazione 1 → 2. Il mock ora ha widget con stato (`Show/Hide`, testo, `Click()`, `TypeEnter()`, `UPDATE(dt)`, `FindWidgets`): i campi in minuscolo valgono `nil`, i metodi in maiuscolo non fanno nulla.
+- **Non verificato senza il client** (da provare in G1, vedi `docs/G1_checklist.md`):
+  - che `SendChatMessage` da un clic, da un tasto assegnato, da un comando scritto e dall'Invio nella casella di modifica sia davvero accettato per `/say` nel mondo aperto, e che i canali di gruppo, gilda e istanza funzionino;
+  - che le emote automatiche (modalità `AUTO_ONLY_IF_ALLOWED`) non siano bloccate dal client e che `/say` in istanza parta senza gesto: la regola "emote sempre, `/say` solo in istanza" è un'ipotesi prudente, non una misura;
+  - l'aspetto reale del riquadro, dei pulsanti `UIPanelButtonTemplate`, della casella di testo (`InputBoxTemplate`, con ripiego), del `ScrollingMessageFrame` della cronologia, il trascinamento, il passaggio dei clic attraverso il testo, la dissolvenza;
+  - la registrazione del pannello nell'interfaccia (`Settings.RegisterCanvasLayoutCategory`) e lo spazio dei controlli in due colonne;
+  - i nomi dei tasti in Opzioni > Comandi e che i tasti diano davvero un evento hardware;
+  - il salvataggio delle nuove impostazioni e della posizione del riquadro tra le sessioni.
+
 ### G1: prova in gioco (utente)
-L'utente esegue gli spike SP-01…SP-05 del GDD seguendo una lista di controllo scritta alla fine dello step S2, e riporta errori e risultati di `/au debug`. **Gli step successivi aspettano questo esito.**
+L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [docs/G1_checklist.md](docs/G1_checklist.md), scritta nello step S2, e riporta errori e risultati di `/au debug`. **Gli step successivi aspettano questo esito.**
 
 ### S3: schema dati v2 e validatore (GDD §9)
 - Registro delle regole separato dai testi:
