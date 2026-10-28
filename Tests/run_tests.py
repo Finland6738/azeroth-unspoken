@@ -64,10 +64,18 @@ check("An immersive roleplay companion for World of Warcraft" in toc_text, "mott
 check("## SavedVariables: AzerothUnspokenDB" in toc_text, "SavedVariables globali")
 check("## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB" in toc_text, "SavedVariables per personaggio")
 check(not re.search(r"^\s*Data\\Classes\.lua", toc_text, re.M), "Classes.lua resta fuori dal .toc fino a S3")
+bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
+check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
+check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
+for f in toc_files(ADDON, ADDON_NAME):
+    check(os.path.isfile(os.path.join(ADDON, f.replace("\\", "/"))), f"file del .toc esistente: {f}")
+for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Director.lua", "UI\\Wizard.lua"):
+    check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc")
+check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
-check(G.AzerothUnspokenDB.schemaVersion == 1, "schemaVersion globale")
-check(G.AzerothUnspokenCharacterDB.schemaVersion == 1, "schemaVersion per personaggio")
+check(G.AzerothUnspokenDB.schemaVersion == 2, "schemaVersion globale")
+check(G.AzerothUnspokenCharacterDB.schemaVersion == 2, "schemaVersion per personaggio")
 check(G.SlashCmdList.AZEROTHUNSPOKEN is not None, "comando registrato")
 check(G.SLASH_AZEROTHUNSPOKEN1 == "/unspoken" and G.SLASH_AZEROTHUNSPOKEN2 == "/au", "alias /unspoken e /au")
 errors = list(NS.Diagnostics.errors.values())
@@ -180,7 +188,8 @@ show("it", "muse", "say", 2, name="Thalia", **{"class": "DRUID"}, race="NightElf
 print("\nPREDEFINITI: NIENTE CHAT PUBBLICA")
 lua2, NS2 = load_addon()
 G2 = lua2.globals()
-check(NS2.db.output.mode == "self" and NS2.db.output.autoPublicSay is False, "modalità predefinita privata")
+check(NS2.db.chat.mode == "PRIVATE" and NS2.db.output.autoPublicSay is False, "modalità predefinita privata")
+check(NS2.db.ui.wizardDone is False, "primo avvio: il wizard non è ancora stato completato")
 for ev in ("battle", "victory", "zone", "death", "levelup"):
     NS2.db.chance[ev] = 100
 G2.SENT = lua2.table()
@@ -191,78 +200,108 @@ G2.ADVANCE(100); G2.P.combat = True; G2.FIRE("PLAYER_REGEN_DISABLED")
 G2.ADVANCE(60); G2.P.combat = False; G2.FIRE("PLAYER_REGEN_ENABLED")
 G2.ADVANCE(100); G2.FIRE("PLAYER_DEAD"); G2.FIRE("PLAYER_LEVEL_UP", 31)
 sent2 = list(G2.SENT.values())
-public = [s for s in sent2 if not s.startswith("PRINT:")]
-private = [s for s in sent2 if s.startswith("PRINT:")]
 for s_ in sent2: print("  ", s_[:150])
-check(not public, "nessun messaggio pubblico con i predefiniti")
-check(len(private) >= 4, "le frasi compaiono in anteprima privata")
+check(not sent2, "nessun messaggio in chat con i predefiniti (nemmeno locale: le frasi stanno nel narratore)")
+hist = list(NS2.Narrator.history.values())
+for h_ in hist: print("   narratore:", h_.speaker, h_.text)
+check(len(hist) >= 4, "le frasi compaiono nel narratore privato")
+check(NS2.Gateway.pending is None, "con i predefiniti nessuna proposta pubblica")
+check(all(h_.speaker in ("narrator", "character", "inner", "npc") for h_ in hist), "ogni frase ha uno speaker")
+shown = lua2.eval("function() return AzerothUnspoken.Narrator:GetFrame().text:GetText() end")()
+check(shown is not None and len(shown) > 0, "il riquadro mostra il testo")
+G2.HW = True
+G2.AzerothUnspoken_Speak()   # senza proposte: improvvisa, e in PRIVATE resta privato
+G2.HW = False
+check(not list(G2.SENT.values()), "il tasto in modalità privata non scrive in chat")
 
-# 6) flusso reale dagli eventi: combattimento nel mondo aperto, modalità auto
-NS.db.locale = "it"; NS.db.output.mode = "auto"; NS.db.chance.battle = 100; NS.db.chance.victory = 100
+# 6) flusso reale dagli eventi: combattimento nel mondo aperto, modalità automatica dove permesso
+lua.execute("math.randomseed(7)")
+NS.db.locale = "it"; NS.db.chance.battle = 100; NS.db.chance.victory = 100; NS.db.pacing.globalCooldownSeconds = 0
+NS.Gateway.SetMode(NS.Gateway, "AUTO_ONLY_IF_ALLOWED")
+check(NS.db.output.autoPublicSay is True, "AUTO_ONLY_IF_ALLOWED accende autoPublicSay")
 G.SENT = lua.table()
-setP(combat=True, instance=False)
-G.ADVANCE(100)
-G.FIRE("PLAYER_REGEN_DISABLED")
-G.ADVANCE(60)
-setP(combat=False)
-G.FIRE("PLAYER_REGEN_ENABLED")
-NS.db.output.mode = "say"
-G.ADVANCE(100)
-setP(combat=True)
-G.FIRE("PLAYER_REGEN_DISABLED")
+setP(combat=False, instance=False)
+# combattimenti ripetuti finché una frase parlata non resta in attesa (il seme è fisso: esito ripetibile)
+for i in range(40):
+    G.ADVANCE(100)
+    setP(combat=True)
+    G.FIRE("PLAYER_REGEN_DISABLED")
+    G.ADVANCE(30)
+    setP(combat=False)
+    G.FIRE("PLAYER_REGEN_ENABLED")
+    if i >= 6 and NS.Gateway.GetPending(NS.Gateway) is not None:
+        break
 print("\nFLUSSO EVENTI")
 flow = list(G.SENT.values())
-for s in flow: print("  ", s)
-pending = NS.GetPending(NS)
-print("  in attesa per /say:", pending)
-check(any(s.startswith("EMOTE:") for s in flow), "modalità auto: emote nel mondo aperto")
+for s_ in flow[:6]: print("  ", s_)
+pending = NS.Gateway.GetPending(NS.Gateway)
+print("  proposta in attesa:", pending.text if pending else None)
+check(any(s.startswith("EMOTE:") for s in flow), "automatica: le emote partono da sole nel mondo aperto")
 check(not any(s.startswith("SAY:") for s in flow), "nessun /say senza azione del giocatore")
-check(pending is not None, "frase in attesa per il tasto")
+check(pending is not None and pending.channel == "SAY", "il parlato resta una proposta per /say")
+text = pending.text
 G.HW = True
 G.AzerothUnspoken_Speak()
 G.HW = False
 after = list(G.SENT.values())[-1]
 print("  dopo il tasto:", after)
-check(after == "SAY: " + str(pending), "il tasto pronuncia la frase in attesa")
+check(after == "SAY: " + str(text), "il tasto pronuncia la proposta in attesa")
+check(NS.Gateway.GetPending(NS.Gateway) is None, "la proposta inviata non resta in attesa")
 
-# 7) in istanza, senza tasto, /say automatico solo se autoPublicSay è attivo
-G.SENT = lua.table(); setP(instance=True, combat=True)
-G.ADVANCE(100); G.FIRE("PLAYER_REGEN_ENABLED"); G.ADVANCE(100); G.FIRE("PLAYER_REGEN_DISABLED")
+# 7) in istanza, senza tasto, /say automatico solo con la modalità automatica e autoPublicSay
+setP(instance=True)
+def fight(n):
+    for i in range(n):
+        G.ADVANCE(100); setP(combat=True); G.FIRE("PLAYER_REGEN_DISABLED")
+        G.ADVANCE(30); setP(combat=False); G.FIRE("PLAYER_REGEN_ENABLED")
+G.SENT = lua.table()
+NS.db.output.autoPublicSay = False
+fight(10)
 check(not any(s.startswith("SAY:") for s in G.SENT.values()), "istanza: niente /say automatico con autoPublicSay = false")
 NS.db.output.autoPublicSay = True
-G.ADVANCE(100); G.FIRE("PLAYER_REGEN_ENABLED"); G.ADVANCE(100); G.FIRE("PLAYER_REGEN_DISABLED")
+G.SENT = lua.table()
+fight(14)
 check(any(s.startswith("SAY:") for s in G.SENT.values()), "istanza: /say automatico con autoPublicSay = true")
-NS.db.output.autoPublicSay = False
+NS.Gateway.SetMode(NS.Gateway, "PRIVATE")
+check(NS.db.output.autoPublicSay is False, "tornare a PRIVATE spegne autoPublicSay")
 setP(instance=False, combat=False)
-NS.ClearPending(NS)
+NS.Gateway.Discard(NS.Gateway)
 
 print("\nCOMANDI")
 cmd = G.SlashCmdList.AZEROTHUNSPOKEN
 G.SENT = lua.table()
-G.HW = True
-for c in ["lingua", "lingua en", "prova battle", "lingua itIT", "prova saluto", "modo emote", "saluto", "info",
-          "pacchetti", "prob fishing 100", "modo bogus", "debug"]:
+for c in ["lingua", "lingua en", "prova battle", "lingua itIT", "prova saluto", "chat anteprima", "saluto", "info",
+          "pacchetti", "prob fishing 100", "chat bogus", "intensita 70", "profondita elevato", "canale gruppo",
+          "pausa", "pausa", "narratore", "narratore cronologia", "narratore cronologia", "annulla", "debug"]:
     cmd(c)
-G.HW = False
 out = list(G.SENT.values())
 for s_ in out: print("  ", s_[:160].replace(chr(10), " | "))
 check(NS.db.locale == "it", "/au lingua itIT normalizzato a it")
-check(any("EMOTE:" in s for s in out), "/au saluto in modalità emote")
+check(NS.db.chat.mode == "PREVIEW", "/au chat anteprima; una modalità sconosciuta non cambia nulla")
+check(NS.db.intensity == 70 and NS.db.proseDepth == "elevated" and NS.db.chat.channel == "PARTY", "/au intensita, profondita, canale")
+check(NS.paused is False, "/au pausa due volte: di nuovo attivo")
+check(not any(s.startswith("SAY:") or s.startswith("EMOTE:") or s.startswith("PARTY:") for s in out), "i comandi di prova non scrivono in chat")
 check(any("Capacità" in s for s in out), "/au debug stampa la matrice delle capacità")
 check(any("Interface 16001" in s for s in out), "/au debug stampa GetBuildInfo")
+check(any("Chat Gateway: mode PREVIEW" in s for s in out), "/au debug stampa lo stato del Chat Gateway")
 check(not NS.Diagnostics.errors[1], "nessun errore dai comandi")
+NS.db.chat.channel = "auto"; NS.db.intensity = 50; NS.db.proseDepth = "literary"
+NS.Gateway.SetMode(NS.Gateway, "PRIVATE")
 
 print("\nPESCA (pacchetto di esempio)")
 G.SENT = lua.table()
-NS.db.output.mode = "emote"; NS.db.pacing.globalCooldownSeconds = 0
+NS.db.pacing.globalCooldownSeconds = 0
+NS.db.ui.narrator.historySize = 100; NS.Narrator.ClearHistory(NS.Narrator)
+n0 = 0
 G.SPELLS[7620] = "Fishing"
 setP(combat=False, target=None)
 for i in range(3):
     G.ADVANCE(400)
     G.FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", "guid%d" % i, 7620)
-fish = list(G.SENT.values())
-for s_ in fish: print("  ", s_)
-check(len(fish) == 3 and all(s.startswith("EMOTE:") for s in fish), "frasi di pesca dal pacchetto di esempio")
+fishing = [h_.text for h_ in list(NS.Narrator.history.values())[n0:]]
+for s_ in fishing: print("  ", s_)
+check(len(fishing) == 3, "frasi di pesca dal pacchetto di esempio, nel narratore")
+check(not list(G.SENT.values()), "la pesca non scrive in chat con la modalità privata")
 
 # 8) Classes.lua: fuori dal .toc, ma deve almeno caricarsi (si integra in S3)
 lua3, NS3 = load_addon(with_example=False)
@@ -274,7 +313,7 @@ check(classes == 54, "Classes.lua contiene 54 frasi")
 
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
-for name in ("TestCompat", "TestConfig", "TestEventBus"):
+for name in ("TestCompat", "TestConfig", "TestEventBus", "TestChatGateway", "TestNarrator", "TestDirector"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

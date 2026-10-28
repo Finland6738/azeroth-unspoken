@@ -1,36 +1,42 @@
--- Azeroth Unspoken: pannello delle impostazioni
+-- Azeroth Unspoken: pannello delle impostazioni (GDD §12.2)
+-- lingua, intensità, profondità, pausa tra le frasi, chat, narratore, moduli
 local ADDON, NS = ...
+local W = NS.Widgets
 local SettingsFrame = NS:RegisterModule("settings")
 
-local MODES = NS.Config.rules["output.mode"].enum
-
----------------------------------------------------------------------------
--- Pannello impostazioni
----------------------------------------------------------------------------
 local panel
+local MODULE_ORDER = { "personal", "world", "npc", "memory", "storyArcs", "social", "publicChat", "audio" }
+local MODULE_LIVE = { personal = true, world = true, publicChat = true }   -- moduli con effetto già oggi
+local DEPTHS = { "natural", "literary", "elevated" }
+local COOLDOWNS = { 15, 30, 45, 60, 90, 120, 180 }
+
+local function Cycle(list, current)
+	for i, v in ipairs(list) do
+		if v == current then return list[(i % #list) + 1] end
+	end
+	return list[1]
+end
 
 local function CycleLanguage()
-	local order = NS.languageOrder
-	local cur = NS:Lang()
-	for i, code in ipairs(order) do
-		if code == cur then
-			NS.db.locale = order[(i % #order) + 1]
-			return
-		end
-	end
-	NS.db.locale = order[1]
+	NS.db.locale = Cycle(NS.languageOrder, NS:Lang())
+	if panel then panel:Rebuild() end
 end
 
-local function CycleMode()
-	for i, m in ipairs(MODES) do
-		if m == NS.db.output.mode then
-			NS.db.output.mode = MODES[(i % #MODES) + 1]
-			return
-		end
+local function StepNumber(path, delta, decimals)
+	local v = NS.Config:Get(path) + delta
+	if decimals then
+		local m = 10 ^ decimals
+		v = math.floor(v * m + 0.5) / m
 	end
-	NS.db.output.mode = "auto"
+	NS.Config:Set(path, v)
+	if NS.Narrator then NS.Narrator:ApplySettings() end
 end
 
+local function OnOff(v) return v and NS:L("on") or NS:L("off") end
+
+---------------------------------------------------------------------------
+-- Costruzione
+---------------------------------------------------------------------------
 local function CreatePanel()
 	panel = CreateFrame("Frame")
 	panel.name = NS.name
@@ -40,57 +46,108 @@ local function CreatePanel()
 	title:SetText(NS.name .. " " .. NS.version)
 
 	local rows = {}
-	local function Row(label, onClick, y)
-		local b = CreateFrame("Button", nil, panel, "UIPanelButtonTemplate")
-		b:SetSize(220, 24)
-		b:SetPoint("TOPLEFT", 16, y)
-		b:SetScript("OnClick", function() onClick(); panel:Refresh() end)
-		local fs = panel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-		fs:SetPoint("LEFT", b, "RIGHT", 12, 0)
-		fs:SetWidth(380)
-		fs:SetJustifyH("LEFT")
-		table.insert(rows, { button = b, text = fs, label = label })
+	local COLUMN = { 16, 330 }
+
+	-- riga con pulsante: label() restituisce il testo del pulsante
+	local function Row(col, index, label, onClick)
+		local b = W.Button(panel, "", 290, 24, function()
+			onClick()
+			panel:Refresh()
+		end)
+		b:SetPoint("TOPLEFT", COLUMN[col], -48 - (index - 1) * 28)
+		table.insert(rows, { button = b, label = label })
+		return b
 	end
 
-	Row(function() return NS:L("opt_enabled"), NS.db.enabled and NS:L("on") or NS:L("off") end,
-		function() NS.db.enabled = not NS.db.enabled end, -56)
-	Row(function() return NS:L("opt_language"), NS.languages[NS:Lang()].name end, CycleLanguage, -88)
-	Row(function() return NS:L("opt_mode"), NS:L("mode_" .. NS.db.output.mode) end, CycleMode, -120)
-	Row(function() return NS:L("opt_cooldown"), NS.db.pacing.globalCooldownSeconds .. " s" end, function()
-		local steps = { 15, 30, 45, 60, 90, 120, 180 }
-		local nxt = steps[1]
-		for _, s in ipairs(steps) do
+	-- riga con - e +
+	local function Stepper(col, index, label, minus, plus)
+		local b = W.Button(panel, "", 238, 24)
+		b:SetPoint("TOPLEFT", COLUMN[col], -48 - (index - 1) * 28)
+		local m = W.Button(panel, "-", 24, 24, function() minus(); panel:Refresh() end)
+		m:SetPoint("LEFT", b, "RIGHT", 2, 0)
+		local p = W.Button(panel, "+", 24, 24, function() plus(); panel:Refresh() end)
+		p:SetPoint("LEFT", m, "RIGHT", 2, 0)
+		table.insert(rows, { button = b, label = label })
+	end
+
+	-- colonna 1: generale e chat
+	Row(1, 1, function() return NS:L("opt_enabled") .. ": " .. OnOff(NS.db.enabled) end,
+		function() NS.db.enabled = not NS.db.enabled end)
+	Row(1, 2, function() return NS:L("opt_language") .. ": " .. NS.languages[NS:Lang()].name end, CycleLanguage)
+	Stepper(1, 3, function() return NS:L("opt_intensity") .. ": " .. NS.db.intensity end,
+		function() NS.Config:Set("intensity", NS.db.intensity - 10) end,
+		function() NS.Config:Set("intensity", NS.db.intensity + 10) end)
+	Row(1, 4, function() return NS:L("opt_depth") .. ": " .. NS:L("depth_" .. NS.db.proseDepth) end,
+		function() NS.db.proseDepth = Cycle(DEPTHS, NS.db.proseDepth) end)
+	Row(1, 5, function() return NS:L("opt_cooldown") .. ": " .. NS.db.pacing.globalCooldownSeconds .. " s" end, function()
+		local nxt = COOLDOWNS[1]
+		for _, s in ipairs(COOLDOWNS) do
 			if s > NS.db.pacing.globalCooldownSeconds then nxt = s; break end
 		end
 		NS.db.pacing.globalCooldownSeconds = nxt
-	end, -152)
-	Row(function() return NS:L("opt_button"), NS.db.ui.showButton and NS:L("on") or NS:L("off") end, function()
+	end)
+	Row(1, 6, function() return NS:L("opt_chatmode") .. ": " .. NS:L("chatmode_" .. NS.db.chat.mode .. "_short") end,
+		function() NS.Gateway:CycleMode() end)
+	Row(1, 7, function() return NS:L("opt_channel") .. ": " .. NS:L("channel_" .. NS.db.chat.channel) end,
+		function() NS.db.chat.channel = Cycle(NS.Config.CHAT_CHANNELS, NS.db.chat.channel) end)
+	Row(1, 8, function() return NS:L("opt_button") .. ": " .. OnOff(NS.db.ui.showButton) end, function()
 		NS.db.ui.showButton = not NS.db.ui.showButton
 		NS.UpdateButton()
-	end, -184)
-	Row(function() return NS:L("opt_rpname"), NS.db.modules.totalRP3 and NS:L("on") or NS:L("off") end,
-		function() NS.db.modules.totalRP3 = not NS.db.modules.totalRP3 end, -216)
-	Row(function() return NS:L("opt_preview"), "" end, function()
-		local ctx = NS:BuildContext()
-		local ev = ctx.combat and "battle" or "muse"
-		NS:Print(NS.Engine:Pick(ev, ctx, "say") or "-")
-		NS:Print(NS.Engine:Pick(ev, ctx, "emote") or "-")
-	end, -248)
+	end)
+	Row(1, 9, function() return NS:L("opt_rpname") .. ": " .. OnOff(NS.db.modules.totalRP3) end,
+		function() NS.db.modules.totalRP3 = not NS.db.modules.totalRP3 end)
+	Row(1, 10, function() return NS:L(NS.paused and "opt_resume" or "opt_pause") end,
+		function() NS.Director:TogglePause() end)
+	Row(1, 11, function() return NS:L("opt_wizard") end, function() NS.Wizard:Open() end)
+
+	-- colonna 2: narratore
+	Row(2, 1, function() return NS:L("opt_narrator") .. ": " .. OnOff(NS.db.output.privateNarrator) end,
+		function() NS.db.output.privateNarrator = not NS.db.output.privateNarrator end)
+	Stepper(2, 2, function() return NS:L("opt_duration") .. ": " .. NS.db.ui.narrator.duration .. " s" end,
+		function() StepNumber("ui.narrator.duration", -1) end, function() StepNumber("ui.narrator.duration", 1) end)
+	Stepper(2, 3, function() return NS:L("opt_alpha") .. ": " .. math.floor(NS.db.ui.narrator.alpha * 100 + 0.5) .. "%" end,
+		function() StepNumber("ui.narrator.alpha", -0.1, 1) end, function() StepNumber("ui.narrator.alpha", 0.1, 1) end)
+	Stepper(2, 4, function() return NS:L("opt_fontsize") .. ": " .. NS.db.ui.narrator.fontSize end,
+		function() StepNumber("ui.narrator.fontSize", -1) end, function() StepNumber("ui.narrator.fontSize", 1) end)
+	Row(2, 5, function() return NS:L("opt_locked") .. ": " .. OnOff(NS.db.ui.narrator.locked) end,
+		function() NS.db.ui.narrator.locked = not NS.db.ui.narrator.locked end)
+	Row(2, 6, function() return NS:L("opt_resetpos") end, function() NS.Narrator:ResetPosition() end)
+	Row(2, 7, function() return NS:L("opt_history") end, function() NS.Narrator:ToggleHistory() end)
+	Row(2, 8, function() return NS:L("opt_test") end, function() NS.Narrator:ShowTest() end)
+
+	-- moduli: griglia a quattro colonne
+	local modTitle = panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+	modTitle:SetPoint("TOPLEFT", 16, -388)
+	for i, module in ipairs(MODULE_ORDER) do
+		local b = W.Button(panel, "", 150, 24, function()
+			NS.db.modules[module] = not NS.db.modules[module]
+			NS.db.preset = "custom"
+			if module == "publicChat" and not NS.db.modules.publicChat then NS.Gateway:Discard() end
+			panel:Refresh()
+		end)
+		local col, row = (i - 1) % 4, math.floor((i - 1) / 4)
+		b:SetPoint("TOPLEFT", 16 + col * 156, -410 - row * 28)
+		table.insert(rows, { button = b, label = function()
+			local name = NS:L("module_" .. module)
+			if not MODULE_LIVE[module] then name = name .. " *" end
+			return name .. ": " .. OnOff(NS.db.modules[module])
+		end })
+	end
 
 	local help = panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	help:SetPoint("TOPLEFT", 16, -290)
+	help:SetPoint("TOPLEFT", 16, -474)
 	help:SetWidth(600)
 	help:SetJustifyH("LEFT")
 
 	function panel:Refresh()
-		for _, r in ipairs(rows) do
-			local label, value = r.label()
-			r.button:SetText(label)
-			r.text:SetText(value)
-		end
+		for _, r in ipairs(rows) do r.button:SetText(r.label()) end
 		local total = NS.Engine:Stats(NS:Lang())
-		help:SetText(NS:L("panel_help", total, #NS.Engine.packOrder))
+		modTitle:SetText(NS:L("opt_modules"))
+		help:SetText(NS:L("chatmode_" .. NS.db.chat.mode .. "_help") .. "\n\n"
+			.. NS:L("panel_help", total, #NS.Engine.packOrder))
 	end
+	-- il cambio di lingua ritraduce le etichette fisse
+	function panel:Rebuild() self:Refresh() end
 	panel:SetScript("OnShow", function() panel:Refresh() end)
 
 	if Settings and Settings.RegisterCanvasLayoutCategory then
@@ -105,7 +162,7 @@ end
 local function OpenPanel()
 	if Settings and Settings.OpenToCategory and NS.settingsCategory then
 		Settings.OpenToCategory(NS.settingsCategory:GetID())
-	elseif InterfaceOptionsFrame_OpenToCategory then
+	elseif InterfaceOptionsFrame_OpenToCategory and panel then
 		InterfaceOptionsFrame_OpenToCategory(panel)
 	end
 end

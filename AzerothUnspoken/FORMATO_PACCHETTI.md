@@ -28,6 +28,7 @@ AzerothUnspoken:RegisterPack({
     id = "nani.battle.01",          -- unico; serve per la memoria e per le traduzioni
     event = "battle",               -- oppure più eventi: { "battle", "threat" }
     form = "say",                   -- "say" = parlata (predefinita), "emote" = narrativa in terza persona
+    speaker = "character",          -- chi parla (facoltativo): narrator, inner, character, npc
     tone = "eroico",                -- registro: epico, solenne, oscuro, malinconico, eroico, ironico, feroce, mistico...
     weight = 1,                     -- peso relativo (predefinito 1)
     cooldown = 600,                 -- secondi prima che questa frase possa tornare (facoltativo)
@@ -39,6 +40,23 @@ AzerothUnspoken:RegisterPack({
 
 Ogni lingua è una chiave di due lettere (`it`, `en`, `de`, `fr`...). Una frase compare solo nelle lingue
 in cui è scritta: le lingue non vengono mai mescolate.
+
+### Chi parla (`speaker`)
+
+Ogni frase ha una delle quattro voci del GDD §5.3, mostrata nel narratore come etichetta:
+
+| `speaker` | Voce | In chat |
+|---|---|---|
+| `narrator` | narratore esterno | può diventare una proposta (di solito `/e`) |
+| `inner` | voce interiore, privata | mai in chat |
+| `character` | voce pubblica del personaggio | può diventare una proposta (di solito `/s`) |
+| `npc` | NPC, contenuto simulato | mai in chat |
+
+Se manca, la regola provvisoria (fino allo schema v2, step S3) è: `form = "say"` → `character`,
+`form = "emote"` → `narrator`. Uno `speaker` sconosciuto torna a questa regola.
+
+Le frasi non vanno **mai** in chat da sole: arrivano al narratore privato e, solo se l'utente ha scelto una
+modalità del Chat Gateway diversa da quella privata, diventano proposte che lui conferma (vedi `ROADMAP.md`, S2).
 
 Le **emote** iniziano con la minuscola e senza il nome: il gioco scrive da solo il nome del personaggio
 («*Brann* snuda l'arma...»).

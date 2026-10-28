@@ -1,11 +1,34 @@
 -- Azeroth Unspoken: avvio, spazio dei nomi, lingue dell'interfaccia, moduli
+---@class AUNamespace
+---@field name string
+---@field version string
+---@field db AUSettings impostazioni dell'account (AzerothUnspokenDB.settings)
+---@field cdb table dati del personaggio (AzerothUnspokenCharacterDB)
+---@field paused boolean pausa immediata del narratore, solo di sessione
+---@field Config AUConfig
+---@field Gateway AUChatGateway
+---@field Narrator AUNarrator
+---@field Director table
+---@field Engine table
+---@field Compat table
+---@field Diagnostics table
+---@field EventBus table
+---@field Widgets table
+---@field Wizard table
 local ADDON, NS = ...
 NS.name = "Azeroth Unspoken"
 NS.version = "0.1.0"
 AzerothUnspoken = NS     -- API pubblica per i pacchetti di frasi, le macro e il debug
 
 BINDING_HEADER_AZEROTHUNSPOKEN = "Azeroth Unspoken"
-BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Pronuncia la frase in attesa (o improvvisa)"
+-- nomi dei tasti: la schermata dei comandi si legge prima che l'utente scelga la lingua dell'addon
+if GetLocale and GetLocale() == "itIT" then
+	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Conferma e pronuncia la frase proposta (o improvvisa)"
+	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pausa immediata del narratore (attiva/disattiva)"
+else
+	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Confirm and speak the proposed line (or improvise)"
+	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pause the narrator immediately (toggle)"
+end
 
 ---------------------------------------------------------------------------
 -- Lingue

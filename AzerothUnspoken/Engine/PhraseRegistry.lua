@@ -41,10 +41,20 @@ local function AsList(v)
 end
 Engine.AsList = AsList
 
+-- Le quattro voci del GDD §5.3. Regola provvisoria fino allo schema v2 (step S3):
+-- una frase "say" è la voce pubblica del personaggio, una "emote" è il narratore.
+-- Un pacchetto può indicare lo speaker esplicitamente (anche "inner" o "npc").
+Engine.SPEAKERS = { narrator = true, inner = true, character = true, npc = true }
+
+function Engine.DefaultSpeaker(form)
+	return form == "emote" and "narrator" or "character"
+end
+
 function Engine:AddPhrase(pack, p)
 	NormalizeText(p)
 	p.pack = pack.id
 	p.form = p.form or "say"
+	if not Engine.SPEAKERS[p.speaker] then p.speaker = Engine.DefaultSpeaker(p.form) end
 	p.weight = p.weight or 1
 	p.spec = Specificity(p.when)
 	if not p.id then
@@ -104,7 +114,7 @@ end
 --[[ API pubblica. Formato del pacchetto (vedi FORMATO_PACCHETTI.md):
 	AzerothUnspoken:RegisterPack({
 		id = "mio_pacchetto", name = "Nome leggibile",
-		phrases = { { id=, event=, form=, tone=, weight=, cooldown=, when=, it=, en= }, ... },
+		phrases = { { id=, event=, form=, speaker=, tone=, weight=, cooldown=, when=, it=, en= }, ... },
 		frames  = { { event=, when=, it="... «{line}»" }, ... },
 		vocab   = { nome = { { when=, it=, en= }, ... } },
 		translations = { de = { [id] = "..." } },

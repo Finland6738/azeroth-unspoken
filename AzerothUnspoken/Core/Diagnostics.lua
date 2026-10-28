@@ -98,9 +98,15 @@ function Diagnostics:Report(verbose)
 		tostring(b.locale)))
 	local db = NS.db
 	if db then
-		Add(("%s: schema %s, %s %s, %s %s, intensity %d, proseDepth %s, autoPublicSay %s"):format(NS:L("debug_config"),
-			tostring(AzerothUnspokenDB and AzerothUnspokenDB.schemaVersion), NS:L("opt_language"), NS:Lang(),
-			NS:L("opt_mode"), db.output.mode, db.intensity, db.proseDepth, tostring(db.output.autoPublicSay)))
+		Add(("%s: schema %s, locale %s, intensity %d, proseDepth %s, paused %s"):format(NS:L("debug_config"),
+			tostring(AzerothUnspokenDB and AzerothUnspokenDB.schemaVersion), NS:Lang(), db.intensity, db.proseDepth,
+			tostring(NS.paused)))
+		if NS.Gateway then
+			local g = NS.Gateway:Status()
+			Add(("Chat Gateway: mode %s (effective %s), autoPublicSay %s, channel %s, pending %s, sent %d (last minute %d, auto %d), last refusal %s"):format(
+				g.mode, g.effective, tostring(g.autoPublicSay), g.channel, tostring(g.pending), g.total, g.lastMinute,
+				g.lastMinuteAuto, tostring(g.lastRefusal)))
+		end
 		for _, issue in ipairs(NS.Config.issues or {}) do Add("  config: " .. issue) end
 	else
 		Add(NS:L("debug_no_db"))
