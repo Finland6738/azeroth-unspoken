@@ -78,6 +78,11 @@ Dove il GDD e questo file non coincidono, vale questo file.
   - Annotare con EmmyLua (`---@class`, `---@field`, `---@param`, `---@return`) le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione), così l'IDE completa e controlla i tipi.
   - Ogni nuova variabile globale dell'addon (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti) va aggiunta a `diagnostics.globals` in `.luarc.json`.
   - Le API di WoW sono fornite dal plugin: non duplicarle nel progetto.
+- Riferimenti tecnici: [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md).
+  - Il dump delle API di Forever (build 70170) è in `E:epository\WoW-Addons\docspi.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
+  - Prima di usare una funzione o un evento nuovo, controllarlo lì e poi proteggerlo con Compat.
+  - Non copiare file di quel repository nel nostro: non ha una licenza dichiarata.
+  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:epository\WoW-Addons`.
 - Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
 
 ## Milestone e step
@@ -181,6 +186,7 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo una lista di controllo 
   - le cornici e il vocabolario restano, come varianti.
 - Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
 - Aggiornare la guida al formato dei pacchetti.
+- Aggiungere `Tests/check_api.py`: legge `E:epository\WoW-Addons\docspi.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
 
 ### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
 - Gate di opportunità guidato dall'intensità; budget per categoria; priorità del §10; silenzio come esito valido; niente cascate di messaggi.

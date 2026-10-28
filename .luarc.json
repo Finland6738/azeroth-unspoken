@@ -15,5 +15,8 @@
     "archive",
     ".venv",
     "Tests"
+  ],
+  "workspace.library": [
+    "../WoW-Addons/types"
   ]
 }
