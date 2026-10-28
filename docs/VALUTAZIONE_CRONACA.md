@@ -1,6 +1,6 @@
 # Valutazione: diario narrativo in Markdown ("Cronaca")
 
-Data: 2026-10-29. Stato: **proposta, in attesa delle decisioni dell'utente**.
+Data: 2026-10-29. Stato: **approvata dall'utente il 2026-10-29** come consigliato. Gli step C1–C3 sono in `ROADMAP.md`, dopo G1.
 
 ## Richiesta
 
