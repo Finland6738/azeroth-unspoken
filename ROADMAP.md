@@ -97,6 +97,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
 | S6 | M1 | Living Memory e Diario | Sonnet · high | da fare |
 | S6b | M1 | Relazioni e affinità: NPC automatici, persone incontrate, influenza sul narratore | Sonnet · high | da fare |
+| S6c | M1 | Interlocutore (personalità, azioni, razza, classe, obiettivi, ruolo) e luogo (regione, territorio, dungeon/raid/BG/arena) | Opus · medium | da fare |
 | S7 | M1 | Contenuti Alpha: 300 intenzioni, almeno 2 varianti | Opus · high | da fare |
 | ✋ G2 | M1 | **Prova in gioco**: vertical slice A (arrivo nella foresta) e C (ritorno) | utente | da fare |
 | S8 | M2 Living NPC (v0.3) | NPC Alive: finestra di dialogo, stati, registro NPC, archetipi | Sonnet · high | da fare |
@@ -312,6 +313,79 @@ Esempi: tono formale con uno sconosciuto, caldo con un amico, teso con un rivale
 - nessun dato preso da valori segreti.
 
 **Dipendenze:** dopo S6, perché usa la memoria e il diario. Prima di S7, perché i contenuti useranno le nuove condizioni. S8 (NPC Alive) riusa il registro degli NPC e le relazioni.
+
+### S6c: interlocutore e luogo (richiesta dell'utente del 2026-10-29; GDD §5.2, §5.3, §7.1, §7.2, §10)
+
+Obiettivo: le frasi cambiano in base a **chi incontriamo** e a **dove siamo**.
+- Chi incontriamo: personalità e carattere, azioni recenti, razza, classe, obiettivi, ruolo.
+- Dove siamo: regione, territorio, tipo di istanza (dungeon, raid, campo di battaglia, arena).
+
+Lo step completa S5, dove la personalità è quella del *nostro* personaggio, e S6b, dove si definisce il *rapporto*.
+
+**A. Profilo dell'interlocutore** (`Systems/Interlocutor.lua`). Il contesto espone `ctx.other`: bersaglio, NPC dell'interazione in corso, membro del gruppo o autore di un'emote rivolta a noi.
+
+| Campo | Contenuto |
+|---|---|
+| `kind` | `npc`, `player`, `creature` |
+| `race`, `class`, `faction`, `sex`, `level` | per i giocatori dal gioco o da TRP3; per gli NPC dove disponibile |
+| `classification`, `ctype`, `family` | élite, raro, boss; tipo di creatura; famiglia (`UnitCreatureFamily`) |
+| `reaction` | da ostile ad amichevole (`UnitReaction`) |
+| `role` | locandiere, mercante, guardia, datore di quest, addestratore, maestro di volo, banchiere, capo, civile… |
+| `temperament`, `morality`, `goals`, `speech` | personalità. Usa **lo stesso modello di tratti di S5** e i valori della tabella delle relazioni di S6b |
+| `actions` | azioni recenti osservate: ci ha dato una quest, ha commerciato con noi, è nel nostro gruppo, ci ha sfidato a duello, ci ha rivolto un'emote, ci attacca, combatte il nostro stesso nemico. Ognuna con il momento in cui è avvenuta |
+| `relation` | etichetta di S6b, se esiste |
+
+- **Fonti, in ordine di priorità:**
+  1. dati inseriti dall'utente (lista persone di S6b);
+  2. profilo **pubblico** TRP3 del bersaglio (razza e classe personalizzate, tratti caratteriali), con consenso e adattatore protetto;
+  3. registro curato degli NPC per `npcID` in `Data/NPCs.lua` (personalità, obiettivi, modo di parlare), condiviso con S8;
+  4. archetipo del ruolo, ricavato in modo affidabile da gossip, mercante, quest, addestratore o volo (mai indovinato);
+  5. valori tipici di razza, classe e fazione, come **tendenza debole** e non come stereotipo imposto (GDD §5.4: "nessuna decisione morale imposta da razza, fazione o classe");
+  6. valori neutri.
+- Le azioni si ricavano solo da eventi affidabili: `GOSSIP_SHOW`, `QUEST_*`, `MERCHANT_*`, `TRADE_SHOW`, `GROUP_ROSTER_UPDATE`, `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST`, `CHAT_MSG_TEXT_EMOTE` rivolti a noi, `PLAYER_TARGET_CHANGED`. Mai dal log di combattimento. Se l'identità è segreta (`C_Secrets.ShouldUnitIdentityBeSecret`) il profilo resta vuoto.
+
+**B. Luogo** (`Systems/Place.lua`). Il contesto espone `ctx.place`:
+
+| Campo | Contenuto |
+|---|---|
+| `zone`, `subzone`, `mapID`, `continent` | da `C_Map.GetBestMapForUnit` / `C_Map.GetMapInfo` |
+| `tags` | atmosfera e temi: foresta, rovine, sacro, maledetto, capitale, porto… Evoluzione di `zoneMoods`, con registro per `mapID` dove verificato e nome come ripiego |
+| `territory` | amico, ostile, conteso, santuario, combattimento (`C_PvP.GetZonePVPInfo`) |
+| `capital`, `faction` | capitale e fazione proprietaria del luogo |
+| `instanceType` | `none`, `party` (dungeon), `raid`, `pvp` (campo di battaglia), `arena`, `scenario` |
+| `instanceName`, `instanceID`, `difficulty` | da `GetInstanceInfo` |
+| `encounter` | scontro con un boss in corso (`ENCOUNTER_START`/`END`), con il nome |
+| `groupRole` | ruolo nel gruppo: tank, cura, danno (`UnitGroupRolesAssigned`) |
+| `battleground` | stato del campo di battaglia (`UPDATE_BATTLEFIELD_STATUS`, `C_PvP.IsBattleground`) |
+
+- `Data/Places.lua` contiene tag, temi e frasi chiave per le zone, le capitali, i dungeon, i raid e i campi di battaglia dell'era di Forever, con nomi del client inglese e `mapID` verificati.
+
+**C. Regole e scelta delle frasi.**
+- Il RuleEngine accetta sotto-tabelle:
+  - `when = { other = { role = "innkeeper", temperament = "gruff" } }`;
+  - `when = { place = { instanceType = "raid", territory = "hostile" } }`.
+  - Valgono gli stessi operatori di oggi (elenchi, `not`, `any`, `func`) e `other.actions` contiene un'azione recente entro N secondi.
+- Nuovi segnaposto: `{other}` (nome), `{otherrole}`, `{otherrace}`, `{otherclass}`, `{instance}`, `{encounter}`, localizzati.
+- Narrative Director: il fattore di contesto `C` premia le frasi coerenti con interlocutore e luogo. Il ritmo cambia con il tipo di istanza:
+  - più sobrio in raid e durante gli scontri con i boss;
+  - frasi brevi in campo di battaglia;
+  - più spazio nel mondo aperto e nelle locande.
+- **Voce degli NPC** (per S8): le battute simulate seguono `speech` e `temperament` dell'NPC. Esempio: un locandiere burbero e uno gioviale non dicono le stesse cose.
+
+**D. Contenuti:** almeno 80 frasi bilingui.
+- Per l'interlocutore: per ruolo, temperamento, razza o classe, e azioni come "ci ha appena dato una quest" o "ha combattuto al nostro fianco".
+- Per il luogo: dungeon, raid, campo di battaglia, arena, territorio ostile, capitale nemica o amica, santuari.
+- Ogni frase rispetta le regole del §5.4.
+
+**Test:**
+- priorità delle fonti;
+- ruolo ricavato solo da eventi affidabili;
+- identità segreta → profilo vuoto;
+- nessun obbligo di TRP3;
+- regole con `other` e `place`;
+- passaggio da mondo aperto a dungeon, raid e campo di battaglia, con il ritmo che cambia.
+
+**Dipendenze:** dopo S5 (modello dei tratti) e S6b (relazioni e lista persone). Prima di S7, perché i contenuti Alpha useranno anche queste condizioni. S8 riusa `Data/NPCs.lua` e il profilo dell'interlocutore.
 
 ### S7: contenuti Alpha (GDD §5, §9.2, §21)
 - 300 intenzioni bilingui; almeno 2 varianti per le scene più comuni; tutte e quattro le voci; tre profondità per i momenti chiave.
