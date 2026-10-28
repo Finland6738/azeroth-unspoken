@@ -1,9 +1,10 @@
--- Azeroth Unspoken: pulsante "pronuncia"
+-- Azeroth Unspoken: pulsante "pronuncia", la conferma del Chat Gateway
 local ADDON, NS = ...
 local SpeakButton = NS:RegisterModule("speakButton")
 
 ---------------------------------------------------------------------------
--- Pulsante "pronuncia": il clic è un'azione del giocatore, quindi /say è permesso
+-- Pulsante "pronuncia": il clic è un'azione del giocatore. Conferma (o apre l'editor di) la proposta
+-- in attesa; senza proposte, improvvisa una frase adatta al momento, sempre come proposta.
 ---------------------------------------------------------------------------
 local button
 
@@ -11,15 +12,16 @@ local function UpdateButton()
 	if not button then return end
 	if not NS.db.ui.showButton then button:Hide() return end
 	button:Show()
-	if NS:GetPending() then
+	if NS.Gateway:GetPending() then
 		button.glow:Show()
 		button.icon:SetDesaturated(false)
 	else
 		button.glow:Hide()
 		button.icon:SetDesaturated(true)
 	end
+	-- in pausa il pulsante resta, ma più spento
+	button:SetAlpha(NS.paused and 0.5 or 1)
 end
-NS.OnPendingChanged = UpdateButton
 
 local function CreateButton()
 	button = CreateFrame("Button", "AzerothUnspokenButton", UIParent)
@@ -47,7 +49,7 @@ local function CreateButton()
 		button:SetPoint("CENTER", UIParent, "CENTER", 0, -180)
 	end
 
-	button:SetScript("OnClick", function() AzerothUnspoken_Speak() end)
+	button:SetScript("OnClick", function() NS.Gateway:Confirm() end)
 	button:SetScript("OnDragStart", function(self) self:StartMoving() end)
 	button:SetScript("OnDragStop", function(self)
 		self:StopMovingOrSizing()
@@ -57,9 +59,10 @@ local function CreateButton()
 	button:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_TOP")
 		GameTooltip:AddLine(NS.name)
-		local text = NS:GetPending()
-		if text then
-			GameTooltip:AddLine(text, 1, 1, 1, true)
+		local p = NS.Gateway:GetPending()
+		if p then
+			GameTooltip:AddLine(p.edited or p.text, 1, 1, 1, true)
+			GameTooltip:AddLine(NS:L("button_channel", NS:L("channel_" .. p.channel)), 0.7, 0.9, 0.7, true)
 		else
 			GameTooltip:AddLine(NS:L("button_idle"), 0.8, 0.8, 0.8, true)
 		end
@@ -68,9 +71,9 @@ local function CreateButton()
 	end)
 	button:SetScript("OnLeave", function() GameTooltip:Hide() end)
 
-	-- la frase in attesa scade: aggiorna l'aspetto ogni tanto
+	-- la proposta in attesa scade: aggiorna l'aspetto ogni tanto
 	C_Timer.NewTicker(2, function()
-		if NS.pending then NS:GetPending() end
+		if NS.Gateway.pending then NS.Gateway:GetPending() end
 	end)
 	UpdateButton()
 end

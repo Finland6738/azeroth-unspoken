@@ -102,7 +102,13 @@ end
 -- Sceglie e compone una frase. form = "say" | "emote".
 -- In forma "emote" si usano le frasi narrative e anche le frasi parlate
 -- inserite in una cornice narrativa adatta all'evento.
+-- PickEntry restituisce { text, speaker, form, id, event } oppure nil; Pick solo il testo.
 function Engine:Pick(event, ctx, form)
+	local rec = self:PickEntry(event, ctx, form)
+	return rec and rec.text
+end
+
+function Engine:PickEntry(event, ctx, form)
 	local lang = NS:Lang()
 	local now = time()
 	local list = self.byEvent[event]
@@ -151,7 +157,9 @@ function Engine:Pick(event, ctx, form)
 			text = text:gsub("[ \t\n]+", " "):gsub("^ ", ""):gsub(" $", "")
 			-- le emote non si toccano: il gioco antepone il nome del personaggio
 			if form == "say" then text = Capitalize(text) end
-			return text
+			-- una frase parlata dentro una cornice è raccontata dal narratore
+			local speaker = it.framed and "narrator" or p.speaker
+			return { text = text, speaker = speaker, form = form, id = p.id, event = event }
 		end
 		it.w = 0
 	end

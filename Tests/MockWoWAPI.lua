@@ -98,25 +98,109 @@ local frames = {}
 local Any
 local anyMeta = { __index = function() return function() return Any() end end }
 Any = function() return setmetatable({}, anyMeta) end
-UIParent = Any(); GameTooltip = Any()
-function CreateFrame()
-	local f = setmetatable({ scripts = {}, events = {} }, anyMeta)
-	function f:RegisterEvent(e)
-		if not VALID_EVENTS[e] then error("Attempt to register unknown event \"" .. tostring(e) .. "\"") end
-		self.events[e] = true
-		return true
-	end
-	function f:RegisterUnitEvent(e) return self:RegisterEvent(e) end
-	function f:UnregisterEvent(e) self.events[e] = nil end
-	function f:SetScript(k, fn) self.scripts[k] = fn end
+GameTooltip = Any()
+
+-- Widget con stato minimo: mostra/nasconde, testo, trasparenza, dimensioni, script, figli.
+-- I metodi non definiti qui restituiscono un oggetto "qualunque" e non fanno nulla.
+local Widget = {}
+local widgetMeta = { __index = function(t, k)
+	local m = rawget(Widget, k)
+	if m then return m end
+	-- i metodi di WoW iniziano con la maiuscola; i campi dell'addon (frame.text, frame.bar) no: nil
+	if type(k) == "string" and k:match("^[A-Z]") then return function() return Any() end end
+	return nil
+end }
+function Widget:Show() self.shown = true; if self.scripts.OnShow then self.scripts.OnShow(self) end end
+function Widget:Hide() self.shown = false; if self.scripts.OnHide then self.scripts.OnHide(self) end end
+function Widget:IsShown() return self.shown == true end
+function Widget:IsVisible() return self.shown == true end
+function Widget:SetShown(v) if v then self:Show() else self:Hide() end end
+function Widget:SetText(t) self._s.text = t end
+function Widget:GetText() return self._s.text or "" end
+function Widget:SetAlpha(a) self._s.alpha = a end
+function Widget:GetAlpha() return self._s.alpha or 1 end
+function Widget:SetSize(w, h) self._s.w, self._s.h = w, h end
+function Widget:SetWidth(w) self._s.w = w end
+function Widget:SetHeight(h) self._s.h = h end
+function Widget:GetWidth() return self._s.w or 100 end
+function Widget:GetHeight() return self._s.h or 20 end
+function Widget:GetStringHeight() return 14 * (1 + math.floor(#(self._s.text or "") / 60)) end
+function Widget:GetStringWidth() return math.min(#(self._s.text or "") * 6, 400) end
+function Widget:SetPoint(...) self._s.points = self._s.points or {}; table.insert(self._s.points, { ... }) end
+function Widget:ClearAllPoints() self._s.points = nil end
+function Widget:GetPoint() local p = self._s.points and self._s.points[#self._s.points]; if p then return unpack(p) end return "CENTER", UIParent, "CENTER", 0, 0 end
+function Widget:SetScript(k, fn) self.scripts[k] = fn end
+function Widget:GetScript(k) return self.scripts[k] end
+function Widget:HookScript(k, fn) local old = self.scripts[k]; self.scripts[k] = function(...) if old then old(...) end fn(...) end end
+function Widget:SetFont(path, size, flags) self._s.font = { path, size, flags } end
+function Widget:GetFont() local f = self._s.font or { "Fonts/FRIZQT__.TTF", 12, "" }; return f[1], f[2], f[3] end
+function Widget:SetEnabled(v) self._s.enabled = v end
+function Widget:IsEnabled() return self._s.enabled ~= false end
+function Widget:Enable() self._s.enabled = true end
+function Widget:Disable() self._s.enabled = false end
+function Widget:SetChecked(v) self._s.checked = v end
+function Widget:GetChecked() return self._s.checked end
+function Widget:SetValue(v) self._s.value = v end
+function Widget:GetValue() return self._s.value end
+function Widget:SetFocus() self._s.focused = true end
+function Widget:ClearFocus() self._s.focused = false end
+function Widget:HasFocus() return self._s.focused == true end
+function Widget:GetParent() return self.parent end
+function Widget:CreateFontString() return CreateWidget("FontString", self) end
+function Widget:CreateTexture() return CreateWidget("Texture", self) end
+function Widget:StartMoving() self._s.moving = true end
+function Widget:StopMovingOrSizing() self._s.moving = false end
+function Widget:RegisterEvent(e)
+	if not VALID_EVENTS[e] then error("Attempt to register unknown event \"" .. tostring(e) .. "\"") end
+	self.events[e] = true
+	return true
+end
+function Widget:RegisterUnitEvent(e) return self:RegisterEvent(e) end
+function Widget:UnregisterEvent(e) self.events[e] = nil end
+-- simula il clic del giocatore su un pulsante
+function Widget:Click() if self.scripts.OnClick then self.scripts.OnClick(self, "LeftButton") end end
+-- digita e conferma in una casella di testo
+function Widget:TypeEnter(text) self._s.text = text; if self.scripts.OnEnterPressed then self.scripts.OnEnterPressed(self) end end
+
+function CreateWidget(kind, parent)
+	local f = setmetatable({ _s = {}, kind = kind, parent = parent, scripts = {}, events = {}, shown = true, children = {} }, widgetMeta)
+	if parent and rawget(parent, "children") then table.insert(parent.children, f) end
+	return f
+end
+function CreateFrame(kind, name, parent)
+	local f = CreateWidget(kind or "Frame", parent)
+	f.name = name
+	if name then _G[name] = f end
 	table.insert(frames, f)
 	return f
+end
+UIParent = CreateWidget("Frame")
+-- tutti i widget creati, per i test (cerca per tipo e testo)
+function FindWidgets(pred)
+	local out = {}
+	local function walk(w)
+		for _, c in ipairs(w.children or {}) do
+			if pred(c) then table.insert(out, c) end
+			walk(c)
+		end
+	end
+	for _, f in ipairs(frames) do if pred(f) then table.insert(out, f) end walk(f) end
+	return out
+end
+-- avanza gli OnUpdate dei widget visibili di dt secondi
+function UPDATE(dt)
+	for _, f in ipairs(frames) do
+		if f.shown and f.scripts.OnUpdate then f.scripts.OnUpdate(f, dt) end
+	end
 end
 function FIRE(event, ...)
 	for _, f in ipairs(frames) do
 		if f.events and f.events[event] and f.scripts.OnEvent then f.scripts.OnEvent(f, event, ...) end
 	end
 end
+date = os.date
+STANDARD_TEXT_FONT = "Fonts/FRIZQT__.TTF"
+function IsInGuild() return P.guild or false end
 SlashCmdList = {}
 
 -- piccolo framework per i test in Lua (Tests/Test*.lua)

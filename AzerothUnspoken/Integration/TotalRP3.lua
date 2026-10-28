@@ -31,6 +31,11 @@ function TotalRP3:Probe()
 	return state
 end
 
+-- l'addon c'è? (indipendentemente dal consenso dell'utente)
+function TotalRP3:IsPresent()
+	return AddOn_TotalRP3 ~= nil
+end
+
 -- nome del profilo RP del giocatore, se il modulo è attivo e il profilo lo ha
 function TotalRP3:GetFirstName()
 	if not (NS.db and NS.db.modules.totalRP3) then return nil end

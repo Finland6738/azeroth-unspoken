@@ -1,7 +1,15 @@
 -- Azeroth Unspoken: comandi /unspoken e /au
 local ADDON, NS = ...
 
-local MODES = NS.Config.rules["output.mode"].enum
+local DEPTH_ALIAS = {
+	natural = "natural", naturale = "natural", literary = "literary", letterario = "literary",
+	elevated = "elevated", elevato = "elevated",
+}
+local CHANNEL_ALIAS = {
+	auto = "auto", say = "SAY", dire = "SAY", s = "SAY", emote = "EMOTE", e = "EMOTE", me = "EMOTE",
+	party = "PARTY", gruppo = "PARTY", p = "PARTY", raid = "RAID", guild = "GUILD", gilda = "GUILD", g = "GUILD",
+	instance = "INSTANCE_CHAT", istanza = "INSTANCE_CHAT", i = "INSTANCE_CHAT",
+}
 
 -- eventi richiamabili a mano, con i nomi in più lingue
 local MANUAL = {
@@ -95,22 +103,52 @@ local function Command(msg)
 			end
 			NS:Print(NS:L("lang_list", table.concat(names, ", ")))
 		end
-	elseif cmd == "modo" or cmd == "mode" then
-		local m = rest:lower()
-		local valid = false
-		for _, v in ipairs(MODES) do if v == m then valid = true end end
-		if valid then db.output.mode = m end
-		NS:Print(NS:L("mode_now", NS:L("mode_" .. db.output.mode)))
-	elseif cmd == "dire" or cmd == "speak" or cmd == "say" then
+	elseif cmd == "chat" or cmd == "modo" or cmd == "mode" then
+		if rest ~= "" then
+			local ok, mode = NS.Gateway:SetMode(rest)
+			if ok and mode == "AUTO_ONLY_IF_ALLOWED" then NS:Print(NS:L("chat_auto_warning")) end
+		end
+		NS:Print(NS:L("mode_now", NS:L("chatmode_" .. db.chat.mode .. "_short")))
+		NS:Print(NS:L("chatmode_" .. db.chat.mode .. "_help"))
+	elseif cmd == "canale" or cmd == "channel" then
+		local ch = CHANNEL_ALIAS[rest:lower()]
+		if ch then db.chat.channel = ch end
+		NS:Print(NS:L("channel_now", NS:L("channel_" .. db.chat.channel)))
+	elseif cmd == "intensita" or cmd == "intensità" or cmd == "intensity" then
+		local n = tonumber(rest)
+		if n then NS.Config:Set("intensity", n) end
+		NS:Print(NS:L("intensity_now", db.intensity))
+	elseif cmd == "profondita" or cmd == "profondità" or cmd == "depth" then
+		local d = DEPTH_ALIAS[rest:lower()]
+		if d then db.proseDepth = d end
+		NS:Print(NS:L("depth_now", NS:L("depth_" .. db.proseDepth)))
+	elseif cmd == "pausa" or cmd == "pause" then
+		NS.Director:TogglePause()
+	elseif cmd == "narratore" or cmd == "narrator" then
+		local a = rest:lower()
+		if a == "cronologia" or a == "history" then
+			NS.Narrator:ToggleHistory()
+		elseif a == "reset" then
+			NS.Narrator:ResetPosition()
+		elseif a == "pulisci" or a == "clear" then
+			NS.Narrator:ClearHistory()
+		else
+			NS.Narrator:ShowTest()
+		end
+	elseif cmd == "benvenuto" or cmd == "wizard" or cmd == "welcome" then
+		NS.Wizard:Open()
+	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then
+		NS.Gateway:Discard()
+	elseif cmd == "dire" or cmd == "speak" or cmd == "say" or cmd == "invia" or cmd == "send" then
 		AzerothUnspoken_Speak()
 	elseif cmd == "prova" or cmd == "test" then
 		Preview(MANUAL[rest:lower()] or (rest ~= "" and rest:lower()) or "battle")
 	elseif cmd == "evento" or cmd == "event" then
 		local ev = MANUAL[rest:lower()] or rest:lower()
-		if not NS:Trigger(ev, nil, true) then NS:Print(NS:L("no_phrase", ev)) end
+		if not NS:Trigger(ev) then NS:Print(NS:L("no_phrase", ev)) end
 	elseif MANUAL[cmd] then
 		-- per macro: /cast X e poi /au incanta X, così la frase arriva col tasto
-		if not NS:Trigger(MANUAL[cmd], rest ~= "" and { target = rest } or nil, true) then
+		if not NS:Trigger(MANUAL[cmd], rest ~= "" and { target = rest } or nil) then
 			NS:Print(NS:L("no_phrase", MANUAL[cmd]))
 		end
 	elseif cmd == "incanta" or cmd == "cast" then
@@ -118,7 +156,7 @@ local function Command(msg)
 		local kind = ctx.spellKind
 		local ev = (kind == "heal" and "heal") or (kind == "rez" and "rezother") or (kind == "travel" and "travel")
 			or (kind == "buff" and not ctx.combat and "buff") or "attack"
-		if not NS:Perform(ev, ctx, true) then NS:Print(NS:L("no_phrase", ev)) end
+		if not NS.Gateway:Narrate(ev, ctx, {}) then NS:Print(NS:L("no_phrase", ev)) end
 	elseif cmd == "cooldown" then
 		local n = tonumber(rest)
 		if n then db.pacing.globalCooldownSeconds = math.max(0, n) end

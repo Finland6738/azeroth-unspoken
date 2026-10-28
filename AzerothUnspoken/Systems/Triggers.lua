@@ -41,20 +41,23 @@ local SKIP = {
 	["attacco"] = true, ["tiro"] = true,
 }
 
+-- Il Director decide se e con quali moltiplicatori l'evento può intervenire (intensità, pausa, moduli);
+-- qui restano la pausa propria dell'evento e il lancio del dado.
 local function Allowed(event)
-	local db = NS.db
-	if not db.enabled then return false end
+	local verdict = NS.Director:Evaluate(event)
+	if not verdict.allow then return false end
 	local now = GetTime()
-	if not NS.BYPASS_GLOBAL[event] and now - lastSpoken < db.pacing.globalCooldownSeconds then return false end
+	local cooldown = NS.db.pacing.globalCooldownSeconds * verdict.cooldownMul
+	if not NS.BYPASS_GLOBAL[event] and now - lastSpoken < cooldown then return false end
 	local cd = NS.EVENT_COOLDOWN[event]
-	if cd and lastByEvent[event] and now - lastByEvent[event] < cd then return false end
-	return math.random(100) <= NS:GetChance(event)
+	if cd and lastByEvent[event] and now - lastByEvent[event] < cd * verdict.cooldownMul then return false end
+	return math.random(100) <= math.min(100, NS:GetChance(event) * verdict.chanceMul)
 end
 
 local function Fire(event, extra)
 	if not Allowed(event) then return end
 	local ctx = NS:BuildContext(extra)
-	if NS:Perform(event, ctx, false) then
+	if NS.Gateway:Narrate(event, ctx, { auto = true }) then
 		lastSpoken = GetTime()
 		lastByEvent[event] = lastSpoken
 	end

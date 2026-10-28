@@ -4,8 +4,8 @@ local Config, Diagnostics = NS.Config, NS.Diagnostics
 
 T.run("predefiniti", function()
 	local db = NS.db
-	T.eq(AzerothUnspokenDB.schemaVersion, 1, "schema globale")
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 1, "schema personaggio")
+	T.eq(AzerothUnspokenDB.schemaVersion, 2, "schema globale")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 2, "schema personaggio")
 	T.ok(AzerothUnspokenDB.settings == db, "NS.db sono le impostazioni globali")
 	T.eq(db.locale, "it", "lingua")
 	T.eq(db.preset, "complete", "preset")
@@ -15,7 +15,12 @@ T.run("predefiniti", function()
 	T.ok(db.modules.storyArcs and db.modules.social and db.modules.publicChat and db.modules.totalRP3, "moduli attivi 2")
 	T.eq(db.modules.audio, false, "audio spento")
 	T.eq(db.output.autoPublicSay, false, "niente /say automatico")
-	T.eq(db.output.mode, "self", "modalità privata")
+	T.eq(db.chat.mode, "PRIVATE", "modalità del Chat Gateway privata")
+	T.eq(db.chat.channel, "auto", "canale automatico")
+	T.eq(db.output.mode, nil, "output.mode non esiste più")
+	T.eq(db.ui.wizardDone, false, "wizard da fare")
+	T.eq(db.ui.narrator.duration, 8, "durata del narratore")
+	T.eq(db.ui.narrator.fontSize, 14, "dimensione del testo")
 	T.ok(db.output.privateNarrator and db.output.publicChatPreview, "uscita privata")
 	T.eq(db.privacy.socialOptIn, false, "social opt-in spento")
 	T.eq(db.privacy.shareMemories, false, "ricordi non condivisi")
@@ -67,51 +72,68 @@ T.run("validazione", function()
 	T.eq(db.chance.battle, nil, "probabilità fuori scala rimossa")
 	T.eq(db.chance.victory, nil, "probabilità non numerica rimossa")
 	T.eq(db.chance.zone, 20, "probabilità valida conservata")
-	T.eq(db.output.mode, "self", "modalità sconosciuta")
+	T.eq(db.chat.mode, "CONFIRM_TO_SEND", "vecchia modalità sconosciuta: mai pubblicazione automatica")
 	T.eq(db.output.autoPublicSay, false, "booleano non valido")
 	T.eq(db.pacing.recentPhraseWindow, 12, "intero arrotondato")
 	T.eq(db.pacing.globalCooldownSeconds, 0, "minimo")
 	T.eq(db.ignored.fireball, true, "voce valida conservata")
 	T.eq(db.ignored.frostbolt, nil, "voce non valida rimossa")
 	T.eq(type(NS.cdb.memory), "table", "memoria rotta ricostruita")
-	T.ok(#Config.issues >= 10, "problemi annotati: " .. #Config.issues)
+	T.ok(#Config.issues >= 8, "problemi annotati: " .. #Config.issues)
 
 	AzerothUnspokenDB = { schemaVersion = 1, settings = { locale = "xx" } }
 	Config:Load()
 	T.eq(NS.db.locale, "it", "lingua sconosciuta")
+
+	-- regole del Chat Gateway e del narratore, su dati già nello schema 2
+	AzerothUnspokenDB = { schemaVersion = 2, settings = {
+		chat = { mode = "megafono", channel = "telepatia", floodSeconds = 500, maxPerMinute = 0, autoMaxPerMinute = 99 },
+		ui = { narrator = { duration = 1, alpha = 5, fontSize = 3, historySize = 0.4 } },
+	} }
+	Config:Load()
+	local c, n = NS.db.chat, NS.db.ui.narrator
+	T.eq(c.mode, "PRIVATE", "modalità chat sconosciuta")
+	T.eq(c.channel, "auto", "canale sconosciuto")
+	T.eq(c.floodSeconds, 60, "pausa anti-flood limitata")
+	T.eq(c.maxPerMinute, 1, "minimo di invii")
+	T.eq(c.autoMaxPerMinute, 10, "massimo di invii automatici")
+	T.eq(n.duration, 2, "durata minima")
+	T.eq(n.alpha, 1, "opacità massima")
+	T.eq(n.fontSize, 10, "testo minimo")
+	T.eq(n.historySize, 5, "cronologia minima")
 end)
 
 T.run("migrazioni", function()
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 1, "SavedVariables nuove")
+	T.eq(AzerothUnspokenDB.schemaVersion, 2, "SavedVariables nuove")
 
 	AzerothUnspokenDB = { settings = { intensity = 20 } }   -- senza schemaVersion
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 1, "versione assente -> 1")
+	T.eq(AzerothUnspokenDB.schemaVersion, 2, "versione assente -> 2")
 	T.eq(NS.db.intensity, 20, "dati conservati")
 
 	-- una migrazione futura gira una sola volta, in ordine
 	local calls = 0
-	Config.SCHEMA_VERSION = 2
-	Config.migrations.global[2] = function(db)
+	Config.SCHEMA_VERSION = 3
+	Config.migrations.global[3] = function(db)
 		calls = calls + 1
 		db.settings.intensity = db.settings.intensity + 1
 	end
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 2, "migrazione applicata")
+	T.eq(AzerothUnspokenDB.schemaVersion, 3, "migrazione applicata")
 	T.eq(NS.db.intensity, 21, "migrazione eseguita")
 	Config:Load()
 	T.eq(calls, 1, "una sola volta")
 
 	-- una migrazione che fallisce non rompe l'addon e non avanza la versione
-	Config.SCHEMA_VERSION = 3
-	Config.migrations.global[3] = function() error("migrazione rotta") end
+	Config.SCHEMA_VERSION = 4
+	Config.migrations.global[4] = function() error("migrazione rotta") end
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 2, "versione ferma dopo un errore")
+	T.eq(AzerothUnspokenDB.schemaVersion, 3, "versione ferma dopo un errore")
 	T.ok(NS.db and NS.db.intensity == 21, "impostazioni comunque disponibili")
-	Config.migrations.global[2], Config.migrations.global[3] = nil, nil
-	Config.SCHEMA_VERSION = 1
+	Config.migrations.global[3], Config.migrations.global[4] = nil, nil
+	Config.SCHEMA_VERSION = 2
 
 	-- dati da una versione più nuova: non si toccano
 	AzerothUnspokenDB = { schemaVersion = 99, settings = { intensity = 60 }, futuro = true }
@@ -142,4 +164,48 @@ T.run("Get e Set", function()
 	T.ok(ok and v == "it", "lingua normalizzata")
 	T.eq(Config:Get("pacing.globalCooldownSeconds"), 45, "Get annidato")
 	T.eq(Config:Get("pacing.nonEsiste.x"), nil, "Get assente")
+end)
+
+T.run("migrazione 1 -> 2: output.mode diventa chat.mode", function()
+	local function Migrate(output)
+		AzerothUnspokenDB = { schemaVersion = 1, settings = { output = output } }
+		AzerothUnspokenCharacterDB = nil
+		Config:Load()
+		return NS.db
+	end
+	local db = Migrate({ mode = "self" })
+	T.eq(db.chat.mode, "PRIVATE", "self -> PRIVATE")
+	T.eq(db.output.mode, nil, "output.mode rimosso")
+	T.eq(AzerothUnspokenDB.schemaVersion, 2, "versione")
+	for _, old in ipairs({ "auto", "emote", "say", "boh" }) do
+		db = Migrate({ mode = old, autoPublicSay = true })
+		T.eq(db.chat.mode, "CONFIRM_TO_SEND", old .. " -> proposta da confermare")
+		T.eq(db.output.autoPublicSay, false, old .. ": autoPublicSay spento")
+	end
+	db = Migrate({})
+	T.eq(db.chat.mode, "PRIVATE", "senza modalità: privato")
+	-- chi aveva già scelto la modalità nuova non viene toccato
+	AzerothUnspokenDB = { schemaVersion = 1, settings = { output = { mode = "say" }, chat = { mode = "PREVIEW" } } }
+	Config:Load()
+	T.eq(NS.db.chat.mode, "PREVIEW", "chat.mode già presente conservata")
+	-- impostazioni nuove: nessun output da migrare
+	AzerothUnspokenDB = nil
+	Config:Load()
+	T.eq(NS.db.chat.mode, "PRIVATE", "nuova installazione privata")
+end)
+
+T.run("preset e Set del Chat Gateway", function()
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+	T.ok(Config:ApplyPreset("personal"), "preset personale")
+	T.eq(NS.db.preset, "personal", "preset salvato")
+	T.ok(NS.db.modules.personal and not NS.db.modules.world and not NS.db.modules.social, "moduli del preset personale")
+	T.ok(NS.db.modules.publicChat and NS.db.modules.totalRP3, "publicChat e TRP3 non toccati")
+	T.ok(Config:ApplyPreset("complete") and NS.db.modules.world and NS.db.modules.social, "preset completo")
+	T.ok(not Config:ApplyPreset("inesistente"), "preset sconosciuto")
+	T.ok(Config:Set("chat.mode", "PREVIEW") and NS.db.chat.mode == "PREVIEW", "chat.mode valido")
+	T.ok(not Config:Set("chat.mode", "preview"), "chat.mode distingue le maiuscole")
+	T.ok(Config:Set("ui.narrator.alpha", 0.5) and NS.db.ui.narrator.alpha == 0.5, "opacità")
+	local ok, v = Config:Set("ui.narrator.fontSize", 99)
+	T.ok(ok and v == 28, "dimensione limitata")
 end)

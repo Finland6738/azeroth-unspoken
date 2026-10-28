@@ -28,10 +28,14 @@ Integration\TotalRP3.lua
 Integration\ChatGateway.lua
 
 # --- sistemi ---
+Systems\Director.lua
 Systems\Triggers.lua
 
 # --- interfaccia ---
+UI\Widgets.lua
+UI\NarratorFrame.lua
 UI\SpeakButton.lua
+UI\Wizard.lua
 UI\SettingsFrame.lua
 UI\Commands.lua
 

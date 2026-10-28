@@ -5,7 +5,11 @@ local ADDON, NS = ...
 local Config = {}
 NS.Config = Config
 
-Config.SCHEMA_VERSION = 1
+Config.SCHEMA_VERSION = 2
+
+-- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
+Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
+Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 
 -- GDD §11.4, più le impostazioni del prototipo
 Config.defaults = {
@@ -22,8 +26,16 @@ Config.defaults = {
 		privateNarrator = true,
 		npcDialogues = true,
 		publicChatPreview = true,
-		autoPublicSay = false,   -- false: /say automatico mai, neanche nelle istanze
-		mode = "self",           -- auto | emote | say | self (solo anteprima privata)
+		autoPublicSay = false,   -- secondo consenso, necessario oltre alla modalità AUTO_ONLY_IF_ALLOWED
+	},
+	-- Chat Gateway (GDD §7.7)
+	chat = {
+		mode = "PRIVATE",        -- PRIVATE | PREVIEW | CONFIRM_TO_SEND | AUTO_ONLY_IF_ALLOWED
+		channel = "auto",        -- auto: /s per il personaggio, /e per il narratore; oppure un canale fisso
+		pendingSeconds = 25,     -- quanto resta in attesa una proposta
+		floodSeconds = 4,        -- pausa minima tra due invii
+		maxPerMinute = 6,        -- invii al minuto, qualunque canale
+		autoMaxPerMinute = 2,    -- invii automatici al minuto
 	},
 	privacy = {
 		socialOptIn = false,
@@ -39,7 +51,17 @@ Config.defaults = {
 	chance = {},           -- [evento] = probabilità % scelta dall'utente
 	ignored = {},          -- [nome incantesimo minuscolo] = true
 	disabledPacks = {},    -- [id pacchetto] = true
-	ui = { showButton = true },
+	ui = {
+		showButton = true,
+		wizardDone = false,
+		narrator = {
+			duration = 8,        -- secondi di lettura di base, più qualche istante per la lunghezza del testo
+			alpha = 0.85,        -- opacità dello sfondo e del testo, 0.2-1
+			fontSize = 14,
+			historySize = 30,
+			locked = false,      -- true: il riquadro non si sposta
+		},
+	},
 }
 
 Config.characterDefaults = {
@@ -55,7 +77,16 @@ Config.rules = {
 	preset = { enum = { "complete", "personal", "world", "social", "custom" } },
 	intensity = { min = 0, max = 100, integer = true },
 	proseDepth = { enum = { "natural", "literary", "elevated" } },
-	["output.mode"] = { enum = { "auto", "emote", "say", "self" } },
+	["chat.mode"] = { enum = Config.CHAT_MODES },
+	["chat.channel"] = { enum = Config.CHAT_CHANNELS },
+	["chat.pendingSeconds"] = { min = 5, max = 120 },
+	["chat.floodSeconds"] = { min = 1, max = 60 },
+	["chat.maxPerMinute"] = { min = 1, max = 30, integer = true },
+	["chat.autoMaxPerMinute"] = { min = 1, max = 10, integer = true },
+	["ui.narrator.duration"] = { min = 2, max = 30 },
+	["ui.narrator.alpha"] = { min = 0.2, max = 1 },
+	["ui.narrator.fontSize"] = { min = 10, max = 28, integer = true },
+	["ui.narrator.historySize"] = { min = 5, max = 100, integer = true },
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 }
@@ -66,6 +97,23 @@ Config.maps = {
 	ignored = function(v) return v == true end,
 	disabledPacks = function(v) return v == true end,
 }
+
+-- Preset del GDD §4.1: combinazioni dei moduli. publicChat, totalRP3 e audio non cambiano col preset.
+Config.PRESET_ORDER = { "complete", "personal", "world", "social" }
+Config.presets = {
+	complete = { personal = true, world = true, npc = true, memory = true, storyArcs = true, social = true },
+	personal = { personal = true, world = false, npc = false, memory = true, storyArcs = true, social = false },
+	world = { personal = false, world = true, npc = true, memory = true, storyArcs = false, social = false },
+	social = { personal = true, world = false, npc = false, memory = true, storyArcs = false, social = true },
+}
+
+function Config:ApplyPreset(name)
+	local preset = self.presets[name]
+	if not preset or not NS.db then return false end
+	for module, on in pairs(preset) do NS.db.modules[module] = on end
+	NS.db.preset = name
+	return true
+end
 
 ---------------------------------------------------------------------------
 -- Copia e merge
@@ -166,11 +214,29 @@ Config.migrations = {
 		[1] = function(db)
 			if type(db.settings) ~= "table" then db.settings = {} end
 		end,
+		-- 2: output.mode (auto|emote|say|self) diventa chat.mode del Chat Gateway.
+		-- "self" era la sola anteprima privata; le altre modalità pubblicavano da sole e ora
+		-- diventano proposte da confermare: nessuna pubblicazione automatica senza una nuova scelta.
+		[2] = function(db)
+			local s = db.settings
+			if type(s) ~= "table" then return end
+			if type(s.output) == "table" then
+				local old = s.output.mode
+				s.output.mode = nil
+				if type(s.chat) ~= "table" then s.chat = {} end
+				if s.chat.mode == nil then
+					s.chat.mode = (old == nil or old == "self") and "PRIVATE" or "CONFIRM_TO_SEND"
+				end
+				s.output.autoPublicSay = false
+			end
+		end,
 	},
 	character = {
 		[1] = function(db)
 			if type(db.memory) ~= "table" then db.memory = nil end
 		end,
+		-- 2: nessun cambiamento ai dati del personaggio (versione allineata a quella globale)
+		[2] = function() end,
 	},
 }
 

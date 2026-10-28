@@ -5,7 +5,14 @@ NS.version = "0.1.0"
 AzerothUnspoken = NS     -- API pubblica per i pacchetti di frasi, le macro e il debug
 
 BINDING_HEADER_AZEROTHUNSPOKEN = "Azeroth Unspoken"
-BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Pronuncia la frase in attesa (o improvvisa)"
+-- nomi dei tasti: la schermata dei comandi si legge prima che l'utente scelga la lingua dell'addon
+if GetLocale and GetLocale() == "itIT" then
+	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Conferma e pronuncia la frase proposta (o improvvisa)"
+	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pausa immediata del narratore (attiva/disattiva)"
+else
+	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Confirm and speak the proposed line (or improvise)"
+	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pause the narrator immediately (toggle)"
+end
 
 ---------------------------------------------------------------------------
 -- Lingue
