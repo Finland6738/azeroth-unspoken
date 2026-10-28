@@ -108,6 +108,22 @@ function Engine:Pick(event, ctx, form)
 	return rec and rec.text
 end
 
+---@class AUPhraseRecord
+---@field text string frase composta, senza il nome per le emote
+---@field speaker string narrator | inner | character | npc
+---@field form string say | emote
+---@field id string id della frase scelta
+---@field event string
+---@field display? string testo come lo vede il narratore (aggiunto dal Gateway)
+---@field channel? string canale scelto dal Gateway
+---@field proposal? AUProposal proposta creata dal Gateway
+---@field sentTo? string canale in cui è stata inviata
+
+---Sceglie e compone una frase.
+---@param event string
+---@param ctx table contesto di NS:BuildContext
+---@param form "say"|"emote"
+---@return AUPhraseRecord?
 function Engine:PickEntry(event, ctx, form)
 	local lang = NS:Lang()
 	local now = time()

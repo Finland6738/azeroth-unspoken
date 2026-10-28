@@ -2,6 +2,13 @@
 --   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... } }
 --   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
 local ADDON, NS = ...
+---@class AUConfig
+---@field SCHEMA_VERSION integer
+---@field CHAT_MODES string[]
+---@field CHAT_CHANNELS string[]
+---@field defaults AUSettings
+---@field presets table<string, table<string, boolean>>
+---@field issues string[] problemi corretti dall'ultimo Load
 local Config = {}
 NS.Config = Config
 
@@ -12,6 +19,50 @@ Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALL
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 
 -- GDD §11.4, più le impostazioni del prototipo
+---@class AUChatSettings
+---@field mode string PRIVATE | PREVIEW | CONFIRM_TO_SEND | AUTO_ONLY_IF_ALLOWED
+---@field channel string "auto" oppure SAY | EMOTE | PARTY | RAID | GUILD | INSTANCE_CHAT
+---@field pendingSeconds number quanto resta in attesa una proposta
+---@field floodSeconds number pausa minima tra due invii
+---@field maxPerMinute integer invii al minuto, qualunque canale
+---@field autoMaxPerMinute integer invii automatici al minuto
+
+---@class AUNarratorSettings
+---@field duration number secondi di lettura di base
+---@field alpha number opacità, 0.2-1
+---@field fontSize integer
+---@field historySize integer
+---@field locked boolean il riquadro non si sposta
+---@field pos? table posizione salvata { punto, punto relativo, x, y }
+
+---@class AUUISettings
+---@field showButton boolean
+---@field wizardDone boolean
+---@field narrator AUNarratorSettings
+---@field buttonPos? table
+
+---@class AUOutputSettings
+---@field privateNarrator boolean riquadro del narratore (false: ripiego sulla chat locale)
+---@field npcDialogues boolean
+---@field publicChatPreview boolean non usato: l'interruttore è modules.publicChat
+---@field autoPublicSay boolean secondo consenso per l'invio automatico
+
+---@class AUSettings
+---@field locale string codice di due lettere registrato con RegisterLanguage
+---@field preset string complete | personal | world | social | custom
+---@field intensity integer 0-100
+---@field proseDepth string natural | literary | elevated
+---@field modules table<string, boolean>
+---@field output AUOutputSettings
+---@field chat AUChatSettings
+---@field privacy table<string, boolean>
+---@field pacing { globalCooldownSeconds: number, recentPhraseWindow: integer, suppressInHighDemand: boolean }
+---@field enabled boolean
+---@field chance table<string, number> probabilità scelte dall'utente, per evento
+---@field ignored table<string, boolean>
+---@field disabledPacks table<string, boolean>
+---@field ui AUUISettings
+
 Config.defaults = {
 	locale = "it",          -- lingua delle frasi e dell'interfaccia: codice registrato con RegisterLanguage
 	preset = "complete",
@@ -107,6 +158,9 @@ Config.presets = {
 	social = { personal = true, world = false, npc = false, memory = true, storyArcs = false, social = true },
 }
 
+---Applica un preset ai moduli (publicChat, totalRP3 e audio non cambiano).
+---@param name string complete | personal | world | social
+---@return boolean ok false se il preset non esiste
 function Config:ApplyPreset(name)
 	local preset = self.presets[name]
 	if not preset or not NS.db then return false end
@@ -241,6 +295,10 @@ Config.migrations = {
 }
 
 -- false se i dati vengono da una versione più nuova dell'addon: si usano senza toccarli
+---Porta i dati alla versione corrente dello schema.
+---@param db table
+---@param kind "global"|"character"
+---@return boolean ok false se i dati vengono da una versione più nuova o una migrazione fallisce
 function Config:Migrate(db, kind)
 	local current = tonumber(db.schemaVersion) or 0
 	if current > self.SCHEMA_VERSION then
@@ -279,6 +337,8 @@ local function Split(path)
 	return parts
 end
 
+---@param path string percorso con punti, es. "ui.narrator.alpha"
+---@return any
 function Config:Get(path)
 	local v = NS.db
 	for _, p in ipairs(Split(path)) do
@@ -289,6 +349,11 @@ function Config:Get(path)
 end
 
 -- Restituisce true e il valore salvato, oppure false se il valore non è valido.
+---Scrive un'impostazione dopo averla validata.
+---@param path string
+---@param value any
+---@return boolean ok
+---@return any? saved il valore salvato (già limitato o normalizzato)
 function Config:Set(path, value)
 	local parts = Split(path)
 	local parent, def = NS.db, self.defaults

@@ -5,6 +5,12 @@ local W = {}
 NS.Widgets = W
 
 -- sfondo a tinta unita
+---@param frame table
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@return table texture
 function W.Background(frame, r, g, b, a)
 	local bg = frame:CreateTexture(nil, "BACKGROUND")
 	bg:SetAllPoints()
@@ -22,6 +28,12 @@ function W.SetFontSize(fs, size, flags)
 	fs:SetFont(path or STANDARD_TEXT_FONT, size, flags or f or "")
 end
 
+---@param parent table
+---@param text? string
+---@param width number
+---@param height? number
+---@param onClick? fun(self: table, button: string)
+---@return table button
 function W.Button(parent, text, width, height, onClick)
 	local b = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
 	b:SetSize(width, height or 22)
@@ -40,6 +52,10 @@ function W.Tooltip(frame, text)
 end
 
 -- casella di testo su una riga: prova il modello standard, altrimenti una casella semplice
+---@param parent table
+---@param width number
+---@param height? number
+---@return table editBox
 function W.EditBox(parent, width, height)
 	local ok, box = pcall(CreateFrame, "EditBox", nil, parent, "InputBoxTemplate")
 	if not ok or not box then

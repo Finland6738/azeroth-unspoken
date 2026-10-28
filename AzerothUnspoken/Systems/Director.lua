@@ -16,6 +16,15 @@ Director.EVENT_MODULE = {
 }
 
 -- Moltiplicatori in base all'intensità: 50 = valori del prototipo, 0 = silenzio, 100 = il doppio.
+---@class AUVerdict
+---@field allow boolean
+---@field reason? string disabled | paused | module:<nome> | silent
+---@field chanceMul? number
+---@field cooldownMul? number
+
+---@param intensity number 0-100
+---@return number chanceMul
+---@return number cooldownMul
 function Director:Scale(intensity)
 	intensity = math.max(0, math.min(100, tonumber(intensity) or 50))
 	return intensity / 50, 1.5 - intensity / 100
@@ -23,6 +32,9 @@ end
 
 -- Valuta un evento spontaneo.
 -- Restituisce { allow = true, chanceMul, cooldownMul } oppure { allow = false, reason }.
+---Punto di aggancio del Narrative Director (S4).
+---@param event string evento narrativo spontaneo
+---@return AUVerdict
 function Director:Evaluate(event)
 	local db = NS.db
 	if not db or not db.enabled then return { allow = false, reason = "disabled" } end
@@ -39,6 +51,8 @@ end
 ---------------------------------------------------------------------------
 -- Pausa immediata (tasto, pulsante del narratore, /au pausa)
 ---------------------------------------------------------------------------
+---@param on boolean
+---@return boolean
 function Director:SetPaused(on)
 	on = on and true or false
 	NS.paused = on
@@ -51,6 +65,7 @@ function Director:SetPaused(on)
 	return on
 end
 
+---@return boolean paused
 function Director:TogglePause()
 	local on = self:SetPaused(not NS.paused)
 	NS:Print(NS:L(on and "paused_on" or "paused_off"))

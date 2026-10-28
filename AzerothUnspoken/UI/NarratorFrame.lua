@@ -5,6 +5,11 @@
 -- Le proposte per la chat compaiono qui, con i pulsanti Invia / Modifica / Canale / Scarta.
 local ADDON, NS = ...
 local W = NS.Widgets
+---@class AUNarratorEntry
+---@field time string
+---@field speaker string
+---@field text string
+---@field sentTo? string
 local Narrator = NS:RegisterModule("narrator")
 NS.Narrator = Narrator
 
@@ -20,12 +25,19 @@ local CHANNEL_NAME = {
 	SAY = "/s", EMOTE = "/e", YELL = "/y", PARTY = "/p", RAID = "/raid", GUILD = "/g", INSTANCE_CHAT = "/i",
 }
 
+---@class AUNarrator
+---@field history AUNarratorEntry[]
+---@field current? AUPhraseRecord
+---@field proposal? AUProposal
+---@field historyFrame? table
 Narrator.history = {}     -- { time, speaker, text, sentTo }, la più recente per ultima
 Narrator.current = nil    -- { speaker, display, proposal, sentTo, notice }
 local frame
 
 local function Cfg() return NS.db.ui.narrator end
 
+---@param speaker string narrator | inner | character | npc
+---@return string
 function Narrator:VoiceLabel(speaker)
 	return NS:L("voice_" .. tostring(speaker))
 end
@@ -149,6 +161,8 @@ local function Reveal(rec, seconds)
 end
 
 -- Una frase del narratore: rec = { speaker, display, proposal?, sentTo? }
+---Mostra una frase nel narratore (o nella chat locale se il riquadro è spento).
+---@param rec AUPhraseRecord
 function Narrator:Present(rec)
 	AddHistory(rec)
 	self:RefreshHistory()
@@ -162,12 +176,14 @@ function Narrator:Present(rec)
 end
 
 -- Avviso breve non nella cronologia (pausa, test...)
+---@param text string
 function Narrator:Notice(text)
 	if not frame or not NS.db.output.privateNarrator then return end
 	Reveal({ speaker = "narrator", display = text }, 3 + #text * 0.03)
 end
 
 -- dopo un invio riuscito: la frase resta per un attimo con l'indicazione del canale
+---@param channel string
 function Narrator:NoteSent(channel)
 	local cur = self.current
 	if cur and frame and frame:IsShown() then
@@ -190,6 +206,7 @@ end
 ---------------------------------------------------------------------------
 -- Editor della proposta
 ---------------------------------------------------------------------------
+---@return boolean opened
 function Narrator:OpenEditor()
 	if not frame then return false end
 	local p = NS.Gateway:GetPending()
@@ -355,6 +372,7 @@ function Narrator:ResetPosition()
 	if frame then W.RestorePosition(frame, nil, DEFAULT_POS) end
 end
 
+---@return table? frame
 function Narrator:GetFrame() return frame end
 
 function Narrator:OnInit()

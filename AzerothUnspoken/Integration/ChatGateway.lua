@@ -17,8 +17,27 @@
 --  * una frase si può modificare e si può scegliere il canale prima dell'invio.
 local ADDON, NS = ...
 local Compat = NS.Compat
+---@class AUChatGateway
+---@field MODES string[]
+---@field CHANNELS string[]
+---@field pending? AUProposal proposta in attesa
+---@field inPlayerAction boolean vero solo dentro PlayerAction
+---@field lastRefusal? string motivo dell'ultimo invio rifiutato
+---@field sendLog { time: number, auto: boolean }[]
 local Gateway = NS:RegisterModule("gateway")
 NS.Gateway = Gateway
+
+---@class AUProposal
+---@field text string testo proposto
+---@field edited? string testo modificato dal giocatore
+---@field display string testo come compare nel narratore
+---@field speaker string
+---@field event string
+---@field form string say | emote
+---@field channel string canale scelto
+---@field time number GetTime() alla creazione
+---@field player? string nome per le emote
+---@field reviewed? boolean in PREVIEW: il giocatore ha già aperto l'editor
 
 Gateway.MODES = NS.Config.CHAT_MODES
 Gateway.CHANNELS = NS.Config.CHAT_CHANNELS
@@ -55,17 +74,23 @@ end
 ---------------------------------------------------------------------------
 -- Modalità
 ---------------------------------------------------------------------------
+---@return string mode la modalità scelta
 function Gateway:GetMode()
 	return NS.db.chat.mode
 end
 
 -- Il modulo "publicChat" spento equivale a PRIVATE.
+---Il modulo publicChat spento equivale a PRIVATE.
+---@return string mode
 function Gateway:EffectiveMode()
 	if not NS.db.modules.publicChat then return "PRIVATE" end
 	return NS.db.chat.mode
 end
 
 -- Accetta nomi in più lingue ("conferma", "confirm", "CONFIRM_TO_SEND"...). nil se sconosciuto.
+---Accetta nomi in più lingue ("conferma", "confirm", "CONFIRM_TO_SEND").
+---@param value string
+---@return string? mode nil se sconosciuto
 function Gateway:ParseMode(value)
 	if type(value) ~= "string" then return nil end
 	local up = value:upper()
@@ -76,6 +101,10 @@ function Gateway:ParseMode(value)
 end
 
 -- Cambia modalità. autoPublicSay segue la scelta: solo AUTO_ONLY_IF_ALLOWED lo accende.
+---Cambia modalità; autoPublicSay segue la scelta (solo AUTO_ONLY_IF_ALLOWED lo accende).
+---@param value string
+---@return boolean ok
+---@return string? mode
 function Gateway:SetMode(value)
 	local mode = self:ParseMode(value)
 	if not mode then return false end
@@ -98,12 +127,16 @@ end
 -- Canali
 ---------------------------------------------------------------------------
 -- canale predefinito di una frase: il personaggio parla, il narratore descrive
+---@param rec AUPhraseRecord
+---@return string channel
 function Gateway:ResolveChannel(rec)
 	local c = NS.db.chat.channel
 	if c == "auto" then return rec.form == "emote" and "EMOTE" or "SAY" end
 	return c
 end
 
+---@param channel string
+---@return boolean
 function Gateway:ChannelAvailable(channel)
 	if channel == "SAY" or channel == "EMOTE" or channel == "YELL" then return true end
 	if channel == "PARTY" then return IsInGroup() and true or false end
@@ -115,6 +148,9 @@ end
 
 -- Senza un'azione del giocatore il client permette solo le emote e, nelle istanze, /say e /yell.
 -- Tutto il resto (canali di gruppo, di gilda, /say nel mondo aperto) è considerato protetto.
+---Senza un'azione del giocatore il client permette solo le emote e, nelle istanze, /say e /yell.
+---@param channel string
+---@return boolean
 function Gateway:CanSendWithoutAction(channel)
 	if channel == "EMOTE" then return true end
 	if channel == "SAY" or channel == "YELL" then return NS:InInstance() and true or false end
@@ -122,6 +158,9 @@ function Gateway:CanSendWithoutAction(channel)
 end
 
 -- passa al canale successivo tra quelli disponibili (per le proposte in attesa)
+---Cambia il canale della proposta in attesa.
+---@return boolean ok
+---@return string? channel
 function Gateway:CycleChannel()
 	local p = self:GetPending()
 	if not p then return false end
@@ -147,6 +186,9 @@ Gateway.inPlayerAction = false
 -- Esegue fn in modo sincrono come azione del giocatore. Da usare solo nei gestori di un clic,
 -- di un tasto assegnato, di un comando scritto o dell'Invio nell'editor: sono i soli momenti
 -- in cui il client concede /say fuori dalle istanze. Non va mai chiamata da timer o da eventi.
+---@generic T
+---@param fn fun(...): T
+---@return T
 function Gateway:PlayerAction(fn, ...)
 	local before = self.inPlayerAction
 	self.inPlayerAction = true
@@ -173,6 +215,9 @@ local function Recent(log, window, now)
 	return n, nAuto, last
 end
 
+---@param auto? boolean invio automatico
+---@return boolean ok
+---@return string? reason "flood"
 function Gateway:FloodCheck(auto)
 	local cfg, now = NS.db.chat, GetTime()
 	local n, nAuto, last = Recent(self.sendLog, 60, now)
@@ -194,6 +239,13 @@ end
 ---------------------------------------------------------------------------
 -- Invia un testo. Restituisce true oppure false e il motivo:
 -- empty, needs_action, channel_unavailable, flood, no_sender, lockdown, error.
+---Invia un testo in chat.
+---@param text string
+---@param channel string SAY | EMOTE | YELL | PARTY | RAID | GUILD | INSTANCE_CHAT
+---@param opts? { auto: boolean }
+---@return boolean ok
+---@return string? reason empty | needs_action | channel_unavailable | flood | no_sender | lockdown | error
+---@return any? err
 function Gateway:Send(text, channel, opts)
 	opts = opts or {}
 	text = Trim(text or "")
@@ -215,6 +267,8 @@ function Gateway:Send(text, channel, opts)
 	return true
 end
 
+---@param why string
+---@param extra? string
 function Gateway:Report(why, extra)
 	self.lastRefusal = why
 	NS:Print(NS:L("gw_" .. tostring(why), tostring(extra or "")))
@@ -230,6 +284,7 @@ function Gateway:Changed()
 	if NS.Narrator then NS.Narrator:Refresh() end
 end
 
+---@return AUProposal?
 function Gateway:GetPending()
 	local p = self.pending
 	if not p then return nil end
@@ -247,6 +302,8 @@ function Gateway:Discard()
 end
 
 -- testo modificato dal giocatore
+---@param text string
+---@return boolean ok
 function Gateway:SetPendingText(text)
 	local p = self:GetPending()
 	text = Trim(text or "")
@@ -259,6 +316,10 @@ end
 
 -- Invia la proposta in attesa. Ammesso solo come azione del giocatore.
 -- La proposta resta in attesa se l'invio non riesce.
+---Invia la proposta in attesa. Da chiamare solo dentro PlayerAction.
+---@param text? string testo da usare al posto di quello proposto
+---@return boolean ok
+---@return string? reason
 function Gateway:SendPending(text)
 	local p = self:GetPending()
 	if not p then return false, "empty" end
@@ -277,6 +338,9 @@ end
 -- Dal narratore alla chat
 ---------------------------------------------------------------------------
 -- testo mostrato nel narratore: l'emote porta il nome del personaggio, il parlato le virgolette
+---@param rec { text: string, form: string, speaker: string }
+---@param ctx? { player?: string }
+---@return string
 function Gateway:Display(rec, ctx)
 	if rec.form == "emote" then
 		local name = ctx and ctx.player or ""
@@ -288,6 +352,10 @@ function Gateway:Display(rec, ctx)
 end
 
 -- Sceglie una frase per l'evento: prima la forma tirata a sorte, poi l'altra.
+---@param event string
+---@param ctx table
+---@param form? "say"|"emote" se assente, una delle due a sorte
+---@return AUPhraseRecord?
 function Gateway:PickRecord(event, ctx, form)
 	local forms = { form }
 	if not form then
@@ -302,6 +370,11 @@ end
 
 -- Porta una frase scelta al narratore e, se la modalità lo prevede, alla chat.
 -- opts.auto: nasce da un evento spontaneo; opts.privateOnly: mai in chat (es. il test del wizard).
+---Porta una frase al narratore e, se la modalità lo prevede, alla chat.
+---@param rec AUPhraseRecord
+---@param ctx? table
+---@param opts? { auto: boolean, privateOnly: boolean }
+---@return boolean
 function Gateway:Propose(rec, ctx, opts)
 	opts = opts or {}
 	local mode = self:EffectiveMode()
@@ -337,6 +410,10 @@ function Gateway:Propose(rec, ctx, opts)
 end
 
 -- Frase per un evento. Restituisce true se è stata mostrata o proposta.
+---@param event string
+---@param ctx table
+---@param opts? { auto: boolean, form: string, privateOnly: boolean }
+---@return boolean shown
 function Gateway:Narrate(event, ctx, opts)
 	local rec = self:PickRecord(event, ctx, opts and opts.form)
 	if not rec then return false end
@@ -345,6 +422,9 @@ end
 
 -- Evento lanciato da macro, comando o altro addon: /au evento <nome>.
 -- Mai invio diretto: con il giocatore che ha premuto un tasto compare comunque una proposta.
+---@param event string
+---@param extra? table valori in più per il contesto (target, spell...)
+---@return boolean shown
 function NS:Trigger(event, extra)
 	return self.Gateway:Narrate(event, self:BuildContext(extra), {})
 end
@@ -360,6 +440,8 @@ end
 
 -- Con una proposta in attesa: PREVIEW apre l'editor (si invia da lì), CONFIRM_TO_SEND e
 -- AUTO_ONLY_IF_ALLOWED la inviano. Senza proposte: una frase nuova per il momento, solo proposta.
+---Il gesto "pronuncia": conferma la proposta (o apre l'editor in PREVIEW), oppure improvvisa.
+---@return boolean sent
 function Gateway:Confirm()
 	return self:PlayerAction(function()
 		local p = self:GetPending()
@@ -384,6 +466,7 @@ end
 ---------------------------------------------------------------------------
 -- Stato per /au debug
 ---------------------------------------------------------------------------
+---@return { mode: string, effective: string, autoPublicSay: boolean, channel: string, pending?: string, lastMinute: integer, lastMinuteAuto: integer, total: integer, lastRefusal?: string }
 function Gateway:Status()
 	local now = GetTime()
 	local n, nAuto = Recent(self.sendLog, 60, now)

@@ -1,4 +1,20 @@
 -- Azeroth Unspoken: avvio, spazio dei nomi, lingue dell'interfaccia, moduli
+---@class AUNamespace
+---@field name string
+---@field version string
+---@field db AUSettings impostazioni dell'account (AzerothUnspokenDB.settings)
+---@field cdb table dati del personaggio (AzerothUnspokenCharacterDB)
+---@field paused boolean pausa immediata del narratore, solo di sessione
+---@field Config AUConfig
+---@field Gateway AUChatGateway
+---@field Narrator AUNarrator
+---@field Director table
+---@field Engine table
+---@field Compat table
+---@field Diagnostics table
+---@field EventBus table
+---@field Widgets table
+---@field Wizard table
 local ADDON, NS = ...
 NS.name = "Azeroth Unspoken"
 NS.version = "0.1.0"

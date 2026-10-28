@@ -9,7 +9,9 @@
     "SLASH_AZEROTHUNSPOKEN2",
     "BINDING_HEADER_AZEROTHUNSPOKEN",
     "BINDING_NAME_AZEROTHUNSPOKEN_SPEAK",
-    "issecretvalue"
+    "issecretvalue",
+    "AzerothUnspoken_TogglePause",
+    "BINDING_NAME_AZEROTHUNSPOKEN_PAUSE"
   ],
   "workspace.ignoreDir": [
     "archive",

@@ -268,6 +268,7 @@ local function Build()
 	frame:Hide()
 end
 
+---@return boolean opened
 function Wizard:Open()
 	if not frame then
 		local ok, err = pcall(Build)
