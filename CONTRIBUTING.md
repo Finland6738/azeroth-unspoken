@@ -1,0 +1,185 @@
+# Contribuire ad Azeroth Unspoken
+
+Grazie dell'interesse. Questo documento spiega come segnalare problemi, scrivere frasi e pacchetti, modificare il codice e aprire una pull request.
+
+> **Licenza da definire.** Il progetto non ha ancora una licenza ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)). Finché non è scelta, apri prima un'issue per parlarne se vuoi proporre un contributo di una certa dimensione.
+
+## Indice
+
+1. [Prima di cominciare](#1-prima-di-cominciare)
+2. [Segnalare un problema o proporre un'idea](#2-segnalare-un-problema-o-proporre-unidea)
+3. [Scrivere frasi](#3-scrivere-frasi)
+4. [Scrivere un pacchetto](#4-scrivere-un-pacchetto)
+5. [Modificare il codice](#5-modificare-il-codice)
+6. [Test](#6-test)
+7. [Stile Lua ed EmmyLua](#7-stile-lua-ed-emmylua)
+8. [Git, issue e pull request](#8-git-issue-e-pull-request)
+9. [Cosa non si accetta](#9-cosa-non-si-accetta)
+
+## 1. Prima di cominciare
+
+Leggi, nell'ordine:
+
+1. [README.md](README.md): che cosa fa l'addon e che cosa no.
+2. [docs/ARCHITETTURA.md](docs/ARCHITETTURA.md): moduli, flusso di un evento, punti di estensione.
+3. [docs/adr/README.md](docs/adr/README.md): le decisioni già prese e il loro perché. Non vanno aggirate: se pensi che una sia sbagliata, apri un'issue.
+4. [ROADMAP.md](ROADMAP.md): lo stato, gli step e le regole di lavoro.
+5. [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): la specifica di prodotto (il prodotto lì si chiama ancora "Immersion Director"; dove GDD e roadmap non coincidono, vale la roadmap).
+
+Tre principi non negoziabili:
+
+- **Tutto offline**, senza IA ([ADR 0002](docs/adr/0002-tutto-offline-senza-ia.md)).
+- **Nulla in chat senza un'azione del giocatore** ([ADR 0003](docs/adr/0003-narratore-privato-e-chat-gateway.md)).
+- **Il motore non contiene testi** ([ADR 0001](docs/adr/0001-motore-e-database-narrativo-separati.md)).
+
+## 2. Segnalare un problema o proporre un'idea
+
+Apri un'[issue](https://github.com/Finland6738/azeroth-unspoken/issues) in italiano o in inglese. **Prima cerca** se esiste già.
+
+**Etichette**: `bug`, `enhancement`, `docs`, `in-game` (da verificare nel client), `content` (frasi), `good first issue`, e una priorità `priority:high`, `priority:medium` o `priority:low`.
+
+**Un buon rapporto** contiene:
+
+- il **file e la riga**, oppure la funzione;
+- il **comportamento atteso**;
+- il **comportamento osservato**;
+- **come riprodurlo**: un test fuori dal gioco, oppure i passi in gioco;
+- per i problemi in gioco: l'output di `/au debug full`, la build del client e gli eventuali errori (si vedono con `/console scriptErrors 1`).
+
+Una sessione di lavoro o una persona che trova un problema **fuori dallo step in corso apre un'issue** invece di allargare lo step.
+
+## 3. Scrivere frasi
+
+Le frasi sono il cuore del progetto. Sono **intere, originali e curate**: non si compongono frammenti a caso.
+
+### Formato
+
+```lua
+{
+    id = "nani.battle.01",          -- unico tra tutti i pacchetti
+    event = "battle",               -- o più eventi: { "battle", "threat" }
+    form = "say",                   -- "say" (predefinita) o "emote"
+    speaker = "character",          -- narrator | inner | character | npc (facoltativo)
+    tone = "eroico",                -- registro (vedi sotto)
+    weight = 1,                     -- peso relativo
+    cooldown = 600,                 -- secondi prima che possa tornare (facoltativo)
+    when = { race = "Dwarf" },      -- condizioni (facoltative)
+    it = "Le montagne non arretrano!",
+    en = "The mountains do not yield!",
+}
+```
+
+Tutti i dettagli (eventi, condizioni, segnaposto, cornici, vocabolario) sono in [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md). Il formato cambierà con lo schema dati v2 (step S3): segui sempre la versione di `main`.
+
+### Convenzioni
+
+- **`id`**: `pacchetto.evento.NN` (ad esempio `nani.battle.01`); le emote possono usare `.e.NN`. Gli id sono unici in tutto l'addon: un duplicato viene ignorato con un avviso. Gli id servono alla memoria e alle traduzioni: **non cambiarli** dopo la pubblicazione.
+- **Entrambe le lingue**: ogni frase va scritta almeno in italiano (`it`) e in inglese (`en`). Le lingue non si mescolano mai: una frase compare solo nelle lingue in cui esiste.
+- **Emote** (`form = "emote"`): iniziano con la minuscola e **senza il nome**; il gioco antepone quello del personaggio («*Brann* snuda l'arma…»).
+- **Segnaposto** `{player}`, `{target}`, `{spell}`, `{zone}`, `{subzone}`, `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}`, genere `{g:pronto|pronta}`, vocabolario `{cry}`. Se un dato manca, la frase viene scartata: non serve gestirlo.
+- **Voci** (`speaker`): `narrator` descrive l'atmosfera e non attribuisce decisioni al personaggio; `inner` sono pensieri privati; `character` è la voce pubblica, più breve; `npc` è un contenuto simulato. Le voci `inner` e `npc` non vanno mai in chat ([ADR 0003](docs/adr/0003-narratore-privato-e-chat-gateway.md)).
+- **Toni** oggi presenti nei dati: `ironico`, `solenne`, `mistico`, `malinconico`, `oscuro`, `eroico`, `feroce`, `epico`. Il motore penalizza due frasi di fila con lo stesso tono, quindi servono più toni per evento.
+- **Condizioni**: più condizioni = frase più specifica = peso maggiore. Usa `when` per ciò che rende la frase *giusta* in quel momento, non per forzarla.
+- **Lunghezza**: le frasi pubbliche vanno tenute brevi. Il tetto tecnico di un invio in chat è di 255 byte (le lettere accentate ne occupano 2); il Chat Gateway taglia oltre, con «...».
+
+### Regole di qualità (GDD §5.4)
+
+Ogni frase deve rispettarle. Sono la lista di controllo della revisione.
+
+1. **Testi originali**, coerenti con l'ambientazione; **nessuna citazione riconoscibile copiata** (dal gioco, dai libri, da altri addon o da altri autori). Non copiare testi di altri progetti.
+2. **Separare la lore verificata dall'invenzione atmosferica**: niente affermazioni false su eventi canonici, né lore inventata presentata come canone.
+3. **Varia struttura e lunghezza**; non accumulare sempre «ombra», «destino», «sangue», «antico». Prima di aggiungere una frase rileggi quelle dello stesso evento.
+4. **Accessibili senza conoscenze enciclopediche**, ma con una ricompensa per chi conosce la lore.
+5. **Nessuna decisione morale imposta da razza, fazione o classe.** Una razza o una classe può suggerire un'*inclinazione*, mai uno stereotipo obbligato.
+6. **Ogni testo pubblico va valutato per rischio di spam e di lunghezza** del canale.
+7. **Le varianti italiana e inglese preservano *intento* e *registro***: non sono calchi meccanici.
+8. **Il registro giusto per il momento** (GDD §5.1): un venditore non declama come un antico re; un momento insignificante non diventa ogni volta un'apocalisse.
+9. **Il personaggio non decide al posto del giocatore** nella voce del narratore (GDD §5.3).
+
+Prima di aprire la PR, rileggi ad alta voce in entrambe le lingue.
+
+## 4. Scrivere un pacchetto
+
+Un pacchetto è un addon separato che aggiunge frasi, cornici, vocabolario, traduzioni, lingue o eventi, senza toccare il motore.
+
+1. Copia `AzerothUnspoken_Example` in una cartella nuova (ad esempio `AzerothUnspoken_Nani`).
+2. Rinomina il file `.toc` con lo stesso nome della cartella e lascia `## Dependencies: AzerothUnspoken`.
+3. Scrivi le frasi con `AzerothUnspoken:RegisterPack({ id = "nani", name = "…", phrases = { … } })`. L'`id` del pacchetto è unico.
+4. Prova nel client con `/au pacchetti`, `/au info` e `/au prova <evento>`.
+
+La guida completa è [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md). Un pacchetto deve rispettare le stesse regole di qualità di cui sopra e non deve usare la rete né inviare dati ([ADR 0002](docs/adr/0002-tutto-offline-senza-ia.md)).
+
+## 5. Modificare il codice
+
+1. **Lavora su un'issue** o aprine una. Per cambiamenti grandi, parlane prima.
+2. **Rispetta l'architettura**: [docs/ARCHITETTURA.md](docs/ARCHITETTURA.md), sezione "Per chi scrive un nuovo sistema nell'addon".
+3. **Ogni API del client passa da Compat** e deve **degradare con eleganza** se manca o è limitata ([ADR 0005](docs/adr/0005-compat-valori-segreti-ed-eventi-difensivi.md)). Prima di usare una funzione o un evento nuovo, **controllalo nel dump delle API di Forever** ([ADR 0010](docs/adr/0010-dump-api-di-forever-come-riferimento.md)).
+4. **Nessuna decisione basata su valori segreti** e nessun uso del log di combattimento.
+5. **Per parlare, passa dal Director** (se è spontaneo) **e dal Chat Gateway** (sempre). Nessun invio in chat da timer o da eventi.
+6. **Dati salvati nuovi**: predefiniti in `Config.defaults`, regole in `Config.rules`, migrazione in `Config.migrations` quando serve, e un test ([ADR 0006](docs/adr/0006-savedvariables-e-versioni-dello-schema.md)).
+7. **Non modificare i file che un altro step sta toccando** (vedi la roadmap): se hai dubbi, apri un'issue.
+8. **Funzioni che richiedono il client vero**: se aggiungi comportamenti da verificare in gioco, aggiorna [docs/G1_checklist.md](docs/G1_checklist.md) e dichiara nella PR che cosa non hai potuto verificare.
+9. **Aggiorna la documentazione**: README, ARCHITETTURA o ADR se la decisione è nuova, e il [CHANGELOG](CHANGELOG.md).
+
+## 6. Test
+
+I test girano fuori dal gioco con lupa (Lua 5.1) e un client simulato ([ADR 0007](docs/adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). Dalla radice del progetto:
+
+```bash
+python -m venv .venv
+.venv/Scripts/python -m pip install lupa
+.venv/Scripts/python -I -X utf8 Tests/run_tests.py AzerothUnspoken
+```
+
+(Su Linux e macOS: `.venv/bin/python`.) Il comando esce con codice 1 se un controllo fallisce. **Tutti i controlli devono passare prima di una PR.**
+
+Come aggiungere test:
+
+- Un file `Tests/TestNome.lua` riceve `NS` come argomento (`local NS = ...`) e usa `T.run("descrizione", function() … end)`, `T.eq(valore, atteso, "messaggio")` e `T.ok(condizione, "messaggio")`. Ogni file gira in un **runtime nuovo**.
+- **Registra il file** nell'elenco di `Tests/run_tests.py` (la tupla con `TestCompat`, `TestConfig`…).
+- Se usi un'API del client nuova, aggiungila al mock `Tests/MockWoWAPI.lua`, e prova anche il caso "API mancante" e "valore segreto" (`MakeSecret()`).
+- Un test fuori dal gioco **non prova il client**: dichiara nella PR che cosa resta da verificare in gioco ([G1](docs/G1_checklist.md)).
+
+## 7. Stile Lua ed EmmyLua
+
+Il codice Lua è per **Lua 5.1**, come il client. Si segue lo stile del codice esistente:
+
+- **Indentazione con tab**; fine riga **LF** ([ADR 0008](docs/adr/0008-fine-riga-lf.md)); file in UTF-8 senza BOM.
+- **Commenti in italiano**, brevi, che spiegano il *perché* più che il *che cosa*.
+- Ogni file comincia con `local ADDON, NS = ...` e **non crea variabili globali** oltre a quelle dichiarate (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti, la API pubblica `AzerothUnspoken`). **Ogni nuova globale va aggiunta a `diagnostics.globals` in `.luarc.json`.**
+- I moduli si registrano con `NS:RegisterModule("nome")` e si inizializzano in `OnInit`.
+- Gli errori si isolano con `NS.Diagnostics:Guard(...)`; le API del client si chiamano con `Compat.Query`/`SafeCall`.
+- **Non usare `%s`, `%l`, `%a` o `%w`** nei pattern applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usa classi esplicite (ad esempio `[ \t\r\n]`).
+- Nei `.toc` i percorsi usano la barra rovesciata (`Core\Compat.lua`).
+- Non duplicare le API di WoW nel progetto: le fornisce il plugin del language server.
+
+**EmmyLua.** Annota le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione) con `---@class`, `---@field`, `---@param`, `---@return`, così l'IDE completa e controlla i tipi. Ambiente consigliato: JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**; `.luarc.json` imposta Lua 5.1, le globali e le cartelle da ignorare. Per le definizioni delle API di Forever serve il clone del dump accanto al progetto (vedi [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md)).
+
+**Python.** Gli strumenti in `Tests/` sono Python 3, eseguiti con `-I -X utf8`.
+
+## 8. Git, issue e pull request
+
+Il flusso completo è nell'[ADR 0009](docs/adr/0009-flusso-git-branch-pr-squash.md). In breve:
+
+1. **Branch** partito da `main` aggiornato: `step/sN-nome` per gli step, `docs/…` o `fix/…` per il resto.
+2. **Commit piccoli, con messaggi in italiano** che dicono che cosa e perché.
+3. **Test superati** prima di aprire la PR.
+4. **Pull request verso `main`**, con titolo e descrizione che riassumono la modifica e **ciò che non è stato verificato** (in particolare tutto ciò che richiede il client vero).
+5. Se risolve un'issue, scrivi `Closes #N` nella descrizione.
+6. **Merge squash**, con eliminazione del branch.
+7. **Mai** `--force` su `main`, mai riscrivere la storia pubblicata, mai saltare gli hook.
+8. Se `main` cambia mentre lavori: allinea il branch, risolvi i conflitti, ripeti i test.
+
+I file di testo hanno **fine riga LF**: `.gitattributes` lo impone.
+
+## 9. Cosa non si accetta
+
+- Qualunque **accesso alla rete**, telemetria o dipendenza esterna a runtime.
+- **Esecuzione di codice ricevuto** da altri giocatori (`loadstring` e simili).
+- Codice che **aggira l'azione del giocatore** per scrivere in chat, o che prova ad aggirare funzioni protette, azioni sicure o il sistema di restrizioni del client.
+- **Salvare contenuti di chat** o dati personali di altri giocatori senza una scelta esplicita dell'utente.
+- **Copiare** testi dal gioco o da altri progetti, o **file da repository senza licenza dichiarata** (come il dump di Atraeau/WoW-Addons: si consulta, non si copia).
+- Frasi che violano le regole di qualità della sezione 3.
+- Modifiche che rompono i test o che mescolano più step.
+
+Grazie per l'aiuto.
