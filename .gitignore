@@ -10,3 +10,6 @@ __pycache__/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# worktree delle sessioni di sviluppo
+.claude/

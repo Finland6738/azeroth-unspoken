@@ -1,0 +1,14 @@
+# Tutti i file di testo con fine riga LF, anche su Windows
+* text=auto eol=lf
+
+# Script di Windows: CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binari
+*.tga binary
+*.blp binary
+*.png binary
+*.jpg binary
+*.ogg binary
+*.mp3 binary
