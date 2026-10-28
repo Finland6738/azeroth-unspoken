@@ -87,6 +87,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
 | S6 | M1 | Living Memory e Diario | Sonnet · high | da fare |
+| S6b | M1 | Relazioni e affinità: NPC automatici, persone incontrate, influenza sul narratore | Sonnet · high | da fare |
 | S7 | M1 | Contenuti Alpha: 300 intenzioni, almeno 2 varianti | Opus · high | da fare |
 | ✋ G2 | M1 | **Prova in gioco**: vertical slice A (arrivo nella foresta) e C (ritorno) | utente | da fare |
 | S8 | M2 Living NPC (v0.3) | NPC Alive: finestra di dialogo, stati, registro NPC, archetipi | Sonnet · high | da fare |
@@ -199,6 +200,78 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo una lista di controllo 
 - Al massimo 500 ricordi, con compattazione, ricordi permanenti e reset.
 - Il richiamo avviene solo se esiste un ricordo vero: aggiungere condizioni come `repeatVisit` e `lastVisitBad`.
 - `UI/JournalFrame.lua`: ricordi, luoghi e flag, con cancellazione selettiva ed esportazione testuale manuale.
+
+### S6b: relazioni e affinità (richiesta dell'utente del 2026-10-29; GDD §7.4, §10, §14)
+
+Obiettivo: il narratore scrive in modo diverso in base al rapporto tra il personaggio e l'NPC o il giocatore con cui interagisce.
+Esempi: tono formale con uno sconosciuto, caldo con un amico, teso con un rivale rispettato.
+
+**Modello dati**, in `Systems/Relationships.lua`:
+- I dati stanno in `AzerothUnspokenCharacterDB.relationships = { npcs = { [npcID] = ... }, players = { ["Nome-Reame"] = ... } }`, con versione dello schema e migrazioni.
+- Gli assi sono indipendenti, non c'è un'unica barra amico/nemico:
+
+  | Asse | Intervallo | Note |
+  |---|---|---|
+  | `familiarity` | 0…100 | quanto ci si conosce |
+  | `trust` | −100…100 | fiducia |
+  | `respect` | −100…100 | rispetto |
+  | `affection` | −100…100 | i valori negativi indicano astio o odio |
+  | `fear` | 0…100 | timore |
+  | `loyalty` | −100…100 | lealtà |
+  | `attraction` | 0…100 | asse **facoltativo, spento per impostazione predefinita**, attivabile nelle impostazioni |
+
+- Le **etichette narrative derivate** sono definite come dati in `Data/Relationships.lua`, con regole e nomi IT/EN. Il motore non contiene etichette fisse. Esempi:
+  - fiducia e affetto alti → amico;
+  - fiducia e lealtà alte → compagno d'armi;
+  - affetto e attrazione alti → innamorato;
+  - fiducia bassa e rispetto alto → rivale rispettato;
+  - affetto molto negativo → nemico;
+  - valori vicini a zero → indifferente;
+  - familiarità bassa → sconosciuto.
+- C'è anche una **disposizione complessiva** su una scala −100…100: Odiato, Nemico, Antipatico, Sospettoso, Neutrale, Conoscente, Amico, Grande amico, Legame profondo. È derivata dagli assi e serve per i riassunti e per le condizioni semplici.
+- Ogni relazione conserva: prima e ultima interazione, numero di interazioni, note libere, tag e un'etichetta scelta a mano, che ha la precedenza su quella derivata.
+
+**NPC, calcolo automatico:**
+- L'identità è l'`npcID` ricavato dal GUID (`Creature-…-npcID-…`). Se il GUID manca, è segreto o non è una creatura, non si registra nulla.
+- Fonti, da verificare in Compat con registrazione protetta degli eventi:
+  - dialoghi (`GOSSIP_SHOW`): familiarità;
+  - quest accettate e consegnate (NPC di `QUEST_DETAIL`/`QUEST_COMPLETE`, poi `QUEST_ACCEPTED`/`QUEST_TURNED_IN`): fiducia e rispetto;
+  - acquisti, vendite e riparazioni dal mercante (`MERCHANT_SHOW`/`MERCHANT_CLOSED`, `hooksecurefunc` su `BuyMerchantItem`, vendite rilevate in modo prudente): familiarità e fiducia;
+  - locandiere, maestro di volo, addestratore, ove rilevabili.
+- Rendimenti decrescenti e un tetto giornaliero per tipo di interazione. La familiarità decade lentamente nel tempo, gli altri assi no.
+- Gli incrementi sono tabelle di dati, regolabili senza toccare il codice.
+
+**Giocatori, gestiti dall'utente:**
+- Lista "Persone incontrate".
+- Il sistema **propone** candidati: membri del gruppo, scambi, bersagli con profilo TRP3, persone a cui si è risposto in privato.
+- Un giocatore entra in lista **solo con un'azione dell'utente**. In alternativa c'è un'opzione esplicita "registra automaticamente chi incontro", spenta per impostazione predefinita.
+- L'utente modifica gli assi con cursori; aggiunge note, tag ed etichetta personalizzata; elimina; esporta in testo.
+- Privacy:
+  - nessun contenuto di chat o di whisper salvato;
+  - nessun dato inviato in rete;
+  - il modulo Social (S10) condividerà qualcosa solo con un consenso esplicito.
+
+**Integrazione con il narratore:**
+- Il contesto espone `relation` (etichetta derivata), `disposition` e i singoli assi del bersaglio o dell'NPC dell'interazione corrente.
+- Nuove condizioni nel RuleEngine:
+  - `relation = { "friend", "rival" }`;
+  - `trustMin`, `trustMax`, `affectionMin`, `affectionMax` e gli equivalenti per ogni asse;
+  - `familiarityMin`, `isKnown`.
+- Nuovo segnaposto `{relation}`, con l'etichetta localizzata.
+- Fattore di peso aggiuntivo `R` nel Narrative Director: le frasi coerenti con il rapporto salgono di peso, quelle incoerenti vengono escluse.
+- Il registro cambia con la familiarità: dal formale all'intimo.
+- Almeno 40 frasi bilingui legate alle relazioni, per saluti, congedi, ringraziamenti, cure, battaglia al fianco di qualcuno e incontri con NPC conosciuti.
+
+**Interfaccia:** finestra "Relazioni" con tabella ordinabile e filtrabile (NPC/giocatori, etichetta, ultima interazione), dettaglio con cursori e note, accesso da `/au relazioni` e dal diario.
+
+**Test:**
+- derivazione delle etichette;
+- incrementi automatici con tetti e decadimento;
+- migrazione dello schema;
+- nessuna registrazione dei giocatori senza azione dell'utente;
+- nessun dato preso da valori segreti.
+
+**Dipendenze:** dopo S6, perché usa la memoria e il diario. Prima di S7, perché i contenuti useranno le nuove condizioni. S8 (NPC Alive) riusa il registro degli NPC e le relazioni.
 
 ### S7: contenuti Alpha (GDD §5, §9.2, §21)
 - 300 intenzioni bilingui; almeno 2 varianti per le scene più comuni; tutte e quattro le voci; tre profondità per i momenti chiave.
