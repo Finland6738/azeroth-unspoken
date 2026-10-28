@@ -1,0 +1,138 @@
+-- Database di base: classificazioni e vocabolario condiviso.
+-- I pacchetti esterni usano le stesse funzioni tramite VociDiAzeroth:...
+local ADDON, NS = ...
+
+-- atmosfera delle zone (nomi del client inglese, come nel client di WoW Forever)
+NS:RegisterZoneMoods({
+	["Elwynn Forest"] = "forest", ["Teldrassil"] = "forest", ["Ashenvale"] = "forest",
+	["Feralas"] = "forest", ["The Hinterlands"] = "forest",
+	["Duskwood"] = "dark", ["Deadwind Pass"] = "dark", ["Silverpine Forest"] = "dark",
+	["Tirisfal Glades"] = "dark", ["Felwood"] = "dark",
+	["Westfall"] = "plains", ["The Barrens"] = "plains", ["Mulgore"] = "plains",
+	["Arathi Highlands"] = "plains", ["Hillsbrad Foothills"] = "plains",
+	["Redridge Mountains"] = "mountain", ["Loch Modan"] = "mountain", ["Stonetalon Mountains"] = "mountain",
+	["Dun Morogh"] = "snow", ["Alterac Mountains"] = "snow", ["Winterspring"] = "snow",
+	["Stranglethorn Vale"] = "jungle", ["Un'Goro Crater"] = "jungle", ["Zul'Gurub"] = "jungle",
+	["Swamp of Sorrows"] = "swamp", ["Wetlands"] = "swamp", ["Dustwallow Marsh"] = "swamp",
+	["The Temple of Atal'Hakkar"] = "swamp",
+	["Durotar"] = "desert", ["Badlands"] = "desert", ["Thousand Needles"] = "desert",
+	["Tanaris"] = "desert", ["Silithus"] = "desert", ["Zul'Farrak"] = "desert", ["Ahn'Qiraj"] = "desert",
+	["Ruins of Ahn'Qiraj"] = "desert",
+	["Blasted Lands"] = "fire", ["Burning Steppes"] = "fire", ["Searing Gorge"] = "fire",
+	["Molten Core"] = "fire", ["Blackrock Depths"] = "fire", ["Blackwing Lair"] = "fire",
+	["Onyxia's Lair"] = "fire", ["Ragefire Chasm"] = "fire", ["Blackrock Spire"] = "fire",
+	["Western Plaguelands"] = "plague", ["Eastern Plaguelands"] = "plague",
+	["Stratholme"] = "plague", ["Naxxramas"] = "plague",
+	["Scholomance"] = "dark", ["Shadowfang Keep"] = "dark", ["Scarlet Monastery"] = "dark",
+	["Desolace"] = "ruin", ["Azshara"] = "ruin", ["Uldaman"] = "ruin", ["Dire Maul"] = "ruin",
+	["Darkshore"] = "coast",
+	["Moonglade"] = "sacred",
+	["The Deadmines"] = "deep", ["Wailing Caverns"] = "deep", ["Gnomeregan"] = "deep",
+	["Maraudon"] = "deep", ["Razorfen Kraul"] = "deep", ["Razorfen Downs"] = "deep",
+	["Blackfathom Deeps"] = "deep", ["The Stockade"] = "deep",
+	["Stormwind City"] = "city", ["Ironforge"] = "city", ["Darnassus"] = "city",
+	["Orgrimmar"] = "city", ["Thunder Bluff"] = "city", ["Undercity"] = "city",
+})
+
+-- parole chiave nei nomi degli incantesimi (client inglese e italiano)
+NS:RegisterSpellKeywords({
+	kind = {
+		rez = { "resurrection", "redemption", "ancestral spirit", "rebirth", "revive",
+			"resurrezione", "redenzione", "spirito ancestrale", "rinascita", "rianima" },
+		travel = { "hearthstone", "teleport", "portal", "astral recall",
+			"pietra del ritorno", "teletrasporto", "portale", "richiamo astrale" },
+		heal = { "heal", "renew", "rejuvenation", "regrowth", "flash of light", "holy light",
+			"lay on hands", "swiftmend", "tranquility", "prayer of healing",
+			"cura", "guarigione", "guaritric", "rinnovamento", "ringiovanimento", "ricrescita",
+			"lampo di luce", "luce sacra", "imposizione delle mani", "tranquillità" },
+		buff = { "fortitude", "blessing", "mark of the wild", "gift of the wild", "arcane intellect",
+			"arcane brilliance", "divine spirit", "shadow protection", "thorns", "power word: shield",
+			"amplify magic", "dampen magic", "unending breath", "water breathing",
+			"tempra", "benedizione", "marchio", "dono della natura", "intelletto arcano",
+			"spirito divino", "spine", "scudo" },
+		summon = { "summon", "ritual of", "conjure", "create", "evoca", "rituale", "crea " },
+		stealth = { "stealth", "prowl", "vanish", "furtività", "sparizione" },
+		taunt = { "taunt", "growl", "provocazione", "ringhio" },
+		shout = { "shout", "battle cry", "grido", "urlo" },
+	},
+	element = {
+		nature = { "moonfire", "starfire", "wrath", "lightning", "thunder", "earth", "insect", "entangl",
+			"hurricane", "fuoco lunare", "fuoco stellare", "fulmine", "tuono", "sciame", "uragano" },
+		holy = { "holy", "smite", "exorcism", "consecration", "judgement", "hammer of wrath", "divine",
+			"sacr", "punizione", "esorcismo", "consacrazione", "giudizio", "martello dell'ira", "divin" },
+		frost = { "frost", "ice ", "icy", "blizzard", "cone of cold", "gelo", "ghiaccio", "bufera", "cono di freddo" },
+		shadow = { "shadow", "corruption", "curse", "drain", "fear", "death coil", "mind flay", "agony",
+			"ombra", "corruzione", "maledizione", "risucchio", "terrore", "spirale della morte", "agonia" },
+		arcane = { "arcane", "arcan" },
+		fire = { "fire", "flame", "pyro", "scorch", "immolat", "incinerat", "searing", "conflagrat",
+			"fuoco", "fiamm", "incenerim", "immolazione", "rogo", "ustion" },
+		physical = { "strike", "slam", "shot", "stab", "sinister", "heroic", "mortal", "cleave",
+			"execute", "sunder", "eviscerate", "rend", "overpower", "claw", "maul", "swipe",
+			"colpo", "fendente", "squarcio", "eviscera", "lacerazione", "artiglio" },
+	},
+	classElement = {
+		WARRIOR = "physical", ROGUE = "physical", HUNTER = "physical", MAGE = "arcane",
+		WARLOCK = "shadow", PRIEST = "holy", PALADIN = "holy", SHAMAN = "nature", DRUID = "nature",
+	},
+})
+
+-- Vocabolario: piccole formule autonome, richiamabili con {nome} dentro le frasi.
+-- Ogni voce è una frase intera o un sintagma che non dipende dalla grammatica intorno.
+NS:RegisterPack({
+	id = "base_vocab",
+	name = "Base: vocabolario",
+	vocab = {
+		-- grido di guerra completo: "{cry}"
+		cry = {
+			{ when = { faction = "Horde" }, it = "Per l'Orda!", en = "For the Horde!" },
+			{ when = { faction = "Horde" }, it = "Lok'tar ogar!", en = "Lok'tar ogar!" },
+			{ when = { faction = "Alliance" }, it = "Per l'Alleanza!", en = "For the Alliance!" },
+			{ when = { race = "Human" }, it = "Per Roccavento!", en = "For Stormwind!" },
+			{ when = { race = "Human" }, it = "Per il Leone e per la Luce!", en = "For the Lion and the Light!" },
+			{ when = { race = "Dwarf" }, it = "Per Forgiardente e per le barbe dei padri!", en = "For Ironforge and the beards of our fathers!" },
+			{ when = { race = "Dwarf" }, it = "Khaz Modan! Khaz Modan!", en = "Khaz Modan! Khaz Modan!" },
+			{ when = { race = "NightElf" }, it = "Per Elune e per i boschi eterni!", en = "For Elune and the undying woods!" },
+			{ when = { race = "Gnome" }, it = "Per Gnomeregan! Ce la riprenderemo!", en = "For Gnomeregan! We'll take it back!" },
+			{ when = { race = "Orc" }, it = "Sangue e tuono!", en = "Blood and thunder!" },
+			{ when = { race = "Scourge" }, it = "Per la Dama Oscura!", en = "For the Dark Lady!" },
+			{ when = { race = "Tauren" }, it = "Per la Madre Terra!", en = "For the Earth Mother!" },
+			{ when = { race = "Troll" }, it = "I Lanciascura non si piegano!", en = "The Darkspear do not bow!" },
+			{ it = "Avanti, e senza voltarsi!", en = "Onward, and do not look back!" },
+		},
+		-- un nemico chiamato per ciò che è: "{foe}"
+		foe = {
+			{ when = { ctype = "undead" }, it = "cadavere senza riposo", en = "restless carcass" },
+			{ when = { ctype = "undead" }, it = "servo del Flagello", en = "thrall of the Scourge" },
+			{ when = { ctype = "undead" }, it = "cosa morta che ha dimenticato di giacere", en = "dead thing that forgot to lie still" },
+			{ when = { ctype = "demon" }, it = "rifiuto del Vuoto Distorto", en = "spawn of the Twisting Nether" },
+			{ when = { ctype = "demon" }, it = "carne di demone", en = "demon-flesh" },
+			{ when = { ctype = "demon" }, it = "servo della Legione", en = "servant of the Legion" },
+			{ when = { ctype = "beast" }, it = "bestia", en = "beast" },
+			{ when = { ctype = "beast" }, it = "figlio delle zanne", en = "child of fang and claw" },
+			{ when = { ctype = "dragon" }, it = "verme alato", en = "winged worm" },
+			{ when = { ctype = "dragon" }, it = "figlio dell'Antico Fuoco", en = "child of the elder fire" },
+			{ when = { ctype = "elemental" }, it = "furia senz'anima", en = "soulless fury" },
+			{ when = { ctype = "elemental" }, it = "pietra e vento senza padrone", en = "masterless stone and wind" },
+			{ when = { ctype = "giant" }, it = "montagna che cammina", en = "walking mountain" },
+			{ when = { ctype = "mechanical" }, it = "ammasso di ingranaggi", en = "heap of gears" },
+			{ when = { ctype = "humanoid", enemyFaction = true, faction = "Horde" }, it = "cane dell'Alleanza", en = "Alliance dog" },
+			{ when = { ctype = "humanoid", enemyFaction = true, faction = "Alliance" }, it = "bruto dell'Orda", en = "Horde brute" },
+			{ when = { ctype = "humanoid" }, it = "canaglia", en = "knave" },
+			{ when = { ctype = "humanoid" }, it = "povero sciocco", en = "poor fool" },
+			{ when = { ctype = { "other", "critter", "aberration" } }, it = "creatura", en = "creature" },
+		},
+		-- ciò in cui il personaggio crede, come complemento: "in nome {faith_of}"
+		faith_of = {
+			{ when = { race = { "Human", "Dwarf" } }, it = "della Luce", en = "of the Light" },
+			{ when = { class = { "PRIEST", "PALADIN" } }, it = "della Luce", en = "of the Light" },
+			{ when = { race = "NightElf" }, it = "di Elune", en = "of Elune" },
+			{ when = { race = "Gnome" }, it = "di Gnomeregan", en = "of Gnomeregan" },
+			{ when = { race = "Orc" }, it = "degli Antenati", en = "of the Ancestors" },
+			{ when = { race = "Scourge" }, it = "della Dama Oscura", en = "of the Dark Lady" },
+			{ when = { race = "Tauren" }, it = "della Madre Terra", en = "of the Earth Mother" },
+			{ when = { race = "Troll" }, it = "dei Loa", en = "of the loa" },
+			{ when = { class = "SHAMAN" }, it = "degli spiriti", en = "of the spirits" },
+			{ when = { class = "DRUID", race = "Tauren" }, it = "della Madre Terra", en = "of the Earth Mother" },
+		},
+	},
+})

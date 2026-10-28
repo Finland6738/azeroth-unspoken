@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Example pack
+## Notes: Example phrase pack: a new event (fishing), scripted rules and lines tied to places.
+## Author: Daniel Polo
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken
+## X-Category: Roleplay
+
+Example.lua

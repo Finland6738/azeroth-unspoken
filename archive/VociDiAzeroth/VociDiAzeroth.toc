@@ -1,0 +1,28 @@
+## Interface: 16001
+## Title: Voci di Azeroth
+## Notes: Motore narrativo per il roleplay: frasi curate, multilingua e contestuali. Scrivi /voci per l'aiuto.
+## Author: Daniel Polo
+## Version: 0.1.0
+## SavedVariablesPerCharacter: VociDiAzerothDB
+## OptionalDeps: totalRP3
+## X-Category: Roleplay
+
+# --- motore ---
+Core.lua
+Engine.lua
+Context.lua
+Events.lua
+UI.lua
+
+# --- lingue dell'interfaccia ---
+Locales\ui_it.lua
+Locales\ui_en.lua
+
+# --- database narrativo di base (stessa API dei pacchetti esterni) ---
+Data\Vocabulary.lua
+Data\Frames.lua
+Data\Combat.lua
+Data\Spells.lua
+Data\Life.lua
+Data\Exploration.lua
+Data\Social.lua

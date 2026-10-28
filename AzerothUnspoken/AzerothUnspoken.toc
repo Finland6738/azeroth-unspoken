@@ -1,0 +1,50 @@
+## Interface: 16001
+## Title: Azeroth Unspoken
+## Notes: An immersive roleplay companion for World of Warcraft
+## Author: Daniel Polo
+## Version: 0.1.0
+## SavedVariables: AzerothUnspokenDB
+## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB
+## OptionalDeps: totalRP3
+## IconTexture: Interface\Icons\INV_Misc_Book_09
+## X-Category: Roleplay
+
+# --- nucleo ---
+Core\Bootstrap.lua
+Core\Compat.lua
+Core\Diagnostics.lua
+Core\Config.lua
+Core\EventBus.lua
+Core\ContextResolver.lua
+
+# --- motore narrativo (non contiene testi) ---
+Engine\PhraseRegistry.lua
+Engine\RuleEngine.lua
+Engine\WeightedSelector.lua
+Engine\TemplateRenderer.lua
+
+# --- integrazioni e uscita ---
+Integration\TotalRP3.lua
+Integration\ChatGateway.lua
+
+# --- sistemi ---
+Systems\Triggers.lua
+
+# --- interfaccia ---
+UI\SpeakButton.lua
+UI\SettingsFrame.lua
+UI\Commands.lua
+
+# --- lingue dell'interfaccia ---
+Data\itIT\Interface.lua
+Data\enUS\Interface.lua
+
+# --- database narrativo di base (stessa API dei pacchetti esterni) ---
+# Data\Classes.lua è pronto ma resta fuori: si integra nello step S3
+Data\Vocabulary.lua
+Data\Frames.lua
+Data\Combat.lua
+Data\Spells.lua
+Data\Life.lua
+Data\Exploration.lua
+Data\Social.lua

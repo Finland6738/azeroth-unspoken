@@ -1,0 +1,12 @@
+# ambiente di test locale (lupa)
+.venv/
+__pycache__/
+*.pyc
+
+# impostazioni dell'IDE
+.idea/
+
+# file di sistema
+Thumbs.db
+desktop.ini
+.DS_Store

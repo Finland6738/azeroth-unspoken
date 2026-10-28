@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="VOCIDIAZEROTH_SPEAK" header="VOCIDIAZEROTH" category="ADDONS">
+		VociDiAzeroth_Speak()
+	</Binding>
+</Bindings>

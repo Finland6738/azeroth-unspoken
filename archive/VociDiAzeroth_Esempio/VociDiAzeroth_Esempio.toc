@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: Voci di Azeroth - Pacchetto di esempio
+## Notes: Esempio di pacchetto di frasi: un evento nuovo (la pesca), regole con script e frasi legate a luoghi.
+## Author: Daniel Polo
+## Version: 0.1.0
+## Dependencies: VociDiAzeroth
+## X-Category: Roleplay
+
+Esempio.lua

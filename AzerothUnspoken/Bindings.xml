@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="AZEROTHUNSPOKEN_SPEAK" header="AZEROTHUNSPOKEN" category="ADDONS">
+		AzerothUnspoken_Speak()
+	</Binding>
+</Bindings>

@@ -1,0 +1,228 @@
+# Azeroth Unspoken: roadmap di sviluppo
+
+**Nome:** Azeroth Unspoken
+**Motto:** *An immersive roleplay companion for World of Warcraft*
+**Descrizione breve:** Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse.
+
+La specifica di riferimento è [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md).
+Al posto di "Immersion Director", il prodotto si chiama **Azeroth Unspoken**.
+Dove il GDD e questo file non coincidono, vale questo file.
+
+## Stato di partenza (prima dello step S1)
+
+- Il prototipo funzionante si chiamava `VociDiAzeroth/`, ora archiviato in `archive/VociDiAzeroth/` (motore e database separati, 374 frasi IT/EN).
+  - Motore: `Core.lua`, `Engine.lua`, `Context.lua`, `Events.lua`, `UI.lua`.
+  - Dati: `Data/*.lua`. Formato descritto in `archive/VociDiAzeroth/FORMATO_PACCHETTI.md`.
+  - Pacchetto di esempio: `archive/VociDiAzeroth_Esempio/`.
+  - Già presenti:
+    - selezione pesata con specificità, usi e tono;
+    - esclusione obbligatoria delle frasi recenti;
+    - memoria salvata tra le sessioni;
+    - condizioni dichiarative, con `not`, `any` e `func`;
+    - segnaposto `{target}` `{player}` `{spell}` `{zone}`, genere `{g:m|f}`, vocabolario e cornici;
+    - lingua scelta dall'utente;
+    - comandi `/voci`, pannello delle impostazioni, pulsante e tasto "pronuncia".
+- `Data/Classes.lua` (ora in `AzerothUnspoken/Data/`): 54 frasi di classe già scritte, **non ancora nel `.toc`** e non testate. Vanno riusate nello step S3/S7.
+- I test fuori dal gioco usano lupa, cioè Lua 5.1 come WoW:
+  - file: `Tests/run_tests.py` e `Tests/MockWoWAPI.lua`;
+  - venv locale nella radice del progetto, fuori dal controllo di versione: `python -m venv .venv`, poi `.venv\Scripts\pip install lupa`;
+  - comando, dalla radice del progetto: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. Senza argomento si usa `AzerothUnspoken`.
+- Client target:
+  - `E:\Blizzard\World of Warcraft\_forever_` (build 1.60.1.70658, `## Interface: 16001`, client in inglese, `WOW_PROJECT_ID == WOW_PROJECT_CAMELOT`);
+  - addon installati in `...\_forever_\Interface\AddOns`. Lì ci sono già `totalRP3`, `Details` e `QuestIT`, utili come riferimento per le API.
+- Le cartelle `SpeakinSpell*` sono l'addon originale per retail. Servivano solo come riferimento e non entrano nel repository.
+
+## Decisioni già prese
+
+1. Il motore e il database narrativo restano separati.
+   - Il database contiene frasi intere e curate, mai frammenti combinati a caso.
+   - È multilingua (IT ed EN, espandibile) e la lingua si sceglie nelle impostazioni, indipendentemente dal client.
+2. Tutto funziona offline: nessuna rete, API esterna o IA. Si espande con pacchetti locali.
+3. **Nessuna pubblicazione automatica** in chat pubblica come comportamento predefinito: si usano il narratore privato e il Chat Gateway (§7.7 del GDD). Le emote automatiche del prototipo si trasformano in proposte.
+4. Si rispettano le protezioni del client:
+   - /say e /yell solo dopo un'azione del giocatore;
+   - nessuna decisione basata su valori segreti;
+   - ogni evento si registra in modo difensivo.
+5. Total RP 3 è facoltativo: l'addon funziona al 100% anche senza.
+6. Stile letterario originale, nello spirito del fantasy epico e del tono di Warcraft, senza citazioni copiate. Registri e "quattro voci" come nel §5 del GDD.
+7. Gli step si eseguono **uno alla volta**, ognuno in una sessione separata, perché toccano gli stessi file.
+8. Il progetto vive nel repository git `E:epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
+   L'utente ha autorizzato commit, push e merge **automatici**, senza chiedere conferma: il PC non è presidiato.
+
+## Regole per ogni sessione di step
+
+### Flusso git (obbligatorio, automatico)
+
+1. Ogni step lavora sul proprio branch (`step/sN-nome`), partito da `main` aggiornato.
+2. Commit piccoli e leggibili durante il lavoro, con messaggi in italiano.
+3. Alla fine, con i test superati:
+   - `git push -u origin <branch>`;
+   - `gh pr create --base main`, con titolo e descrizione che riassumono lo step e ciò che non è stato verificato;
+   - `gh pr merge --squash --delete-branch`, senza chiedere conferma.
+4. Dopo il merge, aggiornare l'installazione in `AddOns` con i file di `main`.
+5. Mai `--force` su `main`, mai riscrivere la storia già pubblicata, mai saltare gli hook.
+6. Se il merge fallisce per conflitti: allineare il branch a `main`, risolvere, ripetere i test e poi fare il merge.
+   Se non si riesce, lasciare la PR aperta e spiegare il problema nel resoconto.
+
+### Lavoro
+
+
+- Leggere questo file e le sezioni del GDD indicate nello step.
+- Lavorare solo sullo step assegnato e lasciare il resto in condizioni funzionanti.
+- Alla fine:
+  1. far passare i test fuori dal gioco, aggiungendo test per ciò che si è costruito;
+  2. aggiornare l'installazione in `AddOns`;
+  3. aggiornare in questo file la riga di stato dello step e le note per lo step successivo;
+  4. riportare con onestà ciò che non è stato verificato, in particolare tutto ciò che richiede il client vero.
+- Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
+
+## Milestone e step
+
+| Step | Milestone | Contenuto | Modello / effort | Stato |
+|---|---|---|---|---|
+| S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
+| S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | da fare |
+| ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05 | utente | da fare |
+| S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | da fare |
+| S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
+| S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
+| S6 | M1 | Living Memory e Diario | Sonnet · high | da fare |
+| S7 | M1 | Contenuti Alpha: 300 intenzioni, almeno 2 varianti | Opus · high | da fare |
+| ✋ G2 | M1 | **Prova in gioco**: vertical slice A (arrivo nella foresta) e C (ritorno) | utente | da fare |
+| S8 | M2 Living NPC (v0.3) | NPC Alive: finestra di dialogo, stati, registro NPC, archetipi | Sonnet · high | da fare |
+| ✋ G3 | M2 | **Prova in gioco**: vertical slice B (locandiere) | utente | da fare |
+| S9 | M3 Personal Stories (v0.45) | Story Arcs a stati e diario evoluto | Sonnet · high | da fare |
+| S10 | M4 Social Beta (v0.5) | Social RP: protocollo addon, consenso, sicurezza | Opus · high | da fare |
+| ✋ G4 | M4 | **Prova con due client** (SP-06) | utente | da fare |
+| S11 | M5 Release (v1.0) | Contenuti fino a 1.000 intenzioni (anche in più sessioni) | Opus · high | da fare |
+| S12 | M5 | Rifinitura: accessibilità, profiling, manuale, privacy, troubleshooting, DoD | Sonnet · medium | da fare |
+
+### S1: rinomina e architettura (GDD §3, §11, §13, §14, §15)
+- Creare `AzerothUnspoken/` con la struttura `Core/ Engine/ Systems/ Integration/ UI/ Data/` del §11.1, adattata: `Tests/` resta alla radice del progetto, fuori dal pacchetto.
+  - Portare lì il motore e il database del prototipo senza perdere funzioni.
+- `.toc`:
+  - titolo "Azeroth Unspoken" e il motto in `## Notes`;
+  - Interface 16001;
+  - SavedVariables `AzerothUnspokenDB` (globali) e `AzerothUnspokenCharacterDB` (per personaggio), con `schemaVersion` e una funzione di migrazione;
+  - non serve migrare i dati di `VociDiAzerothDB`: il prototipo non è mai stato usato in gioco.
+- Comandi `/unspoken` e `/au`: verificare che non vadano in conflitto con gli addon installati.
+- `Core/Compat.lua`:
+  - controlli di disponibilità con stato `AVAILABLE`/`MISSING`/`RESTRICTED`;
+  - registrazione degli eventi protetta;
+  - wrapper per i valori segreti;
+  - `GetBuildInfo`.
+- `Core/EventBus.lua`: eventi normalizzati e deduplicati, nel formato envelope del §11.3.
+- `Core/Config.lua`:
+  - valori predefiniti del §11.4 (intensità 50, profondità `literary`, moduli, privacy, pacing);
+  - merge ricorsivo e validazione.
+- `Core/Diagnostics.lua` e `/au debug`: matrice delle capacità, ultimi eventi, errori intercettati. Questo serve allo spike SP-01/SP-02.
+- Per i controlli sulle API si possono usare le fonti del §22 del GDD, verificate dove possibile sui file degli addon installati.
+- Rimuovere `VociDiAzeroth` e `VociDiAzeroth_Esempio` da `AddOns` e installare `AzerothUnspoken`.
+  - Il pacchetto di esempio diventa `AzerothUnspoken_Example`.
+  - Le cartelle sorgente del prototipo restano nel progetto come archivio.
+- **Fatto quando:** l'addon nuovo ha tutte le funzioni del prototipo, i test passano adattati ai nuovi percorsi, `/au debug` produce una matrice delle capacità e questo file è aggiornato.
+
+#### Esito di S1 e note per S2
+- **Dove sta il codice** (`AzerothUnspoken/`, ordine di caricamento nel `.toc`):
+  - `Core/Bootstrap.lua`: spazio dei nomi `NS` (globale `AzerothUnspoken`), lingue, `NS:L`, `NS:Print`, `NS:RegisterModule(nome)`. Su `ADDON_LOADED` chiama in ordine `Config:Load`, `Compat:Probe`, `EventBus:Start` e poi `OnInit` di ogni modulo, isolato da `Diagnostics:Guard`.
+  - `Core/Compat.lua`: stati `AVAILABLE`/`MISSING`/`RESTRICTED` in `Compat.caps`; `Compat.Query(fn, ...)` (stato più valori, i segreti diventano nil), `SafeCall`, `IsSecret`, `Readable`; `RegisterEvent(frame, evento, unit)` con `C_EventUtils.IsEventValid` e `pcall`; `GetBuildInfo` (riconosce `WOW_PROJECT_CAMELOT`); `IsRestricted(kind)` su `C_RestrictedActions`; `IsUnitIdentitySecret(unit)` su `C_Secrets`; `GetChatSender`, `InChatLockdown`, `GetSpellName`. Queste API compaiono nel codice di Details (`Details_Camelot.toc`) e di TRP3 installati, ma nessuna è stata provata nel client.
+  - `Core/Diagnostics.lua`: `Guard`, `Error` (al massimo 30, raggruppati), `Report`, `CapabilityMatrix`. Comandi: `/au debug`, `/au debug full` (una riga per capacità, con il dettaglio) e `/au debug trace` (stampa ogni evento normalizzato, solo per la sessione).
+  - `Core/Config.lua`: predefiniti del §11.4 più quelli del prototipo, `Merge`, `Validate` (tipi, elenchi, limiti), `Migrate` per `schemaVersion` (`Config.SCHEMA_VERSION = 1`, `Config.migrations.global/character[n]`), `Get/Set` per percorso. `NS.db` = `AzerothUnspokenDB.settings` (account), `NS.cdb` = `AzerothUnspokenCharacterDB` (memoria delle frasi, più `personality`, `memories`, `arcs`, `history` vuoti per S5–S9).
+  - `Core/EventBus.lua`: `Publish(tipo, contesto, {key, expect, fields, source})` crea l'envelope `{type, timestamp, source, context, fields}`. Deduplica per tipo e chiave, con `dedupWindow` (1 s predefinito, finestre proprie per alcuni tipi). Ha una coda di 32 eventi per le pubblicazioni annidate e scarta quelli più vecchi di 5 s. Ci si abbona con `Subscribe(tipo o "*", owner, fn)`. Sorgenti WoW → tipi: `WORLD_ENTER`, `ZONE_ENTER`, `COMBAT_START/END`, `HEALTH_CHANGED`, `PLAYER_DEATH`, `PLAYER_REVIVE`, `LEVEL_UP`, `TARGET_CHANGED`, `SPELL_SENT`, `SPELL_CAST`, `RESTRICTION_CHANGED`.
+  - `Core/ContextResolver.lua`: `NS:BuildContext` del prototipo. Usa Compat, salta il nome del bersaglio se `C_Secrets` lo nasconde e prende il nome RP da `Integration/TotalRP3.lua`.
+  - `Engine/`: `PhraseRegistry` (RegisterPack, traduzioni, statistiche), `RuleEngine` (`when`), `WeightedSelector` (memoria, peso, anti-ripetizione, `Pick`), `TemplateRenderer` (segnaposto, vocabolario, cornici). Logica invariata. Unica differenza: la finestra anti-ripetizione ha come tetto `pacing.recentPhraseWindow` (30) invece di 40.
+  - `Systems/Triggers.lua`: le reazioni di `Events.lua` del prototipo, abbonate al bus (probabilità, pause, `NS:SetEventDefaults`). S4 le sostituisce col Narrative Director.
+  - `Integration/ChatGateway.lua`: l'uscita del prototipo (`NS:Perform`, frase in attesa, `AzerothUnspoken_Speak`, `NS:Trigger`). **S2 lo trasforma nel Chat Gateway vero**: le modalità `PRIVATE`/`PREVIEW`/`CONFIRM_TO_SEND`/`AUTO_ONLY_IF_ALLOWED` sostituiscono `output.mode`, con una migrazione di schema alla versione 2.
+  - `UI/SpeakButton.lua`, `UI/SettingsFrame.lua`, `UI/Commands.lua` (`/unspoken` e `/au`, con gli stessi sottocomandi italiani e inglesi di `/voci`). `Bindings.xml`: `AZEROTHUNSPOKEN_SPEAK`.
+  - `Data/itIT/Interface.lua`, `Data/enUS/Interface.lua` (testi dell'interfaccia); `Data/*.lua` (374 frasi); `Data/Classes.lua` copiato ma **fuori dal `.toc`**: si carica senza errori, 54 frasi, da integrare in S3.
+- **Scelte che S2 deve conoscere:**
+  - La lingua è `settings.locale` e usa il codice corto dei pacchetti (`"it"`, `"en"`), non `"itIT"` come nel §11.4. `Config:NormalizeLocale` accetta anche `itIT`/`enUS`.
+  - **Uscita predefinita:** `output.mode = "self"`, cioè solo anteprima privata in chat locale, e `output.autoPublicSay = false`. Rispetto al prototipo, nulla va in chat pubblica senza una scelta dell'utente. Anche in istanza `/say` parte da solo solo con `autoPublicSay = true`. Le modalità `auto`/`emote` pubblicano ancora emote automatiche, ma solo se l'utente le sceglie: S2 deve trasformarle in proposte.
+  - Il cooldown globale è `pacing.globalCooldownSeconds` (45 s, prima 40). L'opzione "nome da TRP3" è `modules.totalRP3`. Il pulsante è in `settings.ui.showButton` e `settings.ui.buttonPos`.
+  - Il pacchetto di esempio ora ha `id = "example"`. Il motto è in `## Notes`.
+  - Il comando `/au` non è usato dagli addon installati (Details: `/details /dt /de`, TRP3: `/trp3`, QuestIT: `/qit`). Non è stato verificato contro i comandi interni di Blizzard.
+- **Test:** dalla radice del progetto, `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. Esce con codice 1 se un controllo fallisce. Copre database, generazione, anti-ripetizione, l'assenza di chat pubblica con i predefiniti, il flusso eventi → /say col tasto e i comandi (incluso `/au debug`). Esegue anche `Tests/TestCompat.lua`, `TestConfig.lua` e `TestEventBus.lua`, ognuno in un runtime nuovo, con `T.run/T.eq/T.ok` definiti nel mock. Il mock ha `MakeSecret()`, `SECRET_UNITS`, `RESTRICTIONS`, `VALID_EVENTS` (registrare un evento sconosciuto dà errore) e `GetBuildInfo` = 1.60.1/70658/16001.
+- **Non verificato senza il client** (da provare in G1): caricamento reale del `.toc` e delle SavedVariables (SP-01, SP-04); nomi, firme ed esistenza degli eventi e delle API della matrice nella build 70658 (SP-02); `debugstack`, pannello `Settings`, pulsante, binding; comportamento reale dei valori segreti e delle restrizioni; TRP3 vero.
+
+### S2: narratore privato e Chat Gateway (GDD §4, §5.3, §7.7, §12)
+- `UI/NarratorFrame.lua`:
+  - riquadro discreto, non bloccante, spostabile;
+  - durata, opacità e dimensione del testo regolabili;
+  - cronologia recente;
+  - tasto di pausa immediata.
+- `Integration/ChatGateway.lua`:
+  - modalità `PRIVATE` (predefinita), `PREVIEW`, `CONFIRM_TO_SEND`, `AUTO_ONLY_IF_ALLOWED`;
+  - si può modificare la frase prima di inviarla;
+  - si sceglie il canale (say, emote, party...);
+  - protezione dal flood;
+  - mai aggirare la richiesta di un'azione del giocatore.
+- Ogni frase ha uno `speaker`. Finché non c'è lo schema v2, la regola provvisoria è: `say` → voce pubblica del personaggio, `emote` → narratore. In modalità privata compare nel narratore con un'etichetta per la voce.
+- Impostazioni:
+  - lingua, intensità (0–100), profondità (Naturale/Letterario/Elevato), moduli, modalità chat, pausa;
+  - wizard del primo avvio come nel §12.1, saltabile.
+- Il pulsante e il tasto "pronuncia" del prototipo diventano la conferma del Chat Gateway.
+- **Fatto quando:** con le impostazioni predefinite nulla viene pubblicato in chat senza un'azione del giocatore, le frasi appaiono nel narratore privato e i test coprono le modalità del Chat Gateway.
+
+### G1: prova in gioco (utente)
+L'utente esegue gli spike SP-01…SP-05 del GDD seguendo una lista di controllo scritta alla fine dello step S2, e riporta errori e risultati di `/au debug`. **Gli step successivi aspettano questo esito.**
+
+### S3: schema dati v2 e validatore (GDD §9)
+- Registro delle regole separato dai testi:
+  - `Data/Registry*.lua` per id, evento, categoria, speaker, stili, profondità, tag, peso, cooldown e condizioni;
+  - testi per lingua in `Data/itIT/`, `Data/enUS/`, con più varianti per id.
+- L'API dei pacchetti accetta il nuovo formato. Il formato vecchio si converte in caricamento oppure con uno script una tantum.
+- Migrare le 374 frasi e `Classes.lua`:
+  - assegnare speaker, registro e profondità frase per frase, con giudizio;
+  - le cornici e il vocabolario restano, come varianti.
+- Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
+- Aggiornare la guida al formato dei pacchetti.
+
+### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
+- Gate di opportunità guidato dall'intensità; budget per categoria; priorità del §10; silenzio come esito valido; niente cascate di messaggi.
+- Peso `W = B × C × P × N × S`. Gli hook `P` (personalità) e `S` (stile) partono neutri e si riempiono negli step S5 e S2/S3.
+- StyleResolver: registri ammessi per evento, zona, voce e profondità, con un ripiego neutro.
+- Sospensione durante combattimenti impegnativi e schermate invasive.
+- Test con seme RNG controllato: distribuzione, cooldown, ripiego, nessun duplicato nella finestra.
+
+### S5: Character Soul e Total RP 3 (GDD §7.1, §8)
+- Tratti opt-in: temperamento, morale, curiosità, fede, motivazione, ironia, argomenti da evitare, voce interiore. Archetipi pronti e profilo neutro.
+- Tag di affinità sulle frasi; i tratti esclusivi non vengono mai contraddetti.
+- Interfaccia del profilo.
+- Adattatore TRP3:
+  - legge solo dati pubblici del proprio profilo, con consenso;
+  - si disattiva se le API mancano o sono cambiate;
+  - priorità: scelta esplicita > TRP3 > dati di gioco > valori neutri.
+
+### S6: Living Memory e Diario (GDD §7.4, §11.5, §12.2)
+- Tre livelli: episodico, persistente, flag narrativi.
+- Prima visita, ritorno, ultima visita finita male, morti, livelli.
+- Al massimo 500 ricordi, con compattazione, ricordi permanenti e reset.
+- Il richiamo avviene solo se esiste un ricordo vero: aggiungere condizioni come `repeatVisit` e `lastVisitBad`.
+- `UI/JournalFrame.lua`: ricordi, luoghi e flag, con cancellazione selettiva ed esportazione testuale manuale.
+
+### S7: contenuti Alpha (GDD §5, §9.2, §21)
+- 300 intenzioni bilingui; almeno 2 varianti per le scene più comuni; tutte e quattro le voci; tre profondità per i momenti chiave.
+- Coprire a fondo il vertical slice A e C.
+- Rispettare le regole di qualità del §5.4: varietà di lessico e lunghezza, niente lore inventata spacciata per canone.
+
+### S8: NPC Alive (GDD §7.3, §21-B)
+- Finestra di dialogo etichettata "dialogo ambientale dell'addon".
+- Stati `idle → offered → opened → choice → response → ended`.
+- Registro degli NPC tramite `npcID` dal GUID, verificato.
+- Archetipi (locandiere, mercante, guardia) solo con una classificazione affidabile, ad esempio gli eventi di gossip o merchant; nessun dialogo se l'identità è incerta.
+- La finestra non deve interferire con il gossip Blizzard.
+
+### S9: Story Arcs (GDD §7.5)
+- Archi a stati (`LOCKED → DISCOVERED → REFLECTED → RESOLVED`), al massimo 1–2 attivi, saltabili e disattivabili.
+- Persistono dopo il logout e si integrano col diario. Scrivere 3–5 archi di esempio.
+
+### S10: Social RP (GDD §7.6, §14)
+- Messaggi addon con versione del protocollo, schema, limiti di dimensione, throttling e timeout.
+- Opt-in disattivato per impostazione predefinita; lista dei blocchi; nessuna esecuzione di codice ricevuto.
+- Inviti alle scene, accettazione e rifiuto, azioni, chiusura.
+- Rilasciare solo dove il trasporto è dimostrato.
+
+### S11–S12: release 1.0 (GDD §16, §19)
+- Contenuti fino a 1.000 intenzioni.
+- Accessibilità, audio facoltativo (spento), profiling, manuale, privacy, troubleshooting.
+- Spuntare la Definition of Done.
