@@ -92,9 +92,6 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
 | S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | da fare |
 | ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05 | utente | da fare |
-| C1 | M0+ Cronaca | Addon `AzerothUnspoken_Chronicle`: registratore del diario in gioco | Sonnet · high | da fare |
-| C2 | M0+ Cronaca | `tools/chronicle/`: compagno che genera i Markdown per giorno, compatibili con Obsidian | Sonnet · high | da fare |
-| C3 | M0+ Cronaca | (facoltativo) Chat log e combat log del client come fonti aggiuntive | Sonnet · medium | da fare |
 | S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | da fare |
 | S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
@@ -178,65 +175,6 @@ Dove il GDD e questo file non coincidono, vale questo file.
 
 ### G1: prova in gioco (utente)
 L'utente esegue gli spike SP-01…SP-05 del GDD seguendo una lista di controllo scritta alla fine dello step S2, e riporta errori e risultati di `/au debug`. **Gli step successivi aspettano questo esito.**
-
-### C1–C3: Cronaca, il diario narrativo in Markdown (richiesta dell'utente del 2026-10-29)
-
-La valutazione completa e le API verificate sono in [docs/VALUTAZIONE_CRONACA.md](docs/VALUTAZIONE_CRONACA.md).
-
-Scelte approvate dall'utente:
-- un **addon separato** nello stesso repository, più un **programma esterno**, perché un addon non può scrivere file;
-- cartelle con la **data del server** (`<yyyy>\<mm>\<dd>`). Il file si chiama `Giorno N - <zone principali>.md`, dove N è il contatore dei giorni giocati dal personaggio. La radice è per reame e personaggio;
-- output compatibile con **Obsidian**;
-- **whisper e canali pubblici o commerciali spenti** per impostazione predefinita.
-
-**C1: `AzerothUnspoken_Chronicle`, il registratore in gioco.**
-- `## Dependencies: AzerothUnspoken`. Riusa EventBus, Compat, contesto e l'aggancio all'uscita del narratore.
-- SavedVariables proprie: `AzerothUnspokenChronicleDB`, per personaggio, con `schemaVersion`.
-- Ogni voce registrata ha questi campi:
-  - `id` univoco e stabile;
-  - ora del server (`GetServerTime`) e data del calendario del server;
-  - giorno di gioco N;
-  - tipo, zona e sottozona;
-  - attore (nome, tipo, `npcID` se c'è);
-  - testo;
-  - dati specifici dell'evento.
-- Categorie attivabili una per una:
-  - quest: testi di dettaglio, obiettivi, avanzamento e ricompensa, accettazione e consegna;
-  - gossip e opzioni scelte;
-  - frasi degli NPC nel mondo;
-  - frasi di Azeroth Unspoken, con la voce;
-  - chat dei giocatori: say, yell, emote e gruppo accesi; whisper e canali spenti; lista di esclusione;
-  - acquisti, vendite e riparazioni;
-  - bottino, raccolta, denaro e mestieri;
-  - XP, livello e reputazione;
-  - viaggi;
-  - riepilogo dei combattimenti: bersaglio iniziale, durata, esito, XP e bottino subito dopo.
-- I valori segreti si registrano come "non disponibile". Mai aggirare le restrizioni.
-- Comandi:
-  - `/au nota <testo>`: annotazione del giocatore;
-  - `/au cronaca`: stato, pausa, categorie, ritenzione, statistiche.
-- Ritenzione configurabile, 14 giorni per impostazione predefinita, con un limite di dimensione e un avviso.
-- Facoltativo: un promemoria discreto per fare `/reload` nei momenti tranquilli, perché i dati arrivano su disco solo con un salvataggio. Non è mai automatico.
-- Test fuori gioco: ogni categoria, secret, ritenzione, id stabili, cambio data a mezzanotte del server, nessuna registrazione delle categorie spente.
-
-**C2: `tools/chronicle/`, il compagno (Python, solo libreria standard più lupa già in `.venv`, nessuna rete).**
-- Trova i file `WTF\Account\*\*\*\SavedVariables\AzerothUnspoken_Chronicle.lua` e li legge in modo **sicuro**: un parser di dati, oppure Lua in sandbox senza librerie.
-- Genera `<radice>\<Reame>\<Personaggio>\<yyyy>\<mm>\<dd>\Giorno N - <zone>.md` con:
-  - intestazione YAML: personaggio, reame, livello di inizio e fine, zone, quest, persone, durata;
-  - scene, divise da cambi di zona, pause lunghe e combattimenti;
-  - dialoghi come citazioni, con chi parla in grassetto;
-  - frasi del narratore in corsivo, marcate come testo dell'addon;
-  - tabelle per bottino, acquisti e combattimenti;
-  - collegamenti `[[NPC]]` e `[[Giocatore]]`.
-- Pagine Obsidian per ogni NPC e ogni giocatore, con lo storico degli incontri. Quando arriva S6b vi si aggiungono le relazioni.
-- Esportazione **idempotente**: grazie agli `id` non duplica né perde nulla, anche rilanciandolo più volte.
-- Opzioni: radice di uscita, ad esempio una cartella del vault Obsidian; nomi dei giocatori anonimizzati; lingua dei titoli.
-- Si avvia a mano: un comando e un file `.bat`. Facoltativa una modalità che aspetta la chiusura del gioco e poi esporta.
-- Test con file di SavedVariables di esempio.
-
-**C3 (facoltativo): fonti aggiuntive.**
-- `LoggingChat(true)` e `LoggingCombat(true)`, attivabili dall'utente.
-- Il compagno legge `Logs\WoWChatLog.txt` per recuperare la chat persa dopo un crash, e `Logs\WoWCombatLog.txt` per gli esiti dettagliati degli scontri.
 
 ### S3: schema dati v2 e validatore (GDD §9)
 - Registro delle regole separato dai testi:
