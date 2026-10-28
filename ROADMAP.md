@@ -46,7 +46,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 5. Total RP 3 è facoltativo: l'addon funziona al 100% anche senza.
 6. Stile letterario originale, nello spirito del fantasy epico e del tono di Warcraft, senza citazioni copiate. Registri e "quattro voci" come nel §5 del GDD.
 7. Gli step si eseguono **uno alla volta**, ognuno in una sessione separata, perché toccano gli stessi file.
-8. Il progetto vive nel repository git `E:epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
+8. Il progetto vive nel repository git `E:/repository/azeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
    L'utente ha autorizzato commit, push e merge **automatici**, senza chiedere conferma: il PC non è presidiato.
 
 ## Regole per ogni sessione di step
@@ -79,10 +79,10 @@ Dove il GDD e questo file non coincidono, vale questo file.
   - Ogni nuova variabile globale dell'addon (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti) va aggiunta a `diagnostics.globals` in `.luarc.json`.
   - Le API di WoW sono fornite dal plugin: non duplicarle nel progetto.
 - Riferimenti tecnici: [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md).
-  - Il dump delle API di Forever (build 70170) è in `E:epository\WoW-Addons\docspi.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
+  - Il dump delle API di Forever (build 70170) è in `E:/repository/WoW-Addons/docs/api.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
   - Prima di usare una funzione o un evento nuovo, controllarlo lì e poi proteggerlo con Compat.
   - Non copiare file di quel repository nel nostro: non ha una licenza dichiarata.
-  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:epository\WoW-Addons`.
+  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:/repository/WoW-Addons`.
 - Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
 
 ## Milestone e step
@@ -186,7 +186,7 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo una lista di controllo 
   - le cornici e il vocabolario restano, come varianti.
 - Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
 - Aggiornare la guida al formato dei pacchetti.
-- Aggiungere `Tests/check_api.py`: legge `E:epository\WoW-Addons\docspi.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
+- Aggiungere `Tests/check_api.py`: legge `E:/repository/WoW-Addons/docs/api.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
 
 ### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
 - Gate di opportunità guidato dall'intensità; budget per categoria; priorità del §10; silenzio come esito valido; niente cascate di messaggi.
