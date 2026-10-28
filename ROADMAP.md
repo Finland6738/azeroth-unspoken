@@ -91,7 +91,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 |---|---|---|---|---|
 | S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
 | S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | da fare |
+| ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | **rimandata**: l'utente non è disponibile e ha chiesto di proseguire in autonomia (2026-10-29). Da fare al suo ritorno, insieme a G2 |
 | S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | da fare |
 | S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
@@ -107,6 +107,27 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | ✋ G4 | M4 | **Prova con due client** (SP-06) | utente | da fare |
 | S11 | M5 Release (v1.0) | Contenuti fino a 1.000 intenzioni (anche in più sessioni) | Opus · high | da fare |
 | S12 | M5 | Rifinitura: accessibilità, profiling, manuale, privacy, troubleshooting, DoD | Sonnet · medium | da fare |
+
+### Prove in gioco rimandate
+
+Per decisione dell'utente (2026-10-29) lo sviluppo prosegue senza aspettare G1. Di conseguenza:
+- ogni funzione nuova che dipende da un'API non ancora provata nel client va protetta da Compat e deve degradare con eleganza (GDD §3.8);
+- `docs/G1_checklist.md` va aggiornata dagli step che aggiungono comportamenti da verificare in gioco;
+- i problemi trovati in gioco diventeranno issue con l'etichetta `in-game`.
+
+### Attività trasversali
+
+| Attività | Contenuto | Modello / effort | Stato |
+|---|---|---|---|
+| D1 | Documentazione: README professionale, ADR in `docs/adr/`, architettura, guida ai pacchetti, CONTRIBUTING, CHANGELOG, valutazione della wiki GitHub | Sonnet · high | da fare |
+| Q1 | Revisione del codice e della documentazione: bug e miglioramenti aperti come issue GitHub, senza modificare il codice | Opus · medium | da fare |
+| Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente |
+
+### Issue GitHub
+
+- Etichette: `bug`, `enhancement`, `docs`, `in-game` (da verificare nel client), `content` (frasi), `good first issue`, `priority:high|medium|low`.
+- Ogni issue riporta il file e la riga, oppure la funzione, il comportamento atteso e quello osservato, e come riprodurlo (test fuori gioco o passi in gioco).
+- Gli step e le correzioni che risolvono un'issue la chiudono dalla PR (`Closes #N`). Una sessione che trova un problema fuori dal proprio step apre un'issue invece di allargare lo step.
 
 ### S1: rinomina e architettura (GDD §3, §11, §13, §14, §15)
 - Creare `AzerothUnspoken/` con la struttura `Core/ Engine/ Systems/ Integration/ UI/ Data/` del §11.1, adattata: `Tests/` resta alla radice del progetto, fuori dal pacchetto.
