@@ -46,8 +46,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 5. Total RP 3 è facoltativo: l'addon funziona al 100% anche senza.
 6. Stile letterario originale, nello spirito del fantasy epico e del tono di Warcraft, senza citazioni copiate. Registri e "quattro voci" come nel §5 del GDD.
 7. Gli step si eseguono **uno alla volta**, ognuno in una sessione separata, perché toccano gli stessi file.
-8. Il progetto vive nel repository git `E:
-epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
+8. Il progetto vive nel repository git `E:/repository/azeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
    L'utente ha autorizzato commit, push e merge **automatici**, senza chiedere conferma: il PC non è presidiato.
 
 ## Regole per ogni sessione di step
@@ -75,6 +74,15 @@ epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspo
   2. aggiornare l'installazione in `AddOns`;
   3. aggiornare in questo file la riga di stato dello step e le note per lo step successivo;
   4. riportare con onestà ciò che non è stato verificato, in particolare tutto ciò che richiede il client vero.
+- Ambiente dell'utente: JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**.
+  - Annotare con EmmyLua (`---@class`, `---@field`, `---@param`, `---@return`) le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione), così l'IDE completa e controlla i tipi.
+  - Ogni nuova variabile globale dell'addon (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti) va aggiunta a `diagnostics.globals` in `.luarc.json`.
+  - Le API di WoW sono fornite dal plugin: non duplicarle nel progetto.
+- Riferimenti tecnici: [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md).
+  - Il dump delle API di Forever (build 70170) è in `E:/repository/WoW-Addons/docs/api.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
+  - Prima di usare una funzione o un evento nuovo, controllarlo lì e poi proteggerlo con Compat.
+  - Non copiare file di quel repository nel nostro: non ha una licenza dichiarata.
+  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:/repository/WoW-Addons`.
 - Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
 
 ## Milestone e step
@@ -84,6 +92,9 @@ epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspo
 | S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
 | S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | da fare |
+| C1 | M0+ Cronaca | Addon `AzerothUnspoken_Chronicle`: registratore del diario in gioco | Sonnet · high | da fare |
+| C2 | M0+ Cronaca | `tools/chronicle/`: compagno che genera i Markdown per giorno, compatibili con Obsidian | Sonnet · high | da fare |
+| C3 | M0+ Cronaca | (facoltativo) Chat log e combat log del client come fonti aggiuntive | Sonnet · medium | da fare |
 | S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | da fare |
 | S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
@@ -198,6 +209,65 @@ epositoryzeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspo
 ### G1: prova in gioco (utente)
 L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [docs/G1_checklist.md](docs/G1_checklist.md), scritta nello step S2, e riporta errori e risultati di `/au debug`. **Gli step successivi aspettano questo esito.**
 
+### C1–C3: Cronaca, il diario narrativo in Markdown (richiesta dell'utente del 2026-10-29)
+
+La valutazione completa e le API verificate sono in [docs/VALUTAZIONE_CRONACA.md](docs/VALUTAZIONE_CRONACA.md).
+
+Scelte approvate dall'utente:
+- un **addon separato** nello stesso repository, più un **programma esterno**, perché un addon non può scrivere file;
+- cartelle con la **data del server** (`<yyyy>\<mm>\<dd>`). Il file si chiama `Giorno N - <zone principali>.md`, dove N è il contatore dei giorni giocati dal personaggio. La radice è per reame e personaggio;
+- output compatibile con **Obsidian**;
+- **whisper e canali pubblici o commerciali spenti** per impostazione predefinita.
+
+**C1: `AzerothUnspoken_Chronicle`, il registratore in gioco.**
+- `## Dependencies: AzerothUnspoken`. Riusa EventBus, Compat, contesto e l'aggancio all'uscita del narratore.
+- SavedVariables proprie: `AzerothUnspokenChronicleDB`, per personaggio, con `schemaVersion`.
+- Ogni voce registrata ha questi campi:
+  - `id` univoco e stabile;
+  - ora del server (`GetServerTime`) e data del calendario del server;
+  - giorno di gioco N;
+  - tipo, zona e sottozona;
+  - attore (nome, tipo, `npcID` se c'è);
+  - testo;
+  - dati specifici dell'evento.
+- Categorie attivabili una per una:
+  - quest: testi di dettaglio, obiettivi, avanzamento e ricompensa, accettazione e consegna;
+  - gossip e opzioni scelte;
+  - frasi degli NPC nel mondo;
+  - frasi di Azeroth Unspoken, con la voce;
+  - chat dei giocatori: say, yell, emote e gruppo accesi; whisper e canali spenti; lista di esclusione;
+  - acquisti, vendite e riparazioni;
+  - bottino, raccolta, denaro e mestieri;
+  - XP, livello e reputazione;
+  - viaggi;
+  - riepilogo dei combattimenti: bersaglio iniziale, durata, esito, XP e bottino subito dopo.
+- I valori segreti si registrano come "non disponibile". Mai aggirare le restrizioni.
+- Comandi:
+  - `/au nota <testo>`: annotazione del giocatore;
+  - `/au cronaca`: stato, pausa, categorie, ritenzione, statistiche.
+- Ritenzione configurabile, 14 giorni per impostazione predefinita, con un limite di dimensione e un avviso.
+- Facoltativo: un promemoria discreto per fare `/reload` nei momenti tranquilli, perché i dati arrivano su disco solo con un salvataggio. Non è mai automatico.
+- Test fuori gioco: ogni categoria, secret, ritenzione, id stabili, cambio data a mezzanotte del server, nessuna registrazione delle categorie spente.
+
+**C2: `tools/chronicle/`, il compagno (Python, solo libreria standard più lupa già in `.venv`, nessuna rete).**
+- Trova i file `WTF\Account\*\*\*\SavedVariables\AzerothUnspoken_Chronicle.lua` e li legge in modo **sicuro**: un parser di dati, oppure Lua in sandbox senza librerie.
+- Genera `<radice>\<Reame>\<Personaggio>\<yyyy>\<mm>\<dd>\Giorno N - <zone>.md` con:
+  - intestazione YAML: personaggio, reame, livello di inizio e fine, zone, quest, persone, durata;
+  - scene, divise da cambi di zona, pause lunghe e combattimenti;
+  - dialoghi come citazioni, con chi parla in grassetto;
+  - frasi del narratore in corsivo, marcate come testo dell'addon;
+  - tabelle per bottino, acquisti e combattimenti;
+  - collegamenti `[[NPC]]` e `[[Giocatore]]`.
+- Pagine Obsidian per ogni NPC e ogni giocatore, con lo storico degli incontri. Quando arriva S6b vi si aggiungono le relazioni.
+- Esportazione **idempotente**: grazie agli `id` non duplica né perde nulla, anche rilanciandolo più volte.
+- Opzioni: radice di uscita, ad esempio una cartella del vault Obsidian; nomi dei giocatori anonimizzati; lingua dei titoli.
+- Si avvia a mano: un comando e un file `.bat`. Facoltativa una modalità che aspetta la chiusura del gioco e poi esporta.
+- Test con file di SavedVariables di esempio.
+
+**C3 (facoltativo): fonti aggiuntive.**
+- `LoggingChat(true)` e `LoggingCombat(true)`, attivabili dall'utente.
+- Il compagno legge `Logs\WoWChatLog.txt` per recuperare la chat persa dopo un crash, e `Logs\WoWCombatLog.txt` per gli esiti dettagliati degli scontri.
+
 ### S3: schema dati v2 e validatore (GDD §9)
 - Registro delle regole separato dai testi:
   - `Data/Registry*.lua` per id, evento, categoria, speaker, stili, profondità, tag, peso, cooldown e condizioni;
@@ -208,6 +278,7 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [
   - le cornici e il vocabolario restano, come varianti.
 - Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
 - Aggiornare la guida al formato dei pacchetti.
+- Aggiungere `Tests/check_api.py`: legge `E:/repository/WoW-Addons/docs/api.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
 
 ### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
 - Gate di opportunità guidato dall'intensità; budget per categoria; priorità del §10; silenzio come esito valido; niente cascate di messaggi.

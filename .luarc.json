@@ -1,0 +1,22 @@
+{
+  "runtime.version": "Lua 5.1",
+  "diagnostics.globals": [
+    "AzerothUnspoken",
+    "AzerothUnspoken_Speak",
+    "AzerothUnspokenDB",
+    "AzerothUnspokenCharacterDB",
+    "SLASH_AZEROTHUNSPOKEN1",
+    "SLASH_AZEROTHUNSPOKEN2",
+    "BINDING_HEADER_AZEROTHUNSPOKEN",
+    "BINDING_NAME_AZEROTHUNSPOKEN_SPEAK",
+    "issecretvalue"
+  ],
+  "workspace.ignoreDir": [
+    "archive",
+    ".venv",
+    "Tests"
+  ],
+  "workspace.library": [
+    "../WoW-Addons/types"
+  ]
+}

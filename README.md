@@ -36,3 +36,8 @@ python -m venv .venv
 .venv/Scripts/python -m pip install lupa
 .venv/Scripts/python -I -X utf8 Tests/run_tests.py AzerothUnspoken
 ```
+
+## Sviluppo
+
+Il progetto è pensato per JetBrains WebStorm con i plugin EmmyLua e WoW Lua Language Server.
+`.luarc.json` imposta Lua 5.1, le variabili globali dell'addon e le cartelle da ignorare (`archive/`, `.venv/`, `Tests/`).
