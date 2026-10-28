@@ -74,6 +74,10 @@ Dove il GDD e questo file non coincidono, vale questo file.
   2. aggiornare l'installazione in `AddOns`;
   3. aggiornare in questo file la riga di stato dello step e le note per lo step successivo;
   4. riportare con onestà ciò che non è stato verificato, in particolare tutto ciò che richiede il client vero.
+- Ambiente dell'utente: JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**.
+  - Annotare con EmmyLua (`---@class`, `---@field`, `---@param`, `---@return`) le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione), così l'IDE completa e controlla i tipi.
+  - Ogni nuova variabile globale dell'addon (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti) va aggiunta a `diagnostics.globals` in `.luarc.json`.
+  - Le API di WoW sono fornite dal plugin: non duplicarle nel progetto.
 - Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
 
 ## Milestone e step
