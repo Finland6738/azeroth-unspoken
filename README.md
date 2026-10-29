@@ -91,10 +91,11 @@ L'addon risponde a `/au` e a `/unspoken`. Quasi tutti i comandi hanno anche un n
 | `/au lingua [it\|en]` (`language`) | lingua delle frasi e dell'interfaccia |
 | `/au intensita <0-100>` (`intensity`) | quanto spesso parla il narratore: 0 = muto per gli eventi spontanei, 50 = bilanciato, 100 = intenso |
 | `/au profondita naturale\|letterario\|elevato` (`depth`) | profondità dello stile (si salva, ma oggi nessuna frase la usa) |
-| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | che cosa può arrivare in chat; predefinito: `privato` |
+| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | che cosa può arrivare in chat; predefinito: `privato`. `auto` non si attiva al primo comando: mostra un avviso e va ripetuto entro 10 secondi |
 | `/au canale auto\|say\|emote\|gruppo\|incursione\|gilda\|istanza` (`channel`) | canale predefinito delle proposte |
 | `/au dire` (`speak`, `invia`, `send`) | come il tasto "pronuncia": conferma la proposta in attesa, oppure ne propone una nuova |
 | `/au annulla` (`scarta`, `cancel`, `discard`) | scarta la proposta in attesa |
+| `/au copia` (`copy`) | copia la proposta nella casella della chat (la invii tu con Invio): è il pulsante "Nella chat" |
 | `/au narratore [cronologia\|reset\|pulisci]` (`narrator`) | senza argomenti mostra una frase di prova; `cronologia` apre le frasi recenti, `reset` riporta il riquadro al centro, `pulisci` svuota la cronologia |
 | `/au saluto` · `addio` · `brindisi` · `pensiero` · `minaccia` · `grido` · `preghiera` · `vittoria` · `ringrazia` · `scherzo` | chiede una frase per quel momento (`greet`, `farewell`, `toast`, `muse`, `threat`, `battlecry`, `pray`, `victory`, `thanks`, `jest`). Compare come proposta o nel narratore, secondo la modalità chat |
 | `/au incanta <incantesimo>` (`cast`) | frase per un incantesimo, utile nelle macro |
@@ -136,7 +137,7 @@ Il pannello si apre con `/au opzioni` (è registrato anche tra le opzioni degli 
 | `privato` (predefinita) | le frasi restano nel narratore, mai in chat |
 | `anteprima` | le frasi del personaggio diventano proposte; il tasto "pronuncia" apre l'editor e invii con Invio |
 | `conferma` | la proposta è pronta e un clic, un tasto o `/au dire` la inviano; puoi modificarla, cambiare canale o scartarla |
-| `auto` | **solo se la scegli tu**: partono da sole le emote e, nelle istanze, `/say`; tutto il resto resta una proposta |
+| `auto` | **solo se la scegli tu, con un avviso e una conferma**: partono da sole le emote e, nelle istanze, `/say`; tutto il resto resta una proposta |
 
 - La voce *interiore* e quella degli *NPC* non vanno mai in chat.
 - Ci sono limiti di frequenza (almeno 4 secondi tra due invii, al massimo 6 al minuto, 2 in automatico), un tetto di 255 byte per messaggio e nessun invio durante il blocco della chat del client.

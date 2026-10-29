@@ -95,10 +95,11 @@ The addon answers to `/au` and `/unspoken`.
 | `/au lingua [it\|en]` (`language`) | language of lines and interface |
 | `/au intensita <0-100>` (`intensity`) | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
 | `/au profondita naturale\|letterario\|elevato` (`depth`) | style depth (saved, but no line uses it today) |
-| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | what may reach chat; default: `privato` (private). English aliases: `private`, `preview`, `confirm`, `auto` |
+| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | what may reach chat; default: `privato` (private). English aliases: `private`, `preview`, `confirm`, `auto`. `auto` does not turn on with the first command: it shows a warning and must be repeated within 10 seconds |
 | `/au canale auto\|say\|emote\|gruppo\|incursione\|gilda\|istanza` (`channel`) | default channel for proposals (`party`, `raid`, `guild`, `instance` also work) |
 | `/au dire` (`speak`, `invia`, `send`) | same as the "speak" key: confirms the pending proposal, or makes a new one |
 | `/au annulla` (`scarta`, `cancel`, `discard`) | discards the pending proposal |
+| `/au copia` (`copy`) | copies the proposal into the chat box (you send it with Enter): the "To chat" button |
 | `/au narratore [cronologia\|reset\|pulisci]` (`narrator`) | no argument shows a sample line; `cronologia` (`history`) opens recent lines, `reset` moves the box back to the centre, `pulisci` (`clear`) empties the history |
 | `/au saluto` · `addio` · `brindisi` · `pensiero` · `minaccia` · `grido` · `preghiera` · `vittoria` · `ringrazia` · `scherzo` | asks for a line for that moment (`greet`, `farewell`, `toast`, `muse`, `threat`, `battlecry`, `pray`, `victory`, `thanks`, `jest`). It appears as a proposal or in the narrator, depending on the chat mode |
 | `/au incanta <spell>` (`cast`) | a line for a spell, handy in macros |
@@ -140,7 +141,7 @@ The panel opens with `/au opzioni` (it is also registered among the game's addon
 | `privato` / private (default) | lines stay in the narrator, never in chat |
 | `anteprima` / preview | the character's lines become proposals; the "speak" key opens the editor and you send with Enter |
 | `conferma` / confirm | the proposal is ready and a click, a key or `/au dire` sends it; you can edit it, change channel or discard it |
-| `auto` | **only if you choose it**: emotes go out by themselves and, inside instances, `/say`; everything else stays a proposal |
+| `auto` | **only if you choose it, with a warning and a confirmation**: emotes go out by themselves and, inside instances, `/say`; everything else stays a proposal |
 
 - The *inner* and *NPC* voices never go to chat.
 - There are rate limits (at least 4 seconds between two sends, at most 6 per minute, 2 automatic), a 255-byte cap per message, and nothing is sent while the client's chat lockdown is active.
