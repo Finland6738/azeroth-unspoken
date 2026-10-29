@@ -843,9 +843,9 @@ function R:SetLabel(kind, key, text)
 	if not rec then return false end
 	local clean = CleanText(text, self.LABEL_LEN)
 	if clean then
-		local lower = Traits.Lower(clean)
+		local lower = NS.Lower(clean)
 		for _, l in ipairs(self.labels) do
-			if l.id == lower or Traits.Lower(Name(l.name)) == lower then clean = l.id; break end
+			if l.id == lower or NS.Lower(Name(l.name)) == lower then clean = l.id; break end
 		end
 	end
 	rec.label = clean
@@ -966,24 +966,24 @@ function R:Rows(filter)
 	local d = self:Data()
 	local rows = {}
 	if not d then return rows end
-	local text = filter.text and filter.text ~= "" and Traits.Lower(filter.text) or nil
+	local text = filter.text and filter.text ~= "" and NS.Lower(filter.text) or nil
 	local function Add(kind, key, rec)
 		if filter.kind and filter.kind ~= kind then return end
 		local info = self:Resolve(kind, rec)
 		if filter.label and info.label ~= filter.label then return end
 		local name = self:DisplayName(kind, key)
-		if text and not Traits.Lower(name):find(text, 1, true) then return end
+		if text and not NS.Lower(name):find(text, 1, true) then return end
 		table.insert(rows, { kind = kind, key = key, name = name, rec = rec, info = info })
 	end
 	for id, rec in pairs(d.npcs) do Add("npc", id, rec) end
 	for key, rec in pairs(d.players) do Add("player", key, rec) end
 	local sort = filter.sort or "last"
 	local function Cmp(a, b)
-		if sort == "name" then return Traits.Lower(a.name) < Traits.Lower(b.name) end
+		if sort == "name" then return NS.Lower(a.name) < NS.Lower(b.name) end
 		if sort == "kind" then
 			if a.kind ~= b.kind then return a.kind < b.kind end
 		elseif sort == "label" then
-			if a.info.text ~= b.info.text then return Traits.Lower(a.info.text) < Traits.Lower(b.info.text) end
+			if a.info.text ~= b.info.text then return NS.Lower(a.info.text) < NS.Lower(b.info.text) end
 		elseif sort == "disposition" then
 			if a.info.dispositionValue ~= b.info.dispositionValue then return a.info.dispositionValue < b.info.dispositionValue end
 		elseif sort == "familiarity" then
@@ -992,7 +992,7 @@ function R:Rows(filter)
 		else
 			if (a.rec.last or 0) ~= (b.rec.last or 0) then return (a.rec.last or 0) < (b.rec.last or 0) end
 		end
-		return Traits.Lower(a.name) < Traits.Lower(b.name)
+		return NS.Lower(a.name) < NS.Lower(b.name)
 	end
 	-- testi dalla A alla Z, numeri e date dal più alto o recente; `desc` inverte o forza la direzione
 	local textual = sort == "name" or sort == "kind" or sort == "label"
@@ -1388,13 +1388,13 @@ local function FindSubject(self, text)
 	end
 	local key = R.PlayerKey(text)
 	if key and self:Get("player", key) then return "player", key end
-	local lower = Traits.Lower(text)
+	local lower = NS.Lower(text)
 	local d = self:Data()
 	for k in pairs(d.players) do
-		if Traits.Lower(k) == Traits.Lower(key or text) or Traits.Lower(k:match("^[^-]+")) == lower then return "player", k end
+		if NS.Lower(k) == NS.Lower(key or text) or NS.Lower(k:match("^[^-]+")) == lower then return "player", k end
 	end
 	for npcID, rec in pairs(d.npcs) do
-		if rec.name and Traits.Lower(rec.name) == lower then return "npc", npcID end
+		if rec.name and NS.Lower(rec.name) == lower then return "npc", npcID end
 	end
 	return nil
 end
@@ -1433,7 +1433,7 @@ end
 function R:Command(rest)
 	rest = rest or ""
 	local word, arg = rest:match("^([^ ]*) *(.-) *$")
-	word = Traits.Lower(word or "")
+	word = NS.Lower(word or "")
 	if not self:Enabled() then
 		Say(self.readOnly and "rel_readonly" or "rel_off")
 		return
@@ -1475,7 +1475,7 @@ function R:Command(rest)
 		NS:Print(Summary(self, kind, key))
 	elseif action == "set" then
 		local who, axisWord, value = arg:match("^([^ ]+) +([^ ]+) +(-?[%d%.]+)$")
-		local axis = axisWord and AXIS_WORDS[Traits.Lower(axisWord)]
+		local axis = axisWord and AXIS_WORDS[NS.Lower(axisWord)]
 		local kind, key = FindSubject(self, who or "")
 		if not kind then Say("rel_missing", arg); return end
 		if not axis or not self:SetAxis(kind, key, axis, tonumber(value)) then Say("rel_set_usage"); return end
@@ -1494,11 +1494,11 @@ function R:Command(rest)
 		end
 	elseif action == "auto" or action == "attraction" then
 		local name = action == "auto" and "autoRegisterPlayers" or "attraction"
-		local w = Traits.Lower(arg)
+		local w = NS.Lower(arg)
 		if ON_WORDS[w] then self:SetSetting(name, true) elseif OFF_WORDS[w] then self:SetSetting(name, false) end
 		Say(action == "auto" and "rel_auto_now" or "rel_attraction_now", NS:L(self:Setting(name) and "on" or "off"))
 	elseif action == "reset" then
-		local what = RESET_WORDS[Traits.Lower(arg)] or "all"
+		local what = RESET_WORDS[NS.Lower(arg)] or "all"
 		local nowT = GetTime()
 		local p = self.pendingReset
 		if p and p.what == what and nowT <= p.untilT then

@@ -150,8 +150,16 @@ end, build = function(p)
 		Wizard:Render()
 	end)
 	b:SetPoint("TOPLEFT", 16, -110)
+	-- il consenso a leggere i profili degli ALTRI è una scelta a parte, spenta di base
+	Text(p, -148, NS:L("wiz_trp3_others_help"), "GameFontHighlightSmall")
+	local others = W.Button(p, "", 260, 26, function()
+		NS.Interlocutor:SetTRP3Consent(not NS.db.interlocutor.trp3Others)
+		Wizard:Render()
+	end)
+	others:SetPoint("TOPLEFT", 16, -198)
 	return function()
 		b:SetText(Selected(NS:L("opt_rpname"), NS.db.modules.totalRP3))
+		others:SetText(Selected(NS:L("opt_trp3_others"), NS.db.interlocutor.trp3Others))
 	end
 end }
 

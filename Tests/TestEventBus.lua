@@ -150,3 +150,46 @@ T.run("sorgente inesistente nel client", function()
 	FIRE("PLAYER_LOGIN")
 	T.eq(#Diagnostics.errors, errors + 1, "errore del normalizzatore isolato")
 end)
+
+T.run("tabelle limitate e salute segreta (issue #9)", function()
+	ADVANCE(100)
+	-- lanci: nessuna chiave per castGUID, quindi nessuna crescita
+	local before = Bus.lastKeyCount
+	for i = 1, 500 do FIRE("UNIT_SPELLCAST_SENT", "player", "Gnoll", "cast-x" .. i, 133) end
+	T.eq(Bus.lastKeyCount, before, "SPELL_SENT: nessuna chiave di deduplicazione")
+	local n = 0
+	for _ in pairs(Bus.lastKey) do n = n + 1 end
+	T.eq(n, Bus.lastKeyCount, "contatore coerente con la tabella")
+	T.ok(NS.Triggers:PendingCasts() <= 16, "lanci in attesa limitati (nessuna chiusura dei falliti)")
+
+	-- un lancio riuscito libera la voce e il bersaglio resta noto al narratore
+	FIRE("UNIT_SPELLCAST_SENT", "player", "Gnoll", "cast-ok", 133)
+	local pending = NS.Triggers:PendingCasts()
+	FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", "cast-ok", 133)
+	T.eq(NS.Triggers:PendingCasts(), pending - 1, "SPELL_CAST libera la voce")
+
+	-- chiavi sempre nuove con una finestra: la tabella resta sotto il tetto
+	Bus.dedupWindow.TEST_KEYS = 1
+	for i = 1, 2000 do
+		ADVANCE(0.1)
+		Bus:Publish("TEST_KEYS", nil, { key = "k" .. i })
+	end
+	T.ok(Bus.lastKeyCount <= 512, "chiavi limitate: " .. Bus.lastKeyCount)
+	n = 0
+	for _ in pairs(Bus.lastKey) do n = n + 1 end
+	T.eq(n, Bus.lastKeyCount, "contatore coerente dopo la pulizia")
+	-- la pulizia non rompe la deduplicazione in corso
+	Bus:Publish("TEST_KEYS", nil, { key = "ultima" })
+	T.eq(Bus:Publish("TEST_KEYS", nil, { key = "ultima" }), nil, "doppione ancora scartato")
+
+	-- salute segreta: una sola pubblicazione nella finestra lunga
+	ADVANCE(100)
+	P.hp = MakeSecret()
+	local published = Bus.stats.published
+	for _ = 1, 50 do FIRE("UNIT_HEALTH", "player") end
+	T.eq(Bus.stats.published, published + 1, "50 variazioni con salute segreta: un solo evento")
+	ADVANCE(31)
+	FIRE("UNIT_HEALTH", "player")
+	T.eq(Bus.stats.published, published + 2, "dopo la finestra torna un segnale")
+	P.hp = 100
+end)

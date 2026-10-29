@@ -678,3 +678,114 @@ T.run("#14: Compat.OpenChatWith e CopyToChat", function()
 
 	ChatFrame_OpenChat, ChatEdit_ChooseBoxForSend, ChatEdit_ActivateChat = saved[1], saved[2], saved[3]
 end)
+
+---------------------------------------------------------------------------
+-- #13: "Un'altra" cambia la proposta in attesa
+---------------------------------------------------------------------------
+T.run("#13: Reroll sostituisce la proposta senza inviare, tiene canale ed evento", function()
+	Reset()
+	NS:RegisterPack({ id = "t_reroll", phrases = {
+		{ id = "rr.1", event = "t_rr", speaker = "character", it = "Prima frase." },
+		{ id = "rr.2", event = "t_rr", speaker = "character", it = "Seconda frase." },
+		{ id = "rr.3", event = "t_rr", speaker = "character", it = "Terza frase." },
+	} })
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	local f = Narrator:GetFrame()
+
+	-- senza proposta
+	local ok, why = Gateway:Reroll()
+	T.ok(not ok and why == "reroll_empty", "senza proposta: niente da cambiare")
+	T.ok(T.sentContains("nessuna proposta da cambiare"), "e lo dice")
+
+	T.ok(Gateway:Narrate("t_rr", NS:BuildContext(), { form = "say" }), "proposta iniziale")
+	local first = Gateway:GetPending()
+	T.eq(first.event, "t_rr", "la proposta conserva l'evento")
+	T.ok(first.id and first.ctx, "e la frase scelta e il contesto")
+	Gateway:CycleChannel()
+	T.eq(Gateway:GetPending().channel, "EMOTE", "canale scelto dal giocatore")
+	local historyBefore = #Narrator.history
+	local budget = NS.Pacing:Status(GetTime(), 50)
+	SENT = {}
+	ok = Gateway:Reroll()
+	local second = Gateway:GetPending()
+	T.ok(ok and second and second ~= first, "Reroll riesce e crea una nuova proposta")
+	T.ok(second.id ~= first.id, "un'altra frase (id diverso)")
+	T.eq(second.event, "t_rr", "stesso evento")
+	T.eq(second.form, "say", "stessa forma")
+	T.eq(second.channel, "EMOTE", "il canale resta")
+	T.eq(#Public(), 0, "nulla in chat")
+	T.eq(#Narrator.history, historyBefore, "la proposta sostituita esce dalla cronologia")
+	T.eq(Narrator.history[#Narrator.history].text, second.display, "e quella nuova la sostituisce")
+	T.ok(f.text:GetText():find(second.text, 1, true), "il riquadro mostra la nuova frase")
+	local after = NS.Pacing:Status(GetTime(), 50)
+	local same = true
+	for k, v in pairs(budget) do if after[k] ~= v then same = false end end
+	T.ok(same, "il budget del Director non cambia")
+
+	-- il pulsante e il comando
+	local before = Gateway:GetPending()
+	f.anotherBtn:Click()
+	T.ok(Gateway:GetPending() ~= before and #Public() == 0, "il pulsante Un'altra cambia la proposta")
+	before = Gateway:GetPending()
+	SlashCmdList.AZEROTHUNSPOKEN("altra")
+	T.ok(Gateway:GetPending() ~= before or T.sentContains("nessuna frase adatta"), "/au altra")
+	AzerothUnspoken_Reroll()
+	T.eq(#Public(), 0, "il tasto non invia nulla")
+
+	-- con tre frasi c'è sempre un'alternativa alla frase mostrata (l'anti-ripetizione la esclude)
+	local shownId = Gateway:GetPending().id
+	for _ = 1, 10 do
+		Gateway:Reroll()
+		T.ok(Gateway:GetPending().id ~= shownId, "ogni Reroll cambia davvero la frase")
+		shownId = Gateway:GetPending().id
+	end
+end)
+
+T.run("#13: con una sola frase la proposta resta invariata e un avviso lo dice", function()
+	Reset()
+	NS:RegisterPack({ id = "t_reroll1", phrases = {
+		{ id = "rr1.1", event = "t_rr1", speaker = "character", it = "Unica frase." },
+	} })
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Narrate("t_rr1", NS:BuildContext(), { form = "say" })
+	local cur = Gateway:GetPending()
+	T.ok(cur ~= nil, "proposta")
+	SENT = {}
+	local ok, why = Gateway:Reroll()
+	T.ok(not ok and why == "no_phrase", "nessuna alternativa: no_phrase")
+	T.eq(Gateway:GetPending(), cur, "proposta invariata")
+	T.ok(T.sentContains("nessuna frase adatta per 't_rr1'"), "avviso")
+	T.eq(#Public(), 0, "nulla in chat")
+end)
+
+T.run("#13: Reroll con l'editor aperto non perde il testo; il testo modificato viene stampato", function()
+	Reset()
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	-- l'anti-ripetizione ricorda le frasi del test precedente: si riparte da una memoria vuota
+	NS.cdb.memory.recent = {}
+	Gateway:Narrate("t_rr", NS:BuildContext(), { form = "say" })
+	local p = Gateway:GetPending()
+	T.ok(p ~= nil, "proposta")
+	Narrator:OpenEditor()
+	local ok, why = Gateway:Reroll()
+	T.ok(not ok and why == "reroll_editing" and Gateway:GetPending() == p, "con l'editor aperto non cambia")
+	T.ok(T.sentContains("chiudi l'editor"), "e dice perché")
+	Narrator:CloseEditor()
+	Gateway:SetPendingText("Parole mie.")
+	SENT = {}
+	ok = Gateway:Reroll()
+	T.ok(ok and Gateway:GetPending().edited == nil, "dopo la chiusura cambia, senza il testo modificato")
+	T.ok(T.sentContains("Parole mie."), "il testo modificato a mano viene stampato in chat locale")
+end)
+
+T.run("#13: una proposta non pubblica o inviata non si può cambiare", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	Press()
+	local ok, why = Gateway:Reroll()
+	T.ok(not ok and why == "reroll_empty", "dopo l'invio non c'è più nulla da cambiare")
+end)

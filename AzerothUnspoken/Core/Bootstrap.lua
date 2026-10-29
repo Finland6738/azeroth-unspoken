@@ -25,9 +25,47 @@ BINDING_HEADER_AZEROTHUNSPOKEN = "Azeroth Unspoken"
 if GetLocale and GetLocale() == "itIT" then
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Conferma e pronuncia la frase proposta (o improvvisa)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pausa immediata del narratore (attiva/disattiva)"
+	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Cambia la frase proposta con un'altra"
 else
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Confirm and speak the proposed line (or improvise)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pause the narrator immediately (toggle)"
+	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Swap the proposed line for another one"
+end
+
+---------------------------------------------------------------------------
+-- Minuscole e maiuscole sicure per il testo UTF-8
+---------------------------------------------------------------------------
+-- string.lower/upper usano le impostazioni locali del processo: con alcune di esse alterano i byte delle lettere
+-- accentate (UTF-8). Queste versioni trattano solo le lettere ASCII e le lettere accentate del blocco Latin-1
+-- (À-Þ, à-þ), che in UTF-8 sono il byte 195 seguito da un secondo byte: niente dipende dalle impostazioni locali.
+local LOWER, UPPER = {}, {}
+for i = 0, 25 do
+	LOWER[string.char(65 + i)] = string.char(97 + i)
+	UPPER[string.char(97 + i)] = string.char(65 + i)
+end
+
+---Minuscole indipendenti dalle impostazioni locali (ASCII e Latin-1 accentato); il resto resta com'è.
+---@param s any
+---@return string
+function NS.Lower(s)
+	s = tostring(s):gsub("[A-Z]", LOWER)
+	-- À-Þ (195 128-158) -> à-þ (195 160-190), tranne × (195 151)
+	return (s:gsub("\195([\128-\158])", function(c)
+		if c == "\151" then return nil end
+		return "\195" .. string.char(c:byte() + 32)
+	end))
+end
+
+---Maiuscole indipendenti dalle impostazioni locali (ASCII e Latin-1 accentato); il resto resta com'è.
+---@param s any
+---@return string
+function NS.Upper(s)
+	s = tostring(s):gsub("[a-z]", UPPER)
+	-- à-þ (195 160-190) -> À-Þ, tranne ÷ (195 183)
+	return (s:gsub("\195([\160-\190])", function(c)
+		if c == "\183" then return nil end
+		return "\195" .. string.char(c:byte() - 32)
+	end))
 end
 
 ---------------------------------------------------------------------------

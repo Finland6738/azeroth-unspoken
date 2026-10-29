@@ -125,6 +125,13 @@ local function CreatePanel()
 	Row(2, 9, function() return NS:L("opt_soul") end, function() if NS.ProfileFrame then NS.ProfileFrame:Toggle() end end)
 	Row(2, 10, function() return NS:L("opt_journal") end, function() if NS.JournalFrame then NS.JournalFrame:Toggle() end end)
 	Row(2, 11, function() return NS:L("opt_relations") end, function() if NS.RelationsFrame then NS.RelationsFrame:Toggle() end end)
+	-- consenso a leggere il Total RP 3 pubblico degli altri giocatori: spento di base (#37)
+	local others = Row(2, 12, function() return NS:L("opt_trp3_others") .. ": " .. OnOff(NS.db.interlocutor.trp3Others) end,
+		function()
+			local on = NS.Interlocutor:SetTRP3Consent(not NS.db.interlocutor.trp3Others)
+			NS:Print(NS:L(on and "other_trp3_on" or "other_trp3_off"))
+		end)
+	W.Tooltip(others, function() return NS:L("opt_trp3_others_tip") end)
 
 	-- moduli: griglia a quattro colonne
 	local modTitle = panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")

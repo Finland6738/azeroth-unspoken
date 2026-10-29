@@ -514,6 +514,48 @@ T.run("azioni: duello, invito, emote rivolte a noi, scambio, incarico, gruppo, a
 	T.ok(e ~= nil and e.name == "Dario" and e.actions.emote ~= nil, "autore dell'emote come interlocutore")
 	ADVANCE(I.EMOTE_SECONDS + 1)
 	T.eq(Ctx().other, nil, "per poco")
+	-- #38: senza la parola "you" (altre lingue) vale il destinatario indicato dal client, indipendente dalla lingua
+	ADVANCE(5)
+	I.actions["player:Dario-TestRealm"] = nil
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario te saluda.", "Dario-TestRealm")
+	T.eq(I.actions["player:Dario-TestRealm"], nil, "client inglese: 'te' non è 'you', nessun destinatario: non si riconosce")
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario te saluda.", "Dario-TestRealm", "", "", "Garrosh")
+	T.ok(I.actions["player:Dario-TestRealm"] and I.actions["player:Dario-TestRealm"].emote, "destinatario = il nostro personaggio")
+	I.actions["player:Dario-TestRealm"] = nil
+	ADVANCE(5)
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario saluda.", "Dario-TestRealm", "", "", "Garrosh-TestRealm")
+	T.ok(I.actions["player:Dario-TestRealm"], "destinatario con il reame")
+	I.actions["player:Dario-TestRealm"] = nil
+	ADVANCE(5)
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario saluda.", "Dario-TestRealm", "", "", "Elia")
+	T.eq(I.actions["player:Dario-TestRealm"], nil, "destinatario un altro: non è rivolta a noi")
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario saluda.", "Dario-TestRealm", "", "", MakeSecret())
+	T.eq(I.actions["player:Dario-TestRealm"], nil, "destinatario segreto: ignorato")
+	-- tabelle per lingua (best effort, da verificare nei client veri)
+	local you = {
+		{ "enUS", "Dario bows before you.", true }, { "enGB", "Dario waves at you.", true },
+		{ "deDE", "Dario winkt dir zu.", true }, { "deDE", "Dario begrüßt dich.", true },
+		{ "frFR", "Dario vous salue.", true }, { "esES", "Dario te saluda.", true }, { "esMX", "Dario te saluda.", true },
+		{ "itIT", "Dario ti saluta.", true }, { "itIT", "Dario saluta la folla.", false },
+		{ "ptBR", "Dario cumprimenta você.", true }, { "ruRU", "Дарио приветствует вас.", true },
+		{ "koKR", "Dario님이 당신에게 손을 흔듭니다.", true }, { "zhCN", "Dario对你挥手。", true },
+		{ "zhTW", "Dario對你揮手。", true }, { "enUS", "Dario waves.", false }, { "esES", "Dario saluda.", false },
+		{ "itIT", "Dario applaude, TE-TE!", true }, { "xxXX", "Dario you te ti", false },
+		{ "enUS", "Dario salutes the youth.", false },
+	}
+	for _, row in ipairs(you) do
+		T.eq(I.TextAddressesYou(row[2], row[1]), row[3], ("%s: %s"):format(row[1], row[2]))
+	end
+	-- il client in un'altra lingua: l'emote si registra con il testo, senza conservarlo
+	local savedLocale = GetLocale
+	GetLocale = function() return "itIT" end
+	I.actions["player:Dario-TestRealm"] = nil
+	ADVANCE(5)
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario ti saluta.", "Dario-TestRealm")
+	T.ok(I.actions["player:Dario-TestRealm"] and I.actions["player:Dario-TestRealm"].emote, "client italiano: l'emote è rivolta a noi")
+	GetLocale = savedLocale
+	I.actions["player:Dario-TestRealm"] = nil
+	ADVANCE(5)
 	-- scambio
 	P.npc = Player("Fara")
 	FIRE("TRADE_SHOW")

@@ -33,6 +33,8 @@ end
 
 local combatStart, lowHpDone, wasDead, lastZone
 local sentTargets = {}   -- [castGUID] = nome del bersaglio
+local sentCount = 0
+local MAX_SENT = 16      -- lanci in attesa di esito: i falliti o interrotti non devono accumularsi (issue #9)
 
 -- incantesimi che non meritano mai una frase
 local SKIP = {
@@ -57,18 +59,35 @@ function handlers.WORLD_ENTER(env)
 	wasDead = env.context.deadOrGhost
 end
 
+-- lanci in attesa di esito (per i test e la diagnostica)
+---@return integer
+function Triggers:PendingCasts() return sentCount end
+
+local function ForgetSent(castGUID)
+	if castGUID and sentTargets[castGUID] ~= nil then
+		sentTargets[castGUID] = nil
+		sentCount = sentCount - 1
+	end
+end
+
 function handlers.SPELL_SENT(env)
 	local c = env.context
-	if c.castGUID and c.target then sentTargets[c.castGUID] = c.target end
+	if not (c.castGUID and c.target) then return end
+	-- se troppi lanci non hanno mai avuto un esito (falliti, interrotti), si riparte da zero: contano solo gli ultimi
+	if sentTargets[c.castGUID] == nil then
+		if sentCount >= MAX_SENT then sentTargets, sentCount = {}, 0 end
+		sentCount = sentCount + 1
+	end
+	sentTargets[c.castGUID] = c.target
 end
 
 function handlers.SPELL_CAST(env)
 	local c = env.context
 	local target = c.castGUID and sentTargets[c.castGUID]
-	if c.castGUID then sentTargets[c.castGUID] = nil end
+	ForgetSent(c.castGUID)
 	local name = c.spell
 	if type(name) ~= "string" then return end
-	local lower = name:lower()
+	local lower = NS.Lower(name)
 	if SKIP[lower] or NS.db.ignored[lower] then return end
 
 	local kind = NS:ClassifySpell(name)

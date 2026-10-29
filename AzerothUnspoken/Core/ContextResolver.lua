@@ -13,7 +13,7 @@ NS.spellKeywords = { kind = {}, element = {} }
 NS.classElement = {}        -- elemento di ripiego per classe
 
 function NS:RegisterZoneMoods(map)
-	for zone, mood in pairs(map) do self.zoneMoods[zone:lower()] = mood end
+	for zone, mood in pairs(map) do self.zoneMoods[NS.Lower(zone)] = mood end
 end
 
 -- { kind = { heal = {"heal", "cura"} }, element = { fire = {...} }, classElement = { MAGE = "arcane" } }
@@ -25,7 +25,7 @@ function NS:RegisterSpellKeywords(def)
 			self.spellKeywords[group] = self.spellKeywords[group] or {}
 			for key, words in pairs(entries) do
 				local list = self.spellKeywords[group][key] or {}
-				for _, w in ipairs(words) do table.insert(list, w:lower()) end
+				for _, w in ipairs(words) do table.insert(list, NS.Lower(w)) end
 				self.spellKeywords[group][key] = list
 			end
 		end
@@ -40,7 +40,7 @@ local ORDER = {
 }
 local function Classify(group, name)
 	if not name then return nil end
-	name = name:lower()
+	name = NS.Lower(name)
 	local defs = NS.spellKeywords[group] or {}
 	local keys, seen = {}, {}
 	for _, k in ipairs(ORDER[group] or {}) do table.insert(keys, k); seen[k] = true end
@@ -69,7 +69,7 @@ local CREATURE_KEY = { "undead", "demon", "dragon", "elemental", "beast", "giant
 
 local function CreatureKey(localized)
 	if not localized then return nil end
-	localized = localized:lower()
+	localized = NS.Lower(localized)
 	for i, words in ipairs(CREATURE) do
 		for _, w in ipairs(words) do
 			if localized:find(w, 1, true) then return CREATURE_KEY[i] end
@@ -181,7 +181,7 @@ function NS:BuildContext(extra)
 	ctx.zone = SafeCall(GetRealZoneText) or SafeCall(GetZoneText)
 	ctx.subzone = SafeCall(GetSubZoneText)
 	if ctx.subzone == "" then ctx.subzone = nil end
-	ctx.mood = ctx.zone and self.zoneMoods[ctx.zone:lower()]
+	ctx.mood = ctx.zone and self.zoneMoods[NS.Lower(ctx.zone)]
 	if ctx.resting and not ctx.mood then ctx.mood = "town" end
 	-- il luogo (S6c, Systems/Place.lua): uiMapID, tag e temi, territorio, istanza, scontro con un boss, ruolo nel gruppo.
 	-- Va letto prima della memoria, che riconosce il luogo dalla sua chiave stabile (issue #31).

@@ -35,6 +35,7 @@ NS:RegisterLanguage("it", {
 		voice_narrator = "Narratore", voice_inner = "Voce interiore", voice_character = "Personaggio", voice_npc = "NPC",
 		proposal_for = "proposta per %s", sent_to = "inviato in %s",
 		btn_send = "Invia", btn_edit = "Modifica", btn_discard = "Scarta", btn_copy = "Nella chat",
+		btn_another = "Un'altra", tip_another = "Cambia la frase proposta con un'altra per lo stesso momento (non invia nulla).",
 		tip_copy = "Copia la frase nella casella della chat, già sul canale giusto: la invii tu con Invio.",
 		tip_pause = "Pausa immediata (di nuovo per riprendere)", tip_history = "Cronologia recente",
 		tip_close = "Nascondi (e scarta la proposta)", tip_channel = "Cambia canale",
@@ -43,6 +44,9 @@ NS:RegisterLanguage("it", {
 
 		-- Chat Gateway
 		gw_empty = "niente da inviare.",
+		gw_reroll_empty = "nessuna proposta da cambiare.",
+		gw_reroll_editing = "stai modificando la proposta: chiudi l'editor (Esc) prima di cambiare frase.",
+		gw_reroll_kept = "la tua versione modificata è stata sostituita. Il testo era: %s",
 		gw_no_chat_box = "il client non offre la casella della chat da riempire: usa Invia.",
 		gw_copy_failed = "non sono riuscito ad aprire la casella della chat: usa Invia.",
 		gw_needs_action = "per questo canale serve un'azione tua: premi il tasto o il pulsante 'pronuncia'.",
@@ -79,6 +83,9 @@ NS:RegisterLanguage("it", {
 		opt_cooldown = "Pausa tra le frasi", opt_chatmode = "Chat", opt_auto = "Invio automatico",
 		opt_channel = "Canale predefinito",
 		opt_button = "Pulsante 'pronuncia'", opt_rpname = "Nome da Total RP 3",
+		opt_trp3_others = "Leggi il Total RP 3 degli altri",
+		opt_trp3_others_tip = "Con il tuo consenso l'addon legge, dai profili pubblici Total RP 3 degli altri giocatori, solo razza, classe e tratti psicologici: mai note, storia o testi. Spento di base; serve anche «Nome da Total RP 3» acceso.",
+		wiz_trp3_others_help = "Facoltativo, spento di base: leggere dai profili pubblici degli ALTRI giocatori solo razza, classe e tratti, per far reagire il narratore a chi hai davanti. Mai note né storia.",
 		opt_pause = "Metti in pausa il narratore", opt_resume = "Riprendi il narratore",
 		opt_wizard = "Riapri la procedura guidata",
 		opt_narrator = "Riquadro del narratore", opt_duration = "Durata del testo",
@@ -173,6 +180,7 @@ NS:RegisterLanguage("it", {
 			.. "/au chat privato|anteprima|conferma|auto - cosa può arrivare in chat (predefinito: privato; auto chiede conferma)\n"
 			.. "/au canale auto|say|emote|gruppo|incursione|gilda|istanza\n"
 			.. "/au dire - conferma la proposta in attesa (anche da macro o tasto)\n"
+			.. "/au altra - cambia la proposta in attesa con un'altra frase (non invia nulla)\n"
 			.. "/au annulla - scarta la proposta\n"
 			.. "/au copia - copia la proposta nella casella della chat (la invii tu con Invio)\n"
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"

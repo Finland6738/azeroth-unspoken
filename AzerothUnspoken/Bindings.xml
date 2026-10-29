@@ -2,6 +2,9 @@
 	<Binding name="AZEROTHUNSPOKEN_SPEAK" header="AZEROTHUNSPOKEN" category="ADDONS">
 		AzerothUnspoken_Speak()
 	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_REROLL" category="ADDONS">
+		AzerothUnspoken_Reroll()
+	</Binding>
 	<Binding name="AZEROTHUNSPOKEN_PAUSE" category="ADDONS">
 		AzerothUnspoken_TogglePause()
 	</Binding>

@@ -30,6 +30,7 @@ NS:RegisterLanguage("en", {
 		voice_narrator = "Narrator", voice_inner = "Inner voice", voice_character = "Character", voice_npc = "NPC",
 		proposal_for = "proposal for %s", sent_to = "sent to %s",
 		btn_send = "Send", btn_edit = "Edit", btn_discard = "Discard", btn_copy = "To chat",
+		btn_another = "Another", tip_another = "Swap the proposed line for another one for the same moment (sends nothing).",
 		tip_copy = "Copy the line into the chat box, already on the right channel: you send it with Enter.",
 		tip_pause = "Pause right now (again to resume)", tip_history = "Recent history",
 		tip_close = "Hide (and discard the proposal)", tip_channel = "Change channel",
@@ -38,6 +39,9 @@ NS:RegisterLanguage("en", {
 
 		-- Chat Gateway
 		gw_empty = "nothing to send.",
+		gw_reroll_empty = "no proposal to change.",
+		gw_reroll_editing = "you are editing the proposal: close the editor (Esc) before changing the line.",
+		gw_reroll_kept = "your edited version was replaced. The text was: %s",
 		gw_no_chat_box = "the client offers no chat box to fill: use Send.",
 		gw_copy_failed = "could not open the chat box: use Send.",
 		gw_needs_action = "this channel needs an action from you: press the 'speak' key or button.",
@@ -74,6 +78,9 @@ NS:RegisterLanguage("en", {
 		opt_cooldown = "Pause between lines", opt_chatmode = "Chat", opt_auto = "Automatic sending",
 		opt_channel = "Default channel",
 		opt_button = "'Speak' button", opt_rpname = "Name from Total RP 3",
+		opt_trp3_others = "Read others' Total RP 3",
+		opt_trp3_others_tip = "With your consent the addon reads, from other players' public Total RP 3 profiles, only race, class and psychological traits: never notes, history or texts. Off by default; 'Name from Total RP 3' must be on too.",
+		wiz_trp3_others_help = "Optional, off by default: read only race, class and traits from OTHER players' public profiles, so the narrator can react to who is in front of you. Never notes or history.",
 		opt_pause = "Pause the narrator", opt_resume = "Resume the narrator",
 		opt_wizard = "Reopen the setup guide",
 		opt_narrator = "Narrator box", opt_duration = "Text duration",
@@ -168,6 +175,7 @@ NS:RegisterLanguage("en", {
 			.. "/au chat private|preview|confirm|auto - what may reach chat (default: private; auto asks for confirmation)\n"
 			.. "/au channel auto|say|emote|party|raid|guild|instance\n"
 			.. "/au speak - confirm the waiting proposal (also from a macro or key)\n"
+			.. "/au another - swap the pending proposal for another line (sends nothing)\n"
 			.. "/au cancel - discard the proposal\n"
 			.. "/au copy - copy the proposal into the chat box (you send it with Enter)\n"
 			.. "/au narrator [history|reset|clear] - the narrator box\n"

@@ -13,6 +13,8 @@
     "TRP3_API",
     "AddOn_TotalRP3",
     "AzerothUnspoken_TogglePause",
+    "AzerothUnspoken_Reroll",
+    "BINDING_NAME_AZEROTHUNSPOKEN_REROLL",
     "BINDING_NAME_AZEROTHUNSPOKEN_PAUSE"
   ],
   "workspace.ignoreDir": [

@@ -371,12 +371,11 @@ function Traits.Describe(def, traits)
 	return #names > 0 and table.concat(names, ", ") or nil
 end
 
----Minuscole solo per le lettere ASCII: lower() lascia intatti i byte delle lettere accentate (UTF-8), che con alcune
----impostazioni locali verrebbero alterati.
+---Ripiego per il vecchio nome: la funzione vive in `NS.Lower` (Core/Bootstrap.lua, issue #26).
 ---@param s string
 ---@return string
 function Traits.Lower(s)
-	return (tostring(s):gsub("[A-Z]", string.lower))
+	return NS.Lower(s)
 end
 
 ---Interpreta un testo dell'utente come valore di un tratto: il valore stesso, il suo nome localizzato (senza
@@ -386,14 +385,14 @@ end
 ---@return string|number|nil value
 function Traits.ParseValue(def, text)
 	if type(text) ~= "string" then return nil end
-	local t = Traits.Lower(text)
+	local t = NS.Lower(text)
 	if t == "" then return nil end
 	if def.kind == "scale" then
 		local n = tonumber(t)
 		if n then return math.max(def.min, math.min(def.max, n)) end
 		local low = def.min
 		for _, band in ipairs(def.bands or {}) do
-			if band[1] == t or Traits.Lower(Traits.ValueName(def.id, band[1])) == t then
+			if band[1] == t or NS.Lower(Traits.ValueName(def.id, band[1])) == t then
 				return math.floor((low + band[2]) / 2 + 0.5)
 			end
 			low = band[2]
@@ -401,7 +400,7 @@ function Traits.ParseValue(def, text)
 		return nil
 	end
 	for _, value in ipairs(def.values) do
-		if value == t or Traits.Lower(Traits.ValueName(def.id, value)) == t then return value end
+		if value == t or NS.Lower(Traits.ValueName(def.id, value)) == t then return value end
 	end
 	return nil
 end

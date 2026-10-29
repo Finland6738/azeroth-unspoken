@@ -142,7 +142,7 @@ function NS:RegisterPlaces(def)
 			Place.zones[name] = c
 			if c.map then Place.byMap[c.map] = c end
 			-- l'atmosfera principale resta disponibile come ctx.mood (S1-S4)
-			if c.mood and not NS.zoneMoods[name:lower()] then NS.zoneMoods[name:lower()] = c.mood end
+			if c.mood and not NS.zoneMoods[NS.Lower(name)] then NS.zoneMoods[NS.Lower(name)] = c.mood end
 		end
 	end
 	for name, e in pairs(def.subzones or EMPTY) do
@@ -211,7 +211,7 @@ function Place:ReadMap()
 		local i = id == mapID and info or Compat.SafeCall("C_Map.GetMapInfo", id)
 		if type(i) ~= "table" then break end
 		if i.mapType == continentType then
-			continent = self.continents[id] or (Str(i.name) and Traits.Lower(i.name):gsub("[^a-z]", "")) or nil
+			continent = self.continents[id] or (Str(i.name) and NS.Lower(i.name):gsub("[^a-z]", "")) or nil
 			break
 		end
 		id = Num(i.parentMapID)
@@ -291,7 +291,7 @@ function Place:Read(ctx)
 	local sub = p.subzone and self.subzones[p.subzone]
 	if sub then for t in pairs(sub.tags) do p.tags[t] = true end end
 	-- l'atmosfera principale (come ctx.mood): dati della zona, poi le atmosfere registrate per nome
-	p.mood = (entry and entry.mood) or (p.zone and NS.zoneMoods[p.zone:lower()]) or nil
+	p.mood = (entry and entry.mood) or (p.zone and NS.zoneMoods[NS.Lower(p.zone)]) or nil
 	if p.mood then p.tags[p.mood] = true end
 
 	-- territorio: il client prima, i dati come ripiego (chi governa la zona rispetto alla fazione del personaggio)

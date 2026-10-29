@@ -14,7 +14,7 @@ local function MatchValue(expected, actual)
 	end
 	if type(expected) == "boolean" then return (not not actual) == expected end
 	if type(expected) == "string" and type(actual) == "string" then
-		return expected:lower() == actual:lower()
+		return NS.Lower(expected) == NS.Lower(actual)
 	end
 	return expected == actual
 end
@@ -22,9 +22,9 @@ end
 -- testo contenuto (senza pattern) in uno dei valori
 local function ContainsAny(patterns, value)
 	if not value then return false end
-	value = value:lower()
+	value = NS.Lower(value)
 	for _, pat in ipairs(AsList(patterns)) do
-		if value:find(pat:lower(), 1, true) then return true end
+		if value:find(NS.Lower(pat), 1, true) then return true end
 	end
 	return false
 end
@@ -469,7 +469,7 @@ local function CheckSub(when, path, scope, Add)
 				if type(domain) == "function" then domain = domain() end
 				if domain and next(domain) ~= nil and type(v) ~= "boolean" then
 					for _, x in ipairs(AsList(v)) do
-						if type(x) == "string" and not domain[x] and not domain[x:lower()] then
+						if type(x) == "string" and not domain[x] and not domain[NS.Lower(x)] then
 							Add(("'%s': valore '%s' sconosciuto"):format(name, x))
 						end
 					end
@@ -515,7 +515,7 @@ function Engine.CheckConditions(when, path)
 				local domain = Engine.CONDITION_VALUES[k]
 				if domain then
 					for _, x in ipairs(AsList(v)) do
-						if type(x) == "string" and not domain[x] and not domain[x:lower()] then
+						if type(x) == "string" and not domain[x] and not domain[NS.Lower(x)] then
 							Add(("'%s': valore '%s' sconosciuto"):format(name, x))
 						end
 					end

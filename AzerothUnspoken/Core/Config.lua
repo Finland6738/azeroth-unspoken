@@ -251,7 +251,7 @@ end
 function Config:NormalizeLocale(v)
 	if type(v) ~= "string" then return nil end
 	if NS.languages[v] then return v end
-	local short = v:sub(1, 2):lower()
+	local short = NS.Lower(v:sub(1, 2))
 	if NS.languages[short] then return short end
 	return nil
 end

@@ -8,6 +8,8 @@ NS.EventBus = EventBus
 local MAX_RECENT = 25     -- eventi tenuti per la diagnostica
 local MAX_QUEUE = 32      -- eventi pubblicati durante la consegna di un altro
 local STALE = 5           -- secondi oltre i quali un evento in coda non serve più
+local MAX_KEYS = 256      -- chiavi di deduplicazione tenute prima di una pulizia (issue #9)
+local MAX_WINDOW = 60     -- finestre di deduplicazione più lunghe di così non sono supportate: serve alla pulizia
 
 EventBus.SOURCE = { WOW = "WOW_API", USER = "USER", ADDON = "ADDON", SIMULATED = "SIMULATED" }
 EventBus.subscribers = {}   -- [tipo o "*"] = { { owner, fn }, ... }
@@ -15,8 +17,9 @@ EventBus.recent = {}
 EventBus.rawSeen = {}       -- [evento WoW] = quante volte è arrivato
 EventBus.seen = {}          -- [tipo] = quante volte è stato pubblicato
 EventBus.lastKey = {}       -- [tipo:chiave] = momento dell'ultima pubblicazione
+EventBus.lastKeyCount = 0
 EventBus.stats = { published = 0, delivered = 0, deduplicated = 0, dropped = 0 }
--- secondi entro cui lo stesso tipo con la stessa chiave è un doppione
+-- secondi entro cui lo stesso tipo con la stessa chiave è un doppione (al massimo MAX_WINDOW)
 EventBus.dedupWindow = { default = 1 }
 
 local queue, dispatching = {}, false
@@ -59,12 +62,30 @@ function EventBus:NewEnvelope(eventType, context, opts)
 	return env
 end
 
-function EventBus:IsDuplicate(env, key)
-	local window = self.dedupWindow[env.type]
+-- Toglie le chiavi più vecchie della finestra più lunga: la tabella resta limitata in una sessione lunga (issue #9).
+function EventBus:PruneKeys(now)
+	local kept = 0
+	for id, t in pairs(self.lastKey) do
+		if now - t >= MAX_WINDOW then self.lastKey[id] = nil else kept = kept + 1 end
+	end
+	-- una raffica di chiavi tutte recenti: meglio perdere la deduplicazione che la memoria
+	if kept > MAX_KEYS * 2 then
+		self.lastKey, kept = {}, 0
+	end
+	self.lastKeyCount = kept
+end
+
+-- window: finestra di questa pubblicazione (prevale su quella del tipo)
+function EventBus:IsDuplicate(env, key, window)
+	window = window or self.dedupWindow[env.type]
 	if window == nil then window = key ~= nil and self.dedupWindow.default or 0 end
 	if window <= 0 then return false end
 	local id = env.type .. ":" .. tostring(key or "")
 	local last = self.lastKey[id]
+	if last == nil then
+		if self.lastKeyCount >= MAX_KEYS then self:PruneKeys(env.timestamp) end
+		self.lastKeyCount = self.lastKeyCount + 1
+	end
 	self.lastKey[id] = env.timestamp
 	return last ~= nil and env.timestamp - last < window
 end
@@ -86,9 +107,10 @@ local function Deliver(self, env)
 end
 
 -- Pubblica un evento. Restituisce l'envelope, oppure nil se era un doppione.
+-- opts: vedi NewEnvelope; window = finestra di deduplicazione di questa sola pubblicazione.
 function EventBus:Publish(eventType, context, opts)
 	local env = self:NewEnvelope(eventType, context, opts)
-	if self:IsDuplicate(env, opts and opts.key) then
+	if self:IsDuplicate(env, opts and opts.key, opts and opts.window) then
 		self.stats.deduplicated = self.stats.deduplicated + 1
 		return nil
 	end
@@ -179,6 +201,9 @@ end
 EventBus.dedupWindow.ZONE_ENTER = 3
 EventBus.dedupWindow.PLAYER_REVIVE = 2
 EventBus.dedupWindow.TARGET_CHANGED = 0.2
+-- il castGUID è diverso a ogni lancio: per SPELL_SENT una chiave unica non deduplicherebbe nulla (issue #9).
+-- SPELL_CAST la tiene, per i doppioni dello stesso lancio: la pulizia di PruneKeys ne limita il numero
+EventBus.dedupWindow.SPELL_SENT = 0
 
 EventBus:AddSource("PLAYER_ENTERING_WORLD", { normalize = function(isLogin, isReload)
 	local zone, subzone, state, mapID = Zone()
@@ -205,7 +230,8 @@ EventBus:AddSource("UNIT_HEALTH", { unit = "player", normalize = function(unit)
 	local s1, hp = Compat.Query("UnitHealth", "player")
 	local s2, hpMax = Compat.Query("UnitHealthMax", "player")
 	if s1 ~= "AVAILABLE" or s2 ~= "AVAILABLE" or not hp or not hpMax or hpMax <= 0 then
-		return "HEALTH_CHANGED", { unit = unit }, { fields = { hp = Compat.RESTRICTED } }
+		-- salute segreta: nessuno la usa, basta un segnale ogni tanto (resta visibile in /au debug), non uno per ogni variazione
+		return "HEALTH_CHANGED", { unit = unit }, { key = "secret", window = 30, fields = { hp = Compat.RESTRICTED } }
 	end
 	local ratio = hp / hpMax
 	-- a scatti del 5%: le variazioni minime non generano eventi nuovi

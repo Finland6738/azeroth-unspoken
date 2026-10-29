@@ -1,7 +1,7 @@
 -- Azeroth Unspoken: la finestra "Relazioni" (S6b, GDD §7.4, §12.2).
 -- Tre viste: l'elenco (tabella ordinabile e filtrabile per NPC/giocatori, etichetta e nome), le persone incontrate
 -- (candidati proposti dal sistema: entrano in lista solo con un clic dell'utente) e il dettaglio di una relazione, con
--- cursori per gli assi, etichetta, nota e tag. In basso le opzioni (NPC automatici, attrazione, registra
+-- cursori per gli assi, etichetta, nota, tag e i selettori di tratti e ruolo dell'interlocutore (#37). In basso le opzioni (NPC automatici, attrazione, registra
 -- automaticamente, proposte) e l'esportazione testuale. Si apre con /au relazioni o dal diario.
 -- Nessun contenuto di chat o di whisper è mostrato o salvato: solo nomi, assi, note e tag scelti dall'utente.
 -- Solo pulsanti standard e cursori disegnati con texture (UI/Widgets.lua), come il resto dell'interfaccia.
@@ -17,6 +17,8 @@ local PAGE = 12            -- righe per pagina
 local ROW_H = 26
 local TOP = -162           -- ordinate della prima riga
 local DELETE_ARM_SECONDS = 6
+-- tratti e ruolo dell'interlocutore nel dettaglio (fonte 1 del profilo, Systems/Interlocutor.lua), in due righe
+local TRAIT_ROWS = { { "role", "temperament", "morality" }, { "goals", "speech" } }
 local COLS = {             -- colonne dell'elenco: id, ascissa, larghezza
 	{ "name", 16, 168 }, { "kind", 188, 70 }, { "label", 262, 140 }, { "disposition", 406, 124 }, { "last", 534, 90 },
 }
@@ -212,7 +214,22 @@ local function BuildDetail()
 		self:ClearFocus()
 	end)
 	frame.dTags:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-	y = y - 36
+	y = y - 34
+	frame.dTraitsTitle = Text(frame, "GameFontNormal", 16, y - 5, 608)
+	y = y - 24
+	frame.dTraitBtns = {}
+	for r, ids in ipairs(TRAIT_ROWS) do
+		for c, trait in ipairs(ids) do
+			local b = W.Button(frame, "", 196, 24, function()
+				local s = view.subject
+				if s and NS.Interlocutor:CycleTrait(s.kind, s.key, trait) ~= false then RelationsFrame:Refresh() end
+			end)
+			b:SetPoint("TOPLEFT", 16 + (c - 1) * 204, y - (r - 1) * 28)
+			W.Tooltip(b, function() return NS:L("rel_trait_tip") end)
+			frame.dTraitBtns[trait] = b
+		end
+	end
+	y = y - #TRAIT_ROWS * 28 - 8
 	frame.dDelete = W.Button(frame, "", 200, 24, function()
 		if not view.subject then return end
 		if view.armed then
@@ -239,7 +256,7 @@ local OPTIONS = {
 
 local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenRelations", UIParent)
-	frame:SetSize(640, 620)
+	frame:SetSize(640, 700)
 	frame:SetPoint("CENTER", 0, 10)
 	frame:SetFrameStrata("DIALOG")
 	frame:SetMovable(true)
@@ -332,7 +349,8 @@ end
 
 local function DetailWidgets()
 	local out = { frame.dTitle, frame.dSummary, frame.dLabelTitle, frame.dLabelBtn, frame.dCustom, frame.dNoteTitle,
-		frame.dNote, frame.dTagsTitle, frame.dTags, frame.dDelete, frame.dBack }
+		frame.dNote, frame.dTagsTitle, frame.dTags, frame.dTraitsTitle, frame.dDelete, frame.dBack }
+	for _, b in pairs(frame.dTraitBtns) do table.insert(out, b) end
 	for _, row in ipairs(axisRows) do
 		for _, w in ipairs({ row.label, row.slider, row.value, row.minus, row.plus }) do table.insert(out, w) end
 	end
@@ -434,6 +452,13 @@ local function RefreshDetail()
 	if not frame.dNote:HasFocus() then frame.dNote:SetText(rec.note or "") end
 	frame.dTagsTitle:SetText(NS:L("rel_tags"))
 	if not frame.dTags:HasFocus() then frame.dTags:SetText(rec.tags and table.concat(rec.tags, ", ") or "") end
+	frame.dTraitsTitle:SetText(NS:L("rel_traits_title"))
+	for trait, b in pairs(frame.dTraitBtns) do
+		local value, auto = NS.Interlocutor:GetUserTrait(s.kind, s.key, trait)
+		local text = value and NS.Traits.ValueName(trait, value) or NS:L("rel_trait_unknown")
+		if auto then text = text .. " (" .. NS:L("rel_trait_auto") .. ")" end
+		b:SetText(NS.Traits.Name(trait) .. ": " .. text)
+	end
 	frame.dDelete:SetText(NS:L(view.armed and "rel_delete_confirm" or "rel_delete"))
 	frame.dBack:SetText(NS:L("rel_back"))
 	frame.prev:Hide(); frame.next:Hide(); frame.pageText:Hide()
