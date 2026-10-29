@@ -312,7 +312,7 @@ T.run("testi senza regola e perimetro del controllo", function()
 	T.ok(Has(full, "orphanText", "orfano.1"), "testo per una frase che non esiste")
 	local scoped = Validator:Run({ packs = { "base_combat" } })
 	T.ok(not Has(scoped, "orphanText"), "la prova su un solo pacchetto non guarda gli orfani")
-	T.eq(scoped.stats.packs, 1, "un solo pacchetto"); T.eq(scoped.stats.phrases, 120, "le 120 frasi di combattimento")
+	T.eq(scoped.stats.packs, 1, "un solo pacchetto"); T.eq(scoped.stats.phrases, 139, "le 139 frasi di combattimento")
 	-- gli errori di un pacchetto non compaiono nel controllo di un altro
 	local r = Validate({ registry = { ["s.1"] = Good() } })
 	T.ok(Has(r, "noText", "s.1"), "il pacchetto con l'errore lo vede")
@@ -328,7 +328,7 @@ T.run("il database di base non ha né errori né avvisi", function()
 	T.eq(#packs, 12, "dodici pacchetti di base (dieci di frasi, cornici, vocabolario)")
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
-	T.eq(r.stats.phrases, 588, "588 frasi"); T.ok(r.stats.variants >= 1074, "almeno due testi (IT+EN) per frase")
+	T.eq(r.stats.phrases, 803, "803 frasi"); T.ok(r.stats.variants >= 4 * 803, "almeno due varianti IT e due EN per frase")
 end)
 
 T.run("/au validate", function()
@@ -336,7 +336,7 @@ T.run("/au validate", function()
 	local cmd = SlashCmdList.AZEROTHUNSPOKEN
 	cmd("validate base_combat")
 	local out = table.concat(SENT, "\n")
-	T.ok(out:find("Validatore: 120 frasi in 1 pacchetti", 1, true), "riepilogo: " .. out)
+	T.ok(out:find("Validatore: 139 frasi in 1 pacchetti", 1, true), "riepilogo: " .. out)
 	T.ok(out:find("0 errori, 0 avvisi", 1, true), "senza problemi")
 	T.ok(out:find("Nessun problema trovato.", 1, true), "messaggio finale")
 	SENT = {}
@@ -360,7 +360,7 @@ T.run("/au validate", function()
 	NS.db.locale = "en"
 	SENT = {}
 	cmd("validate base_life")
-	T.ok(table.concat(SENT, "\n"):find("Validator: 46 lines", 1, true), "testi nella lingua scelta")
+	T.ok(table.concat(SENT, "\n"):find("Validator: 63 lines", 1, true), "testi nella lingua scelta")
 	NS.db.locale = "it"
 end)
 
