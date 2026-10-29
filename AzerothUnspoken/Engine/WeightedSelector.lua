@@ -2,7 +2,6 @@
 -- La memoria è per personaggio (AzerothUnspokenCharacterDB.memory) e resta tra le sessioni.
 local ADDON, NS = ...
 local Engine = NS.Engine
-local Match = Engine.Match
 
 local function Mem() return NS.cdb.memory end
 
@@ -11,6 +10,13 @@ function Engine:DecayMemory()
 	for id, n in pairs(uses) do
 		n = n * 0.75
 		uses[id] = (n >= 0.2) and n or nil
+	end
+	-- varianti usate per ultime: via quelle di frasi che non esistono più
+	local variant = Mem().variant
+	if variant then
+		for id in pairs(variant) do
+			if not Engine.byId[id] then variant[id] = nil end
+		end
 	end
 end
 
@@ -36,11 +42,26 @@ local function Remember(key, id, keep)
 	mem.last[id] = time()
 end
 
--- peso effettivo di una voce, dati il contesto di memoria
-local function Score(entry, key, poolSize, lastTone)
+-- Fattore S (affinità di stile) del peso W = B x C x P x N x S, per la sola profondità (GDD §4.3, §10).
+-- Una frase scritta per altre profondità non viene esclusa: pesa meno, così non resta mai il silenzio per un
+-- evento che ha frasi soltanto di un'altra profondità. Il StyleResolver dello step S4 aggiunge i registri.
+Engine.DEPTH_MISMATCH = 0.3
+
+---@param entry AUPhrase
+---@param ctx? table
+---@return number
+function Engine.StyleFactor(entry, ctx)
+	local depth = ctx and ctx.depth
+	if not depth or not entry.depth then return 1 end
+	return entry.depth[depth] and 1 or Engine.DEPTH_MISMATCH
+end
+
+-- peso effettivo di una voce, dati il contesto di memoria e, per le frasi, il contesto di gioco
+local function Score(entry, key, poolSize, lastTone, ctx)
 	local w = entry.weight * (1 + 0.35 * entry.spec)
 	w = w / (1 + 0.3 * (Mem().uses[entry.id] or 0))
 	if lastTone and entry.tone and entry.tone == lastTone then w = w * 0.6 end
+	if ctx then w = w * Engine.StyleFactor(entry, ctx) end
 	return w
 end
 
@@ -84,10 +105,9 @@ function Engine:Eligible(list, lang, ctx, form, now)
 	if not list then return out end
 	local mem = Mem()
 	for _, p in ipairs(list) do
-		local text = p.text[lang]
-		if text and (not form or p.form == form) and not NS.db.disabledPacks[p.pack]
+		if (not form or p.form == form) and not NS.db.disabledPacks[p.pack]
 			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
-			and Engine.HasData(text, ctx) and Match(p.when, ctx) then
+			and #Engine.UsableVariants(p.text[lang], ctx) > 0 and Engine.SafeMatch(p.when, ctx) then
 			table.insert(out, p)
 		end
 	end
@@ -114,10 +134,47 @@ end
 ---@field form string say | emote
 ---@field id string id della frase scelta
 ---@field event string
+---@field category? string categoria della regola (combat, exploration...)
+---@field style? string registro principale della regola
+---@field variant? integer indice della variante scelta tra i testi della lingua
 ---@field display? string testo come lo vede il narratore (aggiunto dal Gateway)
 ---@field channel? string canale scelto dal Gateway
 ---@field proposal? AUProposal proposta creata dal Gateway
 ---@field sentTo? string canale in cui è stata inviata
+
+---Compone una variante della frase: tra quelle utilizzabili preferisce le scritte per la profondità scelta
+---(o senza indicazione) e non ripete la variante usata per ultima.
+---@param p AUPhrase
+---@param lang string
+---@param ctx table
+---@return string? text nil se nessuna variante si compone
+---@return integer? index posizione della variante tra i testi della lingua
+function Engine:RenderPhrase(p, lang, ctx)
+	local list = p.text[lang]
+	local idx = Engine.UsableVariants(list, ctx)
+	local depth = ctx.depth
+	if depth and #idx > 1 then
+		local fit = {}
+		for _, i in ipairs(idx) do
+			local d = list[i].depth
+			if d == nil or d[depth] then table.insert(fit, i) end
+		end
+		if #fit > 0 then idx = fit end
+	end
+	local last = Mem().variant and Mem().variant[p.id]
+	if last and #idx > 1 then
+		for k = #idx, 1, -1 do
+			if idx[k] == last then table.remove(idx, k) end
+		end
+	end
+	while #idx > 0 do
+		local k = math.random(#idx)
+		local text = self:Render(list[idx[k]].t, lang, ctx)
+		if text then return text, idx[k] end
+		table.remove(idx, k)
+	end
+	return nil
+end
 
 ---Sceglie e compone una frase.
 ---@param event string
@@ -134,7 +191,7 @@ function Engine:PickEntry(event, ctx, form)
 	local items = {}
 	local own = self:Eligible(list, lang, ctx, form, now)
 	for _, p in ipairs(own) do
-		table.insert(items, { e = p, w = Score(p, event, #own, lastTone) })
+		table.insert(items, { e = p, w = Score(p, event, #own, lastTone, ctx) })
 	end
 
 	local frames
@@ -144,9 +201,14 @@ function Engine:PickEntry(event, ctx, form)
 			table.insert(frames, f)
 		end
 		if #frames > 0 then
-			local says = self:Eligible(list, lang, ctx, "say", now)
+			-- solo la voce pubblica del personaggio si può raccontare in una cornice:
+			-- un pensiero (inner) non diventa un'emote
+			local says = {}
+			for _, p in ipairs(self:Eligible(list, lang, ctx, "say", now)) do
+				if p.speaker == "character" then table.insert(says, p) end
+			end
 			for _, p in ipairs(says) do
-				table.insert(items, { e = p, framed = true, w = 0.8 * Score(p, event, #says, lastTone) })
+				table.insert(items, { e = p, framed = true, w = 0.8 * Score(p, event, #says, lastTone, ctx) })
 			end
 		end
 	end
@@ -156,26 +218,31 @@ function Engine:PickEntry(event, ctx, form)
 		local it = WeightedPick(items, event)
 		if not it then return nil end
 		local p = it.e
-		local text = self:Render(p.text[lang], lang, ctx)
+		local text, variant = self:RenderPhrase(p, lang, ctx)
 		if text and it.framed then
 			local fitems = {}
 			for _, f in ipairs(frames) do
 				table.insert(fitems, { e = f, w = Score(f, "frame:" .. event, #frames) })
 			end
 			local fit = WeightedPick(fitems, "frame:" .. event)
-			text = fit and self:Render(fit.e.text[lang], lang, ctx, text)
+			text = fit and self:RenderEntry(fit.e, lang, ctx, text)
 			if text then Remember("frame:" .. event, fit.e.id, KeepFor(#frames)) end
 		end
 		if text then
 			Remember(event, p.id, KeepFor(#items))
 			mem.lastTone[event] = p.tone
+			if #p.text[lang] > 1 then
+				mem.variant = mem.variant or {}
+				mem.variant[p.id] = variant
+			end
 			-- classi esplicite: %s in alcune impostazioni locali spezza le lettere accentate
 			text = text:gsub("[ \t\n]+", " "):gsub("^ ", ""):gsub(" $", "")
 			-- le emote non si toccano: il gioco antepone il nome del personaggio
 			if form == "say" then text = Capitalize(text) end
 			-- una frase parlata dentro una cornice è raccontata dal narratore
 			local speaker = it.framed and "narrator" or p.speaker
-			return { text = text, speaker = speaker, form = form, id = p.id, event = event }
+			return { text = text, speaker = speaker, form = form, id = p.id, event = event,
+				category = p.category, style = p.tone, variant = variant }
 		end
 		it.w = 0
 	end

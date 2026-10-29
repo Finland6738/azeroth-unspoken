@@ -113,6 +113,8 @@ function NS:BuildContext(extra)
 	ctx.raceLocal = LocalName("raceNames", race, raceLoc)
 	ctx.factionLocal = LocalName("factionNames", ctx.faction, ctx.faction)
 	ctx.level = UnitLevel("player")
+	-- scelte dell'utente: la profondità stilistica pesa le frasi, l'intensità si può usare nelle condizioni
+	if self.db then ctx.depth, ctx.intensity = self.db.proseDepth, self.db.intensity end
 
 	local hp, hpMax = SafeCall(UnitHealth, "player"), SafeCall(UnitHealthMax, "player")
 	if hp and hpMax and hpMax > 0 then ctx.hp = hp / hpMax end

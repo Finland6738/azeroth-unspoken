@@ -63,7 +63,9 @@ check("## Title: Azeroth Unspoken" in toc_text, "titolo nel .toc")
 check("An immersive roleplay companion for World of Warcraft" in toc_text, "motto in Notes")
 check("## SavedVariables: AzerothUnspokenDB" in toc_text, "SavedVariables globali")
 check("## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB" in toc_text, "SavedVariables per personaggio")
-check(not re.search(r"^\s*Data\\Classes\.lua", toc_text, re.M), "Classes.lua resta fuori dal .toc fino a S3")
+for f in ("Data\\RegistryCombat.lua", "Data\\RegistryClasses.lua", "Data\\itIT\\Classes.lua", "Data\\enUS\\Classes.lua",
+          "Engine\\Validator.lua"):
+    check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2)")
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
@@ -82,28 +84,58 @@ errors = list(NS.Diagnostics.errors.values())
 check(len(errors) == 0, "nessun errore all'avvio: " + "; ".join(str(e.message) for e in errors))
 print("  ok" if not FAILURES else "")
 
-# 1) integrità del database
-problems = []
-ids = 0
+# 1) integrità del database: il validatore dell'addon (lo stesso codice di /au validate)
+print("\nVALIDATORE")
+val = lua.eval("function() return AzerothUnspoken.Validator:Run() end")()
+errors_ = list(val.errors.values())
+warnings_ = list(val.warnings.values())
+for pr in errors_ + warnings_:
+    print("  ", pr.level, pr.code, pr.id or pr.pack, pr.lang or "", pr.msg)
+ids = val.stats.phrases
 langs = ["it", "en"]
-for pid, p in Engine.byId.items():
-    ids += 1
-    for l in langs:
-        t = p.text[l]
-        if t is None:
-            problems.append(f"{pid}: manca '{l}'")
-            continue
-    a, b = p.text["it"] or "", p.text["en"] or ""
-    ta = sorted(re.findall(r"\{(?!g:)[^{}]+\}", a)); tb = sorted(re.findall(r"\{(?!g:)[^{}]+\}", b))
-    if ta != tb:
-        problems.append(f"{pid}: segnaposto diversi it={ta} en={tb}")
-    if p.form == "emote" and re.match(r"[A-Z«\"]", a):
-        problems.append(f"{pid}: emote che inizia in maiuscolo")
-print(f"\nfrasi: {ids}")
-print("problemi:", len(problems))
-for x in problems: print("  ", x)
-check(ids == 374, f"374 frasi caricate (trovate {ids})")
-check(not problems, "database integro")
+print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
+      f"{len(errors_)} errori, {len(warnings_)} avvisi")
+# 367 frasi di base + 54 delle classi + 7 del pacchetto di esempio
+check(ids == 428, f"428 frasi caricate (trovate {ids})")
+check(not errors_, "database senza errori del validatore")
+check(not warnings_, "database senza avvisi del validatore")
+sp = {k: v for k, v in val.stats.speakers.items()}
+print("voci:", sp)
+check(sp.get("inner", 0) >= 80, "la voce interiore ha testi veri")
+check(sp.get("narrator", 0) >= 19 and sp.get("character", 0) >= 250, "narratore e personaggio presenti")
+check(sum(sp.values()) == ids, "ogni frase ha una voce")
+for d in ("natural", "literary", "elevated"):
+    check((val.stats.depths[d] or 0) >= 100, f"profondità {d} coperta")
+
+# i file dell'addon sono UTF-8 valido, senza BOM né carattere di sostituzione, con fine riga LF
+data_files = []
+for folder in (ADDON, EXAMPLE):
+    for root, _, files in os.walk(folder):
+        for f_ in files:
+            if f_.endswith((".lua", ".toc", ".xml", ".md")):
+                data_files.append(os.path.join(root, f_))
+bad_files = []
+for path_ in data_files:
+    raw = open(path_, "rb").read()
+    try:
+        text_ = raw.decode("utf-8")
+    except UnicodeDecodeError:
+        bad_files.append(os.path.basename(path_) + " (UTF-8 non valido)")
+        continue
+    if raw.startswith(b"\xef\xbb\xbf") or "�" in text_ or b"\r" in raw:
+        bad_files.append(os.path.basename(path_) + " (BOM, U+FFFD o CR)")
+check(not bad_files, "file UTF-8 validi con fine riga LF: " + "; ".join(bad_files))
+
+# regola del progetto: niente %s %l %a %w nei pattern applicati a testo UTF-8
+PAT_CALL = re.compile(r':?(?:match|gmatch|gsub)\([^"\n]*?"([^"\n]*)"')
+for path_ in data_files:
+    if path_.endswith(".lua"):
+        for ln_ in open(path_, encoding="utf-8").read().split("\n"):
+            code_ = ln_.split("--")[0]
+            for m_ in PAT_CALL.finditer(code_):
+                if re.search(r"%[slaw]", m_.group(1)):
+                    check(False, f"{os.path.basename(path_)}: pattern con classe dipendente dalle impostazioni locali: {m_.group(1)}")
+print("  ok" if not FAILURES else "")
 
 # 2) generazione in contesti diversi
 def setP(**kw):
@@ -303,17 +335,16 @@ for s_ in fishing: print("  ", s_)
 check(len(fishing) == 3, "frasi di pesca dal pacchetto di esempio, nel narratore")
 check(not list(G.SENT.values()), "la pesca non scrive in chat con la modalità privata")
 
-# 8) Classes.lua: fuori dal .toc, ma deve almeno caricarsi (si integra in S3)
-lua3, NS3 = load_addon(with_example=False)
-before = sum(1 for _ in NS3.Engine.byId.keys())
-run_file(lua3, os.path.join(ADDON, "Data", "Classes.lua"), "Data\\Classes.lua", ADDON_NAME, NS3)
-classes = sum(1 for _ in NS3.Engine.byId.keys()) - before
-print(f"\nClasses.lua (non nel .toc): {classes} frasi caricabili")
-check(classes == 54, "Classes.lua contiene 54 frasi")
+# 8) le 54 frasi delle classi fanno parte del database di base (erano fuori dal .toc fino a S2)
+cls = [p for p in Engine.byId.values() if p.pack == "base_classes"]
+print(f"\nbase_classes: {len(cls)} frasi")
+check(len(cls) == 54, "base_classes contiene 54 frasi")
+check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le frasi delle classi hanno IT ed EN")
 
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
-for name in ("TestCompat", "TestConfig", "TestEventBus", "TestChatGateway", "TestNarrator", "TestDirector"):
+for name in ("TestCompat", "TestConfig", "TestEventBus", "TestChatGateway", "TestNarrator", "TestDirector",
+             "TestSchema", "TestValidator"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

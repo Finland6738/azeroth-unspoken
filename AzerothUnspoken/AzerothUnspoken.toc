@@ -22,6 +22,7 @@ Engine\PhraseRegistry.lua
 Engine\RuleEngine.lua
 Engine\WeightedSelector.lua
 Engine\TemplateRenderer.lua
+Engine\Validator.lua
 
 # --- integrazioni e uscita ---
 Integration\TotalRP3.lua
@@ -43,12 +44,25 @@ UI\Commands.lua
 Data\itIT\Interface.lua
 Data\enUS\Interface.lua
 
-# --- database narrativo di base (stessa API dei pacchetti esterni) ---
-# Data\Classes.lua è pronto ma resta fuori: si integra nello step S3
+# --- database narrativo di base (stessa API dei pacchetti esterni, schema v2) ---
+# prima vocabolario e cornici, poi le regole (Registry*), poi i testi per lingua
 Data\Vocabulary.lua
 Data\Frames.lua
-Data\Combat.lua
-Data\Spells.lua
-Data\Life.lua
-Data\Exploration.lua
-Data\Social.lua
+Data\RegistryCombat.lua
+Data\RegistrySpells.lua
+Data\RegistryLife.lua
+Data\RegistryExploration.lua
+Data\RegistrySocial.lua
+Data\RegistryClasses.lua
+Data\itIT\Combat.lua
+Data\itIT\Spells.lua
+Data\itIT\Life.lua
+Data\itIT\Exploration.lua
+Data\itIT\Social.lua
+Data\itIT\Classes.lua
+Data\enUS\Combat.lua
+Data\enUS\Spells.lua
+Data\enUS\Life.lua
+Data\enUS\Exploration.lua
+Data\enUS\Social.lua
+Data\enUS\Classes.lua

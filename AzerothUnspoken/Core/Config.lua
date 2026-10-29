@@ -116,7 +116,7 @@ Config.defaults = {
 }
 
 Config.characterDefaults = {
-	memory = { uses = {}, last = {}, recent = {}, lastTone = {} },
+	memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} },
 	personality = {},
 	memories = {},
 	arcs = {},

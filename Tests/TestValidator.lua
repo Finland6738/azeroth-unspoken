@@ -1,0 +1,365 @@
+-- Test del validatore editoriale (Engine/Validator.lua): ogni controllo con un pacchetto sbagliato apposta
+local NS = ...
+local Engine, Validator = NS.Engine, NS.Validator
+
+local n = 0
+-- registra un pacchetto di prova e restituisce il risultato del validatore, ristretto a quel pacchetto
+local function Validate(def)
+	n = n + 1
+	def.id = "v" .. n
+	NS:RegisterPack(def)
+	return Validator:Run({ packs = { def.id } }), def.id
+end
+
+-- ci sono problemi con quel codice (e, se indicato, per quell'id / lingua)?
+local function Has(result, code, id, lang)
+	for _, list in ipairs({ result.errors, result.warnings }) do
+		for _, p in ipairs(list) do
+			if p.code == code and (not id or p.id == id) and (not lang or p.lang == lang) then return p end
+		end
+	end
+	return nil
+end
+
+local function IsError(result, code)
+	for _, p in ipairs(result.errors) do if p.code == code then return true end end
+	return false
+end
+
+local function Clean(result, msg)
+	local all = {}
+	for _, list in ipairs({ result.errors, result.warnings }) do
+		for _, p in ipairs(list) do table.insert(all, p.code .. ":" .. tostring(p.id) .. ":" .. p.msg) end
+	end
+	T.ok(#result.errors == 0 and #result.warnings == 0, msg .. " (" .. table.concat(all, "; ") .. ")")
+end
+
+local function Good(extra)
+	local e = { event = "battle", speaker = "character", styles = { "epic" } }
+	for k, v in pairs(extra or {}) do e[k] = v end
+	return e
+end
+
+T.run("un pacchetto corretto non dà problemi", function()
+	local r = Validate({
+		languages = { "itIT", "enUS" },
+		registry = {
+			["ok.1"] = Good({ conditions = { class = "MAGE", hpBelow = 0.3, hour = { 22, 4 }, ["not"] = { race = "Orc" },
+				any = { { sex = "male" }, { faction = "Horde" } }, chance = 50, func = function() return true end } }),
+			["ok.2"] = Good({ speaker = "inner", depth = { "natural", "elevated" }, tags = { "x" } }),
+			["ok.3"] = Good({ speaker = "narrator" }),
+		},
+		texts = {
+			itIT = { ["ok.1"] = { "Ciao {target}, {g:pronto|pronta}!", "Ciao!" }, ["ok.2"] = "pensiero «bello» à è ì ò ù",
+				["ok.3"] = "alza lo sguardo." },
+			enUS = { ["ok.1"] = { "Hi {target}, {g:ready|ready}!", "Hi!" }, ["ok.2"] = "a fine thought",
+				["ok.3"] = "raises {g:his|her} eyes." },
+		},
+	})
+	Clean(r, "pacchetto corretto")
+	T.eq(r.stats.phrases, 3, "tre frasi"); T.eq(r.stats.variants, 8, "otto varianti")
+	T.eq(r.stats.speakers.inner, 1, "statistiche per voce")
+end)
+
+T.run("id duplicati", function()
+	local r = Validate({ registry = { ["battle.gen.01"] = Good(), ["dup.ok"] = Good() },
+		texts = { itIT = { ["dup.ok"] = "a" } } })
+	T.ok(Has(r, "dupId", "battle.gen.01"), "id già usato da un altro pacchetto")
+	T.ok(IsError(r, "dupId"), "è un errore")
+	-- lo stesso id due volte nello stesso pacchetto, nel formato vecchio
+	local r2 = Validate({ phrases = { { id = "dup.old", event = "battle", it = "uno" }, { id = "dup.old", event = "battle", it = "due" } } })
+	T.ok(Has(r2, "dupId", "dup.old"), "duplicato nel formato vecchio")
+end)
+
+T.run("lingue mancanti", function()
+	local r = Validate({ languages = { "itIT", "enUS" }, registry = { ["l.1"] = Good(), ["l.2"] = Good() },
+		texts = { itIT = { ["l.1"] = "a", ["l.2"] = "b" }, enUS = { ["l.1"] = "a" } } })
+	T.ok(Has(r, "missingLang", "l.2", "en"), "l.2 senza inglese")
+	T.ok(not Has(r, "missingLang", "l.1"), "l.1 completa")
+	-- senza languages: valgono le lingue in cui il pacchetto stesso ha scritto dei testi
+	local r2 = Validate({ registry = { ["l.3"] = Good(), ["l.4"] = Good() },
+		texts = { itIT = { ["l.3"] = "a", ["l.4"] = "b" }, enUS = { ["l.3"] = "a" } } })
+	T.ok(Has(r2, "missingLang", "l.4", "en"), "lingua dedotta dai testi del pacchetto")
+	-- una traduzione portata da un altro pacchetto non obbliga il pacchetto di origine
+	local r3 = Validate({ registry = { ["l.5"] = Good() }, texts = { itIT = { ["l.5"] = "a" } } })
+	NS:RegisterPack({ id = "v_tr", texts = { enUS = { ["l.5"] = "a" } } })
+	Clean(r3, "il pacchetto con solo l'italiano è valido")
+	T.ok(not Has(Validator:Run({ packs = { "v_tr" } }), "orphanText"), "il pacchetto di traduzioni non ha frasi proprie")
+	-- nessun testo
+	local r4 = Validate({ registry = { ["l.6"] = Good() } })
+	T.ok(Has(r4, "noText", "l.6"), "nessun testo in nessuna lingua")
+	-- lingua dichiarata ma non registrata
+	local r5 = Validate({ languages = { "xxXX" }, registry = { ["l.7"] = Good() }, texts = { xxXX = { ["l.7"] = "testo" } } })
+	T.ok(Has(r5, "unregisteredLanguage", nil, "xx"), "lingua non registrata: avviso")
+end)
+
+T.run("segnaposto", function()
+	local r = Validate({ languages = { "itIT", "enUS" },
+		registry = { ["p.1"] = Good(), ["p.2"] = Good(), ["p.3"] = Good(), ["p.4"] = Good(), ["p.5"] = Good(), ["p.6"] = Good(),
+			["p.7"] = Good(), ["p.8"] = Good() },
+		texts = {
+			itIT = { ["p.1"] = "Ciao {target}", ["p.2"] = { "Ciao {target}", "Ciao" }, ["p.3"] = "{foo} sconosciuto",
+				["p.4"] = "{g:solo} malformato", ["p.5"] = "graffa {target aperta", ["p.6"] = "{line} fuori cornice",
+				["p.7"] = "{zone} e {player}", ["p.8"] = "in {zone}" },
+			enUS = { ["p.1"] = "Hi", ["p.2"] = { "Hi {target}", "Hi" }, ["p.3"] = "{foo} unknown",
+				["p.4"] = "{g:alone} malformed", ["p.5"] = "brace {target open", ["p.6"] = "{line} outside",
+				["p.7"] = "{player} and {zone}", ["p.8"] = "in {zone} and {player}" },
+		} })
+	T.ok(Has(r, "placeholderMismatch", "p.1"), "target solo in italiano")
+	T.ok(not Has(r, "placeholderMismatch", "p.2"), "variante di ripiego senza segnaposto in entrambe: va bene")
+	T.ok(Has(r, "badPlaceholder", "p.3", "it"), "segnaposto sconosciuto")
+	T.ok(Has(r, "badPlaceholder", "p.4", "it"), "genere malformato")
+	T.ok(Has(r, "badPlaceholder", "p.5", "it"), "graffa non chiusa")
+	T.ok(Has(r, "badPlaceholder", "p.6", "it"), "{line} fuori da una cornice")
+	T.ok(not Has(r, "placeholderMismatch", "p.7"), "stessi segnaposto in ordine diverso")
+	T.ok(Has(r, "placeholderMismatch", "p.8"), "player in più in inglese")
+	T.ok(Has(r, "placeholderMismatch", "p.8").msg:find("it", 1, true), "il messaggio dice le lingue")
+	-- il vocabolario è un segnaposto valido, ma solo se esiste
+	NS:RegisterPack({ id = "v_voc", vocab = { vword = { { it = "parola", en = "word" } } } })
+	local r2 = Validate({ languages = { "itIT", "enUS" }, registry = { ["p.9"] = Good(), ["p.10"] = Good() },
+		texts = { itIT = { ["p.9"] = "dico {vword}", ["p.10"] = "dico {nonesiste}" },
+			enUS = { ["p.9"] = "I say {vword}", ["p.10"] = "I say {nonesiste}" } } })
+	T.ok(not Has(r2, "badPlaceholder", "p.9"), "voce di vocabolario esistente")
+	T.ok(Has(r2, "badPlaceholder", "p.10"), "voce di vocabolario inesistente")
+end)
+
+T.run("condizioni sconosciute o malformate", function()
+	local r = Validate({ languages = { "itIT" },
+		registry = {
+			["c.1"] = Good({ conditions = { colour = "red" } }),
+			["c.2"] = Good({ conditions = { hpBelow = "molto" } }),
+			["c.3"] = Good({ conditions = { ["not"] = { fantasia = true } } }),
+			["c.4"] = Good({ conditions = { sex = "robot" } }),
+			["c.5"] = Good({ conditions = { hour = { 22 } } }),
+			["c.6"] = Good({ conditions = { any = { { class = "MAGE" }, { inesistente = 1 } } } }),
+			["c.7"] = Good({ conditions = { combat = "yes" } }),
+			["c.8"] = Good({ conditions = { levelMin = 10, mood = "forest", time = { "night", "dusk" } } }),
+			["c.9"] = Good({ conditions = { time = "tramonto" } }),
+			["c.10"] = Good({ conditions = { mood = "nuvoloso" } }),
+			["c.11"] = Good({ conditions = { chance = 150 } }),
+			["c.12"] = Good({ conditions = { func = "non una funzione" } }),
+		},
+		texts = { itIT = { ["c.1"] = "a", ["c.2"] = "a", ["c.3"] = "a", ["c.4"] = "a", ["c.5"] = "a", ["c.6"] = "a",
+			["c.7"] = "a", ["c.8"] = "a", ["c.9"] = "a", ["c.10"] = "a", ["c.11"] = "a", ["c.12"] = "a" } } })
+	for _, id in ipairs({ "c.1", "c.2", "c.3", "c.4", "c.5", "c.6", "c.7", "c.9", "c.10", "c.11", "c.12" }) do
+		T.ok(Has(r, "badCondition", id), id .. ": condizione sbagliata segnalata")
+	end
+	T.ok(not Has(r, "badCondition", "c.8"), "c.8: condizioni valide")
+	local p = Has(r, "badCondition", "c.3")
+	T.ok(p and p.msg:find("fantasia", 1, true), "il messaggio nomina la condizione dentro 'not'")
+	T.ok(Has(r, "badCondition", "c.6").msg:find("inesistente", 1, true), "e dentro 'any'")
+end)
+
+T.run("varianti vuote", function()
+	local r = Validate({ languages = { "itIT", "enUS" },
+		registry = { ["e.1"] = Good(), ["e.2"] = Good(), ["e.3"] = Good() },
+		texts = {
+			itIT = { ["e.1"] = { "buona", "" }, ["e.2"] = { "   \t " }, ["e.3"] = { "ok", 42 } },
+			enUS = { ["e.1"] = "good", ["e.2"] = "x", ["e.3"] = "ok" },
+		} })
+	T.ok(Has(r, "emptyVariant", "e.1", "it"), "variante vuota")
+	T.ok(Has(r, "emptyVariant", "e.2", "it"), "variante di soli spazi")
+	T.ok(Has(r, "emptyLang", "e.2", "it"), "tutte vuote")
+	T.ok(Has(r, "missingLang", "e.2", "it"), "e quindi la lingua manca")
+	T.ok(Has(r, "emptyVariant", "e.3", "it") and Has(r, "emptyVariant", "e.3", "it").msg:find("number", 1, true), "variante non stringa")
+	-- la variante vuota non viene mai scelta
+	NS.db.locale = "it"
+	for _ = 1, 20 do
+		local rec = Engine:PickEntry("battle", NS:BuildContext(), "say")
+		T.ok(rec == nil or rec.text ~= "", "nessuna frase vuota")
+	end
+end)
+
+T.run("lunghezza massima per canale", function()
+	local function Bytes(s) return #s end
+	local r = Validate({ languages = { "itIT" },
+		registry = {
+			["n.ok"] = Good(), ["n.limit"] = Good(), ["n.over"] = Good(), ["n.bytes"] = Good(),
+			["n.expand"] = Good(), ["n.inner"] = Good({ speaker = "inner" }), ["n.emote"] = Good({ speaker = "narrator" }),
+			["n.inner.ok"] = Good({ speaker = "inner" }),
+		},
+		texts = { itIT = {
+			["n.ok"] = string.rep("a", 100),
+			["n.limit"] = string.rep("a", 255),
+			["n.over"] = string.rep("a", 256),
+			["n.bytes"] = string.rep("è", 130),                       -- 130 caratteri, 260 byte
+			["n.expand"] = string.rep("a", 230) .. " {target}",         -- 238 + il nome del bersaglio più lungo
+			["n.inner"] = string.rep("a", 450),
+			["n.emote"] = string.rep("a", 300),
+			["n.inner.ok"] = string.rep("a", 300),
+		} } })
+	T.eq(Bytes(string.rep("è", 130)), 260, "sanity: byte, non caratteri")
+	T.ok(not Has(r, "tooLong", "n.ok"), "100 byte: va bene")
+	T.ok(not Has(r, "tooLong", "n.limit"), "255 byte: al limite, va bene")
+	T.ok(IsError(r, "tooLong") and Has(r, "tooLong", "n.over"), "256 byte: troppo lunga")
+	T.ok(Has(r, "tooLong", "n.bytes"), "conta i byte, non i caratteri")
+	T.ok(Has(r, "tooLong", "n.expand"), "conta i segnaposto al caso peggiore")
+	T.ok(Has(r, "tooLong", "n.emote"), "anche l'emote ha il limite")
+	local inner = Has(r, "tooLong", "n.inner")
+	T.ok(inner and inner.level == "warning", "il pensiero privato è solo un avviso, oltre i 400 byte")
+	T.ok(not Has(r, "tooLong", "n.inner.ok"), "300 byte in privato: va bene")
+	T.eq(Validator.LIMITS.SAY, 255, "limite di /say")
+	-- parlata dentro la cornice più lunga: avviso
+	NS:RegisterPack({ id = "v_frame", frames = { { event = "t_long", it = string.rep("c", 80) .. " «{line}»" } } })
+	local r2 = Validate({ languages = { "itIT" }, registry = { ["n.framed"] = Good({ event = "t_long" }) },
+		texts = { itIT = { ["n.framed"] = string.rep("a", 200) } } })
+	NS:RegisterEvent("t_long")
+	local r3 = Validator:Run({ packs = { "v" .. n } })
+	T.ok(Has(r3, "tooLongFramed", "n.framed"), "con la cornice supera il limite dell'emote")
+	T.ok(not Has(r3, "tooLong", "n.framed"), "ma da sola va bene")
+end)
+
+T.run("UTF-8", function()
+	local ok = Engine.IsValidUTF8
+	T.ok(ok("abc àèìòù « » € 😀"), "testo valido")
+	T.ok(ok("\226\130\172"), "euro a tre byte")
+	T.ok(not ok("abc\255"), "byte 0xFF")
+	T.ok(not ok("\192\128"), "sequenza sovrabbondante")
+	T.ok(not ok("\226\130"), "sequenza troncata")
+	T.ok(not ok("\237\160\128"), "surrogato")
+	T.ok(not ok("\244\144\128\128"), "oltre U+10FFFF")
+	T.ok(not ok("a\128b"), "continuazione isolata")
+	local good, why = ok("x\239\191\189y")
+	T.ok(not good and why:find("FFFD", 1, true), "carattere di sostituzione")
+	T.ok(not ok("a\1b") and not ok("a\127b"), "caratteri di controllo")
+	T.ok(ok("a\nb\tc"), "a capo e tabulazione sono ammessi")
+	local r = Validate({ languages = { "itIT" }, registry = { ["u.1"] = Good(), ["u.2"] = Good(), ["u.3"] = Good() },
+		texts = { itIT = { ["u.1"] = "bad \255 byte", ["u.2"] = "corrotto \239\191\189", ["u.3"] = "è tutto à posto" } } })
+	T.ok(Has(r, "badUTF8", "u.1"), "byte non valido nei testi")
+	T.ok(Has(r, "badUTF8", "u.2"), "U+FFFD nei testi")
+	T.ok(not Has(r, "badUTF8", "u.3"), "accenti validi")
+end)
+
+T.run("regola: voce, forma, registro, profondità, evento", function()
+	local r = Validate({ languages = { "itIT" },
+		registry = {
+			["r.badspeaker"] = Good({ speaker = "dio" }),
+			["r.nospeaker"] = { event = "battle", styles = { "epic" } },
+			["r.innermote"] = Good({ speaker = "inner", form = "emote" }),
+			["r.badform"] = Good({ form = "shout" }),
+			["r.badstyle"] = Good({ styles = { "sbilenco" } }),
+			["r.nostyle"] = { event = "battle", speaker = "character" },
+			["r.baddepth"] = Good({ depth = { "natural", "profondo" } }),
+			["r.badevent"] = Good({ event = "evento_non_dichiarato" }),
+			["r.badcat"] = Good({ category = "mistero" }),
+			["r.badweight"] = Good({ weight = 0 }),
+			["r.badcd"] = Good({ cooldown = -5 }),
+			["r.upper"] = Good({ speaker = "narrator" }),
+			["r.quote"] = Good({ speaker = "narrator" }),
+			["r.fine"] = Good({ speaker = "narrator" }),
+		},
+		texts = { itIT = {
+			["r.badspeaker"] = "a", ["r.nospeaker"] = "a", ["r.innermote"] = "a", ["r.badform"] = "a", ["r.badstyle"] = "a",
+			["r.nostyle"] = "a", ["r.baddepth"] = "a", ["r.badevent"] = "a", ["r.badcat"] = "a", ["r.badweight"] = "a",
+			["r.badcd"] = "a", ["r.upper"] = "Alza lo sguardo.", ["r.quote"] = "«dice» qualcosa", ["r.fine"] = "alza lo sguardo.",
+		} } })
+	T.ok(IsError(r, "badSpeaker") and Has(r, "badSpeaker", "r.badspeaker"), "speaker non ammesso: errore")
+	T.eq(Engine.byId["r.badspeaker"].speaker, "character", "e il motore ripiega su una voce valida")
+	local ns = Has(r, "noSpeaker", "r.nospeaker")
+	T.ok(ns and ns.level == "warning", "speaker assente: avviso")
+	T.ok(Has(r, "innerEmote", "r.innermote"), "voce interiore in emote")
+	T.ok(Has(r, "badForm", "r.badform"), "forma sconosciuta")
+	local st = Has(r, "unknownStyle", "r.badstyle")
+	T.ok(st and st.level == "warning", "registro sconosciuto: avviso")
+	T.ok(Has(r, "noStyle", "r.nostyle"), "registro assente (formato v2)")
+	T.ok(Has(r, "badDepth", "r.baddepth"), "profondità sconosciuta")
+	T.ok(Has(r, "unknownEvent", "r.badevent"), "evento non dichiarato")
+	T.ok(Has(r, "unknownCategory", "r.badcat"), "categoria sconosciuta")
+	T.ok(Has(r, "badWeight", "r.badweight"), "peso non valido")
+	T.ok(Has(r, "badCooldown", "r.badcd"), "cooldown negativo")
+	T.ok(Has(r, "emoteCase", "r.upper"), "emote in maiuscolo")
+	T.ok(Has(r, "emoteCase", "r.quote"), "emote che inizia con le virgolette")
+	T.ok(not Has(r, "emoteCase", "r.fine"), "emote corretta")
+	-- un evento di un tipo di incantesimo e uno dichiarato dal pacchetto sono noti
+	NS:RegisterSpellKeywords({ kind = { vspellkind = { "vspellkind" } } })
+	local r2 = Validate({ languages = { "itIT" }, events = { v_dichiarato = { category = "social" } },
+		registry = { ["r.k1"] = Good({ event = "vspellkind" }), ["r.k2"] = Good({ event = "v_dichiarato" }) },
+		texts = { itIT = { ["r.k1"] = "a", ["r.k2"] = "a" } } })
+	Clean(r2, "eventi di tipo incantesimo e dichiarati")
+end)
+
+T.run("cornici e vocabolario", function()
+	local r = Validate({ languages = { "itIT", "enUS" },
+		frames = {
+			{ id = "f.ok", event = "battle", it = "dice: «{line}»", en = "says \"{line}\"" },
+			{ id = "f.noline", event = "battle", it = "tace.", en = "is silent." },
+			{ id = "f.missing", event = "battle", it = "dice: «{line}»" },
+			{ id = "f.unknown", event = "evento_strano", it = "{line}", en = "{line}" },
+			{ id = "f.badcond", event = "battle", when = { colore = 1 }, it = "{line}", en = "{line}" },
+		},
+		vocab = { vtest = {
+			{ id = "v.ok", it = "una parola", en = "a word" },
+			{ id = "v.line", it = "con {line}", en = "with {line}" },
+			{ id = "v.nested", it = "dentro {vtest}", en = "inside {vtest}" },
+			{ id = "v.missing", it = "solo italiano" },
+			{ id = "v.empty", it = "", en = "x" },
+		} } })
+	T.ok(not Has(r, nil, "f.ok") and not Has(r, "frameNoLine", "f.ok"), "cornice corretta")
+	T.ok(Has(r, "frameNoLine", "f.noline"), "cornice senza {line}")
+	T.ok(Has(r, "missingLang", "f.missing", "en"), "cornice senza inglese")
+	T.ok(Has(r, "unknownEvent", "f.unknown"), "cornice per un evento ignoto")
+	T.ok(Has(r, "badCondition", "f.badcond"), "condizione sbagliata in una cornice")
+	T.ok(Has(r, "badPlaceholder", "v.line"), "{line} dentro il vocabolario")
+	T.ok(Has(r, "badPlaceholder", "v.nested"), "vocabolario dentro il vocabolario")
+	T.ok(Has(r, "missingLang", "v.missing", "en"), "voce senza inglese")
+	T.ok(Has(r, "emptyVariant", "v.empty", "it"), "voce vuota")
+	T.ok(not Has(r, "badPlaceholder", "v.ok"), "voce corretta")
+end)
+
+T.run("testi senza regola e perimetro del controllo", function()
+	NS:AddTexts("itIT", { ["orfano.1"] = "senza regola" }, "v_orfano")
+	local full = Validator:Run()
+	T.ok(Has(full, "orphanText", "orfano.1"), "testo per una frase che non esiste")
+	local scoped = Validator:Run({ packs = { "base_combat" } })
+	T.ok(not Has(scoped, "orphanText"), "la prova su un solo pacchetto non guarda gli orfani")
+	T.eq(scoped.stats.packs, 1, "un solo pacchetto"); T.eq(scoped.stats.phrases, 120, "le 120 frasi di combattimento")
+	-- gli errori di un pacchetto non compaiono nel controllo di un altro
+	local r = Validate({ registry = { ["s.1"] = Good() } })
+	T.ok(Has(r, "noText", "s.1"), "il pacchetto con l'errore lo vede")
+	T.ok(not Has(Validator:Run({ packs = { "base_combat" } }), "noText", "s.1"), "gli altri no")
+	Engine.pendingTexts["orfano.1"] = nil
+end)
+
+T.run("il database di base non ha né errori né avvisi", function()
+	local packs = {}
+	for _, id in ipairs(Engine.packOrder) do
+		if id:sub(1, 5) == "base_" then table.insert(packs, id) end
+	end
+	T.eq(#packs, 8, "otto pacchetti di base (sei di frasi, cornici, vocabolario)")
+	local r = Validator:Run({ packs = packs })
+	Clean(r, "database di base")
+	T.eq(r.stats.phrases, 421, "421 frasi"); T.ok(r.stats.variants >= 842, "almeno due testi (IT+EN) per frase")
+end)
+
+T.run("/au validate", function()
+	SENT = {}
+	local cmd = SlashCmdList.AZEROTHUNSPOKEN
+	cmd("validate base_combat")
+	local out = table.concat(SENT, "\n")
+	T.ok(out:find("Validatore: 120 frasi in 1 pacchetti", 1, true), "riepilogo: " .. out)
+	T.ok(out:find("0 errori, 0 avvisi", 1, true), "senza problemi")
+	T.ok(out:find("Nessun problema trovato.", 1, true), "messaggio finale")
+	SENT = {}
+	cmd("valida pacchetto_che_non_esiste")
+	T.ok(table.concat(SENT, "\n"):find("pacchetto sconosciuto", 1, true), "pacchetto sconosciuto")
+	-- con problemi: mostra i primi e il resto
+	NS:RegisterPack({ id = "v_bad", registry = (function()
+		local reg = {}
+		for i = 1, 20 do reg["bad." .. i] = Good() end
+		return reg
+	end)() })
+	SENT = {}
+	cmd("validate v_bad")
+	out = table.concat(SENT, "\n")
+	T.ok(out:find("20 errori", 1, true), "venti errori")
+	T.ok(out:find("noText", 1, true), "mostra il codice")
+	T.ok(out:find("altri 8", 1, true), "ne mostra 12 e riassume gli altri")
+	SENT = {}
+	cmd("validate full")
+	T.ok(not table.concat(SENT, "\n"):find("altri", 1, true), "con 'full' li mostra tutti")
+	NS.db.locale = "en"
+	SENT = {}
+	cmd("validate base_life")
+	T.ok(table.concat(SENT, "\n"):find("Validator: 46 lines", 1, true), "testi nella lingua scelta")
+	NS.db.locale = "it"
+end)

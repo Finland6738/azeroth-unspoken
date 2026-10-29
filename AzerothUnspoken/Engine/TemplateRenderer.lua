@@ -1,30 +1,32 @@
 -- Azeroth Unspoken: segnaposto, genere, vocabolario e cornici
 local ADDON, NS = ...
 local Engine = NS.Engine
-local Match = Engine.Match
 local Score, WeightedPick, Remember, KeepFor = Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor
 
 -- {player} {target} {spell} {zone} {subzone} {level} {class} {race} {faction}
 -- {g:maschile|femminile}   {line} (solo nelle cornici)   {nome_vocabolario}
+-- segnaposto -> campo del contesto. Il validatore usa questa tabella per riconoscere i segnaposto ammessi.
 local BUILTIN = {
 	player = "player", target = "target", spell = "spell", zone = "zone",
 	subzone = "subzone", level = "level", class = "classLocal", race = "raceLocal",
 	faction = "factionLocal", targettype = "ctypeLocal",
 }
+Engine.PLACEHOLDERS = BUILTIN
 
 function Engine:Vocab(name, lang, ctx)
 	local list = self.vocab[name]
 	if not list then return nil end
 	local items = {}
 	for _, v in ipairs(list) do
-		if v.text[lang] and not NS.db.disabledPacks[v.pack] and Match(v.when, ctx) then
+		if #Engine.UsableVariants(v.text[lang], ctx) > 0 and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx) then
 			table.insert(items, { e = v, w = Score(v, "vocab:" .. name, #list) })
 		end
 	end
 	local it = WeightedPick(items, "vocab:" .. name)
 	if not it then return nil end
-	Remember("vocab:" .. name, it.e.id, KeepFor(#items))
-	return self:Render(it.e.text[lang], lang, ctx, nil, true)
+	local text = self:RenderEntry(it.e, lang, ctx, nil, true)
+	if text then Remember("vocab:" .. name, it.e.id, KeepFor(#items)) end
+	return text
 end
 
 -- restituisce nil se manca un dato richiesto: la frase allora non è adatta
@@ -61,4 +63,31 @@ function Engine.HasData(text, ctx)
 		if field and (ctx[field] == nil or ctx[field] == "") then return false end
 	end
 	return true
+end
+
+---Indici delle varianti di una lista utilizzabili adesso: non vuote, di un pacchetto acceso, con i dati richiesti.
+---@param list? AUVariant[]
+---@param ctx table
+---@return integer[]
+function Engine.UsableVariants(list, ctx)
+	local out = {}
+	for i, v in ipairs(list or {}) do
+		if v.ok and not NS.db.disabledPacks[v.pack] and Engine.HasData(v.t, ctx) then
+			table.insert(out, i)
+		end
+	end
+	return out
+end
+
+---Una variante a caso di una cornice o di una voce di vocabolario, composta; nil se nessuna si compone.
+function Engine:RenderEntry(entry, lang, ctx, line, nested)
+	local list = entry.text[lang]
+	local idx = Engine.UsableVariants(list, ctx)
+	while #idx > 0 do
+		local k = math.random(#idx)
+		local text = self:Render(list[idx[k]].t, lang, ctx, line, nested)
+		if text then return text end
+		table.remove(idx, k)
+	end
+	return nil
 end

@@ -183,6 +183,8 @@ local function Command(msg)
 			db.disabledPacks[id] = (state == "off") or nil
 		end
 		ListPacks()
+	elseif cmd == "valida" or cmd == "validate" or cmd == "controlla" then
+		NS.Validator:Command(rest)
 	elseif cmd == "info" or cmd == "stats" then
 		local total, byEvent = NS.Engine:Stats(NS:Lang())
 		NS:Print(NS:L("stats", total, NS.languages[NS:Lang()].name))
@@ -193,7 +195,7 @@ local function Command(msg)
 		for _, ev in ipairs(keys) do table.insert(parts, ev .. " " .. byEvent[ev]) end
 		NS:Print(table.concat(parts, ", "))
 	elseif cmd == "memoria" or cmd == "memory" then
-		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {} }
+		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
 		NS:Print(NS:L("memory_reset"))
 	elseif cmd == "opzioni" or cmd == "options" or cmd == "config" then
 		NS.OpenSettings()
