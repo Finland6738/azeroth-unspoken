@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: Azeroth Unspoken
 ## Notes: An immersive roleplay companion for World of Warcraft
-## Author: Daniel Polo
+## Author: Finland6738
 ## Version: 0.1.0
 ## SavedVariables: AzerothUnspokenDB
 ## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB
