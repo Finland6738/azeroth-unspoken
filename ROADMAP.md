@@ -98,7 +98,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | S6 | M1 | Living Memory e Diario | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | S6b | M1 | Relazioni e affinità: NPC automatici, persone incontrate, influenza sul narratore | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | S6c | M1 | Interlocutore (personalità, azioni, razza, classe, obiettivi, ruolo) e luogo (regione, territorio, dungeon/raid/BG/arena) | Opus · medium | fatto il 2026-10-29 (test fuori gioco superati; client vero, TRP3 vero e numeri dei luoghi non provati) |
-| S7 | M1 | Contenuti Alpha: 300 intenzioni, almeno 2 varianti | Opus · high | da fare |
+| S7 | M1 | Contenuti Alpha: 300 intenzioni, almeno 2 varianti | Opus · high | fatto il 2026-10-29 (803 intenzioni, 1.711 varianti per lingua; test fuori gioco superati; tono in gioco non provato) |
 | ✋ G2 | M1 | **Prova in gioco**: vertical slice A (arrivo nella foresta) e C (ritorno) | utente | da fare |
 | S8 | M2 Living NPC (v0.3) | NPC Alive: finestra di dialogo, stati, registro NPC, archetipi | Sonnet · high | da fare |
 | ✋ G3 | M2 | **Prova in gioco**: vertical slice B (locandiere) | utente | da fare |
@@ -121,7 +121,7 @@ Per decisione dell'utente (2026-10-29) lo sviluppo prosegue senza aspettare G1. 
 |---|---|---|---|
 | D1 | Documentazione: README professionale, ADR in `docs/adr/`, architettura, guida ai pacchetti, CONTRIBUTING, CHANGELOG, valutazione della wiki GitHub | Sonnet · high | fatto il 2026-10-29 (README it/en, 14 ADR, architettura, CONTRIBUTING, CHANGELOG, `docs/README.md`; wiki: non si usa per ora, ADR 0013; licenza da scegliere, issue #2; la guida ai pacchetti di S3 va solo collegata) |
 | Q1 | Revisione del codice e della documentazione: bug e miglioramenti aperti come issue GitHub, senza modificare il codice | Opus · medium | da fare |
-| Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente. Q2 fatto: #3, #4, #5, #6, #8, #11, #12, #14, #17, #19 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 20–26). Q3 fatto: #26, #9, #21, #23, #13, #37, #38 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 65–70) |
+| Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente. Q2 fatto: #3, #4, #5, #6, #8, #11, #12, #14, #17, #19 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 20–26). Q3 fatto: #26, #9, #21, #23, #13, #37, #38 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 69–74) |
 
 ### Issue GitHub
 
@@ -530,6 +530,21 @@ Lo step completa S5, dove la personalità è quella del *nostro* personaggio, e 
 - 300 intenzioni bilingui; almeno 2 varianti per le scene più comuni; tutte e quattro le voci; tre profondità per i momenti chiave.
 - Coprire a fondo il vertical slice A e C.
 - Rispettare le regole di qualità del §5.4: varietà di lessico e lunghezza, niente lore inventata spacciata per canone.
+
+
+#### Esito di S7 e note per G2, S8
+- **Numeri** (database di base, senza il pacchetto di esempio; `Tests/TestContent.lua` li controlla):
+  - **803 intenzioni** (erano 588), **1.711 varianti per lingua** (erano 612). Tutte le intenzioni di `battle`, `victory`, `lowhp`, `zone`, `greet`, `farewell`, `memory_return`, `death`, `rez`, `levelup` e del riposo hanno almeno 2 varianti IT ed EN; delle altre restano a una variante solo 9 frasi di incantesimo.
+  - Voci: personaggio 444, voce interiore 235, narratore esterno 108 (erano 32), **NPC 16** (solo `npc_meet`, sempre con `other.role`).
+  - Profondità ammesse dalle regole: naturale 378, letterario 754, elevato 301; varianti scritte apposta per tutte e tre su arrivo e ritorno in foresta, zone di foresta, morte, ritorno in vita, livello, vittoria, salute bassa, saluti e congedi principali.
+  - Per pacchetto: combattimento 139, interlocutore e luogo 110, esplorazione 101, relazioni 83, memoria 81, incantesimi 73, social 73, vita 63, classi 54, personalità 26.
+- **Vertical slice A e C** (`Data/RegistryMemory.lua`): 10 intenzioni di prima visita in foresta e 12 di ritorno, con tre voci, temperamenti (stoico, allegro, feroce, malinconico, burbero, misericordioso), ora del giorno, ritorno dopo morte o fuga, dopo 7 giorni o 5 visite; prima visita e ritorno per ogni `mood`, dungeon, incursione e campo di battaglia; flag `first_death`, `first_capital`, `level_30/40/60`. Tutte le frasi di `memory_return` iniziano con `mem.ret.` (lo richiede `TestMemory`).
+- **Issue chiuse:** #18 (narratore e varianti), #27 (tag del Soul: 756 intenzioni su 803 hanno almeno un tag con due punti; `topic:death` su ogni frase di `death`, `topic:religion` su ogni `pray`, `topic:romance` su ogni frase d'amore; `req:` su meno del 5%), #29 (memoria), #34 (relazioni per ogni etichetta; `{relation}` in italiano solo tra virgolette; frasi per `other.sex`, giocatori, NPC con ruolo, disposizione, attrazione).
+- **Aperte da S7:** [#41](https://github.com/Finland6738/azeroth-unspoken/issues/41) (genere delle etichette di relazione e segnaposto di genere per l'interlocutore: oggi `{g:}` vale solo per il personaggio), [#42](https://github.com/Finland6738/azeroth-unspoken/issues/42) (i `topic:` non filtrano il vocabolario: `{cry}` e `{foe}` possono portare sangue, non morti o demoni).
+- **Correzioni editoriali** a frasi esistenti: generi `{g:}` mancanti, `zone.durotar.01` solo Orda, `zone.dunmorogh.01` solo nani e gnomi, il druido non dice più di aver dormito secoli nel Sogno, `rez.e.03` regge anche lo spirito guaritore, due battute che ricordavano citazioni note riscritte.
+- **Per G2** (passi 65–68 in `docs/G1_checklist.md`): arrivo in foresta con le tre profondità e due archetipi; ritorno dopo 10 minuti, dopo una morte e dopo una fuga; un'ora di gioco per giudicare ripetizioni, frasi che stonano e frequenza; la voce NPC. Il tono, la lunghezza percepita e il ritmo **non sono verificati**: i test controllano struttura, conteggi e regole, non la qualità letteraria.
+- **Per S8 (NPC Alive):** le 16 intenzioni `ctx.npcv.*` (voce `npc`, `Data/RegistryContext.lua`) sono già battute per ruolo, modo di parlare e temperamento: la finestra di dialogo può riusarle come prima battuta del locandiere (vertical slice B). Le guardie parlano solo se il ruolo arriva da `Data/NPCs.lua` (oggi due NPC): S8 può ricavare il ruolo in modo affidabile anche per loro. Manca una condizione «dentro una locanda con l'oste» (`place.rest` vale in ogni area di riposo); le frasi scritte reggono entrambi i casi.
+- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestContent.lua` (intenzioni, varianti per evento, voci e dove parla la voce NPC, profondità, slice A e C, memoria per atmosfera e flag, tag e argomenti delicati, relazioni per etichetta e `{relation}` tra virgolette, 80 byte in campo di battaglia e arena, parole fuori dall'era di Forever, testi IT ripetuti o identici all'inglese, parole abusate sotto il 5%, validatore a zero); conteggi aggiornati in `run_tests.py` (810 frasi con l'esempio), `TestSchema`, `TestValidator`, `TestOtherPlace`; `TestChatGateway` accetta la voce `npc` (parlata, privata).
 
 ### S8: NPC Alive (GDD §7.3, §21-B)
 - Finestra di dialogo etichettata "dialogo ambientale dell'addon".

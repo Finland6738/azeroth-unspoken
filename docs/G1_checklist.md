@@ -348,24 +348,39 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
 64. **La memoria dei luoghi resta.** Con un personaggio che ha già usato l'addon (luoghi nel diario), entra in una zona già visitata, poi `/reload`, poi `/au diario luoghi`.
     - **Cosa aspettarti:** la zona non risulta «nuova» (nessuna prima visita ripetuta) e compare una sola volta; dopo la visita la memoria la riconosce per numero di mappa.
 
+## S7: contenuti Alpha e prova G2 (aggiunto dallo step S7)
+
+65. **Vertical slice A: arrivo in foresta.** Con un personaggio nuovo per l'addon (o dopo `/au diario reset luoghi`), intensità 50, entra per la prima volta in una foresta (Elwynn Forest, Teldrassil, Ashenvale). Ripeti con le tre profondità (`/au profondita naturale|letterario|elevato`) e con due archetipi diversi (`/au anima`).
+    - **Cosa aspettarti:** una frase di prima visita nel narratore privato (pensiero, battuta o narratore esterno), diversa per profondità e temperamento; nessuna frase di ritorno.
+    - **Cosa riportare:** il testo esatto, se suona bene in italiano e in inglese, se il tono cambia davvero con profondità e archetipo.
+66. **Vertical slice C: ritorno nella foresta.** Esci dalla foresta, aspetta almeno 10 minuti (o `/reload` e torna il giorno dopo), rientra. Poi muori nella foresta, esci e rientra; e una volta fuggi con poca salute.
+    - **Cosa aspettarti:** una frase di ritorno che cita solo ciò che è vero (la morte o la fuga solo dopo averle vissute), il diario aggiornato (`/au diario`).
+    - **Cosa riportare:** frasi che citano un ricordo falso (deve essere NO), ripetizioni, frasi troppo frequenti.
+67. **Varietà.** Gioca un'ora tra combattimenti, zone, locande, morti e saluti.
+    - **Cosa aspettarti:** la stessa frase non torna di fila; varianti diverse della stessa intenzione; il narratore esterno compare anche fuori dal combattimento.
+    - **Cosa riportare:** le frasi sentite troppo spesso, quelle che stonano (registro, genere, lore) e quelle troppo lunghe per la chat.
+68. **Voce NPC.** Parla con un locandiere, un mercante e un maestro di volo.
+    - **Cosa aspettarti:** a volte una battuta con l'etichetta «NPC» nel narratore privato, mai in chat.
+    - **Cosa riportare:** se si capisce che è contenuto simulato, se il tono segue il ruolo.
+
 ## Q3: correzioni e miglioramenti (aggiunto dalla correzione Q3)
 
 Corrette fuori dal gioco le issue #9, #13, #21, #23, #26, #37 e #38. Restano da provare nel client vero:
 
-65. **"Un'altra" (issue #13).** Con `/au chat conferma` fai comparire una proposta (`/au saluto`, `/au evento zone`...). Premi **Un'altra** (o `/au altra`, o il tasto assegnato in Opzioni > Comandi > AddOn).
+69. **"Un'altra" (issue #13).** Con `/au chat conferma` fai comparire una proposta (`/au saluto`, `/au evento zone`...). Premi **Un'altra** (o `/au altra`, o il tasto assegnato in Opzioni > Comandi > AddOn).
     - **Cosa aspettarti:** la frase cambia con un'altra per lo stesso momento, il canale scelto resta, **nulla va in chat**. Premendolo molte volte compaiono frasi diverse; se non ce ne sono altre, un avviso «nessuna frase adatta». Con l'editor aperto (Modifica) rifiuta e dice di chiuderlo. Con l'intensità e le pause normali non cambia la frequenza delle frasi spontanee.
     - **Cosa riportare:** se la barra con sei pulsanti **sta nel riquadro** (testi tagliati o che si toccano, anche in inglese), se il pulsante lavora con una proposta in anteprima, quante frasi diverse vedi per evento.
-66. **La dissolvenza dopo il mouse (issue #21, vedi passo 24).** Tieni il mouse sul riquadro più a lungo della durata della frase, poi toglilo.
+70. **La dissolvenza dopo il mouse (issue #21, vedi passo 24).** Tieni il mouse sul riquadro più a lungo della durata della frase, poi toglilo.
     - **Cosa aspettarti:** il riquadro sbiadisce in circa un secondo e mezzo, non sparisce di colpo a opacità piena.
-67. **Tratti dell'interlocutore e consenso TRP3 (issue #37).** `/au relazioni`, apri una persona: sotto i tag ci sono **Ruolo, Temperamento, Morale, Obiettivi, Modo di parlare**. Clic: valore successivo, dopo l'ultimo «non so». Poi `/au opzioni`: la riga **Leggi il Total RP 3 degli altri** (spenta di base); con TRP3 installato compare anche nel passo Total RP 3 del wizard (`/au benvenuto`).
+71. **Tratti dell'interlocutore e consenso TRP3 (issue #37).** `/au relazioni`, apri una persona: sotto i tag ci sono **Ruolo, Temperamento, Morale, Obiettivi, Modo di parlare**. Clic: valore successivo, dopo l'ultimo «non so». Poi `/au opzioni`: la riga **Leggi il Total RP 3 degli altri** (spenta di base); con TRP3 installato compare anche nel passo Total RP 3 del wizard (`/au benvenuto`).
     - **Cosa aspettarti:** la finestra (ora più alta) mostra tutto senza tagli, anche con tutti gli assi attivi; i valori scelti compaiono in `/au chi` con la fonte «user»; l'interruttore dice cosa fa quando lo accendi e non legge nulla da TRP3 finché è spento.
     - **Cosa riportare:** testi tagliati o sovrapposti, anche in inglese; il pulsante del wizard (pagina TRP3) fuori dalla cornice.
-68. **Emote in altre lingue (issue #38, solo con un client non inglese).** Fatti salutare con `/wave` rivolto a te, con il client in italiano, tedesco, francese, spagnolo, portoghese, russo, coreano o cinese; poi `/au chi` e `/au debug full`.
+72. **Emote in altre lingue (issue #38, solo con un client non inglese).** Fatti salutare con `/wave` rivolto a te, con il client in italiano, tedesco, francese, spagnolo, portoghese, russo, coreano o cinese; poi `/au chi` e `/au debug full`.
     - **Cosa aspettarti:** l'azione «emote» compare tra le azioni recenti di chi ti ha salutato. Con un client inglese nulla cambia (parola `you`).
     - **Cosa riportare:** il **testo esatto** dell'emote che non viene riconosciuta (non verrà mai salvato dall'addon: serve solo a correggere la tabella `Interlocutor.YOU_WORDS`) e se, con `/au debug trace`, l'evento `CHAT_MSG_TEXT_EMOTE` porta il **destinatario** (quinto argomento) con il nome del tuo personaggio: è il segnale indipendente dalla lingua, mai provato.
-69. **Le lettere accentate nei comandi (issue #26).** `/au intensità 40`, `/au profondità elevato`, `/au INTENSITÀ 50`.
+73. **Le lettere accentate nei comandi (issue #26).** `/au intensità 40`, `/au profondità elevato`, `/au INTENSITÀ 50`.
     - **Cosa aspettarti:** funzionano come `/au intensita`. **Cosa riportare:** se no, con le impostazioni locali del tuo Windows.
-70. **Una sessione lunga (issue #9).** Dopo un'ora di gioco con molti incantesimi, `/au debug` e `/au debug full`.
+74. **Una sessione lunga (issue #9).** Dopo un'ora di gioco con molti incantesimi, `/au debug` e `/au debug full`.
     - **Cosa aspettarti:** nessun errore; se in combattimento la salute risulta segreta (`value:player.hp` RESTRICTED) l'evento `HEALTH_CHANGED` compare ogni tanto, non a raffica.
     - **Cosa riportare:** il contatore «pubblicati»/«doppioni scartati» in `/au debug` dopo qualche minuto di combattimento.
 
@@ -427,6 +442,9 @@ Q3 dissolvenza (#21) .... sbiadisce dopo il mouse? ___
 Q3 tratti/consenso (#37)  selettori ok? ___  finestra senza tagli? ___  consenso spento di base? ___
 Q3 emote altre lingue ... client ______  riconosciuta? ___  testo esatto non riconosciuto ______  destinatario nel payload? ___
 Q3 accenti nei comandi .. /au intensità ok? ___
+S7/G2 slice A .......... frase di arrivo? ___  cambia con profondità/archetipo? ___  testo ______
+S7/G2 slice C .......... frase di ritorno? ___  ricordo falso? (NO) ___  diario aggiornato? ___
+S7 varietà ............. frasi ripetute ______  frasi che stonano ______  voce NPC ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

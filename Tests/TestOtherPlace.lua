@@ -684,7 +684,7 @@ end)
 ---------------------------------------------------------------------------
 -- Frasi
 ---------------------------------------------------------------------------
-T.run("86 frasi bilingui di interlocutore e luogo", function()
+T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 110 con S7)", function()
 	Fresh()
 	local n, byEvent, byWho = 0, {}, { other = 0, place = 0 }
 	for id, p in pairs(Engine.byId) do
@@ -697,7 +697,7 @@ T.run("86 frasi bilingui di interlocutore e luogo", function()
 			if w.place then byWho.place = byWho.place + 1 end
 		end
 	end
-	T.eq(n, 86, "frasi del pacchetto")
+	T.eq(n, 110, "frasi del pacchetto")
 	T.ok(byWho.other >= 40 and byWho.place >= 40, ("per interlocutore %d, per luogo %d"):format(byWho.other, byWho.place))
 	for _, ev in ipairs({ "npc_meet", "other_action", "encounter_end", "zone", "greet", "battle", "victory" }) do
 		T.ok((byEvent[ev] or 0) > 0, "evento coperto: " .. ev)
@@ -722,7 +722,7 @@ T.run("le frasi seguono interlocutore e luogo", function()
 	T.ok(not ids["ctx.npc.merchant"] and not ids["ctx.npc.innkeeper.gruff"], "niente mercante, niente burbero")
 	T.ok(not ids["ctx.npc.cheerful"], "il generico allegro esclude i locandieri")
 	local rec = Engine:PickEntry("npc_meet", ctx, "say")
-	T.ok(rec ~= nil and rec.id:find("^ctx%.npc%.innkeeper"), "scelta: " .. tostring(rec and rec.id))
+	T.ok(rec ~= nil and rec.id:find("^ctx%.npcv?%.innkeeper") ~= nil, "scelta: " .. tostring(rec and rec.id))
 	P.npc = nil
 	FIRE("GOSSIP_CLOSED")
 	-- npc_meet senza un NPC dal ruolo noto: silenzio, anche a mano
