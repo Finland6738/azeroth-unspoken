@@ -417,7 +417,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestNPCAlive", "TestContent"):
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestContent"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
@@ -602,6 +602,88 @@ dl3.execute("local N = AzerothUnspoken.NPCAlive; N:Start(N:TestWho()); N:Choose(
 saved_char_t = dl3.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
 check('["flags"]={}' in saved_char_t and "npc_talk" not in saved_char_t and "asked_news" not in saved_char_t,
       "dialoghi: l'NPC di prova non scrive flag né ricordi")
+print("  ok" if not FAILURES else "")
+
+# 9e) persistenza degli archi (S9): lo stato, la scelta in attesa, la scelta fatta e il ricordo sopravvivono a /reload
+print("\nPERSISTENZA DEGLI ARCHI (/reload simulato)")
+def arc_state(lua_, id_):
+    return lua_.eval("function() return AzerothUnspoken.StoryArcs:State('%s') end" % id_)()
+def arc_item(lua_, id_, field):
+    return lua_.eval("function() local i = AzerothUnspoken.StoryArcs:Item('%s'); return i and i.%s end" % (id_, field))()
+ar1, an1 = load_addon(with_example=False, zone="Durotar")
+ag1 = ar1.globals()
+ag1.ADVANCE(8)
+check(arc_state(ar1, "path") == "DISCOVERED", "archi: il sentiero si apre entrando in Durotar da orco di livello 30")
+ag1.ADVANCE(130)
+ar1.execute("AzerothUnspoken.StoryArcs:Fire('zone')")
+check(arc_item(ar1, "path", "pending") is not None, "archi: la scelta aspetta il giocatore")
+saved_char_a = ar1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_a = ar1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+epoch_a = ag1.FAKE_EPOCH
+check("arc_path_discovered" in saved_char_a, "archi: il flag dello stato è nelle SavedVariables")
+check('["arcs"]' in saved_char_a and '["path"]' in saved_char_a, "archi: lo stato dell'arco è salvato")
+# /reload: tutto com'era, nessuna battuta ripetuta
+ar2, an2 = load_addon(saved_global_a, saved_char_a, with_example=False, epoch=epoch_a + 30, zone="Durotar")
+ag2 = ar2.globals()
+ag2.ADVANCE(8)
+check(arc_state(ar2, "path") == "DISCOVERED", "archi: dopo /reload lo stato è lo stesso")
+check(arc_item(ar2, "path", "pending") is not None, "archi: dopo /reload la scelta aspetta ancora")
+check(ar2.eval("function() return AzerothUnspoken.StoryArcs.readOnly end")() is False, "archi: dopo /reload non sono in sola lettura")
+check(ar2.eval("function() local n = 0; for _, e in ipairs(AzerothUnspoken.Director.log) do if e.event:find('^arc_') then n = n + 1 end end; return n end")() == 0,
+      "archi: dopo /reload nessuna battuta ripetuta")
+check(ar2.eval("function() return AzerothUnspoken.StoryArcs:ActiveCount() end")() == 1, "archi: dopo /reload un arco attivo")
+check(ar2.eval("function() return (AzerothUnspoken.StoryArcs:Choose('path', 'gratitude')) end")() is True, "archi: la scelta dopo /reload")
+saved_char_b = ar2.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_b = ar2.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+epoch_b = ag2.FAKE_EPOCH
+# un secondo /reload: la scelta fatta resta, e la chiusura arriva uscendo dalla zona (dopo l'attesa)
+ar3, an3 = load_addon(saved_global_b, saved_char_b, with_example=False, epoch=epoch_b + 300, zone="Durotar")
+ag3 = ar3.globals()
+ag3.ADVANCE(8)
+check(arc_state(ar3, "path") == "REFLECTED", "archi: l'arco meditato dopo un secondo /reload")
+check(ar3.eval("function() return AzerothUnspoken.StoryArcs:Item('path').choices.reflect end")() == "gratitude", "archi: la scelta del giocatore è salvata")
+ag3.P.zone = "Westfall"
+ag3.FIRE("ZONE_CHANGED_NEW_AREA")
+ag3.ADVANCE(8)
+check(arc_state(ar3, "path") == "RESOLVED", "archi: uscendo dalla zona l'arco si chiude")
+saved_char_c = ar3.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_c = ar3.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+epoch_c = ag3.FAKE_EPOCH
+check('"story"' in saved_char_c and "path" in saved_char_c, "archi: il ricordo di chiusura è salvato")
+check(ar3.eval("function() local e = AzerothUnspokenCharacterDB.memories.entries; for _, x in ipairs(e) do if x.kind == 'story' then return x.perm == true end end end")() is True,
+      "archi: il ricordo è permanente")
+text_it = ar3.eval("function() return AzerothUnspoken.StoryArcs.texts.path.it.title end")()
+check(text_it not in saved_char_c, "archi: nessun testo dell'arco nelle SavedVariables")
+# dopo la chiusura un /reload non riapre né ripete nulla, anche tornando nella zona di partenza
+ar4, an4 = load_addon(saved_global_c, saved_char_c, with_example=False, epoch=epoch_c + 86400, zone="Durotar")
+ag4 = ar4.globals()
+ag4.ADVANCE(8)
+check(arc_state(ar4, "path") == "RESOLVED", "archi: un arco concluso resta concluso dopo /reload e un ritorno nella zona")
+check(ar4.eval("function() return AzerothUnspoken.StoryArcs:Context().done.path end")() is True, "archi: ctx.arcs lo sa")
+check(not list(an4.Diagnostics.errors.values()), "archi: nessun errore dopo /reload")
+# saltare e sospendere restano dopo /reload e non si riprendono da soli
+ar5, an5 = load_addon(with_example=False, zone="Durotar")
+ag5 = ar5.globals()
+ag5.ADVANCE(8)
+ar5.execute("AzerothUnspoken.StoryArcs:Skip('path')")
+saved_char_d = ar5.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_d = ar5.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+ar6, an6 = load_addon(saved_global_d, saved_char_d, with_example=False, epoch=ag5.FAKE_EPOCH + 600, zone="Durotar")
+ar6.globals().ADVANCE(8)
+check(arc_item(ar6, "path", "mode") == "skipped", "archi: un arco saltato resta saltato dopo /reload")
+check(ar6.eval("function() return AzerothUnspoken.StoryArcs:ActiveCount() end")() == 0, "archi: nessun arco attivo")
+ar6.execute("AzerothUnspoken.StoryArcs:Resume('path'); AzerothUnspoken.StoryArcs:Suspend('path')")
+saved_char_e = ar6.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+ar7, an7 = load_addon(saved_global_d, saved_char_e, with_example=False, epoch=ar6.globals().FAKE_EPOCH + 600, zone="Durotar")
+ar7.globals().ADVANCE(8)
+check(arc_item(ar7, "path", "mode") == "suspended", "archi: un arco sospeso resta sospeso dopo /reload")
+# un personaggio dell'epoca precedente (schema 5, segnaposto vuoto) migra senza perdere nulla
+ar8, an8 = load_addon(saved_global_d, '{schemaVersion=5,memory={uses={},last={},recent={},lastTone={},variant={}},arcs={},history={}}',
+                      with_example=False, zone="Durotar")
+check(ar8.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "archi: migrazione dallo schema 5 al 6")
+check(ar8.eval("function() return AzerothUnspokenCharacterDB.arcs.version end")() == 1, "archi: lo stato degli archi nasce dal segnaposto")
+ar8.globals().ADVANCE(8)
+check(arc_state(ar8, "path") == "DISCOVERED", "archi: dopo la migrazione gli archi si aprono")
 print("  ok" if not FAILURES else "")
 
 # 10) funzioni ed eventi usati contro il dump delle API di Forever (saltato con un avviso se il dump non c'è)

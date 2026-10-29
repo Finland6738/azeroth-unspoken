@@ -1001,6 +1001,7 @@ end
 ---@param result string
 function SA:OnBeatResult(entry, result)
 	if self.inflight == entry then self.inflight = nil end
+	local quick = false
 	local function Remove()
 		for i, e in ipairs(self.owed) do
 			if e == entry then table.remove(self.owed, i); break end
@@ -1012,11 +1013,14 @@ function SA:OnBeatResult(entry, result)
 	elseif result == "no_phrase" or result == "silent" or result == "disabled" or result:find("^module") then
 		-- nessuna frase per questa lingua o il giocatore ha chiesto silenzio: lo stato resta, il diario racconta
 		Remove()
+		quick = true
 	else
 		-- il momento non era buono (battuta più importante, pausa, schermata, dado): si riprova più tardi
 		entry.tries = entry.tries + 1
 	end
-	if #self.owed > 0 then Schedule(self, result == "spoken" and self.BEAT_GAP + 0.2 or self.RETRY) end
+	if #self.owed > 0 then
+		Schedule(self, result == "spoken" and self.BEAT_GAP + 0.2 or (quick and 0.2 or self.RETRY))
+	end
 end
 
 -- le battute escono solo dal passo di un arco: né da /au evento né da un altro sistema
@@ -1047,7 +1051,11 @@ function handlers.PLAYER_DEATH() SA:Fire("death") end
 function handlers.LEVEL_UP() SA:Fire("level") end
 
 function handlers.MEMORY_FLAG(env)
-	SA:Fire("flag", { arcFlag = env.context.name })
+	-- i flag che gli archi stessi lasciano a ogni stato non fanno avanzare nulla: un evento vero muove un arco di un
+	-- solo passo, e non a catena
+	local name = env.context.name
+	if type(name) ~= "string" or name:find("^arc_") then return end
+	SA:Fire("flag", { arcFlag = name })
 end
 
 function handlers.NPC_INTERACT(env)
