@@ -645,6 +645,52 @@ T.run("diagnostica: i rapporti non contengono i nomi di altri giocatori", functi
 	T.eq(Leaks(NS.Compat and tostring(NS.Diagnostics.errors and #NS.Diagnostics.errors) or ""), "", "nessun errore con i nomi")
 end)
 
+-- #48: nelle azioni di un'altra persona, l'interlocutore e il rapporto descrivono la stessa persona
+T.run("other_action: relazione e interlocutore sono la persona che ha agito, non il bersaglio", function()
+	Fresh()
+	local d = R:Data()
+	local now = time()
+	d.players["Alice-TestRealm"] = { first = now, last = now, count = 3, source = "user", affection = -80 }
+	d.players["Bob-TestRealm"] = { first = now, last = now, count = 3, source = "user", trust = 60, affection = 60, familiarity = 60 }
+	T.eq(R:Resolve("player", d.players["Alice-TestRealm"]).label, "enemy", "Alice è una nemica")
+	T.eq(R:Resolve("player", d.players["Bob-TestRealm"]).label, "friend", "Bob è un amico")
+	-- bersaglio: Alice; Bob ci saluta con /wave
+	P.target = { name = "Alice", realm = "TestRealm", player = true, class = "MAGE", race = "Human", faction = "Horde", level = 30, sex = 3 }
+	FIRE("PLAYER_TARGET_CHANGED")
+	ADVANCE(5)
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Bob waves at you.", "Bob-TestRealm", "", "", "Garrosh")
+	local q = Queued("other_action")
+	T.ok(q ~= nil and q.extra.otherSubject.kind == "player", "other_action con Bob come persona")
+	local ctx = Ctx(q.extra)
+	T.eq(ctx.other.name, "Bob", "interlocutore: Bob")
+	T.eq(ctx.other.relation, "friend", "con il rapporto di Bob")
+	T.eq(ctx.relation, "friend", "ctx.relation è quello di Bob, non di Alice")
+	T.eq(ctx.relName, "Bob-TestRealm", "ctx.relName: Bob")
+	T.eq(ctx.relTraits.relation, "friend", "ctx.relTraits: Bob")
+	T.ok(ctx.rel.trust > 50, "gli assi sono di Bob")
+	T.ok(Engine.Match({ relation = "friend" }, ctx) and not Engine.Match({ relation = "enemy" }, ctx), "le condizioni di relazione vedono Bob")
+	-- un duello: stessa regola per gli altri eventi
+	FIRE("DUEL_REQUESTED", "Alice")
+	local q2
+	for _, c in ipairs(Director.queue) do if c.event == "other_action" then q2 = c end end   -- Alice è il bersaglio: soggetto = l'unità
+	T.ok(q2 ~= nil and q2.extra.otherSubject.unit == "target", "il duello di Alice è un candidato, con il bersaglio come persona")
+	local ctx2 = Ctx(q2.extra)
+	T.ok(ctx2.other.name == "Alice" and ctx2.relation == "enemy" and ctx2.relName == "Alice-TestRealm", "Alice: nemica, anche come interlocutore")
+	-- la persona dell'evento non è in lista: nessun rapporto, e non quello del bersaglio
+	local ctx3 = NS:BuildContext({ otherSubject = { kind = "player", key = "player:Carl-TestRealm", name = "Carl" } })
+	T.ok(ctx3.relation == nil and ctx3.isKnown == false, "una persona sconosciuta non eredita il rapporto del bersaglio")
+	-- quando l'evento riguarda il bersaglio stesso, resta il suo rapporto
+	local ctx4 = NS:BuildContext({ otherSubject = { unit = "target" } })
+	T.eq(ctx4.relation, "enemy", "otherSubject = bersaglio: il rapporto del bersaglio")
+	-- il nome del rapporto è quello di Bob (due persone con la stessa etichetta non si scambiano)
+	d.players["Alice-TestRealm"].affection = 60
+	d.players["Alice-TestRealm"].trust = 60
+	d.players["Alice-TestRealm"].familiarity = 60
+	R:SetLabel("player", "Bob-TestRealm", "il mio fratello d'armi")
+	T.eq(Ctx(q.extra).relationLabel, "il mio fratello d'armi", "relationLabel: il nome scelto per Bob")
+	P.target = nil
+end)
+
 T.run("le azioni restano poche e si dimenticano", function()
 	Fresh()
 	for n = 1, I.MAX_SUBJECTS + 15 do I:Note("player:P" .. n, "trade") end

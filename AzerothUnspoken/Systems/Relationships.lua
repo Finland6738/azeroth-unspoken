@@ -1050,8 +1050,8 @@ local function InteractionFresh(self)
 	return nil
 end
 
----Chi è la persona dell'interazione: un soggetto dato (extra.relationSubject), l'NPC con cui si sta parlando,
----oppure il bersaglio. Un'identità segreta, un GUID che manca o una creatura che non conosciamo danno nil.
+---Chi è la persona dell'interazione: un soggetto dato (extra.relationSubject), la persona di un evento
+---(extra.otherSubject, #48), l'NPC con cui si sta parlando, oppure il bersaglio. Un'identità segreta, un GUID che manca o una creatura che non conosciamo danno nil.
 ---@param ctx table
 ---@param extra? table
 ---@return AURelationKind? kind
@@ -1064,7 +1064,22 @@ function R:Subject(ctx, extra)
 		if rec then return given.kind, given.id, rec end
 		return nil
 	end
-	local i = InteractionFresh(self)
+	-- la persona dell'evento (other_action: chi ha fatto l'emote, lo scambio, il duello, l'invito) è anche il soggetto
+	-- del rapporto, come per l'interlocutore (#48); `{ unit = "target" }` è il bersaglio, letto più sotto
+	local other = extra and extra.otherSubject
+	local viaTarget = type(other) == "table" and other.unit == "target"
+	if type(other) == "table" and not viaTarget then
+		if other.kind == "player" and type(other.key) == "string" then
+			local key = other.key:match("^player:(.+)$")
+			local rec = key and self:Get("player", key)
+			if rec then return "player", key, rec end
+		elseif other.kind == "npc" and other.npcID then
+			local rec = self:Get("npc", other.npcID)
+			if rec then return "npc", other.npcID, rec end
+		end
+		return nil
+	end
+	local i = not viaTarget and InteractionFresh(self)
 	if i and i.npcID then
 		local rec = self:Get("npc", i.npcID)
 		if rec then return "npc", i.npcID, rec end
