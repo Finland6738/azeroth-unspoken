@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feedback, questions and ideas
+    url: https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback
+    about: Share feedback, report a problem informally or suggest new features in the Feedback discussions.
+  - name: Announcements
+    url: https://github.com/Finland6738/azeroth-unspoken/discussions/categories/announcements
+    about: Releases and project news.

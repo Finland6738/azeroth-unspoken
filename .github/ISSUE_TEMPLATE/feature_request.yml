@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a new feature or an improvement for Azeroth Unspoken.
+title: "[Feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas are welcome. For an open conversation before writing a formal request, you can also start a topic in the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback).
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+      description: Describe the feature from the point of view of your roleplay.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it help?
+      description: The situation in game where you missed it.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example (optional)
+      description: An example of a line, a scene or a setting you have in mind.
