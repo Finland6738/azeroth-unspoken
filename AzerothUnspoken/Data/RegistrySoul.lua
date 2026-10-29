@@ -46,9 +46,9 @@ NS:RegisterPack({
 			tags = { "topic:blood", "topic:death" } },
 		-- ironia: la stessa morte, detta con arguzia o con sobrietà
 		["soul.death.wry"] = { event = "death", speaker = "character", styles = { "ironic" },
-			tags = { "irony:high" }, depth = { "natural", "literary" } },
+			tags = { "irony:high", "topic:death" }, depth = { "natural", "literary" } },
 		["soul.death.sober"] = { event = "death", speaker = "character", styles = { "epic" },
-			tags = { "irony:low", "temperament:resolute" } },
+			tags = { "irony:low", "temperament:resolute", "topic:death" } },
 		-- temperamento
 		["soul.thanks.gruff"] = { event = "thanks", speaker = "character", styles = { "everyday", "ironic" },
 			tags = { "temperament:gruff" }, depth = { "natural", "literary" } },
@@ -56,5 +56,34 @@ NS:RegisterPack({
 			tags = { "temperament:cheerful" }, depth = { "natural", "literary" } },
 		["soul.muse.melancholic"] = { event = "muse", speaker = "inner", styles = { "tragic", "intimate" },
 			tags = { "temperament:melancholic" }, depth = { "literary", "elevated" } },
+		-- S7: il profilo nelle scene comuni (luogo, scontro, vittoria, ritorno in vita, riflessione)
+		-- curiosità: un tono, non una storia
+		["soul.zone.curious"] = { event = "zone", speaker = "inner", styles = { "intimate", "everyday" },
+			depth = { "natural", "literary", "elevated" }, tags = { "curiosity:high" } },
+		-- libertà: spazi aperti
+		["soul.zone.freedom"] = { event = "zone", speaker = "inner", styles = { "intimate", "epic" },
+			depth = { "natural", "literary" }, tags = { "motivation:freedom" },
+			conditions = { mood = { "plains", "coast", "mountain", "desert" } } },
+		-- temperamento in battaglia
+		["soul.battle.fierce"] = { event = "battle", speaker = "character", styles = { "epic" },
+			depth = { "natural", "literary" }, tags = { "temperament:fierce" } },
+		["soul.battle.protect"] = { event = "battle", speaker = "character", styles = { "epic" },
+			depth = { "natural", "literary" }, tags = { "motivation:protection", "temperament:resolute" },
+			conditions = { group = { "party", "raid" } } },
+		-- morale dopo la vittoria: il pragmatico la chiude in fretta, il tormentato se la porta dietro
+		["soul.victory.pragmatic"] = { event = "victory", speaker = "inner", styles = { "everyday" },
+			depth = { "natural", "literary" }, tags = { "morality:pragmatic", "temperament:stoic" } },
+		["soul.victory.conflicted"] = { event = "victory", speaker = "inner", styles = { "intimate", "tragic" },
+			depth = { "literary", "elevated" }, tags = { "req:morality:conflicted" } },
+		-- ritorno in vita: il dovere (tono) e gli spiriti (credo)
+		["soul.rez.duty"] = { event = "rez", speaker = "character", styles = { "epic" },
+			depth = { "natural", "literary" }, tags = { "motivation:duty", "temperament:resolute" } },
+		["soul.rez.spiritual"] = { event = "rez", speaker = "inner", styles = { "ancient", "intimate" },
+			depth = { "literary", "elevated" }, tags = { "req:faith:spiritual", "topic:death" } },
+		-- riflessione: un passato da riscattare, una fede che vacilla (affermazioni: req)
+		["soul.muse.redemption"] = { event = "muse", speaker = "inner", styles = { "intimate" },
+			depth = { "literary", "elevated" }, tags = { "req:motivation:redemption", "morality:hopeful" } },
+		["soul.muse.doubting"] = { event = "muse", speaker = "inner", styles = { "intimate" },
+			depth = { "natural", "literary" }, tags = { "req:faith:doubting", "topic:religion" } },
 	},
 })
