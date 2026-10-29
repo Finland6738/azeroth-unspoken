@@ -348,6 +348,21 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
 64. **La memoria dei luoghi resta.** Con un personaggio che ha già usato l'addon (luoghi nel diario), entra in una zona già visitata, poi `/reload`, poi `/au diario luoghi`.
     - **Cosa aspettarti:** la zona non risulta «nuova» (nessuna prima visita ripetuta) e compare una sola volta; dopo la visita la memoria la riconosce per numero di mappa.
 
+## S7: contenuti Alpha e prova G2 (aggiunto dallo step S7)
+
+65. **Vertical slice A: arrivo in foresta.** Con un personaggio nuovo per l'addon (o dopo `/au diario reset luoghi`), intensità 50, entra per la prima volta in una foresta (Elwynn Forest, Teldrassil, Ashenvale). Ripeti con le tre profondità (`/au profondita naturale|letterario|elevato`) e con due archetipi diversi (`/au anima`).
+    - **Cosa aspettarti:** una frase di prima visita nel narratore privato (pensiero, battuta o narratore esterno), diversa per profondità e temperamento; nessuna frase di ritorno.
+    - **Cosa riportare:** il testo esatto, se suona bene in italiano e in inglese, se il tono cambia davvero con profondità e archetipo.
+66. **Vertical slice C: ritorno nella foresta.** Esci dalla foresta, aspetta almeno 10 minuti (o `/reload` e torna il giorno dopo), rientra. Poi muori nella foresta, esci e rientra; e una volta fuggi con poca salute.
+    - **Cosa aspettarti:** una frase di ritorno che cita solo ciò che è vero (la morte o la fuga solo dopo averle vissute), il diario aggiornato (`/au diario`).
+    - **Cosa riportare:** frasi che citano un ricordo falso (deve essere NO), ripetizioni, frasi troppo frequenti.
+67. **Varietà.** Gioca un'ora tra combattimenti, zone, locande, morti e saluti.
+    - **Cosa aspettarti:** la stessa frase non torna di fila; varianti diverse della stessa intenzione; il narratore esterno compare anche fuori dal combattimento.
+    - **Cosa riportare:** le frasi sentite troppo spesso, quelle che stonano (registro, genere, lore) e quelle troppo lunghe per la chat.
+68. **Voce NPC.** Parla con un locandiere, un mercante e un maestro di volo.
+    - **Cosa aspettarti:** a volte una battuta con l'etichetta «NPC» nel narratore privato, mai in chat.
+    - **Cosa riportare:** se si capisce che è contenuto simulato, se il tono segue il ruolo.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -401,6 +416,9 @@ S6c giocatori ........... razza/classe giuste? ___  saluti che stonano ______
 S6c azioni .............. duello ___  invito ___  /wave a te ___  scambio ___  quest ___
 S6c TRP3 altri .......... razza/classe personalizzate? ___  errori? ___
 S6c memoria luoghi ...... zona nota non "nuova"? ___  una sola riga? ___
+S7/G2 slice A .......... frase di arrivo? ___  cambia con profondità/archetipo? ___  testo ______
+S7/G2 slice C .......... frase di ritorno? ___  ricordo falso? (NO) ___  diario aggiornato? ___
+S7 varietà ............. frasi ripetute ______  frasi che stonano ______  voce NPC ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 
