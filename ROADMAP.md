@@ -28,7 +28,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
   - venv locale nella radice del progetto, fuori dal controllo di versione: `python -m venv .venv`, poi `.venv\Scripts\pip install lupa`;
   - comando, dalla radice del progetto: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. Senza argomento si usa `AzerothUnspoken`.
 - Client target:
-  - `E:\Blizzard\World of Warcraft\_forever_` (build 1.60.1.70658, `## Interface: 16001`, client in inglese, `WOW_PROJECT_ID == WOW_PROJECT_CAMELOT`);
+  - `<WoW>\_forever_` (build 1.60.1.70658, `## Interface: 16001`, client in inglese, `WOW_PROJECT_ID == WOW_PROJECT_CAMELOT`);
   - addon installati in `...\_forever_\Interface\AddOns`. Lì ci sono già `totalRP3`, `Details` e `QuestIT`, utili come riferimento per le API.
 - Le cartelle `SpeakinSpell*` sono l'addon originale per retail. Servivano solo come riferimento e non entrano nel repository.
 
@@ -46,7 +46,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 5. Total RP 3 è facoltativo: l'addon funziona al 100% anche senza.
 6. Stile letterario originale, nello spirito del fantasy epico e del tono di Warcraft, senza citazioni copiate. Registri e "quattro voci" come nel §5 del GDD.
 7. Gli step si eseguono **uno alla volta**, ognuno in una sessione separata, perché toccano gli stessi file.
-8. Il progetto vive nel repository git `E:/repository/azeroth-unspoken` (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
+8. Il progetto vive nel repository git questo repository (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
    L'utente ha autorizzato commit, push e merge **automatici**, senza chiedere conferma: il PC non è presidiato.
 
 ## Regole per ogni sessione di step
@@ -64,6 +64,13 @@ Dove il GDD e questo file non coincidono, vale questo file.
 6. Se il merge fallisce per conflitti: allineare il branch a `main`, risolvere, ripetere i test e poi fare il merge.
    Se non si riesce, lasciare la PR aperta e spiegare il problema nel resoconto.
 
+### Installazione e percorsi personali
+
+- L'addon si installa con `python tools/install_addon.py`: cancella, ricopia e confronta byte per byte. `--check` fa solo il confronto.
+- Il percorso della cartella AddOns è personale e **non si scrive mai nel repository**. Sta in `tools/local.ini` (ignorato da git, modello in `tools/local.example.ini`) o nella variabile `AU_ADDONS_DIR`.
+- Nei documenti si scrivono solo forme neutre: `<WoW>\_forever_\...` e `../WoW-Addons` (il dump delle API accanto al repository).
+- Nessun nome reale, email, nome di account o percorso del PC nei file, nei commit, nelle PR o nelle issue. Nei crediti si usa Finland6738.
+
 ### Lavoro
 
 
@@ -79,10 +86,10 @@ Dove il GDD e questo file non coincidono, vale questo file.
   - Ogni nuova variabile globale dell'addon (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti) va aggiunta a `diagnostics.globals` in `.luarc.json`.
   - Le API di WoW sono fornite dal plugin: non duplicarle nel progetto.
 - Riferimenti tecnici: [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md).
-  - Il dump delle API di Forever (build 70170) è in `E:/repository/WoW-Addons/docs/api.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
+  - Il dump delle API di Forever (build 70170) è in `../WoW-Addons/docs/api.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
   - Prima di usare una funzione o un evento nuovo, controllarlo lì e poi proteggerlo con Compat.
   - Non copiare file di quel repository nel nostro: non ha una licenza dichiarata.
-  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:/repository/WoW-Addons`.
+  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`.
 - Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
 
 ## Milestone e step
@@ -243,7 +250,7 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [
   - le cornici e il vocabolario restano, come varianti.
 - Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
 - Aggiornare la guida al formato dei pacchetti.
-- Aggiungere `Tests/check_api.py`: legge `E:/repository/WoW-Addons/docs/api.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
+- Aggiungere `Tests/check_api.py`: legge `../WoW-Addons/docs/api.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
 
 #### Esito di S3 e note per S4
 - **Cosa c'è** (guida completa: [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md)):
@@ -252,7 +259,7 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [
   - Dati: `Data/Registry{Combat,Spells,Life,Exploration,Social,Classes}.lua` (regole), `Data/itIT/*.lua` e `Data/enUS/*.lua` (testi). Gli id sono quelli di prima. Vocabolario e cornici restano in `Vocabulary.lua` e `Frames.lua` con `it=`/`en=` (anche elenchi di varianti). `Classes.lua` è nel `.toc`: 54 frasi.
   - Numeri: le "374 frasi" della roadmap erano 367 di base + 7 del pacchetto di esempio; ora sono 421 di base (367 + 54) + 7 = **428**. Voci di base: personaggio 306, voce interiore 96, narratore 19, NPC 0. Assegnazione di voce e registro fatta frase per frase (pensieri e osservazioni → `inner`; battute, minacce, saluti → `character`; azioni → `narrator`); le profondità sono assegnate con regole sulla lunghezza e sul registro e non frase per frase: sono da rivedere in S7.
   - `Engine/Validator.lua` (`NS.Validator:Run{ packs }` → `{ errors, warnings, stats }`, `/au valida [tutto|pacchetto]`): id duplicati, lingue mancanti, segnaposto discordanti (con ripiego senza segnaposto), condizioni sconosciute o malformate, varianti vuote, lunghezza per canale (255 byte, caso peggiore dei segnaposto), UTF-8, voci/registri/profondità/eventi. Il database di base ha 0 errori e 0 avvisi.
-  - `Tests/check_api.py` (collegato a `run_tests.py`): legge `E:/repository/WoW-Addons/docs/api.json` (`--api` o `AU_API_JSON`), salta con un avviso se manca. Eccezioni motivate per `Settings.*`, `InterfaceOptions*`, `GetSpellInfo` e `MouseIsOver` (issue #17).
+  - `Tests/check_api.py` (collegato a `run_tests.py`): legge `../WoW-Addons/docs/api.json` (`--api` o `AU_API_JSON`), salta con un avviso se manca. Eccezioni motivate per `Settings.*`, `InterfaceOptions*`, `GetSpellInfo` e `MouseIsOver` (issue #17).
 - **Cosa deve sapere S4:**
   - `ctx.depth` e `ctx.intensity` sono nel contesto; le condizioni `depth`, `intensityMin`, `intensityMax` funzionano. Il fattore **S** del peso è `Engine.StyleFactor(frase, ctx)` (1 se la profondità combacia o manca, `Engine.DEPTH_MISMATCH` = 0,3 altrimenti; mai esclusione) ed è già dentro `Score`: il StyleResolver di S4 deve **aggiungere i registri** (`p.styles`), non rifare la profondità.
   - `PickEntry` restituisce anche `category`, `style` e `variant`. Le categorie sono quelle degli eventi (`combat`, `spellcraft`, `life`, `exploration`, `reflection`, `social`): `Engine.events[evento].category` e `Engine.CATEGORIES` per i budget.

@@ -10,7 +10,7 @@ Gli addon per WoW Forever (Interface 16001) usano API che non coincidono né con
 ## Decisione
 
 1. **Si usa il dump come riferimento per decidere cosa chiamare**, con il file `docs/api.json` (leggibile da macchina) e le definizioni `types/WowForeverAPI.lua`. Prima di usare una funzione o un evento nuovo si controlla lì e poi lo si protegge con Compat ([ADR 0005](0005-compat-valori-segreti-ed-eventi-difensivi.md)).
-2. **Copia locale accanto al progetto, non dentro**: `E:\repository\WoW-Addons`, clonata con `git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:/repository/WoW-Addons`. **Nessun file di quel repository entra nel nostro**: non ha licenza, quindi non lo si ridistribuisce. Si consulta e basta; i suoi script non si eseguono (è materiale scaricato).
+2. **Copia locale accanto al progetto, non dentro**: `..\WoW-Addons`, clonata con `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`. **Nessun file di quel repository entra nel nostro**: non ha licenza, quindi non lo si ridistribuisce. Si consulta e basta; i suoi script non si eseguono (è materiale scaricato).
 3. **L'IDE legge le definizioni da lì**: `.luarc.json` le collega con `workspace.library: ["../WoW-Addons/types"]`, e il plugin WoW Lua Language Server fornisce le API di WoW. Non si duplicano nel progetto.
 4. **Assenza nel dump non significa assenza nel client.** Le funzioni definite in Lua da FrameXML (ad esempio `Settings.*`, `InterfaceOptions_AddCategory`) non compaiono in `APIDocumentation`. Per quelle valgono Compat e la prova in gioco.
 5. **La fonte finale è sempre il client installato** (build 1.60.1.70658). In futuro si potrà estrarre un dump esatto della propria build con l'addon `WowApiExport` (`/apiexport`, poi `/reload`).

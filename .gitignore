@@ -13,3 +13,6 @@ desktop.ini
 
 # worktree delle sessioni di sviluppo
 .claude/
+
+# percorsi personali (vedi tools/local.example.ini)
+tools/local.ini

@@ -225,7 +225,7 @@ On Linux and macOS the path is `.venv/bin/python`. The command exits with code 1
 
 **Editor.** The project is set up for JetBrains WebStorm with the **EmmyLua** and **WoW Lua Language Server** plugins. `.luarc.json` sets Lua 5.1, the addon's globals and the folders to ignore; WoW's APIs come from the plugin and are not duplicated in the project. Public APIs and data structures are annotated with EmmyLua.
 
-**Forever API dump.** To find out whether a function or event exists in the client we consult the dump in [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons), cloned next to the project (`E:\repository\WoW-Addons`) and **never copied** into our repository. See [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md) and [ADR 0010](docs/adr/0010-dump-api-di-forever-come-riferimento.md).
+**Forever API dump.** To find out whether a function or event exists in the client we consult the dump in [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons), cloned next to the project (`..\WoW-Addons`) and **never copied** into our repository. See [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md) and [ADR 0010](docs/adr/0010-dump-api-di-forever-come-riferimento.md).
 
 To contribute (lines, packs, code, issues) read [CONTRIBUTING.md](CONTRIBUTING.md).
 

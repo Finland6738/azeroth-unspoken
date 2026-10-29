@@ -10,7 +10,7 @@ Restano valide le regole del GDD (§13, §22): la fonte finale è sempre il clie
   - build **70170**, Interface 16001, versione 1.60.1, esportato il 2026-10-01;
   - 6.598 funzioni, 1.806 eventi, 797 tipi.
 - Il build è poco più vecchio di quello dell'utente (70658), quindi possono esserci differenze minime.
-- **Copia locale**, accanto al nostro repository e non dentro: `E:\repository\WoW-Addons`, clonata con `--depth 1`.
+- **Copia locale**, accanto al nostro repository e non dentro: `..\WoW-Addons`, clonata con `--depth 1`.
   - Il repository non dichiara una licenza: **non copiarne i file nel nostro repository**. Si consulta e basta.
   - È materiale scaricato: si legge, non si eseguono i suoi script.
 - File utili:

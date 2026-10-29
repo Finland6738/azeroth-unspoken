@@ -121,7 +121,7 @@ L'addon deve accorgersi di zona, bersaglio, combattimento, morte e livello. Per 
    - **Cosa riportare:** valori tornati ai predefiniti (50 e "solo narratore privato").
 4. **Esci davvero dal gioco** (menu, "Esci dal gioco", non basta tornare alla selezione del personaggio) e riaprilo. Entra con lo stesso personaggio. Ripeti `/au intensita` e `/au chat`.
    - **Cosa aspettarti:** gli stessi valori.
-5. Cerca sul PC il file `AzerothUnspokenDB.lua`, di solito dentro `E:\Blizzard\World of Warcraft\_forever_\WTF\Account\<NOME ACCOUNT>\SavedVariables\`. Un secondo file, `AzerothUnspokenCharacterDB.lua`, sta dentro la cartella del personaggio, sotto `...\WTF\Account\<NOME ACCOUNT>\<Reame>\<Personaggio>\SavedVariables\`.
+5. Cerca sul PC il file `AzerothUnspokenDB.lua`, di solito dentro `<WoW>\_forever_\WTF\Account\<NOME ACCOUNT>\SavedVariables\`. Un secondo file, `AzerothUnspokenCharacterDB.lua`, sta dentro la cartella del personaggio, sotto `...\WTF\Account\<NOME ACCOUNT>\<Reame>\<Personaggio>\SavedVariables\`.
    - **Cosa riportare:** se i due file esistono e dove sono. Non serve inviarli.
 6. Rimetti le impostazioni a posto: `/au intensita 50`, `/au profondita letterario`, `/au chat privato`.
 

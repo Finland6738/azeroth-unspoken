@@ -6,7 +6,7 @@ client: le funzioni scritte in Lua da FrameXML (Settings.*...) non compaiono in 
 vale una eccezione motivata (vedi EXCEPTIONS). Il dump è consultazione: non se ne copia nulla nel progetto.
 
 Uso:  python -I -X utf8 Tests/check_api.py [--api PERCORSO] [--list] [cartella ...]
-  --api    percorso di api.json (altrimenti la variabile AU_API_JSON, altrimenti E:/repository/WoW-Addons/docs/api.json)
+  --api    percorso di api.json (altrimenti la variabile AU_API_JSON, altrimenti ../WoW-Addons/docs/api.json)
   --list   stampa anche tutto ciò che è stato trovato e va bene
   cartella cartelle da controllare (predefinite: AzerothUnspoken e AzerothUnspoken_Example)
 
@@ -30,7 +30,24 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-DEFAULT_API = "E:/repository/WoW-Addons/docs/api.json"
+DEFAULT_API = "../WoW-Addons/docs/api.json"
+
+
+def default_api_path():
+    """Il dump sta accanto al repository: vale anche dai worktree delle sessioni."""
+    roots = [ROOT]
+    try:
+        import subprocess
+        common = subprocess.run(["git", "-C", ROOT, "rev-parse", "--path-format=absolute", "--git-common-dir"],
+                                capture_output=True, text=True, check=True).stdout.strip()
+        roots.append(os.path.dirname(common))
+    except Exception:
+        pass
+    for r in roots:
+        candidate = os.path.normpath(os.path.join(r, DEFAULT_API))
+        if os.path.isfile(candidate):
+            return candidate
+    return os.path.normpath(os.path.join(ROOT, DEFAULT_API))
 
 # --- Lua: ciò che non è WoW --------------------------------------------------------------------------------
 LUA_GLOBALS = {
@@ -485,7 +502,7 @@ def classify_bytecode(scan, folders, funcs, methods, namespaces):
 
 
 def main(argv):
-    api = os.environ.get("AU_API_JSON") or DEFAULT_API
+    api = os.environ.get("AU_API_JSON") or default_api_path()
     folders, show_all = [], False
     it = iter(argv)
     for a in it:
@@ -501,7 +518,7 @@ def main(argv):
 
     if not os.path.isfile(api):
         print(f"SALTATO: dump delle API non trovato ({api}).")
-        print("  Per eseguire il controllo: git clone --depth 1 https://github.com/Atraeau/WoW-Addons E:/repository/WoW-Addons")
+        print("  Per eseguire il controllo: git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons")
         print("  oppure indica il file con --api o con la variabile AU_API_JSON.")
         return 0
 
