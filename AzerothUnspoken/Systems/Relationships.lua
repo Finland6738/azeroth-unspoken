@@ -479,7 +479,9 @@ local function CleanRecord(rec, kind)
 		if IsNumber(rec.decayDay) then out.decayDay = math.floor(rec.decayDay) end
 		if IsNumber(rec.talks) and rec.talks > 0 then out.talks = math.floor(rec.talks) end
 		local t = rec.today
-		if type(t) == "table" and IsNumber(t.day) and type(t.n) == "table" and type(t.gain) == "table" then
+		-- i contatori di un giorno passato non servono più: Increment li sostituisce alla prossima interazione (#52)
+		if type(t) == "table" and IsNumber(t.day) and math.floor(t.day) == Day(Now())
+			and type(t.n) == "table" and type(t.gain) == "table" then
 			local today = { day = math.floor(t.day), n = {}, gain = {} }
 			for src, n in pairs(t.n) do
 				if type(src) == "string" and IsNumber(n) then today.n[src] = math.max(0, math.floor(n)) end
@@ -510,6 +512,14 @@ end
 function R:Sanitize()
 	local d = self:Data()
 	if not d then return 0 end
+	-- dati scritti da una versione più nuova: si lasciano intatti, campi sconosciuti compresi, e il modulo
+	-- passa in sola lettura (ADR 0006, come memories.version) (#50)
+	local v = tonumber(d.version) or self.VERSION
+	if v > self.VERSION then
+		self.readOnly = true
+		NS.Diagnostics:Error("relations", ("relationships.version %d > %d: sola lettura"):format(v, self.VERSION))
+		return 0
+	end
 	local dropped = 0
 	local npcs, players = {}, {}
 	for k, rec in pairs(d.npcs) do
@@ -524,6 +534,8 @@ function R:Sanitize()
 	end
 	d.npcs, d.players = npcs, players
 	d.version = self.VERSION
+	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
+	self:CompactNPCs()
 	return dropped
 end
 

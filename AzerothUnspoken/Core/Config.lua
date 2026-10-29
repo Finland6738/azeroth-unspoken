@@ -444,9 +444,9 @@ Config.migrations = {
 ---@param kind "global"|"character"
 ---@return boolean ok false se i dati vengono da una versione più nuova o una migrazione fallisce
 function Config:Migrate(db, kind)
-	local current = tonumber(db.schemaVersion) or 0
+	local current = self:SchemaOf(db)
 	if current > self.SCHEMA_VERSION then
-		NS.Diagnostics:Error("config", ("%s schemaVersion %d > %d"):format(kind, current, self.SCHEMA_VERSION))
+		NS.Diagnostics:Error("config", ("%s schemaVersion %s > %d"):format(kind, tostring(current), self.SCHEMA_VERSION))
 		return false
 	end
 	for v = current + 1, self.SCHEMA_VERSION do
@@ -454,13 +454,24 @@ function Config:Migrate(db, kind)
 		if step and not NS.Diagnostics:Guard("migrate:" .. kind .. ":" .. v, step, db) then return false end
 		db.schemaVersion = v
 	end
+	db.schemaVersion = self.SCHEMA_VERSION   -- anche quando non c'era nulla da fare (un valore non intero si normalizza)
 	return true
+end
+
+---La versione dello schema di un file, come intero: un valore assente, non numerico, NaN o negativo conta 0 (file
+---rovinato, riparte dalle migrazioni), uno frazionario si arrotonda per difetto (#51).
+---@param db table
+---@return number version
+function Config:SchemaOf(db)
+	local n = tonumber(db.schemaVersion)
+	if not n or n ~= n or n < 0 then return 0 end
+	return math.floor(n)
 end
 
 ---@param db table
 ---@return boolean newer i dati sono stati scritti da una versione dell'addon più nuova di questa
 function Config:IsNewerSchema(db)
-	return (tonumber(db.schemaVersion) or 0) > self.SCHEMA_VERSION
+	return self:SchemaOf(db) > self.SCHEMA_VERSION
 end
 
 -- Dati di uno schema più nuovo (ad esempio dopo un ritorno a una versione precedente dell'addon) non si

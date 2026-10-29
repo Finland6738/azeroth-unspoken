@@ -43,6 +43,7 @@ end
 
 local function SetChance(event, value)
 	value = tonumber(value)
+	if value and (value ~= value or value == math.huge or value == -math.huge) then value = nil end   -- nan, inf: non sono percentuali
 	if not event or not value then
 		local keys = {}
 		for ev in pairs(NS.DEFAULT_CHANCE) do keys[ev] = true end
@@ -193,8 +194,8 @@ local function Command(msg)
 			or (kind == "buff" and not ctx.combat and "buff") or "attack"
 		if not NS.Gateway:Narrate(ev, ctx, {}) then NS:Print(NS:L("no_phrase", ev)) end
 	elseif cmd == "cooldown" then
-		local n = tonumber(rest)
-		if n then db.pacing.globalCooldownSeconds = math.max(0, n) end
+		-- stessi limiti delle impostazioni (0-3600): un valore non valido (nan) non cambia nulla
+		NS.Config:Set("pacing.globalCooldownSeconds", rest)
 		NS:Print(NS:L("cooldown_now", db.pacing.globalCooldownSeconds))
 	elseif cmd == "prob" or cmd == "chance" then
 		local ev, v = rest:match("^([^ ]+) +([^ ]+)$")

@@ -43,7 +43,7 @@ local function CreateButton()
 	button.glow:SetSize(66, 66)
 
 	local pos = NS.db.ui.buttonPos
-	if pos then
+	if type(pos) == "table" and type(pos[1]) == "string" and type(pos[2]) == "string" and tonumber(pos[3]) and tonumber(pos[4]) then
 		button:SetPoint(pos[1], UIParent, pos[2], pos[3], pos[4])
 	else
 		button:SetPoint("CENTER", UIParent, "CENTER", 0, -180)

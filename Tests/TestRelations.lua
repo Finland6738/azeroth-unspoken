@@ -1284,6 +1284,57 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 	T.eq(NS.db.interlocutor.trp3Others, false, "spento")
 end)
 
+-- #52: contatori del giorno passati e tetto degli NPC applicati ai dati caricati
+T.run("dati caricati: i contatori dei giorni passati non restano, il tetto degli NPC vale", function()
+	Fresh()
+	local d = R:Data()
+	local today = math.floor(time() / R.DAY)
+	d.npcs[1] = { first = 1, last = 2, count = 1, familiarity = 10, today = { day = today - 3, n = { talk = 2 }, gain = { talk = { trust = 1 } } } }
+	d.npcs[2] = { first = 1, last = 2, count = 1, familiarity = 10, today = { day = today, n = { talk = 2 }, gain = { talk = { trust = 1 } } } }
+	R:Sanitize()
+	T.eq(R:Get("npc", 1).today, nil, "il giorno passato non resta")
+	T.ok(R:Get("npc", 2).today ~= nil and R:Get("npc", 2).today.n.talk == 2, "quello di oggi sì")
+	Fresh()
+	d = R:Data()
+	for i = 1, R.MAX_NPCS + 300 do
+		d.npcs[i] = { first = 1, last = 2 + i, count = 1, familiarity = i % 50 }
+	end
+	d.npcs[1] = { first = 1, last = 2, count = 1, familiarity = 0, note = "da non perdere" }
+	R:Sanitize()
+	d = R:Data()
+	T.ok(Count(d.npcs) <= R.COMPACT_NPCS, "NPC caricati al tetto: " .. Count(d.npcs))
+	T.ok(d.npcs[1] and d.npcs[1].note, "gli NPC con una nota dell'utente restano")
+	Fresh()
+end)
+
+-- #50: i dati di una versione interna più nuova non si portano alla versione 1 e non si perdono campi
+T.run("relazioni di una versione più nuova: sola lettura, dati intatti", function()
+	Fresh()
+	NS.cdb.relationships = { version = 2, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
+		players = { ["Ale-Reame"] = { first = 1, last = 2, count = 1, nickname = "futuro" } } }
+	NS.Diagnostics.errors = {}
+	R.readOnly = false
+	local dropped = R:Sanitize()
+	T.eq(dropped, 0, "niente scartato")
+	T.eq(R.readOnly, true, "sola lettura")
+	T.eq(NS.cdb.relationships.version, 2, "la versione resta la 2")
+	T.eq(NS.cdb.relationships.npcs[1234].mood, "futuro", "campo sconosciuto di un NPC conservato")
+	T.eq(NS.cdb.relationships.players["Ale-Reame"].nickname, "futuro", "campo sconosciuto di un giocatore conservato")
+	local logged = false
+	for _, e in pairs(NS.Diagnostics.errors) do if e.module == "relations" and e.message:find("sola lettura", 1, true) then logged = true end end
+	T.ok(logged, "l'errore è in diagnostica")
+	T.ok(not R:Enabled() and not R:Writable(), "il modulo è spento")
+	T.eq(R:RecordNPC(1234, "Grik", "ambient"), nil, "RecordNPC non scrive")
+	T.eq(NS.cdb.relationships.npcs[1234].count, 3, "il record non è cambiato")
+	-- una versione uguale o più vecchia si ripulisce come prima
+	NS.cdb.relationships = { version = 1, npcs = { [5] = { first = 1, last = 2, count = 1, mood = "x" } }, players = {} }
+	R.readOnly = false
+	R:Sanitize()
+	T.eq(R.readOnly, false, "versione 1: scrivibile")
+	T.eq(NS.cdb.relationships.npcs[5].mood, nil, "e ripulita")
+	Fresh()
+end)
+
 -- #45: il testo libero dell'utente (etichette del diario) non arriva mai a una voce pubblica
 T.run("etichetta personale: mai in chat pubblica", function()
 	Fresh()

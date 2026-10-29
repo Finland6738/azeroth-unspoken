@@ -325,7 +325,8 @@ function N:End(reason)
 		self:Remember(s)
 		-- una conversazione vera (almeno una risposta) è contata nella relazione: la prossima non è più «la prima»
 		local R = NS.Relationships
-		local rec = R and R:Get("npc", s.who.npcID)
+		-- con le relazioni spente o in sola lettura (dati di una versione più nuova, ADR 0006) non si scrive nulla (#46)
+		local rec = R and R:Writable() and R:Get("npc", s.who.npcID)
 		if rec then
 			rec.talks = (rec.talks or 0) + 1
 			R:Changed()
@@ -619,7 +620,7 @@ function N:Choose(index)
 	local who = s.who
 	if who.kind == "npc" then
 		-- effetti locali: un flag narrativo (memoria di S6, mai una quest) e un po' di relazione
-		if choice.flag and NS.LivingMemory then
+		if choice.flag and NS.LivingMemory and NS.LivingMemory:Enabled() then
 			NS.LivingMemory:SetFlag(self.FlagName(who.scriptKey, choice.flag), "addon")
 		end
 		local R = NS.Relationships

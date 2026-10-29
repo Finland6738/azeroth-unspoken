@@ -1179,6 +1179,44 @@ T.run("diario in inglese e con la memoria spenta", function()
 	NS.db.modules.memory = true
 end)
 
+-- #52: i tetti valgono anche per i dati caricati, non solo quando si aggiunge
+T.run("tetti sui dati caricati: permanenti, flag, nomi con le maiuscole", function()
+	Fresh()
+	local m = Data()
+	for i = 1, 260 do
+		table.insert(m.entries, { id = i, t = 1000 + i, kind = "level", importance = 1 + i % 5, perm = true, tags = {}, level = i })
+	end
+	m.nextId = 300
+	local total = #m.entries
+	LM:Sanitize()
+	T.eq(LM:CountPermanent(), LM.MAX_PERMANENT, "i permanenti caricati sono al tetto")
+	T.ok(#m.entries >= total - LM:Compact(), "nessun ricordo cancellato dal tetto dei permanenti")
+	local keptTop = false
+	for _, e in ipairs(m.entries) do if e.perm and e.importance == 5 then keptTop = true end end
+	T.ok(keptTop, "i più importanti restano permanenti")
+	-- flag: nomi con le maiuscole riportati al minuscolo, tetto ai flag
+	Fresh()
+	m = Data()
+	m.flags = { First_Capital = { t = 5, source = "auto" }, ok_flag = { t = 6, source = "user" } }
+	LM:Sanitize()
+	T.ok(LM:HasFlag("First_Capital") and LM:HasFlag("first_capital"), "il flag con le maiuscole è raggiungibile")
+	T.ok(m.flags.first_capital and not m.flags.First_Capital, "salvato in minuscolo")
+	T.ok(LM:ClearFlag("First_Capital") and not LM:HasFlag("first_capital"), "e si può togliere")
+	m.flags = {}
+	for i = 1, LM.MAX_FLAGS + 50 do m.flags["f_" .. i] = { t = i, source = (i <= 10) and "user" or "auto" } end
+	LM:Sanitize()
+	local n = 0
+	for _ in pairs(m.flags) do n = n + 1 end
+	T.eq(n, LM.MAX_FLAGS, "flag al tetto")
+	T.ok(m.flags.f_1 and m.flags.f_10, "quelli dell'utente restano")
+	T.ok(not m.flags.f_11 and m.flags["f_" .. (LM.MAX_FLAGS + 50)], "si dimenticano i più vecchi automatici")
+	T.ok(LM:SetFlag("nuovo_flag", "addon") and LM:HasFlag("nuovo_flag"), "un flag nuovo si imposta")
+	n = 0
+	for _ in pairs(m.flags) do n = n + 1 end
+	T.eq(n, LM.MAX_FLAGS, "e il tetto regge anche quando si aggiunge")
+	Fresh()
+end)
+
 T.run("/au debug e impostazioni", function()
 	Populate()
 	local out = Run("debug")
