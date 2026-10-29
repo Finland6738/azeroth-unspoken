@@ -93,7 +93,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | **rimandata**: l'utente non è disponibile e ha chiesto di proseguire in autonomia (2026-10-29). Da fare al suo ritorno, insieme a G2 |
 | S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
+| S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
 | S6 | M1 | Living Memory e Diario | Sonnet · high | da fare |
 | S6b | M1 | Relazioni e affinità: NPC automatici, persone incontrate, influenza sul narratore | Sonnet · high | da fare |
@@ -266,6 +266,24 @@ un_tests.py AzerothUnspoken` esegue anche `TestSchema.lua` (registro, varianti, 
 - StyleResolver: registri ammessi per evento, zona, voce e profondità, con un ripiego neutro.
 - Sospensione durante combattimenti impegnativi e schermate invasive.
 - Test con seme RNG controllato: distribuzione, cooldown, ripiego, nessun duplicato nella finestra.
+
+#### Esito di S4 e note per S5
+- **Dove sta il codice** (ordine nel `.toc`: `Engine\StyleResolver` prima di `WeightedSelector`; `Engine\Pacing` e `Engine\NarrativeDirector` dopo `Validator`):
+  - `Engine/NarrativeDirector.lua` (`NS.NarrativeDirector`): `PRIORITY` (esplicito 5, dialogo 4, eccezionale 3, memoria 2, atmosfera 1), `EVENT_PRIORITY`, `Priority(evento)`, `NS:SetEventPriority(evento, livello)`; `Scale(intensità)` (probabilità × intensità/50, pause × (1,5 − intensità/100)); `Gate(evento, ctx, now)` → `AUVerdict { allow, reason, chanceMul, cooldownMul, priority, category }`; `Roll` (dado con `NS:GetChance`); `HighDemand(ctx)` (in combattimento con boss, in incursione, élite in istanza); `Order`; agganci `SetRhythm(nome, fn(evento, ctx) → chanceMul, cooldownMul)` e `SetDemandCheck(nome, fn(ctx) → bool)`.
+  - `Engine/Pacing.lua` (`NS.Pacing`): `MOMENT` (4 s tra due interventi qualsiasi, anche espliciti), pausa globale (`pacing.globalCooldownSeconds`), `CATEGORY_COOLDOWN`, `NS.EVENT_COOLDOWN`, `BUDGET` per categoria in `WINDOW` (600 s) × intensità/50. Gli eventi eccezionali saltano globale, categoria e budget, non il momento. Stato solo in memoria (nessuna migrazione). `Record`, `Note` (esplicito: apre il momento, niente budget), `Status`, `Reset`.
+  - `Systems/Director.lua`: `Offer(evento, extra)` mette in coda; dopo `ARBITRATION` (0,1 s) `Resolve` prova i candidati in ordine di priorità (contesto → `Evaluate` → dado → `Gateway:Narrate`): parla il primo che produce una frase, gli altri tacciono. `Evaluate(evento, ctx)` è il gate (forma S2 invariata, più `priority`/`category`). `Director.log` e `Director:Status()` → riga **Narrative Director** in `/au debug`. `Triggers.Fire` = `Director:Offer`.
+  - `Engine/WeightedSelector.lua`: `W = B × C × P × N × S × R` in `Engine.Factors(entry, lastTone, ctx, profile)`; `Engine:Weight(frase, evento, ctx)` restituisce la scomposizione. Agganci `Engine:SetWeightHook("C"|"P"|"R", nome, fn(entry, ctx) → numero ≥ 0)`: i valori dello stesso fattore si moltiplicano, uno che sbaglia vale 1 e va in diagnostica, 0 esclude la frase.
+  - `Engine/StyleResolver.lua` (`NS.StyleResolver`): `Resolve(evento, ctx)` → profilo (`allowed` per evento, `preferred` da `ctx.mood` e `ctx.depth`), `Affinity(frase, profilo)` (×0,5 fuori dall'evento, +25% per preferenza, contando anche la voce, al massimo tre), `Compatible(registriCornice, registriFrase)` (cornici con `styles` solo con registri uguali o vicini), `SetModifier(nome, fn(profilo, ctx))` con `StyleResolver.Prefer`. API dei pacchetti: `RegisterEventStyles`, `RegisterMoodStyles`.
+  - `Core/Compat.lua`: `InvasiveScreen()` e le capacità `api:InCinematic`, `api:IsInCinematicScene`. Il mock ha `InCinematic` (`P.cinematic`).
+- **Cosa deve sapere S5:**
+  - la personalità entra nel peso con `Engine:SetWeightHook("P", "soul", function(frase, ctx) ... end)`: leggere i tag di affinità delle frasi (`frase.tags`) e restituire un moltiplicatore; per i tratti esclusivi ("mai contraddetti") restituire **0**, che esclude la frase;
+  - il temperamento può spostare i registri con `NS.StyleResolver:SetModifier("soul", function(profilo, ctx) NS.StyleResolver.Prefer(profilo, "ceremonial") end)` (esempio del GDD §5.2: misericordioso → solenne);
+  - il contesto non ha ancora i tratti: esporli in `ctx` (per esempio `ctx.soul`) in `NS:BuildContext`, così condizioni e agganci leggono la stessa fonte;
+  - le frasi e i loro `tags` vengono da S3: oggi nessuna frase ha tag di personalità (S7 li scriverà);
+  - non toccare `Systems/Director.lua` per la personalità: tutto passa dagli agganci.
+- **Per S6, S6b, S6c:** S6 registra i richiami di memoria come eventi con `NS:SetEventPriority(evento, "memory")`; S6b usa l'aggancio `R`; S6c usa l'aggancio `C`, `SetRhythm` (ritmo per tipo di istanza) e `SetDemandCheck` (`ENCOUNTER_START`, oggi un boss di dungeon senza classificazione `worldboss` non sospende il narratore).
+- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestNarrativeDirector.lua` (151 controlli, seme fisso) più gli altri; `TestDirector.lua` resta valido. I test che aspettano una frase spontanea devono far passare la finestra di arbitraggio (`ADVANCE`).
+- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 27–31): se il ritmo è piacevole (budget e pause sono ipotesi), se `InCinematic`/`IsInCinematicScene` esistono e rispondono nel build 70658, se `CinematicFrame`/`MovieFrame` sono i frame giusti, se boss ed élite vengono riconosciuti (`UnitClassification`).
 
 ### S5: Character Soul e Total RP 3 (GDD §7.1, §8)
 - Tratti opt-in: temperamento, morale, curiosità, fede, motivazione, ironia, argomenti da evitare, voce interiore. Archetipi pronti e profilo neutro.

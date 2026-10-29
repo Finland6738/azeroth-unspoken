@@ -10,6 +10,16 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 
 ### Aggiunto
 
+**Step S4: Narrative Director**
+- `Engine/NarrativeDirector.lua`: priorità del GDD §10 (esplicito > dialogo > evento eccezionale > memoria > atmosfera), gate di opportunità guidato dall'intensità, sospensione durante cinematiche e filmati e nei combattimenti impegnativi (boss, incursione, élite in istanza), dado, ordine dei candidati; `NS:SetEventPriority` per i pacchetti; agganci `SetRhythm` e `SetDemandCheck` per S6c.
+- `Engine/Pacing.lua`: pausa minima tra due interventi qualsiasi (niente cascate), pausa globale, di categoria e di evento, budget per categoria in 10 minuti scalato con l'intensità; stato solo per la sessione.
+- `Systems/Director.lua`: `Director:Offer`/`Resolve` raccolgono i candidati di un momento e ne fanno parlare al massimo uno; il silenzio è un esito con il suo motivo; riga **Narrative Director** in `/au debug` (budget e ultime decisioni).
+- Peso `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`): `P` e `R` neutri, agganci `Engine:SetWeightHook("C"|"P"|"R", nome, fn)` per S5, S6b e S6c.
+- `Engine/StyleResolver.lua`: registri ammessi per evento e preferiti da atmosfera della zona, profondità e voce, con ripiego neutro (un registro fuori posto pesa meno, non è escluso); le cornici con `styles` accolgono solo frasi di registro vicino. API dei pacchetti `RegisterEventStyles` e `RegisterMoodStyles`.
+- `Compat:InvasiveScreen` (`InCinematic`, `IsInCinematicScene`, `CinematicFrame`, `MovieFrame`) e le due capacità nuove nella matrice.
+- Test: `TestNarrativeDirector` (fattori e distribuzione dei pesi, intensità 0/50/100, pause, budget, priorità, nessuna cascata, silenzio, sospensione, ripiego di stile, cornici, nessun duplicato nella finestra), con seme fisso.
+- [ADR 0015](docs/adr/0015-narrative-director-un-intervento-per-momento.md); passi 27–31 in `docs/G1_checklist.md`.
+
 **Correzioni Q2 (issue #3, #4, #5, #6, #8, #11, #12, #14, #17, #19)**
 - Uscita **"Nella chat"** (`Gateway:CopyToChat`, pulsante accanto a Invia, `/au copia`): la proposta va nella casella della chat standard già sul canale giusto e il giocatore la invia con il suo Invio (`Compat:OpenChatWith`, `Compat:CanOpenChat`, capacità `api:OpenChat`). Da provare in gioco (G1, passo 20).
 - `Gateway:TextFor`/`DisplayFor`: il testo inviato e l'anteprima nel narratore sono adatti al canale.
@@ -61,6 +71,8 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - **#19** Il limite di 255 byte è in un solo posto.
 
 ### Modificato
+- Gli eventi spontanei passano dal Narrative Director: probabilità, pause e dado non sono più in `Systems/Triggers.lua`, e una frase spontanea arriva 0,1 secondi dopo l'evento (finestra di arbitraggio).
+- Una frase chiesta dal giocatore (comando, tasto) impedisce per 4 secondi una frase spontanea subito dopo.
 - L'invio automatico non si accende scegliendo la modalità `auto`: richiede un secondo gesto di conferma (decisione prudente: pubblica di meno).
 - Rispetto al prototipo, nulla va in chat pubblica senza una scelta dell'utente: l'uscita predefinita è il narratore privato.
 - `output.mode` è sostituito da `chat.mode` (migrazione di schema da 1 a 2: `self` diventa `PRIVATE`, ogni altra modalità diventa `CONFIRM_TO_SEND`; `autoPublicSay` è forzato a `false`).
@@ -73,9 +85,8 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 
 ### Noto
 - **Provato solo fuori dal gioco**: la prova nel client vero (G1) è rimandata. Vedi [docs/G1_checklist.md](docs/G1_checklist.md).
-- La profondità dello stile si salva ma nessuna frase la usa ancora.
+- I numeri del Narrative Director (budget, pause di categoria, pesi di stile) sono ipotesi da regolare in gioco (G1, passi 27–31).
 - Nelle impostazioni solo i moduli Personale, Mondo, Proposte in chat e Total RP 3 hanno effetto.
-- `AzerothUnspoken/Data/Classes.lua` (54 frasi) non è ancora nel `.toc`.
 - Licenza da definire ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
 [Non rilasciato]: https://github.com/Finland6738/azeroth-unspoken/commits/main

@@ -225,6 +225,25 @@ Poca roba, ma solo il client vero può dire che i file dei testi (UTF-8) e il co
     - **Cosa aspettarti:** con *naturale* escono più battute dirette, con *elevato* più frasi ornate. La differenza è di probabilità, non una regola netta.
     - **Cosa riportare:** se non noti nessuna differenza dopo una ventina di prove (è un'informazione utile, non un errore).
 
+## S4: il Narrative Director (aggiunto dallo step S4)
+
+Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato con il client simulato; qui serve sapere se il ritmo è piacevole e se le sospensioni scattano davvero.
+
+27. Con le impostazioni predefinite (intensità 50) gioca **20–30 minuti** nel mondo aperto: combattimenti, un cambio di zona, magari un livello.
+    - **Cosa aspettarti:** frasi rade, mai due di fila nello stesso istante; dopo una frase almeno 45 secondi di silenzio (tranne morte, ritorno in vita e livello).
+    - **Cosa riportare:** se il narratore ti è sembrato invadente o troppo muto; ogni volta che sono comparse **due frasi insieme**.
+28. Scrivi `/au debug` dopo qualche combattimento e cerca la riga **Narrative Director**.
+    - **Cosa aspettarti:** `budget combat 2/6, ...` (frasi usate e ammesse negli ultimi 10 minuti) e `last battle=spoken, victory=cooldown:global, ...` (le ultime decisioni).
+    - **Cosa riportare:** la riga intera.
+29. Prova l'intensità: `/au intensita 0` e combatti un po' (nessuna frase spontanea, ma `/au saluto` funziona); poi `/au intensita 100` (frasi più frequenti, mai a raffica).
+    - **Cosa riportare:** se a 0 compare qualcosa da solo, o se a 100 il ritmo è insopportabile.
+30. **Filmati.** Se puoi, guarda una cinematica (per esempio quella iniziale di una razza con un personaggio nuovo, o un filmato di un'area) durante un evento che di solito fa parlare il narratore.
+    - **Cosa aspettarti:** nessuna frase durante il filmato.
+    - **Cosa riportare:** con `/au debug full`, le righe `api:InCinematic` e `api:IsInCinematicScene` (`AVAILABLE` o `MISSING`).
+31. **Combattimenti impegnativi.** In un dungeon, contro un élite o un boss (o in incursione), ascolta il narratore.
+    - **Cosa aspettarti:** durante lo scontro nessuna frase di battaglia o di atmosfera (in `/au debug`: `battle=busy`); morte e ritorno in vita parlano ancora.
+    - **Cosa riportare:** frasi comparse durante uno scontro impegnativo, e se un boss è stato riconosciuto come tale.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -243,6 +262,9 @@ SP-05 C (tasto) ......... conferma ok? ___  pausa ok? ___
 SP-05 D (anteprima) ..... ok? ___
 SP-05 E (auto) .......... emote da sole? ___  /say da solo nel mondo aperto? (deve essere NO) ___
 S3 /au valida ........... errori ___  avvisi ___  accenti giusti (IT/EN)? ___  profondità: differenza notata? ___
+S4 ritmo ................ invadente / giusto / muto ___  due frasi insieme? ___  riga Director in /au debug ______
+S4 intensità ............ a 0 muto? ___  a 100 sopportabile? ___
+S4 sospensioni .......... cinematica muta? ___  boss/élite muti? ___  api:InCinematic ___
 Q2 nella chat (#14) ..... pulsante c'è? ___  casella su /s giusta? ___  Invio da lì parte? ___  riga api:OpenChat ___
 Q2 testo per canale (#5)  emote in /s con nome? ___  parlato in /e con "dice"? ___
 Q2 editor (#4) .......... resta aperto 40 s? ___  Invio spedisce? ___

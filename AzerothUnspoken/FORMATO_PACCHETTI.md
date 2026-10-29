@@ -138,6 +138,15 @@ I registri sono quelli del GDD §5.1; l'utente non li sceglie: li usa il motore 
 Un pacchetto può aggiungere registri con `styles = { "bardico" }` nel pacchetto o `AzerothUnspoken:RegisterStyle("bardico")`;
 senza, il validatore segnala un avviso.
 
+Dallo step S4 il **StyleResolver** usa i registri per pesare le frasi (mai per escluderle):
+- ogni evento ammette alcuni registri (la battaglia, ad esempio, non il quotidiano); un registro fuori posto pesa la metà;
+- l'atmosfera della zona (`forest` → antico, `dark` → tragico, `city` → quotidiano...), la profondità scelta
+  (naturale → quotidiano, ironico, intimo; elevato → cerimoniale, epico, antico) e la voce (`inner` → intimo,
+  `narrator` → antico, tragico, epico; `npc` → quotidiano, ironico) aggiungono il 25% ciascuna al registro preferito;
+- un pacchetto può cambiare le regole: `AzerothUnspoken:RegisterEventStyles("fishing", { "intimate", "ironic" })`
+  (registri ammessi per un evento) e `AzerothUnspoken:RegisterMoodStyles({ coast = { "everyday" } })` (registri preferiti
+  da un'atmosfera).
+
 La **profondità** (Naturale, Letterario, Elevato) è quella scelta dall'utente (`/au profondita`). Non esclude frasi:
 quelle scritte per un'altra profondità **pesano meno** (×0,3), così non resta mai il silenzio perché mancano testi
 adatti. Una frase senza `depth` non viene mai penalizzata. Indicativamente: `natural` è diretto e quotidiano,
@@ -275,6 +284,8 @@ frames = {
 ```
 
 Una cornice senza `event` vale per tutti gli eventi; ogni variante deve contenere `{line}`.
+Una cornice può indicare i suoi registri (`styles = { "ceremonial" }`): allora accoglie solo frasi di un registro uguale
+o vicino (epico e cerimoniale sì, cerimoniale e ironico no). Senza `styles` accoglie ogni frase.
 Cornice e frase insieme devono stare nei 255 byte di un messaggio (il validatore avvisa).
 
 ## Lingue nuove, traduzioni e testi in più
@@ -349,11 +360,19 @@ I controlli dei contenuti (lore verificata, ortografia, registro del parlante) r
 
 1. Raccoglie le frasi dell'evento che hanno almeno una variante utilizzabile nella lingua scelta (non vuota, con i dati
    richiesti, di un pacchetto acceso), che soddisfano le condizioni e il proprio `cooldown`.
-2. Peso = `weight` × (1 + 0,35 × numero di condizioni) ÷ (1 + 0,3 × usi recenti) × fattore di profondità (×0,3 se la frase
-   è scritta per altre profondità).
-3. Il registro principale uguale a quello dell'ultima frase dello stesso evento pesa il 40% in meno.
+2. Peso **W = B × C × P × N × S × R** (GDD §10):
+   - `B` = `weight`;
+   - `C` = 1 + 0,35 × numero di condizioni (contesto);
+   - `P` = personalità, oggi neutra (step S5);
+   - `N` = novità: ÷ (1 + 0,3 × usi recenti), e ×0,6 se il registro principale è quello dell'ultima frase dello stesso evento;
+   - `S` = stile: profondità (×0,3 se la frase è scritta per altre profondità) × registri (StyleResolver, sopra);
+   - `R` = relazione con l'interlocutore, oggi neutra (step S6b).
+3. Nessun fattore esclude una frase per ragioni di stile: c'è sempre un ripiego.
 4. Le frasi usate di recente (circa il 60% di quelle disponibili, al massimo `pacing.recentPhraseWindow` = 30) sono escluse finché ce ne sono altre.
 5. Scelta la frase, sceglie una **variante**: tra quelle della profondità giusta (o senza indicazione), diversa dall'ultima usata.
 6. La memoria degli usi e delle varianti si salva tra le sessioni, per personaggio, e gli usi si attenuano a ogni accesso.
-7. Fuori dal motore valgono le probabilità per evento (`/au prob`), la pausa globale (`/au cooldown`)
-   e la pausa propria di ogni evento.
+7. Prima del motore decide il **Narrative Director** (eventi spontanei, non le richieste esplicite): intensità,
+   probabilità per evento (`/au prob`), pause (globale `/au cooldown`, di categoria, di evento), budget per categoria,
+   priorità e sospensione durante filmati e combattimenti impegnativi. Un evento nuovo ha la priorità "atmosfera";
+   un pacchetto la può cambiare con `AzerothUnspoken:SetEventPriority("fishing", "memory")`
+   (`dialogue`, `exceptional`, `memory`, `ambient`). Vedi [docs/ARCHITETTURA.md](../docs/ARCHITETTURA.md).

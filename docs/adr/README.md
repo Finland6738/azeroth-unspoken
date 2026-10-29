@@ -22,10 +22,11 @@ Servono a ricordare *perché* il progetto è fatto in un certo modo, non solo *c
 | [0012](0012-lingue-scelte-dall-utente.md) | Lingue scelte dall'utente, indipendenti dal client | accettata |
 | [0013](0013-wiki-github.md) | La wiki di GitHub: `docs/` resta la fonte, la wiki non si usa per ora | accettata |
 | [0014](0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) | Bus di eventi normalizzati, moduli isolati e Director come punto di aggancio | accettata |
+| [0015](0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, pesi moltiplicativi, stile che pesa e non esclude | accettata |
 
 ## Decisioni in sospeso
 
-- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, diventerà l'ADR 0015.
+- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0016).
 
 ## Come scriverne una nuova
 
