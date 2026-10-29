@@ -461,6 +461,12 @@ function Validator:Run(opts)
 					end
 				end
 				CheckEntry("frame", f, f.id)
+				for _, st in ipairs(f.styles or {}) do
+					if not Engine.STYLES[st] then
+						Add("warning", "unknownStyle", packId, f.id, nil,
+							("la cornice dichiara il registro '%s', sconosciuto: non si unirà a nessuna frase"):format(tostring(st)))
+					end
+				end
 			end
 			for _, v in ipairs(pack.vocabList or {}) do
 				CheckEntry("vocab", v, v.id)
@@ -471,6 +477,25 @@ function Validator:Run(opts)
 						("lingua '%s' non registrata con RegisterLanguage: le frasi non saranno selezionabili"):format(lang))
 				end
 			end
+		end
+	end
+
+	-- registri dichiarati con NS:RegisterEventStyles e NS:RegisterMoodStyles (non appartengono a un pacchetto preciso)
+	if not scope then
+		local SR = Engine.StyleResolver
+		local function CheckStyleRegistry(kind, map)
+			for _, key in ipairs(Engine.SortedKeys(map)) do
+				for _, st in ipairs(map[key]) do
+					if not Engine.STYLES[st] then
+						Add("warning", "unknownStyle", nil, kind .. ":" .. tostring(key), nil,
+							("registro '%s' sconosciuto in RegisterEventStyles/RegisterMoodStyles (%s)"):format(tostring(st), kind))
+					end
+				end
+			end
+		end
+		if SR then
+			CheckStyleRegistry("event", SR.EVENT_STYLES)
+			CheckStyleRegistry("mood", SR.MOOD_STYLES)
 		end
 	end
 

@@ -376,3 +376,29 @@ T.run("#19: i limiti vengono da Config.CHAT_LIMITS, la stessa tabella del Chat G
 	T.ok(Has(r, "tooLong", "lim.b"), "con il limite di /say a 50 la stessa frase è troppo lunga")
 	Config.CHAT_LIMITS.SAY = saved
 end)
+
+T.run("#23: registri sbagliati nelle cornici, in RegisterEventStyles e in RegisterMoodStyles", function()
+	local r = Validate({ languages = { "itIT" }, registry = { ["fr.a"] = Good() }, texts = { itIT = { ["fr.a"] = "a" } },
+		frames = { { id = "fr.cornice", event = "battle", styles = { "epic", "ceremonal" },
+			text = { itIT = "Dice: «{line}»" } },
+			{ id = "fr.buona", event = "battle", styles = { "epic" }, text = { itIT = "Dice: «{line}»" } } } })
+	local w = Has(r, "unknownStyle", "fr.cornice")
+	T.ok(w and w.level == "warning" and w.msg:find("ceremonal", 1, true), "cornice con un registro sconosciuto: avviso")
+	T.ok(not Has(r, "unknownStyle", "fr.buona"), "cornice con un registro valido: nessun avviso")
+
+	local SR = Engine.StyleResolver
+	local savedEvent, savedMood = SR.EVENT_STYLES.vtest, SR.MOOD_STYLES.vmood
+	NS:RegisterEventStyles("vtest", { "epic", "tragik" })
+	NS:RegisterMoodStyles({ vmood = { "ancient", "anciant" } })
+	local all = Validator:Run()
+	local e = Has(all, "unknownStyle", "event:vtest")
+	T.ok(e and e.msg:find("tragik", 1, true), "RegisterEventStyles con un registro sconosciuto")
+	local m = Has(all, "unknownStyle", "mood:vmood")
+	T.ok(m and m.msg:find("anciant", 1, true), "RegisterMoodStyles con un registro sconosciuto")
+	T.ok(not Has(Validator:Run({ packs = { "v1" } }), "unknownStyle", "event:vtest"), "ristretto a un pacchetto: non si controllano")
+	NS:RegisterStyle("tragik")
+	T.ok(not Has(Validator:Run(), "unknownStyle", "event:vtest"), "un registro dichiarato con RegisterStyle è valido")
+	Engine.STYLES.tragik = nil
+	SR.EVENT_STYLES.vtest, SR.MOOD_STYLES.vmood = savedEvent, savedMood
+	T.ok(not Has(Validator:Run(), "unknownStyle", "mood:vmood"), "ripulito")
+end)
