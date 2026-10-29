@@ -13,7 +13,7 @@ NS:AddTexts("itIT", {
 	},
 	["atk.fire.03"] = {
 		"Fa caldo, vero? Posso fare di meglio.",
-		"Ti vedo un po' pallido. Rimedio subito.",
+		"Hai una brutta cera. Rimedio subito.",
 	},
 	["atk.fire.04"] = {
 		"Le fiamme non odiano nessuno. Divorano e basta.",
@@ -128,7 +128,7 @@ NS:AddTexts("itIT", {
 		"Forza, su! Non hai ancora finito!",
 	},
 	["heal.05"] = {
-		"{target}, resta con me. Guarda la mia voce, non il buio.",
+		"{target}, resta con me. Segui la mia voce, non il buio.",
 		"Resta con me. Ascolta la mia voce, solo quella.",
 	},
 	["heal.holy.01"] = {

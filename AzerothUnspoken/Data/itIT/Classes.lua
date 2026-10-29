@@ -52,7 +52,7 @@ NS:AddTexts("itIT", {
 		"Mi chiamano campione della Luce. Nessuno chiede cosa vedo la notte, quando la Luce tace.",
 	},
 	["cls.pal.heal.01"] = {
-		"Non sei {g:solo|sola}. La Luce cammina con te, e io con lei.",
+		"Non sei {og:solo|sola}. La Luce cammina con te, e io con lei.",
 		"Appoggiati a me. Il resto lo porta la Luce.",
 	},
 	["cls.hun.battle.01"] = {
@@ -64,12 +64,12 @@ NS:AddTexts("itIT", {
 		"Tu tienilo occupato. Io scelgo il punto.",
 	},
 	["cls.hun.victory.01"] = {
-		"Bravo, compagno. Stasera la parte migliore è tua.",
+		"Ben fatto, bestia mia. Stasera la parte migliore è tua.",
 		"Hai fatto tutto tu, lo so. Alla locanda lo racconteremo in un altro modo.",
 	},
 	["cls.hun.lowhp.01"] = {
-		"Indietro, fratello! Tieni la posizione, io copro la fuga!",
-		"Via, compagno, via! Ci ritroviamo all'abbeveratoio, come sempre!",
+		"Indietro, bestia mia! Tieni la posizione, io copro la fuga!",
+		"Via, via! Ci ritroviamo all'abbeveratoio, come sempre!",
 	},
 	["cls.hun.muse.01"] = {
 		"Le orme dicono la verità più dei re. Basta saperle leggere.",
@@ -197,8 +197,8 @@ NS:AddTexts("itIT", {
 		"Il cerchio si allarga, e le voci si fanno più educate. Non mi fido di chi è educato.",
 	},
 	["cls.wlk.greet.01"] = {
-		"Non badare al mio amico. Morde solo quando glielo chiedo.",
-		"Salve. Se il mio piccolo amico ti fissa, non è niente. Ti sta solo pesando.",
+		"Non badare a chi mi accompagna. Morde solo quando glielo chiedo.",
+		"Salve. Se chi mi segue ti fissa, non è niente. Ti sta solo pesando.",
 	},
 	["cls.dru.battle.01"] = {
 		"Hai minacciato il bosco. Il bosco ha artigli.",

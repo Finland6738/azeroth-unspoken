@@ -100,7 +100,7 @@ NS:AddTexts("enUS", {
 	},
 	["zone.jungle.02"] = {
 		"You hear the drums, mon? The jungle remembers us.",
-		"Wet earth and fruit gone soft, mon. That be the smell of home.",
+		"Wet earth and fruit gone soft. That's the smell of home.",
 	},
 	["zone.swamp.01"] = {
 		"Still water keeps secrets better than any tomb.",
@@ -293,7 +293,7 @@ NS:AddTexts("enUS", {
 		"pauses under an inn's creaking sign; the smell of stew reaches all the way to the street.",
 	},
 	["zone.e.dawn"] = {
-		"sets off in the grey light of dawn, dew darkening the hem of {g:his|her} cloak.",
+		"sets off in the gray light of dawn, dew darkening the hem of {g:his|her} cloak.",
 		"rolls stiff shoulders and watches the sky pale above {zone}.",
 	},
 	["zone.e.night"] = {
@@ -307,7 +307,7 @@ NS:AddTexts("enUS", {
 		"I wonder if anyone, a hundred years on, will know I came this way.",
 	},
 	["muse.02"] = {
-		"We cannot choose the times we live in. Only what to do with them.",
+		"No one chooses the season they are born in. The harvest, though, is ours.",
 		"The world doesn't ask leave before it changes. It only asks that we show up.",
 	},
 	["muse.03"] = {
@@ -376,12 +376,12 @@ NS:AddTexts("enUS", {
 		"I tried to remember the taste of bread. I only remember that I liked it.",
 	},
 	["muse.tauren.01"] = {
-		"The land does not belong to us. We belong to the land.",
+		"Every hoof leaves a print, and the rain washes it away. The land remains.",
 		"Take from the land what you need, and give back what you can. The rest follows.",
 	},
 	["muse.troll.01"] = {
 		"The loa be fickle, mon. Like the sea. Like the heart. Like me.",
-		"A feather, a bead, a drop of rum for the spirits. That's how you travel easy, mon.",
+		"A feather, a bead, a drop of rum for the spirits. That's how you travel easy.",
 	},
 	["muse.human.01"] = {
 		"We always rebuild. Walls, homes, kingdoms. Sooner or later we'll learn not to tear them down.",
@@ -426,7 +426,7 @@ NS:AddTexts("enUS", {
 		"whistles a few off-key notes, breaks off, and starts again from the top.",
 	},
 	["muse.e.03"] = {
-		"checks the straps of {g:his|her} gear one by one, with practised hands.",
+		"checks the straps of {g:his|her} gear one by one, with practiced hands.",
 		"picks a flat stone off the path, turns it over in {g:his|her} fingers, then pockets it.",
 	},
 	["muse.e.night"] = {

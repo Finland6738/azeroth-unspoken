@@ -11,7 +11,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.npc.innkeeper.jovial"] = {
 		"returns {other}'s grin: in some inns cheer is served before the ale.",
-		"catches the good humour from behind the counter, and the first sip already tastes like a holiday.",
+		"catches the good humor from behind the counter, and the first sip already tastes like a holiday.",
 	},
 	["ctx.npc.innkeeper.gruff"] = {
 		"Few words, a tankard set down hard on the counter. Warmth here is measured in deeds.",
@@ -28,7 +28,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.npc.trainer"] = {
 		"Every master was once a pupil. Listen well: one day it will be your turn to teach.",
-		"Every move you learn here, a thousand hands have practised before yours.",
+		"Every move you learn here, a thousand hands have practiced before yours.",
 	},
 	["ctx.npc.flightmaster"] = {
 		"Wings ready, straps tight. The sky is a road without mud.",
@@ -62,7 +62,7 @@ NS:AddTexts("enUS", {
 		"Some people lighten the whole day just by being where they are.",
 		"A laugh that shows up before the greeting does. Hard not to return it.",
 	},
-	-- NPC voice: what the NPC might say to us (private, labelled "NPC")
+	-- NPC voice: what the NPC might say to us (private, labeled "NPC")
 	["ctx.npcv.innkeeper"] = {
 		"Come in, come in, there's a wind out there. Still a spot by the fire.",
 		"Bed and hot soup, if you're after them. Boots by the door, if you please.",
@@ -139,7 +139,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.greet.leader"] = {
 		"With respect. It isn't often one stands before someone who carries the weight of a whole people.",
-		"An honour. I'll speak little and listen much.",
+		"An honor. I'll speak little and listen much.",
 	},
 	["ctx.greet.enemy"] = {
 		"You won't understand a word, I know. But a greeting is still a greeting.",
@@ -170,7 +170,7 @@ NS:AddTexts("enUS", {
 		"Greetings. Mulgore's plains are far off, but the wind is the same.",
 	},
 	["ctx.greet.troll"] = {
-		"Greetings, traveller from the islands. The sea has carried you a long way.",
+		"Greetings, traveler from the islands. The sea has carried you a long way.",
 		"Greetings. I'll bet this air feels far too cold to you.",
 	},
 	["ctx.greet.forsaken"] = {
@@ -198,7 +198,7 @@ NS:AddTexts("enUS", {
 		"Greetings. You clearly know tracks better than roads.",
 	},
 	["ctx.greet.paladin"] = {
-		"Polished armour, steady gaze. May your cause be as sound as your steel.",
+		"Polished armor, steady gaze. May your cause be as sound as your steel.",
 		"Greetings. May the Light keep your footing sure.",
 	},
 	["ctx.greet.druid"] = {
@@ -269,7 +269,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.zone.dungeon.deep"] = {
 		"Underground, time isn't counted in hours but in torches burned down.",
-		"The deeper you go, the more sunlight sounds like a rumour.",
+		"The deeper you go, the more sunlight sounds like a rumor.",
 	},
 	["ctx.zone.dungeon.undead"] = {
 		"Someone lived here once. The silence they left still has the shape of their voices.",
@@ -336,7 +336,7 @@ NS:AddTexts("enUS", {
 		"Every glance you meet could be a question. Don't give answers.",
 	},
 	["ctx.zone.hostile.hood"] = {
-		"pulls the hood lower: the sentries here wear other colours.",
+		"pulls the hood lower: the sentries here wear other colors.",
 		"leaves the main road for a narrower trail through the brambles.",
 	},
 	["ctx.zone.contested"] = {
@@ -361,7 +361,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.zone.capital.enemy.guards"] = {
 		"Every guard who doesn't stop you is a small victory. Don't count them out loud.",
-		"Breathe easy. Here even the children can spot a stranger.",
+		"Breathe quietly. Here even the children can spot a stranger.",
 	},
 	["ctx.zone.sanctuary"] = {
 		"Here weapons rest. A truce nobody signed, and yet everyone keeps.",
@@ -373,7 +373,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.zone.neutral"] = {
 		"A town where everyone is welcome, as long as they pay. Honest, in its way.",
-		"Here it's the colour of your coin that counts, not the colour of your banner.",
+		"Here it's the color of your coin that counts, not the color of your banner.",
 	},
 	["ctx.zone.port"] = {
 		"The smell of salt and wet rope. From here ships sail toward places you haven't imagined yet.",
@@ -435,7 +435,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.boss.win.hands"] = {
 		"It's over. Only now do your hands start to shake.",
-		"Your heart takes a while to realise it's allowed to slow down.",
+		"Your heart takes a while to realize it's allowed to slow down.",
 	},
 	["ctx.boss.win.raid"] = {
 		"stays silent for a moment: the silence of those who held together.",

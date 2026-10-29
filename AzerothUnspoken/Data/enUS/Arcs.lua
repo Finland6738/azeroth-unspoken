@@ -28,7 +28,7 @@ NS:AddArcTexts("enUS", {
 		title = "A Familiar Face",
 		summary = "Someone you meet more and more often has stopped being a stranger. A short story about what to make of getting to know each other.",
 		states = {
-			DISCOVERED = "By now you recognise each other. The story waits for the acquaintance to grow: go and see this person again.",
+			DISCOVERED = "By now you recognize each other. The story waits for the acquaintance to grow: go and see this person again.",
 			REFLECTED = "You have thought about what this person is to you. What remains is to let time do the rest: the story closes when the bond has ripened.",
 			RESOLVED = "The acquaintance has become something of your own. A memory of this story stays in the journal.",
 		},
@@ -195,7 +195,7 @@ NS:AddTexts("enUS", {
 	-- The Three Gates
 	---------------------------------------------------------------------------
 	["arc.gates.open.i"] = {
-		"{zone}: another city, another circle of walls. I begin to recognise how capitals resemble each other, and how they do not.",
+		"{zone}: another city, another circle of walls. I begin to recognize how capitals resemble each other, and how they do not.",
 		"Another capital yet, and already the world feels smaller and larger at once.",
 	},
 	["arc.gates.open.e"] = {

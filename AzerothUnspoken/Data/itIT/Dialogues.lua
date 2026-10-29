@@ -24,11 +24,11 @@ NS:AddTexts("itIT", {
 	["npcd.innkeeper.open.known1"] = {
 		"Ancora tu! Il tavolo vicino al camino è come lo hai lasciato.",
 		"Ti vedo spesso da queste parti. Fa piacere una faccia che torna.",
-		"Ben ritrovato. Il solito angolo è libero, se ti va.",
+		"Ben {g:ritrovato|ritrovata}. Il solito angolo è libero, se ti va.",
 	},
 	["npcd.innkeeper.open.stranger1"] = {
 		"Non ti conosco ancora. Ma il fuoco scalda tutti allo stesso modo.",
-		"Nuovo da queste parti? Allora presentiamoci con un boccale.",
+		"{g:Nuovo|Nuova} da queste parti? Allora presentiamoci con un boccale.",
 	},
 	["npcd.innkeeper.open.again1"] = {
 		"Sei {g:tornato|tornata} a chiedere notizie? Ne ho di fresche, o quasi.",
@@ -40,7 +40,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.innkeeper.open.gruff2"] = {
 		"Pulisciti gli stivali. Poi parlami.",
-		"Se cerchi conforto hai sbagliato porta. Se cerchi una panca, no.",
+		"Se cerchi conforto hai sbagliato porta. Se cerchi una panca, eccola.",
 	},
 	["npcd.innkeeper.open.jovial1"] = {
 		"Ah, un cliente! Cioè, un ospite! Cioè, un amico che non ha ancora pagato!",
@@ -71,7 +71,7 @@ NS:AddTexts("itIT", {
 		"Ogni storia è migliore con qualcosa da bere accanto. Ti verso la tua?",
 	},
 	["npcd.innkeeper.open.gryshka1"] = {
-		"Parla. Il tempo è denaro, e il mio è poco.",
+		"Parla. Ho poco tempo, e lo vendo caro.",
 		"Se vuoi un letto, dillo. Se vuoi una chiacchierata, dimmi quanto paghi.",
 	},
 	["npcd.innkeeper.news.n1"] = {
@@ -171,12 +171,12 @@ NS:AddTexts("itIT", {
 		"Respira. Qui il tempo scorre più piano, e nessuno ti farà notare che passa.",
 	},
 	["npcd.innkeeper.sit.n2"] = {
-		"Ecco, così si fa. Un po' di fermo vale più di cento passi.",
+		"Ecco, così si fa. Un po' di sosta vale più di cento passi.",
 		"Fatti spazio sulla panca. Se qualcuno parla troppo, fai finta di ascoltare.",
 	},
 	["npcd.innkeeper.sit.gruff1"] = {
 		"Siediti, allora. E non toccare il mio sgabello.",
-		"Ti fermi? Bene. Ti fermi, ma zitto.",
+		"Ti fermi? Bene. Ti fermi, ma {g:zitto|zitta}.",
 	},
 	["npcd.innkeeper.sit.jovial1"] = {
 		"Ah, un cliente che resta! Accenderò una candela in tuo onore!",
@@ -232,7 +232,7 @@ NS:AddTexts("itIT", {
 	---------------------------------------------------------------------------
 	["npcd.merchant.open.n1"] = {
 		"Guarda pure. Se non vedi ciò che cerchi, chiedi: la merce migliore sta sul retro.",
-		"Benvenuto! Roba onesta a prezzi onesti, o almeno quelli che passano per tali.",
+		"{g:Benvenuto|Benvenuta}! Roba onesta a prezzi onesti, o almeno quelli che passano per tali.",
 	},
 	["npcd.merchant.open.n2"] = {
 		"Oggi i carri sono arrivati in orario. Un evento raro: approfittane.",
@@ -244,10 +244,10 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.merchant.open.known1"] = {
 		"Il mio cliente preferito! Cioè, uno dei pochi che torna.",
-		"Bentornato. Il banco è lo stesso, ma la merce cambia più spesso di quanto sembri.",
+		"{g:Bentornato|Bentornata}. Il banco è lo stesso, ma la merce cambia più spesso di quanto sembri.",
 	},
 	["npcd.merchant.open.stranger1"] = {
-		"Nuovo da queste parti? Un consiglio: il banco è onesto, il prezzo meno. Scherzo. Più o meno.",
+		"{g:Nuovo|Nuova} da queste parti? Un consiglio: il banco è onesto, il prezzo meno. Scherzo. Più o meno.",
 		"Non ti ho mai visto: bene, i clienti nuovi hanno ancora le monete tutte.",
 	},
 	["npcd.merchant.open.again1"] = {
@@ -400,7 +400,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.guard.open.stranger1"] = {
 		"Non ti conosco. Nessun problema, finché non ne porti.",
-		"Nuovo? Allora una regola sola: sii gentile e andremo d'accordo.",
+		"{g:Nuovo|Nuova}? Allora una regola sola: sii gentile e andremo d'accordo.",
 	},
 	["npcd.guard.open.terse1"] = {
 		"Dimmi in fretta.",
@@ -448,7 +448,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.guard.danger.known1"] = {
 		"A te lo dico senza giri: tieni lo sguardo alto e le spalle coperte. Ti ho visto abbastanza da sapere che sai badare a te.",
-		"Con te posso essere franco: non ti dico di stare attento, perché lo sei già.",
+		"Con te posso essere franco: non ti dico di stare {g:attento|attenta}, perché lo sei già.",
 	},
 	["npcd.guard.danger.dughan1"] = {
 		"Guai ne arrivano sempre da qualche parte. Il mio compito è che non arrivino da qui.",
@@ -492,7 +492,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.guard.bye.n1"] = {
 		"Buona strada. Non fare tardi.",
-		"Stai attento là fuori. Qui, di solito, è tutto sotto controllo.",
+		"Stai {g:attento|attenta} là fuori. Qui, di solito, è tutto sotto controllo.",
 	},
 	["npcd.guard.bye.n2"] = {
 		"Arrivederci. E ricorda: la legge protegge chi la rispetta.",
@@ -507,7 +507,7 @@ NS:AddTexts("itIT", {
 		"Arrivederci. La pace vi accompagni, e vi attenda al ritorno.",
 	},
 	["npcd.guard.bye.known1"] = {
-		"Stai attento, {g:amico|amica}. Ti rivedremo, spero.",
+		"Stai {g:attento|attenta}, {g:amico|amica}. Ti rivedremo, spero.",
 		"Alla prossima. Una faccia che non porta guai è sempre benvenuta.",
 	},
 	["npcd.guard.bye.dughan1"] = {
@@ -523,7 +523,7 @@ NS:AddTexts("itIT", {
 		"Tieni le cinghie strette e lo stomaco calmo: il resto lo fa il vento.",
 	},
 	["npcd.flightmaster.open.n2"] = {
-		"Pronto a partire? La bestia lo è sempre: sei tu quello che deve decidere.",
+		"{g:Pronto|Pronta} a partire? La bestia lo è sempre: sei tu {g:quello|quella} che deve decidere.",
 		"Un volo è il modo più onesto di arrivare: non si può fingere di essere già lì.",
 	},
 	["npcd.flightmaster.open.n3"] = {
@@ -532,7 +532,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.flightmaster.open.known1"] = {
 		"Ti riconosco: sei {g:quello|quella} che non guarda mai giù. O che guarda sempre, ma finge di no.",
-		"Bentornato in alto. La bestia ti ha già annusato e non protesta.",
+		"{g:Bentornato|Bentornata} in alto. La bestia ti ha già annusato e non protesta.",
 	},
 	["npcd.flightmaster.open.jovial1"] = {
 		"Su, su! Il cielo è gratis, il biglietto un po' meno!",
@@ -544,7 +544,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.flightmaster.open.terse1"] = {
 		"Rotta?",
-		"Dì dove.",
+		"Di' dove.",
 	},
 	["npcd.flightmaster.route.n1"] = {
 		"Lungo abbastanza da pentirsi di non aver mangiato, breve abbastanza da non pentirsene troppo.",
@@ -647,7 +647,7 @@ NS:AddTexts("itIT", {
 		"Se ti serve un consiglio, vuol dire che non hai ancora provato abbastanza.",
 	},
 	["npcd.trainer.advice.warm1"] = {
-		"Sii gentile con te {g:stesso|stessa}, quanto sei severo con il tuo lavoro. Funziona meglio di quanto sembri.",
+		"Sii gentile con te {g:stesso|stessa}, quanto sei {g:severo|severa} con il tuo lavoro. Funziona meglio di quanto sembri.",
 		"Dormi, mangia, respira. Il resto è dettaglio.",
 	},
 	["npcd.trainer.advice.formal1"] = {

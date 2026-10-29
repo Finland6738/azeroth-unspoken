@@ -165,7 +165,7 @@ NS:AddTexts("enUS", {
 		{ "This is no common quarry. Let every blow be weighed and every step measured.", depth = "elevated" },
 	},
 	["battle.boss.01"] = {
-		"Here is the heart of the darkness. If we fall, let it be said we did not falter.",
+		"So this is the bottom of all this dark. If we fall, let it be said we did not falter.",
 		{ "There it is. Breathe, check your straps, no funny business.", depth = "natural" },
 		{ "Here the long road ends. Whatever comes, we walked it together.", depth = "elevated" },
 	},
@@ -195,14 +195,14 @@ NS:AddTexts("enUS", {
 	},
 	["battle.troll.01"] = {
 		"The loa be watching, mon. Let's give them a good show.",
-		"Hey, loa! Watch this, mon, here come the good part.",
+		"Hey, loa! Watch this. Here comes the good part.",
 	},
 	["battle.human.01"] = {
 		"For every burned field of Elwynn, for every home no one came back to!",
 		"For the farms, for the mills, for everyone watching the road tonight!",
 	},
 	["battle.dwarf.01"] = {
-		"Hold my ale, lads. I'll be right back.",
+		"For my fathers' fathers! The mountain gives no ground, and neither do I.",
 		"Hang on, let me fix my beard. There. Now we're talking.",
 	},
 	["battle.dwarf.02"] = {
@@ -320,7 +320,7 @@ NS:AddTexts("enUS", {
 		"One more step. Go on. Try it.",
 	},
 	["threat.02"] = {
-		"I know a hundred ways to silence a man. I'd choose the slowest.",
+		"I know a hundred ways to silence someone. I'd choose the slowest.",
 		"I'm a patient sort. With very steady hands. Think on that.",
 	},
 	["threat.03"] = {
@@ -396,7 +396,7 @@ NS:AddTexts("enUS", {
 		"Note to self: next time, count them before charging.",
 	},
 	["victory.gen.11"] = {
-		"Sit down. Just for a moment. Just one.",
+		"I'll sit. Just for a moment. Just one.",
 		"Now the legs start shaking. After it's over. Typical.",
 	},
 	["victory.long.01"] = {
@@ -430,11 +430,11 @@ NS:AddTexts("enUS", {
 	},
 	["victory.troll.01"] = {
 		"Hey mon, you was never a problem. Truly.",
-		"Easy, mon. Too easy. Now I be bored.",
+		"Easy. Too easy. Now I'm bored.",
 	},
 	["victory.dwarf.01"] = {
 		"Hah! A fine warm-up. Now someone buy me a drink.",
-		"That's worth a pint. Two, actually: one for the thirst and one for the trouble.",
+		"Fine work. Back in Khaz Modan they'd make a song of that.",
 	},
 	["victory.nelf.01"] = {
 		"Let the roots take you. The forest forgets quickly, and that is a gift.",
@@ -504,7 +504,7 @@ NS:AddTexts("enUS", {
 		"I'm fine. Ish. Let's say I'm still here.",
 	},
 	["lowhp.05"] = {
-		"I have looked darkness closer in the eye than this. And came back to tell of it.",
+		"I have looked darkness closer in the eye than this, and I came back to tell of it.",
 		{ "Breathe. You've had worse. Breathe.", depth = "natural" },
 	},
 	["lowhp.06"] = {
@@ -532,7 +532,7 @@ NS:AddTexts("enUS", {
 		"Lady of the moon, grant me one more breath. Only one.",
 	},
 	["lowhp.12"] = {
-		"I've had hangovers worse than this. I think.",
+		"I've taken worse knocks at the forge. I think.",
 		"Ow. Right, felt that one all the way into my beard.",
 	},
 	["lowhp.13"] = {
@@ -549,7 +549,7 @@ NS:AddTexts("enUS", {
 	},
 	["lowhp.16"] = {
 		"Too slow. I'm too slow.",
-		"Don't look at the wound. Look at them.",
+		"Don't look at the wound. Look at the enemy.",
 	},
 	["lowhp.e.01"] = {
 		"falls to one knee, then rises again, slower but no less resolute.",

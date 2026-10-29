@@ -202,7 +202,7 @@ NS:AddTexts("itIT", {
 		"varca le mura di {zone} con la polvere di un'altra capitale ancora sugli stivali. Le porte delle città hanno un loro modo di accogliere chi viene da lontano.",
 	},
 	["arc.gates.journey.i"] = {
-		"Tre capitali, tre porte attraversate. Se un giorno mi chiederanno dove sono stato, avrò più di un nome da dire. Ci penserò con calma.",
+		"Tre capitali, tre porte attraversate. Se un giorno mi chiederanno dove sono {g:stato|stata}, avrò più di un nome da dire. Ci penserò con calma.",
 		"Le tre porte sono alle mie spalle. Quando sarò {g:pronto|pronta}, mi chiederò che cosa cercavo, passando di qua.",
 	},
 	["arc.gates.refl.shelter"] = {

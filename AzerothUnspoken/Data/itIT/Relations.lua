@@ -214,7 +214,7 @@ NS:AddTexts("itIT", {
 		"Che strano lavoro, rimettere in piedi chi ti fa tenere la mano sul coltello.",
 	},
 	["rel.heal.indifferent"] = {
-		"Ferma. Due minuti e sei a posto.",
+		"Sta' {og:fermo|ferma}. Due minuti e sei a posto.",
 		"Ecco fatto. Non c'è bisogno di ringraziare.",
 	},
 	["rel.heal.feared"] = {
@@ -353,7 +353,7 @@ NS:AddTexts("itIT", {
 		"si avvicina senza fretta, come chi torna in una stanza in cui è sempre {g:stato accolto|stata accolta}.",
 	},
 	["rel.npc.known"] = {
-		"Non è la prima volta che parliamo, io e questo posto. Alla lunga ci si riconosce.",
+		"Non è la prima volta che parliamo, io e te. Alla lunga ci si riconosce.",
 		"Facce note. Fanno sembrare il mondo un po' più piccolo, e un po' più mio.",
 	},
 	["rel.npc.label"] = {

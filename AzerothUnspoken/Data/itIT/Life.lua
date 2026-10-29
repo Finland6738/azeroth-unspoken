@@ -48,7 +48,7 @@ NS:AddTexts("itIT", {
 	},
 	["death.dwarf.01"] = {
 		"Qualcuno... finisca la mia birra...",
-		"Seppellitemi... vicino alla botte...",
+		"Portatemi... sotto la montagna... dai miei padri...",
 	},
 	["death.nelf.01"] = {
 		"Elune... ora vedo la tua luce...",
@@ -59,7 +59,7 @@ NS:AddTexts("itIT", {
 		"Il mulino sul fiume... chissà se gira ancora...",
 	},
 	["death.gnome.01"] = {
-		"Nota per me stesso... rivedere i calcoli...",
+		"Nota per me {g:stesso|stessa}... rivedere i calcoli...",
 		"Difetto di progettazione... nel progettista...",
 	},
 	["death.boss.01"] = {
@@ -157,7 +157,7 @@ NS:AddTexts("itIT", {
 		"Le radici mi hanno trattenuto per un po', poi hanno allentato la presa.",
 	},
 	["rez.dwarf.01"] = {
-		"Che mal di testa. Peggio di tre notti di festa a Forgiardente.",
+		"Gli antenati mi hanno rimandato indietro. Dicono che la forgia non è ancora spenta.",
 		"Mi sento come il mattino dopo una rissa a Forgiardente. Almeno ho vinto?",
 	},
 	["rez.e.01"] = {

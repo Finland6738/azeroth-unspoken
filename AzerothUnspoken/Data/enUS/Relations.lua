@@ -28,11 +28,11 @@ NS:AddTexts("enUS", {
 	},
 	["rel.greet.friend.f"] = {
 		"There she is! I was afraid the road had swallowed you whole.",
-		"My favourite friend, right there. Don't tell the others.",
+		"My favorite friend, right there. Don't tell the others.",
 	},
 	["rel.greet.friend.m"] = {
 		"There he is! I was afraid the road had swallowed you whole.",
-		"My favourite friend, right there. Don't tell the others.",
+		"My favorite friend, right there. Don't tell the others.",
 	},
 	["rel.greet.comrade"] = {
 		"Side by side, as ever. Tell me where we are headed.",
@@ -350,7 +350,7 @@ NS:AddTexts("enUS", {
 		"comes closer without hurry, like someone returning to a room where {g:he|she} has always been welcome.",
 	},
 	["rel.npc.known"] = {
-		"This is not the first time we have talked, this place and I. In the end you start to recognise each other.",
+		"This is not the first time we have talked, you and I. In the end you start to recognize each other.",
 		"Familiar faces. They make the world a little smaller, and a little more mine.",
 	},
 	["rel.npc.label"] = {

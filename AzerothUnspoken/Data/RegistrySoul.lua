@@ -24,9 +24,9 @@ NS:RegisterPack({
 		-- contro un non morto: la misericordia e la risolutezza parlano diversamente (GDD §5.2)
 		["soul.battle.merciful"] = { event = "battle", speaker = "character", styles = { "ceremonial" },
 			depth = { "literary", "elevated" }, tags = { "temperament:merciful", "topic:undead" },
-			conditions = { ctype = "undead" } },
+			conditions = { ctype = "undead", ["not"] = { race = "Scourge" } } },
 		["soul.battle.resolute"] = { event = "battle", speaker = "character", styles = { "epic" },
-			tags = { "temperament:resolute", "topic:undead" }, conditions = { ctype = "undead" } },
+			tags = { "temperament:resolute", "topic:undead" }, conditions = { ctype = "undead", ["not"] = { race = "Scourge" } } },
 		-- fede
 		["soul.pray.devout"] = { event = "pray", speaker = "character", styles = { "ceremonial" },
 			tags = { "req:faith:devout", "topic:religion" } },

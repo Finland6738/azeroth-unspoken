@@ -42,11 +42,11 @@ NS:AddTexts("enUS", {
 		"Good air, tall trees, no walls. I like it already.",
 	},
 	["mem.first.forest.fierce"] = {
-		"Whatever dens in these woods can come and meet me. I live here too now.",
+		"Whatever dens in these woods can come and meet me. I'm here too now.",
 		"Thick cover, good ambushes. I will be the one setting them, if it comes to that.",
 	},
 	["mem.first.forest.curious"] = {
-		"That bark is a colour I have never seen. I wonder if the whole forest is like this.",
+		"That bark is a color I have never seen. I wonder if the whole forest is like this.",
 		"Strange tracks in the mud. Something big comes through here, and I want to know what.",
 	},
 	["mem.first.forest.reverent"] = {
@@ -69,7 +69,7 @@ NS:AddTexts("enUS", {
 	},
 	["mem.first.gen.e"] = {
 		"takes a long look around, the way one does on entering someone else's house.",
-		"slows down and takes it all in: the shape of the hills, the colour of the soil, the way the wind blows.",
+		"slows down and takes it all in: the shape of the hills, the color of the soil, the way the wind blows.",
 		{ "stops and looks around. New place.", depth = "natural" },
 		{ "stands still a moment at the border, while the unknown land stretches out before {g:him|her} and promises nothing.", depth = "elevated" },
 	},
@@ -116,7 +116,7 @@ NS:AddTexts("enUS", {
 	},
 	["mem.first.fire"] = {
 		"stops at the edge of the scorched land: heat rises from the ground like a forge just banked.",
-		"coughs quietly. The air tastes of sulphur, and the rock is black as far as the eye can reach.",
+		"coughs quietly. The air tastes of sulfur, and the rock is black as far as the eye can reach.",
 	},
 	["mem.first.plague"] = {
 		"I had heard about these lands. Hearing is not enough: here the fields grow no grain, and the dead do not stay buried.",
@@ -176,7 +176,7 @@ NS:AddTexts("enUS", {
 		"Among these trees again. The first time I looked at them as a stranger; now they know my step.",
 		"The wood has not changed. I am the one who comes back different.",
 		{ "I have seen these trees before. Odd how they look less tall.", depth = "natural" },
-		{ "The boughs take me back the way one takes back a traveller from far away: no questions, only a rustle.", depth = "elevated" },
+		{ "The boughs take me back the way one takes back a traveler from far away: no questions, only a rustle.", depth = "elevated" },
 	},
 	["mem.ret.forest.02"] = {
 		"Here I am again. This forest already knows me.",
@@ -216,7 +216,7 @@ NS:AddTexts("enUS", {
 	},
 	["mem.ret.forest.gruff"] = {
 		"This forest again. Branches in my face again.",
-		"Back here. The wood did me no favours the first time, and I expect none now.",
+		"Back here. The wood did me no favors the first time, and I expect none now.",
 	},
 	["mem.ret.forest.bad.death"] = {
 		"Last time, among these trees, I fell. The wood went on rustling as if nothing had happened.",
@@ -238,11 +238,11 @@ NS:AddTexts("enUS", {
 	},
 	["mem.ret.capital.first"] = {
 		"I remember the first time I saw the walls of a real city. Now I walk beneath them without looking up, and that saddens me a little.",
-		"The first city I ever saw seemed the centre of the world. I have seen others since; that wonder never came back quite the same.",
+		"The first city I ever saw seemed the center of the world. I have seen others since; that wonder never came back quite the same.",
 	},
 	["mem.ret.town"] = {
 		"Back here. Same inn, same bench, hopefully the same stew.",
-		"The usual village. Nice to be recognised, even if only by the dogs.",
+		"The usual village. Nice to be recognized, even if only by the dogs.",
 	},
 	["mem.ret.long"] = {
 		"Days pass, but places stay where you left them. {zone} was waiting for me.",
@@ -250,7 +250,7 @@ NS:AddTexts("enUS", {
 	},
 	["mem.ret.verylong"] = {
 		"More than a month since I was last here. I wonder who I was then, and whether I would know myself.",
-		{ "A month and more of road between me and the last time I saw {zone}. The place is the same; the traveller is not.", depth = "elevated" },
+		{ "A month and more of road between me and the last time I saw {zone}. The place is the same; the traveler is not.", depth = "elevated" },
 	},
 	["mem.ret.often"] = {
 		"How many times now, in {zone}? I am starting to know every stone.",

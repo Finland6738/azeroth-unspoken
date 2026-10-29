@@ -495,6 +495,23 @@ registry = {
 | `{og:maschile\|femminile}` | variante per genere **dell'interlocutore** (`ctx.other.sex`): `{og:amico\|amica}`. Se il sesso non è noto la variante è scartata; non entra nella firma dei segnaposto (una lingua può non avere genere) |
 | `{nome}` | una voce del vocabolario, ad esempio `{cry}` (grido di guerra adatto alla razza) |
 
+**Genere: chi parla e a chi** (issue #61). `{g:}` accorda con il personaggio che parla o pensa (nelle battute degli
+NPC, con il personaggio a cui l'NPC si rivolge); `{og:}` accorda con la persona dell'interazione (`ctx.other`: chi si
+saluta, si cura, si affianca in battaglia). Le regole:
+- usa `{og:}` solo dove la frase si rivolge davvero all'interlocutore o parla di lui: `{og:Ben trovato|Ben trovata}`,
+  `Non sei {og:solo|sola}`, `Sta' {og:fermo|ferma}`. Mai per famigli, nemici o creature, di cui il sesso non si conosce:
+  per loro scegli parole senza accordo («bestia mia», «chi mi accompagna», «il nemico»);
+- ogni frase con `{og:}` tiene **almeno una variante senza `{og:}`**, scritta in forma neutra (nomi di genere comune
+  come «viandante» o «ospite», niente aggettivi o participi accordati), perché senza il sesso dell'interlocutore le
+  varianti con `{og:}` si scartano. Il test dei contenuti lo controlla;
+- prima di `{og:}` prova la forma neutra: «Alla prossima» al posto di «Alla prossima, compagno». Se suona naturale,
+  basta quella;
+- l'inglese di solito non ne ha bisogno: `{og:}` non entra nella firma dei segnaposto, quindi l'italiano può usarlo
+  anche se l'inglese no.
+
+L'inglese dei pacchetti di base segue l'**ortografia americana**, la stessa del client (`color`, `honor`, `traveler`,
+`recognize`, `gray`): il test dei contenuti segnala le forme britanniche più comuni (issue #66).
+
 Se manca un dato richiesto (per esempio `{target}` senza bersaglio), quella variante viene scartata e il motore ne
 sceglie un'altra, o un'altra frase. Non si eseguono mai stringhe Lua contenute nei testi.
 

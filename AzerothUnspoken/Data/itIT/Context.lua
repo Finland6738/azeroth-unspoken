@@ -175,7 +175,7 @@ NS:AddTexts("itIT", {
 	},
 	["ctx.greet.forsaken"] = {
 		"Salute. Non chiederò cosa hai lasciato indietro, se tu non lo chiedi a me.",
-		"Salute. Le strade sono lunghe per tutti, chiunque tu sia stato un tempo.",
+		"Salute. Le strade sono lunghe per tutti, chiunque tu sia {og:stato|stata} un tempo.",
 	},
 	["ctx.greet.priest"] = {
 		"Una benedizione in più non guasta mai, no?",
@@ -194,7 +194,7 @@ NS:AddTexts("itIT", {
 		"Tiene sempre un muro alle spalle. Abitudine del mestiere, forse.",
 	},
 	["ctx.greet.hunter"] = {
-		"Bella bestia, la tua compagna. Più sveglia di metà della gente che conosco.",
+		"Bella bestia, quella che ti segue. Più sveglia di metà della gente che conosco.",
 		"Salute. Si vede che conosci le tracce meglio delle strade.",
 	},
 	["ctx.greet.paladin"] = {
@@ -247,7 +247,7 @@ NS:AddTexts("itIT", {
 		"Un grugnito e un ordine. Il ringraziamento, se arriva, sarà ancora più corto.",
 	},
 	["ctx.battle.ally"] = {
-		"Non sei {g:solo|sola}! Teniamo la linea insieme!",
+		"Non sei {og:solo|sola}! Teniamo la linea insieme!",
 		"Spalla a spalla! Non mollare!",
 	},
 	["ctx.battle.player"] = {
@@ -348,7 +348,7 @@ NS:AddTexts("itIT", {
 		"Il vociare dei mercati, l'odore del pane. Certe cose ti aspettano senza saperlo.",
 	},
 	["ctx.zone.capital.bed"] = {
-		"Finalmente un letto vero, e un pasto che non ho dovuto cacciare da me.",
+		"Finalmente un letto vero, e un pasto che non ho dovuto cacciarmi da {g:solo|sola}.",
 		"Prima un bagno, poi la cena, poi che nessuno mi svegli.",
 	},
 	["ctx.zone.capital.enemy"] = {

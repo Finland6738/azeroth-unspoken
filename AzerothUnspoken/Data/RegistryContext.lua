@@ -116,6 +116,9 @@ NS:RegisterPack({
 		["ctx.zone.bg"] = { event = "zone", speaker = "character", styles = { "epic" }, depth = { "natural" }, tags = { "place.instance:pvp" }, conditions = { place = { instanceType = "pvp" } } },
 		["ctx.zone.bg.rules"] = { event = "zone", speaker = "inner", styles = { "ironic", "epic" }, depth = { "natural", "literary" }, tags = { "place.instance:pvp", "morality:disillusioned" }, conditions = { place = { instanceType = "pvp" } } },
 		["ctx.zone.bg.name"] = { event = "zone", speaker = "narrator", styles = { "epic" }, depth = { "natural", "literary" }, tags = { "place.instance:pvp" }, conditions = { place = { instanceType = "pvp" } } },
+		-- Arene: estensione futura. Nell'era classica non ci sono (arrivano con The Burning Crusade) e Data/Places.lua non ne ha:
+		-- queste frasi, e ctx.zone.arena.sand, ctx.battle.arena e ctx.victory.arena, restano mute finché il client non
+		-- riporta instanceType = "arena" (issue #63).
 		["ctx.zone.arena"] = { event = "zone", speaker = "inner", styles = { "epic" }, depth = { "natural", "literary" }, tags = { "place.instance:arena", "motivation:glory" }, conditions = { place = { instanceType = "arena" } } },
 		["ctx.zone.arena.few"] = { event = "zone", speaker = "character", styles = { "epic", "ironic" }, depth = { "natural" }, tags = { "place.instance:arena" }, conditions = { place = { instanceType = "arena" } } },
 		["ctx.zone.hostile"] = { event = "zone", speaker = "inner", styles = { "epic", "intimate" }, depth = { "natural", "literary" }, tags = { "place.territory:hostile", "temperament:resolute" }, conditions = { place = { territory = "hostile", instanceType = "none", capital = false } } },
@@ -134,7 +137,7 @@ NS:RegisterPack({
 		["ctx.zone.dungeon.threshold"] = { event = "zone", speaker = "narrator", styles = { "epic", "everyday" }, depth = { "natural", "literary" }, tags = { "place.instance:party", "temperament:resolute" }, conditions = { place = { instanceType = "party" } } },
 		["ctx.zone.raid.count"] = { event = "zone", speaker = "character", styles = { "epic", "everyday" }, depth = { "natural", "literary" }, tags = { "place.instance:raid", "motivation:protection" }, conditions = { place = { instanceType = "raid" } } },
 		["ctx.zone.bg.horn"] = { event = "zone", speaker = "narrator", styles = { "epic" }, depth = { "natural", "literary" }, tags = { "place.instance:pvp", "temperament:fierce" }, conditions = { place = { instanceType = "pvp" } } },
-		["ctx.zone.arena.sand"] = { event = "zone", speaker = "narrator", styles = { "epic", "everyday" }, depth = { "natural" }, tags = { "place.instance:arena", "motivation:glory" }, conditions = { place = { instanceType = "arena" } } },
+		["ctx.zone.arena.sand"] = { event = "zone", speaker = "narrator", styles = { "epic", "everyday" }, depth = { "natural" }, tags = { "place.instance:arena", "motivation:glory" }, conditions = { place = { instanceType = "arena" } } }, -- estensione futura (#63)
 		["ctx.zone.rest.cloak"] = { event = "zone", speaker = "narrator", styles = { "intimate", "everyday" }, depth = { "natural", "literary" }, tags = { "place.tag:inn", "temperament:stoic" }, conditions = { place = { rest = true, capital = false } } },
 		["ctx.zone.capital.enemy.guards"] = { event = "zone", speaker = "inner", styles = { "ironic", "tragic" }, depth = { "natural", "literary" }, tags = { "place.tag:capital", "morality:pragmatic" }, conditions = { place = { hostileCapital = true } } },
 		-------------------------------------------------------------------
@@ -142,12 +145,12 @@ NS:RegisterPack({
 		-------------------------------------------------------------------
 		["ctx.battle.bg"] = { event = "battle", speaker = "character", styles = { "epic" }, depth = { "natural", "literary" }, tags = { "place.instance:pvp", "temperament:resolute" }, conditions = { place = { instanceType = "pvp" } } },
 		["ctx.battle.bg.cover"] = { event = "battle", speaker = "character", styles = { "epic" }, depth = { "natural" }, tags = { "place.instance:pvp" }, conditions = { place = { instanceType = "pvp" } } },
-		["ctx.battle.arena"] = { event = "battle", speaker = "character", styles = { "epic" }, depth = { "natural" }, tags = { "place.instance:arena", "temperament:fierce" }, conditions = { place = { instanceType = "arena" } } },
+		["ctx.battle.arena"] = { event = "battle", speaker = "character", styles = { "epic" }, depth = { "natural" }, tags = { "place.instance:arena", "temperament:fierce" }, conditions = { place = { instanceType = "arena" } } }, -- estensione futura (#63)
 		["ctx.battle.tank"] = { event = "battle", speaker = "character", styles = { "epic" }, depth = { "natural", "literary" }, tags = { "motivation:protection" }, conditions = { group = { "party", "raid" }, place = { groupRole = "tank" } } },
 		["ctx.battle.healer"] = { event = "battle", speaker = "inner", styles = { "intimate", "epic" }, depth = { "literary" }, tags = { "motivation:protection" }, conditions = { group = { "party", "raid" }, place = { groupRole = "healer" } } },
 		["ctx.battle.hostile"] = { event = "battle", speaker = "inner", styles = { "epic", "tragic" }, depth = { "natural", "literary" }, tags = { "place.territory:hostile", "temperament:resolute" }, conditions = { place = { territory = "hostile", instanceType = "none" } } },
 		["ctx.victory.bg"] = { event = "victory", speaker = "character", styles = { "epic" }, depth = { "natural" }, tags = { "place.instance:pvp" }, conditions = { place = { instanceType = "pvp" } } },
-		["ctx.victory.arena"] = { event = "victory", speaker = "character", styles = { "epic", "ironic" }, depth = { "natural" }, tags = { "place.instance:arena", "motivation:glory" }, conditions = { place = { instanceType = "arena" } } },
+		["ctx.victory.arena"] = { event = "victory", speaker = "character", styles = { "epic", "ironic" }, depth = { "natural" }, tags = { "place.instance:arena", "motivation:glory" }, conditions = { place = { instanceType = "arena" } } }, -- estensione futura (#63)
 		["ctx.victory.dungeon"] = { event = "victory", speaker = "inner", styles = { "epic", "intimate" }, depth = { "natural", "literary" }, tags = { "place.instance:party", "motivation:protection" }, conditions = { place = { instanceType = "party" } } },
 		["ctx.victory.raid"] = { event = "victory", speaker = "inner", styles = { "epic", "tragic" }, depth = { "natural", "literary" }, tags = { "place.instance:raid", "temperament:stoic" }, conditions = { place = { instanceType = "raid" } } },
 		-------------------------------------------------------------------
