@@ -228,6 +228,8 @@ Per contribuire (frasi, pacchetti, codice, issue) leggi [CONTRIBUTING.md](CONTRI
 
 ## Documentazione
 
+**Manuale per i giocatori:** il [wiki](https://github.com/Finland6738/azeroth-unspoken/wiki) è una guida completa all'uso (installazione, tutti i comandi e le impostazioni, ogni funzione, privacy, risoluzione dei problemi, domande frequenti), in inglese. La sua fonte è [docs/wiki/](docs/wiki/Home.md).
+
 L'indice completo è in [docs/README.md](docs/README.md). La documentazione è in inglese, tranne la checklist delle prove in gioco e la specifica di progetto originale, che sono in italiano. I punti di partenza (in inglese, salvo diversa indicazione):
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): moduli, flusso di un evento, dati, punti di estensione.
