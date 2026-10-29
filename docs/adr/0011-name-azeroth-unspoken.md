@@ -1,38 +1,38 @@
-# 0011. Il nome Azeroth Unspoken
+# 0011. The name Azeroth Unspoken
 
-- Stato: accettata
-- Data: 2026-10-29 (da [ROADMAP.md](../../ROADMAP.md), intestazione, e step S1)
+- Status: Accepted
+- Date: 2026-10-29 (from [ROADMAP.md](../../ROADMAP.md), the header, and step S1)
 
-## Contesto
+## Context
 
-La specifica di prodotto (GDD) chiama il progetto **Immersion Director**; il prototipo si chiamava **Voci di Azeroth**. Il primo è un nome di lavoro generico, il secondo è solo italiano e il progetto è nato bilingue. Il nome compare in molti punti: cartella, `.toc`, variabili salvate, comandi, interfaccia, documentazione, repository.
+The product specification (GDD) calls the project **Immersion Director**; the prototype was called **Voci di Azeroth**. The first is a generic working name, the second is Italian only, and the project was born bilingual. The name appears in many places: folder, `.toc`, saved variables, commands, interface, documentation, repository.
 
-## Decisione
+## Decision
 
-- Il prodotto si chiama **Azeroth Unspoken**, con il motto *An immersive roleplay companion for World of Warcraft* e la descrizione breve: "Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse."
-- Dove GDD e roadmap non coincidono, vale la roadmap. Il GDD conserva il vecchio nome "Immersion Director" e non si riscrive: si legge sostituendo il nome.
-- **Identificatori derivati** (stabili: cambiarli costerebbe dati e compatibilità):
-  - cartelle `AzerothUnspoken/` e `AzerothUnspoken_Example/`;
-  - spazio dei nomi globale `AzerothUnspoken` (API pubblica per pacchetti, macro e diagnostica);
-  - SavedVariables `AzerothUnspokenDB` (account) e `AzerothUnspokenCharacterDB` (personaggio);
-  - comandi `/unspoken` e `/au`;
-  - nomi dei tasti `AZEROTHUNSPOKEN_SPEAK` e `AZEROTHUNSPOKEN_PAUSE`.
-- `/au` e `/unspoken` non sono usati dagli addon installati nel client di riferimento (Details: `/details /dt /de`; Total RP 3: `/trp3`; QuestIT: `/qit`). **Non è stato verificato** contro i comandi interni di Blizzard né contro altri addon.
-- Il prototipo resta in `archive/VociDiAzeroth*/` solo come riferimento storico.
-- Il nome contiene "Azeroth", termine del mondo di Blizzard. Il README dichiara che il progetto è di fan, indipendente e non affiliato né approvato da Blizzard.
+- The product is called **Azeroth Unspoken**, with the tagline *An immersive roleplay companion for World of Warcraft* and the short description (in Italian): "Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse."
+- Where the GDD and the roadmap disagree, the roadmap prevails. The GDD keeps the old name "Immersion Director" and is not rewritten: it is read by substituting the name.
+- **Derived identifiers** (stable: changing them would cost data and compatibility):
+  - folders `AzerothUnspoken/` and `AzerothUnspoken_Example/`;
+  - global namespace `AzerothUnspoken` (public API for packs, macros and diagnostics);
+  - SavedVariables `AzerothUnspokenDB` (account) and `AzerothUnspokenCharacterDB` (character);
+  - commands `/unspoken` and `/au`;
+  - key binding names `AZEROTHUNSPOKEN_SPEAK` and `AZEROTHUNSPOKEN_PAUSE`.
+- `/au` and `/unspoken` are not used by the addons installed in the reference client (Details: `/details /dt /de`; Total RP 3: `/trp3`; QuestIT: `/qit`). **It has not been verified** against Blizzard's internal commands or against other addons.
+- The prototype stays in `archive/VociDiAzeroth*/` only as a historical reference.
+- The name contains "Azeroth", a term from Blizzard's world. The README states that the project is a fan project, independent, and neither affiliated with nor approved by Blizzard.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Mantenere "Immersion Director".** Descrive la funzione di regia, ma è generico, poco distintivo e si confonde con altri prodotti.
-- **Mantenere "Voci di Azeroth".** Solo in italiano; non rende l'idea di ciò che resta non detto.
-- **Un nome senza riferimenti al gioco.** Più sicuro sotto il profilo dei marchi, ma perde la chiarezza per chi cerca un addon di WoW.
+- **Keeping "Immersion Director".** It describes the directing function, but it is generic, not very distinctive, and easily confused with other products.
+- **Keeping "Voci di Azeroth".** Italian only; it does not convey the idea of what remains unspoken.
+- **A name with no reference to the game.** Safer from a trademark standpoint, but it loses clarity for people looking for a WoW addon.
 
-## Conseguenze
+## Consequences
 
-- Positive: un nome unico, bilingue, coerente in tutti i punti; comandi brevi (`/au`).
-- Negative: il GDD resta con il vecchio nome; cambiare gli identificatori in futuro richiederebbe una migrazione delle SavedVariables ([ADR 0006](0006-savedvariables-and-schema-versions.md)); l'uso del termine "Azeroth" nel nome va tenuto d'occhio se si pubblica su piattaforme di distribuzione.
+- Positive: a single, bilingual name, consistent everywhere; short commands (`/au`).
+- Negative: the GDD keeps the old name; changing the identifiers in the future would require a migration of the SavedVariables ([ADR 0006](0006-savedvariables-and-schema-versions.md)); the use of the term "Azeroth" in the name must be watched if the addon is published on distribution platforms.
 
-## Riferimenti
+## References
 
 - [ROADMAP.md](../../ROADMAP.md), [README.md](../../README.md).
 - `AzerothUnspoken/AzerothUnspoken.toc`, `UI/Commands.lua`.

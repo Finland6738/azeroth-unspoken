@@ -2,7 +2,7 @@
 
 *An immersive roleplay companion for World of Warcraft*
 
-> 🇬🇧 [English version](README.en.md)
+> 🇬🇧 [English version](README.md)
 
 Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse.
 
@@ -24,6 +24,7 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 - [Stato del progetto](#stato-del-progetto)
 - [Sviluppo e test](#sviluppo-e-test)
 - [Documentazione](#documentazione)
+- [Supporto e feedback](#supporto-e-feedback)
 - [Licenza](#licenza)
 - [Crediti](#crediti)
 
@@ -227,12 +228,19 @@ Per contribuire (frasi, pacchetti, codice, issue) leggi [CONTRIBUTING.md](CONTRI
 
 ## Documentazione
 
-L'indice completo è in [docs/README.md](docs/README.md). I punti di partenza:
+L'indice completo è in [docs/README.md](docs/README.md). La documentazione è in inglese, tranne la checklist delle prove in gioco e la specifica di progetto originale, che sono in italiano. I punti di partenza (in inglese, salvo diversa indicazione):
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): moduli, flusso di un evento, dati, punti di estensione.
 - [docs/adr/README.md](docs/adr/README.md): le decisioni di progetto, una per file.
-- [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): la specifica di prodotto (nel GDD il prodotto si chiama ancora "Immersion Director").
+- [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): la specifica di prodotto, in italiano (nel GDD il prodotto si chiama ancora "Immersion Director").
 - [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md): come scrivere un pacchetto.
+- [docs/G1_checklist.md](docs/G1_checklist.md): la checklist delle prove in gioco, in italiano.
+
+## Supporto e feedback
+
+- **Bug e richieste di funzioni:** apri una issue con uno dei [moduli per le issue](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose). Il modulo **Bug report** serve per qualcosa che non funziona come previsto (chiede la versione dell'addon, la build e la lingua del client e che cosa è successo); il modulo **Feature request** serve a proporre una nuova funzione o un miglioramento, descritta dal punto di vista del tuo gioco di ruolo. Non incollare in una issue nomi di altri giocatori, whisper, log della chat, nomi di account o percorsi di cartelle del tuo PC: usa segnaposto come `<player>` o `<account>`.
+- **Feedback, idee e domande:** usa la [categoria Feedback delle GitHub Discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback), per commenti generali, per parlarne prima di una richiesta formale o quando non sei sicuro che sia un bug.
+- Scrivi issue e feedback preferibilmente **in inglese**, ma l'italiano va bene.
 
 ## Licenza
 

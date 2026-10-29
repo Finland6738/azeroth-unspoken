@@ -1,40 +1,40 @@
-# 0001. Motore e database narrativo separati, con frasi curate e non generate
+# 0001. Engine and narrative database kept separate, with curated rather than generated lines
 
-- Stato: accettata
-- Data: 2026-10-29 (la decisione è del prototipo e della [roadmap](../../ROADMAP.md), "Decisioni già prese", n. 1)
+- Status: Accepted
+- Date: 2026-10-29 (the decision comes from the prototype and from the [roadmap](../../ROADMAP.md), "Decisions already made", no. 1)
 
-## Contesto
+## Context
 
-Un addon narrativo vive dei suoi testi. Il prototipo `VociDiAzeroth` (ora in `archive/`) aveva già un motore che sceglie le frasi e un database di 374 frasi in italiano e inglese. Servivano due garanzie: che il codice potesse evolvere senza riscrivere i testi, e che i testi fossero buoni (GDD §5.4, §9).
+A narrative addon lives on its texts. The `VociDiAzeroth` prototype (now in `archive/`) already had an engine that picks lines and a database of 374 lines in Italian and English. Two guarantees were needed: that the code could evolve without rewriting the texts, and that the texts were good (GDD §5.4, §9).
 
-Il rischio di un addon di questo tipo è produrre frasi sgrammaticate, ripetitive o incoerenti con il momento, come capita quando si compongono frammenti a caso.
+The risk with an addon of this kind is producing lines that are ungrammatical, repetitive or inconsistent with the moment, as happens when fragments are composed at random.
 
-## Decisione
+## Decision
 
-1. **Il motore non contiene testi.** `Core/`, `Engine/`, `Systems/`, `Integration/` e `UI/` leggono solo ciò che i pacchetti registrano con `AzerothUnspoken:RegisterPack`. I testi dell'interfaccia stanno a parte, in `Data/<lingua>/Interface.lua`.
-2. **Il database contiene frasi intere, scritte a mano.** Una frase è un'unità completa, con il proprio evento, tono, peso, pausa e condizioni. Il motore la sceglie, non la costruisce.
-3. **Sono ammessi solo due meccanismi di variazione controllata**, perché sono formule complete e scelte per contesto: i segnaposto (`{target}`, `{zone}`, `{g:m|f}`…) e il vocabolario (voci brevi e intere come un grido di guerra adatto alla razza), più le *cornici narrative* che incorniciano una frase parlata come emote. Non si concatenano mai frammenti incompatibili (GDD §5.2).
-4. **I pacchetti di base e quelli di terzi usano la stessa API.** Quelli di base stanno in `AzerothUnspoken/Data/`; gli altri sono addon separati che dipendono da `AzerothUnspoken` (vedi `AzerothUnspoken_Example` e [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md)).
-5. Se per un evento nessuna frase è adatta, **il silenzio è un esito valido**: non si improvvisa.
+1. **The engine contains no text.** `Core/`, `Engine/`, `Systems/`, `Integration/` and `UI/` read only what the packs register with `AzerothUnspoken:RegisterPack`. Interface texts live separately, in `Data/<language>/Interface.lua`.
+2. **The database contains whole, hand-written lines.** A line is a complete unit, with its own event, register, weight, pause and conditions. The engine picks it; it does not build it.
+3. **Only two mechanisms of controlled variation are allowed**, because they are complete formulas chosen by context: placeholders (`{target}`, `{zone}`, `{g:m|f}`…) and vocabulary (short, whole voices such as a war cry suited to the race), plus the *narrative frames* that frame a spoken line as an emote. Incompatible fragments are never concatenated (GDD §5.2).
+4. **Base packs and third-party packs use the same API.** The base ones live in `AzerothUnspoken/Data/`; the others are separate addons that depend on `AzerothUnspoken` (see `AzerothUnspoken_Example` and [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md)).
+5. If no line fits an event, **silence is a valid outcome**: nothing is improvised.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Generare il testo componendo frammenti** (soggetto + azione + aggettivo). Dà molta varietà con pochi dati, ma produce frasi che suonano meccaniche, sbagliano il genere o il registro e non si possono rivedere una per una. Scartata.
-- **Testi dentro il codice** (come tabelle nei file del motore). Semplice all'inizio, ma impedisce i pacchetti di terzi e le traduzioni indipendenti, e mescola il lavoro del programmatore con quello dell'autore. Scartata.
-- **Generazione con un modello linguistico.** Vedi [ADR 0002](0002-fully-offline-no-ai.md).
+- **Generate text by composing fragments** (subject + action + adjective). It gives a lot of variety from little data, but produces lines that sound mechanical, get the gender or register wrong and cannot be reviewed one by one. Rejected.
+- **Texts inside the code** (as tables in the engine files). Simple at first, but it rules out third-party packs and independent translations, and mixes the programmer's work with the author's. Rejected.
+- **Generation with a language model.** See [ADR 0002](0002-fully-offline-no-ai.md).
 
-## Conseguenze
+## Consequences
 
 - Positive:
-  - ogni frase si rilegge, si corregge e si traduce da sola;
-  - i pacchetti si possono scrivere senza toccare il motore;
-  - la qualità è una questione editoriale (regole in [CONTRIBUTING.md](../../CONTRIBUTING.md) e GDD §5.4), che il validatore previsto nello step S3 controllerà in parte (id duplicati, lingue mancanti, segnaposto discordanti…).
+  - each line can be reread, corrected and translated on its own;
+  - packs can be written without touching the engine;
+  - quality is an editorial matter (rules in [CONTRIBUTING.md](../../CONTRIBUTING.md) and GDD §5.4), which the validator planned in step S3 will partly check (duplicate ids, missing languages, mismatched placeholders…).
 - Negative:
-  - la varietà dipende dalla quantità di frasi scritte: servono molti contenuti (step S7 e S11 della roadmap);
-  - serve disciplina per mantenere separati motore e dati quando le funzioni crescono (ad esempio, le etichette delle relazioni dovranno stare in dati, non nel codice).
-- Lo step S3 introduce uno schema dati v2 (registro delle regole separato dai testi per lingua) che porta questa separazione più avanti, senza cambiarne il principio.
+  - variety depends on how many lines are written: a lot of content is needed (steps S7 and S11 of the roadmap);
+  - discipline is needed to keep engine and data separate as features grow (for example, relationship labels will have to live in data, not in code).
+- Step S3 introduces a v2 data schema (rule registry separate from the per-language texts) that carries this separation further, without changing the principle.
 
-## Riferimenti
+## References
 
 - GDD §5.2, §5.4, §9, §11.1.
 - [docs/ARCHITECTURE.md](../ARCHITECTURE.md), [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md).

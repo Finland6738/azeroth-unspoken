@@ -1,38 +1,38 @@
-# 0007. Test fuori dal gioco con lupa e un client simulato
+# 0007. Offline tests with lupa and a mock client
 
-- Stato: accettata
-- Data: 2026-10-29
+- Status: Accepted
+- Date: 2026-10-29
 
-## Contesto
+## Context
 
-Un addon gira solo dentro il client, e il client non si lancia in un ambiente di integrazione continua. Ma la maggior parte della logica (scelta delle frasi, configurazione, bus degli eventi, Chat Gateway, compatibilità) non dipende dalla grafica. Si vuole poter verificare molto, velocemente e ripetibilmente, prima di toccare il gioco. Lo sviluppo procede anche quando l'utente non può provare nel client (G1 rimandata).
+An addon only runs inside the client, and the client cannot be launched in a continuous integration environment. But most of the logic (line selection, configuration, event bus, Chat Gateway, compatibility) does not depend on the graphics. We want to be able to verify a lot, quickly and repeatably, before touching the game. Development also goes on when the user cannot test in the client (G1 postponed).
 
-## Decisione
+## Decision
 
-1. **I test girano fuori dal gioco con [lupa](https://github.com/scoder/lupa) in modalità Lua 5.1** (`lupa.lua51`), la stessa versione del client.
-2. **Un client simulato** (`Tests/MockWoWAPI.lua`) fornisce le funzioni di WoW usate dall'addon: unità, zone, tempo, eventi, frame e widget con stato (`Show/Hide`, testo, `Click()`, `TypeEnter()`, `UPDATE(dt)`, `FindWidgets`), chat e `SendChatMessage`. Simula anche i comportamenti difficili del client: `MakeSecret()` e `SECRET_UNITS` per i valori segreti, `RESTRICTIONS`, `VALID_EVENTS` (registrare un evento sconosciuto dà errore), `GetBuildInfo` della build 1.60.1.70658.
-3. **Il lanciatore** (`Tests/run_tests.py`) carica i file nell'ordine del `.toc`, come farebbe il client, con `ADDON, NS = ...`, e spara `ADDON_LOADED` e `PLAYER_ENTERING_WORLD`. Poi esegue i controlli sul database e sul flusso (assenza di chat pubblica con i predefiniti, eventi → frase, comandi) e i file `Tests/Test*.lua`, **ognuno in un runtime nuovo**, con `T.run`, `T.eq`, `T.ok` definiti nel mock. Esce con codice 1 se un controllo fallisce.
-4. **Comando**, dalla radice del progetto: `.venv/Scripts/python -I -X utf8 Tests/run_tests.py AzerothUnspoken` (l'ambiente `.venv` è locale, fuori dal controllo di versione; `-I` isola l'interprete, `-X utf8` forza UTF-8).
-5. **Ogni step aggiunge test per ciò che costruisce** e li fa passare prima della PR. Le nuove funzioni dipendenti da API non provate si testano anche nel caso "API mancante" e "valore segreto".
+1. **Tests run outside the game with [lupa](https://github.com/scoder/lupa) in Lua 5.1 mode** (`lupa.lua51`), the same version as the client.
+2. **A mock client** (`Tests/MockWoWAPI.lua`) provides the WoW functions the addon uses: units, zones, time, events, frames and widgets with state (`Show/Hide`, text, `Click()`, `TypeEnter()`, `UPDATE(dt)`, `FindWidgets`), chat and `SendChatMessage`. It also simulates the client's difficult behaviors: `MakeSecret()` and `SECRET_UNITS` for secret values, `RESTRICTIONS`, `VALID_EVENTS` (registering an unknown event raises an error), and `GetBuildInfo` for build 1.60.1.70658.
+3. **The launcher** (`Tests/run_tests.py`) loads the files in `.toc` order, as the client would, with `ADDON, NS = ...`, and fires `ADDON_LOADED` and `PLAYER_ENTERING_WORLD`. It then runs the checks on the database and on the flow (no public chat with the defaults, events → line, commands) and the `Tests/Test*.lua` files, **each in a fresh runtime**, with `T.run`, `T.eq`, `T.ok` defined in the mock. It exits with code 1 if a check fails.
+4. **Command**, from the project root: `.venv/Scripts/python -I -X utf8 Tests/run_tests.py AzerothUnspoken` (the `.venv` environment is local, outside version control; `-I` isolates the interpreter, `-X utf8` forces UTF-8).
+5. **Every step adds tests for what it builds** and makes them pass before the PR. New functions that depend on untested APIs are also tested for the "missing API" and "secret value" cases.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Provare solo nel client.** Lento, non ripetibile, e dipende dalla disponibilità dell'utente. Scartata come unica via.
-- **Framework in gioco** (WoWUnit o simili). Utili, ma non girano senza il client e non coprono i controlli di scrittura sui file.
-- **Un interprete Lua 5.1 esterno con busted o luaunit.** Possibile, ma lupa si installa con un solo `pip` anche su Windows e permette di scrivere il lanciatore in Python, ad esempio per leggere il `.toc`.
-- **Simulatore completo dell'interfaccia di WoW.** Troppo costoso: il mock simula solo ciò che serve.
+- **Testing only in the client.** Slow, not repeatable, and dependent on the user's availability. Rejected as the only way.
+- **In-game frameworks** (WoWUnit or similar). Useful, but they do not run without the client and do not cover the file-writing checks.
+- **An external Lua 5.1 interpreter with busted or luaunit.** Possible, but lupa installs with a single `pip` even on Windows and lets us write the launcher in Python, for example to read the `.toc`.
+- **A full simulator of the WoW interface.** Too expensive: the mock only simulates what is needed.
 
-## Conseguenze
+## Consequences
 
-- Positive: ciclo di prova in pochi secondi; regressioni scoperte subito; i comportamenti rischiosi (valori segreti, chat bloccata, eventi inesistenti) sono testabili con input forzati.
-- Negative (importanti):
-  - **un test che passa dimostra che il codice è coerente con le nostre ipotesi sul client, non che il client le rispetti**: per questo esiste la prova G1 ([checklist](../G1_checklist.md));
-  - il mock va aggiornato quando si usano API nuove, e può divergere dal client vero;
-  - il disegno dei widget (aspetto, trascinamento, passaggio dei clic) non è verificabile fuori dal gioco.
-- Nel repository non c'è ancora integrazione continua: i test si eseguono a mano prima di ogni PR.
+- Positive: a test cycle of a few seconds; regressions caught immediately; risky behaviors (secret values, blocked chat, nonexistent events) can be tested with forced inputs.
+- Negative (important):
+  - **a passing test shows that the code is consistent with our assumptions about the client, not that the client respects them**: this is why the G1 test exists ([checklist](../G1_checklist.md), in Italian);
+  - the mock must be updated when new APIs are used, and it can diverge from the real client;
+  - the drawing of widgets (appearance, dragging, click pass-through) cannot be verified outside the game.
+- The repository does not have continuous integration yet: tests are run by hand before every PR.
 
-## Riferimenti
+## References
 
 - GDD §16.1.
 - `Tests/run_tests.py`, `Tests/MockWoWAPI.lua`, `Tests/Test*.lua`.
-- [CONTRIBUTING.md](../../CONTRIBUTING.md), sezione Test.
+- [CONTRIBUTING.md](../../CONTRIBUTING.md), Tests section.

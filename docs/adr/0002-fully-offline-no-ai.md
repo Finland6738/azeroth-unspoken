@@ -1,33 +1,33 @@
-# 0002. Tutto offline, senza intelligenza artificiale
+# 0002. Fully offline, no artificial intelligence
 
-- Stato: accettata
-- Data: 2026-10-29 (decisione della [roadmap](../../ROADMAP.md), n. 2, e del GDD §14)
+- Status: Accepted
+- Date: 2026-10-29 (decision of the [roadmap](../../ROADMAP.md), no. 2, and of GDD §14)
 
-## Contesto
+## Context
 
-Un compagno narrativo potrebbe sembrare un buon candidato per un modello linguistico in rete: testi sempre nuovi, risposte personalizzate. Ma un addon gira dentro il client di gioco, gestisce dati di un personaggio e, in un'ambientazione di roleplay, anche di altre persone. Il progetto deve essere prevedibile, rispettoso della privacy e utilizzabile dove il client non permette niente di esterno.
+A narrative companion might seem a good candidate for an online language model: always-new texts, personalized answers. But an addon runs inside the game client, handles data about a character and, in a roleplay setting, about other people too. The project must be predictable, respectful of privacy and usable where the client allows nothing external.
 
-## Decisione
+## Decision
 
-- **Nessuna rete**: nessuna chiamata HTTP, nessun socket, nessun download, nessun browser, nessuna telemetria, nessun account esterno, nessuna IA online.
-- **Nessun testo generato a runtime**: si sceglie fra frasi esistenti ([ADR 0001](0001-engine-and-narrative-database-separated.md)).
-- **Si espande con pacchetti locali**: file Lua e `.toc`, come ogni addon.
-- **Unica comunicazione fra giocatori, in futuro**: i messaggi addon interni al gioco (modulo Social, step S10), disattivati per impostazione predefinita, con consenso esplicito e rilasciati solo dove il trasporto è dimostrato. Nessun codice ricevuto da altri giocatori viene mai eseguito (nessun `loadstring`).
-- **Durante lo sviluppo** si possono consultare fonti esterne (il dump delle API, ForeverDB.net per preparare registri locali di NPC e luoghi), ma i risultati entrano nel repository come dati locali, citando la fonte. L'addon in gioco resta offline ([REFERENCES.md](../REFERENCES.md)).
+- **No network**: no HTTP calls, no sockets, no downloads, no browser, no telemetry, no external accounts, no online AI.
+- **No text generated at runtime**: lines are chosen among existing ones ([ADR 0001](0001-engine-and-narrative-database-separated.md)).
+- **It expands with local packs**: Lua files and `.toc`, like any addon.
+- **The only communication between players, in the future**: the game's internal addon messages (Social module, step S10), disabled by default, with explicit consent and released only where the transport is proven. No code received from other players is ever executed (no `loadstring`).
+- **During development** external sources may be consulted (the API dump, ForeverDB.net to prepare local registries of NPCs and places), but the results enter the repository as local data, citing the source. The in-game addon stays offline ([REFERENCES.md](../REFERENCES.md)).
 
-## Alternative considerate
+## Alternatives considered
 
-- **Generazione con un modello in rete.** Testi illimitati, ma: dipendenza da un servizio, costi, latenza, rischio di contenuti inappropriati o incoerenti con la lore, invio di dati del giocatore a terzi. Scartata.
-- **Modello locale dentro il gioco.** Non realizzabile nell'ambiente degli addon.
-- **Un'applicazione esterna che legge le SavedVariables** e prepara nuovi testi. Rompe il principio "l'addon da solo basta" e complica l'installazione. Scartata (si può riconsiderare come strumento di *autore*, non di runtime).
+- **Generation with an online model.** Unlimited texts, but: dependence on a service, costs, latency, the risk of inappropriate content or content inconsistent with the lore, and sending player data to third parties. Rejected.
+- **A local model inside the game.** Not feasible in the addon environment.
+- **An external application that reads the SavedVariables** and prepares new texts. It breaks the principle "the addon alone is enough" and complicates installation. Rejected (it can be reconsidered as an *author* tool, not a runtime one).
 
-## Conseguenze
+## Consequences
 
-- Positive: privacy semplice da spiegare e da verificare (si cerca nel codice l'assenza di accessi di rete); comportamento riproducibile e testabile fuori dal gioco; nessun problema di moderazione di testi generati.
-- Negative: i contenuti vanno scritti a mano e mantenuti (si compensa con il sistema di pacchetti e con le regole di qualità); la personalizzazione è limitata alle condizioni previste dal motore.
-- Chi contribuisce non deve introdurre dipendenze di rete né strumenti che inviino dati fuori dal client: va rifiutato in revisione.
+- Positive: privacy that is simple to explain and to verify (search the code for the absence of network access); behavior that is reproducible and testable outside the game; no moderation problem with generated text.
+- Negative: content has to be written by hand and maintained (offset by the pack system and the quality rules); personalization is limited to the conditions the engine provides.
+- Contributors must not introduce network dependencies or tools that send data out of the client: such changes are to be rejected in review.
 
-## Riferimenti
+## References
 
-- GDD §2.3 (non-obiettivi), §14 (sicurezza e privacy).
-- [README, sezione Privacy](../../README.md#privacy-e-chat).
+- GDD §2.3 (non-goals), §14 (security and privacy).
+- [README, Privacy section](../../README.md#privacy-and-chat).

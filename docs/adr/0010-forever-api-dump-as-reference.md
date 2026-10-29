@@ -1,36 +1,36 @@
-# 0010. Il dump delle API di Forever come riferimento, mai copiato
+# 0010. The Forever API dump as a reference, never copied
 
-- Stato: accettata
-- Data: 2026-10-29 (da [docs/REFERENCES.md](../REFERENCES.md))
+- Status: Accepted
+- Date: 2026-10-29 (from [docs/REFERENCES.md](../REFERENCES.md))
 
-## Contesto
+## Context
 
-Gli addon per WoW Forever (Interface 16001) usano API che non coincidono né con il retail né con Classic Era, e la documentazione pubblica generale riguarda soprattutto il retail. Per non scrivere codice che chiama funzioni inesistenti serve una fonte affidabile di ciò che il client Forever espone davvero. Esiste un dump estratto dal client stesso con `APIDocumentation`, nel repository pubblico [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons): build 70170 (poco più vecchia di quella di riferimento 70658), con 6.598 funzioni, 1.806 eventi e 797 tipi. Quel repository **non dichiara alcuna licenza**.
+Addons for WoW Forever (Interface 16001) use APIs that match neither retail nor Classic Era, and the general public documentation mostly concerns retail. To avoid writing code that calls nonexistent functions we need a reliable source for what the Forever client really exposes. There is a dump extracted from the client itself with `APIDocumentation`, in the public repository [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons): build 70170 (slightly older than the reference build 70658), with 6,598 functions, 1,806 events and 797 types. That repository **declares no license**.
 
-## Decisione
+## Decision
 
-1. **Si usa il dump come riferimento per decidere cosa chiamare**, con il file `docs/api.json` (leggibile da macchina) e le definizioni `types/WowForeverAPI.lua`. Prima di usare una funzione o un evento nuovo si controlla lì e poi lo si protegge con Compat ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)).
-2. **Copia locale accanto al progetto, non dentro**: `..\WoW-Addons`, clonata con `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`. **Nessun file di quel repository entra nel nostro**: non ha licenza, quindi non lo si ridistribuisce. Si consulta e basta; i suoi script non si eseguono (è materiale scaricato).
-3. **L'IDE legge le definizioni da lì**: `.luarc.json` le collega con `workspace.library: ["../WoW-Addons/types"]`, e il plugin WoW Lua Language Server fornisce le API di WoW. Non si duplicano nel progetto.
-4. **Assenza nel dump non significa assenza nel client.** Le funzioni definite in Lua da FrameXML (ad esempio `Settings.*`, `InterfaceOptions_AddCategory`) non compaiono in `APIDocumentation`. Per quelle valgono Compat e la prova in gioco.
-5. **La fonte finale è sempre il client installato** (build 1.60.1.70658). In futuro si potrà estrarre un dump esatto della propria build con l'addon `WowApiExport` (`/apiexport`, poi `/reload`).
-6. **Un controllo automatico è previsto** nello step S3: `Tests/check_api.py` leggerà il dump (percorso configurabile) e segnalerà le funzioni ed eventi usati dall'addon che mancano, con eccezioni consentite per FrameXML. Se il dump non c'è, il controllo verrà saltato con un avviso.
+1. **The dump is used as a reference to decide what to call**, with the file `docs/api.json` (machine-readable) and the definitions `types/WowForeverAPI.lua`. Before using a new function or event we check there, and then protect it with Compat ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)).
+2. **A local copy next to the project, not inside it**: `..\WoW-Addons`, cloned with `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`. **No file from that repository enters ours**: it has no license, so we do not redistribute it. It is only consulted; its scripts are not executed (it is downloaded material).
+3. **The IDE reads the definitions from there**: `.luarc.json` links them with `workspace.library: ["../WoW-Addons/types"]`, and the WoW Lua Language Server plugin provides the WoW APIs. They are not duplicated in the project.
+4. **Absence from the dump does not mean absence from the client.** Functions defined in Lua by FrameXML (for example `Settings.*`, `InterfaceOptions_AddCategory`) do not appear in `APIDocumentation`. For those, Compat and the in-game test apply.
+5. **The final source is always the installed client** (build 1.60.1.70658). In the future we will be able to extract an exact dump of our own build with the `WowApiExport` addon (`/apiexport`, then `/reload`).
+6. **An automatic check is planned** in step S3: `Tests/check_api.py` will read the dump (configurable path) and report the functions and events used by the addon that are missing, with allowed exceptions for FrameXML. If the dump is not there, the check will be skipped with a warning.
 
-Le verifiche già fatte sul dump (2026-10-29) sono nella tabella di [REFERENCES.md](../REFERENCES.md): ad esempio `GetSpellInfo` e `CombatLogGetCurrentEventInfo` risultano **assenti**, e `UnitHealth` ha parametro di tipo limitato (`UnitTokenPvPRestrictedForAddOns`).
+The checks already done on the dump (2026-10-29) are in the table in [REFERENCES.md](../REFERENCES.md): for example `GetSpellInfo` and `CombatLogGetCurrentEventInfo` turn out to be **absent**, and `UnitHealth` has a restricted parameter type (`UnitTokenPvPRestrictedForAddOns`).
 
-## Alternative considerate
+## Alternatives considered
 
-- **Copiare il dump nel repository.** Comodo, ma senza licenza non si può ridistribuire. Scartata.
-- **Affidarsi alla documentazione del retail** (Warcraft Wiki). Utile per la semantica, ma può differire dal client Forever. Si usa solo come lettura di supporto.
-- **Scoprire tutto in gioco.** Lento e dipende dall'utente; il dump evita molti tentativi.
-- **Chiedere l'autorizzazione al repository esterno** per includerne i file. Possibile in futuro; non necessaria finché basta consultarlo.
+- **Copying the dump into the repository.** Convenient, but without a license it cannot be redistributed. Rejected.
+- **Relying on the retail documentation** (Warcraft Wiki). Useful for semantics, but it can differ from the Forever client. Used only as supporting reading.
+- **Discovering everything in game.** Slow and dependent on the user; the dump avoids many attempts.
+- **Asking the external repository for permission** to include its files. Possible in the future; not necessary as long as consulting it is enough.
 
-## Conseguenze
+## Consequences
 
-- Positive: meno errori su API inesistenti; autocompletamento nell'IDE; scelte di compatibilità motivate.
-- Negative: dipendenza da un repository di terzi e da una build leggermente diversa dalla nostra; chi clona il progetto deve clonare a mano anche il dump se vuole l'autocompletamento e il controllo automatico; il controllo non sostituisce la prova nel client.
+- Positive: fewer errors on nonexistent APIs; autocompletion in the IDE; reasoned compatibility choices.
+- Negative: dependence on a third-party repository and on a build slightly different from ours; whoever clones the project must also clone the dump by hand if they want autocompletion and the automatic check; the check does not replace testing in the client.
 
-## Riferimenti
+## References
 
 - [docs/REFERENCES.md](../REFERENCES.md), `.luarc.json`.
 - GDD §13, §22.

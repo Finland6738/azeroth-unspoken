@@ -1,36 +1,36 @@
-# 0005. Compat, valori segreti e registrazione difensiva degli eventi
+# 0005. Compat, secret values and defensive event registration
 
-- Stato: accettata
-- Data: 2026-10-29 (implementata nello step S1; decisione della [roadmap](../../ROADMAP.md), n. 4)
+- Status: Accepted
+- Date: 2026-10-29 (implemented in step S1; decision of the [roadmap](../../ROADMAP.md), no. 4)
 
-## Contesto
+## Context
 
-Il client di WoW Forever (Interface 16001) può nascondere agli addon alcuni valori (nomi, salute, aure…) trasformandoli in *valori segreti*: non si possono leggere, confrontare né usare per decidere. Alcune azioni sono limitate in combattimento, negli incontri e nel PvP. Le API non sono tutte documentate per questo client, un evento inesistente può far sollevare un errore alla registrazione, e il comportamento reale è noto solo provandolo. Un errore in un gestore non deve fermare l'addon.
+The WoW Forever client (Interface 16001) can hide some values from addons (names, health, auras…) by turning them into *secret values*: they cannot be read, compared or used to make decisions. Some actions are restricted in combat, in encounters and in PvP. Not all APIs are documented for this client, a nonexistent event can make registration raise an error, and the real behavior is known only by trying it. An error in a handler must not stop the addon.
 
-## Decisione
+## Decision
 
-1. **Ogni API del client passa da `Core/Compat.lua`.** Compat espone una *matrice delle capacità* (`Compat.caps`) con tre stati: `AVAILABLE`, `MISSING`, `RESTRICTED`. Se una funzione manca o è limitata, si spegne **una funzione**, non l'addon.
-2. **Valori segreti**: `Compat.IsSecret(v)` li riconosce (`issecretvalue`, `canaccessvalue`, `issecrettable`); `Compat.Readable(v)` restituisce il valore o `nil`; `Compat.Query(fn, ...)` chiama in modo protetto e restituisce lo stato più i valori, con i segreti convertiti in `nil`; `Compat.SafeCall` è lo stesso senza lo stato. **Nessuna decisione si basa su un valore segreto**: nel contesto non entra, e nel campo `fields` dell'evento il campo vale `RESTRICTED`.
-3. **Identità nascoste**: `Compat:IsUnitIdentitySecret(unit)` (`C_Secrets.ShouldUnitIdentityBeSecret`) decide se usare i dati di un bersaglio. *Aggiornamento Q2 (issue #6):* se è segreta, `NS:BuildContext` **non legge né confronta nulla** del bersaglio: il contesto ha solo `hasTarget` e `targetSecret` (niente nome, tipo, classe, razza, fazione, `hostile`, `elite`…), quindi le frasi con `{target}` si scartano e nessuna decisione dipende da un valore nascosto. Ogni altra lettura del contesto passa da `SafeCall`: un dato segreto vale "non lo so" (`nil`), non "falso". Il mock dei test restituisce segreti per le unità in `SECRET_UNITS` e fa sollevare un errore agli usi vietati.
-4. **Registrazione difensiva degli eventi**: `Compat:RegisterEvent(frame, evento, unit)` controlla `C_EventUtils.IsEventValid`, registra dentro un `pcall` (con `RegisterUnitEvent` per gli eventi di una sola unità) e annota l'esito nella matrice. Un evento che non si può registrare diventa `MISSING` e non blocca l'avvio.
-5. **Isolamento degli errori**: `Diagnostics:Guard(modulo, fn, ...)` esegue con `xpcall`, registra l'errore (al massimo 30, raggruppati) e prosegue. Lo usano l'avvio dei moduli, i comandi, le sorgenti di eventi e i gestori del bus.
-6. **Prova al caricamento**: `Compat:Probe()` compila la matrice (client, API, eventi, valori, restrizioni, chat, integrazioni) e `/au debug [full]` la mostra. Serve anche da strumento per gli spike tecnici del GDD (SP-01, SP-02).
-7. **Non ci si fida di `WOW_PROJECT_ID`** per scegliere un ramo di compatibilità (nella beta poteva valere 1): si fanno controlli puntuali. Il riconoscimento di Forever (`isForever`) usa `WOW_PROJECT_CAMELOT` oppure Interface 16001–19999.
-8. **Niente log di combattimento**: `CombatLogGetCurrentEventInfo` non è nel dump delle API di Forever (GDD §2.3); le reazioni si basano su eventi di gioco normali.
+1. **Every client API goes through `Core/Compat.lua`.** Compat exposes a *capability matrix* (`Compat.caps`) with three states: `AVAILABLE`, `MISSING`, `RESTRICTED`. If a function is missing or restricted, **one feature** is switched off, not the addon.
+2. **Secret values**: `Compat.IsSecret(v)` recognizes them (`issecretvalue`, `canaccessvalue`, `issecrettable`); `Compat.Readable(v)` returns the value or `nil`; `Compat.Query(fn, ...)` calls in a protected way and returns the state plus the values, with secrets converted to `nil`; `Compat.SafeCall` is the same without the state. **No decision is based on a secret value**: it does not enter the context, and in the event's `fields` field the field is `RESTRICTED`.
+3. **Hidden identities**: `Compat:IsUnitIdentitySecret(unit)` (`C_Secrets.ShouldUnitIdentityBeSecret`) decides whether to use a target's data. *Q2 update (issue #6):* if it is secret, `NS:BuildContext` **reads and compares nothing** about the target: the context has only `hasTarget` and `targetSecret` (no name, type, class, race, faction, `hostile`, `elite`…), so lines with `{target}` are discarded and no decision depends on a hidden value. Every other context read goes through `SafeCall`: a secret datum means "I don't know" (`nil`), not "false". The test mock returns secrets for the units in `SECRET_UNITS` and raises an error on forbidden uses.
+4. **Defensive event registration**: `Compat:RegisterEvent(frame, event, unit)` checks `C_EventUtils.IsEventValid`, registers inside a `pcall` (with `RegisterUnitEvent` for single-unit events) and records the outcome in the matrix. An event that cannot be registered becomes `MISSING` and does not block startup.
+5. **Error isolation**: `Diagnostics:Guard(module, fn, ...)` runs with `xpcall`, records the error (at most 30, grouped) and carries on. It is used by module startup, commands, event sources and bus handlers.
+6. **Probe at load time**: `Compat:Probe()` fills in the matrix (client, APIs, events, values, restrictions, chat, integrations) and `/au debug [full]` shows it. It also serves as a tool for the GDD's technical spikes (SP-01, SP-02).
+7. **`WOW_PROJECT_ID` is not trusted** to choose a compatibility branch (in the beta it could be 1): targeted checks are done instead. Forever detection (`isForever`) uses `WOW_PROJECT_CAMELOT` or Interface 16001–19999.
+8. **No combat log**: `CombatLogGetCurrentEventInfo` is not in the Forever API dump (GDD §2.3); reactions are based on normal game events.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Chiamare le API direttamente**, come fa la maggior parte degli addon. Più breve, ma un'API mancante o una limitazione nuova romperebbe l'addon senza spiegare perché.
-- **Un solo `pcall` intorno a tutto.** Spegnerebbe l'addon intero a ogni errore e nasconderebbe la causa.
-- **Ramificare per `WOW_PROJECT_ID`.** Inaffidabile in Forever (vedi sopra).
+- **Calling the APIs directly**, as most addons do. Shorter, but a missing API or a new restriction would break the addon without explaining why.
+- **A single `pcall` around everything.** It would switch off the whole addon on every error and hide the cause.
+- **Branching on `WOW_PROJECT_ID`.** Unreliable in Forever (see above).
 
-## Conseguenze
+## Consequences
 
-- Positive: un solo posto da correggere quando il client cambia; diagnostica utile all'utente e a chi sviluppa; test con valori segreti e restrizioni simulati (`Tests/TestCompat.lua`).
-- Negative: un livello di indirezione in più (`Compat.Query(...)` invece di una chiamata diretta); **nomi, firme ed esistenza di molte API nella build 70658 non sono stati verificati nel client vero** (`C_RestrictedActions`, `C_Secrets`, `debugstack`, ecc.): si verificano nella prova G1 e nel controllo del dump (vedi [ADR 0010](0010-forever-api-dump-as-reference.md)).
-- Ogni funzione nuova che dipende da un'API non provata deve passare da Compat e **degradare con eleganza** (regola della roadmap, "Prove in gioco rimandate").
+- Positive: a single place to fix when the client changes; diagnostics useful to the user and to developers; tests with simulated secret values and restrictions (`Tests/TestCompat.lua`).
+- Negative: one more level of indirection (`Compat.Query(...)` instead of a direct call); **the names, signatures and existence of many APIs in build 70658 have not been verified in the real client** (`C_RestrictedActions`, `C_Secrets`, `debugstack`, etc.): they are verified in the G1 test and in the dump check (see [ADR 0010](0010-forever-api-dump-as-reference.md)).
+- Every new feature that depends on an untested API must go through Compat and **degrade gracefully** (roadmap rule, "Postponed in-game tests").
 
-## Riferimenti
+## References
 
 - GDD §2.3, §3.8, §13, §15; [docs/REFERENCES.md](../REFERENCES.md).
 - `Core/Compat.lua`, `Core/Diagnostics.lua`, `Core/EventBus.lua`, `Core/ContextResolver.lua`.

@@ -2,7 +2,7 @@
 
 *An immersive roleplay companion for World of Warcraft*
 
-> 🇮🇹 [Versione italiana](README.md)
+> 🇮🇹 [Versione italiana](README.it.md)
 
 A distinctive, mysterious narrative companion for World of Warcraft that calls back the thoughts and stories left unspoken.
 
@@ -10,7 +10,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 
 > **Status: under development (version 0.1.0 in the `.toc`); features of milestones M0–M3 are written.** The code has only been exercised outside the game, against a simulated client. **No test in the real client has been done yet** (the [G1](docs/G1_checklist.md) checklist, in Italian: tests G1, G2 and G3, 92 steps in all), so expect surprises. See [Project status](#project-status).
 >
-> Most of the documentation under `docs/` is written in Italian. This file is the English entry point.
+> The documentation is in English, except the in-game test checklist ([`docs/G1_checklist.md`](docs/G1_checklist.md)) and the original design specification ([`docs/Immersion_Director_GDD_v1.0.md`](docs/Immersion_Director_GDD_v1.0.md)), both in Italian.
 
 ## Contents
 
@@ -26,6 +26,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - [Project status](#project-status)
 - [Development and tests](#development-and-tests)
 - [Documentation](#documentation)
+- [Support and feedback](#support-and-feedback)
 - [License](#license)
 - [Credits](#credits)
 
@@ -55,7 +56,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - It does not save chat content, nor the text of whispers.
 - It does not invent quests or rewards: stories and dialogues are the addon's own tellings, not server quests.
 
-**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): social play between players (M4: addon-to-addon messages, only with explicit consent), audio, content up to 1,000 intentions and the 1.0 release (M5). In the settings the *Social* and *Audio* modules can already be seen, but they are placeholders (marked `*`): they do nothing.
+**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md)): social play between players (M4: addon-to-addon messages, only with explicit consent), audio, content up to 1,000 intentions and the 1.0 release (M5). In the settings the *Social* and *Audio* modules can already be seen, but they are placeholders (marked `*`): they do nothing.
 
 ## Requirements
 
@@ -165,7 +166,7 @@ The panel opens with `/au opzioni` (it is also registered among the game's addon
 - There are rate limits (at least 4 seconds between two sends, at most 6 per minute, 2 automatic), a 255-byte cap per message, and nothing is sent while the client's chat lockdown is active.
 - The rule "emotes by themselves, `/say` by itself only in instances" is a cautious assumption about the client's behaviour that has **not yet been measured in game**.
 
-The decisions behind this behaviour are in the [ADRs](docs/adr/README.md) (in Italian), notably [0002](docs/adr/0002-fully-offline-no-ai.md) and [0003](docs/adr/0003-private-narrator-and-chat-gateway.md).
+The decisions behind this behavior are in the [ADRs](docs/adr/README.md), notably [0002](docs/adr/0002-fully-offline-no-ai.md) and [0003](docs/adr/0003-private-narrator-and-chat-gateway.md).
 
 ## Total RP 3
 
@@ -175,13 +176,13 @@ The integration is **optional**: the addon works at 100% without it. If Total RP
 2. **The public personality traits of your profile** (`/au soul trp3 on`, off by default) for the character's personality; a choice you make by hand always comes first.
 3. **The public data of other players** (`/au who trp3 on`, or *Read others' Total RP 3* in the settings, off by default; point 1 must be on too): only race, class and personality traits, so the narrator can react to whoever is in front of you. Never notes, history or private fields, and nothing it reads is saved.
 
-The addon writes nothing to Total RP 3. If Total RP 3's APIs are missing or change, the integration switches itself off. See [ADR 0004](docs/adr/0004-total-rp-3-optional-with-adapter.md) and [ADR 0016](docs/adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md) (in Italian).
+The addon writes nothing to Total RP 3. If Total RP 3's APIs are missing or change, the integration switches itself off. See [ADR 0004](docs/adr/0004-total-rp-3-optional-with-adapter.md) and [ADR 0016](docs/adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md).
 
 ## Phrase packs
 
 Lines do not live in the engine: they live in packs. The base ones are in `AzerothUnspoken/Data/`; others are added as separate addons that depend on `AzerothUnspoken` (see `AzerothUnspoken_Example`). A pack can add lines, narrative frames, vocabulary, translations, new languages, new events, places, NPCs, dialogues and stories.
 
-The full guide is [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md) (in Italian): it describes data schema v2 (rules separate from texts, variants, voices, registers, depth, personality tags, memory conditions, relationships, interlocutor and place), the ambient dialogues and the personal stories. **The guide's examples are exercised by the tests** as external packs. To write good lines, also read [CONTRIBUTING.md](CONTRIBUTING.md) (in Italian).
+The full guide is [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md): it describes data schema v2 (rules separate from texts, variants, voices, registers, depth, personality tags, memory conditions, relationships, interlocutor and place), the ambient dialogues and the personal stories. **The guide's examples are exercised by the tests** as external packs. To write good lines, also read [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Project status
 
@@ -231,12 +232,19 @@ To contribute (lines, packs, code, issues) read [CONTRIBUTING.md](CONTRIBUTING.m
 
 ## Documentation
 
-The full index is [docs/README.md](docs/README.md). Starting points (all in Italian):
+The full index is [docs/README.md](docs/README.md). Starting points:
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): modules, the flow of an event, data, extension points.
 - [docs/adr/README.md](docs/adr/README.md): the project decisions, one per file.
-- [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): the product specification (the GDD still calls the product "Immersion Director").
+- [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): the product specification, in Italian (the GDD still calls the product "Immersion Director").
 - [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md): how to write a pack.
+- [docs/G1_checklist.md](docs/G1_checklist.md): the in-game test checklist, in Italian.
+
+## Support and feedback
+
+- **Bugs and feature requests:** open an issue with one of the [issue forms](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose). The **Bug report** form is for something that does not work as expected (it asks for the addon version, the game client build and language, and what happened); the **Feature request** form is for suggesting a new feature or an improvement, described from the point of view of your roleplay. Do not paste other players' names, whispers, chat logs, account names or folder paths from your PC into an issue: use placeholders such as `<player>` or `<account>`.
+- **Feedback, ideas and questions:** use the [Feedback category of GitHub Discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback), for general feedback, open conversations before a formal request, or when you are not sure it is a bug.
+- Please write issues and feedback in **English** if you can; Italian is welcome too.
 
 ## License
 

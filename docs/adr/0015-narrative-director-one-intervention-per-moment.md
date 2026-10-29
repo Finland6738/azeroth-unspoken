@@ -1,40 +1,40 @@
-# 0015. Narrative Director: un intervento per momento, pesi moltiplicativi, stile che pesa e non esclude
+# 0015. Narrative Director: one intervention per moment, multiplicative weights, style that weighs but does not exclude
 
-- Stato: accettata
-- Data: 2026-10-29 (step S4; GDD §4.2, §5.2, §6, §10, §15)
+- Status: accepted
+- Date: 2026-10-29 (step S4; GDD §4.2, §5.2, §6, §10, §15)
 
-## Contesto
+## Context
 
-Fino allo step S3 ogni evento narrativo decideva da solo se parlare: probabilità, pausa globale e pausa dell'evento in `Systems/Triggers.lua`, con l'intensità come semplice moltiplicatore (`Director:Evaluate`, ADR 0014). Mancavano le priorità del GDD §10, un budget per categoria, la sospensione nei momenti impegnativi e una regola contro le cascate: una morte con la salute già bassa, o un livello all'inizio di un combattimento, potevano produrre più frasi nello stesso istante. Il peso delle frasi era una formula unica senza posto per la personalità (S5), le relazioni (S6b), l'interlocutore e il luogo (S6c). I registri (`styles`) erano nei dati ma nessuno li usava, e le cornici delle emote si sceglievano senza guardare il registro della frase.
+Up to step S3 every narrative event decided on its own whether to speak: probability, global pause and event pause in `Systems/Triggers.lua`, with intensity as a plain multiplier (`Director:Evaluate`, ADR 0014). There were no GDD §10 priorities, no per-category budget, no suspension during demanding moments and no rule against cascades: a death with health already low, or a level-up at the start of a fight, could produce several lines at the same instant. Line weight was a single formula with no room for personality (S5), relationships (S6b), interlocutor and place (S6c). The registers (`styles`) were in the data but nobody used them, and emote frames were chosen without looking at the line's register.
 
-## Decisione
+## Decision
 
-1. **Decisioni separate dall'uscita.** `Engine/NarrativeDirector.lua` (gate, priorità, sospensione, ordine) ed `Engine/Pacing.lua` (pause e budget) non conoscono il Chat Gateway. `Systems/Director.lua` raccoglie i candidati e passa l'unico vincitore a `Gateway:Narrate`. `Director:Evaluate` resta il punto di aggancio di S2, con la stessa forma di risposta più `priority` e `category`.
-2. **Un intervento per momento.** Gli eventi spontanei non parlano subito: `Director:Offer` li mette in coda e `Director:Resolve`, dopo una breve finestra di arbitraggio (0,1 s), li prova in ordine di priorità. Il primo che passa gate, dado e motore parla; gli altri tacciono. In più, il pacing impone `Pacing.MOMENT` (4 s) tra due interventi qualsiasi, anche importanti, e una frase esplicita apre lo stesso momento.
-3. **Priorità del §10** come numeri: esplicito 5, dialogo volontario 4, evento eccezionale 3, memoria 2, atmosfera 1. Le richieste esplicite non passano dal Director (come prima). Gli eventi eccezionali (morte, ritorno in vita, livello, resurrezione di un compagno) saltano la pausa globale, quella di categoria e il budget, e la loro probabilità non scende sotto il valore medio; non saltano il momento né le schermate invasive.
-4. **L'intensità agisce sul gate e sul budget**, non sullo stile: probabilità × intensità/50, pause × (1,5 − intensità/100), budget per categoria × intensità/50 in una finestra di 10 minuti. A 0 tace tutto ciò che è spontaneo.
-5. **Sospensione**: con una cinematica o un filmato (`InCinematic`, `IsInCinematicScene`, frame `CinematicFrame`/`MovieFrame`, tutti protetti) tace tutto; in un combattimento impegnativo (boss, incursione, élite in istanza, controlli aggiunti) tace ciò che non è eccezionale. Si decide solo su dati già letti e leggibili: un valore segreto vale "non lo so", cioè "non impegnativo".
-6. **Peso moltiplicativo `W = B × C × P × N × S × R`**, calcolato in `Engine.Factors`. `P` e `R` sono neutri; `C`, `P` e `R` hanno agganci con nome (`Engine:SetWeightHook`) per S5, S6b e S6c. Un aggancio che sbaglia vale 1 e finisce in diagnostica; un fattore 0 esclude la frase (serve a S6b per le frasi incoerenti con il rapporto).
-7. **Lo stile pesa e non esclude.** `Engine/StyleResolver.lua` dà un profilo (registri ammessi dall'evento, preferiti da zona e profondità, più la voce della frase) e un'affinità: ×0,5 fuori dall'evento, +25% per ogni preferenza (al massimo tre). Il ripiego neutro è quindi automatico: un evento con sole frasi di un registro "sbagliato" parla comunque. Le cornici possono avere registri e si uniscono solo a frasi di registro uguale o vicino: nessun frammento incompatibile.
-8. **Stato del pacing solo in memoria**, per la sessione: nessun campo nuovo nelle SavedVariables e nessuna migrazione.
+1. **Decisions separate from output.** `Engine/NarrativeDirector.lua` (gate, priorities, suspension, ordering) and `Engine/Pacing.lua` (pauses and budget) know nothing about the Chat Gateway. `Systems/Director.lua` collects the candidates and passes the single winner to `Gateway:Narrate`. `Director:Evaluate` remains the S2 hook point, with the same response shape plus `priority` and `category`.
+2. **One intervention per moment.** Spontaneous events do not speak immediately: `Director:Offer` queues them and `Director:Resolve`, after a short arbitration window (0.1 s), tries them in priority order. The first one that passes gate, roll and engine speaks; the others stay silent. In addition, pacing enforces `Pacing.MOMENT` (4 s) between any two interventions, even important ones, and an explicit line opens the same moment.
+3. **§10 priorities** as numbers: explicit 5, voluntary dialogue 4, exceptional event 3, memory 2, atmosphere 1. Explicit requests do not go through the Director (as before). Exceptional events (death, return to life, level-up, resurrection of a companion) skip the global pause, the category pause and the budget, and their probability does not fall below the medium value; they do not skip the moment or the invasive screens.
+4. **Intensity acts on the gate and on the budget**, not on style: probability × intensity/50, pauses × (1.5 − intensity/100), per-category budget × intensity/50 over a 10-minute window. At 0 everything spontaneous stays silent.
+5. **Suspension**: during a cinematic or a movie (`InCinematic`, `IsInCinematicScene`, `CinematicFrame`/`MovieFrame` frames, all protected) everything stays silent; during a demanding fight (boss, raid, elite in an instance, added controls) everything that is not exceptional stays silent. Decisions are made only on data already read and readable: a secret value counts as "I don't know", that is, "not demanding".
+6. **Multiplicative weight `W = B × C × P × N × S × R`**, computed in `Engine.Factors`. `P` and `R` are neutral; `C`, `P` and `R` have named hooks (`Engine:SetWeightHook`) for S5, S6b and S6c. A hook that fails counts as 1 and ends up in diagnostics; a factor of 0 excludes the line (S6b needs this for lines that are inconsistent with the relationship).
+7. **Style weighs and does not exclude.** `Engine/StyleResolver.lua` provides a profile (registers allowed by the event, preferred by zone and depth, plus the line's voice) and an affinity: ×0.5 outside the event, +25% for each preference (at most three). The neutral fallback is therefore automatic: an event with only lines of a "wrong" register still speaks. Frames can have registers and are joined only to lines of the same or a neighboring register: no incompatible fragments.
+8. **Pacing state in memory only**, for the session: no new fields in the SavedVariables and no migration.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Decidere subito, evento per evento (come prima), con una pausa minima dopo ogni frase.** Più semplice, ma chi arriva per primo vince: una frase di salute bassa ruberebbe il posto a quella della morte un istante dopo.
-- **Una coda lunga che rimanda i candidati scartati.** Una frase in ritardo di secondi su un evento passato è peggio del silenzio (GDD §6: una scena può finire senza frase).
-- **Budget e pause nelle SavedVariables.** Dopo un `/reload` il budget pieno non fa danni, mentre salvare tempi del client (`GetTime`) tra sessioni non ha senso.
-- **Registri come filtro rigido.** Avrebbe prodotto silenzi inattesi finché i contenuti (S7) non coprono ogni registro di ogni evento.
-- **Somma pesata dei fattori.** Con il prodotto un fattore 0 esclude davvero e ogni fattore resta leggibile da solo (`Engine:Weight` restituisce la scomposizione).
+- **Deciding immediately, event by event (as before), with a minimal pause after each line.** Simpler, but whoever arrives first wins: a low-health line would steal the place of the death line an instant later.
+- **A long queue that postpones discarded candidates.** A line delayed by seconds about a past event is worse than silence (GDD §6: a scene may end without a line).
+- **Budget and pauses in the SavedVariables.** After a `/reload` a full budget does no harm, while saving client times (`GetTime`) across sessions makes no sense.
+- **Registers as a hard filter.** It would have produced unexpected silences until the content (S7) covers every register of every event.
+- **Weighted sum of the factors.** With the product a factor of 0 really excludes, and each factor remains readable on its own (`Engine:Weight` returns the breakdown).
 
-## Conseguenze
+## Consequences
 
-- Positive: una sola frase per momento, priorità leggibili, `/au debug` mostra il budget e le ultime decisioni con il motivo; S5, S6, S6b e S6c si agganciano senza toccare il Director (`Engine:SetWeightHook`, `StyleResolver:SetModifier`, `NarrativeDirector:SetRhythm`, `SetDemandCheck`, `NS:SetEventPriority`).
-- Negative: 0,1 s di ritardo in più su ogni frase spontanea; i numeri (budget, pause di categoria, bonus e penalità di stile) sono ipotesi da regolare con le prove in gioco (G1, passi 27–31).
-- I test fuori gioco che controllano una frase spontanea devono lasciar passare la finestra di arbitraggio (`ADVANCE`).
+- Positive: a single line per moment, readable priorities, `/au debug` shows the budget and the latest decisions with the reason; S5, S6, S6b and S6c hook in without touching the Director (`Engine:SetWeightHook`, `StyleResolver:SetModifier`, `NarrativeDirector:SetRhythm`, `SetDemandCheck`, `NS:SetEventPriority`).
+- Negative: 0.1 s of extra delay on every spontaneous line; the numbers (budget, category pauses, style bonuses and penalties) are guesses to be tuned with in-game tests (G1, steps 27–31).
+- Offline tests that check a spontaneous line must let the arbitration window pass (`ADVANCE`).
 
-## Riferimenti
+## References
 
 - GDD §4.2, §5.2, §6, §10, §15.2.
 - `Engine/NarrativeDirector.lua`, `Engine/Pacing.lua`, `Engine/StyleResolver.lua`, `Engine/WeightedSelector.lua`, `Systems/Director.lua`, `Systems/Triggers.lua`.
 - `Tests/TestNarrativeDirector.lua`, `Tests/TestDirector.lua`.
-- [ADR 0014](0014-normalized-event-bus-and-isolated-modules.md) (il Director come punto di aggancio), [ADR 0005](0005-compat-secret-values-and-defensive-events.md) (valori segreti).
+- [ADR 0014](0014-normalized-event-bus-and-isolated-modules.md) (the Director as hook point), [ADR 0005](0005-compat-secret-values-and-defensive-events.md) (secret values).

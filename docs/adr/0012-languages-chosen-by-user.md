@@ -1,39 +1,39 @@
-# 0012. Lingue scelte dall'utente, indipendenti dal client
+# 0012. Languages chosen by the user, independent of the client
 
-- Stato: accettata
-- Data: 2026-10-29 (da [ROADMAP.md](../../ROADMAP.md), "Decisioni già prese", n. 1, e note di S1)
+- Status: Accepted
+- Date: 2026-10-29 (from [ROADMAP.md](../../ROADMAP.md), "Decisions already made", no. 1, and the notes of S1)
 
-## Contesto
+## Context
 
-Il client di riferimento di WoW Forever è in inglese, ma l'addon nasce per giocatori italiani, e il roleplay si fa spesso nella lingua in cui si preferisce leggere e scrivere. Legare la lingua dell'addon a quella del client costringerebbe a leggere frasi in inglese anche a chi vuole l'italiano, e viceversa.
+The reference WoW Forever client is in English, but the addon was born for Italian players, and roleplay is often done in the language one prefers to read and write. Tying the addon's language to the client's would force people to read English lines even if they want Italian, and vice versa.
 
-## Decisione
+## Decision
 
-1. **La lingua si sceglie nelle impostazioni** (`settings.locale`) e vale per le frasi e per l'interfaccia dell'addon. Non dipende da `GetLocale()`.
-2. **Il codice della lingua è quello corto dei pacchetti** (`it`, `en`, `de`…), non quello del client (`itIT`). `Config:NormalizeLocale` accetta anche `itIT`/`enUS` e `IT`, e li riporta al codice corto. Il GDD (§11.4) usava `itIT`; vale la roadmap.
-3. **Lingue iniziali**: italiano e inglese. Se un testo dell'interfaccia manca nella lingua scelta, **si ripiega sull'italiano**, poi sulla chiave stessa (`NS:L`).
-4. **Le lingue non si mescolano mai**: una frase compare solo nelle lingue in cui è scritta; ogni frase ha un testo per lingua (`it = "…"`, `en = "…"`). Una frase senza testo nella lingua scelta non è eleggibile.
-5. **Le lingue sono espandibili da pacchetti**: `AzerothUnspoken:RegisterLanguage("de", { name = "Deutsch", ui = {…} })` aggiunge una lingua; `AddTranslations(lang, mappa)` traduce frasi di altri pacchetti. I testi dell'interfaccia stanno in `Data/<lingua>/Interface.lua` (`itIT`, `enUS`).
-6. **Nomi localizzati** di classi, razze, fazioni e tipi di creatura (segnaposto `{class}`, `{race}`…) vengono dalla lingua scelta dall'utente, con la forma di genere (`{g:maschile|femminile}`), non da quella del client.
-7. **Le varianti IT ed EN conservano intento e registro**, non sono calchi meccanici (GDD §5.4).
-8. **Eccezione**: i nomi dei tasti in *Opzioni → Comandi* (`BINDING_NAME_*`) usano la lingua del client (`GetLocale() == "itIT"` → italiano, altrimenti inglese), perché quella schermata si legge prima che l'utente scelga la lingua dell'addon.
+1. **The language is chosen in the settings** (`settings.locale`) and applies to the lines and to the addon's interface. It does not depend on `GetLocale()`.
+2. **The language code is the short one used by packs** (`it`, `en`, `de`…), not the client's (`itIT`). `Config:NormalizeLocale` also accepts `itIT`/`enUS` and `IT`, and maps them to the short code. The GDD (§11.4) used `itIT`; the roadmap prevails.
+3. **Initial languages**: Italian and English. If an interface text is missing in the chosen language, **it falls back to Italian**, then to the key itself (`NS:L`).
+4. **Languages are never mixed**: a line only appears in the languages it is written in; each line has one text per language (`it = "…"`, `en = "…"`). A line with no text in the chosen language is not eligible.
+5. **Languages are extensible through packs**: `AzerothUnspoken:RegisterLanguage("de", { name = "Deutsch", ui = {…} })` adds a language; `AddTranslations(lang, map)` translates lines from other packs. Interface texts live in `Data/<language>/Interface.lua` (`itIT`, `enUS`).
+6. **Localized names** of classes, races, factions and creature types (placeholders `{class}`, `{race}`…) come from the language chosen by the user, with the gender form (`{g:maschile|femminile}`), not from the client's.
+7. **The IT and EN variants preserve intention and register**; they are not mechanical calques (GDD §5.4).
+8. **Exception**: the key binding names in *Options → Keybindings* (`BINDING_NAME_*`; "Comandi" in the Italian client) use the client's language (`GetLocale() == "itIT"` → Italian, otherwise English), because that screen is read before the user chooses the addon's language.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Seguire la lingua del client.** Semplice, ma non rispetta la preferenza dell'utente e rende l'addon quasi inutile per chi gioca con un client in una lingua e vuole leggere in un'altra.
-- **Mescolare le lingue** (frase in una lingua, ripiego in un'altra). Rompe l'immersione. Meglio il silenzio o un'altra frase.
-- **Un solo file di testi con tutte le lingue.** Non scala quando si aggiungono lingue e pacchetti di terzi.
+- **Following the client's language.** Simple, but it does not respect the user's preference and makes the addon almost useless for people who play with a client in one language and want to read in another.
+- **Mixing languages** (a line in one language, fallback in another). It breaks immersion. Better silence or a different line.
+- **A single text file with all the languages.** It does not scale when languages and third-party packs are added.
 
-## Conseguenze
+## Consequences
 
-- Positive: ogni giocatore legge nella lingua che preferisce; aggiungere una lingua non richiede di toccare il motore.
+- Positive: every player reads in the language they prefer; adding a language does not require touching the engine.
 - Negative:
-  - ogni frase nuova va scritta almeno in italiano e inglese per essere completa; chi scrive una lingua nuova deve tradurre le frasi esistenti per vederle;
-  - le condizioni che dipendono da nomi (ad esempio `zone = "Duskwood"`) usano i nomi **del client** (inglese), non quelli della lingua dell'utente.
-- Lo schema dati v2 (step S3) porterà i testi per lingua in file separati (`Data/itIT/`, `Data/enUS/`) con più varianti per id, e un validatore per le lingue mancanti.
+  - every new line must be written in at least Italian and English to be complete; whoever writes a new language must translate the existing lines to see them;
+  - conditions that depend on names (for example `zone = "Duskwood"`) use the **client's** names (English), not those of the user's language.
+- The v2 data schema (step S3) will move the texts per language into separate files (`Data/itIT/`, `Data/enUS/`) with several variants per id, and a validator for missing languages.
 
-## Riferimenti
+## References
 
 - GDD §9.
 - `Core/Bootstrap.lua` (`RegisterLanguage`, `NS:L`), `Core/Config.lua` (`NormalizeLocale`), `Data/itIT/Interface.lua`, `Data/enUS/Interface.lua`.
-- [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md), sezione "Lingue nuove".
+- [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md), "New languages" section.

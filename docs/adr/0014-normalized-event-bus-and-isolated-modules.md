@@ -1,39 +1,39 @@
-# 0014. Bus di eventi normalizzati, moduli isolati e Director come punto di aggancio
+# 0014. Normalized event bus, isolated modules and the Director as the hook point
 
-- Stato: accettata
-- Data: 2026-10-29 (implementata negli step S1 e S2; GDD §11.2, §11.3)
+- Status: Accepted
+- Date: 2026-10-29 (implemented in steps S1 and S2; GDD §11.2, §11.3)
 
-## Contesto
+## Context
 
-Il prototipo reagiva direttamente agli eventi del client, in un unico file (`Events.lua`). Con più sistemi in arrivo (Narrative Director, personalità, memoria, relazioni, NPC) serve una struttura in cui gli eventi del gioco siano tradotti in un formato unico, i sistemi si possano aggiungere senza toccarsi, un errore non fermi gli altri, e la decisione di "quando parlare" stia in un solo punto.
+The prototype reacted directly to client events, in a single file (`Events.lua`). With more systems coming (Narrative Director, personality, memory, relationships, NPCs) we need a structure in which game events are translated into a single format, systems can be added without touching one another, an error does not stop the others, and the decision of "when to speak" lives in a single place.
 
-## Decisione
+## Decision
 
-1. **Un bus di eventi** (`Core/EventBus.lua`). Ogni evento del client viene tradotto da una *sorgente* (`EventBus:AddSource`) in un **envelope** uniforme:
+1. **An event bus** (`Core/EventBus.lua`). Every client event is translated by a *source* (`EventBus:AddSource`) into a uniform **envelope**:
    ```
-   { type, timestamp, source, context = { … }, fields = { [campo] = AVAILABLE | MISSING | RESTRICTED } }
+   { type, timestamp, source, context = { … }, fields = { [field] = AVAILABLE | MISSING | RESTRICTED } }
    ```
-   con `source` fra `WOW_API`, `USER`, `ADDON`, `SIMULATED`. I tipi attuali: `WORLD_ENTER`, `ZONE_ENTER`, `COMBAT_START`, `COMBAT_END`, `HEALTH_CHANGED`, `PLAYER_DEATH`, `PLAYER_REVIVE`, `LEVEL_UP`, `TARGET_CHANGED`, `SPELL_SENT`, `SPELL_CAST`, `RESTRICTION_CHANGED`.
-2. **Deduplicazione**: stesso tipo e stessa chiave entro una finestra (`dedupWindow`, 1 secondo predefinito, finestre proprie per alcuni tipi) non si pubblicano due volte. I valori segreti non entrano nel contesto: il campo risulta `RESTRICTED` ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)).
-3. **Niente cascate**: un gestore che pubblica a sua volta mette l'evento in una coda (al massimo 32 eventi; i più vecchi di 5 secondi si scartano).
-4. **Abbonamento**: `EventBus:Subscribe(tipo o "*", proprietario, fn)`. Ogni gestore gira dentro `Diagnostics:Guard`: un errore si registra e gli altri gestori continuano.
-5. **Moduli**: ogni sistema si registra con `NS:RegisterModule(nome)` e ha un `OnInit` opzionale. `NS:Initialize` (su `ADDON_LOADED`) esegue, in ordine, `Config:Load`, `Compat:Probe`, `EventBus:Start` e l'`OnInit` di ogni modulo, ciascuno isolato.
-6. **Il Director è l'unico punto che decide se intervenire.** `Systems/Triggers.lua` traduce gli eventi del bus in eventi narrativi (`battle`, `victory`, `zone`…) e per ognuno chiede a `Director:Evaluate(evento)`, che risponde `{ allow, chanceMul, cooldownMul }` oppure `{ allow = false, reason }`. Oggi il Director applica l'intensità, la pausa immediata e i moduli attivi; lo step S4 ne ha sostituito il corpo con il Narrative Director completo senza cambiare la forma della risposta ([ADR 0015](0015-narrative-director-one-intervention-per-moment.md)).
-7. **L'uscita passa dal Chat Gateway** ([ADR 0003](0003-private-narrator-and-chat-gateway.md)): i sistemi non scrivono mai in chat da soli.
+   with `source` among `WOW_API`, `USER`, `ADDON`, `SIMULATED`. The current types: `WORLD_ENTER`, `ZONE_ENTER`, `COMBAT_START`, `COMBAT_END`, `HEALTH_CHANGED`, `PLAYER_DEATH`, `PLAYER_REVIVE`, `LEVEL_UP`, `TARGET_CHANGED`, `SPELL_SENT`, `SPELL_CAST`, `RESTRICTION_CHANGED`.
+2. **Deduplication**: the same type and the same key within a window (`dedupWindow`, 1 second by default, with their own windows for some types) are not published twice. Secret values do not enter the context: the field ends up `RESTRICTED` ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)).
+3. **No cascades**: a handler that publishes in turn puts the event in a queue (at most 32 events; those older than 5 seconds are discarded).
+4. **Subscription**: `EventBus:Subscribe(type or "*", owner, fn)`. Every handler runs inside `Diagnostics:Guard`: an error is logged and the other handlers continue.
+5. **Modules**: every system registers with `NS:RegisterModule(name)` and has an optional `OnInit`. `NS:Initialize` (on `ADDON_LOADED`) runs, in order, `Config:Load`, `Compat:Probe`, `EventBus:Start` and the `OnInit` of every module, each one isolated.
+6. **The Director is the only point that decides whether to intervene.** `Systems/Triggers.lua` translates bus events into narrative events (`battle`, `victory`, `zone`…) and for each one asks `Director:Evaluate(event)`, which answers `{ allow, chanceMul, cooldownMul }` or `{ allow = false, reason }`. Today the Director applies the intensity, the immediate pause and the active modules; step S4 replaced its body with the full Narrative Director without changing the shape of the answer ([ADR 0015](0015-narrative-director-one-intervention-per-moment.md)).
+7. **Output goes through the Chat Gateway** ([ADR 0003](0003-private-narrator-and-chat-gateway.md)): systems never write to chat on their own.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Registrare gli eventi del client in ogni modulo.** Più semplice all'inizio, ma ogni modulo duplicherebbe la gestione dei valori segreti, la deduplicazione e il controllo degli eventi, e la diagnostica non avrebbe un punto di osservazione unico.
-- **Un sistema di plug-in con callback libere.** Troppo permissivo: un errore in un plug-in fermerebbe gli altri.
-- **Lasciare la decisione di parlare dentro `Triggers`.** È ciò che faceva il prototipo; renderebbe difficile aggiungere budget, priorità e silenzio.
+- **Registering client events in every module.** Simpler at the start, but every module would duplicate the handling of secret values, the deduplication and the event checks, and diagnostics would have no single observation point.
+- **A plug-in system with free callbacks.** Too permissive: an error in one plug-in would stop the others.
+- **Leaving the decision to speak inside `Triggers`.** This is what the prototype did; it would make it hard to add budget, priorities and silence.
 
-## Conseguenze
+## Consequences
 
-- Positive: tracciabilità (`/au debug` mostra gli ultimi eventi, i conteggi e i doppioni scartati; `/au debug trace` li stampa); isolamento degli errori; nuovi sistemi si aggiungono abbonandosi al bus; la logica di "quando" è in un posto solo.
-- Negative: un livello di indirezione tra evento del client e frase; il formato dell'envelope è un contratto interno da mantenere con attenzione quando si aggiungono campi.
-- I tipi di evento previsti per gli step futuri (gossip, quest, mercante, gruppo…) non esistono ancora: vanno aggiunti come sorgenti, con controllo in Compat.
+- Positive: traceability (`/au debug` shows the latest events, the counts and the discarded duplicates; `/au debug trace` prints them); error isolation; new systems are added by subscribing to the bus; the "when" logic is in one place.
+- Negative: one level of indirection between client event and line; the envelope format is an internal contract that must be maintained carefully when fields are added.
+- The event types planned for future steps (gossip, quest, merchant, group…) do not exist yet: they must be added as sources, with a check in Compat.
 
-## Riferimenti
+## References
 
 - GDD §6, §10, §11.2, §11.3.
 - `Core/EventBus.lua`, `Core/Bootstrap.lua`, `Systems/Triggers.lua`, `Systems/Director.lua`.

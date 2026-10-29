@@ -1,618 +1,622 @@
-# Azeroth Unspoken: roadmap di sviluppo
+# Azeroth Unspoken: development roadmap
 
-**Nome:** Azeroth Unspoken
+**Name:** Azeroth Unspoken
 **Motto:** *An immersive roleplay companion for World of Warcraft*
-**Descrizione breve:** Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse.
+**Short description:** An immersive narrative companion for World of Warcraft, distinctive and mysterious, that recalls unspoken thoughts and stories.
 
-La specifica di riferimento è [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md).
-Al posto di "Immersion Director", il prodotto si chiama **Azeroth Unspoken**.
-Dove il GDD e questo file non coincidono, vale questo file.
+The reference specification is [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md) (in Italian).
+In place of "Immersion Director", the product is called **Azeroth Unspoken**.
+Where the GDD and this file disagree, this file prevails.
 
-## Stato di partenza (prima dello step S1)
+## Starting state (before step S1)
 
-- Il prototipo funzionante si chiamava `VociDiAzeroth/`, ora archiviato in `archive/VociDiAzeroth/` (motore e database separati, 374 frasi IT/EN).
-  - Motore: `Core.lua`, `Engine.lua`, `Context.lua`, `Events.lua`, `UI.lua`.
-  - Dati: `Data/*.lua`. Formato descritto in `archive/VociDiAzeroth/FORMATO_PACCHETTI.md`.
-  - Pacchetto di esempio: `archive/VociDiAzeroth_Esempio/`.
-  - Già presenti:
-    - selezione pesata con specificità, usi e tono;
-    - esclusione obbligatoria delle frasi recenti;
-    - memoria salvata tra le sessioni;
-    - condizioni dichiarative, con `not`, `any` e `func`;
-    - segnaposto `{target}` `{player}` `{spell}` `{zone}`, genere `{g:m|f}`, vocabolario e cornici;
-    - lingua scelta dall'utente;
-    - comandi `/voci`, pannello delle impostazioni, pulsante e tasto "pronuncia".
-- `Data/Classes.lua` (ora in `AzerothUnspoken/Data/`): 54 frasi di classe già scritte, **non ancora nel `.toc`** e non testate. Vanno riusate nello step S3/S7.
-- I test fuori dal gioco usano lupa, cioè Lua 5.1 come WoW:
-  - file: `Tests/run_tests.py` e `Tests/MockWoWAPI.lua`;
-  - venv locale nella radice del progetto, fuori dal controllo di versione: `python -m venv .venv`, poi `.venv\Scripts\pip install lupa`;
-  - comando, dalla radice del progetto: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. Senza argomento si usa `AzerothUnspoken`.
-- Client target:
-  - `<WoW>\_forever_` (build 1.60.1.70658, `## Interface: 16001`, client in inglese, `WOW_PROJECT_ID == WOW_PROJECT_CAMELOT`);
-  - addon installati in `...\_forever_\Interface\AddOns`. Lì ci sono già `totalRP3`, `Details` e `QuestIT`, utili come riferimento per le API.
-- Le cartelle `SpeakinSpell*` sono l'addon originale per retail. Servivano solo come riferimento e non entrano nel repository.
+- The working prototype was called `VociDiAzeroth/`, now archived in `archive/VociDiAzeroth/` (separate engine and database, 374 IT/EN lines).
+  - Engine: `Core.lua`, `Engine.lua`, `Context.lua`, `Events.lua`, `UI.lua`.
+  - Data: `Data/*.lua`. Format described in `archive/VociDiAzeroth/FORMATO_PACCHETTI.md`.
+  - Example pack: `archive/VociDiAzeroth_Esempio/`.
+  - Already in place:
+    - weighted selection with specificity, usage and tone;
+    - mandatory exclusion of recent lines;
+    - memory saved between sessions;
+    - declarative conditions, with `not`, `any` and `func`;
+    - placeholders `{target}` `{player}` `{spell}` `{zone}`, gender `{g:m|f}`, vocabulary and frames;
+    - language chosen by the user;
+    - `/voci` commands, settings panel, "speak" button and key.
+- `Data/Classes.lua` (now in `AzerothUnspoken/Data/`): 54 class lines already written, **not yet in the `.toc`** and untested. They must be reused in step S3/S7.
+- The offline tests (run outside the game) use lupa, that is Lua 5.1 like WoW:
+  - files: `Tests/run_tests.py` and `Tests/MockWoWAPI.lua`;
+  - local venv in the project root, outside version control: `python -m venv .venv`, then `.venv\Scripts\pip install lupa`;
+  - command, from the project root: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. With no argument, `AzerothUnspoken` is used.
+- Target client:
+  - `<WoW>\_forever_` (build 1.60.1.70658, `## Interface: 16001`, English client, `WOW_PROJECT_ID == WOW_PROJECT_CAMELOT`);
+  - addons installed in `...\_forever_\Interface\AddOns`. `totalRP3`, `Details` and `QuestIT` are already there, useful as an API reference.
+- The `SpeakinSpell*` folders are the original addon for retail. They served only as a reference and are not part of the repository.
 
-## Decisioni già prese
+## Decisions already taken
 
-1. Il motore e il database narrativo restano separati.
-   - Il database contiene frasi intere e curate, mai frammenti combinati a caso.
-   - È multilingua (IT ed EN, espandibile) e la lingua si sceglie nelle impostazioni, indipendentemente dal client.
-2. Tutto funziona offline: nessuna rete, API esterna o IA. Si espande con pacchetti locali.
-3. **Nessuna pubblicazione automatica** in chat pubblica come comportamento predefinito: si usano il narratore privato e il Chat Gateway (§7.7 del GDD). Le emote automatiche del prototipo si trasformano in proposte.
-4. Si rispettano le protezioni del client:
-   - /say e /yell solo dopo un'azione del giocatore;
-   - nessuna decisione basata su valori segreti;
-   - ogni evento si registra in modo difensivo.
-5. Total RP 3 è facoltativo: l'addon funziona al 100% anche senza.
-6. Stile letterario originale, nello spirito del fantasy epico e del tono di Warcraft, senza citazioni copiate. Registri e "quattro voci" come nel §5 del GDD.
-7. Gli step si eseguono **uno alla volta**, ognuno in una sessione separata, perché toccano gli stessi file.
-8. Il progetto vive nel repository git questo repository (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` autenticato).
-   L'utente ha autorizzato commit, push e merge **automatici**, senza chiedere conferma: il PC non è presidiato.
+1. The engine and the narrative database stay separate.
+   - The database contains whole, curated lines, never fragments combined at random.
+   - It is multilingual (IT and EN, expandable) and the language is chosen in the settings, independently of the client.
+2. Everything works offline: no network, external API or AI. It is expanded with local packs.
+3. **No automatic publishing** to public chat as the default behavior: the private narrator and the Chat Gateway are used (§7.7 of the GDD). The prototype's automatic emotes become proposals.
+4. The client's protections are respected:
+   - /say and /yell only after a player action;
+   - no decision based on secret values;
+   - every event is registered defensively.
+5. Total RP 3 is optional: the addon works 100% even without it.
+6. Original literary style, in the spirit of epic fantasy and the tone of Warcraft, with no copied quotations. Registers and "four voices" as in §5 of the GDD.
+7. Steps are run **one at a time**, each in a separate session, because they touch the same files.
+8. The project lives in this git repository (remote `https://github.com/Finland6738/azeroth-unspoken`, `gh` authenticated).
+   The user has authorized **automatic** commits, pushes and merges, without asking for confirmation: the PC is unattended.
 
-## Regole per ogni sessione di step
+## Rules for every step session
 
-### Flusso git (obbligatorio, automatico)
+### Git flow (mandatory, automatic)
 
-1. Ogni step lavora sul proprio branch (`step/sN-nome`), partito da `main` aggiornato.
-2. Commit piccoli e leggibili durante il lavoro, con messaggi in italiano.
-3. Alla fine, con i test superati:
+1. Each step works on its own branch (`step/sN-name`), started from an up-to-date `main`.
+2. Small, readable commits during the work, with messages in English.
+3. At the end, with the tests passing:
    - `git push -u origin <branch>`;
-   - `gh pr create --base main`, con titolo e descrizione che riassumono lo step e ciò che non è stato verificato;
-   - `gh pr merge --squash --delete-branch`, senza chiedere conferma.
-4. Dopo il merge, aggiornare l'installazione in `AddOns` con i file di `main`.
-5. Mai `--force` su `main`, mai riscrivere la storia già pubblicata, mai saltare gli hook.
-6. Se il merge fallisce per conflitti: allineare il branch a `main`, risolvere, ripetere i test e poi fare il merge.
-   Se non si riesce, lasciare la PR aperta e spiegare il problema nel resoconto.
+   - `gh pr create --base main`, with a title and description that summarize the step and what was not verified;
+   - `gh pr merge --squash --delete-branch`, without asking for confirmation.
+4. After the merge, update the installation in `AddOns` with the files from `main`.
+5. Never `--force` on `main`, never rewrite already published history, never skip the hooks.
+6. If the merge fails because of conflicts: align the branch with `main`, resolve, repeat the tests and then merge.
+   If that does not work, leave the PR open and explain the problem in the report.
 
-### Installazione e percorsi personali
+### Language
 
-- L'addon si installa con `python tools/install_addon.py`: cancella, ricopia e confronta byte per byte. `--check` fa solo il confronto.
-- Il percorso della cartella AddOns è personale e **non si scrive mai nel repository**. Sta in `tools/local.ini` (ignorato da git, modello in `tools/local.example.ini`) o nella variabile `AU_ADDONS_DIR`.
-- Nei documenti si scrivono solo forme neutre: `<WoW>\_forever_\...` e `../WoW-Addons` (il dump delle API accanto al repository).
-- Nessun nome reale, email, nome di account o percorso del PC nei file, nei commit, nelle PR o nelle issue. Nei crediti si usa Finland6738.
+- From L1 on, **English is the default language** of the project: documentation, ADRs, PR titles and descriptions, issues and commit messages are written in English.
+- Code comments may stay as they are. Rewriting the existing code comments is out of scope: open an issue if you think it is worth doing.
+- The in-game text stays bilingual (Italian and English), as decided in ADR 0012.
+- Kept in Italian on purpose, because they are for the Italian-speaking user: `README.it.md`, the in-game checklist `docs/G1_checklist.md` and the original design spec `docs/Immersion_Director_GDD_v1.0.md` (the historical source).
 
-### Lavoro
+### Installation and personal paths
+
+- The addon is installed with `python tools/install_addon.py`: it deletes, copies again and compares byte by byte. `--check` only does the comparison.
+- The path of the AddOns folder is personal and is **never written in the repository**. It lives in `tools/local.ini` (ignored by git, template in `tools/local.example.ini`) or in the `AU_ADDONS_DIR` variable.
+- In the documents, write only neutral forms: `<WoW>\_forever_\...` and `../WoW-Addons` (the API dump next to the repository).
+- No real name, email, account name or PC path in files, commits, PRs or issues. In the credits, use Finland6738.
+
+### Work
 
 
-- Leggere questo file e le sezioni del GDD indicate nello step.
-- Lavorare solo sullo step assegnato e lasciare il resto in condizioni funzionanti.
-- Alla fine:
-  1. far passare i test fuori dal gioco, aggiungendo test per ciò che si è costruito;
-  2. aggiornare l'installazione in `AddOns`;
-  3. aggiornare in questo file la riga di stato dello step e le note per lo step successivo;
-  4. riportare con onestà ciò che non è stato verificato, in particolare tutto ciò che richiede il client vero.
-- Ambiente dell'utente: JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**.
-  - Annotare con EmmyLua (`---@class`, `---@field`, `---@param`, `---@return`) le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione), così l'IDE completa e controlla i tipi.
-  - Ogni nuova variabile globale dell'addon (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti) va aggiunta a `diagnostics.globals` in `.luarc.json`.
-  - Le API di WoW sono fornite dal plugin: non duplicarle nel progetto.
-- Riferimenti tecnici: [docs/REFERENCES.md](docs/REFERENCES.md).
-  - Il dump delle API di Forever (build 70170) è in `../WoW-Addons/docs/api.json`, con le definizioni in `types/WowForeverAPI.lua`, collegate da `.luarc.json`.
-  - Prima di usare una funzione o un evento nuovo, controllarlo lì e poi proteggerlo con Compat.
-  - Non copiare file di quel repository nel nostro: non ha una licenza dichiarata.
-  - Se manca la copia locale: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`.
-- Non usare `%s`, `%l`, `%a` o `%w` nei pattern Lua applicati a testo UTF-8: con alcune impostazioni locali spezzano le lettere accentate. Usare classi esplicite.
+- Read this file and the GDD sections indicated in the step.
+- Work only on the assigned step and leave the rest in working order.
+- At the end:
+  1. make the offline tests pass, adding tests for what was built;
+  2. update the installation in `AddOns`;
+  3. update in this file the step's status line and the notes for the next step;
+  4. honestly report what was not verified, in particular everything that requires the real client.
+- User's environment: JetBrains WebStorm with the **EmmyLua** and **WoW Lua Language Server** plugins.
+  - Annotate with EmmyLua (`---@class`, `---@field`, `---@param`, `---@return`) the public APIs, modules and data structures (context, line, configuration, relationship), so that the IDE completes and type-checks.
+  - Every new global variable of the addon (SavedVariables, `SLASH_*`, `BINDING_*`, key functions) must be added to `diagnostics.globals` in `.luarc.json`.
+  - The WoW APIs are provided by the plugin: do not duplicate them in the project.
+- Technical references: [docs/REFERENCES.md](docs/REFERENCES.md).
+  - The Forever API dump (build 70170) is in `../WoW-Addons/docs/api.json`, with the definitions in `types/WowForeverAPI.lua`, linked by `.luarc.json`.
+  - Before using a new function or event, check it there and then protect it with Compat.
+  - Do not copy files from that repository into ours: it has no declared license.
+  - If the local copy is missing: `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`.
+- Do not use `%s`, `%l`, `%a` or `%w` in Lua patterns applied to UTF-8 text: with some locale settings they split accented letters. Use explicit classes.
 
-## Milestone e step
+## Milestones and steps
 
-| Step | Milestone | Contenuto | Modello / effort | Stato |
+| Step | Milestone | Content | Model / effort | Status |
 |---|---|---|---|---|
-| S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
-| S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | **rimandata**: l'utente non è disponibile e ha chiesto di proseguire in autonomia (2026-10-29). Da fare al suo ritorno, insieme a G2 |
-| S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero e TRP3 vero non provati) |
-| S6 | M1 | Living Memory e Diario | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| S6b | M1 | Relazioni e affinità: NPC automatici, persone incontrate, influenza sul narratore | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
-| S6c | M1 | Interlocutore (personalità, azioni, razza, classe, obiettivi, ruolo) e luogo (regione, territorio, dungeon/raid/BG/arena) | Opus · medium | fatto il 2026-10-29 (test fuori gioco superati; client vero, TRP3 vero e numeri dei luoghi non provati) |
-| S7 | M1 | Contenuti Alpha: 300 intenzioni, almeno 2 varianti | Opus · high | fatto il 2026-10-29 (803 intenzioni, 1.711 varianti per lingua; test fuori gioco superati; tono in gioco non provato) |
-| ✋ G2 | M1 | **Prova in gioco**: vertical slice A (arrivo nella foresta) e C (ritorno) | utente | da fare |
-| S8 | M2 Living NPC (v0.3) | NPC Alive: finestra di dialogo, stati, registro NPC, archetipi | Sonnet · high | fatto il 2026-10-29 (169 battute IT/EN, 5 archetipi; chiude #41 e #42; test fuori gioco superati; client vero non provato) |
-| ✋ G3 | M2 | **Prova in gioco**: vertical slice B (locandiere), passi 75–83 di `docs/G1_checklist.md` | utente | da fare (rimandata come G1 e G2) |
-| S9 | M3 Personal Stories (v0.45) | Story Arcs a stati e diario evoluto | Sonnet · high | fatto il 2026-10-29 (4 archi bilingui, 33 battute IT/EN; test fuori gioco superati; client vero non provato) |
-| S10 | M4 Social Beta (v0.5) | Social RP: protocollo addon, consenso, sicurezza | Opus · high | da fare |
-| ✋ G4 | M4 | **Prova con due client** (SP-06) | utente | da fare |
-| S11 | M5 Release (v1.0) | Contenuti fino a 1.000 intenzioni (anche in più sessioni) | Opus · high | da fare |
-| S12 | M5 | Rifinitura: accessibilità, profiling, manuale, privacy, troubleshooting, DoD | Sonnet · medium | da fare |
+| S1 | M0 Foundations (v0.1) | Renaming, GDD architecture, Compat, diagnostics | Opus · high | done on 2026-10-28 (offline tests passed; real client not tested) |
+| S2 | M0 | Private narrator, Chat Gateway, settings, wizard | Sonnet · high | done on 2026-10-29 (offline tests passed; real client not tested) |
+| ✋ G1 | M0 | **User's in-game test**: spikes SP-01…SP-05, with `docs/G1_checklist.md` (in Italian) | user | **postponed**: the user is not available and asked to proceed autonomously (2026-10-29). To do on their return, together with G2 |
+| S3 | M1 Narrative Alpha (v0.2) | Data schema v2, line migration, validator | Sonnet · high | done on 2026-10-29 (offline tests passed; real client not tested) |
+| S4 | M1 | Narrative Director: intensity, pacing, priority, silence, StyleResolver | Opus · medium | done on 2026-10-29 (offline tests passed; real client not tested) |
+| S5 | M1 | Character Soul (personality) and Total RP 3 adapter | Sonnet · high | done on 2026-10-29 (offline tests passed; real client and real TRP3 not tested) |
+| S6 | M1 | Living Memory and Journal | Sonnet · high | done on 2026-10-29 (offline tests passed; real client not tested) |
+| S6b | M1 | Relationships and affinity: automatic NPCs, people met, influence on the narrator | Sonnet · high | done on 2026-10-29 (offline tests passed; real client not tested) |
+| S6c | M1 | Interlocutor (personality, actions, race, class, goals, role) and place (region, territory, dungeon/raid/BG/arena) | Opus · medium | done on 2026-10-29 (offline tests passed; real client, real TRP3 and place numbers not tested) |
+| S7 | M1 | Alpha content: 300 intentions, at least 2 variants | Opus · high | done on 2026-10-29 (803 intentions, 1,711 variants per language; offline tests passed; in-game tone not tested) |
+| ✋ G2 | M1 | **In-game test**: vertical slice A (arrival in the forest) and C (return) | user | to do |
+| S8 | M2 Living NPC (v0.3) | NPC Alive: dialogue window, states, NPC register, archetypes | Sonnet · high | done on 2026-10-29 (169 IT/EN lines, 5 archetypes; closes #41 and #42; offline tests passed; real client not tested) |
+| ✋ G3 | M2 | **In-game test**: vertical slice B (innkeeper), steps 75–83 of `docs/G1_checklist.md` | user | to do (postponed like G1 and G2) |
+| S9 | M3 Personal Stories (v0.45) | Story Arcs with states and an evolved journal | Sonnet · high | done on 2026-10-29 (4 bilingual arcs, 33 IT/EN lines; offline tests passed; real client not tested) |
+| S10 | M4 Social Beta (v0.5) | Social RP: addon protocol, consent, safety | Opus · high | to do |
+| ✋ G4 | M4 | **Test with two clients** (SP-06) | user | to do |
+| S11 | M5 Release (v1.0) | Content up to 1,000 intentions (also across several sessions) | Opus · high | to do |
+| S12 | M5 | Polish: accessibility, profiling, manual, privacy, troubleshooting, DoD | Sonnet · medium | to do |
 
-### Prove in gioco rimandate
+### Postponed in-game tests
 
-Per decisione dell'utente (2026-10-29) lo sviluppo prosegue senza aspettare G1. Di conseguenza:
-- ogni funzione nuova che dipende da un'API non ancora provata nel client va protetta da Compat e deve degradare con eleganza (GDD §3.8);
-- `docs/G1_checklist.md` va aggiornata dagli step che aggiungono comportamenti da verificare in gioco;
-- i problemi trovati in gioco diventeranno issue con l'etichetta `in-game`.
+By the user's decision (2026-10-29), development proceeds without waiting for G1. As a consequence:
+- every new feature that depends on an API not yet tested in the client must be protected by Compat and must degrade gracefully (GDD §3.8);
+- `docs/G1_checklist.md` must be updated by the steps that add behaviors to be verified in game;
+- problems found in game will become issues with the `in-game` label.
 
-### Attività trasversali
+### Cross-cutting activities
 
-| Attività | Contenuto | Modello / effort | Stato |
+| Activity | Content | Model / effort | Status |
 |---|---|---|---|
-| D1 | Documentazione: README professionale, ADR in `docs/adr/`, architettura, guida ai pacchetti, CONTRIBUTING, CHANGELOG, valutazione della wiki GitHub | Sonnet · high | fatto il 2026-10-29 (README it/en, 14 ADR, architettura, CONTRIBUTING, CHANGELOG, `docs/README.md`; wiki: non si usa per ora, ADR 0013; licenza da scegliere, issue #2; la guida ai pacchetti di S3 va solo collegata) |
-| D2 | Documentazione allineata a M0–M3: README IT/EN, guida ai pacchetti con esempi provati dai test come pacchetti esterni (`Tests/check_docs.py`, che controlla anche i link relativi), ARCHITETTURA, CHANGELOG per step, CONTRIBUTING, ADR 0006; chiude #57, #58, #59 | Sonnet · high | fatto il 2026-10-29 (apre #69: una chiave già registrata sostituisce i dati di base) |
-| Q1 | Revisione del codice e della documentazione: bug e miglioramenti aperti come issue GitHub, senza modificare il codice | Opus · medium | da fare |
-| Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente. Q2 fatto: #3, #4, #5, #6, #8, #11, #12, #14, #17, #19 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 20–26). Q3 fatto: #26, #9, #21, #23, #13, #37, #38 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 69–74). Q5 fatto: #45, #46, #47, #48, #49, #50, #51, #52, #53, #54, #55, #56 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 93–98) |
-| P1 | Privacy cleanup: author email and local paths removed from the files and from the git history (rewrite and force-push, coordinated when no step branch is open); noreply identity for every commit | main session | fatto il 2026-10-29: percorsi personali tolti dai file (76c8064), identità noreply per i commit futuri, script di installazione con `tools/local.ini`. La storia git **resta invariata** per scelta dell'utente |
-| L1 | English as the default language of the project documentation: README.md in English (with README.it.md), ROADMAP, ADRs, architecture, pack format guide, CONTRIBUTING, CHANGELOG. From then on, PRs, issues and commits are in English. The user's in-game checklists also stay in Italian | Sonnet · high | da fare, dopo Q5, Q6 e D2 |
-| W1 | Wiki GitHub: user manual in English, exhaustive and non-technical, written in `docs/wiki/` and published to the wiki. No sensitive data, no developer content. Includes a "Reporting bugs and feedback" page: issue forms (`.github/ISSUE_TEMPLATE/`) and the Feedback category of GitHub Discussions | Opus · medium | da fare, dopo L1 |
-| R1 | Automatic rules: CI with the tests on every PR, a docs check that blocks a PR changing the addon without updating CHANGELOG and docs/wiki, wiki synced from `docs/wiki/` on every merge to main, PR template | Sonnet · high | da fare, dopo W1 |
+| D1 | Documentation: professional README, ADRs in `docs/adr/`, architecture, pack guide, CONTRIBUTING, CHANGELOG, evaluation of the GitHub wiki | Sonnet · high | done on 2026-10-29 (README it/en, 14 ADRs, architecture, CONTRIBUTING, CHANGELOG, `docs/README.md`; wiki: not used for now, ADR 0013; license to be chosen, issue #2; the S3 pack guide only needs to be linked) |
+| D2 | Documentation aligned with M0–M3: README IT/EN, pack guide with examples tested by the tests as external packs (`Tests/check_docs.py`, which also checks relative links), architecture, per-step CHANGELOG, CONTRIBUTING, ADR 0006; closes #57, #58, #59 | Sonnet · high | done on 2026-10-29 (opens #69: an already registered key replaces the base data) |
+| Q1 | Code and documentation review: bugs and improvements opened as GitHub issues, without changing the code | Opus · medium | to do |
+| Qn | Fixing the most important `bug` issues, one session per group of related issues, between one step and the next | Sonnet · high | recurring. Q2 done: #3, #4, #5, #6, #8, #11, #12, #14, #17, #19 (2026-10-29; offline tests passed; to test in game: G1 steps 20–26). Q3 done: #26, #9, #21, #23, #13, #37, #38 (2026-10-29; offline tests passed; to test in game: G1 steps 69–74). Q5 done: #45, #46, #47, #48, #49, #50, #51, #52, #53, #54, #55, #56 (2026-10-29; offline tests passed; to test in game: G1 steps 93–98) |
+| P1 | Privacy cleanup: author email and local paths removed from the files and from the git history (rewrite and force-push, coordinated when no step branch is open); noreply identity for every commit | main session | done on 2026-10-29: personal paths removed from the files (76c8064), noreply identity for future commits, install script with `tools/local.ini`. The git history **stays unchanged** by the user's choice |
+| L1 | English as the default language of the project documentation: README.md in English (with README.it.md), ROADMAP, ADRs, architecture, pack format guide, CONTRIBUTING, CHANGELOG. From then on, PRs, issues and commits are in English. The user's in-game checklists also stay in Italian | Sonnet · high | done on 2026-10-29 (README.md in English with README.it.md and a "Support and feedback" section; ROADMAP, 21 ADRs with English slugs, `docs/ARCHITECTURE.md`, `docs/REFERENCES.md`, `AzerothUnspoken/PACK_FORMAT.md`, CONTRIBUTING, CHANGELOG, `docs/README.md` in English; language rule added; `docs/G1_checklist.md` and the GDD stay in Italian; existing code comments are not rewritten) |
+| W1 | GitHub wiki: user manual in English, exhaustive and non-technical, written in `docs/wiki/` and published to the wiki. No sensitive data, no developer content. Includes a "Reporting bugs and feedback" page: issue forms (`.github/ISSUE_TEMPLATE/`) and the Feedback category of GitHub Discussions | Opus · medium | to do, after L1 |
+| R1 | Automatic rules: CI with the tests on every PR, a docs check that blocks a PR changing the addon without updating CHANGELOG and docs/wiki, wiki synced from `docs/wiki/` on every merge to main, PR template | Sonnet · high | to do, after W1 |
 
-### Issue GitHub
+### GitHub issues
 
-- Etichette: `bug`, `enhancement`, `docs`, `in-game` (da verificare nel client), `content` (frasi), `good first issue`, `priority:high|medium|low`.
-- Ogni issue riporta il file e la riga, oppure la funzione, il comportamento atteso e quello osservato, e come riprodurlo (test fuori gioco o passi in gioco).
-- Gli step e le correzioni che risolvono un'issue la chiudono dalla PR (`Closes #N`). Una sessione che trova un problema fuori dal proprio step apre un'issue invece di allargare lo step.
-
-### S1: rinomina e architettura (GDD §3, §11, §13, §14, §15)
-- Creare `AzerothUnspoken/` con la struttura `Core/ Engine/ Systems/ Integration/ UI/ Data/` del §11.1, adattata: `Tests/` resta alla radice del progetto, fuori dal pacchetto.
-  - Portare lì il motore e il database del prototipo senza perdere funzioni.
+- Labels: `bug`, `enhancement`, `docs`, `in-game` (to be verified in the client), `content` (lines), `good first issue`, `priority:high|medium|low`.
+- Every issue gives the file and line, or the function, the expected behavior and the observed one, and how to reproduce it (offline test or in-game steps).
+- Steps and fixes that resolve an issue close it from the PR (`Closes #N`). A session that finds a problem outside its own step opens an issue instead of widening the step.
+### S1: rename and architecture (GDD §3, §11, §13, §14, §15)
+- Create `AzerothUnspoken/` with the `Core/ Engine/ Systems/ Integration/ UI/ Data/` structure of §11.1, adapted: `Tests/` stays at the project root, outside the package.
+  - Move the prototype's engine and database there without losing any function.
 - `.toc`:
-  - titolo "Azeroth Unspoken" e il motto in `## Notes`;
+  - title "Azeroth Unspoken" and the motto in `## Notes`;
   - Interface 16001;
-  - SavedVariables `AzerothUnspokenDB` (globali) e `AzerothUnspokenCharacterDB` (per personaggio), con `schemaVersion` e una funzione di migrazione;
-  - non serve migrare i dati di `VociDiAzerothDB`: il prototipo non è mai stato usato in gioco.
-- Comandi `/unspoken` e `/au`: verificare che non vadano in conflitto con gli addon installati.
+  - SavedVariables `AzerothUnspokenDB` (global) and `AzerothUnspokenCharacterDB` (per character), with `schemaVersion` and a migration function;
+  - there is no need to migrate the data of `VociDiAzerothDB`: the prototype was never used in game.
+- Commands `/unspoken` and `/au`: check that they do not conflict with the installed addons.
 - `Core/Compat.lua`:
-  - controlli di disponibilità con stato `AVAILABLE`/`MISSING`/`RESTRICTED`;
-  - registrazione degli eventi protetta;
-  - wrapper per i valori segreti;
+  - availability checks with `AVAILABLE`/`MISSING`/`RESTRICTED` status;
+  - protected event registration;
+  - wrapper for secret values;
   - `GetBuildInfo`.
-- `Core/EventBus.lua`: eventi normalizzati e deduplicati, nel formato envelope del §11.3.
+- `Core/EventBus.lua`: normalized and deduplicated events, in the envelope format of §11.3.
 - `Core/Config.lua`:
-  - valori predefiniti del §11.4 (intensità 50, profondità `literary`, moduli, privacy, pacing);
-  - merge ricorsivo e validazione.
-- `Core/Diagnostics.lua` e `/au debug`: matrice delle capacità, ultimi eventi, errori intercettati. Questo serve allo spike SP-01/SP-02.
-- Per i controlli sulle API si possono usare le fonti del §22 del GDD, verificate dove possibile sui file degli addon installati.
-- Rimuovere `VociDiAzeroth` e `VociDiAzeroth_Esempio` da `AddOns` e installare `AzerothUnspoken`.
-  - Il pacchetto di esempio diventa `AzerothUnspoken_Example`.
-  - Le cartelle sorgente del prototipo restano nel progetto come archivio.
-- **Fatto quando:** l'addon nuovo ha tutte le funzioni del prototipo, i test passano adattati ai nuovi percorsi, `/au debug` produce una matrice delle capacità e questo file è aggiornato.
+  - defaults of §11.4 (intensity 50, `literary` depth, modules, privacy, pacing);
+  - recursive merge and validation.
+- `Core/Diagnostics.lua` and `/au debug`: capability matrix, latest events, intercepted errors. This serves the SP-01/SP-02 spike.
+- For the API checks, the sources of GDD §22 can be used, verified where possible against the files of the installed addons.
+- Remove `VociDiAzeroth` and `VociDiAzeroth_Esempio` from `AddOns` and install `AzerothUnspoken`.
+  - The example pack becomes `AzerothUnspoken_Example`.
+  - The prototype's source folders stay in the project as an archive.
+- **Done when:** the new addon has all the prototype's functions, the tests pass adapted to the new paths, `/au debug` produces a capability matrix and this file is updated.
 
-#### Esito di S1 e note per S2
-- **Dove sta il codice** (`AzerothUnspoken/`, ordine di caricamento nel `.toc`):
-  - `Core/Bootstrap.lua`: spazio dei nomi `NS` (globale `AzerothUnspoken`), lingue, `NS:L`, `NS:Print`, `NS:RegisterModule(nome)`. Su `ADDON_LOADED` chiama in ordine `Config:Load`, `Compat:Probe`, `EventBus:Start` e poi `OnInit` di ogni modulo, isolato da `Diagnostics:Guard`.
-  - `Core/Compat.lua`: stati `AVAILABLE`/`MISSING`/`RESTRICTED` in `Compat.caps`; `Compat.Query(fn, ...)` (stato più valori, i segreti diventano nil), `SafeCall`, `IsSecret`, `Readable`; `RegisterEvent(frame, evento, unit)` con `C_EventUtils.IsEventValid` e `pcall`; `GetBuildInfo` (riconosce `WOW_PROJECT_CAMELOT`); `IsRestricted(kind)` su `C_RestrictedActions`; `IsUnitIdentitySecret(unit)` su `C_Secrets`; `GetChatSender`, `InChatLockdown`, `GetSpellName`. Queste API compaiono nel codice di Details (`Details_Camelot.toc`) e di TRP3 installati, ma nessuna è stata provata nel client.
-  - `Core/Diagnostics.lua`: `Guard`, `Error` (al massimo 30, raggruppati), `Report`, `CapabilityMatrix`. Comandi: `/au debug`, `/au debug full` (una riga per capacità, con il dettaglio) e `/au debug trace` (stampa ogni evento normalizzato, solo per la sessione).
-  - `Core/Config.lua`: predefiniti del §11.4 più quelli del prototipo, `Merge`, `Validate` (tipi, elenchi, limiti), `Migrate` per `schemaVersion` (`Config.SCHEMA_VERSION = 1`, `Config.migrations.global/character[n]`), `Get/Set` per percorso. `NS.db` = `AzerothUnspokenDB.settings` (account), `NS.cdb` = `AzerothUnspokenCharacterDB` (memoria delle frasi, più `personality`, `memories`, `arcs`, `history` vuoti per S5–S9).
-  - `Core/EventBus.lua`: `Publish(tipo, contesto, {key, expect, fields, source})` crea l'envelope `{type, timestamp, source, context, fields}`. Deduplica per tipo e chiave, con `dedupWindow` (1 s predefinito, finestre proprie per alcuni tipi). Ha una coda di 32 eventi per le pubblicazioni annidate e scarta quelli più vecchi di 5 s. Ci si abbona con `Subscribe(tipo o "*", owner, fn)`. Sorgenti WoW → tipi: `WORLD_ENTER`, `ZONE_ENTER`, `COMBAT_START/END`, `HEALTH_CHANGED`, `PLAYER_DEATH`, `PLAYER_REVIVE`, `LEVEL_UP`, `TARGET_CHANGED`, `SPELL_SENT`, `SPELL_CAST`, `RESTRICTION_CHANGED`.
-  - `Core/ContextResolver.lua`: `NS:BuildContext` del prototipo. Usa Compat, salta il nome del bersaglio se `C_Secrets` lo nasconde e prende il nome RP da `Integration/TotalRP3.lua`.
-  - `Engine/`: `PhraseRegistry` (RegisterPack, traduzioni, statistiche), `RuleEngine` (`when`), `WeightedSelector` (memoria, peso, anti-ripetizione, `Pick`), `TemplateRenderer` (segnaposto, vocabolario, cornici). Logica invariata. Unica differenza: la finestra anti-ripetizione ha come tetto `pacing.recentPhraseWindow` (30) invece di 40.
-  - `Systems/Triggers.lua`: le reazioni di `Events.lua` del prototipo, abbonate al bus (probabilità, pause, `NS:SetEventDefaults`). S4 le sostituisce col Narrative Director.
-  - `Integration/ChatGateway.lua`: l'uscita del prototipo (`NS:Perform`, frase in attesa, `AzerothUnspoken_Speak`, `NS:Trigger`). **S2 lo trasforma nel Chat Gateway vero**: le modalità `PRIVATE`/`PREVIEW`/`CONFIRM_TO_SEND`/`AUTO_ONLY_IF_ALLOWED` sostituiscono `output.mode`, con una migrazione di schema alla versione 2.
-  - `UI/SpeakButton.lua`, `UI/SettingsFrame.lua`, `UI/Commands.lua` (`/unspoken` e `/au`, con gli stessi sottocomandi italiani e inglesi di `/voci`). `Bindings.xml`: `AZEROTHUNSPOKEN_SPEAK`.
-  - `Data/itIT/Interface.lua`, `Data/enUS/Interface.lua` (testi dell'interfaccia); `Data/*.lua` (374 frasi); `Data/Classes.lua` copiato ma **fuori dal `.toc`**: si carica senza errori, 54 frasi, da integrare in S3.
-- **Scelte che S2 deve conoscere:**
-  - La lingua è `settings.locale` e usa il codice corto dei pacchetti (`"it"`, `"en"`), non `"itIT"` come nel §11.4. `Config:NormalizeLocale` accetta anche `itIT`/`enUS`.
-  - **Uscita predefinita:** `output.mode = "self"`, cioè solo anteprima privata in chat locale, e `output.autoPublicSay = false`. Rispetto al prototipo, nulla va in chat pubblica senza una scelta dell'utente. Anche in istanza `/say` parte da solo solo con `autoPublicSay = true`. Le modalità `auto`/`emote` pubblicano ancora emote automatiche, ma solo se l'utente le sceglie: S2 deve trasformarle in proposte.
-  - Il cooldown globale è `pacing.globalCooldownSeconds` (45 s, prima 40). L'opzione "nome da TRP3" è `modules.totalRP3`. Il pulsante è in `settings.ui.showButton` e `settings.ui.buttonPos`.
-  - Il pacchetto di esempio ora ha `id = "example"`. Il motto è in `## Notes`.
-  - Il comando `/au` non è usato dagli addon installati (Details: `/details /dt /de`, TRP3: `/trp3`, QuestIT: `/qit`). Non è stato verificato contro i comandi interni di Blizzard.
-- **Test:** dalla radice del progetto, `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. Esce con codice 1 se un controllo fallisce. Copre database, generazione, anti-ripetizione, l'assenza di chat pubblica con i predefiniti, il flusso eventi → /say col tasto e i comandi (incluso `/au debug`). Esegue anche `Tests/TestCompat.lua`, `TestConfig.lua` e `TestEventBus.lua`, ognuno in un runtime nuovo, con `T.run/T.eq/T.ok` definiti nel mock. Il mock ha `MakeSecret()`, `SECRET_UNITS`, `RESTRICTIONS`, `VALID_EVENTS` (registrare un evento sconosciuto dà errore) e `GetBuildInfo` = 1.60.1/70658/16001.
-- **Non verificato senza il client** (da provare in G1): caricamento reale del `.toc` e delle SavedVariables (SP-01, SP-04); nomi, firme ed esistenza degli eventi e delle API della matrice nella build 70658 (SP-02); `debugstack`, pannello `Settings`, pulsante, binding; comportamento reale dei valori segreti e delle restrizioni; TRP3 vero.
+#### Outcome of S1 and notes for S2
+- **Where the code lives** (`AzerothUnspoken/`, load order in the `.toc`):
+  - `Core/Bootstrap.lua`: the `NS` namespace (global `AzerothUnspoken`), languages, `NS:L`, `NS:Print`, `NS:RegisterModule(name)`. On `ADDON_LOADED` it calls, in order, `Config:Load`, `Compat:Probe`, `EventBus:Start` and then the `OnInit` of each module, isolated by `Diagnostics:Guard`.
+  - `Core/Compat.lua`: `AVAILABLE`/`MISSING`/`RESTRICTED` states in `Compat.caps`; `Compat.Query(fn, ...)` (status plus values, secrets become nil), `SafeCall`, `IsSecret`, `Readable`; `RegisterEvent(frame, event, unit)` with `C_EventUtils.IsEventValid` and `pcall`; `GetBuildInfo` (recognizes `WOW_PROJECT_CAMELOT`); `IsRestricted(kind)` on `C_RestrictedActions`; `IsUnitIdentitySecret(unit)` on `C_Secrets`; `GetChatSender`, `InChatLockdown`, `GetSpellName`. These APIs appear in the code of the installed Details (`Details_Camelot.toc`) and TRP3, but none has been tested in the client.
+  - `Core/Diagnostics.lua`: `Guard`, `Error` (at most 30, grouped), `Report`, `CapabilityMatrix`. Commands: `/au debug`, `/au debug full` (one line per capability, with the detail) and `/au debug trace` (prints every normalized event, for the session only).
+  - `Core/Config.lua`: the defaults of §11.4 plus those of the prototype, `Merge`, `Validate` (types, lists, limits), `Migrate` by `schemaVersion` (`Config.SCHEMA_VERSION = 1`, `Config.migrations.global/character[n]`), `Get/Set` by path. `NS.db` = `AzerothUnspokenDB.settings` (account), `NS.cdb` = `AzerothUnspokenCharacterDB` (phrase memory, plus empty `personality`, `memories`, `arcs`, `history` for S5–S9).
+  - `Core/EventBus.lua`: `Publish(type, context, {key, expect, fields, source})` creates the envelope `{type, timestamp, source, context, fields}`. It deduplicates by type and key, with `dedupWindow` (1 s by default, own windows for some types). It has a queue of 32 events for nested publications and discards those older than 5 s. You subscribe with `Subscribe(type or "*", owner, fn)`. WoW sources → types: `WORLD_ENTER`, `ZONE_ENTER`, `COMBAT_START/END`, `HEALTH_CHANGED`, `PLAYER_DEATH`, `PLAYER_REVIVE`, `LEVEL_UP`, `TARGET_CHANGED`, `SPELL_SENT`, `SPELL_CAST`, `RESTRICTION_CHANGED`.
+  - `Core/ContextResolver.lua`: the prototype's `NS:BuildContext`. It uses Compat, skips the target's name if `C_Secrets` hides it, and takes the RP name from `Integration/TotalRP3.lua`.
+  - `Engine/`: `PhraseRegistry` (RegisterPack, translations, statistics), `RuleEngine` (`when`), `WeightedSelector` (memory, weight, anti-repetition, `Pick`), `TemplateRenderer` (placeholders, vocabulary, frames). Logic unchanged. The only difference: the anti-repetition window is capped by `pacing.recentPhraseWindow` (30) instead of 40.
+  - `Systems/Triggers.lua`: the reactions of the prototype's `Events.lua`, subscribed to the bus (probability, pauses, `NS:SetEventDefaults`). S4 replaces them with the Narrative Director.
+  - `Integration/ChatGateway.lua`: the prototype's output (`NS:Perform`, pending phrase, `AzerothUnspoken_Speak`, `NS:Trigger`). **S2 turns it into the real Chat Gateway**: the `PRIVATE`/`PREVIEW`/`CONFIRM_TO_SEND`/`AUTO_ONLY_IF_ALLOWED` modes replace `output.mode`, with a schema migration to version 2.
+  - `UI/SpeakButton.lua`, `UI/SettingsFrame.lua`, `UI/Commands.lua` (`/unspoken` and `/au`, with the same Italian and English subcommands as `/voci`). `Bindings.xml`: `AZEROTHUNSPOKEN_SPEAK`.
+  - `Data/itIT/Interface.lua`, `Data/enUS/Interface.lua` (interface texts); `Data/*.lua` (374 phrases); `Data/Classes.lua` copied but **outside the `.toc`**: it loads without errors, 54 phrases, to be integrated in S3.
+- **Choices S2 must know about:**
+  - The language is `settings.locale` and uses the short code of the packs (`"it"`, `"en"`), not `"itIT"` as in §11.4. `Config:NormalizeLocale` also accepts `itIT`/`enUS`.
+  - **Default output:** `output.mode = "self"`, that is, only a private preview in the local chat, and `output.autoPublicSay = false`. Compared with the prototype, nothing goes to public chat without a choice by the user. Even in an instance, `/say` fires on its own only with `autoPublicSay = true`. The `auto`/`emote` modes still publish automatic emotes, but only if the user chooses them: S2 must turn them into proposals.
+  - The global cooldown is `pacing.globalCooldownSeconds` (45 s, previously 40). The "name from TRP3" option is `modules.totalRP3`. The button is in `settings.ui.showButton` and `settings.ui.buttonPos`.
+  - The example pack now has `id = "example"`. The motto is in `## Notes`.
+  - The `/au` command is not used by the installed addons (Details: `/details /dt /de`, TRP3: `/trp3`, QuestIT: `/qit`). It was not checked against Blizzard's internal commands.
+- **Tests:** from the project root, `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`. It exits with code 1 if a check fails. It covers the database, generation, anti-repetition, the absence of public chat with the defaults, the events → /say flow with the key, and the commands (including `/au debug`). It also runs `Tests/TestCompat.lua`, `TestConfig.lua` and `TestEventBus.lua`, each in a fresh runtime, with `T.run/T.eq/T.ok` defined in the mock. The mock has `MakeSecret()`, `SECRET_UNITS`, `RESTRICTIONS`, `VALID_EVENTS` (registering an unknown event gives an error) and `GetBuildInfo` = 1.60.1/70658/16001.
+- **Not verified without the client** (to be tested in G1): actual loading of the `.toc` and of the SavedVariables (SP-01, SP-04); names, signatures and existence of the matrix events and APIs in build 70658 (SP-02); `debugstack`, the `Settings` panel, the button, the binding; actual behavior of secret values and restrictions; the real TRP3.
 
-### S2: narratore privato e Chat Gateway (GDD §4, §5.3, §7.7, §12)
+### S2: private narrator and Chat Gateway (GDD §4, §5.3, §7.7, §12)
 - `UI/NarratorFrame.lua`:
-  - riquadro discreto, non bloccante, spostabile;
-  - durata, opacità e dimensione del testo regolabili;
-  - cronologia recente;
-  - tasto di pausa immediata.
+  - discreet, non-blocking, movable panel;
+  - adjustable duration, opacity and text size;
+  - recent history;
+  - immediate pause key.
 - `Integration/ChatGateway.lua`:
-  - modalità `PRIVATE` (predefinita), `PREVIEW`, `CONFIRM_TO_SEND`, `AUTO_ONLY_IF_ALLOWED`;
-  - si può modificare la frase prima di inviarla;
-  - si sceglie il canale (say, emote, party...);
-  - protezione dal flood;
-  - mai aggirare la richiesta di un'azione del giocatore.
-- Ogni frase ha uno `speaker`. Finché non c'è lo schema v2, la regola provvisoria è: `say` → voce pubblica del personaggio, `emote` → narratore. In modalità privata compare nel narratore con un'etichetta per la voce.
-- Impostazioni:
-  - lingua, intensità (0–100), profondità (Naturale/Letterario/Elevato), moduli, modalità chat, pausa;
-  - wizard del primo avvio come nel §12.1, saltabile.
-- Il pulsante e il tasto "pronuncia" del prototipo diventano la conferma del Chat Gateway.
-- **Fatto quando:** con le impostazioni predefinite nulla viene pubblicato in chat senza un'azione del giocatore, le frasi appaiono nel narratore privato e i test coprono le modalità del Chat Gateway.
+  - modes `PRIVATE` (default), `PREVIEW`, `CONFIRM_TO_SEND`, `AUTO_ONLY_IF_ALLOWED`;
+  - the phrase can be edited before sending;
+  - the channel can be chosen (say, emote, party...);
+  - flood protection;
+  - never bypass the requirement of a player action.
+- Every phrase has a `speaker`. Until schema v2 exists, the provisional rule is: `say` → the character's public voice, `emote` → narrator. In private mode it appears in the narrator with a label for the voice.
+- Settings:
+  - language, intensity (0–100), depth (Natural/Literary/Elevated), modules, chat mode, pause;
+  - first-run wizard as in §12.1, skippable.
+- The prototype's button and the "speak" key become the Chat Gateway's confirmation.
+- **Done when:** with the default settings nothing is published to chat without a player action, the phrases appear in the private narrator and the tests cover the Chat Gateway modes.
 
-#### Esito di S2 e note per S3
-- **Dove sta il codice** (ordine nel `.toc`: `Integration\ChatGateway`, `Systems\Director`, `Systems\Triggers`, `UI\Widgets`, `UI\NarratorFrame`, `UI\SpeakButton`, `UI\Wizard`, `UI\SettingsFrame`, `UI\Commands`):
+#### Outcome of S2 and notes for S3
+- **Where the code lives** (order in the `.toc`: `Integration\ChatGateway`, `Systems\Director`, `Systems\Triggers`, `UI\Widgets`, `UI\NarratorFrame`, `UI\SpeakButton`, `UI\Wizard`, `UI\SettingsFrame`, `UI\Commands`):
   - `Integration/ChatGateway.lua` (`NS.Gateway`):
-    - modalità `chat.mode`: `PRIVATE` (predefinita), `PREVIEW`, `CONFIRM_TO_SEND`, `AUTO_ONLY_IF_ALLOWED`. `output.mode` non esiste più (migrazione di schema 1 → 2: `self` → `PRIVATE`, qualunque altro valore → `CONFIRM_TO_SEND`, `autoPublicSay` forzato a `false`).
-    - `PRIVATE`: solo narratore, mai proposte. `PREVIEW`: la frase pubblica diventa una proposta e il tasto "pronuncia" apre l'editor (si invia con Invio). `CONFIRM_TO_SEND`: il tasto o il pulsante inviano la proposta. `AUTO_ONLY_IF_ALLOWED`: parte da sola solo l'emote (ovunque) e `/say`/`/yell` nelle istanze, e solo con `output.autoPublicSay` (secondo consenso, acceso da `Gateway:SetMode`); il resto resta una proposta.
-    - Le voci `inner` e `npc` non diventano mai proposte. Il modulo `publicChat` spento equivale a `PRIVATE`.
-    - **L'invio da gesto del giocatore passa solo da `Gateway:PlayerAction(fn)`** (clic, tasto, comando, Invio nell'editor). `Gateway:Send` fuori da quell'ambito rifiuta tutto tranne `EMOTE` e, in istanza, `SAY`/`YELL` (motivo `needs_action`): un timer o un evento non può inviare in chat pubblica. Il codice nuovo che invia deve passare da `Gateway:Send`/`SendPending`.
-    - Anti-flood: `chat.floodSeconds` (4) tra due invii, `chat.maxPerMinute` (6), `chat.autoMaxPerMinute` (2). Proposta in attesa per `chat.pendingSeconds` (25); una nuova sostituisce la vecchia. Testo di al massimo 255 byte (UTF-8 intatto). Rifiuta con blocco chat, canale non disponibile, errore del client (registrato in diagnostica, la proposta resta).
-    - Entrate: `Gateway:Narrate(event, ctx, {auto, form, privateOnly})`, `Gateway:Propose(rec, ctx, opts)`, `Gateway:Confirm()` (= `AzerothUnspoken_Speak`, tasto e pulsante), `Gateway:Improvise()`, `NS:Trigger(event, extra)`. `NS:Perform`, `NS:SetPending`, `NS:GetPending` e il parametro `hw` non esistono più.
-  - `Engine`: `Engine:PickEntry(event, ctx, form)` restituisce `{ text, speaker, form, id, event }`; `Engine:Pick` ne restituisce solo il testo. Lo `speaker` provvisorio è assegnato in `AddPhrase`: `say` → `character`, `emote` → `narrator`; un pacchetto può indicarlo (`narrator`/`inner`/`character`/`npc`), valori sconosciuti tornano alla regola. Una frase parlata dentro una cornice è `narrator`. Le 374 frasi sono 354 parlate e 20 narrative.
-  - `UI/NarratorFrame.lua` (`NS.Narrator`): `Present(rec)`, `Notice(testo)`, `Clear`, `Refresh`, `OpenEditor`, `ToggleHistory`, `ShowTest`, `ApplySettings`, `ResetPosition`. La cronologia è solo in memoria (`ui.narrator.historySize`, 30), mai salvata, e non è `cdb.history`. Con `output.privateNarrator = false`, o se il riquadro non si può costruire, le frasi vanno nella chat locale. Solo l'intestazione e i pulsanti ricevono il mouse.
-  - `Systems/Director.lua` (`NS.Director`) è **il punto di aggancio per S4**: `Director:Evaluate(event)` → `{ allow, chanceMul, cooldownMul }` oppure `{ allow = false, reason }`. Oggi: intensità 0 = silenzio per gli eventi spontanei, probabilità = `intensità / 50`, pause = `1.5 − intensità / 100`, gli eventi in `NS.BYPASS_GLOBAL` non scendono sotto 1; pausa immediata (`NS.paused`, solo di sessione); i moduli `personal` e `world` spenti filtrano gli eventi (`Director.EVENT_MODULE`, predefinito `personal`). `Triggers.lua` chiama solo `Evaluate`. S4 ne sostituisce il corpo (gate, budget, priorità, fattori `P`/`S`, poi `R` in S6b) e può passare a `Gateway:PickRecord`/`Narrate`. Le richieste esplicite (`/au saluto`, tasto, `Trigger`) ignorano pausa e intensità, come da GDD §4.2.
-  - `Core/Config.lua`: `SCHEMA_VERSION = 2`; nuove sezioni `chat`, `ui.narrator`, `ui.wizardDone`; `Config.CHAT_MODES`, `CHAT_CHANNELS`, `presets`, `ApplyPreset`. `output.publicChatPreview` resta ma non fa nulla (l'interruttore è il modulo `publicChat`).
-  - `UI/Wizard.lua`: 7 passi come nel §12.1, il 6° solo se esiste `AddOn_TotalRP3`; "Salta" sempre disponibile; si riapre con `/au benvenuto`. `UI/SettingsFrame.lua`: lingua, intensità, profondità, pausa tra le frasi, chat e canale, narratore (durata, opacità, testo, blocco, cronologia, prova), moduli, pausa immediata. Solo `personal`, `world`, `publicChat` e `totalRP3` hanno oggi un effetto; gli altri moduli si impostano ma sono segnati con `*`.
-  - Comandi nuovi: `/au chat`, `canale`, `intensita`, `profondita`, `pausa`, `narratore [cronologia|reset|pulisci]`, `benvenuto`, `annulla`; `/au modo` è un alias di `/au chat`. Tasto nuovo in `Bindings.xml`: `AZEROTHUNSPOKEN_PAUSE` (`AzerothUnspoken_TogglePause`). `/au debug` stampa anche la riga `Chat Gateway`.
-- **Cosa deve sapere S3:**
-  - la profondità (`proseDepth`) è salvata e scelta nel wizard, ma **nessuna frase la usa ancora**: lo schema v2 deve portare `depth` sulle frasi e il contesto deve esporre `ctx.depth` (e magari `ctx.intensity`) per le condizioni;
-  - lo schema v2 deve mantenere il contratto di `PickEntry` e la semantica di `speaker` (il Gateway usa `rec.form` per scegliere `/s` o `/e` e per mostrare il testo, e `rec.speaker` per decidere se può uscire in chat);
-  - con soli 20 testi narrativi su 374 il narratore parla quasi sempre con la voce del personaggio: S3/S7 devono bilanciare le voci e dare davvero testi a `inner`;
-  - il validatore dovrebbe controllare gli `speaker` ammessi;
-  - i testi dell'interfaccia stanno in `Data/itIT/Interface.lua` e `Data/enUS/Interface.lua` (chiavi `gw_*`, `voice_*`, `wiz_*`, `chatmode_*`).
-- **Test** (dalla radice del progetto: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): oltre a quelli di S1, `TestChatGateway.lua` (modalità, modifica, canali, flood, nessun invio senza azione per ogni combinazione di modalità, forma e voce), `TestNarrator.lua` (riquadro, durata, cronologia, pausa, editor, pulsanti, impostazioni, wizard) e `TestDirector.lua` (scala dell'intensità, pausa, moduli). `TestConfig.lua` copre la migrazione 1 → 2. Il mock ora ha widget con stato (`Show/Hide`, testo, `Click()`, `TypeEnter()`, `UPDATE(dt)`, `FindWidgets`): i campi in minuscolo valgono `nil`, i metodi in maiuscolo non fanno nulla.
-- **Non verificato senza il client** (da provare in G1, vedi `docs/G1_checklist.md`):
-  - che `SendChatMessage` da un clic, da un tasto assegnato, da un comando scritto e dall'Invio nella casella di modifica sia davvero accettato per `/say` nel mondo aperto, e che i canali di gruppo, gilda e istanza funzionino;
-  - che le emote automatiche (modalità `AUTO_ONLY_IF_ALLOWED`) non siano bloccate dal client e che `/say` in istanza parta senza gesto: la regola "emote sempre, `/say` solo in istanza" è un'ipotesi prudente, non una misura;
-  - l'aspetto reale del riquadro, dei pulsanti `UIPanelButtonTemplate`, della casella di testo (`InputBoxTemplate`, con ripiego), del `ScrollingMessageFrame` della cronologia, il trascinamento, il passaggio dei clic attraverso il testo, la dissolvenza;
-  - la registrazione del pannello nell'interfaccia (`Settings.RegisterCanvasLayoutCategory`) e lo spazio dei controlli in due colonne;
-  - i nomi dei tasti in Opzioni > Comandi e che i tasti diano davvero un evento hardware;
-  - il salvataggio delle nuove impostazioni e della posizione del riquadro tra le sessioni.
+    - modes `chat.mode`: `PRIVATE` (default), `PREVIEW`, `CONFIRM_TO_SEND`, `AUTO_ONLY_IF_ALLOWED`. `output.mode` no longer exists (schema migration 1 → 2: `self` → `PRIVATE`, any other value → `CONFIRM_TO_SEND`, `autoPublicSay` forced to `false`).
+    - `PRIVATE`: narrator only, never proposals. `PREVIEW`: the public phrase becomes a proposal and the "speak" key opens the editor (send with Enter). `CONFIRM_TO_SEND`: the key or the button sends the proposal. `AUTO_ONLY_IF_ALLOWED`: only the emote fires on its own (anywhere) and `/say`/`/yell` in instances, and only with `output.autoPublicSay` (second consent, turned on by `Gateway:SetMode`); the rest stays a proposal.
+    - The `inner` and `npc` voices never become proposals. The `publicChat` module turned off is equivalent to `PRIVATE`.
+    - **Sending from a player gesture goes only through `Gateway:PlayerAction(fn)`** (click, key, command, Enter in the editor). `Gateway:Send` outside that scope refuses everything except `EMOTE` and, in an instance, `SAY`/`YELL` (reason `needs_action`): a timer or an event cannot send to public chat. New code that sends must go through `Gateway:Send`/`SendPending`.
+    - Anti-flood: `chat.floodSeconds` (4) between two sends, `chat.maxPerMinute` (6), `chat.autoMaxPerMinute` (2). A proposal stays pending for `chat.pendingSeconds` (25); a new one replaces the old one. Text of at most 255 bytes (UTF-8 intact). It refuses when chat is locked down, when the channel is not available, and on a client error (logged in diagnostics, the proposal stays).
+    - Entry points: `Gateway:Narrate(event, ctx, {auto, form, privateOnly})`, `Gateway:Propose(rec, ctx, opts)`, `Gateway:Confirm()` (= `AzerothUnspoken_Speak`, key and button), `Gateway:Improvise()`, `NS:Trigger(event, extra)`. `NS:Perform`, `NS:SetPending`, `NS:GetPending` and the `hw` parameter no longer exist.
+  - `Engine`: `Engine:PickEntry(event, ctx, form)` returns `{ text, speaker, form, id, event }`; `Engine:Pick` returns only the text. The provisional `speaker` is assigned in `AddPhrase`: `say` → `character`, `emote` → `narrator`; a pack may specify it (`narrator`/`inner`/`character`/`npc`), unknown values fall back to the rule. A phrase spoken inside a frame is `narrator`. The 374 phrases are 354 spoken and 20 narrative.
+  - `UI/NarratorFrame.lua` (`NS.Narrator`): `Present(rec)`, `Notice(text)`, `Clear`, `Refresh`, `OpenEditor`, `ToggleHistory`, `ShowTest`, `ApplySettings`, `ResetPosition`. The history is in memory only (`ui.narrator.historySize`, 30), never saved, and it is not `cdb.history`. With `output.privateNarrator = false`, or if the panel cannot be built, the phrases go to the local chat. Only the header and the buttons receive the mouse.
+  - `Systems/Director.lua` (`NS.Director`) is **the hook point for S4**: `Director:Evaluate(event)` → `{ allow, chanceMul, cooldownMul }` or `{ allow = false, reason }`. Today: intensity 0 = silence for spontaneous events, probability = `intensity / 50`, pauses = `1.5 − intensity / 100`, events in `NS.BYPASS_GLOBAL` do not go below 1; immediate pause (`NS.paused`, session only); the `personal` and `world` modules, when turned off, filter the events (`Director.EVENT_MODULE`, default `personal`). `Triggers.lua` only calls `Evaluate`. S4 replaces its body (gate, budget, priority, `P`/`S` factors, then `R` in S6b) and may switch to `Gateway:PickRecord`/`Narrate`. Explicit requests (`/au saluto`, key, `Trigger`) ignore pause and intensity, as per GDD §4.2.
+  - `Core/Config.lua`: `SCHEMA_VERSION = 2`; new sections `chat`, `ui.narrator`, `ui.wizardDone`; `Config.CHAT_MODES`, `CHAT_CHANNELS`, `presets`, `ApplyPreset`. `output.publicChatPreview` remains but does nothing (the switch is the `publicChat` module).
+  - `UI/Wizard.lua`: 7 steps as in §12.1, the 6th only if `AddOn_TotalRP3` exists; "Skip" always available; it reopens with `/au benvenuto`. `UI/SettingsFrame.lua`: language, intensity, depth, pause between phrases, chat and channel, narrator (duration, opacity, text, lock, history, test), modules, immediate pause. Only `personal`, `world`, `publicChat` and `totalRP3` have an effect today; the other modules can be set but are marked with `*`.
+  - New commands: `/au chat`, `canale`, `intensita`, `profondita`, `pausa`, `narratore [cronologia|reset|pulisci]`, `benvenuto`, `annulla`; `/au modo` is an alias of `/au chat`. New key in `Bindings.xml`: `AZEROTHUNSPOKEN_PAUSE` (`AzerothUnspoken_TogglePause`). `/au debug` also prints the `Chat Gateway` line.
+- **What S3 must know:**
+  - the depth (`proseDepth`) is saved and chosen in the wizard, but **no phrase uses it yet**: schema v2 must carry `depth` on the phrases and the context must expose `ctx.depth` (and perhaps `ctx.intensity`) for the conditions;
+  - schema v2 must keep the `PickEntry` contract and the semantics of `speaker` (the Gateway uses `rec.form` to choose `/s` or `/e` and to display the text, and `rec.speaker` to decide whether it can go out to chat);
+  - with only 20 narrative texts out of 374 the narrator almost always speaks with the character's voice: S3/S7 must balance the voices and really give texts to `inner`;
+  - the validator should check the allowed `speaker` values;
+  - the interface texts are in `Data/itIT/Interface.lua` and `Data/enUS/Interface.lua` (keys `gw_*`, `voice_*`, `wiz_*`, `chatmode_*`).
+- **Tests** (from the project root: `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): besides those of S1, `TestChatGateway.lua` (modes, editing, channels, flood, no send without an action for every combination of mode, form and voice), `TestNarrator.lua` (panel, duration, history, pause, editor, buttons, settings, wizard) and `TestDirector.lua` (intensity scale, pause, modules). `TestConfig.lua` covers the 1 → 2 migration. The mock now has widgets with state (`Show/Hide`, text, `Click()`, `TypeEnter()`, `UPDATE(dt)`, `FindWidgets`): lowercase fields are `nil`, uppercase methods do nothing.
+- **Not verified without the client** (to be tested in G1, see `docs/G1_checklist.md` (in Italian)):
+  - that `SendChatMessage` from a click, from an assigned key, from a typed command and from Enter in the edit box is really accepted for `/say` in the open world, and that the party, guild and instance channels work;
+  - that the automatic emotes (`AUTO_ONLY_IF_ALLOWED` mode) are not blocked by the client and that `/say` in an instance fires without a gesture: the rule "emote always, `/say` only in an instance" is a cautious hypothesis, not a measurement;
+  - the real look of the panel, of the `UIPanelButtonTemplate` buttons, of the text box (`InputBoxTemplate`, with fallback), of the history's `ScrollingMessageFrame`, dragging, clicks passing through the text, the fade;
+  - the registration of the panel in the interface (`Settings.RegisterCanvasLayoutCategory`) and the space of the controls in two columns;
+  - the key names in Options > Key Bindings and that the keys really give a hardware event;
+  - saving the new settings and the panel's position across sessions.
 
-### G1: prova in gioco (utente)
-L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [docs/G1_checklist.md](docs/G1_checklist.md), scritta nello step S2, e riporta errori e risultati di `/au debug`. **Gli step successivi aspettano questo esito.**
+### G1: in-game test (user)
+The user runs spikes SP-01…SP-05 of the GDD following the checklist [docs/G1_checklist.md](docs/G1_checklist.md) (in Italian), written in step S2, and reports errors and the results of `/au debug`. **The following steps wait for this outcome.**
 
-### S3: schema dati v2 e validatore (GDD §9)
-- Registro delle regole separato dai testi:
-  - `Data/Registry*.lua` per id, evento, categoria, speaker, stili, profondità, tag, peso, cooldown e condizioni;
-  - testi per lingua in `Data/itIT/`, `Data/enUS/`, con più varianti per id.
-- L'API dei pacchetti accetta il nuovo formato. Il formato vecchio si converte in caricamento oppure con uno script una tantum.
-- Migrare le 374 frasi e `Classes.lua`:
-  - assegnare speaker, registro e profondità frase per frase, con giudizio;
-  - le cornici e il vocabolario restano, come varianti.
-- Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
-- Aggiornare la guida al formato dei pacchetti.
-- Aggiungere `Tests/check_api.py`: legge `../WoW-Addons/docs/api.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
+### S3: data schema v2 and validator (GDD §9)
+- Rule registry separated from the texts:
+  - `Data/Registry*.lua` for id, event, category, speaker, styles, depth, tags, weight, cooldown and conditions;
+  - texts per language in `Data/itIT/`, `Data/enUS/`, with several variants per id.
+- The pack API accepts the new format. The old format is converted on load or with a one-off script.
+- Migrate the 374 phrases and `Classes.lua`:
+  - assign speaker, register and depth phrase by phrase, with judgment;
+  - the frames and the vocabulary stay, as variants.
+- Validator (offline tests plus `/au validate`): duplicate ids, missing languages, mismatched placeholders, unknown conditions, empty variants, maximum length per channel.
+- Update the pack format guide.
+- Add `Tests/check_api.py`: it reads `../WoW-Addons/docs/api.json` (configurable path) and reports the functions and events used by the addon that are not in the dump. There are allowed exceptions for FrameXML, such as `Settings.*`. If the dump is not there, the test is skipped with a warning.
 
-#### Esito di S3 e note per S4
-- **Cosa c'è** (guida completa: [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md)):
-  - `Engine/PhraseRegistry.lua`: schema v2. Una regola (`AUPhrase`) ha `events`, `category`, `speaker`, `form`, `styles` (il primo è `tone`), `depth`, `tags`, `weight`, `cooldown`, `when` (alias `conditions`) e `text[lingua] = { varianti }`, con varianti `{ t, ok, depth, pack }`. `Engine.byId` e `Engine.byEvent` come prima.
-  - API dei pacchetti: `RegisterPack{ registry, texts, events, styles, categories, conditions, languages, frames, vocab }`; `NS:AddTexts(lingua, mappa, pacchetto)` (alias `AddTranslations`), `NS:RegisterEvent`, `RegisterStyle`, `RegisterCategory`, `RegisterCondition`. I testi per id di altri pacchetti si aggiungono come varianti; quelli arrivati prima della regola aspettano. Il formato vecchio (`phrases` con `it=`/`en=`/`tone`/`when`) si converte in caricamento (`tone` → registro, ad esempio `eroico` → `epic`).
-  - Dati: `Data/Registry{Combat,Spells,Life,Exploration,Social,Classes}.lua` (regole), `Data/itIT/*.lua` e `Data/enUS/*.lua` (testi). Gli id sono quelli di prima. Vocabolario e cornici restano in `Vocabulary.lua` e `Frames.lua` con `it=`/`en=` (anche elenchi di varianti). `Classes.lua` è nel `.toc`: 54 frasi.
-  - Numeri: le "374 frasi" della roadmap erano 367 di base + 7 del pacchetto di esempio; ora sono 421 di base (367 + 54) + 7 = **428**. Voci di base: personaggio 306, voce interiore 96, narratore 19, NPC 0. Assegnazione di voce e registro fatta frase per frase (pensieri e osservazioni → `inner`; battute, minacce, saluti → `character`; azioni → `narrator`); le profondità sono assegnate con regole sulla lunghezza e sul registro e non frase per frase: sono da rivedere in S7.
-  - `Engine/Validator.lua` (`NS.Validator:Run{ packs }` → `{ errors, warnings, stats }`, `/au valida [tutto|pacchetto]`): id duplicati, lingue mancanti, segnaposto discordanti (con ripiego senza segnaposto), condizioni sconosciute o malformate, varianti vuote, lunghezza per canale (255 byte, caso peggiore dei segnaposto), UTF-8, voci/registri/profondità/eventi. Il database di base ha 0 errori e 0 avvisi.
-  - `Tests/check_api.py` (collegato a `run_tests.py`): legge `../WoW-Addons/docs/api.json` (`--api` o `AU_API_JSON`), salta con un avviso se manca. Eccezioni motivate per `Settings.*`, `InterfaceOptions*`, `GetSpellInfo` e `MouseIsOver` (issue #17).
-- **Cosa deve sapere S4:**
-  - `ctx.depth` e `ctx.intensity` sono nel contesto; le condizioni `depth`, `intensityMin`, `intensityMax` funzionano. Il fattore **S** del peso è `Engine.StyleFactor(frase, ctx)` (1 se la profondità combacia o manca, `Engine.DEPTH_MISMATCH` = 0,3 altrimenti; mai esclusione) ed è già dentro `Score`: il StyleResolver di S4 deve **aggiungere i registri** (`p.styles`), non rifare la profondità.
-  - `PickEntry` restituisce anche `category`, `style` e `variant`. Le categorie sono quelle degli eventi (`combat`, `spellcraft`, `life`, `exploration`, `reflection`, `social`): `Engine.events[evento].category` e `Engine.CATEGORIES` per i budget.
-  - Contratto invariato: `rec.form` e `rec.speaker`. Solo la voce `character` si può raccontare in una cornice; un pensiero (`inner`) esce solo in forma `say`, e non diventa mai una proposta in chat.
-  - Una condizione malformata vale "falsa" (`Engine.SafeMatch`); la scelta non si interrompe.
-  - Le varianti non si ripetono di fila (`cdb.memory.variant`).
-  - Una lingua registrata da un pacchetto dopo il caricamento resta quella scelta (chiude l'issue #7).
-- **Aperte da S3:** #17 (`MouseIsOver`, `bug` `in-game`), #18 (pochi testi del narratore, una sola variante per frase: `content`, per S7), #19 (limite di 255 byte duplicato tra Gateway e validatore, `enhancement`).
-- **Test:** `.venv\Scripts\python -I -X utf8 Tests
-un_tests.py AzerothUnspoken` esegue anche `TestSchema.lua` (registro, varianti, profondità, conversione del formato vecchio, estensioni, lingue) e `TestValidator.lua` (ogni controllo con un pacchetto sbagliato apposta, `/au valida`), la prova UTF-8/LF dei file e `check_api.py`.
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 17–19): che i file dei testi siano letti come UTF-8 (accenti giusti), che `/au valida` dia 428 frasi e 0 errori nel client vero, che la profondità cambi la sensazione dei testi. L'assenza di `MouseIsOver` e il resto di `check_api.py` si riferiscono al dump (build 70170), non al build 70658.
-
+#### Outcome of S3 and notes for S4
+- **What is there** (full guide: [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md)):
+  - `Engine/PhraseRegistry.lua`: schema v2. A rule (`AUPhrase`) has `events`, `category`, `speaker`, `form`, `styles` (the first is `tone`), `depth`, `tags`, `weight`, `cooldown`, `when` (alias `conditions`) and `text[language] = { variants }`, with variants `{ t, ok, depth, pack }`. `Engine.byId` and `Engine.byEvent` as before.
+  - Pack API: `RegisterPack{ registry, texts, events, styles, categories, conditions, languages, frames, vocab }`; `NS:AddTexts(language, map, pack)` (alias `AddTranslations`), `NS:RegisterEvent`, `RegisterStyle`, `RegisterCategory`, `RegisterCondition`. Texts for ids of other packs are added as variants; those that arrive before the rule wait. The old format (`phrases` with `it=`/`en=`/`tone`/`when`) is converted on load (`tone` → register, for example `eroico` → `epic`).
+  - Data: `Data/Registry{Combat,Spells,Life,Exploration,Social,Classes}.lua` (rules), `Data/itIT/*.lua` and `Data/enUS/*.lua` (texts). The ids are the same as before. Vocabulary and frames stay in `Vocabulary.lua` and `Frames.lua` with `it=`/`en=` (also lists of variants). `Classes.lua` is in the `.toc`: 54 phrases.
+  - Numbers: the roadmap's "374 phrases" were 367 base + 7 from the example pack; now there are 421 base (367 + 54) + 7 = **428**. Base voices: character 306, inner voice 96, narrator 19, NPC 0. Voice and register assignment was done phrase by phrase (thoughts and observations → `inner`; quips, threats, greetings → `character`; actions → `narrator`); depths are assigned with rules based on length and register and not phrase by phrase: they are to be reviewed in S7.
+  - `Engine/Validator.lua` (`NS.Validator:Run{ packs }` → `{ errors, warnings, stats }`, `/au valida [tutto|pacchetto]`): duplicate ids, missing languages, mismatched placeholders (with fallback without placeholders), unknown or malformed conditions, empty variants, length per channel (255 bytes, worst case of the placeholders), UTF-8, voices/registers/depths/events. The base database has 0 errors and 0 warnings.
+  - `Tests/check_api.py` (linked to `run_tests.py`): reads `../WoW-Addons/docs/api.json` (`--api` or `AU_API_JSON`), skips with a warning if it is missing. Justified exceptions for `Settings.*`, `InterfaceOptions*`, `GetSpellInfo` and `MouseIsOver` (issue #17).
+- **What S4 must know:**
+  - `ctx.depth` and `ctx.intensity` are in the context; the `depth`, `intensityMin`, `intensityMax` conditions work. The **S** factor of the weight is `Engine.StyleFactor(phrase, ctx)` (1 if the depth matches or is missing, `Engine.DEPTH_MISMATCH` = 0.3 otherwise; never an exclusion) and is already inside `Score`: S4's StyleResolver must **add the registers** (`p.styles`), not redo the depth.
+  - `PickEntry` also returns `category`, `style` and `variant`. The categories are those of the events (`combat`, `spellcraft`, `life`, `exploration`, `reflection`, `social`): `Engine.events[event].category` and `Engine.CATEGORIES` for the budgets.
+  - Contract unchanged: `rec.form` and `rec.speaker`. Only the `character` voice can be told in a frame; a thought (`inner`) goes out only in `say` form, and never becomes a chat proposal.
+  - A malformed condition counts as "false" (`Engine.SafeMatch`); the selection is not interrupted.
+  - Variants are not repeated back to back (`cdb.memory.variant`).
+  - A language registered by a pack after loading stays the chosen one (closes issue #7).
+- **Opened by S3:** #17 (`MouseIsOver`, `bug` `in-game`), #18 (few narrator texts, only one variant per phrase: `content`, for S7), #19 (255-byte limit duplicated between Gateway and validator, `enhancement`).
+- **Tests:** `.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken` also runs `TestSchema.lua` (registry, variants, depth, conversion of the old format, extensions, languages) and `TestValidator.lua` (each check with a deliberately wrong pack, `/au valida`), the UTF-8/LF check of the files and `check_api.py`.
+- **Not verified without the client** (added to `docs/G1_checklist.md`, steps 17–19): that the text files are read as UTF-8 (correct accents), that `/au valida` gives 428 phrases and 0 errors in the real client, that depth changes the feel of the texts. The absence of `MouseIsOver` and the rest of `check_api.py` refer to the dump (build 70170), not to build 70658.
 ### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
-- Gate di opportunità guidato dall'intensità; budget per categoria; priorità del §10; silenzio come esito valido; niente cascate di messaggi.
-- Peso `W = B × C × P × N × S`. Gli hook `P` (personalità) e `S` (stile) partono neutri e si riempiono negli step S5 e S2/S3.
-- StyleResolver: registri ammessi per evento, zona, voce e profondità, con un ripiego neutro.
-- Sospensione durante combattimenti impegnativi e schermate invasive.
-- Test con seme RNG controllato: distribuzione, cooldown, ripiego, nessun duplicato nella finestra.
+- Opportunity gate driven by intensity; budget per category; priorities from §10; silence as a valid outcome; no message cascades.
+- Weight `W = B × C × P × N × S`. The `P` (personality) and `S` (style) hooks start neutral and are filled in during steps S5 and S2/S3.
+- StyleResolver: registers allowed per event, zone, voice and depth, with a neutral fallback.
+- Suspension during demanding fights and invasive screens.
+- Tests with a controlled RNG seed: distribution, cooldown, fallback, no duplicates within the window.
 
-#### Esito di S4 e note per S5
-- **Dove sta il codice** (ordine nel `.toc`: `Engine\StyleResolver` prima di `WeightedSelector`; `Engine\Pacing` e `Engine\NarrativeDirector` dopo `Validator`):
-  - `Engine/NarrativeDirector.lua` (`NS.NarrativeDirector`): `PRIORITY` (esplicito 5, dialogo 4, eccezionale 3, memoria 2, atmosfera 1), `EVENT_PRIORITY`, `Priority(evento)`, `NS:SetEventPriority(evento, livello)`; `Scale(intensità)` (probabilità × intensità/50, pause × (1,5 − intensità/100)); `Gate(evento, ctx, now)` → `AUVerdict { allow, reason, chanceMul, cooldownMul, priority, category }`; `Roll` (dado con `NS:GetChance`); `HighDemand(ctx)` (in combattimento con boss, in incursione, élite in istanza); `Order`; agganci `SetRhythm(nome, fn(evento, ctx) → chanceMul, cooldownMul)` e `SetDemandCheck(nome, fn(ctx) → bool)`.
-  - `Engine/Pacing.lua` (`NS.Pacing`): `MOMENT` (4 s tra due interventi qualsiasi, anche espliciti), pausa globale (`pacing.globalCooldownSeconds`), `CATEGORY_COOLDOWN`, `NS.EVENT_COOLDOWN`, `BUDGET` per categoria in `WINDOW` (600 s) × intensità/50. Gli eventi eccezionali saltano globale, categoria e budget, non il momento. Stato solo in memoria (nessuna migrazione). `Record`, `Note` (esplicito: apre il momento, niente budget), `Status`, `Reset`.
-  - `Systems/Director.lua`: `Offer(evento, extra)` mette in coda; dopo `ARBITRATION` (0,1 s) `Resolve` prova i candidati in ordine di priorità (contesto → `Evaluate` → dado → `Gateway:Narrate`): parla il primo che produce una frase, gli altri tacciono. `Evaluate(evento, ctx)` è il gate (forma S2 invariata, più `priority`/`category`). `Director.log` e `Director:Status()` → riga **Narrative Director** in `/au debug`. `Triggers.Fire` = `Director:Offer`.
-  - `Engine/WeightedSelector.lua`: `W = B × C × P × N × S × R` in `Engine.Factors(entry, lastTone, ctx, profile)`; `Engine:Weight(frase, evento, ctx)` restituisce la scomposizione. Agganci `Engine:SetWeightHook("C"|"P"|"R", nome, fn(entry, ctx) → numero ≥ 0)`: i valori dello stesso fattore si moltiplicano, uno che sbaglia vale 1 e va in diagnostica, 0 esclude la frase.
-  - `Engine/StyleResolver.lua` (`NS.StyleResolver`): `Resolve(evento, ctx)` → profilo (`allowed` per evento, `preferred` da `ctx.mood` e `ctx.depth`), `Affinity(frase, profilo)` (×0,5 fuori dall'evento, +25% per preferenza, contando anche la voce, al massimo tre), `Compatible(registriCornice, registriFrase)` (cornici con `styles` solo con registri uguali o vicini), `SetModifier(nome, fn(profilo, ctx))` con `StyleResolver.Prefer`. API dei pacchetti: `RegisterEventStyles`, `RegisterMoodStyles`.
-  - `Core/Compat.lua`: `InvasiveScreen()` e le capacità `api:InCinematic`, `api:IsInCinematicScene`. Il mock ha `InCinematic` (`P.cinematic`).
-- **Cosa deve sapere S5:**
-  - la personalità entra nel peso con `Engine:SetWeightHook("P", "soul", function(frase, ctx) ... end)`: leggere i tag di affinità delle frasi (`frase.tags`) e restituire un moltiplicatore; per i tratti esclusivi ("mai contraddetti") restituire **0**, che esclude la frase;
-  - il temperamento può spostare i registri con `NS.StyleResolver:SetModifier("soul", function(profilo, ctx) NS.StyleResolver.Prefer(profilo, "ceremonial") end)` (esempio del GDD §5.2: misericordioso → solenne);
-  - il contesto non ha ancora i tratti: esporli in `ctx` (per esempio `ctx.soul`) in `NS:BuildContext`, così condizioni e agganci leggono la stessa fonte;
-  - le frasi e i loro `tags` vengono da S3: oggi nessuna frase ha tag di personalità (S7 li scriverà);
-  - non toccare `Systems/Director.lua` per la personalità: tutto passa dagli agganci.
-- **Per S6, S6b, S6c:** S6 registra i richiami di memoria come eventi con `NS:SetEventPriority(evento, "memory")`; S6b usa l'aggancio `R`; S6c usa l'aggancio `C`, `SetRhythm` (ritmo per tipo di istanza) e `SetDemandCheck` (`ENCOUNTER_START`, oggi un boss di dungeon senza classificazione `worldboss` non sospende il narratore).
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestNarrativeDirector.lua` (151 controlli, seme fisso) più gli altri; `TestDirector.lua` resta valido. I test che aspettano una frase spontanea devono far passare la finestra di arbitraggio (`ADVANCE`).
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 27–31): se il ritmo è piacevole (budget e pause sono ipotesi), se `InCinematic`/`IsInCinematicScene` esistono e rispondono nel build 70658, se `CinematicFrame`/`MovieFrame` sono i frame giusti, se boss ed élite vengono riconosciuti (`UnitClassification`).
+#### Outcome of S4 and notes for S5
+- **Where the code lives** (order in the `.toc`: `Engine\StyleResolver` before `WeightedSelector`; `Engine\Pacing` and `Engine\NarrativeDirector` after `Validator`):
+  - `Engine/NarrativeDirector.lua` (`NS.NarrativeDirector`): `PRIORITY` (explicit 5, dialogue 4, exceptional 3, memory 2, ambient 1), `EVENT_PRIORITY`, `Priority(event)`, `NS:SetEventPriority(event, level)`; `Scale(intensity)` (probability × intensity/50, pauses × (1.5 − intensity/100)); `Gate(event, ctx, now)` → `AUVerdict { allow, reason, chanceMul, cooldownMul, priority, category }`; `Roll` (die roll with `NS:GetChance`); `HighDemand(ctx)` (in combat with a boss, in a raid, elite in an instance); `Order`; hooks `SetRhythm(name, fn(event, ctx) → chanceMul, cooldownMul)` and `SetDemandCheck(name, fn(ctx) → bool)`.
+  - `Engine/Pacing.lua` (`NS.Pacing`): `MOMENT` (4 s between any two interventions, explicit ones included), global pause (`pacing.globalCooldownSeconds`), `CATEGORY_COOLDOWN`, `NS.EVENT_COOLDOWN`, `BUDGET` per category in `WINDOW` (600 s) × intensity/50. Exceptional events skip the global pause, the category and the budget, but not the moment. State is in memory only (no migration). `Record`, `Note` (explicit: opens the moment, no budget), `Status`, `Reset`.
+  - `Systems/Director.lua`: `Offer(event, extra)` queues; after `ARBITRATION` (0.1 s) `Resolve` tries the candidates in priority order (context → `Evaluate` → die roll → `Gateway:Narrate`): the first one that produces a line speaks, the others stay silent. `Evaluate(event, ctx)` is the gate (S2 shape unchanged, plus `priority`/`category`). `Director.log` and `Director:Status()` → **Narrative Director** row in `/au debug`. `Triggers.Fire` = `Director:Offer`.
+  - `Engine/WeightedSelector.lua`: `W = B × C × P × N × S × R` in `Engine.Factors(entry, lastTone, ctx, profile)`; `Engine:Weight(phrase, event, ctx)` returns the breakdown. Hooks `Engine:SetWeightHook("C"|"P"|"R", name, fn(entry, ctx) → number ≥ 0)`: values for the same factor are multiplied, a failing one counts as 1 and goes to diagnostics, 0 excludes the phrase.
+  - `Engine/StyleResolver.lua` (`NS.StyleResolver`): `Resolve(event, ctx)` → profile (`allowed` per event, `preferred` from `ctx.mood` and `ctx.depth`), `Affinity(phrase, profile)` (×0.5 outside the event, +25% per preference, counting the voice too, at most three), `Compatible(frameRegisters, phraseRegisters)` (frames with `styles` only with equal or close registers), `SetModifier(name, fn(profile, ctx))` with `StyleResolver.Prefer`. Pack API: `RegisterEventStyles`, `RegisterMoodStyles`.
+  - `Core/Compat.lua`: `InvasiveScreen()` and the capabilities `api:InCinematic`, `api:IsInCinematicScene`. The mock has `InCinematic` (`P.cinematic`).
+- **What S5 needs to know:**
+  - personality enters the weight with `Engine:SetWeightHook("P", "soul", function(phrase, ctx) ... end)`: read the phrases' affinity tags (`phrase.tags`) and return a multiplier; for exclusive traits ("never contradicted") return **0**, which excludes the phrase;
+  - temperament can shift the registers with `NS.StyleResolver:SetModifier("soul", function(profile, ctx) NS.StyleResolver.Prefer(profile, "ceremonial") end)` (GDD §5.2 example: merciful → solemn);
+  - the context does not have the traits yet: expose them in `ctx` (for example `ctx.soul`) in `NS:BuildContext`, so that conditions and hooks read the same source;
+  - the phrases and their `tags` come from S3: today no phrase has personality tags (S7 will write them);
+  - do not touch `Systems/Director.lua` for personality: everything goes through the hooks.
+- **For S6, S6b, S6c:** S6 registers memory recalls as events with `NS:SetEventPriority(event, "memory")`; S6b uses the `R` hook; S6c uses the `C` hook, `SetRhythm` (rhythm by instance type) and `SetDemandCheck` (`ENCOUNTER_START`; today a dungeon boss without a `worldboss` classification does not suspend the narrator).
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestNarrativeDirector.lua` (151 checks, fixed seed) plus the others; `TestDirector.lua` remains valid. Tests that expect a spontaneous phrase must let the arbitration window pass (`ADVANCE`).
+- **Not verified without the client** (added to `docs/G1_checklist.md` (in Italian), steps 27–31): whether the rhythm feels pleasant (budgets and pauses are guesses), whether `InCinematic`/`IsInCinematicScene` exist and respond in build 70658, whether `CinematicFrame`/`MovieFrame` are the right frames, whether bosses and elites are recognized (`UnitClassification`).
 
-### S5: Character Soul e Total RP 3 (GDD §7.1, §8)
-- Tratti opt-in: temperamento, morale, curiosità, fede, motivazione, ironia, argomenti da evitare, voce interiore. Archetipi pronti e profilo neutro.
-- Tag di affinità sulle frasi; i tratti esclusivi non vengono mai contraddetti.
-- Interfaccia del profilo.
-- Adattatore TRP3:
-  - legge solo dati pubblici del proprio profilo, con consenso;
-  - si disattiva se le API mancano o sono cambiate;
-  - priorità: scelta esplicita > TRP3 > dati di gioco > valori neutri.
+### S5: Character Soul and Total RP 3 (GDD §7.1, §8)
+- Opt-in traits: temperament, morality, curiosity, faith, motivation, irony, topics to avoid, inner voice. Ready-made archetypes and a neutral profile.
+- Affinity tags on phrases; exclusive traits are never contradicted.
+- Profile interface.
+- TRP3 adapter:
+  - reads only public data from the player's own profile, with consent;
+  - disables itself if the APIs are missing or have changed;
+  - priority: explicit choice > TRP3 > game data > neutral values.
 
-#### Esito di S5 e note per S6, S6b, S6c
-- **Dove sta il codice** (nel `.toc`: `Engine\Traits` prima di `Validator`; `Systems\Personality` prima di `Director`; `UI\ProfileFrame` prima di `SettingsFrame`; `Data\RegistrySoul` e i testi `Soul.lua`):
-  - `Engine/Traits.lua` (`NS.Traits`), **il modello riusabile**: `Traits.Define{ id, kind = "choice"|"scale"|"set", values | min/max/bands, tag, exclusive }`; un profilo è `{ [tratto] = valore }` con i soli tratti impostati (assente = "non so"); `Sanitize`, `Copy`, `IsEmpty`, `IsSet`, `Has`, `Band`; `Merge(livelli)` (per tratto vince il primo livello che lo imposta, gli insiemi si uniscono); tag `ParseTag`/`CheckTag`/`Evaluate(tags, profilo, ambito)` → fattore (0 = esclusa); `RegisterScope(nome)`; `Name`, `ValueName`, `Describe`, `ParseValue`, `Lower` (minuscole solo ASCII).
-  - `Systems/Personality.lua` (`NS.Personality`): gli otto tratti (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `avoid`, `innerVoice`), `archetypes` (`RegisterArchetype`), `Profile()` (dati salvati in `cdb.personality = { version, archetype, traits, trp3 }`), `Sanitize`, `Effective()` → `traits, sources` (scelta `explicit` > `trp3` > `game`; in cache, `Refresh()` la invalida), `SetArchetype`, `SetTrait`, `ToggleTopic`, `Reset`, `SetTRP3Consent`, `RegisterGameLayer(nome, fn)`, `Factor(frase, ctx)` (il fattore `P`), `ExcludedBy`, `Summary`, `Command`. Aggancia `Engine:SetWeightHook("P", "soul", ...)`, `StyleResolver:SetModifier("soul", ...)` e la condizione `soul`. `ctx.soul` = profilo effettivo (tabella condivisa, sola lettura) in `NS:BuildContext`.
-  - `Integration/TotalRP3.lua`: oltre a `GetFirstName`, `HasTraitConsent`, `ReadPsycho` (solo `characteristics/PS` del proprio profilo, forma controllata) e `GetSoulTraits` (mappa `PSYCHO_MAP` + soglia dal centro). Capacità `integration:totalRP3:traits`. Nessun altro file tocca TRP3.
-  - `UI/ProfileFrame.lua` (`NS.ProfileFrame`: `Open`, `Close`, `Toggle`, `Refresh`), comando `/au anima` (alias `soul`, `personalita`, `profilo`), riga nel pannello delle impostazioni.
-  - `Data/RegistrySoul.lua` + `Data/itIT/Soul.lua` + `Data/enUS/Soul.lua`: pacchetto `base_soul`, 16 frasi di esempio. Le frasi di base (421) **non hanno ancora tag di affinità**: li scriverà S7.
-  - SavedVariables **schema 3** (`Config.SCHEMA_VERSION`); migrazione 3 del personaggio; `Validator` segnala `badTag`.
-- **Tag di affinità** (nei `tags` della regola; senza due punti sono descrittivi): `tratto:valore` morbido (×1,6 combacia / ×0,6 altro valore / 1 non impostato, limite 0,15–3); `req:tratto:valore` (esce solo se il profilo lo dice, anche il neutro la esclude), `not:tratto:valore` e `topic:argomento` rigidi. Regola per S7: una frase che **afferma** qualcosa del personaggio usa `req:`, una che lo dice con un tono usa l'affinità morbida. Voce interiore spenta esclude gli `inner`; l'ironia pesa i registri `ironic` senza tag `irony:`. Dettagli in `PACK_FORMAT.md` e [ADR 0016](docs/adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md).
-- **Cosa deve sapere S6b (relazioni):** gli assi sono scale di `Traits` (`Traits.Define{ id = "trust", kind = "scale", min = -100, max = 100, bands = ... }`); le etichette derivate possono usare le fasce. Il fattore `R` è libero (S5 non lo tocca): `Engine:SetWeightHook("R", ...)`. L'unione di più fonti è `Traits.Merge`.
-- **Cosa deve sapere S6c (interlocutore):** il profilo dell'interlocutore (`temperament`, `morality`, `goals`, `speech`) può riusare le definizioni di S5 (`Traits.defs.temperament`...) o aggiungerne; i tag che lo riguardano si scrivono con un ambito (`Traits.RegisterScope("other")`, tag `other.temperament:gruff`) e si valutano con `Traits.Evaluate(frase.tags, ctx.other_traits, "other")` dentro l'aggancio `C`. Il livello "dati di gioco" del Soul è pronto (`Personality:RegisterGameLayer`) ma **vuoto**: razza, fazione e classe non decidono il carattere (GDD §5.4); S6c può aggiungere tendenze deboli. Per i dati pubblici di un altro giocatore serve un **consenso a parte** (ADR 0004): l'adattatore oggi non crea mai `Player` di altri (`CreateFromCharacterID` non si chiama).
-- **Per S6:** nessuna novità; la memoria può leggere `ctx.soul` (per esempio un ricordo di morte non si richiama se `avoid.death`: il filtro rigido vale per ogni frase con `topic:death`, ma un richiamo di memoria che non passa dalle frasi deve controllare `ctx.soul.avoid` da sé).
-- **Trovato e non risolto fuori da S5:** `string.lower` altera le lettere accentate (UTF-8) con alcune impostazioni locali (provato in lupa): `UI/Commands.lua` e `Core/ContextResolver.lua` lo usano su testo che può contenerne (alias come `intensità`); S5 usa `Traits.Lower`. Aperta come issue #26. Altra issue di S5: #27 (etichettare le frasi di base con i tag di affinità, per S7).
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestSoul.lua` (1.500 controlli circa: modello dei tratti, profilo neutro (P = 1 per ogni frase senza `req:`), archetipi, fattore P e distribuzione con seme fisso, filtri rigidi con 40 semi e un profilo completo, condizione `soul`, registri, TRP3 presente/assente/API cambiata/dati malformati, priorità delle fonti, migrazione dello schema 2, dati rovinati e futuri, comando, finestra, chiavi IT/EN, validatore). `run_tests.py` ora si aspetta 444 frasi e schema 3; il controllo del `/say` automatico in istanza cerca finché ne parte uno (con il seme fisso la sequenza cambia a ogni frase aggiunta).
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 32–38): l'aspetto e lo spazio della finestra del profilo; che il cambio di profilo si senta nelle frasi (con 16 sole frasi di esempio la differenza è piccola); **Total RP 3 vero**: che `GetInfo("characteristics/PS")` dia i tratti, che gli ID dei tratti predefiniti (`PSYCHO_MAP`) e la scala 0–20 siano quelli del TRP3 in uso; i fattori e le soglie sono ipotesi.
+#### Outcome of S5 and notes for S6, S6b, S6c
+- **Where the code lives** (in the `.toc`: `Engine\Traits` before `Validator`; `Systems\Personality` before `Director`; `UI\ProfileFrame` before `SettingsFrame`; `Data\RegistrySoul` and the `Soul.lua` texts):
+  - `Engine/Traits.lua` (`NS.Traits`), **the reusable model**: `Traits.Define{ id, kind = "choice"|"scale"|"set", values | min/max/bands, tag, exclusive }`; a profile is `{ [trait] = value }` with only the traits that are set (absent = "unknown"); `Sanitize`, `Copy`, `IsEmpty`, `IsSet`, `Has`, `Band`; `Merge(layers)` (for each trait the first layer that sets it wins, sets are merged); tags `ParseTag`/`CheckTag`/`Evaluate(tags, profile, scope)` → factor (0 = excluded); `RegisterScope(name)`; `Name`, `ValueName`, `Describe`, `ParseValue`, `Lower` (lowercase for ASCII only).
+  - `Systems/Personality.lua` (`NS.Personality`): the eight traits (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `avoid`, `innerVoice`), `archetypes` (`RegisterArchetype`), `Profile()` (saved data in `cdb.personality = { version, archetype, traits, trp3 }`), `Sanitize`, `Effective()` → `traits, sources` (`explicit` > `trp3` > `game` choice; cached, `Refresh()` invalidates it), `SetArchetype`, `SetTrait`, `ToggleTopic`, `Reset`, `SetTRP3Consent`, `RegisterGameLayer(name, fn)`, `Factor(phrase, ctx)` (the `P` factor), `ExcludedBy`, `Summary`, `Command`. It hooks `Engine:SetWeightHook("P", "soul", ...)`, `StyleResolver:SetModifier("soul", ...)` and the `soul` condition. `ctx.soul` = effective profile (shared table, read-only) in `NS:BuildContext`.
+  - `Integration/TotalRP3.lua`: besides `GetFirstName`, `HasTraitConsent`, `ReadPsycho` (only `characteristics/PS` of the player's own profile, controlled shape) and `GetSoulTraits` (`PSYCHO_MAP` map + threshold from the center). Capability `integration:totalRP3:traits`. No other file touches TRP3.
+  - `UI/ProfileFrame.lua` (`NS.ProfileFrame`: `Open`, `Close`, `Toggle`, `Refresh`), command `/au anima` (aliases `soul`, `personalita`, `profilo`), row in the settings panel.
+  - `Data/RegistrySoul.lua` + `Data/itIT/Soul.lua` + `Data/enUS/Soul.lua`: pack `base_soul`, 16 example phrases. The base phrases (421) **do not have affinity tags yet**: S7 will write them.
+  - SavedVariables **schema 3** (`Config.SCHEMA_VERSION`); character migration 3; `Validator` reports `badTag`.
+- **Affinity tags** (in the rule's `tags`; without a colon they are descriptive): soft `trait:value` (×1.6 matches / ×0.6 other value / 1 not set, clamped to 0.15–3); `req:trait:value` (drops out only if the profile says so; even the neutral profile excludes it), `not:trait:value` and `topic:topic` are hard. Rule for S7: a phrase that **asserts** something about the character uses `req:`, one that merely says it in a certain tone uses soft affinity. With the inner voice off, `inner` phrases are excluded; irony weights `ironic` registers without `irony:` tags. Details in `PACK_FORMAT.md` and [ADR 0016](docs/adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md).
+- **What S6b (relationships) needs to know:** the axes are `Traits` scales (`Traits.Define{ id = "trust", kind = "scale", min = -100, max = 100, bands = ... }`); derived labels can use the bands. The `R` factor is free (S5 does not touch it): `Engine:SetWeightHook("R", ...)`. Merging several sources is `Traits.Merge`.
+- **What S6c (interlocutor) needs to know:** the interlocutor's profile (`temperament`, `morality`, `goals`, `speech`) can reuse the S5 definitions (`Traits.defs.temperament`...) or add its own; tags that concern it are written with a scope (`Traits.RegisterScope("other")`, tag `other.temperament:gruff`) and evaluated with `Traits.Evaluate(phrase.tags, ctx.other_traits, "other")` inside the `C` hook. The Soul's "game data" layer is ready (`Personality:RegisterGameLayer`) but **empty**: race, faction and class do not decide character (GDD §5.4); S6c may add weak tendencies. Another player's public data needs a **separate consent** (ADR 0004): today the adapter never creates `Player` objects for others (`CreateFromCharacterID` is not called).
+- **For S6:** nothing new; memory can read `ctx.soul` (for example a death memory is not recalled if `avoid.death`: the hard filter applies to every phrase with `topic:death`, but a memory recall that does not go through phrases must check `ctx.soul.avoid` itself).
+- **Found and not fixed outside S5:** `string.lower` alters accented letters (UTF-8) with some locale settings (tested in lupa): `UI/Commands.lua` and `Core/ContextResolver.lua` use it on text that may contain them (aliases such as `intensità`); S5 uses `Traits.Lower`. Opened as issue #26. Another S5 issue: #27 (label the base phrases with affinity tags, for S7).
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestSoul.lua` (about 1,500 checks: trait model, neutral profile (P = 1 for every phrase without `req:`), archetypes, P factor and distribution with a fixed seed, hard filters with 40 seeds and a full profile, `soul` condition, registers, TRP3 present/absent/API changed/malformed data, source priority, schema 2 migration, corrupted and future data, command, window, IT/EN keys, validator). `run_tests.py` now expects 444 phrases and schema 3; the check of the automatic `/say` in an instance searches until one is sent (with the fixed seed the sequence changes with every phrase added).
+- **Not verified without the client** (added to `docs/G1_checklist.md` (in Italian), steps 32–38): the look and space of the profile window; that a profile change is audible in the phrases (with only 16 example phrases the difference is small); **real Total RP 3**: that `GetInfo("characteristics/PS")` gives the traits, that the IDs of the default traits (`PSYCHO_MAP`) and the 0–20 scale are those of the TRP3 in use; the factors and thresholds are guesses.
 
-### S6: Living Memory e Diario (GDD §7.4, §11.5, §12.2)
-- Tre livelli: episodico, persistente, flag narrativi.
-- Prima visita, ritorno, ultima visita finita male, morti, livelli.
-- Al massimo 500 ricordi, con compattazione, ricordi permanenti e reset.
-- Il richiamo avviene solo se esiste un ricordo vero: aggiungere condizioni come `repeatVisit` e `lastVisitBad`.
-- `UI/JournalFrame.lua`: ricordi, luoghi e flag, con cancellazione selettiva ed esportazione testuale manuale.
+### S6: Living Memory and Journal (GDD §7.4, §11.5, §12.2)
+- Three levels: episodic, persistent, narrative flags.
+- First visit, return, last visit ended badly, deaths, levels.
+- At most 500 memories, with compaction, permanent memories and reset.
+- Recall happens only if a real memory exists: add conditions such as `repeatVisit` and `lastVisitBad`.
+- `UI/JournalFrame.lua`: memories, places and flags, with selective deletion and manual text export.
 
-#### Esito di S6 e note per S6b, S6c, S7
-- **Dove sta il codice** (nel `.toc`: `Systems\LivingMemory` dopo `Systems\Triggers`; `UI\JournalFrame` prima di `SettingsFrame`; `Data\RegistryMemory` e i testi `Memory.lua` dopo quelli del Soul):
-  - `Systems/LivingMemory.lua` (`NS.LivingMemory`, modulo `memory`): `Record{ kind, zone, importance, tags, source, perm, level, t }` (solo questi campi), `RegisterKind(tipo, importanza)`, `Delete`, `SetPermanent`, `ForgetPlace`, `Reset(all|memories|ordinary|places|flags)`, `SetFlag`/`ClearFlag`/`HasFlag`/`FlagNames`, `EnterZone`/`LeaveZone`/`OnDeath`/`OnLevel`, `Context(ctx)` (= `ctx.memory`), `RegisterRecall(evento, verifica)`, `List`/`Places`/`SessionList`/`Stats`, `ExportText`, `Describe`, `Status`, `Command`. Costanti in testa al file (`MAX_ORDINARY` 500, `COMPACT_TO` 450, `MAX_PERMANENT` 200, `MAX_PLACES` 300, `PERSIST_MIN` 2, `VISIT_GAP` 600 s, `RETURN_GAP` un giorno, `FLIGHT_HP` 0,35, `DEATH_GAP` 60 s).
-  - Dati in `cdb.memories = { version, nextId, entries, places, flags, stats }`; `memories.version` (1) ha migrazioni proprie (`LM.migrations[n]`); `Sanitize` ripulisce all'avvio; versione più nuova = sola lettura. **Schema delle SavedVariables 4** (migrazione 4 del personaggio).
-  - **Ricordi**: prima visita (3, capitale 4), ritorno (2 dopo un giorno, 1 e solo di sessione se prima), morte (3, la prima 4, con flag `first_death`), fuga (3), livello (2, ogni dieci 4 con flag `level_<n>`). Gli importanti si salvano (`PERSIST_MIN`), gli altri restano nell'episodico di sessione (id negativo, al massimo 60). I luoghi (`memories.places[zona]`) tengono i conteggi e l'esito della visita (`prev` = com'era finita la precedente) e sono indipendenti dalla compattazione.
-  - **Richiamo onesto**: condizioni in `Engine/RuleEngine.lua` (`firstVisit`, `repeatVisit`, `lastVisitBad` anche `"death"`/`"flight"`, `visitsMin`/`visitsMax`, `daysSinceLastVisit` numero o `{da, a}`, `remembered`), `ctx.memory` in `NS:BuildContext`, **guardie degli eventi** `Engine:SetEventGuard(evento, nome, fn)` (controllate da `PickEntry`), validatore `recallWithoutMemory`. Evento `memory_return` (priorità `memory` nel Director, modulo `memory`, probabilità 70, pausa 600 s) offerto 3 s dopo il ritorno; la prima visita è l'evento `zone` con `firstVisit`.
-  - **Diario**: `UI/JournalFrame.lua`, `/au diario` (alias `journal`, `diary`; sottocomandi `lista`, `luoghi`, `flag`, `esporta`, `permanente`, `elimina`, `dimentica`, `reset` con conferma). Schede come dati: `JournalFrame:RegisterTab(id, { label, rows, note })` con righe `{ text, actions = { { label, tip, fn } } }`. Esportazione in una finestra con casella a più righe (ripiego: 40 righe in chat locale).
-  - 14 frasi di esempio IT/EN (`base_memory`): 5 di prima visita, 9 di ritorno. Totale di base: 458 frasi con il pacchetto di esempio.
-- **Cosa deve sapere S6b (relazioni):**
-  - le relazioni vivono in `cdb.relationships` con **versione propria**; serve una migrazione dello schema 5 (aggiungi un `[5]` in `Config.migrations` e `SCHEMA_VERSION = 5`, come ha fatto S6 con il 4);
-  - il diario ospita già le schede: aggiungi «Relazioni» con `JournalFrame:RegisterTab("relations", {...})` (e magari «Persone incontrate»); `/au relazioni` può aprire il diario su quella scheda con `JournalFrame:Open("relations")`;
-  - un momento importante di una relazione (primo incontro, un tradimento) può essere un ricordo: `LivingMemory:RegisterKind("relation", 3)` e `Record{ kind = "relation", tags = {...}, source = "addon" }`; **non** salvare nomi o testi di chat dentro un ricordo (`Record` scarta ogni altro campo e `tags` accetta solo token brevi in minuscole ASCII);
-  - un richiamo legato a una relazione si registra con `LivingMemory:RegisterRecall("relation_...", function(memory, ctx) ... end)` e **deve** verificare che la relazione esista davvero; il fattore `R` è libero (`Engine:SetWeightHook("R", ...)`);
-  - le morti e i livelli non sono legati a un NPC: l'identità (`npcID` dal GUID) non è nei ricordi.
-- **Cosa deve sapere S6c (interlocutore e luogo):**
-  - i luoghi sono indicizzati dal **nome** della zona nel client ([issue #31](https://github.com/Finland6738/azeroth-unspoken/issues/31)): quando `Systems/Place.lua` verifica i `mapID`, migra `memories.places` (`LM.migrations[2]`, versione interna 2) a una chiave stabile;
-  - `ctx.place` e `ctx.memory` sono indipendenti: una frase può chiedere `when = { place = {...}, firstVisit = true }`; `ctx.memory.zone` è il nome della zona del contesto;
-  - `NarrativeDirector:SetRhythm` vale anche per `memory_return` (è un evento come gli altri): il ritmo sobrio in raid lo riguarda.
-- **Cosa deve sapere S7 (contenuti):** le condizioni di memoria sono nella guida ai pacchetti (`PACK_FORMAT.md`, «Memoria»); ogni frase di `memory_return` dichiara una condizione di memoria (altrimenti `recallWithoutMemory`); i richiami che toccano la morte portano `topic:death`; i contenuti estesi sono nell'[issue #29](https://github.com/Finland6738/azeroth-unspoken/issues/29). L'atmosfera di prima visita si scrive con `event = "zone"` e `firstVisit = true`.
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestMemory.lua` (oltre mille controlli: nessun ricordo per eventi insignificanti, prima visita con i campi del §7.4, capitali, ritorno (stessa visita, un'ora, due giorni), `lastVisitBad` per morte e fuga (anche con salute segreta), livelli, limite di 500 e compattazione, permanenti, cancellazione selettiva, flag, richiamo solo con un ricordo vero (guardia, comando manuale, modulo spento), priorità e nessuna cascata nel Director, argomenti da evitare, validatore, privacy, migrazioni e dati rovinati o futuri, diario, esportazione, comandi, reset con conferma) e, in `run_tests.py`, la **persistenza simulata dopo `/reload`** (due runtime, `SERIALIZE`, `epoch` e `zone` di `load_addon`). Il client finto ha `SERIALIZE(tabella)` e `LEAP(secondi)` (salta un intervallo lungo senza eseguire i timer periodici: `ADVANCE` di giorni supera il limite dei timer perché il pulsante ha un timer da 2 s).
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 39–45, e [issue #30](https://github.com/Finland6738/azeroth-unspoken/issues/30)): la scrittura reale delle SavedVariables a `/reload` e alla chiusura; l'ordine e il contenuto di `PLAYER_ENTERING_WORLD`/`ZONE_CHANGED_NEW_AREA` in un caricamento; la fuga (euristica); l'aspetto del diario e la finestra di esportazione (scorrimento, selezione, Ctrl+C); `C_Timer.NewTicker`; le soglie e la frequenza dei richiami.
+#### Outcome of S6 and notes for S6b, S6c, S7
+- **Where the code lives** (in the `.toc`: `Systems\LivingMemory` after `Systems\Triggers`; `UI\JournalFrame` before `SettingsFrame`; `Data\RegistryMemory` and the `Memory.lua` texts after those of the Soul):
+  - `Systems/LivingMemory.lua` (`NS.LivingMemory`, module `memory`): `Record{ kind, zone, importance, tags, source, perm, level, t }` (only these fields), `RegisterKind(kind, importance)`, `Delete`, `SetPermanent`, `ForgetPlace`, `Reset(all|memories|ordinary|places|flags)`, `SetFlag`/`ClearFlag`/`HasFlag`/`FlagNames`, `EnterZone`/`LeaveZone`/`OnDeath`/`OnLevel`, `Context(ctx)` (= `ctx.memory`), `RegisterRecall(event, check)`, `List`/`Places`/`SessionList`/`Stats`, `ExportText`, `Describe`, `Status`, `Command`. Constants at the top of the file (`MAX_ORDINARY` 500, `COMPACT_TO` 450, `MAX_PERMANENT` 200, `MAX_PLACES` 300, `PERSIST_MIN` 2, `VISIT_GAP` 600 s, `RETURN_GAP` one day, `FLIGHT_HP` 0.35, `DEATH_GAP` 60 s).
+  - Data in `cdb.memories = { version, nextId, entries, places, flags, stats }`; `memories.version` (1) has its own migrations (`LM.migrations[n]`); `Sanitize` cleans up at startup; a newer version = read-only. **SavedVariables schema 4** (character migration 4).
+  - **Memories**: first visit (3, capital city 4), return (2 after a day, 1 and session-only if sooner), death (3, the first 4, with flag `first_death`), flight (3), level (2, every tenth 4 with flag `level_<n>`). Important ones are saved (`PERSIST_MIN`), the others stay in the session's episodic memory (negative id, at most 60). Places (`memories.places[zone]`) keep the counts and the outcome of the visit (`prev` = how the previous one ended) and are independent of compaction.
+  - **Honest recall**: conditions in `Engine/RuleEngine.lua` (`firstVisit`, `repeatVisit`, `lastVisitBad` also `"death"`/`"flight"`, `visitsMin`/`visitsMax`, `daysSinceLastVisit` number or `{from, to}`, `remembered`), `ctx.memory` in `NS:BuildContext`, **event guards** `Engine:SetEventGuard(event, name, fn)` (checked by `PickEntry`), validator `recallWithoutMemory`. Event `memory_return` (priority `memory` in the Director, module `memory`, probability 70, pause 600 s) offered 3 s after the return; the first visit is the `zone` event with `firstVisit`.
+  - **Journal**: `UI/JournalFrame.lua`, `/au diario` (aliases `journal`, `diary`; subcommands `lista`, `luoghi`, `flag`, `esporta`, `permanente`, `elimina`, `dimentica`, `reset` with confirmation). Tabs as data: `JournalFrame:RegisterTab(id, { label, rows, note })` with rows `{ text, actions = { { label, tip, fn } } }`. Export in a window with a multi-line box (fallback: 40 lines in local chat).
+  - 14 example phrases IT/EN (`base_memory`): 5 for first visit, 9 for return. Base total: 458 phrases with the example pack.
+- **What S6b (relationships) needs to know:**
+  - relationships live in `cdb.relationships` with **their own version**; a schema 5 migration is needed (add a `[5]` in `Config.migrations` and `SCHEMA_VERSION = 5`, as S6 did with 4);
+  - the Journal already hosts tabs: add a "Relationships" tab (label «Relazioni» in Italian) with `JournalFrame:RegisterTab("relations", {...})` (and perhaps "People met"); `/au relazioni` can open the Journal on that tab with `JournalFrame:Open("relations")`;
+  - an important moment in a relationship (first meeting, a betrayal) can be a memory: `LivingMemory:RegisterKind("relation", 3)` and `Record{ kind = "relation", tags = {...}, source = "addon" }`; do **not** save names or chat text inside a memory (`Record` discards every other field and `tags` accepts only short lowercase ASCII tokens);
+  - a recall tied to a relationship is registered with `LivingMemory:RegisterRecall("relation_...", function(memory, ctx) ... end)` and **must** check that the relationship really exists; the `R` factor is free (`Engine:SetWeightHook("R", ...)`);
+  - deaths and levels are not tied to an NPC: the identity (`npcID` from the GUID) is not in the memories.
+- **What S6c (interlocutor and place) needs to know:**
+  - places are indexed by the zone **name** in the client ([issue #31](https://github.com/Finland6738/azeroth-unspoken/issues/31)): when `Systems/Place.lua` verifies the `mapID`s, it migrates `memories.places` (`LM.migrations[2]`, internal version 2) to a stable key;
+  - `ctx.place` and `ctx.memory` are independent: a phrase can ask for `when = { place = {...}, firstVisit = true }`; `ctx.memory.zone` is the name of the context's zone;
+  - `NarrativeDirector:SetRhythm` also applies to `memory_return` (it is an event like the others): the sober rhythm in raids affects it.
+- **What S7 (content) needs to know:** the memory conditions are in the pack guide (`PACK_FORMAT.md`, "Memory"); every `memory_return` phrase declares a memory condition (otherwise `recallWithoutMemory`); recalls that touch on death carry `topic:death`; extended content is in [issue #29](https://github.com/Finland6738/azeroth-unspoken/issues/29). First-visit atmosphere is written with `event = "zone"` and `firstVisit = true`.
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestMemory.lua` (over a thousand checks: no memory for insignificant events, first visit with the §7.4 fields, capital cities, return (same visit, one hour, two days), `lastVisitBad` for death and flight (also with secret health), levels, 500 limit and compaction, permanent memories, selective deletion, flags, recall only with a real memory (guard, manual command, module off), priority and no cascade in the Director, topics to avoid, validator, privacy, migrations and corrupted or future data, Journal, export, commands, reset with confirmation) and, in `run_tests.py`, the **simulated persistence after `/reload`** (two runtimes, `SERIALIZE`, `epoch` and `zone` of `load_addon`). The mock client has `SERIALIZE(table)` and `LEAP(seconds)` (skips a long interval without running the periodic timers: `ADVANCE` of days exceeds the timer limit because the button has a 2 s timer).
+- **Not verified without the client** (added to `docs/G1_checklist.md` (in Italian), steps 39–45, and [issue #30](https://github.com/Finland6738/azeroth-unspoken/issues/30)): the real writing of the SavedVariables at `/reload` and on exit; the order and content of `PLAYER_ENTERING_WORLD`/`ZONE_CHANGED_NEW_AREA` on a load; flight (heuristic); the look of the Journal and of the export window (scrolling, selection, Ctrl+C); `C_Timer.NewTicker`; the thresholds and the frequency of recalls.
 
-### S6b: relazioni e affinità (richiesta dell'utente del 2026-10-29; GDD §7.4, §10, §14)
+### S6b: relationships and affinities (user request of 2026-10-29; GDD §7.4, §10, §14)
 
-Obiettivo: il narratore scrive in modo diverso in base al rapporto tra il personaggio e l'NPC o il giocatore con cui interagisce.
-Esempi: tono formale con uno sconosciuto, caldo con un amico, teso con un rivale rispettato.
+Goal: the narrator writes differently depending on the relationship between the character and the NPC or player they interact with.
+Examples: a formal tone with a stranger, a warm one with a friend, a tense one with a respected rival.
 
-**Modello dati**, in `Systems/Relationships.lua`:
-- I dati stanno in `AzerothUnspokenCharacterDB.relationships = { npcs = { [npcID] = ... }, players = { ["Nome-Reame"] = ... } }`, con versione dello schema e migrazioni.
-- Gli assi sono indipendenti, non c'è un'unica barra amico/nemico:
+**Data model**, in `Systems/Relationships.lua`:
+- The data lives in `AzerothUnspokenCharacterDB.relationships = { npcs = { [npcID] = ... }, players = { ["Name-Realm"] = ... } }`, with a schema version and migrations.
+- The axes are independent; there is no single friend/enemy bar:
 
-  | Asse | Intervallo | Note |
+  | Axis | Range | Notes |
   |---|---|---|
-  | `familiarity` | 0…100 | quanto ci si conosce |
-  | `trust` | −100…100 | fiducia |
-  | `respect` | −100…100 | rispetto |
-  | `affection` | −100…100 | i valori negativi indicano astio o odio |
-  | `fear` | 0…100 | timore |
-  | `loyalty` | −100…100 | lealtà |
-  | `attraction` | 0…100 | asse **facoltativo, spento per impostazione predefinita**, attivabile nelle impostazioni |
+  | `familiarity` | 0…100 | how well they know each other |
+  | `trust` | −100…100 | trust |
+  | `respect` | −100…100 | respect |
+  | `affection` | −100…100 | negative values indicate resentment or hatred |
+  | `fear` | 0…100 | fear |
+  | `loyalty` | −100…100 | loyalty |
+  | `attraction` | 0…100 | **optional axis, off by default**, can be enabled in the settings |
 
-- Le **etichette narrative derivate** sono definite come dati in `Data/Relationships.lua`, con regole e nomi IT/EN. Il motore non contiene etichette fisse. Esempi:
-  - fiducia e affetto alti → amico;
-  - fiducia e lealtà alte → compagno d'armi;
-  - affetto e attrazione alti → innamorato;
-  - fiducia bassa e rispetto alto → rivale rispettato;
-  - affetto molto negativo → nemico;
-  - valori vicini a zero → indifferente;
-  - familiarità bassa → sconosciuto.
-- C'è anche una **disposizione complessiva** su una scala −100…100: Odiato, Nemico, Antipatico, Sospettoso, Neutrale, Conoscente, Amico, Grande amico, Legame profondo. È derivata dagli assi e serve per i riassunti e per le condizioni semplici.
-- Ogni relazione conserva: prima e ultima interazione, numero di interazioni, note libere, tag e un'etichetta scelta a mano, che ha la precedenza su quella derivata.
+- The **derived narrative labels** are defined as data in `Data/Relationships.lua`, with rules and IT/EN names. The engine contains no fixed labels. Examples:
+  - high trust and affection → friend;
+  - high trust and loyalty → comrade in arms;
+  - high affection and attraction → in love;
+  - low trust and high respect → respected rival;
+  - very negative affection → enemy;
+  - values close to zero → indifferent;
+  - low familiarity → stranger.
+- There is also an **overall disposition** on a −100…100 scale: Hated, Enemy, Disliked, Suspicious, Neutral, Acquaintance, Friend, Great friend, Deep bond. It is derived from the axes and is used for summaries and simple conditions.
+- Each relationship keeps: first and last interaction, number of interactions, free-form notes, tags and a hand-picked label, which takes precedence over the derived one.
 
-**NPC, calcolo automatico:**
-- L'identità è l'`npcID` ricavato dal GUID (`Creature-…-npcID-…`). Se il GUID manca, è segreto o non è una creatura, non si registra nulla.
-- Fonti, da verificare in Compat con registrazione protetta degli eventi:
-  - dialoghi (`GOSSIP_SHOW`): familiarità;
-  - quest accettate e consegnate (NPC di `QUEST_DETAIL`/`QUEST_COMPLETE`, poi `QUEST_ACCEPTED`/`QUEST_TURNED_IN`): fiducia e rispetto;
-  - acquisti, vendite e riparazioni dal mercante (`MERCHANT_SHOW`/`MERCHANT_CLOSED`, `hooksecurefunc` su `BuyMerchantItem`, vendite rilevate in modo prudente): familiarità e fiducia;
-  - locandiere, maestro di volo, addestratore, ove rilevabili.
-- Rendimenti decrescenti e un tetto giornaliero per tipo di interazione. La familiarità decade lentamente nel tempo, gli altri assi no.
-- Gli incrementi sono tabelle di dati, regolabili senza toccare il codice.
+**NPCs, automatic calculation:**
+- The identity is the `npcID` taken from the GUID (`Creature-…-npcID-…`). If the GUID is missing, secret, or not a creature, nothing is recorded.
+- Sources, to be verified in Compat with protected event registration:
+  - dialogues (`GOSSIP_SHOW`): familiarity;
+  - quests accepted and turned in (the NPC from `QUEST_DETAIL`/`QUEST_COMPLETE`, then `QUEST_ACCEPTED`/`QUEST_TURNED_IN`): trust and respect;
+  - purchases, sales and repairs at the merchant (`MERCHANT_SHOW`/`MERCHANT_CLOSED`, `hooksecurefunc` on `BuyMerchantItem`, sales detected cautiously): familiarity and trust;
+  - innkeeper, flight master, trainer, where detectable.
+- Diminishing returns and a daily cap per interaction type. Familiarity slowly decays over time, the other axes do not.
+- The increments are data tables, adjustable without touching the code.
 
-**Giocatori, gestiti dall'utente:**
-- Lista "Persone incontrate".
-- Il sistema **propone** candidati: membri del gruppo, scambi, bersagli con profilo TRP3, persone a cui si è risposto in privato.
-- Un giocatore entra in lista **solo con un'azione dell'utente**. In alternativa c'è un'opzione esplicita "registra automaticamente chi incontro", spenta per impostazione predefinita.
-- L'utente modifica gli assi con cursori; aggiunge note, tag ed etichetta personalizzata; elimina; esporta in testo.
+**Players, managed by the user:**
+- A "People met" list.
+- The system **suggests** candidates: group members, trades, targets with a TRP3 profile, people answered in a private message.
+- A player enters the list **only through a user action**. Alternatively there is an explicit "automatically register the people I meet" option, off by default.
+- The user edits the axes with sliders; adds notes, tags and a custom label; deletes; exports as text.
 - Privacy:
-  - nessun contenuto di chat o di whisper salvato;
-  - nessun dato inviato in rete;
-  - il modulo Social (S10) condividerà qualcosa solo con un consenso esplicito.
+  - no chat or whisper content is saved;
+  - no data is sent over the network;
+  - the Social module (S10) will share something only with explicit consent.
 
-**Integrazione con il narratore:**
-- Il contesto espone `relation` (etichetta derivata), `disposition` e i singoli assi del bersaglio o dell'NPC dell'interazione corrente.
-- Nuove condizioni nel RuleEngine:
+**Integration with the narrator:**
+- The context exposes `relation` (derived label), `disposition` and the individual axes of the target or of the NPC of the current interaction.
+- New conditions in the RuleEngine:
   - `relation = { "friend", "rival" }`;
-  - `trustMin`, `trustMax`, `affectionMin`, `affectionMax` e gli equivalenti per ogni asse;
+  - `trustMin`, `trustMax`, `affectionMin`, `affectionMax` and the equivalents for every axis;
   - `familiarityMin`, `isKnown`.
-- Nuovo segnaposto `{relation}`, con l'etichetta localizzata.
-- Fattore di peso aggiuntivo `R` nel Narrative Director: le frasi coerenti con il rapporto salgono di peso, quelle incoerenti vengono escluse.
-- Il registro cambia con la familiarità: dal formale all'intimo.
-- Almeno 40 frasi bilingui legate alle relazioni, per saluti, congedi, ringraziamenti, cure, battaglia al fianco di qualcuno e incontri con NPC conosciuti.
+- New placeholder `{relation}`, with the localized label.
+- Additional weight factor `R` in the Narrative Director: lines consistent with the relationship gain weight, inconsistent ones are excluded.
+- The register changes with familiarity: from formal to intimate.
+- At least 40 bilingual lines tied to relationships, for greetings, farewells, thanks, healing, fighting at someone's side and meetings with known NPCs.
 
-**Interfaccia:** finestra "Relazioni" con tabella ordinabile e filtrabile (NPC/giocatori, etichetta, ultima interazione), dettaglio con cursori e note, accesso da `/au relazioni` e dal diario.
+**Interface:** a "Relationships" window with a sortable, filterable table (NPCs/players, label, last interaction), a detail view with sliders and notes, reachable from `/au relazioni` and from the Journal.
 
-**Test:**
-- derivazione delle etichette;
-- incrementi automatici con tetti e decadimento;
-- migrazione dello schema;
-- nessuna registrazione dei giocatori senza azione dell'utente;
-- nessun dato preso da valori segreti.
+**Tests:**
+- derivation of the labels;
+- automatic increments with caps and decay;
+- schema migration;
+- no registration of players without a user action;
+- no data taken from secret values.
 
-**Dipendenze:** dopo S6, perché usa la memoria e il diario. Prima di S7, perché i contenuti useranno le nuove condizioni. S8 (NPC Alive) riusa il registro degli NPC e le relazioni.
+**Dependencies:** after S6, because it uses memory and the Journal. Before S7, because the content will use the new conditions. S8 (NPC Alive) reuses the NPC registry and the relationships.
 
-#### Esito di S6b e note per S6c, S7, S8
-- **Dove sta il codice** (nel `.toc`: `Systems\Relationships` dopo `LivingMemory`; `UI\RelationsFrame` dopo `JournalFrame`; `Data\Relationships` dopo `Frames`; `Data\RegistryRelations`, i testi `Relations.lua` e le stringhe `RelationsUI.lua` in fondo):
-  - `Systems/Relationships.lua` (`NS.Relationships`, modulo `relations`): `RegisterData` (assi, etichette, disposizione, registro, incrementi, `decay`, `memorable`), `Derive`, `Disposition`, `Resolve(kind, rec)` → `AURelationInfo`, `Get`/`Data`/`Sanitize`, `RecordNPC(npcID, nome, fonte)`, `Increment`, `Decay`, `AddPlayer(nome, "user"|"auto")` (rifiuta ogni altra fonte), `Propose`/`Candidates`/`Dismiss`, `SetAxis`/`AdjustAxis`/`SetLabel`/`CycleLabel`/`SetNote`/`SetTags`/`Remove`/`Reset`, `Rows(filtro)`, `Subject(ctx, extra)`, `Context(ctx, extra)`, `Factor` (fattore `R`), `RegisterRelationEvent`, `ExportText`, `Status`, `Command`. Costanti in testa al file (`MAX_NPCS` 1000, `MAX_PLAYERS` 300, `MAX_CANDIDATES` 40, `KNOWN_GAP` 600 s...).
-  - `Data/Relationships.lua`: **tutti i numeri** (soglie delle etichette, pesi della disposizione, `knownMin` 15, registro, incrementi, tetti, decadimento 14 giorni / 0,5 al giorno / minimo 3).
-  - Dati in `cdb.relationships = { version, npcs = { [npcID] }, players = { ["Nome-Reame"] } }`; impostazioni `db.relations = { npcAuto, attraction, autoRegisterPlayers, proposePlayers }`; modulo `relations`. **SavedVariables schema 5**.
-  - Bus: `NPC_INTERACT { kind = gossip|quest_detail|quest_turnin|merchant|taxi|trainer|binder, npcID, npcName }`, `NPC_INTERACT_END`, `QUEST_STATE { state }`, `GROUP_CHANGED`, `TRADE_OPENED { name }`, `WHISPER_SENT { name }` (solo il nome). Non c'è il testo di nessun messaggio.
-  - Motore: `Engine.RegisterRelationAxis`, `Engine.UsesRelation`, `Engine.RELATION_CONDITIONS`; condizioni `relation`, `disposition`, `relationKind`, `isKnown`, `withRelation`, `<asse>Min`/`<asse>Max`; segnaposto `{relation}` (campo `relationLabel`); `Traits.Define{ scope = "rel" }` e `Traits.RegisterScope("rel")`; hook `R` "relations" e modificatore `StyleResolver` "relations"; validatore: `relationWithoutRelation`.
-  - `UI/RelationsFrame.lua` (`NS.RelationsFrame`: `Open(vista | { kind, key })`, `Close`, `Toggle`, `ShowView`, `SelectSubject`, `AddPlayer`, `ShowExport`, `Refresh`); `Widgets.Slider(parent, larghezza, min, max, onChange(valore, finale))`; due schede del diario (`relations`, `people`); `JournalFrame:ShowExport(testo, chiaveTitolo)`.
-  - 51 frasi in `base_relations` (saluti 10, congedi 7, ringraziamenti 6, cure 6, battaglia 6, vittoria 4, NPC conosciuti 12), evento `relation_npc` (probabilità 45, pausa 180 s).
-- **Cosa deve sapere S6c (interlocutore e luogo):**
-  - il **ruolo** di un NPC si ricava già da fonti affidabili: `NPC_INTERACT.kind` (`merchant`, `trainer`, `taxi`, `binder` = locandiere, `gossip`, quest). `R.interaction = { npcID, name, kind, t }` è l'NPC con cui si parla ora; `R:Subject(ctx, extra)` dice la persona dell'interazione (NPC aperto, bersaglio o `extra.relationSubject`); `R.NpcID(guid)` è l'unico punto che legge un GUID;
-  - `ctx.relation` e gli altri campi stanno al livello superiore del contesto; `ctx.other.relation` può semplicemente copiarlo. La fonte 1 della lista di priorità (dati dell'utente) è `cdb.relationships.players[chiave]` (con `note`, `tags`, `label`, mai testo di chat);
-  - le azioni `Gruppo`, `scambio` e `risposta in privato` sono già eventi del bus (`GROUP_CHANGED`, `TRADE_OPENED`, `WHISPER_SENT`); per `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST` e le emote servono sorgenti nuove (gli eventi sono nel dump);
-  - **ambiti dei tag**: `rel` esiste (tratti con `scope = "rel"`). Un ambito `other` con i tratti di S5 (senza `scope`) vale così com'è; i tratti con `scope` valgono solo nel loro ambito;
-  - il fattore `C` e `SetRhythm`/`SetDemandCheck` sono liberi; `R` e il modificatore `relations` sono già presi;
-  - le sorgenti di eventi nuove si dichiarano con `NpcSource`/`EndSource` o `AddSource` con **stringhe letterali**, altrimenti `check_api.py` non le vede;
-  - `JournalFrame` ora stringe le schede: puoi aggiungerne senza toccare la larghezza.
-- **Cosa deve sapere S7 (contenuti):** le condizioni e i tag di relazione sono nella guida ai pacchetti (`PACK_FORMAT.md`, «Relazioni»); una frase di `relation_npc` dichiara sempre una condizione di relazione; il segnaposto `{relation}` è maschile/neutro in italiano (le etichette sono nomi: «amico», «compagno d'armi»): scrivere frasi che reggano ogni etichetta o dichiarare quella giusta ([issue #34]). Le 51 frasi bastano a provare il sistema.
-- **Cosa deve sapere S8 (NPC Alive):** `cdb.relationships.npcs[npcID]` è il registro degli NPC già incontrati (`name`, assi, `count`, `last`); `RecordNPC` crea una relazione solo con un'interazione reale; `R:Resolve("npc", rec)` dà etichetta e disposizione per la battuta simulata.
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestRelations.lua` (oltre 1.200 controlli: assi e attrazione, derivazione di etichette e disposizione, precedenza della scelta a mano, GUID e valori segreti, incrementi (rendimenti decrescenti, tetto, giorno dopo), quest, mercante e hook, locandiere/volo/addestratore, impostazioni, decadimento, tabelle di dati, compattazione, proposte senza lista, `auto` spento, privacy (nessun testo salvato né negli eventi), modifiche dell'utente, elenco ordinabile, contesto, condizioni, `{relation}`, fattore R, registro, frasi per rapporto, `relation_npc`, ricordo nel diario, 51 frasi IT/EN, migrazione 5, dati rovinati, sola lettura, finestra, schede del diario, comandi, chiavi IT/EN), la persistenza simulata dopo `/reload` in `run_tests.py` e il controllo del dump delle API.
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 46–55, [issue #33]): **tutta** la parte che dipende dal client vero: che `GOSSIP_SHOW`, `QUEST_*`, `MERCHANT_*`, `TAXIMAP_OPENED`, `TRAINER_SHOW`, `CONFIRM_BINDER` arrivino davvero con `UnitGUID("npc")` leggibile; che i tre `hooksecurefunc` (acquisto, vendita, riparazione) scattino e che la vendita (uso di un oggetto con il mercante aperto) si riconosca; `UnitFullName` sui compagni di gruppo; `TRP3_API.register.isUnitIDKnown` e `utils.str.getUnitID` in Total RP 3; l'aspetto della finestra, dei cursori (`GetCursorPosition`) e delle caselle di testo; il tono delle 51 frasi; i numeri degli incrementi e delle soglie (ipotesi).
+#### Outcome of S6b and notes for S6c, S7, S8
+- **Where the code lives** (in the `.toc`: `Systems\Relationships` after `LivingMemory`; `UI\RelationsFrame` after `JournalFrame`; `Data\Relationships` after `Frames`; `Data\RegistryRelations`, the `Relations.lua` texts and the `RelationsUI.lua` strings at the end):
+  - `Systems/Relationships.lua` (`NS.Relationships`, module `relations`): `RegisterData` (axes, labels, disposition, register, increments, `decay`, `memorable`), `Derive`, `Disposition`, `Resolve(kind, rec)` → `AURelationInfo`, `Get`/`Data`/`Sanitize`, `RecordNPC(npcID, name, source)`, `Increment`, `Decay`, `AddPlayer(name, "user"|"auto")` (rejects any other source), `Propose`/`Candidates`/`Dismiss`, `SetAxis`/`AdjustAxis`/`SetLabel`/`CycleLabel`/`SetNote`/`SetTags`/`Remove`/`Reset`, `Rows(filter)`, `Subject(ctx, extra)`, `Context(ctx, extra)`, `Factor` (factor `R`), `RegisterRelationEvent`, `ExportText`, `Status`, `Command`. Constants at the top of the file (`MAX_NPCS` 1000, `MAX_PLAYERS` 300, `MAX_CANDIDATES` 40, `KNOWN_GAP` 600 s...).
+  - `Data/Relationships.lua`: **all the numbers** (label thresholds, disposition weights, `knownMin` 15, register, increments, caps, decay 14 days / 0.5 per day / minimum 3).
+  - Data in `cdb.relationships = { version, npcs = { [npcID] }, players = { ["Name-Realm"] } }`; settings `db.relations = { npcAuto, attraction, autoRegisterPlayers, proposePlayers }`; module `relations`. **SavedVariables schema 5**.
+  - Bus: `NPC_INTERACT { kind = gossip|quest_detail|quest_turnin|merchant|taxi|trainer|binder, npcID, npcName }`, `NPC_INTERACT_END`, `QUEST_STATE { state }`, `GROUP_CHANGED`, `TRADE_OPENED { name }`, `WHISPER_SENT { name }` (name only). There is no text of any message.
+  - Engine: `Engine.RegisterRelationAxis`, `Engine.UsesRelation`, `Engine.RELATION_CONDITIONS`; conditions `relation`, `disposition`, `relationKind`, `isKnown`, `withRelation`, `<axis>Min`/`<axis>Max`; placeholder `{relation}` (field `relationLabel`); `Traits.Define{ scope = "rel" }` and `Traits.RegisterScope("rel")`; hook `R` "relations" and `StyleResolver` modifier "relations"; validator: `relationWithoutRelation`.
+  - `UI/RelationsFrame.lua` (`NS.RelationsFrame`: `Open(view | { kind, key })`, `Close`, `Toggle`, `ShowView`, `SelectSubject`, `AddPlayer`, `ShowExport`, `Refresh`); `Widgets.Slider(parent, width, min, max, onChange(value, final))`; two Journal tabs (`relations`, `people`); `JournalFrame:ShowExport(text, titleKey)`.
+  - 51 lines in `base_relations` (greetings 10, farewells 7, thanks 6, healing 6, battle 6, victory 4, known NPCs 12), event `relation_npc` (probability 45, pause 180 s).
+- **What S6c (interlocutor and place) needs to know:**
+  - the **role** of an NPC can already be derived from reliable sources: `NPC_INTERACT.kind` (`merchant`, `trainer`, `taxi`, `binder` = innkeeper, `gossip`, quest). `R.interaction = { npcID, name, kind, t }` is the NPC being talked to now; `R:Subject(ctx, extra)` gives the person of the interaction (open NPC, target or `extra.relationSubject`); `R.NpcID(guid)` is the only point that reads a GUID;
+  - `ctx.relation` and the other fields sit at the top level of the context; `ctx.other.relation` can simply copy it. Source 1 of the priority list (user data) is `cdb.relationships.players[key]` (with `note`, `tags`, `label`, never chat text);
+  - the actions `Group`, `trade` and `private reply` are already bus events (`GROUP_CHANGED`, `TRADE_OPENED`, `WHISPER_SENT`); for `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST` and emotes new sources are needed (the events are in the dump);
+  - **tag scopes**: `rel` exists (traits with `scope = "rel"`). An `other` scope with the S5 traits (without `scope`) works as is; traits with a `scope` apply only in their own scope;
+  - the `C` factor and `SetRhythm`/`SetDemandCheck` are free; `R` and the `relations` modifier are already taken;
+  - new event sources are declared with `NpcSource`/`EndSource` or `AddSource` with **literal strings**, otherwise `check_api.py` does not see them;
+  - `JournalFrame` now tightens the tabs: you can add more without touching the width.
+- **What S7 (content) needs to know:** the relationship conditions and tags are in the pack guide (`PACK_FORMAT.md`, "Relationships"); a `relation_npc` line always declares a relationship condition; the `{relation}` placeholder is masculine/neutral in Italian (the labels are nouns: «amico», «compagno d'armi»): write lines that work with every label or declare the right one ([issue #34]). The 51 lines are enough to test the system.
+- **What S8 (NPC Alive) needs to know:** `cdb.relationships.npcs[npcID]` is the registry of NPCs already met (`name`, axes, `count`, `last`); `RecordNPC` creates a relationship only with a real interaction; `R:Resolve("npc", rec)` gives the label and disposition for the simulated line.
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestRelations.lua` (over 1,200 checks: axes and attraction, derivation of labels and disposition, precedence of the hand-picked choice, GUIDs and secret values, increments (diminishing returns, cap, the next day), quests, merchant and hooks, innkeeper/flight/trainer, settings, decay, data tables, compaction, suggestions without a list, `auto` off, privacy (no text saved, not even in events), user edits, sortable list, context, conditions, `{relation}`, factor R, register, lines per relationship, `relation_npc`, memory in the Journal, 51 IT/EN lines, migration 5, damaged data, read-only, window, Journal tabs, commands, IT/EN keys), the simulated persistence after `/reload` in `run_tests.py` and the API dump check.
+- **Not verified without the client** (added to `docs/G1_checklist.md` (in Italian), steps 46–55, [issue #33]): **everything** that depends on the real client: that `GOSSIP_SHOW`, `QUEST_*`, `MERCHANT_*`, `TAXIMAP_OPENED`, `TRAINER_SHOW`, `CONFIRM_BINDER` really arrive with a readable `UnitGUID("npc")`; that the three `hooksecurefunc` (purchase, sale, repair) fire and that the sale (use of an item with the merchant open) is recognized; `UnitFullName` on group mates; `TRP3_API.register.isUnitIDKnown` and `utils.str.getUnitID` in Total RP 3; the look of the window, the sliders (`GetCursorPosition`) and the text boxes; the tone of the 51 lines; the numbers of the increments and thresholds (hypotheses).
 
-### S6c: interlocutore e luogo (richiesta dell'utente del 2026-10-29; GDD §5.2, §5.3, §7.1, §7.2, §10)
+### S6c: interlocutor and place (user request of 2026-10-29; GDD §5.2, §5.3, §7.1, §7.2, §10)
 
-Obiettivo: le frasi cambiano in base a **chi incontriamo** e a **dove siamo**.
-- Chi incontriamo: personalità e carattere, azioni recenti, razza, classe, obiettivi, ruolo.
-- Dove siamo: regione, territorio, tipo di istanza (dungeon, raid, campo di battaglia, arena).
+Goal: the lines change depending on **who we meet** and **where we are**.
+- Who we meet: personality and character, recent actions, race, class, goals, role.
+- Where we are: region, territory, instance type (dungeon, raid, battleground, arena).
 
-Lo step completa S5, dove la personalità è quella del *nostro* personaggio, e S6b, dove si definisce il *rapporto*.
+This step completes S5, where the personality is that of *our own* character, and S6b, where the *relationship* is defined.
 
-**A. Profilo dell'interlocutore** (`Systems/Interlocutor.lua`). Il contesto espone `ctx.other`: bersaglio, NPC dell'interazione in corso, membro del gruppo o autore di un'emote rivolta a noi.
+**A. Interlocutor profile** (`Systems/Interlocutor.lua`). The context exposes `ctx.other`: the target, the NPC of the current interaction, a group member or the author of an emote directed at us.
 
-| Campo | Contenuto |
+| Field | Content |
 |---|---|
 | `kind` | `npc`, `player`, `creature` |
-| `race`, `class`, `faction`, `sex`, `level` | per i giocatori dal gioco o da TRP3; per gli NPC dove disponibile |
-| `classification`, `ctype`, `family` | élite, raro, boss; tipo di creatura; famiglia (`UnitCreatureFamily`) |
-| `reaction` | da ostile ad amichevole (`UnitReaction`) |
-| `role` | locandiere, mercante, guardia, datore di quest, addestratore, maestro di volo, banchiere, capo, civile… |
-| `temperament`, `morality`, `goals`, `speech` | personalità. Usa **lo stesso modello di tratti di S5** e i valori della tabella delle relazioni di S6b |
-| `actions` | azioni recenti osservate: ci ha dato una quest, ha commerciato con noi, è nel nostro gruppo, ci ha sfidato a duello, ci ha rivolto un'emote, ci attacca, combatte il nostro stesso nemico. Ognuna con il momento in cui è avvenuta |
-| `relation` | etichetta di S6b, se esiste |
+| `race`, `class`, `faction`, `sex`, `level` | for players from the game or from TRP3; for NPCs where available |
+| `classification`, `ctype`, `family` | elite, rare, boss; creature type; family (`UnitCreatureFamily`) |
+| `reaction` | from hostile to friendly (`UnitReaction`) |
+| `role` | innkeeper, merchant, guard, quest giver, trainer, flight master, banker, chief, civilian… |
+| `temperament`, `morality`, `goals`, `speech` | personality. Uses **the same trait model as S5** and the values of the S6b relationships table |
+| `actions` | recent observed actions: gave us a quest, traded with us, is in our group, challenged us to a duel, directed an emote at us, attacks us, fights our same enemy. Each with the moment it happened |
+| `relation` | S6b label, if one exists |
 
-- **Fonti, in ordine di priorità:**
-  1. dati inseriti dall'utente (lista persone di S6b);
-  2. profilo **pubblico** TRP3 del bersaglio (razza e classe personalizzate, tratti caratteriali), con consenso e adattatore protetto;
-  3. registro curato degli NPC per `npcID` in `Data/NPCs.lua` (personalità, obiettivi, modo di parlare), condiviso con S8;
-  4. archetipo del ruolo, ricavato in modo affidabile da gossip, mercante, quest, addestratore o volo (mai indovinato);
-  5. valori tipici di razza, classe e fazione, come **tendenza debole** e non come stereotipo imposto (GDD §5.4: "nessuna decisione morale imposta da razza, fazione o classe");
-  6. valori neutri.
-- Le azioni si ricavano solo da eventi affidabili: `GOSSIP_SHOW`, `QUEST_*`, `MERCHANT_*`, `TRADE_SHOW`, `GROUP_ROSTER_UPDATE`, `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST`, `CHAT_MSG_TEXT_EMOTE` rivolti a noi, `PLAYER_TARGET_CHANGED`. Mai dal log di combattimento. Se l'identità è segreta (`C_Secrets.ShouldUnitIdentityBeSecret`) il profilo resta vuoto.
+- **Sources, in priority order:**
+  1. data entered by the user (S6b people list);
+  2. the target's **public** TRP3 profile (custom race and class, character traits), with consent and a protected adapter;
+  3. a curated NPC registry by `npcID` in `Data/NPCs.lua` (personality, goals, way of speaking), shared with S8;
+  4. role archetype, reliably derived from gossip, merchant, quest, trainer or flight (never guessed);
+  5. typical values for race, class and faction, as a **weak tendency** and not as an imposed stereotype (GDD §5.4: "no moral decision imposed by race, faction or class");
+  6. neutral values.
+- Actions are derived only from reliable events: `GOSSIP_SHOW`, `QUEST_*`, `MERCHANT_*`, `TRADE_SHOW`, `GROUP_ROSTER_UPDATE`, `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST`, `CHAT_MSG_TEXT_EMOTE` directed at us, `PLAYER_TARGET_CHANGED`. Never from the combat log. If the identity is secret (`C_Secrets.ShouldUnitIdentityBeSecret`) the profile stays empty.
 
-**B. Luogo** (`Systems/Place.lua`). Il contesto espone `ctx.place`:
+**B. Place** (`Systems/Place.lua`). The context exposes `ctx.place`:
 
-| Campo | Contenuto |
+| Field | Content |
 |---|---|
-| `zone`, `subzone`, `mapID`, `continent` | da `C_Map.GetBestMapForUnit` / `C_Map.GetMapInfo` |
-| `tags` | atmosfera e temi: foresta, rovine, sacro, maledetto, capitale, porto… Evoluzione di `zoneMoods`, con registro per `mapID` dove verificato e nome come ripiego |
-| `territory` | amico, ostile, conteso, santuario, combattimento (`C_PvP.GetZonePVPInfo`) |
-| `capital`, `faction` | capitale e fazione proprietaria del luogo |
-| `instanceType` | `none`, `party` (dungeon), `raid`, `pvp` (campo di battaglia), `arena`, `scenario` |
-| `instanceName`, `instanceID`, `difficulty` | da `GetInstanceInfo` |
-| `encounter` | scontro con un boss in corso (`ENCOUNTER_START`/`END`), con il nome |
-| `groupRole` | ruolo nel gruppo: tank, cura, danno (`UnitGroupRolesAssigned`) |
-| `battleground` | stato del campo di battaglia (`UPDATE_BATTLEFIELD_STATUS`, `C_PvP.IsBattleground`) |
+| `zone`, `subzone`, `mapID`, `continent` | from `C_Map.GetBestMapForUnit` / `C_Map.GetMapInfo` |
+| `tags` | atmosphere and themes: forest, ruins, sacred, cursed, capital, harbor… Evolution of `zoneMoods`, with a registry by `mapID` where verified and the name as fallback |
+| `territory` | friendly, hostile, contested, sanctuary, combat (`C_PvP.GetZonePVPInfo`) |
+| `capital`, `faction` | capital and faction owning the place |
+| `instanceType` | `none`, `party` (dungeon), `raid`, `pvp` (battleground), `arena`, `scenario` |
+| `instanceName`, `instanceID`, `difficulty` | from `GetInstanceInfo` |
+| `encounter` | boss fight in progress (`ENCOUNTER_START`/`END`), with the name |
+| `groupRole` | role in the group: tank, healer, damage (`UnitGroupRolesAssigned`) |
+| `battleground` | battleground state (`UPDATE_BATTLEFIELD_STATUS`, `C_PvP.IsBattleground`) |
 
-- `Data/Places.lua` contiene tag, temi e frasi chiave per le zone, le capitali, i dungeon, i raid e i campi di battaglia dell'era di Forever, con nomi del client inglese e `mapID` verificati.
+- `Data/Places.lua` contains tags, themes and key phrases for the zones, capitals, dungeons, raids and battlegrounds of the Forever era, with English-client names and verified `mapID`s.
 
-**C. Regole e scelta delle frasi.**
-- Il RuleEngine accetta sotto-tabelle:
+**C. Rules and line selection.**
+- The RuleEngine accepts sub-tables:
   - `when = { other = { role = "innkeeper", temperament = "gruff" } }`;
   - `when = { place = { instanceType = "raid", territory = "hostile" } }`.
-  - Valgono gli stessi operatori di oggi (elenchi, `not`, `any`, `func`) e `other.actions` contiene un'azione recente entro N secondi.
-- Nuovi segnaposto: `{other}` (nome), `{otherrole}`, `{otherrace}`, `{otherclass}`, `{instance}`, `{encounter}`, localizzati.
-- Narrative Director: il fattore di contesto `C` premia le frasi coerenti con interlocutore e luogo. Il ritmo cambia con il tipo di istanza:
-  - più sobrio in raid e durante gli scontri con i boss;
-  - frasi brevi in campo di battaglia;
-  - più spazio nel mondo aperto e nelle locande.
-- **Voce degli NPC** (per S8): le battute simulate seguono `speech` e `temperament` dell'NPC. Esempio: un locandiere burbero e uno gioviale non dicono le stesse cose.
+  - The same operators as today apply (lists, `not`, `any`, `func`) and `other.actions` contains a recent action within N seconds.
+- New placeholders: `{other}` (name), `{otherrole}`, `{otherrace}`, `{otherclass}`, `{instance}`, `{encounter}`, localized.
+- Narrative Director: the context factor `C` rewards lines consistent with the interlocutor and the place. The rhythm changes with the instance type:
+  - more sober in raids and during boss fights;
+  - short lines in battlegrounds;
+  - more room in the open world and in inns.
+- **NPC voice** (for S8): the simulated lines follow the NPC's `speech` and `temperament`. Example: a gruff innkeeper and a jovial one do not say the same things.
 
-**D. Contenuti:** almeno 80 frasi bilingui.
-- Per l'interlocutore: per ruolo, temperamento, razza o classe, e azioni come "ci ha appena dato una quest" o "ha combattuto al nostro fianco".
-- Per il luogo: dungeon, raid, campo di battaglia, arena, territorio ostile, capitale nemica o amica, santuari.
-- Ogni frase rispetta le regole del §5.4.
+**D. Content:** at least 80 bilingual lines.
+- For the interlocutor: by role, temperament, race or class, and actions such as "just gave us a quest" or "fought at our side".
+- For the place: dungeon, raid, battleground, arena, hostile territory, enemy or friendly capital, sanctuaries.
+- Every line follows the rules of §5.4.
 
-**Test:**
-- priorità delle fonti;
-- ruolo ricavato solo da eventi affidabili;
-- identità segreta → profilo vuoto;
-- nessun obbligo di TRP3;
-- regole con `other` e `place`;
-- passaggio da mondo aperto a dungeon, raid e campo di battaglia, con il ritmo che cambia.
+**Tests:**
+- priority of the sources;
+- role derived only from reliable events;
+- secret identity → empty profile;
+- no TRP3 requirement;
+- rules with `other` and `place`;
+- transition from open world to dungeon, raid and battleground, with the rhythm changing.
 
-**Dipendenze:** dopo S5 (modello dei tratti) e S6b (relazioni e lista persone). Prima di S7, perché i contenuti Alpha useranno anche queste condizioni. S8 riusa `Data/NPCs.lua` e il profilo dell'interlocutore.
+**Dependencies:** after S5 (trait model) and S6b (relationships and people list). Before S7, because the Alpha content will also use these conditions. S8 reuses `Data/NPCs.lua` and the interlocutor profile.
 
-#### Esito di S6c e note per S7, S8
-- **Dove sta il codice** (nel `.toc`: `Systems\Place` prima di `LivingMemory`, `Systems\Interlocutor` dopo `Relationships`; `Data\Places` e `Data\NPCs` dopo `Data\Relationships`; `Data\RegistryContext`, i testi `Context.lua` e le stringhe `ContextUI.lua` in fondo; [ADR 0019](docs/adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)):
-  - `Systems/Place.lua` (`NS.Place`, modulo `place`): `Read(ctx)` → `ctx.place` (`AUPlace`: `key`, `zone`, `subzone`, `mapID`, `continent`, `tags`, `mood`, `territory`, `capital`, `faction`, `friendlyCapital`, `hostileCapital`, `instanceType`, `instanceName`, `instanceID`, `difficulty`, `encounter`, `lastEncounter`, `encounterResult`, `groupRole`, `battleground`, `rest`, `source`); `Lookup(mapID, nome)` (uiMapID verificato > nome > uiMapID non verificato), `Key(mapID, zona)` (`"map:<id>"` o il nome), `Factor` (fattore `C`: tag `place.` e frasi brevi ≤ 80 byte in campo di battaglia, arena e contro un boss), `RHYTHM` (ritmo per tipo di istanza, via `SetRhythm "place"`), `SetDemandCheck "encounter"`, evento `encounter_end` (guardia: uno scontro finito da poco), `Describe`/`Command` (`/au luogo`). `NS:RegisterPlaces{ zones, subzones, instances, continents }`.
-  - `Systems/Interlocutor.lua` (`NS.Interlocutor`, modulo `interlocutor`): `Build`/`Context` → `ctx.other` (`AUOther`) e `ctx.otherTraits`; fonti in ordine utente > TRP3 pubblico (consenso `interlocutor.trp3Others`) > `Data/NPCs.lua` > ruolo da interazioni affidabili (`ROLE_OF`) > tendenza debole (`tendency`, solo peso) > neutro; `Note`/`Actions`/`HasAction` (azioni in memoria per la sessione, `ACTION_WINDOW` 120 s, `ACTION_KEEP` 900 s, `MAX_SUBJECTS` 60), `SetTrait(kind, id, tratto, valore)`, `Factor` (fattore `C`, tag `other.`), modificatore di registro `other` (modo di parlare e ruolo), eventi `npc_meet` (modulo `npc`) e `other_action` con guardie, `Describe`/`Command` (`/au chi [trp3 on|off|tratto <tratto> <valore>]`). Tratti nuovi con ambito `other`: `goals`, `speech`, `role`; `temperament` e `morality` sono quelli del Soul. `NS:RegisterNPCs`, `NS:RegisterTendencies` (la morale si scarta).
-  - Sorgenti nuove sul bus: `ENCOUNTER_START`, `ENCOUNTER_END`, `BATTLEFIELD_STATUS` (`UPDATE_BATTLEFIELD_STATUS`), `NPC_INTERACT { kind = "banker" }` (`BANKFRAME_OPENED`), `OTHER_DUEL`, `OTHER_INVITE`, `OTHER_EMOTE` (`CHAT_MSG_TEXT_EMOTE`: solo emote standard rivolte a noi, il testo si scarta); `WORLD_ENTER`/`ZONE_ENTER` portano `mapID`.
-  - Motore: sotto-tabelle `other`/`place` (`Engine.MatchSub`, `Engine.SUB_FIELDS`, `Engine.SUB_VALUES`, validatore `CheckSub`); ogni campo conta nella specificità; segnaposto `{other}` `{otherrole}` `{otherrace}` `{otherclass}` `{instance}` `{encounter}` (campi `otherName`, `otherRoleLocal`, `otherRaceLocal`, `otherClassLocal`, `instanceName`, `encounterName`; `Validator.WORST`).
-  - `Integration/TotalRP3.lua`: `GetOtherProfile(unit)` (solo `characteristics.RA`, `CL`, `PS` del profilo pubblico, temperamento e morale), `HasOtherConsent`, `CleanPsycho`, `MapPsycho`. `Systems/Relationships.lua` conserva `traits`, `role`, `roleSource` nelle relazioni.
-  - **Memoria dei luoghi per uiMapID** (chiude #31): `memories.version` 2, chiave `map:<id>` o nome, migrazione `LM.migrations[2]` (nomi con uiMapID verificato convertiti, doppioni uniti), adozione per nome alla prima visita con uiMapID, `LM:FindPlace(chiaveONome)`, `ForgetPlace` per chiave o nome, `ctx.memory.key`. Schema delle SavedVariables **invariato** (5).
-  - 86 frasi IT/EN in `base_context` (per interlocutore 45, per luogo 41). Totale di base: 595 frasi con il pacchetto di esempio.
-- **Cosa deve sapere S7 (contenuti):**
-  - le condizioni sono in `PACK_FORMAT.md` («Interlocutore e luogo»): `other = { role, temperament, speech, goals, race, class, kind, actions = { …, within = n }, relation }`, `place = { instanceType, territory, tags, friendlyCapital, hostileCapital, encounter, encounterResult, groupRole, rest }`; i tag `other.…`/`place.…` pesano nel fattore `C`;
-  - l'ingresso in un dungeon, un'incursione o un campo di battaglia è l'evento `zone` con `place = { instanceType = … }`; durante gli scontri con i boss il narratore tace: le frasi da boss vanno su `encounter_end`; in campo di battaglia e arena servono frasi brevi (≤ 80 byte) o pesano meno;
-  - un saluto per razza o classe parla della terra d'origine o del mestiere, mai di una morale (GDD §5.4); per i personaggi canonici di `Data/NPCs.lua` c'è solo il ruolo;
-  - i tag dei luoghi disponibili sono quelli di `Data/Places.lua` (il validatore rifiuta un tag non registrato); per un tag nuovo si aggiunge prima ai dati;
-  - `npc_meet` parla solo con un NPC dal ruolo riconosciuto e `other_action` solo con un'azione recente: una frase di quegli eventi deve dichiarare la condizione (`other = { role = … }` o `other = { actions = … }`), anche se il validatore oggi non lo esige.
-- **Cosa deve sapere S8 (NPC Alive):** `Data/NPCs.lua` è il registro (`I.npcs[npcID]`: `role`, `temperament`, `speech`, `goals`); `ctx.other` dà ruolo e voce dell'NPC aperto; `Interlocutor.ROLE_OF` dice quali interazioni rendono affidabile un archetipo; `I.SPEECH_STYLES`/`ROLE_STYLES` sono il registro della voce `npc`.
-- **Aperte da S6c:** [#36](https://github.com/Finland6738/azeroth-unspoken/issues/36) (verificare in gioco uiMapID, instanceID e npcID, `in-game`), [#37](https://github.com/Finland6738/azeroth-unspoken/issues/37) (tratti dell'interlocutore e consenso TRP3 nell'interfaccia), [#38](https://github.com/Finland6738/azeroth-unspoken/issues/38) (emote rivolte a noi solo con il client inglese). Resta aperta #26 (`string.lower` e UTF-8): il codice nuovo usa `Traits.Lower`.
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestOtherPlace.lua` (oltre 530 controlli: luogo nel mondo aperto, ordine di `Lookup`, API mancanti e valori segreti, istanze, scontri, coda dei campi di battaglia, ritmo da mondo aperto a dungeon, incursione, boss, campo di battaglia, arena e locanda, impegno durante i boss, frasi brevi, interlocutore da bersaglio e NPC, identità segreta, ruolo solo da interazioni affidabili, priorità delle fonti con TRP3 finto, nessun obbligo di TRP3, tendenza debole, azioni e loro finestra, privacy delle emote, regole `other`/`place` con tutti gli operatori, validatore, segnaposto IT/EN, 86 frasi, scelta delle frasi per interlocutore e luogo, #31 e migrazione 1 → 2, comandi, chiavi IT/EN) più `check_api.py`. `TestMemory` e `TestRelations` ammettono `CHAT_MSG_TEXT_EMOTE` tra le sorgenti di chat.
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 56–64): **tutti i numeri** di `Data/Places.lua` e `Data/NPCs.lua` (#36); che `C_Map.GetBestMapForUnit`/`GetMapInfo`, `GetInstanceInfo`, `C_PvP.GetZonePVPInfo`, `C_PvP.IsBattleground`/`IsArena`, `GetBattlefieldStatus`, `UnitGroupRolesAssigned`, `UnitReaction`, `UnitCreatureFamily`, `UnitIsUnit` rispondano come nel dump; che `ENCOUNTER_START`/`END`, `UPDATE_BATTLEFIELD_STATUS`, `BANKFRAME_OPENED`, `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST` e `CHAT_MSG_TEXT_EMOTE` arrivino con quei parametri; `TRP3_API.register.getUnitIDCurrentProfile` di Total RP 3; il tono delle 86 frasi; i numeri del ritmo (ipotesi).
+#### Outcome of S6c and notes for S7, S8
+- **Where the code lives** (in the `.toc`: `Systems\Place` before `LivingMemory`, `Systems\Interlocutor` after `Relationships`; `Data\Places` and `Data\NPCs` after `Data\Relationships`; `Data\RegistryContext`, the `Context.lua` texts and the `ContextUI.lua` strings at the end; [ADR 0019](docs/adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)):
+  - `Systems/Place.lua` (`NS.Place`, module `place`): `Read(ctx)` → `ctx.place` (`AUPlace`: `key`, `zone`, `subzone`, `mapID`, `continent`, `tags`, `mood`, `territory`, `capital`, `faction`, `friendlyCapital`, `hostileCapital`, `instanceType`, `instanceName`, `instanceID`, `difficulty`, `encounter`, `lastEncounter`, `encounterResult`, `groupRole`, `battleground`, `rest`, `source`); `Lookup(mapID, name)` (verified uiMapID > name > unverified uiMapID), `Key(mapID, zone)` (`"map:<id>"` or the name), `Factor` (factor `C`: `place.` tags and short lines ≤ 80 bytes in battlegrounds, arenas and against a boss), `RHYTHM` (rhythm per instance type, via `SetRhythm "place"`), `SetDemandCheck "encounter"`, event `encounter_end` (guard: an encounter that just ended), `Describe`/`Command` (`/au luogo`). `NS:RegisterPlaces{ zones, subzones, instances, continents }`.
+  - `Systems/Interlocutor.lua` (`NS.Interlocutor`, module `interlocutor`): `Build`/`Context` → `ctx.other` (`AUOther`) and `ctx.otherTraits`; sources in the order user > public TRP3 (consent `interlocutor.trp3Others`) > `Data/NPCs.lua` > role from reliable interactions (`ROLE_OF`) > weak tendency (`tendency`, weight only) > neutral; `Note`/`Actions`/`HasAction` (actions kept in memory for the session, `ACTION_WINDOW` 120 s, `ACTION_KEEP` 900 s, `MAX_SUBJECTS` 60), `SetTrait(kind, id, trait, value)`, `Factor` (factor `C`, `other.` tags), register modifier `other` (way of speaking and role), events `npc_meet` (module `npc`) and `other_action` with guards, `Describe`/`Command` (`/au chi [trp3 on|off|tratto <trait> <value>]`). New traits with scope `other`: `goals`, `speech`, `role`; `temperament` and `morality` are those of the Soul. `NS:RegisterNPCs`, `NS:RegisterTendencies` (morality is discarded).
+  - New sources on the bus: `ENCOUNTER_START`, `ENCOUNTER_END`, `BATTLEFIELD_STATUS` (`UPDATE_BATTLEFIELD_STATUS`), `NPC_INTERACT { kind = "banker" }` (`BANKFRAME_OPENED`), `OTHER_DUEL`, `OTHER_INVITE`, `OTHER_EMOTE` (`CHAT_MSG_TEXT_EMOTE`: only standard emotes directed at us, the text is discarded); `WORLD_ENTER`/`ZONE_ENTER` carry `mapID`.
+  - Engine: `other`/`place` sub-tables (`Engine.MatchSub`, `Engine.SUB_FIELDS`, `Engine.SUB_VALUES`, validator `CheckSub`); every field counts toward specificity; placeholders `{other}` `{otherrole}` `{otherrace}` `{otherclass}` `{instance}` `{encounter}` (fields `otherName`, `otherRoleLocal`, `otherRaceLocal`, `otherClassLocal`, `instanceName`, `encounterName`; `Validator.WORST`).
+  - `Integration/TotalRP3.lua`: `GetOtherProfile(unit)` (only `characteristics.RA`, `CL`, `PS` of the public profile, temperament and morality), `HasOtherConsent`, `CleanPsycho`, `MapPsycho`. `Systems/Relationships.lua` keeps `traits`, `role`, `roleSource` in the relationships.
+  - **Place memory by uiMapID** (closes #31): `memories.version` 2, key `map:<id>` or name, migration `LM.migrations[2]` (names with a verified uiMapID converted, duplicates merged), adoption by name on the first visit with a uiMapID, `LM:FindPlace(keyOrName)`, `ForgetPlace` by key or name, `ctx.memory.key`. SavedVariables schema **unchanged** (5).
+  - 86 IT/EN lines in `base_context` (by interlocutor 45, by place 41). Base total: 595 lines with the sample pack.
+- **What S7 (content) needs to know:**
+  - the conditions are in `PACK_FORMAT.md` ("Interlocutor and place"): `other = { role, temperament, speech, goals, race, class, kind, actions = { …, within = n }, relation }`, `place = { instanceType, territory, tags, friendlyCapital, hostileCapital, encounter, encounterResult, groupRole, rest }`; the `other.…`/`place.…` tags weigh in the `C` factor;
+  - entering a dungeon, a raid or a battleground is the `zone` event with `place = { instanceType = … }`; during boss fights the narrator stays silent: boss lines go on `encounter_end`; in battlegrounds and arenas short lines (≤ 80 bytes) are needed or they weigh less;
+  - a greeting by race or class speaks of the homeland or the trade, never of a morality (GDD §5.4); for the canonical characters in `Data/NPCs.lua` there is only the role;
+  - the available place tags are those of `Data/Places.lua` (the validator rejects an unregistered tag); for a new tag, add it to the data first;
+  - `npc_meet` speaks only with an NPC of a recognized role and `other_action` only with a recent action: a line of those events must declare the condition (`other = { role = … }` or `other = { actions = … }`), even if the validator does not require it today.
+- **What S8 (NPC Alive) needs to know:** `Data/NPCs.lua` is the registry (`I.npcs[npcID]`: `role`, `temperament`, `speech`, `goals`); `ctx.other` gives the role and voice of the open NPC; `Interlocutor.ROLE_OF` says which interactions make an archetype reliable; `I.SPEECH_STYLES`/`ROLE_STYLES` are the registry of the `npc` voice.
+- **Opened by S6c:** [#36](https://github.com/Finland6738/azeroth-unspoken/issues/36) (verify uiMapID, instanceID and npcID in game, `in-game`), [#37](https://github.com/Finland6738/azeroth-unspoken/issues/37) (interlocutor traits and TRP3 consent in the interface), [#38](https://github.com/Finland6738/azeroth-unspoken/issues/38) (emotes directed at us only with the English client). #26 (`string.lower` and UTF-8) remains open: the new code uses `Traits.Lower`.
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestOtherPlace.lua` (over 530 checks: place in the open world, order of `Lookup`, missing APIs and secret values, instances, encounters, battleground queue, rhythm from open world to dungeon, raid, boss, battleground, arena and inn, engagement during bosses, short lines, interlocutor from target and NPC, secret identity, role only from reliable interactions, source priority with a fake TRP3, no TRP3 requirement, weak tendency, actions and their window, emote privacy, `other`/`place` rules with all operators, validator, IT/EN placeholders, 86 lines, line selection by interlocutor and place, #31 and migration 1 → 2, commands, IT/EN keys) plus `check_api.py`. `TestMemory` and `TestRelations` allow `CHAT_MSG_TEXT_EMOTE` among the chat sources.
+- **Not verified without the client** (added to `docs/G1_checklist.md` (in Italian), steps 56–64): **all the numbers** in `Data/Places.lua` and `Data/NPCs.lua` (#36); that `C_Map.GetBestMapForUnit`/`GetMapInfo`, `GetInstanceInfo`, `C_PvP.GetZonePVPInfo`, `C_PvP.IsBattleground`/`IsArena`, `GetBattlefieldStatus`, `UnitGroupRolesAssigned`, `UnitReaction`, `UnitCreatureFamily`, `UnitIsUnit` respond as in the dump; that `ENCOUNTER_START`/`END`, `UPDATE_BATTLEFIELD_STATUS`, `BANKFRAME_OPENED`, `DUEL_REQUESTED`, `PARTY_INVITE_REQUEST` and `CHAT_MSG_TEXT_EMOTE` arrive with those parameters; Total RP 3's `TRP3_API.register.getUnitIDCurrentProfile`; the tone of the 86 lines; the rhythm numbers (hypotheses).
 
-### S7: contenuti Alpha (GDD §5, §9.2, §21)
-- 300 intenzioni bilingui; almeno 2 varianti per le scene più comuni; tutte e quattro le voci; tre profondità per i momenti chiave.
-- Coprire a fondo il vertical slice A e C.
-- Rispettare le regole di qualità del §5.4: varietà di lessico e lunghezza, niente lore inventata spacciata per canone.
+### S7: Alpha content (GDD §5, §9.2, §21)
+- 300 bilingual intentions; at least 2 variants for the most common scenes; all four voices; three depths for key moments.
+- Cover vertical slices A and C in depth.
+- Follow the quality rules of §5.4: variety of vocabulary and length, no invented lore passed off as canon.
 
 
-#### Esito di S7 e note per G2, S8
-- **Numeri** (database di base, senza il pacchetto di esempio; `Tests/TestContent.lua` li controlla):
-  - **803 intenzioni** (erano 588), **1.711 varianti per lingua** (erano 612). Tutte le intenzioni di `battle`, `victory`, `lowhp`, `zone`, `greet`, `farewell`, `memory_return`, `death`, `rez`, `levelup` e del riposo hanno almeno 2 varianti IT ed EN; delle altre restano a una variante solo 9 frasi di incantesimo.
-  - Voci: personaggio 444, voce interiore 235, narratore esterno 108 (erano 32), **NPC 16** (solo `npc_meet`, sempre con `other.role`).
-  - Profondità ammesse dalle regole: naturale 378, letterario 754, elevato 301; varianti scritte apposta per tutte e tre su arrivo e ritorno in foresta, zone di foresta, morte, ritorno in vita, livello, vittoria, salute bassa, saluti e congedi principali.
-  - Per pacchetto: combattimento 139, interlocutore e luogo 110, esplorazione 101, relazioni 83, memoria 81, incantesimi 73, social 73, vita 63, classi 54, personalità 26.
-- **Vertical slice A e C** (`Data/RegistryMemory.lua`): 10 intenzioni di prima visita in foresta e 12 di ritorno, con tre voci, temperamenti (stoico, allegro, feroce, malinconico, burbero, misericordioso), ora del giorno, ritorno dopo morte o fuga, dopo 7 giorni o 5 visite; prima visita e ritorno per ogni `mood`, dungeon, incursione e campo di battaglia; flag `first_death`, `first_capital`, `level_30/40/60`. Tutte le frasi di `memory_return` iniziano con `mem.ret.` (lo richiede `TestMemory`).
-- **Issue chiuse:** #18 (narratore e varianti), #27 (tag del Soul: 756 intenzioni su 803 hanno almeno un tag con due punti; `topic:death` su ogni frase di `death`, `topic:religion` su ogni `pray`, `topic:romance` su ogni frase d'amore; `req:` su meno del 5%), #29 (memoria), #34 (relazioni per ogni etichetta; `{relation}` in italiano solo tra virgolette; frasi per `other.sex`, giocatori, NPC con ruolo, disposizione, attrazione).
-- **Aperte da S7:** [#41](https://github.com/Finland6738/azeroth-unspoken/issues/41) (genere delle etichette di relazione e segnaposto di genere per l'interlocutore: oggi `{g:}` vale solo per il personaggio), [#42](https://github.com/Finland6738/azeroth-unspoken/issues/42) (i `topic:` non filtrano il vocabolario: `{cry}` e `{foe}` possono portare sangue, non morti o demoni).
-- **Correzioni editoriali** a frasi esistenti: generi `{g:}` mancanti, `zone.durotar.01` solo Orda, `zone.dunmorogh.01` solo nani e gnomi, il druido non dice più di aver dormito secoli nel Sogno, `rez.e.03` regge anche lo spirito guaritore, due battute che ricordavano citazioni note riscritte.
-- **Per G2** (passi 65–68 in `docs/G1_checklist.md`): arrivo in foresta con le tre profondità e due archetipi; ritorno dopo 10 minuti, dopo una morte e dopo una fuga; un'ora di gioco per giudicare ripetizioni, frasi che stonano e frequenza; la voce NPC. Il tono, la lunghezza percepita e il ritmo **non sono verificati**: i test controllano struttura, conteggi e regole, non la qualità letteraria.
-- **Per S8 (NPC Alive):** le 16 intenzioni `ctx.npcv.*` (voce `npc`, `Data/RegistryContext.lua`) sono già battute per ruolo, modo di parlare e temperamento: la finestra di dialogo può riusarle come prima battuta del locandiere (vertical slice B). Le guardie parlano solo se il ruolo arriva da `Data/NPCs.lua` (oggi due NPC): S8 può ricavare il ruolo in modo affidabile anche per loro. Manca una condizione «dentro una locanda con l'oste» (`place.rest` vale in ogni area di riposo); le frasi scritte reggono entrambi i casi.
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestContent.lua` (intenzioni, varianti per evento, voci e dove parla la voce NPC, profondità, slice A e C, memoria per atmosfera e flag, tag e argomenti delicati, relazioni per etichetta e `{relation}` tra virgolette, 80 byte in campo di battaglia e arena, parole fuori dall'era di Forever, testi IT ripetuti o identici all'inglese, parole abusate sotto il 5%, validatore a zero); conteggi aggiornati in `run_tests.py` (810 frasi con l'esempio), `TestSchema`, `TestValidator`, `TestOtherPlace`; `TestChatGateway` accetta la voce `npc` (parlata, privata).
+#### Outcome of S7 and notes for G2, S8
+- **Numbers** (base database, without the example pack; `Tests/TestContent.lua` checks them):
+  - **803 intentions** (were 588), **1,711 variants per language** (were 612). All the intentions of `battle`, `victory`, `lowhp`, `zone`, `greet`, `farewell`, `memory_return`, `death`, `rez`, `levelup` and rest have at least 2 IT and EN variants; of the others, only 9 spell lines are left with a single variant.
+  - Voices: character 444, inner voice 235, external narrator 108 (were 32), **NPC 16** (only `npc_meet`, always with `other.role`).
+  - Depths allowed by the rules: natural 378, literary 754, elevated 301; variants written on purpose for all three on arriving in and returning to the forest, forest zones, death, coming back to life, level, victory, low health, main greetings and farewells.
+  - Per pack: combat 139, interlocutor and place 110, exploration 101, relationships 83, memory 81, spells 73, social 73, life 63, classes 54, personality 26.
+- **Vertical slices A and C** (`Data/RegistryMemory.lua`): 10 first-visit intentions in the forest and 12 return ones, with three voices, temperaments (stoic, cheerful, fierce, melancholic, gruff, merciful), time of day, return after death or flight, after 7 days or 5 visits; first visit and return for every `mood`, dungeon, raid and battleground; flags `first_death`, `first_capital`, `level_30/40/60`. All `memory_return` lines start with `mem.ret.` (required by `TestMemory`).
+- **Issues closed:** #18 (narrator and variants), #27 (Soul tags: 756 intentions out of 803 have at least one tag with a colon; `topic:death` on every `death` line, `topic:religion` on every `pray`, `topic:romance` on every love line; `req:` on fewer than 5%), #29 (memory), #34 (relationships for every label; `{relation}` in Italian only between quotation marks; lines for `other.sex`, players, NPCs with a role, disposition, attraction).
+- **Opened by S7:** [#41](https://github.com/Finland6738/azeroth-unspoken/issues/41) (gender of the relationship labels and gender placeholders for the interlocutor: today `{g:}` applies only to the character), [#42](https://github.com/Finland6738/azeroth-unspoken/issues/42) (the `topic:` tags do not filter the vocabulary: `{cry}` and `{foe}` can bring blood, the undead or demons).
+- **Editorial corrections** to existing lines: missing `{g:}` genders, `zone.durotar.01` Horde only, `zone.dunmorogh.01` dwarves and gnomes only, the druid no longer says they slept for centuries in the Dream, `rez.e.03` also works for the spirit healer, two lines that recalled well-known quotations rewritten.
+- **For G2** (steps 65–68 in `docs/G1_checklist.md`, in Italian): arrival in the forest with the three depths and two archetypes; return after 10 minutes, after a death and after a flight; one hour of play to judge repetitions, lines that feel off and frequency; the NPC voice. Tone, perceived length and rhythm are **not verified**: the tests check structure, counts and rules, not literary quality.
+- **For S8 (NPC Alive):** the 16 `ctx.npcv.*` intentions (voice `npc`, `Data/RegistryContext.lua`) are already lines per role, way of speaking and temperament: the dialogue window can reuse them as the innkeeper's first line (vertical slice B). Guards speak only if the role comes from `Data/NPCs.lua` (two NPCs today): S8 can derive the role reliably for them too. A condition "inside an inn with the innkeeper" is missing (`place.rest` holds in every rest area); the lines as written work in both cases.
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestContent.lua` (intentions, variants per event, voices and where the NPC voice speaks, depths, slices A and C, memory per atmosphere and flag, tags and sensitive topics, relationships per label and `{relation}` between quotation marks, 80 bytes in battleground and arena, words outside the Forever era, repeated IT texts or texts identical to the English, overused words under 5%, validator at zero); counts updated in `run_tests.py` (810 lines with the example), `TestSchema`, `TestValidator`, `TestOtherPlace`; `TestChatGateway` accepts the `npc` voice (spoken, private).
 
 ### S8: NPC Alive (GDD §7.3, §21-B)
-- Finestra di dialogo etichettata "dialogo ambientale dell'addon".
-- Stati `idle → offered → opened → choice → response → ended`.
-- Registro degli NPC tramite `npcID` dal GUID, verificato.
-- Archetipi (locandiere, mercante, guardia) solo con una classificazione affidabile, ad esempio gli eventi di gossip o merchant; nessun dialogo se l'identità è incerta.
-- La finestra non deve interferire con il gossip Blizzard.
+- Dialogue window labeled "addon ambient dialogue".
+- States `idle → offered → opened → choice → response → ended`.
+- NPC registry by `npcID` taken from the GUID, verified.
+- Archetypes (innkeeper, merchant, guard) only with a reliable classification, for example the gossip or merchant events; no dialogue if the identity is uncertain.
+- The window must not interfere with Blizzard's gossip.
 
-#### Esito di S8 e note per S9
-- **Dove sta il codice** (nel `.toc`: `Systems\NPCAlive` dopo `Systems\Interlocutor`; `UI\DialogueFrame` dopo `UI\RelationsFrame`; `Data\RegistryDialogues` e `Data\Dialogues` dopo `Data\RegistryContext`, i testi `Dialogues.lua` e le stringhe `NPCUI.lua`; [ADR 0020](docs/adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)):
-  - `Systems/NPCAlive.lua` (`NS.NPCAlive`): la macchina a stati (`STATES`, `TRANSITIONS`, `SetState` rifiuta ciò che è fuori ordine; `N.log` tiene il percorso dell'ultimo dialogo), `Offer`/`Open`/`Choose`/`Close`/`End(motivo)`, `Start` (offerta e apertura insieme, per il comando), `Toggle` (il tasto), `View()` (ciò che la finestra disegna), `Identify(hint?)` → `who, motivo`, `Allowed(esplicito)`, `TestWho(stile)` (NPC di prova), `ContextFor(sessione)`, `Check()` (controllo dei copioni, usato dal validatore come `badDialogue`), `Status()`, `Command` (`/au npc`), `DeclareRole` (`/au npc ruolo`), `NS:RegisterDialogues{ scripts }`, `N.FlagName(chiave, flag)`. Costanti in testa al file (`OFFER_SECONDS` 20, `IDLE_SECONDS` 120, `OFFER_GAP` 180, `MAX_TURNS` 12, `MAX_CHOICES` 3, `OFFER_KINDS`).
-  - `UI/DialogueFrame.lua` (`NS.DialogueFrame`): `Render(vista)`, `Place(forza)` e `Candidates` (posizioni che non coprono le finestre di `BLIZZARD_FRAMES`, controllate con `GetRect` solo se esistono), `GetPlacement`, `ResetPosition`, `ApplySettings`; l'etichetta `npc_badge` è sempre sulla fascia in cima. Nessuna logica di dialogo.
-  - `Data/Dialogues.lua`: i cinque copioni (`innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`); `Data/RegistryDialogues.lua`: le battute, generate da una tabella `SPEC` di sigle (`n`, `known`, `stranger`, `again`, `gruff`, `jovial`, `warm`, `formal`, `terse`, `farley`, `firebrew`, `gryshka`, `dughan`); testi in `Data/itIT|enUS/Dialogues.lua`. Gli id sono `npcd.<ruolo>.<nodo>.<sigla><n>`, gli eventi `npcd_<ruolo>_<nodo>`.
-  - Per l'**issue #41**: `Relationships:LabelName(id, sesso)`, `Resolve(kind, rec, sesso)`, i nomi in `Data/Relationships.lua` come `it = { "amico", "amica" }`, segnaposto `{og:m|f}` (`ctx.otherSex`, in `TemplateRenderer`, `HasData` e `Validator`). Per l'**issue #42**: i `tags` sulle voci di `Data/Vocabulary.lua` (`topic:blood`, `topic:undead`, `topic:death`, `topic:demons`, `topic:religion`), filtrati in `Engine:Vocab` con `Traits.Evaluate`, `badTag` anche per il vocabolario.
-  - Impostazioni nuove: `npcAlive.autoOffer`, `ui.dialogue` (`fontSize`, `alpha`, `locked`, `pos`); schema delle SavedVariables **invariato** (5). Nella relazione di un NPC il campo `talks` conta le conversazioni con almeno una risposta (serve a «la prima volta» del ricordo).
-- **Numeri**: 169 battute di base nuove (972 intenzioni di base, 979 con l'esempio): locandiere 54, mercante 37, guardia 33, maestro di volo 18, addestratore 27 (di cui specifiche: Farley 4, Firebrew 2, Gryshka 2, Dughan 3), tutte con due varianti IT ed EN (qualcuna tre). Tre guardie di città nel registro (npcID 68, 5595, 3296: **non verificati**).
-- **Decisioni da conoscere** (dettagli nell'ADR): il solo gossip non dà un archetipo; il ruolo vale se lo prova l'interazione in corso, il registro curato o l'utente (`/au npc ruolo`), o se lo stesso NPC l'ha già provato nella sessione; la finestra non va mai in `UISpecialFrames` e non chiama mai nulla di Blizzard; le battute escono solo dentro un dialogo (guardia sull'evento, `ctx.npcDialogue`); un dialogo di prova non scrive nulla; l'offerta ha un limite per NPC *e* per finestra (dal gossip al mercante se ne può fare un'altra).
-- **Cosa deve sapere S9 (Story Arcs):**
-  - i flag narrativi (`LivingMemory:SetFlag`, nomi `npcd_...`) e `remembered` sono il modo in cui un dialogo può far avanzare un arco: un arco può reagire a un flag di dialogo (o impostarne uno) senza toccare NPCAlive; le scelte di un dialogo non devono mai sbloccare da sole uno stato di un arco senza che l'arco lo dichiari;
-  - per un NPC che fa parte di un arco: un copione `npc:<npcID>` con `extends` e battute con `other = { npcID = … }`; `NS:RegisterDialogues` e `NS:RegisterNPCs` lo permettono da un pacchetto;
-  - `LivingMemory:RegisterKind` per i ricordi degli archi; il diario ha già le schede registrabili (`JournalFrame:RegisterTab`);
-  - il Director riconosce la priorità «dialogo» (4) per i momenti volontari: gli eventi di un arco aperto dal giocatore possono usarla; gli eventi `npcd_*` non passano di lì.
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestNPCAlive.lua` (circa 2.000 controlli: copioni e validatore, risposte neutre, transizioni ammesse e rifiutate, percorso completo, scadenza dell'offerta e del dialogo, interruzioni, identità incerta/segreta/giocatore/ostile/morto, ruolo detto dall'utente, impostazioni (modulo, intensità 0, pausa, filmato, combattimento), nessuna chat né chiamata a Blizzard (`FORBIDDEN_CALLS`), posizione che evita le finestre di Blizzard finte e si corregge, etichetta IT/EN, flag, relazione con i tetti, ricordo senza testo, voce per burbero/gioviale/neutro, NPC specifici, conosciuto/sconosciuto, «di nuovo», anti-ripetizione, copertura per carattere, comandi, #41 e #42); in `run_tests.py` 979 frasi e la **persistenza simulata dopo `/reload`** dei dialoghi (flag, ricordo, relazione, nessuna battuta salvata, NPC di prova senza tracce). Il client finto ha ora `UIParent` dimensionabile; i test scrivono `FakeBlizzard` con `GetRect`.
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 75–83, per G3): che `UnitExists("npc")` e `UnitGUID("npc")` durante gossip, mercante, volo, addestramento e dimora diano l'NPC giusto; i nomi e le dimensioni delle finestre di Blizzard (`GossipFrame`, `MerchantFrame`...) e `GetRect`; l'aspetto della finestra e dei pulsanti lunghi; se l'offerta non dà fastidio; i numeri `npcID` del registro (#36); il tono delle 169 battute e quanto distinguano i caratteri; i tetti della relazione (ipotesi).
-- **Aperte da S8:** nessuna nuova issue; restano #36 (numeri dei dati, ora anche gli `npcID` delle guardie) e #30/#33 (prove in gioco). Possibili seguiti, non urgenti: un'opzione nel pannello delle impostazioni per l'offerta automatica (oggi solo `/au npc offerta`), più locandieri e guardie nel registro dopo la verifica in gioco, un banchiere e un maestro di professione con un copione.
+#### Outcome of S8 and notes for S9
+- **Where the code lives** (in the `.toc`: `Systems\NPCAlive` after `Systems\Interlocutor`; `UI\DialogueFrame` after `UI\RelationsFrame`; `Data\RegistryDialogues` and `Data\Dialogues` after `Data\RegistryContext`, the `Dialogues.lua` texts and the `NPCUI.lua` strings; [ADR 0020](docs/adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)):
+  - `Systems/NPCAlive.lua` (`NS.NPCAlive`): the state machine (`STATES`, `TRANSITIONS`, `SetState` rejects anything out of order; `N.log` keeps the path of the last dialogue), `Offer`/`Open`/`Choose`/`Close`/`End(reason)`, `Start` (offer and open together, for the command), `Toggle` (the key), `View()` (what the window draws), `Identify(hint?)` → `who, reason`, `Allowed(explicit)`, `TestWho(style)` (test NPC), `ContextFor(session)`, `Check()` (script check, used by the validator as `badDialogue`), `Status()`, `Command` (`/au npc`), `DeclareRole` (`/au npc role`), `NS:RegisterDialogues{ scripts }`, `N.FlagName(key, flag)`. Constants at the top of the file (`OFFER_SECONDS` 20, `IDLE_SECONDS` 120, `OFFER_GAP` 180, `MAX_TURNS` 12, `MAX_CHOICES` 3, `OFFER_KINDS`).
+  - `UI/DialogueFrame.lua` (`NS.DialogueFrame`): `Render(view)`, `Place(force)` and `Candidates` (positions that do not cover the windows in `BLIZZARD_FRAMES`, checked with `GetRect` only if they exist), `GetPlacement`, `ResetPosition`, `ApplySettings`; the `npc_badge` label is always on the band at the top. No dialogue logic.
+  - `Data/Dialogues.lua`: the five scripts (`innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`); `Data/RegistryDialogues.lua`: the lines, generated from a `SPEC` table of codes (`n`, `known`, `stranger`, `again`, `gruff`, `jovial`, `warm`, `formal`, `terse`, `farley`, `firebrew`, `gryshka`, `dughan`); texts in `Data/itIT|enUS/Dialogues.lua`. The ids are `npcd.<role>.<node>.<code><n>`, the events `npcd_<role>_<node>`.
+  - For **issue #41**: `Relationships:LabelName(id, sex)`, `Resolve(kind, rec, sex)`, the names in `Data/Relationships.lua` as `it = { "amico", "amica" }`, placeholder `{og:m|f}` (`ctx.otherSex`, in `TemplateRenderer`, `HasData` and `Validator`). For **issue #42**: the `tags` on the entries of `Data/Vocabulary.lua` (`topic:blood`, `topic:undead`, `topic:death`, `topic:demons`, `topic:religion`), filtered in `Engine:Vocab` with `Traits.Evaluate`, `badTag` for the vocabulary too.
+  - New settings: `npcAlive.autoOffer`, `ui.dialogue` (`fontSize`, `alpha`, `locked`, `pos`); SavedVariables schema **unchanged** (5). In an NPC's relationship the `talks` field counts the conversations with at least one answer (it feeds the memory's "the first time").
+- **Numbers**: 169 new base lines (972 base intentions, 979 with the example): innkeeper 54, merchant 37, guard 33, flight master 18, trainer 27 (of which specific: Farley 4, Firebrew 2, Gryshka 2, Dughan 3), all with two IT and EN variants (a few with three). Three city guards in the registry (npcID 68, 5595, 3296: **not verified**).
+- **Decisions to know** (details in the ADR): gossip alone does not give an archetype; the role holds if the current interaction proves it, the curated registry or the user (`/au npc role`) does, or if the same NPC has already proved it in the session; the window never goes into `UISpecialFrames` and never calls anything from Blizzard; lines come out only inside a dialogue (guard on the event, `ctx.npcDialogue`); a test dialogue writes nothing; the offer has a limit per NPC *and* per window (from gossip to merchant another one can be made).
+- **What S9 (Story Arcs) needs to know:**
+  - the narrative flags (`LivingMemory:SetFlag`, names `npcd_...`) and `remembered` are the way a dialogue can advance an arc: an arc can react to a dialogue flag (or set one) without touching NPCAlive; a dialogue's choices must never unlock an arc's state on their own unless the arc declares it;
+  - for an NPC that is part of an arc: a script `npc:<npcID>` with `extends` and lines with `other = { npcID = … }`; `NS:RegisterDialogues` and `NS:RegisterNPCs` allow it from a pack;
+  - `LivingMemory:RegisterKind` for the arcs' memories; the journal already has registrable tabs (`JournalFrame:RegisterTab`);
+  - the Director recognizes the "dialogue" priority (4) for voluntary moments: the events of an arc opened by the player can use it; the `npcd_*` events do not go through there.
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestNPCAlive.lua` (about 2,000 checks: scripts and validator, neutral answers, allowed and rejected transitions, full path, expiry of the offer and of the dialogue, interruptions, uncertain/secret/player/hostile/dead identity, role declared by the user, settings (module, intensity 0, pause, cinematic, combat), no chat and no call to Blizzard (`FORBIDDEN_CALLS`), position that avoids the fake Blizzard windows and corrects itself, IT/EN label, flags, relationship with the caps, memory without text, voice for gruff/jovial/neutral, specific NPCs, known/unknown, "again", anti-repetition, coverage per character, commands, #41 and #42); in `run_tests.py` 979 lines and the **simulated persistence after `/reload`** of the dialogues (flag, memory, relationship, no line saved, test NPC without traces). The fake client now has a resizable `UIParent`; the tests write `FakeBlizzard` with `GetRect`.
+- **Not verified without the client** (added to `docs/G1_checklist.md`, steps 75–83, for G3): that `UnitExists("npc")` and `UnitGUID("npc")` during gossip, merchant, flight, training and inn give the right NPC; the names and sizes of Blizzard's windows (`GossipFrame`, `MerchantFrame`...) and `GetRect`; the look of the window and of long buttons; whether the offer is not annoying; the registry's `npcID` numbers (#36); the tone of the 169 lines and how well they tell the characters apart; the relationship caps (hypothesis).
+- **Opened by S8:** no new issues; #36 remains (data numbers, now also the guards' `npcID`s) and #30/#33 (in-game tests). Possible follow-ups, not urgent: an option in the settings panel for the automatic offer (today only `/au npc offer`), more innkeepers and guards in the registry after the in-game check, a banker and a profession trainer with a script.
 
 ### S9: Story Arcs (GDD §7.5)
-- Archi a stati (`LOCKED → DISCOVERED → REFLECTED → RESOLVED`), al massimo 1–2 attivi, saltabili e disattivabili.
-- Persistono dopo il logout e si integrano col diario. Scrivere 3–5 archi di esempio.
+- State-based arcs (`LOCKED → DISCOVERED → REFLECTED → RESOLVED`), at most 1–2 active, skippable and disableable.
+- They persist after logout and integrate with the journal. Write 3–5 example arcs.
 
-#### Esito di S9 e note per S10
-- **Dove sta il codice** (nel `.toc`: `Systems\StoryArcs` dopo `Systems\NPCAlive`; `Data\RegistryArcs` e `Data\Arcs` dopo `Data\Dialogues`, i testi `Arcs.lua` e le stringhe `ArcsUI.lua`; la scheda «Storie» è in `UI\JournalFrame.lua`; [ADR 0021](docs/adr/0021-story-arcs-micro-stories-without-game-effects.md)):
-  - `Systems/StoryArcs.lua` (`NS.StoryArcs`, modulo `storyarcs`): `NS:RegisterArcs{ pack, arcs, texts }`, `NS:AddArcTexts`, `Validate(def)`, `Fire(evento, extra)` (abbonato al bus: `ZONE_ENTER`/`WORLD_ENTER` dopo 2 s, `PLAYER_DEATH`, `LEVEL_UP`, `NPC_INTERACT` senza quest, `MEMORY_FLAG` solo se il flag lo mette un sistema dell'addon: non quelli a mano né quelli automatici della memoria, né gli `arc_…`), `Apply(def, passo, opts)` (l'unico punto che cambia lo stato; rifiuta ciò che non parte dallo stato attuale), `Choose`/`Offering`/`Start`, `Suspend`/`Resume`/`Skip`/`Disable`/`Enable`/`ForAll`/`SetEnabled`, `Conclude` (ricordo `story` permanente), `QueueBeat`/`Flush`/`OnBeatResult` (le battute, una alla volta), `Context()` (`ctx.arcs`), `Record`/`Listing` (per il diario), `Sanitize`/`migrations`, `Check()` (per il validatore), `Command` (`/au storie`). Costanti in testa al file (`BEAT_GAP` 90 s, `OWED_TTL` 900 s, `ZONE_DELAY` 2 s, `MAX_ITEMS` 100).
-  - Dati in `cdb.arcs = { version, items = { [id] = { state, mode, since, t, choices, subject, pending, waiting, waitStep, memoryId, ended } }, stats }`; impostazione `arcs.maxActive` (1–2). **SavedVariables schema 6** (migrazione 6 del personaggio; `arcs.version` 1 con migrazioni interne).
-  - **Passi** (dati): `{ from, to, on = { zone|death|level|npc|flag|player }, when, wait, choose }`; stati di base o propri (da uno si va solo al successivo); l'apertura non può essere `player` né chiedere una scelta; un evento muove un arco di un solo passo; campi sconosciuti (una ricompensa, una quest) sono un errore. `subject = "npc"` lega l'arco al primo NPC conosciuto; `topic = "death"` non lo apre se il Soul evita l'argomento.
-  - **Motore**: sotto-tabella di condizioni `arc = { id, state, from, choice, withSubject }`, `arcDone`, `capitalsVisitedMin` (`Engine/RuleEngine.lua`, validatore dei valori); `ctx.arcs` in `BuildContext`; `LivingMemory:SetFlag` pubblica `MEMORY_FLAG` (solo il nome) sul bus; `Director:Offer(evento, extra, onResult)` restituisce l'esito; `LM:Describe` mostra il titolo dell'arco nel ricordo `story`.
-  - **Battute**: eventi `arc_open`/`arc_step`/`arc_resolve` (`Data/RegistryArcs.lua`, pacchetto `base_arcs`), priorità «eccezionale», modulo `storyArcs`, guardia `ctx.arc.beat`; voci private (`inner`, `narrator`). Il validatore (`badArc`) esige `arc = { id }` in ogni regola di questi eventi.
-  - **Diario**: scheda «Storie» (in corso, disponibili, concluse, saltate o disattivate) con dettaglio, scelte fatte e controlli; `JournalFrame:Open("stories")`. Avviso discreto nel narratore («attende una tua scelta», «può cominciare»), mai in chat.
-- **Quattro archi di base** (`Data/Arcs.lua`): `path` «Il sentiero ritrovato» (zona di partenza della razza, livello 12, scelta tra gratitudine, misura e silenzio, chiusura uscendo dalla zona), `knownface` «Un volto noto» (NPC con ruolo e familiarità 25 → 40 con scelta → 55), `fallen` «Il luogo della caduta» (morte da livello 10, ritorno nel luogo dove la visita è finita male, scelta, chiusura con il livello; argomento `death`), `capitals` «Le tre porte» (seconda capitale → terza, stato proprio `JOURNEY`, riflessione solo del giocatore dopo 10 minuti, chiusura in strada). 33 battute IT/EN (1.005 intenzioni di base, 1.012 con l'esempio).
-- **Decisioni da conoscere** (dettagli nell'ADR): gli archi non si aprono mai da soli senza un evento (né con un comando, né con il tempo); a posti finiti l'arco resta «disponibile» e lo avvia il giocatore; lo stato avanza anche quando la battuta tace (il diario racconta); le scelte sono id di opzione, mai testo; i flag `arc_<id>_<stato>` non fanno avanzare altri archi nello stesso evento; le battute in attesa non sopravvivono a `/reload`.
-- **Cosa deve sapere S10 (Social RP):**
-  - gli archi sono **privati**: nulla di un arco, né un ricordo `story`, né una scelta, né il nome di un NPC, entra in un messaggio addon senza un consenso a parte; `privacy.shareMemories` (spento) è l'interruttore previsto per i ricordi;
-  - sul bus c'è `ARC_STATE { id, from, to }` (solo id e stati): S10 può usarlo per una scena condivisa, ma una scena non deve far avanzare un arco di un altro giocatore; l'unica via per far muovere un arco è un evento del proprio personaggio o la scelta del giocatore (`SA:Fire`, `SA:Choose`);
-  - il modulo `storyArcs` e `arcs.maxActive` valgono anche per le scene sociali che volessero legarsi a un arco;
-  - `Director:Offer` accetta ora una funzione `onResult`: serve a chi deve sapere se una battuta è uscita (le scene di S10, che hanno un loro invito, possono usarla per non perdere un invito rimandato).
-- **Aperte da S9:** nessuna nuova issue bloccante. Possibili seguiti, non urgenti: un controllo per `arcs.maxActive` nel pannello delle impostazioni (oggi `/au storie max`); archi legati ad altre fonti (professioni, reputazioni, scoperta di luoghi, quando le API saranno provate); un'opzione per far partire un arco disponibile da solo; più archi dopo la prova in gioco. Restano #36 (numeri dei dati) e #30/#33 (prove in gioco).
-- **Test** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestArcs.lua` (circa 2.000 controlli: gli archi di base e la loro copertura di battute per scelta e lingua, definizioni sbagliate apposta, condizioni `arc`/`arcDone`/`capitalsVisitedMin`, transizioni lecite e illecite per ogni arco, nessuna apertura senza un evento vero, tempo/comandi/flag a mano che non aprono, limite degli archi attivi, sospendi/riprendi/salta/disattiva/attiva e «tutti», modulo spento, battute rimandate (combattimento, morte, pausa, silenzio, `OWED_TTL`) e senza cascate (`BEAT_GAP`), nessuna battuta a mano, dati salvati senza testi, `Sanitize` con dati rovinati e futuri, migrazione 6, diario e comando in italiano e inglese, avvisi del narratore) e, in `run_tests.py`, la **persistenza simulata dopo `/reload`** (scelta in attesa, scelta fatta, chiusura e ricordo permanente, arco saltato e sospeso, migrazione dallo schema 5). Aggiornati i conteggi (schema 6, 1.012 frasi, 14 pacchetti di base).
-- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 84–92): che `C_Map.GetBestMapForUnit` dia l'uiMapID della zona di partenza (c'è il nome inglese come ripiego) e che le sottozone (Northshire, Coldridge...) siano riconosciute; che le capitali siano riconosciute da `ctx.place`; il ritmo (`BEAT_GAP`, attese, soglie di familiarità 25/40/55, livelli 12 e 10): sono ipotesi; l'aspetto della scheda «Storie» (righe lunghe spezzate a mano, pulsanti di 24 pixel con «>», «II», «x», «-»); il tono delle 33 battute e delle scelte; che il ricordo e la scelta in attesa sopravvivano a `/reload` e alla chiusura nel client vero.
+#### Outcome of S9 and notes for S10
+- **Where the code lives** (in the `.toc`: `Systems\StoryArcs` after `Systems\NPCAlive`; `Data\RegistryArcs` and `Data\Arcs` after `Data\Dialogues`, the `Arcs.lua` texts and the `ArcsUI.lua` strings; the "Stories" tab is in `UI\JournalFrame.lua`; [ADR 0021](docs/adr/0021-story-arcs-micro-stories-without-game-effects.md)):
+  - `Systems/StoryArcs.lua` (`NS.StoryArcs`, module `storyarcs`): `NS:RegisterArcs{ pack, arcs, texts }`, `NS:AddArcTexts`, `Validate(def)`, `Fire(event, extra)` (subscribed to the bus: `ZONE_ENTER`/`WORLD_ENTER` after 2 s, `PLAYER_DEATH`, `LEVEL_UP`, `NPC_INTERACT` without a quest, `MEMORY_FLAG` only if the flag is set by an addon system: not the manual ones nor the automatic ones of the memory, nor the `arc_…` ones), `Apply(def, step, opts)` (the only point that changes state; rejects anything that does not start from the current state), `Choose`/`Offering`/`Start`, `Suspend`/`Resume`/`Skip`/`Disable`/`Enable`/`ForAll`/`SetEnabled`, `Conclude` (permanent `story` memory), `QueueBeat`/`Flush`/`OnBeatResult` (the lines, one at a time), `Context()` (`ctx.arcs`), `Record`/`Listing` (for the journal), `Sanitize`/`migrations`, `Check()` (for the validator), `Command` (`/au stories`). Constants at the top of the file (`BEAT_GAP` 90 s, `OWED_TTL` 900 s, `ZONE_DELAY` 2 s, `MAX_ITEMS` 100).
+  - Data in `cdb.arcs = { version, items = { [id] = { state, mode, since, t, choices, subject, pending, waiting, waitStep, memoryId, ended } }, stats }`; setting `arcs.maxActive` (1–2). **SavedVariables schema 6** (character migration 6; `arcs.version` 1 with internal migrations).
+  - **Steps** (data): `{ from, to, on = { zone|death|level|npc|flag|player }, when, wait, choose }`; base or custom states (from one you only go to the next); the opening cannot be `player` nor ask for a choice; an event moves an arc by one step only; unknown fields (a reward, a quest) are an error. `subject = "npc"` binds the arc to the first known NPC; `topic = "death"` does not open it if the Soul avoids the topic.
+  - **Engine**: condition sub-table `arc = { id, state, from, choice, withSubject }`, `arcDone`, `capitalsVisitedMin` (`Engine/RuleEngine.lua`, value validator); `ctx.arcs` in `BuildContext`; `LivingMemory:SetFlag` publishes `MEMORY_FLAG` (the name only) on the bus; `Director:Offer(event, extra, onResult)` returns the outcome; `LM:Describe` shows the arc's title in the `story` memory.
+  - **Lines**: events `arc_open`/`arc_step`/`arc_resolve` (`Data/RegistryArcs.lua`, pack `base_arcs`), "exceptional" priority, module `storyArcs`, guard `ctx.arc.beat`; private voices (`inner`, `narrator`). The validator (`badArc`) requires `arc = { id }` in every rule of these events.
+  - **Journal**: "Stories" tab (under way, available, concluded, skipped or disabled) with detail, choices made and controls; `JournalFrame:Open("stories")`. A discreet notice in the narrator ("waits for your choice", "can begin"), never in chat.
+- **Four base arcs** (`Data/Arcs.lua`): `path` "The Path Found Again" (the race's starting zone, level 12, choice between gratitude, measure and silence, closing on leaving the zone), `knownface` "A Familiar Face" (NPC with a role and familiarity 25 → 40 with a choice → 55), `fallen` "The Place of the Fall" (death from level 10, return to the place where the visit ended badly, choice, closing with the level; topic `death`), `capitals` "The Three Gates" (second capital → third, custom state `JOURNEY`, reflection by the player only after 10 minutes, closing in the street). 33 IT/EN lines (1,005 base intentions, 1,012 with the example).
+- **Decisions to know** (details in the ADR): arcs never open by themselves without an event (neither with a command nor with time); when the slots are full the arc stays "available" and the player starts it; the state advances even when the line stays silent (the journal tells it); choices are option ids, never text; the `arc_<id>_<state>` flags do not advance other arcs in the same event; pending lines do not survive `/reload`.
+- **What S10 (Social RP) needs to know:**
+  - arcs are **private**: nothing of an arc, neither a `story` memory, nor a choice, nor an NPC's name, enters an addon message without a separate consent; `privacy.shareMemories` (off) is the intended switch for memories;
+  - on the bus there is `ARC_STATE { id, from, to }` (only id and states): S10 can use it for a shared scene, but a scene must not advance another player's arc; the only way to move an arc is an event of one's own character or the player's choice (`SA:Fire`, `SA:Choose`);
+  - the `storyArcs` module and `arcs.maxActive` also apply to social scenes that wish to tie in with an arc;
+  - `Director:Offer` now accepts an `onResult` function: it serves those who need to know whether a line came out (S10's scenes, which have their own invitation, can use it so as not to lose a postponed invitation).
+- **Opened by S9:** no new blocking issues. Possible follow-ups, not urgent: a control for `arcs.maxActive` in the settings panel (today `/au stories max`); arcs tied to other sources (professions, reputations, discovery of places, when the APIs are proven); an option to let an available arc start by itself; more arcs after the in-game test. #36 remains (data numbers) and #30/#33 (in-game tests).
+- **Tests** (`.venv\Scripts\python -I -X utf8 Tests\run_tests.py AzerothUnspoken`): `TestArcs.lua` (about 2,000 checks: the base arcs and their coverage of lines per choice and language, deliberately wrong definitions, `arc`/`arcDone`/`capitalsVisitedMin` conditions, legal and illegal transitions for every arc, no opening without a real event, time/commands/manual flags that do not open, limit on active arcs, suspend/resume/skip/disable/enable and "all", module off, postponed lines (combat, death, pause, silence, `OWED_TTL`) and without cascades (`BEAT_GAP`), no manual line, saved data without texts, `Sanitize` with damaged and future data, migration 6, journal and command in Italian and English, narrator notices) and, in `run_tests.py`, the **simulated persistence after `/reload`** (pending choice, choice made, closing and permanent memory, skipped and suspended arc, migration from schema 5). Counts updated (schema 6, 1,012 lines, 14 base packs).
+- **Not verified without the client** (added to `docs/G1_checklist.md`, steps 84–92): that `C_Map.GetBestMapForUnit` gives the starting zone's uiMapID (there is the English name as a fallback) and that subzones (Northshire, Coldridge...) are recognized; that the capitals are recognized by `ctx.place`; the rhythm (`BEAT_GAP`, waits, familiarity thresholds 25/40/55, levels 12 and 10): these are hypotheses; the look of the "Stories" tab (long rows broken by hand, 24-pixel buttons with ">", "II", "x", "-"); the tone of the 33 lines and of the choices; that the memory and the pending choice survive `/reload` and closing in the real client.
 
 ### S10: Social RP (GDD §7.6, §14)
-- Messaggi addon con versione del protocollo, schema, limiti di dimensione, throttling e timeout.
-- Opt-in disattivato per impostazione predefinita; lista dei blocchi; nessuna esecuzione di codice ricevuto.
-- Inviti alle scene, accettazione e rifiuto, azioni, chiusura.
-- Rilasciare solo dove il trasporto è dimostrato.
+- Addon messages with protocol version, schema, size limits, throttling and timeout.
+- Opt-in off by default; block list; no execution of received code.
+- Scene invitations, acceptance and refusal, actions, closing.
+- Release only where the transport is proven.
 
 ### S11–S12: release 1.0 (GDD §16, §19)
-- Contenuti fino a 1.000 intenzioni.
-- Accessibilità, audio facoltativo (spento), profiling, manuale, privacy, troubleshooting.
-- Spuntare la Definition of Done.
+- Content up to 1,000 intentions.
+- Accessibility, optional audio (off), profiling, manual, privacy, troubleshooting.
+- Tick off the Definition of Done.

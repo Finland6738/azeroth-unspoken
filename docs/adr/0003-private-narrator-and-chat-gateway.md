@@ -1,44 +1,44 @@
-# 0003. Narratore privato e Chat Gateway: nessun invio senza un'azione del giocatore
+# 0003. Private narrator and Chat Gateway: nothing is sent without a player action
 
-- Stato: accettata
-- Data: 2026-10-29 (implementata nello step S2; decisione della [roadmap](../../ROADMAP.md), n. 3 e 4)
+- Status: Accepted
+- Date: 2026-10-29 (implemented in step S2; decision of the [roadmap](../../ROADMAP.md), no. 3 and 4)
 
-## Contesto
+## Context
 
-Il prototipo pubblicava emote automatiche in chat quando succedeva qualcosa. Per un addon di roleplay è un comportamento rischioso: fa parlare il personaggio a sua insaputa, può inondare la chat (spam), e va contro le protezioni del client, che consente `/say` e `/yell` nel mondo aperto solo dopo un gesto dell'utente (clic, tasto, comando). Allo stesso tempo, il testo narrativo ha valore anche solo come lettura privata.
+The prototype posted automatic emotes to chat whenever something happened. For a roleplay addon this is risky behavior: it makes the character speak without the player's knowledge, it can flood the chat (spam), and it goes against the client's protections, which allow `/say` and `/yell` in the open world only after a user gesture (click, key, command). At the same time, narrative text has value even as private reading alone.
 
-## Decisione
+## Decision
 
-1. **Separare la narrazione privata dall'invio in chat.** Ogni frase compare prima nel **narratore privato** (`UI/NarratorFrame.lua`): un riquadro non bloccante, visibile solo al giocatore. Il **Chat Gateway** (`Integration/ChatGateway.lua`) decide se e come una frase può diventare testo di chat.
-2. **Quattro modalità** (`chat.mode`), con `PRIVATE` predefinita:
-   - `PRIVATE`: solo narratore, mai proposte.
-   - `PREVIEW`: la frase pubblica diventa una proposta; il tasto "pronuncia" apre l'editor e si invia con Invio.
-   - `CONFIRM_TO_SEND`: la proposta è pronta e un gesto del giocatore la invia.
-   - `AUTO_ONLY_IF_ALLOWED`: invio automatico **solo** dove il client lo permette senza gesto (emote ovunque, `/say` e `/yell` nelle istanze) e **solo** con un secondo consenso (`output.autoPublicSay`). Il resto resta una proposta. *Aggiornamento Q2 (issue #8):* il consenso non si accende scegliendo la modalità: si dà con **due gesti** (avviso e conferma entro 10 secondi, `Gateway:SelectAuto`), uguali per comando, pannello e procedura guidata. L'automatica non è nel ciclo delle modalità del pannello e, senza consenso, si comporta come `CONFIRM_TO_SEND`; ogni cambio di modalità lo spegne.
-3. **Ogni frase ha una voce** (`speaker`): `narrator`, `inner`, `character`, `npc`. Le voci `inner` e `npc` **non diventano mai proposte**. Il modulo `publicChat` spento equivale a `PRIVATE`.
-4. **L'invio da gesto del giocatore passa solo da `Gateway:PlayerAction(fn)`** (clic, tasto assegnato, comando, Invio nell'editor). `Gateway:Send` fuori da quell'ambito rifiuta tutto tranne `EMOTE` e, in istanza, `SAY`/`YELL` (motivo `needs_action`): un timer o un evento non può inviare in chat pubblica. Il codice che invia deve passare da `Gateway:Send` o `Gateway:SendPending`.
-5. **Protezioni**: pausa minima di 4 secondi tra due invii, al massimo 6 al minuto e 2 automatici (`chat.floodSeconds`, `maxPerMinute`, `autoMaxPerMinute`); proposta in attesa per 25 secondi (`pendingSeconds`); testo di al massimo `Config.CHAT_LIMITS[canale]` byte (255, tabella unica letta anche dal validatore, issue #19) con UTF-8 intatto; niente invio con la chat bloccata dal client, con canale non disponibile o con testo vuoto; errori del client registrati in diagnostica.
-6. **Il giocatore controlla la frase**: può modificarla, cambiare canale (`/s`, `/e`, gruppo, incursione, gilda, istanza) o scartarla. Una **pausa immediata** (tasto, pulsante, `/au pausa`) sospende le nuove frasi.
-   *Aggiornamento Q2:* (a) con l'**editor aperto** la proposta non scade (l'attesa riparte alla chiusura), una frase spontanea non la sostituisce e, se sparisce lo stesso, il testo scritto torna in chat locale (issue #4); (b) il testo che parte è **adatto al canale** (`Gateway:TextFor`): un'emote fuori da `/e` porta il nome del personaggio, una frase parlata in `/e` diventa «dice: «…»», e il narratore mostra ciò che partirà (issue #5); (c) c'è un'uscita alternativa **"Nella chat"** (`Gateway:CopyToChat`, `/au copia`): la proposta, con lo stesso testo e taglio, va nella casella della chat standard già sul canale giusto e il giocatore la invia con il suo Invio (issue #14). Il pulsante si nasconde se il client non offre `ChatFrame_OpenChat`; è un'incognita di G1 se questa strada funzioni dove l'invio dall'addon no.
-7. **Migrazione dal prototipo**: lo schema 2 trasforma l'antico `output.mode` in `chat.mode` (`self` → `PRIVATE`, qualunque modalità pubblica → `CONFIRM_TO_SEND`) e forza `autoPublicSay = false`. Nessuna pubblicazione automatica senza una nuova scelta dell'utente.
+1. **Separate private narration from sending to chat.** Every line first appears in the **private narrator** (`UI/NarratorFrame.lua`): a non-blocking box, visible only to the player. The **Chat Gateway** (`Integration/ChatGateway.lua`) decides whether and how a line can become chat text.
+2. **Four modes** (`chat.mode`), with `PRIVATE` as the default:
+   - `PRIVATE`: narrator only, never proposals.
+   - `PREVIEW`: the public line becomes a proposal; the "speak" key opens the editor, and it is sent with Enter.
+   - `CONFIRM_TO_SEND`: the proposal is ready and a player gesture sends it.
+   - `AUTO_ONLY_IF_ALLOWED`: automatic sending **only** where the client allows it without a gesture (emotes anywhere, `/say` and `/yell` in instances) and **only** with a second consent (`output.autoPublicSay`). Everything else stays a proposal. *Q2 update (issue #8):* consent is not switched on by choosing the mode: it is given with **two gestures** (a warning and a confirmation within 10 seconds, `Gateway:SelectAuto`), the same for command, panel and wizard. The automatic mode is not in the panel's mode cycle and, without consent, behaves like `CONFIRM_TO_SEND`; every mode change switches it off.
+3. **Every line has a voice** (`speaker`): `narrator`, `inner`, `character`, `npc`. The `inner` and `npc` voices **never become proposals**. With the `publicChat` module off, behavior is the same as `PRIVATE`.
+4. **Sending by player gesture goes only through `Gateway:PlayerAction(fn)`** (click, assigned key, command, Enter in the editor). `Gateway:Send` outside that scope refuses everything except `EMOTE` and, in an instance, `SAY`/`YELL` (reason `needs_action`): a timer or an event cannot send to public chat. Code that sends must go through `Gateway:Send` or `Gateway:SendPending`.
+5. **Protections**: a minimum pause of 4 seconds between two sends, at most 6 per minute and 2 automatic ones (`chat.floodSeconds`, `maxPerMinute`, `autoMaxPerMinute`); a proposal waits for 25 seconds (`pendingSeconds`); text of at most `Config.CHAT_LIMITS[channel]` bytes (255, a single table also read by the validator, issue #19) with UTF-8 intact; no sending with chat locked by the client, with an unavailable channel or with empty text; client errors are recorded in diagnostics.
+6. **The player controls the line**: they can edit it, change channel (`/s`, `/e`, party, raid, guild, instance) or discard it. An **immediate pause** (key, button, `/au pausa`) suspends new lines.
+   *Q2 update:* (a) with the **editor open** the proposal does not expire (the wait restarts when it closes), a spontaneous line does not replace it and, if it disappears anyway, the written text goes back to local chat (issue #4); (b) the text that goes out is **suited to the channel** (`Gateway:TextFor`): an emote outside `/e` carries the character's name, a spoken line in `/e` becomes "says, "…"", and the narrator shows what will go out (issue #5); (c) there is an alternative exit **"To chat"** (`Gateway:CopyToChat`, `/au copia`): the proposal, with the same text and truncation, goes into the standard chat box already on the right channel and the player sends it with their own Enter (issue #14). The button is hidden if the client does not offer `ChatFrame_OpenChat`; whether this route works where sending from the addon does not is an unknown for G1.
+7. **Migration from the prototype**: schema 2 turns the old `output.mode` into `chat.mode` (`self` → `PRIVATE`, any public mode → `CONFIRM_TO_SEND`) and forces `autoPublicSay = false`. No automatic publishing without a new choice by the user.
 
-## Alternative considerate
+## Alternatives considered
 
-- **Pubblicare in automatico come il prototipo.** Scartata: spam, protezioni del client, personaggio che parla a insaputa dell'utente.
-- **Nessuna uscita in chat** (solo lettura privata). Sicura, ma toglie un uso legittimo del roleplay: dire una frase scelta dal narratore. Il Chat Gateway la rende possibile con consenso.
-- **Una sola modalità di conferma.** Meno codice, ma non copre chi vuole rivedere il testo prima (`PREVIEW`) né chi accetta le emote automatiche (`AUTO_ONLY_IF_ALLOWED`).
-- **Permettere ad altri addon di inviare con `Gateway:Send` senza vincoli.** Scartata: il vincolo dell'azione del giocatore deve valere per tutti.
+- **Publish automatically like the prototype.** Rejected: spam, client protections, the character speaking without the user's knowledge.
+- **No exit to chat** (private reading only). Safe, but it takes away a legitimate roleplay use: saying a line chosen by the narrator. The Chat Gateway makes it possible with consent.
+- **A single confirmation mode.** Less code, but it covers neither those who want to review the text first (`PREVIEW`) nor those who accept automatic emotes (`AUTO_ONLY_IF_ALLOWED`).
+- **Letting other addons send with `Gateway:Send` without constraints.** Rejected: the player-action constraint must hold for everyone.
 
-## Conseguenze
+## Consequences
 
-- Positive: le impostazioni predefinite sono sicure per costruzione; il comportamento è verificabile con test per ogni combinazione di modalità, forma e voce (`Tests/TestChatGateway.lua`); un futuro Narrative Director può cambiare quando parlare senza cambiare come si esce in chat.
+- Positive: the defaults are safe by construction; behavior is verifiable with tests for every combination of mode, form and voice (`Tests/TestChatGateway.lua`); a future Narrative Director can change when to speak without changing how lines go out to chat.
 - Negative:
-  - il valore di una frase "detta" richiede un gesto: meno fluidità nelle modalità `PREVIEW` e `CONFIRM_TO_SEND`;
-  - **l'ipotesi "senza gesto solo emote e, nelle istanze, `/say`" è prudente e non è stata misurata nel client vero**: è da verificare nella prova G1 ([checklist](../G1_checklist.md), SP-05). Se il client si rivela più restrittivo, il Gateway riporterà il rifiuto in diagnostica e la proposta resterà in attesa.
-  - la voce `speaker` oggi si ricava in modo provvisorio dalla forma (`say` → `character`, `emote` → `narrator`) finché lo schema v2 (step S3) non la porta nei dati.
+  - the value of a "spoken" line requires a gesture: less fluidity in the `PREVIEW` and `CONFIRM_TO_SEND` modes;
+  - **the assumption "without a gesture only emotes and, in instances, `/say`" is cautious and has not been measured in the real client**: it is to be verified in the G1 test ([checklist](../G1_checklist.md) (in Italian), SP-05). If the client turns out to be stricter, the Gateway will report the refusal in diagnostics and the proposal will stay pending.
+  - the `speaker` voice is currently derived provisionally from the form (`say` → `character`, `emote` → `narrator`) until schema v2 (step S3) brings it into the data.
 
-## Riferimenti
+## References
 
-- GDD §4.2, §7.7, §14; [ROADMAP.md](../../ROADMAP.md), "Esito di S2".
+- GDD §4.2, §7.7, §14; [ROADMAP.md](../../ROADMAP.md), "Outcome of S2".
 - `Integration/ChatGateway.lua`, `UI/NarratorFrame.lua`, `Systems/Director.lua`, `Core/Config.lua`.
-- [docs/ARCHITECTURE.md](../ARCHITECTURE.md), [docs/G1_checklist.md](../G1_checklist.md).
+- [docs/ARCHITECTURE.md](../ARCHITECTURE.md), [docs/G1_checklist.md](../G1_checklist.md) (in Italian).
