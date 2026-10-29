@@ -560,13 +560,13 @@ end
 ---Toglie gli NPC meno importanti oltre il tetto (mai quelli con etichetta, nota o tag scelti dall'utente).
 function R:CompactNPCs()
 	local d = self:Data()
+	local total = 0
+	for _ in pairs(d.npcs) do total = total + 1 end
+	if total <= self.MAX_NPCS then return 0 end
 	local list = {}
 	for id, rec in pairs(d.npcs) do
 		if not (rec.label or rec.note or rec.tags) then table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 }) end
 	end
-	local total = 0
-	for _ in pairs(d.npcs) do total = total + 1 end
-	if total <= self.MAX_NPCS then return 0 end
 	table.sort(list, function(a, b)
 		if a.f ~= b.f then return a.f < b.f end
 		if a.t ~= b.t then return a.t < b.t end
@@ -1160,7 +1160,7 @@ local function InteractionNPC()
 end
 
 local EventBus = NS.EventBus
-EventBus.dedupWindow.NPC_INTERACT = 15
+EventBus.dedupWindow.NPC_INTERACT = 4
 EventBus.dedupWindow.NPC_INTERACT_END = 1
 EventBus.dedupWindow.GROUP_CHANGED = 0     -- il gestore segna soltanto il gruppo da rileggere: nessun doppione da scartare
 -- Un dialogo con un NPC si apre (NpcSource) o si chiude (EndSource). Gli eventi sono nel dump di Forever (check_api.py
@@ -1216,7 +1216,12 @@ local handlers = {}
 
 function handlers.NPC_INTERACT(env)
 	local c = env.context
-	if not R:Enabled() or type(c.npcID) ~= "number" then return end
+	if not R:Enabled() then return end
+	if type(c.npcID) ~= "number" then
+		-- identità segreta o illeggibile: nessuna relazione, e il dialogo di prima non vale più
+		R.interaction = nil
+		return
+	end
 	local now = GetTime()
 	local kind = c.kind
 	R.interaction = { npcID = c.npcID, name = c.npcName, kind = (kind == "gossip" or kind == "merchant") and kind or "other", t = now }

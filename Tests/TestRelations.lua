@@ -299,7 +299,17 @@ T.run("dialogo: familiarità con rendimenti decrescenti e tetto giornaliero", fu
 	-- un doppione entro la finestra di deduplicazione non conta
 	local c = rec.count
 	FIRE("GOSSIP_SHOW")
-	T.eq(rec.count, c, "lo stesso evento entro 15 secondi è un doppione")
+	T.eq(rec.count, c, "lo stesso evento entro 4 secondi è un doppione")
+	-- un dialogo richiuso e riaperto subito è di nuovo aperto
+	FIRE("GOSSIP_CLOSED")
+	ADVANCE(5)
+	FIRE("GOSSIP_SHOW")
+	T.eq(R.interaction and R.interaction.npcID, 1234, "riaprire il dialogo dopo pochi secondi lo riapre")
+	-- un'identità illeggibile chiude il dialogo di prima: nessuna relazione sbagliata
+	P.npc = { name = "Altro", guid = MakeSecret() }
+	ADVANCE(5)
+	FIRE("GOSSIP_SHOW")
+	T.eq(R.interaction, nil, "NPC illeggibile: nessun dialogo aperto")
 end)
 
 T.run("quest: fiducia e rispetto", function()
