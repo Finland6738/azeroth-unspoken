@@ -183,6 +183,9 @@ function NS:BuildContext(extra)
 	if ctx.subzone == "" then ctx.subzone = nil end
 	ctx.mood = ctx.zone and self.zoneMoods[ctx.zone:lower()]
 	if ctx.resting and not ctx.mood then ctx.mood = "town" end
+	-- la memoria: solo ricordi veri (prima visita, ritorno, esito dell'ultima visita, flag). nil se il modulo è spento
+	-- (Systems/LivingMemory.lua); le condizioni di memoria sono allora sempre false.
+	if self.LivingMemory then ctx.memory = self.LivingMemory:Context(ctx) end
 
 	local h = SafeCall(GetGameTime)
 	ctx.hour = h

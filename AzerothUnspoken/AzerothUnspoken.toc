@@ -36,6 +36,7 @@ Integration\ChatGateway.lua
 Systems\Personality.lua
 Systems\Director.lua
 Systems\Triggers.lua
+Systems\LivingMemory.lua
 
 # --- interfaccia ---
 UI\Widgets.lua
@@ -43,6 +44,7 @@ UI\NarratorFrame.lua
 UI\SpeakButton.lua
 UI\Wizard.lua
 UI\ProfileFrame.lua
+UI\JournalFrame.lua
 UI\SettingsFrame.lua
 UI\Commands.lua
 
@@ -61,6 +63,7 @@ Data\RegistryExploration.lua
 Data\RegistrySocial.lua
 Data\RegistryClasses.lua
 Data\RegistrySoul.lua
+Data\RegistryMemory.lua
 Data\itIT\Combat.lua
 Data\itIT\Spells.lua
 Data\itIT\Life.lua
@@ -75,3 +78,5 @@ Data\enUS\Social.lua
 Data\enUS\Classes.lua
 Data\itIT\Soul.lua
 Data\enUS\Soul.lua
+Data\itIT\Memory.lua
+Data\enUS\Memory.lua

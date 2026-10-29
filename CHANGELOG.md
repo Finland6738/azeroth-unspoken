@@ -10,6 +10,16 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 
 ### Aggiunto
 
+**Step S6: Living Memory e Diario**
+- `Systems/LivingMemory.lua` (modulo `memory`): tre livelli (episodico della sessione, personale persistente in `cdb.memories`, flag narrativi). Ricorda solo momenti significativi: prima visita a una zona, ritorno dopo un giorno, visita finita male (morte, fuga), morti, livelli, capitali; mai ogni clic, mai testo di chat o di whisper. Campi del §7.4: id, momento, zona, tipo, importanza, tag, origine (più livello e permanenza).
+- Limiti: 500 ricordi ordinari con compattazione dei meno significativi, ricordi permanenti (al massimo 200), luoghi a parte con i conteggi delle visite, reset a cinque bersagli, migrazioni versionate (`memories.version`), dati di una versione più nuova in sola lettura.
+- Richiamo onesto: condizioni `firstVisit`, `repeatVisit`, `lastVisitBad` (anche `"death"`/`"flight"`), `visitsMin`/`visitsMax`, `daysSinceLastVisit`, `remembered`; `ctx.memory`; guardie degli eventi (`Engine:SetEventGuard`): un evento di richiamo non parla senza un ricordo vero; `LivingMemory:RegisterRecall`; il validatore segnala `recallWithoutMemory`.
+- Evento `memory_return` (ritorno in un luogo noto) con la priorità «richiamo di memoria» del §10: batte l'atmosfera di zona nello stesso momento. 14 frasi di esempio IT/EN per prima visita e ritorno (foresta, capitale, morte, fuga, visite ripetute, giorni lontano), pacchetto `base_memory`.
+- `UI/JournalFrame.lua` e comando `/au diario` (alias `/au journal`, `/au diary`): schede Ricordi, Luoghi, Flag e Sessione (altre con `JournalFrame:RegisterTab`), cancellazione selettiva, ricordo permanente, dimenticare un luogo, «Dimentica tutto» con conferma, esportazione testuale in una finestra copiabile; sottocomandi `lista`, `luoghi`, `flag`, `esporta`, `permanente`, `elimina`, `dimentica`, `reset`. Riga **Living Memory** in `/au debug`; pulsante nel pannello delle impostazioni; il modulo *Memoria* ora ha effetto.
+- SavedVariables: schema 4 (`memories` diventa la memoria; migrazione 4 del personaggio).
+- Test: `TestMemory` (nessun ricordo per eventi insignificanti, prima visita, ritorno, `lastVisitBad`, fuga, livelli, limite e compattazione, permanenti, cancellazione, richiamo solo con un ricordo vero, priorità nel Director, argomenti da evitare, privacy, migrazioni e dati rovinati, diario, esportazione, comandi), persistenza simulata dopo `/reload` in `run_tests.py` (due runtime consecutivi, `SERIALIZE` e `LEAP` nel client finto).
+- [ADR 0017](docs/adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md); passi 39–45 in `docs/G1_checklist.md`.
+
 **Step S5: Character Soul e tratti di Total RP 3**
 - `Engine/Traits.lua`: il modello dei tratti (`choice`, `scale` con fasce, `set`), riusabile per l'interlocutore (S6c) e per le relazioni (S6b); `Sanitize`, `Merge` con la priorità tra le fonti, tag di affinità con ambiti.
 - `Systems/Personality.lua` (Character Soul): otto tratti opt-in (temperamento, morale, curiosità, fede, motivazione, ironia, voce interiore, argomenti da evitare), sette archetipi più il profilo neutro, profilo effettivo *scelta esplicita > Total RP 3 > dati di gioco > valori neutri*, `ctx.soul`, condizione `soul`.

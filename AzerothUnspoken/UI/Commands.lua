@@ -153,6 +153,8 @@ local function Command(msg)
 		end
 	elseif cmd == "anima" or cmd == "soul" or cmd == "personalita" or cmd == "profilo" then
 		NS.Personality:Command(rest)
+	elseif cmd == "diario" or cmd == "journal" or cmd == "diary" then
+		NS.LivingMemory:Command(rest)
 	elseif cmd == "benvenuto" or cmd == "wizard" or cmd == "welcome" then
 		NS.Wizard:Open()
 	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then

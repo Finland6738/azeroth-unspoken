@@ -132,6 +132,33 @@ NS:RegisterLanguage("en", {
 		wiz_back = "Back", wiz_next = "Next", wiz_finish = "Finish",
 		wiz_done = "ready. The narrator is private: nothing goes to chat without a gesture from you. /au help for commands, /au welcome to redo the guide.",
 
+		-- Living Memory and journal (step S6)
+		opt_journal = "Character journal...",
+		mem_title = "Character journal",
+		mem_intro = "Your character's memories: only significant moments, never chat text. You can delete them or make them permanent; the addon cannot write files, so to export them copy the text.",
+		mem_kind_first_visit = "First visit", mem_kind_return = "Return", mem_kind_death = "Death",
+		mem_kind_flight = "Flight", mem_kind_level = "Level reached", mem_kind_story = "Story",
+		mem_tab_memories = "Memories", mem_tab_places = "Places", mem_tab_flags = "Flags", mem_tab_session = "Session",
+		mem_importance = "importance %d", mem_level_short = "lv. %d", mem_first = "first", mem_last = "last",
+		mem_place_visits = "%d visits", mem_place_bad = "ended badly",
+		mem_export_title = "Azeroth Unspoken - journal of %s (exported %s)",
+		mem_export_help = "Select the text and copy it with Ctrl+C. The addon cannot write files.",
+		mem_export = "Export", mem_reset = "Forget everything", mem_reset_confirm_btn = "Confirm: forget", mem_close = "Close",
+		mem_prev = "<", mem_next = ">", mem_page = "page %d of %d", mem_empty = "Nothing to show.",
+		mem_perm_tip = "Permanent: never compacted.", mem_delete_tip = "Delete.", mem_forget_tip = "Forget the place: next time it will be a first visit.",
+		mem_flag_tip = "Clear the flag.", mem_session_note = "This session only: forgotten when you log out.",
+		mem_off = "memory is off (the 'memory' module in the settings).",
+		mem_readonly = "the memory data comes from a newer version of the addon: it can be read, not changed.",
+		mem_summary = "memory: %d memories (%d permanent), %d places, %d flags.",
+		mem_flags = "flags: %s", mem_none = "none", mem_flag_invalid = "invalid flag name: '%s' (letters, digits and _).",
+		mem_flag_on = "flag set: %s.", mem_flag_off = "flag cleared: %s.",
+		mem_perm_on = "memory #%d is now permanent.", mem_perm_off = "memory #%d is no longer permanent.",
+		mem_perm_limit = "too many permanent memories: release some first.", mem_missing = "not found: '%s'.",
+		mem_deleted = "memory #%d deleted.", mem_place_forgotten = "place forgotten: %s.",
+		mem_reset_confirm = "this erases the memory (%s). To confirm, repeat the same command within 15 seconds.",
+		mem_reset_done = "memory reset (%d entries).",
+		mem_help = "usage: /au journal [list | places | flag <name> | export | pin <n> | delete <n> | forget <place> | reset [all|memories|ordinary|places|flags]]",
+
 		help = "commands:\n"
 			.. "/au on | off - enable or disable automatic lines\n"
 			.. "/au pause - pause the narrator immediately (also with the bound key)\n"
@@ -145,6 +172,7 @@ NS:RegisterLanguage("en", {
 			.. "/au copy - copy the proposal into the chat box (you send it with Enter)\n"
 			.. "/au narrator [history|reset|clear] - the narrator box\n"
 			.. "/au soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>] - character personality\n"
+			.. "/au journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset] - character memory and journal\n"
 			.. "/au greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest\n"
 			.. "/au event <name> - propose a line for an event (battle, zone, muse...)\n"
 			.. "/au cast <spell> - a line for a spell (handy in macros)\n"

@@ -98,6 +98,34 @@ local function Hooks(factor, entry, ctx)
 	return f
 end
 
+-- Guardie degli eventi: [evento][nome] = fn(ctx) -> boolean. Se una guardia dice no (o sbaglia), l'evento non
+-- produce alcuna frase, qualunque via lo abbia chiesto. Serve ai richiami di memoria: una frase che cita un
+-- ricordo esce solo se il ricordo esiste davvero (GDD §7.4), anche con un comando manuale.
+---@type table<string, table<string, fun(ctx: table): boolean>>
+Engine.eventGuards = {}
+
+---Aggiunge, sostituisce o toglie (fn = nil) la guardia di un evento.
+---@param event string
+---@param name string
+---@param fn? fun(ctx: table): boolean
+function Engine:SetEventGuard(event, name, fn)
+	self.eventGuards[event] = self.eventGuards[event] or {}
+	self.eventGuards[event][name] = fn
+end
+
+---Tutte le guardie dell'evento danno il via libera?
+---@param event string
+---@param ctx table
+---@return boolean
+function Engine:EventAllowed(event, ctx)
+	for name, fn in pairs(self.eventGuards[event] or {}) do
+		local ok, res = pcall(fn, ctx)
+		if not ok and NS.Diagnostics then NS.Diagnostics:Error("guard:" .. event .. ":" .. name, res) end
+		if not (ok and res == true) then return false end
+	end
+	return true
+end
+
 ---@class AUWeightFactors
 ---@field B number
 ---@field C number
@@ -259,6 +287,7 @@ end
 ---@param form "say"|"emote"
 ---@return AUPhraseRecord?
 function Engine:PickEntry(event, ctx, form)
+	if not self:EventAllowed(event, ctx) then return nil end
 	local lang = NS:Lang()
 	local now = time()
 	local list = self.byEvent[event]
