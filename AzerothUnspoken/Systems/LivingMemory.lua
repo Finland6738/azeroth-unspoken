@@ -195,7 +195,8 @@ LM.migrations = {
 		local places = {}
 		for name, p in pairs(type(m.places) == "table" and m.places or {}) do
 			if type(name) == "string" and type(p) == "table" then
-				local entry, how = NS.Place and NS.Place:Lookup(nil, name)
+				local entry, how
+				if NS.Place then entry, how = NS.Place:Lookup(nil, name) end
 				local mapID = how == "name" and entry and entry.verified and entry.map or nil
 				local key = mapID and ("map:" .. mapID) or name
 				p.name, p.key, p.mapID = name, key, mapID

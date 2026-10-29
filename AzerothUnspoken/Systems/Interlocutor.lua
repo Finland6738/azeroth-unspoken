@@ -447,7 +447,8 @@ function I.Factor(entry, ctx)
 	if f == 0 or type(o) ~= "table" or not o.tendency or type(entry.tags) ~= "table" then return f end
 	for tag in pairs(entry.tags) do
 		local t = Traits.ParseTag(tag)
-		if t and t.scope == "other" and t.mode == "" and traits[t.name] == nil and o.tendency[t.name] == t.value then
+		local def = t and t.scope == "other" and t.mode == "affinity" and Traits.tagIndex[t.name]
+		if def and traits[def.id] == nil and o.tendency[def.id] == t.value then
 			f = f * I.TENDENCY_MATCH
 		end
 	end
