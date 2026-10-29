@@ -1,0 +1,174 @@
+# Settings Reference
+
+Every setting of Azeroth Unspoken, its default value and where to change it.
+
+## Where settings live
+
+- **The settings panel.** Open it with `/au options` (aliases `/au opzioni`, `/au config`). It is also listed among the game's addon options, under **Azeroth Unspoken**. Most rows are buttons: click to switch or cycle a value; rows with **-** and **+** change a number.
+- **Commands.** Many settings also have a command. See the [[Commands Reference|Commands]].
+- **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices.
+- **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.
+
+**Per account or per character?** General settings (everything on this page unless noted) are shared by all characters on your account. Personality, memories, relationships and stories belong to **each character**.
+
+Changes take effect at once. There is no Save button.
+
+## General
+
+| Setting | Default | Panel row | Command | What it does |
+|---|---|---|---|---|
+| Addon on/off | on | **Addon** | `/au on`, `/au off` | Off: no spontaneous lines, no NPC dialogues, stories stop. Commands still work. |
+| Phrase language | Italian (`it`) | **Phrase language** (click to cycle) | `/au language en` | Language of lines and interface. Choose it in the wizard or with the command. See [[Languages]]. |
+| Intensity | 50 | **Intensity** (- / + by 10) | `/au intensity <0-100>` | How often the narrator speaks. 0 = silent for spontaneous events. |
+| Style depth | Literary | **Style depth** (click to cycle) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
+| Pause between lines | 45 s | **Pause between lines** (cycles 15, 30, 45, 60, 90, 120, 180) | `/au cooldown <0-3600>` | Minimum pause between two spontaneous lines. |
+| Speak button | shown | **'Speak' button** | `/au button` | Shows or hides the speak button. |
+| Narrator pause | not paused | **Pause the narrator** / **Resume the narrator** | `/au pause` | Immediate pause, for this session only. |
+| Event probability | per event, see below | — | `/au chance <event> <0-100>` | Chance that an event produces a line. |
+| Ignored spells | none | — | `/au ignore <spell>` | Spells that never produce lines. |
+| Phrase packs on/off | all on | — | `/au pack <id> on\|off` | See [[Phrase Packs|Phrase-Packs]]. |
+
+The panel also has **Reopen the setup guide**.
+
+See [[Intensity and Prose Depth|Intensity-and-Depth]] for how intensity, depth and the pause work together.
+
+### Default event probabilities
+
+These are the chances before intensity is applied. Intensity 50 keeps them as they are; lower intensity makes them smaller, higher intensity makes them bigger (up to double at 100). Important moments (death, coming back to life, a level, resurrecting someone) never get rarer than at 50. `/au chance` with no values lists the current ones.
+
+| Event | When | Chance |
+|---|---|---|
+| `zone` | you enter a new zone | 40% |
+| `battle` | a fight starts | 35% |
+| `victory` | a fight ends well | 30% |
+| `lowhp` | your health gets low | 60% |
+| `death` | you die | 85% |
+| `rez` | you come back to life | 70% |
+| `levelup` | you gain a level | 100% |
+| `attack` | you cast an attack spell | 8% |
+| `heal` | you cast a heal | 15% |
+| `buff` | you cast a buff out of combat | 25% |
+| `travel` | you cast a travel spell | 60% |
+| `rezother` | you resurrect someone | 80% |
+
+Events added by phrase packs have their own default (30% if the pack sets none).
+
+## Chat
+
+| Setting | Default | Panel row | Command | What it does |
+|---|---|---|---|---|
+| Chat mode | Private narrator only | **Chat** (cycles private, preview, confirm) | `/au chat private\|preview\|confirm` | What may reach chat. |
+| Automatic sending | off | **Automatic sending** (click, then click again within 10 s) | `/au chat auto` (twice within 10 s) | Lets some lines go out by themselves. |
+| Default channel | automatic | **Default channel** (click to cycle) | `/au channel <channel>` | Where proposals go. Automatic = `/say` for your character's words, `/emote` for the narrator's. |
+| Chat proposals module | on | module **Chat proposals** | — | Off: the same as private mode. |
+
+These limits are fixed and cannot be changed:
+
+| Limit | Value |
+|---|---|
+| How long a proposal waits | 25 seconds (longer while you are editing it) |
+| Minimum time between two sends | 4 seconds |
+| Sends per minute, any channel | 6 |
+| Automatic sends per minute | 2 |
+| Longest message | 255 bytes; longer lines are cut with "..." |
+
+See [[Chat Gateway]].
+
+## Narrator box
+
+| Setting | Default | Panel row | Range |
+|---|---|---|---|
+| Narrator box on/off | on | **Narrator box** | Off: lines appear in your chat window instead, visible only to you. |
+| Text duration | 8 s | **Text duration** (- / + by 1) | 2–30 s. Longer lines stay a little longer. |
+| Opacity | 85% | **Opacity** (- / + by 10%) | 20–100% |
+| Text size | 14 | **Text size** (- / + by 1) | 10–28 |
+| Position locked | no | **Position locked** | Locked: the box cannot be dragged. |
+| Position | near the bottom centre | **Move the box back to the middle** | Drag the box to move it. `/au narrator reset` also resets it. |
+| History | 30 lines | **History** (opens the list) | This session only. |
+
+The panel also has **Try the narrator**, which shows a sample line. See [[The Narrator and the Four Voices|The-Narrator]].
+
+## Modules
+
+Modules are big switches for whole features. All are on by default, except Audio.
+
+| Module | Default | What it controls |
+|---|---|---|
+| **Personal** | on | spontaneous lines about you: fights, low health, death, coming back, levels, spells |
+| **World** | on | spontaneous lines about the world: entering a zone, travelling |
+| **NPC dialogues** | on | [[NPC ambient dialogues|NPC-Dialogues]] |
+| **Memory** | on | the [[journal and memories|Memory-and-Journal]] |
+| **Relationships** | on | [[relationships|Relationships]] with NPCs and players |
+| **Stories** | on | [[personal stories|Story-Arcs]] |
+| **Social** `*` | on | not active yet: a placeholder for future social play |
+| **Chat proposals** | on | the [[Chat Gateway]]; off = private only |
+| **Audio** `*` | off | not active yet: a placeholder |
+
+Modules marked `*` do nothing in this version.
+
+### Presets
+
+A preset sets several modules at once. Choose one in the wizard. Changing a single module makes the preset "Custom". Presets do not change Chat proposals, Audio or Total RP 3.
+
+| Preset | Personal | World | NPC dialogues | Memory | Relationships | Stories | Social |
+|---|---|---|---|---|---|---|---|
+| **Complete** (default) | on | on | on | on | on | on | on |
+| **Personal RPG** | on | off | off | on | on | on | off |
+| **Narrative world** | off | on | on | on | on | off | off |
+| **Social RP** | on | off | off | on | on | off | on |
+
+## Total RP 3
+
+| Setting | Default | Where | What it does |
+|---|---|---|---|
+| Name from Total RP 3 | on | panel **Name from Total RP 3**, wizard | Uses your own RP profile's first name in lines. |
+| Traits from Total RP 3 | off | `/au soul trp3 on`, personality window | Uses your own profile's public personality traits where you made no choice. |
+| Read others' Total RP 3 | off | panel **Read others' Total RP 3**, wizard, `/au who trp3 on` | Reads race, class and traits from other players' public profiles. Needs *Name from Total RP 3* on too. |
+
+See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
+
+## Personality (per character)
+
+| Setting | Default | Where |
+|---|---|---|
+| Archetype | Neutral | `/au soul archetype <id>`, personality window (panel button **Character soul...**) |
+| Traits | none chosen | `/au soul <trait> <value>`, personality window |
+| Topics to avoid | none | `/au soul avoid <topic>`, personality window |
+
+## Memory (per character)
+
+The journal opens from the panel button **Character journal...** or `/au journal`. It has no switches besides the Memory module; you manage the memories themselves. See [[Memory and Journal|Memory-and-Journal]].
+
+## Relationships
+
+| Setting | Default | Where | What it does |
+|---|---|---|---|
+| Automatic NPCs | on | relationships window | Works out your standing with NPCs by itself. |
+| Suggest people | on | relationships window | Suggests players you meet. It does not add them. |
+| Register by itself | off | relationships window, `/au relations auto on\|off` | Adds the players you meet without asking. |
+| Attraction axis | off | relationships window, `/au relations attraction on\|off` | Turns on the optional attraction axis. |
+
+The window opens from the panel button **Relationships...** or `/au relations`. See [[Relationships]].
+
+## NPC dialogues
+
+| Setting | Default | Where | What it does |
+|---|---|---|---|
+| Automatic offer | on | `/au npc offer on\|off` | The dialogue button appears by itself when you open a vendor, flight or training window, or talk to a known innkeeper. |
+
+The dialogue window can be dragged. See [[NPC Dialogues|NPC-Dialogues]].
+
+## Stories (per character, except the maximum)
+
+| Setting | Default | Where |
+|---|---|---|
+| Stories under way at the same time | 2 | `/au stories max <1\|2>` |
+| Single stories on/off | all on | `/au stories enable\|disable <story>`, the journal's Stories tab |
+
+## Resetting settings
+
+There is no single "reset all settings" button. To start over:
+
+- **Back to safe chat:** `/au chat private`.
+- **One value:** set it again with its command or panel row (the defaults are on this page).
+- **Everything, for all characters:** log out, delete `AzerothUnspokenDB.lua` from the account's saved-data folder, and log in again. The wizard opens again. See [[Privacy and Data|Privacy-and-Data]] and [[Troubleshooting]].

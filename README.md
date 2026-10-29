@@ -232,6 +232,8 @@ To contribute (lines, packs, code, issues) read [CONTRIBUTING.md](CONTRIBUTING.m
 
 ## Documentation
 
+**Player's manual:** the [wiki](https://github.com/Finland6738/azeroth-unspoken/wiki) is a complete user guide (installation, every command and setting, each feature, privacy, troubleshooting, FAQ). Its source is [docs/wiki/](docs/wiki/Home.md).
+
 The full index is [docs/README.md](docs/README.md). Starting points:
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): modules, the flow of an event, data, extension points.

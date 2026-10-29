@@ -1,43 +1,43 @@
-# 0013. The GitHub wiki: `docs/` remains the source, the wiki is not used for now
+# 0013. The GitHub wiki: a player's manual generated from `docs/wiki/`
 
-- Status: Accepted
+- Status: Accepted (revised on 2026-10-29 by task W1; the first version said "the wiki is not used for now")
 - Date: 2026-10-29
 
 ## Context
 
-Task D1 asked to evaluate the GitHub wiki as a place for user guides (installation, commands, frequently asked questions, how to write packs). The project's documentation already lives in `docs/`, in the README and in `CONTRIBUTING.md`, all versioned and reviewed in PRs.
+Task D1 evaluated the GitHub wiki as a place for user guides and decided not to use it for now (see "History" below). Task W1 reopened the question: the project now has many player-facing features (narrator, Chat Gateway, personality, memory, relationships, NPC dialogues, stories) and an audience of roleplayers who are not technical and do not read the repository. They need an exhaustive manual, easy to navigate, with no developer content.
 
 Facts verified on 2026-10-29:
 
-- the Wiki feature is **enabled** on the repository (it is GitHub's default setting) but **empty**: the address `…/azeroth-unspoken.wiki.git` answers "Repository not found";
-- a GitHub wiki is a **separate git repository**, which only exists after the first page is created from the web interface: it cannot be started from a command or a script;
-- wiki pages do not go through the main repository's pull requests: whoever has permission writes directly, with no review and no link to an addon version.
+- the Wiki feature is **enabled** on the repository, but the wiki git repository (`…/azeroth-unspoken.wiki.git`) **does not exist yet**: GitHub creates it only after the first page is saved from the web interface, and that cannot be done from a command or a script;
+- a GitHub wiki is a **separate git repository**: its pages do not go through the main repository's pull requests and are not tied to an addon version.
 
 ## Decision
 
-1. **The authoritative source of the documentation is `docs/` (plus `README.md`, `README.it.md`, `CONTRIBUTING.md`, `CHANGELOG.md`).** It lives in the repository, is versioned together with the code, goes through PRs, and reads well on GitHub with relative links.
-2. **For now the wiki is not used.** No pages are published and `tools/sync_wiki.py` is not created.
-3. **If it is needed in the future**, the wiki will only be a **mirror** generated from the files in `docs/` by a script (`tools/sync_wiki.py`), with an "automatically generated: do not edit here" note on every page and editing restricted to collaborators. No content will originate only in the wiki.
-4. **When to reconsider**: at step S12 (manual, privacy, troubleshooting, v1.0) or when an audience of non-technical players who do not read the repository appears. At that point: user pages (installation, commands, FAQ, writing packs) generated from the same sources.
-5. **Current state of the Wiki feature**: the repository's "Wiki" tab is visible but empty, because of GitHub's default setting. As long as it is not used, the owner can disable it: `gh repo edit --enable-wiki=false`. This is a repository setting and has not been changed by this task.
+1. **`docs/wiki/*.md` is the only source of the wiki.** The wiki is a **generated mirror**: no content originates in the wiki. The pages are versioned with the code, reviewed in PRs, and checked by the tests.
+2. **The wiki is a user manual for players**, in English: installation, the wizard, every command and setting with defaults, every feature, privacy, troubleshooting, FAQ, glossary, and how to report bugs and feedback. It contains **no developer content** (no code internals, APIs, tests, git or build) and **no sensitive data** (no personal paths, names, emails or account names). It links once to the repository; the pack-writing guide stays in `AzerothUnspoken/PACK_FORMAT.md` and is only linked.
+3. **Publishing: `tools/sync_wiki.py`.** It clones the wiki repository, copies `docs/wiki/*.md` with a "generated from docs/wiki, do not edit here" note at the top of every page, removes the pages that are no longer in `docs/wiki/`, commits with the repository's noreply identity and pushes. If the wiki repository does not exist yet, it explains how to create the first page and exits with code 2.
+4. **Checks** (`Tests/check_docs.py`): every link between wiki pages (`[[Text|Page]]`, `[text](Page#anchor)`) resolves to a page and an anchor in `docs/wiki/`, every page is in `_Sidebar.md`, and no page contains an email address, a personal path, CRLF line endings or a word from a list of developer terms.
+5. **Editing rule.** A change to the addon's behavior updates `docs/wiki/` in the same PR. The automatic sync on every merge to `main` and the CI check that enforces the rule are task **R1**, not part of this decision's first implementation.
+6. **Developer documentation stays in `docs/`**, `README.md`, `CONTRIBUTING.md` and `CHANGELOG.md`, as before.
 
 ## Alternatives considered
 
-- **Enabling the wiki and using it as the main documentation.** Convenient to edit from the browser, but separate from the code, with no review and no versions: the documentation and the addon could diverge. Rejected.
-- **Enabling the wiki as a mirror right away, with the sync script.** Possible, but:
-  - the wiki cannot be created from a script: a page must first be created by hand on the site, so it is a manual step that an automatic task cannot do;
-  - the project is at 0.1.0 and the pack format will change with step S3: user guides written now would have to be rewritten almost immediately;
-  - it doubles the surface to maintain (Italian and English, two places) for an audience that today reads the README.
-  Postponed, not rejected: the rule at point 3 remains valid.
-- **GitHub Pages** (a site generated from `docs/`). A better option than the wiki if a real site is needed; not necessary now.
+- **Writing the wiki in the browser.** Convenient, but no review, no versions and no tests: the manual and the addon could diverge. Rejected.
+- **Keeping the user guide only in the README.** The README is already long and mixes player and developer content; a sidebar-navigated manual reads better for players. Rejected for the manual; the README remains the project's front page.
+- **GitHub Pages.** A real site generated from `docs/`. Possible later; the wiki is enough today and needs no build.
 
 ## Consequences
 
-- Positive: a single source, always aligned with the code and reviewed; no synchronization cost.
-- Negative: for now there is no showcase for non-technical users; navigating `docs/` on GitHub is less elegant than a wiki with a sidebar, and the user guides are in the README and in `docs/`, mostly in Italian at the time of writing (from L1 on, documentation is written in English).
-- The empty Wiki tab stays visible until the owner disables it or uses it.
+- Positive: players get a complete manual with navigation; there is still a single source, reviewed and tested with the code.
+- Negative: the manual must be kept in step with every change of behavior (to be enforced by R1); until R1, publishing is a manual run of `tools/sync_wiki.py`.
+- The first publication needs one manual step by the owner: create the first wiki page in the browser, once.
+
+## History
+
+The first version of this ADR (task D1, 2026-10-29) decided not to use the wiki for now: the project was at 0.1.0, the pack format was about to change, and the audience read the README. It already stated that, if used, the wiki would be a mirror generated from the repository by `tools/sync_wiki.py`, with a "do not edit here" note. Task W1 applies that rule.
 
 ## References
 
-- [docs/README.md](../README.md) (documentation index), [CONTRIBUTING.md](../../CONTRIBUTING.md).
-- ROADMAP: task D1, step S12.
+- [docs/README.md](../README.md) (documentation index), [docs/wiki/Home.md](../wiki/Home.md) (the manual's first page).
+- ROADMAP: tasks D1, W1, R1.

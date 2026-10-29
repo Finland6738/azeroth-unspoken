@@ -6,6 +6,9 @@
    segnalare errori per i suoi id. `<!-- test: error -->` segna un esempio sbagliato apposta (deve dare errore).
 2. Link relativi: ogni link `[testo](percorso)` dei file Markdown del repository deve puntare a un file o a una cartella
    che esiste; se ha un'àncora (`#titolo`) il titolo deve esistere nel file di destinazione.
+3. Wiki (`docs/wiki`, la sola fonte del wiki di GitHub, ADR 0013): ogni link `[[Testo|Pagina]]` o `[testo](Pagina#àncora)`
+   punta a una pagina di docs/wiki (e all'àncora, se c'è), ogni pagina è nella barra laterale, e nessuna pagina contiene
+   percorsi personali, indirizzi email o parole da sviluppatori.
 
 Uso: python -I -X utf8 Tests/check_docs.py [cartella del repository]. Esce con 1 se qualcosa fallisce.
 """
@@ -20,6 +23,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.dirname(HERE)
 ADDON = os.path.join(ROOT, "AzerothUnspoken")
 GUIDE = os.path.join(ADDON, "PACK_FORMAT.md")
+WIKI = os.path.join(ROOT, "docs", "wiki")
 
 FAILURES = []
 
@@ -127,7 +131,8 @@ def check_links():
     skip = {".git", ".venv", "archive", "node_modules", ".claude"}
     files = []
     for base, dirs, names in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in skip]
+        # le pagine del wiki si collegano per nome di pagina, non per percorso: le controlla check_wiki
+        dirs[:] = [d for d in dirs if d not in skip and os.path.join(base, d) != WIKI]
         files += [os.path.join(base, n) for n in names if n.endswith(".md")]
     bad, total = [], 0
     for path in sorted(files):
@@ -153,8 +158,65 @@ def check_links():
     check(not bad, f"{total} link relativi in {len(files)} file, tutti validi" + ("" if not bad else ":\n    " + "\n    ".join(bad)))
 
 
+# Il wiki è un manuale per i giocatori: niente dati personali né contenuti da sviluppatori.
+WIKI_PRIVATE = [
+    (r"[\w.+-]+@[\w-]+\.[\w.-]+", "indirizzo email"),
+    (r"\b[A-Za-z]:[\\/]", "percorso con lettera di unità"),
+    (r"[\\/](?:Users|home|Documents and Settings)[\\/]", "percorso personale"),
+]
+WIKI_FORBIDDEN = ["lupa", "EmmyLua", "MockWoWAPI", "run_tests", "check_docs", "sync_wiki", "ROADMAP", "GDD", "ADR",
+                  "Immersion Director", "VociDiAzeroth", "pull request", "git clone", "pip install", ".venv",
+                  "local ADDON", "RegisterPack", "SendChatMessage", "worktree"]
+
+
+def check_wiki():
+    print("\nPAGINE DEL WIKI (docs/wiki)")
+    pages = {os.path.splitext(n)[0]: os.path.join(WIKI, n) for n in sorted(os.listdir(WIKI)) if n.endswith(".md")}
+    check("Home" in pages and "_Sidebar" in pages and "_Footer" in pages, "ci sono Home, _Sidebar e _Footer")
+    bad, total, linked = [], 0, set()
+    for name, path in pages.items():
+        fence = False
+        for no, l in enumerate(open(path, encoding="utf-8").read().split("\n"), 1):
+            if l.startswith("```"):
+                fence = not fence
+            if fence:
+                continue
+            l = re.sub(r"`[^`]*`", "", l)
+            # [[Pagina]], [[Testo|Pagina]] e i link Markdown relativi: sul wiki il percorso è il nome della pagina
+            targets = [m.group(1).split("|")[-1].strip() for m in re.finditer(r"\[\[([^\]]+)\]\]", l)]
+            targets += [m.group(1) for m in re.finditer(r"\]\(([^)\s]+)\)", l) if not re.match(r"^[a-z]+:", m.group(1))]
+            for target in targets:
+                total += 1
+                page, _, anchor = target.partition("#")
+                page = page.replace(" ", "-") or name
+                where = f"{name}.md:{no}: {target}"
+                if page not in pages:
+                    bad.append(where + " (pagina inesistente)")
+                elif anchor and anchor not in anchors_of(pages[page]):
+                    bad.append(where + " (àncora mancante)")
+                elif name == "_Sidebar":
+                    linked.add(page)
+    check(not bad, f"{total} link in {len(pages)} pagine del wiki, tutti validi" + ("" if not bad else ":\n    " + "\n    ".join(bad)))
+    missing = sorted(set(pages) - linked - {"_Sidebar", "_Footer"})
+    check(not missing, "ogni pagina è nella barra laterale" + (f" (mancano: {missing})" if missing else ""))
+    found = []
+    for name, path in pages.items():
+        raw = open(path, "rb").read()
+        if b"\r" in raw:
+            found.append(f"{name}.md: fine riga CRLF")
+        for no, l in enumerate(raw.decode("utf-8").split("\n"), 1):
+            for pattern, what in WIKI_PRIVATE:
+                if re.search(pattern, l):
+                    found.append(f"{name}.md:{no}: {what}")
+            for word in WIKI_FORBIDDEN:
+                if re.search(r"(?<![\w.])" + re.escape(word) + r"(?!\w)", l, flags=re.IGNORECASE):
+                    found.append(f"{name}.md:{no}: parola vietata '{word}'")
+    check(not found, "nessun dato personale né contenuto da sviluppatori nel wiki" + ("" if not found else ":\n    " + "\n    ".join(found)))
+
+
 if __name__ == "__main__":
     check_examples()
     check_links()
+    check_wiki()
     print("\n" + ("DOCUMENTAZIONE A POSTO" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
     sys.exit(1 if FAILURES else 0)

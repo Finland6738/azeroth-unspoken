@@ -20,7 +20,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0010](0010-forever-api-dump-as-reference.md) | The Forever API dump as a reference, never copied | accepted |
 | [0011](0011-name-azeroth-unspoken.md) | The name Azeroth Unspoken | accepted |
 | [0012](0012-languages-chosen-by-user.md) | Languages chosen by the user, independent of the client | accepted |
-| [0013](0013-github-wiki.md) | The GitHub wiki: `docs/` remains the source, the wiki is not used for now | accepted |
+| [0013](0013-github-wiki.md) | The GitHub wiki: a player's manual generated from `docs/wiki/` | accepted (revised by W1) |
 | [0014](0014-normalized-event-bus-and-isolated-modules.md) | Normalized event bus, isolated modules and the Director as the hook point | accepted |
 | [0015](0015-narrative-director-one-intervention-per-moment.md) | Narrative Director: one intervention per moment, multiplicative weights, style that weighs but does not exclude | accepted |
 | [0016](0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md) | Character Soul: opt-in traits as data, soft affinity and hard filters, Total RP 3 with consent | accepted |
