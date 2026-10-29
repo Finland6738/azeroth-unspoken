@@ -57,6 +57,7 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 | [0015](adr/0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, peso W, stile |
 | [0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in, affinità morbida e filtri rigidi, Total RP 3 con consenso |
 | [0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale |
+| [0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente |
 
 ## Archivio
 

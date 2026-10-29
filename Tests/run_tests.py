@@ -488,6 +488,58 @@ check(len(list(ns4.Diagnostics.errors.values())) == 0 or all("memory" not in str
       "memoria: dati rovinati senza errori fatali")
 print("  ok" if not FAILURES else "")
 
+# 9c) persistenza simulata delle relazioni: NPC calcolati dall'addon, giocatori scelti dall'utente, decadimento lento
+print("\nPERSISTENZA DELLE RELAZIONI (/reload simulato)")
+rl1, rn1 = load_addon(with_example=False, zone="Durotar")
+rg1 = rl1.globals()
+rg1.P.npc = rl1.eval("{ name = 'Pip', guid = 'Creature-0-3134-0-6-1234-0000A2E9A1' }")
+for _ in range(3):
+    rg1.ADVANCE(20)
+    rg1.FIRE("GOSSIP_SHOW")
+rl1.execute("""
+    local R = AzerothUnspoken.Relationships
+    R:AddPlayer("Aldric-Stormrage", "user")
+    R:SetAxis("player", "Aldric-Stormrage", "trust", 55)
+    R:SetAxis("player", "Aldric-Stormrage", "affection", 45)
+    R:SetAxis("player", "Aldric-Stormrage", "familiarity", 40)
+    R:SetNote("player", "Aldric-Stormrage", "Mi ha salvato la vita")
+    R:SetLabel("player", "Aldric-Stormrage", "fratello di spada")
+    R:Propose("Brenna-Stormrage", "group")
+""")
+npc_fam = rl1.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")()
+check(npc_fam is not None and 4 < npc_fam <= 6, f"relazioni: familiarità dell'NPC dopo tre dialoghi ({npc_fam})")
+saved_char_r = rl1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_r = rl1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+epoch_r = rg1.FAKE_EPOCH
+check("Aldric-Stormrage" in saved_char_r and "Mi ha salvato la vita" in saved_char_r, "relazioni: i dati dell'utente sono salvati")
+check("Brenna" not in saved_char_r, "relazioni: una proposta non viene mai salvata")
+check("Pip" in saved_char_r and "1234" in saved_char_r, "relazioni: l'NPC è salvato con il suo npcID")
+
+# a) /reload subito dopo: tutto com'era, nessun decadimento
+rl2, rn2 = load_addon(saved_global_r, saved_char_r, with_example=False, epoch=epoch_r + 60, zone="Durotar")
+d2 = rl2.eval("function() return AzerothUnspokenCharacterDB.relationships end")()
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")() == npc_fam, "relazioni: nessun decadimento subito dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].note end")() == "Mi ha salvato la vita", "relazioni: la nota dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].label end")() == "fratello di spada", "relazioni: l'etichetta scelta dopo /reload")
+check(rl2.eval("function() return next(AzerothUnspoken.Relationships.candidates) end")() is None, "relazioni: le proposte non sopravvivono alla sessione")
+check(not list(rn2.Diagnostics.errors.values()), "relazioni: nessun errore dopo /reload")
+
+# b) quaranta giorni dopo: la familiarità dell'NPC cala lentamente, il giocatore dell'utente non cambia
+rl3, rn3 = load_addon(saved_global_r, saved_char_r, with_example=False, epoch=epoch_r + 40 * 86400, zone="Durotar")
+fam3 = rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")()
+check(fam3 is not None and 0 < npc_fam - fam3 < 20, f"relazioni: la familiarità dell'NPC cala con i giorni ({npc_fam} -> {fam3})")
+check(rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].familiarity end")() == 40, "relazioni: un giocatore dell'utente non decade")
+check(rl3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "relazioni: schema 5")
+rl3.globals().P.target = rl3.eval("{ name = 'Aldric', realm = 'Stormrage', player = true, guid = 'Player-1-0000AAAA' }")
+ctx_label = rl3.eval("function() return AzerothUnspoken:BuildContext().relationLabel end")()
+check(ctx_label == "fratello di spada", "relazioni: dopo /reload il contesto usa l'etichetta scelta")
+
+# c) un file di un personaggio con dati rovinati parte lo stesso
+rl4, rn4 = load_addon(saved_global_r, '{schemaVersion=4,relationships={npcs="x",players={[5]=1}}}', with_example=False)
+check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "relazioni: dati rovinati migrati")
+check(not any("relations" in str(e.message) for e in rn4.Diagnostics.errors.values()), "relazioni: dati rovinati senza errori fatali")
+print("  ok" if not FAILURES else "")
+
 # 10) funzioni ed eventi usati contro il dump delle API di Forever (saltato con un avviso se il dump non c'è)
 print("\nAPI DI FOREVER")
 proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"),

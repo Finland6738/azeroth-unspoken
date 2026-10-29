@@ -1150,13 +1150,6 @@ end)
 ---------------------------------------------------------------------------
 -- Fonti degli NPC: eventi del client (verificati sul dump di Forever) normalizzati sul bus
 ---------------------------------------------------------------------------
-local INTERACT_KIND = {
-	GOSSIP_SHOW = "gossip", QUEST_GREETING = "gossip", QUEST_DETAIL = "quest_detail", QUEST_PROGRESS = "quest_turnin",
-	QUEST_COMPLETE = "quest_turnin", MERCHANT_SHOW = "merchant", TAXIMAP_OPENED = "taxi", TRAINER_SHOW = "trainer",
-	CONFIRM_BINDER = "binder",
-}
-local END_KIND = { GOSSIP_CLOSED = "gossip", MERCHANT_CLOSED = "merchant", QUEST_FINISHED = "quest" }
-
 -- L'NPC con cui si interagisce ("npc" è l'unità dell'interazione). Con l'identità segreta o senza GUID: nil.
 local function InteractionNPC()
 	if Compat:IsUnitIdentitySecret("npc") then return nil end
@@ -1169,18 +1162,33 @@ end
 local EventBus = NS.EventBus
 EventBus.dedupWindow.NPC_INTERACT = 15
 EventBus.dedupWindow.NPC_INTERACT_END = 1
-for wowEvent, kind in pairs(INTERACT_KIND) do
+EventBus.dedupWindow.GROUP_CHANGED = 0     -- il gestore segna soltanto il gruppo da rileggere: nessun doppione da scartare
+-- Un dialogo con un NPC si apre (NpcSource) o si chiude (EndSource). Gli eventi sono nel dump di Forever (check_api.py
+-- legge i nomi da queste chiamate); se uno manca nel client, Compat lo segna MISSING e solo quella fonte si spegne.
+local function NpcSource(wowEvent, kind)
 	EventBus:AddSource(wowEvent, { normalize = function()
 		local id, name = InteractionNPC()
 		return "NPC_INTERACT", { kind = kind, npcID = id, npcName = name },
 			{ key = kind .. ":" .. tostring(id), expect = { "npcID" } }
 	end })
 end
-for wowEvent, kind in pairs(END_KIND) do
+local function EndSource(wowEvent, kind)
 	EventBus:AddSource(wowEvent, { normalize = function()
 		return "NPC_INTERACT_END", { kind = kind }, { key = kind }
 	end })
 end
+NpcSource("GOSSIP_SHOW", "gossip")
+NpcSource("QUEST_GREETING", "gossip")
+NpcSource("QUEST_DETAIL", "quest_detail")
+NpcSource("QUEST_PROGRESS", "quest_turnin")
+NpcSource("QUEST_COMPLETE", "quest_turnin")
+NpcSource("MERCHANT_SHOW", "merchant")
+NpcSource("TAXIMAP_OPENED", "taxi")
+NpcSource("TRAINER_SHOW", "trainer")
+NpcSource("CONFIRM_BINDER", "binder")
+EndSource("GOSSIP_CLOSED", "gossip")
+EndSource("MERCHANT_CLOSED", "merchant")
+EndSource("QUEST_FINISHED", "quest")
 -- Quest accettate e consegnate: l'NPC è quello dell'ultimo dialogo (gli eventi non lo dicono)
 EventBus:AddSource("QUEST_ACCEPTED", { normalize = function()
 	return "QUEST_STATE", { state = "accepted" }, {}

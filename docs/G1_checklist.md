@@ -289,6 +289,36 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
 
 ---
 
+## S6b: le relazioni (aggiunto dallo step S6b)
+
+46. **La finestra.** Scrivi `/au relazioni` (o apri le impostazioni e premi "Relazioni...").
+    - **Cosa aspettarti:** una finestra con la tabella (nome, tipo, etichetta, disposizione, ultima), i filtri e la ricerca; le intestazioni ordinano; due schede ("Relazioni", "Persone incontrate"); in basso le quattro opzioni (NPC automatici e proposte accesi; "registra da solo" e "asse attrazione" spenti).
+    - **Cosa riportare:** se si apre senza errori rossi, se il testo è tagliato o sovrapposto, se le righe si cliccano.
+47. **NPC automatici.** Parla con alcuni NPC (gossip, una quest da accettare e consegnare, un mercante: compra, vendi, ripara; un maestro di volo; un addestratore; un locandiere). Poi `/au relazioni`.
+    - **Cosa aspettarti:** una riga per NPC con il nome; la familiarità cresce di poco a ogni dialogo (non più di ~6 al giorno per tipo); quest e mercanti alzano anche la fiducia.
+    - **Cosa riportare:** se qualche fonte non registra nulla (dialogo, accettazione, consegna, acquisto, vendita, riparazione, volo, addestratore, locanda); se un NPC compare con il nome sbagliato o senza nome. `/au debug full`: righe `event:GOSSIP_SHOW`, `event:MERCHANT_SHOW`, `hook:BuyMerchantItem`, `hook:RepairAllItems`, `hook:C_Container.UseContainerItem`.
+48. **Vendite.** Vendi un oggetto al mercante (clic destro sull'oggetto con il mercante aperto). Poi un oggetto non vendibile e l'uso di una pozione mentre il mercante è aperto.
+    - **Cosa aspettarti:** la vendita alza un poco familiarità e fiducia; l'uso di una pozione col mercante aperto potrebbe contare come vendita (limite noto dell'euristica).
+49. **Un NPC noto parla.** Con un NPC ormai conosciuto (familiarità 15 o più: `/au relazioni imposta npc:<id> familiarita 40`, o dopo più giorni di dialoghi) riapri il dialogo.
+    - **Cosa aspettarti:** una frase di "NPC conosciuto" (a volte, probabilità 45%; `/au prob relation_npc 100` per la prova), solo una volta per NPC ogni dieci minuti.
+50. **Giocatori: solo con un clic.** Entra in gruppo con qualcuno, fai uno scambio con un giocatore, bersaglia un giocatore con Total RP 3 (se lo hai), rispondi a un whisper. Apri `/au relazioni` e la scheda "Persone incontrate".
+    - **Cosa aspettarti:** i nomi compaiono come proposte; **nessuno è nella tabella** finché non premi `+` o scrivi il nome. Nessun testo del whisper compare da nessuna parte.
+    - **Cosa riportare:** se manca una fonte di proposte; se qualcuno è entrato da solo (**deve essere NO**); `/au debug full`: `value:` e `event:GROUP_ROSTER_UPDATE`, `TRADE_SHOW`, `CHAT_MSG_WHISPER_INFORM`.
+51. **Cursori, note, etichetta.** Apri il dettaglio di una persona, trascina i cursori, premi `-` e `+`, scrivi una nota e dei tag (Invio), scegli un'etichetta con il pulsante e una scritta da te nella casella accanto.
+    - **Cosa aspettarti:** i valori si salvano al rilascio; l'etichetta scelta prevale su quella calcolata; l'eliminazione chiede una seconda pressione.
+    - **Cosa riportare:** se il trascinamento del cursore segue il mouse (`GetCursorPosition`); se il cursore scatta o sparisce; se le caselle di testo accettano lettere accentate.
+52. **Il tono segue il rapporto.** Con un bersaglio sconosciuto scrivi più volte `/au saluto`, `/au addio` e `/au ringrazia`; poi con un amico (fiducia e affetto alti) e con un rivale (fiducia bassa, rispetto alto).
+    - **Cosa aspettarti:** formale con lo sconosciuto, caldo con l'amico, teso e ironico con il rivale; in gruppo con un amico, qualche frase di battaglia o di vittoria "al fianco di qualcuno".
+    - **Cosa riportare:** le frasi che stonano; se `{relation}` esce con un nome che non regge nella frase.
+53. **Persistenza.** Con qualche NPC e un giocatore in lista, `/reload`; poi esci dal gioco e rientra.
+    - **Cosa aspettarti:** tutto com'era; dopo molti giorni la familiarità degli NPC è calata di poco (mezzo punto al giorno oltre i 14), quella dei giocatori no.
+54. **Esportazione.** `/au relazioni esporta`, seleziona il testo e copialo con Ctrl+C.
+    - **Cosa riportare:** se la finestra si apre e il testo si copia; che contenga solo ciò che hai scritto tu (note, tag), mai testi di chat.
+55. **Asse attrazione.** Accendilo dalle opzioni della finestra, imposta affetto e attrazione alti a una persona.
+    - **Cosa aspettarti:** compare il cursore dell'attrazione e l'etichetta "amato"; spento, l'asse sparisce e l'etichetta torna quella degli altri assi.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -324,6 +354,14 @@ S6 visita finita male ... morte/fuga nel diario? ___  frase che cita il falso? (
 S6 livelli e capitali ... ricordi giusti? ___  ricordi di troppo? (deve essere NO) ___
 S6 persistenza .......... dopo /reload ___  dopo uscita ___  visita doppia dopo /reload? (NO) ___
 S6 diario ............... cancella ___  permanente ___  esporta+Ctrl+C ___  scorre ___
+S6b finestra ............ si apre? ___  testo tagliato? ___  si ordina/filtra? ___
+S6b NPC automatici ...... gossip ___  quest ___  mercante ___  acquisto ___  vendita ___  riparazione ___  volo ___  addestratore ___  locanda ___
+S6b NPC conosciuto ...... frase al dialogo? ___  troppo frequente? ___
+S6b giocatori ........... proposte (gruppo/scambio/TRP3/whisper) ___  entrato da solo? (deve essere NO) ___  testo di whisper visibile? (deve essere NO) ___
+S6b cursori e note ...... trascina ___  - e + ___  note/tag/etichetta ___  accenti ___
+S6b tono ................ formale/caldo/teso giusti? ___  frasi che stonano ______
+S6b persistenza ......... dopo /reload ___  dopo uscita ___  decadimento NPC ___
+S6b esportazione ........ si copia? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

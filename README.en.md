@@ -40,6 +40,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - If you want, turns the character's lines into **chat proposals** that you confirm, edit or discard. See [Privacy and chat](#privacy-and-chat).
 - If you want, gives the character a **personality** (temperament, morality, curiosity, faith, motivation, irony, inner voice, topics to avoid, or a ready-made archetype): lines that fit come up more often, and lines that contradict what you ruled out never do. All optional; with no choices the narrator stays neutral. See `/au soul`.
 - Remembers the character's significant moments (the first time in a zone, a return, a visit that ended badly, deaths, levels) and finds them again in its lines: **only if the memory really exists**. A **journal** (`/au journal`) shows them, lets you delete them or make them permanent, and exports them as text you can copy. It never saves chat or whispers.
+- Remembers **how you stand with people**: six independent axes (familiarity, trust, respect, affection, fear, loyalty; attraction is optional and off) give a label (stranger, acquaintance, friend, comrade in arms, respected rival, enemy...) and an overall disposition. **NPCs** are worked out automatically (dialogs, quests, merchants); **players** are chosen by you: the addon suggests, and registers no one without your click. The narrator changes tone with the bond, from formal to intimate. See `/au relations`. It never reads or saves chat or whispers.
 - Walks you through a skippable first-run wizard.
 - Has a diagnostic (`/au debug`) that shows what your client lets the addon do.
 - Extends through **phrase packs** shipped as separate addons, without touching the engine.
@@ -52,7 +53,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - It does not read the combat log and does not base decisions on values the client hides from addons.
 - It does not save chat content.
 
-**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): relationships with NPCs and players, interlocutor and place as conditions for lines, NPC dialogues, multi-chapter stories, social play between players, content up to 1,000 intentions. In the settings some modules (NPC, stories, social, audio) can already be switched on or off, but they are placeholders: today only the *Personal*, *World*, *Memory*, *Chat proposals* and *Total RP 3* modules have any effect. The style depth (Natural, Literary, Elevated) is saved too, but **no line uses it yet**.
+**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): interlocutor and place as conditions for lines, NPC dialogues, multi-chapter stories, social play between players, content up to 1,000 intentions. In the settings some modules (NPC, stories, social, audio) can already be switched on or off, but they are placeholders: today only the *Personal*, *World*, *Memory*, *Chat proposals* and *Total RP 3* modules have any effect. The style depth (Natural, Literary, Elevated) is saved too, but **no line uses it yet**.
 
 ## Requirements
 
@@ -113,6 +114,7 @@ The addon answers to `/au` and `/unspoken`.
 | `/au pulsante` (`button`) | shows or hides the "speak" button |
 | `/au anima` (`soul`) | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <value>` (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `voice`; `-` removes the choice) and `avoid <topic>` |
 | `/au journal` (`diary`, `diario`) | opens the character journal (memories, places, flags, session). Also `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` and `reset [all\|memories\|ordinary\|places\|flags]` (asks for confirmation) |
+| `/au relations` (`relationships`, `relazioni`) | opens the relationships window (sortable, filterable table, suggested people, detail with sliders, notes and tags). Also `list`, `people`, `add <name>`, `dismiss <name>`, `remove <name\|npc:ID>`, `detail <name>`, `note`, `tags`, `label`, `set <name> <axis> <value>`, `export`, `auto on\|off`, `attraction on\|off`, `reset` |
 | `/au packs` · `/au pacchetto <id> on\|off` (`pack`) | lists, or switches phrase packs on and off |
 | `/au info` (`stats`) | how many lines are available, per event |
 | `/au memoria` (`memory`) | resets the memory of used lines (no confirmation) |
@@ -169,7 +171,7 @@ The full guide is [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO
 |---|---|
 | M0 Foundations: architecture, compatibility, diagnostics (S1), private narrator, Chat Gateway, settings, wizard (S2) | **done**, tested outside the game only |
 | G1 In-game test ([checklist](docs/G1_checklist.md)) | **postponed**: needs the owner with the real client |
-| M1 Narrative Alpha: data schema v2, Narrative Director, personality, memory and journal (S1–S6 done), relationships, interlocutor and place, 300 intentions | in progress / to do |
+| M1 Narrative Alpha: data schema v2, Narrative Director, personality, memory and journal, relationships (S1–S6b done), interlocutor and place, 300 intentions | in progress / to do |
 | M2–M5: NPCs, stories, social, release 1.0 | to do |
 
 The detailed plan, the steps and notes for developers are in [ROADMAP.md](ROADMAP.md). Notable changes per version are in [CHANGELOG.md](CHANGELOG.md). Known problems and ideas are in the [issues](https://github.com/Finland6738/azeroth-unspoken/issues).

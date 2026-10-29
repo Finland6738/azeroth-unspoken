@@ -193,7 +193,7 @@ def collect(folders):
                         if re.fullmatch(r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*", name or ""):
                             add(calls, name, path, m.start() + tup.start(), code)
         # eventi
-        for m in re.finditer(r"\b(?:AddSource|RegisterEvent|RegisterUnitEvent|IsEventValid)\s*\(\s*(?:[\w.:]+\s*,\s*)?(\"S\d+\")",
+        for m in re.finditer(r"\b(?:AddSource|NpcSource|EndSource|RegisterEvent|RegisterUnitEvent|IsEventValid)\s*\(\s*(?:[\w.:]+\s*,\s*)?(\"S\d+\")",
                              code):
             name = S(m.group(1))
             if name and re.fullmatch(r"[A-Z][A-Z0-9_]+", name):
