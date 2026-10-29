@@ -398,20 +398,25 @@ T.run("Narrate, Trigger e modifica del testo", function()
 	T.eq(SENT[#SENT], "SAY: Salute a te, viandante.", "si invia il testo modificato")
 end)
 
-T.run("speaker provvisorio delle frasi", function()
-	local counts = { say = 0, emote = 0 }
+T.run("voce delle frasi: regola dello schema v2 e ripiego del formato vecchio", function()
+	-- schema v2: la voce è nella regola. Le emote sono del narratore, il pensiero (inner) non è mai un'emote,
+	-- il resto è la voce pubblica del personaggio
+	local counts = { say = 0, emote = 0, inner = 0 }
 	for _, p in pairs(NS.Engine.byId) do
 		T.ok(NS.Engine.SPEAKERS[p.speaker], p.id .. ": speaker valido")
 		if p.form == "emote" then
 			T.eq(p.speaker, "narrator", p.id .. ": emote = narratore")
 			counts.emote = counts.emote + 1
+		elseif p.speaker == "inner" then
+			counts.inner = counts.inner + 1
 		else
 			T.eq(p.speaker, "character", p.id .. ": say = voce del personaggio")
 			counts.say = counts.say + 1
 		end
 	end
-	T.ok(counts.say > 100 and counts.emote > 10, ("frasi di entrambe le forme: %d parlate, %d narrative"):format(counts.say, counts.emote))
-	-- uno speaker esplicito del pacchetto si rispetta, uno sbagliato torna al provvisorio
+	T.ok(counts.say > 100 and counts.emote > 10 and counts.inner > 50,
+		("tutte le voci presenti: %d parlate, %d narrative, %d pensieri"):format(counts.say, counts.emote, counts.inner))
+	-- formato vecchio: uno speaker esplicito del pacchetto si rispetta, uno sbagliato torna al provvisorio
 	NS:RegisterPack({ id = "t_speaker", phrases = {
 		{ id = "t.inner", event = "t_ev", speaker = "inner", it = "Chissà." },
 		{ id = "t.bad", event = "t_ev", speaker = "dio", it = "Boh." },

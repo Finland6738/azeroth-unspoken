@@ -47,10 +47,19 @@ function NS:RegisterLanguage(code, info)
 	end
 	if info.name then lang.name = info.name end
 	for k, v in pairs(info.ui or {}) do lang.ui[k] = v end
+	-- la lingua scelta in una sessione precedente, registrata solo ora da un pacchetto esterno
+	local Config = self.Config
+	if Config and Config.pendingLocale == code and self.db then
+		self.db.locale = code
+		Config.pendingLocale = nil
+	end
 end
 
+-- lingua in uso: quella scelta, se è registrata; altrimenti l'italiano
 function NS:Lang()
-	return (self.db and self.db.locale) or "it"
+	local code = (self.db and self.db.locale) or "it"
+	if self.languages[code] then return code end
+	return "it"
 end
 
 -- testi dell'interfaccia nella lingua scelta, con ripiego sull'italiano

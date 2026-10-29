@@ -116,7 +116,7 @@ NS:RegisterLanguage("it", {
 		intensity_band_4 = "70-80 - Vivace: più scene leggere.",
 		intensity_band_5 = "90-100 - Intenso: molte occasioni, sempre con le pause anti-spam.",
 		wiz_suggested = "(valore consigliato)",
-		wiz_depth_help = "Quanto deve essere elevato il linguaggio? Con i testi di oggi cambia poco; la scelta vale per i contenuti futuri.",
+		wiz_depth_help = "Quanto deve essere elevato il linguaggio? Cambia quali frasi il narratore preferisce: le altre restano possibili, ma meno probabili.",
 		wiz_modules_help = "Scegli i moduli. Quelli con * arriveranno nelle prossime versioni: li puoi già impostare. Il modulo Social non condivide nulla senza un tuo consenso esplicito, ed è spento per impostazione predefinita.",
 		wiz_social_consent = "Social RP: partecipare a scene con altri giocatori sarà sempre un'adesione volontaria (opt-in) e non condivide ricordi né dati senza il tuo consenso.",
 		wiz_trp3_help = "Total RP 3 è installato. L'addon può usare il nome del tuo profilo RP nelle frasi (solo il tuo, solo il nome). Funziona al 100% anche senza.",
@@ -142,7 +142,8 @@ NS:RegisterLanguage("it", {
 			.. "/au prova <evento> - anteprima in chat locale\n"
 			.. "/au prob <evento> <0-100> - probabilità di un evento\n"
 			.. "/au cooldown <secondi> | ignora <incantesimo> | pulsante\n"
-			.. "/au pacchetti | pacchetto <id> on|off | info | memoria | opzioni | benvenuto",
+			.. "/au pacchetti | pacchetto <id> on|off | info | memoria | opzioni | benvenuto\n"
+			.. "/au valida [tutto|<pacchetto>] - controlla i pacchetti di frasi (errori e avvisi)",
 
 		debug_title = "diagnostica",
 		debug_config = "Configurazione",
@@ -156,5 +157,10 @@ NS:RegisterLanguage("it", {
 		debug_no_errors = "Nessun errore intercettato.",
 		debug_phrases = "Frasi: %d nella lingua scelta, da %d pacchetti.",
 		debug_trace = "traccia degli eventi: %s",
+
+		validate_summary = "Validatore: %d frasi in %d pacchetti, %d varianti: %d errori, %d avvisi.",
+		validate_ok = "Nessun problema trovato.",
+		validate_more = "... e altri %d (usa /au valida tutto).",
+		validate_nopack = "pacchetto sconosciuto: %s",
 	},
 })

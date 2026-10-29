@@ -92,7 +92,7 @@ Dove il GDD e questo file non coincidono, vale questo file.
 | S1 | M0 Fondamenta (v0.1) | Rinomina, architettura del GDD, Compat, diagnostica | Opus · high | fatto il 2026-10-28 (test fuori gioco superati; client vero non provato) |
 | S2 | M0 | Narratore privato, Chat Gateway, impostazioni, wizard | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | ✋ G1 | M0 | **Prova in gioco dell'utente**: spike SP-01…SP-05, con `docs/G1_checklist.md` | utente | **rimandata**: l'utente non è disponibile e ha chiesto di proseguire in autonomia (2026-10-29). Da fare al suo ritorno, insieme a G2 |
-| S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | da fare |
+| S3 | M1 Narrative Alpha (v0.2) | Schema dati v2, migrazione delle frasi, validatore | Sonnet · high | fatto il 2026-10-29 (test fuori gioco superati; client vero non provato) |
 | S4 | M1 | Narrative Director: intensità, pacing, priorità, silenzio, StyleResolver | Opus · medium | da fare |
 | S5 | M1 | Character Soul (personalità) e adattatore Total RP 3 | Sonnet · high | da fare |
 | S6 | M1 | Living Memory e Diario | Sonnet · high | da fare |
@@ -239,6 +239,25 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [
 - Validatore (test fuori gioco più `/au validate`): id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza massima per canale.
 - Aggiornare la guida al formato dei pacchetti.
 - Aggiungere `Tests/check_api.py`: legge `E:/repository/WoW-Addons/docs/api.json` (percorso configurabile) e segnala le funzioni ed eventi usati dall'addon che non sono nel dump. Ci sono eccezioni consentite per FrameXML, come `Settings.*`. Se il dump non c'è, il test viene saltato con un avviso.
+
+#### Esito di S3 e note per S4
+- **Cosa c'è** (guida completa: [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md)):
+  - `Engine/PhraseRegistry.lua`: schema v2. Una regola (`AUPhrase`) ha `events`, `category`, `speaker`, `form`, `styles` (il primo è `tone`), `depth`, `tags`, `weight`, `cooldown`, `when` (alias `conditions`) e `text[lingua] = { varianti }`, con varianti `{ t, ok, depth, pack }`. `Engine.byId` e `Engine.byEvent` come prima.
+  - API dei pacchetti: `RegisterPack{ registry, texts, events, styles, categories, conditions, languages, frames, vocab }`; `NS:AddTexts(lingua, mappa, pacchetto)` (alias `AddTranslations`), `NS:RegisterEvent`, `RegisterStyle`, `RegisterCategory`, `RegisterCondition`. I testi per id di altri pacchetti si aggiungono come varianti; quelli arrivati prima della regola aspettano. Il formato vecchio (`phrases` con `it=`/`en=`/`tone`/`when`) si converte in caricamento (`tone` → registro, ad esempio `eroico` → `epic`).
+  - Dati: `Data/Registry{Combat,Spells,Life,Exploration,Social,Classes}.lua` (regole), `Data/itIT/*.lua` e `Data/enUS/*.lua` (testi). Gli id sono quelli di prima. Vocabolario e cornici restano in `Vocabulary.lua` e `Frames.lua` con `it=`/`en=` (anche elenchi di varianti). `Classes.lua` è nel `.toc`: 54 frasi.
+  - Numeri: le "374 frasi" della roadmap erano 367 di base + 7 del pacchetto di esempio; ora sono 421 di base (367 + 54) + 7 = **428**. Voci di base: personaggio 306, voce interiore 96, narratore 19, NPC 0. Assegnazione di voce e registro fatta frase per frase (pensieri e osservazioni → `inner`; battute, minacce, saluti → `character`; azioni → `narrator`); le profondità sono assegnate con regole sulla lunghezza e sul registro e non frase per frase: sono da rivedere in S7.
+  - `Engine/Validator.lua` (`NS.Validator:Run{ packs }` → `{ errors, warnings, stats }`, `/au valida [tutto|pacchetto]`): id duplicati, lingue mancanti, segnaposto discordanti (con ripiego senza segnaposto), condizioni sconosciute o malformate, varianti vuote, lunghezza per canale (255 byte, caso peggiore dei segnaposto), UTF-8, voci/registri/profondità/eventi. Il database di base ha 0 errori e 0 avvisi.
+  - `Tests/check_api.py` (collegato a `run_tests.py`): legge `E:/repository/WoW-Addons/docs/api.json` (`--api` o `AU_API_JSON`), salta con un avviso se manca. Eccezioni motivate per `Settings.*`, `InterfaceOptions*`, `GetSpellInfo` e `MouseIsOver` (issue #17).
+- **Cosa deve sapere S4:**
+  - `ctx.depth` e `ctx.intensity` sono nel contesto; le condizioni `depth`, `intensityMin`, `intensityMax` funzionano. Il fattore **S** del peso è `Engine.StyleFactor(frase, ctx)` (1 se la profondità combacia o manca, `Engine.DEPTH_MISMATCH` = 0,3 altrimenti; mai esclusione) ed è già dentro `Score`: il StyleResolver di S4 deve **aggiungere i registri** (`p.styles`), non rifare la profondità.
+  - `PickEntry` restituisce anche `category`, `style` e `variant`. Le categorie sono quelle degli eventi (`combat`, `spellcraft`, `life`, `exploration`, `reflection`, `social`): `Engine.events[evento].category` e `Engine.CATEGORIES` per i budget.
+  - Contratto invariato: `rec.form` e `rec.speaker`. Solo la voce `character` si può raccontare in una cornice; un pensiero (`inner`) esce solo in forma `say`, e non diventa mai una proposta in chat.
+  - Una condizione malformata vale "falsa" (`Engine.SafeMatch`); la scelta non si interrompe.
+  - Le varianti non si ripetono di fila (`cdb.memory.variant`).
+  - Una lingua registrata da un pacchetto dopo il caricamento resta quella scelta (chiude l'issue #7).
+- **Aperte da S3:** #17 (`MouseIsOver`, `bug` `in-game`), #18 (pochi testi del narratore, una sola variante per frase: `content`, per S7), #19 (limite di 255 byte duplicato tra Gateway e validatore, `enhancement`).
+- **Test:** `.venv\Scripts\python -I -X utf8 Testsun_tests.py AzerothUnspoken` esegue anche `TestSchema.lua` (registro, varianti, profondità, conversione del formato vecchio, estensioni, lingue) e `TestValidator.lua` (ogni controllo con un pacchetto sbagliato apposta, `/au valida`), la prova UTF-8/LF dei file e `check_api.py`.
+- **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 17–19): che i file dei testi siano letti come UTF-8 (accenti giusti), che `/au valida` dia 428 frasi e 0 errori nel client vero, che la profondità cambi la sensazione dei testi. L'assenza di `MouseIsOver` e il resto di `check_api.py` si riferiscono al dump (build 70170), non al build 70658.
 
 ### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
 - Gate di opportunità guidato dall'intensità; budget per categoria; priorità del §10; silenzio come esito valido; niente cascate di messaggi.

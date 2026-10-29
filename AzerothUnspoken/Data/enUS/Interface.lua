@@ -111,7 +111,7 @@ NS:RegisterLanguage("en", {
 		intensity_band_4 = "70-80 - Lively: more light scenes.",
 		intensity_band_5 = "90-100 - Intense: many chances, always with the anti-spam pauses.",
 		wiz_suggested = "(suggested value)",
-		wiz_depth_help = "How elevated should the language be? With today's lines it changes little; the choice applies to future content.",
+		wiz_depth_help = "How elevated should the language be? It changes which lines the narrator prefers: the others stay possible, but less likely.",
 		wiz_modules_help = "Pick the modules. Those marked * arrive in later versions: you can already set them. The Social module shares nothing without your explicit consent and is off by default.",
 		wiz_social_consent = "Social RP: joining scenes with other players will always be voluntary (opt-in) and shares no memories or data without your consent.",
 		wiz_trp3_help = "Total RP 3 is installed. The addon can use your RP profile's name in lines (yours only, name only). It works 100% without it too.",
@@ -137,7 +137,8 @@ NS:RegisterLanguage("en", {
 			.. "/au test <event> - preview in the local chat\n"
 			.. "/au chance <event> <0-100> - probability of an event\n"
 			.. "/au cooldown <seconds> | ignore <spell> | button\n"
-			.. "/au packs | pack <id> on|off | stats | memory | options | welcome",
+			.. "/au packs | pack <id> on|off | stats | memory | options | welcome\n"
+			.. "/au validate [full|<pack>] - check the phrase packs (errors and warnings)",
 
 		debug_title = "diagnostics",
 		debug_config = "Configuration",
@@ -151,5 +152,10 @@ NS:RegisterLanguage("en", {
 		debug_no_errors = "No caught errors.",
 		debug_phrases = "Lines: %d in the chosen language, from %d packs.",
 		debug_trace = "event trace: %s",
+
+		validate_summary = "Validator: %d lines in %d packs, %d variants: %d errors, %d warnings.",
+		validate_ok = "No problems found.",
+		validate_more = "... and %d more (use /au validate full).",
+		validate_nopack = "unknown pack: %s",
 	},
 })
