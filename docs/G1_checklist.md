@@ -18,6 +18,8 @@ Alla fine ti chiedo di mandarmi:
 2. **ogni messaggio d'errore** che compare (le finestre con scritte rosse o "Azeroth Unspoken ha generato un errore"): uno screenshot va bene;
 3. il **modulo riassuntivo** in fondo a questo file, con una riga per ogni passo (`OK`, `NO`, oppure una nota).
 
+Il testo di `/au debug`, `/au debug full` e della traccia (`/au debug trace`) si può condividere: l'addon non vi scrive i nomi di altri giocatori (chi ti ha sussurrato, sfidato, invitato o fatto uno scambio, il bersaglio di un incantesimo): al loro posto compare `<nascosto>`. Se ne trovi uno, **è un errore da segnalare** (issue #53). Gli screenshot della chat o della finestra delle relazioni, invece, mostrano i nomi: coprili, se non vuoi condividerli.
+
 Per vedere gli errori del gioco, prima di cominciare scrivi nella chat (premi Invio, scrivi, premi Invio):
 
 ```

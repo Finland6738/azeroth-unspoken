@@ -593,6 +593,58 @@ T.run("azioni: duello, invito, emote rivolte a noi, scambio, incarico, gruppo, a
 	T.ok(not saved:find("Dario", 1, true), "le azioni restano nella sessione")
 end)
 
+-- #53: i rapporti di diagnostica si condividono (checklist G1): nessun nome di altri giocatori, né nelle righe degli
+-- ultimi eventi né nella traccia; il contesto di un evento mostra solo i campi di testo noti e innocui
+T.run("diagnostica: i rapporti non contengono i nomi di altri giocatori", function()
+	Fresh()
+	local D = NS.Diagnostics
+	local NAMES = { "Brenna", "Cora", "Dario", "Dara", "Zorak", "Whisperbuddy" }
+	local function Leaks(text)
+		local found = {}
+		for _, n in ipairs(NAMES) do if text:find(n, 1, true) then table.insert(found, n) end end
+		return table.concat(found, ",")
+	end
+	-- la traccia stampa mentre gli eventi arrivano
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("debug trace")
+	T.ok(D.trace, "traccia accesa")
+	FIRE("DUEL_REQUESTED", "Brenna")
+	FIRE("PARTY_INVITE_REQUEST", "Cora", false, false, true, true, false, "Player-1-0000C", false)
+	ADVANCE(5)
+	FIRE("CHAT_MSG_TEXT_EMOTE", "Dario bows before you.", "Dario-TestRealm")
+	P.npc = { name = "Dara", realm = "Stormrage", player = true, guid = "Player-1-0000CCCC" }
+	FIRE("TRADE_SHOW")
+	FIRE("CHAT_MSG_WHISPER_INFORM", "ciao", "Whisperbuddy-Aggramar", "", "", "Whisperbuddy", "", 0, 0, "", 0, 99)
+	FIRE("UNIT_SPELLCAST_SENT", "player", "Zorak", "cast-priv-1", 133)
+	local trace = table.concat(SENT, "\n")
+	SlashCmdList.AZEROTHUNSPOKEN("debug trace")
+	T.ok(not D.trace, "traccia spenta")
+	T.ok(trace:find("OTHER_DUEL", 1, true) and trace:find("TRADE_OPENED", 1, true) and trace:find("WHISPER_SENT", 1, true)
+		and trace:find("SPELL_SENT", 1, true) and trace:find("OTHER_EMOTE", 1, true), "la traccia mostra gli eventi")
+	T.eq(Leaks(trace), "", "la traccia non rivela nomi")
+	T.ok(trace:find(D.HIDDEN, 1, true), "i campi nascosti sono segnati")
+	-- il rapporto, breve e completo, e il comando
+	local report = table.concat(D:Report(true), "\n")
+	T.eq(Leaks(report), "", "il rapporto completo non rivela nomi")
+	T.ok(report:find("OTHER_DUEL", 1, true), "ma elenca gli eventi recenti")
+	T.eq(Leaks(table.concat(D:Report(false), "\n")), "", "né quello breve")
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("debug full")
+	SlashCmdList.AZEROTHUNSPOKEN("debug")
+	T.eq(Leaks(table.concat(SENT, "\n")), "", "né /au debug né /au debug full")
+	-- i campi innocui restano leggibili: zona, spell, nome di un flag narrativo
+	local env = NS.EventBus:Publish("ZONE_ENTER", { zone = "Durotar", subzone = "Razor Hill", mapID = 1411 }, { key = "t53z" })
+	T.ok(D:FormatEnvelope(env):find("zone=Durotar", 1, true), "la zona resta")
+	local flag = NS.EventBus:Publish("MEMORY_FLAG", { name = "npcd_prova", source = "addon" }, { key = "t53f", window = 0 })
+	T.ok(D:FormatEnvelope(flag):find("name=npcd_prova", 1, true), "il nome di un flag narrativo resta")
+	-- un campo di testo nuovo, non previsto, esce nascosto
+	local novel = NS.EventBus:Publish("T53_NUOVO", { who = "Brenna", n = 3, ok = true }, { key = "t53n" })
+	local line = D:FormatEnvelope(novel)
+	T.ok(not line:find("Brenna", 1, true) and line:find("n=3", 1, true) and line:find("ok=true", 1, true), "campo nuovo: testo nascosto, numeri e booleani no")
+	-- le SavedVariables restano senza nomi (già vero: verificato qui perché i rapporti non diventino una via di fuga)
+	T.eq(Leaks(NS.Compat and tostring(NS.Diagnostics.errors and #NS.Diagnostics.errors) or ""), "", "nessun errore con i nomi")
+end)
+
 T.run("le azioni restano poche e si dimenticano", function()
 	Fresh()
 	for n = 1, I.MAX_SUBJECTS + 15 do I:Note("player:P" .. n, "trade") end

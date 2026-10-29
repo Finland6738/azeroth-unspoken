@@ -62,15 +62,28 @@ function Diagnostics:CapabilityMatrix()
 	return matrix, totals
 end
 
-local function Describe(value)
+-- I rapporti di diagnostica si condividono (checklist G1): niente dati di altri giocatori (GDD §14, #53). I campi di
+-- testo si mostrano solo se sono noti e non identificano una persona; qualunque altro testo (name, target, un
+-- campo aggiunto domani) esce come <nascosto>. Numeri e booleani non identificano nessuno.
+local SAFE_TEXT = { zone = true, subzone = true, unit = true, spell = true, state = true, restrictionType = true,
+	kind = true, encounterName = true, castGUID = true, id = true, from = true, to = true, source = true }
+-- campi sicuri solo per certi eventi (il nome di un flag narrativo non è una persona)
+local SAFE_TEXT_BY_TYPE = { MEMORY_FLAG = { name = true } }
+Diagnostics.HIDDEN = "<nascosto>"
+
+local function Describe(value, eventType)
 	if type(value) ~= "table" then return tostring(value) end
 	local keys = {}
 	for k in pairs(value) do table.insert(keys, tostring(k)) end
 	table.sort(keys)
 	local parts = {}
+	local safeHere = SAFE_TEXT_BY_TYPE[eventType]
 	for _, k in ipairs(keys) do
 		local v = value[k]
-		if type(v) ~= "table" and type(v) ~= "function" then table.insert(parts, k .. "=" .. tostring(v)) end
+		if type(v) ~= "table" and type(v) ~= "function" then
+			if type(v) == "string" and not SAFE_TEXT[k] and not (safeHere and safeHere[k]) then v = Diagnostics.HIDDEN end
+			table.insert(parts, k .. "=" .. tostring(v))
+		end
 	end
 	return table.concat(parts, " ")
 end
@@ -81,7 +94,7 @@ function Diagnostics:FormatEnvelope(env)
 		if state ~= "AVAILABLE" then table.insert(fields, k .. ":" .. state) end
 	end
 	table.sort(fields)
-	local line = ("%.1f %s [%s] %s"):format(env.timestamp or 0, env.type, env.source or "?", Describe(env.context))
+	local line = ("%.1f %s [%s] %s"):format(env.timestamp or 0, env.type, env.source or "?", Describe(env.context, env.type))
 	if #fields > 0 then line = line .. " (" .. table.concat(fields, ", ") .. ")" end
 	return line
 end
