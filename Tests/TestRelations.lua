@@ -1225,6 +1225,65 @@ T.run("testi dell'interfaccia: IT ed EN", function()
 	T.ok(n >= 60, "chiavi delle relazioni: " .. n)
 end)
 
+T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle impostazioni", function()
+	Fresh()
+	local I = NS.Interlocutor
+	local zeno = Person("Zeno-Stormrage", { familiarity = 30 })
+	RelationsFrame:Open()
+	T.ok(RelationsFrame:SelectSubject("player", zeno), "dettaglio")
+	T.eq(#Texts(function(t) return t:find("Come lo vedi", 1, true) end), 1, "titolo della sezione")
+	local role = ButtonWithText("Ruolo: ")
+	local temperament = ButtonWithText("Temperamento: ")
+	T.ok(role and temperament and ButtonWithText("Morale: ") and ButtonWithText("Obiettivi: ") and ButtonWithText("Modo di parlare: "),
+		"un selettore per ogni tratto e per il ruolo")
+	T.eq(role:GetText(), "Ruolo: non so", "all'inizio: non so")
+	role:Click()
+	T.eq(R:Get("player", zeno).role, "innkeeper", "primo clic: il primo ruolo")
+	T.eq(R:Get("player", zeno).roleSource, "user", "scelto dall'utente")
+	T.eq(ButtonWithText("Ruolo: "):GetText(), "Ruolo: Locandiere", "il pulsante mostra il valore")
+	for _ = 1, #I.ROLES - 1 do ButtonWithText("Ruolo: "):Click() end
+	T.eq(R:Get("player", zeno).role, I.ROLES[#I.ROLES], "gira fino all'ultimo ruolo")
+	ButtonWithText("Ruolo: "):Click()
+	T.eq(R:Get("player", zeno).role, nil, "poi torna a non so")
+	temperament:Click()
+	local first = NS.Traits.defs.temperament.values[1]
+	T.eq(R:Get("player", zeno).traits.temperament, first, "temperamento")
+	T.eq(NS.Interlocutor:GetUserTrait("player", zeno, "temperament"), first, "GetUserTrait")
+	-- il valore scelto arriva nel profilo dell'interlocutore (fonte 1)
+	P.target = nil
+	for _ = 1, #NS.Traits.defs.temperament.values do ButtonWithText("Temperamento: "):Click() end
+	T.eq(R:Get("player", zeno).traits, nil, "tornato a non so: nessun tratto salvato")
+	-- dato scritto da una versione più nuova: non si cambia
+	R.readOnly = true
+	T.eq(I:CycleTrait("player", zeno, "speech"), false, "in sola lettura non si scrive")
+	R.readOnly = false
+	T.eq(I:CycleTrait("player", "Nessuno-Stormrage", "speech"), false, "persona non in lista")
+	T.eq(I:CycleTrait("player", zeno, "inesistente"), false, "tratto sconosciuto")
+	RelationsFrame:Close()
+
+	-- consenso a leggere il Total RP 3 degli altri: spento di base, nelle impostazioni e con il comando
+	T.eq(NS.db.interlocutor.trp3Others, false, "spento di base")
+	for _, w in ipairs(FindWidgets(function(w) return w.name == NS.name and w.scripts.OnShow end)) do w.scripts.OnShow() end
+	local function Row()
+		for _, b in ipairs(FindWidgets(function(w) return w.kind == "Button" and w.scripts.OnClick end)) do
+			if (b:GetText() or ""):find("Leggi il Total RP 3 degli altri", 1, true) == 1 then return b end
+		end
+	end
+	local row = Row()
+	T.ok(row ~= nil, "la riga è nel pannello delle impostazioni")
+	T.ok(row:GetText():find(NS:L("off"), 1, true), "mostra lo stato: spento")
+	SENT = {}
+	row:Click()
+	T.eq(NS.db.interlocutor.trp3Others, true, "il clic accende il consenso")
+	T.ok(T.sentContains("letti"), "e lo dice")
+	row:Click()
+	T.eq(NS.db.interlocutor.trp3Others, false, "il secondo lo spegne")
+	SlashCmdList.AZEROTHUNSPOKEN("chi trp3 on")
+	T.eq(NS.db.interlocutor.trp3Others, true, "il comando resta valido e coerente")
+	T.eq(I:SetTRP3Consent(false), false, "SetTRP3Consent")
+	T.eq(NS.db.interlocutor.trp3Others, false, "spento")
+end)
+
 T.run("nessun errore intercettato", function()
 	local errs = {}
 	for _, e in pairs(NS.Diagnostics.errors) do table.insert(errs, tostring(e.id) .. ": " .. tostring(e.message)) end
