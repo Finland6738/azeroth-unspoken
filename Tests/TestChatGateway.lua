@@ -14,8 +14,14 @@ local function Reset()
 	NS.db.output.autoPublicSay = false
 	Gateway.sendLog = {}
 	Gateway.inPlayerAction = false
+	Gateway.autoAskedAt = nil
 	Gateway:Discard()
 	ADVANCE(100)
+end
+
+-- AUTO con il secondo consenso già dato (come dopo la conferma esplicita)
+local function Auto()
+	Gateway:SetMode("AUTO_ONLY_IF_ALLOWED", { confirmAuto = true })
 end
 
 local function Rec(form, speaker, text)
@@ -50,13 +56,19 @@ T.run("predefiniti e modalità", function()
 	T.eq(Gateway:ParseMode("AUTO_ONLY_IF_ALLOWED"), "AUTO_ONLY_IF_ALLOWED", "nome completo")
 	T.eq(Gateway:ParseMode("boh"), nil, "sconosciuta")
 	T.ok(not Gateway:SetMode("boh") and Gateway:GetMode() == "PRIVATE", "modalità sconosciuta ignorata")
-	T.ok(Gateway:SetMode("auto") and NS.db.output.autoPublicSay, "AUTO accende autoPublicSay")
-	T.ok(Gateway:SetMode("anteprima") and not NS.db.output.autoPublicSay, "altre modalità lo spengono")
+	-- #8: scegliere AUTO non accende da solo il secondo consenso
+	T.ok(Gateway:SetMode("auto") and Gateway:GetMode() == "AUTO_ONLY_IF_ALLOWED", "AUTO si imposta")
+	T.ok(not NS.db.output.autoPublicSay, "ma senza consenso: autoPublicSay resta spento")
+	T.ok(Gateway:SetMode("auto", { confirmAuto = true }) and NS.db.output.autoPublicSay, "con confirmAuto lo accende")
+	T.ok(Gateway:SetMode("anteprima", { confirmAuto = true }) and not NS.db.output.autoPublicSay,
+		"confirmAuto vale solo per AUTO: le altre modalità lo spengono")
 	Gateway:SetMode("PRIVATE")
 	Gateway:CycleMode(); T.eq(Gateway:GetMode(), "PREVIEW", "ciclo 1")
 	Gateway:CycleMode(); T.eq(Gateway:GetMode(), "CONFIRM_TO_SEND", "ciclo 2")
-	Gateway:CycleMode(); T.eq(Gateway:GetMode(), "AUTO_ONLY_IF_ALLOWED", "ciclo 3")
-	Gateway:CycleMode(); T.eq(Gateway:GetMode(), "PRIVATE", "ciclo 4")
+	Gateway:CycleMode(); T.eq(Gateway:GetMode(), "PRIVATE", "ciclo 3: l'invio automatico non è nel giro")
+	Gateway:SetMode("auto", { confirmAuto = true })
+	Gateway:CycleMode(); T.eq(Gateway:GetMode(), "PRIVATE", "da AUTO si torna a PRIVATE")
+	T.ok(not NS.db.output.autoPublicSay, "e il consenso si spegne")
 	NS.db.modules.publicChat = false
 	NS.db.chat.mode = "CONFIRM_TO_SEND"
 	T.eq(Gateway:EffectiveMode(), "PRIVATE", "modulo publicChat spento = privato")
@@ -178,7 +190,8 @@ T.run("nessun aggiramento: tutte le modalità, forme e voci, senza gesto", funct
 			for _, speaker in ipairs({ "narrator", "inner", "character", "npc" }) do
 				for _, auto in ipairs({ true, false }) do
 					Reset()
-					Gateway:SetMode(mode)
+					Auto()
+					Gateway:SetMode(mode, { confirmAuto = true })
 					Gateway:Propose(Rec(form, speaker), CTX, { auto = auto })
 					for _, s in ipairs(Public()) do
 						T.ok(s:find("^EMOTE:"), mode .. "/" .. form .. "/" .. speaker .. ": fuori istanza solo emote, trovato " .. s)
@@ -196,7 +209,7 @@ end)
 
 T.run("AUTO_ONLY_IF_ALLOWED: automatico solo dove il client lo permette", function()
 	Reset()
-	Gateway:SetMode("AUTO_ONLY_IF_ALLOWED")
+	Auto()
 	-- emote: parte da sola, anche fuori dalle istanze
 	Gateway:Propose(Rec("emote", nil, "stringe l'elsa"), CTX, { auto = true })
 	T.eq(SENT[#SENT], "EMOTE: stringe l'elsa", "emote automatica")
@@ -315,7 +328,7 @@ T.run("protezione dal flood", function()
 	-- limite degli invii automatici: il terzo diventa una proposta
 	Reset()
 	NS.db.chat.autoMaxPerMinute = 2
-	Gateway:SetMode("AUTO_ONLY_IF_ALLOWED")
+	Auto()
 	for i = 1, 3 do
 		Gateway:Propose(Rec("emote", nil, "gesto" .. i), CTX, { auto = true })
 		ADVANCE(5)
@@ -367,9 +380,16 @@ T.run("scadenza e sostituzione della proposta", function()
 	T.eq(Gateway:GetPending().text, "seconda", "la nuova sostituisce la vecchia")
 	ADVANCE(26)
 	T.eq(Gateway:GetPending(), nil, "scade dopo pendingSeconds")
-	Press()   -- senza proposte: improvvisa una nuova proposta, non invia
+	-- senza proposte il tasto improvvisa: una proposta nuova (se la frase è pubblica) e mai un invio
+	local improvised
+	for _ = 1, 30 do
+		Press()
+		improvised = Gateway:GetPending()
+		if improvised then break end
+		ADVANCE(5)
+	end
 	T.eq(#Public(), 0, "il tasto senza proposte non invia")
-	T.ok(Gateway:GetPending() ~= nil, "improvvisa una proposta nuova")
+	T.ok(improvised ~= nil, "improvvisa una proposta nuova")
 end)
 
 T.run("Narrate, Trigger e modifica del testo", function()

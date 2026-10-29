@@ -88,17 +88,25 @@ local function CreatePanel()
 	end)
 	Row(1, 6, function() return NS:L("opt_chatmode") .. ": " .. NS:L("chatmode_" .. NS.db.chat.mode .. "_short") end,
 		function() NS.Gateway:CycleMode() end)
-	Row(1, 7, function() return NS:L("opt_channel") .. ": " .. NS:L("channel_" .. NS.db.chat.channel) end,
+	-- l'invio automatico è una scelta a parte, con avviso e conferma: non si raggiunge scorrendo le modalità
+	Row(1, 7, function()
+		local state = NS.Gateway:IsAutoActive() and OnOff(true)
+			or (NS.Gateway:IsAutoArmed() and NS:L("auto_confirm_again") or OnOff(false))
+		return NS:L("opt_auto") .. ": " .. state
+	end, function()
+		if NS.Gateway:IsAutoActive() then NS.Gateway:SetMode("CONFIRM_TO_SEND") else NS.Gateway:SelectAuto() end
+	end)
+	Row(1, 8, function() return NS:L("opt_channel") .. ": " .. NS:L("channel_" .. NS.db.chat.channel) end,
 		function() NS.db.chat.channel = Cycle(NS.Config.CHAT_CHANNELS, NS.db.chat.channel) end)
-	Row(1, 8, function() return NS:L("opt_button") .. ": " .. OnOff(NS.db.ui.showButton) end, function()
+	Row(1, 9, function() return NS:L("opt_button") .. ": " .. OnOff(NS.db.ui.showButton) end, function()
 		NS.db.ui.showButton = not NS.db.ui.showButton
 		NS.UpdateButton()
 	end)
-	Row(1, 9, function() return NS:L("opt_rpname") .. ": " .. OnOff(NS.db.modules.totalRP3) end,
+	Row(1, 10, function() return NS:L("opt_rpname") .. ": " .. OnOff(NS.db.modules.totalRP3) end,
 		function() NS.db.modules.totalRP3 = not NS.db.modules.totalRP3 end)
-	Row(1, 10, function() return NS:L(NS.paused and "opt_resume" or "opt_pause") end,
+	Row(1, 11, function() return NS:L(NS.paused and "opt_resume" or "opt_pause") end,
 		function() NS.Director:TogglePause() end)
-	Row(1, 11, function() return NS:L("opt_wizard") end, function() NS.Wizard:Open() end)
+	Row(1, 12, function() return NS:L("opt_wizard") end, function() NS.Wizard:Open() end)
 
 	-- colonna 2: narratore
 	Row(2, 1, function() return NS:L("opt_narrator") .. ": " .. OnOff(NS.db.output.privateNarrator) end,

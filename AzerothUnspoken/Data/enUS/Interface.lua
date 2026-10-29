@@ -20,8 +20,6 @@ NS:RegisterLanguage("en", {
 			aberration = "aberration", humanoid = "mortal", other = "creature",
 		},
 
-		send_error = "could not send (%s)",
-		preview = "preview",
 		on = "on", off = "off",
 		enabled = "enabled.", disabled = "disabled.",
 		button_idle = "No proposal waiting. Click: the narrator proposes a line that fits the moment.",
@@ -46,7 +44,16 @@ NS:RegisterLanguage("en", {
 		gw_lockdown = "chat is locked by the client right now.",
 		gw_error = "could not send (%s).",
 		gw_review = "proposal preview: %s\nPress again to send it, or /au cancel.",
-		chat_auto_warning = "WARNING: in this mode emotes (always) and /say (in instances) are sent by themselves, in your character's name. Everything else stays a proposal to confirm.",
+		gw_expired = "the proposal is gone (expired, discarded or replaced): nothing was sent. Your text: %s",
+		gw_text_kept = "the proposal vanished while you were editing it: nothing was sent. Your text: %s",
+		emote_says = "says, \"%s\"",
+		chat_auto_warning = "WARNING: in automatic mode emotes (always) and /say (in instances) are sent by themselves, in your character's name, without you doing anything. Everything else stays a proposal to confirm. To turn it on, confirm within 10 seconds.",
+		auto_repeat = "To turn on automatic sending repeat the same command within 10 seconds; otherwise nothing changes.",
+		auto_confirm_again = "click again to confirm",
+		invalid_value = "invalid value: '%s'. Allowed values: %s.",
+		values_chat = "private, preview, confirm, auto",
+		values_channel = "auto, say, emote, party, raid, guild, instance",
+		values_depth = "natural, literary, elevated",
 		chatmode_PRIVATE_short = "private narrator only",
 		chatmode_PREVIEW_short = "preview",
 		chatmode_CONFIRM_TO_SEND_short = "confirm to send",
@@ -54,14 +61,15 @@ NS:RegisterLanguage("en", {
 		chatmode_PRIVATE_help = "Private narrator only (default): lines appear in the box and stay visible to you alone. Nothing goes to chat.",
 		chatmode_PREVIEW_help = "Preview: the character's lines become proposals. The 'speak' key opens the editor, where you can change them and send with Enter.",
 		chatmode_CONFIRM_TO_SEND_help = "Confirm to send: the proposal is ready and the 'speak' key or button sends it in one gesture. You can always edit or discard it.",
-		chatmode_AUTO_ONLY_IF_ALLOWED_help = "Automatic where allowed: emotes go out by themselves, and /say in instances; the rest stays a proposal. A few per minute, always.",
+		chatmode_AUTO_ONLY_IF_ALLOWED_help = "Automatic where allowed: emotes go out by themselves, and /say in instances; the rest stays a proposal. A few per minute, always. It turns on only with an explicit confirmation.",
 		channel_auto = "automatic", channel_SAY = "/say", channel_EMOTE = "/emote", channel_PARTY = "party",
 		channel_RAID = "raid", channel_GUILD = "guild", channel_INSTANCE_CHAT = "instance",
 
 		-- settings
 		opt_enabled = "Addon", opt_language = "Phrase language",
 		opt_intensity = "Intensity", opt_depth = "Style depth",
-		opt_cooldown = "Pause between lines", opt_chatmode = "Chat", opt_channel = "Default channel",
+		opt_cooldown = "Pause between lines", opt_chatmode = "Chat", opt_auto = "Automatic sending",
+		opt_channel = "Default channel",
 		opt_button = "'Speak' button", opt_rpname = "Name from Total RP 3",
 		opt_pause = "Pause the narrator", opt_resume = "Resume the narrator",
 		opt_wizard = "Reopen the setup guide",
@@ -127,12 +135,13 @@ NS:RegisterLanguage("en", {
 			.. "/au debug [full|trace] - diagnostics: client capabilities, recent events, errors\n"
 			.. "/au language [it|en] - phrase language\n"
 			.. "/au intensity <0-100> | depth natural|literary|elevated\n"
-			.. "/au chat private|preview|confirm|auto - what may reach chat (default: private)\n"
+			.. "/au chat private|preview|confirm|auto - what may reach chat (default: private; auto asks for confirmation)\n"
 			.. "/au channel auto|say|emote|party|raid|guild|instance\n"
 			.. "/au speak - confirm the waiting proposal (also from a macro or key)\n"
 			.. "/au cancel - discard the proposal\n"
 			.. "/au narrator [history|reset|clear] - the narrator box\n"
-			.. "/au greet | farewell | toast | muse | threat | battlecry | pray | thanks | jest\n"
+			.. "/au greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest\n"
+			.. "/au event <name> - propose a line for an event (battle, zone, muse...)\n"
 			.. "/au cast <spell> - a line for a spell (handy in macros)\n"
 			.. "/au test <event> - preview in the local chat\n"
 			.. "/au chance <event> <0-100> - probability of an event\n"

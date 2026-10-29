@@ -30,7 +30,7 @@ end
 
 -- 1: lingua
 pages[1] = { title = "wiz_step_language", build = function(p)
-	Text(p, -8, NS:L("wiz_language_help"))
+	local help = Text(p, -8, NS:L("wiz_language_help"))
 	local buttons = {}
 	for i, code in ipairs(NS.languageOrder) do
 		local b = W.Button(p, "", 220, 26, function()
@@ -41,6 +41,7 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 		buttons[code] = b
 	end
 	return function()
+		help:SetText(NS:L("wiz_language_help"))   -- cambiando lingua anche il testo della pagina la segue
 		for code, b in pairs(buttons) do b:SetText(Selected(NS.languages[code].name, NS.db.locale == code)) end
 	end
 end }
@@ -160,7 +161,8 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 	local buttons = {}
 	for i, mode in ipairs(NS.Gateway.MODES) do
 		local b = W.Button(p, "", 170, 24, function()
-			NS.Gateway:SetMode(mode)
+			-- l'invio automatico non si sceglie con un clic solo: avviso e conferma
+			if mode == "AUTO_ONLY_IF_ALLOWED" then NS.Gateway:SelectAuto() else NS.Gateway:SetMode(mode) end
 			Wizard:Render()
 		end)
 		b:SetPoint("TOPLEFT", 16, -70 - (i - 1) * 30)
@@ -174,7 +176,14 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 	test:SetPoint("TOPLEFT", 16, -204)
 	return function()
 		for mode, e in pairs(buttons) do
-			e.b:SetText(Selected(NS:L("chatmode_" .. mode .. "_short"), NS.Gateway:GetMode() == mode))
+			local isAuto = mode == "AUTO_ONLY_IF_ALLOWED"
+			if isAuto and NS.Gateway:IsAutoArmed() and not NS.Gateway:IsAutoActive() then
+				e.b:SetText(NS:L("auto_confirm_again"))
+			else
+				-- l'invio automatico risulta scelto solo con il consenso dato
+				local chosen = isAuto and NS.Gateway:IsAutoActive() or (not isAuto and NS.Gateway:GetMode() == mode)
+				e.b:SetText(Selected(NS:L("chatmode_" .. mode .. "_short"), chosen))
+			end
 			e.d:SetText(NS:L("chatmode_" .. mode .. "_help"))
 		end
 	end

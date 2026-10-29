@@ -250,7 +250,9 @@ check(not list(G2.SENT.values()), "il tasto in modalità privata non scrive in c
 lua.execute("math.randomseed(7)")
 NS.db.locale = "it"; NS.db.chance.battle = 100; NS.db.chance.victory = 100; NS.db.pacing.globalCooldownSeconds = 0
 NS.Gateway.SetMode(NS.Gateway, "AUTO_ONLY_IF_ALLOWED")
-check(NS.db.output.autoPublicSay is True, "AUTO_ONLY_IF_ALLOWED accende autoPublicSay")
+check(NS.db.output.autoPublicSay is False, "AUTO_ONLY_IF_ALLOWED da sola non accende autoPublicSay (serve la conferma)")
+NS.Gateway.SetMode(NS.Gateway, "AUTO_ONLY_IF_ALLOWED", lua.table(confirmAuto=True))
+check(NS.db.output.autoPublicSay is True, "con la conferma esplicita autoPublicSay si accende")
 G.SENT = lua.table()
 setP(combat=False, instance=False)
 # combattimenti ripetuti finché una frase parlata non resta in attesa (il seme è fisso: esito ripetibile)

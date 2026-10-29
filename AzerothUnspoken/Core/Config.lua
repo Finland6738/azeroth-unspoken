@@ -18,6 +18,15 @@ Config.SCHEMA_VERSION = 2
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 
+-- Byte massimi di un messaggio, per canale: la fonte unica del Chat Gateway (che taglia) e del validatore
+-- (che segnala le frasi troppo lunghe). SendChatMessage accetta 255 byte. PRIVATE non è un canale: è il
+-- limite di leggibilità nel narratore per le voci che non escono mai in chat (inner, npc).
+---@type table<string, integer>
+Config.CHAT_LIMITS = {
+	SAY = 255, YELL = 255, EMOTE = 255, PARTY = 255, RAID = 255, GUILD = 255, INSTANCE_CHAT = 255,
+	PRIVATE = 400,
+}
+
 -- GDD §11.4, più le impostazioni del prototipo
 ---@class AUChatSettings
 ---@field mode string PRIVATE | PREVIEW | CONFIRM_TO_SEND | AUTO_ONLY_IF_ALLOWED

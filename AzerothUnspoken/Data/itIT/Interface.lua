@@ -25,8 +25,6 @@ NS:RegisterLanguage("it", {
 			aberration = "aberrazione", humanoid = "mortale", other = "creatura",
 		},
 
-		send_error = "invio non riuscito (%s)",
-		preview = "anteprima",
 		on = "attivo", off = "spento",
 		enabled = "attivato.", disabled = "disattivato.",
 		button_idle = "Nessuna proposta in attesa. Clic: il narratore propone una frase adatta al momento.",
@@ -51,7 +49,16 @@ NS:RegisterLanguage("it", {
 		gw_lockdown = "chat bloccata dal client in questo momento.",
 		gw_error = "invio non riuscito (%s).",
 		gw_review = "anteprima della proposta: %s\nPremi di nuovo per inviarla, oppure /au annulla.",
-		chat_auto_warning = "ATTENZIONE: in questa modalità emote (sempre) e /say (nelle istanze) partono da soli, a nome del tuo personaggio. Tutto il resto resta una proposta da confermare.",
+		gw_expired = "la proposta non c'è più (scaduta, scartata o sostituita): nulla è stato inviato. Il tuo testo: %s",
+		gw_text_kept = "la proposta è sparita mentre la modificavi: nulla è stato inviato. Il tuo testo: %s",
+		emote_says = "dice: «%s»",
+		chat_auto_warning = "ATTENZIONE: nella modalità automatica emote (sempre) e /say (nelle istanze) partono da soli, a nome del tuo personaggio, senza che tu faccia nulla. Tutto il resto resta una proposta da confermare. Per attivarla conferma entro 10 secondi.",
+		auto_repeat = "Per attivare l'invio automatico ripeti lo stesso comando entro 10 secondi; altrimenti non cambia nulla.",
+		auto_confirm_again = "clic di nuovo per confermare",
+		invalid_value = "valore non valido: '%s'. Valori ammessi: %s.",
+		values_chat = "privato, anteprima, conferma, auto",
+		values_channel = "auto, say, emote, gruppo, incursione, gilda, istanza",
+		values_depth = "naturale, letterario, elevato",
 		chatmode_PRIVATE_short = "solo narratore privato",
 		chatmode_PREVIEW_short = "anteprima",
 		chatmode_CONFIRM_TO_SEND_short = "conferma per inviare",
@@ -59,14 +66,15 @@ NS:RegisterLanguage("it", {
 		chatmode_PRIVATE_help = "Solo narratore privato (predefinita): le frasi compaiono nel riquadro e restano visibili solo a te. Nulla va in chat.",
 		chatmode_PREVIEW_help = "Anteprima: le frasi del personaggio diventano proposte. Il tasto 'pronuncia' apre l'editor, dove puoi cambiarle e inviarle con Invio.",
 		chatmode_CONFIRM_TO_SEND_help = "Conferma per inviare: la proposta è pronta, il tasto o il pulsante 'pronuncia' la invia con un solo gesto. Puoi sempre modificarla o scartarla.",
-		chatmode_AUTO_ONLY_IF_ALLOWED_help = "Automatica dove permesso: le emote partono da sole e il /say nelle istanze; il resto resta una proposta. Poche al minuto, sempre.",
+		chatmode_AUTO_ONLY_IF_ALLOWED_help = "Automatica dove permesso: le emote partono da sole e il /say nelle istanze; il resto resta una proposta. Poche al minuto, sempre. Si attiva solo con una conferma esplicita.",
 		channel_auto = "automatico", channel_SAY = "/say", channel_EMOTE = "/emote", channel_PARTY = "gruppo",
 		channel_RAID = "incursione", channel_GUILD = "gilda", channel_INSTANCE_CHAT = "istanza",
 
 		-- impostazioni
 		opt_enabled = "Addon", opt_language = "Lingua delle frasi",
 		opt_intensity = "Intensità", opt_depth = "Profondità dello stile",
-		opt_cooldown = "Pausa tra le frasi", opt_chatmode = "Chat", opt_channel = "Canale predefinito",
+		opt_cooldown = "Pausa tra le frasi", opt_chatmode = "Chat", opt_auto = "Invio automatico",
+		opt_channel = "Canale predefinito",
 		opt_button = "Pulsante 'pronuncia'", opt_rpname = "Nome da Total RP 3",
 		opt_pause = "Metti in pausa il narratore", opt_resume = "Riprendi il narratore",
 		opt_wizard = "Riapri la procedura guidata",
@@ -132,12 +140,13 @@ NS:RegisterLanguage("it", {
 			.. "/au debug [full|trace] - diagnostica: capacità del client, ultimi eventi, errori\n"
 			.. "/au lingua [it|en] - lingua delle frasi\n"
 			.. "/au intensita <0-100> | profondita naturale|letterario|elevato\n"
-			.. "/au chat privato|anteprima|conferma|auto - cosa può arrivare in chat (predefinito: privato)\n"
+			.. "/au chat privato|anteprima|conferma|auto - cosa può arrivare in chat (predefinito: privato; auto chiede conferma)\n"
 			.. "/au canale auto|say|emote|gruppo|incursione|gilda|istanza\n"
 			.. "/au dire - conferma la proposta in attesa (anche da macro o tasto)\n"
 			.. "/au annulla - scarta la proposta\n"
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
-			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | preghiera | ringrazia | scherzo\n"
+			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | vittoria | preghiera | ringrazia | scherzo\n"
+			.. "/au evento <nome> - propone una frase per un evento (battle, zone, muse...)\n"
 			.. "/au incanta <incantesimo> - frase per un incantesimo (utile nelle macro)\n"
 			.. "/au prova <evento> - anteprima in chat locale\n"
 			.. "/au prob <evento> <0-100> - probabilità di un evento\n"

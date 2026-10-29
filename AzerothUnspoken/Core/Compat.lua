@@ -189,6 +189,25 @@ function Compat:InChatLockdown()
 	return ok and locked == true
 end
 
+-- Il mouse è sopra il frame? Metodo del frame (Details lo usa nel client Forever; è nel dump come
+-- IsMouseOver), con ripiego sulla funzione globale MouseIsOver, che nel dump manca. Senza nessuno dei due: falso.
+---@param frame table
+---@return boolean
+function Compat:IsMouseOver(frame)
+	if type(frame) ~= "table" then return false end
+	local method = frame.IsMouseOver
+	if type(method) == "function" then
+		local ok, over = pcall(method, frame)
+		if ok then return over == true end
+	end
+	local legacy = Resolve("MouseIsOver")
+	if type(legacy) == "function" then
+		local ok, over = pcall(legacy, frame)
+		if ok then return over and true or false end
+	end
+	return false
+end
+
 function Compat:GetSpellName(spellID)
 	if spellID == nil or IsSecret(spellID) then return nil end
 	local name = Compat.SafeCall(C_Spell and C_Spell.GetSpellName, spellID)
