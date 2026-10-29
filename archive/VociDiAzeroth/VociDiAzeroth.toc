@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: Voci di Azeroth
 ## Notes: Motore narrativo per il roleplay: frasi curate, multilingua e contestuali. Scrivi /voci per l'aiuto.
-## Author: Daniel Polo
+## Author: Finland6738
 ## Version: 0.1.0
 ## SavedVariablesPerCharacter: VociDiAzerothDB
 ## OptionalDeps: totalRP3
