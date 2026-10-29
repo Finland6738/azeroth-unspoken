@@ -239,7 +239,7 @@ local CREATURE = { { "undead" }, { "demon" }, { "dragonkin", "dragon" }, { "elem
 local CREATURE_KEY = { "undead", "demon", "dragon", "elemental", "beast", "giant", "mechanical", "critter", "aberration", "humanoid" }
 local function CreatureKey(localized)
 	if not localized then return nil end
-	localized = Traits.Lower(localized)
+	localized = NS.Lower(localized)
 	for i, words in ipairs(CREATURE) do
 		for _, w in ipairs(words) do
 			if localized:find(w, 1, true) then return CREATURE_KEY[i] end
@@ -498,7 +498,7 @@ end })
 -- Le emote personalizzate (CHAT_MSG_EMOTE) non si leggono.
 EventBus:AddSource("CHAT_MSG_TEXT_EMOTE", { normalize = function(text, playerName)
 	if type(text) ~= "string" or Compat.IsSecret(text) then return nil end
-	local padded = " " .. Traits.Lower(text):gsub("[^a-z]", " ") .. " "
+	local padded = " " .. NS.Lower(text):gsub("[^a-z]", " ") .. " "
 	if not padded:find(" you ", 1, true) then return nil end
 	local key = NS.Relationships and NS.Relationships.PlayerKey(playerName)
 	local own = NS.Relationships and NS.Relationships.PlayerKey(Compat.SafeCall("UnitName", "player"))
@@ -698,7 +698,7 @@ end
 ---@param rest? string
 function I:Command(rest)
 	local word, arg = (rest or ""):match("^([^ ]*) *(.*)$")
-	word = Traits.Lower(word or "")
+	word = NS.Lower(word or "")
 	if word == "trp3" then
 		local s = NS.db.interlocutor
 		local on
@@ -719,8 +719,8 @@ function I:Command(rest)
 			id = kind == "npc" and o.npcID or o.key:match("^player:(.+)$")
 		end
 		if not kind or not (NS.Relationships and NS.Relationships:Get(kind, id)) then return Say("other_not_listed") end
-		trait = trait and Traits.Lower(trait)
-		if value == "-" or value == "" then value = nil else value = Traits.Lower(value) end
+		trait = trait and NS.Lower(trait)
+		if value == "-" or value == "" then value = nil else value = NS.Lower(value) end
 		if trait and self:SetTrait(kind, id, trait, value) then
 			Say("other_trait_set", Traits.Name(trait), value and Traits.ValueName(trait, value) or "-")
 		else

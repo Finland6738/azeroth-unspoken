@@ -100,11 +100,11 @@ end
 ---@return string? mode nil se sconosciuto
 function Gateway:ParseMode(value)
 	if type(value) ~= "string" then return nil end
-	local up = value:upper()
+	local up = NS.Upper(value)
 	for _, m in ipairs(self.MODES) do
 		if m == up then return m end
 	end
-	return MODE_ALIAS[value:lower()]
+	return MODE_ALIAS[NS.Lower(value)]
 end
 
 -- Cambia modalità. L'invio automatico è un secondo consenso (output.autoPublicSay) che si accende solo

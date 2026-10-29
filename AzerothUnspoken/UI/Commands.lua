@@ -66,7 +66,7 @@ local function ListPacks()
 end
 
 local function Debug(arg)
-	arg = arg:lower()
+	arg = NS.Lower(arg)
 	if arg == "trace" then
 		NS.Diagnostics:SetTrace(not NS.Diagnostics.trace)
 		NS:Print(NS:L("debug_trace", NS.Diagnostics.trace and NS:L("on") or NS:L("off")))
@@ -78,7 +78,7 @@ end
 -- solo spazi ASCII nei pattern: %s può spezzare le lettere accentate
 local function Command(msg)
 	local cmd, rest = (msg or ""):match("^ *([^ ]*) *(.-) *$")
-	cmd = cmd:lower()
+	cmd = NS.Lower(cmd)
 	local db = NS.db
 
 	if cmd == "debug" then
@@ -119,7 +119,7 @@ local function Command(msg)
 		NS:Print(NS:L("mode_now", NS:L("chatmode_" .. db.chat.mode .. "_short")))
 		NS:Print(NS:L("chatmode_" .. db.chat.mode .. "_help"))
 	elseif cmd == "canale" or cmd == "channel" then
-		local ch = CHANNEL_ALIAS[rest:lower()]
+		local ch = CHANNEL_ALIAS[NS.Lower(rest)]
 		if ch then
 			db.chat.channel = ch
 		elseif rest ~= "" then
@@ -131,7 +131,7 @@ local function Command(msg)
 		if n then NS.Config:Set("intensity", n) end
 		NS:Print(NS:L("intensity_now", db.intensity))
 	elseif cmd == "profondita" or cmd == "profondità" or cmd == "depth" then
-		local d = DEPTH_ALIAS[rest:lower()]
+		local d = DEPTH_ALIAS[NS.Lower(rest)]
 		if d then
 			db.proseDepth = d
 		elseif rest ~= "" then
@@ -141,7 +141,7 @@ local function Command(msg)
 	elseif cmd == "pausa" or cmd == "pause" then
 		NS.Director:TogglePause()
 	elseif cmd == "narratore" or cmd == "narrator" then
-		local a = rest:lower()
+		local a = NS.Lower(rest)
 		if a == "cronologia" or a == "history" then
 			NS.Narrator:ToggleHistory()
 		elseif a == "reset" then
@@ -171,9 +171,9 @@ local function Command(msg)
 	elseif cmd == "dire" or cmd == "speak" or cmd == "say" or cmd == "invia" or cmd == "send" then
 		AzerothUnspoken_Speak()
 	elseif cmd == "prova" or cmd == "test" then
-		Preview(MANUAL[rest:lower()] or (rest ~= "" and rest:lower()) or "battle")
+		Preview(MANUAL[NS.Lower(rest)] or (rest ~= "" and NS.Lower(rest)) or "battle")
 	elseif cmd == "evento" or cmd == "event" then
-		local ev = MANUAL[rest:lower()] or rest:lower()
+		local ev = MANUAL[NS.Lower(rest)] or NS.Lower(rest)
 		if not NS:Trigger(ev) then NS:Print(NS:L("no_phrase", ev)) end
 	elseif MANUAL[cmd] then
 		-- per macro: /cast X e poi /au incanta X, così la frase arriva col tasto
@@ -192,12 +192,12 @@ local function Command(msg)
 		NS:Print(NS:L("cooldown_now", db.pacing.globalCooldownSeconds))
 	elseif cmd == "prob" or cmd == "chance" then
 		local ev, v = rest:match("^([^ ]+) +([^ ]+)$")
-		SetChance(ev and (MANUAL[ev:lower()] or ev:lower()), v)
+		SetChance(ev and (MANUAL[NS.Lower(ev)] or NS.Lower(ev)), v)
 	elseif cmd == "ignora" or cmd == "ignore" then
 		if rest == "" then
 			for name in pairs(db.ignored) do NS:Print(name) end
 		else
-			local key = rest:lower()
+			local key = NS.Lower(rest)
 			db.ignored[key] = (not db.ignored[key]) or nil
 			NS:Print(NS:L(db.ignored[key] and "ignored" or "unignored", rest))
 		end

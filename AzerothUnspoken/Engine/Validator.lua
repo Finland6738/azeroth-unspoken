@@ -511,7 +511,7 @@ function Validator:Print(result, full)
 end
 
 function Validator:Command(arg)
-	arg = (arg or ""):lower()
+	arg = NS.Lower(arg or "")
 	local full = arg == "full" or arg == "tutto"
 	local packs
 	if arg ~= "" and not full then

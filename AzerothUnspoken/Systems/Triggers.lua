@@ -68,7 +68,7 @@ function handlers.SPELL_CAST(env)
 	if c.castGUID then sentTargets[c.castGUID] = nil end
 	local name = c.spell
 	if type(name) ~= "string" then return end
-	local lower = name:lower()
+	local lower = NS.Lower(name)
 	if SKIP[lower] or NS.db.ignored[lower] then return end
 
 	local kind = NS:ClassifySpell(name)

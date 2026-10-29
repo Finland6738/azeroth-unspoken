@@ -153,7 +153,7 @@ end
 local function IsCapital(zone, mapID)
 	local entry = NS.Place and NS.Place:Lookup(mapID, zone)
 	if entry and entry.capital then return true end
-	return type(zone) == "string" and NS.zoneMoods ~= nil and NS.zoneMoods[zone:lower()] == "city"
+	return type(zone) == "string" and NS.zoneMoods ~= nil and NS.zoneMoods[NS.Lower(zone)] == "city"
 end
 
 ---------------------------------------------------------------------------
@@ -525,9 +525,9 @@ function LM:FindPlace(keyOrName)
 	local m = self:Data()
 	if not m or type(keyOrName) ~= "string" then return nil end
 	if m.places[keyOrName] then return m.places[keyOrName], keyOrName end
-	local low = NS.Traits.Lower(keyOrName)
+	local low = NS.Lower(keyOrName)
 	for key, p in pairs(m.places) do
-		if p.name == keyOrName or NS.Traits.Lower(p.name or "") == low then return p, key end
+		if p.name == keyOrName or NS.Lower(p.name or "") == low then return p, key end
 	end
 	return nil
 end
@@ -598,7 +598,7 @@ function LM:SetFlag(name, source)
 	if self.readOnly or not ValidFlagName(name) then return false end
 	local m = self:Data()
 	if not m then return false end
-	name = name:lower()
+	name = NS.Lower(name)
 	if not m.flags[name] then
 		m.flags[name] = { t = Now(), source = self.SOURCES[source] and source or "addon" }
 		if NS.JournalFrame then NS.JournalFrame:Refresh() end
@@ -611,7 +611,7 @@ end
 function LM:ClearFlag(name)
 	if self.readOnly or not ValidFlagName(name) then return false end
 	local m = self:Data()
-	name = name:lower()
+	name = NS.Lower(name)
 	if not m or not m.flags[name] then return false end
 	m.flags[name] = nil
 	if NS.JournalFrame then NS.JournalFrame:Refresh() end
@@ -622,7 +622,7 @@ end
 ---@return boolean
 function LM:HasFlag(name)
 	local m = self:Data()
-	return m ~= nil and ValidFlagName(name) and m.flags[name:lower()] ~= nil
+	return m ~= nil and ValidFlagName(name) and m.flags[NS.Lower(name)] ~= nil
 end
 
 ---@return string[] names in ordine alfabetico
@@ -1018,7 +1018,7 @@ local RESET_WORDS = {
 function LM:Command(rest)
 	rest = rest or ""
 	local word, arg = rest:match("^([^ ]*) *(.-) *$")
-	word = (word or ""):lower()
+	word = NS.Lower(word or "")
 	if not self:Enabled() then
 		Say(self.readOnly and "mem_readonly" or "mem_off")
 		return
@@ -1045,10 +1045,10 @@ function LM:Command(rest)
 			Say("mem_flag_invalid", name)
 		elseif self:HasFlag(name) then
 			self:ClearFlag(name)
-			Say("mem_flag_off", name:lower())
+			Say("mem_flag_off", NS.Lower(name))
 		else
 			self:SetFlag(name, "user")
-			Say("mem_flag_on", name:lower())
+			Say("mem_flag_on", NS.Lower(name))
 		end
 	elseif word == "esporta" or word == "export" then
 		if not (NS.JournalFrame and NS.JournalFrame:ShowExport()) then
@@ -1075,7 +1075,7 @@ function LM:Command(rest)
 	elseif word == "dimentica" or word == "forget" then
 		if arg ~= "" and self:ForgetPlace(arg) then Say("mem_place_forgotten", arg) else Say("mem_missing", arg) end
 	elseif word == "reset" or word == "azzera" then
-		local what = RESET_WORDS[(arg:match("^([^ ]*)") or ""):lower()] or "all"
+		local what = RESET_WORDS[NS.Lower(arg:match("^([^ ]*)") or "")] or "all"
 		local nowT = GetTime()
 		local p = self.pendingReset
 		if p and p.what == what and nowT <= p.untilT then
