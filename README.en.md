@@ -244,7 +244,7 @@ The full index is [docs/README.md](docs/README.md). Starting points (all in Ital
 
 ## Credits
 
-- Concept and development: Daniel Polo.
+- Concept and development: Finland6738.
 - Technical references consulted (not copied): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) for the Forever API dump; the [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) for general API documentation. Full list in [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md).
 - [Total RP 3](https://totalrp3.info/) belongs to its authors; Azeroth Unspoken only uses it as an optional integration.
 - If [ForeverDB.net](https://foreverdb.net/) data is ever used to prepare local registries, it will be credited here with a visible link.
