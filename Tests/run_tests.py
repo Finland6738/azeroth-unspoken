@@ -716,7 +716,7 @@ if not proc.stdout.startswith("SALTATO"):
                    "C_Map.FunzioneInesistente"):
         check("MANCA" in out_ and needle in out_, f"check_api.py segnala {needle}")
 
-# 11) documentazione: gli esempi di FORMATO_PACCHETTI.md come pacchetti esterni e i link relativi dei file Markdown
+# 11) documentazione: gli esempi di PACK_FORMAT.md come pacchetti esterni e i link relativi dei file Markdown
 print("\nDOCUMENTAZIONE")
 proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_docs.py"), os.path.dirname(ADDON)],
                       capture_output=True, text=True, encoding="utf-8")

@@ -56,5 +56,5 @@ Gli step S6b (relazioni) e S6c (interlocutore e luogo) useranno memoria e diario
 
 - GDD §7.4, §10, §11.5, §12.2, §21.
 - `Systems/LivingMemory.lua`, `UI/JournalFrame.lua`, `Engine/RuleEngine.lua` (condizioni di memoria), `Engine/WeightedSelector.lua` (`SetEventGuard`), `Engine/Validator.lua` (`recallWithoutMemory`), `Data/RegistryMemory.lua` (frasi di esempio).
-- [ADR 0006](0006-savedvariables-e-versioni-dello-schema.md), [ADR 0015](0015-narrative-director-un-intervento-per-momento.md), [ADR 0016](0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md).
+- [ADR 0006](0006-savedvariables-and-schema-versions.md), [ADR 0015](0015-narrative-director-one-intervention-per-moment.md), [ADR 0016](0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md).
 - `Tests/TestMemory.lua` e la sezione «persistenza della memoria» di `Tests/run_tests.py`.

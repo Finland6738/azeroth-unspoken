@@ -453,7 +453,7 @@ oppure `AzerothUnspoken:RegisterCondition("hasPet", nil, "bool")`.
 
 ## Dialoghi ambientali (NPC Alive)
 
-I dialoghi con un NPC (step S8, [ADR 0020](../docs/adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)) sono dati come tutto il resto: un pacchetto può aggiungere battute e copioni senza toccare il motore. Sono **simulati**: la finestra lo dichiara («dialogo ambientale dell'addon») e le battute non vanno mai in chat.
+I dialoghi con un NPC (step S8, [ADR 0020](../docs/adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)) sono dati come tutto il resto: un pacchetto può aggiungere battute e copioni senza toccare il motore. Sono **simulati**: la finestra lo dichiara («dialogo ambientale dell'addon») e le battute non vanno mai in chat.
 
 **Le battute** sono regole con `speaker = "npc"` e un evento `npcd_<ruolo>_<nodo>` dichiarato dal pacchetto. Escono solo dentro un dialogo: `AzerothUnspoken:RegisterDialogues` mette su ogni evento dei nodi una guardia. Le condizioni sono quelle di sempre (`other = { role, speech, temperament, npcID }`, `isKnown`, `relation`, `remembered`...): così un locandiere burbero e uno gioviale, uno conosciuto e uno sconosciuto, o un NPC specifico per `npcID` dicono cose diverse.
 
@@ -556,7 +556,7 @@ caratteri e i rapporti, come fanno quelle di base in `Data/RegistryDialogues.lua
 
 ## Story Arcs (storie personali)
 
-Gli archi (step S9, [ADR 0021](../docs/adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md)) sono micro-storie del personaggio: **non sono quest del server**, non danno ricompense, non cambiano gli NPC veri e non promettono nulla al gioco. Vivono nell'addon: uno stato salvato per personaggio, un racconto nel diario e qualche frase del narratore. Sono dati come tutto il resto: un pacchetto aggiunge archi senza toccare il motore. Gli archi di base sono in `Data/Arcs.lua` (struttura), `Data/RegistryArcs.lua` (battute) e `Data/itIT|enUS/Arcs.lua` (testi).
+Gli archi (step S9, [ADR 0021](../docs/adr/0021-story-arcs-micro-stories-without-game-effects.md)) sono micro-storie del personaggio: **non sono quest del server**, non danno ricompense, non cambiano gli NPC veri e non promettono nulla al gioco. Vivono nell'addon: uno stato salvato per personaggio, un racconto nel diario e qualche frase del narratore. Sono dati come tutto il resto: un pacchetto aggiunge archi senza toccare il motore. Gli archi di base sono in `Data/Arcs.lua` (struttura), `Data/RegistryArcs.lua` (battute) e `Data/itIT|enUS/Arcs.lua` (testi).
 
 **Gli stati.** `LOCKED → DISCOVERED → REFLECTED → RESOLVED`. Un arco può definire **stati propri** (`states = { "LOCKED", "DISCOVERED", "JOURNEY", "REFLECTED", "RESOLVED" }`: maiuscole, al massimo 10 lettere, sempre da `LOCKED` a `RESOLVED`) e da uno stato si va **solo al successivo**: niente salti, niente passi indietro.
 
@@ -874,7 +874,7 @@ I controlli dei contenuti (lore verificata, ortografia, registro del parlante) r
    probabilità per evento (`/au prob`), pause (globale `/au cooldown`, di categoria, di evento), budget per categoria,
    priorità e sospensione durante filmati e combattimenti impegnativi. Un evento nuovo ha la priorità "atmosfera";
    un pacchetto la può cambiare con `AzerothUnspoken:SetEventPriority("fishing", "memory")`
-   (`dialogue`, `exceptional`, `memory`, `ambient`). Vedi [docs/ARCHITETTURA.md](../docs/ARCHITETTURA.md).
+   (`dialogue`, `exceptional`, `memory`, `ambient`). Vedi [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).
 
 ## Provare gli esempi
 

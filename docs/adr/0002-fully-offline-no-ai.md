@@ -10,10 +10,10 @@ Un compagno narrativo potrebbe sembrare un buon candidato per un modello linguis
 ## Decisione
 
 - **Nessuna rete**: nessuna chiamata HTTP, nessun socket, nessun download, nessun browser, nessuna telemetria, nessun account esterno, nessuna IA online.
-- **Nessun testo generato a runtime**: si sceglie fra frasi esistenti ([ADR 0001](0001-motore-e-database-narrativo-separati.md)).
+- **Nessun testo generato a runtime**: si sceglie fra frasi esistenti ([ADR 0001](0001-engine-and-narrative-database-separated.md)).
 - **Si espande con pacchetti locali**: file Lua e `.toc`, come ogni addon.
 - **Unica comunicazione fra giocatori, in futuro**: i messaggi addon interni al gioco (modulo Social, step S10), disattivati per impostazione predefinita, con consenso esplicito e rilasciati solo dove il trasporto è dimostrato. Nessun codice ricevuto da altri giocatori viene mai eseguito (nessun `loadstring`).
-- **Durante lo sviluppo** si possono consultare fonti esterne (il dump delle API, ForeverDB.net per preparare registri locali di NPC e luoghi), ma i risultati entrano nel repository come dati locali, citando la fonte. L'addon in gioco resta offline ([RIFERIMENTI.md](../RIFERIMENTI.md)).
+- **Durante lo sviluppo** si possono consultare fonti esterne (il dump delle API, ForeverDB.net per preparare registri locali di NPC e luoghi), ma i risultati entrano nel repository come dati locali, citando la fonte. L'addon in gioco resta offline ([REFERENCES.md](../REFERENCES.md)).
 
 ## Alternative considerate
 

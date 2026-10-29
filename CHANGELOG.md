@@ -2,7 +2,7 @@
 
 Tutte le modifiche rilevanti di questo progetto sono registrate qui.
 
-Il formato segue [Keep a Changelog 1.1.0](https://keepachangelog.com/it-it/1.1.0/) e il progetto intende seguire il [versionamento semantico](https://semver.org/lang/it/) a partire dalla versione 1.0. Fino ad allora le versioni 0.x possono cambiare in modo non retrocompatibile. Lo schema dati v2 dei pacchetti di frasi (step S3) è ora stabile e descritto in [FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md), ma può ancora cambiare prima della 1.0: i cambiamenti saranno annunciati qui.
+Il formato segue [Keep a Changelog 1.1.0](https://keepachangelog.com/it-it/1.1.0/) e il progetto intende seguire il [versionamento semantico](https://semver.org/lang/it/) a partire dalla versione 1.0. Fino ad allora le versioni 0.x possono cambiare in modo non retrocompatibile. Lo schema dati v2 dei pacchetti di frasi (step S3) è ora stabile e descritto in [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), ma può ancora cambiare prima della 1.0: i cambiamenti saranno annunciati qui.
 
 Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzione. La versione nel file `.toc` è `0.1.0`.
 
@@ -21,9 +21,9 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 ### Documentazione: allineamento a M0–M3 (attività D2, issue #57, #58 e #59)
 
 - `README.md` e `README.en.md` riscritti per lo stato di `main`: tutte le funzioni (narratore privato, Chat Gateway, intensità e profondità, personalità e Total RP 3, memoria e diario, relazioni, interlocutore e luogo, NPC Alive, Story Arcs), i numeri reali (1.005 intenzioni, 2.109 varianti per lingua, quattro voci), tutti i comandi e gli alias, i quattro tasti, la privacy (relazioni, Total RP 3 degli altri solo con consenso, nessuna chat salvata, nulla in chat pubblica senza un'azione del giocatore) e lo stato del progetto con le prove in gioco ancora da fare.
-- `AzerothUnspoken/FORMATO_PACCHETTI.md`: **tutti gli esempi sono scritti per un pacchetto esterno** (`AzerothUnspoken:` e non `NS:`) e sono **provati dai test**; descrive che cosa succede con una chiave già esistente (copione, NPC, luogo o arco: sostituzione per intero, [#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)) e consiglia una chiave nuova con `extends`; conteggi aggiornati.
+- `AzerothUnspoken/PACK_FORMAT.md`: **tutti gli esempi sono scritti per un pacchetto esterno** (`AzerothUnspoken:` e non `NS:`) e sono **provati dai test**; descrive che cosa succede con una chiave già esistente (copione, NPC, luogo o arco: sostituzione per intero, [#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)) e consiglia una chiave nuova con `extends`; conteggi aggiornati.
 - **`Tests/check_docs.py`** (collegato a `run_tests.py`): carica ogni blocco `lua` marcato `<!-- prova -->` della guida come un pacchetto esterno e fa girare il validatore (`<!-- prova: errore -->` per gli esempi sbagliati apposta); controlla tutti i link relativi dei file Markdown, àncore comprese.
-- `docs/ARCHITETTURA.md`: diagramma e tabella degli agganci dei sistemi di M1–M3 al motore, versioni dello schema e dei dati per personaggio, API dei pacchetti aggiornata (schema v2, `RegisterDialogues`, `RegisterNPCs`, `RegisterPlaces`, `RegisterArcs`...), impostazioni complete, sezione di ciò che manca riscritta.
+- `docs/ARCHITECTURE.md`: diagramma e tabella degli agganci dei sistemi di M1–M3 al motore, versioni dello schema e dei dati per personaggio, API dei pacchetti aggiornata (schema v2, `RegisterDialogues`, `RegisterNPCs`, `RegisterPlaces`, `RegisterArcs`...), impostazioni complete, sezione di ciò che manca riscritta.
 - `CONTRIBUTING.md`, ADR 0006 (schema 6, versioni interne dei moduli, regola per i dati più nuovi) e questo `CHANGELOG.md`, riordinato per step (prima le sezioni «Aggiunto» e «Modificato» erano mescolate).
 
 ### Correzioni Q5 (issue #45, #46, #47, #48, #49, #50, #51, #52, #53, #54, #55, #56)
@@ -42,7 +42,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 
 ### Step S9: Story Arcs, le storie personali
 
-- **`Systems/StoryArcs.lua`**: micro-storie del personaggio, **non quest del server**: nessuna ricompensa, nessun effetto sul gioco, nessuna modifica agli NPC veri. Stati `LOCKED → DISCOVERED → REFLECTED → RESOLVED` (un arco può definirne di propri tra i due estremi; da uno stato si va solo al successivo). Ogni passo è un dato: eventi (`zone` per uiMapID e nome della zona, `death`, `level`, `npc`, `flag`, `player`), condizioni del RuleEngine, attesa e, se serve, una scelta del giocatore. Apertura e avanzamento **solo da un evento vero** o da una scelta diretta: il tempo, un comando o un altro sistema non aprono né fanno avanzare nulla; un evento muove un arco di un solo passo. [ADR 0021](docs/adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md).
+- **`Systems/StoryArcs.lua`**: micro-storie del personaggio, **non quest del server**: nessuna ricompensa, nessun effetto sul gioco, nessuna modifica agli NPC veri. Stati `LOCKED → DISCOVERED → REFLECTED → RESOLVED` (un arco può definirne di propri tra i due estremi; da uno stato si va solo al successivo). Ogni passo è un dato: eventi (`zone` per uiMapID e nome della zona, `death`, `level`, `npc`, `flag`, `player`), condizioni del RuleEngine, attesa e, se serve, una scelta del giocatore. Apertura e avanzamento **solo da un evento vero** o da una scelta diretta: il tempo, un comando o un altro sistema non aprono né fanno avanzare nulla; un evento muove un arco di un solo passo. [ADR 0021](docs/adr/0021-story-arcs-micro-stories-without-game-effects.md).
 - **Al massimo 1–2 archi attivi** (`arcs.maxActive`, `/au storie max`): a posti finiti l'arco resta «disponibile» e lo avvia il giocatore. Ogni arco si può **sospendere, saltare o disattivare**, uno per uno o tutti; il modulo «Storie» spegne tutto. Le scelte (2–3 opzioni neutre, salvate come id) le fa sempre il giocatore; un arco su un argomento che il personaggio evita (`topic`) non si apre.
 - **Chiusura con un ricordo permanente** in Living Memory (`story`, solo id e luogo); ogni stato lascia il flag `arc_<id>_<stato>`. Persistenza in `cdb.arcs` con **schema 6** (migrazione del personaggio e migrazione interna, sola lettura per dati più nuovi); la scelta in attesa, il modo e le scelte sopravvivono a `/reload`.
 - **Narrative Director**: gli eventi `arc_open`, `arc_step` e `arc_resolve` hanno priorità «evento eccezionale» e parlano **una alla volta** (almeno 90 secondi tra due battute di archi), mai in combattimento, da morti, in incursione o campo di battaglia; se il momento non è buono aspettano fino a 15 minuti. Lo stato avanza anche in silenzio: il diario racconta. `Director:Offer(evento, extra, onResult)` ora restituisce l'esito a chi propone.
@@ -53,7 +53,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 
 ### Step S8: NPC Alive, i dialoghi ambientali (e le issue #41 e #42)
 
-- **`Systems/NPCAlive.lua`** e **`UI/DialogueFrame.lua`**: un micro-dialogo **simulato** con un NPC identificabile, in una **finestra separata e discreta** con l'etichetta ben visibile **«dialogo ambientale dell'addon»** (*addon ambient dialogue*), il ruolo e il nome, la battuta e da una a tre risposte, chiusura immediata (x, `/au npc chiudi`, tasto). Le battute **non vanno mai in chat** (né nel narratore né nella cronologia), l'addon **non chiama né nasconde** nulla di gossip, quest, commercio, volo o addestramento di Blizzard, e la finestra si mette dove **non copre** le finestre di Blizzard visibili (e si sposta se una si apre sotto). Non è in `UISpecialFrames`: Esc non la chiude insieme a quelle dell'NPC. [ADR 0020](docs/adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md).
+- **`Systems/NPCAlive.lua`** e **`UI/DialogueFrame.lua`**: un micro-dialogo **simulato** con un NPC identificabile, in una **finestra separata e discreta** con l'etichetta ben visibile **«dialogo ambientale dell'addon»** (*addon ambient dialogue*), il ruolo e il nome, la battuta e da una a tre risposte, chiusura immediata (x, `/au npc chiudi`, tasto). Le battute **non vanno mai in chat** (né nel narratore né nella cronologia), l'addon **non chiama né nasconde** nulla di gossip, quest, commercio, volo o addestramento di Blizzard, e la finestra si mette dove **non copre** le finestre di Blizzard visibili (e si sposta se una si apre sotto). Non è in `UISpecialFrames`: Esc non la chiude insieme a quelle dell'NPC. [ADR 0020](docs/adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md).
 - **Macchina a stati** `idle → offered → opened → choice → response → ended` con transizioni verificate. L'**offerta** parte da un pulsante che compare su un'interazione valida (mercante, volo, addestramento, locandiere, banca, gossip di un NPC del registro; **mai sopra una quest**), scade dopo 20 secondi, al massimo una volta ogni tre minuti per NPC e finestra; oppure da `/au npc` o dal tasto assegnato. Si interrompe da sola con combattimento, morte, cambio di zona, altro NPC, 120 secondi fermi.
 - **Identità**: nessun dialogo se è incerta o segreta. *NPC specifico*: l'`npcID` dal GUID è nel registro curato `Data/NPCs.lua` (ora anche tre guardie di città) o l'utente gli ha dato un ruolo (`/au npc ruolo <ruolo>`). *Archetipo* (locandiere, mercante, maestro di volo, addestratore): solo dall'**interazione in corso** che lo prova, o da una già avvenuta con lo stesso NPC nella sessione; il solo gossip non basta. Mai con giocatori, creature ostili, NPC morti, GUID illeggibile.
 - **Voce**: **169 battute** IT/EN (`base_dialogues`, voce `npc`, eventi `npcd_<ruolo>_<nodo>`) per **locandiere** (vertical slice B del GDD: apertura, notizie, «dimmi di più», riposo, fermarsi, grazie, congedo), **mercante**, **guardia**, **maestro di volo** e **addestratore**, più battute di quattro NPC specifici (Innkeeper Farley, Innkeeper Firebrew, Innkeeper Gryshka, Marshal Dughan). Sono regole del motore: seguono `speech` e `temperament` dell'NPC (burbero, gioviale, caloroso, formale, laconico) e la relazione (conosciuto, sconosciuto, già gli hai chiesto le notizie), con gli stessi pesi e la stessa anti-ripetizione. Escono solo dentro un dialogo (guardia sull'evento); con una finestra aperta il narratore spontaneo tace.
@@ -103,7 +103,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - **86 frasi** IT/EN (`base_context`): NPC per ruolo, temperamento e modo di parlare; saluti per ruolo, terra d'origine (razza) e mestiere (classe); azioni (duello, invito, emote, scambio, incarico, al nostro fianco); dungeon, incursione, campo di battaglia, arena, territorio ostile e conteso, capitali amiche e nemiche, santuari, porti, città neutrali, locande; fine di uno scontro con un boss.
 - Comandi `/au luogo` (alias `dove`, `place`) e `/au chi` (alias `who`, `interlocutore`).
 - `Tests/TestOtherPlace.lua` (oltre 500 controlli) e client finto con `C_Map`, `GetInstanceInfo`, `C_PvP`, `UnitGroupRolesAssigned`, `UnitReaction`, `UnitCreatureFamily`, `UnitIsUnit`, campi di battaglia ed eventi nuovi.
-- [ADR 0019](docs/adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md); passi 56–64 in `docs/G1_checklist.md`.
+- [ADR 0019](docs/adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md); passi 56–64 in `docs/G1_checklist.md`.
 
 *Modificato*
 - **Memoria dei luoghi per uiMapID** (issue #31): la chiave di un luogo è `map:<uiMapID>` quando il client lo dà, il nome della zona altrimenti; migrazione interna `memories.version` 1 → 2 (nomi con uiMapID verificato convertiti, gli altri adottati alla prossima visita), il nome resta come etichetta. Il bus porta `mapID` in `WORLD_ENTER` e `ZONE_ENTER`.
@@ -122,7 +122,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - SavedVariables: schema 5 (`cdb.relationships` con versione propria; impostazioni `relations`; migrazione 5).
 - `Tests/check_api.py` legge anche le fonti degli NPC (`NpcSource`/`EndSource`); il client finto ha gli eventi di gossip, quest, mercante, gruppo, scambio e whisper, le unità `npc` e `partyN`, `UnitFullName` e `hooksecurefunc`.
 - Test: `TestRelations` (assi e attrazione facoltativa, derivazione delle etichette e della disposizione, precedenza dell'etichetta a mano, incrementi con rendimenti decrescenti e tetti, decadimento, valori segreti, nessun giocatore senza azione dell'utente, nessun testo di chat salvato, condizioni, segnaposto, fattore R, registro, frasi per rapporto, migrazione e dati rovinati, sola lettura, finestra, diario, comandi) e persistenza simulata dopo `/reload` in `run_tests.py`.
-- [ADR 0018](docs/adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md); passi 46–55 in `docs/G1_checklist.md`.
+- [ADR 0018](docs/adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md); passi 46–55 in `docs/G1_checklist.md`.
 
 *Modificato*
 - `Engine/Traits.lua`: un tratto può avere un `scope` (ambito dei tag in cui è valido); `CheckTag` e `Evaluate` lo rispettano. I tratti senza ambito valgono in ogni ambito, come prima.
@@ -139,7 +139,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - `UI/JournalFrame.lua` e comando `/au diario` (alias `/au journal`, `/au diary`): schede Ricordi, Luoghi, Flag e Sessione (altre con `JournalFrame:RegisterTab`), cancellazione selettiva, ricordo permanente, dimenticare un luogo, «Dimentica tutto» con conferma, esportazione testuale in una finestra copiabile; sottocomandi `lista`, `luoghi`, `flag`, `esporta`, `permanente`, `elimina`, `dimentica`, `reset`. Riga **Living Memory** in `/au debug`; pulsante nel pannello delle impostazioni; il modulo *Memoria* ora ha effetto.
 - SavedVariables: schema 4 (`memories` diventa la memoria; migrazione 4 del personaggio).
 - Test: `TestMemory` (nessun ricordo per eventi insignificanti, prima visita, ritorno, `lastVisitBad`, fuga, livelli, limite e compattazione, permanenti, cancellazione, richiamo solo con un ricordo vero, priorità nel Director, argomenti da evitare, privacy, migrazioni e dati rovinati, diario, esportazione, comandi), persistenza simulata dopo `/reload` in `run_tests.py` (due runtime consecutivi, `SERIALIZE` e `LEAP` nel client finto).
-- [ADR 0017](docs/adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md); passi 39–45 in `docs/G1_checklist.md`.
+- [ADR 0017](docs/adr/0017-living-memory-selective-memories-and-honest-recall.md); passi 39–45 in `docs/G1_checklist.md`.
 
 ### Step S5: Character Soul e tratti di Total RP 3
 
@@ -151,7 +151,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - 16 frasi di esempio con affinità di personalità in IT ed EN (`Data/RegistrySoul.lua`, pacchetto `base_soul`); il validatore controlla i tag di affinità (`badTag`).
 - SavedVariables: schema 3 (`personality` del personaggio con archetipo, tratti e consenso a TRP3; migrazione dallo schema 2).
 - Test: `TestSoul` (modello dei tratti, profilo neutro, archetipi, fattore P, filtri rigidi su ogni scelta di frase, TRP3 presente, assente e con API cambiate, priorità tra le fonti, migrazione delle SavedVariables, comando, finestra).
-- [ADR 0016](docs/adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md); passi 32–38 in `docs/G1_checklist.md`.
+- [ADR 0016](docs/adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md); passi 32–38 in `docs/G1_checklist.md`.
 
 *Modificato*
 - SavedVariables allo schema 3: `personality` del personaggio, che era un segnaposto vuoto, diventa il profilo del Character Soul (migrazione 3; i valori dei tratti si ripuliscono all'avvio).
@@ -166,7 +166,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - `Engine/StyleResolver.lua`: registri ammessi per evento e preferiti da atmosfera della zona, profondità e voce, con ripiego neutro (un registro fuori posto pesa meno, non è escluso); le cornici con `styles` accolgono solo frasi di registro vicino. API dei pacchetti `RegisterEventStyles` e `RegisterMoodStyles`.
 - `Compat:InvasiveScreen` (`InCinematic`, `IsInCinematicScene`, `CinematicFrame`, `MovieFrame`) e le due capacità nuove nella matrice.
 - Test: `TestNarrativeDirector` (fattori e distribuzione dei pesi, intensità 0/50/100, pause, budget, priorità, nessuna cascata, silenzio, sospensione, ripiego di stile, cornici, nessun duplicato nella finestra), con seme fisso.
-- [ADR 0015](docs/adr/0015-narrative-director-un-intervento-per-momento.md); passi 27–31 in `docs/G1_checklist.md`.
+- [ADR 0015](docs/adr/0015-narrative-director-one-intervention-per-moment.md); passi 27–31 in `docs/G1_checklist.md`.
 
 *Modificato*
 - Gli eventi spontanei passano dal Narrative Director: probabilità, pause e dado non sono più in `Systems/Triggers.lua`, e una frase spontanea arriva 0,1 secondi dopo l'evento (finestra di arbitraggio).
@@ -202,7 +202,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - `Engine/Validator.lua` e `/au valida [tutto|pacchetto]`: id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza per canale, UTF-8, coerenza della regola.
 - `ctx.depth` e `ctx.intensity` nel contesto, condizioni `depth`, `intensityMin`, `intensityMax`; il fattore `S` del peso (`Engine.StyleFactor`) preferisce la profondità scelta senza mai escludere.
 - `Tests/check_api.py`: confronta le funzioni e gli eventi usati con il dump delle API di Forever (saltato con un avviso se il dump manca), con eccezioni motivate; collegato a `run_tests.py`.
-- Guida `AzerothUnspoken/FORMATO_PACCHETTI.md` riscritta per lo schema v2; il pacchetto di esempio usa il nuovo formato.
+- Guida `AzerothUnspoken/PACK_FORMAT.md` riscritta per lo schema v2; il pacchetto di esempio usa il nuovo formato.
 - Una lingua registrata da un pacchetto dopo il caricamento resta quella scelta dall'utente (issue #7).
 - Test: `TestSchema` e `TestValidator`; passi 17–19 in `docs/G1_checklist.md`.
 
@@ -210,7 +210,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 
 - `README.md` professionale e `README.en.md` (versione inglese).
 - `docs/adr/`: quattordici decisioni di progetto (ADR) in formato MADR, con indice.
-- `docs/ARCHITETTURA.md`: moduli, flusso di un evento, dati, punti di estensione, con diagrammi Mermaid.
+- `docs/ARCHITECTURE.md`: moduli, flusso di un evento, dati, punti di estensione, con diagrammi Mermaid.
 - `CONTRIBUTING.md`, questo `CHANGELOG.md` e `docs/README.md` (indice della documentazione).
 
 ### Step S2: narratore privato e Chat Gateway
@@ -246,7 +246,7 @@ Le voci sono **raggruppate per step o attività**, dal più recente al più vecc
 - Pacchetto di esempio `AzerothUnspoken_Example`.
 - Test fuori dal gioco con lupa e client simulato (`Tests/`).
 - Configurazione per WebStorm (`.luarc.json`) e annotazioni EmmyLua.
-- Riferimenti tecnici ([docs/RIFERIMENTI.md](docs/RIFERIMENTI.md)).
+- Riferimenti tecnici ([docs/REFERENCES.md](docs/REFERENCES.md)).
 
 *Modificato*
 - La lingua si salva con il codice corto dei pacchetti (`it`, `en`).

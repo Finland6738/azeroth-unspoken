@@ -21,16 +21,16 @@ Grazie dell'interesse. Questo documento spiega come segnalare problemi, scrivere
 Leggi, nell'ordine:
 
 1. [README.md](README.md): che cosa fa l'addon e che cosa no.
-2. [docs/ARCHITETTURA.md](docs/ARCHITETTURA.md): moduli, flusso di un evento, punti di estensione.
+2. [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): moduli, flusso di un evento, punti di estensione.
 3. [docs/adr/README.md](docs/adr/README.md): le decisioni già prese e il loro perché. Non vanno aggirate: se pensi che una sia sbagliata, apri un'issue.
 4. [ROADMAP.md](ROADMAP.md): lo stato, gli step e le regole di lavoro.
 5. [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): la specifica di prodotto (il prodotto lì si chiama ancora "Immersion Director"; dove GDD e roadmap non coincidono, vale la roadmap).
 
 Tre principi non negoziabili:
 
-- **Tutto offline**, senza IA ([ADR 0002](docs/adr/0002-tutto-offline-senza-ia.md)).
-- **Nulla in chat senza un'azione del giocatore** ([ADR 0003](docs/adr/0003-narratore-privato-e-chat-gateway.md)).
-- **Il motore non contiene testi** ([ADR 0001](docs/adr/0001-motore-e-database-narrativo-separati.md)).
+- **Tutto offline**, senza IA ([ADR 0002](docs/adr/0002-fully-offline-no-ai.md)).
+- **Nulla in chat senza un'azione del giocatore** ([ADR 0003](docs/adr/0003-private-narrator-and-chat-gateway.md)).
+- **Il motore non contiene testi** ([ADR 0001](docs/adr/0001-engine-and-narrative-database-separated.md)).
 
 ## 2. Segnalare un problema o proporre un'idea
 
@@ -78,7 +78,7 @@ AzerothUnspoken:RegisterPack({
 })
 ```
 
-Tutti i dettagli (eventi, condizioni, tag di personalità, memoria, relazioni, interlocutore e luogo, dialoghi, archi, segnaposto, cornici, vocabolario) sono in [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md), i cui esempi sono provati dai test: segui sempre la versione di `main`. Un pacchetto in un addon **separato** chiama le API da `AzerothUnspoken:`, non da `NS:`.
+Tutti i dettagli (eventi, condizioni, tag di personalità, memoria, relazioni, interlocutore e luogo, dialoghi, archi, segnaposto, cornici, vocabolario) sono in [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), i cui esempi sono provati dai test: segui sempre la versione di `main`. Un pacchetto in un addon **separato** chiama le API da `AzerothUnspoken:`, non da `NS:`.
 
 ### Convenzioni
 
@@ -87,7 +87,7 @@ Tutti i dettagli (eventi, condizioni, tag di personalità, memoria, relazioni, i
 - **Emote** (voce `narrator`, forma emote): iniziano con la minuscola e **senza il nome**; il gioco antepone quello del personaggio («*Brann* snuda l'arma…»).
 - **Profondità**: `natural`, `literary`, `elevated`. Per i momenti chiave scrivi una variante per ciascuna (`{ "testo", depth = "elevated" }`); una frase senza `depth` vale per tutte e non è mai penalizzata.
 - **Segnaposto** `{player}`, `{target}`, `{spell}`, `{zone}`, `{subzone}`, `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}`, genere `{g:pronto|pronta}`, vocabolario `{cry}`. Se un dato manca, la frase viene scartata: non serve gestirlo.
-- **Voci** (`speaker`): `narrator` descrive l'atmosfera e non attribuisce decisioni al personaggio; `inner` sono pensieri privati; `character` è la voce pubblica, più breve; `npc` è un contenuto simulato. Le voci `inner` e `npc` non vanno mai in chat ([ADR 0003](docs/adr/0003-narratore-privato-e-chat-gateway.md)).
+- **Voci** (`speaker`): `narrator` descrive l'atmosfera e non attribuisce decisioni al personaggio; `inner` sono pensieri privati; `character` è la voce pubblica, più breve; `npc` è un contenuto simulato. Le voci `inner` e `npc` non vanno mai in chat ([ADR 0003](docs/adr/0003-private-narrator-and-chat-gateway.md)).
 - **Registri** (`styles`): `ancient`, `epic`, `tragic`, `intimate`, `everyday`, `ironic`, `ceremonial` (GDD §5.1). Il motore penalizza due frasi di fila con lo stesso registro principale (`lastTone`) e il StyleResolver preferisce quelli adatti all'evento, alla zona, alla voce e alla profondità, senza mai escludere: servono più registri per evento. (I «toni» `eroico`, `solenne`, `ironico`… sono del formato del prototipo e si convertono in registri in caricamento.)
 - **Personalità**: i `tags` con i due punti legano la frase ai tratti del personaggio: `temperament:stoic` (affinità morbida), `req:faith:devout` (esce solo se il profilo lo dice), `not:…`, `topic:death` (argomento che il giocatore può escludere). Una frase che **afferma** qualcosa del personaggio usa `req:`; una che lo dice con un tono usa l'affinità morbida; una che tocca sangue, morte, famiglia o religione porta `topic:`.
 - **Condizioni** (`conditions`, alias `when`): più condizioni = frase più specifica = peso maggiore. Usa le condizioni per ciò che rende la frase *giusta* in quel momento, non per forzarla. Quelle di memoria, relazione, interlocutore e luogo (`firstVisit`, `relation`, `other = {…}`, `place = {…}`) valgono solo se il dato esiste davvero: una frase che cita un ricordo o un rapporto non deve poter uscire senza.
@@ -120,24 +120,24 @@ Un pacchetto è un addon separato che aggiunge frasi, cornici, vocabolario, trad
 
 Oltre alle frasi un pacchetto può aggiungere eventi, registri, condizioni, luoghi, NPC, **dialoghi ambientali** e **archi narrativi**. Per i copioni usa una chiave nuova (`npc:<npcID>` con `extends`): una chiave già esistente **sostituisce** il copione di base ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 
-La guida completa è [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md); se scrivi o cambi un esempio, marcalo `<!-- prova -->` e `Tests/check_docs.py` lo carica come un pacchetto esterno. Un pacchetto deve rispettare le stesse regole di qualità di cui sopra e non deve usare la rete né inviare dati ([ADR 0002](docs/adr/0002-tutto-offline-senza-ia.md)).
+La guida completa è [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md); se scrivi o cambi un esempio, marcalo `<!-- prova -->` e `Tests/check_docs.py` lo carica come un pacchetto esterno. Un pacchetto deve rispettare le stesse regole di qualità di cui sopra e non deve usare la rete né inviare dati ([ADR 0002](docs/adr/0002-fully-offline-no-ai.md)).
 
 ## 5. Modificare il codice
 
 1. **Lavora su un'issue** o aprine una. Per cambiamenti grandi, parlane prima.
-2. **Rispetta l'architettura**: [docs/ARCHITETTURA.md](docs/ARCHITETTURA.md), sezione "Per chi scrive un nuovo sistema nell'addon".
-3. **Ogni API del client passa da Compat** e deve **degradare con eleganza** se manca o è limitata ([ADR 0005](docs/adr/0005-compat-valori-segreti-ed-eventi-difensivi.md)). Prima di usare una funzione o un evento nuovo, **controllalo nel dump delle API di Forever** ([ADR 0010](docs/adr/0010-dump-api-di-forever-come-riferimento.md)).
+2. **Rispetta l'architettura**: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), sezione "Per chi scrive un nuovo sistema nell'addon".
+3. **Ogni API del client passa da Compat** e deve **degradare con eleganza** se manca o è limitata ([ADR 0005](docs/adr/0005-compat-secret-values-and-defensive-events.md)). Prima di usare una funzione o un evento nuovo, **controllalo nel dump delle API di Forever** ([ADR 0010](docs/adr/0010-forever-api-dump-as-reference.md)).
 4. **Nessuna decisione basata su valori segreti** e nessun uso del log di combattimento.
 5. **Per parlare, passa dal Director** (se è spontaneo) **e dal Chat Gateway** (sempre). Nessun invio in chat da timer o da eventi.
-6. **Dati salvati nuovi**: predefiniti in `Config.defaults` o `Config.characterDefaults`, regole in `Config.rules`, **migrazione** in `Config.migrations` (e `SCHEMA_VERSION` +1) quando cambia la forma, una **versione interna** del modulo se i dati sono complessi, `Sanitize` per i dati rovinati, sola lettura per quelli di una versione più nuova, e i test ([ADR 0006](docs/adr/0006-savedvariables-e-versioni-dello-schema.md)). Mai contenuti di chat.
-   Per influire sul peso, sul ritmo o sui registri senza toccare il Director usa gli **agganci** (`SetWeightHook`, `SetRhythm`, `SetEventGuard`, `RegisterTab`…): vedi «Come i sistemi si agganciano al motore» in [docs/ARCHITETTURA.md](docs/ARCHITETTURA.md).
+6. **Dati salvati nuovi**: predefiniti in `Config.defaults` o `Config.characterDefaults`, regole in `Config.rules`, **migrazione** in `Config.migrations` (e `SCHEMA_VERSION` +1) quando cambia la forma, una **versione interna** del modulo se i dati sono complessi, `Sanitize` per i dati rovinati, sola lettura per quelli di una versione più nuova, e i test ([ADR 0006](docs/adr/0006-savedvariables-and-schema-versions.md)). Mai contenuti di chat.
+   Per influire sul peso, sul ritmo o sui registri senza toccare il Director usa gli **agganci** (`SetWeightHook`, `SetRhythm`, `SetEventGuard`, `RegisterTab`…): vedi «Come i sistemi si agganciano al motore» in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 7. **Non modificare i file che un altro step sta toccando** (vedi la roadmap): se hai dubbi, apri un'issue.
 8. **Funzioni che richiedono il client vero**: se aggiungi comportamenti da verificare in gioco, aggiorna [docs/G1_checklist.md](docs/G1_checklist.md) e dichiara nella PR che cosa non hai potuto verificare.
-9. **Aggiorna la documentazione** nella stessa PR: `README.md` **e** `README.en.md` (comandi, numeri, privacy, stato), `FORMATO_PACCHETTI.md` se cambia l'API dei pacchetti, `docs/ARCHITETTURA.md` e un'ADR se la decisione è nuova (e l'indice delle ADR), e il [CHANGELOG](CHANGELOG.md) nella sezione «Non rilasciato», **nel gruppo del tuo step** (non in fondo).
+9. **Aggiorna la documentazione** nella stessa PR: `README.md` **e** `README.en.md` (comandi, numeri, privacy, stato), `PACK_FORMAT.md` se cambia l'API dei pacchetti, `docs/ARCHITECTURE.md` e un'ADR se la decisione è nuova (e l'indice delle ADR), e il [CHANGELOG](CHANGELOG.md) nella sezione «Non rilasciato», **nel gruppo del tuo step** (non in fondo).
 
 ## 6. Test
 
-I test girano fuori dal gioco con lupa (Lua 5.1) e un client simulato ([ADR 0007](docs/adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). Dalla radice del progetto:
+I test girano fuori dal gioco con lupa (Lua 5.1) e un client simulato ([ADR 0007](docs/adr/0007-offline-tests-with-lupa-and-mock.md)). Dalla radice del progetto:
 
 ```bash
 python -m venv .venv
@@ -161,7 +161,7 @@ Come aggiungere test:
 
 Il codice Lua è per **Lua 5.1**, come il client. Si segue lo stile del codice esistente:
 
-- **Indentazione con tab**; fine riga **LF** ([ADR 0008](docs/adr/0008-fine-riga-lf.md)); file in UTF-8 senza BOM.
+- **Indentazione con tab**; fine riga **LF** ([ADR 0008](docs/adr/0008-lf-line-endings.md)); file in UTF-8 senza BOM.
 - **Commenti in italiano**, brevi, che spiegano il *perché* più che il *che cosa*.
 - Ogni file comincia con `local ADDON, NS = ...` e **non crea variabili globali** oltre a quelle dichiarate (SavedVariables, `SLASH_*`, `BINDING_*`, funzioni dei tasti, la API pubblica `AzerothUnspoken`). **Ogni nuova globale va aggiunta a `diagnostics.globals` in `.luarc.json`.**
 - I moduli si registrano con `NS:RegisterModule("nome")` e si inizializzano in `OnInit`.
@@ -170,13 +170,13 @@ Il codice Lua è per **Lua 5.1**, come il client. Si segue lo stile del codice e
 - Nei `.toc` i percorsi usano la barra rovesciata (`Core\Compat.lua`).
 - Non duplicare le API di WoW nel progetto: le fornisce il plugin del language server.
 
-**EmmyLua.** Annota le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione) con `---@class`, `---@field`, `---@param`, `---@return`, così l'IDE completa e controlla i tipi. Ambiente consigliato: JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**; `.luarc.json` imposta Lua 5.1, le globali e le cartelle da ignorare. Per le definizioni delle API di Forever serve il clone del dump accanto al progetto (vedi [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md)).
+**EmmyLua.** Annota le API pubbliche, i moduli e le strutture dati (contesto, frase, configurazione, relazione) con `---@class`, `---@field`, `---@param`, `---@return`, così l'IDE completa e controlla i tipi. Ambiente consigliato: JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**; `.luarc.json` imposta Lua 5.1, le globali e le cartelle da ignorare. Per le definizioni delle API di Forever serve il clone del dump accanto al progetto (vedi [docs/REFERENCES.md](docs/REFERENCES.md)).
 
 **Python.** Gli strumenti in `Tests/` sono Python 3, eseguiti con `-I -X utf8`.
 
 ## 8. Git, issue e pull request
 
-Il flusso completo è nell'[ADR 0009](docs/adr/0009-flusso-git-branch-pr-squash.md). In breve:
+Il flusso completo è nell'[ADR 0009](docs/adr/0009-git-flow-branch-pr-squash.md). In breve:
 
 1. **Branch** partito da `main` aggiornato: `step/sN-nome` per gli step, `docs/…` o `fix/…` per il resto.
 2. **Commit piccoli, con messaggi in italiano** che dicono che cosa e perché.

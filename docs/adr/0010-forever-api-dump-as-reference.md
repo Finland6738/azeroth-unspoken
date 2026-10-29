@@ -1,7 +1,7 @@
 # 0010. Il dump delle API di Forever come riferimento, mai copiato
 
 - Stato: accettata
-- Data: 2026-10-29 (da [docs/RIFERIMENTI.md](../RIFERIMENTI.md))
+- Data: 2026-10-29 (da [docs/REFERENCES.md](../REFERENCES.md))
 
 ## Contesto
 
@@ -9,14 +9,14 @@ Gli addon per WoW Forever (Interface 16001) usano API che non coincidono né con
 
 ## Decisione
 
-1. **Si usa il dump come riferimento per decidere cosa chiamare**, con il file `docs/api.json` (leggibile da macchina) e le definizioni `types/WowForeverAPI.lua`. Prima di usare una funzione o un evento nuovo si controlla lì e poi lo si protegge con Compat ([ADR 0005](0005-compat-valori-segreti-ed-eventi-difensivi.md)).
+1. **Si usa il dump come riferimento per decidere cosa chiamare**, con il file `docs/api.json` (leggibile da macchina) e le definizioni `types/WowForeverAPI.lua`. Prima di usare una funzione o un evento nuovo si controlla lì e poi lo si protegge con Compat ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)).
 2. **Copia locale accanto al progetto, non dentro**: `..\WoW-Addons`, clonata con `git clone --depth 1 https://github.com/Atraeau/WoW-Addons ../WoW-Addons`. **Nessun file di quel repository entra nel nostro**: non ha licenza, quindi non lo si ridistribuisce. Si consulta e basta; i suoi script non si eseguono (è materiale scaricato).
 3. **L'IDE legge le definizioni da lì**: `.luarc.json` le collega con `workspace.library: ["../WoW-Addons/types"]`, e il plugin WoW Lua Language Server fornisce le API di WoW. Non si duplicano nel progetto.
 4. **Assenza nel dump non significa assenza nel client.** Le funzioni definite in Lua da FrameXML (ad esempio `Settings.*`, `InterfaceOptions_AddCategory`) non compaiono in `APIDocumentation`. Per quelle valgono Compat e la prova in gioco.
 5. **La fonte finale è sempre il client installato** (build 1.60.1.70658). In futuro si potrà estrarre un dump esatto della propria build con l'addon `WowApiExport` (`/apiexport`, poi `/reload`).
 6. **Un controllo automatico è previsto** nello step S3: `Tests/check_api.py` leggerà il dump (percorso configurabile) e segnalerà le funzioni ed eventi usati dall'addon che mancano, con eccezioni consentite per FrameXML. Se il dump non c'è, il controllo verrà saltato con un avviso.
 
-Le verifiche già fatte sul dump (2026-10-29) sono nella tabella di [RIFERIMENTI.md](../RIFERIMENTI.md): ad esempio `GetSpellInfo` e `CombatLogGetCurrentEventInfo` risultano **assenti**, e `UnitHealth` ha parametro di tipo limitato (`UnitTokenPvPRestrictedForAddOns`).
+Le verifiche già fatte sul dump (2026-10-29) sono nella tabella di [REFERENCES.md](../REFERENCES.md): ad esempio `GetSpellInfo` e `CombatLogGetCurrentEventInfo` risultano **assenti**, e `UnitHealth` ha parametro di tipo limitato (`UnitTokenPvPRestrictedForAddOns`).
 
 ## Alternative considerate
 
@@ -32,5 +32,5 @@ Le verifiche già fatte sul dump (2026-10-29) sono nella tabella di [RIFERIMENTI
 
 ## Riferimenti
 
-- [docs/RIFERIMENTI.md](../RIFERIMENTI.md), `.luarc.json`.
+- [docs/REFERENCES.md](../REFERENCES.md), `.luarc.json`.
 - GDD §13, §22.

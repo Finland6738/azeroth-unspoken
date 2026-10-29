@@ -30,7 +30,7 @@ La specifica di prodotto (GDD) chiama il progetto **Immersion Director**; il pro
 ## Conseguenze
 
 - Positive: un nome unico, bilingue, coerente in tutti i punti; comandi brevi (`/au`).
-- Negative: il GDD resta con il vecchio nome; cambiare gli identificatori in futuro richiederebbe una migrazione delle SavedVariables ([ADR 0006](0006-savedvariables-e-versioni-dello-schema.md)); l'uso del termine "Azeroth" nel nome va tenuto d'occhio se si pubblica su piattaforme di distribuzione.
+- Negative: il GDD resta con il vecchio nome; cambiare gli identificatori in futuro richiederebbe una migrazione delle SavedVariables ([ADR 0006](0006-savedvariables-and-schema-versions.md)); l'uso del termine "Azeroth" nel nome va tenuto d'occhio se si pubblica su piattaforme di distribuzione.
 
 ## Riferimenti
 

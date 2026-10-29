@@ -14,12 +14,12 @@ Il prototipo reagiva direttamente agli eventi del client, in un unico file (`Eve
    { type, timestamp, source, context = { … }, fields = { [campo] = AVAILABLE | MISSING | RESTRICTED } }
    ```
    con `source` fra `WOW_API`, `USER`, `ADDON`, `SIMULATED`. I tipi attuali: `WORLD_ENTER`, `ZONE_ENTER`, `COMBAT_START`, `COMBAT_END`, `HEALTH_CHANGED`, `PLAYER_DEATH`, `PLAYER_REVIVE`, `LEVEL_UP`, `TARGET_CHANGED`, `SPELL_SENT`, `SPELL_CAST`, `RESTRICTION_CHANGED`.
-2. **Deduplicazione**: stesso tipo e stessa chiave entro una finestra (`dedupWindow`, 1 secondo predefinito, finestre proprie per alcuni tipi) non si pubblicano due volte. I valori segreti non entrano nel contesto: il campo risulta `RESTRICTED` ([ADR 0005](0005-compat-valori-segreti-ed-eventi-difensivi.md)).
+2. **Deduplicazione**: stesso tipo e stessa chiave entro una finestra (`dedupWindow`, 1 secondo predefinito, finestre proprie per alcuni tipi) non si pubblicano due volte. I valori segreti non entrano nel contesto: il campo risulta `RESTRICTED` ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)).
 3. **Niente cascate**: un gestore che pubblica a sua volta mette l'evento in una coda (al massimo 32 eventi; i più vecchi di 5 secondi si scartano).
 4. **Abbonamento**: `EventBus:Subscribe(tipo o "*", proprietario, fn)`. Ogni gestore gira dentro `Diagnostics:Guard`: un errore si registra e gli altri gestori continuano.
 5. **Moduli**: ogni sistema si registra con `NS:RegisterModule(nome)` e ha un `OnInit` opzionale. `NS:Initialize` (su `ADDON_LOADED`) esegue, in ordine, `Config:Load`, `Compat:Probe`, `EventBus:Start` e l'`OnInit` di ogni modulo, ciascuno isolato.
-6. **Il Director è l'unico punto che decide se intervenire.** `Systems/Triggers.lua` traduce gli eventi del bus in eventi narrativi (`battle`, `victory`, `zone`…) e per ognuno chiede a `Director:Evaluate(evento)`, che risponde `{ allow, chanceMul, cooldownMul }` oppure `{ allow = false, reason }`. Oggi il Director applica l'intensità, la pausa immediata e i moduli attivi; lo step S4 ne ha sostituito il corpo con il Narrative Director completo senza cambiare la forma della risposta ([ADR 0015](0015-narrative-director-un-intervento-per-momento.md)).
-7. **L'uscita passa dal Chat Gateway** ([ADR 0003](0003-narratore-privato-e-chat-gateway.md)): i sistemi non scrivono mai in chat da soli.
+6. **Il Director è l'unico punto che decide se intervenire.** `Systems/Triggers.lua` traduce gli eventi del bus in eventi narrativi (`battle`, `victory`, `zone`…) e per ognuno chiede a `Director:Evaluate(evento)`, che risponde `{ allow, chanceMul, cooldownMul }` oppure `{ allow = false, reason }`. Oggi il Director applica l'intensità, la pausa immediata e i moduli attivi; lo step S4 ne ha sostituito il corpo con il Narrative Director completo senza cambiare la forma della risposta ([ADR 0015](0015-narrative-director-one-intervention-per-moment.md)).
+7. **L'uscita passa dal Chat Gateway** ([ADR 0003](0003-private-narrator-and-chat-gateway.md)): i sistemi non scrivono mai in chat da soli.
 
 ## Alternative considerate
 
@@ -37,4 +37,4 @@ Il prototipo reagiva direttamente agli eventi del client, in un unico file (`Eve
 
 - GDD §6, §10, §11.2, §11.3.
 - `Core/EventBus.lua`, `Core/Bootstrap.lua`, `Systems/Triggers.lua`, `Systems/Director.lua`.
-- [docs/ARCHITETTURA.md](../ARCHITETTURA.md).
+- [docs/ARCHITECTURE.md](../ARCHITECTURE.md).

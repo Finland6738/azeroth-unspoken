@@ -27,10 +27,10 @@ Il client di WoW Forever (Interface 16001) può nascondere agli addon alcuni val
 ## Conseguenze
 
 - Positive: un solo posto da correggere quando il client cambia; diagnostica utile all'utente e a chi sviluppa; test con valori segreti e restrizioni simulati (`Tests/TestCompat.lua`).
-- Negative: un livello di indirezione in più (`Compat.Query(...)` invece di una chiamata diretta); **nomi, firme ed esistenza di molte API nella build 70658 non sono stati verificati nel client vero** (`C_RestrictedActions`, `C_Secrets`, `debugstack`, ecc.): si verificano nella prova G1 e nel controllo del dump (vedi [ADR 0010](0010-dump-api-di-forever-come-riferimento.md)).
+- Negative: un livello di indirezione in più (`Compat.Query(...)` invece di una chiamata diretta); **nomi, firme ed esistenza di molte API nella build 70658 non sono stati verificati nel client vero** (`C_RestrictedActions`, `C_Secrets`, `debugstack`, ecc.): si verificano nella prova G1 e nel controllo del dump (vedi [ADR 0010](0010-forever-api-dump-as-reference.md)).
 - Ogni funzione nuova che dipende da un'API non provata deve passare da Compat e **degradare con eleganza** (regola della roadmap, "Prove in gioco rimandate").
 
 ## Riferimenti
 
-- GDD §2.3, §3.8, §13, §15; [docs/RIFERIMENTI.md](../RIFERIMENTI.md).
+- GDD §2.3, §3.8, §13, §15; [docs/REFERENCES.md](../REFERENCES.md).
 - `Core/Compat.lua`, `Core/Diagnostics.lua`, `Core/EventBus.lua`, `Core/ContextResolver.lua`.

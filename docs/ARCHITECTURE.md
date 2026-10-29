@@ -79,11 +79,11 @@ flowchart LR
 
 Principi che reggono tutto il resto:
 
-- **Il motore non contiene testi** ([ADR 0001](adr/0001-motore-e-database-narrativo-separati.md)).
-- **Nessuna rete** ([ADR 0002](adr/0002-tutto-offline-senza-ia.md)).
-- **Niente in chat senza un'azione del giocatore** ([ADR 0003](adr/0003-narratore-privato-e-chat-gateway.md)).
-- **Se una funzione del client manca, si spegne quella funzione, non l'addon** ([ADR 0005](adr/0005-compat-valori-segreti-ed-eventi-difensivi.md)).
-- **Un errore in un modulo non ferma gli altri** ([ADR 0014](adr/0014-bus-di-eventi-normalizzati-e-moduli-isolati.md)).
+- **Il motore non contiene testi** ([ADR 0001](adr/0001-engine-and-narrative-database-separated.md)).
+- **Nessuna rete** ([ADR 0002](adr/0002-fully-offline-no-ai.md)).
+- **Niente in chat senza un'azione del giocatore** ([ADR 0003](adr/0003-private-narrator-and-chat-gateway.md)).
+- **Se una funzione del client manca, si spegne quella funzione, non l'addon** ([ADR 0005](adr/0005-compat-secret-values-and-defensive-events.md)).
+- **Un errore in un modulo non ferma gli altri** ([ADR 0014](adr/0014-normalized-event-bus-and-isolated-modules.md)).
 
 ## 2. Moduli e responsabilità
 
@@ -105,15 +105,15 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Engine/Pacing.lua`** | pause (momento, globale, categoria, evento) e budget per categoria degli interventi spontanei; stato solo in memoria. |
 | **`Engine/NarrativeDirector.lua`** | priorità del §10, gate di opportunità guidato dall'intensità, sospensione (schermate invasive, combattimento impegnativo), dado, ordine dei candidati; agganci del ritmo e dell'impegno. |
 | **`Engine/TemplateRenderer.lua`** | segnaposto, genere, vocabolario, cornici. Se manca un dato, la frase è scartata. |
-| **`Integration/TotalRP3.lua`** | adattatore facoltativo ([ADR 0004](adr/0004-total-rp-3-facoltativo-con-adattatore.md)): il nome del profilo e, con consenso, i tratti psicologici pubblici del **proprio** profilo mappati sui tratti del Soul ([ADR 0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md)). |
+| **`Integration/TotalRP3.lua`** | adattatore facoltativo ([ADR 0004](adr/0004-total-rp-3-optional-with-adapter.md)): il nome del profilo e, con consenso, i tratti psicologici pubblici del **proprio** profilo mappati sui tratti del Soul ([ADR 0016](adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md)). |
 | **`Integration/ChatGateway.lua`** | modalità, proposte, canali, invio solo da azione del giocatore, anti-flood, `AzerothUnspoken_Speak`; `Reroll` ("Un'altra": sostituisce la proposta con un'altra frase per lo stesso evento e contesto, senza inviare né spendere il budget del Director). |
 | **`Systems/Personality.lua`** | il Character Soul: otto tratti opt-in, archetipi, profilo effettivo (scelta > Total RP 3 > dati di gioco > neutro), fattore `P` del peso, preferenze di registro, condizione `soul`, `ctx.soul`, comando `/au anima`. |
-| **`Systems/LivingMemory.lua`** | la Living Memory ([ADR 0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md)): ricordi, luoghi visitati e flag per personaggio (`cdb.memories`), momenti della sessione, compattazione a 500, permanenti, reset, migrazioni, `ctx.memory`, eventi di richiamo con guardia (`RegisterRecall`), esportazione testuale, comando `/au diario`. |
-| **`Systems/Relationships.lua`** | le relazioni ([ADR 0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md)): sette assi indipendenti, etichette e disposizione derivate dai dati, NPC calcolati dall'`npcID` (dialogo, quest, mercante, volo, addestratore, locanda) con rendimenti decrescenti, tetto giornaliero e decadimento, giocatori scelti dall'utente con proposte, `ctx.relation` e simili, fattore `R`, registro per familiarità, evento `relation_npc`, comando `/au relazioni`. |
-| **`Systems/Place.lua`** | il luogo ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)): `ctx.place` (zona, uiMapID, continente, tag, territorio, capitale, istanza, scontro con un boss, ruolo nel gruppo, campo di battaglia), `Place:Lookup` sui dati di `Data/Places.lua`, `Place.Key` (chiave stabile della memoria), fattore `C` dei tag `place.` e delle frasi brevi, ritmo per tipo di istanza, impegno durante i boss, evento `encounter_end`, comando `/au luogo`. |
-| **`Systems/Interlocutor.lua`** | l'interlocutore ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)): `ctx.other` (dati di gioco, ruolo, personalità con i tratti di S5, azioni recenti, relazione), fonti in ordine (utente > TRP3 pubblico con consenso > `Data/NPCs.lua` > ruolo da interazioni affidabili > tendenza debole > neutro), fattore `C` dei tag `other.`, registro per modo di parlare e ruolo, eventi `npc_meet` e `other_action`, comando `/au chi`. |
-| **`Systems/NPCAlive.lua`** | NPC Alive ([ADR 0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)): i dialoghi ambientali con un NPC. Macchina a stati `idle → offered → opened → choice → response → ended` con transizioni verificate, identità (NPC specifico del registro curato o archetipo dall'interazione in corso; mai se incerta o segreta), copioni (`NS:RegisterDialogues`: nodi, risposte, flag), battute dalle regole del motore, effetti locali (flag, relazione, ricordo), offerta automatica che scade, interruzioni (combattimento, morte, zona, altro NPC, quest), tasto `AzerothUnspoken_NPCDialogue`, comando `/au npc`. |
-| **`Systems/StoryArcs.lua`** | gli archi narrativi ([ADR 0021](adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md)): micro-storie personali, **non quest**, senza ricompense né effetti sul gioco. Stati `LOCKED → DISCOVERED → REFLECTED → RESOLVED` (più stati propri), passi con evento (`zone`, `death`, `level`, `npc`, `flag`, `player`), condizioni del RuleEngine, attesa e scelta del giocatore; al massimo 1–2 archi attivi, sospendere/saltare/disattivare (anche tutti); stato in `cdb.arcs` con migrazione; battute dal Narrative Director (`arc_open`, `arc_step`, `arc_resolve`, una alla volta, rimandate se il momento non è buono); chiusura con un ricordo permanente `story`. Comando `/au storie`. |
+| **`Systems/LivingMemory.lua`** | la Living Memory ([ADR 0017](adr/0017-living-memory-selective-memories-and-honest-recall.md)): ricordi, luoghi visitati e flag per personaggio (`cdb.memories`), momenti della sessione, compattazione a 500, permanenti, reset, migrazioni, `ctx.memory`, eventi di richiamo con guardia (`RegisterRecall`), esportazione testuale, comando `/au diario`. |
+| **`Systems/Relationships.lua`** | le relazioni ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)): sette assi indipendenti, etichette e disposizione derivate dai dati, NPC calcolati dall'`npcID` (dialogo, quest, mercante, volo, addestratore, locanda) con rendimenti decrescenti, tetto giornaliero e decadimento, giocatori scelti dall'utente con proposte, `ctx.relation` e simili, fattore `R`, registro per familiarità, evento `relation_npc`, comando `/au relazioni`. |
+| **`Systems/Place.lua`** | il luogo ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.place` (zona, uiMapID, continente, tag, territorio, capitale, istanza, scontro con un boss, ruolo nel gruppo, campo di battaglia), `Place:Lookup` sui dati di `Data/Places.lua`, `Place.Key` (chiave stabile della memoria), fattore `C` dei tag `place.` e delle frasi brevi, ritmo per tipo di istanza, impegno durante i boss, evento `encounter_end`, comando `/au luogo`. |
+| **`Systems/Interlocutor.lua`** | l'interlocutore ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.other` (dati di gioco, ruolo, personalità con i tratti di S5, azioni recenti, relazione), fonti in ordine (utente > TRP3 pubblico con consenso > `Data/NPCs.lua` > ruolo da interazioni affidabili > tendenza debole > neutro), fattore `C` dei tag `other.`, registro per modo di parlare e ruolo, eventi `npc_meet` e `other_action`, comando `/au chi`. |
+| **`Systems/NPCAlive.lua`** | NPC Alive ([ADR 0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)): i dialoghi ambientali con un NPC. Macchina a stati `idle → offered → opened → choice → response → ended` con transizioni verificate, identità (NPC specifico del registro curato o archetipo dall'interazione in corso; mai se incerta o segreta), copioni (`NS:RegisterDialogues`: nodi, risposte, flag), battute dalle regole del motore, effetti locali (flag, relazione, ricordo), offerta automatica che scade, interruzioni (combattimento, morte, zona, altro NPC, quest), tasto `AzerothUnspoken_NPCDialogue`, comando `/au npc`. |
+| **`Systems/StoryArcs.lua`** | gli archi narrativi ([ADR 0021](adr/0021-story-arcs-micro-stories-without-game-effects.md)): micro-storie personali, **non quest**, senza ricompense né effetti sul gioco. Stati `LOCKED → DISCOVERED → REFLECTED → RESOLVED` (più stati propri), passi con evento (`zone`, `death`, `level`, `npc`, `flag`, `player`), condizioni del RuleEngine, attesa e scelta del giocatore; al massimo 1–2 archi attivi, sospendere/saltare/disattivare (anche tutti); stato in `cdb.arcs` con migrazione; battute dal Narrative Director (`arc_open`, `arc_step`, `arc_resolve`, una alla volta, rimandate se il momento non è buono); chiusura con un ricordo permanente `story`. Comando `/au storie`. |
 | **`Systems/Director.lua`** | il Narrative Director degli eventi spontanei: `Offer` (candidato), `Resolve` (al massimo un intervento per momento), `Evaluate` (il gate, punto di aggancio di S2), pausa immediata, riepilogo per `/au debug`. |
 | **`Systems/Triggers.lua`** | abbonato al bus: trasforma gli eventi normalizzati in eventi narrativi (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) e li offre al Director; tiene le probabilità e le pause proprie di ogni evento. |
 | **`UI/Widgets.lua`** | piccoli componenti condivisi dell'interfaccia. |
@@ -133,7 +133,7 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Data/*.lua`** | pacchetti di frasi di base (schema v2, 14 pacchetti, 1.005 intenzioni e 2.109 varianti per lingua): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
 | **`Bindings.xml`** | quattro tasti: `AZEROTHUNSPOKEN_SPEAK` (conferma), `AZEROTHUNSPOKEN_REROLL` (un'altra frase), `AZEROTHUNSPOKEN_PAUSE` (pausa immediata), `AZEROTHUNSPOKEN_NPC` (dialogo ambientale). |
 | **`AzerothUnspoken_Example/`** | pacchetto di esempio, addon separato con `## Dependencies: AzerothUnspoken`. |
-| **`Tests/`** | test fuori dal gioco (lupa) e client simulato ([ADR 0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). |
+| **`Tests/`** | test fuori dal gioco (lupa) e client simulato ([ADR 0007](adr/0007-offline-tests-with-lupa-and-mock.md)). |
 
 Direzione delle dipendenze: `Core` non conosce `Engine`, `Systems` né `UI`; `Engine` usa `Core` ma non conosce il Gateway né l'interfaccia; `Integration` e `Systems` usano `Core` ed `Engine`; `UI` usa tutto. Un modulo si trova con `NS.NomeModulo` (ad esempio `NS.Gateway`, `NS.Director`, `NS.Narrator`).
 
@@ -283,7 +283,7 @@ flowchart TD
 | Combattimento impegnativo | in combattimento con boss, in incursione, élite in istanza (`pacing.suppressInHighDemand`) | eventi eccezionali |
 | Pausa della frase (id) | `cooldown` della regola e finestra anti-ripetizione, nel motore | nessuno (vale anche per gli espliciti) |
 
-Il registro delle ultime decisioni (`Director.log`) e il budget usato compaiono in `/au debug` alla riga **Narrative Director**. La motivazione delle scelte è nell'[ADR 0015](adr/0015-narrative-director-un-intervento-per-momento.md).
+Il registro delle ultime decisioni (`Director.log`) e il budget usato compaiono in `/au debug` alla riga **Narrative Director**. La motivazione delle scelte è nell'[ADR 0015](adr/0015-narrative-director-one-intervention-per-moment.md).
 
 ## 4. Come si sceglie una frase
 
@@ -306,14 +306,14 @@ flowchart TD
 - **Peso** (`Engine.Factors`, GDD §10): `B` = `weight`; `C` = 1 + 0,35 × condizioni (più gli agganci `C` di S6c); `P` = personalità (Character Soul): affinità morbida dei tag `tratto:valore` (×1,6 / ×0,6), voce interiore e ironia; 0 esclude la frase per `req:`, `not:` e `topic:`; neutra (1) col profilo neutro ([dettagli](#il-character-soul)); `N` = ÷ (1 + 0,3 × usi recenti), ×0,6 se il registro è quello dell'ultima frase dell'evento; `S` = profondità (×0,3 se diversa) × affinità di registro del StyleResolver (×0,5 fuori dall'evento, +25% per ogni preferenza di zona, profondità e voce); `R` = relazione con la persona dell'interazione ([vedi sotto](#le-relazioni)): i tag con ambito `rel.` come affinità morbida o filtro rigido (0 esclude), neutra senza persona. `Engine:Weight(frase, evento, ctx)` restituisce la scomposizione.
 - **Carattere**: i tratti pesano le frasi e, per i tag rigidi, le escludono; vedi [il Character Soul](#il-character-soul).
 - **Stile**: i registri pesano e non escludono, quindi il ripiego neutro è automatico. In forma emote, una cornice con registri accoglie solo frasi di registro uguale o vicino (`StyleResolver:Compatible`).
-- **Condizioni** (`when`): vedi [FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md). Più condizioni → frase più specifica → peso maggiore.
+- **Condizioni** (`when`): vedi [PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md). Più condizioni → frase più specifica → peso maggiore.
 - **Memoria**: `NS.cdb.memory` (`uses`, `last`, `recent`, `lastTone`), per personaggio. Gli usi si attenuano a ogni accesso (`DecayMemory`, ×0,75). La finestra delle frasi recenti è circa il 60% di quelle disponibili, al massimo `pacing.recentPhraseWindow` (30).
 - **Voce (`speaker`)**: `narrator`, `inner`, `character`, `npc`; ogni regola la dichiara (se manca si deduce da `form`: `say` → `character`, `emote` → `narrator`, con un avviso del validatore). Una frase parlata inserita in una cornice è `narrator`. Le voci `inner` e `npc` non diventano mai proposte per la chat.
 - Il silenzio è un esito valido: se nessuna frase è idonea, il motore restituisce `nil`.
 
 ### Il Character Soul
 
-`Systems/Personality.lua` dà al personaggio una voce propria (GDD §7.1, [ADR 0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md)). Tutto è facoltativo: senza scelte il profilo è **neutro** e il narratore resta com'era.
+`Systems/Personality.lua` dà al personaggio una voce propria (GDD §7.1, [ADR 0016](adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md)). Tutto è facoltativo: senza scelte il profilo è **neutro** e il narratore resta com'era.
 
 ```mermaid
 flowchart LR
@@ -335,7 +335,7 @@ flowchart LR
 
 ### La Living Memory
 
-`Systems/LivingMemory.lua` dà al personaggio una continuità tra le sessioni (GDD §7.4, [ADR 0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md)). Solo momenti significativi, mai ogni clic, mai testo di chat.
+`Systems/LivingMemory.lua` dà al personaggio una continuità tra le sessioni (GDD §7.4, [ADR 0017](adr/0017-living-memory-selective-memories-and-honest-recall.md)). Solo momenti significativi, mai ogni clic, mai testo di chat.
 
 ```mermaid
 flowchart LR
@@ -356,7 +356,7 @@ flowchart LR
 
 ### Le relazioni
 
-`Systems/Relationships.lua` tiene il rapporto con le persone ([ADR 0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md)). Gli assi sono scale di `Engine/Traits.lua` (ambito `rel`); etichette, disposizione, registro e incrementi sono dati in `Data/Relationships.lua`.
+`Systems/Relationships.lua` tiene il rapporto con le persone ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)). Gli assi sono scale di `Engine/Traits.lua` (ambito `rel`); etichette, disposizione, registro e incrementi sono dati in `Data/Relationships.lua`.
 
 ```mermaid
 flowchart LR
@@ -379,7 +379,7 @@ flowchart LR
 
 ### NPC Alive
 
-`Systems/NPCAlive.lua` e `UI/DialogueFrame.lua` ([ADR 0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)) sono i dialoghi ambientali: un micro-dialogo **simulato** con un NPC identificabile, in una finestra separata, mai in chat.
+`Systems/NPCAlive.lua` e `UI/DialogueFrame.lua` ([ADR 0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)) sono i dialoghi ambientali: un micro-dialogo **simulato** con un NPC identificabile, in una finestra separata, mai in chat.
 
 ```mermaid
 stateDiagram-v2
@@ -404,7 +404,7 @@ stateDiagram-v2
 
 ### Story Arcs
 
-`Systems/StoryArcs.lua` ([ADR 0021](adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md)) tiene le micro-storie personali: **non sono quest del server**, non danno ricompense, non toccano gli NPC veri. La struttura degli archi è dato (`Data/Arcs.lua`, `NS:RegisterArcs`), le battute sono regole di tre eventi (`arc_open`, `arc_step`, `arc_resolve`), i testi sono per lingua.
+`Systems/StoryArcs.lua` ([ADR 0021](adr/0021-story-arcs-micro-stories-without-game-effects.md)) tiene le micro-storie personali: **non sono quest del server**, non danno ricompense, non toccano gli NPC veri. La struttura degli archi è dato (`Data/Arcs.lua`, `NS:RegisterArcs`), le battute sono regole di tre eventi (`arc_open`, `arc_step`, `arc_resolve`), i testi sono per lingua.
 
 ```mermaid
 stateDiagram-v2
@@ -429,7 +429,7 @@ Gli stati propri di un arco (ad esempio `JOURNEY` in «Le tre porte») stanno tr
 
 ### Interlocutore e luogo
 
-`Systems/Interlocutor.lua` e `Systems/Place.lua` dicono **chi incontriamo** e **dove siamo** ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)).
+`Systems/Interlocutor.lua` e `Systems/Place.lua` dicono **chi incontriamo** e **dove siamo** ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)).
 
 ```mermaid
 flowchart LR
@@ -524,7 +524,7 @@ flowchart LR
 ```
 
 - I predefiniti sono in `Config.defaults` e `Config.characterDefaults`; le regole di validità in `Config.rules`.
-- Le migrazioni sono `Config.migrations.global[n]` e `.character[n]` ([ADR 0006](adr/0006-savedvariables-e-versioni-dello-schema.md)).
+- Le migrazioni sono `Config.migrations.global[n]` e `.character[n]` ([ADR 0006](adr/0006-savedvariables-and-schema-versions.md)).
 - **Non si salva mai il contenuto della chat**, né le battute dei dialoghi, né i testi degli archi (solo gli id delle scelte); delle relazioni con i giocatori si salvano solo quelli scelti dall'utente. I campi `privacy.*` (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) esistono già, spenti, per il futuro modulo Social.
 - Il resto dello stato (pausa immediata `NS.paused`, proposta in attesa, cronologia, registro degli errori, memoria dell'ultimo invio) vive solo in memoria.
 
@@ -532,7 +532,7 @@ flowchart LR
 
 ### Per chi scrive pacchetti di frasi (stabile)
 
-Un pacchetto è un addon separato con `## Dependencies: AzerothUnspoken`. L'API è descritta in [FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md), i cui esempi sono provati dai test come pacchetti esterni. **Un pacchetto esterno chiama le funzioni dall'oggetto globale `AzerothUnspoken:`**; il `NS` della prima riga `local ADDON, NS = ...` è il namespace del pacchetto e non ha queste funzioni.
+Un pacchetto è un addon separato con `## Dependencies: AzerothUnspoken`. L'API è descritta in [PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md), i cui esempi sono provati dai test come pacchetti esterni. **Un pacchetto esterno chiama le funzioni dall'oggetto globale `AzerothUnspoken:`**; il `NS` della prima riga `local ADDON, NS = ...` è il namespace del pacchetto e non ha queste funzioni.
 
 | Chiamata | A che cosa serve |
 |---|---|
@@ -572,7 +572,7 @@ Questi punti sono interni: possono cambiare tra una versione e l'altra finché l
 
 1. Crea il file nella cartella giusta e aggiungilo al `.toc` **dopo** i moduli da cui dipende.
 2. Registra il modulo con `NS:RegisterModule("nome")` e inizializzalo in `OnInit` (isolato da `Guard`).
-3. Per ogni API del client nuova: controllala nel dump ([ADR 0010](adr/0010-dump-api-di-forever-come-riferimento.md)), passa da Compat e degrada con eleganza.
+3. Per ogni API del client nuova: controllala nel dump ([ADR 0010](adr/0010-forever-api-dump-as-reference.md)), passa da Compat e degrada con eleganza.
 4. Per un nuovo evento del client aggiungi una sorgente al bus; non registrare eventi per conto tuo.
 5. Per parlare, passa dal Director (se è spontaneo: `NS.Director:Offer(evento, extra)`) e dal Gateway (sempre).
    Per influire sulla scelta senza toccare il Director usa gli agganci: `Engine:SetWeightHook("C"|"P"|"R", nome, fn)` (fattori del peso), `StyleResolver:SetModifier(nome, fn)` (preferenze di registro), `NarrativeDirector:SetRhythm(nome, fn)` (moltiplicatori di probabilità e pause), `NarrativeDirector:SetDemandCheck(nome, fn)` (momento impegnativo), `Engine:SetEventGuard(evento, nome, fn)` (un evento parla solo se la guardia dice sì), `JournalFrame:RegisterTab(id, def)` (una scheda del diario).
@@ -599,4 +599,4 @@ Dalla [roadmap](../ROADMAP.md). Sul `main` attuale ci sono le milestone M0–M3:
 - I dialoghi ambientali (S8) non sono stati provati nel client vero: né i nomi delle finestre di Blizzard che la finestra evita (`GossipFrame`, `MerchantFrame`...), né `GetRect`, né quali interazioni mettono davvero un NPC nell'unità `npc`; il registro curato ha pochi NPC (e i numeri non sono verificati). Vedi [G1](G1_checklist.md), G3.
 - Gli archi narrativi (S9) non sono stati provati nel client vero: né che `C_Map` dia l'uiMapID della zona di partenza (il nome inglese è il ripiego), né le soglie di familiarità, livelli e attese dei passi, né l'aspetto della scheda «Storie» del diario.
 - Gli uiMapID, gli instanceID e gli npcID dei dati (`Data/Places.lua`, `Data/NPCs.lua`) vengono da Classic Era e non sono verificati in Forever: i luoghi si riconoscono per nome finché non lo saranno (`/au luogo`).
-- Le API della matrice delle capacità non sono state controllate nel client della build 70658: vedi `/au debug full` e [RIFERIMENTI.md](RIFERIMENTI.md).
+- Le API della matrice delle capacità non sono state controllate nel client della build 70658: vedi `/au debug full` e [REFERENCES.md](REFERENCES.md).

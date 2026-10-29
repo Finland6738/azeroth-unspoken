@@ -33,7 +33,7 @@ Il progetto è sviluppato a step, uno alla volta, spesso da sessioni di lavoro d
 
 - Positive: una PR per step con il suo resoconto onesto; `main` leggibile; le cose non verificate sono dichiarate.
 - Negative: lo squash perde i commit intermedi (restano nella PR); serve disciplina per non lasciare branch aperti a lungo.
-- **Non c'è ancora integrazione continua**: i test si eseguono a mano prima della PR (vedi [ADR 0007](0007-test-fuori-gioco-con-lupa-e-mock.md)). Aggiungerla è un possibile miglioramento.
+- **Non c'è ancora integrazione continua**: i test si eseguono a mano prima della PR (vedi [ADR 0007](0007-offline-tests-with-lupa-and-mock.md)). Aggiungerla è un possibile miglioramento.
 - Se `main` è già estratto in un altro worktree, `gh pr merge` può non riuscire a fare il checkout locale: il merge su GitHub è comunque avvenuto, e va verificato lì.
 
 ## Riferimenti

@@ -41,4 +41,4 @@ Il prototipo pubblicava emote automatiche in chat quando succedeva qualcosa. Per
 
 - GDD §4.2, §7.7, §14; [ROADMAP.md](../../ROADMAP.md), "Esito di S2".
 - `Integration/ChatGateway.lua`, `UI/NarratorFrame.lua`, `Systems/Director.lua`, `Core/Config.lua`.
-- [docs/ARCHITETTURA.md](../ARCHITETTURA.md), [docs/G1_checklist.md](../G1_checklist.md).
+- [docs/ARCHITECTURE.md](../ARCHITECTURE.md), [docs/G1_checklist.md](../G1_checklist.md).

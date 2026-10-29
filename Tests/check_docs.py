@@ -1,6 +1,6 @@
 """Controlli sulla documentazione (collegato a run_tests.py).
 
-1. Esempi di FORMATO_PACCHETTI.md. Ogni blocco ```lua preceduto da una riga `<!-- prova -->` è un pacchetto completo:
+1. Esempi di PACK_FORMAT.md. Ogni blocco ```lua preceduto da una riga `<!-- prova -->` è un pacchetto completo:
    si carica in un runtime nuovo, **come farebbe un pacchetto esterno** (`local ADDON, NS = ...` è il suo spazio dei
    nomi, non quello dell'addon: le API si chiamano da `AzerothUnspoken:`), e dopo di lui il validatore non deve
    segnalare errori per i suoi id. `<!-- prova: errore -->` segna un esempio sbagliato apposta (deve dare errore).
@@ -19,7 +19,7 @@ from lupa import lua51
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.dirname(HERE)
 ADDON = os.path.join(ROOT, "AzerothUnspoken")
-GUIDE = os.path.join(ADDON, "FORMATO_PACCHETTI.md")
+GUIDE = os.path.join(ADDON, "PACK_FORMAT.md")
 
 FAILURES = []
 
@@ -66,7 +66,7 @@ def guide_examples():
 
 
 def check_examples():
-    print("ESEMPI DI FORMATO_PACCHETTI.md (come pacchetti esterni)")
+    print("ESEMPI DI PACK_FORMAT.md (come pacchetti esterni)")
     examples = guide_examples()
     check(len(examples) >= 10, f"ci sono almeno 10 esempi provati ({len(examples)})")
     lua, loader = new_runtime()

@@ -1,6 +1,6 @@
 # Documentazione di Azeroth Unspoken
 
-Indice di tutto ciò che si trova in `docs/` e dei documenti collegati nella radice del progetto. **La fonte autorevole della documentazione è questa cartella**, versionata insieme al codice ([ADR 0013](adr/0013-wiki-github.md)).
+Indice di tutto ciò che si trova in `docs/` e dei documenti collegati nella radice del progetto. **La fonte autorevole della documentazione è questa cartella**, versionata insieme al codice ([ADR 0013](adr/0013-github-wiki.md)).
 
 La documentazione descrive solo ciò che esiste su `main` o che è pianificato in [ROADMAP.md](../ROADMAP.md); le parti pianificate sono indicate come tali.
 
@@ -16,7 +16,7 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 
 | Documento | Contenuto |
 |---|---|
-| [AzerothUnspoken/FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md) | formato dei pacchetti: frasi, eventi, condizioni, segnaposto, vocabolario, cornici, lingue |
+| [AzerothUnspoken/PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md) | formato dei pacchetti: frasi, eventi, condizioni, segnaposto, vocabolario, cornici, lingue |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | come scrivere frasi buone (regole di qualità), pacchetti, test, stile, PR |
 | `AzerothUnspoken_Example/` | pacchetto di esempio da copiare |
 
@@ -24,9 +24,9 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 
 | Documento | Contenuto |
 |---|---|
-| [ARCHITETTURA.md](ARCHITETTURA.md) | moduli e responsabilità, flusso di un evento, dati e SavedVariables, punti di estensione (con diagrammi Mermaid) |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | moduli e responsabilità, flusso di un evento, dati e SavedVariables, punti di estensione (con diagrammi Mermaid) |
 | [adr/README.md](adr/README.md) | le decisioni di progetto (ADR), con indice |
-| [RIFERIMENTI.md](RIFERIMENTI.md) | fonti tecniche per WoW Forever e il dump delle API |
+| [REFERENCES.md](REFERENCES.md) | fonti tecniche per WoW Forever e il dump delle API |
 | [../ROADMAP.md](../ROADMAP.md) | milestone, step, stato di avanzamento, note tra uno step e l'altro |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | regole di lavoro, test, stile Lua ed EmmyLua, git |
 
@@ -40,27 +40,27 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 
 | N. | Decisione |
 |---|---|
-| [0001](adr/0001-motore-e-database-narrativo-separati.md) | Motore e database narrativo separati, con frasi curate e non generate |
-| [0002](adr/0002-tutto-offline-senza-ia.md) | Tutto offline, senza intelligenza artificiale |
-| [0003](adr/0003-narratore-privato-e-chat-gateway.md) | Narratore privato e Chat Gateway |
-| [0004](adr/0004-total-rp-3-facoltativo-con-adattatore.md) | Total RP 3 facoltativo, con adattatore |
-| [0005](adr/0005-compat-valori-segreti-ed-eventi-difensivi.md) | Compat, valori segreti, eventi difensivi |
-| [0006](adr/0006-savedvariables-e-versioni-dello-schema.md) | SavedVariables e versioni dello schema |
-| [0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md) | Test fuori dal gioco con lupa e mock |
-| [0008](adr/0008-fine-riga-lf.md) | Fine riga LF |
-| [0009](adr/0009-flusso-git-branch-pr-squash.md) | Flusso git: branch, PR, squash merge |
-| [0010](adr/0010-dump-api-di-forever-come-riferimento.md) | Dump delle API di Forever come riferimento |
-| [0011](adr/0011-nome-azeroth-unspoken.md) | Il nome Azeroth Unspoken |
-| [0012](adr/0012-lingue-scelte-dall-utente.md) | Lingue scelte dall'utente |
-| [0013](adr/0013-wiki-github.md) | La wiki di GitHub |
-| [0014](adr/0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) | Bus di eventi, moduli isolati, Director |
-| [0015](adr/0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, peso W, stile |
-| [0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in, affinità morbida e filtri rigidi, Total RP 3 con consenso |
-| [0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale |
-| [0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente |
-| [0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID |
-| [0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md) | NPC Alive: un dialogo simulato non è un dialogo reale |
-| [0021](adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md) | Story Arcs: micro-storie che non toccano il gioco |
+| [0001](adr/0001-engine-and-narrative-database-separated.md) | Motore e database narrativo separati, con frasi curate e non generate |
+| [0002](adr/0002-fully-offline-no-ai.md) | Tutto offline, senza intelligenza artificiale |
+| [0003](adr/0003-private-narrator-and-chat-gateway.md) | Narratore privato e Chat Gateway |
+| [0004](adr/0004-total-rp-3-optional-with-adapter.md) | Total RP 3 facoltativo, con adattatore |
+| [0005](adr/0005-compat-secret-values-and-defensive-events.md) | Compat, valori segreti, eventi difensivi |
+| [0006](adr/0006-savedvariables-and-schema-versions.md) | SavedVariables e versioni dello schema |
+| [0007](adr/0007-offline-tests-with-lupa-and-mock.md) | Test fuori dal gioco con lupa e mock |
+| [0008](adr/0008-lf-line-endings.md) | Fine riga LF |
+| [0009](adr/0009-git-flow-branch-pr-squash.md) | Flusso git: branch, PR, squash merge |
+| [0010](adr/0010-forever-api-dump-as-reference.md) | Dump delle API di Forever come riferimento |
+| [0011](adr/0011-name-azeroth-unspoken.md) | Il nome Azeroth Unspoken |
+| [0012](adr/0012-languages-chosen-by-user.md) | Lingue scelte dall'utente |
+| [0013](adr/0013-github-wiki.md) | La wiki di GitHub |
+| [0014](adr/0014-normalized-event-bus-and-isolated-modules.md) | Bus di eventi, moduli isolati, Director |
+| [0015](adr/0015-narrative-director-one-intervention-per-moment.md) | Narrative Director: un intervento per momento, peso W, stile |
+| [0016](adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md) | Character Soul: tratti opt-in, affinità morbida e filtri rigidi, Total RP 3 con consenso |
+| [0017](adr/0017-living-memory-selective-memories-and-honest-recall.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale |
+| [0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente |
+| [0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID |
+| [0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md) | NPC Alive: un dialogo simulato non è un dialogo reale |
+| [0021](adr/0021-story-arcs-micro-stories-without-game-effects.md) | Story Arcs: micro-storie che non toccano il gioco |
 
 ## Archivio
 
@@ -69,7 +69,7 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 ## Convenzioni della documentazione
 
 - In italiano; il README pubblico ha anche una versione inglese.
-- File Markdown con fine riga LF ([ADR 0008](adr/0008-fine-riga-lf.md)).
+- File Markdown con fine riga LF ([ADR 0008](adr/0008-lf-line-endings.md)).
 - I diagrammi sono in [Mermaid](https://mermaid.js.org/), che GitHub mostra direttamente.
 - Una modifica che cambia un comportamento aggiorna anche la documentazione e il [CHANGELOG](../CHANGELOG.md) nella stessa PR.
 - Ciò che non è stato provato nel client vero si dice esplicitamente.

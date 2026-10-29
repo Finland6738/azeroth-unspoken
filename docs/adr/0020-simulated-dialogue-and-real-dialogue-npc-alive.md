@@ -7,7 +7,7 @@
 
 Il GDD (§7.3) vuole «micro-dialoghi locali» con NPC reali identificabili o con archetipi: una finestra, da una a tre risposte, chiusura immediata. Il rischio è confondere ciò che l'addon inventa con ciò che il gioco o un altro giocatore dice davvero. Se una battuta di un locandiere compare nella chat, o ha lo stesso aspetto della finestra di gossip di Blizzard, il giocatore può credere che sia l'NPC vero, che abbia ricevuto un incarico, uno sconto, un'informazione. Se la finestra copre la finestra del mercante, o l'addon chiama una funzione di gossip o di quest, disturba il gioco. E se si indovina chi è un NPC, si attribuiscono a una persona battute che non sono sue (per esempio quelle di un locandiere a chi è solo un passante).
 
-I vincoli di progetto sono già chiari: nulla in chat pubblica senza un gesto del giocatore ([ADR 0003](0003-narratore-privato-e-chat-gateway.md)), nessuna decisione su valori segreti ([ADR 0005](0005-compat-valori-segreti-ed-eventi-difensivi.md)), il ruolo di un NPC non si indovina ([ADR 0019](0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)).
+I vincoli di progetto sono già chiari: nulla in chat pubblica senza un gesto del giocatore ([ADR 0003](0003-private-narrator-and-chat-gateway.md)), nessuna decisione su valori segreti ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)), il ruolo di un NPC non si indovina ([ADR 0019](0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)).
 
 ## Decisione
 

@@ -37,4 +37,4 @@ Fino allo step S3 ogni evento narrativo decideva da solo se parlare: probabilit�
 - GDD §4.2, §5.2, §6, §10, §15.2.
 - `Engine/NarrativeDirector.lua`, `Engine/Pacing.lua`, `Engine/StyleResolver.lua`, `Engine/WeightedSelector.lua`, `Systems/Director.lua`, `Systems/Triggers.lua`.
 - `Tests/TestNarrativeDirector.lua`, `Tests/TestDirector.lua`.
-- [ADR 0014](0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) (il Director come punto di aggancio), [ADR 0005](0005-compat-valori-segreti-ed-eventi-difensivi.md) (valori segreti).
+- [ADR 0014](0014-normalized-event-bus-and-isolated-modules.md) (il Director come punto di aggancio), [ADR 0005](0005-compat-secret-values-and-defensive-events.md) (valori segreti).

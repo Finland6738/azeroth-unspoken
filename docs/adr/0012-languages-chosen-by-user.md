@@ -36,4 +36,4 @@ Il client di riferimento di WoW Forever è in inglese, ma l'addon nasce per gioc
 
 - GDD §9.
 - `Core/Bootstrap.lua` (`RegisterLanguage`, `NS:L`), `Core/Config.lua` (`NormalizeLocale`), `Data/itIT/Interface.lua`, `Data/enUS/Interface.lua`.
-- [FORMATO_PACCHETTI.md](../../AzerothUnspoken/FORMATO_PACCHETTI.md), sezione "Lingue nuove".
+- [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md), sezione "Lingue nuove".

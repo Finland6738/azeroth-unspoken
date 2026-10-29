@@ -50,5 +50,5 @@ Gli NPC sono tanti e identificabili in modo affidabile (`npcID` dal GUID): un ca
 
 - GDD §7.4, §10, §14.
 - `Systems/Relationships.lua`, `Data/Relationships.lua`, `UI/RelationsFrame.lua`, `Engine/RuleEngine.lua` (condizioni), `Engine/Traits.lua` (ambito dei tratti), `Data/RegistryRelations.lua` (frasi).
-- [ADR 0004](0004-total-rp-3-facoltativo-con-adattatore.md), [ADR 0005](0005-compat-valori-segreti-ed-eventi-difensivi.md), [ADR 0016](0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md), [ADR 0017](0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md).
+- [ADR 0004](0004-total-rp-3-optional-with-adapter.md), [ADR 0005](0005-compat-secret-values-and-defensive-events.md), [ADR 0016](0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md), [ADR 0017](0017-living-memory-selective-memories-and-honest-recall.md).
 - `Tests/TestRelations.lua` e la sezione «persistenza delle relazioni» di `Tests/run_tests.py`.

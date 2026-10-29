@@ -2,214 +2,218 @@
 
 *An immersive roleplay companion for World of Warcraft*
 
-> 🇬🇧 [English version](README.en.md)
+> 🇮🇹 [Versione italiana](README.md)
 
-Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse.
+A distinctive, mysterious narrative companion for World of Warcraft that calls back the thoughts and stories left unspoken.
 
-Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `16001`). Contiene un motore narrativo locale e un database di frasi curate, in italiano e in inglese, che reagiscono ai luoghi, agli eventi e alle azioni del personaggio: una zona nuova, un combattimento, una ferita grave, un livello guadagnato, un saluto.
+Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `16001`). It bundles a local narrative engine and a database of hand-written lines, in Italian and English, that react to places, events and what your character does: a new zone, a fight, a serious wound, a level gained, a greeting.
 
-> **Stato: in sviluppo (versione 0.1.0 nel `.toc`), funzioni delle milestone M0–M3 scritte.** Il codice è stato provato solo fuori dal gioco, con un client simulato. **Nessuna prova nel client vero è ancora stata fatta** (checklist [G1](docs/G1_checklist.md): prove G1, G2 e G3, 92 passi in tutto): aspettati sorprese. Vedi [Stato del progetto](#stato-del-progetto).
+> **Status: under development (version 0.1.0 in the `.toc`); features of milestones M0–M3 are written.** The code has only been exercised outside the game, against a simulated client. **No test in the real client has been done yet** (the [G1](docs/G1_checklist.md) checklist, in Italian: tests G1, G2 and G3, 92 steps in all), so expect surprises. See [Project status](#project-status).
+>
+> Most of the documentation under `docs/` is written in Italian. This file is the English entry point.
 
-## Indice
+## Contents
 
-- [Cosa fa e cosa non fa](#cosa-fa-e-cosa-non-fa)
-- [Requisiti](#requisiti)
-- [Installazione](#installazione)
-- [Primo avvio](#primo-avvio)
-- [Comandi](#comandi)
-- [Impostazioni](#impostazioni)
-- [Privacy e chat](#privacy-e-chat)
+- [What it does and does not do](#what-it-does-and-does-not-do)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [First launch](#first-launch)
+- [Commands](#commands)
+- [Settings](#settings)
+- [Privacy and chat](#privacy-and-chat)
 - [Total RP 3](#total-rp-3)
-- [Pacchetti di frasi](#pacchetti-di-frasi)
-- [Stato del progetto](#stato-del-progetto)
-- [Sviluppo e test](#sviluppo-e-test)
-- [Documentazione](#documentazione)
-- [Licenza](#licenza)
-- [Crediti](#crediti)
+- [Phrase packs](#phrase-packs)
+- [Project status](#project-status)
+- [Development and tests](#development-and-tests)
+- [Documentation](#documentation)
+- [License](#license)
+- [Credits](#credits)
 
-## Cosa fa e cosa non fa
+## What it does and does not do
 
-**Cosa fa (oggi, su `main`)**
+**What it does (today, on `main`)**
 
-- **Narratore privato.** Ascolta alcuni eventi del gioco (entrata in una zona, inizio e fine di un combattimento, salute bassa, morte e ritorno in vita, livello, incantesimi lanciati, saluti e incontri) e, con una probabilità e una pausa regolate dall'intensità che scegli, ti mostra una frase adatta al momento in un **riquadro** solo tuo: spostabile, con durata, opacità e dimensione regolabili, cronologia recente e pausa immediata.
-- **Frasi intere e scritte a mano**, non composte a caso da frammenti: **1.005 intenzioni** di base, con **2.109 varianti per lingua** (italiano e inglese). Ogni intenzione dice la stessa cosa con parole diverse; le varianti non si ripetono di fila. Sono divise in quattro voci: *personaggio* 444, *voce interiore* 252, *narratore* 124, *NPC* 185. Sono organizzate per evento, registro (antico, epico, tragico, intimo, quotidiano, ironico, cerimoniale) e condizioni (razza, classe, zona, ora del giorno, bersaglio, gruppo, istanza, ricordi, relazioni, interlocutore, luogo...).
-- **Intensità e profondità.** L'intensità (0–100) dice quanto spesso parla il narratore; la profondità dello stile (*Naturale*, *Letterario*, *Elevato*) fa preferire le frasi scritte per quel tono: per i momenti chiave (arrivo in una foresta, ritorno, morte, livello, vittoria, saluti) ci sono varianti scritte apposta per tutte e tre. Il silenzio è un esito valido: niente cascate di messaggi, un solo intervento per momento.
-- **Chat Gateway.** Se vuoi, le frasi del personaggio diventano **proposte per la chat** che confermi, modifichi o scarti tu. Vedi [Privacy e chat](#privacy-e-chat).
-- **Personalità** (Character Soul, facoltativa). Dai al personaggio un carattere (temperamento, morale, curiosità, fede, motivazione, ironia, voce interiore, argomenti da evitare, o un archetipo pronto): le frasi in sintonia escono più spesso e quelle che contraddicono ciò che hai escluso non escono mai. Senza scelte il narratore resta neutro. Con [Total RP 3](#total-rp-3) e un consenso a parte può partire dai tratti del tuo profilo. Vedi `/au anima`.
-- **Memoria e diario.** Ricorda i momenti significativi del personaggio (la prima volta in una zona, il ritorno, una visita finita male, le morti, i livelli) e li ritrova nelle frasi: **solo se il ricordo esiste davvero**. Il **diario** (`/au diario`) li mostra, li fa cancellare o rendere permanenti e li esporta come testo da copiare.
-- **Relazioni.** Ricorda **come stai con le persone**: sei assi indipendenti (familiarità, fiducia, rispetto, affetto, timore, lealtà; l'attrazione è facoltativa e spenta) danno un'etichetta (sconosciuto, conoscente, amico, compagno d'armi, rivale rispettato, nemico...) e una disposizione. Gli **NPC** si calcolano da soli (dialoghi, quest, mercanti, voli, locandieri); i **giocatori** li scegli tu: l'addon propone, non registra nessuno senza un tuo clic. Il narratore cambia tono col rapporto, dal formale all'intimo. Vedi `/au relazioni`.
-- **Interlocutore e luogo.** Le frasi cambiano secondo **chi hai davanti** (ruolo, carattere, razza, classe, azioni recenti: una quest appena data, un duello, un'emote) e **dove sei** (zona, capitale amica o nemica, territorio, dungeon, incursione, campo di battaglia, arena, scontri con i boss). Il ritmo si adatta: più sobrio in incursione e contro i boss, frasi brevi in campo di battaglia. Vedi `/au chi` e `/au luogo`.
-- **NPC Alive** (dialoghi ambientali). Quando apri il mercato, il volo o l'addestramento di un NPC, o parli con un locandiere noto, compare un piccolo pulsante; premendolo (o col tasto dedicato) si apre una finestra separata, etichettata **«dialogo ambientale dell'addon»**, con una battuta dell'NPC e da una a tre risposte neutre. È un dialogo **simulato**: non compare mai in chat, non tocca gossip, quest o commercio, e non cambia nulla nel gioco; le scelte lasciano solo un flag nel diario. L'NPC parla secondo il suo carattere (burbero, gioviale...) e se lo conosci. Ci sono cinque archetipi (locandiere, mercante, guardia, maestro di volo, addestratore) e 169 battute. Vedi `/au npc` (con `prova` per provare la finestra senza un NPC vero).
-- **Story Arcs** (storie personali). Quattro piccole storie del tuo personaggio: il ritorno nel luogo da cui è cominciata l'avventura, un volto che incontri sempre più spesso, una caduta e il ritorno, il viaggio tra le capitali. Sono racconti, **non missioni**: nessuna ricompensa, nessun effetto sul gioco. Cominciano solo da un evento vero, sono al massimo due alla volta, le scelte che contano le fai tu, e le puoi sospendere, saltare o disattivare quando vuoi (`/au storie`, scheda «Storie» del diario). Alla fine lasciano un ricordo nel diario.
-- **Procedura guidata** al primo avvio, saltabile, e **diagnostica** (`/au debug`) che mostra che cosa il tuo client permette di fare all'addon.
-- Si estende con **pacchetti di frasi** in addon separati (anche dialoghi, archi, luoghi e NPC), senza toccare il motore, con un **validatore** (`/au valida`) che controlla i testi.
+- **Private narrator.** Listens to a few game events (entering a zone, combat start and end, low health, death and revival, level-up, spells cast, greetings and meetings) and, with a probability and a pause scaled by the intensity you choose, shows you a line that fits the moment in a **box** that only you see: movable, with adjustable duration, opacity and text size, a recent history and an immediate pause.
+- **Whole, hand-written lines**, never assembled from random fragments: **1,005 intentions** in the base database, with **2,109 variants per language** (Italian and English). Each intention says the same thing in different words; variants are never repeated back to back. They are split into four voices: *character* 444, *inner voice* 252, *narrator* 124, *NPC* 185. They are organised by event, register (ancient, epic, tragic, intimate, everyday, ironic, ceremonial) and conditions (race, class, zone, time of day, target, group, instance, memories, relationships, interlocutor, place...).
+- **Intensity and depth.** Intensity (0–100) says how often the narrator speaks; the style depth (*Natural*, *Literary*, *Elevated*) makes lines written for that tone more likely: for the key moments (arriving in a forest, returning, death, level-up, victory, greetings) there are variants written for all three. Silence is a valid outcome: no cascades of messages, one intervention per moment.
+- **Chat Gateway.** If you want, the character's lines become **chat proposals** that you confirm, edit or discard. See [Privacy and chat](#privacy-and-chat).
+- **Personality** (Character Soul, optional). Give the character a personality (temperament, morality, curiosity, faith, motivation, irony, inner voice, topics to avoid, or a ready-made archetype): lines that fit come up more often, and lines that contradict what you ruled out never do. With no choices the narrator stays neutral. With [Total RP 3](#total-rp-3) and a separate consent it can start from your profile's traits. See `/au soul`.
+- **Memory and journal.** Remembers the character's significant moments (the first time in a zone, a return, a visit that ended badly, deaths, levels) and finds them again in its lines: **only if the memory really exists**. The **journal** (`/au journal`) shows them, lets you delete them or make them permanent, and exports them as text you can copy.
+- **Relationships.** Remembers **how you stand with people**: six independent axes (familiarity, trust, respect, affection, fear, loyalty; attraction is optional and off) give a label (stranger, acquaintance, friend, comrade in arms, respected rival, enemy...) and an overall disposition. **NPCs** are worked out automatically (dialogs, quests, merchants, flights, innkeepers); **players** are chosen by you: the addon suggests, and registers no one without your click. The narrator changes tone with the bond, from formal to intimate. See `/au relations`.
+- **Interlocutor and place.** Lines change with **who is in front of you** (role, character, race, class, recent actions: a quest just given, a duel, an emote) and **where you are** (zone, friendly or enemy capital, territory, dungeon, raid, battleground, arena, boss encounters). The rhythm adapts: calmer in raids and against bosses, short lines in battlegrounds. See `/au who` and `/au place`.
+- **NPC Alive** (ambient dialogues). When you open an NPC's vendor, flight or training window, or talk to a known innkeeper, a small button appears; pressing it (or the dedicated key) opens a separate window labeled **"addon ambient dialogue"**, with a line from the NPC and one to three neutral answers. It is a **simulated** dialogue: it never appears in chat, never touches gossip, quests or vendors, and changes nothing in the game; your choices only leave a flag in the journal. The NPC speaks according to their character (gruff, jovial...) and whether you know them. There are five archetypes (innkeeper, merchant, guard, flight master, trainer) and 169 lines. See `/au npc` (with `test` to try the window without a real NPC).
+- **Story Arcs** (personal stories). Four small stories of your character: going back to where the adventure began, a face you meet more and more often, a fall and the return, the journey between capitals. They are tellings, **not quests**: no rewards, no effect on the game. They begin only from a real event, at most two at a time, the choices that matter are yours, and you can suspend, skip or disable them any time (`/au stories`, the journal's "Stories" tab). At the end they leave a memory in the journal.
+- A skippable **first-run wizard**, and a **diagnostic** (`/au debug`) that shows what your client lets the addon do.
+- Extends through **phrase packs** shipped as separate addons (also dialogues, arcs, places and NPCs), without touching the engine, with a **validator** (`/au validate`) that checks the texts.
 
-**Cosa non fa**
+**What it does not do**
 
-- Non si connette a internet: nessun servizio esterno, nessuna intelligenza artificiale, nessuna telemetria.
-- Non scrive in chat pubblica da solo con le impostazioni predefinite, e mai senza un'azione del giocatore (tranne la modalità `auto`, che scegli tu con una conferma).
-- Non genera testi: sceglie fra quelli che esistono.
-- Non legge il log di combattimento e non prende decisioni sui valori che il client nasconde agli addon.
-- Non salva il contenuto della chat, né i testi dei whisper.
-- Non inventa missioni né ricompense: le storie e i dialoghi sono racconti dell'addon, non quest del server.
+- It does not connect to the internet: no external service, no AI, no telemetry.
+- It does not write to public chat on its own with the default settings, and never without a player action (except `auto` mode, which you choose with a confirmation).
+- It does not generate text: it picks among lines that already exist.
+- It does not read the combat log and does not base decisions on values the client hides from addons.
+- It does not save chat content, nor the text of whispers.
+- It does not invent quests or rewards: stories and dialogues are the addon's own tellings, not server quests.
 
-**Previsto, ma non ancora presente** (vedi [ROADMAP.md](ROADMAP.md)): il gioco sociale tra giocatori (M4: messaggi tra addon, solo con consenso esplicito), l'audio, i contenuti fino a 1.000 intenzioni e la release 1.0 (M5). Nelle impostazioni i moduli *Social* e *Audio* si possono già vedere, ma sono solo segnaposto (segnati con `*`): non fanno nulla.
+**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): social play between players (M4: addon-to-addon messages, only with explicit consent), audio, content up to 1,000 intentions and the 1.0 release (M5). In the settings the *Social* and *Audio* modules can already be seen, but they are placeholders (marked `*`): they do nothing.
 
-## Requisiti
+## Requirements
 
-- **World of Warcraft: Forever**, `## Interface: 16001`. La build di riferimento è la 1.60.1.70658 (client in inglese).
-- Nessuna dipendenza obbligatoria.
-- Facoltativo: **Total RP 3**.
+- **World of Warcraft: Forever**, `## Interface: 16001`. The reference build is 1.60.1.70658 (English client).
+- No mandatory dependency.
+- Optional: **Total RP 3**.
 
-Altri client (retail, Classic Era, ecc.) non sono supportati né provati. L'addon controlla le API che usa, quindi un client diverso dovrebbe al più disattivare delle funzioni, ma non è garantito.
+Other clients (retail, Classic Era, etc.) are neither supported nor tested. The addon checks the APIs it uses, so a different client should at worst disable features, but that is not guaranteed.
 
-## Installazione
+## Installation
 
-Non ci sono ancora versioni pacchettizzate (release o pagine di distribuzione). Per ora:
+There are no packaged releases yet (no release assets, no distribution pages). For now:
 
-1. Scarica il repository (`Code` → `Download ZIP`, oppure `git clone https://github.com/Finland6738/azeroth-unspoken`).
-2. Copia la cartella `AzerothUnspoken` in `World of Warcraft\_forever_\Interface\AddOns\`.
-3. Facoltativo: copia anche `AzerothUnspoken_Example`, un pacchetto di frasi di esempio (una frase per la pesca e alcune legate a luoghi).
-4. Alla schermata di selezione del personaggio apri **AddOn** e controlla che *Azeroth Unspoken* sia spuntato.
+1. Download the repository (`Code` → `Download ZIP`, or `git clone https://github.com/Finland6738/azeroth-unspoken`).
+2. Copy the `AzerothUnspoken` folder into `World of Warcraft\_forever_\Interface\AddOns\`.
+3. Optional: also copy `AzerothUnspoken_Example`, a sample phrase pack (a line for fishing and a few tied to places).
+4. On the character selection screen open **AddOns** and make sure *Azeroth Unspoken* is ticked.
 
-Le cartelle `Tests`, `docs`, `archive` e il resto del repository non servono al gioco: non copiarli.
+The `Tests`, `docs` and `archive` folders and the rest of the repository are not needed by the game: do not copy them.
 
-Per aggiornare, sostituisci la cartella `AzerothUnspoken` con quella nuova. Le impostazioni stanno in `WTF\Account\<account>\SavedVariables\AzerothUnspokenDB.lua` e, per personaggio, in `AzerothUnspokenCharacterDB.lua`: non vengono toccate.
+To update, replace the `AzerothUnspoken` folder with the new one. Your settings live in `WTF\Account\<account>\SavedVariables\AzerothUnspokenDB.lua` and, per character, in `AzerothUnspokenCharacterDB.lua`: they are left untouched.
 
-## Primo avvio
+## First launch
 
-Pochi secondi dopo l'ingresso in gioco compare una **procedura guidata** di 6 passi (7 se Total RP 3 è presente): lingua, tipo di esperienza, intensità, stile, moduli, Total RP 3 e chat con una frase di prova. È saltabile in qualunque momento e si riapre con `/au benvenuto`.
+A few seconds after you enter the game a **wizard** appears, with 6 steps (7 if Total RP 3 is present): language, kind of experience, intensity, style, modules, Total RP 3, and chat with a sample line. You can skip it at any time and reopen it with `/au benvenuto`.
 
-Con le impostazioni predefinite l'addon è **silenzioso verso gli altri**: le frasi compaiono solo nel riquadro del narratore, in basso al centro.
+With the default settings the addon is **silent towards other players**: lines only appear in the narrator box, at the bottom centre of the screen.
 
-Scrivi `/au` per l'elenco dei comandi e `/au debug` per controllare che tutto sia a posto. Se qualcosa non funziona, `/au debug full` stampa una riga per ogni capacità del client.
+Type `/au` for the list of commands and `/au debug` to check that everything is in order. If something does not work, `/au debug full` prints one line per client capability.
 
-## Comandi
+> The interface (including command names) is available in Italian and English. Command names are Italian first, with English aliases for almost all of them, shown in parentheses below.
 
-L'addon risponde a `/au` e a `/unspoken`. Quasi tutti i comandi hanno anche un nome inglese (tra parentesi).
+## Commands
 
-| Comando | Effetto |
+The addon answers to `/au` and `/unspoken`.
+
+| Command | Effect |
 |---|---|
-| `/au` · `/au aiuto` (`help`) | elenco dei comandi |
-| `/au on` · `/au off` | accende o spegne le frasi automatiche |
-| `/au pausa` (`pause`) | pausa immediata del narratore, solo per la sessione; di nuovo per riprendere |
-| `/au lingua [it\|en]` (`language`) | lingua delle frasi e dell'interfaccia |
-| `/au intensita <0-100>` (`intensity`) | quanto spesso parla il narratore: 0 = muto per gli eventi spontanei, 50 = bilanciato, 100 = intenso |
-| `/au profondita naturale\|letterario\|elevato` (`depth`) | profondità dello stile: le frasi scritte per quel tono pesano di più (le altre restano possibili) |
-| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | che cosa può arrivare in chat; predefinito: `privato`. `auto` non si attiva al primo comando: mostra un avviso e va ripetuto entro 10 secondi |
-| `/au canale auto\|say\|emote\|gruppo\|incursione\|gilda\|istanza` (`channel`) | canale predefinito delle proposte |
-| `/au dire` (`speak`, `invia`, `send`) | come il tasto "pronuncia": conferma la proposta in attesa, oppure ne propone una nuova |
-| `/au annulla` (`scarta`, `cancel`, `discard`) | scarta la proposta in attesa |
-| `/au copia` (`copy`) | copia la proposta nella casella della chat (la invii tu con Invio): è il pulsante "Nella chat" |
-| `/au narratore [cronologia\|reset\|pulisci]` (`narrator`) | senza argomenti mostra una frase di prova; `cronologia` apre le frasi recenti, `reset` riporta il riquadro al centro, `pulisci` svuota la cronologia |
-| `/au saluto` · `addio` · `brindisi` · `pensiero` · `minaccia` · `grido` · `preghiera` · `vittoria` · `ringrazia` · `scherzo` | chiede una frase per quel momento (`greet`, `farewell`, `toast`, `muse`, `threat`, `battlecry`, `pray`, `victory`, `thanks`, `jest`). Compare come proposta o nel narratore, secondo la modalità chat |
-| `/au incanta <incantesimo>` (`cast`) | frase per un incantesimo, utile nelle macro |
-| `/au evento <nome>` (`event`) | lancia un evento con il nome dato (anche definito da un pacchetto) |
-| `/au prova <evento>` (`test`) | anteprima in chat locale (non invia nulla) |
-| `/au prob [<evento> <0-100>]` (`chance`) | probabilità di un evento; senza argomenti elenca i valori |
-| `/au cooldown <secondi>` | pausa minima tra due frasi automatiche |
-| `/au ignora <incantesimo>` (`ignore`) | un incantesimo non produce più frasi; senza argomenti elenca quelli ignorati |
-| `/au pulsante` (`button`) | mostra o nasconde il pulsante "pronuncia" |
-| `/au anima` (`soul`, `personalita`, `profilo`) | apre la finestra del carattere del personaggio. Anche `lista`, `neutro`, `archetipo <id>`, `trp3 on\|off`, `<tratto> <valore>` (`temperamento`, `morale`, `curiosita`, `fede`, `motivazione`, `ironia`, `voce`; `-` toglie la scelta) ed `evita <argomento>` |
-| `/au diario` (`journal`, `diary`) | apre il diario del personaggio (ricordi, luoghi, flag, sessione). Anche `lista`, `luoghi`, `flag <nome>`, `esporta`, `permanente <n>`, `elimina <n>`, `dimentica <luogo>` e `reset [tutto\|ricordi\|ordinari\|luoghi\|flag]` (chiede conferma) |
-| `/au storie` (`stories`, `arcs`) | le storie personali: `lista`, `diario`, `scegli <arco> <opzione>`, `inizia`, `sospendi`, `riprendi`, `salta`, `disattiva`, `attiva` (un arco o `tutte`), `max <1\|2>`, `on`, `off`, `stato` |
-| `/au relazioni` (`relazione`, `relations`, `relationships`, `bonds`) | apre la finestra delle relazioni (tabella ordinabile e filtrabile, persone proposte, dettaglio con cursori, note e tag). Anche `lista`, `persone`, `aggiungi <nome>`, `scarta <nome>`, `rimuovi <nome\|npc:ID>`, `dettaglio <nome>`, `nota`, `tag`, `etichetta`, `imposta <nome> <asse> <valore>`, `esporta`, `auto on\|off`, `attrazione on\|off`, `reset` |
-| `/au luogo` (`place`, `dove`, `where`) | dove sei secondo l'addon: zona, uiMapID, territorio, tag, istanza, scontro, ruolo nel gruppo (serve a verificare i dati dei luoghi in gioco) |
-| `/au chi` (`who`, `interlocutore`, `other`) | chi hai davanti secondo l'addon (ruolo, carattere, razza, azioni recenti, rapporto e fonte di ogni dato). Anche `trp3 on\|off` (consenso a leggere il profilo pubblico Total RP 3 **degli altri**) e `tratto <tratto> <valore>` per correggere a mano un tratto dell'interlocutore |
-| `/au npc` (`dialogo`, `parla`, `talk`, `dialogue`) | il dialogo ambientale con l'NPC in corso, oppure apre l'offerta se c'è un'interazione valida. Anche `prova` (NPC di prova, senza tracce), `chiudi`, `ruolo <ruolo>` (dici tu che ruolo ha l'NPC), `offerta on\|off` (il pulsante automatico), `stato` |
-| `/au altra` (`another`, `reroll`) | un'altra frase al posto di quella in attesa, o una nuova proposta (è anche il pulsante «Un'altra» del riquadro) |
-| `/au pacchetti` (`packs`) · `/au pacchetto <id> on\|off` (`pack`) | elenca o accende e spegne i pacchetti di frasi |
-| `/au valida [tutto\|<pacchetto>]` (`validate`, `controlla`) | il validatore dei testi: id doppi, lingue mancanti, segnaposto, condizioni, lunghezze, tag, copioni e archi |
-| `/au info` (`stats`) | quante frasi sono disponibili, per evento |
-| `/au memoria` (`memory`) | azzera la memoria delle **frasi usate** (quelle già dette, per non ripeterle; senza conferma). Non tocca i ricordi del diario: per quelli c'è `/au diario reset` |
-| `/au opzioni` (`options`, `config`) | apre il pannello delle impostazioni |
-| `/au benvenuto` (`wizard`, `welcome`) | riapre la procedura guidata |
-| `/au debug [full\|trace]` | diagnostica: capacità del client, ultimi eventi, errori intercettati; `trace` stampa ogni evento riconosciuto, per la sessione |
+| `/au` · `/au aiuto` (`help`) | list of commands |
+| `/au on` · `/au off` | turns automatic lines on or off |
+| `/au pausa` (`pause`) | immediate narrator pause, for the session only; again to resume |
+| `/au lingua [it\|en]` (`language`) | language of lines and interface |
+| `/au intensita <0-100>` (`intensity`) | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
+| `/au profondita naturale\|letterario\|elevato` (`depth`) | style depth: lines written for that tone weigh more (the others stay possible) |
+| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | what may reach chat; default: `privato` (private). English aliases: `private`, `preview`, `confirm`, `auto`. `auto` does not turn on with the first command: it shows a warning and must be repeated within 10 seconds |
+| `/au canale auto\|say\|emote\|gruppo\|incursione\|gilda\|istanza` (`channel`) | default channel for proposals (`party`, `raid`, `guild`, `instance` also work) |
+| `/au dire` (`speak`, `invia`, `send`) | same as the "speak" key: confirms the pending proposal, or makes a new one |
+| `/au annulla` (`scarta`, `cancel`, `discard`) | discards the pending proposal |
+| `/au copia` (`copy`) | copies the proposal into the chat box (you send it with Enter): the "To chat" button |
+| `/au narratore [cronologia\|reset\|pulisci]` (`narrator`) | no argument shows a sample line; `cronologia` (`history`) opens recent lines, `reset` moves the box back to the centre, `pulisci` (`clear`) empties the history |
+| `/au saluto` · `addio` · `brindisi` · `pensiero` · `minaccia` · `grido` · `preghiera` · `vittoria` · `ringrazia` · `scherzo` | asks for a line for that moment (`greet`, `farewell`, `toast`, `muse`, `threat`, `battlecry`, `pray`, `victory`, `thanks`, `jest`). It appears as a proposal or in the narrator, depending on the chat mode |
+| `/au incanta <spell>` (`cast`) | a line for a spell, handy in macros |
+| `/au evento <name>` (`event`) | fires an event by name (including ones defined by a pack) |
+| `/au prova <event>` (`test`) | preview in the local chat (sends nothing) |
+| `/au prob [<event> <0-100>]` (`chance`) | probability of an event; with no arguments lists the values |
+| `/au cooldown <seconds>` | minimum pause between two automatic lines |
+| `/au ignora <spell>` (`ignore`) | a spell no longer produces lines; with no argument lists the ignored ones |
+| `/au pulsante` (`button`) | shows or hides the "speak" button |
+| `/au anima` (`soul`, `personalita`, `profilo`) | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <value>` (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `voice`; `-` removes the choice) and `avoid <topic>` |
+| `/au journal` (`diary`, `diario`) | opens the character journal (memories, places, flags, session). Also `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` and `reset [all\|memories\|ordinary\|places\|flags]` (asks for confirmation) |
+| `/au stories` (`storie`, `arcs`) | the personal stories: `list`, `journal`, `choose <arc> <option>`, `start`, `suspend`, `resume`, `skip`, `disable`, `enable` (one arc or `all`), `max <1\|2>`, `on`, `off`, `status` |
+| `/au relations` (`relationships`, `relazioni`, `relazione`, `bonds`) | opens the relationships window (sortable, filterable table, suggested people, detail with sliders, notes and tags). Also `list`, `people`, `add <name>`, `dismiss <name>`, `remove <name\|npc:ID>`, `detail <name>`, `note`, `tags`, `label`, `set <name> <axis> <value>`, `export`, `auto on\|off`, `attraction on\|off`, `reset` |
+| `/au place` (`luogo`, `dove`, `where`) | where you are according to the addon: zone, uiMapID, territory, tags, instance, encounter, group role (used to verify place data in game) |
+| `/au who` (`chi`, `interlocutore`, `other`) | who is in front of you according to the addon (role, character, race, recent actions, bond and the source of each datum). Also `trp3 on\|off` (consent to read the public Total RP 3 profile **of others**) and `trait <trait> <value>` (`tratto`) to correct an interlocutor trait by hand |
+| `/au npc` (`dialogo`, `talk`, `dialogue`) | the ambient dialogue with the current NPC, or opens the offer if there is a valid interaction. Also `test` (`prova`: a test NPC, leaves no trace), `close` (`chiudi`), `role <role>` (`ruolo`: you say what role the NPC has), `offer on\|off` (`offerta`: the automatic button), `status` (`stato`) |
+| `/au another` (`altra`, `reroll`) | another line in place of the pending one, or a new proposal (also the "Another" button of the box) |
+| `/au packs` · `/au pacchetto <id> on\|off` (`pack`) | lists, or switches phrase packs on and off |
+| `/au validate [all\|<pack>]` (`valida`, `controlla`) | the text validator: duplicate ids, missing languages, placeholders, conditions, lengths, tags, scripts and arcs (`tutto` for all) |
+| `/au info` (`stats`) | how many lines are available, per event |
+| `/au memoria` (`memory`) | resets the memory of **used lines** (the ones already said, to avoid repeating them; no confirmation). It does not touch the journal's memories: for those use `/au journal reset` |
+| `/au opzioni` (`options`, `config`) | opens the settings panel |
+| `/au benvenuto` (`wizard`, `welcome`) | reopens the wizard |
+| `/au debug [full\|trace]` | diagnostics: client capabilities, latest events, trapped errors; `trace` prints every recognised event, for the session |
 
-**Tasti.** In *Opzioni → Comandi → AddOn → Azeroth Unspoken* si possono assegnare quattro tasti: *Conferma e pronuncia la frase proposta (o improvvisa)* (`AZEROTHUNSPOKEN_SPEAK`), *Un'altra frase* (`AZEROTHUNSPOKEN_REROLL`), *Pausa immediata del narratore* (`AZEROTHUNSPOKEN_PAUSE`) e *Dialogo ambientale con l'NPC* (`AZEROTHUNSPOKEN_NPC`: apre o chiude il dialogo). Nessuno ha un tasto predefinito.
+**Key bindings.** Under *Options → Keybindings → AddOns → Azeroth Unspoken* you can bind four keys: *Confirm and speak the proposed line (or improvise)* (`AZEROTHUNSPOKEN_SPEAK`), *Another line* (`AZEROTHUNSPOKEN_REROLL`), *Pause the narrator immediately* (`AZEROTHUNSPOKEN_PAUSE`) and *Ambient dialogue with the NPC* (`AZEROTHUNSPOKEN_NPC`: opens or closes the dialogue). None has a default key.
 
-## Impostazioni
+## Settings
 
-Il pannello si apre con `/au opzioni` (è registrato anche tra le opzioni degli addon del gioco: la registrazione non è ancora stata verificata nel client vero). Contiene:
+The panel opens with `/au opzioni` (it is also registered among the game's addon options; that registration has not yet been verified in the real client). It contains:
 
-- **Lingua** delle frasi e dell'interfaccia, indipendente dalla lingua del client.
-- **Intensità** (0–100) e **profondità dello stile** (Naturale, Letterario, Elevato).
-- **Pausa tra le frasi** automatiche (45 secondi predefiniti).
-- **Chat**: la modalità e il canale predefinito.
-- **Riquadro del narratore**: durata del testo, opacità, dimensione, posizione bloccata, cronologia, prova.
-- **Moduli**: Personale, Mondo, Dialoghi NPC, Memoria, Relazioni, Storie, Social, Proposte in chat, Audio (quelli non ancora attivi, *Social* e *Audio*, sono segnati con `*`), più i preset *Completo*, *RPG personale*, *Mondo narrativo* e *Social RP*.
-- Il pulsante "pronuncia", il nome da Total RP 3 e, con un consenso a parte, la lettura dei profili pubblici degli altri (*Leggi il Total RP 3 degli altri*), il carattere del personaggio (`/au anima`), la pausa immediata, la procedura guidata.
-- Alcune scelte si fanno **solo da comando**: gli assi e le persone delle relazioni (`/au relazioni`), l'attrazione e la registrazione automatica dei giocatori (`/au relazioni attrazione|auto`), l'offerta automatica del dialogo NPC (`/au npc offerta`) e il numero massimo di storie attive (`/au storie max`).
+- **Language** of lines and interface, independent of the client language.
+- **Intensity** (0–100) and **style depth** (Natural, Literary, Elevated).
+- **Pause between lines** for automatic lines (45 seconds by default).
+- **Chat**: the mode and the default channel.
+- **Narrator box**: text duration, opacity, size, locked position, history, test.
+- **Modules**: Personal, World, NPC dialogues, Memory, Relations, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
+- The "speak" button, the name from Total RP 3 and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
+- Some choices are made **by command only**: the relationship axes and people (`/au relations`), attraction and automatic registration of players (`/au relations attraction|auto`), the automatic NPC dialogue offer (`/au npc offer`) and the maximum number of active stories (`/au stories max`).
 
-## Privacy e chat
+## Privacy and chat
 
-- **Tutto resta sul tuo computer.** L'addon non apre connessioni, non scarica nulla e non invia dati. Non c'è nemmeno un modulo social attivo (è pianificato, con consenso esplicito e disattivato per impostazione predefinita).
-- **Non viene salvato il contenuto della chat**, né i whisper: l'addon non conserva mai il testo di un messaggio. Di un'emote rivolta a te ricorda in sessione solo *che* è arrivata (il testo si scarta), e di un whisper che hai inviato solo il nome del destinatario, in memoria, per proporlo come persona da aggiungere.
-- **Che cosa viene salvato.** Per account: le impostazioni (`AzerothUnspokenDB`). Per personaggio (`AzerothUnspokenCharacterDB`): la memoria delle frasi usate, la personalità scelta, i **ricordi** del diario (luoghi, momenti significativi, flag), le **relazioni** (gli NPC incontrati e, **solo i giocatori che hai scelto tu**, il loro nome con le note, i tag e le etichette *personali* che scrivi tu) e lo stato delle **storie**. Non c'è nessun testo di chat, nessuna battuta dei dialoghi, nessun dato di un giocatore che non hai aggiunto tu. Il diario e le relazioni si possono cancellare in ogni momento (`/au diario reset`, `/au relazioni reset`). La cronologia del narratore sta solo in memoria e sparisce con la sessione.
-- **Relazioni.** Un giocatore entra nella lista delle relazioni **solo con un tuo clic o comando**; l'opzione «registra automaticamente chi incontro» esiste ma è spenta per impostazione predefinita. L'addon *propone* (gruppo, scambi, persone a cui hai risposto), non registra.
-- **Total RP 3 degli altri, solo con consenso.** I dati pubblici (razza, classe e tratti psicologici) dei profili Total RP 3 di altri giocatori si leggono **solo** se attivi `/au chi trp3 on` (o l'opzione nelle impostazioni), spento per impostazione predefinita; mai note, storia o campi privati, e non si salvano.
-- **Nulla in chat senza un'azione del giocatore.** Il *Chat Gateway* ha quattro modalità:
+- **Everything stays on your computer.** The addon opens no connections, downloads nothing and sends no data. There is no active social module either (it is planned, with explicit consent and off by default).
+- **Chat content is not saved**, and neither are whispers: the addon never keeps the text of a message. Of an emote aimed at you it remembers, for the session only, *that* it arrived (the text is discarded), and of a whisper you sent only the recipient's name, in memory, to suggest them as a person to add.
+- **What is saved.** Per account: the settings (`AzerothUnspokenDB`). Per character (`AzerothUnspokenCharacterDB`): the memory of used lines, the chosen personality, the journal's **memories** (places, significant moments, flags), the **relationships** (the NPCs you met and, **only the players you chose yourself**, their name with the *personal* notes, tags and labels you write) and the state of the **stories**. There is no chat text, no dialogue line, and no data about a player you did not add. The journal and the relationships can be erased at any time (`/au journal reset`, `/au relations reset`). The narrator history lives in memory only and disappears with the session.
+- **Relationships.** A player enters the relationships list **only through your click or command**; the "register people I meet automatically" option exists but is off by default. The addon *suggests* (group members, trades, people you replied to), it does not register.
+- **Others' Total RP 3, only with consent.** The public data (race, class and personality traits) of other players' Total RP 3 profiles is read **only** if you turn on `/au who trp3 on` (or the option in the settings), off by default; never notes, history or private fields, and it is not saved.
+- **Nothing reaches chat without a player action.** The *Chat Gateway* has four modes:
 
-| Modalità | Che cosa succede |
+| Mode | What happens |
 |---|---|
-| `privato` (predefinita) | le frasi restano nel narratore, mai in chat |
-| `anteprima` | le frasi del personaggio diventano proposte; il tasto "pronuncia" apre l'editor e invii con Invio |
-| `conferma` | la proposta è pronta e un clic, un tasto o `/au dire` la inviano; puoi modificarla, cambiare canale o scartarla |
-| `auto` | **solo se la scegli tu, con un avviso e una conferma**: partono da sole le emote e, nelle istanze, `/say`; tutto il resto resta una proposta |
+| `privato` / private (default) | lines stay in the narrator, never in chat |
+| `anteprima` / preview | the character's lines become proposals; the "speak" key opens the editor and you send with Enter |
+| `conferma` / confirm | the proposal is ready and a click, a key or `/au dire` sends it; you can edit it, change channel or discard it |
+| `auto` | **only if you choose it, with a warning and a confirmation**: emotes go out by themselves and, inside instances, `/say`; everything else stays a proposal |
 
-- La voce *interiore* e quella degli *NPC* non vanno mai in chat. Nemmeno i dialoghi ambientali e le storie personali: restano nel narratore e nella loro finestra.
-- Ci sono limiti di frequenza (almeno 4 secondi tra due invii, al massimo 6 al minuto, 2 in automatico), un tetto di 255 byte per messaggio e nessun invio durante il blocco della chat del client.
-- La regola "emote da sole, `/say` da solo solo nelle istanze" è un'ipotesi prudente sul comportamento del client, **non ancora misurata in gioco**.
+- The *inner* and *NPC* voices never go to chat. Neither do the ambient dialogues and the personal stories: they stay in the narrator and in their own window.
+- There are rate limits (at least 4 seconds between two sends, at most 6 per minute, 2 automatic), a 255-byte cap per message, and nothing is sent while the client's chat lockdown is active.
+- The rule "emotes by themselves, `/say` by itself only in instances" is a cautious assumption about the client's behaviour that has **not yet been measured in game**.
 
-Le decisioni dietro a questi comportamenti sono nelle [ADR](docs/adr/README.md), in particolare la [0002](docs/adr/0002-tutto-offline-senza-ia.md) e la [0003](docs/adr/0003-narratore-privato-e-chat-gateway.md).
+The decisions behind this behaviour are in the [ADRs](docs/adr/README.md) (in Italian), notably [0002](docs/adr/0002-fully-offline-no-ai.md) and [0003](docs/adr/0003-private-narrator-and-chat-gateway.md).
 
 ## Total RP 3
 
-L'integrazione è **facoltativa**: l'addon funziona al 100% anche senza. Se Total RP 3 è presente, può leggere tre cose, ciascuna con un suo interruttore:
+The integration is **optional**: the addon works at 100% without it. If Total RP 3 is present, the addon can read three things, each with its own switch:
 
-1. **Il nome del tuo profilo** (*Nome da Total RP 3* nelle impostazioni, acceso per impostazione predefinita) per usarlo nelle frasi.
-2. **I tratti psicologici pubblici del tuo profilo** (`/au anima trp3 on`, spento per impostazione predefinita) per il carattere del personaggio; una scelta fatta a mano ha sempre la precedenza.
-3. **I dati pubblici di altri giocatori** (`/au chi trp3 on`, o *Leggi il Total RP 3 degli altri* nelle impostazioni, spento per impostazione predefinita; serve anche il punto 1): solo razza, classe e tratti caratteriali, per far reagire il narratore a chi hai davanti. Mai note, storia o campi privati, e non si salva nulla di ciò che si legge.
+1. **Your profile's first name** (*Name from Total RP 3* in the settings, on by default) to use it in lines.
+2. **The public personality traits of your profile** (`/au soul trp3 on`, off by default) for the character's personality; a choice you make by hand always comes first.
+3. **The public data of other players** (`/au who trp3 on`, or *Read others' Total RP 3* in the settings, off by default; point 1 must be on too): only race, class and personality traits, so the narrator can react to whoever is in front of you. Never notes, history or private fields, and nothing it reads is saved.
 
-L'addon non scrive nulla in Total RP 3. Se le API di Total RP 3 mancano o cambiano, l'integrazione si spegne da sola. Vedi [ADR 0004](docs/adr/0004-total-rp-3-facoltativo-con-adattatore.md) e [ADR 0016](docs/adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md).
+The addon writes nothing to Total RP 3. If Total RP 3's APIs are missing or change, the integration switches itself off. See [ADR 0004](docs/adr/0004-total-rp-3-optional-with-adapter.md) and [ADR 0016](docs/adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md) (in Italian).
 
-## Pacchetti di frasi
+## Phrase packs
 
-Le frasi non stanno nel motore: stanno in pacchetti. Quelli di base sono in `AzerothUnspoken/Data/`; altri si aggiungono come addon separati che dipendono da `AzerothUnspoken` (vedi `AzerothUnspoken_Example`). Un pacchetto può aggiungere frasi, cornici narrative, vocabolario, traduzioni, nuove lingue, nuovi eventi, luoghi, NPC, dialoghi e storie.
+Lines do not live in the engine: they live in packs. The base ones are in `AzerothUnspoken/Data/`; others are added as separate addons that depend on `AzerothUnspoken` (see `AzerothUnspoken_Example`). A pack can add lines, narrative frames, vocabulary, translations, new languages, new events, places, NPCs, dialogues and stories.
 
-La guida completa è in [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md): descrive lo schema dati v2 (regole separate dai testi, varianti, voci, registri, profondità, tag di personalità, condizioni di memoria, relazioni, interlocutore e luogo), i dialoghi ambientali e le storie personali. **Gli esempi della guida sono provati dai test** come pacchetti esterni. Per scrivere frasi buone, leggi anche [CONTRIBUTING.md](CONTRIBUTING.md).
+The full guide is [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md) (in Italian): it describes data schema v2 (rules separate from texts, variants, voices, registers, depth, personality tags, memory conditions, relationships, interlocutor and place), the ambient dialogues and the personal stories. **The guide's examples are exercised by the tests** as external packs. To write good lines, also read [CONTRIBUTING.md](CONTRIBUTING.md) (in Italian).
 
-## Stato del progetto
+## Project status
 
-| Cosa | Stato |
+| What | Status |
 |---|---|
-| **M0 Fondamenta**: architettura, compatibilità, diagnostica (S1); narratore privato, Chat Gateway, impostazioni, procedura guidata (S2) | **fatto**, provato solo fuori dal gioco |
-| G1 Prova in gioco ([checklist](docs/G1_checklist.md)) | **da fare**, rimandata: serve l'utente con il client vero |
-| **M1 Narrative Alpha**: schema dati v2 e validatore (S3), Narrative Director (S4), personalità e Total RP 3 (S5), memoria e diario (S6), relazioni (S6b), interlocutore e luogo (S6c), contenuti Alpha (S7) | **fatto**, provato solo fuori dal gioco |
-| G2 Prova in gioco: arrivo nella foresta e ritorno (passi 65–68) | **da fare** |
-| **M2 Living NPC**: NPC Alive, dialoghi ambientali (S8) | **fatto**, non provato in gioco |
-| G3 Prova in gioco: il locandiere (passi 75–83) | **da fare** |
-| **M3 Personal Stories**: Story Arcs (S9) | **fatto**, non provato in gioco (passi 84–92) |
-| M4 Social RP (S10, prova G4 con due client), M5 release 1.0 (S11–S12) | da fare |
+| **M0 Foundations**: architecture, compatibility, diagnostics (S1); private narrator, Chat Gateway, settings, wizard (S2) | **done**, tested outside the game only |
+| G1 In-game test ([checklist](docs/G1_checklist.md)) | **to do**, postponed: needs the owner with the real client |
+| **M1 Narrative Alpha**: data schema v2 and validator (S3), Narrative Director (S4), personality and Total RP 3 (S5), memory and journal (S6), relationships (S6b), interlocutor and place (S6c), Alpha content (S7) | **done**, tested outside the game only |
+| G2 In-game test: arriving in the forest and returning (steps 65–68) | **to do** |
+| **M2 Living NPC**: NPC Alive, ambient dialogues (S8) | **done**, not tried in game |
+| G3 In-game test: the innkeeper (steps 75–83) | **to do** |
+| **M3 Personal Stories**: Story Arcs (S9) | **done**, not tried in game (steps 84–92) |
+| M4 Social RP (S10, G4 test with two clients), M5 release 1.0 (S11–S12) | to do |
 
-**Che cosa non è verificato.** Tutto ciò che richiede il client vero: gli eventi e le API del client (gossip, mercante, mappe, istanze, scontri), i numeri dei luoghi e degli NPC (`uiMapID`, `instanceID`, `npcID`: vengono dalla numerazione di Classic Era, issue [#36](https://github.com/Finland6738/azeroth-unspoken/issues/36)), l'aspetto reale delle finestre, il salvataggio delle SavedVariables, l'integrazione con Total RP 3 e, soprattutto, **il tono, il ritmo e la frequenza** delle frasi: i test controllano struttura, conteggi e regole, non la qualità letteraria. Le prove in gioco (G1–G4) sono nella [checklist](docs/G1_checklist.md); i problemi trovati diventeranno issue con l'etichetta `in-game`.
+**What is not verified.** Everything that needs the real client: the client's events and APIs (gossip, vendors, maps, instances, encounters), the place and NPC numbers (`uiMapID`, `instanceID`, `npcID`: they come from the Classic Era numbering, issue [#36](https://github.com/Finland6738/azeroth-unspoken/issues/36)), the real look of the windows, saving of the SavedVariables, the Total RP 3 integration and, above all, **the tone, rhythm and frequency** of the lines: the tests check structure, counts and rules, not literary quality. The in-game tests (G1–G4) are in the [checklist](docs/G1_checklist.md); problems found will become issues labelled `in-game`.
 
-Il piano dettagliato, gli step e le note per chi sviluppa sono in [ROADMAP.md](ROADMAP.md). Le modifiche rilevanti per versione sono in [CHANGELOG.md](CHANGELOG.md). I problemi noti e le idee sono nelle [issue](https://github.com/Finland6738/azeroth-unspoken/issues).
+The detailed plan, the steps and notes for developers are in [ROADMAP.md](ROADMAP.md). Notable changes per version are in [CHANGELOG.md](CHANGELOG.md). Known problems and ideas are in the [issues](https://github.com/Finland6738/azeroth-unspoken/issues).
 
-## Sviluppo e test
+## Development and tests
 
-Il repository ha questa struttura:
+Repository layout:
 
-| Percorso | Contenuto |
+| Path | Contents |
 |---|---|
-| `AzerothUnspoken/` | l'addon (`Core/`, `Engine/`, `Systems/`, `Integration/`, `UI/`, `Data/`) |
-| `AzerothUnspoken_Example/` | pacchetto di frasi di esempio |
-| `Tests/` | test fuori dal gioco |
-| `docs/` | specifica (GDD), architettura, ADR, riferimenti tecnici, checklist di prova |
-| `archive/VociDiAzeroth*/` | prototipo originale, solo come riferimento |
-| `ROADMAP.md` | milestone, step e stato di avanzamento |
+| `AzerothUnspoken/` | the addon (`Core/`, `Engine/`, `Systems/`, `Integration/`, `UI/`, `Data/`) |
+| `AzerothUnspoken_Example/` | sample phrase pack |
+| `Tests/` | tests that run outside the game |
+| `docs/` | specification (GDD), architecture, ADRs, technical references, test checklist |
+| `archive/VociDiAzeroth*/` | the original prototype, kept for reference only |
+| `ROADMAP.md` | milestones, steps and progress |
 
-**Test fuori dal gioco.** Usano [lupa](https://github.com/scoder/lupa), cioè Lua 5.1 come WoW, e un client simulato (`Tests/MockWoWAPI.lua`). Dalla radice del progetto:
+**Tests outside the game.** They use [lupa](https://github.com/scoder/lupa), i.e. Lua 5.1 like WoW, and a simulated client (`Tests/MockWoWAPI.lua`). From the project root:
 
 ```bash
 python -m venv .venv
@@ -217,32 +221,32 @@ python -m venv .venv
 .venv/Scripts/python -I -X utf8 Tests/run_tests.py AzerothUnspoken
 ```
 
-Su Linux e macOS il percorso è `.venv/bin/python`. Il comando esce con codice 1 se un controllo fallisce. La cartella `.venv/` è locale e non va nel repository.
+On Linux and macOS the path is `.venv/bin/python`. The command exits with code 1 if a check fails. The `.venv/` folder is local and stays out of the repository.
 
-**Editor.** Il progetto è pensato per JetBrains WebStorm con i plugin **EmmyLua** e **WoW Lua Language Server**. `.luarc.json` imposta Lua 5.1, le variabili globali dell'addon e le cartelle da ignorare; le API di WoW sono fornite dal plugin e non si duplicano nel progetto. Le API pubbliche e le strutture dati sono annotate con EmmyLua.
+**Editor.** The project is set up for JetBrains WebStorm with the **EmmyLua** and **WoW Lua Language Server** plugins. `.luarc.json` sets Lua 5.1, the addon's globals and the folders to ignore; WoW's APIs come from the plugin and are not duplicated in the project. Public APIs and data structures are annotated with EmmyLua.
 
-**Dump delle API di Forever.** Per sapere se una funzione o un evento esistono nel client si consulta il dump di [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons), clonato accanto al progetto (`..\WoW-Addons`) e **mai copiato** nel nostro repository. Vedi [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md) e l'[ADR 0010](docs/adr/0010-dump-api-di-forever-come-riferimento.md).
+**Forever API dump.** To find out whether a function or event exists in the client we consult the dump in [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons), cloned next to the project (`..\WoW-Addons`) and **never copied** into our repository. See [docs/REFERENCES.md](docs/REFERENCES.md) and [ADR 0010](docs/adr/0010-forever-api-dump-as-reference.md).
 
-Per contribuire (frasi, pacchetti, codice, issue) leggi [CONTRIBUTING.md](CONTRIBUTING.md).
+To contribute (lines, packs, code, issues) read [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Documentazione
+## Documentation
 
-L'indice completo è in [docs/README.md](docs/README.md). I punti di partenza:
+The full index is [docs/README.md](docs/README.md). Starting points (all in Italian):
 
-- [docs/ARCHITETTURA.md](docs/ARCHITETTURA.md): moduli, flusso di un evento, dati, punti di estensione.
-- [docs/adr/README.md](docs/adr/README.md): le decisioni di progetto, una per file.
-- [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): la specifica di prodotto (nel GDD il prodotto si chiama ancora "Immersion Director").
-- [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO_PACCHETTI.md): come scrivere un pacchetto.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): modules, the flow of an event, data, extension points.
+- [docs/adr/README.md](docs/adr/README.md): the project decisions, one per file.
+- [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md): the product specification (the GDD still calls the product "Immersion Director").
+- [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md): how to write a pack.
 
-## Licenza
+## License
 
-**Licenza da definire.** Finché non è scelta, vale il diritto d'autore predefinito: tutti i diritti sono riservati. Le opzioni (codice e testi) sono discusse nell'[issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2).
+**License to be defined.** Until one is chosen, default copyright applies: all rights are reserved. The options (code and texts) are discussed in [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2).
 
-## Crediti
+## Credits
 
-- Ideazione e sviluppo: Finland6738.
-- Riferimenti tecnici consultati (non copiati): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) per il dump delle API di Forever; [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) per la documentazione generale delle API. Elenco completo in [docs/RIFERIMENTI.md](docs/RIFERIMENTI.md).
-- [Total RP 3](https://totalrp3.info/) è un addon dei suoi autori; Azeroth Unspoken lo usa solo come integrazione facoltativa.
-- Se in futuro si useranno dati di [ForeverDB.net](https://foreverdb.net/) per preparare i registri locali, verrà citato qui con un link visibile.
+- Concept and development: Finland6738.
+- Technical references consulted (not copied): [Atraeau/WoW-Addons](https://github.com/Atraeau/WoW-Addons) for the Forever API dump; the [Warcraft Wiki](https://warcraft.wiki.gg/wiki/World_of_Warcraft_API) for general API documentation. Full list in [docs/REFERENCES.md](docs/REFERENCES.md).
+- [Total RP 3](https://totalrp3.info/) belongs to its authors; Azeroth Unspoken only uses it as an optional integration.
+- If [ForeverDB.net](https://foreverdb.net/) data is ever used to prepare local registries, it will be credited here with a visible link.
 
-*World of Warcraft® è un marchio di Blizzard Entertainment, Inc. Azeroth Unspoken è un progetto di fan, indipendente e non affiliato né approvato da Blizzard. Le frasi sono originali e non riproducono testi del gioco.*
+*World of Warcraft® is a trademark of Blizzard Entertainment, Inc. Azeroth Unspoken is an independent fan project, not affiliated with or endorsed by Blizzard. The lines are original and do not reproduce in-game text.*

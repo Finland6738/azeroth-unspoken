@@ -14,14 +14,14 @@ Il rischio di un addon di questo tipo è produrre frasi sgrammaticate, ripetitiv
 1. **Il motore non contiene testi.** `Core/`, `Engine/`, `Systems/`, `Integration/` e `UI/` leggono solo ciò che i pacchetti registrano con `AzerothUnspoken:RegisterPack`. I testi dell'interfaccia stanno a parte, in `Data/<lingua>/Interface.lua`.
 2. **Il database contiene frasi intere, scritte a mano.** Una frase è un'unità completa, con il proprio evento, tono, peso, pausa e condizioni. Il motore la sceglie, non la costruisce.
 3. **Sono ammessi solo due meccanismi di variazione controllata**, perché sono formule complete e scelte per contesto: i segnaposto (`{target}`, `{zone}`, `{g:m|f}`…) e il vocabolario (voci brevi e intere come un grido di guerra adatto alla razza), più le *cornici narrative* che incorniciano una frase parlata come emote. Non si concatenano mai frammenti incompatibili (GDD §5.2).
-4. **I pacchetti di base e quelli di terzi usano la stessa API.** Quelli di base stanno in `AzerothUnspoken/Data/`; gli altri sono addon separati che dipendono da `AzerothUnspoken` (vedi `AzerothUnspoken_Example` e [FORMATO_PACCHETTI.md](../../AzerothUnspoken/FORMATO_PACCHETTI.md)).
+4. **I pacchetti di base e quelli di terzi usano la stessa API.** Quelli di base stanno in `AzerothUnspoken/Data/`; gli altri sono addon separati che dipendono da `AzerothUnspoken` (vedi `AzerothUnspoken_Example` e [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md)).
 5. Se per un evento nessuna frase è adatta, **il silenzio è un esito valido**: non si improvvisa.
 
 ## Alternative considerate
 
 - **Generare il testo componendo frammenti** (soggetto + azione + aggettivo). Dà molta varietà con pochi dati, ma produce frasi che suonano meccaniche, sbagliano il genere o il registro e non si possono rivedere una per una. Scartata.
 - **Testi dentro il codice** (come tabelle nei file del motore). Semplice all'inizio, ma impedisce i pacchetti di terzi e le traduzioni indipendenti, e mescola il lavoro del programmatore con quello dell'autore. Scartata.
-- **Generazione con un modello linguistico.** Vedi [ADR 0002](0002-tutto-offline-senza-ia.md).
+- **Generazione con un modello linguistico.** Vedi [ADR 0002](0002-fully-offline-no-ai.md).
 
 ## Conseguenze
 
@@ -37,5 +37,5 @@ Il rischio di un addon di questo tipo è produrre frasi sgrammaticate, ripetitiv
 ## Riferimenti
 
 - GDD §5.2, §5.4, §9, §11.1.
-- [docs/ARCHITETTURA.md](../ARCHITETTURA.md), [FORMATO_PACCHETTI.md](../../AzerothUnspoken/FORMATO_PACCHETTI.md).
+- [docs/ARCHITECTURE.md](../ARCHITECTURE.md), [PACK_FORMAT.md](../../AzerothUnspoken/PACK_FORMAT.md).
 - `Engine/PhraseRegistry.lua`, `Engine/WeightedSelector.lua`.
