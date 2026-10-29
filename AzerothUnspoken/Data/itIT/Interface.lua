@@ -34,7 +34,8 @@ NS:RegisterLanguage("it", {
 		-- le quattro voci (GDD §5.3)
 		voice_narrator = "Narratore", voice_inner = "Voce interiore", voice_character = "Personaggio", voice_npc = "NPC",
 		proposal_for = "proposta per %s", sent_to = "inviato in %s",
-		btn_send = "Invia", btn_edit = "Modifica", btn_discard = "Scarta",
+		btn_send = "Invia", btn_edit = "Modifica", btn_discard = "Scarta", btn_copy = "Nella chat",
+		tip_copy = "Copia la frase nella casella della chat, già sul canale giusto: la invii tu con Invio.",
 		tip_pause = "Pausa immediata (di nuovo per riprendere)", tip_history = "Cronologia recente",
 		tip_close = "Nascondi (e scarta la proposta)", tip_channel = "Cambia canale",
 		paused_on = "narratore in pausa. Premi di nuovo il tasto (o /au pausa) per riprendere.",
@@ -42,6 +43,8 @@ NS:RegisterLanguage("it", {
 
 		-- Chat Gateway
 		gw_empty = "niente da inviare.",
+		gw_no_chat_box = "il client non offre la casella della chat da riempire: usa Invia.",
+		gw_copy_failed = "non sono riuscito ad aprire la casella della chat: usa Invia.",
 		gw_needs_action = "per questo canale serve un'azione tua: premi il tasto o il pulsante 'pronuncia'.",
 		gw_channel_unavailable = "canale non disponibile ora (gruppo, incursione, gilda o istanza mancanti).",
 		gw_flood = "troppo ravvicinato: aspetta qualche secondo prima di inviare ancora.",
@@ -144,6 +147,7 @@ NS:RegisterLanguage("it", {
 			.. "/au canale auto|say|emote|gruppo|incursione|gilda|istanza\n"
 			.. "/au dire - conferma la proposta in attesa (anche da macro o tasto)\n"
 			.. "/au annulla - scarta la proposta\n"
+			.. "/au copia - copia la proposta nella casella della chat (la invii tu con Invio)\n"
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
 			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | vittoria | preghiera | ringrazia | scherzo\n"
 			.. "/au evento <nome> - propone una frase per un evento (battle, zone, muse...)\n"

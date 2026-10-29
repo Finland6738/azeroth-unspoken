@@ -449,3 +449,230 @@ T.run("voce delle frasi: regola dello schema v2 e ripiego del formato vecchio", 
 	local rec = NS.Engine:PickEntry("t_ev", NS:BuildContext(), "emote")
 	T.ok(rec and rec.speaker == "narrator", "PickEntry in forma emote: narratore, anche per il parlato incorniciato")
 end)
+
+---------------------------------------------------------------------------
+-- Regressioni di Q2 (issue #5, #8, #14, #19)
+---------------------------------------------------------------------------
+T.run("#5: il testo parte corretto per il canale (forma × canale)", function()
+	-- (forma, canale) -> testo che parte; il nome ce l'ha già il gioco solo per /e
+	local EMOTE_TEXT, SAY_TEXT = "lancia la lenza e resta immobile.", "Per l'onore dei miei avi."
+	local expected = {
+		{ "emote", "EMOTE", "lancia la lenza e resta immobile." },
+		{ "emote", "SAY", "Garrosh lancia la lenza e resta immobile." },
+		{ "emote", "YELL", "Garrosh lancia la lenza e resta immobile." },
+		{ "emote", "PARTY", "Garrosh lancia la lenza e resta immobile." },
+		{ "emote", "RAID", "Garrosh lancia la lenza e resta immobile." },
+		{ "emote", "GUILD", "Garrosh lancia la lenza e resta immobile." },
+		{ "emote", "INSTANCE_CHAT", "Garrosh lancia la lenza e resta immobile." },
+		{ "say", "SAY", "Per l'onore dei miei avi." },
+		{ "say", "YELL", "Per l'onore dei miei avi." },
+		{ "say", "PARTY", "Per l'onore dei miei avi." },
+		{ "say", "RAID", "Per l'onore dei miei avi." },
+		{ "say", "GUILD", "Per l'onore dei miei avi." },
+		{ "say", "INSTANCE_CHAT", "Per l'onore dei miei avi." },
+		{ "say", "EMOTE", "dice: «Per l'onore dei miei avi.»" },
+	}
+	NS.db.locale = "it"
+	for _, e in ipairs(expected) do
+		local form, channel, want = e[1], e[2], e[3]
+		T.eq(Gateway:TextFor(form, form == "emote" and EMOTE_TEXT or SAY_TEXT, channel, "Garrosh"), want,
+			form .. " in " .. channel)
+	end
+	-- in inglese il verbo è localizzato
+	NS.db.locale = "en"
+	T.eq(Gateway:TextFor("say", "For honor.", "EMOTE", "Garrosh"), 'says, "For honor."', "verbo in inglese")
+	NS.db.locale = "it"
+	-- senza il nome nel contesto si ripiega su quello del personaggio
+	T.eq(Gateway:TextFor("emote", "sospira.", "SAY"), "Garrosh sospira.", "nome dal personaggio")
+
+	-- end to end con il canale fisso: ciò che parte è ciò che il giocatore vede nel narratore
+	for _, mode in ipairs({ "CONFIRM_TO_SEND", "PREVIEW" }) do
+		for _, fixed in ipairs({ "SAY", "EMOTE", "YELL" }) do
+			for _, form in ipairs({ "say", "emote" }) do
+				Reset()
+				P.group = true
+				Gateway:SetMode(mode)
+				NS.db.chat.channel = fixed
+				local text = form == "emote" and EMOTE_TEXT or SAY_TEXT
+				Gateway:Propose(Rec(form, nil, text), CTX, {})
+				local p = Gateway:GetPending()
+				T.ok(p ~= nil and p.channel == fixed, mode .. "/" .. fixed .. "/" .. form .. ": proposta nel canale fisso")
+				local want = Gateway:TextFor(form, text, fixed, "Garrosh")
+				local shown = p.display
+				if fixed == "EMOTE" then T.eq(shown, "Garrosh " .. want, "anteprima come in chat") end
+				if mode == "PREVIEW" then Press() end
+				if mode == "PREVIEW" and Narrator:GetFrame().editor:IsShown() then
+					HW = true
+					Narrator:GetFrame().editor:TypeEnter(text)
+					HW = false
+				else
+					Press()
+				end
+				local sent = SENT[#SENT]
+				T.eq(sent, fixed .. ": " .. want, mode .. "/" .. fixed .. "/" .. form .. ": testo inviato")
+				if form == "emote" and fixed ~= "EMOTE" then
+					T.ok(sent:find("^" .. fixed .. ": Garrosh "), "l'emote fuori da /e ha il soggetto")
+				end
+				if form == "say" and fixed == "EMOTE" then
+					T.ok(sent:find("«", 1, true) ~= nil, "il parlato in /e è racchiuso tra virgolette")
+				end
+			end
+		end
+	end
+	P.group = false
+
+	-- cambiando canale dal pulsante il narratore mostra ciò che partirà
+	Reset()
+	P.group = true
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", nil, SAY_TEXT), CTX, {})
+	T.eq(Gateway:GetPending().display, "«" .. SAY_TEXT .. "»", "in /s: tra virgolette, come prima")
+	Gateway:CycleChannel()   -- /e
+	T.eq(Gateway:GetPending().channel, "EMOTE", "canale")
+	T.eq(Gateway:GetPending().display, "Garrosh dice: «" .. SAY_TEXT .. "»", "in /e: come apparirà in chat")
+	Gateway:CycleChannel()   -- /p
+	T.eq(Gateway:GetPending().display, "«" .. SAY_TEXT .. "»", "di nuovo in un canale parlato")
+	P.group = false
+
+	-- l'emote automatica con canale fisso /e e frase parlata: un'emote "dice: ..." e non "Nome Frase"
+	Reset()
+	NS.db.chat.channel = "EMOTE"
+	Auto()
+	Gateway:Propose(Rec("say", nil, SAY_TEXT), CTX, { auto = true })
+	T.eq(SENT[#SENT], "EMOTE: dice: «" .. SAY_TEXT .. "»", "automatica: testo adatto a /e")
+	-- il parlato in /e supera i 255 byte con il verbo: si taglia comunque a 255
+	Reset()
+	P.instance = true
+	local long = string.rep("a", 250)
+	NS.db.chat.channel = "EMOTE"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", nil, long), CTX, {})
+	Press()
+	T.ok(#SENT[#SENT] - #"EMOTE: " <= 255, "tagliato a 255 byte anche dopo l'aggiunta")
+end)
+
+T.run("#19: il limite dei byte è uno solo, per canale (Config.CHAT_LIMITS)", function()
+	local Config, Validator = NS.Config, NS.Validator
+	T.ok(Validator.LIMITS == Config.CHAT_LIMITS, "il validatore legge la stessa tabella del Gateway")
+	for _, ch in ipairs({ "SAY", "YELL", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }) do
+		T.eq(Config.CHAT_LIMITS[ch], 255, "limite di " .. ch)
+	end
+	T.ok(Config.CHAT_LIMITS.PRIVATE > 255, "i pensieri hanno un limite di leggibilità")
+
+	-- cambiare il limite di un canale cambia il taglio del Gateway
+	Reset()
+	P.instance = true
+	local saved = Config.CHAT_LIMITS.SAY
+	Config.CHAT_LIMITS.SAY = 20
+	T.ok(Gateway:Send(string.rep("x", 50), "SAY"), "invio lungo")
+	T.eq(#SENT[#SENT] - #"SAY: ", 20, "tagliato a 20 byte (17 + '...')")
+	T.ok(SENT[#SENT]:find("%.%.%.$"), "con i puntini")
+	ADVANCE(10)
+	T.ok(Gateway:Send(string.rep("x", 50), "EMOTE"), "un altro canale")
+	T.eq(#SENT[#SENT] - #"EMOTE: ", 50, "non è toccato dal limite di /say")
+
+	Config.CHAT_LIMITS.SAY = saved
+end)
+
+T.run("#8: SelectAuto è l'unico accesso al secondo consenso", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	SENT = {}
+	T.eq(Gateway:SelectAuto(), "warned", "primo gesto: avviso")
+	T.ok(Gateway:IsAutoArmed() and not Gateway:IsAutoActive(), "in attesa di conferma")
+	T.ok(T.sentContains("ATTENZIONE"), "con il testo dell'avviso")
+	T.eq(Gateway:GetMode(), "CONFIRM_TO_SEND", "nulla è cambiato")
+	T.eq(Gateway:SelectAuto(), "enabled", "secondo gesto: attivo")
+	T.ok(Gateway:IsAutoActive() and NS.db.output.autoPublicSay, "modalità e consenso")
+	T.eq(Gateway:SelectAuto(), "enabled", "già attivo: nessun nuovo avviso")
+	-- scaduta l'attesa
+	Gateway:SetMode("PRIVATE")
+	Gateway:SelectAuto()
+	ADVANCE(11)
+	T.ok(not Gateway:IsAutoArmed(), "dopo 10 s l'attesa decade")
+	T.eq(Gateway:SelectAuto(), "warned", "serve un nuovo avviso")
+	-- un cambio di modalità disarma
+	Gateway:SetMode("PREVIEW")
+	T.ok(not Gateway:IsAutoArmed(), "un altro cambio di modalità disarma")
+	-- il consenso non sopravvive a un cambio di modalità
+	Gateway:SelectAuto(); Gateway:SelectAuto()
+	T.ok(NS.db.output.autoPublicSay, "attivo")
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	T.ok(not NS.db.output.autoPublicSay, "uscendo da AUTO il consenso si spegne")
+	-- tornare in AUTO a mano (API) non lo riaccende
+	Gateway:SetMode("AUTO_ONLY_IF_ALLOWED")
+	T.ok(not NS.db.output.autoPublicSay, "rientrare in AUTO senza conferma: consenso spento")
+end)
+
+T.run("#14: Compat.OpenChatWith e CopyToChat", function()
+	local Compat = NS.Compat
+	local opened = {}
+	local saved = { ChatFrame_OpenChat, ChatEdit_ChooseBoxForSend, ChatEdit_ActivateChat }
+
+	-- percorso normale
+	ChatFrame_OpenChat = function(text) table.insert(opened, text) end
+	T.ok(Compat:CanOpenChat(), "ChatFrame_OpenChat disponibile")
+	T.ok(Compat:OpenChatWith("ciao", "EMOTE"), "apre /e")
+	T.eq(opened[#opened], "/e ciao", "prefisso del canale")
+	for ch, prefix in pairs({ SAY = "/s ", YELL = "/y ", PARTY = "/p ", RAID = "/raid ", GUILD = "/g ", INSTANCE_CHAT = "/i " }) do
+		Compat:OpenChatWith("x", ch)
+		T.eq(opened[#opened], prefix .. "x", "prefisso di " .. ch)
+	end
+	local ok, why = Compat:OpenChatWith("x", "WHISPER")
+	T.ok(not ok and why == "bad_args", "canale sconosciuto")
+	ok, why = Compat:OpenChatWith("", "SAY")
+	T.ok(not ok and why == "bad_args", "testo vuoto")
+	ChatFrame_OpenChat = function() error("boom") end
+	ok = Compat:OpenChatWith("x", "SAY")
+	T.ok(not ok, "un errore del client non esce dalla funzione")
+
+	-- ripiego sulla finestra di modifica
+	ChatFrame_OpenChat = nil
+	local box = { text = "", SetText = function(self, t) self.text = t end }
+	local active
+	ChatEdit_ChooseBoxForSend = function() return box end
+	ChatEdit_ActivateChat = function(b) active = b end
+	T.ok(Compat:CanOpenChat(), "ripiego disponibile")
+	T.ok(Compat:OpenChatWith("ciao", "SAY"), "apre con il ripiego")
+	T.ok(active == box and box.text == "/s ciao", "casella attivata e riempita")
+
+	-- niente di niente
+	ChatEdit_ChooseBoxForSend, ChatEdit_ActivateChat = nil, nil
+	T.ok(not Compat:CanOpenChat(), "nessuna casella")
+	ok, why = Compat:OpenChatWith("ciao", "SAY")
+	T.ok(not ok and why == "no_chat_box", "dichiarata mancante")
+
+	-- il Gateway: stesso testo e stesso taglio dell'invio, e nessun invio
+	ChatFrame_OpenChat = function(text) table.insert(opened, text) end
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("emote", nil, "alza lo sguardo."), CTX, {})
+	NS.db.chat.channel = "SAY"
+	Gateway.pending.channel = "SAY"
+	T.ok(Gateway:CopyToChat(), "copia")
+	T.eq(opened[#opened], "/s Garrosh alza lo sguardo.", "stessa trasformazione dell'invio diretto")
+	T.eq(#Public(), 0, "nulla inviato dall'addon")
+	T.eq(Gateway:GetPending(), nil, "proposta scartata")
+	-- il testo modificato dal giocatore
+	Gateway:Propose(Rec("say", nil, "Prima."), CTX, {})
+	Gateway:SetPendingText("Dopo.")
+	Gateway:CopyToChat()
+	T.eq(opened[#opened], "/s Dopo.", "si copia il testo modificato")
+	-- canale non disponibile: nessuna copia e la proposta resta
+	Gateway:Propose(Rec("say", nil, "Gruppo."), CTX, {})
+	Gateway.pending.channel = "PARTY"
+	local n = #opened
+	ok, why = Gateway:CopyToChat()
+	T.ok(not ok and why == "channel_unavailable" and #opened == n, "gruppo assente: non si copia")
+	T.ok(Gateway:GetPending() ~= nil, "la proposta resta")
+	-- taglio a 255 byte
+	Gateway:Discard()
+	Gateway:Propose(Rec("say", nil, string.rep("è", 200)), CTX, {})
+	Gateway:CopyToChat()
+	T.ok(#opened[#opened] - #"/s " <= 255, "copia tagliata a 255 byte")
+	-- senza proposta
+	ok, why = Gateway:CopyToChat()
+	T.ok(not ok and why == "empty", "senza proposta")
+
+	ChatFrame_OpenChat, ChatEdit_ChooseBoxForSend, ChatEdit_ActivateChat = saved[1], saved[2], saved[3]
+end)

@@ -363,3 +363,16 @@ T.run("/au validate", function()
 	T.ok(table.concat(SENT, "\n"):find("Validator: 46 lines", 1, true), "testi nella lingua scelta")
 	NS.db.locale = "it"
 end)
+
+T.run("#19: i limiti vengono da Config.CHAT_LIMITS, la stessa tabella del Chat Gateway", function()
+	local Config = NS.Config
+	T.ok(Validator.LIMITS == Config.CHAT_LIMITS, "stessa tabella")
+	local saved = Config.CHAT_LIMITS.SAY
+	local texts = { itIT = { ["lim.a"] = string.rep("a", 100), ["lim.b"] = string.rep("a", 100) } }
+	local r = Validate({ languages = { "itIT" }, registry = { ["lim.a"] = Good() }, texts = texts })
+	T.ok(not Has(r, "tooLong", "lim.a"), "con 255 byte la frase da 100 va bene")
+	Config.CHAT_LIMITS.SAY = 50
+	r = Validate({ languages = { "itIT" }, registry = { ["lim.b"] = Good() }, texts = texts })
+	T.ok(Has(r, "tooLong", "lim.b"), "con il limite di /say a 50 la stessa frase è troppo lunga")
+	Config.CHAT_LIMITS.SAY = saved
+end)

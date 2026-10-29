@@ -424,6 +424,38 @@ function Gateway:SendPending(text)
 	return true
 end
 
+-- Alternativa all'invio dall'addon: la proposta va nella casella della chat standard, già sul canale giusto
+-- ("/s testo"), e il giocatore la invia con il suo Invio. Il testo passa dalla stessa trasformazione per canale
+-- e dallo stesso taglio dell'invio diretto. Non è un invio dell'addon: niente controllo del flood e nessun
+-- bisogno di un'azione; la proposta si scarta dopo la copia.
+---@return boolean ok
+---@return string? reason empty | channel_unavailable | no_chat_box | copy_failed
+function Gateway:CopyToChat()
+	local p = self:GetPending()
+	if not p then return false, "empty" end
+	local text = Trim(self:TextFor(p.form, p.edited or p.text, p.channel, p.player))
+	if text == "" then
+		self:Report("empty")
+		return false, "empty"
+	end
+	if not self:ChannelAvailable(p.channel) then
+		self:Report("channel_unavailable")
+		return false, "channel_unavailable"
+	end
+	if not Compat:CanOpenChat() then
+		self:Report("no_chat_box")
+		return false, "no_chat_box"
+	end
+	local ok, why = Compat:OpenChatWith(Clip(text, NS.Config.CHAT_LIMITS[p.channel]), p.channel)
+	if not ok then
+		why = why or "copy_failed"
+		self:Report(why)
+		return false, why
+	end
+	self:Discard()
+	return true
+end
+
 ---------------------------------------------------------------------------
 -- Dal narratore alla chat
 ---------------------------------------------------------------------------

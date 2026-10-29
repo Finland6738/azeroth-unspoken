@@ -155,6 +155,8 @@ local function Command(msg)
 		NS.Wizard:Open()
 	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then
 		NS.Gateway:Discard()
+	elseif cmd == "copia" or cmd == "copy" then
+		NS.Gateway:CopyToChat()
 	elseif cmd == "dire" or cmd == "speak" or cmd == "say" or cmd == "invia" or cmd == "send" then
 		AzerothUnspoken_Speak()
 	elseif cmd == "prova" or cmd == "test" then

@@ -29,7 +29,8 @@ NS:RegisterLanguage("en", {
 		-- the four voices (GDD §5.3)
 		voice_narrator = "Narrator", voice_inner = "Inner voice", voice_character = "Character", voice_npc = "NPC",
 		proposal_for = "proposal for %s", sent_to = "sent to %s",
-		btn_send = "Send", btn_edit = "Edit", btn_discard = "Discard",
+		btn_send = "Send", btn_edit = "Edit", btn_discard = "Discard", btn_copy = "To chat",
+		tip_copy = "Copy the line into the chat box, already on the right channel: you send it with Enter.",
 		tip_pause = "Pause right now (again to resume)", tip_history = "Recent history",
 		tip_close = "Hide (and discard the proposal)", tip_channel = "Change channel",
 		paused_on = "narrator paused. Press the key again (or /au pause) to resume.",
@@ -37,6 +38,8 @@ NS:RegisterLanguage("en", {
 
 		-- Chat Gateway
 		gw_empty = "nothing to send.",
+		gw_no_chat_box = "the client offers no chat box to fill: use Send.",
+		gw_copy_failed = "could not open the chat box: use Send.",
 		gw_needs_action = "this channel needs an action from you: press the 'speak' key or button.",
 		gw_channel_unavailable = "channel not available right now (no party, raid, guild or instance).",
 		gw_flood = "too fast: wait a few seconds before sending again.",
@@ -139,6 +142,7 @@ NS:RegisterLanguage("en", {
 			.. "/au channel auto|say|emote|party|raid|guild|instance\n"
 			.. "/au speak - confirm the waiting proposal (also from a macro or key)\n"
 			.. "/au cancel - discard the proposal\n"
+			.. "/au copy - copy the proposal into the chat box (you send it with Enter)\n"
 			.. "/au narrator [history|reset|clear] - the narrator box\n"
 			.. "/au greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest\n"
 			.. "/au event <name> - propose a line for an event (battle, zone, muse...)\n"

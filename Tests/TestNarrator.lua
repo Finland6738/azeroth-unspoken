@@ -361,3 +361,273 @@ T.run("wizard: le scelte arrivano alle impostazioni", function()
 	NS.Config:ApplyPreset("complete")
 	NS.db.chat.mode = "PRIVATE"
 end)
+
+---------------------------------------------------------------------------
+-- Regressioni di Q2 (issue #4, #8, #11, #14, #17), con timer e tempo veri
+---------------------------------------------------------------------------
+local function Press()
+	HW = true
+	AzerothUnspoken_Speak()
+	HW = false
+end
+
+-- il riquadro "vive" davvero: il tempo passa e si ridisegna a ogni frame
+local function Tick(seconds, step)
+	step = step or 0.5
+	local t = 0
+	while t < seconds do
+		ADVANCE(step)
+		UPDATE(step)
+		t = t + step
+	end
+end
+
+T.run("#4: l'editor non scade e il testo scritto non si perde", function()
+	Reset()
+	NS.db.chat.pendingSeconds = 25
+	Gateway:SetMode("PREVIEW")
+	Gateway:Propose(Rec("say"), CTX, {})
+	Tick(20)
+	Press()   -- apre l'editor dopo 20 s
+	T.ok(frame.editor:IsShown(), "editor aperto")
+	T.ok(Narrator:IsEditing() and Gateway.editing, "il narratore e il Gateway lo sanno")
+	Tick(40)  -- oltre pendingSeconds
+	T.ok(frame.editor:IsShown(), "dopo 40 s l'editor è ancora aperto")
+	T.ok(Gateway:GetPending() ~= nil, "la proposta è ancora in attesa")
+	HW = true
+	frame.editor:TypeEnter("Che il vento ci sia amico.")
+	HW = false
+	T.eq(SENT[#SENT], "SAY: Che il vento ci sia amico.", "l'Invio spedisce il testo modificato")
+	T.eq(Gateway:GetPending(), nil, "proposta chiusa")
+	T.ok(not frame.editor:IsShown() and not Gateway.editing, "editor chiuso")
+end)
+
+T.run("#4: chiuso l'editor con Esc, l'attesa riparte da zero", function()
+	Reset()
+	Gateway:SetMode("PREVIEW")
+	Gateway:Propose(Rec("say"), CTX, {})
+	Tick(20)
+	Press()
+	Tick(60)
+	frame.editor.scripts.OnEscapePressed(frame.editor)
+	T.ok(not frame.editor:IsShown(), "editor chiuso")
+	T.ok(Gateway:GetPending() ~= nil, "la proposta non è scaduta mentre si scriveva")
+	Tick(10)
+	T.ok(Gateway:GetPending() ~= nil, "10 s dopo la chiusura è ancora lì")
+	Tick(20)
+	T.eq(Gateway:GetPending(), nil, "scade 25 s dopo la chiusura dell'editor")
+end)
+
+T.run("#4: senza proposta, Invio avvisa invece di non fare nulla", function()
+	Reset()
+	Gateway:SetMode("PREVIEW")
+	Gateway:Propose(Rec("say"), CTX, {})
+	Press()
+	T.ok(frame.editor:IsShown(), "editor aperto")
+	-- la proposta sparisce da sotto (qui: scartata dal comando /au annulla)
+	frame.editor:SetText("Il mio testo scritto a mano")
+	SENT = {}
+	Gateway:Discard()
+	T.ok(not frame.editor:IsShown(), "l'editor si chiude")
+	T.ok(T.sentContains("Il mio testo scritto a mano"), "il testo scritto torna in chat locale: non si perde in silenzio")
+	-- Invio con nessuna proposta
+	SENT = {}
+	HW = true
+	frame.editor:TypeEnter("Testo senza proposta")
+	HW = false
+	T.ok(T.sentContains("Testo senza proposta") and T.sentContains("nulla è stato inviato"), "avviso e testo restituito")
+	for _, s in ipairs(SENT) do T.ok(s:find("^PRINT:"), "nulla in chat pubblica: " .. s) end
+end)
+
+T.run("#4: una richiesta del giocatore sostituisce la proposta ma restituisce il testo; la frase spontanea no", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", nil, "Prima."), CTX, {})
+	T.ok(Narrator:OpenEditor(), "editor aperto")
+	frame.editor:SetText("Qualcosa che sto scrivendo")
+	-- evento spontaneo: non cambia la proposta sotto le dita
+	local shown = Gateway:Propose(Rec("say", nil, "Spontanea."), CTX, { auto = true })
+	T.ok(shown == false, "frase spontanea scartata durante la modifica")
+	T.eq(Gateway:GetPending().text, "Prima.", "la proposta è la stessa")
+	T.ok(frame.editor:IsShown() and frame.editor:GetText() == "Qualcosa che sto scrivendo", "l'editor e il testo sono intatti")
+	-- richiesta esplicita (tasto, comando): la nuova proposta vince, il testo scritto torna in chat locale
+	SENT = {}
+	Gateway:Propose(Rec("say", nil, "Richiesta."), CTX, {})
+	T.eq(Gateway:GetPending().text, "Richiesta.", "la richiesta esplicita sostituisce")
+	T.ok(not frame.editor:IsShown(), "editor chiuso")
+	T.ok(T.sentContains("Qualcosa che sto scrivendo"), "ma il testo scritto non va perso")
+end)
+
+T.run("#17: il mouse sopra il riquadro lo tiene visibile", function()
+	Reset()
+	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})   -- privata: nessuna proposta
+	local remaining = Narrator.remaining
+	-- senza il mouse la frase svanisce
+	Tick(remaining + 2)
+	T.ok(not frame:IsShown(), "senza il mouse svanisce")
+	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
+	remaining = Narrator.remaining
+	frame._s.mouseOver = true
+	Tick(remaining + 10)
+	T.ok(frame:IsShown(), "con il mouse sopra resta visibile oltre la durata")
+	T.ok(Narrator.elapsed <= remaining, "il tempo resta fermo")
+	T.eq(frame:GetAlpha(), NS.db.ui.narrator.alpha, "e non sbiadisce")
+	frame._s.mouseOver = false
+	Tick(3)
+	T.ok(not frame:IsShown(), "tolto il mouse svanisce")
+	-- nessun metodo né funzione globale: il riquadro funziona come prima (falso)
+	T.ok(not NS.Compat:IsMouseOver(nil), "senza frame: falso")
+	T.ok(not NS.Compat:IsMouseOver({}), "senza il metodo: falso")
+	local saved = MouseIsOver
+	MouseIsOver = function() return true end
+	T.ok(NS.Compat:IsMouseOver({}), "ripiego su MouseIsOver se c'è")
+	MouseIsOver = saved
+end)
+
+T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard", function()
+	Reset()
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	local cmd = SlashCmdList.AZEROTHUNSPOKEN
+
+	-- comando: il primo avvisa, il secondo (entro 10 s) attiva
+	SENT = {}
+	cmd("chat auto")
+	T.eq(NS.db.chat.mode, "CONFIRM_TO_SEND", "il primo comando non cambia nulla")
+	T.ok(not NS.db.output.autoPublicSay, "nessun consenso")
+	T.ok(T.sentContains("ATTENZIONE"), "mostra l'avviso")
+	cmd("chat auto")
+	T.eq(NS.db.chat.mode, "AUTO_ONLY_IF_ALLOWED", "il secondo comando entro 10 s attiva")
+	T.ok(NS.db.output.autoPublicSay, "con il consenso")
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	-- scaduto il tempo, serve di nuovo l'avviso
+	cmd("chat auto")
+	ADVANCE(11)
+	cmd("chat auto")
+	T.ok(not NS.db.output.autoPublicSay, "oltre 10 s la conferma non vale: nuovo avviso")
+	cmd("chat conferma")   -- un altro comando disarma
+	cmd("chat auto")
+	T.ok(not NS.db.output.autoPublicSay, "un altro cambio di modalità annulla l'avviso")
+	Gateway:SetMode("CONFIRM_TO_SEND")
+
+	-- pannello: scorrere le modalità non arriva mai all'automatica
+	local function ButtonStarting(prefix)
+		local found
+		for _, b in ipairs(FindWidgets(function(w) return w.kind == "Button" and w.scripts.OnClick end)) do
+			if (b:GetText() or ""):find(prefix, 1, true) == 1 then found = b end
+		end
+		return found
+	end
+	Gateway:SetMode("PRIVATE")
+	local panelButton = ButtonStarting("Chat: ")
+	T.ok(panelButton ~= nil, "riga della modalità chat nel pannello")
+	for _ = 1, 8 do
+		panelButton:Click()
+		T.ok(NS.db.chat.mode ~= "AUTO_ONLY_IF_ALLOWED", "il ciclo del pannello non passa dall'automatica")
+		T.ok(not NS.db.output.autoPublicSay, "né accende il consenso")
+	end
+	-- riga dedicata: due clic
+	local autoRow = ButtonStarting("Invio automatico")
+	T.ok(autoRow ~= nil, "riga 'Invio automatico'")
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	autoRow:Click()
+	T.ok(not NS.db.output.autoPublicSay and Gateway:IsAutoArmed(), "primo clic: avviso e attesa")
+	T.ok(autoRow:GetText():find("clic di nuovo", 1, true), "la riga chiede di cliccare di nuovo")
+	autoRow:Click()
+	T.ok(NS.db.output.autoPublicSay and Gateway:IsAutoActive(), "secondo clic: attivo")
+	autoRow:Click()
+	T.ok(not NS.db.output.autoPublicSay and NS.db.chat.mode == "CONFIRM_TO_SEND", "un altro clic lo spegne e torna a 'conferma'")
+
+	-- wizard, ultimo passo
+	Gateway:SetMode("PRIVATE")
+	NS.db.locale = "it"
+	NS.Wizard:Open()
+	local w = _G.AzerothUnspokenWizard
+	for _ = 1, 5 do w.next:Click() end
+	T.ok(w.title:GetText():find("6 di 6", 1, true), "ultimo passo")
+	local function Find(text)
+		for _, p in ipairs(w.content.children) do
+			for _, x in ipairs(p.children) do
+				if x.kind == "Button" and (x:GetText() or ""):find(text, 1, true) then return x end
+			end
+		end
+	end
+	local auto = Find("automatica")
+	T.ok(auto ~= nil, "pulsante dell'automatica nel wizard")
+	auto:Click()
+	T.eq(NS.db.chat.mode, "PRIVATE", "un clic nel wizard non cambia la modalità")
+	T.ok(not NS.db.output.autoPublicSay, "né dà il consenso")
+	Find("clic di nuovo"):Click()
+	T.ok(NS.db.output.autoPublicSay and NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED", "il secondo clic la attiva")
+	w.skip:Click()
+	Gateway:SetMode("PRIVATE")
+end)
+
+T.run("#8: AUTO senza consenso si comporta come CONFIRM_TO_SEND", function()
+	Reset()
+	Gateway:SetMode("AUTO_ONLY_IF_ALLOWED")
+	P.instance = true
+	Gateway:Propose(Rec("emote", nil, "sorride"), CTX, { auto = true })
+	Gateway:Propose(Rec("say", nil, "Avanti!"), CTX, { auto = true })
+	for _, s in ipairs(SENT) do T.ok(s:find("^PRINT:"), "senza consenso nulla parte da solo: " .. s) end
+	T.ok(Gateway:GetPending() ~= nil, "resta una proposta da confermare")
+	P.instance = false
+end)
+
+T.run("#11: il testo d'aiuto del wizard segue la lingua scelta", function()
+	Reset()
+	NS.db.locale = "it"
+	NS.Wizard:Open()
+	local w = _G.AzerothUnspokenWizard
+	local function HelpText()
+		for _, x in ipairs(w.content.children[1].children) do
+			if x.kind == "FontString" then return x:GetText() end
+		end
+	end
+	T.ok(NS:L("wiz_language_help"):find("In che lingua", 1, true), "testo italiano")
+	T.eq(HelpText(), NS:L("wiz_language_help"), "la pagina mostra l'aiuto in italiano")
+	for _, p in ipairs(w.content.children) do
+		for _, x in ipairs(p.children) do
+			if x.kind == "Button" and (x:GetText() or ""):find("English", 1, true) then x:Click() end
+		end
+	end
+	T.eq(NS.db.locale, "en", "lingua cambiata")
+	T.eq(HelpText(), NS:L("wiz_language_help"), "l'aiuto è nella lingua nuova")
+	T.ok(HelpText():find("Which language", 1, true), "in inglese")
+	w.skip:Click()
+	NS.db.locale = "it"
+end)
+
+T.run("#14: 'Nella chat' copia la proposta nella casella della chat senza inviare", function()
+	Reset()
+	NS.db.locale = "it"
+	P.group = true
+	local opened = {}
+	local saved = ChatFrame_OpenChat
+	ChatFrame_OpenChat = function(text) table.insert(opened, text) end
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", nil, "Per l'onore dei miei avi."), CTX, {})
+	T.ok(frame.copyBtn:IsShown(), "il pulsante c'è se il client offre la casella")
+	frame.copyBtn:Click()
+	T.eq(opened[1], "/s Per l'onore dei miei avi.", "la casella si apre su /s con il testo")
+	T.eq(#SENT, 0, "l'addon non invia nulla: lo fa il giocatore con Invio")
+	T.eq(Gateway:GetPending(), nil, "la proposta si scarta dopo la copia")
+
+	-- emote e canale scelto
+	Gateway:Propose(Rec("emote", nil, "alza lo sguardo."), CTX, {})
+	frame.channelBtn:Click()   -- /e -> /p (con il gruppo)
+	T.eq(Gateway:GetPending().channel, "PARTY", "canale cambiato")
+	frame.copyBtn:Click()
+	T.eq(opened[2], "/p Garrosh alza lo sguardo.", "l'emote in /p porta il nome, come nell'invio diretto")
+	T.eq(#SENT, 0, "ancora nulla inviato")
+
+	-- senza la casella il pulsante si nasconde (GDD §3.8)
+	ChatFrame_OpenChat = nil
+	Gateway:Propose(Rec("say"), CTX, {})
+	T.ok(not frame.copyBtn:IsShown(), "senza ChatFrame_OpenChat il pulsante è nascosto")
+	local ok, why = Gateway:CopyToChat()
+	T.ok(not ok and why == "no_chat_box", "e la funzione lo dichiara")
+	T.ok(Gateway:GetPending() ~= nil, "la proposta resta")
+	ChatFrame_OpenChat = saved
+	P.group = false
+end)

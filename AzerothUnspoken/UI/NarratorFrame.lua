@@ -104,6 +104,8 @@ function Narrator:Layout()
 	frame.bar:SetShown(p ~= nil)
 	if p then
 		frame.channelBtn:SetText(CHANNEL_NAME[p.channel] or p.channel)
+		-- senza una casella della chat da riempire il pulsante non c'è (GDD §3.8)
+		frame.copyBtn:SetShown(NS.Compat:CanOpenChat())
 	end
 end
 
@@ -144,6 +146,7 @@ function Narrator:Refresh()
 	frame.sendBtn:SetText(NS:L("btn_send"))
 	frame.editBtn:SetText(NS:L("btn_edit"))
 	frame.discardBtn:SetText(NS:L("btn_discard"))
+	frame.copyBtn:SetText(NS:L("btn_copy"))
 	self:Layout()
 end
 
@@ -362,6 +365,8 @@ local function Build()
 	frame.channelBtn = Btn("/s", function() NS.Gateway:CycleChannel() end, 60)
 	W.Tooltip(frame.channelBtn, function() return NS:L("tip_channel") end)
 	frame.discardBtn = Btn(NS:L("btn_discard"), function() NS.Gateway:Discard() end, 80)
+	frame.copyBtn = Btn(NS:L("btn_copy"), function() NS.Gateway:CopyToChat() end, 90)
+	W.Tooltip(frame.copyBtn, function() return NS:L("tip_copy") end)
 
 	frame:SetScript("OnUpdate", function(self, dt)
 		Narrator.elapsed = (Narrator.elapsed or 0) + dt
