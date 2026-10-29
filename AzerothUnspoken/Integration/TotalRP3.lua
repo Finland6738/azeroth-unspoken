@@ -8,7 +8,9 @@
 --   - i tratti psicologici pubblici (`characteristics/PS`, quelli che TRP3 mostra agli altri giocatori), mappati sui
 --     tratti del Character Soul: in più serve il consenso del personaggio (`personality.trp3`, /au anima trp3 on).
 -- Non legge note, informazioni fuori dal personaggio, storia o altri campi, né il profilo di altri giocatori
--- (quello è lo step S6c, con un altro consenso), e non scrive mai nulla in TRP3.
+-- (quello è lo step S6c, con un altro consenso), e non scrive mai nulla in TRP3. Unica eccezione, per le relazioni
+-- (S6b): IsKnownPlayer chiede al registro di TRP3 se conosce un giocatore, per proporlo all'utente. Risponde sì/no:
+-- nessun dato del profilo viene letto.
 local ADDON, NS = ...
 local Compat = NS.Compat
 ---@class AUTotalRP3
@@ -92,6 +94,22 @@ function TotalRP3:GetFirstName()
 	first = ok and Compat.Readable(first) or nil
 	if type(first) == "string" and first ~= "" then return first end
 	return nil
+end
+
+---TRP3 conosce questo giocatore (ha il suo profilo nel registro)? Solo presenza: nessun dato letto. Serve a proporlo
+---all'utente nella lista delle persone incontrate (S6b); false senza TRP3, con il modulo spento o se l'API è cambiata.
+---@param unit string
+---@return boolean
+function TotalRP3:IsKnownPlayer(unit)
+	if not (NS.db and NS.db.modules.totalRP3) then return false end
+	local api = type(TRP3_API) == "table" and TRP3_API or nil
+	local getID = api and type(api.utils) == "table" and type(api.utils.str) == "table" and api.utils.str.getUnitID
+	local known = api and type(api.register) == "table" and api.register.isUnitIDKnown
+	if type(getID) ~= "function" or type(known) ~= "function" then return false end
+	local ok, id = pcall(getID, unit)
+	if not ok or type(id) ~= "string" or Compat.IsSecret(id) then return false end
+	local ok2, res = pcall(known, id)
+	return ok2 and res == true
 end
 
 ---Il personaggio ha dato il consenso a leggere i suoi tratti pubblici da TRP3 (e l'integrazione è accesa)?

@@ -3,6 +3,7 @@
 --   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
 --     personality = { version, archetype, traits = { [tratto] = valore }, trp3 }  (Systems/Personality.lua)
 --     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
+--     relationships = { version, npcs = { [npcID] = ... }, players = { ["Nome-Reame"] = ... } }  (Systems/Relationships.lua)
 local ADDON, NS = ...
 ---@class AUConfig
 ---@field SCHEMA_VERSION integer
@@ -14,7 +15,7 @@ local ADDON, NS = ...
 local Config = {}
 NS.Config = Config
 
-Config.SCHEMA_VERSION = 4
+Config.SCHEMA_VERSION = 5
 
 -- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
@@ -58,6 +59,12 @@ Config.CHAT_LIMITS = {
 ---@field publicChatPreview boolean non usato: l'interruttore è modules.publicChat
 ---@field autoPublicSay boolean secondo consenso per l'invio automatico
 
+---@class AURelationSettings
+---@field npcAuto boolean gli NPC si calcolano da soli (gossip, quest, mercante)
+---@field attraction boolean l'asse facoltativo dell'attrazione (spento di base)
+---@field autoRegisterPlayers boolean registra da solo chi si incontra (spento di base: i giocatori li sceglie l'utente)
+---@field proposePlayers boolean propone candidati (gruppo, scambi, profili TRP3, risposte in privato)
+
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
 ---@field preset string complete | personal | world | social | custom
@@ -72,6 +79,7 @@ Config.CHAT_LIMITS = {
 ---@field chance table<string, number> probabilità scelte dall'utente, per evento
 ---@field ignored table<string, boolean>
 ---@field disabledPacks table<string, boolean>
+---@field relations AURelationSettings
 ---@field ui AUUISettings
 
 Config.defaults = {
@@ -82,7 +90,7 @@ Config.defaults = {
 	modules = {
 		personal = true, world = true, npc = true,
 		memory = true, storyArcs = true, social = true,
-		publicChat = true, totalRP3 = true, audio = false,
+		publicChat = true, totalRP3 = true, audio = false, relations = true,
 	},
 	output = {
 		privateNarrator = true,
@@ -113,6 +121,13 @@ Config.defaults = {
 	chance = {},           -- [evento] = probabilità % scelta dall'utente
 	ignored = {},          -- [nome incantesimo minuscolo] = true
 	disabledPacks = {},    -- [id pacchetto] = true
+	-- Relazioni (S6b). I giocatori non entrano in lista senza un'azione dell'utente, salvo autoRegisterPlayers.
+	relations = {
+		npcAuto = true,
+		attraction = false,
+		autoRegisterPlayers = false,
+		proposePlayers = true,
+	},
 	ui = {
 		showButton = true,
 		wizardDone = false,
@@ -133,6 +148,8 @@ Config.characterDefaults = {
 	personality = { version = 1, archetype = "neutral", traits = {}, trp3 = false },
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 1, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
+	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
+	relationships = { version = 1, npcs = {}, players = {} },
 	arcs = {},
 	history = {},
 }
@@ -166,10 +183,10 @@ Config.maps = {
 -- Preset del GDD §4.1: combinazioni dei moduli. publicChat, totalRP3 e audio non cambiano col preset.
 Config.PRESET_ORDER = { "complete", "personal", "world", "social" }
 Config.presets = {
-	complete = { personal = true, world = true, npc = true, memory = true, storyArcs = true, social = true },
-	personal = { personal = true, world = false, npc = false, memory = true, storyArcs = true, social = false },
-	world = { personal = false, world = true, npc = true, memory = true, storyArcs = false, social = false },
-	social = { personal = true, world = false, npc = false, memory = true, storyArcs = false, social = true },
+	complete = { personal = true, world = true, npc = true, memory = true, storyArcs = true, social = true, relations = true },
+	personal = { personal = true, world = false, npc = false, memory = true, storyArcs = true, social = false, relations = true },
+	world = { personal = false, world = true, npc = true, memory = true, storyArcs = false, social = false, relations = true },
+	social = { personal = true, world = false, npc = false, memory = true, storyArcs = false, social = true, relations = true },
 }
 
 ---Applica un preset ai moduli (publicChat, totalRP3 e audio non cambiano).
@@ -314,6 +331,8 @@ Config.migrations = {
 		[3] = function() end,
 		-- 4: nessun cambiamento alle impostazioni (versione allineata a quella del personaggio, che cambia con S6)
 		[4] = function() end,
+		-- 5: nessun cambiamento alle impostazioni esistenti (le nuove, `relations` e il modulo, le aggiunge Merge)
+		[5] = function() end,
 	},
 	character = {
 		[1] = function(db)
@@ -348,6 +367,19 @@ Config.migrations = {
 				return
 			end
 			if m.version == nil then m.version = 1 end
+		end,
+		-- 5: relationships (assente prima di S6b) nasce vuoto con Merge. Una tabella rovinata riparte da zero; le voci
+		-- malformate le scarta Relationships:Sanitize all'avvio e i valori degli assi li riporta nei limiti.
+		[5] = function(db)
+			local r = db.relationships
+			if r == nil then return end
+			if type(r) ~= "table" then
+				db.relationships = nil
+				return
+			end
+			if type(r.npcs) ~= "table" then r.npcs = nil end
+			if type(r.players) ~= "table" then r.players = nil end
+			if type(r.version) ~= "number" then r.version = 1 end
 		end,
 	},
 }

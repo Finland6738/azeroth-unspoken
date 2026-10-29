@@ -74,6 +74,9 @@ for f in ("Data\\RegistryCombat.lua", "Data\\RegistryClasses.lua", "Data\\itIT\\
           "Data\\RegistrySoul.lua", "Data\\itIT\\Soul.lua", "Data\\enUS\\Soul.lua", "Systems\\LivingMemory.lua",
           "UI\\JournalFrame.lua", "Data\\RegistryMemory.lua", "Data\\itIT\\Memory.lua", "Data\\enUS\\Memory.lua"):
     check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2, S5)")
+for f in ("Systems/Relationships.lua", "UI/RelationsFrame.lua", "Data/Relationships.lua", "Data/RegistryRelations.lua",
+          "Data/itIT/Relations.lua", "Data/enUS/Relations.lua", "Data/itIT/RelationsUI.lua", "Data/enUS/RelationsUI.lua"):
+    check(f.replace("/", chr(92)) in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (relazioni, S6b)")
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
@@ -84,8 +87,8 @@ for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Dir
 check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
-check(G.AzerothUnspokenDB.schemaVersion == 4, "schemaVersion globale")
-check(G.AzerothUnspokenCharacterDB.schemaVersion == 4, "schemaVersion per personaggio")
+check(G.AzerothUnspokenDB.schemaVersion == 5, "schemaVersion globale")
+check(G.AzerothUnspokenCharacterDB.schemaVersion == 5, "schemaVersion per personaggio")
 check(G.SlashCmdList.AZEROTHUNSPOKEN is not None, "comando registrato")
 check(G.SLASH_AZEROTHUNSPOKEN1 == "/unspoken" and G.SLASH_AZEROTHUNSPOKEN2 == "/au", "alias /unspoken e /au")
 errors = list(NS.Diagnostics.errors.values())
@@ -103,8 +106,8 @@ ids = val.stats.phrases
 langs = ["it", "en"]
 print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
       f"{len(errors_)} errori, {len(warnings_)} avvisi")
-# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 7 del pacchetto di esempio
-check(ids == 458, f"458 frasi caricate (trovate {ids})")
+# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 7 del pacchetto di esempio
+check(ids == 509, f"509 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -405,7 +408,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory"):
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
@@ -447,7 +450,7 @@ check(lua2.eval("function() return AzerothUnspoken.LivingMemory:HasFlag('first_d
 # b) tre giorni dopo: ritorno nel bosco dove il personaggio è morto
 lua3, ns3 = load_addon(saved_global, saved_char, with_example=False, epoch=epoch1 + 3 * DAY, zone="Durotar")
 g3 = lua3.globals()
-check(lua3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 4, "memoria: schema 4 dopo il caricamento")
+check(lua3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "memoria: schema 5 dopo il caricamento")
 lua3.execute("AzerothUnspoken.db.intensity = 50; AzerothUnspoken.db.chance.zone = 100; AzerothUnspoken.db.chance.memory_return = 100; "
              "AzerothUnspoken.db.pacing.globalCooldownSeconds = 0")
 g3.ADVANCE(10); g3.P.zone = "Teldrassil"; g3.FIRE("ZONE_CHANGED_NEW_AREA")
@@ -480,7 +483,7 @@ check("Teldrassil" in export_text and "Darkshore" in export_text, "memoria: l'es
 
 # c) un personaggio senza dati salvati parte da zero, e dati rovinati non fermano l'avvio
 lua4, ns4 = load_addon(saved_global, '{schemaVersion=3,memories={entries="x",places=7,flags={"a"}}}', with_example=False)
-check(lua4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 4, "memoria: dati rovinati migrati")
+check(lua4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "memoria: dati rovinati migrati")
 check(len(list(ns4.Diagnostics.errors.values())) == 0 or all("memory" not in str(e.message) for e in ns4.Diagnostics.errors.values()),
       "memoria: dati rovinati senza errori fatali")
 print("  ok" if not FAILURES else "")

@@ -1,0 +1,95 @@
+-- Testi in italiano delle frasi di relazione (step S6b). Le regole stanno in Data/RegistryRelations.lua.
+local ADDON, NS = ...
+
+NS:AddTexts("itIT", {
+	["rel.greet.unknown"] = {
+		"Che la strada vi sia lieve, {target}. Non credo di conoscervi.",
+		"Salute a voi. Non ci siamo mai incrociati: il mio nome lo saprete presto.",
+	},
+	["rel.greet.acquaintance"] = {
+		"Ah, voi. Il volto lo ricordo; il nome mi ci vuole un attimo.",
+		"Ci siamo già incontrati, mi pare. Come vanno le cose da queste parti?",
+	},
+	["rel.greet.friend"] = {
+		"Ehi, {target}! Fatti guardare: sei ancora intero, vedo.",
+		"Che bello rivederti. La strada era più lunga, senza qualcuno con cui lagnarsi.",
+	},
+	["rel.greet.friend.old"] = { "Con te non servono le formalità. Siediti, resta un po'." },
+	["rel.greet.comrade"] = {
+		"Fianco a fianco, come sempre. Dimmi dove si va.",
+		"Io e te abbiamo già visto di peggio. Questa sarà una passeggiata.",
+	},
+	["rel.greet.rival"] = {
+		"Eccoti. Vorrei poterti detestare con un po' più di convinzione.",
+		"Mi inchino, rivale: sei l'unico che mi costringe a dare il meglio.",
+	},
+	["rel.greet.lover"] = {
+		"Eccoti. Il resto del mondo può aspettare un istante.",
+		"Il tempo, senza di te, cammina piano.",
+	},
+	["rel.greet.wary"] = {
+		"Vi saluto. Non fraintendete: è cortesia, non fiducia.",
+		"Buon giorno. Teniamo le mani dove si vedono, d'accordo?",
+	},
+	["rel.greet.enemy"] = {
+		"Ci rivediamo. Spero che almeno uno di noi abbia imparato qualcosa.",
+		"Dite ciò che dovete dire, e non indugiate.",
+	},
+	["rel.greet.feared"] = { "Il cuore accelera, ogni volta. Non lascerò che si veda." },
+	["rel.bye.unknown"] = { "Proseguite in pace, e che il sentiero vi riconduca a luoghi più gentili." },
+	["rel.bye.acquaintance"] = { "Ci si vede, allora. Le strade hanno il vizio di tornare a incrociarsi." },
+	["rel.bye.friend"] = {
+		"Vai piano, e fammi sapere se non torni. Non farmi aspettare troppo.",
+		"Sta' attento, d'accordo? Il mondo ha già abbastanza sedie vuote a tavola.",
+	},
+	["rel.bye.comrade"] = { "Che la tua lama resti affilata e la guardia alta. Ci rivediamo al prossimo fronte." },
+	["rel.bye.rival"] = { "Non morire prima di aver perso contro di me. Sarebbe scorretto." },
+	["rel.bye.lover"] = { "Torna presto. Lascerò una candela alla finestra." },
+	["rel.bye.hostile"] = { "Andate. E che la prossima volta ci trovi più saggi, o almeno più lontani." },
+	["rel.thanks.unknown"] = { "Ve ne sono grato. Il vostro nome, un giorno, lo ricorderò." },
+	["rel.thanks.friend"] = { "Grazie. Tra amici non si tiene il conto, ma io lo tengo lo stesso." },
+	["rel.thanks.comrade"] = { "Mi hai coperto le spalle. La prossima volta tocca a me, e non accetto rifiuti." },
+	["rel.thanks.rival"] = {
+		"Grazie. Non dirlo a nessuno: rovinerebbe la reputazione di entrambi.",
+		"Un favore da te... Lo restituirò con gli interessi. Come ogni cosa.",
+	},
+	["rel.thanks.lover"] = { "Grazie. E non solo per questo." },
+	["rel.thanks.wary"] = { "Ne prendo atto. Resto sul chi vive, ma ne prendo atto." },
+	["rel.heal.friend"] = {
+		"Resta fermo, ti rimetto in sesto. Non guardare la ferita: è brutta.",
+		"Coraggio, la luce arriva. E tu, la prossima volta, abbassati.",
+	},
+	["rel.heal.comrade"] = { "Finché avrò fiato, non cadrai." },
+	["rel.heal.lover"] = { "Le mani mi tremano più per te che per lo scontro." },
+	["rel.heal.rival"] = { "Ti curo perché voglio batterti in piena salute. Non montarti la testa." },
+	["rel.heal.enemy"] = { "Curare chi mi ha ferito. Chissà quale dei due dovrebbe vergognarsene." },
+	["rel.heal.unknown"] = { "Non vi conosco, ma una ferita non chiede il nome." },
+	["rel.battle.friend"] = {
+		"Con un amico al fianco, anche questo pesa meno.",
+		"Se cado, avvisa. Se cadi tu, ti prendo io.",
+	},
+	["rel.battle.comrade"] = { "Scudo contro scudo. Ci ricorderanno come un muro." },
+	["rel.battle.lover"] = { "Non guardarmi, guardali. Devo restare lucido, e tu non aiuti." },
+	["rel.battle.rival"] = { "Spero di fare meglio di te, oggi. Per una volta vorrei vincere restando dalla stessa parte." },
+	["rel.battle.enemy"] = { "Combattere accanto a chi ho giurato di non perdonare. Il campo non fa distinzioni." },
+	["rel.battle.known"] = { "stringe l'elsa e sente, accanto a sé, un respiro conosciuto." },
+	["rel.victory.friend"] = { "Ce l'abbiamo fatta. Il primo giro lo offro io, e non è una proposta." },
+	["rel.victory.comrade"] = { "Il campo è nostro. Ricorda il nome di chi ti stava accanto." },
+	["rel.victory.lover"] = { "Illesi, tutti e due. Lo ripeto a me stesso finché ci credo." },
+	["rel.victory.rival"] = { "Ammetto che hai combattuto bene. Non pretendere che lo ripeta." },
+	["rel.npc.acquaintance"] = { "Un volto già visto. Non ci siamo detti molto, ma abbastanza da riconoscerci." },
+	["rel.npc.indifferent"] = { "Ci conosciamo da tempo e non provo nulla, né in un senso né nell'altro. Anche questo è un legame, a suo modo." },
+	["rel.npc.friend"] = {
+		"Rivedere un {relation} fa sempre bene, anche quando non c'è nulla da chiedere.",
+		"Una faccia amica, qui. Mi sento un po' meno lontano da casa.",
+	},
+	["rel.npc.friend.old"] = { "Quante volte ci siamo incrociati, ormai? Abbastanza da non avere più bisogno di parole." },
+	["rel.npc.comrade"] = { "Se un giorno servisse un braccio in più, qui ne trovo uno che non chiederebbe il perché." },
+	["rel.npc.rival"] = { "Un {relation}. È raro che la stima faccia tanto rumore." },
+	["rel.npc.enemy"] = { "Ogni parola, qui, è un passo su ghiaccio sottile. Ricordo ciò che è stato; temo che dall'altra parte nessuno l'abbia dimenticato." },
+	["rel.npc.wary"] = { "Lo sguardo è cortese, la mano resta vicino alla borsa. Vecchie abitudini, e buone ragioni." },
+	["rel.npc.feared"] = { "Parlare qui richiede un coraggio che non ammetterei mai. Scelgo bene le parole." },
+	["rel.npc.lover"] = { "Sorridere, adesso, non costa nulla. Nasconderlo, sì." },
+	["rel.npc.bond"] = { "certi legami non hanno più bisogno di un nome: restano, e basta." },
+	["rel.npc.known"] = { "Non è la prima volta che parliamo, io e questo posto. Alla lunga ci si riconosce." },
+})

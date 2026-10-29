@@ -193,6 +193,10 @@ function NS:BuildContext(extra)
 
 	if Flag(UnitExists, "target") then ReadTarget(ctx) end
 
+	-- le relazioni: il rapporto con la persona dell'interazione (NPC aperto o bersaglio), se l'addon la conosce
+	-- (Systems/Relationships.lua). Il soggetto si può dare con extra.relationSubject = { kind, id }.
+	if self.Relationships then self.Relationships:Context(ctx, extra) end
+
 	for k, v in pairs(extra or {}) do ctx[k] = v end
 
 	if ctx.spell then

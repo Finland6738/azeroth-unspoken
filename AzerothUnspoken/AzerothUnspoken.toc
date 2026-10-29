@@ -37,6 +37,7 @@ Systems\Personality.lua
 Systems\Director.lua
 Systems\Triggers.lua
 Systems\LivingMemory.lua
+Systems\Relationships.lua
 
 # --- interfaccia ---
 UI\Widgets.lua
@@ -45,6 +46,7 @@ UI\SpeakButton.lua
 UI\Wizard.lua
 UI\ProfileFrame.lua
 UI\JournalFrame.lua
+UI\RelationsFrame.lua
 UI\SettingsFrame.lua
 UI\Commands.lua
 
@@ -56,6 +58,7 @@ Data\enUS\Interface.lua
 # prima vocabolario e cornici, poi le regole (Registry*), poi i testi per lingua
 Data\Vocabulary.lua
 Data\Frames.lua
+Data\Relationships.lua
 Data\RegistryCombat.lua
 Data\RegistrySpells.lua
 Data\RegistryLife.lua
@@ -64,6 +67,7 @@ Data\RegistrySocial.lua
 Data\RegistryClasses.lua
 Data\RegistrySoul.lua
 Data\RegistryMemory.lua
+Data\RegistryRelations.lua
 Data\itIT\Combat.lua
 Data\itIT\Spells.lua
 Data\itIT\Life.lua
@@ -80,3 +84,7 @@ Data\itIT\Soul.lua
 Data\enUS\Soul.lua
 Data\itIT\Memory.lua
 Data\enUS\Memory.lua
+Data\itIT\Relations.lua
+Data\enUS\Relations.lua
+Data\itIT\RelationsUI.lua
+Data\enUS\RelationsUI.lua

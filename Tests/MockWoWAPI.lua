@@ -97,16 +97,25 @@ VALID_EVENTS = {}
 for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "ZONE_CHANGED_NEW_AREA",
 	"PLAYER_REGEN_DISABLED", "PLAYER_REGEN_ENABLED", "UNIT_HEALTH", "PLAYER_DEAD", "PLAYER_ALIVE",
 	"PLAYER_UNGHOST", "PLAYER_LEVEL_UP", "PLAYER_TARGET_CHANGED", "UNIT_SPELLCAST_SENT",
-	"UNIT_SPELLCAST_SUCCEEDED", "ADDON_RESTRICTION_STATE_CHANGED" }) do
+	"UNIT_SPELLCAST_SUCCEEDED", "ADDON_RESTRICTION_STATE_CHANGED",
+	-- relazioni (S6b)
+	"GOSSIP_SHOW", "GOSSIP_CLOSED", "QUEST_GREETING", "QUEST_DETAIL", "QUEST_PROGRESS", "QUEST_COMPLETE", "QUEST_FINISHED",
+	"QUEST_ACCEPTED", "QUEST_TURNED_IN", "MERCHANT_SHOW", "MERCHANT_CLOSED", "TAXIMAP_OPENED", "TRAINER_SHOW",
+	"CONFIRM_BINDER", "GROUP_ROSTER_UPDATE", "TRADE_SHOW", "CHAT_MSG_WHISPER_INFORM" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
 
 -- Le funzioni delle unità leggono P per "player" e P.target per "target"; un'unità inesistente dà nil.
 -- Con SECRET_UNITS[unit] i dati di identità sono segreti, come nel client con le restrizioni.
+-- "npc" è l'unità con cui si interagisce (P.npc); party1..4 e raid1..40 vengono da P.party e P.raidMembers
 local function Subject(u)
 	if u == "player" then return P end
 	if u == "target" then return P.target end
+	if u == "npc" then return P.npc end
+	local kind, n = u:match("^(%a+)(%d+)$")
+	if kind == "party" and P.party then return P.party[tonumber(n)] end
+	if kind == "raid" and P.raidMembers then return P.raidMembers[tonumber(n)] end
 	return nil
 end
 local function Identity(u, value)
@@ -114,6 +123,12 @@ local function Identity(u, value)
 	return value
 end
 function UnitName(u) local t = Subject(u); return t and Identity(u, t.name) end
+function UnitFullName(u)
+	local t = Subject(u)
+	if not t then return nil end
+	return Identity(u, t.name), Identity(u, t.realm)
+end
+function GetNormalizedRealmName() return P.realm or "TestRealm" end
 function UnitClass(u)
 	local t = Subject(u)
 	if not t then return nil end
@@ -160,6 +175,22 @@ function UnitGUID(u)
 	return t and Identity(u, t.guid)
 end
 C_Spell = { GetSpellName = function(id) return SPELLS[id] end }
+-- hooksecurefunc come nel client: la funzione originale resta com'è, la nostra parte dopo di lei
+function hooksecurefunc(a, b, c)
+	local target, name, hook = _G, a, b
+	if type(a) == "table" then target, name, hook = a, b, c end
+	local orig = target[name]
+	if type(orig) ~= "function" then error("hooksecurefunc: " .. tostring(name) .. " non è una funzione") end
+	target[name] = function(...)
+		local r = { orig(...) }
+		hook(...)
+		return unpack(r)
+	end
+end
+-- funzioni del mercante, chiamate dai test (gli acquisti, le riparazioni e l'uso degli oggetti delle borse)
+function BuyMerchantItem() end
+function RepairAllItems() end
+C_Container = { UseContainerItem = function() end }
 SPELLS = {}
 C_Timer = {
 	After = function(seconds, f) AddTimer(seconds, f) end,

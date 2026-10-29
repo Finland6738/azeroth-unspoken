@@ -178,6 +178,7 @@ NS:RegisterLanguage("it", {
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
 			.. "/au anima [lista|neutro|archetipo <id>|trp3 on|off|<tratto> <valore>|evita <argomento>] - personalità del personaggio\n"
 			.. "/au diario [lista|luoghi|flag <nome>|esporta|permanente <n>|elimina <n>|dimentica <luogo>|reset] - memoria e diario del personaggio\n"
+			.. "/au relazioni [lista|persone|aggiungi <nome>|nota <nome> <testo>|esporta|...] - relazioni con NPC e giocatori\n"
 			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | vittoria | preghiera | ringrazia | scherzo\n"
 			.. "/au evento <nome> - propone una frase per un evento (battle, zone, muse...)\n"
 			.. "/au incanta <incantesimo> - frase per un incantesimo (utile nelle macro)\n"

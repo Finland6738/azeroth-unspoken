@@ -81,6 +81,18 @@ local SPECIAL = {
 		end
 		return false
 	end,
+	-- relazioni (S6b, Systems/Relationships.lua): ctx.relation, ctx.disposition e ctx.rel descrivono il rapporto con
+	-- la persona dell'interazione (NPC aperto o bersaglio); senza di essa ogni condizione di relazione vale "falsa",
+	-- tranne `isKnown = false`. Le condizioni <asse>Min/<asse>Max si creano con Engine.RegisterRelationAxis.
+	isKnown = function(v, ctx) return (ctx.isKnown == true) == v end,
+	withRelation = function(v, ctx)
+		local g = ctx.groupRelations
+		if type(g) ~= "table" then return false end
+		for _, name in ipairs(AsList(v)) do
+			if g[name] then return true end
+		end
+		return false
+	end,
 	chance   = function(v) return math.random(100) <= v end,
 	func     = function(v, ctx)
 		local ok, res = pcall(v, ctx)
@@ -143,6 +155,8 @@ Engine.CONDITIONS = {
 	-- memoria (Systems/LivingMemory.lua)
 	firstVisit = "bool", repeatVisit = "bool", lastVisitBad = "boolstr", visitsMin = "num", visitsMax = "num",
 	daysSinceLastVisit = "numrange", remembered = "str",
+	-- relazioni (Systems/Relationships.lua); gli assi aggiungono <asse>Min e <asse>Max
+	relation = "str", disposition = "str", relationKind = "str", isKnown = "bool", withRelation = "str",
 	-- operatori
 	chance = "pct", func = "func", ["not"] = "group", any = "subs",
 }
@@ -156,7 +170,52 @@ Engine.CONDITION_VALUES = {
 	group = { solo = true, party = true, raid = true },
 	instanceType = { none = true, party = true, raid = true, pvp = true, arena = true, scenario = true },
 	depth = Engine.DEPTHS,
+	-- si riempiono quando i dati delle relazioni (Data/Relationships.lua) registrano etichette e disposizioni
+	relation = {}, disposition = {}, withRelation = {},
+	relationKind = { npc = true, player = true },
 }
+
+-- condizioni che dipendono da una relazione (ctx.relation e simili)
+Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
+	withRelation = true }
+
+---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
+---dell'NPC dell'interazione: ctx.rel[asse]).
+---@param axis string
+function Engine.RegisterRelationAxis(axis)
+	if type(axis) ~= "string" or not axis:match("^[a-z]+$") then return end
+	SPECIAL[axis .. "Min"] = function(v, ctx)
+		local r = ctx.rel
+		return type(r) == "table" and type(r[axis]) == "number" and r[axis] >= v
+	end
+	SPECIAL[axis .. "Max"] = function(v, ctx)
+		local r = ctx.rel
+		return type(r) == "table" and type(r[axis]) == "number" and r[axis] <= v
+	end
+	Engine.CONDITIONS[axis .. "Min"], Engine.CONDITIONS[axis .. "Max"] = "num", "num"
+	Engine.RELATION_CONDITIONS[axis .. "Min"], Engine.RELATION_CONDITIONS[axis .. "Max"] = true, true
+end
+
+---Le condizioni garantiscono una persona con cui si ha un rapporto? Come UsesMemory: una chiave di relazione al
+---livello superiore (non `isKnown = false`), oppure `any` dove ogni gruppo ne ha una. Serve al validatore per le
+---frasi degli eventi che citano un rapporto.
+---@param when? table
+---@return boolean
+function Engine.UsesRelation(when)
+	if type(when) ~= "table" then return false end
+	for k, v in pairs(when) do
+		if Engine.RELATION_CONDITIONS[k] then
+			if not (v == false) and k ~= "withRelation" then return true end
+		elseif k == "any" and type(v) == "table" and #v > 0 then
+			local all = true
+			for _, sub in ipairs(v) do
+				if not Engine.UsesRelation(sub) then all = false; break end
+			end
+			if all then return true end
+		end
+	end
+	return false
+end
 
 -- condizioni che dipendono da un ricordo (ctx.memory)
 Engine.MEMORY_CONDITIONS = { firstVisit = true, repeatVisit = true, lastVisitBad = true, visitsMin = true,

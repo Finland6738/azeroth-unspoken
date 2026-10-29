@@ -34,7 +34,7 @@ local CHANNELS = {
 }
 
 -- ingombro massimo, in byte, dei segnaposto dinamici (nomi lunghi, nella lingua più prolissa)
-Validator.WORST = { player = 12, target = 40, spell = 40, zone = 40, subzone = 40, level = 3, class = 20,
+Validator.WORST = { relation = 40, player = 12, target = 40, spell = 40, zone = 40, subzone = 40, level = 3, class = 20,
 	race = 20, faction = 10, targettype = 16 }
 
 -- livelli dei problemi emersi in caricamento (Engine.loadIssues)
@@ -297,6 +297,16 @@ function Validator:Run(opts)
 					if NS.LivingMemory.recalls[ev] and not Engine.UsesMemory(p.when) then
 						Add("error", "recallWithoutMemory", p.pack, id, nil,
 							("evento di richiamo '%s' senza una condizione di memoria"):format(ev))
+						break
+					end
+				end
+			end
+			-- eventi che citano una persona (relation_npc): la frase dichiara la condizione che garantisce il rapporto
+			if NS.Relationships then
+				for _, ev in ipairs(p.events) do
+					if NS.Relationships.recalls[ev] and not Engine.UsesRelation(p.when) then
+						Add("error", "relationWithoutRelation", p.pack, id, nil,
+							("evento '%s' senza una condizione di relazione (relation, isKnown, disposition...)"):format(ev))
 						break
 					end
 				end

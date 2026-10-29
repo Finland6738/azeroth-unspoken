@@ -353,7 +353,7 @@ T.run("il database di base ha le tre voci e tutte le profondità", function()
 			if p.speaker == "inner" then T.eq(p.form, "say", p.id .. ": il pensiero non è un'emote") end
 		end
 	end
-	T.eq(base, 451, "367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria")
+	T.eq(base, 502, "367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni")
 	T.ok(by.inner >= 80 and by.narrator >= 19 and by.character >= 250, "voci: " .. by.inner .. "/" .. by.narrator .. "/" .. by.character)
 	T.eq(by.npc, 0, "nessuna voce NPC finché non c'è NPC Alive")
 end)
