@@ -203,6 +203,14 @@ local function InEnum(list, v)
 	return false
 end
 
+-- "itIT" -> "it", "de" -> "de"; nil se non ha la forma di un codice lingua
+function Config:ShortLocale(v)
+	if type(v) ~= "string" then return nil end
+	if v:match("^[a-z][a-z]$") then return v end
+	if v:match("^[a-z][a-z][A-Z][A-Z]$") then return v:sub(1, 2) end
+	return nil
+end
+
 -- "itIT", "IT", "enUS" -> "it", "en" se la lingua è registrata
 function Config:NormalizeLocale(v)
 	if type(v) ~= "string" then return nil end
@@ -246,7 +254,11 @@ function Config:Validate(settings, defaults, prefix, issues)
 			local rule = self.rules[path]
 			local fixed = v
 			if rule then fixed = CheckRule(rule, v) end
-			if path == "locale" then fixed = self:NormalizeLocale(v) end
+			if path == "locale" then
+				fixed = self:NormalizeLocale(v)
+				-- una lingua che un pacchetto esterno registrerà dopo: si ricorda e si ripristina in RegisterLanguage
+				if fixed == nil and type(v) == "string" then self.pendingLocale = self:ShortLocale(v) end
+			end
 			if fixed == nil then
 				settings[k] = def
 				table.insert(issues, ("%s: %s -> %s"):format(path, tostring(v), tostring(def)))

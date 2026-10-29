@@ -78,6 +78,7 @@ V:RegisterPack({
 	},
 
 	-- 5) Traduzioni o frasi in più per ids di altri pacchetti (anche di quello di base): si aggiungono come varianti.
-	--    Per rendere selezionabile una lingua nuova serve anche V:RegisterLanguage("de", { name = "Deutsch", ui = {...} }).
-	-- texts = { deDE = { ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!" } },
+	--    Per esempio, dentro `texts` qui sopra si può aggiungere una tabella `deDE` con
+	--    ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!"
+	--    Per rendere selezionabile la lingua nuova serve anche V:RegisterLanguage("de", { name = "Deutsch", ui = {...} }).
 })

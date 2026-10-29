@@ -4,7 +4,7 @@ Uso: python -I -X utf8 Tests/run_tests.py [cartella addon]
      (predefinita: AzerothUnspoken accanto alla cartella Tests)
 Esce con codice 1 se un controllo fallisce.
 """
-import re, sys, os
+import re, subprocess, sys, os
 from lupa import lua51
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -351,6 +351,16 @@ for name in ("TestCompat", "TestConfig", "TestEventBus", "TestChatGateway", "Tes
     print(f"  {name}: {t.passed} superati, {t.failed} falliti")
     for f in t.failures.values():
         check(False, f"{name}: {f}")
+
+# 10) funzioni ed eventi usati contro il dump delle API di Forever (saltato con un avviso se il dump non c'è)
+print("\nAPI DI FOREVER")
+proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"),
+                       os.path.join(ADDON), os.path.join(EXAMPLE)], capture_output=True, text=True, encoding="utf-8")
+print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n")))
+if proc.stdout.startswith("SALTATO"):
+    print("  AVVISO: controllo delle API saltato (dump non trovato)")
+else:
+    check(proc.returncode == 0, "check_api.py: funzioni ed eventi usati presenti nel dump (o con eccezione motivata)")
 
 print("\n" + ("TUTTI I CONTROLLI SUPERATI" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
 sys.exit(1 if FAILURES else 0)

@@ -186,6 +186,22 @@ Questa modalità fa scrivere l'addon da solo **solo emote** e, nelle istanze, `/
 
 ---
 
+## S3: i testi e il validatore (aggiunto dallo step S3)
+
+Poca roba, ma solo il client vero può dire che i file dei testi (UTF-8) e il comando si comportano come fuori dal gioco.
+
+17. Scrivi `/au valida`.
+    - **Cosa aspettarti:** `Validatore: 428 frasi in 9 pacchetti, 860 varianti: 0 errori, 0 avvisi.` e `Nessun problema trovato.`
+    - **Cosa riportare:** il numero di errori e avvisi, e le righe che compaiono se non sono zero. Con il pacchetto di esempio spento (`/au pacchetto example off`) le frasi sono 421.
+18. Scrivi `/au info`, poi `/au lingua it` e `/au prova zone`, quindi `/au lingua en` e `/au prova zone`.
+    - **Cosa aspettarti:** `428 frasi disponibili in Italiano`; le frasi di prova con **le lettere accentate giuste** (à è ì ò ù, «virgolette») in italiano e in inglese.
+    - **Cosa riportare:** lettere sbagliate (per esempio `Ã¨` al posto di `è`): vuol dire che un file dei testi non è letto come UTF-8.
+19. Con `/au profondita naturale`, poi `elevato`, scrivi qualche volta `/au prova battle`.
+    - **Cosa aspettarti:** con *naturale* escono più battute dirette, con *elevato* più frasi ornate. La differenza è di probabilità, non una regola netta.
+    - **Cosa riportare:** se non noti nessuna differenza dopo una ventina di prove (è un'informazione utile, non un errore).
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -201,6 +217,7 @@ SP-05 B (conferma) ...... Invia ok? ___  scade ok? ___  Modifica ok? ___  canali
 SP-05 C (tasto) ......... conferma ok? ___  pausa ok? ___
 SP-05 D (anteprima) ..... ok? ___
 SP-05 E (auto) .......... emote da sole? ___  /say da solo nel mondo aperto? (deve essere NO) ___
+S3 /au valida ........... errori ___  avvisi ___  accenti giusti (IT/EN)? ___  profondità: differenza notata? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

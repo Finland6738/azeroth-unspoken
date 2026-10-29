@@ -85,6 +85,22 @@ T.run("validazione", function()
 	Config:Load()
 	T.eq(NS.db.locale, "it", "lingua sconosciuta")
 
+	-- una lingua registrata da un pacchetto esterno dopo il caricamento resta quella scelta (issue #7)
+	AzerothUnspokenDB = { schemaVersion = 2, settings = { locale = "de" } }
+	Config:Load()
+	T.eq(NS.db.locale, "it", "al caricamento 'de' non è ancora registrata")
+	T.eq(NS:Lang(), "it", "NS:Lang ripiega sull'italiano finché la lingua manca")
+	NS:RegisterLanguage("de", { name = "Deutsch", ui = {} })
+	T.eq(NS.db.locale, "de", "registrata dal pacchetto: torna quella scelta")
+	T.eq(NS:Lang(), "de", "NS:Lang la usa")
+	NS.db.locale = "fr"
+	T.eq(NS:Lang(), "it", "una lingua non registrata non rompe NS:Lang")
+	NS:RegisterLanguage("fr", { name = "Français", ui = {} })
+	T.eq(NS.db.locale, "fr", "una lingua scelta a mano resta com'è")
+	T.eq(Config:ShortLocale("deDE"), "de", "ShortLocale deDE")
+	T.ok(Config:ShortLocale("DE") == nil and Config:ShortLocale(3) == nil, "ShortLocale non accetta altro")
+	NS.db.locale = "it"
+
 	-- regole del Chat Gateway e del narratore, su dati già nello schema 2
 	AzerothUnspokenDB = { schemaVersion = 2, settings = {
 		chat = { mode = "megafono", channel = "telepatia", floodSeconds = 500, maxPerMinute = 0, autoMaxPerMinute = 99 },
