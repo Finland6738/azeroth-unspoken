@@ -2,7 +2,7 @@
 -- Copia questa cartella, rinominala e modifica: il motore non va toccato.
 -- Il pacchetto mostra come aggiungere un evento, frasi con più varianti, condizioni anche scritte in Lua,
 -- luoghi precisi, varianti per profondità e traduzioni di frasi di altri pacchetti. La guida completa
--- è AzerothUnspoken/FORMATO_PACCHETTI.md; con /au valida il validatore controlla il pacchetto.
+-- è AzerothUnspoken/PACK_FORMAT.md; con /au valida il validatore controlla il pacchetto.
 local V = AzerothUnspoken
 
 -- 1) Un tipo di incantesimo nuovo: quando lanci un incantesimo il cui nome contiene "fishing" o "pesca",

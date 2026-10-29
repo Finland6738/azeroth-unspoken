@@ -1,75 +1,80 @@
-# Documentazione di Azeroth Unspoken
+# Azeroth Unspoken Documentation
 
-Indice di tutto ciò che si trova in `docs/` e dei documenti collegati nella radice del progetto. **La fonte autorevole della documentazione è questa cartella**, versionata insieme al codice ([ADR 0013](adr/0013-wiki-github.md)).
+Index of everything in `docs/` and of the related documents in the project root. **The authoritative source of the documentation is this folder**, versioned together with the code ([ADR 0013](adr/0013-github-wiki.md)).
 
-La documentazione descrive solo ciò che esiste su `main` o che è pianificato in [ROADMAP.md](../ROADMAP.md); le parti pianificate sono indicate come tali.
+**The documentation is in English**, except for two files, which are in Italian:
 
-## Per chi usa l'addon
+- [G1_checklist.md](G1_checklist.md): the in-game checklist for the Italian-speaking tester;
+- [Immersion_Director_GDD_v1.0.md](Immersion_Director_GDD_v1.0.md): the original design spec, a historical source.
 
-| Documento | Contenuto |
+The documentation describes only what exists on `main` or is planned in [ROADMAP.md](../ROADMAP.md); the planned parts are marked as such.
+
+## For those who use the addon
+
+| Document | Contents |
 |---|---|
-| [README.md](../README.md) · [README.en.md](../README.en.md) | che cosa fa, requisiti, installazione, primo avvio, comandi, impostazioni, privacy, Total RP 3 |
-| [G1_checklist.md](G1_checklist.md) | lista di controllo per provare l'addon nel client vero (spike SP-01…SP-05) |
-| [CHANGELOG.md](../CHANGELOG.md) | modifiche rilevanti per versione |
+| [README.md](../README.md) (English) · [README.it.md](../README.it.md) (Italian) | what it does, requirements, installation, first start, commands, settings, privacy, Total RP 3 |
+| [G1_checklist.md](G1_checklist.md) (in Italian) | checklist for testing the addon in the real client (spikes SP-01…SP-05) |
+| [CHANGELOG.md](../CHANGELOG.md) | notable changes by version |
 
-## Per chi scrive frasi e pacchetti
+## For those who write phrases and packs
 
-| Documento | Contenuto |
+| Document | Contents |
 |---|---|
-| [AzerothUnspoken/FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md) | formato dei pacchetti: frasi, eventi, condizioni, segnaposto, vocabolario, cornici, lingue |
-| [CONTRIBUTING.md](../CONTRIBUTING.md) | come scrivere frasi buone (regole di qualità), pacchetti, test, stile, PR |
-| `AzerothUnspoken_Example/` | pacchetto di esempio da copiare |
+| [AzerothUnspoken/PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md) | pack format: phrases, events, conditions, placeholders, vocabulary, frames, languages |
+| [CONTRIBUTING.md](../CONTRIBUTING.md) | how to write good phrases (quality rules), packs, tests, style, PRs, and the language policy |
+| `AzerothUnspoken_Example/` | example pack to copy |
 
-## Per chi sviluppa
+## For developers
 
-| Documento | Contenuto |
+| Document | Contents |
 |---|---|
-| [ARCHITETTURA.md](ARCHITETTURA.md) | moduli e responsabilità, flusso di un evento, dati e SavedVariables, punti di estensione (con diagrammi Mermaid) |
-| [adr/README.md](adr/README.md) | le decisioni di progetto (ADR), con indice |
-| [RIFERIMENTI.md](RIFERIMENTI.md) | fonti tecniche per WoW Forever e il dump delle API |
-| [../ROADMAP.md](../ROADMAP.md) | milestone, step, stato di avanzamento, note tra uno step e l'altro |
-| [../CONTRIBUTING.md](../CONTRIBUTING.md) | regole di lavoro, test, stile Lua ed EmmyLua, git |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | modules and responsibilities, flow of an event, data and SavedVariables, extension points (with Mermaid diagrams) |
+| [adr/README.md](adr/README.md) | the project decisions (ADRs), with an index |
+| [REFERENCES.md](REFERENCES.md) | technical sources for WoW Forever and the API dump |
+| [../ROADMAP.md](../ROADMAP.md) | milestones, steps, progress status, notes between one step and the next |
+| [../CONTRIBUTING.md](../CONTRIBUTING.md) | working rules, tests, Lua and EmmyLua style, git |
 
-## Specifica di prodotto
+## Product specification
 
-| Documento | Contenuto |
+| Document | Contents |
 |---|---|
-| [Immersion_Director_GDD_v1.0.md](Immersion_Director_GDD_v1.0.md) | il Game Design Document. Il prodotto lì si chiama "Immersion Director"; oggi è **Azeroth Unspoken**. Dove GDD e roadmap non coincidono, vale la roadmap |
+| [Immersion_Director_GDD_v1.0.md](Immersion_Director_GDD_v1.0.md) (in Italian) | the Game Design Document. The product is called "Immersion Director" there; today it is **Azeroth Unspoken**. Where the GDD and the roadmap disagree, the roadmap wins |
 
-## Decisioni di progetto (ADR)
+## Project decisions (ADRs)
 
-| N. | Decisione |
+| No. | Decision |
 |---|---|
-| [0001](adr/0001-motore-e-database-narrativo-separati.md) | Motore e database narrativo separati, con frasi curate e non generate |
-| [0002](adr/0002-tutto-offline-senza-ia.md) | Tutto offline, senza intelligenza artificiale |
-| [0003](adr/0003-narratore-privato-e-chat-gateway.md) | Narratore privato e Chat Gateway |
-| [0004](adr/0004-total-rp-3-facoltativo-con-adattatore.md) | Total RP 3 facoltativo, con adattatore |
-| [0005](adr/0005-compat-valori-segreti-ed-eventi-difensivi.md) | Compat, valori segreti, eventi difensivi |
-| [0006](adr/0006-savedvariables-e-versioni-dello-schema.md) | SavedVariables e versioni dello schema |
-| [0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md) | Test fuori dal gioco con lupa e mock |
-| [0008](adr/0008-fine-riga-lf.md) | Fine riga LF |
-| [0009](adr/0009-flusso-git-branch-pr-squash.md) | Flusso git: branch, PR, squash merge |
-| [0010](adr/0010-dump-api-di-forever-come-riferimento.md) | Dump delle API di Forever come riferimento |
-| [0011](adr/0011-nome-azeroth-unspoken.md) | Il nome Azeroth Unspoken |
-| [0012](adr/0012-lingue-scelte-dall-utente.md) | Lingue scelte dall'utente |
-| [0013](adr/0013-wiki-github.md) | La wiki di GitHub |
-| [0014](adr/0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) | Bus di eventi, moduli isolati, Director |
-| [0015](adr/0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, peso W, stile |
-| [0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in, affinità morbida e filtri rigidi, Total RP 3 con consenso |
-| [0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale |
-| [0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente |
-| [0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID |
-| [0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md) | NPC Alive: un dialogo simulato non è un dialogo reale |
-| [0021](adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md) | Story Arcs: micro-storie che non toccano il gioco |
+| [0001](adr/0001-engine-and-narrative-database-separated.md) | Engine and narrative database kept separate, with curated rather than generated lines |
+| [0002](adr/0002-fully-offline-no-ai.md) | Fully offline, no artificial intelligence |
+| [0003](adr/0003-private-narrator-and-chat-gateway.md) | Private narrator and Chat Gateway |
+| [0004](adr/0004-total-rp-3-optional-with-adapter.md) | Total RP 3 optional, through an adapter |
+| [0005](adr/0005-compat-secret-values-and-defensive-events.md) | Compat, secret values, defensive events |
+| [0006](adr/0006-savedvariables-and-schema-versions.md) | SavedVariables and schema versions |
+| [0007](adr/0007-offline-tests-with-lupa-and-mock.md) | Offline tests with lupa and a mock |
+| [0008](adr/0008-lf-line-endings.md) | LF line endings |
+| [0009](adr/0009-git-flow-branch-pr-squash.md) | Git flow: branch, PR, squash merge |
+| [0010](adr/0010-forever-api-dump-as-reference.md) | The Forever API dump as a reference |
+| [0011](adr/0011-name-azeroth-unspoken.md) | The name Azeroth Unspoken |
+| [0012](adr/0012-languages-chosen-by-user.md) | Languages chosen by the user |
+| [0013](adr/0013-github-wiki.md) | The GitHub wiki |
+| [0014](adr/0014-normalized-event-bus-and-isolated-modules.md) | Event bus, isolated modules, Director |
+| [0015](adr/0015-narrative-director-one-intervention-per-moment.md) | Narrative Director: one intervention per moment, weight W, style |
+| [0016](adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md) | Character Soul: opt-in traits, soft affinity and hard filters, Total RP 3 with consent |
+| [0017](adr/0017-living-memory-selective-memories-and-honest-recall.md) | Living Memory: selective memories, honest recall, manual journal |
+| [0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md) | Relationships: independent axes, labels as data, automatic NPCs, players chosen by the user |
+| [0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md) | Interlocutor and place: sources in priority order, weak tendencies, places by uiMapID |
+| [0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md) | NPC Alive: a simulated dialogue is not a real dialogue |
+| [0021](adr/0021-story-arcs-micro-stories-without-game-effects.md) | Story Arcs: micro-stories that do not touch the game |
 
-## Archivio
+## Archive
 
-`archive/VociDiAzeroth*/` contiene il prototipo originale, conservato solo come riferimento storico. La sua guida ai pacchetti (`archive/VociDiAzeroth/FORMATO_PACCHETTI.md`) è **superata** da quella di `AzerothUnspoken/`.
+`archive/VociDiAzeroth*/` contains the original prototype, kept only as a historical reference. Its pack guide (`archive/VociDiAzeroth/FORMATO_PACCHETTI.md`) is **superseded** by the one in `AzerothUnspoken/`.
 
-## Convenzioni della documentazione
+## Documentation conventions
 
-- In italiano; il README pubblico ha anche una versione inglese.
-- File Markdown con fine riga LF ([ADR 0008](adr/0008-fine-riga-lf.md)).
-- I diagrammi sono in [Mermaid](https://mermaid.js.org/), che GitHub mostra direttamente.
-- Una modifica che cambia un comportamento aggiorna anche la documentazione e il [CHANGELOG](../CHANGELOG.md) nella stessa PR.
-- Ciò che non è stato provato nel client vero si dice esplicitamente.
+- Written in English (see the "Language" section of [CONTRIBUTING.md](../CONTRIBUTING.md#language)); the only exceptions are the two Italian files listed at the top. The public README also has an Italian version (`README.it.md`).
+- Markdown files with LF line endings ([ADR 0008](adr/0008-lf-line-endings.md)).
+- Diagrams are in [Mermaid](https://mermaid.js.org/), which GitHub renders directly.
+- A change that alters a behavior also updates the documentation and the [CHANGELOG](../CHANGELOG.md) in the same PR.
+- What has not been tested in the real client is stated explicitly.

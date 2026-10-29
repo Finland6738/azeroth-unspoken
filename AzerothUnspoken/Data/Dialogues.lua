@@ -2,7 +2,7 @@
 -- dice l'NPC) e le risposte del giocatore (che cosa si può scegliere, dove porta, che flag e che relazione tocca).
 -- Le battute stanno in Data/RegistryDialogues.lua (regole) e Data/itIT|enUS/Dialogues.lua (testi): qui solo il
 -- copione. Un pacchetto può aggiungerne con NS:RegisterDialogues{ scripts = { ... } } (stessa forma, vedi
--- FORMATO_PACCHETTI.md, «Dialoghi ambientali»).
+-- PACK_FORMAT.md, «Dialoghi ambientali»).
 --
 -- Regole (GDD §7.3):
 --   - da 1 a 3 risposte per nodo; le risposte sono NEUTRE: domande e azioni (che cosa si chiede, che cosa si fa), mai un

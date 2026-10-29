@@ -1,0 +1,41 @@
+# 0020. NPC Alive: a simulated dialogue is not a real dialogue
+
+- Status: Accepted
+- Date: 2026-10-29 (step S8; GDD §5.3, §7.3, §21-B; ADR 0003, 0004, 0005, 0015, 0017, 0018, 0019)
+
+## Context
+
+The GDD (§7.3) calls for "local micro-dialogues" with identifiable real NPCs or with archetypes: one window, one to three replies, immediate closing. The risk is confusing what the addon makes up with what the game or another player actually says. If an innkeeper's line appears in chat, or looks like Blizzard's gossip window, the player may believe it is the real NPC, and that they received an assignment, a discount, a piece of information. If the window covers the merchant window, or the addon calls a gossip or quest function, it disturbs the game. And if we guess who an NPC is, we attribute to a person lines that are not theirs (for example those of an innkeeper to someone who is only a passer-by).
+
+The project constraints are already clear: nothing in public chat without a player action ([ADR 0003](0003-private-narrator-and-chat-gateway.md)), no decisions on secret values ([ADR 0005](0005-compat-secret-values-and-defensive-events.md)), an NPC's role is not guessed ([ADR 0019](0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)).
+
+## Decision
+
+1. **An ambient dialogue is always declared simulated.** The window (`UI/DialogueFrame.lua`) carries at the top, on a band of a different color from the rest, the label **"dialogo ambientale dell'addon"** (in English *addon ambient dialogue*), with a hint saying that these are not the real NPC's words, that they do not appear in chat and that they do not change quests, trade or other windows. A dialogue with the test NPC also says so in the title. The dialogue text never looks like an NPC message (`CHAT_MSG_MONSTER_*`): no line is written to chat, neither in the narrator nor in the history.
+2. **Never interfere with Blizzard.** The addon does not call gossip, quest, trade, flight or training functions; it does not hide or move Blizzard windows; it does not register in `UISpecialFrames` (Esc would also close the NPC's windows). The window is placed where it **does not cover** the visible Blizzard windows (`GossipFrame`, `QuestFrame`, `MerchantFrame`, `TaxiFrame`, `ClassTrainerFrame`, `BankFrame`, `TradeFrame`, the bags...: they are read only if they exist, with `GetRect`), tries several positions (the one chosen by the user, to the right, at the top, at the bottom right) and every half second moves if a window opens underneath. Over a quest the offer disappears; during a cinematic, in combat or when dead there is no dialogue.
+3. **The player always decides.** A dialogue starts only from a gesture: the button of an offer, `/au npc`, the assigned key. The **offer** (a small "Listen" button, `autoOffer`) appears by itself on a valid interaction, expires after 20 seconds, at most once every three minutes per NPC and window, and is absent with intensity at 0 or when paused; dialogues opened by hand always remain possible (GDD §4.2). The **replies** are neutral: questions and actions ("Che notizie corrono?" / "What news is going round?", "Mi fermo un momento." / "I will stop a while."), never a feeling, a character trait or a moral decision attributed to the character, never a commitment; there are at most three and it can be closed at any time with the x.
+4. **State machine** `idle → offered → opened → choice → response → ended` (`Systems/NPCAlive.lua`), with the allowed transitions in a table and out-of-order ones rejected. `opened` is the opening of the window with the opening line, `choice` the wait for the choice, `response` the NPC's reply (with further replies it returns to `choice`, without any it closes). `ended` records the reason: `closed`, `finished`, `offer_expired`, `idle` (120 s without a choice), `combat`, `death`, `zone`, `npc_changed`, `quest_open`, `no_line`, `disabled`.
+5. **Identity**: no dialogue if it is uncertain or secret.
+   - **Specific NPC**: the `npcID` taken from the GUID is in the curated registry `Data/NPCs.lua` (or the user gave it a role with `/au npc ruolo` or `/au chi tratto role`).
+   - **Archetype** (innkeeper, merchant, flight master, trainer): only from the **current interaction** that proves it (merchant, flight, training, innkeeper setting the home) or from one that has already happened with the same NPC in the session. Gossip alone is not enough; the role is never derived from the name or the appearance.
+   - **Never** with players, hostile creatures, dead NPCs, secret identity (`C_Secrets`), missing or unreadable GUID.
+6. **The NPC's voice** is made of engine rules (`speaker = "npc"`, events `npcd_<role>_<node>`) chosen by `Engine:PickEntry` with the interlocutor context (way of speaking, temperament, role) and the relationship context (known or not): same weights, same anti-repetition, same validator as the other lines. They come out only inside a dialogue (a guard on the event): neither `/au evento` nor the Director can produce them. With a window open the spontaneous narrator stays silent (`SetRhythm("npcalive")`).
+7. **Local, limited and declared effects.** A reply can set a **narrative flag** (`npcd_<archetype>_<name>`, S6 memory: it serves later lines with `remembered`) and move the relationship with the NPC slightly (sources `ambient` and `ambient_talk` of `Data/Relationships.lua`, with daily caps; it does not count as a new interaction). A conversation with at least one reply leaves an `npc_talk` memory (importance 2 the first time, 1 afterwards): only role, place and tags, **never** the text, the name or the `npcID`. Never a quest, an item, a price, an effect on the game. The test NPC (`/au npc prova`) writes nothing.
+8. **Content**: the lines do not mention prices, quests or news facts, do not promise what the game will not deliver (discounts, rooms, goods) and do not claim to be the real NPC's words. The scripts (nodes, replies, flags) are data in `Data/Dialogues.lua`, checked by `NPCAlive:Check()` and by the validator (`badDialogue`).
+
+## Alternatives considered
+
+- **Fallback to local chat** (the lines as NPC messages with a prefix): rejected. It looks too much like a real message and ends up in the chat history.
+- **Putting a button inside Blizzard's gossip window**: rejected. It would mean modifying or anchoring something to its windows, which change from one build to another.
+- **Guessing the archetype from the name or the gossip options**: rejected. An innkeeper is one because of their role, not because of their name; the true role is told by the registry, the interaction or the user.
+- **Free replies or replies written by the player**: rejected for now; neutral replies are enough not to put words in the character's mouth. An editable reply will be evaluated together with social play (S10).
+- **A separate factor for each specific NPC**: rejected. A registry NPC's lines are rules with `other = { npcID = … }` and greater weight; the state machine is the same.
+
+## Consequences
+
+- Positive: the player always knows what is invented and what is real; Blizzard is not touched; an uncertain identity never produces false lines; the voices of a gruff and a jovial innkeeper are distinguishable and vary without repeating; the data model (scripts, rules, flags) is the pack one and a pack can add its own.
+- Negative or costs: few NPCs have a certain role (the registry is short and **its numbers are not verified** in Forever: [issue #36](https://github.com/Finland6738/azeroth-unspoken/issues/36)); an innkeeper outside the registry is recognized only through the interaction to set the home or with `/au npc ruolo locandiere`. The window position and the detection of Blizzard windows use FrameXML names that have not yet been tested in the real client (G3).
+
+## References
+
+`Systems/NPCAlive.lua`, `UI/DialogueFrame.lua`, `Data/Dialogues.lua`, `Data/RegistryDialogues.lua`, `Data/NPCs.lua`; `Tests/TestNPCAlive.lua`; GDD §5.3, §7.3, §21-B; [`docs/G1_checklist.md`](../G1_checklist.md) (in Italian) (G3); issue #36.

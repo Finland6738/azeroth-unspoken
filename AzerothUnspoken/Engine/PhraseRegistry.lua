@@ -37,7 +37,7 @@ NS.Engine = Engine
 ---@field form? string say | emote (predefinito: emote per il narratore, say per le altre voci)
 ---@field styles? string[]
 ---@field depth? string|string[] natural | literary | elevated
----@field tags? string[] descrittivi ("wry") o di affinità con i tratti del Character Soul (vedi FORMATO_PACCHETTI.md)
+---@field tags? string[] descrittivi ("wry") o di affinità con i tratti del Character Soul (vedi PACK_FORMAT.md)
 ---@field weight? number
 ---@field cooldown? number
 ---@field conditions? table
@@ -450,7 +450,7 @@ end
 ---------------------------------------------------------------------------
 -- API pubblica
 ---------------------------------------------------------------------------
---[[ Formato v2 del pacchetto (vedi FORMATO_PACCHETTI.md):
+--[[ Formato v2 del pacchetto (vedi PACK_FORMAT.md):
 	AzerothUnspoken:RegisterPack({
 		id = "mio_pacchetto", name = "Nome leggibile",
 		languages = { "itIT", "enUS" },        -- lingue che ogni frase del pacchetto deve avere (facoltativo)
