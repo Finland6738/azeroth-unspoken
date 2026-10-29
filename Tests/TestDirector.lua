@@ -19,12 +19,18 @@ local function Reset()
 	ADVANCE(1000)
 end
 
+-- l'inizio di un combattimento: la frase di battaglia arriva dopo 0,3 s, a combattimento ancora in corso
+local function CombatStart(wait)
+	P.combat = true; FIRE("PLAYER_REGEN_DISABLED")
+	ADVANCE(wait or 1)
+end
+
 -- una serie di combattimenti nel mondo aperto: quante frasi produce il narratore?
 local function Fights(n)
 	local before = #Narrator.history
 	for _ = 1, n do
 		ADVANCE(200)
-		P.combat = true; FIRE("PLAYER_REGEN_DISABLED")
+		CombatStart()
 		P.combat = false; FIRE("PLAYER_REGEN_ENABLED")
 	end
 	return #Narrator.history - before
@@ -106,10 +112,10 @@ T.run("la pausa scala con l'intensità", function()
 	NS.db.pacing.globalCooldownSeconds = 60
 	-- due eventi a 40 s l'uno dall'altro: a intensità 50 il secondo è bloccato dalla pausa di 60 s, a 100 passa (30 s)
 	local function Pair()
-		P.combat = true; FIRE("PLAYER_REGEN_DISABLED"); P.combat = false
+		CombatStart(); P.combat = false
 		local n = #Narrator.history
-		ADVANCE(40)
-		P.combat = true; FIRE("PLAYER_REGEN_DISABLED"); P.combat = false
+		ADVANCE(39)
+		CombatStart(); P.combat = false
 		return #Narrator.history - n
 	end
 	NS.db.intensity = 50
@@ -169,4 +175,60 @@ T.run("il percorso automatico non invia mai in chat con i predefiniti", function
 		T.ok(s:find("^PRINT:"), "solo messaggi locali: " .. s)
 	end
 	T.eq(Gateway:GetPending(), nil, "e nessuna proposta pubblica")
+end)
+
+T.run("i ritardi dei trigger: pausa, modalità e combattimento letti alla scadenza (timer veri)", function()
+	Reset()
+	NS.db.chance.battle, NS.db.chance.levelup, NS.db.chance.rez = 100, 100, 100
+	NS.db.pacing.globalCooldownSeconds = 0
+	NS.EVENT_COOLDOWN.battle = 0
+	local n = #Narrator.history
+
+	-- la frase non arriva subito: serve il tempo
+	P.combat = true; FIRE("PLAYER_REGEN_DISABLED")
+	T.eq(#Narrator.history, n, "nessuna frase prima dei 0,3 s")
+	T.ok(PENDING_TIMERS() >= 1, "il timer è in coda")
+	ADVANCE(0.5)
+	T.eq(#Narrator.history, n + 1, "la frase arriva dopo l'attesa")
+	P.combat = false; FIRE("PLAYER_REGEN_ENABLED")
+
+	-- pausa immediata durante l'attesa: vale al momento di parlare, non a quello dell'evento
+	ADVANCE(300)
+	n = #Narrator.history
+	P.combat = true; FIRE("PLAYER_REGEN_DISABLED")
+	ADVANCE(0.1)
+	Director:SetPaused(true)
+	ADVANCE(1)
+	T.eq(#Narrator.history, n, "pausa arrivata durante l'attesa: nessuna frase")
+	Director:SetPaused(false)
+	P.combat = false; FIRE("PLAYER_REGEN_ENABLED")
+
+	-- il combattimento finisce durante l'attesa: nessuna frase di battaglia
+	ADVANCE(300)
+	n = #Narrator.history
+	P.combat = true; FIRE("PLAYER_REGEN_DISABLED")
+	ADVANCE(0.1)
+	P.combat = false; FIRE("PLAYER_REGEN_ENABLED")
+	ADVANCE(1)
+	T.eq(#Narrator.history, n, "InCombat() si legge alla scadenza: fuori dal combattimento nessuna battaglia")
+
+	-- livello: 1 s di attesa; con la modalità cambiata nel frattempo la frase segue la modalità nuova
+	ADVANCE(300)
+	n = #Narrator.history
+	FIRE("PLAYER_LEVEL_UP", 31)
+	T.eq(#Narrator.history, n, "level up: nessuna frase prima di 1 s")
+	ADVANCE(0.5)
+	T.eq(#Narrator.history, n, "ancora in attesa a 0,5 s")
+	ADVANCE(1)
+	T.eq(#Narrator.history, n + 1, "arriva dopo 1 s")
+
+	-- intensità azzerata durante l'attesa: silenzio
+	ADVANCE(300)
+	n = #Narrator.history
+	FIRE("PLAYER_LEVEL_UP", 32)
+	ADVANCE(0.2)
+	NS.db.intensity = 0
+	ADVANCE(2)
+	T.eq(#Narrator.history, n, "intensità 0 arrivata durante l'attesa: silenzio")
+	NS.db.intensity = 50
 end)

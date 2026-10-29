@@ -250,7 +250,9 @@ check(not list(G2.SENT.values()), "il tasto in modalità privata non scrive in c
 lua.execute("math.randomseed(7)")
 NS.db.locale = "it"; NS.db.chance.battle = 100; NS.db.chance.victory = 100; NS.db.pacing.globalCooldownSeconds = 0
 NS.Gateway.SetMode(NS.Gateway, "AUTO_ONLY_IF_ALLOWED")
-check(NS.db.output.autoPublicSay is True, "AUTO_ONLY_IF_ALLOWED accende autoPublicSay")
+check(NS.db.output.autoPublicSay is False, "AUTO_ONLY_IF_ALLOWED da sola non accende autoPublicSay (serve la conferma)")
+NS.Gateway.SetMode(NS.Gateway, "AUTO_ONLY_IF_ALLOWED", lua.table(confirmAuto=True))
+check(NS.db.output.autoPublicSay is True, "con la conferma esplicita autoPublicSay si accende")
 G.SENT = lua.table()
 setP(combat=False, instance=False)
 # combattimenti ripetuti finché una frase parlata non resta in attesa (il seme è fisso: esito ripetibile)
@@ -320,6 +322,51 @@ check(not NS.Diagnostics.errors[1], "nessun errore dai comandi")
 NS.db.chat.channel = "auto"; NS.db.intensity = 50; NS.db.proseDepth = "literary"
 NS.Gateway.SetMode(NS.Gateway, "PRIVATE")
 
+# issue #11: ogni valore elencato dall'aiuto cambia davvero l'impostazione, uno sconosciuto riceve una risposta
+print("\nCOMANDI: ALIAS E VALORI NON VALIDI")
+def run_cmd(c):
+    G.SENT = lua.table()
+    cmd(c)
+    return " | ".join(list(G.SENT.values()))
+for word, expected in [("auto", "auto"), ("say", "SAY"), ("dire", "SAY"), ("emote", "EMOTE"), ("gruppo", "PARTY"),
+                       ("party", "PARTY"), ("incursione", "RAID"), ("raid", "RAID"), ("gilda", "GUILD"),
+                       ("guild", "GUILD"), ("istanza", "INSTANCE_CHAT"), ("instance", "INSTANCE_CHAT")]:
+    NS.db.chat.channel = "SAY" if expected != "SAY" else "EMOTE"
+    run_cmd("canale " + word)
+    check(NS.db.chat.channel == expected, f"/au canale {word} -> {expected} (trovato {NS.db.chat.channel})")
+for lang_ in ("it", "en"):
+    NS.db.locale = lang_
+    help_text = NS.L(NS, "help")
+    for word in ("incursione", "evento", "vittoria") if lang_ == "it" else ("raid", "event", "victory"):
+        check(word in help_text, f"l'aiuto ({lang_}) elenca '{word}'")
+NS.db.locale = "it"
+NS.db.chat.channel = "auto"
+out_ = run_cmd("canale xyz")
+check("non valido" in out_ and "xyz" in out_ and "incursione" in out_ and NS.db.chat.channel == "auto",
+      "canale sconosciuto: messaggio con i valori ammessi, impostazione invariata: " + out_)
+out_ = run_cmd("profondita boh")
+check("non valido" in out_ and "elevato" in out_ and NS.db.proseDepth == "literary", "profondità sconosciuta: " + out_)
+NS.db.chat.mode = "PRIVATE"
+out_ = run_cmd("chat boh")
+check("non valido" in out_ and "conferma" in out_ and NS.db.chat.mode == "PRIVATE", "modalità sconosciuta: " + out_)
+NS.db.locale = "en"
+out_ = run_cmd("channel xyz")
+check("invalid value" in out_ and "raid" in out_, "canale sconosciuto in inglese: " + out_)
+NS.db.locale = "it"
+out_ = run_cmd("canale")   # senza valore: mostra il canale attuale, nessun errore
+check("non valido" not in out_, "canale senza valore: solo lo stato")
+# ogni comando manuale dell'aiuto produce una frase o un messaggio, mai un errore
+for word in ("saluto", "addio", "brindisi", "pensiero", "minaccia", "grido", "vittoria", "preghiera", "ringrazia", "scherzo"):
+    run_cmd(word)
+check(NS.Diagnostics.errors[1] is None, "i comandi dell'aiuto non producono errori")
+NS.Gateway.Discard(NS.Gateway)
+# chiavi d'interfaccia: IT ed EN hanno le stesse e le inutilizzate sono state rimosse
+ui_it = {k for k in G.AzerothUnspoken.languages["it"].ui.keys()}
+ui_en = {k for k in G.AzerothUnspoken.languages["en"].ui.keys()}
+check(ui_it == ui_en, "IT ed EN hanno le stesse chiavi d'interfaccia: " + str(sorted(ui_it ^ ui_en)))
+check("send_error" not in ui_it and "preview" not in ui_it, "chiavi inutilizzate rimosse (#11)")
+G.SENT = lua.table()
+
 print("\nPESCA (pacchetto di esempio)")
 G.SENT = lua.table()
 NS.db.pacing.globalCooldownSeconds = 0
@@ -343,8 +390,8 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
-for name in ("TestCompat", "TestConfig", "TestEventBus", "TestChatGateway", "TestNarrator", "TestDirector",
-             "TestSchema", "TestValidator"):
+for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
+             "TestDirector", "TestSchema", "TestValidator"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

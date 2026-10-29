@@ -104,6 +104,8 @@ function Narrator:Layout()
 	frame.bar:SetShown(p ~= nil)
 	if p then
 		frame.channelBtn:SetText(CHANNEL_NAME[p.channel] or p.channel)
+		-- senza una casella della chat da riempire il pulsante non c'è (GDD §3.8)
+		frame.copyBtn:SetShown(NS.Compat:CanOpenChat())
 	end
 end
 
@@ -114,6 +116,13 @@ function Narrator:Refresh()
 	local pending = NS.Gateway:GetPending()
 	-- la proposta mostrata non è più in attesa (inviata, scartata, scaduta)
 	if self.proposal and self.proposal ~= pending then
+		-- il testo scritto nell'editor non si perde in silenzio: se la proposta è sparita (sostituita da
+		-- una richiesta del giocatore, scartata altrove) lo si restituisce in chat locale
+		local gone = self.proposal
+		if frame.editor:IsShown() then
+			local typed = frame.editor:GetText()
+			if typed ~= "" and typed ~= (gone.edited or gone.text) then NS:Print(NS:L("gw_text_kept", typed)) end
+		end
 		self.proposal = nil
 		self:CloseEditor()
 		if cur and cur.proposal then
@@ -137,6 +146,7 @@ function Narrator:Refresh()
 	frame.sendBtn:SetText(NS:L("btn_send"))
 	frame.editBtn:SetText(NS:L("btn_edit"))
 	frame.discardBtn:SetText(NS:L("btn_discard"))
+	frame.copyBtn:SetText(NS:L("btn_copy"))
 	self:Layout()
 end
 
@@ -216,6 +226,8 @@ function Narrator:OpenEditor()
 	frame.editor:Show()
 	frame.editor:SetFocus()
 	frame.editor:HighlightText()
+	-- con l'editor aperto la proposta non scade e non viene sostituita da frasi spontanee
+	NS.Gateway:SetEditing(true)
 	self:Layout()
 	return true
 end
@@ -225,8 +237,14 @@ function Narrator:CloseEditor()
 	if frame.editor:IsShown() then
 		frame.editor:ClearFocus()
 		frame.editor:Hide()
+		NS.Gateway:SetEditing(false)
 		self:Layout()
 	end
+end
+
+---@return boolean editing l'editor della proposta è aperto
+function Narrator:IsEditing()
+	return frame ~= nil and frame.editor:IsShown() and true or false
 end
 
 ---------------------------------------------------------------------------
@@ -316,7 +334,12 @@ local function Build()
 		local text = self:GetText()
 		-- Invio è un tasto premuto dal giocatore: l'invio parte da qui
 		NS.Gateway:PlayerAction(function()
-			if NS.Gateway:SetPendingText(text) then NS.Gateway:SendPending() end
+			if NS.Gateway:SetPendingText(text) then
+				NS.Gateway:SendPending()
+			else
+				-- la proposta non c'è più (o il testo è vuoto): lo si dice, il testo resta leggibile in chat
+				NS:Print(NS:L("gw_expired", text))
+			end
 		end)
 	end)
 	frame.editor:SetScript("OnEscapePressed", function() Narrator:CloseEditor() end)
@@ -342,13 +365,15 @@ local function Build()
 	frame.channelBtn = Btn("/s", function() NS.Gateway:CycleChannel() end, 60)
 	W.Tooltip(frame.channelBtn, function() return NS:L("tip_channel") end)
 	frame.discardBtn = Btn(NS:L("btn_discard"), function() NS.Gateway:Discard() end, 80)
+	frame.copyBtn = Btn(NS:L("btn_copy"), function() NS.Gateway:CopyToChat() end, 90)
+	W.Tooltip(frame.copyBtn, function() return NS:L("tip_copy") end)
 
 	frame:SetScript("OnUpdate", function(self, dt)
 		Narrator.elapsed = (Narrator.elapsed or 0) + dt
 		local remaining = Narrator.remaining or 0
 		-- una proposta in attesa, un editor aperto o il mouse sul riquadro non svaniscono
 		local hold = Narrator.proposal and NS.Gateway:GetPending() or self.editor:IsShown()
-		if not hold and MouseIsOver and MouseIsOver(self) then hold = true end
+		if not hold and NS.Compat:IsMouseOver(self) then hold = true end
 		if hold then
 			Narrator.elapsed = math.min(Narrator.elapsed, remaining)
 			self:SetAlpha(Cfg().alpha)

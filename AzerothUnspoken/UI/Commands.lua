@@ -7,7 +7,8 @@ local DEPTH_ALIAS = {
 }
 local CHANNEL_ALIAS = {
 	auto = "auto", say = "SAY", dire = "SAY", s = "SAY", emote = "EMOTE", e = "EMOTE", me = "EMOTE",
-	party = "PARTY", gruppo = "PARTY", p = "PARTY", raid = "RAID", guild = "GUILD", gilda = "GUILD", g = "GUILD",
+	party = "PARTY", gruppo = "PARTY", p = "PARTY", raid = "RAID", incursione = "RAID", guild = "GUILD", gilda = "GUILD",
+	g = "GUILD",
 	instance = "INSTANCE_CHAT", istanza = "INSTANCE_CHAT", i = "INSTANCE_CHAT",
 }
 
@@ -105,14 +106,25 @@ local function Command(msg)
 		end
 	elseif cmd == "chat" or cmd == "modo" or cmd == "mode" then
 		if rest ~= "" then
-			local ok, mode = NS.Gateway:SetMode(rest)
-			if ok and mode == "AUTO_ONLY_IF_ALLOWED" then NS:Print(NS:L("chat_auto_warning")) end
+			local mode = NS.Gateway:ParseMode(rest)
+			if mode == "AUTO_ONLY_IF_ALLOWED" then
+				-- l'invio automatico si sceglie con due comandi: il primo avvisa, il secondo (entro 10 s) conferma
+				if NS.Gateway:SelectAuto() == "warned" then NS:Print(NS:L("auto_repeat")) end
+			elseif mode then
+				NS.Gateway:SetMode(mode)
+			else
+				NS:Print(NS:L("invalid_value", rest, NS:L("values_chat")))
+			end
 		end
 		NS:Print(NS:L("mode_now", NS:L("chatmode_" .. db.chat.mode .. "_short")))
 		NS:Print(NS:L("chatmode_" .. db.chat.mode .. "_help"))
 	elseif cmd == "canale" or cmd == "channel" then
 		local ch = CHANNEL_ALIAS[rest:lower()]
-		if ch then db.chat.channel = ch end
+		if ch then
+			db.chat.channel = ch
+		elseif rest ~= "" then
+			NS:Print(NS:L("invalid_value", rest, NS:L("values_channel")))
+		end
 		NS:Print(NS:L("channel_now", NS:L("channel_" .. db.chat.channel)))
 	elseif cmd == "intensita" or cmd == "intensità" or cmd == "intensity" then
 		local n = tonumber(rest)
@@ -120,7 +132,11 @@ local function Command(msg)
 		NS:Print(NS:L("intensity_now", db.intensity))
 	elseif cmd == "profondita" or cmd == "profondità" or cmd == "depth" then
 		local d = DEPTH_ALIAS[rest:lower()]
-		if d then db.proseDepth = d end
+		if d then
+			db.proseDepth = d
+		elseif rest ~= "" then
+			NS:Print(NS:L("invalid_value", rest, NS:L("values_depth")))
+		end
 		NS:Print(NS:L("depth_now", NS:L("depth_" .. db.proseDepth)))
 	elseif cmd == "pausa" or cmd == "pause" then
 		NS.Director:TogglePause()
@@ -139,6 +155,8 @@ local function Command(msg)
 		NS.Wizard:Open()
 	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then
 		NS.Gateway:Discard()
+	elseif cmd == "copia" or cmd == "copy" then
+		NS.Gateway:CopyToChat()
 	elseif cmd == "dire" or cmd == "speak" or cmd == "say" or cmd == "invia" or cmd == "send" then
 		AzerothUnspoken_Speak()
 	elseif cmd == "prova" or cmd == "test" then

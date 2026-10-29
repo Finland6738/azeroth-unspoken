@@ -101,37 +101,79 @@ end
 ---------------------------------------------------------------------------
 -- Costruzione del contesto
 ---------------------------------------------------------------------------
+-- Ogni valore letto da un'API passa da SafeCall: un valore segreto diventa nil e non entra mai in un
+-- confronto o in un calcolo (GDD §15.1, ADR 0005). Un valore illeggibile vale "non lo so", mai "falso".
+local function Flag(fn, ...)
+	return SafeCall(fn, ...) == true
+end
+
+---Dati del bersaglio. Con l'identità segreta (C_Secrets) non si legge né si confronta nulla: il contesto
+---resta con hasTarget e targetSecret, e le frasi che chiedono il bersaglio non si compongono.
+---@param ctx table
+local function ReadTarget(ctx)
+	ctx.hasTarget = true
+	if Compat:IsUnitIdentitySecret("target") then
+		ctx.targetSecret = true
+		return
+	end
+	ctx.target = SafeCall(UnitName, "target")
+	ctx.targetPlayer = Flag(UnitIsPlayer, "target")
+	ctx.hostile = Flag(UnitCanAttack, "player", "target")
+	ctx.friendly = not ctx.hostile
+	ctx.targetDead = Flag(UnitIsDead, "target")
+	local ctype = SafeCall(UnitCreatureType, "target")
+	ctx.ctype = CreatureKey(ctype)
+	ctx.ctypeLocal = LocalName("creatureNames", ctx.ctype, ctype)
+	local cls = SafeCall(UnitClassification, "target")
+	local tl = SafeCall(UnitLevel, "target")
+	ctx.elite = cls == "elite" or cls == "rareelite" or cls == "worldboss"
+	ctx.boss = cls == "worldboss" or tl == -1
+	ctx.rare = cls == "rare" or cls == "rareelite"
+	if ctx.targetPlayer then
+		ctx.targetClass = select(2, SafeCall(UnitClass, "target"))
+		ctx.targetRace = select(2, SafeCall(UnitRace, "target"))
+		ctx.targetFaction = SafeCall(UnitFactionGroup, "target")
+		ctx.enemyFaction = ctx.targetFaction ~= nil and ctx.faction ~= nil and ctx.targetFaction ~= ctx.faction
+	end
+	if tl and ctx.level then
+		ctx.targetStronger = tl == -1 or tl >= ctx.level + 3
+		ctx.targetWeaker = tl > 0 and tl <= ctx.level - 5
+	end
+end
+
+---@param extra? table valori in più (target, spell...), che prevalgono su quelli letti
+---@return table ctx
 function NS:BuildContext(extra)
 	local ctx = {}
 	ctx.player = PlayerName()
-	local classLoc, class = UnitClass("player")
-	local raceLoc, race = UnitRace("player")
+	local classLoc, class = SafeCall(UnitClass, "player")
+	local raceLoc, race = SafeCall(UnitRace, "player")
 	ctx.class, ctx.race = class, race
-	ctx.faction = UnitFactionGroup("player")
-	ctx.sex = (UnitSex("player") == 3) and "female" or "male"
+	ctx.faction = SafeCall(UnitFactionGroup, "player")
+	ctx.sex = (SafeCall(UnitSex, "player") == 3) and "female" or "male"
 	ctx.classLocal = LocalName("classNames", class, classLoc)
 	ctx.raceLocal = LocalName("raceNames", race, raceLoc)
 	ctx.factionLocal = LocalName("factionNames", ctx.faction, ctx.faction)
-	ctx.level = UnitLevel("player")
+	ctx.level = SafeCall(UnitLevel, "player")
 	-- scelte dell'utente: la profondità stilistica pesa le frasi, l'intensità si può usare nelle condizioni
 	if self.db then ctx.depth, ctx.intensity = self.db.proseDepth, self.db.intensity end
 
 	local hp, hpMax = SafeCall(UnitHealth, "player"), SafeCall(UnitHealthMax, "player")
 	if hp and hpMax and hpMax > 0 then ctx.hp = hp / hpMax end
 
-	ctx.combat = UnitAffectingCombat("player") or InCombatLockdown()
-	ctx.dead = UnitIsDeadOrGhost("player")
-	ctx.ghost = UnitIsGhost("player")
-	ctx.resting = IsResting()
-	ctx.indoors = IsIndoors()
-	ctx.mounted = IsMounted()
-	ctx.swimming = IsSwimming()
-	ctx.stealth = IsStealthed()
+	ctx.combat = Flag(UnitAffectingCombat, "player") or Flag(InCombatLockdown)
+	ctx.dead = Flag(UnitIsDeadOrGhost, "player")
+	ctx.ghost = Flag(UnitIsGhost, "player")
+	ctx.resting = Flag(IsResting)
+	ctx.indoors = Flag(IsIndoors)
+	ctx.mounted = Flag(IsMounted)
+	ctx.swimming = Flag(IsSwimming)
+	ctx.stealth = Flag(IsStealthed)
 
-	local inInstance, instanceType = IsInInstance()
-	ctx.instance = inInstance and instanceType ~= "none"
+	local inInstance, instanceType = SafeCall(IsInInstance)
+	ctx.instance = inInstance == true and instanceType ~= "none"
 	ctx.instanceType = instanceType or "none"
-	ctx.group = IsInRaid() and "raid" or (IsInGroup() and "party" or "solo")
+	ctx.group = Flag(IsInRaid) and "raid" or (Flag(IsInGroup) and "party" or "solo")
 
 	ctx.zone = SafeCall(GetRealZoneText) or SafeCall(GetZoneText)
 	ctx.subzone = SafeCall(GetSubZoneText)
@@ -139,37 +181,11 @@ function NS:BuildContext(extra)
 	ctx.mood = ctx.zone and self.zoneMoods[ctx.zone:lower()]
 	if ctx.resting and not ctx.mood then ctx.mood = "town" end
 
-	local h, m = GetGameTime()
+	local h = SafeCall(GetGameTime)
 	ctx.hour = h
 	ctx.time = TimeOfDay(h or 12)
 
-	if UnitExists("target") then
-		ctx.hasTarget = true
-		-- nome nascosto dal client: le frasi con {target} vengono scartate
-		if not Compat:IsUnitIdentitySecret("target") then ctx.target = SafeCall(UnitName, "target") end
-		ctx.targetPlayer = UnitIsPlayer("target")
-		ctx.hostile = SafeCall(UnitCanAttack, "player", "target") and true or false
-		ctx.friendly = not ctx.hostile
-		ctx.targetDead = UnitIsDead("target")
-		local ctype = SafeCall(UnitCreatureType, "target")
-		ctx.ctype = CreatureKey(ctype)
-		ctx.ctypeLocal = LocalName("creatureNames", ctx.ctype, ctype)
-		local cls = SafeCall(UnitClassification, "target")
-		ctx.elite = cls == "elite" or cls == "rareelite" or cls == "worldboss"
-		ctx.boss = cls == "worldboss" or (SafeCall(UnitLevel, "target") == -1)
-		ctx.rare = cls == "rare" or cls == "rareelite"
-		if ctx.targetPlayer then
-			ctx.targetClass = select(2, UnitClass("target"))
-			ctx.targetRace = select(2, UnitRace("target"))
-			ctx.targetFaction = UnitFactionGroup("target")
-			ctx.enemyFaction = ctx.targetFaction ~= nil and ctx.targetFaction ~= ctx.faction
-		end
-		local tl = SafeCall(UnitLevel, "target")
-		if tl and ctx.level then
-			ctx.targetStronger = tl == -1 or tl >= ctx.level + 3
-			ctx.targetWeaker = tl > 0 and tl <= ctx.level - 5
-		end
-	end
+	if Flag(UnitExists, "target") then ReadTarget(ctx) end
 
 	for k, v in pairs(extra or {}) do ctx[k] = v end
 

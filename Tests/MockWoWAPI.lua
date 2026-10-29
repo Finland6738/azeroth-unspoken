@@ -7,9 +7,45 @@ P = {   -- stato del giocatore, modificabile dai test
 }
 local now = 1000
 function GetTime() return now end
-function ADVANCE(s) now = now + s; FAKE_EPOCH = FAKE_EPOCH + s end
 FAKE_EPOCH = 1700000000
 time = function() return FAKE_EPOCH end
+
+-- Timer veri: C_Timer.After e NewTicker mettono la funzione in coda con la scadenza; ADVANCE(s) fa
+-- passare il tempo ed esegue quelli scaduti nell'ordine, con GetTime() alla loro scadenza.
+local timers, timerSeq = {}, 0
+local function AddTimer(delay, fn, interval)
+	timerSeq = timerSeq + 1
+	local t = { at = now + math.max(0, delay), fn = fn, interval = interval, seq = timerSeq }
+	table.insert(timers, t)
+	return t
+end
+local function Step(to)
+	local best, bi
+	for i, t in ipairs(timers) do
+		if t.at <= to and (not best or t.at < best.at or (t.at == best.at and t.seq < best.seq)) then best, bi = t, i end
+	end
+	if not best then return false end
+	FAKE_EPOCH = FAKE_EPOCH + (best.at - now)
+	now = best.at
+	if best.interval and not best.cancelled then
+		best.at = best.at + best.interval
+	else
+		table.remove(timers, bi)
+	end
+	if not best.cancelled then best.fn() end
+	return true
+end
+function ADVANCE(s)
+	local to = now + s
+	local guard = 0
+	while Step(to) do
+		guard = guard + 1
+		if guard > 10000 then error("ADVANCE: troppi timer") end
+	end
+	FAKE_EPOCH = FAKE_EPOCH + (to - now)
+	now = to
+end
+function PENDING_TIMERS() return #timers end
 
 -- versione del client
 WOW_PROJECT_MAINLINE, WOW_PROJECT_CLASSIC, WOW_PROJECT_CAMELOT = 1, 2, 14
@@ -19,8 +55,15 @@ function GetLocale() return "enUS" end
 
 -- valori segreti: MakeSecret() crea un valore che l'addon non deve leggere
 SECRET_SET = setmetatable({}, { __mode = "k" })
+-- Nel client vero usare un valore segreto in un confronto, un calcolo o una concatenazione solleva un errore:
+-- il mock lo imita dove Lua 5.1 lo permette (<, <=, .., aritmetica, #, campi). Con == contro un valore di tipo
+-- diverso Lua non chiama nulla: il confronto "riesce" e dà falso, ed è proprio il caso da non lasciar passare.
+local function SecretError() error("attempt to use a secret value", 2) end
 function MakeSecret()
-	local v = setmetatable({}, { __tostring = function() return "<secret>" end })
+	local v = setmetatable({}, { __tostring = function() return "<secret>" end,
+		__lt = SecretError, __le = SecretError, __concat = SecretError, __len = SecretError,
+		__add = SecretError, __sub = SecretError, __mul = SecretError, __div = SecretError,
+		__unm = SecretError, __index = SecretError, __call = SecretError })
 	SECRET_SET[v] = true
 	return v
 end
@@ -50,44 +93,80 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
 
-function UnitName(u) if u == "player" then return P.name end return P.target and P.target.name end
-function UnitClass(u) if u == "player" then return P.class:lower(), P.class end return P.target.class, P.target.class end
-function UnitRace(u) if u == "player" then return P.race, P.race end return P.target.race, P.target.race end
-function UnitFactionGroup(u) if u == "player" then return P.faction end return P.target and P.target.faction end
-function UnitSex() return P.sex end
-function UnitLevel(u) if u == "player" then return P.level end return P.target and P.target.level end
-function UnitHealth() return P.hp end
-function UnitHealthMax() return P.hpMax end
-function UnitAffectingCombat() return P.combat end
+-- Le funzioni delle unità leggono P per "player" e P.target per "target"; un'unità inesistente dà nil.
+-- Con SECRET_UNITS[unit] i dati di identità sono segreti, come nel client con le restrizioni.
+local function Subject(u)
+	if u == "player" then return P end
+	if u == "target" then return P.target end
+	return nil
+end
+local function Identity(u, value)
+	if value ~= nil and SECRET_UNITS[u] then return MakeSecret() end
+	return value
+end
+function UnitName(u) local t = Subject(u); return t and Identity(u, t.name) end
+function UnitClass(u)
+	local t = Subject(u)
+	if not t then return nil end
+	local c = t.class
+	if u == "player" then return Identity(u, c:lower()), Identity(u, c) end
+	return Identity(u, c), Identity(u, c)
+end
+function UnitRace(u) local t = Subject(u); local r = t and t.race; return Identity(u, r), Identity(u, r) end
+function UnitFactionGroup(u) local t = Subject(u); return t and Identity(u, t.faction) end
+function UnitSex(u) local t = Subject(u or "player"); return t and t.sex end
+function UnitLevel(u) local t = Subject(u); return t and t.level end
+function UnitHealth(u) local t = Subject(u); return t and t.hp end
+function UnitHealthMax(u) local t = Subject(u); return t and t.hpMax end
+function UnitAffectingCombat(u) if u == "player" then return P.combat end return false end
 function InCombatLockdown() return P.combat end
-function UnitIsDeadOrGhost() return P.dead end
+function UnitIsDeadOrGhost(u) local t = Subject(u); return t and t.dead or false end
 function UnitIsGhost() return false end
-function UnitIsDead() return false end
+function UnitIsDead(u) local t = Subject(u); return t and Identity(u, t.dead or false) end
 function IsResting() return P.resting or false end
 function IsIndoors() return false end
 function IsMounted() return false end
 function IsSwimming() return false end
 function IsStealthed() return false end
 function IsInInstance() return P.instance, P.instance and "party" or "none" end
-function IsInRaid() return false end
+function IsInRaid() return P.raid or false end
 function IsInGroup() return P.group or false end
 function GetRealZoneText() return P.zone end
 function GetZoneText() return P.zone end
 function GetSubZoneText() return P.subzone end
 function GetGameTime() return P.hour, 0 end
-function UnitExists(u) return u == "target" and P.target ~= nil end
-function UnitIsPlayer() return P.target and P.target.player or false end
-function UnitCanAttack() return P.target and P.target.hostile or false end
-function UnitCreatureType() return P.target and P.target.ctype end
-function UnitClassification() return P.target and P.target.cls or "normal" end
-function UnitGUID(u) return u == "player" and "Player-1-00000001" or nil end
+function UnitExists(u) return Subject(u) ~= nil end
+function UnitIsPlayer(u)
+	if u == "player" then return true end
+	local t = Subject(u)
+	return Identity(u, t and t.player or false)
+end
+function UnitCanAttack(a, b) local t = Subject(b); if a ~= "player" or not t or b == "player" then return false end return t.hostile or false end
+function UnitCreatureType(u) local t = Subject(u); return t and Identity(u, t.ctype) end
+function UnitClassification(u) local t = Subject(u); return t and Identity(u, t.cls or "normal") or nil end
+function UnitGUID(u)
+	if u == "player" then return "Player-1-00000001" end
+	local t = Subject(u)
+	return t and Identity(u, t.guid)
+end
 C_Spell = { GetSpellName = function(id) return SPELLS[id] end }
 SPELLS = {}
-C_Timer = { After = function(_, f) f() end, NewTicker = function() end }
+C_Timer = {
+	After = function(seconds, f) AddTimer(seconds, f) end,
+	NewTicker = function(seconds, f)
+		local t = AddTimer(seconds, f, seconds)
+		return { Cancel = function() t.cancelled = true; for i, x in ipairs(timers) do if x == t then table.remove(timers, i) break end end end }
+	end,
+}
 CHAT_LOCKDOWN = false
 C_ChatInfo = {
 	SendChatMessage = function(text, kind)
-		if kind == "SAY" and not P.instance and not HW then error("ADDON_ACTION_FORBIDDEN") end
+		-- ipotesi prudente (da confermare in G1): senza un gesto del giocatore passano solo le emote
+		-- e, nelle istanze, /say e /yell; i canali di gruppo, di gilda e /say nel mondo aperto no
+		if kind ~= "EMOTE" and not HW then
+			local openWorldSpeech = (kind == "SAY" or kind == "YELL") and P.instance
+			if not openWorldSpeech then error("ADDON_ACTION_FORBIDDEN") end
+		end
 		table.insert(SENT, kind .. ": " .. text)
 	end,
 	InChatMessagingLockdown = function() return CHAT_LOCKDOWN end,
@@ -113,6 +192,8 @@ end }
 function Widget:Show() self.shown = true; if self.scripts.OnShow then self.scripts.OnShow(self) end end
 function Widget:Hide() self.shown = false; if self.scripts.OnHide then self.scripts.OnHide(self) end end
 function Widget:IsShown() return self.shown == true end
+-- il mouse è sopra il widget? Lo decide il test con widget._s.mouseOver = true
+function Widget:IsMouseOver() return self._s.mouseOver == true end
 function Widget:IsVisible() return self.shown == true end
 function Widget:SetShown(v) if v then self:Show() else self:Hide() end end
 function Widget:SetText(t) self._s.text = t end

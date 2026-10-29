@@ -163,7 +163,7 @@ I passaggi, in parole:
 4. **Consegna.** Ai gestori del tipo e a quelli di `"*"`, ciascuno in `Guard`.
 5. **Triggers.** I gestori in `Systems/Triggers.lua` mantengono un po' di stato (inizio del combattimento, zona precedente, bersagli degli incantesimi) e chiamano `Fire(evento, extra)`; alcuni ritardano con `C_Timer.After` per lasciare che il gioco aggiorni lo stato.
 6. **Director.** `Allowed(evento)` chiede a `Director:Evaluate`: addon spento, pausa immediata, modulo escluso o intensità 0 → silenzio. Altrimenti il Director restituisce i moltiplicatori di probabilità e pausa, e `Triggers` applica la pausa globale, quella dell'evento e il lancio del dado.
-7. **Contesto.** `NS:BuildContext(extra)` raccoglie i dati del momento. Il nome del bersaglio non si legge se l'identità è segreta; il nome del personaggio può venire da Total RP 3.
+7. **Contesto.** `NS:BuildContext(extra)` raccoglie i dati del momento. Con l'identità del bersaglio segreta non si legge né si confronta alcun dato del bersaglio (resta `targetSecret`); ogni lettura passa da `SafeCall`; il nome del personaggio può venire da Total RP 3.
 8. **Gateway e motore.** `Gateway:Narrate` sceglie la forma (parlata o emote) e chiede a `Engine:PickEntry` una frase ([sezione 4](#4-come-si-sceglie-una-frase)). Se non c'è nessuna frase adatta, **non succede nulla**: il silenzio è valido.
 9. **Uscita.** `Gateway:Propose` mostra sempre la frase nel narratore. Solo se la modalità lo prevede e la voce può andare in chat, crea anche una **proposta** ([sezione 5](#5-il-chat-gateway)).
 
@@ -216,7 +216,9 @@ Regole fisse, verificate dai test (`Tests/TestChatGateway.lua`):
 
 - L'invio da gesto passa solo da `Gateway:PlayerAction(fn)`. Fuori da quell'ambito `Gateway:Send` rifiuta tutto tranne `EMOTE` e, in istanza, `SAY` e `YELL` (`needs_action`).
 - Le voci `inner` e `npc` non diventano mai proposte.
-- Anti-flood: `floodSeconds` (4), `maxPerMinute` (6), `autoMaxPerMinute` (2); testo di al massimo 255 byte; proposta in attesa `pendingSeconds` (25), e una nuova sostituisce la vecchia.
+- Anti-flood: `floodSeconds` (4), `maxPerMinute` (6), `autoMaxPerMinute` (2); testo di al massimo `Config.CHAT_LIMITS[canale]` byte (255; la stessa tabella è letta dal validatore); proposta in attesa `pendingSeconds` (25), e una nuova sostituisce la vecchia. Con l'editor aperto la proposta non scade e una frase spontanea non la sostituisce.
+- Il testo inviato è adattato al canale (`Gateway:TextFor`: emote fuori da `/e` con il nome, parlato in `/e` con «dice: «…»»). In alternativa all'invio, `Gateway:CopyToChat` mette la proposta nella casella della chat standard (`Compat:OpenChatWith`).
+- L'invio automatico si attiva solo con due gesti (avviso e conferma entro 10 secondi, `Gateway:SelectAuto`) e non è nel ciclo delle modalità del pannello.
 - Canali: `SAY`, `EMOTE`, `YELL`, `PARTY`, `RAID`, `GUILD`, `INSTANCE_CHAT`, con controllo di disponibilità.
 - **Ipotesi non ancora misurata in gioco**: quali canali il client accetta senza gesto ([G1](G1_checklist.md), SP-05).
 

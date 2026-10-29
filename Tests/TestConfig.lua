@@ -162,6 +162,45 @@ T.run("migrazioni", function()
 	T.eq(#Diagnostics.errors, errors + 1, "avviso in diagnostica")
 end)
 
+-- issue #3: i dati di uno schema più nuovo non si riscrivono nemmeno con valori che questa versione non conosce
+T.run("schema più nuovo: nessuna modifica ai dati salvati (Merge e Validate su una copia)", function()
+	AzerothUnspokenDB = { schemaVersion = 77, settings = { chat = { mode = "FUTURE_MODE" }, intensity = 150,
+		proseDepth = "cosmic", nuovo = { a = 1 } }, futuro = true }
+	AzerothUnspokenCharacterDB = { schemaVersion = 77, memory = "altro formato", arcs = 5 }
+	local errors = #Diagnostics.errors
+	Config:Load()
+	local g, c = AzerothUnspokenDB, AzerothUnspokenCharacterDB
+	-- il file salvato è identico
+	T.eq(g.settings.chat.mode, "FUTURE_MODE", "chat.mode futuro conservato")
+	T.eq(g.settings.intensity, 150, "intensità fuori scala conservata")
+	T.eq(g.settings.proseDepth, "cosmic", "profondità sconosciuta conservata")
+	T.eq(g.settings.locale, nil, "nessun predefinito aggiunto al salvato")
+	T.eq(g.settings.modules, nil, "nessuna tabella aggiunta al salvato")
+	T.eq(g.settings.nuovo.a, 1, "chiavi sconosciute conservate")
+	T.eq(g.schemaVersion, 77, "versione conservata")
+	T.eq(c.memory, "altro formato", "memoria del personaggio conservata")
+	T.eq(c.personality, nil, "nessun predefinito aggiunto al personaggio")
+	T.eq(c.schemaVersion, 77, "versione del personaggio conservata")
+	-- l'addon lavora su una copia valida
+	T.ok(NS.db ~= g.settings, "NS.db è una copia")
+	T.ok(NS.cdb ~= c, "NS.cdb è una copia")
+	T.eq(NS.db.chat.mode, "PRIVATE", "la copia in uso ha valori validi")
+	T.eq(NS.db.intensity, 100, "e limitati")
+	T.ok(NS.cdb.memory and NS.cdb.memory.uses, "memoria utilizzabile")
+	T.ok(Config.readOnly.global and Config.readOnly.character, "segnalato come sola lettura")
+	T.eq(#Diagnostics.errors, errors + 2, "due avvisi in diagnostica (account e personaggio)")
+	-- le modifiche di questa sessione non arrivano al salvato
+	NS.db.intensity = 10
+	NS.db.chat.mode = "PREVIEW"
+	T.eq(g.settings.intensity, 150, "le modifiche restano nella copia")
+	T.eq(g.settings.chat.mode, "FUTURE_MODE", "anche quelle del Chat Gateway")
+
+	-- una versione corrente torna alla scrittura normale
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+	T.ok(not Config.readOnly.global and AzerothUnspokenDB.settings == NS.db, "schema corrente: NS.db è il salvato")
+end)
+
 T.run("Get e Set", function()
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()

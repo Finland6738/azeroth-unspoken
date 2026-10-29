@@ -10,6 +10,15 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 
 ### Aggiunto
 
+**Correzioni Q2 (issue #3, #4, #5, #6, #8, #11, #12, #14, #17, #19)**
+- Uscita **"Nella chat"** (`Gateway:CopyToChat`, pulsante accanto a Invia, `/au copia`): la proposta va nella casella della chat standard già sul canale giusto e il giocatore la invia con il suo Invio (`Compat:OpenChatWith`, `Compat:CanOpenChat`, capacità `api:OpenChat`). Da provare in gioco (G1, passo 20).
+- `Gateway:TextFor`/`DisplayFor`: il testo inviato e l'anteprima nel narratore sono adatti al canale.
+- `Gateway:SelectAuto`: l'invio automatico si attiva con due gesti (avviso, poi conferma entro 10 secondi) da comando, pannello e procedura guidata; riga **Invio automatico** nel pannello.
+- `Compat:IsMouseOver(frame)` (metodo del frame, ripiego su `MouseIsOver`).
+- `Config.CHAT_LIMITS`: limite di byte per canale, letto dal Chat Gateway e dal validatore.
+- Test: `TestContext` (identità segreta), `TestMock` (client finto), regressioni in `TestChatGateway`, `TestNarrator`, `TestConfig`, `TestDirector`, `TestValidator` e nei comandi di `run_tests.py`.
+- Il client finto ha timer veri (`C_Timer.After`/`NewTicker` con `ADVANCE`), unità distinte per `player` e `target`, `IsInRaid` e un invio che fa rifiutare ogni canale protetto senza gesto.
+
 **Documentazione (attività D1)**
 - `README.md` professionale e `README.en.md` (versione inglese).
 - `docs/adr/`: quattordici decisioni di progetto (ADR) in formato MADR, con indice.
@@ -41,7 +50,18 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - Configurazione per WebStorm (`.luarc.json`) e annotazioni EmmyLua.
 - Riferimenti tecnici ([docs/RIFERIMENTI.md](docs/RIFERIMENTI.md)).
 
+### Corretto
+- **#4** Con l'editor della proposta aperto la proposta non scade più (l'attesa riparte alla chiusura); una frase spontanea non la sostituisce; se sparisce lo stesso, il testo scritto torna in chat locale; Invio senza proposta avvisa.
+- **#5** Con un canale fisso un'emote in `/s`, `/p`, `/g`… porta il nome del personaggio e una frase parlata in `/e` diventa «dice: «…»».
+- **#8** Scorrere le modalità non attiva più l'invio automatico: serve un avviso e una conferma, ovunque. L'automatica non è nel ciclo del pannello; senza consenso si comporta come `conferma`.
+- **#6** Con l'identità del bersaglio segreta il contesto non contiene nessun dato del bersaglio (nemmeno `hostile`); ogni lettura del contesto passa da `SafeCall`.
+- **#3** I dati di uno schema più nuovo non si modificano più: si lavora su una copia.
+- **#11** `/au canale incursione` funziona; un valore sconosciuto di `canale`, `profondita` e `chat` riceve una risposta; l'aiuto elenca `evento` e `vittoria`; il testo d'aiuto del wizard segue la lingua; rimosse due chiavi inutilizzate.
+- **#17** Il mouse sopra il riquadro lo tiene visibile (metodo `IsMouseOver` del frame, presente nel dump di Forever).
+- **#19** Il limite di 255 byte è in un solo posto.
+
 ### Modificato
+- L'invio automatico non si accende scegliendo la modalità `auto`: richiede un secondo gesto di conferma (decisione prudente: pubblica di meno).
 - Rispetto al prototipo, nulla va in chat pubblica senza una scelta dell'utente: l'uscita predefinita è il narratore privato.
 - `output.mode` è sostituito da `chat.mode` (migrazione di schema da 1 a 2: `self` diventa `PRIVATE`, ogni altra modalità diventa `CONFIRM_TO_SEND`; `autoPublicSay` è forzato a `false`).
 - La lingua si salva con il codice corto dei pacchetti (`it`, `en`).
@@ -56,7 +76,6 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - La profondità dello stile si salva ma nessuna frase la usa ancora.
 - Nelle impostazioni solo i moduli Personale, Mondo, Proposte in chat e Total RP 3 hanno effetto.
 - `AzerothUnspoken/Data/Classes.lua` (54 frasi) non è ancora nel `.toc`.
-- [Issue #3](https://github.com/Finland6738/azeroth-unspoken/issues/3): `Config:Load` modifica i dati di uno schema più nuovo.
 - Licenza da definire ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
 [Non rilasciato]: https://github.com/Finland6738/azeroth-unspoken/commits/main

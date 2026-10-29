@@ -37,8 +37,8 @@ EXCEPTIONS = {
     "SettingsPanel": "FrameXML: frame del pannello, sondato da Compat",
     "InterfaceOptions_AddCategory": "FrameXML: ripiego protetto da Compat per il pannello vecchio",
     "GetSpellInfo": "assente nel dump di Forever: usata solo come ripiego di C_Spell.GetSpellName, dentro Compat.SafeCall",
+    "MouseIsOver": "assente nel dump: solo ripiego di Compat:IsMouseOver, che prima prova il metodo del frame IsMouseOver (nel dump; issue #17)",
     "InterfaceOptionsFrame_OpenToCategory": "FrameXML del pannello vecchio: chiamata solo dopo `if InterfaceOptionsFrame_OpenToCategory and`",
-    "MouseIsOver": "assente nel dump: chiamata solo dopo `MouseIsOver and`; senza, il riquadro svanisce anche col mouse sopra (issue #17)",
 }
 
 # ------------------------------------------------------------------------------------------------------------

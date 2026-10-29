@@ -189,6 +189,65 @@ function Compat:InChatLockdown()
 	return ok and locked == true
 end
 
+-- Il mouse è sopra il frame? Metodo del frame (Details lo usa nel client Forever; è nel dump come
+-- IsMouseOver), con ripiego sulla funzione globale MouseIsOver, che nel dump manca. Senza nessuno dei due: falso.
+---@param frame table
+---@return boolean
+function Compat:IsMouseOver(frame)
+	if type(frame) ~= "table" then return false end
+	local method = frame.IsMouseOver
+	if type(method) == "function" then
+		local ok, over = pcall(method, frame)
+		if ok then return over == true end
+	end
+	local legacy = Resolve("MouseIsOver")
+	if type(legacy) == "function" then
+		local ok, over = pcall(legacy, frame)
+		if ok then return over and true or false end
+	end
+	return false
+end
+
+-- Prefisso con cui la casella della chat riconosce il canale
+Compat.CHAT_PREFIX = {
+	SAY = "/s ", EMOTE = "/e ", YELL = "/y ", PARTY = "/p ", RAID = "/raid ", GUILD = "/g ", INSTANCE_CHAT = "/i ",
+}
+
+-- Il client offre una casella della chat da riempire? ChatFrame_OpenChat è nel dump di Forever (globali);
+-- il ripiego usa le funzioni della finestra di modifica (FrameXML).
+---@return boolean
+function Compat:CanOpenChat()
+	if type(Resolve("ChatFrame_OpenChat")) == "function" then return true end
+	return type(Resolve("ChatEdit_ChooseBoxForSend")) == "function" and type(Resolve("ChatEdit_ActivateChat")) == "function"
+end
+
+-- Apre la casella della chat standard già sul canale giusto, con il testo dentro ("/s testo"): il giocatore
+-- lo invia con il suo Invio, come un messaggio scritto a mano. Non invia nulla.
+---@param text string testo senza prefisso
+---@param channel string SAY | EMOTE | YELL | PARTY | RAID | GUILD | INSTANCE_CHAT
+---@return boolean ok
+---@return string? reason bad_args | no_chat_box | copy_failed
+function Compat:OpenChatWith(text, channel)
+	local prefix = self.CHAT_PREFIX[channel]
+	if not prefix or type(text) ~= "string" or text == "" then return false, "bad_args" end
+	local line = prefix .. text
+	local open = Resolve("ChatFrame_OpenChat")
+	if type(open) == "function" then
+		return pcall(open, line) and true or false, nil
+	end
+	local choose, activate = Resolve("ChatEdit_ChooseBoxForSend"), Resolve("ChatEdit_ActivateChat")
+	if type(choose) == "function" and type(activate) == "function" then
+		local ok = pcall(function()
+			local box = choose()
+			activate(box)
+			box:SetText(line)
+		end)
+		if ok then return true end
+		return false, "copy_failed"
+	end
+	return false, "no_chat_box"
+end
+
 function Compat:GetSpellName(spellID)
 	if spellID == nil or IsSecret(spellID) then return nil end
 	local name = Compat.SafeCall(C_Spell and C_Spell.GetSpellName, spellID)
@@ -206,6 +265,7 @@ local APIS = {
 	{ "C_Secrets.ShouldUnitIdentityBeSecret" }, { "C_RestrictedActions.GetAddOnRestrictionState" },
 	{ "SendChatMessage", "C_ChatInfo.SendChatMessage", "SendChatMessage" },
 	{ "C_ChatInfo.InChatMessagingLockdown" },
+	{ "OpenChat", "ChatFrame_OpenChat", "ChatEdit_ActivateChat" },
 	{ "GetSpellName", "C_Spell.GetSpellName", "GetSpellInfo" },
 	{ "C_Timer.After" }, { "C_Timer.NewTicker" },
 	{ "SettingsPanel", "Settings.RegisterCanvasLayoutCategory", "InterfaceOptions_AddCategory" },

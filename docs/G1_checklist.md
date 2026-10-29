@@ -175,9 +175,11 @@ Qui si verifica che l'addon non scriva mai da solo in chat con le impostazioni p
 
 ### E. Automatico, dove permesso (facoltativo, ma utile)
 
+L'invio automatico non si accende con un clic solo (issue #8): serve un avviso e una conferma entro 10 secondi.
+
 Questa modalità fa scrivere l'addon da solo **solo emote** e, nelle istanze, `/say`. Provala solo se vuoi: è proprio per scoprire cosa permette il client.
 
-14. Scrivi `/au chat auto` (comparirà un avviso). Poi `/au prob zone 100` e `/au cooldown 0`. Cammina fino a un'altra zona.
+14. Scrivi `/au chat auto`: compare un **avviso** e la modalità **non** cambia. Scrivi di nuovo `/au chat auto` entro 10 secondi: ora è attiva. Poi `/au prob zone 100` e `/au cooldown 0`. Cammina fino a un'altra zona.
     - **Cosa aspettarti:** una **emote** compare in chat da sola (`Nome sospira…`), oppure una proposta per `/s` che resta in attesa. Non deve comparire nessun `/say` da solo nel mondo aperto.
     - **Cosa riportare:** se compare un `/say` da solo (errore grave); se l'emote non parte e `/au debug` mostra `last refusal error` (vuol dire che il client blocca anche le emote automatiche).
 15. (Solo se entri in un'istanza) Rifai il passo 14 dentro l'istanza.
@@ -185,6 +187,29 @@ Questa modalità fa scrivere l'addon da solo **solo emote** e, nelle istanze, `/
 16. **Rimetti tutto a posto:** `/au chat privato`, `/au prob zone 40`, `/au cooldown 45`.
 
 ---
+
+## Q2: correzioni da verificare in gioco (aggiunto dalla correzione Q2)
+
+Corrette fuori dal gioco le issue #3, #4, #5, #6, #8, #11, #12, #14, #17 e #19. Restano da provare nel client vero:
+
+20. **Nella chat (issue #14, la prova più utile).** Scrivi `/au chat conferma` e `/au saluto`. Sotto la frase, accanto a **Invia**, compare **Nella chat**. Premilo.
+    - **Cosa aspettarti:** si apre la casella della chat già su `/s` (o `/e`) con la frase dentro, **senza che l'addon invii nulla**. Premi tu Invio: la frase parte come se l'avessi scritta a mano. Il riquadro si chiude (la proposta è scartata dopo la copia).
+    - **Cosa riportare:** se il pulsante non c'è (vuol dire che `ChatFrame_OpenChat` manca: guarda `/au debug full`, riga `api:OpenChat`); se la casella si apre ma è vuota o sul canale sbagliato; se `/s` da lì funziona anche quando "Invia" non funzionava (passo 5): è il confronto che decide se il Chat Gateway deve privilegiare questa strada. Prova anche `/au copia`.
+21. **Testo per canale (issue #5).** Scrivi `/au canale say`, poi `/au chat conferma` e fai comparire una proposta **narrativa** (azioni come "lancia la lenza…": prova `/au evento zone` o `/au grido` più volte). Premi **Invia**.
+    - **Cosa aspettarti:** in `/s` esce **con il tuo nome davanti** ("Nome lancia la lenza…"), non senza soggetto. Poi `/au canale emote` e una frase **parlata**: esce come "Nome dice: «…»", non come "Nome Frase". Il riquadro mostra già il testo che partirà e si aggiorna se cambi canale con il pulsante.
+    - **Cosa riportare:** testi senza soggetto o senza virgolette. Rimetti `/au canale auto`.
+22. **L'editor non scade (issue #4).** Con `/au chat anteprima` fai comparire una proposta, premi il tasto "pronuncia" (si apre l'editor) e **aspetta 40 secondi** scrivendo qualcosa a metà.
+    - **Cosa aspettarti:** l'editor resta aperto e il testo non si perde; Invio lo spedisce. Se chiudi l'editor con Esc la proposta resta ancora circa 25 secondi.
+    - **Cosa riportare:** se l'editor si chiude da solo.
+23. **Invio automatico: due gesti (issue #8).** Apri `/au opzioni`: la riga **Modalità chat** scorre solo privato, anteprima e conferma. La riga **Invio automatico** al primo clic mostra l'avviso in chat e il testo "clic di nuovo per confermare"; al secondo clic si accende. Nella procedura guidata (`/au benvenuto`, ultimo passo) il pulsante "automatica" funziona allo stesso modo.
+    - **Cosa riportare:** se un solo clic basta, o se il testo del pulsante non cambia.
+24. **Il mouse sopra il riquadro (issue #17).** Fai comparire una frase (`/au narratore`) e tieni il mouse **sopra il testo** durante la dissolvenza.
+    - **Cosa aspettarti:** il riquadro resta visibile finché il mouse è sopra. Quando lo sposti svanisce.
+    - **Cosa riportare:** se svanisce comunque (vuol dire che `IsMouseOver` non esiste neppure come metodo del frame).
+25. **Bersaglio dall'identità segreta (issue #6, SP-02).** In un luogo dove il client nasconde l'identità dei bersagli (combattimento in un incontro o in un'istanza con restrizioni, se esiste) seleziona un bersaglio e scrivi `/au debug full`.
+    - **Cosa aspettarti:** la riga `value:target.identity` è `RESTRICTED`; nessun errore rosso; le frasi di battaglia escono lo stesso, senza il nome del bersaglio.
+    - **Cosa riportare:** errori rossi con un bersaglio segreto; la riga `value:target.identity`.
+26. **Capacità nuova.** Con `/au debug full` controlla la riga `api:OpenChat` (`ChatFrame_OpenChat`): `AVAILABLE` o `MISSING`.
 
 ## S3: i testi e il validatore (aggiunto dallo step S3)
 
@@ -218,6 +243,12 @@ SP-05 C (tasto) ......... conferma ok? ___  pausa ok? ___
 SP-05 D (anteprima) ..... ok? ___
 SP-05 E (auto) .......... emote da sole? ___  /say da solo nel mondo aperto? (deve essere NO) ___
 S3 /au valida ........... errori ___  avvisi ___  accenti giusti (IT/EN)? ___  profondità: differenza notata? ___
+Q2 nella chat (#14) ..... pulsante c'è? ___  casella su /s giusta? ___  Invio da lì parte? ___  riga api:OpenChat ___
+Q2 testo per canale (#5)  emote in /s con nome? ___  parlato in /e con "dice"? ___
+Q2 editor (#4) .......... resta aperto 40 s? ___  Invio spedisce? ___
+Q2 automatica (#8) ...... due gesti da comando/pannello/wizard? ___
+Q2 mouse sopra (#17) .... il riquadro resta? ___
+Q2 identità segreta (#6)  nessun errore? ___  riga value:target.identity ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

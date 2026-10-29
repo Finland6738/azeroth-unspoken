@@ -20,10 +20,10 @@ NS.Validator = Validator
 ---@field warnings AUProblem[]
 ---@field stats table
 
--- byte massimi per canale. SendChatMessage accetta 255 byte; per le voci private (inner, npc)
--- il limite è solo di leggibilità nel riquadro del narratore.
-Validator.LIMITS = { SAY = 255, YELL = 255, EMOTE = 255, PARTY = 255, RAID = 255, GUILD = 255, INSTANCE_CHAT = 255,
-	PRIVATE = 400 }
+-- byte massimi per canale: è la stessa tabella che usa il Chat Gateway per tagliare (Config.CHAT_LIMITS),
+-- così il validatore prevede ciò che il Gateway farà davvero.
+---@type table<string, integer>
+Validator.LIMITS = NS.Config.CHAT_LIMITS
 
 -- canali in cui può finire il testo di una voce
 local CHANNELS = {

@@ -18,6 +18,15 @@ Config.SCHEMA_VERSION = 2
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 
+-- Byte massimi di un messaggio, per canale: la fonte unica del Chat Gateway (che taglia) e del validatore
+-- (che segnala le frasi troppo lunghe). SendChatMessage accetta 255 byte. PRIVATE non è un canale: è il
+-- limite di leggibilità nel narratore per le voci che non escono mai in chat (inner, npc).
+---@type table<string, integer>
+Config.CHAT_LIMITS = {
+	SAY = 255, YELL = 255, EMOTE = 255, PARTY = 255, RAID = 255, GUILD = 255, INSTANCE_CHAT = 255,
+	PRIVATE = 400,
+}
+
 -- GDD §11.4, più le impostazioni del prototipo
 ---@class AUChatSettings
 ---@field mode string PRIVATE | PREVIEW | CONFIRM_TO_SEND | AUTO_ONLY_IF_ALLOWED
@@ -306,7 +315,8 @@ Config.migrations = {
 	},
 }
 
--- false se i dati vengono da una versione più nuova dell'addon: si usano senza toccarli
+-- false se i dati vengono da una versione più nuova dell'addon (Load li usa su una copia, senza toccarli)
+-- o se una migrazione fallisce
 ---Porta i dati alla versione corrente dello schema.
 ---@param db table
 ---@param kind "global"|"character"
@@ -325,19 +335,42 @@ function Config:Migrate(db, kind)
 	return true
 end
 
+---@param db table
+---@return boolean newer i dati sono stati scritti da una versione dell'addon più nuova di questa
+function Config:IsNewerSchema(db)
+	return (tonumber(db.schemaVersion) or 0) > self.SCHEMA_VERSION
+end
+
+-- Dati di uno schema più nuovo (ad esempio dopo un ritorno a una versione precedente dell'addon) non si
+-- modificano: né migrazione, né Merge, né Validate, che riporterebbero al predefinito i valori che questa
+-- versione non conosce. Si lavora su una copia, scartata a fine sessione; il file salvato resta com'era.
+---Carica e prepara le impostazioni (NS.db) e i dati del personaggio (NS.cdb).
+---@return AUSettings
 function Config:Load()
 	if type(AzerothUnspokenDB) ~= "table" then AzerothUnspokenDB = {} end
 	if type(AzerothUnspokenCharacterDB) ~= "table" then AzerothUnspokenCharacterDB = {} end
 	local g, c = AzerothUnspokenDB, AzerothUnspokenCharacterDB
-	self:Migrate(g, "global")
+	self.readOnly = { global = self:IsNewerSchema(g), character = self:IsNewerSchema(c) }
+	self:Migrate(g, "global")   -- con dati più nuovi segnala in diagnostica e non cambia nulla
 	self:Migrate(c, "character")
-	if type(g.settings) ~= "table" then g.settings = {} end
-	Config.Merge(self.defaults, g.settings)
-	self.issues = self:Validate(g.settings)
-	Config.Merge(self.characterDefaults, c)
-	self:Validate(c, self.characterDefaults, "character", self.issues)
-	NS.db, NS.cdb = g.settings, c
-	return g.settings
+
+	local settings = g.settings
+	if self.readOnly.global then
+		settings = DeepCopy(type(settings) == "table" and settings or {})
+	elseif type(settings) ~= "table" then
+		settings = {}
+		g.settings = settings
+	end
+	Config.Merge(self.defaults, settings)
+	self.issues = self:Validate(settings)
+
+	local char = c
+	if self.readOnly.character then char = DeepCopy(c) end
+	Config.Merge(self.characterDefaults, char)
+	self:Validate(char, self.characterDefaults, "character", self.issues)
+
+	NS.db, NS.cdb = settings, char
+	return settings
 end
 
 ---------------------------------------------------------------------------

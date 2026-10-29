@@ -23,6 +23,8 @@ local Compat = NS.Compat
 ---@field pending? AUProposal proposta in attesa
 ---@field inPlayerAction boolean vero solo dentro PlayerAction
 ---@field lastRefusal? string motivo dell'ultimo invio rifiutato
+---@field autoAskedAt? number GetTime() dell'avviso mostrato prima di attivare l'invio automatico
+---@field editing boolean il giocatore sta modificando la proposta
 ---@field sendLog { time: number, auto: boolean }[]
 local Gateway = NS:RegisterModule("gateway")
 NS.Gateway = Gateway
@@ -57,10 +59,15 @@ function NS:InInstance()
 	return inInstance and kind ~= "none"
 end
 
--- 255 byte al massimo, senza spezzare un carattere UTF-8 a metà
-local function Clip(text)
-	if #text <= 255 then return text end
-	local cut = text:sub(1, 252)
+-- al massimo `limit` byte (Config.CHAT_LIMITS[canale], 255 se il canale non è in tabella), senza spezzare
+-- un carattere UTF-8 a metà
+---@param text string
+---@param limit? integer
+---@return string
+local function Clip(text, limit)
+	limit = limit or 255
+	if #text <= limit then return text end
+	local cut = text:sub(1, limit - 3)
 	while #cut > 0 and cut:byte(#cut) >= 0x80 and cut:byte(#cut) < 0xC0 do cut = cut:sub(1, -2) end
 	if #cut > 0 and cut:byte(#cut) >= 0xC0 then cut = cut:sub(1, -2) end
 	return cut .. "..."
@@ -100,27 +107,66 @@ function Gateway:ParseMode(value)
 	return MODE_ALIAS[value:lower()]
 end
 
--- Cambia modalità. autoPublicSay segue la scelta: solo AUTO_ONLY_IF_ALLOWED lo accende.
----Cambia modalità; autoPublicSay segue la scelta (solo AUTO_ONLY_IF_ALLOWED lo accende).
+-- Cambia modalità. L'invio automatico è un secondo consenso (output.autoPublicSay) che si accende solo
+-- con opts.confirmAuto, e solo scegliendo AUTO_ONLY_IF_ALLOWED: ogni altro cambio di modalità lo spegne.
+-- Senza il consenso AUTO_ONLY_IF_ALLOWED si comporta come CONFIRM_TO_SEND. Chi lo offre all'utente
+-- (comando, pannello, procedura guidata) passa da SelectAuto.
+---Cambia modalità; autoPublicSay si accende solo con opts.confirmAuto e solo in AUTO_ONLY_IF_ALLOWED.
 ---@param value string
+---@param opts? { confirmAuto: boolean }
 ---@return boolean ok
 ---@return string? mode
-function Gateway:SetMode(value)
+function Gateway:SetMode(value, opts)
 	local mode = self:ParseMode(value)
 	if not mode then return false end
 	NS.db.chat.mode = mode
-	NS.db.output.autoPublicSay = (mode == "AUTO_ONLY_IF_ALLOWED")
+	NS.db.output.autoPublicSay = (mode == "AUTO_ONLY_IF_ALLOWED" and opts ~= nil and opts.confirmAuto == true)
+	self.autoAskedAt = nil
 	if mode == "PRIVATE" or not NS.db.modules.publicChat then self:Discard() end
 	self:Changed()
 	return true, mode
 end
 
+-- Scorre PRIVATE, PREVIEW, CONFIRM_TO_SEND. L'invio automatico non è nel giro: da lì si torna a PRIVATE.
+---@return boolean ok
+---@return string? mode
 function Gateway:CycleMode()
 	local cur = self:GetMode()
-	for i, m in ipairs(self.MODES) do
-		if m == cur then return self:SetMode(self.MODES[(i % #self.MODES) + 1]) end
+	local cycle = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND" }
+	for i, m in ipairs(cycle) do
+		if m == cur then return self:SetMode(cycle[(i % #cycle) + 1]) end
 	end
 	return self:SetMode("PRIVATE")
+end
+
+local AUTO_CONFIRM_SECONDS = 10
+
+-- L'invio automatico (emote sempre, /say nelle istanze, a nome del personaggio) si sceglie con due gesti:
+-- il primo mostra l'avviso e non cambia nulla, il secondo, entro 10 secondi, lo attiva. Vale per il comando
+-- (/au chat auto, ripetuto), il pannello e la procedura guidata.
+---@return "warned"|"enabled" state
+function Gateway:SelectAuto()
+	if NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED" and NS.db.output.autoPublicSay then return "enabled" end
+	local now = GetTime()
+	if self:IsAutoArmed() then
+		self:SetMode("AUTO_ONLY_IF_ALLOWED", { confirmAuto = true })
+		return "enabled"
+	end
+	self.autoAskedAt = now
+	NS:Print(NS:L("chat_auto_warning"))
+	return "warned"
+end
+
+-- l'avviso è stato mostrato da poco: un secondo gesto conferma
+---@return boolean
+function Gateway:IsAutoArmed()
+	return self.autoAskedAt ~= nil and GetTime() - self.autoAskedAt <= AUTO_CONFIRM_SECONDS
+end
+
+-- l'invio automatico è davvero acceso (modalità e consenso)
+---@return boolean
+function Gateway:IsAutoActive()
+	return NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED" and NS.db.output.autoPublicSay == true
 end
 
 ---------------------------------------------------------------------------
@@ -157,6 +203,37 @@ function Gateway:CanSendWithoutAction(channel)
 	return false
 end
 
+-- Il testo che parte davvero nel canale. Il gioco antepone il nome del personaggio solo alle emote (/e):
+--  * un'emote in un altro canale (/s, /p...) porta il nome davanti, altrimenti resterebbe senza soggetto;
+--  * una frase parlata in /e diventa "dice: «...»" (verbo localizzato), altrimenti sarebbe "Nome Frase".
+---@param form string say | emote
+---@param text string testo della frase, senza nome né virgolette
+---@param channel string
+---@param player? string nome del personaggio (anche da Total RP 3)
+---@return string
+function Gateway:TextFor(form, text, channel, player)
+	text = Trim(text or "")
+	if text == "" then return "" end
+	if form == "emote" then
+		if channel == "EMOTE" then return text end
+		local name = player
+		if name == nil or name == "" then name = Compat.SafeCall(UnitName, "player") end
+		return Trim((name or "") .. " " .. text)
+	end
+	if channel == "EMOTE" then return NS:L("emote_says", text) end
+	return text
+end
+
+-- Come la proposta compare nel narratore, secondo il canale: ciò che gli altri vedranno in chat.
+---@param p { form: string, speaker: string, text: string, edited?: string, channel: string, player?: string }
+---@return string
+function Gateway:DisplayFor(p)
+	local sent = self:TextFor(p.form, p.edited or p.text, p.channel, p.player)
+	if p.channel == "EMOTE" then return Trim((p.player or "") .. " " .. sent) end
+	if p.form == "say" and p.speaker == "character" then return "«" .. sent .. "»" end
+	return sent
+end
+
 -- passa al canale successivo tra quelli disponibili (per le proposte in attesa)
 ---Cambia il canale della proposta in attesa.
 ---@return boolean ok
@@ -171,6 +248,7 @@ function Gateway:CycleChannel()
 		local c = list[((start - 1 + step) % #list) + 1]
 		if self:ChannelAvailable(c) then
 			p.channel = c
+			p.display = self:DisplayFor(p)
 			self:Changed()
 			return true, c
 		end
@@ -258,7 +336,7 @@ function Gateway:Send(text, channel, opts)
 	local send = Compat:GetChatSender()
 	if not send then return false, "no_sender" end
 	if Compat:InChatLockdown() then return false, "lockdown" end
-	local good, err = pcall(send, Clip(text), channel)
+	local good, err = pcall(send, Clip(text, NS.Config.CHAT_LIMITS[channel]), channel)
 	if not good then
 		NS.Diagnostics:Error("chat", tostring(err))
 		return false, "error", err
@@ -278,17 +356,28 @@ end
 -- Proposta in attesa
 ---------------------------------------------------------------------------
 Gateway.pending = nil
+Gateway.editing = false   -- il giocatore sta modificando la proposta: non scade e non viene sostituita
 
 function Gateway:Changed()
 	if NS.UpdateButton then NS.UpdateButton() end
 	if NS.Narrator then NS.Narrator:Refresh() end
 end
 
+-- Con l'editor aperto la proposta non scade; alla chiusura l'attesa riparte da zero, così il testo
+-- scritto a mano non si perde mentre il giocatore pensa.
+---@param on boolean
+function Gateway:SetEditing(on)
+	on = on and self.pending ~= nil
+	if on == self.editing then return end
+	self.editing = on
+	if not on and self.pending then self.pending.time = GetTime() end
+end
+
 ---@return AUProposal?
 function Gateway:GetPending()
 	local p = self.pending
 	if not p then return nil end
-	if GetTime() - p.time > NS.db.chat.pendingSeconds then
+	if not self.editing and GetTime() - p.time > NS.db.chat.pendingSeconds then
 		self:Discard()
 		return nil
 	end
@@ -296,6 +385,7 @@ function Gateway:GetPending()
 end
 
 function Gateway:Discard()
+	self.editing = false
 	if not self.pending then return end
 	self.pending = nil
 	self:Changed()
@@ -309,7 +399,7 @@ function Gateway:SetPendingText(text)
 	text = Trim(text or "")
 	if not p or text == "" then return false end
 	p.edited = text
-	p.display = self:Display({ form = p.form, speaker = p.speaker, text = text }, { player = p.player })
+	p.display = self:DisplayFor(p)
 	self:Changed()
 	return true
 end
@@ -323,7 +413,7 @@ end
 function Gateway:SendPending(text)
 	local p = self:GetPending()
 	if not p then return false, "empty" end
-	local ok, why, err = self:Send(text or p.edited or p.text, p.channel)
+	local ok, why, err = self:Send(self:TextFor(p.form, text or p.edited or p.text, p.channel, p.player), p.channel)
 	if not ok then
 		self:Report(why, err)
 		return false, why
@@ -331,6 +421,38 @@ function Gateway:SendPending(text)
 	local channel = p.channel
 	self:Discard()
 	if NS.Narrator then NS.Narrator:NoteSent(channel) end
+	return true
+end
+
+-- Alternativa all'invio dall'addon: la proposta va nella casella della chat standard, già sul canale giusto
+-- ("/s testo"), e il giocatore la invia con il suo Invio. Il testo passa dalla stessa trasformazione per canale
+-- e dallo stesso taglio dell'invio diretto. Non è un invio dell'addon: niente controllo del flood e nessun
+-- bisogno di un'azione; la proposta si scarta dopo la copia.
+---@return boolean ok
+---@return string? reason empty | channel_unavailable | no_chat_box | copy_failed
+function Gateway:CopyToChat()
+	local p = self:GetPending()
+	if not p then return false, "empty" end
+	local text = Trim(self:TextFor(p.form, p.edited or p.text, p.channel, p.player))
+	if text == "" then
+		self:Report("empty")
+		return false, "empty"
+	end
+	if not self:ChannelAvailable(p.channel) then
+		self:Report("channel_unavailable")
+		return false, "channel_unavailable"
+	end
+	if not Compat:CanOpenChat() then
+		self:Report("no_chat_box")
+		return false, "no_chat_box"
+	end
+	local ok, why = Compat:OpenChatWith(Clip(text, NS.Config.CHAT_LIMITS[p.channel]), p.channel)
+	if not ok then
+		why = why or "copy_failed"
+		self:Report(why)
+		return false, why
+	end
+	self:Discard()
 	return true
 end
 
@@ -377,6 +499,8 @@ end
 ---@return boolean
 function Gateway:Propose(rec, ctx, opts)
 	opts = opts or {}
+	-- il giocatore sta scrivendo: una frase spontanea non gli cambia la proposta sotto le dita
+	if self.editing and opts.auto then return false end
 	local mode = self:EffectiveMode()
 	rec.display = self:Display(rec, ctx)
 	local channel = self:ResolveChannel(rec)
@@ -390,7 +514,7 @@ function Gateway:Propose(rec, ctx, opts)
 
 	if mode == "AUTO_ONLY_IF_ALLOWED" and opts.auto and NS.db.output.autoPublicSay
 		and self:CanSendWithoutAction(channel) then
-		local ok = self:Send(rec.text, channel, { auto = true })
+		local ok = self:Send(self:TextFor(rec.form, rec.text, channel, ctx and ctx.player), channel, { auto = true })
 		if ok then
 			rec.sentTo = channel
 			if NS.Narrator then NS.Narrator:Present(rec) end
@@ -403,6 +527,8 @@ function Gateway:Propose(rec, ctx, opts)
 		text = rec.text, display = rec.display, speaker = rec.speaker, event = rec.event,
 		form = rec.form, channel = channel, time = GetTime(), player = ctx and ctx.player,
 	}
+	self.pending.display = self:DisplayFor(self.pending)
+	rec.display = self.pending.display
 	rec.proposal = self.pending
 	self:Changed()
 	if NS.Narrator then NS.Narrator:Present(rec) else NS:Print(rec.display) end

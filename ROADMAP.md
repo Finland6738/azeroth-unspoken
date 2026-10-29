@@ -121,7 +121,7 @@ Per decisione dell'utente (2026-10-29) lo sviluppo prosegue senza aspettare G1. 
 |---|---|---|---|
 | D1 | Documentazione: README professionale, ADR in `docs/adr/`, architettura, guida ai pacchetti, CONTRIBUTING, CHANGELOG, valutazione della wiki GitHub | Sonnet · high | fatto il 2026-10-29 (README it/en, 14 ADR, architettura, CONTRIBUTING, CHANGELOG, `docs/README.md`; wiki: non si usa per ora, ADR 0013; licenza da scegliere, issue #2; la guida ai pacchetti di S3 va solo collegata) |
 | Q1 | Revisione del codice e della documentazione: bug e miglioramenti aperti come issue GitHub, senza modificare il codice | Opus · medium | da fare |
-| Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente |
+| Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente. Q2 fatto: #3, #4, #5, #6, #8, #11, #12, #14, #17, #19 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 20–26) |
 
 ### Issue GitHub
 
@@ -256,7 +256,8 @@ L'utente esegue gli spike SP-01…SP-05 del GDD seguendo la lista di controllo [
   - Le varianti non si ripetono di fila (`cdb.memory.variant`).
   - Una lingua registrata da un pacchetto dopo il caricamento resta quella scelta (chiude l'issue #7).
 - **Aperte da S3:** #17 (`MouseIsOver`, `bug` `in-game`), #18 (pochi testi del narratore, una sola variante per frase: `content`, per S7), #19 (limite di 255 byte duplicato tra Gateway e validatore, `enhancement`).
-- **Test:** `.venv\Scripts\python -I -X utf8 Testsun_tests.py AzerothUnspoken` esegue anche `TestSchema.lua` (registro, varianti, profondità, conversione del formato vecchio, estensioni, lingue) e `TestValidator.lua` (ogni controllo con un pacchetto sbagliato apposta, `/au valida`), la prova UTF-8/LF dei file e `check_api.py`.
+- **Test:** `.venv\Scripts\python -I -X utf8 Tests
+un_tests.py AzerothUnspoken` esegue anche `TestSchema.lua` (registro, varianti, profondità, conversione del formato vecchio, estensioni, lingue) e `TestValidator.lua` (ogni controllo con un pacchetto sbagliato apposta, `/au valida`), la prova UTF-8/LF dei file e `check_api.py`.
 - **Non verificato senza il client** (aggiunto a `docs/G1_checklist.md`, passi 17–19): che i file dei testi siano letti come UTF-8 (accenti giusti), che `/au valida` dia 428 frasi e 0 errori nel client vero, che la profondità cambi la sensazione dei testi. L'assenza di `MouseIsOver` e il resto di `check_api.py` si riferiscono al dump (build 70170), non al build 70658.
 
 ### S4: Narrative Director (GDD §4.2, §5.2, §6, §10, §15)
