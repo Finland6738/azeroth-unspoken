@@ -122,6 +122,9 @@ Per decisione dell'utente (2026-10-29) lo sviluppo prosegue senza aspettare G1. 
 | D1 | Documentazione: README professionale, ADR in `docs/adr/`, architettura, guida ai pacchetti, CONTRIBUTING, CHANGELOG, valutazione della wiki GitHub | Sonnet · high | fatto il 2026-10-29 (README it/en, 14 ADR, architettura, CONTRIBUTING, CHANGELOG, `docs/README.md`; wiki: non si usa per ora, ADR 0013; licenza da scegliere, issue #2; la guida ai pacchetti di S3 va solo collegata) |
 | Q1 | Revisione del codice e della documentazione: bug e miglioramenti aperti come issue GitHub, senza modificare il codice | Opus · medium | da fare |
 | Qn | Correzione delle issue `bug` più importanti, una sessione per gruppo di issue collegate, tra uno step e l'altro | Sonnet · high | ricorrente. Q2 fatto: #3, #4, #5, #6, #8, #11, #12, #14, #17, #19 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 20–26). Q3 fatto: #26, #9, #21, #23, #13, #37, #38 (2026-10-29; test fuori gioco superati; da provare in gioco: G1 passi 69–74) |
+| L1 | English as the default language of the project documentation: README.md in English (with README.it.md), ROADMAP, ADRs, architecture, pack format guide, CONTRIBUTING, CHANGELOG. From then on, PRs, issues and commits are in English. The user's in-game checklists also stay in Italian | Sonnet · high | da fare, dopo Q5, Q6 e D2 |
+| W1 | Wiki GitHub: user manual in English, exhaustive and non-technical, written in `docs/wiki/` and published to the wiki. No sensitive data, no developer content | Opus · medium | da fare, dopo L1 |
+| R1 | Automatic rules: CI with the tests on every PR, a docs check that blocks a PR changing the addon without updating CHANGELOG and docs/wiki, wiki synced from `docs/wiki/` on every merge to main, PR template | Sonnet · high | da fare, dopo W1 |
 
 ### Issue GitHub
 
