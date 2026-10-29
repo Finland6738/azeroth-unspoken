@@ -290,6 +290,17 @@ function Validator:Run(opts)
 					Add("error", "badCondition", p.pack, id, nil, msg)
 				end
 			end
+			-- richiamo di memoria: una frase di un evento di richiamo cita un ricordo, quindi deve dichiarare la
+			-- condizione che lo garantisce (firstVisit, repeatVisit, lastVisitBad, remembered...)
+			if NS.LivingMemory then
+				for _, ev in ipairs(p.events) do
+					if NS.LivingMemory.recalls[ev] and not Engine.UsesMemory(p.when) then
+						Add("error", "recallWithoutMemory", p.pack, id, nil,
+							("evento di richiamo '%s' senza una condizione di memoria"):format(ev))
+						break
+					end
+				end
+			end
 			-- tag di affinità del Character Soul (trait:valore, req:, not:, topic:): tratto e valore devono esistere
 			if NS.Traits then
 				for tag in pairs(p.tags or {}) do

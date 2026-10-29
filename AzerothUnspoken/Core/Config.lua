@@ -2,6 +2,7 @@
 --   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... } }
 --   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
 --     personality = { version, archetype, traits = { [tratto] = valore }, trp3 }  (Systems/Personality.lua)
+--     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
 local ADDON, NS = ...
 ---@class AUConfig
 ---@field SCHEMA_VERSION integer
@@ -13,7 +14,7 @@ local ADDON, NS = ...
 local Config = {}
 NS.Config = Config
 
-Config.SCHEMA_VERSION = 3
+Config.SCHEMA_VERSION = 4
 
 -- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
@@ -130,7 +131,8 @@ Config.characterDefaults = {
 	-- Character Soul (S5): archetipo, scelte esplicite sui tratti e consenso a leggere i tratti da Total RP 3.
 	-- Vuoto = profilo neutro. I valori dei tratti si controllano in Personality:Sanitize (modello Engine/Traits.lua).
 	personality = { version = 1, archetype = "neutral", traits = {}, trp3 = false },
-	memories = {},
+	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
+	memories = { version = 1, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	arcs = {},
 	history = {},
 }
@@ -310,6 +312,8 @@ Config.migrations = {
 		end,
 		-- 3: nessun cambiamento alle impostazioni (versione allineata a quella del personaggio, che cambia con S5)
 		[3] = function() end,
+		-- 4: nessun cambiamento alle impostazioni (versione allineata a quella del personaggio, che cambia con S6)
+		[4] = function() end,
 	},
 	character = {
 		[1] = function(db)
@@ -330,6 +334,20 @@ Config.migrations = {
 			if type(p.archetype) ~= "string" then p.archetype = nil end
 			if type(p.trp3) ~= "boolean" then p.trp3 = nil end
 			p.version = 1
+		end,
+		-- 4: memories (segnaposto vuoto fino a S5) diventa la Living Memory. Una tabella vuota o rovinata riparte da zero;
+		-- i campi che mancano li aggiunge Merge e le voci malformate le scarta LivingMemory:Sanitize all'avvio.
+		[4] = function(db)
+			local m = db.memories
+			if type(m) ~= "table" then
+				db.memories = nil
+				return
+			end
+			if next(m) == nil then
+				db.memories = nil
+				return
+			end
+			if m.version == nil then m.version = 1 end
 		end,
 	},
 }

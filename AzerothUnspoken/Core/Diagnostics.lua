@@ -108,6 +108,7 @@ function Diagnostics:Report(verbose)
 				g.lastMinuteAuto, tostring(g.lastRefusal)))
 		end
 		if NS.Director and NS.Director.Status then Add("Narrative Director: " .. NS.Director:Status()) end
+		if NS.LivingMemory then Add("Living Memory: " .. NS.LivingMemory:Status()) end
 		for _, issue in ipairs(NS.Config.issues or {}) do Add("  config: " .. issue) end
 	else
 		Add(NS:L("debug_no_db"))

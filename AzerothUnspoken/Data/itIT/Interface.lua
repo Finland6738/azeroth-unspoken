@@ -137,6 +137,33 @@ NS:RegisterLanguage("it", {
 		wiz_back = "Indietro", wiz_next = "Avanti", wiz_finish = "Fine",
 		wiz_done = "pronto. Il narratore è privato: nulla va in chat senza un tuo gesto. /au aiuto per i comandi, /au benvenuto per rifare la procedura.",
 
+		-- Living Memory e diario (step S6)
+		opt_journal = "Diario del personaggio...",
+		mem_title = "Diario del personaggio",
+		mem_intro = "I ricordi del tuo personaggio: solo momenti significativi, mai testo di chat. Puoi cancellarli o renderli permanenti; l'addon non scrive file, per esportarli copia il testo.",
+		mem_kind_first_visit = "Prima visita", mem_kind_return = "Ritorno", mem_kind_death = "Morte",
+		mem_kind_flight = "Fuga", mem_kind_level = "Livello raggiunto", mem_kind_story = "Storia",
+		mem_tab_memories = "Ricordi", mem_tab_places = "Luoghi", mem_tab_flags = "Flag", mem_tab_session = "Sessione",
+		mem_importance = "importanza %d", mem_level_short = "liv. %d", mem_first = "prima", mem_last = "ultima",
+		mem_place_visits = "%d visite", mem_place_bad = "finita male",
+		mem_export_title = "Azeroth Unspoken - diario di %s (esportato il %s)",
+		mem_export_help = "Seleziona il testo e copialo con Ctrl+C. L'addon non può scrivere file.",
+		mem_export = "Esporta", mem_reset = "Dimentica tutto", mem_reset_confirm_btn = "Conferma: dimentica", mem_close = "Chiudi",
+		mem_prev = "<", mem_next = ">", mem_page = "pagina %d di %d", mem_empty = "Niente da mostrare.",
+		mem_perm_tip = "Permanente: non si compatta mai.", mem_delete_tip = "Cancella.", mem_forget_tip = "Dimentica il luogo: la prossima volta sarà la prima visita.",
+		mem_flag_tip = "Togli il flag.", mem_session_note = "Solo di questa sessione: si dimenticano alla chiusura.",
+		mem_off = "la memoria è spenta (modulo 'memoria' nelle impostazioni).",
+		mem_readonly = "i dati della memoria vengono da una versione più nuova dell'addon: si possono leggere, non cambiare.",
+		mem_summary = "memoria: %d ricordi (%d permanenti), %d luoghi, %d flag.",
+		mem_flags = "flag: %s", mem_none = "nessuno", mem_flag_invalid = "nome del flag non valido: '%s' (lettere, cifre e _).",
+		mem_flag_on = "flag impostato: %s.", mem_flag_off = "flag tolto: %s.",
+		mem_perm_on = "ricordo #%d permanente.", mem_perm_off = "ricordo #%d non più permanente.",
+		mem_perm_limit = "troppi ricordi permanenti: toglierne qualcuno prima.", mem_missing = "non trovato: '%s'.",
+		mem_deleted = "ricordo #%d cancellato.", mem_place_forgotten = "luogo dimenticato: %s.",
+		mem_reset_confirm = "questo cancella la memoria (%s). Per confermare ripeti lo stesso comando entro 15 secondi.",
+		mem_reset_done = "memoria azzerata (%d voci).",
+		mem_help = "uso: /au diario [lista | luoghi | flag <nome> | esporta | permanente <n> | elimina <n> | dimentica <luogo> | reset [tutto|ricordi|ordinari|luoghi|flag]]",
+
 		help = "comandi:\n"
 			.. "/au on | off - attiva o spegne le frasi automatiche\n"
 			.. "/au pausa - pausa immediata del narratore (anche col tasto assegnato)\n"
@@ -150,6 +177,7 @@ NS:RegisterLanguage("it", {
 			.. "/au copia - copia la proposta nella casella della chat (la invii tu con Invio)\n"
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
 			.. "/au anima [lista|neutro|archetipo <id>|trp3 on|off|<tratto> <valore>|evita <argomento>] - personalità del personaggio\n"
+			.. "/au diario [lista|luoghi|flag <nome>|esporta|permanente <n>|elimina <n>|dimentica <luogo>|reset] - memoria e diario del personaggio\n"
 			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | vittoria | preghiera | ringrazia | scherzo\n"
 			.. "/au evento <nome> - propone una frase per un evento (battle, zone, muse...)\n"
 			.. "/au incanta <incantesimo> - frase per un incantesimo (utile nelle macro)\n"

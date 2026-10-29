@@ -65,7 +65,8 @@ check("## SavedVariables: AzerothUnspokenDB" in toc_text, "SavedVariables global
 check("## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB" in toc_text, "SavedVariables per personaggio")
 for f in ("Data\\RegistryCombat.lua", "Data\\RegistryClasses.lua", "Data\\itIT\\Classes.lua", "Data\\enUS\\Classes.lua",
           "Engine\\Validator.lua", "Engine\\Traits.lua", "Systems\\Personality.lua", "UI\\ProfileFrame.lua",
-          "Data\\RegistrySoul.lua", "Data\\itIT\\Soul.lua", "Data\\enUS\\Soul.lua"):
+          "Data\\RegistrySoul.lua", "Data\\itIT\\Soul.lua", "Data\\enUS\\Soul.lua", "Systems\\LivingMemory.lua",
+          "UI\\JournalFrame.lua", "Data\\RegistryMemory.lua", "Data\\itIT\\Memory.lua", "Data\\enUS\\Memory.lua"):
     check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2, S5)")
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
@@ -77,8 +78,8 @@ for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Dir
 check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
-check(G.AzerothUnspokenDB.schemaVersion == 3, "schemaVersion globale")
-check(G.AzerothUnspokenCharacterDB.schemaVersion == 3, "schemaVersion per personaggio")
+check(G.AzerothUnspokenDB.schemaVersion == 4, "schemaVersion globale")
+check(G.AzerothUnspokenCharacterDB.schemaVersion == 4, "schemaVersion per personaggio")
 check(G.SlashCmdList.AZEROTHUNSPOKEN is not None, "comando registrato")
 check(G.SLASH_AZEROTHUNSPOKEN1 == "/unspoken" and G.SLASH_AZEROTHUNSPOKEN2 == "/au", "alias /unspoken e /au")
 errors = list(NS.Diagnostics.errors.values())
@@ -96,8 +97,8 @@ ids = val.stats.phrases
 langs = ["it", "en"]
 print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
       f"{len(errors_)} errori, {len(warnings_)} avvisi")
-# 367 frasi di base + 54 delle classi + 16 della personalità + 7 del pacchetto di esempio
-check(ids == 444, f"444 frasi caricate (trovate {ids})")
+# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 7 del pacchetto di esempio
+check(ids == 458, f"458 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
