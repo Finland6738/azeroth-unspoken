@@ -253,22 +253,23 @@ end)
 T.run("lingue nuove, traduzioni e testi in più, anche prima della regola", function()
 	NS:RegisterLanguage("de", { name = "Deutsch", ui = {} })
 	-- traduzione di una frase del pacchetto di base: si aggiunge, l'italiano resta
-	NS:RegisterPack({ id = "t_de", texts = { deDE = { ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!" } } })
 	local p = Engine.byId["battle.gen.12"]
+	local it0, en0 = #p.text.it, #p.text.en
+	NS:RegisterPack({ id = "t_de", texts = { deDE = { ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!" } } })
 	T.eq(#p.text.de, 1, "tedesco aggiunto"); T.eq(p.text.de[1].pack, "t_de", "con il pacchetto che l'ha portato")
-	T.ok(#p.text.it == 1 and #p.text.en == 1, "le altre lingue non cambiano")
+	T.ok(#p.text.it == it0 and #p.text.en == en0, "le altre lingue non cambiano")
 	NS.db.locale = "de"
 	local r = Pick("battle", "say", { target = nil })
 	NS.db.locale = "it"
 	T.eq(r and r.text, "Keinen Schritt zurück. Keinen einzigen!", "una lingua nuova si può scegliere")
 	-- varianti in più per una frase esistente, senza duplicati
 	NS:AddTexts("itIT", { ["battle.gen.12"] = { "Nessun passo indietro. Nessuno!", "Non un passo indietro." } }, "t_more")
-	T.eq(#p.text.it, 2, "una variante nuova; quella identica non si duplica")
-	T.eq(p.text.it[2].t, "Non un passo indietro.", "testo aggiunto")
-	T.eq(p.text.it[2].pack, "t_more", "con il suo pacchetto")
+	T.eq(#p.text.it, it0 + 1, "una variante nuova; quella identica non si duplica")
+	T.eq(p.text.it[it0 + 1].t, "Non un passo indietro.", "testo aggiunto")
+	T.eq(p.text.it[it0 + 1].pack, "t_more", "con il suo pacchetto")
 	-- il vecchio nome dell'API funziona ancora
 	NS:AddTranslations("en", { ["battle.gen.12"] = "Not one step back." })
-	T.eq(#p.text.en, 2, "AddTranslations")
+	T.eq(#p.text.en, en0 + 1, "AddTranslations")
 	-- testi che arrivano prima della regola
 	NS:AddTexts("itIT", { ["t.late.01"] = { "arrivato prima" } }, "t_early")
 	T.ok(Engine.pendingTexts["t.late.01"] ~= nil, "in attesa")
@@ -353,7 +354,7 @@ T.run("il database di base ha le tre voci e tutte le profondità", function()
 			if p.speaker == "inner" then T.eq(p.form, "say", p.id .. ": il pensiero non è un'emote") end
 		end
 	end
-	T.eq(base, 588, "367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore e luogo")
+	T.eq(base, 803, "intenzioni di base dopo i contenuti Alpha (S7); la copertura è in TestContent.lua")
 	T.ok(by.inner >= 80 and by.narrator >= 19 and by.character >= 250, "voci: " .. by.inner .. "/" .. by.narrator .. "/" .. by.character)
-	T.eq(by.npc, 0, "nessuna voce NPC finché non c'è NPC Alive")
+	T.ok(by.npc >= 12, "la voce NPC parla negli incontri con NPC dal ruolo noto (S7): " .. by.npc)
 end)

@@ -107,8 +107,8 @@ langs = ["it", "en"]
 print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
       f"{len(errors_)} errori, {len(warnings_)} avvisi")
 # 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
-# e luogo (S6c) + 7 del pacchetto di esempio
-check(ids == 595, f"595 frasi caricate (trovate {ids})")
+# e luogo (S6c) + 7 del pacchetto di esempio; S7 (contenuti Alpha): 803 di base + 7 del pacchetto di esempio
+check(ids == 810, f"810 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -410,7 +410,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace"):
+             "TestOtherPlace", "TestContent"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
