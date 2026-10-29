@@ -33,6 +33,7 @@ NS.Gateway = Gateway
 ---@field text string testo proposto
 ---@field edited? string testo modificato dal giocatore
 ---@field display string testo come compare nel narratore
+---@field id? string id della frase proposta
 ---@field speaker string
 ---@field event string
 ---@field form string say | emote
@@ -40,6 +41,7 @@ NS.Gateway = Gateway
 ---@field time number GetTime() alla creazione
 ---@field player? string nome per le emote
 ---@field reviewed? boolean in PREVIEW: il giocatore ha già aperto l'editor
+---@field ctx? table contesto con cui è nata (serve a "Un'altra": stesso evento, stesso contesto)
 
 Gateway.MODES = NS.Config.CHAT_MODES
 Gateway.CHANNELS = NS.Config.CHAT_CHANNELS
@@ -495,7 +497,7 @@ end
 ---Porta una frase al narratore e, se la modalità lo prevede, alla chat.
 ---@param rec AUPhraseRecord
 ---@param ctx? table
----@param opts? { auto: boolean, privateOnly: boolean }
+---@param opts? { auto: boolean, privateOnly: boolean, channel: string, reviewed: boolean }
 ---@return boolean
 function Gateway:Propose(rec, ctx, opts)
 	opts = opts or {}
@@ -503,7 +505,8 @@ function Gateway:Propose(rec, ctx, opts)
 	if self.editing and opts.auto then return false end
 	local mode = self:EffectiveMode()
 	rec.display = self:Display(rec, ctx)
-	local channel = self:ResolveChannel(rec)
+	-- "Un'altra" (Reroll) conserva il canale scelto dal giocatore, se è ancora disponibile
+	local channel = opts.channel and self:ChannelAvailable(opts.channel) and opts.channel or self:ResolveChannel(rec)
 	rec.channel = channel
 
 	local publicCapable = PUBLIC_VOICE[rec.speaker] and not opts.privateOnly and mode ~= "PRIVATE"
@@ -524,8 +527,9 @@ function Gateway:Propose(rec, ctx, opts)
 
 	-- il resto è una proposta: serve un'azione del giocatore (tasto, pulsante, comando)
 	self.pending = {
-		text = rec.text, display = rec.display, speaker = rec.speaker, event = rec.event,
-		form = rec.form, channel = channel, time = GetTime(), player = ctx and ctx.player,
+		text = rec.text, display = rec.display, speaker = rec.speaker, event = rec.event, id = rec.id,
+		form = rec.form, channel = channel, time = GetTime(), player = ctx and ctx.player, ctx = ctx,
+		reviewed = opts.reviewed,
 	}
 	self.pending.display = self:DisplayFor(self.pending)
 	rec.display = self.pending.display
@@ -533,6 +537,47 @@ function Gateway:Propose(rec, ctx, opts)
 	self:Changed()
 	if NS.Narrator then NS.Narrator:Present(rec) else NS:Print(rec.display) end
 	return true
+end
+
+-- Quante frasi si provano al massimo cercando un'alternativa (diversa da quella proposta, in una voce pubblica)
+local REROLL_TRIES = 4
+
+---"Un'altra": sostituisce la proposta in attesa con un'altra frase per lo stesso evento, nello stesso contesto e
+---nella stessa forma, senza inviare nulla (non serve PlayerAction). L'anti-ripetizione esclude le frasi già
+---mostrate di recente, quindi con poche frasi si esaurisce: la proposta resta com'è e un avviso lo dice.
+---Non è un nuovo intervento del Narrative Director: non spende budget né apre un nuovo momento di pacing, perché
+---sostituisce quello già contato. Il canale scelto resta; il testo modificato a mano si perde (viene stampato).
+---@return boolean ok
+---@return string? reason reroll_empty | reroll_editing | no_phrase
+function Gateway:Reroll()
+	local p = self:GetPending()
+	if not p then
+		self:Report("reroll_empty")
+		return false, "reroll_empty"
+	end
+	if self.editing then
+		self:Report("reroll_editing")
+		return false, "reroll_editing"
+	end
+	local ctx = p.ctx or NS:BuildContext()
+	local rec
+	for _ = 1, REROLL_TRIES do
+		local pick = self:PickRecord(p.event, ctx, p.form)
+		if not pick then break end
+		-- con una sola frase disponibile il selettore ripropone la stessa: non è un'alternativa
+		if PUBLIC_VOICE[pick.speaker] and pick.id ~= p.id then rec = pick; break end
+	end
+	if not rec then
+		NS:Print(NS:L("no_phrase", tostring(p.event)))
+		return false, "no_phrase"
+	end
+	if p.edited then NS:Print(NS:L("gw_reroll_kept", p.edited)) end
+	if NS.Narrator then NS.Narrator:ForgetProposal(p) end
+	return self:Propose(rec, ctx, { channel = p.channel, reviewed = p.reviewed })
+end
+
+function AzerothUnspoken_Reroll()
+	if NS.db then NS.Gateway:Reroll() end
 end
 
 -- Frase per un evento. Restituisce true se è stata mostrata o proposta.

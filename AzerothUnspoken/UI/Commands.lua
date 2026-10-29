@@ -166,6 +166,8 @@ local function Command(msg)
 		NS.Wizard:Open()
 	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then
 		NS.Gateway:Discard()
+	elseif cmd == "altra" or cmd == "another" or cmd == "reroll" then
+		NS.Gateway:Reroll()
 	elseif cmd == "copia" or cmd == "copy" then
 		NS.Gateway:CopyToChat()
 	elseif cmd == "dire" or cmd == "speak" or cmd == "say" or cmd == "invia" or cmd == "send" then

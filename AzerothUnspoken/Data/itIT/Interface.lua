@@ -35,6 +35,7 @@ NS:RegisterLanguage("it", {
 		voice_narrator = "Narratore", voice_inner = "Voce interiore", voice_character = "Personaggio", voice_npc = "NPC",
 		proposal_for = "proposta per %s", sent_to = "inviato in %s",
 		btn_send = "Invia", btn_edit = "Modifica", btn_discard = "Scarta", btn_copy = "Nella chat",
+		btn_another = "Un'altra", tip_another = "Cambia la frase proposta con un'altra per lo stesso momento (non invia nulla).",
 		tip_copy = "Copia la frase nella casella della chat, già sul canale giusto: la invii tu con Invio.",
 		tip_pause = "Pausa immediata (di nuovo per riprendere)", tip_history = "Cronologia recente",
 		tip_close = "Nascondi (e scarta la proposta)", tip_channel = "Cambia canale",
@@ -43,6 +44,9 @@ NS:RegisterLanguage("it", {
 
 		-- Chat Gateway
 		gw_empty = "niente da inviare.",
+		gw_reroll_empty = "nessuna proposta da cambiare.",
+		gw_reroll_editing = "stai modificando la proposta: chiudi l'editor (Esc) prima di cambiare frase.",
+		gw_reroll_kept = "la tua versione modificata è stata sostituita. Il testo era: %s",
 		gw_no_chat_box = "il client non offre la casella della chat da riempire: usa Invia.",
 		gw_copy_failed = "non sono riuscito ad aprire la casella della chat: usa Invia.",
 		gw_needs_action = "per questo canale serve un'azione tua: premi il tasto o il pulsante 'pronuncia'.",
@@ -173,6 +177,7 @@ NS:RegisterLanguage("it", {
 			.. "/au chat privato|anteprima|conferma|auto - cosa può arrivare in chat (predefinito: privato; auto chiede conferma)\n"
 			.. "/au canale auto|say|emote|gruppo|incursione|gilda|istanza\n"
 			.. "/au dire - conferma la proposta in attesa (anche da macro o tasto)\n"
+			.. "/au altra - cambia la proposta in attesa con un'altra frase (non invia nulla)\n"
 			.. "/au annulla - scarta la proposta\n"
 			.. "/au copia - copia la proposta nella casella della chat (la invii tu con Invio)\n"
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"

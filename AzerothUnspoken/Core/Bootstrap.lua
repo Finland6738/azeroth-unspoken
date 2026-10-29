@@ -25,9 +25,11 @@ BINDING_HEADER_AZEROTHUNSPOKEN = "Azeroth Unspoken"
 if GetLocale and GetLocale() == "itIT" then
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Conferma e pronuncia la frase proposta (o improvvisa)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pausa immediata del narratore (attiva/disattiva)"
+	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Cambia la frase proposta con un'altra"
 else
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Confirm and speak the proposed line (or improvise)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pause the narrator immediately (toggle)"
+	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Swap the proposed line for another one"
 end
 
 ---------------------------------------------------------------------------

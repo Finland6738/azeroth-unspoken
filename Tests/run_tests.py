@@ -80,6 +80,7 @@ for f in ("Systems/Relationships.lua", "UI/RelationsFrame.lua", "Data/Relationsh
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
+check('name="AZEROTHUNSPOKEN_REROLL"' in bindings and "AzerothUnspoken_Reroll()" in bindings, "tasto 'un'altra' in Bindings.xml")
 for f in toc_files(ADDON, ADDON_NAME):
     check(os.path.isfile(os.path.join(ADDON, f.replace("\\", "/"))), f"file del .toc esistente: {f}")
 for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Director.lua", "UI\\Wizard.lua"):

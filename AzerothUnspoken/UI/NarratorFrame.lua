@@ -2,7 +2,7 @@
 -- Riquadro discreto e non bloccante: solo l'intestazione e i pulsanti ricevono il mouse, il testo
 -- lascia passare i clic. Si sposta trascinando l'intestazione. Durata, opacità e dimensione del testo
 -- sono regolabili. Tiene una cronologia recente (solo in memoria, mai salvata).
--- Le proposte per la chat compaiono qui, con i pulsanti Invia / Modifica / Canale / Scarta.
+-- Le proposte per la chat compaiono qui, con i pulsanti Invia / Modifica / Un'altra / Canale / Scarta.
 local ADDON, NS = ...
 local W = NS.Widgets
 ---@class AUNarratorEntry
@@ -76,6 +76,16 @@ function Narrator:ToggleHistory()
 	if h:IsShown() then h:Hide() else h:Show(); self:RefreshHistory() end
 end
 
+-- La proposta sostituita da "Un'altra" non è stata detta: esce dalla cronologia (se è ancora l'ultima voce)
+---@param p AUProposal
+function Narrator:ForgetProposal(p)
+	local last = self.history[#self.history]
+	if last and not last.sentTo and last.text == p.display then
+		table.remove(self.history)
+		self:RefreshHistory()
+	end
+end
+
 function Narrator:ClearHistory()
 	self.history = {}
 	self:RefreshHistory()
@@ -145,6 +155,7 @@ function Narrator:Refresh()
 	-- i testi dei pulsanti seguono la lingua scelta
 	frame.sendBtn:SetText(NS:L("btn_send"))
 	frame.editBtn:SetText(NS:L("btn_edit"))
+	frame.anotherBtn:SetText(NS:L("btn_another"))
 	frame.discardBtn:SetText(NS:L("btn_discard"))
 	frame.copyBtn:SetText(NS:L("btn_copy"))
 	self:Layout()
@@ -355,17 +366,20 @@ local function Build()
 	local function Btn(text, onClick, width)
 		local b = W.Button(bar, text, width, 22, onClick)
 		b:SetPoint("LEFT", x, 0)
-		x = x + width + 6
+		x = x + width + 4
 		return b
 	end
+	-- sei pulsanti nei 424 punti della barra (la larghezza del riquadro meno i margini)
 	frame.sendBtn = Btn(NS:L("btn_send"), function()
 		NS.Gateway:PlayerAction(function() NS.Gateway:SendPending() end)
-	end, 80)
-	frame.editBtn = Btn(NS:L("btn_edit"), function() Narrator:OpenEditor() end, 80)
-	frame.channelBtn = Btn("/s", function() NS.Gateway:CycleChannel() end, 60)
+	end, 60)
+	frame.editBtn = Btn(NS:L("btn_edit"), function() Narrator:OpenEditor() end, 72)
+	frame.anotherBtn = Btn(NS:L("btn_another"), function() NS.Gateway:Reroll() end, 72)
+	W.Tooltip(frame.anotherBtn, function() return NS:L("tip_another") end)
+	frame.channelBtn = Btn("/s", function() NS.Gateway:CycleChannel() end, 50)
 	W.Tooltip(frame.channelBtn, function() return NS:L("tip_channel") end)
-	frame.discardBtn = Btn(NS:L("btn_discard"), function() NS.Gateway:Discard() end, 80)
-	frame.copyBtn = Btn(NS:L("btn_copy"), function() NS.Gateway:CopyToChat() end, 90)
+	frame.discardBtn = Btn(NS:L("btn_discard"), function() NS.Gateway:Discard() end, 64)
+	frame.copyBtn = Btn(NS:L("btn_copy"), function() NS.Gateway:CopyToChat() end, 84)
 	W.Tooltip(frame.copyBtn, function() return NS:L("tip_copy") end)
 
 	frame:SetScript("OnUpdate", function(self, dt)
