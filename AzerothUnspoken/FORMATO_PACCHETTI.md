@@ -395,6 +395,90 @@ NS:RegisterDialogues({ scripts = {
 - Ogni percorso deve poter chiudersi (un nodo senza risposte o una risposta senza `go`).
 - L'**identità** non si sceglie dal pacchetto: il dialogo si offre solo per un NPC del registro curato (`NS:RegisterNPCs`, `Data/NPCs.lua`) o con un ruolo provato da un'interazione o scelto dall'utente. Le regole editoriali: niente prezzi, quest, fatti di cronaca, promesse che il gioco non mantiene.
 
+## Story Arcs (storie personali)
+
+Gli archi (step S9, [ADR 0021](../docs/adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md)) sono micro-storie del personaggio: **non sono quest del server**, non danno ricompense, non cambiano gli NPC veri e non promettono nulla al gioco. Vivono nell'addon: uno stato salvato per personaggio, un racconto nel diario e qualche frase del narratore. Sono dati come tutto il resto: un pacchetto aggiunge archi senza toccare il motore. Gli archi di base sono in `Data/Arcs.lua` (struttura), `Data/RegistryArcs.lua` (battute) e `Data/itIT|enUS/Arcs.lua` (testi).
+
+**Gli stati.** `LOCKED → DISCOVERED → REFLECTED → RESOLVED`. Un arco può definire **stati propri** (`states = { "LOCKED", "DISCOVERED", "JOURNEY", "REFLECTED", "RESOLVED" }`: maiuscole, al massimo 10 lettere, sempre da `LOCKED` a `RESOLVED`) e da uno stato si va **solo al successivo**: niente salti, niente passi indietro.
+
+**I passi.** Ogni passo porta da uno stato al successivo:
+
+```lua
+AzerothUnspoken:RegisterArcs({
+    pack = "mio_pacchetto",
+    arcs = {
+        ponte = {                                   -- l'id: minuscole, cifre e _, al massimo 12 caratteri
+            choices = { cosa = { options = { "coraggio", "prudenza" } } },     -- da 2 a 3 opzioni, id uguali in ogni lingua
+            steps = {
+                { from = "LOCKED", to = "DISCOVERED", on = { "zone" },
+                  when = { levelMin = 20, place = { any = { { mapID = 1436 }, { zone = "Westfall" } } } } },
+                { from = "DISCOVERED", to = "REFLECTED", on = { "zone", "player" }, wait = 300, choose = "cosa" },
+                { from = "REFLECTED", to = "RESOLVED", on = { "level" } },
+            },
+        },
+    },
+})
+```
+
+| Campo del passo | Significato |
+|---|---|
+| `from`, `to` | stati; `to` è il successivo di `from` in `states` |
+| `on` | gli **eventi veri** che lo possono far scattare: `zone` (si entra in una zona, dopo due secondi), `death`, `level`, `npc` (gossip, mercante, volo, addestratore, locandiere, banca: non le quest), `flag` (un flag narrativo nuovo: ad esempio uno dei dialoghi ambientali di S8, con `remembered = "npcd_innkeeper_asked_news"`), `player` (una scelta diretta del giocatore, dal diario o con `/au storie scegli`) |
+| `when` | condizioni del RuleEngine, valutate sul contesto del momento, le stesse delle frasi (luogo con `place = { mapID, zone, tags, capital }`; memoria con `firstVisit`, `repeatVisit`, `lastVisitBad`, `remembered`; relazioni con `isKnown`, `familiarityMin`, `trustMin`; `other = { role, npcID }`; `levelMin`; `race`), più `arc = { … }` (sotto), `arcDone = "<id>"` (un altro arco è concluso) e `capitalsVisitedMin = n` |
+| `wait` | secondi di orologio che devono passare dall'ingresso nello stato di partenza |
+| `choose` | il passo aspetta che il giocatore scelga tra le opzioni di `choices[...]`: la scelta è salvata come **id di opzione** |
+
+- **Nessuna apertura senza un evento vero.** L'apertura (`from = "LOCKED"`) ha un evento tra `zone`, `death`, `level`, `npc`, `flag`, mai `player`, e non può chiedere una scelta. Il tempo che passa, un comando o un altro sistema non aprono né fanno avanzare un arco.
+- **Un passo per evento, per arco.** Con una scelta in attesa l'arco aspetta il giocatore. I passi `player` non hanno un evento: il diario li offre quando le condizioni e l'attesa valgono. I flag che gli archi stessi lasciano (`arc_…`) non fanno avanzare nulla.
+- **`subject = "npc"`**: l'arco si lega al primo NPC che lo apre (evento `npc`, con `when = { other = { role = … }, familiarityMin = … }`). Nei passi dopo, `arc = { withSubject = true }` chiede che l'NPC dell'evento sia lo stesso; nelle battute `{other}` è il suo nome. L'addon legge soltanto il rapporto che tiene già (relazioni di S6b): non cambia nulla dell'NPC.
+- **`topic = "death"`** (o un altro argomento del Character Soul): se il personaggio evita quell'argomento, l'arco non si apre né avanza.
+- **Posti**: al massimo 1–2 archi attivi (`arcs.maxActive`, `/au storie max <1|2>`). Se un evento d'apertura arriva a posti finiti, l'arco resta «disponibile» e lo avvia il giocatore dal diario.
+- **Il giocatore comanda.** Ogni arco si può **sospendere**, **saltare** o **disattivare**, uno per uno o tutti (`/au storie`, diario); il modulo `storyArcs` spegne tutto. Un arco sospeso o saltato si riprende; uno disattivato si riattiva.
+- **La chiusura** (`RESOLVED`) lascia un ricordo permanente in Living Memory (`kind = "story"`, tag `arc`, `done` e l'id dell'arco: nessun testo). Ogni stato raggiunto imposta il flag `arc_<id>_<stato>` (minuscolo), che le frasi leggono con `remembered`.
+- **Nessun campo per ricompense o effetti**: un campo sconosciuto in un arco o in un passo è un errore del validatore (`reward`, `quest`…).
+
+**I testi dell'arco** (per lingua, nei file `Data/<lingua>/…`):
+
+```lua
+AzerothUnspoken:AddArcTexts("itIT", { ponte = {
+    title = "Il ponte",                       -- al massimo 70 byte
+    summary = "Una riga o due: di che storia si tratta.",
+    stateNames = { JOURNEY = "a metà" },      -- facoltativo: nome degli stati propri (quelli di base li ha già l'addon)
+    states = {                                -- il racconto di ogni stato, tranne LOCKED: dice anche che cosa aspetta la storia
+        DISCOVERED = "…", REFLECTED = "…", RESOLVED = "…",
+    },
+    choices = { cosa = { prompt = "La domanda al giocatore",
+        options = { coraggio = { label = "Con coraggio", note = "Che cosa resta nel diario." },      -- label: al massimo 70 byte, senza segnaposto
+                    prudenza = { label = "Con prudenza", note = "…" } } } },
+} })
+```
+
+Le opzioni le **sceglie il giocatore**, e il testo non fa dire al personaggio nulla che il giocatore non abbia deciso. Titolo, racconto di ogni stato, domande, etichette e note servono sia in italiano sia in inglese: `/au valida` segnala quelli che mancano (`badArc`).
+
+**Le battute** sono regole degli eventi `arc_open` (primo passo), `arc_step` (passi intermedi) e `arc_resolve` (ultimo passo), che un pacchetto dichiara con `events = { arc_open = { category = "reflection", chance = 100, cooldown = 0 }, … }` (come in `Data/RegistryArcs.lua`). Ogni regola **dichiara l'arco** con la sotto-tabella `arc`, e il validatore lo esige:
+
+```lua
+registry = {
+    ["ponte.open.i"] = { event = "arc_open", speaker = "inner", styles = { "intimate" }, depth = { "natural", "literary", "elevated" },
+        conditions = { arc = { id = "ponte", state = "DISCOVERED" } } },
+    ["ponte.done.coraggio"] = { event = "arc_resolve", speaker = "narrator", styles = { "epic" },
+        conditions = { arc = { id = "ponte", state = "RESOLVED", choice = "coraggio" } } },
+}
+```
+
+| `arc.` | Valori |
+|---|---|
+| `id` | l'arco (un id sconosciuto è un errore) |
+| `state`, `from` | lo stato appena raggiunto, e quello da cui si viene (anche un elenco) |
+| `choice` | una delle scelte fatte dal giocatore nell'arco (l'id dell'opzione) |
+| `withSubject` | l'NPC dell'evento è quello dell'arco |
+
+- **Voci private**: `inner` e `narrator`. Mai `character`, che in modalità con proposte può diventare una frase in chat.
+- Escono dal Narrative Director con la priorità «evento eccezionale», **una sola alla volta** (almeno 90 secondi, `BEAT_GAP`, tra due battute di archi: nessuna cascata). Se il momento non è buono (combattimento, morte, incursione o campo di battaglia, schermata invasiva, pausa) la battuta aspetta fino a 15 minuti; con l'intensità a 0 o il modulo spento tace. **Lo stato avanza comunque e il diario racconta**: il silenzio è un esito valido.
+- Non si pronunciano a mano (`/au evento arc_open` non produce nulla): il motore le fa parlare solo per il passo di un arco.
+- Regole editoriali (GDD §5.4, §7.5): originali, nessuna lore inventata spacciata per canone, nessuna promessa di conseguenze sul gioco. Niente ricompense, «missione» o «bottino» nei testi.
+- Un arco con una definizione sbagliata resta registrato ma non parte mai: `/au valida` dice perché.
+
 ## Segnaposto
 
 | Segnaposto | Valore |
@@ -503,6 +587,7 @@ un **avviso** è un consiglio.
 | `missingLang` | errore | manca il testo in una lingua del pacchetto (`languages`, o quelle in cui il pacchetto scrive) |
 | `placeholderMismatch` | errore | IT ed EN non usano le stesse combinazioni di segnaposto |
 | `badDialogue` | errore o avviso | un copione di `RegisterDialogues` sbagliato: nodo o risposta mancante, evento senza battute o non della voce `npc`, flag non valido, testo mancante in una lingua, nodo irraggiungibile |
+| `badArc` | errore o avviso | un arco di `RegisterArcs` sbagliato: id, stati o passi non validi, scelta non definita, campo sconosciuto (anche una ricompensa), titolo, racconto o scelte mancanti in una lingua; una regola di `arc_open`/`arc_step`/`arc_resolve` senza `arc = { id }` o con uno stato che l'arco non ha; avviso: un passo senza battute (l'arco avanza in silenzio) |
 | `badPlaceholder` | errore | segnaposto sconosciuto, genere (`{g:}`, `{og:}`) malformato, graffa non chiusa, `{line}` fuori dalle cornici, vocabolario dentro il vocabolario |
 | `frameNoLine` | errore | una cornice senza `{line}` |
 | `badCondition` | errore | condizione sconosciuta o con un valore del tipo sbagliato |

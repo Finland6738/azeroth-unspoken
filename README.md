@@ -40,6 +40,7 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 - Ricorda i momenti significativi del personaggio (la prima volta in una zona, il ritorno, una visita finita male, le morti, i livelli) e li ritrova nelle frasi: **solo se il ricordo esiste davvero**. Un **diario** (`/au diario`) li mostra, li fa cancellare o rendere permanenti e li esporta come testo da copiare. Non salva mai chat o whisper.
 - Ricorda **come stai con le persone**: sei assi indipendenti (familiarità, fiducia, rispetto, affetto, timore, lealtà; l'attrazione è facoltativa e spenta) danno un'etichetta (sconosciuto, conoscente, amico, compagno d'armi, rivale rispettato, nemico...) e una disposizione. Gli **NPC** si calcolano da soli (dialoghi, quest, mercanti); i **giocatori** li scegli tu: l'addon propone, non registra nessuno senza un tuo clic. Il narratore cambia tono col rapporto, dal formale all'intimo. Vedi `/au relazioni`. Non legge né salva chat o whisper.
 - **Dialoghi ambientali con gli NPC** (NPC Alive): quando apri il mercato, il volo o l'addestramento di un NPC, o parli con un locandiere noto, compare un piccolo pulsante; premendolo si apre una finestra separata, etichettata **«dialogo ambientale dell'addon»**, con una battuta dell'NPC e da una a tre risposte neutre. È un dialogo **simulato**: non compare mai in chat, non tocca gossip, quest o commercio, e non cambia nulla nel gioco; le scelte lasciano solo un flag nel diario. L'NPC parla secondo il suo carattere (burbero, gioviale...) e se lo conosci. Vedi `/au npc` (con `prova` per provare la finestra senza un NPC vero).
+- Racconta **piccole storie personali** (Story Arcs): il ritorno nel luogo da cui è cominciata l'avventura, un volto che incontri sempre più spesso, una caduta e il ritorno, il viaggio tra le capitali. Sono racconti del tuo personaggio, **non missioni**: nessuna ricompensa, nessun effetto sul gioco. Cominciano solo da un evento vero, sono al massimo due alla volta, le scelte che contano le fai tu, e le puoi sospendere, saltare o disattivare quando vuoi (`/au storie`, scheda «Storie» del diario). Alla fine lasciano un ricordo nel diario.
 - Ti guida al primo avvio con una procedura guidata saltabile.
 - Ha una diagnostica (`/au debug`) che mostra che cosa il tuo client permette di fare all'addon.
 - Si estende con **pacchetti di frasi** in addon separati, senza toccare il motore.
@@ -111,6 +112,7 @@ L'addon risponde a `/au` e a `/unspoken`. Quasi tutti i comandi hanno anche un n
 | `/au pulsante` (`button`) | mostra o nasconde il pulsante "pronuncia" |
 | `/au anima` (`soul`) | apre la finestra del carattere del personaggio. Anche `lista`, `neutro`, `archetipo <id>`, `trp3 on\|off`, `<tratto> <valore>` (`temperamento`, `morale`, `curiosita`, `fede`, `motivazione`, `ironia`, `voce`; `-` toglie la scelta) ed `evita <argomento>` |
 | `/au diario` (`journal`, `diary`) | apre il diario del personaggio (ricordi, luoghi, flag, sessione). Anche `lista`, `luoghi`, `flag <nome>`, `esporta`, `permanente <n>`, `elimina <n>`, `dimentica <luogo>` e `reset [tutto\|ricordi\|ordinari\|luoghi\|flag]` (chiede conferma) |
+| `/au storie` (`stories`, `arcs`) | le storie personali: `lista`, `diario`, `scegli <arco> <opzione>`, `inizia`, `sospendi`, `riprendi`, `salta`, `disattiva`, `attiva` (un arco o `tutte`), `max <1\|2>`, `on`, `off`, `stato` |
 | `/au relazioni` (`relations`, `relationships`) | apre la finestra delle relazioni (tabella ordinabile e filtrabile, persone proposte, dettaglio con cursori, note e tag). Anche `lista`, `persone`, `aggiungi <nome>`, `scarta <nome>`, `rimuovi <nome\|npc:ID>`, `dettaglio <nome>`, `nota`, `tag`, `etichetta`, `imposta <nome> <asse> <valore>`, `esporta`, `auto on\|off`, `attrazione on\|off`, `reset` |
 | `/au pacchetti` (`packs`) · `/au pacchetto <id> on\|off` (`pack`) | elenca o accende e spegne i pacchetti di frasi |
 | `/au info` (`stats`) | quante frasi sono disponibili, per evento |
@@ -170,7 +172,8 @@ La guida completa è in [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/F
 | G1 Prova in gioco ([checklist](docs/G1_checklist.md)) | **rimandata**: serve l'utente con il client vero |
 | M1 Narrative Alpha: schema dati v2, Narrative Director, personalità, memoria e diario, relazioni (S1–S6b fatti), interlocutore e luogo, 300 intenzioni | in corso / da fare |
 | M2: NPC Alive (S8) | fatto, non provato in gioco (G3) |
-| M3–M5: storie, social, release 1.0 | da fare |
+| M3: storie personali, Story Arcs (S9) | fatto, non provato in gioco |
+| M4–M5: social, release 1.0 | da fare |
 
 Il piano dettagliato, gli step e le note per chi sviluppa sono in [ROADMAP.md](ROADMAP.md). Le modifiche rilevanti per versione sono in [CHANGELOG.md](CHANGELOG.md). I problemi noti e le idee sono nelle [issue](https://github.com/Finland6738/azeroth-unspoken/issues).
 

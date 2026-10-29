@@ -1416,3 +1416,68 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 	end
 	T.eq(n, 33, "33 battute di base")
 end)
+
+T.run("un avviso discreto nel narratore, mai in chat, quando un arco aspetta una scelta o può cominciare", function()
+	Fresh()
+	TestArc("t1"); TestArc("t2"); TestArc("t3")
+	NS.db.chat.mode = "PRIVATE"
+	SA:Fire("level")      -- t1 e t2 si aprono, t3 resta disponibile: avviso «può cominciare»
+	local shown = Narrator.current and Narrator.current.display
+	T.ok(shown and shown:find("Una storia può cominciare", 1, true), "avviso: una storia può cominciare: " .. tostring(shown))
+	T.ok(shown and shown:find("t3", 1, true), "con il titolo (qui l'id)")
+	for _, s in ipairs(SENT) do
+		T.ok(type(s) ~= "string" or not (s:sub(1, 4) == "SAY:" or s:sub(1, 6) == "EMOTE:" or s:sub(1, 6) == "PARTY:"), "nulla in chat")
+	end
+	-- una scelta in attesa
+	Fresh()
+	local function TP()
+		NS:RegisterArcs({ arcs = { tp = {
+			choices = { c = { options = { "a", "b" } } },
+			steps = {
+				{ from = "LOCKED", to = "DISCOVERED", on = { "level" } },
+				{ from = "DISCOVERED", to = "REFLECTED", on = { "level" }, choose = "c" },
+				{ from = "REFLECTED", to = "RESOLVED", on = { "level" } },
+			},
+		} } })
+	end
+	TP()
+	SA:Fire("level")
+	Narrator:Clear()
+	ADVANCE(10)
+	SA:Fire("level")
+	shown = Narrator.current and Narrator.current.display
+	T.ok(shown and shown:find("attende una tua scelta", 1, true), "avviso: attende una scelta: " .. tostring(shown))
+	-- intensità 0 o pausa: nessun avviso (la scelta resta nel diario)
+	Fresh()
+	TP()
+	NS.db.intensity = 0
+	Narrator:Clear()
+	SA:Fire("level")
+	SA:Fire("level")
+	T.ok(not (Narrator.current and Narrator.current.display), "intensità 0: nessun avviso")
+	T.ok(Item("tp").pending ~= nil, "ma la scelta aspetta")
+	NS.db.intensity = 50
+	Forget("t1", "t2", "t3", "tp")
+end)
+
+T.run("un'altra lingua, un cambio di lingua e un arco senza testi", function()
+	Fresh()
+	Zone("Orgrimmar")
+	Zone("Durotar")
+	NS.db.locale = "en"
+	local rec = SA:Record("path")
+	T.eq(rec.title, "The Path Found Again", "titolo inglese")
+	T.eq(rec.stateLabel, "discovered", "stato in inglese")
+	NS.db.locale = "it"
+	rec = SA:Record("path")
+	T.eq(rec.title, "Il sentiero ritrovato", "titolo italiano")
+	-- un arco senza testi si mostra con l'id, senza errori
+	TestArc("tn")
+	SA:Fire("level")
+	local r2 = SA:Record("tn")
+	T.ok(r2 and r2.title == "tn" and r2.summary == "", "senza testi: l'id come titolo")
+	T.eq(Count(NS.Diagnostics.errors), 0, "nessun errore")
+	local rows = StoriesTab().rows()
+	T.ok(#rows > 0, "il diario si costruisce lo stesso")
+	Forget("tn")
+end)

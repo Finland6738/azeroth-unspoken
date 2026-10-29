@@ -111,6 +111,7 @@ function Diagnostics:Report(verbose)
 		if NS.LivingMemory then Add("Living Memory: " .. NS.LivingMemory:Status()) end
 		if NS.Relationships then Add("Relationships: " .. NS.Relationships:Status()) end
 		if NS.NPCAlive then Add("NPC Alive: " .. NS.NPCAlive:Status()) end
+		if NS.StoryArcs then Add("Story Arcs: " .. NS.StoryArcs:Status()) end
 		for _, issue in ipairs(NS.Config.issues or {}) do Add("  config: " .. issue) end
 	else
 		Add(NS:L("debug_no_db"))

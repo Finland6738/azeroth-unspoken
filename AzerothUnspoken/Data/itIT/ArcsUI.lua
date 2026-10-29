@@ -12,7 +12,7 @@ NS:RegisterLanguage("it", {
 		arc_hdr_resolved = "Storie concluse",
 		arc_hdr_skipped = "Storie saltate o disattivate",
 		arc_empty = "Nessuna storia, per ora. Cominciano da sole quando succede qualcosa di vero: un ritorno, un incontro, una perdita. Se non le vuoi, spegni il modulo Storie nelle impostazioni.",
-		arc_back = "‹ Torna alle storie",
+		arc_back = "< Torna alle storie",
 		arc_row = "%s: %s",
 		arc_row_waiting = "%s: in attesa di una tua scelta",
 		arc_row_available = "%s: puoi cominciarla quando vuoi",

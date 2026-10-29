@@ -12,7 +12,7 @@ NS:RegisterLanguage("en", {
 		arc_hdr_resolved = "Concluded stories",
 		arc_hdr_skipped = "Skipped or disabled stories",
 		arc_empty = "No stories yet. They begin by themselves when something real happens: a return, a meeting, a loss. If you do not want them, turn the Stories module off in the settings.",
-		arc_back = "‹ Back to stories",
+		arc_back = "< Back to stories",
 		arc_row = "%s: %s",
 		arc_row_waiting = "%s: waiting for your choice",
 		arc_row_available = "%s: you can begin it whenever you like",

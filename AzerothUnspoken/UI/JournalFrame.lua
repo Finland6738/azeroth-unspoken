@@ -215,7 +215,7 @@ local function ArcRows()
 	end
 
 	local list = SA:Listing()
-	local function Open(id) return ArcAction("…", "arc_tip_open", function() selectedArc = id end) end
+	local function Open(id) return ArcAction("...", "arc_tip_open", function() selectedArc = id end) end
 	if #list.active > 0 then
 		table.insert(out, Heading(NS:L("arc_hdr_active", SA:ActiveCount(), SA:MaxActive())))
 		for _, rec in ipairs(list.active) do

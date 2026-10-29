@@ -393,6 +393,38 @@ I dialoghi ambientali (`/au npc`) sono **simulati**: la finestra lo dice in cima
 83. **Impostazioni.** `/au npc offerta off` poi riapri un mercato; intensità 0 (`/au intensita 0`); modulo «Dialoghi NPC» spento.
     - **Cosa aspettarti:** niente offerta da sola, ma `/au npc` apre ancora il dialogo (tranne col modulo spento, che lo dice).
 
+## S9: le storie personali (aggiunto dallo step S9)
+
+Gli archi (`/au storie`, scheda «Storie» del diario) sono **racconti del personaggio, non missioni**: nessuna ricompensa, nessun effetto sul gioco. Cominciano solo da un evento vero. I passi seguenti mettono alla prova ciò che i test fuori dal gioco non possono: i dati del client vero (mappa, zona, NPC) e il tono.
+
+84. **Il sentiero ritrovato.** Con un personaggio di livello 12 o più, entra nella zona da cui è cominciata la sua avventura (Elwynn Forest, Dun Morogh, Teldrassil, Durotar, Mulgore, Tirisfal Glades secondo la razza). Prima di entrare fai `/au luogo` e annota il **numero di mappa** e il nome della zona.
+    - **Cosa aspettarti:** pochi secondi dopo l'ingresso una frase nel narratore (apertura dell'arco) e `/au storie` che elenca «Il sentiero ritrovato» come scoperta. Il diario (scheda «Storie») mostra il racconto.
+    - **Cosa riportare:** se l'arco si apre davvero (mapID o nome della zona: dice quale dei due ha funzionato), se **non** si apre in un'altra zona o sotto il livello 12, se la frase c'è, se è giusta.
+85. **La scelta.** Aspetta due minuti nella zona (o cambia sottozona) e controlla l'avviso nel narratore «Una storia attende una tua scelta». Apri il diario, scheda «Storie», entra nel dettaglio («…») e scegli una delle tre risposte con il pulsante «>». Oppure `/au storie scegli path gratitude`.
+    - **Cosa aspettarti:** la frase cambia con la scelta; il racconto mostra «Hai scelto…» con la nota; l'arco passa a «meditata».
+    - **Cosa riportare:** se le righe del dettaglio **stanno nella finestra** (testi tagliati o sovrapposti), se i pulsanti di 24 pixel («>», «II», «x», «-») sono leggibili, se il suggerimento compare.
+86. **La chiusura.** Esci dalla zona di partenza (dopo almeno un minuto dalla scelta).
+    - **Cosa aspettarti:** una frase conclusiva, l'arco tra le «Storie concluse», un nuovo ricordo «Storia: Il sentiero ritrovato» nella scheda Ricordi, marcato permanente.
+    - **Cosa riportare:** se il ricordo c'è, se è permanente, se resta dopo `/reload`.
+87. **Posti, sospendere, saltare, disattivare.** Con `/au storie max 1` e un secondo arco che si apre (vedi 88–90), controlla che il secondo resti «disponibile». Prova `sospendi`, `riprendi`, `salta`, `disattiva`, `attiva` (diario e comando), poi `/au storie sospendi tutte` e `/au storie disattiva tutte` (spegne il modulo).
+    - **Cosa aspettarti:** i posti sono rispettati; un arco saltato o sospeso non avanza; con il modulo spento nessun arco si apre o parla (`/au storie on` riaccende).
+    - **Cosa riportare:** ogni caso in cui un arco si muove o parla contro la tua scelta.
+88. **Un volto noto.** Parla (gossip, mercante, volo, addestratore o locandiere) con lo stesso NPC in giorni diversi finché `/au relazioni` dice che è conosciuto.
+    - **Cosa aspettarti:** a familiarità 25 l'arco si lega a quell'NPC e la frase ne dice il nome; più avanti (40, poi 55) chiede una scelta e si chiude. Un altro NPC non lo fa avanzare.
+    - **Cosa riportare:** quanti giorni servono, se il ruolo viene riconosciuto (`/au chi`), se la frase nomina l'NPC giusto, se le soglie sembrano troppo alte o basse.
+89. **Il luogo della caduta.** Muori a livello 10 o più. Dopo un po' (e dopo essere stato vivo), cambia zona e torna nel luogo della morte dopo più di dieci minuti. Poi sali di livello.
+    - **Cosa aspettarti:** una frase di apertura **dopo** che sei tornato in vita (mai da morto); al ritorno nel luogo una scelta (silenzio, rimettere in ordine, proseguire); alla salita di livello la chiusura.
+    - **Cosa riportare:** se la frase parte da viva, se il ritorno viene riconosciuto, se con `/au anima evita morte` l'arco **non** si apre.
+90. **Le tre porte.** Visita tre capitali diverse (anche solo Orgrimmar, Thunder Bluff e Undercity).
+    - **Cosa aspettarti:** alla seconda l'arco si apre; alla terza passa a «tre porte attraversate». Dopo dieci minuti il diario offre la scelta («Che cosa cerchi…»); lasciando la capitale per la strada l'arco si chiude.
+    - **Cosa riportare:** se le capitali sono riconosciute (`/au luogo` in ciascuna, capitale: sì), se l'offerta compare dopo la pausa.
+91. **Nessuna cascata, nessun fastidio.** Gioca un'ora con due archi attivi.
+    - **Cosa aspettarti:** le battute degli archi sono rare e mai due ravvicinate; nessuna in combattimento, in incursione o in campo di battaglia; con l'intensità a 0 nessuna.
+    - **Cosa riportare:** frasi troppo frequenti, frasi nel momento sbagliato, ripetizioni.
+92. **Dopo /reload.** Con un arco in attesa di una scelta, uno sospeso e uno concluso: `/reload`.
+    - **Cosa aspettarti:** tutto com'era, nessuna battuta ripetuta, nessun arco che si riapre.
+    - **Cosa riportare:** ogni differenza, e se la scelta in attesa c'è ancora.
+
 ## Q3: correzioni e miglioramenti (aggiunto dalla correzione Q3)
 
 Corrette fuori dal gioco le issue #9, #13, #21, #23, #26, #37 e #38. Restano da provare nel client vero:
@@ -481,6 +513,14 @@ S8/G3 carattere ......... burbero/gioviale diversi? ___  conosciuto diverso? ___
 S7/G2 slice A .......... frase di arrivo? ___  cambia con profondità/archetipo? ___  testo ______
 S7/G2 slice C .......... frase di ritorno? ___  ricordo falso? (NO) ___  diario aggiornato? ___
 S7 varietà ............. frasi ripetute ______  frasi che stonano ______  voce NPC ___
+S9 sentiero ............ mapID ______  si apre? ___  non si apre fuori zona? ___  frase giusta? ___
+S9 scelta .............. avviso ___  righe nella finestra? ___  pulsanti leggibili? ___  frase cambia? ___
+S9 chiusura ............ ricordo permanente? ___  dopo /reload ___
+S9 posti e controlli ... massimo rispettato? ___  sospendi/salta/disattiva ___  modulo spento ___
+S9 volto noto .......... giorni necessari ______  nome giusto? ___  altro NPC non avanza? ___
+S9 caduta .............. frase da viva? ___  ritorno riconosciuto? ___  evita morte ___
+S9 tre porte ........... capitali riconosciute? ___  offerta dopo la pausa? ___
+S9 ritmo ............... mai due ravvicinate? ___  mai in combattimento? ___  troppe? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

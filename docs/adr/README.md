@@ -28,10 +28,11 @@ Servono a ricordare *perché* il progetto è fatto in un certo modo, non solo *c
 | [0018](0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente | accettata |
 | [0019](0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID | accettata |
 | [0020](0020-dialogo-simulato-e-dialogo-reale-npc-alive.md) | NPC Alive: un dialogo simulato non è un dialogo reale | accettata |
+| [0021](0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md) | Story Arcs: micro-storie che non toccano il gioco | accettata |
 
 ## Decisioni in sospeso
 
-- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0020).
+- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0022).
 
 ## Come scriverne una nuova
 

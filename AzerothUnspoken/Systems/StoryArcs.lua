@@ -717,21 +717,28 @@ function SA:Fire(trigger, extra)
 	local moved = {}
 	if trigger == "player" or not self.TRIGGERS[trigger] or not self:Enabled() then return moved end
 	local a = self:Data()
-	local ctx, now = NS:BuildContext(extra), Now()
+	-- prima chi può muoversi con questo evento (il contesto è costoso: si costruisce solo se serve)
+	local runnable = {}
 	for _, id in ipairs(self.order) do
 		local def = self.defs[id]
 		local item = a.items[id]
 		local state = item and item.state or "LOCKED"
 		local mode = item and item.mode or "active"
-		if def and not def.bad and mode == "active" and state ~= "RESOLVED" and not (item and (item.pending or item.waiting))
-			and not Avoids(def.topic) then
+		if def and not def.bad and mode == "active" and state ~= "RESOLVED" and not (item and (item.pending or item.waiting)) then
 			for idx, step in ipairs(def.steps) do
-				if step.from == state and StepMatches(self, def, item, step, trigger, ctx, extra, now) then
-					local result = self:Apply(def, idx, { extra = extra })
-					if result then table.insert(moved, { id = id, result = result }) end
+				if step.from == state and Has(step.on, trigger) then
+					table.insert(runnable, { def = def, item = item, idx = idx, step = step })
 					break
 				end
 			end
+		end
+	end
+	if #runnable == 0 then return moved end
+	local ctx, now = NS:BuildContext(extra), Now()
+	for _, r in ipairs(runnable) do
+		if not Avoids(r.def.topic) and StepMatches(self, r.def, r.item, r.step, trigger, ctx, extra, now) then
+			local result = self:Apply(r.def, r.idx, { extra = extra })
+			if result then table.insert(moved, { id = r.def.id, result = result }) end
 		end
 	end
 	return moved
@@ -969,6 +976,8 @@ function SA:Flush()
 		local e = self.owed[i]
 		if now - e.t > self.OWED_TTL or not StillValid(self, e) then table.remove(self.owed, i) end
 	end
+	-- una battuta offerta e mai risolta (il Director non ha risposto) non blocca le altre per sempre
+	if self.inflight and now - (self.inflight.offeredAt or now) > 10 then self.inflight = nil end
 	if self.inflight or #self.owed == 0 or not self:Enabled() then return end
 	if self.lastBeat and now - self.lastBeat < self.BEAT_GAP then
 		Schedule(self, self.BEAT_GAP - (now - self.lastBeat) + 0.2)
@@ -990,7 +999,7 @@ function SA:Flush()
 				npcID = item.subject.npcID }
 		end
 	end
-	self.inflight = entry
+	self.inflight, entry.offeredAt = entry, now
 	NS.Director:Offer(entry.event, extra, function(result)
 		SA:OnBeatResult(entry, result)
 	end)
