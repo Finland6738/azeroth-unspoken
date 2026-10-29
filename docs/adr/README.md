@@ -24,6 +24,7 @@ Servono a ricordare *perché* il progetto è fatto in un certo modo, non solo *c
 | [0014](0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) | Bus di eventi normalizzati, moduli isolati e Director come punto di aggancio | accettata |
 | [0015](0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, pesi moltiplicativi, stile che pesa e non esclude | accettata |
 | [0016](0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in come dati, affinità morbida e filtri rigidi, Total RP 3 con consenso | accettata |
+| [0017](0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale | accettata |
 
 ## Decisioni in sospeso
 

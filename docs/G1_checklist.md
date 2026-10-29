@@ -265,6 +265,28 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
     - **Cosa aspettarti:** `/au anima lista` mostra le stesse scelte dopo entrambi.
     - **Cosa riportare:** se qualcosa è tornato neutro.
 
+39. **Prima visita e diario.** Con un personaggio mai stato in una zona (o dopo `/au diario dimentica <zona>`), entra in una zona nuova, meglio una foresta (Elwynn Forest, Teldrassil...). Poi `/au diario`.
+    - **Cosa aspettarti:** dopo qualche secondo una frase di prima volta (es. «Mai prima d'ora i miei passi hanno toccato questo suolo...»); il diario ha un ricordo «Prima visita: <zona>», la zona nella scheda *Luoghi* con «1 visite» e nessun errore rosso. Il diario si apre, si sposta, mostra le quattro schede, i pulsanti `P` (permanente) e `x` (cancella) rispondono.
+    - **Cosa riportare:** se la frase di prima volta è comparsa, se il nome della zona nel diario è quello giusto (client inglese: nomi inglesi), se il testo sta nei pulsanti e nelle righe, se il diario si può richiudere con `/au diario`.
+40. **Ritorno.** Esci dalla zona, aspetta almeno 10 minuti (o un giorno, per avere il ricordo salvato) ed entra di nuovo. Il richiamo ha il 70% di probabilità (per l'intensità 50): se non compare al primo ritorno, riprova con un'altra zona; `/au prob memory_return 100` lo rende certo per la prova.
+    - **Cosa aspettarti:** dopo qualche secondo una frase di richiamo (es. «Rieccomi. Questa foresta mi conosce già.») e **una sola frase**, non due insieme; in `/au debug` (riga Narrative Director) `memory_return=spoken` e `zone=outranked`. Il luogo ora dice «2 visite». Con un ritorno dopo un giorno compare anche un ricordo «Ritorno» nel diario; entro il giorno solo nella scheda *Sessione*.
+    - **Cosa riportare:** se la frase di richiamo è comparsa, se è arrivata insieme a un'altra, e dopo quanto tempo dal cambio di zona.
+41. **Una visita finita male.** In una zona fatti uccidere (o lasciala in combattimento, o con poca salute). Esci, aspetta almeno 10 minuti e rientra.
+    - **Cosa aspettarti:** il diario ha un ricordo «Morte: <zona>» (o «Fuga: <zona>»), la prima morte vale più delle altre (flag `first_death` nella scheda *Flag*); al ritorno può uscire una frase che lo cita («L'ultima volta che ho messo piede in <zona> sono caduto...»). Con `/au anima evita morte` quella frase non esce mai.
+    - **Cosa riportare:** se una frase cita una morte o una fuga che **non** c'è stata (è il caso più grave: riportala per intero), e se la fuga è stata riconosciuta quando era giusto (e non quando non lo era: per esempio al rilascio dello spirito).
+42. **Livelli e capitali.** Sali di livello e, se puoi, entra per la prima volta in una capitale.
+    - **Cosa aspettarti:** un ricordo «Livello raggiunto N» (ogni 10 livelli anche il flag `level_N`); la capitale come prima visita più importante e il flag `first_capital`.
+    - **Cosa riportare:** se compaiono ricordi che non dovrebbero (ingressi ripetuti nella stessa zona, uno per ogni clic): non deve succedere.
+43. **Persistenza.** Con qualche ricordo, `/reload`; poi esci dal gioco e rientra.
+    - **Cosa aspettarti:** `/au diario lista` mostra gli stessi ricordi, luoghi e flag dopo entrambi; un `/reload` nella stessa zona **non** conta una visita nuova.
+    - **Cosa riportare:** ricordi o luoghi scomparsi dopo `/reload` o dopo l'uscita, o visite contate due volte. Dopo un arresto anomalo del client i ricordi dell'ultima sessione possono mancare (le SavedVariables si scrivono solo a `/reload` o alla chiusura): non è un errore dell'addon, ma segnalalo.
+44. **Cancellare, rendere permanente, esportare.** Nel diario cancella un ricordo, segna `P` un altro, poi premi *Esporta* (o `/au diario esporta`).
+    - **Cosa aspettarti:** il ricordo cancellato sparisce; quello permanente porta `[P]`; la finestra di esportazione mostra il testo **già selezionato** e Ctrl+C lo copia (incollalo in un blocco note); Esc la chiude. *Dimentica tutto* chiede un secondo clic entro 6 secondi.
+    - **Cosa riportare:** se la finestra di esportazione si apre e scorre (o solo un pezzo del testo è visibile), se Ctrl+C copia, se un testo scritto lì dentro si cancella da solo (deve rimanere com'era).
+45. **Niente di troppo.** Gioca dieci minuti normalmente (combattimenti, incantesimi, bersagli diversi, qualche cambio di zona).
+    - **Cosa aspettarti:** nessun ricordo nuovo oltre a prime visite, ritorni lunghi, morti, fughe e livelli; il narratore non si fa più loquace per via dei richiami (al massimo uno per ritorno).
+    - **Cosa riportare:** quanti ricordi nuovi sono comparsi nel diario e di che tipo; se un richiamo ti è sembrato troppo frequente.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -296,6 +318,12 @@ Q2 editor (#4) .......... resta aperto 40 s? ___  Invio spedisce? ___
 Q2 automatica (#8) ...... due gesti da comando/pannello/wizard? ___
 Q2 mouse sopra (#17) .... il riquadro resta? ___
 Q2 identità segreta (#6)  nessun errore? ___  riga value:target.identity ___
+S6 prima visita ........ frase? ___  ricordo nel diario? ___  nome zona giusto? ___  diario si apre/sposta? ___
+S6 ritorno .............. frase di richiamo? ___  una sola frase? ___  "2 visite"? ___
+S6 visita finita male ... morte/fuga nel diario? ___  frase che cita il falso? (deve essere NO) ___
+S6 livelli e capitali ... ricordi giusti? ___  ricordi di troppo? (deve essere NO) ___
+S6 persistenza .......... dopo /reload ___  dopo uscita ___  visita doppia dopo /reload? (NO) ___
+S6 diario ............... cancella ___  permanente ___  esporta+Ctrl+C ___  scorre ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

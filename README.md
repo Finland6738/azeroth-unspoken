@@ -37,6 +37,7 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 - Tiene a mente le frasi usate di recente, per evitare ripetizioni (la memoria è salvata per personaggio).
 - Se vuoi, trasforma le frasi del personaggio in **proposte per la chat** che confermi, modifichi o scarti tu. Vedi [Privacy e chat](#privacy-e-chat).
 - Se vuoi, dà al personaggio un **carattere** (temperamento, morale, curiosità, fede, motivazione, ironia, voce interiore, argomenti da evitare, o un archetipo pronto): le frasi in sintonia escono più spesso e quelle che contraddicono ciò che hai escluso non escono mai. È tutto facoltativo; senza scelte il narratore resta neutro. Vedi `/au anima`.
+- Ricorda i momenti significativi del personaggio (la prima volta in una zona, il ritorno, una visita finita male, le morti, i livelli) e li ritrova nelle frasi: **solo se il ricordo esiste davvero**. Un **diario** (`/au diario`) li mostra, li fa cancellare o rendere permanenti e li esporta come testo da copiare. Non salva mai chat o whisper.
 - Ti guida al primo avvio con una procedura guidata saltabile.
 - Ha una diagnostica (`/au debug`) che mostra che cosa il tuo client permette di fare all'addon.
 - Si estende con **pacchetti di frasi** in addon separati, senza toccare il motore.
@@ -49,7 +50,7 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 - Non legge il log di combattimento e non prende decisioni sui valori che il client nasconde agli addon.
 - Non salva il contenuto della chat.
 
-**Previsto, ma non ancora presente** (vedi [ROADMAP.md](ROADMAP.md)): ricordi e diario, relazioni con NPC e giocatori, interlocutore e luogo come condizioni delle frasi, dialoghi con NPC, storie a più capitoli, gioco sociale tra giocatori, contenuti fino a 1.000 intenzioni. Nelle impostazioni alcuni moduli (NPC, memoria, storie, social, audio) si possono già attivare o spegnere, ma sono solo segnaposto: oggi hanno effetto solo i moduli *Personale*, *Mondo*, *Proposte in chat* e *Total RP 3*. Anche la profondità dello stile (Naturale, Letterario, Elevato) si salva ma **nessuna frase la usa ancora**.
+**Previsto, ma non ancora presente** (vedi [ROADMAP.md](ROADMAP.md)): relazioni con NPC e giocatori, interlocutore e luogo come condizioni delle frasi, dialoghi con NPC, storie a più capitoli, gioco sociale tra giocatori, contenuti fino a 1.000 intenzioni. Nelle impostazioni alcuni moduli (NPC, storie, social, audio) si possono già attivare o spegnere, ma sono solo segnaposto: oggi hanno effetto solo i moduli *Personale*, *Mondo*, *Memoria*, *Proposte in chat* e *Total RP 3*. Anche la profondità dello stile (Naturale, Letterario, Elevato) si salva ma **nessuna frase la usa ancora**.
 
 ## Requisiti
 
@@ -107,6 +108,7 @@ L'addon risponde a `/au` e a `/unspoken`. Quasi tutti i comandi hanno anche un n
 | `/au ignora <incantesimo>` (`ignore`) | un incantesimo non produce più frasi; senza argomenti elenca quelli ignorati |
 | `/au pulsante` (`button`) | mostra o nasconde il pulsante "pronuncia" |
 | `/au anima` (`soul`) | apre la finestra del carattere del personaggio. Anche `lista`, `neutro`, `archetipo <id>`, `trp3 on\|off`, `<tratto> <valore>` (`temperamento`, `morale`, `curiosita`, `fede`, `motivazione`, `ironia`, `voce`; `-` toglie la scelta) ed `evita <argomento>` |
+| `/au diario` (`journal`, `diary`) | apre il diario del personaggio (ricordi, luoghi, flag, sessione). Anche `lista`, `luoghi`, `flag <nome>`, `esporta`, `permanente <n>`, `elimina <n>`, `dimentica <luogo>` e `reset [tutto\|ricordi\|ordinari\|luoghi\|flag]` (chiede conferma) |
 | `/au pacchetti` (`packs`) · `/au pacchetto <id> on\|off` (`pack`) | elenca o accende e spegne i pacchetti di frasi |
 | `/au info` (`stats`) | quante frasi sono disponibili, per evento |
 | `/au memoria` (`memory`) | azzera la memoria delle frasi usate (senza conferma) |
@@ -131,7 +133,7 @@ Il pannello si apre con `/au opzioni` (è registrato anche tra le opzioni degli 
 ## Privacy e chat
 
 - **Tutto resta sul tuo computer.** L'addon non apre connessioni, non scarica nulla e non invia dati. Non c'è nemmeno un modulo social attivo (è pianificato, con consenso esplicito e disattivato per impostazione predefinita).
-- **Non viene salvato il contenuto della chat.** Nei file salvati ci sono le impostazioni (account) e la memoria delle frasi usate (per personaggio). La cronologia del narratore sta solo in memoria e sparisce con la sessione.
+- **Non viene salvato il contenuto della chat.** Nei file salvati ci sono le impostazioni (account), la memoria delle frasi usate e i ricordi del personaggio (luoghi, momenti significativi, flag; per personaggio, solo ciò che il diario mostra). La cronologia del narratore sta solo in memoria e sparisce con la sessione.
 - **Nulla in chat senza un'azione del giocatore.** Il *Chat Gateway* ha quattro modalità:
 
 | Modalità | Che cosa succede |
@@ -163,7 +165,7 @@ La guida completa è in [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/F
 |---|---|
 | M0 Fondamenta: architettura, compatibilità, diagnostica (S1), narratore privato, Chat Gateway, impostazioni, procedura guidata (S2) | **fatto**, provato solo fuori dal gioco |
 | G1 Prova in gioco ([checklist](docs/G1_checklist.md)) | **rimandata**: serve l'utente con il client vero |
-| M1 Narrative Alpha: schema dati v2, Narrative Director, personalità, memoria, relazioni, interlocutore e luogo, 300 intenzioni | in corso / da fare |
+| M1 Narrative Alpha: schema dati v2, Narrative Director, personalità, memoria e diario (S1–S6 fatti), relazioni, interlocutore e luogo, 300 intenzioni | in corso / da fare |
 | M2–M5: NPC, storie, social, release 1.0 | da fare |
 
 Il piano dettagliato, gli step e le note per chi sviluppa sono in [ROADMAP.md](ROADMAP.md). Le modifiche rilevanti per versione sono in [CHANGELOG.md](CHANGELOG.md). I problemi noti e le idee sono nelle [issue](https://github.com/Finland6738/azeroth-unspoken/issues).

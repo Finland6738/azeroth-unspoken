@@ -98,27 +98,29 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Core/EventBus.lua`** | sorgenti WoW → tipi normalizzati; envelope; deduplicazione; coda anti-cascata; `Publish`, `Subscribe`, `Recent`. |
 | **`Core/ContextResolver.lua`** | `NS:BuildContext(extra)`: costruisce il contesto su cui si valutano le condizioni (personaggio, luogo, ora, gruppo, istanza, bersaglio, incantesimo), classifica gli incantesimi, registra le zone e le parole chiave dei pacchetti. |
 | **`Engine/PhraseRegistry.lua`** | `RegisterPack`; registra frasi, cornici, vocabolario e traduzioni; indici per evento e per id; speaker provvisorio; statistiche. |
-| **`Engine/RuleEngine.lua`** | `Match(when, ctx)`: le condizioni dichiarative (valori, elenchi, `not`, `any`, `func`, intervalli). |
+| **`Engine/RuleEngine.lua`** | `Match(when, ctx)`: le condizioni dichiarative (valori, elenchi, `not`, `any`, `func`, intervalli) e quelle di memoria (`firstVisit`, `repeatVisit`, `lastVisitBad`, `visitsMin`, `daysSinceLastVisit`, `remembered`). |
 | **`Engine/StyleResolver.lua`** | registri adatti al momento (GDD §5.2): ammessi per evento, preferiti da zona, profondità e voce; affinità di una frase (parte del fattore `S`); compatibilità tra cornice e frase. |
 | **`Engine/Traits.lua`** | il modello dei tratti (GDD §7.1): definizioni (`choice`, `scale` con fasce, `set`), profili con i soli tratti impostati, `Sanitize`, `Merge` (priorità tra le fonti), tag di affinità (`Evaluate`, `CheckTag`), nomi localizzati. Non conosce il personaggio: lo riusano Character Soul (S5), interlocutore (S6c) e relazioni (S6b). |
-| **`Engine/WeightedSelector.lua`** | idoneità, peso `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`, agganci `Engine:SetWeightHook`), anti-ripetizione, memoria degli usi, `PickEntry`/`Pick`. |
+| **`Engine/WeightedSelector.lua`** | idoneità, peso `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`, agganci `Engine:SetWeightHook`), anti-ripetizione, memoria degli usi, guardie degli eventi (`Engine:SetEventGuard`), `PickEntry`/`Pick`. |
 | **`Engine/Pacing.lua`** | pause (momento, globale, categoria, evento) e budget per categoria degli interventi spontanei; stato solo in memoria. |
 | **`Engine/NarrativeDirector.lua`** | priorità del §10, gate di opportunità guidato dall'intensità, sospensione (schermate invasive, combattimento impegnativo), dado, ordine dei candidati; agganci del ritmo e dell'impegno. |
 | **`Engine/TemplateRenderer.lua`** | segnaposto, genere, vocabolario, cornici. Se manca un dato, la frase è scartata. |
 | **`Integration/TotalRP3.lua`** | adattatore facoltativo ([ADR 0004](adr/0004-total-rp-3-facoltativo-con-adattatore.md)): il nome del profilo e, con consenso, i tratti psicologici pubblici del **proprio** profilo mappati sui tratti del Soul ([ADR 0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md)). |
 | **`Integration/ChatGateway.lua`** | modalità, proposte, canali, invio solo da azione del giocatore, anti-flood, `AzerothUnspoken_Speak`. |
 | **`Systems/Personality.lua`** | il Character Soul: otto tratti opt-in, archetipi, profilo effettivo (scelta > Total RP 3 > dati di gioco > neutro), fattore `P` del peso, preferenze di registro, condizione `soul`, `ctx.soul`, comando `/au anima`. |
+| **`Systems/LivingMemory.lua`** | la Living Memory ([ADR 0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md)): ricordi, luoghi visitati e flag per personaggio (`cdb.memories`), momenti della sessione, compattazione a 500, permanenti, reset, migrazioni, `ctx.memory`, eventi di richiamo con guardia (`RegisterRecall`), esportazione testuale, comando `/au diario`. |
 | **`Systems/Director.lua`** | il Narrative Director degli eventi spontanei: `Offer` (candidato), `Resolve` (al massimo un intervento per momento), `Evaluate` (il gate, punto di aggancio di S2), pausa immediata, riepilogo per `/au debug`. |
 | **`Systems/Triggers.lua`** | abbonato al bus: trasforma gli eventi normalizzati in eventi narrativi (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) e li offre al Director; tiene le probabilità e le pause proprie di ogni evento. |
 | **`UI/Widgets.lua`** | piccoli componenti condivisi dell'interfaccia. |
 | **`UI/NarratorFrame.lua`** | il narratore privato: riquadro, durata, opacità, cronologia, editor, pulsanti, pausa. |
 | **`UI/SpeakButton.lua`** | il pulsante "pronuncia" e il tasto: gesto che conferma il Chat Gateway. |
 | **`UI/ProfileFrame.lua`** | la finestra del profilo: archetipo, tratti, argomenti da evitare, consenso a Total RP 3, profilo neutro. |
+| **`UI/JournalFrame.lua`** | il diario: schede (ricordi, luoghi, flag, sessione; altre con `RegisterTab`), cancellazione selettiva, permanenza, reset con conferma, finestra di esportazione copiabile. |
 | **`UI/Wizard.lua`** | procedura guidata del primo avvio (6 passi, 7 con Total RP 3). |
 | **`UI/SettingsFrame.lua`** | pannello delle impostazioni (`Settings.RegisterCanvasLayoutCategory`, con ripiego su `InterfaceOptions_AddCategory`). |
 | **`UI/Commands.lua`** | `/au` e `/unspoken`. |
 | **`Data/<lingua>/Interface.lua`** | testi dell'interfaccia (`itIT`, `enUS`). |
-| **`Data/*.lua`** | pacchetti di frasi di base (schema v2): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
+| **`Data/*.lua`** | pacchetti di frasi di base (schema v2): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
 | **`Bindings.xml`** | tasti `AZEROTHUNSPOKEN_SPEAK` e `AZEROTHUNSPOKEN_PAUSE`. |
 | **`AzerothUnspoken_Example/`** | pacchetto di esempio, addon separato con `## Dependencies: AzerothUnspoken`. |
 | **`Tests/`** | test fuori dal gioco (lupa) e client simulato ([ADR 0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). |
@@ -261,6 +263,27 @@ flowchart LR
 - **Riuso**: `Engine/Traits.lua` non conosce il giocatore. S6c lo userà per `ctx.other` (ambito di tag `other.`), S6b per gli assi delle relazioni.
 - **Interfaccia**: `/au anima` apre `UI/ProfileFrame.lua` (archetipo, tratti, argomenti, consenso, profilo neutro); `/au anima lista | neutro | archetipo <id> | trp3 on|off | <tratto> <valore> | evita <argomento>`.
 
+### La Living Memory
+
+`Systems/LivingMemory.lua` dà al personaggio una continuità tra le sessioni (GDD §7.4, [ADR 0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md)). Solo momenti significativi, mai ogni clic, mai testo di chat.
+
+```mermaid
+flowchart LR
+    B["Bus: WORLD_ENTER, ZONE_ENTER,<br/>PLAYER_DEATH, LEVEL_UP"] --> LM["LivingMemory"]
+    LM --> S["Sessione<br/>(solo in memoria)"]
+    LM --> P["cdb.memories<br/>ricordi · luoghi · flag"]
+    P --> X["ctx.memory<br/>(solo dati veri)"]
+    X --> R["Condizioni delle frasi<br/>firstVisit · repeatVisit · lastVisitBad<br/>visitsMin · daysSinceLastVisit · remembered"]
+    LM -- "ritorno in un luogo noto" --> D["Director: memory_return<br/>(priorità: richiamo di memoria)"]
+    X --> G["Guardia dell'evento<br/>senza ricordo vero: nessuna frase"]
+    P --> J["Diario (UI/JournalFrame)<br/>e esportazione manuale"]
+```
+
+- **Cosa si ricorda**: prima visita a una zona (di più se è una capitale), ritorno dopo un giorno, visita finita male (morte o fuga), morti, livelli (ogni dieci un traguardo). I luoghi tengono i conteggi (visite, morti, esito) separati dai ricordi: compattare i ricordi non fa dimenticare un luogo.
+- **Limiti**: 500 ricordi ordinari (compattazione dei meno significativi fino a 450), 200 permanenti, 300 luoghi, 60 momenti di sessione. Reset a cinque bersagli, sempre con conferma.
+- **Richiamo onesto**: le condizioni di memoria leggono `ctx.memory`; gli eventi di richiamo (`memory_return`) hanno una guardia nel motore e il validatore esige una condizione di memoria sulle loro frasi. Il richiamo ha la priorità del §10 e batte l'atmosfera di zona nello stesso momento.
+- **Privacy**: nessuna sorgente di chat, nessun testo libero; `Record` e `Sanitize` ammettono solo i campi previsti.
+
 ## 5. Il Chat Gateway
 
 ```mermaid
@@ -310,8 +333,8 @@ flowchart LR
 
 | Variabile | Contenuto |
 |---|---|
-| `AzerothUnspokenDB` | `schemaVersion` (oggi 3) e `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `ui` (pulsante, wizard fatto, riquadro del narratore: durata, opacità, dimensione, posizione). |
-| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (usi, ultime frasi, tono), `personality` (`version`, `archetype`, `traits`, `trp3`: scelte esplicite del Character Soul e consenso a Total RP 3) e, per gli step futuri, `memories`, `arcs`, `history` (oggi vuoti). |
+| `AzerothUnspokenDB` | `schemaVersion` (oggi 4) e `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `ui` (pulsante, wizard fatto, riquadro del narratore: durata, opacità, dimensione, posizione). |
+| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (usi, ultime frasi, tono), `personality` (`version`, `archetype`, `traits`, `trp3`: scelte esplicite del Character Soul e consenso a Total RP 3) `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, vedi sopra) e, per gli step futuri, `arcs`, `history` (oggi vuoti). |
 
 - I predefiniti sono in `Config.defaults` e `Config.characterDefaults`; le regole di validità in `Config.rules`.
 - Le migrazioni sono `Config.migrations.global[n]` e `.character[n]` ([ADR 0006](adr/0006-savedvariables-e-versioni-dello-schema.md)).
@@ -335,6 +358,8 @@ Un pacchetto è un addon separato con `## Dependencies: AzerothUnspoken`. L'API 
 | `AzerothUnspoken:RegisterEventStyles(evento, { registri })` | registri ammessi per un evento (StyleResolver) |
 | `AzerothUnspoken:RegisterMoodStyles({ atmosfera = { registri } })` | registri preferiti da un'atmosfera |
 | `AzerothUnspoken:SetEventPriority(evento, "memory")` | priorità di un evento nel Narrative Director (`dialogue`, `exceptional`, `memory`, `ambient`) |
+| `AzerothUnspoken.LivingMemory:RegisterRecall(evento, verifica)` | un evento di richiamo di memoria: priorità `memory`, modulo `memory` e guardia (senza un ricordo vero non parla) |
+| `AzerothUnspoken.LivingMemory:RegisterKind(tipo, importanza)` · `:Record{ kind, zone, tags, … }` · `:SetFlag(nome)` | altri sistemi (archi, relazioni) registrano ricordi e flag |
 
 Un pacchetto può anche usare `func = function(ctx) … end` nelle condizioni per regole scritte in Lua, con il contesto di `NS:BuildContext`.
 
@@ -359,18 +384,17 @@ Questi punti sono interni: possono cambiare tra una versione e l'altra finché l
 3. Per ogni API del client nuova: controllala nel dump ([ADR 0010](adr/0010-dump-api-di-forever-come-riferimento.md)), passa da Compat e degrada con eleganza.
 4. Per un nuovo evento del client aggiungi una sorgente al bus; non registrare eventi per conto tuo.
 5. Per parlare, passa dal Director (se è spontaneo: `NS.Director:Offer(evento, extra)`) e dal Gateway (sempre).
-   Per influire sulla scelta senza toccare il Director usa gli agganci: `Engine:SetWeightHook("C"|"P"|"R", nome, fn)` (fattori del peso), `StyleResolver:SetModifier(nome, fn)` (preferenze di registro), `NarrativeDirector:SetRhythm(nome, fn)` (moltiplicatori di probabilità e pause), `NarrativeDirector:SetDemandCheck(nome, fn)` (momento impegnativo).
+   Per influire sulla scelta senza toccare il Director usa gli agganci: `Engine:SetWeightHook("C"|"P"|"R", nome, fn)` (fattori del peso), `StyleResolver:SetModifier(nome, fn)` (preferenze di registro), `NarrativeDirector:SetRhythm(nome, fn)` (moltiplicatori di probabilità e pause), `NarrativeDirector:SetDemandCheck(nome, fn)` (momento impegnativo), `Engine:SetEventGuard(evento, nome, fn)` (un evento parla solo se la guardia dice sì), `JournalFrame:RegisterTab(id, def)` (una scheda del diario).
 6. Dati salvati nuovi: predefiniti in `Config.defaults`, regole in `Config.rules`, migrazione e test.
 7. Annota con EmmyLua l'API pubblica e aggiungi le nuove globali a `.luarc.json` (vedi [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## 8. Cosa è previsto e non c'è ancora
 
-Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, c'è: [vedi sopra](#il-character-soul)).
+Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, e S6, la Living Memory, ci sono: [vedi sopra](#il-character-soul) e [qui](#la-living-memory)).
 
 | Step | Cosa aggiunge | Dove si aggancia |
 |---|---|---|
-| S6 | memoria vissuta e diario | `NS.cdb.memories`, `UI/JournalFrame.lua` |
-| S6b | relazioni e affinità con NPC e giocatori | `Systems/Relationships.lua`, `Data/Relationships.lua`; aggancio `R` (0 esclude le frasi incoerenti); gli assi sono scale di `Engine/Traits.lua` |
+| S6b | relazioni e affinità con NPC e giocatori | `Systems/Relationships.lua`, `Data/Relationships.lua`; una scheda del diario (`JournalFrame:RegisterTab`); aggancio `R` (0 esclude le frasi incoerenti); gli assi sono scale di `Engine/Traits.lua` |
 | S6c | interlocutore (`ctx.other`) e luogo (`ctx.place`) come condizioni | `Systems/Interlocutor.lua`, `Systems/Place.lua`, `Data/NPCs.lua`, `Data/Places.lua`; i tratti dell'interlocutore usano `Engine/Traits.lua` con l'ambito `other`; aggancio `C`, ritmo per tipo di istanza (`NarrativeDirector:SetRhythm`), scontri con i boss (`SetDemandCheck`) |
 | S8 | dialoghi con NPC (finestra, stati, registro) | nuovo modulo e `Data/NPCs.lua` |
 | S9 | archi narrativi | `NS.cdb.arcs` |
@@ -379,7 +403,7 @@ Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, i
 ## 9. Limiti noti
 
 - **Nulla è stato provato nel client vero.** Tutto è verificato solo con il client simulato; la prova G1 è rimandata ([checklist](G1_checklist.md)).
-- Nelle impostazioni solo i moduli `personal`, `world`, `publicChat` e `totalRP3` hanno effetto.
+- Nelle impostazioni hanno effetto i moduli `personal`, `world`, `memory`, `publicChat` e `totalRP3`; NPC, storie, social e audio sono ancora segnaposto.
 - Le probabilità e le pause per evento (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) vengono dal prototipo; i numeri del Narrative Director (budget, pause di categoria, bonus e penalità di stile) sono ipotesi da regolare con le prove in gioco ([G1](G1_checklist.md), passi 27–31).
 - Il riconoscimento del combattimento impegnativo usa solo boss, incursione ed élite in istanza: gli scontri con i boss dei dungeon senza classificazione `worldboss` arriveranno con S6c (`ENCOUNTER_START`).
 - Le API della matrice delle capacità non sono state controllate nel client della build 70658: vedi `/au debug full` e [RIFERIMENTI.md](RIFERIMENTI.md).

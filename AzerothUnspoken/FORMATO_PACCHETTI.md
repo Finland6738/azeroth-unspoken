@@ -185,6 +185,7 @@ adatti. Una frase senza `depth` non viene mai penalizzata. Indicativamente: `nat
 | `death`, `rez` | morte e ritorno in vita |
 | `levelup` | nuovo livello |
 | `zone` | ingresso in una nuova zona |
+| `memory_return` | ritorno in una zona già visitata (richiamo di memoria: solo con un ricordo vero) |
 | `attack` | incantesimo o abilità in combattimento |
 | `heal`, `buff`, `travel`, `rezother` | cure, benedizioni, viaggi, resurrezione di un compagno |
 | `greet`, `farewell`, `toast`, `thanks`, `jest`, `pray`, `muse`, `threat` | comandi manuali (`/au saluto`, ecc.) |
@@ -239,11 +240,37 @@ Le frasi con più condizioni sono più specifiche e ricevono un peso maggiore.
 | `depth` | la profondità scelta dall'utente: `natural`, `literary`, `elevated` |
 | `intensityMin`, `intensityMax` | intensità scelta dall'utente (0–100) |
 | `chance` | probabilità in più per questa sola frase, da 0 a 100 |
+| `firstVisit`, `repeatVisit` | `true` / `false`: è la prima visita a questa zona, oppure un ritorno (vedi «Memoria» sotto) |
+| `lastVisitBad` | `true` / `false`, oppure `"death"` / `"flight"`: la visita precedente a questa zona è finita male, per una morte o una fuga |
+| `visitsMin`, `visitsMax` | numero di visite alla zona, questa compresa |
+| `daysSinceLastVisit` | giorni dalla fine della visita precedente: un numero (almeno quello) o `{ da, a }` (da incluso, a escluso) |
+| `remembered` | un flag narrativo, o un elenco (uno basta): `remembered = "first_death"` |
 | `["not"]` | condizioni che devono essere **false**: `["not"] = { race = "Scourge" }` |
 | `any` | almeno uno dei gruppi: `any = { { race = "Human" }, { class = "PALADIN" } }` |
 | `func` | funzione Lua: `func = function(ctx) return ctx.hp > 0.9 end` |
 
 Una condizione sconosciuta o con un valore sbagliato rende la frase **mai scelta** (non genera errori) e il validatore la segnala.
+
+### Memoria: prima visita, ritorno, ricordi
+
+Le condizioni di memoria (`firstVisit`, `repeatVisit`, `lastVisitBad`, `visitsMin`, `visitsMax`, `daysSinceLastVisit`,
+`remembered`) leggono `ctx.memory`, costruito dalla Living Memory (`Systems/LivingMemory.lua`) **solo da ricordi veri**.
+Se la memoria è spenta, o non c'è un dato sul luogo, valgono tutte *false*: una frase che cita un ricordo non esce mai
+senza quel ricordo. `ctx.memory` ha anche `flags` (i flag narrativi) e `session` (`deaths`, `levels`, `zones`).
+
+- **Prima visita**: usa l'evento `zone` con `firstVisit = true`. È un'atmosfera di zona come le altre, ma solo la prima volta.
+- **Ritorno**: l'evento `memory_return` (dichiarato dal pacchetto `base_memory`) è un **richiamo di memoria**: priorità
+  «richiamo di memoria» nel Narrative Director (sopra l'atmosfera, sotto gli eventi eccezionali), attivo solo se il
+  modulo memoria è acceso e **mai se il ricordo non esiste** (guardia del motore, anche con `/au evento memory_return`).
+- **Regola editoriale**: ogni frase di un evento di richiamo deve dichiarare una condizione di memoria (`repeatVisit`,
+  `lastVisitBad`, `visitsMin`, `daysSinceLastVisit`, `remembered`, o un `any` in cui ogni gruppo ne ha una). Il validatore
+  segnala `recallWithoutMemory` altrimenti. Una frase che dice «l'ultima volta finì male» usa `lastVisitBad`; una che
+  parla della prima morte usa `remembered = "first_death"`.
+- Un pacchetto può dichiarare **altri** eventi di richiamo con `AzerothUnspoken.LivingMemory:RegisterRecall(evento, function(memoria, ctx) return … end)`
+  (la funzione conferma che il ricordo esiste); l'evento va dichiarato anche in `events = { … }`.
+- I flag narrativi si impostano con `AzerothUnspoken.LivingMemory:SetFlag("nome")` (lettere ASCII, cifre e `_`, al massimo
+  32 caratteri) e li imposta anche il gioco (`first_death`, `first_capital`, `level_10`, `level_20`…).
+- Un argomento da evitare (`topic:death`) esclude anche le frasi di richiamo che lo toccano: scrivi il tag come per ogni frase.
 
 ### Condizioni nuove
 
@@ -368,6 +395,7 @@ un **avviso** è un consiglio.
 | `badPlaceholder` | errore | segnaposto sconosciuto, genere malformato, graffa non chiusa, `{line}` fuori dalle cornici, vocabolario dentro il vocabolario |
 | `frameNoLine` | errore | una cornice senza `{line}` |
 | `badCondition` | errore | condizione sconosciuta o con un valore del tipo sbagliato |
+| `recallWithoutMemory` | errore | una frase di un evento di richiamo (`memory_return`…) senza una condizione di memoria |
 | `tooLong` | errore | oltre 255 byte nel caso peggiore (nomi lunghi nei segnaposto) per `/s`, `/e`, gruppo, gilda...; per i pensieri oltre 400 byte è un avviso |
 | `tooLongFramed` | avviso | con la cornice più lunga supera i 255 byte |
 | `badUTF8` | errore | testo non UTF-8 valido, carattere di controllo, U+FFFD (testo corrotto) |
