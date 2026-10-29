@@ -21,25 +21,54 @@ Il formato precedente (`phrases = { { it=, en= } }`) resta valido e viene conver
 3. Scrivi le regole e i testi con `AzerothUnspoken:RegisterPack({...})`.
 4. Scrivi `/au valida nani` in gioco (o `/au valida` per tutto): il validatore dice cosa correggere.
 
+> **In un pacchetto esterno chiama sempre le API dall'oggetto globale `AzerothUnspoken:`.** Nei file del database di
+> base la prima riga `local ADDON, NS = ...` dà il namespace *dell'addon*, e lì si scrive `NS:RegisterNPCs(...)`. In un
+> addon separato quella stessa riga dà il namespace *del tuo pacchetto*, che non ha nessuna di queste funzioni:
+> `NS:RegisterDialogues(...)` darebbe `attempt to call method 'RegisterDialogues' (a nil value)`. Tutti gli esempi di
+> questa guida sono scritti per un pacchetto esterno, e `Tests/check_docs.py` li carica come tali (vedi «Provare gli
+> esempi» in fondo).
+
+L'errore tipico, in un file di un pacchetto esterno (questo esempio **non funziona**, ed è provato come tale):
+
+<!-- prova: errore -->
+```lua
+local ADDON, NS = ...                  -- NS è il namespace del pacchetto, non dell'addon
+NS:RegisterDialogues({ scripts = {} }) -- attempt to call method 'RegisterDialogues' (a nil value)
+```
+
+Un pacchetto completo e minimo (due lingue, una regola, un testo per lingua):
+
+<!-- prova -->
 ```lua
 AzerothUnspoken:RegisterPack({
     id = "nani",                    -- unico tra tutti i pacchetti
     name = "Frasi dei nani",
     languages = { "itIT", "enUS" }, -- lingue che ogni frase del pacchetto deve avere (facoltativo)
-    events = { ... },               -- eventi nuovi (facoltativo)
-    registry = { ... },             -- le regole, una per id
-    texts = { itIT = { ... }, enUS = { ... } },   -- i testi per lingua, con le varianti
-    frames = { ... },               -- cornici narrative (facoltative)
-    vocab = { ... },                -- vocabolario per i segnaposto (facoltativo)
-    -- styles, categories, conditions: registri, categorie e condizioni nuove (facoltative)
+    registry = {                    -- le regole, una per id
+        ["nani.battle.01"] = { event = "battle", speaker = "character", styles = { "epic" }, conditions = { race = "Dwarf" } },
+    },
+    texts = {                       -- i testi per lingua, con le varianti
+        itIT = { ["nani.battle.01"] = { "Le montagne non arretrano!" } },
+        enUS = { ["nani.battle.01"] = { "The mountains do not yield!" } },
+    },
 })
 ```
+
+Oltre a `id`, `name`, `languages`, `registry` e `texts`, un pacchetto può avere `events` (eventi nuovi), `frames`
+(cornici narrative), `vocab` (vocabolario per i segnaposto) e `styles`, `categories`, `conditions` (registri, categorie e
+condizioni nuove). Sono tutti facoltativi e descritti più sotto.
 
 I testi possono stare anche in file separati, uno per lingua, come fa il database di base
 (`Data\Registry*.lua` per le regole, `Data\itIT\*.lua` e `Data\enUS\*.lua` per i testi):
 
+<!-- prova -->
 ```lua
-AzerothUnspoken:AddTexts("itIT", { ["nani.battle.01"] = { "Le montagne non arretrano!" } }, "nani")
+AzerothUnspoken:RegisterPack({
+    id = "nani_testi",
+    registry = { ["nanit.battle.01"] = { event = "battle", speaker = "character", styles = { "epic" } } },
+})
+AzerothUnspoken:AddTexts("itIT", { ["nanit.battle.01"] = { "Le montagne non arretrano!" } }, "nani_testi")
+AzerothUnspoken:AddTexts("enUS", { ["nanit.battle.01"] = { "The mountains do not yield!" } }, "nani_testi")
 ```
 
 Il terzo argomento è l'id del pacchetto che porta i testi: se l'utente lo spegne, quei testi non si usano più.
@@ -47,19 +76,28 @@ I testi possono arrivare prima della regola (l'ordine di caricamento dei file no
 
 ## Una regola
 
+<!-- prova -->
 ```lua
-registry = {
-    ["nani.battle.01"] = {
-        event = "battle",                       -- oppure più eventi: { "battle", "threat" }
-        speaker = "character",                  -- chi parla: narrator | inner | character | npc
-        styles = { "epic", "ceremonial" },      -- registri; il primo è quello principale
-        depth = { "natural", "literary" },      -- profondità per cui è scritta (assente = tutte)
-        tags = { "forest", "calm" },            -- etichette libere (affinità, ricerca)
-        weight = 2,                             -- peso relativo (predefinito 1)
-        cooldown = 600,                         -- secondi prima che possa tornare (facoltativo)
-        conditions = { race = "Dwarf" },        -- condizioni (facoltative; alias: when)
+AzerothUnspoken:RegisterPack({
+    id = "regola",
+    languages = { "itIT", "enUS" },
+    registry = {
+        ["regola.battle.01"] = {
+            event = { "battle", "threat" },         -- un evento, oppure più eventi
+            speaker = "character",                  -- chi parla: narrator | inner | character | npc
+            styles = { "epic", "ceremonial" },      -- registri; il primo è quello principale
+            depth = { "natural", "literary" },      -- profondità per cui è scritta (assente = tutte)
+            tags = { "forest", "calm" },            -- etichette libere (affinità, ricerca)
+            weight = 2,                             -- peso relativo (predefinito 1)
+            cooldown = 600,                         -- secondi prima che possa tornare (facoltativo)
+            conditions = { race = "Dwarf" },        -- condizioni (facoltative; alias: when)
+        },
     },
-},
+    texts = {
+        itIT = { ["regola.battle.01"] = "Le montagne non arretrano!" },
+        enUS = { ["regola.battle.01"] = "The mountains do not yield!" },
+    },
+})
 ```
 
 | Campo | Significato | Se manca |
@@ -77,18 +115,34 @@ registry = {
 
 ### I testi, con le varianti
 
+<!-- prova -->
 ```lua
-texts = {
-    itIT = {
-        ["nani.battle.01"] = {
-            "Le montagne non arretrano!",
-            "Né un passo indietro: siamo figli della montagna.",
-            { "Come la roccia che ci ha generati, noi non cediamo.", depth = "elevated" },
-        },
-        ["nani.battle.02"] = "Una variante sola si può scrivere come stringa.",
+AzerothUnspoken:RegisterPack({
+    id = "varianti",
+    languages = { "itIT", "enUS" },
+    registry = {
+        ["varianti.battle.01"] = { event = "battle", speaker = "character", styles = { "epic" } },
+        ["varianti.battle.02"] = { event = "battle", speaker = "character", styles = { "epic" } },
     },
-    enUS = { ... },
-}
+    texts = {
+        itIT = {
+            ["varianti.battle.01"] = {
+                "Le montagne non arretrano!",
+                "Né un passo indietro: siamo figli della montagna.",
+                { "Come la roccia che ci ha generati, noi non cediamo.", depth = "elevated" },
+            },
+            ["varianti.battle.02"] = "Una variante sola si può scrivere come stringa.",
+        },
+        enUS = {
+            ["varianti.battle.01"] = {
+                "The mountains do not yield!",
+                "Not one step back: we are children of the mountain.",
+                { "Like the rock that bore us, we do not give way.", depth = "elevated" },
+            },
+            ["varianti.battle.02"] = "A single variant can be written as a string.",
+        },
+    },
+})
 ```
 
 - Una **variante** è una stringa, oppure `{ "testo", depth = "elevated" }` (o `{ text = "...", depth = { ... } }`) se è
@@ -194,20 +248,25 @@ adatti. Una frase senza `depth` non viene mai penalizzata. Indicativamente: `nat
 Un evento nuovo si dichiara nel pacchetto, con categoria, probabilità (%) e pausa (secondi) predefinite
 (le scelte dell'utente con `/au prob` prevalgono):
 
+<!-- prova -->
 ```lua
 AzerothUnspoken:RegisterSpellKeywords({ kind = { fishing = { "fishing", "pesca" } } })  -- incantesimi -> evento "fishing"
 
 AzerothUnspoken:RegisterPack({
     id = "pesca",
+    languages = { "itIT", "enUS" },
     events = { fishing = { category = "exploration", chance = 20, cooldown = 300 } },
     registry = { ["pesca.01"] = { event = "fishing", speaker = "inner", styles = { "intimate" } } },
-    texts = { ... },
+    texts = {
+        itIT = { ["pesca.01"] = "L'acqua non ha fretta. Forse dovrei imparare da lei." },
+        enUS = { ["pesca.01"] = "The water is in no hurry. Perhaps I should learn from it." },
+    },
 })
 ```
 
 Ogni incantesimo che contiene quelle parole lancia l'evento `fishing`. Si può dichiarare un evento anche con
 `AzerothUnspoken:RegisterEvent("fishing", { category = "exploration", chance = 20, cooldown = 300 })`.
-Si possono aggiungere anche zone con `RegisterZoneMoods({ ["Booty Bay"] = "coast" })`.
+Si possono aggiungere anche zone con `AzerothUnspoken:RegisterZoneMoods({ ["Booty Bay"] = "coast" })`.
 
 ## Condizioni (`conditions`)
 
@@ -280,7 +339,7 @@ nella lista, **valgono tutte false** (tranne `isKnown = false`): una frase che c
 
 | Condizione | Vale se |
 |---|---|
-| `relation = "friend"` (o un elenco) | l'etichetta in uso è una di quelle: `stranger`, `acquaintance`, `indifferent`, `friend`, `comrade`, `rival`, `enemy`, `disliked`, `wary`, `feared`, `lover` (e quelle aggiunte da pacchetti con `NS:RegisterRelationData`). Un'etichetta scelta a mano dall'utente ha la precedenza sulla derivata |
+| `relation = "friend"` (o un elenco) | l'etichetta in uso è una di quelle: `stranger`, `acquaintance`, `indifferent`, `friend`, `comrade`, `rival`, `enemy`, `disliked`, `wary`, `feared`, `lover` (e quelle aggiunte da pacchetti con `AzerothUnspoken:RegisterRelationData`). Un'etichetta scelta a mano dall'utente ha la precedenza sulla derivata |
 | `disposition = "close"` | la disposizione complessiva: `hated`, `enemy`, `unfriendly`, `suspicious`, `neutral`, `acquaintance`, `friend`, `close`, `bond` |
 | `trustMin`, `trustMax`, `respectMin`, `affectionMin`, `fearMax`, `loyaltyMin`... | l'asse è almeno / al massimo quel numero: `familiarityMin`, `trust`, `respect`, `affection`, `fear`, `loyalty`, `attraction` (questo solo se l'utente l'ha acceso) |
 | `isKnown = true` / `false` | si conosce abbastanza la persona (familiarità minima, o etichetta scelta; un giocatore in lista è sempre noto) / non la si conosce |
@@ -291,7 +350,7 @@ nella lista, **valgono tutte false** (tranne `isKnown = false`): una frase che c
 - **Tag di affinità con ambito `rel.`** (fattore `R` del peso, stessa grammatica di quelli del Soul): `rel.relation:friend`, `rel.disposition:close`, `rel.trust:high` (fasce `low`/`mid`/`high` degli assi) sono **affinità morbida**; `rel.req:relation:rival` è un **requisito rigido** (senza quel rapporto la frase non esce); `rel.not:relation:enemy` un'**esclusione rigida**. Il validatore segnala (`badTag`) i tag senza ambito per questi tratti.
 - **Registro**: con la familiarità il narratore preferisce registri diversi (dal formale `ceremonial` all'intimo `intimate`): i `styles` della frase fanno il resto.
 - **Evento `relation_npc`** (dichiarato da `base_relations`): l'incontro con un NPC già conosciuto. Ogni sua frase deve dichiarare una condizione di relazione (`relation`, `isKnown = true`, `relationKind`...): il validatore segnala `relationWithoutRelation` altrimenti. Un pacchetto può dichiarare altri eventi del genere con `AzerothUnspoken.Relationships:RegisterRelationEvent(evento, function(ctx) return … end)`.
-- Esempi: `Data/RegistryRelations.lua` (51 frasi IT/EN).
+- Esempi: `Data/RegistryRelations.lua` (83 frasi IT/EN).
 
 ### Interlocutore e luogo: chi incontriamo, dove siamo
 
@@ -300,10 +359,28 @@ appena rivolto un'emote o sfidato a duello) e `ctx.place` (`Systems/Place.lua`).
 livello superiore (elenchi, `not`, `any`, `func(oggetto, ctx)`); senza interlocutore o luogo un valore richiesto non
 combacia, `campo = false` sì. Ogni campo conta nella specificità della frase.
 
+<!-- prova -->
 ```lua
-conditions = { other = { role = "innkeeper", any = { { speech = "jovial" }, { temperament = "cheerful" } } } }
-conditions = { place = { instanceType = "raid", tags = { "dragon", "fire" } } }
-conditions = { other = { actions = { "duel", within = 30 } } }       -- un duello chiesto negli ultimi 30 secondi
+AzerothUnspoken:RegisterPack({
+    id = "contesto",
+    languages = { "itIT", "enUS" },
+    registry = {
+        ["contesto.inn.01"] = { event = "npc_meet", speaker = "npc", styles = { "everyday" },
+            conditions = { other = { role = "innkeeper", any = { { speech = "jovial" }, { temperament = "cheerful" } } } } },
+        ["contesto.raid.01"] = { event = "zone", speaker = "inner", styles = { "ancient" },
+            conditions = { place = { instanceType = "raid", tags = { "dragon", "fire" } } } },
+        ["contesto.duel.01"] = { event = "other_action", speaker = "character", styles = { "epic" },
+            conditions = { other = { actions = { "duel", within = 30 } } } },   -- un duello chiesto negli ultimi 30 secondi
+    },
+    texts = {
+        itIT = { ["contesto.inn.01"] = "Sempre una buona parola, qui, oltre al boccale.",
+                 ["contesto.raid.01"] = "Il fuoco ha una voce antica, e oggi parla di noi.",
+                 ["contesto.duel.01"] = "Una sfida? Sia: che il migliore resti in piedi." },
+        enUS = { ["contesto.inn.01"] = "Always a kind word here, besides the tankard.",
+                 ["contesto.raid.01"] = "Fire has an ancient voice, and today it speaks of us.",
+                 ["contesto.duel.01"] = "A challenge? So be it: may the better one stay standing." },
+    },
+})
 ```
 
 | `other.` | Valori |
@@ -333,23 +410,42 @@ conditions = { other = { actions = { "duel", within = 30 } } }       -- un duell
 - **Eventi** (pacchetto `base_context`): `npc_meet` (un NPC dal ruolo riconosciuto), `other_action` (qualcuno compie un'azione verso di noi), `encounter_end` (fine di uno scontro con un boss). Non parlano senza la persona o lo scontro, nemmeno a mano. L'ingresso in un dungeon o in un campo di battaglia è l'evento `zone` con `place = { instanceType = … }`.
 - **Ritmo**: in campo di battaglia, in arena e contro un boss le frasi brevi (fino a 80 byte) pesano di più; in incursione il narratore parla meno.
 - **Regole editoriali** (GDD §5.3, §5.4): un mercante non declama come un re; razza e classe danno un saluto legato alla terra d'origine o al mestiere, mai un giudizio morale.
-- **Dati** dei pacchetti: `NS:RegisterPlaces{ zones, subzones, instances, continents }` (tag e temi per nome del client; `map`/`id` con `verified = true` solo se provati in gioco), `NS:RegisterNPCs{ [npcID] = { role, temperament, … } }`, `NS:RegisterTendencies{ class = { … } }` (mai la morale).
-- Esempi: `Data/RegistryContext.lua` (86 frasi IT/EN).
+- **Dati** dei pacchetti: `AzerothUnspoken:RegisterPlaces{ zones, subzones, instances, continents }` (tag e temi per nome del client; `map`/`id` con `verified = true` solo se provati in gioco), `AzerothUnspoken:RegisterNPCs{ [npcID] = { role, temperament, … } }`, `AzerothUnspoken:RegisterTendencies{ class = { … } }` (mai la morale). Una chiave già registrata (una zona, un `npcID`) **sostituisce** la voce di prima, non la unisce: per aggiungere dati a un luogo del database di base scrivi anche i suoi campi originali.
+  Esempio completo:
+
+<!-- prova -->
+```lua
+AzerothUnspoken:RegisterPlaces({
+    zones = { ["Valle di Prova"] = { tags = { "forest", "sacred" }, mood = "forest", continent = "kalimdor" } },
+})
+AzerothUnspoken:RegisterNPCs({
+    [990001] = { name = "Oste di Prova", role = "innkeeper", temperament = "gruff", speech = "terse" },
+})
+AzerothUnspoken:RegisterTendencies({ class = { PRIEST = { goals = "faith" } } })
+```
+
+- Esempi: `Data/RegistryContext.lua` (110 frasi IT/EN).
 
 ### Condizioni nuove
 
-Un pacchetto può dichiarare condizioni proprie, per dati che mette nel contesto (`NS:Trigger(evento, { hasPet = true })`)
+Un pacchetto può dichiarare condizioni proprie, per dati che mette nel contesto (`AzerothUnspoken:Trigger(evento, { hasPet = true })`)
 o che calcola da sé:
 
+<!-- prova -->
 ```lua
 AzerothUnspoken:RegisterPack({
     id = "animali",
+    languages = { "itIT", "enUS" },
     conditions = {
         hasPet = "bool",                                            -- confronta ctx.hasPet con il valore; "bool", "str", "num"...
         petNamed = function(valore, ctx) return ctx.petName == valore end,   -- calcolata
     },
-    registry = { ["animali.01"] = { event = "battle", speaker = "character", conditions = { hasPet = true } } },
-    ...
+    registry = { ["animali.01"] = { event = "battle", speaker = "character", styles = { "everyday" },
+        conditions = { hasPet = true, petNamed = "Brontolo" } } },
+    texts = {
+        itIT = { ["animali.01"] = "Con Brontolo al fianco, nessuna battaglia è davvero sola." },
+        enUS = { ["animali.01"] = "With Grumble at my side, no battle is ever truly alone." },
+    },
 })
 ```
 
@@ -359,26 +455,86 @@ oppure `AzerothUnspoken:RegisterCondition("hasPet", nil, "bool")`.
 
 I dialoghi con un NPC (step S8, [ADR 0020](../docs/adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)) sono dati come tutto il resto: un pacchetto può aggiungere battute e copioni senza toccare il motore. Sono **simulati**: la finestra lo dichiara («dialogo ambientale dell'addon») e le battute non vanno mai in chat.
 
-**Le battute** sono regole con `speaker = "npc"` e un evento `npcd_<ruolo>_<nodo>` dichiarato dal pacchetto. Escono solo dentro un dialogo: `NS:RegisterDialogues` mette su ogni evento dei nodi una guardia. Le condizioni sono quelle di sempre (`other = { role, speech, temperament, npcID }`, `isKnown`, `relation`, `remembered`...): così un locandiere burbero e uno gioviale, uno conosciuto e uno sconosciuto, o un NPC specifico per `npcID` dicono cose diverse.
+**Le battute** sono regole con `speaker = "npc"` e un evento `npcd_<ruolo>_<nodo>` dichiarato dal pacchetto. Escono solo dentro un dialogo: `AzerothUnspoken:RegisterDialogues` mette su ogni evento dei nodi una guardia. Le condizioni sono quelle di sempre (`other = { role, speech, temperament, npcID }`, `isKnown`, `relation`, `remembered`...): così un locandiere burbero e uno gioviale, uno conosciuto e uno sconosciuto, o un NPC specifico per `npcID` dicono cose diverse.
 
+**Il copione** dice quali nodi ci sono e che cosa si può rispondere. Il modo giusto di aggiungere un dialogo da un
+pacchetto è una **chiave nuova**, di solito un NPC specifico `npc:<npcID>`, che **estende** il copione dell'archetipo con
+`extends` (nodi e risposte proprie stanno sopra quelli ereditati; il resto si eredita). Qui un oste di prova (`npcID`
+inventato: nel gioco usa quello vero, da leggere con `/au chi` davanti all'NPC) che apre in modo suo e poi segue il
+copione del `innkeeper`:
+
+<!-- prova -->
 ```lua
-registry = {
-    ["pack.inn.open.gruff1"] = { event = "npcd_innkeeper_open", speaker = "npc", styles = { "everyday" },
-        tags = { "other.speech:gruff" }, weight = 1,
-        conditions = { other = { role = "innkeeper", any = { { temperament = "gruff" }, { speech = { "gruff", "terse" } } } } } },
-},
+AzerothUnspoken:RegisterPack({
+    id = "oste_prova",
+    languages = { "itIT", "enUS" },
+    events = {                                              -- gli eventi dei nodi nuovi
+        npcd_oste_open = { category = "social", chance = 100, cooldown = 0 },
+    },
+    registry = {                                            -- le battute: voce npc, evento del nodo
+        ["ostep.open.01"] = { event = "npcd_oste_open", speaker = "npc", styles = { "everyday" },
+            tags = { "other.speech:gruff" },
+            conditions = { other = { npcID = 990001, any = { { temperament = "gruff" }, { speech = { "gruff", "terse" } } } } } },
+    },
+    texts = {
+        itIT = { ["ostep.open.01"] = "Siediti, se devi. E se non ordini, almeno non intralciare." },
+        enUS = { ["ostep.open.01"] = "Sit down, if you must. And if you're not ordering, at least stay out of the way." },
+    },
+})
+AzerothUnspoken:RegisterNPCs({
+    [990001] = { name = "Oste di Prova", role = "innkeeper", temperament = "gruff", speech = "terse" },
+})
+AzerothUnspoken:RegisterDialogues({ scripts = {
+    ["npc:990001"] = {
+        extends = "innkeeper",           -- il copione di base: nodi `news`, `bye`, risposte `leave`...
+        role = "innkeeper", npcID = 990001, start = "open",
+        nodes = {
+            open = { event = "npcd_oste_open", choices = { "news", "leave" } },   -- il nodo `open` è solo suo
+        },
+    },
+} })
 ```
 
-**Il copione** dice quali nodi ci sono e che cosa si può rispondere:
+Una chiave già registrata (`innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`, o un `npc:<npcID>` di un altro
+pacchetto) **viene sostituita per intero, non unita**: `AzerothUnspoken:RegisterDialogues({ scripts = { innkeeper = … } })`
+rimpiazza il copione di base e il locandiere, in tutto il gioco, ha solo i nodi che scrivi tu (nessun avviso). Per
+cambiare un archetipo scrivi un copione completo, oppure usa una chiave nuova con `extends`. Lo stesso vale per i
+dati di `RegisterNPCs`, `RegisterPlaces` e per un arco con lo stesso id di un altro (vince l'ultimo pacchetto caricato).
 
+Un copione completo con tutti i suoi nodi (così è fatto `Data/Dialogues.lua`):
+
+<!-- prova -->
 ```lua
-NS:RegisterDialogues({ scripts = {
-    innkeeper = {                    -- un archetipo; "npc:295" sarebbe un NPC specifico (con extends = "innkeeper")
-        role = "innkeeper", start = "open",
+AzerothUnspoken:RegisterPack({
+    id = "cantiniere",
+    languages = { "itIT", "enUS" },
+    events = {
+        npcd_cantiniere_open = { category = "social", chance = 100, cooldown = 0 },
+        npcd_cantiniere_news = { category = "social", chance = 100, cooldown = 0 },
+        npcd_cantiniere_bye = { category = "social", chance = 100, cooldown = 0 },
+    },
+    registry = {
+        ["cant.open.01"] = { event = "npcd_cantiniere_open", speaker = "npc", styles = { "everyday" },
+            conditions = { other = { role = "banker" } } },
+        ["cant.news.01"] = { event = "npcd_cantiniere_news", speaker = "npc", styles = { "everyday" },
+            conditions = { other = { role = "banker" } } },
+        ["cant.bye.01"] = { event = "npcd_cantiniere_bye", speaker = "npc", styles = { "everyday" },
+            conditions = { other = { role = "banker" } } },
+    },
+    texts = {
+        itIT = { ["cant.open.01"] = "Dimmi pure, ma ho poco tempo.", ["cant.news.01"] = "Niente di nuovo, per fortuna.",
+                 ["cant.bye.01"] = "A presto." },
+        enUS = { ["cant.open.01"] = "Go on, but I haven't much time.", ["cant.news.01"] = "Nothing new, thankfully.",
+                 ["cant.bye.01"] = "See you soon." },
+    },
+})
+AzerothUnspoken:RegisterDialogues({ scripts = {
+    banker = {                       -- un archetipo nuovo: la chiave è il ruolo
+        role = "banker", start = "open",
         nodes = {
-            open = { event = "npcd_innkeeper_open", choices = { "news", "leave" } },
-            news = { event = "npcd_innkeeper_news", choices = { "leave" } },
-            bye  = { event = "npcd_innkeeper_bye" },            -- senza risposte: il dialogo finisce qui
+            open = { event = "npcd_cantiniere_open", choices = { "news", "leave" } },
+            news = { event = "npcd_cantiniere_news", choices = { "leave" } },
+            bye  = { event = "npcd_cantiniere_bye" },            -- senza risposte: il dialogo finisce qui
         },
         choices = {
             news  = { label = { it = "Che notizie corrono?", en = "What news is going round?" }, go = "news",
@@ -389,11 +545,14 @@ NS:RegisterDialogues({ scripts = {
 } })
 ```
 
+(Le battute possono usare `speech`, `temperament`, `npcID`, `isKnown`, `relation` e `remembered` per distinguere i
+caratteri e i rapporti, come fanno quelle di base in `Data/RegistryDialogues.lua`.)
+
 - **Risposte neutre, da una a tre per nodo** (ne compaiono al massimo tre; `when = { … }` ne nasconde una). Domande e azioni, mai un sentimento, un carattere o una decisione morale attribuiti al personaggio; al massimo 70 byte, senza segnaposto, IT ed EN.
 - **`flag`**: un flag narrativo locale, che diventa `npcd_<archetipo o npcID>_<nome>` nella memoria di S6 (al massimo 32 caratteri in tutto) e si legge nelle battute con `remembered`. Mai una quest.
 - **`relation`**: una fonte di incremento di `Data/Relationships.lua` (`ambient`, `ambient_talk`: poco, con tetti giornalieri).
 - Ogni percorso deve poter chiudersi (un nodo senza risposte o una risposta senza `go`).
-- L'**identità** non si sceglie dal pacchetto: il dialogo si offre solo per un NPC del registro curato (`NS:RegisterNPCs`, `Data/NPCs.lua`) o con un ruolo provato da un'interazione o scelto dall'utente. Le regole editoriali: niente prezzi, quest, fatti di cronaca, promesse che il gioco non mantiene.
+- L'**identità** non si sceglie dal pacchetto: il dialogo si offre solo per un NPC del registro curato (`AzerothUnspoken:RegisterNPCs`, `Data/NPCs.lua`) o con un ruolo provato da un'interazione o scelto dall'utente. Le regole editoriali: niente prezzi, quest, fatti di cronaca, promesse che il gioco non mantiene.
 
 ## Story Arcs (storie personali)
 
@@ -403,6 +562,10 @@ Gli archi (step S9, [ADR 0021](../docs/adr/0021-story-arcs-micro-storie-senza-ef
 
 **I passi.** Ogni passo porta da uno stato al successivo:
 
+Un arco completo (struttura, testi e battute) in un pacchetto esterno. Le due parti che seguono, i testi e le battute,
+sono commentate sotto.
+
+<!-- prova -->
 ```lua
 AzerothUnspoken:RegisterArcs({
     pack = "mio_pacchetto",
@@ -416,6 +579,62 @@ AzerothUnspoken:RegisterArcs({
                 { from = "REFLECTED", to = "RESOLVED", on = { "level" } },
             },
         },
+    },
+    texts = {                                       -- i testi dell'arco, per lingua (o con AddArcTexts, più sotto)
+        itIT = { ponte = {
+            title = "Il ponte",
+            summary = "Un ponte vecchio, e una scelta su come attraversarlo.",
+            states = {
+                DISCOVERED = "Hai ritrovato il ponte. Aspetta, come sempre.",
+                REFLECTED = "Hai deciso come attraversarlo.",
+                RESOLVED = "Dall'altra parte, il ponte è solo un ponte.",
+            },
+            choices = { cosa = { prompt = "Come lo attraversi?",
+                options = { coraggio = { label = "Con coraggio", note = "Hai scelto di non guardare giù." },
+                            prudenza = { label = "Con prudenza", note = "Hai scelto di provare ogni asse." } } } },
+        } },
+        enUS = { ponte = {
+            title = "The bridge",
+            summary = "An old bridge, and a choice about how to cross it.",
+            states = {
+                DISCOVERED = "You found the bridge again. It waits, as ever.",
+                REFLECTED = "You decided how to cross it.",
+                RESOLVED = "On the other side, the bridge is just a bridge.",
+            },
+            choices = { cosa = { prompt = "How do you cross it?",
+                options = { coraggio = { label = "With courage", note = "You chose not to look down." },
+                            prudenza = { label = "With care", note = "You chose to test every plank." } } } },
+        } },
+    },
+})
+
+AzerothUnspoken:RegisterPack({                      -- le battute dell'arco (vedi sotto)
+    id = "ponte_battute",
+    languages = { "itIT", "enUS" },
+    events = {
+        arc_open = { category = "reflection", chance = 100, cooldown = 0 },
+        arc_step = { category = "reflection", chance = 100, cooldown = 0 },
+        arc_resolve = { category = "reflection", chance = 100, cooldown = 0 },
+    },
+    registry = {
+        ["ponte.open.i"] = { event = "arc_open", speaker = "inner", styles = { "intimate" },
+            depth = { "natural", "literary", "elevated" }, conditions = { arc = { id = "ponte", state = "DISCOVERED" } } },
+        ["ponte.step.e"] = { event = "arc_step", speaker = "narrator", styles = { "ancient" },
+            conditions = { arc = { id = "ponte", state = "REFLECTED" } } },
+        ["ponte.done.coraggio"] = { event = "arc_resolve", speaker = "narrator", styles = { "epic" },
+            conditions = { arc = { id = "ponte", state = "RESOLVED", choice = "coraggio" } } },
+        ["ponte.done.prudenza"] = { event = "arc_resolve", speaker = "narrator", styles = { "intimate" },
+            conditions = { arc = { id = "ponte", state = "RESOLVED", choice = "prudenza" } } },
+    },
+    texts = {
+        itIT = { ["ponte.open.i"] = "Il ponte è ancora lì. Chissà da quanto mi aspettava.",
+                 ["ponte.step.e"] = "guarda il ponte a lungo, poi muove il primo passo.",
+                 ["ponte.done.coraggio"] = "attraversa a testa alta, senza voltarsi.",
+                 ["ponte.done.prudenza"] = "attraversa piano, tavola dopo tavola, e non perde nulla." },
+        enUS = { ["ponte.open.i"] = "The bridge is still there. Who knows how long it has been waiting for me.",
+                 ["ponte.step.e"] = "looks at the bridge for a long while, then takes the first step.",
+                 ["ponte.done.coraggio"] = "crosses with head held high, without looking back.",
+                 ["ponte.done.prudenza"] = "crosses slowly, plank by plank, and loses nothing." },
     },
 })
 ```
@@ -437,7 +656,7 @@ AzerothUnspoken:RegisterArcs({
 - **La chiusura** (`RESOLVED`) lascia un ricordo permanente in Living Memory (`kind = "story"`, tag `arc`, `done` e l'id dell'arco: nessun testo). Ogni stato raggiunto imposta il flag `arc_<id>_<stato>` (minuscolo), che le frasi leggono con `remembered`.
 - **Nessun campo per ricompense o effetti**: un campo sconosciuto in un arco o in un passo è un errore del validatore (`reward`, `quest`…).
 
-**I testi dell'arco** (per lingua, nei file `Data/<lingua>/…`):
+**I testi dell'arco** (per lingua; nel database di base stanno nei file `Data/<lingua>/…`, in un pacchetto puoi darli come `texts` di `RegisterArcs`, come sopra, o con `AddArcTexts`). Estratto della forma, completa nell'esempio:
 
 ```lua
 AzerothUnspoken:AddArcTexts("itIT", { ponte = {
@@ -455,7 +674,7 @@ AzerothUnspoken:AddArcTexts("itIT", { ponte = {
 
 Le opzioni le **sceglie il giocatore**, e il testo non fa dire al personaggio nulla che il giocatore non abbia deciso. Titolo, racconto di ogni stato, domande, etichette e note servono sia in italiano sia in inglese: `/au valida` segnala quelli che mancano (`badArc`).
 
-**Le battute** sono regole degli eventi `arc_open` (primo passo), `arc_step` (passi intermedi) e `arc_resolve` (ultimo passo), che un pacchetto dichiara con `events = { arc_open = { category = "reflection", chance = 100, cooldown = 0 }, … }` (come in `Data/RegistryArcs.lua`). Ogni regola **dichiara l'arco** con la sotto-tabella `arc`, e il validatore lo esige:
+**Le battute** sono regole degli eventi `arc_open` (primo passo), `arc_step` (passi intermedi) e `arc_resolve` (ultimo passo), che un pacchetto dichiara con `events = { arc_open = { category = "reflection", chance = 100, cooldown = 0 }, … }` (come in `Data/RegistryArcs.lua`). Ogni regola **dichiara l'arco** con la sotto-tabella `arc`, e il validatore lo esige (estratto dal pacchetto `ponte_battute` dell'esempio):
 
 ```lua
 registry = {
@@ -503,13 +722,23 @@ sceglie un'altra, o un'altra frase. Non si eseguono mai stringhe Lua contenute n
 Brevi formule complete, scelte in base al contesto, che si inseriscono nelle frasi con `{nome}`.
 Ogni voce può avere più varianti per lingua:
 
+<!-- prova -->
 ```lua
-vocab = {
-    cry = {
-        { when = { race = "Dwarf" }, it = "Per Forgiardente!", en = "For Ironforge!" },
-        { it = { "Avanti!", "In marcia!" }, en = { "Onward!", "Forward!" } },
+AzerothUnspoken:RegisterPack({
+    id = "vocabolario",
+    languages = { "itIT", "enUS" },
+    vocab = {
+        cry = {
+            { when = { race = "Dwarf" }, it = "Per Forgiardente!", en = "For Ironforge!" },
+            { it = { "Avanti!", "In marcia!" }, en = { "Onward!", "Forward!" } },
+        },
     },
-},
+    registry = { ["vocab.battle.01"] = { event = "battle", speaker = "character", styles = { "epic" } } },
+    texts = {
+        itIT = { ["vocab.battle.01"] = { "{cry} Non ci fermeranno.", "Non ci fermeranno." } },
+        enUS = { ["vocab.battle.01"] = { "{cry} They will not stop us.", "They will not stop us." } },
+    },
+})
 ```
 
 Le voci si **aggiungono** a quelle degli altri pacchetti con lo stesso nome. Il vocabolario non può contenere altro vocabolario né `{line}`.
@@ -520,11 +749,16 @@ Una voce può portare dei `tags`, con la stessa grammatica di quelli delle regol
 
 In modalità emote, la parlata di un `character` può essere inserita in una cornice. `{line}` è la frase:
 
+<!-- prova -->
 ```lua
-frames = {
-    { event = "battle", when = { race = "Dwarf" },
-      it = "si sputa sulle mani e grida: «{line}»", en = "spits on {g:his|her} hands and roars, \"{line}\"" },
-},
+AzerothUnspoken:RegisterPack({
+    id = "cornici",
+    languages = { "itIT", "enUS" },
+    frames = {
+        { event = "battle", when = { race = "Dwarf" },
+          it = "si sputa sulle mani e grida: «{line}»", en = "spits on {g:his|her} hands and roars, \"{line}\"" },
+    },
+})
 ```
 
 Una cornice senza `event` vale per tutti gli eventi; ogni variante deve contenere `{line}`.
@@ -534,8 +768,9 @@ Cornice e frase insieme devono stare nei 255 byte di un messaggio (il validatore
 
 ## Lingue nuove, traduzioni e testi in più
 
+<!-- prova -->
 ```lua
-AzerothUnspoken:RegisterLanguage("de", { name = "Deutsch", ui = { help = "...", ... } })
+AzerothUnspoken:RegisterLanguage("de", { name = "Deutsch", ui = { help = "Befehle: /au ..." } })
 AzerothUnspoken:RegisterPack({
     id = "tedesco",
     texts = { deDE = { ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!" } },
@@ -610,10 +845,10 @@ I controlli dei contenuti (lore verificata, ortografia, registro del parlante) r
 2. Peso **W = B × C × P × N × S × R** (GDD §10):
    - `B` = `weight`;
    - `C` = 1 + 0,35 × numero di condizioni (contesto);
-   - `P` = personalità, oggi neutra (step S5);
+   - `P` = personalità del giocatore (Character Soul): affinità morbida, requisiti e argomenti da evitare (vedi «Personalità»); 1 se il profilo è neutro;
    - `N` = novità: ÷ (1 + 0,3 × usi recenti), e ×0,6 se il registro principale è quello dell'ultima frase dello stesso evento;
    - `S` = stile: profondità (×0,3 se la frase è scritta per altre profondità) × registri (StyleResolver, sopra);
-   - `R` = relazione con l'interlocutore, oggi neutra (step S6b).
+   - `R` = relazione con la persona dell'interazione (tag `rel.`, vedi «Relazioni»); 1 senza relazione. Anche l'interlocutore e il luogo pesano, nel fattore `C` (tag `other.` e `place.`);
 3. Nessun fattore esclude una frase per ragioni di stile: c'è sempre un ripiego.
 4. Le frasi usate di recente (circa il 60% di quelle disponibili, al massimo `pacing.recentPhraseWindow` = 30) sono escluse finché ce ne sono altre.
 5. Scelta la frase, sceglie una **variante**: tra quelle della profondità giusta (o senza indicazione), diversa dall'ultima usata.
@@ -623,3 +858,13 @@ I controlli dei contenuti (lore verificata, ortografia, registro del parlante) r
    priorità e sospensione durante filmati e combattimenti impegnativi. Un evento nuovo ha la priorità "atmosfera";
    un pacchetto la può cambiare con `AzerothUnspoken:SetEventPriority("fishing", "memory")`
    (`dialogue`, `exceptional`, `memory`, `ambient`). Vedi [docs/ARCHITETTURA.md](../docs/ARCHITETTURA.md).
+
+## Provare gli esempi
+
+Ogni blocco `lua` di questa guida preceduto da una riga `<!-- prova -->` è un pacchetto completo e funzionante.
+`Tests/check_docs.py` (lanciato da `Tests/run_tests.py`) li carica **uno dopo l'altro come farebbe un pacchetto esterno**
+(`local ADDON, NS = ...` è il suo namespace, le API si chiamano da `AzerothUnspoken:`), esegue il validatore su tutti i
+pacchetti e fallisce se uno solo segnala un errore. Un blocco preceduto da `<!-- prova: errore -->` è un esempio sbagliato
+apposta, che deve dare errore. Se cambi un esempio, o l'API che usa, i test te lo dicono; se ne aggiungi uno, mettigli
+la riga `<!-- prova -->` e id suoi (che non coincidano con quelli degli altri esempi). Lo stesso script controlla i link
+relativi di tutti i file Markdown del repository.

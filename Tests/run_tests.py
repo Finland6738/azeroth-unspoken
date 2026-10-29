@@ -696,5 +696,12 @@ if proc.stdout.startswith("SALTATO"):
 else:
     check(proc.returncode == 0, "check_api.py: funzioni ed eventi usati presenti nel dump (o con eccezione motivata)")
 
+# 11) documentazione: gli esempi di FORMATO_PACCHETTI.md come pacchetti esterni e i link relativi dei file Markdown
+print("\nDOCUMENTAZIONE")
+proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_docs.py"), os.path.dirname(ADDON)],
+                      capture_output=True, text=True, encoding="utf-8")
+print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  esempio" not in l))
+check(proc.returncode == 0, "check_docs.py: esempi della guida ai pacchetti e link relativi validi")
+
 print("\n" + ("TUTTI I CONTROLLI SUPERATI" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
 sys.exit(1 if FAILURES else 0)
