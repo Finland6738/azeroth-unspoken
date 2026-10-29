@@ -144,6 +144,7 @@ NS:RegisterLanguage("en", {
 			.. "/au cancel - discard the proposal\n"
 			.. "/au copy - copy the proposal into the chat box (you send it with Enter)\n"
 			.. "/au narrator [history|reset|clear] - the narrator box\n"
+			.. "/au soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>] - character personality\n"
 			.. "/au greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest\n"
 			.. "/au event <name> - propose a line for an event (battle, zone, muse...)\n"
 			.. "/au cast <spell> - a line for a spell (handy in macros)\n"
@@ -170,5 +171,55 @@ NS:RegisterLanguage("en", {
 		validate_ok = "No problems found.",
 		validate_more = "... and %d more (use /au validate full).",
 		validate_nopack = "unknown pack: %s",
+
+		-- Character Soul (step S5): traits, archetypes, profile
+		opt_soul = "Character soul...",
+		soul_title = "Character soul",
+		soul_intro = "All optional: with no choices the narrator stays neutral. Traits weigh lines, they never force them; avoided topics and a silenced inner voice are never contradicted.",
+		soul_summary = "character soul, archetype: %s",
+		soul_none = "not set",
+		soul_src_explicit = "chosen", soul_src_trp3 = "Total RP 3", soul_src_game = "game", soul_src_neutral = "neutral",
+		soul_archetype = "Archetype", soul_reset = "Neutral profile", soul_close = "Close",
+		soul_clear_tip = "Remove the choice: the trait falls back to Total RP 3 (if you allow it), game data or neutral.",
+		soul_avoid_title = "Topics to avoid (never in lines)",
+		soul_reset_done = "neutral profile: no trait choices.",
+		soul_arch_list = "archetypes: %s",
+		soul_arch_set = "archetype chosen: %s. Takes effect now.",
+		soul_value = "%s: %s",
+		soul_set = "%s: %s. Takes effect now.",
+		soul_cleared = "%s: choice removed.",
+		soul_avoid_on = "from now on you avoid: %s.",
+		soul_avoid_off = "you no longer avoid: %s.",
+		soul_trp3_state = "traits from Total RP 3: %s",
+		soul_trp3_absent = "Total RP 3 is not installed: nothing to read. The soul works anyway.",
+		soul_trp3_consent = "Traits from Total RP 3",
+		soul_trp3_tip = "Reads the PUBLIC personality traits of your own Total RP 3 profile (yours only, read-only) and uses them where you made no choice. Your choices always come first.",
+		soul_help = "usage: /au soul [list | neutral | archetype <id> | trp3 on|off | <trait> <value|-> | avoid <topic>]. Traits: temperament, morality, curiosity, faith, motivation, irony, voice, avoid.",
+		soul_arch_custom = "Custom", soul_arch_custom_help = "Your own choices, which match no archetype.",
+		soul_arch_neutral = "Neutral", soul_arch_neutral_help = "No traits: the narrator does not pick the character for you.",
+		soul_arch_veteran = "Disillusioned veteran", soul_arch_veteran_help = "Stoic and weary, has seen too much to trust promises.",
+		soul_arch_traveler = "Hopeful traveler", soul_arch_traveler_help = "Cheerful and curious, finds hope at every turn of the road.",
+		soul_arch_guardian = "Devout guardian", soul_arch_guardian_help = "Merciful and steady in faith, shields those who cannot shield themselves.",
+		soul_arch_rogue = "Sharp-tongued rogue", soul_arch_rogue_help = "Gruff and pragmatic, irony is the armor.",
+		soul_arch_scholar = "Scholar", soul_arch_scholar_help = "Stoic, skeptical and endlessly curious: every ruin is a library.",
+		soul_arch_avenger = "Avenger", soul_arch_avenger_help = "Fierce and conflicted, one reason keeps them walking.",
+		soul_arch_penitent = "Penitent", soul_arch_penitent_help = "Melancholic and seeking redemption, carries a debt.",
+		trait_temperament = "Temperament", trait_temperament_resolute = "Resolute", trait_temperament_merciful = "Merciful",
+		trait_temperament_stoic = "Stoic", trait_temperament_cheerful = "Cheerful", trait_temperament_melancholic = "Melancholic",
+		trait_temperament_gruff = "Gruff", trait_temperament_fierce = "Fierce",
+		trait_morality = "Morality", trait_morality_righteous = "Righteous", trait_morality_pragmatic = "Pragmatic",
+		trait_morality_conflicted = "Conflicted", trait_morality_disillusioned = "Disillusioned", trait_morality_hopeful = "Hopeful",
+		trait_curiosity = "Curiosity", trait_curiosity_low = "low", trait_curiosity_mid = "medium", trait_curiosity_high = "high",
+		trait_faith = "Faith", trait_faith_devout = "Devout", trait_faith_spiritual = "Spiritual", trait_faith_doubting = "Doubting",
+		trait_faith_skeptic = "Skeptic",
+		trait_motivation = "Motivation", trait_motivation_duty = "Duty", trait_motivation_vengeance = "Vengeance",
+		trait_motivation_glory = "Glory", trait_motivation_knowledge = "Knowledge", trait_motivation_redemption = "Redemption",
+		trait_motivation_freedom = "Freedom", trait_motivation_protection = "Protection",
+		trait_irony = "Irony", trait_irony_low = "low", trait_irony_mid = "medium", trait_irony_high = "high",
+		trait_innerVoice = "Inner voice", trait_innerVoice_off = "off", trait_innerVoice_quiet = "quiet",
+		trait_innerVoice_present = "present", trait_innerVoice_vivid = "vivid",
+		trait_avoid = "Topics to avoid", trait_avoid_death = "death", trait_avoid_blood = "blood",
+		trait_avoid_betrayal = "betrayal", trait_avoid_family = "family", trait_avoid_religion = "religion",
+		trait_avoid_undead = "the undead", trait_avoid_demons = "demons", trait_avoid_romance = "romance",
 	},
 })

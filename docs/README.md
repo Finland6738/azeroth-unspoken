@@ -55,6 +55,7 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 | [0013](adr/0013-wiki-github.md) | La wiki di GitHub |
 | [0014](adr/0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) | Bus di eventi, moduli isolati, Director |
 | [0015](adr/0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, peso W, stile |
+| [0016](adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in, affinità morbida e filtri rigidi, Total RP 3 con consenso |
 
 ## Archivio
 

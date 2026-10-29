@@ -1,6 +1,7 @@
 -- Azeroth Unspoken: configurazione, SavedVariables, migrazioni e validazione
 --   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... } }
 --   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
+--     personality = { version, archetype, traits = { [tratto] = valore }, trp3 }  (Systems/Personality.lua)
 local ADDON, NS = ...
 ---@class AUConfig
 ---@field SCHEMA_VERSION integer
@@ -12,7 +13,7 @@ local ADDON, NS = ...
 local Config = {}
 NS.Config = Config
 
-Config.SCHEMA_VERSION = 2
+Config.SCHEMA_VERSION = 3
 
 -- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
@@ -126,7 +127,9 @@ Config.defaults = {
 
 Config.characterDefaults = {
 	memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} },
-	personality = {},
+	-- Character Soul (S5): archetipo, scelte esplicite sui tratti e consenso a leggere i tratti da Total RP 3.
+	-- Vuoto = profilo neutro. I valori dei tratti si controllano in Personality:Sanitize (modello Engine/Traits.lua).
+	personality = { version = 1, archetype = "neutral", traits = {}, trp3 = false },
 	memories = {},
 	arcs = {},
 	history = {},
@@ -305,6 +308,8 @@ Config.migrations = {
 				s.output.autoPublicSay = false
 			end
 		end,
+		-- 3: nessun cambiamento alle impostazioni (versione allineata a quella del personaggio, che cambia con S5)
+		[3] = function() end,
 	},
 	character = {
 		[1] = function(db)
@@ -312,6 +317,20 @@ Config.migrations = {
 		end,
 		-- 2: nessun cambiamento ai dati del personaggio (versione allineata a quella globale)
 		[2] = function() end,
+		-- 3: personality (segnaposto vuoto fino a S4) diventa il profilo del Character Soul. Una tabella vuota o
+		-- rovinata parte dal profilo neutro; i campi che mancano li aggiunge Merge, i valori dei tratti li ripulisce
+		-- Personality:Sanitize all'avvio.
+		[3] = function(db)
+			local p = db.personality
+			if type(p) ~= "table" then
+				db.personality = nil
+				return
+			end
+			if type(p.traits) ~= "table" then p.traits = nil end
+			if type(p.archetype) ~= "string" then p.archetype = nil end
+			if type(p.trp3) ~= "boolean" then p.trp3 = nil end
+			p.version = 1
+		end,
 	},
 }
 

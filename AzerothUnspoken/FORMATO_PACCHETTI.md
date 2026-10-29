@@ -70,7 +70,7 @@ registry = {
 | `form` | `say` = parlata, `emote` = narrativa in terza persona, senza il nome | `emote` per il narratore, `say` per le altre voci |
 | `styles` | registri (vedi sotto) | nessuno (avviso) |
 | `depth` | `natural`, `literary`, `elevated`: una o più | vale per tutte |
-| `tags` | elenco di etichette | nessuna |
+| `tags` | elenco di etichette: descrittive o di affinità con i tratti del personaggio (vedi sotto) | nessuna |
 | `weight` | numero maggiore di 0 | 1 |
 | `cooldown` | secondi (anche `cooldownSeconds`) | nessuno |
 | `conditions` | tabella di condizioni (anche `when`) | sempre vera |
@@ -119,6 +119,29 @@ Scrivi come `inner` ciò che è un pensiero, non una frase da dire a voce alta: 
 Le **emote** iniziano con la minuscola e senza il nome: il gioco scrive da solo il nome del personaggio
 («*Brann* snuda l'arma...»). Una parlata del `character` si può raccontare dentro una **cornice** quando serve
 un'emote; un pensiero (`inner`) non viene mai messo in una cornice.
+
+### Personalità: i tag di affinità
+
+I `tags` senza due punti (`"wry"`, `"heroic"`) sono descrittivi: il motore li ignora. Con i due punti collegano la frase ai tratti del
+personaggio del giocatore (Character Soul, opzionale; senza tratti la frase è neutra):
+
+| Tag | Effetto |
+|---|---|
+| `temperament:stoic` | **affinità morbida**: il peso sale (×1,6) se il profilo ha quel valore, scende (×0,6) se ne ha un altro, non cambia se il tratto non è impostato |
+| `req:faith:devout` | **requisito rigido**: la frase esce solo se il profilo ha quel valore. Più `req` dello stesso tratto sono alternative, tratti diversi si sommano. Anche il profilo neutro la esclude |
+| `not:faith:devout` | **esclusione rigida**: la frase non esce se il profilo ha quel valore |
+| `topic:death` | **argomento da evitare**: la frase non esce se il giocatore ha scelto di evitarlo |
+
+Tratti e valori: `temperament` (`resolute`, `merciful`, `stoic`, `cheerful`, `melancholic`, `gruff`, `fierce`), `morality`
+(`righteous`, `pragmatic`, `conflicted`, `disillusioned`, `hopeful`), `curiosity` e `irony` (scale: `low`, `mid`, `high`), `faith`
+(`devout`, `spiritual`, `doubting`, `skeptic`), `motivation` (`duty`, `vengeance`, `glory`, `knowledge`, `redemption`, `freedom`,
+`protection`), `innerVoice` (`off`, `quiet`, `present`, `vivid`; riguarda le frasi con `speaker = "inner"`) e, per `topic:`,
+`death`, `blood`, `betrayal`, `family`, `religion`, `undead`, `demons`, `romance`.
+
+Regola di scrittura: una frase che **afferma** qualcosa del personaggio (la fede, un passato di vendetta) usa `req:`; una che dice
+le stesse cose **con un tono** usa l'affinità morbida; una che tocca un argomento delicato (sangue, famiglia) porta `topic:`.
+Un registro `ironic` senza tag `irony:` è già pesato dall'ironia del giocatore. Il validatore segnala (`badTag`) i tag di
+affinità con un tratto o un valore che non esistono. Esempi in `Data/RegistrySoul.lua`.
 
 ### Registri (`styles`) e profondità (`depth`)
 

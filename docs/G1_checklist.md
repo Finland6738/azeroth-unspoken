@@ -244,6 +244,27 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
     - **Cosa aspettarti:** durante lo scontro nessuna frase di battaglia o di atmosfera (in `/au debug`: `battle=busy`); morte e ritorno in vita parlano ancora.
     - **Cosa riportare:** frasi comparse durante uno scontro impegnativo, e se un boss è stato riconosciuto come tale.
 
+32. **Il profilo del personaggio.** Scrivi `/au anima` (o apri le impostazioni e premi "Anima del personaggio...").
+    - **Cosa aspettarti:** si apre una finestra con l'archetipo, sette righe di tratti (ognuna con il suo pulsante e la fonte: scelta, Total RP 3 o neutro), gli otto argomenti da evitare e, in basso, "Profilo neutro" e "Chiudi". Il pulsante di Total RP 3 compare solo se l'addon c'è. Si può spostare trascinandola.
+    - **Cosa riportare:** se i testi stanno nei pulsanti (niente parole tagliate), se la finestra sta nello schermo, se i pulsanti `+`, `-` e `x` rispondono, se `/au anima` la chiude di nuovo.
+33. **Il carattere cambia le frasi.** Scegli l'archetipo "Veterano disilluso", poi (sempre con il pulsante) "Viaggiatore ottimista". Dopo ogni scelta scrivi `/au pensiero` e `/au grido` alcune volte, ed entra in una capitale.
+    - **Cosa aspettarti:** il cambio vale subito, senza `/reload`. Con il veterano in una capitale puoi sentire «Ogni strada conduce a casa...», con il viaggiatore «Le sue porte sono ancora aperte...». Frasi di tono ironico per l'ironia alta, più sobrie per quella bassa. Con le sole 16 frasi di esempio la differenza è piccola: contano il ripetersi e l'assenza di contraddizioni.
+    - **Cosa riportare:** se una frase ti è sembrata in contrasto con il carattere scelto, e quale.
+34. **Argomenti da evitare.** Accendi "famiglia" e "sangue" (o `/au anima evita famiglia`, `/au anima evita sangue`). Scrivi `/au pensiero` una ventina di volte e fai scendere la salute del personaggio.
+    - **Cosa aspettarti:** mai «Chissà se a casa qualcuno accende ancora una candela per me» né «Il sangue mi scorre tra le dita...».
+    - **Cosa riportare:** se compare una frase che tocca un argomento spento. È il caso più grave: riportala per intero.
+35. **Voce interiore spenta.** `/au anima voce spenta` e poi `/au pensiero` e `/au evento muse` alcune volte (poi `/au anima voce -` per toglierla).
+    - **Cosa aspettarti:** nessuna frase con l'etichetta "Voce interiore" nel narratore; compaiono quelle del personaggio o del narratore, oppure niente.
+    - **Cosa riportare:** frasi con l'etichetta "Voce interiore" comparse a voce spenta.
+36. **Profilo neutro.** `/au anima neutro`, poi `/au anima lista`.
+    - **Cosa aspettarti:** tutti i tratti "non impostato (neutro)", e il narratore si comporta come prima. Nessuna preghiera del devoto, nessun «tutto mi è stato tolto»: sono le frasi che affermano un credo o un passato e il profilo neutro non le sente.
+37. **Total RP 3** (solo se è installato; altrimenti scrivilo e passa oltre). Nel tuo profilo TRP3 imposta qualche tratto psicologico, per esempio "Gentile/Brutale" tutto a sinistra e "Superstizioso/Razionale" tutto a destra. Poi `/au anima trp3 on` e `/au anima lista`.
+    - **Cosa aspettarti:** Temperamento "Misericordioso (Total RP 3)" e Fede "Scettico (Total RP 3)"; con `/au anima trp3 off` tornano "neutro". Una scelta fatta a mano ha sempre la precedenza. Senza il consenso l'addon non legge i tratti.
+    - **Cosa riportare:** le righe `integration:totalRP3` e `integration:totalRP3:traits` di `/au debug full`, e se i tratti letti corrispondono a quelli impostati (gli ID dei tratti di TRP3 non sono stati provati con un profilo vero). Se compare un errore rosso con TRP3 installato, uno screenshot.
+38. **Il profilo resta.** Scegli un archetipo e un argomento da evitare, fai `/reload`, poi esci e rientra.
+    - **Cosa aspettarti:** `/au anima lista` mostra le stesse scelte dopo entrambi.
+    - **Cosa riportare:** se qualcosa è tornato neutro.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -265,6 +286,10 @@ S3 /au valida ........... errori ___  avvisi ___  accenti giusti (IT/EN)? ___  p
 S4 ritmo ................ invadente / giusto / muto ___  due frasi insieme? ___  riga Director in /au debug ______
 S4 intensità ............ a 0 muto? ___  a 100 sopportabile? ___
 S4 sospensioni .......... cinematica muta? ___  boss/élite muti? ___  api:InCinematic ___
+S5 profilo ............. finestra ok? ___  cambio subito? ___  testo tagliato? ___
+S5 argomenti evitati .... mai una frase vietata? ___  voce interiore spenta ok? ___
+S5 Total RP 3 ........... tratti letti giusti? ___  (non installato: scrivilo)  righe api ___
+S5 persistenza .......... dopo /reload ___  dopo uscita ___
 Q2 nella chat (#14) ..... pulsante c'è? ___  casella su /s giusta? ___  Invio da lì parte? ___  riga api:OpenChat ___
 Q2 testo per canale (#5)  emote in /s con nome? ___  parlato in /e con "dice"? ___
 Q2 editor (#4) .......... resta aperto 40 s? ___  Invio spedisce? ___

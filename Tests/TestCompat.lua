@@ -138,7 +138,7 @@ T.run("Diagnostics", function()
 	T.ok(text:find("Interface 16001", 1, true), "rapporto: build")
 	T.ok(text:find("[api]", 1, true) and text:find("[event]", 1, true), "rapporto: gruppi")
 	T.ok(text:find("GetBuildInfo", 1, true), "rapporto dettagliato: id delle capacità")
-	T.ok(text:find("schema 2", 1, true), "rapporto: schema")
+	T.ok(text:find("schema 3", 1, true), "rapporto: schema")
 	T.ok(text:find("Errori intercettati", 1, true), "rapporto: errori")
 
 	SENT = {}

@@ -10,6 +10,17 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 
 ### Aggiunto
 
+**Step S5: Character Soul e tratti di Total RP 3**
+- `Engine/Traits.lua`: il modello dei tratti (`choice`, `scale` con fasce, `set`), riusabile per l'interlocutore (S6c) e per le relazioni (S6b); `Sanitize`, `Merge` con la priorità tra le fonti, tag di affinità con ambiti.
+- `Systems/Personality.lua` (Character Soul): otto tratti opt-in (temperamento, morale, curiosità, fede, motivazione, ironia, voce interiore, argomenti da evitare), sette archetipi più il profilo neutro, profilo effettivo *scelta esplicita > Total RP 3 > dati di gioco > valori neutri*, `ctx.soul`, condizione `soul`.
+- Fattore `P` del peso riempito: affinità morbida dai tag `tratto:valore` e filtri rigidi `req:`, `not:`, `topic:` (mai contraddetti); la voce interiore spenta esclude i pensieri; l'ironia pesa i registri ironici; il temperamento, la fede e l'ironia spostano i registri preferiti (`StyleResolver`).
+- `UI/ProfileFrame.lua` e comando `/au anima` (`lista`, `neutro`, `archetipo`, `trp3 on|off`, `<tratto> <valore>`, `evita <argomento>`; alias `/au soul`): scelta dell'archetipo, modifica dei tratti, cambio immediato; pulsante nel pannello delle impostazioni.
+- `Integration/TotalRP3.lua`: lettura dei soli tratti psicologici **pubblici** del **proprio** profilo (`characteristics/PS`), con un consenso a parte (`personality.trp3`, spento per impostazione predefinita); si disattiva se le API mancano o cambiano; nuova capacità `integration:totalRP3:traits` in `/au debug`.
+- 16 frasi di esempio con affinità di personalità in IT ed EN (`Data/RegistrySoul.lua`, pacchetto `base_soul`); il validatore controlla i tag di affinità (`badTag`).
+- SavedVariables: schema 3 (`personality` del personaggio con archetipo, tratti e consenso a TRP3; migrazione dallo schema 2).
+- Test: `TestSoul` (modello dei tratti, profilo neutro, archetipi, fattore P, filtri rigidi su ogni scelta di frase, TRP3 presente, assente e con API cambiate, priorità tra le fonti, migrazione delle SavedVariables, comando, finestra).
+- [ADR 0016](docs/adr/0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md); passi 32–38 in `docs/G1_checklist.md`.
+
 **Step S4: Narrative Director**
 - `Engine/NarrativeDirector.lua`: priorità del GDD §10 (esplicito > dialogo > evento eccezionale > memoria > atmosfera), gate di opportunità guidato dall'intensità, sospensione durante cinematiche e filmati e nei combattimenti impegnativi (boss, incursione, élite in istanza), dado, ordine dei candidati; `NS:SetEventPriority` per i pacchetti; agganci `SetRhythm` e `SetDemandCheck` per S6c.
 - `Engine/Pacing.lua`: pausa minima tra due interventi qualsiasi (niente cascate), pausa globale, di categoria e di evento, budget per categoria in 10 minuti scalato con l'intensità; stato solo per la sessione.
@@ -34,6 +45,16 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - `docs/adr/`: quattordici decisioni di progetto (ADR) in formato MADR, con indice.
 - `docs/ARCHITETTURA.md`: moduli, flusso di un evento, dati, punti di estensione, con diagrammi Mermaid.
 - `CONTRIBUTING.md`, questo `CHANGELOG.md` e `docs/README.md` (indice della documentazione).
+
+**Step S3: schema dati v2, migrazione delle frasi, validatore** (voci aggiunte con l'issue #24)
+- Schema dati v2: il registro delle regole è separato dai testi. Una regola ha `events`, `category`, `speaker` (le quattro voci), `form`, `styles` (registri), `depth` (naturale, letterario, elevato), `tags`, `weight`, `cooldown` e `when`; i testi stanno per lingua, con più varianti per id (`Data/Registry*.lua`, `Data/itIT/`, `Data/enUS/`). Il formato vecchio dei pacchetti si converte in caricamento.
+- Migrazione delle 421 frasi di base (367 più le 54 di `Classes.lua`, ora nel `.toc`) con voce, registro e profondità assegnati frase per frase; cornici e vocabolario restano.
+- `Engine/Validator.lua` e `/au valida [tutto|pacchetto]`: id duplicati, lingue mancanti, segnaposto discordanti, condizioni sconosciute, varianti vuote, lunghezza per canale, UTF-8, coerenza della regola.
+- `ctx.depth` e `ctx.intensity` nel contesto, condizioni `depth`, `intensityMin`, `intensityMax`; il fattore `S` del peso (`Engine.StyleFactor`) preferisce la profondità scelta senza mai escludere.
+- `Tests/check_api.py`: confronta le funzioni e gli eventi usati con il dump delle API di Forever (saltato con un avviso se il dump manca), con eccezioni motivate; collegato a `run_tests.py`.
+- Guida `AzerothUnspoken/FORMATO_PACCHETTI.md` riscritta per lo schema v2; il pacchetto di esempio usa il nuovo formato.
+- Una lingua registrata da un pacchetto dopo il caricamento resta quella scelta dall'utente (issue #7).
+- Test: `TestSchema` e `TestValidator`; passi 17–19 in `docs/G1_checklist.md`.
 
 **Step S2: narratore privato e Chat Gateway**
 - Narratore privato (`UI/NarratorFrame.lua`): riquadro non bloccante e spostabile, con durata, opacità e dimensione del testo regolabili, cronologia recente (solo in memoria), editor della frase e pausa immediata.
@@ -71,6 +92,8 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - **#19** Il limite di 255 byte è in un solo posto.
 
 ### Modificato
+- SavedVariables allo schema 3: `personality` del personaggio, che era un segnaposto vuoto, diventa il profilo del Character Soul (migrazione 3; i valori dei tratti si ripuliscono all'avvio).
+- Il comando `/au anima` e il pulsante "Anima del personaggio..." nel pannello delle impostazioni sono nuovi; nessun comando esistente cambia.
 - Gli eventi spontanei passano dal Narrative Director: probabilità, pause e dado non sono più in `Systems/Triggers.lua`, e una frase spontanea arriva 0,1 secondi dopo l'evento (finestra di arbitraggio).
 - Una frase chiesta dal giocatore (comando, tasto) impedisce per 4 secondi una frase spontanea subito dopo.
 - L'invio automatico non si accende scegliendo la modalità `auto`: richiede un secondo gesto di conferma (decisione prudente: pubblica di meno).
@@ -87,6 +110,8 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - **Provato solo fuori dal gioco**: la prova nel client vero (G1) è rimandata. Vedi [docs/G1_checklist.md](docs/G1_checklist.md).
 - I numeri del Narrative Director (budget, pause di categoria, pesi di stile) sono ipotesi da regolare in gioco (G1, passi 27–31).
 - Nelle impostazioni solo i moduli Personale, Mondo, Proposte in chat e Total RP 3 hanno effetto.
+- I tratti di Total RP 3 (`PSYCHO_MAP`) usano gli ID dei tratti predefiniti del TRP3 installato e non sono stati provati con un profilo vero; le frasi di base non hanno ancora tag di affinità, solo i 16 esempi di `base_soul` (S7).
+- Le soglie e i fattori del Character Soul (×1,6, ×0,6, voce interiore, ironia) sono ipotesi da regolare in gioco (G1, passi 32–38).
 - Licenza da definire ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
 [Non rilasciato]: https://github.com/Finland6738/azeroth-unspoken/commits/main

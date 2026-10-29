@@ -64,8 +64,9 @@ check("An immersive roleplay companion for World of Warcraft" in toc_text, "mott
 check("## SavedVariables: AzerothUnspokenDB" in toc_text, "SavedVariables globali")
 check("## SavedVariablesPerCharacter: AzerothUnspokenCharacterDB" in toc_text, "SavedVariables per personaggio")
 for f in ("Data\\RegistryCombat.lua", "Data\\RegistryClasses.lua", "Data\\itIT\\Classes.lua", "Data\\enUS\\Classes.lua",
-          "Engine\\Validator.lua"):
-    check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2)")
+          "Engine\\Validator.lua", "Engine\\Traits.lua", "Systems\\Personality.lua", "UI\\ProfileFrame.lua",
+          "Data\\RegistrySoul.lua", "Data\\itIT\\Soul.lua", "Data\\enUS\\Soul.lua"):
+    check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2, S5)")
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
@@ -76,8 +77,8 @@ for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Dir
 check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
-check(G.AzerothUnspokenDB.schemaVersion == 2, "schemaVersion globale")
-check(G.AzerothUnspokenCharacterDB.schemaVersion == 2, "schemaVersion per personaggio")
+check(G.AzerothUnspokenDB.schemaVersion == 3, "schemaVersion globale")
+check(G.AzerothUnspokenCharacterDB.schemaVersion == 3, "schemaVersion per personaggio")
 check(G.SlashCmdList.AZEROTHUNSPOKEN is not None, "comando registrato")
 check(G.SLASH_AZEROTHUNSPOKEN1 == "/unspoken" and G.SLASH_AZEROTHUNSPOKEN2 == "/au", "alias /unspoken e /au")
 errors = list(NS.Diagnostics.errors.values())
@@ -95,8 +96,8 @@ ids = val.stats.phrases
 langs = ["it", "en"]
 print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
       f"{len(errors_)} errori, {len(warnings_)} avvisi")
-# 367 frasi di base + 54 delle classi + 7 del pacchetto di esempio
-check(ids == 428, f"428 frasi caricate (trovate {ids})")
+# 367 frasi di base + 54 delle classi + 16 della personalità + 7 del pacchetto di esempio
+check(ids == 444, f"444 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -295,7 +296,11 @@ fight(10)
 check(not any(s.startswith("SAY:") for s in G.SENT.values()), "istanza: niente /say automatico con autoPublicSay = false")
 NS.db.output.autoPublicSay = True
 G.SENT = lua.table()
-fight(14)
+# con il seme fisso la sequenza dipende dalle frasi caricate: si continua finché parte un /say (al massimo 60 scontri)
+for _ in range(12):
+    fight(5)
+    if any(s.startswith("SAY:") for s in G.SENT.values()):
+        break
 check(any(s.startswith("SAY:") for s in G.SENT.values()), "istanza: /say automatico con autoPublicSay = true")
 NS.Gateway.SetMode(NS.Gateway, "PRIVATE")
 check(NS.db.output.autoPublicSay is False, "tornare a PRIVATE spegne autoPublicSay")
@@ -393,7 +398,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator"):
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

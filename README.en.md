@@ -38,6 +38,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - Shows them in a private **narrator box** that only you see: movable, with adjustable duration, opacity and text size, a recent history and an immediate pause.
 - Remembers which lines were used recently to avoid repetition (the memory is saved per character).
 - If you want, turns the character's lines into **chat proposals** that you confirm, edit or discard. See [Privacy and chat](#privacy-and-chat).
+- If you want, gives the character a **personality** (temperament, morality, curiosity, faith, motivation, irony, inner voice, topics to avoid, or a ready-made archetype): lines that fit come up more often, and lines that contradict what you ruled out never do. All optional; with no choices the narrator stays neutral. See `/au soul`.
 - Walks you through a skippable first-run wizard.
 - Has a diagnostic (`/au debug`) that shows what your client lets the addon do.
 - Extends through **phrase packs** shipped as separate addons, without touching the engine.
@@ -50,7 +51,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - It does not read the combat log and does not base decisions on values the client hides from addons.
 - It does not save chat content.
 
-**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): character personality, memories and journal, relationships with NPCs and players, interlocutor and place as conditions for lines, NPC dialogues, multi-chapter stories, social play between players, content up to 1,000 intentions. In the settings some modules (NPC, memory, stories, social, audio) can already be switched on or off, but they are placeholders: today only the *Personal*, *World*, *Chat proposals* and *Total RP 3* modules have any effect. The style depth (Natural, Literary, Elevated) is saved too, but **no line uses it yet**.
+**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): memories and journal, relationships with NPCs and players, interlocutor and place as conditions for lines, NPC dialogues, multi-chapter stories, social play between players, content up to 1,000 intentions. In the settings some modules (NPC, memory, stories, social, audio) can already be switched on or off, but they are placeholders: today only the *Personal*, *World*, *Chat proposals* and *Total RP 3* modules have any effect. The style depth (Natural, Literary, Elevated) is saved too, but **no line uses it yet**.
 
 ## Requirements
 
@@ -109,6 +110,7 @@ The addon answers to `/au` and `/unspoken`.
 | `/au cooldown <seconds>` | minimum pause between two automatic lines |
 | `/au ignora <spell>` (`ignore`) | a spell no longer produces lines; with no argument lists the ignored ones |
 | `/au pulsante` (`button`) | shows or hides the "speak" button |
+| `/au anima` (`soul`) | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <value>` (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `voice`; `-` removes the choice) and `avoid <topic>` |
 | `/au pacchetti` (`packs`) · `/au pacchetto <id> on\|off` (`pack`) | lists, or switches phrase packs on and off |
 | `/au info` (`stats`) | how many lines are available, per event |
 | `/au memoria` (`memory`) | resets the memory of used lines (no confirmation) |
@@ -151,7 +153,7 @@ The decisions behind this behaviour are in the [ADRs](docs/adr/README.md) (in It
 
 ## Total RP 3
 
-The integration is **optional**: the addon works at 100% without it. Today, if Total RP 3 is present and the module is on (*Name from Total RP 3* in the settings), the addon reads only **your profile's first name** to use it in lines. If Total RP 3's APIs are missing or change, the integration switches itself off. Reading more of the profile (character traits, etc.) is planned, always with consent. See [ADR 0004](docs/adr/0004-total-rp-3-facoltativo-con-adattatore.md).
+The integration is **optional**: the addon works at 100% without it. If Total RP 3 is present and the module is on (*Name from Total RP 3* in the settings), the addon reads **your profile's first name** to use it in lines. With a separate consent (`/au soul trp3 on`, off by default) it also reads the **public personality traits of your profile** for the character's personality; a choice you make by hand always comes first. It reads only **your own** profile, never notes or private fields, and writes nothing to Total RP 3. If Total RP 3's APIs are missing or change, the integration switches itself off. Public data of other players is planned, always with consent. See [ADR 0004](docs/adr/0004-total-rp-3-facoltativo-con-adattatore.md).
 
 ## Phrase packs
 

@@ -149,6 +149,7 @@ NS:RegisterLanguage("it", {
 			.. "/au annulla - scarta la proposta\n"
 			.. "/au copia - copia la proposta nella casella della chat (la invii tu con Invio)\n"
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
+			.. "/au anima [lista|neutro|archetipo <id>|trp3 on|off|<tratto> <valore>|evita <argomento>] - personalità del personaggio\n"
 			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | vittoria | preghiera | ringrazia | scherzo\n"
 			.. "/au evento <nome> - propone una frase per un evento (battle, zone, muse...)\n"
 			.. "/au incanta <incantesimo> - frase per un incantesimo (utile nelle macro)\n"
@@ -175,5 +176,55 @@ NS:RegisterLanguage("it", {
 		validate_ok = "Nessun problema trovato.",
 		validate_more = "... e altri %d (usa /au valida tutto).",
 		validate_nopack = "pacchetto sconosciuto: %s",
+
+		-- Character Soul (step S5): tratti, archetipi, profilo
+		opt_soul = "Anima del personaggio...",
+		soul_title = "Anima del personaggio",
+		soul_intro = "Tutto facoltativo: senza scelte il narratore resta neutro. I tratti pesano le frasi, non le impongono; gli argomenti da evitare e la voce interiore spenta non si contraddicono mai.",
+		soul_summary = "anima del personaggio, archetipo: %s",
+		soul_none = "non impostato",
+		soul_src_explicit = "scelta", soul_src_trp3 = "Total RP 3", soul_src_game = "gioco", soul_src_neutral = "neutro",
+		soul_archetype = "Archetipo", soul_reset = "Profilo neutro", soul_close = "Chiudi",
+		soul_clear_tip = "Togli la scelta: il tratto torna ai valori di Total RP 3 (se consenti), del gioco o neutri.",
+		soul_avoid_title = "Argomenti da evitare (mai nelle frasi)",
+		soul_reset_done = "profilo neutro: nessuna scelta sui tratti.",
+		soul_arch_list = "archetipi: %s",
+		soul_arch_set = "archetipo scelto: %s. Vale subito.",
+		soul_value = "%s: %s",
+		soul_set = "%s: %s. Vale subito.",
+		soul_cleared = "%s: scelta tolta.",
+		soul_avoid_on = "da ora eviti: %s.",
+		soul_avoid_off = "non eviti più: %s.",
+		soul_trp3_state = "tratti da Total RP 3: %s",
+		soul_trp3_absent = "Total RP 3 non è installato: non c'è nulla da leggere. L'anima funziona lo stesso.",
+		soul_trp3_consent = "Tratti da Total RP 3",
+		soul_trp3_tip = "Legge i tratti psicologici PUBBLICI del tuo profilo in Total RP 3 (solo il tuo, solo in lettura) e li usa dove non hai scelto tu. Le tue scelte hanno sempre la precedenza.",
+		soul_help = "uso: /au anima [lista | neutro | archetipo <id> | trp3 on|off | <tratto> <valore|-> | evita <argomento>]. Tratti: temperamento, morale, curiosita, fede, motivazione, ironia, voce, evita.",
+		soul_arch_custom = "Personalizzato", soul_arch_custom_help = "Le tue scelte, che non coincidono con un archetipo.",
+		soul_arch_neutral = "Neutro", soul_arch_neutral_help = "Nessun tratto: il narratore non sceglie il carattere per te.",
+		soul_arch_veteran = "Veterano disilluso", soul_arch_veteran_help = "Stoico e stanco, ha visto abbastanza da non fidarsi delle promesse.",
+		soul_arch_traveler = "Viaggiatore ottimista", soul_arch_traveler_help = "Allegro e curioso, trova speranza a ogni svolta della strada.",
+		soul_arch_guardian = "Custode devoto", soul_arch_guardian_help = "Misericordioso e saldo nella fede, protegge chi non può farlo da sé.",
+		soul_arch_rogue = "Furfante arguto", soul_arch_rogue_help = "Burbero e pragmatico, l'ironia è la sua armatura.",
+		soul_arch_scholar = "Studioso", soul_arch_scholar_help = "Stoico, scettico e curiosissimo: ogni rovina è una biblioteca.",
+		soul_arch_avenger = "Vendicatore", soul_arch_avenger_help = "Feroce e combattuto, un'unica ragione lo tiene in cammino.",
+		soul_arch_penitent = "Penitente", soul_arch_penitent_help = "Malinconico e in cerca di redenzione, porta con sé un debito.",
+		trait_temperament = "Temperamento", trait_temperament_resolute = "Risoluto", trait_temperament_merciful = "Misericordioso",
+		trait_temperament_stoic = "Stoico", trait_temperament_cheerful = "Allegro", trait_temperament_melancholic = "Malinconico",
+		trait_temperament_gruff = "Burbero", trait_temperament_fierce = "Feroce",
+		trait_morality = "Morale", trait_morality_righteous = "Retto", trait_morality_pragmatic = "Pragmatico",
+		trait_morality_conflicted = "Combattuto", trait_morality_disillusioned = "Disilluso", trait_morality_hopeful = "Speranzoso",
+		trait_curiosity = "Curiosità", trait_curiosity_low = "scarsa", trait_curiosity_mid = "media", trait_curiosity_high = "alta",
+		trait_faith = "Fede", trait_faith_devout = "Devoto", trait_faith_spiritual = "Spirituale", trait_faith_doubting = "Dubbioso",
+		trait_faith_skeptic = "Scettico",
+		trait_motivation = "Motivazione", trait_motivation_duty = "Dovere", trait_motivation_vengeance = "Vendetta",
+		trait_motivation_glory = "Gloria", trait_motivation_knowledge = "Conoscenza", trait_motivation_redemption = "Redenzione",
+		trait_motivation_freedom = "Libertà", trait_motivation_protection = "Protezione",
+		trait_irony = "Ironia", trait_irony_low = "scarsa", trait_irony_mid = "media", trait_irony_high = "alta",
+		trait_innerVoice = "Voce interiore", trait_innerVoice_off = "spenta", trait_innerVoice_quiet = "discreta",
+		trait_innerVoice_present = "presente", trait_innerVoice_vivid = "vivida",
+		trait_avoid = "Argomenti da evitare", trait_avoid_death = "morte", trait_avoid_blood = "sangue",
+		trait_avoid_betrayal = "tradimento", trait_avoid_family = "famiglia", trait_avoid_religion = "religione",
+		trait_avoid_undead = "non morti", trait_avoid_demons = "demoni", trait_avoid_romance = "amore",
 	},
 })

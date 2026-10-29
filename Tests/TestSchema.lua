@@ -333,7 +333,7 @@ end)
 
 T.run("Stats conta le frasi con testo nella lingua", function()
 	local total, byEvent = Engine:Stats("it")
-	T.ok(total >= 428, "almeno le frasi del database")
+	T.ok(total >= 444, "almeno le frasi del database")
 	T.ok(byEvent.battle >= 83, "per evento")
 	local totalDe = Engine:Stats("de")
 	T.eq(totalDe, 1, "una sola frase tradotta in tedesco")
@@ -353,7 +353,7 @@ T.run("il database di base ha le tre voci e tutte le profondità", function()
 			if p.speaker == "inner" then T.eq(p.form, "say", p.id .. ": il pensiero non è un'emote") end
 		end
 	end
-	T.eq(base, 421, "367 frasi di base + 54 delle classi")
+	T.eq(base, 437, "367 frasi di base + 54 delle classi + 16 della personalità")
 	T.ok(by.inner >= 80 and by.narrator >= 19 and by.character >= 250, "voci: " .. by.inner .. "/" .. by.narrator .. "/" .. by.character)
 	T.eq(by.npc, 0, "nessuna voce NPC finché non c'è NPC Alive")
 end)

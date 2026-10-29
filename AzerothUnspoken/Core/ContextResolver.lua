@@ -157,6 +157,9 @@ function NS:BuildContext(extra)
 	ctx.level = SafeCall(UnitLevel, "player")
 	-- scelte dell'utente: la profondità stilistica pesa le frasi, l'intensità si può usare nelle condizioni
 	if self.db then ctx.depth, ctx.intensity = self.db.proseDepth, self.db.intensity end
+	-- il carattere: solo i tratti impostati (scelta > Total RP 3 > dati di gioco); vuoto = profilo neutro. Una
+	-- tabella condivisa e in sola lettura: la leggono le condizioni, il fattore P e il StyleResolver (Systems/Personality.lua)
+	if self.Personality then ctx.soul = self.Personality:Effective() end
 
 	local hp, hpMax = SafeCall(UnitHealth, "player"), SafeCall(UnitHealthMax, "player")
 	if hp and hpMax and hpMax > 0 then ctx.hp = hp / hpMax end

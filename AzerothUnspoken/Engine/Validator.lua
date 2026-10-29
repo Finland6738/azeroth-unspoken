@@ -290,6 +290,13 @@ function Validator:Run(opts)
 					Add("error", "badCondition", p.pack, id, nil, msg)
 				end
 			end
+			-- tag di affinità del Character Soul (trait:valore, req:, not:, topic:): tratto e valore devono esistere
+			if NS.Traits then
+				for tag in pairs(p.tags or {}) do
+					local problem = NS.Traits.CheckTag(tag)
+					if problem then Add("error", "badTag", p.pack, id, nil, problem) end
+				end
+			end
 			if p.speaker == "inner" and p.form == "emote" then
 				Add("warning", "innerEmote", p.pack, id, nil, "una voce interiore non si dice in emote")
 			end
