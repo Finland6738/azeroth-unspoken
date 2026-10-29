@@ -18,7 +18,7 @@ NS:RegisterLanguage("en", {
 		trait_role_questgiver = "Quest giver", trait_role_trainer = "Trainer", trait_role_flightmaster = "Flight master",
 		trait_role_banker = "Banker", trait_role_leader = "Leader", trait_role_civilian = "Townsfolk",
 		-- /au place
-		place_zone = "Place: %s (%s), map %s, recognised %s",
+		place_zone = "Place: %s (%s), map %s, recognized %s",
 		place_src_map = "by map number", place_src_name = "by name", place_src_guess = "by an unverified map number",
 		place_src_none = "with no data",
 		place_kind = "Instance: %s, %s (id %s, difficulty %s)",

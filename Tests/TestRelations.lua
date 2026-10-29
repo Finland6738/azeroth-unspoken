@@ -890,7 +890,7 @@ T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 			for _, lang in ipairs({ "it", "en" }) do
 				for _, v in ipairs(p.text[lang]) do
 					T.ok(v.ok, id .. " " .. lang .. ": variante valida")
-					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend" }, nil)
+					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend", otherSex = "female" }, nil)
 					T.ok(text ~= nil and not text:find("[{}]"), id .. " " .. lang .. ": si compone")
 					T.ok(#v.t < 200, id .. " " .. lang .. ": breve")
 				end

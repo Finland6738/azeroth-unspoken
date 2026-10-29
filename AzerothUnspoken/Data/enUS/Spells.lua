@@ -17,7 +17,7 @@ NS:AddTexts("enUS", {
 	},
 	["atk.fire.04"] = {
 		"Flames hate no one. They simply devour.",
-		"Fire picks no favourites. Today it just happens to be you.",
+		"Fire picks no favorites. Today it just happens to be you.",
 	},
 	["atk.frost.01"] = {
 		"Feel the cold of the northern seas. No one sings there.",
@@ -109,7 +109,7 @@ NS:AddTexts("enUS", {
 	},
 	["atk.e.fire.01"] = {
 		"opens {g:his|her} palm, and a tongue of flame dances on it before it leaps away.",
-		"curls {g:his|her} fingers like claws; the air smells of sulphur and singed cloth.",
+		"curls {g:his|her} fingers like claws; the air smells of sulfur and singed cloth.",
 	},
 	["heal.01"] = {
 		"It is not your day yet. Rise.",
@@ -128,7 +128,7 @@ NS:AddTexts("enUS", {
 		"Up, come on! You're not finished yet!",
 	},
 	["heal.05"] = {
-		"{target}, stay with me. Look to my voice, not the dark.",
+		"{target}, stay with me. Follow my voice, not the dark.",
 		"Stay with me. Listen to my voice, only that.",
 	},
 	["heal.holy.01"] = {

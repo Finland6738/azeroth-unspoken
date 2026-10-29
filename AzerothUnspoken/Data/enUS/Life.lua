@@ -36,7 +36,7 @@ NS:AddTexts("enUS", {
 	},
 	["death.scourge.01"] = {
 		"Again? How tedious.",
-		"Dying while dead. Twice the paperwork.",
+		"Dying while dead. Twice the bother.",
 	},
 	["death.tauren.01"] = {
 		"Earth Mother... I come back to you...",
@@ -48,7 +48,7 @@ NS:AddTexts("enUS", {
 	},
 	["death.dwarf.01"] = {
 		"Someone... finish my ale...",
-		"Bury me... next to the keg...",
+		"Take me... under the mountain... to my fathers...",
 	},
 	["death.nelf.01"] = {
 		"Elune... now I see your light...",
@@ -94,8 +94,8 @@ NS:AddTexts("enUS", {
 		{ "lies where {g:he|she} fell; leaves settle on {g:him|her} one by one, slow as a rite.", depth = "elevated" },
 	},
 	["death.e.07"] = {
-		"slumps; for a moment the light turns grey, and every sound seems to come from very far away.",
-		"fades, and the colour drains out of the world like water from a cracked pail.",
+		"slumps; for a moment the light turns gray, and every sound seems to come from very far away.",
+		"fades, and the color drains out of the world like water from a cracked pail.",
 	},
 	["death.e.08"] = {
 		"pitches face-first into the dirt with a remarkable lack of grace.",
@@ -113,7 +113,7 @@ NS:AddTexts("enUS", {
 	["rez.03"] = {
 		"I saw a place where there is no wind. It is not mine yet.",
 		{ "It was quiet over there. Too quiet for me.", depth = "natural" },
-		{ "Beyond, the sky has no colour and the grass never bends. I was allowed to look, not to stay.", depth = "elevated" },
+		{ "Beyond, the sky has no color and the grass never bends. I was allowed to look, not to stay.", depth = "elevated" },
 	},
 	["rez.04"] = {
 		"Did anyone take notes? I'd rather not do that again.",
@@ -130,7 +130,7 @@ NS:AddTexts("enUS", {
 	},
 	["rez.07"] = {
 		"Hands work. Legs too. Good.",
-		"Cold and hungry again. Marvellous.",
+		"Cold and hungry again. Marvelous.",
 	},
 	["rez.08"] = {
 		"Every time I come back, the road is a little longer.",
@@ -157,13 +157,13 @@ NS:AddTexts("enUS", {
 		"The roots held me for a while, then loosened their grip.",
 	},
 	["rez.dwarf.01"] = {
-		"What a headache. Worse than three nights of feasting in Ironforge.",
+		"The ancestors sent me back. They say the forge isn't cold yet.",
 		"Feels like the morning after an Ironforge brawl. Did I at least win?",
 	},
 	["rez.e.01"] = {
 		"opens {g:his|her} eyes and draws a deep breath, like one returning from a long winter.",
 		{ "opens {g:his|her} eyes, coughs, and sits up.", depth = "natural" },
-		{ "draws breath like one surfacing from deep water, and the daylight settles back on {g:him|her} one colour at a time.", depth = "elevated" },
+		{ "draws breath like one surfacing from deep water, and the daylight settles back on {g:him|her} one color at a time.", depth = "elevated" },
 	},
 	["rez.e.02"] = {
 		"rises slowly, looking at {g:his|her} hands as if they were a stranger's.",
@@ -179,7 +179,7 @@ NS:AddTexts("enUS", {
 		"staggers upright and looks around for {g:his|her} weapon, then {g:his|her} pack, then the road.",
 	},
 	["rez.e.05"] = {
-		"slowly regains {g:his|her} colour, like a fogged pane of glass clearing.",
+		"slowly regains {g:his|her} color, like a fogged pane of glass clearing.",
 		"shivers, as though a wind from somewhere very far off had passed straight through {g:him|her}.",
 	},
 	["rez.e.06"] = {

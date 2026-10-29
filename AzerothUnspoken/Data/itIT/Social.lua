@@ -4,7 +4,7 @@ local ADDON, NS = ...
 
 NS:AddTexts("itIT", {
 	["greet.01"] = {
-		"Ben trovato, viandante. Che la tua strada sia stata meno dura della mia.",
+		"{og:Ben trovato|Ben trovata}, viandante. Che la tua strada sia stata meno dura della mia.",
 		"Salute, viandante. Siediti, se la strada ti ha stancato quanto ha stancato me.",
 	},
 	["greet.02"] = {
@@ -48,28 +48,28 @@ NS:AddTexts("itIT", {
 		"Throm-ka. Siedi vicino al fuoco, la carne è quasi pronta.",
 	},
 	["greet.orc.02"] = {
-		"Lok'tar, fratello. Hai combattuto bene, ultimamente?",
+		"Lok'tar, {og:fratello|sorella}. Hai combattuto bene, ultimamente?",
 		"Lok'tar. Vedo cicatrici nuove: raccontami.",
 	},
 	["greet.tauren.01"] = {
 		"Che la Madre Terra ti guidi i passi.",
-		"Il vento delle praterie ti ha portato fin qui. Sii il benvenuto.",
+		"Il vento delle praterie ti ha portato fin qui. Sii {og:il benvenuto|la benvenuta}.",
 	},
 	["greet.troll.01"] = {
-		"Ehi, amico! Ti va bene la giornata? A me sì, finché nessuno mi tira una lancia.",
-		"Ehi, tu! Bella giornata per pescare, brutta per lavorare.",
+		"Ehi, tu! Ti va bene la giornata? A me sì, finché nessuno mi tira una lancia.",
+		"Ehi! I Loa sorridono, oggi. Si sente nell'aria.",
 	},
 	["greet.scourge.01"] = {
 		"Vivo? Che fortuna. Goditela finché dura.",
 		"Non fissarmi la mascella. Ci tengo ancora.",
 	},
 	["greet.human.01"] = {
-		"La Luce sia con te, amico.",
+		"La Luce sia con te, {og:amico|amica}.",
 		"Che la Luce ti tenga la mano ferma e la tavola piena.",
 	},
 	["greet.dwarf.01"] = {
 		"Salute! Hai sete? Io sì. Io ho sempre sete.",
-		"Ehilà! Barba asciutta, eh? Rimediamo subito.",
+		"Ehilà! Vieni dalla montagna o ci vai? In tutti e due i casi, la strada è in salita.",
 	},
 	["greet.nelf.01"] = {
 		"Ishnu-alah. Che Elune illumini il tuo cammino.",
@@ -93,7 +93,7 @@ NS:AddTexts("itIT", {
 	},
 	["bye.04"] = {
 		"Ci rivedremo. In una locanda o su un campo di battaglia: io scommetto sulla locanda.",
-		"Alla prossima, compagno. Tieni l'arma pulita e le spalle coperte.",
+		"Alla prossima. Tieni l'arma pulita e le spalle coperte.",
 	},
 	["bye.05"] = {
 		"Va' in pace, {target}. E se non trovi pace, trova almeno un buon fuoco.",
@@ -116,11 +116,11 @@ NS:AddTexts("itIT", {
 		"si allontana piano; per un tratto si sente ancora il passo sulla ghiaia, poi più niente.",
 	},
 	["bye.orc.01"] = {
-		"Forza e onore.",
+		"Che i tuoi antenati ti guardino le spalle.",
 		"Lok'tar. Ci vediamo dove si combatte.",
 	},
 	["bye.tauren.01"] = {
-		"Cammina con il vento, amico.",
+		"Cammina con il vento, {og:amico|amica}.",
 		"Che la pioggia trovi sempre la tua strada, e l'erba la tua mandria.",
 	},
 	["bye.nelf.01"] = {
@@ -132,7 +132,7 @@ NS:AddTexts("itIT", {
 		"Arrivederci. Io non ho fretta: di tempo, ormai, ne ho fin troppo.",
 	},
 	["bye.dwarf.01"] = {
-		"Che la tua barba cresca folta e il tuo boccale non resti mai vuoto!",
+		"Che la pietra ti regga i passi e la forgia ti tenga caldo il cuore!",
 		"Torna presto! E la prossima volta porta tu da bere.",
 	},
 	["toast.01"] = {
@@ -160,7 +160,7 @@ NS:AddTexts("itIT", {
 		"Alla compagnia! Chi cade lo rialziamo, chi beve troppo lo portiamo a letto!",
 	},
 	["toast.dwarf.01"] = {
-		"Per Forgiardente, per le barbe dei padri e per il secondo giro!",
+		"Per Forgiardente, per i padri dei nostri padri e per il secondo giro!",
 		"Alla montagna che ci ha fatti, e al birraio che ci rimette in sesto ogni sera!",
 	},
 	["toast.orc.01"] = {
@@ -228,7 +228,7 @@ NS:AddTexts("itIT", {
 		"Il mio animale mangia meglio di me. E dorme anche di più.",
 	},
 	["jest.gnome.01"] = {
-		"Non sono basso. Sono efficiente in altezza.",
+		"Non sono {g:basso|bassa}. Sono efficiente in altezza.",
 		"L'altezza? Sopravvalutata. Le frecce mi passano sopra.",
 	},
 	["jest.scourge.01"] = {

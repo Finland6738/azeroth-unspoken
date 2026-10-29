@@ -31,7 +31,7 @@ NS:AddTexts("enUS", {
 		"New around here? Then let's get acquainted over a mug.",
 	},
 	["npcd.innkeeper.open.again1"] = {
-		"Back for news? I've got some fresh ones, or nearly.",
+		"Back for news? I've got some fresh news, or nearly.",
 		"Last time I told you what was going round on the road. Today it's something else.",
 	},
 	["npcd.innkeeper.open.gruff1"] = {
@@ -40,7 +40,7 @@ NS:AddTexts("enUS", {
 	},
 	["npcd.innkeeper.open.gruff2"] = {
 		"Wipe your boots. Then talk to me.",
-		"If you want comfort, wrong door. If you want a bench, not.",
+		"If you want comfort, wrong door. If you want a bench, you've found one.",
 	},
 	["npcd.innkeeper.open.jovial1"] = {
 		"Ah, a customer! I mean, a guest! I mean, a friend who hasn't paid yet!",
@@ -71,7 +71,7 @@ NS:AddTexts("enUS", {
 		"Every story is better with something to drink beside it. Shall I pour yours?",
 	},
 	["npcd.innkeeper.open.gryshka1"] = {
-		"Speak. Time is money, and mine is short.",
+		"Speak. I've little time, and I sell it dear.",
 		"If you want a bed, say so. If you want a chat, tell me what you pay.",
 	},
 	["npcd.innkeeper.news.n1"] = {
@@ -87,7 +87,7 @@ NS:AddTexts("enUS", {
 		"One thing I know: those who travel in company arrive more often. It's little, but it's true.",
 	},
 	["npcd.innkeeper.news.gruff1"] = {
-		"News? They cost like wine. Order first, then maybe.",
+		"News? It costs as much as wine. Order first, then maybe.",
 		"I don't sell chatter. If you need some, the table at the back is full of it.",
 	},
 	["npcd.innkeeper.news.jovial1"] = {
@@ -167,7 +167,7 @@ NS:AddTexts("enUS", {
 		"The bed is comfortable, but the real secret is the fire: it rocks you to sleep without your noticing.",
 	},
 	["npcd.innkeeper.sit.n1"] = {
-		"Good. Stop until the fire has given you back your strength. Then the road will call again.",
+		"Good. Stay until the fire has warmed the strength back into you. Then the road will call again.",
 		"Breathe. Time runs slower here, and nobody will remind you it's passing.",
 	},
 	["npcd.innkeeper.sit.n2"] = {
@@ -332,7 +332,7 @@ NS:AddTexts("enUS", {
 	},
 	["npcd.merchant.news.gruff1"] = {
 		"This is a stall, not an inn. Buy or move along.",
-		"I haven't news. I have goods.",
+		"I've no news. I have goods.",
 	},
 	["npcd.merchant.news.jovial1"] = {
 		"The best news? You're here! The rest is dullness and prices.",

@@ -99,8 +99,8 @@ NS:AddTexts("itIT", {
 		"Fiori grandi come scudi, e un profumo dolce che fa girare la testa. Qui anche la bellezza tende trappole.",
 	},
 	["zone.jungle.02"] = {
-		"Senti i tamburi, amico? La giungla si ricorda di noi.",
-		"Terra bagnata e frutta troppo matura, amico. Questo è l'odore di casa.",
+		"Senti i tamburi? La giungla si ricorda di noi.",
+		"Terra bagnata e frutta troppo matura. Questo è l'odore di casa.",
 	},
 	["zone.swamp.01"] = {
 		"L'acqua ferma tiene i segreti meglio di qualunque tomba.",
@@ -307,7 +307,7 @@ NS:AddTexts("itIT", {
 		"Chissà se qualcuno, tra cent'anni, saprà che sono {g:passato|passata} di qui.",
 	},
 	["muse.02"] = {
-		"Non possiamo scegliere i tempi in cui viviamo. Solo cosa farne.",
+		"Nessuno sceglie la stagione in cui nasce. Il raccolto, quello sì.",
 		"Il mondo non chiede il permesso prima di cambiare. Chiede solo che ci siamo.",
 	},
 	["muse.03"] = {
@@ -376,12 +376,12 @@ NS:AddTexts("itIT", {
 		"Ho provato a ricordare il sapore del pane. Ricordo solo che mi piaceva.",
 	},
 	["muse.tauren.01"] = {
-		"La terra non appartiene a noi. Siamo noi ad appartenere alla terra.",
+		"Ogni zoccolo lascia un'impronta, e la pioggia la cancella. La terra resta.",
 		"Prendi dalla terra quanto ti serve, e restituisci quanto puoi. Il resto viene da sé.",
 	},
 	["muse.troll.01"] = {
-		"I Loa sono capricciosi, amico. Come il mare. Come il cuore. Come me.",
-		"Una piuma, una perlina, una goccia di rum per gli spiriti. Così si viaggia tranquilli, amico.",
+		"I Loa sono capricciosi. Come il mare. Come il cuore. Come me.",
+		"Una piuma, una perlina, una goccia di rum per gli spiriti. Così si viaggia tranquilli.",
 	},
 	["muse.human.01"] = {
 		"Ricostruiamo sempre. Muri, case, regni. Prima o poi impareremo a non distruggerli.",

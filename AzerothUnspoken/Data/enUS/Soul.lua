@@ -19,12 +19,12 @@ NS:AddTexts("enUS", {
 		"You've had your life. This road belongs to those still breathing.",
 	},
 	["soul.pray.devout"] = {
-		"Light, hold my hand steady when my faith trembles.",
-		"Light, be in my voice when my voice is not enough.",
+		"May the strength {faith_of} steady my hand when my faith trembles.",
+		"May the voice {faith_of} speak through mine when mine is not enough.",
 	},
 	["soul.pray.skeptic"] = {
 		"I do not know if anyone is listening. But speaking to the silence helps, sometimes.",
-		"If anyone's up there, they have a dreadful sense of humour. Thanks for today, anyway.",
+		"If anyone's up there, they have a dreadful sense of humor. Thanks for today, anyway.",
 	},
 	["soul.muse.vengeance"] = {
 		"Every step brings me closer to the one who took everything. I remember it at every dawn.",

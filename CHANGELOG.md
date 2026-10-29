@@ -10,6 +10,14 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 
 Le voci sono **raggruppate per step o attività**, dal più recente al più vecchio (milestone M0–M3: S1–S9). In ogni gruppo le modifiche a ciò che esisteva (*Modificato*) e le correzioni (*Corretto*) stanno sotto le novità. In fondo, i limiti noti. I gruppi delle sessioni di correzione e di revisione dei testi (Q5, Q6) che lavorano in parallelo a questa documentazione si aggiungono qui sopra, con il loro nome.
 
+### Correzioni Q6: revisione editoriale dei testi (issue #60–#66)
+
+- **Accordi di genere**: le battute degli NPC e le frasi del personaggio accordano con `{g:}` («{g:Bentornato|Bentornata}», «sveglio/sveglia», «stesso/stessa», «basso/bassa»); dove la frase si rivolge all'interlocutore si usa `{og:}` («Lok'tar, {og:fratello|sorella}», «Non sei {og:solo|sola}», «Sta' {og:fermo|ferma}»), sempre con una variante neutra per quando il sesso non è noto (#61, scelta descritta nella guida ai pacchetti). Famigli e nemici non hanno più un genere fisso («bestia mia», «chi mi accompagna», «il nemico»).
+- **Citazioni riconoscibili** riscritte in modo originale: «Il tempo è denaro», «Forza e onore», «Tenetemi la birra», «il cuore dell'oscurità», la battuta sui tempi in cui viviamo e quella sulla terra a cui apparteniamo.
+- **Regole più precise**: i saluti degli orchi, Durotar, il deserto «scelto», Elwynn «di casa» e la preghiera del devoto chiedono la razza giusta o usano `{faith_of}`; le frasi contro i non morti che parlano di «chi respira» escludono i Reietti. Le frasi delle arene (assenti nell'era classica) sono marcate come estensione futura.
+- **Stereotipi ridotti**: metà delle frasi dei nani parla di montagna, forgia e antenati invece che di birra e barba; i troll non chiamano più tutti «amico» e il dialetto inglese resta su metà delle frasi.
+- **Inglese**: ortografia americana uniforme in tutto `Data/enUS` (#66); corrette alcune frasi sgrammaticate o innaturali. I test dei contenuti controllano le forme britanniche e la variante neutra di `{og:}`.
+
 ### Documentazione: allineamento a M0–M3 (attività D2, issue #57, #58 e #59)
 
 - `README.md` e `README.en.md` riscritti per lo stato di `main`: tutte le funzioni (narratore privato, Chat Gateway, intensità e profondità, personalità e Total RP 3, memoria e diario, relazioni, interlocutore e luogo, NPC Alive, Story Arcs), i numeri reali (1.005 intenzioni, 2.109 varianti per lingua, quattro voci), tutti i comandi e gli alias, i quattro tasti, la privacy (relazioni, Total RP 3 degli altri solo con consenso, nessuna chat salvata, nulla in chat pubblica senza un'azione del giocatore) e lo stato del progetto con le prove in gioco ancora da fare.

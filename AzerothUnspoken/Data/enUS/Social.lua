@@ -57,7 +57,7 @@ NS:AddTexts("enUS", {
 	},
 	["greet.troll.01"] = {
 		"Hey mon! Good day for you? Good for me, long as nobody throws a spear.",
-		"Hey, you! Good day for fishin', bad day for workin', mon.",
+		"Hey! The loa are smiling today. You can feel it in the air.",
 	},
 	["greet.scourge.01"] = {
 		"Alive? How fortunate. Enjoy it while it lasts.",
@@ -69,7 +69,7 @@ NS:AddTexts("enUS", {
 	},
 	["greet.dwarf.01"] = {
 		"Hail! Thirsty? I am. I always am.",
-		"Ho there! Dry beard, eh? We'll fix that.",
+		"Ho there! Coming down from the mountain or heading up? Either way, it's uphill.",
 	},
 	["greet.nelf.01"] = {
 		"Ishnu-alah. May Elune light your path.",
@@ -116,7 +116,7 @@ NS:AddTexts("enUS", {
 		"walks slowly away; for a while {g:his|her} steps can still be heard on the gravel, then nothing.",
 	},
 	["bye.orc.01"] = {
-		"Strength and honor.",
+		"May your ancestors guard your back.",
 		"Lok'tar. See you where the fighting is.",
 	},
 	["bye.tauren.01"] = {
@@ -132,7 +132,7 @@ NS:AddTexts("enUS", {
 		"Goodbye. No rush on my end: time is one thing I have plenty of.",
 	},
 	["bye.dwarf.01"] = {
-		"May your beard grow thick and your tankard never run dry!",
+		"May the stone hold firm under your feet and the forge keep your heart warm!",
 		"Come back soon! And next time, the drinks are on you.",
 	},
 	["toast.01"] = {
@@ -160,7 +160,7 @@ NS:AddTexts("enUS", {
 		"To the company! Whoever falls, we pick up. Whoever drinks too much, we carry to bed!",
 	},
 	["toast.dwarf.01"] = {
-		"For Ironforge, for the beards of our fathers, and for the second round!",
+		"For Ironforge, for our fathers' fathers, and for the second round!",
 		"To the mountain that made us, and the brewer who puts us back together every night!",
 	},
 	["toast.orc.01"] = {

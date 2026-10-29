@@ -19,8 +19,8 @@ NS:AddTexts("itIT", {
 		"La tua vita l'hai già avuta. Questa strada appartiene a chi respira.",
 	},
 	["soul.pray.devout"] = {
-		"Luce, sostieni la mia mano quando la fede mi trema.",
-		"Luce, sii nella mia voce quando la mia voce non basta.",
+		"Che la forza {faith_of} sostenga la mia mano quando la fede mi trema.",
+		"Che la voce {faith_of} parli nella mia, quando la mia non basta.",
 	},
 	["soul.pray.skeptic"] = {
 		"Non so se qualcuno ascolti. Ma parlare al silenzio, a volte, aiuta.",
@@ -59,7 +59,7 @@ NS:AddTexts("itIT", {
 		"Va bene, va bene. Adesso basta.",
 	},
 	["soul.greet.cheerful"] = {
-		"Ben trovato! La strada era lunga, ma in compagnia si accorcia.",
+		"{og:Ben trovato|Ben trovata}! La strada era lunga, ma in compagnia si accorcia.",
 		"Eccoti! Avevo proprio voglia di una faccia amica.",
 	},
 	["soul.muse.melancholic"] = {

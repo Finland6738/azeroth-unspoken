@@ -197,8 +197,8 @@ NS:AddTexts("enUS", {
 		"The circle widens, and the voices grow more polite. I don't trust polite.",
 	},
 	["cls.wlk.greet.01"] = {
-		"Don't mind my friend. He only bites when I ask.",
-		"Hello. If my little friend stares, it's nothing. He's just sizing you up.",
+		"Don't mind the company I keep. It only bites when I ask.",
+		"Hello. If my companion stares, it's nothing. It's just sizing you up.",
 	},
 	["cls.dru.battle.01"] = {
 		"You threatened the forest. The forest has claws.",
@@ -214,7 +214,7 @@ NS:AddTexts("enUS", {
 	},
 	["cls.dru.muse.01"] = {
 		"Once you have glimpsed the Dream, the waking world always seems a little too loud.",
-		"In the Dream even silence has a colour. Out here it's only silence.",
+		"In the Dream even silence has a color. Out here it's only silence.",
 	},
 	["cls.dru.zone.01"] = {
 		"The land suffers here. The roots call to me, and I do not know how to help them.",

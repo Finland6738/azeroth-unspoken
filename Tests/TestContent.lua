@@ -339,3 +339,31 @@ T.run("§5.4: canali, lingue, ripetizioni, era di Forever", function()
 	T.eq(#r.errors, 0, "il validatore non trova errori")
 	T.eq(#r.warnings, 0, "né avvisi")
 end)
+
+T.run("#61: {og:} ha sempre una variante neutra; #66: l'inglese usa l'ortografia americana", function()
+	-- senza il sesso dell'interlocutore una variante con {og:} si scarta: ogni frase ne tiene una senza
+	local withOg = 0
+	for id, p in pairs(BASE) do
+		local og, neutral = false, false
+		for _, v in ipairs(p.text.it or {}) do
+			if v.t:find("{og:", 1, true) then og = true else neutral = true end
+		end
+		if og then
+			withOg = withOg + 1
+			T.ok(neutral, id .. ": con {og:} serve anche una variante neutra")
+		end
+	end
+	T.ok(withOg >= 8, "frasi che si accordano con l'interlocutore: " .. withOg)
+	local BRITISH = { "favour", "colour", "honour", "armour", "rumour", "humour", "harbour", "labour", "valour",
+		"vigour", "splendour", "neighbour", "centre", "theatre", "sombre", "metre", "traveller", "travelled",
+		"travelling", "sulphur", "grey", "practise", "recognise", "realise", "apologise", "organise", "sceptic",
+		"defence", "offence", "jewellery", "plough", "mould", "whilst", "amongst", "learnt", "dreamt", "spelt" }
+	for id, p in pairs(BASE) do
+		for _, v in ipairs(p.text.en or {}) do
+			local low = v.t:lower()
+			for _, word in ipairs(BRITISH) do
+				T.ok(not low:find(word, 1, true), id .. ": ortografia britannica (" .. word .. "): " .. v.t)
+			end
+		end
+	end
+end)

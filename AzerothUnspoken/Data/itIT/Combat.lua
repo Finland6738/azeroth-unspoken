@@ -165,7 +165,7 @@ NS:AddTexts("itIT", {
 		{ "Non è una preda qualunque. Che ogni colpo sia pesato, e ogni passo misurato.", depth = "elevated" },
 	},
 	["battle.boss.01"] = {
-		"Ecco il cuore dell'oscurità. Se cadiamo, che si dica che non abbiamo esitato.",
+		"Eccolo, il fondo di tutto questo buio. Se cadiamo, che si dica che non abbiamo esitato.",
 		{ "Eccolo. Respirate, controllate le cinghie, e niente scherzi.", depth = "natural" },
 		{ "Qui finisce la strada lunga. Qualunque cosa accada, l'abbiamo percorsa insieme.", depth = "elevated" },
 	},
@@ -194,15 +194,15 @@ NS:AddTexts("itIT", {
 		"Sento la terra sotto gli zoccoli. Lei regge, e io con lei.",
 	},
 	["battle.troll.01"] = {
-		"I Loa guardano, amico. Facciamogli vedere qualcosa di bello.",
-		"Ehi, Loa! Guardate qua, amico, adesso viene il bello.",
+		"I Loa guardano. Facciamogli vedere qualcosa di bello.",
+		"Ehi, Loa! Guardate qua: adesso viene il bello.",
 	},
 	["battle.human.01"] = {
 		"Per ogni campo bruciato di Elwynn, per ogni casa senza ritorno!",
 		"Per le fattorie, per i mulini, per chi stasera aspetta alla finestra!",
 	},
 	["battle.dwarf.01"] = {
-		"Tenetemi la birra, ragazzi. Torno subito.",
+		"Per i padri dei miei padri! La montagna non arretra, e io nemmeno.",
 		"Un attimo che mi sistemo la barba. Ecco. Adesso sì.",
 	},
 	["battle.dwarf.02"] = {
@@ -263,7 +263,7 @@ NS:AddTexts("itIT", {
 	},
 	["battle.mage.02"] = {
 		"Le linee del potere si tendono come corde d'arpa. Ascolta la mia canzone.",
-		"L'aria sa di temporale e di pergamena. Attento a cosa respiri.",
+		"L'aria sa di temporale e di pergamena. Occhio a cosa respiri.",
 	},
 	["battle.warlock.01"] = {
 		"Ho fatto patti con cose che ti farebbero impazzire. Tu sei solo un dettaglio.",
@@ -320,7 +320,7 @@ NS:AddTexts("itIT", {
 		"Un altro passo. Avanti. Provaci.",
 	},
 	["threat.02"] = {
-		"Conosco cento modi per far tacere un uomo. Sceglierei il più lento.",
+		"Conosco cento modi per far tacere qualcuno. Sceglierei il più lento.",
 		"Ho pazienza, io. E mani ferme. Pensaci.",
 	},
 	["threat.03"] = {
@@ -429,12 +429,12 @@ NS:AddTexts("itIT", {
 		"Ora sei come me, solo più tranquillo. Non so a chi dei due sia andata meglio.",
 	},
 	["victory.troll.01"] = {
-		"Ehi, amico, non sei mai stato un problema. Davvero.",
-		"Facile, amico. Troppo facile. Adesso mi annoio.",
+		"Tutto qui? Non c'è mai stata partita. Davvero.",
+		"Facile. Troppo facile. Adesso mi annoio.",
 	},
 	["victory.dwarf.01"] = {
 		"Ah! Bella scaldata. Ora qualcuno mi offra da bere.",
-		"Questo merita un boccale. Anzi due: uno per la sete e uno per la fatica.",
+		"Bel lavoro. A Khaz Modan ne farebbero una canzone.",
 	},
 	["victory.nelf.01"] = {
 		"Lascia che le radici ti accolgano. Il bosco dimentica in fretta, ed è un dono.",
@@ -532,7 +532,7 @@ NS:AddTexts("itIT", {
 		"Signora della luna, dammi ancora un respiro. Uno solo.",
 	},
 	["lowhp.12"] = {
-		"Ho avuto sbornie peggiori di questa. Credo.",
+		"Ho preso colpi peggiori alla forgia. Credo.",
 		"Ahi. Va bene, questa l'ho sentita fin dentro la barba.",
 	},
 	["lowhp.13"] = {
@@ -544,12 +544,12 @@ NS:AddTexts("itIT", {
 		"Il dolore è moneta, e tu mi hai appena riempito la borsa.",
 	},
 	["lowhp.15"] = {
-		"Il dolore mi tiene sveglio. Grazie per il favore.",
+		"Il dolore mi tiene {g:sveglio|sveglia}. Grazie per il favore.",
 		"Ho ancora fiato. E finché ho fiato, colpisco.",
 	},
 	["lowhp.16"] = {
 		"Troppo {g:lento|lenta}. Sono troppo {g:lento|lenta}.",
-		"Non guardare la ferita. Guarda lui.",
+		"Non guardare la ferita. Guarda il nemico.",
 	},
 	["lowhp.e.01"] = {
 		"cade su un ginocchio, poi si rialza, più {g:lento|lenta} ma non meno {g:deciso|decisa}.",

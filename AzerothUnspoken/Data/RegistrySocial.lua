@@ -70,7 +70,7 @@ NS:RegisterPack({
 		["bye.e.02"] = { event = "farewell", speaker = "narrator", styles = { "intimate" },
 			tags = { "melancholy", "temperament:melancholic" }, depth = { "literary", "elevated" } },
 		["bye.orc.01"] = { event = "farewell", speaker = "character", styles = { "everyday" },
-			tags = { "heroic", "temperament:resolute" }, depth = { "natural", "literary" }, conditions = { faction = "Horde" } },
+			tags = { "heroic", "temperament:resolute" }, depth = { "natural", "literary" }, conditions = { race = "Orc" } },
 		["bye.tauren.01"] = { event = "farewell", speaker = "character", styles = { "ceremonial" },
 			tags = { "solemn", "faith:spiritual" }, conditions = { race = "Tauren" } },
 		["bye.nelf.01"] = { event = "farewell", speaker = "character", styles = { "ancient" },

@@ -54,7 +54,7 @@ NS:RegisterPack({
 			tags = { "fierce", "temperament:fierce" }, conditions = { hostile = true } },
 		["battle.undead.01"] = { event = "battle", speaker = "character", styles = { "epic" },
 			tags = { "solemn", "topic:undead", "topic:death", "temperament:resolute" }, depth = { "literary" },
-			conditions = { ctype = "undead" } },
+			conditions = { ctype = "undead", ["not"] = { race = "Scourge" } } },
 		["battle.undead.02"] = { event = "battle", speaker = "character", styles = { "tragic" },
 			tags = { "dark", "topic:undead", "temperament:merciful" }, depth = { "literary", "elevated" },
 			conditions = { ctype = "undead", ["not"] = { race = "Scourge" } } },
