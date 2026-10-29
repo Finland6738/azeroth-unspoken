@@ -151,7 +151,7 @@ local function Command(msg)
 		else
 			NS.Narrator:ShowTest()
 		end
-	elseif cmd == "anima" or cmd == "soul" or cmd == "personalita" or cmd == "personalità" or cmd == "profilo" then
+	elseif cmd == "anima" or cmd == "soul" or cmd == "personalita" or cmd == "profilo" then
 		NS.Personality:Command(rest)
 	elseif cmd == "benvenuto" or cmd == "wizard" or cmd == "welcome" then
 		NS.Wizard:Open()

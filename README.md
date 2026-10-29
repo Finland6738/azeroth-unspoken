@@ -36,6 +36,7 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 - Le mostra in un **riquadro del narratore** privato, visibile solo a te: spostabile, con durata, opacità e dimensione regolabili, cronologia recente e pausa immediata.
 - Tiene a mente le frasi usate di recente, per evitare ripetizioni (la memoria è salvata per personaggio).
 - Se vuoi, trasforma le frasi del personaggio in **proposte per la chat** che confermi, modifichi o scarti tu. Vedi [Privacy e chat](#privacy-e-chat).
+- Se vuoi, dà al personaggio un **carattere** (temperamento, morale, curiosità, fede, motivazione, ironia, voce interiore, argomenti da evitare, o un archetipo pronto): le frasi in sintonia escono più spesso e quelle che contraddicono ciò che hai escluso non escono mai. È tutto facoltativo; senza scelte il narratore resta neutro. Vedi `/au anima`.
 - Ti guida al primo avvio con una procedura guidata saltabile.
 - Ha una diagnostica (`/au debug`) che mostra che cosa il tuo client permette di fare all'addon.
 - Si estende con **pacchetti di frasi** in addon separati, senza toccare il motore.
@@ -48,7 +49,7 @@ Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `1600
 - Non legge il log di combattimento e non prende decisioni sui valori che il client nasconde agli addon.
 - Non salva il contenuto della chat.
 
-**Previsto, ma non ancora presente** (vedi [ROADMAP.md](ROADMAP.md)): personalità del personaggio, ricordi e diario, relazioni con NPC e giocatori, interlocutore e luogo come condizioni delle frasi, dialoghi con NPC, storie a più capitoli, gioco sociale tra giocatori, contenuti fino a 1.000 intenzioni. Nelle impostazioni alcuni moduli (NPC, memoria, storie, social, audio) si possono già attivare o spegnere, ma sono solo segnaposto: oggi hanno effetto solo i moduli *Personale*, *Mondo*, *Proposte in chat* e *Total RP 3*. Anche la profondità dello stile (Naturale, Letterario, Elevato) si salva ma **nessuna frase la usa ancora**.
+**Previsto, ma non ancora presente** (vedi [ROADMAP.md](ROADMAP.md)): ricordi e diario, relazioni con NPC e giocatori, interlocutore e luogo come condizioni delle frasi, dialoghi con NPC, storie a più capitoli, gioco sociale tra giocatori, contenuti fino a 1.000 intenzioni. Nelle impostazioni alcuni moduli (NPC, memoria, storie, social, audio) si possono già attivare o spegnere, ma sono solo segnaposto: oggi hanno effetto solo i moduli *Personale*, *Mondo*, *Proposte in chat* e *Total RP 3*. Anche la profondità dello stile (Naturale, Letterario, Elevato) si salva ma **nessuna frase la usa ancora**.
 
 ## Requisiti
 
@@ -105,6 +106,7 @@ L'addon risponde a `/au` e a `/unspoken`. Quasi tutti i comandi hanno anche un n
 | `/au cooldown <secondi>` | pausa minima tra due frasi automatiche |
 | `/au ignora <incantesimo>` (`ignore`) | un incantesimo non produce più frasi; senza argomenti elenca quelli ignorati |
 | `/au pulsante` (`button`) | mostra o nasconde il pulsante "pronuncia" |
+| `/au anima` (`soul`) | apre la finestra del carattere del personaggio. Anche `lista`, `neutro`, `archetipo <id>`, `trp3 on\|off`, `<tratto> <valore>` (`temperamento`, `morale`, `curiosita`, `fede`, `motivazione`, `ironia`, `voce`; `-` toglie la scelta) ed `evita <argomento>` |
 | `/au pacchetti` (`packs`) · `/au pacchetto <id> on\|off` (`pack`) | elenca o accende e spegne i pacchetti di frasi |
 | `/au info` (`stats`) | quante frasi sono disponibili, per evento |
 | `/au memoria` (`memory`) | azzera la memoria delle frasi usate (senza conferma) |
@@ -147,7 +149,7 @@ Le decisioni dietro a questi comportamenti sono nelle [ADR](docs/adr/README.md),
 
 ## Total RP 3
 
-L'integrazione è **facoltativa**: l'addon funziona al 100% anche senza. Oggi, se Total RP 3 è presente e il modulo è acceso (`Nome da Total RP 3` nelle impostazioni), l'addon legge soltanto **il nome del tuo profilo** per usarlo nelle frasi. Se le API di Total RP 3 mancano o cambiano, l'integrazione si spegne da sola. Lettura di più dati del profilo (tratti caratteriali, ecc.) è pianificata, sempre con consenso. Vedi [ADR 0004](docs/adr/0004-total-rp-3-facoltativo-con-adattatore.md).
+L'integrazione è **facoltativa**: l'addon funziona al 100% anche senza. Se Total RP 3 è presente e il modulo è acceso (`Nome da Total RP 3` nelle impostazioni), l'addon legge **il nome del tuo profilo** per usarlo nelle frasi. Con un consenso a parte (`/au anima trp3 on`, spento per impostazione predefinita) legge anche i **tratti psicologici pubblici del tuo profilo** per il carattere del personaggio; una scelta fatta a mano ha sempre la precedenza. Legge solo il **tuo** profilo, mai note o campi privati, e non scrive nulla in Total RP 3. Se le API di Total RP 3 mancano o cambiano, l'integrazione si spegne da sola. I dati pubblici di altri giocatori sono pianificati, sempre con consenso. Vedi [ADR 0004](docs/adr/0004-total-rp-3-facoltativo-con-adattatore.md).
 
 ## Pacchetti di frasi
 

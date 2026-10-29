@@ -319,7 +319,8 @@ end
 function Personality.Factor(entry, ctx)
 	local soul = ctx and ctx.soul
 	if soul == nil then soul = Personality:Effective() end
-	if Traits.IsEmpty(soul) then return 1 end
+	-- senza tratti e senza tag la frase è neutra; un tag req: invece si valuta anche col profilo neutro
+	if next(entry.tags) == nil and Traits.IsEmpty(soul) then return 1 end
 	local f = Traits.Evaluate(entry.tags, soul)
 	if f == 0 then return 0 end
 	if entry.speaker == "inner" and soul.innerVoice then
@@ -428,7 +429,7 @@ local CLEAR_WORDS = { ["-"] = true, none = true, nessuno = true, reset = true, n
 function Personality:Command(rest)
 	rest = rest or ""
 	local word, arg = rest:match("^([^ ]*) *(.-) *$")
-	word = (word or ""):lower()
+	word = Traits.Lower(word or "")
 	if word == "" then
 		if NS.ProfileFrame and NS.ProfileFrame:Toggle() then return end
 		word = "lista"
@@ -439,7 +440,7 @@ function Personality:Command(rest)
 		self:Reset()
 		Say("soul_reset_done")
 	elseif word == "archetipo" or word == "archetype" or word == "arch" then
-		local id = arg:lower()
+		local id = Traits.Lower(arg)
 		if id == "" then
 			local names = {}
 			for _, a in ipairs(self.archetypes) do table.insert(names, a.id .. " = " .. self:ArchetypeName(a.id)) end
@@ -448,7 +449,7 @@ function Personality:Command(rest)
 		end
 		local found
 		for _, a in ipairs(self.archetypes) do
-			if a.id == id or self:ArchetypeName(a.id):lower() == id then found = a.id; break end
+			if a.id == id or Traits.Lower(self:ArchetypeName(a.id)) == id then found = a.id; break end
 		end
 		if found and self:SetArchetype(found) then
 			Say("soul_arch_set", self:ArchetypeName(found))
@@ -460,7 +461,7 @@ function Personality:Command(rest)
 			Say("soul_trp3_absent")
 			return
 		end
-		local a = arg:lower()
+		local a = Traits.Lower(arg)
 		if a == "on" or a == "si" or a == "sì" or a == "yes" then
 			self:SetTRP3Consent(true)
 		elseif a == "off" or a == "no" then
@@ -479,7 +480,7 @@ function Personality:Command(rest)
 			if topic then
 				local on = self:ToggleTopic(topic)
 				Say(on and "soul_avoid_on" or "soul_avoid_off", Traits.ValueName(id, topic))
-			elseif arg ~= "" and CLEAR_WORDS[arg:lower()] then
+			elseif arg ~= "" and CLEAR_WORDS[Traits.Lower(arg)] then
 				self:SetTrait(id, nil)
 				Say("soul_cleared", Traits.Name(id))
 			elseif arg ~= "" then
@@ -490,7 +491,7 @@ function Personality:Command(rest)
 		elseif arg == "" then
 			local traits = self:Effective()
 			Say("soul_value", Traits.Name(id), Traits.Describe(def, traits) or NS:L("soul_none"))
-		elseif CLEAR_WORDS[arg:lower()] then
+		elseif CLEAR_WORDS[Traits.Lower(arg)] then
 			self:SetTrait(id, nil)
 			Say("soul_cleared", Traits.Name(id))
 		else

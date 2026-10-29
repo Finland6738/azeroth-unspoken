@@ -15,9 +15,8 @@ Total RP 3 (TRP3) è l'addon di profili di roleplay più diffuso. Un compagno na
    - Se TRP3 manca, o `AddOn_TotalRP3.Player.GetCurrentUser` o `GetFirstName` non esistono, l'adattatore risponde `nil` e l'addon usa il nome del personaggio.
    - I valori letti passano da `Compat.Readable`.
 3. **L'utente decide**: l'integrazione ha un interruttore (`modules.totalRP3`, "Nome da Total RP 3" nelle impostazioni) e il wizard ne parla al passo dedicato solo se TRP3 è presente.
-4. **Cosa fa oggi**: legge il **nome** (`GetFirstName`) del profilo del giocatore e lo usa nelle frasi (`{player}`). Nient'altro.
+4. **Cosa fa**: legge il **nome** (`GetFirstName`) del profilo del giocatore e lo usa nelle frasi (`{player}`). Dallo step S5 legge anche i **tratti psicologici pubblici** del proprio profilo (`GetInfo("characteristics/PS")`), con un consenso a parte, per il Character Soul con la priorità *scelta esplicita > TRP3 > dati di gioco > valori neutri* ([ADR 0016](0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md)). Nient'altro.
 5. **Cosa è previsto** (non ancora presente):
-   - step S5: tratti del profilo del **proprio** personaggio, con consenso; priorità *scelta esplicita > TRP3 > dati di gioco > valori neutri*;
    - step S6c: dati **pubblici** del profilo di un bersaglio (razza e classe personalizzate, tratti), con consenso, mai obbligatori.
 
 ## Alternative considerate
@@ -36,4 +35,5 @@ Total RP 3 (TRP3) è l'addon di profili di roleplay più diffuso. Un compagno na
 
 - GDD §8.
 - `Integration/TotalRP3.lua`, `Core/ContextResolver.lua` (`PlayerName`).
+- ADR 0016 (tratti letti da TRP3).
 - ROADMAP: step S5 e S6c.

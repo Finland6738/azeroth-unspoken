@@ -22,7 +22,7 @@ NS.Engine = Engine
 ---@field styles string[] registri (GDD §5.1); il primo è quello principale
 ---@field tone? string primo registro, usato dalla differenziazione dei registri
 ---@field depth? table<string, boolean> profondità per cui la frase è scritta; assente = tutte
----@field tags table<string, boolean>
+---@field tags table<string, boolean> tag descrittivi e di affinità ("temperament:stoic", "req:", "not:", "topic:"): vedi Engine/Traits.lua
 ---@field weight number
 ---@field cooldown? number secondi prima che la frase possa tornare
 ---@field when? table condizioni (alias: conditions)
@@ -37,7 +37,7 @@ NS.Engine = Engine
 ---@field form? string say | emote (predefinito: emote per il narratore, say per le altre voci)
 ---@field styles? string[]
 ---@field depth? string|string[] natural | literary | elevated
----@field tags? string[]
+---@field tags? string[] descrittivi ("wry") o di affinità con i tratti del Character Soul (vedi FORMATO_PACCHETTI.md)
 ---@field weight? number
 ---@field cooldown? number
 ---@field conditions? table
