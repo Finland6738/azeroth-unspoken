@@ -8,4 +8,7 @@
 	<Binding name="AZEROTHUNSPOKEN_PAUSE" category="ADDONS">
 		AzerothUnspoken_TogglePause()
 	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_NPC" category="ADDONS">
+		AzerothUnspoken_NPCDialogue()
+	</Binding>
 </Bindings>

@@ -123,9 +123,16 @@ local function Day(t) return math.floor((t or Now()) / R.DAY) end
 
 local function Lang() return NS:Lang() end
 
-local function Name(t)
+---Un nome localizzato. La forma di una lingua può essere un elenco { maschile, femminile }: la sceglie `sex`
+---("female" dà la seconda, qualunque altro valore la prima), come LocalName di Systems/Interlocutor.lua (#41).
+---@param t any
+---@param sex? string male | female
+---@return string
+local function Name(t, sex)
 	if type(t) ~= "table" then return tostring(t) end
-	return t[Lang()] or t.en or t.it or "?"
+	local v = t[Lang()] or t.en or t.it or "?"
+	if type(v) == "table" then v = (sex == "female" and v[2]) or v[1] or "?" end
+	return v
 end
 
 ---@param guid any
@@ -293,10 +300,11 @@ function R:SetSetting(name, on)
 end
 
 ---@param id string
+---@param sex? string sesso della persona (male | female): sceglie la forma di genere del nome
 ---@return string
-function R:LabelName(id)
+function R:LabelName(id, sex)
 	local l = self.labelById[id]
-	return l and Name(l.name) or tostring(id)
+	return l and Name(l.name, sex) or tostring(id)
 end
 
 ---@param id string
@@ -382,8 +390,9 @@ end
 ---La relazione risolta: etichetta (con la scelta a mano che prevale), disposizione, profilo per i tag.
 ---@param kind AURelationKind
 ---@param rec AURelationRecord
+---@param sex? string sesso della persona: l'etichetta di una lingua con il genere prende la forma giusta (#41)
 ---@return AURelationInfo
-function R:Resolve(kind, rec)
+function R:Resolve(kind, rec, sex)
 	local axes = self:Axes(rec)
 	local derived = self:Derive(axes)
 	local manual = type(rec.label) == "string" and rec.label ~= ""
@@ -395,7 +404,7 @@ function R:Resolve(kind, rec)
 	local known = kind == "player" or manual or (axes.familiarity or 0) >= self.config.knownMin
 	local traits = { relation = label, disposition = disp }
 	for axis, v in pairs(axes) do traits[axis] = v end
-	return { kind = kind, axes = axes, derived = derived, label = label, text = text or self:LabelName(label),
+	return { kind = kind, axes = axes, derived = derived, label = label, text = text or self:LabelName(label, sex),
 		manual = manual, custom = text, disposition = disp, dispositionText = self:DispositionName(disp),
 		dispositionValue = value, isKnown = known, traits = traits }
 end
@@ -673,9 +682,10 @@ end
 ---@param npcID any
 ---@param name? string
 ---@param source string
+---@param uncounted? boolean vero: non conta come un'interazione (`count`): un seguito dello stesso dialogo (S8)
 ---@return AURelationRecord? rec
 ---@return table<string, number>? gained
-function R:RecordNPC(npcID, name, source)
+function R:RecordNPC(npcID, name, source, uncounted)
 	if not self:Enabled() or not self:Setting("npcAuto") then return nil end
 	if not IsNumber(npcID) or npcID <= 0 then return nil end
 	local d = self:Data()
@@ -687,7 +697,8 @@ function R:RecordNPC(npcID, name, source)
 	end
 	local old = DerivedOf(self, rec)
 	self:Decay(rec, now)
-	rec.last, rec.count = now, (rec.count or 0) + 1
+	rec.last = now
+	if not uncounted then rec.count = (rec.count or 0) + 1 end
 	local clean = CleanText(name, self.NAME_LEN)
 	if clean then rec.name = clean end
 	local gained = self:Increment(rec, source, now)

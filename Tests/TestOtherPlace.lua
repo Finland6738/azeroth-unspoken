@@ -322,7 +322,7 @@ T.run("ctx.other dal bersaglio: dati di gioco, tipo, reazione", function()
 	local c = Ctx().other
 	T.ok(c.kind == "creature" and c.ctype == "beast" and c.family == "Wolf" and c.npcID == 3035, "creatura")
 	T.ok(c.hostile and c.reaction == "hostile" and c.classification == "normal", "ostile")
-	P.target = { name = "Guardia di Orgrimmar", guid = Guid(3296), ctype = "Humanoid", reaction = 5, level = 55, cls = "elite" }
+	P.target = { name = "Guardia di Orgrimmar", guid = Guid(3299), ctype = "Humanoid", reaction = 5, level = 55, cls = "elite" }
 	local n = Ctx().other
 	T.ok(n.kind == "npc" and n.classification == "elite" and n.role == nil, "NPC: il ruolo non si indovina")
 end)

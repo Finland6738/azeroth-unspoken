@@ -7,7 +7,9 @@
 -- Etichette (`labels`): la prima, in ordine di priorità decrescente, le cui condizioni `when` valgono per tutti gli
 -- assi è l'etichetta derivata. `when = { asse = { min =, max = } }` (estremi inclusi). Un asse spento (attrazione)
 -- non ha valore e fa fallire la regola che lo cita. `stranger` è il ripiego, senza condizioni.
--- Nomi: `name = { it = "...", en = "..." }`. Un'etichetta scelta a mano ha la precedenza sulla derivata.
+-- Nomi: `name = { it = "...", en = "..." }`. Una lingua con il genere scrive un elenco { maschile, femminile }:
+-- `it = { "amico", "amica" }` (#41); la forma si sceglie dal sesso della persona (ctx.other.sex), il ripiego è la prima.
+-- Un'etichetta scelta a mano ha la precedenza sulla derivata.
 local ADDON, NS = ...
 
 NS.Relationships:RegisterData({
@@ -34,19 +36,19 @@ NS.Relationships:RegisterData({
 	-- d'armi; fiducia bassa e rispetto alto → rivale rispettato; affetto molto negativo → nemico; valori vicini a
 	-- zero → indifferente; familiarità bassa → sconosciuto.
 	labels = {
-		{ id = "lover", priority = 95, name = { it = "amato", en = "beloved" },
+		{ id = "lover", priority = 95, name = { it = { "amato", "amata" }, en = "beloved" },
 			when = { affection = { min = 50 }, attraction = { min = 50 }, trust = { min = 10 } } },
-		{ id = "enemy", priority = 90, name = { it = "nemico", en = "enemy" },
+		{ id = "enemy", priority = 90, name = { it = { "nemico", "nemica" }, en = "enemy" },
 			when = { affection = { max = -60 } } },
-		{ id = "comrade", priority = 80, name = { it = "compagno d'armi", en = "comrade in arms" },
+		{ id = "comrade", priority = 80, name = { it = { "compagno d'armi", "compagna d'armi" }, en = "comrade in arms" },
 			when = { trust = { min = 50 }, loyalty = { min = 50 }, familiarity = { min = 40 } } },
-		{ id = "rival", priority = 75, name = { it = "rivale rispettato", en = "respected rival" },
+		{ id = "rival", priority = 75, name = { it = { "rivale rispettato", "rivale rispettata" }, en = "respected rival" },
 			when = { trust = { max = 10 }, respect = { min = 40 }, familiarity = { min = 20 } } },
-		{ id = "feared", priority = 70, name = { it = "temuto", en = "feared one" },
+		{ id = "feared", priority = 70, name = { it = { "temuto", "temuta" }, en = "feared one" },
 			when = { fear = { min = 60 } } },
-		{ id = "friend", priority = 60, name = { it = "amico", en = "friend" },
+		{ id = "friend", priority = 60, name = { it = { "amico", "amica" }, en = "friend" },
 			when = { trust = { min = 30 }, affection = { min = 30 }, familiarity = { min = 30 } } },
-		{ id = "disliked", priority = 55, name = { it = "inviso", en = "disliked" },
+		{ id = "disliked", priority = 55, name = { it = { "inviso", "invisa" }, en = "disliked" },
 			when = { affection = { max = -25 } } },
 		{ id = "wary", priority = 50, name = { it = "diffidente", en = "distrusted" },
 			when = { trust = { max = -30 } } },
@@ -55,7 +57,7 @@ NS.Relationships:RegisterData({
 				affection = { min = -10, max = 10 }, loyalty = { min = -10, max = 10 } } },
 		{ id = "acquaintance", priority = 20, name = { it = "conoscente", en = "acquaintance" },
 			when = { familiarity = { min = 20 } } },
-		{ id = "stranger", priority = 0, name = { it = "sconosciuto", en = "stranger" }, when = {} },
+		{ id = "stranger", priority = 0, name = { it = { "sconosciuto", "sconosciuta" }, en = "stranger" }, when = {} },
 	},
 
 	-- Disposizione complessiva su una scala -100…100: media pesata degli assi di valore (il timore non è una
@@ -100,6 +102,11 @@ NS.Relationships:RegisterData({
 	-- regolabili senza toccare il codice.
 	increments = {
 		gossip = { gain = { familiarity = 3 }, decay = 0.6, cap = { familiarity = 6 } },
+		-- dialogo ambientale dell'addon (S8): aprirlo e scegliere una risposta. Poco e con tetti bassi: una
+		-- chiacchierata simulata vale meno di un'interazione vera con l'NPC
+		ambient = { gain = { familiarity = 1.5, trust = 0.5 }, decay = 0.6, cap = { familiarity = 3, trust = 1 } },
+		ambient_talk = { gain = { familiarity = 1, trust = 1, affection = 0.5 }, decay = 0.7,
+			cap = { familiarity = 2.5, trust = 2.5, affection = 1.5 } },
 		quest_accept = { gain = { familiarity = 4, trust = 3, respect = 1 }, decay = 0.7,
 			cap = { familiarity = 8, trust = 6, respect = 2 } },
 		quest_turnin = { gain = { familiarity = 5, trust = 6, respect = 3, affection = 2 }, decay = 0.7,

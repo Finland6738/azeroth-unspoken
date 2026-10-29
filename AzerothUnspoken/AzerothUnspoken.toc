@@ -40,6 +40,7 @@ Systems\Place.lua
 Systems\LivingMemory.lua
 Systems\Relationships.lua
 Systems\Interlocutor.lua
+Systems\NPCAlive.lua
 
 # --- interfaccia ---
 UI\Widgets.lua
@@ -49,6 +50,7 @@ UI\Wizard.lua
 UI\ProfileFrame.lua
 UI\JournalFrame.lua
 UI\RelationsFrame.lua
+UI\DialogueFrame.lua
 UI\SettingsFrame.lua
 UI\Commands.lua
 
@@ -73,6 +75,8 @@ Data\RegistrySoul.lua
 Data\RegistryMemory.lua
 Data\RegistryRelations.lua
 Data\RegistryContext.lua
+Data\RegistryDialogues.lua
+Data\Dialogues.lua
 Data\itIT\Combat.lua
 Data\itIT\Spells.lua
 Data\itIT\Life.lua
@@ -94,6 +98,10 @@ Data\enUS\Relations.lua
 Data\itIT\RelationsUI.lua
 Data\enUS\RelationsUI.lua
 Data\itIT\Context.lua
+Data\itIT\Dialogues.lua
 Data\enUS\Context.lua
+Data\enUS\Dialogues.lua
 Data\itIT\ContextUI.lua
+Data\itIT\NPCUI.lua
 Data\enUS\ContextUI.lua
+Data\enUS\NPCUI.lua

@@ -5,7 +5,8 @@ local Score, WeightedPick, Remember, KeepFor = Engine.Score, Engine.WeightedPick
 
 -- {player} {target} {spell} {zone} {subzone} {level} {class} {race} {faction} {relation} (S6b: l'etichetta del rapporto)
 -- {other} {otherrole} {otherrace} {otherclass} {instance} {encounter} (S6c: interlocutore e luogo)
--- {g:maschile|femminile}   {line} (solo nelle cornici)   {nome_vocabolario}
+-- {g:maschile|femminile} (genere del personaggio)   {og:maschile|femminile} (genere dell'interlocutore, S8/#41)
+-- {line} (solo nelle cornici)   {nome_vocabolario}
 -- segnaposto -> campo del contesto. Il validatore usa questa tabella per riconoscere i segnaposto ammessi.
 local BUILTIN = {
 	player = "player", target = "target", spell = "spell", zone = "zone",
@@ -17,12 +18,22 @@ local BUILTIN = {
 }
 Engine.PLACEHOLDERS = BUILTIN
 
+-- Una voce di vocabolario con un tag rigido (topic:, req:, not:) che il profilo del Character Soul esclude non si
+-- sceglie mai (#42): chi evita il sangue non sente «Sangue e tuono!» neanche dentro una frase che non ne parla.
+-- Contano solo i tag che escludono (fattore 0): quelli morbidi non cambiano il peso del vocabolario.
+local EMPTY = {}
+local function VocabExcluded(v, ctx)
+	if not NS.Traits or type(v.tags) ~= "table" or next(v.tags) == nil then return false end
+	return NS.Traits.Evaluate(v.tags, ctx.soul or EMPTY) == 0
+end
+
 function Engine:Vocab(name, lang, ctx)
 	local list = self.vocab[name]
 	if not list then return nil end
 	local items = {}
 	for _, v in ipairs(list) do
-		if #Engine.UsableVariants(v.text[lang], ctx) > 0 and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx) then
+		if #Engine.UsableVariants(v.text[lang], ctx) > 0 and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx)
+			and not VocabExcluded(v, ctx) then
 			table.insert(items, { e = v, w = Score(v, "vocab:" .. name, #list) })
 		end
 	end
@@ -40,6 +51,14 @@ function Engine:Render(text, lang, ctx, line, nested)
 		if failed then return "" end
 		local m, f = tag:match("^g:([^|]*)|(.*)$")
 		if m then return (ctx.sex == "female") and f or m end
+		-- {og:maschile|femminile}: il genere dell'interlocutore (#41). Senza un sesso noto la variante non si compone.
+		local om, of = tag:match("^og:([^|]*)|(.*)$")
+		if om then
+			if ctx.otherSex == "female" then return of end
+			if ctx.otherSex == "male" then return om end
+			failed = true
+			return ""
+		end
 		if tag == "line" then
 			if line then return line end
 			failed = true
@@ -63,6 +82,7 @@ end
 -- controllo veloce dei dati richiesti, senza consumare vocabolario
 function Engine.HasData(text, ctx)
 	for tag in text:gmatch("{([^{}]+)}") do
+		if tag:match("^og:[^|]*|") and ctx.otherSex ~= "male" and ctx.otherSex ~= "female" then return false end
 		local field = BUILTIN[tag]
 		if field and (ctx[field] == nil or ctx[field] == "") then return false end
 	end

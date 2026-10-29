@@ -47,10 +47,20 @@ Config.CHAT_LIMITS = {
 ---@field locked boolean il riquadro non si sposta
 ---@field pos? table posizione salvata { punto, punto relativo, x, y }
 
+---@class AUDialogueSettings
+---@field fontSize integer
+---@field alpha number
+---@field locked boolean
+---@field pos? table posizione salvata { punto, punto relativo, x, y }
+
+---@class AUNPCAliveSettings
+---@field autoOffer boolean un'interazione valida propone il dialogo ambientale (il pulsante compare da solo)
+
 ---@class AUUISettings
 ---@field showButton boolean
 ---@field wizardDone boolean
 ---@field narrator AUNarratorSettings
+---@field dialogue AUDialogueSettings finestra dei dialoghi ambientali (S8)
 ---@field buttonPos? table
 
 ---@class AUOutputSettings
@@ -81,6 +91,7 @@ Config.CHAT_LIMITS = {
 ---@field disabledPacks table<string, boolean>
 ---@field relations AURelationSettings
 ---@field interlocutor { trp3Others: boolean } S6c: consenso a leggere i profili pubblici TRP3 degli altri giocatori
+---@field npcAlive AUNPCAliveSettings NPC Alive (S8)
 ---@field ui AUUISettings
 
 Config.defaults = {
@@ -133,6 +144,11 @@ Config.defaults = {
 	interlocutor = {
 		trp3Others = false,
 	},
+	-- NPC Alive (S8): il dialogo ambientale parte sempre da un'azione del giocatore; `autoOffer` fa solo comparire il
+	-- pulsante quando un'interazione valida si apre (ignorato con l'intensità a 0; il comando /au npc funziona sempre)
+	npcAlive = {
+		autoOffer = true,
+	},
 	ui = {
 		showButton = true,
 		wizardDone = false,
@@ -142,6 +158,11 @@ Config.defaults = {
 			fontSize = 14,
 			historySize = 30,
 			locked = false,      -- true: il riquadro non si sposta
+		},
+		dialogue = {
+			fontSize = 13,
+			alpha = 0.92,        -- opacità dello sfondo, 0.3-1
+			locked = false,      -- true: la finestra non si sposta
 		},
 	},
 }
@@ -174,6 +195,8 @@ Config.rules = {
 	["ui.narrator.alpha"] = { min = 0.2, max = 1 },
 	["ui.narrator.fontSize"] = { min = 10, max = 28, integer = true },
 	["ui.narrator.historySize"] = { min = 5, max = 100, integer = true },
+	["ui.dialogue.fontSize"] = { min = 10, max = 24, integer = true },
+	["ui.dialogue.alpha"] = { min = 0.3, max = 1 },
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 }

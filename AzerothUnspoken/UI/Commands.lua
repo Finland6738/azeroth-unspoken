@@ -162,6 +162,8 @@ local function Command(msg)
 		NS.Place:Command()
 	elseif cmd == "chi" or cmd == "who" or cmd == "interlocutore" or cmd == "other" then
 		NS.Interlocutor:Command(rest)
+	elseif cmd == "npc" or cmd == "dialogo" or cmd == "parla" or cmd == "talk" or cmd == "dialogue" then
+		NS.NPCAlive:Command(rest)
 	elseif cmd == "benvenuto" or cmd == "wizard" or cmd == "welcome" then
 		NS.Wizard:Open()
 	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then

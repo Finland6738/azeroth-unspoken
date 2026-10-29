@@ -15,7 +15,10 @@
     "AzerothUnspoken_TogglePause",
     "AzerothUnspoken_Reroll",
     "BINDING_NAME_AZEROTHUNSPOKEN_REROLL",
-    "BINDING_NAME_AZEROTHUNSPOKEN_PAUSE"
+    "BINDING_NAME_AZEROTHUNSPOKEN_PAUSE",
+    "AzerothUnspokenDialogue",
+    "AzerothUnspoken_NPCDialogue",
+    "BINDING_NAME_AZEROTHUNSPOKEN_NPC"
   ],
   "workspace.ignoreDir": [
     "archive",

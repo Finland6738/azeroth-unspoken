@@ -99,8 +99,9 @@ T.run("le quattro voci, ciascuna dove ha senso", function()
 	for id, p in pairs(BASE) do
 		by[p.speaker] = by[p.speaker] + 1
 		if p.speaker == "npc" then
-			-- la voce NPC esiste solo dove c'è già un uso: l'incontro con un NPC dal ruolo riconosciuto
-			T.ok(HasEvent(p, "npc_meet"), id .. ": la voce NPC parla solo in npc_meet")
+			-- la voce NPC esiste solo dove c'è già un uso: l'incontro con un NPC dal ruolo riconosciuto (npc_meet) e le
+			-- battute dei dialoghi ambientali (eventi npcd_*, solo dentro la finestra di NPC Alive)
+			T.ok(HasEvent(p, "npc_meet") or p.events[1]:find("^npcd_") ~= nil, id .. ": la voce NPC parla solo in npc_meet e nei dialoghi")
 			local other = When(p, "other")
 			T.ok(type(other) == "table" and (other.role ~= nil or other.any ~= nil), id .. ": l'NPC ha un ruolo dichiarato")
 		end
@@ -221,8 +222,9 @@ end)
 
 T.run("#27: le frasi di base portano i tag del Character Soul", function()
 	local tagged, n, untagged = 0, 0, {}
+	-- le battute dei dialoghi ambientali (S8) sono dell'NPC e non del personaggio: i tag del Character Soul non le riguardano
 	for id, p in pairs(BASE) do
-		n = n + 1
+		if p.pack ~= "base_dialogues" then n = n + 1 end
 		local scoped = false
 		for tag in pairs(p.tags) do
 			if type(tag) == "string" and (tag:find("^rel%.") or tag:find("^other%.") or tag:find("^place%.")) then scoped = true end

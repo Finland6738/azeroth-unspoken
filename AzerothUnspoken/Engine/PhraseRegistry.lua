@@ -410,6 +410,8 @@ function Engine:AddVocab(pack, name, entries)
 		v.weight = v.weight or 1
 		v.when = v.conditions or v.when
 		v.spec = Specificity(v.when)
+		-- tag di affinità e di argomento (#42): `topic:blood` esclude la voce a chi evita quell'argomento
+		v.tags = ToSet(v.tags) or {}
 		table.insert(self.vocab[name], v)
 		table.insert(pack.vocabList, v)
 		pack.langsUsed = pack.langsUsed or {}
