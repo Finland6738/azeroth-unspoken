@@ -122,6 +122,7 @@ local function CreatePanel()
 	Row(2, 6, function() return NS:L("opt_resetpos") end, function() NS.Narrator:ResetPosition() end)
 	Row(2, 7, function() return NS:L("opt_history") end, function() NS.Narrator:ToggleHistory() end)
 	Row(2, 8, function() return NS:L("opt_test") end, function() NS.Narrator:ShowTest() end)
+	Row(2, 9, function() return NS:L("opt_soul") end, function() if NS.ProfileFrame then NS.ProfileFrame:Toggle() end end)
 
 	-- moduli: griglia a quattro colonne
 	local modTitle = panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")

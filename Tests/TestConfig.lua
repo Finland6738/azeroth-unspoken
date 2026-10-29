@@ -4,8 +4,8 @@ local Config, Diagnostics = NS.Config, NS.Diagnostics
 
 T.run("predefiniti", function()
 	local db = NS.db
-	T.eq(AzerothUnspokenDB.schemaVersion, 2, "schema globale")
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 2, "schema personaggio")
+	T.eq(AzerothUnspokenDB.schemaVersion, 3, "schema globale")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 3, "schema personaggio")
 	T.ok(AzerothUnspokenDB.settings == db, "NS.db sono le impostazioni globali")
 	T.eq(db.locale, "it", "lingua")
 	T.eq(db.preset, "complete", "preset")
@@ -122,34 +122,34 @@ end)
 T.run("migrazioni", function()
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 2, "SavedVariables nuove")
+	T.eq(AzerothUnspokenDB.schemaVersion, 3, "SavedVariables nuove")
 
 	AzerothUnspokenDB = { settings = { intensity = 20 } }   -- senza schemaVersion
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 2, "versione assente -> 2")
+	T.eq(AzerothUnspokenDB.schemaVersion, 3, "versione assente -> 3")
 	T.eq(NS.db.intensity, 20, "dati conservati")
 
 	-- una migrazione futura gira una sola volta, in ordine
 	local calls = 0
-	Config.SCHEMA_VERSION = 3
-	Config.migrations.global[3] = function(db)
+	Config.SCHEMA_VERSION = 4
+	Config.migrations.global[4] = function(db)
 		calls = calls + 1
 		db.settings.intensity = db.settings.intensity + 1
 	end
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 3, "migrazione applicata")
+	T.eq(AzerothUnspokenDB.schemaVersion, 4, "migrazione applicata")
 	T.eq(NS.db.intensity, 21, "migrazione eseguita")
 	Config:Load()
 	T.eq(calls, 1, "una sola volta")
 
 	-- una migrazione che fallisce non rompe l'addon e non avanza la versione
-	Config.SCHEMA_VERSION = 4
-	Config.migrations.global[4] = function() error("migrazione rotta") end
+	Config.SCHEMA_VERSION = 5
+	Config.migrations.global[5] = function() error("migrazione rotta") end
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 3, "versione ferma dopo un errore")
+	T.eq(AzerothUnspokenDB.schemaVersion, 4, "versione ferma dopo un errore")
 	T.ok(NS.db and NS.db.intensity == 21, "impostazioni comunque disponibili")
-	Config.migrations.global[3], Config.migrations.global[4] = nil, nil
-	Config.SCHEMA_VERSION = 2
+	Config.migrations.global[4], Config.migrations.global[5] = nil, nil
+	Config.SCHEMA_VERSION = 3
 
 	-- dati da una versione più nuova: non si toccano
 	AzerothUnspokenDB = { schemaVersion = 99, settings = { intensity = 60 }, futuro = true }
@@ -231,7 +231,7 @@ T.run("migrazione 1 -> 2: output.mode diventa chat.mode", function()
 	local db = Migrate({ mode = "self" })
 	T.eq(db.chat.mode, "PRIVATE", "self -> PRIVATE")
 	T.eq(db.output.mode, nil, "output.mode rimosso")
-	T.eq(AzerothUnspokenDB.schemaVersion, 2, "versione")
+	T.eq(AzerothUnspokenDB.schemaVersion, 3, "versione")
 	for _, old in ipairs({ "auto", "emote", "say", "boh" }) do
 		db = Migrate({ mode = old, autoPublicSay = true })
 		T.eq(db.chat.mode, "CONFIRM_TO_SEND", old .. " -> proposta da confermare")

@@ -23,6 +23,7 @@ Engine\RuleEngine.lua
 Engine\StyleResolver.lua
 Engine\WeightedSelector.lua
 Engine\TemplateRenderer.lua
+Engine\Traits.lua
 Engine\Validator.lua
 Engine\Pacing.lua
 Engine\NarrativeDirector.lua
@@ -32,6 +33,7 @@ Integration\TotalRP3.lua
 Integration\ChatGateway.lua
 
 # --- sistemi ---
+Systems\Personality.lua
 Systems\Director.lua
 Systems\Triggers.lua
 
@@ -40,6 +42,7 @@ UI\Widgets.lua
 UI\NarratorFrame.lua
 UI\SpeakButton.lua
 UI\Wizard.lua
+UI\ProfileFrame.lua
 UI\SettingsFrame.lua
 UI\Commands.lua
 
@@ -57,6 +60,7 @@ Data\RegistryLife.lua
 Data\RegistryExploration.lua
 Data\RegistrySocial.lua
 Data\RegistryClasses.lua
+Data\RegistrySoul.lua
 Data\itIT\Combat.lua
 Data\itIT\Spells.lua
 Data\itIT\Life.lua
@@ -69,3 +73,5 @@ Data\enUS\Life.lua
 Data\enUS\Exploration.lua
 Data\enUS\Social.lua
 Data\enUS\Classes.lua
+Data\itIT\Soul.lua
+Data\enUS\Soul.lua
