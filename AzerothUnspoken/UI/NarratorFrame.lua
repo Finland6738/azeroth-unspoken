@@ -375,7 +375,8 @@ local function Build()
 		local hold = Narrator.proposal and NS.Gateway:GetPending() or self.editor:IsShown()
 		if not hold and NS.Compat:IsMouseOver(self) then hold = true end
 		if hold then
-			Narrator.elapsed = math.min(Narrator.elapsed, remaining)
+			-- il tempo si ferma all'inizio della dissolvenza: tolto il mouse, il riquadro sbiadisce invece di sparire (#21)
+			Narrator.elapsed = math.min(Narrator.elapsed, math.max(0, remaining - FADE_TIME))
 			self:SetAlpha(Cfg().alpha)
 			return
 		end
