@@ -168,7 +168,7 @@ local function CreatePanel()
 	function panel:Rebuild() self:Refresh() end
 	panel:SetScript("OnShow", function() panel:Refresh() end)
 
-	if Settings and Settings.RegisterCanvasLayoutCategory then
+	if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
 		local category = Settings.RegisterCanvasLayoutCategory(panel, panel.name)
 		Settings.RegisterAddOnCategory(category)
 		NS.settingsCategory = category

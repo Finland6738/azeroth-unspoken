@@ -148,7 +148,7 @@ Qui si verifica che l'addon non scriva mai da solo in chat con le impostazioni p
    - **Cosa aspettarti:** la proposta scade e il riquadro si chiude da solo. Il pulsante "libro" si spegne.
 5. Fai comparire una nuova proposta (`/au saluto`) e premi **Invia** nel riquadro (oppure il pulsante "libro").
    - **Cosa aspettarti:** la frase compare **in chat** come detta dal tuo personaggio (`/s`) o come emote (`/e`), con il fumetto sopra la testa se è `/s`. Il riquadro mostra "inviato in /s".
-   - **Cosa riportare (importante):** se **non** compare nulla in chat, oppure compare una finestra "Azeroth Unspoken ha tentato un'azione che è stata bloccata" (ADDON_ACTION_FORBIDDEN). Scrivi anche `/au debug`: la riga `Chat Gateway` indica `last refusal`. Fai screenshot.
+   - **Cosa riportare (importante):** se **non** compare nulla in chat, oppure compare una finestra "Azeroth Unspoken ha tentato un'azione che è stata bloccata" (ADDON_ACTION_FORBIDDEN). Scrivi anche `/au debug`: la riga `Chat Gateway` indica `last refusal` e, dalla correzione Q5 (#55), `blocked by the client N`: se il client blocca l'invio **senza errori Lua**, l'addon se ne accorge (`last refusal blocked`, la proposta resta in attesa, nulla è contato come inviato). Fai screenshot.
 6. Fai comparire un'altra proposta e premi **Scarta**.
    - **Cosa aspettarti:** il riquadro si chiude, nulla in chat.
 7. Fai comparire una proposta e prova **Modifica**: nella casella che compare cambia il testo e premi **Invio**.
@@ -183,7 +183,7 @@ Questa modalità fa scrivere l'addon da solo **solo emote** e, nelle istanze, `/
 
 14. Scrivi `/au chat auto`: compare un **avviso** e la modalità **non** cambia. Scrivi di nuovo `/au chat auto` entro 10 secondi: ora è attiva. Poi `/au prob zone 100` e `/au cooldown 0`. Cammina fino a un'altra zona.
     - **Cosa aspettarti:** una **emote** compare in chat da sola (`Nome sospira…`), oppure una proposta per `/s` che resta in attesa. Non deve comparire nessun `/say` da solo nel mondo aperto.
-    - **Cosa riportare:** se compare un `/say` da solo (errore grave); se l'emote non parte e `/au debug` mostra `last refusal error` (vuol dire che il client blocca anche le emote automatiche).
+    - **Cosa riportare:** se compare un `/say` da solo (errore grave); se l'emote non parte e `/au debug` mostra `last refusal blocked` (o `error`): vuol dire che il client blocca anche le emote automatiche. Scrivi se `blocked by the client` aumenta.
 15. (Solo se entri in un'istanza) Rifai il passo 14 dentro l'istanza.
     - **Cosa aspettarti:** può partire un `/say` da solo, poche volte al minuto.
 16. **Rimetti tutto a posto:** `/au chat privato`, `/au prob zone 40`, `/au cooldown 45`.
@@ -448,6 +448,29 @@ Corrette fuori dal gioco le issue #9, #13, #21, #23, #26, #37 e #38. Restano da 
     - **Cosa aspettarti:** nessun errore; se in combattimento la salute risulta segreta (`value:player.hp` RESTRICTED) l'evento `HEALTH_CHANGED` compare ogni tanto, non a raffica.
     - **Cosa riportare:** il contatore «pubblicati»/«doppioni scartati» in `/au debug` dopo qualche minuto di combattimento.
 
+## Q5: correzioni di codice (aggiunto dalla correzione Q5)
+
+Corrette fuori dal gioco le issue #45, #46, #47, #48, #49, #50, #51, #52, #53, #54, #55 e #56. Restano da provare nel client vero:
+
+93. **L'invio bloccato in silenzio (issue #55, ipotesi SP-05).** Con `/au chat auto` (due passi) in una zona del mondo aperto, o con `/au chat conferma` e un canale che il client non permette senza un gesto (gruppo, gilda), prova a far partire una frase. Poi `/au debug`.
+    - **Cosa aspettarti:** se il client blocca la chiamata senza un errore Lua, l'addon stampa «il client ha bloccato l'invio», la proposta resta in attesa, `last refusal blocked` e `blocked by the client` aumenta; `sent` non cresce.
+    - **Cosa riportare:** quale evento arriva (`/au debug trace` mostra `ACTION_BLOCKED` con `func=SendChatMessage`), con che argomenti (il primo è il nome dell'addon o un valore vero/falso?), e se compare comunque il popup di Blizzard.
+94. **Il ritorno dopo una schermata di caricamento (issue #47).** Visita una zona, esci per più di 20 minuti, poi rientrandovi con un portale, una nave o uno zeppelin tra continenti, la pietra del ritorno o uscendo da un'istanza. Prima con `/au prob zone 100` e `/au prob memory_return 100`, poi `/au debug trace`.
+    - **Cosa aspettarti:** dopo qualche secondo **una sola** frase: il richiamo di memoria («Rieccomi...») e non l'atmosfera di zona; in `/au debug` (riga Narrative Director) `memory_return=spoken` e `zone=outranked`. All'accesso e dopo un `/reload` nessun richiamo.
+    - **Cosa riportare:** l'**ordine** in cui arrivano `WORLD_ENTER` (PLAYER_ENTERING_WORLD) e `ZONE_ENTER` (ZONE_CHANGED_NEW_AREA) nella traccia, per ogni tipo di passaggio; se la frase manca o è doppia.
+95. **I rapporti non hanno nomi altrui (issue #53).** Dopo uno scambio, un sussurro, una sfida a duello, un invito e un'emote rivolta a te: `/au debug full` e `/au debug trace`.
+    - **Cosa aspettarti:** nessun nome di altri giocatori (appare `<nascosto>`); zona, nome dell'incantesimo e NPC restano leggibili.
+    - **Cosa riportare:** ogni nome di persona che compare (errore da segnalare).
+96. **Ritorno in vita da fantasma (issue #56).** Muori, rilascia lo spirito, torna al corpo (o fatti resuscitare).
+    - **Cosa aspettarti:** la frase di ritorno in vita parte **una sola volta**, quando torni davvero vivo, non quando diventi fantasma.
+    - **Cosa riportare:** gli eventi in `/au debug trace` (`PLAYER_REVIVE` con `deadOrGhost`), se la frase parte da fantasma o due volte.
+97. **Il rapporto è di chi ti saluta (issue #48).** Con un bersaglio che hai in lista come nemico, fatti salutare con `/wave` da un amico che hai in lista (`/au relazioni`); `/au chi`.
+    - **Cosa aspettarti:** `/au chi` mostra l'amico (non il nemico) come interlocutore, con il suo rapporto.
+    - **Cosa riportare:** se mostra il rapporto del bersaglio.
+98. **Pannello delle impostazioni, descrizioni, finestre (issue #54, FrameXML).** `/au opzioni`, passa il mouse sul pulsante «libro» e sui pulsanti delle finestre, apri il diario con la casella di esportazione.
+    - **Cosa aspettarti:** il pannello compare tra le opzioni dei componenti aggiuntivi; i suggerimenti (tooltip) mostrano il titolo e le righe; i pulsanti hanno l'aspetto standard.
+    - **Cosa riportare:** `/au debug full` (righe `api:`), errori rossi in `GameTooltip:SetOwner`/`AddLine`, `UIPanelButtonTemplate`, `InputBoxTemplate`, `UIPanelScrollFrameTemplate`, `ScrollToBottom`.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -523,6 +546,12 @@ S9 volto noto .......... giorni necessari ______  nome giusto? ___  altro NPC no
 S9 caduta .............. frase da viva? ___  ritorno riconosciuto? ___  evita morte ___
 S9 tre porte ........... capitali riconosciute? ___  offerta dopo la pausa? ___
 S9 ritmo ............... mai due ravvicinate? ___  mai in combattimento? ___  troppe? ___
+Q5 invio bloccato ....... evento ______  argomenti ______  `last refusal blocked`? ___  popup di Blizzard? ___
+Q5 ritorno dopo caricamento ordine PEW/ZONE ______  una sola frase? ___  all'accesso nulla? ___
+Q5 diagnostica .......... nomi di altri giocatori? (deve essere NO) ___
+Q5 fantasma ............. frase solo da vivo? ___  una volta sola? ___
+Q5 rapporto altrui ...... /au chi mostra chi ti saluta? ___
+Q5 FrameXML ............. tooltip ___  pulsanti ___  scorrimento del narratore ___  pannello ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

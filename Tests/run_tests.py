@@ -697,5 +697,24 @@ if proc.stdout.startswith("SALTATO"):
 else:
     check(proc.returncode == 0, "check_api.py: funzioni ed eventi usati presenti nel dump (o con eccezione motivata)")
 
+# #54: il controllo vede anche funzioni passate come valore, oggetti di FrameXML, metodi dei widget e modelli
+if not proc.stdout.startswith("SALTATO"):
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        with open(os.path.join(tmp, "Cattivo.lua"), "w", encoding="utf-8", newline="\n") as f_:
+            f_.write("local function Flag(fn) return fn end\n"
+                     "local a = Flag(UnitIsFooBarBaz)\n"            # funzione di WoW inesistente, passata senza parentesi
+                     "local b = NuovoOggettoDiFrameXML\n"           # oggetto globale mai spiegato
+                     "local c = CreateFrame('Frame', nil, UIParent, 'ModelloInventatoTemplate')\n"
+                     "GameTooltip:MetodoInesistente()\n"
+                     "local d = C_Map.FunzioneInesistente\n")
+        bad_proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"), tmp],
+                                  capture_output=True, text=True, encoding="utf-8")
+    out_ = bad_proc.stdout
+    check(bad_proc.returncode == 1, "check_api.py rifiuta un file con usi non spiegati")
+    for needle in ("UnitIsFooBarBaz", "NuovoOggettoDiFrameXML", "ModelloInventatoTemplate", "MetodoInesistente",
+                   "C_Map.FunzioneInesistente"):
+        check("MANCA" in out_ and needle in out_, f"check_api.py segnala {needle}")
+
 print("\n" + ("TUTTI I CONTROLLI SUPERATI" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
 sys.exit(1 if FAILURES else 0)

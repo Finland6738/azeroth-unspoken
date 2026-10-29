@@ -127,6 +127,19 @@ Nessuna versione è stata ancora rilasciata: non ci sono pacchetti di distribuzi
 - Formato dei dati: nessun cambiamento (le proposte in memoria hanno due campi in più, `ctx` e `id`, mai salvati). Interfaccia: nuove stringhe IT/EN `btn_another`, `tip_another`, `gw_reroll_*`, `rel_trait*`, `opt_trp3_others*`, `wiz_trp3_others_help`.
 - Test: nuove sezioni in `TestCompat`, `TestEventBus`, `TestNarrator`, `TestValidator`, `TestChatGateway`, `TestOtherPlace` e `TestRelations`; passi 69–74 in `docs/G1_checklist.md`.
 
+**Correzioni Q5 (issue #45, #46, #47, #48, #49, #50, #51, #52, #53, #54, #55, #56)**
+- **#45 privacy**: `rel.npc.rival` è ora una voce interiore; il validatore rifiuta `{relation}` (che può contenere l'etichetta scritta dall'utente) in voci pubbliche, cornici e vocabolario (`userTextPublic`); il motore non compone mai quel testo in una frase pubblica, nemmeno di un pacchetto esterno (`ctx.relationCustom`, `Engine.USER_TEXT`).
+- **#46, #50 rispetto dei moduli e della versione**: NPC Alive non scrive flag né relazioni con memoria o relazioni spente o in sola lettura (`LM:SetFlag` rifiuta le fonti automatiche a memoria spenta); `R:Sanitize` lascia intatti i dati di una versione interna più nuova e passa in sola lettura, con l'errore in diagnostica.
+- **#49, #52 dati caricati**: `Engine:SanitizeMemory` scarta le voci malformate dell'anti-ripetizione (e `DecayMemory` toglie quelle di frasi sparite, senza toccare cornici e vocabolario); la posizione del pulsante si controlla; i contatori `today` dei giorni passati, il tetto degli NPC, quello dei ricordi permanenti (`LM:CapPermanent`) e dei flag (1000, `LM:CapFlags`) valgono anche per i dati caricati; i flag con le maiuscole si riportano al minuscolo.
+- **#51 numeri**: `/au cooldown` passa da `Config:Set` (0-3600), `/au prob` scarta `nan` e `inf`, `schemaVersion` non intero, NaN o negativo si normalizza (`Config:SchemaOf`).
+- **#53 diagnostica**: `/au debug`, `/au debug full` e la traccia non stampano nomi di altri giocatori (i campi di testo non noti escono come `<nascosto>`); test anti-regressione.
+- **#55 invio bloccato in silenzio**: il client vero non solleva un errore per un invio protetto senza gesto; il Chat Gateway ascolta `ADDON_ACTION_FORBIDDEN` e `ADDON_ACTION_BLOCKED` (sorgente `ACTION_BLOCKED` del bus), non conta l'invio, rimette la proposta in attesa e segna `last refusal blocked` (`blocked by the client` in `/au debug`). Il client finto si comporta allo stesso modo (`BLOCKED_SENDS`, `SEND_RAISES`, `BLOCK_EVENT_LATE`).
+- **#47 ritorno dopo una schermata di caricamento**: `memory_return` e `zone` si offrono anche con `PLAYER_ENTERING_WORLD` non di accesso, qualunque sia l'ordine degli eventi (il client finto ha `LOADING_SCREEN` con tre ordini e `ENTER_GAME`: `PLAYER_LOGIN` prima di `PLAYER_ENTERING_WORLD`).
+- **#48**: nelle azioni di un'altra persona (`other_action`) il rapporto (`ctx.relation`, `rel`, `relTraits`, `relName`, `relationLabel`) è quello di chi ha agito.
+- **#54 `Tests/check_api.py`**: con il bytecode di Lua 5.1 controlla ogni globale letto (anche funzioni passate come valore), i metodi dei widget (`oggetto:Metodo()`) e i modelli di `CreateFrame`, con elenchi motivati per ciò che sta solo in FrameXML (`OBJECTS`, `METHODS`, `TEMPLATES`); protetto `Settings.RegisterAddOnCategory`.
+- **#56 test**: `Tests/TestCommands.lua` (comandi `/au` di base, rez da fantasma con `P.ghost`, `QUEST_GREETING`, fine scontro in combattimento), ingresso nel mondo come interruzione in NPC Alive.
+- Formato dei dati: nessun cambiamento. Passi 93–98 in `docs/G1_checklist.md`.
+
 **Documentazione (attività D1)**
 - `README.md` professionale e `README.en.md` (versione inglese).
 - `docs/adr/`: quattordici decisioni di progetto (ADR) in formato MADR, con indice.
