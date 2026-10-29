@@ -141,7 +141,7 @@ The complete guide is [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORM
    To influence the weight, the rhythm or the registers without touching the Director use the **hooks** (`SetWeightHook`, `SetRhythm`, `SetEventGuard`, `RegisterTab`…): see "How the systems hook into the engine" in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 7. **Do not modify the files that another step is touching** (see the roadmap): if in doubt, open an issue.
 8. **Features that need the real client**: if you add behaviors to be verified in game, update [docs/G1_checklist.md](docs/G1_checklist.md) (in Italian) and state in the PR what you could not verify.
-9. **Update the documentation** in the same PR: `README.md` (English) **and** `README.it.md` (Italian) (commands, numbers, privacy, status), `PACK_FORMAT.md` if the pack API changes, `docs/ARCHITECTURE.md` and an ADR if the decision is new (and the ADR index), and the [CHANGELOG](CHANGELOG.md) in the "Unreleased" section, **in the group of your step** (not at the bottom).
+9. **Update the documentation** in the same PR: `README.md` (English) **and** `README.it.md` (Italian) (commands, numbers, privacy, status), `PACK_FORMAT.md` if the pack API changes, `docs/ARCHITECTURE.md` and an ADR if the decision is new (and the ADR index), and the [CHANGELOG](CHANGELOG.md) in the "Unreleased" section, **in the group of your step** (not at the bottom). **Also update the wiki pages in `docs/wiki/`** for any user-visible change (commands, settings, defaults, behavior, privacy, troubleshooting): they are the player's manual and the only source of the GitHub wiki. The `Docs rule` check enforces the CHANGELOG and docs part (section 8).
 
 ## 6. Tests
 
@@ -163,6 +163,8 @@ How to add tests:
 - `Tests/check_api.py` compares the functions and events used with the Forever API dump (it is skipped with a warning if the dump is not there); declare new event sources with **literal strings**, otherwise it does not see them.
 - `Tests/check_docs.py` loads the examples of the pack guide as external packs and checks that **all the relative links** of the Markdown files exist (anchors included). A broken link makes the tests fail.
 - The counts of phrases and packs are in `Tests/run_tests.py` and in `Tests/TestContent.lua`: if you add content, update them and report the numbers in the README and in the CHANGELOG.
+- `Tests/check_privacy.py` scans every tracked text file for email addresses (only GitHub noreply ones are allowed) and personal paths; `Tests/check_rules.py` tests the docs rule and the workflows (actions pinned to a commit, permissions declared). Both run inside `run_tests.py`.
+- **CI runs the same command** on every PR and on `main` ([section 8](#8-git-issues-and-pull-requests)): the Forever API dump is cloned into the runner only, so `check_api.py` is not skipped there. Locally, `AU_REQUIRE_API=1` makes a missing dump a failure too.
 - An offline test **does not prove the client**: state in the PR what remains to be verified in game ([G1](docs/G1_checklist.md)).
 
 ## 7. Lua and EmmyLua style
@@ -188,14 +190,20 @@ The full flow is in [ADR 0009](docs/adr/0009-git-flow-branch-pr-squash.md). In s
 
 1. **Branch** started from an up-to-date `main`: `step/sN-name` for steps, `docs/…` or `fix/…` for the rest.
 2. **Small commits, with messages in English** that say what and why.
-3. **Passing tests** before opening the PR.
+3. **Passing tests** before opening the PR (`Tests/run_tests.py`).
+   **Every step or fix PR updates, in the same PR: `CHANGELOG.md`, the affected docs and the affected wiki pages in `docs/wiki/`** ([section 5, point 9](#5-changing-the-code)). The PR template has the checklist.
 4. **Pull request to `main`**, with a title and description (in English) that summarize the change and **what has not been verified** (in particular everything that needs the real client).
 5. If it resolves an issue, write `Closes #N` in the description.
-6. **Squash merge**, with deletion of the branch.
+6. **CI must be green before merging**, then **squash merge**, with deletion of the branch (`gh pr merge --squash --delete-branch`). The checks are:
+   - **`Tests`** (workflow `CI`): the whole offline suite, including `check_api.py` and the docs, wiki and privacy checks;
+   - **`Docs rule`**: a PR that changes `AzerothUnspoken/` or `AzerothUnspoken_Example/` must also change `CHANGELOG.md` **and** at least one of `docs/` (wiki included), `README.md`, `README.it.md`, `AzerothUnspoken/PACK_FORMAT.md`. For a pure refactor or tests only, the owner or the session adds the label **`no-docs-needed`** and the check runs again.
+   `main` is protected: both checks are required (administrators included), no reviews are required, no force push, no deletion. Never merge red and never disable a check ([ADR 0022](docs/adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md)).
 7. **Never** `--force` on `main`, never rewrite published history, never skip hooks.
 8. If `main` changes while you work: update your branch, resolve the conflicts, repeat the tests.
 
 Text files have **LF line endings**: `.gitattributes` enforces it.
+
+**The wiki is never edited on GitHub.** The GitHub wiki is a mirror of `docs/wiki/`: after a merge to `main` that changes `docs/wiki/`, the workflow `Wiki sync` publishes it with `tools/sync_wiki.py` (as `github-actions[bot]`), and anything edited in the browser is overwritten. To change the manual, edit `docs/wiki/` in a pull request. A manual run is possible from Actions > Wiki sync > Run workflow.
 
 ## 9. What is not accepted
 
