@@ -29,6 +29,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0019](0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md) | Interlocutor and place: sources in priority order, weak tendencies, places by uiMapID | accepted |
 | [0020](0020-simulated-dialogue-and-real-dialogue-npc-alive.md) | NPC Alive: a simulated dialogue is not a real dialogue | accepted |
 | [0021](0021-story-arcs-micro-stories-without-game-effects.md) | Story Arcs: micro-stories that do not touch the game | accepted |
+| [0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md) | Automatic rules: CI, a docs check and the wiki sync | accepted |
 
 ## Pending decisions
 

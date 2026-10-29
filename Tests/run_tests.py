@@ -694,6 +694,8 @@ proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "c
 print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n")))
 if proc.stdout.startswith("SALTATO"):
     print("  AVVISO: controllo delle API saltato (dump non trovato)")
+    # in CI (AU_REQUIRE_API=1) un dump mancante è un errore: un controllo saltato non deve passare per verde
+    check(not os.environ.get("AU_REQUIRE_API"), "AU_REQUIRE_API: il dump delle API deve esserci (check_api.py è stato saltato)")
 else:
     check(proc.returncode == 0, "check_api.py: funzioni ed eventi usati presenti nel dump (o con eccezione motivata)")
 
@@ -722,6 +724,14 @@ proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "c
                       capture_output=True, text=True, encoding="utf-8")
 print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  esempio" not in l))
 check(proc.returncode == 0, "check_docs.py: esempi della guida ai pacchetti e link relativi validi")
+
+# 12) regole automatiche (R1): regola dei documenti per le PR, privacy dei file tracciati, forma dei workflow
+print("\nREGOLE DEL PROGETTO")
+for script in ("check_rules.py", "check_privacy.py"):
+    proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, script)],
+                          capture_output=True, text=True, encoding="utf-8")
+    print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  " not in l))
+    check(proc.returncode == 0, f"{script}: regole del progetto rispettate")
 
 print("\n" + ("TUTTI I CONTROLLI SUPERATI" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
 sys.exit(1 if FAILURES else 0)

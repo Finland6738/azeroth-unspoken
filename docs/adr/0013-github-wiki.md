@@ -18,7 +18,7 @@ Facts verified on 2026-10-29:
 2. **The wiki is a user manual for players**, in English: installation, the wizard, every command and setting with defaults, every feature, privacy, troubleshooting, FAQ, glossary, and how to report bugs and feedback. It contains **no developer content** (no code internals, APIs, tests, git or build) and **no sensitive data** (no personal paths, names, emails or account names). It links once to the repository; the pack-writing guide stays in `AzerothUnspoken/PACK_FORMAT.md` and is only linked.
 3. **Publishing: `tools/sync_wiki.py`.** It clones the wiki repository, copies `docs/wiki/*.md` with a "generated from docs/wiki, do not edit here" note at the top of every page, removes the pages that are no longer in `docs/wiki/`, commits with the repository's noreply identity and pushes. If the wiki repository does not exist yet, it explains how to create the first page and exits with code 2.
 4. **Checks** (`Tests/check_docs.py`): every link between wiki pages (`[[Text|Page]]`, `[text](Page#anchor)`) resolves to a page and an anchor in `docs/wiki/`, every page is in `_Sidebar.md`, and no page contains an email address, a personal path, CRLF line endings or a word from a list of developer terms.
-5. **Editing rule.** A change to the addon's behavior updates `docs/wiki/` in the same PR. The automatic sync on every merge to `main` and the CI check that enforces the rule are task **R1**, not part of this decision's first implementation.
+5. **Editing rule.** A change to the addon's behavior updates `docs/wiki/` in the same PR. The automatic sync on every merge to `main` and the CI check that enforces the rule are task **R1**, decided in [ADR 0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md): the `Wiki sync` workflow runs `tools/sync_wiki.py` on every push to `main` that changes `docs/wiki/`, and the wiki is never edited on GitHub.
 6. **Developer documentation stays in `docs/`**, `README.md`, `CONTRIBUTING.md` and `CHANGELOG.md`, as before.
 
 ## Alternatives considered
@@ -30,7 +30,7 @@ Facts verified on 2026-10-29:
 ## Consequences
 
 - Positive: players get a complete manual with navigation; there is still a single source, reviewed and tested with the code.
-- Negative: the manual must be kept in step with every change of behavior (to be enforced by R1); until R1, publishing is a manual run of `tools/sync_wiki.py`.
+- Negative: the manual must be kept in step with every change of behavior (enforced by the PR checklist and the docs rule of R1, [ADR 0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md)); publishing is automatic on every merge to `main` (a manual run of `tools/sync_wiki.py` is still possible).
 - The first publication needs one manual step by the owner: create the first wiki page in the browser, once.
 
 ## History

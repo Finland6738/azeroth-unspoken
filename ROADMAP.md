@@ -57,12 +57,23 @@ Where the GDD and this file disagree, this file prevails.
 2. Small, readable commits during the work, with messages in English.
 3. At the end, with the tests passing:
    - `git push -u origin <branch>`;
-   - `gh pr create --base main`, with a title and description that summarize the step and what was not verified;
+   - `gh pr create --base main`, with a title and description that summarize the step and what was not verified (the PR template has the checklist);
+   - wait for CI to be green (`gh pr checks <number> --watch`);
    - `gh pr merge --squash --delete-branch`, without asking for confirmation.
 4. After the merge, update the installation in `AddOns` with the files from `main`.
 5. Never `--force` on `main`, never rewrite already published history, never skip the hooks.
 6. If the merge fails because of conflicts: align the branch with `main`, resolve, repeat the tests and then merge.
    If that does not work, leave the PR open and explain the problem in the report.
+
+### Documentation and CI rules (task R1, [ADR 0022](docs/adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md))
+
+- **Every step or fix PR updates, in the same PR:**
+  1. `CHANGELOG.md` (the "Unreleased" section, in the group of the step or fix);
+  2. the affected documents: `docs/ARCHITECTURE.md`, an ADR (and the index) if a decision changed, `AzerothUnspoken/PACK_FORMAT.md` if the pack API changed, `README.md` and `README.it.md`, `docs/G1_checklist.md` if the behavior needs confirmation in game;
+  3. **the affected wiki pages in `docs/wiki/`** for any user-visible change (commands, settings, defaults, behavior, privacy, troubleshooting).
+- **The wiki is never edited on GitHub.** `docs/wiki/` is the only source; the workflow `Wiki sync` publishes it on every merge to `main` that changes `docs/wiki/` (or by hand: Actions > Wiki sync > Run workflow). A change made in the browser is overwritten.
+- **CI must be green before merging.** The workflow `CI` (job `Tests`) runs the whole offline suite on every PR and on `main`; the workflow `Docs rule` (job `Docs rule`) fails a PR that changes `AzerothUnspoken/` or `AzerothUnspoken_Example/` without also changing `CHANGELOG.md` and at least one of `docs/` (wiki included), `README.md`, `README.it.md`, `AzerothUnspoken/PACK_FORMAT.md`. The label **`no-docs-needed`** skips the docs rule, only for pure refactors or tests. `main` is protected: both checks must pass, no force push, no deletion; no reviews are required.
+- If CI fails, fix the cause and push again; never merge red, never skip a check, never disable the protection from a session.
 
 ### Language
 
@@ -87,7 +98,8 @@ Where the GDD and this file disagree, this file prevails.
   1. make the offline tests pass, adding tests for what was built;
   2. update the installation in `AddOns`;
   3. update in this file the step's status line and the notes for the next step;
-  4. honestly report what was not verified, in particular everything that requires the real client.
+  4. update CHANGELOG, the affected docs and the affected wiki pages in `docs/wiki/` in the same PR (see "Documentation and CI rules");
+  5. honestly report what was not verified, in particular everything that requires the real client.
 - User's environment: JetBrains WebStorm with the **EmmyLua** and **WoW Lua Language Server** plugins.
   - Annotate with EmmyLua (`---@class`, `---@field`, `---@param`, `---@return`) the public APIs, modules and data structures (context, line, configuration, relationship), so that the IDE completes and type-checks.
   - Every new global variable of the addon (SavedVariables, `SLASH_*`, `BINDING_*`, key functions) must be added to `diagnostics.globals` in `.luarc.json`.
@@ -140,7 +152,7 @@ By the user's decision (2026-10-29), development proceeds without waiting for G1
 | P1 | Privacy cleanup: author email and local paths removed from the files and from the git history (rewrite and force-push, coordinated when no step branch is open); noreply identity for every commit | main session | done on 2026-10-29: personal paths removed from the files (76c8064), noreply identity for future commits, install script with `tools/local.ini`. The git history **stays unchanged** by the user's choice |
 | L1 | English as the default language of the project documentation: README.md in English (with README.it.md), ROADMAP, ADRs, architecture, pack format guide, CONTRIBUTING, CHANGELOG. From then on, PRs, issues and commits are in English. The user's in-game checklists also stay in Italian | Sonnet · high | done on 2026-10-29 (README.md in English with README.it.md and a "Support and feedback" section; ROADMAP, 21 ADRs with English slugs, `docs/ARCHITECTURE.md`, `docs/REFERENCES.md`, `AzerothUnspoken/PACK_FORMAT.md`, CONTRIBUTING, CHANGELOG, `docs/README.md` in English; language rule added; `docs/G1_checklist.md` and the GDD stay in Italian; existing code comments are not rewritten) |
 | W1 | GitHub wiki: user manual in English, exhaustive and non-technical, written in `docs/wiki/` and published to the wiki. No sensitive data, no developer content. Includes a "Reporting bugs and feedback" page: issue forms (`.github/ISSUE_TEMPLATE/`) and the Feedback category of GitHub Discussions | Opus · medium | done on 2026-10-29: 21 pages plus sidebar and footer in `docs/wiki/`, `tools/sync_wiki.py`, wiki checks in `Tests/check_docs.py`, ADR 0013 revised. **Not yet published**: the wiki repository exists only after the owner creates the first page in the browser ([#76](https://github.com/Finland6738/azeroth-unspoken/issues/76)); then run `python tools/sync_wiki.py`. Mismatches found: [#77](https://github.com/Finland6738/azeroth-unspoken/issues/77) |
-| R1 | Automatic rules: CI with the tests on every PR, a docs check that blocks a PR changing the addon without updating CHANGELOG and docs/wiki, wiki synced from `docs/wiki/` on every merge to main, PR template | Sonnet · high | to do, after W1 |
+| R1 | Automatic rules: CI with the tests on every PR, a docs check that blocks a PR changing the addon without updating CHANGELOG and docs/wiki, wiki synced from `docs/wiki/` on every merge to main, PR template | Sonnet · high | done on 2026-10-29: workflows `CI` (job `Tests`), `Docs rule` and `Wiki sync` in `.github/workflows/`, `tools/check_pr_docs.py`, `Tests/check_rules.py` and `Tests/check_privacy.py`, PR template, label `no-docs-needed`, rules written in this file and in CONTRIBUTING, [ADR 0022](docs/adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md); branch protection on `main` requires `Tests` and `Docs rule` (see ADR 0022). The wiki repository already exists (#76 closed): the first run of `Wiki sync` on `main` is the first real proof that the workflow token can push to it |
 
 ### GitHub issues
 

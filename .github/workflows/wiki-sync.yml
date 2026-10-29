@@ -1,0 +1,43 @@
+name: Wiki sync
+
+# docs/wiki is the only source of the GitHub wiki (ADR 0013): the wiki is never edited on GitHub. Every push to main
+# that changes docs/wiki publishes it with tools/sync_wiki.py. Manual run: Actions > Wiki sync > Run workflow.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/wiki/**"
+      - "tools/sync_wiki.py"
+      - ".github/workflows/wiki-sync.yml"
+  workflow_dispatch:
+
+# contents: write lets the workflow token push to the wiki repository of this repository.
+permissions:
+  contents: write
+
+# One sync at a time, in order: a later run waits for the earlier one instead of cancelling it.
+concurrency:
+  group: wiki-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Sync docs/wiki to the wiki
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      # Commits as github-actions[bot]. If the wiki repository does not exist yet, the script warns and exits 0.
+      - name: Publish docs/wiki
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -I -X utf8 tools/sync_wiki.py --warn-if-missing

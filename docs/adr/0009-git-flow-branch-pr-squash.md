@@ -33,7 +33,7 @@ The project is developed in steps, one at a time, often by different work sessio
 
 - Positive: one PR per step with its honest report; readable `main`; unverified things are declared.
 - Negative: squash loses the intermediate commits (they stay in the PR); discipline is needed to avoid leaving branches open for a long time.
-- **There is no continuous integration yet**: tests are run by hand before the PR (see [ADR 0007](0007-offline-tests-with-lupa-and-mock.md)). Adding it is a possible improvement.
+- **Continuous integration** (task R1, [ADR 0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md)): the tests run on every PR and `main` is protected, so a merge needs the checks `Tests` and `Docs rule` to be green. The tests are still run by hand before the PR (see [ADR 0007](0007-offline-tests-with-lupa-and-mock.md)). Every step or fix PR updates CHANGELOG, docs and the wiki pages in `docs/wiki/` in the same PR.
 - If `main` is already checked out in another worktree, `gh pr merge` may fail to do the local checkout: the merge on GitHub has happened anyway, and must be verified there.
 
 ## References
