@@ -35,6 +35,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 ---@field source? "user"|"auto" giocatori: chi l'ha aggiunto
 ---@field today? table contatori del giorno (NPC): { day, n = { fonte = n }, gain = { fonte = { asse = x } } }
 ---@field decayDay? integer giorno dell'ultimo decadimento (NPC)
+---@field talks? integer dialoghi ambientali aperti con questo NPC (S8)
 ---@field noted? table<string, boolean> etichette già ricordate nel diario
 ---@field traits? AUTraits personalità dell'interlocutore scelta dall'utente (S6c: temperament, morality, goals, speech)
 ---@field role? string ruolo dell'interlocutore (S6c)
@@ -476,6 +477,7 @@ local function CleanRecord(rec, kind)
 	end
 	if kind == "npc" then
 		if IsNumber(rec.decayDay) then out.decayDay = math.floor(rec.decayDay) end
+		if IsNumber(rec.talks) and rec.talks > 0 then out.talks = math.floor(rec.talks) end
 		local t = rec.today
 		if type(t) == "table" and IsNumber(t.day) and type(t.n) == "table" and type(t.gain) == "table" then
 			local today = { day = math.floor(t.day), n = {}, gain = {} }

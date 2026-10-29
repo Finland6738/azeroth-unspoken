@@ -74,12 +74,16 @@ for f in ("Data\\RegistryCombat.lua", "Data\\RegistryClasses.lua", "Data\\itIT\\
           "Data\\RegistrySoul.lua", "Data\\itIT\\Soul.lua", "Data\\enUS\\Soul.lua", "Systems\\LivingMemory.lua",
           "UI\\JournalFrame.lua", "Data\\RegistryMemory.lua", "Data\\itIT\\Memory.lua", "Data\\enUS\\Memory.lua"):
     check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2, S5)")
+for f in ("Systems/NPCAlive.lua", "UI/DialogueFrame.lua", "Data/Dialogues.lua", "Data/RegistryDialogues.lua",
+          "Data/itIT/Dialogues.lua", "Data/enUS/Dialogues.lua", "Data/itIT/NPCUI.lua", "Data/enUS/NPCUI.lua"):
+    check(f.replace("/", chr(92)) in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (NPC Alive, S8)")
 for f in ("Systems/Relationships.lua", "UI/RelationsFrame.lua", "Data/Relationships.lua", "Data/RegistryRelations.lua",
           "Data/itIT/Relations.lua", "Data/enUS/Relations.lua", "Data/itIT/RelationsUI.lua", "Data/enUS/RelationsUI.lua"):
     check(f.replace("/", chr(92)) in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (relazioni, S6b)")
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
+check('name="AZEROTHUNSPOKEN_NPC"' in bindings and "AzerothUnspoken_NPCDialogue()" in bindings, "tasto del dialogo ambientale in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_REROLL"' in bindings and "AzerothUnspoken_Reroll()" in bindings, "tasto 'un'altra' in Bindings.xml")
 for f in toc_files(ADDON, ADDON_NAME):
     check(os.path.isfile(os.path.join(ADDON, f.replace("\\", "/"))), f"file del .toc esistente: {f}")
@@ -412,7 +416,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestContent"):
+             "TestOtherPlace", "TestNPCAlive", "TestContent"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
@@ -542,6 +546,61 @@ check(ctx_label == "fratello di spada", "relazioni: dopo /reload il contesto usa
 rl4, rn4 = load_addon(saved_global_r, '{schemaVersion=4,relationships={npcs="x",players={[5]=1}}}', with_example=False)
 check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "relazioni: dati rovinati migrati")
 check(not any("relations" in str(e.message) for e in rn4.Diagnostics.errors.values()), "relazioni: dati rovinati senza errori fatali")
+print("  ok" if not FAILURES else "")
+
+
+# 9d) persistenza dei dialoghi ambientali (S8): i flag e il ricordo sopravvivono a /reload, il dialogo no
+print("\nPERSISTENZA DEI DIALOGHI AMBIENTALI (/reload simulato)")
+dl1, dn1 = load_addon(with_example=False, zone="Elwynn Forest")
+dg1 = dl1.globals()
+dg1.P.npc = dl1.eval("{ name = 'Innkeeper Farley', guid = 'Creature-0-3134-0-6-295-0000A2E9A1', sex = 2, reaction = 5 }")
+dg1.ADVANCE(20)
+dg1.FIRE("GOSSIP_SHOW")
+check(dl1.eval("function() return AzerothUnspoken.NPCAlive.state end")() == "offered", "dialoghi: l'offerta compare dal gossip di un NPC del registro")
+dl1.execute("""
+    local N = AzerothUnspoken.NPCAlive
+    N:Open()
+    _G.FIRST_LINE = N.session.line.text
+    N:Choose(1)    -- «Che notizie corrono?»
+    N:Choose(1)    -- «Dimmi di più.»
+    _G.SECOND_LINE = N.session.line.text
+    N:Close()
+""")
+first_line, second_line = dg1.FIRST_LINE, dg1.SECOND_LINE
+check(dl1.eval("function() return AzerothUnspoken.LivingMemory:HasFlag('npcd_innkeeper_asked_news') end")(), "dialoghi: il flag è impostato")
+saved_char_d = dl1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_d = dl1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+epoch_d = dg1.FAKE_EPOCH
+check("npcd_innkeeper_asked_news" in saved_char_d and "npcd_innkeeper_asked_more" in saved_char_d, "dialoghi: i flag sono nelle SavedVariables")
+check("npc_talk" in saved_char_d, "dialoghi: il ricordo della chiacchierata è salvato")
+check(first_line not in saved_char_d and second_line not in saved_char_d, "dialoghi: nessuna battuta è salvata")
+check("Farley" not in saved_char_d.replace("Innkeeper Farley", ""), "dialoghi: il nome non è nel ricordo")
+dl2, dn2 = load_addon(saved_global_d, saved_char_d, with_example=False, epoch=epoch_d + 120, zone="Elwynn Forest")
+check(dl2.eval("function() return AzerothUnspoken.LivingMemory:HasFlag('npcd_innkeeper_asked_news') end")(), "dialoghi: il flag dopo /reload")
+check(dl2.eval("function() return AzerothUnspoken.LivingMemory:HasFlag('npcd_innkeeper_asked_more') end")(), "dialoghi: il secondo flag dopo /reload")
+check(dl2.eval("function() return AzerothUnspoken.NPCAlive.state end")() == "idle", "dialoghi: dopo /reload nessun dialogo in corso")
+check(not dl2.eval("function() return AzerothUnspoken.DialogueFrame:GetFrame():IsShown() end")(), "dialoghi: la finestra è chiusa")
+check(dl2.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[295].talks end")() == 1, "dialoghi: la conversazione è contata nella relazione")
+dl2.globals().P.npc = dl2.eval("{ name = 'Innkeeper Farley', guid = 'Creature-0-3134-0-6-295-0000A2E9A1', sex = 2, reaction = 5 }")
+again = dl2.eval("""function()
+    local NS = AzerothUnspoken
+    local ctx = NS:BuildContext({ npcDialogue = true, otherSubject = { kind = 'npc', key = 'npc:295', npcID = 295 },
+        relationSubject = { kind = 'npc', id = 295 } })
+    local found = false
+    for _, p in ipairs(NS.Engine:Eligible(NS.Engine.byEvent.npcd_innkeeper_open, 'it', ctx, 'say', time())) do
+        if p.id == 'npcd.innkeeper.open.again1' then found = true end
+    end
+    return found
+end""")()
+check(again, "dialoghi: dopo /reload l'NPC ricorda che gli hai già chiesto le notizie")
+check(not any("npc" in str(e.message).lower() and "dialog" in str(e.message).lower() for e in dn2.Diagnostics.errors.values()),
+      "dialoghi: nessun errore dopo /reload")
+# un dialogo di prova non lascia traccia
+dl3, dn3 = load_addon(with_example=False, zone="Elwynn Forest")
+dl3.execute("local N = AzerothUnspoken.NPCAlive; N:Start(N:TestWho()); N:Choose(1); N:Choose(1); N:Close()")
+saved_char_t = dl3.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+check('["flags"]={}' in saved_char_t and "npc_talk" not in saved_char_t and "asked_news" not in saved_char_t,
+      "dialoghi: l'NPC di prova non scrive flag né ricordi")
 print("  ok" if not FAILURES else "")
 
 # 10) funzioni ed eventi usati contro il dump delle API di Forever (saltato con un avviso se il dump non c'è)

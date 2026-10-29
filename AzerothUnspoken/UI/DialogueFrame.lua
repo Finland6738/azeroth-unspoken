@@ -105,18 +105,18 @@ function F:Place(force)
 		if clear then return end
 	end
 	local candidates = self:Candidates(w, h)
-	local best, bestCount
+	local best, bestCount, clear
 	for _, c in ipairs(candidates) do
 		local rect = { left = c.left, bottom = c.bottom, width = w, height = h }
 		local n = 0
 		for _, r in ipairs(others) do if Overlap(rect, r) then n = n + 1 end end
-		if n == 0 then best = c; break end
+		if n == 0 then best, clear = c, true; break end
 		if not bestCount or n < bestCount then best, bestCount = c, n end
 	end
 	frame:ClearAllPoints()
 	if best then
 		frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", best.left, best.bottom)
-		self.placed = { left = best.left, bottom = best.bottom, w = w, h = h, clear = (bestCount == nil), saved = best.saved }
+		self.placed = { left = best.left, bottom = best.bottom, w = w, h = h, clear = clear == true, saved = best.saved }
 	else
 		-- schermo di dimensioni sconosciute: un ancoraggio a destra, dove Blizzard non mette le sue finestre di dialogo
 		frame:SetPoint("RIGHT", UIParent, "RIGHT", -60, 40)

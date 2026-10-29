@@ -301,8 +301,13 @@ function N:View()
 	local s = self.session
 	if not s or self.state == "idle" or self.state == "ended" then return { state = self.state } end
 	local who = s.who
-	local choices = {}
-	for i, c in ipairs(s.choices) do choices[i] = { id = c.id, text = c.text } end
+	local choices, lang = {}, NS:Lang()
+	for i, c in ipairs(s.choices) do
+		-- il testo si sceglie qui, nella lingua di adesso: un cambio di lingua a metà dialogo vale subito
+		local def = s.script.choices[c.id]
+		local label = def and (def.label[lang] or def.label.en or def.label.it)
+		choices[i] = { id = c.id, text = label or c.text }
+	end
 	return { state = self.state, name = who.name, role = who.role, test = who.kind == "test",
 		roleLabel = NS:L("role_" .. who.role), line = s.line and s.line.text, choices = choices,
 		canClose = true, seconds = math.max(0, s.deadline - GetTime()) }
@@ -318,6 +323,13 @@ function N:End(reason)
 	if not self:SetState("ended", reason) then return false end
 	if s and self.ACTIVE[was] and s.chosen > 0 and s.who.kind == "npc" then
 		self:Remember(s)
+		-- una conversazione vera (almeno una risposta) è contata nella relazione: la prossima non è più «la prima»
+		local R = NS.Relationships
+		local rec = R and R:Get("npc", s.who.npcID)
+		if rec then
+			rec.talks = (rec.talks or 0) + 1
+			R:Changed()
+		end
 	end
 	self.last = { reason = reason, chosen = s and s.chosen or 0, who = s and s.who, state = was }
 	self.session = nil
@@ -376,6 +388,9 @@ function N:Identify(hint)
 	if interaction and Compat.SafeCall("UnitExists", "npc") == true then
 		subject = { unit = "npc", interaction = { npcID = interaction.npcID, name = interaction.name, kind = interaction.kind,
 			t = interaction.t or GetTime() } }
+	elseif Compat.SafeCall("UnitExists", "npc") == true then
+		-- una finestra di un NPC è aperta ma non so chi sia (GUID segreto o illeggibile): lo si legge com'è, e resta incerto
+		subject = { unit = "npc" }
 	end
 	local ctx = NS:BuildContext({ otherSubject = subject })
 	local o = ctx.other
@@ -547,8 +562,8 @@ function N:Open()
 	if s.who.kind == "npc" then
 		-- l'interazione reale cambia la relazione e conta una volta; un dialogo di prova non scrive niente
 		local R = NS.Relationships
-		local rec = R and R:Get("npc", s.who.npcID)
-		s.first = rec == nil or (rec.count or 0) <= 1
+		local before = R and R:Get("npc", s.who.npcID)
+		s.first = before == nil or (before.talks or 0) == 0
 		if R then R:RecordNPC(s.who.npcID, s.who.name, "ambient", true) end
 	end
 	if not ShowNode(self, s, s.script.start) then
