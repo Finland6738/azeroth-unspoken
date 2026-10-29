@@ -1,51 +1,107 @@
--- Azeroth Unspoken: punto di aggancio del Narrative Director (GDD §4.2, §10).
--- Stato dello step S2: l'intensità (0-100) scala soltanto la probabilità e la pausa tra le frasi,
--- più il silenzio (intensità 0), la pausa immediata e i moduli attivi.
--- Lo step S4 sostituisce il corpo di Director:Evaluate (gate di opportunità, budget per categoria,
--- priorità, fattori P/S/R del peso) senza toccare i chiamanti: Systems/Triggers.lua e le future
--- fonti di eventi chiedono sempre a Evaluate se, e con quali moltiplicatori, possono intervenire.
+-- Azeroth Unspoken: il Narrative Director degli eventi spontanei (GDD §4.2, §6, §10).
+-- Le decisioni (gate, priorità, sospensione, pacing) sono in Engine/NarrativeDirector.lua ed Engine/Pacing.lua;
+-- qui si raccolgono i candidati di un momento, si sceglie al massimo un intervento e lo si passa al Chat Gateway.
+--
+--   Triggers: Fire(evento) -> Director:Offer -> (ARBITRATION s) -> Director:Resolve
+--     candidati in ordine di priorità -> contesto -> Evaluate (gate) -> dado -> Gateway:Narrate
+--     il primo che produce una frase vince, gli altri tacciono; nessuno = silenzio
+--
+-- Director:Evaluate resta il punto di aggancio di S2: le fonti future di eventi spontanei chiedono a lui.
+-- Le richieste esplicite (comandi, tasto, NS:Trigger) non passano di qui: ignorano pausa e intensità (GDD §4.2).
 local ADDON, NS = ...
 local Director = NS:RegisterModule("director")
 NS.Director = Director
+local ND, Pacing = NS.NarrativeDirector, NS.Pacing
 
 NS.paused = false     -- pausa immediata: vale solo per la sessione, non si salva
 
--- modulo del GDD §4.1 a cui appartiene ogni evento spontaneo (predefinito: personal)
-Director.EVENT_MODULE = {
-	zone = "world", travel = "world",
-}
+Director.EVENT_MODULE = ND.EVENT_MODULE
 
--- Moltiplicatori in base all'intensità: 50 = valori del prototipo, 0 = silenzio, 100 = il doppio.
----@class AUVerdict
----@field allow boolean
----@field reason? string disabled | paused | module:<nome> | silent
----@field chanceMul? number
----@field cooldownMul? number
+-- secondi in cui i candidati nati dallo stesso momento si contendono l'unico intervento
+Director.ARBITRATION = 0.1
+Director.LOG_SIZE = 12
+
+Director.queue = {}
+Director.log = {}       -- ultime decisioni, per /au debug: { time, event, result }
+local seq = 0
 
 ---@param intensity number 0-100
 ---@return number chanceMul
 ---@return number cooldownMul
 function Director:Scale(intensity)
-	intensity = math.max(0, math.min(100, tonumber(intensity) or 50))
-	return intensity / 50, 1.5 - intensity / 100
+	return ND:Scale(intensity)
 end
 
--- Valuta un evento spontaneo.
--- Restituisce { allow = true, chanceMul, cooldownMul } oppure { allow = false, reason }.
----Punto di aggancio del Narrative Director (S4).
+---Il gate di un evento spontaneo (punto di aggancio di S2): addon acceso, pausa, moduli, intensità,
+---schermate invasive, combattimento impegnativo, pause, budget. Non tira il dado.
 ---@param event string evento narrativo spontaneo
+---@param ctx? table contesto, se già costruito
 ---@return AUVerdict
-function Director:Evaluate(event)
+function Director:Evaluate(event, ctx)
+	return ND:Gate(event, ctx, GetTime())
+end
+
+local function Log(event, result)
+	table.insert(Director.log, { time = GetTime(), event = event, result = result })
+	while #Director.log > Director.LOG_SIZE do table.remove(Director.log, 1) end
+end
+
+---Propone un evento spontaneo. I candidati arrivati nello stesso momento si risolvono insieme.
+---@param event string
+---@param extra? table valori in più per il contesto
+function Director:Offer(event, extra)
+	seq = seq + 1
+	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event) })
+	if self.pendingResolve then return end
+	self.pendingResolve = true
+	if C_Timer and C_Timer.After then
+		C_Timer.After(self.ARBITRATION, function() Director:Resolve() end)
+	else
+		self:Resolve()
+	end
+end
+
+---Risolve i candidati in attesa: al massimo un intervento, il più importante che passa il gate e il dado.
+---@return string? event l'evento che ha parlato, oppure nil (silenzio)
+function Director:Resolve()
+	local list = self.queue
+	self.queue, self.pendingResolve = {}, false
+	ND:Order(list)
+	for _, c in ipairs(list) do
+		local ctx = NS:BuildContext(c.extra)
+		local verdict = self:Evaluate(c.event, ctx)
+		if not verdict.allow then
+			Log(c.event, verdict.reason)
+		elseif not ND:Roll(c.event, verdict) then
+			Log(c.event, "chance")
+		elseif NS.Gateway:Narrate(c.event, ctx, { auto = true }) then
+			Pacing:Record(c.event, verdict.category, GetTime())
+			Log(c.event, "spoken")
+			for _, other in ipairs(list) do
+				if other ~= c and other.done == nil then Log(other.event, "outranked") end
+			end
+			return c.event
+		else
+			Log(c.event, "no_phrase")
+		end
+		c.done = true
+	end
+	return nil
+end
+
+---Riepilogo per /au debug.
+---@return string
+function Director:Status()
 	local db = NS.db
-	if not db or not db.enabled then return { allow = false, reason = "disabled" } end
-	if NS.paused then return { allow = false, reason = "paused" } end
-	local module = self.EVENT_MODULE[event] or "personal"
-	if db.modules[module] == false then return { allow = false, reason = "module:" .. module } end
-	if db.intensity <= 0 then return { allow = false, reason = "silent" } end
-	local chanceMul, cooldownMul = self:Scale(db.intensity)
-	-- i momenti importanti (morte, livello...) non diventano più rari sotto il valore medio
-	if NS.BYPASS_GLOBAL and NS.BYPASS_GLOBAL[event] then chanceMul = math.max(chanceMul, 1) end
-	return { allow = true, chanceMul = chanceMul, cooldownMul = cooldownMul }
+	local parts = {}
+	local budget = Pacing:Status(GetTime(), db and db.intensity or 50)
+	for _, cat in ipairs(NS.Engine.SortedKeys(budget)) do table.insert(parts, cat .. " " .. budget[cat]) end
+	local last = {}
+	for i = #self.log, math.max(1, #self.log - 4), -1 do
+		local e = self.log[i]
+		table.insert(last, e.event .. "=" .. e.result)
+	end
+	return ("budget %s; last %s"):format(table.concat(parts, ", "), #last > 0 and table.concat(last, ", ") or "-")
 end
 
 ---------------------------------------------------------------------------

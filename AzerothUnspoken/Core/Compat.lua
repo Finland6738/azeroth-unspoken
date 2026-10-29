@@ -248,6 +248,25 @@ function Compat:OpenChatWith(text, channel)
 	return false, "no_chat_box"
 end
 
+-- Schermate invasive (GDD §4.2): il narratore tace durante filmati e cinematiche. InCinematic e
+-- IsInCinematicScene sono nel dump di Forever; i frame sono di FrameXML e si controllano solo se esistono.
+Compat.INVASIVE_FRAMES = { "CinematicFrame", "MovieFrame" }
+
+---Nome della schermata invasiva aperta, oppure nil.
+---@return string?
+function Compat:InvasiveScreen()
+	if Compat.SafeCall("InCinematic") == true then return "cinematic" end
+	if Compat.SafeCall("IsInCinematicScene") == true then return "cinematicScene" end
+	for _, name in ipairs(self.INVASIVE_FRAMES) do
+		local f = _G[name]
+		if type(f) == "table" and type(f.IsShown) == "function" then
+			local ok, shown = pcall(f.IsShown, f)
+			if ok and shown == true then return name end
+		end
+	end
+	return nil
+end
+
 function Compat:GetSpellName(spellID)
 	if spellID == nil or IsSecret(spellID) then return nil end
 	local name = Compat.SafeCall(C_Spell and C_Spell.GetSpellName, spellID)
@@ -272,6 +291,7 @@ local APIS = {
 	{ "UnitGUID" }, { "UnitHealth" }, { "UnitCreatureType" }, { "UnitClassification" },
 	{ "GetRealZoneText" }, { "GetSubZoneText" }, { "C_Map.GetBestMapForUnit" },
 	{ "GetGameTime" }, { "IsInInstance" }, { "C_GossipInfo.GetText" },
+	{ "InCinematic" }, { "IsInCinematicScene" },
 }
 
 function Compat:Probe()

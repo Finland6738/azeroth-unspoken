@@ -107,6 +107,7 @@ function Diagnostics:Report(verbose)
 				g.mode, g.effective, tostring(g.autoPublicSay), g.channel, tostring(g.pending), g.total, g.lastMinute,
 				g.lastMinuteAuto, tostring(g.lastRefusal)))
 		end
+		if NS.Director and NS.Director.Status then Add("Narrative Director: " .. NS.Director:Status()) end
 		for _, issue in ipairs(NS.Config.issues or {}) do Add("  config: " .. issue) end
 	else
 		Add(NS:L("debug_no_db"))

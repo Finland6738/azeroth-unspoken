@@ -20,9 +20,12 @@ Core\ContextResolver.lua
 # --- motore narrativo (non contiene testi) ---
 Engine\PhraseRegistry.lua
 Engine\RuleEngine.lua
+Engine\StyleResolver.lua
 Engine\WeightedSelector.lua
 Engine\TemplateRenderer.lua
 Engine\Validator.lua
+Engine\Pacing.lua
+Engine\NarrativeDirector.lua
 
 # --- integrazioni e uscita ---
 Integration\TotalRP3.lua
