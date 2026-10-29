@@ -46,6 +46,15 @@ function ADVANCE(s)
 	now = to
 end
 function PENDING_TIMERS() return #timers end
+-- Salta un lungo intervallo (ore, giorni) senza eseguire i timer periodici uno a uno: gli intervalli si rimettono in
+-- fase. I timer semplici ancora in attesa scadono al prossimo ADVANCE.
+function LEAP(s)
+	now = now + s
+	FAKE_EPOCH = FAKE_EPOCH + s
+	for _, t in ipairs(timers) do
+		if t.interval then t.at = now + t.interval end
+	end
+end
 
 -- versione del client
 WOW_PROJECT_MAINLINE, WOW_PROJECT_CLASSIC, WOW_PROJECT_CAMELOT = 1, 2, 14
@@ -284,6 +293,26 @@ date = os.date
 STANDARD_TEXT_FONT = "Fonts/FRIZQT__.TTF"
 function IsInGuild() return P.guild or false end
 SlashCmdList = {}
+
+-- Serializza una tabella in testo Lua, come il client fa con le SavedVariables alla chiusura o a /reload:
+-- loadstring("return " .. SERIALIZE(t))() la riporta in vita in un runtime nuovo. Chiavi in ordine, cicli non ammessi.
+function SERIALIZE(v)
+	local t = type(v)
+	if t == "string" then return string.format("%q", v) end
+	if t == "number" or t == "boolean" or t == "nil" then return tostring(v) end
+	if t ~= "table" then error("SERIALIZE: tipo non ammesso " .. t) end
+	local keys = {}
+	for k in pairs(v) do table.insert(keys, k) end
+	table.sort(keys, function(a, b)
+		if type(a) == type(b) and (type(a) == "number" or type(a) == "string") then return a < b end
+		return type(a) < type(b)
+	end)
+	local out = {}
+	for _, k in ipairs(keys) do
+		table.insert(out, "[" .. SERIALIZE(k) .. "]=" .. SERIALIZE(v[k]))
+	end
+	return "{" .. table.concat(out, ",") .. "}"
+end
 
 -- piccolo framework per i test in Lua (Tests/Test*.lua)
 T = { passed = 0, failed = 0, failures = {} }
