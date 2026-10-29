@@ -105,7 +105,9 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	"CONFIRM_BINDER", "GROUP_ROSTER_UPDATE", "TRADE_SHOW", "CHAT_MSG_WHISPER_INFORM",
 	-- interlocutore e luogo (S6c)
 	"ENCOUNTER_START", "ENCOUNTER_END", "UPDATE_BATTLEFIELD_STATUS", "BANKFRAME_OPENED", "DUEL_REQUESTED",
-	"PARTY_INVITE_REQUEST", "CHAT_MSG_TEXT_EMOTE" }) do
+	"PARTY_INVITE_REQUEST", "CHAT_MSG_TEXT_EMOTE",
+	-- azioni protette bloccate (#55)
+	"ADDON_ACTION_FORBIDDEN", "ADDON_ACTION_BLOCKED" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -148,8 +150,10 @@ function UnitHealth(u) local t = Subject(u); return t and t.hp end
 function UnitHealthMax(u) local t = Subject(u); return t and t.hpMax end
 function UnitAffectingCombat(u) if u == "player" then return P.combat end local t = Subject(u); return t and t.combat or false end
 function InCombatLockdown() return P.combat end
-function UnitIsDeadOrGhost(u) local t = Subject(u); return t and t.dead or false end
-function UnitIsGhost() return false end
+-- P.dead: morto, col corpo a terra; P.ghost: spirito rilasciato (fantasma). Un fantasma non è "dead" per UnitIsDead,
+-- ma UnitIsDeadOrGhost lo conta: è il caso di PLAYER_UNGHOST (#56)
+function UnitIsDeadOrGhost(u) local t = Subject(u); return t and (t.dead or t.ghost) or false end
+function UnitIsGhost(u) local t = Subject(u or "player"); return t and t.ghost == true or false end
 function UnitIsDead(u) local t = Subject(u); return t and Identity(u, t.dead or false) end
 function IsResting() return P.resting or false end
 function IsIndoors() return false end
@@ -241,13 +245,32 @@ C_Timer = {
 	end,
 }
 CHAT_LOCKDOWN = false
+-- Un'azione protetta chiamata senza il gesto del giocatore non solleva un errore Lua nel client (#55): la chiamata non
+-- ha effetto, compare il popup e parte ADDON_ACTION_FORBIDDEN o ADDON_ACTION_BLOCKED (isTainted, function).
+-- BLOCKED_SENDS conta gli invii bloccati; SEND_RAISES = true imita invece un errore Lua vero del client;
+-- BLOCK_EVENT_LATE = true consegna l'evento dopo il ritorno della chiamata (al prossimo giro del timer).
+BLOCKED_SENDS = 0
+SEND_RAISES = false
+BLOCK_EVENT_LATE = false
+BLOCK_EVENT = "ADDON_ACTION_FORBIDDEN"   -- o ADDON_ACTION_BLOCKED: il client ne manda uno (non si sa quale, da G1)
+local function BlockSend(funcName)
+	BLOCKED_SENDS = BLOCKED_SENDS + 1
+	local function Notify()
+		FIRE(BLOCK_EVENT, "AzerothUnspoken", funcName)
+	end
+	if BLOCK_EVENT_LATE then C_Timer.After(0, Notify) else Notify() end
+end
 C_ChatInfo = {
 	SendChatMessage = function(text, kind)
+		if SEND_RAISES then error("errore Lua del client") end
 		-- ipotesi prudente (da confermare in G1): senza un gesto del giocatore passano solo le emote
 		-- e, nelle istanze, /say e /yell; i canali di gruppo, di gilda e /say nel mondo aperto no
 		if kind ~= "EMOTE" and not HW then
 			local openWorldSpeech = (kind == "SAY" or kind == "YELL") and P.instance
-			if not openWorldSpeech then error("ADDON_ACTION_FORBIDDEN") end
+			if not openWorldSpeech then
+				BlockSend("SendChatMessage")
+				return
+			end
 		end
 		table.insert(SENT, kind .. ": " .. text)
 	end,

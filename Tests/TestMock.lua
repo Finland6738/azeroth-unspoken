@@ -134,22 +134,47 @@ T.run("SendChatMessage: senza gesto passano solo le emote (e /say, /yell nelle i
 	HW = false
 	P.instance = false
 	SENT = {}
-	T.ok(pcall(send, "e", "EMOTE"), "EMOTE senza gesto passa")
-	for _, kind in ipairs({ "SAY", "YELL", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }) do
-		T.ok(not pcall(send, "x", kind), kind .. " senza gesto: ADDON_ACTION_FORBIDDEN")
+	-- come nel client (#55): l'invio vietato non solleva un errore Lua, non ha effetto, conta un blocco e fa partire
+	-- ADDON_ACTION_FORBIDDEN con il nome della funzione
+	local heard = {}
+	local f = CreateFrame("Frame")
+	f:RegisterEvent("ADDON_ACTION_FORBIDDEN")
+	f:RegisterEvent("ADDON_ACTION_BLOCKED")
+	f:SetScript("OnEvent", function(_, ev, who, fn) table.insert(heard, ev .. ":" .. tostring(who) .. ":" .. tostring(fn)) end)
+	local function Out()   -- i messaggi usciti in chat (non le stampe dell'addon)
+		local n = 0
+		for _, s in ipairs(SENT) do if s:sub(1, 6) ~= "PRINT:" then n = n + 1 end end
+		return n
 	end
+	local function Blocked(kind)
+		local n, sent = BLOCKED_SENDS, Out()
+		T.ok(pcall(send, "x", kind), kind .. ": nessun errore Lua")
+		return BLOCKED_SENDS == n + 1 and Out() == sent
+	end
+	T.ok(pcall(send, "e", "EMOTE") and SENT[1] == "EMOTE: e", "EMOTE senza gesto passa")
+	for _, kind in ipairs({ "SAY", "YELL", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }) do
+		T.ok(Blocked(kind), kind .. " senza gesto: bloccato in silenzio")
+	end
+	T.eq(#heard, 6, "un evento per ogni invio bloccato")
+	T.eq(heard[1], "ADDON_ACTION_FORBIDDEN:AzerothUnspoken:SendChatMessage", "evento con l'addon e la funzione")
 	P.instance = true
 	T.ok(pcall(send, "x", "SAY"), "SAY in istanza passa")
 	T.ok(pcall(send, "x", "YELL"), "YELL in istanza passa")
 	for _, kind in ipairs({ "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }) do
-		T.ok(not pcall(send, "x", kind), kind .. " in istanza senza gesto: bloccato")
+		T.ok(Blocked(kind), kind .. " in istanza senza gesto: bloccato")
 	end
 	P.instance = false
 	HW = true
+	local before = BLOCKED_SENDS
 	for _, kind in ipairs({ "SAY", "YELL", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT", "EMOTE" }) do
 		T.ok(pcall(send, "x", kind), kind .. " con il gesto passa")
 	end
+	T.eq(BLOCKED_SENDS, before, "con il gesto nessun blocco")
 	HW = false
+	-- un errore Lua vero del client, a parte
+	SEND_RAISES = true
+	T.ok(not pcall(send, "x", "EMOTE"), "SEND_RAISES: errore Lua")
+	SEND_RAISES = false
 	SENT = {}
 end)
 
@@ -161,12 +186,14 @@ T.run("se il controllo del Gateway sparisse, il mock fermerebbe comunque i canal
 	NS.db.chat.floodSeconds = 1
 	Gateway.sendLog = {}
 	ADVANCE(10)
-	local before = ErrorCount()
+	local before, blocked, total = ErrorCount(), BLOCKED_SENDS, Gateway.sentTotal or 0
 	local ok, why = Gateway:Send("ciao", "PARTY")
-	T.ok(not ok and why == "error", "PARTY fuori da un gesto: il client (mock) rifiuta")
+	T.ok(not ok and why == "blocked", "PARTY fuori da un gesto: il client (mock) blocca, e l'addon se ne accorge")
 	ok, why = Gateway:Send("ciao", "YELL")
-	T.ok(not ok and why == "error", "YELL fuori da un gesto nel mondo aperto: rifiutato")
-	T.eq(ErrorCount(), before + 2, "registrati in diagnostica")
+	T.ok(not ok and why == "blocked", "YELL fuori da un gesto nel mondo aperto: bloccato")
+	T.eq(BLOCKED_SENDS, blocked + 2, "due invii bloccati dal client")
+	T.eq(Gateway.sentTotal or 0, total, "e non contati come inviati")
+	T.eq(ErrorCount(), before, "il blocco non è un errore Lua")
 	Gateway.CanSendWithoutAction = saved
 	P.group = false
 end)

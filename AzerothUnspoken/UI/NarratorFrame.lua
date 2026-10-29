@@ -218,6 +218,21 @@ function Narrator:NoteSent(channel)
 	if last and not last.sentTo then last.sentTo = channel; self:RefreshHistory() end
 end
 
+-- il client ha bloccato un invio che sembrava riuscito (#55): la frase non è partita e torna una proposta
+---@param channel string
+---@param proposal AUProposal
+function Narrator:NoteBlocked(channel, proposal)
+	local cur = self.current
+	if cur and cur.sentTo == channel then
+		cur.sentTo, cur.proposal = nil, proposal
+		self:Refresh()
+	end
+	for i = #self.history, math.max(1, #self.history - 3), -1 do
+		local h = self.history[i]
+		if h.sentTo == channel then h.sentTo = nil; self:RefreshHistory() break end
+	end
+end
+
 -- frase di prova, solo privata (wizard, impostazioni, /au narratore prova)
 function Narrator:ShowTest()
 	local ctx = NS:BuildContext()

@@ -337,6 +337,86 @@ T.run("protezione dal flood", function()
 	T.ok(Gateway:GetPending() ~= nil and Gateway:GetPending().channel == "EMOTE", "la terza è una proposta")
 end)
 
+-- #55: il client non solleva un errore per un invio protetto senza gesto: lo blocca in silenzio e manda
+-- ADDON_ACTION_FORBIDDEN. L'addon deve accorgersene: niente "inviato", proposta in attesa, rifiuto in diagnostica.
+T.run("invio bloccato in silenzio dal client (ADDON_ACTION_FORBIDDEN)", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway.blockedTotal = 0
+	local total = Gateway.sentTotal or 0
+	local before = #NS.Diagnostics.errors
+	-- 1) l'evento arriva dentro la chiamata
+	Gateway:Propose(Rec("say"), CTX, {})
+	HW = false   -- il Gateway crede a un'azione del giocatore, il client no
+	local ok, why
+	Gateway:PlayerAction(function() ok, why = Gateway:SendPending() end)
+	T.ok(not ok and why == "blocked", "SendPending: bloccato")
+	T.eq(Gateway.lastRefusal, "blocked", "last refusal = blocked")
+	T.eq(#Public(), 0, "nulla è uscito in chat")
+	T.ok(Gateway:GetPending() ~= nil, "la proposta resta in attesa")
+	T.eq(Gateway.sentTotal or 0, total, "non conta come inviata")
+	T.eq(Gateway.blockedTotal, 1, "un blocco contato")
+	T.eq(#NS.Diagnostics.errors, before, "e non è un errore Lua")
+	T.ok(T.sentContains("bloccato"), "il giocatore lo vede")
+	T.eq(Gateway:Status().blocked, 1, "in /au debug")
+	-- 2) l'evento arriva dopo il ritorno della chiamata: sembrava un invio riuscito
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway.blockedTotal = 0
+	total = Gateway.sentTotal or 0
+	BLOCK_EVENT_LATE = true
+	Gateway:Propose(Rec("say"), CTX, {})
+	Gateway:PlayerAction(function() ok, why = Gateway:SendPending() end)
+	T.ok(ok, "SendPending sembra riuscito")
+	T.ok(Gateway:GetPending() == nil and (Gateway.sentTotal or 0) == total + 1, "per un attimo: scartata e contata")
+	ADVANCE(1)
+	BLOCK_EVENT_LATE = false
+	T.eq(Gateway.lastRefusal, "blocked", "poi l'evento: last refusal = blocked")
+	T.ok(Gateway:GetPending() ~= nil and Gateway:GetPending().channel == "SAY", "la proposta torna in attesa")
+	T.eq(Gateway.sentTotal or 0, total, "il conteggio torna com'era")
+	T.eq(#Gateway.sendLog, 0, "e il registro del flood")
+	T.eq(#Public(), 0, "nulla è uscito")
+	-- si può riprovare, con un gesto vero
+	HW = true
+	local sent
+	Gateway:PlayerAction(function() sent = Gateway:SendPending() end)
+	HW = false
+	T.ok(sent and #Public() == 1, "con un gesto vero parte")
+	-- 3) invio automatico bloccato (guasto simulato del controllo del Gateway): diventa una proposta
+	Reset()
+	Auto()
+	NS.db.output.autoPublicSay = true
+	local saved = Gateway.CanSendWithoutAction
+	Gateway.CanSendWithoutAction = function() return true end
+	Gateway.blockedTotal = 0
+	total = Gateway.sentTotal or 0
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	Gateway.CanSendWithoutAction = saved
+	T.eq(#Public(), 0, "automatico: nulla in chat")
+	T.ok(Gateway:GetPending() ~= nil, "automatico: resta una proposta")
+	T.eq(Gateway.sentTotal or 0, total, "automatico: non contato")
+	T.eq(Gateway.blockedTotal, 1, "automatico: blocco contato")
+	-- 4) eventi che non ci riguardano
+	Reset()
+	Gateway.blockedTotal = 0
+	Gateway.lastRefusal = nil
+	FIRE("ADDON_ACTION_FORBIDDEN", "AltroAddon", "SendChatMessage")
+	FIRE("ADDON_ACTION_FORBIDDEN", "AzerothUnspoken", "CastSpellByName")
+	FIRE("ADDON_ACTION_BLOCKED", "AltroAddon", "UseAction")
+	T.eq(Gateway.blockedTotal, 0, "un altro addon, o un'altra funzione: ignorati")
+	T.eq(Gateway.lastRefusal, nil, "nessun rifiuto")
+	-- un nostro blocco senza un invio recente (arrivato tardi) si segnala comunque
+	FIRE("ADDON_ACTION_FORBIDDEN", "AzerothUnspoken", "SendChatMessage")
+	T.eq(Gateway.blockedTotal, 1, "un nostro blocco isolato si conta")
+	T.eq(Gateway.lastRefusal, "blocked", "e si segnala")
+	-- se il client manda entrambi gli eventi per lo stesso invio, si conta una volta sola
+	ADVANCE(5)
+	FIRE("ADDON_ACTION_FORBIDDEN", "AzerothUnspoken", "SendChatMessage")
+	FIRE("ADDON_ACTION_BLOCKED", "AzerothUnspoken", "SendChatMessage")
+	T.eq(Gateway.blockedTotal, 2, "due eventi dello stesso invio: un solo blocco")
+	Reset()
+end)
+
 T.run("blocco della chat, errori del client, testo vuoto e lunghezza", function()
 	Reset()
 	Gateway:SetMode("CONFIRM_TO_SEND")
@@ -348,10 +428,11 @@ T.run("blocco della chat, errori del client, testo vuoto e lunghezza", function(
 	T.ok(Gateway:GetPending() ~= nil, "resta in attesa")
 	CHAT_LOCKDOWN = false
 
-	-- il client rifiuta (qui: azione senza gesto vero): errore intercettato, proposta conservata
+	-- il client dà un errore Lua vero: intercettato, proposta conservata
 	local before = #NS.Diagnostics.errors
-	HW = false
+	SEND_RAISES = true
 	Gateway:PlayerAction(function() Gateway:SendPending() end)
+	SEND_RAISES = false
 	T.eq(Gateway.lastRefusal, "error", "errore del client")
 	T.eq(#NS.Diagnostics.errors, before + 1, "registrato in diagnostica")
 	T.ok(Gateway:GetPending() ~= nil, "la proposta si può riprovare")

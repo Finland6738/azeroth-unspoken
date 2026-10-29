@@ -66,7 +66,7 @@ end
 -- testo si mostrano solo se sono noti e non identificano una persona; qualunque altro testo (name, target, un
 -- campo aggiunto domani) esce come <nascosto>. Numeri e booleani non identificano nessuno.
 local SAFE_TEXT = { zone = true, subzone = true, unit = true, spell = true, state = true, restrictionType = true,
-	kind = true, encounterName = true, castGUID = true, id = true, from = true, to = true, source = true }
+	kind = true, encounterName = true, castGUID = true, id = true, from = true, to = true, source = true, func = true }
 -- campi sicuri solo per certi eventi (il nome di un flag narrativo non è una persona)
 local SAFE_TEXT_BY_TYPE = { MEMORY_FLAG = { name = true } }
 Diagnostics.HIDDEN = "<nascosto>"
@@ -116,9 +116,9 @@ function Diagnostics:Report(verbose)
 			tostring(NS.paused)))
 		if NS.Gateway then
 			local g = NS.Gateway:Status()
-			Add(("Chat Gateway: mode %s (effective %s), autoPublicSay %s, channel %s, pending %s, sent %d (last minute %d, auto %d), last refusal %s"):format(
+			Add(("Chat Gateway: mode %s (effective %s), autoPublicSay %s, channel %s, pending %s, sent %d (last minute %d, auto %d), blocked by the client %d, last refusal %s"):format(
 				g.mode, g.effective, tostring(g.autoPublicSay), g.channel, tostring(g.pending), g.total, g.lastMinute,
-				g.lastMinuteAuto, tostring(g.lastRefusal)))
+				g.lastMinuteAuto, g.blocked or 0, tostring(g.lastRefusal)))
 		end
 		if NS.Director and NS.Director.Status then Add("Narrative Director: " .. NS.Director:Status()) end
 		if NS.LivingMemory then Add("Living Memory: " .. NS.LivingMemory:Status()) end

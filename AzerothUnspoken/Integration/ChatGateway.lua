@@ -322,9 +322,9 @@ end
 ---Invia un testo in chat.
 ---@param text string
 ---@param channel string SAY | EMOTE | YELL | PARTY | RAID | GUILD | INSTANCE_CHAT
----@param opts? { auto: boolean }
+---@param opts? { auto: boolean, proposal: AUProposal }
 ---@return boolean ok
----@return string? reason empty | needs_action | channel_unavailable | flood | no_sender | lockdown | error
+---@return string? reason empty | needs_action | channel_unavailable | flood | no_sender | lockdown | blocked | error
 ---@return any? err
 function Gateway:Send(text, channel, opts)
 	opts = opts or {}
@@ -338,14 +338,68 @@ function Gateway:Send(text, channel, opts)
 	local send = Compat:GetChatSender()
 	if not send then return false, "no_sender" end
 	if Compat:InChatLockdown() then return false, "lockdown" end
+	-- Il client non solleva un errore Lua per un'azione protetta senza gesto: la chiamata non ha effetto e arriva
+	-- ADDON_ACTION_FORBIDDEN (#55). L'evento può essere consegnato dentro la chiamata (attempt.blocked) o dopo
+	-- (OnBlocked annulla l'invio già contato): in entrambi i casi la proposta resta in attesa.
+	local attempt = { time = GetTime(), channel = channel, auto = opts.auto and true or false, proposal = opts.proposal }
+	self.attempt = attempt
 	local good, err = pcall(send, Clip(text, NS.Config.CHAT_LIMITS[channel]), channel)
 	if not good then
+		self.attempt = nil
 		NS.Diagnostics:Error("chat", tostring(err))
 		return false, "error", err
 	end
+	if attempt.blocked then return false, "blocked" end
 	self:LogSend(opts.auto)
+	attempt.logged = true
 	return true
 end
+
+-- secondi entro cui un evento di azione bloccata si attribuisce all'ultimo invio
+Gateway.BLOCK_WINDOW = 2
+Gateway.blockedTotal = 0
+
+---Il client ha bloccato una funzione protetta (ADDON_ACTION_FORBIDDEN / BLOCKED, normalizzati dal bus). Se è il nostro
+---invio in chat: non è partito nulla, quindi si annulla il conteggio, la proposta torna in attesa e si segnala
+---(`last refusal = blocked` in /au debug), così l'ipotesi SP-05 si può smentire dalla diagnostica.
+---@param env table envelope ACTION_BLOCKED: context.func, context.ours
+function Gateway:OnBlocked(env)
+	local ctx = env.context or {}
+	if type(ctx.func) ~= "string" or not ctx.func:find("SendChatMessage", 1, true) then return end
+	local now = GetTime()
+	local a = self.attempt
+	-- il client può mandare sia FORBIDDEN sia BLOCKED per la stessa chiamata: un blocco solo
+	if a and a.blocked and now - a.time <= self.BLOCK_WINDOW then return end
+	-- durante la chiamata l'evento è sicuramente nostro; dopo, serve che nomini il nostro addon (altrimenti potrebbe
+	-- essere di un altro addon, appena dopo un nostro invio riuscito)
+	local recent = a and now - a.time <= self.BLOCK_WINDOW and (not a.logged or ctx.ours)
+	if not recent then
+		if not ctx.ours then return end   -- l'invio di un altro addon: non ci riguarda
+		if self.lastIsolatedAt and now - self.lastIsolatedAt < 0.2 then return end
+		self.lastIsolatedAt = now
+	end
+	self.blockedTotal = (self.blockedTotal or 0) + 1
+	self.lastRefusal = "blocked"
+	if not recent then
+		self:Report("blocked", "?")
+		return
+	end
+	a.blocked = true
+	if a.logged then
+		-- l'evento è arrivato dopo il ritorno della chiamata: l'invio era già stato contato e la proposta scartata
+		local log = self.sendLog
+		if #log > 0 then table.remove(log) end
+		self.sentTotal = math.max(0, (self.sentTotal or 1) - 1)
+		if a.proposal and not self.pending then
+			a.proposal.time = GetTime()
+			self.pending = a.proposal
+			if NS.Narrator and NS.Narrator.NoteBlocked then NS.Narrator:NoteBlocked(a.channel, a.proposal) end
+			self:Changed()
+		end
+		self:Report("blocked", a.channel)
+	end
+end
+NS.EventBus:Subscribe("ACTION_BLOCKED", "gateway", function(env) Gateway:OnBlocked(env) end)
 
 ---@param why string
 ---@param extra? string
@@ -415,7 +469,8 @@ end
 function Gateway:SendPending(text)
 	local p = self:GetPending()
 	if not p then return false, "empty" end
-	local ok, why, err = self:Send(self:TextFor(p.form, text or p.edited or p.text, p.channel, p.player), p.channel)
+	local ok, why, err = self:Send(self:TextFor(p.form, text or p.edited or p.text, p.channel, p.player), p.channel,
+		{ proposal = p })
 	if not ok then
 		self:Report(why, err)
 		return false, why
@@ -517,12 +572,21 @@ function Gateway:Propose(rec, ctx, opts)
 
 	if mode == "AUTO_ONLY_IF_ALLOWED" and opts.auto and NS.db.output.autoPublicSay
 		and self:CanSendWithoutAction(channel) then
-		local ok = self:Send(self:TextFor(rec.form, rec.text, channel, ctx and ctx.player), channel, { auto = true })
+		-- se il client blocca l'invio in silenzio (#55) la frase torna ad essere una proposta (OnBlocked)
+		local proposal = {
+			text = rec.text, display = rec.display, speaker = rec.speaker, event = rec.event, id = rec.id,
+			form = rec.form, channel = channel, time = GetTime(), player = ctx and ctx.player, ctx = ctx,
+			reviewed = opts.reviewed,
+		}
+		proposal.display = self:DisplayFor(proposal)
+		local ok, why = self:Send(self:TextFor(rec.form, rec.text, channel, ctx and ctx.player), channel,
+			{ auto = true, proposal = proposal })
 		if ok then
 			rec.sentTo = channel
 			if NS.Narrator then NS.Narrator:Present(rec) end
 			return true
 		end
+		if why == "blocked" then self:Report(why, channel) end
 	end
 
 	-- il resto è una proposta: serve un'azione del giocatore (tasto, pulsante, comando)
@@ -649,5 +713,6 @@ function Gateway:Status()
 		mode = self:GetMode(), effective = self:EffectiveMode(), autoPublicSay = NS.db.output.autoPublicSay,
 		channel = NS.db.chat.channel, pending = p and p.channel or nil,
 		lastMinute = n, lastMinuteAuto = nAuto, total = self.sentTotal or 0, lastRefusal = self.lastRefusal,
+		blocked = self.blockedTotal or 0,
 	}
 end

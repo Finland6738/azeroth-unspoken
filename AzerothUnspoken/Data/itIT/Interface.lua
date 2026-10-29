@@ -55,6 +55,7 @@ NS:RegisterLanguage("it", {
 		gw_no_sender = "il client non offre un modo per inviare in chat.",
 		gw_lockdown = "chat bloccata dal client in questo momento.",
 		gw_error = "invio non riuscito (%s).",
+		gw_blocked = "il client ha bloccato l'invio (%s): nulla è partito. La proposta resta qui, premi il pulsante o il tasto 'pronuncia' per riprovare.",
 		gw_review = "anteprima della proposta: %s\nPremi di nuovo per inviarla, oppure /au annulla.",
 		gw_expired = "la proposta non c'è più (scaduta, scartata o sostituita): nulla è stato inviato. Il tuo testo: %s",
 		gw_text_kept = "la proposta è sparita mentre la modificavi: nulla è stato inviato. Il tuo testo: %s",

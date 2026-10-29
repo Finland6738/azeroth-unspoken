@@ -272,6 +272,18 @@ EventBus:AddSource("UNIT_SPELLCAST_SUCCEEDED", { unit = "player", normalize = fu
 		{ key = castGUID, expect = { "spell" } }
 end })
 
+-- Un'azione protetta chiamata senza il gesto del giocatore non solleva un errore Lua: nel client non ha effetto e arrivano
+-- questi eventi (isTainted, function: nel dump, e nel client di solito il nome dell'addon). Il Chat Gateway li usa per
+-- accorgersi di un invio bloccato in silenzio (#55). Il contesto ha solo il nome della funzione e se è la nostra.
+local function ActionBlocked(who, func)
+	who, func = Compat.Readable(who), Compat.Readable(func)
+	func = type(func) == "string" and func:sub(1, 64) or nil
+	local ours = type(who) == "string" and who:find(ADDON, 1, true) ~= nil
+	return "ACTION_BLOCKED", { func = func, ours = ours }, { window = 0 }
+end
+EventBus:AddSource("ADDON_ACTION_FORBIDDEN", { normalize = ActionBlocked })
+EventBus:AddSource("ADDON_ACTION_BLOCKED", { normalize = ActionBlocked })
+
 EventBus:AddSource("ADDON_RESTRICTION_STATE_CHANGED", { normalize = function(restrictionType, state)
 	return "RESTRICTION_CHANGED", { restrictionType = restrictionType, state = state }
 end })
