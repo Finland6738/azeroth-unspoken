@@ -193,6 +193,9 @@ function NS:BuildContext(extra)
 	-- la memoria: solo ricordi veri (prima visita, ritorno, esito dell'ultima visita, flag). nil se il modulo è spento
 	-- (Systems/LivingMemory.lua); le condizioni di memoria sono allora sempre false.
 	if self.LivingMemory then ctx.memory = self.LivingMemory:Context(ctx) end
+	-- gli archi (S9, Systems/StoryArcs.lua): quali sono chiusi (condizione arcDone); la vista `ctx.arc` di un arco
+	-- la danno i suoi passi e le sue battute (extra.arc)
+	if self.StoryArcs then ctx.arcs = self.StoryArcs:Context() end
 
 	local h = SafeCall(GetGameTime)
 	ctx.hour = h

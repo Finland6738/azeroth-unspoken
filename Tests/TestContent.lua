@@ -222,9 +222,10 @@ end)
 
 T.run("#27: le frasi di base portano i tag del Character Soul", function()
 	local tagged, n, untagged = 0, 0, {}
-	-- le battute dei dialoghi ambientali (S8) sono dell'NPC e non del personaggio: i tag del Character Soul non le riguardano
+	-- le battute dei dialoghi ambientali (S8) sono dell'NPC e non del personaggio: i tag del Character Soul non le riguardano;
+	-- quelle degli archi (S9) seguono le scelte del giocatore (condizione arc.choice), non il carattere dedotto
 	for id, p in pairs(BASE) do
-		if p.pack ~= "base_dialogues" then n = n + 1 end
+		if p.pack ~= "base_dialogues" and p.pack ~= "base_arcs" then n = n + 1 end
 		local scoped = false
 		for tag in pairs(p.tags) do
 			if type(tag) == "string" and (tag:find("^rel%.") or tag:find("^other%.") or tag:find("^place%.")) then scoped = true end

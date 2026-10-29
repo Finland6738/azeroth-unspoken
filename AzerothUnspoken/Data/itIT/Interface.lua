@@ -186,6 +186,7 @@ NS:RegisterLanguage("it", {
 			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
 			.. "/au anima [lista|neutro|archetipo <id>|trp3 on|off|<tratto> <valore>|evita <argomento>] - personalità del personaggio\n"
 			.. "/au diario [lista|luoghi|flag <nome>|esporta|permanente <n>|elimina <n>|dimentica <luogo>|reset] - memoria e diario del personaggio\n"
+			.. "/au storie [lista|diario|scegli <arco> <opzione>|inizia|sospendi|riprendi|salta|disattiva|attiva <arco|tutte>|max <1|2>] - le storie personali del personaggio\n"
 			.. "/au relazioni [lista|persone|aggiungi <nome>|nota <nome> <testo>|esporta|...] - relazioni con NPC e giocatori\n"
 			.. "/au luogo - dove sei: zona, mappa, tag, territorio, istanza (per verificare i dati dei luoghi)\n"
 			.. "/au chi [trp3 on|off|tratto <tratto> <valore>] - chi hai davanti: ruolo, personalità, azioni recenti\n"

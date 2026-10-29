@@ -42,6 +42,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - Remembers the character's significant moments (the first time in a zone, a return, a visit that ended badly, deaths, levels) and finds them again in its lines: **only if the memory really exists**. A **journal** (`/au journal`) shows them, lets you delete them or make them permanent, and exports them as text you can copy. It never saves chat or whispers.
 - Remembers **how you stand with people**: six independent axes (familiarity, trust, respect, affection, fear, loyalty; attraction is optional and off) give a label (stranger, acquaintance, friend, comrade in arms, respected rival, enemy...) and an overall disposition. **NPCs** are worked out automatically (dialogs, quests, merchants); **players** are chosen by you: the addon suggests, and registers no one without your click. The narrator changes tone with the bond, from formal to intimate. See `/au relations`. It never reads or saves chat or whispers.
 - **Ambient dialogues with NPCs** (NPC Alive): when you open an NPC's vendor, flight or training window, or talk to a known innkeeper, a small button appears; pressing it opens a separate window labeled **"addon ambient dialogue"**, with a line from the NPC and one to three neutral answers. It is a **simulated** dialogue: it never appears in chat, never touches gossip, quests or vendors, and changes nothing in the game; your choices only leave a flag in the journal. The NPC speaks according to their character (gruff, jovial...) and whether you know them. See `/au npc` (with `test` to try the window without a real NPC).
+- Tells **small personal stories** (Story Arcs): going back to where the adventure began, a face you meet more and more often, a fall and the return, the journey between capitals. They are tellings of your character, **not quests**: no rewards, no effect on the game. They begin only from a real event, at most two at a time, the choices that matter are yours, and you can suspend, skip or disable them any time (`/au stories`, the journal's "Stories" tab). At the end they leave a memory in the journal.
 - Walks you through a skippable first-run wizard.
 - Has a diagnostic (`/au debug`) that shows what your client lets the addon do.
 - Extends through **phrase packs** shipped as separate addons, without touching the engine.
@@ -115,6 +116,7 @@ The addon answers to `/au` and `/unspoken`.
 | `/au pulsante` (`button`) | shows or hides the "speak" button |
 | `/au anima` (`soul`) | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <value>` (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `voice`; `-` removes the choice) and `avoid <topic>` |
 | `/au journal` (`diary`, `diario`) | opens the character journal (memories, places, flags, session). Also `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` and `reset [all\|memories\|ordinary\|places\|flags]` (asks for confirmation) |
+| `/au stories` (`storie`, `arcs`) | the personal stories: `list`, `journal`, `choose <arc> <option>`, `start`, `suspend`, `resume`, `skip`, `disable`, `enable` (one arc or `all`), `max <1\|2>`, `on`, `off`, `status` |
 | `/au relations` (`relationships`, `relazioni`) | opens the relationships window (sortable, filterable table, suggested people, detail with sliders, notes and tags). Also `list`, `people`, `add <name>`, `dismiss <name>`, `remove <name\|npc:ID>`, `detail <name>`, `note`, `tags`, `label`, `set <name> <axis> <value>`, `export`, `auto on\|off`, `attraction on\|off`, `reset` |
 | `/au packs` · `/au pacchetto <id> on\|off` (`pack`) | lists, or switches phrase packs on and off |
 | `/au info` (`stats`) | how many lines are available, per event |
@@ -174,7 +176,8 @@ The full guide is [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO
 | G1 In-game test ([checklist](docs/G1_checklist.md)) | **postponed**: needs the owner with the real client |
 | M1 Narrative Alpha: data schema v2, Narrative Director, personality, memory and journal, relationships (S1–S6b done), interlocutor and place, 300 intentions | in progress / to do |
 | M2: NPC Alive (S8) | done, not tried in game (G3) |
-| M3–M5: stories, social, release 1.0 | to do |
+| M3: personal stories, Story Arcs (S9) | done, not tried in game |
+| M4–M5: social, release 1.0 | to do |
 
 The detailed plan, the steps and notes for developers are in [ROADMAP.md](ROADMAP.md). Notable changes per version are in [CHANGELOG.md](CHANGELOG.md). Known problems and ideas are in the [issues](https://github.com/Finland6738/azeroth-unspoken/issues).
 

@@ -602,6 +602,11 @@ function LM:SetFlag(name, source)
 	if not m.flags[name] then
 		m.flags[name] = { t = Now(), source = self.SOURCES[source] and source or "addon" }
 		if NS.JournalFrame then NS.JournalFrame:Refresh() end
+		-- un flag nuovo è un fatto per chi lo aspetta (gli archi di S9): sul bus passano solo il nome e chi l'ha messo, mai altro
+		if NS.EventBus and NS.EventBus.Publish then
+			NS.EventBus:Publish("MEMORY_FLAG", { name = name, source = m.flags[name].source },
+				{ key = name, source = NS.EventBus.SOURCE.ADDON, window = 0 })
+		end
 	end
 	return true
 end
@@ -897,6 +902,9 @@ function LM:Describe(e)
 	local label = NS:L(key)
 	if label == key then label = tostring(e.kind) end
 	if e.kind == "level" and e.level then return label .. " " .. e.level end
+	-- il ricordo di una storia conclusa (S9) dice quale: il titolo dell'arco, se si riconosce dai tag
+	local arc = e.kind == "story" and NS.StoryArcs and NS.StoryArcs:TitleFromTags(e.tags)
+	if arc then return label .. ": " .. arc end
 	if e.zone then return label .. ": " .. e.zone end
 	return label
 end

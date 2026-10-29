@@ -60,6 +60,7 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 | [0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente |
 | [0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID |
 | [0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md) | NPC Alive: un dialogo simulato non è un dialogo reale |
+| [0021](adr/0021-story-arcs-micro-storie-senza-effetti-sul-gioco.md) | Story Arcs: micro-storie che non toccano il gioco |
 
 ## Archivio
 

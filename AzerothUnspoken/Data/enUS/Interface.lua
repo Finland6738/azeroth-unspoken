@@ -181,6 +181,7 @@ NS:RegisterLanguage("en", {
 			.. "/au narrator [history|reset|clear] - the narrator box\n"
 			.. "/au soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>] - character personality\n"
 			.. "/au journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset] - character memory and journal\n"
+			.. "/au stories [list|journal|choose <arc> <option>|start|suspend|resume|skip|disable|enable <arc|all>|max <1|2>] - the character's personal stories\n"
 			.. "/au relations [list|people|add <name>|note <name> <text>|export|...] - relationships with NPCs and players\n"
 			.. "/au place - where you are: zone, map, tags, territory, instance (to check the place data)\n"
 			.. "/au who [trp3 on|off|trait <trait> <value>] - who is in front of you: role, personality, recent actions\n"

@@ -4,6 +4,12 @@ local Bus, Compat, Diagnostics = NS.EventBus, NS.Compat, NS.Diagnostics
 local A, M, R = Compat.AVAILABLE, Compat.MISSING, Compat.RESTRICTED
 
 local function Last() return Bus.recent[#Bus.recent] end
+-- l'ultimo evento di un tipo (una morte può aprire un arco, che pubblica ARC_STATE subito dopo)
+local function LastOf(kind)
+	for i = #Bus.recent, 1, -1 do
+		if Bus.recent[i].type == kind then return Bus.recent[i] end
+	end
+end
 
 T.run("envelope", function()
 	local got
@@ -133,7 +139,7 @@ T.run("sorgenti WoW", function()
 	T.eq(Last().type, "LEVEL_UP", "livello")
 	T.eq(Last().context.level, 31, "nuovo livello")
 	FIRE("PLAYER_DEAD")
-	T.eq(Last().type, "PLAYER_DEATH", "morte")
+	T.eq(LastOf("PLAYER_DEATH").type, "PLAYER_DEATH", "morte")
 	FIRE("PLAYER_ALIVE")
 	T.eq(Last().type, "PLAYER_REVIVE", "ritorno in vita")
 	FIRE("ADDON_RESTRICTION_STATE_CHANGED", 0, 1)

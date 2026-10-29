@@ -4,6 +4,7 @@
 --     personality = { version, archetype, traits = { [tratto] = valore }, trp3 }  (Systems/Personality.lua)
 --     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
 --     relationships = { version, npcs = { [npcID] = ... }, players = { ["Nome-Reame"] = ... } }  (Systems/Relationships.lua)
+--     arcs = { version, items = { [id dell'arco] = { state, mode, ... } }, stats }              (Systems/StoryArcs.lua)
 local ADDON, NS = ...
 ---@class AUConfig
 ---@field SCHEMA_VERSION integer
@@ -15,7 +16,7 @@ local ADDON, NS = ...
 local Config = {}
 NS.Config = Config
 
-Config.SCHEMA_VERSION = 5
+Config.SCHEMA_VERSION = 6
 
 -- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
@@ -56,6 +57,9 @@ Config.CHAT_LIMITS = {
 ---@class AUNPCAliveSettings
 ---@field autoOffer boolean un'interazione valida propone il dialogo ambientale (il pulsante compare da solo)
 
+---@class AUArcSettings
+---@field maxActive integer archi attivi insieme, 1-2 (GDD §7.5)
+
 ---@class AUUISettings
 ---@field showButton boolean
 ---@field wizardDone boolean
@@ -92,6 +96,7 @@ Config.CHAT_LIMITS = {
 ---@field relations AURelationSettings
 ---@field interlocutor { trp3Others: boolean } S6c: consenso a leggere i profili pubblici TRP3 degli altri giocatori
 ---@field npcAlive AUNPCAliveSettings NPC Alive (S8)
+---@field arcs AUArcSettings Story Arcs (S9)
 ---@field ui AUUISettings
 
 Config.defaults = {
@@ -149,6 +154,11 @@ Config.defaults = {
 	npcAlive = {
 		autoOffer = true,
 	},
+	-- Story Arcs (S9): al massimo 1-2 archi attivi insieme. I singoli archi si sospendono, saltano o disattivano dal
+	-- diario o con /au storie (stato per personaggio in cdb.arcs); tutti insieme con il modulo `storyArcs`.
+	arcs = {
+		maxActive = 2,
+	},
 	ui = {
 		showButton = true,
 		wizardDone = false,
@@ -176,7 +186,8 @@ Config.characterDefaults = {
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
 	relationships = { version = 1, npcs = {}, players = {} },
-	arcs = {},
+	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
+	arcs = { version = 1, items = {}, stats = {} },
 	history = {},
 }
 
@@ -185,6 +196,7 @@ Config.rules = {
 	preset = { enum = { "complete", "personal", "world", "social", "custom" } },
 	intensity = { min = 0, max = 100, integer = true },
 	proseDepth = { enum = { "natural", "literary", "elevated" } },
+	["arcs.maxActive"] = { min = 1, max = 2, integer = true },
 	["chat.mode"] = { enum = Config.CHAT_MODES },
 	["chat.channel"] = { enum = Config.CHAT_CHANNELS },
 	["chat.pendingSeconds"] = { min = 5, max = 120 },
@@ -361,6 +373,8 @@ Config.migrations = {
 		[4] = function() end,
 		-- 5: nessun cambiamento alle impostazioni esistenti (le nuove, `relations` e il modulo, le aggiunge Merge)
 		[5] = function() end,
+		-- 6: nessun cambiamento alle impostazioni esistenti (la nuova sezione `arcs` la aggiunge Merge)
+		[6] = function() end,
 	},
 	character = {
 		[1] = function(db)
@@ -408,6 +422,17 @@ Config.migrations = {
 			if type(r.npcs) ~= "table" then r.npcs = nil end
 			if type(r.players) ~= "table" then r.players = nil end
 			if type(r.version) ~= "number" then r.version = 1 end
+		end,
+		-- 6: arcs (segnaposto vuoto fino a S8) diventa lo stato dei Story Arcs. Una tabella vuota, rovinata o senza
+		-- `items` riparte da zero con Merge; la forma interna la ripulisce StoryArcs:Sanitize all'avvio.
+		[6] = function(db)
+			local a = db.arcs
+			if a == nil then return end
+			if type(a) ~= "table" or next(a) == nil or type(a.items) ~= "table" then
+				db.arcs = nil
+				return
+			end
+			if type(a.version) ~= "number" then a.version = 1 end
 		end,
 	},
 }
