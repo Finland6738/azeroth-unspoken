@@ -18,6 +18,13 @@ local BUILTIN = {
 }
 Engine.PLACEHOLDERS = BUILTIN
 
+-- Segnaposto che possono contenere testo scritto dall'utente (l'etichetta personale di un rapporto, ADR 0018 punto 6) e
+-- voci che finiscono in chat pubblica (#45): quel testo resta nel narratore privato, dentro le voci `inner` e `npc`.
+-- Il validatore rifiuta {relation} nelle altre; il motore non lo compone mai in una frase pubblica con un testo
+-- personale (ctx.relationCustom), anche se un pacchetto esterno lo scrive.
+Engine.USER_TEXT = { relation = "relationCustom" }
+Engine.PUBLIC_SPEAKERS = { character = true, narrator = true }
+
 -- Una voce di vocabolario con un tag rigido (topic:, req:, not:) che il profilo del Character Soul esclude non si
 -- sceglie mai (#42): chi evita il sangue non sente «Sangue e tuono!» neanche dentro una frase che non ne parla.
 -- Contano solo i tag che escludono (fattore 0): quelli morbidi non cambiano il peso del vocabolario.
@@ -32,7 +39,7 @@ function Engine:Vocab(name, lang, ctx)
 	if not list then return nil end
 	local items = {}
 	for _, v in ipairs(list) do
-		if #Engine.UsableVariants(v.text[lang], ctx) > 0 and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx)
+		if #Engine.UsableVariants(v.text[lang], ctx, "character") > 0 and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx)
 			and not VocabExcluded(v, ctx) then
 			table.insert(items, { e = v, w = Score(v, "vocab:" .. name, #list) })
 		end
@@ -80,8 +87,12 @@ function Engine:Render(text, lang, ctx, line, nested)
 end
 
 -- controllo veloce dei dati richiesti, senza consumare vocabolario
-function Engine.HasData(text, ctx)
+---@param text string
+---@param ctx table
+---@param public? boolean la frase è di una voce pubblica (narrator, character): i testi dell'utente non entrano
+function Engine.HasData(text, ctx, public)
 	for tag in text:gmatch("{([^{}]+)}") do
+		if public and Engine.USER_TEXT[tag] and ctx[Engine.USER_TEXT[tag]] then return false end
 		if tag:match("^og:[^|]*|") and ctx.otherSex ~= "male" and ctx.otherSex ~= "female" then return false end
 		local field = BUILTIN[tag]
 		if field and (ctx[field] == nil or ctx[field] == "") then return false end
@@ -92,11 +103,13 @@ end
 ---Indici delle varianti di una lista utilizzabili adesso: non vuote, di un pacchetto acceso, con i dati richiesti.
 ---@param list? AUVariant[]
 ---@param ctx table
+---@param speaker? string voce della frase: nelle voci pubbliche non si compone un testo scritto dall'utente
 ---@return integer[]
-function Engine.UsableVariants(list, ctx)
+function Engine.UsableVariants(list, ctx, speaker)
 	local out = {}
+	local public = Engine.PUBLIC_SPEAKERS[speaker] or false
 	for i, v in ipairs(list or {}) do
-		if v.ok and not NS.db.disabledPacks[v.pack] and Engine.HasData(v.t, ctx) then
+		if v.ok and not NS.db.disabledPacks[v.pack] and Engine.HasData(v.t, ctx, public) then
 			table.insert(out, i)
 		end
 	end
@@ -106,7 +119,8 @@ end
 ---Una variante a caso di una cornice o di una voce di vocabolario, composta; nil se nessuna si compone.
 function Engine:RenderEntry(entry, lang, ctx, line, nested)
 	local list = entry.text[lang]
-	local idx = Engine.UsableVariants(list, ctx)
+	-- cornici e vocabolario entrano nelle frasi pubbliche: valgono le regole di una voce pubblica
+	local idx = Engine.UsableVariants(list, ctx, "character")
 	while #idx > 0 do
 		local k = math.random(#idx)
 		local text = self:Render(list[idx[k]].t, lang, ctx, line, nested)

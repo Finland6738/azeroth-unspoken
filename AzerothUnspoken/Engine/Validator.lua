@@ -362,6 +362,14 @@ function Validator:Run(opts)
 							Add("error", "badPlaceholder", p.pack, id, lang, ("variante %d: %s"):format(i, prob))
 						end
 						sigs[lang][Signature(info.tags)] = true
+						if Engine.PUBLIC_SPEAKERS[p.speaker] then
+							for tag in pairs(info.tags) do
+								if Engine.USER_TEXT[tag] then
+									Add("error", "userTextPublic", p.pack, id, lang,
+										("variante %d: {%s} può contenere un testo scritto dall'utente, ammesso solo nelle voci private (inner, npc), non in '%s'"):format(i, tag, p.speaker))
+								end
+							end
+						end
 						for d in pairs(var.depth or {}) do
 							if not Engine.DEPTHS[d] then
 								Add("error", "badDepth", p.pack, id, lang, ("variante %d: profondità '%s' sconosciuta"):format(i, d))
@@ -455,6 +463,14 @@ function Validator:Run(opts)
 								vocabBytes = VocabBytes(lang) })
 							for _, prob in ipairs(info.problems) do
 								Add("error", "badPlaceholder", packId, label, lang, ("variante %d: %s"):format(i, prob))
+							end
+							-- una cornice o una voce di vocabolario entra anche nelle frasi pubbliche
+							for tag in pairs(info.tags) do
+								if Engine.USER_TEXT[tag] then
+									Add("error", "userTextPublic", packId, label, lang,
+										("variante %d: {%s} può contenere un testo scritto dall'utente, non ammesso in %s (finirebbe in frasi pubbliche)"):format(
+											i, tag, kind == "frame" and "una cornice" or "il vocabolario"))
+								end
 							end
 							if kind == "frame" and not info.tags.line then
 								Add("error", "frameNoLine", packId, label, lang, ("variante %d: manca {line}"):format(i))

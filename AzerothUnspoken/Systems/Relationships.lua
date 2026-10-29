@@ -1125,6 +1125,7 @@ function R:Context(ctx, extra)
 	local info = self:Resolve(kind, rec)
 	ctx.relationKind = kind
 	ctx.relation, ctx.relationLabel, ctx.relationDerived = info.label, info.text, info.derived
+	ctx.relationCustom = info.custom ~= nil  -- il nome è un testo scritto dall'utente: solo nelle voci private (#45)
 	ctx.disposition, ctx.dispositionLabel, ctx.dispositionValue = info.disposition, info.dispositionText, info.dispositionValue
 	ctx.rel, ctx.isKnown, ctx.relTraits = info.axes, info.isKnown, info.traits
 	ctx.relName = self:DisplayName(kind, key)

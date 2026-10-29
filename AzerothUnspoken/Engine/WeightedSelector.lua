@@ -203,7 +203,7 @@ function Engine:Eligible(list, lang, ctx, form, now)
 	for _, p in ipairs(list) do
 		if (not form or p.form == form) and not NS.db.disabledPacks[p.pack]
 			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
-			and #Engine.UsableVariants(p.text[lang], ctx) > 0 and Engine.SafeMatch(p.when, ctx) then
+			and #Engine.UsableVariants(p.text[lang], ctx, p.speaker) > 0 and Engine.SafeMatch(p.when, ctx) then
 			table.insert(out, p)
 		end
 	end
@@ -247,7 +247,7 @@ end
 ---@return integer? index posizione della variante tra i testi della lingua
 function Engine:RenderPhrase(p, lang, ctx)
 	local list = p.text[lang]
-	local idx = Engine.UsableVariants(list, ctx)
+	local idx = Engine.UsableVariants(list, ctx, p.speaker)
 	local depth = ctx.depth
 	if depth and #idx > 1 then
 		local fit = {}

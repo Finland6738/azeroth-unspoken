@@ -306,6 +306,35 @@ T.run("cornici e vocabolario", function()
 	T.ok(not Has(r, "badPlaceholder", "v.ok"), "voce corretta")
 end)
 
+-- #45: un testo scritto dall'utente (l'etichetta personale di un rapporto, {relation}) resta nelle voci private
+T.run("testo dell'utente: solo nelle voci private", function()
+	local r = Validate({ languages = { "itIT", "enUS" },
+		registry = {
+			["u.say"] = Good({ speaker = "character" }), ["u.emote"] = Good({ speaker = "narrator", form = "emote" }),
+			["u.inner"] = Good({ speaker = "inner" }), ["u.npc"] = Good({ speaker = "npc" }),
+		},
+		texts = {
+			itIT = { ["u.say"] = "Sul diario c'è «{relation}».", ["u.emote"] = "ripensa a «{relation}».",
+				["u.inner"] = "Sul diario c'è «{relation}».", ["u.npc"] = "Sul diario c'è «{relation}»." },
+			enUS = { ["u.say"] = "The diary says \"{relation}\".", ["u.emote"] = "thinks of \"{relation}\".",
+				["u.inner"] = "The diary says \"{relation}\".", ["u.npc"] = "The diary says \"{relation}\"." },
+		},
+		frames = { { id = "u.frame", event = "battle", it = "dice di «{relation}»: «{line}»", en = "says of {relation}: \"{line}\"" } },
+		vocab = { utest = { { id = "u.voc", it = "il {relation}", en = "the {relation}" } } } })
+	T.ok(Has(r, "userTextPublic", "u.say", "it") and Has(r, "userTextPublic", "u.say", "en"), "voce character: rifiutata")
+	T.ok(Has(r, "userTextPublic", "u.emote"), "voce narrator: rifiutata")
+	T.ok(not Has(r, "userTextPublic", "u.inner") and not Has(r, "userTextPublic", "u.npc"), "voci private: ammesse")
+	T.ok(Has(r, "userTextPublic", "u.frame"), "una cornice entra nelle frasi pubbliche: rifiutata")
+	T.ok(Has(r, "userTextPublic", "u.voc"), "anche il vocabolario")
+	T.ok(IsError(r, "userTextPublic"), "è un errore")
+	-- il database di base non ne ha nessuno
+	local packs = {}
+	for _, id in ipairs(Engine.packOrder) do if id:sub(1, 5) == "base_" then table.insert(packs, id) end end
+	T.ok(not Has(Validator:Run({ packs = packs }), "userTextPublic"), "nessuna frase di base lo viola")
+	-- ogni segnaposto che può contenere un testo dell'utente è un segnaposto vero
+	for tag in pairs(Engine.USER_TEXT) do T.ok(Engine.PLACEHOLDERS[tag], "{" .. tag .. "} esiste") end
+end)
+
 T.run("testi senza regola e perimetro del controllo", function()
 	NS:AddTexts("itIT", { ["orfano.1"] = "senza regola" }, "v_orfano")
 	local full = Validator:Run()

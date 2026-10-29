@@ -1284,6 +1284,68 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 	T.eq(NS.db.interlocutor.trp3Others, false, "spento")
 end)
 
+-- #45: il testo libero dell'utente (etichette del diario) non arriva mai a una voce pubblica
+T.run("etichetta personale: mai in chat pubblica", function()
+	Fresh()
+	-- nessuna frase di base con {relation} è di una voce pubblica, in nessuna lingua
+	local nInner = 0
+	for id, p in pairs(Engine.byId) do
+		for _, list in pairs(p.text) do
+			for _, v in ipairs(list) do
+				if v.t and v.t:find("{relation}", 1, true) then
+					if p.speaker == "inner" then nInner = nInner + 1 end
+					T.ok(not Engine.PUBLIC_SPEAKERS[p.speaker], id .. ": {relation} in una voce pubblica (" .. tostring(p.speaker) .. ")")
+				end
+			end
+		end
+	end
+	T.ok(nInner > 0, "le frasi con {relation} sono nelle voci private")
+	T.eq(Engine.byId["rel.npc.rival"].speaker, "inner", "rel.npc.rival è un pensiero sul diario")
+	-- un NPC rivale per gli assi, con l'etichetta personale dell'utente
+	local rec = { first = time(), last = time(), count = 5, name = "Grik", familiarity = 30, trust = 0, respect = 60 }
+	R:Data().npcs[4242] = rec
+	R:SetLabel("npc", 4242, "quel ladro di Grik")
+	local info = R:Resolve("npc", rec)
+	T.eq(info.label, "rival", "per gli assi è un rivale"); T.ok(info.text:find("ladro", 1, true), "ma il nome è quello scritto a mano")
+	local ctx = NS:BuildContext({ relationSubject = { kind = "npc", id = 4242 } })
+	T.eq(ctx.relationCustom, true, "il contesto sa che il nome è un testo dell'utente")
+	-- una frase pubblica con {relation} (di un pacchetto esterno, non validato) non si compone con un testo dell'utente
+	local pub = { id = "t45.say", speaker = "character", form = "say", pack = "t45",
+		text = { it = { { t = "Sul diario: «{relation}».", ok = true, pack = "t45" } } } }
+	T.eq(Engine:RenderPhrase(pub, "it", ctx), nil, "voce pubblica: non si compone")
+	T.eq(#Engine.UsableVariants(pub.text.it, ctx, "narrator"), 0, "nemmeno nelle emote narrative")
+	local priv = { id = "t45.in", speaker = "inner", form = "say", pack = "t45",
+		text = { it = { { t = "Sul diario: «{relation}».", ok = true, pack = "t45" } } } }
+	T.ok(Engine:RenderPhrase(priv, "it", ctx):find("ladro", 1, true), "voce privata: si compone")
+	-- con un'etichetta degli assi (non personale) la frase pubblica resta componibile
+	R:SetLabel("npc", 4242, nil)
+	local ctx2 = NS:BuildContext({ relationSubject = { kind = "npc", id = 4242 } })
+	T.ok(not ctx2.relationCustom and #Engine.UsableVariants(pub.text.it, ctx2, "character") == 1, "un nome degli assi non è un testo dell'utente")
+	-- modalità automatica in istanza: né /say né /e né proposte pubbliche con il testo dell'utente
+	R:SetLabel("npc", 4242, "quel ladro di Grik")
+	NS.db.modules.publicChat = true
+	NS.Gateway:SetMode("AUTO_ONLY_IF_ALLOWED", { confirmAuto = true })
+	NS.db.chat.channel = "auto"
+	P.instance, P.instanceType = true, "party"
+	local leaks = 0
+	for _ = 1, 50 do
+		SENT = {}
+		ADVANCE(30)
+		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+		NS.Gateway:Discard()
+		NS.Gateway:Narrate("relation_npc", NS:BuildContext({ relationSubject = { kind = "npc", id = 4242 } }), { auto = true })
+		for _, s in ipairs(SENT) do
+			if type(s) == "string" and s:sub(1, 6) ~= "PRINT:" and s:find("ladro", 1, true) then leaks = leaks + 1 end
+		end
+		local pend = NS.Gateway.pending
+		if pend and (pend.text or ""):find("ladro", 1, true) and pend.channel ~= "PRIVATE" then leaks = leaks + 1 end
+	end
+	T.eq(leaks, 0, "nessuna uscita pubblica contiene l'etichetta dell'utente")
+	P.instance, P.instanceType = false, nil
+	NS.Gateway:SetMode("PREVIEW")
+	NS.Gateway:Discard()
+end)
+
 T.run("nessun errore intercettato", function()
 	local errs = {}
 	for _, e in pairs(NS.Diagnostics.errors) do table.insert(errs, tostring(e.id) .. ": " .. tostring(e.message)) end
