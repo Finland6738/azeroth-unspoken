@@ -27,6 +27,7 @@ Servono a ricordare *perché* il progetto è fatto in un certo modo, non solo *c
 | [0017](0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale | accettata |
 | [0018](0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente | accettata |
 | [0019](0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID | accettata |
+| [0020](0020-dialogo-simulato-e-dialogo-reale-npc-alive.md) | NPC Alive: un dialogo simulato non è un dialogo reale | accettata |
 
 ## Decisioni in sospeso
 

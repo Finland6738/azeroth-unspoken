@@ -59,7 +59,6 @@ local function Fresh()
 	for _, name in ipairs(F.BLIZZARD_FRAMES) do _G[name] = nil end
 	F.placed = nil
 	NS.db.ui.dialogue.pos = nil
-	N.scripts_backup = N.scripts_backup or nil
 	N:OnInit()
 	N.resolved = {}
 	FORBIDDEN_CALLS = 0
@@ -107,23 +106,6 @@ end
 -- un NPC specifico del registro curato, con la relazione già creata dal suo gossip
 local function RegistryNPC(id, event)
 	Talk(id, "NPC " .. id, event or "GOSSIP_SHOW")
-end
-
-local function Ids(role, node, n, setup)
-	-- le battute scelte per un nodo in n dialoghi, con un NPC dato (setup prepara il contesto)
-	local seen, order = {}, {}
-	for _ = 1, n do
-		setup()
-		local ok = N:Start(select(1, N:Identify()) or N:TestWho())
-		if ok and N.session and N.session.line then
-			local id = N.session.line.id
-			seen[id] = (seen[id] or 0) + 1
-			table.insert(order, id)
-		end
-		N:End("closed")
-		N:SetState("idle")
-	end
-	return seen, order
 end
 
 ---------------------------------------------------------------------------
@@ -345,7 +327,6 @@ T.run("l'offerta scade da sola e il pulsante sparisce", function()
 	T.eq(N.state, "ended", "scaduta")
 	T.eq(N.last.reason, "offer_expired", "motivo")
 	T.ok(not Visible(), "pulsante sparito")
-	T.eq(PENDING_TIMERS() >= 0, true, "nessun timer rotto")
 end)
 
 T.run("una nuova offerta per lo stesso NPC non si accumula", function()
@@ -422,6 +403,27 @@ T.run("l'offerta segue l'interazione: il bersaglio non la toglie, la chiusura s�
 	FIRE("MERCHANT_CLOSED")
 	T.eq(N.state, "choice", "un dialogo aperto non dipende dalla finestra di Blizzard")
 	N:Close()
+end)
+
+T.run("dal gossip al mercante la finestra cambia e l'offerta si rinnova; una quest toglie l'offerta", function()
+	Fresh()
+	Talk(295, "Innkeeper Farley", "GOSSIP_SHOW")
+	T.eq(N.state, "offered", "offerta dal gossip")
+	FIRE("MERCHANT_CLOSED")
+	T.eq(N.state, "offered", "la chiusura di un'altra finestra non la toglie")
+	FIRE("GOSSIP_CLOSED")
+	T.eq(N.state, "ended", "la chiusura del gossip da cui nasce sì")
+	ADVANCE(5)
+	FIRE("MERCHANT_SHOW")
+	T.eq(N.state, "offered", "il mercante è un'altra finestra: nuova offerta")
+	-- una quest si apre sopra: l'offerta sparisce
+	Fresh()
+	Talk(295, "Innkeeper Farley", "GOSSIP_SHOW")
+	ADVANCE(5)
+	FIRE("QUEST_DETAIL")
+	T.eq(N.state, "ended", "una quest toglie l'offerta")
+	T.eq(N.last.reason, "quest_open", "motivo")
+	T.eq(FORBIDDEN_CALLS, 0, "nessuna chiamata a Blizzard")
 end)
 
 T.run("Esc non chiude la finestra insieme a quelle di Blizzard (non è in UISpecialFrames)", function()
@@ -683,7 +685,6 @@ T.run("niente in chat, niente nel narratore, niente chiamate a gossip, quest o c
 	T.eq(#Narrator.history, history, "il narratore non registra le battute")
 	T.eq(NS.Gateway:GetPending(), nil, "nessuna proposta in attesa")
 	T.eq(FORBIDDEN_CALLS, 0, "nessuna chiamata a gossip, quest, commercio o chat")
-	T.ok(not NS.Gateway:CanSendWithoutAction("SAY") or true, "il Gateway non è coinvolto")
 	-- le battute di Blizzard (eventi) non cambiano il dialogo e il dialogo non cambia gli eventi
 	T.eq(Count(NS.Diagnostics.errors), 0, "nessun errore")
 end)
@@ -1092,7 +1093,6 @@ end)
 T.run("anti-ripetizione: la stessa battuta non torna di seguito; le varianti ruotano", function()
 	Fresh()
 	math.randomseed(99)
-	local _, order = Opening(function() end, 1)   -- niente: il neutro di prova
 	local ids = {}
 	for _ = 1, 30 do
 		N:SetState("idle")
@@ -1182,7 +1182,6 @@ T.run("comandi: /au npc, prova, chiudi, stato, tasto assegnato, /au debug", func
 	local report = Cmd("debug")
 	T.ok(report:find("NPC Alive: idle", 1, true) ~= nil, "riga NPC Alive in /au debug")
 	T.ok(frame ~= nil and not frame:IsShown(), "la finestra è chiusa")
-	local bindings = io and io.open and nil
 	T.ok(BINDING_NAME_AZEROTHUNSPOKEN_NPC ~= nil, "nome del tasto")
 end)
 

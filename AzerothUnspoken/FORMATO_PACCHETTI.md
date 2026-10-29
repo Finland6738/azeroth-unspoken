@@ -110,7 +110,7 @@ Ogni frase ha una delle quattro voci del GDD §5.3, mostrata nel narratore come 
 | `narrator` | narratore esterno: atmosfera e azioni, non attribuisce decisioni | emote | può diventare una proposta (di solito `/e`) |
 | `inner` | voce interiore: pensieri, privati | parlata | mai in chat |
 | `character` | voce pubblica del personaggio: più breve, ispezionabile | parlata | può diventare una proposta (di solito `/s`) |
-| `npc` | NPC, contenuto simulato (da S8) | parlata | mai in chat |
+| `npc` | NPC, contenuto simulato (dialoghi ambientali, S8) | parlata | mai in chat |
 
 Le frasi non vanno **mai** in chat da sole: arrivano al narratore privato e, solo se l'utente ha scelto una
 modalità del Chat Gateway diversa da quella privata, diventano proposte che lui conferma (vedi `ROADMAP.md`, S2).
@@ -287,7 +287,7 @@ nella lista, **valgono tutte false** (tranne `isKnown = false`): una frase che c
 | `relationKind = "npc"` (o `"player"`) | la persona è un NPC o un giocatore |
 | `withRelation = "friend"` | **un compagno di gruppo** ha quell'etichetta (per la battaglia o la vittoria al fianco di qualcuno) |
 
-- **Segnaposto** `{relation}`: l'etichetta nella lingua scelta (o il testo che l'utente le ha dato). Senza una persona la variante è scartata. Attenzione: i nomi sono maschili/neutri; scrivi frasi che reggono ogni etichetta, oppure dichiara l'etichetta nelle condizioni.
+- **Segnaposto** `{relation}`: l'etichetta nella lingua scelta (o il testo che l'utente le ha dato), **al genere della persona** quando il nome ne ha uno (`amico`/`amica`, `temuto`/`temuta`; issue #41). Senza una persona la variante è scartata; con una persona di cui non si sa il sesso vale la prima forma (il maschile). I dati di `RegisterRelationData` scrivono il nome con un elenco `name = { it = { "amico", "amica" }, en = "friend" }`. Per accordare un aggettivo alla persona usa `{og:…\|…}`.
 - **Tag di affinità con ambito `rel.`** (fattore `R` del peso, stessa grammatica di quelli del Soul): `rel.relation:friend`, `rel.disposition:close`, `rel.trust:high` (fasce `low`/`mid`/`high` degli assi) sono **affinità morbida**; `rel.req:relation:rival` è un **requisito rigido** (senza quel rapporto la frase non esce); `rel.not:relation:enemy` un'**esclusione rigida**. Il validatore segnala (`badTag`) i tag senza ambito per questi tratti.
 - **Registro**: con la familiarità il narratore preferisce registri diversi (dal formale `ceremonial` all'intimo `intimate`): i `styles` della frase fanno il resto.
 - **Evento `relation_npc`** (dichiarato da `base_relations`): l'incontro con un NPC già conosciuto. Ogni sua frase deve dichiarare una condizione di relazione (`relation`, `isKnown = true`, `relationKind`...): il validatore segnala `relationWithoutRelation` altrimenti. Un pacchetto può dichiarare altri eventi del genere con `AzerothUnspoken.Relationships:RegisterRelationEvent(evento, function(ctx) return … end)`.
@@ -355,6 +355,46 @@ AzerothUnspoken:RegisterPack({
 
 oppure `AzerothUnspoken:RegisterCondition("hasPet", nil, "bool")`.
 
+## Dialoghi ambientali (NPC Alive)
+
+I dialoghi con un NPC (step S8, [ADR 0020](../docs/adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)) sono dati come tutto il resto: un pacchetto può aggiungere battute e copioni senza toccare il motore. Sono **simulati**: la finestra lo dichiara («dialogo ambientale dell'addon») e le battute non vanno mai in chat.
+
+**Le battute** sono regole con `speaker = "npc"` e un evento `npcd_<ruolo>_<nodo>` dichiarato dal pacchetto. Escono solo dentro un dialogo: `NS:RegisterDialogues` mette su ogni evento dei nodi una guardia. Le condizioni sono quelle di sempre (`other = { role, speech, temperament, npcID }`, `isKnown`, `relation`, `remembered`...): così un locandiere burbero e uno gioviale, uno conosciuto e uno sconosciuto, o un NPC specifico per `npcID` dicono cose diverse.
+
+```lua
+registry = {
+    ["pack.inn.open.gruff1"] = { event = "npcd_innkeeper_open", speaker = "npc", styles = { "everyday" },
+        tags = { "other.speech:gruff" }, weight = 1,
+        conditions = { other = { role = "innkeeper", any = { { temperament = "gruff" }, { speech = { "gruff", "terse" } } } } } },
+},
+```
+
+**Il copione** dice quali nodi ci sono e che cosa si può rispondere:
+
+```lua
+NS:RegisterDialogues({ scripts = {
+    innkeeper = {                    -- un archetipo; "npc:295" sarebbe un NPC specifico (con extends = "innkeeper")
+        role = "innkeeper", start = "open",
+        nodes = {
+            open = { event = "npcd_innkeeper_open", choices = { "news", "leave" } },
+            news = { event = "npcd_innkeeper_news", choices = { "leave" } },
+            bye  = { event = "npcd_innkeeper_bye" },            -- senza risposte: il dialogo finisce qui
+        },
+        choices = {
+            news  = { label = { it = "Che notizie corrono?", en = "What news is going round?" }, go = "news",
+                      flag = "asked_news", relation = "ambient_talk" },
+            leave = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+        },
+    },
+} })
+```
+
+- **Risposte neutre, da una a tre per nodo** (ne compaiono al massimo tre; `when = { … }` ne nasconde una). Domande e azioni, mai un sentimento, un carattere o una decisione morale attribuiti al personaggio; al massimo 70 byte, senza segnaposto, IT ed EN.
+- **`flag`**: un flag narrativo locale, che diventa `npcd_<archetipo o npcID>_<nome>` nella memoria di S6 (al massimo 32 caratteri in tutto) e si legge nelle battute con `remembered`. Mai una quest.
+- **`relation`**: una fonte di incremento di `Data/Relationships.lua` (`ambient`, `ambient_talk`: poco, con tetti giornalieri).
+- Ogni percorso deve poter chiudersi (un nodo senza risposte o una risposta senza `go`).
+- L'**identità** non si sceglie dal pacchetto: il dialogo si offre solo per un NPC del registro curato (`NS:RegisterNPCs`, `Data/NPCs.lua`) o con un ruolo provato da un'interazione o scelto dall'utente. Le regole editoriali: niente prezzi, quest, fatti di cronaca, promesse che il gioco non mantiene.
+
 ## Segnaposto
 
 | Segnaposto | Valore |
@@ -367,7 +407,8 @@ oppure `AzerothUnspoken:RegisterCondition("hasPet", nil, "bool")`.
 | `{relation}` | l'etichetta del rapporto con la persona dell'interazione (relazioni, S6b) |
 | `{other}`, `{otherrole}`, `{otherrace}`, `{otherclass}` | l'interlocutore: nome, ruolo, razza e classe nella lingua scelta (o razza e classe personalizzate di Total RP 3) |
 | `{instance}`, `{encounter}` | l'istanza e lo scontro con un boss in corso o appena finito |
-| `{g:maschile\|femminile}` | variante per genere: `{g:pronto\|pronta}` |
+| `{g:maschile\|femminile}` | variante per genere **del personaggio**: `{g:pronto\|pronta}` |
+| `{og:maschile\|femminile}` | variante per genere **dell'interlocutore** (`ctx.other.sex`): `{og:amico\|amica}`. Se il sesso non è noto la variante è scartata; non entra nella firma dei segnaposto (una lingua può non avere genere) |
 | `{nome}` | una voce del vocabolario, ad esempio `{cry}` (grido di guerra adatto alla razza) |
 
 Se manca un dato richiesto (per esempio `{target}` senza bersaglio), quella variante viene scartata e il motore ne
@@ -388,6 +429,8 @@ vocab = {
 ```
 
 Le voci si **aggiungono** a quelle degli altri pacchetti con lo stesso nome. Il vocabolario non può contenere altro vocabolario né `{line}`.
+
+Una voce può portare dei `tags`, con la stessa grammatica di quelli delle regole: `{ tags = { "topic:blood" }, it = "Sangue e tuono!", en = "Blood and thunder!" }`. Quando il profilo del Character Soul **esclude** quel tag (un argomento da evitare, un `req:` o un `not:` che non vale) la voce non si sceglie mai; se non ne resta nessuna, la variante che usava il segnaposto è scartata come per un dato mancante (issue #42). I tag morbidi (`temperament:...`) non cambiano il peso del vocabolario. Il validatore segnala (`badTag`) i tag sbagliati.
 
 ## Cornici narrative
 
@@ -459,7 +502,8 @@ un **avviso** è un consiglio.
 | `noText`, `emptyLang`, `emptyVariant` | errore | nessun testo, tutte le varianti vuote, variante vuota o non stringa |
 | `missingLang` | errore | manca il testo in una lingua del pacchetto (`languages`, o quelle in cui il pacchetto scrive) |
 | `placeholderMismatch` | errore | IT ed EN non usano le stesse combinazioni di segnaposto |
-| `badPlaceholder` | errore | segnaposto sconosciuto, genere malformato, graffa non chiusa, `{line}` fuori dalle cornici, vocabolario dentro il vocabolario |
+| `badDialogue` | errore o avviso | un copione di `RegisterDialogues` sbagliato: nodo o risposta mancante, evento senza battute o non della voce `npc`, flag non valido, testo mancante in una lingua, nodo irraggiungibile |
+| `badPlaceholder` | errore | segnaposto sconosciuto, genere (`{g:}`, `{og:}`) malformato, graffa non chiusa, `{line}` fuori dalle cornici, vocabolario dentro il vocabolario |
 | `frameNoLine` | errore | una cornice senza `{line}` |
 | `badCondition` | errore | condizione sconosciuta o con un valore del tipo sbagliato |
 | `recallWithoutMemory` | errore | una frase di un evento di richiamo (`memory_return`…) senza una condizione di memoria |

@@ -480,7 +480,7 @@ end
 ---------------------------------------------------------------------------
 ---Propone il dialogo (stato `offered`): compare il pulsante, che scade da solo.
 ---@param who AUDialogueWho
----@param opts? { auto?: boolean }
+---@param opts? { auto?: boolean, kind?: string } `kind`: l'interazione da cui nasce (gossip, merchant...)
 ---@return boolean ok
 ---@return string? reason
 function N:Offer(who, opts)
@@ -495,9 +495,10 @@ function N:Offer(who, opts)
 	local script = self:Script(who.scriptKey)
 	if not script then return false, "no_script" end
 	local s = NewSession(self, who, script)
+	s.origin = opts and opts.kind
 	self.session, self.log = s, {}
 	self:SetState("offered", opts and opts.auto and "auto" or "command")
-	if who.npcID and opts and opts.auto then self.offered[who.npcID] = GetTime() end
+	if who.npcID and opts and opts.auto then self.offered[who.npcID .. ":" .. tostring(opts.kind)] = GetTime() end
 	local id = s.id
 	C_Timer.After(self.OFFER_SECONDS, function()
 		local cur = N.session
@@ -696,17 +697,22 @@ function handlers.NPC_INTERACT(env)
 	if s and (N:IsActive() or N.state == "offered") and s.who.npcID and s.who.npcID ~= c.npcID then
 		N:End("npc_changed")   -- si è passati a un altro NPC: la finestra non resta lì a parlare del vecchio
 	end
+	-- una quest si apre: l'offerta sparisce (le quest restano di Blizzard, nessuna proposta sopra)
+	if (c.kind == "quest_detail" or c.kind == "quest_turnin") and N.state == "offered" then N:End("quest_open") end
 	if not N.OFFER_KINDS[c.kind] or N.state ~= "idle" and N.state ~= "ended" then return end
 	if not N:Allowed(false) then return end
-	local last = N.offered[c.npcID]
+	-- al massimo una offerta ogni OFFER_GAP secondi per lo stesso NPC e la stessa finestra (dal gossip al mercante, che
+	-- è un'altra finestra, se ne può fare un'altra)
+	local last = N.offered[c.npcID .. ":" .. c.kind]
 	if last and GetTime() - last < N.OFFER_GAP then return end
 	local who = N:Identify({ npcID = c.npcID, name = c.npcName, kind = c.kind, t = GetTime() })
-	if who then N:Offer(who, { auto = true }) end
+	if who then N:Offer(who, { auto = true, kind = c.kind }) end
 end
 
 -- la finestra dell'NPC si è chiusa: un'offerta mai accettata sparisce, un dialogo aperto resta (è indipendente)
-function handlers.NPC_INTERACT_END()
-	if N.state == "offered" then N:End("closed") end
+function handlers.NPC_INTERACT_END(env)
+	local s = N.session
+	if N.state == "offered" and s and (s.origin == nil or s.origin == env.context.kind) then N:End("closed") end
 end
 
 function handlers.TARGET_CHANGED(env)
