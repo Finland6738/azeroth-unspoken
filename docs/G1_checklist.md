@@ -363,6 +363,36 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
     - **Cosa aspettarti:** a volte una battuta con l'etichetta «NPC» nel narratore privato, mai in chat.
     - **Cosa riportare:** se si capisce che è contenuto simulato, se il tono segue il ruolo.
 
+## S8/G3: il locandiere e i dialoghi ambientali (aggiunto dallo step S8)
+
+I dialoghi ambientali (`/au npc`) sono **simulati**: la finestra lo dice in cima («dialogo ambientale dell'addon») e **nulla** va in chat. I passi seguenti mettono alla prova la vertical slice B del GDD (§21: dialogo al locandiere → due scelte → battuta → chiusura senza interferire con WoW). Lo stato in `/au npc stato`; il registro curato ha pochi NPC (e i loro numeri sono quelli di Classic Era, non verificati): se un NPC non viene riconosciuto è un dato utile da riportare, non un errore.
+
+75. **Senza un NPC vero.** `/au npc prova` (poi `prova burbero`, `prova gioviale`, `prova caloroso`, `prova formale`, `prova laconico`).
+    - **Cosa aspettarti:** una finestra con una fascia colorata in cima che dice «dialogo ambientale dell'addon», il titolo «locandiere · Locandiere di prova · prova», una battuta tra virgolette, tre risposte. La finestra non si sovrappone a niente di importante; si trascina dalla fascia; la x la chiude subito; nulla compare in chat; `/au debug` ha una riga `NPC Alive`.
+    - **Cosa riportare:** testo tagliato o sovrapposto, dimensione e leggibilità, se la fascia si distingue, se il testo cambia davvero con lo stile scelto.
+76. **Locandiere, vertical slice B.** Vai da un locandiere del registro (Innkeeper Farley a Goldshire, Innkeeper Firebrew a Forgiardente, Innkeeper Gryshka a Orgrimmar) e apri il suo dialogo di Blizzard.
+    - **Cosa aspettarti:** un piccolo pulsante «Ascolta (dialogo ambientale)» accanto, **non sopra** la finestra del gossip; premilo, scegli «Che notizie corrono?» o «Cerco un posto per riposare.», poi una seconda risposta, poi chiudi. La finestra di Blizzard resta com'era (non si chiude, non si sposta, le sue opzioni funzionano).
+    - **Cosa riportare:** se compare, dove, se copre qualcosa (la finestra di gossip, quella del mercante, le borse, la mappa), se premere i pulsanti cambia qualcosa nel gossip o nelle quest (**non deve**), se la battuta suona come un locandiere (e se Farley, Firebrew o Gryshka hanno battute proprie), se qualcosa va in chat (**non deve**).
+77. **Un locandiere qualunque.** Parla con un locandiere che non è nel registro, poi scrivi `/au npc`.
+    - **Cosa aspettarti:** nessun dialogo e un messaggio che dice che non sa con certezza chi sia. Poi fissa la dimora da lui (o scrivi `/au npc ruolo locandiere` dopo aver aperto il suo gossip): ora il dialogo si apre.
+    - **Cosa riportare:** se il suo gossip non basta e se «fissare la dimora» lo riconosce; il suo `npcID` da `/au chi` se vuoi aggiungerlo al registro.
+78. **Mercante, maestro di volo, addestratore, guardia.** Apri il mercato di un mercante, la mappa dei voli, l'addestramento di una classe, poi usa `/au npc`; per una guardia di città (Stormwind City Guard, Ironforge Guard, Orgrimmar Grunt) prendila come bersaglio e scrivi `/au npc`.
+    - **Cosa aspettarti:** l'offerta sul mercato, sul volo e sull'addestramento (la finestra di Blizzard non cambia); la guardia solo se il suo `npcID` è giusto. Mai su una quest, su un giocatore, su una creatura ostile.
+    - **Cosa riportare:** quali interazioni fanno comparire l'offerta e quali no; i numeri `npcID` delle guardie se non vengono riconosciute (`/au chi`).
+79. **Posizione.** Con il dialogo aperto apri la borsa, il mercante, la mappa del mondo e le quest; trascina la finestra e riaprila.
+    - **Cosa aspettarti:** la finestra si sposta da sola per non coprire le finestre di Blizzard; la posizione scelta si conserva; non si chiude con Esc insieme alle altre.
+    - **Cosa riportare:** quali finestre copre (nomi dei frame che non conosce), se «saltella» da una posizione all'altra.
+80. **Interruzioni.** Con un dialogo aperto: entra in combattimento, cambia zona, parla con un altro NPC, aspetta due minuti senza scegliere.
+    - **Cosa aspettarti:** il dialogo si chiude da solo (con un altro NPC compare la sua offerta); mai un errore.
+    - **Cosa riportare:** quando non si chiude e dovrebbe.
+81. **Carattere e relazione.** Parla più volte con lo stesso locandiere in giorni diversi, e confronta con uno burbero (Gryshka) e uno gioviale (Farley).
+    - **Cosa aspettarti:** battute diverse per carattere; dopo qualche interazione vera, battute da persona che ti conosce; se gli hai già chiesto le notizie, una battuta che lo ricorda. Il diario (`/au diario`) mostra i flag `npcd_innkeeper_...` e un ricordo «Una chiacchierata»; `/au relazioni` mostra qualche punto di familiarità in più, ma poco.
+    - **Cosa riportare:** battute che stonano, ripetizioni, numeri di relazione sproporzionati.
+82. **Dopo /reload.** Fai un dialogo con una risposta, poi `/reload`.
+    - **Cosa aspettarti:** nessuna finestra aperta; i flag e il ricordo ci sono ancora; nessuna battuta è salvata.
+83. **Impostazioni.** `/au npc offerta off` poi riapri un mercato; intensità 0 (`/au intensita 0`); modulo «Dialoghi NPC» spento.
+    - **Cosa aspettarti:** niente offerta da sola, ma `/au npc` apre ancora il dialogo (tranne col modulo spento, che lo dice).
+
 ## Q3: correzioni e miglioramenti (aggiunto dalla correzione Q3)
 
 Corrette fuori dal gioco le issue #9, #13, #21, #23, #26, #37 e #38. Restano da provare nel client vero:
@@ -442,6 +472,12 @@ Q3 dissolvenza (#21) .... sbiadisce dopo il mouse? ___
 Q3 tratti/consenso (#37)  selettori ok? ___  finestra senza tagli? ___  consenso spento di base? ___
 Q3 emote altre lingue ... client ______  riconosciuta? ___  testo esatto non riconosciuto ______  destinatario nel payload? ___
 Q3 accenti nei comandi .. /au intensità ok? ___
+S8/G3 finestra di prova . etichetta visibile? ___  si sposta/chiude? ___  testo tagliato? ___  nulla in chat? ___
+S8/G3 locandiere ........ offerta compare? ___  non copre il gossip? ___  gossip intatto? ___  battute giuste? ___  testo ______
+S8/G3 altri NPC ......... mercante ___  volo ___  addestratore ___  guardia ___  quest (NO) ___  locandiere qualunque (NO) ___
+S8/G3 posizione ......... evita le finestre? ___  si conserva? ___  Esc non la chiude? ___
+S8/G3 interruzioni ...... combattimento ___  zona ___  altro NPC ___  due minuti ___
+S8/G3 carattere ......... burbero/gioviale diversi? ___  conosciuto diverso? ___  flag nel diario? ___  dopo /reload ___
 S7/G2 slice A .......... frase di arrivo? ___  cambia con profondità/archetipo? ___  testo ______
 S7/G2 slice C .......... frase di ritorno? ___  ricordo falso? (NO) ___  diario aggiornato? ___
 S7 varietà ............. frasi ripetute ______  frasi che stonano ______  voce NPC ___

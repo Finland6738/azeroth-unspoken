@@ -41,6 +41,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - If you want, gives the character a **personality** (temperament, morality, curiosity, faith, motivation, irony, inner voice, topics to avoid, or a ready-made archetype): lines that fit come up more often, and lines that contradict what you ruled out never do. All optional; with no choices the narrator stays neutral. See `/au soul`.
 - Remembers the character's significant moments (the first time in a zone, a return, a visit that ended badly, deaths, levels) and finds them again in its lines: **only if the memory really exists**. A **journal** (`/au journal`) shows them, lets you delete them or make them permanent, and exports them as text you can copy. It never saves chat or whispers.
 - Remembers **how you stand with people**: six independent axes (familiarity, trust, respect, affection, fear, loyalty; attraction is optional and off) give a label (stranger, acquaintance, friend, comrade in arms, respected rival, enemy...) and an overall disposition. **NPCs** are worked out automatically (dialogs, quests, merchants); **players** are chosen by you: the addon suggests, and registers no one without your click. The narrator changes tone with the bond, from formal to intimate. See `/au relations`. It never reads or saves chat or whispers.
+- **Ambient dialogues with NPCs** (NPC Alive): when you open an NPC's vendor, flight or training window, or talk to a known innkeeper, a small button appears; pressing it opens a separate window labeled **"addon ambient dialogue"**, with a line from the NPC and one to three neutral answers. It is a **simulated** dialogue: it never appears in chat, never touches gossip, quests or vendors, and changes nothing in the game; your choices only leave a flag in the journal. The NPC speaks according to their character (gruff, jovial...) and whether you know them. See `/au npc` (with `test` to try the window without a real NPC).
 - Walks you through a skippable first-run wizard.
 - Has a diagnostic (`/au debug`) that shows what your client lets the addon do.
 - Extends through **phrase packs** shipped as separate addons, without touching the engine.
@@ -53,7 +54,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - It does not read the combat log and does not base decisions on values the client hides from addons.
 - It does not save chat content.
 
-**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): interlocutor and place as conditions for lines, NPC dialogues, multi-chapter stories, social play between players, content up to 1,000 intentions. In the settings some modules (NPC, stories, social, audio) can already be switched on or off, but they are placeholders: today only the *Personal*, *World*, *Memory*, *Chat proposals* and *Total RP 3* modules have any effect. The style depth (Natural, Literary, Elevated) is saved too, but **no line uses it yet**.
+**Planned, not yet present** (see [ROADMAP.md](ROADMAP.md), in Italian): multi-chapter stories, social play between players, content up to 1,000 intentions. In the settings some modules (stories, social, audio) can already be switched on or off, but they are placeholders: today only the *Personal*, *World*, *Memory*, *Relations*, *NPC dialogues*, *Chat proposals* and *Total RP 3* modules have any effect. The style depth (Natural, Literary, Elevated) is saved too, but **no line uses it yet**.
 
 ## Requirements
 
@@ -172,7 +173,8 @@ The full guide is [AzerothUnspoken/FORMATO_PACCHETTI.md](AzerothUnspoken/FORMATO
 | M0 Foundations: architecture, compatibility, diagnostics (S1), private narrator, Chat Gateway, settings, wizard (S2) | **done**, tested outside the game only |
 | G1 In-game test ([checklist](docs/G1_checklist.md)) | **postponed**: needs the owner with the real client |
 | M1 Narrative Alpha: data schema v2, Narrative Director, personality, memory and journal, relationships (S1–S6b done), interlocutor and place, 300 intentions | in progress / to do |
-| M2–M5: NPCs, stories, social, release 1.0 | to do |
+| M2: NPC Alive (S8) | done, not tried in game (G3) |
+| M3–M5: stories, social, release 1.0 | to do |
 
 The detailed plan, the steps and notes for developers are in [ROADMAP.md](ROADMAP.md). Notable changes per version are in [CHANGELOG.md](CHANGELOG.md). Known problems and ideas are in the [issues](https://github.com/Finland6738/azeroth-unspoken/issues).
 

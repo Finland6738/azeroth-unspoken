@@ -335,7 +335,7 @@ function I:Build(ctx, extra)
 	if s.unit then
 		o = self:ReadUnit(s.unit)
 	else
-		o = { kind = s.kind, key = s.key, name = s.name, npcID = s.npcID }
+		o = { kind = s.kind, key = s.key, name = s.name, npcID = s.npcID, sex = s.sex }
 		if not o.key and s.kind and (s.npcID or s.id) then o.key = I.Key(s.kind, s.npcID or s.id) end
 	end
 	o.sources = {}
@@ -349,7 +349,7 @@ function I:Build(ctx, extra)
 		local t = I.Clean(rec.traits)
 		if rec.role and Traits.defs.role.valid[rec.role] and rec.roleSource == "user" then t.role = t.role or rec.role end
 		table.insert(layers, { name = "user", traits = t })
-		local info = NS.Relationships:Resolve(o.kind == "player" and "player" or "npc", rec)
+		local info = NS.Relationships:Resolve(o.kind == "player" and "player" or "npc", rec, o.sex)
 		o.relation, o.relationLabel = info.label, info.text
 	end
 	-- 2. profilo pubblico Total RP 3 (solo giocatori, con il consenso apposito)
@@ -420,6 +420,10 @@ function I:Context(ctx, extra)
 	local o, traits = self:Build(ctx, extra)
 	ctx.other = o
 	ctx.otherTraits = traits or EMPTY
+	-- il nome del rapporto con il genere della persona (#41): Relationships:Context lo ha scritto al maschile
+	if type(o) == "table" and not o.secret and o.relation and o.relationLabel and ctx.relation == o.relation then
+		ctx.relationLabel = o.relationLabel
+	end
 end
 
 ---Campi piatti per i segnaposto: {other}, {otherrole}, {otherrace}, {otherclass}.
@@ -428,6 +432,7 @@ function I.Flatten(ctx)
 	local o = ctx.other
 	if type(o) ~= "table" or o.secret then return end
 	ctx.otherName = ctx.otherName or o.name
+	ctx.otherSex = ctx.otherSex or o.sex     -- {og:m|f} (#41)
 	ctx.otherRaceLocal = ctx.otherRaceLocal or o.raceLocal
 	ctx.otherClassLocal = ctx.otherClassLocal or o.classLocal
 	if o.role and not ctx.otherRoleLocal then

@@ -1,6 +1,6 @@
 # Architettura di Azeroth Unspoken
 
-Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1–S6c), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
+Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1–S8), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
 
 ## Indice
 
@@ -112,6 +112,7 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Systems/Relationships.lua`** | le relazioni ([ADR 0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md)): sette assi indipendenti, etichette e disposizione derivate dai dati, NPC calcolati dall'`npcID` (dialogo, quest, mercante, volo, addestratore, locanda) con rendimenti decrescenti, tetto giornaliero e decadimento, giocatori scelti dall'utente con proposte, `ctx.relation` e simili, fattore `R`, registro per familiarità, evento `relation_npc`, comando `/au relazioni`. |
 | **`Systems/Place.lua`** | il luogo ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)): `ctx.place` (zona, uiMapID, continente, tag, territorio, capitale, istanza, scontro con un boss, ruolo nel gruppo, campo di battaglia), `Place:Lookup` sui dati di `Data/Places.lua`, `Place.Key` (chiave stabile della memoria), fattore `C` dei tag `place.` e delle frasi brevi, ritmo per tipo di istanza, impegno durante i boss, evento `encounter_end`, comando `/au luogo`. |
 | **`Systems/Interlocutor.lua`** | l'interlocutore ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)): `ctx.other` (dati di gioco, ruolo, personalità con i tratti di S5, azioni recenti, relazione), fonti in ordine (utente > TRP3 pubblico con consenso > `Data/NPCs.lua` > ruolo da interazioni affidabili > tendenza debole > neutro), fattore `C` dei tag `other.`, registro per modo di parlare e ruolo, eventi `npc_meet` e `other_action`, comando `/au chi`. |
+| **`Systems/NPCAlive.lua`** | NPC Alive ([ADR 0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)): i dialoghi ambientali con un NPC. Macchina a stati `idle → offered → opened → choice → response → ended` con transizioni verificate, identità (NPC specifico del registro curato o archetipo dall'interazione in corso; mai se incerta o segreta), copioni (`NS:RegisterDialogues`: nodi, risposte, flag), battute dalle regole del motore, effetti locali (flag, relazione, ricordo), offerta automatica che scade, interruzioni (combattimento, morte, zona, altro NPC, quest), tasto `AzerothUnspoken_NPCDialogue`, comando `/au npc`. |
 | **`Systems/Director.lua`** | il Narrative Director degli eventi spontanei: `Offer` (candidato), `Resolve` (al massimo un intervento per momento), `Evaluate` (il gate, punto di aggancio di S2), pausa immediata, riepilogo per `/au debug`. |
 | **`Systems/Triggers.lua`** | abbonato al bus: trasforma gli eventi normalizzati in eventi narrativi (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) e li offre al Director; tiene le probabilità e le pause proprie di ogni evento. |
 | **`UI/Widgets.lua`** | piccoli componenti condivisi dell'interfaccia. |
@@ -119,6 +120,7 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`UI/SpeakButton.lua`** | il pulsante "pronuncia" e il tasto: gesto che conferma il Chat Gateway. |
 | **`UI/ProfileFrame.lua`** | la finestra del profilo: archetipo, tratti, argomenti da evitare, consenso a Total RP 3, profilo neutro. |
 | **`UI/JournalFrame.lua`** | il diario: schede (ricordi, luoghi, flag, sessione; altre con `RegisterTab`), cancellazione selettiva, permanenza, reset con conferma, finestra di esportazione copiabile. |
+| **`UI/DialogueFrame.lua`** | la finestra dei dialoghi ambientali: etichetta «dialogo ambientale dell'addon», ruolo e nome, battuta, da una a tre risposte, chiusura; si mette dove non copre le finestre di Blizzard (`BLIZZARD_FRAMES`, `GetRect`), non è in `UISpecialFrames`, non scrive in chat. Nessuna logica di dialogo: disegna `NPCAlive:View()`. |
 | **`UI/RelationsFrame.lua`** | la finestra Relazioni: tabella ordinabile e filtrabile, persone proposte, dettaglio con cursori, nota, tag ed etichetta; due schede nel diario. |
 | **`UI/Wizard.lua`** | procedura guidata del primo avvio (6 passi, 7 con Total RP 3). |
 | **`UI/SettingsFrame.lua`** | pannello delle impostazioni (`Settings.RegisterCanvasLayoutCategory`, con ripiego su `InterfaceOptions_AddCategory`). |
@@ -313,6 +315,31 @@ flowchart LR
 - **Privacy**: nessun testo di chat o di whisper (della risposta in privato si legge solo il nome), nulla in rete, le proposte non si salvano.
 - **Interfaccia**: `/au relazioni` apre `UI/RelationsFrame.lua`; il diario ha le schede *Relazioni* e *Persone incontrate*.
 
+### NPC Alive
+
+`Systems/NPCAlive.lua` e `UI/DialogueFrame.lua` ([ADR 0020](adr/0020-dialogo-simulato-e-dialogo-reale-npc-alive.md)) sono i dialoghi ambientali: un micro-dialogo **simulato** con un NPC identificabile, in una finestra separata, mai in chat.
+
+```mermaid
+stateDiagram-v2
+    [*] --> idle
+    idle --> offered: interazione valida (pulsante) o comando
+    offered --> opened: il giocatore preme «Ascolta»
+    offered --> ended: scade (20 s), si chiude, combattimento, quest
+    opened --> choice: battuta d'apertura e risposte
+    choice --> response: il giocatore sceglie (flag, relazione)
+    response --> choice: la risposta ha altre risposte
+    response --> ended: chiusura
+    choice --> ended: x, 120 s fermo, combattimento, morte, zona, altro NPC
+    ended --> idle
+```
+
+- **Identità**: l'`npcID` dal GUID. *Specifico*: è in `Data/NPCs.lua` (o l'utente gli ha dato un ruolo). *Archetipo*: il ruolo lo prova l'interazione in corso (mercante, volo, addestramento, locandiere che fissa la dimora) o una già avvenuta con lo stesso NPC; il solo gossip non basta. Giocatori, creature ostili, NPC morti, identità segreta e GUID illeggibili: nessun dialogo.
+- **Copioni** (`Data/Dialogues.lua`): per archetipo (`innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`) o per `npc:<npcID>` (con `extends`), nodi con l'evento delle battute e le risposte che offrono; ogni risposta ha un'etichetta IT/EN neutra, il nodo di arrivo, un flag narrativo e una fonte di relazione. Controllati da `NPCAlive:Check()` e dal validatore (`badDialogue`).
+- **Voce** (`Data/RegistryDialogues.lua`, testi `Dialogues.lua`): regole del motore con `speaker = "npc"` ed eventi `npcd_<ruolo>_<nodo>`: scelte da `Engine:PickEntry` con il contesto dell'interlocutore (modo di parlare, temperamento) e della relazione (`isKnown`); escono solo dentro un dialogo (guardia sull'evento); anti-ripetizione come per ogni frase. Durante un dialogo il narratore spontaneo tace (`SetRhythm`).
+- **Effetti**: un flag narrativo `npcd_<archetipo>_<nome>` (memoria di S6, mai una quest), un po' di relazione (`ambient`, `ambient_talk`), un ricordo `npc_talk` se si è risposto (senza testo né nome). L'NPC di prova (`/au npc prova`) non scrive nulla.
+- **Finestra**: etichetta sempre visibile, posizione che evita le finestre di Blizzard visibili e si corregge se una si apre sotto, trascinabile e azzerabile; non chiama né nasconde nulla di Blizzard.
+- **Comandi**: `/au npc` (alias `dialogo`, `parla`; `prova [burbero|gioviale|caloroso|formale|laconico]`, `chiudi`, `ruolo <ruolo>`, `offerta on|off`, `stato`), tasto «Dialogo ambientale con l'NPC».
+
 ### Interlocutore e luogo
 
 `Systems/Interlocutor.lua` e `Systems/Place.lua` dicono **chi incontriamo** e **dove siamo** ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)).
@@ -444,20 +471,20 @@ Questi punti sono interni: possono cambiare tra una versione e l'altra finché l
 
 ## 8. Cosa è previsto e non c'è ancora
 
-Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, S6, la Living Memory, S6b, le relazioni, e S6c, interlocutore e luogo, ci sono: [vedi sopra](#il-character-soul), [qui](#la-living-memory), [qui](#le-relazioni) e [qui](#interlocutore-e-luogo)).
+Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, S6, la Living Memory, S6b, le relazioni, S6c, interlocutore e luogo, e S8, NPC Alive, ci sono: [vedi sopra](#il-character-soul), [qui](#la-living-memory), [qui](#le-relazioni), [qui](#interlocutore-e-luogo) e [qui](#npc-alive)).
 
 | Step | Cosa aggiunge | Dove si aggancia |
 |---|---|---|
 | S7 | contenuti Alpha (300 intenzioni) | pacchetti di frasi; usano anche le condizioni `other` e `place` |
-| S8 | dialoghi con NPC (finestra, stati, registro) | nuovo modulo; riusa `Data/NPCs.lua` e il profilo dell'interlocutore (`speech`, `temperament`, `role`) |
 | S9 | archi narrativi | `NS.cdb.arcs` |
 | S10 | gioco sociale con messaggi addon, consenso e sicurezza | nuovo modulo, `privacy.*` |
 
 ## 9. Limiti noti
 
 - **Nulla è stato provato nel client vero.** Tutto è verificato solo con il client simulato; la prova G1 è rimandata ([checklist](G1_checklist.md)).
-- Nelle impostazioni hanno effetto i moduli `personal`, `world`, `memory`, `relations`, `publicChat` e `totalRP3`; NPC, storie, social e audio sono ancora segnaposto.
+- Nelle impostazioni hanno effetto i moduli `personal`, `world`, `memory`, `relations`, `npc`, `publicChat` e `totalRP3`; storie, social e audio sono ancora segnaposto.
 - Le probabilità e le pause per evento (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) vengono dal prototipo; i numeri del Narrative Director (budget, pause di categoria, bonus e penalità di stile) sono ipotesi da regolare con le prove in gioco ([G1](G1_checklist.md), passi 27–31).
 - Il riconoscimento del combattimento impegnativo usa boss, incursione, élite in istanza e, da S6c, gli scontri con i boss (`ENCOUNTER_START`), che nel client vero non sono ancora stati provati.
+- I dialoghi ambientali (S8) non sono stati provati nel client vero: né i nomi delle finestre di Blizzard che la finestra evita (`GossipFrame`, `MerchantFrame`...), né `GetRect`, né quali interazioni mettono davvero un NPC nell'unità `npc`; il registro curato ha pochi NPC (e i numeri non sono verificati). Vedi [G1](G1_checklist.md), G3.
 - Gli uiMapID, gli instanceID e gli npcID dei dati (`Data/Places.lua`, `Data/NPCs.lua`) vengono da Classic Era e non sono verificati in Forever: i luoghi si riconoscono per nome finché non lo saranno (`/au luogo`).
 - Le API della matrice delle capacità non sono state controllate nel client della build 70658: vedi `/au debug full` e [RIFERIMENTI.md](RIFERIMENTI.md).

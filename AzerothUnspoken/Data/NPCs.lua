@@ -20,6 +20,11 @@ NS:RegisterNPCs({
 	-- guardie e ufficiali di villaggio
 	[240] = { name = "Marshal Dughan", role = "guard", temperament = "resolute", speech = "formal", goals = "duty" },
 	[823] = { name = "Deputy Willem", role = "guard", speech = "formal", goals = "duty" },
+	-- guardie di città (S8): solo il ruolo, perché il registro le riconosce con certezza per npcID; nessun carattere
+	-- inventato. Numeri della numerazione di Classic Era, da verificare in gioco con `/au chi` (issue #36)
+	[68] = { name = "Stormwind City Guard", role = "guard" },
+	[5595] = { name = "Ironforge Guard", role = "guard" },
+	[3296] = { name = "Orgrimmar Grunt", role = "guard" },
 	-- capi delle capitali: solo il ruolo
 	[1748] = { name = "Highlord Bolvar Fordragon", role = "leader" },
 	[2784] = { name = "King Magni Bronzebeard", role = "leader" },

@@ -100,7 +100,13 @@ local function Analyze(text, lang, opts)
 			bytes = bytes + math.max(#m, #f)
 			return ""
 		end
-		if tag:sub(1, 2) == "g:" then
+		-- {og:m|f}: il genere dell'interlocutore (#41); non entra nella firma, perché una lingua può non avere genere
+		local om, of = tag:match("^og:([^|]*)|(.*)$")
+		if om then
+			bytes = bytes + math.max(#om, #of)
+			return ""
+		end
+		if tag:sub(1, 2) == "g:" or tag:sub(1, 3) == "og:" then
 			table.insert(info.problems, ("forma di genere malformata '{%s}'"):format(tag))
 		elseif tag == "line" then
 			if opts.frame then
@@ -429,6 +435,13 @@ function Validator:Run(opts)
 						Add("error", "badCondition", packId, label, nil, msg)
 					end
 				end
+				-- tag delle voci di vocabolario (#42): tratto e valore devono esistere, come per le regole
+				if kind == "vocab" and NS.Traits then
+					for tag in pairs(e.tags or {}) do
+						local problem = NS.Traits.CheckTag(tag)
+						if problem then Add("error", "badTag", packId, label, nil, problem) end
+					end
+				end
 				local sigs = {}
 				for lang, list in pairs(e.text) do
 					sigs[lang] = {}
@@ -496,6 +509,13 @@ function Validator:Run(opts)
 		if SR then
 			CheckStyleRegistry("event", SR.EVENT_STYLES)
 			CheckStyleRegistry("mood", SR.MOOD_STYLES)
+		end
+	end
+
+	-- dialoghi ambientali (S8): nodi, risposte, flag e battute dei copioni
+	if not scope and NS.NPCAlive then
+		for _, p in ipairs(NS.NPCAlive:Check()) do
+			Add(p.level, "badDialogue", nil, p.key, nil, p.msg)
 		end
 	end
 
