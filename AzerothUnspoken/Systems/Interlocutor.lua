@@ -494,12 +494,72 @@ EventBus:AddSource("PARTY_INVITE_REQUEST", { normalize = function(name)
 	return "OTHER_INVITE", { name = NS.Relationships and NS.Relationships.PlayerKey(name) }, { key = "invite" }
 end })
 -- Le emote standard (/wave, /bow...) sono frasi del client, non testo scritto da un giocatore: si guarda solo se
--- sono rivolte a noi (la parola "you" del client inglese) e il testo si scarta subito, senza salvarlo né pubblicarlo.
+-- sono rivolte a noi e il testo si scarta subito, senza salvarlo né pubblicarlo (issue #38).
+-- Due segnali, il primo indipendente dalla lingua:
+--   1. il destinatario che il client indica nel payload (`playerName2`) è il nostro personaggio;
+--   2. il testo contiene il "te" della lingua del client (tabella I.YOU_WORDS, per lingua).
+-- Entrambi sono segnali positivi: un destinatario diverso o assente non esclude l'emote (il campo non è provato nel
+-- client vero, G1), e una lingua senza tabella non riconosce nulla (nessun danno, solo meno frasi).
 -- Le emote personalizzate (CHAT_MSG_EMOTE) non si leggono.
-EventBus:AddSource("CHAT_MSG_TEXT_EMOTE", { normalize = function(text, playerName)
+---@class AUYouWords
+---@field words? string[] parole intere in minuscolo (lingue con gli spazi)
+---@field substrings? string[] frammenti (lingue senza spazi tra le parole)
+
+---Come il client dice "te" nelle emote rivolte al giocatore, per lingua (le due lettere del GetLocale). Le voci sono
+---scritte a mano, non provate nei client veri: si correggono qui o con `NS.Interlocutor.YOU_WORDS.<lingua> = {...}`.
+---@type table<string, AUYouWords>
+I.YOU_WORDS = {
+	en = { words = { "you" } },
+	de = { words = { "dich", "dir", "euch" } },
+	fr = { words = { "vous", "te", "toi" } },
+	es = { words = { "te", "ti" } },
+	it = { words = { "ti", "te" } },
+	pt = { words = { "você", "voce", "te", "ti" } },
+	ru = { words = { "вас", "вам", "вами", "тебя", "тебе", "тобой" } },
+	ko = { substrings = { "당신" } },
+	zh = { substrings = { "你", "您" } },
+}
+
+-- spazi, segni e punteggiatura ASCII: i byte da 128 in su (lettere UTF-8) restano intatti, a differenza di %s e %p
+local SEPARATORS = "[\1-\47\58-\64\91-\96\123-\126]"
+
+---Il testo di un'emote del client contiene il "te" della lingua indicata (di default quella del client)?
+---@param text string
+---@param locale? string codice del client ("itIT") o a due lettere; di default GetLocale()
+---@return boolean
+function I.TextAddressesYou(text, locale)
+	if type(text) ~= "string" then return false end
+	locale = locale or (GetLocale and GetLocale()) or "enUS"
+	local set = I.YOU_WORDS[NS.Lower(tostring(locale)):sub(1, 2)]
+	if not set then return false end
+	local lower = NS.Lower(text)
+	if set.words then
+		local padded = " " .. lower:gsub(SEPARATORS, " ") .. " "
+		for _, w in ipairs(set.words) do
+			if padded:find(" " .. w .. " ", 1, true) then return true end
+		end
+	end
+	for _, piece in ipairs(set.substrings or EMPTY) do
+		if lower:find(piece, 1, true) then return true end
+	end
+	return false
+end
+
+---L'emote è rivolta al nostro personaggio? `target` è il destinatario indicato dal client (può mancare).
+---@param text string
+---@param target? string
+---@return boolean
+function I.EmoteIsForMe(text, target)
+	if type(target) == "string" and target ~= "" and not Compat.IsSecret(target) then
+		local me = Str(Compat.SafeCall("UnitName", "player"))
+		if me and NS.Lower(target:match("^[^-]+") or target) == NS.Lower(me) then return true end
+	end
+	return I.TextAddressesYou(text)
+end
+
+EventBus:AddSource("CHAT_MSG_TEXT_EMOTE", { normalize = function(text, playerName, _, _, target)
 	if type(text) ~= "string" or Compat.IsSecret(text) then return nil end
-	local padded = " " .. NS.Lower(text):gsub("[^a-z]", " ") .. " "
-	if not padded:find(" you ", 1, true) then return nil end
+	if not I.EmoteIsForMe(text, target) then return nil end
 	local key = NS.Relationships and NS.Relationships.PlayerKey(playerName)
 	local own = NS.Relationships and NS.Relationships.PlayerKey(Compat.SafeCall("UnitName", "player"))
 	if not key or key == own then return nil end
@@ -658,6 +718,50 @@ function I:SetTrait(kind, id, trait, value)
 	return true
 end
 
+---Il valore di un tratto di una persona della lista (nil = non lo so) e, per il ruolo, se l'ha ricavato l'addon.
+---@param kind "npc"|"player"
+---@param id integer|string
+---@param trait string
+---@return string? value
+---@return boolean? auto vero se il ruolo è ricavato da un'interazione e non scelto dall'utente
+function I:GetUserTrait(kind, id, trait)
+	local rec = NS.Relationships and NS.Relationships:Get(kind, id)
+	if not rec then return nil end
+	if trait == "role" then return rec.role, rec.roleSource == "auto" or nil end
+	return rec.traits and rec.traits[trait] or nil
+end
+
+---Passa al valore successivo di un tratto (non so, poi i valori in ordine, poi di nuovo non so): per i selettori
+---della finestra Relazioni. Ritorna il nuovo valore (nil = non lo so), oppure false se non si può scrivere.
+---@param kind "npc"|"player"
+---@param id integer|string
+---@param trait string
+---@return string|false|nil value
+function I:CycleTrait(kind, id, trait)
+	local def = Traits.defs[trait]
+	if not def or not def.values then return false end
+	local current, nextValue = self:GetUserTrait(kind, id, trait), nil
+	if current == nil then
+		nextValue = def.values[1]
+	else
+		for i, v in ipairs(def.values) do
+			if v == current then nextValue = def.values[i + 1] end
+		end
+	end
+	if not self:SetTrait(kind, id, trait, nextValue) then return false end
+	return nextValue
+end
+
+---Consenso a leggere i profili pubblici Total RP 3 degli altri giocatori (spento di base). Vale anche con il
+---modulo `totalRP3` acceso: senza il modulo il consenso resta registrato ma non ha effetto.
+---@param on boolean
+---@return boolean on
+function I:SetTRP3Consent(on)
+	on = on and true or false
+	NS.db.interlocutor.trp3Others = on
+	return on
+end
+
 ---------------------------------------------------------------------------
 -- Comando (/au chi) e diagnostica
 ---------------------------------------------------------------------------
@@ -705,7 +809,7 @@ function I:Command(rest)
 		if arg == "on" or arg == "si" or arg == "sì" then on = true
 		elseif arg == "off" or arg == "no" then on = false
 		else on = not s.trp3Others end
-		s.trp3Others = on
+		on = self:SetTRP3Consent(on)
 		Say(on and "other_trp3_on" or "other_trp3_off")
 		return
 	end
