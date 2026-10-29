@@ -25,10 +25,11 @@ Servono a ricordare *perché* il progetto è fatto in un certo modo, non solo *c
 | [0015](0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, pesi moltiplicativi, stile che pesa e non esclude | accettata |
 | [0016](0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in come dati, affinità morbida e filtri rigidi, Total RP 3 con consenso | accettata |
 | [0017](0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale | accettata |
+| [0018](0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente | accettata |
 
 ## Decisioni in sospeso
 
-- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0017).
+- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0018).
 
 ## Come scriverne una nuova
 

@@ -146,13 +146,16 @@ local function BuildRow(i)
 end
 
 local function EnsureTabButtons()
+	-- le schede si stringono quando sono molte (la finestra è larga 568 utili)
+	local count = math.max(1, #JournalFrame.tabs)
+	local width = math.min(110, math.floor(568 / count) - 4)
 	for i, t in ipairs(JournalFrame.tabs) do
 		if not tabButtons[t.id] then
-			local b = W.Button(frame, "", 110, 24, function()
+			local b = W.Button(frame, "", width, 24, function()
 				state.tab, state.page = t.id, 1
 				JournalFrame:Refresh()
 			end)
-			b:SetPoint("TOPLEFT", 16 + (i - 1) * 114, -78)
+			b:SetPoint("TOPLEFT", 16 + (i - 1) * (width + 4), -78)
 			tabButtons[t.id] = b
 		end
 	end
@@ -362,9 +365,12 @@ local function BuildExport()
 	exportFrame:Hide()
 end
 
----Apre la finestra con il testo del diario, già selezionato, pronto per Ctrl+C.
+---Apre la finestra con un testo, già selezionato, pronto per Ctrl+C: il diario, o quello che altri moduli passano
+---(le relazioni di S6b).
+---@param text? string il testo (predefinito: l'esportazione del diario)
+---@param titleKey? string chiave del titolo (predefinita: mem_export)
 ---@return boolean opened false se la finestra non si può costruire
-function JournalFrame:ShowExport()
+function JournalFrame:ShowExport(text, titleKey)
 	if not exportFrame then
 		local ok, err = pcall(BuildExport)
 		if not ok then
@@ -373,9 +379,9 @@ function JournalFrame:ShowExport()
 			return false
 		end
 	end
-	local text = LM:ExportText()
+	text = text or LM:ExportText()
 	exportFrame.text = text
-	exportFrame.title:SetText(NS:L("mem_export"))
+	exportFrame.title:SetText(NS:L(titleKey or "mem_export"))
 	exportFrame.help:SetText(NS:L("mem_export_help"))
 	exportFrame.close:SetText(NS:L("mem_close"))
 	exportFrame.box:SetText(text)

@@ -1,0 +1,95 @@
+-- English texts for the relationship lines (step S6b). The rules are in Data/RegistryRelations.lua.
+local ADDON, NS = ...
+
+NS:AddTexts("enUS", {
+	["rel.greet.unknown"] = {
+		"May the road be kind to you, {target}. I don't believe we have met.",
+		"Well met. Our paths have not crossed before; you will learn my name soon enough.",
+	},
+	["rel.greet.acquaintance"] = {
+		"Ah, you. The face I remember; the name will take me a moment.",
+		"We have met before, I think. How do things stand around here?",
+	},
+	["rel.greet.friend"] = {
+		"Hey, {target}! Let me look at you. Still in one piece, I see.",
+		"Good to see you. The road felt longer with nobody to complain to.",
+	},
+	["rel.greet.friend.old"] = { "With you there is no need for formalities. Sit down, stay a while." },
+	["rel.greet.comrade"] = {
+		"Side by side, as ever. Tell me where we are headed.",
+		"You and I have seen worse. This will be a stroll.",
+	},
+	["rel.greet.rival"] = {
+		"There you are. I wish I could dislike you with a little more conviction.",
+		"I bow, rival. You are the only one who makes me give my best.",
+	},
+	["rel.greet.lover"] = {
+		"There you are. The rest of the world can wait a moment.",
+		"Time, without you, walks slowly.",
+	},
+	["rel.greet.wary"] = {
+		"I greet you. Do not mistake it: courtesy, not trust.",
+		"Good day. Let us keep our hands where they can be seen, shall we?",
+	},
+	["rel.greet.enemy"] = {
+		"We meet again. I hope at least one of us has learned something.",
+		"Say what you came to say, and do not linger.",
+	},
+	["rel.greet.feared"] = { "My pulse quickens every time. I will not let it show." },
+	["rel.bye.unknown"] = { "Go in peace, and may the path lead you somewhere kinder." },
+	["rel.bye.acquaintance"] = { "See you around, then. Roads have a habit of crossing again." },
+	["rel.bye.friend"] = {
+		"Take it slow, and send word if you do not return. Do not keep me waiting too long.",
+		"Be careful, all right? The world has enough empty chairs at table.",
+	},
+	["rel.bye.comrade"] = { "May your blade stay keen and your guard high. Until the next front." },
+	["rel.bye.rival"] = { "Do not die before you have lost to me. It would be unsporting." },
+	["rel.bye.lover"] = { "Come back soon. I will leave a candle in the window." },
+	["rel.bye.hostile"] = { "Go. May the next time find us wiser, or at least further apart." },
+	["rel.thanks.unknown"] = { "I am grateful. One day I shall remember your name." },
+	["rel.thanks.friend"] = { "Thanks. Friends do not keep count, but I will keep it anyway." },
+	["rel.thanks.comrade"] = { "You covered my back. Next time it is my turn, and I will not take no for an answer." },
+	["rel.thanks.rival"] = {
+		"Thank you. Tell no one; it would ruin both our reputations.",
+		"A favor from you... I will repay it with interest. As with everything.",
+	},
+	["rel.thanks.lover"] = { "Thank you. And not only for this." },
+	["rel.thanks.wary"] = { "Noted. I will stay on my guard, but it is noted." },
+	["rel.heal.friend"] = {
+		"Hold still, I will patch you up. Do not look at the wound; it is ugly.",
+		"Easy now, the light is coming. And next time, duck.",
+	},
+	["rel.heal.comrade"] = { "While I have breath, you will not fall." },
+	["rel.heal.lover"] = { "My hands tremble more for you than for the fight." },
+	["rel.heal.rival"] = { "I am healing you because I want to beat you at full strength. Do not let it go to your head." },
+	["rel.heal.enemy"] = { "Healing someone who wronged me. I wonder which of us ought to be ashamed." },
+	["rel.heal.unknown"] = { "I do not know you, but a wound does not ask for a name." },
+	["rel.battle.friend"] = {
+		"With a friend beside me, even this weighs less.",
+		"If I fall, shout. If you fall, I will catch you.",
+	},
+	["rel.battle.comrade"] = { "Shield to shield. They will remember us as a wall." },
+	["rel.battle.lover"] = { "Do not look at me, look at them. I need a clear head, and you are not helping." },
+	["rel.battle.rival"] = { "I hope to do better than you today. For once I would like to win while on the same side." },
+	["rel.battle.enemy"] = { "Fighting beside someone I swore never to forgive. The field makes no such distinctions." },
+	["rel.battle.known"] = { "grips the hilt and hears, close by, a familiar breath." },
+	["rel.victory.friend"] = { "We did it. The first round is mine, and that is not a suggestion." },
+	["rel.victory.comrade"] = { "The field is ours. Remember the name of whoever stood beside you." },
+	["rel.victory.lover"] = { "Unharmed, both of us. I will keep telling myself until I believe it." },
+	["rel.victory.rival"] = { "I admit you fought well. Do not expect me to say it twice." },
+	["rel.npc.acquaintance"] = { "A face I have seen before. We have not said much, but enough to know each other." },
+	["rel.npc.indifferent"] = { "We have known each other a while and I feel nothing either way. Even that is a bond, of a sort." },
+	["rel.npc.friend"] = {
+		"Seeing a {relation} again always helps, even when there is nothing to ask.",
+		"A friendly face, here. I feel a little less far from home.",
+	},
+	["rel.npc.friend.old"] = { "How many times have we crossed paths by now? Enough that words are no longer needed." },
+	["rel.npc.comrade"] = { "If I ever needed one more arm, here is one that would not ask why." },
+	["rel.npc.rival"] = { "A {relation}. It is rare for esteem to be this loud." },
+	["rel.npc.enemy"] = { "Every word here is a step on thin ice. I remember what happened; I suspect no one on the other side has forgotten." },
+	["rel.npc.wary"] = { "The smile is polite; my hand stays near my purse. Old habits, and good reasons." },
+	["rel.npc.feared"] = { "Speaking here takes a courage I would never admit to. I choose my words well." },
+	["rel.npc.lover"] = { "Smiling now costs nothing. Hiding it does." },
+	["rel.npc.bond"] = { "some bonds no longer need a name; they simply remain." },
+	["rel.npc.known"] = { "This is not the first time we have talked, this place and I. In the end you start to recognise each other." },
+})

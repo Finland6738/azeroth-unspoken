@@ -693,11 +693,13 @@ end)
 ---------------------------------------------------------------------------
 -- Privacy
 ---------------------------------------------------------------------------
+-- Unica eccezione (S6b): CHAT_MSG_WHISPER_INFORM, di cui le relazioni leggono solo il nome del destinatario (TestRelations
+-- lo verifica: il testo non entra mai nell'envelope, né nei dati salvati).
 T.run("nessun testo di chat o di whisper nella memoria", function()
 	Fresh()
 	for event in pairs(NS.EventBus.sources) do
-		T.ok(not event:find("^CHAT_MSG"), "nessuna sorgente di chat: " .. event)
-		T.ok(not event:find("WHISPER"), "nessuna sorgente di whisper: " .. event)
+		T.ok(not event:find("^CHAT_MSG") or event == "CHAT_MSG_WHISPER_INFORM", "nessuna sorgente di chat: " .. event)
+		T.ok(not event:find("WHISPER") or event == "CHAT_MSG_WHISPER_INFORM", "nessuna sorgente di whisper: " .. event)
 	end
 	-- Record scarta ogni campo che non sia previsto
 	local e = LM:Record({ kind = "level", level = 12, text = "ti ho scritto in privato", whisper = "segreto",
@@ -727,7 +729,7 @@ T.run("migrazione dello schema 3: il segnaposto vuoto diventa la memoria", funct
 	AzerothUnspokenCharacterDB = { schemaVersion = 3, memory = { uses = { x = 1 } }, personality = {}, memories = {}, arcs = {}, history = {} }
 	Config:Load()
 	local c = AzerothUnspokenCharacterDB
-	T.eq(c.schemaVersion, 4, "versione del personaggio")
+	T.eq(c.schemaVersion, 5, "versione del personaggio")
 	T.eq(c.memories.version, 1, "versione della memoria")
 	T.ok(type(c.memories.entries) == "table" and type(c.memories.places) == "table" and type(c.memories.flags) == "table"
 		and type(c.memories.stats) == "table" and c.memories.nextId == 1, "campi presenti")
@@ -746,7 +748,7 @@ T.run("migrazione dello schema 3: il segnaposto vuoto diventa la memoria", funct
 	-- da uno schema ancora più vecchio
 	AzerothUnspokenCharacterDB = { schemaVersion = 1, memory = {} }
 	Config:Load()
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 4, "da schema 1")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 5, "da schema 1")
 	T.eq(AzerothUnspokenCharacterDB.memories.version, 1, "memoria creata")
 	T.ok(Config.migrations.character[4] ~= nil and Config.migrations.global[4] ~= nil, "le migrazioni 4 esistono")
 end)

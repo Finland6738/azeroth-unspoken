@@ -272,6 +272,27 @@ senza quel ricordo. `ctx.memory` ha anche `flags` (i flag narrativi) e `session`
   32 caratteri) e li imposta anche il gioco (`first_death`, `first_capital`, `level_10`, `level_20`…).
 - Un argomento da evitare (`topic:death`) esclude anche le frasi di richiamo che lo toccano: scrivi il tag come per ogni frase.
 
+### Relazioni: saluti, congedi, compagni, NPC conosciuti
+
+Le condizioni di relazione leggono `ctx.relation` e simili, costruiti dal sistema delle relazioni (`Systems/Relationships.lua`)
+per la **persona dell'interazione**: l'NPC con cui si sta parlando (dialogo, mercante...) o il bersaglio. Se la persona non è
+nella lista, **valgono tutte false** (tranne `isKnown = false`): una frase che cita un rapporto non esce senza quel rapporto.
+
+| Condizione | Vale se |
+|---|---|
+| `relation = "friend"` (o un elenco) | l'etichetta in uso è una di quelle: `stranger`, `acquaintance`, `indifferent`, `friend`, `comrade`, `rival`, `enemy`, `disliked`, `wary`, `feared`, `lover` (e quelle aggiunte da pacchetti con `NS:RegisterRelationData`). Un'etichetta scelta a mano dall'utente ha la precedenza sulla derivata |
+| `disposition = "close"` | la disposizione complessiva: `hated`, `enemy`, `unfriendly`, `suspicious`, `neutral`, `acquaintance`, `friend`, `close`, `bond` |
+| `trustMin`, `trustMax`, `respectMin`, `affectionMin`, `fearMax`, `loyaltyMin`... | l'asse è almeno / al massimo quel numero: `familiarityMin`, `trust`, `respect`, `affection`, `fear`, `loyalty`, `attraction` (questo solo se l'utente l'ha acceso) |
+| `isKnown = true` / `false` | si conosce abbastanza la persona (familiarità minima, o etichetta scelta; un giocatore in lista è sempre noto) / non la si conosce |
+| `relationKind = "npc"` (o `"player"`) | la persona è un NPC o un giocatore |
+| `withRelation = "friend"` | **un compagno di gruppo** ha quell'etichetta (per la battaglia o la vittoria al fianco di qualcuno) |
+
+- **Segnaposto** `{relation}`: l'etichetta nella lingua scelta (o il testo che l'utente le ha dato). Senza una persona la variante è scartata. Attenzione: i nomi sono maschili/neutri; scrivi frasi che reggono ogni etichetta, oppure dichiara l'etichetta nelle condizioni.
+- **Tag di affinità con ambito `rel.`** (fattore `R` del peso, stessa grammatica di quelli del Soul): `rel.relation:friend`, `rel.disposition:close`, `rel.trust:high` (fasce `low`/`mid`/`high` degli assi) sono **affinità morbida**; `rel.req:relation:rival` è un **requisito rigido** (senza quel rapporto la frase non esce); `rel.not:relation:enemy` un'**esclusione rigida**. Il validatore segnala (`badTag`) i tag senza ambito per questi tratti.
+- **Registro**: con la familiarità il narratore preferisce registri diversi (dal formale `ceremonial` all'intimo `intimate`): i `styles` della frase fanno il resto.
+- **Evento `relation_npc`** (dichiarato da `base_relations`): l'incontro con un NPC già conosciuto. Ogni sua frase deve dichiarare una condizione di relazione (`relation`, `isKnown = true`, `relationKind`...): il validatore segnala `relationWithoutRelation` altrimenti. Un pacchetto può dichiarare altri eventi del genere con `AzerothUnspoken.Relationships:RegisterRelationEvent(evento, function(ctx) return … end)`.
+- Esempi: `Data/RegistryRelations.lua` (51 frasi IT/EN).
+
 ### Condizioni nuove
 
 Un pacchetto può dichiarare condizioni proprie, per dati che mette nel contesto (`NS:Trigger(evento, { hasPet = true })`)
@@ -300,6 +321,7 @@ oppure `AzerothUnspoken:RegisterCondition("hasPet", nil, "bool")`.
 | `{spell}` | incantesimo appena lanciato |
 | `{zone}`, `{subzone}` | luogo |
 | `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}` | nella lingua scelta |
+| `{relation}` | l'etichetta del rapporto con la persona dell'interazione (relazioni, S6b) |
 | `{g:maschile\|femminile}` | variante per genere: `{g:pronto\|pronta}` |
 | `{nome}` | una voce del vocabolario, ad esempio `{cry}` (grido di guerra adatto alla razza) |
 

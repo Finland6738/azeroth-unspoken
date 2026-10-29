@@ -5,8 +5,8 @@ local W = NS.Widgets
 local SettingsFrame = NS:RegisterModule("settings")
 
 local panel
-local MODULE_ORDER = { "personal", "world", "npc", "memory", "storyArcs", "social", "publicChat", "audio" }
-local MODULE_LIVE = { personal = true, world = true, publicChat = true, memory = true }   -- moduli con effetto già oggi
+local MODULE_ORDER = { "personal", "world", "npc", "memory", "relations", "storyArcs", "social", "publicChat", "audio" }
+local MODULE_LIVE = { personal = true, world = true, publicChat = true, memory = true, relations = true }   -- moduli con effetto già oggi
 local DEPTHS = { "natural", "literary", "elevated" }
 local COOLDOWNS = { 15, 30, 45, 60, 90, 120, 180 }
 
@@ -124,6 +124,7 @@ local function CreatePanel()
 	Row(2, 8, function() return NS:L("opt_test") end, function() NS.Narrator:ShowTest() end)
 	Row(2, 9, function() return NS:L("opt_soul") end, function() if NS.ProfileFrame then NS.ProfileFrame:Toggle() end end)
 	Row(2, 10, function() return NS:L("opt_journal") end, function() if NS.JournalFrame then NS.JournalFrame:Toggle() end end)
+	Row(2, 11, function() return NS:L("opt_relations") end, function() if NS.RelationsFrame then NS.RelationsFrame:Toggle() end end)
 
 	-- moduli: griglia a quattro colonne
 	local modTitle = panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")

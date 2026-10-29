@@ -34,6 +34,7 @@ local ADDON, NS = ...
 ---@field tag string prefisso del tratto nei tag delle frasi (predefinito: id)
 ---@field exclusive? boolean set: un valore presente esclude le frasi che lo toccano
 ---@field hard? boolean il tratto non è mai contraddetto (dichiarato per informazione dell'interfaccia)
+---@field scope? string ambito dei tag in cui il tratto è valido (per esempio "rel" per le relazioni di S6b); nil = ogni ambito
 
 ---@alias AUTraits table<string, string|number|table<string, boolean>>
 
@@ -274,6 +275,9 @@ function Traits.CheckTag(tag)
 	if not Traits.scopes[t.scope] then return ("tag '%s': ambito '%s' sconosciuto"):format(tag, t.scope) end
 	local def = Traits.tagIndex[t.name]
 	if not def then return ("tag '%s': tratto '%s' sconosciuto"):format(tag, t.name) end
+	if def.scope ~= nil and def.scope ~= t.scope then
+		return ("tag '%s': il tratto '%s' si scrive %s.%s:%s"):format(tag, t.name, def.scope, t.name, t.value)
+	end
 	if not def.valid[t.value] then return ("tag '%s': valore '%s' non ammesso per '%s'"):format(tag, t.value, def.id) end
 	if t.mode ~= "affinity" and def.exclusive then
 		return ("tag '%s': '%s' è già esclusivo, si scrive %s:%s"):format(tag, def.id, def.tag, t.value)
@@ -294,7 +298,7 @@ function Traits.Evaluate(tags, traits, scope)
 	for tag in pairs(tags) do
 		local t = Traits.ParseTag(tag)
 		local def = t and t.scope == scope and Traits.tagIndex[t.name] or nil
-		if def and def.valid[t.value] then
+		if def and (def.scope == nil or def.scope == scope) and def.valid[t.value] then
 			local has = Traits.Has(def, traits, t.value)
 			if t.mode == "not" then
 				if has then return 0, tag end

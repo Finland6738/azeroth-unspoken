@@ -292,6 +292,8 @@ local APIS = {
 	{ "GetRealZoneText" }, { "GetSubZoneText" }, { "C_Map.GetBestMapForUnit" },
 	{ "GetGameTime" }, { "IsInInstance" }, { "C_GossipInfo.GetText" },
 	{ "InCinematic" }, { "IsInCinematicScene" },
+	{ "UnitFullName" }, { "GetNormalizedRealmName" }, { "hooksecurefunc" },
+	{ "BuyMerchantItem" }, { "RepairAllItems" }, { "C_Container.UseContainerItem" },
 }
 
 function Compat:Probe()

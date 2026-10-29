@@ -173,6 +173,7 @@ NS:RegisterLanguage("en", {
 			.. "/au narrator [history|reset|clear] - the narrator box\n"
 			.. "/au soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>] - character personality\n"
 			.. "/au journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset] - character memory and journal\n"
+			.. "/au relations [list|people|add <name>|note <name> <text>|export|...] - relationships with NPCs and players\n"
 			.. "/au greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest\n"
 			.. "/au event <name> - propose a line for an event (battle, zone, muse...)\n"
 			.. "/au cast <spell> - a line for a spell (handy in macros)\n"
