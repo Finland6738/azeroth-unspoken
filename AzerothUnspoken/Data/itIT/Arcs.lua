@@ -9,13 +9,13 @@ NS:AddArcTexts("itIT", {
 		title = "Il sentiero ritrovato",
 		summary = "Sei di nuovo dove il cammino è cominciato. Una storia breve su quanta strada separa chi eri da chi sei, e su come riprenderla.",
 		states = {
-			DISCOVERED = "Hai ritrovato il luogo da cui sei partito. Fermati un momento: la storia aspetta che tu rifletta, qui, su ciò che questo posto è stato.",
+			DISCOVERED = "Hai ritrovato il luogo da cui è cominciato il tuo cammino. Fermati un momento: la storia aspetta che tu rifletta, qui, su ciò che questo posto è stato.",
 			REFLECTED = "Hai guardato il sentiero con occhi nuovi. Adesso resta solo da riprenderlo: quando lascerai questo luogo, la storia si chiuderà.",
 			RESOLVED = "Hai ripreso il cammino. Un ricordo di questa storia resta nel diario.",
 		},
 		choices = {
 			reflect = {
-				prompt = "Che cosa ti dice, adesso, il luogo da cui sei partito?",
+				prompt = "Che cosa ti dice, adesso, il luogo da cui è cominciato il tuo cammino?",
 				options = {
 					gratitude = { label = "Ricordare con gratitudine", note = "Il ricordo di questo luogo è diventato un grazie." },
 					distance = { label = "Misurare la strada fatta", note = "Il ricordo è diventato una misura: quanto hai camminato." },
@@ -67,7 +67,7 @@ NS:AddArcTexts("itIT", {
 		summary = "Chi cammina da una capitale all'altra impara che ogni città ha le sue mura e le sue porte. Una storia breve su che cosa si cerca, varcandole.",
 		stateNames = { JOURNEY = "tre porte attraversate" },
 		states = {
-			DISCOVERED = "Hai varcato le mura di una seconda capitale. La storia aspetta la terza porta.",
+			DISCOVERED = "Hai varcato le mura di un'altra capitale. La storia aspetta che tu ne abbia attraversate tre.",
 			JOURNEY = "Hai attraversato tre capitali. Dopo qualche minuto, dal diario, la storia ti chiederà che cosa cercavi: quando vorrai.",
 			REFLECTED = "Hai risposto. Resta da lasciare le mura e riprendere la strada aperta.",
 			RESOLVED = "Hai lasciato le mura per la strada aperta. Un ricordo di questa storia resta nel diario.",
@@ -96,7 +96,7 @@ NS:AddTexts("itIT", {
 		{ "Ogni strada che ho percorso nasce da questa. Per un istante la sento intera, come un filo teso alle mie spalle.", depth = "elevated" },
 	},
 	["arc.path.open.e"] = {
-		"si ferma dove il sentiero ha inizio e lascia che il ricordo la raggiunga prima dei passi.",
+		"si ferma dove il sentiero ha inizio e lascia che il ricordo arrivi prima dei passi.",
 		"ritrova {zone} come si ritrova un vecchio libro: le pagine sono le stesse, è la lettura a essere cambiata.",
 	},
 	["arc.path.refl.gratitude"] = {
@@ -142,14 +142,14 @@ NS:AddTexts("itIT", {
 	},
 	["arc.face.refl.remember"] = {
 		"Voglio ricordare {other} com'è adesso: il tono, la fretta, la stanchezza. Le persone cambiano, e di rado avvisano.",
-		"Se un giorno {other} non fosse più lì all'ora di sempre, vorrei almeno ricordare com'era trovarlo.",
+		"Se un giorno {other} non fosse più lì all'ora di sempre, vorrei almeno ricordare com'era avere qualcuno ad aspettare.",
 	},
 	["arc.face.refl.distance"] = {
 		"Conosco {other}, e basta così. Ci sono rapporti che reggono proprio perché nessuno li chiama per nome.",
 		"Un cenno, una moneta, una porta aperta. Tenere le distanze non vuol dire non essere grati.",
 	},
 	["arc.face.done.thank"] = {
-		"dice a {other} una parola di ringraziamento, breve e vera. L'altro la raccoglie senza farne caso, come si raccoglie ciò che si sapeva già.",
+		"dice a {other} una parola di ringraziamento, breve e vera. La parola viene raccolta senza farne caso, come si raccoglie ciò che si sapeva già.",
 	},
 	["arc.face.done.remember"] = {
 		"si ferma ancora un istante con {other}, solo per fissare l'immagine: il resto lo farà il tempo. Un volto noto è fatto anche di questo.",
@@ -196,7 +196,7 @@ NS:AddTexts("itIT", {
 	---------------------------------------------------------------------------
 	["arc.gates.open.i"] = {
 		"{zone}: un'altra città, un'altra cerchia di mura. Comincio a riconoscere in che cosa le capitali si somigliano, e in che cosa no.",
-		"Seconda capitale, e già il mondo mi sembra più piccolo e più grande insieme.",
+		"Un'altra capitale ancora, e già il mondo mi sembra più piccolo e più grande insieme.",
 	},
 	["arc.gates.open.e"] = {
 		"varca le mura di {zone} con la polvere di un'altra capitale ancora sugli stivali. Le porte delle città hanno un loro modo di accogliere chi viene da lontano.",

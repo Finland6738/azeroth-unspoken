@@ -129,6 +129,7 @@ local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 ---------------------------------------------------------------------------
 -- Registro degli archi (dati: Data/Arcs.lua)
 ---------------------------------------------------------------------------
+local CleanItem   -- definita con i dati salvati, più sotto: RegisterArcs ricontrolla le voci già salvate
 ---Controlla la definizione di un arco. Restituisce l'elenco dei problemi (vuoto = va bene).
 ---@param def table
 ---@return string[]
@@ -264,6 +265,9 @@ function NS:RegisterArcs(spec)
 			end
 			if not SA.defs[id] then table.insert(SA.order, id) end
 			SA.defs[id] = def
+			-- una voce già salvata (l'arco arriva da un pacchetto caricato dopo l'avvio) si ricontrolla con la sua definizione
+			local saved = not def.bad and not SA.readOnly and SA:Item(id)
+			if saved then SA:Data().items[id] = CleanItem(id, saved, def) or saved end
 		end
 	end
 	for lang, map in pairs(type(spec.texts) == "table" and spec.texts or EMPTY) do NS:AddArcTexts(lang, map, spec.pack) end
@@ -346,6 +350,8 @@ function SA:Data()
 		a = {}
 		c.arcs = a
 	end
+	-- dati di una versione più nuova: si leggono così come sono, non si correggono (Sanitize li mette in sola lettura)
+	if IsNumber(a.version) and a.version > self.VERSION then return a end
 	if type(a.items) ~= "table" then a.items = {} end
 	if type(a.stats) ~= "table" then a.stats = {} end
 	if not IsNumber(a.version) then a.version = self.VERSION end
@@ -381,7 +387,7 @@ local function CleanSubject(s)
 end
 
 -- una voce di un arco: solo i campi previsti; `def` (se l'arco è registrato) dice quali stati sono ammessi
-local function CleanItem(id, item, def)
+CleanItem = function(id, item, def)
 	if type(item) ~= "table" then return nil end
 	local states = def and def.states
 	local state = type(item.state) == "string" and item.state or "LOCKED"
@@ -397,18 +403,19 @@ local function CleanItem(id, item, def)
 		end
 	end
 	if state == "RESOLVED" then out.ended = out.ended or out.t.RESOLVED or out.since end
-	-- un passo in attesa vale solo se il passo esiste e parte dallo stato attuale
-	if type(item.pending) == "table" and IsNumber(item.pending.step) and def and state ~= "LOCKED" and state ~= "RESOLVED" then
+	-- un passo in attesa vale solo se il passo esiste e parte dallo stato attuale; se l'arco non è ancora registrato (i
+	-- pacchetti si caricano dopo l'avvio dell'addon) la forma si conserva e si ricontrolla alla registrazione
+	if type(item.pending) == "table" and IsNumber(item.pending.step) and state ~= "LOCKED" and state ~= "RESOLVED" then
 		local idx = math.floor(item.pending.step)
-		local step = def.steps and def.steps[idx]
-		if step and step.from == state and step.choose then
+		local step = def and def.steps and def.steps[idx]
+		if (not def and idx >= 1) or (step and step.from == state and step.choose) then
 			out.pending = { step = idx, t = IsNumber(item.pending.t) and item.pending.t or out.since }
 		end
 	end
-	if out.waiting and def and state == "LOCKED" and IsNumber(item.waitStep) then
+	if out.waiting and state == "LOCKED" and IsNumber(item.waitStep) then
 		local idx = math.floor(item.waitStep)
-		local step = def.steps and def.steps[idx]
-		if step and step.from == "LOCKED" then out.waitStep = idx else out.waiting = nil end
+		local step = def and def.steps and def.steps[idx]
+		if (not def and idx >= 1) or (step and step.from == "LOCKED") then out.waitStep = idx else out.waiting = nil end
 	elseif out.waiting then
 		out.waiting = nil
 	end
@@ -727,20 +734,25 @@ function SA:Fire(trigger, extra)
 		local state = item and item.state or "LOCKED"
 		local mode = item and item.mode or "active"
 		if def and not def.bad and mode == "active" and state ~= "RESOLVED" and not (item and (item.pending or item.waiting)) then
+			local steps = {}
 			for idx, step in ipairs(def.steps) do
-				if step.from == state and Has(step.on, trigger) then
-					table.insert(runnable, { def = def, item = item, idx = idx, step = step })
-					break
-				end
+				if step.from == state and Has(step.on, trigger) then table.insert(steps, { idx = idx, step = step }) end
 			end
+			if #steps > 0 then table.insert(runnable, { def = def, item = item, steps = steps }) end
 		end
 	end
 	if #runnable == 0 then return moved end
 	local ctx, now = NS:BuildContext(extra), Now()
 	for _, r in ipairs(runnable) do
-		if not Avoids(r.def.topic) and StepMatches(self, r.def, r.item, r.step, trigger, ctx, extra, now) then
-			local result = self:Apply(r.def, r.idx, { extra = extra })
-			if result then table.insert(moved, { id = r.def.id, result = result }) end
+		if not Avoids(r.def.topic) then
+			-- il primo passo (in ordine) le cui condizioni valgono; un solo passo per arco
+			for _, c in ipairs(r.steps) do
+				if StepMatches(self, r.def, r.item, c.step, trigger, ctx, extra, now) then
+					local result = self:Apply(r.def, c.idx, { extra = extra })
+					if result then table.insert(moved, { id = r.def.id, result = result }) end
+					break
+				end
+			end
 		end
 	end
 	return moved
@@ -786,6 +798,7 @@ function SA:Choose(id, option)
 	local def, item = self.defs[id], self:Item(id)
 	if not def or def.bad then return false, "unknown" end
 	if not item or item.mode ~= "active" or item.state == "LOCKED" or item.state == "RESOLVED" then return false, "mode" end
+	if Avoids(def.topic) then return false, "avoided" end
 	local offer = self:Offering(id)
 	if not offer then return false, item.pending and "not_now" or "nothing" end
 	local step = def.steps[offer.step]
@@ -807,6 +820,7 @@ function SA:Start(id)
 	local def, item = self.defs[id], self:Item(id)
 	if not def or def.bad then return false, "unknown" end
 	if not item or item.mode ~= "active" or not item.waiting or not item.waitStep then return false, "not_available" end
+	if Avoids(def.topic) then return false, "avoided" end
 	local result, why = self:Apply(def, item.waitStep, { start = true, extra = item.subject and { arcNpc = item.subject } or nil })
 	return result == "moved", why
 end
@@ -1064,8 +1078,10 @@ function handlers.LEVEL_UP() SA:Fire("level") end
 function handlers.MEMORY_FLAG(env)
 	-- i flag che gli archi stessi lasciano a ogni stato non fanno avanzare nulla: un evento vero muove un arco di un
 	-- solo passo, e non a catena
+	-- né quelli messi a mano dal giocatore (/au diario flag) né quelli automatici della memoria (first_death, level_N...),
+	-- che stanno già dentro lo stesso evento (death, level, zone) che li ha causati: un evento vero muove un arco di un passo
 	local name = env.context.name
-	if type(name) ~= "string" or name:find("^arc_") then return end
+	if type(name) ~= "string" or name:find("^arc_") or env.context.source ~= "addon" then return end
 	SA:Fire("flag", { arcFlag = name })
 end
 
@@ -1328,7 +1344,12 @@ function SA:Command(rest)
 		NS:Print("Story Arcs: " .. self:Status())
 	elseif word == "max" then
 		local ok, v = self:SetMaxActive(arg)
-		if not ok then Say("arc_cmd_max_bad") else Say("arc_cmd_max", v) end
+		if not ok then
+			Say("arc_cmd_max_bad")
+		else
+			Say("arc_cmd_max", v)
+			if self:ActiveCount() > v then Say("arc_cmd_max_over", self:ActiveCount()) end
+		end
 	elseif word == "off" or word == "spegni" then
 		self:SetEnabled(false)
 		Say("arc_cmd_module_off")

@@ -59,6 +59,7 @@ NS:RegisterLanguage("en", {
 		arc_why_not_now = "Not now: the story waits for a place or a moment.",
 		arc_why_bad_option = "That is not one of the possible answers.",
 		arc_why_not_available = "This story is not available to begin.",
+		arc_why_avoided = "This story touches a topic your character avoids (/au soul).",
 		arc_why_illegal = "That step is not allowed by the story's state.",
 
 		-- /au stories command
@@ -67,6 +68,7 @@ NS:RegisterLanguage("en", {
 		arc_cmd_nojournal = "I cannot open the journal: use /au stories list.",
 		arc_cmd_max = "Stories under way together: at most %d.",
 		arc_cmd_max_bad = "It needs to be 1 or 2.",
+		arc_cmd_max_over = "There are now %d stories under way: they stay as they are, but no new one begins until you suspend or skip one.",
 		arc_cmd_module_off = "Stories off: none opens, moves on or speaks.",
 		arc_cmd_module_on = "Stories on.",
 		arc_cmd_help = "usage: /au stories [list | journal | choose <arc> <option> | start <arc> | suspend | resume | skip | disable | enable <arc|all> | max <1|2> | on | off | status]",

@@ -1146,7 +1146,7 @@ T.run("il diario ha la scheda delle storie: attive, concluse, saltate, con le sc
 	local detail = tab.rows()
 	text = RowsText(detail)
 	T.ok(text:find("Sei di nuovo dove il cammino è cominciato", 1, true), "il racconto")
-	T.ok(text:find("Hai ritrovato il luogo da cui sei partito", 1, true), "la riga dello stato scoperto")
+	T.ok(text:find("Hai ritrovato il luogo da cui è cominciato il tuo cammino", 1, true), "la riga dello stato scoperto")
 	T.ok(RowWith(detail, "Torna alle storie"), "riga per tornare")
 	T.ok(RowWith(detail, "Sospendi la storia") and RowWith(detail, "Salta la storia") and RowWith(detail, "Disattiva la storia"), "azioni sull'arco")
 	-- la scelta dal diario
@@ -1481,4 +1481,125 @@ T.run("un'altra lingua, un cambio di lingua e un arco senza testi", function()
 	local rows = StoriesTab().rows()
 	T.ok(#rows > 0, "il diario si costruisce lo stesso")
 	Forget("tn")
+end)
+
+---------------------------------------------------------------------------
+-- Casi trovati dalla revisione indipendente
+---------------------------------------------------------------------------
+T.run("i flag a mano o automatici non muovono gli archi; solo quelli di un sistema dell'addon", function()
+	Fresh()
+	NS:RegisterArcs({ arcs = { tf = {
+		steps = {
+			{ from = "LOCKED", to = "DISCOVERED", on = { "flag" }, when = { remembered = "pippo" } },
+			{ from = "DISCOVERED", to = "REFLECTED", on = { "flag" }, when = { remembered = "pippo" } },
+			{ from = "REFLECTED", to = "RESOLVED", on = { "flag" }, when = { remembered = "pippo" } },
+		},
+	} } })
+	Cmd("diario flag pippo")
+	ADVANCE(1)
+	T.ok(LM:HasFlag("pippo"), "il flag a mano c'è")
+	T.eq(State("tf"), "LOCKED", "un flag messo a mano dal giocatore non apre un arco")
+	LM:ClearFlag("pippo")
+	LM:SetFlag("pippo", "auto")
+	ADVANCE(1)
+	T.eq(State("tf"), "LOCKED", "un flag automatico non apre un arco")
+	LM:ClearFlag("pippo")
+	LM:SetFlag("pippo", "addon")
+	ADVANCE(1)
+	T.eq(State("tf"), "DISCOVERED", "un flag di un sistema dell'addon sì")
+	LM:ClearFlag("pippo")
+	LM:SetFlag("pippo", "addon")
+	ADVANCE(1)
+	T.eq(State("tf"), "REFLECTED", "un solo passo per evento")
+	-- un evento vero con il suo flag automatico: un passo solo
+	Fresh()
+	NS:RegisterArcs({ arcs = { td = {
+		steps = {
+			{ from = "LOCKED", to = "DISCOVERED", on = { "death" } },
+			{ from = "DISCOVERED", to = "REFLECTED", on = { "flag" }, when = { remembered = "first_death" } },
+			{ from = "REFLECTED", to = "RESOLVED", on = { "flag" } },
+		},
+	} } })
+	P.dead = true
+	FIRE("PLAYER_DEAD")
+	ADVANCE(3)
+	T.ok(LM:HasFlag("first_death"), "il flag automatico della morte")
+	T.eq(State("td"), "DISCOVERED", "una morte muove l'arco di un solo passo")
+end)
+
+T.run("gli archi di un pacchetto caricato dopo l'avvio non perdono la scelta in attesa né la disponibilità", function()
+	Fresh()
+	NS.cdb.arcs = { version = 1, items = {
+		tl1 = { state = "DISCOVERED", mode = "active", since = 10, t = { DISCOVERED = 10 }, choices = {}, pending = { step = 2, t = 10 } },
+		tl2 = { state = "LOCKED", mode = "active", since = 0, t = {}, choices = {}, waiting = true, waitStep = 1 },
+		tl3 = { state = "ESPLOSO", mode = "active", since = 10, t = {}, choices = {}, pending = { step = 9 } },
+	} }
+	SA:Sanitize()      -- all'avvio i pacchetti non ci sono ancora
+	T.ok(Item("tl1").pending ~= nil and Item("tl2").waiting and Item("tl2").waitStep == 1, "si conservano senza la definizione")
+	local def = function()
+		return { choices = { c = { options = { "a", "b" } } }, steps = {
+			{ from = "LOCKED", to = "DISCOVERED", on = { "level" } },
+			{ from = "DISCOVERED", to = "REFLECTED", on = { "level" }, choose = "c" },
+			{ from = "REFLECTED", to = "RESOLVED", on = { "level" } },
+		} }
+	end
+	NS:RegisterArcs({ arcs = { tl1 = def(), tl2 = def(), tl3 = def() } })
+	T.ok(Item("tl1").pending ~= nil, "con la definizione la scelta in attesa vale")
+	T.ok(SA:Choose("tl1", "a"), "e si può fare")
+	T.ok(Item("tl2").waiting, "l'arco disponibile resta disponibile")
+	T.ok(SA:Start("tl2"), "e si avvia")
+	T.eq(Item("tl3").state, "LOCKED", "uno stato che l'arco non ha torna a LOCKED alla registrazione")
+	T.eq(Item("tl3").pending, nil, "e il passo in attesa che non esiste cade")
+end)
+
+T.run("scegliere o avviare un arco su un argomento evitato non si può; più passi per lo stesso evento", function()
+	Fresh()
+	NS.db.arcs.maxActive = 1
+	TestArc("tx")
+	SA:Fire("level")
+	NS:RegisterArcs({ arcs = { fallen2 = { topic = "death", steps = {
+		{ from = "LOCKED", to = "DISCOVERED", on = { "death" } },
+		{ from = "DISCOVERED", to = "REFLECTED", on = { "level" } },
+		{ from = "REFLECTED", to = "RESOLVED", on = { "level" } },
+	} } } })
+	P.dead = true
+	FIRE("PLAYER_DEAD")
+	ADVANCE(3)
+	P.dead = false
+	T.ok(Item("fallen2") and Item("fallen2").waiting, "a posti finiti l'arco è disponibile")
+	SA:Suspend("tx")
+	NS.Personality:SetTrait("avoid", { death = true })
+	local ok, why = SA:Start("fallen2")
+	T.ok(not ok and why == "avoided", "l'argomento evitato impedisce anche l'avvio")
+	NS.Personality:SetTrait("avoid", nil)
+	T.ok(SA:Start("fallen2"), "senza l'argomento evitato si avvia")
+	NS.db.arcs.maxActive = 2
+	-- due passi dallo stesso stato per lo stesso evento: vale il primo le cui condizioni valgono
+	Fresh()
+	NS:RegisterArcs({ arcs = { two = { steps = {
+		{ from = "LOCKED", to = "DISCOVERED", on = { "level" } },
+		{ from = "DISCOVERED", to = "REFLECTED", on = { "zone" }, when = { zone = "Orgrimmar" } },
+		{ from = "DISCOVERED", to = "REFLECTED", on = { "zone" }, when = { zone = "Stormwind City" } },
+		{ from = "REFLECTED", to = "RESOLVED", on = { "level" } },
+	} } } })
+	SA:Fire("level")
+	P.zone = "Stormwind City"
+	SA:Fire("zone")
+	T.eq(State("two"), "REFLECTED", "il secondo passo con lo stesso evento è valutato")
+end)
+
+T.run("/au storie max sotto gli archi già attivi avvisa; dati di versione futura non si toccano nemmeno leggendoli", function()
+	Fresh()
+	TestArc("t1"); TestArc("t2")
+	SA:Fire("level")
+	local out = Cmd("storie max 1")
+	T.ok(out:find("restano come sono", 1, true), "avviso: " .. out)
+	NS.db.arcs.maxActive = 2
+	NS.cdb.arcs = { version = 99, items = "altra forma", stats = 7 }
+	SA:Data()
+	T.eq(NS.cdb.arcs.items, "altra forma", "leggere non corregge i dati futuri")
+	T.eq(NS.cdb.arcs.stats, 7, "né le statistiche")
+	SA:Sanitize()
+	T.ok(SA.readOnly, "sola lettura")
+	SA.readOnly = false
 end)

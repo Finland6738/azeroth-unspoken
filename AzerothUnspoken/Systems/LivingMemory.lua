@@ -602,9 +602,10 @@ function LM:SetFlag(name, source)
 	if not m.flags[name] then
 		m.flags[name] = { t = Now(), source = self.SOURCES[source] and source or "addon" }
 		if NS.JournalFrame then NS.JournalFrame:Refresh() end
-		-- un flag nuovo è un fatto per chi lo aspetta (gli archi di S9): sul bus passa solo il nome, mai altro
+		-- un flag nuovo è un fatto per chi lo aspetta (gli archi di S9): sul bus passano solo il nome e chi l'ha messo, mai altro
 		if NS.EventBus and NS.EventBus.Publish then
-			NS.EventBus:Publish("MEMORY_FLAG", { name = name }, { key = name, source = NS.EventBus.SOURCE.ADDON, window = 0 })
+			NS.EventBus:Publish("MEMORY_FLAG", { name = name, source = m.flags[name].source },
+				{ key = name, source = NS.EventBus.SOURCE.ADDON, window = 0 })
 		end
 	end
 	return true

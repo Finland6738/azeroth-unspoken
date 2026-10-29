@@ -59,6 +59,7 @@ NS:RegisterLanguage("it", {
 		arc_why_not_now = "Adesso non si può: la storia aspetta un luogo o un momento.",
 		arc_why_bad_option = "Quella non è una delle risposte possibili.",
 		arc_why_not_available = "Questa storia non è disponibile da cominciare.",
+		arc_why_avoided = "Questa storia tocca un argomento che il tuo personaggio evita (/au anima).",
 		arc_why_illegal = "Quel passo non è ammesso dallo stato della storia.",
 
 		-- comando /au storie
@@ -67,6 +68,7 @@ NS:RegisterLanguage("it", {
 		arc_cmd_nojournal = "Non riesco ad aprire il diario: usa /au storie lista.",
 		arc_cmd_max = "Storie in corso insieme: al massimo %d.",
 		arc_cmd_max_bad = "Serve 1 oppure 2.",
+		arc_cmd_max_over = "Ora ci sono %d storie in corso: restano come sono, ma nessuna nuova comincia finché non ne sospendi o salti qualcuna.",
 		arc_cmd_module_off = "Storie spente: nessuna si apre, avanza o parla.",
 		arc_cmd_module_on = "Storie accese.",
 		arc_cmd_help = "uso: /au storie [lista | diario | scegli <arco> <opzione> | inizia <arco> | sospendi | riprendi | salta | disattiva | attiva <arco|tutte> | max <1|2> | on | off | stato]",

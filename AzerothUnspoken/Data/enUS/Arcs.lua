@@ -67,7 +67,7 @@ NS:AddArcTexts("enUS", {
 		summary = "Whoever walks from one capital to another learns that every city has its walls and its gates. A short story about what one looks for in passing them.",
 		stateNames = { JOURNEY = "three gates crossed" },
 		states = {
-			DISCOVERED = "You have passed the walls of a second capital. The story waits for the third gate.",
+			DISCOVERED = "You have passed the walls of another capital. The story waits until you have crossed three.",
 			JOURNEY = "You have crossed three capitals. After a few minutes, from the journal, the story will ask what you were looking for: whenever you wish.",
 			REFLECTED = "You have answered. What remains is to leave the walls and take the open road.",
 			RESOLVED = "You left the walls for the open road. A memory of this story stays in the journal.",
@@ -196,7 +196,7 @@ NS:AddTexts("enUS", {
 	---------------------------------------------------------------------------
 	["arc.gates.open.i"] = {
 		"{zone}: another city, another circle of walls. I begin to recognise how capitals resemble each other, and how they do not.",
-		"A second capital, and already the world feels smaller and larger at once.",
+		"Another capital yet, and already the world feels smaller and larger at once.",
 	},
 	["arc.gates.open.e"] = {
 		"passes the walls of {zone} with the dust of another capital still on the boots. City gates have their own way of welcoming those who come from afar.",
