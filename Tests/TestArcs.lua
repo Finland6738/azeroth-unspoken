@@ -1365,6 +1365,7 @@ T.run("la memoria spenta: l'arco si chiude senza ricordo, senza errori", functio
 	Zone("Westfall", 5)
 	T.eq(State("path"), "RESOLVED", "si chiude")
 	T.eq(Item("path").memoryId, nil, "senza ricordo (la memoria è spenta)")
+	T.ok(not LM:HasFlag("arc_path_resolved") and not LM:HasFlag("arc_path_discovered"), "e senza flag: la memoria spenta non riceve scritture")
 	T.eq(Count(NS.Diagnostics.errors), 0, "nessun errore")
 	NS.db.modules.memory = true
 end)

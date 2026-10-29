@@ -684,7 +684,9 @@ function SA:Apply(def, idx, opts)
 	if from == "LOCKED" and def.subject == "npc" then
 		item.subject = CleanSubject(extra and extra.arcNpc) or item.subject
 	end
-	if NS.LivingMemory then NS.LivingMemory:SetFlag(self.FlagName(def.id, step.to), "addon") end
+	-- il flag è un dato della memoria: con la memoria spenta o in sola lettura non si scrive nulla
+	local LM = NS.LivingMemory
+	if LM and LM:Enabled() then LM:SetFlag(self.FlagName(def.id, step.to), "addon") end
 	if step.to == "RESOLVED" then self:Conclude(def, item) end
 	Log(self, def.id, from, step.to, opts.choice and "choice" or (opts.start and "start" or "event"))
 	NS.EventBus:Publish("ARC_STATE", { id = def.id, from = from, to = step.to }, { key = def.id .. ":" .. step.to, window = 0 })
