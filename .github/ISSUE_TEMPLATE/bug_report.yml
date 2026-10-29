@@ -1,0 +1,69 @@
+name: Bug report
+description: Something in Azeroth Unspoken does not work as expected.
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Azeroth Unspoken.
+        **Privacy:** do not paste other players' names, whispers, chat logs, account names or folder paths from your PC. Replace them with placeholders such as `<player>` or `<account>`.
+        Not sure it is a bug, or just want to share feedback? Use the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback) instead.
+  - type: input
+    id: version
+    attributes:
+      label: Addon version
+      description: Shown in the AddOns list at the character screen, or with `/au debug`.
+      placeholder: "0.x.y"
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Game client
+      description: WoW Forever build and client language.
+      placeholder: "1.60.1.70658, English"
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Addon language
+      options:
+        - English
+        - Italiano
+    validations:
+      required: true
+  - type: dropdown
+    id: trp3
+    attributes:
+      label: Is Total RP 3 installed?
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Describe what you saw, and what you expected to see instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Where you were, what you did, which command or setting you used.
+      placeholder: |
+        1. Go to ...
+        2. Type `/au ...`
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: errors
+    attributes:
+      label: Lua errors or diagnostics (optional)
+      description: Paste any Lua error text, or the output of `/au debug`. Remove names of other players first.
+      render: text
