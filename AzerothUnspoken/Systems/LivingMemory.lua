@@ -860,7 +860,11 @@ local handlers = {}
 
 function handlers.WORLD_ENTER(env)
 	local c = env.context
-	LM:EnterZone(c.zone, { mapID = c.mapID })
+	local snap, newVisit = LM:EnterZone(c.zone, { mapID = c.mapID })
+	-- una schermata di caricamento (portale, nave, zeppelin, pietra del ritorno, uscita da un'istanza) manda
+	-- PLAYER_ENTERING_WORLD, non sempre seguito da ZONE_ENTER: in quel caso il ritorno in una zona nota si offre da
+	-- qui (#47). All'accesso e dopo una ricarica no: non è un ritorno, è il primo momento della sessione.
+	if newVisit and snap and snap.repeatVisit and not (c.isLogin or c.isReload) then LM:OfferReturn(snap.key) end
 end
 
 function handlers.ZONE_ENTER(env)

@@ -362,6 +362,8 @@ T.run("interruzioni: combattimento, morte, cambio di zona, altro NPC", function(
 		{ "combattimento", function() P.combat = true; FIRE("PLAYER_REGEN_DISABLED") end, "combat" },
 		{ "morte", function() FIRE("PLAYER_DEAD") end, "death" },
 		{ "zona", function() P.zone = "Westfall"; FIRE("ZONE_CHANGED_NEW_AREA") end, "zone" },
+		-- una schermata di caricamento (#56): il dialogo non sopravvive al passaggio nel mondo
+		{ "ingresso nel mondo", function() FIRE("PLAYER_ENTERING_WORLD", false, false) end, "zone" },
 	}) do
 		Fresh()
 		N:Start(N:TestWho())

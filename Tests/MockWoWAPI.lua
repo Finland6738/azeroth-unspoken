@@ -384,6 +384,23 @@ function FIRE(event, ...)
 		if f.events and f.events[event] and f.scripts.OnEvent then f.scripts.OnEvent(f, event, ...) end
 	end
 end
+-- Schermata di caricamento (portale, nave, zeppelin, pietra del ritorno, uscita da un'istanza): la zona cambia e il
+-- client manda PLAYER_ENTERING_WORLD e, di solito, ZONE_CHANGED_NEW_AREA. L'ordine reale in Forever non è provato
+-- (#47, da G1): order = "world_first" (PEW poi ZONE), "zone_first" (ZONE poi PEW) o "world_only" (solo PEW).
+function LOADING_SCREEN(zone, order, mapID)
+	P.zone = zone
+	if mapID ~= nil then P.mapID = mapID end
+	order = order or "world_first"
+	if order == "zone_first" then FIRE("ZONE_CHANGED_NEW_AREA") end
+	FIRE("PLAYER_ENTERING_WORLD", false, false)
+	if order == "world_first" then FIRE("ZONE_CHANGED_NEW_AREA") end
+end
+-- L'ordine degli eventi all'avvio del client: ADDON_LOADED di ogni addon, poi PLAYER_LOGIN, poi
+-- PLAYER_ENTERING_WORLD (isLogin, isReload); /reload manda gli stessi, con isReload.
+function ENTER_GAME(isLogin, isReload)
+	FIRE("PLAYER_LOGIN")
+	FIRE("PLAYER_ENTERING_WORLD", isLogin ~= false, isReload == true)
+end
 date = os.date
 STANDARD_TEXT_FONT = "Fonts/FRIZQT__.TTF"
 function IsInGuild() return P.guild or false end

@@ -53,7 +53,8 @@ def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None
         for f in toc_files(EXAMPLE, ADDON_NAME + "_Example"):
             run_file(lua, os.path.join(EXAMPLE, f), f, ADDON_NAME + "_Example", lua.table())
         lua.globals().FIRE("ADDON_LOADED", ADDON_NAME + "_Example")
-    lua.globals().FIRE("PLAYER_ENTERING_WORLD", True, False)
+    # come il client: ADDON_LOADED di ogni addon, poi PLAYER_LOGIN, poi PLAYER_ENTERING_WORLD
+    lua.globals().ENTER_GAME(True, False)
     return lua, lua.globals().AzerothUnspoken
 
 
@@ -417,7 +418,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestContent"):
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestContent"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

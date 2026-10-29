@@ -608,6 +608,74 @@ T.run("il richiamo ha la priorità della memoria e batte l'atmosfera", function(
 	T.eq(after, nil, "in combattimento il richiamo non viene nemmeno offerto")
 end)
 
+-- #47: portali, navi, zeppelin, pietra del ritorno, uscita da un'istanza: il client manda PLAYER_ENTERING_WORLD e
+-- ZONE_CHANGED_NEW_AREA in un ordine non provato; il ritorno e l'atmosfera partono comunque, una volta sola
+T.run("ritorno dopo una schermata di caricamento: qualunque sia l'ordine degli eventi", function()
+	for _, order in ipairs({ "world_first", "zone_first", "world_only" }) do
+		Fresh()
+		NS.db.intensity = 50
+		NS.db.chance.zone, NS.db.chance.memory_return = 100, 100
+		NS.db.pacing.globalCooldownSeconds = 0
+		Pacing:Reset()
+		math.randomseed(5)
+		Go("Teldrassil", 200)
+		Go("Westfall", 100)
+		ADVANCE(200)
+		Pacing:Reset()
+		local visits = Data().places["Teldrassil"].visits
+		Leap(3600)
+		local n1, queued = #Narrator.history, #Director.log
+		LOADING_SCREEN("Teldrassil", order)
+		ADVANCE(4)
+		T.eq(Data().places["Teldrassil"].visits, visits + 1, order .. ": una visita in più")
+		T.eq(#Narrator.history - n1, 1, order .. ": parla una sola frase")
+		local results, count = {}, {}
+		for i = queued + 1, #Director.log do
+			local e = Director.log[i]
+			results[e.event] = e.result
+			count[e.event] = (count[e.event] or 0) + 1
+		end
+		T.eq(results.memory_return, "spoken", order .. ": parla il richiamo di memoria")
+		T.eq(results.zone, "outranked", order .. ": l'atmosfera tace")
+		T.ok((count.memory_return or 0) == 1 and (count.zone or 0) <= 1, order .. ": ogni candidato una volta sola")
+	end
+	-- una zona nuova dopo la schermata: l'atmosfera, anche solo con PLAYER_ENTERING_WORLD
+	Fresh()
+	NS.db.intensity = 50
+	NS.db.chance.zone = 100
+	NS.db.pacing.globalCooldownSeconds = 0
+	Pacing:Reset()
+	Go("Durotar", 100)
+	ADVANCE(10)
+	Pacing:Reset()
+	local queued = #Director.log
+	LOADING_SCREEN("Teldrassil", "world_only")
+	ADVANCE(4)
+	local zone
+	for i = queued + 1, #Director.log do if Director.log[i].event == "zone" then zone = Director.log[i].result end end
+	T.eq(zone, "spoken", "zona nuova con solo PLAYER_ENTERING_WORLD: parla l'atmosfera")
+	-- l'accesso e la ricarica non sono un ritorno
+	Fresh()
+	NS.db.intensity = 50
+	NS.db.chance.zone, NS.db.chance.memory_return = 100, 100
+	Pacing:Reset()
+	Go("Teldrassil", 200)
+	Leap(7200)
+	LM:StartSession()   -- una sessione nuova: nessuna zona attuale
+	queued = #Director.log
+	P.zone = "Teldrassil"
+	ENTER_GAME(true, false)
+	ADVANCE(4)
+	local offered = false
+	for i = queued + 1, #Director.log do
+		if Director.log[i].event == "memory_return" or Director.log[i].event == "zone" then offered = true end
+	end
+	T.ok(not offered, "all'accesso nessun ritorno né atmosfera di zona")
+	T.eq(Data().places["Teldrassil"].visits, 2, "ma la visita è registrata")
+	-- la prima visita ordinata dei test seguenti riparte pulita
+	Fresh()
+end)
+
 T.run("il filtro rigido sugli argomenti da evitare vale anche per i richiami", function()
 	Fresh()
 	Go("Teldrassil")
