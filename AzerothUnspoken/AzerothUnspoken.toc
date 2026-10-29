@@ -36,8 +36,10 @@ Integration\ChatGateway.lua
 Systems\Personality.lua
 Systems\Director.lua
 Systems\Triggers.lua
+Systems\Place.lua
 Systems\LivingMemory.lua
 Systems\Relationships.lua
+Systems\Interlocutor.lua
 
 # --- interfaccia ---
 UI\Widgets.lua
@@ -59,6 +61,8 @@ Data\enUS\Interface.lua
 Data\Vocabulary.lua
 Data\Frames.lua
 Data\Relationships.lua
+Data\Places.lua
+Data\NPCs.lua
 Data\RegistryCombat.lua
 Data\RegistrySpells.lua
 Data\RegistryLife.lua
@@ -68,6 +72,7 @@ Data\RegistryClasses.lua
 Data\RegistrySoul.lua
 Data\RegistryMemory.lua
 Data\RegistryRelations.lua
+Data\RegistryContext.lua
 Data\itIT\Combat.lua
 Data\itIT\Spells.lua
 Data\itIT\Life.lua
@@ -88,3 +93,7 @@ Data\itIT\Relations.lua
 Data\enUS\Relations.lua
 Data\itIT\RelationsUI.lua
 Data\enUS\RelationsUI.lua
+Data\itIT\Context.lua
+Data\enUS\Context.lua
+Data\itIT\ContextUI.lua
+Data\enUS\ContextUI.lua

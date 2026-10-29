@@ -7,10 +7,12 @@
 --   - il nome (GetFirstName): con l'opzione `modules.totalRP3`;
 --   - i tratti psicologici pubblici (`characteristics/PS`, quelli che TRP3 mostra agli altri giocatori), mappati sui
 --     tratti del Character Soul: in più serve il consenso del personaggio (`personality.trp3`, /au anima trp3 on).
--- Non legge note, informazioni fuori dal personaggio, storia o altri campi, né il profilo di altri giocatori
--- (quello è lo step S6c, con un altro consenso), e non scrive mai nulla in TRP3. Unica eccezione, per le relazioni
--- (S6b): IsKnownPlayer chiede al registro di TRP3 se conosce un giocatore, per proporlo all'utente. Risponde sì/no:
--- nessun dato del profilo viene letto.
+-- Non legge note, informazioni fuori dal personaggio, storia o altri campi, e non scrive mai nulla in TRP3.
+-- Per le relazioni (S6b): IsKnownPlayer chiede al registro di TRP3 se conosce un giocatore, per proporlo all'utente.
+-- Risponde sì/no: nessun dato del profilo viene letto.
+-- Per l'interlocutore (S6c): GetOtherProfile legge del profilo PUBBLICO di un altro giocatore (quello che TRP3
+-- riceve e mostra a tutti) solo razza e classe personalizzate e i tratti psicologici, con un consenso a parte
+-- (`interlocutor.trp3Others`, spento di base, /au chi trp3) oltre al modulo `totalRP3`.
 local ADDON, NS = ...
 local Compat = NS.Compat
 ---@class AUTotalRP3
@@ -128,15 +130,7 @@ function TotalRP3:ReadPsycho()
 	if not user or type(user.GetInfo) ~= "function" then return nil end
 	local ok, ps = pcall(user.GetInfo, user, "characteristics/PS")
 	if not ok or type(ps) ~= "table" then return nil end
-	local out = {}
-	for _, entry in ipairs(ps) do
-		-- solo i tratti predefiniti (con ID numerico) e un valore numerico nell'intervallo di TRP3
-		local id, v = type(entry) == "table" and entry.ID, type(entry) == "table" and entry.V2
-		if type(id) == "number" and type(v) == "number" and v == v and v >= 0 and v <= self.PSYCHO_MAX then
-			table.insert(out, { id = id, v = v })
-		end
-	end
-	return out
+	return self:CleanPsycho(ps)
 end
 
 ---I tratti del Character Soul ricavati dal profilo TRP3 del proprio personaggio (vedi PSYCHO_MAP).
@@ -145,6 +139,28 @@ end
 function TotalRP3:GetSoulTraits()
 	local read = self:ReadPsycho()
 	if not read then return nil end
+	return self:MapPsycho(read)
+end
+
+---Valori grezzi di `characteristics/PS` ripuliti: solo i tratti predefiniti (ID numerico) con un valore nell'intervallo.
+---@param ps any
+---@return { id: integer, v: number }[]
+function TotalRP3:CleanPsycho(ps)
+	local out = {}
+	if type(ps) ~= "table" then return out end
+	for _, entry in ipairs(ps) do
+		local id, v = type(entry) == "table" and entry.ID, type(entry) == "table" and entry.V2
+		if type(id) == "number" and type(v) == "number" and v == v and v >= 0 and v <= self.PSYCHO_MAX then
+			table.insert(out, { id = id, v = v })
+		end
+	end
+	return out
+end
+
+---I tratti ricavati da valori psicologici già ripuliti (PSYCHO_MAP e soglia dal centro).
+---@param read { id: integer, v: number }[]
+---@return AUTraits
+function TotalRP3:MapPsycho(read)
 	local byId = {}
 	for _, r in ipairs(read) do byId[r.id] = r.v end
 	local traits = {}
@@ -159,4 +175,59 @@ function TotalRP3:GetSoulTraits()
 		end
 	end
 	return traits
+end
+
+---------------------------------------------------------------------------
+-- Profilo pubblico di un altro giocatore (S6c)
+---------------------------------------------------------------------------
+TotalRP3.TEXT_LEN = 40           -- razza e classe personalizzate: testo breve, senza codici di colore
+-- dei tratti psicologici di un altro giocatore si tengono solo quelli che descrivono come si presenta agli altri
+TotalRP3.OTHER_TRAITS = { temperament = true, morality = true }
+
+---L'utente ha acconsentito a leggere i profili pubblici TRP3 degli altri giocatori (e l'integrazione è accesa)?
+---@return boolean
+function TotalRP3:HasOtherConsent()
+	local s = NS.db and NS.db.interlocutor
+	return (NS.db and NS.db.modules.totalRP3 == true) and type(s) == "table" and s.trp3Others == true
+end
+
+local function CleanText(v, n)
+	if type(v) ~= "string" or Compat.IsSecret(v) then return nil end
+	-- via i codici di colore e di formato (|c...|r, |T...|t) e i caratteri di controllo (classi esplicite: niente %c)
+	v = v:gsub("|c" .. ("[0-9A-Fa-f]"):rep(8), ""):gsub("|r", ""):gsub("|T[^|]*|t", ""):gsub("|", ""):gsub("[%z\1-\31\127]", "")
+	v = v:gsub("^ +", ""):gsub(" +$", "")
+	if v == "" then return nil end
+	if #v > n then
+		local cut = n
+		-- non spezzare una lettera UTF-8: indietro fino all'inizio di un carattere
+		while cut > 0 and v:byte(cut + 1) and v:byte(cut + 1) >= 128 and v:byte(cut + 1) < 192 do cut = cut - 1 end
+		v = v:sub(1, cut)
+	end
+	return v
+end
+
+---Il profilo pubblico TRP3 di un altro giocatore: { race, class, traits }. nil senza consenso, senza TRP3, se TRP3
+---non lo conosce, con l'identità segreta o se l'API è cambiata. Mai un errore, mai una scrittura.
+---@param unit string
+---@return { race?: string, class?: string, traits: AUTraits }?
+function TotalRP3:GetOtherProfile(unit)
+	if not self:HasOtherConsent() or Compat:IsUnitIdentitySecret(unit) then return nil end
+	local api = type(TRP3_API) == "table" and TRP3_API or nil
+	local getID = api and type(api.utils) == "table" and type(api.utils.str) == "table" and api.utils.str.getUnitID
+	local reg = api and type(api.register) == "table" and api.register or nil
+	local known = reg and reg.isUnitIDKnown
+	local getProfile = reg and reg.getUnitIDCurrentProfile
+	if type(getID) ~= "function" or type(known) ~= "function" or type(getProfile) ~= "function" then return nil end
+	local ok, id = pcall(getID, unit)
+	if not ok or type(id) ~= "string" or Compat.IsSecret(id) then return nil end
+	local ok2, isKnown = pcall(known, id)
+	if not ok2 or isKnown ~= true then return nil end
+	local ok3, profile = pcall(getProfile, id)
+	if not ok3 or type(profile) ~= "table" or type(profile.characteristics) ~= "table" then return nil end
+	local ch = profile.characteristics
+	local traits = {}
+	for k, v in pairs(self:MapPsycho(self:CleanPsycho(ch.PS))) do
+		if self.OTHER_TRAITS[k] then traits[k] = v end
+	end
+	return { race = CleanText(ch.RA, self.TEXT_LEN), class = CleanText(ch.CL, self.TEXT_LEN), traits = traits }
 end

@@ -36,6 +36,9 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 ---@field today? table contatori del giorno (NPC): { day, n = { fonte = n }, gain = { fonte = { asse = x } } }
 ---@field decayDay? integer giorno dell'ultimo decadimento (NPC)
 ---@field noted? table<string, boolean> etichette già ricordate nel diario
+---@field traits? AUTraits personalità dell'interlocutore scelta dall'utente (S6c: temperament, morality, goals, speech)
+---@field role? string ruolo dell'interlocutore (S6c)
+---@field roleSource? "user"|"auto" chi ha deciso il ruolo: l'utente, o un'interazione affidabile
 
 ---@class AURelationsData dati salvati: AzerothUnspokenCharacterDB.relationships
 ---@field version integer
@@ -452,6 +455,16 @@ local function CleanRecord(rec, kind)
 	local tags = CleanTags(rec.tags)
 	if #tags > 0 then out.tags = tags end
 	if rec.source == "user" or rec.source == "auto" then out.source = rec.source end
+	-- S6c: personalità e ruolo dell'interlocutore scelti dall'utente (o ruolo ricavato da un'interazione affidabile)
+	if NS.Interlocutor then
+		local traits = NS.Interlocutor.Clean(rec.traits)
+		traits.role = nil
+		if next(traits) then out.traits = traits end
+		if type(rec.role) == "string" and Traits.defs.role and Traits.defs.role.valid[rec.role] then
+			out.role = rec.role
+			out.roleSource = rec.roleSource == "user" and "user" or "auto"
+		end
+	end
 	if kind == "npc" then
 		if IsNumber(rec.decayDay) then out.decayDay = math.floor(rec.decayDay) end
 		local t = rec.today

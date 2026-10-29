@@ -166,7 +166,10 @@ local function Zone()
 	if zone == "" then zone = nil end
 	local _, subzone = Compat.Query("GetSubZoneText")
 	if subzone == "" then subzone = nil end
-	return zone, subzone, state
+	-- uiMapID: la chiave stabile del luogo per la memoria (S6c, issue #31); nil se il client non lo dà
+	local _, mapID = Compat.Query("C_Map.GetBestMapForUnit", "player")
+	if type(mapID) ~= "number" then mapID = nil end
+	return zone, subzone, state, mapID
 end
 
 local function DeadOrGhost()
@@ -178,14 +181,14 @@ EventBus.dedupWindow.PLAYER_REVIVE = 2
 EventBus.dedupWindow.TARGET_CHANGED = 0.2
 
 EventBus:AddSource("PLAYER_ENTERING_WORLD", { normalize = function(isLogin, isReload)
-	local zone, subzone, state = Zone()
-	return "WORLD_ENTER", { zone = zone, subzone = subzone, isLogin = isLogin, isReload = isReload,
+	local zone, subzone, state, mapID = Zone()
+	return "WORLD_ENTER", { zone = zone, subzone = subzone, mapID = mapID, isLogin = isLogin, isReload = isReload,
 		deadOrGhost = DeadOrGhost() }, { expect = { "zone" }, fields = { zone = state ~= "AVAILABLE" and state or nil } }
 end })
 
 EventBus:AddSource("ZONE_CHANGED_NEW_AREA", { normalize = function()
-	local zone, subzone, state = Zone()
-	return "ZONE_ENTER", { zone = zone, subzone = subzone },
+	local zone, subzone, state, mapID = Zone()
+	return "ZONE_ENTER", { zone = zone, subzone = subzone, mapID = mapID },
 		{ key = zone, expect = { "zone" }, fields = { zone = state ~= "AVAILABLE" and state or nil } }
 end })
 

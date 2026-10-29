@@ -137,8 +137,13 @@ end
 local function Specificity(when)
 	if type(when) ~= "table" then return 0 end
 	local n = 0
-	for k in pairs(when) do
-		if k ~= "chance" then n = n + 1 end
+	for k, v in pairs(when) do
+		if (k == "other" or k == "place") and type(v) == "table" then
+			-- sotto-tabelle dell'interlocutore e del luogo (S6c): conta ogni campo
+			for _ in pairs(v) do n = n + 1 end
+		elseif k ~= "chance" then
+			n = n + 1
+		end
 	end
 	return n
 end

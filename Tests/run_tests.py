@@ -106,8 +106,9 @@ ids = val.stats.phrases
 langs = ["it", "en"]
 print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
       f"{len(errors_)} errori, {len(warnings_)} avvisi")
-# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 7 del pacchetto di esempio
-check(ids == 509, f"509 frasi caricate (trovate {ids})")
+# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
+# e luogo (S6c) + 7 del pacchetto di esempio
+check(ids == 595, f"595 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -267,7 +268,7 @@ check(NS.db.output.autoPublicSay is True, "con la conferma esplicita autoPublicS
 G.SENT = lua.table()
 setP(combat=False, instance=False)
 # combattimenti ripetuti finché una frase parlata non resta in attesa (il seme è fisso: esito ripetibile)
-for i in range(40):
+for i in range(100):
     G.ADVANCE(100)
     setP(combat=True)
     G.FIRE("PLAYER_REGEN_DISABLED")

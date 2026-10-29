@@ -694,11 +694,13 @@ end)
 -- Privacy
 ---------------------------------------------------------------------------
 -- Unica eccezione (S6b): CHAT_MSG_WHISPER_INFORM, di cui le relazioni leggono solo il nome del destinatario (TestRelations
--- lo verifica: il testo non entra mai nell'envelope, né nei dati salvati).
+-- lo verifica: il testo non entra mai nell'envelope, né nei dati salvati). S6c: CHAT_MSG_TEXT_EMOTE, le emote standard
+-- del client, di cui l'interlocutore guarda solo se sono rivolte a noi e il mittente (TestOtherPlace lo verifica).
 T.run("nessun testo di chat o di whisper nella memoria", function()
 	Fresh()
 	for event in pairs(NS.EventBus.sources) do
-		T.ok(not event:find("^CHAT_MSG") or event == "CHAT_MSG_WHISPER_INFORM", "nessuna sorgente di chat: " .. event)
+		T.ok(not event:find("^CHAT_MSG") or event == "CHAT_MSG_WHISPER_INFORM" or event == "CHAT_MSG_TEXT_EMOTE",
+			"nessuna sorgente di chat: " .. event)
 		T.ok(not event:find("WHISPER") or event == "CHAT_MSG_WHISPER_INFORM", "nessuna sorgente di whisper: " .. event)
 	end
 	-- Record scarta ogni campo che non sia previsto
@@ -730,7 +732,7 @@ T.run("migrazione dello schema 3: il segnaposto vuoto diventa la memoria", funct
 	Config:Load()
 	local c = AzerothUnspokenCharacterDB
 	T.eq(c.schemaVersion, 5, "versione del personaggio")
-	T.eq(c.memories.version, 1, "versione della memoria")
+	T.eq(c.memories.version, LM.VERSION, "versione della memoria")
 	T.ok(type(c.memories.entries) == "table" and type(c.memories.places) == "table" and type(c.memories.flags) == "table"
 		and type(c.memories.stats) == "table" and c.memories.nextId == 1, "campi presenti")
 	T.eq(c.memory.uses.x, 1, "il resto è intatto")
@@ -742,14 +744,14 @@ T.run("migrazione dello schema 3: il segnaposto vuoto diventa la memoria", funct
 	for _, bad in ipairs({ "testo", 7, true }) do
 		AzerothUnspokenCharacterDB = { schemaVersion = 3, memories = bad }
 		Config:Load()
-		T.eq(AzerothUnspokenCharacterDB.memories.version, 1, "memories rovinata (" .. tostring(bad) .. ")")
+		T.eq(AzerothUnspokenCharacterDB.memories.version, LM.VERSION, "memories rovinata (" .. tostring(bad) .. ")")
 		T.ok(type(AzerothUnspokenCharacterDB.memories.entries) == "table", "con i campi")
 	end
 	-- da uno schema ancora più vecchio
 	AzerothUnspokenCharacterDB = { schemaVersion = 1, memory = {} }
 	Config:Load()
 	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 5, "da schema 1")
-	T.eq(AzerothUnspokenCharacterDB.memories.version, 1, "memoria creata")
+	T.eq(AzerothUnspokenCharacterDB.memories.version, LM.VERSION, "memoria creata")
 	T.ok(Config.migrations.character[4] ~= nil and Config.migrations.global[4] ~= nil, "le migrazioni 4 esistono")
 end)
 
@@ -791,30 +793,31 @@ T.run("pulizia dei dati salvati: voci rovinate, doppie, flag e luoghi", function
 	T.eq(LM:Sanitize(), 0, "una seconda pulizia non scarta nulla")
 end)
 
-T.run("migrazione interna della forma dei dati (versione 0 -> 1)", function()
+T.run("migrazione interna della forma dei dati (versione 0 -> attuale)", function()
 	AzerothUnspokenCharacterDB = { schemaVersion = 4, memories = { version = 0 } }
 	Config:Load()
 	LM:StartSession()
 	LM:Sanitize()
 	local m = AzerothUnspokenCharacterDB.memories
-	T.eq(m.version, 1, "versione 1")
+	T.eq(m.version, LM.VERSION, "versione attuale")
 	T.ok(type(m.entries) == "table" and type(m.places) == "table" and m.nextId == 1, "campi creati")
 	-- una migrazione futura della forma, in ordine e una volta sola
 	local calls = 0
-	LM.VERSION = 2
-	LM.migrations[2] = function(mm) calls = calls + 1; mm.nuovo = true end
+	local base = LM.VERSION
+	LM.VERSION = base + 1
+	LM.migrations[base + 1] = function(mm) calls = calls + 1; mm.nuovo = true end
 	LM:Sanitize()
-	T.eq(m.version, 2, "versione 2")
+	T.eq(m.version, base + 1, "versione successiva")
 	T.ok(m.nuovo and calls == 1, "migrazione eseguita")
 	LM:Sanitize()
 	T.eq(calls, 1, "una volta sola")
 	-- una migrazione che fallisce lascia la memoria in sola lettura
-	LM.VERSION = 3
-	LM.migrations[3] = function() error("rotta") end
+	LM.VERSION = base + 2
+	LM.migrations[base + 2] = function() error("rotta") end
 	LM:Sanitize()
 	T.ok(LM.readOnly, "migrazione fallita: sola lettura")
-	T.eq(m.version, 2, "la versione non avanza")
-	LM.VERSION, LM.migrations[2], LM.migrations[3] = 1, nil, nil
+	T.eq(m.version, base + 1, "la versione non avanza")
+	LM.VERSION, LM.migrations[base + 1], LM.migrations[base + 2] = base, nil, nil
 	NS.Diagnostics.errors = {}
 end)
 

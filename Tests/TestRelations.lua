@@ -537,7 +537,9 @@ T.run("nessun testo di chat o di whisper in memoria o sul disco", function()
 	T.ok(not SERIALIZE(NS.EventBus.recent):find("segreto", 1, true), "né negli eventi recenti")
 	-- le fonti del bus: solo quelle che servono, nessuna chat pubblica o whisper in entrata
 	for event in pairs(NS.EventBus.sources) do
-		T.ok(not event:find("^CHAT_MSG") or event == "CHAT_MSG_WHISPER_INFORM", "nessuna sorgente di chat oltre al destinatario: " .. event)
+		-- S6c: le emote standard del client (CHAT_MSG_TEXT_EMOTE), solo per sapere chi ci ha rivolto un gesto
+		T.ok(not event:find("^CHAT_MSG") or event == "CHAT_MSG_WHISPER_INFORM" or event == "CHAT_MSG_TEXT_EMOTE",
+			"nessuna sorgente di chat oltre al destinatario: " .. event)
 	end
 	-- l'esportazione contiene solo ciò che l'utente ha scritto
 	T.ok(R:ExportText():find("conosciuta alla fiera", 1, true) and not R:ExportText():find("segreto", 1, true), "esportazione senza testi di chat")

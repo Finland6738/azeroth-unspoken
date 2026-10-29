@@ -4,12 +4,16 @@ local Engine = NS.Engine
 local Score, WeightedPick, Remember, KeepFor = Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor
 
 -- {player} {target} {spell} {zone} {subzone} {level} {class} {race} {faction} {relation} (S6b: l'etichetta del rapporto)
+-- {other} {otherrole} {otherrace} {otherclass} {instance} {encounter} (S6c: interlocutore e luogo)
 -- {g:maschile|femminile}   {line} (solo nelle cornici)   {nome_vocabolario}
 -- segnaposto -> campo del contesto. Il validatore usa questa tabella per riconoscere i segnaposto ammessi.
 local BUILTIN = {
 	player = "player", target = "target", spell = "spell", zone = "zone",
 	subzone = "subzone", level = "level", class = "classLocal", race = "raceLocal",
 	faction = "factionLocal", targettype = "ctypeLocal", relation = "relationLabel",
+	-- S6c: l'interlocutore (nome, ruolo, razza e classe localizzati) e il luogo (istanza, scontro con un boss)
+	other = "otherName", otherrole = "otherRoleLocal", otherrace = "otherRaceLocal", otherclass = "otherClassLocal",
+	instance = "instanceName", encounter = "encounterName",
 }
 Engine.PLACEHOLDERS = BUILTIN
 

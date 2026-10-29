@@ -24,7 +24,9 @@ local Engine = NS.Engine
 ---@field perm? boolean permanente: non si compatta mai
 
 ---@class AUMemoryPlace un luogo visitato
----@field name string
+---@field key string chiave stabile: "map:<uiMapID>" se il client lo dà, altrimenti il nome della zona (issue #31)
+---@field name string nome della zona nel client, da mostrare (si aggiorna a ogni visita)
+---@field mapID? integer uiMapID
 ---@field first number
 ---@field last number fine dell'ultima visita (aggiornata durante la visita)
 ---@field arrived number inizio della visita attuale o più recente
@@ -44,12 +46,13 @@ local Engine = NS.Engine
 ---@field version integer
 ---@field nextId integer
 ---@field entries AUMemoryEntry[]
----@field places table<string, AUMemoryPlace>
+---@field places table<string, AUMemoryPlace> per chiave stabile (AUMemoryPlace.key)
 ---@field flags table<string, AUMemoryFlag>
 ---@field stats { compacted?: integer }
 
 ---@class AUMemoryContext ctx.memory: solo ricordi veri
----@field zone? string
+---@field zone? string nome della zona
+---@field key? string chiave stabile del luogo
 ---@field firstVisit? boolean è la prima visita (registrata) a questa zona
 ---@field repeatVisit? boolean la zona era già stata visitata
 ---@field visits? integer visite alla zona, questa compresa
@@ -63,7 +66,7 @@ local Engine = NS.Engine
 local LM = NS:RegisterModule("memory")
 NS.LivingMemory = LM
 
-LM.VERSION = 1                 -- forma dei dati in AzerothUnspokenCharacterDB.memories
+LM.VERSION = 2                 -- forma dei dati in AzerothUnspokenCharacterDB.memories (2: luoghi per uiMapID, #31)
 LM.MAX_ORDINARY = 500          -- ricordi ordinari per personaggio (GDD §7.4)
 LM.COMPACT_TO = 450            -- dopo una compattazione se ne tengono 450, così non si ripete a ogni ricordo
 LM.MAX_PERMANENT = 200         -- limite ai permanenti, che non si compattano
@@ -87,7 +90,7 @@ LM.KIND_ORDER = { "first_visit", "return", "death", "flight", "level", "story" }
 
 LM.readOnly = false            -- dati scritti da una versione più nuova: si leggono, non si cambiano
 LM.session = nil
-LM.current = nil               -- { zone, since }: la zona in cui si trova il personaggio
+LM.current = nil               -- { zone, key, since }: la zona in cui si trova il personaggio
 LM.visit = nil                 -- com'è la visita in corso (AUMemoryContext senza flag e sessione)
 LM.recalls = {}                -- [evento] = fn(memory, ctx) -> boolean: il ricordo che lo giustifica
 
@@ -147,7 +150,9 @@ local function HealthRatio()
 	return nil
 end
 
-local function IsCapital(zone)
+local function IsCapital(zone, mapID)
+	local entry = NS.Place and NS.Place:Lookup(mapID, zone)
+	if entry and entry.capital then return true end
 	return type(zone) == "string" and NS.zoneMoods ~= nil and NS.zoneMoods[zone:lower()] == "city"
 end
 
@@ -172,8 +177,8 @@ function LM:Data()
 	return m
 end
 
--- Migrazioni interne della forma dei dati: migrations[n] porta da n-1 a n. La versione 1 è la forma attuale;
--- la 0 (assente) è il segnaposto vuoto che lo schema 3 lasciava in `memories`.
+-- Migrazioni interne della forma dei dati: migrations[n] porta da n-1 a n. La 0 (assente) è il segnaposto vuoto che
+-- lo schema 3 lasciava in `memories`; la 1 indicizzava i luoghi per nome della zona; la 2 (attuale) per chiave stabile.
 ---@type table<integer, fun(m: table)>
 LM.migrations = {
 	[1] = function(m)
@@ -181,6 +186,31 @@ LM.migrations = {
 			if type(m[k]) ~= "table" then m[k] = {} end
 		end
 		if not IsNumber(m.nextId) then m.nextId = 1 end
+	end,
+	-- 2 (issue #31): i luoghi passano dal nome della zona a una chiave stabile. Un nome che i dati dei luoghi
+	-- (Data/Places.lua) conoscono con un uiMapID VERIFICATO diventa subito "map:<id>"; gli altri restano col nome come
+	-- chiave e passano all'uiMapID alla prossima visita, quando il client lo dà (EnterZone, adozione per nome).
+	-- Due nomi che portano allo stesso numero si uniscono (visite e morti sommate, date estreme).
+	[2] = function(m)
+		local places = {}
+		for name, p in pairs(type(m.places) == "table" and m.places or {}) do
+			if type(name) == "string" and type(p) == "table" then
+				local entry, how = NS.Place and NS.Place:Lookup(nil, name)
+				local mapID = how == "name" and entry and entry.verified and entry.map or nil
+				local key = mapID and ("map:" .. mapID) or name
+				p.name, p.key, p.mapID = name, key, mapID
+				local old = places[key]
+				if old then
+					old.visits = (tonumber(old.visits) or 1) + (tonumber(p.visits) or 1)
+					old.deaths = (tonumber(old.deaths) or 0) + (tonumber(p.deaths) or 0)
+					if (tonumber(p.first) or 0) < (tonumber(old.first) or 0) then old.first = p.first end
+					if (tonumber(p.last) or 0) > (tonumber(old.last) or 0) then old.last, old.name = p.last, name end
+				else
+					places[key] = p
+				end
+			end
+		end
+		m.places = places
 	end,
 }
 
@@ -196,10 +226,17 @@ local function CleanEntry(e)
 	}
 end
 
-local function CleanPlace(name, p)
-	if type(name) ~= "string" or name == "" or type(p) ~= "table" then return nil end
+local function CleanPlace(key, p)
+	if type(key) ~= "string" or key == "" or type(p) ~= "table" then return nil end
 	if not IsNumber(p.first) or not IsNumber(p.last) then return nil end
+	local mapID = key:match("^map:(%d+)$")
+	mapID = mapID and tonumber(mapID)
+	-- con una chiave per nome il nome è la chiave; con un uiMapID il nome è l'ultima etichetta vista
+	local name = key
+	if mapID then name = type(p.name) == "string" and p.name ~= "" and p.name or nil end
+	if not name then return nil end
 	local out = {
+		key = mapID and key or Clip(key, LM.ZONE_LEN), mapID = mapID,
 		name = Clip(name, LM.ZONE_LEN), first = p.first, last = p.last,
 		arrived = IsNumber(p.arrived) and p.arrived or p.first,
 		visits = IsNumber(p.visits) and math.max(1, math.floor(p.visits)) or 1,
@@ -263,9 +300,9 @@ function LM:Sanitize()
 	if m.nextId <= maxId then m.nextId = maxId + 1 end
 
 	local places = {}
-	for name, p in pairs(m.places) do
-		local clean = CleanPlace(name, p)
-		if clean then places[clean.name] = clean else dropped = dropped + 1 end
+	for key, p in pairs(m.places) do
+		local clean = CleanPlace(key, p)
+		if clean then places[clean.key] = clean else dropped = dropped + 1 end
 	end
 	m.places = places
 
@@ -405,7 +442,7 @@ function LM:CapPlaces()
 	local m = self:Data()
 	if not m then return end
 	local list = {}
-	for name, p in pairs(m.places) do table.insert(list, { name = name, last = p.last }) end
+	for key, p in pairs(m.places) do table.insert(list, { name = key, last = p.last }) end
 	if #list <= self.MAX_PLACES then return end
 	table.sort(list, function(a, b)
 		if a.last ~= b.last then return a.last < b.last end
@@ -414,7 +451,7 @@ function LM:CapPlaces()
 	local drop = #list - self.MAX_PLACES
 	for i = 1, #list do
 		if drop <= 0 then break end
-		if not (self.current and self.current.zone == list[i].name) then
+		if not (self.current and self.current.key == list[i].name) then
 			m.places[list[i].name] = nil
 			drop = drop - 1
 		end
@@ -479,15 +516,31 @@ function LM:SetPermanent(id, on)
 	return true
 end
 
----Dimentica un luogo: la prossima volta sarà di nuovo la prima visita.
----@param zone string
+---Il luogo salvato per una chiave o, in mancanza, per nome della zona.
+---@param keyOrName string
+---@return AUMemoryPlace? place
+---@return string? key
+function LM:FindPlace(keyOrName)
+	local m = self:Data()
+	if not m or type(keyOrName) ~= "string" then return nil end
+	if m.places[keyOrName] then return m.places[keyOrName], keyOrName end
+	local low = NS.Traits.Lower(keyOrName)
+	for key, p in pairs(m.places) do
+		if p.name == keyOrName or NS.Traits.Lower(p.name or "") == low then return p, key end
+	end
+	return nil
+end
+
+---Dimentica un luogo (per chiave o per nome): la prossima volta sarà di nuovo la prima visita.
+---@param zone string chiave del luogo o nome della zona
 ---@return boolean
 function LM:ForgetPlace(zone)
 	if self.readOnly then return false end
 	local m = self:Data()
-	if not m or not m.places[zone] then return false end
-	m.places[zone] = nil
-	if self.current and self.current.zone == zone then self.current, self.visit = nil, nil end
+	local p, key = self:FindPlace(zone)
+	if not m or not p then return false end
+	m.places[key] = nil
+	if self.current and self.current.key == key then self.current, self.visit = nil, nil end
 	if NS.JournalFrame then NS.JournalFrame:Refresh() end
 	return true
 end
@@ -589,7 +642,7 @@ local function SnapshotFor(p)
 	local days
 	if prev and prev.last and IsNumber(p.arrived) then days = math.max(0, p.arrived - prev.last) / 86400 end
 	return {
-		zone = p.name, visits = p.visits, firstVisit = p.visits == 1, repeatVisit = p.visits >= 2,
+		zone = p.name, key = p.key, visits = p.visits, firstVisit = p.visits == 1, repeatVisit = p.visits >= 2,
 		lastVisitBad = prev ~= nil and prev.bad == true, lastBadKind = prev and prev.bad and prev.badKind or nil,
 		daysSinceLastVisit = days,
 	}
@@ -597,22 +650,39 @@ end
 
 ---Il personaggio entra in una zona. Una nuova visita (prima volta, o ritorno dopo VISIT_GAP) aggiorna il luogo e
 ---registra il ricordo; un ingresso ripetuto subito dopo (ricarica, bordo di zona) continua la visita.
+---Il luogo si riconosce dall'uiMapID quando il client lo dà (opts.mapID), dal nome altrimenti (issue #31). Un luogo
+---salvato solo per nome (versione 1, o una visita senza uiMapID) passa all'uiMapID alla prima visita che lo porta.
 ---@param zone? string
----@param opts? { fled?: boolean }
+---@param opts? { fled?: boolean, mapID?: integer }
 ---@return table? snapshot com'è la visita
 ---@return boolean? newVisit
 function LM:EnterZone(zone, opts)
 	opts = opts or {}
 	if not self:Enabled() or type(zone) ~= "string" or zone == "" then return nil end
 	zone = Clip(zone, self.ZONE_LEN)
+	local mapID = IsNumber(opts.mapID) and opts.mapID > 0 and math.floor(opts.mapID) or nil
+	local key = NS.Place and NS.Place.Key(mapID, zone) or zone
 	local m, now = self:Data(), Now()
-	if self.current and self.current.zone == zone and m.places[zone] then return self.visit, false end
+	if mapID and not m.places[key] and m.places[zone] and not m.places[zone].mapID then
+		-- adozione: il luogo salvato per nome diventa il luogo con questo uiMapID
+		local old = m.places[zone]
+		m.places[zone] = nil
+		old.key, old.mapID = key, mapID
+		m.places[key] = old
+		if self.current and self.current.key == zone then self.current.key = key end
+	end
+	if self.current and self.current.key == key and m.places[key] then
+		m.places[key].name = zone
+		return self.visit, false
+	end
 	if self.current then self:LeaveZone(opts.fled) end
 
-	local p, newVisit = m.places[zone], false
+	local p, newVisit = m.places[key], false
+	if p then p.name = zone end
 	if not p then
-		p = { name = zone, first = now, last = now, arrived = now, visits = 1, deaths = 0, capital = IsCapital(zone) or nil }
-		m.places[zone] = p
+		p = { key = key, mapID = mapID, name = zone, first = now, last = now, arrived = now, visits = 1, deaths = 0,
+			capital = IsCapital(zone, mapID) or nil }
+		m.places[key] = p
 		newVisit = true
 		self:CapPlaces()
 		local tags = { "visit" }
@@ -634,11 +704,11 @@ function LM:EnterZone(zone, opts)
 	else
 		p.last = math.max(p.last or now, now)
 	end
-	self.current = { zone = zone, since = now }
+	self.current = { zone = zone, key = key, since = now }
 	self.visit = SnapshotFor(p)
 	local s = self.session
-	if not s.zoneSet[zone] then
-		s.zoneSet[zone] = true
+	if not s.zoneSet[key] then
+		s.zoneSet[key] = true
 		s.zones = s.zones + 1
 	end
 	return self.visit, newVisit
@@ -650,24 +720,24 @@ function LM:LeaveZone(fled)
 	local cur = self.current
 	if not cur then return end
 	local m = self:Data()
-	local p = m and m.places[cur.zone]
+	local p = m and m.places[cur.key]
 	if p then
 		p.last = Now()
 		if fled and p.lastOutcome ~= "bad" then
 			local e = self:Record({ kind = "flight", zone = cur.zone, tags = { "bad", "flight" } })
-			self:MarkBad(cur.zone, "flight", e)
+			self:MarkBad(cur.key, "flight", e)
 		end
 	end
 	self.current = nil
 end
 
 ---La visita attuale a una zona è finita male (morte o fuga).
----@param zone string
+---@param key string chiave del luogo
 ---@param kind string death | flight
 ---@param entry? AUMemoryEntry il ricordo che lo documenta
-function LM:MarkBad(zone, kind, entry)
+function LM:MarkBad(key, kind, entry)
 	local m = self:Data()
-	local p = m and m.places[zone]
+	local p = m and m.places[key]
 	if not p then return end
 	p.lastOutcome, p.badKind = "bad", kind
 	p.badId = entry and entry.id > 0 and entry.id or nil
@@ -677,7 +747,7 @@ end
 function LM:Touch()
 	if not self:Enabled() or not self.current then return end
 	local m = self:Data()
-	local p = m.places[self.current.zone]
+	local p = m.places[self.current.key]
 	if p then p.last = math.max(p.last or 0, Now()) end
 end
 
@@ -690,13 +760,14 @@ function LM:OnDeath()
 	if not self:Enabled() then return nil end
 	local m, now = self:Data(), Now()
 	local zone = self.current and self.current.zone
+	local key = self.current and self.current.key
 	local s = self.session
 	s.deaths = s.deaths + 1
 	-- due morti ravvicinate nella stessa zona sono un solo ricordo
 	for i = #s.entries, 1, -1 do
 		local e = s.entries[i]
 		if e.kind == "death" and e.zone == zone and now - e.t < self.DEATH_GAP then
-			if zone and m.places[zone] then m.places[zone].deaths = m.places[zone].deaths + 1 end
+			if key and m.places[key] then m.places[key].deaths = m.places[key].deaths + 1 end
 			return nil
 		end
 	end
@@ -704,9 +775,9 @@ function LM:OnDeath()
 	local entry = self:Record({ kind = "death", zone = zone, tags = first and { "bad", "death", "first" } or { "bad", "death" },
 		importance = first and 4 or nil, t = now })
 	if first then self:SetFlag("first_death", "auto") end
-	if zone and m.places[zone] then
-		m.places[zone].deaths = m.places[zone].deaths + 1
-		self:MarkBad(zone, "death", entry)
+	if key and m.places[key] then
+		m.places[key].deaths = m.places[key].deaths + 1
+		self:MarkBad(key, "death", entry)
 	end
 	return entry
 end
@@ -725,9 +796,9 @@ function LM:OnLevel(level)
 end
 
 -- il ritorno in una zona nota: un candidato per il Narrative Director, a richiamo di memoria
-function LM:OfferReturn(zone)
+function LM:OfferReturn(key)
 	C_Timer.After(self.RETURN_DELAY, function()
-		if self.current and self.current.zone == zone and not InCombat() and NS.Director then
+		if self.current and self.current.key == key and not InCombat() and NS.Director then
 			NS.Director:Offer("memory_return")
 		end
 	end)
@@ -737,7 +808,7 @@ local handlers = {}
 
 function handlers.WORLD_ENTER(env)
 	local c = env.context
-	LM:EnterZone(c.zone)
+	LM:EnterZone(c.zone, { mapID = c.mapID })
 end
 
 function handlers.ZONE_ENTER(env)
@@ -746,8 +817,8 @@ function handlers.ZONE_ENTER(env)
 	local ratio = HealthRatio()
 	local dead = NS.Compat.SafeCall("UnitIsDeadOrGhost", "player") == true
 	local fled = not dead and (InCombat() or (ratio ~= nil and ratio < LM.FLIGHT_HP))
-	local snap, newVisit = LM:EnterZone(env.context.zone, { fled = fled })
-	if newVisit and snap and snap.repeatVisit then LM:OfferReturn(snap.zone) end
+	local snap, newVisit = LM:EnterZone(env.context.zone, { fled = fled, mapID = env.context.mapID })
+	if newVisit and snap and snap.repeatVisit then LM:OfferReturn(snap.key) end
 end
 
 function handlers.PLAYER_DEATH()
@@ -774,14 +845,17 @@ function LM:Context(ctx)
 	local s = self.session
 	local out = { flags = m.flags, session = { deaths = s.deaths, levels = s.levels, zones = s.zones } }
 	local zone = ctx and ctx.zone
+	-- il luogo del contesto per chiave stabile (uiMapID, issue #31), con il nome come ripiego
+	local key = ctx and type(ctx.place) == "table" and ctx.place.key or zone
 	local v = self.visit
-	if zone and v and v.zone == zone then
-		out.zone = zone
+	if key and v and (v.key == key or (zone and v.zone == zone and not (v.key and v.key:find("^map:")))) then
+		out.zone, out.key = v.zone, v.key
 		out.visits, out.firstVisit, out.repeatVisit = v.visits, v.firstVisit, v.repeatVisit
 		out.lastVisitBad, out.lastBadKind, out.daysSinceLastVisit = v.lastVisitBad, v.lastBadKind, v.daysSinceLastVisit
-	elseif zone and m.places[zone] then
+	elseif key then
 		-- un luogo noto in cui non ci si trova (prova a mano): si sa quante volte, non com'è andata
-		out.zone, out.visits = zone, m.places[zone].visits
+		local p = m.places[key] or (zone and self:FindPlace(zone))
+		if p then out.zone, out.key, out.visits = p.name, p.key, p.visits end
 	end
 	return out
 end

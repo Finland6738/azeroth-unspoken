@@ -158,6 +158,10 @@ local function Command(msg)
 	elseif cmd == "relazioni" or cmd == "relazione" or cmd == "relations" or cmd == "relationships"
 		or cmd == "bonds" then
 		NS.Relationships:Command(rest)
+	elseif cmd == "luogo" or cmd == "place" or cmd == "dove" or cmd == "where" then
+		NS.Place:Command()
+	elseif cmd == "chi" or cmd == "who" or cmd == "interlocutore" or cmd == "other" then
+		NS.Interlocutor:Command(rest)
 	elseif cmd == "benvenuto" or cmd == "wizard" or cmd == "welcome" then
 		NS.Wizard:Open()
 	elseif cmd == "annulla" or cmd == "scarta" or cmd == "cancel" or cmd == "discard" then

@@ -80,6 +80,7 @@ Config.CHAT_LIMITS = {
 ---@field ignored table<string, boolean>
 ---@field disabledPacks table<string, boolean>
 ---@field relations AURelationSettings
+---@field interlocutor { trp3Others: boolean } S6c: consenso a leggere i profili pubblici TRP3 degli altri giocatori
 ---@field ui AUUISettings
 
 Config.defaults = {
@@ -128,6 +129,10 @@ Config.defaults = {
 		autoRegisterPlayers = false,
 		proposePlayers = true,
 	},
+	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
+	interlocutor = {
+		trp3Others = false,
+	},
 	ui = {
 		showButton = true,
 		wizardDone = false,
@@ -147,7 +152,7 @@ Config.characterDefaults = {
 	-- Vuoto = profilo neutro. I valori dei tratti si controllano in Personality:Sanitize (modello Engine/Traits.lua).
 	personality = { version = 1, archetype = "neutral", traits = {}, trp3 = false },
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
-	memories = { version = 1, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
+	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
 	relationships = { version = 1, npcs = {}, players = {} },
 	arcs = {},
