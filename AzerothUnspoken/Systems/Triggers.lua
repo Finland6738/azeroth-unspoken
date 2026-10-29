@@ -1,5 +1,6 @@
 -- Azeroth Unspoken: eventi normalizzati -> eventi narrativi (battle, victory, zone...)
--- Probabilità e pause per evento vengono dal prototipo; lo step S4 le sostituisce col Narrative Director.
+-- Ogni evento narrativo diventa un candidato del Narrative Director (Systems/Director.lua), che decide se e
+-- quale parla. Qui restano le probabilità e le pause proprie di ogni evento, lette dal Director.
 local ADDON, NS = ...
 local Triggers = NS:RegisterModule("triggers")
 NS.Triggers = Triggers
@@ -16,7 +17,7 @@ NS.EVENT_COOLDOWN = {
 	buff = 60, travel = 60,
 }
 
--- eventi importanti che ignorano il cooldown globale
+-- eventi importanti (priorità "evento eccezionale" del Narrative Director): saltano pausa globale e budget
 NS.BYPASS_GLOBAL = { death = true, rez = true, levelup = true, rezother = true }
 
 -- Probabilità e pausa predefinite per un evento nuovo, definito da un pacchetto.
@@ -30,8 +31,6 @@ function NS:GetChance(event)
 	return self.db.chance[event] or self.DEFAULT_CHANCE[event] or 30
 end
 
-local lastSpoken = 0
-local lastByEvent = {}
 local combatStart, lowHpDone, wasDead, lastZone
 local sentTargets = {}   -- [castGUID] = nome del bersaglio
 
@@ -41,26 +40,9 @@ local SKIP = {
 	["attacco"] = true, ["tiro"] = true,
 }
 
--- Il Director decide se e con quali moltiplicatori l'evento può intervenire (intensità, pausa, moduli);
--- qui restano la pausa propria dell'evento e il lancio del dado.
-local function Allowed(event)
-	local verdict = NS.Director:Evaluate(event)
-	if not verdict.allow then return false end
-	local now = GetTime()
-	local cooldown = NS.db.pacing.globalCooldownSeconds * verdict.cooldownMul
-	if not NS.BYPASS_GLOBAL[event] and now - lastSpoken < cooldown then return false end
-	local cd = NS.EVENT_COOLDOWN[event]
-	if cd and lastByEvent[event] and now - lastByEvent[event] < cd * verdict.cooldownMul then return false end
-	return math.random(100) <= math.min(100, NS:GetChance(event) * verdict.chanceMul)
-end
-
+-- Ogni evento narrativo spontaneo è un candidato del Narrative Director: gate, priorità, pacing e dado sono suoi.
 local function Fire(event, extra)
-	if not Allowed(event) then return end
-	local ctx = NS:BuildContext(extra)
-	if NS.Gateway:Narrate(event, ctx, { auto = true }) then
-		lastSpoken = GetTime()
-		lastByEvent[event] = lastSpoken
-	end
+	NS.Director:Offer(event, extra)
 end
 NS.Fire = Fire
 

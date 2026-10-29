@@ -128,6 +128,7 @@ function IsIndoors() return false end
 function IsMounted() return false end
 function IsSwimming() return false end
 function IsStealthed() return false end
+function InCinematic() return P.cinematic == true end
 function IsInInstance() return P.instance, P.instance and "party" or "none" end
 function IsInRaid() return P.raid or false end
 function IsInGroup() return P.group or false end

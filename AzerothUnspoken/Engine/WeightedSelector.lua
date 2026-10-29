@@ -42,10 +42,23 @@ local function Remember(key, id, keep)
 	mem.last[id] = time()
 end
 
--- Fattore S (affinità di stile) del peso W = B x C x P x N x S, per la sola profondità (GDD §4.3, §10).
--- Una frase scritta per altre profondità non viene esclusa: pesa meno, così non resta mai il silenzio per un
--- evento che ha frasi soltanto di un'altra profondità. Il StyleResolver dello step S4 aggiunge i registri.
+---------------------------------------------------------------------------
+-- Peso W = B x C x P x N x S x R (GDD §10)
+---------------------------------------------------------------------------
+-- B  peso base della regola (weight)
+-- C  attinenza al contesto: 1 + 0,35 per condizione soddisfatta, per gli aggiunti "C" (S6c: interlocutore e luogo)
+-- P  affinità caratteriale: neutra (1) finché lo step S5 non aggancia la personalità
+-- N  novità: si attenua con gli usi recenti e con lo stesso registro dell'ultima frase dell'evento
+-- S  affinità di stile: profondità (StyleFactor) per registri (StyleResolver:Affinity)
+-- R  relazione con l'interlocutore: neutra (1) finché lo step S6b non aggancia le relazioni
+-- Un fattore 0 esclude la frase (le condizioni la escludono già prima, in Eligible).
+
+-- Fattore S per la sola profondità (GDD §4.3). Una frase scritta per altre profondità non viene esclusa: pesa
+-- meno, così non resta mai il silenzio per un evento che ha frasi soltanto di un'altra profondità.
 Engine.DEPTH_MISMATCH = 0.3
+Engine.SPEC_BONUS = 0.35      -- C: per ogni condizione
+Engine.USE_DECAY = 0.3        -- N: per ogni uso recente
+Engine.SAME_TONE = 0.6        -- N: stesso registro dell'ultima frase dell'evento
 
 ---@param entry AUPhrase
 ---@param ctx? table
@@ -56,13 +69,68 @@ function Engine.StyleFactor(entry, ctx)
 	return entry.depth[depth] and 1 or Engine.DEPTH_MISMATCH
 end
 
--- peso effettivo di una voce, dati il contesto di memoria e, per le frasi, il contesto di gioco
-local function Score(entry, key, poolSize, lastTone, ctx)
-	local w = entry.weight * (1 + 0.35 * entry.spec)
-	w = w / (1 + 0.3 * (Mem().uses[entry.id] or 0))
-	if lastTone and entry.tone and entry.tone == lastTone then w = w * 0.6 end
-	if ctx then w = w * Engine.StyleFactor(entry, ctx) end
-	return w
+-- Agganci dei fattori per gli step futuri: [fattore][nome] = fn(entry, ctx) -> numero >= 0.
+-- I risultati dello stesso fattore si moltiplicano. Un aggancio che sbaglia o restituisce un valore non valido
+-- vale 1 (neutro) e l'errore va in diagnostica: un sistema rotto non spegne il narratore.
+--   C: S6c (interlocutore ctx.other, luogo ctx.place)   P: S5 (personalità)   R: S6b (relazioni; 0 = incoerente)
+---@type table<string, table<string, fun(entry: AUPhrase, ctx: table): number>>
+Engine.weightHooks = { C = {}, P = {}, R = {} }
+
+---Aggiunge, sostituisce o toglie (fn = nil) un aggancio di un fattore del peso.
+---@param factor "C"|"P"|"R"
+---@param name string
+---@param fn? fun(entry: AUPhrase, ctx: table): number
+function Engine:SetWeightHook(factor, name, fn)
+	assert(self.weightHooks[factor], "fattore del peso sconosciuto: " .. tostring(factor))
+	self.weightHooks[factor][name] = fn
+end
+
+local function Hooks(factor, entry, ctx)
+	local f = 1
+	for name, fn in pairs(Engine.weightHooks[factor]) do
+		local ok, v = pcall(fn, entry, ctx)
+		if ok and type(v) == "number" and v >= 0 and v == v and v < math.huge then
+			f = f * v
+		elseif NS.Diagnostics then
+			NS.Diagnostics:Error("weight:" .. factor .. ":" .. name, ok and ("valore non valido: " .. tostring(v)) or v)
+		end
+	end
+	return f
+end
+
+---@class AUWeightFactors
+---@field B number
+---@field C number
+---@field P number
+---@field N number
+---@field S number
+---@field R number
+---@field W number il prodotto
+
+---I fattori del peso di una voce. Senza contesto (cornici, vocabolario) C, P, S e R restano neutri tranne la
+---specificità.
+---@param entry table frase, cornice o voce di vocabolario
+---@param lastTone? string registro dell'ultima frase dell'evento
+---@param ctx? table
+---@param profile? AUStyleProfile profilo di Engine.StyleResolver:Resolve
+---@return AUWeightFactors
+function Engine.Factors(entry, lastTone, ctx, profile)
+	local f = { B = entry.weight, C = 1 + Engine.SPEC_BONUS * (entry.spec or 0), P = 1, S = 1, R = 1 }
+	f.N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
+	if lastTone and entry.tone and entry.tone == lastTone then f.N = f.N * Engine.SAME_TONE end
+	if ctx then
+		f.C = f.C * Hooks("C", entry, ctx)
+		f.P = Hooks("P", entry, ctx)
+		f.S = Engine.StyleFactor(entry, ctx) * Engine.StyleResolver:Affinity(entry, profile)
+		f.R = Hooks("R", entry, ctx)
+	end
+	f.W = f.B * f.C * f.P * f.N * f.S * f.R
+	return f
+end
+
+-- peso effettivo di una voce (W), dati la memoria e, per le frasi, il contesto e il profilo di stile
+local function Score(entry, key, poolSize, lastTone, ctx, profile)
+	return Engine.Factors(entry, lastTone, ctx, profile).W
 end
 
 -- le voci usate di recente restano escluse finché ce ne sono altre disponibili
@@ -176,6 +244,15 @@ function Engine:RenderPhrase(p, lang, ctx)
 	return nil
 end
 
+---I fattori del peso di una frase per un evento, come li calcola PickEntry (per i test e /au debug).
+---@param p AUPhrase
+---@param event string
+---@param ctx table
+---@return AUWeightFactors
+function Engine:Weight(p, event, ctx)
+	return Engine.Factors(p, Mem().lastTone[event], ctx, self.StyleResolver:Resolve(event, ctx))
+end
+
 ---Sceglie e compone una frase.
 ---@param event string
 ---@param ctx table contesto di NS:BuildContext
@@ -187,11 +264,13 @@ function Engine:PickEntry(event, ctx, form)
 	local list = self.byEvent[event]
 	local mem = Mem()
 	local lastTone = mem.lastTone[event]
+	-- registri adatti all'evento, alla zona e alla profondità (GDD §5.2)
+	local profile = self.StyleResolver:Resolve(event, ctx)
 
 	local items = {}
 	local own = self:Eligible(list, lang, ctx, form, now)
 	for _, p in ipairs(own) do
-		table.insert(items, { e = p, w = Score(p, event, #own, lastTone, ctx) })
+		table.insert(items, { e = p, w = Score(p, event, #own, lastTone, ctx, profile) })
 	end
 
 	local frames
@@ -208,7 +287,7 @@ function Engine:PickEntry(event, ctx, form)
 				if p.speaker == "character" then table.insert(says, p) end
 			end
 			for _, p in ipairs(says) do
-				table.insert(items, { e = p, framed = true, w = 0.8 * Score(p, event, #says, lastTone, ctx) })
+				table.insert(items, { e = p, framed = true, w = 0.8 * Score(p, event, #says, lastTone, ctx, profile) })
 			end
 		end
 	end
@@ -220,9 +299,12 @@ function Engine:PickEntry(event, ctx, form)
 		local p = it.e
 		local text, variant = self:RenderPhrase(p, lang, ctx)
 		if text and it.framed then
+			-- mai frammenti incompatibili: solo le cornici di un registro vicino a quello della frase
 			local fitems = {}
 			for _, f in ipairs(frames) do
-				table.insert(fitems, { e = f, w = Score(f, "frame:" .. event, #frames) })
+				if self.StyleResolver:Compatible(f.styles, p.styles) then
+					table.insert(fitems, { e = f, w = Score(f, "frame:" .. event, #frames) })
+				end
 			end
 			local fit = WeightedPick(fitems, "frame:" .. event)
 			text = fit and self:RenderEntry(fit.e, lang, ctx, text)

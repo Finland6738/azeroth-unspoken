@@ -263,6 +263,7 @@ for i in range(40):
     G.ADVANCE(30)
     setP(combat=False)
     G.FIRE("PLAYER_REGEN_ENABLED")
+    G.ADVANCE(1)   # il Narrative Director risolve i candidati dopo la finestra di arbitraggio
     if i >= 6 and NS.Gateway.GetPending(NS.Gateway) is not None:
         break
 print("\nFLUSSO EVENTI")
@@ -377,6 +378,7 @@ setP(combat=False, target=None)
 for i in range(3):
     G.ADVANCE(400)
     G.FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", "guid%d" % i, 7620)
+G.ADVANCE(1)   # finestra di arbitraggio del Narrative Director
 fishing = [h_.text for h_ in list(NS.Narrator.history.values())[n0:]]
 for s_ in fishing: print("  ", s_)
 check(len(fishing) == 3, "frasi di pesca dal pacchetto di esempio, nel narratore")
@@ -391,7 +393,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestSchema", "TestValidator"):
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

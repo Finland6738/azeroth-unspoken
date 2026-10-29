@@ -54,6 +54,7 @@ La documentazione descrive solo ciò che esiste su `main` o che è pianificato i
 | [0012](adr/0012-lingue-scelte-dall-utente.md) | Lingue scelte dall'utente |
 | [0013](adr/0013-wiki-github.md) | La wiki di GitHub |
 | [0014](adr/0014-bus-di-eventi-normalizzati-e-moduli-isolati.md) | Bus di eventi, moduli isolati, Director |
+| [0015](adr/0015-narrative-director-un-intervento-per-momento.md) | Narrative Director: un intervento per momento, peso W, stile |
 
 ## Archivio
 

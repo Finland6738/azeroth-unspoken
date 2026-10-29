@@ -380,6 +380,8 @@ function Engine:AddFrame(pack, f)
 	f.weight = f.weight or 1
 	f.when = f.conditions or f.when
 	f.spec = Specificity(f.when)
+	-- registri della cornice (facoltativi): il StyleResolver non la unisce a una frase di registro lontano
+	f.styles = f.styles and AsList(f.styles) or nil
 	pack._autoFrame = (pack._autoFrame or 0) + 1
 	f.id = f.id or (pack.id .. "#frame" .. pack._autoFrame)
 	pack.frameList = pack.frameList or {}

@@ -1,6 +1,6 @@
 # Architettura di Azeroth Unspoken
 
-Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1 e S2), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
+Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1–S4), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
 
 ## Indice
 
@@ -36,13 +36,15 @@ flowchart LR
 
     subgraph Sys["Systems/"]
         TRG["Triggers<br/>evento → evento narrativo"]
-        DIR["Director<br/>quando parlare"]
+        DIR["Director<br/>candidati e arbitraggio"]
     end
 
     subgraph Eng["Engine/ (senza testi)"]
         REG["PhraseRegistry"]
         RULE["RuleEngine<br/>when"]
-        SEL["WeightedSelector"]
+        ND["NarrativeDirector + Pacing<br/>gate, priorità, budget"]
+        SEL["WeightedSelector<br/>W = B×C×P×N×S×R"]
+        STY["StyleResolver<br/>registri"]
         TPL["TemplateRenderer"]
     end
 
@@ -56,12 +58,14 @@ flowchart LR
     DATA[("Data/ e pacchetti<br/>frasi, cornici, vocabolario")]
 
     EV --> COMPAT --> BUS --> TRG --> DIR
-    TRG --> CTX
+    DIR --> ND
+    DIR --> CTX
+    DIR --> GW
     API --> COMPAT
     CTX --> TRP
-    TRG --> GW
     GW --> SEL
     SEL --> RULE
+    SEL --> STY
     SEL --> TPL
     REG --> SEL
     DATA --> REG
@@ -95,12 +99,15 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Core/ContextResolver.lua`** | `NS:BuildContext(extra)`: costruisce il contesto su cui si valutano le condizioni (personaggio, luogo, ora, gruppo, istanza, bersaglio, incantesimo), classifica gli incantesimi, registra le zone e le parole chiave dei pacchetti. |
 | **`Engine/PhraseRegistry.lua`** | `RegisterPack`; registra frasi, cornici, vocabolario e traduzioni; indici per evento e per id; speaker provvisorio; statistiche. |
 | **`Engine/RuleEngine.lua`** | `Match(when, ctx)`: le condizioni dichiarative (valori, elenchi, `not`, `any`, `func`, intervalli). |
-| **`Engine/WeightedSelector.lua`** | idoneità, peso (`weight` × specificità ÷ usi recenti), anti-ripetizione, memoria degli usi, `PickEntry`/`Pick`. |
+| **`Engine/StyleResolver.lua`** | registri adatti al momento (GDD §5.2): ammessi per evento, preferiti da zona, profondità e voce; affinità di una frase (parte del fattore `S`); compatibilità tra cornice e frase. |
+| **`Engine/WeightedSelector.lua`** | idoneità, peso `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`, agganci `Engine:SetWeightHook`), anti-ripetizione, memoria degli usi, `PickEntry`/`Pick`. |
+| **`Engine/Pacing.lua`** | pause (momento, globale, categoria, evento) e budget per categoria degli interventi spontanei; stato solo in memoria. |
+| **`Engine/NarrativeDirector.lua`** | priorità del §10, gate di opportunità guidato dall'intensità, sospensione (schermate invasive, combattimento impegnativo), dado, ordine dei candidati; agganci del ritmo e dell'impegno. |
 | **`Engine/TemplateRenderer.lua`** | segnaposto, genere, vocabolario, cornici. Se manca un dato, la frase è scartata. |
 | **`Integration/TotalRP3.lua`** | adattatore facoltativo: oggi legge il nome del profilo ([ADR 0004](adr/0004-total-rp-3-facoltativo-con-adattatore.md)). |
 | **`Integration/ChatGateway.lua`** | modalità, proposte, canali, invio solo da azione del giocatore, anti-flood, `AzerothUnspoken_Speak`. |
-| **`Systems/Director.lua`** | `Director:Evaluate(evento)`: intensità, pausa immediata, moduli attivi. Punto di aggancio del Narrative Director (step S4). |
-| **`Systems/Triggers.lua`** | abbonato al bus: trasforma gli eventi normalizzati in eventi narrativi (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`), applica probabilità e pause per evento. |
+| **`Systems/Director.lua`** | il Narrative Director degli eventi spontanei: `Offer` (candidato), `Resolve` (al massimo un intervento per momento), `Evaluate` (il gate, punto di aggancio di S2), pausa immediata, riepilogo per `/au debug`. |
+| **`Systems/Triggers.lua`** | abbonato al bus: trasforma gli eventi normalizzati in eventi narrativi (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) e li offre al Director; tiene le probabilità e le pause proprie di ogni evento. |
 | **`UI/Widgets.lua`** | piccoli componenti condivisi dell'interfaccia. |
 | **`UI/NarratorFrame.lua`** | il narratore privato: riquadro, durata, opacità, cronologia, editor, pulsanti, pausa. |
 | **`UI/SpeakButton.lua`** | il pulsante "pronuncia" e il tasto: gesto che conferma il Chat Gateway. |
@@ -108,7 +115,7 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`UI/SettingsFrame.lua`** | pannello delle impostazioni (`Settings.RegisterCanvasLayoutCategory`, con ripiego su `InterfaceOptions_AddCategory`). |
 | **`UI/Commands.lua`** | `/au` e `/unspoken`. |
 | **`Data/<lingua>/Interface.lua`** | testi dell'interfaccia (`itIT`, `enUS`). |
-| **`Data/*.lua`** | pacchetti di frasi di base: `Vocabulary`, `Frames`, `Combat`, `Spells`, `Life`, `Exploration`, `Social`. `Data/Classes.lua` (54 frasi) c'è ma **non è ancora nel `.toc`**. |
+| **`Data/*.lua`** | pacchetti di frasi di base (schema v2): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
 | **`Bindings.xml`** | tasti `AZEROTHUNSPOKEN_SPEAK` e `AZEROTHUNSPOKEN_PAUSE`. |
 | **`AzerothUnspoken_Example/`** | pacchetto di esempio, addon separato con `## Dependencies: AzerothUnspoken`. |
 | **`Tests/`** | test fuori dal gioco (lupa) e client simulato ([ADR 0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). |
@@ -137,12 +144,12 @@ sequenceDiagram
     B->>B: envelope + deduplicazione + coda anti-cascata
     B->>T: COMBAT_START (abbonato "triggers")
     T->>T: handler → Fire("battle")
-    T->>D: Evaluate("battle")
-    D-->>T: allow, chanceMul, cooldownMul (oppure allow = false)
-    T->>T: pausa globale e dell'evento, dado sulla probabilità
-    T->>C: BuildContext(extra)
-    C-->>T: ctx
-    T->>G: Narrate("battle", ctx, auto = true)
+    T->>D: Offer("battle")
+    Note over D: finestra di arbitraggio (0,1 s):<br/>i candidati dello stesso momento si sommano
+    D->>C: BuildContext(extra)
+    C-->>D: ctx
+    D->>D: Evaluate: gate, sospensione, pause, budget<br/>poi il dado (probabilità × intensità)
+    D->>G: Narrate("battle", ctx, auto = true)
     G->>E: PickEntry(evento, ctx, forma)
     E-->>G: record: testo, speaker, forma, id
     G->>G: Propose: modalità e voce decidono l'uscita
@@ -161,13 +168,47 @@ I passaggi, in parole:
 2. **Envelope.** `NewEnvelope` crea `{ type, timestamp, source, context, fields }`. I valori segreti non entrano nel contesto e il loro campo è `RESTRICTED`; i campi attesi ma assenti sono `MISSING`.
 3. **Deduplicazione e coda.** Un doppione (stesso tipo e chiave entro la finestra) si scarta e si conta. Un evento pubblicato mentre se ne consegna un altro va in coda (al massimo 32; oltre 5 secondi di età si scarta).
 4. **Consegna.** Ai gestori del tipo e a quelli di `"*"`, ciascuno in `Guard`.
-5. **Triggers.** I gestori in `Systems/Triggers.lua` mantengono un po' di stato (inizio del combattimento, zona precedente, bersagli degli incantesimi) e chiamano `Fire(evento, extra)`; alcuni ritardano con `C_Timer.After` per lasciare che il gioco aggiorni lo stato.
-6. **Director.** `Allowed(evento)` chiede a `Director:Evaluate`: addon spento, pausa immediata, modulo escluso o intensità 0 → silenzio. Altrimenti il Director restituisce i moltiplicatori di probabilità e pausa, e `Triggers` applica la pausa globale, quella dell'evento e il lancio del dado.
+5. **Triggers.** I gestori in `Systems/Triggers.lua` mantengono un po' di stato (inizio del combattimento, zona precedente, bersagli degli incantesimi) e chiamano `Fire(evento, extra)`, cioè `Director:Offer`; alcuni ritardano con `C_Timer.After` per lasciare che il gioco aggiorni lo stato.
+6. **Narrative Director.** I candidati arrivati entro la finestra di arbitraggio si risolvono insieme, in ordine di priorità; per ognuno il Director costruisce il contesto, chiede il gate (`Evaluate`) e tira il dado. Il primo che produce una frase vince, gli altri tacciono ([dettagli sotto](#il-narrative-director)).
 7. **Contesto.** `NS:BuildContext(extra)` raccoglie i dati del momento. Con l'identità del bersaglio segreta non si legge né si confronta alcun dato del bersaglio (resta `targetSecret`); ogni lettura passa da `SafeCall`; il nome del personaggio può venire da Total RP 3.
 8. **Gateway e motore.** `Gateway:Narrate` sceglie la forma (parlata o emote) e chiede a `Engine:PickEntry` una frase ([sezione 4](#4-come-si-sceglie-una-frase)). Se non c'è nessuna frase adatta, **non succede nulla**: il silenzio è valido.
 9. **Uscita.** `Gateway:Propose` mostra sempre la frase nel narratore. Solo se la modalità lo prevede e la voce può andare in chat, crea anche una **proposta** ([sezione 5](#5-il-chat-gateway)).
 
-**Richieste esplicite.** `/au saluto`, `/au evento`, `/au incanta` e il tasto "pronuncia" non passano dalla probabilità e dalla pausa: chiamano `NS:Trigger`/`Gateway:Narrate` direttamente. Restano comunque soggetti alle regole del Gateway: mai un invio in chat senza un'azione del giocatore.
+**Richieste esplicite.** `/au saluto`, `/au evento`, `/au incanta` e il tasto "pronuncia" non passano dal Narrative Director: chiamano `NS:Trigger`/`Gateway:Narrate` direttamente, anche in pausa e a intensità 0 (GDD §4.2). Non consumano budget, ma aprono il "momento": per qualche secondo nessuna frase spontanea le segue. Restano comunque soggetti alle regole del Gateway: mai un invio in chat senza un'azione del giocatore.
+
+### Il Narrative Director
+
+```mermaid
+flowchart TD
+    O["Offer(evento)"] --> Q["coda del momento"]
+    Q -- "dopo 0,1 s" --> R["Resolve: candidati in ordine di priorità<br/>esplicito > dialogo > eccezionale > memoria > atmosfera"]
+    R --> C["contesto"]
+    C --> G{"Gate"}
+    G -- "addon spento, pausa, modulo spento,<br/>intensità 0" --> S["silenzio (motivo nel registro)"]
+    G -- "cinematica o filmato" --> S
+    G -- "combattimento impegnativo<br/>(sotto la priorità eccezionale)" --> S
+    G -- "pause: momento, globale, categoria, evento;<br/>budget di categoria" --> S
+    G -- "via libera" --> D{"Dado: probabilità dell'evento<br/>× intensità / 50"}
+    D -- no --> N["candidato successivo"]
+    D -- sì --> P["Gateway:Narrate → motore"]
+    P -- "nessuna frase" --> N
+    P -- "frase" --> REC["Pacing:Record; gli altri candidati tacciono"]
+    S --> N
+    N --> R
+```
+
+| Controllo | Regola | Chi lo salta |
+|---|---|---|
+| Momento | 4 s tra due interventi qualsiasi (anche espliciti) | nessuno |
+| Pausa globale | `pacing.globalCooldownSeconds` (45) × (1,5 − intensità/100) | eventi eccezionali |
+| Pausa di categoria | `Pacing.CATEGORY_COOLDOWN` (combattimento 15 s, esplorazione 30 s...) × lo stesso fattore | eventi eccezionali |
+| Pausa dell'evento | `NS.EVENT_COOLDOWN` × lo stesso fattore | nessuno |
+| Budget | `Pacing.BUDGET` per categoria in 10 minuti (combattimento 6...) × intensità/50 | eventi eccezionali |
+| Schermate invasive | `InCinematic`, `IsInCinematicScene`, `CinematicFrame`/`MovieFrame` visibili | nessuno |
+| Combattimento impegnativo | in combattimento con boss, in incursione, élite in istanza (`pacing.suppressInHighDemand`) | eventi eccezionali |
+| Pausa della frase (id) | `cooldown` della regola e finestra anti-ripetizione, nel motore | nessuno (vale anche per gli espliciti) |
+
+Il registro delle ultime decisioni (`Director.log`) e il budget usato compaiono in `/au debug` alla riga **Narrative Director**. La motivazione delle scelte è nell'[ADR 0015](adr/0015-narrative-director-un-intervento-per-momento.md).
 
 ## 4. Come si sceglie una frase
 
@@ -176,7 +217,7 @@ flowchart TD
     A["PickEntry(evento, ctx, forma)"] --> B["Frasi dell'evento<br/>nella lingua scelta"]
     B --> C{"Idonea?<br/>(pacchetto acceso, pausa propria,<br/>dati dei segnaposto, when)"}
     C -- no --> X["scartata"]
-    C -- sì --> D["Peso = weight × (1 + 0,35 × condizioni)<br/>÷ (1 + 0,3 × usi recenti)<br/>× 0,6 se stesso tono dell'ultima"]
+    C -- sì --> D["W = B × C × P × N × S × R<br/>(base, contesto, personalità, novità,<br/>stile, relazione)"]
     D --> E["Escluse le frasi recenti<br/>(finché ce ne sono altre)"]
     E --> F["Scelta pesata casuale"]
     F --> G["Render: segnaposto, genere,<br/>vocabolario, cornice se emote"]
@@ -187,6 +228,8 @@ flowchart TD
     J --> K["{ text, speaker, form, id, event }"]
 ```
 
+- **Peso** (`Engine.Factors`, GDD §10): `B` = `weight`; `C` = 1 + 0,35 × condizioni (più gli agganci `C` di S6c); `P` = personalità, neutra fino a S5; `N` = ÷ (1 + 0,3 × usi recenti), ×0,6 se il registro è quello dell'ultima frase dell'evento; `S` = profondità (×0,3 se diversa) × affinità di registro del StyleResolver (×0,5 fuori dall'evento, +25% per ogni preferenza di zona, profondità e voce); `R` = relazione, neutra fino a S6b. `Engine:Weight(frase, evento, ctx)` restituisce la scomposizione.
+- **Stile**: i registri pesano e non escludono, quindi il ripiego neutro è automatico. In forma emote, una cornice con registri accoglie solo frasi di registro uguale o vicino (`StyleResolver:Compatible`).
 - **Condizioni** (`when`): vedi [FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md). Più condizioni → frase più specifica → peso maggiore.
 - **Memoria**: `NS.cdb.memory` (`uses`, `last`, `recent`, `lastTone`), per personaggio. Gli usi si attenuano a ogni accesso (`DecayMemory`, ×0,75). La finestra delle frasi recenti è circa il 60% di quelle disponibili, al massimo `pacing.recentPhraseWindow` (30).
 - **Voce (`speaker`)**: `narrator`, `inner`, `character`, `npc`. Oggi, se un pacchetto non la indica, `say` → `character` ed `emote` → `narrator`. Una frase parlata inserita in una cornice è `narrator`.
@@ -262,7 +305,10 @@ Un pacchetto è un addon separato con `## Dependencies: AzerothUnspoken`. L'API 
 | `AzerothUnspoken:AddTranslations(lingua, { [id] = testo })` | traduce frasi di altri pacchetti |
 | `AzerothUnspoken:RegisterSpellKeywords({ kind = …, element = …, classElement = … })` | classifica gli incantesimi e ne crea di nuovi tipi (ognuno lancia l'evento omonimo) |
 | `AzerothUnspoken:SetEventDefaults(evento, probabilità, pausa)` | probabilità e pausa predefinite di un evento nuovo |
-| `AzerothUnspoken:RegisterZoneMoods({ ["Nome zona"] = "atmosfera" })` | atmosfera delle zone, per la condizione `mood` |
+| `AzerothUnspoken:RegisterZoneMoods({ ["Nome zona"] = "atmosfera" })` | atmosfera delle zone, per la condizione `mood` e per lo stile |
+| `AzerothUnspoken:RegisterEventStyles(evento, { registri })` | registri ammessi per un evento (StyleResolver) |
+| `AzerothUnspoken:RegisterMoodStyles({ atmosfera = { registri } })` | registri preferiti da un'atmosfera |
+| `AzerothUnspoken:SetEventPriority(evento, "memory")` | priorità di un evento nel Narrative Director (`dialogue`, `exceptional`, `memory`, `ambient`) |
 
 Un pacchetto può anche usare `func = function(ctx) … end` nelle condizioni per regole scritte in Lua, con il contesto di `NS:BuildContext`.
 
@@ -286,7 +332,8 @@ Questi punti sono interni: possono cambiare tra una versione e l'altra finché l
 2. Registra il modulo con `NS:RegisterModule("nome")` e inizializzalo in `OnInit` (isolato da `Guard`).
 3. Per ogni API del client nuova: controllala nel dump ([ADR 0010](adr/0010-dump-api-di-forever-come-riferimento.md)), passa da Compat e degrada con eleganza.
 4. Per un nuovo evento del client aggiungi una sorgente al bus; non registrare eventi per conto tuo.
-5. Per parlare, passa dal Director (se è spontaneo) e dal Gateway (sempre).
+5. Per parlare, passa dal Director (se è spontaneo: `NS.Director:Offer(evento, extra)`) e dal Gateway (sempre).
+   Per influire sulla scelta senza toccare il Director usa gli agganci: `Engine:SetWeightHook("C"|"P"|"R", nome, fn)` (fattori del peso), `StyleResolver:SetModifier(nome, fn)` (preferenze di registro), `NarrativeDirector:SetRhythm(nome, fn)` (moltiplicatori di probabilità e pause), `NarrativeDirector:SetDemandCheck(nome, fn)` (momento impegnativo).
 6. Dati salvati nuovi: predefiniti in `Config.defaults`, regole in `Config.rules`, migrazione e test.
 7. Annota con EmmyLua l'API pubblica e aggiungi le nuove globali a `.luarc.json` (vedi [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
@@ -296,12 +343,10 @@ Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale.
 
 | Step | Cosa aggiunge | Dove si aggancia |
 |---|---|---|
-| S3 | schema dati v2: registro delle regole separato dai testi per lingua, `depth` e `speaker` sulle frasi, validatore, `/au validate`, `Tests/check_api.py` | `Engine/PhraseRegistry.lua`, `Data/`, `Tests/` |
-| S4 | Narrative Director completo: intensità, budget, priorità, silenzio, StyleResolver, peso `W = B × C × P × N × S` | `Systems/Director.lua` (`Evaluate`) |
-| S5 | personalità del personaggio (Character Soul) e adattatore Total RP 3 esteso | `Systems/`, `Integration/TotalRP3.lua` |
+| S5 | personalità del personaggio (Character Soul) e adattatore Total RP 3 esteso | `Systems/`, `Integration/TotalRP3.lua`; aggancio `P` (`Engine:SetWeightHook("P", ...)`) e preferenze di registro (`StyleResolver:SetModifier`) |
 | S6 | memoria vissuta e diario | `NS.cdb.memories`, `UI/JournalFrame.lua` |
-| S6b | relazioni e affinità con NPC e giocatori | `Systems/Relationships.lua`, `Data/Relationships.lua` |
-| S6c | interlocutore (`ctx.other`) e luogo (`ctx.place`) come condizioni | `Systems/Interlocutor.lua`, `Systems/Place.lua`, `Data/NPCs.lua`, `Data/Places.lua` |
+| S6b | relazioni e affinità con NPC e giocatori | `Systems/Relationships.lua`, `Data/Relationships.lua`; aggancio `R` (0 esclude le frasi incoerenti) |
+| S6c | interlocutore (`ctx.other`) e luogo (`ctx.place`) come condizioni | `Systems/Interlocutor.lua`, `Systems/Place.lua`, `Data/NPCs.lua`, `Data/Places.lua`; aggancio `C`, ritmo per tipo di istanza (`NarrativeDirector:SetRhythm`), scontri con i boss (`SetDemandCheck`) |
 | S8 | dialoghi con NPC (finestra, stati, registro) | nuovo modulo e `Data/NPCs.lua` |
 | S9 | archi narrativi | `NS.cdb.arcs` |
 | S10 | gioco sociale con messaggi addon, consenso e sicurezza | nuovo modulo, `privacy.*` |
@@ -309,9 +354,7 @@ Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale.
 ## 9. Limiti noti
 
 - **Nulla è stato provato nel client vero.** Tutto è verificato solo con il client simulato; la prova G1 è rimandata ([checklist](G1_checklist.md)).
-- La profondità dello stile (`proseDepth`) è salvata, ma nessuna frase la usa.
 - Nelle impostazioni solo i moduli `personal`, `world`, `publicChat` e `totalRP3` hanno effetto.
-- Lo `speaker` è assegnato con una regola provvisoria (vedi sezione 4) finché non arriva lo schema v2.
-- `Data/Classes.lua` (54 frasi) non è ancora nel `.toc`.
-- Le probabilità e le pause per evento (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) vengono dal prototipo; il Narrative Director le sostituirà.
+- Le probabilità e le pause per evento (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) vengono dal prototipo; i numeri del Narrative Director (budget, pause di categoria, bonus e penalità di stile) sono ipotesi da regolare con le prove in gioco ([G1](G1_checklist.md), passi 27–31).
+- Il riconoscimento del combattimento impegnativo usa solo boss, incursione ed élite in istanza: gli scontri con i boss dei dungeon senza classificazione `worldboss` arriveranno con S6c (`ENCOUNTER_START`).
 - Le API della matrice delle capacità non sono state controllate nel client della build 70658: vedi `/au debug full` e [RIFERIMENTI.md](RIFERIMENTI.md).
