@@ -928,8 +928,8 @@ T.run("migrazione dello schema 5", function()
 	AzerothUnspokenCharacterDB = { schemaVersion = 4, memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} },
 		personality = { version = 1, archetype = "veteran", traits = {}, trp3 = false } }
 	Config:Load()
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 5, "personaggio a 5")
-	T.eq(AzerothUnspokenDB.schemaVersion, 5, "account a 5")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 6, "personaggio a 5")
+	T.eq(AzerothUnspokenDB.schemaVersion, 6, "account a 5")
 	local d = AzerothUnspokenCharacterDB.relationships
 	T.ok(d and d.version == 1 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
 	T.eq(NS.db.relations.autoRegisterPlayers, false, "registrazione automatica spenta nelle impostazioni nuove")

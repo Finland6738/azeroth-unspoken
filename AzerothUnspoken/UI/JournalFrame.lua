@@ -119,6 +119,144 @@ JournalFrame:RegisterTab("session", { label = "mem_tab_session", note = "mem_ses
 end })
 
 ---------------------------------------------------------------------------
+-- Storie (S9): in corso, disponibili, concluse, saltate; il dettaglio mostra il racconto e le scelte fatte
+---------------------------------------------------------------------------
+local SA = NS.StoryArcs
+local selectedArc            -- id dell'arco aperto nel dettaglio (solo sessione)
+local WRAP = 76              -- caratteri per riga del dettaglio
+
+local function Chars(s)
+	return #s - #(s:gsub("[\128-\191]", ""))
+end
+
+-- spezza un testo in righe di al massimo WRAP caratteri, solo sugli spazi ASCII (l'UTF-8 resta intero)
+local function Wrap(text, indent)
+	local out, line = {}, ""
+	for word in tostring(text or ""):gmatch("[^ ]+") do
+		if line ~= "" and Chars(line) + 1 + Chars(word) > WRAP then
+			table.insert(out, indent .. line)
+			line = word
+		else
+			line = line == "" and word or (line .. " " .. word)
+		end
+	end
+	if line ~= "" then table.insert(out, indent .. line) end
+	return out
+end
+
+local function Heading(text) return { text = "|cffffd200" .. text .. "|r" } end
+
+local function ArcAction(label, tipKey, fn) return { label = label, tip = NS:L(tipKey), fn = fn } end
+
+local function ArcRows()
+	local out = {}
+	if not SA then return out end
+	if selectedArc then
+		local rec = SA:Record(selectedArc, nil)
+		if rec then
+			table.insert(out, { text = NS:L("arc_back"), actions = { ArcAction("<", "arc_tip_back", function() selectedArc = nil end) } })
+			table.insert(out, Heading(rec.title))
+			for _, l in ipairs(Wrap(rec.summary, "")) do table.insert(out, { text = l }) end
+			table.insert(out, { text = Muted(NS:L("arc_detail_state", rec.stateLabel, NS:L("arc_mode_" .. rec.mode))) })
+			if rec.subject then table.insert(out, { text = Muted(NS:L("arc_detail_about", rec.subject)) }) end
+			-- il racconto: gli stati attraversati, in ordine, con la scelta fatta in ciascuno
+			for _, h in ipairs(rec.history) do
+				table.insert(out, { text = "|cffcfcfcf" .. h.label .. "|r  " .. Muted(LM.Stamp(h.t)) })
+				for _, l in ipairs(Wrap(h.line, "   ")) do table.insert(out, { text = l }) end
+			end
+			for _, c in ipairs(rec.choices) do
+				table.insert(out, { text = "|cff7fff7f" .. NS:L("arc_detail_chosen", c.prompt) .. "|r" })
+				for _, l in ipairs(Wrap(c.label .. (c.note and (" – " .. c.note) or ""), "   ")) do table.insert(out, { text = l }) end
+			end
+			local id = rec.id
+			if rec.offer then
+				if rec.offer.prompt and #rec.offer.options > 0 then
+					for _, l in ipairs(Wrap(rec.offer.prompt, "")) do table.insert(out, { text = "|cffffd200" .. l .. "|r" }) end
+				end
+				if #rec.offer.options == 0 then
+					table.insert(out, { text = NS:L("arc_detail_go"),
+						actions = { ArcAction(">", "arc_tip_go", function() SA:Choose(id) end) } })
+				end
+				for _, o in ipairs(rec.offer.options) do
+					local option = o.id
+					table.insert(out, { text = NS:L("arc_detail_pick", o.label),
+						actions = { ArcAction(">", "arc_tip_pick", function() SA:Choose(id, option) end) } })
+				end
+			end
+			if rec.bucket == "available" and rec.mode == "active" then
+				table.insert(out, { text = NS:L("arc_action_start"), actions = { ArcAction(">", "arc_tip_start", function()
+					local ok, why = SA:Start(id)
+					if not ok then NS:Print(NS:L("arc_why_" .. tostring(why))) end
+				end) } })
+			end
+			if rec.bucket ~= "resolved" then
+				if rec.mode == "active" then
+					table.insert(out, { text = NS:L("arc_action_suspend"), actions = { ArcAction("II", "arc_tip_suspend", function() SA:Suspend(id) end) } })
+				elseif rec.mode == "suspended" or rec.mode == "skipped" then
+					table.insert(out, { text = NS:L("arc_action_resume"), actions = { ArcAction(">", "arc_tip_resume", function()
+						local ok, why = SA:Resume(id)
+						if not ok then NS:Print(NS:L("arc_why_" .. tostring(why))) end
+					end) } })
+				elseif rec.mode == "off" then
+					table.insert(out, { text = NS:L("arc_action_enable"), actions = { ArcAction(">", "arc_tip_enable", function() SA:Enable(id) end) } })
+				end
+				if rec.mode ~= "skipped" then
+					table.insert(out, { text = NS:L("arc_action_skip"), actions = { ArcAction("x", "arc_tip_skip", function() SA:Skip(id) end) } })
+				end
+				if rec.mode ~= "off" then
+					table.insert(out, { text = NS:L("arc_action_disable"), actions = { ArcAction("-", "arc_tip_disable", function() SA:Disable(id) end) } })
+				end
+			elseif rec.ended or rec.state == "RESOLVED" then
+				table.insert(out, { text = Muted(NS:L("arc_detail_memory")) })
+			end
+			return out
+		end
+		selectedArc = nil
+	end
+
+	local list = SA:Listing()
+	local function Open(id) return ArcAction("…", "arc_tip_open", function() selectedArc = id end) end
+	if #list.active > 0 then
+		table.insert(out, Heading(NS:L("arc_hdr_active", SA:ActiveCount(), SA:MaxActive())))
+		for _, rec in ipairs(list.active) do
+			local id = rec.id
+			local mode = rec.mode ~= "active" and (" [" .. NS:L("arc_mode_" .. rec.mode) .. "]") or ""
+			local text = rec.offer and NS:L("arc_row_waiting", rec.title) or NS:L("arc_row", rec.title, rec.stateLabel)
+			table.insert(out, { text = text .. mode, actions = { Open(id), ArcAction("x", "arc_tip_skip", function() SA:Skip(id) end) } })
+		end
+	end
+	if #list.available > 0 then
+		table.insert(out, Heading(NS:L("arc_hdr_available")))
+		for _, rec in ipairs(list.available) do
+			local id = rec.id
+			table.insert(out, { text = NS:L("arc_row_available", rec.title), actions = { Open(id), ArcAction("x", "arc_tip_skip", function() SA:Skip(id) end) } })
+		end
+	end
+	if #list.resolved > 0 then
+		table.insert(out, Heading(NS:L("arc_hdr_resolved")))
+		for _, rec in ipairs(list.resolved) do
+			table.insert(out, { text = rec.title .. "  " .. Muted(LM.Stamp(rec.ended)), actions = { Open(rec.id) } })
+		end
+	end
+	if #list.skipped > 0 then
+		table.insert(out, Heading(NS:L("arc_hdr_skipped")))
+		for _, rec in ipairs(list.skipped) do
+			table.insert(out, { text = rec.title .. " [" .. NS:L("arc_mode_" .. rec.mode) .. "]", actions = { Open(rec.id) } })
+		end
+	end
+	if #out == 0 then
+		for _, l in ipairs(Wrap(NS:L("arc_empty"), "")) do table.insert(out, { text = Muted(l) }) end
+	end
+	if #list.active > 0 or #list.available > 0 then
+		table.insert(out, { text = Muted(NS:L("arc_all_suspend")), actions = { ArcAction("II", "arc_tip_suspend", function() SA:ForAll("suspend") end) } })
+		table.insert(out, { text = Muted(NS:L("arc_all_skip")), actions = { ArcAction("x", "arc_tip_skip", function() SA:ForAll("skip") end) } })
+	end
+	return out
+end
+
+JournalFrame:RegisterTab("stories", { label = "arc_tab", note = "arc_note", rows = ArcRows })
+
+---------------------------------------------------------------------------
 -- Finestra
 ---------------------------------------------------------------------------
 local function BuildRow(i)

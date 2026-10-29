@@ -519,6 +519,13 @@ function Validator:Run(opts)
 		end
 	end
 
+	-- Story Arcs (S9): definizioni, passi, scelte, testi per lingua e battute degli eventi arc_*
+	if not scope and NS.StoryArcs then
+		for _, p in ipairs(NS.StoryArcs:Check()) do
+			Add(p.level, "badArc", nil, p.key, nil, p.msg)
+		end
+	end
+
 	-- testi arrivati per frasi che non esistono
 	if not scope then
 		for _, id in ipairs(Engine.SortedKeys(Engine.pendingTexts)) do

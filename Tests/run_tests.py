@@ -92,8 +92,8 @@ for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Dir
 check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
-check(G.AzerothUnspokenDB.schemaVersion == 5, "schemaVersion globale")
-check(G.AzerothUnspokenCharacterDB.schemaVersion == 5, "schemaVersion per personaggio")
+check(G.AzerothUnspokenDB.schemaVersion == 6, "schemaVersion globale")
+check(G.AzerothUnspokenCharacterDB.schemaVersion == 6, "schemaVersion per personaggio")
 check(G.SlashCmdList.AZEROTHUNSPOKEN is not None, "comando registrato")
 check(G.SLASH_AZEROTHUNSPOKEN1 == "/unspoken" and G.SLASH_AZEROTHUNSPOKEN2 == "/au", "alias /unspoken e /au")
 errors = list(NS.Diagnostics.errors.values())
@@ -114,7 +114,8 @@ print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varian
 # 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
 # e luogo (S6c) + 7 del pacchetto di esempio; S7 (contenuti Alpha): 803 di base + 7 del pacchetto di esempio;
 # S8 (NPC Alive): + 169 battute dei dialoghi ambientali = 972 di base + 7 = 979
-check(ids == 979, f"979 frasi caricate (trovate {ids})")
+# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012
+check(ids == 1012, f"1012 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -458,7 +459,7 @@ check(lua2.eval("function() return AzerothUnspoken.LivingMemory:HasFlag('first_d
 # b) tre giorni dopo: ritorno nel bosco dove il personaggio è morto
 lua3, ns3 = load_addon(saved_global, saved_char, with_example=False, epoch=epoch1 + 3 * DAY, zone="Durotar")
 g3 = lua3.globals()
-check(lua3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "memoria: schema 5 dopo il caricamento")
+check(lua3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "memoria: schema 6 dopo il caricamento")
 lua3.execute("AzerothUnspoken.db.intensity = 50; AzerothUnspoken.db.chance.zone = 100; AzerothUnspoken.db.chance.memory_return = 100; "
              "AzerothUnspoken.db.pacing.globalCooldownSeconds = 0")
 g3.ADVANCE(10); g3.P.zone = "Teldrassil"; g3.FIRE("ZONE_CHANGED_NEW_AREA")
@@ -491,7 +492,7 @@ check("Teldrassil" in export_text and "Darkshore" in export_text, "memoria: l'es
 
 # c) un personaggio senza dati salvati parte da zero, e dati rovinati non fermano l'avvio
 lua4, ns4 = load_addon(saved_global, '{schemaVersion=3,memories={entries="x",places=7,flags={"a"}}}', with_example=False)
-check(lua4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "memoria: dati rovinati migrati")
+check(lua4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "memoria: dati rovinati migrati")
 check(len(list(ns4.Diagnostics.errors.values())) == 0 or all("memory" not in str(e.message) for e in ns4.Diagnostics.errors.values()),
       "memoria: dati rovinati senza errori fatali")
 print("  ok" if not FAILURES else "")
@@ -537,14 +538,14 @@ rl3, rn3 = load_addon(saved_global_r, saved_char_r, with_example=False, epoch=ep
 fam3 = rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")()
 check(fam3 is not None and 0 < npc_fam - fam3 < 20, f"relazioni: la familiarità dell'NPC cala con i giorni ({npc_fam} -> {fam3})")
 check(rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].familiarity end")() == 40, "relazioni: un giocatore dell'utente non decade")
-check(rl3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "relazioni: schema 5")
+check(rl3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "relazioni: schema 6")
 rl3.globals().P.target = rl3.eval("{ name = 'Aldric', realm = 'Stormrage', player = true, guid = 'Player-1-0000AAAA' }")
 ctx_label = rl3.eval("function() return AzerothUnspoken:BuildContext().relationLabel end")()
 check(ctx_label == "fratello di spada", "relazioni: dopo /reload il contesto usa l'etichetta scelta")
 
 # c) un file di un personaggio con dati rovinati parte lo stesso
 rl4, rn4 = load_addon(saved_global_r, '{schemaVersion=4,relationships={npcs="x",players={[5]=1}}}', with_example=False)
-check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 5, "relazioni: dati rovinati migrati")
+check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "relazioni: dati rovinati migrati")
 check(not any("relations" in str(e.message) for e in rn4.Diagnostics.errors.values()), "relazioni: dati rovinati senza errori fatali")
 print("  ok" if not FAILURES else "")
 

@@ -82,6 +82,16 @@ local SUB_SPECIAL = {
 			return MatchValue(v, p.lastEncounter)
 		end,
 	},
+	-- Story Arcs (S9): ctx.arc è la vista dell'arco di cui si valuta un passo o si pronuncia una battuta
+	arc = {
+		-- una delle scelte fatte dal giocatore nell'arco (l'id dell'opzione, uguale in ogni lingua)
+		choice = function(v, a)
+			for _, option in pairs(type(a.choices) == "table" and a.choices or {}) do
+				if MatchValue(v, option) then return true end
+			end
+			return false
+		end,
+	},
 }
 
 local SUB_OPERATORS = {
@@ -122,7 +132,8 @@ Engine.MatchSub = MatchSub
 local SPECIAL = {
 	other = function(v, ctx) return MatchSub(v, ctx.other, ctx, "other") end,
 	place = function(v, ctx) return MatchSub(v, ctx.place, ctx, "place") end,
-	hpBelow  = function(v, ctx) return ctx.hp ~= nil and ctx.hp < v end,
+	arc = function(v, ctx) return MatchSub(v, ctx.arc, ctx, "arc") end,
+	hpBelow = function(v, ctx) return ctx.hp ~= nil and ctx.hp < v end,
 	hpAbove  = function(v, ctx) return ctx.hp ~= nil and ctx.hp > v end,
 	levelMin = function(v, ctx) return (ctx.level or 0) >= v end,
 	levelMax = function(v, ctx) return (ctx.level or 0) <= v end,
@@ -235,6 +246,8 @@ Engine.CONDITIONS = {
 	relation = "str", disposition = "str", relationKind = "str", isKnown = "bool", withRelation = "str",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
+	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
+	arc = "sub",
 	-- operatori
 	chance = "pct", func = "func", ["not"] = "group", any = "subs",
 }
@@ -267,6 +280,10 @@ Engine.SUB_FIELDS = {
 		capital = "bool", faction = "str", friendlyCapital = "bool", hostileCapital = "bool", instanceType = "str",
 		instanceName = "str", instanceID = "num", difficulty = "num", encounter = "boolstr", lastEncounter = "boolstr",
 		encounterResult = "str", groupRole = "str", battleground = "str", rest = "bool",
+		["not"] = "group", any = "subs", func = "func",
+	},
+	arc = {
+		id = "str", state = "str", from = "str", choice = "str", withSubject = "bool",
 		["not"] = "group", any = "subs", func = "func",
 	},
 }
@@ -305,6 +322,10 @@ Engine.SUB_VALUES = {
 		encounterResult = { win = true, wipe = true },
 		tags = function() return NS.Place and NS.Place.TAGS or {} end,
 		mood = function() return NS.Place and NS.Place.TAGS or {} end,
+	},
+	arc = {
+		-- gli archi registrati (l'id di un arco che non c'è è un valore sconosciuto)
+		id = function() return NS.StoryArcs and NS.StoryArcs:IdSet() or {} end,
 	},
 }
 

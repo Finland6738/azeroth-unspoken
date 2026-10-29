@@ -41,17 +41,25 @@ function Director:Evaluate(event, ctx)
 	return ND:Gate(event, ctx, GetTime())
 end
 
-local function Log(event, result)
+local function Log(event, result, candidate)
 	table.insert(Director.log, { time = GetTime(), event = event, result = result })
 	while #Director.log > Director.LOG_SIZE do table.remove(Director.log, 1) end
+	-- chi ha proposto l'evento (un sistema che deve sapere com'è andata, come gli archi) riceve l'esito
+	local fn = candidate and candidate.onResult
+	if fn then
+		local ok, err = pcall(fn, result)
+		if not ok then NS.Diagnostics:Error("director:onResult:" .. event, err) end
+	end
 end
 
 ---Propone un evento spontaneo. I candidati arrivati nello stesso momento si risolvono insieme.
 ---@param event string
 ---@param extra? table valori in più per il contesto
-function Director:Offer(event, extra)
+---@param onResult? fun(result: string) chiamata a risoluzione avvenuta: "spoken", "no_phrase", "chance", "outranked" o il
+---  motivo del gate (paused, silent, module:<nome>, screen:<nome>, busy, moment, cooldown:<tipo>, budget:<categoria>)
+function Director:Offer(event, extra, onResult)
 	seq = seq + 1
-	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event) })
+	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event), onResult = onResult })
 	if self.pendingResolve then return end
 	self.pendingResolve = true
 	if C_Timer and C_Timer.After then
@@ -71,18 +79,18 @@ function Director:Resolve()
 		local ctx = NS:BuildContext(c.extra)
 		local verdict = self:Evaluate(c.event, ctx)
 		if not verdict.allow then
-			Log(c.event, verdict.reason)
+			Log(c.event, verdict.reason, c)
 		elseif not ND:Roll(c.event, verdict) then
-			Log(c.event, "chance")
+			Log(c.event, "chance", c)
 		elseif NS.Gateway:Narrate(c.event, ctx, { auto = true }) then
 			Pacing:Record(c.event, verdict.category, GetTime())
-			Log(c.event, "spoken")
+			Log(c.event, "spoken", c)
 			for _, other in ipairs(list) do
-				if other ~= c and other.done == nil then Log(other.event, "outranked") end
+				if other ~= c and other.done == nil then Log(other.event, "outranked", other) end
 			end
 			return c.event
 		else
-			Log(c.event, "no_phrase")
+			Log(c.event, "no_phrase", c)
 		end
 		c.done = true
 	end
