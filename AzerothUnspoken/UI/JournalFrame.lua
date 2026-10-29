@@ -89,7 +89,7 @@ end })
 JournalFrame:RegisterTab("places", { label = "mem_tab_places", rows = function()
 	local out = {}
 	for _, p in ipairs(LM:Places()) do
-		local name = p.name
+		local name = p.key or p.name
 		table.insert(out, {
 			text = ("%s  %s"):format(LM:DescribePlace(p), Muted(LM.Stamp(p.last))),
 			actions = { { label = "x", tip = NS:L("mem_forget_tip"), fn = function() LM:ForgetPlace(name) end } },

@@ -35,7 +35,9 @@ local CHANNELS = {
 
 -- ingombro massimo, in byte, dei segnaposto dinamici (nomi lunghi, nella lingua più prolissa)
 Validator.WORST = { relation = 40, player = 12, target = 40, spell = 40, zone = 40, subzone = 40, level = 3, class = 20,
-	race = 20, faction = 10, targettype = 16 }
+	race = 20, faction = 10, targettype = 16,
+	-- S6c: interlocutore (razza e classe possono essere testo personalizzato di Total RP 3, fino a 40 byte) e luogo
+	other = 40, otherrole = 24, otherrace = 40, otherclass = 40, instance = 40, encounter = 40 }
 
 -- livelli dei problemi emersi in caricamento (Engine.loadIssues)
 local LOAD_LEVEL = { dupId = "error", badId = "error", noEvent = "error", badForm = "error", badSpeaker = "error",

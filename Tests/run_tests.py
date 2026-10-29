@@ -106,8 +106,9 @@ ids = val.stats.phrases
 langs = ["it", "en"]
 print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varianti, "
       f"{len(errors_)} errori, {len(warnings_)} avvisi")
-# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 7 del pacchetto di esempio
-check(ids == 509, f"509 frasi caricate (trovate {ids})")
+# 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
+# e luogo (S6c) + 7 del pacchetto di esempio
+check(ids == 595, f"595 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -267,7 +268,7 @@ check(NS.db.output.autoPublicSay is True, "con la conferma esplicita autoPublicS
 G.SENT = lua.table()
 setP(combat=False, instance=False)
 # combattimenti ripetuti finché una frase parlata non resta in attesa (il seme è fisso: esito ripetibile)
-for i in range(40):
+for i in range(100):
     G.ADVANCE(100)
     setP(combat=True)
     G.FIRE("PLAYER_REGEN_DISABLED")
@@ -408,7 +409,8 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations"):
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
+             "TestOtherPlace"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T

@@ -83,7 +83,8 @@ SECRET_UNITS = {}
 C_Secrets = { ShouldUnitIdentityBeSecret = function(unit) return SECRET_UNITS[unit] == true end }
 
 -- restrizioni del client: RESTRICTIONS.Combat = 1 attiva quella del combattimento
-Enum = { AddOnRestrictionType = { Combat = 0, Encounter = 1, ChallengeMode = 2, PvPMatch = 3, Map = 4 } }
+Enum = { AddOnRestrictionType = { Combat = 0, Encounter = 1, ChallengeMode = 2, PvPMatch = 3, Map = 4 },
+	UIMapType = { Cosmic = 0, World = 1, Continent = 2, Zone = 3, Dungeon = 4 } }
 RESTRICTIONS = {}
 C_RestrictedActions = { GetAddOnRestrictionState = function(t)
 	for name, v in pairs(Enum.AddOnRestrictionType) do
@@ -101,7 +102,10 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	-- relazioni (S6b)
 	"GOSSIP_SHOW", "GOSSIP_CLOSED", "QUEST_GREETING", "QUEST_DETAIL", "QUEST_PROGRESS", "QUEST_COMPLETE", "QUEST_FINISHED",
 	"QUEST_ACCEPTED", "QUEST_TURNED_IN", "MERCHANT_SHOW", "MERCHANT_CLOSED", "TAXIMAP_OPENED", "TRAINER_SHOW",
-	"CONFIRM_BINDER", "GROUP_ROSTER_UPDATE", "TRADE_SHOW", "CHAT_MSG_WHISPER_INFORM" }) do
+	"CONFIRM_BINDER", "GROUP_ROSTER_UPDATE", "TRADE_SHOW", "CHAT_MSG_WHISPER_INFORM",
+	-- interlocutore e luogo (S6c)
+	"ENCOUNTER_START", "ENCOUNTER_END", "UPDATE_BATTLEFIELD_STATUS", "BANKFRAME_OPENED", "DUEL_REQUESTED",
+	"PARTY_INVITE_REQUEST", "CHAT_MSG_TEXT_EMOTE" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -142,7 +146,7 @@ function UnitSex(u) local t = Subject(u or "player"); return t and t.sex end
 function UnitLevel(u) local t = Subject(u); return t and t.level end
 function UnitHealth(u) local t = Subject(u); return t and t.hp end
 function UnitHealthMax(u) local t = Subject(u); return t and t.hpMax end
-function UnitAffectingCombat(u) if u == "player" then return P.combat end return false end
+function UnitAffectingCombat(u) if u == "player" then return P.combat end local t = Subject(u); return t and t.combat or false end
 function InCombatLockdown() return P.combat end
 function UnitIsDeadOrGhost(u) local t = Subject(u); return t and t.dead or false end
 function UnitIsGhost() return false end
@@ -153,7 +157,44 @@ function IsMounted() return false end
 function IsSwimming() return false end
 function IsStealthed() return false end
 function InCinematic() return P.cinematic == true end
-function IsInInstance() return P.instance, P.instance and "party" or "none" end
+function IsInInstance() return P.instance, P.instance and (P.instanceType or "party") or "none" end
+-- S6c: istanza, mappa, territorio, ruolo nel gruppo, campi di battaglia. P.mapID, P.instanceType, P.instanceName,
+-- P.instanceID, P.difficulty, P.pvpType, P.role, P.bgQueue = { "queued" }; MAPS[id] = { name, mapType, parentMapID }
+MAPS = {
+	[947] = { name = "Azeroth", mapType = 1 },
+	[1414] = { name = "Kalimdor", mapType = 2, parentMapID = 947 },
+	[1415] = { name = "Eastern Kingdoms", mapType = 2, parentMapID = 947 },
+}
+function GetInstanceInfo()
+	if not P.instance then return P.zone, "none", 0, "", 0, 0, false, P.mapInstance or 0, 0, 0, false end
+	return P.instanceName or P.zone, P.instanceType or "party", P.difficulty or 1, P.difficultyName or "Normal", 5, 0,
+		false, P.instanceID or 0, 5, 0, false
+end
+C_Map = {
+	GetBestMapForUnit = function(u) if u == "player" then return P.mapID end return nil end,
+	GetMapInfo = function(id)
+		if MAPS[id] then
+			local m = MAPS[id]
+			return { mapID = id, name = m.name, mapType = m.mapType, parentMapID = m.parentMapID or 0 }
+		end
+		if id == P.mapID then return { mapID = id, name = P.mapName or P.zone, mapType = 3, parentMapID = P.continentMap or 0 } end
+		return nil
+	end,
+}
+C_PvP = {
+	GetZonePVPInfo = function() return P.pvpType, false, nil end,
+	IsBattleground = function() return P.instance == true and P.instanceType == "pvp" end,
+	IsArena = function() return P.instance == true and P.instanceType == "arena" end,
+}
+function UnitGroupRolesAssigned(u) local t = Subject(u); return t and t.role or "NONE" end
+function UnitReaction(u) local t = Subject(u); return t and t.reaction end
+function UnitCreatureFamily(u) local t = Subject(u); return t and Identity(u, t.family) end
+function UnitIsUnit(a, b)
+	if a == "targettarget" and b == "player" then return P.target ~= nil and P.target.targetsPlayer == true end
+	return a == b
+end
+function GetMaxBattlefieldID() return P.bgQueue and #P.bgQueue or 0 end
+function GetBattlefieldStatus(i) return P.bgQueue and P.bgQueue[i] or "none" end
 function IsInRaid() return P.raid or false end
 function IsInGroup() return P.group or false end
 function GetRealZoneText() return P.zone end

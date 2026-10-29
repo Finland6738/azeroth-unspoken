@@ -1,6 +1,6 @@
 # Architettura di Azeroth Unspoken
 
-Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1–S6b), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
+Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1–S6c), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
 
 ## Indice
 
@@ -96,9 +96,9 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Core/Diagnostics.lua`** | `Guard` (esecuzione isolata con `xpcall`), registro degli errori (al massimo 30, raggruppati), rapporto `/au debug`, matrice per gruppo. |
 | **`Core/Config.lua`** | predefiniti, `Merge`, `Validate`, migrazioni per `schemaVersion`, `Get`/`Set` per percorso, preset dei moduli, modalità e canali del Chat Gateway. Imposta `NS.db` e `NS.cdb`. |
 | **`Core/EventBus.lua`** | sorgenti WoW → tipi normalizzati; envelope; deduplicazione; coda anti-cascata; `Publish`, `Subscribe`, `Recent`. |
-| **`Core/ContextResolver.lua`** | `NS:BuildContext(extra)`: costruisce il contesto su cui si valutano le condizioni (personaggio, luogo, ora, gruppo, istanza, bersaglio, incantesimo), classifica gli incantesimi, registra le zone e le parole chiave dei pacchetti. |
+| **`Core/ContextResolver.lua`** | `NS:BuildContext(extra)`: costruisce il contesto su cui si valutano le condizioni (personaggio, luogo, ora, gruppo, istanza, bersaglio, incantesimo; `ctx.place` prima della memoria, `ctx.other` dopo le relazioni), classifica gli incantesimi, registra le zone e le parole chiave dei pacchetti. |
 | **`Engine/PhraseRegistry.lua`** | `RegisterPack`; registra frasi, cornici, vocabolario e traduzioni; indici per evento e per id; speaker provvisorio; statistiche. |
-| **`Engine/RuleEngine.lua`** | `Match(when, ctx)`: le condizioni dichiarative (valori, elenchi, `not`, `any`, `func`, intervalli) e quelle di memoria (`firstVisit`, `repeatVisit`, `lastVisitBad`, `visitsMin`, `daysSinceLastVisit`, `remembered`). |
+| **`Engine/RuleEngine.lua`** | `Match(when, ctx)`: le condizioni dichiarative (valori, elenchi, `not`, `any`, `func`, intervalli), quelle di memoria (`firstVisit`, `repeatVisit`, `lastVisitBad`, `visitsMin`, `daysSinceLastVisit`, `remembered`), di relazione e le sotto-tabelle `other` e `place` (S6c, `Engine.MatchSub`, `Engine.SUB_FIELDS`). |
 | **`Engine/StyleResolver.lua`** | registri adatti al momento (GDD §5.2): ammessi per evento, preferiti da zona, profondità e voce; affinità di una frase (parte del fattore `S`); compatibilità tra cornice e frase. |
 | **`Engine/Traits.lua`** | il modello dei tratti (GDD §7.1): definizioni (`choice`, `scale` con fasce, `set`), profili con i soli tratti impostati, `Sanitize`, `Merge` (priorità tra le fonti), tag di affinità (`Evaluate`, `CheckTag`), nomi localizzati. Non conosce il personaggio: lo riusano Character Soul (S5), interlocutore (S6c) e relazioni (S6b). |
 | **`Engine/WeightedSelector.lua`** | idoneità, peso `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`, agganci `Engine:SetWeightHook`), anti-ripetizione, memoria degli usi, guardie degli eventi (`Engine:SetEventGuard`), `PickEntry`/`Pick`. |
@@ -110,6 +110,8 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Systems/Personality.lua`** | il Character Soul: otto tratti opt-in, archetipi, profilo effettivo (scelta > Total RP 3 > dati di gioco > neutro), fattore `P` del peso, preferenze di registro, condizione `soul`, `ctx.soul`, comando `/au anima`. |
 | **`Systems/LivingMemory.lua`** | la Living Memory ([ADR 0017](adr/0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md)): ricordi, luoghi visitati e flag per personaggio (`cdb.memories`), momenti della sessione, compattazione a 500, permanenti, reset, migrazioni, `ctx.memory`, eventi di richiamo con guardia (`RegisterRecall`), esportazione testuale, comando `/au diario`. |
 | **`Systems/Relationships.lua`** | le relazioni ([ADR 0018](adr/0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md)): sette assi indipendenti, etichette e disposizione derivate dai dati, NPC calcolati dall'`npcID` (dialogo, quest, mercante, volo, addestratore, locanda) con rendimenti decrescenti, tetto giornaliero e decadimento, giocatori scelti dall'utente con proposte, `ctx.relation` e simili, fattore `R`, registro per familiarità, evento `relation_npc`, comando `/au relazioni`. |
+| **`Systems/Place.lua`** | il luogo ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)): `ctx.place` (zona, uiMapID, continente, tag, territorio, capitale, istanza, scontro con un boss, ruolo nel gruppo, campo di battaglia), `Place:Lookup` sui dati di `Data/Places.lua`, `Place.Key` (chiave stabile della memoria), fattore `C` dei tag `place.` e delle frasi brevi, ritmo per tipo di istanza, impegno durante i boss, evento `encounter_end`, comando `/au luogo`. |
+| **`Systems/Interlocutor.lua`** | l'interlocutore ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)): `ctx.other` (dati di gioco, ruolo, personalità con i tratti di S5, azioni recenti, relazione), fonti in ordine (utente > TRP3 pubblico con consenso > `Data/NPCs.lua` > ruolo da interazioni affidabili > tendenza debole > neutro), fattore `C` dei tag `other.`, registro per modo di parlare e ruolo, eventi `npc_meet` e `other_action`, comando `/au chi`. |
 | **`Systems/Director.lua`** | il Narrative Director degli eventi spontanei: `Offer` (candidato), `Resolve` (al massimo un intervento per momento), `Evaluate` (il gate, punto di aggancio di S2), pausa immediata, riepilogo per `/au debug`. |
 | **`Systems/Triggers.lua`** | abbonato al bus: trasforma gli eventi normalizzati in eventi narrativi (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) e li offre al Director; tiene le probabilità e le pause proprie di ogni evento. |
 | **`UI/Widgets.lua`** | piccoli componenti condivisi dell'interfaccia. |
@@ -123,7 +125,8 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`UI/Commands.lua`** | `/au` e `/unspoken`. |
 | **`Data/<lingua>/Interface.lua`** | testi dell'interfaccia (`itIT`, `enUS`). |
 | **`Data/Relationships.lua`** | assi, etichette, disposizione, registro e incrementi degli NPC delle relazioni, in IT ed EN (dati, non codice). |
-| **`Data/*.lua`** | pacchetti di frasi di base (schema v2): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
+| **`Data/Places.lua`**, **`Data/NPCs.lua`** | tag e temi di zone, sottozone, capitali, dungeon, incursioni e campi di battaglia (nome del client inglese, uiMapID non ancora verificati); registro curato degli NPC per `npcID` e tendenze deboli di classe (S6c). |
+| **`Data/*.lua`** | pacchetti di frasi di base (schema v2): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
 | **`Bindings.xml`** | tasti `AZEROTHUNSPOKEN_SPEAK` e `AZEROTHUNSPOKEN_PAUSE`. |
 | **`AzerothUnspoken_Example/`** | pacchetto di esempio, addon separato con `## Dependencies: AzerothUnspoken`. |
 | **`Tests/`** | test fuori dal gioco (lupa) e client simulato ([ADR 0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). |
@@ -263,7 +266,7 @@ flowchart LR
 - **Tag sulle frasi** (campo `tags`): `tratto:valore` affinità morbida (×1,6 se combacia, ×0,6 se il profilo ha un altro valore, mai zero); `req:tratto:valore` (la frase afferma qualcosa del personaggio: esce solo se il profilo lo dice), `not:tratto:valore` e `topic:argomento` sono filtri **rigidi** (fattore 0). I tag senza due punti restano descrittivi. Il validatore controlla i tag di affinità.
 - **Priorità** (GDD §8), tratto per tratto: scelta esplicita > Total RP 3 > dati di gioco > valori neutri; il riepilogo (`/au anima lista`) dice la fonte di ogni tratto.
 - **Total RP 3**: solo con il consenso `personality.trp3` e il modulo `totalRP3` acceso; legge solo `characteristics/PS` del proprio profilo e non scrive mai. Se l'API manca o cambia, il livello sparisce e le scelte restano (capacità `integration:totalRP3:traits`).
-- **Riuso**: `Engine/Traits.lua` non conosce il giocatore. S6c lo userà per `ctx.other` (ambito di tag `other.`), S6b per gli assi delle relazioni.
+- **Riuso**: `Engine/Traits.lua` non conosce il giocatore. S6c lo usa per `ctx.other` (ambito di tag `other.`) e per i tag del luogo (ambito `place.`), S6b per gli assi delle relazioni.
 - **Interfaccia**: `/au anima` apre `UI/ProfileFrame.lua` (archetipo, tratti, argomenti, consenso, profilo neutro); `/au anima lista | neutro | archetipo <id> | trp3 on|off | <tratto> <valore> | evita <argomento>`.
 
 ### La Living Memory
@@ -309,6 +312,31 @@ flowchart LR
 - **NPC** automatici (`relations.npcAuto`); **giocatori** solo con un'azione dell'utente (`R:AddPlayer(nome, "user")`) o con l'opzione esplicita «registra automaticamente».
 - **Privacy**: nessun testo di chat o di whisper (della risposta in privato si legge solo il nome), nulla in rete, le proposte non si salvano.
 - **Interfaccia**: `/au relazioni` apre `UI/RelationsFrame.lua`; il diario ha le schede *Relazioni* e *Persone incontrate*.
+
+### Interlocutore e luogo
+
+`Systems/Interlocutor.lua` e `Systems/Place.lua` dicono **chi incontriamo** e **dove siamo** ([ADR 0019](adr/0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md)).
+
+```mermaid
+flowchart LR
+    U["Lista delle relazioni (utente)"] --> M["Traits.Merge<br/>per ogni tratto la prima fonte"]
+    T["TRP3 pubblico<br/>(consenso a parte)"] --> M
+    N["Data/NPCs.lua (npcID)"] --> M
+    R["Ruolo da interazioni affidabili<br/>mercante, volo, locanda, quest, banca"] --> M
+    M --> O["ctx.other<br/>+ azioni recenti (solo sessione)"]
+    W["Tendenza di classe (debole)"] -. "solo peso" .-> C
+    O --> C["Condizioni other = {...}<br/>fattore C (other.*), registro"]
+    G["C_Map, GetInstanceInfo, C_PvP,<br/>ENCOUNTER_*, UnitGroupRolesAssigned"] --> P["ctx.place"]
+    D["Data/Places.lua<br/>(map verificato > nome > map?)"] --> P
+    P --> C2["Condizioni place = {...}<br/>fattore C (place.*, frasi brevi)"]
+    P --> Y["Ritmo per istanza, impegno durante i boss"]
+    P --> K["Chiave stabile del luogo<br/>(memoria, issue #31)"]
+```
+
+- **Azioni**: solo da eventi affidabili (dialogo, quest, mercante, scambio, gruppo, duello, invito, emote standard rivolte a noi, bersaglio), mai dal log di combattimento; restano in memoria per la sessione.
+- **Segreti**: con l'identità segreta `ctx.other = { secret = true }`; un valore segreto del luogo vale «non lo so».
+- **Eventi**: `npc_meet`, `other_action`, `encounter_end`, ognuno con una guardia nel motore.
+- **Comandi**: `/au luogo` (alias `dove`, `place`) e `/au chi` (alias `who`, `interlocutore`; `trp3 on|off`).
 
 ## 5. Il Chat Gateway
 
@@ -416,12 +444,12 @@ Questi punti sono interni: possono cambiare tra una versione e l'altra finché l
 
 ## 8. Cosa è previsto e non c'è ancora
 
-Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, S6, la Living Memory, e S6b, le relazioni, ci sono: [vedi sopra](#il-character-soul), [qui](#la-living-memory) e [qui](#le-relazioni)).
+Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, S6, la Living Memory, S6b, le relazioni, e S6c, interlocutore e luogo, ci sono: [vedi sopra](#il-character-soul), [qui](#la-living-memory), [qui](#le-relazioni) e [qui](#interlocutore-e-luogo)).
 
 | Step | Cosa aggiunge | Dove si aggancia |
 |---|---|---|
-| S6c | interlocutore (`ctx.other`) e luogo (`ctx.place`) come condizioni | `Systems/Interlocutor.lua`, `Systems/Place.lua`, `Data/NPCs.lua`, `Data/Places.lua`; i tratti dell'interlocutore usano `Engine/Traits.lua` con l'ambito `other`; aggancio `C`, ritmo per tipo di istanza (`NarrativeDirector:SetRhythm`), scontri con i boss (`SetDemandCheck`) |
-| S8 | dialoghi con NPC (finestra, stati, registro) | nuovo modulo e `Data/NPCs.lua` |
+| S7 | contenuti Alpha (300 intenzioni) | pacchetti di frasi; usano anche le condizioni `other` e `place` |
+| S8 | dialoghi con NPC (finestra, stati, registro) | nuovo modulo; riusa `Data/NPCs.lua` e il profilo dell'interlocutore (`speech`, `temperament`, `role`) |
 | S9 | archi narrativi | `NS.cdb.arcs` |
 | S10 | gioco sociale con messaggi addon, consenso e sicurezza | nuovo modulo, `privacy.*` |
 
@@ -430,5 +458,6 @@ Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, i
 - **Nulla è stato provato nel client vero.** Tutto è verificato solo con il client simulato; la prova G1 è rimandata ([checklist](G1_checklist.md)).
 - Nelle impostazioni hanno effetto i moduli `personal`, `world`, `memory`, `relations`, `publicChat` e `totalRP3`; NPC, storie, social e audio sono ancora segnaposto.
 - Le probabilità e le pause per evento (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) vengono dal prototipo; i numeri del Narrative Director (budget, pause di categoria, bonus e penalità di stile) sono ipotesi da regolare con le prove in gioco ([G1](G1_checklist.md), passi 27–31).
-- Il riconoscimento del combattimento impegnativo usa solo boss, incursione ed élite in istanza: gli scontri con i boss dei dungeon senza classificazione `worldboss` arriveranno con S6c (`ENCOUNTER_START`).
+- Il riconoscimento del combattimento impegnativo usa boss, incursione, élite in istanza e, da S6c, gli scontri con i boss (`ENCOUNTER_START`), che nel client vero non sono ancora stati provati.
+- Gli uiMapID, gli instanceID e gli npcID dei dati (`Data/Places.lua`, `Data/NPCs.lua`) vengono da Classic Era e non sono verificati in Forever: i luoghi si riconoscono per nome finché non lo saranno (`/au luogo`).
 - Le API della matrice delle capacità non sono state controllate nel client della build 70658: vedi `/au debug full` e [RIFERIMENTI.md](RIFERIMENTI.md).

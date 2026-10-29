@@ -294,6 +294,10 @@ local APIS = {
 	{ "InCinematic" }, { "IsInCinematicScene" },
 	{ "UnitFullName" }, { "GetNormalizedRealmName" }, { "hooksecurefunc" },
 	{ "BuyMerchantItem" }, { "RepairAllItems" }, { "C_Container.UseContainerItem" },
+	-- interlocutore e luogo (S6c)
+	{ "C_Map.GetMapInfo" }, { "GetInstanceInfo" }, { "C_PvP.GetZonePVPInfo" }, { "C_PvP.IsBattleground" },
+	{ "C_PvP.IsArena" }, { "GetBattlefieldStatus" }, { "UnitGroupRolesAssigned" }, { "UnitReaction" },
+	{ "UnitCreatureFamily" }, { "UnitIsUnit" },
 }
 
 function Compat:Probe()

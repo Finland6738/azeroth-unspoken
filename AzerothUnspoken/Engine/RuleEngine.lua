@@ -44,8 +44,84 @@ local function InRange(v, x)
 	return x >= v
 end
 
+---------------------------------------------------------------------------
+-- Sotto-tabelle `other` e `place` (S6c): when = { other = { role = "innkeeper" }, place = { instanceType = "raid" } }
+---------------------------------------------------------------------------
+-- Dentro una sotto-tabella valgono gli stessi operatori del livello superiore (elenchi, `not`, `any`, `func`), con i
+-- campi di ctx.other (Systems/Interlocutor.lua) o di ctx.place (Systems/Place.lua) al posto del contesto. Senza
+-- interlocutore o luogo ogni campo è "non lo so": un valore richiesto non combacia, `campo = false` sì.
+local MatchSub
+
+-- regole speciali delle sotto-tabelle: [ambito][chiave] = fn(valore, oggetto, ctx)
+local SUB_SPECIAL = {
+	other = {
+		levelMin = function(v, o) return type(o.level) == "number" and o.level >= v end,
+		levelMax = function(v, o) return type(o.level) == "number" and o.level <= v end,
+		name = function(v, o) return ContainsAny(v, o.name) end,
+		-- un'azione recente: "duel", { "duel", "emote" } (entro Interlocutor.ACTION_WINDOW) o { "trade", within = 60 }
+		actions = function(v, o) return NS.Interlocutor ~= nil and NS.Interlocutor.HasAction(o, v) end,
+	},
+	place = {
+		-- uno dei tag elencati
+		tags = function(v, p)
+			local tags = type(p.tags) == "table" and p.tags or nil
+			if not tags then return false end
+			for _, t in ipairs(AsList(v)) do
+				if tags[t] then return true end
+			end
+			return false
+		end,
+		zone = function(v, p) return MatchValue(v, p.zone) or MatchValue(v, p.subzone) end,
+		-- true = uno scontro in corso (o appena finito, per lastEncounter); una stringa o un elenco = per nome
+		encounter = function(v, p)
+			if type(v) == "boolean" then return (p.encounter ~= nil) == v end
+			return MatchValue(v, p.encounter)
+		end,
+		lastEncounter = function(v, p)
+			if type(v) == "boolean" then return (p.lastEncounter ~= nil) == v end
+			return MatchValue(v, p.lastEncounter)
+		end,
+	},
+}
+
+local SUB_OPERATORS = {
+	["not"] = function(v, obj, ctx, scope) return not MatchSub(v, obj, ctx, scope) end,
+	any = function(v, obj, ctx, scope)
+		for _, sub in ipairs(v) do
+			if MatchSub(sub, obj, ctx, scope) then return true end
+		end
+		return false
+	end,
+	func = function(v, obj, ctx)
+		local ok, res = pcall(v, obj, ctx)
+		return ok and res
+	end,
+}
+
+local EMPTY_SUB = {}
+
+MatchSub = function(when, obj, ctx, scope)
+	if type(when) ~= "table" then return false end
+	obj = type(obj) == "table" and obj or EMPTY_SUB
+	local special = SUB_SPECIAL[scope]
+	for k, v in pairs(when) do
+		local op, rule = SUB_OPERATORS[k], special[k]
+		if op then
+			if not op(v, obj, ctx, scope) then return false end
+		elseif rule then
+			if not rule(v, obj, ctx) then return false end
+		elseif not MatchValue(v, obj[k]) then
+			return false
+		end
+	end
+	return true
+end
+Engine.MatchSub = MatchSub
+
 -- regole speciali; tutte le altre chiavi si confrontano con ctx[chiave]
 local SPECIAL = {
+	other = function(v, ctx) return MatchSub(v, ctx.other, ctx, "other") end,
+	place = function(v, ctx) return MatchSub(v, ctx.place, ctx, "place") end,
 	hpBelow  = function(v, ctx) return ctx.hp ~= nil and ctx.hp < v end,
 	hpAbove  = function(v, ctx) return ctx.hp ~= nil and ctx.hp > v end,
 	levelMin = function(v, ctx) return (ctx.level or 0) >= v end,
@@ -157,6 +233,8 @@ Engine.CONDITIONS = {
 	daysSinceLastVisit = "numrange", remembered = "str",
 	-- relazioni (Systems/Relationships.lua); gli assi aggiungono <asse>Min e <asse>Max
 	relation = "str", disposition = "str", relationKind = "str", isKnown = "bool", withRelation = "str",
+	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
+	other = "sub", place = "sub",
 	-- operatori
 	chance = "pct", func = "func", ["not"] = "group", any = "subs",
 }
@@ -173,6 +251,61 @@ Engine.CONDITION_VALUES = {
 	-- si riempiono quando i dati delle relazioni (Data/Relationships.lua) registrano etichette e disposizioni
 	relation = {}, disposition = {}, withRelation = {},
 	relationKind = { npc = true, player = true },
+}
+
+-- Campi delle sotto-tabelle e tipo del valore (come Engine.CONDITIONS; "actions" = azione, elenco o { ..., within = n })
+Engine.SUB_FIELDS = {
+	other = {
+		kind = "str", name = "str", race = "str", class = "str", faction = "str", sex = "str", levelMin = "num",
+		levelMax = "num", classification = "str", ctype = "str", family = "str", reaction = "str", hostile = "bool",
+		role = "str", temperament = "str", morality = "str", goals = "str", speech = "str", actions = "actions",
+		relation = "str", inGroup = "bool", secret = "bool", npcID = "num",
+		["not"] = "group", any = "subs", func = "func",
+	},
+	place = {
+		zone = "str", subzone = "str", mapID = "num", continent = "str", tags = "str", mood = "str", territory = "str",
+		capital = "bool", faction = "str", friendlyCapital = "bool", hostileCapital = "bool", instanceType = "str",
+		instanceName = "str", instanceID = "num", difficulty = "num", encounter = "boolstr", lastEncounter = "boolstr",
+		encounterResult = "str", groupRole = "str", battleground = "str", rest = "bool",
+		["not"] = "group", any = "subs", func = "func",
+	},
+}
+
+-- Valori ammessi dei campi delle sotto-tabelle, per il validatore: un insieme oppure una funzione che lo restituisce
+-- (i tratti e i tag dei luoghi si registrano con i dati).
+local function TraitValues(id)
+	return function()
+		local def = NS.Traits and NS.Traits.defs[id]
+		return def and def.valid or {}
+	end
+end
+local function ListSet(list)
+	local set = {}
+	for _, v in ipairs(list or {}) do set[v] = true end
+	return set
+end
+Engine.SUB_VALUES = {
+	other = {
+		kind = { npc = true, player = true, creature = true },
+		sex = { male = true, female = true },
+		faction = { Alliance = true, Horde = true },
+		reaction = { hostile = true, unfriendly = true, neutral = true, friendly = true, honored = true },
+		classification = { normal = true, elite = true, rare = true, rareelite = true, worldboss = true, trivial = true, minus = true },
+		role = TraitValues("role"), temperament = TraitValues("temperament"), morality = TraitValues("morality"),
+		goals = TraitValues("goals"), speech = TraitValues("speech"),
+		actions = function() return ListSet(NS.Interlocutor and NS.Interlocutor.ACTIONS) end,
+		relation = function() return Engine.CONDITION_VALUES.relation end,
+	},
+	place = {
+		instanceType = Engine.CONDITION_VALUES.instanceType,
+		territory = { friendly = true, hostile = true, contested = true, sanctuary = true, combat = true },
+		faction = { Alliance = true, Horde = true },
+		groupRole = { tank = true, healer = true, damage = true },
+		battleground = { none = true, queued = true, active = true },
+		encounterResult = { win = true, wipe = true },
+		tags = function() return NS.Place and NS.Place.TAGS or {} end,
+		mood = function() return NS.Place and NS.Place.TAGS or {} end,
+	},
 }
 
 -- condizioni che dipendono da una relazione (ctx.relation e simili)
@@ -277,6 +410,22 @@ TypeError = function(kind, v)
 		if t == "table" and type(v[1]) == "number" and type(v[2]) == "number" and v[1] <= v[2] then return false end
 		return "serve un numero o { da, a }"
 	end
+	if kind == "actions" then
+		if t == "table" and v.within ~= nil and (type(v.within) ~= "number" or v.within <= 0) then
+			return "'within' deve essere un numero di secondi"
+		end
+		if t == "table" then
+			if #v == 0 then return "serve almeno un'azione" end
+			for _, x in ipairs(v) do
+				if type(x) ~= "string" then return "l'elenco deve contenere solo stringhe" end
+			end
+			for k in pairs(v) do
+				if type(k) ~= "number" and k ~= "within" then return ("chiave '%s' sconosciuta"):format(tostring(k)) end
+			end
+			return false
+		end
+		return t ~= "string" and "serve un'azione, un elenco o { ..., within = secondi }"
+	end
 	if kind == "str" then
 		if t == "string" then return false end
 		if t == "table" then
@@ -288,6 +437,46 @@ TypeError = function(kind, v)
 		return "serve una stringa o un elenco"
 	end
 	return false
+end
+
+-- Controlla una sotto-tabella `other` o `place`: campi noti, tipi, valori ammessi; `not` e `any` restano nell'ambito.
+local function CheckSub(when, path, scope, Add)
+	if type(when) ~= "table" then
+		Add(("'%s': serve una tabella di condizioni"):format(path))
+		return
+	end
+	local fields, domains = Engine.SUB_FIELDS[scope], Engine.SUB_VALUES[scope]
+	for _, k in ipairs(Engine.SortedKeys(when)) do
+		local v = when[k]
+		local kind = type(k) == "string" and fields[k]
+		local name = path .. "." .. tostring(k)
+		if not kind then
+			Add(("campo sconosciuto '%s'"):format(name))
+		elseif kind == "group" then
+			CheckSub(v, name, scope, Add)
+		elseif kind == "subs" then
+			if type(v) ~= "table" or #v == 0 then
+				Add(("'%s': serve un elenco di gruppi di condizioni"):format(name))
+			else
+				for i, sub in ipairs(v) do CheckSub(sub, name .. "[" .. i .. "]", scope, Add) end
+			end
+		else
+			local err = TypeError(kind, v)
+			if err then
+				Add(("'%s': %s"):format(name, err))
+			else
+				local domain = domains[k]
+				if type(domain) == "function" then domain = domain() end
+				if domain and next(domain) ~= nil and type(v) ~= "boolean" then
+					for _, x in ipairs(AsList(v)) do
+						if type(x) == "string" and not domain[x] and not domain[x:lower()] then
+							Add(("'%s': valore '%s' sconosciuto"):format(name, x))
+						end
+					end
+				end
+			end
+		end
+	end
 end
 
 ---Controlla una tabella di condizioni. Restituisce un elenco di messaggi (vuoto se va tutto bene).
@@ -304,6 +493,8 @@ function Engine.CheckConditions(when, path)
 		local name = path .. tostring(k)
 		if type(k) ~= "string" or not kind then
 			Add(("condizione sconosciuta '%s'"):format(name))
+		elseif kind == "sub" then
+			CheckSub(v, name, k, Add)
 		elseif kind == "group" then
 			for _, m in ipairs(Engine.CheckConditions(v, name .. ".")) do Add(m) end
 		elseif kind == "subs" then

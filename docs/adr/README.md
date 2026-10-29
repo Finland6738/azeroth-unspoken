@@ -26,10 +26,11 @@ Servono a ricordare *perché* il progetto è fatto in un certo modo, non solo *c
 | [0016](0016-character-soul-tratti-opt-in-e-total-rp-3-con-consenso.md) | Character Soul: tratti opt-in come dati, affinità morbida e filtri rigidi, Total RP 3 con consenso | accettata |
 | [0017](0017-living-memory-ricordi-selettivi-e-richiamo-onesto.md) | Living Memory: ricordi selettivi, richiamo onesto, diario manuale | accettata |
 | [0018](0018-relazioni-a-piu-assi-npc-automatici-e-giocatori-scelti-dall-utente.md) | Relazioni: assi indipendenti, etichette come dati, NPC automatici, giocatori scelti dall'utente | accettata |
+| [0019](0019-interlocutore-e-luogo-fonti-in-ordine-e-luoghi-per-mapid.md) | Interlocutore e luogo: fonti in ordine di priorità, tendenze deboli, luoghi per uiMapID | accettata |
 
 ## Decisioni in sospeso
 
-- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0018).
+- **Licenza** di codice e testi: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). Quando sarà presa, avrà il primo numero libero (oggi 0020).
 
 ## Come scriverne una nuova
 

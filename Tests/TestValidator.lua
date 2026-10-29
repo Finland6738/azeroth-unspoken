@@ -325,10 +325,10 @@ T.run("il database di base non ha né errori né avvisi", function()
 	for _, id in ipairs(Engine.packOrder) do
 		if id:sub(1, 5) == "base_" then table.insert(packs, id) end
 	end
-	T.eq(#packs, 11, "undici pacchetti di base (nove di frasi, cornici, vocabolario)")
+	T.eq(#packs, 12, "dodici pacchetti di base (dieci di frasi, cornici, vocabolario)")
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
-	T.eq(r.stats.phrases, 502, "502 frasi"); T.ok(r.stats.variants >= 902, "almeno due testi (IT+EN) per frase")
+	T.eq(r.stats.phrases, 588, "588 frasi"); T.ok(r.stats.variants >= 1074, "almeno due testi (IT+EN) per frase")
 end)
 
 T.run("/au validate", function()

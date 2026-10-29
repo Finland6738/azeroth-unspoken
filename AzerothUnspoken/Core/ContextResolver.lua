@@ -183,6 +183,13 @@ function NS:BuildContext(extra)
 	if ctx.subzone == "" then ctx.subzone = nil end
 	ctx.mood = ctx.zone and self.zoneMoods[ctx.zone:lower()]
 	if ctx.resting and not ctx.mood then ctx.mood = "town" end
+	-- il luogo (S6c, Systems/Place.lua): uiMapID, tag e temi, territorio, istanza, scontro con un boss, ruolo nel gruppo.
+	-- Va letto prima della memoria, che riconosce il luogo dalla sua chiave stabile (issue #31).
+	if self.Place then
+		ctx.place = self.Place:Read(ctx)
+		ctx.placeTraits = self.Place.Traits(ctx.place)
+		ctx.mood = ctx.mood or ctx.place.mood
+	end
 	-- la memoria: solo ricordi veri (prima visita, ritorno, esito dell'ultima visita, flag). nil se il modulo è spento
 	-- (Systems/LivingMemory.lua); le condizioni di memoria sono allora sempre false.
 	if self.LivingMemory then ctx.memory = self.LivingMemory:Context(ctx) end
@@ -196,8 +203,13 @@ function NS:BuildContext(extra)
 	-- le relazioni: il rapporto con la persona dell'interazione (NPC aperto o bersaglio), se l'addon la conosce
 	-- (Systems/Relationships.lua). Il soggetto si può dare con extra.relationSubject = { kind, id }.
 	if self.Relationships then self.Relationships:Context(ctx, extra) end
+	-- l'interlocutore (S6c, Systems/Interlocutor.lua): chi incontriamo, con ruolo, personalità e azioni recenti
+	if self.Interlocutor then self.Interlocutor:Context(ctx, extra) end
 
 	for k, v in pairs(extra or {}) do ctx[k] = v end
+	-- segnaposto {other} {otherrole} {otherrace} {otherclass} {instance} {encounter}, anche con ctx.other/place dati
+	if self.Interlocutor then self.Interlocutor.Flatten(ctx) end
+	if self.Place then self.Place.Flatten(ctx) end
 
 	if ctx.spell then
 		local kind, element = self:ClassifySpell(ctx.spell)
