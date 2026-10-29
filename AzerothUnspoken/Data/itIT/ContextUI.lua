@@ -47,5 +47,8 @@ NS:RegisterLanguage("it", {
 		other_action_emote = "ti ha rivolto un gesto", other_action_attacks = "ti attacca", other_action_ally = "combatte al tuo fianco",
 		other_trp3_on = "Profili pubblici Total RP 3 degli altri giocatori: letti (solo razza, classe e tratti, mai note o storia).",
 		other_trp3_off = "Profili pubblici Total RP 3 degli altri giocatori: non letti.",
+		other_not_listed = "Chi hai davanti non è nella lista delle relazioni: aggiungilo prima con /au relazioni.",
+		other_trait_set = "%s: %s.",
+		other_trait_bad = "Uso: /au chi tratto temperament|morality|goals|speech|role <valore> (oppure - per toglierlo).",
 	},
 })

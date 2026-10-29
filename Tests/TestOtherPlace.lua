@@ -823,6 +823,17 @@ T.run("/au luogo e /au chi", function()
 	SECRET_UNITS = {}
 	T.ok(Cmd("chi trp3 on"):find("letti", 1, true) and NS.db.interlocutor.trp3Others == true, "consenso TRP3 acceso")
 	T.ok(Cmd("chi trp3 off"):find("non letti", 1, true) and NS.db.interlocutor.trp3Others == false, "spento")
+	-- tratti scelti dall'utente per chi ha davanti (solo se è nella lista delle relazioni)
+	P.target = Player("Brenna")
+	T.ok(Cmd("chi tratto speech gruff"):find("relazioni", 1, true), "non in lista: lo dice")
+	R:AddPlayer("Brenna-TestRealm", "user")
+	T.ok(Cmd("chi tratto speech gruff"):find("Brusco", 1, true), "tratto impostato")
+	local o = Ctx().other
+	T.ok(o.speech == "gruff" and o.sources.speech == "user", "fonte: utente")
+	T.ok(Cmd("chi tratto role guard"):find("Guardia", 1, true) and Ctx().other.role == "guard", "ruolo dell'utente")
+	T.ok(Cmd("chi tratto speech -"):find("-", 1, true) and Ctx().other.speech == nil, "tolto")
+	T.ok(Cmd("chi tratto colore rosso"):find("Uso:", 1, true), "tratto sconosciuto: l'uso")
+	P.target = { name = "Innkeeper Farley", guid = Guid(295), ctype = "Humanoid", reaction = 5 }
 	NS.db.locale = "en"
 	T.ok(Cmd("place"):find("Place: Durotar", 1, true), "/au place in inglese")
 	T.ok(Cmd("who"):find("Interlocutor:", 1, true), "/au who in inglese")

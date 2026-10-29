@@ -319,6 +319,37 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
 
 ---
 
+## S6c: interlocutore e luogo (aggiunto dallo step S6c)
+
+56. **Dove sono.** In alcune zone (Durotar o Elwynn, una capitale amica, una zona dell'altra fazione, una zona contesa, Booty Bay) scrivi `/au luogo`.
+    - **Cosa aspettarti:** zona e sottozona giuste, un numero di mappa, «riconosciuto per nome», il territorio (amico, ostile, conteso, santuario), i tag (foresta, deserto, porto...), «capitale amica/nemica» dove serve.
+    - **Cosa riportare:** il **numero di mappa** di ogni zona provata (servono a verificare `Data/Places.lua`: chi ha numeri diversi da quelli del file va corretto) e se il territorio è giusto. `/au debug full`: `api:C_Map.GetMapInfo`, `api:C_PvP.GetZonePVPInfo`, `api:GetInstanceInfo`.
+57. **Istanze.** Entra in un dungeon, poi (se puoi) in un campo di battaglia o un'arena, e scrivi `/au luogo` dentro.
+    - **Cosa aspettarti:** «dungeon»/«campo di battaglia»/«arena» con il nome e l'id dell'istanza, la difficoltà; in gruppo con un ruolo assegnato, «difesa»/«cure»/«danno». In coda per un campo di battaglia: «campo di battaglia: queued».
+    - **Cosa riportare:** l'id dell'istanza (verifica di `instances` in `Data/Places.lua`), se il tipo è giusto, se la coda si vede.
+58. **Un boss.** In un dungeon affronta un boss.
+    - **Cosa aspettarti:** durante lo scontro il narratore tace (anche se il boss non è «worldboss»); alla fine, qualche secondo dopo, a volte una frase di vittoria o di sconfitta con il nome del boss (`/au prob encounter_end 100` per la prova).
+    - **Cosa riportare:** se `ENCOUNTER_START`/`ENCOUNTER_END` arrivano (`/au debug trace`), se il nome del boss esce giusto.
+59. **Il ritmo cambia.** Gioca un po' nel mondo aperto, poi in un dungeon, in un'incursione e in un campo di battaglia, con l'intensità predefinita.
+    - **Cosa aspettarti:** in incursione e durante i boss pochissime frasi; in campo di battaglia frasi brevi; in città o in locanda un po' più spazio.
+    - **Cosa riportare:** se il ritmo ti sembra giusto (i numeri sono ipotesi).
+60. **Chi ho davanti: NPC.** Parla con un mercante, un addestratore, un maestro di volo, un locandiere, un banchiere e chi dà una quest; poi, chiuso il dialogo, prendili come bersaglio e scrivi `/au chi`.
+    - **Cosa aspettarti:** il ruolo giusto per ciascuno; un NPC con cui hai solo chiacchierato (gossip) **non** ha ruolo; a volte, all'apertura, una frase sul ruolo (`npc_meet`, `/au prob npc_meet 100`).
+    - **Cosa riportare:** ruoli sbagliati o mancanti; con un locandiere di `Data/NPCs.lua` (per esempio Innkeeper Farley a Goldshire) se `/au chi` mostra temperamento e modo di parlare: se no, il suo **npcID** non corrisponde.
+61. **Chi ho davanti: giocatori.** Prendi come bersaglio giocatori di razze e classi diverse e scrivi `/au chi`, poi `/au saluto`.
+    - **Cosa aspettarti:** razza e classe nella tua lingua; saluti legati alla terra d'origine o al mestiere, mai giudizi; con un giocatore dell'altra fazione, il saluto «non capirai una parola».
+    - **Cosa riportare:** frasi che stonano o suonano come stereotipi.
+62. **Azioni verso di te.** Fatti sfidare a duello, invitare in gruppo, salutare con `/wave` (una volta rivolto a te con te come bersaglio, una volta senza bersaglio), proporre uno scambio; accetta una quest.
+    - **Cosa aspettarti:** a volte una frase sull'azione (`/au prob other_action 100`); `/au chi` mostra le azioni recenti. Un'emote non rivolta a te non conta. Nessun testo di emote compare nel diario o nei dati salvati.
+    - **Cosa riportare:** quali azioni non si registrano (`/au debug full`: `event:DUEL_REQUESTED`, `PARTY_INVITE_REQUEST`, `CHAT_MSG_TEXT_EMOTE`, `BANKFRAME_OPENED`).
+63. **Total RP 3 degli altri (facoltativo).** Con TRP3 installato e un giocatore con profilo: `/au chi trp3 on`, poi bersaglio e `/au chi`.
+    - **Cosa aspettarti:** razza e classe personalizzate del suo profilo, e temperamento o morale se i suoi tratti sono netti; con `/au chi trp3 off` non si legge nulla.
+    - **Cosa riportare:** se qualcosa non torna o compaiono errori (l'API `register.getUnitIDCurrentProfile` non è stata provata).
+64. **La memoria dei luoghi resta.** Con un personaggio che ha già usato l'addon (luoghi nel diario), entra in una zona già visitata, poi `/reload`, poi `/au diario luoghi`.
+    - **Cosa aspettarti:** la zona non risulta «nuova» (nessuna prima visita ripetuta) e compare una sola volta; dopo la visita la memoria la riconosce per numero di mappa.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -362,6 +393,14 @@ S6b cursori e note ...... trascina ___  - e + ___  note/tag/etichetta ___  accen
 S6b tono ................ formale/caldo/teso giusti? ___  frasi che stonano ______
 S6b persistenza ......... dopo /reload ___  dopo uscita ___  decadimento NPC ___
 S6b esportazione ........ si copia? ___
+S6c luogo ............... numeri di mappa ______  territorio giusto? ___  istanza e id ______  coda BG ___
+S6c boss ................ silenzio durante? ___  frase alla fine? ___  nome giusto? ___
+S6c ritmo ............... raid sobrio? ___  BG frasi brevi? ___  locanda più spazio? ___
+S6c NPC ................. ruoli giusti ______  gossip senza ruolo? ___  Farley riconosciuto? ___
+S6c giocatori ........... razza/classe giuste? ___  saluti che stonano ______
+S6c azioni .............. duello ___  invito ___  /wave a te ___  scambio ___  quest ___
+S6c TRP3 altri .......... razza/classe personalizzate? ___  errori? ___
+S6c memoria luoghi ...... zona nota non "nuova"? ___  una sola riga? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

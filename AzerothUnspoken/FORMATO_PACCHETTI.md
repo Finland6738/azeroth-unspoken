@@ -293,6 +293,49 @@ nella lista, **valgono tutte false** (tranne `isKnown = false`): una frase che c
 - **Evento `relation_npc`** (dichiarato da `base_relations`): l'incontro con un NPC già conosciuto. Ogni sua frase deve dichiarare una condizione di relazione (`relation`, `isKnown = true`, `relationKind`...): il validatore segnala `relationWithoutRelation` altrimenti. Un pacchetto può dichiarare altri eventi del genere con `AzerothUnspoken.Relationships:RegisterRelationEvent(evento, function(ctx) return … end)`.
 - Esempi: `Data/RegistryRelations.lua` (51 frasi IT/EN).
 
+### Interlocutore e luogo: chi incontriamo, dove siamo
+
+Due **sotto-tabelle** leggono `ctx.other` (`Systems/Interlocutor.lua`: il bersaglio, l'NPC con cui si parla, chi ci ha
+appena rivolto un'emote o sfidato a duello) e `ctx.place` (`Systems/Place.lua`). Dentro valgono gli stessi operatori del
+livello superiore (elenchi, `not`, `any`, `func(oggetto, ctx)`); senza interlocutore o luogo un valore richiesto non
+combacia, `campo = false` sì. Ogni campo conta nella specificità della frase.
+
+```lua
+conditions = { other = { role = "innkeeper", any = { { speech = "jovial" }, { temperament = "cheerful" } } } }
+conditions = { place = { instanceType = "raid", tags = { "dragon", "fire" } } }
+conditions = { other = { actions = { "duel", within = 30 } } }       -- un duello chiesto negli ultimi 30 secondi
+```
+
+| `other.` | Valori |
+|---|---|
+| `kind` | `npc`, `player`, `creature` |
+| `race`, `class`, `faction`, `sex` | token di gioco (`Orc`, `NightElf`, `Scourge`; `PRIEST`; `Alliance`; `male`/`female`) |
+| `levelMin`, `levelMax`, `classification`, `ctype`, `family`, `reaction`, `hostile`, `name` (contenuto), `npcID` | dati di gioco; `reaction`: `hostile`, `unfriendly`, `neutral`, `friendly`, `honored` |
+| `role` | `innkeeper`, `merchant`, `guard`, `questgiver`, `trainer`, `flightmaster`, `banker`, `leader`, `civilian` |
+| `temperament`, `morality` | i valori del Character Soul (`gruff`, `cheerful`…; `righteous`…) |
+| `goals` | `profit`, `duty`, `knowledge`, `faith`, `glory`, `survival`, `family`, `power`, `peace`, `freedom` |
+| `speech` | `plain`, `formal`, `gruff`, `warm`, `terse`, `florid`, `cryptic`, `jovial` |
+| `actions` | un'azione recente: `quest_offer`, `quest_given`, `quest_done`, `merchant`, `trainer`, `flight`, `innkeeper`, `banker`, `gossip`, `trade`, `group`, `duel`, `invite`, `emote`, `attacks`, `ally`; entro 120 secondi, oppure `{ …, within = secondi }` |
+| `relation`, `inGroup`, `secret` | etichetta di S6b; è nel nostro gruppo; l'identità è segreta |
+
+| `place.` | Valori |
+|---|---|
+| `instanceType` | `none`, `party` (dungeon), `raid`, `pvp` (campo di battaglia), `arena`, `scenario` |
+| `territory` | `friendly`, `hostile`, `contested`, `sanctuary`, `combat` |
+| `tags` | uno dei tag elencati (`forest`, `ruin`, `sacred`, `cursed`, `capital`, `port`, `deep`, `dragon`, `neutral`, `inn`…: quelli di `Data/Places.lua`) |
+| `capital`, `friendlyCapital`, `hostileCapital`, `faction`, `rest` | capitale; della propria fazione o dell'avversaria; chi governa il luogo; riposo nel mondo aperto |
+| `encounter`, `lastEncounter` | `true`/`false` (scontro con un boss in corso, o finito da poco) oppure il nome |
+| `encounterResult`, `groupRole`, `battleground` | `win`/`wipe`; `tank`/`healer`/`damage`; `none`/`queued`/`active` |
+| `zone`, `subzone`, `mapID`, `continent`, `mood`, `instanceName`, `instanceID`, `difficulty` | come li dà il client |
+
+- **Tag di affinità** (fattore `C`): `other.role:innkeeper`, `other.temperament:gruff`, `other.speech:jovial`, `other.goals:profit` (con `req:` e `not:` rigidi) e `place.tag:deep`, `place.instance:raid`, `place.territory:hostile`. Una tendenza di classe (`Data/NPCs.lua`) alza appena il peso di un tag morbido, mai un `req:`.
+- **Segnaposto**: `{other}`, `{otherrole}`, `{otherrace}`, `{otherclass}`, `{instance}`, `{encounter}` (vedi sotto).
+- **Eventi** (pacchetto `base_context`): `npc_meet` (un NPC dal ruolo riconosciuto), `other_action` (qualcuno compie un'azione verso di noi), `encounter_end` (fine di uno scontro con un boss). Non parlano senza la persona o lo scontro, nemmeno a mano. L'ingresso in un dungeon o in un campo di battaglia è l'evento `zone` con `place = { instanceType = … }`.
+- **Ritmo**: in campo di battaglia, in arena e contro un boss le frasi brevi (fino a 80 byte) pesano di più; in incursione il narratore parla meno.
+- **Regole editoriali** (GDD §5.3, §5.4): un mercante non declama come un re; razza e classe danno un saluto legato alla terra d'origine o al mestiere, mai un giudizio morale.
+- **Dati** dei pacchetti: `NS:RegisterPlaces{ zones, subzones, instances, continents }` (tag e temi per nome del client; `map`/`id` con `verified = true` solo se provati in gioco), `NS:RegisterNPCs{ [npcID] = { role, temperament, … } }`, `NS:RegisterTendencies{ class = { … } }` (mai la morale).
+- Esempi: `Data/RegistryContext.lua` (86 frasi IT/EN).
+
 ### Condizioni nuove
 
 Un pacchetto può dichiarare condizioni proprie, per dati che mette nel contesto (`NS:Trigger(evento, { hasPet = true })`)
@@ -322,6 +365,8 @@ oppure `AzerothUnspoken:RegisterCondition("hasPet", nil, "bool")`.
 | `{zone}`, `{subzone}` | luogo |
 | `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}` | nella lingua scelta |
 | `{relation}` | l'etichetta del rapporto con la persona dell'interazione (relazioni, S6b) |
+| `{other}`, `{otherrole}`, `{otherrace}`, `{otherclass}` | l'interlocutore: nome, ruolo, razza e classe nella lingua scelta (o razza e classe personalizzate di Total RP 3) |
+| `{instance}`, `{encounter}` | l'istanza e lo scontro con un boss in corso o appena finito |
 | `{g:maschile\|femminile}` | variante per genere: `{g:pronto\|pronta}` |
 | `{nome}` | una voce del vocabolario, ad esempio `{cry}` (grido di guerra adatto alla razza) |
 

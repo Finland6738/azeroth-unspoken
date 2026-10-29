@@ -372,6 +372,9 @@ function I:Build(ctx, extra)
 	if s.interaction and self.ROLE_OF[s.interaction.kind] then role = self.ROLE_OF[s.interaction.kind] end
 	if role and Traits.defs.role.valid[role] then table.insert(layers, { name = "role", traits = { role = role } }) end
 
+	-- una persona nota solo per chiave (azione arrivata da un evento): il nome dalla relazione o dal registro
+	o.name = o.name or (rec and rec.name) or (entry and entry.name) or nil
+
 	local traits, sources = Traits.Merge(layers)
 	traits = I.Clean(traits)
 	for _, id in ipairs(I.TRAITS) do
@@ -704,6 +707,25 @@ function I:Command(rest)
 		else on = not s.trp3Others end
 		s.trp3Others = on
 		Say(on and "other_trp3_on" or "other_trp3_off")
+		return
+	end
+	if word == "tratto" or word == "trait" then
+		-- /au chi tratto <tratto> <valore|-> sulla persona che si ha davanti, se è nella lista delle relazioni
+		local trait, value = arg:match("^([^ ]+) *([^ ]*)")
+		local o = NS:BuildContext().other
+		local kind, id
+		if type(o) == "table" and not o.secret and o.key then
+			kind = o.key:match("^([a-z]+):")
+			id = kind == "npc" and o.npcID or o.key:match("^player:(.+)$")
+		end
+		if not kind or not (NS.Relationships and NS.Relationships:Get(kind, id)) then return Say("other_not_listed") end
+		trait = trait and Traits.Lower(trait)
+		if value == "-" or value == "" then value = nil else value = Traits.Lower(value) end
+		if trait and self:SetTrait(kind, id, trait, value) then
+			Say("other_trait_set", Traits.Name(trait), value and Traits.ValueName(trait, value) or "-")
+		else
+			Say("other_trait_bad")
+		end
 		return
 	end
 	for _, line in ipairs(self:Describe()) do NS:Print(line) end
