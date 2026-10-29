@@ -608,6 +608,74 @@ T.run("il richiamo ha la priorità della memoria e batte l'atmosfera", function(
 	T.eq(after, nil, "in combattimento il richiamo non viene nemmeno offerto")
 end)
 
+-- #47: portali, navi, zeppelin, pietra del ritorno, uscita da un'istanza: il client manda PLAYER_ENTERING_WORLD e
+-- ZONE_CHANGED_NEW_AREA in un ordine non provato; il ritorno e l'atmosfera partono comunque, una volta sola
+T.run("ritorno dopo una schermata di caricamento: qualunque sia l'ordine degli eventi", function()
+	for _, order in ipairs({ "world_first", "zone_first", "world_only" }) do
+		Fresh()
+		NS.db.intensity = 50
+		NS.db.chance.zone, NS.db.chance.memory_return = 100, 100
+		NS.db.pacing.globalCooldownSeconds = 0
+		Pacing:Reset()
+		math.randomseed(5)
+		Go("Teldrassil", 200)
+		Go("Westfall", 100)
+		ADVANCE(200)
+		Pacing:Reset()
+		local visits = Data().places["Teldrassil"].visits
+		Leap(3600)
+		local n1, queued = #Narrator.history, #Director.log
+		LOADING_SCREEN("Teldrassil", order)
+		ADVANCE(4)
+		T.eq(Data().places["Teldrassil"].visits, visits + 1, order .. ": una visita in più")
+		T.eq(#Narrator.history - n1, 1, order .. ": parla una sola frase")
+		local results, count = {}, {}
+		for i = queued + 1, #Director.log do
+			local e = Director.log[i]
+			results[e.event] = e.result
+			count[e.event] = (count[e.event] or 0) + 1
+		end
+		T.eq(results.memory_return, "spoken", order .. ": parla il richiamo di memoria")
+		T.eq(results.zone, "outranked", order .. ": l'atmosfera tace")
+		T.ok((count.memory_return or 0) == 1 and (count.zone or 0) <= 1, order .. ": ogni candidato una volta sola")
+	end
+	-- una zona nuova dopo la schermata: l'atmosfera, anche solo con PLAYER_ENTERING_WORLD
+	Fresh()
+	NS.db.intensity = 50
+	NS.db.chance.zone = 100
+	NS.db.pacing.globalCooldownSeconds = 0
+	Pacing:Reset()
+	Go("Durotar", 100)
+	ADVANCE(10)
+	Pacing:Reset()
+	local queued = #Director.log
+	LOADING_SCREEN("Teldrassil", "world_only")
+	ADVANCE(4)
+	local zone
+	for i = queued + 1, #Director.log do if Director.log[i].event == "zone" then zone = Director.log[i].result end end
+	T.eq(zone, "spoken", "zona nuova con solo PLAYER_ENTERING_WORLD: parla l'atmosfera")
+	-- l'accesso e la ricarica non sono un ritorno
+	Fresh()
+	NS.db.intensity = 50
+	NS.db.chance.zone, NS.db.chance.memory_return = 100, 100
+	Pacing:Reset()
+	Go("Teldrassil", 200)
+	Leap(7200)
+	LM:StartSession()   -- una sessione nuova: nessuna zona attuale
+	queued = #Director.log
+	P.zone = "Teldrassil"
+	ENTER_GAME(true, false)
+	ADVANCE(4)
+	local offered = false
+	for i = queued + 1, #Director.log do
+		if Director.log[i].event == "memory_return" or Director.log[i].event == "zone" then offered = true end
+	end
+	T.ok(not offered, "all'accesso nessun ritorno né atmosfera di zona")
+	T.eq(Data().places["Teldrassil"].visits, 2, "ma la visita è registrata")
+	-- la prima visita ordinata dei test seguenti riparte pulita
+	Fresh()
+end)
+
 T.run("il filtro rigido sugli argomenti da evitare vale anche per i richiami", function()
 	Fresh()
 	Go("Teldrassil")
@@ -1177,6 +1245,44 @@ T.run("diario in inglese e con la memoria spenta", function()
 	local out = Run("diario")
 	T.ok(out:find("la memoria è spenta", 1, true), "con la memoria spenta lo dice: " .. out)
 	NS.db.modules.memory = true
+end)
+
+-- #52: i tetti valgono anche per i dati caricati, non solo quando si aggiunge
+T.run("tetti sui dati caricati: permanenti, flag, nomi con le maiuscole", function()
+	Fresh()
+	local m = Data()
+	for i = 1, 260 do
+		table.insert(m.entries, { id = i, t = 1000 + i, kind = "level", importance = 1 + i % 5, perm = true, tags = {}, level = i })
+	end
+	m.nextId = 300
+	local total = #m.entries
+	LM:Sanitize()
+	T.eq(LM:CountPermanent(), LM.MAX_PERMANENT, "i permanenti caricati sono al tetto")
+	T.ok(#m.entries >= total - LM:Compact(), "nessun ricordo cancellato dal tetto dei permanenti")
+	local keptTop = false
+	for _, e in ipairs(m.entries) do if e.perm and e.importance == 5 then keptTop = true end end
+	T.ok(keptTop, "i più importanti restano permanenti")
+	-- flag: nomi con le maiuscole riportati al minuscolo, tetto ai flag
+	Fresh()
+	m = Data()
+	m.flags = { First_Capital = { t = 5, source = "auto" }, ok_flag = { t = 6, source = "user" } }
+	LM:Sanitize()
+	T.ok(LM:HasFlag("First_Capital") and LM:HasFlag("first_capital"), "il flag con le maiuscole è raggiungibile")
+	T.ok(m.flags.first_capital and not m.flags.First_Capital, "salvato in minuscolo")
+	T.ok(LM:ClearFlag("First_Capital") and not LM:HasFlag("first_capital"), "e si può togliere")
+	m.flags = {}
+	for i = 1, LM.MAX_FLAGS + 50 do m.flags["f_" .. i] = { t = i, source = (i <= 10) and "user" or "auto" } end
+	LM:Sanitize()
+	local n = 0
+	for _ in pairs(m.flags) do n = n + 1 end
+	T.eq(n, LM.MAX_FLAGS, "flag al tetto")
+	T.ok(m.flags.f_1 and m.flags.f_10, "quelli dell'utente restano")
+	T.ok(not m.flags.f_11 and m.flags["f_" .. (LM.MAX_FLAGS + 50)], "si dimenticano i più vecchi automatici")
+	T.ok(LM:SetFlag("nuovo_flag", "addon") and LM:HasFlag("nuovo_flag"), "un flag nuovo si imposta")
+	n = 0
+	for _ in pairs(m.flags) do n = n + 1 end
+	T.eq(n, LM.MAX_FLAGS, "e il tetto regge anche quando si aggiunge")
+	Fresh()
 end)
 
 T.run("/au debug e impostazioni", function()

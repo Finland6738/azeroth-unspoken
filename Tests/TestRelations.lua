@@ -1284,6 +1284,119 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 	T.eq(NS.db.interlocutor.trp3Others, false, "spento")
 end)
 
+-- #52: contatori del giorno passati e tetto degli NPC applicati ai dati caricati
+T.run("dati caricati: i contatori dei giorni passati non restano, il tetto degli NPC vale", function()
+	Fresh()
+	local d = R:Data()
+	local today = math.floor(time() / R.DAY)
+	d.npcs[1] = { first = 1, last = 2, count = 1, familiarity = 10, today = { day = today - 3, n = { talk = 2 }, gain = { talk = { trust = 1 } } } }
+	d.npcs[2] = { first = 1, last = 2, count = 1, familiarity = 10, today = { day = today, n = { talk = 2 }, gain = { talk = { trust = 1 } } } }
+	R:Sanitize()
+	T.eq(R:Get("npc", 1).today, nil, "il giorno passato non resta")
+	T.ok(R:Get("npc", 2).today ~= nil and R:Get("npc", 2).today.n.talk == 2, "quello di oggi sì")
+	Fresh()
+	d = R:Data()
+	for i = 1, R.MAX_NPCS + 300 do
+		d.npcs[i] = { first = 1, last = 2 + i, count = 1, familiarity = i % 50 }
+	end
+	d.npcs[1] = { first = 1, last = 2, count = 1, familiarity = 0, note = "da non perdere" }
+	R:Sanitize()
+	d = R:Data()
+	T.ok(Count(d.npcs) <= R.COMPACT_NPCS, "NPC caricati al tetto: " .. Count(d.npcs))
+	T.ok(d.npcs[1] and d.npcs[1].note, "gli NPC con una nota dell'utente restano")
+	Fresh()
+end)
+
+-- #50: i dati di una versione interna più nuova non si portano alla versione 1 e non si perdono campi
+T.run("relazioni di una versione più nuova: sola lettura, dati intatti", function()
+	Fresh()
+	NS.cdb.relationships = { version = 2, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
+		players = { ["Ale-Reame"] = { first = 1, last = 2, count = 1, nickname = "futuro" } } }
+	NS.Diagnostics.errors = {}
+	R.readOnly = false
+	local dropped = R:Sanitize()
+	T.eq(dropped, 0, "niente scartato")
+	T.eq(R.readOnly, true, "sola lettura")
+	T.eq(NS.cdb.relationships.version, 2, "la versione resta la 2")
+	T.eq(NS.cdb.relationships.npcs[1234].mood, "futuro", "campo sconosciuto di un NPC conservato")
+	T.eq(NS.cdb.relationships.players["Ale-Reame"].nickname, "futuro", "campo sconosciuto di un giocatore conservato")
+	local logged = false
+	for _, e in pairs(NS.Diagnostics.errors) do if e.module == "relations" and e.message:find("sola lettura", 1, true) then logged = true end end
+	T.ok(logged, "l'errore è in diagnostica")
+	T.ok(not R:Enabled() and not R:Writable(), "il modulo è spento")
+	T.eq(R:RecordNPC(1234, "Grik", "ambient"), nil, "RecordNPC non scrive")
+	T.eq(NS.cdb.relationships.npcs[1234].count, 3, "il record non è cambiato")
+	-- una versione uguale o più vecchia si ripulisce come prima
+	NS.cdb.relationships = { version = 1, npcs = { [5] = { first = 1, last = 2, count = 1, mood = "x" } }, players = {} }
+	R.readOnly = false
+	R:Sanitize()
+	T.eq(R.readOnly, false, "versione 1: scrivibile")
+	T.eq(NS.cdb.relationships.npcs[5].mood, nil, "e ripulita")
+	Fresh()
+end)
+
+-- #45: il testo libero dell'utente (etichette del diario) non arriva mai a una voce pubblica
+T.run("etichetta personale: mai in chat pubblica", function()
+	Fresh()
+	-- nessuna frase di base con {relation} è di una voce pubblica, in nessuna lingua
+	local nInner = 0
+	for id, p in pairs(Engine.byId) do
+		for _, list in pairs(p.text) do
+			for _, v in ipairs(list) do
+				if v.t and v.t:find("{relation}", 1, true) then
+					if p.speaker == "inner" then nInner = nInner + 1 end
+					T.ok(not Engine.PUBLIC_SPEAKERS[p.speaker], id .. ": {relation} in una voce pubblica (" .. tostring(p.speaker) .. ")")
+				end
+			end
+		end
+	end
+	T.ok(nInner > 0, "le frasi con {relation} sono nelle voci private")
+	T.eq(Engine.byId["rel.npc.rival"].speaker, "inner", "rel.npc.rival è un pensiero sul diario")
+	-- un NPC rivale per gli assi, con l'etichetta personale dell'utente
+	local rec = { first = time(), last = time(), count = 5, name = "Grik", familiarity = 30, trust = 0, respect = 60 }
+	R:Data().npcs[4242] = rec
+	R:SetLabel("npc", 4242, "quel ladro di Grik")
+	local info = R:Resolve("npc", rec)
+	T.eq(info.label, "rival", "per gli assi è un rivale"); T.ok(info.text:find("ladro", 1, true), "ma il nome è quello scritto a mano")
+	local ctx = NS:BuildContext({ relationSubject = { kind = "npc", id = 4242 } })
+	T.eq(ctx.relationCustom, true, "il contesto sa che il nome è un testo dell'utente")
+	-- una frase pubblica con {relation} (di un pacchetto esterno, non validato) non si compone con un testo dell'utente
+	local pub = { id = "t45.say", speaker = "character", form = "say", pack = "t45",
+		text = { it = { { t = "Sul diario: «{relation}».", ok = true, pack = "t45" } } } }
+	T.eq(Engine:RenderPhrase(pub, "it", ctx), nil, "voce pubblica: non si compone")
+	T.eq(#Engine.UsableVariants(pub.text.it, ctx, "narrator"), 0, "nemmeno nelle emote narrative")
+	local priv = { id = "t45.in", speaker = "inner", form = "say", pack = "t45",
+		text = { it = { { t = "Sul diario: «{relation}».", ok = true, pack = "t45" } } } }
+	T.ok(Engine:RenderPhrase(priv, "it", ctx):find("ladro", 1, true), "voce privata: si compone")
+	-- con un'etichetta degli assi (non personale) la frase pubblica resta componibile
+	R:SetLabel("npc", 4242, nil)
+	local ctx2 = NS:BuildContext({ relationSubject = { kind = "npc", id = 4242 } })
+	T.ok(not ctx2.relationCustom and #Engine.UsableVariants(pub.text.it, ctx2, "character") == 1, "un nome degli assi non è un testo dell'utente")
+	-- modalità automatica in istanza: né /say né /e né proposte pubbliche con il testo dell'utente
+	R:SetLabel("npc", 4242, "quel ladro di Grik")
+	NS.db.modules.publicChat = true
+	NS.Gateway:SetMode("AUTO_ONLY_IF_ALLOWED", { confirmAuto = true })
+	NS.db.chat.channel = "auto"
+	P.instance, P.instanceType = true, "party"
+	local leaks = 0
+	for _ = 1, 50 do
+		SENT = {}
+		ADVANCE(30)
+		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+		NS.Gateway:Discard()
+		NS.Gateway:Narrate("relation_npc", NS:BuildContext({ relationSubject = { kind = "npc", id = 4242 } }), { auto = true })
+		for _, s in ipairs(SENT) do
+			if type(s) == "string" and s:sub(1, 6) ~= "PRINT:" and s:find("ladro", 1, true) then leaks = leaks + 1 end
+		end
+		local pend = NS.Gateway.pending
+		if pend and (pend.text or ""):find("ladro", 1, true) and pend.channel ~= "PRIVATE" then leaks = leaks + 1 end
+	end
+	T.eq(leaks, 0, "nessuna uscita pubblica contiene l'etichetta dell'utente")
+	P.instance, P.instanceType = false, nil
+	NS.Gateway:SetMode("PREVIEW")
+	NS.Gateway:Discard()
+end)
+
 T.run("nessun errore intercettato", function()
 	local errs = {}
 	for _, e in pairs(NS.Diagnostics.errors) do table.insert(errs, tostring(e.id) .. ": " .. tostring(e.message)) end

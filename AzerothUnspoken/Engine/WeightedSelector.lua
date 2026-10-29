@@ -5,18 +5,84 @@ local Engine = NS.Engine
 
 local function Mem() return NS.cdb.memory end
 
+local function Finite(n) return type(n) == "number" and n == n and n ~= math.huge and n ~= -math.huge end
+
+Engine.RECENT_MAX = 200   -- tetto di una lista di recenti caricata dal file (Remember ne tiene molte meno)
+
+---Ripulisce la memoria di anti-ripetizione caricata dal file (#49, #52): voci malformate scartate come per le memorie
+---e le relazioni, così un file rovinato non fa fallire ogni scelta a ogni avvio. Restituisce le voci scartate.
+---@return integer dropped
+function Engine:SanitizeMemory()
+	local mem = NS.cdb and NS.cdb.memory
+	if type(mem) ~= "table" then return 0 end
+	local dropped = 0
+	-- uses e last: id stringa -> numero finito (non negativo)
+	for _, field in ipairs({ "uses", "last" }) do
+		if type(mem[field]) ~= "table" then mem[field] = {} end
+		for id, n in pairs(mem[field]) do
+			if type(id) ~= "string" or not Finite(n) or n < 0 then mem[field][id] = nil; dropped = dropped + 1 end
+		end
+	end
+	-- recent: evento -> lista di id stringa
+	if type(mem.recent) ~= "table" then mem.recent = {} end
+	for key, list in pairs(mem.recent) do
+		if type(key) ~= "string" or type(list) ~= "table" then
+			mem.recent[key] = nil; dropped = dropped + 1
+		else
+			local clean = {}
+			for _, id in ipairs(list) do
+				if type(id) == "string" and #clean < self.RECENT_MAX then table.insert(clean, id) end
+			end
+			local n = 0
+			for _ in pairs(list) do n = n + 1 end
+			if n ~= #clean then dropped = dropped + 1 end
+			mem.recent[key] = clean
+		end
+	end
+	-- lastTone: evento -> registro (stringa); variant: id -> indice intero positivo
+	if type(mem.lastTone) ~= "table" then mem.lastTone = {} end
+	for key, tone in pairs(mem.lastTone) do
+		if type(key) ~= "string" or type(tone) ~= "string" then mem.lastTone[key] = nil; dropped = dropped + 1 end
+	end
+	if type(mem.variant) ~= "table" then mem.variant = {} end
+	for id, i in pairs(mem.variant) do
+		if type(id) ~= "string" or not Finite(i) or i < 1 or i ~= math.floor(i) then mem.variant[id] = nil; dropped = dropped + 1 end
+	end
+	return dropped
+end
+
+---Gli id che esistono adesso: frasi, cornici e voci di vocabolario (Remember conta usi anche di queste).
+local function KnownIds()
+	local known = {}
+	for id in pairs(Engine.byId) do known[id] = true end
+	for _, list in pairs(Engine.frames) do
+		for _, f in ipairs(list) do if f.id then known[f.id] = true end end
+	end
+	for _, list in pairs(Engine.vocab) do
+		for _, v in ipairs(list) do if v.id then known[v.id] = true end end
+	end
+	return known
+end
+
 function Engine:DecayMemory()
-	local uses = Mem().uses
+	local dropped = self:SanitizeMemory()
+	if dropped > 0 and NS.Diagnostics then
+		NS.Diagnostics:Error("memory", ("anti-ripetizione: %d voci malformate scartate"):format(dropped))
+	end
+	local mem = Mem()
+	local known = KnownIds()
+	local uses = mem.uses
 	for id, n in pairs(uses) do
 		n = n * 0.75
-		uses[id] = (n >= 0.2) and n or nil
+		uses[id] = (n >= 0.2) and known[id] and n or nil
 	end
-	-- varianti usate per ultime: via quelle di frasi che non esistono più
-	local variant = Mem().variant
-	if variant then
-		for id in pairs(variant) do
-			if not Engine.byId[id] then variant[id] = nil end
-		end
+	-- ultimo uso (solo per il cooldown) e varianti usate per ultime: via quelle di frasi che non esistono più
+	-- (un pacchetto disinstallato); un pacchetto solo disattivato resta registrato e conserva la storia
+	for id in pairs(mem.last) do
+		if not known[id] then mem.last[id] = nil end
+	end
+	for id in pairs(mem.variant) do
+		if not Engine.byId[id] then mem.variant[id] = nil end
 	end
 end
 
@@ -203,7 +269,7 @@ function Engine:Eligible(list, lang, ctx, form, now)
 	for _, p in ipairs(list) do
 		if (not form or p.form == form) and not NS.db.disabledPacks[p.pack]
 			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
-			and #Engine.UsableVariants(p.text[lang], ctx) > 0 and Engine.SafeMatch(p.when, ctx) then
+			and #Engine.UsableVariants(p.text[lang], ctx, p.speaker) > 0 and Engine.SafeMatch(p.when, ctx) then
 			table.insert(out, p)
 		end
 	end
@@ -247,7 +313,7 @@ end
 ---@return integer? index posizione della variante tra i testi della lingua
 function Engine:RenderPhrase(p, lang, ctx)
 	local list = p.text[lang]
-	local idx = Engine.UsableVariants(list, ctx)
+	local idx = Engine.UsableVariants(list, ctx, p.speaker)
 	local depth = ctx.depth
 	if depth and #idx > 1 then
 		local fit = {}

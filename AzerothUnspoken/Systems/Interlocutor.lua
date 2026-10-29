@@ -350,7 +350,7 @@ function I:Build(ctx, extra)
 		if rec.role and Traits.defs.role.valid[rec.role] and rec.roleSource == "user" then t.role = t.role or rec.role end
 		table.insert(layers, { name = "user", traits = t })
 		local info = NS.Relationships:Resolve(o.kind == "player" and "player" or "npc", rec, o.sex)
-		o.relation, o.relationLabel = info.label, info.text
+		o.relation, o.relationLabel, o.relationCustom = info.label, info.text, info.custom ~= nil
 	end
 	-- 2. profilo pubblico Total RP 3 (solo giocatori, con il consenso apposito)
 	if o.kind == "player" and s.unit and NS.TotalRP3 and NS.TotalRP3.GetOtherProfile then
@@ -423,6 +423,7 @@ function I:Context(ctx, extra)
 	-- il nome del rapporto con il genere della persona (#41): Relationships:Context lo ha scritto al maschile
 	if type(o) == "table" and not o.secret and o.relation and o.relationLabel and ctx.relation == o.relation then
 		ctx.relationLabel = o.relationLabel
+		ctx.relationCustom = o.relationCustom
 	end
 end
 

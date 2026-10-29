@@ -50,6 +50,7 @@ NS:RegisterLanguage("en", {
 		gw_no_sender = "the client offers no way to send to chat.",
 		gw_lockdown = "chat is locked by the client right now.",
 		gw_error = "could not send (%s).",
+		gw_blocked = "the client blocked the send (%s): nothing went out. The proposal stays here, press the button or the speak key to try again.",
 		gw_review = "proposal preview: %s\nPress again to send it, or /au cancel.",
 		gw_expired = "the proposal is gone (expired, discarded or replaced): nothing was sent. Your text: %s",
 		gw_text_kept = "the proposal vanished while you were editing it: nothing was sent. Your text: %s",

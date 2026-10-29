@@ -55,8 +55,17 @@ end
 local handlers = {}
 
 function handlers.WORLD_ENTER(env)
-	lastZone = env.context.zone
-	wasDead = env.context.deadOrGhost
+	local c = env.context
+	local changed = c.zone ~= nil and c.zone ~= lastZone and not (c.isLogin or c.isReload)
+	lastZone = c.zone
+	wasDead = c.deadOrGhost
+	-- dopo una schermata di caricamento la zona nuova va offerta anche se ZONE_CHANGED_NEW_AREA arriva prima o non
+	-- arriva (#47): lastZone evita il doppione quando arriva dopo. All'accesso e dopo una ricarica no.
+	if changed then
+		C_Timer.After(3, function()
+			if not InCombat() then Fire("zone") end
+		end)
+	end
 end
 
 -- lanci in attesa di esito (per i test e la diagnostica)

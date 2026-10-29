@@ -53,7 +53,8 @@ def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None
         for f in toc_files(EXAMPLE, ADDON_NAME + "_Example"):
             run_file(lua, os.path.join(EXAMPLE, f), f, ADDON_NAME + "_Example", lua.table())
         lua.globals().FIRE("ADDON_LOADED", ADDON_NAME + "_Example")
-    lua.globals().FIRE("PLAYER_ENTERING_WORLD", True, False)
+    # come il client: ADDON_LOADED di ogni addon, poi PLAYER_LOGIN, poi PLAYER_ENTERING_WORLD
+    lua.globals().ENTER_GAME(True, False)
     return lua, lua.globals().AzerothUnspoken
 
 
@@ -417,7 +418,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestContent"):
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestContent"):
     lt, nst = load_addon()
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
@@ -695,6 +696,25 @@ if proc.stdout.startswith("SALTATO"):
     print("  AVVISO: controllo delle API saltato (dump non trovato)")
 else:
     check(proc.returncode == 0, "check_api.py: funzioni ed eventi usati presenti nel dump (o con eccezione motivata)")
+
+# #54: il controllo vede anche funzioni passate come valore, oggetti di FrameXML, metodi dei widget e modelli
+if not proc.stdout.startswith("SALTATO"):
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        with open(os.path.join(tmp, "Cattivo.lua"), "w", encoding="utf-8", newline="\n") as f_:
+            f_.write("local function Flag(fn) return fn end\n"
+                     "local a = Flag(UnitIsFooBarBaz)\n"            # funzione di WoW inesistente, passata senza parentesi
+                     "local b = NuovoOggettoDiFrameXML\n"           # oggetto globale mai spiegato
+                     "local c = CreateFrame('Frame', nil, UIParent, 'ModelloInventatoTemplate')\n"
+                     "GameTooltip:MetodoInesistente()\n"
+                     "local d = C_Map.FunzioneInesistente\n")
+        bad_proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"), tmp],
+                                  capture_output=True, text=True, encoding="utf-8")
+    out_ = bad_proc.stdout
+    check(bad_proc.returncode == 1, "check_api.py rifiuta un file con usi non spiegati")
+    for needle in ("UnitIsFooBarBaz", "NuovoOggettoDiFrameXML", "ModelloInventatoTemplate", "MetodoInesistente",
+                   "C_Map.FunzioneInesistente"):
+        check("MANCA" in out_ and needle in out_, f"check_api.py segnala {needle}")
 
 # 11) documentazione: gli esempi di FORMATO_PACCHETTI.md come pacchetti esterni e i link relativi dei file Markdown
 print("\nDOCUMENTAZIONE")

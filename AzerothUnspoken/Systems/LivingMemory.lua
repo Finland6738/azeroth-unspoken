@@ -70,6 +70,7 @@ LM.VERSION = 2                 -- forma dei dati in AzerothUnspokenCharacterDB.m
 LM.MAX_ORDINARY = 500          -- ricordi ordinari per personaggio (GDD §7.4)
 LM.COMPACT_TO = 450            -- dopo una compattazione se ne tengono 450, così non si ripete a ogni ricordo
 LM.MAX_PERMANENT = 200         -- limite ai permanenti, che non si compattano
+LM.MAX_FLAGS = 1000            -- flag narrativi; oltre si dimenticano i più vecchi non scritti dall'utente
 LM.MAX_PLACES = 300            -- luoghi tenuti; oltre si dimenticano i meno recenti
 LM.MAX_SESSION = 60            -- momenti dell'episodico di sessione
 LM.PERSIST_MIN = 2             -- importanza minima per salvare un ricordo
@@ -299,6 +300,7 @@ function LM:Sanitize()
 	end)
 	m.entries = entries
 	if m.nextId <= maxId then m.nextId = maxId + 1 end
+	self:CapPermanent()
 
 	local places = {}
 	for key, p in pairs(m.places) do
@@ -307,21 +309,27 @@ function LM:Sanitize()
 	end
 	m.places = places
 
+	-- i nomi dei flag sono sempre in minuscolo (HasFlag e ClearFlag li abbassano): un nome con le maiuscole,
+	-- scritto a mano nel file, si riporta al minuscolo, altrimenti non si raggiungerebbe mai
 	local flags = {}
 	for name, f in pairs(m.flags) do
-		if ValidFlagName(name) then
+		local low = ValidFlagName(name) and NS.Lower(name)
+		local clean
+		if low then
 			if type(f) == "table" then
-				flags[name] = { t = IsNumber(f.t) and f.t or 0, source = self.SOURCES[f.source] and f.source or "auto" }
+				clean = { t = IsNumber(f.t) and f.t or 0, source = self.SOURCES[f.source] and f.source or "auto" }
 			elseif f == true then
-				flags[name] = { t = 0, source = "auto" }
-			else
-				dropped = dropped + 1
+				clean = { t = 0, source = "auto" }
 			end
-		else
+		end
+		if clean and not (flags[low] and flags[low].t <= clean.t) then
+			flags[low] = clean
+		elseif not clean then
 			dropped = dropped + 1
 		end
 	end
 	m.flags = flags
+	self:CapFlags()
 	m.stats = { compacted = IsNumber(m.stats.compacted) and math.max(0, math.floor(m.stats.compacted)) or nil }
 	self:CapPlaces()
 	self:Compact()
@@ -436,6 +444,41 @@ function LM:Compact()
 	m.entries = kept
 	m.stats.compacted = (m.stats.compacted or 0) + drop
 	return drop
+end
+
+---I permanenti oltre MAX_PERMANENT (un file modificato a mano) tornano ordinari, i meno importanti e i più
+---vecchi per primi: nessun ricordo si cancella, ma la compattazione può poi toglierli.
+function LM:CapPermanent()
+	local m = self:Data()
+	if not m then return end
+	local perms = {}
+	for _, e in ipairs(m.entries) do
+		if e.perm then table.insert(perms, e) end
+	end
+	local extra = #perms - self.MAX_PERMANENT
+	if extra <= 0 then return end
+	table.sort(perms, function(a, b)
+		if a.importance ~= b.importance then return a.importance < b.importance end
+		if a.t ~= b.t then return a.t < b.t end
+		return a.id < b.id
+	end)
+	for i = 1, extra do perms[i].perm = nil end
+end
+
+---I flag oltre MAX_FLAGS: si dimenticano i più vecchi, quelli dell'utente per ultimi.
+function LM:CapFlags()
+	local m = self:Data()
+	if not m then return end
+	local list = {}
+	for name, f in pairs(m.flags) do table.insert(list, { name = name, user = f.source == "user" and 1 or 0, t = f.t }) end
+	local drop = #list - self.MAX_FLAGS
+	if drop <= 0 then return end
+	table.sort(list, function(a, b)
+		if a.user ~= b.user then return a.user < b.user end
+		if a.t ~= b.t then return a.t < b.t end
+		return a.name < b.name
+	end)
+	for i = 1, drop do m.flags[list[i].name] = nil end
 end
 
 -- i luoghi più antichi si dimenticano oltre MAX_PLACES (non quello in cui si è ora)
@@ -596,11 +639,14 @@ end
 ---@return boolean ok
 function LM:SetFlag(name, source)
 	if self.readOnly or not ValidFlagName(name) then return false end
+	-- con la memoria spenta nessun sistema scrive flag nuovi (#46); il comando dell'utente resta possibile
+	if source ~= "user" and NS.db and NS.db.modules.memory == false then return false end
 	local m = self:Data()
 	if not m then return false end
 	name = NS.Lower(name)
 	if not m.flags[name] then
 		m.flags[name] = { t = Now(), source = self.SOURCES[source] and source or "addon" }
+		self:CapFlags()
 		if NS.JournalFrame then NS.JournalFrame:Refresh() end
 		-- un flag nuovo è un fatto per chi lo aspetta (gli archi di S9): sul bus passano solo il nome e chi l'ha messo, mai altro
 		if NS.EventBus and NS.EventBus.Publish then
@@ -814,7 +860,11 @@ local handlers = {}
 
 function handlers.WORLD_ENTER(env)
 	local c = env.context
-	LM:EnterZone(c.zone, { mapID = c.mapID })
+	local snap, newVisit = LM:EnterZone(c.zone, { mapID = c.mapID })
+	-- una schermata di caricamento (portale, nave, zeppelin, pietra del ritorno, uscita da un'istanza) manda
+	-- PLAYER_ENTERING_WORLD, non sempre seguito da ZONE_ENTER: in quel caso il ritorno in una zona nota si offre da
+	-- qui (#47). All'accesso e dopo una ricarica no: non è un ritorno, è il primo momento della sessione.
+	if newVisit and snap and snap.repeatVisit and not (c.isLogin or c.isReload) then LM:OfferReturn(snap.key) end
 end
 
 function handlers.ZONE_ENTER(env)

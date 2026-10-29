@@ -264,3 +264,93 @@ T.run("preset e Set del Chat Gateway", function()
 	local ok, v = Config:Set("ui.narrator.fontSize", 99)
 	T.ok(ok and v == 28, "dimensione limitata")
 end)
+
+-- #49: l'anti-ripetizione e la posizione del pulsante rovinate non fermano l'addon a ogni avvio
+T.run("anti-ripetizione rovinata: le voci malformate si scartano e le scelte funzionano", function()
+	local Engine = NS.Engine
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+	local good = next(Engine.byId)
+	NS.cdb.memory = {
+		uses = { [good] = 2, a = "x", b = {}, c = 0 / 0, d = math.huge, [5] = 1 },
+		last = { [good] = 100, e = "y", f = -5 },
+		recent = { battle = "stringa", zone = { "x", 5, {}, "y" }, [7] = { "z" }, victory = 3 },
+		lastTone = { battle = "epic", zone = 5, [3] = "x" },
+		variant = { [good] = 2, g = "1", h = 1.5, i = 0, [4] = 1, gone_phrase = 3 },
+	}
+	NS.Diagnostics.errors = {}
+	local dropped = Engine:SanitizeMemory()
+	T.ok(dropped > 0, "voci scartate: " .. dropped)
+	local mem = NS.cdb.memory
+	T.eq(mem.uses[good], 2, "uso valido conservato"); T.eq(mem.uses.a, nil, "uso stringa scartato")
+	T.eq(mem.uses.b, nil, "uso tabella scartato"); T.eq(mem.uses.c, nil, "uso NaN scartato")
+	T.eq(mem.uses.d, nil, "uso infinito scartato"); T.eq(mem.uses[5], nil, "chiave non stringa scartata")
+	T.eq(mem.last[good], 100, "ultimo uso valido"); T.eq(mem.last.e, nil, "ultimo uso stringa scartato"); T.eq(mem.last.f, nil, "negativo scartato")
+	T.eq(mem.recent.battle, nil, "recent: una stringa al posto della lista è scartata")
+	T.eq(table.concat(mem.recent.zone, ","), "x,y", "recent: solo le stringhe")
+	T.eq(mem.recent[7], nil, "recent: chiave non stringa scartata"); T.eq(mem.recent.victory, nil, "recent numerico scartato")
+	T.eq(mem.lastTone.battle, "epic", "tono valido"); T.eq(mem.lastTone.zone, nil, "tono numerico scartato")
+	T.eq(mem.variant[good], 2, "variante valida"); T.eq(mem.variant.g, nil, "variante stringa scartata")
+	T.eq(mem.variant.h, nil, "variante frazionaria scartata"); T.eq(mem.variant.i, nil, "variante zero scartata")
+	-- il decadimento all'avvio e le scelte non falliscono, anche con una voce rovinata arrivata dopo
+	NS.cdb.memory.uses.a = "x"; NS.cdb.memory.recent.battle = "stringa"
+	local ok, err = pcall(function() Engine:DecayMemory() end)
+	T.ok(ok, "DecayMemory non fallisce: " .. tostring(err))
+	T.eq(NS.cdb.memory.variant.gone_phrase, nil, "varianti di frasi sparite rimosse")
+	local ok2, err2 = pcall(function() return Engine:Pick("battle", NS:BuildContext()) end)
+	T.ok(ok2, "Pick non fallisce: " .. tostring(err2))
+	-- l'ultimo uso di una frase sparita si toglie, quello di una cornice o di una voce di vocabolario no
+	local vocabId
+	for _, list in pairs(Engine.vocab) do vocabId = list[1] and list[1].id; if vocabId then break end end
+	NS.cdb.memory.last.ghost = 5; NS.cdb.memory.uses.ghost = 3
+	if vocabId then NS.cdb.memory.last[vocabId] = 7; NS.cdb.memory.uses[vocabId] = 3 end
+	Engine:DecayMemory()
+	T.eq(NS.cdb.memory.last.ghost, nil, "ultimo uso di una frase sparita: via")
+	T.eq(NS.cdb.memory.uses.ghost, nil, "usi di una frase sparita: via")
+	if vocabId then T.ok(NS.cdb.memory.last[vocabId] == 7 and NS.cdb.memory.uses[vocabId], "la storia del vocabolario resta") end
+	-- il pulsante con una posizione rovinata si crea comunque
+	for _, bad in ipairs({ 5, "x", true, { 1 }, { "CENTER", "CENTER", "a", "b" } }) do
+		NS.db.ui.buttonPos = bad
+		local okb, errb = pcall(function() NS.modules.speakButton:OnInit() end)
+		T.ok(okb, "buttonPos " .. tostring(type(bad)) .. ": " .. tostring(errb))
+	end
+	NS.db.ui.buttonPos = nil
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+end)
+
+-- #51: valori numerici non validi
+T.run("valori numerici: comandi con gli stessi limiti delle impostazioni, schemaVersion intero", function()
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+	local function Cmd(text) SlashCmdList.AZEROTHUNSPOKEN(text) end
+	Cmd("cooldown 99999"); T.eq(NS.db.pacing.globalCooldownSeconds, 3600, "cooldown limitato a 3600")
+	Cmd("cooldown inf"); T.eq(NS.db.pacing.globalCooldownSeconds, 3600, "cooldown inf: 3600")
+	Cmd("cooldown 1e999"); T.eq(NS.db.pacing.globalCooldownSeconds, 3600, "cooldown 1e999: 3600")
+	Cmd("cooldown nan"); T.eq(NS.db.pacing.globalCooldownSeconds, 3600, "cooldown nan: non cambia")
+	Cmd("cooldown -4"); T.eq(NS.db.pacing.globalCooldownSeconds, 0, "negativo: 0")
+	Cmd("cooldown 30"); T.eq(NS.db.pacing.globalCooldownSeconds, 30, "valore valido")
+	Cmd("cooldown abc"); T.eq(NS.db.pacing.globalCooldownSeconds, 30, "testo: non cambia")
+	NS.db.chance.battle = 40
+	Cmd("prob battle nan"); T.eq(NS.db.chance.battle, 40, "prob nan: non cambia")
+	Cmd("prob battle inf"); T.eq(NS.db.chance.battle, 40, "prob inf: non cambia")
+	Cmd("prob battle -inf"); T.eq(NS.db.chance.battle, 40, "prob -inf: non cambia")
+	Cmd("prob battle 250"); T.eq(NS.db.chance.battle, 100, "prob 250: 100")
+	Cmd("prob battle 25"); T.eq(NS.db.chance.battle, 25, "prob valida")
+	-- schemaVersion non intero, NaN, negativo: le migrazioni girano e lo schema corrente viene scritto
+	for _, bad in ipairs({ 2.5, 0 / 0, -3, "x", 4.999 }) do
+		AzerothUnspokenDB = { schemaVersion = bad, settings = {} }
+		AzerothUnspokenCharacterDB = { schemaVersion = bad, memory = {} }
+		Config:Load()
+		T.eq(AzerothUnspokenDB.schemaVersion, Config.SCHEMA_VERSION, "globale con " .. tostring(bad))
+		T.eq(AzerothUnspokenCharacterDB.schemaVersion, Config.SCHEMA_VERSION, "personaggio con " .. tostring(bad))
+	end
+	-- una versione più nuova, anche frazionaria o infinita, resta in sola lettura
+	AzerothUnspokenDB = { schemaVersion = Config.SCHEMA_VERSION + 1.5, settings = { intensity = 7 } }
+	AzerothUnspokenCharacterDB = { schemaVersion = math.huge, memory = {} }
+	Config:Load()
+	T.eq(Config.readOnly.global, true, "una versione più nuova resta in sola lettura")
+	T.eq(Config.readOnly.character, true, "infinito: più nuovo")
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+end)

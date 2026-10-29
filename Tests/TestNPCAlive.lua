@@ -362,6 +362,8 @@ T.run("interruzioni: combattimento, morte, cambio di zona, altro NPC", function(
 		{ "combattimento", function() P.combat = true; FIRE("PLAYER_REGEN_DISABLED") end, "combat" },
 		{ "morte", function() FIRE("PLAYER_DEAD") end, "death" },
 		{ "zona", function() P.zone = "Westfall"; FIRE("ZONE_CHANGED_NEW_AREA") end, "zone" },
+		-- una schermata di caricamento (#56): il dialogo non sopravvive al passaggio nel mondo
+		{ "ingresso nel mondo", function() FIRE("PLAYER_ENTERING_WORLD", false, false) end, "zone" },
 	}) do
 		Fresh()
 		N:Start(N:TestWho())
@@ -912,6 +914,53 @@ T.run("registrazione automatica degli NPC spenta: nessuna relazione dal dialogo"
 	T.eq(R:Get("npc", 295), nil, "e nemmeno dal dialogo")
 	T.ok(LM:HasFlag("npcd_innkeeper_asked_news"), "il flag locale c'è comunque")
 	NS.db.relations.npcAuto = true
+end)
+
+T.run("#46: con memoria o relazioni spente, o in sola lettura, il dialogo non scrive flag né relazioni", function()
+	-- memoria spenta: nessun flag nuovo, la relazione si muove
+	Fresh()
+	RegistryNPC(295)
+	NS.db.modules.memory = false
+	frame.openBtn:Click()
+	N:Choose(1)
+	N:Close()
+	T.eq(#LM:FlagNames(), 0, "memoria spenta: nessun flag")
+	T.ok(R:Get("npc", 295).talks == 1, "le relazioni accese contano il dialogo")
+	T.ok(not LM:SetFlag("x_prova", "addon") and not LM:SetFlag("x_prova", "auto"), "SetFlag rifiuta le fonti automatiche")
+	T.ok(LM:SetFlag("x_prova", "user") and LM:HasFlag("x_prova"), "il comando dell'utente resta possibile")
+	-- relazioni spente: la relazione già in lista non cambia; la memoria accesa scrive il flag
+	Fresh()
+	RegistryNPC(295)
+	local t0 = R:Get("npc", 295).talks or 0
+	local fam0 = R:Get("npc", 295).familiarity
+	NS.db.modules.relations = false
+	frame.openBtn:Click()
+	N:Choose(1)
+	N:Close()
+	T.eq(R:Get("npc", 295).talks or 0, t0, "relazioni spente: talks non cambia")
+	T.eq(R:Get("npc", 295).familiarity, fam0, "e nemmeno la familiarità")
+	T.ok(LM:HasFlag("npcd_innkeeper_asked_news"), "la memoria accesa scrive il flag")
+	-- relazioni in sola lettura (dati di una versione più nuova): nessuna modifica ai record
+	Fresh()
+	RegistryNPC(295)
+	t0, fam0 = R:Get("npc", 295).talks or 0, R:Get("npc", 295).familiarity
+	R.readOnly = true
+	frame.openBtn:Click()
+	N:Choose(1)
+	N:Close()
+	T.eq(R:Get("npc", 295).talks or 0, t0, "sola lettura: talks non cambia")
+	T.eq(R:Get("npc", 295).familiarity, fam0, "e nemmeno la familiarità")
+	T.ok(LM:HasFlag("npcd_innkeeper_asked_news"), "il flag locale si scrive (la memoria non è in sola lettura)")
+	R.readOnly = false
+	-- memoria in sola lettura: nessun flag
+	Fresh()
+	RegistryNPC(295)
+	LM.readOnly = true
+	frame.openBtn:Click()
+	N:Choose(1)
+	N:Close()
+	LM.readOnly = false
+	T.eq(#LM:FlagNames(), 0, "memoria in sola lettura: nessun flag")
 end)
 
 T.run("un ricordo del dialogo solo se si è risposto, senza testo, senza nome", function()
