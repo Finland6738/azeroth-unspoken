@@ -1,6 +1,6 @@
 # Architettura di Azeroth Unspoken
 
-Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0, step S1–S9), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
+Questo documento descrive come è fatto l'addon **oggi, su `main`** (versione 0.1.0; milestone M0–M3, step S1–S9), e dove si aggancia ciò che la [roadmap](../ROADMAP.md) prevede. Le parti non ancora presenti sono indicate come *previste*. Per le motivazioni delle scelte vedi le [ADR](adr/README.md); per la specifica di prodotto, il [GDD](Immersion_Director_GDD_v1.0.md) (§11 è l'architettura Lua).
 
 ## Indice
 
@@ -129,12 +129,73 @@ I file si caricano nell'ordine del `.toc` (`AzerothUnspoken/AzerothUnspoken.toc`
 | **`Data/<lingua>/Interface.lua`** | testi dell'interfaccia (`itIT`, `enUS`). |
 | **`Data/Relationships.lua`** | assi, etichette, disposizione, registro e incrementi degli NPC delle relazioni, in IT ed EN (dati, non codice). |
 | **`Data/Places.lua`**, **`Data/NPCs.lua`** | tag e temi di zone, sottozone, capitali, dungeon, incursioni e campi di battaglia (nome del client inglese, uiMapID non ancora verificati); registro curato degli NPC per `npcID` e tendenze deboli di classe (S6c). |
-| **`Data/*.lua`** | pacchetti di frasi di base (schema v2): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
-| **`Bindings.xml`** | tasti `AZEROTHUNSPOKEN_SPEAK` e `AZEROTHUNSPOKEN_PAUSE`. |
+| **`Data/Dialogues.lua`**, **`Data/Arcs.lua`** | la struttura dei dialoghi ambientali (copioni per archetipo: nodi e risposte) e degli archi narrativi (stati, passi, scelte); le battute sono regole del motore (`Data/RegistryDialogues.lua`, `Data/RegistryArcs.lua`) e i testi stanno in `Data/<lingua>/`. |
+| **`Data/*.lua`** | pacchetti di frasi di base (schema v2, 14 pacchetti, 1.005 intenzioni e 2.109 varianti per lingua): `Vocabulary`, `Frames`, le regole `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` e i testi per lingua in `Data/itIT/` e `Data/enUS/`. |
+| **`Bindings.xml`** | quattro tasti: `AZEROTHUNSPOKEN_SPEAK` (conferma), `AZEROTHUNSPOKEN_REROLL` (un'altra frase), `AZEROTHUNSPOKEN_PAUSE` (pausa immediata), `AZEROTHUNSPOKEN_NPC` (dialogo ambientale). |
 | **`AzerothUnspoken_Example/`** | pacchetto di esempio, addon separato con `## Dependencies: AzerothUnspoken`. |
 | **`Tests/`** | test fuori dal gioco (lupa) e client simulato ([ADR 0007](adr/0007-test-fuori-gioco-con-lupa-e-mock.md)). |
 
 Direzione delle dipendenze: `Core` non conosce `Engine`, `Systems` né `UI`; `Engine` usa `Core` ma non conosce il Gateway né l'interfaccia; `Integration` e `Systems` usano `Core` ed `Engine`; `UI` usa tutto. Un modulo si trova con `NS.NomeModulo` (ad esempio `NS.Gateway`, `NS.Director`, `NS.Narrator`).
+
+### Come i sistemi si agganciano al motore
+
+I sistemi di M1–M3 (personalità, memoria, relazioni, interlocutore, luogo, NPC Alive, archi) **non modificano** il motore né il Director: si agganciano a punti previsti. Il motore resta una catena unica; ogni sistema le dà dati (`ctx.*`) e le dice come pesare, quando tacere e quando una frase ha diritto di parlare.
+
+```mermaid
+flowchart TB
+    BUS["EventBus<br/>NPC_INTERACT, QUEST_STATE, GROUP_CHANGED, TRADE_OPENED, WHISPER_SENT,<br/>ENCOUNTER_START/END, BATTLEFIELD_STATUS, OTHER_DUEL/INVITE/EMOTE,<br/>MEMORY_FLAG, ARC_STATE"]
+
+    subgraph SYS["Systems/ (ognuno è un modulo con il suo interruttore)"]
+        SOUL["Personality<br/>carattere del personaggio"]
+        MEM["LivingMemory<br/>ricordi, luoghi, flag"]
+        REL["Relationships<br/>assi, etichette, persone"]
+        PLC["Place<br/>dove siamo"]
+        INT["Interlocutor<br/>chi incontriamo"]
+        NPC["NPCAlive<br/>dialoghi simulati"]
+        ARC["StoryArcs<br/>micro-storie"]
+    end
+
+    subgraph HOOK["Punti di aggancio"]
+        CTX["BuildContext<br/>ctx.soul · ctx.memory · ctx.relation<br/>ctx.place · ctx.other · ctx.arcs"]
+        WH["Engine:SetWeightHook<br/>fattori P, R, C"]
+        SM["StyleResolver:SetModifier<br/>registri preferiti"]
+        EG["Engine:SetEventGuard<br/>l'evento parla solo se la guardia dice sì"]
+        RH["NarrativeDirector<br/>SetRhythm · SetDemandCheck · SetEventPriority"]
+        JT["JournalFrame:RegisterTab<br/>schede del diario"]
+    end
+
+    BUS --> MEM & REL & INT & NPC & ARC & PLC
+    SOUL --> CTX & WH & SM
+    MEM --> CTX & EG & JT
+    REL --> CTX & WH & SM & EG & JT
+    PLC --> CTX & WH & RH & EG
+    INT --> CTX & WH & SM & EG
+    NPC --> EG & RH
+    ARC --> CTX & EG & JT
+    ARC -. "ricordo story permanente" .-> MEM
+    NPC -. "flag npcd_…, relazione ambient" .-> MEM
+    NPC -. "talks, ricordo npc_talk" .-> REL
+    ARC -. "reagisce ai flag dei dialoghi" .-> NPC
+```
+
+| Aggancio | Chi lo usa | A che cosa serve |
+|---|---|---|
+| `ctx.soul` | Personality | il profilo effettivo: scelta > Total RP 3 > dati di gioco > neutro |
+| `ctx.memory` | LivingMemory | prima visita, ritorno, visita finita male, flag: **solo da ricordi veri** |
+| `ctx.relation` (e `rel`, `disposition`, `isKnown`) | Relationships | il rapporto con la persona dell'interazione |
+| `ctx.other`, `ctx.otherTraits` | Interlocutor | chi abbiamo davanti, con la fonte di ogni dato |
+| `ctx.place` | Place | zona, mappa, territorio, istanza, scontro, ruolo nel gruppo |
+| `ctx.arcs` | StoryArcs | gli archi in corso e conclusi, e la battuta che sta per uscire |
+| fattore `P` | Personality (`soul`) | affinità morbida e filtri rigidi dei tag `tratto:valore`, `req:`, `not:`, `topic:` |
+| fattore `R` | Relationships (`relations`) | tag con ambito `rel.` |
+| fattore `C` | Place (`place`), Interlocutor (`other`) | tag con ambito `place.` e `other.`, frasi brevi in campo di battaglia |
+| modificatore di registro | Personality, Relationships, Interlocutor | il temperamento, la familiarità, il modo di parlare spostano i registri preferiti |
+| guardia dell'evento | memoria (`memory_return`…), relazioni (`relation_npc`), interlocutore (`npc_meet`, `other_action`), luogo (`encounter_end`), NPC Alive (`npcd_*`), archi (`arc_*`) | un evento che cita un fatto non parla se il fatto non c'è |
+| `SetRhythm` / `SetDemandCheck` | Place, NPC Alive | più sobrio in incursione e contro i boss, silenzio durante un dialogo |
+| `SetEventPriority` | memoria, relazioni, archi | richiamo di memoria o evento eccezionale nel §10 del GDD |
+| `RegisterTab` | LivingMemory, Relationships, StoryArcs | le schede del diario (ricordi, luoghi, flag, sessione, relazioni, persone, storie) |
+
+Per questo i sistemi si possono spegnere uno per uno dal pannello (`modules.*`): senza `memory` nessun richiamo, senza `relations` nessun fattore `R`, e così via, mentre il narratore di base continua a funzionare.
 
 ## 3. Flusso di un evento
 
@@ -247,7 +308,7 @@ flowchart TD
 - **Stile**: i registri pesano e non escludono, quindi il ripiego neutro è automatico. In forma emote, una cornice con registri accoglie solo frasi di registro uguale o vicino (`StyleResolver:Compatible`).
 - **Condizioni** (`when`): vedi [FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md). Più condizioni → frase più specifica → peso maggiore.
 - **Memoria**: `NS.cdb.memory` (`uses`, `last`, `recent`, `lastTone`), per personaggio. Gli usi si attenuano a ogni accesso (`DecayMemory`, ×0,75). La finestra delle frasi recenti è circa il 60% di quelle disponibili, al massimo `pacing.recentPhraseWindow` (30).
-- **Voce (`speaker`)**: `narrator`, `inner`, `character`, `npc`. Oggi, se un pacchetto non la indica, `say` → `character` ed `emote` → `narrator`. Una frase parlata inserita in una cornice è `narrator`.
+- **Voce (`speaker`)**: `narrator`, `inner`, `character`, `npc`; ogni regola la dichiara (se manca si deduce da `form`: `say` → `character`, `emote` → `narrator`, con un avviso del validatore). Una frase parlata inserita in una cornice è `narrator`. Le voci `inner` e `npc` non diventano mai proposte per la chat.
 - Il silenzio è un esito valido: se nessuna frase è idonea, il motore restituisce `nil`.
 
 ### Il Character Soul
@@ -389,7 +450,7 @@ flowchart LR
 - **Azioni**: solo da eventi affidabili (dialogo, quest, mercante, scambio, gruppo, duello, invito, emote standard rivolte a noi, bersaglio), mai dal log di combattimento; restano in memoria per la sessione.
 - **Segreti**: con l'identità segreta `ctx.other = { secret = true }`; un valore segreto del luogo vale «non lo so».
 - **Eventi**: `npc_meet`, `other_action`, `encounter_end`, ognuno con una guardia nel motore.
-- **Comandi**: `/au luogo` (alias `dove`, `place`) e `/au chi` (alias `who`, `interlocutore`; `trp3 on|off`).
+- **Comandi**: `/au luogo` (alias `dove`, `place`, `where`) e `/au chi` (alias `who`, `interlocutore`, `other`; `trp3 on|off` per il consenso a leggere il profilo pubblico Total RP 3 degli altri, e `tratto <tratto> <valore>` per correggere a mano un tratto dell'interlocutore).
 
 ## 5. Il Chat Gateway
 
@@ -440,33 +501,56 @@ flowchart LR
 
 | Variabile | Contenuto |
 |---|---|
-| `AzerothUnspokenDB` | `schemaVersion` (oggi 6) e `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`), `arcs` (`maxActive`), `ui` (pulsante, wizard fatto, riquadro del narratore: durata, opacità, dimensione, posizione). |
+| `AzerothUnspokenDB` | `schemaVersion` (oggi 6) e `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`), `interlocutor` (`trp3Others`: consenso a leggere il profilo pubblico Total RP 3 degli altri), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (pulsante, wizard fatto, `narrator`: durata, opacità, dimensione, blocco, cronologia; `dialogue`: dimensione, opacità, blocco, posizione). |
 | `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (usi, ultime frasi, tono), `personality` (`version`, `archetype`, `traits`, `trp3`: scelte esplicite del Character Soul e consenso a Total RP 3) `relationships` (relazioni: `version`, `npcs` per `npcID`, `players` per «Nome-Reame»; vedi sopra), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, vedi sopra) `arcs` (Story Arcs: `version`, `items` per arco con stato, modo, scelte e momento, `stats`; vedi sopra) e, per gli step futuri, `history` (oggi vuoto). |
+
+Ogni dato per personaggio ha anche una **versione propria** (`personality.version`, `memories.version`, `relationships.version`, `arcs.version`), con migrazioni e pulizia (`Sanitize`) nel proprio modulo. Una versione più nuova di quella conosciuta (si è tornati a un addon più vecchio) si legge ma **non si riscrive**.
+
+| Dato | Versione dello schema | Dove vive la migrazione |
+|---|---|---|
+| `AzerothUnspokenDB` / `AzerothUnspokenCharacterDB` | `Config.SCHEMA_VERSION` = 6 | `Config.migrations.global[n]` e `.character[n]` |
+| `cdb.personality` | 1 | `Personality:Sanitize` |
+| `cdb.memories` | 2 (chiave dei luoghi per uiMapID, #31) | `LM.migrations[n]` |
+| `cdb.relationships` | 1 | `R:Sanitize` |
+| `cdb.arcs` | 1 | `SA.migrations`, `SA:Sanitize` |
+
+```mermaid
+flowchart LR
+    S1["1: prototipo"] --> S2["2: Chat Gateway<br/>(output.mode → chat.mode)"]
+    S2 --> S3["3: personality"]
+    S3 --> S4["4: memories"]
+    S4 --> S5["5: relationships"]
+    S5 --> S6["6: arcs"]
+```
 
 - I predefiniti sono in `Config.defaults` e `Config.characterDefaults`; le regole di validità in `Config.rules`.
 - Le migrazioni sono `Config.migrations.global[n]` e `.character[n]` ([ADR 0006](adr/0006-savedvariables-e-versioni-dello-schema.md)).
-- **Non si salva mai il contenuto della chat.** I campi `privacy.*` (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) esistono già, spenti, per il futuro modulo Social.
+- **Non si salva mai il contenuto della chat**, né le battute dei dialoghi, né i testi degli archi (solo gli id delle scelte); delle relazioni con i giocatori si salvano solo quelli scelti dall'utente. I campi `privacy.*` (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) esistono già, spenti, per il futuro modulo Social.
 - Il resto dello stato (pausa immediata `NS.paused`, proposta in attesa, cronologia, registro degli errori, memoria dell'ultimo invio) vive solo in memoria.
 
 ## 7. Punti di estensione
 
 ### Per chi scrive pacchetti di frasi (stabile)
 
-Un pacchetto è un addon separato con `## Dependencies: AzerothUnspoken`. L'API è descritta in [FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md) (il formato cambierà con lo schema v2, step S3):
+Un pacchetto è un addon separato con `## Dependencies: AzerothUnspoken`. L'API è descritta in [FORMATO_PACCHETTI.md](../AzerothUnspoken/FORMATO_PACCHETTI.md), i cui esempi sono provati dai test come pacchetti esterni. **Un pacchetto esterno chiama le funzioni dall'oggetto globale `AzerothUnspoken:`**; il `NS` della prima riga `local ADDON, NS = ...` è il namespace del pacchetto e non ha queste funzioni.
 
 | Chiamata | A che cosa serve |
 |---|---|
-| `AzerothUnspoken:RegisterPack({ id, name, phrases, frames, vocab, translations })` | aggiunge frasi, cornici narrative, vocabolario e traduzioni |
+| `AzerothUnspoken:RegisterPack({ id, name, languages, registry, texts, events, styles, categories, conditions, frames, vocab })` | schema v2: regole (`registry`), testi per lingua con varianti (`texts`), eventi, registri, categorie e condizioni nuove, cornici e vocabolario |
+| `AzerothUnspoken:AddTexts(lingua, { [id] = testi }, idPacchetto)` | testi (anche traduzioni e varianti in più) per id di questo o di altri pacchetti (`AddTranslations` è l'alias vecchio) |
+| `AzerothUnspoken:RegisterEvent(nome, { category, chance, cooldown })` · `RegisterStyle` · `RegisterCategory` · `RegisterCondition` | eventi, registri, categorie e condizioni nuove |
 | `AzerothUnspoken:RegisterLanguage(codice, { name, ui })` | aggiunge una lingua (testi dell'interfaccia) |
-| `AzerothUnspoken:AddTranslations(lingua, { [id] = testo })` | traduce frasi di altri pacchetti |
 | `AzerothUnspoken:RegisterSpellKeywords({ kind = …, element = …, classElement = … })` | classifica gli incantesimi e ne crea di nuovi tipi (ognuno lancia l'evento omonimo) |
 | `AzerothUnspoken:SetEventDefaults(evento, probabilità, pausa)` | probabilità e pausa predefinite di un evento nuovo |
 | `AzerothUnspoken:RegisterZoneMoods({ ["Nome zona"] = "atmosfera" })` | atmosfera delle zone, per la condizione `mood` e per lo stile |
-| `AzerothUnspoken:RegisterEventStyles(evento, { registri })` | registri ammessi per un evento (StyleResolver) |
-| `AzerothUnspoken:RegisterMoodStyles({ atmosfera = { registri } })` | registri preferiti da un'atmosfera |
+| `AzerothUnspoken:RegisterEventStyles(evento, { registri })` · `RegisterMoodStyles({ atmosfera = { registri } })` | registri ammessi per un evento e preferiti da un'atmosfera (StyleResolver) |
 | `AzerothUnspoken:SetEventPriority(evento, "memory")` | priorità di un evento nel Narrative Director (`dialogue`, `exceptional`, `memory`, `ambient`) |
 | `AzerothUnspoken.LivingMemory:RegisterRecall(evento, verifica)` | un evento di richiamo di memoria: priorità `memory`, modulo `memory` e guardia (senza un ricordo vero non parla) |
 | `AzerothUnspoken.LivingMemory:RegisterKind(tipo, importanza)` · `:Record{ kind, zone, tags, … }` · `:SetFlag(nome)` | altri sistemi (archi, relazioni) registrano ricordi e flag |
+| `AzerothUnspoken:RegisterRelationData({ axes, labels, disposition, … })` · `AzerothUnspoken.Relationships:RegisterRelationEvent(evento, verifica)` | etichette e assi di relazione nuovi (per id, sostituiscono); eventi che citano un rapporto, con guardia |
+| `AzerothUnspoken:RegisterPlaces({ zones, subzones, instances, continents })` · `RegisterNPCs({ [npcID] = … })` · `RegisterTendencies({ class = … })` | luoghi, NPC e tendenze deboli per interlocutore e luogo (una chiave già registrata viene **sostituita**, [#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)) |
+| `AzerothUnspoken:RegisterDialogues({ scripts = { [chiave] = copione } })` | dialoghi ambientali: archetipo, o `npc:<npcID>` con `extends`; chiave esistente = sostituzione ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)) |
+| `AzerothUnspoken:RegisterArcs({ pack, arcs, texts })` · `AddArcTexts(lingua, mappa, idPacchetto)` | archi narrativi: stati, passi, scelte e testi |
 
 Un pacchetto può anche usare `func = function(ctx) … end` nelle condizioni per regole scritte in Lua, con il contesto di `NS:BuildContext`.
 
@@ -497,12 +581,14 @@ Questi punti sono interni: possono cambiare tra una versione e l'altra finché l
 
 ## 8. Cosa è previsto e non c'è ancora
 
-Dalla [roadmap](../ROADMAP.md); nulla di questo esiste sul `main` attuale (S5, il Character Soul, S6, la Living Memory, S6b, le relazioni, S6c, interlocutore e luogo, S8, NPC Alive, e S9, gli archi, ci sono: [vedi sopra](#il-character-soul), [qui](#la-living-memory), [qui](#le-relazioni), [qui](#interlocutore-e-luogo) e [qui](#npc-alive)).
+Dalla [roadmap](../ROADMAP.md). Sul `main` attuale ci sono le milestone M0–M3: fondamenta, narratore e Chat Gateway (S1–S2), schema dati, Narrative Director, Character Soul, Living Memory, relazioni, interlocutore e luogo, contenuti Alpha (S3–S7, [vedi sopra](#il-character-soul)), NPC Alive (S8) e Story Arcs (S9). Manca:
 
 | Step | Cosa aggiunge | Dove si aggancia |
 |---|---|---|
-| S7 | contenuti Alpha (300 intenzioni) | pacchetti di frasi; usano anche le condizioni `other` e `place` |
-| S10 | gioco sociale con messaggi addon, consenso e sicurezza | nuovo modulo, `privacy.*` |
+| S10 (M4) | gioco sociale con messaggi addon, consenso e sicurezza; prova G4 con due client | nuovo modulo, `privacy.*`, `ARC_STATE`; **nulla di un arco, di un ricordo o di un NPC entra in un messaggio senza un consenso a parte** |
+| S11 (M5) | contenuti fino a 1.000 intenzioni | pacchetti di frasi |
+| S12 (M5) | accessibilità, profiling, manuale, privacy, troubleshooting, Definition of Done | trasversale |
+| G1, G2, G3 | le prove in gioco dell'utente (SP-01…SP-05, vertical slice A, B e C, archi) | [checklist](G1_checklist.md), 92 passi |
 
 ## 9. Limiti noti
 
