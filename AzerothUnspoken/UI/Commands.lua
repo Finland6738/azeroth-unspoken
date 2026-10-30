@@ -197,6 +197,8 @@ Commands.list = {
 	{ name = "off", fn = function(_, db) db.enabled = false; NS:Print(NS:L("disabled")) end },
 	{ name = "pause", fn = function() NS.Director:TogglePause() end, usage = "pause", desc = "help_pause" },
 	{ name = "debug", noDb = true, fn = function(rest) Debug(rest) end, usage = "debug [full|trace]", desc = "help_debug" },
+	{ name = "prof", noDb = true, fn = function(rest) NS.Profiler:Command(rest) end, usage = "prof [reset|copy]", desc = "help_prof" },
+	{ name = "probe", noDb = true, fn = function(rest) NS.Probe:Command(rest) end, usage = "probe [reset|stop|copy]", desc = "help_probe" },
 	{ name = "language", short = { "lang" }, fn = Language, usage = "language [it|en]", desc = "help_language" },
 	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity" },
 	{ name = "depth", fn = Depth, usage = "depth natural|literary|elevated", desc = "help_depth" },

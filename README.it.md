@@ -128,6 +128,8 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au options` | apre il pannello delle impostazioni |
 | `/au wizard` | riapre la procedura guidata |
 | `/au debug [full\|trace]` | diagnostica: capacità del client, ultimi eventi, errori intercettati; `trace` stampa ogni evento riconosciuto, per la sessione |
+| `/au prof [reset\|copy]` | profilo della sessione: tempi della scelta delle frasi, memoria, quante volte il narratore ha parlato o taciuto e perché; `copy` apre una finestra per copiarlo |
+| `/au probe [reset\|stop\|copy]` | prova le API del client che servono alle prossime funzioni e stampa AVAILABLE / MISSING / RESTRICTED con un esempio; conta i loro eventi per la sessione |
 
 **Tasti.** In *Opzioni → Comandi → AddOn → Azeroth Unspoken* si possono assegnare quattro tasti: *Conferma e pronuncia la frase proposta (o improvvisa)* (`AZEROTHUNSPOKEN_SPEAK`), *Un'altra frase* (`AZEROTHUNSPOKEN_REROLL`), *Pausa immediata del narratore* (`AZEROTHUNSPOKEN_PAUSE`) e *Dialogo ambientale con l'NPC* (`AZEROTHUNSPOKEN_NPC`: apre o chiude il dialogo). Nessuno ha un tasto predefinito.
 

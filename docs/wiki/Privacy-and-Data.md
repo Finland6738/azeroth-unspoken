@@ -96,4 +96,4 @@ Uninstalling the addon does not delete these files by itself: delete them as abo
 
 ## Sharing diagnostics safely
 
-`/au debug` prints a report you can paste into a bug report. It does not print other players' names. Still, read it before sharing, and replace any name, account or folder path with a placeholder such as `<player>`. See [[Troubleshooting]] and [[Reporting Bugs and Feedback|Reporting-Bugs-and-Feedback]].
+`/au prof` and `/au probe` print reports meant to be pasted into an issue: they show numbers and states only, and keep nothing after you log out. `/au debug` prints a report you can paste into a bug report. It does not print other players' names. Still, read it before sharing, and replace any name, account or folder path with a placeholder such as `<player>`. See [[Troubleshooting]] and [[Reporting Bugs and Feedback|Reporting-Bugs-and-Feedback]].
