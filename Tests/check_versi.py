@@ -120,6 +120,7 @@ PIECES_LUA = """function()
             for t in pairs(p.tags) do table.insert(r.tags, t) end
             for lang, list in pairs(p.text) do
                 for _, v in ipairs(list) do
+                    v = E.VariantView(v, p.pack)
                     table.insert(r.texts, { lang = lang, t = v.t })
                     if v.depth and v.depth.natural then r.natural = r.natural + 1 end
                 end

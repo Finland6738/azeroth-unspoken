@@ -1071,7 +1071,7 @@ T.run("migrazione dello schema 6 e della forma interna", function()
 		return NS.cdb
 	end
 	local c = Load({})
-	T.eq(c.schemaVersion, 6, "versione del personaggio")
+	T.eq(c.schemaVersion, 7, "versione del personaggio")
 	T.ok(type(c.arcs) == "table" and c.arcs.version == 1 and type(c.arcs.items) == "table", "il segnaposto vuoto diventa lo stato degli archi")
 	c = Load("rotto")
 	T.ok(type(c.arcs) == "table" and c.arcs.version == 1 and next(c.arcs.items) == nil, "un valore rotto riparte da zero")
@@ -1081,9 +1081,9 @@ T.run("migrazione dello schema 6 e della forma interna", function()
 	T.eq(c.arcs.version, 1, "senza versione: 1")
 	T.eq(c.arcs.items.path.state, "DISCOVERED", "i dati validi restano")
 	c = Load({ version = 1, items = { path = { state = "DISCOVERED" } } }, 6)
-	T.eq(c.schemaVersion, 6, "schema già 6: invariato")
+	T.eq(c.schemaVersion, 7, "schema 6: portato a 7 (#86)")
 	c = Load(nil, 1)
-	T.eq(c.schemaVersion, 6, "da schema 1")
+	T.eq(c.schemaVersion, 7, "da schema 1")
 	T.ok(c.arcs.version == 1, "stato degli archi presente")
 	-- le impostazioni nuove
 	T.eq(NS.db.arcs.maxActive, 2, "arcs.maxActive predefinito")
@@ -1399,6 +1399,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 	for _, p in pairs(Engine.byEvent.arc_open) do
 		for _, lang in ipairs({ "it", "en" }) do
 			for _, v in ipairs(p.text[lang] or {}) do
+				v = Engine.VariantView(v)
 				Check(v.t, p.id)
 				T.ok(#v.t <= 400, p.id .. ": entro il limite del narratore")
 			end
@@ -1407,7 +1408,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 	for _, ev in ipairs({ "arc_step", "arc_resolve" }) do
 		for _, p in pairs(Engine.byEvent[ev]) do
 			for _, lang in ipairs({ "it", "en" }) do
-				for _, v in ipairs(p.text[lang] or {}) do Check(v.t, p.id) end
+				for _, v in ipairs(p.text[lang] or {}) do Check(Engine.VariantText(v), p.id) end
 			end
 		end
 	end

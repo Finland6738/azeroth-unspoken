@@ -158,6 +158,9 @@ local function CompareSignatures(sigs, langs)
 	return out
 end
 
+-- una variante come tabella { t, ok, depth, pack, raw } (#84)
+local View = Engine.VariantView
+
 local function Signature(tags)
 	local list = {}
 	for t in pairs(tags) do table.insert(list, t) end
@@ -196,6 +199,7 @@ function Validator:Run(opts)
 			local max = 0
 			for _, v in ipairs(Engine.vocab[name] or {}) do
 				for _, var in ipairs(v.text[lang] or {}) do
+					var = View(var, v.pack)
 					if var.ok then max = math.max(max, Analyze(var.t, lang, { nested = true }).bytes) end
 				end
 			end
@@ -217,7 +221,7 @@ function Validator:Run(opts)
 			for _, id in ipairs(pack.ids or {}) do
 				for lang, list in pairs(Engine.byId[id].text) do
 					for _, var in ipairs(list) do
-						if var.pack == pack.id then set[lang] = true end
+						if Engine.VariantPack(var, Engine.byId[id].pack) == pack.id then set[lang] = true end
 					end
 				end
 			end
@@ -242,6 +246,7 @@ function Validator:Run(opts)
 		for _, key in ipairs({ "*", unpack(events) }) do
 			for _, f in ipairs(Engine.frames[key] or {}) do
 				for _, var in ipairs(f.text[lang] or {}) do
+					var = View(var, f.pack)
 					if var.ok then
 						max = math.max(max, Analyze(var.t, lang, { frame = true, lineBytes = 0,
 							vocabBytes = VocabBytes(lang) }).bytes)
@@ -264,8 +269,10 @@ function Validator:Run(opts)
 			st.speakers[p.speaker] = (st.speakers[p.speaker] or 0) + 1
 			st.categories[p.category] = (st.categories[p.category] or 0) + 1
 			if p.tone then st.styles[p.tone] = (st.styles[p.tone] or 0) + 1 end
-			if p.depthList then
-				for _, d in ipairs(p.depthList) do st.depths[d] = (st.depths[d] or 0) + 1 end
+			-- profondità come le ha scritte il pacchetto: l'elenco, se il registro l'ha tenuto (#84), o l'insieme
+			local depthList = p.depthList or (p.depth and Engine.SortedKeys(p.depth))
+			if depthList then
+				for _, d in ipairs(depthList) do st.depths[d] = (st.depths[d] or 0) + 1 end
 			else
 				st.depths.all = (st.depths.all or 0) + 1
 			end
@@ -288,7 +295,7 @@ function Validator:Run(opts)
 					Add("warning", "unknownStyle", p.pack, id, nil, ("registro '%s' sconosciuto"):format(s))
 				end
 			end
-			for _, d in ipairs(p.depthList or {}) do
+			for _, d in ipairs(depthList or {}) do
 				if not Engine.DEPTHS[d] then
 					Add("error", "badDepth", p.pack, id, nil, ("profondità '%s' sconosciuta"):format(tostring(d)))
 				end
@@ -344,6 +351,7 @@ function Validator:Run(opts)
 				local okCount = 0
 				sigs[lang] = {}
 				for i, var in ipairs(list) do
+					var = View(var, p.pack)
 					st.variants = st.variants + 1
 					st.byLang[lang] = (st.byLang[lang] or 0) + 1
 					if not var.ok then
@@ -411,7 +419,7 @@ function Validator:Run(opts)
 			for _, lang in ipairs(langs) do
 				local list = p.text[lang]
 				local usable = false
-				for _, var in ipairs(list or {}) do if var.ok then usable = true; break end end
+				for _, var in ipairs(list or {}) do if Engine.VariantOk(var) then usable = true; break end end
 				if not usable then
 					Add("error", "missingLang", p.pack, id, lang, ("manca il testo in '%s'"):format(lang))
 				end
@@ -433,7 +441,7 @@ function Validator:Run(opts)
 				for _, lang in ipairs(langs) do
 					local list = e.text[lang]
 					local usable = false
-					for _, var in ipairs(list or {}) do if var.ok then usable = true; break end end
+					for _, var in ipairs(list or {}) do if Engine.VariantOk(var) then usable = true; break end end
 					if not usable then
 						Add("error", "missingLang", packId, label, lang, ("manca il testo in '%s'"):format(lang))
 					end
@@ -454,6 +462,7 @@ function Validator:Run(opts)
 				for lang, list in pairs(e.text) do
 					sigs[lang] = {}
 					for i, var in ipairs(list) do
+						var = View(var, e.pack)
 						if not var.ok then
 							Add("error", "emptyVariant", packId, label, lang, ("variante %d vuota"):format(i))
 						else

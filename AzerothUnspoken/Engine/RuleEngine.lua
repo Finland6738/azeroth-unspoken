@@ -252,6 +252,14 @@ Engine.CONDITIONS = {
 	chance = "pct", func = "func", ["not"] = "group", any = "subs",
 }
 
+-- Condizioni del motore senza effetti collaterali (tutte tranne chance e func): l'indice di selezione (#83) può saltare
+-- una regola che le usa senza cambiare la sequenza casuale. Le condizioni dei pacchetti (NS:RegisterCondition) non ci
+-- sono: una regola che le usa resta nel gruppo generico.
+Engine.PURE_CONDITIONS = {}
+for k in pairs(Engine.CONDITIONS) do
+	if k ~= "chance" and k ~= "func" then Engine.PURE_CONDITIONS[k] = true end
+end
+
 -- insiemi chiusi di valori, controllati dal validatore
 Engine.CONDITION_VALUES = {
 	sex = { male = true, female = true },
@@ -347,6 +355,7 @@ function Engine.RegisterRelationAxis(axis)
 		return type(r) == "table" and type(r[axis]) == "number" and r[axis] <= v
 	end
 	Engine.CONDITIONS[axis .. "Min"], Engine.CONDITIONS[axis .. "Max"] = "num", "num"
+	Engine.PURE_CONDITIONS[axis .. "Min"], Engine.PURE_CONDITIONS[axis .. "Max"] = true, true
 	Engine.RELATION_CONDITIONS[axis .. "Min"], Engine.RELATION_CONDITIONS[axis .. "Max"] = true, true
 end
 
@@ -407,7 +416,14 @@ function NS:RegisterCondition(name, fn, kind)
 	if type(name) ~= "string" or name == "" then return end
 	if type(fn) ~= "function" then fn = nil end
 	if not (type(kind) == "string" and VALUE_KINDS[kind]) then kind = nil end
-	if fn and not SPECIAL[name] then SPECIAL[name] = fn end
+	if fn and not SPECIAL[name] then
+		SPECIAL[name] = fn
+		-- un nome del motore che diventa calcolato da un pacchetto non è più sicuro da saltare: l'indice si rifà
+		if Engine.PURE_CONDITIONS[name] then
+			Engine.PURE_CONDITIONS[name] = nil
+			Engine:RebuildIndex()
+		end
+	end
 	if not Engine.CONDITIONS[name] then Engine.CONDITIONS[name] = kind or (fn and "any") or "str" end
 end
 

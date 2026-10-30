@@ -29,7 +29,7 @@ end
 
 local function Variants(p, lang)
 	local n = 0
-	for _, v in ipairs(p.text[lang] or {}) do if v.ok then n = n + 1 end end
+	for _, v in ipairs(p.text[lang] or {}) do if Engine.VariantOk(v) then n = n + 1 end end
 	return n
 end
 
@@ -37,6 +37,7 @@ end
 local function CoversDepth(p, depth, explicit)
 	if p.depth and not p.depth[depth] then return false end
 	for _, v in ipairs(p.text.it or {}) do
+		v = Engine.VariantView(v)
 		if v.ok then
 			if v.depth and v.depth[depth] then return true end
 			if not explicit and not v.depth then return true end
@@ -287,6 +288,7 @@ T.run("#34: relazioni per ogni etichetta, con il genere giusto", function()
 		end
 		-- {relation} in italiano è un nome maschile o neutro: si scrive tra virgolette, come un'etichetta
 		for _, v in ipairs(p.text.it or {}) do
+			v = Engine.VariantView(v)
 			if v.t:find("{relation}", 1, true) then
 				T.ok(v.t:find("«{relation}»", 1, true) ~= nil, id .. ": {relation} tra virgolette: " .. v.t)
 			end
@@ -310,6 +312,7 @@ T.run("§5.4: canali, lingue, ripetizioni, era di Forever", function()
 		end
 		for _, lang in ipairs({ "it", "en" }) do
 			for _, v in ipairs(p.text[lang] or {}) do
+				v = Engine.VariantView(v)
 				if short and p.speaker ~= "inner" then
 					T.ok(#v.t <= 80, id .. " " .. lang .. ": in campo di battaglia al massimo 80 byte: " .. v.t)
 				end
@@ -319,8 +322,9 @@ T.run("§5.4: canali, lingue, ripetizioni, era di Forever", function()
 			end
 		end
 		local en = {}
-		for _, v in ipairs(p.text.en or {}) do en[v.t] = true end
+		for _, v in ipairs(p.text.en or {}) do en[Engine.VariantText(v)] = true end
 		for _, v in ipairs(p.text.it or {}) do
+			v = Engine.VariantView(v)
 			total = total + 1
 			T.ok(not seenIt[v.t], id .. ": testo IT ripetuto altrove: " .. v.t)
 			seenIt[v.t] = true
@@ -346,6 +350,7 @@ T.run("#61: {og:} ha sempre una variante neutra; #66: l'inglese usa l'ortografia
 	for id, p in pairs(BASE) do
 		local og, neutral = false, false
 		for _, v in ipairs(p.text.it or {}) do
+			v = Engine.VariantView(v)
 			if v.t:find("{og:", 1, true) then og = true else neutral = true end
 		end
 		if og then
@@ -360,6 +365,7 @@ T.run("#61: {og:} ha sempre una variante neutra; #66: l'inglese usa l'ortografia
 		"defence", "offence", "jewellery", "plough", "mould", "whilst", "amongst", "learnt", "dreamt", "spelt" }
 	for id, p in pairs(BASE) do
 		for _, v in ipairs(p.text.en or {}) do
+			v = Engine.VariantView(v)
 			local low = v.t:lower()
 			for _, word in ipairs(BRITISH) do
 				T.ok(not low:find(word, 1, true), id .. ": ortografia britannica (" .. word .. "): " .. v.t)

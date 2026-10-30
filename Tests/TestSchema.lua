@@ -48,15 +48,16 @@ T.run("regola v2: campi, valori predefiniti e testi per lingua", function()
 	T.eq(p.weight, 3, "peso"); T.eq(p.cooldown, 90, "cooldown")
 	T.eq(p.when.class, "MAGE", "condizioni"); T.eq(p.spec, 2, "specificità = numero di condizioni")
 	T.eq(#p.text.it, 2, "due varianti in italiano"); T.eq(#p.text.en, 2, "due varianti in inglese")
-	T.eq(p.text.it[1].t, "uno", "testo della variante"); T.ok(p.text.it[1].ok, "variante valida")
+	T.eq(Engine.VariantText(p.text.it[1]), "uno", "testo della variante"); T.ok(Engine.VariantOk(p.text.it[1]), "variante valida")
+	T.eq(type(p.text.it[1]), "string", "una variante semplice resta una stringa (#84)")
 	T.ok(not p.legacy, "non è del formato vecchio")
 
 	local m = Engine.byId["t.v2.min"]
 	T.eq(m.form, "emote", "il narratore è un'emote per impostazione predefinita")
 	T.eq(m.category, "combat", "la categoria viene dall'evento")
 	T.eq(m.weight, 1, "peso predefinito"); T.eq(m.spec, 0, "nessuna condizione")
-	T.eq(m.text.it[1].t, "solo una stringa", "una stringa vale una variante")
-	T.eq(m.text.en[1].t, "just a string", "elenco di una variante")
+	T.eq(Engine.VariantText(m.text.it[1]), "solo una stringa", "una stringa vale una variante")
+	T.eq(Engine.VariantText(m.text.en[1]), "just a string", "elenco di una variante")
 	T.eq(Engine.byId["t.v2.say"].form, "say", "il personaggio parla")
 	T.eq(Engine.byId["t.v2.say"].category, "exploration", "categoria di zone")
 	-- le lingue lunghe e brevi sono la stessa cosa
@@ -80,11 +81,11 @@ T.run("formato vecchio convertito in caricamento", function()
 	T.eq(a.speaker, "character", "say -> personaggio"); T.eq(a.form, "say", "forma")
 	T.eq(a.styles[1], "epic", "il tono eroico diventa il registro epic"); T.eq(a.tone, "epic", "tono")
 	T.eq(a.weight, 2, "peso"); T.eq(a.cooldown, 30, "cooldown"); T.eq(a.when.race, "Orc", "when resta valido")
-	T.eq(a.text.it[1].t, "Per l'Orda!", "testo it"); T.eq(a.text.en[1].t, "For the Horde!", "testo en")
+	T.eq(Engine.VariantText(a.text.it[1]), "Per l'Orda!", "testo it"); T.eq(Engine.VariantText(a.text.en[1]), "For the Horde!", "testo en")
 	T.eq(a.category, "general", "evento non dichiarato: categoria generica")
 	local e = Engine.byId["t.old.02"]
 	T.eq(e.speaker, "narrator", "emote -> narratore"); T.eq(e.styles[1], "sconosciuto", "un tono ignoto resta com'è")
-	T.eq(Engine.byId["t.old.03"].speaker, "npc", "speaker esplicito"); T.eq(Engine.byId["t.old.03"].text.en[1].t, "Welcome, traveller.", "text = {}")
+	T.eq(Engine.byId["t.old.03"].speaker, "npc", "speaker esplicito"); T.eq(Engine.VariantText(Engine.byId["t.old.03"].text.en[1]), "Welcome, traveller.", "text = {}")
 	T.ok(Engine.byId["t_legacy#1"] ~= nil, "id automatico")
 	-- si seleziona come prima
 	NS.db.locale = "it"
@@ -256,7 +257,7 @@ T.run("lingue nuove, traduzioni e testi in più, anche prima della regola", func
 	local p = Engine.byId["battle.gen.12"]
 	local it0, en0 = #p.text.it, #p.text.en
 	NS:RegisterPack({ id = "t_de", texts = { deDE = { ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!" } } })
-	T.eq(#p.text.de, 1, "tedesco aggiunto"); T.eq(p.text.de[1].pack, "t_de", "con il pacchetto che l'ha portato")
+	T.eq(#p.text.de, 1, "tedesco aggiunto"); T.eq(Engine.VariantPack(p.text.de[1], p.pack), "t_de", "con il pacchetto che l'ha portato")
 	T.ok(#p.text.it == it0 and #p.text.en == en0, "le altre lingue non cambiano")
 	NS.db.locale = "de"
 	local r = Pick("battle", "say", { target = nil })
@@ -265,7 +266,7 @@ T.run("lingue nuove, traduzioni e testi in più, anche prima della regola", func
 	-- varianti in più per una frase esistente, senza duplicati
 	NS:AddTexts("itIT", { ["battle.gen.12"] = { "Nessun passo indietro. Nessuno!", "Non un passo indietro." } }, "t_more")
 	T.eq(#p.text.it, it0 + 1, "una variante nuova; quella identica non si duplica")
-	T.eq(p.text.it[it0 + 1].t, "Non un passo indietro.", "testo aggiunto")
+	T.eq(Engine.VariantText(p.text.it[it0 + 1]), "Non un passo indietro.", "testo aggiunto")
 	T.eq(p.text.it[it0 + 1].pack, "t_more", "con il suo pacchetto")
 	-- il vecchio nome dell'API funziona ancora
 	NS:AddTranslations("en", { ["battle.gen.12"] = "Not one step back." })

@@ -748,8 +748,8 @@ T.run("SavedVariables: migrazione dallo schema 2", function()
 	AzerothUnspokenCharacterDB = { schemaVersion = 2, memory = { uses = { x = 2 } }, personality = {}, memories = {}, arcs = {}, history = {} }
 	Config:Load()
 	local c = AzerothUnspokenCharacterDB
-	T.eq(c.schemaVersion, 6, "versione del personaggio")
-	T.eq(AzerothUnspokenDB.schemaVersion, 6, "versione globale")
+	T.eq(c.schemaVersion, 7, "versione del personaggio")
+	T.eq(AzerothUnspokenDB.schemaVersion, 7, "versione globale")
 	T.ok(c.personality.version == 1 and c.personality.archetype == "neutral" and c.personality.trp3 == false
 		and type(c.personality.traits) == "table" and next(c.personality.traits) == nil, "personality con i campi nuovi")
 	T.eq(c.memory.uses.x, 2, "il resto è intatto")
@@ -758,7 +758,7 @@ T.run("SavedVariables: migrazione dallo schema 2", function()
 	-- ancora più vecchio, senza il campo
 	AzerothUnspokenCharacterDB = { schemaVersion = 1, memory = {} }
 	Config:Load()
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 6, "da schema 1")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "da schema 1")
 	T.eq(AzerothUnspokenCharacterDB.personality.archetype, "neutral", "personality creata")
 	-- una personality rovinata
 	for _, bad in ipairs({ "testo", 7, true }) do

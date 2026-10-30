@@ -226,4 +226,4 @@ NS:AddTexts("enUS", {
 	["arc.gates.done.promise"] = {
 		"crosses the gateway to the open road, and the promise made between the walls keeps pace, light and stubborn.",
 	},
-})
+}, "base_arcs")
