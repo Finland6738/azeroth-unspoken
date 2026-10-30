@@ -779,6 +779,15 @@ T.run("the recognition line stays in the private narrator", function()
 		T.ok(type(s) ~= "string" or not (s:find("^SAY") or s:find("^EMOTE") or s:find("^PARTY") or s:find("^YELL") or s:find("^WHISPER")),
 			"nothing went to a chat channel: " .. tostring(s))
 	end
+	-- every relation_player line is an inner voice: private by construction, like the narrator
+	local n = 0
+	for id, p in pairs(Engine.byId) do
+		if p.events[1] == "relation_player" then
+			n = n + 1
+			T.eq(p.speaker, "inner", id .. " is an inner voice")
+		end
+	end
+	T.ok(n >= 19, "the relation_player lines were checked: " .. n)
 	local pending = NS.Gateway:GetPending()
 	T.ok(pending == nil or pending.auto ~= false, "no automatic public send (ADR 0003, 0018 unchanged)")
 	-- the sources the module listens to carry no text: only names

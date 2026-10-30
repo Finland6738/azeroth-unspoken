@@ -593,6 +593,38 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
     - **Cosa aspettarti:** la memoria cresce poco rispetto a R1.2 (oggi i pacchetti regionali sono piccoli).
     - **Cosa riportare:** il testo.
 
+## R4b: relazioni con altri giocatori (aggiunto dalle issue #106, #107, #108, #109 e #110)
+
+**A cosa serve.** Il personaggio ricorda gli altri giocatori che metti in lista: la scheda di una persona ha ora due parti, **«Cosa hai scelto tu»** (assi, etichetta, sentimenti, nota, tag: li cambi solo tu) e **«Cosa ha osservato l'addon»** (quanti incontri, di che tipo, gli ultimi cinque fatti con luogo e data, mai testi). Servono **un secondo giocatore** (un amico o un'altra tua copia del gioco) e, se possibile, un gruppo. Tutto quello che segue è provato fuori dal gioco con la finta API; qui si verifica che il client vero mandi gli eventi giusti (`GROUP_ROSTER_UPDATE`, `UnitFullName` sui compagni, emote con destinatario, `C_Map.GetBestMapForUnit`) e che la finestra, ora più alta, entri nello schermo.
+
+- **R4b.1 · Aggiungere una persona.** Apri `/au relationships`, scheda **Persone incontrate** o scrivi il nome in **Aggiungi un giocatore**, poi apri la scheda della persona.
+    - **Cosa aspettarti:** due sezioni, «Cosa hai scelto tu» e «Cosa ha osservato l'addon» (all'inizio «Ancora nulla di osservato»); in fondo i pulsanti **Dimentica le osservazioni**, **Rimuovi la persona** e **Torna all'elenco**; la finestra intera sta nello schermo e i testi non si sovrappongono.
+    - **Cosa riportare:** se qualcosa esce dai bordi o si sovrappone (risoluzione e scala dell'interfaccia).
+- **R4b.2 · Il gruppo.** Entra in gruppo con la persona (o falla entrare). Ricontrolla la scheda.
+    - **Cosa aspettarti:** **Incontri: 1 (gruppo 1)**, «Ultima volta» di oggi e un fatto «gruppo (nome della zona)». Se esci e rientri subito, il conteggio **non** sale (stesso tipo entro dieci minuti).
+    - **Cosa riportare:** il testo della sezione e la zona mostrata.
+- **R4b.3 · Duello, invito, scambio, emote.** Fatti chiedere un duello (annullalo), invitare, aprire uno scambio e salutare con un'emote rivolta a te (`/wave` sul tuo personaggio).
+    - **Cosa aspettarti:** ogni tipo compare nell'elenco degli incontri della scheda. Un'emote **non** rivolta a te non conta. Chi **non** è in lista non compare da nessuna parte (nemmeno come proposta, salvo gruppo e scambio).
+    - **Cosa riportare:** quali tipi sono stati contati; se un'emote rivolta a te non è stata riconosciuta.
+- **R4b.4 · Il bersaglio.** Prendi come bersaglio la persona. Poi, nella finestra, accendi **Riconosci al bersaglio** e ripeti (togli il bersaglio e riprendilo).
+    - **Cosa aspettarti:** il bersaglio conta come incontro (tipo «bersaglio») anche con l'opzione spenta; solo con l'opzione accesa il narratore può dire una frase di riconoscimento, **al massimo una per persona e per sessione**.
+    - **Cosa riportare:** se la frase è comparsa nel narratore privato e quante volte.
+- **R4b.5 · Il riconoscimento.** `/au chance relation_player 100`, poi esci dal gruppo e rientra con la persona (nuova sessione: `/reload` prima).
+    - **Cosa aspettarti:** una frase del narratore **privato** (mai in chat). Se hai scelto un sentimento (R4b.6) la frase lo rispecchia; con più di nove giorni dall'ultima volta, a volte ricorda l'assenza.
+    - **Cosa riportare:** la frase e se ha senso per la persona.
+- **R4b.6 · Sentimenti.** Nella scheda scegli un sentimento (**fiducia**, **simpatia**, **diffidenza**, **paura**, **rancore**, **gratitudine**) e, se vuoi, **Assi tipici**. Prova anche l'etichetta **alleato** con il pulsante dell'etichetta.
+    - **Cosa aspettarti:** il sentimento non cambia gli assi né l'etichetta da solo; **Assi tipici** sì, e puoi regolare i cursori dopo. Con diffidenza, paura o rancore nessuna frase calorosa («che piacere rivederti») esce per quella persona.
+    - **Cosa riportare:** una frase per sentimento.
+- **R4b.7 · Dimenticare o rimuovere.** **Dimentica le osservazioni** (clic, poi conferma), poi **Rimuovi la persona**.
+    - **Cosa aspettarti:** la prima azione azzera solo gli incontri e i fatti; nota, etichetta, sentimenti e assi restano. La seconda cancella la persona.
+    - **Cosa riportare:** se le due azioni si confondono.
+- **R4b.8 · Una battaglia insieme.** Combatti con la persona in gruppo.
+    - **Cosa aspettarti:** la scheda mostra «battaglia insieme 1» (non fa salire il numero degli incontri).
+    - **Cosa riportare:** il testo.
+- **R4b.9 · Esporta.** Premi **Esporta**.
+    - **Cosa aspettarti:** una riga per persona con **Incontri: N (gruppo 1, ...)**, sentimento, tag e nota; nessun testo di chat.
+    - **Cosa riportare:** il testo.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -604,6 +636,11 @@ R1 lingua ............... messaggio ___  finestra Ricarica? ___  dopo /reload it
 R1 continente ........... all'andata regione ______  al ritorno caricamenti invariati? ___  blocchi? ___
 R1 combattimento ........ /reload in combattimento: errori? ___  attese per il combattimento ______
 R1 cartella mancante .... messaggio (motivo) ______  frasi in inglese? ___  errori rossi? (deve essere NO) ___
+R4b finestra ............ sezioni ok? ___  entra nello schermo? ___ (risoluzione/scala ______)
+R4b incontri ............ gruppo ___  scambio ___  duello ___  invito ___  emote ___  bersaglio ___  battaglia insieme ___
+R4b riconoscimento ...... una frase per sessione? ___  privata? ___  rispecchia il sentimento? ___
+R4b sentimenti .......... nessuna frase calorosa con diffidenza/paura/rancore? ___  alleato ok? ___
+R4b dimentica/rimuovi ... due azioni distinte? ___  esporta ok? ___
 SP-01 caricamento ....... (OK / NO / nota)   Client build: ______  Errori rossi: sì/no
 SP-01 wizard ............ (OK / NO / nota)
 SP-01 /au debug ......... (OK / NO / nota)   Capacità MISSING/RESTRICTED: ______

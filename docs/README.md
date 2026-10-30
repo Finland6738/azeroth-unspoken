@@ -72,6 +72,7 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 | [0022](adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md) | Automatic rules: CI, a docs check and the wiki sync |
 | [0023](adr/0023-english-first-addon-and-english-command-names.md) | English first: the addon starts in English and command names are always English |
 | [0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md) | Selection index, compact in-memory registry and bounded anti-repetition memory |
+| [0026](adr/0026-player-records-user-choices-apart-from-observations.md) | Player records: what the user chose is kept apart from what the addon observed |
 
 ## Archive
 

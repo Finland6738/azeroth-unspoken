@@ -147,6 +147,7 @@ The journal opens from the panel button **Character journal...** or `/au journal
 | Suggest people | on | relationships window | Suggests players you meet. It does not add them. |
 | Register by itself | off | relationships window, `/au relationships auto on\|off` | Adds the players you meet without asking. |
 | Attraction axis | off | relationships window, `/au relationships attraction on\|off` | Turns on the optional attraction axis. |
+| Recognise on target | off | relationships window | Lets the narrator also recognise a known player when you target them (joining your group or an interaction already do). |
 
 The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].
 

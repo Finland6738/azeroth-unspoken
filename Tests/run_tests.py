@@ -602,6 +602,9 @@ rl1.execute("""
     R:SetAxis("player", "Aldric-Stormrage", "familiarity", 40)
     R:SetNote("player", "Aldric-Stormrage", "Mi ha salvato la vita")
     R:SetLabel("player", "Aldric-Stormrage", "fratello di spada")
+    R:SetFeelings("player", "Aldric-Stormrage", { "gratitude" })
+    R:Observe("Aldric-Stormrage", "group")
+    R:Observe("Aldric-Stormrage", "group_combat")
     R:Propose("Brenna-Stormrage", "group")
 """)
 npc_fam = rl1.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")()
@@ -619,6 +622,10 @@ d2 = rl2.eval("function() return AzerothUnspokenCharacterDB.relationships end")(
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")() == npc_fam, "relazioni: nessun decadimento subito dopo /reload")
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.note end")() == "Mi ha salvato la vita", "relazioni: la nota dopo /reload")
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.label end")() == "fratello di spada", "relazioni: l'etichetta scelta dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.feeling[1] end")() == "gratitude", "relazioni: il sentimento scelto dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.version end")() == 2, "relazioni: versione 2 dopo /reload")
+check(rl2.eval("function() local s = AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen; return s.count == 1 and s.kinds.group == 1 and s.kinds.group_combat == 1 and #s.facts == 2 and s.last > 0 end")(), "relazioni: le osservazioni (incontri per tipo e fatti) dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].trust end")() is None, "relazioni: nessun campo piatto in un giocatore")
 check(rl2.eval("function() return next(AzerothUnspoken.Relationships.candidates) end")() is None, "relazioni: le proposte non sopravvivono alla sessione")
 check(not list(rn2.Diagnostics.errors.values()), "relazioni: nessun errore dopo /reload")
 
@@ -636,6 +643,33 @@ check(ctx_label == "fratello di spada", "relazioni: dopo /reload il contesto usa
 rl4, rn4 = load_addon(saved_global_r, '{schemaVersion=4,relationships={npcs="x",players={[5]=1}}}', with_example=False)
 check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "relazioni: dati rovinati migrati")
 check(not any("relations" in str(e.message) for e in rn4.Diagnostics.errors.values()), "relazioni: dati rovinati senza errori fatali")
+
+# d) un file scritto con relationships.version 1 (giocatori piatti) si migra all'avvio nei due blocchi (#107)
+v1_char = ("{schemaVersion=7,relationships={version=1,npcs={[1234]={first=1,last=2,count=3,familiarity=40,name='Pip'}},"
+           "players={['Aldric-Stormrage']={first=100,last=200,count=4,source='user',trust=55,affection=45,familiarity=40,"
+           "note='Mi ha salvato la vita',label='fratello di spada',tags={'gilda'},role='innkeeper',roleSource='user'},"
+           "['Brenna-Stormrage']={first=5,last=6,count=1,source='auto'}}}}")
+rl5, rn5 = load_addon(saved_global_r, v1_char, with_example=False, zone="Durotar")
+def rel5(expr):
+    return rl5.eval("function() local d = AzerothUnspokenCharacterDB.relationships; return " + expr + " end")()
+check(rel5("d.version") == 2, "relazioni: un file di versione 1 passa alla versione 2")
+check(rel5("d.players['Aldric-Stormrage'].user.axes.trust") == 55 and rel5("d.players['Aldric-Stormrage'].user.axes.affection") == 45, "relazioni v1: gli assi sono in user.axes")
+check(rel5("d.players['Aldric-Stormrage'].user.note") == "Mi ha salvato la vita" and rel5("d.players['Aldric-Stormrage'].user.label") == "fratello di spada", "relazioni v1: nota ed etichetta in user")
+check(rel5("d.players['Aldric-Stormrage'].user.tags[1]") == "gilda" and rel5("d.players['Aldric-Stormrage'].user.role") == "innkeeper", "relazioni v1: tag e ruolo in user")
+check(rel5("d.players['Aldric-Stormrage'].seen.count") == 4 and rel5("d.players['Aldric-Stormrage'].seen.first") == 100 and rel5("d.players['Aldric-Stormrage'].seen.last") == 200, "relazioni v1: first, last e count in seen")
+check(rel5("d.players['Aldric-Stormrage'].trust") is None and rel5("d.players['Aldric-Stormrage'].count") is None, "relazioni v1: nessun campo piatto rimasto")
+check(rel5("d.players['Brenna-Stormrage'].source") == "auto" and rel5("d.npcs[1234].user") is None and rel5("d.npcs[1234].count") == 3, "relazioni v1: la fonte resta e gli NPC restano piatti")
+rl5.globals().P.target = rl5.eval("{ name = 'Aldric', realm = 'Stormrage', player = true, guid = 'Player-1-0000AAAA' }")
+check(rl5.eval("function() return AzerothUnspoken:BuildContext().relationLabel end")() == "fratello di spada", "relazioni v1: dopo la migrazione il contesto usa l'etichetta scelta")
+check(not any("relations" in str(e.message) for e in rn5.Diagnostics.errors.values()), "relazioni v1: nessun errore")
+# la versione 2 salvata di nuovo resta uguale (la migrazione non si ripete)
+saved5 = rl5.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+rl6, rn6 = load_addon(saved_global_r, saved5, with_example=False, zone="Durotar")
+check(rl6.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB.relationships) end")() == rl5.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB.relationships) end")(), "relazioni v1: salvato e ricaricato, resta uguale")
+# un file di una versione piu nuova resta in sola lettura e intatto
+newer = "{schemaVersion=7,relationships={version=3,npcs={},players={['Eve-Stormrage']={user={future=true},seen={first=1},nickname='x'}}}}"
+rl7, rn7 = load_addon(saved_global_r, newer, with_example=False)
+check(rl7.eval("function() return AzerothUnspoken.Relationships.readOnly end")() is True and rl7.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Eve-Stormrage'].nickname end")() == "x", "relazioni v3: sola lettura, dati intatti")
 print("  ok" if not FAILURES else "")
 
 

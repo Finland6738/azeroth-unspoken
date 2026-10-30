@@ -10,6 +10,10 @@ Words used in this manual and in the addon, in alphabetical order.
 
 **Axis.** One dimension of a relationship: familiarity, trust, respect, affection, fear, loyalty, and the optional attraction. See [[Relationships]].
 
+**Feeling.** How you feel about a person, in words (trust, liking, wariness, fear, resentment, gratitude), chosen by you. See [[Relationships]].
+
+**Observed.** What the addon counted about a player in your list (meetings, kinds, places, times), kept apart from what you chose. See [[Relationships]].
+
 **Chance.** The probability that a moment produces a line, set per event with `/au chance`. See [[Intensity and Prose Depth|Intensity-and-Depth]].
 
 **Channel.** Where a proposal is sent: `/say`, `/emote`, party, raid, guild or instance. *Automatic* picks `/say` or `/emote` for you.

@@ -157,6 +157,8 @@ See [[Memory and Journal|Memory-and-Journal]].
 | `/au relationships tags <name> <tag,...>` | Sets your tags. |
 | `/au relationships label <name> <text>` | Sets your own label. |
 | `/au relationships set <name> <axis> <value>` | Sets an axis by hand. Axes: `familiarity`, `trust`, `respect`, `affection`, `fear`, `loyalty`, `attraction`. |
+| `/au relationships feeling <name> <feeling> [<feeling>] [preset]` | Sets up to two feelings: `trust`, `liking`, `wariness`, `fear`, `resentment`, `gratitude` (`none` clears them). `preset` also sets the typical axes of the first one. |
+| `/au relationships forget <name>` | Forgets what the addon observed about a player (counts, encounters, facts). The person and your choices stay. |
 | `/au relationships export` | Shows your relationships as text you can copy. |
 | `/au relationships auto on\|off` | Registers the players you meet by themselves. Off by default. |
 | `/au relationships attraction on\|off` | Turns the optional attraction axis on or off. Off by default. |
