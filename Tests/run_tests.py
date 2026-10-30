@@ -11,6 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ADDON = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "AzerothUnspoken"))
 ADDON_NAME = os.path.basename(ADDON)
 EXAMPLE = os.path.join(os.path.dirname(ADDON), ADDON_NAME + "_Example")
+VERSI = os.path.join(os.path.dirname(ADDON), ADDON_NAME + "_Versi")
 
 FAILURES = []
 def check(cond, msg):
@@ -129,7 +130,7 @@ for d in ("natural", "literary", "elevated"):
 
 # i file dell'addon sono UTF-8 valido, senza BOM né carattere di sostituzione, con fine riga LF
 data_files = []
-for folder in (ADDON, EXAMPLE):
+for folder in (ADDON, EXAMPLE, VERSI):
     for root, _, files in os.walk(folder):
         for f_ in files:
             if f_.endswith((".lua", ".toc", ".xml", ".md")):
@@ -421,7 +422,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestContent"):
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent"):
     lt, nst = load_addon()
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
     # imposta a "it" come farebbe un utente. TestConfig prova invece il predefinito, senza toccare la lingua.
@@ -697,7 +698,7 @@ print("  ok" if not FAILURES else "")
 # 10) funzioni ed eventi usati contro il dump delle API di Forever (saltato con un avviso se il dump non c'è)
 print("\nAPI DI FOREVER")
 proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"),
-                       os.path.join(ADDON), os.path.join(EXAMPLE)], capture_output=True, text=True, encoding="utf-8")
+                       os.path.join(ADDON), os.path.join(EXAMPLE), os.path.join(VERSI)], capture_output=True, text=True, encoding="utf-8")
 print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n")))
 if proc.stdout.startswith("SALTATO"):
     print("  AVVISO: controllo delle API saltato (dump non trovato)")
@@ -731,6 +732,13 @@ proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "c
                       capture_output=True, text=True, encoding="utf-8")
 print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  esempio" not in l))
 check(proc.returncode == 0, "check_docs.py: esempi della guida ai pacchetti e link relativi validi")
+
+# 11b) pacchetto dei versi (L0, #115): caricato come pacchetto esterno, validatore, voci private, lore_test
+print("\nPACCHETTO DEI VERSI")
+proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_versi.py"), os.path.dirname(ADDON)],
+                      capture_output=True, text=True, encoding="utf-8")
+print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if not l.startswith("  ok  ")))
+check(proc.returncode == 0, "check_versi.py: il pacchetto dei versi si carica, è valido e resta privato")
 
 # 12) regole automatiche (R1): regola dei documenti per le PR, privacy dei file tracciati, forma dei workflow
 print("\nREGOLE DEL PROGETTO")

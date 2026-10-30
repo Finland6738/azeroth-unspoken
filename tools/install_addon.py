@@ -1,4 +1,4 @@
-"""Install AzerothUnspoken and AzerothUnspoken_Example into the WoW Forever AddOns folder.
+"""Install AzerothUnspoken, AzerothUnspoken_Example and AzerothUnspoken_Versi into the WoW Forever AddOns folder.
 
 The AddOns path is personal and never committed. It is read, in order, from:
   1. the AU_ADDONS_DIR environment variable;
@@ -16,7 +16,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-ADDONS = ("AzerothUnspoken", "AzerothUnspoken_Example")
+ADDONS = ("AzerothUnspoken", "AzerothUnspoken_Example", "AzerothUnspoken_Versi")
 
 
 def addons_dir():

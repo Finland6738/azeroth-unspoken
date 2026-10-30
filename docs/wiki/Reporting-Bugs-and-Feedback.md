@@ -64,6 +64,18 @@ For everything else, use the [Feedback category of GitHub Discussions](https://g
 
 Feedback on **tone, rhythm and frequency** is the hardest thing to get without real players, and the most useful. A short note such as *"in Duskwood at intensity 50 I got three lines in ten minutes, the second felt too cheerful"* helps a lot.
 
+## Helping with tests
+
+The addon has not been tested in the real game client yet, so two commands collect what the real client does. You do not need technical knowledge: you run a command in a specific place and paste what it prints into an issue.
+
+1. **Measure.** After you have played for a few minutes, type `/au prof copy`. A box opens with the text selected: press **Ctrl+C**. It shows how long the addon takes, its memory and how often the narrator spoke or stayed silent.
+2. **Probe.** Right after you log in, type `/au probe` once (it starts counting events such as weather changes and day and night). Then go about your play. In the places the guide asks for (a capital, the open world, a dungeon, rain or snow, dusk) type `/au probe copy` and press **Ctrl+C**.
+3. **Share.** Open a [Bug report](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose) (it is not a bug: the form is the one we have), write "Not a bug: measurements" in **What happened?**, say where you were in **Steps to reproduce**, and paste the text into **Lua errors or diagnostics**. Put a short heading above each paste, such as "capital" or "rain".
+
+Both reports are in English and contain **no player names, no character name and no coordinates**: they show numbers, `AVAILABLE`/`MISSING`/`RESTRICTED` and, for texts, only their length. Still read them once before pasting, and replace anything personal with a placeholder. If you ever find another player's name in one of them, that is a bug: please report it.
+
+The full list of places and what to look for is in the in-game checklist in the project's `docs` folder (English version: `G1_checklist.en.md`). See [[Commands Reference|Commands]] for the commands and [[Troubleshooting]] if something looks wrong.
+
 ## What NOT to include
 
 Please protect your privacy and that of other players. **Do not paste:**

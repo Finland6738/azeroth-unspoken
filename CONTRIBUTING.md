@@ -114,8 +114,51 @@ Every phrase must follow them. They are the review checklist.
 7. **The Italian and English variants preserve *intent* and *register***: they are not mechanical calques.
 8. **The right register for the moment** (GDD §5.1): a vendor does not declaim like an ancient king; an insignificant moment does not become an apocalypse every time.
 9. **The character does not decide in place of the player** in the narrator's voice (GDD §5.3).
+10. **Literary forms** (inscriptions, songs, rhymes, hymns, laments, sayings) also follow the stricter rules of the next section, and the review uses its checklist.
 
 Before opening the PR, reread aloud in both languages.
+
+### Literary forms
+
+Inscriptions, solemn formulas, remembered verses, inn rhymes, road songs, proverbs, hymns and laments carry more weight than an ordinary line: a reader takes a verse as something the world itself holds. The validator cannot judge most of what matters here, so these rules are checked in review. They apply the owner's decisions in [issue #130](https://github.com/Finland6738/azeroth-unspoken/issues/130) (**D7** lore sources, **D15** frequency, **D16** public chat, **D17** culture, **D18** prophecies). The first pack written under them is `AzerothUnspoken_Versi` ([issue #115](https://github.com/Finland6738/azeroth-unspoken/issues/115)).
+
+**Setting and lore**
+
+1. **Classic era only.** Write only what a character of the classic game (levels 1-60) can know: its places, peoples, faiths, creatures and objects. Nothing from later expansions. Canonical names are spelled as in the client and used correctly.
+2. **Invented lore is always attributed (D7).** Local legends, songs, tales, proverbs and inscriptions may be invented, but every one is carried by a voice: an inscription, a singer, "it is said", "a proverb from the market stalls", "a rhyme told to children". The text says where the words come from ("Worn letters on a fallen lintel: ..."). The narrator never states an invented legend as fact.
+3. **No invented proper names and no invented languages.** An invented song has no named author, hero or place. A canonical name needs a reference a reviewer can check (a quest, an in-game book, an NPC's text), written in the PR until a metadata field exists ([#119](https://github.com/Finland6738/azeroth-unspoken/issues/119)). Never attribute an invented song to a canonical character ("the song Thrall sang"). No words in made-up tongues, and no phrases in the game's own languages.
+4. **Prophecies come last (D18).** None for now. When they arrive they are attributed to a voice, never stated as truth, and get a lore review.
+5. **Culture is chosen, never deduced (D17).** No race or faction condition decides which songs a character knows. Until the culture of origin exists in the profile ([#124](https://github.com/Finland6738/azeroth-unspoken/issues/124)), write pieces any character could have heard, and address no faith by name in a hymn.
+
+**Voice and frequency**
+
+6. **Never in public chat (D16).** A literary piece is spoken by a private voice only: `inner` (what the character reads, remembers or hums) or `npc` (an NPC sings or recites in an ambient dialogue). Never `narrator` or `character`, which can become chat proposals; no chat excerpt either. `Tests/check_versi.py` checks it for the verses pack.
+7. **Rare (D15).** `combat = false` on every rule, a cooldown of three to seven days per piece (`cooldown = 3 * DAY` ... `7 * DAY`), and conditions that make the moment right (first visit, a return with a real memory, a known person, a lost boss fight) rather than a high weight.
+8. **Tags.** `lore`, one `genre_*` tag (`genre_inscription`, `genre_formula`, `genre_verse`, `genre_nursery_rhyme`, `genre_inn_rhyme`, `genre_road_song`, `genre_saying`, `genre_proverb`, `genre_hymn`, `genre_lament`) and one `origin_*` tag (`origin_carved`, `origin_sung`, `origin_spoken`, `origin_remembered`), plus `topic:death` or `topic:religion` where the piece touches them, so that a player who avoids the topic never sees it. Do not use a colon in the genre and origin tags: a colon makes an affinity tag.
+
+**Writing**
+
+9. **Originality.** Original texts only: no recognizable line, structure or rhythm taken from Tolkien or other fantasy authors, from Blizzard's texts (quests, books, NPC greetings), from hymns, nursery rhymes, scripture or famous poems. Read every piece aloud and ask "does this remind me of something?". If the answer is yes, rewrite it. **Warning phrases**: a match is not forbidden by itself, but the review must justify it.
+   - Tolkien: "the road goes ever on", "not all who wander", "all that is gold", "far over the misty", "under the mountain", "one ring", "to rule them / to bind them", "speak, friend", "you shall not pass", "where now the horse", "the man in the moon", "the cat and the fiddle", "Elbereth", "westward over the sea", "the grey havens", "the shadow lies", "in a hole in the ground", "seven stars and seven stones"; a walking song built on the fire, the bed and the road round the corner; an "ubi sunt" catalogue ("where is the horse? where is the rider?").
+   - Blizzard and the game's greetings: "Light be with you", "Ishnu-alah", "Throm-ka", "Lok'tar ogar", "Strength and honor", "For the Horde", "For the Alliance", "Victory or death", any sentence of a quest text or an in-game book.
+   - Elsewhere: "love is patient, love is kind", "ashes to ashes", "ring a ring o' roses", "once upon a time" as the opening of a legend.
+10. **Metre.** Every piece has a metre, checked line by line (syllables and stresses) in the review.
+    - English: trochaic tetrameter (seven or eight syllables, "Rumor walks in muddy boots"), iambic tetrameter or pentameter, common metre for hymns (8-6-8-6), dactylic lines for drinking songs.
+    - Italian: the traditional metres, counting the synalepha: settenario, ottonario, decasillabo, endecasillabo. Rhyme is welcome, not required; mix metres in one piece only on purpose.
+11. **Re-create, do not translate.** English and Italian are two poems with the same intention, register and length, each with its own metre; images and rhymes may differ ("three times the kettle knows where you rest" / "alla terza, anche il boccale sa già come bevi il vino"). English is American English ([#66](https://github.com/Finland6738/azeroth-unspoken/issues/66)).
+12. **No placeholders** in songs and formulas (`{player}`, `{zone}`, `{target}`...): a song does not know the name of whoever hums it.
+13. **Form today.** One line per text, verses separated by `" / "`, at most 255 bytes in every language, frame included. Real line breaks come with [#117](https://github.com/Finland6738/azeroth-unspoken/issues/117).
+
+**Review checklist for a literary piece**
+
+- [ ] Classic era only; canonical names correct, with a checkable reference.
+- [ ] Attributed to a voice; nothing invented is stated as fact; no prophecy.
+- [ ] No invented name or language; no song credited to a canonical character.
+- [ ] `inner` or `npc` only; `combat = false`; cooldown of three to seven days; no race or faction condition.
+- [ ] `lore`, `genre_*`, `origin_*` and the `topic:` tags it needs.
+- [ ] Read aloud in both languages; no warning phrase, or a reason for it; nothing it "reminds you of".
+- [ ] Metre counted line by line in both languages; the Italian is a re-creation, not a calque.
+- [ ] No placeholders; one line with `" / "`; 255 bytes at most; `/au validate` and the tests pass.
 
 ## 4. Writing a pack
 

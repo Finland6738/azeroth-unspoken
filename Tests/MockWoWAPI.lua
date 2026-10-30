@@ -107,7 +107,10 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	"ENCOUNTER_START", "ENCOUNTER_END", "UPDATE_BATTLEFIELD_STATUS", "BANKFRAME_OPENED", "DUEL_REQUESTED",
 	"PARTY_INVITE_REQUEST", "CHAT_MSG_TEXT_EMOTE",
 	-- azioni protette bloccate (#55)
-	"ADDON_ACTION_FORBIDDEN", "ADDON_ACTION_BLOCKED" }) do
+	"ADDON_ACTION_FORBIDDEN", "ADDON_ACTION_BLOCKED",
+	-- sonda delle API (R0, #82)
+	"WEATHER_CHANGED", "DIEL_CYCLE_CHANGED", "PLAYER_UPDATE_RESTING", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS",
+	"MAP_EXPLORATION_UPDATED", "AREA_POIS_UPDATED", "QUEST_LOG_UPDATE", "UPDATE_FACTION", "FACTION_STANDING_CHANGED" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -343,6 +346,7 @@ function Widget:RegisterEvent(e)
 end
 function Widget:RegisterUnitEvent(e) return self:RegisterEvent(e) end
 function Widget:UnregisterEvent(e) self.events[e] = nil end
+function Widget:UnregisterAllEvents() self.events = {} end
 -- simula il clic del giocatore su un pulsante
 function Widget:Click() if self.scripts.OnClick then self.scripts.OnClick(self, "LeftButton") end end
 -- digita e conferma in una casella di testo
@@ -405,6 +409,44 @@ date = os.date
 STANDARD_TEXT_FONT = "Fonts/FRIZQT__.TTF"
 function IsInGuild() return P.guild or false end
 SlashCmdList = {}
+
+-- Profilo e sonda delle API (R0, #81 e #82). Ogni valore si cambia da un test; per provare un'API assente il test la
+-- mette a nil. Titoli, nomi e coordinate sono "dati personali" finti: il test controlla che non escano mai.
+MEMORY_KB = 6400
+function debugprofilestop() return os.clock() * 1000 end
+function UpdateAddOnMemoryUsage() end
+function GetAddOnMemoryUsage(name) if name == "AzerothUnspoken" then return MEMORY_KB end return 0 end
+Enum.WeatherType = { Clear = 0, Rain = 1, Snow = 2, Storm = 3 }
+P.weather = { type = 0, intensity = 0 }
+P.isDay = true
+C_Weather = { GetCurrentWeather = function() return P.weather end }
+C_DateAndTime = { IsDayTime = function() return P.isDay end }
+C_AddOns = { LoadAddOn = function(name) return true, nil end }
+function UnitPosition(u)
+	if P.instance or u ~= "player" then return nil end
+	return 1234.5, 987.25, 12, 1
+end
+function UnitOnTaxi() return P.onTaxi or false end
+P.pois = { 5001, 5002, 5003 }
+C_AreaPoiInfo = { GetAreaPOIForMap = function(map) return P.pois end }
+QUESTS = {
+	{ title = "Zone header", isHeader = true },
+	{ title = "The Secret Of Mirabel", questID = 4711, isHeader = false, level = 12 },
+}
+C_QuestLog = {
+	GetNumQuestLogEntries = function() return #QUESTS, 1 end,
+	GetInfo = function(i) return QUESTS[i] end,
+	GetQuestObjectives = function(id) return { { text = "Find Mirabel", type = "object", finished = false, numFulfilled = 0, numRequired = 1 } } end,
+}
+FACTIONS = { { factionID = 72, name = "Stormwind", reaction = 5, currentStanding = 1200 } }
+C_Reputation = {
+	GetNumFactions = function() return #FACTIONS end,
+	GetFactionDataByIndex = function(i) return FACTIONS[i] end,
+}
+C_Secrets.HasSecretRestrictions = function() return false end
+C_Secrets.ShouldAurasBeSecret = function() return false end
+C_Secrets.ShouldCooldownsBeSecret = function() return false end
+C_Secrets.ShouldUnitStatsBeSecret = function() return false end
 
 -- Serializza una tabella in testo Lua, come il client fa con le SavedVariables alla chiusura o a /reload:
 -- loadstring("return " .. SERIALIZE(t))() la riporta in vita in un runtime nuovo. Chiavi in ordine, cicli non ammessi.

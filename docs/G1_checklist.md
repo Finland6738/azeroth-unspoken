@@ -494,6 +494,81 @@ Provato fuori dal gioco. Restano da provare nel client vero:
 
 ---
 
+## L0: forme letterarie, pacchetto dei versi (aggiunto dalle issue #115 e #116)
+
+Provato fuori dal gioco. Serve la cartella `AzerothUnspoken_Versi` in `AddOns` (la installa `python tools/install_addon.py`). Restano da provare nel client vero:
+
+104. **Il pacchetto c'è.** `/au packs`, poi `/au validate versi`.
+    - **Cosa aspettarti:** la riga `Verses: literary forms (prototype) (versi) - on`; il validatore dice 30 frasi (15 pezzi e i loro gemelli di prova), 0 errori, 0 avvisi.
+105. **I pezzi a mano, in inglese e in italiano.** Con `/au mode confirm` scrivi `/au event lore_test` una decina di volte; poi `/au language it` e ancora qualche volta (alla fine torna alla tua lingua).
+    - **Cosa aspettarti:** ogni volta un pezzo nel narratore, con la voce interiore o dell'NPC; **mai** una proposta per la chat e nulla in chat, anche in modalità `confirm`.
+    - **Cosa riportare:** il **giudizio A/B** che decide la issue #117: i versi su una riga con " / " si leggono bene, o servono gli a capo veri? Un pezzo tagliato, che esce dal riquadro, che si legge troppo in fretta, o che suona male (quale e perché).
+106. **Nel posto giusto.** Entra per la prima volta in una zona di rovine (Arathi Highlands, Desolace, Tanaris, Uldaman...) o in un luogo sacro (Moonglade, Light's Hope Chapel), con `/au chance zone 100`. Usa la pietra del ritorno con `/au chance travel 100`; scrivi `/au pray`.
+    - **Cosa aspettarti:** a volte un'iscrizione, una canzone di viaggio o l'inno (competono con le frasi di base: non sempre); mai in combattimento; lo stesso pezzo non torna prima di qualche giorno.
+    - **Cosa riportare:** il pezzo uscito e il momento; uno che stona col luogo.
+107. **Dal locandiere.** Apri il dialogo ambientale con un locandiere (vedi passi 75–83), scegli *siediti* e *notizie*.
+    - **Cosa aspettarti:** a volte la filastrocca della locanda, nella voce dell'NPC, nella finestra del dialogo; mai in chat.
+108. **Spegnere il pacchetto.** `/au pack versi off`, poi `/au event lore_test`; infine `/au pack versi on`.
+    - **Cosa aspettarti:** da spento nessun pezzo («nessuna frase»); da riacceso tornano.
+
+---
+
+## R0: misure e prova delle API (aggiunto dalle issue #81 e #82)
+
+**A cosa serve.** Tutti i numeri sulla velocità e sulla memoria dell'addon sono stati misurati fuori dal gioco, e molte funzioni del client (meteo, giorno e notte, missioni, reputazione, sottozone...) risultano nell'elenco delle API ma **nessuno ha mai verificato che funzionino davvero**. Questa parte raccoglie i numeri veri e l'elenco delle API confermate: da lì si decidono il budget di memoria e di tempo (decisione D3) e quali funzioni usare (D5, D14).
+
+**Come funziona.** Due comandi, che **non scrivono in chat, non salvano nulla e non mostrano nomi** di altri giocatori, né il nome del tuo personaggio, né coordinate:
+
+- `/au prof` misura l'addon: tempo di scelta di una frase (`PickEntry`) e di lettura del contesto (`BuildContext`), memoria, e quante volte il narratore ha parlato o taciuto (e perché) in questa sessione. `/au prof reset` azzera i contatori.
+- `/au probe` prova le API e stampa una riga per ognuna: `AVAILABLE` (la chiamata funziona), `MISSING` (non esiste) o `RESTRICTED` (il client la nasconde o la rifiuta), con un esempio del valore. Alla **prima** esecuzione si mettono anche in ascolto gli eventi (meteo, giorno e notte, sottozone, missioni...) fino al riavvio del gioco: i comandi dopo mostrano **quante volte** ogni evento è scattato. `/au probe reset` azzera i conteggi, `/au probe stop` ferma l'ascolto.
+- Per **copiare** il risultato: `/au prof copy` e `/au probe copy` aprono una finestra con il testo già selezionato: premi **Ctrl+C**, poi incolla (**Ctrl+V**) nell'issue. Le righe in chat non si copiano comodamente.
+
+Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve per incollarlo in una issue. Prima di incollare, leggilo una volta: se trovi un nome di un altro giocatore, **è un errore da segnalare** (e cancellalo dal testo).
+
+**Quanto tempo.** Circa 30 minuti, più il tempo che passa in mezzo (la memoria dopo un'ora di gioco, il tramonto...). Puoi fare i passi in giorni diversi: ogni passo sta in piedi da solo. **Fai al più i passi che ti capitano:** se non c'è pioggia nel posto dove giochi, salta R0.7 e annota «niente pioggia».
+
+- **R0.1 · Prima misura, subito dopo l'accesso.** Entra in gioco con il personaggio di prova, aspetta circa un minuto, poi scrivi `/au prof reset` e subito `/au probe`.
+    - **Cosa aspettarti:** poche righe di conferma, poi un elenco di righe che cominciano con `[AVAILABLE]`, `[RESTRICTED]` o `[MISSING]`, e in fondo `Summary: ...`. Nessun errore rosso.
+    - **Cosa riportare:** non serve ancora nulla: questo passo avvia l'ascolto degli eventi. Se compare un errore, uno screenshot.
+- **R0.2 · Memoria e tempi dopo l'accesso.** Gioca 5 minuti come al solito (cammina, apri una mappa, combatti), poi scrivi `/au prof copy` e copia il testo con Ctrl+C.
+    - **Cosa aspettarti:** righe `PickEntry: n=..., p50 ... ms, p95 ... ms`, `BuildContext: ...`, `Memory (this addon): ... KB now` e un blocco `Director:` con i conteggi.
+    - **Cosa riportare:** **tutto il testo**. Se `Timing: debugprofilestop MISSING` o `Memory ... not read`, è un risultato importante: riportalo così.
+- **R0.3 · Tempo di caricamento (a mano).** Con un cronometro (o il telefono): misura i secondi dalla pressione di **Entra in gioco** alla comparsa del mondo. Fallo **3 volte con l'addon attivo** e **3 con l'addon disattivato** (dalla lista AddOn, nella schermata di selezione del personaggio; poi riattivalo).
+    - **Cosa aspettarti:** una differenza piccola.
+    - **Cosa riportare:** i sei tempi in secondi, e se il disco è un SSD o un disco normale.
+- **R0.4 · In una capitale** (Orgrimmar, Roccavento, Forgiardente, Darnassus...: la più affollata che hai). Cammina per 10 minuti tra la gente, poi `/au probe copy` e, in una seconda copia, `/au prof copy`.
+    - **Cosa aspettarti:** i valori di `/au prof` salgono un po'. Le righe `event ZONE_CHANGED...` possono essere scattate.
+    - **Cosa riportare:** i due testi, e **il nome della città** nell'issue (non nel testo).
+- **R0.5 · Nel mondo aperto.** Cammina per 10 minuti attraversando almeno due o tre sottozone (le scritte che compaiono al centro dello schermo). Poi `/au probe copy`.
+    - **Cosa aspettarti:** `event ZONE_CHANGED` (e/o `ZONE_CHANGED_INDOORS`, `ZONE_CHANGED_NEW_AREA`) con `fired N times`; `C_AreaPoiInfo.GetAreaPOIForMap` con un numero di punti di interesse.
+    - **Cosa riportare:** il testo, e quali scritte di sottozona ti sono comparse (se una nuova scoperta ha fatto comparire qualcosa di diverso: eventi `MAP_EXPLORATION_UPDATED`).
+- **R0.6 · In un'istanza** (un dungeon qualunque, anche con un solo giocatore). Appena entrato, `/au probe copy`; poi dopo un combattimento `/au prof copy`.
+    - **Cosa aspettarti:** `UnitPosition` con `[instance: party]`: `RESTRICTED ... returned nil` (le coordinate nascoste) oppure `AVAILABLE`.
+    - **Cosa riportare:** la riga `UnitPosition` e i due testi; se qualcosa si è bloccato nei combattimenti.
+- **R0.7 · Con la pioggia o la neve.** Vai dove piove (o nevica). Scrivi `/au probe` e leggi `C_Weather.GetCurrentWeather` e `event WEATHER_CHANGED`. Aspetta che smetta, poi `/au probe copy`.
+    - **Cosa aspettarti:** `-> {intensity=..., type=...}` con un numero per `type` che cambia tra cielo sereno e pioggia/neve; `Enum.WeatherType` con i nomi dei tipi (`Clear=0, Rain=1...`).
+    - **Cosa riportare:** il testo **con la pioggia** (sia l'inizio sia la fine) e **a cielo sereno**, e che tempo c'era in ciascuno. Se `C_Weather` è `MISSING` o `RESTRICTED`, riportalo.
+- **R0.8 · Al tramonto o all'alba.** Resta in un posto tranquillo per un quarto d'ora a cavallo del tramonto (le 18-20 di gioco) o dell'alba (5-7), con `/au probe` prima e dopo, poi `/au probe copy`.
+    - **Cosa aspettarti:** `event DIEL_CYCLE_CHANGED` con `fired N times` e `IsDayTime true/false` che cambia; `C_DateAndTime.IsDayTime` e l'ora di gioco `game time HH:MM`.
+    - **Cosa riportare:** il testo; l'**ora di gioco** a cui è scattato l'evento (il testo la mostra). Se non è scattato nulla, riportalo.
+- **R0.9 · Missioni e reputazione.** Con almeno una missione nel registro: `/au probe`; accetta una missione nuova e consegnane una; di nuovo `/au probe copy`. Poi seleziona un PNG e un mostro, e ripeti `/au probe` per ciascuno.
+    - **Cosa aspettarti:** `C_QuestLog.GetInfo` con i campi della missione (`questID=...`, il titolo è solo una lunghezza); `event QUEST_ACCEPTED` e `QUEST_TURNED_IN` con il `payload`; `C_Reputation.GetFactionDataByIndex` con i campi (compare `reaction`?); `UnitReaction ... an index from 1 to 8: yes`.
+    - **Cosa riportare:** il testo. Se `UnitReaction` dice `NO` o i campi mancano, è un risultato importante.
+- **R0.10 · Locanda e volo.** Entra in una locanda (fino a che compare l'icona del riposo) e prendi un volo (parla con il maestro di volo e parti). Poi `/au probe copy`.
+    - **Cosa aspettarti:** `event PLAYER_UPDATE_RESTING` e `event TAXIMAP_OPENED` con `fired N times`; `UnitOnTaxi` con `true` se lo scrivi **durante** il volo.
+    - **Cosa riportare:** il testo; se `UnitOnTaxi` non dice `true` mentre voli.
+- **R0.11 · In combattimento.** Con un animale, scrivi `/au probe` **mentre combatti** (poi finisci il combattimento e ripeti).
+    - **Cosa aspettarti:** `C_AddOns.LoadAddOn: ... [in combat]` e `[out of combat]` nei due testi, e le righe `C_Secrets...` (`-> true/false`) e `C_RestrictedActions...` (`Combat=1` dentro, `Combat=0` fuori).
+    - **Cosa riportare:** le righe `LoadAddOn`, `C_Secrets` e `C_RestrictedActions` nei due casi.
+- **R0.12 · Dopo un'ora di gioco.** A un'ora dall'accesso scrivi `/au prof copy`.
+    - **Cosa aspettarti:** `Memory samples (session time): ...` con il campione dell'inizio e quello di adesso; `spoken per session hour: ...`.
+    - **Cosa riportare:** il testo, e se il gioco è diventato più lento.
+- **R0.13 · Mandare i risultati.** Apri una issue nuova (<https://github.com/Finland6738/azeroth-unspoken/issues/new/choose>) con il modulo **Bug report**: titolo `[Bug] R0 in-game results` (non è un errore: è il modulo che abbiamo). In **What happened?** scrivi «Not a bug: R0 measurements (#81, #82)». In **Steps to reproduce** scrivi i posti e i momenti dei passi che hai fatto. Nel campo **Lua errors or diagnostics** incolla i testi (uno sotto l'altro, ognuno con un titolo come «R0.4 capital: probe») dei passi che hai fatto. **Senza nomi di altri giocatori** (e, se vuoi, anche senza il nome del tuo personaggio); mai percorsi del tuo PC.
+    - **Cosa aspettarti:** i rapporti non hanno nomi, ma rileggili una volta.
+    - **Cosa riportare:** il link della issue.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -574,6 +649,18 @@ Q5 fantasma ............. frase solo da vivo? ___  una volta sola? ___
 Q5 rapporto altrui ...... /au who mostra chi ti saluta? ___
 Q5 FrameXML ............. tooltip ___  pulsanti ___  scorrimento del narratore ___  pannello ___
 Step 0 lingua ........... nuova in inglese? ___  italiano già scelto resta? ___  comandi inglesi in IT ok? ___  suggerimento ok? ___
+L0 versi ............... /au validate versi ok? ___  lore_test in EN e IT? ___  nulla in chat? ___  A/B: una riga con " / " o a capo veri? ______  pezzo nel posto giusto? ___  locandiere? ___  pezzi che stonano ______
+R0 prima misura ......... memoria (KB) ______  PickEntry p50/p95 ______  BuildContext p50/p95 ______  debugprofilestop? ___
+R0 caricamento .......... con addon (s) ______  senza addon (s) ______
+R0 capitale / aperto .... capitale ______  sottozone: eventi ZONE_CHANGED? ___  POI (numero) ______
+R0 istanza .............. UnitPosition: AVAILABLE/RESTRICTED? ___  prof dentro ok? ___
+R0 meteo ................ Enum.WeatherType ______  tipo con pioggia ___  con neve ___  sereno ___  WEATHER_CHANGED scatta? ___
+R0 giorno e notte ....... DIEL_CYCLE_CHANGED scatta? ___  ora di gioco ______  IsDayTime cambia? ___
+R0 missioni/reputazione . QUEST_ACCEPTED ___  QUEST_TURNED_IN (payload) ______  reaction 1-8? ___
+R0 locanda e volo ....... PLAYER_UPDATE_RESTING ___  TAXIMAP_OPENED ___  UnitOnTaxi true in volo? ___
+R0 combattimento ........ LoadAddOn in combattimento ______  Combat=1 dentro? ___
+R0 dopo un'ora .......... memoria (KB) ______  rallentamenti? ___
+R0 nomi altrui .......... nei rapporti? (deve essere NO) ___  issue ______
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

@@ -101,6 +101,10 @@ See [[Chat Gateway]].
 - **One setting:** set it again; the defaults are in the [[Settings Reference|Settings]].
 - **Everything:** log out, delete `AzerothUnspokenDB.lua` (and, if you want, `AzerothUnspokenCharacterDB.lua`) from the saved-data folders, and log in. See [[Privacy and Data|Privacy-and-Data]].
 
+## The addon feels slow, or uses a lot of memory
+
+Type `/au prof`. It shows how long the addon takes to pick a line and to read the situation (a healthy value is a few milliseconds or less), and how much memory it uses. If the numbers look high, or the game stutters when a line appears, type `/au prof copy`, copy the text with **Ctrl+C** and [[report it|Reporting-Bugs-and-Feedback]] together with what you were doing. The report contains no names. See [[Helping with tests|Reporting-Bugs-and-Feedback#helping-with-tests]].
+
 ## Reading `/au debug`
 
 `/au debug` prints a short report in your chat window. In order, it shows:
@@ -120,6 +124,8 @@ Variants:
 | `/au debug` | the short report |
 | `/au debug full` | one line per capability, with details |
 | `/au debug trace` | prints every recognized event as it happens, until you type it again or log out. Useful to see if the addon notices something |
+
+The report also has a **Profile** line with the latest timings (`/au prof` has the details).
 
 ### Sharing it without other players' names
 

@@ -4,7 +4,7 @@ Index of everything in `docs/` and of the related documents in the project root.
 
 **The documentation is in English**, except for two files, which are in Italian:
 
-- [G1_checklist.md](G1_checklist.md): the in-game checklist for the Italian-speaking tester;
+- [G1_checklist.md](G1_checklist.md): the in-game checklist for the Italian-speaking tester (its section R0 also has an English counterpart, [G1_checklist.en.md](G1_checklist.en.md));
 - [Immersion_Director_GDD_v1.0.md](Immersion_Director_GDD_v1.0.md): the original design spec, a historical source.
 
 The documentation describes only what exists on `main` or is planned in [ROADMAP.md](../ROADMAP.md); the planned parts are marked as such.
@@ -15,7 +15,8 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 |---|---|
 | [README.md](../README.md) (English) · [README.it.md](../README.it.md) (Italian) | what it does, requirements, installation, first start, commands, settings, privacy, Total RP 3 |
 | [wiki/](wiki/Home.md) → [GitHub wiki](https://github.com/Finland6738/azeroth-unspoken/wiki) | the player's manual, in English: one page per feature, every command and setting, privacy, troubleshooting, FAQ, glossary, bug reports and feedback. `docs/wiki/` is its only source; `tools/sync_wiki.py` publishes it |
-| [G1_checklist.md](G1_checklist.md) (in Italian) | checklist for testing the addon in the real client (spikes SP-01…SP-05) |
+| [G1_checklist.md](G1_checklist.md) (in Italian) | checklist for testing the addon in the real client (spikes SP-01…SP-05, and the R0 measurements and API probe) |
+| [G1_checklist.en.md](G1_checklist.en.md) | the R0 section of the checklist (measurements with `/au prof` and API probe with `/au probe`), in English |
 | [CHANGELOG.md](../CHANGELOG.md) | notable changes by version |
 
 ## For those who write phrases and packs
@@ -25,6 +26,7 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 | [AzerothUnspoken/PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md) | pack format: phrases, events, conditions, placeholders, vocabulary, frames, languages |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | how to write good phrases (quality rules), packs, tests, style, PRs, and the language policy |
 | `AzerothUnspoken_Example/` | example pack to copy |
+| `AzerothUnspoken_Versi/` | prototype pack of literary forms (inscriptions, songs, rhymes); its editorial rules are in [CONTRIBUTING.md](../CONTRIBUTING.md#literary-forms) |
 
 ## For developers
 

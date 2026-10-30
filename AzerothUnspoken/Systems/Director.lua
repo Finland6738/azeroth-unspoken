@@ -41,9 +41,13 @@ function Director:Evaluate(event, ctx)
 	return ND:Gate(event, ctx, GetTime())
 end
 
-local function Log(event, result, candidate)
+local function Log(event, result, candidate, category)
 	table.insert(Director.log, { time = GetTime(), event = event, result = result })
 	while #Director.log > Director.LOG_SIZE do table.remove(Director.log, 1) end
+	-- the log keeps only the last entries: the counters of the whole session are in Core/Profiler.lua (/au prof)
+	if NS.Profiler then
+		NS.Diagnostics:Guard("profiler", NS.Profiler.Outcome, NS.Profiler, event, result, category or NS.Engine.EventCategory(event))
+	end
 	-- chi ha proposto l'evento (un sistema che deve sapere com'è andata, come gli archi) riceve l'esito
 	local fn = candidate and candidate.onResult
 	if fn then
@@ -79,18 +83,18 @@ function Director:Resolve()
 		local ctx = NS:BuildContext(c.extra)
 		local verdict = self:Evaluate(c.event, ctx)
 		if not verdict.allow then
-			Log(c.event, verdict.reason, c)
+			Log(c.event, verdict.reason, c, verdict.category)
 		elseif not ND:Roll(c.event, verdict) then
-			Log(c.event, "chance", c)
+			Log(c.event, "chance", c, verdict.category)
 		elseif NS.Gateway:Narrate(c.event, ctx, { auto = true }) then
 			Pacing:Record(c.event, verdict.category, GetTime())
-			Log(c.event, "spoken", c)
+			Log(c.event, "spoken", c, verdict.category)
 			for _, other in ipairs(list) do
 				if other ~= c and other.done == nil then Log(other.event, "outranked", other) end
 			end
 			return c.event
 		else
-			Log(c.event, "no_phrase", c)
+			Log(c.event, "no_phrase", c, verdict.category)
 		end
 		c.done = true
 	end

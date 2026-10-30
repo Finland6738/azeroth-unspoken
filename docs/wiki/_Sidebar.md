@@ -25,6 +25,7 @@
 
 **More**
 - [[Phrase Packs|Phrase-Packs]]
+- [[Literary Forms|Literary-Forms]]
 - [[Languages]]
 - [[Privacy and Data|Privacy-and-Data]]
 

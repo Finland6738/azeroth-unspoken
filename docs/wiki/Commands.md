@@ -32,6 +32,8 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au stories` | your personal stories |
 | `/au talk` | the ambient dialogue with an NPC |
 | `/au debug` | the diagnostic report |
+| `/au prof` | measures the addon: timings, memory, how often the narrator spoke |
+| `/au probe` | tries the client functions the next features need |
 
 ## General
 
@@ -106,7 +108,7 @@ Anything you write after the command is used as the target, for example `/au gre
 | Command | What it does |
 |---|---|
 | `/au cast <spell>` | A line for a spell: a heal, a resurrection, a travel spell, a buff or an attack, depending on the spell. Example macro: `/cast Flash Heal` then `/au cast Flash Heal`. |
-| `/au event <name>` | Asks for a line for any event by name, including events added by phrase packs. Example: `/au event zone`. |
+| `/au event <name>` | Asks for a line for any event by name, including events added by phrase packs. Example: `/au event zone`. With the verses pack, `/au event lore_test` shows one of its pieces (see [[Literary Forms|Literary-Forms]]). |
 | `/au test [event]` | Prints a preview of a spoken line and an emote for the event, **in your own chat window only**. Sends nothing. With no event, uses `battle`. |
 
 ## Your character
@@ -225,6 +227,22 @@ See [[Phrase Packs|Phrase-Packs]].
 | `/au debug trace` | Prints every event the addon recognizes, until you type it again or log out. |
 
 `/au debug` works even when the addon failed to start. See [[Troubleshooting]].
+
+### Measuring and testing: `/au prof` and `/au probe`
+
+Two commands for the people who help test the addon in the real game. Neither writes to chat, saves anything, or shows other players' names, your character's name or your coordinates. Their reports are always in English, so you can paste them into an issue. See [[Helping with tests|Reporting-Bugs-and-Feedback#helping-with-tests]].
+
+| Command | What it does |
+|---|---|
+| `/au prof` | Measures this session: how long the addon takes to pick a line and to read the situation (median and 95th percentile, in milliseconds), the memory it uses, and how many times the narrator spoke or stayed silent, and why (per reason, per event, per category and per hour of play). |
+| `/au prof copy` | The same report in a box with the text selected: press **Ctrl+C** to copy it. |
+| `/au prof reset` | Starts a new measurement. |
+| `/au probe` | Tries the client functions the next features need (weather, day and night, subzones, quests, reputation, flight, resting, hidden values) and prints one line each: **AVAILABLE** (it works), **MISSING** (the client does not have it) or **RESTRICTED** (the client hides or refuses it), with a sample value. The first time, it also starts counting the related game events until you log out: run it again later to see how many times each one happened. |
+| `/au probe copy` | The same report in a box with the text selected, to copy with **Ctrl+C**. |
+| `/au probe reset` | Sets the event counts back to zero. |
+| `/au probe stop` | Stops counting the events (`/au probe` starts again). |
+
+Nothing is kept after you log out. `/au debug` also shows one line with the latest timings.
 
 ## If you used an older build
 

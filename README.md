@@ -72,7 +72,7 @@ There are no packaged releases yet (no release assets, no distribution pages). F
 
 1. Download the repository (`Code` → `Download ZIP`, or `git clone https://github.com/Finland6738/azeroth-unspoken`).
 2. Copy the `AzerothUnspoken` folder into `World of Warcraft\_forever_\Interface\AddOns\`.
-3. Optional: also copy `AzerothUnspoken_Example`, a sample phrase pack (a line for fishing and a few tied to places).
+3. Optional: also copy `AzerothUnspoken_Example`, a sample phrase pack (a line for fishing and a few tied to places), and `AzerothUnspoken_Versi`, a prototype pack of literary forms: inscriptions, remembered verses, inn rhymes, road songs, a hymn and a lament, only in your private narrator.
 4. On the character selection screen open **AddOns** and make sure *Azeroth Unspoken* is ticked.
 
 The `Tests`, `docs` and `archive` folders and the rest of the repository are not needed by the game: do not copy them.
@@ -130,6 +130,8 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au options` | opens the settings panel |
 | `/au wizard` | reopens the wizard |
 | `/au debug [full\|trace]` | diagnostics: client capabilities, latest events, trapped errors; `trace` prints every recognised event, for the session |
+| `/au prof [reset\|copy]` | profiling of the session: timings of the line picker, memory, how often the narrator spoke or stayed silent and why; `copy` opens a box to copy it |
+| `/au probe [reset\|stop\|copy]` | tries the client APIs the next features need and prints AVAILABLE / MISSING / RESTRICTED with a sample; counts their events for the session |
 
 **Key bindings.** Under *Options → Keybindings → AddOns → Azeroth Unspoken* you can bind four keys: *Confirm and speak the proposed line (or improvise)* (`AZEROTHUNSPOKEN_SPEAK`), *Another line* (`AZEROTHUNSPOKEN_REROLL`), *Pause the narrator immediately* (`AZEROTHUNSPOKEN_PAUSE`) and *Ambient dialogue with the NPC* (`AZEROTHUNSPOKEN_NPC`: opens or closes the dialogue). None has a default key.
 
@@ -209,6 +211,7 @@ Repository layout:
 |---|---|
 | `AzerothUnspoken/` | the addon (`Core/`, `Engine/`, `Systems/`, `Integration/`, `UI/`, `Data/`) |
 | `AzerothUnspoken_Example/` | sample phrase pack |
+| `AzerothUnspoken_Versi/` | verses pack: a prototype of literary forms (inscriptions, songs, rhymes) |
 | `Tests/` | tests that run outside the game |
 | `docs/` | specification (GDD), architecture, ADRs, technical references, test checklist |
 | `archive/VociDiAzeroth*/` | the original prototype, kept for reference only |
