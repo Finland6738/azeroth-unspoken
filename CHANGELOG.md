@@ -17,6 +17,7 @@ Entries are **grouped by step or activity**, from the most recent to the oldest 
 - **Added: validator rule `warmWithoutRelation`.** A line tagged `warm` (and not `ironic`) in `greet`, `farewell` or `other_action` must exclude the negative relationships; the report names each offending line. New engine helper `Engine.ExcludesNegativeRelation`. Documented in the pack guide.
 - **Tests**: second encounter with an enemy, a wary, a disliked and a feared player never gets a warm line (greeting and farewell, by eligibility and by repeated picks), a trusted friend still does; the duel by relationship; the rule catches planted bad lines and accepts the good forms; shipped data passes. Phrase counts updated (+4).
 - **Docs**: wiki page Relationships, pack guide.
+
 ### Literary forms prototype: verses pack and editorial rules (step L0, issues #115 and #116)
 
 - **Added: the verses pack `AzerothUnspoken_Versi`** (pack id `versi`), a separate addon with `## Dependencies: AzerothUnspoken` and no engine change. 15 original pieces, each re-created in English and Italian with its own metre: 4 inscriptions and solemn formulas (first visit to a ruin or a sacred place), 3 verses remembered on return (`memory_return`, each with its memory condition), 2 inn rhymes in the innkeeper's voice (ambient dialogue nodes `sit` and `news`, and meeting an innkeeper), 2 road songs on `travel` (one only for the Hearthstone) with a short form for the natural depth, 2 sayings for an encounter with someone known (trust, wariness), 1 hymn on `pray` and 1 lament after a lost boss fight.
