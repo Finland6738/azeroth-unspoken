@@ -2,7 +2,7 @@
 -- Copia questa cartella, rinominala e modifica: il motore non va toccato.
 -- Il pacchetto mostra come aggiungere un evento, frasi con più varianti, condizioni anche scritte in Lua,
 -- luoghi precisi, varianti per profondità e traduzioni di frasi di altri pacchetti. La guida completa
--- è AzerothUnspoken/PACK_FORMAT.md; con /au valida il validatore controlla il pacchetto.
+-- è AzerothUnspoken/PACK_FORMAT.md; con /au validate il validatore controlla il pacchetto.
 local V = AzerothUnspoken
 
 -- 1) Un tipo di incantesimo nuovo: quando lanci un incantesimo il cui nome contiene "fishing" o "pesca",
@@ -14,7 +14,7 @@ V:RegisterPack({
 	name = "Esempio: pesca e luoghi",
 	languages = { "itIT", "enUS" },          -- ogni frase del pacchetto deve avere il testo in queste lingue
 
-	-- 2) Eventi nuovi: categoria, probabilità (%) e pausa (secondi) predefinite. Le scelte dell'utente (/au prob) prevalgono.
+	-- 2) Eventi nuovi: categoria, probabilità (%) e pausa (secondi) predefinite. Le scelte dell'utente (/au chance) prevalgono.
 	events = { fishing = { category = "exploration", chance = 20, cooldown = 300 } },
 
 	-- 3) Le regole: una voce per frase, senza testi. speaker: narrator | inner | character | npc.

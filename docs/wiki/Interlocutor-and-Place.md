@@ -16,7 +16,7 @@ The interlocutor is the person you are dealing with: your target, or the NPC who
 
 The addon uses sources in a fixed order. The first one that says something wins:
 
-1. **Your choice.** What you set with `/au who trait`, `/au npc role` or in the relationship's detail.
+1. **Your choice.** What you set with `/au who trait`, `/au talk role` or in the relationship's detail.
 2. **Total RP 3**, for other players, only if you gave consent (see below).
 3. **The addon's own data** about well-known NPCs.
 4. **A light tendency** from class or race. It is only a weak hint, never a rule.
@@ -61,12 +61,12 @@ Important moments, such as a death or a new level, are never made rarer by the p
 
 ## Commands
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au place` | `/au where`, `/au luogo`, `/au dove` | prints where you are, then who is in front of you |
-| `/au who` | `/au other`, `/au chi`, `/au interlocutore` | prints who is in front of you |
-| `/au who trp3 [on\|off]` | | consent to read others' public Total RP 3 profiles; with no value, switches it |
-| `/au who trait <trait> <value>` | `tratto` | corrects a trait of the person in front of you; `-` clears it |
+| Command | What it does |
+|---|---|
+| `/au place` | prints where you are, then who is in front of you |
+| `/au who` | prints who is in front of you |
+| `/au who trp3 [on\|off]` | consent to read others' public Total RP 3 profiles; with no value, switches it |
+| `/au who trait <trait> <value>` | corrects a trait of the person in front of you; `-` clears it |
 
 For `/au who trait`, the traits are `temperament`, `morality`, `goals`, `speech` and `role`. The person must already be in your [[relationships list|Relationships]]. Examples:
 
@@ -76,7 +76,7 @@ For `/au who trait`, the traits are `temperament`, `morality`, `goals`, `speech`
 /au who trait goals -
 ```
 
-To tell the addon an NPC's role, you can also use `/au npc role <role>` (see [[NPC Dialogues|NPC-Dialogues]]).
+To tell the addon an NPC's role, you can also use `/au talk role <role>` (see [[NPC Dialogues|NPC-Dialogues]]).
 
 ## What you will see
 

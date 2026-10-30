@@ -12,12 +12,12 @@ Only two [[voices|The-Narrator]] can ever become chat: the **character** voice (
 
 | Mode | Command | What happens |
 |---|---|---|
-| **Private narrator only** (default) | `/au chat private` | Lines appear in the box, visible to you alone. Nothing goes to chat. |
-| **Preview** | `/au chat preview` | Your character's lines become proposals. The speak key opens an **editor** with the text: change it if you like and press **Enter** to send. |
-| **Confirm to send** | `/au chat confirm` | The proposal is ready. One press of the speak key or button, or `/au speak`, sends it. You can still edit, change channel or discard it first. |
-| **Automatic (where allowed)** | `/au chat auto`, twice | Emotes go out by themselves, and `/say` only inside instances. Everything else stays a proposal. A few per minute at most. |
+| **Private narrator only** (default) | `/au mode private` | Lines appear in the box, visible to you alone. Nothing goes to chat. |
+| **Preview** | `/au mode preview` | Your character's lines become proposals. The speak key opens an **editor** with the text: change it if you like and press **Enter** to send. |
+| **Confirm to send** | `/au mode confirm` | The proposal is ready. One press of the speak key or button, or `/au speak`, sends it. You can still edit, change channel or discard it first. |
+| **Automatic (where allowed)** | `/au mode auto`, twice | Emotes go out by themselves, and `/say` only inside instances. Everything else stays a proposal. A few per minute at most. |
 
-Aliases for the command: `/au mode`, `/au modo`. Mode names: `private` (`privato`, `p`), `preview` (`anteprima`), `confirm` (`conferma`, `send`, `invia`), `auto` (`automatica`, `automatico`).
+The command is `/au mode`. Mode names: `private`, `preview`, `confirm`, `auto`, in every interface language.
 
 You can also change the mode in the [[wizard|First-Run-Wizard]] (last step) or in the [[settings panel|Settings]] (**Chat** row).
 
@@ -25,11 +25,11 @@ You can also change the mode in the [[wizard|First-Run-Wizard]] (last step) or i
 
 Automatic mode means lines go out in your character's name **without you doing anything**. So it never turns on with one click:
 
-1. Type `/au chat auto` (or click **Automatic sending** in the panel, or the automatic button in the wizard).
+1. Type `/au mode auto` (or click **Automatic sending** in the panel, or the automatic button in the wizard).
 2. A warning explains what will happen.
 3. Repeat the same command or click again **within 10 seconds** to confirm. Otherwise nothing changes.
 
-To leave automatic mode, choose any other mode, for example `/au chat confirm` or `/au chat private`. Clicking **Automatic sending** while it is on switches you to *Confirm to send*.
+To leave automatic mode, choose any other mode, for example `/au mode confirm` or `/au mode private`. Clicking **Automatic sending** while it is on switches you to *Confirm to send*.
 
 ## The open-world `/say` rule
 
@@ -50,12 +50,12 @@ When a proposal is waiting:
 
 | Action | Button on the box | Key or command |
 |---|---|---|
-| Send it | **Send** | speak key, speak button, `/au speak` (`/au say`, `/au send`, `/au dire`, `/au invia`) |
+| Send it | **Send** | speak key, speak button, `/au speak` |
 | Edit it | **Edit** (opens the editor; Enter sends, Esc closes) | in preview mode, the speak key opens the editor |
-| Get a different line | **Another** | `/au another` (`/au reroll`, `/au altra`) or its key |
-| Copy into the chat box | **To chat** | `/au copy` (`/au copia`) |
+| Get a different line | **Another** | `/au another` or its key |
+| Copy into the chat box | **To chat** | `/au copy` (`/au copy`) |
 | Change the channel | the channel button | `/au channel <channel>` sets the default |
-| Throw it away | **Discard**, or **x** | `/au cancel` (`/au discard`, `/au annulla`, `/au scarta`) |
+| Throw it away | **Discard**, or **x** | `/au cancel` |
 
 **No proposal waiting?** The speak key, button and `/au speak` ask for a new line that fits the moment (a battle cry in combat, a thought otherwise). It comes as a proposal: press again to send it.
 
@@ -71,17 +71,17 @@ A proposal waits **25 seconds**, and longer while you are editing it. When it ex
 
 The default channel is **automatic**: your character's words go to `/say` and the narrator's lines go to `/emote`. You can pick a fixed default:
 
-| Channel | Command value | Aliases |
+| Channel | Command value | Short form |
 |---|---|---|
 | automatic (default) | `auto` | |
-| `/say` | `say` | `s`, `dire` |
-| `/emote` | `emote` | `e`, `me` |
-| party | `party` | `p`, `gruppo` |
-| raid | `raid` | `incursione` |
-| guild | `guild` | `g`, `gilda` |
-| instance | `instance` | `i`, `istanza` |
+| `/say` | `say` | `s` |
+| `/emote` | `emote` | `e` |
+| party | `party` | `p` |
+| raid | `raid` | |
+| guild | `guild` | `g` |
+| instance | `instance` | `i` |
 
-Command: `/au channel <value>` (`/au canale`). Panel: **Default channel**. If the channel is not available (no party, no guild...), the addon tells you and nothing is sent.
+Command: `/au channel <value>`. Panel: **Default channel**. If the channel is not available (no party, no guild...), the addon tells you and nothing is sent.
 
 When a spoken line is sent as an emote, it is written as *says, "..."* so it still reads naturally.
 
@@ -100,9 +100,9 @@ If you try to send too fast, you see *"too fast: wait a few seconds before sendi
 
 ## Examples
 
-**Confirm mode with a key.** Bind *Confirm and speak the proposed line (or improvise)* to a key (Options → Keybindings → AddOns → Azeroth Unspoken), then `/au chat confirm`. When a line you like appears as a proposal, press the key: your character says it.
+**Confirm mode with a key.** Bind *Confirm and speak the proposed line (or improvise)* to a key (Options → Keybindings → AddOns → Azeroth Unspoken), then `/au mode confirm`. When a line you like appears as a proposal, press the key: your character says it.
 
-**Preview mode for careful roleplayers.** `/au chat preview`. Press the key to open the editor, adjust the words to your character's voice, press Enter.
+**Preview mode for careful roleplayers.** `/au mode preview`. Press the key to open the editor, adjust the words to your character's voice, press Enter.
 
 **A greeting in party chat.** `/au channel party`, then `/au greet`, then the speak key.
 
@@ -110,8 +110,8 @@ If you try to send too fast, you see *"too fast: wait a few seconds before sendi
 
 | Setting | Default | Where |
 |---|---|---|
-| Chat mode | Private narrator only | wizard, panel **Chat**, `/au chat` |
-| Automatic sending | off | panel **Automatic sending**, `/au chat auto` twice |
+| Chat mode | Private narrator only | wizard, panel **Chat**, `/au mode` |
+| Automatic sending | off | panel **Automatic sending**, `/au mode auto` twice |
 | Default channel | automatic | panel **Default channel**, `/au channel` |
 | Chat proposals module | on | panel modules; off works like private mode |
 

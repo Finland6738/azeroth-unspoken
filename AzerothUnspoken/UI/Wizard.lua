@@ -1,6 +1,6 @@
 -- Azeroth Unspoken: procedura guidata del primo avvio (GDD §12.1).
 -- Facoltativa: "Salta" è sempre disponibile e lascia i valori predefiniti (che sono i valori sicuri).
--- Si riapre con /au benvenuto. Passi:
+-- Si riapre con /au wizard. Passi:
 --   1 lingua · 2 preset · 3 intensità · 4 profondità · 5 moduli e consenso social
 --   6 Total RP 3 (solo se presente) · 7 chat e prova del narratore
 local ADDON, NS = ...

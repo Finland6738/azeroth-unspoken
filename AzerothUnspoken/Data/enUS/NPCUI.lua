@@ -1,5 +1,5 @@
 -- English interface texts for the ambient dialogues (S8): label, buttons, the reasons there is no dialogue and the
--- /au npc command. The lines themselves are in Data/enUS/Dialogues.lua.
+-- /au talk command. The lines themselves are in Data/enUS/Dialogues.lua.
 local ADDON, NS = ...
 
 NS:RegisterLanguage("en", {
@@ -18,7 +18,7 @@ NS:RegisterLanguage("en", {
 		npc_no_player = "Ambient dialogues are only with NPCs, never with other players.",
 		npc_no_hostile = "There is no dialogue with a hostile creature.",
 		npc_no_dead = "There is no dialogue with someone who cannot answer.",
-		npc_no_uncertain = "I am not sure who this is, and I will not guess: no dialogue. Open their vendor, flight or training window, or tell me yourself with /au npc role <role>.",
+		npc_no_uncertain = "I am not sure who this is, and I will not guess: no dialogue. Open their vendor, flight or training window, or tell me yourself with /au talk role <role>.",
 		npc_no_no_script = "I do not have a dialogue for this NPC yet.",
 		npc_no_unknown = "No dialogue is possible right now.",
 		-- why it does not open (permissions)
@@ -38,11 +38,11 @@ NS:RegisterLanguage("en", {
 		npc_refused_silent = "Intensity is zero: dialogues open only by hand.",
 		npc_refused_no_auto = "The automatic offer is off.",
 		npc_refused_unknown = "The dialogue cannot open right now.",
-		-- /au npc command
+		-- /au talk command
 		npc_none_open = "No dialogue is open.",
-		npc_already_open = "A dialogue is already open: /au npc close closes it.",
+		npc_already_open = "A dialogue is already open: /au talk close closes it.",
 		npc_offer_on = "When you open a vendor, flight or training window or talk to a known NPC, the ambient dialogue button appears.",
-		npc_offer_off = "The ambient dialogue button no longer appears by itself: open it with /au npc or the key binding.",
+		npc_offer_off = "The ambient dialogue button no longer appears by itself: open it with /au talk or the key binding.",
 		npc_role_bad = "Roles: innkeeper, merchant, guard, flightmaster, trainer, banker.",
 		npc_role_set = "Understood: for the addon this is \"%s\". It counts as your classification; change it with /au who trait role <role>.",
 		npc_not_listed = "This NPC is not in the relations list yet: talk to them once with the Blizzard dialogue and try again.",

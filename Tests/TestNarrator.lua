@@ -496,21 +496,21 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 
 	-- comando: il primo avvisa, il secondo (entro 10 s) attiva
 	SENT = {}
-	cmd("chat auto")
+	cmd("mode auto")
 	T.eq(NS.db.chat.mode, "CONFIRM_TO_SEND", "il primo comando non cambia nulla")
 	T.ok(not NS.db.output.autoPublicSay, "nessun consenso")
 	T.ok(T.sentContains("ATTENZIONE"), "mostra l'avviso")
-	cmd("chat auto")
+	cmd("mode auto")
 	T.eq(NS.db.chat.mode, "AUTO_ONLY_IF_ALLOWED", "il secondo comando entro 10 s attiva")
 	T.ok(NS.db.output.autoPublicSay, "con il consenso")
 	Gateway:SetMode("CONFIRM_TO_SEND")
 	-- scaduto il tempo, serve di nuovo l'avviso
-	cmd("chat auto")
+	cmd("mode auto")
 	ADVANCE(11)
-	cmd("chat auto")
+	cmd("mode auto")
 	T.ok(not NS.db.output.autoPublicSay, "oltre 10 s la conferma non vale: nuovo avviso")
-	cmd("chat conferma")   -- un altro comando disarma
-	cmd("chat auto")
+	cmd("mode confirm")   -- un altro comando disarma
+	cmd("mode auto")
 	T.ok(not NS.db.output.autoPublicSay, "un altro cambio di modalità annulla l'avviso")
 	Gateway:SetMode("CONFIRM_TO_SEND")
 

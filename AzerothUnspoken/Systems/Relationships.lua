@@ -1412,12 +1412,10 @@ function R:Status()
 end
 
 ---------------------------------------------------------------------------
--- Comandi: /au relazioni ...
+-- Comandi: /au relationships ...
 ---------------------------------------------------------------------------
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
-local ON_WORDS = { on = true, si = true, ["sì"] = true, yes = true, ["1"] = true, acceso = true }
-local OFF_WORDS = { off = true, no = true, ["0"] = true, spento = true }
 
 -- chi è "Nome": un giocatore della lista (con o senza reame) oppure "npc:ID"
 local function FindSubject(self, text)
@@ -1440,27 +1438,18 @@ local function FindSubject(self, text)
 	return nil
 end
 
-local WORDS = {
-	lista = "list", list = "list",
-	persone = "candidates", people = "candidates", candidati = "candidates", candidates = "candidates",
-	aggiungi = "add", add = "add",
-	rimuovi = "remove", remove = "remove", elimina = "remove", delete = "remove",
-	nota = "note", note = "note", tag = "tags", tags = "tags", etichetta = "label", label = "label",
-	imposta = "set", set = "set",
-	esporta = "export", export = "export",
-	auto = "auto", automatico = "auto", attrazione = "attraction", attraction = "attraction",
-	reset = "reset", azzera = "reset", scarta = "dismiss", dismiss = "dismiss",
-	dettaglio = "detail", detail = "detail", info = "detail",
-}
+local WORDS = NS.Keywords.Register("relationships", {
+	list = "list", people = "candidates", add = "add", remove = "remove", note = "note", tags = "tags", label = "label",
+	set = "set", export = "export", auto = "auto", attraction = "attraction", reset = "reset", dismiss = "dismiss",
+	detail = "detail",
+})
 
-local AXIS_WORDS = {
-	familiarita = "familiarity", ["familiarità"] = "familiarity", familiarity = "familiarity",
-	fiducia = "trust", trust = "trust", rispetto = "respect", respect = "respect",
-	affetto = "affection", affection = "affection", timore = "fear", fear = "fear",
-	lealta = "loyalty", ["lealtà"] = "loyalty", loyalty = "loyalty", attrazione = "attraction", attraction = "attraction",
-}
+local AXIS_WORDS = NS.Keywords.Register("relationships.axes", {
+	familiarity = "familiarity", trust = "trust", respect = "respect", affection = "affection", fear = "fear",
+	loyalty = "loyalty", attraction = "attraction",
+})
 
-local RESET_WORDS = { tutto = "all", all = "all", npc = "npcs", npcs = "npcs", giocatori = "players", players = "players" }
+local RESET_WORDS = NS.Keywords.Register("relationships.reset", { all = "all", npcs = "npcs", players = "players" })
 
 local function Summary(self, kind, key)
 	local rec = self:Get(kind, key)
@@ -1536,7 +1525,8 @@ function R:Command(rest)
 	elseif action == "auto" or action == "attraction" then
 		local name = action == "auto" and "autoRegisterPlayers" or "attraction"
 		local w = NS.Lower(arg)
-		if ON_WORDS[w] then self:SetSetting(name, true) elseif OFF_WORDS[w] then self:SetSetting(name, false) end
+		local on = NS.Keywords.OnOff(w)
+		if on ~= nil then self:SetSetting(name, on) end
 		Say(action == "auto" and "rel_auto_now" or "rel_attraction_now", NS:L(self:Setting(name) and "on" or "off"))
 	elseif action == "reset" then
 		local what = RESET_WORDS[NS.Lower(arg)] or "all"

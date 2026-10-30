@@ -190,7 +190,7 @@ end)
 T.run("le battute escono solo dentro un dialogo (né da /au evento né dal Director)", function()
 	Fresh()
 	T.ok(Engine:PickEntry("npcd_innkeeper_open", NS:BuildContext(), "say") == nil, "fuori da un dialogo nessuna battuta")
-	local out = Cmd("evento npcd_innkeeper_open")
+	local out = Cmd("event npcd_innkeeper_open")
 	T.ok(out:find("npcd_innkeeper_open", 1, true) ~= nil, "il comando risponde che non c'è nessuna frase")
 	T.eq(#Narrator.history, 0, "il narratore non ha detto nulla")
 	local inside = NS:BuildContext({ npcDialogue = true, other = { kind = "npc", role = "innkeeper", sex = "male", actions = {}, sources = {} },
@@ -461,7 +461,7 @@ T.run("NPC specifico verificato: il registro curato per npcID, anche senza inter
 	N:Close()
 	Fresh()
 	P.target = { name = "Marshal Dughan", guid = Guid(240), reaction = 5, sex = 2, level = 55 }
-	Cmd("npc")
+	Cmd("talk")
 	T.eq(N.state, "choice", "dal bersaglio, senza interazione")
 	T.eq(N.session.who.role, "guard", "guardia dal registro")
 	T.ok(N.session.who.specific, "specifico")
@@ -475,13 +475,13 @@ T.run("identità incerta: nessun dialogo, né da un'offerta né dal comando", fu
 	Talk(7777, "Passante", "GOSSIP_SHOW")
 	T.eq(N.state, "idle", "gossip di uno sconosciuto: nessuna offerta")
 	T.ok(not Visible(), "nessuna finestra")
-	local out = Cmd("npc")
+	local out = Cmd("talk")
 	T.ok(out:find(NS:L("npc_no_uncertain"), 1, true) ~= nil, "il comando spiega perché: " .. out)
 	T.eq(N.state, "idle", "resta idle")
 	-- bersaglio qualunque
 	Fresh()
 	P.target = { name = "Passante", guid = Guid(7777), reaction = 5, sex = 3 }
-	out = Cmd("npc")
+	out = Cmd("talk")
 	T.ok(out:find(NS:L("npc_no_uncertain"), 1, true) ~= nil, "bersaglio qualunque: incerto")
 	T.eq(N.state, "idle", "resta idle")
 	-- GUID mancante o illeggibile
@@ -489,11 +489,11 @@ T.run("identità incerta: nessun dialogo, né da un'offerta né dal comando", fu
 	P.npc = { name = "Senza GUID" }
 	ADVANCE(16); FIRE("MERCHANT_SHOW")
 	T.eq(N.state, "idle", "senza GUID: nessuna offerta")
-	out = Cmd("npc")
+	out = Cmd("talk")
 	T.ok(out:find(NS:L("npc_no_uncertain"), 1, true) ~= nil, "senza GUID: incerto (" .. out .. ")")
 	-- niente davanti
 	Fresh()
-	out = Cmd("npc")
+	out = Cmd("talk")
 	T.ok(out:find(NS:L("npc_no_no_target"), 1, true) ~= nil, "nessun NPC")
 	-- il ruolo dello stesso NPC non vale per un altro
 	Fresh()
@@ -508,7 +508,7 @@ T.run("identità segreta: nessun dialogo, nessuna lettura", function()
 	SECRET_UNITS = { npc = true }
 	Talk(295, "Innkeeper Farley", "GOSSIP_SHOW")
 	T.eq(N.state, "idle", "nessuna offerta")
-	local out = Cmd("npc")
+	local out = Cmd("talk")
 	T.ok(out:find(NS:L("npc_no_secret"), 1, true) ~= nil, "il comando lo dice: " .. out)
 	T.eq(N.state, "idle", "resta idle")
 	T.ok(not Visible(), "nessuna finestra")
@@ -516,7 +516,7 @@ T.run("identità segreta: nessun dialogo, nessuna lettura", function()
 	Fresh()
 	SECRET_UNITS = { target = true }
 	P.target = { name = "Marshal Dughan", guid = Guid(240), reaction = 5 }
-	out = Cmd("npc")
+	out = Cmd("talk")
 	T.ok(out:find(NS:L("npc_no_secret"), 1, true) ~= nil, "bersaglio segreto")
 	T.eq(N.state, "idle", "resta idle")
 	T.eq(Count(NS.Diagnostics.errors), 0, "nessun errore intercettato")
@@ -527,11 +527,11 @@ T.run("giocatori, creature ostili e NPC morti non hanno dialoghi ambientali", fu
 	Fresh()
 	P.target = { name = "Aldric", realm = "TestRealm", player = true, guid = "Player-1-0000AAAA", sex = 2, class = "PRIEST",
 		race = "Human", faction = "Alliance", level = 30, reaction = 5 }
-	T.ok(Cmd("npc"):find(NS:L("npc_no_player"), 1, true) ~= nil, "giocatore")
+	T.ok(Cmd("talk"):find(NS:L("npc_no_player"), 1, true) ~= nil, "giocatore")
 	P.target = { name = "Lupo", guid = Guid(3035), ctype = "Beast", reaction = 2, hostile = true, level = 7 }
-	T.ok(Cmd("npc"):find(NS:L("npc_no_hostile"), 1, true) ~= nil, "creatura ostile")
+	T.ok(Cmd("talk"):find(NS:L("npc_no_hostile"), 1, true) ~= nil, "creatura ostile")
 	P.target = { name = "Marshal Dughan", guid = Guid(240), reaction = 5, dead = true }
-	T.ok(Cmd("npc"):find(NS:L("npc_no_dead"), 1, true) ~= nil, "NPC morto")
+	T.ok(Cmd("talk"):find(NS:L("npc_no_dead"), 1, true) ~= nil, "NPC morto")
 	T.eq(N.state, "idle", "mai un dialogo")
 end)
 
@@ -550,18 +550,18 @@ T.run("il ruolo detto dall'utente vale come classificazione; lo stesso NPC resta
 	Fresh()
 	Talk(9300, "Oste del Ponte", "GOSSIP_SHOW")
 	T.eq(N.state, "idle", "gossip: ancora incerto")
-	T.ok(Cmd("npc ruolo cuoco"):find(NS:L("npc_role_bad"), 1, true) ~= nil, "ruolo sconosciuto")
-	T.ok(Cmd("npc ruolo locandiere"):find("locandiere", 1, true) ~= nil, "ruolo accettato")
+	T.ok(Cmd("talk role cuoco"):find(NS:L("npc_role_bad"), 1, true) ~= nil, "ruolo sconosciuto")
+	T.ok(Cmd("talk role innkeeper"):find("locandiere", 1, true) ~= nil, "ruolo accettato")
 	T.eq(R:Get("npc", 9300).role, "innkeeper", "salvato con la relazione")
 	T.eq(R:Get("npc", 9300).roleSource, "user", "come scelta dell'utente")
-	Cmd("npc")
+	Cmd("talk")
 	T.eq(N.state, "choice", "ora il dialogo si apre")
 	T.eq(N.session.who.how, "user", "classificazione dell'utente")
 	N:Close()
 	-- un NPC non in lista non si può classificare
 	Fresh()
 	P.target = { name = "Sconosciuto", guid = Guid(9301), reaction = 5 }
-	T.ok(Cmd("npc ruolo locandiere"):find(NS:L("npc_not_listed"), 1, true) ~= nil, "non in lista")
+	T.ok(Cmd("talk role innkeeper"):find(NS:L("npc_not_listed"), 1, true) ~= nil, "non in lista")
 	-- il binder prova che è un locandiere; un gossip successivo dello stesso NPC non lo perde
 	Fresh()
 	Talk(9400, "Oste", "CONFIRM_BINDER")
@@ -582,7 +582,7 @@ T.run("impostazioni: modulo spento, intensità 0, pausa, filmati, combattimento"
 	NS.db.modules.npc = false
 	Talk(9100, "Mara", "MERCHANT_SHOW")
 	T.eq(N.state, "idle", "modulo spento: nessuna offerta")
-	T.ok(Cmd("npc"):find(NS:L("npc_refused_module"), 1, true) ~= nil, "il comando lo dice")
+	T.ok(Cmd("talk"):find(NS:L("npc_refused_module"), 1, true) ~= nil, "il comando lo dice")
 	Fresh()
 	NS.db.output.npcDialogues = false
 	Talk(9100, "Mara", "MERCHANT_SHOW")
@@ -605,14 +605,14 @@ T.run("impostazioni: modulo spento, intensità 0, pausa, filmati, combattimento"
 	NS.paused = false
 	-- offerta automatica spenta: il comando resta
 	Fresh()
-	T.ok(Cmd("npc offerta off"):find(NS:L("npc_offer_off"), 1, true) ~= nil, "comando offerta off")
+	T.ok(Cmd("talk offer off"):find(NS:L("npc_offer_off"), 1, true) ~= nil, "comando offerta off")
 	T.eq(NS.db.npcAlive.autoOffer, false, "salvata")
 	Talk(9100, "Mara", "MERCHANT_SHOW")
 	T.eq(N.state, "idle", "nessuna offerta")
-	Cmd("npc")
+	Cmd("talk")
 	T.eq(N.state, "choice", "il comando apre il dialogo del mercante in corso")
 	N:Close()
-	T.ok(Cmd("npc offerta on"):find(NS:L("npc_offer_on"), 1, true) ~= nil, "offerta on")
+	T.ok(Cmd("talk offer on"):find(NS:L("npc_offer_on"), 1, true) ~= nil, "offerta on")
 	T.eq(NS.db.npcAlive.autoOffer, true, "riaccesa")
 	-- filmato e combattimento
 	Fresh()
@@ -641,7 +641,7 @@ T.run("limite per NPC delle offerte automatiche; il comando non ne risente", fun
 	Talk(9100, "Mara", "MERCHANT_SHOW")
 	T.eq(N.state, "offered", "dopo OFFER_GAP sì")
 	N:End("closed")
-	Cmd("npc")
+	Cmd("talk")
 	T.eq(N.state, "choice", "il comando non ha limiti")
 	N:Close()
 end)
@@ -972,7 +972,7 @@ T.run("un ricordo del dialogo solo se si è risposto, senza testo, senza nome", 
 	T.eq(n0, 0, "nessuna risposta: nessun ricordo")
 	-- il primo dialogo con una risposta lascia un ricordo salvato (importanza 2)
 	N:SetState("idle")
-	Cmd("npc")
+	Cmd("talk")
 	N:Choose(1)
 	N:Close()
 	local list = LM:List()
@@ -989,7 +989,7 @@ T.run("un ricordo del dialogo solo se si è risposto, senza testo, senza nome", 
 	T.ok(not flat:find("295", 1, true) and not flat:find("Farley", 1, true), "né npcID né nome nei tag")
 	-- il secondo con la stessa persona resta nella sessione
 	N:SetState("idle")
-	Cmd("npc")
+	Cmd("talk")
 	N:Choose(1)
 	N:Close()
 	T.ok(#LM:SessionList() >= 1, "il secondo resta nella sessione")
@@ -1204,19 +1204,23 @@ end)
 ---------------------------------------------------------------------------
 T.run("comandi: /au npc, prova, chiudi, stato, tasto assegnato, /au debug", function()
 	Fresh()
-	T.ok(Cmd("npc chiudi"):find(NS:L("npc_none_open"), 1, true) ~= nil, "nessun dialogo da chiudere")
-	T.ok(Cmd("npc prova burbero") == "", "prova: si apre senza messaggi")
+	T.ok(Cmd("talk close"):find(NS:L("npc_none_open"), 1, true) ~= nil, "nessun dialogo da chiudere")
+	T.ok(Cmd("talk test gruff") == "", "prova: si apre senza messaggi")
 	T.eq(N.state, "choice", "dialogo di prova aperto")
 	T.eq(N.session.who.kind, "test", "è un NPC di prova")
-	T.ok(Cmd("npc"):find(NS:L("npc_already_open"), 1, true) ~= nil, "uno solo alla volta")
-	T.ok(Cmd("npc stato"):find("NPC Alive: choice", 1, true) ~= nil, "stato")
-	Cmd("npc chiudi")
+	T.ok(Cmd("talk"):find(NS:L("npc_already_open"), 1, true) ~= nil, "uno solo alla volta")
+	T.ok(Cmd("talk status"):find("NPC Alive: choice", 1, true) ~= nil, "stato")
+	Cmd("talk close")
 	T.eq(N.state, "ended", "chiuso dal comando")
-	for _, alias in ipairs({ "dialogo", "parla", "talk", "dialogue" }) do
+	N:SetState("idle")
+	Cmd("talk test")
+	T.eq(N.state, "choice", "talk test")
+	N:Close()
+	-- le parole italiane non sono comandi (#132): nessun dialogo
+	for _, word in ipairs({ "dialogo", "parla", "npc" }) do
 		N:SetState("idle")
-		Cmd(alias .. " prova")
-		T.eq(N.state, "choice", alias .. ": alias")
-		N:Close()
+		T.ok(Cmd(word .. " prova"):find("/au talk", 1, true), word .. ": suggerisce /au talk")
+		T.eq(N.state, "idle", word .. ": nessun dialogo")
 	end
 	-- il tasto assegnato apre e chiude
 	Fresh()

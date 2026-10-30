@@ -40,9 +40,9 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - **Chat Gateway.** If you want, the character's lines become **chat proposals** that you confirm, edit or discard. See [Privacy and chat](#privacy-and-chat).
 - **Personality** (Character Soul, optional). Give the character a personality (temperament, morality, curiosity, faith, motivation, irony, inner voice, topics to avoid, or a ready-made archetype): lines that fit come up more often, and lines that contradict what you ruled out never do. With no choices the narrator stays neutral. With [Total RP 3](#total-rp-3) and a separate consent it can start from your profile's traits. See `/au soul`.
 - **Memory and journal.** Remembers the character's significant moments (the first time in a zone, a return, a visit that ended badly, deaths, levels) and finds them again in its lines: **only if the memory really exists**. The **journal** (`/au journal`) shows them, lets you delete them or make them permanent, and exports them as text you can copy.
-- **Relationships.** Remembers **how you stand with people**: six independent axes (familiarity, trust, respect, affection, fear, loyalty; attraction is optional and off) give a label (stranger, acquaintance, friend, comrade in arms, respected rival, enemy...) and an overall disposition. **NPCs** are worked out automatically (dialogs, quests, merchants, flights, innkeepers); **players** are chosen by you: the addon suggests, and registers no one without your click. The narrator changes tone with the bond, from formal to intimate. See `/au relations`.
+- **Relationships.** Remembers **how you stand with people**: six independent axes (familiarity, trust, respect, affection, fear, loyalty; attraction is optional and off) give a label (stranger, acquaintance, friend, comrade in arms, respected rival, enemy...) and an overall disposition. **NPCs** are worked out automatically (dialogs, quests, merchants, flights, innkeepers); **players** are chosen by you: the addon suggests, and registers no one without your click. The narrator changes tone with the bond, from formal to intimate. See `/au relationships`.
 - **Interlocutor and place.** Lines change with **who is in front of you** (role, character, race, class, recent actions: a quest just given, a duel, an emote) and **where you are** (zone, friendly or enemy capital, territory, dungeon, raid, battleground, arena, boss encounters). The rhythm adapts: calmer in raids and against bosses, short lines in battlegrounds. See `/au who` and `/au place`.
-- **NPC Alive** (ambient dialogues). When you open an NPC's vendor, flight or training window, or talk to a known innkeeper, a small button appears; pressing it (or the dedicated key) opens a separate window labeled **"addon ambient dialogue"**, with a line from the NPC and one to three neutral answers. It is a **simulated** dialogue: it never appears in chat, never touches gossip, quests or vendors, and changes nothing in the game; your choices only leave a flag in the journal. The NPC speaks according to their character (gruff, jovial...) and whether you know them. There are five archetypes (innkeeper, merchant, guard, flight master, trainer) and 169 lines. See `/au npc` (with `test` to try the window without a real NPC).
+- **NPC Alive** (ambient dialogues). When you open an NPC's vendor, flight or training window, or talk to a known innkeeper, a small button appears; pressing it (or the dedicated key) opens a separate window labeled **"addon ambient dialogue"**, with a line from the NPC and one to three neutral answers. It is a **simulated** dialogue: it never appears in chat, never touches gossip, quests or vendors, and changes nothing in the game; your choices only leave a flag in the journal. The NPC speaks according to their character (gruff, jovial...) and whether you know them. There are five archetypes (innkeeper, merchant, guard, flight master, trainer) and 169 lines. See `/au talk` (with `test` to try the window without a real NPC).
 - **Story Arcs** (personal stories). Four small stories of your character: going back to where the adventure began, a face you meet more and more often, a fall and the return, the journey between capitals. They are tellings, **not quests**: no rewards, no effect on the game. They begin only from a real event, at most two at a time, the choices that matter are yours, and you can suspend, skip or disable them any time (`/au stories`, the journal's "Stories" tab). At the end they leave a memory in the journal.
 - A skippable **first-run wizard**, and a **diagnostic** (`/au debug`) that shows what your client lets the addon do.
 - Extends through **phrase packs** shipped as separate addons (also dialogues, arcs, places and NPCs), without touching the engine, with a **validator** (`/au validate`) that checks the texts.
@@ -81,61 +81,61 @@ To update, replace the `AzerothUnspoken` folder with the new one. Your settings 
 
 ## First launch
 
-A few seconds after you enter the game a **wizard** appears, with 6 steps (7 if Total RP 3 is present): language, kind of experience, intensity, style, modules, Total RP 3, and chat with a sample line. You can skip it at any time and reopen it with `/au benvenuto`.
+A few seconds after you enter the game a **wizard** appears, with 6 steps (7 if Total RP 3 is present): language, kind of experience, intensity, style, modules, Total RP 3, and chat with a sample line. You can skip it at any time and reopen it with `/au wizard`.
 
 With the default settings the addon is **silent towards other players**: lines only appear in the narrator box, at the bottom centre of the screen.
 
 Type `/au` for the list of commands and `/au debug` to check that everything is in order. If something does not work, `/au debug full` prints one line per client capability.
 
-> The interface (including command names) is available in Italian and English. Command names are Italian first, with English aliases for almost all of them, shown in parentheses below.
+> The addon is **English first**: a new install starts in English, for both the interface and the lines, and Italian is the second language (choose it in the wizard or with `/au language it`; an Italian choice already saved is kept). **Command names and their arguments are always English**, in every interface language: the language changes the descriptions and messages, never the words you type. If you type an Italian word such as `/au diario`, the addon tells you the English command (`/au journal`).
 
 ## Commands
 
-The addon answers to `/au` and `/unspoken`.
+The addon answers to `/au` and `/unspoken`. Each command has one English name; the only extra spellings are the short forms `/au lang` and `/au rel`, and the channel names `s`, `e`, `p`, `g`, `i`.
 
 | Command | Effect |
 |---|---|
-| `/au` · `/au aiuto` (`help`) | list of commands |
+| `/au help` | list of commands (`/au` alone does the same) |
 | `/au on` · `/au off` | turns automatic lines on or off |
-| `/au pausa` (`pause`) | immediate narrator pause, for the session only; again to resume |
-| `/au lingua [it\|en]` (`language`) | language of lines and interface |
-| `/au intensita <0-100>` (`intensity`) | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
-| `/au profondita naturale\|letterario\|elevato` (`depth`) | style depth: lines written for that tone weigh more (the others stay possible) |
-| `/au chat privato\|anteprima\|conferma\|auto` (`modo`, `mode`) | what may reach chat; default: `privato` (private). English aliases: `private`, `preview`, `confirm`, `auto`. `auto` does not turn on with the first command: it shows a warning and must be repeated within 10 seconds |
-| `/au canale auto\|say\|emote\|gruppo\|incursione\|gilda\|istanza` (`channel`) | default channel for proposals (`party`, `raid`, `guild`, `instance` also work) |
-| `/au dire` (`speak`, `invia`, `send`) | same as the "speak" key: confirms the pending proposal, or makes a new one |
-| `/au annulla` (`scarta`, `cancel`, `discard`) | discards the pending proposal |
-| `/au copia` (`copy`) | copies the proposal into the chat box (you send it with Enter): the "To chat" button |
-| `/au narratore [cronologia\|reset\|pulisci]` (`narrator`) | no argument shows a sample line; `cronologia` (`history`) opens recent lines, `reset` moves the box back to the centre, `pulisci` (`clear`) empties the history |
-| `/au saluto` · `addio` · `brindisi` · `pensiero` · `minaccia` · `grido` · `preghiera` · `vittoria` · `ringrazia` · `scherzo` | asks for a line for that moment (`greet`, `farewell`, `toast`, `muse`, `threat`, `battlecry`, `pray`, `victory`, `thanks`, `jest`). It appears as a proposal or in the narrator, depending on the chat mode |
-| `/au incanta <spell>` (`cast`) | a line for a spell, handy in macros |
-| `/au evento <name>` (`event`) | fires an event by name (including ones defined by a pack) |
-| `/au prova <event>` (`test`) | preview in the local chat (sends nothing) |
-| `/au prob [<event> <0-100>]` (`chance`) | probability of an event; with no arguments lists the values |
+| `/au pause` | immediate narrator pause, for the session only; again to resume |
+| `/au language [it\|en]` | language of lines and interface (short form `/au lang`); the default is English |
+| `/au intensity <0-100>` | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
+| `/au depth natural\|literary\|elevated` | style depth: lines written for that tone weigh more (the others stay possible) |
+| `/au mode private\|preview\|confirm\|auto` | what may reach chat; default: `private`. `auto` does not turn on with the first command: it shows a warning and must be repeated within 10 seconds |
+| `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | default channel for proposals (short forms `s`, `e`, `p`, `g`, `i`) |
+| `/au speak` | same as the "speak" key: confirms the pending proposal, or makes a new one |
+| `/au cancel` | discards the pending proposal |
+| `/au another` | another line in place of the pending one, or a new proposal (also the "Another" button of the box) |
+| `/au copy` | copies the proposal into the chat box (you send it with Enter): the "To chat" button |
+| `/au narrator [history\|reset\|clear]` | no argument shows a sample line; `history` opens recent lines, `reset` moves the box back to the centre, `clear` empties the history |
+| `/au greet` · `farewell` · `toast` · `muse` · `threat` · `battlecry` · `pray` · `victory` · `thanks` · `jest` | asks for a line for that moment. It appears as a proposal or in the narrator, depending on the chat mode |
+| `/au cast <spell>` | a line for a spell, handy in macros |
+| `/au event <name>` | fires an event by name (including ones defined by a pack) |
+| `/au test <event>` | preview in the local chat (sends nothing) |
+| `/au chance [<event> <0-100>]` | probability of an event; with no arguments lists the values |
 | `/au cooldown <seconds>` | minimum pause between two automatic lines |
-| `/au ignora <spell>` (`ignore`) | a spell no longer produces lines; with no argument lists the ignored ones |
-| `/au pulsante` (`button`) | shows or hides the "speak" button |
-| `/au anima` (`soul`, `personalita`, `profilo`) | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <value>` (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `voice`; `-` removes the choice) and `avoid <topic>` |
-| `/au journal` (`diary`, `diario`) | opens the character journal (memories, places, flags, session). Also `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` and `reset [all\|memories\|ordinary\|places\|flags]` (asks for confirmation) |
-| `/au stories` (`storie`, `arcs`) | the personal stories: `list`, `journal`, `choose <arc> <option>`, `start`, `suspend`, `resume`, `skip`, `disable`, `enable` (one arc or `all`), `max <1\|2>`, `on`, `off`, `status` |
-| `/au relations` (`relationships`, `relazioni`, `relazione`, `bonds`) | opens the relationships window (sortable, filterable table, suggested people, detail with sliders, notes and tags). Also `list`, `people`, `add <name>`, `dismiss <name>`, `remove <name\|npc:ID>`, `detail <name>`, `note`, `tags`, `label`, `set <name> <axis> <value>`, `export`, `auto on\|off`, `attraction on\|off`, `reset` |
-| `/au place` (`luogo`, `dove`, `where`) | where you are according to the addon: zone, uiMapID, territory, tags, instance, encounter, group role (used to verify place data in game) |
-| `/au who` (`chi`, `interlocutore`, `other`) | who is in front of you according to the addon (role, character, race, recent actions, bond and the source of each datum). Also `trp3 on\|off` (consent to read the public Total RP 3 profile **of others**) and `trait <trait> <value>` (`tratto`) to correct an interlocutor trait by hand |
-| `/au npc` (`dialogo`, `talk`, `dialogue`) | the ambient dialogue with the current NPC, or opens the offer if there is a valid interaction. Also `test` (`prova`: a test NPC, leaves no trace), `close` (`chiudi`), `role <role>` (`ruolo`: you say what role the NPC has), `offer on\|off` (`offerta`: the automatic button), `status` (`stato`) |
-| `/au another` (`altra`, `reroll`) | another line in place of the pending one, or a new proposal (also the "Another" button of the box) |
-| `/au packs` · `/au pacchetto <id> on\|off` (`pack`) | lists, or switches phrase packs on and off |
-| `/au validate [all\|<pack>]` (`valida`, `controlla`) | the text validator: duplicate ids, missing languages, placeholders, conditions, lengths, tags, scripts and arcs (`tutto` for all) |
-| `/au info` (`stats`) | how many lines are available, per event |
-| `/au memoria` (`memory`) | resets the memory of **used lines** (the ones already said, to avoid repeating them; no confirmation). It does not touch the journal's memories: for those use `/au journal reset` |
-| `/au opzioni` (`options`, `config`) | opens the settings panel |
-| `/au benvenuto` (`wizard`, `welcome`) | reopens the wizard |
+| `/au ignore <spell>` | a spell no longer produces lines; with no argument lists the ignored ones |
+| `/au button` | shows or hides the "speak" button |
+| `/au soul` | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <value>` (`temperament`, `morality`, `curiosity`, `faith`, `motivation`, `irony`, `voice`; `-` removes the choice) and `avoid <topic>` |
+| `/au journal` | opens the character journal (memories, places, flags, session). Also `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` and `reset [all\|memories\|ordinary\|places\|flags]` (asks for confirmation) |
+| `/au stories` | the personal stories: `list`, `journal`, `choose <arc> <option>`, `start`, `suspend`, `resume`, `skip`, `disable`, `enable` (one arc or `all`), `max <1\|2>`, `on`, `off`, `status` |
+| `/au relationships` | opens the relationships window (sortable, filterable table, suggested people, detail with sliders, notes and tags); short form `/au rel`. Also `list`, `people`, `add <name>`, `dismiss <name>`, `remove <name\|npc:ID>`, `detail <name>`, `note`, `tags`, `label`, `set <name> <axis> <value>`, `export`, `auto on\|off`, `attraction on\|off`, `reset` |
+| `/au place` | where you are according to the addon: zone, uiMapID, territory, tags, instance, encounter, group role (used to verify place data in game) |
+| `/au who` | who is in front of you according to the addon (role, character, race, recent actions, bond and the source of each datum). Also `trp3 on\|off` (consent to read the public Total RP 3 profile **of others**) and `trait <trait> <value>` to correct an interlocutor trait by hand |
+| `/au talk` | the ambient dialogue with the current NPC, or opens the offer if there is a valid interaction. Also `test` (a test NPC, leaves no trace), `close`, `role <role>` (you say what role the NPC has), `offer on\|off` (the automatic button), `status` |
+| `/au packs` · `/au pack <id> on\|off` | lists, or switches phrase packs on and off |
+| `/au validate [full\|<pack>]` | the text validator: duplicate ids, missing languages, placeholders, conditions, lengths, tags, scripts and arcs (`full` shows every problem) |
+| `/au stats` | how many lines are available, per event |
+| `/au memory` | resets the memory of **used lines** (the ones already said, to avoid repeating them; no confirmation). It does not touch the journal's memories: for those use `/au journal reset` |
+| `/au options` | opens the settings panel |
+| `/au wizard` | reopens the wizard |
 | `/au debug [full\|trace]` | diagnostics: client capabilities, latest events, trapped errors; `trace` prints every recognised event, for the session |
 
 **Key bindings.** Under *Options → Keybindings → AddOns → Azeroth Unspoken* you can bind four keys: *Confirm and speak the proposed line (or improvise)* (`AZEROTHUNSPOKEN_SPEAK`), *Another line* (`AZEROTHUNSPOKEN_REROLL`), *Pause the narrator immediately* (`AZEROTHUNSPOKEN_PAUSE`) and *Ambient dialogue with the NPC* (`AZEROTHUNSPOKEN_NPC`: opens or closes the dialogue). None has a default key.
 
 ## Settings
 
-The panel opens with `/au opzioni` (it is also registered among the game's addon options; that registration has not yet been verified in the real client). It contains:
+The panel opens with `/au options` (it is also registered among the game's addon options; that registration has not yet been verified in the real client). It contains:
 
 - **Language** of lines and interface, independent of the client language.
 - **Intensity** (0–100) and **style depth** (Natural, Literary, Elevated).
@@ -144,13 +144,13 @@ The panel opens with `/au opzioni` (it is also registered among the game's addon
 - **Narrator box**: text duration, opacity, size, locked position, history, test.
 - **Modules**: Personal, World, NPC dialogues, Memory, Relations, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
 - The "speak" button, the name from Total RP 3 and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
-- Some choices are made **by command only**: the relationship axes and people (`/au relations`), attraction and automatic registration of players (`/au relations attraction|auto`), the automatic NPC dialogue offer (`/au npc offer`) and the maximum number of active stories (`/au stories max`).
+- Some choices are made **by command only**: the relationship axes and people (`/au relationships`), attraction and automatic registration of players (`/au relationships attraction|auto`), the automatic NPC dialogue offer (`/au talk offer`) and the maximum number of active stories (`/au stories max`).
 
 ## Privacy and chat
 
 - **Everything stays on your computer.** The addon opens no connections, downloads nothing and sends no data. There is no active social module either (it is planned, with explicit consent and off by default).
 - **Chat content is not saved**, and neither are whispers: the addon never keeps the text of a message. Of an emote aimed at you it remembers, for the session only, *that* it arrived (the text is discarded), and of a whisper you sent only the recipient's name, in memory, to suggest them as a person to add.
-- **What is saved.** Per account: the settings (`AzerothUnspokenDB`). Per character (`AzerothUnspokenCharacterDB`): the memory of used lines, the chosen personality, the journal's **memories** (places, significant moments, flags), the **relationships** (the NPCs you met and, **only the players you chose yourself**, their name with the *personal* notes, tags and labels you write) and the state of the **stories**. There is no chat text, no dialogue line, and no data about a player you did not add. The journal and the relationships can be erased at any time (`/au journal reset`, `/au relations reset`). The narrator history lives in memory only and disappears with the session.
+- **What is saved.** Per account: the settings (`AzerothUnspokenDB`). Per character (`AzerothUnspokenCharacterDB`): the memory of used lines, the chosen personality, the journal's **memories** (places, significant moments, flags), the **relationships** (the NPCs you met and, **only the players you chose yourself**, their name with the *personal* notes, tags and labels you write) and the state of the **stories**. There is no chat text, no dialogue line, and no data about a player you did not add. The journal and the relationships can be erased at any time (`/au journal reset`, `/au relationships reset`). The narrator history lives in memory only and disappears with the session.
 - **Relationships.** A player enters the relationships list **only through your click or command**; the "register people I meet automatically" option exists but is off by default. The addon *suggests* (group members, trades, people you replied to), it does not register.
 - **Others' Total RP 3, only with consent.** The public data (race, class and personality traits) of other players' Total RP 3 profiles is read **only** if you turn on `/au who trp3 on` (or the option in the settings), off by default; never notes, history or private fields, and it is not saved.
 - **Nothing reaches chat without a player action.** The *Chat Gateway* has four modes:
@@ -159,7 +159,7 @@ The panel opens with `/au opzioni` (it is also registered among the game's addon
 |---|---|
 | `privato` / private (default) | lines stay in the narrator, never in chat |
 | `anteprima` / preview | the character's lines become proposals; the "speak" key opens the editor and you send with Enter |
-| `conferma` / confirm | the proposal is ready and a click, a key or `/au dire` sends it; you can edit it, change channel or discard it |
+| `conferma` / confirm | the proposal is ready and a click, a key or `/au speak` sends it; you can edit it, change channel or discard it |
 | `auto` | **only if you choose it, with a warning and a confirmation**: emotes go out by themselves and, inside instances, `/say`; everything else stays a proposal |
 
 - The *inner* and *NPC* voices never go to chat. Neither do the ambient dialogues and the personal stories: they stay in the narrator and in their own window.

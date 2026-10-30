@@ -47,7 +47,7 @@ NS:RegisterLanguage("en", {
 		other_action_emote = "made a gesture at you", other_action_attacks = "is attacking you", other_action_ally = "fights at your side",
 		other_trp3_on = "Other players' public Total RP 3 profiles: read (race, class and traits only, never notes or history).",
 		other_trp3_off = "Other players' public Total RP 3 profiles: not read.",
-		other_not_listed = "The person in front of you is not in your relationships list: add them first with /au relations.",
+		other_not_listed = "The person in front of you is not in your relationships list: add them first with /au relationships.",
 		other_trait_set = "%s: %s.",
 		other_trait_bad = "Usage: /au who trait temperament|morality|goals|speech|role <value> (or - to clear it).",
 	},

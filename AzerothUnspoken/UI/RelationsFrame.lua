@@ -2,7 +2,7 @@
 -- Tre viste: l'elenco (tabella ordinabile e filtrabile per NPC/giocatori, etichetta e nome), le persone incontrate
 -- (candidati proposti dal sistema: entrano in lista solo con un clic dell'utente) e il dettaglio di una relazione, con
 -- cursori per gli assi, etichetta, nota, tag e i selettori di tratti e ruolo dell'interlocutore (#37). In basso le opzioni (NPC automatici, attrazione, registra
--- automaticamente, proposte) e l'esportazione testuale. Si apre con /au relazioni o dal diario.
+-- automaticamente, proposte) e l'esportazione testuale. Si apre con /au relationships o dal diario.
 -- Nessun contenuto di chat o di whisper è mostrato o salvato: solo nomi, assi, note e tag scelti dall'utente.
 -- Solo pulsanti standard e cursori disegnati con texture (UI/Widgets.lua), come il resto dell'interfaccia.
 local ADDON, NS = ...

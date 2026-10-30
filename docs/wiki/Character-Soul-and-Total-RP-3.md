@@ -25,7 +25,7 @@ Personality is saved **per character**.
 
 ### The personality window
 
-Open it with `/au soul` (aliases `/au anima`, `/au personalita`, `/au profilo`) or the **Character soul...** button in the [[settings panel|Settings]]. There you can:
+Open it with `/au soul` or the **Character soul...** button in the [[settings panel|Settings]]. There you can:
 
 - pick an **archetype**;
 - click each trait to choose a value, or clear it;
@@ -56,14 +56,14 @@ An archetype is a starting point. Change any trait afterwards; if your choices n
 |---|---|---|
 | Temperament | `temperament` | `resolute`, `merciful`, `stoic`, `cheerful`, `melancholic`, `gruff`, `fierce` |
 | Morality | `morality` | `righteous`, `pragmatic`, `conflicted`, `disillusioned`, `hopeful` |
-| Curiosity | `curiosity` | a number 0–100, or `low`, `mid` (`medium`), `high` |
+| Curiosity | `curiosity` | a number 0–100, or `low`, `mid`, `high` |
 | Faith | `faith` | `devout`, `spiritual`, `doubting`, `skeptic` |
 | Motivation | `motivation` | `duty`, `vengeance`, `glory`, `knowledge`, `redemption`, `freedom`, `protection` |
-| Irony | `irony` | a number 0–100, or `low`, `mid` (`medium`), `high` |
-| Inner voice | `voice` (also `innervoice`, `inner`) | `off`, `quiet`, `present`, `vivid` |
-| Topics to avoid | `avoid` (also `topic`) | `death`, `blood`, `betrayal`, `family`, `religion`, `undead`, `demons`, `romance` |
+| Irony | `irony` | a number 0–100, or `low`, `mid`, `high` |
+| Inner voice | `voice` (also `innervoice`) | `off`, `quiet`, `present`, `vivid` |
+| Topics to avoid | `avoid` | `death`, `blood`, `betrayal`, `family`, `religion`, `undead`, `demons`, `romance` |
 
-Italian command words also work: `temperamento`, `morale`, `curiosita`, `fede`, `motivazione`, `ironia`, `voce`, `evita`.
+The trait names and the values are always the English words above, in every interface language. The interface shows their names in your language, but you type the English ones.
 
 ## Commands
 

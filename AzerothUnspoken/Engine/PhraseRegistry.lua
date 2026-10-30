@@ -519,7 +519,7 @@ function NS:AddTexts(lang, map, packId)
 end
 NS.AddTranslations = NS.AddTexts
 
--- statistiche per /au info: frasi con almeno una variante nella lingua
+-- statistiche per /au stats: frasi con almeno una variante nella lingua
 function Engine:Stats(lang)
 	local byEvent, total = {}, 0
 	for ev, list in pairs(self.byEvent) do

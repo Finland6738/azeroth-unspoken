@@ -23,14 +23,14 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 
 ### Opening it yourself
 
-- Target an NPC and type `/au npc` (aliases `/au talk`, `/au dialogue`, `/au dialogo`, `/au parla`).
+- Target an NPC and type `/au talk`.
 - Or bind the key **Ambient dialogue with the NPC (open/close)** under Options → Keybindings → AddOns → Azeroth Unspoken.
 
 ### In the dialogue window
 
 - Read the NPC's line.
 - Click one of the answers to reply.
-- Click **Close**, use the key again, or type `/au npc close` to end it.
+- Click **Close**, use the key again, or type `/au talk close` to end it.
 - Drag the window to move it. It tries not to cover the game's own windows.
 
 The dialogue closes by itself if combat starts, you die, you change zone, you turn to another NPC, or you do not answer for two minutes.
@@ -44,25 +44,25 @@ The addon tells you why when it cannot open a dialogue. The most common reasons:
 | *No NPC in front of you* | select an NPC, or open their vendor, flight or training window |
 | *Ambient dialogues are only with NPCs* | never with other players |
 | *There is no dialogue with a hostile creature* | only friendly NPCs talk |
-| *I am not sure who this is, and I will not guess* | open their window first, or say their role with `/au npc role <role>` |
+| *I am not sure who this is, and I will not guess* | open their window first, or say their role with `/au talk role <role>` |
 | *I do not have a dialogue for this NPC yet* | this kind of NPC has no lines yet |
 | *Not during combat* / *Not during a cinematic* / *Not while dead* | try again later |
 | *The narrator is paused* | resume with `/au pause` |
-| *Intensity is zero: dialogues open only by hand* | at intensity 0 the button does not appear by itself, but `/au npc` still works |
+| *Intensity is zero: dialogues open only by hand* | at intensity 0 the button does not appear by itself, but `/au talk` still works |
 | *NPC dialogues are off* | turn the **NPC dialogues** module back on in the settings |
 
 ## Commands
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au npc` | `/au talk`, `/au dialogue`, `/au dialogo`, `/au parla` | opens the dialogue with the NPC in front of you |
-| `/au npc test [style]` | `prova` | opens a dialogue with a **test innkeeper**, without a real NPC; leaves no trace. Styles: `gruff`, `jovial`, `warm`, `formal`, `terse`, `neutral` |
-| `/au npc close` | `chiudi` | closes the dialogue |
-| `/au npc role <role>` | `ruolo` | tells the addon the role of the NPC in front of you: `innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`, `banker` |
-| `/au npc offer [on\|off]` | `offerta` | whether the button appears by itself; with no value, switches it |
-| `/au npc status` | `stato` | prints the current state, for troubleshooting |
+| Command | What it does |
+|---|---|
+| `/au talk` | opens the dialogue with the NPC in front of you |
+| `/au talk test [style]` | opens a dialogue with a **test innkeeper**, without a real NPC; leaves no trace. Styles: `gruff`, `jovial`, `warm`, `formal`, `terse`, `neutral` |
+| `/au talk close` | closes the dialogue |
+| `/au talk role <role>` | tells the addon the role of the NPC in front of you: `innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`, `banker` |
+| `/au talk offer [on\|off]` | whether the button appears by itself; with no value, switches it |
+| `/au talk status` | prints the current state, for troubleshooting |
 
-`/au npc role` works for NPCs already in your [[relationships|Relationships]] list: talk to them once through the normal game dialogue first.
+`/au talk role` works for NPCs already in your [[relationships|Relationships]] list: talk to them once through the normal game dialogue first.
 
 ## What it leaves behind
 
@@ -78,14 +78,14 @@ Nothing else changes, in the game or in the addon. If the Memory or Relationship
 | Setting | Default | Where |
 |---|---|---|
 | NPC dialogues module | on | [[settings panel|Settings]], modules |
-| Automatic offer | on | `/au npc offer on\|off` |
+| Automatic offer | on | `/au talk offer on\|off` |
 | Key binding | none | Options → Keybindings → AddOns |
 
 ## Examples
 
-- Try it anywhere: `/au npc test jovial`.
-- Your favourite innkeeper is not recognized: target them and type `/au npc role innkeeper`.
-- You prefer to open dialogues only by hand: `/au npc offer off`, then use the key.
+- Try it anywhere: `/au talk test jovial`.
+- Your favourite innkeeper is not recognized: target them and type `/au talk role innkeeper`.
+- You prefer to open dialogues only by hand: `/au talk offer off`, then use the key.
 
 ## What you will see
 

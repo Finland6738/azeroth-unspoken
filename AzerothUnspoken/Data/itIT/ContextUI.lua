@@ -1,4 +1,4 @@
--- Testi dell'interfaccia in italiano per l'interlocutore e il luogo (S6c): ruoli, tratti, comandi /au luogo e /au chi.
+-- Testi dell'interfaccia in italiano per l'interlocutore e il luogo (S6c): ruoli, tratti, comandi /au place e /au who.
 local ADDON, NS = ...
 
 NS:RegisterLanguage("it", {
@@ -17,7 +17,7 @@ NS:RegisterLanguage("it", {
 		trait_role = "Ruolo", trait_role_innkeeper = "Locandiere", trait_role_merchant = "Mercante", trait_role_guard = "Guardia",
 		trait_role_questgiver = "Affida incarichi", trait_role_trainer = "Maestro", trait_role_flightmaster = "Maestro di volo",
 		trait_role_banker = "Banchiere", trait_role_leader = "Capo", trait_role_civilian = "Cittadino",
-		-- /au luogo
+		-- /au place
 		place_zone = "Luogo: %s (%s), mappa %s, riconosciuto %s",
 		place_src_map = "per numero di mappa", place_src_name = "per nome", place_src_guess = "per numero di mappa non verificato",
 		place_src_none = "senza dati",
@@ -31,7 +31,7 @@ NS:RegisterLanguage("it", {
 		place_tags = "Atmosfera e temi: %s",
 		place_state = "Scontro: %s; ruolo nel gruppo: %s; campo di battaglia: %s",
 		place_role_tank = "difesa", place_role_healer = "cure", place_role_damage = "danno",
-		-- /au chi
+		-- /au who
 		other_none = "Nessun interlocutore: prendi un bersaglio o parla con un NPC.",
 		other_secret = "L'identità di chi hai davanti è nascosta dal client: nessun profilo.",
 		other_who = "Interlocutore: %s (%s), %s %s, livello %s",
@@ -47,8 +47,8 @@ NS:RegisterLanguage("it", {
 		other_action_emote = "ti ha rivolto un gesto", other_action_attacks = "ti attacca", other_action_ally = "combatte al tuo fianco",
 		other_trp3_on = "Profili pubblici Total RP 3 degli altri giocatori: letti (solo razza, classe e tratti, mai note o storia).",
 		other_trp3_off = "Profili pubblici Total RP 3 degli altri giocatori: non letti.",
-		other_not_listed = "Chi hai davanti non è nella lista delle relazioni: aggiungilo prima con /au relazioni.",
+		other_not_listed = "Chi hai davanti non è nella lista delle relazioni: aggiungilo prima con /au relationships.",
 		other_trait_set = "%s: %s.",
-		other_trait_bad = "Uso: /au chi tratto temperament|morality|goals|speech|role <valore> (oppure - per toglierlo).",
+		other_trait_bad = "Uso: /au who trait temperament|morality|goals|speech|role <valore> (oppure - per toglierlo).",
 	},
 })

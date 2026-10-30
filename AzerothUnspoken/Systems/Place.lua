@@ -454,7 +454,7 @@ for eventType, fn in pairs(handlers) do
 end
 
 ---------------------------------------------------------------------------
--- Diagnostica e comando (/au luogo): mostra ciò che il client dice del luogo, per verificare i numeri in gioco
+-- Diagnostica e comando (/au place): mostra ciò che il client dice del luogo, per verificare i numeri in gioco
 ---------------------------------------------------------------------------
 ---@return string
 function Place:Status()
@@ -465,7 +465,7 @@ end
 
 local SOURCE_KEY = { map = "map", name = "name", ["map?"] = "guess" }
 
----Righe di descrizione del luogo attuale (comando /au luogo).
+---Righe di descrizione del luogo attuale (comando /au place).
 ---@return string[]
 function Place:Describe()
 	local ctx = NS:BuildContext()

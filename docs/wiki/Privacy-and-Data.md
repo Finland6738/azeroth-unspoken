@@ -79,8 +79,8 @@ On Windows, the game keeps saved data in:
 | What to erase | How |
 |---|---|
 | Journal (memories, places, flags) | `/au journal reset` (or `memories`, `ordinary`, `places`, `flags`), then the same command again within 15 seconds; or **Forget everything** in the journal |
-| Relationships | `/au relations reset` (or `npcs`, `players`), then again within 15 seconds; or **Forget everything** in the relationships window |
-| One memory, place or relationship | the delete buttons in the journal or relationships window, or `/au journal delete <n>`, `/au relations remove <name>` |
+| Relationships | `/au relationships reset` (or `npcs`, `players`), then again within 15 seconds; or **Forget everything** in the relationships window |
+| One memory, place or relationship | the delete buttons in the journal or relationships window, or `/au journal delete <n>`, `/au relationships remove <name>` |
 | Personality | `/au soul neutral` |
 | Stories | `/au stories skip all`, or turn them off with `/au stories off` |
 | Lines recently used | `/au memory` |

@@ -30,10 +30,11 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0020](0020-simulated-dialogue-and-real-dialogue-npc-alive.md) | NPC Alive: a simulated dialogue is not a real dialogue | accepted |
 | [0021](0021-story-arcs-micro-stories-without-game-effects.md) | Story Arcs: micro-stories that do not touch the game | accepted |
 | [0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md) | Automatic rules: CI, a docs check and the wiki sync | accepted |
+| [0023](0023-english-first-addon-and-english-command-names.md) | English first: the addon starts in English and command names are always English | accepted |
 
 ## Pending decisions
 
-- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0022).
+- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0024).
 
 ## How to write a new one
 

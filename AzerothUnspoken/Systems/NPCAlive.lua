@@ -738,7 +738,7 @@ NS.NarrativeDirector:SetRhythm("npcalive", function()
 	if N:IsActive() then return 0, 1 end
 end)
 
--- le battute di dialogo (eventi npcd_*) escono solo dentro un dialogo: né da /au evento né dal Director
+-- le battute di dialogo (eventi npcd_*) escono solo dentro un dialogo: né da /au event né dal Director
 function N.RegisterDialogueEvent(event)
 	NS.NarrativeDirector.EVENT_MODULE[event] = "npc"
 	Engine:SetEventGuard(event, "npcalive", function(ctx) return ctx.npcDialogue == true end)
@@ -762,30 +762,29 @@ end
 
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
-local TEST_STYLE = { burbero = "gruff", gruff = "gruff", gioviale = "jovial", jovial = "jovial", caloroso = "warm", warm = "warm",
-	formale = "formal", formal = "formal", laconico = "terse", terse = "terse", neutro = "neutral", neutral = "neutral" }
+local TEST_STYLE = NS.Keywords.Register("talk.styles", { gruff = "gruff", jovial = "jovial", warm = "warm",
+	formal = "formal", terse = "terse", neutral = "neutral" })
 
----/au npc [prova [stile] | chiudi | offerta [on|off] | stato]
+---/au talk [test [style] | close | role <role> | offer [on|off] | status]
 ---@param rest? string
 function N:Command(rest)
 	local word, arg = (rest or ""):match("^([^ ]*) *(.*)$")
 	word = NS.Lower(word or "")
 	arg = NS.Lower(arg or "")
-	if word == "chiudi" or word == "close" then
+	if word == "close" then
 		if not self:Close("closed") then Say("npc_none_open") end
-	elseif word == "prova" or word == "test" then
+	elseif word == "test" then
 		local ok, why = self:Start(self:TestWho(TEST_STYLE[arg]))
 		if not ok then self:Explain("npc_refused_", why) end
-	elseif word == "ruolo" or word == "role" then
+	elseif word == "role" then
 		self:DeclareRole(arg)
-	elseif word == "offerta" or word == "offer" then
+	elseif word == "offer" then
 		local on
-		if arg == "on" or arg == "si" or arg == "sì" or arg == "yes" then on = true
-		elseif arg == "off" or arg == "no" then on = false
-		else on = not (NS.db.npcAlive.autoOffer ~= false) end
+		on = NS.Keywords.OnOff(arg)
+		if on == nil then on = not (NS.db.npcAlive.autoOffer ~= false) end
 		NS.db.npcAlive.autoOffer = on
 		Say(on and "npc_offer_on" or "npc_offer_off")
-	elseif word == "stato" or word == "status" then
+	elseif word == "status" then
 		NS:Print("NPC Alive: " .. self:Status())
 	else
 		-- il gesto del giocatore apre il dialogo con chi ha davanti (interazione in corso o bersaglio)
@@ -800,12 +799,11 @@ function N:Command(rest)
 	end
 end
 
--- nomi dei ruoli nei comandi, in italiano e in inglese
-local ROLE_ALIAS = { locandiere = "innkeeper", innkeeper = "innkeeper", mercante = "merchant", merchant = "merchant",
-	guardia = "guard", guard = "guard", volo = "flightmaster", maestrovolo = "flightmaster", flightmaster = "flightmaster",
-	addestratore = "trainer", trainer = "trainer", banchiere = "banker", banker = "banker" }
+-- nomi dei ruoli nei comandi: sempre in inglese
+local ROLE_ALIAS = NS.Keywords.Register("talk.roles", { innkeeper = "innkeeper", merchant = "merchant", guard = "guard",
+	flightmaster = "flightmaster", trainer = "trainer", banker = "banker" })
 
----/au npc ruolo <ruolo>: l'utente dice che l'NPC davanti a lui ha quel ruolo. Vale come classificazione affidabile
+---/au talk role <role>: l'utente dice che l'NPC davanti a lui ha quel ruolo. Vale come classificazione affidabile
 ---(la scelta dell'utente è la prima fonte, S6c) e si conserva con la relazione dell'NPC.
 ---@param arg string
 ---@return boolean ok

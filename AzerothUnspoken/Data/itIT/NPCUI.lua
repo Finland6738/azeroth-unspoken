@@ -1,5 +1,5 @@
 -- Testi dell'interfaccia in italiano per i dialoghi ambientali (S8): etichetta, pulsanti, motivi per cui non c'è un
--- dialogo e comando /au npc. I testi delle battute stanno in Data/itIT/Dialogues.lua.
+-- dialogo e comando /au talk. I testi delle battute stanno in Data/itIT/Dialogues.lua.
 local ADDON, NS = ...
 
 NS:RegisterLanguage("it", {
@@ -18,7 +18,7 @@ NS:RegisterLanguage("it", {
 		npc_no_player = "I dialoghi ambientali sono solo con gli NPC, non con altri giocatori.",
 		npc_no_hostile = "Non c'è un dialogo con una creatura ostile.",
 		npc_no_dead = "Non c'è un dialogo con chi non può rispondere.",
-		npc_no_uncertain = "Non so con certezza chi sia, e non lo indovino: nessun dialogo. Apri il suo mercato, il volo o l'addestramento, oppure dillo tu con /au npc ruolo <ruolo>.",
+		npc_no_uncertain = "Non so con certezza chi sia, e non lo indovino: nessun dialogo. Apri il suo mercato, il volo o l'addestramento, oppure dillo tu con /au talk role <ruolo>.",
 		npc_no_no_script = "Per questo NPC non ho ancora un dialogo.",
 		npc_no_unknown = "Nessun dialogo possibile adesso.",
 		-- perché non si apre (permessi)
@@ -38,13 +38,13 @@ NS:RegisterLanguage("it", {
 		npc_refused_silent = "L'intensità è a zero: i dialoghi si aprono solo a mano.",
 		npc_refused_no_auto = "L'offerta automatica è spenta.",
 		npc_refused_unknown = "Il dialogo non si può aprire adesso.",
-		-- comando /au npc
+		-- comando /au talk
 		npc_none_open = "Nessun dialogo aperto.",
-		npc_already_open = "Un dialogo è già aperto: /au npc chiudi lo chiude.",
+		npc_already_open = "Un dialogo è già aperto: /au talk close lo chiude.",
 		npc_offer_on = "Quando apri il mercato, il volo, l'addestramento o parli con un NPC noto, compare il pulsante del dialogo ambientale.",
-		npc_offer_off = "Il pulsante del dialogo ambientale non compare più da solo: si apre con /au npc o con il tasto.",
+		npc_offer_off = "Il pulsante del dialogo ambientale non compare più da solo: si apre con /au talk o con il tasto.",
 		npc_role_bad = "Ruoli: locandiere, mercante, guardia, volo, addestratore, banchiere.",
-		npc_role_set = "Va bene: per l'addon è «%s». Vale come classificazione tua; si cambia con /au chi tratto role <ruolo>.",
+		npc_role_set = "Va bene: per l'addon è «%s». Vale come classificazione tua; si cambia con /au who trait role <ruolo>.",
 		npc_not_listed = "Questo NPC non è ancora nella lista delle relazioni: parlaci una volta con il dialogo di Blizzard e riprova.",
 	},
 })

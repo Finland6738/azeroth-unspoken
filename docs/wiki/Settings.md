@@ -4,7 +4,7 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 
 ## Where settings live
 
-- **The settings panel.** Open it with `/au options` (aliases `/au opzioni`, `/au config`). It is also listed among the game's addon options, under **Azeroth Unspoken**. Most rows are buttons: click to switch or cycle a value; rows with **-** and **+** change a number.
+- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. Most rows are buttons: click to switch or cycle a value; rows with **-** and **+** change a number.
 - **Commands.** Many settings also have a command. See the [[Commands Reference|Commands]].
 - **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices.
 - **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.
@@ -18,7 +18,7 @@ Changes take effect at once. There is no Save button.
 | Setting | Default | Panel row | Command | What it does |
 |---|---|---|---|---|
 | Addon on/off | on | **Addon** | `/au on`, `/au off` | Off: no spontaneous lines, no NPC dialogues, stories stop. Commands still work. |
-| Phrase language | Italian (`it`) | **Phrase language** (click to cycle) | `/au language en` | Language of lines and interface. Choose it in the wizard or with the command. See [[Languages]]. |
+| Phrase language | English (`en`) | **Phrase language** (click to cycle) | `/au language it` | Language of lines and interface. Choose it in the wizard or with the command. See [[Languages]]. |
 | Intensity | 50 | **Intensity** (- / + by 10) | `/au intensity <0-100>` | How often the narrator speaks. 0 = silent for spontaneous events. |
 | Style depth | Literary | **Style depth** (click to cycle) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
 | Pause between lines | 45 s | **Pause between lines** (cycles 15, 30, 45, 60, 90, 120, 180) | `/au cooldown <0-3600>` | Minimum pause between two spontaneous lines. |
@@ -57,8 +57,8 @@ Events added by phrase packs have their own default (30% if the pack sets none).
 
 | Setting | Default | Panel row | Command | What it does |
 |---|---|---|---|---|
-| Chat mode | Private narrator only | **Chat** (cycles private, preview, confirm) | `/au chat private\|preview\|confirm` | What may reach chat. |
-| Automatic sending | off | **Automatic sending** (click, then click again within 10 s) | `/au chat auto` (twice within 10 s) | Lets some lines go out by themselves. |
+| Chat mode | Private narrator only | **Chat** (cycles private, preview, confirm) | `/au mode private\|preview\|confirm` | What may reach chat. |
+| Automatic sending | off | **Automatic sending** (click, then click again within 10 s) | `/au mode auto` (twice within 10 s) | Lets some lines go out by themselves. |
 | Default channel | automatic | **Default channel** (click to cycle) | `/au channel <channel>` | Where proposals go. Automatic = `/say` for your character's words, `/emote` for the narrator's. |
 | Chat proposals module | on | module **Chat proposals** | — | Off: the same as private mode. |
 
@@ -145,16 +145,16 @@ The journal opens from the panel button **Character journal...** or `/au journal
 |---|---|---|---|
 | Automatic NPCs | on | relationships window | Works out your standing with NPCs by itself. |
 | Suggest people | on | relationships window | Suggests players you meet. It does not add them. |
-| Register by itself | off | relationships window, `/au relations auto on\|off` | Adds the players you meet without asking. |
-| Attraction axis | off | relationships window, `/au relations attraction on\|off` | Turns on the optional attraction axis. |
+| Register by itself | off | relationships window, `/au relationships auto on\|off` | Adds the players you meet without asking. |
+| Attraction axis | off | relationships window, `/au relationships attraction on\|off` | Turns on the optional attraction axis. |
 
-The window opens from the panel button **Relationships...** or `/au relations`. See [[Relationships]].
+The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].
 
 ## NPC dialogues
 
 | Setting | Default | Where | What it does |
 |---|---|---|---|
-| Automatic offer | on | `/au npc offer on\|off` | The dialogue button appears by itself when you open a vendor, flight or training window, or talk to a known innkeeper. |
+| Automatic offer | on | `/au talk offer on\|off` | The dialogue button appears by itself when you open a vendor, flight or training window, or talk to a known innkeeper. |
 
 The dialogue window can be dragged. See [[NPC Dialogues|NPC-Dialogues]].
 
@@ -169,6 +169,6 @@ The dialogue window can be dragged. See [[NPC Dialogues|NPC-Dialogues]].
 
 There is no single "reset all settings" button. To start over:
 
-- **Back to safe chat:** `/au chat private`.
+- **Back to safe chat:** `/au mode private`.
 - **One value:** set it again with its command or panel row (the defaults are on this page).
 - **Everything, for all characters:** log out, delete `AzerothUnspokenDB.lua` from the account's saved-data folder, and log in again. The wizard opens again. See [[Privacy and Data|Privacy-and-Data]] and [[Troubleshooting]].

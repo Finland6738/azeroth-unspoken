@@ -9,7 +9,7 @@ Thanks for your interest. This document explains how to report problems, write p
 From now on, **documentation, ADRs, pull request titles and descriptions, issues and commit messages are written in English.**
 
 - **Code comments** may stay as they are: the existing ones are in Italian. Rewriting existing code comments is out of scope for any change that is not about that; if you think it is worth doing, open an issue. New comments may be in English or in Italian, like the code around them (see [section 7](#7-lua-and-emmylua-style)).
-- **In-game text stays bilingual** (Italian and English): phrases, UI labels and messages exist in both languages (see [section 3](#3-writing-phrases)).
+- **In-game text stays bilingual** (Italian and English): phrases, UI labels and messages exist in both languages (see [section 3](#3-writing-phrases)). **English is the base language** (the default on a new install and the fallback of a missing translation) and Italian the translation. **Command names and their arguments are always English**, in every interface language ([ADR 0023](docs/adr/0023-english-first-addon-and-english-command-names.md)): a new command goes in `Commands.list` with an English name, and its description goes in both locales.
 - **Two documents stay in Italian**: the in-game checklist [docs/G1_checklist.md](docs/G1_checklist.md) (it is used by the Italian-speaking tester) and the original design spec [docs/Immersion_Director_GDD_v1.0.md](docs/Immersion_Director_GDD_v1.0.md) (the historical source of the project).
 
 ## Contents
@@ -91,7 +91,7 @@ All the details (events, conditions, personality tags, memory, relationships, in
 ### Conventions
 
 - **`id`**: `pack.event.NN` (for example `nani.battle.01`); emotes may use `.e.NN`. The id expresses an **intention**, the same in every language. Ids are unique across the whole addon: a duplicate is ignored with a warning. Ids are used by memory and by translations: **do not change them** after publication.
-- **Both languages and several variants**: every intention must be written at least in Italian (`itIT`) and in English (`enUS`), and for common scenes with **two or more variants** per language (same meaning and same register, different words and rhythm: the engine does not repeat the last one twice in a row). Languages are never mixed: a phrase only appears in the languages in which it exists. `/au valida` reports missing languages.
+- **Both languages and several variants**: every intention must be written at least in Italian (`itIT`) and in English (`enUS`), and for common scenes with **two or more variants** per language (same meaning and same register, different words and rhythm: the engine does not repeat the last one twice in a row). Languages are never mixed: a phrase only appears in the languages in which it exists. `/au validate` reports missing languages.
 - **Emotes** (`narrator` voice, emote form): they start in lowercase and **without the name**; the game prepends the character's name («*Brann* snuda l'arma…», that is "*Brann* draws his weapon…").
 - **Depth**: `natural`, `literary`, `elevated`. For key moments write one variant for each (`{ "text", depth = "elevated" }`); a phrase without `depth` applies to all and is never penalized.
 - **Placeholders** `{player}`, `{target}`, `{spell}`, `{zone}`, `{subzone}`, `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}`, gender `{g:pronto|pronta}`, vocabulary `{cry}`. If a datum is missing, the phrase is discarded: there is no need to handle it.
@@ -124,7 +124,7 @@ A pack is a separate addon that adds phrases, frames, vocabulary, translations, 
 1. Copy `AzerothUnspoken_Example` into a new folder (for example `AzerothUnspoken_Nani`).
 2. Rename the `.toc` file to the same name as the folder and leave `## Dependencies: AzerothUnspoken`.
 3. Write the rules and the texts with `AzerothUnspoken:RegisterPack({ id = "nani", name = "…", languages = { "itIT", "enUS" }, registry = { … }, texts = { itIT = { … }, enUS = { … } } })`. The pack `id` is unique. In a separate addon always call `AzerothUnspoken:` (the `NS` on the first line of the file is the namespace of your pack).
-4. Check with `/au valida nani` (duplicate ids, missing languages, placeholders, conditions, lengths, tags) and try it in the client with `/au pacchetti`, `/au info` and `/au prova <event>`.
+4. Check with `/au validate nani` (duplicate ids, missing languages, placeholders, conditions, lengths, tags) and try it in the client with `/au packs`, `/au stats` and `/au test <event>`.
 
 Besides phrases, a pack can add events, registers, conditions, places, NPCs, **ambient dialogues** and **story arcs**. For scripts use a new key (`npc:<npcID>` with `extends`): an already existing key **replaces** the base script ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 

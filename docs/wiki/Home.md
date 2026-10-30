@@ -31,7 +31,7 @@ Azeroth Unspoken is a quiet narrator that walks beside your character. It notice
 ## Quick start
 
 1. **Install it.** Copy the `AzerothUnspoken` folder into `<WoW>\_forever_\Interface\AddOns`. See [[Installation and Updating|Installation-and-Updating]].
-2. **Log in.** A few seconds after you enter the world, the [[setup wizard|First-Run-Wizard]] opens. Pick your language first: the addon starts in Italian until you choose. Then pick a style and an intensity. You can skip any step.
+2. **Log in.** A few seconds after you enter the world, the [[setup wizard|First-Run-Wizard]] opens. Pick your language first (English or Italiano): the addon starts in English. Then pick a style and an intensity. You can skip any step.
 3. **Play.** Walk into a new zone, start a fight, level up. Lines appear in the narrator box near the bottom of the screen.
 4. **Try a few commands.** Type `/au` for the list, `/au pause` to silence the narrator at once, and `/au options` for the settings. See the [[Commands Reference|Commands]].
 5. **Make it yours.** Give your character a personality with `/au soul`, and read your journal with `/au journal`.

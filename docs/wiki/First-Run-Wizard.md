@@ -7,7 +7,7 @@ The first time you enter the world with Azeroth Unspoken installed, a short setu
 - **Next** goes to the next step, **Back** to the previous one, and **Finish** (on the last step) closes the wizard.
 - **Skip** closes it at once and keeps the default settings. The defaults are the safe ones: the narrator stays private and nothing goes to chat.
 - You can drag the wizard window to move it.
-- Reopen it at any time with `/au welcome` (aliases: `/au wizard`, `/au benvenuto`), or with the **Reopen the setup guide** button in the [[settings panel|Settings]].
+- Reopen it at any time with `/au wizard`, or with the **Reopen the setup guide** button in the [[settings panel|Settings]].
 
 The wizard opens only once per account. After you finish or skip it, it does not come back by itself.
 
@@ -19,7 +19,7 @@ The wizard has **6 steps**, or **7 if Total RP 3 is installed**.
 
 Choose the language of the narrator's lines and of the addon's interface: **English** or **Italiano**. This does not depend on the language of your game client.
 
-> **Important.** The addon starts in **Italian**. If you play in English, click **English** on this first page. If you skipped the wizard, type `/au language en`. See [[Languages]].
+> **Note.** The addon starts in **English**. If you prefer Italian for the interface and the lines, click **Italiano** on this first page. If you skipped the wizard, type `/au language it`. Command names stay English in both languages. See [[Languages]].
 
 ### 2. What experience do you want?
 
@@ -74,11 +74,11 @@ The **Try the narrator** button shows a sample line in the narrator box, so you 
 
 When you click **Finish** or **Skip**, the chat box shows:
 
-> ready. The narrator is private: nothing goes to chat without a gesture from you. /au help for commands, /au welcome to redo the guide.
+> ready. The narrator is private: nothing goes to chat without a gesture from you. /au help for commands, /au wizard to redo the guide.
 
 From now on lines appear in the narrator box while you play.
 
 ## Tips
 
-- Not sure? Click **Skip**, then come back later with `/au welcome`. Just remember to set the language with `/au language en`.
+- Not sure? Click **Skip**, then come back later with `/au wizard`. Just remember that the language can be changed at any time with `/au language it` or `/au language en`.
 - Start with the default intensity of 50 for an evening, then adjust: lower if the narrator talks too much, higher if you miss it.

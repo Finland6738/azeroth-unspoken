@@ -233,7 +233,7 @@ function Narrator:NoteBlocked(channel, proposal)
 	end
 end
 
--- frase di prova, solo privata (wizard, impostazioni, /au narratore prova)
+-- frase di prova, solo privata (wizard, impostazioni, /au narrator prova)
 function Narrator:ShowTest()
 	local ctx = NS:BuildContext()
 	NS.Gateway:Narrate("muse", ctx, { privateOnly = true })

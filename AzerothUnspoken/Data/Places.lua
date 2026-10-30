@@ -5,7 +5,7 @@
 -- `map` è l'uiMapID di C_Map.GetBestMapForUnit e `id` l'instanceID di GetInstanceInfo. I numeri vengono dalla
 -- numerazione di Classic Era e NON sono ancora verificati nel client Forever (build 70658): finché una voce non ha
 -- `verified = true`, il luogo si riconosce per nome e il numero serve solo come ultimo ripiego (vedi Place:Lookup).
--- La prova si fa in gioco con `/au luogo`, che mostra mapID e instanceID letti dal client (docs/G1_checklist.md).
+-- La prova si fa in gioco con `/au place`, che mostra mapID e instanceID letti dal client (docs/G1_checklist.md).
 --
 -- Campi: tags (atmosfera e temi), mood (atmosfera principale, come NS:RegisterZoneMoods), continent (kalimdor |
 -- eastern), faction (chi governa il luogo: Alliance | Horde; assente = conteso o neutrale), capital (true),

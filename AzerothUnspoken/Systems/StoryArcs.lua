@@ -9,7 +9,7 @@
 -- Un passo scatta SOLO da un evento vero tra quelli elencati in `on` (luogo con mapID, memoria, relazioni, flag degli
 -- NPC Alive, livelli, morti) con le sue condizioni verificate sul contesto del momento, oppure da una scelta diretta del
 -- giocatore (`player`). Nessun'altra via: né un comando, né un timer, né un altro sistema apre o fa avanzare un arco.
---   - `choose`: il passo aspetta che il giocatore scelga tra 2-3 opzioni (il diario, o /au storie scegli). Ciò che si
+--   - `choose`: il passo aspetta che il giocatore scelga tra 2-3 opzioni (il diario, o /au stories choose). Ciò che si
 --     attribuisce al personaggio lo decide sempre il giocatore; la scelta è salvata come id di opzione.
 --   - `wait`: secondi di orologio che devono passare dall'ingresso nello stato prima che il passo possa scattare.
 -- Regole (GDD §7.5): al massimo 1-2 archi attivi (`arcs.maxActive`); un arco che si aprirebbe a posti finiti resta
@@ -1048,7 +1048,7 @@ function SA:OnBeatResult(entry, result)
 	end
 end
 
--- le battute escono solo dal passo di un arco: né da /au evento né da un altro sistema
+-- le battute escono solo dal passo di un arco: né da /au event né da un altro sistema
 for _, event in pairs(SA.EVENTS) do
 	NS:SetEventPriority(event, "exceptional")
 	NS.NarrativeDirector.EVENT_MODULE[event] = "storyArcs"
@@ -1078,7 +1078,7 @@ function handlers.LEVEL_UP() SA:Fire("level") end
 function handlers.MEMORY_FLAG(env)
 	-- i flag che gli archi stessi lasciano a ogni stato non fanno avanzare nulla: un evento vero muove un arco di un
 	-- solo passo, e non a catena
-	-- né quelli messi a mano dal giocatore (/au diario flag) né quelli automatici della memoria (first_death, level_N...),
+	-- né quelli messi a mano dal giocatore (/au journal flag) né quelli automatici della memoria (first_death, level_N...),
 	-- che stanno già dentro lo stesso evento (death, level, zone) che li ha causati: un evento vero muove un arco di un passo
 	local name = env.context.name
 	if type(name) ~= "string" or name:find("^arc_") or env.context.source ~= "addon" then return end
@@ -1303,9 +1303,13 @@ function SA:Check()
 end
 
 ---------------------------------------------------------------------------
--- Comando /au storie
+-- Comando /au stories
 ---------------------------------------------------------------------------
-local ALL = { tutte = true, tutti = true, all = true }
+local ALL = NS.Keywords.Register("stories.all", { all = true })
+local ACTIONS = NS.Keywords.Register("stories.actions", { choose = "choose", start = "start", suspend = "suspend",
+	resume = "resume", skip = "skip", disable = "disable", enable = "enable" })
+local WORDS = NS.Keywords.Register("stories", { list = "list", journal = "journal", status = "status", max = "max",
+	off = "off", on = "on" })
 
 local function Reason(prefix, why)
 	local key = prefix .. tostring(why or "unknown")
@@ -1323,12 +1327,12 @@ local function PrintRecord(rec)
 	end
 end
 
----/au storie [lista | diario | scegli <arco> [opzione] | inizia <arco> | sospendi|riprendi|salta|disattiva|attiva <arco|tutte> | max <1|2> | stato]
+---/au stories [list | journal | choose <arc> [option] | start <arc> | suspend|resume|skip|disable|enable <arc|all> | max <1|2> | status | on | off]
 ---@param rest? string
 function SA:Command(rest)
 	local word, arg = (rest or ""):match("^([^ ]*) *(.*)$")
 	word, arg = Lower(word or ""), arg or ""
-	if word == "" or word == "lista" or word == "list" or word == "elenco" then
+	if word == "" or WORDS[word] == "list" then
 		local list, shown = self:Listing(), 0
 		for _, bucket in ipairs({ "active", "available", "resolved", "skipped" }) do
 			for _, rec in ipairs(list[bucket]) do
@@ -1338,11 +1342,11 @@ function SA:Command(rest)
 		end
 		if shown == 0 then Say("arc_cmd_none") end
 		if not self:Enabled() then Say("arc_cmd_off") end
-	elseif word == "diario" or word == "journal" then
+	elseif WORDS[word] == "journal" then
 		if not (NS.JournalFrame and NS.JournalFrame:Open("stories")) then Say("arc_cmd_nojournal") end
-	elseif word == "stato" or word == "status" then
+	elseif WORDS[word] == "status" then
 		NS:Print("Story Arcs: " .. self:Status())
-	elseif word == "max" then
+	elseif WORDS[word] == "max" then
 		local ok, v = self:SetMaxActive(arg)
 		if not ok then
 			Say("arc_cmd_max_bad")
@@ -1350,16 +1354,14 @@ function SA:Command(rest)
 			Say("arc_cmd_max", v)
 			if self:ActiveCount() > v then Say("arc_cmd_max_over", self:ActiveCount()) end
 		end
-	elseif word == "off" or word == "spegni" then
+	elseif WORDS[word] == "off" then
 		self:SetEnabled(false)
 		Say("arc_cmd_module_off")
-	elseif word == "on" or word == "accendi" then
+	elseif WORDS[word] == "on" then
 		self:SetEnabled(true)
 		Say("arc_cmd_module_on")
 	else
-		local action = ({ scegli = "choose", choose = "choose", prosegui = "choose", inizia = "start", start = "start",
-			sospendi = "suspend", suspend = "suspend", riprendi = "resume", resume = "resume", salta = "skip", skip = "skip",
-			disattiva = "disable", disable = "disable", attiva = "enable", enable = "enable" })[word]
+		local action = ACTIONS[word]
 		if not action then
 			Say("arc_cmd_help")
 			return

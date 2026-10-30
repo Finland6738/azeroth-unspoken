@@ -24,15 +24,15 @@ To remove a pack, delete its folder from `AddOns`. To update it, replace the fol
 
 You do not need to uninstall a pack to stop using it.
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au packs` | `/au pacchetti` | lists every pack, with its id and whether it is on or off |
-| `/au pack <id> on` | `/au pacchetto` | turns a pack on |
-| `/au pack <id> off` | | turns a pack off |
-| `/au stats` | `/au info` | how many lines are available in your language, per event |
-| `/au validate` | `/au valida`, `/au controlla` | checks all packs for mistakes and prints a summary |
-| `/au validate full` | `tutto` | prints every problem found |
-| `/au validate <id>` | | checks one pack only |
+| Command | What it does |
+|---|---|
+| `/au packs` | lists every pack, with its id and whether it is on or off |
+| `/au pack <id> on` | turns a pack on |
+| `/au pack <id> off` | turns a pack off |
+| `/au stats` | how many lines are available in your language, per event |
+| `/au validate` | checks all packs for mistakes and prints a summary |
+| `/au validate full` | prints every problem found |
+| `/au validate <id>` | checks one pack only |
 
 Use the **id** shown by `/au packs`, for example:
 

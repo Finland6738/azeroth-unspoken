@@ -136,9 +136,9 @@ NS:RegisterLanguage("en", {
 		wiz_trp3_help = "Total RP 3 is installed. The addon can use your RP profile's name in lines (yours only, name only). It works 100% without it too.",
 		wiz_chat_help = "What may reach chat? By default nothing: the narrator stays private. Whatever you pick, every send in your character's name starts only from a gesture of yours, except in 'automatic'.",
 		wiz_test = "Try the narrator",
-		wiz_skip = "Skip", wiz_skip_tip = "Skip the guide: the defaults stay, all of them safe. Reopen it with /au welcome.",
+		wiz_skip = "Skip", wiz_skip_tip = "Skip the guide: the defaults stay, all of them safe. Reopen it with /au wizard.",
 		wiz_back = "Back", wiz_next = "Next", wiz_finish = "Finish",
-		wiz_done = "ready. The narrator is private: nothing goes to chat without a gesture from you. /au help for commands, /au welcome to redo the guide.",
+		wiz_done = "ready. The narrator is private: nothing goes to chat without a gesture from you. /au help for commands, /au wizard to redo the guide.",
 
 		-- Living Memory and journal (step S6)
 		opt_journal = "Character journal...",
@@ -167,33 +167,45 @@ NS:RegisterLanguage("en", {
 		mem_reset_done = "memory reset (%d entries).",
 		mem_help = "usage: /au journal [list | places | flag <name> | export | pin <n> | delete <n> | forget <place> | reset [all|memories|ordinary|places|flags]]",
 
-		help = "commands:\n"
-			.. "/au on | off - enable or disable automatic lines\n"
-			.. "/au pause - pause the narrator immediately (also with the bound key)\n"
-			.. "/au debug [full|trace] - diagnostics: client capabilities, recent events, errors\n"
-			.. "/au language [it|en] - phrase language\n"
-			.. "/au intensity <0-100> | depth natural|literary|elevated\n"
-			.. "/au chat private|preview|confirm|auto - what may reach chat (default: private; auto asks for confirmation)\n"
-			.. "/au channel auto|say|emote|party|raid|guild|instance\n"
-			.. "/au speak - confirm the waiting proposal (also from a macro or key)\n"
-			.. "/au another - swap the pending proposal for another line (sends nothing)\n"
-			.. "/au cancel - discard the proposal\n"
-			.. "/au copy - copy the proposal into the chat box (you send it with Enter)\n"
-			.. "/au narrator [history|reset|clear] - the narrator box\n"
-			.. "/au soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>] - character personality\n"
-			.. "/au journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset] - character memory and journal\n"
-			.. "/au stories [list|journal|choose <arc> <option>|start|suspend|resume|skip|disable|enable <arc|all>|max <1|2>] - the character's personal stories\n"
-			.. "/au relations [list|people|add <name>|note <name> <text>|export|...] - relationships with NPCs and players\n"
-			.. "/au place - where you are: zone, map, tags, territory, instance (to check the place data)\n"
-			.. "/au who [trp3 on|off|trait <trait> <value>] - who is in front of you: role, personality, recent actions\n"
-			.. "/au greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest\n"
-			.. "/au event <name> - propose a line for an event (battle, zone, muse...)\n"
-			.. "/au cast <spell> - a line for a spell (handy in macros)\n"
-			.. "/au test <event> - preview in the local chat\n"
-			.. "/au chance <event> <0-100> - probability of an event\n"
-			.. "/au cooldown <seconds> | ignore <spell> | button\n"
-			.. "/au packs | pack <id> on|off | stats | memory | options | welcome\n"
-			.. "/au validate [full|<pack>] - check the phrase packs (errors and warnings)",
+		help_title = "commands (the command names are always in English, whatever the interface language):",
+		help_help = "this list",
+		help_on = "enable or disable automatic lines",
+		help_pause = "pause the narrator immediately (also with the bound key)",
+		help_debug = "diagnostics: client capabilities, recent events, errors",
+		help_language = "phrase and interface language",
+		help_intensity = "how often the narrator speaks up",
+		help_depth = "how elevated the style is",
+		help_mode = "what may reach chat (default: private; auto asks for confirmation)",
+		help_channel = "default chat channel",
+		help_speak = "confirm the waiting proposal (also from a macro or key)",
+		help_another = "swap the pending proposal for another line (sends nothing)",
+		help_cancel = "discard the proposal",
+		help_copy = "copy the proposal into the chat box (you send it with Enter)",
+		help_narrator = "the narrator box",
+		help_soul = "character personality",
+		help_journal = "character memory and journal",
+		help_stories = "the character's personal stories",
+		help_relationships = "relationships with NPCs and players (short form: rel)",
+		help_place = "where you are: zone, map, tags, territory, instance (to check the place data)",
+		help_who = "who is in front of you: role, personality, recent actions",
+		help_talk = "ambient dialogue with the NPC in front of you",
+		help_manual = "propose a line for that moment (a name or target is optional)",
+		help_event = "propose a line for an event (battle, zone, muse...)",
+		help_cast = "a line for a spell (handy in macros)",
+		help_test = "preview a line in the local chat",
+		help_chance = "probability of an event",
+		help_cooldown = "pause between automatic lines",
+		help_ignore = "never comment on a spell (again to undo)",
+		help_button = "show or hide the speak button",
+		help_packs = "list the phrase packs",
+		help_pack = "turn a phrase pack on or off",
+		help_validate = "check the phrase packs (errors and warnings)",
+		help_stats = "how many lines are available",
+		help_memory = "clear the anti-repetition memory",
+		help_options = "open the settings panel",
+		help_wizard = "redo the first-run guide",
+		cmd_unknown = "unknown command '%s'. /au help lists the commands (their names are always in English).",
+		cmd_unknown_hint = "unknown command '%s'. Did you mean /au %s? (command names are always in English; /au help lists them)",
 
 		debug_title = "diagnostics",
 		debug_config = "Configuration",

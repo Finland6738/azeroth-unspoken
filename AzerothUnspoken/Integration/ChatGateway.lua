@@ -49,12 +49,10 @@ Gateway.CHANNELS = NS.Config.CHAT_CHANNELS
 -- voci che possono diventare testo in chat; "inner" e "npc" restano private
 local PUBLIC_VOICE = { narrator = true, character = true }
 
-local MODE_ALIAS = {
-	private = "PRIVATE", privato = "PRIVATE", privata = "PRIVATE", p = "PRIVATE",
-	preview = "PREVIEW", anteprima = "PREVIEW",
-	confirm = "CONFIRM_TO_SEND", conferma = "CONFIRM_TO_SEND", send = "CONFIRM_TO_SEND", invia = "CONFIRM_TO_SEND",
-	auto = "AUTO_ONLY_IF_ALLOWED", automatica = "AUTO_ONLY_IF_ALLOWED", automatico = "AUTO_ONLY_IF_ALLOWED",
-}
+-- parole del comando /au mode: sempre in inglese (i nomi interni in maiuscolo si accettano anch'essi)
+local MODE_ALIAS = NS.Keywords.Register("mode", {
+	private = "PRIVATE", preview = "PREVIEW", confirm = "CONFIRM_TO_SEND", auto = "AUTO_ONLY_IF_ALLOWED",
+})
 
 function NS:InInstance()
 	local inInstance, kind = IsInInstance()
@@ -145,7 +143,7 @@ local AUTO_CONFIRM_SECONDS = 10
 
 -- L'invio automatico (emote sempre, /say nelle istanze, a nome del personaggio) si sceglie con due gesti:
 -- il primo mostra l'avviso e non cambia nulla, il secondo, entro 10 secondi, lo attiva. Vale per il comando
--- (/au chat auto, ripetuto), il pannello e la procedura guidata.
+-- (/au mode auto, ripetuto), il pannello e la procedura guidata.
 ---@return "warned"|"enabled" state
 function Gateway:SelectAuto()
 	if NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED" and NS.db.output.autoPublicSay then return "enabled" end
@@ -658,7 +656,7 @@ function Gateway:Narrate(event, ctx, opts)
 	return shown
 end
 
--- Evento lanciato da macro, comando o altro addon: /au evento <nome>.
+-- Evento lanciato da macro, comando o altro addon: /au event <nome>.
 -- Mai invio diretto: con il giocatore che ha premuto un tasto compare comunque una proposta.
 ---@param event string
 ---@param extra? table valori in più per il contesto (target, spell...)
@@ -668,7 +666,7 @@ function NS:Trigger(event, extra)
 end
 
 ---------------------------------------------------------------------------
--- Tasto, pulsante e /au dire: la conferma
+-- Tasto, pulsante e /au speak: la conferma
 ---------------------------------------------------------------------------
 function Gateway:Improvise()
 	local ctx = NS:BuildContext()

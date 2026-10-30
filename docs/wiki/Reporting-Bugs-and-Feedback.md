@@ -32,9 +32,9 @@ For something that does not work as expected. The form asks for:
 
 **A good bug report** is specific. For example:
 
-> **What happened?** After `/au chat confirm`, pressing the speak key in Goldshire printed "this channel needs an action from you" and nothing was sent. I expected my character to say the proposed line.
+> **What happened?** After `/au mode confirm`, pressing the speak key in Goldshire printed "this channel needs an action from you" and nothing was sent. I expected my character to say the proposed line.
 >
-> **Steps to reproduce:** 1. `/au chat confirm` 2. Wait for a character line in the narrator box 3. Press the bound speak key.
+> **Steps to reproduce:** 1. `/au mode confirm` 2. Wait for a character line in the narrator box 3. Press the bound speak key.
 
 Helpful extras:
 

@@ -1,6 +1,6 @@
 -- Azeroth Unspoken: il diario del personaggio (GDD §12.2): ricordi, luoghi visitati, flag e momenti della sessione, con
 -- cancellazione selettiva, ricordi permanenti ed esportazione testuale manuale in una finestra copiabile (l'addon non
--- può scrivere file). Si apre con /au diario (alias /au journal) o dal pannello delle impostazioni.
+-- può scrivere file). Si apre con /au journal (alias /au journal) o dal pannello delle impostazioni.
 -- Le schede sono dati: JournalFrame:RegisterTab(id, def) aggiunge una scheda (S6b ci mette le relazioni, S9 gli archi).
 -- Solo pulsanti standard e un elenco a pagine, come il resto dell'interfaccia: nessun modello di scorrimento da cui
 -- dipendere, tranne la finestra dell'esportazione (con ripiego).

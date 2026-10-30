@@ -329,16 +329,16 @@ NS.Gateway.Discard(NS.Gateway)
 print("\nCOMANDI")
 cmd = G.SlashCmdList.AZEROTHUNSPOKEN
 G.SENT = lua.table()
-for c in ["lingua", "lingua en", "prova battle", "lingua itIT", "prova saluto", "chat anteprima", "saluto", "info",
-          "pacchetti", "prob fishing 100", "chat bogus", "intensita 70", "profondita elevato", "canale gruppo",
-          "pausa", "pausa", "narratore", "narratore cronologia", "narratore cronologia", "annulla", "debug"]:
+for c in ["language", "language en", "test battle", "language itIT", "test greet", "mode preview", "greet", "stats",
+          "packs", "chance fishing 100", "mode bogus", "intensity 70", "depth elevated", "channel party",
+          "pause", "pause", "narrator", "narrator history", "narrator history", "cancel", "debug"]:
     cmd(c)
 out = list(G.SENT.values())
 for s_ in out: print("  ", s_[:160].replace(chr(10), " | "))
-check(NS.db.locale == "it", "/au lingua itIT normalizzato a it")
-check(NS.db.chat.mode == "PREVIEW", "/au chat anteprima; una modalità sconosciuta non cambia nulla")
-check(NS.db.intensity == 70 and NS.db.proseDepth == "elevated" and NS.db.chat.channel == "PARTY", "/au intensita, profondita, canale")
-check(NS.paused is False, "/au pausa due volte: di nuovo attivo")
+check(NS.db.locale == "it", "/au language itIT normalizzato a it")
+check(NS.db.chat.mode == "PREVIEW", "/au mode preview; una modalità sconosciuta non cambia nulla")
+check(NS.db.intensity == 70 and NS.db.proseDepth == "elevated" and NS.db.chat.channel == "PARTY", "/au intensity, depth, channel")
+check(NS.paused is False, "/au pause due volte: di nuovo attivo")
 check(not any(s.startswith("SAY:") or s.startswith("EMOTE:") or s.startswith("PARTY:") for s in out), "i comandi di prova non scrivono in chat")
 check(any("Capacità" in s for s in out), "/au debug stampa la matrice delle capacità")
 check(any("Interface 16001" in s for s in out), "/au debug stampa GetBuildInfo")
@@ -353,35 +353,38 @@ def run_cmd(c):
     G.SENT = lua.table()
     cmd(c)
     return " | ".join(list(G.SENT.values()))
-for word, expected in [("auto", "auto"), ("say", "SAY"), ("dire", "SAY"), ("emote", "EMOTE"), ("gruppo", "PARTY"),
-                       ("party", "PARTY"), ("incursione", "RAID"), ("raid", "RAID"), ("gilda", "GUILD"),
-                       ("guild", "GUILD"), ("istanza", "INSTANCE_CHAT"), ("instance", "INSTANCE_CHAT")]:
+for word, expected in [("auto", "auto"), ("say", "SAY"), ("s", "SAY"), ("emote", "EMOTE"), ("e", "EMOTE"),
+                       ("party", "PARTY"), ("p", "PARTY"), ("raid", "RAID"), ("guild", "GUILD"), ("g", "GUILD"),
+                       ("instance", "INSTANCE_CHAT"), ("i", "INSTANCE_CHAT")]:
     NS.db.chat.channel = "SAY" if expected != "SAY" else "EMOTE"
-    run_cmd("canale " + word)
-    check(NS.db.chat.channel == expected, f"/au canale {word} -> {expected} (trovato {NS.db.chat.channel})")
+    run_cmd("channel " + word)
+    check(NS.db.chat.channel == expected, f"/au channel {word} -> {expected} (trovato {NS.db.chat.channel})")
+# l'aiuto elenca gli stessi nomi inglesi in ogni lingua, con la descrizione nella lingua dell'interfaccia
 for lang_ in ("it", "en"):
     NS.db.locale = lang_
-    help_text = NS.L(NS, "help")
-    for word in ("incursione", "evento", "vittoria") if lang_ == "it" else ("raid", "event", "victory"):
+    help_text = run_cmd("help")
+    for word in ("raid", "/au event", "victory", "/au journal", "/au relationships", "/au channel", "/au mode"):
         check(word in help_text, f"l'aiuto ({lang_}) elenca '{word}'")
+    for word in ("/au diario", "/au relazioni", "/au prova", "/au canale", "/au aiuto", "/au benvenuto"):
+        check(word not in help_text, f"l'aiuto ({lang_}) non elenca la parola italiana '{word}'")
 NS.db.locale = "it"
 NS.db.chat.channel = "auto"
-out_ = run_cmd("canale xyz")
-check("non valido" in out_ and "xyz" in out_ and "incursione" in out_ and NS.db.chat.channel == "auto",
+out_ = run_cmd("channel xyz")
+check("non valido" in out_ and "xyz" in out_ and "raid" in out_ and NS.db.chat.channel == "auto",
       "canale sconosciuto: messaggio con i valori ammessi, impostazione invariata: " + out_)
-out_ = run_cmd("profondita boh")
-check("non valido" in out_ and "elevato" in out_ and NS.db.proseDepth == "literary", "profondità sconosciuta: " + out_)
+out_ = run_cmd("depth boh")
+check("non valido" in out_ and "elevated" in out_ and NS.db.proseDepth == "literary", "profondità sconosciuta: " + out_)
 NS.db.chat.mode = "PRIVATE"
-out_ = run_cmd("chat boh")
-check("non valido" in out_ and "conferma" in out_ and NS.db.chat.mode == "PRIVATE", "modalità sconosciuta: " + out_)
+out_ = run_cmd("mode boh")
+check("non valido" in out_ and "confirm" in out_ and NS.db.chat.mode == "PRIVATE", "modalità sconosciuta: " + out_)
 NS.db.locale = "en"
 out_ = run_cmd("channel xyz")
 check("invalid value" in out_ and "raid" in out_, "canale sconosciuto in inglese: " + out_)
 NS.db.locale = "it"
-out_ = run_cmd("canale")   # senza valore: mostra il canale attuale, nessun errore
+out_ = run_cmd("channel")   # senza valore: mostra il canale attuale, nessun errore
 check("non valido" not in out_, "canale senza valore: solo lo stato")
 # ogni comando manuale dell'aiuto produce una frase o un messaggio, mai un errore
-for word in ("saluto", "addio", "brindisi", "pensiero", "minaccia", "grido", "vittoria", "preghiera", "ringrazia", "scherzo"):
+for word in ("greet", "farewell", "toast", "muse", "threat", "battlecry", "victory", "pray", "thanks", "jest"):
     run_cmd(word)
 check(NS.Diagnostics.errors[1] is None, "i comandi dell'aiuto non producono errori")
 NS.Gateway.Discard(NS.Gateway)
@@ -420,6 +423,10 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestContent"):
     lt, nst = load_addon()
+    # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
+    # imposta a "it" come farebbe un utente. TestConfig prova invece il predefinito, senza toccare la lingua.
+    if name != "TestConfig":
+        nst.db.locale = "it"
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
     print(f"  {name}: {t.passed} superati, {t.failed} falliti")

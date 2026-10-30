@@ -5,7 +5,7 @@
 -- Fonte 3 della lista di priorità: valgono di meno di ciò che sceglie l'utente e del profilo Total RP 3, di più del
 -- ruolo ricavato da un'interazione. Gli npcID vengono dalla numerazione di Classic Era e NON sono ancora verificati nel
 -- client Forever: se un numero non corrisponde, la voce semplicemente non scatta (nessun danno). La prova si fa in
--- gioco con `/au chi` davanti all'NPC (docs/G1_checklist.md). La personalità qui è un'interpretazione atmosferica
+-- gioco con `/au who` davanti all'NPC (docs/G1_checklist.md). La personalità qui è un'interpretazione atmosferica
 -- dell'addon, non lore: per i personaggi canonici si dice solo il ruolo (GDD §5.4).
 local ADDON, NS = ...
 
@@ -21,7 +21,7 @@ NS:RegisterNPCs({
 	[240] = { name = "Marshal Dughan", role = "guard", temperament = "resolute", speech = "formal", goals = "duty" },
 	[823] = { name = "Deputy Willem", role = "guard", speech = "formal", goals = "duty" },
 	-- guardie di città (S8): solo il ruolo, perché il registro le riconosce con certezza per npcID; nessun carattere
-	-- inventato. Numeri della numerazione di Classic Era, da verificare in gioco con `/au chi` (issue #36)
+	-- inventato. Numeri della numerazione di Classic Era, da verificare in gioco con `/au who` (issue #36)
 	[68] = { name = "Stormwind City Guard", role = "guard" },
 	[5595] = { name = "Ironforge Guard", role = "guard" },
 	[3296] = { name = "Orgrimmar Grunt", role = "guard" },

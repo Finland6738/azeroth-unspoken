@@ -769,7 +769,7 @@ function I:SetTRP3Consent(on)
 end
 
 ---------------------------------------------------------------------------
--- Comando (/au chi) e diagnostica
+-- Comando (/au who) e diagnostica
 ---------------------------------------------------------------------------
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
@@ -804,7 +804,7 @@ function I:Describe()
 	}
 end
 
----/au chi [trp3 on|off]
+---/au who [trp3 on|off | trait <trait> <value>]
 ---@param rest? string
 function I:Command(rest)
 	local word, arg = (rest or ""):match("^([^ ]*) *(.*)$")
@@ -812,15 +812,14 @@ function I:Command(rest)
 	if word == "trp3" then
 		local s = NS.db.interlocutor
 		local on
-		if arg == "on" or arg == "si" or arg == "sì" then on = true
-		elseif arg == "off" or arg == "no" then on = false
-		else on = not s.trp3Others end
+		on = NS.Keywords.OnOff(arg)
+		if on == nil then on = not s.trp3Others end
 		on = self:SetTRP3Consent(on)
 		Say(on and "other_trp3_on" or "other_trp3_off")
 		return
 	end
-	if word == "tratto" or word == "trait" then
-		-- /au chi tratto <tratto> <valore|-> sulla persona che si ha davanti, se è nella lista delle relazioni
+	if word == "trait" then
+		-- /au who trait <trait> <value|-> sulla persona che si ha davanti, se è nella lista delle relazioni
 		local trait, value = arg:match("^([^ ]+) *([^ ]*)")
 		local o = NS:BuildContext().other
 		local kind, id

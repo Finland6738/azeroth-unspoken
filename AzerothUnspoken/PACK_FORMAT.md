@@ -19,7 +19,7 @@ The previous format (`phrases = { { it=, en= } }`) remains valid and is converte
 1. Copy `AzerothUnspoken_Example` into `Interface\AddOns\` under a new name, for example `AzerothUnspoken_Nani`.
 2. Rename the `.toc` file to match the folder name and keep `## Dependencies: AzerothUnspoken`.
 3. Write the rules and texts with `AzerothUnspoken:RegisterPack({...})`.
-4. Type `/au valida nani` in game (or `/au valida` for everything): the validator tells you what to fix.
+4. Type `/au validate nani` in game (or `/au validate` for everything): the validator tells you what to fix.
 
 > **In an external pack, always call the APIs from the global `AzerothUnspoken:` object.** In the base database files
 > the first line `local ADDON, NS = ...` gives the namespace *of the addon*, and there you write `NS:RegisterNPCs(...)`. In a
@@ -224,7 +224,7 @@ From step S4 the **StyleResolver** uses registers to weight phrases (never to ex
   (registers admitted for an event) and `AzerothUnspoken:RegisterMoodStyles({ coast = { "everyday" } })` (registers preferred
   by an atmosphere).
 
-**Depth** (Natural, Literary, Elevated) is the one chosen by the user (`/au profondita`). It does not exclude phrases:
+**Depth** (Natural, Literary, Elevated) is the one chosen by the user (`/au depth`). It does not exclude phrases:
 those written for another depth **weigh less** (×0.3), so silence never results from a lack of suitable texts.
 A phrase without `depth` is never penalized. As a rule of thumb: `natural` is direct and everyday,
 `literary` is the base tone, `elevated` is ornate, ancient or ceremonial.
@@ -242,11 +242,11 @@ A phrase without `depth` is never penalized. As a rule of thumb: `natural` is di
 | `memory_return` | return to an already visited zone (memory recall: only with a real memory) |
 | `attack` | spell or ability in combat |
 | `heal`, `buff`, `travel`, `rezother` | heals, blessings, journeys, resurrection of a companion |
-| `greet`, `farewell`, `toast`, `thanks`, `jest`, `pray`, `muse`, `threat` | manual commands (`/au saluto`, etc.) |
-| any name | `/au evento <name>` from a macro, or an event declared by the pack (see below) |
+| `greet`, `farewell`, `toast`, `thanks`, `jest`, `pray`, `muse`, `threat` | manual commands (`/au greet`, etc.) |
+| any name | `/au event <name>` from a macro, or an event declared by the pack (see below) |
 
 A new event is declared in the pack, with a default category, chance (%) and cooldown (seconds)
-(the user's choices with `/au prob` take precedence):
+(the user's choices with `/au chance` take precedence):
 
 <!-- test -->
 ```lua
@@ -320,7 +320,7 @@ without that memory. `ctx.memory` also has `flags` (the narrative flags) and `se
 - **First visit**: use the `zone` event with `firstVisit = true`. It is a zone atmosphere like the others, but only the first time.
 - **Return**: the `memory_return` event (declared by the `base_memory` pack) is a **memory recall**: "memory recall"
   priority in the Narrative Director (above atmosphere, below exceptional events), active only if the
-  memory module is on and **never if the memory does not exist** (engine guard, even with `/au evento memory_return`).
+  memory module is on and **never if the memory does not exist** (engine guard, even with `/au event memory_return`).
 - **Editorial rule**: every phrase of a recall event must declare a memory condition (`repeatVisit`,
   `lastVisitBad`, `visitsMin`, `daysSinceLastVisit`, `remembered`, or an `any` in which every group has one). The validator
   reports `recallWithoutMemory` otherwise. A phrase that says "last time it ended badly" uses `lastVisitBad`; one that
@@ -460,7 +460,7 @@ Dialogues with an NPC (step S8, [ADR 0020](../docs/adr/0020-simulated-dialogue-a
 **The script** says which nodes there are and what can be answered. The right way to add a dialogue from a
 pack is a **new key**, usually a specific NPC `npc:<npcID>`, which **extends** the archetype's script with
 `extends` (its own nodes and replies sit on top of the inherited ones; everything else is inherited). Here is a test
-innkeeper (invented `npcID`: in the game use the real one, which you read with `/au chi` in front of the NPC) who opens
+innkeeper (invented `npcID`: in the game use the real one, which you read with `/au who` in front of the NPC) who opens
 in his own way and then follows the `innkeeper` script:
 
 <!-- test -->
@@ -642,7 +642,7 @@ AzerothUnspoken:RegisterPack({                      -- the arc's lines (see belo
 | Step field | Meaning |
 |---|---|
 | `from`, `to` | states; `to` is the one after `from` in `states` |
-| `on` | the **real events** that can trigger it: `zone` (you enter a zone, after two seconds), `death`, `level`, `npc` (gossip, vendor, flight, trainer, innkeeper, bank: not quests), `flag` (a new narrative flag set by an addon system: for example one of the S8 ambient dialogues, with `remembered = "npcd_innkeeper_asked_news"`; not the ones the player sets by hand, nor the automatic memory ones such as `first_death`, which are read with `remembered` inside the `death`, `level` or `zone` event that causes them), `player` (a direct choice by the player, from the Journal or with `/au storie scegli`) |
+| `on` | the **real events** that can trigger it: `zone` (you enter a zone, after two seconds), `death`, `level`, `npc` (gossip, vendor, flight, trainer, innkeeper, bank: not quests), `flag` (a new narrative flag set by an addon system: for example one of the S8 ambient dialogues, with `remembered = "npcd_innkeeper_asked_news"`; not the ones the player sets by hand, nor the automatic memory ones such as `first_death`, which are read with `remembered` inside the `death`, `level` or `zone` event that causes them), `player` (a direct choice by the player, from the Journal or with `/au stories choose`) |
 | `when` | RuleEngine conditions, evaluated on the context of the moment, the same as for phrases (place with `place = { mapID, zone, tags, capital }`; memory with `firstVisit`, `repeatVisit`, `lastVisitBad`, `remembered`; relationships with `isKnown`, `familiarityMin`, `trustMin`; `other = { role, npcID }`; `levelMin`; `race`), plus `arc = { … }` (below), `arcDone = "<id>"` (another arc is finished) and `capitalsVisitedMin = n` |
 | `wait` | clock seconds that must pass since entering the starting state |
 | `choose` | the step waits for the player to choose among the options of `choices[...]`: the choice is saved as the **option id** |
@@ -651,8 +651,8 @@ AzerothUnspoken:RegisterPack({                      -- the arc's lines (see belo
 - **One step per event, per arc.** With a choice pending the arc waits for the player. `player` steps have no event: the Journal offers them when the conditions and the wait hold. The flags that the arcs themselves leave (`arc_…`) advance nothing.
 - **`subject = "npc"`**: the arc binds to the first NPC that opens it (`npc` event, with `when = { other = { role = … }, familiarityMin = … }`). In the later steps, `arc = { withSubject = true }` asks that the event's NPC be the same one; in the lines `{other}` is its name. The addon only reads the relationship it already keeps (S6b relationships): it changes nothing about the NPC.
 - **`topic = "death"`** (or another Character Soul topic): if the character avoids that topic, the arc neither opens nor advances.
-- **Slots**: at most 1–2 active arcs (`arcs.maxActive`, `/au storie max <1|2>`). If an opening event arrives when the slots are full, the arc stays "available" and the player starts it from the Journal.
-- **The player is in control.** Every arc can be **suspended**, **skipped** or **disabled**, one by one or all at once (`/au storie`, Journal); the `storyArcs` module turns everything off. A suspended or skipped arc can be resumed; a disabled one can be re-enabled.
+- **Slots**: at most 1–2 active arcs (`arcs.maxActive`, `/au stories max <1|2>`). If an opening event arrives when the slots are full, the arc stays "available" and the player starts it from the Journal.
+- **The player is in control.** Every arc can be **suspended**, **skipped** or **disabled**, one by one or all at once (`/au stories`, Journal); the `storyArcs` module turns everything off. A suspended or skipped arc can be resumed; a disabled one can be re-enabled.
 - **The ending** (`RESOLVED`) leaves a permanent memory in Living Memory (`kind = "story"`, tags `arc`, `done` and the arc id: no text). Every state reached sets the flag `arc_<id>_<state>` (lowercase), which phrases read with `remembered`.
 - **No field for rewards or effects**: an unknown field in an arc or a step is a validator error (`reward`, `quest`…).
 
@@ -672,7 +672,7 @@ AzerothUnspoken:AddArcTexts("itIT", { ponte = {
 } })
 ```
 
-The options are **chosen by the player**, and the text does not make the character say anything the player did not decide. Title, account of each state, questions, labels and notes are needed in both Italian and English: `/au valida` reports the ones that are missing (`badArc`).
+The options are **chosen by the player**, and the text does not make the character say anything the player did not decide. Title, account of each state, questions, labels and notes are needed in both Italian and English: `/au validate` reports the ones that are missing (`badArc`).
 
 **The lines** are rules of the events `arc_open` (first step), `arc_step` (intermediate steps) and `arc_resolve` (last step), which a pack declares with `events = { arc_open = { category = "reflection", chance = 100, cooldown = 0 }, … }` (as in `Data/RegistryArcs.lua`). Each rule **declares the arc** with the `arc` sub-table, and the validator requires it (excerpt from the `ponte_battute` pack of the example):
 
@@ -694,9 +694,9 @@ registry = {
 
 - **Private voices**: `inner` and `narrator`. Never `character`, which in proposal mode can become a phrase in chat.
 - They come out of the Narrative Director with the "exceptional event" priority, **one at a time** (at least 90 seconds, `BEAT_GAP`, between two arc lines: no cascade). If the moment is not a good one (combat, death, raid or battleground, intrusive screen, pause) the line waits for up to 15 minutes; with intensity at 0 or the module off it stays silent. **The state advances anyway and the Journal tells the story**: silence is a valid outcome.
-- They are not spoken by hand (`/au evento arc_open` produces nothing): the engine makes them speak only for an arc's step.
+- They are not spoken by hand (`/au event arc_open` produces nothing): the engine makes them speak only for an arc's step.
 - Editorial rules (GDD §5.4, §7.5): original, no invented lore passed off as canon, no promise of consequences on the game. No rewards, "mission" or "loot" in the texts.
-- An arc with a wrong definition stays registered but never starts: `/au valida` says why.
+- An arc with a wrong definition stays registered but never starts: `/au validate` says why.
 
 ## Placeholders
 
@@ -788,7 +788,7 @@ Frame and phrase together must fit within the 255 bytes of a message (the valida
 
 <!-- test -->
 ```lua
-AzerothUnspoken:RegisterLanguage("de", { name = "Deutsch", ui = { help = "Befehle: /au ..." } })
+AzerothUnspoken:RegisterLanguage("de", { name = "Deutsch", ui = { help_title = "Befehle (die Namen bleiben englisch):" } })
 AzerothUnspoken:RegisterPack({
     id = "tedesco",
     texts = { deDE = { ["battle.gen.12"] = "Keinen Schritt zurück. Keinen einzigen!" } },
@@ -797,7 +797,7 @@ AzerothUnspoken:RegisterPack({
 
 - Texts for ids of **other packs** (including the base one) are **added as variants**: a translation brings a new
   language, an extra text in the same language sits alongside the existing ones (an identical text is not duplicated).
-- Missing interface texts fall back to Italian. See `Data\itIT\Interface.lua` for all the keys.
+- Missing interface texts fall back to English (the base language of the addon). See `Data\enUS\Interface.lua` for all the keys. Command names are never translated: only the descriptions and messages are, so a language pack adds `help_*` descriptions and messages, not command words.
 - A language registered by a pack stays the one chosen by the user from one session to the next.
 - The old name `AzerothUnspoken:AddTranslations(language, map)` and the pack field `translations` still work.
 
@@ -829,7 +829,7 @@ The previous format has no `depth`, `tags` or `category` (the event's one is use
 
 ## Validator
 
-`/au valida` (or `/au validate`) checks all packs, `/au valida <pack>` just one, `/au valida tutto` also shows
+`/au validate` checks all packs, `/au validate <pack>` just one, `/au validate full` also shows
 the problems beyond the first twelve. The same checks run in the offline tests. An **error** must be fixed,
 a **warning** is advice.
 
@@ -872,7 +872,7 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
 5. Once the phrase is chosen, it chooses a **variant**: among those of the right depth (or with no indication), different from the last one used.
 6. The memory of uses and variants is saved between sessions, per character, and uses fade at every access.
 7. Before the engine, the **Narrative Director** decides (spontaneous events, not explicit requests): intensity,
-   probability per event (`/au prob`), pauses (global `/au cooldown`, per category, per event), budget per category,
+   probability per event (`/au chance`), pauses (global `/au cooldown`, per category, per event), budget per category,
    priority and suspension during cutscenes and demanding combat. A new event has the "ambient" priority;
    a pack can change it with `AzerothUnspoken:SetEventPriority("fishing", "memory")`
    (`dialogue`, `exceptional`, `memory`, `ambient`). See [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).

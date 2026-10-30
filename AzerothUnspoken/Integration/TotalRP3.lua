@@ -6,13 +6,13 @@
 -- Cosa legge, e solo del PROPRIO profilo:
 --   - il nome (GetFirstName): con l'opzione `modules.totalRP3`;
 --   - i tratti psicologici pubblici (`characteristics/PS`, quelli che TRP3 mostra agli altri giocatori), mappati sui
---     tratti del Character Soul: in più serve il consenso del personaggio (`personality.trp3`, /au anima trp3 on).
+--     tratti del Character Soul: in più serve il consenso del personaggio (`personality.trp3`, /au soul trp3 on).
 -- Non legge note, informazioni fuori dal personaggio, storia o altri campi, e non scrive mai nulla in TRP3.
 -- Per le relazioni (S6b): IsKnownPlayer chiede al registro di TRP3 se conosce un giocatore, per proporlo all'utente.
 -- Risponde sì/no: nessun dato del profilo viene letto.
 -- Per l'interlocutore (S6c): GetOtherProfile legge del profilo PUBBLICO di un altro giocatore (quello che TRP3
 -- riceve e mostra a tutti) solo razza e classe personalizzate e i tratti psicologici, con un consenso a parte
--- (`interlocutor.trp3Others`, spento di base, /au chi trp3) oltre al modulo `totalRP3`.
+-- (`interlocutor.trp3Others`, spento di base, /au who trp3) oltre al modulo `totalRP3`.
 local ADDON, NS = ...
 local Compat = NS.Compat
 ---@class AUTotalRP3
