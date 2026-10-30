@@ -380,6 +380,64 @@ function Engine.UsesRelation(when)
 	return false
 end
 
+-- etichette di relazione negative (Data/Relationships.lua): una frase calda non deve poter uscire per loro (#105)
+Engine.NEGATIVE_RELATIONS = { "enemy", "disliked", "wary", "feared" }
+
+local function CoversNegative(names)
+	local have = {}
+	for _, n in ipairs(AsList(names)) do have[n] = true end
+	for _, n in ipairs(Engine.NEGATIVE_RELATIONS) do
+		if not have[n] then return false end
+	end
+	return true
+end
+
+---Dice se le condizioni (e i tag) di una frase escludono con certezza le relazioni negative (nemico, inviso,
+---diffidente, temuto): `relation` limitata a etichette non negative, `not = { relation = {...} }` che le copre
+---tutte, i quattro tag `rel.not:relation:<etichetta>`, oppure le soglie degli assi (affectionMin, trustMin, fearMax)
+---che le lasciano fuori. Vale anche dentro `other`, `not` e `any` (tutti i rami).
+---@param when? table condizioni
+---@param tags? table<string, boolean> tag della frase
+---@return boolean
+function Engine.ExcludesNegativeRelation(when, tags)
+	if type(tags) == "table" then
+		local all = true
+		for _, n in ipairs(Engine.NEGATIVE_RELATIONS) do
+			if not tags["rel.not:relation:" .. n] then all = false; break end
+		end
+		if all then return true end
+	end
+	if type(when) ~= "table" then return false end
+	if when.relation ~= nil then
+		local list, ok = AsList(when.relation), true
+		for _, name in ipairs(list) do
+			for _, neg in ipairs(Engine.NEGATIVE_RELATIONS) do
+				if name == neg then ok = false end
+			end
+		end
+		if ok and #list > 0 then return true end
+	end
+	local n = when["not"]
+	if type(n) == "table" then
+		if n.relation ~= nil and CoversNegative(n.relation) then return true end
+		if type(n.other) == "table" and n.other.relation ~= nil and CoversNegative(n.other.relation) then return true end
+	end
+	if type(when.affectionMin) == "number" and when.affectionMin >= -24
+		and type(when.trustMin) == "number" and when.trustMin >= -29
+		and type(when.fearMax) == "number" and when.fearMax <= 59 then
+		return true
+	end
+	if type(when.other) == "table" and Engine.ExcludesNegativeRelation(when.other) then return true end
+	if type(when.any) == "table" and #when.any > 0 then
+		local all = true
+		for _, sub in ipairs(when.any) do
+			if not Engine.ExcludesNegativeRelation(sub) then all = false; break end
+		end
+		if all then return true end
+	end
+	return false
+end
+
 -- condizioni che dipendono da un ricordo (ctx.memory)
 Engine.MEMORY_CONDITIONS = { firstVisit = true, repeatVisit = true, lastVisitBad = true, visitsMin = true,
 	visitsMax = true, daysSinceLastVisit = true, remembered = true }

@@ -1403,6 +1403,103 @@ T.run("etichetta personale: mai in chat pubblica", function()
 	NS.Gateway:Discard()
 end)
 
+T.run("saluti, congedi e duelli rispettano il rapporto (#105)", function()
+	Fresh()
+	math.randomseed(105)
+	local function Warm(p) return p.tags and p.tags.warm and not p.tags.ironic end
+	local function Pool(event, ctx)
+		local out = {}
+		for _, lang in ipairs({ "it", "en" }) do
+			for _, p in ipairs(Engine:Eligible(Engine.byEvent[event], lang, ctx, nil, time())) do out[p.id] = p end
+		end
+		return out
+	end
+	local function Seen(event, extra, n)
+		local ids = {}
+		for _ = 1, n or 150 do
+			NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+			local rec = Engine:PickEntry(event, NS:BuildContext(extra), "say") or Engine:PickEntry(event, NS:BuildContext(extra), "emote")
+			if rec then ids[rec.id] = true end
+		end
+		return ids
+	end
+	local cases = {
+		{ "enemy", { familiarity = 60, trust = -20, affection = -90 } },
+		{ "wary", { familiarity = 60, trust = -50, affection = 0 } },
+		{ "disliked", { familiarity = 60, trust = 0, affection = -40 } },
+		{ "feared", { familiarity = 60, trust = 0, affection = 0, fear = 80 } },
+	}
+	for _, c in ipairs(cases) do
+		local key = Person("Kaelen-Stormrage", c[2])
+		P.target = { name = "Kaelen", realm = "Stormrage", player = true, guid = "Player-1-0000BBBB" }
+		T.eq(NS:BuildContext().relation, c[1], "la relazione è " .. c[1])
+		for _, ev in ipairs({ "greet", "farewell" }) do
+			for id, p in pairs(Pool(ev, NS:BuildContext())) do
+				T.ok(not Warm(p), ("%s: nessuna frase calda per %s (%s)"):format(ev, c[1], id))
+			end
+			for id in pairs(Seen(ev)) do
+				T.ok(not Warm(Engine.byId[id]), ("%s: mai %s per %s"):format(ev, id, c[1]))
+			end
+		end
+		Fresh()
+	end
+	-- un fidato: i saluti caldi restano possibili
+	Person("Kaelen-Stormrage", { familiarity = 80, trust = 60, affection = 50 })
+	P.target = { name = "Kaelen", realm = "Stormrage", player = true, guid = "Player-1-0000BBBB" }
+	T.eq(NS:BuildContext().relation, "friend", "un amico fidato")
+	local pool = Pool("greet", NS:BuildContext())
+	T.ok(pool["greet.03"] and pool["greet.08"] and pool["rel.greet.player"], "a un amico le frasi calde restano")
+	T.ok(Seen("greet")["rel.greet.friend"], "e il saluto dell'amico esce")
+	Fresh()
+	-- duello: dipende dal rapporto
+	local function Duel(axes)
+		Fresh()
+		if axes then Person("Brenna-TestRealm", axes) end
+		FIRE("DUEL_REQUESTED", "Brenna-TestRealm")
+		local q
+		for _, c in ipairs(Director.queue) do if c.event == "other_action" then q = c end end
+		T.ok(q ~= nil, "il duello è un candidato")
+		local ids = {}
+		for id in pairs(Pool("other_action", NS:BuildContext(q.extra))) do ids[id] = true end
+		return ids
+	end
+	local d = Duel({ familiarity = 60, trust = -20, affection = -90 })
+	T.ok(d["ctx.act.duel.enemy"] and not d["ctx.act.duel"] and not d["ctx.act.duel.friend"] and not d["ctx.act.duel.inner"], "duello con un nemico")
+	d = Duel({ familiarity = 60, trust = -50 })
+	T.ok(d["ctx.act.duel.wary"] and not d["ctx.act.duel"] and not d["ctx.act.duel.enemy"], "duello con un diffidente")
+	d = Duel({ familiarity = 40, trust = 0, respect = 70 })
+	T.ok(d["ctx.act.duel.rival"] and not d["ctx.act.duel"] and not d["ctx.act.duel.friend"], "duello con un rivale")
+	d = Duel({ familiarity = 80, trust = 60, affection = 50 })
+	T.ok(d["ctx.act.duel.friend"] and not d["ctx.act.duel"] and not d["ctx.act.duel.enemy"] and not d["ctx.act.invite"], "duello con un amico")
+	d = Duel(nil)
+	T.ok(d["ctx.act.duel"] and not d["ctx.act.duel.enemy"] and not d["ctx.act.duel.friend"], "duello con uno sconosciuto")
+end)
+
+T.run("validatore: una frase calda deve escludere i rapporti negativi (#105)", function()
+	NS:RegisterPack({ id = "t_warm", languages = { "itIT" }, registry = {
+		["t.warm.bad"] = { event = "greet", speaker = "character", styles = { "everyday" }, tags = { "warm" } },
+		["t.warm.bad.bye"] = { event = "farewell", speaker = "character", styles = { "everyday" }, tags = { "warm" }, conditions = { hasTarget = true } },
+		["t.warm.bad.act"] = { event = "other_action", speaker = "character", styles = { "everyday" }, tags = { "warm" }, conditions = { other = { actions = "invite" } } },
+		["t.warm.partial"] = { event = "greet", speaker = "character", styles = { "everyday" }, tags = { "warm" }, conditions = { ["not"] = { relation = { "enemy", "wary" } } } },
+		["t.warm.ok.not"] = { event = "greet", speaker = "character", styles = { "everyday" }, tags = { "warm" }, conditions = { ["not"] = { relation = { "enemy", "wary", "disliked", "feared" } } } },
+		["t.warm.ok.rel"] = { event = "greet", speaker = "character", styles = { "everyday" }, tags = { "warm" }, conditions = { relation = { "friend", "comrade" } } },
+		["t.warm.ok.tags"] = { event = "greet", speaker = "character", styles = { "everyday" }, tags = { "warm", "rel.not:relation:enemy", "rel.not:relation:wary", "rel.not:relation:disliked", "rel.not:relation:feared" } },
+		["t.warm.ok.ironic"] = { event = "greet", speaker = "character", styles = { "ironic" }, tags = { "warm", "ironic" } },
+		["t.warm.ok.event"] = { event = "battle", speaker = "character", styles = { "everyday" }, tags = { "warm" } } },
+		texts = { itIT = { ["t.warm.bad"] = { "Vecchi amici!" }, ["t.warm.bad.bye"] = { "Torna presto." }, ["t.warm.bad.act"] = { "Volentieri." },
+			["t.warm.partial"] = { "Che gioia." }, ["t.warm.ok.not"] = { "Che gioia rivederti." }, ["t.warm.ok.rel"] = { "Amico mio." },
+			["t.warm.ok.tags"] = { "Bentornato." }, ["t.warm.ok.ironic"] = { "Oh, che gioia." }, ["t.warm.ok.event"] = { "Forza!" } } } })
+	local r = NS.Validator:Run({ packs = { "t_warm" } })
+	local flagged = {}
+	for _, p in ipairs(r.errors) do if p.code == "warmWithoutRelation" then flagged[p.id] = true end end
+	T.ok(flagged["t.warm.bad"] and flagged["t.warm.bad.bye"] and flagged["t.warm.bad.act"] and flagged["t.warm.partial"], "le frasi calde senza esclusione sono segnalate")
+	T.ok(not flagged["t.warm.ok.not"] and not flagged["t.warm.ok.rel"] and not flagged["t.warm.ok.tags"]
+		and not flagged["t.warm.ok.ironic"] and not flagged["t.warm.ok.event"], "le altre no")
+	-- i dati distribuiti rispettano la regola
+	local all = NS.Validator:Run()
+	for _, p in ipairs(all.errors) do T.ok(p.code ~= "warmWithoutRelation" or tostring(p.id):find("^t%.warm%."), "dati distribuiti: " .. tostring(p.id)) end
+end)
+
 T.run("nessun errore intercettato", function()
 	local errs = {}
 	for _, e in pairs(NS.Diagnostics.errors) do table.insert(errs, tostring(e.id) .. ": " .. tostring(e.message)) end

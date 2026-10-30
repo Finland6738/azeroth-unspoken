@@ -116,8 +116,8 @@ print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varian
 # 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
 # e luogo (S6c) + 7 del pacchetto di esempio; S7 (contenuti Alpha): 803 di base + 7 del pacchetto di esempio;
 # S8 (NPC Alive): + 169 battute dei dialoghi ambientali = 972 di base + 7 = 979
-# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012
-check(ids == 1012, f"1012 frasi caricate (trovate {ids})")
+# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016
+check(ids == 1016, f"1016 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
