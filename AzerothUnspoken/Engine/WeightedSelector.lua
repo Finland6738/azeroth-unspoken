@@ -62,6 +62,10 @@ end
 -- Nessun testo (ADR 0017): solo id, numeri e registri.
 Engine.USES_MAX = 512
 Engine.USES_TRIM = 384    -- oltre USES_MAX si torna a questo numero, così il taglio non avviene a ogni scelta
+-- An id that is not registered at login may belong to a regional pack that is loaded later (#101, ADR 0025): its use
+-- decays like the others and its last use is kept for at most DORMANT_LAST_MAX seconds (the longest cooldown of the
+-- content is seven days), so a pack that was uninstalled leaves nothing behind for long.
+Engine.DORMANT_LAST_MAX = 30 * 86400
 
 -- quante voci ha uses (contate una volta per tabella, poi tenute aggiornate da Remember)
 local counted, usesCount = nil, 0
@@ -128,22 +132,29 @@ function Engine:DecayMemory()
 	local mem = Mem()
 	local known, cooldown = KnownIds()
 	local uses = mem.uses
+	-- an id not registered now may be in a regional pack not loaded yet: it decays like the others and goes when it
+	-- falls under 0.2 (a few logins) or with the cap
 	for id, n in pairs(uses) do
 		n = n * 0.75
-		uses[id] = (n >= 0.2) and known[id] and n or nil
+		uses[id] = (n >= 0.2) and n or nil
 	end
 	counted = nil
 	Engine.TrimUses(mem)
-	-- ultimo uso: serve solo al cooldown. Via quelli delle voci senza cooldown (la memoria di prima di #86), dei
-	-- cooldown finiti e delle voci che non esistono più (un pacchetto disinstallato; uno solo spento resta registrato)
+	-- ultimo uso: serve solo al cooldown. Via quelli delle voci senza cooldown (la memoria di prima di #86) e dei
+	-- cooldown finiti; quello di una voce non registrata adesso (un pacchetto regionale non ancora caricato, o un
+	-- pacchetto disinstallato) resta al massimo DORMANT_LAST_MAX secondi
 	local now = time()
 	for id, t in pairs(mem.last) do
 		local cd = cooldown[id]
-		if not (type(cd) == "number" and now - t < cd) then mem.last[id] = nil end
+		if known[id] then
+			if not (type(cd) == "number" and now - t < cd) then mem.last[id] = nil end
+		elseif not (now - t < Engine.DORMANT_LAST_MAX) then
+			mem.last[id] = nil
+		end
 	end
-	-- ultima variante: solo per le frasi che esistono e sono ancora tra gli usi recenti
+	-- ultima variante: solo per le frasi ancora tra gli usi recenti
 	for id in pairs(mem.variant) do
-		if not Engine.byId[id] or uses[id] == nil then mem.variant[id] = nil end
+		if uses[id] == nil then mem.variant[id] = nil end
 	end
 end
 
@@ -450,7 +461,7 @@ end
 ---@return AUPhraseRecord?
 function Engine:PickEntry(event, ctx, form)
 	if not self:EventAllowed(event, ctx) then return nil end
-	local lang = NS:Lang()
+	local lang = NS:TextLang()
 	local now = time()
 	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event]
 	local list = self:Candidates(event, ctx, form)

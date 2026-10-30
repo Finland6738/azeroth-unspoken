@@ -218,7 +218,8 @@ function Validator:Run(opts)
 		if pack.languages then
 			for _, l in ipairs(pack.languages) do
 				local code = Engine.LangCode(l)
-				if code then set[code] = true end
+				-- only the languages whose phrase texts are in memory: the others are in packs not loaded (#85)
+				if code and (not NS.Packs or NS.Packs:TextsLoaded(code)) then set[code] = true end
 			end
 		else
 			for _, id in ipairs(pack.ids or {}) do

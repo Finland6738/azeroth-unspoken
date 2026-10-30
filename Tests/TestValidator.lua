@@ -329,7 +329,9 @@ T.run("testo dell'utente: solo nelle voci private", function()
 	T.ok(IsError(r, "userTextPublic"), "è un errore")
 	-- il database di base non ne ha nessuno
 	local packs = {}
-	for _, id in ipairs(Engine.packOrder) do if id:sub(1, 5) == "base_" then table.insert(packs, id) end end
+	for _, id in ipairs(Engine.packOrder) do
+		if id:sub(1, 5) == "base_" or Engine.packs[id].region then table.insert(packs, id) end
+	end
 	T.ok(not Has(Validator:Run({ packs = packs }), "userTextPublic"), "nessuna frase di base lo viola")
 	-- ogni segnaposto che può contenere un testo dell'utente è un segnaposto vero
 	for tag in pairs(Engine.USER_TEXT) do T.ok(Engine.PLACEHOLDERS[tag], "{" .. tag .. "} esiste") end
@@ -352,9 +354,9 @@ end)
 T.run("il database di base non ha né errori né avvisi", function()
 	local packs = {}
 	for _, id in ipairs(Engine.packOrder) do
-		if id:sub(1, 5) == "base_" then table.insert(packs, id) end
+		if id:sub(1, 5) == "base_" or Engine.packs[id].region then table.insert(packs, id) end
 	end
-	T.eq(#packs, 14, "quattordici pacchetti di base (dodici di frasi, cornici, vocabolario)")
+	T.eq(#packs, 16, "quattordici pacchetti di base (dodici di frasi, cornici, vocabolario) e due regionali (#101)")
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
 	T.eq(r.stats.phrases, 1009, "1009 frasi"); T.ok(r.stats.variants >= 4 * 1009, "almeno due varianti IT e due EN per frase")

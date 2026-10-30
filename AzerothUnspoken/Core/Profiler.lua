@@ -123,6 +123,11 @@ function Profiler:ReadMemory()
 	if getState ~= Compat.AVAILABLE or type(kb) ~= "number" then
 		return nil, getState == Compat.AVAILABLE and Compat.RESTRICTED or getState
 	end
+	-- the language and regional folders loaded on demand (#85, #101) are addons of their own: their memory counts too
+	for _, name in ipairs(NS.Packs and NS.Packs:LoadedFolders() or {}) do
+		local s, packKb = Compat.Query("GetAddOnMemoryUsage", name)
+		if s == Compat.AVAILABLE and type(packKb) == "number" then kb = kb + packKb end
+	end
 	local ok, luaKb = pcall(collectgarbage, "count")
 	return kb, Compat.AVAILABLE, (ok and type(luaKb) == "number") and luaKb or nil
 end

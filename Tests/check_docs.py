@@ -48,7 +48,14 @@ def new_runtime():
     for f in toc_files(ADDON, "AzerothUnspoken"):
         src = open(os.path.join(ADDON, f.replace("\\", "/")), encoding="utf-8").read()
         loader(src, "@" + f)("AzerothUnspoken", ns)
+    # the language and regional folders of the download, all in memory (#85, #101)
+    root = os.path.dirname(ADDON)
+    packs = [d for d in sorted(os.listdir(root)) if d.startswith("AzerothUnspoken_")
+             and os.path.isfile(os.path.join(root, d, d + ".toc"))
+             and "## X-AzerothUnspoken-" in open(os.path.join(root, d, d + ".toc"), encoding="utf-8").read()]
+    lua.globals().INSTALL_PACKS(root.replace(chr(92), "/"), lua.table_from(packs), True)
     lua.globals().FIRE("ADDON_LOADED", "AzerothUnspoken")
+    lua.execute("AzerothUnspoken.Packs:ActivateAll()")
     lua.globals().FIRE("PLAYER_ENTERING_WORLD", True, False)
     return lua, loader
 

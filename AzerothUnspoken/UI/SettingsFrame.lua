@@ -19,6 +19,8 @@ end
 
 local function CycleLanguage()
 	NS.db.locale = Cycle(NS.languageOrder, NS:Lang())
+	-- the phrases of the new language are in another folder: it is loaded at the next reload, offered with a button
+	NS.Packs:OnLanguageChanged()
 	if panel then panel:Rebuild() end
 end
 
@@ -152,6 +154,10 @@ local function CreatePanel()
 		end })
 	end
 
+	-- reload after a change of language (#85): shown only while the phrases are still in the previous language
+	local reload = W.Button(panel, "", 290, 24, function() NS.Packs:Reload() end)
+	reload:SetPoint("TOPLEFT", COLUMN[2], -384)
+
 	local help = panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	help:SetPoint("TOPLEFT", 16, -474)
 	help:SetWidth(600)
@@ -159,9 +165,14 @@ local function CreatePanel()
 
 	function panel:Refresh()
 		for _, r in ipairs(rows) do r.button:SetText(r.label()) end
-		local total = NS.Engine:Stats(NS:Lang())
+		local total = NS.Engine:Stats(NS:TextLang())
 		modTitle:SetText(NS:L("opt_modules"))
-		help:SetText(NS:L("chatmode_" .. NS.db.chat.mode .. "_help") .. "\n\n"
+		local needsReload = NS.Packs:NeedsReload()
+		reload:SetText(NS:L("packs_reload_btn"))
+		reload:SetShown(needsReload)
+		help:SetText((needsReload and (NS:L("packs_reload_needed", NS.languages[NS:Lang()].name,
+			NS.languages[NS:TextLang()].name) .. "\n\n") or "")
+			.. NS:L("chatmode_" .. NS.db.chat.mode .. "_help") .. "\n\n"
 			.. NS:L("panel_help", total, #NS.Engine.packOrder))
 	end
 	-- il cambio di lingua ritraduce le etichette fisse

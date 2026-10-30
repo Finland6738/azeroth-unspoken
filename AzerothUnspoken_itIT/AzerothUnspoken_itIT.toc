@@ -1,0 +1,22 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Italian phrases
+## Notes: Texts of the phrases in Italian. Loaded by Azeroth Unspoken only when Italian is the chosen language.
+## Author: Finland6738
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Language: itIT
+## X-Category: Roleplay
+
+Combat.lua
+Spells.lua
+Life.lua
+Exploration.lua
+Social.lua
+Classes.lua
+Soul.lua
+Memory.lua
+Relations.lua
+Context.lua
+Dialogues.lua
+Arcs.lua

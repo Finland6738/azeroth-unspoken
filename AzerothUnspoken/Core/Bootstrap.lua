@@ -117,6 +117,13 @@ function NS:Lang()
 	return "en"
 end
 
+-- Language of the phrase texts (#85): the chosen one when its language pack is loaded; after a change of language,
+-- until /reload, the one loaded at start-up (Core/Packs.lua). The interface follows NS:Lang() at once.
+function NS:TextLang()
+	if self.Packs then return self.Packs:TextLang() end
+	return self:Lang()
+end
+
 -- testi dell'interfaccia nella lingua scelta, con ripiego sull'inglese (la lingua di base)
 function NS:L(key, ...)
 	local lang = self.languages[self:Lang()]

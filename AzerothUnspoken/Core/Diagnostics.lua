@@ -176,7 +176,7 @@ function Diagnostics:Report(verbose)
 	end
 
 	if NS.Engine and NS.db then
-		local total = NS.Engine:Stats(NS:Lang())
+		local total = NS.Engine:Stats(NS:TextLang())
 		Add(NS:L("debug_phrases", total, #NS.Engine.packOrder))
 	end
 	return lines

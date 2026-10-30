@@ -345,7 +345,8 @@ T.run("il database di base ha le tre voci e tutte le profondità", function()
 	local by = { narrator = 0, inner = 0, character = 0, npc = 0 }
 	local base = 0
 	for _, p in pairs(Engine.byId) do
-		if p.pack:sub(1, 5) == "base_" then
+		-- the base database: the base packs and the regional packs of the download (#101)
+		if p.pack:sub(1, 5) == "base_" or Engine.packs[p.pack].region then
 			base = base + 1
 			by[p.speaker] = by[p.speaker] + 1
 			T.ok(Engine.SPEAKERS[p.speaker], p.id .. ": voce valida")

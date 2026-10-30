@@ -786,6 +786,66 @@ function NS:RegisterPack(pack)
 	pack.registry, pack.texts, pack.translations, pack.phrases, pack.frames, pack.vocab = nil, nil, nil, nil, nil, nil
 end
 
+-- removes from a list (in place) the entries whose `pack` field is packId; true if something was removed
+local function Without(list, packId)
+	local j, removed = 0, false
+	for i = 1, #list do
+		local x = list[i]
+		list[i] = nil
+		if x.pack == packId then
+			removed = true
+		else
+			j = j + 1
+			list[j] = x
+		end
+	end
+	return removed
+end
+
+---Drops a pack from the registry: its rules (with their texts, in every language), frames and vocabulary entries
+---leave byId, byEvent, the selection index, frames and vocab, so the garbage collector can free them. Used by the
+---regional packs when the character leaves the region (#101, ADR 0025): WoW cannot unload an addon, only its data.
+---Event, style, category and condition declarations stay (they are small and other packs may use them). Texts that
+---other packs added to the dropped rules go with them.
+---@param packId string
+---@return integer dropped number of rules removed (nil if the pack is not registered)
+function Engine:DropPack(packId)
+	local pack = self.packs[packId]
+	if not pack then return nil end
+	local events, n = {}, 0
+	for _, id in ipairs(pack.ids or EMPTY_LIST) do
+		local p = self.byId[id]
+		if p and p.pack == packId then
+			self.byId[id] = nil
+			self.pendingTexts[id] = nil
+			n = n + 1
+			for _, ev in ipairs(p.events) do events[ev] = true end
+		end
+	end
+	for ev in pairs(events) do
+		if self.byEvent[ev] then
+			Without(self.byEvent[ev], packId)
+			if #self.byEvent[ev] == 0 then self.byEvent[ev] = nil end
+		end
+		for _, byKey in pairs(self.index[ev] or EMPTY_LIST) do
+			for k, list in pairs(byKey) do
+				Without(list, packId)
+				if #list == 0 then byKey[k] = nil end
+			end
+		end
+	end
+	for _, list in pairs(self.frames) do Without(list, packId) end
+	for _, list in pairs(self.vocab) do Without(list, packId) end
+	for i = #self.loadIssues, 1, -1 do
+		if self.loadIssues[i].pack == packId then table.remove(self.loadIssues, i) end
+	end
+	self.packs[packId] = nil
+	for i, id in ipairs(self.packOrder) do
+		if id == packId then table.remove(self.packOrder, i); break end
+	end
+	return n
+end
+
 ---Aggiunge testi o traduzioni a frasi già registrate (anche di altri pacchetti): { [id] = "testo" | { varianti } }.
 ---@param lang string codice lingua ("it", "itIT", "de"...)
 ---@param map table<string, string|table>

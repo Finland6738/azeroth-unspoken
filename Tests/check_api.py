@@ -61,6 +61,7 @@ LUA_GLOBALS = {
 # --- Eccezioni: usate dall'addon, assenti dal dump, e perché va bene ---------------------------------------
 # Una voce che finisce con "*" vale per tutto il prefisso.
 EXCEPTIONS = {
+    "StaticPopupDialogs": "FrameXML: the table of the dialogs; Core/Packs.lua reads it through Compat.Resolve and falls back to a chat message and the settings button when it is missing (#85)",
     "Settings.*": "FrameXML (Lua): il pannello delle impostazioni non è in APIDocumentation; UI/SettingsFrame.lua controlla che esista prima di usarla",
     "SettingsPanel": "FrameXML: frame del pannello, sondato da Compat",
     "InterfaceOptions_AddCategory": "FrameXML: ripiego per il pannello vecchio, chiamato da UI/SettingsFrame.lua solo dopo `elseif InterfaceOptions_AddCategory then`",

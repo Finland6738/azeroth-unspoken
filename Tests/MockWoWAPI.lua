@@ -421,7 +421,91 @@ P.weather = { type = 0, intensity = 0 }
 P.isDay = true
 C_Weather = { GetCurrentWeather = function() return P.weather end }
 C_DateAndTime = { IsDayTime = function() return P.isDay end }
-C_AddOns = { LoadAddOn = function(name) return true, nil end }
+-- Installed addons (#85, #101): ADDONS[name] = { meta = { [field] = value }, loaded, fail = reason, raise = message,
+-- load = function }. LoadAddOn runs load() and then ADDON_LOADED, like the client; LOAD_CALLS records every call
+-- with the combat state. The base addon is installed and loaded.
+ADDONS = { AzerothUnspoken = { meta = {}, loaded = true } }
+ADDON_LIST = { "AzerothUnspoken" }
+LOAD_CALLS = {}
+function ADD_ADDON(name, def)
+	def.meta = def.meta or {}
+	if not ADDONS[name] then table.insert(ADDON_LIST, name) end
+	ADDONS[name] = def
+end
+local function AddonName(i) if type(i) == "number" then return ADDON_LIST[i] end return i end
+C_AddOns = {
+	LoadAddOn = function(name)
+		table.insert(LOAD_CALLS, { name = name, combat = P.combat == true })
+		local a = ADDONS[AddonName(name)]
+		if not a then return false, "MISSING" end
+		if a.raise then error(a.raise) end
+		if a.fail then return false, a.fail end
+		if a.loaded then return true, nil end
+		a.loaded = true
+		if a.load then a.load() end
+		FIRE("ADDON_LOADED", AddonName(name))
+		return true, nil
+	end,
+	IsAddOnLoaded = function(name)
+		local a = ADDONS[AddonName(name)]
+		local loaded = a ~= nil and a.loaded == true
+		return loaded, loaded
+	end,
+	DoesAddOnExist = function(name) return ADDONS[AddonName(name)] ~= nil end,
+	GetNumAddOns = function() return #ADDON_LIST end,
+	GetAddOnInfo = function(i)
+		local name = AddonName(i)
+		if not ADDONS[name] then return nil end
+		return name, ADDONS[name].meta.Title or name, "", true, nil, "INSECURE"
+	end,
+	GetAddOnMetadata = function(name, field)
+		local a = ADDONS[AddonName(name)]
+		return a and a.meta[field] or nil
+	end,
+}
+
+-- The folders of the download, read from disk (Lua io): the .toc (metadata and files) and the files in order, with
+-- (name, private table) as `...` like the client.
+local function ReadFile(path)
+	local f = assert(io.open(path, "rb"))
+	local s = f:read("*a")
+	f:close()
+	return s
+end
+function READ_TOC(dir, name)
+	local files, meta = {}, {}
+	for line in (ReadFile(dir .. "/" .. name .. ".toc") .. "\n"):gmatch("([^\n]*)\n") do
+		line = line:gsub("^[ \t]+", ""):gsub("[ \t\r]+$", "")
+		local k, v = line:match("^## ([^:]+):[ \t]*(.-)$")
+		if k then
+			meta[k] = v
+		elseif line ~= "" and line:sub(1, 1) ~= "#" then
+			table.insert(files, (line:gsub("\\", "/")))
+		end
+	end
+	return files, meta
+end
+function RUN_FOLDER(dir, name)
+	local files = READ_TOC(dir, name)
+	local ns = {}
+	for _, f in ipairs(files) do
+		local chunk = assert(loadstring(ReadFile(dir .. "/" .. f), "@" .. name .. "/" .. f))
+		chunk(name, ns)
+	end
+end
+-- installs the folders `names` (a list) found in `root`, LoadOnDemand as in their .toc; loaded = true runs them now
+-- (a test that wants everything in memory, like a development install)
+function INSTALL_PACKS(root, names, loaded)
+	for _, name in ipairs(names) do
+		local dir = root .. "/" .. name
+		local _, meta = READ_TOC(dir, name)
+		ADD_ADDON(name, { meta = meta, load = function() RUN_FOLDER(dir, name) end })
+		if loaded then
+			ADDONS[name].loaded = true
+			RUN_FOLDER(dir, name)
+		end
+	end
+end
 function UnitPosition(u)
 	if P.instance or u ~= "player" then return nil end
 	return 1234.5, 987.25, 12, 1

@@ -35,6 +35,8 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	for i, code in ipairs(NS.languageOrder) do
 		local b = W.Button(p, "", 220, 26, function()
 			NS.db.locale = code
+			-- the phrases of the new language come with the next reload (#85): a chat note now, the dialog at the end
+			NS.Packs:OnLanguageChanged(true)
 			Wizard:Render()
 		end)
 		b:SetPoint("TOPLEFT", 16, -60 - (i - 1) * 32)
@@ -239,6 +241,7 @@ function Wizard:Finish()
 	if frame then frame:Hide() end
 	if NS.Narrator then NS.Narrator:ApplySettings() end
 	NS:Print(NS:L("wiz_done"))
+	if NS.Packs:NeedsReload() then NS.Packs:OfferReload() end
 end
 
 -- le pagine si costruiscono a ogni apertura, nella lingua scelta

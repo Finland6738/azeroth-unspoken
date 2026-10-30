@@ -37,16 +37,39 @@ def run_file(lua, path, name, *args):
     return chunk(*args)
 
 
-def load_addon(addon):
-    """A fresh runtime with the addon only (like run_tests.load_addon without the example pack)."""
+def pack_folders(addon):
+    """The folders of the download loaded on demand (#85, #101): their .toc declares a language or a region."""
+    root, name = os.path.dirname(addon), os.path.basename(addon)
+    out = []
+    for d in sorted(os.listdir(root)):
+        toc = os.path.join(root, d, d + ".toc")
+        if d.startswith(name + "_") and os.path.isfile(toc) and "## X-AzerothUnspoken-" in open(toc, encoding="utf-8").read():
+            out.append(d)
+    return out
+
+
+def load_addon(addon, packs="all", locale=None, zone=None):
+    """A fresh runtime with the addon only (like run_tests.load_addon without the example pack).
+    packs: "all" = every language and regional folder in memory and every region built; "lazy" = the folders are
+    installed as LoadOnDemand and Core/Packs.lua loads them like in the client (only the chosen language, only the
+    region of the character); "none" = no folder. locale: language saved before the start ("en", "it")."""
     name = os.path.basename(addon)
     lua = lua51.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(open(os.path.join(HERE, "MockWoWAPI.lua"), encoding="utf-8").read())
+    if locale:
+        lua.execute(f'AzerothUnspokenDB = {{ schemaVersion = 7, settings = {{ locale = "{locale}" }} }}')
+    if zone:
+        lua.execute(f'P.zone = "{zone}"')
     ns = lua.table()
     t0 = time.perf_counter()
     for f in toc_files(addon, name):
         run_file(lua, os.path.join(addon, f.replace("\\", "/")), f, name, ns)
+    if packs != "none":
+        lua.globals().INSTALL_PACKS(os.path.dirname(addon).replace("\\", "/"), lua.table_from(pack_folders(addon)),
+                                    packs == "all")
     lua.globals().FIRE("ADDON_LOADED", name)
+    if packs == "all":
+        lua.eval("function() AzerothUnspoken.Packs:ActivateAll() end")()
     lua.globals().ENTER_GAME(True, False)
     base_load = time.perf_counter() - t0
     run_file(lua, os.path.join(HERE, "SyntheticArchive.lua"), "SyntheticArchive.lua")
@@ -57,8 +80,8 @@ def memory_kb(lua):
     return lua.eval("function() collectgarbage('collect'); collectgarbage('collect'); return collectgarbage('count') end")()
 
 
-def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS")):
-    lua, ns, base_load = load_addon(addon)
+def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs="all"):
+    lua, ns, base_load = load_addon(addon, packs)
     ns.db.locale = "en"
     G = lua.globals()
     mem0 = memory_kb(lua)
@@ -119,6 +142,9 @@ def main(argv):
     ap.add_argument("--place-share", type=float, default=0.6)
     ap.add_argument("--langs", default="itIT,enUS",
                     help="languages of the synthetic texts (enUS alone projects one loaded language, #85)")
+    ap.add_argument("--packs", default="all", choices=("all", "lazy"),
+                    help="all = both languages and every region in memory; lazy = only what Core/Packs.lua loads (the "
+                    "chosen language, English, and the region of the character), as in the client")
     ap.add_argument("--json")
     a = ap.parse_args(argv)
     addon = os.path.abspath(a.addon)
@@ -126,7 +152,7 @@ def main(argv):
     langs = tuple(l for l in a.langs.split(",") if l)
     print(f"{'entries':>8} {'addon s':>8} {'load s':>8} {'memory MB':>10} {'B/entry':>8} {'pick ms':>8} {'p95 ms':>8} {'max ms':>8} {'found':>6}")
     for size in [int(s) for s in a.sizes.split(",") if s.strip()]:
-        r = measure(addon, size, a.picks, a.seed, a.place_share, langs)
+        r = measure(addon, size, a.picks, a.seed, a.place_share, langs, a.packs)
         rows.append(r)
         print(f"{size:>8} {r['base_load_s']:>8.2f} {r['load_s']:>8.2f} {r['memory_kb'] / 1024:>10.1f} {r['per_entry_b']:>8.0f} "
               f"{r['pick_mean_ms']:>8.3f} {r['pick_p95_ms']:>8.3f} {r['pick_max_ms']:>8.3f} {r['found']:>6}")

@@ -60,6 +60,8 @@ local function ListPacks()
 		local state = NS.db.disabledPacks[id] and NS:L("off") or NS:L("on")
 		NS:Print(("%s (%s) - %s"):format(p.name or id, id, state))
 	end
+	-- the folders of the download loaded on demand: language and regions (#85, #101)
+	for _, line in ipairs(NS.Packs:StatusLines()) do NS:Print(line) end
 end
 
 local function Debug(arg)
@@ -84,6 +86,7 @@ local function Language(rest, db)
 	if code then
 		db.locale = code
 		NS:Print(NS:L("lang_set", NS.languages[code].name))
+		NS.Packs:OnLanguageChanged()
 	else
 		local names = {}
 		for _, c in ipairs(NS.languageOrder) do
@@ -175,8 +178,8 @@ local function Pack(rest, db)
 end
 
 local function Stats()
-	local total, byEvent = NS.Engine:Stats(NS:Lang())
-	NS:Print(NS:L("stats", total, NS.languages[NS:Lang()].name))
+	local total, byEvent = NS.Engine:Stats(NS:TextLang())
+	NS:Print(NS:L("stats", total, NS.languages[NS:TextLang()].name))
 	local keys = {}
 	for ev in pairs(byEvent) do table.insert(keys, ev) end
 	table.sort(keys)

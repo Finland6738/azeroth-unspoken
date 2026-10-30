@@ -12,6 +12,20 @@ ADDON = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE,
 ADDON_NAME = os.path.basename(ADDON)
 EXAMPLE = os.path.join(os.path.dirname(ADDON), ADDON_NAME + "_Example")
 VERSI = os.path.join(os.path.dirname(ADDON), ADDON_NAME + "_Versi")
+ROOT = os.path.dirname(ADDON)
+
+
+def pack_folders():
+    """The folders of the download loaded on demand (#85, #101): their .toc declares a language or a region."""
+    out = []
+    for d in sorted(os.listdir(ROOT)):
+        toc = os.path.join(ROOT, d, d + ".toc")
+        if d.startswith(ADDON_NAME + "_") and os.path.isfile(toc) and                 "## X-AzerothUnspoken-" in open(toc, encoding="utf-8").read():
+            out.append(d)
+    return out
+
+
+PACKS = pack_folders()
 
 FAILURES = []
 def check(cond, msg):
@@ -32,10 +46,13 @@ def run_file(lua, path, name, *args):
     return chunk(*args)
 
 
-def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None, zone=None):
+def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None, zone=None, packs="all"):
     """Runtime nuovo: finta API, file nell'ordine del .toc con (ADDON, NS), ADDON_LOADED.
     saved_global/saved_char: SavedVariables come testo Lua (/reload: vedi SERIALIZE nel mock);
-    epoch: ora del client (secondi), zone: zona in cui il personaggio entra nel mondo."""
+    epoch: ora del client (secondi), zone: zona in cui il personaggio entra nel mondo.
+    packs: "all" = every language and regional folder in memory and every region built (a development install: the
+    validator and the selection see the whole database); "lazy" = folders installed as LoadOnDemand, loaded by
+    Core/Packs.lua like in the client; "none" = folders not installed."""
     lua = lua51.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(open(os.path.join(HERE, "MockWoWAPI.lua"), encoding="utf-8").read())
     if epoch is not None:
@@ -49,7 +66,11 @@ def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None
     ns = lua.table()
     for f in toc_files(ADDON, ADDON_NAME):
         run_file(lua, os.path.join(ADDON, f.replace("\\", "/")), f, ADDON_NAME, ns)
+    if packs != "none":
+        lua.globals().INSTALL_PACKS(ROOT.replace("\\", "/"), lua.table_from(PACKS), packs == "all")
     lua.globals().FIRE("ADDON_LOADED", ADDON_NAME)
+    if packs == "all":
+        lua.eval("function() AzerothUnspoken.Packs:ActivateAll() end")()
     if with_example:
         for f in toc_files(EXAMPLE, ADDON_NAME + "_Example"):
             run_file(lua, os.path.join(EXAMPLE, f), f, ADDON_NAME + "_Example", lua.table())
@@ -64,6 +85,16 @@ Engine = NS.Engine
 G = lua.globals()
 
 # 0) struttura e avvio
+def in_toc(f):
+    """A file of the database: the phrase texts are in the .toc of their language pack (#85), the rest in the base."""
+    f = f.replace("/", chr(92))
+    m = re.match(r"^Data[\\](itIT|enUS)[\\](\w+\.lua)$", f)
+    if m and not m.group(2).endswith("UI.lua") and m.group(2) != "Interface.lua":
+        pack = ADDON_NAME + "_" + m.group(1)
+        return m.group(2) in toc_files(os.path.join(ROOT, pack), pack)
+    return f in toc_files(ADDON, ADDON_NAME)
+
+
 print("AVVIO")
 toc_text = open(os.path.join(ADDON, ADDON_NAME + ".toc"), encoding="utf-8").read()
 check("## Interface: 16001" in toc_text, "Interface 16001 nel .toc")
@@ -75,13 +106,13 @@ for f in ("Data\\RegistryCombat.lua", "Data\\RegistryClasses.lua", "Data\\itIT\\
           "Engine\\Validator.lua", "Engine\\Traits.lua", "Systems\\Personality.lua", "UI\\ProfileFrame.lua",
           "Data\\RegistrySoul.lua", "Data\\itIT\\Soul.lua", "Data\\enUS\\Soul.lua", "Systems\\LivingMemory.lua",
           "UI\\JournalFrame.lua", "Data\\RegistryMemory.lua", "Data\\itIT\\Memory.lua", "Data\\enUS\\Memory.lua"):
-    check(f in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (schema v2, S5)")
+    check(in_toc(f), f"{f} nel .toc (schema v2, S5)")
 for f in ("Systems/NPCAlive.lua", "UI/DialogueFrame.lua", "Data/Dialogues.lua", "Data/RegistryDialogues.lua",
           "Data/itIT/Dialogues.lua", "Data/enUS/Dialogues.lua", "Data/itIT/NPCUI.lua", "Data/enUS/NPCUI.lua"):
-    check(f.replace("/", chr(92)) in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (NPC Alive, S8)")
+    check(in_toc(f), f"{f} nel .toc (NPC Alive, S8)")
 for f in ("Systems/Relationships.lua", "UI/RelationsFrame.lua", "Data/Relationships.lua", "Data/RegistryRelations.lua",
           "Data/itIT/Relations.lua", "Data/enUS/Relations.lua", "Data/itIT/RelationsUI.lua", "Data/enUS/RelationsUI.lua"):
-    check(f.replace("/", chr(92)) in toc_files(ADDON, ADDON_NAME), f"{f} nel .toc (relazioni, S6b)")
+    check(in_toc(f), f"{f} nel .toc (relazioni, S6b)")
 bindings = open(os.path.join(ADDON, "Bindings.xml"), encoding="utf-8").read()
 check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" in bindings, "tasto 'pronuncia' in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
@@ -422,11 +453,13 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale"):
-    lt, nst = load_addon()
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
+             "TestPacks"):
+    # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
+    lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
     # imposta a "it" come farebbe un utente. TestConfig prova invece il predefinito, senza toccare la lingua.
-    if name != "TestConfig":
+    if name not in ("TestConfig", "TestPacks"):
         nst.db.locale = "it"
     if name == "TestScale":
         # R1: il generatore dell'archivio sintetico (solo per i test, mai nel .toc)
@@ -436,6 +469,37 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
     print(f"  {name}: {t.passed} superati, {t.failed} falliti")
     for f in t.failures.values():
         check(False, f"{name}: {f}")
+
+# 9b) language and regional packs from a saved Italian installation (#85, #101): only Italian is loaded, the region
+# of the character is built, and the memory is lower than with everything loaded
+print("\nPACCHETTI DI LINGUA E REGIONALI")
+pl, pn = load_addon('{schemaVersion=7,settings={locale="it"}}', with_example=False, packs="lazy", zone="Elwynn Forest")
+loads_ = [c.name for c in pl.globals().LOAD_CALLS.values()]
+print("  LoadAddOn:", ", ".join(loads_))
+check("AzerothUnspoken_itIT" in loads_ and "AzerothUnspoken_enUS" not in loads_, "solo la cartella italiana è caricata")
+check(loads_ == ["AzerothUnspoken_itIT", "AzerothUnspoken_EasternKingdoms", "AzerothUnspoken_EasternKingdoms_itIT"],
+      "lingua all'avvio, poi la regione del personaggio (regole e testi in italiano)")
+by_lang = pl.eval("""function()
+    local it, en = 0, 0
+    for _, p in pairs(AzerothUnspoken.Engine.byId) do
+        if p.text.it and #p.text.it > 0 then it = it + 1 end
+        if p.text.en and #p.text.en > 0 then en = en + 1 end
+    end
+    return it, en
+end""")()
+check(by_lang[0] > 900 and by_lang[1] == 0, f"frasi con testo italiano {by_lang[0]}, inglese {by_lang[1]}")
+check(pn.Engine.byId["zone.elwynn.01"] is not None and pn.Engine.byId["zone.durotar.01"] is None,
+      "frasi di Elwynn sì, di Durotar no")
+check(not list(pn.Diagnostics.errors.values()), "nessun errore all'avvio con le cartelle caricate su richiesta")
+mem_ = "function() collectgarbage('collect'); collectgarbage('collect'); return collectgarbage('count') end"
+mem_lazy = pl.eval(mem_)()
+pa, _ = load_addon(with_example=False)
+mem_all = pa.eval(mem_)()
+pnone, _ = load_addon(with_example=False, packs="none")
+mem_none = pnone.eval(mem_)()
+print(f"  memoria Lua: base senza cartelle {mem_none / 1024:.2f} MB, una lingua e una regione {mem_lazy / 1024:.2f} MB, "
+      f"tutto {mem_all / 1024:.2f} MB")
+check(mem_none < mem_lazy < mem_all, "una lingua costa meno di due")
 
 # 9a) proiezione di scala ridotta (R1, #83 #84): un archivio sintetico di 2.000 regole. I tempi si stampano soltanto
 # (dipendono dalla macchina); la memoria per regola è un controllo. Le misure complete (10.000 e 50.000 regole) si

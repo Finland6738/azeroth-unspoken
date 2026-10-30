@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Kalimdor
+## Notes: Rules of the phrases bound to Kalimdor. Loaded by Azeroth Unspoken when the character is in Kalimdor.
+## Author: Finland6738
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Region: kalimdor
+## X-Category: Roleplay
+
+Exploration.lua

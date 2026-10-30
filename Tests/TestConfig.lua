@@ -343,12 +343,19 @@ T.run("anti-ripetizione rovinata: le voci malformate si scartano e le scelte fun
 	NS.cdb.memory.last.ghost = 5; NS.cdb.memory.uses.ghost = 3
 	if vocabId then NS.cdb.memory.last[vocabId] = 7; NS.cdb.memory.uses[vocabId] = 3 end
 	Engine:DecayMemory()
+	-- an id not registered now may be in a regional pack not loaded yet (#101): its uses decay like the others, its
+	-- last use stays at most Engine.DORMANT_LAST_MAX seconds (here it is decades old)
 	T.eq(NS.cdb.memory.last.ghost, nil, "ultimo uso di una frase sparita: via")
-	T.eq(NS.cdb.memory.uses.ghost, nil, "usi di una frase sparita: via")
+	T.eq(NS.cdb.memory.uses.ghost, 2.25, "usi di una frase sparita: attenuati come gli altri")
 	if vocabId then
 		T.ok(NS.cdb.memory.uses[vocabId] ~= nil, "gli usi del vocabolario restano")
 		T.eq(NS.cdb.memory.last[vocabId], nil, "l'ultimo uso di una voce senza cooldown non si conserva")
 	end
+	NS.cdb.memory.last.ghost = time() - 60
+	Engine:DecayMemory()
+	T.ok(NS.cdb.memory.last.ghost ~= nil, "ultimo uso recente di una frase non registrata: resta (pacchetto regionale)")
+	for _ = 1, 10 do Engine:DecayMemory() end
+	T.eq(NS.cdb.memory.uses.ghost, nil, "usi di una frase sparita: via dopo qualche accesso")
 	-- il pulsante con una posizione rovinata si crea comunque
 	for _, bad in ipairs({ 5, "x", true, { 1 }, { "CENTER", "CENTER", "a", "b" } }) do
 		NS.db.ui.buttonPos = bad

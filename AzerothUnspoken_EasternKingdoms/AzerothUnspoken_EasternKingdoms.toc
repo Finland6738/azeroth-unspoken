@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Eastern Kingdoms
+## Notes: Rules of the phrases bound to Eastern Kingdoms. Loaded by Azeroth Unspoken when the character is in Eastern Kingdoms.
+## Author: Finland6738
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Region: eastern
+## X-Category: Roleplay
+
+Exploration.lua
