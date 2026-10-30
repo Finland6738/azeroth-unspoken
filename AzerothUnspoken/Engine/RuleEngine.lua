@@ -180,6 +180,25 @@ local SPECIAL = {
 		end
 		return false
 	end,
+	-- feelings and observations (#109, #110): ctx.relFeelings (set), ctx.relDaysSince, ctx.relMetHere, ctx.relShared (set)
+	feeling = function(v, ctx)
+		local f = ctx.relFeelings
+		if type(f) ~= "table" then return false end
+		for _, name in ipairs(AsList(v)) do
+			if f[name] then return true end
+		end
+		return false
+	end,
+	relDaysSince = function(v, ctx) return InRange(v, ctx.relDaysSince) end,
+	relMetHere = function(v, ctx) return (ctx.relMetHere == true) == v end,
+	relShared = function(v, ctx)
+		local g = ctx.relShared
+		if type(g) ~= "table" then return false end
+		for _, name in ipairs(AsList(v)) do
+			if g[name] then return true end
+		end
+		return false
+	end,
 	chance   = function(v) return math.random(100) <= v end,
 	func     = function(v, ctx)
 		local ok, res = pcall(v, ctx)
@@ -244,6 +263,8 @@ Engine.CONDITIONS = {
 	daysSinceLastVisit = "numrange", remembered = "str",
 	-- relazioni (Systems/Relationships.lua); gli assi aggiungono <asse>Min e <asse>Max
 	relation = "str", disposition = "str", relationKind = "str", isKnown = "bool", withRelation = "str",
+	-- feelings the user chose and what the addon observed of a listed player (#109, #110)
+	feeling = "str", relDaysSince = "numrange", relMetHere = "bool", relShared = "str",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -272,6 +293,8 @@ Engine.CONDITION_VALUES = {
 	-- si riempiono quando i dati delle relazioni (Data/Relationships.lua) registrano etichette e disposizioni
 	relation = {}, disposition = {}, withRelation = {},
 	relationKind = { npc = true, player = true },
+	-- feelings are registered by Data/Relationships.lua; relShared by Systems/Relationships.lua (R.ENCOUNTERS, R.SHARED)
+	feeling = {}, relShared = {},
 }
 
 -- Campi delle sotto-tabelle e tipo del valore (come Engine.CONDITIONS; "actions" = azione, elenco o { ..., within = n })
@@ -339,7 +362,7 @@ Engine.SUB_VALUES = {
 
 -- condizioni che dipendono da una relazione (ctx.relation e simili)
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
-	withRelation = true }
+	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

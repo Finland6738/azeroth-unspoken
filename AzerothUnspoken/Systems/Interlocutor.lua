@@ -346,8 +346,9 @@ function I:Build(ctx, extra)
 	-- 1. dati dell'utente (lista delle relazioni di S6b)
 	local rec = o.kind == "player" and RelationRecord("player", playerName) or (npcID and RelationRecord("npc", npcID))
 	if rec then
-		local t = I.Clean(rec.traits)
-		if rec.role and Traits.defs.role.valid[rec.role] and rec.roleSource == "user" then t.role = t.role or rec.role end
+		local user = NS.Relationships.UserOf(rec)   -- the user's choices: rec.user for a player, the record for an NPC
+		local t = I.Clean(user.traits)
+		if user.role and Traits.defs.role.valid[user.role] and user.roleSource == "user" then t.role = t.role or user.role end
 		table.insert(layers, { name = "user", traits = t })
 		local info = NS.Relationships:Resolve(o.kind == "player" and "player" or "npc", rec, o.sex)
 		o.relation, o.relationLabel, o.relationCustom = info.label, info.text, info.custom ~= nil
@@ -713,12 +714,14 @@ function I:SetTrait(kind, id, trait, value)
 	local known = false
 	for _, t in ipairs(self.TRAITS) do if t == trait then known = true end end
 	if not known or not def or (value ~= nil and not def.valid[value]) then return false end
+	-- a user action (the detail window, /au who trait): the only place outside Relationships.lua that writes the user block
+	local user = R.UserOf(rec)
 	if trait == "role" then
-		rec.role, rec.roleSource = value, value and "user" or nil
+		user.role, user.roleSource = value, value and "user" or nil
 	else
-		rec.traits = rec.traits or {}
-		rec.traits[trait] = value
-		if not next(rec.traits) then rec.traits = nil end
+		user.traits = user.traits or {}
+		user.traits[trait] = value
+		if not next(user.traits) then user.traits = nil end
 	end
 	if R.Changed then R:Changed() end
 	return true
@@ -733,8 +736,9 @@ end
 function I:GetUserTrait(kind, id, trait)
 	local rec = NS.Relationships and NS.Relationships:Get(kind, id)
 	if not rec then return nil end
-	if trait == "role" then return rec.role, rec.roleSource == "auto" or nil end
-	return rec.traits and rec.traits[trait] or nil
+	local user = NS.Relationships.UserOf(rec)
+	if trait == "role" then return user.role, user.roleSource == "auto" or nil end
+	return user.traits and user.traits[trait] or nil
 end
 
 ---Passa al valore successivo di un tratto (non so, poi i valori in ordine, poi di nuovo non so): per i selettori

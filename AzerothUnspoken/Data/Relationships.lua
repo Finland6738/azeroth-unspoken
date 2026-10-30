@@ -40,6 +40,10 @@ NS.Relationships:RegisterData({
 			when = { affection = { min = 50 }, attraction = { min = 50 }, trust = { min = 10 } } },
 		{ id = "enemy", priority = 90, name = { it = { "nemico", "nemica" }, en = "enemy" },
 			when = { affection = { max = -60 } } },
+		-- #109: a label only the user can give ("manualOnly": the addon never derives it, so no existing relation changes
+		-- label). Someone who stands on your side for a cause, without the long familiarity of a comrade in arms.
+		{ id = "ally", priority = 78, manualOnly = true, name = { it = { "alleato", "alleata" }, en = "ally" },
+			when = { trust = { min = 30 }, loyalty = { min = 30 } } },
 		{ id = "comrade", priority = 80, name = { it = { "compagno d'armi", "compagna d'armi" }, en = "comrade in arms" },
 			when = { trust = { min = 50 }, loyalty = { min = 50 }, familiarity = { min = 40 } } },
 		{ id = "rival", priority = 75, name = { it = { "rivale rispettato", "rivale rispettata" }, en = "respected rival" },
@@ -58,6 +62,31 @@ NS.Relationships:RegisterData({
 		{ id = "acquaintance", priority = 20, name = { it = "conoscente", en = "acquaintance" },
 			when = { familiarity = { min = 20 } } },
 		{ id = "stranger", priority = 0, name = { it = { "sconosciuto", "sconosciuta" }, en = "stranger" }, when = {} },
+	},
+
+	-- Feelings in words (#109): chosen by the user, up to two per person, never by the addon. They add the tag
+	-- rel.feeling:<id> and the condition `feeling` to the lines. `preset` is the typical level of the axes for that
+	-- feeling: the user can ask for it (a button, `feeling <name> <feeling> preset`) and then adjust the sliders; it is
+	-- only ever raised where the axis is weaker, never lowered over a stronger value the user set.
+	feelings = {
+		{ id = "trust", name = { it = "fiducia", en = "trust" },
+			help = { it = "ti affidi a lei o a lui", en = "you rely on them" },
+			preset = { trust = 50, familiarity = 25 } },
+		{ id = "liking", name = { it = "simpatia", en = "liking" },
+			help = { it = "ti sta simpatica o simpatico", en = "you like them" },
+			preset = { affection = 45, trust = 30, familiarity = 30 } },
+		{ id = "wariness", name = { it = "diffidenza", en = "wariness" },
+			help = { it = "non ti fidi del tutto", en = "you do not quite trust them" },
+			preset = { trust = -45, familiarity = 20 } },
+		{ id = "fear", name = { it = "paura", en = "fear" },
+			help = { it = "ti mette a disagio o ti spaventa", en = "they unsettle or frighten you" },
+			preset = { fear = 65, familiarity = 20 } },
+		{ id = "resentment", name = { it = "rancore", en = "resentment" },
+			help = { it = "un torto che non hai perdonato", en = "a wrong you have not forgiven" },
+			preset = { affection = -70, trust = -25, familiarity = 20 } },
+		{ id = "gratitude", name = { it = "gratitudine", en = "gratitude" },
+			help = { it = "ti hanno aiutato e non lo dimentichi", en = "they helped you and you remember it" },
+			preset = { affection = 30, loyalty = 35, respect = 25, familiarity = 25 } },
 	},
 
 	-- Disposizione complessiva su una scala -100…100: media pesata degli assi di valore (il timore non è una

@@ -359,7 +359,7 @@ T.run("il database di base non ha né errori né avvisi", function()
 	T.eq(#packs, 16, "quattordici pacchetti di base (dodici di frasi, cornici, vocabolario) e due regionali (#101)")
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
-	T.eq(r.stats.phrases, 1009, "1009 frasi"); T.ok(r.stats.variants >= 4 * 1009, "almeno due varianti IT e due EN per frase")
+	T.eq(r.stats.phrases, 1030, "1030 frasi"); T.ok(r.stats.variants >= 4 * 1030, "almeno due varianti IT e due EN per frase")
 end)
 
 T.run("/au validate", function()

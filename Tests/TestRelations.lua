@@ -411,7 +411,7 @@ T.run("decadimento lento della familiarità", function()
 	local key = Person("Aldric-Stormrage", { familiarity = 50 })
 	LEAP(400 * DAY)
 	R:MaintainAll()
-	T.eq(R:Get("player", key).familiarity, 50, "la familiarità di un giocatore non decade")
+	T.eq(R:Get("player", key).user.axes.familiarity, 50, "la familiarità di un giocatore non decade")
 	-- all'avvio si applica a tutti gli NPC
 	rec.familiarity, rec.last, rec.decayDay = 60, time() - 100 * DAY, nil
 	R:MaintainAll()
@@ -551,22 +551,22 @@ T.run("modifiche dell'utente: assi, nota, tag, etichetta, eliminazione", functio
 	Fresh()
 	local key = Person("Aldric-Stormrage")
 	T.ok(R:SetAxis("player", key, "trust", 55), "cursore fiducia")
-	T.eq(R:Get("player", key).trust, 55, "salvato")
+	T.eq(R:Get("player", key).user.axes.trust, 55, "salvato")
 	T.ok(R:SetAxis("player", key, "trust", 500), "oltre il limite")
-	T.eq(R:Get("player", key).trust, 100, "limitato a 100")
-	T.ok(R:SetAxis("player", key, "familiarity", -50) and (R:Get("player", key).familiarity or 0) == 0, "la familiarità non va sotto zero")
+	T.eq(R:Get("player", key).user.axes.trust, 100, "limitato a 100")
+	T.ok(R:SetAxis("player", key, "familiarity", -50) and (R:Get("player", key).user.axes.familiarity or 0) == 0, "la familiarità non va sotto zero")
 	T.ok(not R:SetAxis("player", key, "inesistente", 5), "asse sconosciuto rifiutato")
 	T.ok(not R:SetAxis("player", key, "trust", 0 / 0), "NaN rifiutato")
 	R:SetAxis("player", key, "trust", 0)
-	T.eq(R:Get("player", key).trust, nil, "il valore zero non si salva")
+	T.eq((R:Get("player", key).user.axes or {}).trust, nil, "il valore zero non si salva")
 	R:AdjustAxis("player", key, "affection", -30)
-	T.eq(R:Get("player", key).affection, -30, "pulsante meno")
+	T.eq(R:Get("player", key).user.axes.affection, -30, "pulsante meno")
 	T.ok(R:SetNote("player", key, "Mi ha salvato\nla vita a  Tirisfal"), "nota")
-	T.eq(R:Get("player", key).note, "Mi ha salvato la vita a Tirisfal", "controllo e spazi ripuliti")
+	T.eq(R:Get("player", key).user.note, "Mi ha salvato la vita a Tirisfal", "controllo e spazi ripuliti")
 	R:SetNote("player", key, string.rep("à", 400))
-	T.ok(#R:Get("player", key).note <= R.NOTE_LEN and R:Get("player", key).note:sub(-2) == "à", "nota accorciata senza spezzare le lettere")
+	T.ok(#R:Get("player", key).user.note <= R.NOTE_LEN and R:Get("player", key).user.note:sub(-2) == "à", "nota accorciata senza spezzare le lettere")
 	R:SetTags("player", key, "gilda, amico di Karl, gilda,uno,due,tre,quattro,cinque")
-	local tags = R:Get("player", key).tags
+	local tags = R:Get("player", key).user.tags
 	T.ok(#tags == R.MAX_TAGS and tags[1] == "gilda" and tags[2] == "amico di Karl", "tag: separati, senza doppioni, al massimo sei")
 	T.ok(R:Remove("player", key), "eliminazione")
 	T.eq(R:Get("player", key), nil, "eliminata")
@@ -891,7 +891,7 @@ T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 				for _, v in ipairs(p.text[lang]) do
 					v = Engine.VariantView(v)
 					T.ok(v.ok, id .. " " .. lang .. ": variante valida")
-					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend", otherSex = "female" }, nil)
+					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend", otherSex = "female", otherName = "Pip" }, nil)
 					T.ok(text ~= nil and not text:find("[{}]"), id .. " " .. lang .. ": si compone")
 					T.ok(#v.t < 200, id .. " " .. lang .. ": breve")
 				end
@@ -932,7 +932,7 @@ T.run("migrazione dello schema 5", function()
 	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "personaggio a 5")
 	T.eq(AzerothUnspokenDB.schemaVersion, 7, "account a 5")
 	local d = AzerothUnspokenCharacterDB.relationships
-	T.ok(d and d.version == 1 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
+	T.ok(d and d.version == 2 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
 	T.eq(NS.db.relations.autoRegisterPlayers, false, "registrazione automatica spenta nelle impostazioni nuove")
 	T.eq(NS.db.relations.attraction, false, "attrazione spenta"); T.eq(NS.db.modules.relations, true, "modulo acceso")
 	T.eq(NS.db.intensity, 33, "impostazioni precedenti conservate")
@@ -947,7 +947,7 @@ T.run("dati rovinati: si scartano le voci, non si ferma l'avvio", function()
 	local d = NS.cdb.relationships
 	d.npcs = { [-5] = { familiarity = 10 }, ["x"] = {}, [1.5] = {}, [100] = { familiarity = -5, trust = 999, respect = "alto", note = string.rep("x", 900),
 		name = 42, tags = { "a", 5, string.rep("t", 99) }, today = { day = "ieri" }, noted = { friend = true, ["Brutto!"] = true } }, [200] = "no" }
-	d.players = { ["Aldric-Stormrage"] = { affection = 200, label = string.rep("l", 90) }, [5] = {}, ["x\1y"] = { trust = 1 }, ["Bad"] = 7 }
+	d.players = { ["Aldric-Stormrage"] = { user = { axes = { affection = 200 }, label = string.rep("l", 90) } }, [5] = {}, ["x\1y"] = { user = { axes = { trust = 1 } } }, ["Bad"] = 7 }
 	local dropped = R:Sanitize()
 	T.ok(dropped >= 5, "voci scartate: " .. dropped)
 	T.eq(Count(d.npcs), 1, "un solo NPC valido (" .. Count(d.npcs) .. ")")
@@ -956,7 +956,7 @@ T.run("dati rovinati: si scartano le voci, non si ferma l'avvio", function()
 	T.ok(#rec.note <= R.NOTE_LEN and rec.name == nil and rec.today == nil, "nota accorciata, nome e contatori non validi scartati")
 	T.ok(rec.tags and #rec.tags == 2 and #rec.tags[2] <= R.TAG_LEN, "tag ripuliti")
 	T.ok(rec.noted and rec.noted.friend and not rec.noted["Brutto!"], "ricordi già fatti: solo token validi")
-	T.ok(d.players["Aldric-Stormrage"].affection == 100 and #d.players["Aldric-Stormrage"].label <= R.LABEL_LEN, "giocatore valido, limitato")
+	T.ok(d.players["Aldric-Stormrage"].user.axes.affection == 100 and #d.players["Aldric-Stormrage"].user.label <= R.LABEL_LEN, "giocatore valido, limitato")
 	-- il contesto regge anche a dati strani
 	P.target = { name = "Aldric", realm = "Stormrage", player = true, guid = "Player-1-0000AAAA" }
 	T.ok(pcall(NS.BuildContext, NS), "il contesto non si rompe")
@@ -1034,39 +1034,39 @@ T.run("finestra Relazioni: elenco, dettaglio, cursori, note", function()
 	local sliders = Under(ROOT, function(w) return rawget(w, "thumb") ~= nil and w:IsShown() end)
 	T.eq(#sliders, 6, "sei cursori con l'attrazione spenta")
 	sliders[2]:Set(75, false)
-	T.eq(R:Get("player", zeno).trust, 40, "durante il trascinamento non si salva")
+	T.eq(R:Get("player", zeno).user.axes.trust, 40, "durante il trascinamento non si salva")
 	sliders[2]:Set(75, true)
-	T.eq(R:Get("player", zeno).trust, 75, "al rilascio sì: fiducia")
+	T.eq(R:Get("player", zeno).user.axes.trust, 75, "al rilascio sì: fiducia")
 	sliders[5]:Set(-60, true)
-	T.eq(R:Get("player", zeno).fear, nil, "il timore non va sotto lo zero")
+	T.eq(R:Get("player", zeno).user.axes.fear, nil, "il timore non va sotto lo zero")
 	sliders[4]:Set(-100, true)
-	T.eq(R:Get("player", zeno).affection, -100, "affetto fino a -100")
+	T.eq(R:Get("player", zeno).user.axes.affection, -100, "affetto fino a -100")
 	T.ok(#Texts(function(t) return t:find("nemico", 1, true) end) >= 1, "l'etichetta si aggiorna")
 	sliders[4]:Set(40, true)
 	-- pulsanti - e +
 	local minus = {}
 	for _, b in ipairs(Buttons()) do if b:GetText() == "-" then table.insert(minus, b) end end
 	minus[2]:Click()
-	T.eq(R:Get("player", zeno).trust, 65, "pulsante meno: fiducia -10")
+	T.eq(R:Get("player", zeno).user.axes.trust, 65, "pulsante meno: fiducia -10")
 	-- nota, tag, etichetta personalizzata
 	boxes = Boxes()
 	boxes[4]:TypeEnter("Mi deve un favore")
-	T.eq(R:Get("player", zeno).note, "Mi deve un favore", "nota")
+	T.eq(R:Get("player", zeno).user.note, "Mi deve un favore", "nota")
 	boxes[5]:TypeEnter("gilda, fiera")
-	T.eq(table.concat(R:Get("player", zeno).tags, "|"), "gilda|fiera", "tag")
+	T.eq(table.concat(R:Get("player", zeno).user.tags, "|"), "gilda|fiera", "tag")
 	boxes[3]:TypeEnter("fratello di spada")
-	T.eq(R:Get("player", zeno).label, "fratello di spada", "etichetta personalizzata")
+	T.eq(R:Get("player", zeno).user.label, "fratello di spada", "etichetta personalizzata")
 	T.eq(R:Resolve("player", R:Get("player", zeno)).text, "fratello di spada", "mostrata")
 	local auto = ButtonWithText("Scelta:")
 	T.ok(auto ~= nil, "il pulsante dell'etichetta mostra la scelta")
 	auto:Click()
-	T.eq(R:Get("player", zeno).label, R:LabelIds()[1], "il pulsante passa alla prima etichetta")
+	T.eq(R:Get("player", zeno).user.label, R:LabelIds()[1], "il pulsante passa alla prima etichetta")
 	for _ = 1, #R:LabelIds() do ButtonWithText("Scelta:"):Click() end
-	T.eq(R:Get("player", zeno).label, nil, "e torna all'automatica")
+	T.eq(R:Get("player", zeno).user.label, nil, "e torna all'automatica")
 	-- eliminazione con conferma
-	ButtonWithText("Elimina questa relazione"):Click()
+	ButtonWithText("Rimuovi la persona"):Click()
 	T.ok(R:Get("player", zeno) ~= nil, "il primo clic arma soltanto")
-	ButtonWithText("Conferma: elimina"):Click()
+	ButtonWithText("Conferma: rimuovi"):Click()
 	T.eq(R:Get("player", zeno), nil, "il secondo elimina")
 	T.eq(RelationsFrame:CurrentView(), "list", "si torna all'elenco")
 	-- l'attrazione, quando è accesa, ha il suo cursore
@@ -1167,18 +1167,18 @@ T.run("comandi /au relationships", function()
 	T.ok(Cmd("relationships add Aldric-Stormrage"):find("aggiunto", 1, true) and R:Get("player", "Aldric-Stormrage"), "aggiungi")
 	T.ok(Cmd("relationships add Aldric-Stormrage"):find("già in lista", 1, true), "già in lista")
 	T.ok(Cmd("relationships set Aldric-Stormrage trust 55"):find("Aldric", 1, true), "imposta")
-	T.eq(R:Get("player", "Aldric-Stormrage").trust, 55, "fiducia 55")
+	T.eq(R:Get("player", "Aldric-Stormrage").user.axes.trust, 55, "fiducia 55")
 	Cmd("relationships set Aldric-Stormrage affection 60")
 	Cmd("relationships set Aldric loyalty 20")
-	T.ok(R:Get("player", "Aldric-Stormrage").affection == 60 and R:Get("player", "Aldric-Stormrage").loyalty == 20, "alias EN e nome senza reame")
+	T.ok(R:Get("player", "Aldric-Stormrage").user.axes.affection == 60 and R:Get("player", "Aldric-Stormrage").user.axes.loyalty == 20, "alias EN e nome senza reame")
 	T.ok(Cmd("relationships set Aldric boh 3"):find("uso:", 1, true), "asse sconosciuto: l'uso")
 	T.ok(Cmd("relationships set Nessuno trust 3"):find("non trovato", 1, true), "persona sconosciuta")
 	Cmd("relationships note Aldric Amico di vecchia data")
-	T.eq(R:Get("player", "Aldric-Stormrage").note, "Amico di vecchia data", "nota")
+	T.eq(R:Get("player", "Aldric-Stormrage").user.note, "Amico di vecchia data", "nota")
 	Cmd("relationships tags Aldric gilda, fiera")
-	T.eq(#R:Get("player", "Aldric-Stormrage").tags, 2, "tag")
+	T.eq(#R:Get("player", "Aldric-Stormrage").user.tags, 2, "tag")
 	Cmd("relationships label Aldric rivale rispettato")
-	T.eq(R:Get("player", "Aldric-Stormrage").label, "rival", "etichetta per nome")
+	T.eq(R:Get("player", "Aldric-Stormrage").user.label, "rival", "etichetta per nome")
 	T.ok(Cmd("relationships detail Aldric"):find("rivale rispettato", 1, true), "dettaglio con l'etichetta scelta")
 	T.ok(Cmd("relationships list"):find("Aldric", 1, true), "lista")
 	-- proposte
@@ -1243,21 +1243,21 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 		"un selettore per ogni tratto e per il ruolo")
 	T.eq(role:GetText(), "Ruolo: non so", "all'inizio: non so")
 	role:Click()
-	T.eq(R:Get("player", zeno).role, "innkeeper", "primo clic: il primo ruolo")
-	T.eq(R:Get("player", zeno).roleSource, "user", "scelto dall'utente")
+	T.eq(R:Get("player", zeno).user.role, "innkeeper", "primo clic: il primo ruolo")
+	T.eq(R:Get("player", zeno).user.roleSource, "user", "scelto dall'utente")
 	T.eq(ButtonWithText("Ruolo: "):GetText(), "Ruolo: Locandiere", "il pulsante mostra il valore")
 	for _ = 1, #I.ROLES - 1 do ButtonWithText("Ruolo: "):Click() end
-	T.eq(R:Get("player", zeno).role, I.ROLES[#I.ROLES], "gira fino all'ultimo ruolo")
+	T.eq(R:Get("player", zeno).user.role, I.ROLES[#I.ROLES], "gira fino all'ultimo ruolo")
 	ButtonWithText("Ruolo: "):Click()
-	T.eq(R:Get("player", zeno).role, nil, "poi torna a non so")
+	T.eq(R:Get("player", zeno).user.role, nil, "poi torna a non so")
 	temperament:Click()
 	local first = NS.Traits.defs.temperament.values[1]
-	T.eq(R:Get("player", zeno).traits.temperament, first, "temperamento")
+	T.eq(R:Get("player", zeno).user.traits.temperament, first, "temperamento")
 	T.eq(NS.Interlocutor:GetUserTrait("player", zeno, "temperament"), first, "GetUserTrait")
 	-- il valore scelto arriva nel profilo dell'interlocutore (fonte 1)
 	P.target = nil
 	for _ = 1, #NS.Traits.defs.temperament.values do ButtonWithText("Temperamento: "):Click() end
-	T.eq(R:Get("player", zeno).traits, nil, "tornato a non so: nessun tratto salvato")
+	T.eq(R:Get("player", zeno).user.traits, nil, "tornato a non so: nessun tratto salvato")
 	-- dato scritto da una versione più nuova: non si cambia
 	R.readOnly = true
 	T.eq(I:CycleTrait("player", zeno, "speech"), false, "in sola lettura non si scrive")
@@ -1315,14 +1315,14 @@ end)
 -- #50: i dati di una versione interna più nuova non si portano alla versione 1 e non si perdono campi
 T.run("relazioni di una versione più nuova: sola lettura, dati intatti", function()
 	Fresh()
-	NS.cdb.relationships = { version = 2, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
-		players = { ["Ale-Reame"] = { first = 1, last = 2, count = 1, nickname = "futuro" } } }
+	NS.cdb.relationships = { version = 3, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
+		players = { ["Ale-Reame"] = { seen = { first = 1, last = 2, count = 1 }, nickname = "futuro" } } }
 	NS.Diagnostics.errors = {}
 	R.readOnly = false
 	local dropped = R:Sanitize()
 	T.eq(dropped, 0, "niente scartato")
 	T.eq(R.readOnly, true, "sola lettura")
-	T.eq(NS.cdb.relationships.version, 2, "la versione resta la 2")
+	T.eq(NS.cdb.relationships.version, 3, "la versione resta la 3")
 	T.eq(NS.cdb.relationships.npcs[1234].mood, "futuro", "campo sconosciuto di un NPC conservato")
 	T.eq(NS.cdb.relationships.players["Ale-Reame"].nickname, "futuro", "campo sconosciuto di un giocatore conservato")
 	local logged = false
@@ -1332,10 +1332,10 @@ T.run("relazioni di una versione più nuova: sola lettura, dati intatti", functi
 	T.eq(R:RecordNPC(1234, "Grik", "ambient"), nil, "RecordNPC non scrive")
 	T.eq(NS.cdb.relationships.npcs[1234].count, 3, "il record non è cambiato")
 	-- una versione uguale o più vecchia si ripulisce come prima
-	NS.cdb.relationships = { version = 1, npcs = { [5] = { first = 1, last = 2, count = 1, mood = "x" } }, players = {} }
+	NS.cdb.relationships = { version = 2, npcs = { [5] = { first = 1, last = 2, count = 1, mood = "x" } }, players = {} }
 	R.readOnly = false
 	R:Sanitize()
-	T.eq(R.readOnly, false, "versione 1: scrivibile")
+	T.eq(R.readOnly, false, "versione 2: scrivibile")
 	T.eq(NS.cdb.relationships.npcs[5].mood, nil, "e ripulita")
 	Fresh()
 end)

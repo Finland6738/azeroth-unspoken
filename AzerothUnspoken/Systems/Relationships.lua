@@ -12,12 +12,23 @@
 --   - Narratore: ctx.relation, ctx.disposition e gli assi (ctx.rel), le condizioni delle regole, il segnaposto
 --     {relation}, il fattore R del peso (Engine:SetWeightHook "R"), il registro per familiarità (StyleResolver).
 -- I dati vivono in AzerothUnspokenCharacterDB.relationships (versione propria, migrazioni di schema 5).
+-- Player records (version 2, #107, ADR 0026) keep two blocks apart:
+--   user = what the user chose (axes edited by hand, label, feeling, note, tags, traits, role): written ONLY by the
+--          user-action functions of this file (SetAxis, SetLabel, SetFeelings, SetNote, SetTags...) and by
+--          Interlocutor:SetTrait; the software never writes it by itself (a test proves it);
+--   seen = what the addon observed (first, last, count, encounters by type, a ring of short facts, no text).
+-- NPC records stay flat: their axes are computed by the addon.
 local ADDON, NS = ...
 local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 
 ---@alias AURelationKind "npc"|"player"
 
 ---@class AURelationRecord una relazione salvata (NPC: chiave npcID; giocatore: chiave "Nome-Reame")
+---Player records (version 2) hold the user's choices in `user` and the observations in `seen` (see AUPlayerUser and
+---AUPlayerSeen); the fields below that the user chooses (axes, label, note, tags, traits, role) then live in `user`
+---and first/last/count in `seen`. NPC records keep every field here.
+---@field user? AUPlayerUser players: what the user chose
+---@field seen? AUPlayerSeen players: what the addon observed
 ---@field first number prima interazione (epoch)
 ---@field last number ultima interazione
 ---@field count integer numero di interazioni
@@ -41,6 +52,30 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 ---@field role? string ruolo dell'interlocutore (S6c)
 ---@field roleSource? "user"|"auto" chi ha deciso il ruolo: l'utente, o un'interazione affidabile
 
+---@class AUPlayerUser what the user chose about a player: only the user-action functions write it (ADR 0026)
+---@field axes? table<string, number> axes edited by hand (sparse: a missing value is 0)
+---@field label? string a label id, or free text
+---@field feeling? string[] up to two feelings (trust, liking, wariness, fear, resentment, gratitude)
+---@field note? string
+---@field tags? string[]
+---@field traits? AUTraits how the user sees the person (S6c)
+---@field role? string
+---@field roleSource? "user"
+
+---@class AUPlayerFact one remembered encounter, without any text
+---@field k string kind (group, trade, duel, invite, emote, whisper, target, group_combat)
+---@field p? integer uiMapID of the place
+---@field z? string zone name
+---@field t number time (epoch)
+
+---@class AUPlayerSeen what the addon observed about a player: counted by the addon, never chosen by the user
+---@field first number
+---@field last number
+---@field count integer encounters (the same kind within ENCOUNTER_GAP is one encounter)
+---@field kinds table<string, integer> encounters by kind
+---@field facts AUPlayerFact[] the last FACTS facts, oldest first
+---@field guid? string reserved for #112 (never written by this version)
+
 ---@class AURelationsData dati salvati: AzerothUnspokenCharacterDB.relationships
 ---@field version integer
 ---@field npcs table<integer, AURelationRecord>
@@ -57,28 +92,42 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 ---@field dispositionText string
 ---@field dispositionValue number -100…100
 ---@field isKnown boolean
----@field traits AUTraits profilo per i tag delle frasi (assi, relation, disposition)
+---@field feelings string[] the feelings the user chose (up to two)
+---@field traits AUTraits profilo per i tag delle frasi (assi, relation, disposition, feeling)
 
 ---@class AURelationships
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 1                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships
+R.VERSION = 2                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
 R.MAX_CANDIDATES = 40          -- proposte in memoria (mai salvate)
 R.NOTE_LEN, R.LABEL_LEN, R.TAG_LEN, R.MAX_TAGS, R.NAME_LEN = 240, 24, 24, 6, 64
+R.SCAN_DELAY = 1               -- seconds between the last roster update and the group scan
 R.INTERACTION_SECONDS = 300    -- quanto resta "aperto" un dialogo con un NPC senza un evento di chiusura
 R.QUEST_SECONDS = 900          -- tra l'apertura di una quest e l'accettazione o la consegna
 R.KNOWN_GAP = 600              -- secondi tra due richiami "NPC conosciuto" per lo stesso NPC
 R.DAY = 86400
+R.ENCOUNTER_GAP = 600          -- seconds: the same kind of encounter with the same person inside the gap is one encounter
+R.FACTS = 5                    -- short facts kept per player (a ring: the oldest goes first)
+R.FEELINGS_MAX = 2             -- feelings the user can choose for one person
+R.ZONE_LEN = 40
+-- what can happen with a listed player. ENCOUNTERS count as encounters (`count`, `last`); SHARED are facts of an
+-- experience lived together (they update `last` and the tally by kind, not `count`). relShared accepts any of them.
+R.ENCOUNTERS = { group = true, trade = true, duel = true, invite = true, emote = true, whisper = true, target = true }
+R.SHARED = { group_combat = true }
+R.RECOGNIZE = { group = true, trade = true, duel = true, invite = true, emote = true }  -- encounters that offer relation_player
+for kind in pairs(R.ENCOUNTERS) do Engine.CONDITION_VALUES.relShared[kind] = true end
+for kind in pairs(R.SHARED) do Engine.CONDITION_VALUES.relShared[kind] = true end
 R.SLIDER_STEP = 10             -- passo dei pulsanti -/+ dell'interfaccia
 
 R.readOnly = false             -- dati scritti da una versione più nuova: si leggono, non si cambiano
 R.axes, R.axisById = {}, {}    -- assi in ordine
 R.labels, R.labelById = {}, {} -- etichette per priorità decrescente
 R.dispositions, R.dispositionById = {}, {}
+R.feelings, R.feelingById = {}, {}   -- feelings in words, in data order (Data/Relationships.lua)
 R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionStyles = {}, increments = {},
 	decay = { graceDays = 14, perDay = 0.5, floor = 3 }, memorable = {},
 	disposition = { weights = {}, familiarityWarmth = 0, bands = {} } }
@@ -86,7 +135,7 @@ R.candidates = {}              -- [chiave] = { key, source, t }: persone propost
 R.dismissed = {}               -- [chiave] = true: proposte che l'utente ha scartato (solo sessione)
 R.recalls = {}                 -- [evento] = true: eventi che citano un rapporto (il validatore chiede una condizione)
 R.interaction = nil            -- { npcID, name, kind, t }: l'NPC con cui si sta parlando
-R.session = { seen = {}, offered = {} }
+R.session = { seen = {}, offered = {}, recognized = {}, prior = {} }
 
 local EMPTY = {}
 Traits.RegisterScope("rel")   -- i tag delle frasi sulle relazioni: rel.relation:friend, rel.trust:high...
@@ -195,6 +244,10 @@ local function DefineChoiceTraits()
 	for _, d in ipairs(R.dispositions) do table.insert(dispIds, d.id) end
 	if #labelIds > 0 then Traits.Define({ id = "relation", kind = "choice", values = labelIds, scope = "rel" }) end
 	if #dispIds > 0 then Traits.Define({ id = "disposition", kind = "choice", values = dispIds, scope = "rel" }) end
+	-- feelings are a set (up to two at once): rel.feeling:resentment, rel.req:feeling:..., rel.not:feeling:...
+	local feelingIds = {}
+	for _, f in ipairs(R.feelings) do table.insert(feelingIds, f.id) end
+	if #feelingIds > 0 then Traits.Define({ id = "feeling", kind = "set", values = feelingIds, scope = "rel" }) end
 end
 
 ---Aggiunge o sostituisce (per id) assi, etichette e disposizioni, e unisce le tabelle di configurazione. Lo usa
@@ -219,7 +272,7 @@ function R:RegisterData(def)
 	for _, l in ipairs(def.labels or {}) do
 		if type(l.id) == "string" and l.id:match("^[a-z_]+$") and type(l.when) == "table" then
 			local label = { id = l.id, priority = IsNumber(l.priority) and l.priority or 0, name = l.name, when = l.when,
-				order = #self.labels + 1 }
+				order = #self.labels + 1, manualOnly = l.manualOnly == true }
 			if self.labelById[l.id] then
 				label.order = self.labelById[l.id].order
 				for i, x in ipairs(self.labels) do if x.id == l.id then self.labels[i] = label end end
@@ -249,6 +302,22 @@ function R:RegisterData(def)
 			end
 		end
 		table.sort(self.dispositions, function(a, b) return a.max < b.max end)
+	end
+	-- feelings in words (#109): `preset` is the typical level of the axes, offered to the user, never applied alone
+	for _, f in ipairs(def.feelings or {}) do
+		if type(f.id) == "string" and f.id:match("^[a-z]+$") then
+			local feeling = { id = f.id, name = f.name, help = f.help, preset = {} }
+			for axis, v in pairs(type(f.preset) == "table" and f.preset or {}) do
+				if self.axisById[axis] and IsNumber(v) then feeling.preset[axis] = v end
+			end
+			if self.feelingById[f.id] then
+				for i, x in ipairs(self.feelings) do if x.id == f.id then self.feelings[i] = feeling end end
+			else
+				table.insert(self.feelings, feeling)
+			end
+			self.feelingById[f.id] = feeling
+			Engine.CONDITION_VALUES.feeling[f.id] = true
+		end
 	end
 	local c = self.config
 	if IsNumber(def.knownMin) then c.knownMin = def.knownMin end
@@ -315,6 +384,13 @@ function R:DispositionName(id)
 	return d and Name(d.name) or tostring(id)
 end
 
+---@param id string
+---@return string
+function R:FeelingName(id)
+	local f = self.feelingById[id]
+	return f and Name(f.name) or tostring(id)
+end
+
 ---@param axis string
 ---@return string
 function R:AxisName(axis)
@@ -349,7 +425,7 @@ end
 ---@return string id
 function R:Derive(axes)
 	for _, l in ipairs(self.labels) do
-		if RuleMatches(l.when, axes) then return l.id end
+		if not l.manualOnly and RuleMatches(l.when, axes) then return l.id end
 	end
 	return "stranger"
 end
@@ -374,8 +450,25 @@ function R:Disposition(axes)
 	return value, last and last.id or "neutral"
 end
 
+---The record that holds what the user chose: `rec.user` for a player, the record itself for an NPC.
+---Readers may use it freely; only the user-action functions of this file (and Interlocutor:SetTrait) write to it.
+---@param rec AURelationRecord
+---@return table
+function R.UserOf(rec)
+	return rec.user or rec
+end
+
+---The record that holds what the addon observed (first, last, count...): `rec.seen` for a player, the record itself
+---for an NPC.
+---@param rec AURelationRecord
+---@return table
+function R.SeenOf(rec)
+	return rec.seen or rec
+end
+
 local function AxisValue(rec, id)
-	local v = rec[id]
+	local t = rec.user and (rec.user.axes or EMPTY) or rec
+	local v = t[id]
 	return IsNumber(v) and v or 0
 end
 
@@ -396,18 +489,28 @@ end
 function R:Resolve(kind, rec, sex)
 	local axes = self:Axes(rec)
 	local derived = self:Derive(axes)
-	local manual = type(rec.label) == "string" and rec.label ~= ""
+	local user = R.UserOf(rec)
+	local manual = type(user.label) == "string" and user.label ~= ""
 	local label, text = derived, nil
 	if manual then
-		if self.labelById[rec.label] then label = rec.label else text = rec.label end
+		if self.labelById[user.label] then label = user.label else text = user.label end
 	end
 	local value, disp = self:Disposition(axes)
 	local known = kind == "player" or manual or (axes.familiarity or 0) >= self.config.knownMin
 	local traits = { relation = label, disposition = disp }
 	for axis, v in pairs(axes) do traits[axis] = v end
+	-- the feelings the user chose, as an ordered list and as a set for the tags (rel.feeling:resentment)
+	local feelings, set = {}, {}
+	for _, id in ipairs(type(user.feeling) == "table" and user.feeling or EMPTY) do
+		if self.feelingById[id] and not set[id] then
+			set[id] = true
+			table.insert(feelings, id)
+		end
+	end
+	if #feelings > 0 then traits.feeling = set end
 	return { kind = kind, axes = axes, derived = derived, label = label, text = text or self:LabelName(label, sex),
 		manual = manual, custom = text, disposition = disp, dispositionText = self:DispositionName(disp),
-		dispositionValue = value, isKnown = known, traits = traits }
+		dispositionValue = value, isKnown = known, traits = traits, feelings = feelings }
 end
 
 ---------------------------------------------------------------------------
@@ -446,35 +549,121 @@ local function CleanTags(list)
 	return out
 end
 
-local function CleanRecord(rec, kind)
-	if type(rec) ~= "table" then return nil end
-	local out = {}
+local function CleanFeelings(list)
+	if type(list) ~= "table" then return nil end
+	local out, seen = {}, {}
+	for _, id in ipairs(list) do
+		if type(id) == "string" and R.feelingById[id] and not seen[id] and #out < R.FEELINGS_MAX then
+			seen[id] = true
+			table.insert(out, id)
+		end
+	end
+	return #out > 0 and out or nil
+end
+
+-- the axes of `src` (a flat record or a user.axes table) within their limits, zero values dropped, into `out`
+local function CleanAxesInto(src, out)
 	for _, a in ipairs(R.axes) do
-		local v = rec[a.id]
+		local v = src[a.id]
 		if IsNumber(v) then
 			v = Clamp(v, a.min, a.max)
 			if v ~= 0 then out[a.id] = v end
 		end
 	end
-	out.first = IsNumber(rec.first) and rec.first or 0
-	out.last = IsNumber(rec.last) and rec.last or out.first
-	out.count = IsNumber(rec.count) and math.max(0, math.floor(rec.count)) or 0
-	out.name = CleanText(rec.name, R.NAME_LEN)
-	out.label = CleanText(rec.label, R.LABEL_LEN)
-	out.note = CleanText(rec.note, R.NOTE_LEN)
-	local tags = CleanTags(rec.tags)
+end
+
+-- what the user chose, besides the axes: label, feelings, note, tags, traits and role (S6c). Into `out`.
+local function CleanChoicesInto(src, out)
+	out.label = CleanText(src.label, R.LABEL_LEN)
+	out.feeling = CleanFeelings(src.feeling)
+	out.note = CleanText(src.note, R.NOTE_LEN)
+	local tags = CleanTags(src.tags)
 	if #tags > 0 then out.tags = tags end
-	if rec.source == "user" or rec.source == "auto" then out.source = rec.source end
 	-- S6c: personalità e ruolo dell'interlocutore scelti dall'utente (o ruolo ricavato da un'interazione affidabile)
 	if NS.Interlocutor then
-		local traits = NS.Interlocutor.Clean(rec.traits)
+		local traits = NS.Interlocutor.Clean(src.traits)
 		traits.role = nil
 		if next(traits) then out.traits = traits end
-		if type(rec.role) == "string" and Traits.defs.role and Traits.defs.role.valid[rec.role] then
-			out.role = rec.role
-			out.roleSource = rec.roleSource == "user" and "user" or "auto"
+		if type(src.role) == "string" and Traits.defs.role and Traits.defs.role.valid[src.role] then
+			out.role = src.role
+			out.roleSource = src.roleSource == "user" and "user" or "auto"
 		end
 	end
+end
+
+local function CleanFact(f)
+	if type(f) ~= "table" or type(f.k) ~= "string" or not f.k:match("^[a-z_]+$") or #f.k > 20 or not IsNumber(f.t) then return nil end
+	local out = { k = f.k, t = f.t }
+	if IsNumber(f.p) and f.p > 0 then out.p = math.floor(f.p) end
+	out.z = CleanText(f.z, R.ZONE_LEN)
+	return out
+end
+
+-- the observations of a player: counts, the tally by kind and the ring of short facts (no text anywhere)
+local function CleanSeen(seen, fallback)
+	seen = type(seen) == "table" and seen or {}
+	local out = {}
+	out.first = IsNumber(seen.first) and seen.first or (fallback and fallback.first) or 0
+	out.last = IsNumber(seen.last) and seen.last or out.first
+	out.count = IsNumber(seen.count) and math.max(0, math.floor(seen.count)) or 0
+	out.kinds = {}
+	if type(seen.kinds) == "table" then
+		for k, n in pairs(seen.kinds) do
+			if type(k) == "string" and k:match("^[a-z_]+$") and #k <= 20 and IsNumber(n) and n >= 1 then
+				out.kinds[k] = math.floor(n)
+			end
+		end
+	end
+	out.facts = {}
+	if type(seen.facts) == "table" then
+		for _, f in ipairs(seen.facts) do
+			local clean = CleanFact(f)
+			if clean then table.insert(out.facts, clean) end
+		end
+		while #out.facts > R.FACTS do table.remove(out.facts, 1) end
+	end
+	if type(seen.guid) == "string" and #seen.guid <= 80 and not Compat.IsSecret(seen.guid) then out.guid = seen.guid end
+	return out
+end
+
+---Version 1 player records were flat: axes, label, note, tags, traits and role next to first/last/count. Version 2
+---keeps the user's choices in `user` and the observations in `seen` (#107, ADR 0026). Nothing is lost and nothing is
+---invented: every value moves as it is, and a record that already has the new shape is returned as it is.
+---@param rec any
+---@return any
+function R.MigrateV1(rec)
+	if type(rec) ~= "table" or rec.user ~= nil or rec.seen ~= nil then return rec end
+	local user, axes = {}, {}
+	for _, a in ipairs(R.axes) do
+		if rec[a.id] ~= nil then axes[a.id] = rec[a.id] end
+	end
+	if next(axes) then user.axes = axes end
+	for _, f in ipairs({ "label", "note", "tags", "traits", "role", "roleSource", "feeling" }) do user[f] = rec[f] end
+	return { source = rec.source, noted = rec.noted, user = user,
+		seen = { first = rec.first, last = rec.last, count = rec.count } }
+end
+
+local function CleanRecord(rec, kind)
+	if type(rec) ~= "table" then return nil end
+	local out = {}
+	if kind == "player" then
+		local user = type(rec.user) == "table" and rec.user or {}
+		out.user = {}
+		local axes = {}
+		CleanAxesInto(type(user.axes) == "table" and user.axes or EMPTY, axes)
+		if next(axes) then out.user.axes = axes end
+		CleanChoicesInto(user, out.user)
+		out.seen = CleanSeen(rec.seen)
+		out.name = CleanText(rec.name, R.NAME_LEN)
+	else
+		CleanAxesInto(rec, out)
+		out.first = IsNumber(rec.first) and rec.first or 0
+		out.last = IsNumber(rec.last) and rec.last or out.first
+		out.count = IsNumber(rec.count) and math.max(0, math.floor(rec.count)) or 0
+		out.name = CleanText(rec.name, R.NAME_LEN)
+		CleanChoicesInto(rec, out)
+	end
+	if rec.source == "user" or rec.source == "auto" then out.source = rec.source end
 	if kind == "npc" then
 		if IsNumber(rec.decayDay) then out.decayDay = math.floor(rec.decayDay) end
 		if IsNumber(rec.talks) and rec.talks > 0 then out.talks = math.floor(rec.talks) end
@@ -529,6 +718,8 @@ function R:Sanitize()
 	end
 	for k, rec in pairs(d.players) do
 		local key = type(k) == "string" and CleanText(k, R.NAME_LEN) or nil
+		-- version 1 player records were flat: move the choices into `user` and the counts into `seen` (#107)
+		if v < 2 then rec = R.MigrateV1(rec) end
 		local clean = key and CleanRecord(rec, "player")
 		if clean and key == k then players[key] = clean else dropped = dropped + 1 end
 	end
@@ -601,7 +792,7 @@ function R:CompactNPCs()
 	if total <= self.MAX_NPCS then return 0 end
 	local list = {}
 	for id, rec in pairs(d.npcs) do
-		if not (rec.label or rec.note or rec.tags) then table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 }) end
+		if not (rec.label or rec.note or rec.tags or rec.feeling) then table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 }) end
 	end
 	table.sort(list, function(a, b)
 		if a.f ~= b.f then return a.f < b.f end
@@ -725,6 +916,9 @@ end
 ---------------------------------------------------------------------------
 -- Giocatori: gestiti dall'utente
 ---------------------------------------------------------------------------
+-- the kind of encounter behind each source of proposals
+local ENCOUNTER_OF = { group = "group", trade = "trade", whisper = "whisper", trp3 = "target" }
+
 ---@return integer
 function R:CountPlayers()
 	local d = self:Data()
@@ -750,9 +944,13 @@ function R:AddPlayer(name, source)
 	if d.players[key] then return d.players[key], "exists" end
 	if self:CountPlayers() >= self.MAX_PLAYERS then return nil, "limit" end
 	local now = Now()
-	local rec = { first = now, last = now, count = 1, source = source }
+	-- nothing has been observed yet, and no meeting is invented: the addition itself is not an encounter
+	local rec = { source = source, user = {}, seen = { first = now, last = 0, count = 0, kinds = {}, facts = {} } }
 	d.players[key] = rec
+	local c = self.candidates[key]
 	self.candidates[key] = nil
+	-- a person proposed because of a real encounter this session: that encounter is the first observation
+	if c and ENCOUNTER_OF[c.source] then self:Observe(key, ENCOUNTER_OF[c.source]) end
 	self:Changed()
 	return rec
 end
@@ -770,14 +968,12 @@ function R:Propose(name, source)
 	local d = self:Data()
 	local rec = d.players[key]
 	if rec then
-		if not self.session.seen[key] then
-			self.session.seen[key] = true
-			rec.last, rec.count = Now(), (rec.count or 0) + 1
-		end
+		self:Observe(key, ENCOUNTER_OF[source] or "group")
 		return key
 	end
 	if self:Setting("autoRegisterPlayers") then
 		self:AddPlayer(key, "auto")
+		if ENCOUNTER_OF[source] then self:Observe(key, ENCOUNTER_OF[source]) end
 		return key
 	end
 	if not self:Setting("proposePlayers") or self.dismissed[key] then return nil end
@@ -795,6 +991,127 @@ function R:Propose(name, source)
 	self.candidates[key] = { key = key, source = source, t = Now() }
 	self:Changed()
 	return key
+end
+
+---------------------------------------------------------------------------
+-- Observations: what the addon saw of a listed player (#108). Never the user block.
+---------------------------------------------------------------------------
+-- the place where the character is now: uiMapID and zone name, both optional and never secret
+local function HereNow()
+	local mapID = Compat.SafeCall("C_Map.GetBestMapForUnit", "player")
+	if not IsNumber(mapID) or mapID <= 0 then mapID = nil end
+	local zone = Compat.SafeCall("GetRealZoneText") or Compat.SafeCall("GetZoneText")
+	zone = type(zone) == "string" and not Compat.IsSecret(zone) and CleanText(zone, R.ZONE_LEN) or nil
+	return mapID and math.floor(mapID) or nil, zone
+end
+
+local function LastFactOf(seen, kind)
+	for i = #seen.facts, 1, -1 do
+		if seen.facts[i].k == kind then return seen.facts[i] end
+	end
+	return nil
+end
+
+local function SessionTable(self, name)
+	local s = self.session
+	s[name] = s[name] or {}
+	return s[name]
+end
+
+---Records an encounter or a shared experience with a person who is already in the list. A person who is not listed is
+---ignored: nothing here creates a record (D11 in #130). Updates only `seen`: the last time, the encounters (`count`,
+---`kinds`) and the ring of the last facts: kind, place and time, never any text. The same kind with the same person
+---inside ENCOUNTER_GAP is one encounter. Shared experiences (`group_combat`) update `last` and the tally by kind, not
+---`count`.
+---Before the first change of a session the previous state is kept (`session.prior`), so that conditions such as
+---relDaysSince and relMetHere speak about the meeting before this one (#110).
+---@param name any "Name" or "Name-Realm"
+---@param kind string an ENCOUNTERS or SHARED kind
+---@return AURelationRecord? rec nil if the person is not listed
+---@return boolean? isNew true if this was a new encounter (not one inside the gap)
+function R:Observe(name, kind)
+	if not self:Enabled() or not (R.ENCOUNTERS[kind] or R.SHARED[kind]) then return nil end
+	local key = R.PlayerKey(name)
+	if not key or key == OwnKey() then return nil end
+	local rec = self:Data().players[key]
+	if not rec then return nil end
+	local seen = rec.seen
+	if type(seen) ~= "table" then
+		seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} }
+		rec.seen = seen
+	end
+	seen.kinds, seen.facts = seen.kinds or {}, seen.facts or {}
+	local now = Now()
+	local prior = SessionTable(self, "prior")
+	if prior[key] == nil then
+		local fact = seen.facts[#seen.facts]
+		prior[key] = { last = seen.last, place = fact and { mapID = fact.p, zone = fact.z } or nil }
+	end
+	if not IsNumber(seen.first) or seen.first <= 0 then seen.first = now end
+	if now > (seen.last or 0) then seen.last = now end
+	local recent = LastFactOf(seen, kind)
+	local isNew = not (recent and now - recent.t < self.ENCOUNTER_GAP and now >= recent.t)
+	if isNew then
+		if R.ENCOUNTERS[kind] then seen.count = (seen.count or 0) + 1 end
+		seen.kinds[kind] = (seen.kinds[kind] or 0) + 1
+		local mapID, zone = HereNow()
+		table.insert(seen.facts, { k = kind, p = mapID, z = zone, t = now })
+		while #seen.facts > self.FACTS do table.remove(seen.facts, 1) end
+	end
+	self:Changed()
+	return rec, isNew
+end
+
+---An encounter with a person: recorded if the person is listed (and, for the kinds that recognise, offered to the
+---narrator once per session), otherwise proposed to the user for the sources that propose.
+---@param name any
+---@param kind string group | trade | whisper | duel | invite | emote | target
+function R:Met(name, kind)
+	local key = R.PlayerKey(name)
+	if not key or not self:Enabled() then return end
+	if self:Data().players[key] then
+		self:Observe(key, kind)
+		if R.RECOGNIZE[kind] then self:Recognize(key) end
+	elseif kind == "group" or kind == "trade" or kind == "whisper" then
+		self:Propose(key, kind)
+	end
+end
+
+---A known player is recognised: one candidate for the Narrative Director per person and session (#106). The Director
+---decides: its budget, the moment and the chance may still leave it silent, and silence is a valid outcome. The
+---observation was already recorded by the caller either way. This is not a way to public chat (ADR 0018, 0003): the
+---line is for the private narrator, like every other event.
+---@param key string "Name-Realm" of a listed player
+---@return boolean offered
+function R:Recognize(key)
+	if not self:Enabled() or not NS.Director then return false end
+	local rec = self:Data().players[key]
+	if not rec then return false end
+	local done = SessionTable(self, "recognized")
+	if done[key] then return false end
+	done[key] = GetTime()
+	local first = key:match("^([^-]+)") or key
+	NS.Director:Offer("relation_player", {
+		relationSubject = { kind = "player", id = key },
+		otherSubject = { kind = "player", key = "player:" .. key, name = first },
+	})
+	return true
+end
+
+---"Forget observations": the user wants the addon to drop what it saw of this person (counts, encounters, facts),
+---keeping the person and everything the user chose. A user action.
+---@param key string
+---@return boolean ok
+function R:ForgetObservations(key)
+	if not self:Writable() then return false end
+	local rec = self:Data().players[key]
+	if not rec then return false end
+	rec.seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} }
+	local prior, done = self.session.prior, self.session.recognized
+	if prior then prior[key] = nil end
+	if done then done[key] = nil end
+	self:Changed()
+	return true
 end
 
 ---Le proposte, dalla più recente.
@@ -823,10 +1140,15 @@ end
 ---------------------------------------------------------------------------
 -- Modifiche dell'utente: assi, etichetta, note, tag, eliminazione
 ---------------------------------------------------------------------------
+-- The ONLY way to a record that the user is changing, and with it the block that holds the user's choices. Every
+-- function below is a user action (a button, a slider, a command): nothing the addon does by itself comes through
+-- here (#107, ADR 0026; Tests/check_user_block.py and the "software never writes user" test).
 local function Edit(self, kind, key)
 	if not self:Writable() then return nil end
 	local rec = self:Get(kind, kind == "npc" and tonumber(key) or key)
-	return rec
+	if not rec then return nil end
+	if kind == "player" and type(rec.user) ~= "table" then rec.user = {} end
+	return rec, R.UserOf(rec)
 end
 
 ---@param kind AURelationKind
@@ -835,12 +1157,18 @@ end
 ---@param value number
 ---@return boolean ok
 function R:SetAxis(kind, key, axis, value)
-	local rec = Edit(self, kind, key)
+	local rec, user = Edit(self, kind, key)
 	local def = self.axisById[axis]
 	if not rec or not def or not IsNumber(value) then return false end
 	local old = DerivedOf(self, rec)
 	value = Clamp(math.floor(value + 0.5), def.min, def.max)
-	rec[axis] = value ~= 0 and value or nil
+	local axes = user
+	if kind == "player" then
+		user.axes = user.axes or {}
+		axes = user.axes
+	end
+	axes[axis] = value ~= 0 and value or nil
+	if kind == "player" and not next(axes) then user.axes = nil end
 	AfterChange(self, kind, rec, old)
 	self:Changed()
 	return true
@@ -864,7 +1192,7 @@ end
 ---@param text? string
 ---@return boolean ok
 function R:SetLabel(kind, key, text)
-	local rec = Edit(self, kind, key)
+	local rec, user = Edit(self, kind, key)
 	if not rec then return false end
 	local clean = CleanText(text, self.LABEL_LEN)
 	if clean then
@@ -873,7 +1201,7 @@ function R:SetLabel(kind, key, text)
 			if l.id == lower or NS.Lower(Name(l.name)) == lower then clean = l.id; break end
 		end
 	end
-	rec.label = clean
+	user.label = clean
 	self:Changed()
 	return true
 end
@@ -883,10 +1211,10 @@ end
 ---@param key integer|string
 ---@return string? now l'etichetta scelta (nil = automatica)
 function R:CycleLabel(kind, key)
-	local rec = Edit(self, kind, key)
+	local rec, user = Edit(self, kind, key)
 	if not rec then return nil end
 	local ids = self:LabelIds()
-	local cur = rec.label
+	local cur = user.label
 	local nextId
 	if cur == nil or not self.labelById[cur] then
 		nextId = ids[1]
@@ -895,7 +1223,7 @@ function R:CycleLabel(kind, key)
 			if id == cur then nextId = ids[i + 1]; break end
 		end
 	end
-	rec.label = nextId
+	user.label = nextId
 	self:Changed()
 	return nextId
 end
@@ -905,9 +1233,9 @@ end
 ---@param text? string
 ---@return boolean ok
 function R:SetNote(kind, key, text)
-	local rec = Edit(self, kind, key)
+	local rec, user = Edit(self, kind, key)
 	if not rec then return false end
-	rec.note = CleanText(text, self.NOTE_LEN)
+	user.note = CleanText(text, self.NOTE_LEN)
 	self:Changed()
 	return true
 end
@@ -918,14 +1246,85 @@ end
 ---@param text? string
 ---@return boolean ok
 function R:SetTags(kind, key, text)
-	local rec = Edit(self, kind, key)
+	local rec, user = Edit(self, kind, key)
 	if not rec then return false end
 	local list = {}
 	for part in tostring(text or ""):gmatch("[^,;]+") do table.insert(list, part) end
 	local tags = CleanTags(list)
-	rec.tags = #tags > 0 and tags or nil
+	user.tags = #tags > 0 and tags or nil
 	self:Changed()
 	return true
+end
+
+---The feelings the user chooses for a person, in words (trust, liking, wariness, fear, resentment, gratitude): none,
+---one or two. Only the words are saved: the axes stay as they are until the user asks for the preset
+---(ApplyFeelingPreset). The feeling does not change the label by itself; it adds the tag `rel.feeling:<id>` and the
+---condition `feeling` for the lines.
+---@param kind AURelationKind
+---@param key integer|string
+---@param list? string[]|string one id, a list of ids, or nil/{} for none
+---@return boolean ok
+function R:SetFeelings(kind, key, list)
+	local rec, user = Edit(self, kind, key)
+	if not rec then return false end
+	if type(list) == "string" then list = { list } end
+	local clean = CleanFeelings(list or EMPTY)
+	if list and #list > 0 and not clean then return false end
+	user.feeling = clean
+	self:Changed()
+	return true
+end
+
+---Cycles the feeling in one slot (1 or 2): none, then each feeling in turn, then none again. Slot 2 needs slot 1.
+---@param kind AURelationKind
+---@param key integer|string
+---@param slot 1|2
+---@return string? now the feeling of that slot (nil = none)
+function R:CycleFeeling(kind, key, slot)
+	local rec, user = Edit(self, kind, key)
+	if not rec then return nil end
+	local cur = {}
+	for _, id in ipairs(user.feeling or EMPTY) do table.insert(cur, id) end
+	slot = slot == 2 and 2 or 1
+	if slot == 2 and #cur == 0 then return nil end
+	local ids = {}
+	for _, f in ipairs(self.feelings) do
+		if f.id ~= cur[slot == 1 and 2 or 1] then table.insert(ids, f.id) end
+	end
+	local nextId
+	local at
+	for i, id in ipairs(ids) do if id == cur[slot] then at = i end end
+	nextId = ids[(at or 0) + 1]
+	cur[slot] = nextId
+	if slot == 1 and not nextId then cur = {} end
+	if slot == 2 and not nextId then cur[2] = nil end
+	user.feeling = CleanFeelings(cur)
+	self:Changed()
+	return nextId
+end
+
+---The preset of the axes for the person's first feeling: the typical level of that feeling, raised only where the
+---axis is weaker than the preset in its direction (a stronger value the user set is kept). A user action that
+---changes the axes the user can then adjust; it is never run by the addon on its own.
+---@param kind AURelationKind
+---@param key integer|string
+---@return boolean ok
+---@return table<string, number>? changed the axes that moved, with the new values
+function R:ApplyFeelingPreset(kind, key)
+	local rec, user = Edit(self, kind, key)
+	if not rec then return false end
+	local f = self.feelingById[(user.feeling or EMPTY)[1]]
+	if not f then return false end
+	local changed = {}
+	for axis, target in pairs(f.preset) do
+		local def = self.axisById[axis]
+		local v = AxisValue(rec, axis)
+		if def and (not def.optional or self:AttractionOn()) and ((target >= 0 and v < target) or (target < 0 and v > target)) then
+			if self:SetAxis(kind, key, axis, target) then changed[axis] = target end
+		end
+	end
+	self:Changed()
+	return true, changed
 end
 
 ---@param kind AURelationKind
@@ -980,7 +1379,7 @@ end
 ---@field kind? AURelationKind
 ---@field label? string id di etichetta
 ---@field text? string parte del nome (senza maiuscole)
----@field sort? "name"|"kind"|"label"|"disposition"|"last"|"familiarity"
+---@field sort? "name"|"kind"|"label"|"disposition"|"last"|"count"|"familiarity"
 ---@field desc? boolean
 
 ---Le relazioni, filtrate e ordinate.
@@ -1014,8 +1413,12 @@ function R:Rows(filter)
 		elseif sort == "familiarity" then
 			local fa, fb = AxisValue(a.rec, "familiarity"), AxisValue(b.rec, "familiarity")
 			if fa ~= fb then return fa < fb end
+		elseif sort == "count" then
+			local ca, cb = R.SeenOf(a.rec).count or 0, R.SeenOf(b.rec).count or 0
+			if ca ~= cb then return ca < cb end
 		else
-			if (a.rec.last or 0) ~= (b.rec.last or 0) then return (a.rec.last or 0) < (b.rec.last or 0) end
+			local la, lb = R.SeenOf(a.rec).last or 0, R.SeenOf(b.rec).last or 0
+			if la ~= lb then return la < lb end
 		end
 		return NS.Lower(a.name) < NS.Lower(b.name)
 	end
@@ -1099,8 +1502,12 @@ function R:Subject(ctx, extra)
 	return nil
 end
 
----Rilegge il gruppo: quali etichette ci sono tra i compagni (per `withRelation`), e propone chi non è in lista.
-function R:ScanGroup()
+---Rereads the group: which labels are among the companions (for `withRelation`), and proposes who is not listed.
+---With `announce` (the roster event, not the lazy read made while building a context) it also notices who joined
+---since the last scan: a listed player who joins is observed (`group`) and recognised (#106), and the listed members
+---are remembered for the shared-experience facts (`group_combat`).
+---@param announce? boolean
+function R:ScanGroup(announce)
 	self.groupDirty = false
 	local out = {}
 	local d = self:Data()
@@ -1111,6 +1518,7 @@ function R:ScanGroup()
 	elseif Compat.SafeCall("IsInGroup") == true then
 		for i = 1, 4 do table.insert(units, "party" .. i) end
 	end
+	local listed, joined = {}, {}
 	for _, unit in ipairs(units) do
 		if Compat.SafeCall("UnitExists", unit) == true and not Compat:IsUnitIdentitySecret(unit) then
 			local name, realm = Compat.SafeCall("UnitFullName", unit)
@@ -1119,6 +1527,8 @@ function R:ScanGroup()
 				local rec = d.players[key]
 				if rec then
 					out[self:Resolve("player", rec).label] = true
+					listed[key] = true
+					if announce and not (self.groupKeys or EMPTY)[key] then table.insert(joined, key) end
 				else
 					self:Propose(key, "group")
 				end
@@ -1126,6 +1536,11 @@ function R:ScanGroup()
 		end
 	end
 	self.group = out
+	if announce then
+		self.groupKeys = listed
+		table.sort(joined)
+		for _, key in ipairs(joined) do self:Met(key, "group") end
+	end
 	return out
 end
 
@@ -1156,6 +1571,48 @@ function R:Context(ctx, extra)
 	ctx.disposition, ctx.dispositionLabel, ctx.dispositionValue = info.disposition, info.dispositionText, info.dispositionValue
 	ctx.rel, ctx.isKnown, ctx.relTraits = info.axes, info.isKnown, info.traits
 	ctx.relName = self:DisplayName(kind, key)
+	ctx.relFeelings = info.traits.feeling or EMPTY       -- set of ids: the condition `feeling`
+	if kind == "player" then self:ObservationContext(ctx, key, rec) end
+end
+
+---The observation conditions of a listed player (#110), from `seen` and from the state before this session's first
+---meeting (`session.prior`):
+---  ctx.relDaysSince  whole days since the previous meeting (absent if there was none)
+---  ctx.relMetHere    the previous meeting was in the place where the character is now
+---  ctx.relShared     set of the kinds of experience ever recorded with this person (seen.kinds)
+---@param ctx table
+---@param key string
+---@param rec AURelationRecord
+function R:ObservationContext(ctx, key, rec)
+	local seen = rec.seen
+	if type(seen) ~= "table" then return end
+	local prior = (self.session.prior or EMPTY)[key]
+	local last = prior and prior.last or seen.last
+	if IsNumber(last) and last > 0 then
+		ctx.relDaysSince = math.max(0, math.floor((Now() - last) / R.DAY))
+	end
+	local place = prior and prior.place
+	if not prior then
+		local fact = seen.facts and seen.facts[#seen.facts]
+		place = fact and { mapID = fact.p, zone = fact.z } or nil
+	end
+	if place then
+		local here = ctx.place
+		local mapID = type(here) == "table" and here.mapID or nil
+		if IsNumber(place.mapID) and IsNumber(mapID) then
+			ctx.relMetHere = place.mapID == mapID
+		elseif type(place.zone) == "string" and type(ctx.zone) == "string" then
+			ctx.relMetHere = NS.Lower(place.zone) == NS.Lower(ctx.zone)
+		end
+	end
+	local shared
+	for k, n in pairs(seen.kinds or EMPTY) do
+		if IsNumber(n) and n > 0 then
+			shared = shared or {}
+			shared[k] = true
+		end
+	end
+	ctx.relShared = shared
 end
 
 -- Fattore R del peso (GDD §10): le frasi che citano un rapporto salgono di peso se il rapporto c'è, quelle che lo
@@ -1166,7 +1623,16 @@ end
 ---@param ctx table
 ---@return number
 function R.Factor(entry, ctx)
-	local f = Traits.Evaluate(entry.tags, ctx.relTraits or EMPTY, "rel")
+	local traits = ctx.relTraits or EMPTY
+	-- a warm line never goes to a person the user feels wariness, fear or resentment for (#105 for the label, #109 for
+	-- the feeling), unless the line declares itself ironic. The feeling is the user's word: it counts even before
+	-- the axes follow it.
+	local feeling = traits.feeling
+	local tags = entry.tags
+	if feeling and tags and tags.warm and not tags.ironic and (feeling.wariness or feeling.fear or feeling.resentment) then
+		return 0
+	end
+	local f = Traits.Evaluate(tags, traits, "rel")
 	return f
 end
 Engine:SetWeightHook("R", "relations", R.Factor)
@@ -1199,6 +1665,13 @@ end
 -- Incontri con NPC conosciuti: l'NPC con cui si parla è già nella lista e si conosce abbastanza.
 R:RegisterRelationEvent("relation_npc", function(ctx)
 	return ctx.isKnown == true and ctx.relationKind == "npc"
+end)
+
+-- A known player recognised (#106): joining the group, an interaction aimed at us, optionally the target. At most one
+-- candidate per person and session (R:Recognize); the Director keeps its budget, moment and chance, and silence is a
+-- valid outcome. The lines are for the private narrator like every other event: no new road to public chat.
+R:RegisterRelationEvent("relation_player", function(ctx)
+	return ctx.isKnown == true and ctx.relationKind == "player"
 end)
 
 ---------------------------------------------------------------------------
@@ -1306,25 +1779,67 @@ function handlers.QUEST_STATE(env)
 	end
 end
 
+-- The roster changes often (raids send dozens of updates): the group is read once, a moment after the last one.
 function handlers.GROUP_CHANGED()
 	R.groupDirty = true
+	if R.scanPending then return end
+	if C_Timer and C_Timer.After then
+		R.scanPending = true
+		C_Timer.After(R.SCAN_DELAY, function()
+			R.scanPending = false
+			if R:Enabled() then NS.Diagnostics:Guard("relations:scan", R.ScanGroup, R, true) end
+		end)
+	elseif R:Enabled() then
+		R:ScanGroup(true)
+	end
 end
 
 function handlers.TRADE_OPENED(env)
-	if env.context.name then R:Propose(env.context.name, "trade") end
+	if env.context.name then R:Met(env.context.name, "trade") end
 end
 
 function handlers.WHISPER_SENT(env)
-	if env.context.name then R:Propose(env.context.name, "whisper") end
+	if env.context.name then R:Met(env.context.name, "whisper") end
 end
 
--- Un bersaglio con profilo Total RP 3: si propone (la presenza nel registro di TRP3, nessun dato letto)
+-- Interactions aimed at us, published by Systems/Interlocutor.lua: only a person already in the list is observed, and
+-- only the name is read (the emote text is dropped there, the duel and the invite have none).
+function handlers.OTHER_DUEL(env) if env.context.name then R:Met(env.context.name, "duel") end end
+function handlers.OTHER_INVITE(env) if env.context.name then R:Met(env.context.name, "invite") end end
+function handlers.OTHER_EMOTE(env) if env.context.name then R:Met(env.context.name, "emote") end end
+
+-- A fight fought in a group with listed players is a shared experience (`group_combat`, #110): the members are those
+-- of the last roster scan when the fight starts.
+function handlers.COMBAT_START()
+	if not R:Enabled() or not next(R.groupKeys or EMPTY) then R.fightWith = nil; return end
+	R.fightWith = {}
+	for key in pairs(R.groupKeys) do R.fightWith[key] = true end
+end
+
+function handlers.COMBAT_END()
+	local with = R.fightWith
+	R.fightWith = nil
+	if not with or not R:Enabled() then return end
+	local keys = {}
+	for key in pairs(with) do table.insert(keys, key) end
+	table.sort(keys)
+	for _, key in ipairs(keys) do R:Observe(key, "group_combat") end
+end
+
+-- The target: a player already in the list is observed (D11 in #130) and, only if the user turned it on, recognised.
+-- A player not in the list with a Total RP 3 profile is proposed (the presence in the registry, no data read).
 function handlers.TARGET_CHANGED(env)
-	if not env.context.hasTarget or not R:Enabled() or not R:Setting("proposePlayers") then return end
+	if not env.context.hasTarget or not R:Enabled() then return end
 	if Compat:IsUnitIdentitySecret("target") or Compat.SafeCall("UnitIsPlayer", "target") ~= true then return end
-	if not (NS.TotalRP3 and NS.TotalRP3:IsKnownPlayer("target")) then return end
 	local name, realm = Compat.SafeCall("UnitFullName", "target")
-	R:Propose(R.PlayerKey(name, realm), "trp3")
+	local key = R.PlayerKey(name, realm)
+	if not key then return end
+	if R:Data().players[key] then
+		R:Observe(key, "target")
+		if R:Setting("recognizeTarget") then R:Recognize(key) end
+	elseif R:Setting("proposePlayers") and NS.TotalRP3 and NS.TotalRP3:IsKnownPlayer("target") then
+		R:Propose(key, "trp3")
+	end
 end
 
 for eventType, fn in pairs(handlers) do
@@ -1379,7 +1894,40 @@ local function Stamp(t)
 	return "-"
 end
 
----Il testo che l'utente può copiare (l'addon non scrive file): le sue note e i suoi tag, mai testi di chat.
+---The encounters of a record in words: "5 (group 3, trade 1, duel 1)", from the tally by kind.
+---@param rec AURelationRecord
+---@return string
+function R:EncountersText(rec)
+	local seen = R.SeenOf(rec)
+	local parts = {}
+	if rec.seen then
+		local kinds = {}
+		for k, n in pairs(seen.kinds or EMPTY) do table.insert(kinds, k) end
+		table.sort(kinds, function(a, b)
+			local na, nb = seen.kinds[a], seen.kinds[b]
+			if na ~= nb then return na > nb end
+			return a < b
+		end)
+		for _, k in ipairs(kinds) do
+			local name = NS:L("rel_enc_" .. k)
+			table.insert(parts, ("%s %d"):format(name == "rel_enc_" .. k and k or name, seen.kinds[k]))
+		end
+	end
+	local n = seen.count or 0
+	return #parts > 0 and ("%d (%s)"):format(n, table.concat(parts, ", ")) or tostring(n)
+end
+
+---The feelings of a record in words, "trust, gratitude" (empty if none).
+---@param rec AURelationRecord
+---@return string
+function R:FeelingsText(rec)
+	local out = {}
+	for _, id in ipairs(R.UserOf(rec).feeling or EMPTY) do table.insert(out, self:FeelingName(id)) end
+	return table.concat(out, ", ")
+end
+
+---The text the user can copy (the addon writes no files): their own notes and tags, and the counts the addon kept.
+---Never a chat text: nothing like that is stored.
 ---@return string
 function R:ExportText()
 	local lines = {}
@@ -1391,11 +1939,14 @@ function R:ExportText()
 		Add("")
 		Add(("== %s (%d) =="):format(NS:L(section[2]), #rows))
 		for _, row in ipairs(rows) do
-			local info = row.info
-			local line = ("%s | %s | %s (%d) | %s | %s %s"):format(row.name, info.text, info.dispositionText,
-				math.floor(info.dispositionValue + 0.5), self:AxesText(info), NS:L("rel_last"), Stamp(row.rec.last))
-			if row.rec.tags then line = line .. " | " .. NS:L("rel_tags") .. ": " .. table.concat(row.rec.tags, ",") end
-			if row.rec.note then line = line .. " | " .. NS:L("rel_note") .. ": " .. row.rec.note end
+			local info, user, seen = row.info, R.UserOf(row.rec), R.SeenOf(row.rec)
+			local line = ("%s | %s | %s (%d) | %s | %s %s | %s: %s"):format(row.name, info.text, info.dispositionText,
+				math.floor(info.dispositionValue + 0.5), self:AxesText(info), NS:L("rel_last"), Stamp(seen.last),
+				NS:L("rel_col_count"), self:EncountersText(row.rec))
+			local feelings = self:FeelingsText(row.rec)
+			if feelings ~= "" then line = line .. " | " .. NS:L("rel_feeling") .. ": " .. feelings end
+			if user.tags then line = line .. " | " .. NS:L("rel_tags") .. ": " .. table.concat(user.tags, ",") end
+			if user.note then line = line .. " | " .. NS:L("rel_note") .. ": " .. user.note end
 			Add(line)
 		end
 	end
@@ -1441,7 +1992,12 @@ end
 local WORDS = NS.Keywords.Register("relationships", {
 	list = "list", people = "candidates", add = "add", remove = "remove", note = "note", tags = "tags", label = "label",
 	set = "set", export = "export", auto = "auto", attraction = "attraction", reset = "reset", dismiss = "dismiss",
-	detail = "detail",
+	detail = "detail", feeling = "feeling", forget = "forget",
+})
+
+local FEELING_WORDS = NS.Keywords.Register("relationships.feelings", {
+	trust = "trust", liking = "liking", wariness = "wariness", fear = "fear", resentment = "resentment",
+	gratitude = "gratitude", none = false,
 })
 
 local AXIS_WORDS = NS.Keywords.Register("relationships.axes", {
@@ -1455,8 +2011,12 @@ local function Summary(self, kind, key)
 	local rec = self:Get(kind, key)
 	if not rec then return nil end
 	local info = self:Resolve(kind, rec)
-	return ("%s: %s (%s %d). %s"):format(self:DisplayName(kind, key), info.text, info.dispositionText,
+	local text = ("%s: %s (%s %d). %s"):format(self:DisplayName(kind, key), info.text, info.dispositionText,
 		math.floor(info.dispositionValue + 0.5), self:AxesText(info))
+	local feelings = self:FeelingsText(rec)
+	if feelings ~= "" then text = text .. " " .. NS:L("rel_feeling") .. ": " .. feelings .. "." end
+	if kind == "player" then text = text .. " " .. NS:L("rel_col_count") .. ": " .. self:EncountersText(rec) .. "." end
+	return text
 end
 
 ---@param rest string
@@ -1513,6 +2073,27 @@ function R:Command(rest)
 	elseif action == "detail" then
 		local kind, key = FindSubject(self, arg)
 		if kind then NS:Print(Summary(self, kind, key)) else Say("rel_missing", arg) end
+	elseif action == "feeling" then
+		-- /au relationships feeling <name> <feeling> [<feeling>] [preset]  (none clears them)
+		local who, rest2 = arg:match("^([^ ]+) *(.-)$")
+		local kind, key = FindSubject(self, who or "")
+		if not kind then Say("rel_missing", arg); return end
+		local list, preset, bad = {}, false, false
+		for w in NS.Lower(rest2 or ""):gmatch("[^ ,]+") do
+			local id = FEELING_WORDS[w]
+			if w == "preset" then preset = true
+			elseif id then table.insert(list, id)
+			elseif id == nil then bad = true end
+		end
+		if bad or (#list == 0 and not (rest2 or ""):lower():find("none", 1, true) and not preset) then Say("rel_feeling_usage"); return end
+		if #list > 0 or not preset then
+			if not self:SetFeelings(kind, key, list) then Say("rel_feeling_usage"); return end
+		end
+		if preset and not self:ApplyFeelingPreset(kind, key) then Say("rel_feeling_usage"); return end
+		NS:Print(Summary(self, kind, key))
+	elseif action == "forget" then
+		local kind, key = FindSubject(self, arg)
+		if kind == "player" and self:ForgetObservations(key) then Say("rel_forgot", arg) else Say("rel_missing", arg) end
 	elseif action == "export" then
 		if not (NS.RelationsFrame and NS.RelationsFrame:ShowExport()) then
 			local n = 0
@@ -1549,9 +2130,9 @@ end
 ---------------------------------------------------------------------------
 function R:OnInit()
 	self.readOnly = NS.Config.readOnly ~= nil and NS.Config.readOnly.character == true
-	self.session = { seen = {}, offered = {} }
+	self.session = { seen = {}, offered = {}, recognized = {}, prior = {} }
 	self.candidates, self.dismissed = {}, {}
-	self.groupDirty = true
+	self.groupDirty, self.groupKeys, self.fightWith, self.scanPending = true, {}, nil, false
 	local dropped = self:Sanitize()
 	if dropped > 0 then NS.Diagnostics:Error("relations", ("%d voci malformate scartate"):format(dropped)) end
 	if not self.readOnly then self:MaintainAll() end

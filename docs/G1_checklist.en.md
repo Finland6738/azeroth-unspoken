@@ -1,4 +1,4 @@
-# In-game checklist: R0 measurements, API probe and R1 packs (English)
+# In-game checklist: R0 measurements, API probe, R1 packs and R4b player relationships (English)
 
 This is the English counterpart of the section **R0** of the in-game checklist [G1_checklist.md](G1_checklist.md), which is written in Italian for the Italian-speaking tester and keeps every other part of the checklist. Same steps, same numbers (R0.1 to R0.13). It belongs to issues #81 (profiling and Director counters) and #82 (probing the vision APIs), phase R0 of the roadmap #131.
 
@@ -82,6 +82,40 @@ Same steps as the section **R1** of [G1_checklist.md](G1_checklist.md) (R1.1 to 
     - **Expect:** the memory grows little compared with R1.2 (today the regional packs are small).
     - **Report:** the text.
 
+## R4b: relationships with other players (issues #106, #107, #108, #109 and #110)
+
+Same steps as the section **R4b** of [G1_checklist.md](G1_checklist.md) (R4b.1 to R4b.9).
+
+**What it is for.** The character remembers the other players you put in your list: a person's detail now has two parts, **"What you chose"** (axes, label, feelings, note, tags: only you change them) and **"What the addon observed"** (how many encounters, of which kind, the last five facts with place and date, never any text). You need **a second player** (a friend, or another copy of the game of yours) and, if possible, a group. All of it is tested outside the game with a fake API; here we check that the real client sends the right events (`GROUP_ROSTER_UPDATE`, `UnitFullName` on companions, emotes with a recipient, `C_Map.GetBestMapForUnit`) and that the window, now taller, fits on screen.
+
+- **R4b.1 · Adding a person.** Open `/au relationships`, the **People met** tab (or type the name in **Add a player**), then open the person.
+    - **Expect:** two sections, "What you chose" and "What the addon observed" (at first "Nothing observed yet"); at the bottom **Forget observations**, **Remove person** and **Back to the list**; the whole window fits on screen and no texts overlap.
+    - **Report:** anything that leaves the edges or overlaps (resolution and UI scale).
+- **R4b.2 · The group.** Join a group with the person (or have them join). Check the detail again.
+    - **Expect:** **Encounters: 1 (group 1)**, "Last seen" today and a fact "group (zone name)". If you leave and rejoin at once, the count does **not** go up (same kind within ten minutes).
+    - **Report:** the text of the section and the zone shown.
+- **R4b.3 · Duel, invite, trade, emote.** Have them request a duel (decline it), invite you, open a trade and wave at you with an emote aimed at you (`/wave` on your character).
+    - **Expect:** each kind shows in the list of encounters. An emote **not** aimed at you does not count. Someone who is **not** in the list appears nowhere (not even as a suggestion, except group and trade).
+    - **Report:** which kinds were counted; whether an emote aimed at you was not recognised.
+- **R4b.4 · The target.** Target the person. Then, in the window, turn on **Recognise on target** and repeat (clear the target and select it again).
+    - **Expect:** the target counts as an encounter (kind "target") even with the option off; only with it on can the narrator say a recognition line, **at most once per person per session**.
+    - **Report:** whether the line appeared in the private narrator and how many times.
+- **R4b.5 · Recognition.** `/au chance relation_player 100`, then leave the group and join again with the person (new session: `/reload` first).
+    - **Expect:** a line from the **private** narrator (never in chat). If you chose a feeling (R4b.6) the line mirrors it; with more than nine days since the last time, it sometimes recalls the absence.
+    - **Report:** the line and whether it makes sense for the person.
+- **R4b.6 · Feelings.** In the detail choose a feeling (**trust**, **liking**, **wariness**, **fear**, **resentment**, **gratitude**) and, if you like, **Typical axes**. Also try the label **ally** with the label button.
+    - **Expect:** the feeling changes neither the axes nor the label by itself; **Typical axes** does, and you can adjust the sliders afterwards. With wariness, fear or resentment no warm line ("so good to see you again") comes out for that person.
+    - **Report:** one line per feeling.
+- **R4b.7 · Forget or remove.** **Forget observations** (click, then confirm), then **Remove person**.
+    - **Expect:** the first only zeroes the encounters and facts; note, label, feelings and axes stay. The second deletes the person.
+    - **Report:** whether the two actions are easy to confuse.
+- **R4b.8 · A fight together.** Fight with the person in a group.
+    - **Expect:** the detail shows "fought together 1" (it does not raise the number of encounters).
+    - **Report:** the text.
+- **R4b.9 · Export.** Press **Export**.
+    - **Expect:** one line per person with **Encounters: N (group 1, ...)**, feeling, tags and note; no chat text.
+    - **Report:** the text.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -102,4 +136,9 @@ R1 language ............. message ___  Reload box? ___  after /reload Italian lo
 R1 continent ............ on arrival region ______  back: loads unchanged? ___  freezes? ___
 R1 combat ............... /reload in combat: errors? ___  waits for combat ______
 R1 missing folder ....... message (reason) ______  lines in English? ___  red errors? (must be NO) ___
+R4b window ............... sections ok? ___  fits on screen? ___ (resolution/scale ______)
+R4b encounters .......... group ___  trade ___  duel ___  invite ___  emote ___  target ___  fought together ___
+R4b recognition ......... one line per session? ___  private? ___  mirrors the feeling? ___
+R4b feelings ............ no warm line with wariness/fear/resentment? ___  ally ok? ___
+R4b forget/remove ....... two distinct actions? ___  export ok? ___
 ```

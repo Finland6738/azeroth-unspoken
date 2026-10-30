@@ -25,7 +25,7 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 - the list of lines recently used, so the narrator does not repeat itself;
 - your character's [[personality|Character-Soul-and-Total-RP-3]];
 - the [[journal|Memory-and-Journal]]: significant moments, places visited, flags;
-- the [[relationships|Relationships]]: the NPCs you dealt with and, **only for players you chose**, their name with the notes, tags and labels you wrote;
+- the [[relationships|Relationships]]: the NPCs you dealt with and, **only for players you chose**, their name with the notes, tags, labels and feelings you wrote, kept apart from what the addon observed about them (how many times you met, of which kind, where and when: never what was said);
 - the state of your [[personal stories|Story-Arcs]].
 
 ## What is never stored
@@ -51,6 +51,7 @@ Some information helps the narrator in the moment and is forgotten when you log 
 | Sending lines to chat | off (private) | [[Chat Gateway]] |
 | Automatic sending | off; needs a second confirmation | [[Chat Gateway]] |
 | Registering players by themselves | off | [[Relationships]] |
+| Recognising a known player when you target them | off | [[Relationships]] |
 | Your own Total RP 3 name | on | [[Settings]] |
 | Your own Total RP 3 traits | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
 | Reading other players' Total RP 3 | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
@@ -81,6 +82,7 @@ On Windows, the game keeps saved data in:
 | Journal (memories, places, flags) | `/au journal reset` (or `memories`, `ordinary`, `places`, `flags`), then the same command again within 15 seconds; or **Forget everything** in the journal |
 | Relationships | `/au relationships reset` (or `npcs`, `players`), then again within 15 seconds; or **Forget everything** in the relationships window |
 | One memory, place or relationship | the delete buttons in the journal or relationships window, or `/au journal delete <n>`, `/au relationships remove <name>` |
+| What the addon observed about one player | **Forget observations** in the relationships window, or `/au relationships forget <name>` (the person and your choices stay) |
 | Personality | `/au soul neutral` |
 | Stories | `/au stories skip all`, or turn them off with `/au stories off` |
 | Lines recently used | `/au memory` |
