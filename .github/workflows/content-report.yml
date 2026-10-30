@@ -1,0 +1,62 @@
+name: Content coverage
+
+# Coverage and gap report of the phrase database (issue #88), built from the authoring archive (tools/archive, ADR 0027)
+# on every change to the content or to the archive tools. It only REPORTS: thresholds are in tools/archive/thresholds.json,
+# a breach is a warning annotation and a line of the job summary, and the job never fails the build (it is not a required
+# check). The Markdown and JSON reports are kept as a workflow artifact.
+on:
+  pull_request:
+    paths:
+      - "AzerothUnspoken/Data/**"
+      - "AzerothUnspoken_*/**"
+      - "authoring/**"
+      - "tools/archive/**"
+      - ".github/workflows/content-report.yml"
+  push:
+    branches: [main]
+    paths:
+      - "AzerothUnspoken/Data/**"
+      - "AzerothUnspoken_*/**"
+      - "authoring/**"
+      - "tools/archive/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: content-report-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  coverage:
+    name: Content coverage
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    continue-on-error: true
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+
+      # Standard library only: nothing to install.
+      - name: Coverage and gap report
+        run: |
+          mkdir -p "$RUNNER_TEMP/report"
+          python -I -X utf8 tools/archive/cli.py --db "$RUNNER_TEMP/authoring.sqlite" report \
+            --summary "$GITHUB_STEP_SUMMARY" \
+            --markdown "$RUNNER_TEMP/report/coverage.md" \
+            --json "$RUNNER_TEMP/report/coverage.json"
+
+      - name: Keep the report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: content-coverage-report
+          path: ${{ runner.temp }}/report/
+          if-no-files-found: error

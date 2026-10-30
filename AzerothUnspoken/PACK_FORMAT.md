@@ -880,6 +880,15 @@ end)
 - A missing regional folder is not an error: the lines that hold everywhere are used. `/au packs` lists every folder
   with its state; `/au validate` checks the packs and the languages that are loaded now.
 
+## Authoring archive (nothing changes for external packs)
+
+The base folders and the regional folders are read and written by the authoring archive (`tools/archive/`, ADR 0027), a
+tool outside the game: it imports them, and writes the **approved** content back. The format described in this guide does
+not change, and an external pack does not need the archive. To stay readable by it, a base or regional file keeps the shape
+shown above: one `RegisterPack` (or `RegisterRegionalPack`) whose `registry` is a literal table of `["id"] = { ... }`, and
+one `AddTexts` (or `RegisterRegionalTexts`) per language file with literal variants. A file that computes its rules in code
+still works in the game, but it is left out of the archive and of its reports.
+
 ## Previous format (converted on load)
 
 ```lua
