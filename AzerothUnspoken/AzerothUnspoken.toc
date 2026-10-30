@@ -40,6 +40,7 @@ Integration\ChatGateway.lua
 Systems\Personality.lua
 Systems\Director.lua
 Systems\Triggers.lua
+Systems\World.lua
 Systems\Place.lua
 Systems\LivingMemory.lua
 Systems\Relationships.lua
@@ -70,6 +71,7 @@ Data\Vocabulary.lua
 Data\Frames.lua
 Data\Relationships.lua
 Data\Places.lua
+Data\Landmarks.lua
 Data\NPCs.lua
 Data\RegistryCombat.lua
 Data\RegistrySpells.lua
@@ -81,6 +83,7 @@ Data\RegistrySoul.lua
 Data\RegistryMemory.lua
 Data\RegistryRelations.lua
 Data\RegistryContext.lua
+Data\RegistryWorld.lua
 Data\RegistryDialogues.lua
 Data\Dialogues.lua
 Data\RegistryArcs.lua

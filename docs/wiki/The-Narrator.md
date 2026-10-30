@@ -70,6 +70,19 @@ See the [[Settings Reference|Settings]].
 - When a chat proposal is waiting, more buttons appear: **Send**, **Edit**, **Another**, **Discard**, **To chat** and the channel. See [[Chat Gateway]].
 - Now and then a discreet notice, for example when a [[personal story|Story-Arcs]] can begin.
 
+## What it reacts to
+
+Besides your fights, deaths and new zones, the narrator now also notices what the game says about the world around you:
+
+- the **weather**: rain, snow, a storm, a sandstorm or fog beginning or ending, and the weather you arrive in;
+- **dawn and dusk**, from the game's own day and night;
+- a **new subzone**, and **named places** such as an inn, a village, a graveyard or a mine (see [[Interlocutor and Place|Interlocutor-and-Place]]);
+- your **quests**: a step finished, a quest ready to hand in, a quest handed in (more warmly after many attempts), and a change of **reputation** with a faction;
+- **resting** in an inn or a city;
+- the **start and the end of a flight**.
+
+These are ordinary moments: they follow the same pauses, limits and chance as everything else (see [[Settings Reference|Settings]]), they belong to the *World* module (weather, dawn, dusk, places, flights) or to the *Personal* one (quests, reputation, rest), and they are never spoken in combat. If the game does not tell the addon something (for example if the weather cannot be read), the narrator simply does not mention it: it never guesses.
+
 ## When the narrator stays quiet
 
 The narrator does not speak, by design:

@@ -314,3 +314,24 @@ T.run("an external regional pack declared in its .toc", function()
 	T.ok(Engine.byId["my.k.1"] ~= nil and Engine.VariantText(Engine.byId["my.k.1"].text.en[1]) == "Red earth.", "rule and text")
 	T.eq(type(Engine.byId["my.k.1"].text.en[1]), "string", "the text is compact (attributed to its rule's pack)")
 end)
+
+T.run("subzone and world events never load a pack (R3, #94)", function()
+	local before = #LOAD_CALLS
+	local dur = P.zone
+	for i = 1, 20 do
+		ADVANCE(700)
+		P.subzone = "Test Hollow " .. i
+		FIRE(i % 2 == 0 and "ZONE_CHANGED" or "ZONE_CHANGED_INDOORS")
+		ADVANCE(4)
+		P.resting = i % 2 == 0
+		FIRE("PLAYER_UPDATE_RESTING")
+		FIRE("WEATHER_CHANGED")
+		FIRE("DIEL_CYCLE_CHANGED", i % 2 == 0)
+		FIRE("QUEST_LOG_UPDATE")
+		FIRE("UPDATE_FACTION")
+		ADVANCE(4)
+	end
+	T.eq(#LOAD_CALLS, before, "LoadAddOn was not called by subzone, weather, day, rest, quest or reputation events")
+	T.eq(P.zone, dur, "the continent did not change")
+	P.subzone = ""
+end)

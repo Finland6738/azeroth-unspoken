@@ -184,7 +184,8 @@ T.run("#84: source tables are not kept, variants are strings", function()
 		end
 	end
 	T.ok(strings > 4000, "variants as strings: " .. strings)
-	T.ok(tables < strings / 20, "only rare variants keep a table: " .. tables)
+	-- (one in 15: the variants of a different depth, the third and fourth of a rule, are tables; R3 added about 170)
+	T.ok(tables < strings / 15, "only rare variants keep a table: " .. tables)
 	-- shared tables: same values, one copy
 	local a, b = Engine.byId["battle.gen.02"], Engine.byId["battle.gen.03"]
 	T.ok(a.events == b.events and a.styles == b.styles, "events and registers are shared")

@@ -1717,11 +1717,20 @@ EndSource("GOSSIP_CLOSED", "gossip")
 EndSource("MERCHANT_CLOSED", "merchant")
 EndSource("QUEST_FINISHED", "quest")
 -- Quest accettate e consegnate: l'NPC è quello dell'ultimo dialogo (gli eventi non lo dicono)
-EventBus:AddSource("QUEST_ACCEPTED", { normalize = function()
-	return "QUEST_STATE", { state = "accepted" }, {}
+-- Anche il mondo (Systems/World.lua, #95) ascolta QUEST_STATE: per questo l'evento porta l'id della missione (solo il
+-- numero, mai testo), se il client lo dà. QUEST_ACCEPTED manda (questLogIndex, questID) in Classic e (questID) altrove.
+local function QuestID(...)
+	local a, b = ...
+	a, b = Compat.Readable(a), Compat.Readable(b)
+	if type(b) == "number" then return b end
+	if type(a) == "number" then return a end
+	return nil
+end
+EventBus:AddSource("QUEST_ACCEPTED", { normalize = function(...)
+	return "QUEST_STATE", { state = "accepted", questID = QuestID(...) }, {}
 end })
-EventBus:AddSource("QUEST_TURNED_IN", { normalize = function()
-	return "QUEST_STATE", { state = "turned_in" }, {}
+EventBus:AddSource("QUEST_TURNED_IN", { normalize = function(questID)
+	return "QUEST_STATE", { state = "turned_in", questID = QuestID(questID) }, {}
 end })
 -- Giocatori da proporre: il gruppo cambia, uno scambio, una risposta in privato. Di una risposta in privato si
 -- legge solo il nome del destinatario: il testo non si legge né si conserva.
