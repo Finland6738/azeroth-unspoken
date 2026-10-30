@@ -218,6 +218,22 @@ NS:AddTexts("enUS", {
 		"A duel? Very well. But if I lose, blame the sun in my eyes.",
 		"Accepted. Nothing below the belt, though, I've still got walking to do tomorrow.",
 	},
+	["ctx.act.duel.friend"] = {
+		"A duel with you? Fine. I'll go easy on you, and you'll pretend you didn't notice.",
+		"Ha! Name the stakes: the loser buys the next round.",
+	},
+	["ctx.act.duel.rival"] = {
+		"At last. I have wanted to measure myself against you for a long time.",
+		"Accepted. No tricks, no mercy; you would expect nothing less.",
+	},
+	["ctx.act.duel.enemy"] = {
+		"A duel. I won't pretend I haven't been waiting for this.",
+		"Draw your blade. There is nothing left between us that words could settle.",
+	},
+	["ctx.act.duel.wary"] = {
+		"A challenge from someone I never trusted. Keep your eyes on the hands, not the face.",
+		"Every instinct says it is a trap. And still, there is the blade in your hand, and the crowd watching.",
+	},
 	["ctx.act.duel.inner"] = {
 		"A challenge thrown out like that, with no grudge behind it. Just to see who's quicker.",
 		"Your pulse quickens before your hand has even found the hilt.",

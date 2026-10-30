@@ -782,7 +782,7 @@ end)
 ---------------------------------------------------------------------------
 -- Frasi
 ---------------------------------------------------------------------------
-T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 110 con S7)", function()
+T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 114 con S7 e i duelli di #105)", function()
 	Fresh()
 	local n, byEvent, byWho = 0, {}, { other = 0, place = 0 }
 	for id, p in pairs(Engine.byId) do
@@ -795,7 +795,7 @@ T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 110 con S7)", functio
 			if w.place then byWho.place = byWho.place + 1 end
 		end
 	end
-	T.eq(n, 110, "frasi del pacchetto")
+	T.eq(n, 114, "frasi del pacchetto")
 	T.ok(byWho.other >= 40 and byWho.place >= 40, ("per interlocutore %d, per luogo %d"):format(byWho.other, byWho.place))
 	for _, ev in ipairs({ "npc_meet", "other_action", "encounter_end", "zone", "greet", "battle", "victory" }) do
 		T.ok((byEvent[ev] or 0) > 0, "evento coperto: " .. ev)
