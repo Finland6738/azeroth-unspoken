@@ -241,9 +241,11 @@ def check_lore_test():
               f"[{locale}] no proposal for the Chat Gateway, even in the confirm mode")
         check(not public, f"[{locale}] nothing sent to chat" + ("" if not public else f": {public[:2]}"))
         check(len(seen) >= 15, f"[{locale}] every piece comes out by hand ({len(seen)} different texts)")
+        # the language is judged on every text, not on one picked from a set in hash order: a single piece may have none of the marker words
         sample = next(iter(seen), "")
-        italian = any(w in sample for w in ("è", "à", "ò", "ù", "il ", "la ", "che "))
-        check(" / " in sample and (italian if locale == "it" else not italian),
+        markers = ("è", "à", "ò", "ù", "il ", "la ", "le ", "che ", " e ", " di ", " un ")
+        italian = sum(1 for t in seen if any(w in t for w in markers)) * 2 > len(seen)
+        check(all(" / " in t for t in seen) and (italian if locale == "it" else not italian),
               f"[{locale}] in the chosen language: {sample[:60]}...")
         diag = [str(e.message) for e in ns.Diagnostics.errors.values()]
         check(not diag, f"[{locale}] no error in diagnostics" + (f" ({diag})" if diag else ""))

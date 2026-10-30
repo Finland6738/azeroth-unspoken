@@ -41,7 +41,7 @@ Validator.WORST = { relation = 40, player = 12, target = 40, spell = 40, zone = 
 
 -- livelli dei problemi emersi in caricamento (Engine.loadIssues)
 -- eventi in cui una frase calda deve rispettare la relazione (#105)
-local WARM_GUARDED = { greet = true, farewell = true, other_action = true }
+local WARM_GUARDED = { greet = true, farewell = true, other_action = true, relation_player = true }
 
 local LOAD_LEVEL = { dupId = "error", badId = "error", noEvent = "error", badForm = "error", badSpeaker = "error",
 	noSpeaker = "warning", badWeight = "error", badCooldown = "error", badConditions = "error" }

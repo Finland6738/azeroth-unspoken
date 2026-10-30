@@ -15,8 +15,12 @@ NS:RegisterPack({
 	id = "base_relations",
 	name = "Base: relazioni",
 	languages = { "itIT", "enUS" },
-	-- l'incontro con un NPC conosciuto: priorità "richiamo di memoria" (GDD §10), registrata da Relationships
-	events = { relation_npc = { category = "social", chance = 45, cooldown = 180 } },
+	-- l'incontro con un NPC o un giocatore conosciuto: priorità "richiamo di memoria" (GDD §10), registrata da Relationships
+	events = {
+		relation_npc = { category = "social", chance = 45, cooldown = 180 },
+		-- a known player recognised (#106): same priority as relation_npc, registered by Relationships
+		relation_player = { category = "social", chance = 55, cooldown = 180 },
+	},
 	registry = {
 		["rel.greet.unknown"] = { event = "greet", speaker = "character", styles = { "ceremonial" }, depth = { "natural", "literary", "elevated" }, conditions = { isKnown = false, hasTarget = true, friendly = true } },
 		["rel.greet.acquaintance"] = { event = "greet", speaker = "character", styles = { "everyday" }, depth = { "natural", "literary" }, tags = { "rel.relation:acquaintance" }, conditions = { relation = "acquaintance" } },
@@ -104,5 +108,28 @@ NS:RegisterPack({
 		["rel.npc.close"] = { event = "relation_npc", speaker = "narrator", styles = { "intimate" }, depth = { "literary", "elevated" }, tags = { "rel.disposition:close" }, conditions = { relationKind = "npc", disposition = "close" } },
 		["rel.npc.innkeeper"] = { event = "relation_npc", speaker = "character", styles = { "everyday" }, depth = { "natural", "literary" }, tags = { "other.role:innkeeper", "temperament:cheerful" }, conditions = { relationKind = "npc", isKnown = true, other = { role = "innkeeper" } } },
 		["rel.npc.merchant"] = { event = "relation_npc", speaker = "inner", styles = { "ironic", "everyday" }, depth = { "natural", "literary" }, tags = { "other.role:merchant" }, conditions = { relationKind = "npc", isKnown = true, other = { role = "merchant" } } },
+		-- Player relationships (#106, #109, #110): a known player recognised, in the private narrator. Feelings are the user's words;
+		-- the warm ones carry the #105 exclusion, and the weight hook also silences every warm line for a negative feeling.
+		["rel.player.trust"] = { event = "relation_player", speaker = "inner", styles = { "everyday", "intimate" }, depth = { "natural", "literary", "elevated" }, tags = { "warm", "rel.feeling:trust" }, conditions = { relationKind = "player", feeling = "trust", ["not"] = { relation = { "enemy", "disliked", "wary", "feared" } } } },
+		["rel.player.liking"] = { event = "relation_player", speaker = "inner", styles = { "everyday", "intimate" }, depth = { "natural", "literary", "elevated" }, tags = { "warm", "rel.feeling:liking" }, conditions = { relationKind = "player", feeling = "liking", ["not"] = { relation = { "enemy", "disliked", "wary", "feared" } } } },
+		["rel.player.gratitude"] = { event = "relation_player", speaker = "inner", styles = { "intimate", "everyday" }, depth = { "natural", "literary", "elevated" }, tags = { "warm", "rel.feeling:gratitude" }, conditions = { relationKind = "player", feeling = "gratitude", ["not"] = { relation = { "enemy", "disliked", "wary", "feared" } } } },
+		["rel.player.wariness"] = { event = "relation_player", speaker = "inner", styles = { "ironic", "everyday" }, depth = { "natural", "literary", "elevated" }, tags = { "rel.feeling:wariness" }, conditions = { relationKind = "player", feeling = "wariness" } },
+		["rel.player.fear"] = { event = "relation_player", speaker = "inner", styles = { "intimate", "tragic" }, depth = { "natural", "literary", "elevated" }, tags = { "rel.feeling:fear" }, conditions = { relationKind = "player", feeling = "fear" } },
+		["rel.player.resentment"] = { event = "relation_player", speaker = "inner", styles = { "tragic", "ironic" }, depth = { "natural", "literary", "elevated" }, tags = { "rel.feeling:resentment" }, conditions = { relationKind = "player", feeling = "resentment" } },
+		["rel.player.ally"] = { event = "relation_player", speaker = "inner", styles = { "everyday", "epic" }, depth = { "natural", "literary" }, tags = { "warm", "rel.relation:ally" }, conditions = { relationKind = "player", relation = "ally" } },
+		["rel.player.friend"] = { event = "relation_player", speaker = "character", styles = { "everyday", "intimate" }, depth = { "natural", "literary" }, tags = { "warm", "rel.relation:friend" }, conditions = { relationKind = "player", relation = { "friend", "comrade", "lover" } } },
+		["rel.player.rival"] = { event = "relation_player", speaker = "inner", styles = { "ironic", "epic" }, depth = { "natural", "literary" }, tags = { "rel.relation:rival" }, conditions = { relationKind = "player", relation = "rival" } },
+		["rel.player.enemy"] = { event = "relation_player", speaker = "inner", styles = { "tragic", "ironic" }, depth = { "natural", "literary" }, tags = { "rel.relation:enemy" }, conditions = { relationKind = "player", relation = "enemy" } },
+		["rel.player.wary"] = { event = "relation_player", speaker = "inner", styles = { "ironic", "everyday" }, depth = { "natural", "literary" }, tags = { "rel.relation:wary", "rel.relation:disliked" }, conditions = { relationKind = "player", relation = { "wary", "disliked" } } },
+		["rel.player.feared"] = { event = "relation_player", speaker = "inner", styles = { "intimate", "tragic" }, depth = { "literary" }, tags = { "rel.relation:feared" }, conditions = { relationKind = "player", relation = "feared" } },
+		["rel.player.known"] = { event = "relation_player", speaker = "inner", styles = { "everyday" }, depth = { "natural", "literary" }, weight = 0.6, conditions = { relationKind = "player", isKnown = true } },
+		["rel.player.absent.long"] = { event = "relation_player", speaker = "inner", styles = { "everyday", "ancient" }, depth = { "natural", "literary" }, conditions = { relationKind = "player", relDaysSince = 30 } },
+		["rel.player.absent.weeks"] = { event = "relation_player", speaker = "inner", styles = { "everyday" }, depth = { "natural", "literary" }, conditions = { relationKind = "player", relDaysSince = { 7, 30 } } },
+		["rel.player.recent"] = { event = "relation_player", speaker = "inner", styles = { "everyday", "ironic" }, depth = { "natural", "literary" }, conditions = { relationKind = "player", relDaysSince = { 0, 1 } } },
+		["rel.player.met_here"] = { event = "relation_player", speaker = "inner", styles = { "intimate", "ancient" }, depth = { "literary" }, conditions = { relationKind = "player", relMetHere = true, relDaysSince = 1 } },
+		["rel.player.shared.combat"] = { event = "relation_player", speaker = "inner", styles = { "epic", "intimate" }, depth = { "natural", "literary", "elevated" }, conditions = { relationKind = "player", relShared = "group_combat" } },
+		["rel.player.shared.duel"] = { event = "relation_player", speaker = "inner", styles = { "ironic", "epic" }, depth = { "natural", "literary" }, conditions = { relationKind = "player", relShared = "duel" } },
+		["rel.greet.ally"] = { event = "greet", speaker = "character", styles = { "everyday", "epic" }, depth = { "natural", "literary" }, tags = { "warm", "rel.relation:ally" }, conditions = { relation = "ally" } },
+		["rel.bye.ally"] = { event = "farewell", speaker = "character", styles = { "everyday", "epic" }, depth = { "natural", "literary" }, tags = { "warm", "rel.relation:ally" }, conditions = { relation = "ally" } },
 	},
 })

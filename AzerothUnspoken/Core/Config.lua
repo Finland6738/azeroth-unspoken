@@ -78,6 +78,7 @@ Config.CHAT_LIMITS = {
 ---@field attraction boolean l'asse facoltativo dell'attrazione (spento di base)
 ---@field autoRegisterPlayers boolean registra da solo chi si incontra (spento di base: i giocatori li sceglie l'utente)
 ---@field proposePlayers boolean propone candidati (gruppo, scambi, profili TRP3, risposte in privato)
+---@field recognizeTarget boolean riconosce un giocatore noto anche quando è il bersaglio (spento di base, #106)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -144,6 +145,8 @@ Config.defaults = {
 		attraction = false,
 		autoRegisterPlayers = false,
 		proposePlayers = true,
+		-- #106: also recognise a known player when targeted (off: joining a group or an interaction recognise them)
+		recognizeTarget = false,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -185,7 +188,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 1, npcs = {}, players = {} },
+	relationships = { version = 2, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	history = {},

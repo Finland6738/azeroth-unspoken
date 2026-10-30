@@ -4,6 +4,9 @@
 -- cursori per gli assi, etichetta, nota, tag e i selettori di tratti e ruolo dell'interlocutore (#37). In basso le opzioni (NPC automatici, attrazione, registra
 -- automaticamente, proposte) e l'esportazione testuale. Si apre con /au relationships o dal diario.
 -- Nessun contenuto di chat o di whisper è mostrato o salvato: solo nomi, assi, note e tag scelti dall'utente.
+-- Il dettaglio di un giocatore ha due sezioni (#107): "Cosa hai scelto tu" (assi, etichetta, sentimenti, nota, tag,
+-- tratti: li cambia solo l'utente) e "Cosa ha osservato l'addon" (incontri per tipo, ultimi fatti, senza testi), con
+-- due azioni distinte: "Dimentica le osservazioni" e "Rimuovi la persona".
 -- Solo pulsanti standard e cursori disegnati con texture (UI/Widgets.lua), come il resto dell'interfaccia.
 local ADDON, NS = ...
 local W = NS.Widgets
@@ -20,8 +23,11 @@ local DELETE_ARM_SECONDS = 6
 -- tratti e ruolo dell'interlocutore nel dettaglio (fonte 1 del profilo, Systems/Interlocutor.lua), in due righe
 local TRAIT_ROWS = { { "role", "temperament", "morality" }, { "goals", "speech" } }
 local COLS = {             -- colonne dell'elenco: id, ascissa, larghezza
-	{ "name", 16, 168 }, { "kind", 188, 70 }, { "label", 262, 140 }, { "disposition", 406, 124 }, { "last", 534, 90 },
+	{ "name", 16, 140 }, { "kind", 160, 54 }, { "label", 218, 112 }, { "disposition", 334, 112 }, { "last", 450, 84 },
+	{ "count", 538, 86 },
 }
+local HEIGHT_LIST, HEIGHT_PLAYER = 730, 850   -- the window grows for the detail of a player (two sections, #107)
+local AXIS_STEP = 26
 
 local frame
 local rows, headers, axisRows, candRows = {}, {}, {}, {}
@@ -154,10 +160,11 @@ end
 
 local function BuildDetail()
 	frame.dTitle = Text(frame, "GameFontNormalLarge", 16, -108, 608)
-	frame.dSummary = Text(frame, "GameFontHighlight", 16, -134, 608)
+	frame.dSummary = Text(frame, "GameFontHighlight", 16, -132, 608)
+	frame.dUserTitle = Text(frame, "GameFontNormal", 16, -156, 608)
 	for i = 1, #R.axes do
 		local axis = R.axes[i]
-		local y = -166 - (i - 1) * 30
+		local y = -176 - (i - 1) * AXIS_STEP
 		local row = { axis = axis.id }
 		row.label = Text(frame, "GameFontNormal", 16, y - 5, 112)
 		row.slider = W.Slider(frame, 300, axis.min, axis.max, function(v, final)
@@ -168,18 +175,18 @@ local function BuildDetail()
 		end)
 		row.slider:SetPoint("TOPLEFT", 134, y - 2)
 		row.value = Text(frame, "GameFontHighlight", 444, y - 5, 44, "RIGHT")
-		row.minus = W.Button(frame, "-", 24, 24, function()
+		row.minus = W.Button(frame, "-", 24, 22, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, -R.SLIDER_STEP) end
 		end)
 		row.minus:SetPoint("TOPLEFT", 496, y)
-		row.plus = W.Button(frame, "+", 24, 24, function()
+		row.plus = W.Button(frame, "+", 24, 22, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, R.SLIDER_STEP) end
 		end)
 		row.plus:SetPoint("TOPLEFT", 524, y)
 		W.Tooltip(row.slider, function() return R:AxisName(axis.id) .. ": " .. (axis.help and (axis.help[NS:Lang()] or axis.help.en) or "") end)
 		axisRows[i] = row
 	end
-	local y = -166 - #R.axes * 30 - 6
+	local y = -176 - #R.axes * AXIS_STEP - 4
 	frame.dLabelTitle = Text(frame, "GameFontNormal", 16, y - 5, 112)
 	frame.dLabelBtn = W.Button(frame, "", 200, 24, function()
 		if view.subject then R:CycleLabel(view.subject.kind, view.subject.key) end
@@ -194,7 +201,25 @@ local function BuildDetail()
 		self:ClearFocus()
 	end)
 	frame.dCustom:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-	y = y - 32
+	y = y - 30
+	-- feelings in words (#109): two slots and the typical-axes preset, all chosen by the user
+	frame.dFeelingTitle = Text(frame, "GameFontNormal", 16, y - 5, 112)
+	frame.dFeeling1 = W.Button(frame, "", 150, 24, function()
+		if view.subject then R:CycleFeeling(view.subject.kind, view.subject.key, 1) end
+	end)
+	frame.dFeeling1:SetPoint("TOPLEFT", 134, y)
+	W.Tooltip(frame.dFeeling1, function() return NS:L("rel_feeling_tip") end)
+	frame.dFeeling2 = W.Button(frame, "", 150, 24, function()
+		if view.subject then R:CycleFeeling(view.subject.kind, view.subject.key, 2) end
+	end)
+	frame.dFeeling2:SetPoint("TOPLEFT", 288, y)
+	W.Tooltip(frame.dFeeling2, function() return NS:L("rel_feeling_tip") end)
+	frame.dPreset = W.Button(frame, "", 150, 24, function()
+		if view.subject then R:ApplyFeelingPreset(view.subject.kind, view.subject.key) end
+	end)
+	frame.dPreset:SetPoint("TOPLEFT", 442, y)
+	W.Tooltip(frame.dPreset, function() return NS:L("rel_feeling_preset_tip") end)
+	y = y - 30
 	frame.dNoteTitle = Text(frame, "GameFontNormal", 16, y - 5, 112)
 	frame.dNote = W.EditBox(frame, 480, 22)
 	frame.dNote:SetPoint("TOPLEFT", 134, y - 1)
@@ -204,7 +229,7 @@ local function BuildDetail()
 		self:ClearFocus()
 	end)
 	frame.dNote:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-	y = y - 32
+	y = y - 30
 	frame.dTagsTitle = Text(frame, "GameFontNormal", 16, y - 5, 112)
 	frame.dTags = W.EditBox(frame, 480, 22)
 	frame.dTags:SetPoint("TOPLEFT", 134, y - 1)
@@ -214,9 +239,9 @@ local function BuildDetail()
 		self:ClearFocus()
 	end)
 	frame.dTags:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-	y = y - 34
+	y = y - 32
 	frame.dTraitsTitle = Text(frame, "GameFontNormal", 16, y - 5, 608)
-	y = y - 24
+	y = y - 22
 	frame.dTraitBtns = {}
 	for r, ids in ipairs(TRAIT_ROWS) do
 		for c, trait in ipairs(ids) do
@@ -229,7 +254,30 @@ local function BuildDetail()
 			frame.dTraitBtns[trait] = b
 		end
 	end
-	y = y - #TRAIT_ROWS * 28 - 8
+	y = y - #TRAIT_ROWS * 28 - 6
+	frame.dYNpc = y                      -- an NPC has no observed block: the buttons come right after the traits
+	-- what the addon observed (players only): a block of its own, never editable
+	frame.dSeenTitle = Text(frame, "GameFontNormal", 16, y - 2, 608)
+	frame.dSeenLine = Text(frame, "GameFontHighlightSmall", 16, y - 22, 608)
+	frame.dSeenFacts = Text(frame, "GameFontHighlightSmall", 16, y - 52, 608)
+	y = y - 124
+	frame.dForget = W.Button(frame, "", 200, 24, function()
+		local s = view.subject
+		if not s or s.kind ~= "player" then return end
+		if view.armedForget then
+			view.armedForget = false
+			R:ForgetObservations(s.key)
+		else
+			view.armedForget = true
+			C_Timer.After(DELETE_ARM_SECONDS, function()
+				view.armedForget = false
+				RelationsFrame:Refresh()
+			end)
+		end
+		RelationsFrame:Refresh()
+	end)
+	frame.dForget:SetPoint("TOPLEFT", 16, y)
+	W.Tooltip(frame.dForget, function() return NS:L("rel_forget_tip") end)
 	frame.dDelete = W.Button(frame, "", 200, 24, function()
 		if not view.subject then return end
 		if view.armed then
@@ -244,19 +292,20 @@ local function BuildDetail()
 			RelationsFrame:Refresh()
 		end
 	end)
-	frame.dDelete:SetPoint("TOPLEFT", 16, y)
+	frame.dDelete:SetPoint("TOPLEFT", 226, y)
 	frame.dBack = W.Button(frame, "", 140, 24, function() RelationsFrame:ShowView("list") end)
-	frame.dBack:SetPoint("TOPLEFT", 226, y)
+	frame.dBack:SetPoint("TOPLEFT", 436, y)
+	frame.dYPlayer = y
 end
 
 local OPTIONS = {
-	{ "npcAuto", "rel_opt_npc" }, { "proposePlayers", "rel_opt_propose" },
-	{ "autoRegisterPlayers", "rel_opt_auto" }, { "attraction", "rel_opt_attraction" },
+	{ "npcAuto", "rel_opt_npc" }, { "proposePlayers", "rel_opt_propose" }, { "autoRegisterPlayers", "rel_opt_auto" },
+	{ "attraction", "rel_opt_attraction" }, { "recognizeTarget", "rel_opt_target" },
 }
 
 local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenRelations", UIParent)
-	frame:SetSize(640, 700)
+	frame:SetSize(640, HEIGHT_LIST)
 	frame:SetPoint("CENTER", 0, 10)
 	frame:SetFrameStrata("DIALOG")
 	frame:SetMovable(true)
@@ -287,16 +336,17 @@ local function Build()
 
 	frame.options = {}
 	for i, opt in ipairs(OPTIONS) do
-		local b = W.Button(frame, "", 150, 22, function()
+		local b = W.Button(frame, "", 200, 22, function()
 			R:SetSetting(opt[1], not R:Setting(opt[1]))
 			RelationsFrame:Refresh()
 		end)
-		b:SetPoint("BOTTOMLEFT", 16 + (i - 1) * 154, 50)
+		-- two rows of options above the export and reset buttons
+		b:SetPoint("BOTTOMLEFT", 16 + ((i - 1) % 3) * 204, i <= 3 and 76 or 48)
 		W.Tooltip(b, function() return NS:L(opt[2] .. "_tip") end)
 		frame.options[i] = { button = b, key = opt[1], text = opt[2] }
 	end
 	frame.privacy = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.privacy:SetPoint("BOTTOMLEFT", 16, 80)
+	frame.privacy:SetPoint("BOTTOMLEFT", 16, 104)
 	frame.privacy:SetWidth(608)
 	frame.privacy:SetJustifyH("LEFT")
 	frame.export = W.Button(frame, "", 110, 24, function() RelationsFrame:ShowExport() end)
@@ -348,8 +398,10 @@ local function PeopleWidgets()
 end
 
 local function DetailWidgets()
-	local out = { frame.dTitle, frame.dSummary, frame.dLabelTitle, frame.dLabelBtn, frame.dCustom, frame.dNoteTitle,
-		frame.dNote, frame.dTagsTitle, frame.dTags, frame.dTraitsTitle, frame.dDelete, frame.dBack }
+	local out = { frame.dTitle, frame.dSummary, frame.dUserTitle, frame.dLabelTitle, frame.dLabelBtn, frame.dCustom,
+		frame.dFeelingTitle, frame.dFeeling1, frame.dFeeling2, frame.dPreset, frame.dNoteTitle, frame.dNote,
+		frame.dTagsTitle, frame.dTags, frame.dTraitsTitle, frame.dSeenTitle, frame.dSeenLine, frame.dSeenFacts,
+		frame.dForget, frame.dDelete, frame.dBack }
 	for _, b in pairs(frame.dTraitBtns) do table.insert(out, b) end
 	for _, row in ipairs(axisRows) do
 		for _, w in ipairs({ row.label, row.slider, row.value, row.minus, row.plus }) do table.insert(out, w) end
@@ -386,7 +438,8 @@ local function RefreshList()
 			row.cells.kind:SetText(NS:L("rel_kind_" .. item.kind))
 			row.cells.label:SetText(item.info.text)
 			row.cells.disposition:SetText(("%s (%d)"):format(item.info.dispositionText, math.floor(item.info.dispositionValue + 0.5)))
-			row.cells.last:SetText(Stamp(item.rec.last))
+			row.cells.last:SetText(Stamp(R.SeenOf(item.rec).last))
+			row.cells.count:SetText(tostring(R.SeenOf(item.rec).count or 0))
 		end
 	end
 	frame.pageText:SetText(NS:L("rel_page", view.page, pages))
@@ -429,10 +482,13 @@ local function RefreshDetail()
 		RelationsFrame:ShowView("list")
 		return
 	end
+	local isPlayer = s.kind == "player"
+	local user, seen = R.UserOf(rec), R.SeenOf(rec)
 	local info = R:Resolve(s.kind, rec)
 	frame.dTitle:SetText(("%s  %s"):format(R:DisplayName(s.kind, s.key), Muted("(" .. NS:L("rel_kind_" .. s.kind) .. ")")))
 	frame.dSummary:SetText(("%s: %s   %s: %s (%d)"):format(NS:L("rel_col_label"), info.text, NS:L("rel_col_disposition"),
 		info.dispositionText, math.floor(info.dispositionValue + 0.5)))
+	frame.dUserTitle:SetText(NS:L("rel_section_user"))
 	local active = {}
 	for _, a in ipairs(R:ActiveAxes()) do active[a.id] = true end
 	for _, row in ipairs(axisRows) do
@@ -447,11 +503,18 @@ local function RefreshDetail()
 	end
 	frame.dLabelTitle:SetText(NS:L("rel_label"))
 	frame.dLabelBtn:SetText(info.manual and NS:L("rel_label_set", info.text) or NS:L("rel_label_auto", info.derived and R:LabelName(info.derived) or "?"))
-	if not frame.dCustom:HasFocus() then frame.dCustom:SetText(rec.label and not R.labelById[rec.label] and rec.label or "") end
+	if not frame.dCustom:HasFocus() then frame.dCustom:SetText(user.label and not R.labelById[user.label] and user.label or "") end
+	frame.dFeelingTitle:SetText(NS:L("rel_feeling"))
+	local none = NS:L("rel_feeling_none")
+	frame.dFeeling1:SetText(NS:L("rel_feeling_btn", info.feelings[1] and R:FeelingName(info.feelings[1]) or none))
+	frame.dFeeling2:SetText(NS:L("rel_feeling_btn2", info.feelings[2] and R:FeelingName(info.feelings[2]) or none))
+	frame.dFeeling2:SetEnabled(info.feelings[1] ~= nil)
+	frame.dPreset:SetText(NS:L("rel_feeling_preset"))
+	frame.dPreset:SetEnabled(info.feelings[1] ~= nil)
 	frame.dNoteTitle:SetText(NS:L("rel_note"))
-	if not frame.dNote:HasFocus() then frame.dNote:SetText(rec.note or "") end
+	if not frame.dNote:HasFocus() then frame.dNote:SetText(user.note or "") end
 	frame.dTagsTitle:SetText(NS:L("rel_tags"))
-	if not frame.dTags:HasFocus() then frame.dTags:SetText(rec.tags and table.concat(rec.tags, ", ") or "") end
+	if not frame.dTags:HasFocus() then frame.dTags:SetText(user.tags and table.concat(user.tags, ", ") or "") end
 	frame.dTraitsTitle:SetText(NS:L("rel_traits_title"))
 	for trait, b in pairs(frame.dTraitBtns) do
 		local value, auto = NS.Interlocutor:GetUserTrait(s.kind, s.key, trait)
@@ -459,6 +522,29 @@ local function RefreshDetail()
 		if auto then text = text .. " (" .. NS:L("rel_trait_auto") .. ")" end
 		b:SetText(NS.Traits.Name(trait) .. ": " .. text)
 	end
+	-- what the addon observed: a block of its own for players, with its own action
+	for _, w in ipairs({ frame.dSeenTitle, frame.dSeenLine, frame.dSeenFacts, frame.dForget }) do w:SetShown(isPlayer) end
+	if isPlayer then
+		frame.dSeenTitle:SetText(NS:L("rel_section_seen"))
+		local facts = {}
+		for i = #(seen.facts or {}), 1, -1 do
+			local f = seen.facts[i]
+			local kind = NS:L("rel_enc_" .. f.k)
+			table.insert(facts, NS:L("rel_seen_fact", Stamp(f.t), kind == "rel_enc_" .. f.k and f.k or kind, f.z and ("  (" .. f.z .. ")") or ""))
+		end
+		if (seen.count or 0) == 0 and #facts == 0 then
+			frame.dSeenLine:SetText(Muted(NS:L("rel_seen_none")))
+			frame.dSeenFacts:SetText("")
+		else
+			frame.dSeenLine:SetText(NS:L("rel_seen_line", Stamp(seen.first), Stamp(seen.last), R:EncountersText(rec)))
+			frame.dSeenFacts:SetText(#facts > 0 and (NS:L("rel_seen_facts") .. "\n" .. table.concat(facts, "\n")) or "")
+		end
+		frame.dForget:SetText(NS:L(view.armedForget and "rel_forget_confirm" or "rel_forget"))
+	end
+	local y = isPlayer and frame.dYPlayer or frame.dYNpc
+	frame.dForget:ClearAllPoints(); frame.dForget:SetPoint("TOPLEFT", 16, y)
+	frame.dDelete:ClearAllPoints(); frame.dDelete:SetPoint("TOPLEFT", isPlayer and 226 or 16, y)
+	frame.dBack:ClearAllPoints(); frame.dBack:SetPoint("TOPLEFT", isPlayer and 436 or 226, y)
 	frame.dDelete:SetText(NS:L(view.armed and "rel_delete_confirm" or "rel_delete"))
 	frame.dBack:SetText(NS:L("rel_back"))
 	frame.prev:Hide(); frame.next:Hide(); frame.pageText:Hide()
@@ -467,6 +553,8 @@ end
 ---Ridisegna la finestra (se è aperta).
 function RelationsFrame:Refresh()
 	if not frame or not frame:IsShown() then return end
+	local s = view.subject
+	frame:SetHeight(view.name == "detail" and s and s.kind == "player" and HEIGHT_PLAYER or HEIGHT_LIST)
 	frame.title:SetText(NS:L("rel_title"))
 	frame.intro:SetText(NS:L("rel_intro"))
 	frame.tabList:SetText(Selected(NS:L("rel_tab"), view.name ~= "people"))
@@ -494,7 +582,7 @@ end
 ---------------------------------------------------------------------------
 ---@param name "list"|"people"|"detail"
 function RelationsFrame:ShowView(name)
-	view.name, view.page, view.armed = name, 1, false
+	view.name, view.page, view.armed, view.armedForget = name, 1, false, false
 	if name ~= "detail" then view.subject = nil end
 	self:Refresh()
 end
@@ -505,7 +593,7 @@ end
 function RelationsFrame:SelectSubject(kind, key)
 	if not R:Get(kind, key) then return false end
 	view.subject = { kind = kind, key = key }
-	view.name, view.armed = "detail", false
+	view.name, view.armed, view.armedForget = "detail", false, false
 	self:Refresh()
 	return true
 end
@@ -553,7 +641,7 @@ function RelationsFrame:Open(where)
 			return false
 		end
 	end
-	view.armed, view.armedReset = false, false
+	view.armed, view.armedReset, view.armedForget = false, false, false
 	frame:Show()
 	if type(where) == "table" then
 		if not self:SelectSubject(where.kind, where.key) then self:ShowView("list") end

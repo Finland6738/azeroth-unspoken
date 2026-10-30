@@ -373,4 +373,115 @@ NS:AddTexts("enUS", {
 		"This shop and I know each other well. It knows the bottom of my purse, too.",
 		"A merchant who knows me. I hope that means a discount; I fear it means the opposite.",
 	},
+	---------------------------------------------------------------------------
+	-- a known player recognised (#106), by feeling (#109) and by what the addon observed (#110)
+	---------------------------------------------------------------------------
+	["rel.player.trust"] = {
+		"{other}. One of the few I would turn my back on without looking.",
+		"There is {other}. Some people you check twice; with this one I stopped checking a while ago.",
+		{ "{other}. Good. I can breathe.", depth = "natural" },
+		{ "Trust is not given; it is found already built when you need it. With {other} it was standing there before I went looking.", depth = "elevated" },
+	},
+	["rel.player.liking"] = {
+		"{other} again, and I notice I am already smiling. Hard to say why; some people are simply easy to like.",
+		"Ha, {other}. The road weighs less with certain faces on it.",
+		{ "Oh, {other}! Good.", depth = "natural" },
+		{ "Some meetings need no reason. {other} walks into view and the day arranges itself a little better.", depth = "elevated" },
+	},
+	["rel.player.gratitude"] = {
+		"{other}. I have not forgotten what they did for me, and I will not, however little I say about it.",
+		"There goes someone I owe more than I have ever said. One day I will find the right words, or the right moment.",
+		{ "{other}. I still owe them one.", depth = "natural" },
+		{ "A debt of gratitude does not shrink with the years; it only learns to wait quietly. {other} is on the road, and mine is still open.", depth = "elevated" },
+	},
+	["rel.player.wariness"] = {
+		"{other}. A nod, a smile, and eyes kept open. Old habit, newer reasons.",
+		"A name I know, and not one I leave near my purse. Courtesy costs nothing; trust costs a great deal.",
+		{ "{other}. Careful now.", depth = "natural" },
+		{ "I do not think {other} means harm, exactly. I only know how often \"exactly\" is the word that gives way.", depth = "elevated" },
+	},
+	["rel.player.fear"] = {
+		"{other} again. My pulse notices before I do. I keep my face still and my pace even.",
+		"I know that walk. I will not be the first to look at {other}, and I will not be the last to look away.",
+		{ "{other}. Steady.", depth = "natural" },
+		{ "Fear is only attention with nowhere to go. All of mine has turned toward {other}, and it will not be talked out of it.", depth = "elevated" },
+	},
+	["rel.player.resentment"] = {
+		"{other}. I have not forgotten, and I have not forgiven. I will be civil for now: civility is cheaper than a fight.",
+		"There is {other}. Some debts are not paid in coin, and this one is still open.",
+		{ "{other}. Of course.", depth = "natural" },
+		{ "Resentment keeps a very good memory and a very poor sense of time. Every detail of {other} is exactly where I left it.", depth = "elevated" },
+	},
+	["rel.player.ally"] = {
+		"{other}. We want the same thing, and that counts for more than a long friendship. Let us see what we can do with it.",
+		"An alliance by choice: no one forced it, and no one can undo it but us.",
+		{ "{other}: on my side, as agreed.", depth = "natural" },
+	},
+	["rel.player.friend"] = {
+		"{other}! Reassuring, to find a friend in the middle of a crowd.",
+		"Some meetings you do not plan; they simply turn out right.",
+		{ "Hey, {other}.", depth = "natural" },
+	},
+	["rel.player.rival"] = {
+		"{other}. I would never say it aloud, but I try harder when they are around.",
+		"A rival worth the name, on the same road. It was bound to happen.",
+		{ "{other}. Round two, then.", depth = "natural" },
+	},
+	["rel.player.enemy"] = {
+		"{other}. Our roads cross again, and neither of us has changed our mind.",
+		"There is no one I would rather avoid. And yet here we are.",
+		{ "{other}. Of all people.", depth = "natural" },
+	},
+	["rel.player.wary"] = {
+		"I know the name, and the name does not reassure me.",
+		"{other}. I nod, and I keep my distance.",
+		{ "{other}. Hm.", depth = "natural" },
+	},
+	["rel.player.feared"] = {
+		"{other} is here. I find myself taking a step back without admitting it.",
+		"Whatever I feel for {other}, it is not comfort. I keep walking.",
+	},
+	["rel.player.known"] = {
+		"I know that name: {other}. We have crossed paths before.",
+		"{other}. A face from the road; the details will come back in a moment.",
+		{ "Ah, {other}.", depth = "natural" },
+	},
+	["rel.player.absent.long"] = {
+		"{other}. It has been a long while: long enough to forget where we left things, not long enough to forget that we did.",
+		"A long time since the last meeting with {other}. Roads rarely bring the same people back at the same distance.",
+		{ "{other}. It has been ages.", depth = "natural" },
+	},
+	["rel.player.absent.weeks"] = {
+		"Some weeks since the last time. Long enough to wonder what {other} has been up to.",
+		"{other} again, after a few weeks. Not long; just long enough to notice the gap.",
+	},
+	["rel.player.recent"] = {
+		"{other} again, and so soon. Today the road feels small.",
+		"We keep meeting today, {other} and I. Either a coincidence or a very patient road.",
+	},
+	["rel.player.met_here"] = {
+		"The last time I saw {other}, it was right here. Places remember us a little too.",
+		"Same spot as before, {other}. Some places collect meetings the way others collect dust.",
+	},
+	["rel.player.shared.combat"] = {
+		"We have fought side by side, {other} and I. That does not wash off with a single parting.",
+		"A shared fight leaves a mark that a handshake never does.",
+		{ "{other}. We have bled in the same fight.", depth = "natural" },
+		{ "Two people who have stood in the same line, facing the same thing, carry a small country between them. Mine includes {other}.", depth = "elevated" },
+	},
+	["rel.player.shared.duel"] = {
+		"We faced each other in a duel, {other} and I: the wrist remembers better than the mind.",
+		"I have measured myself against {other}. It is a kind of introduction.",
+		{ "{other}. Our duel is still in my wrist.", depth = "natural" },
+	},
+	["rel.greet.ally"] = {
+		"{target}, well met. We stand on the same side of this, and that is worth a greeting.",
+		"Ally. A small word, but I mean it whole.",
+		{ "Good, you are here. Let us go.", depth = "natural" },
+	},
+	["rel.bye.ally"] = {
+		"Until the next time we need each other. It will not be long.",
+		"Walk well. We meet again wherever the cause calls us.",
+		{ "Until then. You know where to find me.", depth = "natural" },
+	},
 }, "base_relations")

@@ -356,7 +356,7 @@ T.run("il database di base ha le tre voci e tutte le profondità", function()
 			if p.speaker == "inner" then T.eq(p.form, "say", p.id .. ": il pensiero non è un'emote") end
 		end
 	end
-	T.eq(base, 1009, "intenzioni di base: 803 dei contenuti Alpha (S7) + 169 battute dei dialoghi ambientali (S8) + 33 battute degli archi (S9) + 4 duelli per rapporto (#105); la copertura è in TestContent.lua")
+	T.eq(base, 1030, "intenzioni di base: 803 dei contenuti Alpha (S7) + 169 battute dei dialoghi ambientali (S8) + 33 battute degli archi (S9) + 4 duelli per rapporto (#105) + 21 righe di riconoscimento, sentimenti e alleati (#106, #109, #110); la copertura è in TestContent.lua")
 	T.ok(by.inner >= 80 and by.narrator >= 19 and by.character >= 250, "voci: " .. by.inner .. "/" .. by.narrator .. "/" .. by.character)
 	T.ok(by.npc >= 12, "la voce NPC parla negli incontri con NPC dal ruolo noto (S7): " .. by.npc)
 end)

@@ -147,8 +147,8 @@ print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varian
 # 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
 # e luogo (S6c) + 7 del pacchetto di esempio; S7 (contenuti Alpha): 803 di base + 7 del pacchetto di esempio;
 # S8 (NPC Alive): + 169 battute dei dialoghi ambientali = 972 di base + 7 = 979
-# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016
-check(ids == 1016, f"1016 frasi caricate (trovate {ids})")
+# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016; + 21 righe di riconoscimento, sentimenti e alleati (#106, #109, #110) = 1037
+check(ids == 1037, f"1037 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -452,7 +452,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations", "TestPlayers",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
              "TestPacks"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
@@ -617,8 +617,8 @@ check("Pip" in saved_char_r and "1234" in saved_char_r, "relazioni: l'NPC è sal
 rl2, rn2 = load_addon(saved_global_r, saved_char_r, with_example=False, epoch=epoch_r + 60, zone="Durotar")
 d2 = rl2.eval("function() return AzerothUnspokenCharacterDB.relationships end")()
 check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")() == npc_fam, "relazioni: nessun decadimento subito dopo /reload")
-check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].note end")() == "Mi ha salvato la vita", "relazioni: la nota dopo /reload")
-check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].label end")() == "fratello di spada", "relazioni: l'etichetta scelta dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.note end")() == "Mi ha salvato la vita", "relazioni: la nota dopo /reload")
+check(rl2.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.label end")() == "fratello di spada", "relazioni: l'etichetta scelta dopo /reload")
 check(rl2.eval("function() return next(AzerothUnspoken.Relationships.candidates) end")() is None, "relazioni: le proposte non sopravvivono alla sessione")
 check(not list(rn2.Diagnostics.errors.values()), "relazioni: nessun errore dopo /reload")
 
@@ -626,7 +626,7 @@ check(not list(rn2.Diagnostics.errors.values()), "relazioni: nessun errore dopo 
 rl3, rn3 = load_addon(saved_global_r, saved_char_r, with_example=False, epoch=epoch_r + 40 * 86400, zone="Durotar")
 fam3 = rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")()
 check(fam3 is not None and 0 < npc_fam - fam3 < 20, f"relazioni: la familiarità dell'NPC cala con i giorni ({npc_fam} -> {fam3})")
-check(rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].familiarity end")() == 40, "relazioni: un giocatore dell'utente non decade")
+check(rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.axes.familiarity end")() == 40, "relazioni: un giocatore dell'utente non decade")
 check(rl3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "relazioni: schema 7")
 rl3.globals().P.target = rl3.eval("{ name = 'Aldric', realm = 'Stormrage', player = true, guid = 'Player-1-0000AAAA' }")
 ctx_label = rl3.eval("function() return AzerothUnspoken:BuildContext().relationLabel end")()
@@ -822,7 +822,7 @@ check(proc.returncode == 0, "check_versi.py: il pacchetto dei versi si carica, �
 
 # 12) regole automatiche (R1): regola dei documenti per le PR, privacy dei file tracciati, forma dei workflow
 print("\nREGOLE DEL PROGETTO")
-for script in ("check_rules.py", "check_privacy.py"):
+for script in ("check_rules.py", "check_privacy.py", "check_user_block.py"):
     proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, script)],
                           capture_output=True, text=True, encoding="utf-8")
     print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  " not in l))
