@@ -6,7 +6,7 @@ The lines of Azeroth Unspoken live in **phrase packs**. The addon comes with its
 
 A phrase pack is a small, separate addon that sits next to Azeroth Unspoken in your `AddOns` folder. It needs Azeroth Unspoken to work, and adds to it without changing it.
 
-- **Built-in packs** come inside the `AzerothUnspoken` folder: combat, exploration, life of the character, social moments, spells, classes, memory, relationships, personality, interlocutor and place, NPC dialogues, stories, frames and vocabulary.
+- **Built-in packs** come with the download: combat, exploration, life of the character, social moments, spells, classes, memory, relationships, personality, interlocutor and place, NPC dialogues, stories, frames and vocabulary. Their rules are in the `AzerothUnspoken` folder; their lines are in the language folders (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`), and the lines tied to one continent are in the continent folders (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` and their language folders). The addon reads only your language, and a continent only while you are there: you never pick these folders yourself. See [[Installation and Updating|Installation-and-Updating]].
 - **Extra packs** are separate folders. The download includes two:
   - **`AzerothUnspoken_Example`**: a few lines for fishing and some lines tied to places;
   - **`AzerothUnspoken_Versi`**, the **verses pack** (id `versi`): a first test of literary forms, with inscriptions, remembered verses, inn rhymes, road songs, sayings, a hymn and a lament, in English and Italian. They only ever appear in your private narrator. See [[Literary Forms|Literary-Forms]].

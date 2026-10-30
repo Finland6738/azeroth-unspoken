@@ -1,6 +1,6 @@
 -- Gli archi narrativi di base (step S9, GDD §7.5; ADR 0021): quattro micro-storie personali. Solo la struttura: gli stati,
 -- i passi con i loro eventi e le loro condizioni. Le battute del narratore sono regole in Data/RegistryArcs.lua; i testi
--- (titolo, racconto per stato, scelte) e le battute stanno in Data/itIT/Arcs.lua e Data/enUS/Arcs.lua.
+-- (titolo, racconto per stato, scelte) e le battute stanno in AzerothUnspoken_itIT/Arcs.lua e AzerothUnspoken_enUS/Arcs.lua.
 -- Un pacchetto aggiunge archi con NS:RegisterArcs{ pack, arcs, texts } (stessa forma, vedi PACK_FORMAT.md, «Story Arcs»).
 --
 -- Regole (GDD §7.5): nessuna ricompensa e nessun effetto sul gioco (la definizione non ha campi per averli); ogni passo

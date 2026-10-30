@@ -19,6 +19,7 @@ Core\EventBus.lua
 Core\ContextResolver.lua
 Core\Profiler.lua
 Core\Probe.lua
+Core\Packs.lua
 
 # --- motore narrativo (non contiene testi) ---
 Engine\PhraseRegistry.lua
@@ -63,7 +64,8 @@ Data\itIT\Interface.lua
 Data\enUS\Interface.lua
 
 # --- database narrativo di base (stessa API dei pacchetti esterni, schema v2) ---
-# prima vocabolario e cornici, poi le regole (Registry*), poi i testi per lingua
+# vocabolario, cornici e regole (Registry*). I testi delle frasi stanno nei pacchetti di lingua AzerothUnspoken_enUS e
+# AzerothUnspoken_itIT (LoadOnDemand): Core\Packs.lua carica solo quello della lingua scelta (#85, ADR 0025)
 Data\Vocabulary.lua
 Data\Frames.lua
 Data\Relationships.lua
@@ -83,32 +85,8 @@ Data\RegistryDialogues.lua
 Data\Dialogues.lua
 Data\RegistryArcs.lua
 Data\Arcs.lua
-Data\itIT\Combat.lua
-Data\itIT\Spells.lua
-Data\itIT\Life.lua
-Data\itIT\Exploration.lua
-Data\itIT\Social.lua
-Data\itIT\Classes.lua
-Data\enUS\Combat.lua
-Data\enUS\Spells.lua
-Data\enUS\Life.lua
-Data\enUS\Exploration.lua
-Data\enUS\Social.lua
-Data\enUS\Classes.lua
-Data\itIT\Soul.lua
-Data\enUS\Soul.lua
-Data\itIT\Memory.lua
-Data\enUS\Memory.lua
-Data\itIT\Relations.lua
-Data\enUS\Relations.lua
 Data\itIT\RelationsUI.lua
 Data\enUS\RelationsUI.lua
-Data\itIT\Context.lua
-Data\itIT\Dialogues.lua
-Data\itIT\Arcs.lua
-Data\enUS\Context.lua
-Data\enUS\Dialogues.lua
-Data\enUS\Arcs.lua
 Data\itIT\ContextUI.lua
 Data\itIT\NPCUI.lua
 Data\itIT\ArcsUI.lua

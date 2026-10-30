@@ -567,11 +567,43 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
     - **Cosa aspettarti:** i rapporti non hanno nomi, ma rileggili una volta.
     - **Cosa riportare:** il link della issue.
 
+## R1: pacchetti di lingua e regionali (aggiunto dalle issue #85 e #101)
+
+**A cosa serve.** L'addon ora è un download con più cartelle: le frasi di ogni lingua stanno in una cartella a parte (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) e quelle legate a un continente in altre (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` e le loro `_enUS`/`_itIT`). L'addon carica da solo **solo la lingua scelta** e **solo il continente in cui sei**, fuori dal combattimento, con `C_AddOns.LoadAddOn`: nessuno l'ha mai provato nel client vero. `/au packs` mostra lo stato di ogni cartella: `caricata`, `non caricata (ora non serve)`, `non installata`, `non caricabile (motivo)`; la prima riga dice la lingua delle frasi, la regione e i contatori (caricamenti, costruzioni, rilasci, attese per il combattimento).
+
+- **R1.1 · Installazione e primo accesso.** Copia in `AddOns` **tutte** le cartelle `AzerothUnspoken*` del download (cancella prima quelle vecchie). Alla selezione del personaggio apri **AddOn**: le cartelle delle lingue e dei continenti devono essere spuntate e segnate *Caricamento su richiesta*. Entra in gioco in **Kalimdor** con la lingua **inglese** (`/au language en` e `/reload` se serve) e scrivi `/au packs`.
+    - **Cosa aspettarti:** nessun errore rosso; `AzerothUnspoken_enUS ... loaded`, `AzerothUnspoken_itIT ... not loaded`; `region kalimdor`; `AzerothUnspoken_Kalimdor` e `AzerothUnspoken_Kalimdor_enUS` `loaded`, le cartelle `EasternKingdoms` `not loaded` (con l'inglese scelto le righe sono in inglese).
+    - **Cosa riportare:** le righe di `/au packs`; se una cartella dice `could not be loaded`, il motivo tra parentesi.
+- **R1.2 · Memoria all'accesso.** Dopo un minuto scrivi `/au prof copy`.
+    - **Cosa aspettarti:** la memoria (ora somma l'addon e le cartelle caricate).
+    - **Cosa riportare:** il testo.
+- **R1.3 · Cambio di lingua e ricaricamento.** Nelle impostazioni clicca **Lingua delle frasi** fino a **Italiano**.
+    - **Cosa aspettarti:** le finestre passano subito all'italiano; in chat un messaggio spiega che le frasi arrivano al prossimo ricaricamento; compare una finestra con **Ricarica adesso** e **Più tardi**, e nel pannello un pulsante **Ricarica adesso**. Prima di cliccare, `/au muse` dà ancora una frase in inglese. Clicca **Ricarica adesso**: dopo il ricaricamento `/au packs` mostra `AzerothUnspoken_itIT ... caricata` e `AzerothUnspoken_enUS ... non caricata`, e le frasi sono in italiano.
+    - **Cosa riportare:** se la finestra compare (o solo il messaggio in chat), se il ricaricamento parte dal pulsante, le righe di `/au packs` dopo.
+- **R1.4 · Cambio di continente.** Fuori dal combattimento prendi una nave, uno zeppelin o un portale per l'**altro continente**. Appena arrivato scrivi `/au packs`; poi torna indietro e ripeti.
+    - **Cosa aspettarti:** all'arrivo `regione eastern` (o `kalimdor`), le due cartelle del nuovo continente caricate; al ritorno i caricamenti non aumentano (le cartelle restano caricate), aumentano costruzioni e rilasci. Nessun blocco del gioco oltre la schermata di caricamento.
+    - **Cosa riportare:** le righe di `/au packs` all'andata e al ritorno; se hai notato un blocco, quando e quanto.
+- **R1.5 · Combattimento.** Durante un combattimento scrivi `/reload`. Finito il combattimento, scrivi `/au packs`.
+    - **Cosa aspettarti:** nessun errore; dopo il combattimento la cartella della lingua è caricata e il contatore delle attese per il combattimento è almeno 1. Se il combattimento finisce prima che il gioco sia di nuovo pronto, il contatore può restare 0: annotalo.
+    - **Cosa riportare:** la prima riga di `/au packs`.
+- **R1.6 · Una cartella mancante.** Con l'italiano scelto, alla selezione del personaggio togli la spunta a `Azeroth Unspoken - Italian phrases` ed entra.
+    - **Cosa aspettarti:** in chat, una sola volta, `non si è potuta caricare la cartella AzerothUnspoken_itIT (DISABLED)` e che le frasi restano in inglese; le frasi arrivano in inglese, le finestre restano in italiano; nessun errore rosso. Rimetti la spunta dopo.
+    - **Cosa riportare:** il messaggio esatto (il motivo tra parentesi).
+- **R1.7 · Memoria dopo i due continenti.** Dopo aver visitato i due continenti (R1.4), scrivi `/au prof copy`.
+    - **Cosa aspettarti:** la memoria cresce poco rispetto a R1.2 (oggi i pacchetti regionali sono piccoli).
+    - **Cosa riportare:** il testo.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
 
 ```
+R1 accesso .............. cartelle «su richiesta»? ___  /au packs: enUS caricata ___ itIT non caricata ___ regione ______
+R1 memoria .............. all'accesso (KB) ______  dopo i due continenti (KB) ______
+R1 lingua ............... messaggio ___  finestra Ricarica? ___  dopo /reload itIT caricata, enUS no? ___
+R1 continente ........... all'andata regione ______  al ritorno caricamenti invariati? ___  blocchi? ___
+R1 combattimento ........ /reload in combattimento: errori? ___  attese per il combattimento ______
+R1 cartella mancante .... messaggio (motivo) ______  frasi in inglese? ___  errori rossi? (deve essere NO) ___
 SP-01 caricamento ....... (OK / NO / nota)   Client build: ______  Errori rossi: sì/no
 SP-01 wizard ............ (OK / NO / nota)
 SP-01 /au debug ......... (OK / NO / nota)   Capacità MISSING/RESTRICTED: ______

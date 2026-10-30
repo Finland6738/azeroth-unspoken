@@ -1,8 +1,8 @@
 -- Le battute dei dialoghi ambientali (step S8, GDD §7.3, §21-B; ADR 0020): ciò che un NPC dice dentro la finestra di
 -- UI/DialogueFrame.lua. Sono regole del motore come tutte le altre (voce `npc`, evento `npcd_<ruolo>_<nodo>`), con le
 -- stesse condizioni, gli stessi pesi e la stessa anti-ripetizione. Escono SOLO dentro un dialogo (guardia di
--- Systems/NPCAlive.lua): né da /au event né dal Director. I testi stanno in Data/itIT/Dialogues.lua e
--- Data/enUS/Dialogues.lua; la struttura dei dialoghi (nodi e risposte) in Data/Dialogues.lua.
+-- Systems/NPCAlive.lua): né da /au event né dal Director. I testi stanno in AzerothUnspoken_itIT/Dialogues.lua e
+-- AzerothUnspoken_enUS/Dialogues.lua; la struttura dei dialoghi (nodi e risposte) in Data/Dialogues.lua.
 --
 -- Come si legge la tabella SPEC: per ogni ruolo e nodo, un elenco di "sigle": la voce più un numero.
 --   n         battuta neutra del ruolo, per chiunque

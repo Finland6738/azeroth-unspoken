@@ -1,6 +1,6 @@
 -- Registro delle regole di base: incantesimi, viaggi e resurrezioni.
 -- Solo le regole (evento, voce, registro, profondità, peso, condizioni). I testi, con le loro varianti,
--- stanno in Data/itIT/Spells.lua e Data/enUS/Spells.lua.
+-- stanno in AzerothUnspoken_itIT/Spells.lua e AzerothUnspoken_enUS/Spells.lua.
 -- Tag di affinità del Character Soul (issue #27): tono (temperament:, morality:, faith:...) e argomenti delicati
 -- (topic:). Le cure e le resurrezioni sono di solito misericordiose; la Luce, gli antenati e la luna sono religione.
 local ADDON, NS = ...

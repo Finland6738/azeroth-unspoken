@@ -1,6 +1,6 @@
 -- Frasi della Living Memory: prima visita a una zona (vertical slice A) e ritorno in un luogo già visitato
 -- (vertical slice C). Step S6 (esempi) e S7 (contenuti Alpha: foresta a fondo, atmosfere, istanze, flag, temperamenti).
--- Solo le regole; i testi stanno in Data/itIT/Memory.lua e Data/enUS/Memory.lua.
+-- Solo le regole; i testi stanno in AzerothUnspoken_itIT/Memory.lua e AzerothUnspoken_enUS/Memory.lua.
 --
 -- Condizioni di memoria (Engine/RuleEngine.lua, leggono ctx.memory di Systems/LivingMemory.lua):
 --   firstVisit, repeatVisit, lastVisitBad (true o "death"/"flight"), visitsMin, visitsMax, daysSinceLastVisit,

@@ -1,0 +1,12 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Eastern Kingdoms (Italian)
+## Notes: Italian texts of the phrases bound to Eastern Kingdoms. Loaded only in Eastern Kingdoms and only when Italian is the chosen language.
+## Author: Finland6738
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken, AzerothUnspoken_EasternKingdoms
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Region: eastern
+## X-AzerothUnspoken-Language: itIT
+## X-Category: Roleplay
+
+Exploration.lua

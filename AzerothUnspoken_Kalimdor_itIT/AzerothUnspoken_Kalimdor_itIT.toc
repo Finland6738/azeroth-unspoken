@@ -1,0 +1,12 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Kalimdor (Italian)
+## Notes: Italian texts of the phrases bound to Kalimdor. Loaded only in Kalimdor and only when Italian is the chosen language.
+## Author: Finland6738
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken, AzerothUnspoken_Kalimdor
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Region: kalimdor
+## X-AzerothUnspoken-Language: itIT
+## X-Category: Roleplay
+
+Exploration.lua

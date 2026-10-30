@@ -38,6 +38,8 @@ end
 -- every name or value that must never reach a report
 local SECRETS = { "Garrosh", "Grukk", "Mirabel", "Stormwind", "1234", "987", "Zone header" }
 local function NoPersonalData(text, what)
+	-- the clock reading of debugprofilestop (os.clock in the mock) is a number that can contain any digits
+	text = text:gsub("debugprofilestop: %-> [0-9.]+", "")
 	for _, word in ipairs(SECRETS) do
 		T.ok(not text:find(word, 1, true), what .. ": no '" .. word .. "'")
 	end

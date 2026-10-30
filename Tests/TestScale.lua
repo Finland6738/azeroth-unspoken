@@ -239,7 +239,7 @@ T.run("#86: migration from schema 6", function()
 	local uses, last, variant = {}, {}, {}
 	for i = 1, 2000 do
 		local id = ("t.old.%04d"):format(i)
-		uses[id], last[id], variant[id] = (i % 7) + 0.5, 1700000000, 2
+		uses[id], last[id], variant[id] = (i % 7) + 0.5, time() - Engine.DORMANT_LAST_MAX - 1, 2
 	end
 	-- known rules: one with a cooldown still running, one without cooldown
 	local cooled = Engine.byId["battle.gen.01"]
@@ -260,7 +260,7 @@ T.run("#86: migration from schema 6", function()
 	Engine:DecayMemory()
 	T.ok(mem.last[cooled.id] ~= nil, "a running cooldown survives the migration")
 	T.eq(mem.last["battle.gen.02"], nil, "the last use of a rule without cooldown goes")
-	T.eq(mem.last["t.old.0001"], nil, "and of rules that do not exist")
+	T.eq(mem.last["t.old.0001"], nil, "and of rules that do not exist, after DORMANT_LAST_MAX")
 	T.eq(mem.recent.battle[1], "battle.gen.02", "the recent window stays"); T.eq(mem.lastTone.battle, "epic", "the last register too")
 	cooled.cooldown = nil
 end)

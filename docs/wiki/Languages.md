@@ -11,6 +11,7 @@ Azeroth Unspoken speaks **English** and **Italian**. Every line exists in both l
 - **Command names are always English**, in both languages (see below).
 - The setting is shared by all characters on your account.
 - Phrase packs can add more languages. A new language appears in the list as soon as its pack is installed.
+- Only the language you chose is read into memory. The download contains both, and you do not need to delete the other one.
 
 ## How to change it
 
@@ -24,7 +25,17 @@ Short form: `/au lang`. With no code, `/au language` lists the available languag
 
 > available languages: en = English, it = Italiano. Usage: /au language <code>
 
-The change is immediate: the next line appears in the new language.
+### After a change: reload the interface
+
+The windows, buttons and messages switch at once. **The lines need a reload of the interface.** To save memory, the addon reads the lines of the chosen language only, from its own folder (`AzerothUnspoken_enUS` or `AzerothUnspoken_itIT`), and the other language is never loaded. When you change language:
+
+- the addon explains it in the chat and shows a box with a **Reload now** button (and a **Later** button);
+- the settings panel shows the same **Reload now** button until you reload;
+- you can also type `/reload` whenever you like.
+
+Until you reload, the lines keep coming in the previous language. Nothing reloads without your click.
+
+If the folder of the chosen language is missing, the addon says so once in the chat and keeps the lines in English (see [[Troubleshooting]]).
 
 ## Commands are always in English
 

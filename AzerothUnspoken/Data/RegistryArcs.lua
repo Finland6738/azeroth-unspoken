@@ -1,5 +1,5 @@
 -- Le battute degli archi narrativi (step S9): regole degli eventi arc_open, arc_step e arc_resolve, una per intenzione.
--- Solo le regole; i testi stanno in Data/itIT/Arcs.lua e Data/enUS/Arcs.lua.
+-- Solo le regole; i testi stanno in AzerothUnspoken_itIT/Arcs.lua e AzerothUnspoken_enUS/Arcs.lua.
 --
 -- Come funzionano:
 --   - sono pronunciate dal Systems/StoryArcs.lua quando un passo scatta, dal Narrative Director (priorità «evento

@@ -1,8 +1,11 @@
 # Azeroth Unspoken: phrase pack format (schema v2)
 
 The engine (`Core\`, `Engine\`, `Systems\`, `Integration\`, `UI\`) contains no texts.
-All phrases live in packs: the base ones in `Data\`, additional ones in separate addons
-(see the `AzerothUnspoken_Example` folder). Everything works offline, inside the addon's files.
+All phrases live in packs: the base rules in `Data\`, their texts in one folder per language
+(`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`), the lines bound to one continent in the regional folders, and
+additional packs in separate addons (see the `AzerothUnspoken_Example` folder). Everything works offline, inside the
+addon's files. How the language and regional folders are loaded is described in
+[Language packs and regional packs](#language-packs-and-regional-packs-loaded-on-demand).
 
 Schema v2 (GDD §9) separates **rules** from **texts**:
 
@@ -59,7 +62,7 @@ Besides `id`, `name`, `languages`, `registry` and `texts`, a pack can have `even
 conditions). They are all optional and described below.
 
 Texts can also live in separate files, one per language, as the base database does
-(`Data\Registry*.lua` for the rules, `Data\itIT\*.lua` and `Data\enUS\*.lua` for the texts):
+(`Data\Registry*.lua` for the rules, the folders `AzerothUnspoken_itIT\` and `AzerothUnspoken_enUS\` for the texts):
 
 <!-- test -->
 ```lua
@@ -801,6 +804,74 @@ AzerothUnspoken:RegisterPack({
 - Missing interface texts fall back to English (the base language of the addon). See `Data\enUS\Interface.lua` for all the keys. Command names are never translated: only the descriptions and messages are, so a language pack adds `help_*` descriptions and messages, not command words.
 - A language registered by a pack stays the one chosen by the user from one session to the next.
 - The old name `AzerothUnspoken:AddTranslations(language, map)` and the pack field `translations` still work.
+
+## Language packs and regional packs (loaded on demand)
+
+The download is one addon made of several folders (#85, #101). The base addon loads **only the language folder of
+the language chosen by the user**, and the folders of a **region** (a continent) only while the character is there,
+outside combat. The user never chooses a folder. The same mechanism is open to external packs: a pack says what it
+holds in its `.toc`, and the base addon finds it.
+
+| `.toc` field | Meaning |
+|---|---|
+| `## LoadOnDemand: 1` | the client does not load the folder at login; Azeroth Unspoken does, when needed |
+| `## X-AzerothUnspoken-Language: enUS` | the folder holds phrase texts in that language (`enUS`, `itIT`, `deDE`...) |
+| `## X-AzerothUnspoken-Region: kalimdor` | the folder belongs to that region: the continent token of `place.continent` (`kalimdor`, `eastern`) |
+
+A **language pack** (language, no region) is a list of `AddTexts` files, like `AzerothUnspoken_enUS`:
+
+```
+## Interface: 16001
+## Title: Azeroth Unspoken - English phrases
+## Dependencies: AzerothUnspoken
+## LoadOnDemand: 1
+## X-AzerothUnspoken-Language: enUS
+
+Combat.lua
+```
+
+Its files start with `local NS = AzerothUnspoken` (a LoadOnDemand addon gets its own `...`, not the addon's) and then
+call `NS:AddTexts("enUS", { ... }, "base_combat")` as before. Only the folder of the chosen language is loaded; if it
+is missing, the base addon says so and uses English. A pack that is not LoadOnDemand (no `LoadOnDemand` line, like the
+example pack) is loaded by the client at login and keeps working as it always did, with every language inside.
+
+A **regional pack** is a folder of rules (region, no language) and one folder of texts per language (region and
+language). The files do not register their tables directly: they register **builders**, functions that return them.
+The base addon runs them when the character enters the region, drops the rules when the character leaves it, and runs
+them again on the way back (WoW cannot unload an addon, so the folder itself stays loaded until `/reload`):
+
+<!-- test -->
+```lua
+-- AzerothUnspoken_Nani_Kalimdor/Rules.lua (## X-AzerothUnspoken-Region: kalimdor)
+AzerothUnspoken:RegisterRegionalPack("kalimdor", function()
+    return {
+        id = "nani_kalimdor",
+        languages = { "itIT", "enUS" },
+        registry = {
+            ["nanir.zone.01"] = { event = "zone", speaker = "inner", styles = { "intimate" }, conditions = { zone = "Durotar" } },
+        },
+    }
+end)
+-- AzerothUnspoken_Nani_Kalimdor_enUS/Texts.lua (## X-AzerothUnspoken-Region: kalimdor and Language: enUS)
+AzerothUnspoken:RegisterRegionalTexts("kalimdor", "enUS", "nani_kalimdor", function()
+    return { ["nanir.zone.01"] = { "Red dust, and not one stone that remembers a dwarf." } }
+end)
+-- AzerothUnspoken_Nani_Kalimdor_itIT/Texts.lua (## X-AzerothUnspoken-Region: kalimdor and Language: itIT)
+AzerothUnspoken:RegisterRegionalTexts("kalimdor", "itIT", "nani_kalimdor", function()
+    return { ["nanir.zone.01"] = { "Polvere rossa, e nemmeno una pietra che ricordi un nano." } }
+end)
+```
+
+- `RegisterRegionalPack(region, builder)`: the builder returns a v2 pack (`id`, `registry`, optional `languages`,
+  `frames`, `vocab`); its `id` must be unique. `RegisterRegionalTexts(region, language, packId, builder)`: the builder
+  returns `{ [id] = variants }`, like `AddTexts`; `packId` is the pack of the rules (the texts then cost the least memory).
+- Put in a regional pack only what is bound to the region: rules with `zone`, `subzone` or `place` conditions of that
+  continent. Generic lines stay in a language pack or in an ordinary pack, available everywhere. Races, classes,
+  weather and situations are conditions, never a pack of their own.
+- The ids keep their anti-repetition memory while the region is not loaded: at login an unknown id keeps its uses
+  (they fade as usual) and its last use for at most 30 days.
+- A missing regional folder is not an error: the lines that hold everywhere are used. `/au packs` lists every folder
+  with its state; `/au validate` checks the packs and the languages that are loaded now.
 
 ## Previous format (converted on load)
 

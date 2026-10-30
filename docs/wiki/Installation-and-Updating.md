@@ -20,11 +20,16 @@ There are no packaged releases yet. To get the addon:
 
 1. Close the game, or stay on the character selection screen.
 2. Open your game folder and go to `<WoW>\_forever_\Interface\AddOns`. Here `<WoW>` stands for the folder where World of Warcraft is installed on your computer. If the `AddOns` folder does not exist, create it.
-3. From the unzipped download, copy the **`AzerothUnspoken`** folder into `AddOns`.
-4. Optional: also copy **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places), and **`AzerothUnspoken_Versi`**, the verses pack (inscriptions, songs and rhymes, see [[Literary Forms|Literary-Forms]]). See [[Phrase Packs|Phrase-Packs]].
-5. Start the game. On the character selection screen click **AddOns** and make sure **Azeroth Unspoken** is ticked.
+3. From the unzipped download, copy **every folder whose name starts with `AzerothUnspoken`** into `AddOns`. The addon is one download made of several folders, and it needs all of them:
+   - **`AzerothUnspoken`**: the addon itself;
+   - **`AzerothUnspoken_enUS`** and **`AzerothUnspoken_itIT`**: the lines in English and in Italian;
+   - **`AzerothUnspoken_Kalimdor`** and **`AzerothUnspoken_EasternKingdoms`**, each with its `_enUS` and `_itIT` folder: the lines that belong to one continent;
+   - **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places), and **`AzerothUnspoken_Versi`**, the verses pack (inscriptions, songs and rhymes, see [[Literary Forms|Literary-Forms]]). These two are optional. See [[Phrase Packs|Phrase-Packs]].
+4. Start the game. On the character selection screen click **AddOns** and make sure every **Azeroth Unspoken** entry is ticked. Most of them are marked *Load on demand*: that is expected (see below).
 
-You only need those folders. The other files and folders in the download are for developers: do not copy them into `AddOns`.
+You do not choose anything else. The addon reads **only the language you chose**, never the other one, and reads the lines of a continent **only while you are on it**. It does this by itself, when you log in and when you travel, and never during a fight. Races, classes, weather and situations are not separate folders: they are part of the lines.
+
+The other files and folders in the download are for developers: do not copy them into `AddOns`.
 
 After installation the folder should look like this:
 
@@ -33,9 +38,21 @@ After installation the folder should look like this:
     AzerothUnspoken\
         AzerothUnspoken.toc
         Core\  Data\  Engine\  Integration\  Systems\  UI\  ...
+    AzerothUnspoken_enUS\
+    AzerothUnspoken_itIT\
+    AzerothUnspoken_Kalimdor\
+    AzerothUnspoken_Kalimdor_enUS\
+    AzerothUnspoken_Kalimdor_itIT\
+    AzerothUnspoken_EasternKingdoms\
+    AzerothUnspoken_EasternKingdoms_enUS\
+    AzerothUnspoken_EasternKingdoms_itIT\
     AzerothUnspoken_Example\        (optional)
     AzerothUnspoken_Versi\          (optional)
 ```
+
+### "Load on demand" in the AddOns list
+
+In the game's AddOns list, the language and continent folders are marked *Load on demand*. It means the game does not read them at login: Azeroth Unspoken asks for the one it needs, when it needs it. Leave them ticked. If one is missing or unticked, the addon says so in the chat and carries on with what it has (see [[Troubleshooting]]).
 
 > **Tip.** A common mistake is a folder nested one level too deep, such as `AddOns\azeroth-unspoken-main\AzerothUnspoken`. The game only sees folders that sit directly inside `AddOns`.
 
@@ -53,7 +70,7 @@ Type `/au debug` to see a short diagnostic report: the addon version, your clien
 
 1. Close the game.
 2. Download the new version as above.
-3. Delete the old `AzerothUnspoken` folder from `AddOns` and copy the new one in its place. Do the same for any phrase pack you use.
+3. Delete **every** old `AzerothUnspoken` folder from `AddOns` (the addon, the language folders, the continent folders and any phrase pack you use) and copy the new ones in their place. A new version can add folders: copy all the folders whose name starts with `AzerothUnspoken`.
 
 Your settings, journal, relationships and stories are **not** stored in the addon folder, so replacing the folder keeps them. They live in the game's saved-data folder (see [[Privacy and Data|Privacy-and-Data]]).
 
@@ -61,7 +78,7 @@ Your settings, journal, relationships and stories are **not** stored in the addo
 
 ## Uninstall
 
-1. Delete the `AzerothUnspoken` folder (and `AzerothUnspoken_Example` and `AzerothUnspoken_Versi`, if you installed them) from `AddOns`.
+1. Delete every folder whose name starts with `AzerothUnspoken` from `AddOns`.
 2. If you also want to remove your saved data, delete the files `AzerothUnspokenDB.lua` and `AzerothUnspokenCharacterDB.lua` from the saved-data folders described in [[Privacy and Data|Privacy-and-Data]].
 
 ## What you will see

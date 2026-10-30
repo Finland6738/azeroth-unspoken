@@ -96,6 +96,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Core/Diagnostics.lua`** | `Guard` (isolated execution with `xpcall`), the error log (at most 30, grouped), the `/au debug` report, a matrix per group. |
 | **`Core/Profiler.lua`** | `/au prof` (R0, #81): wraps `Engine:PickEntry` and `NS:BuildContext` once at start-up and times them with `debugprofilestop` (the last 512 samples per measure, for p50/p95/max); reads the addon memory through `UpdateAddOnMemoryUsage`/`GetAddOnMemoryUsage` (a sample 10 s after login and one per `/au prof`, 24 kept); keeps the **Director counters of the whole session**, which `Director` feeds through `Profiler:Outcome` for every resolved candidate (spoken, and each silence reason: `chance`, `no_phrase`, `outranked`, `paused`, `module:*`, `cooldown:*`, `budget:*`...), per event, per category and per hour of the session. Only numbers and fixed identifiers are kept (a key with any other character, or beyond 64 distinct keys, is counted as `other`): never the text of a line or a name (ADR 0017). Nothing is saved. The report is plain English text with no colour codes, and `/au prof copy` shows it in the export box. `/au debug` shows one summary line. |
 | **`Core/Probe.lua`** | `/au probe` (R0, #82): checks through Compat the APIs of the vision features (weather, day and night, `C_AddOns.LoadAddOn`, `UnitPosition`, area POIs, `C_QuestLog`, `C_Reputation`, `UnitReaction`, `UnitOnTaxi`, resting, `C_Secrets`, the restriction states) and prints `AVAILABLE`/`MISSING`/`RESTRICTED` with a sample. The first run registers listeners for 14 events for the session (`EVENT_PROBES`: weather, `DIEL_CYCLE_CHANGED`, resting, the zone events, exploration, area POIs, quests, reputation, taxi) and counts them with the payload and what the API says at that moment. It shows only numbers and flags: text returned by the client appears as its length, and coordinates, names and GUIDs never. A probe that fails does not stop the report. Nothing is saved. |
+| **`Core/Packs.lua`** | language and regional packs (#85, #101, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)): the catalog of the folders loaded on demand (built-in names, plus installed addons whose `.toc` declares `X-AzerothUnspoken-Language` or `X-AzerothUnspoken-Region`); at start-up it loads with `C_AddOns.LoadAddOn` (through Compat) **only the language folder of the chosen language**, with English as the fallback and a message once per problem; `NS:TextLang()` is the language of the phrase texts (the interface follows `NS:Lang()` at once, the phrases after `/reload`, offered with a button). On `WORLD_ENTER`/`ZONE_ENTER` it follows the continent: it drops the regions left (`Engine:DropPack`) and enters the new one (rules folder and texts folder of the phrase language, then the builders registered with `RegisterRegionalPack` and `RegisterRegionalTexts`). In combat every step waits for `COMBAT_END`. `/au packs` lists the folders and their state. |
 | **`Core/Config.lua`** | defaults, `Merge`, `Validate`, migrations by `schemaVersion`, `Get`/`Set` by path, module presets, Chat Gateway modes and channels. Sets `NS.db` and `NS.cdb`. |
 | **`Core/EventBus.lua`** | WoW sources → normalized types; envelopes; deduplication; anti-cascade queue; `Publish`, `Subscribe`, `Recent`. |
 | **`Core/ContextResolver.lua`** | `NS:BuildContext(extra)`: builds the context on which conditions are evaluated (character, place, time, group, instance, target, spell; `ctx.place` before memory, `ctx.other` after relationships), classifies spells, registers the zones and keywords of the packs. |
@@ -132,8 +133,10 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Data/<language>/Interface.lua`** | interface texts (`itIT`, `enUS`). |
 | **`Data/Relationships.lua`** | axes, labels, disposition, register and increments of the NPCs of the relationships, in IT and EN (data, not code). |
 | **`Data/Places.lua`**, **`Data/NPCs.lua`** | tags and themes of zones, subzones, capitals, dungeons, raids and battlegrounds (English client name, uiMapIDs not yet verified); curated registry of NPCs by `npcID` and weak class tendencies (S6c). |
-| **`Data/Dialogues.lua`**, **`Data/Arcs.lua`** | the structure of the ambient dialogues (scripts by archetype: nodes and replies) and of the story arcs (states, steps, choices); the lines are engine rules (`Data/RegistryDialogues.lua`, `Data/RegistryArcs.lua`) and the texts live in `Data/<language>/`. |
-| **`Data/*.lua`** | base phrase packs (schema v2, 14 packs, 1,005 intentions and 2,109 variants per language): `Vocabulary`, `Frames`, the `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` rules and the per-language texts in `Data/itIT/` and `Data/enUS/`. |
+| **`Data/Dialogues.lua`**, **`Data/Arcs.lua`** | the structure of the ambient dialogues (scripts by archetype: nodes and replies) and of the story arcs (states, steps, choices); the lines are engine rules (`Data/RegistryDialogues.lua`, `Data/RegistryArcs.lua`) and the texts live in the language packs (`AzerothUnspoken_<language>/`). |
+| **`Data/*.lua`** | base phrase packs (schema v2, 14 packs): `Vocabulary`, `Frames` and the `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` rules; `Data/itIT/` and `Data/enUS/` keep only the **interface strings** of each language (`Interface.lua`, `*UI.lua`). |
+| **`AzerothUnspoken_enUS/`**, **`AzerothUnspoken_itIT/`** | language packs (LoadOnDemand, `## X-AzerothUnspoken-Language`): the phrase texts of the base packs in one language (`Combat.lua` ... `Arcs.lua`, the former `Data/<language>/` files). `Core/Packs.lua` loads only the chosen one. |
+| **`AzerothUnspoken_Kalimdor/`**, **`AzerothUnspoken_EasternKingdoms/`** and their `_enUS`/`_itIT` folders | regional packs (LoadOnDemand, `## X-AzerothUnspoken-Region`): the rules of the lines bound to a zone of the continent (`kalimdor_exploration`, 11 rules; `eastern_exploration`, 6) and their texts per language, as builders that `Core/Packs.lua` runs when the character enters the continent and again after a return. 1,009 intentions in all with the base packs. |
 | **`Bindings.xml`** | four key bindings: `AZEROTHUNSPOKEN_SPEAK` (confirm), `AZEROTHUNSPOKEN_REROLL` (another line), `AZEROTHUNSPOKEN_PAUSE` (immediate pause), `AZEROTHUNSPOKEN_NPC` (ambient dialogue). |
 | **`AzerothUnspoken_Example/`** | example pack, a separate addon with `## Dependencies: AzerothUnspoken`. |
 | **`AzerothUnspoken_Versi/`** | verses pack (step L0, issue #115): 15 literary pieces in English and Italian (inscriptions, remembered verses, inn rhymes, road songs, sayings, a hymn, a lament), private voices only, and the manual event `lore_test`. A separate addon on the same API: no engine change. |
@@ -534,6 +537,35 @@ flowchart LR
 - **Chat content is never saved**, nor the lines of the dialogues, nor the arcs' texts (only the ids of the choices); of the relationships with players only those chosen by the user are saved. The `privacy.*` fields (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) already exist, switched off, for the future Social module.
 - The rest of the state (immediate pause `NS.paused`, pending proposal, history, error log, memory of the last send) lives in memory only.
 
+### Folders of the download and when they are loaded
+
+One download, several folders (decision D4 in #130, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)). The folders are the source of truth: content is written directly in them, and the exporter of #87 will write the same files.
+
+| Folder | Holds | Loaded |
+|---|---|---|
+| `AzerothUnspoken` | engine, every base rule, frames, vocabulary, places, structures, interface strings of every language | at login by the client |
+| `AzerothUnspoken_enUS`, `AzerothUnspoken_itIT` | the phrase texts of one language | at login, **only the chosen language**, by `Core/Packs.lua` (outside combat); English if the chosen one is missing |
+| `AzerothUnspoken_<Region>` | the rules of the lines bound to that region (a continent: `kalimdor`, `eastern`) | when the character enters the region, outside combat |
+| `AzerothUnspoken_<Region>_<language>` | their texts in one language | with the region, only for the phrase language |
+| `AzerothUnspoken_Example`, `AzerothUnspoken_Versi`, other packs | their own content | by the client at login (not LoadOnDemand), unless their `.toc` declares a language or a region |
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant P as Core/Packs.lua
+    participant E as Engine
+    C->>P: ADDON_LOADED (base)
+    P->>C: LoadAddOn(AzerothUnspoken_<chosen language>)
+    C-->>E: AddTexts (texts of the base rules)
+    C->>P: WORLD_ENTER / ZONE_ENTER (continent changed, out of combat)
+    P->>E: DropPack(packs of the region left)
+    P->>C: LoadAddOn(region rules, region texts) (first visit only)
+    C-->>P: RegisterRegionalPack / RegisterRegionalTexts (builders)
+    P->>E: RegisterPack + AddTexts (builders run)
+```
+
+A loaded folder stays loaded until `/reload`: what a region left keeps in memory is the code of its builders (about a third of its built size, `Tests/bench_packs.py`). At login `Engine:DecayMemory` does not know the ids of a region not built yet: their uses decay as usual and their last use is kept at most `Engine.DORMANT_LAST_MAX` (30 days).
+
 ## 7. Extension points
 
 ### For phrase pack authors (stable)
@@ -599,7 +631,8 @@ From the [roadmap](../ROADMAP.md). The current `main` has milestones M0–M3: fo
 
 ## 9. Known limits
 
-- **Scale (R1)**: at 50,000 synthetic entries the offline projection (`Tests/bench_scale.py`, lupa) gives 4.1 ms per pick on average (p95 14 ms) and 95 MB of memory with two languages (76 MB with one): the targets of R1 (5 ms, 40 MB) are met only for the mean pick time. The targets are hypotheses until the in-game budget is decided (D3 in #130); see [ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md).
+- **Scale (R1)**: at 50,000 synthetic entries the offline projection (`Tests/bench_scale.py`, lupa) gives 4.1 ms per pick on average (p95 14 ms) and 94 MB of memory with two languages, 76 MB with only the chosen language loaded (`--packs lazy --langs enUS`, #85): the targets of R1 (5 ms, 40 MB) are met only for the mean pick time. The targets are hypotheses until the in-game budget is decided (D3 in #130); see [ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md) and #138.
+- **Language and regional packs (#85, #101)**: `C_AddOns.LoadAddOn`, `IsAddOnLoaded`, `GetAddOnMetadata` and the change of continent have not been tried in the real client. A folder loaded on demand stays loaded until `/reload` (WoW cannot unload an addon): a region left keeps its builders in memory, about a third of its built size (`Tests/bench_packs.py`, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)). Changing the phrase language needs a reload.
 - **Nothing has been tested in the real client.** Everything is verified only with the simulated client; the G1 test is postponed ([checklist](G1_checklist.md)).
 - In the settings the `personal`, `world`, `memory`, `relations`, `npc`, `storyArcs`, `publicChat` and `totalRP3` modules take effect; social and audio are still placeholders.
 - The per-event probabilities and pauses (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) come from the prototype; the Narrative Director's numbers (budget, category pauses, style bonuses and penalties) are hypotheses to tune with in-game tests ([G1](G1_checklist.md), steps 27–31).

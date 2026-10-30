@@ -1,6 +1,6 @@
 -- Registro delle regole di base: combattimento (inizio, minaccia, vittoria, ferite gravi).
 -- Solo le regole (evento, voce, registro, profondità, peso, condizioni). I testi, con le loro varianti,
--- stanno in Data/itIT/Combat.lua e Data/enUS/Combat.lua.
+-- stanno in AzerothUnspoken_itIT/Combat.lua e AzerothUnspoken_enUS/Combat.lua.
 local ADDON, NS = ...
 
 NS:RegisterPack({

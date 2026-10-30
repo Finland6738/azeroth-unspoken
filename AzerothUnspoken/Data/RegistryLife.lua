@@ -1,6 +1,6 @@
 -- Registro delle regole di base: morte, ritorno in vita e livelli.
 -- Solo le regole (evento, voce, registro, profondità, peso, condizioni). I testi, con le loro varianti,
--- stanno in Data/itIT/Life.lua e Data/enUS/Life.lua.
+-- stanno in AzerothUnspoken_itIT/Life.lua e AzerothUnspoken_enUS/Life.lua.
 local ADDON, NS = ...
 
 NS:RegisterPack({
