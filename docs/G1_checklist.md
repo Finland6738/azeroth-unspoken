@@ -494,6 +494,25 @@ Provato fuori dal gioco. Restano da provare nel client vero:
 
 ---
 
+## L0: forme letterarie, pacchetto dei versi (aggiunto dalle issue #115 e #116)
+
+Provato fuori dal gioco. Serve la cartella `AzerothUnspoken_Versi` in `AddOns` (la installa `python tools/install_addon.py`). Restano da provare nel client vero:
+
+104. **Il pacchetto c'è.** `/au packs`, poi `/au validate versi`.
+    - **Cosa aspettarti:** la riga `Verses: literary forms (prototype) (versi) - on`; il validatore dice 30 frasi (15 pezzi e i loro gemelli di prova), 0 errori, 0 avvisi.
+105. **I pezzi a mano, in inglese e in italiano.** Con `/au mode confirm` scrivi `/au event lore_test` una decina di volte; poi `/au language it` e ancora qualche volta (alla fine torna alla tua lingua).
+    - **Cosa aspettarti:** ogni volta un pezzo nel narratore, con la voce interiore o dell'NPC; **mai** una proposta per la chat e nulla in chat, anche in modalità `confirm`.
+    - **Cosa riportare:** il **giudizio A/B** che decide la issue #117: i versi su una riga con " / " si leggono bene, o servono gli a capo veri? Un pezzo tagliato, che esce dal riquadro, che si legge troppo in fretta, o che suona male (quale e perché).
+106. **Nel posto giusto.** Entra per la prima volta in una zona di rovine (Arathi Highlands, Desolace, Tanaris, Uldaman...) o in un luogo sacro (Moonglade, Light's Hope Chapel), con `/au chance zone 100`. Usa la pietra del ritorno con `/au chance travel 100`; scrivi `/au pray`.
+    - **Cosa aspettarti:** a volte un'iscrizione, una canzone di viaggio o l'inno (competono con le frasi di base: non sempre); mai in combattimento; lo stesso pezzo non torna prima di qualche giorno.
+    - **Cosa riportare:** il pezzo uscito e il momento; uno che stona col luogo.
+107. **Dal locandiere.** Apri il dialogo ambientale con un locandiere (vedi passi 75–83), scegli *siediti* e *notizie*.
+    - **Cosa aspettarti:** a volte la filastrocca della locanda, nella voce dell'NPC, nella finestra del dialogo; mai in chat.
+108. **Spegnere il pacchetto.** `/au pack versi off`, poi `/au event lore_test`; infine `/au pack versi on`.
+    - **Cosa aspettarti:** da spento nessun pezzo («nessuna frase»); da riacceso tornano.
+
+---
+
 ## R0: misure e prova delle API (aggiunto dalle issue #81 e #82)
 
 **A cosa serve.** Tutti i numeri sulla velocità e sulla memoria dell'addon sono stati misurati fuori dal gioco, e molte funzioni del client (meteo, giorno e notte, missioni, reputazione, sottozone...) risultano nell'elenco delle API ma **nessuno ha mai verificato che funzionino davvero**. Questa parte raccoglie i numeri veri e l'elenco delle API confermate: da lì si decidono il budget di memoria e di tempo (decisione D3) e quali funzioni usare (D5, D14).
@@ -630,6 +649,7 @@ Q5 fantasma ............. frase solo da vivo? ___  una volta sola? ___
 Q5 rapporto altrui ...... /au who mostra chi ti saluta? ___
 Q5 FrameXML ............. tooltip ___  pulsanti ___  scorrimento del narratore ___  pannello ___
 Step 0 lingua ........... nuova in inglese? ___  italiano già scelto resta? ___  comandi inglesi in IT ok? ___  suggerimento ok? ___
+L0 versi ............... /au validate versi ok? ___  lore_test in EN e IT? ___  nulla in chat? ___  A/B: una riga con " / " o a capo veri? ______  pezzo nel posto giusto? ___  locandiere? ___  pezzi che stonano ______
 R0 prima misura ......... memoria (KB) ______  PickEntry p50/p95 ______  BuildContext p50/p95 ______  debugprofilestop? ___
 R0 caricamento .......... con addon (s) ______  senza addon (s) ______
 R0 capitale / aperto .... capitale ______  sottozone: eventi ZONE_CHANGED? ___  POI (numero) ______

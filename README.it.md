@@ -70,7 +70,7 @@ Non ci sono ancora versioni pacchettizzate (release o pagine di distribuzione). 
 
 1. Scarica il repository (`Code` → `Download ZIP`, oppure `git clone https://github.com/Finland6738/azeroth-unspoken`).
 2. Copia la cartella `AzerothUnspoken` in `World of Warcraft\_forever_\Interface\AddOns\`.
-3. Facoltativo: copia anche `AzerothUnspoken_Example`, un pacchetto di frasi di esempio (una frase per la pesca e alcune legate a luoghi).
+3. Facoltativo: copia anche `AzerothUnspoken_Example`, un pacchetto di frasi di esempio (una frase per la pesca e alcune legate a luoghi), e `AzerothUnspoken_Versi`, un prototipo di forme letterarie: iscrizioni, versi ricordati, filastrocche da locanda, canzoni di viaggio, un inno e un lamento, solo nel tuo narratore privato.
 4. Alla schermata di selezione del personaggio apri **AddOn** e controlla che *Azeroth Unspoken* sia spuntato.
 
 Le cartelle `Tests`, `docs`, `archive` e il resto del repository non servono al gioco: non copiarli.
@@ -209,6 +209,7 @@ Il repository ha questa struttura:
 |---|---|
 | `AzerothUnspoken/` | l'addon (`Core/`, `Engine/`, `Systems/`, `Integration/`, `UI/`, `Data/`) |
 | `AzerothUnspoken_Example/` | pacchetto di frasi di esempio |
+| `AzerothUnspoken_Versi/` | pacchetto dei versi: prototipo di forme letterarie (iscrizioni, canzoni, filastrocche) |
 | `Tests/` | test fuori dal gioco |
 | `docs/` | specifica (GDD), architettura, ADR, riferimenti tecnici, checklist di prova |
 | `archive/VociDiAzeroth*/` | prototipo originale, solo come riferimento |

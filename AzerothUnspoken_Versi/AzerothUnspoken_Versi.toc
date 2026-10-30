@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: Azeroth Unspoken - Verses
+## Notes: Prototype pack of literary forms: inscriptions, remembered verses, inn rhymes, road songs, a hymn and a lament. Private narrator only.
+## Author: Finland6738
+## Version: 0.1.0
+## Dependencies: AzerothUnspoken
+## X-Category: Roleplay
+
+Versi.lua

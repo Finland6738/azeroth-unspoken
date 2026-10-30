@@ -8,7 +8,7 @@ vale una eccezione motivata (vedi EXCEPTIONS). Il dump è consultazione: non se 
 Uso:  python -I -X utf8 Tests/check_api.py [--api PERCORSO] [--list] [cartella ...]
   --api    percorso di api.json (altrimenti la variabile AU_API_JSON, altrimenti ../WoW-Addons/docs/api.json)
   --list   stampa anche tutto ciò che è stato trovato e va bene
-  cartella cartelle da controllare (predefinite: AzerothUnspoken e AzerothUnspoken_Example)
+  cartella cartelle da controllare (predefinite: AzerothUnspoken, AzerothUnspoken_Example e AzerothUnspoken_Versi)
 
 Che cosa controlla:
   1. funzioni chiamate (`Nome(`, `C_Spazio.Funzione(`) e passate per nome a SafeCall/Query/Resolve;
@@ -521,7 +521,8 @@ def main(argv):
         else:
             folders.append(os.path.abspath(a))
     if not folders:
-        folders = [os.path.join(ROOT, "AzerothUnspoken"), os.path.join(ROOT, "AzerothUnspoken_Example")]
+        folders = [os.path.join(ROOT, "AzerothUnspoken"), os.path.join(ROOT, "AzerothUnspoken_Example"),
+                   os.path.join(ROOT, "AzerothUnspoken_Versi")]
     folders = [f for f in folders if os.path.isdir(f)]
 
     if not os.path.isfile(api):
