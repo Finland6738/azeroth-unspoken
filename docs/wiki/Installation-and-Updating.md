@@ -21,7 +21,7 @@ There are no packaged releases yet. To get the addon:
 1. Close the game, or stay on the character selection screen.
 2. Open your game folder and go to `<WoW>\_forever_\Interface\AddOns`. Here `<WoW>` stands for the folder where World of Warcraft is installed on your computer. If the `AddOns` folder does not exist, create it.
 3. From the unzipped download, copy the **`AzerothUnspoken`** folder into `AddOns`.
-4. Optional: also copy **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places). See [[Phrase Packs|Phrase-Packs]].
+4. Optional: also copy **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places), and **`AzerothUnspoken_Versi`**, the verses pack (inscriptions, songs and rhymes, see [[Literary Forms|Literary-Forms]]). See [[Phrase Packs|Phrase-Packs]].
 5. Start the game. On the character selection screen click **AddOns** and make sure **Azeroth Unspoken** is ticked.
 
 You only need those folders. The other files and folders in the download are for developers: do not copy them into `AddOns`.
@@ -34,6 +34,7 @@ After installation the folder should look like this:
         AzerothUnspoken.toc
         Core\  Data\  Engine\  Integration\  Systems\  UI\  ...
     AzerothUnspoken_Example\        (optional)
+    AzerothUnspoken_Versi\          (optional)
 ```
 
 > **Tip.** A common mistake is a folder nested one level too deep, such as `AddOns\azeroth-unspoken-main\AzerothUnspoken`. The game only sees folders that sit directly inside `AddOns`.
@@ -60,7 +61,7 @@ Your settings, journal, relationships and stories are **not** stored in the addo
 
 ## Uninstall
 
-1. Delete the `AzerothUnspoken` folder (and `AzerothUnspoken_Example`, if you installed it) from `AddOns`.
+1. Delete the `AzerothUnspoken` folder (and `AzerothUnspoken_Example` and `AzerothUnspoken_Versi`, if you installed them) from `AddOns`.
 2. If you also want to remove your saved data, delete the files `AzerothUnspokenDB.lua` and `AzerothUnspokenCharacterDB.lua` from the saved-data folders described in [[Privacy and Data|Privacy-and-Data]].
 
 ## What you will see

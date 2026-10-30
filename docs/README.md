@@ -25,6 +25,7 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 | [AzerothUnspoken/PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md) | pack format: phrases, events, conditions, placeholders, vocabulary, frames, languages |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | how to write good phrases (quality rules), packs, tests, style, PRs, and the language policy |
 | `AzerothUnspoken_Example/` | example pack to copy |
+| `AzerothUnspoken_Versi/` | prototype pack of literary forms (inscriptions, songs, rhymes); its editorial rules are in [CONTRIBUTING.md](../CONTRIBUTING.md#literary-forms) |
 
 ## For developers
 

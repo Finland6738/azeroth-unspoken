@@ -134,6 +134,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Data/*.lua`** | base phrase packs (schema v2, 14 packs, 1,005 intentions and 2,109 variants per language): `Vocabulary`, `Frames`, the `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` rules and the per-language texts in `Data/itIT/` and `Data/enUS/`. |
 | **`Bindings.xml`** | four key bindings: `AZEROTHUNSPOKEN_SPEAK` (confirm), `AZEROTHUNSPOKEN_REROLL` (another line), `AZEROTHUNSPOKEN_PAUSE` (immediate pause), `AZEROTHUNSPOKEN_NPC` (ambient dialogue). |
 | **`AzerothUnspoken_Example/`** | example pack, a separate addon with `## Dependencies: AzerothUnspoken`. |
+| **`AzerothUnspoken_Versi/`** | verses pack (step L0, issue #115): 15 literary pieces in English and Italian (inscriptions, remembered verses, inn rhymes, road songs, sayings, a hymn, a lament), private voices only, and the manual event `lore_test`. A separate addon on the same API: no engine change. |
 | **`Tests/`** | offline tests (lupa) and a mock client ([ADR 0007](adr/0007-offline-tests-with-lupa-and-mock.md)). |
 
 Direction of dependencies: `Core` knows nothing about `Engine`, `Systems` or `UI`; `Engine` uses `Core` but knows nothing about the Gateway or the interface; `Integration` and `Systems` use `Core` and `Engine`; `UI` uses everything. A module is found with `NS.ModuleName` (for example `NS.Gateway`, `NS.Director`, `NS.Narrator`).

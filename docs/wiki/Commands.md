@@ -106,7 +106,7 @@ Anything you write after the command is used as the target, for example `/au gre
 | Command | What it does |
 |---|---|
 | `/au cast <spell>` | A line for a spell: a heal, a resurrection, a travel spell, a buff or an attack, depending on the spell. Example macro: `/cast Flash Heal` then `/au cast Flash Heal`. |
-| `/au event <name>` | Asks for a line for any event by name, including events added by phrase packs. Example: `/au event zone`. |
+| `/au event <name>` | Asks for a line for any event by name, including events added by phrase packs. Example: `/au event zone`. With the verses pack, `/au event lore_test` shows one of its pieces (see [[Literary Forms|Literary-Forms]]). |
 | `/au test [event]` | Prints a preview of a spoken line and an emote for the event, **in your own chat window only**. Sends nothing. With no event, uses `battle`. |
 
 ## Your character
