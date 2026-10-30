@@ -627,6 +627,40 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
 
 ---
 
+## R3b: il mondo che il client racconta (aggiunto dalle issue #92, #93, #94, #95 e #121)
+
+**A cosa serve.** Il narratore ora legge meteo, giorno e notte, sottozona, missioni, reputazione, riposo e volo. **Nessuna di queste API è mai stata provata nel client**: l'addon le legge sempre con una protezione e, se non rispondono, tace su quell'argomento. Questa prova dice se rispondono davvero, e con quali valori. Prima esegui `/au probe` (sezione R0) e tieni il risultato: i valori veri del meteo, `DIEL_CYCLE_CHANGED`, le missioni, la reputazione e il volo sono lì. La riga **World** di `/au debug` mostra ciò che l'addon legge adesso (meteo, giorno, riposo, missioni, volo, punti di riferimento).
+
+- **R3b.1 · Il meteo.** Con `/au probe` sotto la pioggia, sotto la neve e a cielo sereno (per esempio Dun Morogh o Durotar, secondo il tempo che trovi) guarda `C_Weather.GetCurrentWeather` ed `Enum.WeatherType`. Poi `/au debug` e leggi **World: weather ...**.
+    - **Cosa aspettarti:** `rain` sotto la pioggia, `snow` sotto la neve, `clear` a cielo sereno. Se vedi `unknown` con il tempo visibilmente cambiato, i nomi dei valori di `Enum.WeatherType` non sono quelli previsti: riportali.
+    - **Cosa riportare:** il valore di `type` e di `intensity` nei tre casi, i nomi di `Enum.WeatherType`, e che cosa mostra `/au debug`.
+- **R3b.2 · Il meteo cambia.** `/au chance weather_change 100`. Resta in un posto aperto finché il tempo cambia (o cambia zona con un altro meteo).
+    - **Cosa aspettarti:** dopo qualche secondo una frase del narratore sul nuovo tempo (pioggia che comincia, neve, cielo che si schiarisce), **non** nei primi secondi dopo una schermata di caricamento (parla la zona, e la frase di zona nomina il tempo che trovi) e mai in combattimento. Un temporale che va e viene in pochi secondi non fa frasi.
+    - **Cosa riportare:** `WEATHER_CHANGED` arriva? quante volte? la frase, e se nomina un tempo diverso da quello che vedi.
+- **R3b.3 · Giorno e notte.** `/au chance dawn 100` e `/au chance dusk 100`. Aspetta un'alba e un tramonto (o guarda l'ora con `/au probe`).
+    - **Cosa aspettarti:** una frase all'alba e una al tramonto, **una sola** per passaggio. In `/au probe`, `C_DateAndTime.IsDayTime` cambia nello stesso momento di `DIEL_CYCLE_CHANGED`.
+    - **Cosa riportare:** a che ora del gioco arriva `DIEL_CYCLE_CHANGED` all'alba e al tramonto, e se `IsDayTime` cambia insieme. Le ore di alba e tramonto dell'addon (due ore dopo e prima del passaggio) vanno bene o sono troppe?
+- **R3b.4 · Le sottozone.** `/au chance subzone_enter 100` e `/au chance landmark 100`. Cammina in un villaggio (per esempio Goldshire e la locanda Lion's Pride Inn, o Razor Hill) e vai avanti e indietro lungo un confine.
+    - **Cosa aspettarti:** una frase entrando in una sottozona nuova; nessuna frase se esci e rientri nella stessa entro dieci minuti; **una sola** frase se il confine «sfarfalla». Per un luogo con un nome noto, la frase parla del luogo (locanda, villaggio, cimitero...) e mostra il nome che dà il client.
+    - **Cosa riportare:** `ZONE_CHANGED` e `ZONE_CHANGED_INDOORS` arrivano? con `/au place` confronta il nome della sottozona con `Data/Landmarks.lua`: elenca i nomi che **non** coincidono. Controlla anche `/au packs`: i caricamenti di pacchetti **non** devono salire cambiando sottozona (solo il continente li fa salire).
+- **R3b.5 · Le missioni.** Accetta una missione, completa un obiettivo, completala del tutto, consegnala. Poi abbandonane una e riprendila tre volte, e consegnala.
+    - **Cosa aspettarti:** una frase quando un obiettivo si completa e quando la missione è pronta (non a ogni uccisione); una frase alla consegna; dopo i tentativi ripetuti (tre accettazioni nella stessa sessione), una frase più sollevata. Nessun testo della missione in nessuna frase, e nessun dato di missione nei file salvati.
+    - **Cosa riportare:** gli argomenti di `QUEST_ACCEPTED` e `QUEST_TURNED_IN` (con `/au probe`), se `QUEST_LOG_UPDATE` arriva a raffica, e se le frasi compaiono al momento giusto.
+- **R3b.6 · La reputazione.** Guadagna reputazione fino a cambiare livello (per esempio da Neutrale ad Amichevole). Perdila, se puoi, fino a scendere.
+    - **Cosa aspettarti:** una frase al cambio di livello (e a quello di sola discesa); nessuna frase per i punti guadagnati dentro lo stesso livello. Nessun nome di fazione nella frase.
+    - **Cosa riportare:** `FactionData.reaction` per il livello (da 1 a 8? con `/au probe`), `UPDATE_FACTION` quanto spesso arriva, e le frasi.
+- **R3b.7 · La locanda.** `/au chance rest_enter 100`. Entra in una locanda (compare l'icona di riposo).
+    - **Cosa aspettarti:** una frase entrando; **nessuna** frase se accedi già dentro la locanda o dopo una schermata di caricamento in città. In una locanda la frase parla di un luogo al chiuso, in città di strade.
+    - **Cosa riportare:** `PLAYER_UPDATE_RESTING` arriva? quante volte? la frase, e se `IsIndoors` è vero nella locanda.
+- **R3b.8 · Il volo.** `/au chance journey 100`. Fai un volo (grifone, viverna...): parti, aspetta, arriva. Poi fatti spaventare o stordire da un mostro **fuori** da un volo.
+    - **Cosa aspettarti:** una frase alla partenza e una all'arrivo (più sollevata se il volo è stato lungo, due minuti o più); **nessuna** frase per la paura o lo stordimento. Un volo che attraversa più zone non finisce a metà strada.
+    - **Cosa riportare:** l'ordine degli eventi (`PLAYER_CONTROL_LOST`, `UnitOnTaxi`, `PLAYER_CONTROL_GAINED`) con `/au probe` e `/au debug` durante il volo, e se `UnitOnTaxi` è vero per tutto il volo.
+- **R3b.9 · Il silenzio.** In combattimento, con il narratore in pausa o a intensità 0, e con il modulo **Mondo** spento (pannello delle impostazioni).
+    - **Cosa aspettarti:** nessuna di queste frasi in combattimento; nessuna a intensità 0; con il modulo Mondo spento, nessuna frase di meteo, alba, tramonto, sottozona, luogo o volo (restano missioni, reputazione e riposo, che sono personali).
+    - **Cosa riportare:** qualsiasi frase che esce quando non dovrebbe.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -641,6 +675,13 @@ R4b incontri ............ gruppo ___  scambio ___  duello ___  invito ___  emote
 R4b riconoscimento ...... una frase per sessione? ___  privata? ___  rispecchia il sentimento? ___
 R4b sentimenti .......... nessuna frase calorosa con diffidenza/paura/rancore? ___  alleato ok? ___
 R4b dimentica/rimuovi ... due azioni distinte? ___  esporta ok? ___
+R3b meteo ............... Enum.WeatherType ______  type pioggia ___ neve ___ sereno ___  unknown? ___  WEATHER_CHANGED arriva? ___
+R3b giorno/notte ........ DIEL_CYCLE_CHANGED all'alba (ora) ______  al tramonto (ora) ______  IsDayTime insieme? ___
+R3b sottozone ........... ZONE_CHANGED ___  ZONE_CHANGED_INDOORS ___  nomi diversi in Landmarks ______  pacchetti caricati? (deve essere NO) ___
+R3b missioni ............ QUEST_ACCEPTED (argomenti) ______  QUEST_TURNED_IN ______  frasi nei momenti giusti? ___  molti tentativi? ___
+R3b reputazione ......... reaction 1-8? ___  una frase per cambio di livello? ___  UPDATE_FACTION a raffica? ___
+R3b locanda/volo ........ PLAYER_UPDATE_RESTING ___  rest_enter solo entrando? ___  volo: CONTROL_LOST/UnitOnTaxi/CONTROL_GAINED ______  paura = nessun volo? ___
+R3b silenzio ............ in combattimento nessuna? ___  modulo Mondo spento? ___
 SP-01 caricamento ....... (OK / NO / nota)   Client build: ______  Errori rossi: sì/no
 SP-01 wizard ............ (OK / NO / nota)
 SP-01 /au debug ......... (OK / NO / nota)   Capacità MISSING/RESTRICTED: ______

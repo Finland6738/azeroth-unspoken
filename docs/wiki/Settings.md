@@ -50,6 +50,15 @@ These are the chances before intensity is applied. Intensity 50 keeps them as th
 | `buff` | you cast a buff out of combat | 25% |
 | `travel` | you cast a travel spell | 60% |
 | `rezother` | you resurrect someone | 80% |
+| `weather_change` | the weather changes and stays changed | 60% |
+| `dawn`, `dusk` | the game passes from night to day, or from day to night | 50% |
+| `subzone_enter` | you enter a new subzone | 30% |
+| `landmark` | you enter a named place (an inn, a village, a graveyard...) | 50% |
+| `quest_progress` | a quest step is finished, or a quest is ready to hand in | 35% |
+| `quest_complete` | you hand in a quest | 75% |
+| `reputation_change` | your standing with a faction goes up or down | 70% |
+| `rest_enter` | you start resting (an inn, a city) | 55% |
+| `journey` | a flight starts or ends | 70% |
 
 Events added by phrase packs have their own default (30% if the pack sets none).
 
@@ -94,8 +103,8 @@ Modules are big switches for whole features. All are on by default, except Audio
 
 | Module | Default | What it controls |
 |---|---|---|
-| **Personal** | on | spontaneous lines about you: fights, low health, death, coming back, levels, spells |
-| **World** | on | spontaneous lines about the world: entering a zone, travelling |
+| **Personal** | on | spontaneous lines about you: fights, low health, death, coming back, levels, spells, quests, reputation, rest in an inn |
+| **World** | on | spontaneous lines about the world: entering a zone, travelling, the weather, dawn and dusk, subzones and named places, flights |
 | **NPC dialogues** | on | [[NPC ambient dialogues|NPC-Dialogues]] |
 | **Memory** | on | the [[journal and memories|Memory-and-Journal]] |
 | **Relationships** | on | [[relationships|Relationships]] with NPCs and players |

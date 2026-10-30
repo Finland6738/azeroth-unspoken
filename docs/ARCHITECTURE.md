@@ -117,6 +117,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Systems/Interlocutor.lua`** | the interlocutor ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.other` (game data, role, personality with the S5 traits, recent actions, relationship), sources in order (user > public TRP3 with consent > `Data/NPCs.lua` > role from reliable interactions > weak tendency > neutral), the `C` factor of `other.` tags, register by manner of speaking and role, the `npc_meet` and `other_action` events, the `/au who` command. |
 | **`Systems/NPCAlive.lua`** | NPC Alive ([ADR 0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)): ambient dialogues with an NPC. State machine `idle → offered → opened → choice → response → ended` with verified transitions, identity (a specific NPC from the curated registry or an archetype from the current interaction; never if uncertain or secret), scripts (`NS:RegisterDialogues`: nodes, replies, flags), lines from the engine rules, local effects (flag, relationship, memory), an automatic offer that expires, interruptions (combat, death, zone, another NPC, quest), the `AzerothUnspoken_NPCDialogue` key binding, the `/au talk` command. |
 | **`Systems/StoryArcs.lua`** | the story arcs ([ADR 0021](adr/0021-story-arcs-micro-stories-without-game-effects.md)): personal micro-stories, **not quests**, with no rewards and no effects on the game. States `LOCKED → DISCOVERED → REFLECTED → RESOLVED` (plus custom states), steps with an event (`zone`, `death`, `level`, `npc`, `flag`, `player`), RuleEngine conditions, waiting and player choice; at most 1–2 active arcs, suspend/skip/disable (also all of them); state in `cdb.arcs` with migration; lines from the Narrative Director (`arc_open`, `arc_step`, `arc_resolve`, one at a time, postponed if the moment is not good); closing with a permanent `story` memory. The `/au stories` command. |
+| **`Systems/World.lua`** | the world the client describes ([ADR 0028](adr/0028-world-variables-weather-day-subzones-quests-reputation-rest-and-flight.md)): `ctx.weather`, `ctx.isDay` and the calibrated `ctx.time`, `ctx.landmark`, `ctx.quest`, `ctx.repStanding`, `ctx.onFlight`, `ctx.journey`; its own sources (`WEATHER_CHANGED`, `DIEL_CYCLE_CHANGED`, `ZONE_CHANGED`, `PLAYER_UPDATE_RESTING`, `PLAYER_CONTROL_LOST`/`GAINED`, `QUEST_LOG_UPDATE`, `UPDATE_FACTION`) and the events `weather_change`, `dawn`, `dusk`, `subzone_enter`, `landmark`, `quest_progress`, `quest_complete`, `reputation_change`, `rest_enter`, `journey`, each debounced and offered to the Director; `NS:RegisterLandmarks`; session state only. |
 | **`Systems/Director.lua`** | the Narrative Director of spontaneous events: `Offer` (candidate), `Resolve` (at most one intervention per moment), `Evaluate` (the gate, S2's hook point), immediate pause, summary for `/au debug`. |
 | **`Systems/Triggers.lua`** | subscriber to the bus: turns normalized events into narrative events (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) and offers them to the Director; holds the probabilities and cooldowns specific to each event. |
 | **`UI/Widgets.lua`** | small shared interface components. |
@@ -132,6 +133,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Core/Keywords.lua`** | the registry of command keywords (`NS.Keywords.Register`): every table of words a command accepts (channels, depths, modes, reset targets, traits, axes...) is registered here, and a test fails if one is not English or if two commands collide. `NS.Keywords.OnOff` reads `on|off|yes|no|1|0`. |
 | **`Data/<language>/Interface.lua`** | interface texts (`itIT`, `enUS`). |
 | **`Data/Relationships.lua`** | axes, labels, disposition, register and increments of the NPCs of the relationships, in IT and EN (data, not code). |
+| **`Data/Landmarks.lua`** | named places inside subzones (`NS:RegisterLandmarks`): id, zone, subzone, tags and, where reliable, map coordinates and radius; validated at load and by `/au validate` (R3b). |
 | **`Data/Places.lua`**, **`Data/NPCs.lua`** | tags and themes of zones, subzones, capitals, dungeons, raids and battlegrounds (English client name, uiMapIDs not yet verified); curated registry of NPCs by `npcID` and weak class tendencies (S6c). |
 | **`Data/Dialogues.lua`**, **`Data/Arcs.lua`** | the structure of the ambient dialogues (scripts by archetype: nodes and replies) and of the story arcs (states, steps, choices); the lines are engine rules (`Data/RegistryDialogues.lua`, `Data/RegistryArcs.lua`) and the texts live in the language packs (`AzerothUnspoken_<language>/`). |
 | **`Data/*.lua`** | base phrase packs (schema v2, 14 packs): `Vocabulary`, `Frames` and the `Registry{Combat,Spells,Life,Exploration,Social,Classes,Soul,Memory,Relations,Context,Dialogues,Arcs}` rules; `Data/itIT/` and `Data/enUS/` keep only the **interface strings** of each language (`Interface.lua`, `*UI.lua`). |
@@ -477,6 +479,26 @@ flowchart LR
 - **Secrets**: with a secret identity `ctx.other = { secret = true }`; a secret place value means "I don't know".
 - **Events**: `npc_meet`, `other_action`, `encounter_end`, each with a guard in the engine.
 - **Commands**: `/au place` and `/au who` (`trp3 on|off` for consent to read other people's public Total RP 3 profile, and `trait <trait> <value>` to correct an interlocutor's trait by hand).
+
+### The world: weather, day, places, quests, reputation, rest and flight
+
+`Systems/World.lua` reads what the client says about the world and offers events to the Director ([ADR 0028](adr/0028-world-variables-weather-day-subzones-quests-reputation-rest-and-flight.md)).
+
+```mermaid
+flowchart LR
+    A["C_Weather, C_DateAndTime, UnitOnTaxi,<br/>C_QuestLog, C_Reputation, IsResting,<br/>C_Map.GetPlayerMapPosition"] --> K["Compat readings<br/>unknown = nil or 'unknown'"]
+    K --> C["ctx.weather, ctx.isDay + ctx.time,<br/>ctx.landmark, ctx.quest, ctx.repStanding,<br/>ctx.onFlight, ctx.journey"]
+    C --> R["Conditions weather, dayTime, landmark,<br/>questActive..., repStanding, onFlight, journey"]
+    E["WEATHER_CHANGED, DIEL_CYCLE_CHANGED, ZONE_CHANGED,<br/>PLAYER_UPDATE_RESTING, PLAYER_CONTROL_*,<br/>QUEST_*, UPDATE_FACTION"] --> S["World: settle (debounce),<br/>baseline, combat and loading-screen silence"]
+    S --> D["Director:Offer<br/>weather_change, dawn, dusk, subzone_enter, landmark,<br/>quest_progress, quest_complete, reputation_change,<br/>rest_enter, journey"]
+```
+
+- **Unknown is never a value.** A missing, restricted, secret or incoherent reading gives `"unknown"` (weather) or `nil`; a condition on it is false for `true` and for `false`, so the lines that name it are not chosen and everything else behaves as before.
+- **Debounce.** Each event waits for the state to stay (3 seconds for the weather, 2.5 for a subzone, 2 for rest, 1 for the quest log, 0.8 for a flight start); the first reading is a baseline, not a change; the world is silent in combat and for six seconds after a loading screen.
+- **Time.** `ctx.time` is night when the client says night; dawn and dusk are the transition hours, calibrated by the last day/night change of the session (fixed hours until then). Without `IsDayTime` the fixed thresholds are the fallback.
+- **Subzones never load packs.** Regional packs listen to `WORLD_ENTER` and `ZONE_ENTER` only; a landmark is a subzone with a name (`Data/Landmarks.lua`) and an optional position check.
+- **Privacy.** Quest ids and numbers, reputation standings: session only, never text, never saved.
+- **Director.** `quest_complete` and `reputation_change` have priority 2, the others are ordinary atmosphere; `weather_change`, `dawn`, `dusk`, `subzone_enter`, `landmark` and `journey` belong to the module `world`.
 
 ## 5. The Chat Gateway
 

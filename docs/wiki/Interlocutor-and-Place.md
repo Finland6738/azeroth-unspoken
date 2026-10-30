@@ -42,6 +42,15 @@ The addon recognizes:
 - the **instance type**: open world, dungeon, raid, battleground, arena or scenario;
 - a **boss encounter** in progress, and your **group role** (tank, healer, damage).
 
+### The weather, the hour and named places
+
+The narrator reads the game's **weather** (clear, rain, snow, storm, sand, fog), whether it is **day or night** (with dawn and dusk in between) and your **subzone**. A few places inside subzones have a name the narrator knows: the *Lion's Pride Inn* in Elwynn Forest, *Goldshire*, *Razor Hill*, *The Crossroads* in the Barrens, *Raven Hill Cemetery* in Duskwood and a dozen more. Entering one gives a line about that kind of place (an inn, a village, a graveyard, a camp, a mine, an abbey); entering any other subzone gives a shorter, general line.
+
+- A subzone speaks at most once every ten minutes, and only if you stay a moment: walking along a border does not make the narrator chatter.
+- Arriving in a new zone, the narrator speaks of the zone first; weather and subzone wait a few seconds.
+- If the game does not report the weather, the narrator says nothing about it.
+- Nothing here changes which phrase packs are loaded: those follow the continent only.
+
 ### Instance types and rhythm
 
 The narrator adapts to the place:

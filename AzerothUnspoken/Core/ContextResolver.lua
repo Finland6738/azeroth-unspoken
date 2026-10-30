@@ -199,7 +199,13 @@ function NS:BuildContext(extra)
 
 	local h = SafeCall(GetGameTime)
 	ctx.hour = h
-	ctx.time = TimeOfDay(h or 12)
+	-- giorno e notte dal client (C_DateAndTime.IsDayTime, #93): nil se il client non lo dice; allora l'ora del giorno
+	-- ricade sulle soglie fisse di prima. L'alba e il tramonto sono le ore di transizione (Systems/World.lua).
+	ctx.isDay = Compat:IsDayTime()
+	ctx.time = self.World and self.World:TimeOfDay(h, ctx.isDay) or TimeOfDay(h or 12)
+
+	-- il mondo (R3, Systems/World.lua): meteo, punto di riferimento, missioni, reputazione, volo
+	if self.World then self.World:Context(ctx) end
 
 	if Flag(UnitExists, "target") then ReadTarget(ctx) end
 

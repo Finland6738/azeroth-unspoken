@@ -43,6 +43,7 @@ Some information helps the narrator in the moment and is forgotten when you log 
 - that someone made an emote at you (not its text);
 - the name of someone you whispered to, so the addon can **suggest** them as a person to add. It does not add them;
 - suggested people, recent actions of the person in front of you, the current encounter.
+- what the game said about the world: the weather, whether it is day, your quests (their numbers and whether a step or the whole quest is done, **never their text**), your reputation standings, whether you are resting or on a flight. None of it is saved.
 
 ## Consent switches
 
