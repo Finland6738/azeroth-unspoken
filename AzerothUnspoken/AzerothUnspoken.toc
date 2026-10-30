@@ -17,6 +17,8 @@ Core\Diagnostics.lua
 Core\Config.lua
 Core\EventBus.lua
 Core\ContextResolver.lua
+Core\Profiler.lua
+Core\Probe.lua
 
 # --- motore narrativo (non contiene testi) ---
 Engine\PhraseRegistry.lua
