@@ -627,6 +627,19 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
 
 ---
 
+## R3a: varietà della scelta (aggiunto dalle issue #89, #90 e #91)
+
+**A cosa serve.** Il narratore ora preferisce le frasi del luogo dove ci sono, non torna subito sullo stesso tema, sulla stessa immagine o sulla stessa voce, cambia il gesto delle emote e non lascia che i combattimenti occupino più di circa quattro frasi su dieci. Tutto è misurato fuori dal gioco con una sessione simulata; qui si verifica che nel gioco vero il ritmo sia piacevole. Bastano un'ora di gioco normale (missioni e combattimenti) e `/au prof`.
+
+- **R3a.1 · Un'ora di gioco.** Gioca un'ora senza toccare le impostazioni, poi scrivi `/au prof`.
+    - **Cosa aspettarti:** tra i motivi di silenzio compare `quota:combat` alcune volte; morte, ritorno in vita e livello parlano sempre; arrivando in una zona nuova a volte parla l'esplorazione.
+    - **Cosa riportare:** le righe di `/au prof` sulle categorie e i motivi; se il narratore ti è sembrato troppo muto o troppo loquace nei combattimenti.
+- **R3a.2 · Frasi del luogo.** Entra in Elwynn Forest (o in una zona della tua regione con frasi proprie) e chiedi `/au muse` o aspetta l'arrivo.
+    - **Cosa aspettarti:** le prime frasi parlano del luogo; dopo qualche richiesta tornano anche quelle generali.
+    - **Cosa riportare:** le frasi viste e se suonano giuste per il posto.
+- **R3a.3 · Le emote.** Con `/au mode confirm` e molte emote nel narratore, guarda i gesti prima delle frasi tra virgolette.
+    - **Cosa aspettarti:** gesti diversi e adatti al tono; «dice:» e «mormora:» rari.
+    - **Cosa riportare:** un gesto che stona con la frase (copia il testo).
 ## R3b: il mondo che il client racconta (aggiunto dalle issue #92, #93, #94, #95 e #121)
 
 **A cosa serve.** Il narratore ora legge meteo, giorno e notte, sottozona, missioni, reputazione, riposo e volo. **Nessuna di queste API è mai stata provata nel client**: l'addon le legge sempre con una protezione e, se non rispondono, tace su quell'argomento. Questa prova dice se rispondono davvero, e con quali valori. Prima esegui `/au probe` (sezione R0) e tieni il risultato: i valori veri del meteo, `DIEL_CYCLE_CHANGED`, le missioni, la reputazione e il volo sono lì. La riga **World** di `/au debug` mostra ciò che l'addon legge adesso (meteo, giorno, riposo, missioni, volo, punti di riferimento).
@@ -675,6 +688,8 @@ R4b incontri ............ gruppo ___  scambio ___  duello ___  invito ___  emote
 R4b riconoscimento ...... una frase per sessione? ___  privata? ___  rispecchia il sentimento? ___
 R4b sentimenti .......... nessuna frase calorosa con diffidenza/paura/rancore? ___  alleato ok? ___
 R4b dimentica/rimuovi ... due azioni distinte? ___  esporta ok? ___
+R3a un'ora ............. quota:combat visto? ___  troppo muto nei combattimenti? ___  morte/livello sempre? ___
+R3a luogo/emote ......... prima le frasi del luogo? ___  gesti adatti? ___  «dice» raro? ___
 R3b meteo ............... Enum.WeatherType ______  type pioggia ___ neve ___ sereno ___  unknown? ___  WEATHER_CHANGED arriva? ___
 R3b giorno/notte ........ DIEL_CYCLE_CHANGED all'alba (ora) ______  al tramonto (ora) ______  IsDayTime insieme? ___
 R3b sottozone ........... ZONE_CHANGED ___  ZONE_CHANGED_INDOORS ___  nomi diversi in Landmarks ______  pacchetti caricati? (deve essere NO) ___

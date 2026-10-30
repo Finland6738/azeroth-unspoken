@@ -19,7 +19,8 @@ import lualit
 from lualit import Unsupported
 
 BASE = "AzerothUnspoken"
-RULE_KEYS = ("event", "category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "conditions")
+RULE_KEYS = ("event", "category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "tier", "theme",
+             "motifs", "conditions")
 VARIANT_KEYS = ("depth",)
 
 
@@ -194,8 +195,9 @@ def parse_texts(path, src, region=None, lang=None):
 
 def render_rule(id, rule, indent):
     """The canonical text of a rule entry (from `["id"]` to the comma, no newline at the end): the identity on the first
-    line, then tags and depth, then the conditions. `indent` is the indentation of the entry."""
-    first, second, third = [], [], []
+    line, then tags, depth, weight and cooldown, then theme, motifs and tier (#89, #90), then the conditions. `indent` is
+    the indentation of the entry."""
+    first, second, theme, third = [], [], [], []
     ev = rule.get("event")
     if isinstance(ev, list) and len(ev) == 1:
         ev = ev[0]
@@ -209,12 +211,15 @@ def render_rule(id, rule, indent):
     for k in ("tags", "depth", "weight", "cooldown"):
         if k in rule:
             second.append("%s = %s" % (k, lualit.literal(rule[k])))
+    for k in ("theme", "motifs", "tier"):
+        if k in rule:
+            theme.append("%s = %s" % (k, lualit.literal(rule[k])))
     for k in rule:
         if k not in RULE_KEYS:
             second.append("%s = %s" % (k, lualit.literal(rule[k])))
     if "conditions" in rule:
         third.append("conditions = " + lualit.literal(rule["conditions"]))
-    lines = [", ".join(g) for g in (first, second, third) if g]
+    lines = [", ".join(g) for g in (first, second, theme, third) if g]
     return "[%s] = { %s }," % (lualit.quote(id), (",\n" + indent + "\t").join(lines))
 
 

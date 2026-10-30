@@ -93,6 +93,8 @@ AzerothUnspoken:RegisterPack({
             tags = { "forest", "calm" },            -- free labels (affinity, search)
             weight = 2,                             -- relative weight (default 1)
             cooldown = 600,                         -- seconds before it can return (optional)
+            theme = "courage",                      -- one theme (see "Themes and motifs")
+            motifs = { "mountain", "stone" },       -- zero to three concrete images
             conditions = { race = "Dwarf" },        -- conditions (optional; alias: when)
         },
     },
@@ -114,6 +116,9 @@ AzerothUnspoken:RegisterPack({
 | `tags` | list of labels: descriptive, or affinity with the character's traits (see below) | none |
 | `weight` | number greater than 0 | 1 |
 | `cooldown` | seconds (also `cooldownSeconds`) | none |
+| `theme` | one theme of the closed vocabulary (see "Themes and motifs") | none (no thematic novelty) |
+| `motifs` | list of zero to three motifs of the closed vocabulary | none |
+| `tier` | specificity tier: `0`-`4` or `generic`, `situation`, `region`, `zone`, `subzone`, `landmark` | deduced from the conditions |
 | `conditions` | table of conditions (also `when`) | always true |
 
 ### The texts, with variants
@@ -227,6 +232,60 @@ From step S4 the **StyleResolver** uses registers to weight phrases (never to ex
   (registers admitted for an event) and `AzerothUnspoken:RegisterMoodStyles({ coast = { "everyday" } })` (registers preferred
   by an atmosphere).
 
+### Themes and motifs (`theme`, `motifs`)
+
+From R3 ([ADR 0028](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)) a rule can say what it
+is about. The **theme** is the idea (one per rule); the **motifs** are the concrete images the text shows (zero to
+three). The engine remembers, for the session only and never in the saved files, the themes, motifs, voices, frames
+and openings of the last interventions, and weighs down a phrase that would bring them back too soon. A rule without
+a theme is never penalized for it, but it does not help the variety either.
+
+Both come from **closed vocabularies**, listed with their meaning in `AzerothUnspoken/Data/Themes.lua`:
+
+- themes: `courage`, `duty`, `glory`, `wrath`, `fear`, `fatigue`, `mortality`, `loss`, `hope`, `faith`, `magic`,
+  `nature`, `landscape`, `home`, `journey`, `memory`, `fellowship`, `growth`, `mystery`, `solitude`, `humour`;
+- motifs: arms and war (`blade`, `shield`, `armour`, `banner`, `horn`, `drum`, `arrow`, `scar`, `wound`, `blood`,
+  `bone`), elements and sky (`fire`, `ash`, `smoke`, `light`, `shadow`, `sun`, `moon`, `star`, `sky`, `wind`, `rain`,
+  `storm`, `snow`, `ice`, `water`, `sea`, `river`), land (`stone`, `earth`, `dust`, `sand`, `mountain`, `tree`,
+  `roots`, `leaf`, `flower`, `grass`), creatures (`wolf`, `bird`, `beast`, `dragon`), people and things (`hand`,
+  `eye`, `breath`, `voice`, `song`, `heart`, `tears`, `bread`, `ale`, `hearth`, `coin`, `book`, `crown`, `bell`,
+  `door`, `road`, `grave`, `mask`, `chain`, `candle`), time (`dawn`, `dusk`, `night`, `season`).
+
+An unknown theme or motif is a validator error. A pack can add its own, like registers:
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "mare",
+    languages = { "itIT", "enUS" },
+    themes = { "seafaring" },                       -- or AzerothUnspoken:RegisterTheme("seafaring")
+    motifs = { "sail" },                            -- or AzerothUnspoken:RegisterMotif("sail")
+    registry = {
+        ["mare.zone.01"] = { event = "zone", speaker = "inner", styles = { "intimate" },
+            theme = "seafaring", motifs = { "sail", "wind" }, conditions = { mood = "coast" } },
+    },
+    texts = {
+        itIT = { ["mare.zone.01"] = "Una vela all'orizzonte. Il vento sa dove va, io no." },
+        enUS = { ["mare.zone.01"] = "A sail on the horizon. The wind knows where it goes; I do not." },
+    },
+})
+```
+
+How to choose them is in [CONTRIBUTING.md](../CONTRIBUTING.md#themes-and-motifs).
+
+### Specificity tiers (`tier`)
+
+Every rule has a **tier**: `0` generic, `1` situation or region, `2` zone, `3` subzone, `4` landmark. It is deduced
+from the conditions (at the top level and in `place`): `landmark` (R3b) gives 4; `subzone` gives 3; `zone`, `place.zone`, `place.mapID` give 2;
+`mood`, `instance`, `instanceType`, `place.continent`, `place.tags`, `place.territory` and the capitals give 1, and so
+does any other condition that narrows the moment (a class, a target, a memory, a relation); `chance`, `depth`,
+`intensityMin`/`Max` and anything under `not` give nothing. Write `tier` only to override it.
+
+When a phrase is chosen, the most specific tier wins **while it has at least three phrases not used recently**
+(counting the tiers above it); once they are used, the pool widens one tier at a time down to the generic phrases of
+the event. So a few phrases for a place come out first when the character is there, then leave room to the others.
+Write at least three for a place if you want them to lead.
+
 **Depth** (Natural, Literary, Elevated) is the one chosen by the user (`/au depth`). It does not exclude phrases:
 those written for another depth **weigh less** (×0.3), so silence never results from a lack of suitable texts.
 A phrase without `depth` is never penalized. As a rule of thumb: `natural` is direct and everyday,
@@ -267,6 +326,19 @@ AzerothUnspoken:RegisterPack({
         itIT = { ["pesca.01"] = "L'acqua non ha fretta. Forse dovrei imparare da lei." },
         enUS = { ["pesca.01"] = "The water is in no hurry. Perhaps I should learn from it." },
     },
+})
+```
+
+An event can also name a **related event** (`fallback`): when it has no phrase in the moment, the engine tries that
+one (at most three steps, never back to an event already tried), then stays silent. The base declares
+`rezother` -> `heal` and `threat` -> `battle`; the validator rejects a fallback to an unknown event or a cycle.
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "pesca_notte",
+    languages = { "itIT", "enUS" },
+    events = { night_fishing = { category = "exploration", fallback = "fishing" } },
 })
 ```
 
@@ -850,6 +922,9 @@ AzerothUnspoken:RegisterPack({
 A frame without `event` applies to all events; every variant must contain `{line}`.
 A frame can state its registers (`styles = { "ceremonial" }`): then it accepts only phrases of the same or a nearby
 register (epic and ceremonial yes, ceremonial and ironic no). Without `styles` it accepts every phrase.
+A frame can also state **themes** (`themes = { "loss", "mortality" }`, from the vocabulary above): then it tells only
+phrases of one of those themes, and is preferred for them. A frame used in the last interventions, for any event,
+weighs less: write frames that fit a register or a theme rather than one more "says".
 Frame and phrase together must fit within the 255 bytes of a message (the validator warns).
 
 ## New languages, translations and extra texts
@@ -994,7 +1069,10 @@ a **warning** is advice.
 | `tooLongFramed` | warning | with the longest frame it exceeds 255 bytes |
 | `badUTF8` | error | text that is not valid UTF-8, control character, U+FFFD (corrupted text) |
 | `emoteCase` | error | an emote that starts with a capital letter or with quotation marks |
-| `badSpeaker`, `badForm`, `badDepth`, `badWeight`, `badCooldown`, `badConditions`, `noEvent` | error | value not allowed in the rule (the engine falls back to a valid value) |
+| `badSpeaker`, `badForm`, `badDepth`, `badWeight`, `badCooldown`, `badConditions`, `badTier`, `noEvent` | error | value not allowed in the rule (the engine falls back to a valid value) |
+| `badTheme`, `badMotif` | error | a theme or a motif not in the vocabularies (rule or frame), or more than three motifs |
+| `badFallback` | error | a related event that is not declared, or a chain of fallbacks that comes back to its start |
+| `badQuota`, `badHunger` | error | a category quota or hunger with values out of range (see "Direction") |
 | `orphanText` | error | texts for an id that no pack has registered |
 | `noSpeaker`, `noStyle`, `innerEmote` | warning | missing voice or register; a thought in the form of an emote |
 | `unknownEvent`, `unknownCategory`, `unknownStyle`, `unregisteredLanguage` | warning | undeclared event, category or register; language without `RegisterLanguage` |
@@ -1012,15 +1090,39 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
    - `N` = novelty: ÷ (1 + 0.3 × recent uses), and ×0.6 if the main register is the same as that of the last phrase of the same event;
    - `S` = style: depth (×0.3 if the phrase is written for other depths) × registers (StyleResolver, above);
    - `R` = relationship with the person of the interaction (`rel.` tags, see "Relationships"); 1 without a relationship. The interlocutor and the place also weigh in, in the `C` factor (`other.` and `place.` tags);
+   `N` also weighs the novelty of the session: the theme, the motifs and the voice of the last interventions.
 3. No factor excludes a phrase for reasons of style: there is always a fallback.
-4. Recently used phrases (about 60% of those available, at most `pacing.recentPhraseWindow` = 30) are excluded as long as there are others.
-5. Once the phrase is chosen, it chooses a **variant**: among those of the right depth (or with no indication), different from the last one used.
-6. The memory of uses and variants is saved between sessions, per character, and uses fade at every access.
-7. Before the engine, the **Narrative Director** decides (spontaneous events, not explicit requests): intensity,
+4. The **specificity tiers** keep the most specific phrases first while three of them are not recent (above).
+5. Recently used phrases (about 60% of those available, at most `pacing.recentPhraseWindow` = 30) are excluded as long as there are others.
+6. Once the phrase is chosen, it chooses a **variant**: among those of the right depth (or with no indication), different from the last one used and, if it can, not opening with the same two words as the last interventions.
+7. The memory of uses and variants is saved between sessions, per character, and uses fade at every access; the memory of themes, motifs, voices, frames and openings lasts only the session.
+8. If the event has no phrase at all, its related event speaks (`fallback`), else silence.
+9. Before the engine, the **Narrative Director** decides (spontaneous events, not explicit requests): intensity,
    probability per event (`/au chance`), pauses (global `/au cooldown`, per category, per event), budget per category,
-   priority and suspension during cutscenes and demanding combat. A new event has the "ambient" priority;
+   the quota and hunger of each category (see "Direction"), priority and suspension during cutscenes and demanding combat. A new event has the "ambient" priority;
    a pack can change it with `AzerothUnspoken:SetEventPriority("fishing", "memory")`
    (`dialogue`, `exceptional`, `memory`, `ambient`). See [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).
+
+## Direction: category quotas and hunger
+
+A pack can also tune how often a whole category speaks in a session (#91, [ADR 0028](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)):
+
+- `quotas = { combat = { share = 0.4, window = 10, span = 900 } }`: the category may take at most `share` (0-1) of the
+  last `window` interventions heard in the last `span` seconds; at least half of what a full window allows is always
+  possible. Death, resurrection and level up are never refused.
+- `hunger = { exploration = { factor = 2, after = 600 } }`: after `after` seconds without a line of the category, the
+  chance of its events is multiplied by up to `factor` (1-5), and it goes first among events of the same priority.
+
+The base values are in `AzerothUnspoken/Data/Themes.lua`; a later pack replaces the value of a category. The same with
+`AzerothUnspoken:SetCategoryQuota("combat", { share = 0.5 })` and `AzerothUnspoken:SetCategoryHunger(...)`.
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "regia",
+    hunger = { social = { factor = 1.5, after = 900 } },
+})
+```
 
 ## Trying the examples
 

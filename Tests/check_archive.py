@@ -179,6 +179,7 @@ def review_flow():
         lines = [
             {"id": "zone.test.new.01", "pack": "base_exploration", "event": "zone", "speaker": "inner", "styles": ["intimate"],
              "depth": ["natural", "literary"], "tags": ["melancholy", "topic:test"], "weight": 2,
+             "theme": "nature", "motifs": ["tree", "dawn"],
              "conditions": {"mood": "forest", "any": [{"time": "dawn"}, {"time": "dusk"}]}, "author": "ai-test",
              "texts": {"enUS": ["{zone}. A line written through the archive.", {"text": "Another one.", "depth": "natural"}],
                        "itIT": ["{zone}. Una riga scritta con l'archivio."]}},
@@ -192,10 +193,15 @@ def review_flow():
             {"id": "zone.gen.01", "pack": "base_exploration", "event": "zone", "speaker": "inner", "texts": {}},
             {"id": "zone.test.pack", "pack": "no_such_pack", "event": "zone", "speaker": "inner", "texts": {}},
             {"id": "zone.test.voice", "pack": "base_exploration", "event": "zone", "speaker": "bard", "texts": {}},
+            {"id": "zone.test.theme", "pack": "base_exploration", "event": "zone", "speaker": "inner", "theme": "boredom",
+             "texts": {}},
+            {"id": "zone.test.motifs", "pack": "base_exploration", "event": "zone", "speaker": "inner", "theme": "nature",
+             "motifs": ["tree", "leaf", "roots", "grass"], "texts": {}},
         ]
         with open(os.path.join(tmp, "drafts.jsonl"), "w", encoding="utf-8", newline="\n") as f:
             f.write("\n".join(json.dumps(x) for x in lines) + "\n")
-        check(run("drafts", drafts) == 1, "drafts: the invalid ones (repeated id, unknown pack, unknown voice) are refused")
+        check(run("drafts", drafts) == 1, "drafts: the invalid ones (repeated id, unknown pack, unknown voice, unknown theme, "
+              "four motifs) are refused")
         con = store.connect(db)
         check(con.execute("SELECT COUNT(*) FROM intention WHERE state = 'draft'").fetchone()[0] == 4, "the four valid drafts are kept")
         check(all(os.path.exists(os.path.join(overlay, f)) for f in store.OVERLAY_TABLES), "the overlay files are written")
@@ -233,6 +239,7 @@ def review_flow():
         check('["zone.test.new.01"] = { event = "zone", speaker = "inner", styles = { "intimate" },' in rules and
               'any = { { time = "dawn" }, { time = "dusk" } }' in rules and "weight = 2" in rules,
               "the approved rule is appended to the rules file of its pack in the canonical style")
+        check('theme = "nature", motifs = { "tree", "dawn" }' in rules, "theme and motifs are written on their own line (#90)")
         check('"{zone}. A line written through the archive."' in texts_en and '{ "Another one.", depth = "natural" }' in texts_en and
               "Una riga scritta con l'archivio." in texts_it, "its texts are appended to the file of each language")
         check('["zone.test.kal.01"]' in kal and '"Red earth."' in kal_en, "a regional intention goes to the folders of its region")
@@ -256,7 +263,8 @@ def review_flow():
         check(states == {"zone.test.new.01": "approved", "zone.test.kal.01": "approved", "zone.test.half": "draft",
                          "zone.test.lore": "draft", "zone.gen.02": "retired"}, "rebuilding from the folders and the overlay gives the same states")
         check(store.get_variants(con2, "zone.test.new.01", "enUS")[1] == {"text": "Another one.", "depth": "natural"} and
-              store.get_rule(con2, "zone.test.new.01")["conditions"]["any"][1] == {"time": "dusk"},
+              store.get_rule(con2, "zone.test.new.01")["conditions"]["any"][1] == {"time": "dusk"} and
+              store.get_rule(con2, "zone.test.new.01")["motifs"] == ["tree", "dawn"],
               "what was written reads back as the same data")
         check(store.roundtrip(root) == [], "the written folders still round-trip with an empty diff")
 

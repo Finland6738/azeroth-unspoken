@@ -28,6 +28,17 @@ Every line belongs to one of four voices. The box shows which voice is speaking.
 
 The inner voice and the NPC voice always stay private, whatever you choose in the [[Chat Gateway]]. You can turn the inner voice down or off in your [[character's personality|Character-Soul-and-Total-RP-3]].
 
+## How it keeps things varied
+
+The narrator tries not to sound like a combat commentary or a broken record:
+
+- **Lines about the place come first.** Where there are lines written for the zone or the spot you are in, you hear those before the general ones; once you have heard them, the general ones take turns again.
+- **Not the same thing twice in a row.** It avoids coming back at once to the same idea (a loss, a joke, the road), the same images (a blade, the rain), the same voice three times in a row, and lines that open with the same words. This memory lasts only for the session and is never saved.
+- **Gestures change.** When a spoken line is told as an emote, the gesture around it changes with the tone and the subject of the line, rather than "says" every time.
+- **Fights do not take over.** Fighting may fill at most about four lines in ten of what you hear; death, coming back to life and a new level always get their line. Exploring and quiet thoughts, when they have been silent for a while, get a better chance to speak.
+
+If the narrator seems quiet during long fights, this is why: silence is a normal outcome. `/au debug` shows the reason of the last decisions (for example `quota:combat`).
+
 ## How to use it
 
 - **Just play.** Lines come by themselves. Their frequency depends on [[intensity|Intensity-and-Depth]].

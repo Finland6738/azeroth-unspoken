@@ -8,9 +8,11 @@
 --   categoria CATEGORY_COOLDOWN[categoria] tra due interventi della stessa categoria
 --   evento    NS.EVENT_COOLDOWN[evento] tra due interventi dello stesso evento
 --   budget    BUDGET[categoria] interventi in WINDOW secondi, scalati con l'intensità
+--   quota     #91: a category may take at most Engine.QUOTAS[category].share of the last `window` interventions
+--             (spontaneous and explicit) of the last `span` seconds (data: Data/Themes.lua and the packs)
 --   id        il cooldown della frase (campo `cooldown` della regola) e la finestra anti-ripetizione restano
 --             nel motore (Engine:Eligible, WeightedPick): valgono per ogni scelta, anche le esplicite
--- I momenti importanti (priorità "exceptional" o più alta) saltano globale, categoria e budget, non il momento.
+-- I momenti importanti (priorità "exceptional" o più alta) saltano globale, categoria, budget e quota, non il momento.
 local ADDON, NS = ...
 local Engine = NS.Engine
 
@@ -20,7 +22,9 @@ local Engine = NS.Engine
 ---@field byCategory table<string, number>
 ---@field byEvent table<string, number>
 ---@field spent table<string, number[]> [categoria] = istanti degli interventi nella finestra
-local Pacing = { byCategory = {}, byEvent = {}, spent = {} }
+---@field history { category: string, at: number }[] interventions of the session, newest last (#91)
+---@field started? number GetTime() of the first check of the session: the hunger counts from there (#91)
+local Pacing = { byCategory = {}, byEvent = {}, spent = {}, history = {} }
 NS.Pacing = Pacing
 Engine.Pacing = Pacing
 
@@ -40,7 +44,50 @@ Pacing.CATEGORY_COOLDOWN = {
 
 function Pacing:Reset()
 	self.lastAny, self.last = nil, nil
-	self.byCategory, self.byEvent, self.spent = {}, {}, {}
+	self.byCategory, self.byEvent, self.spent, self.history, self.started = {}, {}, {}, {}, nil
+end
+
+Pacing.QUOTA_WINDOW = 10      -- interventions, when a quota does not say
+Pacing.QUOTA_SPAN = 900       -- seconds, when a quota does not say
+Pacing.HISTORY_MAX = 50
+
+---Interventions of the category among the last `window` of the last `span` seconds, and how many the quota allows
+---(#91). nil when the category has no quota. The span keeps a long fight from silencing a category for good when
+---nothing else speaks: silence is valid, a mute companion for an hour is not.
+---@param category string
+---@param now number
+---@return integer? used
+---@return integer? allowed
+function Pacing:Quota(category, now)
+	local q = Engine.QUOTAS[category]
+	if type(q) ~= "table" or type(q.share) ~= "number" then return nil end
+	local window, span = q.window or self.QUOTA_WINDOW, q.span or self.QUOTA_SPAN
+	local used, seen = 0, 0
+	for i = #self.history, 1, -1 do
+		local h = self.history[i]
+		if seen >= window or now - h.at >= span then break end
+		seen = seen + 1
+		if h.category == category then used = used + 1 end
+	end
+	-- the share of the interventions in the window counting this one (four of ten), but never less than half of what
+	-- the full window allows: at the start of a session, or after a quiet while, a fight may speak twice before the
+	-- other categories have had their turn
+	local floor = math.max(1, math.floor(q.share * window / 2))
+	return used, math.max(floor, math.floor(q.share * (seen + 1)))
+end
+
+---Hunger of a category (#91): 1 when it spoke recently or has no hunger, up to Engine.HUNGER[category].factor after
+---`after` seconds without a spontaneous intervention (counted from the start of the session when it never spoke).
+---@param category string
+---@param now number
+---@return number
+function Pacing:Hunger(category, now)
+	local h = Engine.HUNGER[category]
+	if Engine.R1_COMPAT or type(h) ~= "table" or type(h.factor) ~= "number" or h.factor <= 1 then return 1 end
+	self.started = self.started or now
+	local since = now - (self.byCategory[category] or self.started)
+	local after = (type(h.after) == "number" and h.after > 0) and h.after or 600
+	return 1 + (h.factor - 1) * math.max(0, math.min(1, since / after))
 end
 
 ---Interventi ammessi per categoria nella finestra.
@@ -75,9 +122,10 @@ end
 ---Il pacing permette un intervento? Restituisce true oppure false e il motivo.
 ---@param q AUPacingQuery
 ---@return boolean ok
----@return string? reason moment | cooldown:global | cooldown:category | cooldown:event | budget:<categoria>
+---@return string? reason moment | cooldown:global | cooldown:category | cooldown:event | budget:<categoria> | quota:<categoria>
 function Pacing:Check(q)
 	local now, mul = q.now, q.cooldownMul or 1
+	self.started = self.started or now
 	if self.lastAny and now - self.lastAny < self.MOMENT then return false, "moment" end
 	if not q.important then
 		local global = (NS.db and NS.db.pacing.globalCooldownSeconds or 45) * mul
@@ -92,6 +140,10 @@ function Pacing:Check(q)
 	if not q.important and self:Spent(q.category, now) >= self:Budget(q.category, q.intensity) then
 		return false, "budget:" .. q.category
 	end
+	if not q.important and not Engine.R1_COMPAT then
+		local used, allowed = self:Quota(q.category, now)
+		if used and used >= allowed then return false, "quota:" .. q.category end
+	end
 	return true
 end
 
@@ -105,13 +157,21 @@ function Pacing:Record(event, category, now)
 	self.byEvent[event] = now
 	self.spent[category] = self.spent[category] or {}
 	table.insert(self.spent[category], now)
+	table.insert(self.history, { category = category, at = now })
+	while #self.history > self.HISTORY_MAX do table.remove(self.history, 1) end
 end
 
 ---Registra un intervento esplicito (comando, tasto, macro): non consuma budget, ma apre il "momento",
----così una frase spontanea non arriva subito dopo.
+---così una frase spontanea non arriva subito dopo. With its category it also enters the window of the quotas (#91):
+---the share is about what the player hears, asked for or not.
 ---@param now number
-function Pacing:Note(now)
+---@param category? string
+function Pacing:Note(now, category)
 	self.lastAny = now
+	if category then
+		table.insert(self.history, { category = category, at = now })
+		while #self.history > self.HISTORY_MAX do table.remove(self.history, 1) end
+	end
 end
 
 ---Stato per /au debug: { [categoria] = "usati/ammessi" }.

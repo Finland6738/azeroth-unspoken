@@ -2,6 +2,10 @@
 local NS = ...
 local Director, Narrator, Gateway = NS.Director, NS.Narrator, NS.Gateway
 
+-- the per-session quotas of the categories (#91) cap combat whatever the intensity and the pauses: these tests measure
+-- the gate, the pauses and the dice, so the quotas are off here (Tests/TestSelection.lua tests them)
+NS.Engine.QUOTAS = {}
+
 local function Reset()
 	SENT = {}
 	HW = false

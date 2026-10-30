@@ -1,7 +1,7 @@
 -- Authoring archive of Azeroth Unspoken (ADR 0027). Authoring store only: the game never reads it.
 -- Lists (events, registers, depth, tags) and the conditions are JSON text in the intention row: that is the
 -- authoritative value the exporter writes back. The tables intention_event / _register / _depth / _tag are search
--- indexes derived from it (rebuilt by `reindex`), never edited by hand.
+-- indexes derived from it (rebuilt by `reindex`), never edited by hand. intention_motif does the same for the motifs.
 
 CREATE TABLE meta (
     key   TEXT PRIMARY KEY,
@@ -59,6 +59,9 @@ CREATE TABLE intention (
     styles        TEXT,                          -- JSON list: the registers
     depth         TEXT,                          -- JSON list
     tags          TEXT,                          -- JSON list
+    theme         TEXT,                          -- one theme of the closed vocabulary (#90, Data/Themes.lua)
+    motifs        TEXT,                          -- JSON list: zero to three motifs (#90)
+    tier          TEXT,                          -- JSON: an explicit specificity tier (#89), a number or a name
     weight        NUMERIC,
     cooldown      NUMERIC,
     conditions    TEXT,                          -- JSON (a Lua condition table)
@@ -76,7 +79,10 @@ CREATE TABLE intention_event    (intention_id TEXT NOT NULL REFERENCES intention
 CREATE TABLE intention_register (intention_id TEXT NOT NULL REFERENCES intention(id) ON DELETE CASCADE, ord INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY (intention_id, ord));
 CREATE TABLE intention_depth    (intention_id TEXT NOT NULL REFERENCES intention(id) ON DELETE CASCADE, ord INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY (intention_id, ord));
 CREATE TABLE intention_tag      (intention_id TEXT NOT NULL REFERENCES intention(id) ON DELETE CASCADE, ord INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY (intention_id, ord));
+CREATE TABLE intention_motif    (intention_id TEXT NOT NULL REFERENCES intention(id) ON DELETE CASCADE, ord INTEGER NOT NULL, value TEXT NOT NULL, PRIMARY KEY (intention_id, ord));
 CREATE INDEX intention_event_value ON intention_event(value);
+CREATE INDEX intention_motif_value ON intention_motif(value);
+CREATE INDEX intention_theme ON intention(theme);
 CREATE INDEX intention_tag_value ON intention_tag(value);
 
 -- the texts: variants of an intention in a language (same meaning and register, different rhythm and words)

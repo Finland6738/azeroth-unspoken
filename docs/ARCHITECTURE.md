@@ -271,8 +271,8 @@ flowchart TD
     G -- "addon off, pause, module off,<br/>intensity 0" --> S["silence (reason in the log)"]
     G -- "cinematic or movie" --> S
     G -- "demanding combat<br/>(below the exceptional priority)" --> S
-    G -- "cooldowns: moment, global, category, event;<br/>category budget" --> S
-    G -- "green light" --> D{"Die roll: event probability<br/>× intensity / 50"}
+    G -- "cooldowns: moment, global, category, event;<br/>category budget; category quota" --> S
+    G -- "green light" --> D{"Die roll: event probability<br/>× intensity / 50 × hunger"}
     D -- no --> N["next candidate"]
     D -- yes --> P["Gateway:Narrate → engine"]
     P -- "no line" --> N
@@ -288,9 +288,12 @@ flowchart TD
 | Category cooldown | `Pacing.CATEGORY_COOLDOWN` (combat 15 s, exploration 30 s...) × the same factor | exceptional events |
 | Event cooldown | `NS.EVENT_COOLDOWN` × the same factor | nobody |
 | Budget | `Pacing.BUDGET` per category in 10 minutes (combat 6...) × intensity/50 | exceptional events |
+| Quota (#91) | `Engine.QUOTAS` (data, `Data/Themes.lua`): a category at most `share` of the last `window` interventions, explicit ones included, of the last `span` seconds (combat 40% of 10 in 15 minutes); reason `quota:<category>` | exceptional events |
 | Intrusive screens | `InCinematic`, `IsInCinematicScene`, `CinematicFrame`/`MovieFrame` visible | nobody |
 | Demanding combat | in combat with a boss, in a raid, elite in an instance (`pacing.suppressInHighDemand`) | exceptional events |
 | Line cooldown (id) | the rule's `cooldown` and the anti-repetition window, in the engine | nobody (it also applies to explicit ones) |
+
+**Hunger** (#91, `Engine.HUNGER`, data): a category silent for a while multiplies the chance of its events, up to its `factor` after `after` seconds (exploration ×2 after 10 minutes, reflection ×1.5 after 15), and goes first among candidates of the same priority. Quotas and hunger are in [ADR 0028](adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md).
 
 The log of the latest decisions (`Director.log`) and the budget used appear in `/au debug` on the **Narrative Director** row. The reasoning behind the choices is in [ADR 0015](adr/0015-narrative-director-one-intervention-per-moment.md).
 
@@ -302,7 +305,8 @@ flowchart TD
     B --> C{"Eligible?<br/>(pack on, own pause,<br/>placeholder data, when)"}
     C -- no --> X["discarded"]
     C -- yes --> D["W = B × C × P × N × S × R<br/>(base, context, personality, novelty,<br/>style, relationship)"]
-    D --> E["Recent lines excluded<br/>(as long as others remain)"]
+    D --> T["Tiers (#89): the most specific tier<br/>with 3 lines not recent, and above"]
+    T --> E["Recent lines excluded<br/>(as long as others remain)"]
     E --> F["Weighted random pick"]
     F --> G["Render: placeholders, gender,<br/>vocabulary, frame if emote"]
     G --> H{"Missing data?"}
@@ -310,12 +314,16 @@ flowchart TD
     I --> F
     H -- no --> J["Remember: uses, recent, tone"]
     J --> K["{ text, speaker, form, id, event }"]
+    X2["no candidate at all"] -.-> FB["related event (fallback, #89),<br/>then silence"]
 ```
 
-- **Weight** (`Engine.Factors`, GDD §10): `B` = `weight`; `C` = 1 + 0.35 × conditions (plus the `C` hooks of S6c); `P` = personality (Character Soul): soft affinity of the `trait:value` tags (×1.6 / ×0.6), inner voice and irony; 0 excludes the line via `req:`, `not:` and `topic:`; neutral (1) with the neutral profile ([details](#the-character-soul)); `N` = ÷ (1 + 0.3 × recent uses), ×0.6 if the register is the same as that of the last line of the event; `S` = depth (×0.3 if different) × register affinity of the StyleResolver (×0.5 outside the event, +25% for each zone, depth and voice preference); `R` = relationship with the person of the interaction ([see below](#relationships)): tags with the `rel.` scope as soft affinity or hard filter (0 excludes), neutral without a person. `Engine:Weight(line, event, ctx)` returns the breakdown.
+- **Weight** (`Engine.Factors`, GDD §10): `B` = `weight`; `C` = 1 + 0.35 × conditions (plus the `C` hooks of S6c); `P` = personality (Character Soul): soft affinity of the `trait:value` tags (×1.6 / ×0.6), inner voice and irony; 0 excludes the line via `req:`, `not:` and `topic:`; neutral (1) with the neutral profile ([details](#the-character-soul)); `N` = ÷ (1 + 0.3 × recent uses), ×0.6 if the register is the same as that of the last line of the event, and the novelty of the session (#90, `Engine.ThemeNovelty`): ÷ (1 + 1.5 × presences of its theme in the last 6 interventions), ÷ (1 + 0.8 × presences of its motifs), ×0.35 if it would be the third line in a row in the same voice; `S` = depth (×0.3 if different) × register affinity of the StyleResolver (×0.5 outside the event, +25% for each zone, depth and voice preference); `R` = relationship with the person of the interaction ([see below](#relationships)): tags with the `rel.` scope as soft affinity or hard filter (0 excludes), neutral without a person. `Engine:Weight(line, event, ctx)` returns the breakdown.
+- **Specificity tiers** (#89, `Engine.Tier`, `Engine.TierPool`): each rule has a tier, deduced from its conditions or written as `tier` (0 generic, 1 situation or region, 2 zone, 3 subzone, 4 landmark). Among the eligible lines the pick keeps the most specific tier that, together with the tiers above it, still has `Engine.TIER_MIN` (3) lines not used recently; when those are used the pool widens one tier at a time down to the generic lines. An event with no line at all tries its related event (`fallback`, at most three steps; the record says `via`), then stays silent. See [ADR 0028](adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md).
+- **Themes and motifs** (#90): a rule declares one `theme` and up to three `motifs` from the closed vocabularies of `Data/Themes.lua`. The memory of the session (`Engine.lines`: theme, motifs, voice, frame and first two words of the last 12 interventions, fading in 30 minutes) is **never saved**. It weighs `N`, keeps a variant from opening like the last 8 interventions, and weighs down a frame used in the last 8 interventions for any event; a frame with `themes` tells only phrases of those themes.
 - **Character**: traits weight the lines and, for hard tags, exclude them; see [the Character Soul](#the-character-soul).
-- **Style**: registers weight and do not exclude, so the neutral fallback is automatic. In emote form, a frame with registers accepts only lines of the same or a close register (`StyleResolver:Compatible`).
-- **Conditions** (`when`): see [PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md). More conditions → more specific line → greater weight.
+- **Style**: registers weight and do not exclude, so the neutral fallback is automatic. In emote form, a frame with registers accepts only lines of the same or a close register (`StyleResolver:Compatible`). The main register of a rule is its first one, read with `Engine.Tone(p)` (no longer a field of the rule).
+- **Conditions** (`when`): see [PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md). More conditions → more specific line → greater weight; a place condition also raises the tier.
+- **R1 compatibility**: `Engine.R1_COMPAT = true` turns off tiers, fallback, the novelty of the session, quotas and hunger; the offline tools use it to measure before and after (`Tests/trace_picks.py --r1`, `Tests/bench_m2.py --r1`).
 - **Candidates** (`Engine:Candidates`, #83): each rule is registered in the generic group of its event and form or, if its conditions ask for a zone, subzone, map, class, race, mood, creature type or time of day (the first of `Engine.INDEX_DIMENSIONS`), in the group of each value. A pick reads the generic group and the groups its context opens, merged in registration order: the same rules, in the same order, as a scan of all the lines of the event. Rules with `chance`, `func` or a condition of a pack stay generic, so the random sequence does not change. The index does not depend on the language, so language and regional packs (#85, #101) add their rules to it.
 - **In-memory format** (#84): a variant is a plain string unless it needs more (an empty text, a depth of its own, a text of another pack); read it with `Engine.VariantText`, `VariantOk`, `VariantDepth`, `VariantPack` or `VariantView`. Rules share their lists of events, registers, tags and depths. `RegisterPack` does not keep the pack's source tables.
 - **Memory**: `NS.cdb.memory` (`uses`, `last`, `variant`, `recent`, `lastTone`), per character, bounded (#86): `uses` fade at every login (`DecayMemory`, ×0.75) and keep at most `Engine.USES_MAX` (512) entries, `variant` (last variant used) only for phrases in `uses`, `last` only for entries with a running cooldown. The window of recent lines is about 60% of those available, at most `pacing.recentPhraseWindow` (30). No text is saved.
@@ -622,6 +630,7 @@ flowchart LR
 - **The importer reads Lua as data** (`lualit.py`, no Lua is run) and keeps each file as prelude, entries and the gaps with their comments; **`export` of the imported folders is identical byte for byte to every file** (a test in the required CI job). Changed entries are rendered again in the canonical style, new ones are appended to the table of their pack. Rules computed by code (`RegistryArcs.lua`, `RegistryDialogues.lua`) are not archived.
 - **Review flow:** `draft -> review -> approved -> retired` (`submit`, `approve`, `reject`, `retire`, `restore`); only `approved` is exported; approval needs a text in every language of the pack and, for invented lore in a narrator line, an attribution (D7).
 - **Reports:** `report` counts intentions (D2) with their variants per language, by region, voice, depth and register; lists the event x context cells (the index groups of ADR 0024) with fewer than *k* eligible intentions or texts; and gives the cheap part of the M1 and M2 measurements. Thresholds are in `tools/archive/thresholds.json`; the CI workflow `Content coverage` prints the report as a job summary and an artifact and **never blocks**.
+- **Themes, motifs and tiers** (ADR 0029): the intention has the columns `theme`, `motifs` (JSON list, also in the search index `intention_motif`) and `tier`, read and written by the importer and the exporter like the other fields (canonical style: on their own line after tags and depth); `search --theme`, `--motif`; a draft is refused with an unknown theme or motif (the vocabularies are read from `AzerothUnspoken/Data/Themes.lua`). The full M2 of a simulated session is `Tests/bench_m2.py`.
 
 ## 7. Extension points
 

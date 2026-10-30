@@ -42,13 +42,15 @@ OVERLAY_TABLES = {
     # file: (table, columns, key)
     "authors.csv": ("author", ("id", "name", "kind", "note"), ("id",)),
     "intentions.csv": ("intention", ("id", "pack_id", "state", "author_id", "events", "category", "speaker", "form",
-                                     "styles", "depth", "tags", "weight", "cooldown", "conditions", "extra",
-                                     "attribution", "invented_lore"), ("id",)),
+                                     "styles", "depth", "tags", "theme", "motifs", "tier", "weight", "cooldown",
+                                     "conditions", "extra", "attribution", "invented_lore"), ("id",)),
     "variants.csv": ("variant", ("intention_id", "lang", "ord", "text", "depth"), ("intention_id", "lang", "ord")),
     "reviews.csv": ("review", ("id", "intention_id", "reviewer", "verdict", "note", "date"), ("id",)),
     "changelog.csv": ("changelog", ("id", "date", "author", "action", "intention_id", "from_state", "to_state", "note"), ("id",)),
 }
-JSON_COLUMNS = {"events", "styles", "depth", "tags", "conditions", "extra"}
+JSON_COLUMNS = {"events", "styles", "depth", "tags", "motifs", "tier", "conditions", "extra"}
+TIERS = {"generic": 0, "situation": 1, "region": 1, "zone": 2, "subzone": 3, "landmark": 4}
+MAX_MOTIFS = 3
 
 
 class ArchiveError(Exception):
@@ -131,6 +133,27 @@ def index_keys(when):
     return ["*"]
 
 
+# ---- the closed vocabularies of themes and motifs (#90) ------------------------------------------------------------
+
+_VOCAB = {}
+
+
+def vocabulary(root=ROOT):
+    """The themes and motifs declared by the base (`AzerothUnspoken/Data/Themes.lua`), read as data like the rules."""
+    if root not in _VOCAB:
+        path = os.path.join(root, "AzerothUnspoken", "Data", "Themes.lua")
+        themes, motifs = set(), set()
+        if os.path.exists(path):
+            p = packfiles._parser(packfiles.read(path))
+            if p.skip_to("RegisterPack"):
+                p.expect("(")
+                for f in p.table().fields:
+                    if f.key in ("themes", "motifs") and isinstance(f.value, lualit.Table):
+                        (themes if f.key == "themes" else motifs).update(lualit.to_python(f.value))
+        _VOCAB[root] = (themes, motifs)
+    return _VOCAB[root]
+
+
 # ---- intentions ---------------------------------------------------------------------------------------------------
 
 def ensure_author(con, id, name=None, kind="ai", note=""):
@@ -147,15 +170,16 @@ def insert_intention(con, id, pack_id, rule, state="approved", author=LEGACY, at
     rule = dict(rule)
     events = rule.pop("event", None) or []
     known = {k: rule.pop(k, None) for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown",
-                                            "conditions")}
+                                            "conditions", "theme", "motifs", "tier")}
     extra = dict(rule) or None
     keys = index_keys(known["conditions"])
     con.execute(
-        "INSERT INTO intention (id, pack_id, state, author_id, events, category, speaker, form, styles, depth, tags, weight,"
-        " cooldown, conditions, extra, ctx, region, attribution, invented_lore, origin) VALUES"
-        " (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        "INSERT INTO intention (id, pack_id, state, author_id, events, category, speaker, form, styles, depth, tags, theme,"
+        " motifs, tier, weight, cooldown, conditions, extra, ctx, region, attribution, invented_lore, origin) VALUES"
+        " (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (id, pack_id, state, author, jdump(events), known["category"], known["speaker"], known["form"],
-         jdump(known["styles"]), jdump(known["depth"]), jdump(known["tags"]), known["weight"], known["cooldown"],
+         jdump(known["styles"]), jdump(known["depth"]), jdump(known["tags"]), known["theme"], jdump(known["motifs"]),
+         jdump(known["tier"]), known["weight"], known["cooldown"],
          jdump(known["conditions"]), jdump(extra), ",".join(keys), pack["region"], attribution or "", int(bool(invented_lore)),
          origin))
 
@@ -167,15 +191,16 @@ def set_variants(con, id, lang, variants):
 
 
 def reindex(con, ids=None):
-    """Rebuilds the search indexes (intention_event, _register, _depth, _tag) from the JSON of the intentions."""
+    """Rebuilds the search indexes (intention_event, _register, _depth, _tag, _motif) from the JSON of the intentions."""
     where, args = "", ()
     if ids is not None:
         ids = list(ids)
         where, args = " WHERE id IN (%s)" % ",".join("?" * len(ids)), tuple(ids)
         for t in ("event", "register", "depth", "tag"):
             con.execute("DELETE FROM intention_%s WHERE intention_id IN (%s)" % (t, ",".join("?" * len(ids))), args)
-    rows = con.execute("SELECT id, events, styles, depth, tags FROM intention" + where, args).fetchall()
-    for table, col in (("event", "events"), ("register", "styles"), ("depth", "depth"), ("tag", "tags")):
+        con.execute("DELETE FROM intention_motif WHERE intention_id IN (%s)" % ",".join("?" * len(ids)), args)
+    rows = con.execute("SELECT id, events, styles, depth, tags, motifs FROM intention" + where, args).fetchall()
+    for table, col in (("event", "events"), ("register", "styles"), ("depth", "depth"), ("tag", "tags"), ("motif", "motifs")):
         con.executemany("INSERT OR IGNORE INTO intention_%s VALUES (?,?,?)" % table,
                         [(r["id"], i, str(v)) for r in rows for i, v in enumerate(jload(r[col]) or [])])
 
@@ -195,6 +220,12 @@ def get_rule(con, id):
     for k in ("weight", "cooldown"):
         if r[k] is not None:
             out[k] = r[k]
+    if r["tier"] is not None:
+        out["tier"] = jload(r["tier"])
+    if r["theme"] is not None:
+        out["theme"] = r["theme"]
+    if r["motifs"] is not None:
+        out["motifs"] = jload(r["motifs"])
     out.update(jload(r["extra"]) or {})
     return out
 
@@ -445,9 +476,11 @@ def load_overlay(con, directory=OVERLAY_DIR):
         for k in ("category", "speaker", "form"):
             if r[k] != "":
                 rule[k] = r[k]
-        for k in ("styles", "depth", "tags", "conditions"):
+        for k in ("styles", "depth", "tags", "motifs", "tier", "conditions"):
             if r[k] != "":
                 rule[k] = json.loads(r[k])
+        if r["theme"] != "":
+            rule["theme"] = r["theme"]
         for k in ("weight", "cooldown"):
             if r[k] != "":
                 rule[k] = json.loads(r[k])
@@ -512,6 +545,19 @@ def check_content(con, id, stage="approve"):
         problems.append("weight must be greater than 0")
     if r["conditions"] and lualit.LUA in r["conditions"]:
         problems.append("conditions with code cannot be written through the archive")
+    themes, motifs = vocabulary()
+    if r["theme"] is not None and r["theme"] not in themes:
+        problems.append("unknown theme: %s" % r["theme"])
+    ms = jload(r["motifs"]) or []
+    if not isinstance(ms, list) or len(ms) > MAX_MOTIFS:
+        problems.append("motifs must be a list of at most %d" % MAX_MOTIFS)
+    else:
+        for m in ms:
+            if m not in motifs:
+                problems.append("unknown motif: %s" % m)
+    tier = jload(r["tier"])
+    if tier is not None and tier not in TIERS and tier not in TIERS.values():
+        problems.append("tier must be 0-4 or one of %s" % ", ".join(TIERS))
     pack = con.execute("SELECT languages FROM pack WHERE id = ?", (r["pack_id"],)).fetchone()
     langs = jload(pack["languages"]) or []
     for lang in sorted({v[0] for v in con.execute("SELECT lang FROM variant WHERE intention_id = ?", (id,))} | set(langs)):
@@ -567,13 +613,15 @@ def add_draft(con, d, default_author="ai"):
     if row is None:
         raise ArchiveError("%s: unknown pack %r" % (id, pack))
     unknown = set(d) - {"id", "pack", "event", "events", "category", "speaker", "form", "styles", "depth", "tags", "weight",
-                        "cooldown", "conditions", "texts", "author", "attribution", "invented_lore"}
+                        "cooldown", "conditions", "theme", "motifs", "tier", "texts", "author", "attribution",
+                        "invented_lore"}
     if unknown:
         raise ArchiveError("%s: unknown fields %s" % (id, ", ".join(sorted(unknown))))
     rule = {"event": d.get("event") or d.get("events") or []}
     if isinstance(rule["event"], str):
         rule["event"] = [rule["event"]]
-    for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "conditions"):
+    for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "conditions", "theme",
+              "motifs", "tier"):
         if d.get(k) is not None:
             rule[k] = d[k]
     texts = d.get("texts") or {}

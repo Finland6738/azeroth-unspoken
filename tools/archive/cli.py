@@ -7,7 +7,7 @@ Commands (see CONTRIBUTING.md, "Writing content through the archive"):
     build                 rebuild the database (build/authoring.sqlite) from the pack folders and the overlay
     stats                 counts by state and pack
     list [--state S]      list intentions (default: the drafts)
-    search [filters]      by --event, --tag, --region, --voice, --text, --pack, --state, --lang
+    search [filters]      by --event, --tag, --theme, --motif, --region, --voice, --text, --pack, --state, --lang
     show ID               one intention with its texts, reviews and history
     drafts FILE.jsonl     add intentions as drafts, one JSON object per line
     submit|reject|approve|retire|restore ID...   move intentions along draft -> review -> approved -> retired
@@ -89,7 +89,10 @@ def query(con, a):
         else:
             where.append("i.region = ?")
             args.append(a.region)
-    for table, value in (("event", a.event), ("tag", a.tag), ("register", a.register)):
+    if getattr(a, "theme", None):
+        where.append("i.theme = ?")
+        args.append(a.theme)
+    for table, value in (("event", a.event), ("tag", a.tag), ("register", a.register), ("motif", getattr(a, "motif", None))):
         if value:
             where.append("EXISTS (SELECT 1 FROM intention_%s x WHERE x.intention_id = i.id AND x.value LIKE ?)" % table)
             args.append(value.replace("*", "%"))
@@ -248,6 +251,8 @@ def main(argv=None):
         p.add_argument("--event", help="event name; * is a wildcard")
         p.add_argument("--tag", help="tag; * is a wildcard (e.g. 'topic:*')")
         p.add_argument("--register")
+        p.add_argument("--theme", help="theme of the closed vocabulary (#90)")
+        p.add_argument("--motif", help="motif; * is a wildcard")
         p.add_argument("--region", help="continent token of the pack, or 'any' for content of every place")
         p.add_argument("--voice", choices=store.SPEAKERS)
         p.add_argument("--text", help="text contained in a variant")
@@ -280,7 +285,7 @@ def main(argv=None):
     p.add_argument("--strict", action="store_true", help="exit 1 when a threshold is breached (not used in CI)")
     p.set_defaults(fn=cmd_report)
     a = ap.parse_args(argv)
-    for attr in ("state", "pack", "event", "tag", "register", "region", "voice", "text", "lang", "limit"):
+    for attr in ("state", "pack", "event", "tag", "register", "theme", "motif", "region", "voice", "text", "lang", "limit"):
         if not hasattr(a, attr):
             setattr(a, attr, None)
     try:

@@ -99,7 +99,7 @@ end
 local WARM_GUARDED = { greet = true, farewell = true, other_action = true, relation_player = true }
 
 local LOAD_LEVEL = { dupId = "error", badId = "error", noEvent = "error", badForm = "error", badSpeaker = "error",
-	noSpeaker = "warning", badWeight = "error", badCooldown = "error", badConditions = "error" }
+	noSpeaker = "warning", badWeight = "error", badCooldown = "error", badConditions = "error", badTier = "error" }
 
 ---------------------------------------------------------------------------
 -- UTF-8
@@ -334,7 +334,8 @@ function Validator:Run(opts)
 			st.phrases = st.phrases + 1
 			st.speakers[p.speaker] = (st.speakers[p.speaker] or 0) + 1
 			st.categories[p.category] = (st.categories[p.category] or 0) + 1
-			if p.tone then st.styles[p.tone] = (st.styles[p.tone] or 0) + 1 end
+			local tone = Engine.Tone(p)
+			if tone then st.styles[tone] = (st.styles[tone] or 0) + 1 end
 			-- profondità come le ha scritte il pacchetto: l'elenco, se il registro l'ha tenuto (#84), o l'insieme
 			local depthList = p.depthList or (p.depth and Engine.SortedKeys(p.depth))
 			if depthList then
@@ -364,6 +365,20 @@ function Validator:Run(opts)
 			for _, d in ipairs(depthList or {}) do
 				if not Engine.DEPTHS[d] then
 					Add("error", "badDepth", p.pack, id, nil, ("profondità '%s' sconosciuta"):format(tostring(d)))
+				end
+			end
+			-- themes and motifs (#90): closed vocabularies
+			if p.theme ~= nil and not (type(p.theme) == "string" and Engine.THEMES[p.theme]) then
+				Add("error", "badTheme", p.pack, id, nil, ("unknown theme '%s' (see Data/Themes.lua)"):format(tostring(p.theme)))
+			end
+			if p.motifs ~= nil then
+				if #p.motifs > Engine.MAX_MOTIFS then
+					Add("error", "badMotif", p.pack, id, nil, ("%d motifs: at most %d"):format(#p.motifs, Engine.MAX_MOTIFS))
+				end
+				for _, m in ipairs(p.motifs) do
+					if not (type(m) == "string" and Engine.MOTIFS[m]) then
+						Add("error", "badMotif", p.pack, id, nil, ("unknown motif '%s' (see Data/Themes.lua)"):format(tostring(m)))
+					end
 				end
 			end
 			if p.when then
@@ -598,6 +613,11 @@ function Validator:Run(opts)
 							("la cornice dichiara il registro '%s', sconosciuto: non si unirà a nessuna frase"):format(tostring(st)))
 					end
 				end
+				for _, th in ipairs(f.themes or {}) do
+					if not (type(th) == "string" and Engine.THEMES[th]) then
+						Add("error", "badTheme", packId, f.id, nil, ("unknown theme '%s' in a frame"):format(tostring(th)))
+					end
+				end
 			end
 			for _, v in ipairs(pack.vocabList or {}) do
 				CheckEntry("vocab", v, v.id)
@@ -607,6 +627,50 @@ function Validator:Run(opts)
 					Add("warning", "unregisteredLanguage", packId, nil, lang,
 						("lingua '%s' non registrata con RegisterLanguage: le frasi non saranno selezionabili"):format(lang))
 				end
+			end
+		end
+	end
+
+	-- direction data (#89, #91): related-event fallbacks, category quotas and hunger
+	if not scope then
+		for _, ev in ipairs(Engine.SortedKeys(Engine.events)) do
+			local fb = Engine.events[ev].fallback
+			if fb ~= nil then
+				if type(fb) ~= "string" or not Engine.events[fb] then
+					Add("error", "badFallback", Engine.events[ev].pack, "event:" .. ev, nil,
+						("fallback '%s' is not a declared event"):format(tostring(fb)))
+				else
+					-- no cycle: following the chain from ev never comes back to ev
+					local seen, cur = { [ev] = true }, fb
+					while cur and Engine.events[cur] do
+						if seen[cur] then
+							Add("error", "badFallback", Engine.events[ev].pack, "event:" .. ev, nil,
+								("the fallback chain comes back to '%s'"):format(cur))
+							break
+						end
+						seen[cur] = true
+						cur = Engine.events[cur].fallback
+					end
+				end
+			end
+		end
+		for _, cat in ipairs(Engine.SortedKeys(Engine.QUOTAS)) do
+			local q = Engine.QUOTAS[cat]
+			if type(q) ~= "table" or type(q.share) ~= "number" or q.share <= 0 or q.share > 1
+				or (q.window ~= nil and not (type(q.window) == "number" and q.window >= 1))
+				or (q.span ~= nil and not (type(q.span) == "number" and q.span > 0)) then
+				Add("error", "badQuota", nil, "quota:" .. cat, nil, "a quota needs share 0-1, window >= 1 and span > 0")
+			elseif not Engine.CATEGORIES[cat] then
+				Add("warning", "unknownCategory", nil, "quota:" .. cat, nil, ("categoria '%s' sconosciuta"):format(cat))
+			end
+		end
+		for _, cat in ipairs(Engine.SortedKeys(Engine.HUNGER)) do
+			local h = Engine.HUNGER[cat]
+			if type(h) ~= "table" or type(h.factor) ~= "number" or h.factor < 1 or h.factor > 5
+				or (h.after ~= nil and not (type(h.after) == "number" and h.after > 0)) then
+				Add("error", "badHunger", nil, "hunger:" .. cat, nil, "hunger needs a factor 1-5 and after > 0")
+			elseif not Engine.CATEGORIES[cat] then
+				Add("warning", "unknownCategory", nil, "hunger:" .. cat, nil, ("categoria '%s' sconosciuta"):format(cat))
 			end
 		end
 	end

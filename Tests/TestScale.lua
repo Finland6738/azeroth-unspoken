@@ -2,6 +2,15 @@
 -- bounded anti-repetition memory (#86). The equivalence tests compare the indexed selection with the selection before
 -- the index (a scan of all byEvent with the old order of checks) on the current database and on a small synthetic
 -- archive (Tests/SyntheticArchive.lua, loaded by run_tests.py before this file).
+--
+-- Updated on purpose by R3 (#89, #90, #91, ADR 0029). What still holds: the index gives the same *eligible* rules, in
+-- the same order and with the same random draws, as a scan of byEvent (CheckEquivalent, unchanged), and the weight of
+-- a candidate is the weight of Factors bit for bit (now with the thematic novelty in N: see also TestSelection.lua).
+-- What changes on purpose is the *pick* among the eligible rules: the specificity tiers narrow the pool, the novelty
+-- of themes, motifs, voices, openings and frames changes the weights, the related-event fallback speaks where R1 was
+-- silent, the quotas and hunger change which spontaneous event speaks. With Engine.R1_COMPAT = true all of that is
+-- off and Tests/trace_picks.py --r1 printed the same 3,000 picks as the engine of R1 on the same data (checked before
+-- the frames were rewritten); Tests/bench_m2.py measures the effect.
 local NS = ...
 local Engine = NS.Engine
 
@@ -264,4 +273,33 @@ T.run("#86: migration from schema 6", function()
 	T.eq(mem.last["t.old.0001"], nil, "and of rules that do not exist, after DORMANT_LAST_MAX")
 	T.eq(mem.recent.battle[1], "battle.gen.02", "the recent window stays"); T.eq(mem.lastTone.battle, "epic", "the last register too")
 	cooled.cooldown = nil
+end)
+
+T.run("R3 (#89): the tiers narrow the pool of eligible rules on purpose, never widen it", function()
+	NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+	local narrowed, cases = 0, 0
+	for _, s in ipairs(SCENES) do
+		local ctx = Scene(s)
+		for _, ev in ipairs(Events()) do
+			local items = {}
+			for _, p in ipairs(Engine:Eligible(Engine:Candidates(ev, ctx, "say"), "en", ctx, "say", time())) do
+				table.insert(items, { e = p, w = 1 })
+			end
+			if #items > 0 then
+				cases = cases + 1
+				local pool, tier = Engine.TierPool(items, ev)
+				local inItems = {}
+				for _, it in ipairs(items) do inItems[it] = true end
+				local ok, specific = true, 0
+				for _, it in ipairs(pool) do
+					if not inItems[it] or Engine.Tier(it.e) < tier then ok = false end
+					specific = specific + 1
+				end
+				T.ok(ok, ev .. ": the pool is a part of the eligible rules, from its tier up")
+				T.ok(tier == 0 and #pool == #items or specific >= Engine.TIER_MIN, ev .. ": a narrowed pool keeps TIER_MIN rules")
+				if #pool < #items then narrowed = narrowed + 1 end
+			end
+		end
+	end
+	T.ok(narrowed > 0 and narrowed < cases, ("the tiers narrow some pools, not all: %d of %d"):format(narrowed, cases))
 end)

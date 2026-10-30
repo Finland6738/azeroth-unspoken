@@ -312,6 +312,9 @@ end)
 
 T.run("budget per categoria, scalato con l'intensità", function()
 	local savedCat, savedEv = Pacing.CATEGORY_COOLDOWN.combat, NS.EVENT_COOLDOWN.battle
+	-- the per-session quotas (#91) are tested on their own below
+	local quotas = NS.Engine.QUOTAS
+	NS.Engine.QUOTAS = {}
 	local function Run(intensity)
 		Reset()
 		math.randomseed(5)
@@ -339,6 +342,7 @@ T.run("budget per categoria, scalato con l'intensità", function()
 	NS.db.chance.levelup = 100
 	T.eq(Spoken(function() Director:Offer("levelup") end), 1, "budget esaurito: il livello parla lo stesso")
 	Pacing.CATEGORY_COOLDOWN.combat, NS.EVENT_COOLDOWN.battle = savedCat, savedEv
+	NS.Engine.QUOTAS = quotas
 end)
 
 ---------------------------------------------------------------------------

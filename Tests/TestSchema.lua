@@ -42,7 +42,7 @@ T.run("regola v2: campi, valori predefiniti e testi per lingua", function()
 	T.eq(p.category, "combat", "categoria"); T.eq(p.speaker, "inner", "voce")
 	T.eq(p.form, "say", "la voce interiore non è un'emote")
 	T.eq(p.styles[1], "intimate", "registro principale"); T.eq(p.styles[2], "ancient", "registro secondario")
-	T.eq(p.tone, "intimate", "il tono è il registro principale")
+	T.eq(Engine.Tone(p), "intimate", "il tono è il registro principale")
 	T.ok(p.depth.natural and p.depth.literary and not p.depth.elevated, "profondità")
 	T.ok(p.tags.forest and p.tags.calm, "tag")
 	T.eq(p.weight, 3, "peso"); T.eq(p.cooldown, 90, "cooldown")
@@ -79,7 +79,7 @@ T.run("formato vecchio convertito in caricamento", function()
 	local a = Engine.byId["t.old.01"]
 	T.ok(a.legacy, "marcata come formato vecchio")
 	T.eq(a.speaker, "character", "say -> personaggio"); T.eq(a.form, "say", "forma")
-	T.eq(a.styles[1], "epic", "il tono eroico diventa il registro epic"); T.eq(a.tone, "epic", "tono")
+	T.eq(a.styles[1], "epic", "il tono eroico diventa il registro epic"); T.eq(Engine.Tone(a), "epic", "tono")
 	T.eq(a.weight, 2, "peso"); T.eq(a.cooldown, 30, "cooldown"); T.eq(a.when.race, "Orc", "when resta valido")
 	T.eq(Engine.VariantText(a.text.it[1]), "Per l'Orda!", "testo it"); T.eq(Engine.VariantText(a.text.en[1]), "For the Horde!", "testo en")
 	T.eq(a.category, "general", "evento non dichiarato: categoria generica")
@@ -299,12 +299,14 @@ T.run("cornici e vocabolario con più varianti", function()
 	})
 	NS.db.locale = "it"
 	local seenWord, seenFrame = {}, {}
-	for _ = 1, 80 do
+	-- the generic frames of the base (#90) compete with the frame of the pack: more picks, and only its two variants
+	for _ = 1, 300 do
 		local r = Pick("t_fv", "emote")
 		T.ok(r ~= nil, "frase incorniciata")
 		local w = r.text:match("ecco ([a-z]+)")
 		seenWord[w] = true
-		seenFrame[r.text:match("^([a-z]+):")] = true
+		local f = r.text:match("^([a-z]+):")
+		if f then seenFrame[f] = true end
 	end
 	T.ok(seenWord.una and seenWord.due and seenWord.tre, "tutte le voci e varianti di vocabolario")
 	T.ok(seenFrame.dice and seenFrame.sussurra, "tutte le varianti della cornice")

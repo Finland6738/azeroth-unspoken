@@ -67,6 +67,7 @@ Data\enUS\Interface.lua
 # --- database narrativo di base (stessa API dei pacchetti esterni, schema v2) ---
 # vocabolario, cornici e regole (Registry*). I testi delle frasi stanno nei pacchetti di lingua AzerothUnspoken_enUS e
 # AzerothUnspoken_itIT (LoadOnDemand): Core\Packs.lua carica solo quello della lingua scelta (#85, ADR 0025)
+Data\Themes.lua
 Data\Vocabulary.lua
 Data\Frames.lua
 Data\Relationships.lua
