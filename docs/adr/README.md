@@ -31,6 +31,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0021](0021-story-arcs-micro-stories-without-game-effects.md) | Story Arcs: micro-stories that do not touch the game | accepted |
 | [0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md) | Automatic rules: CI, a docs check and the wiki sync | accepted |
 | [0023](0023-english-first-addon-and-english-command-names.md) | English first: the addon starts in English and command names are always English | accepted |
+| [0024](0024-selection-index-compact-registry-and-bounded-memory.md) | Selection index, compact in-memory registry and bounded anti-repetition memory | accepted |
 
 ## Pending decisions
 

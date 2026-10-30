@@ -99,11 +99,11 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Core/Config.lua`** | defaults, `Merge`, `Validate`, migrations by `schemaVersion`, `Get`/`Set` by path, module presets, Chat Gateway modes and channels. Sets `NS.db` and `NS.cdb`. |
 | **`Core/EventBus.lua`** | WoW sources → normalized types; envelopes; deduplication; anti-cascade queue; `Publish`, `Subscribe`, `Recent`. |
 | **`Core/ContextResolver.lua`** | `NS:BuildContext(extra)`: builds the context on which conditions are evaluated (character, place, time, group, instance, target, spell; `ctx.place` before memory, `ctx.other` after relationships), classifies spells, registers the zones and keywords of the packs. |
-| **`Engine/PhraseRegistry.lua`** | `RegisterPack`; registers lines, frames, vocabulary and translations; indexes by event and by id; provisional speaker; statistics. |
+| **`Engine/PhraseRegistry.lua`** | `RegisterPack`; registers lines, frames, vocabulary and translations in the compact in-memory format (variants as strings, shared tables, no source tables kept; #84); indexes by id, by event (`byEvent`) and by event, form and place (`Engine.index`, `Engine:Candidates`; #83); provisional speaker; statistics. See [ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md). |
 | **`Engine/RuleEngine.lua`** | `Match(when, ctx)`: the declarative conditions (values, lists, `not`, `any`, `func`, ranges), the memory ones (`firstVisit`, `repeatVisit`, `lastVisitBad`, `visitsMin`, `daysSinceLastVisit`, `remembered`), the relationship ones and the `other` and `place` sub-tables (S6c, `Engine.MatchSub`, `Engine.SUB_FIELDS`). |
 | **`Engine/StyleResolver.lua`** | registers suited to the moment (GDD §5.2): allowed per event, preferred by zone, depth and voice; the affinity of a line (part of the `S` factor); compatibility between frame and line. |
 | **`Engine/Traits.lua`** | the trait model (GDD §7.1): definitions (`choice`, `scale` with bands, `set`), profiles holding only the traits that are set, `Sanitize`, `Merge` (priority between sources), affinity tags (`Evaluate`, `CheckTag`), localized names. It knows nothing about the character: Character Soul (S5), interlocutor (S6c) and relationships (S6b) reuse it. |
-| **`Engine/WeightedSelector.lua`** | eligibility, weight `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`, hooks via `Engine:SetWeightHook`), anti-repetition, memory of uses, event guards (`Engine:SetEventGuard`), `PickEntry`/`Pick`. |
+| **`Engine/WeightedSelector.lua`** | eligibility over the candidates of the index, weight `W = B × C × P × N × S × R` (`Engine.Factors`, `Engine:Weight`, hooks via `Engine:SetWeightHook`), anti-repetition, bounded memory of uses (#86), event guards (`Engine:SetEventGuard`), `PickEntry`/`Pick`. |
 | **`Engine/Pacing.lua`** | cooldowns (moment, global, category, event) and per-category budgets for spontaneous interventions; state in memory only. |
 | **`Engine/NarrativeDirector.lua`** | the priorities of §10, an intensity-driven opportunity gate, suspension (intrusive screens, demanding combat), the die roll, candidate order; hooks for rhythm and demand. |
 | **`Engine/TemplateRenderer.lua`** | placeholders, gender, vocabulary, frames. If a piece of data is missing, the line is discarded. |
@@ -293,7 +293,7 @@ The log of the latest decisions (`Director.log`) and the budget used appear in `
 
 ```mermaid
 flowchart TD
-    A["PickEntry(event, ctx, form)"] --> B["Lines of the event<br/>in the chosen language"]
+    A["PickEntry(event, ctx, form)"] --> B["Candidates of the index:<br/>generic group + groups of the<br/>zone, class, race, mood... (#83)"]
     B --> C{"Eligible?<br/>(pack on, own pause,<br/>placeholder data, when)"}
     C -- no --> X["discarded"]
     C -- yes --> D["W = B × C × P × N × S × R<br/>(base, context, personality, novelty,<br/>style, relationship)"]
@@ -311,7 +311,9 @@ flowchart TD
 - **Character**: traits weight the lines and, for hard tags, exclude them; see [the Character Soul](#the-character-soul).
 - **Style**: registers weight and do not exclude, so the neutral fallback is automatic. In emote form, a frame with registers accepts only lines of the same or a close register (`StyleResolver:Compatible`).
 - **Conditions** (`when`): see [PACK_FORMAT.md](../AzerothUnspoken/PACK_FORMAT.md). More conditions → more specific line → greater weight.
-- **Memory**: `NS.cdb.memory` (`uses`, `last`, `recent`, `lastTone`), per character. Uses fade at every access (`DecayMemory`, ×0.75). The window of recent lines is about 60% of those available, at most `pacing.recentPhraseWindow` (30).
+- **Candidates** (`Engine:Candidates`, #83): each rule is registered in the generic group of its event and form or, if its conditions ask for a zone, subzone, map, class, race, mood, creature type or time of day (the first of `Engine.INDEX_DIMENSIONS`), in the group of each value. A pick reads the generic group and the groups its context opens, merged in registration order: the same rules, in the same order, as a scan of all the lines of the event. Rules with `chance`, `func` or a condition of a pack stay generic, so the random sequence does not change. The index does not depend on the language, so language and regional packs (#85, #101) add their rules to it.
+- **In-memory format** (#84): a variant is a plain string unless it needs more (an empty text, a depth of its own, a text of another pack); read it with `Engine.VariantText`, `VariantOk`, `VariantDepth`, `VariantPack` or `VariantView`. Rules share their lists of events, registers, tags and depths. `RegisterPack` does not keep the pack's source tables.
+- **Memory**: `NS.cdb.memory` (`uses`, `last`, `variant`, `recent`, `lastTone`), per character, bounded (#86): `uses` fade at every login (`DecayMemory`, ×0.75) and keep at most `Engine.USES_MAX` (512) entries, `variant` (last variant used) only for phrases in `uses`, `last` only for entries with a running cooldown. The window of recent lines is about 60% of those available, at most `pacing.recentPhraseWindow` (30). No text is saved.
 - **Voice (`speaker`)**: `narrator`, `inner`, `character`, `npc`; each rule declares it (if missing it is inferred from `form`: `say` → `character`, `emote` → `narrator`, with a validator warning). A spoken line placed in a frame is `narrator`. The `inner` and `npc` voices never become proposals for the chat.
 - Silence is a valid outcome: if no line is eligible, the engine returns `nil`.
 
@@ -505,14 +507,14 @@ flowchart LR
 
 | Variable | Content |
 |---|---|
-| `AzerothUnspokenDB` | `schemaVersion` (currently 6) and `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`), `interlocutor` (`trp3Others`: consent to read other people's public Total RP 3 profile), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (button, wizard done, `narrator`: duration, opacity, size, lock, history; `dialogue`: size, opacity, lock, position). |
-| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (uses, last lines, tone), `personality` (`version`, `archetype`, `traits`, `trp3`: explicit Character Soul choices and consent to Total RP 3) `relationships` (relationships: `version`, `npcs` by `npcID`, `players` by "Name-Realm"; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
+| `AzerothUnspokenDB` | `schemaVersion` (currently 7) and `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`), `interlocutor` (`trp3Others`: consent to read other people's public Total RP 3 profile), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (button, wizard done, `narrator`: duration, opacity, size, lock, history; `dialogue`: size, opacity, lock, position). |
+| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (anti-repetition, bounded: uses, last variants, running cooldowns, recent lines, tone), `personality` (`version`, `archetype`, `traits`, `trp3`: explicit Character Soul choices and consent to Total RP 3) `relationships` (relationships: `version`, `npcs` by `npcID`, `players` by "Name-Realm"; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
 
 Every per-character datum also has its **own version** (`personality.version`, `memories.version`, `relationships.version`, `arcs.version`), with migrations and cleanup (`Sanitize`) in its own module. A version newer than the one known (you went back to an older addon) is read but **not rewritten**.
 
 | Datum | Schema version | Where the migration lives |
 |---|---|---|
-| `AzerothUnspokenDB` / `AzerothUnspokenCharacterDB` | `Config.SCHEMA_VERSION` = 6 | `Config.migrations.global[n]` and `.character[n]` |
+| `AzerothUnspokenDB` / `AzerothUnspokenCharacterDB` | `Config.SCHEMA_VERSION` = 7 | `Config.migrations.global[n]` and `.character[n]` |
 | `cdb.personality` | 1 | `Personality:Sanitize` |
 | `cdb.memories` | 2 (place key by uiMapID, #31) | `LM.migrations[n]` |
 | `cdb.relationships` | 1 | `R:Sanitize` |
@@ -569,6 +571,7 @@ A pack can also use `func = function(ctx) … end` in conditions for rules writt
 | `AzerothUnspoken.EventBus:AddSource(wowEvent, { normalize, unit })` | translate a new client event; registration goes through Compat |
 | `AzerothUnspoken.Compat` (`caps`, `Query`, `SafeCall`, `Readable`, `IsSecret`) | use the client APIs defensively |
 | `AzerothUnspoken.Gateway:Send(...)` | **outside `PlayerAction`** it refuses everything except emotes (and `/say`/`/yell` in instances): whoever uses it does not bypass the rules |
+| `AzerothUnspoken.Engine.byId[id]` and `byEvent[event]` | read the registered rules; read their texts with `Engine.VariantText` and the other accessors, because most variants are plain strings since R1 ([ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md)) |
 
 These points are internal: they may change from one version to the next while the roadmap is open. Only the pack API is meant to last, and its changes will be announced in the [CHANGELOG](../CHANGELOG.md).
 
@@ -596,6 +599,7 @@ From the [roadmap](../ROADMAP.md). The current `main` has milestones M0–M3: fo
 
 ## 9. Known limits
 
+- **Scale (R1)**: at 50,000 synthetic entries the offline projection (`Tests/bench_scale.py`, lupa) gives 4.1 ms per pick on average (p95 14 ms) and 95 MB of memory with two languages (76 MB with one): the targets of R1 (5 ms, 40 MB) are met only for the mean pick time. The targets are hypotheses until the in-game budget is decided (D3 in #130); see [ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md).
 - **Nothing has been tested in the real client.** Everything is verified only with the simulated client; the G1 test is postponed ([checklist](G1_checklist.md)).
 - In the settings the `personal`, `world`, `memory`, `relations`, `npc`, `storyArcs`, `publicChat` and `totalRP3` modules take effect; social and audio are still placeholders.
 - The per-event probabilities and pauses (`NS.DEFAULT_CHANCE`, `NS.EVENT_COOLDOWN`) come from the prototype; the Narrative Director's numbers (budget, category pauses, style bonuses and penalties) are hypotheses to tune with in-game tests ([G1](G1_checklist.md), steps 27–31).

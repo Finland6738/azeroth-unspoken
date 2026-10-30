@@ -1,7 +1,7 @@
 # 0006. SavedVariables and schema versions
 
 - Status: Accepted
-- Date: 2026-10-29 (implemented in steps S1 and S2; decision of the [roadmap](../../ROADMAP.md), S1; updated up to schema 6 and step S9)
+- Date: 2026-10-29 (implemented in steps S1 and S2; decision of the [roadmap](../../ROADMAP.md), S1; updated up to schema 7 and phase R1)
 
 ## Context
 
@@ -13,7 +13,7 @@ An addon that saves data must be able to evolve it without losing the user's cho
    - `AzerothUnspokenDB` (`## SavedVariables`): `{ schemaVersion, settings = { … } }`, per account. After `Config:Load` it is `NS.db` (that is, `AzerothUnspokenDB.settings`).
    - `AzerothUnspokenCharacterDB` (`## SavedVariablesPerCharacter`): `{ schemaVersion, memory, personality, memories, relationships, arcs, history }`, per character. After loading it is `NS.cdb`. The ones in use are `memory` (line anti-repetition), `personality` (Character Soul, S5, [ADR 0016](0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md)), `memories` (Living Memory, S6, [ADR 0017](0017-living-memory-selective-memories-and-honest-recall.md)), `relationships` (S6b, [ADR 0018](0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)) and `arcs` (Story Arcs, S9, [ADR 0021](0021-story-arcs-micro-stories-without-game-effects.md)). `history` is the only placeholder still empty.
    - The account settings (`settings`) also include the systems' sections: `relations`, `interlocutor` (`trp3Others`, the consent to read other players' public Total RP 3 profiles, [ADR 0019](0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)), `npcAlive` (`autoOffer`, [ADR 0020](0020-simulated-dialogue-and-real-dialogue-npc-alive.md)), `arcs` (`maxActive`) and `ui.dialogue`. New sections are added by `Merge`: no migration is needed.
-2. **One schema version** (`Config.SCHEMA_VERSION`, currently 6), saved in the `schemaVersion` of each variable. The global and character versions advance together, even when one of the two changes nothing (the migration is then empty):
+2. **One schema version** (`Config.SCHEMA_VERSION`, currently 7), saved in the `schemaVersion` of each variable. The global and character versions advance together, even when one of the two changes nothing (the migration is then empty):
 
    | Version | What changes |
    |---|---|
@@ -23,10 +23,11 @@ An addon that saves data must be able to evolve it without losing the user's cho
    | 4 | `memories` becomes the Living Memory (S6) |
    | 5 | `relationships` for NPCs and players (S6b) |
    | 6 | `arcs` for story arcs (S9) |
+   | 7 | bounded anti-repetition `memory`: `uses` capped, `variant` only for phrases in `uses`, `last` only for entries with a running cooldown (R1, #86, [ADR 0024](0024-selection-index-compact-registry-and-bounded-memory.md)) |
 
    Memory places moved to a stable key by `uiMapID` (S6c, issue #31) did **not** advance the schema: it is an *internal* version of `memories`.
 3. **Step-by-step migrations** in `Config.migrations[type][n]`: function *n* takes the data from version *n−1* to *n*. They are applied in order at startup, each inside `Diagnostics:Guard`. Example: global migration 2 turns `output.mode` into `chat.mode` and forces `autoPublicSay = false` ([ADR 0003](0003-private-narrator-and-chat-gateway.md)). No migration from the prototype: `VociDiAzerothDB` is not imported, because it was never used in game.
-   - **Internal module versions.** Data with a complex shape also has **its own version**, with migrations and cleanup in its own module: `personality.version` (1), `memories.version` (2, `LM.migrations[n]`), `relationships.version` (1) and `arcs.version` (1, `SA.migrations`). They exist because the internal shape can change without touching the other variables (so the move of memory places to `uiMapID` is version 2 of `memories` and the schema stays at 6). At startup each module runs its own migrations and its own `Sanitize`, which discards malformed entries and brings values back within limits: data ruined by hand does not break the addon.
+   - **Internal module versions.** Data with a complex shape also has **its own version**, with migrations and cleanup in its own module: `personality.version` (1), `memories.version` (2, `LM.migrations[n]`), `relationships.version` (1) and `arcs.version` (1, `SA.migrations`). They exist because the internal shape can change without touching the other variables (so the move of memory places to `uiMapID` is version 2 of `memories` and did not change the schema). At startup each module runs its own migrations and its own `Sanitize`, which discards malformed entries and brings values back within limits: data ruined by hand does not break the addon.
 4. **Defaults and validation**: `Config.Merge(defaults, saved)` recursively adds what is missing without touching what is there; `Config:Validate` resets to the default any values of the wrong type, off the list or out of range (rules by path in `Config.rules`) and collects the problems in `Config.issues`. Access by path with `Config:Get`/`Config:Set` (which validate).
 5. **Data from a newer version** (the user went back to an older addon): an error is recorded in diagnostics and **nothing is modified**.
    - For the **schema** (`schemaVersion` greater than the addon's) the migration does not run: `Config:Load` works on a **copy** (`Config.readOnly`) with `Merge` and `Validate`, discarded at the end of the session, and the saved file stays as it was (Q2 fix, issue #3).
