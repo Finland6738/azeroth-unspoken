@@ -121,7 +121,7 @@ function SYNTH_SOURCE(NS, n, opts)
 		registry[id] = {
 			event = Copy(p.events), speaker = p.speaker, form = p.form, category = p.category,
 			styles = Copy(p.styles), depth = Keys(p.depth), tags = Keys(p.tags), weight = p.weight,
-			cooldown = p.cooldown, conditions = when,
+			cooldown = p.cooldown, conditions = when, theme = p.theme, motifs = Copy(p.motifs),
 		}
 		for _, ev in ipairs(p.events) do events[ev] = (events[ev] or 0) + 1 end
 		for _, lang in ipairs(langs) do

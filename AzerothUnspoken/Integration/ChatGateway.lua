@@ -652,7 +652,7 @@ function Gateway:Narrate(event, ctx, opts)
 	if not rec then return false end
 	local shown = self:Propose(rec, ctx, opts)
 	-- una frase chiesta dal giocatore apre il "momento" del pacing: nessuna frase spontanea subito dopo
-	if shown and not (opts and opts.auto) and NS.Pacing then NS.Pacing:Note(GetTime()) end
+	if shown and not (opts and opts.auto) and NS.Pacing then NS.Pacing:Note(GetTime(), NS.Engine.EventCategory(event)) end
 	return shown
 end
 

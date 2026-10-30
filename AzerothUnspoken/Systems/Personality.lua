@@ -326,7 +326,7 @@ function Personality.Factor(entry, ctx)
 		if f == 0 then return 0 end
 	end
 	-- l'ironia pesa le frasi di registro ironico anche senza un tag esplicito
-	if soul.irony and entry.tone == "ironic" and not HasIronyTag(entry.tags) then
+	if soul.irony and NS.Engine.Tone(entry) == "ironic" and not HasIronyTag(entry.tags) then
 		f = f * (Personality.IRONY_FACTOR[Traits.Band(Traits.defs.irony, soul.irony)] or 1)
 	end
 	return math.max(Traits.MIN_FACTOR, math.min(Traits.MAX_FACTOR, f))

@@ -63,7 +63,10 @@ end
 ---  motivo del gate (paused, silent, module:<nome>, screen:<nome>, busy, moment, cooldown:<tipo>, budget:<categoria>)
 function Director:Offer(event, extra, onResult)
 	seq = seq + 1
-	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event), onResult = onResult })
+	-- hunger of its category (#91): among candidates of the same priority, the most neglected category goes first
+	local hunger = Pacing:Hunger(NS.Engine.EventCategory(event) or "general", GetTime())
+	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event), hunger = hunger,
+		onResult = onResult })
 	if self.pendingResolve then return end
 	self.pendingResolve = true
 	if C_Timer and C_Timer.After then

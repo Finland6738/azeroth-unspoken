@@ -28,7 +28,6 @@ NS.Engine = Engine
 ---@field speaker "narrator"|"inner"|"character"|"npc"
 ---@field form "say"|"emote" say = parlata, emote = narrativa in terza persona (senza il nome)
 ---@field styles string[] registri (GDD §5.1); il primo è quello principale
----@field tone? string primo registro, usato dalla differenziazione dei registri
 ---@field depth? table<string, boolean> profondità per cui la frase è scritta; assente = tutte
 ---@field depthList? any[] profondità come le ha scritte il pacchetto, solo se l'insieme depth non le dice tutte (validatore)
 ---@field tags table<string, boolean> tag descrittivi e di affinità ("temperament:stoic", "req:", "not:", "topic:"): vedi Engine/Traits.lua
@@ -39,7 +38,10 @@ NS.Engine = Engine
 ---@field text table<string, AUVariantValue[]> [codice lingua breve] = varianti
 ---@field legacy? boolean convertita dal formato vecchio
 ---@field ord integer ordine di registrazione: l'indice di selezione unisce i suoi gruppi in quest'ordine (#83)
--- events, styles, tags e depth sono condivisi tra le frasi con gli stessi valori (#84): sola lettura.
+---@field tier? integer explicit specificity tier (#89); read the tier with Engine.Tier(p)
+---@field theme? string theme of the phrase (#90), from Engine.THEMES
+---@field motifs? string[] concrete images of the phrase (#90, at most three), from Engine.MOTIFS
+-- events, styles, tags, motifs e depth sono condivisi tra le frasi con gli stessi valori (#84): sola lettura.
 
 ---@class AURegistryEntry la regola di una frase nel formato v2
 ---@field event string|string[]
@@ -52,6 +54,9 @@ NS.Engine = Engine
 ---@field weight? number
 ---@field cooldown? number
 ---@field conditions? table
+---@field tier? integer|string explicit specificity tier (#89); absent = deduced from the conditions
+---@field theme? string one theme (#90)
+---@field motifs? string[] zero to three motifs (#90)
 
 Engine.packs = {}       -- [id] = pacchetto
 Engine.packOrder = {}
@@ -94,6 +99,33 @@ Engine.TONE_STYLE = {
 
 Engine.CATEGORIES = { combat = true, spellcraft = true, life = true, exploration = true, reflection = true, social = true,
 	general = true }
+
+-- Themes and motifs (#90, ADR 0028): closed vocabularies, filled by Data/Themes.lua and by the packs that declare
+-- `themes = {}` or `motifs = {}`. The validator rejects a rule or a frame that names one not declared.
+Engine.THEMES = {}
+Engine.MOTIFS = {}
+Engine.MAX_MOTIFS = 3
+
+-- Specificity tiers (#89, ADR 0028), from the most generic to the most specific. A rule gets the tier of the most
+-- specific condition it asks at the top level (or in `place`), unless it writes `tier` itself. A situation (a class, a
+-- target, a memory, a relation) and a region or an atmosphere share tier 1: a line about the death of last visit must
+-- not lose to a line about the forest. `landmark` is only explicit until landmarks exist as a condition (#94).
+Engine.TIERS = { generic = 0, situation = 1, region = 1, zone = 2, subzone = 3, landmark = 4 }
+Engine.TIER_NAMES = { [0] = "generic", "situation", "zone", "subzone", "landmark" }
+Engine.MAX_TIER = 4
+-- conditions that say where (`top` = top level of the conditions, `place` = inside `place`) and the tier they give
+Engine.TIER_CONDITIONS = {
+	top = { subzone = 3, zone = 2, mood = 1, instance = 1, instanceType = 1 },
+	place = { subzone = 3, zone = 2, mapID = 2, continent = 1, tags = 1, mood = 1, territory = 1, capital = 1,
+		friendlyCapital = 1, hostileCapital = 1, instanceType = 1 },
+}
+-- conditions that do not make a rule more specific: chance, the user's settings and exclusions
+Engine.TIER_NEUTRAL = { chance = true, depth = true, intensityMin = true, intensityMax = true, ["not"] = true }
+
+-- Data of the direction (#91), filled by Data/Themes.lua and by the packs (`quotas = {}`, `hunger = {}`):
+-- QUOTAS[category] = { share = 0..1, window = interventions, span = seconds }, HUNGER[category] = { factor, after }
+Engine.QUOTAS = {}
+Engine.HUNGER = {}
 
 -- Eventi di base e la loro categoria. Un pacchetto ne aggiunge con NS:RegisterEvent o con `events = {}`.
 local BASE_EVENTS = {
@@ -159,6 +191,66 @@ local function Specificity(when)
 		end
 	end
 	return n
+end
+
+---The specificity tier the conditions give a rule (#89): the most specific place condition at the top level or in
+---`place` (subzone 3, zone or map 2), else 1 if a region, an atmosphere or any other condition narrows the moment,
+---else 0.
+---Conditions under `not` say where a rule does not go, so they never make it more specific.
+---@param when? table
+---@return integer
+function Engine.TierOf(when)
+	if type(when) ~= "table" then return 0 end
+	local tier = 0
+	for k, v in pairs(when) do
+		local t = Engine.TIER_CONDITIONS.top[k]
+		if t then
+			if t > tier then tier = t end
+		elseif k == "place" and type(v) == "table" then
+			for pk in pairs(v) do
+				local pt = Engine.TIER_CONDITIONS.place[pk] or (Engine.TIER_NEUTRAL[pk] and 0 or 1)
+				if pt > tier then tier = pt end
+			end
+		elseif not Engine.TIER_NEUTRAL[k] and tier < 1 then
+			tier = 1
+		end
+	end
+	return tier
+end
+
+---The main register of a rule (its first one), used by the differentiation of registers. It is not stored: a rule
+---table with one field less keeps its size now that rules have a theme and motifs (#90, ADR 0028).
+---@param p table rule, frame or vocabulary entry
+---@return string?
+function Engine.Tone(p)
+	local s = p.styles
+	return s and s[1]
+end
+
+-- deduced tiers, by conditions table (each rule has its own): computed once, freed with the rule
+local tierCache = setmetatable({}, { __mode = "k" })
+
+---The specificity tier of a rule (#89): 0 generic, 1 situation or region, 2 zone, 3 subzone, 4 landmark. The
+---explicit `tier` of the rule, or the one its conditions give.
+---@param p table rule
+---@return integer
+function Engine.Tier(p)
+	if p.tier then return p.tier end
+	local when = p.when
+	if type(when) ~= "table" then return 0 end
+	local t = tierCache[when]
+	if not t then
+		t = Engine.TierOf(when)
+		tierCache[when] = t
+	end
+	return t
+end
+
+-- an explicit tier: a number 0-4 or a name of Engine.TIERS; nil if it is not one
+local function ExplicitTier(v)
+	if type(v) == "string" then return Engine.TIERS[v] end
+	if type(v) == "number" and v == math.floor(v) and v >= 0 and v <= Engine.MAX_TIER then return v end
+	return nil
 end
 
 local function Blank(s)
@@ -548,7 +640,6 @@ function Engine:AddEntry(pack, id, e, legacy)
 	local styles = {}
 	for _, s in ipairs(e.styles and AsList(e.styles) or LegacyTones(e.tone)) do table.insert(styles, s) end
 	p.styles = SharedList(styles)
-	p.tone = p.styles[1]
 	p.depth = SharedSet(ToSet(e.depth))
 	-- l'elenco scritto dal pacchetto serve al validatore solo se dice più dell'insieme (valori non stringa, ripetuti)
 	if e.depth then
@@ -579,6 +670,15 @@ function Engine:AddEntry(pack, id, e, legacy)
 	end
 	p.when = when
 	p.spec = Specificity(when)
+	-- only an explicit tier is stored: the deduced one is computed when a pick needs it (Engine.Tier), so a rule table
+	-- keeps its size (one field more would double the hash part of most conditioned rules, ADR 0024)
+	if e.tier ~= nil then
+		p.tier = ExplicitTier(e.tier)
+		if not p.tier then Issue(pack, "badTier", id, ("tier '%s' non valido"):format(tostring(e.tier))) end
+	end
+	-- theme and motifs (#90): kept as written, the validator checks them against the vocabularies
+	if e.theme ~= nil then p.theme = e.theme end
+	if e.motifs ~= nil then p.motifs = SharedList(AsList(e.motifs)) end
 
 	self.byId[id] = p
 	self.nextOrd = self.nextOrd + 1
@@ -659,6 +759,9 @@ function Engine:AddFrame(pack, f)
 	f.spec = Specificity(f.when)
 	-- registri della cornice (facoltativi): il StyleResolver non la unisce a una frase di registro lontano
 	f.styles = f.styles and AsList(f.styles) or nil
+	-- themes of the frame (#90, optional): it tells only phrases of one of them; without, every theme
+	f.themes = f.themes and AsList(f.themes) or nil
+	f.themeSet = ToSet(f.themes)
 	pack._autoFrame = (pack._autoFrame or 0) + 1
 	f.id = f.id or (pack.id .. "#frame" .. pack._autoFrame)
 	pack.frameList = pack.frameList or {}
@@ -694,9 +797,11 @@ end
 ---------------------------------------------------------------------------
 -- Dichiarazioni dei pacchetti: eventi, registri, categorie
 ---------------------------------------------------------------------------
----Dichiara un evento nuovo. def = { category =, chance = (%), cooldown = (secondi) }.
+---Dichiara un evento nuovo. def = { category =, chance = (%), cooldown = (secondi), fallback = (evento) }.
+---`fallback` (#89) is the related event the selection tries when this one has no eligible phrase; a base event can
+---get one too (Data/Themes.lua declares `rezother` -> `heal`).
 ---@param name string
----@param def? { category?: string, chance?: number, cooldown?: number }
+---@param def? { category?: string, chance?: number, cooldown?: number, fallback?: string }
 function NS:RegisterEvent(name, def)
 	def = def or {}
 	local Engine = self.Engine
@@ -705,6 +810,7 @@ function NS:RegisterEvent(name, def)
 	elseif def.category and not Engine.events[name].category then
 		Engine.events[name].category = def.category
 	end
+	if def.fallback ~= nil then Engine.events[name].fallback = def.fallback end
 	if def.category then Engine.CATEGORIES[def.category] = true end
 	if (def.chance or def.cooldown) and self.SetEventDefaults then
 		self:SetEventDefaults(name, def.chance, def.cooldown)
@@ -717,6 +823,34 @@ end
 
 function NS:RegisterCategory(id)
 	if type(id) == "string" and id ~= "" then self.Engine.CATEGORIES[id] = true end
+end
+
+---Adds a theme to the closed vocabulary (#90).
+---@param id string
+function NS:RegisterTheme(id)
+	if type(id) == "string" and id ~= "" then self.Engine.THEMES[id] = true end
+end
+
+---Adds a motif to the closed vocabulary (#90).
+---@param id string
+function NS:RegisterMotif(id)
+	if type(id) == "string" and id ~= "" then self.Engine.MOTIFS[id] = true end
+end
+
+---Per-session quota of a category (#91): at most `share` (0-1) of the last `window` spontaneous interventions, counting
+---only those of the last `span` seconds. nil removes it. The validator checks the values.
+---@param category string
+---@param def? { share: number, window?: integer, span?: number }
+function NS:SetCategoryQuota(category, def)
+	if type(category) == "string" then self.Engine.QUOTAS[category] = def end
+end
+
+---Hunger of a category (#91): after `after` seconds without a spontaneous intervention of the category its chance is
+---multiplied by up to `factor` (growing with the silence), and it goes first among candidates of the same priority.
+---@param category string
+---@param def? { factor: number, after?: number }
+function NS:SetCategoryHunger(category, def)
+	if type(category) == "string" then self.Engine.HUNGER[category] = def end
 end
 
 ---------------------------------------------------------------------------
@@ -745,10 +879,15 @@ function NS:RegisterPack(pack)
 	-- dichiarazioni: prima di tutto, così le frasi del pacchetto le possono usare
 	for _, name in ipairs(SortedKeys(pack.events or {})) do
 		local def = pack.events[name]
-		self:RegisterEvent(name, { category = def.category, chance = def.chance, cooldown = def.cooldown, pack = pack.id })
+		self:RegisterEvent(name, { category = def.category, chance = def.chance, cooldown = def.cooldown, pack = pack.id,
+			fallback = def.fallback })
 	end
 	for _, s in ipairs(pack.styles or {}) do self:RegisterStyle(s) end
 	for _, c in ipairs(pack.categories or {}) do self:RegisterCategory(c) end
+	for _, t in ipairs(pack.themes or {}) do self:RegisterTheme(t) end
+	for _, m in ipairs(pack.motifs or {}) do self:RegisterMotif(m) end
+	for _, c in ipairs(SortedKeys(pack.quotas or {})) do self:SetCategoryQuota(c, pack.quotas[c]) end
+	for _, c in ipairs(SortedKeys(pack.hunger or {})) do self:SetCategoryHunger(c, pack.hunger[c]) end
 	for _, name in ipairs(SortedKeys(pack.conditions or {})) do
 		-- una funzione (condizione calcolata), un tipo di valore ("bool", "str"...) o { fn =, kind = }
 		local def = pack.conditions[name]

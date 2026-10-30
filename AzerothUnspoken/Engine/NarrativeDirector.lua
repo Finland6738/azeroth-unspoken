@@ -8,9 +8,10 @@ local Pacing = NS.Pacing
 
 ---@class AUVerdict
 ---@field allow boolean
----@field reason? string disabled | paused | module:<nome> | silent | screen:<nome> | busy | moment | cooldown:<tipo> | budget:<categoria>
+---@field reason? string disabled | paused | module:<nome> | silent | screen:<nome> | busy | moment | cooldown:<tipo> | budget:<categoria> | quota:<categoria>
 ---@field chanceMul? number moltiplicatore della probabilità dell'evento
 ---@field cooldownMul? number moltiplicatore delle pause
+---@field hunger? number hunger of the category (#91): already in chanceMul
 ---@field priority integer
 ---@field category string
 
@@ -150,7 +151,11 @@ function ND:Gate(event, ctx, now)
 	local ok, why = Pacing:Check({ event = event, category = category, cooldownMul = cooldownMul,
 		important = important, intensity = db.intensity, now = now })
 	if not ok then return No(why) end
-	return { allow = true, chanceMul = chanceMul, cooldownMul = cooldownMul, priority = priority, category = category }
+	-- #91: a category silent for a while is more likely to speak (never above 100%, see Roll)
+	local hunger = Pacing:Hunger(category, now)
+	chanceMul = chanceMul * hunger
+	return { allow = true, chanceMul = chanceMul, cooldownMul = cooldownMul, priority = priority, category = category,
+		hunger = hunger }
 end
 
 ---Il dado dell'opportunità: probabilità dell'evento (NS:GetChance, in %) per il moltiplicatore dell'intensità.
@@ -164,12 +169,15 @@ function ND:Roll(event, verdict)
 	return math.random(100) <= chance
 end
 
----Ordina i candidati di un momento: priorità più alta prima, poi l'ordine di arrivo.
----@param list { event: string, priority: integer, seq: integer }[]
+---Ordina i candidati di un momento: priorità più alta prima, poi la categoria più affamata (#91), poi l'ordine di
+---arrivo.
+---@param list { event: string, priority: integer, seq: integer, hunger?: number }[]
 ---@return table list lo stesso elenco, ordinato
 function ND:Order(list)
 	table.sort(list, function(a, b)
 		if a.priority ~= b.priority then return a.priority > b.priority end
+		local ha, hb = a.hunger or 1, b.hunger or 1
+		if ha ~= hb then return ha > hb end
 		return a.seq < b.seq
 	end)
 	return list

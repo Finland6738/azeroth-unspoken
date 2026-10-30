@@ -4,6 +4,7 @@ local ADDON, NS = ...
 local Engine = NS.Engine
 
 local function Mem() return NS.cdb.memory end
+local EMPTY = {}
 
 local function Finite(n) return type(n) == "number" and n == n and n ~= math.huge and n ~= -math.huge end
 
@@ -195,7 +196,8 @@ end
 -- B  peso base della regola (weight)
 -- C  attinenza al contesto: 1 + 0,35 per condizione soddisfatta, per gli aggiunti "C" (S6c: interlocutore e luogo)
 -- P  affinità caratteriale: neutra (1) finché lo step S5 non aggancia la personalità
--- N  novità: si attenua con gli usi recenti e con lo stesso registro dell'ultima frase dell'evento
+-- N  novità: si attenua con gli usi recenti e con lo stesso registro dell'ultima frase dell'evento; da R3 (#90) anche
+--    con il tema, i motivi e la voce delle ultime frasi della sessione (Engine.ThemeNovelty)
 -- S  affinità di stile: profondità (StyleFactor) per registri (StyleResolver:Affinity)
 -- R  relazione con l'interlocutore: neutra (1) finché lo step S6b non aggancia le relazioni
 -- Un fattore 0 esclude la frase (le condizioni la escludono già prima, in Eligible).
@@ -206,6 +208,108 @@ Engine.DEPTH_MISMATCH = 0.3
 Engine.SPEC_BONUS = 0.35      -- C: per ogni condizione
 Engine.USE_DECAY = 0.3        -- N: per ogni uso recente
 Engine.SAME_TONE = 0.6        -- N: stesso registro dell'ultima frase dell'evento
+
+---------------------------------------------------------------------------
+-- Thematic memory of the session (#90, ADR 0028)
+---------------------------------------------------------------------------
+-- The last interventions of the session, newest first: theme, motifs, voice, frame and opening of each, with the
+-- time. It lives only in memory (a /reload starts again) and is never saved: ADR 0017 keeps texts out of the
+-- SavedVariables, and the opening is a fragment of a text. Each presence weighs less as it ages (THEME_DECAY
+-- seconds to vanish) and the newest weighs LAST_WEIGHT times more, so the novelty decays with time, not only at login.
+-- R1_COMPAT = true switches off everything R3 added (tiers, fallback, novelty of themes, motifs, voices, frames and
+-- openings, quotas, hunger): the offline benchmark uses it to measure the same data before and after.
+Engine.R1_COMPAT = nil
+Engine.LINES_MAX = 12          -- interventions remembered
+Engine.THEME_WINDOW = 6        -- of which the themes and motifs of the newest THEME_WINDOW count
+Engine.THEME_DECAY = 1800      -- seconds after which a presence no longer counts
+Engine.LAST_WEIGHT = 2         -- the newest intervention counts this much
+Engine.THEME_PENALTY = 1.5     -- N_theme = 1 / (1 + THEME_PENALTY x presences of the theme)
+Engine.MOTIF_PENALTY = 0.8     -- N_motif = 1 / (1 + MOTIF_PENALTY x presences of the motifs)
+Engine.VOICE_REPEAT = 0.35     -- the same voice as the last two interventions
+Engine.FRAME_WINDOW = 8        -- frames: the newest FRAME_WINDOW interventions
+Engine.FRAME_PENALTY = 2       -- frame weight / (1 + FRAME_PENALTY x uses of the frame in the window)
+Engine.FRAME_THEME_BONUS = 1.5 -- a frame written for the theme of the phrase
+Engine.OPENING_WINDOW = 8      -- a variant does not open like the newest OPENING_WINDOW interventions, if it can
+Engine.TIER_MIN = 3            -- #89: the most specific tier with at least TIER_MIN non-recent candidates
+
+Engine.lines = {}
+local lineVersion, novelty = 0, nil
+
+---Forgets the thematic memory of the session (tests, /reload).
+function Engine:ResetLines()
+	self.lines = {}
+	lineVersion, novelty = lineVersion + 1, nil
+end
+
+---Opening of a text: its first two words in lower case, punctuation and quotes left out (#90). Explicit classes:
+---%a and %w split accented letters with some locale settings.
+---@param text? string
+---@return string?
+function Engine.Opening(text)
+	if type(text) ~= "string" then return nil end
+	local words = {}
+	-- the guillemets go first: as bytes in a class they would also cut letters such as "û"
+	text = text:gsub("«", " "):gsub("»", " ")
+	for w in text:gmatch("[^ \t\n\",.;:!?%-%(%)]+") do
+		if not w:find("^{") then table.insert(words, NS.Lower and NS.Lower(w) or w:lower()) end
+		if #words == 2 then break end
+	end
+	return #words > 0 and table.concat(words, " ") or nil
+end
+
+---Remembers an intervention of the session (PickEntry calls it when a phrase is composed).
+---@param line { theme?: string, motifs?: string[], speaker?: string, frame?: string, opening?: string, category?: string }
+function Engine:NoteLine(line)
+	line.at = GetTime()
+	table.insert(self.lines, 1, line)
+	while #self.lines > self.LINES_MAX do table.remove(self.lines) end
+	lineVersion, novelty = lineVersion + 1, nil
+end
+
+-- presences of themes, motifs and frames in the window, and the voices of the last two interventions; computed once
+-- per pick (the time is the same during one pick)
+local function NoveltyState()
+	local now = GetTime()
+	if novelty and novelty.version == lineVersion and novelty.now == now then return novelty end
+	local st = { version = lineVersion, now = now, themes = {}, motifs = {}, frames = {}, openings = {} }
+	for i, l in ipairs(Engine.lines) do
+		local age = now - (l.at or now)
+		local w = math.max(0, 1 - age / Engine.THEME_DECAY) * (i == 1 and Engine.LAST_WEIGHT or 1)
+		if w > 0 and i <= Engine.THEME_WINDOW then
+			if l.theme then st.themes[l.theme] = (st.themes[l.theme] or 0) + w end
+			for _, m in ipairs(l.motifs or EMPTY) do st.motifs[m] = (st.motifs[m] or 0) + w end
+		end
+		if w > 0 and i <= Engine.FRAME_WINDOW and l.frame then st.frames[l.frame] = (st.frames[l.frame] or 0) + 1 end
+		if w > 0 and i <= Engine.OPENING_WINDOW and l.opening then st.openings[l.opening] = true end
+	end
+	local a, b = Engine.lines[1], Engine.lines[2]
+	if a and b and a.speaker == b.speaker and now - (b.at or now) < Engine.THEME_DECAY then st.voice = a.speaker end
+	novelty = st
+	return st
+end
+Engine.NoveltyState = NoveltyState
+
+---Novelty of a phrase for the session (#90): its theme, its motifs and its voice against the last interventions.
+---1 when nothing came back; never 0. `voice` is the voice the phrase will be shown in (a framed phrase: narrator).
+---@param entry table
+---@param voice? string
+---@return number
+function Engine.ThemeNovelty(entry, voice)
+	if Engine.R1_COMPAT then return 1 end
+	local st = NoveltyState()
+	local f = 1
+	if entry.theme then
+		local n = st.themes[entry.theme]
+		if n then f = f / (1 + Engine.THEME_PENALTY * n) end
+	end
+	if entry.motifs then
+		local n = 0
+		for _, m in ipairs(entry.motifs) do n = n + (st.motifs[m] or 0) end
+		if n > 0 then f = f / (1 + Engine.MOTIF_PENALTY * n) end
+	end
+	if st.voice and st.voice == (voice or entry.speaker) then f = f * Engine.VOICE_REPEAT end
+	return f
+end
 
 ---@param entry AUPhrase
 ---@param ctx? table
@@ -288,11 +392,13 @@ end
 ---@param lastTone? string registro dell'ultima frase dell'evento
 ---@param ctx? table
 ---@param profile? AUStyleProfile profilo di Engine.StyleResolver:Resolve
+---@param voice? string voice the phrase is shown in (a framed phrase: narrator); nil = its own
 ---@return AUWeightFactors
-function Engine.Factors(entry, lastTone, ctx, profile)
+function Engine.Factors(entry, lastTone, ctx, profile, voice)
 	local f = { B = entry.weight, C = 1 + Engine.SPEC_BONUS * (entry.spec or 0), P = 1, S = 1, R = 1 }
 	f.N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
-	if lastTone and entry.tone and entry.tone == lastTone then f.N = f.N * Engine.SAME_TONE end
+	if lastTone and Engine.Tone(entry) == lastTone then f.N = f.N * Engine.SAME_TONE end
+	if ctx then f.N = f.N * Engine.ThemeNovelty(entry, voice) end
 	if ctx then
 		f.C = f.C * Hooks("C", entry, ctx)
 		f.P = Hooks("P", entry, ctx)
@@ -305,10 +411,11 @@ end
 
 -- peso effettivo di una voce (W), dati la memoria e, per le frasi, il contesto e il profilo di stile. È Factors(...).W
 -- senza la tabella dei fattori (#83: si calcola per ogni candidata): stessi conti, nello stesso ordine.
-local function Score(entry, key, poolSize, lastTone, ctx, profile)
+local function Score(entry, key, poolSize, lastTone, ctx, profile, voice)
 	local C, P, S, R = 1 + Engine.SPEC_BONUS * (entry.spec or 0), 1, 1, 1
 	local N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
-	if lastTone and entry.tone and entry.tone == lastTone then N = N * Engine.SAME_TONE end
+	if lastTone and Engine.Tone(entry) == lastTone then N = N * Engine.SAME_TONE end
+	if ctx then N = N * Engine.ThemeNovelty(entry, voice) end
 	if ctx then
 		C = C * Hooks("C", entry, ctx)
 		P = Hooks("P", entry, ctx)
@@ -406,6 +513,8 @@ end
 ---@field category? string categoria della regola (combat, exploration...)
 ---@field style? string registro principale della regola
 ---@field variant? integer indice della variante scelta tra i testi della lingua
+---@field via? string the related event that spoke when `event` had no phrase (#89)
+---@field frame? string id of the frame a spoken phrase was told in
 ---@field display? string testo come lo vede il narratore (aggiunto dal Gateway)
 ---@field channel? string canale scelto dal Gateway
 ---@field proposal? AUProposal proposta creata dal Gateway
@@ -436,6 +545,14 @@ function Engine:RenderPhrase(p, lang, ctx)
 			if idx[k] == last then table.remove(idx, k) end
 		end
 	end
+	-- #90: a variant that opens like one of the last interventions only if every other does too
+	if #idx > 1 and not Engine.R1_COMPAT then
+		local used, fresh = NoveltyState().openings, {}
+		for _, i in ipairs(idx) do
+			if not used[Engine.Opening(Engine.VariantText(list[i]))] then table.insert(fresh, i) end
+		end
+		if #fresh > 0 then idx = fresh end
+	end
 	while #idx > 0 do
 		local k = math.random(#idx)
 		local text = self:Render(Engine.VariantText(list[idx[k]]), lang, ctx)
@@ -454,15 +571,74 @@ function Engine:Weight(p, event, ctx)
 	return Engine.Factors(p, Mem().lastTone[event], ctx, self.StyleResolver:Resolve(event, ctx))
 end
 
----Sceglie e compone una frase.
+---Specificity tiers (#89, ADR 0028): the candidates of the most specific tier that still has at least TIER_MIN
+---candidates not used recently, together with those of every tier above it. With a place that has its own phrases they
+---win until they are used, then the pool widens one tier at a time down to the generic ones (the explicit fallback
+---chain: landmark -> subzone -> zone -> region, atmosphere or situation -> generic of the event; then, in PickEntry,
+---the related event; then silence). If even all of them have fewer, every
+---candidate stays, as before. Recent ids still drop out in WeightedPick.
+---@param items { e: AUPhrase, w: number }[]
+---@param key string key of the anti-repetition window (the event)
+---@return table items the same list, or a new list with the chosen tiers
+---@return integer tier the lowest tier kept
+function Engine.TierPool(items, key)
+	-- the recent ids as a set, once: IsRecent scans the window for every candidate
+	local recent = {}
+	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
+	local fresh = {}
+	for _, it in ipairs(items) do
+		if it.w > 0 and not recent[it.e.id] then
+			local t = Engine.Tier(it.e)
+			fresh[t] = (fresh[t] or 0) + 1
+		end
+	end
+	local n, tier = 0, nil
+	for t = Engine.MAX_TIER, 1, -1 do
+		n = n + (fresh[t] or 0)
+		if n >= Engine.TIER_MIN then tier = t; break end
+	end
+	if not tier then return items, 0 end
+	local out = {}
+	for _, it in ipairs(items) do
+		if Engine.Tier(it.e) >= tier then table.insert(out, it) end
+	end
+	return out, tier
+end
+
+---Sceglie e compone una frase. Se l'evento non ha frasi, prova l'evento affine dichiarato (#89: `fallback`), al
+---massimo tre passi e mai un evento già provato; il record dice l'evento chiesto e, in `via`, quello che ha parlato.
 ---@param event string
 ---@param ctx table contesto di NS:BuildContext
 ---@param form "say"|"emote"
 ---@return AUPhraseRecord?
 function Engine:PickEntry(event, ctx, form)
+	local rec = self:PickOwn(event, ctx, form)
+	if rec or self.R1_COMPAT then return rec end
+	local tried, ev = { [event] = true }, event
+	for _ = 1, 3 do
+		local def = self.events[ev]
+		ev = def and def.fallback
+		if type(ev) ~= "string" or tried[ev] then return nil end
+		tried[ev] = true
+		rec = self:PickOwn(ev, ctx, form)
+		if rec then
+			rec.via, rec.event = ev, event
+			return rec
+		end
+	end
+	return nil
+end
+
+---Sceglie e compone una frase dell'evento, senza ripieghi.
+---@param event string
+---@param ctx table
+---@param form "say"|"emote"
+---@return AUPhraseRecord?
+function Engine:PickOwn(event, ctx, form)
 	if not self:EventAllowed(event, ctx) then return nil end
 	local lang = NS:TextLang()
 	local now = time()
+	local r3 = not self.R1_COMPAT
 	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event]
 	local list = self:Candidates(event, ctx, form)
 	local mem = Mem()
@@ -490,10 +666,15 @@ function Engine:PickEntry(event, ctx, form)
 				if p.speaker == "character" then table.insert(says, p) end
 			end
 			for _, p in ipairs(says) do
-				table.insert(items, { e = p, framed = true, w = 0.8 * Score(p, event, #says, lastTone, ctx, profile) })
+				table.insert(items, { e = p, framed = true,
+					w = 0.8 * Score(p, event, #says, lastTone, ctx, profile, r3 and "narrator" or nil) })
 			end
 		end
 	end
+
+	-- the anti-repetition window keeps its size from every candidate, also when the tiers narrow the pool (#89)
+	local keep = KeepFor(#items)
+	if r3 then items = Engine.TierPool(items, event) end
 
 	-- più tentativi: una frase può fallire se manca una voce di vocabolario
 	for _ = 1, 6 do
@@ -501,21 +682,32 @@ function Engine:PickEntry(event, ctx, form)
 		if not it then return nil end
 		local p = it.e
 		local text, variant = self:RenderPhrase(p, lang, ctx)
+		local frame
 		if text and it.framed then
-			-- mai frammenti incompatibili: solo le cornici di un registro vicino a quello della frase
+			-- mai frammenti incompatibili: solo le cornici di un registro vicino a quello della frase e, se la cornice
+			-- dichiara dei temi (#90), di uno dei suoi temi
 			local fitems = {}
+			local st = r3 and NoveltyState()
 			for _, f in ipairs(frames) do
-				if self.StyleResolver:Compatible(f.styles, p.styles) then
-					table.insert(fitems, { e = f, w = Score(f, "frame:" .. event, #frames) })
+				if self.StyleResolver:Compatible(f.styles, p.styles)
+					and not (r3 and f.themeSet and not (p.theme and f.themeSet[p.theme])) then
+					local w = Score(f, "frame:" .. event, #frames)
+					if r3 then
+						-- #90: a frame used in the last interventions, anywhere, weighs less; one of the theme, more
+						w = w / (1 + Engine.FRAME_PENALTY * (st.frames[f.id] or 0))
+						if f.themeSet then w = w * Engine.FRAME_THEME_BONUS end
+					end
+					table.insert(fitems, { e = f, w = w })
 				end
 			end
 			local fit = WeightedPick(fitems, "frame:" .. event)
+			frame = fit and fit.e
 			text = fit and self:RenderEntry(fit.e, lang, ctx, text)
 			if text then Remember("frame:" .. event, fit.e.id, KeepFor(#frames), fit.e) end
 		end
 		if text then
-			Remember(event, p.id, KeepFor(#items), p)
-			mem.lastTone[event] = p.tone
+			Remember(event, p.id, keep, p)
+			mem.lastTone[event] = Engine.Tone(p)
 			if #p.text[lang] > 1 then
 				mem.variant = mem.variant or {}
 				mem.variant[p.id] = variant
@@ -526,8 +718,13 @@ function Engine:PickEntry(event, ctx, form)
 			if form == "say" then text = Capitalize(text) end
 			-- una frase parlata dentro una cornice è raccontata dal narratore
 			local speaker = it.framed and "narrator" or p.speaker
+			if r3 then
+				local opening = Engine.Opening(Engine.VariantText(frame and (frame.text[lang] or EMPTY)[1] or p.text[lang][variant]))
+				self:NoteLine({ theme = p.theme, motifs = p.motifs, speaker = speaker, frame = frame and frame.id,
+					opening = opening, category = p.category })
+			end
 			return { text = text, speaker = speaker, form = form, id = p.id, event = event,
-				category = p.category, style = p.tone, variant = variant }
+				category = p.category, style = Engine.Tone(p), variant = variant, frame = frame and frame.id }
 		end
 		it.w = 0
 	end

@@ -29,8 +29,12 @@ def main(argv):
     ap.add_argument("--synthetic", type=int, default=0)
     ap.add_argument("--uses-max", type=int, help="cap of the anti-repetition uses (#86); a large value compares the "
                     "selection alone with an engine that had no cap")
+    ap.add_argument("--r1", action="store_true", help="switch off what R3 added to the selection (Engine.R1_COMPAT): "
+                    "the trace must then be the same as the engine of R1 on the same data")
     a = ap.parse_args(argv)
     lua, ns, _ = B.load_addon(os.path.abspath(a.addon))
+    if a.r1:
+        ns.Engine.R1_COMPAT = True
     if a.uses_max and ns.Engine.USES_MAX:
         ns.Engine.USES_MAX, ns.Engine.USES_TRIM = a.uses_max, a.uses_max
     if a.synthetic:

@@ -454,7 +454,7 @@ print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations", "TestPlayers",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
-             "TestPacks"):
+             "TestSelection", "TestPacks"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
@@ -469,6 +469,21 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
     print(f"  {name}: {t.passed} superati, {t.failed} falliti")
     for f in t.failures.values():
         check(False, f"{name}: {f}")
+
+# 9a) M2 repetition metrics of a simulated session (R3: #89, #90, #91, Tests/bench_m2.py): 3 hours, two characters,
+# three seeds, through the real Narrative Director. Targets of the roadmap R3: same theme consecutively under 15%,
+# the frames "says" and "murmurs" under 10% of the framed interventions; combat under its quota of 40% (with a margin)
+print("\nM2 (simulated session)")
+sys.path.insert(0, HERE)
+import bench_m2  # noqa: E402
+m2 = bench_m2.session_metrics(ADDON, hours=3, seeds=(1, 2, 3))
+print("  " + ", ".join(f"{k} {round(v, 2)}" for k, v in m2.items() if not isinstance(v, dict)))
+print("  categories:", m2["category_pct"])
+check(m2["same_theme_pct"] < 15, f"M2: same theme consecutively under 15% ({m2['same_theme_pct']:.1f}%)")
+check(m2["says_murmurs_pct"] < 10, f"M2: 'says' and 'murmurs' under 10% of the frames ({m2['says_murmurs_pct']:.1f}%)")
+check(m2["category_pct"].get("combat", 0) < 45, f"M2: combat under its quota ({m2['category_pct'].get('combat', 0)}%)")
+check(m2["category_pct"].get("exploration", 0) > 0, "M2: exploration speaks")
+check(m2["pick_mean_ms"] < 2, f"M2: PickEntry stays fast ({m2['pick_mean_ms']:.2f} ms)")
 
 # 9b) language and regional packs from a saved Italian installation (#85, #101): only Italian is loaded, the region
 # of the character is built, and the memory is lower than with everything loaded

@@ -1,14 +1,44 @@
 -- Cornici narrative: trasformano una frase parlata in un'emote.
 -- {line} è la frase scelta; il gioco antepone il nome del personaggio.
+-- R3 (#90, ADR 0028): a frame may declare `styles` (it tells only phrases of a near register) and `themes` (only
+-- phrases of one of those themes, and it is preferred for them). A frame used in the last interventions weighs less,
+-- whatever the event. "says" and "murmurs" are the plain fallback: light, and tied to the registers they suit.
 local ADDON, NS = ...
 
 NS:RegisterPack({
 	id = "base_frames",
 	name = "Base: cornici narrative",
 	frames = {
-		-- valide per ogni evento
-		{ it = "dice: «{line}»", en = "says, \"{line}\"", weight = 0.6 },
-		{ it = "mormora: «{line}»", en = "murmurs, \"{line}\"", weight = 0.5 },
+		-- valide per ogni evento: le più neutre, di ripiego
+		{ id = "frame.says", styles = { "everyday", "epic", "ceremonial" }, it = "dice: «{line}»", en = "says, \"{line}\"",
+			weight = 0.15 },
+		{ id = "frame.murmurs", styles = { "intimate", "tragic", "ancient" }, it = "mormora: «{line}»",
+			en = "murmurs, \"{line}\"", weight = 0.15 },
+
+		-- valide per ogni evento, legate al registro (#90)
+		{ id = "frame.shrug", styles = { "ironic" }, it = "alza le spalle. «{line}»", en = "shrugs. \"{line}\"" },
+		{ id = "frame.grin", styles = { "ironic" }, it = "fa un mezzo sorriso storto. «{line}»", en = "gives a crooked half smile. \"{line}\"" },
+		{ id = "frame.gaze", styles = { "tragic", "intimate" }, it = "abbassa lo sguardo. «{line}»", en = "lowers {g:his|her} gaze. \"{line}\"" },
+		{ id = "frame.face", styles = { "intimate" }, it = "si passa una mano sul viso. «{line}»", en = "passes a hand over {g:his|her} face. \"{line}\"" },
+		{ id = "frame.voice", styles = { "epic" }, it = "alza la voce, perché tutti sentano. «{line}»", en = "raises {g:his|her} voice for all to hear. \"{line}\"" },
+		{ id = "frame.far", styles = { "ancient" }, it = "guarda lontano, oltre le cose vicine. «{line}»", en = "looks far off, past what is near. \"{line}\"" },
+		{ id = "frame.neck", styles = { "everyday" }, it = "si gratta la nuca. «{line}»", en = "scratches the back of {g:his|her} neck. \"{line}\"" },
+		{ id = "frame.formal", styles = { "ceremonial" }, it = "china il capo, con voce misurata. «{line}»", en = "bows {g:his|her} head and speaks with measured words. \"{line}\"" },
+
+		-- valide per ogni evento, legate al tema (#90): preferite per le frasi di quel tema
+		{ id = "frame.silence", themes = { "loss", "mortality" }, styles = { "tragic", "intimate", "ancient" }, it = "resta in silenzio a lungo, poi: «{line}»", en = "is silent for a long moment, then: \"{line}\"" },
+		{ id = "frame.shoulders", themes = { "courage", "duty", "glory" }, styles = { "epic", "ceremonial" }, it = "raddrizza le spalle. «{line}»", en = "squares {g:his|her} shoulders. \"{line}\"" },
+		{ id = "frame.heart", themes = { "faith", "hope" }, styles = { "ceremonial", "ancient", "intimate" }, it = "posa una mano sul cuore. «{line}»", en = "lays a hand upon {g:his|her} heart. \"{line}\"" },
+		{ id = "frame.eyes", themes = { "faith", "magic", "mystery" }, it = "chiude gli occhi un istante. «{line}»", en = "closes {g:his|her} eyes for an instant. \"{line}\"" },
+		{ id = "frame.laugh", themes = { "humour" }, it = "trattiene a stento una risata. «{line}»", en = "barely holds back a laugh. \"{line}\"" },
+		{ id = "frame.nearby", themes = { "fellowship", "home" }, styles = { "everyday", "intimate", "ironic" }, it = "sorride a chi ha vicino. «{line}»", en = "smiles at those nearby. \"{line}\"" },
+		{ id = "frame.away", themes = { "memory", "home", "solitude" }, it = "per un attimo sembra altrove. «{line}»", en = "for a moment seems far away. \"{line}\"" },
+		{ id = "frame.teeth", themes = { "wrath" }, it = "stringe i denti. «{line}»", en = "grits {g:his|her} teeth. \"{line}\"" },
+		{ id = "frame.shoulder", themes = { "fear" }, it = "si guarda alle spalle. «{line}»", en = "glances over {g:his|her} shoulder. \"{line}\"" },
+		{ id = "frame.breath", themes = { "fatigue" }, it = "riprende fiato prima di parlare. «{line}»", en = "catches {g:his|her} breath before speaking. \"{line}\"" },
+		{ id = "frame.air", themes = { "nature", "landscape" }, it = "respira a fondo l'aria del luogo. «{line}»", en = "breathes deep of the air here. \"{line}\"" },
+		{ id = "frame.strap", themes = { "journey" }, it = "si sistema la cinghia della sacca. «{line}»", en = "adjusts the strap of {g:his|her} pack. \"{line}\"" },
+		{ id = "frame.palm", themes = { "magic", "growth" }, it = "si guarda il palmo della mano. «{line}»", en = "studies the palm of {g:his|her} hand. \"{line}\"" },
 
 		-- battaglia
 		{ event = { "battle", "threat" }, it = "snuda l'arma, e la sua voce si alza sopra il fragore: «{line}»", en = "bares steel, and {g:his|her} voice rises above the din: \"{line}\"" },
