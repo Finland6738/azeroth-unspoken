@@ -66,6 +66,12 @@ Suggestions last for this session only. Add someone with **+** in the *People me
 
 An option to register players by themselves exists (**Register by itself**), but it is **off** by default.
 
+## Greetings, farewells and duels follow the relationship
+
+What your character says to someone fits what you feel about them. Warm lines ("old friends around the fire", "so good to see you", "good to run into you again") are **never** used for a person you marked as an **enemy**, **disliked**, **distrusted** (wary) or **feared one**; they get their own greetings and farewells, cold, guarded or tense. A **duel** request is answered differently for a friend (playful), a respected rival (a long-awaited match), an enemy (no words left), a distrusted or feared person (an inner warning) and someone you do not know (the usual banter).
+
+Pack authors: a line tagged `warm` in a greeting, farewell or reaction to an action must exclude those relationships, or the validator reports it (see the pack guide).
+
 ## How to use it
 
 Open the window with `/au relationships` or the **Relationships...** button in the [[settings panel|Settings]].

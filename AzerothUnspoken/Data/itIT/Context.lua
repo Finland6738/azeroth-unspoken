@@ -218,6 +218,22 @@ NS:AddTexts("itIT", {
 		"Un duello? E sia. Ma se perdo, la colpa è del sole negli occhi.",
 		"Accetto. Ma niente colpi bassi, che domani devo ancora camminare.",
 	},
+	["ctx.act.duel.friend"] = {
+		"Un duello con te? E sia. Ci andrò piano, e tu farai finta di non accorgertene.",
+		"Ah! Dimmi la posta: chi perde paga il prossimo giro.",
+	},
+	["ctx.act.duel.rival"] = {
+		"Finalmente. Era da tempo che volevo misurarmi con te.",
+		"Accetto. Niente trucchi, niente pietà; non ti aspetteresti altro.",
+	},
+	["ctx.act.duel.enemy"] = {
+		"Un duello. Non farò finta di non averlo aspettato.",
+		"Sguaina la lama. Tra noi non resta nulla che le parole possano sistemare.",
+	},
+	["ctx.act.duel.wary"] = {
+		"Una sfida da uno di cui non mi sono mai fidato. Guarda le mani, non il viso.",
+		"Ogni istinto dice che è una trappola. Eppure c'è la lama nella tua mano e la folla che guarda.",
+	},
 	["ctx.act.duel.inner"] = {
 		"Una sfida lanciata così, senza rancore. Solo per vedere chi è più svelto.",
 		"Il cuore accelera prima ancora che la mano trovi l'elsa.",

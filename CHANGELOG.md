@@ -10,6 +10,14 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### Greetings and actions match the relationship (issue #105)
+
+- **Fixed: a warm greeting could be picked for an enemy.** Measured offline: with the relationship set to *enemy* the explicit greeting could say "the fire is warmer with old friends around it" (`greet.03`), and `rel.greet.player` applied to every known player. The generic warm lines of greetings and farewells (`greet.03`, `greet.08`, `greet.orc.02`, `greet.human.01`, `bye.07`, `bye.tauren.01`, `bye.nelf.01`, `bye.dwarf.01`, `rel.greet.player`, `rel.bye.player`) and the warm reactions to an invitation or an emote now exclude **enemy, disliked, wary and feared** with `not = { relation = ... }`, in the data and not in the engine. Those people still get their own lines (`rel.greet.enemy`, `rel.greet.wary`, `rel.greet.feared`, `rel.bye.hostile`...).
+- **Changed: duel lines depend on the relationship.** `ctx.act.duel` (banter) is now for strangers, acquaintances and the indifferent; new lines for a friend, a respected rival, an enemy or disliked person, and a wary or feared one (4 phrases, English and Italian). The inner duel line "with no grudge behind it" no longer comes out for hostile people or rivals.
+- **Added: validator rule `warmWithoutRelation`.** A line tagged `warm` (and not `ironic`) in `greet`, `farewell` or `other_action` must exclude the negative relationships; the report names each offending line. New engine helper `Engine.ExcludesNegativeRelation`. Documented in the pack guide.
+- **Tests**: second encounter with an enemy, a wary, a disliked and a feared player never gets a warm line (greeting and farewell, by eligibility and by repeated picks), a trusted friend still does; the duel by relationship; the rule catches planted bad lines and accepts the good forms; shipped data passes. Phrase counts updated (+4).
+- **Docs**: wiki page Relationships, pack guide.
+
 ### English first: default language and English command names (Step 0, issue #132)
 
 - **Changed: the addon starts in English.** A new install (no saved variables) has `locale = "en"`, for both the interface and the lines. The wizard still opens with the language choice, now listing **English** first and **Italiano** second. Saved settings are never touched: a user who already has `locale = "it"` keeps Italian (test for every schema).

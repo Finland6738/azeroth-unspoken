@@ -55,7 +55,7 @@ The pack's name is shown as its author wrote it, which may be in another languag
 
 `/au validate` prints a summary such as this one (your numbers depend on the packs you have):
 
-> Validator: 1005 lines in 15 packs, 2109 variants: 0 errors, 3 warnings.
+> Validator: 1016 lines in 15 packs, 2109 variants: 0 errors, 3 warnings.
 
 **Errors** usually mean a line will not work; **warnings** are smaller things, such as a line that is a bit long. If a pack shows errors, tell its author. If a built-in pack shows errors, please [[report it|Reporting-Bugs-and-Feedback]].
 

@@ -40,6 +40,9 @@ Validator.WORST = { relation = 40, player = 12, target = 40, spell = 40, zone = 
 	other = 40, otherrole = 24, otherrace = 40, otherclass = 40, instance = 40, encounter = 40 }
 
 -- livelli dei problemi emersi in caricamento (Engine.loadIssues)
+-- eventi in cui una frase calda deve rispettare la relazione (#105)
+local WARM_GUARDED = { greet = true, farewell = true, other_action = true }
+
 local LOAD_LEVEL = { dupId = "error", badId = "error", noEvent = "error", badForm = "error", badSpeaker = "error",
 	noSpeaker = "warning", badWeight = "error", badCooldown = "error", badConditions = "error" }
 
@@ -315,6 +318,17 @@ function Validator:Run(opts)
 					if NS.Relationships.recalls[ev] and not Engine.UsesRelation(p.when) then
 						Add("error", "relationWithoutRelation", p.pack, id, nil,
 							("evento '%s' senza una condizione di relazione (relation, isKnown, disposition...)"):format(ev))
+						break
+					end
+				end
+			end
+			-- calore e relazione (#105): una frase calda (tag `warm`) di un saluto, di un congedo o di una reazione a
+			-- un'azione deve escludere nemico, inviso, diffidente e temuto, salvo che sia dichiarata ironica (tag `ironic`)
+			if p.tags and p.tags.warm and not p.tags.ironic then
+				for _, ev in ipairs(p.events) do
+					if WARM_GUARDED[ev] and not Engine.ExcludesNegativeRelation(p.when, p.tags) then
+						Add("error", "warmWithoutRelation", p.pack, id, nil,
+							("frase calda dell'evento '%s' senza esclusione di nemico, inviso, diffidente e temuto (usa relation, not = { relation = ... } o il tag ironic)"):format(ev))
 						break
 					end
 				end
