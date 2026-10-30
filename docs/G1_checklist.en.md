@@ -1,4 +1,4 @@
-# In-game checklist: R0 measurements, API probe, R1 packs and R4b player relationships (English)
+# In-game checklist: R0 measurements, API probe, R1 packs, R3a selection variety and R4b player relationships (English)
 
 This is the English counterpart of the section **R0** of the in-game checklist [G1_checklist.md](G1_checklist.md), which is written in Italian for the Italian-speaking tester and keeps every other part of the checklist. Same steps, same numbers (R0.1 to R0.13). It belongs to issues #81 (profiling and Director counters) and #82 (probing the vision APIs), phase R0 of the roadmap #131.
 
@@ -116,6 +116,22 @@ Same steps as the section **R4b** of [G1_checklist.md](G1_checklist.md) (R4b.1 t
     - **Expect:** one line per person with **Encounters: N (group 1, ...)**, feeling, tags and note; no chat text.
     - **Report:** the text.
 
+## R3a: variety of the selection (issues #89, #90 and #91)
+
+Same steps as the section **R3a** of [G1_checklist.md](G1_checklist.md) (R3a.1 to R3a.3).
+
+**What it is for.** The narrator now prefers the lines of the place where they exist, does not come back at once to the same theme, image or voice, varies the gesture of the emotes and keeps fights under about four lines in ten. All of it is measured outside the game on a simulated session; here we check that the rhythm feels right in the real game. One hour of normal play (quests and fights) and `/au prof` are enough.
+
+- **R3a.1 · One hour of play.** Play one hour without changing the settings, then type `/au prof`.
+    - **Expect:** `quota:combat` among the reasons of silence a few times; death, resurrection and a new level always speak; entering a new zone, exploration sometimes speaks.
+    - **Report:** the lines of `/au prof` about categories and reasons; whether the narrator felt too quiet or too talkative in fights.
+- **R3a.2 · Lines of the place.** Enter Elwynn Forest (or a zone of your region with lines of its own) and ask `/au muse` or wait for the arrival.
+    - **Expect:** the first lines are about the place; after a few, the general ones come back too.
+    - **Report:** the lines seen and whether they fit the place.
+- **R3a.3 · The emotes.** With `/au mode confirm` and many emotes in the narrator, look at the gestures before the quoted lines.
+    - **Expect:** varied gestures that fit the tone; "says" and "murmurs" rare.
+    - **Report:** a gesture that clashes with the line (copy the text).
+
 ## Summary form (copy and fill in)
 
 ```
@@ -141,4 +157,6 @@ R4b encounters .......... group ___  trade ___  duel ___  invite ___  emote ___ 
 R4b recognition ......... one line per session? ___  private? ___  mirrors the feeling? ___
 R4b feelings ............ no warm line with wariness/fear/resentment? ___  ally ok? ___
 R4b forget/remove ....... two distinct actions? ___  export ok? ___
+R3a hour ................ quota:combat seen? ___  too quiet in fights? ___  death/level always? ___
+R3a place/emotes ........ place lines first? ___  gestures fit? ___  "says" rare? ___
 ```

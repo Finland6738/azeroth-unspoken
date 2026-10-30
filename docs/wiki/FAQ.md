@@ -47,6 +47,9 @@ Yes. The addon starts in English. Click **Italiano** in the setup wizard or type
 **The narrator talks too much. / Too little.**
 Change the intensity: `/au intensity 30` for less, `/au intensity 70` for more. See [[Intensity and Prose Depth|Intensity-and-Depth]].
 
+**Why does the narrator say less during long fights?**
+Fights may take at most about four of every ten lines you hear, so places and thoughts get their turn too; death, resurrection and a new level always speak. See [[how it keeps things varied|The-Narrator#how-it-keeps-things-varied]].
+
 **How do I silence it right now?**
 `/au pause`, the **||** button on the box, or the pause key. Again to resume.
 
