@@ -27,6 +27,10 @@ NPCs are many and reliably identifiable (`npcID` from the GUID): an automatic ca
 8. **Data and schema**: `AzerothUnspokenCharacterDB.relationships = { version, npcs = { [npcID] }, players = { ["Name-Realm"] } }`, with its own version; SavedVariables **schema 5** (character migration 5); settings `relations = { npcAuto, attraction, autoRegisterPlayers, proposePlayers }` and module `relations`. `Sanitize` brings the axes back within limits, shortens notes, tags and labels without breaking UTF-8, and discards malformed entries; data from a newer version becomes read-only.
 9. **Interface**: `UI/RelationsFrame.lua` (`/au relazioni`, aliases `relations`/`relationships`): sortable and filterable table (NPCs/players, label, name), proposed people, detail view with sliders (`Widgets.Slider`, drawn with textures), label, note and tags, deletion with confirmation, options, text export in the journal's copyable window; two tabs in the journal (*Relationships*, *People met*).
 
+## Later changes
+
+- [ADR 0026](0026-player-records-user-choices-apart-from-observations.md) (#107-#110) splits a player record into `user` (what the user chose) and `seen` (what the addon observed), adds feelings in words, the `ally` label, the `relation_player` event and the conditions `relDaysSince`, `relMetHere` and `relShared`. Points 3, 5, 7 and 8 above stand, with the player fields (`label`, `note`, `tags`, `first`/`last`/`count`, the axes) now inside those two blocks and `relationships.version` at 2.
+
 ## Alternatives considered
 
 - **A single affinity bar.** It does not distinguish the respected rival from the enemy, nor the trusted friend from the likeable acquaintance; and it gives the content nothing finer than the three bands friend/neutral/enemy.

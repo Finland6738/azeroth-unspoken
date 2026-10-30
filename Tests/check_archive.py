@@ -1,4 +1,4 @@
-"""Tests of the authoring archive (tools/archive, issues #87 and #88, ADR 0026).
+"""Tests of the authoring archive (tools/archive, issues #87 and #88, ADR 0027).
 
 The guarantee is the round trip: importing the pack folders of this repository into the archive and exporting them
 again gives an **empty diff**. Around it: the renderer of new and edited entries, the review flow (only approved

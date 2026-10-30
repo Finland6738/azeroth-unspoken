@@ -1,6 +1,6 @@
 name: Content coverage
 
-# Coverage and gap report of the phrase database (issue #88), built from the authoring archive (tools/archive, ADR 0026)
+# Coverage and gap report of the phrase database (issue #88), built from the authoring archive (tools/archive, ADR 0027)
 # on every change to the content or to the archive tools. It only REPORTS: thresholds are in tools/archive/thresholds.json,
 # a breach is a warning annotation and a line of the job summary, and the job never fails the build (it is not a required
 # check). The Markdown and JSON reports are kept as a workflow artifact.

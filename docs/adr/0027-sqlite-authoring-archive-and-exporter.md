@@ -1,11 +1,11 @@
-# 0026. SQLite authoring archive, exporter to the pack folders and coverage reports
+# 0027. SQLite authoring archive, exporter to the pack folders and coverage reports
 
 - Status: Accepted
 - Date: 2026-10-30 (phase R2 of the roadmap after the analyses A1 and A2, tracking issue #131; issues #87 and #88)
 
 ## Context
 
-The owner wants 400 or more hours of variety per character (decision D1 in #130): roughly 100,000 to 300,000 texts per language. Today the 1,009 intentions are written by hand as Lua tables in the pack folders ([ADR 0025](0025-language-and-regional-packs-loaded-on-demand.md)). That does not scale to a database of that size, written mostly by AI sessions and curated by one person:
+The owner wants 400 or more hours of variety per character (decision D1 in #130): roughly 100,000 to 300,000 texts per language. Today the 1,030 intentions are written by hand as Lua tables in the pack folders ([ADR 0025](0025-language-and-regional-packs-loaded-on-demand.md)). That does not scale to a database of that size, written mostly by AI sessions and curated by one person:
 
 - there is nothing to ask "which event x place has fewer than 10 phrases?" or "which drafts are waiting for review?";
 - a draft and an approved line look the same in a Lua file: content can reach the game only by being approved, and Lua has no place for the state;
@@ -80,11 +80,11 @@ Constraints: an addon cannot read a database, so SQLite can only be an **authori
 
 - Positive:
   - The content can be written, searched, reviewed and measured outside the game, one line per text in a PR; only approved content reaches the folders; every folder file still reads as before.
-  - The round trip on the 807 archived intentions is an empty diff, and it is in the required CI job.
-  - Today's report (807 approved intentions, 1,719 texts per language, 240 event x context cells): 29 cells are under k = 10 intentions or 20 texts (the poorest are `buff`, `jest`, `rezother`, `threat` and `toast` with 6 intentions each), no intention misses a language, and 22 of 25 events have a best pool of texts under 100.
+  - The round trip on the 828 archived intentions is an empty diff, and it is in the required CI job.
+  - Today's report (828 approved intentions, 1,785 texts per language, 241 event x context cells): 29 cells are under k = 10 intentions or 20 texts (the poorest are `buff`, `jest`, `rezother`, `threat` and `toast` with 6 intentions each), no intention misses a language, and 23 of 26 events have a best pool of texts under 100.
   - Measured on a synthetic overlay: 20,000 approved intentions are written by `export` in about 3 s and imported again (folders to database) in about 11 s, about 0.5 ms per intention (100,000 would take about a minute, once: the generated database is reused until a folder or the overlay changes); the report on 20,800 intentions takes about 1 s.
 - Negative or costs:
-  - The archive covers 807 of 1,009 intentions: `base_arcs` and `base_dialogues` are code, not data, and are reported as not archived. Moving them to literal tables (or generating the folders from data) is a follow-up, needed before stage 2.
+  - The archive covers 828 of 1,030 intentions: `base_arcs` and `base_dialogues` are code, not data, and are reported as not archived. Moving them to literal tables (or generating the folders from data) is a follow-up, needed before stage 2.
   - `attribution` and `invented_lore` live only in the archive: the in-game format has no such field yet, so `export` does not write them and the validator cannot refuse unattributed lore in game; the archive refuses it at `approve`. The exporter will carry the field when the validator gets it.
   - New packs (a new folder, a new continent) are still created by hand once (copy the example pack, add the `.toc`); the archive then fills them. A new intention is added at the end of the table of its pack, not next to related ones (the canonical style has no section comments).
   - "Eligible" counts the cell and the generic group: an upper bound, because it ignores the conditions beyond the first index group (race, mood, time of day together...). The repetition proxies are not the M2 measurement.

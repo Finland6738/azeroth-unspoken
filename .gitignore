@@ -17,5 +17,5 @@ desktop.ini
 # percorsi personali (vedi tools/local.example.ini)
 tools/local.ini
 
-# generated authoring archive (tools/archive, ADR 0026)
+# generated authoring archive (tools/archive, ADR 0027)
 build/

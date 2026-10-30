@@ -1,6 +1,6 @@
 """The authoring archive: schema, importer of the pack folders, exporter, the committed overlay and the review flow.
 
-See docs/adr/0026-sqlite-authoring-archive-and-exporter.md. In short:
+See docs/adr/0027-sqlite-authoring-archive-and-exporter.md. In short:
 
 - the pack folders (`AzerothUnspoken*/`) hold the **approved** content and stay what the game reads;
 - `authoring/*.csv` (the overlay) holds what is not approved yet (drafts, content in review, retired content), the

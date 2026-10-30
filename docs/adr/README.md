@@ -33,7 +33,8 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0023](0023-english-first-addon-and-english-command-names.md) | English first: the addon starts in English and command names are always English | accepted |
 | [0024](0024-selection-index-compact-registry-and-bounded-memory.md) | Selection index, compact in-memory registry and bounded anti-repetition memory | accepted |
 | [0025](0025-language-and-regional-packs-loaded-on-demand.md) | Language packs and regional packs loaded on demand | accepted |
-| [0026](0026-sqlite-authoring-archive-and-exporter.md) | SQLite authoring archive, exporter to the pack folders and coverage reports | accepted |
+| [0026](0026-player-records-user-choices-apart-from-observations.md) | Player records: what the user chose is kept apart from what the addon observed | accepted |
+| [0027](0027-sqlite-authoring-archive-and-exporter.md) | SQLite authoring archive, exporter to the pack folders and coverage reports | accepted |
 
 ## Pending decisions
 

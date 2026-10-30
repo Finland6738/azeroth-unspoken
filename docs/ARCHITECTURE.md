@@ -112,7 +112,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Integration/ChatGateway.lua`** | modes, proposals, channels, sending only from a player action, anti-flood, `AzerothUnspoken_Speak`; `Reroll` ("Another": replaces the proposal with another line for the same event and context, without sending or spending the Director's budget). |
 | **`Systems/Personality.lua`** | the Character Soul: eight opt-in traits, archetypes, effective profile (choice > Total RP 3 > game data > neutral), the `P` factor of the weight, register preferences, the `soul` condition, `ctx.soul`, the `/au soul` command. |
 | **`Systems/LivingMemory.lua`** | the Living Memory ([ADR 0017](adr/0017-living-memory-selective-memories-and-honest-recall.md)): memories, visited places and flags per character (`cdb.memories`), session moments, compaction to 500, permanent ones, reset, migrations, `ctx.memory`, recall events with a guard (`RegisterRecall`), text export, the `/au journal` command. |
-| **`Systems/Relationships.lua`** | the relationships ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)): seven independent axes, labels and disposition derived from the data, NPCs computed from the `npcID` (dialogue, quest, vendor, flight, trainer, inn) with diminishing returns, a daily cap and decay, players chosen by the user with suggestions, `ctx.relation` and the like, the `R` factor, register by familiarity, the `relation_npc` event, the `/au relationships` command. |
+| **`Systems/Relationships.lua`** | the relationships ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)): seven independent axes, labels and disposition derived from the data, NPCs computed from the `npcID` (dialogue, quest, vendor, flight, trainer, inn) with diminishing returns, a daily cap and decay, players chosen by the user with suggestions and, for each, a `user` block (what the user chose, written only by user actions) apart from a `seen` block (what the addon observed: encounters by type, last facts), feelings in words, `ctx.relation` and the like, the `R` factor, register by familiarity, the `relation_npc` and `relation_player` events, the `/au relationships` command ([ADR 0026](adr/0026-player-records-user-choices-apart-from-observations.md)). |
 | **`Systems/Place.lua`** | the place ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.place` (zone, uiMapID, continent, tags, territory, capital, instance, boss encounter, role in the group, battleground), `Place:Lookup` on the data in `Data/Places.lua`, `Place.Key` (stable memory key), the `C` factor of `place.` tags and short lines, rhythm by instance type, demand during bosses, the `encounter_end` event, the `/au place` command. |
 | **`Systems/Interlocutor.lua`** | the interlocutor ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.other` (game data, role, personality with the S5 traits, recent actions, relationship), sources in order (user > public TRP3 with consent > `Data/NPCs.lua` > role from reliable interactions > weak tendency > neutral), the `C` factor of `other.` tags, register by manner of speaking and role, the `npc_meet` and `other_action` events, the `/au who` command. |
 | **`Systems/NPCAlive.lua`** | NPC Alive ([ADR 0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)): ambient dialogues with an NPC. State machine `idle → offered → opened → choice → response → ended` with verified transitions, identity (a specific NPC from the curated registry or an archetype from the current interaction; never if uncertain or secret), scripts (`NS:RegisterDialogues`: nodes, replies, flags), lines from the engine rules, local effects (flag, relationship, memory), an automatic offer that expires, interruptions (combat, death, zone, another NPC, quest), the `AzerothUnspoken_NPCDialogue` key binding, the `/au talk` command. |
@@ -197,7 +197,7 @@ flowchart TB
 | `R` factor | Relationships (`relations`) | tags with the `rel.` scope |
 | `C` factor | Place (`place`), Interlocutor (`other`) | tags with the `place.` and `other.` scope, short lines in battlegrounds |
 | register modifier | Personality, Relationships, Interlocutor | temperament, familiarity and manner of speaking shift the preferred registers |
-| event guard | memory (`memory_return`…), relationships (`relation_npc`), interlocutor (`npc_meet`, `other_action`), place (`encounter_end`), NPC Alive (`npcd_*`), arcs (`arc_*`) | an event that cites a fact does not speak if the fact is not there |
+| event guard | memory (`memory_return`…), relationships (`relation_npc`, `relation_player`), interlocutor (`npc_meet`, `other_action`), place (`encounter_end`), NPC Alive (`npcd_*`), arcs (`arc_*`) | an event that cites a fact does not speak if the fact is not there |
 | `SetRhythm` / `SetDemandCheck` | Place, NPC Alive | more sober in raids and against bosses, silence during a dialogue |
 | `SetEventPriority` | memory, relationships, arcs | memory recall or exceptional event in §10 of the GDD |
 | `RegisterTab` | LivingMemory, Relationships, StoryArcs | the Journal tabs (memories, places, flags, session, relationships, people, stories) |
@@ -375,9 +375,10 @@ flowchart LR
     I --> D["cdb.relationships<br/>npcs · players"]
     G["Group, trades, TRP3 profiles,<br/>private replies (name only)"] --> C["Proposals<br/>(session only)"]
     C -- "user click" --> D
-    U["Window / commands"] --> D
-    D --> X["ctx.relation · ctx.rel · ctx.disposition<br/>ctx.isKnown · ctx.groupRelations"]
-    X --> R["Conditions, {relation}, R factor,<br/>register by familiarity, relation_npc"]
+    U["Window / commands<br/>(user actions)"] -- "writes user" --> D
+    E["Group, trade, duel, invite, emote at us,<br/>target (players already listed)"] -- "writes seen only" --> D
+    D --> X["ctx.relation · ctx.rel · ctx.disposition<br/>ctx.isKnown · ctx.groupRelations<br/>ctx.relFeelings · relDaysSince · relMetHere · relShared"]
+    X --> R["Conditions, {relation}, R factor,<br/>register by familiarity, relation_npc, relation_player"]
 ```
 
 - **Axes**: `familiarity`, `fear` and `attraction` 0…100; `trust`, `respect`, `affection`, `loyalty` −100…100. Attraction is optional (off by default).
@@ -385,6 +386,22 @@ flowchart LR
 - **NPCs** are automatic (`relations.npcAuto`); **players** only with a user action (`R:AddPlayer(name, "user")`) or with the explicit option "register automatically".
 - **Privacy**: no chat or whisper text (of a private reply only the name is read), nothing over the network, proposals are not saved.
 - **Interface**: `/au relationships` opens `UI/RelationsFrame.lua`; the journal has the *Relationships* and *People met* tabs.
+
+#### Player records: `user` and `seen` ([ADR 0026](adr/0026-player-records-user-choices-apart-from-observations.md))
+
+`relationships.version` is 2. A player record is `{ source, noted, user, seen }`; NPC records stay flat.
+
+| Block | Holds | Written by |
+|---|---|---|
+| `user` | `axes` (by hand, sparse), `label`, `feeling` (up to two), `note`, `tags`, `traits`, `role` | **only** the user actions: the setters behind `Edit` in `Systems/Relationships.lua`, `AddPlayer`, `Interlocutor:SetTrait`, and the shaping of loaded data (`MigrateV1`, `CleanRecord`) |
+| `seen` | `first`, `last`, `count`, `kinds` (encounters by type), `facts` (ring of the last 5: kind, map id, zone, time; no text), reserved `guid` | `R:Observe` and `R:ForgetObservations` |
+
+- **The software never writes `user`.** Proved by `Tests/TestPlayers.lua` (every automatic path over a full record, with a control) and by `Tests/check_user_block.py` (a source check with a short allowed list of writers). Suggestions of the future are proposals the user accepts through the same setters.
+- **Encounters** (`R:Observe`, #108): only for a player **already in the list** (nothing creates a record, D11). `group` (a listed player joins), `trade`, `duel`, `invite`, `emote` (aimed at us), `whisper` (the recipient's name) and `target` update `last`, `count` and `kinds`; `group_combat` (a fight in a group with listed players) updates `last` and `kinds` only. The same kind with the same person within 10 minutes is one encounter. The group is read once, a second after the last roster update.
+- **Feelings** (#109): `trust`, `liking`, `wariness`, `fear`, `resentment`, `gratitude`, chosen by the user (the tag `rel.feeling:<id>`, a set; the condition `feeling`). Each has a preset of axes the user can ask for. The label `ally` is `manualOnly`. The `R` factor drops a `warm` line for a negative feeling.
+- **`relation_player`** (#106): `R:Recognize(key)` offers one Director candidate per person and session, on joining the group, an interaction aimed at us and, if the user turns it on (`relations.recognizeTarget`), the target. The observation is recorded even when the narrator stays silent.
+- **Conditions from the observations** (#110): `ctx.relDaysSince`, `ctx.relMetHere` and `ctx.relShared` come from `seen` and from `session.prior`, the state before the session's first meeting.
+- **Migration**: `R.MigrateV1` (version 1 → 2) runs in `Sanitize`; data of a newer version stays read-only.
 
 ### NPC Alive
 
@@ -511,7 +528,7 @@ flowchart LR
 | Variable | Content |
 |---|---|
 | `AzerothUnspokenDB` | `schemaVersion` (currently 7) and `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`), `interlocutor` (`trp3Others`: consent to read other people's public Total RP 3 profile), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (button, wizard done, `narrator`: duration, opacity, size, lock, history; `dialogue`: size, opacity, lock, position). |
-| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (anti-repetition, bounded: uses, last variants, running cooldowns, recent lines, tone), `personality` (`version`, `archetype`, `traits`, `trp3`: explicit Character Soul choices and consent to Total RP 3) `relationships` (relationships: `version`, `npcs` by `npcID`, `players` by "Name-Realm"; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
+| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (anti-repetition, bounded: uses, last variants, running cooldowns, recent lines, tone), `personality` (`version`, `archetype`, `traits`, `trp3`: explicit Character Soul choices and consent to Total RP 3) `relationships` (relationships: `version` 2, `npcs` by `npcID`, `players` by "Name-Realm" with a `user` and a `seen` block; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
 
 Every per-character datum also has its **own version** (`personality.version`, `memories.version`, `relationships.version`, `arcs.version`), with migrations and cleanup (`Sanitize`) in its own module. A version newer than the one known (you went back to an older addon) is read but **not rewritten**.
 
@@ -534,7 +551,7 @@ flowchart LR
 
 - Defaults are in `Config.defaults` and `Config.characterDefaults`; validity rules in `Config.rules`.
 - Migrations are `Config.migrations.global[n]` and `.character[n]` ([ADR 0006](adr/0006-savedvariables-and-schema-versions.md)).
-- **Chat content is never saved**, nor the lines of the dialogues, nor the arcs' texts (only the ids of the choices); of the relationships with players only those chosen by the user are saved. The `privacy.*` fields (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) already exist, switched off, for the future Social module.
+- **Chat content is never saved**, nor the lines of the dialogues, nor the arcs' texts (only the ids of the choices); of the relationships with players only those chosen by the user are saved, with the counts, places and times of the meetings the addon observed for people already in the list (never a text). The `privacy.*` fields (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) already exist, switched off, for the future Social module.
 - The rest of the state (immediate pause `NS.paused`, pending proposal, history, error log, memory of the last send) lives in memory only.
 
 ### Folders of the download and when they are loaded
@@ -568,7 +585,7 @@ A loaded folder stays loaded until `/reload`: what a region left keeps in memory
 
 ### The authoring archive (outside the game)
 
-[ADR 0026](adr/0026-sqlite-authoring-archive-and-exporter.md), issues #87 and #88. An addon cannot read a database, so the archive is only where content is **written, reviewed, searched and measured** (`tools/archive/`, Python standard library, never loaded in game).
+[ADR 0027](adr/0027-sqlite-authoring-archive-and-exporter.md), issues #87 and #88. An addon cannot read a database, so the archive is only where content is **written, reviewed, searched and measured** (`tools/archive/`, Python standard library, never loaded in game).
 
 ```mermaid
 flowchart LR
@@ -579,7 +596,7 @@ flowchart LR
     D -- report --> R["coverage and gaps<br/>(CI job summary + artifact)"]
 ```
 
-- **Each intention is in one committed place:** approved ones in the folders (hand-written or exported), everything else in the overlay `authoring/*.csv` (text, one row per intention and per variant, sorted, so a PR diff reads line by line). `export` moves approved content from the overlay into the folders. The archive becomes the single source of truth only in a later stage (ADR 0026).
+- **Each intention is in one committed place:** approved ones in the folders (hand-written or exported), everything else in the overlay `authoring/*.csv` (text, one row per intention and per variant, sorted, so a PR diff reads line by line). `export` moves approved content from the overlay into the folders. The archive becomes the single source of truth only in a later stage (ADR 0027).
 - **The importer reads Lua as data** (`lualit.py`, no Lua is run) and keeps each file as prelude, entries and the gaps with their comments; **`export` of the imported folders is identical byte for byte to every file** (a test in the required CI job). Changed entries are rendered again in the canonical style, new ones are appended to the table of their pack. Rules computed by code (`RegistryArcs.lua`, `RegistryDialogues.lua`) are not archived.
 - **Review flow:** `draft -> review -> approved -> retired` (`submit`, `approve`, `reject`, `retire`, `restore`); only `approved` is exported; approval needs a text in every language of the pack and, for invented lore in a narrator line, an attribution (D7).
 - **Reports:** `report` counts intentions (D2) with their variants per language, by region, voice, depth and register; lists the event x context cells (the index groups of ADR 0024) with fewer than *k* eligible intentions or texts; and gives the cheap part of the M1 and M2 measurements. Thresholds are in `tools/archive/thresholds.json`; the CI workflow `Content coverage` prints the report as a job summary and an artifact and **never blocks**.
@@ -649,7 +666,7 @@ From the [roadmap](../ROADMAP.md). The current `main` has milestones M0–M3: fo
 
 ## 9. Known limits
 
-- **Authoring archive (R2, #87, #88)**: it covers the literal rules (807 of 1,009 intentions); `base_arcs` and `base_dialogues` compute their rules in code and are not archived. `attribution` (D7) lives only in the archive: the pack format has no such field yet, so the archive refuses unattributed invented lore at approval and the exporter does not write the field. "Eligible" in the reports is an upper bound (only the first index group of each rule is used), and the repetition numbers are proxies, not the seeded M2 simulation ([ADR 0026](adr/0026-sqlite-authoring-archive-and-exporter.md)).
+- **Authoring archive (R2, #87, #88)**: it covers the literal rules (828 of 1,030 intentions); `base_arcs` and `base_dialogues` compute their rules in code and are not archived. `attribution` (D7) lives only in the archive: the pack format has no such field yet, so the archive refuses unattributed invented lore at approval and the exporter does not write the field. "Eligible" in the reports is an upper bound (only the first index group of each rule is used), and the repetition numbers are proxies, not the seeded M2 simulation ([ADR 0027](adr/0027-sqlite-authoring-archive-and-exporter.md)).
 - **Scale (R1)**: at 50,000 synthetic entries the offline projection (`Tests/bench_scale.py`, lupa) gives 4.1 ms per pick on average (p95 14 ms) and 94 MB of memory with two languages, 76 MB with only the chosen language loaded (`--packs lazy --langs enUS`, #85): the targets of R1 (5 ms, 40 MB) are met only for the mean pick time. The targets are hypotheses until the in-game budget is decided (D3 in #130); see [ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md) and #138.
 - **Language and regional packs (#85, #101)**: `C_AddOns.LoadAddOn`, `IsAddOnLoaded`, `GetAddOnMetadata` and the change of continent have not been tried in the real client. A folder loaded on demand stays loaded until `/reload` (WoW cannot unload an addon): a region left keeps its builders in memory, about a third of its built size (`Tests/bench_packs.py`, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)). Changing the phrase language needs a reload.
 - **Nothing has been tested in the real client.** Everything is verified only with the simulated client; the G1 test is postponed ([checklist](G1_checklist.md)).

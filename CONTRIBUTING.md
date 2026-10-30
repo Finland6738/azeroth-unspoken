@@ -164,7 +164,7 @@ Inscriptions, solemn formulas, remembered verses, inn rhymes, road songs, prover
 
 ### Writing content through the archive
 
-Content can be written, reviewed and measured outside the game with the **authoring archive** ([ADR 0026](docs/adr/0026-sqlite-authoring-archive-and-exporter.md)). It needs only Python 3 (no other package). The game never reads the archive: it reads the pack folders, which the archive writes. Writing directly in the Lua files is still allowed (and is how approved lines are fixed by hand); both ways end in the same folders.
+Content can be written, reviewed and measured outside the game with the **authoring archive** ([ADR 0027](docs/adr/0027-sqlite-authoring-archive-and-exporter.md)). It needs only Python 3 (no other package). The game never reads the archive: it reads the pack folders, which the archive writes. Writing directly in the Lua files is still allowed (and is how approved lines are fixed by hand); both ways end in the same folders.
 
 Where a line lives, by state (**one place at a time**): `approved` in the pack folders; `draft`, `review` and `retired` (and an approved line waiting for `export`) in `authoring/*.csv`, text that diffs row by row. The SQLite file (`build/authoring.sqlite`) is generated and ignored by git.
 

@@ -1,4 +1,4 @@
--- Authoring archive of Azeroth Unspoken (ADR 0026). Authoring store only: the game never reads it.
+-- Authoring archive of Azeroth Unspoken (ADR 0027). Authoring store only: the game never reads it.
 -- Lists (events, registers, depth, tags) and the conditions are JSON text in the intention row: that is the
 -- authoritative value the exporter writes back. The tables intention_event / _register / _depth / _tag are search
 -- indexes derived from it (rebuilt by `reindex`), never edited by hand.

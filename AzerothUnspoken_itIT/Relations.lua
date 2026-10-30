@@ -376,4 +376,115 @@ NS:AddTexts("itIT", {
 		"Ci conosciamo bene, io e questa bottega. Lei conosce anche il fondo della mia borsa.",
 		"Un mercante che mi conosce. Spero voglia dire uno sconto, temo voglia dire il contrario.",
 	},
+	---------------------------------------------------------------------------
+	-- un giocatore noto riconosciuto (#106), per sentimento (#109) e per ciò che l'addon ha osservato (#110)
+	---------------------------------------------------------------------------
+	["rel.player.trust"] = {
+		"{other}. Uno dei pochi a cui darei le spalle senza voltarmi.",
+		"Ecco {other}. Alcune persone si controllano due volte; con questa ho smesso di controllare da un pezzo.",
+		{ "{other}. Bene. Posso respirare.", depth = "natural" },
+		{ "La fiducia non si riceve: la si trova già costruita quando serve. Con {other} era lì in piedi prima ancora che andassi a cercarla.", depth = "elevated" },
+	},
+	["rel.player.liking"] = {
+		"Di nuovo {other}, e mi accorgo di sorridere già. Difficile dire perché: certe persone sono semplicemente facili da apprezzare.",
+		"Ah, {other}. La strada pesa meno con certi volti lungo il cammino.",
+		{ "Oh, {other}! Bene.", depth = "natural" },
+		{ "Certi incontri non chiedono motivi. {other} entra in vista e la giornata si sistema un po' meglio.", depth = "elevated" },
+	},
+	["rel.player.gratitude"] = {
+		"{other}. Non ho dimenticato ciò che è stato fatto per me, e non lo dimenticherò, per quanto ne parli poco.",
+		"Passa qualcuno a cui devo più di quanto abbia mai detto. Un giorno troverò le parole giuste, o il momento giusto.",
+		{ "{other}. Ho ancora un debito da saldare.", depth = "natural" },
+		{ "Un debito di gratitudine non si riduce con gli anni: impara solo ad aspettare in silenzio. {other} è sulla strada, e il mio è ancora aperto.", depth = "elevated" },
+	},
+	["rel.player.wariness"] = {
+		"{other}. Un cenno, un sorriso, e gli occhi aperti. Vecchia abitudine, motivi più recenti.",
+		"Un nome noto, e non di quelli che lascio vicino alla borsa. La cortesia non costa nulla; la fiducia costa molto.",
+		{ "{other}. Attenzione.", depth = "natural" },
+		{ "Non credo che {other} voglia il male, esattamente. So solo quanto spesso sia proprio «esattamente» la parola che cede.", depth = "elevated" },
+	},
+	["rel.player.fear"] = {
+		"Ancora {other}. Il polso se ne accorge prima di me. Tengo il volto fermo e il passo regolare.",
+		"Conosco quell'andatura. Non sarò io il primo a guardare {other}, né l'ultimo a distogliere lo sguardo.",
+		{ "{other}. Calma.", depth = "natural" },
+		{ "La paura è solo attenzione che non sa dove andare. La mia si è voltata tutta verso {other}, e non si lascia convincere.", depth = "elevated" },
+	},
+	["rel.player.resentment"] = {
+		"{other}. Non ho dimenticato, e non ho perdonato. Per ora sarò civile: la civiltà costa meno di una rissa.",
+		"Ecco {other}. Certi debiti non si pagano in monete, e questo è ancora aperto.",
+		{ "{other}. Ovviamente.", depth = "natural" },
+		{ "Il rancore ha una memoria eccellente e un senso del tempo pessimo. Ogni dettaglio di {other} è esattamente dove l'ho lasciato.", depth = "elevated" },
+	},
+	["rel.player.ally"] = {
+		"{other}. Vogliamo la stessa cosa, e questo conta più di una lunga amicizia. Vediamo cosa se ne può fare.",
+		"Un'alleanza per scelta: nessuno ce l'ha imposta, e nessuno può scioglierla tranne noi.",
+		{ "{other}: dalla mia parte, come d'accordo.", depth = "natural" },
+	},
+	["rel.player.friend"] = {
+		"{other}! Rassicurante trovare un volto amico in mezzo alla folla.",
+		"Certi incontri non si pianificano: capitano, e vanno per il verso giusto.",
+		{ "Ehi, {other}.", depth = "natural" },
+	},
+	["rel.player.rival"] = {
+		"{other}. Non lo direi mai ad alta voce, ma quando {other} è nei paraggi mi impegno di più.",
+		"Un rivale che si rispetti, sulla stessa strada. Doveva succedere.",
+		{ "{other}. Secondo round, allora.", depth = "natural" },
+	},
+	["rel.player.enemy"] = {
+		"{other}. Le nostre strade si incrociano ancora, e nessuno dei due ha cambiato idea.",
+		"Non c'è nessuno che preferirei evitare di più. Eppure eccoci qui.",
+		{ "{other}. Proprio {other}, fra tutti.", depth = "natural" },
+	},
+	["rel.player.wary"] = {
+		"Conosco il nome, e il nome non mi rassicura.",
+		"{other}. Un cenno del capo, e le distanze restano.",
+		{ "{other}. Mh.", depth = "natural" },
+	},
+	["rel.player.feared"] = {
+		"{other} è qui. Mi scopro a fare un passo indietro senza ammetterlo.",
+		"Qualunque cosa io provi per {other}, non è sollievo. Continuo a camminare.",
+	},
+	["rel.player.known"] = {
+		"Conosco quel nome: {other}. Ci siamo già incrociati.",
+		"{other}. Un volto della strada: i dettagli torneranno tra un istante.",
+		{ "Ah, ecco {other}.", depth = "natural" },
+	},
+	["rel.player.absent.long"] = {
+		"{other}. È passato tanto tempo: abbastanza da scordare dove ci eravamo lasciati, non abbastanza da scordare che è successo.",
+		"Molto tempo dall'ultimo incontro con {other}. Le strade raramente riportano le stesse persone alla stessa distanza.",
+		{ "{other}. Sono passati secoli.", depth = "natural" },
+	},
+	["rel.player.absent.weeks"] = {
+		"Qualche settimana dall'ultima volta. Abbastanza per chiedersi cosa abbia combinato {other}.",
+		"{other} di nuovo, dopo qualche settimana. Non tanto; quanto basta per accorgersi del vuoto.",
+	},
+	["rel.player.recent"] = {
+		"Ancora {other}, e così presto. Oggi la strada sembra piccola.",
+		"Oggi continuiamo a incontrarci, {other} e io. O è una coincidenza, o è una strada molto paziente.",
+	},
+	["rel.player.met_here"] = {
+		"L'ultima volta che ho visto {other} era proprio qui. Anche i luoghi ci ricordano, un poco.",
+		"Lo stesso posto di prima, {other}. Certi luoghi raccolgono incontri come altri raccolgono polvere.",
+	},
+	["rel.player.shared.combat"] = {
+		"Abbiamo combattuto fianco a fianco, {other} e io. Non è qualcosa che un solo addio cancella.",
+		"Una battaglia condivisa lascia un segno che una stretta di mano non lascia mai.",
+		{ "{other}. Abbiamo sanguinato nella stessa battaglia.", depth = "natural" },
+		{ "Chi è stato nella stessa linea, di fronte alla stessa cosa, porta con sé un piccolo paese in comune. Il mio comprende {other}.", depth = "elevated" },
+	},
+	["rel.player.shared.duel"] = {
+		"Ci siamo affrontati in duello, {other} e io: il polso ricorda meglio della mente.",
+		"Mi sono {g:misurato|misurata} con {other}. È un modo di presentarsi, come un altro.",
+		{ "{other}. Il nostro duello è ancora nel polso.", depth = "natural" },
+	},
+	["rel.greet.ally"] = {
+		"{target}, salute. Siamo dallo stesso lato di questa faccenda, e questo vale un saluto.",
+		"Alleanza: parola piccola, ma la intendo per intero.",
+		{ "Ci sei. Bene, andiamo.", depth = "natural" },
+	},
+	["rel.bye.ally"] = {
+		"Alla prossima volta che avremo bisogno l'uno dell'altro. Non passerà molto.",
+		"Buon cammino. Ci rivedremo dove ci chiamerà la causa.",
+		{ "A presto. Sai dove trovarmi.", depth = "natural" },
+	},
 }, "base_relations")
