@@ -29,7 +29,7 @@ Memory is saved **per character**.
 
 ### The journal window
 
-Open it with `/au journal` (aliases `/au diary`, `/au diario`) or the **Character journal...** button in the [[settings panel|Settings]].
+Open it with `/au journal` or the **Character journal...** button in the [[settings panel|Settings]].
 
 | Tab | Shows |
 |---|---|
@@ -57,31 +57,31 @@ Use **<** and **>** to turn pages.
 
 ## Commands
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au journal` | `/au diary`, `/au diario` | opens the journal window |
-| `/au journal list` | `lista` | prints a summary and the 8 newest memories with their numbers |
-| `/au journal places` | `luoghi` | prints the places you remember |
-| `/au journal flag` | `flags` | lists the flags |
-| `/au journal flag <name>` | | sets a flag, or clears it if already set (letters, digits and `_`) |
-| `/au journal export` | `esporta` | shows the journal as text to copy |
-| `/au journal pin <n>` | `perm`, `permanente` | makes memory `n` permanent, or not |
-| `/au journal delete <n>` | `elimina`, `cancella` | deletes memory `n` |
-| `/au journal forget <place>` | `dimentica` | forgets a place |
-| `/au journal reset [what]` | `azzera` | erases memories (see below); asks for confirmation |
-| `/au memory` | `/au memoria` | clears the list of **lines already used** (see below) |
+| Command | What it does |
+|---|---|
+| `/au journal` | opens the journal window |
+| `/au journal list` | prints a summary and the 8 newest memories with their numbers |
+| `/au journal places` | prints the places you remember |
+| `/au journal flag` | lists the flags |
+| `/au journal flag <name>` | sets a flag, or clears it if already set (letters, digits and `_`) |
+| `/au journal export` | shows the journal as text to copy |
+| `/au journal pin <n>` | makes memory `n` permanent, or not |
+| `/au journal delete <n>` | deletes memory `n` |
+| `/au journal forget <place>` | forgets a place |
+| `/au journal reset [what]` | erases memories (see below); asks for confirmation |
+| `/au memory` | clears the list of **lines already used** (see below) |
 
 ### Resetting
 
 `/au journal reset` erases part or all of the memory. Choose what:
 
-| Value | Italian | Erases |
-|---|---|---|
-| `all` (default) | `tutto` | everything |
-| `memories` | `ricordi` | all memories |
-| `ordinary` | `ordinari` | memories that are not permanent |
-| `places` | `luoghi` | the places |
-| `flags` | `flag` | the flags |
+| Value | Erases |
+|---|---|
+| `all` (default) | everything |
+| `memories` | all memories |
+| `ordinary` | memories that are not permanent |
+| `places` | the places |
+| `flags` | the flags |
 
 The addon asks you to **repeat the same command within 15 seconds** to confirm. If you do not, nothing is erased.
 

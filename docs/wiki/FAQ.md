@@ -41,8 +41,8 @@ Only if you turn that on (it is off by default), and only race, class and person
 
 ## Using it
 
-**Why is everything in Italian?**
-Italian is the starting language. Type `/au language en`. See [[Languages]].
+**Can I use the addon in Italian?**
+Yes. The addon starts in English. Click **Italiano** in the setup wizard or type `/au language it`: the interface and the lines switch to Italian. The command names stay English (`/au journal`, not `/au diario`). See [[Languages]].
 
 **The narrator talks too much. / Too little.**
 Change the intensity: `/au intensity 30` for less, `/au intensity 70` for more. See [[Intensity and Prose Depth|Intensity-and-Depth]].
@@ -51,10 +51,10 @@ Change the intensity: `/au intensity 30` for less, `/au intensity 70` for more. 
 `/au pause`, the **||** button on the box, or the pause key. Again to resume.
 
 **How do I make my character say a line?**
-Turn on chat proposals with `/au chat confirm`, bind the speak key, and press it when a line you like is proposed. See [[Chat Gateway]].
+Turn on chat proposals with `/au mode confirm`, bind the speak key, and press it when a line you like is proposed. See [[Chat Gateway]].
 
 **Can I change a line before sending it?**
-Yes: **Edit** on the box, or preview mode (`/au chat preview`), or **To chat**, which puts it in the chat box for you to finish.
+Yes: **Edit** on the box, or preview mode (`/au mode preview`), or **To chat**, which puts it in the chat box for you to finish.
 
 **Can I use it in macros?**
 Yes. For example `/au cast Flash Heal` after `/cast Flash Heal`, or `/au greet`, `/au toast`. See the [[Commands Reference|Commands]].

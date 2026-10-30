@@ -1063,14 +1063,17 @@ function LM:Status()
 end
 
 ---------------------------------------------------------------------------
--- Comandi: /au diario ...
+-- Comandi: /au journal ...
 ---------------------------------------------------------------------------
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
-local RESET_WORDS = {
-	tutto = "all", all = "all", ricordi = "memories", memories = "memories", ordinari = "ordinary", ordinary = "ordinary",
-	luoghi = "places", places = "places", flag = "flags", flags = "flags",
-}
+local RESET_WORDS = NS.Keywords.Register("journal.reset", {
+	all = "all", memories = "memories", ordinary = "ordinary", places = "places", flags = "flags",
+})
+local WORDS = NS.Keywords.Register("journal", {
+	list = "list", places = "places", flag = "flag", flags = "flag", export = "export", pin = "pin", delete = "delete",
+	forget = "forget", reset = "reset",
+})
 
 ---@param rest string
 function LM:Command(rest)
@@ -1083,18 +1086,19 @@ function LM:Command(rest)
 	end
 	if word == "" then
 		if NS.JournalFrame and NS.JournalFrame:Toggle() then return end
-		word = "lista"
+		word = "list"
 	end
-	if word == "lista" or word == "list" then
+	word = WORDS[word]
+	if word == "list" then
 		local st = self:Stats()
 		Say("mem_summary", st.memories, st.permanent, st.places, st.flags)
 		for i, e in ipairs(self:List()) do
 			if i > 8 then break end
 			NS:Print(("  #%d %s%s (%s)"):format(e.id, e.perm and "* " or "", self:Describe(e), Stamp(e.t)))
 		end
-	elseif word == "luoghi" or word == "places" then
+	elseif word == "places" then
 		for _, p in ipairs(self:Places()) do NS:Print("  " .. self:DescribePlace(p)) end
-	elseif word == "flag" or word == "flags" then
+	elseif word == "flag" then
 		local name = arg:match("^([^ ]*)") or ""
 		if name == "" then
 			local names = self:FlagNames()
@@ -1108,7 +1112,7 @@ function LM:Command(rest)
 			self:SetFlag(name, "user")
 			Say("mem_flag_on", NS.Lower(name))
 		end
-	elseif word == "esporta" or word == "export" then
+	elseif word == "export" then
 		if not (NS.JournalFrame and NS.JournalFrame:ShowExport()) then
 			local n = 0
 			for line in (self:ExportText() .. "\n"):gmatch("([^\n]*)\n") do
@@ -1117,7 +1121,7 @@ function LM:Command(rest)
 				NS:Print(line)
 			end
 		end
-	elseif word == "permanente" or word == "pin" or word == "perm" then
+	elseif word == "pin" then
 		local id = tonumber(arg:match("^#?(%d+)"))
 		local ok, why = false, "missing"
 		if id then ok, why = self:SetPermanent(id) end
@@ -1127,12 +1131,12 @@ function LM:Command(rest)
 		else
 			Say(why == "limit" and "mem_perm_limit" or "mem_missing", arg)
 		end
-	elseif word == "elimina" or word == "delete" or word == "cancella" then
+	elseif word == "delete" then
 		local id = tonumber(arg:match("^#?(%d+)"))
 		if id and self:Delete(id) then Say("mem_deleted", id) else Say("mem_missing", arg) end
-	elseif word == "dimentica" or word == "forget" then
+	elseif word == "forget" then
 		if arg ~= "" and self:ForgetPlace(arg) then Say("mem_place_forgotten", arg) else Say("mem_missing", arg) end
-	elseif word == "reset" or word == "azzera" then
+	elseif word == "reset" then
 		local what = RESET_WORDS[NS.Lower(arg:match("^([^ ]*)") or "")] or "all"
 		local nowT = GetTime()
 		local p = self.pendingReset

@@ -68,6 +68,7 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 | [0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md) | NPC Alive: a simulated dialogue is not a real dialogue |
 | [0021](adr/0021-story-arcs-micro-stories-without-game-effects.md) | Story Arcs: micro-stories that do not touch the game |
 | [0022](adr/0022-automatic-rules-ci-docs-check-and-wiki-sync.md) | Automatic rules: CI, a docs check and the wiki sync |
+| [0023](adr/0023-english-first-addon-and-english-command-names.md) | English first: the addon starts in English and command names are always English |
 
 ## Archive
 

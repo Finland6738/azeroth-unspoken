@@ -2,7 +2,7 @@
 
 Words used in this manual and in the addon, in alphabetical order.
 
-**Alias.** Another name for the same command. `/au diario` is an alias of `/au journal`. See [[Commands Reference|Commands]].
+**Short form.** A shorter spelling of a command: `/au lang` for `/au language`, `/au rel` for `/au relationships`. Command names are always English and have no other aliases. See [[Commands Reference|Commands]].
 
 **Archetype.** A ready-made personality, such as *Disillusioned veteran* or *Scholar*, that sets several traits at once. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 

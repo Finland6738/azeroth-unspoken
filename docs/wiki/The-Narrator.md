@@ -39,14 +39,14 @@ The inner voice and the NPC voice always stay private, whatever you choose in th
 
 ## Commands
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au narrator` | `/au narratore` | shows a sample line |
-| `/au narrator history` | `cronologia` | opens or closes the recent lines |
-| `/au narrator reset` | | moves the box back to its default place |
-| `/au narrator clear` | `pulisci` | empties the history |
-| `/au pause` | `/au pausa` | pauses or resumes the narrator |
-| `/au on` · `/au off` | | turns the addon on or off |
+| Command | What it does |
+|---|---|
+| `/au narrator` | shows a sample line |
+| `/au narrator history` | opens or closes the recent lines |
+| `/au narrator reset` | moves the box back to its default place |
+| `/au narrator clear` | empties the history |
+| `/au pause` | pauses or resumes the narrator |
+| `/au on` · `/au off` | turns the addon on or off |
 
 ## Settings
 

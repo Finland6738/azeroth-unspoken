@@ -7,7 +7,7 @@ T.run("predefiniti", function()
 	T.eq(AzerothUnspokenDB.schemaVersion, 6, "schema globale")
 	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 6, "schema personaggio")
 	T.ok(AzerothUnspokenDB.settings == db, "NS.db sono le impostazioni globali")
-	T.eq(db.locale, "it", "lingua")
+	T.eq(db.locale, "en", "lingua predefinita: inglese (#132)")
 	T.eq(db.preset, "complete", "preset")
 	T.eq(db.intensity, 50, "intensità")
 	T.eq(db.proseDepth, "literary", "profondità")
@@ -83,18 +83,18 @@ T.run("validazione", function()
 
 	AzerothUnspokenDB = { schemaVersion = 1, settings = { locale = "xx" } }
 	Config:Load()
-	T.eq(NS.db.locale, "it", "lingua sconosciuta")
+	T.eq(NS.db.locale, "en", "lingua sconosciuta: torna all'inglese")
 
 	-- una lingua registrata da un pacchetto esterno dopo il caricamento resta quella scelta (issue #7)
 	AzerothUnspokenDB = { schemaVersion = 2, settings = { locale = "de" } }
 	Config:Load()
-	T.eq(NS.db.locale, "it", "al caricamento 'de' non è ancora registrata")
-	T.eq(NS:Lang(), "it", "NS:Lang ripiega sull'italiano finché la lingua manca")
+	T.eq(NS.db.locale, "en", "al caricamento 'de' non è ancora registrata")
+	T.eq(NS:Lang(), "en", "NS:Lang ripiega sull'inglese finché la lingua manca")
 	NS:RegisterLanguage("de", { name = "Deutsch", ui = {} })
 	T.eq(NS.db.locale, "de", "registrata dal pacchetto: torna quella scelta")
 	T.eq(NS:Lang(), "de", "NS:Lang la usa")
 	NS.db.locale = "fr"
-	T.eq(NS:Lang(), "it", "una lingua non registrata non rompe NS:Lang")
+	T.eq(NS:Lang(), "en", "una lingua non registrata non rompe NS:Lang")
 	NS:RegisterLanguage("fr", { name = "Français", ui = {} })
 	T.eq(NS.db.locale, "fr", "una lingua scelta a mano resta com'è")
 	T.eq(Config:ShortLocale("deDE"), "de", "ShortLocale deDE")
@@ -160,6 +160,43 @@ T.run("migrazioni", function()
 	T.ok(AzerothUnspokenDB.futuro, "dati futuri conservati")
 	T.eq(NS.db.intensity, 60, "impostazioni lette")
 	T.eq(#Diagnostics.errors, errors + 1, "avviso in diagnostica")
+end)
+
+-- #132: l'inglese è la lingua di un'installazione nuova; chi ha già scelto l'italiano la tiene
+T.run("lingua: installazione nuova in inglese, impostazioni salvate con l'italiano conservate", function()
+	AzerothUnspokenDB = nil
+	AzerothUnspokenCharacterDB = nil
+	Config:Load()
+	T.eq(NS.db.locale, "en", "nessuna variabile salvata: inglese")
+	T.eq(NS:Lang(), "en", "NS:Lang: inglese")
+	T.eq(Config.defaults.locale, "en", "predefinito")
+	-- chi aveva già l'italiano (schemi precedenti compresi) lo conserva
+	for _, schema in ipairs({ 2, 3, 4, 5, 6 }) do
+		AzerothUnspokenDB = { schemaVersion = schema, settings = { locale = "it", intensity = 70 } }
+		Config:Load()
+		T.eq(NS.db.locale, "it", "schema " .. schema .. ": l'italiano scelto resta")
+		T.eq(NS:Lang(), "it", "schema " .. schema .. ": NS:Lang")
+	end
+	-- il codice completo del client si normalizza, ma resta italiano
+	AzerothUnspokenDB = { schemaVersion = 6, settings = { locale = "itIT" } }
+	Config:Load()
+	T.eq(NS.db.locale, "it", "itIT -> it")
+	-- chi aveva l'inglese lo tiene; chi non aveva salvato la lingua parte in inglese
+	AzerothUnspokenDB = { schemaVersion = 6, settings = { locale = "en" } }
+	Config:Load()
+	T.eq(NS.db.locale, "en", "l'inglese scelto resta")
+	AzerothUnspokenDB = { schemaVersion = 6, settings = { intensity = 40 } }
+	Config:Load()
+	T.eq(NS.db.locale, "en", "lingua assente nel salvato: inglese")
+	T.eq(NS.db.intensity, 40, "le altre scelte restano")
+	-- la scelta fatta nel gioco si salva e si rilegge
+	NS.db.locale = "it"
+	T.eq(AzerothUnspokenDB.settings.locale, "it", "la scelta è nelle variabili salvate")
+	Config:Load()
+	T.eq(NS.db.locale, "it", "al caricamento successivo l'italiano resta")
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+	NS.db.locale = "it"
 end)
 
 -- issue #3: i dati di uno schema più nuovo non si riscrivono nemmeno con valori che questa versione non conosce
@@ -332,11 +369,11 @@ T.run("valori numerici: comandi con gli stessi limiti delle impostazioni, schema
 	Cmd("cooldown 30"); T.eq(NS.db.pacing.globalCooldownSeconds, 30, "valore valido")
 	Cmd("cooldown abc"); T.eq(NS.db.pacing.globalCooldownSeconds, 30, "testo: non cambia")
 	NS.db.chance.battle = 40
-	Cmd("prob battle nan"); T.eq(NS.db.chance.battle, 40, "prob nan: non cambia")
-	Cmd("prob battle inf"); T.eq(NS.db.chance.battle, 40, "prob inf: non cambia")
-	Cmd("prob battle -inf"); T.eq(NS.db.chance.battle, 40, "prob -inf: non cambia")
-	Cmd("prob battle 250"); T.eq(NS.db.chance.battle, 100, "prob 250: 100")
-	Cmd("prob battle 25"); T.eq(NS.db.chance.battle, 25, "prob valida")
+	Cmd("chance battle nan"); T.eq(NS.db.chance.battle, 40, "prob nan: non cambia")
+	Cmd("chance battle inf"); T.eq(NS.db.chance.battle, 40, "prob inf: non cambia")
+	Cmd("chance battle -inf"); T.eq(NS.db.chance.battle, 40, "prob -inf: non cambia")
+	Cmd("chance battle 250"); T.eq(NS.db.chance.battle, 100, "prob 250: 100")
+	Cmd("chance battle 25"); T.eq(NS.db.chance.battle, 25, "prob valida")
 	-- schemaVersion non intero, NaN, negativo: le migrazioni girano e lo schema corrente viene scritto
 	for _, bad in ipairs({ 2.5, 0 / 0, -3, "x", 4.999 }) do
 		AzerothUnspokenDB = { schemaVersion = bad, settings = {} }

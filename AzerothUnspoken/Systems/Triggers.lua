@@ -21,7 +21,7 @@ NS.EVENT_COOLDOWN = {
 NS.BYPASS_GLOBAL = { death = true, rez = true, levelup = true, rezother = true }
 
 -- Probabilità e pausa predefinite per un evento nuovo, definito da un pacchetto.
--- Da chiamare al caricamento; le scelte dell'utente (/au prob) restano prioritarie.
+-- Da chiamare al caricamento; le scelte dell'utente (/au chance) restano prioritarie.
 function NS:SetEventDefaults(event, chance, cooldown)
 	if chance and not self.DEFAULT_CHANCE[event] then self.DEFAULT_CHANCE[event] = chance end
 	if cooldown and not self.EVENT_COOLDOWN[event] then self.EVENT_COOLDOWN[event] = cooldown end

@@ -100,7 +100,7 @@ Config.CHAT_LIMITS = {
 ---@field ui AUUISettings
 
 Config.defaults = {
-	locale = "it",          -- lingua delle frasi e dell'interfaccia: codice registrato con RegisterLanguage
+	locale = "en",          -- lingua delle frasi e dell'interfaccia: codice registrato con RegisterLanguage
 	preset = "complete",
 	intensity = 50,
 	proseDepth = "literary",
@@ -150,12 +150,12 @@ Config.defaults = {
 		trp3Others = false,
 	},
 	-- NPC Alive (S8): il dialogo ambientale parte sempre da un'azione del giocatore; `autoOffer` fa solo comparire il
-	-- pulsante quando un'interazione valida si apre (ignorato con l'intensità a 0; il comando /au npc funziona sempre)
+	-- pulsante quando un'interazione valida si apre (ignorato con l'intensità a 0; il comando /au talk funziona sempre)
 	npcAlive = {
 		autoOffer = true,
 	},
 	-- Story Arcs (S9): al massimo 1-2 archi attivi insieme. I singoli archi si sospendono, saltano o disattivano dal
-	-- diario o con /au storie (stato per personaggio in cdb.arcs); tutti insieme con il modulo `storyArcs`.
+	-- diario o con /au stories (stato per personaggio in cdb.arcs); tutti insieme con il modulo `storyArcs`.
 	arcs = {
 		maxActive = 2,
 	},

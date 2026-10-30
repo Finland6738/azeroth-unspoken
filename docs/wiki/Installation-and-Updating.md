@@ -65,7 +65,7 @@ Your settings, journal, relationships and stories are **not** stored in the addo
 
 ## What you will see
 
-- The first time: the setup wizard, in Italian until you pick English on its first page.
+- The first time: the setup wizard, in English unless you pick Italiano on its first page. If you already used Italian, an update keeps it.
 - The narrator box, near the bottom centre of the screen, when a line appears. You can move it by dragging.
 - The speak button, which you can drag with the right mouse button.
 

@@ -39,7 +39,7 @@ NS:RegisterLanguage("it", {
 		tip_copy = "Copia la frase nella casella della chat, già sul canale giusto: la invii tu con Invio.",
 		tip_pause = "Pausa immediata (di nuovo per riprendere)", tip_history = "Cronologia recente",
 		tip_close = "Nascondi (e scarta la proposta)", tip_channel = "Cambia canale",
-		paused_on = "narratore in pausa. Premi di nuovo il tasto (o /au pausa) per riprendere.",
+		paused_on = "narratore in pausa. Premi di nuovo il tasto (o /au pause) per riprendere.",
 		paused_off = "narratore di nuovo attivo.",
 
 		-- Chat Gateway
@@ -56,7 +56,7 @@ NS:RegisterLanguage("it", {
 		gw_lockdown = "chat bloccata dal client in questo momento.",
 		gw_error = "invio non riuscito (%s).",
 		gw_blocked = "il client ha bloccato l'invio (%s): nulla è partito. La proposta resta qui, premi il pulsante o il tasto 'pronuncia' per riprovare.",
-		gw_review = "anteprima della proposta: %s\nPremi di nuovo per inviarla, oppure /au annulla.",
+		gw_review = "anteprima della proposta: %s\nPremi di nuovo per inviarla, oppure /au cancel.",
 		gw_expired = "la proposta non c'è più (scaduta, scartata o sostituita): nulla è stato inviato. Il tuo testo: %s",
 		gw_text_kept = "la proposta è sparita mentre la modificavi: nulla è stato inviato. Il tuo testo: %s",
 		emote_says = "dice: «%s»",
@@ -64,9 +64,9 @@ NS:RegisterLanguage("it", {
 		auto_repeat = "Per attivare l'invio automatico ripeti lo stesso comando entro 10 secondi; altrimenti non cambia nulla.",
 		auto_confirm_again = "clic di nuovo per confermare",
 		invalid_value = "valore non valido: '%s'. Valori ammessi: %s.",
-		values_chat = "privato, anteprima, conferma, auto",
-		values_channel = "auto, say, emote, gruppo, incursione, gilda, istanza",
-		values_depth = "naturale, letterario, elevato",
+		values_chat = "private, preview, confirm, auto",
+		values_channel = "auto, say, emote, party, raid, guild, instance",
+		values_depth = "natural, literary, elevated",
 		chatmode_PRIVATE_short = "solo narratore privato",
 		chatmode_PREVIEW_short = "anteprima",
 		chatmode_CONFIRM_TO_SEND_short = "conferma per inviare",
@@ -110,7 +110,7 @@ NS:RegisterLanguage("it", {
 		intensity_now = "intensità: %d (0 = narratore muto per gli eventi spontanei, 50 = bilanciato, 100 = intenso)",
 		depth_now = "profondità dello stile: %s",
 		lang_set = "lingua delle frasi: %s",
-		lang_list = "lingue disponibili: %s. Uso: /au lingua <codice>",
+		lang_list = "lingue disponibili: %s. Uso: /au language <codice>",
 		cooldown_now = "pausa tra le frasi automatiche: %d secondi",
 		no_phrase = "nessuna frase adatta per '%s' in questo momento.",
 		ignored = "'%s' non produrrà più frasi.", unignored = "'%s' torna a produrre frasi.",
@@ -119,7 +119,7 @@ NS:RegisterLanguage("it", {
 		panel_help = "Frasi disponibili in questa lingua: %d, da %d pacchetti.\n\n"
 			.. "Nel mondo aperto WoW permette /say solo dopo un tasto o un clic: l'addon non scrive mai in chat "
 			.. "da solo, salvo la modalità 'automatica' che hai scelto tu. Il tasto 'pronuncia' e la pausa "
-			.. "immediata si assegnano in Opzioni > Comandi > AddOn.\n\nComandi: /au aiuto",
+			.. "immediata si assegnano in Opzioni > Comandi > AddOn.\n\nComandi: /au help",
 
 		-- procedura guidata (GDD §12.1)
 		wiz_title = "Azeroth Unspoken", wiz_step = "passo %d di %d",
@@ -141,9 +141,9 @@ NS:RegisterLanguage("it", {
 		wiz_trp3_help = "Total RP 3 è installato. L'addon può usare il nome del tuo profilo RP nelle frasi (solo il tuo, solo il nome). Funziona al 100% anche senza.",
 		wiz_chat_help = "Cosa può arrivare in chat? Per impostazione predefinita nulla: il narratore resta privato. Qualunque modalità scegli, ogni invio a nome del tuo personaggio parte solo da un tuo gesto, tranne in 'automatica'.",
 		wiz_test = "Prova il narratore",
-		wiz_skip = "Salta", wiz_skip_tip = "Salta la procedura: restano i valori predefiniti, tutti sicuri. Si riapre con /au benvenuto.",
+		wiz_skip = "Salta", wiz_skip_tip = "Salta la procedura: restano i valori predefiniti, tutti sicuri. Si riapre con /au wizard.",
 		wiz_back = "Indietro", wiz_next = "Avanti", wiz_finish = "Fine",
-		wiz_done = "pronto. Il narratore è privato: nulla va in chat senza un tuo gesto. /au aiuto per i comandi, /au benvenuto per rifare la procedura.",
+		wiz_done = "pronto. Il narratore è privato: nulla va in chat senza un tuo gesto. /au help per i comandi, /au wizard per rifare la procedura.",
 
 		-- Living Memory e diario (step S6)
 		opt_journal = "Diario del personaggio...",
@@ -170,35 +170,47 @@ NS:RegisterLanguage("it", {
 		mem_deleted = "ricordo #%d cancellato.", mem_place_forgotten = "luogo dimenticato: %s.",
 		mem_reset_confirm = "questo cancella la memoria (%s). Per confermare ripeti lo stesso comando entro 15 secondi.",
 		mem_reset_done = "memoria azzerata (%d voci).",
-		mem_help = "uso: /au diario [lista | luoghi | flag <nome> | esporta | permanente <n> | elimina <n> | dimentica <luogo> | reset [tutto|ricordi|ordinari|luoghi|flag]]",
+		mem_help = "uso: /au journal [list | places | flag <nome> | export | pin <n> | delete <n> | forget <luogo> | reset [all|memories|ordinary|places|flags]]",
 
-		help = "comandi:\n"
-			.. "/au on | off - attiva o spegne le frasi automatiche\n"
-			.. "/au pausa - pausa immediata del narratore (anche col tasto assegnato)\n"
-			.. "/au debug [full|trace] - diagnostica: capacità del client, ultimi eventi, errori\n"
-			.. "/au lingua [it|en] - lingua delle frasi\n"
-			.. "/au intensita <0-100> | profondita naturale|letterario|elevato\n"
-			.. "/au chat privato|anteprima|conferma|auto - cosa può arrivare in chat (predefinito: privato; auto chiede conferma)\n"
-			.. "/au canale auto|say|emote|gruppo|incursione|gilda|istanza\n"
-			.. "/au dire - conferma la proposta in attesa (anche da macro o tasto)\n"
-			.. "/au altra - cambia la proposta in attesa con un'altra frase (non invia nulla)\n"
-			.. "/au annulla - scarta la proposta\n"
-			.. "/au copia - copia la proposta nella casella della chat (la invii tu con Invio)\n"
-			.. "/au narratore [cronologia|reset|pulisci] - riquadro del narratore\n"
-			.. "/au anima [lista|neutro|archetipo <id>|trp3 on|off|<tratto> <valore>|evita <argomento>] - personalità del personaggio\n"
-			.. "/au diario [lista|luoghi|flag <nome>|esporta|permanente <n>|elimina <n>|dimentica <luogo>|reset] - memoria e diario del personaggio\n"
-			.. "/au storie [lista|diario|scegli <arco> <opzione>|inizia|sospendi|riprendi|salta|disattiva|attiva <arco|tutte>|max <1|2>] - le storie personali del personaggio\n"
-			.. "/au relazioni [lista|persone|aggiungi <nome>|nota <nome> <testo>|esporta|...] - relazioni con NPC e giocatori\n"
-			.. "/au luogo - dove sei: zona, mappa, tag, territorio, istanza (per verificare i dati dei luoghi)\n"
-			.. "/au chi [trp3 on|off|tratto <tratto> <valore>] - chi hai davanti: ruolo, personalità, azioni recenti\n"
-			.. "/au saluto | addio | brindisi | pensiero | minaccia | grido | vittoria | preghiera | ringrazia | scherzo\n"
-			.. "/au evento <nome> - propone una frase per un evento (battle, zone, muse...)\n"
-			.. "/au incanta <incantesimo> - frase per un incantesimo (utile nelle macro)\n"
-			.. "/au prova <evento> - anteprima in chat locale\n"
-			.. "/au prob <evento> <0-100> - probabilità di un evento\n"
-			.. "/au cooldown <secondi> | ignora <incantesimo> | pulsante\n"
-			.. "/au pacchetti | pacchetto <id> on|off | info | memoria | opzioni | benvenuto\n"
-			.. "/au valida [tutto|<pacchetto>] - controlla i pacchetti di frasi (errori e avvisi)",
+		help_title = "comandi (i nomi dei comandi sono sempre in inglese, in qualunque lingua dell'interfaccia):",
+		help_help = "questo elenco",
+		help_on = "attiva o spegne le frasi automatiche",
+		help_pause = "pausa immediata del narratore (anche col tasto assegnato)",
+		help_debug = "diagnostica: capacità del client, ultimi eventi, errori",
+		help_language = "lingua delle frasi e dell'interfaccia",
+		help_intensity = "quanto spesso parla il narratore",
+		help_depth = "quanto è elevato lo stile",
+		help_mode = "cosa può arrivare in chat (predefinito: private; auto chiede conferma)",
+		help_channel = "canale di chat predefinito",
+		help_speak = "conferma la proposta in attesa (anche da macro o tasto)",
+		help_another = "cambia la proposta in attesa con un'altra frase (non invia nulla)",
+		help_cancel = "scarta la proposta",
+		help_copy = "copia la proposta nella casella della chat (la invii tu con Invio)",
+		help_narrator = "il riquadro del narratore",
+		help_soul = "personalità del personaggio",
+		help_journal = "memoria e diario del personaggio",
+		help_stories = "le storie personali del personaggio",
+		help_relationships = "relazioni con NPC e giocatori (forma breve: rel)",
+		help_place = "dove sei: zona, mappa, tag, territorio, istanza (per verificare i dati dei luoghi)",
+		help_who = "chi hai davanti: ruolo, personalità, azioni recenti",
+		help_talk = "dialogo ambientale con l'NPC che hai davanti",
+		help_manual = "propone una frase per quel momento (un nome o bersaglio è facoltativo)",
+		help_event = "propone una frase per un evento (battle, zone, muse...)",
+		help_cast = "frase per un incantesimo (utile nelle macro)",
+		help_test = "anteprima di una frase in chat locale",
+		help_chance = "probabilità di un evento",
+		help_cooldown = "pausa tra le frasi automatiche",
+		help_ignore = "non commenta più un incantesimo (di nuovo per annullare)",
+		help_button = "mostra o nasconde il pulsante «pronuncia»",
+		help_packs = "elenca i pacchetti di frasi",
+		help_pack = "accende o spegne un pacchetto di frasi",
+		help_validate = "controlla i pacchetti di frasi (errori e avvisi)",
+		help_stats = "quante frasi sono disponibili",
+		help_memory = "svuota la memoria anti-ripetizione",
+		help_options = "apre il pannello delle impostazioni",
+		help_wizard = "rifà la procedura guidata del primo avvio",
+		cmd_unknown = "comando sconosciuto '%s'. /au help elenca i comandi (i nomi sono sempre in inglese).",
+		cmd_unknown_hint = "comando sconosciuto '%s'. Intendevi /au %s? (i nomi dei comandi sono sempre in inglese; /au help li elenca)",
 
 		debug_title = "diagnostica",
 		debug_config = "Configurazione",
@@ -215,7 +227,7 @@ NS:RegisterLanguage("it", {
 
 		validate_summary = "Validatore: %d frasi in %d pacchetti, %d varianti: %d errori, %d avvisi.",
 		validate_ok = "Nessun problema trovato.",
-		validate_more = "... e altri %d (usa /au valida tutto).",
+		validate_more = "... e altri %d (usa /au validate full).",
 		validate_nopack = "pacchetto sconosciuto: %s",
 
 		-- Character Soul (step S5): tratti, archetipi, profilo
@@ -240,7 +252,7 @@ NS:RegisterLanguage("it", {
 		soul_trp3_absent = "Total RP 3 non è installato: non c'è nulla da leggere. L'anima funziona lo stesso.",
 		soul_trp3_consent = "Tratti da Total RP 3",
 		soul_trp3_tip = "Legge i tratti psicologici PUBBLICI del tuo profilo in Total RP 3 (solo il tuo, solo in lettura) e li usa dove non hai scelto tu. Le tue scelte hanno sempre la precedenza.",
-		soul_help = "uso: /au anima [lista | neutro | archetipo <id> | trp3 on|off | <tratto> <valore|-> | evita <argomento>]. Tratti: temperamento, morale, curiosita, fede, motivazione, ironia, voce, evita.",
+		soul_help = "uso: /au soul [list | neutral | archetype <id> | trp3 on|off | <trait> <value|-> | avoid <topic>]. Trait: temperament, morality, curiosity, faith, motivation, irony, voice, avoid.",
 		soul_arch_custom = "Personalizzato", soul_arch_custom_help = "Le tue scelte, che non coincidono con un archetipo.",
 		soul_arch_neutral = "Neutro", soul_arch_neutral_help = "Nessun tratto: il narratore non sceglie il carattere per te.",
 		soul_arch_veteran = "Veterano disilluso", soul_arch_veteran_help = "Stoico e stanco, ha visto abbastanza da non fidarsi delle promesse.",

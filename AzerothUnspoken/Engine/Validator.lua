@@ -580,7 +580,7 @@ end
 
 function Validator:Command(arg)
 	arg = NS.Lower(arg or "")
-	local full = arg == "full" or arg == "tutto"
+	local full = arg == "full"
 	local packs
 	if arg ~= "" and not full then
 		if not Engine.packs[arg] then

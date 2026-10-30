@@ -83,7 +83,8 @@ function NS:RegisterLanguage(code, info)
 	if not lang then
 		lang = { name = code, ui = {} }
 		self.languages[code] = lang
-		table.insert(self.languageOrder, code)
+		-- l'inglese è sempre la prima scelta (procedura guidata, pannello); le altre seguono nell'ordine di registrazione
+		table.insert(self.languageOrder, code == "en" and 1 or (#self.languageOrder + 1), code)
 	end
 	if info.name then lang.name = info.name end
 	for k, v in pairs(info.ui or {}) do lang.ui[k] = v end
@@ -95,17 +96,17 @@ function NS:RegisterLanguage(code, info)
 	end
 end
 
--- lingua in uso: quella scelta, se è registrata; altrimenti l'italiano
+-- lingua in uso: quella scelta, se è registrata; altrimenti l'inglese
 function NS:Lang()
-	local code = (self.db and self.db.locale) or "it"
+	local code = (self.db and self.db.locale) or "en"
 	if self.languages[code] then return code end
-	return "it"
+	return "en"
 end
 
--- testi dell'interfaccia nella lingua scelta, con ripiego sull'italiano
+-- testi dell'interfaccia nella lingua scelta, con ripiego sull'inglese (la lingua di base)
 function NS:L(key, ...)
 	local lang = self.languages[self:Lang()]
-	local s = (lang and lang.ui[key]) or (self.languages.it and self.languages.it.ui[key]) or key
+	local s = (lang and lang.ui[key]) or (self.languages.en and self.languages.en.ui[key]) or key
 	if select("#", ...) > 0 then return s:format(...) end
 	return s
 end

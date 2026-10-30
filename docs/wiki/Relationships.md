@@ -62,13 +62,13 @@ Growth slows down with repetition and has daily limits, so a hundred clicks on a
 - people with a Total RP 3 profile nearby;
 - someone you replied to in a whisper (only the name is used, never the text).
 
-Suggestions last for this session only. Add someone with **+** in the *People met* tab or with `/au relations add <name>`, or dismiss them.
+Suggestions last for this session only. Add someone with **+** in the *People met* tab or with `/au relationships add <name>`, or dismiss them.
 
 An option to register players by themselves exists (**Register by itself**), but it is **off** by default.
 
 ## How to use it
 
-Open the window with `/au relations` (aliases `/au relationships`, `/au bonds`, `/au relazioni`, `/au relazione`) or the **Relationships...** button in the [[settings panel|Settings]].
+Open the window with `/au relationships` or the **Relationships...** button in the [[settings panel|Settings]].
 
 **The Relationships tab** is a table with **Name**, **Type** (NPC or Player), **Label**, **Disposition** and **Last** (last seen). Click a column header to sort. Filter by **All**, **NPCs** or **Players**, by label, or type in **Search**.
 
@@ -95,33 +95,33 @@ Also: **Export** (text to copy) and **Forget everything** (with confirmation).
 
 ## Commands
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au relations` | see above | opens the window |
-| `/au relations list` | `lista` | summary and the 10 most recent |
-| `/au relations people` | `candidates`, `persone`, `candidati` | this session's suggestions |
-| `/au relations add <name>` | `aggiungi` | adds a player |
-| `/au relations dismiss <name>` | `scarta` | dismisses a suggestion |
-| `/au relations remove <name\|npc:ID>` | `delete`, `rimuovi`, `elimina` | deletes a relationship |
-| `/au relations detail <name>` | `info`, `dettaglio` | prints one relationship |
-| `/au relations note <name> <text>` | `nota` | sets your note |
-| `/au relations tags <name> <tag,...>` | `tag` | sets your tags |
-| `/au relations label <name> <text>` | `etichetta` | sets your own label |
-| `/au relations set <name> <axis> <value>` | `imposta` | sets an axis |
-| `/au relations export` | `esporta` | text to copy |
-| `/au relations auto on\|off` | `automatico` | register players by themselves |
-| `/au relations attraction on\|off` | `attrazione` | the attraction axis |
-| `/au relations reset [all\|npcs\|players]` | `azzera` | erases relationships; repeat within 15 s to confirm |
+| Command | What it does |
+|---|---|
+| `/au relationships` | opens the window |
+| `/au relationships list` | summary and the 10 most recent |
+| `/au relationships people` | this session's suggestions |
+| `/au relationships add <name>` | adds a player |
+| `/au relationships dismiss <name>` | dismisses a suggestion |
+| `/au relationships remove <name\|npc:ID>` | deletes a relationship |
+| `/au relationships detail <name>` | prints one relationship |
+| `/au relationships note <name> <text>` | sets your note |
+| `/au relationships tags <name> <tag,...>` | sets your tags |
+| `/au relationships label <name> <text>` | sets your own label |
+| `/au relationships set <name> <axis> <value>` | sets an axis |
+| `/au relationships export` | text to copy |
+| `/au relationships auto on\|off` | register players by themselves |
+| `/au relationships attraction on\|off` | the attraction axis |
+| `/au relationships reset [all\|npcs\|players]` | erases relationships; repeat within 15 s to confirm |
 
-Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, as shown by `/au relations list`. Axis names also work in Italian: `familiarita`, `fiducia`, `rispetto`, `affetto`, `timore`, `lealta`, `attrazione`.
+Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, as shown by `/au relationships list`. The axis names are always the English ones: `familiarity`, `trust`, `respect`, `affection`, `fear`, `loyalty`, `attraction`.
 
 ## Examples
 
 ```
-/au relations add Aria
-/au relations note Aria Saved me in the Deadmines. Owes me a drink.
-/au relations set Aria trust 60
-/au relations label Aria sworn sister
+/au relationships add Aria
+/au relationships note Aria Saved me in the Deadmines. Owes me a drink.
+/au relationships set Aria trust 60
+/au relationships label Aria sworn sister
 ```
 
 ## Privacy
@@ -129,7 +129,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - No chat or whisper text is ever read into or saved in relationships.
 - Players are in your list only because you put them there (unless you turned on **Register by itself**).
 - Your notes, tags and own labels are **private**: they are never used in a line that could go to chat.
-- Everything stays on your computer, per character. Erase it with **Forget everything** or `/au relations reset`.
+- Everything stays on your computer, per character. Erase it with **Forget everything** or `/au relationships reset`.
 
 See [[Privacy and Data|Privacy-and-Data]].
 
@@ -140,8 +140,8 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Relationships module | on | [[settings panel|Settings]], modules |
 | Automatic NPCs | on | relationships window |
 | Suggest people | on | relationships window |
-| Register by itself | off | window, `/au relations auto` |
-| Attraction axis | off | window, `/au relations attraction` |
+| Register by itself | off | window, `/au relationships auto` |
+| Attraction axis | off | window, `/au relationships attraction` |
 
 ## What you will see
 
@@ -152,5 +152,5 @@ See [[Privacy and Data|Privacy-and-Data]].
 ## Tips
 
 - The list holds up to 1,000 NPCs and 300 players per character.
-- The journal's **Forget everything** button does not touch relationships: use the relationships window or `/au relations reset`.
+- The journal's **Forget everything** button does not touch relationships: use the relationships window or `/au relationships reset`.
 - To correct how the addon sees an NPC, open their detail and set **How you see them**, or stand in front of them and use `/au who trait`. See [[Interlocutor and Place|Interlocutor-and-Place]].

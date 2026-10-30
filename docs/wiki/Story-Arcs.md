@@ -45,22 +45,22 @@ You can also **Suspend all stories** or **Skip all stories**.
 
 ## Commands
 
-| Command | Aliases | What it does |
-|---|---|---|
-| `/au stories` | `/au story`, `/au arcs`, `/au storie`, `/au storia`, `/au archi` | lists your stories (also `list`, `lista`, `elenco`) |
-| `/au stories journal` | `diario` | opens the Stories tab |
-| `/au stories choose <story> [option]` | `scegli`, `prosegui` | answers a story's question, or moves it on |
-| `/au stories start <story>` | `inizia` | begins a story that can begin |
-| `/au stories suspend <story\|all>` | `sospendi` | suspends one story, or all |
-| `/au stories resume <story>` | `riprendi` | resumes a suspended story |
-| `/au stories skip <story\|all>` | `salta` | skips one story, or all |
-| `/au stories disable <story\|all>` | `disattiva` | disables a story; `all` turns stories off |
-| `/au stories enable <story\|all>` | `attiva` | enables a story; `all` turns stories on |
-| `/au stories max <1\|2>` | | how many stories at the same time (default 2) |
-| `/au stories on` · `off` | `accendi` · `spegni` | turns all stories on or off |
-| `/au stories status` | `stato` | prints the internal state, for troubleshooting |
+| Command | What it does |
+|---|---|
+| `/au stories` | lists your stories (also `list`, `lista`, `elenco`) |
+| `/au stories journal` | opens the Stories tab |
+| `/au stories choose <story> [option]` | answers a story's question, or moves it on |
+| `/au stories start <story>` | begins a story that can begin |
+| `/au stories suspend <story\|all>` | suspends one story, or all |
+| `/au stories resume <story>` | resumes a suspended story |
+| `/au stories skip <story\|all>` | skips one story, or all |
+| `/au stories disable <story\|all>` | disables a story; `all` turns stories off |
+| `/au stories enable <story\|all>` | enables a story; `all` turns stories on |
+| `/au stories max <1\|2>` | how many stories at the same time (default 2) |
+| `/au stories on` · `off` | turns all stories on or off |
+| `/au stories status` | prints the internal state, for troubleshooting |
 
-A story can be named by its id (`path`, `knownface`, `fallen`, `capitals`) or by its title. `all` also accepts `tutte` and `tutti`. `/au stories list` shows the possible answers when a story is waiting, for example:
+A story can be named by its id (`path`, `knownface`, `fallen`, `capitals`) or by its title. `/au stories list` shows the possible answers when a story is waiting, for example:
 
 ```
 /au stories choose capitals crossroads

@@ -33,6 +33,155 @@ local function Fresh()
 	ADVANCE(1000)
 end
 
+---------------------------------------------------------------------------
+-- #132: i nomi dei comandi e degli argomenti sono sempre inglesi, in ogni lingua dell'interfaccia
+---------------------------------------------------------------------------
+local K, Commands = NS.Keywords, NS.Commands
+
+-- le parole italiane che prima erano alias: nessuna deve più essere una parola chiave
+local ITALIAN = { "aiuto", "diario", "relazioni", "relazione", "luogo", "dove", "chi", "parla", "dialogo", "storie", "storia",
+	"benvenuto", "annulla", "scarta", "altra", "copia", "dire", "invia", "prova", "evento", "incanta", "ignora", "pulsante",
+	"pacchetti", "pacchetto", "valida", "controlla", "memoria", "opzioni", "lingua", "canale", "modo", "intensita",
+	"profondita", "pausa", "narratore", "anima", "personalita", "profilo", "saluto", "addio", "brindisi", "pensiero",
+	"minaccia", "grido", "battaglia", "preghiera", "vittoria", "ringrazia", "grazie", "scherzo", "battuta", "prob",
+	"naturale", "letterario", "elevato", "gruppo", "incursione", "gilda", "istanza", "cronologia", "pulisci",
+	"lista", "luoghi", "esporta", "permanente", "elimina", "dimentica", "azzera", "tutto", "tutte", "ricordi", "ordinari",
+	"persone", "aggiungi", "rimuovi", "nota", "etichetta", "imposta", "dettaglio", "attrazione", "scegli", "inizia",
+	"sospendi", "riprendi", "salta", "disattiva", "attiva", "stato", "spegni", "accendi", "chiudi", "ruolo", "offerta",
+	"tratto", "archetipo", "neutro", "evita", "voce", "temperamento", "morale", "curiosita", "fede", "motivazione",
+	"ironia", "familiarita", "fiducia", "rispetto", "affetto", "timore", "lealta", "privato", "privata", "anteprima",
+	"conferma", "automatico", "automatica", "si", "nessuno", "burbero", "gioviale", "caloroso", "formale", "laconico",
+	"locandiere", "mercante", "guardia", "banchiere", "addestratore", "volo", "giocatori", "acceso", "spento" }
+
+T.run("#132: ogni parola chiave dei comandi è inglese", function()
+	local italian = {}
+	for _, w in ipairs(ITALIAN) do italian[w] = true end
+	local tables, words = 0, 0
+	for name, tbl in pairs(K.registry) do
+		tables = tables + 1
+		for word in pairs(tbl) do
+			words = words + 1
+			T.ok(type(word) == "string" and word:find("^[a-z0-9:_%-]+$"), name .. ": '" .. tostring(word) .. "' è ASCII minuscolo")
+			T.ok(not italian[word], name .. ": '" .. tostring(word) .. "' non è una parola italiana")
+		end
+	end
+	T.ok(tables >= 20 and words >= 100, "controllate " .. tables .. " tabelle e " .. words .. " parole")
+	-- i comandi, le loro forme brevi e le righe dell'aiuto
+	local seen = {}
+	for _, spec in ipairs(Commands.list) do
+		T.ok(spec.name:find("^[a-z0-9]+$") and not italian[spec.name], "comando inglese: " .. spec.name)
+		T.ok(type(spec.fn) == "function", spec.name .. ": ha un gestore")
+		for _, short in ipairs(spec.short or {}) do
+			T.ok(short:find("^[a-z0-9]+$") and not italian[short], spec.name .. ": forma breve inglese '" .. short .. "'")
+		end
+		seen[spec.name] = true
+		if spec.usage then
+			T.ok(spec.desc and NS.languages.en.ui[spec.desc] and NS.languages.it.ui[spec.desc], spec.name .. ": descrizione in IT ed EN")
+		end
+	end
+	-- i comandi dell'elenco della #132 ci sono tutti
+	for _, name in ipairs({ "help", "journal", "relationships", "place", "who", "talk", "stories", "wizard", "cancel",
+		"another", "copy", "speak", "test", "event", "cast", "ignore", "button", "packs", "pack", "validate", "stats",
+		"memory", "options", "language", "mode", "channel", "intensity", "depth", "pause", "narrator", "soul", "debug",
+		"on", "off", "chance", "cooldown", "greet", "farewell", "toast", "muse", "threat", "battlecry", "pray", "victory",
+		"thanks", "jest" }) do
+		T.ok(seen[name], "comando presente: " .. name)
+	end
+	-- nessuna parola italiana è un comando
+	for _, w in ipairs(ITALIAN) do T.ok(not Commands.byName[w], "'" .. w .. "' non è un comando") end
+end)
+
+T.run("#132: due comandi con lo stesso nome o la stessa forma breve si segnalano", function()
+	T.eq(#Commands.Build(), 0, "nessuna collisione nella tabella")
+	local list = Commands.list
+	local ok = pcall(function()
+		Commands.list = { { name = "one", fn = function() end, short = { "o" } }, { name = "two", fn = function() end, short = { "o" } },
+			{ name = "one", fn = function() end } }
+		local problems = Commands.Build()
+		T.eq(#problems, 2, "una forma breve e un nome ripetuti: " .. table.concat(problems, "; "))
+	end)
+	Commands.list = list
+	Commands.Build()
+	T.ok(ok, "la prova non dà errori")
+	T.eq(#Commands.Build(), 0, "tabella ripristinata")
+end)
+
+T.run("#132: una parola italiana non esegue nulla e suggerisce il comando inglese", function()
+	Fresh()
+	local before = NS.db.intensity
+	for _, lang in ipairs({ "it", "en" }) do
+		NS.db.locale = lang
+		local out = Cmd("intensita 10")
+		T.ok(out:find("/au intensity", 1, true), lang .. ": 'intensita' suggerisce /au intensity")
+		T.eq(NS.db.intensity, before, lang .. ": e non cambia nulla")
+		out = Cmd("diario")
+		T.ok(out:find("/au journal", 1, true), lang .. ": 'diario' suggerisce /au journal")
+		out = Cmd("relazioni lista")
+		T.ok(out:find("/au relationships", 1, true), lang .. ": 'relazioni' suggerisce /au relationships")
+		out = Cmd("jornal")
+		T.ok(out:find("/au journal", 1, true), lang .. ": un errore di battitura suggerisce il comando più vicino")
+		out = Cmd("zzzz")
+		T.ok(out:find("zzzz", 1, true) and out:find("/au help", 1, true) and not out:find("Did you mean", 1, true)
+			and not out:find("Intendevi", 1, true), lang .. ": una parola qualunque rimanda a /au help")
+	end
+	-- ogni vecchia parola italiana punta a un comando che esiste davvero
+	for word, target in pairs(Commands.HINTS) do
+		T.ok(Commands.byName[target], word .. " -> " .. target .. " esiste")
+		T.ok(not Commands.byName[word], word .. " non è un comando")
+	end
+	NS.db.locale = "it"
+end)
+
+T.run("#132: l'aiuto elenca i nomi inglesi in ogni lingua, con la descrizione nella lingua dell'interfaccia", function()
+	Fresh()
+	local expect = { it = "questo elenco", en = "this list" }
+	for _, lang in ipairs({ "it", "en" }) do
+		NS.db.locale = lang
+		local out = Cmd("help")
+		T.ok(out:find(expect[lang], 1, true), lang .. ": descrizione nella lingua dell'interfaccia")
+		for _, spec in ipairs(Commands.list) do
+			if spec.usage then T.ok(out:find("/au " .. spec.usage, 1, true), lang .. ": elenca /au " .. spec.usage) end
+		end
+		T.ok(not out:find("/au diario", 1, true) and not out:find("/au aiuto", 1, true), lang .. ": nessun comando italiano")
+		T.eq(Cmd(""), out, lang .. ": /au senza argomenti mostra l'aiuto")
+	end
+	NS.db.locale = "it"
+end)
+
+T.run("#132: l'italiano è una traduzione: le chiavi mancanti ripiegano sull'inglese", function()
+	Fresh()
+	local it, en = NS.languages.it.ui, NS.languages.en.ui
+	-- stesse chiavi in IT ed EN
+	for k in pairs(en) do T.ok(it[k] ~= nil, "chiave inglese presente in italiano: " .. k) end
+	for k in pairs(it) do T.ok(en[k] ~= nil, "chiave italiana presente in inglese: " .. k) end
+	local saved = it.help_help
+	it.help_help = nil
+	NS.db.locale = "it"
+	T.eq(NS:L("help_help"), "this list", "chiave italiana mancante: testo inglese")
+	T.eq(NS:L("chiave_inventata"), "chiave_inventata", "chiave sconosciuta: la chiave stessa")
+	it.help_help = saved
+	T.ok(NS:L("help_help") ~= "this list", "con la chiave: testo italiano")
+	NS.db.locale = "xx"
+	T.eq(NS:Lang(), "en", "lingua sconosciuta: inglese")
+	T.eq(NS:L("help_help"), "this list", "lingua sconosciuta: testi inglesi")
+	NS.db.locale = nil
+	T.eq(NS:Lang(), "en", "nessuna lingua scelta: inglese")
+	NS.db.locale = "it"
+end)
+
+T.run("#132: l'inglese è la prima scelta della procedura guidata, l'italiano la seconda", function()
+	T.eq(NS.languageOrder[1], "en", "inglese per primo")
+	T.eq(NS.languageOrder[2], "it", "italiano per secondo")
+	T.eq(NS.languages.en.name, "English", "nome inglese")
+	T.eq(NS.languages.it.name, "Italiano", "nome italiano")
+	-- una lingua aggiunta dopo non scavalca l'inglese
+	NS:RegisterLanguage("zz", { name = "Zed", ui = {} })
+	T.eq(NS.languageOrder[1], "en", "l'inglese resta primo")
+	T.eq(NS.languageOrder[#NS.languageOrder], "zz", "le altre seguono")
+	NS.languages.zz = nil
+	table.remove(NS.languageOrder)
+end)
+
 -- registra gli eventi che il Gateway racconta
 local narrated
 local function Spy()
@@ -60,13 +209,13 @@ T.run("/au incanta: il tipo dell'incantesimo sceglie l'evento", function()
 		{ "Power Word: Fortitude", "buff" }, { "Fireball", "attack" },
 	}) do
 		narrated = {}
-		Cmd("incanta " .. case[1])
+		Cmd("cast " .. case[1])
 		T.eq(narrated[1], case[2], case[1] .. " -> " .. case[2])
 	end
 	-- un'intercessione in combattimento non è un buff: diventa un attacco
 	P.combat = true
 	narrated = {}
-	Cmd("incanta Power Word: Fortitude")
+	Cmd("cast Power Word: Fortitude")
 	T.eq(narrated[1], "attack", "un buff in combattimento: attacco")
 	P.combat = false
 	Unspy()
@@ -88,15 +237,15 @@ T.run("/au pacchetto <id> off: le frasi di quel pacchetto non si scelgono più",
 	end
 	local before = Packs("battle")
 	T.ok(before.base_combat, "con tutti i pacchetti accesi il combattimento parla")
-	Cmd("pacchetto base_combat off")
+	Cmd("pack base_combat off")
 	T.eq(NS.db.disabledPacks.base_combat, true, "il pacchetto è spento")
 	local after, n = Packs("battle")
 	T.ok(not after.base_combat, "nessuna frase di base_combat")
 	T.ok(n > 0, "e altri pacchetti parlano ancora")
-	Cmd("pacchetto base_combat on")
+	Cmd("pack base_combat on")
 	T.eq(NS.db.disabledPacks.base_combat, nil, "on: di nuovo acceso")
 	T.ok(Packs("battle").base_combat, "e torna a parlare")
-	Cmd("pacchetto inesistente off")
+	Cmd("pack inesistente off")
 	T.eq(NS.db.disabledPacks.inesistente, nil, "un pacchetto inesistente non si spegne")
 end)
 
@@ -105,20 +254,20 @@ T.run("/au memoria, /au ignora, /au cooldown", function()
 	-- memoria: svuota l'anti-ripetizione
 	Engine:PickEntry("battle", NS:BuildContext(), "say")
 	NS.cdb.memory.uses.x = 3
-	Cmd("memoria")
+	Cmd("memory")
 	T.eq(next(NS.cdb.memory.uses), nil, "uses vuoto")
 	T.eq(next(NS.cdb.memory.recent), nil, "recent vuoto")
 	T.eq(next(NS.cdb.memory.last), nil, "last vuoto")
 	-- ignora: un incantesimo ignorato non produce nulla
 	SPELLS[133] = "Fireball"
 	P.combat = true
-	Cmd("ignora Fireball")
+	Cmd("ignore Fireball")
 	T.eq(NS.db.ignored.fireball, true, "ignorato")
 	Director.queue, Director.log = {}, {}
 	FIRE("UNIT_SPELLCAST_SENT", "player", "Gnoll", "cast-ign-1", 133)
 	FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", "cast-ign-1", 133)
 	T.eq(#Director.queue, 0, "nessun candidato per l'incantesimo ignorato")
-	Cmd("ignora Fireball")
+	Cmd("ignore Fireball")
 	T.eq(NS.db.ignored.fireball, nil, "di nuovo non ignorato")
 	FIRE("UNIT_SPELLCAST_SENT", "player", "Gnoll", "cast-ign-2", 133)
 	FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", "cast-ign-2", 133)
@@ -155,10 +304,10 @@ T.run("/au pulsante: mostra o nasconde il pulsante 'pronuncia'", function()
 	NS.db.ui.showButton = true
 	NS.UpdateButton()
 	T.ok(b.shown, "visibile")
-	Cmd("pulsante")
+	Cmd("button")
 	T.eq(NS.db.ui.showButton, false, "showButton spento")
 	T.ok(not b.shown, "e nascosto")
-	Cmd("pulsante")
+	Cmd("button")
 	T.eq(NS.db.ui.showButton, true, "showButton acceso")
 	T.ok(b.shown, "di nuovo visibile")
 end)

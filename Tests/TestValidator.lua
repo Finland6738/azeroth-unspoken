@@ -369,7 +369,7 @@ T.run("/au validate", function()
 	T.ok(out:find("0 errori, 0 avvisi", 1, true), "senza problemi")
 	T.ok(out:find("Nessun problema trovato.", 1, true), "messaggio finale")
 	SENT = {}
-	cmd("valida pacchetto_che_non_esiste")
+	cmd("validate pacchetto_che_non_esiste")
 	T.ok(table.concat(SENT, "\n"):find("pacchetto sconosciuto", 1, true), "pacchetto sconosciuto")
 	-- con problemi: mostra i primi e il resto
 	NS:RegisterPack({ id = "v_bad", registry = (function()

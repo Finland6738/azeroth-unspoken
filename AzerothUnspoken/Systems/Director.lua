@@ -113,7 +113,7 @@ function Director:Status()
 end
 
 ---------------------------------------------------------------------------
--- Pausa immediata (tasto, pulsante del narratore, /au pausa)
+-- Pausa immediata (tasto, pulsante del narratore, /au pause)
 ---------------------------------------------------------------------------
 ---@param on boolean
 ---@return boolean

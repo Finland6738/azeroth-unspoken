@@ -1,7 +1,7 @@
 -- Azeroth Unspoken: finestra del profilo del personaggio (Character Soul, GDD §7.1).
 -- Scelta dell'archetipo, modifica dei tratti, argomenti da evitare, consenso a Total RP 3 e profilo neutro.
 -- Ogni cambiamento vale subito (le frasi successive usano già il nuovo profilo) e si salva per personaggio.
--- Si apre con /au anima o dal pannello delle impostazioni. Solo pulsanti standard, come il resto dell'interfaccia.
+-- Si apre con /au soul o dal pannello delle impostazioni. Solo pulsanti standard, come il resto dell'interfaccia.
 local ADDON, NS = ...
 local W = NS.Widgets
 local Traits, Personality = NS.Traits, NS.Personality

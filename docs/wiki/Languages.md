@@ -6,7 +6,9 @@ Azeroth Unspoken speaks **English** and **Italian**. Every line exists in both l
 
 - The addon's language is **your choice**, independent of the language of your game client. You can play an English client with Italian lines, or the other way round.
 - The language covers both the narrator's lines and the addon's own texts (windows, buttons, messages).
-- **The addon starts in Italian.** Choose English on the first page of the [[setup wizard|First-Run-Wizard]], or type `/au language en`.
+- **The addon starts in English**, for both the interface and the lines. English is the base language of the addon and Italian is the secondary one. Choose Italian on the first page of the [[setup wizard|First-Run-Wizard]], or type `/au language it`.
+- **If you already chose Italian**, an update keeps it: the saved choice is never changed.
+- **Command names are always English**, in both languages (see below).
 - The setting is shared by all characters on your account.
 - Phrase packs can add more languages. A new language appears in the list as soon as its pack is installed.
 
@@ -16,17 +18,21 @@ Azeroth Unspoken speaks **English** and **Italian**. Every line exists in both l
 |---|---|
 | Wizard | step 1, click **English** or **Italiano** |
 | Settings panel | **Phrase language** (click to cycle) |
-| Command | `/au language en` or `/au language it` |
+| Command | `/au language it` or `/au language en` |
 
-Aliases of the command: `/au lingua`, `/au lang`. With no code, `/au language` lists the available languages:
+Short form: `/au lang`. With no code, `/au language` lists the available languages:
 
-> available languages: it = Italiano, en = English. Usage: /au language <code>
+> available languages: en = English, it = Italiano. Usage: /au language <code>
 
 The change is immediate: the next line appears in the new language.
 
-## Commands in two languages
+## Commands are always in English
 
-Commands work in both languages, whatever language you chose. For example `/au journal` and `/au diario` do the same thing, and so do `/au pause` and `/au pausa`. The full list of aliases is in the [[Commands Reference|Commands]].
+The language you choose changes what the addon **says**: lines, windows, buttons, messages, and the descriptions in `/au help`. It never changes what you **type**. Command names and their arguments are English in every language: `/au journal`, `/au pause`, `/au channel party`, `/au depth literary`. With Italian chosen, `/au help` still lists `/au journal`, with the description in Italian.
+
+There are no Italian command names. If you type one, for example `/au diario`, the addon answers with the English command to use: "Did you mean `/au journal`?". The full list is in the [[Commands Reference|Commands]].
+
+In the same way, any text the addon shows that is missing in Italian is shown in English: English is the base and Italian the translation.
 
 ## Key bindings
 
@@ -34,6 +40,6 @@ The names of the [[key bindings|Commands]] in the game's Keybindings screen foll
 
 ## Tips
 
-- If you see Italian text right after installing, that is the default: `/au language en` fixes it.
+- If you want the interface and the lines in Italian, click **Italiano** in the wizard or type `/au language it`. The choice is kept for all your characters.
 - Some names shown by the addon, such as phrase pack names, are written by their authors and may stay in one language.
 - If you are bilingual, try the other language now and then: the lines are written separately in each language, not translated word by word.

@@ -26,7 +26,7 @@ Intensity changes **how often**, not how long or in what style:
 
 - Wizard, step 3 (- and + by 10).
 - Settings panel, **Intensity** (- and + by 10).
-- `/au intensity <0-100>`, for example `/au intensity 30`. Also `/au intensita`, `/au intensità`. With no number, it shows the current value.
+- `/au intensity <0-100>`, for example `/au intensity 30`. With no number, it shows the current value.
 
 ## Prose depth
 
@@ -44,7 +44,7 @@ Depth is a preference, not a filter: lines written for your depth become more li
 
 - Wizard, step 4.
 - Settings panel, **Style depth** (click to cycle).
-- `/au depth natural|literary|elevated`. Also `/au profondita`, `/au profondità`, and the Italian values `naturale`, `letterario`, `elevato`.
+- `/au depth natural|literary|elevated`.
 
 ## Fine tuning
 

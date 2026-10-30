@@ -44,17 +44,17 @@ The narrator is quiet by design, so first check that it is really silent, not ju
 - **Just unlucky:** lines are chances, not certainties, and there is a pause between them (45 seconds by default). Give it a few minutes, or ask for one: `/au muse`.
 - **Packs off:** `/au packs` shows whether built-in packs are on. `/au stats` shows how many lines you have.
 
-## The lines are in Italian
+## The lines are in the wrong language
 
-That is the default. Type `/au language en`. See [[Languages]].
+The addon starts in English. Type `/au language it` for Italian, or `/au language en` for English. Command names are always English, in both languages. See [[Languages]].
 
 ## Lines are not sent to chat
 
-First: **this is the default.** In *private* mode nothing ever goes to chat. Check with `/au chat`.
+First: **this is the default.** In *private* mode nothing ever goes to chat. Check with `/au mode`.
 
 | What you see | What to do |
 |---|---|
-| mode is *private narrator only* | choose `/au chat confirm` or `/au chat preview` |
+| mode is *private narrator only* | choose `/au mode confirm` or `/au mode preview` |
 | *nothing to send.* | there is no proposal waiting; press the speak key again to get one |
 | *this channel needs an action from you* | `/say` and group channels need your key press or click; use the speak key or button |
 | *channel not available right now* | you are not in a party, raid, guild or instance; change channel with `/au channel` |
@@ -79,7 +79,7 @@ See [[Chat Gateway]].
 
 ## No NPC dialogue
 
-`/au npc` says why. The most common reasons: no NPC selected, a hostile or unknown NPC, combat, the narrator paused, intensity 0 (the button does not appear by itself), the **NPC dialogues** module off, or the automatic offer off (`/au npc offer on`). Try `/au npc test` to see the window without a real NPC. See [[NPC Dialogues|NPC-Dialogues]].
+`/au talk` says why. The most common reasons: no NPC selected, a hostile or unknown NPC, combat, the narrator paused, intensity 0 (the button does not appear by itself), the **NPC dialogues** module off, or the automatic offer off (`/au talk offer on`). Try `/au talk test` to see the window without a real NPC. See [[NPC Dialogues|NPC-Dialogues]].
 
 ## The journal or relationships are empty or will not change
 
@@ -96,8 +96,8 @@ See [[Chat Gateway]].
 
 ## Reset settings
 
-- **Back to safe chat:** `/au chat private`.
-- **Redo the setup:** `/au welcome`.
+- **Back to safe chat:** `/au mode private`.
+- **Redo the setup:** `/au wizard`.
 - **One setting:** set it again; the defaults are in the [[Settings Reference|Settings]].
 - **Everything:** log out, delete `AzerothUnspokenDB.lua` (and, if you want, `AzerothUnspokenCharacterDB.lua`) from the saved-data folders, and log in. See [[Privacy and Data|Privacy-and-Data]].
 

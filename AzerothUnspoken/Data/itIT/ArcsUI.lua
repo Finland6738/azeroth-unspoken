@@ -1,4 +1,4 @@
--- Testi dell'interfaccia in italiano per le storie personali (S9): scheda del diario, avvisi e comando /au storie.
+-- Testi dell'interfaccia in italiano per le storie personali (S9): scheda del diario, avvisi e comando /au stories.
 -- I testi degli archi (titoli, racconto, scelte) e le battute stanno in Data/itIT/Arcs.lua.
 local ADDON, NS = ...
 
@@ -46,11 +46,11 @@ NS:RegisterLanguage("it", {
 		arc_all_skip = "Salta tutte le storie",
 
 		-- avvisi discreti nel narratore
-		arc_notice_available = "Una storia può cominciare: «%s». Il diario dice come (/au storie).",
-		arc_notice_choice = "Una storia attende una tua scelta: «%s» (/au storie diario).",
+		arc_notice_available = "Una storia può cominciare: «%s». Il diario dice come (/au stories).",
+		arc_notice_choice = "Una storia attende una tua scelta: «%s» (/au stories journal).",
 
 		-- perché non si può fare
-		arc_why_disabled = "Le storie sono spente: riaccendile con /au storie on.",
+		arc_why_disabled = "Le storie sono spente: riaccendile con /au stories on.",
 		arc_why_readonly = "I dati delle storie vengono da una versione più nuova dell'addon: si leggono, non si cambiano.",
 		arc_why_unknown = "Non conosco questa storia.",
 		arc_why_mode = "La storia è in uno stato in cui non si può fare.",
@@ -59,19 +59,19 @@ NS:RegisterLanguage("it", {
 		arc_why_not_now = "Adesso non si può: la storia aspetta un luogo o un momento.",
 		arc_why_bad_option = "Quella non è una delle risposte possibili.",
 		arc_why_not_available = "Questa storia non è disponibile da cominciare.",
-		arc_why_avoided = "Questa storia tocca un argomento che il tuo personaggio evita (/au anima).",
+		arc_why_avoided = "Questa storia tocca un argomento che il tuo personaggio evita (/au soul).",
 		arc_why_illegal = "Quel passo non è ammesso dallo stato della storia.",
 
-		-- comando /au storie
+		-- comando /au stories
 		arc_cmd_none = "Nessuna storia visibile, per ora. Cominciano da sole quando succede qualcosa di vero.",
-		arc_cmd_off = "Le storie sono spente (/au storie on per riaccenderle).",
-		arc_cmd_nojournal = "Non riesco ad aprire il diario: usa /au storie lista.",
+		arc_cmd_off = "Le storie sono spente (/au stories on per riaccenderle).",
+		arc_cmd_nojournal = "Non riesco ad aprire il diario: usa /au stories list.",
 		arc_cmd_max = "Storie in corso insieme: al massimo %d.",
 		arc_cmd_max_bad = "Serve 1 oppure 2.",
 		arc_cmd_max_over = "Ora ci sono %d storie in corso: restano come sono, ma nessuna nuova comincia finché non ne sospendi o salti qualcuna.",
 		arc_cmd_module_off = "Storie spente: nessuna si apre, avanza o parla.",
 		arc_cmd_module_on = "Storie accese.",
-		arc_cmd_help = "uso: /au storie [lista | diario | scegli <arco> <opzione> | inizia <arco> | sospendi | riprendi | salta | disattiva | attiva <arco|tutte> | max <1|2> | on | off | stato]",
+		arc_cmd_help = "uso: /au stories [list | journal | choose <arc> <option> | start <arc> | suspend | resume | skip | disable | enable <arc|all> | max <1|2> | on | off | status]",
 		arc_cmd_all = "Storie toccate: %d.",
 		arc_cmd_unknown = "Non conosco la storia «%s».",
 		arc_cmd_done_choose = "Scelta fatta: «%s» va avanti.",
@@ -81,7 +81,7 @@ NS:RegisterLanguage("it", {
 		arc_cmd_done_skip = "«%s» è saltata.",
 		arc_cmd_done_disable = "«%s» è disattivata.",
 		arc_cmd_done_enable = "«%s» è riattivata.",
-		arc_cmd_choose_hint = "Per scegliere: /au storie scegli %s <opzione>. Opzioni: %s",
-		arc_cmd_go_hint = "Per proseguire: /au storie scegli %s",
+		arc_cmd_choose_hint = "Per scegliere: /au stories choose %s <opzione>. Opzioni: %s",
+		arc_cmd_go_hint = "Per proseguire: /au stories choose %s",
 	},
 })

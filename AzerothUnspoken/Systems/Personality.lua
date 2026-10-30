@@ -49,14 +49,12 @@ Traits.Define({ id = "innerVoice", kind = "choice", hard = true,
 -- ordine di presentazione nell'interfaccia e nei comandi
 Personality.TRAIT_ORDER = { "temperament", "morality", "curiosity", "faith", "motivation", "irony", "innerVoice", "avoid" }
 
--- alias dei comandi (/au anima <tratto> ...), in italiano e in inglese
-local TRAIT_ALIAS = {
-	temperament = "temperament", temperamento = "temperament", morality = "morality", morale = "morality",
-	curiosity = "curiosity", curiosita = "curiosity", ["curiosità"] = "curiosity", faith = "faith", fede = "faith",
-	motivation = "motivation", motivazione = "motivation", irony = "irony", ironia = "irony",
-	avoid = "avoid", evita = "avoid", topic = "avoid", innervoice = "innerVoice", voce = "innerVoice",
-	inner = "innerVoice",
-}
+-- parole dei comandi (/au soul <trait> ...): sempre in inglese
+local TRAIT_ALIAS = NS.Keywords.Register("soul.traits", {
+	temperament = "temperament", morality = "morality", curiosity = "curiosity", faith = "faith",
+	motivation = "motivation", irony = "irony", avoid = "avoid", voice = "innerVoice", innervoice = "innerVoice",
+})
+local SOUL_WORDS = NS.Keywords.Register("soul", { list = "list", neutral = "neutral", reset = "neutral", archetype = "archetype", trp3 = "trp3" })
 
 -- fattori della voce interiore sulle frasi con speaker "inner" (off = 0 = esclusione)
 Personality.INNER_FACTOR = { off = 0, quiet = 0.5, present = 1, vivid = 1.6 }
@@ -422,9 +420,9 @@ end
 
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
-local CLEAR_WORDS = { ["-"] = true, none = true, nessuno = true, reset = true, neutro = true, neutral = true }
+local CLEAR_WORDS = NS.Keywords.Register("soul.clear", { ["-"] = true, none = true, reset = true, neutral = true })
 
----Comando `/au anima ...`. Senza argomenti apre la finestra del profilo.
+---Comando `/au soul ...`. Senza argomenti apre la finestra del profilo.
 ---@param rest string
 function Personality:Command(rest)
 	rest = rest or ""
@@ -432,14 +430,15 @@ function Personality:Command(rest)
 	word = NS.Lower(word or "")
 	if word == "" then
 		if NS.ProfileFrame and NS.ProfileFrame:Toggle() then return end
-		word = "lista"
+		word = "list"
 	end
-	if word == "lista" or word == "list" or word == "mostra" or word == "show" then
+	local action = SOUL_WORDS[word]
+	if action == "list" then
 		for _, line in ipairs(self:Summary()) do NS:Print(line) end
-	elseif word == "neutro" or word == "neutral" or word == "reset" then
+	elseif action == "neutral" then
 		self:Reset()
 		Say("soul_reset_done")
-	elseif word == "archetipo" or word == "archetype" or word == "arch" then
+	elseif action == "archetype" then
 		local id = NS.Lower(arg)
 		if id == "" then
 			local names = {}
@@ -449,24 +448,21 @@ function Personality:Command(rest)
 		end
 		local found
 		for _, a in ipairs(self.archetypes) do
-			if a.id == id or NS.Lower(self:ArchetypeName(a.id)) == id then found = a.id; break end
+			if a.id == id then found = a.id; break end
 		end
 		if found and self:SetArchetype(found) then
 			Say("soul_arch_set", self:ArchetypeName(found))
 		else
 			Say("invalid_value", arg, "neutral, veteran, traveler, guardian, rogue, scholar, avenger, penitent")
 		end
-	elseif word == "trp3" then
+	elseif action == "trp3" then
 		if not (NS.TotalRP3 and NS.TotalRP3:IsPresent()) then
 			Say("soul_trp3_absent")
 			return
 		end
 		local a = NS.Lower(arg)
-		if a == "on" or a == "si" or a == "sì" or a == "yes" then
-			self:SetTRP3Consent(true)
-		elseif a == "off" or a == "no" then
-			self:SetTRP3Consent(false)
-		end
+		local on = NS.Keywords.OnOff(a)
+		if on ~= nil then self:SetTRP3Consent(on) end
 		Say("soul_trp3_state", self:Profile().trp3 and NS:L("on") or NS:L("off"))
 	else
 		local id = TRAIT_ALIAS[word]
