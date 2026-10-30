@@ -799,7 +799,7 @@ T.run("migrazione dello schema 3: il segnaposto vuoto diventa la memoria", funct
 	AzerothUnspokenCharacterDB = { schemaVersion = 3, memory = { uses = { x = 1 } }, personality = {}, memories = {}, arcs = {}, history = {} }
 	Config:Load()
 	local c = AzerothUnspokenCharacterDB
-	T.eq(c.schemaVersion, 6, "versione del personaggio")
+	T.eq(c.schemaVersion, 7, "versione del personaggio")
 	T.eq(c.memories.version, LM.VERSION, "versione della memoria")
 	T.ok(type(c.memories.entries) == "table" and type(c.memories.places) == "table" and type(c.memories.flags) == "table"
 		and type(c.memories.stats) == "table" and c.memories.nextId == 1, "campi presenti")
@@ -818,7 +818,7 @@ T.run("migrazione dello schema 3: il segnaposto vuoto diventa la memoria", funct
 	-- da uno schema ancora più vecchio
 	AzerothUnspokenCharacterDB = { schemaVersion = 1, memory = {} }
 	Config:Load()
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 6, "da schema 1")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "da schema 1")
 	T.eq(AzerothUnspokenCharacterDB.memories.version, LM.VERSION, "memoria creata")
 	T.ok(Config.migrations.character[4] ~= nil and Config.migrations.global[4] ~= nil, "le migrazioni 4 esistono")
 end)

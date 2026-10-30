@@ -4,8 +4,8 @@ local Config, Diagnostics = NS.Config, NS.Diagnostics
 
 T.run("predefiniti", function()
 	local db = NS.db
-	T.eq(AzerothUnspokenDB.schemaVersion, 6, "schema globale")
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 6, "schema personaggio")
+	T.eq(AzerothUnspokenDB.schemaVersion, 7, "schema globale")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "schema personaggio")
 	T.ok(AzerothUnspokenDB.settings == db, "NS.db sono le impostazioni globali")
 	T.eq(db.locale, "en", "lingua predefinita: inglese (#132)")
 	T.eq(db.preset, "complete", "preset")
@@ -122,34 +122,34 @@ end)
 T.run("migrazioni", function()
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 6, "SavedVariables nuove")
+	T.eq(AzerothUnspokenDB.schemaVersion, 7, "SavedVariables nuove")
 
 	AzerothUnspokenDB = { settings = { intensity = 20 } }   -- senza schemaVersion
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 6, "versione assente -> 6")
+	T.eq(AzerothUnspokenDB.schemaVersion, 7, "versione assente -> 7")
 	T.eq(NS.db.intensity, 20, "dati conservati")
 
 	-- una migrazione futura gira una sola volta, in ordine
 	local calls = 0
-	Config.SCHEMA_VERSION = 7
-	Config.migrations.global[7] = function(db)
+	Config.SCHEMA_VERSION = 8
+	Config.migrations.global[8] = function(db)
 		calls = calls + 1
 		db.settings.intensity = db.settings.intensity + 1
 	end
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 7, "migrazione applicata")
+	T.eq(AzerothUnspokenDB.schemaVersion, 8, "migrazione applicata")
 	T.eq(NS.db.intensity, 21, "migrazione eseguita")
 	Config:Load()
 	T.eq(calls, 1, "una sola volta")
 
 	-- una migrazione che fallisce non rompe l'addon e non avanza la versione
-	Config.SCHEMA_VERSION = 8
-	Config.migrations.global[8] = function() error("migrazione rotta") end
+	Config.SCHEMA_VERSION = 9
+	Config.migrations.global[9] = function() error("migrazione rotta") end
 	Config:Load()
-	T.eq(AzerothUnspokenDB.schemaVersion, 7, "versione ferma dopo un errore")
+	T.eq(AzerothUnspokenDB.schemaVersion, 8, "versione ferma dopo un errore")
 	T.ok(NS.db and NS.db.intensity == 21, "impostazioni comunque disponibili")
-	Config.migrations.global[7], Config.migrations.global[8] = nil, nil
-	Config.SCHEMA_VERSION = 6
+	Config.migrations.global[8], Config.migrations.global[9] = nil, nil
+	Config.SCHEMA_VERSION = 7
 
 	-- dati da una versione più nuova: non si toccano
 	AzerothUnspokenDB = { schemaVersion = 99, settings = { intensity = 60 }, futuro = true }
@@ -268,7 +268,7 @@ T.run("migrazione 1 -> 2: output.mode diventa chat.mode", function()
 	local db = Migrate({ mode = "self" })
 	T.eq(db.chat.mode, "PRIVATE", "self -> PRIVATE")
 	T.eq(db.output.mode, nil, "output.mode rimosso")
-	T.eq(AzerothUnspokenDB.schemaVersion, 6, "versione")
+	T.eq(AzerothUnspokenDB.schemaVersion, 7, "versione")
 	for _, old in ipairs({ "auto", "emote", "say", "boh" }) do
 		db = Migrate({ mode = old, autoPublicSay = true })
 		T.eq(db.chat.mode, "CONFIRM_TO_SEND", old .. " -> proposta da confermare")
@@ -336,7 +336,8 @@ T.run("anti-ripetizione rovinata: le voci malformate si scartano e le scelte fun
 	T.eq(NS.cdb.memory.variant.gone_phrase, nil, "varianti di frasi sparite rimosse")
 	local ok2, err2 = pcall(function() return Engine:Pick("battle", NS:BuildContext()) end)
 	T.ok(ok2, "Pick non fallisce: " .. tostring(err2))
-	-- l'ultimo uso di una frase sparita si toglie, quello di una cornice o di una voce di vocabolario no
+	-- l'ultimo uso di una frase sparita si toglie; di una voce di vocabolario restano gli usi, non l'ultimo uso, che
+	-- serve solo alle voci con un cooldown (#86)
 	local vocabId
 	for _, list in pairs(Engine.vocab) do vocabId = list[1] and list[1].id; if vocabId then break end end
 	NS.cdb.memory.last.ghost = 5; NS.cdb.memory.uses.ghost = 3
@@ -344,7 +345,10 @@ T.run("anti-ripetizione rovinata: le voci malformate si scartano e le scelte fun
 	Engine:DecayMemory()
 	T.eq(NS.cdb.memory.last.ghost, nil, "ultimo uso di una frase sparita: via")
 	T.eq(NS.cdb.memory.uses.ghost, nil, "usi di una frase sparita: via")
-	if vocabId then T.ok(NS.cdb.memory.last[vocabId] == 7 and NS.cdb.memory.uses[vocabId], "la storia del vocabolario resta") end
+	if vocabId then
+		T.ok(NS.cdb.memory.uses[vocabId] ~= nil, "gli usi del vocabolario restano")
+		T.eq(NS.cdb.memory.last[vocabId], nil, "l'ultimo uso di una voce senza cooldown non si conserva")
+	end
 	-- il pulsante con una posizione rovinata si crea comunque
 	for _, bad in ipairs({ 5, "x", true, { 1 }, { "CENTER", "CENTER", "a", "b" } }) do
 		NS.db.ui.buttonPos = bad

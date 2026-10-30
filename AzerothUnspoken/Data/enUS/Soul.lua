@@ -107,4 +107,4 @@ NS:AddTexts("enUS", {
 		"I used to pray without thinking. Now I think, and the words stick in my throat.",
 		"I still say the words at night. I know them by heart. It's the rest I've forgotten.",
 	},
-})
+}, "base_soul")

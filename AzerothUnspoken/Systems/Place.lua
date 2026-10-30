@@ -357,7 +357,8 @@ local function Shortest(entry)
 	if entry.shortest ~= nil and entry.shortestLang == NS:Lang() then return entry.shortest end
 	local best
 	for _, v in ipairs(entry.text and entry.text[NS:Lang()] or EMPTY) do
-		if type(v.t) == "string" and (not best or #v.t < best) then best = #v.t end
+		local t = NS.Engine.VariantText(v)
+		if type(t) == "string" and (not best or #t < best) then best = #t end
 	end
 	entry.shortest, entry.shortestLang = best or 0, NS:Lang()
 	return entry.shortest

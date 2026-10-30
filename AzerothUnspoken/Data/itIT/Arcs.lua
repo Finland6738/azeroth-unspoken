@@ -226,4 +226,4 @@ NS:AddTexts("itIT", {
 	["arc.gates.done.promise"] = {
 		"attraversa il portone verso la strada aperta, e la promessa fatta tra le mura procede al suo passo, leggera e ostinata.",
 	},
-})
+}, "base_arcs")

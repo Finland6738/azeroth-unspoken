@@ -6,11 +6,19 @@ local ADDON, NS = ...
 local Engine = {}
 NS.Engine = Engine
 
----@class AUVariant una variante di testo di una frase in una lingua
+-- In-memory format (#84, ADR 0024): a variant is a plain string in the common case (valid text, no depth of its own,
+-- written by the pack that owns the rule, frame or vocabulary entry). Only the rare variants that need more (an empty
+-- or non-string text kept for the validator, a depth of their own, a text added by another pack) are AUVariant tables.
+-- Read variants only through Engine.VariantText, VariantOk, VariantDepth and VariantPack.
+
+---@class AUVariant una variante che non si può tenere come semplice stringa
 ---@field t string testo, con i segnaposto
 ---@field ok boolean false se vuota o non è una stringa (resta nel registro per il validatore)
 ---@field depth? table<string, boolean> profondità per cui la variante è scritta; assente = tutte
 ---@field pack string pacchetto che l'ha registrata
+---@field raw? string tipo del valore quando non è una stringa (per il validatore)
+
+---@alias AUVariantValue string|AUVariant
 
 ---@class AUPhrase una frase registrata: la regola e i suoi testi
 ---@field id string
@@ -22,13 +30,16 @@ NS.Engine = Engine
 ---@field styles string[] registri (GDD §5.1); il primo è quello principale
 ---@field tone? string primo registro, usato dalla differenziazione dei registri
 ---@field depth? table<string, boolean> profondità per cui la frase è scritta; assente = tutte
+---@field depthList? any[] profondità come le ha scritte il pacchetto, solo se l'insieme depth non le dice tutte (validatore)
 ---@field tags table<string, boolean> tag descrittivi e di affinità ("temperament:stoic", "req:", "not:", "topic:"): vedi Engine/Traits.lua
 ---@field weight number
 ---@field cooldown? number secondi prima che la frase possa tornare
 ---@field when? table condizioni (alias: conditions)
 ---@field spec integer numero di condizioni: le frasi più specifiche pesano di più
----@field text table<string, AUVariant[]> [codice lingua breve] = varianti
----@field legacy boolean convertita dal formato vecchio
+---@field text table<string, AUVariantValue[]> [codice lingua breve] = varianti
+---@field legacy? boolean convertita dal formato vecchio
+---@field ord integer ordine di registrazione: l'indice di selezione unisce i suoi gruppi in quest'ordine (#83)
+-- events, styles, tags e depth sono condivisi tra le frasi con gli stessi valori (#84): sola lettura.
 
 ---@class AURegistryEntry la regola di una frase nel formato v2
 ---@field event string|string[]
@@ -44,7 +55,9 @@ NS.Engine = Engine
 
 Engine.packs = {}       -- [id] = pacchetto
 Engine.packOrder = {}
-Engine.byEvent = {}     -- [evento] = { frase, ... }
+Engine.byEvent = {}     -- [evento] = { frase, ... }, tutte le regole dell'evento in ordine di registrazione
+Engine.index = {}       -- [evento][forma][chiave] = { frase, ... }: indice di selezione per luogo (#83, vedi Candidates)
+Engine.nextOrd = 0      -- ordine di registrazione dell'ultima frase
 Engine.byId = {}        -- [id frase] = frase
 Engine.frames = {}      -- [evento o "*"] = { cornice, ... }
 Engine.vocab = {}       -- [nome] = { voce, ... }
@@ -152,6 +165,33 @@ local function Blank(s)
 	return type(s) ~= "string" or not s:find("[^ \t\r\n]")
 end
 
+-- Tabelle condivise (#84): molte regole hanno gli stessi eventi, registri, tag e profondità; se ne tiene una sola copia
+-- per valore. Nessuno le modifica dopo la registrazione.
+local EMPTY_SET = {}
+local sharedLists, sharedSets = {}, {}
+
+local function SharedList(list)
+	if list == nil then return nil end
+	for _, x in ipairs(list) do
+		if type(x) ~= "string" then return list end   -- valori strani (per il validatore): copia propria
+	end
+	local key = table.concat(list, "\31") .. "\31" .. #list
+	local found = sharedLists[key]
+	if found then return found end
+	sharedLists[key] = list
+	return list
+end
+
+local function SharedSet(set)
+	if set == nil then return nil end
+	if next(set) == nil then return EMPTY_SET end
+	local key = table.concat(SortedKeys(set), "\31")
+	local found = sharedSets[key]
+	if found then return found end
+	sharedSets[key] = set
+	return set
+end
+
 ---------------------------------------------------------------------------
 -- Testi e varianti
 ---------------------------------------------------------------------------
@@ -161,16 +201,66 @@ local function IsSingleVariant(v)
 	return type(v) == "table" and (v.text ~= nil or v.depth ~= nil)
 end
 
+---Testo di una variante ("" se il pacchetto non ha scritto una stringa).
+---@param v AUVariantValue
+---@return string
+function Engine.VariantText(v)
+	if type(v) == "string" then return v end
+	return v.t
+end
+
+---La variante ha un testo utilizzabile (una stringa non vuota)?
+---@param v AUVariantValue
+---@return boolean
+function Engine.VariantOk(v)
+	if type(v) == "string" then return true end
+	return v.ok
+end
+
+---Profondità per cui la variante è scritta (nil = tutte).
+---@param v AUVariantValue
+---@return table<string, boolean>?
+function Engine.VariantDepth(v)
+	if type(v) == "string" then return nil end
+	return v.depth
+end
+
+---Pacchetto che ha scritto la variante: una stringa è del pacchetto proprietario della voce.
+---@param v AUVariantValue
+---@param owner? string pacchetto della frase, della cornice o della voce di vocabolario
+---@return string?
+function Engine.VariantPack(v, owner)
+	if type(v) == "string" then return owner end
+	return v.pack
+end
+
+---Una variante sempre come tabella { t, ok, depth, pack, raw } (validatore, test, strumenti; non nella selezione):
+---una stringa diventa una tabella nuova, una tabella resta quella del registro.
+---@param v AUVariantValue
+---@param owner? string pacchetto della voce
 ---@return AUVariant
-local function MakeVariant(v, packId)
+function Engine.VariantView(v, owner)
+	if type(v) == "string" then return { t = v, ok = true, pack = owner } end
+	return v
+end
+
+-- la forma compatta di una variante quando basta: la stringa, se il testo è valido, senza profondità propria e del
+-- pacchetto proprietario (owner nil = ancora sconosciuto, per i testi che aspettano la loro regola)
+local function Compact(var, owner)
+	if type(var) == "table" and var.ok and var.depth == nil and owner ~= nil and var.pack == owner then return var.t end
+	return var
+end
+
+---@return AUVariantValue
+local function MakeVariant(v, packId, owner)
 	local text, depth
 	if type(v) == "table" then
 		text, depth = v.text or v[1], v.depth
 	else
 		text = v
 	end
-	return { t = type(text) == "string" and text or "", ok = not Blank(text), depth = ToSet(depth), pack = packId,
-		raw = (type(text) ~= "string") and type(text) or nil }
+	return Compact({ t = type(text) == "string" and text or "", ok = not Blank(text), depth = ToSet(depth),
+		pack = packId, raw = (type(text) ~= "string") and type(text) or nil }, owner)
 end
 
 local function VariantList(list)
@@ -179,16 +269,20 @@ local function VariantList(list)
 	return list
 end
 
--- aggiunge varianti a una lista di testi, senza duplicati identici
-local function AppendVariants(target, list, packId)
-	for _, v in ipairs(VariantList(list)) do
-		local var = MakeVariant(v, packId)
-		local dup = false
+-- aggiunge una variante, se non c'è già lo stesso testo valido
+local function AppendVariant(target, var)
+	local text = Engine.VariantText(var)
+	if Engine.VariantOk(var) then
 		for _, old in ipairs(target) do
-			if old.t == var.t and var.ok then dup = true; break end
+			if Engine.VariantText(old) == text then return end
 		end
-		if not dup then table.insert(target, var) end
 	end
+	table.insert(target, var)
+end
+
+-- aggiunge varianti a una lista di testi, senza duplicati identici; owner = pacchetto proprietario della voce
+local function AppendVariants(target, list, packId, owner)
+	for _, v in ipairs(VariantList(list)) do AppendVariant(target, MakeVariant(v, packId, owner)) end
 end
 
 -- testi di una voce di cornice o di vocabolario: text = { it = ..., itIT = ... } oppure it = ..., en = ...
@@ -204,7 +298,7 @@ local function NormalizeText(entry, packId)
 			local lang = (k ~= "id") and LangCode(k) or nil
 			if lang and (type(v) == "string" or type(v) == "table") then
 				text[lang] = text[lang] or {}
-				AppendVariants(text[lang], v, packId)
+				AppendVariants(text[lang], v, packId, packId)
 			end
 		end
 	end
@@ -215,6 +309,175 @@ local function LegacyTones(tone)
 	if tone == nil then return {} end
 	local style = Engine.TONE_STYLE[tone] or tone
 	return { style }
+end
+
+---------------------------------------------------------------------------
+-- Indice di selezione (#83, ADR 0024)
+---------------------------------------------------------------------------
+-- Le regole di ogni evento stanno in gruppi per forma (say, emote) e per chiave: "*" per le regole generiche, e per
+-- quelle che chiedono al livello superiore delle condizioni un luogo, un personaggio o un momento, la chiave di quel
+-- valore ("z:durotar" per when.zone, vedi INDEX_DIMENSIONS). Una regola va nei gruppi di una sola dimensione, la
+-- prima che le sue condizioni chiedono (una chiave per valore elencato). Le regole con condizioni che possono
+-- usare numeri casuali o codice (chance, func, condizioni dei pacchetti) restano generiche: saltare una regola esclusa
+-- non deve cambiare la sequenza casuale. Candidates unisce in ordine di registrazione il gruppo generico e i gruppi
+-- del contesto, così la scelta vede le stesse regole, nello stesso ordine, di una scansione di tutto byEvent.
+-- L'indice non dipende dalla lingua né dal pacchetto: i pacchetti per lingua e per regione (#85, #101) lo estendono
+-- registrando le loro regole.
+local GENERIC = { "*" }
+local EMPTY_LIST = {}
+
+-- condizioni senza effetti collaterali: valutarle o saltarle non cambia nulla (RuleEngine le elenca)
+local function Pure(when, scope)
+	for k, v in pairs(when) do
+		if k == "chance" or k == "func" then return false end
+		if k == "not" then
+			if type(v) ~= "table" or not Pure(v, scope) then return false end
+		elseif k == "any" then
+			if type(v) ~= "table" then return false end
+			for _, sub in ipairs(v) do
+				if type(sub) ~= "table" or not Pure(sub, scope) then return false end
+			end
+		elseif scope == nil then
+			if k == "other" or k == "place" or k == "arc" then
+				if type(v) == "table" and not Pure(v, k) then return false end
+			elseif not (Engine.PURE_CONDITIONS and Engine.PURE_CONDITIONS[k]) then
+				return false
+			end
+		end
+	end
+	return true
+end
+
+-- i valori che una condizione accetta, se sono solo stringhe (o solo numeri); nil se accetta anche altro
+local function Only(v, kind)
+	if type(v) == kind then return { v } end
+	if type(v) ~= "table" or v[1] == nil then return nil end
+	for _, x in ipairs(v) do
+		if type(x) ~= kind then return nil end
+	end
+	return v
+end
+
+local function Keys(prefix, values, lower)
+	local out, seen = {}, {}
+	for _, x in ipairs(values) do
+		local key = prefix .. (lower and NS.Lower(x) or tostring(x))
+		if not seen[key] then
+			seen[key] = true
+			table.insert(out, key)
+		end
+	end
+	return out
+end
+
+-- Dimensioni dell'indice, in ordine di preferenza: [1] ambito (nil = livello superiore, "place" = when.place), [2]
+-- condizione, [3] prefisso della chiave, [4] tipo dei valori, [5] campi del contesto (o di ctx.place) che la
+-- condizione confronta. Tutte sono confronti di uguaglianza di RuleEngine (MatchValue o la regola della zona): le
+-- stringhe senza maiuscole, i numeri così come sono.
+Engine.INDEX_DIMENSIONS = {
+	{ nil, "zone", "z:", "string", { "zone", "subzone" } },
+	{ nil, "subzone", "s:", "string", { "subzone" } },
+	{ "place", "mapID", "pm:", "number", { "mapID" } },
+	{ "place", "zone", "pz:", "string", { "zone", "subzone" } },
+	{ nil, "class", "c:", "string", { "class" } },
+	{ nil, "race", "r:", "string", { "race" } },
+	{ nil, "mood", "m:", "string", { "mood" } },
+	{ nil, "ctype", "t:", "string", { "ctype" } },
+	{ nil, "time", "h:", "string", { "time" } },
+}
+
+---Chiavi dell'indice di una regola (nil = generica): la prima dimensione che le sue condizioni chiedono.
+---@param when? table
+---@return string[]?
+function Engine.IndexKeys(when)
+	if type(when) ~= "table" or not Pure(when) then return nil end
+	for _, d in ipairs(Engine.INDEX_DIMENSIONS) do
+		local scope = d[1] and when[d[1]] or when
+		local v = type(scope) == "table" and Only(scope[d[2]], d[4])
+		if v then return Keys(d[3], v, d[4] == "string") end
+	end
+	return nil
+end
+
+---Chiavi dell'indice che il contesto apre (oltre al gruppo generico).
+---@param ctx table
+---@return string[]
+function Engine.ContextKeys(ctx)
+	local keys = {}
+	for _, d in ipairs(Engine.INDEX_DIMENSIONS) do
+		local scope = d[1] and ctx[d[1]] or ctx
+		if type(scope) == "table" then
+			for _, field in ipairs(d[5]) do
+				local v = scope[field]
+				if type(v) == d[4] then
+					table.insert(keys, d[3] .. (d[4] == "string" and NS.Lower(v) or tostring(v)))
+				end
+			end
+		end
+	end
+	return keys
+end
+
+local function AddToIndex(index, ev, p, keys)
+	local byForm = index[ev]
+	if not byForm then byForm = {}; index[ev] = byForm end
+	local byKey = byForm[p.form]
+	if not byKey then byKey = {}; byForm[p.form] = byKey end
+	for _, k in ipairs(keys) do
+		local list = byKey[k]
+		if not list then list = {}; byKey[k] = list end
+		table.insert(list, p)
+	end
+end
+
+---Ricostruisce l'indice da byEvent (quando cambia ciò che una condizione può fare, vedi NS:RegisterCondition).
+function Engine:RebuildIndex()
+	local index = {}
+	for ev, list in pairs(self.byEvent) do
+		for _, p in ipairs(list) do AddToIndex(index, ev, p, Engine.IndexKeys(p.when) or GENERIC) end
+	end
+	for _, p in pairs(self.byId) do p.impure = (p.when ~= nil and not Pure(p.when)) or nil end
+	self.index = index
+end
+
+---Le regole dell'evento che possono valere nel contesto, in ordine di registrazione: una parte di byEvent[event] che
+---contiene ogni regola le cui condizioni possono essere vere (le altre condizioni le controlla Eligible).
+---@param event string
+---@param ctx table
+---@param form? "say"|"emote" nil = tutte le forme
+---@return AUPhrase[]
+function Engine:Candidates(event, ctx, form)
+	local byForm = self.index[event]
+	if not byForm then return EMPTY_LIST end
+	local keys = Engine.ContextKeys(ctx)
+	local lists = {}
+	for f, byKey in pairs(byForm) do
+		if form == nil or f == form then
+			if byKey["*"] then table.insert(lists, byKey["*"]) end
+			for _, k in ipairs(keys) do
+				if byKey[k] then table.insert(lists, byKey[k]) end
+			end
+		end
+	end
+	local n = #lists
+	if n == 0 then return EMPTY_LIST end
+	if n == 1 then return lists[1] end
+	-- unione in ordine di registrazione; una regola in più gruppi (zona e sottozona) compare una volta
+	local out, pos = {}, {}
+	for i = 1, n do pos[i] = 1 end
+	while true do
+		local best
+		for i = 1, n do
+			local p = lists[i][pos[i]]
+			if p and (not best or p.ord < best.ord) then best = p end
+		end
+		if not best then break end
+		table.insert(out, best)
+		for i = 1, n do
+			if lists[i][pos[i]] == best then pos[i] = pos[i] + 1 end
+		end
+	end
+	return out
 end
 
 ---------------------------------------------------------------------------
@@ -251,11 +514,12 @@ function Engine:AddEntry(pack, id, e, legacy)
 	end
 
 	---@type AUPhrase
-	local p = { id = id, pack = pack.id, legacy = legacy or false, text = {} }
-	p.events = {}
+	local p = { id = id, pack = pack.id, legacy = legacy or nil, text = {} }
+	local events = {}
 	for _, ev in ipairs(AsList(e.event)) do
-		if type(ev) == "string" and ev ~= "" then table.insert(p.events, ev) end
+		if type(ev) == "string" and ev ~= "" then table.insert(events, ev) end
 	end
+	p.events = SharedList(events)
 	if #p.events == 0 then Issue(pack, "noEvent", id, "nessun evento") end
 
 	-- voce e forma: il formato vecchio parte dalla forma, il nuovo dalla voce
@@ -281,12 +545,19 @@ function Engine:AddEntry(pack, id, e, legacy)
 	p.speaker, p.form = speaker, form
 
 	p.category = e.category or Engine.EventCategory(p.events[1]) or "general"
-	p.styles = {}
-	for _, s in ipairs(e.styles and AsList(e.styles) or LegacyTones(e.tone)) do table.insert(p.styles, s) end
+	local styles = {}
+	for _, s in ipairs(e.styles and AsList(e.styles) or LegacyTones(e.tone)) do table.insert(styles, s) end
+	p.styles = SharedList(styles)
 	p.tone = p.styles[1]
-	p.depth = ToSet(e.depth)
-	p.depthList = e.depth and AsList(e.depth) or nil
-	p.tags = ToSet(e.tags) or {}
+	p.depth = SharedSet(ToSet(e.depth))
+	-- l'elenco scritto dal pacchetto serve al validatore solo se dice più dell'insieme (valori non stringa, ripetuti)
+	if e.depth then
+		local depthList, n = {}, 0
+		for _, d in ipairs(AsList(e.depth)) do table.insert(depthList, d) end
+		for _ in pairs(p.depth) do n = n + 1 end
+		if n ~= #depthList then p.depthList = depthList end
+	end
+	p.tags = SharedSet(ToSet(e.tags)) or EMPTY_SET
 
 	local weight = e.weight
 	if weight ~= nil and (type(weight) ~= "number" or weight <= 0) then
@@ -310,9 +581,15 @@ function Engine:AddEntry(pack, id, e, legacy)
 	p.spec = Specificity(when)
 
 	self.byId[id] = p
+	self.nextOrd = self.nextOrd + 1
+	p.ord = self.nextOrd
+	-- condizioni che possono usare numeri casuali o codice: Eligible le valuta per ultime, come sempre
+	p.impure = (when ~= nil and not Pure(when)) or nil
+	local keys = Engine.IndexKeys(when) or GENERIC
 	for _, ev in ipairs(p.events) do
 		self.byEvent[ev] = self.byEvent[ev] or {}
 		table.insert(self.byEvent[ev], p)
+		AddToIndex(self.index, ev, p, keys)
 	end
 	pack.ids = pack.ids or {}
 	table.insert(pack.ids, id)
@@ -342,12 +619,13 @@ function Engine:AddTexts(lang, id, list, packId)
 	local p = self.byId[id]
 	if p then
 		p.text[lang] = p.text[lang] or {}
-		AppendVariants(p.text[lang], list, packId)
+		AppendVariants(p.text[lang], list, packId, p.pack)
 	else
+		-- in attesa della regola: il proprietario non si conosce ancora, le varianti restano tabelle fino a FlushPending
 		local byLang = self.pendingTexts[id] or {}
 		self.pendingTexts[id] = byLang
 		byLang[lang] = byLang[lang] or {}
-		AppendVariants(byLang[lang], list, packId)
+		AppendVariants(byLang[lang], list, packId, nil)
 	end
 end
 
@@ -357,13 +635,7 @@ function Engine:FlushPending()
 		if p then
 			for lang, variants in pairs(byLang) do
 				p.text[lang] = p.text[lang] or {}
-				for _, var in ipairs(variants) do
-					local dup = false
-					for _, old in ipairs(p.text[lang]) do
-						if old.t == var.t and var.ok then dup = true; break end
-					end
-					if not dup then table.insert(p.text[lang], var) end
-				end
+				for _, var in ipairs(variants) do AppendVariant(p.text[lang], Compact(var, p.pack)) end
 			end
 			self.pendingTexts[id] = nil
 		end
@@ -508,6 +780,10 @@ function NS:RegisterPack(pack)
 		end
 	end
 	Engine:FlushPending()
+
+	-- #84: le tabelle sorgente non servono più (regole, testi, cornici e vocabolario sono nel registro). Il pacchetto
+	-- resta registrato con id, nome, lingue, dichiarazioni e gli elenchi che legge il validatore.
+	pack.registry, pack.texts, pack.translations, pack.phrases, pack.frames, pack.vocab = nil, nil, nil, nil, nil, nil
 end
 
 ---Aggiunge testi o traduzioni a frasi già registrate (anche di altri pacchetti): { [id] = "testo" | { varianti } }.

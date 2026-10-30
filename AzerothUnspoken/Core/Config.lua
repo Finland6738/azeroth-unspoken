@@ -16,7 +16,7 @@ local ADDON, NS = ...
 local Config = {}
 NS.Config = Config
 
-Config.SCHEMA_VERSION = 6
+Config.SCHEMA_VERSION = 7
 
 -- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
@@ -375,6 +375,8 @@ Config.migrations = {
 		[5] = function() end,
 		-- 6: nessun cambiamento alle impostazioni esistenti (la nuova sezione `arcs` la aggiunge Merge)
 		[6] = function() end,
+		-- 7: nessun cambiamento alle impostazioni (versione allineata a quella del personaggio, che cambia con #86)
+		[7] = function() end,
 	},
 	character = {
 		[1] = function(db)
@@ -433,6 +435,25 @@ Config.migrations = {
 				return
 			end
 			if type(a.version) ~= "number" then a.version = 1 end
+		end,
+		-- 7: memoria di anti-ripetizione limitata (#86). uses torna entro il tetto (restano le voci più usate) e variant
+		-- resta solo per le frasi ancora in uses. I valori malformati li scarta Engine:SanitizeMemory; l'ultimo uso delle
+		-- voci senza cooldown (o con il cooldown finito) lo toglie Engine:DecayMemory all'ingresso nel mondo, quando
+		-- tutti i pacchetti sono registrati. Si perdono solo dati che non cambiano più la scelta: i cooldown restano.
+		[7] = function(db)
+			local m = db.memory
+			if type(m) ~= "table" or type(m.uses) ~= "table" then return end
+			local clean = {}
+			for id, n in pairs(m.uses) do
+				if type(id) == "string" and type(n) == "number" and n == n and n >= 0 and n < math.huge then clean[id] = n end
+			end
+			m.uses = clean
+			NS.Engine.TrimUses(m)
+			if type(m.variant) == "table" then
+				for id in pairs(m.variant) do
+					if m.uses[id] == nil then m.variant[id] = nil end
+				end
+			end
 		end,
 	},
 }

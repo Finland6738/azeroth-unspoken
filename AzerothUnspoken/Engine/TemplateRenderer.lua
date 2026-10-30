@@ -39,7 +39,7 @@ function Engine:Vocab(name, lang, ctx)
 	if not list then return nil end
 	local items = {}
 	for _, v in ipairs(list) do
-		if #Engine.UsableVariants(v.text[lang], ctx, "character") > 0 and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx)
+		if Engine.AnyUsable(v.text[lang], ctx, "character", v.pack) and not NS.db.disabledPacks[v.pack] and Engine.SafeMatch(v.when, ctx)
 			and not VocabExcluded(v, ctx) then
 			table.insert(items, { e = v, w = Score(v, "vocab:" .. name, #list) })
 		end
@@ -47,7 +47,7 @@ function Engine:Vocab(name, lang, ctx)
 	local it = WeightedPick(items, "vocab:" .. name)
 	if not it then return nil end
 	local text = self:RenderEntry(it.e, lang, ctx, nil, true)
-	if text then Remember("vocab:" .. name, it.e.id, KeepFor(#items)) end
+	if text then Remember("vocab:" .. name, it.e.id, KeepFor(#items), it.e) end
 	return text
 end
 
@@ -91,6 +91,7 @@ end
 ---@param ctx table
 ---@param public? boolean la frase è di una voce pubblica (narrator, character): i testi dell'utente non entrano
 function Engine.HasData(text, ctx, public)
+	if not text:find("{", 1, true) then return true end   -- nessun segnaposto: la via comune, senza pattern
 	for tag in text:gmatch("{([^{}]+)}") do
 		if public and Engine.USER_TEXT[tag] and ctx[Engine.USER_TEXT[tag]] then return false end
 		if tag:match("^og:[^|]*|") and ctx.otherSex ~= "male" and ctx.otherSex ~= "female" then return false end
@@ -100,30 +101,52 @@ function Engine.HasData(text, ctx, public)
 	return true
 end
 
+-- una variante (stringa o tabella, #84) è utilizzabile: non vuota, di un pacchetto acceso, con i dati richiesti
+local function Usable(v, ctx, public, owner)
+	if type(v) == "string" then
+		return not NS.db.disabledPacks[owner] and Engine.HasData(v, ctx, public)
+	end
+	return v.ok and not NS.db.disabledPacks[v.pack] and Engine.HasData(v.t, ctx, public)
+end
+
 ---Indici delle varianti di una lista utilizzabili adesso: non vuote, di un pacchetto acceso, con i dati richiesti.
----@param list? AUVariant[]
+---@param list? AUVariantValue[]
 ---@param ctx table
 ---@param speaker? string voce della frase: nelle voci pubbliche non si compone un testo scritto dall'utente
+---@param owner? string pacchetto della voce (le varianti in forma di stringa sono sue)
 ---@return integer[]
-function Engine.UsableVariants(list, ctx, speaker)
+function Engine.UsableVariants(list, ctx, speaker, owner)
 	local out = {}
 	local public = Engine.PUBLIC_SPEAKERS[speaker] or false
-	for i, v in ipairs(list or {}) do
-		if v.ok and not NS.db.disabledPacks[v.pack] and Engine.HasData(v.t, ctx, public) then
-			table.insert(out, i)
-		end
+	for i, v in ipairs(list or EMPTY) do
+		if Usable(v, ctx, public, owner) then table.insert(out, i) end
 	end
 	return out
+end
+
+---C'è almeno una variante utilizzabile? Come #UsableVariants(...) > 0, senza creare l'elenco (Eligible, #83).
+---@param list? AUVariantValue[]
+---@param ctx table
+---@param speaker? string
+---@param owner? string
+---@return boolean
+function Engine.AnyUsable(list, ctx, speaker, owner)
+	if not list then return false end
+	local public = Engine.PUBLIC_SPEAKERS[speaker] or false
+	for _, v in ipairs(list) do
+		if Usable(v, ctx, public, owner) then return true end
+	end
+	return false
 end
 
 ---Una variante a caso di una cornice o di una voce di vocabolario, composta; nil se nessuna si compone.
 function Engine:RenderEntry(entry, lang, ctx, line, nested)
 	local list = entry.text[lang]
 	-- cornici e vocabolario entrano nelle frasi pubbliche: valgono le regole di una voce pubblica
-	local idx = Engine.UsableVariants(list, ctx, "character")
+	local idx = Engine.UsableVariants(list, ctx, "character", entry.pack)
 	while #idx > 0 do
 		local k = math.random(#idx)
-		local text = self:Render(list[idx[k]].t, lang, ctx, line, nested)
+		local text = self:Render(Engine.VariantText(list[idx[k]]), lang, ctx, line, nested)
 		if text then return text end
 		table.remove(idx, k)
 	end

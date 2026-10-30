@@ -46,16 +46,30 @@ for i = 0, 25 do
 	UPPER[string.char(97 + i)] = string.char(65 + i)
 end
 
----Minuscole indipendenti dalle impostazioni locali (ASCII e Latin-1 accentato); il resto resta com'è.
----@param s any
----@return string
-function NS.Lower(s)
+local function LowerText(s)
 	s = tostring(s):gsub("[A-Z]", LOWER)
 	-- À-Þ (195 128-158) -> à-þ (195 160-190), tranne × (195 151)
 	return (s:gsub("\195([\128-\158])", function(c)
 		if c == "\151" then return nil end
 		return "\195" .. string.char(c:byte() + 32)
 	end))
+end
+
+-- Le condizioni confrontano in minuscolo a ogni scelta le stesse poche stringhe (zone, classi, nomi): i risultati si
+-- ricordano (#83). Il ricordo ha un tetto e si svuota quando lo raggiunge; un valore segreto non entra mai.
+local lowerCache, lowerCount, LOWER_CACHE_MAX = {}, 0, 4096
+
+---Minuscole indipendenti dalle impostazioni locali (ASCII e Latin-1 accentato); il resto resta com'è.
+---@param s any
+---@return string
+function NS.Lower(s)
+	if type(s) ~= "string" or (issecretvalue and issecretvalue(s)) then return LowerText(s) end
+	local low = lowerCache[s]
+	if low then return low end
+	low = LowerText(s)
+	if lowerCount >= LOWER_CACHE_MAX then lowerCache, lowerCount = {}, 0 end
+	lowerCache[s], lowerCount = low, lowerCount + 1
+	return low
 end
 
 ---Maiuscole indipendenti dalle impostazioni locali (ASCII e Latin-1 accentato); il resto resta com'è.

@@ -702,4 +702,4 @@ NS:AddTexts("enUS", {
 		"See you soon. I'll await you with something new to correct.",
 		"Come back whenever you like: I know you by the way you walk, and by now it's a good way.",
 	},
-})
+}, "base_dialogues")

@@ -51,17 +51,73 @@ function Engine:SanitizeMemory()
 	return dropped
 end
 
----Gli id che esistono adesso: frasi, cornici e voci di vocabolario (Remember conta usi anche di queste).
+---------------------------------------------------------------------------
+-- Memoria limitata (#86, ADR 0024): non cresce con il numero di frasi usate
+---------------------------------------------------------------------------
+-- uses     [id] = usi recenti (fattore N), attenuati a ogni accesso; al massimo USES_MAX voci: oltre, si tolgono le
+--          meno usate (a parità, le prime in ordine di id), mai quella appena usata
+-- variant  [id] = ultima variante usata: solo per le frasi che sono ancora in uses (va e viene con loro)
+-- last     [id] = ultimo uso, solo per le voci con un cooldown e solo finché il cooldown dura
+-- recent   [chiave] = finestra degli ultimi id per evento (al massimo pacing.recentPhraseWindow), lastTone [evento]
+-- Nessun testo (ADR 0017): solo id, numeri e registri.
+Engine.USES_MAX = 512
+Engine.USES_TRIM = 384    -- oltre USES_MAX si torna a questo numero, così il taglio non avviene a ogni scelta
+
+-- quante voci ha uses (contate una volta per tabella, poi tenute aggiornate da Remember)
+local counted, usesCount = nil, 0
+local function CountUses(uses)
+	if counted ~= uses then
+		counted, usesCount = uses, 0
+		for _ in pairs(uses) do usesCount = usesCount + 1 end
+	end
+	return usesCount
+end
+
+---Riporta uses (e con lui variant) entro il tetto: restano le voci più usate.
+---@param mem table memoria di anti-ripetizione
+---@param keepId? string id da non togliere (quello appena usato)
+---@return integer removed
+function Engine.TrimUses(mem, keepId)
+	local uses = mem.uses
+	counted = nil   -- si riconta: qualcuno può aver tolto voci dalla tabella
+	if CountUses(uses) <= Engine.USES_MAX then return 0 end
+	local list = {}
+	for id, n in pairs(uses) do
+		if id ~= keepId then table.insert(list, { id = id, n = n }) end
+	end
+	table.sort(list, function(a, b)
+		if a.n ~= b.n then return a.n < b.n end
+		return a.id < b.id
+	end)
+	local removed = 0
+	for _, e in ipairs(list) do
+		if usesCount <= Engine.USES_TRIM then break end
+		uses[e.id] = nil
+		if mem.variant then mem.variant[e.id] = nil end
+		usesCount, removed = usesCount - 1, removed + 1
+	end
+	return removed
+end
+
+---I cooldown delle voci che esistono adesso (frasi e cornici; il vocabolario non ne ha) e gli id noti.
 local function KnownIds()
-	local known = {}
-	for id in pairs(Engine.byId) do known[id] = true end
+	local known, cooldown = {}, {}
+	for id, p in pairs(Engine.byId) do
+		known[id] = true
+		cooldown[id] = p.cooldown
+	end
 	for _, list in pairs(Engine.frames) do
-		for _, f in ipairs(list) do if f.id then known[f.id] = true end end
+		for _, f in ipairs(list) do
+			if f.id then
+				known[f.id] = true
+				cooldown[f.id] = f.cooldown
+			end
+		end
 	end
 	for _, list in pairs(Engine.vocab) do
 		for _, v in ipairs(list) do if v.id then known[v.id] = true end end
 	end
-	return known
+	return known, cooldown
 end
 
 function Engine:DecayMemory()
@@ -70,19 +126,24 @@ function Engine:DecayMemory()
 		NS.Diagnostics:Error("memory", ("anti-ripetizione: %d voci malformate scartate"):format(dropped))
 	end
 	local mem = Mem()
-	local known = KnownIds()
+	local known, cooldown = KnownIds()
 	local uses = mem.uses
 	for id, n in pairs(uses) do
 		n = n * 0.75
 		uses[id] = (n >= 0.2) and known[id] and n or nil
 	end
-	-- ultimo uso (solo per il cooldown) e varianti usate per ultime: via quelle di frasi che non esistono più
-	-- (un pacchetto disinstallato); un pacchetto solo disattivato resta registrato e conserva la storia
-	for id in pairs(mem.last) do
-		if not known[id] then mem.last[id] = nil end
+	counted = nil
+	Engine.TrimUses(mem)
+	-- ultimo uso: serve solo al cooldown. Via quelli delle voci senza cooldown (la memoria di prima di #86), dei
+	-- cooldown finiti e delle voci che non esistono più (un pacchetto disinstallato; uno solo spento resta registrato)
+	local now = time()
+	for id, t in pairs(mem.last) do
+		local cd = cooldown[id]
+		if not (type(cd) == "number" and now - t < cd) then mem.last[id] = nil end
 	end
+	-- ultima variante: solo per le frasi che esistono e sono ancora tra gli usi recenti
 	for id in pairs(mem.variant) do
-		if not Engine.byId[id] then mem.variant[id] = nil end
+		if not Engine.byId[id] or uses[id] == nil then mem.variant[id] = nil end
 	end
 end
 
@@ -95,7 +156,10 @@ local function IsRecent(key, id)
 	return false
 end
 
-local function Remember(key, id, keep)
+-- entry: la voce usata (frase, cornice o vocabolario; senza, la frase con quell'id); l'ultimo uso si ricorda solo se
+-- ha un cooldown (#86)
+local function Remember(key, id, keep, entry)
+	entry = entry or Engine.byId[id]
 	local mem = Mem()
 	mem.recent[key] = mem.recent[key] or {}
 	local list = mem.recent[key]
@@ -104,8 +168,14 @@ local function Remember(key, id, keep)
 	end
 	table.insert(list, 1, id)
 	while #list > keep do table.remove(list) end
-	mem.uses[id] = (mem.uses[id] or 0) + 1
-	mem.last[id] = time()
+	local uses = mem.uses
+	if uses[id] == nil then
+		CountUses(uses)
+		usesCount = usesCount + 1
+	end
+	uses[id] = (uses[id] or 0) + 1
+	if usesCount > Engine.USES_MAX then Engine.TrimUses(mem, id) end
+	if entry and entry.cooldown then mem.last[id] = time() end
 end
 
 ---------------------------------------------------------------------------
@@ -222,9 +292,19 @@ function Engine.Factors(entry, lastTone, ctx, profile)
 	return f
 end
 
--- peso effettivo di una voce (W), dati la memoria e, per le frasi, il contesto e il profilo di stile
+-- peso effettivo di una voce (W), dati la memoria e, per le frasi, il contesto e il profilo di stile. È Factors(...).W
+-- senza la tabella dei fattori (#83: si calcola per ogni candidata): stessi conti, nello stesso ordine.
 local function Score(entry, key, poolSize, lastTone, ctx, profile)
-	return Engine.Factors(entry, lastTone, ctx, profile).W
+	local C, P, S, R = 1 + Engine.SPEC_BONUS * (entry.spec or 0), 1, 1, 1
+	local N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
+	if lastTone and entry.tone and entry.tone == lastTone then N = N * Engine.SAME_TONE end
+	if ctx then
+		C = C * Hooks("C", entry, ctx)
+		P = Hooks("P", entry, ctx)
+		S = Engine.StyleFactor(entry, ctx) * Engine.StyleResolver:Affinity(entry, profile)
+		R = Hooks("R", entry, ctx)
+	end
+	return entry.weight * C * P * N * S * R
 end
 
 -- le voci usate di recente restano escluse finché ce ne sono altre disponibili
@@ -262,15 +342,31 @@ Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor = Score, Weig
 ---------------------------------------------------------------------------
 -- Scelta
 ---------------------------------------------------------------------------
+---Le voci di una lista che valgono adesso: forma, pacchetto acceso, cooldown, una variante utilizzabile, condizioni.
+---Per le frasi di un evento la lista è Engine:Candidates (l'indice, #83); con tutto byEvent il risultato è lo stesso.
+---@param list? table[]
+---@param lang string
+---@param ctx table
+---@param form? "say"|"emote"
+---@param now number
+---@return table[]
 function Engine:Eligible(list, lang, ctx, form, now)
 	local out = {}
 	if not list then return out end
 	local mem = Mem()
+	local disabled = NS.db.disabledPacks
 	for _, p in ipairs(list) do
-		if (not form or p.form == form) and not NS.db.disabledPacks[p.pack]
-			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
-			and #Engine.UsableVariants(p.text[lang], ctx, p.speaker) > 0 and Engine.SafeMatch(p.when, ctx) then
-			table.insert(out, p)
+		if (not form or p.form == form) and not disabled[p.pack]
+			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown) then
+			-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre (chance,
+			-- func; e le cornici, che non hanno ord) solo dopo i testi, come sempre: la sequenza casuale non cambia
+			local ok
+			if p.impure or not p.ord then
+				ok = Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(p.when, ctx)
+			else
+				ok = Engine.SafeMatch(p.when, ctx) and Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack)
+			end
+			if ok then table.insert(out, p) end
 		end
 	end
 	return out
@@ -313,12 +409,12 @@ end
 ---@return integer? index posizione della variante tra i testi della lingua
 function Engine:RenderPhrase(p, lang, ctx)
 	local list = p.text[lang]
-	local idx = Engine.UsableVariants(list, ctx, p.speaker)
+	local idx = Engine.UsableVariants(list, ctx, p.speaker, p.pack)
 	local depth = ctx.depth
 	if depth and #idx > 1 then
 		local fit = {}
 		for _, i in ipairs(idx) do
-			local d = list[i].depth
+			local d = Engine.VariantDepth(list[i])
 			if d == nil or d[depth] then table.insert(fit, i) end
 		end
 		if #fit > 0 then idx = fit end
@@ -331,7 +427,7 @@ function Engine:RenderPhrase(p, lang, ctx)
 	end
 	while #idx > 0 do
 		local k = math.random(#idx)
-		local text = self:Render(list[idx[k]].t, lang, ctx)
+		local text = self:Render(Engine.VariantText(list[idx[k]]), lang, ctx)
 		if text then return text, idx[k] end
 		table.remove(idx, k)
 	end
@@ -356,7 +452,8 @@ function Engine:PickEntry(event, ctx, form)
 	if not self:EventAllowed(event, ctx) then return nil end
 	local lang = NS:Lang()
 	local now = time()
-	local list = self.byEvent[event]
+	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event]
+	local list = self:Candidates(event, ctx, form)
 	local mem = Mem()
 	local lastTone = mem.lastTone[event]
 	-- registri adatti all'evento, alla zona e alla profondità (GDD §5.2)
@@ -378,7 +475,7 @@ function Engine:PickEntry(event, ctx, form)
 			-- solo la voce pubblica del personaggio si può raccontare in una cornice:
 			-- un pensiero (inner) non diventa un'emote
 			local says = {}
-			for _, p in ipairs(self:Eligible(list, lang, ctx, "say", now)) do
+			for _, p in ipairs(self:Eligible(self:Candidates(event, ctx, "say"), lang, ctx, "say", now)) do
 				if p.speaker == "character" then table.insert(says, p) end
 			end
 			for _, p in ipairs(says) do
@@ -403,10 +500,10 @@ function Engine:PickEntry(event, ctx, form)
 			end
 			local fit = WeightedPick(fitems, "frame:" .. event)
 			text = fit and self:RenderEntry(fit.e, lang, ctx, text)
-			if text then Remember("frame:" .. event, fit.e.id, KeepFor(#frames)) end
+			if text then Remember("frame:" .. event, fit.e.id, KeepFor(#frames), fit.e) end
 		end
 		if text then
-			Remember(event, p.id, KeepFor(#items))
+			Remember(event, p.id, KeepFor(#items), p)
 			mem.lastTone[event] = p.tone
 			if #p.text[lang] > 1 then
 				mem.variant = mem.variant or {}

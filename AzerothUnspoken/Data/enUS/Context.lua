@@ -473,4 +473,4 @@ NS:AddTexts("enUS", {
 		"stares at the spot where it all went wrong, as if committing it to memory.",
 		"drags a hand down {g:his|her} face as silence settles back over the hall.",
 	},
-})
+}, "base_context")

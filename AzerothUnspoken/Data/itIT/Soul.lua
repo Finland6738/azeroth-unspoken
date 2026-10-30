@@ -107,4 +107,4 @@ NS:AddTexts("itIT", {
 		"Una volta pregavo senza pensarci. Adesso ci penso, e le parole mi restano in gola.",
 		"Recito ancora le parole, la sera. Le so a memoria. È il resto che ho dimenticato.",
 	},
-})
+}, "base_soul")

@@ -264,6 +264,26 @@ function Traits.ParseTag(tag)
 	return result or nil
 end
 
+-- Ambiti dei tag di un insieme ("" = il personaggio, "other", "place", "rel"), ricordati per insieme: gli insiemi di
+-- tag delle frasi sono condivisi e non cambiano dopo la registrazione (#84). Chiavi deboli: un insieme che nessuno
+-- usa più se ne va.
+local scopesOf = setmetatable({}, { __mode = "k" })
+
+---Gli ambiti presenti tra i tag (solo i tag riconosciuti da ParseTag).
+---@param tags table<string, boolean>
+---@return table<string, boolean>
+function Traits.Scopes(tags)
+	local hit = scopesOf[tags]
+	if hit then return hit end
+	hit = {}
+	for tag in pairs(tags) do
+		local t = Traits.ParseTag(tag)
+		if t then hit[t.scope] = true end
+	end
+	scopesOf[tags] = hit
+	return hit
+end
+
 ---Controlla un tag di una frase per il validatore. nil se va bene o se è descrittivo.
 ---@param tag string
 ---@return string? problem
@@ -294,6 +314,8 @@ end
 function Traits.Evaluate(tags, traits, scope)
 	scope = scope or ""
 	if type(tags) ~= "table" then return 1 end
+	-- nessun tag di questo ambito: neutro, senza scorrere i tag (gli agganci del peso lo chiedono per ogni candidata)
+	if not Traits.Scopes(tags)[scope] then return 1, nil end
 	local soft, required = nil, nil
 	for tag in pairs(tags) do
 		local t = Traits.ParseTag(tag)

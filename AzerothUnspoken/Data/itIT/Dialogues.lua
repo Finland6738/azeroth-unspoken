@@ -702,4 +702,4 @@ NS:AddTexts("itIT", {
 		"A presto. Ti aspetto con qualcosa di nuovo da correggere.",
 		"Torna quando vuoi: ti riconosco dal modo in cui cammini, e ormai è un buon modo.",
 	},
-})
+}, "base_dialogues")

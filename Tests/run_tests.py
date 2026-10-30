@@ -94,8 +94,8 @@ for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Dir
 check(os.path.isfile(os.path.join(HERE, "..", "docs", "G1_checklist.md")), "checklist G1 presente")
 for d in ("Core", "Engine", "Systems", "Integration", "UI", "Data"):
     check(os.path.isdir(os.path.join(ADDON, d)), f"cartella {d}/")
-check(G.AzerothUnspokenDB.schemaVersion == 6, "schemaVersion globale")
-check(G.AzerothUnspokenCharacterDB.schemaVersion == 6, "schemaVersion per personaggio")
+check(G.AzerothUnspokenDB.schemaVersion == 7, "schemaVersion globale")
+check(G.AzerothUnspokenCharacterDB.schemaVersion == 7, "schemaVersion per personaggio")
 check(G.SlashCmdList.AZEROTHUNSPOKEN is not None, "comando registrato")
 check(G.SLASH_AZEROTHUNSPOKEN1 == "/unspoken" and G.SLASH_AZEROTHUNSPOKEN2 == "/au", "alias /unspoken e /au")
 errors = list(NS.Diagnostics.errors.values())
@@ -422,17 +422,33 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations",
-             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent"):
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale"):
     lt, nst = load_addon()
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
     # imposta a "it" come farebbe un utente. TestConfig prova invece il predefinito, senza toccare la lingua.
     if name != "TestConfig":
         nst.db.locale = "it"
+    if name == "TestScale":
+        # R1: il generatore dell'archivio sintetico (solo per i test, mai nel .toc)
+        run_file(lt, os.path.join(HERE, "SyntheticArchive.lua"), "SyntheticArchive.lua")
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
     print(f"  {name}: {t.passed} superati, {t.failed} falliti")
     for f in t.failures.values():
         check(False, f"{name}: {f}")
+
+# 9a) proiezione di scala ridotta (R1, #83 #84): un archivio sintetico di 2.000 regole. I tempi si stampano soltanto
+# (dipendono dalla macchina); la memoria per regola è un controllo. Le misure complete (10.000 e 50.000 regole) si
+# lanciano a mano: python -I -X utf8 Tests/bench_scale.py
+print("\nPROIEZIONE DI SCALA (2.000 regole sintetiche; complete: Tests/bench_scale.py)")
+sys.path.insert(0, HERE)
+import bench_scale  # noqa: E402
+proj = bench_scale.measure(ADDON, 2000, 150, 1, 0.6)
+print(f"  caricamento {proj['load_s']:.2f} s, memoria {proj['memory_kb'] / 1024:.1f} MB, {proj['per_entry_b']:.0f} B per regola, "
+      f"scelta {proj['pick_mean_ms']:.2f} ms (p95 {proj['pick_p95_ms']:.2f} ms)")
+check(proj["found"] == proj["picks"], "proiezione: ogni scelta trova una frase")
+# prima di R1 una regola costava circa 4.900 B in questa misura (#84 chiede almeno il 22% in meno)
+check(proj["per_entry_b"] < 2500, f"proiezione: memoria per regola sotto 2.500 B ({proj['per_entry_b']:.0f})")
 
 # 9b) persistenza simulata dopo /reload: le SavedVariables escono da un runtime come testo e rientrano in un altro
 print("\nPERSISTENZA DELLA MEMORIA (/reload simulato)")
@@ -468,7 +484,7 @@ check(lua2.eval("function() return AzerothUnspoken.LivingMemory:HasFlag('first_d
 # b) tre giorni dopo: ritorno nel bosco dove il personaggio è morto
 lua3, ns3 = load_addon(saved_global, saved_char, with_example=False, epoch=epoch1 + 3 * DAY, zone="Durotar")
 g3 = lua3.globals()
-check(lua3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "memoria: schema 6 dopo il caricamento")
+check(lua3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "memoria: schema 7 dopo il caricamento")
 lua3.execute("AzerothUnspoken.db.intensity = 50; AzerothUnspoken.db.chance.zone = 100; AzerothUnspoken.db.chance.memory_return = 100; "
              "AzerothUnspoken.db.pacing.globalCooldownSeconds = 0")
 g3.ADVANCE(10); g3.P.zone = "Teldrassil"; g3.FIRE("ZONE_CHANGED_NEW_AREA")
@@ -501,7 +517,7 @@ check("Teldrassil" in export_text and "Darkshore" in export_text, "memoria: l'es
 
 # c) un personaggio senza dati salvati parte da zero, e dati rovinati non fermano l'avvio
 lua4, ns4 = load_addon(saved_global, '{schemaVersion=3,memories={entries="x",places=7,flags={"a"}}}', with_example=False)
-check(lua4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "memoria: dati rovinati migrati")
+check(lua4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "memoria: dati rovinati migrati")
 check(len(list(ns4.Diagnostics.errors.values())) == 0 or all("memory" not in str(e.message) for e in ns4.Diagnostics.errors.values()),
       "memoria: dati rovinati senza errori fatali")
 print("  ok" if not FAILURES else "")
@@ -547,14 +563,14 @@ rl3, rn3 = load_addon(saved_global_r, saved_char_r, with_example=False, epoch=ep
 fam3 = rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.npcs[1234].familiarity end")()
 check(fam3 is not None and 0 < npc_fam - fam3 < 20, f"relazioni: la familiarità dell'NPC cala con i giorni ({npc_fam} -> {fam3})")
 check(rl3.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].familiarity end")() == 40, "relazioni: un giocatore dell'utente non decade")
-check(rl3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "relazioni: schema 6")
+check(rl3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "relazioni: schema 7")
 rl3.globals().P.target = rl3.eval("{ name = 'Aldric', realm = 'Stormrage', player = true, guid = 'Player-1-0000AAAA' }")
 ctx_label = rl3.eval("function() return AzerothUnspoken:BuildContext().relationLabel end")()
 check(ctx_label == "fratello di spada", "relazioni: dopo /reload il contesto usa l'etichetta scelta")
 
 # c) un file di un personaggio con dati rovinati parte lo stesso
 rl4, rn4 = load_addon(saved_global_r, '{schemaVersion=4,relationships={npcs="x",players={[5]=1}}}', with_example=False)
-check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "relazioni: dati rovinati migrati")
+check(rl4.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "relazioni: dati rovinati migrati")
 check(not any("relations" in str(e.message) for e in rn4.Diagnostics.errors.values()), "relazioni: dati rovinati senza errori fatali")
 print("  ok" if not FAILURES else "")
 
@@ -689,7 +705,7 @@ check(arc_item(ar7, "path", "mode") == "suspended", "archi: un arco sospeso rest
 # un personaggio dell'epoca precedente (schema 5, segnaposto vuoto) migra senza perdere nulla
 ar8, an8 = load_addon(saved_global_d, '{schemaVersion=5,memory={uses={},last={},recent={},lastTone={},variant={}},arcs={},history={}}',
                       with_example=False, zone="Durotar")
-check(ar8.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 6, "archi: migrazione dallo schema 5 al 6")
+check(ar8.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "archi: migrazione dallo schema 5 al 7")
 check(ar8.eval("function() return AzerothUnspokenCharacterDB.arcs.version end")() == 1, "archi: lo stato degli archi nasce dal segnaposto")
 ar8.globals().ADVANCE(8)
 check(arc_state(ar8, "path") == "DISCOVERED", "archi: dopo la migrazione gli archi si aprono")

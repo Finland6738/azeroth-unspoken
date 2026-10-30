@@ -10,6 +10,28 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### R1: scale foundations, index, compact format and bounded memory (issues #83, #84 and #86)
+
+The engine is prepared for an archive of tens of thousands of entries (decision D1 in #130) **without changing what the player sees**: the same seeded sequence of 3,000 picks gives the same phrases, variants and texts before and after the change (`Tests/trace_picks.py`). [ADR 0024](docs/adr/0024-selection-index-compact-registry-and-bounded-memory.md).
+
+- **Added: selection index by event and place** (#83). Every rule is registered in the generic group of its event and form or, when its conditions ask for a zone, subzone, map, class, race, zone mood, creature type or time of day, in the group of each value (`Engine.index`, `Engine.INDEX_DIMENSIONS`). `PickEntry` reads only the generic group and the groups the context opens (`Engine:Candidates`), merged in registration order. Rules with `chance`, `func` or a condition registered by a pack stay generic, so the random numbers drawn are the same; a pack that turns a condition of the engine into a computed one rebuilds the index. The index does not depend on the language, ready for language and regional packs (#85, #101).
+- **Changed: compact in-memory format** (#84). `RegisterPack` no longer keeps the pack's source tables (`registry`, `texts`, `phrases`, `frames`, `vocab`); variants are plain strings unless they need more (an empty text, a depth of their own, a text added by another pack); rules share their lists of events, registers, tags and depths. Code that reads texts uses `Engine.VariantText`, `VariantOk`, `VariantDepth`, `VariantPack` or `VariantView`. The pack format and `RegisterPack` do not change; the example pack and the verses pack load as before.
+- **Changed: faster weights, same results.** A candidate's weight is computed without a table of factors (bit for bit the same as `Engine.Factors().W`), `NS.Lower` remembers its results for the compared strings (bounded, never a secret value), and the weight hooks skip a tag scope a rule does not use (`Traits.Scopes`).
+- **Changed: bounded anti-repetition memory, schema 7** (#86). `cdb.memory.last` is kept only for entries with a `cooldown`, while it runs; `uses` keeps at most 512 entries (the least used go first); `variant` only for phrases still in `uses`. Migration 7 trims the saved memory and the login cleanup drops the last use of entries without a cooldown; running cooldowns survive, no text is stored. A phrase not used for several logins may now repeat its last variant.
+- **Changed: data files** `Data/*/Context.lua`, `Dialogues.lua`, `Arcs.lua` and `Soul.lua` pass their pack id to `NS:AddTexts`, so their texts are attributed to their own pack. No text or rule changes.
+- **Measured offline** (`Tests/bench_scale.py`, lupa on one PC, synthetic archive of clones of the real rules with unique texts, 60% of the clones bound to one zone, two languages):
+
+  | Entries | Pick, mean (p95) | Lua memory | Per entry | Load of the archive |
+  |---|---|---|---|---|
+  | 1,012 (today) | 0.61 ms (1.0) → 0.23 ms (0.33) | 6.5 MB → 4.2 MB | | addon 0.20 s → 0.17 s |
+  | +10,000 | 5.9 ms (22) → 0.91 ms (1.9) | 53 MB → 22 MB | 4.9 KB → 1.9 KB | 0.55 s → 0.74 s |
+  | +50,000 | 23 ms (59) → 4.1 ms (14) | 239 MB → 95 MB | 4.9 KB → 1.9 KB | 3.0 s → 3.8 s |
+
+  With one language (the projection of #85) 50,000 entries take 76 MB. The R1 targets (pick under 5 ms, memory under 40 MB at 50,000 entries) are met for the mean pick time only; they stay hypotheses until the in-game budget is decided (D3) with `/au prof`.
+- **Tests:** `Tests/TestScale.lua` (equivalence of the indexed selection with a scan of every rule, same order and same random draws, on the current database and on a synthetic archive, for every event, form, language and eight contexts; `Score` equal to `Factors().W`; index keys; format; bounded memory after 3,000 distinct entries; cooldowns; no text saved; migration from schema 6). `run_tests.py` runs a reduced projection of 2,000 entries and checks the memory per entry; the full sizes run on demand with `Tests/bench_scale.py`. Tests that read variants use the accessors; the schema checks expect 7.
+- **Docs:** `docs/ARCHITECTURE.md` (index, format, memory, scale limits), ADR 0024 and the ADR index, ADR 0006 (schema 7), ROADMAP. The wiki does not change: nothing visible to the player changes.
+- **Not verified in the client:** time and memory in the real client (`/au prof`); the targets of D3.
+
 ### Greetings and actions match the relationship (issue #105)
 
 - **Fixed: a warm greeting could be picked for an enemy.** Measured offline: with the relationship set to *enemy* the explicit greeting could say "the fire is warmer with old friends around it" (`greet.03`), and `rel.greet.player` applied to every known player. The generic warm lines of greetings and farewells (`greet.03`, `greet.08`, `greet.orc.02`, `greet.human.01`, `bye.07`, `bye.tauren.01`, `bye.nelf.01`, `bye.dwarf.01`, `rel.greet.player`, `rel.bye.player`) and the warm reactions to an invitation or an emote now exclude **enemy, disliked, wary and feared** with `not = { relation = ... }`, in the data and not in the engine. Those people still get their own lines (`rel.greet.enemy`, `rel.greet.wary`, `rel.greet.feared`, `rel.bye.hostile`...).

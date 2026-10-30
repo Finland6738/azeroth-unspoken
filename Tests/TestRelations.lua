@@ -889,6 +889,7 @@ T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 			T.ok(p.when and next(p.when) ~= nil, id .. ": dichiara una condizione di relazione")
 			for _, lang in ipairs({ "it", "en" }) do
 				for _, v in ipairs(p.text[lang]) do
+					v = Engine.VariantView(v)
 					T.ok(v.ok, id .. " " .. lang .. ": variante valida")
 					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend", otherSex = "female" }, nil)
 					T.ok(text ~= nil and not text:find("[{}]"), id .. " " .. lang .. ": si compone")
@@ -908,7 +909,7 @@ T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 	local seen = {}
 	for id, p in pairs(Engine.byId) do
 		if p.pack == "base_relations" then
-			for _, v in ipairs(p.text.it) do T.ok(not seen[v.t], "testo IT duplicato: " .. v.t); seen[v.t] = true end
+			for _, v in ipairs(p.text.it) do v = Engine.VariantText(v); T.ok(not seen[v], "testo IT duplicato: " .. v); seen[v] = true end
 		end
 	end
 end)
@@ -928,8 +929,8 @@ T.run("migrazione dello schema 5", function()
 	AzerothUnspokenCharacterDB = { schemaVersion = 4, memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} },
 		personality = { version = 1, archetype = "veteran", traits = {}, trp3 = false } }
 	Config:Load()
-	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 6, "personaggio a 5")
-	T.eq(AzerothUnspokenDB.schemaVersion, 6, "account a 5")
+	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "personaggio a 5")
+	T.eq(AzerothUnspokenDB.schemaVersion, 7, "account a 5")
 	local d = AzerothUnspokenCharacterDB.relationships
 	T.ok(d and d.version == 1 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
 	T.eq(NS.db.relations.autoRegisterPlayers, false, "registrazione automatica spenta nelle impostazioni nuove")
@@ -1347,6 +1348,7 @@ T.run("etichetta personale: mai in chat pubblica", function()
 	for id, p in pairs(Engine.byId) do
 		for _, list in pairs(p.text) do
 			for _, v in ipairs(list) do
+				v = Engine.VariantView(v)
 				if v.t and v.t:find("{relation}", 1, true) then
 					if p.speaker == "inner" then nInner = nInner + 1 end
 					T.ok(not Engine.PUBLIC_SPEAKERS[p.speaker], id .. ": {relation} in una voce pubblica (" .. tostring(p.speaker) .. ")")
