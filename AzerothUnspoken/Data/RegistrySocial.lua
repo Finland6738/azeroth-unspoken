@@ -1,6 +1,6 @@
 -- Registro delle regole di base: saluti, brindisi, scherzi e preghiere.
 -- Solo le regole (evento, voce, registro, profondità, peso, condizioni). I testi, con le loro varianti,
--- stanno in Data/itIT/Social.lua e Data/enUS/Social.lua.
+-- stanno in AzerothUnspoken_itIT/Social.lua e AzerothUnspoken_enUS/Social.lua.
 local ADDON, NS = ...
 
 NS:RegisterPack({

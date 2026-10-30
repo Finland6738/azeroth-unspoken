@@ -211,7 +211,7 @@ A story is named by its id or its title: `path`, `knownface`, `fallen`, `capital
 
 | Command | What it does |
 |---|---|
-| `/au packs` | Lists the phrase packs and whether each is on or off. |
+| `/au packs` | Lists the phrase packs and whether each is on or off, then the folders of the download that are loaded on demand: the language of the lines, the current continent, and for each language or continent folder whether it is loaded, not needed now, not installed or could not be loaded. |
 | `/au pack <id> on\|off` | Turns a pack on or off. |
 | `/au validate [full\|<pack>]` | Checks the phrase packs for mistakes and prints a summary. `full` prints every problem; a pack id checks only that pack. |
 | `/au stats` | How many lines are available in your language, per event. |

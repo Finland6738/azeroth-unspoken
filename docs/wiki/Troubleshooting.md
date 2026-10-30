@@ -48,6 +48,23 @@ The narrator is quiet by design, so first check that it is really silent, not ju
 
 The addon starts in English. Type `/au language it` for Italian, or `/au language en` for English. Command names are always English, in both languages. See [[Languages]].
 
+- **Just changed language?** The windows switch at once, the lines after a reload of the interface: click **Reload now** in the box or in the settings, or type `/reload`.
+- **The chat says a folder "could not be loaded"?** See the next section.
+
+## A folder is missing or could not be loaded
+
+The addon is one download with several folders (see [[Installation and Updating|Installation-and-Updating]]). If one of them is missing, unticked in the AddOns list or damaged, the addon tells you once in the chat, with the folder's name and the game's reason, and carries on:
+
+| Message | What happens | What to do |
+|---|---|---|
+| *the folder AzerothUnspoken_itIT could not be loaded (MISSING) ... the lines stay in English* | The folder of your language is not installed: the lines come in English. | Copy every `AzerothUnspoken` folder of the download into `AddOns`, then `/reload`. |
+| *... (DISABLED)* | The folder is unticked in the AddOns list. | Tick every **Azeroth Unspoken** entry on the character selection screen. |
+| *... (CORRUPT)*, *(INTERFACE_VERSION)* or another reason | The game refused the folder. | Delete all the `AzerothUnspoken` folders and copy them again from a fresh download. If it repeats, [[report it|Reporting-Bugs-and-Feedback]] with the message. |
+| *no line texts could be loaded: the narrator stays silent* | Neither language folder could be loaded. Windows and commands still work. | As above: copy every folder, then `/reload`. |
+| *the regional folder AzerothUnspoken_Kalimdor could not be loaded* | The lines of that continent are missing; the lines that hold everywhere still come. | As above. |
+
+`/au packs` lists every folder with its state: *loaded*, *not loaded (not needed now)* (for example the other language, or the other continent), *not installed* or *could not be loaded*. The first line also says the language of the lines and the continent the addon has loaded.
+
 ## Lines are not sent to chat
 
 First: **this is the default.** In *private* mode nothing ever goes to chat. Check with `/au mode`.

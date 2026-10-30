@@ -69,13 +69,13 @@ Altri client (retail, Classic Era, ecc.) non sono supportati né provati. L'addo
 Non ci sono ancora versioni pacchettizzate (release o pagine di distribuzione). Per ora:
 
 1. Scarica il repository (`Code` → `Download ZIP`, oppure `git clone https://github.com/Finland6738/azeroth-unspoken`).
-2. Copia la cartella `AzerothUnspoken` in `World of Warcraft\_forever_\Interface\AddOns\`.
-3. Facoltativo: copia anche `AzerothUnspoken_Example`, un pacchetto di frasi di esempio (una frase per la pesca e alcune legate a luoghi), e `AzerothUnspoken_Versi`, un prototipo di forme letterarie: iscrizioni, versi ricordati, filastrocche da locanda, canzoni di viaggio, un inno e un lamento, solo nel tuo narratore privato.
-4. Alla schermata di selezione del personaggio apri **AddOn** e controlla che *Azeroth Unspoken* sia spuntato.
+2. Copia **tutte le cartelle il cui nome comincia con `AzerothUnspoken`** in `World of Warcraft\_forever_\Interface\AddOns\`: l'addon (`AzerothUnspoken`), le frasi di ogni lingua (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) e di ogni continente (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` e le loro cartelle `_enUS`/`_itIT`). L'addon carica da solo solo la lingua scelta e solo il continente in cui ti trovi, fuori dal combattimento: non devi mai scegliere una cartella.
+3. Facoltativo: `AzerothUnspoken_Example`, un pacchetto di frasi di esempio (una frase per la pesca e alcune legate a luoghi), e `AzerothUnspoken_Versi`, un prototipo di forme letterarie: iscrizioni, versi ricordati, filastrocche da locanda, canzoni di viaggio, un inno e un lamento, solo nel tuo narratore privato.
+4. Alla schermata di selezione del personaggio apri **AddOn** e controlla che tutte le voci *Azeroth Unspoken* siano spuntate (le cartelle delle lingue e dei continenti sono segnate *Caricamento su richiesta*: è normale).
 
 Le cartelle `Tests`, `docs`, `archive` e il resto del repository non servono al gioco: non copiarli.
 
-Per aggiornare, sostituisci la cartella `AzerothUnspoken` con quella nuova. Le impostazioni stanno in `WTF\Account\<account>\SavedVariables\AzerothUnspokenDB.lua` e, per personaggio, in `AzerothUnspokenCharacterDB.lua`: non vengono toccate.
+Per aggiornare, cancella tutte le cartelle `AzerothUnspoken*` e copia le nuove (una versione nuova può aggiungere cartelle). Cambiare la lingua delle frasi richiede di ricaricare l'interfaccia: l'addon lo propone con un pulsante. Le impostazioni stanno in `WTF\Account\<account>\SavedVariables\AzerothUnspokenDB.lua` e, per personaggio, in `AzerothUnspokenCharacterDB.lua`: non vengono toccate.
 
 ## Primo avvio
 
@@ -208,6 +208,8 @@ Il repository ha questa struttura:
 | Percorso | Contenuto |
 |---|---|
 | `AzerothUnspoken/` | l'addon (`Core/`, `Engine/`, `Systems/`, `Integration/`, `UI/`, `Data/`) |
+| `AzerothUnspoken_enUS/`, `AzerothUnspoken_itIT/` | pacchetti di lingua: i testi delle frasi in una lingua, caricati solo per la lingua scelta |
+| `AzerothUnspoken_Kalimdor*/`, `AzerothUnspoken_EasternKingdoms*/` | pacchetti regionali: le frasi legate a un continente (regole e testi per lingua), caricate solo lì |
 | `AzerothUnspoken_Example/` | pacchetto di frasi di esempio |
 | `AzerothUnspoken_Versi/` | pacchetto dei versi: prototipo di forme letterarie (iscrizioni, canzoni, filastrocche) |
 | `Tests/` | test fuori dal gioco |

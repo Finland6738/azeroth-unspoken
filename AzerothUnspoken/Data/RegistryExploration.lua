@@ -1,6 +1,6 @@
 -- Registro delle regole di base: zone e pensieri.
 -- Solo le regole (evento, voce, registro, profondità, peso, condizioni). I testi, con le loro varianti,
--- stanno in Data/itIT/Exploration.lua e Data/enUS/Exploration.lua.
+-- stanno in AzerothUnspoken_itIT/Exploration.lua e AzerothUnspoken_enUS/Exploration.lua.
 local ADDON, NS = ...
 
 NS:RegisterPack({

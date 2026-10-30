@@ -1,6 +1,6 @@
 -- La struttura dei dialoghi ambientali (step S8, GDD §7.3, §21-B; ADR 0020): per ogni archetipo, i nodi (che battuta
 -- dice l'NPC) e le risposte del giocatore (che cosa si può scegliere, dove porta, che flag e che relazione tocca).
--- Le battute stanno in Data/RegistryDialogues.lua (regole) e Data/itIT|enUS/Dialogues.lua (testi): qui solo il
+-- Le battute stanno in Data/RegistryDialogues.lua (regole) e AzerothUnspoken_itIT|enUS/Dialogues.lua (testi): qui solo il
 -- copione. Un pacchetto può aggiungerne con NS:RegisterDialogues{ scripts = { ... } } (stessa forma, vedi
 -- PACK_FORMAT.md, «Dialoghi ambientali»).
 --

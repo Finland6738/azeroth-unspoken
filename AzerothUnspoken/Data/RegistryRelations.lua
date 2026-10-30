@@ -1,6 +1,6 @@
 -- Frasi legate alle relazioni (Relazioni e affinità, step S6b): saluti, congedi, ringraziamenti, cure, battaglia e
 -- vittoria al fianco di qualcuno, incontri con NPC conosciuti. Bastano a provare il sistema; i contenuti estesi
--- arrivano con lo step S7 (in fondo al registro). Solo le regole; i testi stanno in Data/itIT/Relations.lua e Data/enUS/Relations.lua.
+-- arrivano con lo step S7 (in fondo al registro). Solo le regole; i testi stanno in AzerothUnspoken_itIT/Relations.lua e AzerothUnspoken_enUS/Relations.lua.
 --
 -- Condizioni di relazione (Engine/RuleEngine.lua, leggono ctx.relation e simili di Systems/Relationships.lua):
 --   relation (etichetta: friend, comrade, rival, enemy...), disposition, <asse>Min/<asse>Max, familiarityMin, isKnown,

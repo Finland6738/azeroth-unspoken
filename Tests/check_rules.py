@@ -50,6 +50,9 @@ def docs_rule():
     check(not ok, "verses pack change alone: fails")
     ok, _ = ev(["AzerothUnspoken_Versi/Versi.lua", "CHANGELOG.md", "docs/wiki/Phrase-Packs.md"], [])
     check(ok, "the verses pack counts as the addon, and passes with CHANGELOG and docs")
+    for path in ("AzerothUnspoken_enUS/Combat.lua", "AzerothUnspoken_Kalimdor_itIT/Exploration.lua"):
+        ok, _ = ev([path], [])
+        check(not ok, f"language and regional packs count as the addon (#85, #101): {path} alone fails")
     ok, msg = ev([code], ["bug", "no-docs-needed"])
     check(ok and "skipped" in msg, "label no-docs-needed: skipped")
     ok, _ = ev(["Tests/TestSoul.lua", "tools/install_addon.py", ".github/workflows/ci.yml", "ROADMAP.md"], [])

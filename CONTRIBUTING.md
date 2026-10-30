@@ -86,7 +86,9 @@ AzerothUnspoken:RegisterPack({
 })
 ```
 
-All the details (events, conditions, personality tags, memory, relationships, interlocutor and place, dialogues, story arcs, placeholders, frames, vocabulary) are in [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), whose examples are exercised by the tests: always follow the version on `main`. A pack in a **separate** addon calls the APIs from `AzerothUnspoken:`, not from `NS:`.
+**Where the base content lives** (one download, several folders: [ADR 0025](docs/adr/0025-language-and-regional-packs-loaded-on-demand.md)). The rules of the base packs are in `AzerothUnspoken/Data/Registry*.lua`; their texts are in the language folders, `AzerothUnspoken_enUS/<Pack>.lua` and `AzerothUnspoken_itIT/<Pack>.lua` (only the chosen language is loaded in game). A line that only makes sense in one continent (a `zone` or `place` condition of that continent) goes into the regional folders: rules in `AzerothUnspoken_Kalimdor/` or `AzerothUnspoken_EasternKingdoms/`, texts in their `_enUS` and `_itIT` folders, written inside the builder functions already there. Everything else stays generic. Never make a pack for a race, a class or the weather: those are conditions.
+
+All the details (events, conditions, personality tags, memory, relationships, interlocutor and place, dialogues, story arcs, placeholders, frames, vocabulary, language and regional packs) are in [AzerothUnspoken/PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), whose examples are exercised by the tests: always follow the version on `main`. A pack in a **separate** addon calls the APIs from `AzerothUnspoken:`, not from `NS:`.
 
 ### Conventions
 

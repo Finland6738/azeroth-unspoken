@@ -31,6 +31,7 @@ The reference WoW Forever client is in English, but the addon was born for Itali
   - every new line must be written in at least Italian and English to be complete; whoever writes a new language must translate the existing lines to see them;
   - conditions that depend on names (for example `zone = "Duskwood"`) use the **client's** names (English), not those of the user's language.
 - The v2 data schema (step S3) will move the texts per language into separate files (`Data/itIT/`, `Data/enUS/`) with several variants per id, and a validator for missing languages.
+- Since R1 ([ADR 0025](0025-language-and-regional-packs-loaded-on-demand.md)) the phrase texts of each language are in their own LoadOnDemand folder (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) and only the chosen language is loaded; the interface strings of every language stay in the base addon. Changing language switches the interface at once and the phrases after a reload.
 
 ## References
 

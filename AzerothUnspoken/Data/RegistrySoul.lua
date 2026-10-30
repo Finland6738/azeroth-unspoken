@@ -1,5 +1,5 @@
 -- Frasi di esempio con affinità di personalità (Character Soul, step S5). Bastano a provare il sistema: i
--- contenuti estesi arrivano con lo step S7. Solo le regole; i testi stanno in Data/itIT/Soul.lua e Data/enUS/Soul.lua.
+-- contenuti estesi arrivano con lo step S7. Solo le regole; i testi stanno in AzerothUnspoken_itIT/Soul.lua e AzerothUnspoken_enUS/Soul.lua.
 --
 -- Tag di affinità (vedi Engine/Traits.lua):
 --   trait:valore       affinità morbida (tono): il peso sale con quel tratto, scende con un altro

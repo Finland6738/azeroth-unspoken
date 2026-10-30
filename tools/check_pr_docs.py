@@ -1,6 +1,7 @@
 """Docs rule for pull requests (task R1).
 
-A PR that changes the addon (AzerothUnspoken/, AzerothUnspoken_Example/ or AzerothUnspoken_Versi/) must also change CHANGELOG.md and at
+A PR that changes the addon (AzerothUnspoken/ or any folder of the download, AzerothUnspoken_*/: the example pack, the
+verses, the language and regional packs) must also change CHANGELOG.md and at
 least one documentation file, unless it carries the label `no-docs-needed` (pure refactors, tests only).
 
 Used by .github/workflows/docs-check.yml; the rule itself is plain Python so the tests can exercise it.
@@ -15,6 +16,7 @@ import argparse
 import sys
 
 ADDON_DIRS = ("AzerothUnspoken/", "AzerothUnspoken_Example/", "AzerothUnspoken_Versi/")
+ADDON_PREFIX = "AzerothUnspoken_"   # every other folder of the download: language and regional packs (#85, #101)
 # the pack guide lives inside the addon folder but it is documentation, not addon behavior
 DOC_ONLY_IN_ADDON = ("AzerothUnspoken/PACK_FORMAT.md",)
 CHANGELOG = "CHANGELOG.md"
@@ -24,7 +26,8 @@ SKIP_LABEL = "no-docs-needed"
 
 
 def is_addon_change(path):
-    return path.startswith(ADDON_DIRS) and path not in DOC_ONLY_IN_ADDON
+    in_addon = path.startswith(ADDON_DIRS) or (path.startswith(ADDON_PREFIX) and "/" in path)
+    return in_addon and path not in DOC_ONLY_IN_ADDON
 
 
 def is_doc(path):
@@ -36,7 +39,7 @@ def evaluate(files, labels):
     files = [f.strip().replace("\\", "/") for f in files if f.strip()]
     addon = [f for f in files if is_addon_change(f)]
     if not addon:
-        return True, "No change under AzerothUnspoken/, AzerothUnspoken_Example/ or AzerothUnspoken_Versi/: the docs rule does not apply."
+        return True, "No change under AzerothUnspoken/ or AzerothUnspoken_*/: the docs rule does not apply."
     if SKIP_LABEL in labels:
         return True, f"Label `{SKIP_LABEL}` is set: the docs rule is skipped ({len(addon)} addon files changed)."
     missing = []

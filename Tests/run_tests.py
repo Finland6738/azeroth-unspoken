@@ -161,7 +161,7 @@ for d in ("natural", "literary", "elevated"):
 
 # i file dell'addon sono UTF-8 valido, senza BOM né carattere di sostituzione, con fine riga LF
 data_files = []
-for folder in (ADDON, EXAMPLE, VERSI):
+for folder in (ADDON, EXAMPLE, VERSI) + tuple(os.path.join(ROOT, d) for d in PACKS):
     for root, _, files in os.walk(folder):
         for f_ in files:
             if f_.endswith((".lua", ".toc", ".xml", ".md")):

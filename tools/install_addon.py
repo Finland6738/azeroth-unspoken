@@ -1,4 +1,5 @@
-"""Install AzerothUnspoken, AzerothUnspoken_Example and AzerothUnspoken_Versi into the WoW Forever AddOns folder.
+"""Install every folder of the download into the WoW Forever AddOns folder: AzerothUnspoken and every
+AzerothUnspoken_* folder of the repository (the language packs, the regional packs, the example pack and the verses).
 
 The AddOns path is personal and never committed. It is read, in order, from:
   1. the AU_ADDONS_DIR environment variable;
@@ -16,7 +17,16 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-ADDONS = ("AzerothUnspoken", "AzerothUnspoken_Example", "AzerothUnspoken_Versi")
+
+
+def addon_folders():
+    """AzerothUnspoken and every AzerothUnspoken_* folder with its own .toc (one download, several folders: #85, #101)."""
+    out = []
+    for name in sorted(os.listdir(ROOT)):
+        is_addon = name == "AzerothUnspoken" or name.startswith("AzerothUnspoken_")
+        if is_addon and os.path.isfile(os.path.join(ROOT, name, name + ".toc")):
+            out.append(name)
+    return out
 
 
 def addons_dir():
@@ -57,7 +67,7 @@ def main(argv):
         return 1
     check_only = "--check" in argv
     ok = True
-    for name in ADDONS:
+    for name in addon_folders():
         src = os.path.join(ROOT, name)
         dst = os.path.join(target, name)
         if not check_only:

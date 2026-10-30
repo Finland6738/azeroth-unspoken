@@ -1,6 +1,6 @@
 -- Registro delle regole di base: voci delle classi, su più eventi.
 -- Solo le regole (evento, voce, registro, profondità, peso, condizioni). I testi, con le loro varianti,
--- stanno in Data/itIT/Classes.lua e Data/enUS/Classes.lua.
+-- stanno in AzerothUnspoken_itIT/Classes.lua e AzerothUnspoken_enUS/Classes.lua.
 -- Tag di affinità del Character Soul (issue #27): tono del mestiere (temperament:, morality:, faith:...) e argomenti
 -- delicati (topic:). Nessun req: qui: una classe non afferma la biografia del personaggio.
 local ADDON, NS = ...

@@ -32,10 +32,11 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0022](0022-automatic-rules-ci-docs-check-and-wiki-sync.md) | Automatic rules: CI, a docs check and the wiki sync | accepted |
 | [0023](0023-english-first-addon-and-english-command-names.md) | English first: the addon starts in English and command names are always English | accepted |
 | [0024](0024-selection-index-compact-registry-and-bounded-memory.md) | Selection index, compact in-memory registry and bounded anti-repetition memory | accepted |
+| [0025](0025-language-and-regional-packs-loaded-on-demand.md) | Language packs and regional packs loaded on demand | accepted |
 
 ## Pending decisions
 
-- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0024).
+- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0026).
 
 ## How to write a new one
 

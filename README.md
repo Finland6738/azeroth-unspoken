@@ -71,13 +71,13 @@ Other clients (retail, Classic Era, etc.) are neither supported nor tested. The 
 There are no packaged releases yet (no release assets, no distribution pages). For now:
 
 1. Download the repository (`Code` → `Download ZIP`, or `git clone https://github.com/Finland6738/azeroth-unspoken`).
-2. Copy the `AzerothUnspoken` folder into `World of Warcraft\_forever_\Interface\AddOns\`.
-3. Optional: also copy `AzerothUnspoken_Example`, a sample phrase pack (a line for fishing and a few tied to places), and `AzerothUnspoken_Versi`, a prototype pack of literary forms: inscriptions, remembered verses, inn rhymes, road songs, a hymn and a lament, only in your private narrator.
-4. On the character selection screen open **AddOns** and make sure *Azeroth Unspoken* is ticked.
+2. Copy **every folder whose name starts with `AzerothUnspoken`** into `World of Warcraft\_forever_\Interface\AddOns\`: the addon (`AzerothUnspoken`), the lines of each language (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) and of each continent (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` and their `_enUS`/`_itIT` folders). The addon loads by itself only the language you chose and only the continent you are on, outside combat: you never pick a folder.
+3. Optional: `AzerothUnspoken_Example`, a sample phrase pack (a line for fishing and a few tied to places), and `AzerothUnspoken_Versi`, a prototype pack of literary forms: inscriptions, remembered verses, inn rhymes, road songs, a hymn and a lament, only in your private narrator.
+4. On the character selection screen open **AddOns** and make sure every *Azeroth Unspoken* entry is ticked (the language and continent folders are marked *Load on demand*: that is expected).
 
 The `Tests`, `docs` and `archive` folders and the rest of the repository are not needed by the game: do not copy them.
 
-To update, replace the `AzerothUnspoken` folder with the new one. Your settings live in `WTF\Account\<account>\SavedVariables\AzerothUnspokenDB.lua` and, per character, in `AzerothUnspokenCharacterDB.lua`: they are left untouched.
+To update, delete every `AzerothUnspoken*` folder and copy the new ones (a new version can add folders). Changing the language of the lines needs a reload of the interface, which the addon offers with a button. Your settings live in `WTF\Account\<account>\SavedVariables\AzerothUnspokenDB.lua` and, per character, in `AzerothUnspokenCharacterDB.lua`: they are left untouched.
 
 ## First launch
 
@@ -210,6 +210,8 @@ Repository layout:
 | Path | Contents |
 |---|---|
 | `AzerothUnspoken/` | the addon (`Core/`, `Engine/`, `Systems/`, `Integration/`, `UI/`, `Data/`) |
+| `AzerothUnspoken_enUS/`, `AzerothUnspoken_itIT/` | language packs: the texts of the lines in one language, loaded only for the chosen language |
+| `AzerothUnspoken_Kalimdor*/`, `AzerothUnspoken_EasternKingdoms*/` | regional packs: the lines bound to one continent (rules, and texts per language), loaded only there |
 | `AzerothUnspoken_Example/` | sample phrase pack |
 | `AzerothUnspoken_Versi/` | verses pack: a prototype of literary forms (inscriptions, songs, rhymes) |
 | `Tests/` | tests that run outside the game |

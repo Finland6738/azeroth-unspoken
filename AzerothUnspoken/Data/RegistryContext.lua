@@ -1,7 +1,7 @@
 -- Frasi legate all'interlocutore e al luogo (step S6c): chi incontriamo (ruolo, temperamento, modo di parlare, razza,
 -- classe, azioni recenti) e dove siamo (dungeon, incursione, campo di battaglia, arena, territorio ostile o conteso,
 -- capitali amiche e nemiche, santuari, porti, locande). Bastano a provare il sistema; i contenuti estesi arrivano con
--- lo step S7. Solo le regole; i testi stanno in Data/itIT/Context.lua e Data/enUS/Context.lua.
+-- lo step S7. Solo le regole; i testi stanno in AzerothUnspoken_itIT/Context.lua e AzerothUnspoken_enUS/Context.lua.
 --
 -- Condizioni (Engine/RuleEngine.lua), sotto-tabelle con gli stessi operatori del livello superiore:
 --   other = { kind, race, class, faction, role, temperament, morality, goals, speech, reaction, actions, relation... }

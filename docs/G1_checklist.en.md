@@ -1,4 +1,4 @@
-# In-game checklist: R0 measurements and API probe (English)
+# In-game checklist: R0 measurements, API probe and R1 packs (English)
 
 This is the English counterpart of the section **R0** of the in-game checklist [G1_checklist.md](G1_checklist.md), which is written in Italian for the Italian-speaking tester and keeps every other part of the checklist. Same steps, same numbers (R0.1 to R0.13). It belongs to issues #81 (profiling and Director counters) and #82 (probing the vision APIs), phase R0 of the roadmap #131.
 
@@ -54,6 +54,34 @@ The reports are always in **English**, whatever language you chose: they are mea
     - **Expect:** the reports have no names, but read them once more.
     - **Report:** the link of the issue.
 
+## R1: language and regional packs (issues #85 and #101)
+
+Same steps as the section **R1** of [G1_checklist.md](G1_checklist.md) (R1.1 to R1.7).
+
+**What it is for.** The addon is now one download with several folders: the lines of each language are in a folder of their own (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) and the lines tied to one continent in others (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` and their `_enUS`/`_itIT`). The addon loads by itself **only the chosen language** and **only the continent you are on**, outside combat, with `C_AddOns.LoadAddOn`: nobody has tried it in the real client yet. `/au packs` shows the state of every folder: `loaded`, `not loaded (not needed now)`, `not installed`, `could not be loaded (reason)`; its first line gives the language of the lines, the region and the counters (loads, builds, drops, waits for combat).
+
+- **R1.1 · Installation and first login.** Copy **every** `AzerothUnspoken*` folder of the download into `AddOns` (delete the old ones first). On the character selection screen open **AddOns**: the language and continent folders must be ticked and marked *Load on demand*. Enter the game in **Kalimdor** with **English** chosen (`/au language en` and `/reload` if needed) and type `/au packs`.
+    - **Expect:** no red error; `AzerothUnspoken_enUS ... loaded`, `AzerothUnspoken_itIT ... not loaded`; `region kalimdor`; `AzerothUnspoken_Kalimdor` and `AzerothUnspoken_Kalimdor_enUS` `loaded`, the `EasternKingdoms` folders `not loaded`.
+    - **Report:** the lines of `/au packs`; if a folder says `could not be loaded`, the reason in brackets.
+- **R1.2 · Memory at login.** After a minute type `/au prof copy`.
+    - **Expect:** the memory (it now adds up the addon and the loaded folders).
+    - **Report:** the text.
+- **R1.3 · Changing language and reloading.** In the settings click **Phrase language** until **Italiano**.
+    - **Expect:** the windows switch to Italian at once; a chat message explains that the lines come with the next reload; a box with **Reload now** and **Later** appears, and the panel shows a **Reload now** button. Before clicking, `/au muse` still gives an English line. Click **Reload now**: after the reload `/au packs` shows the Italian folder loaded and the English one not loaded (the words are Italian now), and the lines are Italian.
+    - **Report:** whether the box appears (or only the chat message), whether the button reloads, the lines of `/au packs` afterwards.
+- **R1.4 · Changing continent.** Out of combat take a boat, a zeppelin or a portal to the **other continent**. On arrival type `/au packs`; then go back and repeat.
+    - **Expect:** on arrival `region eastern` (or `kalimdor`) and the two folders of the new continent `loaded`; on the way back the loads do not grow (the folders stay loaded), builds and drops do. No freeze beyond the loading screen.
+    - **Report:** the lines of `/au packs` both ways; if you noticed a freeze, when and how long.
+- **R1.5 · Combat.** During a fight type `/reload`. When the fight is over, type `/au packs`.
+    - **Expect:** no error; after the fight the language folder is `loaded` and the waits for combat counter is at least 1. If the fight ends before the game is ready again, the counter may stay at 0: note it.
+    - **Report:** the first line of `/au packs`.
+- **R1.6 · A missing folder.** With Italian chosen, untick `Azeroth Unspoken - Italian phrases` on the character selection screen and enter.
+    - **Expect:** once in chat, the message that the folder `AzerothUnspoken_itIT` could not be loaded `(DISABLED)` (in Italian) and that the lines stay in English; the lines come in English, the windows stay Italian; no red error. Tick it again afterwards.
+    - **Report:** the exact message (the reason in brackets).
+- **R1.7 · Memory after both continents.** After visiting both continents (R1.4), type `/au prof copy`.
+    - **Expect:** the memory grows little compared with R1.2 (today the regional packs are small).
+    - **Report:** the text.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -68,4 +96,10 @@ R0 inn and flight ....... PLAYER_UPDATE_RESTING ___  TAXIMAP_OPENED ___  UnitOnT
 R0 combat ............... LoadAddOn in combat ______  Combat=1 inside? ___
 R0 after an hour ........ memory (KB) ______  slowdowns? ___
 R0 other players' names . in the reports? (must be NO) ___  issue ______
+R1 login ................ folders "load on demand"? ___  /au packs: enUS loaded ___ itIT not loaded ___ region ______
+R1 memory ............... at login (KB) ______  after both continents (KB) ______
+R1 language ............. message ___  Reload box? ___  after /reload Italian loaded, English not? ___
+R1 continent ............ on arrival region ______  back: loads unchanged? ___  freezes? ___
+R1 combat ............... /reload in combat: errors? ___  waits for combat ______
+R1 missing folder ....... message (reason) ______  lines in English? ___  red errors? (must be NO) ___
 ```
