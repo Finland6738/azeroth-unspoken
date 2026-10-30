@@ -88,7 +88,7 @@ def workflows():
     for f in files:
         with open(f, encoding="utf-8", newline="") as fh:
             names[os.path.basename(f)] = fh.read()
-    for needed in ("ci.yml", "docs-check.yml", "wiki-sync.yml"):
+    for needed in ("ci.yml", "docs-check.yml", "wiki-sync.yml", "content-report.yml"):
         check(needed in names, f"{needed} exists")
     for name, text in names.items():
         uses = re.findall(r"^\s*(?:-\s*)?uses:\s*(\S+)", text, re.MULTILINE)
@@ -108,6 +108,10 @@ def workflows():
     wiki = names.get("wiki-sync.yml", "")
     check("contents: write" in wiki and "docs/wiki/**" in wiki and "workflow_dispatch" in wiki and "--warn-if-missing" in wiki,
           "wiki-sync.yml: contents write, docs/wiki paths, manual dispatch, warns when the wiki is missing")
+    report = names.get("content-report.yml", "")
+    check("name: Content coverage" in report and "tools/archive/cli.py" in report and "GITHUB_STEP_SUMMARY" in report and
+          "upload-artifact" in report and "authoring/**" in report and "continue-on-error: true" in report and
+          "--strict" not in report, "content-report.yml: reports the coverage and gaps as a summary and an artifact, never blocks")
     template = os.path.join(ROOT, ".github", "pull_request_template.md")
     check(os.path.isfile(template), "pull request template exists")
     if os.path.isfile(template):

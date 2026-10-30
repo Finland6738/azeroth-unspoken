@@ -162,6 +162,29 @@ Inscriptions, solemn formulas, remembered verses, inn rhymes, road songs, prover
 - [ ] Metre counted line by line in both languages; the Italian is a re-creation, not a calque.
 - [ ] No placeholders; one line with `" / "`; 255 bytes at most; `/au validate` and the tests pass.
 
+### Writing content through the archive
+
+Content can be written, reviewed and measured outside the game with the **authoring archive** ([ADR 0026](docs/adr/0026-sqlite-authoring-archive-and-exporter.md)). It needs only Python 3 (no other package). The game never reads the archive: it reads the pack folders, which the archive writes. Writing directly in the Lua files is still allowed (and is how approved lines are fixed by hand); both ways end in the same folders.
+
+Where a line lives, by state (**one place at a time**): `approved` in the pack folders; `draft`, `review` and `retired` (and an approved line waiting for `export`) in `authoring/*.csv`, text that diffs row by row. The SQLite file (`build/authoring.sqlite`) is generated and ignored by git.
+
+**Review states** (decision D6): `draft -> review -> approved -> retired`. One person curates and approves; drafts come from AI sessions. **An AI session writes drafts only: it never approves, retires or exports.**
+
+1. **Write drafts** as JSON Lines, one intention per line (an AI session produces exactly this; a line starting with `#` is a comment):
+
+   ```json
+   {"id": "zone.felwood.02", "pack": "kalimdor_exploration", "event": "zone", "speaker": "inner", "styles": ["intimate"], "depth": ["natural", "literary"], "tags": ["melancholy", "topic:demons"], "weight": 1, "conditions": {"zone": "Felwood"}, "author": "ai-draft-1", "texts": {"enUS": ["{zone}. The leaves keep their color, and that is the worst of it.", {"text": "Green is not always a good sign.", "depth": "natural"}], "itIT": ["{zone}. Le foglie conservano il colore, ed è la cosa peggiore."]}}
+   ```
+
+   Fields: `id` (new, unique), `pack` (an existing pack id, which also decides the region and the files), `event` (one or a list), `speaker` (`narrator`, `inner`, `character`, `npc`), `styles` (registers), `depth`, `tags`, `weight`, `cooldown`, `conditions` (a table of the conditions of [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md); no code), `texts` (per language, a string or `{"text": ..., "depth": ...}`), `author`, and for invented legends `invented_lore` and `attribution` (who says it: "it is said", the singer, the inscription).
+2. `python tools/archive/cli.py drafts new.jsonl` adds them as drafts (a line that is not valid is refused with the reason, the others are kept) and writes `authoring/`. Then `list`, `search --event zone --tag "topic:*" --region kalimdor --text felwood`, `show ID` and `stats` to look around.
+3. **Review:** `submit ID` (to `review`: needs a text in every language of the pack), `reject ID --note "why"` (back to `draft`), `approve ID` (needs the same, and refuses invented lore in a narrator line without an attribution: **no invented legend without a voice**, decision D7), `retire ID --note "why"`, `restore ID`. Each change is a row in `authoring/reviews.csv` and `authoring/changelog.csv`; pass `--author NAME` (or set `AU_ARCHIVE_AUTHOR`).
+4. **Publish:** `python tools/archive/cli.py export` writes the approved lines into the pack folders (appended to the rules file of their pack and to the texts file of each language, in the canonical style; a retired line leaves them) and takes them out of `authoring/`. `python tools/archive/cli.py check` proves that importing the folders and exporting them again changes nothing.
+5. Update the counts the tests and the README report (see [section 6](#6-tests)), run the tests, and open the PR with the changed folders and `authoring/` together.
+6. **`python tools/archive/cli.py report`** prints the coverage and gap report: intentions (the unit counted) and texts per region, voice, depth and register, the event x context cells under *k* intentions, and the repetition proxies. Thresholds are in `tools/archive/thresholds.json` and are only reported, never blocking; the CI job `Content coverage` runs it on every change to the content and keeps it as a job summary and an artifact.
+
+The quality rules of this section and the review checklist for literary forms apply to drafts exactly as to hand-written lines.
+
 ## 4. Writing a pack
 
 A pack is a separate addon that adds phrases, frames, vocabulary, translations, languages or events, without touching the engine.
@@ -208,6 +231,7 @@ How to add tests:
 - `Tests/check_api.py` compares the functions and events used with the Forever API dump (it is skipped with a warning if the dump is not there); declare new event sources with **literal strings**, otherwise it does not see them.
 - `Tests/check_docs.py` loads the examples of the pack guide as external packs and checks that **all the relative links** of the Markdown files exist (anchors included). A broken link makes the tests fail.
 - The counts of phrases and packs are in `Tests/run_tests.py` and in `Tests/TestContent.lua`: if you add content, update them and report the numbers in the README and in the CHANGELOG.
+- `Tests/check_archive.py` tests the authoring archive (`tools/archive/`): importing the pack folders and exporting them again must give an **empty diff**, the review flow, the overlay and the coverage report; it runs inside `run_tests.py`. If you change a data file, keep it a literal table (see [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md)) so that the archive can still read it.
 - `Tests/check_privacy.py` scans every tracked text file for email addresses (only GitHub noreply ones are allowed) and personal paths; `Tests/check_rules.py` tests the docs rule and the workflows (actions pinned to a commit, permissions declared). Both run inside `run_tests.py`.
 - **CI runs the same command** on every PR and on `main` ([section 8](#8-git-issues-and-pull-requests)): the Forever API dump is cloned into the runner only, so `check_api.py` is not skipped there. Locally, `AU_REQUIRE_API=1` makes a missing dump a failure too.
 - An offline test **does not prove the client**: state in the PR what remains to be verified in game ([G1](docs/G1_checklist.md)).

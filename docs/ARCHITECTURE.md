@@ -539,7 +539,7 @@ flowchart LR
 
 ### Folders of the download and when they are loaded
 
-One download, several folders (decision D4 in #130, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)). The folders are the source of truth: content is written directly in them, and the exporter of #87 will write the same files.
+One download, several folders (decision D4 in #130, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)). The folders hold the **approved** content and are what the game reads: content is written directly in them or exported into them by the authoring archive (see [the next subsection](#the-authoring-archive-outside-the-game)).
 
 | Folder | Holds | Loaded |
 |---|---|---|
@@ -565,6 +565,24 @@ sequenceDiagram
 ```
 
 A loaded folder stays loaded until `/reload`: what a region left keeps in memory is the code of its builders (about a third of its built size, `Tests/bench_packs.py`). At login `Engine:DecayMemory` does not know the ids of a region not built yet: their uses decay as usual and their last use is kept at most `Engine.DORMANT_LAST_MAX` (30 days).
+
+### The authoring archive (outside the game)
+
+[ADR 0026](adr/0026-sqlite-authoring-archive-and-exporter.md), issues #87 and #88. An addon cannot read a database, so the archive is only where content is **written, reviewed, searched and measured** (`tools/archive/`, Python standard library, never loaded in game).
+
+```mermaid
+flowchart LR
+    F["pack folders (Lua)<br/>approved content"] -- import --> D[("build/authoring.sqlite<br/>generated, not committed")]
+    O["authoring/*.csv<br/>drafts, review, retired,<br/>reviews, changelog"] -- load --> D
+    D -- "export (approved only)" --> F
+    D -- save --> O
+    D -- report --> R["coverage and gaps<br/>(CI job summary + artifact)"]
+```
+
+- **Each intention is in one committed place:** approved ones in the folders (hand-written or exported), everything else in the overlay `authoring/*.csv` (text, one row per intention and per variant, sorted, so a PR diff reads line by line). `export` moves approved content from the overlay into the folders. The archive becomes the single source of truth only in a later stage (ADR 0026).
+- **The importer reads Lua as data** (`lualit.py`, no Lua is run) and keeps each file as prelude, entries and the gaps with their comments; **`export` of the imported folders is identical byte for byte to every file** (a test in the required CI job). Changed entries are rendered again in the canonical style, new ones are appended to the table of their pack. Rules computed by code (`RegistryArcs.lua`, `RegistryDialogues.lua`) are not archived.
+- **Review flow:** `draft -> review -> approved -> retired` (`submit`, `approve`, `reject`, `retire`, `restore`); only `approved` is exported; approval needs a text in every language of the pack and, for invented lore in a narrator line, an attribution (D7).
+- **Reports:** `report` counts intentions (D2) with their variants per language, by region, voice, depth and register; lists the event x context cells (the index groups of ADR 0024) with fewer than *k* eligible intentions or texts; and gives the cheap part of the M1 and M2 measurements. Thresholds are in `tools/archive/thresholds.json`; the CI workflow `Content coverage` prints the report as a job summary and an artifact and **never blocks**.
 
 ## 7. Extension points
 
@@ -631,6 +649,7 @@ From the [roadmap](../ROADMAP.md). The current `main` has milestones M0–M3: fo
 
 ## 9. Known limits
 
+- **Authoring archive (R2, #87, #88)**: it covers the literal rules (807 of 1,009 intentions); `base_arcs` and `base_dialogues` compute their rules in code and are not archived. `attribution` (D7) lives only in the archive: the pack format has no such field yet, so the archive refuses unattributed invented lore at approval and the exporter does not write the field. "Eligible" in the reports is an upper bound (only the first index group of each rule is used), and the repetition numbers are proxies, not the seeded M2 simulation ([ADR 0026](adr/0026-sqlite-authoring-archive-and-exporter.md)).
 - **Scale (R1)**: at 50,000 synthetic entries the offline projection (`Tests/bench_scale.py`, lupa) gives 4.1 ms per pick on average (p95 14 ms) and 94 MB of memory with two languages, 76 MB with only the chosen language loaded (`--packs lazy --langs enUS`, #85): the targets of R1 (5 ms, 40 MB) are met only for the mean pick time. The targets are hypotheses until the in-game budget is decided (D3 in #130); see [ADR 0024](adr/0024-selection-index-compact-registry-and-bounded-memory.md) and #138.
 - **Language and regional packs (#85, #101)**: `C_AddOns.LoadAddOn`, `IsAddOnLoaded`, `GetAddOnMetadata` and the change of continent have not been tried in the real client. A folder loaded on demand stays loaded until `/reload` (WoW cannot unload an addon): a region left keeps its builders in memory, about a third of its built size (`Tests/bench_packs.py`, [ADR 0025](adr/0025-language-and-regional-packs-loaded-on-demand.md)). Changing the phrase language needs a reload.
 - **Nothing has been tested in the real client.** Everything is verified only with the simulated client; the G1 test is postponed ([checklist](G1_checklist.md)).

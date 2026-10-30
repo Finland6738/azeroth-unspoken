@@ -828,5 +828,14 @@ for script in ("check_rules.py", "check_privacy.py"):
     print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if "  ok  " not in l))
     check(proc.returncode == 0, f"{script}: regole del progetto rispettate")
 
+# 13) archivio di scrittura (R2, #87 e #88): round trip cartelle -> archivio -> cartelle a differenza vuota, flusso di
+#     revisione, overlay e rapporto di copertura (tools/archive, ADR 0026)
+print("\nARCHIVIO DI SCRITTURA")
+proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_archive.py")],
+                      capture_output=True, text=True, encoding="utf-8")
+print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n") if l.strip() and "  ok  " not in l and
+                not l.startswith(("warning:", "|", "#", "- ", "`", "State", "Best", "Openings", "eligible"))))
+check(proc.returncode == 0, "check_archive.py: round trip a differenza vuota, flusso di revisione e rapporto di copertura")
+
 print("\n" + ("TUTTI I CONTROLLI SUPERATI" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
 sys.exit(1 if FAILURES else 0)

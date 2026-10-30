@@ -1,0 +1,9 @@
+{
+  "_doc": "Thresholds of the coverage report (issue #88). They are reported, never blocking. Edit and commit; `--k` and `--state` override on the command line.",
+  "k": 10,
+  "k_events": {},
+  "k_variants": 20,
+  "repeat_window": 100,
+  "opening_share_max": 0.15,
+  "languages_complete": true
+}
