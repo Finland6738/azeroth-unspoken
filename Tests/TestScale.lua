@@ -3,7 +3,7 @@
 -- the index (a scan of all byEvent with the old order of checks) on the current database and on a small synthetic
 -- archive (Tests/SyntheticArchive.lua, loaded by run_tests.py before this file).
 --
--- Updated on purpose by R3 (#89, #90, #91, ADR 0028). What still holds: the index gives the same *eligible* rules, in
+-- Updated on purpose by R3 (#89, #90, #91, ADR 0029). What still holds: the index gives the same *eligible* rules, in
 -- the same order and with the same random draws, as a scan of byEvent (CheckEquivalent, unchanged), and the weight of
 -- a candidate is the weight of Factors bit for bit (now with the thematic novelty in N: see also TestSelection.lua).
 -- What changes on purpose is the *pick* among the eligible rules: the specificity tiers narrow the pool, the novelty
@@ -193,7 +193,8 @@ T.run("#84: source tables are not kept, variants are strings", function()
 		end
 	end
 	T.ok(strings > 4000, "variants as strings: " .. strings)
-	T.ok(tables < strings / 20, "only rare variants keep a table: " .. tables)
+	-- (one in 15: the variants of a different depth, the third and fourth of a rule, are tables; R3 added about 170)
+	T.ok(tables < strings / 15, "only rare variants keep a table: " .. tables)
 	-- shared tables: same values, one copy
 	local a, b = Engine.byId["battle.gen.02"], Engine.byId["battle.gen.03"]
 	T.ok(a.events == b.events and a.styles == b.styles, "events and registers are shared")

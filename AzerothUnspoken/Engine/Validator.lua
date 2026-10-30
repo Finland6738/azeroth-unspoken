@@ -37,7 +37,62 @@ local CHANNELS = {
 Validator.WORST = { relation = 40, player = 12, target = 40, spell = 40, zone = 40, subzone = 40, level = 3, class = 20,
 	race = 20, faction = 10, targettype = 16,
 	-- S6c: interlocutore (razza e classe possono essere testo personalizzato di Total RP 3, fino a 40 byte) e luogo
-	other = 40, otherrole = 24, otherrace = 40, otherclass = 40, instance = 40, encounter = 40 }
+	other = 40, otherrole = 24, otherrace = 40, otherclass = 40, instance = 40, encounter = 40, landmark = 40 }
+
+-- Parole che nominano il meteo di adesso (#92): una frase che le usa dichiara la condizione `weather`, altrimenti esce
+-- anche sotto un cielo sereno o con il meteo illeggibile. Solo parole intere, in minuscolo; l'elenco è volutamente corto
+-- (un avviso, non un errore) e lascia fuori le parole che si usano per immagini ("tempesta", "nuvole").
+Validator.WEATHER_WORDS = {
+	en = { "rain", "raining", "rains", "rainy", "drizzle", "downpour", "thunder", "thunderstorm", "snow", "snowing",
+		"snowfall", "snowflake", "snowflakes", "flakes", "blizzard", "sandstorm", "fog", "foggy" },
+	it = { "pioggia", "piove", "piovere", "pioviggina", "temporale", "tuono", "tuoni", "neve", "nevica", "nevicata",
+		"fiocchi", "grandine", "tormenta", "nebbia", "tempesta di sabbia" },
+}
+
+-- Il controllo vale per gli eventi in cui un testo descrive ciò che si vede intorno; negli altri (battaglia, incantesimi,
+-- saluti, brindisi, pensieri che dicono verità generali come "la pioggia cancella le orme"...) le parole del meteo sono immagini ("il tuono delle armi", "salve") e non si controllano. Una frase
+-- legata a un luogo (mood, zone, subzone, place) non si controlla: il luogo dice già com'è il tempo (una zona innevata).
+Validator.WEATHER_EVENTS = { zone = true, memory_return = true, weather_change = true, dawn = true, dusk = true,
+	subzone_enter = true, landmark = true, journey = true, rest_enter = true, quest_progress = true, quest_complete = true,
+	reputation_change = true }
+
+local function PlaceBound(when)
+	if type(when) ~= "table" then return false end
+	for _, k in ipairs({ "mood", "zone", "subzone", "place" }) do
+		if when[k] ~= nil and when[k] ~= false then return true end
+	end
+	if type(when.any) == "table" and #when.any > 0 then
+		for _, sub in ipairs(when.any) do
+			if not PlaceBound(sub) then return false end
+		end
+		return true
+	end
+	return false
+end
+
+-- una lettera, anche accentata (byte alti di UTF-8): niente %a, che dipende dalla locale
+local LETTER = "[A-Za-z\128-\255]"
+
+---La prima parola del meteo che il testo nomina, o nil.
+---@param text string
+---@param lang string codice breve (en, it)
+---@return string?
+function Validator.WeatherWord(text, lang)
+	local words = Validator.WEATHER_WORDS[lang]
+	if not words then return nil end
+	local lower = NS.Lower(text)
+	for _, w in ipairs(words) do
+		local from = 1
+		while true do
+			local a, b = lower:find(w, from, true)
+			if not a then break end
+			local before, after = lower:sub(a - 1, a - 1), lower:sub(b + 1, b + 1)
+			if not (before ~= "" and before:find(LETTER)) and not (after ~= "" and after:find(LETTER)) then return w end
+			from = b + 1
+		end
+	end
+	return nil
+end
 
 -- livelli dei problemi emersi in caricamento (Engine.loadIssues)
 -- eventi in cui una frase calda deve rispettare la relazione (#105)
@@ -237,6 +292,13 @@ function Validator:Run(opts)
 		return langs
 	end
 
+	-- punti di riferimento (Data/Landmarks.lua, Systems/World.lua): voci con id, sottozona, coordinate o tag non validi
+	if not scope and NS.World then
+		for _, issue in ipairs(NS.World.landmarkIssues) do
+			Add("error", "badLandmark", nil, issue.id, nil, issue.message)
+		end
+	end
+
 	-- problemi emersi quando i pacchetti sono stati caricati
 	for _, issue in ipairs(Engine.loadIssues) do
 		if issue.pack and InScope(issue.pack) then
@@ -379,6 +441,13 @@ function Validator:Run(opts)
 			for _, lang in ipairs(langList) do
 				local list = p.text[lang]
 				local okCount = 0
+				local weatherWarned = Engine.UsesWeather(p.when) or PlaceBound(p.when)
+				if not weatherWarned then
+					weatherWarned = true
+					for _, ev in ipairs(p.events) do
+						if Validator.WEATHER_EVENTS[ev] then weatherWarned = false; break end
+					end
+				end
 				sigs[lang] = {}
 				for i, var in ipairs(list) do
 					var = View(var, p.pack)
@@ -400,6 +469,15 @@ function Validator:Run(opts)
 							Add("error", "badPlaceholder", p.pack, id, lang, ("variante %d: %s"):format(i, prob))
 						end
 						sigs[lang][Signature(info.tags)] = true
+						-- il meteo nominato senza la condizione che lo garantisce (#92): un avviso per regola e lingua
+						if not weatherWarned then
+							local word = Validator.WeatherWord(var.t, lang)
+							if word then
+								weatherWarned = true
+								Add("warning", "weatherWord", p.pack, id, lang,
+									("variante %d nomina il meteo ('%s') senza la condizione weather: con il meteo illeggibile uscirebbe lo stesso"):format(i, word))
+							end
+						end
 						if Engine.PUBLIC_SPEAKERS[p.speaker] then
 							for tag in pairs(info.tags) do
 								if Engine.USER_TEXT[tag] then

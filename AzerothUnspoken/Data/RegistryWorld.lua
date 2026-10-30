@@ -1,0 +1,322 @@
+-- Frasi del mondo che il client racconta (R3, #92 #93 #94 #95 #121; ADR 0028): meteo, alba e tramonto, sottozone e punti
+-- di riferimento, missioni, reputazione, locanda e volo. Solo le regole; i testi stanno in
+-- AzerothUnspoken_itIT/World.lua e AzerothUnspoken_enUS/World.lua.
+--
+-- Condizioni nuove (Engine/RuleEngine.lua, le legge Systems/World.lua):
+--   weather = "rain" | "snow" | "storm" | "sand" | "fog" | "clear"   (il meteo letto dal client)
+--   dayTime = true | false          (C_DateAndTime.IsDayTime); alba e tramonto sono `time = "dawn"` e `time = "dusk"`
+--   landmark = "<id o tag>"         (Data/Landmarks.lua: il punto di riferimento in cui si è)
+--   questActive, questReady, questJustCompleted, questAttemptsMin        (le missioni, solo id e numeri)
+--   repStanding = "honored", repDirection = "up" | "down"                (l'ultimo cambio di livello di reputazione)
+--   onFlight = true | false, journey = "start" | "arrival", journeyMin = <secondi>   (il volo)
+-- Regola editoriale: una frase che nomina il meteo o il volo dichiara la condizione che lo garantisce (il validatore
+-- avvisa se manca): con l'API illeggibile la condizione è falsa e la frase non esce. Niente lore inventata: se
+-- serve, la voce la attribuisce a qualcuno ("si dice che...") e mai il narratore come fatto (D7 in #130).
+local ADDON, NS = ...
+
+local ALL = { "natural", "literary", "elevated" }
+
+NS:RegisterPack({
+	id = "base_world",
+	name = "Base: il mondo (meteo, ore, luoghi, missioni, reputazione, locanda, volo)",
+	languages = { "itIT", "enUS" },
+	events = {
+		-- il meteo cambia e resta cambiato; mai in combattimento, mai nei primi secondi dopo un caricamento
+		weather_change = { category = "exploration", chance = 60, cooldown = 300 },
+		-- il client passa dalla notte al giorno (alba) o dal giorno alla notte (tramonto)
+		dawn = { category = "exploration", chance = 50, cooldown = 600 },
+		dusk = { category = "exploration", chance = 50, cooldown = 600 },
+		-- una sottozona nuova (la stessa non parla di nuovo per dieci minuti), o un punto di riferimento
+		subzone_enter = { category = "exploration", chance = 30, cooldown = 120 },
+		landmark = { category = "exploration", chance = 50, cooldown = 180 },
+		-- un obiettivo finito o una missione pronta; una missione consegnata (priorità maggiore dell'atmosfera)
+		quest_progress = { category = "life", chance = 35, cooldown = 120 },
+		quest_complete = { category = "life", chance = 75, cooldown = 60 },
+		-- un cambio di livello di reputazione, in su o in giù (le piccole variazioni non contano)
+		reputation_change = { category = "life", chance = 70, cooldown = 120 },
+		-- il riposo comincia (locanda o città); non all'accesso né dopo un caricamento
+		rest_enter = { category = "life", chance = 55, cooldown = 600 },
+		-- la partenza e l'arrivo di un volo
+		journey = { category = "exploration", chance = 70, cooldown = 120 },
+	},
+	registry = {
+		-------------------------------------------------------------------
+		-- meteo: cambia (weather_change)
+		-------------------------------------------------------------------
+		["world.rain.01"] = { event = "weather_change", speaker = "inner", styles = { "intimate" },
+			tags = { "melancholy", "temperament:melancholic" }, depth = ALL,
+			theme = "landscape", motifs = { "rain", "road" },
+			conditions = { weather = "rain", ["not"] = { indoors = true } } },
+		["world.rain.02"] = { event = "weather_change", speaker = "character", styles = { "ironic" },
+			tags = { "wry", "temperament:cheerful" }, depth = { "natural", "literary" },
+			theme = "humour", motifs = { "rain", "water" },
+			conditions = { weather = "rain", ["not"] = { indoors = true } } },
+		["world.rain.e"] = { event = "weather_change", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "temperament:stoic" }, depth = ALL,
+			theme = "landscape", motifs = { "rain", "road" },
+			conditions = { weather = "rain", ["not"] = { indoors = true } } },
+		["world.snow.01"] = { event = "weather_change", speaker = "inner", styles = { "intimate" },
+			tags = { "melancholy", "temperament:stoic" }, depth = ALL,
+			theme = "solitude", motifs = { "snow" },
+			conditions = { weather = "snow", ["not"] = { indoors = true } } },
+		["world.snow.e"] = { event = "weather_change", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "temperament:stoic" }, depth = ALL,
+			theme = "landscape", motifs = { "snow" },
+			conditions = { weather = "snow", ["not"] = { indoors = true } } },
+		["world.storm.01"] = { event = "weather_change", speaker = "character", styles = { "epic" },
+			tags = { "temperament:resolute" }, depth = { "literary", "elevated" },
+			theme = "courage", motifs = { "storm", "sky" },
+			conditions = { weather = "storm", ["not"] = { indoors = true } } },
+		["world.storm.e"] = { event = "weather_change", speaker = "narrator", styles = { "tragic" },
+			tags = { "dark", "temperament:stoic" }, depth = ALL,
+			theme = "landscape", motifs = { "storm", "sky" },
+			conditions = { weather = "storm", ["not"] = { indoors = true } } },
+		["world.sand.e"] = { event = "weather_change", speaker = "narrator", styles = { "everyday" },
+			tags = { "temperament:gruff" }, depth = ALL,
+			theme = "landscape", motifs = { "sand", "wind" },
+			conditions = { weather = "sand", ["not"] = { indoors = true } } },
+		["world.fog.01"] = { event = "weather_change", speaker = "inner", styles = { "intimate", "ancient" },
+			tags = { "mystic", "curiosity:high" }, depth = ALL,
+			theme = "mystery", motifs = { "road" },
+			conditions = { weather = "fog", ["not"] = { indoors = true } } },
+		["world.clear.01"] = { event = "weather_change", speaker = "inner", styles = { "intimate" },
+			tags = { "calm", "morality:hopeful" }, depth = ALL,
+			theme = "hope", motifs = { "light", "sky" },
+			conditions = { weather = "clear" } },
+		["world.clear.e"] = { event = "weather_change", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "morality:hopeful" }, depth = ALL,
+			theme = "landscape", motifs = { "light" },
+			conditions = { weather = "clear", ["not"] = { indoors = true } } },
+
+		-- arrivare con il tempo che c'è: l'evento di zona legge il meteo (ci si arriva già dentro)
+		["world.zone.rain"] = { event = "zone", speaker = "inner", styles = { "intimate" },
+			tags = { "melancholy", "curiosity:high" }, depth = ALL,
+			theme = "journey", motifs = { "rain" },
+			conditions = { weather = "rain", ["not"] = { indoors = true } } },
+		["world.zone.rain.first"] = { event = "zone", speaker = "inner", styles = { "intimate", "ancient" },
+			tags = { "calm", "curiosity:high" }, depth = ALL,
+			theme = "memory", motifs = { "rain" },
+			conditions = { weather = "rain", firstVisit = true, ["not"] = { indoors = true } } },
+		["world.zone.snow"] = { event = "zone", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "temperament:stoic" }, depth = ALL,
+			theme = "landscape", motifs = { "snow" },
+			conditions = { weather = "snow", ["not"] = { indoors = true } } },
+
+		-------------------------------------------------------------------
+		-- alba e tramonto (dawn, dusk)
+		-------------------------------------------------------------------
+		["world.dawn.01"] = { event = "dawn", speaker = "inner", styles = { "intimate" },
+			tags = { "calm", "morality:hopeful" }, depth = ALL,
+			theme = "hope", motifs = { "dawn", "light" } },
+		["world.dawn.e"] = { event = "dawn", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "morality:hopeful" }, depth = ALL,
+			theme = "landscape", motifs = { "dawn", "light" } },
+		["world.dawn.forest"] = { event = "dawn", speaker = "inner", styles = { "ancient", "intimate" },
+			tags = { "calm", "mystic", "faith:spiritual" }, depth = ALL,
+			theme = "nature", motifs = { "dawn", "tree", "bird" },
+			conditions = { mood = "forest" } },
+		["world.dusk.01"] = { event = "dusk", speaker = "inner", styles = { "intimate" },
+			tags = { "melancholy", "temperament:melancholic" }, depth = ALL,
+			theme = "landscape", motifs = { "dusk", "shadow" } },
+		["world.dusk.e"] = { event = "dusk", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "temperament:melancholic" }, depth = ALL,
+			theme = "landscape", motifs = { "dusk", "road" } },
+		["world.dusk.forest"] = { event = "dusk", speaker = "inner", styles = { "ancient", "tragic" },
+			tags = { "dark", "motivation:protection" }, depth = ALL,
+			theme = "nature", motifs = { "dusk", "tree" },
+			conditions = { mood = "forest" } },
+
+		-------------------------------------------------------------------
+		-- sottozone (subzone_enter): {subzone} è il nome dato dal client
+		-------------------------------------------------------------------
+		["world.sub.01"] = { event = "subzone_enter", speaker = "narrator", styles = { "everyday" },
+			tags = { "calm", "curiosity:mid" }, depth = ALL,
+			theme = "journey" },
+		["world.sub.02"] = { event = "subzone_enter", speaker = "inner", styles = { "intimate" },
+			tags = { "curiosity:high" }, depth = ALL,
+			theme = "memory", motifs = { "road" } },
+		["world.sub.03"] = { event = "subzone_enter", speaker = "inner", styles = { "everyday" },
+			tags = { "curiosity:high", "temperament:cheerful" }, depth = { "natural", "literary" },
+			theme = "journey" },
+		["world.sub.04"] = { event = "subzone_enter", speaker = "character", styles = { "ironic" },
+			tags = { "wry", "temperament:gruff" }, depth = { "natural", "literary" },
+			theme = "humour", motifs = { "road" } },
+		["world.sub.dark"] = { event = "subzone_enter", speaker = "inner", styles = { "tragic" },
+			tags = { "dark", "temperament:stoic" }, depth = { "literary", "elevated" },
+			theme = "fear", motifs = { "shadow" },
+			conditions = { mood = "dark" } },
+		["world.sub.night"] = { event = "subzone_enter", speaker = "inner", styles = { "tragic", "intimate" },
+			tags = { "dark", "melancholy", "temperament:melancholic" }, depth = ALL,
+			theme = "fear", motifs = { "night", "shadow" },
+			conditions = { time = "night" } },
+
+		-------------------------------------------------------------------
+		-- punti di riferimento (landmark): {landmark} è il nome dato dal client
+		-------------------------------------------------------------------
+		["world.lm.inn"] = { event = "landmark", speaker = "narrator", styles = { "everyday", "intimate" },
+			tags = { "calm", "temperament:cheerful" }, depth = ALL,
+			theme = "home", motifs = { "hearth" },
+			conditions = { landmark = "inn" } },
+		["world.lm.inn.inner"] = { event = "landmark", speaker = "inner", styles = { "everyday" },
+			tags = { "calm", "temperament:cheerful" }, depth = { "natural", "literary" },
+			theme = "home", motifs = { "hearth" },
+			conditions = { landmark = "inn" } },
+		["world.lm.village"] = { event = "landmark", speaker = "inner", styles = { "intimate", "everyday" },
+			tags = { "melancholy", "topic:family" }, depth = ALL,
+			theme = "home", motifs = { "smoke", "road" },
+			conditions = { landmark = "village" } },
+		["world.lm.village.e"] = { event = "landmark", speaker = "narrator", styles = { "everyday" },
+			tags = { "calm", "temperament:cheerful" }, depth = ALL,
+			theme = "home", motifs = { "door" },
+			conditions = { landmark = "village" } },
+		["world.lm.graveyard"] = { event = "landmark", speaker = "narrator", styles = { "tragic", "ancient" },
+			tags = { "dark", "topic:death", "temperament:stoic" }, depth = { "literary", "elevated" },
+			theme = "loss", motifs = { "grave", "grass" },
+			conditions = { landmark = "graveyard" } },
+		["world.lm.graveyard.inner"] = { event = "landmark", speaker = "inner", styles = { "tragic" },
+			tags = { "dark", "topic:death", "temperament:melancholic" }, depth = { "literary", "elevated" },
+			theme = "loss", motifs = { "grave", "stone" },
+			conditions = { landmark = "graveyard" } },
+		["world.lm.camp"] = { event = "landmark", speaker = "inner", styles = { "everyday" },
+			tags = { "calm", "temperament:cheerful" }, depth = { "natural", "literary" },
+			theme = "fellowship", motifs = { "fire" },
+			conditions = { landmark = "camp" } },
+		["world.lm.mine"] = { event = "landmark", speaker = "inner", styles = { "tragic", "everyday" },
+			tags = { "dark", "temperament:gruff" }, depth = { "natural", "literary" },
+			theme = "fear", motifs = { "mountain" },
+			conditions = { landmark = "mine" } },
+		["world.lm.abbey"] = { event = "landmark", speaker = "inner", styles = { "ancient", "ceremonial" },
+			tags = { "solemn", "faith:spiritual" }, depth = { "literary", "elevated" },
+			theme = "faith", motifs = { "stone" },
+			conditions = { landmark = "abbey" } },
+		["world.lm.crossroads"] = { event = "landmark", speaker = "inner", styles = { "ancient", "intimate" },
+			tags = { "curiosity:high", "motivation:freedom" }, depth = ALL,
+			theme = "journey", motifs = { "road" },
+			conditions = { landmark = "barrens.the_crossroads" } },
+
+		-------------------------------------------------------------------
+		-- missioni (quest_progress, quest_complete)
+		-------------------------------------------------------------------
+		["world.quest.progress.01"] = { event = "quest_progress", speaker = "inner", styles = { "everyday", "intimate" },
+			tags = { "temperament:stoic", "motivation:duty" }, depth = ALL,
+			theme = "growth",
+			conditions = { questReady = false } },
+		["world.quest.progress.e"] = { event = "quest_progress", speaker = "narrator", styles = { "everyday" },
+			tags = { "calm", "motivation:duty" }, depth = ALL,
+			theme = "growth",
+			conditions = { questReady = false } },
+		["world.quest.ready.01"] = { event = "quest_progress", speaker = "inner", styles = { "intimate" },
+			tags = { "calm", "motivation:duty" }, depth = ALL,
+			theme = "duty",
+			conditions = { questReady = true } },
+		["world.quest.ready.02"] = { event = "quest_progress", speaker = "character", styles = { "epic", "everyday" },
+			tags = { "temperament:resolute" }, depth = { "natural", "literary" },
+			theme = "duty",
+			conditions = { questReady = true } },
+		["world.quest.complete.01"] = { event = "quest_complete", speaker = "inner", styles = { "intimate" },
+			tags = { "calm", "motivation:duty" }, depth = ALL,
+			theme = "duty", motifs = { "road" },
+			conditions = { questJustCompleted = true } },
+		["world.quest.complete.02"] = { event = "quest_complete", speaker = "narrator", styles = { "everyday", "ancient" },
+			tags = { "calm", "motivation:duty" }, depth = ALL,
+			theme = "duty", motifs = { "door" },
+			conditions = { questJustCompleted = true } },
+		["world.quest.complete.03"] = { event = "quest_complete", speaker = "character", styles = { "epic" },
+			tags = { "temperament:resolute", "motivation:glory" }, depth = { "literary", "elevated" },
+			theme = "duty", motifs = { "road" },
+			conditions = { questJustCompleted = true } },
+		-- una missione consegnata dopo molti tentativi (accettata almeno tre volte in questa sessione)
+		["world.quest.again.01"] = { event = "quest_complete", speaker = "inner", styles = { "ironic", "intimate" },
+			tags = { "wry", "temperament:stoic" }, depth = { "natural", "literary" },
+			theme = "humour",
+			conditions = { questJustCompleted = true, questAttemptsMin = 3 } },
+		["world.quest.again.e"] = { event = "quest_complete", speaker = "narrator", styles = { "everyday", "intimate" },
+			tags = { "calm", "temperament:stoic" }, depth = ALL,
+			theme = "fatigue", motifs = { "breath" },
+			conditions = { questJustCompleted = true, questAttemptsMin = 3 } },
+
+		-------------------------------------------------------------------
+		-- reputazione (reputation_change): il livello raggiunto
+		-------------------------------------------------------------------
+		["world.rep.up.neutral"] = { event = "reputation_change", speaker = "inner", styles = { "intimate", "everyday" },
+			tags = { "calm", "morality:hopeful" }, depth = ALL,
+			theme = "hope", motifs = { "door", "voice" },
+			conditions = { repStanding = "neutral", repDirection = "up" } },
+		["world.rep.up.friendly"] = { event = "reputation_change", speaker = "inner", styles = { "intimate" },
+			tags = { "calm", "temperament:cheerful" }, depth = ALL,
+			theme = "fellowship",
+			conditions = { repStanding = "friendly", repDirection = "up" } },
+		["world.rep.up.honored"] = { event = "reputation_change", speaker = "inner", styles = { "ceremonial", "intimate" },
+			tags = { "solemn", "motivation:duty" }, depth = ALL,
+			theme = "glory", motifs = { "door" },
+			conditions = { repStanding = "honored", repDirection = "up" } },
+		["world.rep.up.revered"] = { event = "reputation_change", speaker = "character", styles = { "epic", "ceremonial" },
+			tags = { "solemn", "motivation:glory" }, depth = { "literary", "elevated" },
+			theme = "glory",
+			conditions = { repStanding = "revered", repDirection = "up" } },
+		["world.rep.up.exalted"] = { event = "reputation_change", speaker = "inner", styles = { "epic", "ancient" },
+			tags = { "solemn", "motivation:glory" }, depth = { "literary", "elevated" },
+			theme = "glory", motifs = { "door" },
+			conditions = { repStanding = "exalted", repDirection = "up" } },
+		["world.rep.down.cold"] = { event = "reputation_change", speaker = "inner", styles = { "tragic", "intimate" },
+			tags = { "dark", "melancholy", "temperament:melancholic" }, depth = ALL,
+			theme = "loss",
+			conditions = { repStanding = { "unfriendly", "hostile", "hated" }, repDirection = "down" } },
+		["world.rep.down.e"] = { event = "reputation_change", speaker = "narrator", styles = { "tragic" },
+			tags = { "temperament:stoic" }, depth = ALL,
+			theme = "solitude", motifs = { "wound" },
+			conditions = { repStanding = { "unfriendly", "hostile", "hated" }, repDirection = "down" } },
+
+		-------------------------------------------------------------------
+		-- riposo (rest_enter): al chiuso è la locanda, all'aperto è la città
+		-------------------------------------------------------------------
+		["world.rest.inn.01"] = { event = "rest_enter", speaker = "inner", styles = { "everyday", "intimate" },
+			tags = { "calm", "temperament:cheerful" }, depth = ALL,
+			theme = "home", motifs = { "hearth" },
+			conditions = { indoors = true } },
+		["world.rest.inn.e"] = { event = "rest_enter", speaker = "narrator", styles = { "everyday", "intimate" },
+			tags = { "calm", "temperament:cheerful" }, depth = ALL,
+			theme = "fatigue", motifs = { "hearth" },
+			conditions = { indoors = true } },
+		["world.rest.town.01"] = { event = "rest_enter", speaker = "inner", styles = { "intimate" },
+			tags = { "calm", "melancholy", "temperament:melancholic" }, depth = ALL,
+			theme = "solitude",
+			conditions = { ["not"] = { indoors = true } } },
+		["world.rest.town.e"] = { event = "rest_enter", speaker = "narrator", styles = { "everyday" },
+			tags = { "calm", "temperament:stoic" }, depth = ALL,
+			theme = "fatigue", motifs = { "road" },
+			conditions = { ["not"] = { indoors = true } } },
+
+		-------------------------------------------------------------------
+		-- volo (journey): partenza e arrivo
+		-------------------------------------------------------------------
+		["world.flight.start.01"] = { event = "journey", speaker = "inner", styles = { "intimate", "ancient" },
+			tags = { "curiosity:high", "motivation:freedom" }, depth = ALL,
+			theme = "journey", motifs = { "sky" },
+			conditions = { journey = "start", onFlight = true } },
+		["world.flight.start.e"] = { event = "journey", speaker = "narrator", styles = { "ancient", "epic" },
+			tags = { "calm", "curiosity:high" }, depth = ALL,
+			theme = "journey", motifs = { "sky", "road" },
+			conditions = { journey = "start", onFlight = true } },
+		["world.flight.start.02"] = { event = "journey", speaker = "character", styles = { "ironic" },
+			tags = { "wry", "temperament:cheerful" }, depth = { "natural", "literary" },
+			theme = "humour",
+			conditions = { journey = "start", onFlight = true } },
+		["world.flight.arrive.01"] = { event = "journey", speaker = "inner", styles = { "everyday", "intimate" },
+			tags = { "calm", "temperament:cheerful" }, depth = ALL,
+			theme = "journey", motifs = { "earth", "road" },
+			conditions = { journey = "arrival", onFlight = false } },
+		["world.flight.arrive.e"] = { event = "journey", speaker = "narrator", styles = { "everyday" },
+			tags = { "calm", "temperament:stoic" }, depth = ALL,
+			theme = "journey", motifs = { "earth" },
+			conditions = { journey = "arrival", onFlight = false } },
+		["world.flight.long.01"] = { event = "journey", speaker = "inner", styles = { "intimate", "ancient" },
+			tags = { "melancholy", "curiosity:high" }, depth = ALL,
+			theme = "journey", motifs = { "earth" },
+			conditions = { journey = "arrival", onFlight = false, journeyMin = 120 } },
+		["world.flight.long.e"] = { event = "journey", speaker = "narrator", styles = { "ancient" },
+			tags = { "calm", "curiosity:mid" }, depth = ALL,
+			theme = "fatigue", motifs = { "earth" },
+			conditions = { journey = "arrival", onFlight = false, journeyMin = 120 } },
+	},
+})

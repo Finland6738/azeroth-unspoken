@@ -275,6 +275,91 @@ function Compat:GetSpellName(spellID)
 end
 
 ---------------------------------------------------------------------------
+-- Il mondo: meteo, giorno e notte, volo (R3, #92 #93 #121)
+---------------------------------------------------------------------------
+-- Nessuna di queste API è stata provata nel client (si prova con /au probe, #82): ogni lettura restituisce "non lo so"
+-- (nil, o "unknown" per il meteo) quando l'API manca, fallisce o dà un valore segreto o incoerente.
+Compat.WEATHER_KINDS = { "clear", "rain", "snow", "storm", "sand", "fog" }
+
+-- parole del nome di Enum.WeatherType (i valori non sono nel dump) -> tipo neutro; l'ordine conta ("sandstorm" è sabbia,
+-- "snowstorm" è neve, "thunderstorm" è temporale)
+local WEATHER_WORDS = {
+	{ "sand", "sand" }, { "dust", "sand" }, { "snow", "snow" }, { "blizzard", "snow" }, { "hail", "snow" },
+	{ "storm", "storm" }, { "thunder", "storm" }, { "lightning", "storm" }, { "rain", "rain" }, { "drizzle", "rain" },
+	{ "shower", "rain" }, { "fog", "fog" }, { "mist", "fog" }, { "haze", "fog" }, { "clear", "clear" },
+	{ "none", "clear" }, { "sun", "clear" }, { "fair", "clear" },
+}
+
+-- il nome del valore di Enum.WeatherType (o la stringa stessa, se il client dà il nome)
+local function WeatherName(value)
+	if type(value) == "string" then return value end
+	local enum = Enum and Enum.WeatherType
+	if type(value) ~= "number" or type(enum) ~= "table" then return nil end
+	for name, v in pairs(enum) do
+		if v == value then return tostring(name) end
+	end
+	return nil
+end
+
+---Tipo di meteo di un valore di WeatherInfo.type: clear, rain, snow, storm, sand, fog, oppure nil se non si riconosce.
+---@param value any
+---@return string?
+function Compat.WeatherKindOf(value)
+	local name = WeatherName(value)
+	if not name then return nil end
+	name = name:lower()
+	for _, def in ipairs(WEATHER_WORDS) do
+		if name:find(def[1], 1, true) then return def[2] end
+	end
+	return nil
+end
+
+---Il meteo adesso (C_Weather.GetCurrentWeather): "clear", "rain", "snow", "storm", "sand", "fog" o "unknown". Un tipo
+---non riconosciuto, un valore segreto o un tipo che dice pioggia con intensità zero valgono "unknown", mai "sereno".
+---@return string kind
+---@return number? intensity
+function Compat:Weather()
+	local state, info = Compat.Query("C_Weather.GetCurrentWeather")
+	if state ~= AVAILABLE or type(info) ~= "table" then return "unknown" end
+	local ok, kind, intensity = pcall(function()
+		return Compat.WeatherKindOf(Compat.Readable(info.type)), Compat.Readable(info.intensity)
+	end)
+	if not ok or not kind then return "unknown" end
+	if type(intensity) ~= "number" then intensity = nil end
+	if intensity ~= nil and intensity <= 0 and kind ~= "clear" then return "unknown" end
+	return kind, intensity
+end
+
+---C_DateAndTime.IsDayTime: true di giorno, false di notte, nil se il client non lo dice.
+---@return boolean?
+function Compat:IsDayTime()
+	local state, day = Compat.Query("C_DateAndTime.IsDayTime")
+	if state == AVAILABLE and type(day) == "boolean" then return day end
+	return nil
+end
+
+---UnitOnTaxi("player"): true in volo, false a terra, nil se il client non lo dice.
+---@return boolean?
+function Compat:OnTaxi()
+	local state, onTaxi = Compat.Query("UnitOnTaxi", "player")
+	if state == AVAILABLE and type(onTaxi) == "boolean" then return onTaxi end
+	return nil
+end
+
+---Posizione del giocatore sulla mappa (frazioni 0-1), solo dove il client la dà (non nelle istanze: nil).
+---@param mapID? number
+---@return number? x
+---@return number? y
+function Compat:PlayerPosition(mapID)
+	if type(mapID) ~= "number" then return nil end
+	local state, pos = Compat.Query("C_Map.GetPlayerMapPosition", mapID, "player")
+	if state ~= AVAILABLE or type(pos) ~= "table" then return nil end
+	local ok, x, y = pcall(function() return Compat.Readable(pos.x), Compat.Readable(pos.y) end)
+	if ok and type(x) == "number" and type(y) == "number" then return x, y end
+	return nil
+end
+
+---------------------------------------------------------------------------
 -- Controllo delle capacità (SP-01/SP-02): si ripete con /au debug
 ---------------------------------------------------------------------------
 -- { id, percorso principale, alternativa }
@@ -298,6 +383,11 @@ local APIS = {
 	{ "C_Map.GetMapInfo" }, { "GetInstanceInfo" }, { "C_PvP.GetZonePVPInfo" }, { "C_PvP.IsBattleground" },
 	{ "C_PvP.IsArena" }, { "GetBattlefieldStatus" }, { "UnitGroupRolesAssigned" }, { "UnitReaction" },
 	{ "UnitCreatureFamily" }, { "UnitIsUnit" },
+	-- il mondo (R3, #92 #93 #94 #95 #121)
+	{ "C_Weather.GetCurrentWeather" }, { "C_DateAndTime.IsDayTime" }, { "UnitOnTaxi" }, { "IsResting" },
+	{ "C_Map.GetPlayerMapPosition" }, { "C_QuestLog.GetNumQuestLogEntries" }, { "C_QuestLog.GetInfo" },
+	{ "C_QuestLog.IsComplete" }, { "C_QuestLog.GetQuestObjectives" },
+	{ "C_Reputation.GetNumFactions" }, { "C_Reputation.GetFactionDataByIndex" },
 }
 
 function Compat:Probe()

@@ -1,4 +1,4 @@
--- Closed vocabularies of themes and motifs (#90, ADR 0028), the direction data of the selection: the related-event
+-- Closed vocabularies of themes and motifs (#90, ADR 0029), the direction data of the selection: the related-event
 -- fallbacks (#89) and the per-session category quotas and hunger (#91).
 -- A theme is the idea a phrase is about (one per rule); a motif is a concrete image the phrase shows (zero to three).
 -- The validator rejects a theme or a motif that is not declared here or by a pack (`themes = {}`, `motifs = {}`).

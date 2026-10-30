@@ -199,6 +199,45 @@ local SPECIAL = {
 		end
 		return false
 	end,
+	-- il mondo (R3, Systems/World.lua): una lettura che il client non dà vale "non lo so", cioè falsa per `true` e per
+	-- `false` (tranne dove è scritto): una frase che nomina il meteo o il volo non esce se l'API manca
+	dayTime = function(v, ctx) return ctx.isDay ~= nil and ctx.isDay == v end,
+	onFlight = function(v, ctx) return ctx.onFlight ~= nil and ctx.onFlight == v end,
+	-- il punto di riferimento (Data/Landmarks.lua): il suo id oppure uno dei suoi tag (village, inn, graveyard...)
+	landmark = function(v, ctx)
+		if ctx.landmark == nil then return false end
+		local tags = type(ctx.landmarkTags) == "table" and ctx.landmarkTags or nil
+		for _, name in ipairs(AsList(v)) do
+			if MatchValue(name, ctx.landmark) or (tags and tags[name]) then return true end
+		end
+		return false
+	end,
+	-- true/false: c'è almeno una missione nel registro; un numero o un elenco: una di quelle missioni è attiva
+	questActive = function(v, ctx)
+		local q = ctx.quest
+		if type(q) ~= "table" then return false end
+		if type(v) == "boolean" then return q.count ~= nil and (q.count > 0) == v end
+		for _, id in ipairs(AsList(v)) do
+			if type(q.active) == "table" and q.active[id] then return true end
+		end
+		return false
+	end,
+	-- dopo un avanzamento recente: la missione che è avanzata è pronta per la consegna? Altrimenti: ce n'è una pronta?
+	questReady = function(v, ctx)
+		local q = ctx.quest
+		if type(q) ~= "table" then return false end
+		if q.recentProgress then return q.progressReady == v end
+		return q.readyCount ~= nil and (q.readyCount > 0) == v
+	end,
+	questJustCompleted = function(v, ctx)
+		local q = ctx.quest
+		return (type(q) == "table" and q.justCompleted == true) == v
+	end,
+	questAttemptsMin = function(v, ctx)
+		local q = ctx.quest
+		return type(q) == "table" and q.justCompleted == true and (q.attempts or 0) >= v
+	end,
+	journeyMin = function(v, ctx) return type(ctx.journeySeconds) == "number" and ctx.journeySeconds >= v end,
 	chance   = function(v) return math.random(100) <= v end,
 	func     = function(v, ctx)
 		local ok, res = pcall(v, ctx)
@@ -249,6 +288,10 @@ Engine.CONDITIONS = {
 	-- luogo e momento
 	instance = "bool", instanceType = "str", group = "str", zone = "str", subzone = "str", mood = "str",
 	time = "str", hour = "hour",
+	-- il mondo (R3, Systems/World.lua): meteo, giorno e notte, punto di riferimento, missioni, reputazione, volo
+	weather = "str", dayTime = "bool", landmark = "str", questActive = "boolnum", questReady = "bool",
+	questJustCompleted = "bool", questAttemptsMin = "num", repStanding = "str", repDirection = "str",
+	onFlight = "bool", journey = "str", journeyMin = "num",
 	-- bersaglio
 	hasTarget = "bool", hostile = "bool", friendly = "bool", targetPlayer = "bool", targetDead = "bool",
 	elite = "bool", boss = "bool", rare = "bool", ctype = "str", enemyFaction = "bool",
@@ -287,6 +330,13 @@ Engine.CONDITION_VALUES = {
 	faction = { Alliance = true, Horde = true },
 	targetFaction = { Alliance = true, Horde = true },
 	time = { dawn = true, day = true, dusk = true, night = true },
+	weather = { clear = true, rain = true, snow = true, storm = true, sand = true, fog = true },
+	repStanding = { hated = true, hostile = true, unfriendly = true, neutral = true, friendly = true, honored = true,
+		revered = true, exalted = true },
+	repDirection = { up = true, down = true },
+	journey = { start = true, arrival = true },
+	-- ids e tag dei punti di riferimento: si riempiono con NS:RegisterLandmarks (Systems/World.lua)
+	landmark = {},
 	group = { solo = true, party = true, raid = true },
 	instanceType = { none = true, party = true, raid = true, pvp = true, arena = true, scenario = true },
 	depth = Engine.DEPTHS,
@@ -461,6 +511,23 @@ function Engine.ExcludesNegativeRelation(when, tags)
 	return false
 end
 
+---Le condizioni garantiscono un meteo noto? `weather` al livello superiore (non `false`), oppure `any` dove ogni gruppo
+---lo chiede. Serve al validatore per i testi che nominano la pioggia, la neve o il temporale (#92): con il meteo
+---illeggibile la condizione è falsa e la frase non esce.
+---@param when? table
+---@return boolean
+function Engine.UsesWeather(when)
+	if type(when) ~= "table" then return false end
+	if when.weather ~= nil and when.weather ~= false then return true end
+	if type(when.any) == "table" and #when.any > 0 then
+		for _, sub in ipairs(when.any) do
+			if not Engine.UsesWeather(sub) then return false end
+		end
+		return true
+	end
+	return false
+end
+
 -- condizioni che dipendono da un ricordo (ctx.memory)
 Engine.MEMORY_CONDITIONS = { firstVisit = true, repeatVisit = true, lastVisitBad = true, visitsMin = true,
 	visitsMax = true, daysSinceLastVisit = true, remembered = true }
@@ -486,7 +553,7 @@ function Engine.UsesMemory(when)
 end
 
 local VALUE_KINDS = { bool = true, str = true, num = true, frac = true, pct = true, hour = true, boolstr = true,
-	numrange = true }
+	numrange = true, boolnum = true }
 
 ---Dichiara una condizione nuova per le frasi di un pacchetto.
 ---Con una funzione `fn(valore, ctx) -> boolean` la condizione è calcolata; senza, confronta ctx[nome] col valore.
@@ -522,6 +589,16 @@ TypeError = function(kind, v)
 	if kind == "boolstr" then
 		if t == "boolean" then return false end
 		return TypeError("str", v) and "serve true, false, una stringa o un elenco"
+	end
+	if kind == "boolnum" then
+		if t == "boolean" or t == "number" then return false end
+		if t == "table" and #v > 0 then
+			for _, x in ipairs(v) do
+				if type(x) ~= "number" then return "l'elenco deve contenere solo numeri" end
+			end
+			return false
+		end
+		return "serve true, false, un numero o un elenco di numeri"
 	end
 	if kind == "numrange" then
 		if t == "number" then return v < 0 and "serve un numero non negativo" end

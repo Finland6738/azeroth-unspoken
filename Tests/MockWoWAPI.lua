@@ -110,7 +110,9 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	"ADDON_ACTION_FORBIDDEN", "ADDON_ACTION_BLOCKED",
 	-- sonda delle API (R0, #82)
 	"WEATHER_CHANGED", "DIEL_CYCLE_CHANGED", "PLAYER_UPDATE_RESTING", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS",
-	"MAP_EXPLORATION_UPDATED", "AREA_POIS_UPDATED", "QUEST_LOG_UPDATE", "UPDATE_FACTION", "FACTION_STANDING_CHANGED" }) do
+	"MAP_EXPLORATION_UPDATED", "AREA_POIS_UPDATED", "QUEST_LOG_UPDATE", "UPDATE_FACTION", "FACTION_STANDING_CHANGED",
+	-- il mondo (R3)
+	"PLAYER_CONTROL_LOST", "PLAYER_CONTROL_GAINED", "QUEST_REMOVED" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -418,9 +420,13 @@ function UpdateAddOnMemoryUsage() end
 function GetAddOnMemoryUsage(name) if name == "AzerothUnspoken" then return MEMORY_KB end return 0 end
 Enum.WeatherType = { Clear = 0, Rain = 1, Snow = 2, Storm = 3 }
 P.weather = { type = 0, intensity = 0 }
-P.isDay = true
+-- P.isDay = nil: il client dice giorno tra le 5 e le 21, come le soglie fisse dell'addon; un test lo fissa con true/false
+P.isDay = nil
 C_Weather = { GetCurrentWeather = function() return P.weather end }
-C_DateAndTime = { IsDayTime = function() return P.isDay end }
+C_DateAndTime = { IsDayTime = function()
+	if P.isDay ~= nil then return P.isDay end
+	return P.hour >= 5 and P.hour < 21
+end }
 -- Installed addons (#85, #101): ADDONS[name] = { meta = { [field] = value }, loaded, fail = reason, raise = message,
 -- load = function }. LoadAddOn runs load() and then ADDON_LOADED, like the client; LOAD_CALLS records every call
 -- with the combat state. The base addon is installed and loaded.
@@ -517,11 +523,21 @@ QUESTS = {
 	{ title = "Zone header", isHeader = true },
 	{ title = "The Secret Of Mirabel", questID = 4711, isHeader = false, level = 12 },
 }
+-- QUEST_READY[id] = true: la missione è completa; QUEST_OBJECTIVES[id] = elenco di obiettivi (R3, #95)
+QUEST_READY, QUEST_OBJECTIVES = {}, {}
 C_QuestLog = {
 	GetNumQuestLogEntries = function() return #QUESTS, 1 end,
 	GetInfo = function(i) return QUESTS[i] end,
-	GetQuestObjectives = function(id) return { { text = "Find Mirabel", type = "object", finished = false, numFulfilled = 0, numRequired = 1 } } end,
+	GetQuestObjectives = function(id)
+		return QUEST_OBJECTIVES[id] or { { text = "Find Mirabel", type = "object", finished = false, numFulfilled = 0, numRequired = 1 } }
+	end,
+	IsComplete = function(id) return QUEST_READY[id] == true end,
 }
+-- posizione sulla mappa: P.pos = { x, y }; nelle istanze il client non la dà
+C_Map.GetPlayerMapPosition = function(mapID, unit)
+	if P.instance or not P.pos or unit ~= "player" then return nil end
+	return { x = P.pos[1], y = P.pos[2] }
+end
 FACTIONS = { { factionID = 72, name = "Stormwind", reaction = 5, currentStanding = 1200 } }
 C_Reputation = {
 	GetNumFactions = function() return #FACTIONS end,

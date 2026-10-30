@@ -210,7 +210,7 @@ Engine.USE_DECAY = 0.3        -- N: per ogni uso recente
 Engine.SAME_TONE = 0.6        -- N: stesso registro dell'ultima frase dell'evento
 
 ---------------------------------------------------------------------------
--- Thematic memory of the session (#90, ADR 0028)
+-- Thematic memory of the session (#90, ADR 0029)
 ---------------------------------------------------------------------------
 -- The last interventions of the session, newest first: theme, motifs, voice, frame and opening of each, with the
 -- time. It lives only in memory (a /reload starts again) and is never saved: ADR 0017 keeps texts out of the
@@ -571,7 +571,7 @@ function Engine:Weight(p, event, ctx)
 	return Engine.Factors(p, Mem().lastTone[event], ctx, self.StyleResolver:Resolve(event, ctx))
 end
 
----Specificity tiers (#89, ADR 0028): the candidates of the most specific tier that still has at least TIER_MIN
+---Specificity tiers (#89, ADR 0029): the candidates of the most specific tier that still has at least TIER_MIN
 ---candidates not used recently, together with those of every tier above it. With a place that has its own phrases they
 ---win until they are used, then the pool widens one tier at a time down to the generic ones (the explicit fallback
 ---chain: landmark -> subzone -> zone -> region, atmosphere or situation -> generic of the event; then, in PickEntry,

@@ -1,6 +1,6 @@
 -- Cornici narrative: trasformano una frase parlata in un'emote.
 -- {line} è la frase scelta; il gioco antepone il nome del personaggio.
--- R3 (#90, ADR 0028): a frame may declare `styles` (it tells only phrases of a near register) and `themes` (only
+-- R3 (#90, ADR 0029): a frame may declare `styles` (it tells only phrases of a near register) and `themes` (only
 -- phrases of one of those themes, and it is preferred for them). A frame used in the last interventions weighs less,
 -- whatever the event. "says" and "murmurs" are the plain fallback: light, and tied to the registers they suit.
 local ADDON, NS = ...

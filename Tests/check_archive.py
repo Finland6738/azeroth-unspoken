@@ -92,6 +92,58 @@ def roundtrip():
           "everything imported from the folders is approved")
 
 
+def world_content():
+    """The conditions and lines of R3b (weather, day and night, landmarks, quests, reputation, flight; ADR 0028) are
+    plain data for the archive: they import, they render in the canonical style, and a new line written through the
+    archive with them exports and round-trips with an empty diff."""
+    print("WORLD CONDITIONS (ADR 0028)")
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    rows = con.execute("SELECT id FROM intention WHERE pack_id = 'base_world'").fetchall()
+    check(len(rows) >= 60, "the world pack is archived, intention by intention (%d)" % len(rows))
+    langs = {r[0]: [v["lang"] for v in con.execute("SELECT lang FROM variant WHERE intention_id = ?", (r[0],))] for r in rows}
+    check(all(l.count("enUS") >= 2 and l.count("itIT") >= 2 for l in langs.values()),
+          "every world intention has at least two variants in each language")
+    used = set()
+    for r in rows:
+        cond = store.get_rule(con, r[0]).get("conditions") or {}
+        used.update(cond.keys())
+    needed = {"weather", "landmark", "questReady", "questJustCompleted", "questAttemptsMin", "repStanding", "repDirection",
+              "onFlight", "journey", "journeyMin"}
+    check(needed <= used, "the new conditions are in archived rules (%s missing)" % sorted(needed - used))
+    rule = store.get_rule(con, "world.rain.01")
+    check(rule["conditions"] == {"weather": "rain", "not": {"indoors": True}}, "a weather condition is data: %s" % rule["conditions"])
+    check(store.index_keys({"weather": "rain"}) == ["*"] and store.index_keys({"landmark": "inn"}) == ["*"],
+          "the new conditions are not index dimensions: such a rule is in the generic group, as in the engine")
+    check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_world' AND state != 'approved'").fetchone()[0] == 0,
+          "the world rules are approved content, like the folders")
+
+    tmp = tempfile.mkdtemp(prefix="au-archive-world-")
+    try:
+        root, overlay = copy_repo(tmp)
+        db = os.path.join(tmp, "build", "authoring.sqlite")
+
+        def run(*args):
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                return cli.main(["--root", root, "--overlay", overlay, "--db", db] + list(args))
+        draft = {"id": "world.test.new", "pack": "base_world", "event": "weather_change", "speaker": "inner",
+                 "styles": ["intimate"], "depth": ["natural"],
+                 "conditions": {"weather": ["snow", "storm"], "dayTime": False, "landmark": "inn", "questActive": [4711, 4712],
+                                "repStanding": "honored", "onFlight": False, "journeyMin": 90, "not": {"indoors": True}},
+                 "author": "ai-test", "texts": {"enUS": ["Snow on the road, and night coming.", "Snow again."],
+                                                "itIT": ["Neve sulla strada, e la notte che viene.", "Ancora neve."]}}
+        with open(os.path.join(tmp, "drafts.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(draft) + "\n")
+        check(run("drafts", os.path.join(tmp, "drafts.jsonl")) == 0, "a draft with the new conditions is accepted")
+        check(run("approve", "world.test.new") == 0 and run("export") == 0, "it can be approved and exported")
+        rules = packfiles.read(os.path.join(root, "AzerothUnspoken", "Data", "RegistryWorld.lua"))
+        check('["world.test.new"]' in rules and 'weather = { "snow", "storm" }' in rules and "dayTime = false" in rules and
+              "questActive = { 4711, 4712 }" in rules, "the new conditions are written as Lua data")
+        check(store.roundtrip(root) == [] and store.roundtrip(root, canonical=True) == [],
+              "the written folders round-trip with an empty diff, canonical rendering included")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def lualit_checks():
     print("LUA LITERALS")
     import lualit
@@ -279,6 +331,7 @@ def report():
 
 
 roundtrip()
+world_content()
 lualit_checks()
 review_flow()
 report()

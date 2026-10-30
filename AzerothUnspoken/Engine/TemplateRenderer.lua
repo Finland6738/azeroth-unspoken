@@ -5,6 +5,7 @@ local Score, WeightedPick, Remember, KeepFor = Engine.Score, Engine.WeightedPick
 
 -- {player} {target} {spell} {zone} {subzone} {level} {class} {race} {faction} {relation} (S6b: l'etichetta del rapporto)
 -- {other} {otherrole} {otherrace} {otherclass} {instance} {encounter} (S6c: interlocutore e luogo)
+-- {landmark} (R3: il punto di riferimento)
 -- {g:maschile|femminile} (genere del personaggio)   {og:maschile|femminile} (genere dell'interlocutore, S8/#41)
 -- {line} (solo nelle cornici)   {nome_vocabolario}
 -- segnaposto -> campo del contesto. Il validatore usa questa tabella per riconoscere i segnaposto ammessi.
@@ -15,6 +16,8 @@ local BUILTIN = {
 	-- S6c: l'interlocutore (nome, ruolo, razza e classe localizzati) e il luogo (istanza, scontro con un boss)
 	other = "otherName", otherrole = "otherRoleLocal", otherrace = "otherRaceLocal", otherclass = "otherClassLocal",
 	instance = "instanceName", encounter = "encounterName",
+	-- R3 (#94): il punto di riferimento in cui si trova il personaggio (Data/Landmarks.lua); senza, la frase non si compone
+	landmark = "landmarkName",
 }
 Engine.PLACEHOLDERS = BUILTIN
 

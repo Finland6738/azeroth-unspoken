@@ -1,4 +1,4 @@
-# In-game checklist: R0 measurements, API probe, R1 packs, R3a selection variety and R4b player relationships (English)
+# In-game checklist: R0 measurements, API probe, R1 packs, R3a selection variety, R3b the world and R4b player relationships (English)
 
 This is the English counterpart of the section **R0** of the in-game checklist [G1_checklist.md](G1_checklist.md), which is written in Italian for the Italian-speaking tester and keeps every other part of the checklist. Same steps, same numbers (R0.1 to R0.13). It belongs to issues #81 (profiling and Director counters) and #82 (probing the vision APIs), phase R0 of the roadmap #131.
 
@@ -131,6 +131,39 @@ Same steps as the section **R3a** of [G1_checklist.md](G1_checklist.md) (R3a.1 t
 - **R3a.3 · The emotes.** With `/au mode confirm` and many emotes in the narrator, look at the gestures before the quoted lines.
     - **Expect:** varied gestures that fit the tone; "says" and "murmurs" rare.
     - **Report:** a gesture that clashes with the line (copy the text).
+## R3b: the world the client describes (issues #92, #93, #94, #95 and #121)
+
+Same steps as the section **R3b** of [G1_checklist.md](G1_checklist.md) (R3b.1 to R3b.9).
+
+**What it is for.** The narrator now reads the weather, day and night, the subzone, quests, reputation, rest and flights. **None of these APIs has ever been tried in the client**: the addon always reads them behind a guard and, if they do not answer, stays silent on that subject. This test tells whether they answer, and with which values. First run `/au probe` (section R0) and keep the result: the real values of the weather, `DIEL_CYCLE_CHANGED`, quests, reputation and flights are there. The **World** line of `/au debug` shows what the addon reads now (weather, day, rest, quests, flight, landmarks).
+
+- **R3b.1 · The weather.** With `/au probe` in rain, in snow and under a clear sky (for example Dun Morogh or Durotar, whichever weather you find) look at `C_Weather.GetCurrentWeather` and `Enum.WeatherType`. Then `/au debug` and read **World: weather ...**.
+    - **Expect:** `rain` in rain, `snow` in snow, `clear` under a clear sky. If you see `unknown` while the weather has visibly changed, the names of the values of `Enum.WeatherType` are not the ones expected: report them.
+    - **Report:** the `type` and `intensity` in the three cases, the names in `Enum.WeatherType`, and what `/au debug` shows.
+- **R3b.2 · The weather changes.** `/au chance weather_change 100`. Stay somewhere open until the weather changes (or change zone to another weather).
+    - **Expect:** after a few seconds a line from the narrator about the new weather (rain beginning, snow, the sky clearing), **not** in the first seconds after a loading screen (the zone speaks, and its line can name the weather you find) and never in combat. A shower that comes and goes in a few seconds makes no line.
+    - **Report:** does `WEATHER_CHANGED` arrive? how many times? the line, and whether it names a different weather than the one you see.
+- **R3b.3 · Day and night.** `/au chance dawn 100` and `/au chance dusk 100`. Wait for a dawn and a dusk (or watch the hour with `/au probe`).
+    - **Expect:** one line at dawn and one at dusk, **one only** per change. In `/au probe`, `C_DateAndTime.IsDayTime` changes at the same moment as `DIEL_CYCLE_CHANGED`.
+    - **Report:** at what game hour `DIEL_CYCLE_CHANGED` arrives at dawn and at dusk, and whether `IsDayTime` changes with it. Are the addon's dawn and dusk hours (two hours after and before the change) right, or too long?
+- **R3b.4 · Subzones.** `/au chance subzone_enter 100` and `/au chance landmark 100`. Walk into a village (for example Goldshire and the Lion's Pride Inn, or Razor Hill) and go back and forth along a border.
+    - **Expect:** a line entering a new subzone; none if you leave and come back to the same one within ten minutes; **one only** if the border flickers. For a place with a known name the line is about the place (inn, village, graveyard...) and shows the name the client gives.
+    - **Report:** do `ZONE_CHANGED` and `ZONE_CHANGED_INDOORS` arrive? with `/au place` compare the subzone name with `Data/Landmarks.lua`: list the names that do **not** match. Also check `/au packs`: the pack loads must **not** go up when you change subzone (only the continent does).
+- **R3b.5 · Quests.** Accept a quest, finish an objective, finish it all, hand it in. Then abandon one and take it again three times, and hand it in.
+    - **Expect:** a line when an objective is finished and when the quest is ready (not on every kill); a line at hand-in; after the repeated tries (three acceptances in the same session) a more relieved line. No quest text in any line, and no quest data in the saved files.
+    - **Report:** the arguments of `QUEST_ACCEPTED` and `QUEST_TURNED_IN` (with `/au probe`), whether `QUEST_LOG_UPDATE` arrives in bursts, and whether the lines appear at the right moment.
+- **R3b.6 · Reputation.** Gain reputation until a standing changes (for example Neutral to Friendly). Lose it, if you can, until it drops.
+    - **Expect:** a line at the change of standing (and at a drop); none for points gained inside the same standing. No faction name in the line.
+    - **Report:** `FactionData.reaction` for the standing (1 to 8? with `/au probe`), how often `UPDATE_FACTION` arrives, and the lines.
+- **R3b.7 · The inn.** `/au chance rest_enter 100`. Walk into an inn (the resting icon appears).
+    - **Expect:** a line when you enter; **no** line if you log in already inside the inn or after a loading screen into a city. In an inn the line is about being indoors, in a city about the streets.
+    - **Report:** does `PLAYER_UPDATE_RESTING` arrive? how many times? the line, and whether `IsIndoors` is true in the inn.
+- **R3b.8 · The flight.** `/au chance journey 100`. Take a flight (gryphon, wyvern...): start, wait, arrive. Then get feared or stunned by a monster **outside** a flight.
+    - **Expect:** a line at the start and one at the arrival (more relieved if the flight was long, two minutes or more); **no** line for the fear or the stun. A flight that crosses several zones does not end halfway.
+    - **Report:** the order of the events (`PLAYER_CONTROL_LOST`, `UnitOnTaxi`, `PLAYER_CONTROL_GAINED`) with `/au probe` and `/au debug` during the flight, and whether `UnitOnTaxi` is true for the whole flight.
+- **R3b.9 · Silence.** In combat, with the narrator paused or at intensity 0, and with the **World** module off (settings panel).
+    - **Expect:** none of these lines in combat; none at intensity 0; with the World module off, no line about weather, dawn, dusk, subzone, places or flights (quests, reputation and rest stay: they are personal).
+    - **Report:** any line that comes out when it should not.
 
 ## Summary form (copy and fill in)
 
@@ -159,4 +192,11 @@ R4b feelings ............ no warm line with wariness/fear/resentment? ___  ally 
 R4b forget/remove ....... two distinct actions? ___  export ok? ___
 R3a hour ................ quota:combat seen? ___  too quiet in fights? ___  death/level always? ___
 R3a place/emotes ........ place lines first? ___  gestures fit? ___  "says" rare? ___
+R3b weather ............. Enum.WeatherType ______  type rain ___ snow ___ clear ___  unknown? ___  WEATHER_CHANGED fires? ___
+R3b day and night ....... DIEL_CYCLE_CHANGED at dawn (hour) ______  at dusk (hour) ______  IsDayTime together? ___
+R3b subzones ............ ZONE_CHANGED ___  ZONE_CHANGED_INDOORS ___  names that differ in Landmarks ______  packs loaded? (must be NO) ___
+R3b quests .............. QUEST_ACCEPTED (arguments) ______  QUEST_TURNED_IN ______  lines at the right moments? ___  many tries? ___
+R3b reputation .......... reaction 1-8? ___  one line per change of standing? ___  UPDATE_FACTION in bursts? ___
+R3b inn / flight ........ PLAYER_UPDATE_RESTING ___  rest_enter only on entering? ___  flight: CONTROL_LOST/UnitOnTaxi/CONTROL_GAINED ______  fear = no flight? ___
+R3b silence ............. none in combat? ___  World module off? ___
 ```

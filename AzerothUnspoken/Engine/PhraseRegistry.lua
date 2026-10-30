@@ -100,22 +100,22 @@ Engine.TONE_STYLE = {
 Engine.CATEGORIES = { combat = true, spellcraft = true, life = true, exploration = true, reflection = true, social = true,
 	general = true }
 
--- Themes and motifs (#90, ADR 0028): closed vocabularies, filled by Data/Themes.lua and by the packs that declare
+-- Themes and motifs (#90, ADR 0029): closed vocabularies, filled by Data/Themes.lua and by the packs that declare
 -- `themes = {}` or `motifs = {}`. The validator rejects a rule or a frame that names one not declared.
 Engine.THEMES = {}
 Engine.MOTIFS = {}
 Engine.MAX_MOTIFS = 3
 
--- Specificity tiers (#89, ADR 0028), from the most generic to the most specific. A rule gets the tier of the most
+-- Specificity tiers (#89, ADR 0029), from the most generic to the most specific. A rule gets the tier of the most
 -- specific condition it asks at the top level (or in `place`), unless it writes `tier` itself. A situation (a class, a
 -- target, a memory, a relation) and a region or an atmosphere share tier 1: a line about the death of last visit must
--- not lose to a line about the forest. `landmark` is only explicit until landmarks exist as a condition (#94).
+-- not lose to a line about the forest. The condition `landmark` (R3b, #94) gives the landmark tier.
 Engine.TIERS = { generic = 0, situation = 1, region = 1, zone = 2, subzone = 3, landmark = 4 }
 Engine.TIER_NAMES = { [0] = "generic", "situation", "zone", "subzone", "landmark" }
 Engine.MAX_TIER = 4
 -- conditions that say where (`top` = top level of the conditions, `place` = inside `place`) and the tier they give
 Engine.TIER_CONDITIONS = {
-	top = { subzone = 3, zone = 2, mood = 1, instance = 1, instanceType = 1 },
+	top = { landmark = 4, subzone = 3, zone = 2, mood = 1, instance = 1, instanceType = 1 },
 	place = { subzone = 3, zone = 2, mapID = 2, continent = 1, tags = 1, mood = 1, territory = 1, capital = 1,
 		friendlyCapital = 1, hostileCapital = 1, instanceType = 1 },
 }
@@ -219,7 +219,7 @@ function Engine.TierOf(when)
 end
 
 ---The main register of a rule (its first one), used by the differentiation of registers. It is not stored: a rule
----table with one field less keeps its size now that rules have a theme and motifs (#90, ADR 0028).
+---table with one field less keeps its size now that rules have a theme and motifs (#90, ADR 0029).
 ---@param p table rule, frame or vocabulary entry
 ---@return string?
 function Engine.Tone(p)

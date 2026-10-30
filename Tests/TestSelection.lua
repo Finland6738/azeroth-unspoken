@@ -1,4 +1,4 @@
--- Tests of the selection quality of R3 (ADR 0028): specificity tiers and the fallback chain (#89), themes, motifs and
+-- Tests of the selection quality of R3 (ADR 0029): specificity tiers and the fallback chain (#89), themes, motifs and
 -- the thematic memory of the session (#90), per-session category quotas and hunger (#91). Every test that draws
 -- random numbers fixes the seed.
 local NS = ...
@@ -81,6 +81,7 @@ T.run("#89: the tier is deduced from the conditions", function()
 	T.eq(T0({ zone = "Elwynn Forest", class = "MAGE" }), 2, "a zone")
 	T.eq(T0({ place = { mapID = 1429 } }), 2, "a map")
 	T.eq(T0({ subzone = "Goldshire" }), 3, "a subzone")
+	T.eq(T0({ landmark = "inn", zone = "Elwynn Forest" }), 4, "a landmark (R3b)")
 	T.eq(T0({ place = { subzone = "Goldshire" } }), 3, "a subzone of the place")
 	T.eq(Engine.Tier(Engine.byId["r3.tier.sub"]), 3, "registered with its tier")
 	NS:RegisterPack({ id = "t_r3_tier", languages = { "itIT" },

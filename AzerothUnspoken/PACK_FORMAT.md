@@ -234,7 +234,7 @@ From step S4 the **StyleResolver** uses registers to weight phrases (never to ex
 
 ### Themes and motifs (`theme`, `motifs`)
 
-From R3 ([ADR 0028](../docs/adr/0028-specificity-tiers-themes-motifs-and-category-quotas.md)) a rule can say what it
+From R3 ([ADR 0028](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)) a rule can say what it
 is about. The **theme** is the idea (one per rule); the **motifs** are the concrete images the text shows (zero to
 three). The engine remembers, for the session only and never in the saved files, the themes, motifs, voices, frames
 and openings of the last interventions, and weighs down a phrase that would bring them back too soon. A rule without
@@ -276,11 +276,10 @@ How to choose them is in [CONTRIBUTING.md](../CONTRIBUTING.md#themes-and-motifs)
 ### Specificity tiers (`tier`)
 
 Every rule has a **tier**: `0` generic, `1` situation or region, `2` zone, `3` subzone, `4` landmark. It is deduced
-from the conditions (at the top level and in `place`): `subzone` gives 3; `zone`, `place.zone`, `place.mapID` give 2;
+from the conditions (at the top level and in `place`): `landmark` (R3b) gives 4; `subzone` gives 3; `zone`, `place.zone`, `place.mapID` give 2;
 `mood`, `instance`, `instanceType`, `place.continent`, `place.tags`, `place.territory` and the capitals give 1, and so
 does any other condition that narrows the moment (a class, a target, a memory, a relation); `chance`, `depth`,
-`intensityMin`/`Max` and anything under `not` give nothing. Write `tier` only to override it (`landmark` is only
-explicit for now).
+`intensityMin`/`Max` and anything under `not` give nothing. Write `tier` only to override it.
 
 When a phrase is chosen, the most specific tier wins **while it has at least three phrases not used recently**
 (counting the tiers above it); once they are used, the pool widens one tier at a time down to the generic phrases of
@@ -305,6 +304,9 @@ A phrase without `depth` is never penalized. As a rule of thumb: `natural` is di
 | `memory_return` | return to an already visited zone (memory recall: only with a real memory) |
 | `attack` | spell or ability in combat |
 | `heal`, `buff`, `travel`, `rezother` | heals, blessings, journeys, resurrection of a companion |
+| `weather_change`, `dawn`, `dusk`, `subzone_enter`, `landmark` | the weather changed and stayed changed; the client passes from night to day or from day to night; a new subzone; a named place (`landmark`) |
+| `quest_progress`, `quest_complete`, `reputation_change` | an objective finished or a quest ready for turn-in; a quest turned in; a reputation standing changed |
+| `rest_enter`, `journey` | resting starts (an inn, a city); a flight starts or ends (`journey = "start"` / `"arrival"`) |
 | `greet`, `farewell`, `toast`, `thanks`, `jest`, `pray`, `muse`, `threat` | manual commands (`/au greet`, etc.) |
 | any name | `/au event <name>` from a macro, or an event declared by the pack (see below) |
 
@@ -362,8 +364,10 @@ Phrases with more conditions are more specific and receive a higher weight.
 | `group` | `solo`, `party`, `raid` |
 | `zone`, `subzone` | name of the zone or subzone, as it appears in the client (e.g. `"Duskwood"`) |
 | `mood` | zone atmosphere: `forest`, `dark`, `plains`, `mountain`, `snow`, `jungle`, `swamp`, `desert`, `fire`, `plague`, `ruin`, `coast`, `sacred`, `deep`, `city`, `town` |
-| `time` | `dawn`, `day`, `dusk`, `night` (server time) |
+| `time` | `dawn`, `day`, `dusk`, `night`: night is what the client says is night, dawn and dusk are the transition hours of the day (server time; the old fixed hours are the fallback) |
 | `hour` | range `{ 22, 4 }` (also across midnight) |
+| `dayTime` | `true` / `false`: the client says it is day / night (`C_DateAndTime.IsDayTime`). False for both when the client does not say |
+| `weather` | `clear`, `rain`, `snow`, `storm`, `sand`, `fog` (one or a list): the weather the client reports. An unreadable weather matches none of them (see "The world" below) |
 | `hasTarget`, `hostile`, `friendly`, `targetPlayer`, `targetDead`, `elite`, `boss`, `rare` | `true` / `false` |
 | `ctype` | target type: `undead`, `demon`, `dragon`, `elemental`, `beast`, `giant`, `mechanical`, `humanoid`, `critter`, `aberration` |
 | `targetClass`, `targetRace`, `targetFaction`, `enemyFaction` | the target is a player: their class, race, faction; `enemyFaction` if they are of the opposing faction |
@@ -509,6 +513,57 @@ AzerothUnspoken:RegisterTendencies({ class = { PRIEST = { goals = "faith" } } })
 ```
 
 - Examples: `Data/RegistryContext.lua` (110 IT/EN phrases).
+
+### The world: weather, day and night, places, quests, reputation, rest and flight
+
+These conditions read what the client says about the world ([ADR 0028](../docs/adr/0028-world-variables-weather-day-subzones-quests-reputation-rest-and-flight.md)). **None of the APIs has been tried in the client yet**: each reading can be "unknown", and then **every condition below is false, for `true` and for `false`** (the line is not chosen; the rest of the content is unchanged). So write the positive form: `weather = "rain"`, not `not = { weather = "clear" }`, which an unknown weather would satisfy.
+
+| Condition | Holds if |
+|---|---|
+| `weather = "rain"` (or a list) | the weather is that one: `clear`, `rain`, `snow`, `storm`, `sand`, `fog`. A type the client names in another way, or rain with intensity 0, is unknown |
+| `dayTime = true` / `false` | `C_DateAndTime.IsDayTime` says day / night. For dawn and dusk use `time = "dawn"` / `"dusk"` |
+| `landmark = "inn"` (id or tag, or a list) | the character is in a landmark (`Data/Landmarks.lua`) with that id (`"elwynn.lions_pride_inn"`) or tag (`village`, `inn`, `graveyard`, `camp`, `mine`, `abbey`...) |
+| `questActive = true` / `false`, an id or a list of ids | the quest log has a quest / none / that quest. Unknown without `C_QuestLog` |
+| `questReady = true` / `false` | right after a `quest_progress` event: the quest that advanced is ready for turn-in or not; otherwise: some quest is ready for turn-in |
+| `questJustCompleted = true` / `false` | a quest was turned in within the last three minutes |
+| `questAttemptsMin = 3` | the quest just completed had been accepted at least that many times **in this session** (unknown if it was accepted before: then false) |
+| `repStanding = "honored"` (or a list) | the last reputation change, within three minutes, reached that standing: `hated`, `hostile`, `unfriendly`, `neutral`, `friendly`, `honored`, `revered`, `exalted` |
+| `repDirection = "up"` / `"down"` | the last change was a rise / a fall |
+| `onFlight = true` / `false` | `UnitOnTaxi` says the character is on a flight / on the ground |
+| `journey = "start"` / `"arrival"` | the last flight just started / just ended (within three minutes) |
+| `journeyMin = 120` | the flight that just ended lasted at least that many seconds ("a long journey") |
+
+Editorial rules:
+
+- **A text that names the weather carries `weather`** (or a place condition that already says it). The validator warns when it does not, for the events that describe the surroundings (`zone`, `weather_change`, `dawn`, `dusk`, `subzone_enter`, `landmark`, `journey`, `rest_enter`, quest and reputation events), in English and Italian.
+- A text that names a flight carries `onFlight` or `journey`. A line with `{landmark}` is not composed outside a landmark.
+- Quest and reputation conditions are about **ids and standings**, never about text: a line must not claim to know what a quest asked.
+- Invented lore stays attributed to a voice (decision D7 in #130): "it is said that...", never the narrator as a fact.
+
+Example (the rule is in `Data/RegistryWorld.lua`, the texts in the language folders):
+
+```lua
+["world.zone.rain.first"] = { event = "zone", speaker = "inner", styles = { "intimate", "ancient" },
+    tags = { "calm", "curiosity:high" }, depth = { "natural", "literary", "elevated" },
+    conditions = { weather = "rain", firstVisit = true, ["not"] = { indoors = true } } },
+```
+
+#### Landmarks (`Data/Landmarks.lua`)
+
+A landmark is a named place inside a subzone. A pack registers its own with `AzerothUnspoken:RegisterLandmarks({ ... })`; the format is validated at load and by `/au validate` (error `badLandmark`):
+
+| Field | Meaning |
+|---|---|
+| `id` | required: letters, digits, `.`, `_`, `-`; unique; the same in every language (`"duskwood.raven_hill_cemetery"`) |
+| `subzone` | required: the name as the English client shows it (`GetSubZoneText`), compared without regard to capitals |
+| `zone` | the zone name (`GetRealZoneText`); without it the subzone matches in any zone |
+| `tags` | what kind of place: `village`, `inn`, `graveyard`, `camp`, `mine`, `abbey`... (the values the `landmark` condition accepts, with the ids) |
+| `x`, `y`, `radius`, `mapID` | optional, only where the position is reliable: fractions 0-1 of the map (`mapID`, or the map of the character) and the radius (0.02 if missing, at most 0.5). With coordinates the landmark counts only if the client gives the position (`C_Map.GetPlayerMapPosition`, never in instances) and the character is inside the radius |
+| `name` | optional display name; `{landmark}` shows the name the client gives |
+
+Entering a subzone that is a landmark fires `landmark`; any other subzone fires `subzone_enter`; **neither loads a pack** (packs load on a change of continent, see the section on regional packs).
+
+Not all the world's data are in the archive: the rules and texts are (`Data/RegistryWorld.lua` and the language folders, round trip of the authoring archive unchanged); the landmark list is engine data like `Data/Places.lua`.
 
 ### New conditions
 
@@ -790,6 +845,7 @@ registry = {
 | `{target}` | target |
 | `{spell}` | the spell just cast |
 | `{zone}`, `{subzone}` | place |
+| `{landmark}` | the name the client gives to the landmark you are in (a line with it is not composed outside a landmark) |
 | `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}` | in the chosen language |
 | `{relation}` | the label of the relationship with the person of the interaction (relationships, S6b) |
 | `{other}`, `{otherrole}`, `{otherrace}`, `{otherclass}` | the interlocutor: name, role, race and class in the chosen language (or the custom race and class from Total RP 3) |
@@ -1049,7 +1105,7 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
 
 ## Direction: category quotas and hunger
 
-A pack can also tune how often a whole category speaks in a session (#91, [ADR 0028](../docs/adr/0028-specificity-tiers-themes-motifs-and-category-quotas.md)):
+A pack can also tune how often a whole category speaks in a session (#91, [ADR 0028](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)):
 
 - `quotas = { combat = { share = 0.4, window = 10, span = 900 } }`: the category may take at most `share` (0-1) of the
   last `window` interventions heard in the last `span` seconds; at least half of what a full window allows is always

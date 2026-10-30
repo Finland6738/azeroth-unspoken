@@ -35,11 +35,12 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0025](0025-language-and-regional-packs-loaded-on-demand.md) | Language packs and regional packs loaded on demand | accepted |
 | [0026](0026-player-records-user-choices-apart-from-observations.md) | Player records: what the user chose is kept apart from what the addon observed | accepted |
 | [0027](0027-sqlite-authoring-archive-and-exporter.md) | SQLite authoring archive, exporter to the pack folders and coverage reports | accepted |
-| [0028](0028-specificity-tiers-themes-motifs-and-category-quotas.md) | Specificity tiers, themes and motifs, and per-session category quotas | accepted |
+| [0028](0028-world-variables-weather-day-subzones-quests-reputation-rest-and-flight.md) | World variables: weather, day and night, subzones, quests, reputation, rest and flight | accepted |
+| [0029](0029-specificity-tiers-themes-motifs-and-category-quotas.md) | Specificity tiers, themes and motifs, and per-session category quotas | accepted |
 
 ## Pending decisions
 
-- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0029).
+- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0030).
 
 ## How to write a new one
 
