@@ -8,15 +8,16 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 - **Command names and their arguments are always in English, whatever language you chose.** The interface language (see [[Languages]]) changes the descriptions and messages, never the words you type. In Italian, for example, you still type `/au journal`; the addon answers in Italian.
 - Commands are not case-sensitive.
 - There are no aliases: each command has one name. The only extra spellings are a few short forms, listed in the tables (`/au lang` for `/au language`, `/au rel` for `/au relationships`, and `s`, `e`, `p`, `g`, `i` as channel names).
-- Typing `/au` alone or `/au help` prints the list of commands. A word the addon does not know gets a short answer with the closest command, for example "Did you mean `/au journal`?" if you type `/au diario`.
+- Typing `/au` alone or `/au help` prints the **groups of commands**: Start, Narrator, Chat, Character and Diagnostics. `/au help <group>` prints one group (for example `/au help chat`), `/au help <command>` one command (`/au help journal`) and `/au help all` every command. Each fits in a default chat window, except `all`: scroll the chat up to read it. Group names are typed in English, like the commands.
+- A word the addon does not know gets a short answer with the closest command, for example "Did you mean `/au journal`?" if you type `/au diario`.
 - Commands do not send anything to chat by themselves. A command that produces a line shows it in the narrator box, or as a proposal if you turned chat proposals on (see [[Chat Gateway]]).
-- In the tables, `<this>` is a value you fill in, `[this]` is optional, and `a|b` means "a or b".
+- In the tables, `<this>` is a value you fill in, `[this]` is optional, and `a\|b` means "a or b". In the game, `/au help` writes `a / b` (or `a/b` inside an option): a bare `|` is the client's escape character, so the addon never prints one.
 
 ## Quick list
 
 | Command | Does |
 |---|---|
-| `/au help` | shows the help (also `/au` alone) |
+| `/au help [group]` | shows the groups of commands (also `/au` alone), or one group |
 | `/au on` · `/au off` | turns the addon on or off |
 | `/au pause` | pauses the narrator at once |
 | `/au options` | opens the settings panel |
@@ -40,14 +41,16 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 
 | Command | What it does |
 |---|---|
-| `/au help` | Prints the list of commands, with a description in your interface language. The command names are the same in every language. `/au` with nothing after it does the same. |
+| `/au help` | Prints the groups of commands, one line each, with a description in your interface language. `/au` with nothing after it does the same. |
+| `/au help <group>` | Prints the commands of one group: `start`, `narrator`, `chat`, `character` or `diagnostics`. |
+| `/au help <command>` | Prints the help line of one command, for example `/au help stories`. |
+| `/au help all` | Prints every command, group by group, with the diagnostics last (about 40 lines). |
 | `/au on` | Turns the addon back on. |
 | `/au off` | Turns the addon off: no spontaneous lines, no NPC dialogues, and stories stop moving. Lines you ask for with a command, and the windows, still work. |
 | `/au pause` | Pauses the narrator immediately, for this session only. Type it again to resume. Also available as a key binding. |
 | `/au language [code]` (short form `/au lang`) | Sets the language of lines and interface: `en` (English, the default) or `it` (Italian). With no code, lists the available languages. See [[Languages]]. |
 | `/au options` | Opens the [[settings panel|Settings]]. |
 | `/au wizard` | Reopens the [[setup wizard|First-Run-Wizard]]. |
-| `/au button` | Shows or hides the speak button. |
 
 ## Narrator style and rhythm
 
@@ -82,6 +85,10 @@ See [[The Narrator and the Four Voices|The-Narrator]].
 | `/au another` | Swaps the waiting proposal for another line for the same moment. Sends nothing. |
 | `/au copy` | Copies the proposal into the chat box, on the right channel. You send it with Enter. |
 | `/au cancel` | Discards the waiting proposal. |
+| `/au button` | Shows or hides the speak button. |
+| `/au button on\|off` | Shows (`on`) or hides (`off`) the speak button. |
+| `/au button reset` | Puts the speak button back in its default place, beside the narrator box, and shows it. |
+| `/au button editor on\|off` | With `on`, a click on the speak button opens a waiting proposal in the editor instead of sending it. The speak key and `/au speak` still send. Off by default. With no value, switches it. |
 
 > **About `auto`.** `/au mode auto` does not turn automatic sending on at once. It prints a warning, and you must type the same command again **within 10 seconds** to confirm.
 
@@ -169,7 +176,7 @@ See [[Memory and Journal|Memory-and-Journal]].
 | `/au relationships export` | Shows your relationships as text you can copy. |
 | `/au relationships auto on\|off` | Registers the players you meet by themselves. Off by default. |
 | `/au relationships attraction on\|off` | Turns the optional attraction axis on or off. Off by default. |
-| `/au relationships reset [all|npcs|players|shared]\|npcs\|players]` | Erases relationships. Asks you to repeat within 15 seconds to confirm. |
+| `/au relationships reset [all\|npcs\|players\|shared]` | Erases relationships. Asks you to repeat within 15 seconds to confirm. |
 
 A name can be `Name` or `Name-Realm`. An NPC is written `npc:` followed by its number, as shown by `/au relationships list`. See [[Relationships]].
 

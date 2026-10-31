@@ -1207,7 +1207,7 @@ T.run("comandi /au relationships", function()
 	T.ok(Cmd("relationships reset"):find("ripeti", 1, true) and R:Get("player", "Aldric-Stormrage"), "il primo reset chiede conferma")
 	T.ok(Cmd("relationships reset"):find("azzerate", 1, true) and not R:Get("player", "Aldric-Stormrage"), "il secondo azzera")
 	T.ok(Cmd("relationships boh"):find("uso:", 1, true), "comando sconosciuto: l'aiuto")
-	T.ok(Cmd("help"):find("/au relationships", 1, true), "l'aiuto generale cita /au relationships")
+	T.ok(Cmd("help all"):find("/au relationships", 1, true), "l'aiuto generale cita /au relationships")
 	NS.db.locale = "en"
 	T.ok(Cmd("relationships boh"):find("usage:", 1, true), "aiuto in inglese")
 	NS.db.locale = "it"

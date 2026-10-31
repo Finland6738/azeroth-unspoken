@@ -74,11 +74,80 @@ local function Debug(arg)
 	end
 end
 
-local function PrintHelp()
-	NS:Print(NS:L("help_title"))
+-- /au help a gruppi (UI-19, #189): una finestra di chat predefinita mostra circa dieci righe, quindi `/au help`
+-- stampa solo i gruppi e `/au help <gruppo>` le righe di un gruppo (al massimo nove). `all` le stampa tutte, per
+-- gruppo, con la diagnostica in fondo; un nome di comando stampa la sua riga.
+Commands.GROUPS = { "start", "narrator", "chat", "character", "diagnostics" }
+local HELP_WORDS = K.Register("help_groups", {
+	start = "start", narrator = "narrator", chat = "chat", character = "character", diagnostics = "diagnostics", all = "all",
+})
+
+local function UsageLine(spec)
+	return ("/au %s - %s"):format(spec.usage, NS:L(spec.desc))
+end
+
+local function PrintGroup(group)
 	for _, spec in ipairs(Commands.list) do
-		if spec.usage then NS:Print(("/au %s - %s"):format(spec.usage, NS:L(spec.desc))) end
+		if spec.usage and spec.group == group then NS:Print(UsageLine(spec)) end
 	end
+end
+
+local function PrintHelp(rest)
+	local word = NS.Lower(rest or "")
+	local group = HELP_WORDS[word]
+	local spec = Commands.byName[word]
+	if spec and spec.see then spec = Commands.byName[spec.see] end
+	if group == "all" then
+		NS:Print(NS:L("help_title"))
+		for _, g in ipairs(Commands.GROUPS) do PrintGroup(g) end
+	elseif group then
+		NS:Print(NS:L("help_group_title", NS:L("help_grp_" .. group)))
+		PrintGroup(group)
+	elseif spec and spec.usage then
+		NS:Print(UsageLine(spec))
+	else
+		if word ~= "" then NS:Print(NS:L("help_unknown", rest)) end
+		NS:Print(NS:L("help_title"))
+		for _, g in ipairs(Commands.GROUPS) do
+			NS:Print(("/au help %s - %s"):format(g, NS:L("help_group_" .. g)))
+		end
+		NS:Print("/au help all - " .. NS:L("help_group_all"))
+	end
+end
+
+-- /au button: senza argomenti mostra o nasconde il pulsante, come prima; `editor on/off` sceglie se il clic apre
+-- l'editor invece di inviare (#189); `reset` lo rimette al suo posto
+local BUTTON_WORDS = K.Register("button", { on = "on", off = "off", editor = "editor", reset = "reset" })
+
+local function Button(rest, db)
+	local word, arg = rest:match("^([^ ]*) *(.-)$")
+	local action = BUTTON_WORDS[NS.Lower(word)]
+	if action == "editor" then
+		local on = K.OnOff(arg)
+		if on == nil and arg ~= "" then
+			NS:Print(NS:L("invalid_value", arg, NS:L("values_on_off")))
+			return
+		end
+		if on == nil then on = not db.ui.buttonOpensEditor end
+		db.ui.buttonOpensEditor = on
+		NS:Print(NS:L(on and "button_editor_on" or "button_editor_off"))
+		return
+	elseif action == "reset" then
+		NS.SpeakButton:ResetPosition()
+		db.ui.showButton = true
+		NS.UpdateButton()
+		NS:Print(NS:L("button_reset"))
+		return
+	elseif action == "on" or action == "off" then
+		db.ui.showButton = action == "on"
+	elseif rest == "" then
+		db.ui.showButton = not db.ui.showButton
+	else
+		NS:Print(NS:L("invalid_value", rest, NS:L("values_button")))
+		return
+	end
+	NS.UpdateButton()
+	NS:Print(NS:L(db.ui.showButton and "button_shown" or "button_hidden"))
 end
 
 local function Language(rest, db)
@@ -192,74 +261,84 @@ end
 -- La tabella dei comandi
 ---------------------------------------------------------------------------
 -- name: il comando inglese; short: forme brevi inglesi; fn(rest, db); usage: la riga dell'aiuto (inglese, uguale in
--- ogni lingua); desc: la chiave della descrizione nella lingua dell'interfaccia; noDb: funziona anche se l'avvio è fallito.
----@type { name: string, short?: string[], fn: fun(rest: string, db: table), usage?: string, desc?: string, noDb?: boolean }[]
+-- ogni lingua; le alternative si separano con " / ", mai con "|", che nel client è un codice di escape: #175);
+-- desc: la chiave della descrizione nella lingua dell'interfaccia; group: il gruppo di /au help (Commands.GROUPS);
+-- see: il comando la cui riga dell'aiuto vale anche per questo; noDb: funziona anche se l'avvio è fallito.
+---@type { name: string, short?: string[], fn: fun(rest: string, db: table), usage?: string, desc?: string, group?: string, see?: string, noDb?: boolean }[]
 Commands.list = {
-	{ name = "help", fn = function() PrintHelp() end, usage = "help", desc = "help_help" },
-	{ name = "on", fn = function(_, db) db.enabled = true; NS:Print(NS:L("enabled")) end, usage = "on | off", desc = "help_on" },
-	{ name = "off", fn = function(_, db) db.enabled = false; NS:Print(NS:L("disabled")) end },
-	{ name = "pause", fn = function() NS.Director:TogglePause() end, usage = "pause", desc = "help_pause" },
-	{ name = "debug", noDb = true, fn = function(rest) Debug(rest) end, usage = "debug [full|trace]", desc = "help_debug" },
-	{ name = "prof", noDb = true, fn = function(rest) NS.Profiler:Command(rest) end, usage = "prof [reset|copy]", desc = "help_prof" },
-	{ name = "probe", noDb = true, fn = function(rest) NS.Probe:Command(rest) end, usage = "probe [reset|stop|copy]", desc = "help_probe" },
-	{ name = "language", short = { "lang" }, fn = Language, usage = "language [it|en]", desc = "help_language" },
-	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity" },
-	{ name = "depth", fn = Depth, usage = "depth natural|literary|elevated", desc = "help_depth" },
-	{ name = "mode", fn = Mode, usage = "mode private|preview|confirm|auto", desc = "help_mode" },
-	{ name = "channel", fn = Channel, usage = "channel auto|say|emote|party|raid|guild|instance", desc = "help_channel" },
-	{ name = "speak", fn = function() AzerothUnspoken_Speak() end, usage = "speak", desc = "help_speak" },
-	{ name = "another", fn = function() NS.Gateway:Reroll() end, usage = "another", desc = "help_another" },
-	{ name = "cancel", fn = function() NS.Gateway:Discard() end, usage = "cancel", desc = "help_cancel" },
-	{ name = "copy", fn = function() NS.Gateway:CopyToChat() end, usage = "copy", desc = "help_copy" },
-	{ name = "narrator", fn = Narrator, usage = "narrator [history|reset|clear]", desc = "help_narrator" },
+	{ name = "help", fn = function(rest) PrintHelp(rest) end, usage = "help [<group> / <command> / all]", desc = "help_help",
+		group = "start" },
+	{ name = "on", fn = function(_, db) db.enabled = true; NS:Print(NS:L("enabled")) end, usage = "on / off", desc = "help_on",
+		group = "start" },
+	{ name = "off", fn = function(_, db) db.enabled = false; NS:Print(NS:L("disabled")) end, see = "on" },
+	{ name = "pause", fn = function() NS.Director:TogglePause() end, usage = "pause", desc = "help_pause", group = "start" },
+	{ name = "debug", noDb = true, fn = function(rest) Debug(rest) end, usage = "debug [full / trace]", desc = "help_debug",
+		group = "diagnostics" },
+	{ name = "prof", noDb = true, fn = function(rest) NS.Profiler:Command(rest) end, usage = "prof [reset / copy]",
+		desc = "help_prof", group = "diagnostics" },
+	{ name = "probe", noDb = true, fn = function(rest) NS.Probe:Command(rest) end, usage = "probe [reset / stop / copy]",
+		desc = "help_probe", group = "diagnostics" },
+	{ name = "language", short = { "lang" }, fn = Language, usage = "language [it / en]", desc = "help_language", group = "start" },
+	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity", group = "narrator" },
+	{ name = "depth", fn = Depth, usage = "depth natural / literary / elevated", desc = "help_depth", group = "narrator" },
+	{ name = "mode", fn = Mode, usage = "mode private / preview / confirm / auto", desc = "help_mode", group = "chat" },
+	{ name = "channel", fn = Channel, usage = "channel auto / say / emote / party / raid / guild / instance",
+		desc = "help_channel", group = "chat" },
+	{ name = "speak", fn = function() AzerothUnspoken_Speak() end, usage = "speak", desc = "help_speak", group = "chat" },
+	{ name = "another", fn = function() NS.Gateway:Reroll() end, usage = "another", desc = "help_another", group = "chat" },
+	{ name = "cancel", fn = function() NS.Gateway:Discard() end, usage = "cancel", desc = "help_cancel", group = "chat" },
+	{ name = "copy", fn = function() NS.Gateway:CopyToChat() end, usage = "copy", desc = "help_copy", group = "chat" },
+	{ name = "narrator", fn = Narrator, usage = "narrator [history / reset / clear]", desc = "help_narrator", group = "narrator" },
 	{ name = "soul", fn = function(rest) NS.Personality:Command(rest) end,
-		usage = "soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>]", desc = "help_soul" },
-	{ name = "emotion", fn = function(rest) NS.Emotion:Command(rest) end, usage = "emotion [on|off|reset]",
-		desc = "help_emotion" },
+		usage = "soul [list / neutral / archetype <id> / trp3 on/off / <trait> <value> / avoid <topic>]", desc = "help_soul",
+		group = "character" },
+	{ name = "emotion", fn = function(rest) NS.Emotion:Command(rest) end, usage = "emotion [on / off / reset]",
+		desc = "help_emotion", group = "character" },
 	{ name = "journal", fn = function(rest) NS.LivingMemory:Command(rest) end,
-		usage = "journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset]", desc = "help_journal" },
+		usage = "journal [list / places / flag <name> / export / pin <n> / delete <n> / forget <place> / reset]",
+		desc = "help_journal", group = "character" },
 	{ name = "stories", fn = function(rest) NS.StoryArcs:Command(rest) end,
-		usage = "stories [list|journal|choose <arc> <option>|start|suspend|resume|skip|disable|enable <arc|all>|max <1|2>|on|off|status]",
-		desc = "help_stories" },
+		usage = "stories [list / journal / choose <arc> <option> / start / suspend / resume / skip / disable / enable <arc/all> / max <1/2> / on / off / status]",
+		desc = "help_stories", group = "character" },
 	{ name = "relationships", short = { "rel" }, fn = function(rest) NS.Relationships:Command(rest) end,
-		usage = "relationships [list|people|add <name>|note <name> <text>|export|...]", desc = "help_relationships" },
-	{ name = "place", fn = function() NS.Place:Command() end, usage = "place", desc = "help_place" },
+		usage = "relationships [list / people / add <name> / note <name> <text> / export / ...]", desc = "help_relationships",
+		group = "character" },
+	{ name = "place", fn = function() NS.Place:Command() end, usage = "place", desc = "help_place", group = "character" },
 	{ name = "who", fn = function(rest) NS.Interlocutor:Command(rest) end,
-		usage = "who [trp3 on|off|trait <trait> <value>]", desc = "help_who" },
+		usage = "who [trp3 on/off / trait <trait> <value>]", desc = "help_who", group = "character" },
 	{ name = "talk", fn = function(rest) NS.NPCAlive:Command(rest) end,
-		usage = "talk [test [style]|close|role <role>|offer on|off|status]", desc = "help_talk" },
+		usage = "talk [test [style] / close / role <role> / offer on/off / status]", desc = "help_talk", group = "character" },
 	-- gli eventi a mano (greet, farewell...) si aggiungono più sotto
 	{ name = "event", fn = function(rest)
 		local ev = MANUAL[NS.Lower(rest)] or NS.Lower(rest)
 		if not NS:Trigger(ev) then NS:Print(NS:L("no_phrase", ev)) end
-	end, usage = "event <name>", desc = "help_event" },
-	{ name = "cast", fn = function(rest) Cast(rest) end, usage = "cast <spell>", desc = "help_cast" },
+	end, usage = "event <name>", desc = "help_event", group = "narrator" },
+	{ name = "cast", fn = function(rest) Cast(rest) end, usage = "cast <spell>", desc = "help_cast", group = "narrator" },
 	{ name = "test", fn = function(rest)
 		Preview(MANUAL[NS.Lower(rest)] or (rest ~= "" and NS.Lower(rest)) or "battle")
-	end, usage = "test <event>", desc = "help_test" },
+	end, usage = "test <event>", desc = "help_test", group = "diagnostics" },
 	{ name = "chance", fn = function(rest)
 		local ev, v = rest:match("^([^ ]+) +([^ ]+)$")
 		SetChance(ev and (MANUAL[NS.Lower(ev)] or NS.Lower(ev)), v)
-	end, usage = "chance <event> <0-100>", desc = "help_chance" },
+	end, usage = "chance <event> <0-100>", desc = "help_chance", group = "narrator" },
 	{ name = "cooldown", fn = function(rest, db)
 		-- stessi limiti delle impostazioni (0-3600): un valore non valido (nan) non cambia nulla
 		NS.Config:Set("pacing.globalCooldownSeconds", rest)
 		NS:Print(NS:L("cooldown_now", db.pacing.globalCooldownSeconds))
-	end, usage = "cooldown <seconds>", desc = "help_cooldown" },
-	{ name = "ignore", fn = Ignore, usage = "ignore <spell>", desc = "help_ignore" },
-	{ name = "button", fn = function(_, db) db.ui.showButton = not db.ui.showButton; NS.UpdateButton() end,
-		usage = "button", desc = "help_button" },
-	{ name = "packs", fn = function() ListPacks() end, usage = "packs", desc = "help_packs" },
-	{ name = "pack", fn = Pack, usage = "pack <id> on|off", desc = "help_pack" },
+	end, usage = "cooldown <seconds>", desc = "help_cooldown", group = "narrator" },
+	{ name = "ignore", fn = Ignore, usage = "ignore <spell>", desc = "help_ignore", group = "narrator" },
+	{ name = "button", fn = Button, usage = "button [on / off / editor on/off / reset]", desc = "help_button", group = "chat" },
+	{ name = "packs", fn = function() ListPacks() end, usage = "packs", desc = "help_packs", group = "diagnostics" },
+	{ name = "pack", fn = Pack, usage = "pack <id> on/off", desc = "help_pack", group = "diagnostics" },
 	{ name = "validate", fn = function(rest) NS.Validator:Command(rest) end,
-		usage = "validate [full|<pack>]", desc = "help_validate" },
-	{ name = "stats", fn = function() Stats() end, usage = "stats", desc = "help_stats" },
+		usage = "validate [full / <pack>]", desc = "help_validate", group = "diagnostics" },
+	{ name = "stats", fn = function() Stats() end, usage = "stats", desc = "help_stats", group = "diagnostics" },
 	{ name = "memory", fn = function()
 		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
 		NS:Print(NS:L("memory_reset"))
-	end, usage = "memory", desc = "help_memory" },
-	{ name = "options", fn = function() NS.OpenSettings() end, usage = "options", desc = "help_options" },
-	{ name = "wizard", fn = function() NS.Wizard:Open() end, usage = "wizard", desc = "help_wizard" },
+	end, usage = "memory", desc = "help_memory", group = "diagnostics" },
+	{ name = "options", fn = function() NS.OpenSettings() end, usage = "options", desc = "help_options", group = "start" },
+	{ name = "wizard", fn = function() NS.Wizard:Open() end, usage = "wizard", desc = "help_wizard", group = "start" },
 }
 
 -- gli eventi a mano: /au greet, farewell, toast... (per macro: /cast X e poi /au greet X, così la frase arriva col tasto)
@@ -274,8 +353,10 @@ do
 			if not NS:Trigger(event, rest ~= "" and { target = rest } or nil) then NS:Print(NS:L("no_phrase", event)) end
 		end }
 		if n == 1 then
-			spec.usage = "greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest [target]"
-			spec.desc = "help_manual"
+			spec.usage = "greet / farewell / toast / muse / threat / battlecry / victory / pray / thanks / jest [target]"
+			spec.desc, spec.group = "help_manual", "narrator"
+		else
+			spec.see = MANUAL_ORDER[1]
 		end
 		table.insert(Commands.list, at + n, spec)
 	end

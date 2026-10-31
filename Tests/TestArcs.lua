@@ -1272,7 +1272,7 @@ T.run("il comando /au storie", function()
 	T.ok(out:find("The Path Found Again", 1, true), "in inglese: " .. out)
 	NS.db.locale = "it"
 	-- l'aiuto generale nomina il comando
-	out = Cmd("help")
+	out = Cmd("help all")
 	T.ok(out:find("/au stories", 1, true), "l'aiuto elenca /au stories")
 end)
 

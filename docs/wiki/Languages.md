@@ -44,7 +44,7 @@ Italian agrees participles and adjectives with the speaker. The lines use your c
 
 ## Commands are always in English
 
-The language you choose changes what the addon **says**: lines, windows, buttons, messages, and the descriptions in `/au help`. It never changes what you **type**. Command names and their arguments are English in every language: `/au journal`, `/au pause`, `/au channel party`, `/au depth literary`. With Italian chosen, `/au help` still lists `/au journal`, with the description in Italian.
+The language you choose changes what the addon **says**: lines, windows, buttons, messages, and the descriptions in `/au help`. It never changes what you **type**. Command names and their arguments are English in every language: `/au journal`, `/au pause`, `/au channel party`, `/au depth literary`. With Italian chosen, `/au help all` still lists `/au journal`, with the description in Italian, and the help groups keep their English names (`/au help character`).
 
 There are no Italian command names. If you type one, for example `/au diario`, the addon answers with the English command to use: "Did you mean `/au journal`?". The full list is in the [[Commands Reference|Commands]].
 

@@ -49,6 +49,6 @@ NS:RegisterLanguage("it", {
 		other_trp3_off = "Profili pubblici Total RP 3 degli altri giocatori: non letti.",
 		other_not_listed = "Chi hai davanti non è nella lista delle relazioni: aggiungilo prima con /au relationships.",
 		other_trait_set = "%s: %s.",
-		other_trait_bad = "Uso: /au who trait temperament|morality|goals|speech|role <valore> (oppure - per toglierlo).",
+		other_trait_bad = "Uso: /au who trait temperament/morality/goals/speech/role <valore> (oppure - per toglierlo).",
 	},
 })

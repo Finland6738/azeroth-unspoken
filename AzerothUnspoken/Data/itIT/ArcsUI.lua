@@ -71,7 +71,7 @@ NS:RegisterLanguage("it", {
 		arc_cmd_max_over = "Ora ci sono %d storie in corso: restano come sono, ma nessuna nuova comincia finché non ne sospendi o salti qualcuna.",
 		arc_cmd_module_off = "Storie spente: nessuna si apre, avanza o parla.",
 		arc_cmd_module_on = "Storie accese.",
-		arc_cmd_help = "uso: /au stories [list | journal | choose <arc> <option> | start <arc> | suspend | resume | skip | disable | enable <arc|all> | max <1|2> | on | off | status]",
+		arc_cmd_help = "uso: /au stories [list / journal / choose <arc> <option> / start <arc> / suspend / resume / skip / disable / enable <arc/all> / max <1/2> / on / off / status]",
 		arc_cmd_all = "Storie toccate: %d.",
 		arc_cmd_unknown = "Non conosco la storia «%s».",
 		arc_cmd_done_choose = "Scelta fatta: «%s» va avanti.",
