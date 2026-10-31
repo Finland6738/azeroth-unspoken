@@ -42,7 +42,7 @@ DEBUG_LINES = [
     "  WoW: PLAYER_ENTERING_WORLD 1, PLAYER_TARGET_CHANGED 18, UNIT_HEALTH 40, ZONE_CHANGED 4, ZONE_CHANGED_NEW_AREA 2",
     "  1234.5 WORLD_ENTER [PLAYER_ENTERING_WORLD] isLogin=true isReload=false",
     "  1236.0 ZONE_ENTER [ZONE_CHANGED_NEW_AREA] subzone=Raven Hill zone=Duskwood",
-    "  1240.2 TARGET_CHANGED [PLAYER_TARGET_CHANGED] name=<nascosto>",
+    "  1240.2 TARGET_CHANGED [PLAYER_TARGET_CHANGED] name=<hidden>",
     "No caught errors.",
     "Lines: 4182 in the chosen language, from 9 packs.",
 ]

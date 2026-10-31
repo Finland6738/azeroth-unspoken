@@ -140,6 +140,20 @@ T.run("Diagnostics", function()
 	T.ok(text:find("GetBuildInfo", 1, true), "rapporto dettagliato: id delle capacità")
 	T.ok(text:find("schema 7", 1, true), "rapporto: schema")
 	T.ok(text:find("Errori intercettati", 1, true), "rapporto: errori")
+	-- ogni gruppo contato nei totali compare nel rapporto: "hook" e uno sconosciuto, in coda (#193)
+	Compat:SetCap("hook:ProvaHook", "hook", Compat.AVAILABLE, "hooksecurefunc")
+	Compat:SetCap("nuovo:ProvaNuovo", "nuovo", Compat.MISSING, "test")
+	for _, verbose in ipairs({ true, false }) do
+		text = table.concat(Diagnostics:Report(verbose), "\n")
+		T.ok(text:find("[hook]", 1, true) and text:find("ProvaHook", 1, true), "rapporto: il gruppo hook")
+		T.ok(text:find("[nuovo]", 1, true) and text:find("ProvaNuovo", 1, true), "rapporto: un gruppo non previsto")
+	end
+	Compat.caps["hook:ProvaHook"], Compat.caps["nuovo:ProvaNuovo"] = nil, nil
+	for i = #Compat.capOrder, 1, -1 do
+		if Compat.capOrder[i] == "hook:ProvaHook" or Compat.capOrder[i] == "nuovo:ProvaNuovo" then table.remove(Compat.capOrder, i) end
+	end
+	-- il segnaposto dei testi nascosti è in inglese, come il resto del rapporto
+	T.eq(Diagnostics.HIDDEN, "<hidden>", "segnaposto in inglese")
 
 	SENT = {}
 	SlashCmdList.AZEROTHUNSPOKEN("debug")
