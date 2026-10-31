@@ -452,7 +452,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestPacks"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
@@ -484,6 +484,15 @@ check(m2["says_murmurs_pct"] < 10, f"M2: 'says' and 'murmurs' under 10% of the f
 check(m2["category_pct"].get("combat", 0) < 45, f"M2: combat under its quota ({m2['category_pct'].get('combat', 0)}%)")
 check(m2["category_pct"].get("exploration", 0) > 0, "M2: exploration speaks")
 check(m2["pick_mean_ms"] < 2, f"M2: PickEntry stays fast ({m2['pick_mean_ms']:.2f} ms)")
+
+# 9a-bis) scenario M6 of the analysis A1 (R4: #97, #98, Tests/scenario_return.py): enter Elwynn, die, come back. No
+# cheerful or ironic return line for a neutral or a cheerful character; gallows humour only for an ironic one
+import scenario_return  # noqa: E402
+for profile in ("neutral", "traveler"):
+    m6 = scenario_return.run(ADDON, profile, 10, "en")
+    check(m6["last_visit_bad"] == 10, f"M6 {profile}: the last visit ended badly in every run")
+    check(m6["light_spoken"] == 0 and m6["light_weight_share"] == 0,
+          f"M6 {profile}: no light return line after a death ({m6['light_spoken']}, {m6['light_weight_share']:.1%})")
 
 # 9b) language and regional packs from a saved Italian installation (#85, #101): only Italian is loaded, the region
 # of the character is built, and the memory is lower than with everything loaded
