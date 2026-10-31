@@ -58,6 +58,8 @@ JSON_COLUMNS = {"events", "styles", "depth", "tags", "motifs", "tier", "parts", 
 # monologues (#99): the rule field `order` is the column part_order (ORDER is an SQL keyword)
 MONOLOGUE_PARTS = (2, 3)
 PRIVATE_SPEAKERS = ("narrator", "inner")
+# D16 (#130, #163): a literary form (tag lore or genre_*) is never in a public voice (the engine's PUBLIC_SPEAKERS)
+PUBLIC_SPEAKERS = ("narrator", "character")
 TIERS = {"generic": 0, "situation": 1, "region": 1, "zone": 2, "subzone": 3, "landmark": 4}
 MAX_MOTIFS = 3
 # the emotions of R4 (Engine.EMOTIONS in Engine/RuleEngine.lua; Tests/check_archive.py checks the two lists match)
@@ -801,6 +803,9 @@ def check_content(con, id, stage="approve"):
                 problems.append("unknown motif: %s" % m)
     problems.extend(_emotion_problems(jload(r["tags"]) or [], jload(r["conditions"])))
     problems.extend(_monologue_problems(con, r))
+    literary = [t for t in (jload(r["tags"]) or []) if t == "lore" or str(t).startswith("genre_")]
+    if literary and r["speaker"] in PUBLIC_SPEAKERS:
+        problems.append("tag %s: a literary form is for private voices (inner, npc), not %s (D16)" % (literary[0], r["speaker"]))
     monologue = r["kind"] == "monologue"
     tier = jload(r["tier"])
     if tier is not None and tier not in TIERS and tier not in TIERS.values():

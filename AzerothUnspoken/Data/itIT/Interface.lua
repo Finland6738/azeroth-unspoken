@@ -44,6 +44,7 @@ NS:RegisterLanguage("it", {
 
 		-- Chat Gateway
 		gw_empty = "niente da inviare.",
+		gw_private_only = "questa frase è privata (un monologo o una forma letteraria): non va mai in chat.",
 		gw_reroll_empty = "nessuna proposta da cambiare.",
 		gw_reroll_editing = "stai modificando la proposta: chiudi l'editor (Esc) prima di cambiare frase.",
 		gw_reroll_kept = "la tua versione modificata è stata sostituita. Il testo era: %s",

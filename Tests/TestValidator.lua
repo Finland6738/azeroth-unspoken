@@ -472,3 +472,20 @@ T.run("#70, #71: i testi italiani di base non hanno accordi senza segnaposto né
 		end
 	end
 end)
+
+T.run("#163 (D16): a literary form in a public voice is an error", function()
+	local texts = { itIT = { ["lt.a"] = "inno", ["lt.b"] = "canto", ["lt.c"] = "iscrizione", ["lt.d"] = "ok", ["lt.e"] = "voce" } }
+	local r = Validate({ languages = { "itIT" }, registry = {
+		["lt.a"] = Good({ speaker = "narrator", tags = { "lore", "genre_hymn" } }),
+		["lt.b"] = Good({ speaker = "character", tags = { "genre_song" } }),
+		["lt.c"] = Good({ speaker = "inner", tags = { "lore", "genre_inscription" } }),
+		["lt.d"] = Good({ speaker = "character", tags = { "wry" } }),
+		["lt.e"] = Good({ speaker = "npc", tags = { "genre_verse" } }),
+	}, texts = texts })
+	local p = Has(r, "literaryPublic", "lt.a")
+	T.ok(p and p.level == "error" and p.msg:find("D16", 1, true), "narrator + lore: error")
+	T.ok(Has(r, "literaryPublic", "lt.b"), "character + genre_*: error")
+	T.ok(not Has(r, "literaryPublic", "lt.c"), "inner: allowed")
+	T.ok(not Has(r, "literaryPublic", "lt.e"), "npc: allowed")
+	T.ok(not Has(r, "literaryPublic", "lt.d"), "an ordinary tag: no error")
+end)

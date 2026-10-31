@@ -315,3 +315,35 @@ T.run("validator: a situation needs a declared lead and something to compose", f
 		if id == "test_bad" then table.remove(Engine.SITUATION_ORDER, i) end
 	end
 end)
+
+T.run("#153: a composite pick keeps the anti-repetition window of its event", function()
+	Reset()
+	NS.cdb.memory.recent = {}
+	for i = 1, 10 do
+		Engine:PickEntry("victory", NS:BuildContext(), (i % 2 == 0) and "say" or "emote")
+		ADVANCE(600)
+	end
+	local before = #(NS.cdb.memory.recent.victory or {})
+	T.ok(before >= 3, "ordinary picks fill the window of victory (" .. before .. ")")
+	for i = 1, 6 do
+		local ctx = NS:BuildContext()
+		ctx.situation = { close_call = true }
+		local rec = Engine:PickEntry("victory", ctx, "say", true)
+		T.ok(rec and rec.id:find("^sit%.") ~= nil, "a composite line: " .. tostring(rec and rec.id))
+		T.ok(#NS.cdb.memory.recent.victory >= before, "composite pick " .. i .. ": the window did not shrink ("
+			.. #NS.cdb.memory.recent.victory .. " of " .. before .. ")")
+		ADVANCE(600)
+	end
+	-- the composite line is in the window, with the recent ordinary lines still there
+	local ids = {}
+	for _, id in ipairs(NS.cdb.memory.recent.victory) do ids[id] = true end
+	local composite = 0
+	for id in pairs(ids) do if id:find("^sit%.") then composite = composite + 1 end end
+	T.ok(composite >= 1, "the composite line joins the window")
+	-- with an empty window the composite line still gets a window of its own size, as before
+	NS.cdb.memory.recent = {}
+	local ctx = NS:BuildContext()
+	ctx.situation = { close_call = true }
+	Engine:PickEntry("victory", ctx, "say", true)
+	T.eq(#NS.cdb.memory.recent.victory, 1, "an empty window: one entry")
+end)
