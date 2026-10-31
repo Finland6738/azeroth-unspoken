@@ -35,6 +35,61 @@ client (G1).
 - **Added: `/au button on`, `/au button off` and `/au button reset`** (back to the default place). `/au button` alone
   still shows or hides it, and now says which.
 
+### U-narrator: the narrator box and the chat proposal (#176, #173, #177, parts of #179 and #175)
+
+Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-06, UI-03, UI-07, the settings part of UI-09 and the pause glyph of UI-05). Nothing here is tested in the game client yet.
+
+- **Fixed: a proposal could be sent after it had left the narrator (#176).**
+  - While the Gateway holds a proposal, the narrator box shows it.
+  - A private line, a monologue or a story notice that arrives meanwhile goes to the history at once. The label says how many lines wait ("+1 in history"). They reach the box, oldest first, after the proposal is sent, discarded or expired; a line kept waiting more than two minutes stays only in the history.
+  - The speak key, the speak button, `/au speak` and **Send** all read the one pending proposal, which is the line on screen.
+  - A send the client blocks puts the proposal back on screen even when another line had taken the box.
+  - After a send, the history marks the proposal's own entry (with the edited text), not a line that came after it.
+- **Fixed: the opacity was applied twice and faded the text too (#173).**
+  - The setting is now the background's opacity only: 55–100%, default 80%. Saved values under 55% become 55%.
+  - The text always stays fully opaque; the frame alpha is used only for the fade-out.
+  - The voice label is 12 px or more.
+  - The panel row reads **Background opacity** and steps by 5%.
+- **Fixed: fixed time limits (#177).**
+  - The mouse over the narrator box stops the proposal's waiting time, not only the fade; it resumes where it was.
+  - New setting **Proposal waits**: 25, 60 or 120 s, or until dismissed (`chat.pendingSeconds`, 0 = until dismissed). The label counts the seconds down.
+  - New setting **Reading speed** (`ui.narrator.readingSpeed`, characters a second, default 14, about 0.07 s per UTF-8 character; was 0.03 s per byte).
+  - New setting **Reduce motion** (`ui.narrator.reduceMotion`): no fade.
+  - Story notices get the normal reading time and a place in the history (marked `notice`).
+- **Fixed: the settings help text sat on the third row of module buttons (#179, settings part).** It is anchored under the last row of the module grid. The rows are 26 units apart so that the three new rows fit.
+- **Fixed: the pause button showed a single bar (#175, pause glyph).** It reads **II**: `|` is the client's escape character. The `/au help` strings are another session's.
+- **Added:** strings `proposal_left`, `narrator_held`, `opt_waits`, `waits_forever`, `opt_reading`, `reading_cps`, `opt_motion` and `opt_motion_tip`, in English and Italian; `opt_alpha` reads "Background opacity".
+- **Tests:** `Tests/TestNarrator.lua` covers the held lines and their order, discard and x, the blocked send, the hover pause and countdown, "until dismissed", the reading time in UTF-8 characters, reduce motion, the background opacity and label size, the new settings rows and the help anchor. `Tests/TestChatGateway.lua` covers `SetHovered`, `PendingLeft` and the shared source of truth; `Tests/TestConfig.lua` the new limits.
+- **Docs:** [The Narrator](docs/wiki/The-Narrator.md), [Settings](docs/wiki/Settings.md), [Chat Gateway](docs/wiki/Chat-Gateway.md) and [ARCHITECTURE.md](docs/ARCHITECTURE.md). The narrator, proposal and settings mockups are regenerated from the new code.
+- **To check in game (G1):** the hover pause with a real mouse, the fade and "reduce motion", the **II** glyph, the label length in Italian with the countdown, and the settings canvas height with fourteen rows.
+
+### U-perf: selection speed and memory (issues #157 and #138)
+
+The selection does less work per pick and the registry uses less memory, **without changing a single pick**: the same seed and context give the same line ([ADR 0024](docs/adr/0024-selection-index-compact-registry-and-bounded-memory.md), "Update").
+
+- **Fixed (#157):** the "50% slower since R4" was mostly the benchmark. `Tests/SyntheticArchive.lua` clones rules drawn from all the registered ones, so the 35 rules R4 added made a different, heavier archive. On the same archive R4 cost +5% at 10,000 entries and +7% at today's size; that cost is gone now.
+- **Changed, engine:**
+  - **Shared rule shapes.** The fields that repeat across rules (pack, events, voice, form, category, depth, weight, cooldown, specificity, tier, monologue fields) live in one interned table, the rule's metatable. A rule table now holds 8 slots instead of 16. Reading `p.field` is unchanged; a write gives that rule its own copy; `pairs(p)` shows only the rule's own fields.
+  - **Shared conditions.** Rules with the same conditions share one table. `Engine:DropPack` releases shapes and conditions.
+  - **Memo of one pick** (`Engine.MEMO`). Each shared conditions table is checked once per pick. In a pick that weighs at least 128 rules, the weight factors are computed once per combination of descriptive fields, with the same operations in the same order. The union of the index groups is cached until the index changes. Smaller savings in `WeightedPick`, `TierPool`, `AnyUsable` and `Traits.Evaluate` (an empty profile).
+  - `Engine:SetWeightHook(factor, name, fn, pure)`: the new `pure` argument (true, or a function of the context) says that the hook reads only the context and the rule's descriptive fields. The hooks of the soul, emotions, interlocutor and relations are pure. The place hook is pure except in battlegrounds, arenas and boss fights.
+- **Changed, tools:**
+  - `Tests/bench_scale.py` prints the commit and the Lua instructions per pick (exact, independent of the machine's load).
+  - `--archive-dir` keeps the synthetic archives, so two versions measure the same rules.
+  - `Tests/trace_picks.py` has `--soul` and `--emotion`.
+  - `Tests/run_tests.py` prints the instructions per pick at 2,000 entries and warns above 1.25 times `Tests/perf_baseline.json`.
+- **Tests:** `Tests/TestScale.lua` runs the same seeded picks with the memo off and on (neutral; a soul with emotions; a hook that is not pure) and requires the same trace. It also checks shapes, copy on write, shared conditions, the cache and `DropPack`. Seven `trace_picks.py` configurations gave byte-identical traces before and after.
+- **Measured** (same archive, one language, median of three runs; instructions are exact):
+  - today's size: 0.68 → 0.49 ms per pick (18.3 → 14.8 thousand instructions), 5.5 → 5.7 MB.
+  - 10,000 entries: 1.66 → 1.16 ms, p95 4.96 → 2.96 ms; 23.3 → 17.2 MB.
+  - 50,000 entries: 7.71 → 3.20 ms, p95 27.0 → 10.9 ms (301 → 95 thousand instructions); 93.9 → 61.6 MB.
+  - Regional packs (`bench_packs.py`): one region 8.0 → 6.0 MB; every region kept 65.2 → 49.1 MB.
+- **Known limits:** the #138 targets at 50,000 entries are not met yet: p95 under 5 ms and memory under 40 MB. Registering 50,000 rules costs about 45% more Lua instructions. The base packs use 0.2 MB more. Nothing is measured in the client yet (D3, `/au prof`).
+
+### Funding: Ko-fi link
+
+- **Added: `.github/FUNDING.yml`** with the Ko-fi account, so GitHub shows a Sponsor button. A short "Support the project" section in the README (English and Italian) and on the wiki home page. Donations are optional, unlock nothing, and are never requested inside the addon.
+
 ### U-relations: the Relationships window fits the screen and shows its list (#171, #172, #184, parts of #179 and #180)
 
 Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-01, UI-02, UI-14, and the relationships parts of UI-09 and UI-10). Nothing here is tested in the game client yet.

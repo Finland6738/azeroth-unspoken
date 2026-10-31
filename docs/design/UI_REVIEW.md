@@ -465,7 +465,7 @@ current one, in the review or an issue, more than in the player's manual.
 | `narrator-paused.png` | paused: the header, the chat note, the dimmed speak button | The-Narrator |
 | `narrator-in-context.png` | the default position on a 1366×768 screen | Home, The-Narrator |
 | `narrator-it.png`, `narrator-inner-it.png` | the narrator in Italian | Languages, README.it |
-| `proposal.png`, `proposal-editor.png`, `proposal-sent.png`, `proposal-emote.png` | a chat proposal, its editor, after sending, an emote proposal | Chat-Gateway |
+| `proposal.png`, `proposal-held.png`, `proposal-editor.png`, `proposal-sent.png`, `proposal-emote.png` | a chat proposal (with its countdown), a proposal with a private line held in the history (#176), its editor, after sending, an emote proposal | Chat-Gateway |
 | `speak-button.png` | the speak button idle, waiting and paused, with tooltips | Chat-Gateway, Commands |
 | `wizard-1.png` … `wizard-7.png` | each wizard step (step 6 only with Total RP 3) | First-Run-Wizard |
 | `wizard-1-it.png`, `wizard-7-it.png` | wizard steps in Italian | First-Run-Wizard, Languages |

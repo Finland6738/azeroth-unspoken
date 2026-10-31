@@ -83,7 +83,15 @@ Its tooltip says what a left click will do now:
 
 ### How long a proposal waits
 
-A proposal waits **25 seconds**, and longer while you are editing it. When it expires, nothing is sent. If you had typed something, your text is printed in your chat window.
+A proposal waits **25 seconds** by default; the label of the narrator box counts the seconds down. You can choose 25, 60 or 120 seconds, or **until dismissed**, with **Proposal waits** in the [[settings panel|Settings]].
+
+- While the mouse is over the narrator box, the time stops; it resumes where it was when you move the mouse away.
+- While you are editing the proposal it does not expire, and after you close the editor the wait starts again.
+- When it expires, nothing is sent. If you had typed something, your text is printed in your chat window.
+
+### The line you send is the line you see
+
+While a proposal waits, it stays in the narrator box. Another line that arrives meanwhile (a thought of the inner voice, a monologue, a story notice) goes to the history at once and comes to the box only after the proposal is sent, discarded or expired. So the speak key, the speak button, `/au speak` and the **Send** button always send the line on screen, never one that has already left it. If the client blocks a send, the proposal comes back to the box.
 
 ## Channels
 

@@ -27,6 +27,7 @@ Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `1600
 - [Development and tests](#development-and-tests)
 - [Documentation](#documentation)
 - [Support and feedback](#support-and-feedback)
+- [Support the project](#support-the-project)
 - [License](#license)
 - [Credits](#credits)
 
@@ -256,6 +257,10 @@ The full index is [docs/README.md](docs/README.md). Starting points:
 - **Bugs and feature requests:** open an issue with one of the [issue forms](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose). The **Bug report** form is for something that does not work as expected (it asks for the addon version, the game client build and language, and what happened); the **Feature request** form is for suggesting a new feature or an improvement, described from the point of view of your roleplay. Do not paste other players' names, whispers, chat logs, account names or folder paths from your PC into an issue: use placeholders such as `<player>` or `<account>`.
 - **Feedback, ideas and questions:** use the [Feedback category of GitHub Discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback), for general feedback, open conversations before a formal request, or when you are not sure it is a bug.
 - Please write issues and feedback in **English** if you can; Italian is welcome too.
+
+## Support the project
+
+Azeroth Unspoken is free and will stay free: every feature is available to everyone. If you enjoy it and want to support its development, you can buy the author a coffee on [Ko-fi](https://ko-fi.com/finland6738). Donations are entirely optional, they unlock nothing, and the addon never asks for them in the game.
 
 ## License
 

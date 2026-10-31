@@ -17,6 +17,9 @@ local function Reset()
 	Narrator:Clear()
 	Narrator:ClearHistory()
 	NS.db.ui.narrator.historySize = 30
+	NS.db.ui.narrator.duration, NS.db.ui.narrator.readingSpeed, NS.db.ui.narrator.reduceMotion = 8, 14, false
+	NS.db.chat.pendingSeconds = 25
+	frame._s.mouseOver = false
 	ADVANCE(100)
 end
 local CTX = { player = "Garrosh" }
@@ -58,10 +61,13 @@ T.run("durata e dissolvenza", function()
 	Reset()
 	NS.db.ui.narrator.duration = 8
 	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
+	-- #177: 8 s plus 16 characters at 14 a second
+	T.ok(math.abs(Narrator.remaining - (8 + 16 / 14)) < 1e-9, "durata: base più tempo di lettura")
 	UPDATE(5)
 	T.ok(frame:IsShown(), "ancora visibile dopo 5 s")
-	UPDATE(2.5)
-	T.ok(frame:IsShown() and frame:GetAlpha() < NS.db.ui.narrator.alpha, "in dissolvenza verso la fine")
+	T.eq(frame:GetAlpha(), 1, "il riquadro è pieno finché non sbiadisce (#173)")
+	UPDATE(Narrator.remaining - 5 - 0.5)
+	T.ok(frame:IsShown() and frame:GetAlpha() < 1, "in dissolvenza verso la fine")
 	UPDATE(5)
 	T.ok(not frame:IsShown(), "sparisce da solo")
 	-- la durata è regolabile
@@ -76,14 +82,30 @@ end)
 
 T.run("opacità e dimensione del testo", function()
 	Reset()
-	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.5, 20
+	-- #173: the setting is the background's opacity, once; the text keeps full opacity
+	local bgAlpha
+	frame.bg.SetColorTexture = function(_, _, _, _, a) bgAlpha = a end
+	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.9, 20
 	Narrator:ApplySettings()
 	local _, size = frame.text:GetFont()
 	T.eq(size, 20, "dimensione del testo applicata")
+	T.eq(bgAlpha, 0.9, "opacità applicata allo sfondo, una volta sola")
 	Gateway:Propose(Rec("say", "inner"), CTX, {})
 	UPDATE(0.1)
-	T.eq(frame:GetAlpha(), 0.5, "opacità applicata")
-	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.85, 14
+	T.eq(frame:GetAlpha(), 1, "il testo non sbiadisce con l'opacità")
+	-- a value under 0.55 (saved before #173) never makes the background thinner than 0.55
+	NS.db.ui.narrator.alpha = 0.2
+	Narrator:ApplySettings()
+	T.eq(bgAlpha, 0.55, "sfondo almeno 0.55")
+	-- the voice label is 12 px or more
+	for _, fontSize in ipairs({ 10, 14, 20 }) do
+		NS.db.ui.narrator.fontSize = fontSize
+		Narrator:ApplySettings()
+		local _, labelSize = frame.label:GetFont()
+		T.ok(labelSize >= 12, "etichetta della voce di almeno 12 px (testo " .. fontSize .. "): " .. labelSize)
+	end
+	frame.bg.SetColorTexture = nil
+	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.8, 14
 	Narrator:ApplySettings()
 end)
 
@@ -125,7 +147,9 @@ T.run("pausa immediata", function()
 	T.ok(NS:Trigger("greet"), "una richiesta esplicita funziona anche in pausa")
 	AzerothUnspoken_TogglePause()
 	T.ok(not NS.paused, "ripresa")
-	T.eq(frame.pauseBtn:GetText(), "||", "pulsante di pausa")
+	T.eq(frame.pauseBtn:GetText(), "II", "pulsante di pausa")
+	-- #175: "|" is the client's escape character: "||" shows a single bar
+	T.ok(not frame.pauseBtn:GetText():find("|", 1, true), "il simbolo della pausa non contiene |")
 	-- il pulsante del riquadro
 	frame.pauseBtn:Click()
 	T.ok(NS.paused, "il pulsante del riquadro mette in pausa")
@@ -185,12 +209,22 @@ T.run("posizione e blocco", function()
 	T.eq(NS.db.ui.narrator.pos, nil, "posizione ripristinata")
 end)
 
-T.run("avviso breve", function()
+T.run("#177: un avviso delle storie dura come le altre frasi ed entra in cronologia", function()
 	Reset()
 	local n = #Narrator.history
-	Narrator:Notice("Prova")
-	T.ok(frame:IsShown() and frame.text:GetText() == "Prova", "avviso mostrato")
-	T.eq(#Narrator.history, n, "non entra in cronologia")
+	Narrator:Notice("Una storia attende la tua scelta.")
+	T.ok(frame:IsShown() and frame.text:GetText() == "Una storia attende la tua scelta.", "avviso mostrato")
+	T.eq(Narrator.remaining, Narrator:ReadingTime("Una storia attende la tua scelta."), "durata normale")
+	T.ok(Narrator.remaining >= NS.db.ui.narrator.duration, "non più corta della durata scelta")
+	T.eq(#Narrator.history, n + 1, "entra in cronologia")
+	T.ok(Narrator.history[#Narrator.history].notice, "segnato come avviso")
+	-- with the box off it still reaches the history, and nothing is printed
+	NS.db.output.privateNarrator = false
+	SENT = {}
+	Narrator:Notice("Un'altra storia.")
+	T.eq(#Narrator.history, n + 2, "in cronologia anche col riquadro spento")
+	T.eq(#SENT, 0, "nessun messaggio")
+	NS.db.output.privateNarrator = true
 end)
 
 T.run("pulsante 'pronuncia' e tasti", function()
@@ -478,12 +512,12 @@ T.run("#17: il mouse sopra il riquadro lo tiene visibile", function()
 	Tick(remaining + 10)
 	T.ok(frame:IsShown(), "con il mouse sopra resta visibile oltre la durata")
 	T.ok(Narrator.elapsed <= remaining, "il tempo resta fermo")
-	T.eq(frame:GetAlpha(), NS.db.ui.narrator.alpha, "e non sbiadisce")
+	T.eq(frame:GetAlpha(), 1, "e non sbiadisce")
 	-- #21: tolto il mouse, il riquadro sbiadisce (non sparisce a opacità piena)
 	frame._s.mouseOver = false
 	Tick(0.1)
 	T.ok(frame:IsShown(), "tolto il mouse: ancora visibile per la dissolvenza")
-	T.ok(frame:GetAlpha() < NS.db.ui.narrator.alpha and frame:GetAlpha() > 0, "tolto il mouse: opacità in calo")
+	T.ok(frame:GetAlpha() < 1 and frame:GetAlpha() > 0, "tolto il mouse: opacità in calo")
 	Tick(3)
 	T.ok(not frame:IsShown(), "tolto il mouse svanisce")
 	-- nessun metodo né funzione globale: il riquadro funziona come prima (falso)
@@ -641,4 +675,202 @@ T.run("#14: 'Nella chat' copia la proposta nella casella della chat senza inviar
 	T.ok(Gateway:GetPending() ~= nil, "la proposta resta")
 	ChatFrame_OpenChat = saved
 	P.group = false
+end)
+
+---------------------------------------------------------------------------
+-- U fixes: #176 (one source of truth for the proposal), #173, #177, #179 (settings)
+---------------------------------------------------------------------------
+T.run("#176: una frase privata non toglie la proposta dal riquadro", function()
+	Reset()
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	local p = Gateway:GetPending()
+	Gateway:Propose(Rec("say", "inner", "Un pensiero privato."), CTX, {})
+	Narrator:Notice("Una storia attende.")
+	T.eq(Gateway:GetPending(), p, "la proposta è ancora in attesa")
+	T.eq(Narrator.proposal, p, "il narratore mostra ancora quella")
+	T.eq(frame.text:GetText(), "«Andiamo.»", "sullo schermo c'è la proposta")
+	T.ok(frame.bar:IsShown(), "con la barra Invia")
+	T.ok(frame.label:GetText():find("+2 in cronologia", 1, true), "l'etichetta dice che due frasi aspettano: " .. frame.label:GetText())
+	T.eq(Narrator.history[#Narrator.history - 1].text, "Un pensiero privato.", "la frase privata è subito in cronologia")
+	-- the speak key sends exactly what is on screen
+	Press()
+	T.eq(SENT[#SENT], "SAY: Andiamo.", "il tasto invia la frase mostrata")
+	T.eq(Narrator.history[#Narrator.history - 2].sentTo, "SAY", "in cronologia è segnata la proposta, non la frase dopo")
+	T.eq(Narrator.history[#Narrator.history - 1].sentTo, nil, "la frase privata non risulta inviata")
+	T.ok(frame.label:GetText():find("inviato in /s", 1, true), "il riquadro conferma l'invio")
+	-- then the held lines, in order
+	Tick(3.5)
+	T.eq(frame.text:GetText(), "Un pensiero privato.", "poi la frase trattenuta")
+	T.ok(not frame.bar:IsShown(), "senza barra")
+	Tick(Narrator.remaining + 0.5)
+	T.eq(frame.text:GetText(), "Una storia attende.", "poi l'avviso")
+	Tick(Narrator.remaining + 1)
+	T.ok(not frame:IsShown(), "e il riquadro si chiude")
+end)
+
+T.run("#176: dopo uno scarto le frasi trattenute seguono; la x le chiude; quelle vecchie restano in cronologia", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	frame.discardBtn:Click()
+	T.eq(Gateway:GetPending(), nil, "scartata")
+	Tick(4)
+	T.eq(frame.text:GetText(), "Un pensiero.", "la frase trattenuta compare")
+	-- the x discards the proposal and the held lines
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	Gateway:Propose(Rec("say", "inner", "Un altro pensiero."), CTX, {})
+	for _, c in ipairs(frame.header.children) do
+		if c:GetText() == "x" then c:Click() end
+	end
+	T.ok(not frame:IsShown() and #Narrator.held == 0, "la x chiude tutto")
+	-- a line held for more than two minutes is not shown any more (it is in the history)
+	NS.db.chat.pendingSeconds = 0
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	Gateway:Propose(Rec("say", "inner", "Un pensiero lontano."), CTX, {})
+	Tick(150, 5)
+	Gateway:Discard()
+	Tick(5)
+	T.ok(not frame:IsShown(), "una frase trattenuta troppo a lungo non compare")
+	T.eq(Narrator.history[#Narrator.history].text, "Un pensiero lontano.", "ma è in cronologia")
+end)
+
+T.run("#176: un invio bloccato rimette la proposta sullo schermo", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	BLOCK_EVENT_LATE = true
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	Gateway:PlayerAction(function() Gateway:SendPending() end)
+	T.eq(Gateway:GetPending(), nil, "sembra inviata")
+	-- another line takes the box before the client's event arrives
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	T.eq(frame.text:GetText(), "Un pensiero.", "un'altra frase nel riquadro")
+	ADVANCE(1)
+	BLOCK_EVENT_LATE = false
+	local p = Gateway:GetPending()
+	T.ok(p ~= nil, "la proposta torna in attesa")
+	T.eq(Narrator.proposal, p, "e il narratore la mostra di nuovo")
+	T.eq(frame.text:GetText(), "«Andiamo.»", "con il suo testo")
+	T.ok(frame.bar:IsShown(), "e la barra")
+	Gateway:Discard()
+end)
+
+T.run("#177: il mouse sopra il riquadro ferma l'attesa della proposta; conto alla rovescia visibile", function()
+	Reset()
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	T.ok(frame.label:GetText():find("· 25 s", 1, true), "conto alla rovescia: " .. frame.label:GetText())
+	Tick(10)
+	T.ok(frame.label:GetText():find("· 15 s", 1, true), "che scende: " .. frame.label:GetText())
+	Tick(10)
+	frame._s.mouseOver = true
+	Tick(60)
+	T.ok(Gateway:GetPending() ~= nil, "con il mouse sopra non scade")
+	T.ok(frame.label:GetText():find("· 5 s", 1, true), "e il conto si ferma: " .. frame.label:GetText())
+	frame._s.mouseOver = false
+	Tick(3)
+	T.ok(Gateway:GetPending() ~= nil, "tolto il mouse riprende da dove era")
+	Tick(3)
+	T.eq(Gateway:GetPending(), nil, "e poi scade")
+end)
+
+T.run("#177: 'La proposta attende' fino alla chiusura", function()
+	Reset()
+	NS.db.locale = "it"
+	NS.db.chat.pendingSeconds = 0
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	Tick(600, 10)
+	T.ok(Gateway:GetPending() ~= nil and frame:IsShown(), "dopo dieci minuti è ancora lì")
+	T.ok(not frame.label:GetText():find("%d s"), "nessun conto alla rovescia: " .. frame.label:GetText())
+	frame.discardBtn:Click()
+	T.eq(Gateway:GetPending(), nil, "si chiude solo con un gesto")
+end)
+
+T.run("#177: tempo di lettura per carattere UTF-8, velocità e 'riduci il movimento'", function()
+	Reset()
+	NS.db.ui.narrator.duration = 8
+	T.eq(Narrator:ReadingTime("èèè"), 8 + 3 / 14, "tre caratteri, non sei byte")
+	local long = string.rep("a", 140)
+	T.eq(Narrator:ReadingTime(long), 18, "140 caratteri a 14 al secondo: 10 s in più")
+	NS.db.ui.narrator.readingSpeed = 8
+	T.eq(Narrator:ReadingTime(long), 8 + 140 / 8, "più lenta, più tempo")
+	NS.db.ui.narrator.readingSpeed = 14
+	-- reduce motion: full opacity to the end, then gone
+	NS.db.ui.narrator.reduceMotion = true
+	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
+	Tick(Narrator.remaining - 0.5)
+	T.ok(frame:IsShown() and frame:GetAlpha() == 1, "nessuna dissolvenza")
+	Tick(1)
+	T.ok(not frame:IsShown(), "poi sparisce")
+	NS.db.ui.narrator.reduceMotion = false
+end)
+
+T.run("#177, #179: le nuove righe delle impostazioni e l'aiuto sotto la griglia dei moduli", function()
+	Reset()
+	NS.db.locale = "en"
+	-- the panel rewrites its labels when it is shown
+	local panels = FindWidgets(function(w) return w.name == NS.name and w.scripts.OnShow ~= nil end)
+	local panel = panels[#panels]   -- the panel built last is the one in use
+	T.ok(panel ~= nil, "pannello trovato")
+	panel.scripts.OnShow(panel)
+	local function Row(prefix)
+		for _, b in ipairs(panel.children) do
+			if b.kind == "Button" and (b:GetText() or ""):find(prefix, 1, true) == 1 then return b end
+		end
+	end
+	local waits = Row("Proposal waits")
+	T.ok(waits ~= nil, "riga 'Proposal waits'")
+	local seen = {}
+	for _ = 1, 4 do
+		waits:Click()
+		table.insert(seen, NS.db.chat.pendingSeconds)
+	end
+	T.eq(table.concat(seen, ","), "60,120,0,25", "25, 60, 120 s, fino alla chiusura")
+	NS.db.chat.pendingSeconds = 120
+	waits:Click()
+	T.eq(waits:GetText(), "Proposal waits: until dismissed", "l'etichetta lo dice")
+	local reading = Row("Reading speed")
+	T.ok(reading ~= nil and reading:GetText() == "Reading speed: 14 characters/s", "riga della velocità di lettura")
+	reading:Click()
+	T.eq(NS.db.ui.narrator.readingSpeed, 18, "più veloce")
+	local motion = Row("Reduce motion")
+	T.ok(motion ~= nil, "riga 'Reduce motion'")
+	motion:Click()
+	T.eq(NS.db.ui.narrator.reduceMotion, true, "accesa")
+	motion:Click()
+	T.eq(NS.db.ui.narrator.reduceMotion, false, "spenta")
+	T.ok(Row("Background opacity") ~= nil, "l'opacità dice che è dello sfondo")
+	T.eq(#NS.Config:Validate(NS.db), 0, "valori validi")
+
+	-- #179: the help text is anchored under the last row of the module grid, not at a fixed height
+	local grid = {}
+	for _, b in ipairs(panel.children) do
+		local pt = b.kind == "Button" and b._s.points and b._s.points[1]
+		if pt and pt[1] == "TOPLEFT" and type(pt[2]) == "number" and pt[2] == 16 and pt[3] <= -440 then
+			table.insert(grid, { button = b, y = pt[3] })
+		end
+	end
+	table.sort(grid, function(a, b) return a.y < b.y end)
+	T.ok(#grid == 3, "tre righe di moduli: " .. #grid)
+	local help = {}
+	for _, w in ipairs(panel.children) do
+		local pt = w.kind == "FontString" and w._s.points and w._s.points[1]
+		if pt and type(pt[2]) == "table" and pt[2].parent == panel and pt[3] == "BOTTOMLEFT" then table.insert(help, w) end
+	end
+	T.ok(#help == 1, "un testo d'aiuto ancorato sotto un pulsante")
+	T.eq(help[1]._s.points[1][2], grid[1].button, "sotto l'ultima riga della griglia")
+	-- every settings row ends above the module title (-418): fourteen rows of 26
+	for _, b in ipairs(panel.children) do
+		local pt = b.kind == "Button" and b._s.points and b._s.points[1]
+		if pt and pt[1] == "TOPLEFT" and type(pt[2]) == "number" and pt[3] > -410 and pt[3] < -40 then
+			T.ok(pt[3] - 24 >= -418, "riga sopra il titolo dei moduli: " .. tostring(b:GetText()))
+		end
+	end
+	NS.db.locale = "it"
+	NS.db.chat.pendingSeconds = 25
+	NS.db.ui.narrator.readingSpeed = 14
 end)

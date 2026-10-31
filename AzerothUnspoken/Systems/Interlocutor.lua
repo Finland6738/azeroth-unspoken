@@ -472,7 +472,7 @@ function I.Factor(entry, ctx)
 	end
 	return f
 end
-Engine:SetWeightHook("C", "other", I.Factor)
+Engine:SetWeightHook("C", "other", I.Factor, true)   -- pure: only the tags of the line (#157)
 
 -- Il registro segue il modo di parlare e il ruolo di chi abbiamo davanti: un venditore non declama come un antico
 -- re (GDD §5.3).

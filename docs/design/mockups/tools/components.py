@@ -12,28 +12,36 @@ CHANNEL = {"SAY": "/s", "EMOTE": "/e", "YELL": "/y", "PARTY": "/p", "RAID": "/ra
 
 NARRATOR_TEXT = {
     "en": {"proposal_for": "proposal for %s", "sent_to": "sent to %s", "send": "Send", "edit": "Edit",
-           "another": "Another", "discard": "Discard", "copy": "To chat"},
+           "another": "Another", "discard": "Discard", "copy": "To chat", "left": "%d s", "held": "+%d in history"},
     "it": {"proposal_for": "proposta per %s", "sent_to": "inviato in %s", "send": "Invia", "edit": "Modifica",
-           "another": "Un'altra", "discard": "Scarta", "copy": "Nella chat"},
+           "another": "Un'altra", "discard": "Scarta", "copy": "Nella chat", "left": "%d s", "held": "+%d in cronologia"},
 }
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Narrator (UI/NarratorFrame.lua): 440 wide, BOTTOM of UIParent + 240, height = 24 + text + 10 (+30 editor, +28 bar)
+# Narrator (UI/NarratorFrame.lua): 440 wide, BOTTOM of UIParent + 240, height = 24 + text + 10 (+30 editor, +28 bar).
+# The opacity setting is the background's only, at least 0.55 (#173); the frame alpha is only the fade-out. A waiting
+# proposal shows its countdown (`left`, None = until dismissed) and the lines held back while it waits (#176, #177).
 # ---------------------------------------------------------------------------------------------------------------
 def narrator(left, bottom, speaker, text, lang="en", proposal=None, sent=None, editor=None, editor_sel=False,
-             paused=False, alpha=0.85, font=14, fade=1.0, history=None, hover_btn=None, history_alpha=0.85):
+             paused=False, alpha=0.8, font=14, fade=1.0, history=None, hover_btn=None, history_alpha=0.8,
+             left_s=25, held=0):
     t = NARRATOR_TEXT[lang]
     label = VOICE[lang][speaker]
     if proposal:
         label += " · " + t["proposal_for"] % CHANNEL.get(proposal, proposal)
+        if left_s is not None and editor is None:
+            label += " · " + t["left"] % left_s
     elif sent:
         label += " · " + t["sent_to"] % CHANNEL.get(sent, sent)
+    if held:
+        label += " · " + t["held"] % held
     pad = 10 + (30 if editor is not None else 0) + (28 if proposal else 0)
     smalls = (btn("x", 22, 18, right=2, top=1, font=11) + btn("H", 22, 18, right=26, top=1, font=11)
-              + btn(">" if paused else "||", 22, 18, right=50, top=1, font=11))
+              + btn(">" if paused else "II", 22, 18, right=50, top=1, font=11))
     header = (f'<div class="abs" style="left:0;right:0;top:0;height:20px">'
-              + fs(f"|cff{VOICE_COLOR[speaker]}{label}|r", "gfns", left=8, top=4, extra=f";font-size:{max(10, font - 3)}px")
+              + fs(f"|cff{VOICE_COLOR[speaker]}{label}|r", "gfns", mode="trunc", left=8, right=76, top=4,
+                   extra=f";font-size:{max(12, font - 2)}px")
               + smalls + "</div>")
     body = (f'<div style="position:relative;padding:24px 8px {pad}px 8px;font-size:{font}px;line-height:1.25;'
             f'color:#fff;text-shadow:1px 1px 0 #000;white-space:pre-wrap">{wow(text)}</div>')
@@ -47,13 +55,13 @@ def narrator(left, bottom, speaker, text, lang="en", proposal=None, sent=None, e
             bar.append(btn(label_b, w, 22, state="hover" if hover_btn == key else "", left=x, top=1))
             x += w + 4
         extra += f'<div class="abs" style="left:8px;right:8px;bottom:6px;height:24px">{"".join(bar)}</div>'
-    nar = (f'<div class="f" style="position:relative;width:440px;opacity:{alpha * fade:.3f}">'
-           f'<div class="bg" style="background:rgba(0,0,0,{0.65 * alpha:.3f})"></div>{header}{body}{extra}</div>')
+    nar = (f'<div class="f" style="position:relative;width:440px;opacity:{fade:.3f}">'
+           f'<div class="bg" style="background:rgba(0,0,0,{max(0.55, alpha):.3f})"></div>{header}{body}{extra}</div>')
     hist = ""
     if history is not None:
         lines = "".join(f'<div style="white-space:pre-wrap">{wow(l)}</div>' for l in history)
         hist = (f'<div class="f" style="position:relative;width:440px;height:190px;margin-bottom:4px">'
-                f'<div class="bg" style="background:rgba(0,0,0,{0.8 * history_alpha:.3f})"></div>'
+                f'<div class="bg" style="background:rgba(0,0,0,{max(0.8, history_alpha):.3f})"></div>'
                 f'<div class="abs chatfont" style="left:8px;right:8px;top:8px;bottom:8px;overflow:hidden;display:flex;'
                 f'flex-direction:column;justify-content:flex-end;line-height:1.25;text-shadow:1px 1px 0 #000">{lines}</div></div>')
     return (f'<div class="abs" style="left:{left}px;bottom:{bottom}px;width:440px;display:flex;flex-direction:column">'
@@ -198,7 +206,7 @@ def settings(left, top, reload_needed=False, auto_state="off", tooltip_row=None)
     out = [fs("Azeroth Unspoken 0.1.0", "gfnl", left=16, top=16)]
 
     def row(c, i, label, stepper=False, state=""):
-        y = 48 + (i - 1) * 28
+        y = 48 + (i - 1) * 26     # ROW = 26 (#177: fourteen rows)
         if stepper:
             out.append(btn(label, 238, 24, left=col[c - 1], top=y))
             out.append(btn("-", 24, 24, left=col[c - 1] + 240, top=y))
@@ -208,30 +216,32 @@ def settings(left, top, reload_needed=False, auto_state="off", tooltip_row=None)
 
     c1 = ["Addon: on", "Phrase language: English", ("Intensity: 50", True), "Style depth: Literary",
           "Pause between lines: 45 s", "Chat: private narrator only", f"Automatic sending: {auto_state}",
-          "Default channel: automatic", "'Speak' button: on", "Name from Total RP 3: on", "Pause the narrator",
-          "Reopen the setup guide"]
-    c2 = ["Narrator box: on", ("Text duration: 8 s", True), ("Opacity: 85%", True), ("Text size: 14", True),
+          "Default channel: automatic", "Proposal waits: 25 s", "'Speak' button: on", "Name from Total RP 3: on",
+          "Pause the narrator", "Reopen the setup guide"]
+    c2 = ["Narrator box: on", ("Text duration: 8 s", True), "Reading speed: 14 characters/s",
+          ("Background opacity: 80%", True), ("Text size: 14", True), "Reduce motion: off",
           "Position locked: off", "Move the box back to the middle", "History", "Try the narrator",
           "Character soul...", "Character journal...", "Relationships...", "Read others' Total RP 3: off"]
     for c, items in ((1, c1), (2, c2)):
         for i, it in enumerate(items, 1):
             label, step = (it if isinstance(it, tuple) else (it, False))
             row(c, i, label, step, state="hover" if tooltip_row == (c, i) else "")
-    out.append(fs("Modules (* = coming, not active yet)", "gfn", left=16, top=388))
+    out.append(fs("Modules (* = coming, not active yet)", "gfn", left=16, top=418))
     mods = ["Personal: on", "World: on", "NPC dialogues: on", "Memory: on", "Emotions: on", "Relationships: on",
             "Stories: on", "Social *: on", "Chat proposals: on", "Audio *: off"]
     for i, m in enumerate(mods):
-        out.append(btn(m, 150, 24, left=16 + (i % 4) * 156, top=410 + (i // 4) * 28))
+        out.append(btn(m, 150, 24, left=16 + (i % 4) * 156, top=440 + (i // 4) * 26))
     help_ = ""
     if reload_needed:
-        out.append(btn("Reload now", 290, 24, left=330, top=384))
+        out.append(btn("Reload now", 290, 24, left=330, top=414))
         help_ = ("lines in Italiano arrive with the next reload of the interface: until then they stay in English. "
                  "Type /reload or use the button in the settings.\n\n")
     help_ += ("Private narrator only (default): lines appear in the box and stay visible to you alone. Nothing goes to chat."
               "\n\nLines available in this language: 4182, from 9 packs.\n\nIn the open world WoW only allows /say after a "
               "key press or a click: the addon never writes to chat on its own, except in the 'automatic' mode you chose "
               "yourself. The 'speak' key and the immediate pause are bound under Options > Keybindings > AddOns.\n\nCommands: /au help")
-    out.append(fs(help_, "gfhs", left=16, top=474, width=600))
+    # #179: under the last row of the module grid (440 + 2 * 26 + 24 + 10), not over it
+    out.append(fs(help_, "gfhs", left=16, top=526, width=600))
     return frame("".join(out), left=left, top=top, width=660, height=640)
 
 

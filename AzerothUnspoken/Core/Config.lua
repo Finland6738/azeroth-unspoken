@@ -38,14 +38,16 @@ Config.CHAT_LIMITS = {
 ---@class AUChatSettings
 ---@field mode string PRIVATE | PREVIEW | CONFIRM_TO_SEND | AUTO_ONLY_IF_ALLOWED
 ---@field channel string "auto" oppure SAY | EMOTE | PARTY | RAID | GUILD | INSTANCE_CHAT
----@field pendingSeconds number quanto resta in attesa una proposta
+---@field pendingSeconds number quanto resta in attesa una proposta (0: finché il giocatore non la chiude)
 ---@field floodSeconds number pausa minima tra due invii
 ---@field maxPerMinute integer invii al minuto, qualunque canale
 ---@field autoMaxPerMinute integer invii automatici al minuto
 
 ---@class AUNarratorSettings
 ---@field duration number secondi di lettura di base
----@field alpha number opacità, 0.2-1
+---@field readingSpeed number caratteri al secondo per il tempo di lettura
+---@field alpha number opacità dello sfondo, 0.55-1 (il testo resta pieno)
+---@field reduceMotion boolean nessuna dissolvenza
 ---@field fontSize integer
 ---@field historySize integer
 ---@field locked boolean il riquadro non si sposta
@@ -126,7 +128,7 @@ Config.defaults = {
 	chat = {
 		mode = "PRIVATE",        -- PRIVATE | PREVIEW | CONFIRM_TO_SEND | AUTO_ONLY_IF_ALLOWED
 		channel = "auto",        -- auto: /s per il personaggio, /e per il narratore; oppure un canale fisso
-		pendingSeconds = 25,     -- quanto resta in attesa una proposta
+		pendingSeconds = 25,     -- quanto resta in attesa una proposta; 0 = finché il giocatore non la chiude (#177)
 		floodSeconds = 4,        -- pausa minima tra due invii
 		maxPerMinute = 6,        -- invii al minuto, qualunque canale
 		autoMaxPerMinute = 2,    -- invii automatici al minuto
@@ -178,8 +180,10 @@ Config.defaults = {
 		showButton = true,
 		wizardDone = false,
 		narrator = {
-			duration = 8,        -- secondi di lettura di base, più qualche istante per la lunghezza del testo
-			alpha = 0.85,        -- opacità dello sfondo e del testo, 0.2-1
+			duration = 8,        -- secondi di lettura di base, più il tempo per leggere il testo (readingSpeed)
+			readingSpeed = 14,   -- caratteri al secondo (#177): circa 0.07 s per carattere UTF-8
+			alpha = 0.8,         -- opacità dello sfondo, 0.55-1; il testo resta sempre pieno (#173)
+			reduceMotion = false, -- true: nessuna dissolvenza, il riquadro compare e sparisce (#177)
 			fontSize = 14,
 			historySize = 30,
 			locked = false,      -- true: il riquadro non si sposta
@@ -220,12 +224,13 @@ Config.rules = {
 	["arcs.maxActive"] = { min = 1, max = 2, integer = true },
 	["chat.mode"] = { enum = Config.CHAT_MODES },
 	["chat.channel"] = { enum = Config.CHAT_CHANNELS },
-	["chat.pendingSeconds"] = { min = 5, max = 120 },
+	["chat.pendingSeconds"] = { min = 0, max = 120 },
 	["chat.floodSeconds"] = { min = 1, max = 60 },
 	["chat.maxPerMinute"] = { min = 1, max = 30, integer = true },
 	["chat.autoMaxPerMinute"] = { min = 1, max = 10, integer = true },
 	["ui.narrator.duration"] = { min = 2, max = 30 },
-	["ui.narrator.alpha"] = { min = 0.2, max = 1 },
+	["ui.narrator.readingSpeed"] = { min = 5, max = 40 },
+	["ui.narrator.alpha"] = { min = 0.55, max = 1 },
 	["ui.narrator.fontSize"] = { min = 10, max = 28, integer = true },
 	["ui.narrator.historySize"] = { min = 5, max = 100, integer = true },
 	["ui.dialogue.fontSize"] = { min = 10, max = 24, integer = true },
