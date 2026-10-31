@@ -12,7 +12,11 @@ Commands (see CONTRIBUTING.md, "Writing content through the archive"):
     drafts FILE.jsonl     add intentions as drafts, one JSON object per line
     submit|reject|approve|retire|restore ID...   move intentions along draft -> review -> approved -> retired
     export                write the pack folders from the approved intentions (and drop them from the overlay)
-    check                 prove the round trip: folders -> archive -> folders must give an empty diff
+    arcs [ID]             the story arcs: steps, choices and journal texts (all of them, or one as JSON)
+    scripts [KEY]         the NPC Alive dialogue scripts: nodes and replies (all of them, or one as JSON)
+    check                 prove the round trip (folders -> archive -> folders must give an empty diff) and check the arcs
+                          and the dialogue scripts: unreachable nodes, dangling transitions, missing languages, replies
+                          that put words in the player's mouth
     report                coverage and gap report (issue #88): Markdown, JSON, job summary; never fails the build
 """
 import argparse
@@ -114,7 +118,9 @@ def cmd_build(a):
     n = con.execute("SELECT COUNT(*) FROM intention").fetchone()[0]
     print("built %s: %d intentions" % (os.path.relpath(a.db, a.root), n))
     for s in con.report["skipped"]:
-        print("not archived (rules computed by code): %s" % s["path"])
+        print("not archived (%s): %s" % (s["reason"], s["path"]))
+    for t in ("arc", "script"):
+        print("%ss: %d" % (t, con.execute("SELECT COUNT(*) FROM " + t).fetchone()[0]))
     return 1 if con.report["problems"] else 0
 
 
@@ -203,6 +209,33 @@ def cmd_export(a):
     return 0
 
 
+def cmd_structures(a):
+    con = open_db(a)
+    table, key = ("arc", "id") if a.cmd == "arcs" else ("script", "key")
+    if a.id:
+        r = con.execute("SELECT * FROM %s WHERE %s = ?" % (table, key), (a.id,)).fetchone()
+        if r is None:
+            print("unknown %s: %s" % (table, a.id), file=sys.stderr)
+            return 1
+        print("%s  pack %s" % (r[key], r["pack_id"]))
+        print(json.dumps(json.loads(r["definition"]), ensure_ascii=False, indent=2))
+        if table == "arc":
+            for t in con.execute("SELECT lang, text FROM arc_text WHERE arc_id = ? ORDER BY lang", (a.id,)):
+                print("journal texts %s:" % t["lang"])
+                print(json.dumps(json.loads(t["text"]), ensure_ascii=False, indent=2))
+        return 0
+    if table == "arc":
+        for r in con.execute("SELECT a.id, a.pack_id, COUNT(s.ord) steps FROM arc a LEFT JOIN arc_step s ON s.arc_id = a.id"
+                             " GROUP BY a.id ORDER BY a.id"):
+            langs = ",".join(x[0] for x in con.execute("SELECT lang FROM arc_text WHERE arc_id = ? ORDER BY lang", (r["id"],)))
+            print("%-14s %-12s %d steps  texts: %s" % (r["id"], r["pack_id"], r["steps"], langs or "-"))
+    else:
+        for r in con.execute("SELECT k.key, k.pack_id, (SELECT COUNT(*) FROM script_node n WHERE n.script_key = k.key) nodes,"
+                             " (SELECT COUNT(*) FROM script_reply p WHERE p.script_key = k.key) replies FROM script k ORDER BY k.key"):
+            print("%-14s %-16s %d nodes  %d replies" % (r["key"], r["pack_id"], r["nodes"], r["replies"]))
+    return 0
+
+
 def cmd_check(a):
     diffs = store.roundtrip(a.root)
     for p in diffs:
@@ -211,8 +244,14 @@ def cmd_check(a):
     for i in canon[:20]:
         print("canonical rendering differs:", i, file=sys.stderr)
     print("round trip: %s; canonical rendering: %s" % ("empty diff" if not diffs else "%d files differ" % len(diffs),
-                                                       "same data" if not canon else "%d intentions differ" % len(canon)))
-    return 1 if diffs or canon else 0
+                                                       "same data" if not canon else "%d entries differ" % len(canon)))
+    con = open_db(a)
+    problems = store.check_structures(con)
+    for level, ref, msg in problems:
+        print("%s: %s: %s" % (level, ref, msg), file=sys.stderr)
+    errors = [p for p in problems if p[0] == "error"]
+    print("arcs and dialogue scripts: %d errors, %d warnings" % (len(errors), len(problems) - len(errors)))
+    return 1 if diffs or canon or errors else 0
 
 
 def cmd_report(a):
@@ -274,6 +313,10 @@ def main(argv=None):
         p.set_defaults(fn=cmd_move)
     sub.add_parser("export").set_defaults(fn=cmd_export)
     sub.add_parser("check").set_defaults(fn=cmd_check)
+    for name in ("arcs", "scripts"):
+        p = sub.add_parser(name)
+        p.add_argument("id", nargs="?")
+        p.set_defaults(fn=cmd_structures)
     p = sub.add_parser("report")
     p.add_argument("--k", type=int, help="minimum eligible intentions per event x context cell")
     p.add_argument("--state", choices=store.STATES)

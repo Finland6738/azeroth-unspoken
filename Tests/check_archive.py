@@ -22,6 +22,7 @@ import coverage  # noqa: E402
 import cli  # noqa: E402
 import packfiles  # noqa: E402
 import store  # noqa: E402
+import structures  # noqa: E402
 
 os.environ["AU_ARCHIVE_NOW"] = "2026-11-01T10:00:00Z"
 FAILURES = []
@@ -73,9 +74,11 @@ def roundtrip():
     check(con.report["problems"] == [], "the import has no problems %s" % con.report["problems"][:3])
     n = con.execute("SELECT COUNT(*) FROM intention").fetchone()[0]
     check(n >= 800, "the archive holds the literal rules of the base and the regional packs (%d intentions)" % n)
-    check({s["pack_id"] for s in con.report["skipped"]} == {"base_dialogues", "base_arcs"},
-          "only the two packs whose rules are computed by code are left out (%s)" %
+    check(con.report["skipped"] == [], "no file is left out: no rules are computed by code any more (%s)" %
           sorted(str(s["pack_id"]) for s in con.report["skipped"]))
+    check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_arcs'").fetchone()[0] == 33 and
+          con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_dialogues'").fetchone()[0] == 169,
+          "the 33 lines of the Story Arcs and the 169 of NPC Alive are archived (#143)")
     ids = {r["id"] for r in con.execute("SELECT id FROM intention")}
     check(all(i in ids for i in ("zone.gen.01", "victory.long.01", "zone.durotar.01", "ctx.act.duel")),
           "rules with code (func), mixed tables and regional rules are all there")
@@ -90,6 +93,269 @@ def roundtrip():
           "the context keys follow the selection index of ADR 0024")
     check(all(r["state"] == "approved" for r in con.execute("SELECT state FROM intention")),
           "everything imported from the folders is approved")
+
+
+LUA_CAPTURE = """
+function()
+  local cap = { packs = {}, arcs = {}, dialogues = {}, texts = {}, arcTexts = {} }
+  local NS = {}
+  function NS:RegisterPack(t) table.insert(cap.packs, t) end
+  function NS:RegisterArcs(t) table.insert(cap.arcs, t) end
+  function NS:RegisterDialogues(t) table.insert(cap.dialogues, t) end
+  function NS:AddTexts(lang, map, pack) table.insert(cap.texts, { lang = lang, map = map, pack = pack }) end
+  function NS:AddArcTexts(lang, map, pack) table.insert(cap.arcTexts, { lang = lang, map = map, pack = pack }) end
+  return cap, NS
+end
+"""
+
+
+def loaded_by_the_game():
+    """What the game gets from the data files of the arcs and the dialogues, read by running the Lua (lupa, with a fake
+    `NS` that only records what is registered); None when lupa is not installed."""
+    try:
+        from lupa import lua51
+    except ImportError:
+        return None
+    lua = lua51.LuaRuntime(unpack_returned_tuples=True)
+    cap, NS = lua.eval(LUA_CAPTURE)()
+    lua.globals().AzerothUnspoken = NS   # the language folders take the base from this global
+    load = lua.eval("function(src, n) return assert(loadstring(src, n)) end")
+    for rel in ("AzerothUnspoken/Data/RegistryArcs.lua", "AzerothUnspoken/Data/RegistryDialogues.lua",
+                "AzerothUnspoken/Data/Arcs.lua", "AzerothUnspoken/Data/Dialogues.lua",
+                "AzerothUnspoken_itIT/Arcs.lua", "AzerothUnspoken_enUS/Arcs.lua",
+                "AzerothUnspoken_itIT/Dialogues.lua", "AzerothUnspoken_enUS/Dialogues.lua"):
+        load(packfiles.read(os.path.join(ROOT, rel)), "@" + rel)("AzerothUnspoken", NS)
+
+    def conv(v):
+        if lua51.lua_type(v) != "table":
+            return v
+        keys = list(v.keys())
+        if not keys:
+            return []
+        if sorted(keys, key=str) == list(range(1, len(keys) + 1)):
+            return [conv(v[i]) for i in range(1, len(keys) + 1)]
+        return {str(k): conv(v[k]) for k in keys}
+    return {k: [conv(x) for x in cap[k].values()] for k in ("packs", "arcs", "dialogues", "texts", "arcTexts")}
+
+
+def same(a, b):
+    """Equal as data: an empty table is the same empty list or dict, 1 is 1.0."""
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(same(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(same(x, y) for x, y in zip(a, b))
+    if a in ([], {}) and b in ([], {}):
+        return True
+    return a == b
+
+
+def equivalence():
+    """What the game loads from the files that used to build their rules in code is what the archive holds: the same
+    registry, events, arcs, dialogue scripts and texts (#143). The reader of the archive never runs Lua, lupa does."""
+    print("EQUIVALENCE (the archive holds what the game loads)")
+    game = loaded_by_the_game()
+    if game is None:
+        print("  (lupa is not installed: not checked)")
+        return
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    for pack in game["packs"]:
+        mine = {r["id"]: store.get_rule(con, r["id"]) for r in con.execute("SELECT id FROM intention WHERE pack_id = ?", (pack["id"],))}
+        theirs = {id: packfiles.rule_data(id, d) for id, d in pack["registry"].items()}
+        check(sorted(mine) == sorted(theirs) and all(same(json.loads(json.dumps(mine[i])), theirs[i]) for i in theirs),
+              "%s: the %d rules the game registers are the rules of the archive, field by field" % (pack["id"], len(theirs)))
+        check(len(pack["events"]) >= 3, "%s: its events are declared (%d)" % (pack["id"], len(pack["events"])))
+    arcs = game["arcs"][0]["arcs"]
+    check(sorted(arcs) == sorted(r[0] for r in con.execute("SELECT id FROM arc")) and
+          all(same(arcs[i], store.get_arc(con, i)) for i in arcs), "the %d arcs the game registers are those of the archive" % len(arcs))
+    scripts = game["dialogues"][0]["scripts"]
+    check(sorted(scripts) == sorted(r[0] for r in con.execute("SELECT key FROM script")) and
+          all(same(scripts[k], store.get_script(con, k)) for k in scripts),
+          "the %d dialogue scripts the game registers are those of the archive" % len(scripts))
+    check(game["dialogues"][0]["pack"] == "base_dialogues" and game["arcs"][0]["pack"] == "base_arcs", "the packs of the structures are declared")
+    for t in game["arcTexts"]:
+        check(t["pack"] == "base_arcs" and all(same(t["map"][i], store.get_arc_text(con, i, t["lang"])) for i in t["map"]),
+              "the journal texts in %s are those of the archive" % t["lang"])
+    for t in game["texts"]:
+        if t["pack"] not in ("base_arcs", "base_dialogues"):
+            continue
+        ok = True
+        for id, v in t["map"].items():
+            lines = v if isinstance(v, list) else [v]
+            norm = [{"text": x} if isinstance(x, str) else {"text": x["1"], **({"depth": x["depth"]} if "depth" in x else {})} for x in lines]
+            ok = ok and norm == store.get_variants(con, id, t["lang"])
+        check(ok, "%s, %s: the %d texts of the lines are those of the archive" % (t["pack"], t["lang"], len(t["map"])))
+
+
+def structures_content():
+    """The Story Arcs and NPC Alive structures (#143): imported as data, checked, exported with an empty diff; the
+    validator refuses what it should; an edited arc or script is rendered again in place and a new one is appended."""
+    print("ARCS AND DIALOGUE SCRIPTS (#143)")
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    arcs = [r[0] for r in con.execute("SELECT id FROM arc ORDER BY id")]
+    scripts = [r[0] for r in con.execute("SELECT key FROM script ORDER BY key")]
+    check(arcs == ["capitals", "fallen", "knownface", "path"], "the four arcs are archived: %s" % arcs)
+    check(scripts == ["flightmaster", "guard", "innkeeper", "merchant", "trainer"], "the five dialogue scripts are archived: %s" % scripts)
+    check(con.execute("SELECT COUNT(*) FROM arc_text").fetchone()[0] == 8 and
+          con.execute("SELECT COUNT(*) FROM arc_step").fetchone()[0] == 13, "the journal texts (two languages) and the 13 steps are there")
+    check(con.execute("SELECT COUNT(*) FROM script_node").fetchone()[0] == 27 and
+          con.execute("SELECT COUNT(*) FROM script_reply").fetchone()[0] == 22,
+          "the nodes and the replies are indexed for queries")
+    check([r[0] for r in con.execute("SELECT script_key FROM script_node WHERE event = 'npcd_guard_danger'")] == ["guard"],
+          "a node is found by its event")
+    path = store.get_arc(con, "path")
+    check(path["steps"][0]["when"]["any"][0] == {"race": "Dwarf", "place": {"any": [{"mapID": 1426}, {"zone": "Dun Morogh"}]}} and
+          len(path["steps"][1]["when"]["any"]) == 8, "a local constant of data (STARTER_ZONE) is read as the data it holds")
+    inn = store.get_script(con, "innkeeper")
+    check(inn["choices"]["news"]["label"] == {"it": "Che notizie corrono?", "en": "What news is going round?"} and
+          inn["choices"]["news"]["flag"] == "asked_news", "the replies keep their labels per language, flag and relation")
+    problems = store.check_structures(con)
+    check(problems == [], "the base arcs and scripts pass every check %s" % problems[:3])
+    res = coverage.compute(con, coverage.load_thresholds())
+    check(res["not_archived"] == 0 and res["structures"]["arcs"] == 4 and res["structures"]["scripts"] == 5 and
+          res["structures"]["errors"] == [], "the report counts 0 intentions not archived and the structures")
+    md = coverage.to_markdown(res)
+    check("Intentions not archived (rules computed by code): **0**" in md and "Story arcs: **4**" in md, "and says so in the headline")
+
+    # ---- the checks, on definitions written to be wrong
+    langs = ["itIT", "enUS"]
+    texts = {l: store.get_arc_text(con, "capitals", l) for l in langs}
+    good = store.get_arc(con, "capitals")
+    check(structures.check_arc("capitals", good, texts, langs) == [], "an arc that is right has no problem")
+
+    def arc_problems(mutate, text_langs=langs):
+        d = json.loads(json.dumps(good))
+        mutate(d)
+        return " | ".join(m for lv, ref, m in structures.check_arc("capitals", d, {l: texts[l] for l in text_langs}, langs))
+    check("dangling transition" in arc_problems(lambda d: d["steps"][1].update(to="NOWHERE")), "a transition to a state that is not declared")
+    lost = arc_problems(lambda d: d["steps"].pop(2))
+    check("no step leaves the state JOURNEY" in lost and "unreachable from LOCKED" in lost,
+          "a state with no way out, and the one after it unreachable")
+    check("only to the next state" in arc_problems(lambda d: d["steps"][0].update(to="JOURNEY")), "no jumps between states")
+    check("dangling choice 'nothing'" in arc_problems(lambda d: d["steps"][2].update(choose="nothing")), "a step that asks a choice that is not defined")
+    check("unknown event 'tuesday'" in arc_problems(lambda d: d["steps"][0].update(on=["tuesday"])), "an unknown event")
+    check("missing the journal texts in enUS" in arc_problems(lambda d: None, ["itIT"]), "a language of the pack without journal texts")
+    check("unknown field 'reward'" in arc_problems(lambda d: d.update(reward=1)), "no rewards: an unknown field")
+    check("text 'states.JOURNEY' (itIT) missing" in " | ".join(m for _, _, m in structures.check_arc(
+        "capitals", good, {"itIT": dict(texts["itIT"], states={}), "enUS": texts["enUS"]}, langs)), "a state without its account")
+    check("no line for the event arc_step" in " | ".join(m for _, _, m in structures.check_arc(
+        "capitals", good, texts, langs, {("arc_open", "DISCOVERED")})), "a step without a line is a warning: the arc advances in silence")
+
+    raw = {k: store.get_script(con, k) for k in scripts}
+    speakers = {json.loads(r["events"])[0]: {"npc"} for r in con.execute("SELECT events FROM intention WHERE pack_id = 'base_dialogues'")}
+
+    def script_problems(mutate, key="innkeeper"):
+        d = json.loads(json.dumps(raw))
+        mutate(d[key])
+        return [(lv, m) for lv, ref, m in structures.check_script(key, d, langs, speakers) if ref == key]
+    check(structures.check_script("innkeeper", raw, langs, speakers) == [], "a script that is right has no problem")
+    out = script_problems(lambda d: d["nodes"].update(lost={"event": "npcd_innkeeper_open"}))
+    check(out == [("warning", "node 'lost' is unreachable from 'open'")], "an unreachable node is found: %s" % out)
+    out = script_problems(lambda d: d["choices"]["news"].update(go="nowhere"))
+    check(any("dangling transition, the node 'nowhere' does not exist" in m for lv, m in out), "a reply that leads to a node that does not exist")
+    out = script_problems(lambda d: d["nodes"]["open"].update(choices=["news", "ghost"]))
+    check(any("dangling reply 'ghost'" in m for lv, m in out), "a node that offers a reply that is not defined")
+    out = script_problems(lambda d: d["nodes"].update(open={"event": "npcd_innkeeper_open", "choices": ["news"]},
+                                                      news={"event": "npcd_innkeeper_news", "choices": ["more"]},
+                                                      more={"event": "npcd_innkeeper_more", "choices": ["news"]}))
+    check(any("no reply closes the dialogue" in m for lv, m in out), "a loop with no way out is a warning")
+    out = script_problems(lambda d: d["choices"]["news"]["label"].pop("en"))
+    check(any("missing the text 'en'" in m for lv, m in out), "a reply without a text in a language of the pack")
+    out = script_problems(lambda d: d["nodes"]["sit"].update(event="npcd_innkeeper_nothing"))
+    check(any("no line for the event 'npcd_innkeeper_nothing'" in m for lv, m in out), "a node whose event nobody speaks")
+    out = script_problems(lambda d: d["choices"]["news"].update(label={"it": "Mi sento solo.", "en": "I feel alone."}))
+    check(sum("puts words in the player's mouth" in m for lv, m in out) == 2 and all(lv == "error" for lv, m in out),
+          "a reply that states a feeling is an error in each language")
+    out = script_problems(lambda d: d["choices"]["news"].update(label={"it": "Mi sento solo.", "en": "I feel alone."}, editable=True))
+    check(out == [], "unless it is marked editable")
+    out = script_problems(lambda d: d["choices"]["news"].update(label={"it": "Ti senti solo, qui?", "en": "Do you feel alone here?"}))
+    check(out == [], "a question is neutral, even about a feeling")
+    check(structures.neutral("I am looking for a place to rest.", "en") and not structures.neutral("I'm afraid.", "en") and
+          structures.neutral("Cerco un posto per riposare.", "it") and not structures.neutral("Ho paura.", "it"),
+          "an action is neutral, a feeling is not")
+    import re
+    lua = packfiles.read(os.path.join(ROOT, "AzerothUnspoken", "Systems", "NPCAlive.lua"))
+    block = lua[lua.index("N.PUTS_WORDS = {"):lua.index("N.OFFER_KINDS")]
+    in_game = {m.group(1): re.findall(r'"([^"]+)"', m.group(2)) for m in re.finditer(r"(\w+) = \{([^}]*)\}", block.split("{", 1)[1])}
+    check(in_game == structures.PUTS_WORDS, "the list of phrases is the game's (Systems/NPCAlive.lua)")
+
+    # ---- an edited arc, a new arc, an edited and a new script, new lines: written in place, round trip empty
+    tmp = tempfile.mkdtemp(prefix="au-archive-struct-")
+    try:
+        root, overlay = copy_repo(tmp)
+        db = os.path.join(tmp, "build", "authoring.sqlite")
+        c = store.build_db(":memory:", root, overlay)
+        before = {p: packfiles.read(os.path.join(root, p)) for p in (r[0] for r in c.execute("SELECT DISTINCT path FROM source_file"))}
+        d = store.get_arc(c, "path")
+        d["steps"][1]["wait"] = 300
+        c.execute("UPDATE arc SET definition = ? WHERE id = 'path'", (store.jdump(d),))
+        new_arc = {"choices": {"road": {"options": ["left", "right"]}},
+                   "steps": [{"from": "LOCKED", "to": "DISCOVERED", "on": ["level"], "when": {"levelMin": 20}},
+                             {"from": "DISCOVERED", "to": "REFLECTED", "on": ["player"], "wait": 60, "choose": "road"},
+                             {"from": "REFLECTED", "to": "RESOLVED", "on": ["zone"]}]}
+        c.execute("INSERT INTO arc VALUES ('crossing', 'base_arcs', ?)", (store.jdump(new_arc),))
+        for lang, t in (("itIT", "Il bivio"), ("enUS", "The Crossing")):
+            c.execute("INSERT INTO arc_text VALUES ('crossing', ?, ?)", (lang, store.jdump({
+                "title": t, "summary": t + ".", "states": {"DISCOVERED": "a", "REFLECTED": "b", "RESOLVED": "c"},
+                "choices": {"road": {"prompt": "Which?", "options": {"left": {"label": "Left", "note": "L."},
+                                                                      "right": {"label": "Right", "note": "R."}}}}})))
+        sc = store.get_script(c, "guard")
+        sc["choices"]["thanks"]["label"]["en"] = "Thanks."
+        c.execute("UPDATE script SET definition = ? WHERE key = 'guard'", (store.jdump(sc),))
+        c.execute("INSERT INTO script VALUES ('npc:295', 'base_dialogues', ?)", (store.jdump(
+            {"npcID": 295, "extends": "innkeeper", "nodes": {"bye": {"event": "npcd_innkeeper_bye"}}}),))
+        written = store.export_folders(c, root)
+        check(sorted(written) == ["AzerothUnspoken/Data/Arcs.lua", "AzerothUnspoken/Data/Dialogues.lua",
+                                  "AzerothUnspoken_enUS/Arcs.lua", "AzerothUnspoken_itIT/Arcs.lua"],
+              "only the files that changed are written: %s" % written)
+        arcs_lua = packfiles.read(os.path.join(root, "AzerothUnspoken/Data/Arcs.lua"))
+        check("wait = 300" in arcs_lua and "wait = 120" not in arcs_lua and "crossing = {" in arcs_lua and
+              arcs_lua.count("capitals = {") == 1 and arcs_lua.count("-- Le tre porte") == 1,
+              "the edited arc is rendered again in place, the new one is appended, the comments stay")
+        dlg = packfiles.read(os.path.join(root, "AzerothUnspoken/Data/Dialogues.lua"))
+        check('en = "Thanks."' in dlg and '["npc:295"] = {' in dlg and dlg.count("-- IL LOCANDIERE") == 1, "the same for the scripts")
+        en = packfiles.read(os.path.join(root, "AzerothUnspoken_enUS/Arcs.lua"))
+        old_en = before["AzerothUnspoken_enUS/Arcs.lua"]
+        check(en.count("NS:AddTexts(") == 1 and en.count("NS:AddArcTexts(") == 1 and "crossing = {" in en and
+              en.index("crossing = {") < en.index("NS:AddTexts("), "a language file with two tables keeps both, the new journal text in its own")
+        check(en[en.index("NS:AddTexts("):] == old_en[old_en.index("NS:AddTexts("):], "and the lines after it are untouched, byte for byte")
+        bad = lua_syntax_ok([os.path.join(root, p) for p in written])
+        check(bad is None or bad == [], "the files written are valid Lua 5.1")
+        check(store.roundtrip(root) == [] and store.roundtrip(root, canonical=True) == [],
+              "the written folders round-trip with an empty diff, canonical rendering included")
+        again = store.build_db(":memory:", root, overlay)
+        check(store.get_arc(again, "crossing") == new_arc and store.get_script(again, "npc:295")["npcID"] == 295 and
+              store.get_arc(again, "path")["steps"][1]["wait"] == 300 and again.report["problems"] == [],
+              "read back, they are the data that was written")
+        again.close()
+        c.close()
+
+        # lines of an arc and of a dialogue go through the review flow like any other
+        def run(*args):
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                return cli.main(["--root", root, "--overlay", overlay, "--db", db] + list(args))
+        drafts = [
+            {"id": "arc.path.refl.test", "pack": "base_arcs", "event": "arc_step", "speaker": "inner", "styles": ["intimate"],
+             "depth": ["natural", "literary", "elevated"], "conditions": {"arc": {"id": "path", "state": "REFLECTED", "choice": "silence"}},
+             "author": "ai-test", "texts": {"enUS": ["Quiet, here."], "itIT": ["Silenzio, qui."]}},
+            {"id": "npcd.innkeeper.sit.test", "pack": "base_dialogues", "event": "npcd_innkeeper_sit", "speaker": "npc",
+             "styles": ["everyday"], "tags": ["other.role:innkeeper"], "weight": 1,
+             "conditions": {"other": {"role": "innkeeper"}}, "author": "ai-test",
+             "texts": {"enUS": ["Sit, sit."], "itIT": ["Siediti pure."]}}]
+        with open(os.path.join(tmp, "drafts.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+            f.write("\n".join(json.dumps(x) for x in drafts) + "\n")
+        check(run("drafts", os.path.join(tmp, "drafts.jsonl")) == 0 and run("approve", "arc.path.refl.test", "npcd.innkeeper.sit.test") == 0 and
+              run("export") == 0, "a draft line of an arc and one of a dialogue are approved and exported")
+        reg = packfiles.read(os.path.join(root, "AzerothUnspoken/Data/RegistryArcs.lua"))
+        check('["arc.path.refl.test"]' in reg and 'choice = "silence"' in reg and
+              '"Quiet, here."' in packfiles.read(os.path.join(root, "AzerothUnspoken_enUS/Arcs.lua")) and
+              '"Siediti pure."' in packfiles.read(os.path.join(root, "AzerothUnspoken_itIT/Dialogues.lua")),
+              "the rules and the texts land in the files of their pack and language, the arc lines after the journal texts")
+        check(store.roundtrip(root) == [] and store.roundtrip(root, canonical=True) == [], "still an empty diff")
+        check(run("check") == 0, "the `check` command passes on the written folders")
+        check(run("arcs") == 0 and run("scripts") == 0 and run("arcs", "path") == 0 and run("scripts", "innkeeper") == 0 and
+              run("arcs", "nothing") == 1, "the commands `arcs` and `scripts` list and show them")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
 
 
 def world_content():
@@ -440,6 +706,8 @@ def report():
 
 
 roundtrip()
+equivalence()
+structures_content()
 world_content()
 emotion_content()
 monologue_content()

@@ -91,6 +91,27 @@ N.MAX_CHOICES = 3          -- risposte mostrate (GDD §7.3)
 N.MAX_TURNS = 12           -- battute al massimo in un dialogo: un copione sbagliato non gira all'infinito
 N.LABEL_BYTES = 70         -- lunghezza massima di una risposta
 N.FLAG_PREFIX = "npcd_"
+-- Risposte che mettono parole in bocca al giocatore (ADR 0020, punto 3): un sentimento, un tratto, una decisione morale, una
+-- promessa. Frasi di parole intere, in minuscolo, solo lettere e cifre (l'apostrofo è uno spazio: "I'm afraid" è "i m afraid").
+-- Una domanda è sempre neutra; una risposta che il giocatore potrà riscrivere dichiara `editable = true`. È un controllo
+-- per i casi evidenti; è la stessa lista di tools/archive/structures.py (Tests/check_archive.py controlla che coincidano).
+N.PUTS_WORDS = {
+	en = {
+		"i feel", "i felt", "i love", "i loved", "i hate", "i hated", "i fear", "i miss", "i regret",
+		"i swear", "i promise", "i forgive", "i despise", "i admire", "i envy", "i believe",
+		"i will always", "i am afraid", "i m afraid", "i am sad", "i m sad", "i am happy", "i m happy",
+		"i am angry", "i m angry", "i am proud", "i m proud", "i am ashamed", "i m ashamed", "i am a",
+		"i m a", "i am an", "i m an", "my heart", "my soul", "my fear", "my shame", "my honor",
+		"my honour", "never forget"
+	},
+	it = {
+		"mi sento", "amo", "odio", "temo", "ho paura", "mi manca", "mi pento", "giuro", "prometto",
+		"perdono", "disprezzo", "ammiro", "invidio", "credo", "sono un", "sono una", "sono triste",
+		"sono felice", "sono stanco", "sono stanca", "sono arrabbiato", "sono arrabbiata", "sono fiero",
+		"sono fiera", "sono spaventato", "sono spaventata", "non mi fido", "non perdono", "il mio cuore",
+		"il mio dolore"
+	},
+}
 -- interazioni che proporranno il dialogo da sole (le quest restano di Blizzard: nessuna offerta sopra una quest)
 N.OFFER_KINDS = { gossip = true, merchant = true, taxi = true, trainer = true, binder = true, banker = true }
 
@@ -98,6 +119,7 @@ N.state = "idle"
 N.session = nil            -- AUDialogueSession
 N.last = nil               -- { reason, chosen, who } dell'ultimo dialogo chiuso
 N.scripts = {}             -- [chiave] = AUDialogueScript
+N.scriptPack = {}          -- [chiave] = id del pacchetto che li dichiara (se lo dice)
 N.resolved = {}            -- cache degli script con `extends` risolto
 N.offered = {}             -- [npcID] = GetTime() dell'ultima offerta automatica
 N.log = {}                 -- transizioni dell'ultimo dialogo: { stato, motivo }
@@ -116,11 +138,13 @@ local function Frame() return NS.DialogueFrame end
 ---------------------------------------------------------------------------
 ---Registra i copioni dei dialoghi. `{ scripts = { [chiave] = AUDialogueScript } }`: la chiave è l'archetipo
 ---("innkeeper") o "npc:<npcID>" per un NPC specifico (che di solito riprende l'archetipo con `extends`).
----@param def { scripts: table<string, AUDialogueScript> }
+---`pack` (the id of the pack the scripts belong to) is how the authoring archive files them (#143); the game does not need it.
+---@param def { pack?: string, scripts: table<string, AUDialogueScript> }
 function NS:RegisterDialogues(def)
 	for key, s in pairs(type(def) == "table" and def.scripts or EMPTY) do
 		if type(key) == "string" and type(s) == "table" then
 			N.scripts[key] = s
+			if type(def.pack) == "string" then N.scriptPack[key] = def.pack end
 			N.resolved = {}
 			-- le battute dei nodi escono solo dentro un dialogo
 			for _, node in pairs(s.nodes or EMPTY) do
@@ -166,6 +190,19 @@ end
 function N.FlagName(key, flag)
 	local short = key:gsub("^npc:", "")
 	return N.FLAG_PREFIX .. short .. "_" .. flag
+end
+
+---Una risposta mette parole in bocca al giocatore? (vedi N.PUTS_WORDS; una domanda è sempre neutra)
+---@param label string
+---@param lang string codice breve ("it", "en")
+---@return boolean
+function N.PutsWords(label, lang)
+	if label:find("?", 1, true) then return false end
+	local text = " " .. label:lower():gsub("[^a-z0-9]+", " "):gsub("^ +", ""):gsub(" +$", "") .. " "
+	for _, phrase in ipairs(N.PUTS_WORDS[lang] or EMPTY) do
+		if text:find(" " .. phrase .. " ", 1, true) then return true end
+	end
+	return false
 end
 
 ---Controlla i copioni (per il validatore e i test). Restituisce { level, key, msg }.
@@ -242,6 +279,9 @@ function N:Check()
 				else
 					if #label > self.LABEL_BYTES then Add("error", key, ("risposta '%s' (%s): più di %d byte"):format(cid, lang, self.LABEL_BYTES)) end
 					if label:find("[{}]") then Add("error", key, ("risposta '%s' (%s): niente segnaposto nelle risposte"):format(cid, lang)) end
+					if not c.editable and N.PutsWords(label, lang) then
+						Add("error", key, ("risposta '%s' (%s): mette parole in bocca al giocatore (un sentimento, un tratto, una decisione o una promessa): renderla una domanda o un'azione, o `editable = true`"):format(cid, lang))
+					end
 					local ok, why = Engine.IsValidUTF8(label)
 					if not ok then Add("error", key, ("risposta '%s' (%s): %s"):format(cid, lang, why)) end
 				end

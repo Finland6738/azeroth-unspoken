@@ -732,7 +732,7 @@ AzerothUnspoken:RegisterPack({
 AzerothUnspoken:RegisterNPCs({
     [990001] = { name = "Oste di Prova", role = "innkeeper", temperament = "gruff", speech = "terse" },
 })
-AzerothUnspoken:RegisterDialogues({ scripts = {
+AzerothUnspoken:RegisterDialogues({ pack = "oste_prova", scripts = {
     ["npc:990001"] = {
         extends = "innkeeper",           -- the base script: `news`, `bye` nodes, `leave` replies...
         role = "innkeeper", npcID = 990001, start = "open",
@@ -776,7 +776,7 @@ AzerothUnspoken:RegisterPack({
                  ["cant.bye.01"] = "See you soon." },
     },
 })
-AzerothUnspoken:RegisterDialogues({ scripts = {
+AzerothUnspoken:RegisterDialogues({ pack = "cantiniere", scripts = {
     banker = {                       -- a new archetype: the key is the role
         role = "banker", start = "open",
         nodes = {
@@ -796,7 +796,16 @@ AzerothUnspoken:RegisterDialogues({ scripts = {
 (The lines can use `speech`, `temperament`, `npcID`, `isKnown`, `relation` and `remembered` to tell characters and
 relationships apart, as the base ones in `Data/RegistryDialogues.lua` do.)
 
-- **Neutral replies, one to three per node** (at most three appear; `when = { … }` hides one). Questions and actions, never a feeling, a character trait or a moral decision attributed to the character; at most 70 bytes, no placeholders, IT and EN.
+**Scripts are data, not code.** `RegisterDialogues` takes `{ pack = "<the pack id>", scripts = { [key] = { role, npcID,
+extends, start, nodes, choices } } }`. `pack` is the id of the pack the scripts belong to: the game does not need it, but
+the authoring archive files the scripts under it (it is how the base `Data/Dialogues.lua` is archived, #143). The
+fields of a node are `event` and `choices` (the ids of the replies it offers); those of a reply are `label` (`{ it = …, en
+= … }`, the text of each language of the pack), `go` (the node it leads to; none ends the dialogue), `flag`, `relation`,
+`when` and `editable`. Write every script as a **literal table** (no helper function, no loop that builds replies): a
+reply shared by two scripts is written in both. That is what lets the archive read, check and write them back
+(see [Authoring archive](#authoring-archive-nothing-changes-for-external-packs)).
+
+- **Neutral replies, one to three per node** (at most three appear; `when = { … }` hides one). Questions and actions, never a feeling, a character trait or a moral decision attributed to the character; at most 70 bytes, no placeholders, IT and EN. The validator (`badDialogue`) and the archive (`check`) refuse a reply that states a feeling, a trait, a decision or a promise ("I feel…", "Mi sento…", "I swear…", "Ho paura…": the list is `NPCAlive.PUTS_WORDS`), unless it is a question or it declares **`editable = true`**, which says the player may rewrite it (the engine only shows the label today; the field is how a later, editable reply is told apart from a neutral one).
 - **`flag`**: a local narrative flag, which becomes `npcd_<archetype or npcID>_<name>` in the S6 memory (at most 32 characters in all) and is read in the lines with `remembered`. Never a quest.
 - **`relation`**: an increment source from `Data/Relationships.lua` (`ambient`, `ambient_talk`: small, with daily caps).
 - Every path must be able to end (a node without replies, or a reply without `go`).
@@ -904,7 +913,7 @@ AzerothUnspoken:RegisterPack({                      -- the arc's lines (see belo
 - **The ending** (`RESOLVED`) leaves a permanent memory in Living Memory (`kind = "story"`, tags `arc`, `done` and the arc id: no text). Every state reached sets the flag `arc_<id>_<state>` (lowercase), which phrases read with `remembered`.
 - **No field for rewards or effects**: an unknown field in an arc or a step is a validator error (`reward`, `quest`…).
 
-**The arc's texts** (per language; in the base database they are in the `Data/<language>/…` files, in a pack you can give them as `texts` of `RegisterArcs`, as above, or with `AddArcTexts`). An excerpt of the shape, complete in the example:
+**The arc's texts** (per language; in the base database they are in the `Data/<language>/…` files, in a pack you can give them as `texts` of `RegisterArcs`, as above, or with `AddArcTexts`). `AddArcTexts(lang, { [arcId] = … }, packId)` takes the pack id as a third argument, as `AddTexts` does: the base language files pass it (`"base_arcs"`) and the archive needs it. An excerpt of the shape, complete in the example:
 
 ```lua
 AzerothUnspoken:AddArcTexts("itIT", { ponte = {
@@ -945,6 +954,8 @@ registry = {
 - They are not spoken by hand (`/au event arc_open` produces nothing): the engine makes them speak only for an arc's step.
 - Editorial rules (GDD §5.4, §7.5): original, no invented lore passed off as canon, no promise of consequences on the game. No rewards, "mission" or "loot" in the texts.
 - An arc with a wrong definition stays registered but never starts: `/au validate` says why.
+
+**Arcs are data, not code.** Write `arcs = { … }` as a literal table: states, steps (`from`, `to`, `on`, `wait`, `choose`, `when`) and choices spelled out. A condition shared by several steps can be a local constant of plain data at the top of the file (`local STARTER_ZONE = { … }`, then `any = STARTER_ZONE`: the archive reads it as the data it holds), but not the result of a function. The base arcs are written this way (`Data/Arcs.lua`, #143), which is what lets the authoring archive read them, check them (`python tools/archive/cli.py check`: unreachable states, dangling transitions, missing journal texts) and write them back.
 
 ## Placeholders
 
@@ -1127,8 +1138,12 @@ The base folders and the regional folders are read and written by the authoring 
 tool outside the game: it imports them, and writes the **approved** content back. The format described in this guide does
 not change, and an external pack does not need the archive. To stay readable by it, a base or regional file keeps the shape
 shown above: one `RegisterPack` (or `RegisterRegionalPack`) whose `registry` is a literal table of `["id"] = { ... }`, and
-one `AddTexts` (or `RegisterRegionalTexts`) per language file with literal variants. A file that computes its rules in code
-still works in the game, but it is left out of the archive and of its reports.
+one `AddTexts` (or `RegisterRegionalTexts`) per language file with literal variants. The Story Arcs and the NPC Alive
+scripts of the base are read the same way (#143): `RegisterArcs({ pack = …, arcs = { … } })` in `Data/Arcs.lua`,
+`RegisterDialogues({ pack = …, scripts = { … } })` in `Data/Dialogues.lua` and `AddArcTexts(lang, { … }, packId)` in the
+language folders, each with literal tables. A file that computes its rules in code (a helper function, a loop) still
+works in the game, but it is left out of the archive and of its reports, which list it as "not archived". Since #143 no
+file of the base is in that case.
 
 ## Previous format (converted on load)
 
@@ -1168,7 +1183,7 @@ a **warning** is advice.
 | `noText`, `emptyLang`, `emptyVariant` | error | no text, all variants empty, empty or non-string variant |
 | `missingLang` | error | the text is missing in a language of the pack (`languages`, or those the pack writes in) |
 | `placeholderMismatch` | error | IT and EN do not use the same placeholder combinations (`{spell}` is left out of the comparison: one language may name the spell and the other not) |
-| `badDialogue` | error or warning | a wrong `RegisterDialogues` script: missing node or reply, event without lines or not of the `npc` voice, invalid flag, text missing in a language, unreachable node |
+| `badDialogue` | error or warning | a wrong `RegisterDialogues` script: missing node or reply, event without lines or not of the `npc` voice, invalid flag, text missing in a language, unreachable node, a reply that puts words in the player's mouth (and is not a question or `editable`) |
 | `badArc` | error or warning | a wrong `RegisterArcs` arc: invalid id, states or steps, undefined choice, unknown field (including a reward), title, account or choices missing in a language; an `arc_open`/`arc_step`/`arc_resolve` rule without `arc = { id }` or with a state the arc does not have; warning: a step without lines (the arc advances in silence) |
 | `badPlaceholder` | error | unknown placeholder, malformed gender (`{g:}`, `{og:}`), unclosed brace, `{line}` outside frames, vocabulary inside vocabulary |
 | `frameNoLine` | error | a frame without `{line}` |

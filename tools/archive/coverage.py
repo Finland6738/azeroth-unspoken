@@ -74,6 +74,19 @@ def compute(con, thresholds=None, state="approved"):
     res["by_pack"] = by(lambda r: r["pack_id"])
     res["by_event"] = by(lambda r: json.loads(r["events"]), many=True)
     res["skipped"] = json.loads((con.execute("SELECT value FROM meta WHERE key = 'skipped'").fetchone() or ["[]"])[0])
+    # the intentions that are not archived: the packs whose rules are code, about as many as their texts (0 since #143)
+    res["not_archived"] = sum(max(s["texts"].values()) if s["texts"] else 0 for s in res["skipped"])
+    import store
+    problems = store.check_structures(con)
+    one = lambda sql: con.execute(sql).fetchone()[0]   # noqa: E731
+    res["structures"] = {
+        "arcs": one("SELECT COUNT(*) FROM arc"), "arc_steps": one("SELECT COUNT(*) FROM arc_step"),
+        "arc_texts": {r[0]: r[1] for r in con.execute("SELECT lang, COUNT(*) FROM arc_text GROUP BY lang ORDER BY lang")},
+        "scripts": one("SELECT COUNT(*) FROM script"), "nodes": one("SELECT COUNT(*) FROM script_node"),
+        "replies": one("SELECT COUNT(*) FROM script_reply"),
+        "errors": [{"ref": r, "message": m} for lv, r, m in problems if lv == "error"],
+        "warnings": [{"ref": r, "message": m} for lv, r, m in problems if lv == "warning"],
+    }
 
     # ---- M1: event x context cells. A part that is only said inside a monologue (#99: chainable "only") is not a line
     # of its event; the monologue is (its texts are its parts')
@@ -151,9 +164,14 @@ def to_markdown(res, top=25):
     lines += ["- Intentions missing a text in a language of their pack: **%d**" % len(res["missing_language"])]
     lines += ["- Events whose best pool of texts is under the repetition window (%d): **%d** of %d" %
               (res["repeat"]["window"], len(res["repeat"]["below_window"]), nev)]
+    lines += ["- Intentions not archived (rules computed by code): **%d**" % res["not_archived"]]
     for s in res["skipped"]:
         n = max(s["texts"].values()) if s["texts"] else 0
-        lines += ["- Not archived (rules computed by code): `%s`, about %d intentions" % (s["pack_id"] or s["path"], n)]
+        lines += ["  - `%s`, about %d intentions: %s" % (s["pack_id"] or s["path"], n, s["reason"])]
+    st = res["structures"]
+    lines += ["- Story arcs: **%d** (%d steps, journal texts %s); dialogue scripts: **%d** (%d nodes, %d replies); problems: "
+              "**%d** errors, %d warnings" % (st["arcs"], st["arc_steps"], ", ".join("%s %d" % kv for kv in st["arc_texts"].items()) or "none",
+                                              st["scripts"], st["nodes"], st["replies"], len(st["errors"]), len(st["warnings"]))]
     lines += [""]
     for title, key in (("By region", "by_region"), ("By voice", "by_voice"), ("By depth", "by_depth"),
                        ("By register", "by_register"), ("By pack", "by_pack")):
@@ -190,6 +208,10 @@ def warnings(res):
                     ", ".join("%s/%s (%d)" % (c["event"], c["context"], c["eligible"]) for c in res["gaps"][:5])))
     if res["missing_language"]:
         out.append("%d intentions miss a text in a language of their pack" % len(res["missing_language"]))
+    if res["not_archived"]:
+        out.append("%d intentions are not archived (their rules are computed by code)" % res["not_archived"])
+    for e in res["structures"]["errors"][:5]:
+        out.append("arc or dialogue script %s: %s" % (e["ref"], e["message"]))
     if res["repeat"]["below_window"]:
         out.append("%d events have a best pool of texts under the repetition window of %d" %
                    (len(res["repeat"]["below_window"]), res["repeat"]["window"]))

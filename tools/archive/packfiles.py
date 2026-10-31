@@ -9,6 +9,13 @@ A file is read as `prelude` + chunks + `epilogue`. A chunk is a *gap* (blank lin
 *entry* (`["id"] = value,`, its exact source). Writing a file back is the concatenation of its parts, so a file that
 did not change comes out byte for byte; an entry whose data changed is rendered again in the canonical style, a new
 entry is appended at the end of the table.
+
+Three more kinds of table are read the same way (ADR 0027, #143): the arc definitions of
+`NS:RegisterArcs({ pack = ..., arcs = { [id] = { states, choices, steps } } })` (role `arcs`), the dialogue scripts of
+`NS:RegisterDialogues({ pack = ..., scripts = { [key] = { role, start, nodes, choices } } })` (role `scripts`) and the
+journal texts of an arc in a language, `NS:AddArcTexts(lang, { [id] = { title, summary, states, choices } }, packId)`
+(role `arc_texts`). A file can hold more than one table (a language file of arcs has the arc texts and the lines): it is
+then `prelude + table + gap + table + ... + epilogue`, one `SourceFile` per table, `part` giving the order.
 """
 import hashlib
 import json
@@ -46,6 +53,8 @@ class SourceFile:
         self.region = None
         self.lang = None
         self.entries = {}         # id -> Entry (the entries of the chunks)
+        self.part = 0             # the order of the table in its file (a file can hold several, see `link`)
+        self.span = None          # (start, end) of the table in the source
 
 
 def signature(data):
@@ -70,6 +79,7 @@ def _split(src, table, sf, convert):
     """Fills `sf` from the entries of `table` (a parsed `Table` with ["id"] = value fields)."""
     sf.prelude = src[:table.start + 1]
     sf.epilogue = src[table.end - 1:]
+    sf.span = (table.start, table.end)
     pos = table.start + 1
     for fld in table.fields:
         if not isinstance(fld.key, str):
@@ -191,7 +201,158 @@ def parse_texts(path, src, region=None, lang=None):
     return sf
 
 
+def structure_data(id, d):
+    """An arc definition, a dialogue script or the texts of an arc: a table of keyed fields, kept as data."""
+    if not isinstance(d, dict):
+        raise Unsupported("%s is not a table of fields" % id)
+    return d
+
+
+def _call_table(src, call, field):
+    """`call({ pack = "id", <field> = { ... } })`: the pack id and the table of the field."""
+    p = _parser(src)
+    if not p.skip_to(call):
+        raise Unsupported("no %s call" % call)
+    p.expect("(")
+    spec = p.table()
+    table, pack = None, None
+    for f in spec.fields:
+        if f.key == field and isinstance(f.value, lualit.Table):
+            table = f.value
+        elif f.key == "pack" and isinstance(f.value, str):
+            pack = f.value
+    if table is None:
+        raise Unsupported("%s has no literal %s table" % (call, field))
+    if pack is None:
+        raise Unsupported("%s has no pack id" % call)
+    return table, pack
+
+
+def parse_arcs(path, src):
+    """The arc definitions of a data file (`NS:RegisterArcs`). Raises `Unsupported` when they are computed by code."""
+    table, pack = _call_table(src, "RegisterArcs", "arcs")
+    sf = SourceFile(path, "arcs", "", "")
+    sf.pack_id = pack
+    _split(src, table, sf, structure_data)
+    return sf
+
+
+def parse_scripts(path, src):
+    """The dialogue scripts of a data file (`NS:RegisterDialogues`)."""
+    table, pack = _call_table(src, "RegisterDialogues", "scripts")
+    sf = SourceFile(path, "scripts", "", "")
+    sf.pack_id = pack
+    _split(src, table, sf, structure_data)
+    return sf
+
+
+def parse_arc_texts(path, src):
+    """The journal texts of the arcs in one language (`NS:AddArcTexts(lang, { ... }, packId)`)."""
+    p = _parser(src)
+    while True:
+        if not p.skip_to("AddArcTexts"):
+            raise Unsupported("no AddArcTexts call")
+        if p.peek()[1] == "(":
+            break
+    p.expect("(")
+    sf = SourceFile(path, "arc_texts", "", "")
+    sf.lang = p.value()
+    p.expect(",")
+    table = p.table()
+    if p.peek()[1] == ",":
+        p.take()
+        sf.pack_id = p.value()
+    if sf.pack_id is None:
+        raise Unsupported("AddArcTexts without a pack id")
+    _split(src, table, sf, structure_data)
+    return sf
+
+
+def link(src, parts):
+    """Makes the `SourceFile`s read from one file (one per table) concatenate to the file: each keeps the text from the end
+    of the previous table up to its own opening brace, and the last one the text after its closing brace. Returns them in
+    the order of the source."""
+    parts = sorted(parts, key=lambda sf: sf.span[0])
+    prev = 0
+    for i, sf in enumerate(parts):
+        a, b = sf.span
+        sf.part = i
+        sf.prelude = src[prev:a + 1]
+        sf.epilogue = src[b - 1:] if i == len(parts) - 1 else src[b - 1:b]
+        prev = b
+    return parts
+
+
 # ---- writing -----------------------------------------------------------------------------------------------------
+
+# the order of the fields in the canonical rendering of an arc, a script and arc texts (what is not listed follows)
+ARC_ORDER = ("id", "pack", "subject", "topic", "states", "choices", "steps")
+STEP_ORDER = ("from", "to", "on", "wait", "choose", "when")
+SCRIPT_ORDER = ("role", "npcID", "extends", "start", "nodes", "choices")
+NODE_ORDER = ("event", "choices")
+REPLY_ORDER = ("label", "go", "flag", "relation", "when", "editable")
+ARC_TEXT_ORDER = ("title", "summary", "stateNames", "states", "choices")
+OPTION_ORDER = ("label", "note")
+
+
+def _ordered(d, order):
+    if not isinstance(d, dict):
+        return d
+    out = {k: d[k] for k in order if k in d}
+    out.update({k: v for k, v in d.items() if k not in out})
+    return out
+
+
+def canonical_arc(d):
+    d = _ordered(d, ARC_ORDER)
+    if isinstance(d.get("steps"), list):
+        d["steps"] = [_ordered(x, STEP_ORDER) for x in d["steps"]]
+    return d
+
+
+def canonical_script(d):
+    d = _ordered(d, SCRIPT_ORDER)
+    if isinstance(d.get("nodes"), dict):
+        d["nodes"] = {k: _ordered(v, NODE_ORDER) for k, v in d["nodes"].items()}
+    if isinstance(d.get("choices"), dict):
+        d["choices"] = {k: _ordered(v, REPLY_ORDER) for k, v in d["choices"].items()}
+    return d
+
+
+def canonical_arc_text(d):
+    d = _ordered(d, ARC_TEXT_ORDER)
+    if isinstance(d.get("choices"), dict):
+        out = {}
+        for k, c in d["choices"].items():
+            c = dict(c) if isinstance(c, dict) else c
+            if isinstance(c, dict) and isinstance(c.get("options"), dict):
+                c["options"] = {o: _ordered(v, OPTION_ORDER) for o, v in c["options"].items()}
+            out[k] = c
+        d["choices"] = out
+    return d
+
+
+def _render_structure(id, data, indent, canon):
+    level = indent.count("\t")
+    key = lualit.key_source(id)
+    return "%s = %s," % (key, lualit.pretty(canon(data), level, block=True, col=len(indent.expandtabs(4)) + len(key) + 3))
+
+
+def render_arc(id, data, indent):
+    """The canonical text of an arc definition entry (`id = { ... },`): the fields in the order of `ARC_ORDER`, one step
+    per line (a long `when` on the next one)."""
+    return _render_structure(id, data, indent, canonical_arc)
+
+
+def render_script(id, data, indent):
+    """The canonical text of a dialogue script entry: role and start, then the nodes, then the replies."""
+    return _render_structure(id, data, indent, canonical_script)
+
+
+def render_arc_text(id, data, indent):
+    """The canonical text of the journal texts of one arc in one language."""
+    return _render_structure(id, data, indent, canonical_arc_text)
+
 
 def render_rule(id, rule, indent):
     """The canonical text of a rule entry (from `["id"]` to the comma, no newline at the end): the identity on the first
