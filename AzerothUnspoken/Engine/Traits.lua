@@ -353,6 +353,9 @@ end
 -- usa più se ne va.
 local scopesOf = setmetatable({}, { __mode = "k" })
 
+-- the scopes in which the set has a `req:` tag (#157), filled with scopesOf
+local reqOf = setmetatable({}, { __mode = "k" })
+
 ---Gli ambiti presenti tra i tag (solo i tag riconosciuti da ParseTag).
 ---@param tags table<string, boolean>
 ---@return table<string, boolean>
@@ -360,11 +363,15 @@ function Traits.Scopes(tags)
 	local hit = scopesOf[tags]
 	if hit then return hit end
 	hit = {}
+	local req = {}
 	for tag in pairs(tags) do
 		local t = Traits.ParseTag(tag)
-		if t then hit[t.scope] = true end
+		if t then
+			hit[t.scope] = true
+			if t.mode == "req" then req[t.scope] = true end
+		end
 	end
-	scopesOf[tags] = hit
+	scopesOf[tags], reqOf[tags] = hit, req
 	return hit
 end
 
@@ -415,6 +422,9 @@ function Traits.Evaluate(tags, traits, scope)
 	if type(tags) ~= "table" then return 1 end
 	-- nessun tag di questo ambito: neutro, senza scorrere i tag (gli agganci del peso lo chiedono per ogni candidata)
 	if not Traits.Scopes(tags)[scope] then return 1, nil end
+	-- #157: an empty profile (neutral soul, no interlocutor, no relation) only answers the `req:` tags, which it never
+	-- meets; without one of this scope every tag is "do not know" and the line stays neutral
+	if type(traits) == "table" and next(traits) == nil and not reqOf[tags][scope] then return 1, nil end
 	local soft, required = nil, nil
 	for tag in pairs(tags) do
 		local t = Traits.ParseTag(tag)

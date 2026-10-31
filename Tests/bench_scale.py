@@ -2,6 +2,7 @@
 
 Usage: python -I -X utf8 Tests/bench_scale.py [--addon DIR] [--sizes 0,10000,50000] [--picks 400] [--seed 1]
                                               [--place-share 0.6] [--langs itIT,enUS] [--json FILE]
+                                              [--archive-dir DIR]
 
 For each size it starts a fresh runtime with the addon (no example pack), generates a synthetic archive of that many
 rules with Tests/SyntheticArchive.lua (clones of the real rules with unique texts, a share bound to one zone), loads it
@@ -9,14 +10,21 @@ as a data file would be loaded (compile + RegisterPack + AddTexts) and reports:
   - load time of the addon itself (all its files and ADDON_LOADED) and of the synthetic archive (compile and
     registration);
   - Lua memory of the whole addon after a full collection, and the cost per synthetic rule;
-  - time of Engine:PickEntry over a fixed sequence of events, forms and zones (mean, p95, max).
+  - time of Engine:PickEntry over a fixed sequence of events, forms and zones (mean, p95, max);
+  - Lua VM instructions per pick over the same sequence (thousands, mean and p95; #157): unlike the times they do not
+    depend on the load of the machine, so two versions compare exactly. A call to a C function counts as one.
+
+Compare two versions of the engine on the same archive (#157): the generator clones the rules registered at that
+moment, so a version that adds or removes rules generates a different archive (R4 added 35 rules and the archive it
+measured was heavier, which looked like a slower engine). With --archive-dir the archive of each size is written there
+the first time and read back afterwards: run the older version first, then the newer one with the same folder.
 
 The numbers are a projection from lupa on the machine that runs the script, not a measurement in the client: the
 working targets of R1 (PickEntry under 5 ms and memory under 40 MB at 50,000 entries) stay hypotheses until the
 in-game measurements of /au prof (D3 in #130). The test suite runs a reduced size (see run_tests.py); the full sizes
 run on demand with this script. The script works on the engine before and after R1, so the two can be compared.
 """
-import argparse, json, os, statistics, sys, time
+import argparse, json, os, statistics, subprocess, sys, time
 from lupa import lua51
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -80,7 +88,36 @@ def memory_kb(lua):
     return lua.eval("function() collectgarbage('collect'); collectgarbage('collect'); return collectgarbage('count') end")()
 
 
-def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs="all"):
+def commit(addon):
+    """The commit of the addon folder, if it is a git checkout (#157: the numbers name the version they measure)."""
+    try:
+        out = subprocess.run(["git", "-C", addon, "rev-parse", "--short", "HEAD"], capture_output=True, text=True,
+                             timeout=10)
+        dirty = subprocess.run(["git", "-C", addon, "status", "--porcelain", "--", "."], capture_output=True,
+                               text=True, timeout=10).stdout.strip()
+        return out.stdout.strip() + ("+changes" if dirty else "") if out.returncode == 0 else "?"
+    except (OSError, subprocess.SubprocessError):
+        return "?"
+
+
+def synthetic_source(lua, ns, size, seed, place_share, langs, archive_dir):
+    """The source of the synthetic pack and its zones: generated, or read from archive_dir (written there if absent)."""
+    path = None
+    if archive_dir:
+        os.makedirs(archive_dir, exist_ok=True)
+        path = os.path.join(archive_dir, f"synthetic_{size}_{'-'.join(langs)}_s{seed}_p{place_share}.lua")
+        if os.path.isfile(path):
+            return open(path, encoding="utf-8").read(), list(lua.globals().SYNTH_ZONES.values())
+    src, meta = lua.eval("""function(ns, n, seed, share, langs)
+        return SYNTH_SOURCE(ns, n, { seed = seed, placeShare = share, langs = langs })
+    end""")(ns, size, seed, place_share, lua.table_from(list(langs)))
+    if path:
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(src)
+    return src, list(meta.zones.values())
+
+
+def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs="all", archive_dir=None):
     lua, ns, base_load = load_addon(addon, packs)
     ns.db.locale = "en"
     G = lua.globals()
@@ -88,10 +125,7 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
     info = {"size": size, "base_load_s": base_load, "base_memory_kb": mem0}
     zones = ["Durotar"]
     if size > 0:
-        src, meta = lua.eval("""function(ns, n, seed, share, langs)
-            return SYNTH_SOURCE(ns, n, { seed = seed, placeShare = share, langs = langs })
-        end""")(ns, size, seed, place_share, lua.table_from(list(langs)))
-        zones = list(meta.zones.values())
+        src, zones = synthetic_source(lua, ns, size, seed, place_share, langs, archive_dir)
         mem_src = memory_kb(lua)
         load = lua.eval("""function(src, ns)
             local t0 = os.clock()
@@ -117,19 +151,39 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
         return ctx, event, form
     end""")
     do_pick = lua.eval("function(ns, event, ctx, form) return ns.Engine:PickEntry(event, ctx, form) end")
-    G.math.randomseed(seed)
-    times, found = [], 0
-    for i in range(picks):
-        event, form = EVENTS[i % len(EVENTS)]
-        ctx, _, _ = pick(ns, event, form, zones[(i * 7) % len(zones)], (i * 5) % 24)
-        t0 = time.perf_counter()
-        rec = do_pick(ns, event, ctx, form)
-        times.append((time.perf_counter() - t0) * 1000)
-        if rec is not None:
-            found += 1
+    # the instructions: the same sequence again from the same memory, with a count hook (every 100 instructions)
+    count_pick = lua.eval("""function(ns, event, ctx, form)
+        local n = 0
+        debug.sethook(function() n = n + 1 end, "", 100)
+        ns.Engine:PickEntry(event, ctx, form)
+        debug.sethook()
+        return n / 10
+    end""")
+    fresh = lua.eval("""function(ns)
+        ns.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+        ns.Engine:ResetLines()
+    end""")
+    found = 0
+    times, kinstr = [], []
+    for counting in (False, True):
+        fresh(ns)
+        G.math.randomseed(seed)
+        for i in range(picks):
+            event, form = EVENTS[i % len(EVENTS)]
+            ctx, _, _ = pick(ns, event, form, zones[(i * 7) % len(zones)], (i * 5) % 24)
+            if counting:
+                kinstr.append(count_pick(ns, event, ctx, form))
+                continue
+            t0 = time.perf_counter()
+            rec = do_pick(ns, event, ctx, form)
+            times.append((time.perf_counter() - t0) * 1000)
+            if rec is not None:
+                found += 1
     times.sort()
+    kinstr.sort()
     info.update({"picks": picks, "found": found, "pick_mean_ms": statistics.mean(times),
-                 "pick_p95_ms": times[int(len(times) * 0.95) - 1], "pick_max_ms": times[-1]})
+                 "pick_p95_ms": times[int(len(times) * 0.95) - 1], "pick_max_ms": times[-1],
+                 "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]})
     return info
 
 
@@ -146,16 +200,21 @@ def main(argv):
                     help="all = both languages and every region in memory; lazy = only what Core/Packs.lua loads (the "
                     "chosen language, English, and the region of the character), as in the client")
     ap.add_argument("--json")
+    ap.add_argument("--archive-dir", help="write the synthetic archives here, or read them if they are there: two "
+                    "versions of the engine then measure the same rules (#157)")
     a = ap.parse_args(argv)
     addon = os.path.abspath(a.addon)
     rows = []
     langs = tuple(l for l in a.langs.split(",") if l)
-    print(f"{'entries':>8} {'addon s':>8} {'load s':>8} {'memory MB':>10} {'B/entry':>8} {'pick ms':>8} {'p95 ms':>8} {'max ms':>8} {'found':>6}")
+    print(f"addon {os.path.basename(addon)} at commit {commit(addon)}")
+    print(f"{'entries':>8} {'addon s':>8} {'load s':>8} {'memory MB':>10} {'B/entry':>8} {'pick ms':>8} {'p95 ms':>8} {'max ms':>8} "
+          f"{'kinstr':>8} {'p95 ki':>8} {'found':>6}")
     for size in [int(s) for s in a.sizes.split(",") if s.strip()]:
-        r = measure(addon, size, a.picks, a.seed, a.place_share, langs, a.packs)
+        r = measure(addon, size, a.picks, a.seed, a.place_share, langs, a.packs, a.archive_dir)
         rows.append(r)
         print(f"{size:>8} {r['base_load_s']:>8.2f} {r['load_s']:>8.2f} {r['memory_kb'] / 1024:>10.1f} {r['per_entry_b']:>8.0f} "
-              f"{r['pick_mean_ms']:>8.3f} {r['pick_p95_ms']:>8.3f} {r['pick_max_ms']:>8.3f} {r['found']:>6}")
+              f"{r['pick_mean_ms']:>8.3f} {r['pick_p95_ms']:>8.3f} {r['pick_max_ms']:>8.3f} "
+              f"{r['pick_kinstr']:>8.1f} {r['pick_p95_kinstr']:>8.1f} {r['found']:>6}")
         sys.stdout.flush()
     if a.json:
         with open(a.json, "w", encoding="utf-8", newline="\n") as f:
