@@ -220,10 +220,10 @@ Corrette fuori dal gioco le issue #3, #4, #5, #6, #8, #11, #12, #14, #17 e #19. 
 Poca roba, ma solo il client vero può dire che i file dei testi (UTF-8) e il comando si comportano come fuori dal gioco.
 
 17. Scrivi `/au validate`.
-    - **Cosa aspettarti:** `Validatore: 428 frasi in 9 pacchetti, 860 varianti: 0 errori, 0 avvisi.` e `Nessun problema trovato.`
-    - **Cosa riportare:** il numero di errori e avvisi, e le righe che compaiono se non sono zero. Con il pacchetto di esempio spento (`/au pack example off`) le frasi sono 421.
+    - **Cosa aspettarti:** `Validatore: N frasi in N pacchetti, N varianti: 0 errori, 0 avvisi.` (i totali cambiano a ogni versione: conta solo che errori e avvisi siano 0) e `Nessun problema trovato.`
+    - **Cosa riportare:** il numero di errori e avvisi, e le righe che compaiono se non sono zero. Con il pacchetto di esempio spento (`/au pack example off`) il totale delle frasi scende.
 18. Scrivi `/au language it`, poi `/au stats` e `/au test zone`, quindi `/au language en` e di nuovo `/au stats` e `/au test zone`. Poi rimetti `/au language it`.
-    - **Cosa aspettarti:** `428 frasi disponibili in Italiano` (e l'equivalente inglese con `en`); le frasi di prova con **le lettere accentate giuste** (à è ì ò ù, «virgolette») in italiano e in inglese.
+    - **Cosa aspettarti:** `N frasi disponibili in Italiano` (e l'equivalente inglese con `en`); le frasi di prova con **le lettere accentate giuste** (à è ì ò ù, «virgolette») in italiano e in inglese.
     - **Cosa riportare:** lettere sbagliate (per esempio `Ã¨` al posto di `è`): vuol dire che un file dei testi non è letto come UTF-8.
 19. Con `/au depth natural`, poi `/au depth elevated`, scrivi qualche volta `/au test battle`.
     - **Cosa aspettarti:** con *naturale* escono più battute dirette, con *elevato* più frasi ornate. La differenza è di probabilità, non una regola netta.
@@ -354,7 +354,7 @@ Il Director decide quando il narratore parla da solo. Fuori dal gioco è provato
 
 ## S7: contenuti Alpha e prova G2 (aggiunto dallo step S7)
 
-65. **Vertical slice A: arrivo in foresta.** Con un personaggio nuovo per l'addon (o dopo `/au journal reset places`), intensità 50, entra per la prima volta in una foresta (Elwynn Forest, Teldrassil, Ashenvale). Ripeti con le tre profondità (`/au depth natural|letterario|elevato`) e con due archetipi diversi (`/au soul`).
+65. **Vertical slice A: arrivo in foresta.** Con un personaggio nuovo per l'addon (o dopo `/au journal reset places`), intensità 50, entra per la prima volta in una foresta (Elwynn Forest, Teldrassil, Ashenvale). Ripeti con le tre profondità (`/au depth natural|literary|elevated`) e con due archetipi diversi (`/au soul`).
     - **Cosa aspettarti:** una frase di prima visita nel narratore privato (pensiero, battuta o narratore esterno), diversa per profondità e temperamento; nessuna frase di ritorno.
     - **Cosa riportare:** il testo esatto, se suona bene in italiano e in inglese, se il tono cambia davvero con profondità e archetipo.
 66. **Vertical slice C: ritorno nella foresta.** Esci dalla foresta, aspetta almeno 10 minuti (o `/reload` e torna il giorno dopo), rientra. Poi muori nella foresta, esci e rientra; e una volta fuggi con poca salute.
@@ -444,8 +444,8 @@ Corrette fuori dal gioco le issue #9, #13, #21, #23, #26, #37 e #38. Restano da 
 72. **Emote in altre lingue (issue #38, solo con un client non inglese).** Fatti salutare con `/wave` rivolto a te, con il client in italiano, tedesco, francese, spagnolo, portoghese, russo, coreano o cinese; poi `/au who` e `/au debug full`.
     - **Cosa aspettarti:** l'azione «emote» compare tra le azioni recenti di chi ti ha salutato. Con un client inglese nulla cambia (parola `you`).
     - **Cosa riportare:** il **testo esatto** dell'emote che non viene riconosciuta (non verrà mai salvato dall'addon: serve solo a correggere la tabella `Interlocutor.YOU_WORDS`) e se, con `/au debug trace`, l'evento `CHAT_MSG_TEXT_EMOTE` porta il **destinatario** (quinto argomento) con il nome del tuo personaggio: è il segnale indipendente dalla lingua, mai provato.
-73. **Le lettere accentate nei comandi (issue #26).** `/au intensity 40`, `/au depth elevated`, `/au intensity 50`.
-    - **Cosa aspettarti:** funzionano come `/au intensity`. **Cosa riportare:** se no, con le impostazioni locali del tuo Windows.
+73. **Una parola italiana con l'accento nei comandi (issue #26).** `/au intensità 40`, poi `/au Intensità 50`.
+    - **Cosa aspettarti:** il comando è inglese, quindi l'addon risponde con il suggerimento `/au intensity` (anche con le maiuscole), senza errori Lua. **Cosa riportare:** se compare un errore o nessuna risposta.
 74. **Una sessione lunga (issue #9).** Dopo un'ora di gioco con molti incantesimi, `/au debug` e `/au debug full`.
     - **Cosa aspettarti:** nessun errore; se in combattimento la salute risulta segreta (`value:player.hp` RESTRICTED) l'evento `HEALTH_CHANGED` compare ogni tanto, non a raffica.
     - **Cosa riportare:** il contatore «pubblicati»/«doppioni scartati» in `/au debug` dopo qualche minuto di combattimento.
@@ -844,7 +844,7 @@ Q3 Un'altra (#13) ....... cambia frase? ___  canale resta? ___  nulla in chat? _
 Q3 dissolvenza (#21) .... sbiadisce dopo il mouse? ___
 Q3 tratti/consenso (#37)  selettori ok? ___  finestra senza tagli? ___  consenso spento di base? ___
 Q3 emote altre lingue ... client ______  riconosciuta? ___  testo esatto non riconosciuto ______  destinatario nel payload? ___
-Q3 accenti nei comandi .. /au intensity ok? ___
+Q3 suggerimento con accento .. /au intensità dà il suggerimento? ___
 S8/G3 finestra di prova . etichetta visibile? ___  si sposta/chiude? ___  testo tagliato? ___  nulla in chat? ___
 S8/G3 locandiere ........ offerta compare? ___  non copre il gossip? ___  gossip intatto? ___  battute giuste? ___  testo ______
 S8/G3 altri NPC ......... mercante ___  volo ___  addestratore ___  guardia ___  quest (NO) ___  locandiere qualunque (NO) ___

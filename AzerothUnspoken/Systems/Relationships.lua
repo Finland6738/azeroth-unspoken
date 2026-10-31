@@ -2413,8 +2413,8 @@ local AXIS_WORDS = NS.Keywords.Register("relationships.axes", {
 })
 
 local RESET_WORDS = NS.Keywords.Register("relationships.reset", { all = "all", npcs = "npcs", players = "players", shared = "shared" })
-local SHARE_WORDS = NS.Keywords.Register("relationships.share", { all = "all", copy = "copy", status = "status" })
-local SCOPE_WORDS = NS.Keywords.Register("relationships.scope", { shared = "shared", character = "character", ["this"] = "character" })
+local SHARE_WORDS = NS.Keywords.Register("relationships.share", { all = "all", copy = "copy" })
+local SCOPE_WORDS = NS.Keywords.Register("relationships.scope", { shared = "shared", character = "character" })
 
 local function Summary(self, kind, key)
 	local rec = self:Get(kind, key)

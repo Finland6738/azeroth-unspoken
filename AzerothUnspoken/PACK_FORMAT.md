@@ -244,7 +244,7 @@ From step S4 the **StyleResolver** uses registers to weight phrases (never to ex
 
 ### Themes and motifs (`theme`, `motifs`)
 
-From R3 ([ADR 0028](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)) a rule can say what it
+From R3 ([ADR 0029](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)) a rule can say what it
 is about. The **theme** is the idea (one per rule); the **motifs** are the concrete images the text shows (zero to
 three). The engine remembers, for the session only and never in the saved files, the themes, motifs, voices, frames
 and openings of the last interventions, and weighs down a phrase that would bring them back too soon. A rule without
@@ -1285,7 +1285,7 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
 
 ## Direction: category quotas and hunger
 
-A pack can also tune how often a whole category speaks in a session (#91, [ADR 0028](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)):
+A pack can also tune how often a whole category speaks in a session (#91, [ADR 0029](../docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)):
 
 - `quotas = { combat = { share = 0.4, window = 10, span = 900 } }`: the category may take at most `share` (0-1) of the
   last `window` interventions heard in the last `span` seconds; at least half of what a full window allows is always

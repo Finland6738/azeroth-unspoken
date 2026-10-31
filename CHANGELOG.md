@@ -10,6 +10,16 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### Q9c: docs and UI text that match the code (issues #160 and #161)
+
+The third review found texts that told the player to type values the commands refuse, a wrong privacy default and developer docs that had drifted.
+
+- **Fixed: the wizard said the Social module "is off by default"** (#160). The default is on and the module is a placeholder: the text (English and Italian) now says that it shares nothing without your explicit consent.
+- **Fixed: README and G1 checklist** (#160). The chat modes are `private`, `preview`, `confirm` and `auto` (not the Italian words), the depth values are `natural|literary|elevated`, steps 17-18 ask for "0 errors" instead of exact totals, and step 73 now checks the hint for `/au intensità`.
+- **Changed: `/au stories` usage** lists `on`, `off` and `status`; `/au relationships reset` documents `shared` in the wiki.
+- **Removed: undocumented argument synonyms** (#160, ADR 0023): `emotion clear`, `soul reset` (use `soul neutral`), `journal flags` (use `journal flag`), `relationships scope <name> this` (use `character`) and `relationships share status` (no argument shows the state).
+- **Docs (#161):** ADR 0006 versions and `emotion`, English command names in ADRs 0003 and 0016-0021 with a Step 0 note, links to ADR 0029 labelled correctly, R4 comments cite ADR 0031, counts and lists in the READMEs and ARCHITECTURE, the ADR index, the English checklist scope and the docs rule (every `AzerothUnspoken_*` folder).
+
 ### Q7 fixes: shared pack keys, Italian gender agreement, wizard (issues #69, #70, #71 and #77)
 
 Older low-priority issues from the reviews, closed together ([ADR 0033](docs/adr/0033-keys-shared-between-packs-refused-unless-overridden.md)).
@@ -87,7 +97,7 @@ Second part of the Player relationships milestone ([ADR 0030](docs/adr/0030-prox
 
 ### R3a: selection quality, tiers, themes and quotas (issues #89, #90 and #91)
 
-The narrator now varies **what it talks about**, not only the words: a place-specific line comes first where it exists, the same theme, image, voice or opening does not come back at once, "says" and "murmurs" stop framing a third of the emotes, and combat no longer fills the session ([ADR 0028](docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)). This is the first change of the roadmap meant to make the selection **choose differently** from R1.
+The narrator now varies **what it talks about**, not only the words: a place-specific line comes first where it exists, the same theme, image, voice or opening does not come back at once, "says" and "murmurs" stop framing a third of the emotes, and combat no longer fills the session ([ADR 0029](docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)). This is the first change of the roadmap meant to make the selection **choose differently** from R1.
 
 - **Added: specificity tiers and an explicit fallback chain** (#89). Every rule has a tier (0 generic, 1 situation or region, 2 zone, 3 subzone, 4 landmark), deduced from its conditions or written as `tier`. The pick keeps the most specific tier that still has three lines not used recently (with the tiers above), and widens one tier at a time as they are used: landmark -> subzone -> zone -> region, atmosphere or situation -> generic of the event. An event with no line can borrow a **related event** declared in data (`events = { rezother = { fallback = "heal" } }`; the base declares `rezother` -> `heal` and `threat` -> `battle`), at most three steps, then silence; the record says `via`. Validator: `badTier`, `badFallback` (unknown event or a cycle).
 - **Added: themes, motifs and the thematic memory of the session** (#90). Closed vocabularies in the new `Data/Themes.lua` (pack `base_direction`): 21 themes and 66 motifs, extensible by a pack (`themes = {}`, `motifs = {}`, `RegisterTheme`, `RegisterMotif`); a rule writes `theme` and up to three `motifs`; the validator rejects unknown ones (`badTheme`, `badMotif`). The factor `N` now also weighs the theme and the motifs of the last six interventions, fading in 30 minutes, and the third line in a row in the same voice. A variant does not open with the same two words as the last eight interventions if another can. **This memory lives only in the session and is never saved** (ADR 0017).

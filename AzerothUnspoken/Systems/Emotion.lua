@@ -1,4 +1,4 @@
--- Azeroth Unspoken: the character's emotional state (R4, #97, ADR 0030, owner decision D8).
+-- Azeroth Unspoken: the character's emotional state (R4, #97, ADR 0031, owner decision D8).
 -- Ten emotions with an intensity from 0 to 1: serene, happy, determined, curious, worried, tense, furious, melancholic,
 -- nostalgic, admiring. Appraisal rules in data (Data/Emotions.lua) raise or lower them when something happens (a
 -- death, a victory, a return to a place of a bad memory, an inn, a known player, the weather...); the character's
@@ -348,7 +348,7 @@ function Emotion:Status()
 		ctx.dominant or "-", cause, #saved > 0 and table.concat(saved, ", ") or "-")
 end
 
-local WORDS = NS.Keywords.Register("emotion", { on = "on", off = "off", reset = "reset", clear = "reset" })
+local WORDS = NS.Keywords.Register("emotion", { on = "on", off = "off", reset = "reset" })
 
 ---Command `/au emotion [on|off|reset]`: with no argument it shows the state.
 ---@param rest string

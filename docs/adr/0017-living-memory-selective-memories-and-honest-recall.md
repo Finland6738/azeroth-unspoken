@@ -14,7 +14,7 @@ Steps S6b (relationships) and S6c (interlocutor and place) will use memory and j
 1. **Three levels, a single module** (`Systems/LivingMemory.lua`, `NS.LivingMemory`):
    - *session episodic*: the significant moments of this session, in memory only (at most 60), with a negative id; they are not saved and are lost at close;
    - *persistent personal*: `AzerothUnspokenCharacterDB.memories = { version, nextId, entries, places, flags, stats }`;
-   - *narrative flags*: `memories.flags[name] = { t, source }`, set by the game (`first_death`, `first_capital`, `level_10`…), by the user (`/au diario flag`) or by other systems (`LM:SetFlag`, for S9).
+   - *narrative flags*: `memories.flags[name] = { t, source }`, set by the game (`first_death`, `first_capital`, `level_10`…), by the user (`/au journal flag`) or by other systems (`LM:SetFlag`, for S9).
 2. **Only significant moments are remembered**, never every click:
    - **first visit** to a zone (importance 3, 4 for a capital);
    - **return** after at least a day (importance 2, saved); a closer return (but more than 10 minutes after leaving) is a session moment (importance 1) and is not saved; re-entering within 10 minutes, or reloading the interface, **continues the same visit**;
@@ -30,7 +30,7 @@ Steps S6b (relationships) and S6c (interlocutor and place) will use memory and j
    - the **validator** (`recallWithoutMemory`) requires every line of a recall event to declare a memory condition (also inside `any`, never only inside `not`).
    Deleting the memory of a death also removes the place's "ended badly" outcome: the addon does not cite what the user has forgotten.
 7. **§10 priorities**: `LM:RegisterRecall` sets the "memory recall" priority (`NS:SetEventPriority(event, "memory")`) and the `memory` module for the gate. The return to a known place is a `memory_return` candidate offered 3 seconds after entering, like the `zone` atmosphere; in the Director recall (priority 2) beats atmosphere (1) and a single line speaks. The **first visit** is not a recall but atmosphere: it uses the `zone` event with the `firstVisit` condition. Memory is written even at intensity 0 or on pause: the narrator is silent, but the memories are not.
-8. **Journal** (`UI/JournalFrame.lua`, `/au diario`, aliases `/au journal` and `/au diary`): *Memories*, *Places*, *Flags* and *Session* tabs, paged list with standard buttons only, selective deletion, permanent memory, forgetting a place, "Forget everything" with confirmation. The tabs are data (`JournalFrame:RegisterTab`): S6b adds relationships to them. **Manual export**: `LM:ExportText` produces the text and a window with a multi-line box, already selected, shows it for Ctrl+C (read-only); if the window cannot be built, the first 40 lines go to local chat.
+8. **Journal** (`UI/JournalFrame.lua`, `/au journal`): *Memories*, *Places*, *Flags* and *Session* tabs, paged list with standard buttons only, selective deletion, permanent memory, forgetting a place, "Forget everything" with confirmation. The tabs are data (`JournalFrame:RegisterTab`): S6b adds relationships to them. **Manual export**: `LM:ExportText` produces the text and a window with a multi-line box, already selected, shows it for Ctrl+C (read-only); if the window cannot be built, the first 40 lines go to local chat.
 9. **SavedVariables schema 4**: the character's migration 4 turns the empty placeholder into `memories` (damaged tables restart from zero); `memories.version` has its own migrations (`LM.migrations[n]`) and `LM:Sanitize` discards malformed, duplicate or wrong-field entries and moves `nextId` past the maximum. Data with a newer `memories.version` is **not touched**: memory becomes read-only (no recording, no deletion) and says so in diagnostics. Memory never publishes anything: recalls go through the Director and the Chat Gateway like any other line.
 10. **Time**: memories use `time()` (epoch); a clock going backwards does not produce negative days (they count as zero). The end of the current visit is updated every 5 minutes (`C_Timer.NewTicker`, if it exists) so that a disconnect or a `/reload` does not lose the visit; the SavedVariables are written to disk only at `/reload` or at close (GDD §7.4), so after a client crash the memories of the last session may be missing.
 
@@ -41,6 +41,8 @@ Steps S6b (relationships) and S6c (interlocutor and place) will use memory and j
 - **A guard only with an automatic condition** (implicitly adding `repeatVisit` to recall lines). It hides the rule from content authors and does not cover a manual command; the guard on the event and the validator's obligation are explicit and tested.
 - **Compacting by merging several memories into one summary.** More elegant, but it produces generated text to store and translate; for now the least significant ones are removed and the counts are kept in the places.
 - **Exporting to a file.** Not possible: the addon does not write files. The copyable window is the compromise foreseen by the GDD ("manual text export").
+
+*Step 0 update ([ADR 0023](0023-english-first-addon-and-english-command-names.md)):* the commands named here are written with their English names, `/au journal`; the Italian names this ADR first used were removed, and an Italian word now only gets a hint to the English command.
 
 ## Consequences
 

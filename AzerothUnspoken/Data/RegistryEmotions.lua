@@ -1,4 +1,4 @@
--- Lines that follow the character's emotional state and strong personality traits (R4, #96, #97, ADR 0030). Only the
+-- Lines that follow the character's emotional state and strong personality traits (R4, #96, #97, ADR 0031). Only the
 -- rules; the texts are in AzerothUnspoken_enUS/Emotions.lua and AzerothUnspoken_itIT/Emotions.lua.
 --
 -- Conditions: `emotion` (the dominant emotion), `emotionMin` / `emotionMax` ({ emotion = 0..1 }), `traitMin` /

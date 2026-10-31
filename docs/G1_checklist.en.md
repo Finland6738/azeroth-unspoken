@@ -1,6 +1,6 @@
-# In-game checklist: R0 measurements, API probe, R1 packs, R3a selection variety, R3b the world and R4b player relationships (English)
+# In-game checklist, English counterpart: R0 to R4 and R3c (measurements, API probe, packs, selection, world, players, emotions, monologues)
 
-This is the English counterpart of the section **R0** of the in-game checklist [G1_checklist.md](G1_checklist.md), which is written in Italian for the Italian-speaking tester and keeps every other part of the checklist. Same steps, same numbers (R0.1 to R0.13). It belongs to issues #81 (profiling and Director counters) and #82 (probing the vision APIs), phase R0 of the roadmap #131.
+This is the English counterpart of the sections **R0, R1, R3a, R3b, R4b, R4b2, R4 and R3c** of the in-game checklist [G1_checklist.md](G1_checklist.md), which is written in Italian for the Italian-speaking tester and keeps every other part of the checklist. Same steps, same numbers. It belongs to issues #81 (profiling and Director counters) and #82 (probing the vision APIs), phase R0 of the roadmap #131.
 
 **What it is for.** Every number about the speed and memory of the addon was measured outside the game, and many client functions (weather, day and night, quests, reputation, subzones...) are in the API dump but **nobody has verified that they work in the real client**. These steps collect the real numbers and the list of confirmed APIs. The owner decisions D3 (memory and time budget), D5 and D14 are taken from them.
 

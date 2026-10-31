@@ -1,4 +1,4 @@
--- Azeroth Unspoken: Character Soul, la personalità del personaggio del giocatore (GDD §7.1, ADR 0016, ADR 0030).
+-- Azeroth Unspoken: Character Soul, la personalità del personaggio del giocatore (GDD §7.1, ADR 0016, ADR 0031).
 -- Tratti opt-in. Dalla R4 (#96) la personalità è fatta di intensità da 0 a 100 su dieci assi che possono convivere
 -- (stoico e vendicativo insieme): idealismo (cinico <-> idealista), concretezza (sognatore <-> pragmatico), ottimismo
 -- (pessimista <-> ottimista), altruismo, stoicismo, ambizione, spiritualità, patriottismo, curiosità, sete di vendetta;
@@ -122,7 +122,7 @@ local TRAIT_ALIAS = NS.Keywords.Register("soul.traits", {
 	voice = "innerVoice", innervoice = "innerVoice",
 	temperament = "temperament", morality = "morality", faith = "faith", motivation = "motivation",
 })
-local SOUL_WORDS = NS.Keywords.Register("soul", { list = "list", neutral = "neutral", reset = "neutral", archetype = "archetype", trp3 = "trp3" })
+local SOUL_WORDS = NS.Keywords.Register("soul", { list = "list", neutral = "neutral", archetype = "archetype", trp3 = "trp3" })
 
 -- fattori della voce interiore sulle frasi con speaker "inner" (off = 0 = esclusione)
 Personality.INNER_FACTOR = { off = 0, quiet = 0.5, present = 1, vivid = 1.6 }
@@ -247,7 +247,7 @@ function Personality:Profile()
 	return p
 end
 
----Converte un profilo della versione 1 (scelte esclusive di S5) in intensità (R4, #96, ADR 0030). Un archetipo scelto
+---Converte un profilo della versione 1 (scelte esclusive di S5) in intensità (R4, #96, ADR 0031). Un archetipo scelto
 ---diventa la sua preimpostazione; scelte personalizzate passano da FromLegacy. Le scelte di prima restano in
 ---`legacy` (solo identificatori), la voce interiore, gli argomenti da evitare, la curiosità e l'ironia non cambiano.
 ---@param p AUPersonalityProfile

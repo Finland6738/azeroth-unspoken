@@ -1,4 +1,4 @@
--- Azeroth Unspoken: emotion data (R4, #97, ADR 0030). Read by Systems/Emotion.lua.
+-- Azeroth Unspoken: emotion data (R4, #97, ADR 0031). Read by Systems/Emotion.lua.
 -- Half-lives, appraisal rules (event -> change of each emotion, with optional conditions on the context, as for a
 -- line), how the personality changes a rise, which emotions clash, which old tags carry an emotion, and the
 -- registers each emotion prefers. The numbers are a first proposal of the analysis A1 (§5.3), to be tuned in game.

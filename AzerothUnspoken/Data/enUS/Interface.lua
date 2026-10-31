@@ -143,7 +143,7 @@ NS:RegisterLanguage("en", {
 		intensity_band_5 = "90-100 - Intense: many chances, always with the anti-spam pauses.",
 		wiz_suggested = "(suggested value)",
 		wiz_depth_help = "How elevated should the language be? It changes which lines the narrator prefers: the others stay possible, but less likely.",
-		wiz_modules_help = "Pick the modules. Those marked * arrive in later versions: you can already set them. The Social module shares nothing without your explicit consent and is off by default.",
+		wiz_modules_help = "Pick the modules. Those marked * arrive in later versions: you can already set them. The Social module is a placeholder: it shares nothing without your explicit consent.",
 		wiz_social_consent = "Social RP: joining scenes with other players will always be voluntary (opt-in) and shares no memories or data without your consent.",
 		wiz_trp3_help = "Total RP 3 is installed. The addon can use your RP profile's name in lines (yours only, name only). It works 100% without it too.",
 		wiz_chat_help = "What may reach chat? By default nothing: the narrator stays private. Whatever you pick, every send in your character's name starts only from a gesture of yours, except in 'automatic'.",

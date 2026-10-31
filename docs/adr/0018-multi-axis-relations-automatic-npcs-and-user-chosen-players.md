@@ -25,7 +25,7 @@ NPCs are many and reliably identifiable (`npcID` from the GUID): an automatic ca
    - **register from formal to intimate** (`StyleResolver:SetModifier "relations"`): familiarity and disposition bands prefer different registers (data);
    - event `relation_npc` (meeting a known NPC, "memory recall" priority, `relations` module) with a guard in the engine and a required relationship condition in the validator (`relationWithoutRelation`).
 8. **Data and schema**: `AzerothUnspokenCharacterDB.relationships = { version, npcs = { [npcID] }, players = { ["Name-Realm"] } }`, with its own version; SavedVariables **schema 5** (character migration 5); settings `relations = { npcAuto, attraction, autoRegisterPlayers, proposePlayers }` and module `relations`. `Sanitize` brings the axes back within limits, shortens notes, tags and labels without breaking UTF-8, and discards malformed entries; data from a newer version becomes read-only.
-9. **Interface**: `UI/RelationsFrame.lua` (`/au relazioni`, aliases `relations`/`relationships`): sortable and filterable table (NPCs/players, label, name), proposed people, detail view with sliders (`Widgets.Slider`, drawn with textures), label, note and tags, deletion with confirmation, options, text export in the journal's copyable window; two tabs in the journal (*Relationships*, *People met*).
+9. **Interface**: `UI/RelationsFrame.lua` (`/au relationships`): sortable and filterable table (NPCs/players, label, name), proposed people, detail view with sliders (`Widgets.Slider`, drawn with textures), label, note and tags, deletion with confirmation, options, text export in the journal's copyable window; two tabs in the journal (*Relationships*, *People met*).
 
 ## Later changes
 
@@ -39,6 +39,8 @@ NPCs are many and reliably identifiable (`npcID` from the GUID): an automatic ca
 - **Reading other people's Total RP 3 profiles in order to propose them.** Only presence in the registry is used (`isUnitIDKnown`): no profile data is read, and reading it would require separate consent (S6c).
 - **Decay of all axes.** Grudge and trust do not fade with time; only "how well we know each other" dims.
 - **Recognizing sales with an event.** There is no sale event; the use of a bag item while the merchant is open is observed, cautiously.
+
+*Step 0 update ([ADR 0023](0023-english-first-addon-and-english-command-names.md)):* the commands named here are written with their English names, `/au relationships`; the Italian names this ADR first used were removed, and an Italian word now only gets a hint to the English command.
 
 ## Consequences
 

@@ -22,7 +22,7 @@
 -- che per `req`, che chiede un tratto dichiarato. Con un ambito (`scope`, per esempio "other" in S6c) il tag si
 -- scrive `other.tratto:valore`.
 --
--- Intensità (R4, #96, ADR 0030). Su una scala l'affinità morbida è graduata: dentro la fascia (o oltre la soglia) vale
+-- Intensità (R4, #96, ADR 0031). Su una scala l'affinità morbida è graduata: dentro la fascia (o oltre la soglia) vale
 -- MATCH, a EDGE punti o più di distanza vale MISMATCH, in mezzo sfuma. Un tratto a scelta può dichiarare `derive`:
 -- ogni suo valore diventa una condizione su un asse ({ "stoicism", ">=", 67 }); un profilo che non ha scelto quel
 -- tratto ma ha l'asse lo legge da lì. Così i tag del vecchio Character Soul (`temperament:stoic`) valgono per un

@@ -1071,7 +1071,7 @@ local RESET_WORDS = NS.Keywords.Register("journal.reset", {
 	all = "all", memories = "memories", ordinary = "ordinary", places = "places", flags = "flags",
 })
 local WORDS = NS.Keywords.Register("journal", {
-	list = "list", places = "places", flag = "flag", flags = "flag", export = "export", pin = "pin", delete = "delete",
+	list = "list", places = "places", flag = "flag", export = "export", pin = "pin", delete = "delete",
 	forget = "forget", reset = "reset",
 })
 

@@ -2,7 +2,7 @@
 --   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... }, sharedPlayers = { version, players } }
 --     sharedPlayers: the opt-in list of people shared by the account's characters (#114), created only when the user
 --     turns the option on; its own version, shape and rules are in Systems/Relationships.lua
---   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
+--   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, emotion, memories, relationships, arcs, history }
 --     personality = { version, archetype, base, traits = { [tratto] = valore }, trp3, legacy }  (Systems/Personality.lua)
 --     emotion = { version, values = { [emozione] = { v, at } } }                   (Systems/Emotion.lua)
 --     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
@@ -196,7 +196,7 @@ Config.characterDefaults = {
 	-- Character Soul (S5): archetipo, scelte esplicite sui tratti e consenso a leggere i tratti da Total RP 3.
 	-- Vuoto = profilo neutro. I valori dei tratti si controllano in Personality:Sanitize (modello Engine/Traits.lua).
 	personality = { version = 2, archetype = "neutral", traits = {}, trp3 = false },
-	-- stato emotivo (R4): solo emozioni lente e forti, come valore e time() (Systems/Emotion.lua, ADR 0030)
+	-- stato emotivo (R4): solo emozioni lente e forti, come valore e time() (Systems/Emotion.lua, ADR 0031)
 	emotion = { version = 1, values = {} },
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },

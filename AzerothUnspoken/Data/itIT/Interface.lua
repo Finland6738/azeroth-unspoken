@@ -148,7 +148,7 @@ NS:RegisterLanguage("it", {
 		intensity_band_5 = "90-100 - Intenso: molte occasioni, sempre con le pause anti-spam.",
 		wiz_suggested = "(valore consigliato)",
 		wiz_depth_help = "Quanto deve essere elevato il linguaggio? Cambia quali frasi il narratore preferisce: le altre restano possibili, ma meno probabili.",
-		wiz_modules_help = "Scegli i moduli. Quelli con * arriveranno nelle prossime versioni: li puoi già impostare. Il modulo Social non condivide nulla senza un tuo consenso esplicito, ed è spento per impostazione predefinita.",
+		wiz_modules_help = "Scegli i moduli. Quelli con * arriveranno nelle prossime versioni: li puoi già impostare. Il modulo Social è un segnaposto: non condivide nulla senza un tuo consenso esplicito.",
 		wiz_social_consent = "Social RP: partecipare a scene con altri giocatori sarà sempre un'adesione volontaria (opt-in) e non condivide ricordi né dati senza il tuo consenso.",
 		wiz_trp3_help = "Total RP 3 è installato. L'addon può usare il nome del tuo profilo RP nelle frasi (solo il tuo, solo il nome). Funziona al 100% anche senza.",
 		wiz_chat_help = "Cosa può arrivare in chat? Per impostazione predefinita nulla: il narratore resta privato. Qualunque modalità scegli, ogni invio a nome del tuo personaggio parte solo da un tuo gesto, tranne in 'automatica'.",

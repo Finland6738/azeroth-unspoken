@@ -219,7 +219,7 @@ Commands.list = {
 	{ name = "journal", fn = function(rest) NS.LivingMemory:Command(rest) end,
 		usage = "journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset]", desc = "help_journal" },
 	{ name = "stories", fn = function(rest) NS.StoryArcs:Command(rest) end,
-		usage = "stories [list|journal|choose <arc> <option>|start|suspend|resume|skip|disable|enable <arc|all>|max <1|2>]",
+		usage = "stories [list|journal|choose <arc> <option>|start|suspend|resume|skip|disable|enable <arc|all>|max <1|2>|on|off|status]",
 		desc = "help_stories" },
 	{ name = "relationships", short = { "rel" }, fn = function(rest) NS.Relationships:Command(rest) end,
 		usage = "relationships [list|people|add <name>|note <name> <text>|export|...]", desc = "help_relationships" },
