@@ -253,57 +253,53 @@ REL_ROWS = [("Torvan", "Player", "friend", "Friend (34)", "2026-10-30", "27"),
 
 PLAYER_DETAIL = {
     "kind": "player", "name": "Torvan", "label": "friend", "disposition": "Friend (34)",
-    "axes": [62, 40, 25, 45, 0, 20], "label_btn": "Chosen: friend (click: change)", "custom": "",
+    "axes": [62, 40, 25, 45, 0, 20], "label_btn": "Chosen: friend", "custom": "",
     "f1": "trust", "f2": "gratitude", "note": "Owes me a drink since the Westfall road.", "tags": "westfall, archer",
-    "traits": [["Role: unknown", "Temperament: Cheerful", "Morality: unknown (automatic)"],
-               ["Goals: Freedom", "Way of speaking: Jovial"]],
+    "traits": ["Role: unknown", "Temperament: Cheerful", "Morality: unknown", "Goals: Freedom",
+               "Way of speaking: Plain (automatic)"],
     "seen_line": "First recorded: 2026-09-14. Last seen: 2026-10-30. Encounters: fought together 12, group 9, trade 3, duel 1, emote 2.",
     "seen_facts": "Recent:\n2026-10-30  fought together  (Duskwood)\n2026-10-30  group  (Duskwood)\n2026-10-27  trade  (Darkshire)\n"
                   "2026-10-24  emote\n2026-10-22  duel  (Westfall)",
 }
 NPC_DETAIL = dict(PLAYER_DETAIL, kind="npc", name="Bram Ashcombe", label="acquaintance", disposition="Acquaintance (18)",
-                  axes=[35, 15, 10, 12, 0, 0], label_btn="Automatic: acquaintance (click: choose)", f1="none", f2="none",
-                  note="", tags="", traits=[["Role: Innkeeper (automatic)", "Temperament: unknown", "Morality: unknown"],
-                                            ["Goals: Profit", "Way of speaking: Warm"]])
+                  axes=[35, 15, 10, 12, 0, 0], label_btn="Automatic: acquaintance", f1="none", f2="none",
+                  note="", tags="", traits=["Role: Innkeeper (automatic)", "Temperament: unknown", "Morality: unknown",
+                                            "Goals: Profit", "Way of speaking: Warm"])
 
 
 def build_relations():
-    w = 720
-    add("relations-list", "Relationships - list", w, 870, relations(40, 40, "list", rows=REL_ROWS), "Relationships",
-        "Relationships", seed=70,
-        caption_extra="Row texts are predicted to be hidden under the row buttons (review UI-01).")
-    add("relations-people", "Relationships - People met", w, 870,
+    w, h = 800, 740
+    add("relations-list", "Relationships - list", w, h, relations(40, 40, "list", rows=REL_ROWS, hover_row=2),
+        "Relationships", "Relationships", seed=70,
+        caption_extra="Plain rows that own their cells; the hovered row is highlighted.")
+    add("relations-people", "Relationships - People met", w, h,
         relations(40, 40, "people", cands=[("Kesh", "in your group"), ("Anwen", "has a Total RP 3 profile"),
                                             ("Dorrik", "a trade")]), "Relationships", "Relationships", seed=71)
-    add("relations-empty", "Relationships - empty state", w, 870, relations(40, 40, "list", rows=[], candidates=0),
+    add("relations-empty", "Relationships - empty state", w, h, relations(40, 40, "list", rows=[], candidates=0),
         "Relationships", "Relationships", seed=72)
-    body = (relations(40, 40, "detail", height=914, detail=PLAYER_DETAIL)
-            + '<div class="abs" style="left:0;right:0;top:808px;border-top:2px dashed #ff4d4d"></div>'
-            + '<div class="note" style="right:20px;top:784px">768 units: bottom of the screen at UI scale 1 (frame top at 40)</div>')
-    add("relations-detail-player", "Relationships - a player's detail", w, 1000, body, "Relationships",
-        "Relationships", seed=73, scale=1.25,
-        caption_extra="The window is 914 units tall; the dashed line marks a 768-unit screen.")
-    add("relations-detail-npc", "Relationships - an NPC's detail", w, 870,
+    add("relations-options", "Relationships - options", w, h, relations(40, 40, "options"), "Relationships",
+        "Relationships", seed=76)
+    add("relations-detail-player", "Relationships - a player's detail", w, h,
+        relations(40, 40, "detail", detail=PLAYER_DETAIL), "Relationships", "Relationships", seed=73,
+        caption_extra="660 units tall: it fits a 768-unit screen at UI scale 1.")
+    add("relations-detail-npc", "Relationships - an NPC's detail", w, h,
         relations(40, 40, "detail", detail=NPC_DETAIL), "Relationships", "Relationships", seed=74)
     shared = dict(PLAYER_DETAIL, scope="Choices: shared")
-    opts = [(n, "on" if n.startswith("Share") else s) for n, s in __import__("components").REL_OPTIONS]
-    add("relations-detail-shared", "Relationships - player detail with the shared list on", w, 1000,
-        relations(40, 40, "detail", height=914, detail=shared, options=opts), "Relationships", "Relationships",
-        seed=75, scale=1.25)
+    add("relations-detail-shared", "Relationships - player detail with the shared list on", w, h,
+        relations(40, 40, "detail", detail=shared), "Relationships", "Relationships", seed=75)
 
 
 def build_consent():
-    w = 720
-    # shared list: first click arms the option and the warning replaces the privacy line
-    add("consent-shared-list", "Consent - share relationships with the account", w, 870,
-        relations(40, 40, "list", rows=REL_ROWS[:4], share_armed=True), "Consent", "Relationships / Privacy-and-Data",
-        seed=80)
+    w, h = 800, 740
+    # shared list: the first click arms the option, and the warning appears under the privacy note
+    add("consent-shared-list", "Consent - share relationships with the account", w, h,
+        relations(40, 40, "options", share_armed=True), "Consent", "Relationships / Privacy-and-Data", seed=80)
     # proximity: the option and its tooltip
-    body = (relations(40, 40, "people", cands=[("Kesh", "in your group")], hover_option=5)
+    body = (relations(40, 40, "options", hover_option=5)
             + tooltip([("Nameplates and mouseover can let the narrator recognise a person from your list, and suggest people "
                         "with a Total RP 3 profile if you allowed reading them. For this session only: nothing is saved, no "
-                        "one is added. Off by default.", "ffffff")], left=300, top=600, width=300))
-    add("consent-proximity", "Consent - recognise nearby people", w, 870, body, "Consent",
+                        "one is added. Off by default.", "ffffff")], left=420, top=128, width=300))
+    add("consent-proximity", "Consent - recognise nearby people", w, h, body, "Consent",
         "Relationships / Privacy-and-Data", seed=81)
     # automatic sending: warning in chat, then the wizard button asks for a second click
     W, H = 900, 640
