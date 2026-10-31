@@ -231,7 +231,7 @@ NS:AddTexts("itIT", {
 		"Sguaina la lama. Tra noi non resta nulla che le parole possano sistemare.",
 	},
 	["ctx.act.duel.wary"] = {
-		"Una sfida da uno di cui non mi sono mai fidato. Guarda le mani, non il viso.",
+		"Una sfida da chi non ha mai avuto la mia fiducia. Guarda le mani, non il viso.",
 		"Ogni istinto dice che è una trappola. Eppure c'è la lama nella tua mano e la folla che guarda.",
 	},
 	["ctx.act.duel.inner"] = {

@@ -2105,7 +2105,7 @@ function R.Factor(entry, ctx)
 	local f = Traits.Evaluate(tags, traits, "rel")
 	return f
 end
-Engine:SetWeightHook("R", "relations", R.Factor)
+Engine:SetWeightHook("R", "relations", R.Factor, true)   -- pure: only the tags of the line (#157)
 
 -- Il registro cambia con la familiarità: dal formale all'intimo (Data/Relationships.lua: register).
 NS.StyleResolver:SetModifier("relations", function(profile, ctx)

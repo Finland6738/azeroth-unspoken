@@ -9,6 +9,9 @@ local MODULE_ORDER = { "personal", "world", "npc", "memory", "emotion", "relatio
 local MODULE_LIVE = NS.Config.MODULE_LIVE   -- moduli con effetto già oggi (una lista sola con il wizard, #77)
 local DEPTHS = { "natural", "literary", "elevated" }
 local COOLDOWNS = { 15, 30, 45, 60, 90, 120, 180 }
+local WAITS = { 25, 60, 120 }          -- seconds a proposal waits; after the longest, until it is closed (0, #177)
+local SPEEDS = { 8, 11, 14, 18, 24 }   -- reading speed, characters a second (#177)
+local ROW = 26                         -- rows 24 high, 2 apart: fourteen rows and the module grid fit the canvas
 
 local function Cycle(list, current)
 	for i, v in ipairs(list) do
@@ -36,6 +39,19 @@ end
 
 local function OnOff(v) return v and NS:L("on") or NS:L("off") end
 
+-- the next value of a list in ascending order, after the current one; nil after the last
+local function NextAbove(list, current)
+	for _, v in ipairs(list) do
+		if v > current then return v end
+	end
+	return nil
+end
+
+local function WaitLabel(v)
+	if v <= 0 then return NS:L("waits_forever") end
+	return v .. " s"
+end
+
 ---------------------------------------------------------------------------
 -- Costruzione
 ---------------------------------------------------------------------------
@@ -56,7 +72,7 @@ local function CreatePanel()
 			onClick()
 			panel:Refresh()
 		end)
-		b:SetPoint("TOPLEFT", COLUMN[col], -48 - (index - 1) * 28)
+		b:SetPoint("TOPLEFT", COLUMN[col], -48 - (index - 1) * ROW)
 		table.insert(rows, { button = b, label = label })
 		return b
 	end
@@ -64,7 +80,7 @@ local function CreatePanel()
 	-- riga con - e +
 	local function Stepper(col, index, label, minus, plus)
 		local b = W.Button(panel, "", 238, 24)
-		b:SetPoint("TOPLEFT", COLUMN[col], -48 - (index - 1) * 28)
+		b:SetPoint("TOPLEFT", COLUMN[col], -48 - (index - 1) * ROW)
 		local m = W.Button(panel, "-", 24, 24, function() minus(); panel:Refresh() end)
 		m:SetPoint("LEFT", b, "RIGHT", 2, 0)
 		local p = W.Button(panel, "+", 24, 24, function() plus(); panel:Refresh() end)
@@ -100,44 +116,59 @@ local function CreatePanel()
 	end)
 	Row(1, 8, function() return NS:L("opt_channel") .. ": " .. NS:L("channel_" .. NS.db.chat.channel) end,
 		function() NS.db.chat.channel = Cycle(NS.Config.CHAT_CHANNELS, NS.db.chat.channel) end)
-	Row(1, 9, function() return NS:L("opt_button") .. ": " .. OnOff(NS.db.ui.showButton) end, function()
+	-- #177: how long a proposal waits: 25, 60, 120 s or until it is closed
+	Row(1, 9, function() return NS:L("opt_waits") .. ": " .. WaitLabel(NS.db.chat.pendingSeconds) end, function()
+		local cur = NS.db.chat.pendingSeconds
+		NS.Config:Set("chat.pendingSeconds", cur <= 0 and WAITS[1] or (NextAbove(WAITS, cur) or 0))
+	end)
+	Row(1, 10, function() return NS:L("opt_button") .. ": " .. OnOff(NS.db.ui.showButton) end, function()
 		NS.db.ui.showButton = not NS.db.ui.showButton
 		NS.UpdateButton()
 	end)
-	Row(1, 10, function() return NS:L("opt_rpname") .. ": " .. OnOff(NS.db.modules.totalRP3) end,
+	Row(1, 11, function() return NS:L("opt_rpname") .. ": " .. OnOff(NS.db.modules.totalRP3) end,
 		function() NS.db.modules.totalRP3 = not NS.db.modules.totalRP3 end)
-	Row(1, 11, function() return NS:L(NS.paused and "opt_resume" or "opt_pause") end,
+	Row(1, 12, function() return NS:L(NS.paused and "opt_resume" or "opt_pause") end,
 		function() NS.Director:TogglePause() end)
-	Row(1, 12, function() return NS:L("opt_wizard") end, function() NS.Wizard:Open() end)
+	Row(1, 13, function() return NS:L("opt_wizard") end, function() NS.Wizard:Open() end)
 
 	-- colonna 2: narratore
 	Row(2, 1, function() return NS:L("opt_narrator") .. ": " .. OnOff(NS.db.output.privateNarrator) end,
 		function() NS.db.output.privateNarrator = not NS.db.output.privateNarrator end)
 	Stepper(2, 2, function() return NS:L("opt_duration") .. ": " .. NS.db.ui.narrator.duration .. " s" end,
 		function() StepNumber("ui.narrator.duration", -1) end, function() StepNumber("ui.narrator.duration", 1) end)
-	Stepper(2, 3, function() return NS:L("opt_alpha") .. ": " .. math.floor(NS.db.ui.narrator.alpha * 100 + 0.5) .. "%" end,
-		function() StepNumber("ui.narrator.alpha", -0.1, 1) end, function() StepNumber("ui.narrator.alpha", 0.1, 1) end)
-	Stepper(2, 4, function() return NS:L("opt_fontsize") .. ": " .. NS.db.ui.narrator.fontSize end,
+	-- #177: characters a second; 14 is about 0.07 s per character
+	Row(2, 3, function() return NS:L("opt_reading") .. ": " .. NS:L("reading_cps", NS.db.ui.narrator.readingSpeed) end,
+		function()
+			NS.Config:Set("ui.narrator.readingSpeed", NextAbove(SPEEDS, NS.db.ui.narrator.readingSpeed) or SPEEDS[1])
+		end)
+	-- #173: the opacity of the background only; the text stays at full opacity
+	Stepper(2, 4, function() return NS:L("opt_alpha") .. ": " .. math.floor(NS.db.ui.narrator.alpha * 100 + 0.5) .. "%" end,
+		function() StepNumber("ui.narrator.alpha", -0.05, 2) end, function() StepNumber("ui.narrator.alpha", 0.05, 2) end)
+	Stepper(2, 5, function() return NS:L("opt_fontsize") .. ": " .. NS.db.ui.narrator.fontSize end,
 		function() StepNumber("ui.narrator.fontSize", -1) end, function() StepNumber("ui.narrator.fontSize", 1) end)
-	Row(2, 5, function() return NS:L("opt_locked") .. ": " .. OnOff(NS.db.ui.narrator.locked) end,
+	local motion = Row(2, 6, function() return NS:L("opt_motion") .. ": " .. OnOff(NS.db.ui.narrator.reduceMotion) end,
+		function() NS.db.ui.narrator.reduceMotion = not NS.db.ui.narrator.reduceMotion end)
+	W.Tooltip(motion, function() return NS:L("opt_motion_tip") end)
+	Row(2, 7, function() return NS:L("opt_locked") .. ": " .. OnOff(NS.db.ui.narrator.locked) end,
 		function() NS.db.ui.narrator.locked = not NS.db.ui.narrator.locked end)
-	Row(2, 6, function() return NS:L("opt_resetpos") end, function() NS.Narrator:ResetPosition() end)
-	Row(2, 7, function() return NS:L("opt_history") end, function() NS.Narrator:ToggleHistory() end)
-	Row(2, 8, function() return NS:L("opt_test") end, function() NS.Narrator:ShowTest() end)
-	Row(2, 9, function() return NS:L("opt_soul") end, function() if NS.ProfileFrame then NS.ProfileFrame:Toggle() end end)
-	Row(2, 10, function() return NS:L("opt_journal") end, function() if NS.JournalFrame then NS.JournalFrame:Toggle() end end)
-	Row(2, 11, function() return NS:L("opt_relations") end, function() if NS.RelationsFrame then NS.RelationsFrame:Toggle() end end)
+	Row(2, 8, function() return NS:L("opt_resetpos") end, function() NS.Narrator:ResetPosition() end)
+	Row(2, 9, function() return NS:L("opt_history") end, function() NS.Narrator:ToggleHistory() end)
+	Row(2, 10, function() return NS:L("opt_test") end, function() NS.Narrator:ShowTest() end)
+	Row(2, 11, function() return NS:L("opt_soul") end, function() if NS.ProfileFrame then NS.ProfileFrame:Toggle() end end)
+	Row(2, 12, function() return NS:L("opt_journal") end, function() if NS.JournalFrame then NS.JournalFrame:Toggle() end end)
+	Row(2, 13, function() return NS:L("opt_relations") end, function() if NS.RelationsFrame then NS.RelationsFrame:Toggle() end end)
 	-- consenso a leggere il Total RP 3 pubblico degli altri giocatori: spento di base (#37)
-	local others = Row(2, 12, function() return NS:L("opt_trp3_others") .. ": " .. OnOff(NS.db.interlocutor.trp3Others) end,
+	local others = Row(2, 14, function() return NS:L("opt_trp3_others") .. ": " .. OnOff(NS.db.interlocutor.trp3Others) end,
 		function()
 			local on = NS.Interlocutor:SetTRP3Consent(not NS.db.interlocutor.trp3Others)
 			NS:Print(NS:L(on and "other_trp3_on" or "other_trp3_off"))
 		end)
 	W.Tooltip(others, function() return NS:L("opt_trp3_others_tip") end)
 
-	-- moduli: griglia a quattro colonne
+	-- moduli: griglia a quattro colonne, sotto la riga 14 (-48 - 13 * ROW - 24 = -410)
 	local modTitle = panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-	modTitle:SetPoint("TOPLEFT", 16, -388)
+	modTitle:SetPoint("TOPLEFT", 16, -418)
+	local lastRowStart   -- the first button of the grid's last row: the help text goes under it
 	for i, module in ipairs(MODULE_ORDER) do
 		local b = W.Button(panel, "", 150, 24, function()
 			NS.db.modules[module] = not NS.db.modules[module]
@@ -147,7 +178,8 @@ local function CreatePanel()
 			panel:Refresh()
 		end)
 		local col, row = (i - 1) % 4, math.floor((i - 1) / 4)
-		b:SetPoint("TOPLEFT", 16 + col * 156, -410 - row * 28)
+		b:SetPoint("TOPLEFT", 16 + col * 156, -440 - row * ROW)
+		if col == 0 then lastRowStart = b end
 		table.insert(rows, { button = b, label = function()
 			local name = NS:L("module_" .. module)
 			if not MODULE_LIVE[module] then name = name .. " *" end
@@ -157,10 +189,11 @@ local function CreatePanel()
 
 	-- reload after a change of language (#85): shown only while the phrases are still in the previous language
 	local reload = W.Button(panel, "", 290, 24, function() NS.Packs:Reload() end)
-	reload:SetPoint("TOPLEFT", COLUMN[2], -384)
+	reload:SetPoint("TOPLEFT", COLUMN[2], -414)
 
+	-- #179: under the module grid, whatever its number of rows, not at a fixed height over its third row
 	local help = panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	help:SetPoint("TOPLEFT", 16, -474)
+	help:SetPoint("TOPLEFT", lastRowStart, "BOTTOMLEFT", 0, -10)
 	help:SetWidth(600)
 	help:SetJustifyH("LEFT")
 

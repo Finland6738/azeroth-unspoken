@@ -4,7 +4,7 @@ local NS = AzerothUnspoken   -- language pack (LoadOnDemand, #85): the base addo
 NS:AddTexts("itIT", {
 	["sit.closecall.inner"] = {
 		"Ancora in piedi. Non so bene nemmeno io come.",
-		"È andata più vicina di quanto mi piaccia. Solo ora le mani si ricordano di tremare.",
+		"C'è mancato poco, più di quanto mi piaccia. Solo ora le mani si ricordano di tremare.",
 		"Un colpo in più e a terra ci sarei {g:rimasto|rimasta} io. Respira. Respira e basta.",
 	},
 	["sit.closecall.say"] = {
@@ -13,8 +13,8 @@ NS:AddTexts("itIT", {
 		"Vicino. Vicino non conta niente, amico.",
 	},
 	["sit.secondwind.say"] = {
-		"A terra una volta. Era l'unica che ti spettava.",
-		"Dovevi assicurarti che restassi nella polvere.",
+		"A terra una volta, oggi. Due no.",
+		"Nella polvere ci sono già {g:stato|stata}, oggi. Non ci torno.",
 	},
 	["sit.secondwind.inner"] = {
 		"Poco fa ero un corpo a terra. Adesso questo. Il mondo è strano, e io ci sono ancora dentro.",
@@ -29,7 +29,7 @@ NS:AddTexts("itIT", {
 		"Questa l'ho imparata a mie spese. Non mi servirà impararla due volte.",
 	},
 	["sit.woundedarrival.inner"] = {
-		"Terra nuova, e ci arrivo zoppicando. Non è l'ingresso che avrei scelto.",
+		"Arrivo zoppicando. Non è l'ingresso che avrei scelto.",
 		"{zone}. La ammirerei di più se ogni passo non facesse male.",
 	},
 	["sit.woundedarrival.e"] = {
@@ -42,6 +42,6 @@ NS:AddTexts("itIT", {
 	},
 	["mem.ret.sit.rain.e"] = {
 		"torna sotto la pioggia mentre la luce cala, e ritrova i vecchi sentieri a memoria.",
-		"abbassa il cappuccio e percorre la strada nota nel crepuscolo bagnato.",
+		"si cala il cappuccio sugli occhi e percorre la strada nota nel crepuscolo bagnato.",
 	},
 }, "base_situations")

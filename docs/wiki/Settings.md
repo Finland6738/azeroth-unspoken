@@ -69,13 +69,13 @@ Events added by phrase packs have their own default (30% if the pack sets none).
 | Chat mode | Private narrator only | **Chat** (cycles private, preview, confirm) | `/au mode private\|preview\|confirm` | What may reach chat. |
 | Automatic sending | off | **Automatic sending** (click, then click again within 10 s) | `/au mode auto` (twice within 10 s) | Lets some lines go out by themselves. |
 | Default channel | automatic | **Default channel** (click to cycle) | `/au channel <channel>` | Where proposals go. Automatic = `/say` for your character's words, `/emote` for the narrator's. |
+| Proposal waits | 25 s | **Proposal waits** (click to cycle: 25, 60, 120 s, until dismissed) | — | How long a proposal waits before it expires. The time stops while the mouse is over the narrator box and while you edit the proposal. *Until dismissed*: it waits until you send or discard it. |
 | Chat proposals module | on | module **Chat proposals** | — | Off: the same as private mode. |
 
 These limits are fixed and cannot be changed:
 
 | Limit | Value |
 |---|---|
-| How long a proposal waits | 25 seconds (longer while you are editing it) |
 | Minimum time between two sends | 4 seconds |
 | Sends per minute, any channel | 6 |
 | Automatic sends per minute | 2 |
@@ -88,9 +88,11 @@ See [[Chat Gateway]].
 | Setting | Default | Panel row | Range |
 |---|---|---|---|
 | Narrator box on/off | on | **Narrator box** | Off: lines appear in your chat window instead, visible only to you. |
-| Text duration | 8 s | **Text duration** (- / + by 1) | 2–30 s. Longer lines stay a little longer. |
-| Opacity | 85% | **Opacity** (- / + by 10%) | 20–100% |
-| Text size | 14 | **Text size** (- / + by 1) | 10–28 |
+| Text duration | 8 s | **Text duration** (- / + by 1) | 2–30 s. The base time; the reading time of the line is added to it. |
+| Reading speed | 14 characters/s | **Reading speed** (click to cycle) | 8, 11, 14, 18 or 24 characters a second. Each line stays the text duration plus its length divided by this speed: slower = longer on screen. |
+| Background opacity | 80% | **Background opacity** (- / + by 5%) | 55–100%. Only the box's background: the text always stays fully opaque, so it stays readable over bright scenes. |
+| Text size | 14 | **Text size** (- / + by 1) | 10–28. The voice label is 12 or more. |
+| Reduce motion | off | **Reduce motion** | On: the box appears and disappears without fading. |
 | Position locked | no | **Position locked** | Locked: the box cannot be dragged. |
 | Position | near the bottom centre | **Move the box back to the middle** | Drag the box to move it. `/au narrator reset` also resets it. |
 | History | 30 lines | **History** (opens the list) | This session only. |

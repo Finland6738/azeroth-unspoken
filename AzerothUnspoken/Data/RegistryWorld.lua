@@ -82,7 +82,7 @@ NS:RegisterPack({
 		["world.clear.01"] = { event = "weather_change", speaker = "inner", styles = { "intimate" },
 			tags = { "calm", "morality:hopeful" }, depth = ALL,
 			theme = "hope", motifs = { "light", "sky" },
-			conditions = { weather = "clear" } },
+			conditions = { weather = "clear", ["not"] = { indoors = true } } },
 		["world.clear.e"] = { event = "weather_change", speaker = "narrator", styles = { "ancient" },
 			tags = { "calm", "morality:hopeful" }, depth = ALL,
 			theme = "landscape", motifs = { "light" },

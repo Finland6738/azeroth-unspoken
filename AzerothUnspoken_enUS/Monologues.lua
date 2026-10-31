@@ -14,7 +14,7 @@ NS:AddTexts("enUS", {
 	},
 	["mono.muse.road.3"] = {
 		"Somewhere ahead there is a fire I have not sat at yet.",
-		"Whatever waits at the end of it, I would rather walk to it than wait for it.",
+		"Whatever waits at the end of the road, I would rather walk to it than wait for it.",
 	},
 
 	-- mono.muse.scar
@@ -37,8 +37,8 @@ NS:AddTexts("enUS", {
 		"Night at last. The world is quieter when it cannot see me.",
 	},
 	["mono.muse.stars.2"] = {
-		"I could name a few of them, if I tried. I would rather not.",
-		"The old tales say each of them is a watcher. Tonight I hope they are bored.",
+		"I could name a few stars, if I tried. I would rather not.",
+		"The old tales say each star is a watcher. Tonight I hope they are bored.",
 	},
 	["mono.muse.stars.3"] = {
 		"Only breath, and the cold, and this small patch of dark that is mine.",
@@ -80,10 +80,10 @@ NS:AddTexts("enUS", {
 	},
 	["mono.rest.hearth.2"] = {
 		"Nobody here knows what I did today, and nobody asks.",
-		"The keeper nods at me as if I were anyone. Tonight I am.",
+		"The keeper nods at me as if I were anyone. In here, I am.",
 	},
 	["mono.rest.hearth.3"] = {
-		"I will sleep like a stone and leave the road outside until morning.",
+		"I will sleep like a stone and leave the road outside until I wake.",
 		"Tomorrow can knock. For now the door stays shut.",
 	},
 

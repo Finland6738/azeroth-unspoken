@@ -297,7 +297,20 @@ T.run("preset e Set del Chat Gateway", function()
 	T.ok(not Config:ApplyPreset("inesistente"), "preset sconosciuto")
 	T.ok(Config:Set("chat.mode", "PREVIEW") and NS.db.chat.mode == "PREVIEW", "chat.mode valido")
 	T.ok(not Config:Set("chat.mode", "preview"), "chat.mode distingue le maiuscole")
-	T.ok(Config:Set("ui.narrator.alpha", 0.5) and NS.db.ui.narrator.alpha == 0.5, "opacità")
+	T.ok(Config:Set("ui.narrator.alpha", 0.7) and NS.db.ui.narrator.alpha == 0.7, "opacità")
+	-- #173: the background never goes under 0.55
+	local okA, a = Config:Set("ui.narrator.alpha", 0.2)
+	T.ok(okA and a == 0.55, "opacità dello sfondo almeno 0.55")
+	-- #177: the new settings and their limits
+	T.eq(Config.defaults.ui.narrator.readingSpeed, 14, "velocità di lettura predefinita: circa 0.07 s per carattere")
+	T.eq(Config.defaults.ui.narrator.reduceMotion, false, "dissolvenza accesa di base")
+	local okR, r = Config:Set("ui.narrator.readingSpeed", 1)
+	T.ok(okR and r == 5, "velocità di lettura minima")
+	T.ok(Config:Set("chat.pendingSeconds", 0) and NS.db.chat.pendingSeconds == 0, "attesa: finché non la chiudi (0)")
+	local okW, w = Config:Set("chat.pendingSeconds", 500)
+	T.ok(okW and w == 120, "attesa massima 120 s")
+	NS.db.chat.pendingSeconds = 25
+	NS.db.ui.narrator.alpha = 0.8
 	local ok, v = Config:Set("ui.narrator.fontSize", 99)
 	T.ok(ok and v == 28, "dimensione limitata")
 end)

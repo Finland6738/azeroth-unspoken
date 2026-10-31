@@ -80,6 +80,6 @@ NS:RegisterPack({
 		-- a new zone entered still wounded from a fight
 		wounded_arrival = { lead = "zone", with = { "lowhp" }, within = 120 },
 		-- a return in the rain as the light goes
-		rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = { "dusk", "night" } } },
+		rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = "dusk" } },
 	},
 })

@@ -50,11 +50,11 @@ NS:AddTexts("itIT", {
 	},
 	["world.fog.01"] = {
 		"La nebbia toglie gli spigoli a ogni cosa. Anche i miei dubbi sembrano più morbidi.",
-		"Una quiete grigia sulla strada. Qualunque cosa ci aspetti, resterà dov'è finché non sarò abbastanza vicino da vederla.",
+		"Una quiete grigia sulla strada. Qualunque cosa ci aspetti, resterà dov'è finché non sarò abbastanza {g:vicino|vicina} da vederla.",
 		{ "Nebbia. Posso fare cento passi senza incontrare altro che {g:me stesso|me stessa}.", depth = "natural" },
 	},
 	["world.clear.01"] = {
-		"Il cielo ha lasciato andare il suo tempo. La luce torna a tutto ciò che aveva lasciato.",
+		"Il cielo si è liberato del maltempo. La luce torna a tutto ciò che aveva lasciato.",
 		"L'aria è di nuovo pulita. Un nuovo inizio, se lo voglio.",
 		{ "Cielo sereno. Per una volta, nulla sopra di me ha un'opinione.", depth = "natural" },
 	},
@@ -68,7 +68,7 @@ NS:AddTexts("itIT", {
 	---------------------------------------------------------------------------
 	["world.zone.rain"] = {
 		"Arrivo sotto la pioggia. Qualunque cosa sia questo posto, mi mostra prima il suo volto bagnato.",
-		"Terra nuova, e pioggia sopra di lei. Un benvenuto onesto, per essere un benvenuto.",
+		"La pioggia mi accoglie, e io ci entro. Un benvenuto onesto, per essere un benvenuto.",
 		{ "Piove anche qui. Comincio a pensare che mi segua.", depth = "natural" },
 	},
 	["world.zone.rain.first"] = {
@@ -108,7 +108,7 @@ NS:AddTexts("itIT", {
 	},
 	["world.dusk.e"] = {
 		"guarda la luce scolare via dalla strada, e si stringe nel mantello senza accorgersene.",
-		"si ferma un momento a veder lasciare il cielo l'ultimo colore, poi riprende un po' più in fretta.",
+		"si ferma un momento a guardare l'ultimo colore lasciare il cielo, poi riprende un po' più in fretta.",
 		{ "sta sul limitare della sera e lascia andare il giorno, come si lascia una mano.", depth = "elevated" },
 	},
 	["world.dusk.forest"] = {
@@ -133,7 +133,7 @@ NS:AddTexts("itIT", {
 	["world.sub.03"] = {
 		"Dunque questa è {subzone}. Vediamo che cos'ha da dire.",
 		"{subzone}, allora. Ho sentito nomi più strani su strade più gentili.",
-		{ "{subzone}. Qualcuno è passato di qui per primo e l'ha chiamata così. Cercherò di esserne degno.", depth = "literary" },
+		{ "{subzone}. Qualcuno è passato di qui per primo e l'ha chiamata così. Cercherò di esserne {g:degno|degna}.", depth = "literary" },
 	},
 	["world.sub.04"] = {
 		"{subzone}, dunque? Mostrami dove porta la strada, adesso.",
@@ -235,13 +235,13 @@ NS:AddTexts("itIT", {
 		"consegna la fine dell'incarico e la sente andare, come quando si posa lo zaino al termine di una lunga strada.",
 	},
 	["world.quest.complete.03"] = {
-		"Un compito è compiuto. Che il prossimo mi trovi pronto altrettanto.",
+		"Un compito è compiuto. Che il prossimo mi trovi altrettanto {g:pronto|pronta}.",
 		"Ecco un'altra promessa mantenuta. La strada può chiedermi ciò che vuole, adesso.",
 		{ "È finita. Si sappia che è stata fatta a regola d'arte.", depth = "literary" },
 	},
 	["world.quest.again.01"] = {
 		"Finalmente. Mi ci sono volute più prove di quante ne ammetterò, e non le ammetterò.",
-		"Fatto, finalmente. Io e l'incarico abbiamo discusso a lungo, e ho vinto ai punti.",
+		"Fatto, finalmente. Io e l'incarico abbiamo discusso a lungo, e alla fine l'ultima parola è stata la mia.",
 		{ "Terza volta, quarta volta, ho perso il conto. L'incarico è finito, e un poco anch'io.", depth = "natural" },
 	},
 	["world.quest.again.e"] = {
@@ -259,11 +259,11 @@ NS:AddTexts("itIT", {
 	["world.rep.up.friendly"] = {
 		"Uno sguardo più amico di prima. La fiducia si costruisce un piccolo favore alla volta.",
 		"Dicono il mio nome con più gentilezza, ora. Sto {g:attento|attenta} a non abituarmici.",
-		{ "Amichevoli, dice la parola. Me la sono guadagnata entrando, e intendo tenerla andando avanti.", depth = "elevated" },
+		{ "«Amichevole», dicono. Quella parola me la sono guadagnata entrando, e intendo tenerla andando avanti.", depth = "elevated" },
 	},
 	["world.rep.up.honored"] = {
 		"{g:Onorato|Onorata}. La parola è più pesante di come suona, e intendo meritarla.",
-		"Sono passati dal sopportarmi al fidarsi di me. Cambia il modo in cui si sente una soglia.",
+		"Sono passati dal sopportarmi al fidarsi di me. Cambia il modo in cui si varca una soglia.",
 		{ "{g:Onorato|Onorata} tra loro. Da qualche parte lungo la strada ho smesso di essere {g:uno straniero|una straniera}.", depth = "elevated" },
 	},
 	["world.rep.up.revered"] = {
@@ -291,7 +291,7 @@ NS:AddTexts("itIT", {
 	---------------------------------------------------------------------------
 	["world.rest.inn.01"] = {
 		"Pareti calde, un tetto, e nulla da uccidere. Potrei restare qui un anno.",
-		"Mura che non si muovono, un fuoco che non chiede nulla. È il più vicino a casa che la strada arrivi.",
+		"Mura che non si muovono, un fuoco che non chiede nulla. Più vicino di così a una casa, la strada non arriva.",
 		{ "Al chiuso, finalmente. Le mie ossa ricordano a che servono le sedie.", depth = "natural" },
 	},
 	["world.rest.inn.e"] = {
@@ -318,7 +318,7 @@ NS:AddTexts("itIT", {
 		{ "Il vento mi prende, e le strade si riducono a fili. Per un po', nulla è una mia responsabilità.", depth = "elevated" },
 	},
 	["world.flight.start.e"] = {
-		"si tiene forte mentre il mondo si inclina via, e guarda le strade ridursi a fili laggiù.",
+		"si tiene forte mentre il mondo si inclina e si allontana, e guarda le strade ridursi a fili laggiù.",
 		"sta molto immobile mentre la terra si abbassa, e tiene entrambi gli occhi sull'orizzonte.",
 		{ "sale nell'aria aperta, e la terra si srotola sotto come una pagina a cui non importa chi la legge.", depth = "elevated" },
 	},
@@ -332,7 +332,7 @@ NS:AddTexts("itIT", {
 		{ "Giù, finalmente. Il cielo andava bene; lo preferisco solo da sotto.", depth = "natural" },
 	},
 	["world.flight.arrive.e"] = {
-		"scende a terra e resta fermo un momento, lasciando che l'ondeggiare dell'aria esca dalle ginocchia.",
+		"scende a terra e resta {g:fermo|ferma} un momento, lasciando che l'ondeggiare dell'aria esca dalle ginocchia.",
 		"tocca terra e fa due passi cauti, come dopo il mare.",
 	},
 	["world.flight.long.01"] = {
@@ -341,7 +341,7 @@ NS:AddTexts("itIT", {
 		{ "Tanta strada alle spalle, e nessuna camminata. Mi chiedo che cosa faccia a un viaggio.", depth = "elevated" },
 	},
 	["world.flight.long.e"] = {
-		"scende dopo il lungo volo, e il suolo pare pesante e lento dopo tante ore tra le nubi.",
+		"scende dopo il lungo volo, e il suolo pare pesante e lento dopo tanto tempo tra le nubi.",
 		"atterra al termine di una lunga traversata, e si concede un momento solo per stare su qualcosa che non si muove.",
 	},
 }, "base_world")

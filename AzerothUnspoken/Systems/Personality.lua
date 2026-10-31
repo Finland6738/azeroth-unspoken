@@ -580,7 +580,7 @@ function Personality:ExcludedBy(entry, soul)
 	return nil
 end
 
-Engine:SetWeightHook("P", "soul", Personality.Factor)
+Engine:SetWeightHook("P", "soul", Personality.Factor, true)   -- pure: tags, voice and register of the line (#157)
 
 ---------------------------------------------------------------------------
 -- Registri: il temperamento sposta ciò che il narratore preferisce (GDD §5.2)
