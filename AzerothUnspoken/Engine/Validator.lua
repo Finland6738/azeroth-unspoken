@@ -591,6 +591,13 @@ function Validator:Run(opts)
 			if p.chainable and not Validator.MONOLOGUE_SPEAKERS[p.speaker] then
 				Add("error", "monologueVoice", p.pack, id, nil, "a chainable phrase is for private voices (narrator, inner)")
 			end
+			-- D16 (#163): a literary form (tags lore, genre_*) never speaks in a public voice, and a monologue is never one
+			if Engine.PUBLIC_SPEAKERS[p.speaker] then
+				if Engine.HasLiteraryTag(p.tags) then
+					Add("error", "literaryPublic", p.pack, id, nil,
+						("tag lore or genre_*: a literary form is for private voices (inner, npc), not '%s' (decision D16)"):format(p.speaker))
+				end
+			end
 			-- #100: a line for a composite situation belongs to the situation's lead event
 			if p.situational then
 				for _, sid in ipairs(Engine.AsList(p.when.situation)) do

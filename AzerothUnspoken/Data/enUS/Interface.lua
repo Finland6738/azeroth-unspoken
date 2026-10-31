@@ -39,6 +39,7 @@ NS:RegisterLanguage("en", {
 
 		-- Chat Gateway
 		gw_empty = "nothing to send.",
+		gw_private_only = "this line is private (a monologue or a literary form): it is never sent to chat.",
 		gw_reroll_empty = "no proposal to change.",
 		gw_reroll_editing = "you are editing the proposal: close the editor (Esc) before changing the line.",
 		gw_reroll_kept = "your edited version was replaced. The text was: %s",

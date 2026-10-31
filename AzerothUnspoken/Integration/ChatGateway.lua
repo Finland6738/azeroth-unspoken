@@ -49,6 +49,23 @@ Gateway.CHANNELS = NS.Config.CHAT_CHANNELS
 -- voci che possono diventare testo in chat; "inner" e "npc" restano private
 local PUBLIC_VOICE = { narrator = true, character = true }
 
+---The central guard of the gateway (#152, #163, ADR 0003, ADR 0032): why a line can never become public text, or nil
+---when it may. It reads the record, then the rule it came from, so it holds even when the data is wrong: a monologue
+---(any voice: it speaks as the narrator or the inner voice and is never sent to chat), a literary line (tags `lore`,
+---`genre_*`) and a private voice (inner, npc). Every path to chat asks it: Propose, Reroll, SendPending, CopyToChat.
+---@param rec table a phrase record or a proposal (kind, speaker, id, tags)
+---@return string? why "monologue" | "literary" | "voice"
+function Gateway:PrivateReason(rec)
+	if type(rec) ~= "table" then return "voice" end
+	local rule = rec.id and NS.Engine.byId[rec.id] or nil
+	if rec.kind == "monologue" or (rule and rule.kind == "monologue") then return "monologue" end
+	if type(rec.parts) == "table" and #rec.parts > 0 then return "monologue" end
+	-- D16 (#130, #163): `lore` and `genre_*` mark a literary form, which stays private whatever its voice
+	if NS.Engine.HasLiteraryTag(rec.tags) or (rule and NS.Engine.HasLiteraryTag(rule.tags)) then return "literary" end
+	if not PUBLIC_VOICE[rec.speaker] then return "voice" end
+	return nil
+end
+
 -- parole del comando /au mode: sempre in inglese (i nomi interni in maiuscolo si accettano anch'essi)
 local MODE_ALIAS = NS.Keywords.Register("mode", {
 	private = "PRIVATE", preview = "PREVIEW", confirm = "CONFIRM_TO_SEND", auto = "AUTO_ONLY_IF_ALLOWED",
@@ -316,18 +333,20 @@ end
 -- Invio
 ---------------------------------------------------------------------------
 -- Invia un testo. Restituisce true oppure false e il motivo:
--- empty, needs_action, channel_unavailable, flood, no_sender, lockdown, error.
+-- empty, needs_action, channel_unavailable, flood, no_sender, lockdown,, error.
 ---Invia un testo in chat.
 ---@param text string
 ---@param channel string SAY | EMOTE | YELL | PARTY | RAID | GUILD | INSTANCE_CHAT
 ---@param opts? { auto: boolean, proposal: AUProposal }
 ---@return boolean ok
----@return string? reason empty | needs_action | channel_unavailable | flood | no_sender | lockdown | blocked | error
+---@return string? reason empty | private_only | needs_action | channel_unavailable | flood | no_sender | lockdown | blocked | error
 ---@return any? err
 function Gateway:Send(text, channel, opts)
 	opts = opts or {}
 	text = Trim(text or "")
 	if text == "" then return false, "empty" end
+	-- #152, #163: a proposal that carries a private line is refused here too, whoever calls Send
+	if opts.proposal and self:PrivateReason(opts.proposal) then return false, "private_only" end
 	local fromPlayer = self.inPlayerAction
 	if not fromPlayer and not self:CanSendWithoutAction(channel) then return false, "needs_action" end
 	if not self:ChannelAvailable(channel) then return false, "channel_unavailable" end
@@ -463,10 +482,16 @@ end
 ---Invia la proposta in attesa. Da chiamare solo dentro PlayerAction.
 ---@param text? string testo da usare al posto di quello proposto
 ---@return boolean ok
----@return string? reason
+---@return string? reason empty | private_only | the reasons of Send
 function Gateway:SendPending(text)
 	local p = self:GetPending()
 	if not p then return false, "empty" end
+	-- defence in depth (#152, #163): a private line in the pending slot is dropped, never sent
+	if self:PrivateReason(p) then
+		self:Discard()
+		self:Report("private_only")
+		return false, "private_only"
+	end
 	local ok, why, err = self:Send(self:TextFor(p.form, text or p.edited or p.text, p.channel, p.player), p.channel,
 		{ proposal = p })
 	if not ok then
@@ -484,10 +509,15 @@ end
 -- e dallo stesso taglio dell'invio diretto. Non è un invio dell'addon: niente controllo del flood e nessun
 -- bisogno di un'azione; la proposta si scarta dopo la copia.
 ---@return boolean ok
----@return string? reason empty | channel_unavailable | no_chat_box | copy_failed
+---@return string? reason empty | private_only | channel_unavailable | no_chat_box | copy_failed
 function Gateway:CopyToChat()
 	local p = self:GetPending()
 	if not p then return false, "empty" end
+	if self:PrivateReason(p) then
+		self:Discard()
+		self:Report("private_only")
+		return false, "private_only"
+	end
 	local text = Trim(self:TextFor(p.form, p.edited or p.text, p.channel, p.player))
 	if text == "" then
 		self:Report("empty")
@@ -569,7 +599,8 @@ function Gateway:Propose(rec, ctx, opts)
 	local channel = opts.channel and self:ChannelAvailable(opts.channel) and opts.channel or self:ResolveChannel(rec)
 	rec.channel = channel
 
-	local publicCapable = PUBLIC_VOICE[rec.speaker] and not opts.privateOnly and mode ~= "PRIVATE"
+	-- #152, #163: monologues and literary lines are private in every mode, whatever the voice says
+	local publicCapable = not self:PrivateReason(rec) and not opts.privateOnly and mode ~= "PRIVATE"
 	if not publicCapable then
 		if NS.Narrator then NS.Narrator:Present(rec) else NS:Print(rec.display) end
 		return true
@@ -634,7 +665,7 @@ function Gateway:Reroll()
 		local pick = self:PickRecord(p.event, ctx, p.form)
 		if not pick then break end
 		-- con una sola frase disponibile il selettore ripropone la stessa: non è un'alternativa
-		if PUBLIC_VOICE[pick.speaker] and pick.id ~= p.id then rec = pick; break end
+		if not self:PrivateReason(pick) and pick.id ~= p.id then rec = pick; break end
 	end
 	if not rec then
 		NS:Print(NS:L("no_phrase", tostring(p.event)))
