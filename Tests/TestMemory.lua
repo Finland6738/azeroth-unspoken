@@ -1029,11 +1029,16 @@ T.run("diario: cancellazione e permanenza dai pulsanti", function()
 	local n0 = #Data().entries
 	local del = Buttons(f, "x")
 	T.eq(#del, n0, "un pulsante di cancellazione per ricordo")
-	-- la riga più recente è la prima: cancella la prima
+	-- la riga più recente è la prima: cancella la prima, con un secondo clic di conferma (#190)
 	local first = LM:List()[1]
 	del[1]:Click()
+	T.eq(#Data().entries, n0, "il primo clic non cancella")
+	T.ok(AllText(f):find("Cancellare questo ricordo? Premi OK:", 1, true), "la riga chiede conferma")
+	T.eq(#Buttons(f, "OK"), 1, "il pulsante diventa OK")
+	Buttons(f, "OK")[1]:Click()
 	T.eq(#Data().entries, n0 - 1, "il ricordo è cancellato")
 	T.ok(not LM:Find(first.id), "proprio quello")
+	T.eq(#Buttons(f, "OK"), 0, "nessuna conferma resta armata")
 	local pin = Buttons(f, "P")
 	local second = LM:List()[1]
 	pin[1]:Click()
@@ -1045,11 +1050,15 @@ T.run("diario: cancellazione e permanenza dai pulsanti", function()
 	NS.JournalFrame:Open("places")
 	local places = Count(Data().places)
 	Buttons(f, "x")[1]:Click()
+	T.ok(Count(Data().places) == places and AllText(f):find("Dimenticare questo luogo?", 1, true), "luogo: chiede conferma")
+	Buttons(f, "OK")[1]:Click()
 	T.eq(Count(Data().places), places - 1, "il luogo è dimenticato")
 	-- flag: toglierlo
 	NS.JournalFrame:Open("flags")
 	local flags = Count(Data().flags)
 	Buttons(f, "x")[1]:Click()
+	T.ok(Count(Data().flags) == flags and AllText(f):find("Togliere questo flag?", 1, true), "flag: chiede conferma")
+	Buttons(f, "OK")[1]:Click()
 	T.eq(Count(Data().flags), flags - 1, "il flag è tolto")
 	NS.JournalFrame:Close()
 end)
@@ -1232,6 +1241,159 @@ T.run("diario: pulsante Dimentica tutto con conferma", function()
 	Buttons(f, "Conferma: dimentica")[1]:Click()
 	T.eq(#Data().entries, 0, "il secondo clic azzera")
 	NS.JournalFrame:Close()
+end)
+
+T.run("diario: le conferme si disarmano da sole, con un gettone, e alla chiusura (#190)", function()
+	Populate()
+	NS.JournalFrame:Open("memories")
+	local f = JFrame()
+	local n = #Data().entries
+	-- la conferma di una riga scade
+	Buttons(f, "x")[1]:Click()
+	T.eq(#Buttons(f, "OK"), 1, "armata")
+	ADVANCE(7)
+	T.eq(#Buttons(f, "OK"), 0, "dopo qualche secondo torna com'era")
+	T.eq(#Data().entries, n, "e nulla è cancellato")
+	-- un altro clic rinuncia: un'altra scheda, un'altra riga
+	Buttons(f, "x")[1]:Click()
+	for _, b in ipairs(Buttons(f)) do if b:GetText():find("Luoghi", 1, true) then b:Click() end end
+	for _, b in ipairs(Buttons(f)) do if b:GetText():find("Ricordi", 1, true) then b:Click() end end
+	T.eq(#Buttons(f, "OK"), 0, "cambiare scheda disarma")
+	Buttons(f, "x")[1]:Click()
+	Buttons(f, "x")[1]:Click()
+	T.eq(#Buttons(f, "OK"), 1, "una sola conferma alla volta: la seconda riga")
+	T.eq(#Data().entries, n, "armare una riga dopo l'altra non cancella")
+	-- il timer di un armamento vecchio non disarma quello nuovo
+	ADVANCE(4)
+	Buttons(f, "Dimentica tutto")[1]:Click()
+	T.eq(#Buttons(f, "OK"), 0, "Dimentica tutto disarma la riga")
+	ADVANCE(3)
+	T.eq(#Buttons(f, "Conferma: dimentica"), 1, "il timer della riga non tocca l'armamento più nuovo")
+	Buttons(f, "Conferma: dimentica")[1]:Click()
+	T.eq(#Data().entries, 0, "azzerato")
+	ADVANCE(1)
+	Buttons(f, "Dimentica tutto")[1]:Click()      -- di nuovo armato, un secondo dopo
+	ADVANCE(4)                                     -- qui scade il timer del primo armamento
+	T.eq(#Buttons(f, "Conferma: dimentica"), 1, "arma, conferma, arma: il vecchio timer non disarma il nuovo")
+	ADVANCE(3)
+	T.eq(#Buttons(f, "Dimentica tutto"), 1, "il nuovo scade al suo tempo")
+	-- chiudere la finestra disarma (OnHide), anche senza passare da Open
+	Buttons(f, "Dimentica tutto")[1]:Click()
+	f:Hide()
+	f:Show()
+	NS.JournalFrame:Refresh()
+	T.eq(#Buttons(f, "Dimentica tutto"), 1, "nascosta e riaperta: non più armato")
+	NS.JournalFrame:Close()
+end)
+
+T.run("diario: schede misurate, nota sotto le schede, righe intere nel suggerimento (#179, #180)", function()
+	Populate()
+	local function Y(w) local p = w._s.points and w._s.points[#w._s.points]; return p and -p[3] end
+	local function X(w) local p = w._s.points and w._s.points[#w._s.points]; return p and p[2] end
+	local function RowTexts(f)
+		return FindWidgets(function(w) return w.kind == "FontString" and w.parent == f and w._s.w == 500 end)
+	end
+	for _, lang in ipairs({ "it", "en" }) do
+		NS.db.locale = lang
+		for _, t in ipairs(JournalFrame.tabs) do
+			NS.JournalFrame:Open(t.id)
+			local f = JFrame()
+			-- ogni scheda è larga quanto il suo testo e sta nella finestra; la scelta non è solo un colore
+			local tabsBottom = 0
+			for _, u in ipairs(JournalFrame.tabs) do
+				local b
+				for _, c in ipairs(Buttons(f)) do
+					local plain = c:GetText():gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+					if plain == NS:L(u.label) then b = c end
+				end
+				T.ok(b ~= nil, lang .. ": la scheda " .. u.id .. " c'è, senza segni aggiunti")
+				if b then
+					T.ok(b:GetWidth() >= #NS:L(u.label) * 6 + 20, lang .. ": " .. u.id .. " larga quanto il testo")
+					T.ok(X(b) >= 16 and X(b) - 16 + b:GetWidth() <= 568, lang .. ": " .. u.id .. " dentro la finestra")
+					tabsBottom = math.max(tabsBottom, Y(b) + 24)
+				end
+			end
+			T.ok(f.tabMark:IsShown(), lang .. ": la scheda scelta è sottolineata")
+			local rowsTop = Y(RowTexts(f)[1]) - 6
+			-- la nota sta su una riga propria, tra le schede e l'elenco
+			if t.note then
+				T.ok(f.note:IsShown() and Y(f.note) >= tabsBottom, lang .. ": " .. t.id .. ": la nota sotto le schede (" .. Y(f.note) .. ", " .. tabsBottom .. ")")
+				T.ok(rowsTop >= Y(f.note) + f.note:GetStringHeight(), lang .. ": " .. t.id .. ": la prima riga sotto la nota")
+			else
+				T.ok(not f.note:IsShown(), lang .. ": " .. t.id .. ": nessuna nota")
+			end
+			T.ok(rowsTop >= tabsBottom, lang .. ": " .. t.id .. ": l'elenco sotto le schede (" .. rowsTop .. ", " .. tabsBottom .. ")")
+			-- nessuna riga con del testo scende sulle pagine (424 dall'alto)
+			for _, w in ipairs(RowTexts(f)) do
+				if w:GetText() ~= "" then T.ok(Y(w) + 22 <= 424, lang .. ": " .. t.id .. ": riga sopra le pagine") end
+			end
+			NS.JournalFrame:Close()
+		end
+	end
+	NS.db.locale = "it"
+	-- con una nota, meno righe per pagina: 30 voci nella sessione fanno 3 pagine da 10
+	Fresh()
+	for i = 1, 30 do LM:Record({ kind = "level", level = i, importance = 2, t = 5000 + i }) end
+	NS.JournalFrame:Open("session")
+	T.ok(AllText(JFrame()):find("pagina 1 di 3", 1, true), "sessione: tre pagine")
+	NS.JournalFrame:Close()
+	-- una riga lunga si taglia e il suggerimento la mostra intera; una corta non ne ha bisogno
+	local long = ("parola "):rep(120)
+	JournalFrame:RegisterTab("lunga", { label = "mem_tab_flags", rows = function() return { { text = long }, { text = "corta" } } end })
+	NS.JournalFrame:Open("lunga")
+	local f = JFrame()
+	-- il finto client limita GetStringWidth a 400: qui serve la misura vera di una riga lunga
+	f.measure.GetStringWidth = function(self) return #self:GetText() * 6 end
+	NS.JournalFrame:Refresh()
+	local hits = FindWidgets(function(w) return w.kind == "Frame" and w.parent == f and w._s.w == 500 end)
+	T.ok(#hits >= 2, "un'area del suggerimento per riga")
+	local shown
+	local old = rawget(GameTooltip, "SetText")
+	GameTooltip.SetText = function(_, text) shown = text end
+	hits[1].scripts.OnEnter(hits[1])
+	T.eq(shown, long, "la riga tagliata ha il suggerimento con il testo intero")
+	hits[2].scripts.OnEnter(hits[2])
+	T.eq(shown, "", "la riga corta no")
+	GameTooltip.SetText = old
+	f.measure.GetStringWidth = nil
+	JournalFrame.tabs[#JournalFrame.tabs] = nil
+	NS.JournalFrame:Close()
+end)
+
+T.run("diario con la memoria spenta o in sola lettura: lo dice e le azioni si fermano (#193)", function()
+	local cases = {
+		{ "off", "Memoria spenta: accendila nelle impostazioni" },
+		{ "ro", "Sola lettura: salvato da una versione più nuova" },
+	}
+	for _, case in ipairs(cases) do
+		Populate()
+		local n = #Data().entries
+		if case[1] == "off" then NS.db.modules.memory = false else LM.readOnly = true end
+		NS.JournalFrame:Open("memories")
+		local f = JFrame()
+		local text = AllText(f)
+		T.ok(text:find(case[2], 1, true), case[1] .. ": la finestra dice perché: " .. text:sub(1, 300))
+		T.ok(text:find("Prima visita: Elwynn Forest", 1, true), case[1] .. ": i ricordi si leggono")
+		local x = Buttons(f, "x")[1]
+		T.ok(x ~= nil and not x:IsEnabled(), case[1] .. ": cancellare è disattivato")
+		T.ok(not Buttons(f, "P")[1]:IsEnabled(), case[1] .. ": anche il permanente")
+		x:Click(); x:Click()
+		T.eq(#Data().entries, n, case[1] .. ": un clic non fa nulla, nemmeno armare")
+		T.eq(#Buttons(f, "OK"), 0, case[1] .. ": nessuna conferma armata")
+		T.ok(not Buttons(f, "Dimentica tutto")[1]:IsEnabled(), case[1] .. ": Dimentica tutto è disattivato")
+		-- le schede che non sono della memoria restano come sono
+		NS.JournalFrame:Open("stories")
+		T.ok(not AllText(f):find(case[2], 1, true), case[1] .. ": le storie non mostrano lo stato della memoria")
+		NS.JournalFrame:Close()
+		NS.db.modules.memory, LM.readOnly = true, false
+	end
+	NS.db.locale = "en"
+	LM.readOnly = true
+	NS.JournalFrame:Open("flags")
+	T.ok(AllText(JFrame()):find("Read-only: saved by a newer version of the addon", 1, true), "in inglese")
+	NS.JournalFrame:Close()
+	LM.readOnly, NS.db.locale = false, "it"
+	Fresh()
 end)
 
 T.run("diario in inglese e con la memoria spenta", function()

@@ -44,7 +44,9 @@ end
 ---------------------------------------------------------------------------
 local STATE_COLOR = { AVAILABLE = "|cff40ff40", MISSING = "|cffff8040", RESTRICTED = "|cffffd040" }
 local STATES = { "AVAILABLE", "RESTRICTED", "MISSING" }
-local GROUPS = { "client", "api", "event", "value", "restriction", "chat", "integration" }
+-- l'ordine dei gruppi nel rapporto; un gruppo che non è qui (un "hook" o uno aggiunto domani) segue, in ordine
+-- alfabetico: il rapporto elenca ogni capacità che conta nei totali
+local GROUPS = { "client", "api", "event", "value", "restriction", "chat", "integration", "hook" }
 
 -- { [gruppo] = { [stato] = { id, ... } } }, con gli id ordinati
 function Diagnostics:CapabilityMatrix()
@@ -64,12 +66,13 @@ end
 
 -- I rapporti di diagnostica si condividono (checklist G1): niente dati di altri giocatori (GDD §14, #53). I campi di
 -- testo si mostrano solo se sono noti e non identificano una persona; qualunque altro testo (name, target, un
--- campo aggiunto domani) esce come <nascosto>. Numeri e booleani non identificano nessuno.
+-- campo aggiunto domani) esce come <hidden>. Numeri e booleani non identificano nessuno.
 local SAFE_TEXT = { zone = true, subzone = true, unit = true, spell = true, state = true, restrictionType = true,
 	kind = true, encounterName = true, castGUID = true, id = true, from = true, to = true, source = true, func = true }
 -- campi sicuri solo per certi eventi (il nome di un flag narrativo non è una persona)
 local SAFE_TEXT_BY_TYPE = { MEMORY_FLAG = { name = true } }
-Diagnostics.HIDDEN = "<nascosto>"
+-- in inglese, come il resto del rapporto: si incolla nelle issue
+Diagnostics.HIDDEN = "<hidden>"
 
 local function Describe(value, eventType)
 	if type(value) ~= "table" then return tostring(value) end
@@ -136,7 +139,18 @@ function Diagnostics:Report(verbose)
 	local matrix, totals = self:CapabilityMatrix()
 	Add(("%s: %d AVAILABLE, %d RESTRICTED, %d MISSING"):format(NS:L("debug_caps"),
 		totals.AVAILABLE, totals.RESTRICTED, totals.MISSING))
+	local groups, known = {}, {}
 	for _, group in ipairs(GROUPS) do
+		known[group] = true
+		table.insert(groups, group)
+	end
+	local extra = {}
+	for group in pairs(matrix) do
+		if not known[group] then table.insert(extra, group) end
+	end
+	table.sort(extra)
+	for _, group in ipairs(extra) do table.insert(groups, group) end
+	for _, group in ipairs(groups) do
 		local states = matrix[group]
 		if states then
 			for _, state in ipairs(STATES) do
