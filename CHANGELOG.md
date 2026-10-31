@@ -10,6 +10,29 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-perf: selection speed and memory (issues #157 and #138)
+
+The selection does less work per pick and the registry uses less memory, **without changing a single pick**: the same seed and context give the same line ([ADR 0024](docs/adr/0024-selection-index-compact-registry-and-bounded-memory.md), "Update").
+
+- **Fixed (#157):** the "50% slower since R4" was mostly the benchmark. `Tests/SyntheticArchive.lua` clones rules drawn from all the registered ones, so the 35 rules R4 added made a different, heavier archive. On the same archive R4 cost +5% at 10,000 entries and +7% at today's size; that cost is gone now.
+- **Changed, engine:**
+  - **Shared rule shapes.** The fields that repeat across rules (pack, events, voice, form, category, depth, weight, cooldown, specificity, tier, monologue fields) live in one interned table, the rule's metatable. A rule table now holds 8 slots instead of 16. Reading `p.field` is unchanged; a write gives that rule its own copy; `pairs(p)` shows only the rule's own fields.
+  - **Shared conditions.** Rules with the same conditions share one table. `Engine:DropPack` releases shapes and conditions.
+  - **Memo of one pick** (`Engine.MEMO`). Each shared conditions table is checked once per pick. In a pick that weighs at least 128 rules, the weight factors are computed once per combination of descriptive fields, with the same operations in the same order. The union of the index groups is cached until the index changes. Smaller savings in `WeightedPick`, `TierPool`, `AnyUsable` and `Traits.Evaluate` (an empty profile).
+  - `Engine:SetWeightHook(factor, name, fn, pure)`: the new `pure` argument (true, or a function of the context) says that the hook reads only the context and the rule's descriptive fields. The hooks of the soul, emotions, interlocutor and relations are pure. The place hook is pure except in battlegrounds, arenas and boss fights.
+- **Changed, tools:**
+  - `Tests/bench_scale.py` prints the commit and the Lua instructions per pick (exact, independent of the machine's load).
+  - `--archive-dir` keeps the synthetic archives, so two versions measure the same rules.
+  - `Tests/trace_picks.py` has `--soul` and `--emotion`.
+  - `Tests/run_tests.py` prints the instructions per pick at 2,000 entries and warns above 1.25 times `Tests/perf_baseline.json`.
+- **Tests:** `Tests/TestScale.lua` runs the same seeded picks with the memo off and on (neutral; a soul with emotions; a hook that is not pure) and requires the same trace. It also checks shapes, copy on write, shared conditions, the cache and `DropPack`. Seven `trace_picks.py` configurations gave byte-identical traces before and after.
+- **Measured** (same archive, one language, median of three runs; instructions are exact):
+  - today's size: 0.68 → 0.49 ms per pick (18.3 → 14.8 thousand instructions), 5.5 → 5.7 MB.
+  - 10,000 entries: 1.66 → 1.16 ms, p95 4.96 → 2.96 ms; 23.3 → 17.2 MB.
+  - 50,000 entries: 7.71 → 3.20 ms, p95 27.0 → 10.9 ms (301 → 95 thousand instructions); 93.9 → 61.6 MB.
+  - Regional packs (`bench_packs.py`): one region 8.0 → 6.0 MB; every region kept 65.2 → 49.1 MB.
+- **Known limits:** the #138 targets at 50,000 entries are not met yet: p95 under 5 ms and memory under 40 MB. Registering 50,000 rules costs about 45% more Lua instructions. The base packs use 0.2 MB more. Nothing is measured in the client yet (D3, `/au prof`).
+
 ### Funding: Ko-fi link
 
 - **Added: `.github/FUNDING.yml`** with the Ko-fi account, so GitHub shows a Sponsor button. A short "Support the project" section in the README (English and Italian) and on the wiki home page. Donations are optional, unlock nothing, and are never requested inside the addon.

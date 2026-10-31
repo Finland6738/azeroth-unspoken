@@ -329,6 +329,187 @@ local function SharedSet(set)
 	return set
 end
 
+-- a short number for each table used in a key (never reused), so a key names the shared lists and sets above by
+-- identity without their long addresses
+local tableIds, lastTableId = setmetatable({}, { __mode = "k" }), 0
+
+-- A value as a key part: its type and an exact text (numbers with 17 digits, so two different weights never meet;
+-- tables by identity, which is enough for the shared lists and sets above)
+local function KeyPart(v)
+	local t = type(v)
+	if t == "number" then
+		-- whole numbers (the usual weights, cooldowns and specificity) are exact in the short form
+		if v == math.floor(v) and v > -1e14 and v < 1e14 then return "n" .. v end
+		return "n" .. ("%.17g"):format(v)
+	end
+	if t == "string" then return "s" .. v end
+	if v == nil then return "-" end
+	if t == "table" then
+		local id = tableIds[v]
+		if not id then
+			lastTableId = lastTableId + 1
+			id = lastTableId
+			tableIds[v] = id
+		end
+		return "t" .. id
+	end
+	return t:sub(1, 1) .. tostring(v)
+end
+
+-- Interned conditions (#138, ADR 0024): rules with the same conditions share one table (a large archive repeats
+-- `{ combat = true }` or `{ zone = "Duskwood" }` thousands of times). Only plain data is interned: a table with a
+-- function, or keys that are not strings or numbers, stays the rule's own. Nobody changes conditions after the
+-- registration. The tables count their rules, so the conditions of a dropped pack go with it (DropPack): not weak
+-- tables, which the collector would walk whole at every cycle while 50,000 rules register.
+local sharedWhens, whenRules = {}, {}
+
+-- numbers before strings, each in its natural order
+local function KeyOrder(a, b)
+	if type(a) ~= type(b) then return type(a) == "number" end
+	return a < b
+end
+
+local function WhenKey(v, depth)
+	local t = type(v)
+	if t ~= "table" then
+		if t == "string" or t == "number" or t == "boolean" then return KeyPart(v) end
+		return nil
+	end
+	if depth > 8 then return nil end
+	-- the common case, one condition with a plain value ({ zone = "Duskwood" }, { combat = true }): no lists to sort
+	local k1, v1 = next(v)
+	if k1 ~= nil and next(v, k1) == nil and type(v1) ~= "table" then
+		local kt, sub = type(k1), WhenKey(v1, depth + 1)
+		if (kt == "string" or kt == "number") and sub then return "{" .. KeyPart(k1) .. "=" .. sub .. "}" end
+		return nil
+	end
+	local keys = {}
+	for k in pairs(v) do
+		local kt = type(k)
+		if kt ~= "string" and kt ~= "number" then return nil end
+		table.insert(keys, k)
+	end
+	if #keys > 1 then table.sort(keys, KeyOrder) end
+	local parts = {}
+	for i, k in ipairs(keys) do
+		local sub = WhenKey(v[k], depth + 1)
+		if not sub then return nil end
+		parts[i] = KeyPart(k) .. "=" .. sub
+	end
+	return "{" .. table.concat(parts, ",") .. "}"
+end
+
+local function SharedWhen(when)
+	if type(when) ~= "table" then return when end
+	local key = WhenKey(when, 1)
+	if not key then return when end
+	local found = sharedWhens[key]
+	if found then
+		whenRules[key] = whenRules[key] + 1
+		return found
+	end
+	sharedWhens[key], whenRules[key] = when, 1
+	return when
+end
+
+-- a rule leaves its conditions (DropPack)
+local function ReleaseWhen(when)
+	local key = type(when) == "table" and WhenKey(when, 1)
+	if not key or sharedWhens[key] ~= when then return end
+	whenRules[key] = whenRules[key] - 1
+	if whenRules[key] <= 0 then sharedWhens[key], whenRules[key] = nil, nil end
+end
+
+-- Shared rule shapes (#138, ADR 0024): the fields that repeat across rules (pack, events, voice, form, category, depth,
+-- weight, cooldown, specificity, tier, the monologue fields) live in one shape per distinct combination, which is the
+-- rule's metatable (__index = shape). The rule table keeps what is its own or nearly so: id, text, when (shared, see
+-- above), ord, and its registers, tags, theme and motifs, whose combinations are almost unique in written content (the
+-- base packs: 1,169 rules would make 1,104 shapes with them), so a rule fills the eight slots of its hash part instead
+-- of sixteen. Reading p.speaker is unchanged for every caller; pairs(p) shows only the rule's own fields. A write to a
+-- shape field gives the rule a private copy of its shape first (copy on write), so it never changes the other rules of
+-- the shape. The shape is also part of the key the selection memoizes by (WeightedSelector, per pick).
+Engine.SHAPE_FIELDS = { "pack", "events", "speaker", "form", "category", "depth", "depthList", "weight", "cooldown", "spec",
+	"tier", "kind", "parts", "order", "chainable", "situational", "legacy" }
+local SHAPE_FIELD = {}
+for _, k in ipairs(Engine.SHAPE_FIELDS) do SHAPE_FIELD[k] = true end
+local shapes, shapeRules = {}, {}   -- [key] = shape, [key] = rules that use it (released by DropPack)
+
+local ShapeWrite
+-- a new shape table (not interned) with the fields of `from`
+local function NewShape(from)
+	local s = { __newindex = ShapeWrite }
+	for _, k in ipairs(Engine.SHAPE_FIELDS) do s[k] = from[k] end
+	s.__index = s
+	return s
+end
+
+-- __newindex of every shape: the key is not in the rule table
+ShapeWrite = function(p, k, v)
+	if SHAPE_FIELD[k] then
+		local own = NewShape(getmetatable(p))
+		own[k] = v
+		setmetatable(p, own)
+	else
+		rawset(p, k, v)
+	end
+end
+
+local keyParts = {}
+local function ShapeKey(fields)
+	for i, k in ipairs(Engine.SHAPE_FIELDS) do
+		-- a table counts by identity: depthList, the rule's own list (validator only), gives it a shape of its own
+		local v = fields[k]
+		if v == nil then
+			keyParts[i] = "-"
+		elseif type(v) == "string" then
+			keyParts[i] = "s" .. v
+		else
+			keyParts[i] = KeyPart(v)
+		end
+	end
+	return table.concat(keyParts, "\31")
+end
+
+local function Shape(fields)
+	local key = ShapeKey(fields)
+	local s = shapes[key]
+	if s then
+		shapeRules[key] = shapeRules[key] + 1
+	else
+		s = NewShape(fields)
+		shapes[key], shapeRules[key] = s, 1
+	end
+	return s
+end
+
+-- a rule leaves its shape (DropPack); a private copy (copy on write) is not interned
+local function ReleaseShape(s)
+	if not s then return end
+	local key = ShapeKey(s)
+	if shapes[key] ~= s then return end
+	shapeRules[key] = shapeRules[key] - 1
+	if shapeRules[key] <= 0 then shapes[key], shapeRules[key] = nil, nil end
+end
+
+---The shape of a rule (#138): the table of the fields it shares with other rules, or nil for a table that was not
+---registered with AddEntry (frames, vocabulary, test fixtures).
+---@param p table
+---@return table?
+function Engine.ShapeOf(p)
+	local s = getmetatable(p)
+	return (type(s) == "table" and s.__newindex == ShapeWrite) and s or nil
+end
+
+---How many shapes and shared conditions tables are interned now (tests, /au prof).
+---@return integer shapes
+---@return integer conditions
+function Engine.InternCounts()
+	local a, b = 0, 0
+	for _ in pairs(shapes) do a = a + 1 end
+	for _ in pairs(sharedWhens) do b = b + 1 end
+	return a, b
+end
+
 ---------------------------------------------------------------------------
 -- Testi e varianti
 ---------------------------------------------------------------------------
@@ -555,7 +736,14 @@ function Engine.ContextKeys(ctx)
 	return keys
 end
 
+-- version of the index: any change to its lists (a rule added, a pack dropped, a rebuild) empties the cache of
+-- merged candidate lists (Candidates)
+Engine.indexVersion = 0
+local merged, mergedVersion, mergedIndex, mergedCount = {}, -1, nil, 0
+Engine.MERGED_MAX = 32   -- merged lists kept (event, form and context keys); beyond, the cache starts again
+
 local function AddToIndex(index, ev, p, keys)
+	Engine.indexVersion = Engine.indexVersion + 1
 	local byForm = index[ev]
 	if not byForm then byForm = {}; index[ev] = byForm end
 	local byKey = byForm[p.form]
@@ -575,6 +763,26 @@ function Engine:RebuildIndex()
 	end
 	for _, p in pairs(self.byId) do p.impure = (p.when ~= nil and not Pure(p.when)) or nil end
 	self.index = index
+	self.indexVersion = self.indexVersion + 1
+end
+
+-- the union of two lists in order of registration (ord); a rule in both appears once
+local function Merge2(a, b)
+	local out, i, j, na, nb, k = {}, 1, 1, #a, #b, 0
+	while i <= na and j <= nb do
+		local x, y = a[i], b[j]
+		k = k + 1
+		if x == y then
+			out[k], i, j = x, i + 1, j + 1
+		elseif x.ord < y.ord then
+			out[k], i = x, i + 1
+		else
+			out[k], j = y, j + 1
+		end
+	end
+	for r = i, na do k = k + 1; out[k] = a[r] end
+	for r = j, nb do k = k + 1; out[k] = b[r] end
+	return out
 end
 
 ---Le regole dell'evento che possono valere nel contesto, in ordine di registrazione: una parte di byEvent[event] che
@@ -599,21 +807,21 @@ function Engine:Candidates(event, ctx, form)
 	local n = #lists
 	if n == 0 then return EMPTY_LIST end
 	if n == 1 then return lists[1] end
-	-- unione in ordine di registrazione; una regola in più gruppi (zona e sottozona) compare una volta
-	local out, pos = {}, {}
-	for i = 1, n do pos[i] = 1 end
-	while true do
-		local best
-		for i = 1, n do
-			local p = lists[i][pos[i]]
-			if p and (not best or p.ord < best.ord) then best = p end
-		end
-		if not best then break end
-		table.insert(out, best)
-		for i = 1, n do
-			if lists[i][pos[i]] == best then pos[i] = pos[i] + 1 end
-		end
+	-- #138: the same event, form and context keys give the same union while the index does not change (a session
+	-- stays in one place for many picks); the cached list is read-only, like the groups of the index
+	local cache = Engine.MEMO ~= false
+	if cache and (mergedVersion ~= self.indexVersion or mergedIndex ~= self.index or mergedCount >= Engine.MERGED_MAX) then
+		merged, mergedVersion, mergedIndex, mergedCount = {}, self.indexVersion, self.index, 0
 	end
+	local cacheKey = event .. "\31" .. tostring(form) .. "\31" .. table.concat(keys, "\31")
+	local hit = cache and merged[cacheKey]
+	if hit then return hit end
+	-- unione in ordine di registrazione; una regola in più gruppi (zona e sottozona) compare una volta. #138: two lists
+	-- at a time, the shortest first, so the long generic group is walked once instead of once per group
+	table.sort(lists, function(a, b) return #a < #b end)
+	local out = lists[1]
+	for i = 2, n do out = Merge2(out, lists[i]) end
+	if cache then merged[cacheKey], mergedCount = out, mergedCount + 1 end
 	return out
 end
 
@@ -650,8 +858,8 @@ function Engine:AddEntry(pack, id, e, legacy)
 		return
 	end
 
-	---@type AUPhrase
-	local p = { id = id, pack = pack.id, legacy = legacy or nil, text = {} }
+	-- the fields shared with other rules go to the shape (#138); the rule table is made at the end
+	local p = { pack = pack.id, legacy = legacy or nil }
 	local events = {}
 	for _, ev in ipairs(AsList(e.event)) do
 		if type(ev) == "string" and ev ~= "" then table.insert(events, ev) end
@@ -713,10 +921,9 @@ function Engine:AddEntry(pack, id, e, legacy)
 		Issue(pack, "badConditions", id, "le condizioni devono essere una tabella")
 		when = nil
 	end
-	p.when = when
 	p.spec = Specificity(when)
-	-- only an explicit tier is stored: the deduced one is computed when a pick needs it (Engine.Tier), so a rule table
-	-- keeps its size (one field more would double the hash part of most conditioned rules, ADR 0024)
+	-- only an explicit tier is stored: the deduced one is computed when a pick needs it (Engine.Tier) from the
+	-- conditions, which many rules share (ADR 0024)
 	if e.tier ~= nil then
 		p.tier = ExplicitTier(e.tier)
 		if not p.tier then Issue(pack, "badTier", id, ("tier '%s' non valido"):format(tostring(e.tier))) end
@@ -744,9 +951,13 @@ function Engine:AddEntry(pack, id, e, legacy)
 	end
 	if type(when) == "table" and when.situation ~= nil then p.situational = true end
 
-	self.byId[id] = p
+	-- the rule: its own fields and its shape (#138), eight slots of its hash part at most (a monologue's impure, rare,
+	-- takes a ninth)
 	self.nextOrd = self.nextOrd + 1
-	p.ord = self.nextOrd
+	---@type AUPhrase
+	p = setmetatable({ id = id, text = {}, when = SharedWhen(when), ord = self.nextOrd, styles = p.styles, tags = p.tags,
+		theme = p.theme, motifs = p.motifs }, Shape(p))
+	self.byId[id] = p
 	-- condizioni che possono usare numeri casuali o codice: Eligible le valuta per ultime, come sempre
 	p.impure = (when ~= nil and not Pure(when)) or nil
 	local keys = Engine.IndexKeys(when) or GENERIC
@@ -1037,12 +1248,15 @@ function Engine:DropPack(packId)
 	for _, id in ipairs(pack.ids or EMPTY_LIST) do
 		local p = self.byId[id]
 		if p and p.pack == packId then
+			ReleaseShape(Engine.ShapeOf(p))
+			ReleaseWhen(p.when)
 			self.byId[id] = nil
 			self.pendingTexts[id] = nil
 			n = n + 1
 			for _, ev in ipairs(p.events) do events[ev] = true end
 		end
 	end
+	self.indexVersion = self.indexVersion + 1
 	for ev in pairs(events) do
 		if self.byEvent[ev] then
 			Without(self.byEvent[ev], packId)
