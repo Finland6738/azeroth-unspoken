@@ -10,6 +10,18 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### Q9a: monologues and literary lines never reach public chat (issues #152, #163 and #153)
+
+Fixes from the third review (Q8), the most urgent first ([ADR 0003](docs/adr/0003-private-narrator-and-chat-gateway.md), [ADR 0032](docs/adr/0032-monologues-of-whole-phrases-and-composite-situations.md), owner decision D16 in #130).
+
+- **Fixed: a narrator monologue could become a chat proposal, or be sent automatically** (#152). The Chat Gateway decided from the voice alone, so a narrator monologue (`mono.zone.crest`, `mono.zone.dusk`) was proposed in `PREVIEW` and `CONFIRM_TO_SEND` and could be sent on its own in `AUTO_ONLY_IF_ALLOWED` with the second consent. One central check, `Gateway:PrivateReason(rec)`, now answers for every path to chat: `Propose` (spontaneous lines and the ones you ask for), `Reroll` (an alternative is never a private line), `SendPending`, `CopyToChat` (a private line found in the pending slot is dropped and refused with `private_only`) and `Send` with a proposal. It reads the record **and** the rule it came from (`Engine.byId`), so it holds even when a pack's data is wrong.
+- **Fixed: literary forms had no guard** (#163, D16). A line whose rule carries the tag `lore` or a `genre_*` tag is private whatever its voice: it is shown in the narrator and never becomes a proposal. The check reads the tags of the rule, so a narrator or character line from an external pack cannot reach chat.
+- **Added: validator error `literaryPublic`** (#163): a `lore` or `genre_*` tag on a line in a public voice (narrator, character). Private voices (inner, npc) stay allowed. The archive refuses the same intention when it is approved or reviewed (`tools/archive/store.py`, `check_content`). Shared definition: `Engine.IsLiteraryTag` and `Engine.HasLiteraryTag`.
+- **Fixed: a composite-situation line shrank the anti-repetition window of its event to one entry** (#153). A composite pick weighs only the lines written for its situation, so the window was cut to that pool and the recent victory, levelup or zone lines became eligible again. A composite pick now never trims the window below its current length.
+- **Added: `gw_private_only`**, the notice when a private line is refused at sending.
+- **Tests:** `Tests/TestChatGateway.lua` (every mode, the key, the copy to the chat box, reroll and the pending slot, with a monologue, a monologue with wrong data, a verses line in each public voice and a composite line that stays ordinary), `Tests/TestValidator.lua` (`literaryPublic` on a planted line), `Tests/TestDynamism.lua` (the window length after composite picks).
+- **Still open:** the window of an event is still trimmed to the pool of the current pick for ordinary picks too (a `say` pick shortens what an `emote` pick filled), as noted in #153.
+
 ### Q9b fixes: saved data (issues #154, #155 and #156)
 
 Findings of the third review (Q8, #167): whoever loads must respect newer versions and clean what it reads, and records made from the shared list must stay tied to it ([ADR 0006](docs/adr/0006-savedvariables-and-schema-versions.md), [ADR 0030](docs/adr/0030-proximity-session-proposal-and-account-shared-list.md)).

@@ -812,6 +812,9 @@ function Engine:PickOwn(event, ctx, form, composite)
 
 	-- the anti-repetition window keeps its size from every candidate, also when the tiers narrow the pool (#89)
 	local keep = KeepFor(#items)
+	-- #153: a composite pick weighs only the lines written for its situation (usually two); its line joins the window
+	-- of the lead event without cutting what the ordinary picks of that event put there
+	if composite then keep = math.max(keep, #(mem.recent[event] or EMPTY)) end
 	if r3 then items = Engine.TierPool(items, event) end
 
 	-- più tentativi: una frase può fallire se manca una voce di vocabolario
