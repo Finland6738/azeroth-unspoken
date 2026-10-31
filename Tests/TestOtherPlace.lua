@@ -978,7 +978,7 @@ T.run("/au luogo e /au chi", function()
 	T.ok(Cmd("place"):find("Place: Durotar", 1, true), "/au place in inglese")
 	T.ok(Cmd("who"):find("Interlocutor:", 1, true), "/au who in inglese")
 	NS.db.locale = "it"
-	T.ok(Cmd("help"):find("/au place", 1, true) and Cmd("help"):find("/au who", 1, true), "nell'aiuto, con i nomi inglesi")
+	T.ok(Cmd("help all"):find("/au place", 1, true) and Cmd("help all"):find("/au who", 1, true), "nell'aiuto, con i nomi inglesi")
 	T.ok(type(Place:Status()) == "string" and type(I:Status()) == "string", "stato per la diagnostica")
 	T.eq(Count(NS.Diagnostics.errors), 0, "nessun errore")
 end)

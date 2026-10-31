@@ -22,7 +22,7 @@ Changes take effect at once. There is no Save button.
 | Intensity | 50 | **Intensity** (- / + by 10) | `/au intensity <0-100>` | How often the narrator speaks. 0 = silent for spontaneous events. |
 | Style depth | Literary | **Style depth** (click to cycle) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
 | Pause between lines | 45 s | **Pause between lines** (cycles 15, 30, 45, 60, 90, 120, 180) | `/au cooldown <0-3600>` | Minimum pause between two spontaneous lines. |
-| Speak button | shown | **'Speak' button** | `/au button` | Shows or hides the speak button. |
+| Speak button | shown | **'Speak' button** | `/au button` | Shows or hides the speak button. `/au button editor on` makes a click open the editor instead of sending (see [[Chat Gateway]]). |
 | Narrator pause | not paused | **Pause the narrator** / **Resume the narrator** | `/au pause` | Immediate pause, for this session only. |
 | Event probability | per event, see below | — | `/au chance <event> <0-100>` | Chance that an event produces a line. |
 | Ignored spells | none | — | `/au ignore <spell>` | Spells that never produce lines. |

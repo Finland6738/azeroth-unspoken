@@ -421,8 +421,8 @@ T.run("probe copy opens the box with the same text; both commands are in /au hel
 	T.ok(text:find("probe, session", 1, true) and text:find("Summary:", 1, true), "the report is in the box")
 	NoPersonalData(text, "probe copy box")
 	ex:Hide()
-	local help = Cmd("help")
-	T.ok(help:find("/au prof [reset|copy]", 1, true) and help:find("/au probe [reset|stop|copy]", 1, true), "help lists both commands")
+	local help = Cmd("help diagnostics")
+	T.ok(help:find("/au prof [reset / copy]", 1, true) and help:find("/au probe [reset / stop / copy]", 1, true), "help lists both commands")
 	local words = NS.Keywords.registry
 	T.ok(words.prof.reset and words.probe.stop, "subcommand words are registered")
 end)

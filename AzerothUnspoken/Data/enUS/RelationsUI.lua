@@ -76,7 +76,7 @@ NS:RegisterLanguage("en", {
 		rel_share_needs_on = "turn the shared list on first: /au relationships share on.",
 		rel_share_all_done = "shared from this character: %d (kept as this character's own, because the shared list already had choices for them: %d).",
 		rel_share_copy_done = "copied into this character: %d (left out, the list is full: %d).",
-		rel_scope_usage = "usage: /au relationships scope <name> shared|character",
+		rel_scope_usage = "usage: /au relationships scope <name> shared/character",
 		rel_scope_shared = "%s: your choices are now shared with the account.",
 		rel_scope_character = "%s: this character now keeps its own choices (a copy of the shared ones).",
 		rel_scope_replaced = "the choices that were shared for this person were replaced by this character's.",
@@ -89,6 +89,6 @@ NS:RegisterLanguage("en", {
 		rel_row_tip = "Click: open the relationship.",
 		rel_custom_tip = "Your own label, in your words. Saved when you leave the box: Enter, another box, another view or Close. Esc puts back the saved text.",
 		rel_edit_tip = "Saved when you leave the box: Enter, another box, another view or Close. Esc puts back the saved text.",
-		rel_help = "usage: /au relationships [list | people | add <name> | dismiss <name> | remove <name|npc:ID> | detail <name> | note <name> <text> | tags <name> <tag,...> | label <name> <text> | set <name> <axis> <value> | export | auto on|off | attraction on|off | feeling <name> <feeling> [preset] | forget <name> | proximity on|off | share [on|off|all|copy] | scope <name> shared|character | reset [all|npcs|players|shared]]",
+		rel_help = "usage: /au relationships [list / people / add <name> / dismiss <name> / remove <name/npc:ID> / detail <name> / note <name> <text> / tags <name> <tag,...> / label <name> <text> / set <name> <axis> <value> / export / auto on/off / attraction on/off / feeling <name> <feeling> [preset] / forget <name> / proximity on/off / share [on/off/all/copy] / scope <name> shared/character / reset [all/npcs/players/shared]]",
 	},
 })

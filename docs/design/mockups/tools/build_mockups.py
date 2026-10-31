@@ -79,7 +79,8 @@ def build_narrator():
             + placeholder("client unit frames", left=10, top=10, width=260, height=90)
             + placeholder("client minimap", right=10, top=10, width=150, height=160)
             + narrator((w - 440) // 2, 240, speaker="narrator", text=f"{PLAYER} {L_DUSK_E}")
-            + speak_button(desat=True, left=w // 2 - 18, top=h // 2 + 180 - 18))
+            # the speak button: beside the narrator box (BOTTOMLEFT at BOTTOM +236, +240; review UI-19, #189)
+            + speak_button(desat=True, left=w // 2 + 236, top=h - 240 - 36))
     add("narrator-in-context", "Narrator frame - default position (1366 x 768)", w, h, body, "Narrator",
         "Home / The-Narrator", scene="dusk", seed=10, scale=1,
         caption_extra="Dashed boxes are neutral placeholders for the client's own UI.")
@@ -103,23 +104,27 @@ def build_proposal():
 
 
 def build_speak_button():
+    # the tooltip follows the mode (UI/SpeakButton.lua TooltipLines, review UI-19, #189)
     w, h = 900, 300
     pending = "Good evening, if there are still good ones left."
-    body = (fs("No proposal (desaturated)", "gfn", left=40, top=20)
+    body = (fs("Private mode, the default (desaturated)", "gfn", left=40, top=20)
             + speak_button(desat=True, left=120, top=230)
             + tooltip([("Azeroth Unspoken", None),
-                       ("No proposal waiting. Click: the narrator proposes a line that fits the moment.", "cccccc"),
-                       ("Left click: confirm and speak. Right-drag: move.", "808080")], left=20, top=60, width=250)
-            + fs("Proposal waiting (glow)", "gfn", left=330, top=20)
+                       ("Private mode: nothing is ever sent to chat. Click: the narrator shows a line that fits the "
+                        "moment, only to you.", "cccccc"),
+                       ("Right-drag: move. What may reach chat: /au mode.", "808080")], left=20, top=60, width=250)
+            + fs("Confirm mode, proposal waiting (glow)", "gfn", left=330, top=20)
             + speak_button(glow=True, left=420, top=230)
             + tooltip([("Azeroth Unspoken", None), (pending, "ffffff"), ("Channel: automatic", "b3e6b3"),
-                       ("Left click: confirm and speak. Right-drag: move.", "808080")], left=320, top=60, width=250)
-            + fs("Paused (50% opacity)", "gfn", left=640, top=20)
-            + speak_button(desat=True, opacity=0.5, left=720, top=230)
-            + fs("Icon drawn as an original stand-in: the addon uses a\nclient icon texture, which is not reproduced here.",
-                 "gfhs", left=620, top=60))
-    add("speak-button", "Speak button - idle, waiting, paused", w, h, body, "Speak button", "Chat-Gateway / Commands",
-        scene="neutral", seed=12)
+                       ("Left click: send this line to chat. Right-drag: move.", "808080")], left=320, top=60, width=250)
+            + fs("/au button editor on", "gfn", left=640, top=20)
+            + speak_button(glow=True, left=720, top=230)
+            + tooltip([("Azeroth Unspoken", None), (pending, "ffffff"), ("Channel: automatic", "b3e6b3"),
+                       ("Left click: open it in the editor (/au button editor off: send at once). Right-drag: move.",
+                        "808080")], left=620, top=60, width=250))
+    add("speak-button", "Speak button - private mode, proposal waiting, editor option", w, h, body, "Speak button",
+        "Chat-Gateway / Commands", scene="neutral", seed=12,
+        caption_extra="Icon drawn as an original stand-in: the addon uses a client icon texture, not reproduced here.")
 
 
 def build_wizard():
@@ -358,54 +363,84 @@ def build_dialogue():
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=103)
 
 
-HELP = [("help", "this list"), ("on | off", "enable or disable automatic lines"),
-        ("pause", "pause the narrator immediately (also with the bound key)"),
-        ("debug [full|trace]", "diagnostics: client capabilities, recent events, errors"),
-        ("prof [reset|copy]", "profiling of this session: timings, memory, Director counters (reset | copy)"),
-        ("probe [reset|stop|copy]", "probe the client APIs the next features need and report which work (reset | stop | copy)"),
-        ("language [it|en]", "phrase and interface language"), ("intensity <0-100>", "how often the narrator speaks up"),
-        ("depth natural|literary|elevated", "how elevated the style is"),
-        ("mode private|preview|confirm|auto", "what may reach chat (default: private; auto asks for confirmation)"),
-        ("channel auto|say|emote|party|raid|guild|instance", "default chat channel"),
-        ("speak", "confirm the waiting proposal (also from a macro or key)"),
-        ("another", "swap the pending proposal for another line (sends nothing)"), ("cancel", "discard the proposal"),
-        ("copy", "copy the proposal into the chat box (you send it with Enter)"),
-        ("narrator [history|reset|clear]", "the narrator box"),
-        ("soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>]", "character personality"),
-        ("emotion [on|off|reset]", "the character's emotional state: show, switch on or off, reset"),
-        ("journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset]", "character memory and journal"),
-        ("stories [list|journal|choose <arc> <option>|start|suspend|resume|skip|disable|enable <arc|all>|max <1|2>|on|off|status]",
-         "the character's personal stories"),
-        ("relationships [list|people|add <name>|note <name> <text>|export|...]", "relationships with NPCs and players (short form: rel)"),
-        ("place", "where you are: zone, map, tags, territory, instance (to check the place data)"),
-        ("who [trp3 on|off|trait <trait> <value>]", "who is in front of you: role, personality, recent actions"),
-        ("talk [test [style]|close|role <role>|offer on|off|status]", "ambient dialogue with the NPC in front of you"),
-        ("greet | farewell | toast | muse | threat | battlecry | victory | pray | thanks | jest [target]",
-         "propose a line for that moment (a name or target is optional)"),
-        ("event <name>", "propose a line for an event (battle, zone, muse...)"), ("cast <spell>", "a line for a spell (handy in macros)"),
-        ("test <event>", "preview a line in the local chat"), ("chance <event> <0-100>", "probability of an event"),
-        ("cooldown <seconds>", "pause between automatic lines"), ("ignore <spell>", "never comment on a spell (again to undo)"),
-        ("button", "show or hide the speak button"), ("packs", "list the phrase packs"),
-        ("pack <id> on|off", "turn a phrase pack on or off"), ("validate [full|<pack>]", "check the phrase packs (errors and warnings)"),
-        ("stats", "how many lines are available"), ("memory", "clear the anti-repetition memory"),
-        ("options", "open the settings panel"), ("wizard", "redo the first-run guide")]
+# /au help (UI/Commands.lua): the groups and, per group, the usage lines in table order; options are separated by
+# " / " (and "/" inside an option), never by a bare "|", the client's escape character (review UI-05, #175)
+HELP_TITLE = "commands (the command names are always in English, whatever the interface language):"
+HELP_GROUPS = [
+    ("start", "first steps: on and off, pause, settings, first-run guide, language"),
+    ("narrator", "what the narrator says and how often: style, the box, lines on demand, chances"),
+    ("chat", "what may reach chat: mode, channel, proposals, the speak button"),
+    ("character", "your character: personality, mood, journal, stories, relationships, who and where"),
+    ("diagnostics", "checks and reports: debug, tests, phrase packs, statistics"),
+]
+HELP_ALL = "every command, group by group (about 40 lines: scroll the chat up to read them)"
+HELP = {
+    "start": [("help [<group> / <command> / all]",
+               "the command groups; /au help <group> lists a group, /au help <command> explains one"),
+              ("on / off", "enable or disable automatic lines"),
+              ("pause", "pause the narrator immediately (also with the bound key)"),
+              ("language [it / en]", "phrase and interface language"),
+              ("options", "open the settings panel"), ("wizard", "redo the first-run guide")],
+    "narrator": [("intensity <0-100>", "how often the narrator speaks up"),
+                 ("depth natural / literary / elevated", "how elevated the style is"),
+                 ("narrator [history / reset / clear]", "the narrator box"),
+                 ("greet / farewell / toast / muse / threat / battlecry / victory / pray / thanks / jest [target]",
+                  "propose a line for that moment (a name or target is optional)"),
+                 ("event <name>", "propose a line for an event (battle, zone, muse...)"),
+                 ("cast <spell>", "a line for a spell (handy in macros)"),
+                 ("chance <event> <0-100>", "probability of an event"),
+                 ("cooldown <seconds>", "pause between automatic lines"),
+                 ("ignore <spell>", "never comment on a spell (again to undo)")],
+    "chat": [("mode private / preview / confirm / auto", "what may reach chat (default: private; auto asks for confirmation)"),
+             ("channel auto / say / emote / party / raid / guild / instance", "default chat channel"),
+             ("speak", "confirm the waiting proposal (also from a macro or key)"),
+             ("another", "swap the pending proposal for another line (sends nothing)"),
+             ("cancel", "discard the proposal"),
+             ("copy", "copy the proposal into the chat box (you send it with Enter)"),
+             ("button [on / off / editor on/off / reset]",
+              "show, hide or reset the speak button; editor on: a click opens the editor instead of sending")],
+    "character": [("soul [list / neutral / archetype <id> / trp3 on/off / <trait> <value> / avoid <topic>]",
+                   "character personality"),
+                  ("emotion [on / off / reset]", "the character's emotional state: show, switch on or off, reset"),
+                  ("journal [list / places / flag <name> / export / pin <n> / delete <n> / forget <place> / reset]",
+                   "character memory and journal"),
+                  ("stories [list / journal / choose <arc> <option> / start / suspend / resume / skip / disable / "
+                   "enable <arc/all> / max <1/2> / on / off / status]", "the character's personal stories"),
+                  ("relationships [list / people / add <name> / note <name> <text> / export / ...]",
+                   "relationships with NPCs and players (short form: rel)"),
+                  ("place", "where you are: zone, map, tags, territory, instance (to check the place data)"),
+                  ("who [trp3 on/off / trait <trait> <value>]", "who is in front of you: role, personality, recent actions"),
+                  ("talk [test [style] / close / role <role> / offer on/off / status]",
+                   "ambient dialogue with the NPC in front of you")],
+    "diagnostics": [("debug [full / trace]", "diagnostics: client capabilities, recent events, errors"),
+                    ("prof [reset / copy]", "profiling of this session: timings, memory, Director counters (reset / copy)"),
+                    ("probe [reset / stop / copy]",
+                     "probe the client APIs the next features need and report which work (reset / stop / copy)"),
+                    ("test <event>", "preview a line in the local chat"), ("packs", "list the phrase packs"),
+                    ("pack <id> on/off", "turn a phrase pack on or off"),
+                    ("validate [full / <pack>]", "check the phrase packs (errors and warnings)"),
+                    ("stats", "how many lines are available"), ("memory", "clear the anti-repetition memory")],
+}
 
 
 def build_chat():
-    lines = [PREFIX + "commands (the command names are always in English, whatever the interface language):"]
-    lines += [PREFIX + f"/au {u} - {d}" for u, d in HELP]
-    w = 900
-    h = 40 + len(lines) * 19 + 40
-    add("chat-help", "/au help in the chat frame (full output)", w, h,
-        chat_lines(lines, left=10, top=10, width=880, height=h - 50), "Chat output", "Commands", seed=110, scale=1.25,
-        caption_extra="The default chat window shows only the last ~10 lines of this output.")
-    # what the player actually sees: the last lines in a default-sized chat window
-    # the middle of the output, where bare "|" separators become escapes: |n breaks the line, |r is swallowed (review UI-05)
-    add("chat-help-window", "/au help - lines as the client reads them", 640, 400,
-        chat_lines(lines[14:23], left=10, top=40, width=600, height=270)
+    # /au help: the groups, in a default-sized chat window (about ten lines): all of it is visible (review UI-19, #189)
+    groups = [PREFIX + HELP_TITLE] + [PREFIX + f"/au help {g} - {d}" for g, d in HELP_GROUPS]
+    groups.append(PREFIX + f"/au help all - {HELP_ALL}")
+    add("chat-help-window", "/au help - the groups, in a default chat window", 640, 400,
+        chat_lines(groups, left=10, top=40, width=600, height=270)
         + '<div class="chatinput" style="left:10px;top:316px;width:600px">/au help</div>',
         "Chat output", "Commands", seed=111,
-        caption_extra="Bare | separators act as escapes: |n breaks lines, |r is swallowed (review UI-05).")
+        caption_extra="The whole output fits in a default chat window. Options use \" / \", never a bare | (UI-05).")
+    # /au help all: every group, the diagnostics last
+    lines = [PREFIX + HELP_TITLE]
+    for g, _ in HELP_GROUPS:
+        lines += [PREFIX + f"/au {u} - {d}" for u, d in HELP[g]]
+    w = 900
+    h = 40 + len(lines) * 19 + 40
+    add("chat-help", "/au help all in the chat frame (full output)", w, h,
+        chat_lines(lines, left=10, top=10, width=880, height=h - 50), "Chat output", "Commands", seed=110, scale=1.25,
+        caption_extra="/au help prints only the groups; /au help <group> prints one group (ten lines at most).")
     from debug_output import DEBUG_LINES
     h = 40 + len(DEBUG_LINES) * 19 + 60
     add("chat-debug", "/au debug in the chat frame", w, h,

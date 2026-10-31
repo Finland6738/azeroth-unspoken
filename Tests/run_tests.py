@@ -394,7 +394,7 @@ for word, expected in [("auto", "auto"), ("say", "SAY"), ("s", "SAY"), ("emote",
 # l'aiuto elenca gli stessi nomi inglesi in ogni lingua, con la descrizione nella lingua dell'interfaccia
 for lang_ in ("it", "en"):
     NS.db.locale = lang_
-    help_text = run_cmd("help")
+    help_text = run_cmd("help all")
     for word in ("raid", "/au event", "victory", "/au journal", "/au relationships", "/au channel", "/au mode"):
         check(word in help_text, f"l'aiuto ({lang_}) elenca '{word}'")
     for word in ("/au diario", "/au relazioni", "/au prova", "/au canale", "/au aiuto", "/au benvenuto"):
