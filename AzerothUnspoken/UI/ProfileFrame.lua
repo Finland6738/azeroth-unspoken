@@ -1,5 +1,6 @@
 -- Azeroth Unspoken: finestra del profilo del personaggio (Character Soul, GDD §7.1).
--- Scelta dell'archetipo, modifica dei tratti, argomenti da evitare, consenso a Total RP 3 e profilo neutro.
+-- Scelta dell'archetipo (una preimpostazione), un cursore da 0 a 100 per ogni intensità (R4, #96), voce interiore,
+-- argomenti da evitare, consenso a Total RP 3 e profilo neutro.
 -- Ogni cambiamento vale subito (le frasi successive usano già il nuovo profilo) e si salva per personaggio.
 -- Si apre con /au soul o dal pannello delle impostazioni. Solo pulsanti standard, come il resto dell'interfaccia.
 local ADDON, NS = ...
@@ -10,9 +11,10 @@ local ProfileFrame = NS:RegisterModule("profile")
 NS.ProfileFrame = ProfileFrame
 
 local frame
-local rows = {}        -- [tratto] = { label, value, minus, plus, clear, source }
+local rows = {}        -- [tratto] = { label, value | slider + text, clear, source }
 local topics = {}      -- [argomento] = pulsante
-local SCALE_STEP = 10
+ProfileFrame.rows = rows   -- per i test
+local ROW_HEIGHT = 26
 
 local function Selected(text, on)
 	return on and ("|cff7fff7f» " .. text .. " «|r") or text
@@ -41,50 +43,42 @@ local function BuildTraitRow(id, y)
 	local row = {}
 	row.label = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 	row.label:SetPoint("TOPLEFT", 16, y - 5)
-	row.label:SetWidth(130)
+	row.label:SetWidth(170)
 	row.label:SetJustifyH("LEFT")
-	row.value = W.Button(frame, "", 170, 24, function()
-		Change(function()
-			if def.kind == "scale" then
-				-- il pulsante sul valore imposta il centro la prima volta, poi toglie la scelta
-				Personality:SetTrait(id, Explicit(id) == nil and 50 or nil)
-			else
-				Personality:SetTrait(id, NextChoice(def, Explicit(id)))
-			end
-		end)
-	end)
-	row.value:SetPoint("TOPLEFT", 150, y)
-	local x = 324
+	local x = 190
 	if def.kind == "scale" then
-		row.minus = W.Button(frame, "-", 24, 24, function()
-			Change(function()
-				local v = Explicit(id) or (Personality:Effective())[id] or 50
-				Personality:SetTrait(id, math.max(def.min, v - SCALE_STEP))
-			end)
+		-- un cursore: il valore cambia mentre si trascina e si salva al rilascio
+		row.slider = W.Slider(frame, 200, def.min, def.max, function(v, final)
+			row.text:SetText(Personality:DescribeTrait(id, { [id] = v }) or "")
+			if final then Change(function() Personality:SetTrait(id, v) end) end
 		end)
-		row.minus:SetPoint("TOPLEFT", x, y)
-		row.plus = W.Button(frame, "+", 24, 24, function()
-			Change(function()
-				local v = Explicit(id) or (Personality:Effective())[id] or 50
-				Personality:SetTrait(id, math.min(def.max, v + SCALE_STEP))
-			end)
+		row.slider:SetPoint("TOPLEFT", x, y - 4)
+		W.Tooltip(row.slider, function() return NS:L("soul_slider_tip") end)
+		row.text = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+		row.text:SetPoint("TOPLEFT", x + 210, y - 6)
+		row.text:SetWidth(120)
+		row.text:SetJustifyH("LEFT")
+		x = x + 336
+	else
+		row.value = W.Button(frame, "", 170, 24, function()
+			Change(function() Personality:SetTrait(id, NextChoice(def, Explicit(id))) end)
 		end)
-		row.plus:SetPoint("TOPLEFT", x + 26, y)
-		x = x + 56
+		row.value:SetPoint("TOPLEFT", x, y)
+		x = x + 336
 	end
 	row.clear = W.Button(frame, "x", 24, 24, function() Change(function() Personality:SetTrait(id, nil) end) end)
 	row.clear:SetPoint("TOPLEFT", x, y)
 	W.Tooltip(row.clear, function() return NS:L("soul_clear_tip") end)
 	row.source = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	row.source:SetPoint("TOPLEFT", x + 30, y - 6)
-	row.source:SetWidth(110)
+	row.source:SetWidth(90)
 	row.source:SetJustifyH("LEFT")
 	rows[id] = row
 end
 
 local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenProfile", UIParent)
-	frame:SetSize(580, 520)
+	frame:SetSize(680, 690)
 	frame:SetPoint("CENTER", 0, 20)
 	frame:SetFrameStrata("DIALOG")
 	frame:SetMovable(true)
@@ -99,7 +93,7 @@ local function Build()
 	frame.title:SetPoint("TOPLEFT", 16, -12)
 	frame.intro = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	frame.intro:SetPoint("TOPLEFT", 16, -40)
-	frame.intro:SetWidth(548)
+	frame.intro:SetWidth(648)
 	frame.intro:SetJustifyH("LEFT")
 
 	-- archetipo
@@ -110,14 +104,15 @@ local function Build()
 	frame.arch = W.Button(frame, "", 170, 24, function()
 		Change(function()
 			local list = Personality.archetypes
-			local _, i = Personality:GetArchetype(Personality:Profile().archetype)
+			local profile = Personality:Profile()
+			local _, i = Personality:GetArchetype(profile.archetype == "custom" and profile.base or profile.archetype)
 			Personality:SetArchetype(list[((i or 0) % #list) + 1].id)
 		end)
 	end)
 	frame.arch:SetPoint("TOPLEFT", 150, -83)
 	frame.archHelp = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	frame.archHelp:SetPoint("TOPLEFT", 332, -88)
-	frame.archHelp:SetWidth(232)
+	frame.archHelp:SetWidth(332)
 	frame.archHelp:SetJustifyH("LEFT")
 
 	-- tratti (gli argomenti da evitare hanno la loro griglia)
@@ -125,7 +120,7 @@ local function Build()
 	for _, id in ipairs(Personality.TRAIT_ORDER) do
 		if Traits.defs[id].kind ~= "set" then
 			BuildTraitRow(id, y)
-			y = y - 30
+			y = y - ROW_HEIGHT
 		end
 	end
 
@@ -136,7 +131,7 @@ local function Build()
 	for i, topic in ipairs(def.values) do
 		local b = W.Button(frame, "", 132, 24, function() Change(function() Personality:ToggleTopic(topic) end) end)
 		local col, row = (i - 1) % 4, math.floor((i - 1) / 4)
-		b:SetPoint("TOPLEFT", 16 + col * 138, y - 30 - row * 28)
+		b:SetPoint("TOPLEFT", 16 + col * 160, y - 30 - row * 28)
 		topics[topic] = b
 	end
 
@@ -160,13 +155,18 @@ function ProfileFrame:Refresh()
 	frame.title:SetText(NS:L("soul_title"))
 	frame.intro:SetText(NS:L("soul_intro"))
 	frame.archLabel:SetText(NS:L("soul_archetype"))
-	frame.arch:SetText(Personality:ArchetypeName(profile.archetype))
-	frame.archHelp:SetText(Personality:ArchetypeHelp(profile.archetype))
+	frame.arch:SetText(Personality:ArchetypeLabel(profile))
+	frame.archHelp:SetText(Personality:ArchetypeHelp(profile.archetype == "custom" and profile.base or profile.archetype))
 	for id, row in pairs(rows) do
-		local def = Traits.defs[id]
 		row.label:SetText(Traits.Name(id))
-		local text = Traits.Describe(def, effective)
-		row.value:SetText(text or NS:L("soul_none"))
+		local text = Personality:DescribeTrait(id, effective)
+		if row.slider then
+			-- senza valore il cursore sta al centro, ma il testo dice che il tratto non è impostato
+			row.slider:SetQuiet(effective[id] or 50)
+			row.text:SetText(text or NS:L("soul_none"))
+		else
+			row.value:SetText(text or NS:L("soul_none"))
+		end
 		local src = sources[id]
 		row.source:SetText(src and NS:L("soul_src_" .. src) or NS:L("soul_src_neutral"))
 		row.clear:SetShown(Explicit(id) ~= nil)

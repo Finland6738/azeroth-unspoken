@@ -16,9 +16,17 @@
 --                        tratto sono alternative; tratti diversi si sommano)
 --   not:tratto:valore    esclusione rigida: la frase non esce se il profilo ha quel valore
 --   topic:valore         per i tratti `exclusive` (gli argomenti da evitare): esclusione rigida se il profilo li evita
+--   tratto>=n, tratto<=n soglia su una scala (R4, #96): `stoicism>=60` affinità morbida, `req:stoicism>=60` requisito,
+--                        `not:optimism<=30` esclusione
 -- Per una scala il valore è il nome di una fascia. Un profilo senza il tratto lascia la frase neutra (peso 1), tranne
 -- che per `req`, che chiede un tratto dichiarato. Con un ambito (`scope`, per esempio "other" in S6c) il tag si
 -- scrive `other.tratto:valore`.
+--
+-- Intensità (R4, #96, ADR 0030). Su una scala l'affinità morbida è graduata: dentro la fascia (o oltre la soglia) vale
+-- MATCH, a EDGE punti o più di distanza vale MISMATCH, in mezzo sfuma. Un tratto a scelta può dichiarare `derive`:
+-- ogni suo valore diventa una condizione su un asse ({ "stoicism", ">=", 67 }); un profilo che non ha scelto quel
+-- tratto ma ha l'asse lo legge da lì. Così i tag del vecchio Character Soul (`temperament:stoic`) valgono per un
+-- profilo fatto di intensità, e il profilo di un interlocutore (S6c), che sceglie ancora un valore, non cambia.
 local ADDON, NS = ...
 
 ---@alias AUTraitKind "choice"|"scale"|"set"
@@ -35,6 +43,8 @@ local ADDON, NS = ...
 ---@field exclusive? boolean set: un valore presente esclude le frasi che lo toccano
 ---@field hard? boolean il tratto non è mai contraddetto (dichiarato per informazione dell'interfaccia)
 ---@field scope? string ambito dei tag in cui il tratto è valido (per esempio "rel" per le relazioni di S6b); nil = ogni ambito
+---@field derive? table<string, table> choice: [valore] = { asse, ">="|"<=", n } oppure { asse, "in", da, a } (R4, #96)
+---@field ranges? table<string, number[]> scale: [fascia] = { da, a } (calcolato)
 
 ---@alias AUTraits table<string, string|number|table<string, boolean>>
 
@@ -48,6 +58,11 @@ Traits.MISMATCH = 0.6
 -- limiti del fattore complessivo di affinità morbida: nessun tratto può azzerare una frase (l'esclusione è rigida)
 Traits.MIN_FACTOR = 0.15
 Traits.MAX_FACTOR = 3
+-- punti di una scala oltre il bordo di una fascia (o di una soglia) in cui l'affinità sfuma da MATCH a MISMATCH (R4)
+Traits.EDGE = 20
+-- prefissi di tag che non sono tratti ma che un altro sistema riconosce (per esempio `emo:` di Systems/Emotion.lua):
+-- [prefisso] = fn(valore) -> problema o nil. Il modello dei tratti li ignora nel peso.
+Traits.foreign = {}
 
 ---------------------------------------------------------------------------
 -- Definizioni
@@ -63,14 +78,21 @@ function Traits.Define(def)
 	if def.kind == "scale" then
 		assert(type(def.min) == "number" and type(def.max) == "number" and def.min < def.max, "Traits.Define: intervallo")
 		local last = def.min - 1
+		def.ranges = {}
 		for _, band in ipairs(def.bands or {}) do
 			assert(type(band[1]) == "string" and type(band[2]) == "number" and band[2] > last, "Traits.Define: fasce crescenti")
 			def.valid[band[1]] = true
+			def.ranges[band[1]] = { math.max(def.min, last + 1), band[2] }
 			last = band[2]
 		end
 	else
 		assert(type(def.values) == "table" and #def.values > 0, "Traits.Define: servono i valori")
 		for _, v in ipairs(def.values) do def.valid[v] = true end
+		for value, rule in pairs(def.derive or {}) do
+			assert(def.valid[value] and type(rule) == "table" and type(rule[1]) == "string"
+				and (rule[2] == ">=" or rule[2] == "<=" or rule[2] == "in") and type(rule[3]) == "number",
+				"Traits.Define: derive non valido per " .. tostring(value))
+		end
 	end
 	if Traits.defs[def.id] then
 		for i, id in ipairs(Traits.order) do
@@ -126,10 +148,66 @@ end
 ---@return boolean
 function Traits.Has(def, traits, value)
 	local v = traits[def.id]
-	if v == nil then return false end
+	if v == nil then
+		-- un valore derivato da un asse (R4): vale solo se la condizione sull'asse è piena
+		local rule = def.derive and def.derive[value]
+		return rule ~= nil and Traits.RuleDegree(rule, traits) == 1
+	end
 	if def.kind == "choice" then return v == value end
 	if def.kind == "scale" then return Traits.Band(def, v) == value end
 	return type(v) == "table" and v[value] == true
+end
+
+---------------------------------------------------------------------------
+-- Intensità: quanto un profilo soddisfa una fascia, una soglia o un valore derivato (R4, #96)
+---------------------------------------------------------------------------
+-- 1 dentro (o oltre la soglia), 0 a EDGE punti o più di distanza, lineare in mezzo
+local function ScaleDegree(v, op, a, b)
+	local dist
+	if op == ">=" then dist = a - v elseif op == "<=" then dist = v - a else dist = math.max(a - v, v - b) end
+	if dist <= 0 then return 1 end
+	return math.max(0, 1 - dist / Traits.EDGE)
+end
+
+---Grado di una regola `derive` ({ asse, op, n [, m] }) per un profilo; nil se l'asse non è impostato.
+---@param rule table
+---@param traits AUTraits
+---@return number?
+function Traits.RuleDegree(rule, traits)
+	local v = traits[rule[1]]
+	if type(v) ~= "number" then return nil end
+	return ScaleDegree(v, rule[2], rule[3], rule[4])
+end
+
+---Grado (da 0 a 1) in cui il profilo ha un valore, una fascia o una soglia di un tratto; nil = "non lo so" (il tratto,
+---o l'asse da cui deriva, non è impostato). Per una scelta o un insieme impostati è 0 o 1.
+---@param def AUTraitDef
+---@param traits AUTraits
+---@param value string valore o fascia
+---@param op? string ">=" | "<=" per una soglia (value è allora ignorato)
+---@param n? number la soglia
+---@return number?
+function Traits.Degree(def, traits, value, op, n)
+	local v = traits[def.id]
+	if def.kind == "scale" then
+		if type(v) ~= "number" then return nil end
+		if op then return ScaleDegree(v, op, n) end
+		local r = def.ranges and def.ranges[value]
+		if not r then return nil end
+		return ScaleDegree(v, "in", r[1], r[2])
+	end
+	if v ~= nil then return Traits.Has(def, traits, value) and 1 or 0 end
+	local rule = def.derive and def.derive[value]
+	return rule and Traits.RuleDegree(rule, traits) or nil
+end
+
+---Il fattore morbido di un grado: MATCH a 1, MISMATCH a 0, interpolato (in scala logaritmica) in mezzo.
+---@param d number
+---@return number
+function Traits.SoftFactor(d)
+	if d >= 1 then return Traits.MATCH end
+	if d <= 0 then return Traits.MISMATCH end
+	return Traits.MISMATCH * (Traits.MATCH / Traits.MISMATCH) ^ d
 end
 
 ---------------------------------------------------------------------------
@@ -249,7 +327,7 @@ function Traits.ParseTag(tag)
 	local hit = parsed[tag]
 	if hit ~= nil then return hit or nil end
 	local result = false
-	local colon = tag:find(":", 1, true)
+	local colon = tag:find(":", 1, true) or tag:find("[<>]=")
 	if colon then
 		local scope, rest = "", tag
 		local dot = tag:find(".", 1, true)
@@ -258,7 +336,13 @@ function Traits.ParseTag(tag)
 		local head, tail = rest:match("^([a-z]+):(.+)$")
 		if head == "req" or head == "not" then mode, rest = head, tail end
 		local name, value = rest:match("^([A-Za-z]+):([A-Za-z_]+)$")
-		if name then result = { scope = scope, mode = mode, name = name, value = value } end
+		if name then
+			result = { scope = scope, mode = mode, name = name, value = value }
+		else
+			-- una soglia su una scala: stoicism>=60, optimism<=30 (R4)
+			local n, op, num = rest:match("^([A-Za-z]+)([<>]=)([0-9]+)$")
+			if n then result = { scope = scope, mode = mode, name = n, value = op .. num, op = op, n = tonumber(num) } end
+		end
 	end
 	parsed[tag] = result
 	return result or nil
@@ -289,12 +373,27 @@ end
 ---@return string? problem
 function Traits.CheckTag(tag)
 	if type(tag) ~= "string" then return "il tag non è una stringa" end
-	if not tag:find(":", 1, true) then return nil end
+	if not (tag:find(":", 1, true) or tag:find("[<>]=")) then return nil end
 	local t = Traits.ParseTag(tag)
 	if not t then return ("tag di affinità '%s' malformato"):format(tag) end
 	if not Traits.scopes[t.scope] then return ("tag '%s': ambito '%s' sconosciuto"):format(tag, t.scope) end
+	local foreign = t.scope == "" and t.mode == "affinity" and not t.op and Traits.foreign[t.name]
+	if foreign then
+		local problem = foreign(t.value)
+		return problem and ("tag '%s': %s"):format(tag, problem) or nil
+	end
 	local def = Traits.tagIndex[t.name]
 	if not def then return ("tag '%s': tratto '%s' sconosciuto"):format(tag, t.name) end
+	if t.op then
+		if def.kind ~= "scale" then return ("tag '%s': una soglia vale solo per una scala"):format(tag) end
+		if t.n < def.min or t.n > def.max then
+			return ("tag '%s': soglia fuori da %d-%d"):format(tag, def.min, def.max)
+		end
+		if def.scope ~= nil and def.scope ~= t.scope then
+			return ("tag '%s': il tratto '%s' vale nell'ambito '%s'"):format(tag, t.name, def.scope)
+		end
+		return nil
+	end
 	if def.scope ~= nil and def.scope ~= t.scope then
 		return ("tag '%s': il tratto '%s' si scrive %s.%s:%s"):format(tag, t.name, def.scope, t.name, t.value)
 	end
@@ -320,8 +419,10 @@ function Traits.Evaluate(tags, traits, scope)
 	for tag in pairs(tags) do
 		local t = Traits.ParseTag(tag)
 		local def = t and t.scope == scope and Traits.tagIndex[t.name] or nil
-		if def and (def.scope == nil or def.scope == scope) and def.valid[t.value] then
-			local has = Traits.Has(def, traits, t.value)
+		if def and (def.scope == nil or def.scope == scope) and (t.op and def.kind == "scale" or def.valid[t.value]) then
+			-- quanto il profilo ha quel valore (R4): 1 pieno, 0 contrario, nil non lo so
+			local d = Traits.Degree(def, traits, t.value, t.op, t.n)
+			local has = d == 1
 			if t.mode == "not" then
 				if has then return 0, tag end
 			elseif t.mode == "req" then
@@ -330,10 +431,10 @@ function Traits.Evaluate(tags, traits, scope)
 				if has then required[def.id].met = true end
 			elseif def.exclusive then
 				if has then return 0, tag end
-			elseif Traits.IsSet(def, traits) then
+			elseif d ~= nil then
+				-- più tag dello stesso tratto sono alternative: vale il grado migliore
 				soft = soft or {}
-				soft[def.id] = soft[def.id] or false
-				if has then soft[def.id] = true end
+				if (soft[def.id] or -1) < d then soft[def.id] = d end
 			end
 		end
 	end
@@ -344,8 +445,8 @@ function Traits.Evaluate(tags, traits, scope)
 	end
 	local factor = 1
 	if soft then
-		for _, matched in pairs(soft) do
-			factor = factor * (matched and Traits.MATCH or Traits.MISMATCH)
+		for _, d in pairs(soft) do
+			factor = factor * Traits.SoftFactor(d)
 		end
 		factor = math.max(Traits.MIN_FACTOR, math.min(Traits.MAX_FACTOR, factor))
 	end
