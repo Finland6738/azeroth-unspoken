@@ -83,6 +83,7 @@ Data\RegistryExploration.lua
 Data\RegistrySocial.lua
 Data\RegistryClasses.lua
 Data\RegistrySoul.lua
+Data\RegistryEmotions.lua
 Data\RegistryMemory.lua
 Data\RegistryRelations.lua
 Data\RegistryContext.lua

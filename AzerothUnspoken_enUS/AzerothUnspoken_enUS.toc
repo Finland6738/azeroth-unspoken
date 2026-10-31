@@ -15,6 +15,7 @@ Exploration.lua
 Social.lua
 Classes.lua
 Soul.lua
+Emotions.lua
 Memory.lua
 Relations.lua
 Context.lua
