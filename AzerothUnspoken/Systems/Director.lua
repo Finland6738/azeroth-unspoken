@@ -63,6 +63,8 @@ end
 ---  motivo del gate (paused, silent, module:<nome>, screen:<nome>, busy, moment, cooldown:<tipo>, budget:<categoria>)
 function Director:Offer(event, extra, onResult)
 	seq = seq + 1
+	-- the event touches the character's emotions (R4) before its line is chosen, whether or not anything is said
+	if NS.Emotion then NS.Diagnostics:Guard("emotion", NS.Emotion.Appraise, NS.Emotion, event, extra) end
 	-- hunger of its category (#91): among candidates of the same priority, the most neglected category goes first
 	local hunger = Pacing:Hunger(NS.Engine.EventCategory(event) or "general", GetTime())
 	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event), hunger = hunger,

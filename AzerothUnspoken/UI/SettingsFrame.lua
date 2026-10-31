@@ -5,8 +5,9 @@ local W = NS.Widgets
 local SettingsFrame = NS:RegisterModule("settings")
 
 local panel
-local MODULE_ORDER = { "personal", "world", "npc", "memory", "relations", "storyArcs", "social", "publicChat", "audio" }
-local MODULE_LIVE = { personal = true, world = true, publicChat = true, memory = true, relations = true, npc = true, storyArcs = true }   -- moduli con effetto già oggi
+local MODULE_ORDER = { "personal", "world", "npc", "memory", "emotion", "relations", "storyArcs", "social", "publicChat", "audio" }
+local MODULE_LIVE = { personal = true, world = true, publicChat = true, memory = true, relations = true, npc = true, storyArcs = true,
+	emotion = true }   -- moduli con effetto già oggi
 local DEPTHS = { "natural", "literary", "elevated" }
 local COOLDOWNS = { 15, 30, 45, 60, 90, 120, 180 }
 
@@ -143,6 +144,7 @@ local function CreatePanel()
 			NS.db.modules[module] = not NS.db.modules[module]
 			NS.db.preset = "custom"
 			if module == "publicChat" and not NS.db.modules.publicChat then NS.Gateway:Discard() end
+			if module == "emotion" and not NS.db.modules.emotion and NS.Emotion then NS.Emotion:Reset() end
 			panel:Refresh()
 		end)
 		local col, row = (i - 1) % 4, math.floor((i - 1) / 4)

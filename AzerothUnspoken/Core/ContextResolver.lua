@@ -160,6 +160,8 @@ function NS:BuildContext(extra)
 	-- il carattere: solo i tratti impostati (scelta > Total RP 3 > dati di gioco); vuoto = profilo neutro. Una
 	-- tabella condivisa e in sola lettura: la leggono le condizioni, il fattore P e il StyleResolver (Systems/Personality.lua)
 	if self.Personality then ctx.soul = self.Personality:Effective() end
+	-- lo stato emotivo (R4, Systems/Emotion.lua): emozioni sopra la soglia e la dominante; nil se il modulo è spento
+	if self.Emotion then ctx.emotion = self.Emotion:Context() end
 
 	local hp, hpMax = SafeCall(UnitHealth, "player"), SafeCall(UnitHealthMax, "player")
 	if hp and hpMax and hpMax > 0 then ctx.hp = hp / hpMax end

@@ -3,7 +3,8 @@
 --     sharedPlayers: the opt-in list of people shared by the account's characters (#114), created only when the user
 --     turns the option on; its own version, shape and rules are in Systems/Relationships.lua
 --   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
---     personality = { version, archetype, traits = { [tratto] = valore }, trp3 }  (Systems/Personality.lua)
+--     personality = { version, archetype, base, traits = { [tratto] = valore }, trp3, legacy }  (Systems/Personality.lua)
+--     emotion = { version, values = { [emozione] = { v, at } } }                   (Systems/Emotion.lua)
 --     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
 --     relationships = { version, npcs = { [npcID] = ... }, players = { ["Nome-Reame"] = ... } }  (Systems/Relationships.lua)
 --     arcs = { version, items = { [id dell'arco] = { state, mode, ... } }, stats }              (Systems/StoryArcs.lua)
@@ -112,7 +113,7 @@ Config.defaults = {
 	modules = {
 		personal = true, world = true, npc = true,
 		memory = true, storyArcs = true, social = true,
-		publicChat = true, totalRP3 = true, audio = false, relations = true,
+		publicChat = true, totalRP3 = true, audio = false, relations = true, emotion = true,
 	},
 	output = {
 		privateNarrator = true,
@@ -194,7 +195,9 @@ Config.characterDefaults = {
 	memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} },
 	-- Character Soul (S5): archetipo, scelte esplicite sui tratti e consenso a leggere i tratti da Total RP 3.
 	-- Vuoto = profilo neutro. I valori dei tratti si controllano in Personality:Sanitize (modello Engine/Traits.lua).
-	personality = { version = 1, archetype = "neutral", traits = {}, trp3 = false },
+	personality = { version = 2, archetype = "neutral", traits = {}, trp3 = false },
+	-- stato emotivo (R4): solo emozioni lente e forti, come valore e time() (Systems/Emotion.lua, ADR 0030)
+	emotion = { version = 1, values = {} },
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua

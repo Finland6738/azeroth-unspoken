@@ -214,6 +214,8 @@ Commands.list = {
 	{ name = "narrator", fn = Narrator, usage = "narrator [history|reset|clear]", desc = "help_narrator" },
 	{ name = "soul", fn = function(rest) NS.Personality:Command(rest) end,
 		usage = "soul [list|neutral|archetype <id>|trp3 on|off|<trait> <value>|avoid <topic>]", desc = "help_soul" },
+	{ name = "emotion", fn = function(rest) NS.Emotion:Command(rest) end, usage = "emotion [on|off|reset]",
+		desc = "help_emotion" },
 	{ name = "journal", fn = function(rest) NS.LivingMemory:Command(rest) end,
 		usage = "journal [list|places|flag <name>|export|pin <n>|delete <n>|forget <place>|reset]", desc = "help_journal" },
 	{ name = "stories", fn = function(rest) NS.StoryArcs:Command(rest) end,
