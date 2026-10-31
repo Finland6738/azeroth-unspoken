@@ -203,6 +203,56 @@ def emotion_content():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def monologue_content():
+    """#99 and #100 (ADR 0032): the monologue fields are columns of their own (not `extra`), the `situation` condition is
+    data, and the archive refuses a monologue whose parts are not chainable phrases of its voice."""
+    print("MONOLOGUES AND COMPOSITE SITUATIONS (ADR 0032)")
+    con = store.build_db(":memory:", ROOT, store._no_overlay())
+    road = con.execute("SELECT * FROM intention WHERE id = 'mono.muse.road'").fetchone()
+    check(road is not None and road["kind"] == "monologue" and store.jload(road["parts"]) == [
+        "mono.muse.road.1", "mono.muse.road.2", "mono.muse.road.3"] and road["extra"] is None,
+          "a monologue is archived with kind and parts in their own columns")
+    stars = con.execute("SELECT part_order FROM intention WHERE id = 'mono.muse.stars'").fetchone()
+    check(stars["part_order"] == "free" and store.get_rule(con, "mono.muse.stars")["order"] == "free",
+          "the order of the parts is the column part_order and goes back as `order`")
+    part = con.execute("SELECT chainable, extra FROM intention WHERE id = 'mono.muse.road.1'").fetchone()
+    check(store.jload(part["chainable"]) == "only" and part["extra"] is None, "a part is archived as chainable = only")
+    check(con.execute("SELECT COUNT(*) FROM variant WHERE intention_id = 'mono.muse.road'").fetchone()[0] == 0,
+          "a monologue has no texts of its own")
+    ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id IN ('base_monologues', 'base_situations')")]
+    check(len(ids) >= 30 and all(store.check_content(con, i) == [] for i in ids),
+          "every monologue, part and composite line passes the archive checks (%d)" % len(ids))
+    check(store.get_rule(con, "sit.closecall.inner")["conditions"] == {"situation": "close_call"},
+          "the condition `situation` is data")
+    check(store.index_keys({"situation": "close_call"}) == ["*"], "a composite situation is not an index dimension")
+    check(con.execute("SELECT 1 FROM intention WHERE extra IS NOT NULL AND (extra LIKE '%\"parts\"%' OR"
+                      " extra LIKE '%\"chainable\"%' OR extra LIKE '%\"kind\"%')").fetchone() is None,
+          "no monologue field is left in `extra`")
+    store.ensure_author(con, "ai-test")
+    refused = []
+    for bad in ({"parts": ["zone.gen.01", "mono.muse.road.2"]}, {"parts": ["mono.muse.road.1"]},
+                {"speaker": "character", "parts": ["mono.muse.road.1", "mono.muse.road.2"]}):
+        d = dict({"id": "mono.test.bad%d" % len(refused), "pack": "base_monologues", "event": "muse", "speaker": "inner",
+                  "styles": ["intimate"], "theme": "journey", "kind": "monologue", "author": "ai-test"}, **bad)
+        try:
+            store.add_draft(con, d)
+            refused.append(False)
+        except store.ArchiveError:
+            refused.append(True)
+    check(refused == [True, True, True],
+          "a monologue with a part that is not chainable, with one part, or in a public voice is refused")
+    good = {"id": "mono.test.good", "pack": "base_monologues", "event": "muse", "speaker": "inner", "styles": ["intimate"],
+            "theme": "journey", "motifs": ["road"], "kind": "monologue", "order": "free",
+            "parts": ["mono.muse.road.1", "mono.muse.road.2", "mono.muse.road.3"], "author": "ai-test"}
+    store.add_draft(con, good)
+    check(store.check_content(con, "mono.test.good", "approve") == [] and store.get_rule(con, "mono.test.good")["parts"] ==
+          good["parts"], "a monologue made of existing parts can be drafted and approved without texts")
+    rendered = packfiles.render_rule("mono.test.good", store.get_rule(con, "mono.test.good"), "\t\t")
+    check('kind = "monologue", order = "free", parts = { "mono.muse.road.1"' in rendered,
+          "the canonical style writes the monologue fields on their own line")
+    con.close()
+
+
 def lualit_checks():
     print("LUA LITERALS")
     import lualit
@@ -392,6 +442,7 @@ def report():
 roundtrip()
 world_content()
 emotion_content()
+monologue_content()
 lualit_checks()
 review_flow()
 report()

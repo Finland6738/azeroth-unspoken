@@ -62,9 +62,14 @@ CREATE TABLE intention (
     theme         TEXT,                          -- one theme of the closed vocabulary (#90, Data/Themes.lua)
     motifs        TEXT,                          -- JSON list: zero to three motifs (#90)
     tier          TEXT,                          -- JSON: an explicit specificity tier (#89), a number or a name
+    kind          TEXT,                          -- 'monologue' (#99): no texts, it chains the phrases in `parts`
+    parts         TEXT,                          -- JSON list: the ids of the two or three parts of a monologue (#99)
+    part_order    TEXT,                          -- the rule field `order` of a monologue: 'fixed' or 'free' (#99)
+    chainable     TEXT,                          -- JSON: true or "only", the phrase may be a part of a monologue (#99)
     weight        NUMERIC,
     cooldown      NUMERIC,
-    conditions    TEXT,                          -- JSON (a Lua condition table; R4 adds emotion, emotionMin/Max, traitMin/Max)
+    conditions    TEXT,                          -- JSON (a Lua condition table; R4 adds emotion, emotionMin/Max, traitMin/Max;
+                                                 -- #100 adds `situation`, a composite situation of Data/Themes.lua)
     extra         TEXT,                          -- JSON: rule fields the archive does not model
     ctx           TEXT NOT NULL DEFAULT '*',     -- selection-index keys (ADR 0024), '*' = generic; comma separated
     region        TEXT,                          -- the region of its pack (NULL = every place)

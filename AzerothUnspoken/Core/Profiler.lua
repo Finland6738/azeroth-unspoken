@@ -67,7 +67,7 @@ function Profiler:Reset()
 	self.timings = { PickEntry = NewTiming(), BuildContext = NewTiming() }
 	self.picks = { found = 0, none = 0 }
 	self.director = { offered = 0, spoken = 0, silent = 0, results = NewMap(), events = NewMap(), categories = NewMap(),
-		hours = {} }
+		hours = {}, monologues = 0, composites = 0, situations = NewMap() }
 	self.memory = {}
 end
 
@@ -178,6 +178,20 @@ function Profiler:Outcome(event, result, category)
 	end
 end
 
+---What a spoken intervention was (Director, after "spoken"): a monologue (#99) or a line of a composite situation
+---(#100).
+---@param rec? AUPhraseRecord
+function Profiler:Shape(rec)
+	if type(rec) ~= "table" then return end
+	local d = self.director
+	if rec.kind == "monologue" then d.monologues = d.monologues + 1 end
+	if rec.situation then
+		d.composites = d.composites + 1
+		local s = Slot(d.situations, rec.situation, function() return { n = 0 } end)
+		s.n = s.n + 1
+	end
+end
+
 ---------------------------------------------------------------------------
 -- Report
 ---------------------------------------------------------------------------
@@ -260,6 +274,8 @@ function Profiler:Report(withMemory)
 		end
 		Add("  by event (spoken/candidates): " .. TopList(d.events.items, Pair, 16))
 		Add("  by category (spoken/candidates): " .. TopList(d.categories.items, Pair, 16))
+		Add(("  monologues %d, composite situations %d%s"):format(d.monologues, d.composites,
+			d.composites > 0 and (" (" .. TopList(d.situations.items, function(r) return r.n end, 8) .. ")") or ""))
 	end
 	Add("Loading time is not measured by the addon (see the in-game checklist).")
 	return lines

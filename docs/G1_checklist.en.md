@@ -206,6 +206,27 @@ Test with a character that had chosen a personality before this version, if you 
     - **Expect:** `/au emotion` says "off", `/au debug` shows "Emotion: off", the narrator works as before and nothing is left in the `emotion` section of the saved file. `/au emotion on` turns them back on.
     - **Report:** any line that seems tied to the mood while emotions are off.
 
+## R3c: monologues and composite situations (issues #99 and #100)
+
+No new API: this checks how the lines read and whether the windows of the situations match real fights. `/au prof` counts the monologues and the composite situations of the session.
+
+- **R3c.1 · An inner monologue.** Out of combat press the "speak" key (or `/au speak`) about ten times, a few minutes apart.
+    - **Expect:** now and then, not often, the narrator shows a thought of two or three whole sentences that follow one another (the road, an old scar, the stars at night). One narrator entry, never in chat, not even with automatic sending. No sentence is cut and they read as one thought.
+    - **Report:** the monologues you saw, any combination of sentences that does not fit, and whether it takes too much room in the narrator window.
+- **R3c.2 · A narrator monologue.** `/au chance zone 100`. Enter a few new zones, one of them at dusk.
+    - **Expect:** sometimes the entry starts with the character's name and a gesture ("Garrosh pauses where the road crests...") and goes on with one or two sentences of description. At dusk the one about the failing light may come.
+    - **Report:** the text, and whether the name and the first sentence read well together.
+- **R3c.3 · A close call.** `/au chance victory 100` and `/au chance lowhp 100`. Fight until you are below a third of your health and win within half a minute. Then `/au debug` and `/au prof`.
+    - **Expect:** the victory line is about having barely made it ("Still standing..."), not an ordinary victory. One line for the victory. `/au prof` shows "composite situations 1 (close_call 1)". If both lines come in the same moment, `/au debug` shows `lowhp=merged`.
+    - **Report:** the line, how long passed between the low health and the victory, and whether the line came (if not, whether half a minute is too short).
+- **R3c.4 · A hard-won level.** Level up within three minutes of a death or of a fight at low health.
+    - **Expect:** the level line is about the price paid ("So that is what it cost..."), not an ordinary level.
+    - **Report:** the line, and whether the situation was recognised after a death.
+- **R3c.5 · A return in the rain at dusk.** Needs the weather of R3b. `/au chance memory_return 100`. Come back to a zone you visited while it rains, at dusk or at night.
+    - **Expect:** the return line speaks of the rain and the going light. Under a clear sky or by day it never comes.
+    - **Report:** the line, the weather read (`/au debug`) and the game time.
+
+
 ## Summary form (copy and fill in)
 
 ```
@@ -246,4 +267,6 @@ R4 death and return ..... mood after the death ______  cheerful return line? (mu
 R4 inn/new login ........ serene at the inn? ___  only slow emotions saved? ___  text in the file? (must be NO) ___
 R4 character ............ stoic calmer? ___  vengeful angrier? ___
 R4 off .................. off in /au debug? ___  file empty? ___
+R3c monologues .......... seen (how many) ______  combinations that do not fit ______  never in chat? ___
+R3c situations .......... close call ___  hard-won level ___  return in the rain ___  only one line? ___  seconds from low health to victory ______
 ```

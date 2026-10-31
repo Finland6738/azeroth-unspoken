@@ -538,6 +538,13 @@ function Gateway:PickRecord(event, ctx, form)
 	if not form then
 		forms = (math.random(2) == 1) and { "say", "emote" } or { "emote", "say" }
 	end
+	-- #100: with a composite situation, the lines written for it first, in either form; then the ordinary pick
+	if ctx and ctx.situation then
+		for _, f in ipairs(forms) do
+			local rec = NS.Engine:PickEntry(event, ctx, f, true)
+			if rec then return rec end
+		end
+	end
 	for _, f in ipairs(forms) do
 		local rec = NS.Engine:PickEntry(event, ctx, f)
 		if rec then return rec end
@@ -647,13 +654,14 @@ end
 ---@param ctx table
 ---@param opts? { auto: boolean, form: string, privateOnly: boolean }
 ---@return boolean shown
+---@return AUPhraseRecord? rec the line, when it was shown (the Director reads its situation, #100)
 function Gateway:Narrate(event, ctx, opts)
 	local rec = self:PickRecord(event, ctx, opts and opts.form)
 	if not rec then return false end
 	local shown = self:Propose(rec, ctx, opts)
 	-- una frase chiesta dal giocatore apre il "momento" del pacing: nessuna frase spontanea subito dopo
 	if shown and not (opts and opts.auto) and NS.Pacing then NS.Pacing:Note(GetTime(), NS.Engine.EventCategory(event)) end
-	return shown
+	return shown, shown and rec or nil
 end
 
 -- Evento lanciato da macro, comando o altro addon: /au event <nome>.
@@ -662,7 +670,7 @@ end
 ---@param extra? table valori in più per il contesto (target, spell...)
 ---@return boolean shown
 function NS:Trigger(event, extra)
-	return self.Gateway:Narrate(event, self:BuildContext(extra), {})
+	return (self.Gateway:Narrate(event, self:BuildContext(extra), {}))
 end
 
 ---------------------------------------------------------------------------

@@ -737,6 +737,30 @@ Prova con un personaggio che aveva già scelto una personalità prima di questa 
     - **Cosa aspettarti:** `/au emotion` dice «off», `/au debug` mostra «Emotion: off», il narratore funziona come prima e nella sezione `emotion` del file salvato non resta nulla. `/au emotion on` le riaccende.
     - **Cosa riportare:** qualsiasi frase che sembra legata all'umore mentre le emozioni sono spente.
 
+---
+
+## R3c: monologhi e situazioni composte (aggiunto dalle issue #99 e #100)
+
+Nessuna API nuova: si prova come suonano le frasi e se i tempi delle situazioni corrispondono ai combattimenti veri. `/au prof` conta i monologhi e le situazioni composte della sessione.
+
+- **R3c.1 · Un monologo della voce interiore.** Fuori dal combattimento premi il tasto «pronuncia» (o `/au speak`) una decina di volte, a qualche minuto di distanza.
+    - **Cosa aspettarti:** ogni tanto, non spesso, nel narratore compare un pensiero di due o tre frasi intere che si seguono (la strada, una vecchia cicatrice, le stelle di notte). Una sola voce del narratore, mai in chat, nemmeno con l'invio automatico. Le frasi non sono tagliate e si leggono come un pensiero solo.
+    - **Cosa riportare:** i monologhi visti, se qualche combinazione di frasi stona, e se la voce occupa troppo spazio nella finestra del narratore.
+- **R3c.2 · Un monologo del narratore.** `/au chance zone 100`. Entra in alcune zone nuove, una anche al tramonto.
+    - **Cosa aspettarti:** a volte la riga comincia con il nome del personaggio e un gesto («Garrosh si ferma in cima alla salita...») e continua con una o due frasi descrittive. Al tramonto può arrivare quello della luce che cala.
+    - **Cosa riportare:** il testo, e se il nome e la prima frase si leggono bene insieme.
+- **R3c.3 · Una vittoria di misura.** `/au chance victory 100` e `/au chance lowhp 100`. Fai un combattimento in cui scendi sotto un terzo della salute e vincilo entro mezzo minuto. Poi `/au debug` e `/au prof`.
+    - **Cosa aspettarti:** la frase della vittoria parla di averla scampata per poco («Ancora in piedi...»), non è una vittoria qualsiasi. Una sola frase per la vittoria. `/au prof` mostra «composite situations 1 (close_call 1)». Se le due frasi arrivano nello stesso momento, `/au debug` mostra `lowhp=merged`.
+    - **Cosa riportare:** la frase, quanto tempo è passato tra la salute bassa e la vittoria, e se la frase è arrivata (se no, se mezzo minuto è troppo poco).
+- **R3c.4 · Un livello sudato.** Sali di livello entro tre minuti da una morte o da un combattimento con la salute bassa.
+    - **Cosa aspettarti:** la frase del livello parla del prezzo pagato («Ecco quanto è costato...»), non è un livello qualsiasi.
+    - **Cosa riportare:** la frase, e se dopo una morte la situazione è stata riconosciuta.
+- **R3c.5 · Un ritorno sotto la pioggia al tramonto.** Serve il meteo della prova R3b. `/au chance memory_return 100`. Torna in una zona già visitata mentre piove, al tramonto o di notte.
+    - **Cosa aspettarti:** la frase del ritorno parla della pioggia e della luce che se ne va. Con il cielo sereno o di giorno non arriva mai.
+    - **Cosa riportare:** la frase, il meteo letto (`/au debug`) e l'ora del gioco.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -766,6 +790,8 @@ R4 morte e ritorno ..... umore dopo la morte ______  frase di ritorno allegra? (
 R4 locanda/riaccesso ... sereno in locanda? ___  solo emozioni lente salvate? ___  testo nel file? (deve essere NO) ___
 R4 carattere ........... stoico più calmo? ___  vendicativo più arrabbiato? ___
 R4 spente .............. off in /au debug? ___  file vuoto? ___
+R3c monologhi .......... visti (quanti) ______  combinazioni che stonano ______  mai in chat? ___
+R3c situazioni ......... vittoria di misura ___  livello sudato ___  ritorno sotto la pioggia ___  una sola frase? ___  secondi tra salute bassa e vittoria ______
 SP-01 caricamento ....... (OK / NO / nota)   Client build: ______  Errori rossi: sì/no
 SP-01 wizard ............ (OK / NO / nota)
 SP-01 /au debug ......... (OK / NO / nota)   Capacità MISSING/RESTRICTED: ______

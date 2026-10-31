@@ -5,6 +5,9 @@
 --   Triggers: Fire(evento) -> Director:Offer -> (ARBITRATION s) -> Director:Resolve
 --     candidati in ordine di priorità -> contesto -> Evaluate (gate) -> dado -> Gateway:Narrate
 --     il primo che produce una frase vince, gli altri tacciono; nessuno = silenzio
+--   #100 (ADR 0032): before the winner speaks, Compose looks for a composite situation (Data/Themes.lua) whose lead is
+--     the winner and whose other events were offered in this moment or in the last seconds; its ids go in
+--     ctx.situation and the lines written for it are tried first. Still one line: the merged candidates stay silent.
 --
 -- Director:Evaluate resta il punto di aggancio di S2: le fonti future di eventi spontanei chiedono a lui.
 -- Le richieste esplicite (comandi, tasto, NS:Trigger) non passano di qui: ignorano pausa e intensità (GDD §4.2).
@@ -24,6 +27,12 @@ Director.LOG_SIZE = 12
 Director.queue = {}
 Director.log = {}       -- ultime decisioni, per /au debug: { time, event, result }
 local seq = 0
+
+-- #100: the events offered in the last RECENT_SPAN seconds (at most RECENT_MAX), oldest first, for the composite
+-- situations. Only names and times, in memory for the session: never saved.
+Director.RECENT_MAX = 24
+Director.RECENT_SPAN = 300
+Director.recent = {}
 
 ---@param intensity number 0-100
 ---@return number chanceMul
@@ -59,10 +68,16 @@ end
 ---Propone un evento spontaneo. I candidati arrivati nello stesso momento si risolvono insieme.
 ---@param event string
 ---@param extra? table valori in più per il contesto
----@param onResult? fun(result: string) chiamata a risoluzione avvenuta: "spoken", "no_phrase", "chance", "outranked" o il
+---@param onResult? fun(result: string) chiamata a risoluzione avvenuta: "spoken", "no_phrase", "chance", "outranked",
+---  "merged" (#100: the line of a composite situation that includes it spoke) o il
 ---  motivo del gate (paused, silent, module:<nome>, screen:<nome>, busy, moment, cooldown:<tipo>, budget:<categoria>)
 function Director:Offer(event, extra, onResult)
 	seq = seq + 1
+	local now = GetTime()
+	table.insert(self.recent, { event = event, seq = seq, at = now })
+	while #self.recent > self.RECENT_MAX or (self.recent[1] and now - self.recent[1].at > self.RECENT_SPAN) do
+		table.remove(self.recent, 1)
+	end
 	-- the event touches the character's emotions (R4) before its line is chosen, whether or not anything is said
 	if NS.Emotion then NS.Diagnostics:Guard("emotion", NS.Emotion.Appraise, NS.Emotion, event, extra) end
 	-- hunger of its category (#91): among candidates of the same priority, the most neglected category goes first
@@ -78,6 +93,56 @@ function Director:Offer(event, extra, onResult)
 	end
 end
 
+---The composite situations (#100, ADR 0032) a candidate leads now: each declared situation whose `lead` is the
+---candidate's event, whose `with` events (all) and `withAny` events (one) were offered in the last `within` seconds
+---(this moment included, the candidate itself excluded, never an offer already merged into the same situation) and
+---whose `when` conditions match the candidate's context. nil when there is none (and always with Engine.R1_COMPAT).
+---@param c { event: string, seq: integer }
+---@param ctx table
+---@param now number
+---@return table<string, boolean>? situations
+---@return table<string, table[]>? matched the offers each situation used
+function Director:Compose(c, ctx, now)
+	local Engine = NS.Engine
+	if Engine.R1_COMPAT then return nil end
+	local recent = self.recent
+	local found, matched
+	for _, id in ipairs(Engine.SITUATION_ORDER) do
+		local def = Engine.SITUATIONS[id]
+		if def.lead == c.event then
+			local within = tonumber(def.within) or Engine.SITUATION_WITHIN
+			local function Find(ev)
+				for i = #recent, 1, -1 do
+					local r = recent[i]
+					if now - r.at > within then return nil end
+					if r.event == ev and r.seq ~= c.seq and not (r.merged and r.merged[id]) then return r end
+				end
+				return nil
+			end
+			local used, ok = {}, true
+			for _, ev in ipairs(def.with or {}) do
+				local r = Find(ev)
+				if not r then ok = false; break end
+				table.insert(used, r)
+			end
+			if ok and def.withAny then
+				local r
+				for _, ev in ipairs(def.withAny) do
+					r = Find(ev)
+					if r then break end
+				end
+				if r then table.insert(used, r) else ok = false end
+			end
+			if ok and def.when and not Engine.SafeMatch(def.when, ctx) then ok = false end
+			if ok then
+				found, matched = found or {}, matched or {}
+				found[id], matched[id] = true, used
+			end
+		end
+	end
+	return found, matched
+end
+
 ---Risolve i candidati in attesa: al massimo un intervento, il più importante che passa il gate e il dado.
 ---@return string? event l'evento che ha parlato, oppure nil (silenzio)
 function Director:Resolve()
@@ -91,15 +156,29 @@ function Director:Resolve()
 			Log(c.event, verdict.reason, c, verdict.category)
 		elseif not ND:Roll(c.event, verdict) then
 			Log(c.event, "chance", c, verdict.category)
-		elseif NS.Gateway:Narrate(c.event, ctx, { auto = true }) then
-			Pacing:Record(c.event, verdict.category, GetTime())
-			Log(c.event, "spoken", c, verdict.category)
-			for _, other in ipairs(list) do
-				if other ~= c and other.done == nil then Log(other.event, "outranked", other) end
-			end
-			return c.event
 		else
-			Log(c.event, "no_phrase", c, verdict.category)
+			local situations, matched = self:Compose(c, ctx, GetTime())
+			ctx.situation = situations
+			local shown, rec = NS.Gateway:Narrate(c.event, ctx, { auto = true })
+			if shown then
+				Pacing:Record(c.event, verdict.category, GetTime())
+				-- #100: the offers the composite line was written for are merged into it, once
+				local merged = {}
+				local used = rec and rec.situation and matched and matched[rec.situation]
+				for _, r in ipairs(used or {}) do
+					r.merged = r.merged or {}
+					r.merged[rec.situation] = true
+					merged[r.seq] = true
+				end
+				if NS.Profiler then NS.Diagnostics:Guard("profiler", NS.Profiler.Shape, NS.Profiler, rec) end
+				Log(c.event, "spoken", c, verdict.category)
+				for _, other in ipairs(list) do
+					if other ~= c and other.done == nil then Log(other.event, merged[other.seq] and "merged" or "outranked", other) end
+				end
+				return c.event
+			else
+				Log(c.event, "no_phrase", c, verdict.category)
+			end
 		end
 		c.done = true
 	end
