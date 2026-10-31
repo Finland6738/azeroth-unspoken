@@ -739,6 +739,118 @@ check(rs5.eval("function() return AzerothUnspokenDB.sharedPlayers.version end")(
 print("  ok" if not FAILURES else "")
 
 
+# 9c-bis) SavedVariables of every age: newer versions untouched, lost versions, chained migrations (Q9b, #154, #155, #156)
+print("\nSAVED DATA: NEWER VERSIONS, LOST VERSIONS, MIGRATIONS FROM SCHEMA 0 (/reload simulato)")
+def ser(lua_rt, expr):
+    return lua_rt.eval("function() return SERIALIZE(" + expr + ") end")()
+
+def lit(lua_rt, text):
+    """What SERIALIZE gives for a literal table, to compare a saved section with the input without reading it field by field."""
+    return ser(lua_rt, text)
+
+def errors_of(addon_ns):
+    return [str(e.message) for e in addon_ns.Diagnostics.errors.values()]
+
+SAVED_EPOCH = 1700000000
+
+# a) personality and emotion written by a newer version stay exactly as they are, through a second load too
+personality_v3 = "{version=3,archetype='futurist',base='futurist',traits={idealism=70,resolve=80,avoid={death=true,spiders=true}}}"
+emotion_v2 = "{version=2,values={nostalgic={v=0.9,at=100,extra='x'}},newField=true}"
+newer_pe = "{schemaVersion=7,personality=" + personality_v3 + ",emotion=" + emotion_v2 + "}"
+ln1, nn1 = load_addon(saved_global_r, newer_pe, with_example=False, packs="none", epoch=SAVED_EPOCH)
+check(ln1.eval("function() return AzerothUnspoken.Personality.readOnly end")() is True, "personality v3: read-only")
+check(ln1.eval("function() return AzerothUnspoken.Emotion.readOnly end")() is True, "emotion v2: read-only")
+check(ser(ln1, "AzerothUnspokenCharacterDB.personality") == lit(ln1, personality_v3), "personality v3: the saved data is exactly as it was")
+check(ser(ln1, "AzerothUnspokenCharacterDB.emotion") == lit(ln1, emotion_v2), "emotion v2: the saved data is exactly as it was")
+ln1.execute("""
+    local P, E = AzerothUnspoken.Personality, AzerothUnspoken.Emotion
+    P:SetTrait('irony', 10); P:SetArchetype('neutral'); P:ToggleTopic('death'); P:SetTRP3Consent(true)
+    E:Add('melancholic', 0.9); E:Persist(); E:Reset()
+    AzerothUnspoken.Director:Offer('death')
+""")
+ln1.globals().ADVANCE(5)
+check(ser(ln1, "AzerothUnspokenCharacterDB.personality") == lit(ln1, personality_v3), "personality v3: a session of trying to change it leaves it as it was")
+check(ser(ln1, "AzerothUnspokenCharacterDB.emotion") == lit(ln1, emotion_v2), "emotion v2: a session with a death leaves it as it was")
+check(any("personality.version 3 > 2" in m for m in errors_of(nn1)) and any("emotion.version 2 > 1" in m for m in errors_of(nn1)),
+      "newer module versions: diagnostics say read-only")
+saved_n1 = ln1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+ln2, nn2 = load_addon(saved_global_r, saved_n1, with_example=False, packs="none", epoch=SAVED_EPOCH)
+check(ln2.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")() == saved_n1, "newer module versions: the second load is identical")
+
+# b) a lost or damaged schemaVersion does not convert a version 2 personality again
+for lost in ("nil", "-1", "1e309", "0/0"):
+    sv = "" if lost == "nil" else "schemaVersion=" + lost + ","
+    lost_char = ("{" + sv + "personality={version=2,archetype='custom',legacy={temperament='stoic'},"
+                 "traits={stoicism=95,irony=40},trp3=false}}")
+    ll, ln_ = load_addon(saved_global_r, lost_char, with_example=False, packs="none", epoch=SAVED_EPOCH)
+    check(ll.eval("function() return AzerothUnspokenCharacterDB.personality.traits.stoicism end")() == 95, f"schemaVersion {lost}: the edited intensity stays")
+    check(ll.eval("function() return AzerothUnspokenCharacterDB.personality.legacy.temperament end")() == "stoic", f"schemaVersion {lost}: the legacy choice stays")
+    check(ll.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, f"schemaVersion {lost}: the schema is written again")
+    check(ll.eval("function() return AzerothUnspoken.Config.readOnly.character end")() is False, f"schemaVersion {lost}: not read-only")
+
+# c) a chained migration from schema 0 to the current one, with partial and damaged inputs; the second load is idempotent
+def corrupt_global(schema):
+    if schema <= 1:
+        settings = "{output={mode='say',autoPublicSay=true},intensity=61,locale='en'}"
+    else:
+        settings = "{chat={mode='AUTO_ONLY_IF_ALLOWED'},output={autoPublicSay=true},intensity=61,locale='en'}"
+    return "{schemaVersion=" + str(schema) + ",settings=" + settings + "}"
+
+def corrupt_char(schema):
+    sv = "" if schema is None else "schemaVersion=" + str(schema) + ","
+    return ("{" + sv + "memory='junk',"
+            "personality={version=1,archetype=5,traits={temperament='gruff',irony=150,avoid={death=true,bogus=true}},trp3='yes'},"
+            "memories={},"
+            "relationships={version=1,npcs='x',players={['Aldric-Stormrage']={first=1e18,last=1e19,count=1e300,source='user',note='kept',trust=55,tags='x'},bad=5}},"
+            "arcs={},"
+            "emotion={version=1,values={nostalgic={v=7,at=1e15,junk='xxxx'},bored={v=1,at=1}}}}")
+
+for schema in range(0, 7):
+    label = f"schema {schema}"
+    lm1, nm1 = load_addon(corrupt_global(schema), corrupt_char(schema), with_example=False, packs="none", epoch=SAVED_EPOCH)
+    def c1(expr, rt=lm1):
+        return rt.eval("function() return " + expr + " end")()
+    check(c1("AzerothUnspokenDB.schemaVersion") == 7 and c1("AzerothUnspokenCharacterDB.schemaVersion") == 7, f"{label}: both files reach schema 7")
+    if schema <= 1:
+        check(c1("AzerothUnspokenDB.settings.chat.mode") == "CONFIRM_TO_SEND" and c1("AzerothUnspokenDB.settings.output.autoPublicSay") is False,
+              f"{label}: output.mode becomes chat.mode, with no automatic public chat")
+    else:
+        check(c1("AzerothUnspokenDB.settings.chat.mode") == "AUTO_ONLY_IF_ALLOWED" and c1("AzerothUnspokenDB.settings.output.autoPublicSay") is True,
+              f"{label}: a consent already given is not taken back")
+    check(c1("AzerothUnspokenDB.settings.intensity") == 61, f"{label}: the settings are kept")
+    check(c1("AzerothUnspokenCharacterDB.personality.version") == 2 and c1("AzerothUnspokenCharacterDB.personality.traits.altruism") == 25,
+          f"{label}: the version 1 personality is converted")
+    check(c1("AzerothUnspokenCharacterDB.personality.traits.irony") == 100 and c1("AzerothUnspokenCharacterDB.personality.traits.avoid.bogus") is None
+          and c1("AzerothUnspokenCharacterDB.personality.traits.avoid.death") is True, f"{label}: personality values are cleaned")
+    check(c1("AzerothUnspokenCharacterDB.personality.archetype") == "custom" and c1("AzerothUnspokenCharacterDB.personality.trp3") is False,
+          f"{label}: a damaged archetype and consent give a coherent profile")
+    check(c1("AzerothUnspokenCharacterDB.relationships.version") == 2 and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.axes.trust") == 55
+          and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].user.note") == "kept", f"{label}: the player record is migrated with its choices")
+    check(c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen.last") <= SAVED_EPOCH
+          and c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen.first") <= SAVED_EPOCH,
+          f"{label}: times in the future are brought back")
+    check(c1("AzerothUnspokenCharacterDB.relationships.players['Aldric-Stormrage'].seen.count") == 1000000, f"{label}: a huge counter is capped")
+    check(c1("AzerothUnspokenCharacterDB.relationships.players.bad") is None, f"{label}: a damaged record is dropped")
+    check(c1("AzerothUnspokenCharacterDB.emotion.values.nostalgic.v") == 1 and c1("AzerothUnspokenCharacterDB.emotion.values.nostalgic.at") <= SAVED_EPOCH
+          and c1("AzerothUnspokenCharacterDB.emotion.values.nostalgic.junk") is None and c1("AzerothUnspokenCharacterDB.emotion.values.bored") is None,
+          f"{label}: the emotion is rebuilt")
+    check(c1("type(AzerothUnspokenCharacterDB.memory)") == "table" and c1("AzerothUnspokenCharacterDB.memory.uses") is not None, f"{label}: a damaged memory is replaced")
+    check(not any(str(e.module).startswith(("migrate", "init")) for e in nm1.Diagnostics.errors.values()), f"{label}: no migration or start-up error")
+    saved_g1 = lm1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+    saved_c1 = lm1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+    lm2, nm2 = load_addon(saved_g1, saved_c1, with_example=False, packs="none", epoch=SAVED_EPOCH)
+    check(lm2.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")() == saved_c1, f"{label}: the second load of the character file is identical")
+    check(lm2.eval("function() return SERIALIZE(AzerothUnspokenDB) end")() == saved_g1, f"{label}: the second load of the account file is identical")
+    check(not errors_of(nm2) or all("brought back" not in m and "dropped" not in m for m in errors_of(nm2)), f"{label}: the second load has nothing left to clean")
+
+# the same damaged character file with no schemaVersion at all (lost): it goes through every migration and ends the same way
+lm3, nm3 = load_addon(corrupt_global(0), corrupt_char(None), with_example=False, packs="none", epoch=SAVED_EPOCH)
+check(lm3.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "a character file without schemaVersion reaches schema 7")
+saved_c3 = lm3.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+lm4, nm4 = load_addon(lm3.eval("function() return SERIALIZE(AzerothUnspokenDB) end")(), saved_c3, with_example=False, packs="none", epoch=SAVED_EPOCH)
+check(lm4.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")() == saved_c3, "and its second load is identical")
+print("  ok" if not FAILURES else "")
+
 # 9d) persistenza dei dialoghi ambientali (S8): i flag e il ricordo sopravvivono a /reload, il dialogo no
 print("\nPERSISTENZA DEI DIALOGHI AMBIENTALI (/reload simulato)")
 dl1, dn1 = load_addon(with_example=False, zone="Elwynn Forest")

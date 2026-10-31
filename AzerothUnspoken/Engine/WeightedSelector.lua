@@ -9,19 +9,29 @@ local EMPTY = {}
 local function Finite(n) return type(n) == "number" and n == n and n ~= math.huge and n ~= -math.huge end
 
 Engine.RECENT_MAX = 200   -- tetto di una lista di recenti caricata dal file (Remember ne tiene molte meno)
+Engine.COUNT_MAX = 1e6    -- tetto di un contatore di usi caricato dal file: un valore enorme non blocca una frase per sempre (#156)
 
 ---Ripulisce la memoria di anti-ripetizione caricata dal file (#49, #52): voci malformate scartate come per le memorie
----e le relazioni, così un file rovinato non fa fallire ogni scelta a ogni avvio. Restituisce le voci scartate.
+---e le relazioni, così un file rovinato non fa fallire ogni scelta a ogni avvio. Restituisce le voci scartate e i
+---valori riportati nei limiti: un ultimo uso nel futuro (l'orologio era avanti e poi è stato corretto) diventa adesso,
+---così il cooldown finisce invece di durare fino a quella data; un contatore enorme torna a COUNT_MAX (#156).
 ---@return integer dropped
+---@return integer clamped
 function Engine:SanitizeMemory()
 	local mem = NS.cdb and NS.cdb.memory
-	if type(mem) ~= "table" then return 0 end
-	local dropped = 0
+	if type(mem) ~= "table" then return 0, 0 end
+	local dropped, clamped, now = 0, 0, time()
 	-- uses e last: id stringa -> numero finito (non negativo)
 	for _, field in ipairs({ "uses", "last" }) do
 		if type(mem[field]) ~= "table" then mem[field] = {} end
 		for id, n in pairs(mem[field]) do
-			if type(id) ~= "string" or not Finite(n) or n < 0 then mem[field][id] = nil; dropped = dropped + 1 end
+			if type(id) ~= "string" or not Finite(n) or n < 0 then
+				mem[field][id] = nil; dropped = dropped + 1
+			elseif field == "uses" and n > self.COUNT_MAX then
+				mem.uses[id] = self.COUNT_MAX; clamped = clamped + 1
+			elseif field == "last" and n > now then
+				mem.last[id] = now; clamped = clamped + 1
+			end
 		end
 	end
 	-- recent: evento -> lista di id stringa
@@ -49,7 +59,7 @@ function Engine:SanitizeMemory()
 	for id, i in pairs(mem.variant) do
 		if type(id) ~= "string" or not Finite(i) or i < 1 or i ~= math.floor(i) then mem.variant[id] = nil; dropped = dropped + 1 end
 	end
-	return dropped
+	return dropped, clamped
 end
 
 ---------------------------------------------------------------------------
@@ -126,9 +136,12 @@ local function KnownIds()
 end
 
 function Engine:DecayMemory()
-	local dropped = self:SanitizeMemory()
+	local dropped, clamped = self:SanitizeMemory()
 	if dropped > 0 and NS.Diagnostics then
 		NS.Diagnostics:Error("memory", ("anti-ripetizione: %d voci malformate scartate"):format(dropped))
+	end
+	if clamped > 0 and NS.Diagnostics then
+		NS.Diagnostics:Error("memory", ("anti-repetition: %d future times or oversized counters brought back inside their limits"):format(clamped))
 	end
 	local mem = Mem()
 	local known, cooldown = KnownIds()

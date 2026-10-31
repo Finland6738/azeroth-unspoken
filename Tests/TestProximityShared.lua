@@ -131,10 +131,12 @@ local function SharingOn()
 	T.eq(R:StartSharing(), "on", "the second step turns it on")
 end
 
--- a second character of the same account: another character table, the same account table
-local function AsOtherCharacter(fn)
+-- another character of the same account: its own relationships table (kept between calls), the same account table
+local function NewCharacter() return { version = R.VERSION, npcs = {}, players = {} } end
+
+local function AsCharacter(rels, fn)
 	local main = NS.cdb.relationships
-	NS.cdb.relationships = { version = R.VERSION, npcs = {}, players = {} }
+	NS.cdb.relationships = rels
 	local saved = R.session
 	R.session = { seen = {}, offered = {}, recognized = {}, prior = {}, proximity = { n = 0, secret = 0 } }
 	local ok, err = pcall(fn)
@@ -142,6 +144,9 @@ local function AsOtherCharacter(fn)
 	R.session = saved
 	if not ok then error(err, 0) end
 end
+
+-- a second character of the same account: another character table, the same account table
+local function AsOtherCharacter(fn) AsCharacter(NewCharacter(), fn) end
 
 local function Shared() return NS.gdb.sharedPlayers end
 
@@ -808,4 +813,242 @@ T.run("the shared list and the export", function()
 	local text = R:ExportText()
 	T.ok(text:find("Aldric-Stormrage", 1, true) and text:find("A shared note", 1, true), "the export has the effective choices")
 	T.ok(not text:find("seen=", 1, true), "and no raw table")
+end)
+
+---------------------------------------------------------------------------
+-- #155: a record made from the shared list stays tied to it
+---------------------------------------------------------------------------
+local function ErrorsAbout(text)
+	local n = 0
+	for _, e in ipairs(NS.Diagnostics.errors) do
+		if e.message:find(text, 1, true) then n = n + 1 end
+	end
+	return n
+end
+
+T.run("#155: observing a person who is only in the shared list makes a record that depends on it", function()
+	Fresh()
+	SharingOn()
+	local key = Person("Brenna-Stormrage", { trust = 60 })
+	local b = NewCharacter()
+	AsCharacter(b, function()
+		R:Observe(key, "group")
+		local rec = NS.cdb.relationships.players[key]
+		T.eq(rec.via, "shared", "marked as coming from the shared list")
+		T.eq(rec.source, nil, "and it does not copy the source: nobody added her here")
+		T.eq(next(rec.user), nil, "with no choices of its own")
+		T.eq(rec.seen.count, 1, "only the observation")
+		T.eq(R:IsListed(key), true, "listed through the account")
+		T.eq(R:Get("player", key).source, "user", "the effective source is the account's")
+	end)
+end)
+
+T.run("#155: removing the person clears the observation record of every other character", function()
+	Fresh()
+	SharingOn()
+	local key = Person("Brenna-Stormrage", { trust = 60 })
+	local b = NewCharacter()
+	AsCharacter(b, function() R:Observe(key, "group") end)
+	T.ok(R:Remove("player", key), "A removes her")
+	T.eq(Shared().players[key], nil, "gone from the account's list")
+	AsCharacter(b, function()
+		T.eq(NS.cdb.relationships.players[key] ~= nil, true, "the record is still in B's file until B loads")
+		T.eq(R:IsListed(key), false, "but B no longer lists her")
+		T.eq(R:ScopeOf(key), nil, "she has no scope")
+		T.eq(R:Get("player", key), nil, "no record to read")
+		T.eq(R:CountPlayers(), 0, "and she does not count toward the limit")
+		T.eq(R:Observe(key, "group"), nil, "an encounter with her records nothing")
+		T.eq(NS.cdb.relationships.players[key].seen.count, 1, "the leftover record is not touched")
+		for _, row in ipairs(R:Rows({})) do T.ok(row.key ~= key, "she is not in the rows") end
+		NS.Diagnostics.errors = {}
+		R:Sanitize()
+		T.eq(NS.cdb.relationships.players[key], nil, "B's next load drops the leftover")
+		T.eq(ErrorsAbout("left the shared list"), 1, "and /au debug says so")
+	end)
+end)
+
+T.run("#155: turning sharing off clears the observation records that came from it, not the people the character added", function()
+	Fresh()
+	SharingOn()
+	local mine = Person("Aldric-Stormrage", { trust = 40 })       -- added with sharing on: it is in both layers
+	local b = NewCharacter()
+	AsCharacter(b, function() R:Observe(mine, "group") end)
+	R:StopSharing()
+	T.eq(R:IsListed(mine), true, "A still lists the person A added")
+	T.ok(Shared().players[mine] ~= nil, "the account's list is kept")
+	AsCharacter(b, function()
+		T.eq(R:IsListed(mine), false, "B lists nobody while sharing is off")
+		R:Sanitize()
+		T.eq(next(NS.cdb.relationships.players), nil, "and B's observation records are gone")
+	end)
+	-- turned on again, the person comes back from the account, with no observations of B's
+	R:SetSetting("sharePlayers", true)
+	AsCharacter(b, function()
+		T.eq(R:IsListed(mine), true, "back through the account")
+		T.eq(R:Get("player", mine).seen.count, 0, "with no past observations")
+	end)
+end)
+
+T.run("#155: the character that turns sharing off drops its own shared-only records at once", function()
+	Fresh()
+	SharingOn()
+	local key = Person("Brenna-Stormrage", { trust = 60 })
+	NS.cdb.relationships.players = {}                     -- this character only knows her through the account
+	R:Observe(key, "group")
+	T.eq(NS.cdb.relationships.players[key].via, "shared", "a record made from the shared list")
+	R:StopSharing()
+	T.eq(NS.cdb.relationships.players[key], nil, "dropped when sharing stops")
+	T.eq(R:IsListed(key), false, "and she is not listed")
+end)
+
+T.run("#155: choices are never dropped, and acting on the person ties the record to the character", function()
+	Fresh()
+	SharingOn()
+	local key = Person("Brenna-Stormrage", { trust = 60 })
+	R:SetNote("player", key, "Shared note")
+	local b = NewCharacter()
+	AsCharacter(b, function()
+		R:Observe(key, "group")
+		T.eq(R:SetScope(key, "character"), true, "B keeps her on its own")
+		local rec = NS.cdb.relationships.players[key]
+		T.eq(rec.via, nil, "no longer tied to the shared list")
+		T.eq(rec.source, "user", "with the source of the shared record")
+		T.eq(rec.user.note, "Shared note", "and a copy of the choices")
+	end)
+	R:Remove("player", key)
+	AsCharacter(b, function()
+		local before = Deep(NS.cdb.relationships.players[key].user)
+		T.eq(R:IsListed(key), true, "B keeps the person it chose to keep")
+		R:Sanitize()
+		T.ok(Same(before, NS.cdb.relationships.players[key].user), "its choices are untouched")
+		T.eq(NS.cdb.relationships.players[key].seen.count, 1, "and so are its observations")
+	end)
+	-- the way back also ties every record to the character
+	Fresh()
+	SharingOn()
+	local k2 = Person("Cora-Stormrage", { trust = 30 })
+	local c = NewCharacter()
+	AsCharacter(c, function()
+		R:Observe(k2, "group")
+		T.eq(NS.cdb.relationships.players[k2].via, "shared", "observed through the account")
+		T.eq(R:CopySharedHere(), 1, "copy")
+		T.eq(NS.cdb.relationships.players[k2].via, nil, "a copy is the character's own")
+		R:StopSharing()
+		T.eq(R:IsListed(k2), true, "and it survives the end of sharing")
+	end)
+end)
+
+T.run("#155: a record with choices is never pruned, and nothing is pruned while the account's list is unreadable", function()
+	Fresh()
+	SharingOn()
+	local key = Person("Brenna-Stormrage", { trust = 60 })
+	local b = NewCharacter()
+	AsCharacter(b, function() R:Observe(key, "group") end)
+	-- a hand-made record that says "shared" but holds a choice
+	b.players["Cora-Stormrage"] = { via = "shared", user = { note = "kept" }, seen = { first = 1, last = 2, count = 1, kinds = {}, facts = {} } }
+	R:Remove("player", key)
+	AsCharacter(b, function()
+		R:Sanitize()
+		T.eq(b.players[key], nil, "the shared-only record of the removed person is gone")
+		T.eq(b.players["Cora-Stormrage"].user.note, "kept", "the one with a choice stays")
+	end)
+	-- a newer version wrote the account's list: it goes unused, and nothing that depends on it is dropped
+	local other = Person("Dora-Stormrage")
+	local d = NewCharacter()
+	AsCharacter(d, function() R:Observe(other, "group") end)
+	Shared().version = 99
+	AsCharacter(d, function()
+		R:Sanitize()
+		T.eq(R.sharedReadOnly, true, "the account's list is not used")
+		T.ok(d.players[other] ~= nil, "the record is kept, not dropped")
+		T.eq(R:IsListed(other), false, "and ignored")
+	end)
+end)
+
+---------------------------------------------------------------------------
+-- #156: the list of people is capped when it is loaded
+---------------------------------------------------------------------------
+T.run("#156: loaded players over the limit are dropped, those without choices first, and /au debug says so", function()
+	Fresh()
+	local players = {}
+	for i = 1, R.MAX_PLAYERS + 100 do
+		players[("P%04d-Stormrage"):format(i)] = { user = {}, seen = { first = 1, last = i, count = i % 7, kinds = {}, facts = {} } }
+	end
+	-- the ones with choices are the least observed: they must still survive
+	for i = 1, 5 do
+		players[("C%d-Stormrage"):format(i)] = { source = "user", user = { note = "kept " .. i }, seen = { first = 1, last = 0, count = 0, kinds = {}, facts = {} } }
+	end
+	NS.cdb.relationships.players = players
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	T.eq(Count(NS.cdb.relationships.players), R.MAX_PLAYERS, "the list is back at the limit")
+	for i = 1, 5 do T.ok(NS.cdb.relationships.players[("C%d-Stormrage"):format(i)], "a person with choices survives " .. i) end
+	T.eq(ErrorsAbout("over the limit of 300 dropped"), 1, "/au debug reports it")
+	local before = Deep(NS.cdb.relationships.players)
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	T.ok(Same(before, NS.cdb.relationships.players), "a second load changes nothing")
+	T.eq(#NS.Diagnostics.errors, 0, "and reports nothing")
+end)
+
+T.run("#156: people who all hold choices are never dropped, only reported", function()
+	Fresh()
+	local players = {}
+	for i = 1, R.MAX_PLAYERS + 20 do
+		players[("P%04d-Stormrage"):format(i)] = { source = "user", user = { note = "n" .. i }, seen = { first = 1, last = 1, count = 1, kinds = {}, facts = {} } }
+	end
+	NS.cdb.relationships.players = players
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	T.eq(Count(NS.cdb.relationships.players), R.MAX_PLAYERS + 20, "nobody who holds a choice is dropped")
+	T.eq(ErrorsAbout("they hold choices"), 1, "but it is reported")
+end)
+
+T.run("#156: both layers together stay within the limit with sharing on, and the account's list alone with it off", function()
+	Fresh()
+	SharingOn()
+	local own, shared = {}, {}
+	for i = 1, 200 do own[("A%04d-Stormrage"):format(i)] = { user = {}, seen = { first = 1, last = i, count = 1, kinds = {}, facts = {} } } end
+	for i = 1, 200 do shared[("B%04d-Stormrage"):format(i)] = { source = "user", user = {} } end
+	shared["Keep-Stormrage"] = { source = "user", user = { note = "kept" } }
+	NS.cdb.relationships.players = own
+	Shared().players = shared
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	T.eq(R:CountPlayers(), R.MAX_PLAYERS, "400 people in both layers: back to 300")
+	T.ok(Shared().players["Keep-Stormrage"] ~= nil, "the shared person with a choice survives")
+	-- the account's list is capped by itself, even with sharing off
+	Fresh()
+	local many = {}
+	for i = 1, 700 do many[("B%04d-Stormrage"):format(i)] = { source = "user", user = {} } end
+	NS.gdb.sharedPlayers = { version = R.SHARED_VERSION, players = many }
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	T.eq(Count(Shared().players), R.MAX_PLAYERS, "700 shared records: 300 are kept")
+	T.eq(ErrorsAbout("shared players over the limit"), 1, "and it is reported")
+end)
+
+T.run("#156: loaded times in the future and huge counters are brought back inside their limits", function()
+	Fresh()
+	local now = time()
+	NS.cdb.relationships.players = {
+		["Aldric-Stormrage"] = { source = "user", user = {}, seen = { first = now + 1e9, last = now + 2e9, count = 1e300,
+			kinds = { trade = 1e300, group = 2 }, facts = { { k = "group", t = now + 5e9 } } } },
+	}
+	NS.cdb.relationships.npcs = { [1234] = { first = now + 1e9, last = now + 1e9, count = 1e300, talks = 1e300, decayDay = 1e12, name = "Pip" } }
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	local seen = NS.cdb.relationships.players["Aldric-Stormrage"].seen
+	T.ok(seen.first <= now and seen.last <= now and seen.facts[1].t <= now, "player times are not in the future")
+	T.eq(seen.count, R.COUNTER_MAX, "the count is capped"); T.eq(seen.kinds.trade, R.COUNTER_MAX, "and so is the tally"); T.eq(seen.kinds.group, 2, "a normal one is kept")
+	local npc = NS.cdb.relationships.npcs[1234]
+	T.ok(npc.first <= now and npc.last <= now, "NPC times are not in the future")
+	T.ok(npc.count == R.COUNTER_MAX and npc.talks == R.COUNTER_MAX, "NPC counters are capped")
+	T.ok(npc.decayDay <= math.floor(now / R.DAY), "the decay day is not in the future")
+	T.eq(ErrorsAbout("brought back inside their limits"), 1, "/au debug reports it once")
+	local before = Deep(NS.cdb.relationships)
+	NS.Diagnostics.errors = {}
+	R:Sanitize()
+	T.ok(Same(before, NS.cdb.relationships), "a second load changes nothing")
+	T.eq(#NS.Diagnostics.errors, 0, "and reports nothing")
 end)
