@@ -59,7 +59,23 @@ When a proposal is waiting:
 | Change the channel | the channel button | `/au channel <channel>` sets the default |
 | Throw it away | **Discard**, or **x** | `/au cancel` |
 
-**No proposal waiting?** The speak key, button and `/au speak` ask for a new line that fits the moment (a battle cry in combat, a thought otherwise). It comes as a proposal: press again to send it.
+**No proposal waiting?** The speak key, button and `/au speak` ask for a new line that fits the moment (a battle cry in combat, a thought otherwise). It comes as a proposal: press again to send it. In private mode it is shown only to you, in the narrator box.
+
+### The speak button
+
+The speak button is a small book icon. It starts **beside the narrator box**, to its right. Drag it with the right mouse button to move it; `/au button reset` puts it back. `/au button` shows or hides it.
+
+Its tooltip says what a left click will do now:
+
+| Situation | The tooltip says |
+|---|---|
+| Private mode (the default) | nothing is ever sent to chat; a click shows a line for the moment, only to you |
+| No proposal waiting | a click proposes a line; nothing is sent yet |
+| A proposal is waiting | the line, its channel, and "send this line to chat" |
+| A proposal is waiting, preview mode | "open it in the editor, then send it from there" |
+| A proposal is waiting, `/au button editor on` | "open it in the editor" |
+
+**The button opens the editor instead of sending.** If you prefer to read every line in the editor before it goes out, type `/au button editor on`. A click on the button then opens the waiting proposal in the editor, and you send it with Enter or **Send**. The speak key and `/au speak` still send at once. `/au button editor off` turns it back off (the default).
 
 **Copy to chat box** puts the line into the game's own chat box, already on the right channel. You read it there and press Enter yourself, or edit it with the normal chat tools. This is the most hands-on way to send.
 
@@ -124,6 +140,7 @@ If you try to send too fast, you see *"too fast: wait a few seconds before sendi
 | Automatic sending | off | panel **Automatic sending**, `/au mode auto` twice |
 | Default channel | automatic | panel **Default channel**, `/au channel` |
 | Chat proposals module | on | panel modules; off works like private mode |
+| Speak button opens the editor | off | `/au button editor on` |
 
 ## What you will see
 

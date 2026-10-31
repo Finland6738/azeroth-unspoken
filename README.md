@@ -98,7 +98,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 
 | Command | Effect |
 |---|---|
-| `/au help` | list of commands (`/au` alone does the same) |
+| `/au help [group]` | the groups of commands (`/au` alone does the same); `/au help all` lists every command |
 | `/au on` · `/au off` | turns automatic lines on or off |
 | `/au pause` | immediate narrator pause, for the session only; again to resume |
 | `/au language [it\|en]` | language of lines and interface (short form `/au lang`); the default is English |
@@ -118,7 +118,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au chance [<event> <0-100>]` | probability of an event; with no arguments lists the values |
 | `/au cooldown <seconds>` | minimum pause between two automatic lines |
 | `/au ignore <spell>` | a spell no longer produces lines; with no argument lists the ignored ones |
-| `/au button` | shows or hides the "speak" button |
+| `/au button [on/off/reset/editor on/off]` | shows, hides or resets the "speak" button; `editor on`: a click opens the editor instead of sending |
 | `/au soul` | opens the character personality window. Also `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <0-100>` (`idealism`, `concreteness`, `optimism`, `altruism`, `stoicism`, `ambition`, `spirituality`, `patriotism`, `curiosity`, `vengefulness`, `irony`; `voice`; `-` removes the choice) and `avoid <topic>` |
 | `/au emotion` | the character's mood; `on`, `off`, `reset` |
 | `/au journal` | opens the character journal (memories, places, flags, session). Also `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` and `reset [all\|memories\|ordinary\|places\|flags]` (asks for confirmation) |

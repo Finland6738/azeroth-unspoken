@@ -10,6 +10,31 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U: slash-command help and the speak button (issues #175, #189)
+
+Fixes from the UI review (UI-05 and UI-19 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Not yet checked in the real
+client (G1).
+
+- **Fixed: `/au help` and the usage messages lost letters and broke lines (#175).** They separated options with a bare
+  `|`, which is the client's escape character: `/au narrator [history|reset|clear]` read "historyeset". Options are now
+  separated by ` / ` (and `/` inside an option, as in `trp3 on/off`), in the command table and in `soul_help`,
+  `mem_help`, `rel_help`, `rel_scope_usage`, `arc_cmd_help`, `other_trait_bad`, `help_prof` and `help_probe`, in
+  English and Italian. A new test fails on a bare `|` in any usage line, in any interface text of any language, and
+  in what `/au help` prints. The narrator's pause button glyph is fixed separately.
+- **Changed: `/au help` comes in five groups (#189).** `/au help` prints the groups (Start, Narrator, Chat, Character,
+  Diagnostics) in eight lines, so a default chat window shows all of it. `/au help <group>` prints one group (ten
+  lines at most), `/au help <command>` one command and `/au help all` everything, with the diagnostics last. Group
+  names are typed in English, like the commands.
+- **Changed: the speak button's tooltip says what a click will do (#189).** In private mode (the default) it says that
+  nothing is ever sent and that a click shows a line only to you; it no longer says "confirm and speak". With a
+  proposal it says "send", or "open it in the editor" in preview mode.
+- **Changed: the speak button's default place** is beside the narrator box, no longer 180 units below the centre of
+  the screen, over the character. A button you already moved stays where you put it.
+- **Added: `/au button editor on|off`.** With it on, a click on the speak button opens a waiting proposal in the editor
+  instead of sending it; the speak key and `/au speak` still send. New setting `ui.buttonOpensEditor`, off by default.
+- **Added: `/au button on`, `/au button off` and `/au button reset`** (back to the default place). `/au button` alone
+  still shows or hides it, and now says which.
+
 ### U-journal: journal window layout, confirmations and memory states (issues #179, #180, #190 and #193)
 
 The journal parts of the UI review (UI-09, UI-10, UI-20, UI-23). Tested with the mock client only: the layout and the

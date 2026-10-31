@@ -71,6 +71,7 @@ Config.CHAT_LIMITS = {
 ---@field narrator AUNarratorSettings
 ---@field dialogue AUDialogueSettings finestra dei dialoghi ambientali (S8)
 ---@field buttonPos? table
+---@field buttonOpensEditor boolean il clic sul pulsante "pronuncia" apre l'editor invece di inviare (#189)
 
 ---@class AUOutputSettings
 ---@field privateNarrator boolean riquadro del narratore (false: ripiego sulla chat locale)
@@ -194,6 +195,10 @@ Config.defaults = {
 		},
 	},
 }
+
+-- Pulsante "pronuncia" (#189): true = il clic apre l'editor sulla proposta in attesa invece di inviarla
+-- (/au button editor on). Il tasto e /au speak inviano come sempre.
+Config.defaults.ui.buttonOpensEditor = false
 
 Config.characterDefaults = {
 	memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} },

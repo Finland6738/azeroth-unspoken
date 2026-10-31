@@ -76,7 +76,7 @@ NS:RegisterLanguage("it", {
 		rel_share_needs_on = "accendi prima la lista condivisa: /au relationships share on.",
 		rel_share_all_done = "condivise da questo personaggio: %d (rimaste di questo personaggio, perché la lista condivisa aveva già scelte per loro: %d).",
 		rel_share_copy_done = "copiate in questo personaggio: %d (escluse, lista piena: %d).",
-		rel_scope_usage = "uso: /au relationships scope <nome> shared|character",
+		rel_scope_usage = "uso: /au relationships scope <nome> shared/character",
 		rel_scope_shared = "%s: le tue scelte ora sono condivise con l'account.",
 		rel_scope_character = "%s: questo personaggio ora tiene le sue scelte (una copia di quelle condivise).",
 		rel_scope_replaced = "le scelte condivise per questa persona sono state sostituite da quelle di questo personaggio.",
@@ -89,6 +89,6 @@ NS:RegisterLanguage("it", {
 		rel_row_tip = "Clic: apri la relazione.",
 		rel_custom_tip = "La tua etichetta, con parole tue. Si salva quando lasci la casella: Invio, un'altra casella, un'altra vista o Chiudi. Esc rimette il testo salvato.",
 		rel_edit_tip = "Si salva quando lasci la casella: Invio, un'altra casella, un'altra vista o Chiudi. Esc rimette il testo salvato.",
-		rel_help = "uso: /au relationships [list | people | add <nome> | dismiss <nome> | remove <nome|npc:ID> | detail <nome> | note <nome> <testo> | tags <nome> <tag,...> | label <nome> <testo> | set <nome> <asse> <valore> | export | auto on|off | attraction on|off | feeling <nome> <sentimento> [preset] | forget <nome> | proximity on|off | share [on|off|all|copy] | scope <nome> shared|character | reset [all|npcs|players|shared]]",
+		rel_help = "uso: /au relationships [list / people / add <nome> / dismiss <nome> / remove <nome/npc:ID> / detail <nome> / note <nome> <testo> / tags <nome> <tag,...> / label <nome> <testo> / set <nome> <asse> <valore> / export / auto on/off / attraction on/off / feeling <nome> <sentimento> [preset] / forget <nome> / proximity on/off / share [on/off/all/copy] / scope <nome> shared/character / reset [all/npcs/players/shared]]",
 	},
 })

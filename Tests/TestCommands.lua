@@ -134,16 +134,15 @@ end)
 
 T.run("#132: l'aiuto elenca i nomi inglesi in ogni lingua, con la descrizione nella lingua dell'interfaccia", function()
 	Fresh()
-	local expect = { it = "questo elenco", en = "this list" }
 	for _, lang in ipairs({ "it", "en" }) do
 		NS.db.locale = lang
-		local out = Cmd("help")
-		T.ok(out:find(expect[lang], 1, true), lang .. ": descrizione nella lingua dell'interfaccia")
+		local out = Cmd("help all")
+		T.ok(out:find(NS.languages[lang].ui.help_help, 1, true), lang .. ": descrizione nella lingua dell'interfaccia")
 		for _, spec in ipairs(Commands.list) do
 			if spec.usage then T.ok(out:find("/au " .. spec.usage, 1, true), lang .. ": elenca /au " .. spec.usage) end
 		end
 		T.ok(not out:find("/au diario", 1, true) and not out:find("/au aiuto", 1, true), lang .. ": nessun comando italiano")
-		T.eq(Cmd(""), out, lang .. ": /au senza argomenti mostra l'aiuto")
+		T.eq(Cmd(""), Cmd("help"), lang .. ": /au senza argomenti mostra l'aiuto")
 	end
 	NS.db.locale = "it"
 end)
@@ -157,13 +156,13 @@ T.run("#132: l'italiano è una traduzione: le chiavi mancanti ripiegano sull'ing
 	local saved = it.help_help
 	it.help_help = nil
 	NS.db.locale = "it"
-	T.eq(NS:L("help_help"), "this list", "chiave italiana mancante: testo inglese")
+	T.eq(NS:L("help_help"), en.help_help, "chiave italiana mancante: testo inglese")
 	T.eq(NS:L("chiave_inventata"), "chiave_inventata", "chiave sconosciuta: la chiave stessa")
 	it.help_help = saved
-	T.ok(NS:L("help_help") ~= "this list", "con la chiave: testo italiano")
+	T.ok(NS:L("help_help") ~= en.help_help, "con la chiave: testo italiano")
 	NS.db.locale = "xx"
 	T.eq(NS:Lang(), "en", "lingua sconosciuta: inglese")
-	T.eq(NS:L("help_help"), "this list", "lingua sconosciuta: testi inglesi")
+	T.eq(NS:L("help_help"), en.help_help, "lingua sconosciuta: testi inglesi")
 	NS.db.locale = nil
 	T.eq(NS:Lang(), "en", "nessuna lingua scelta: inglese")
 	NS.db.locale = "it"
@@ -310,6 +309,220 @@ T.run("/au pulsante: mostra o nasconde il pulsante 'pronuncia'", function()
 	Cmd("button")
 	T.eq(NS.db.ui.showButton, true, "showButton acceso")
 	T.ok(b.shown, "di nuovo visibile")
+end)
+
+---------------------------------------------------------------------------
+-- #175 (UI-05): "|" è il carattere di escape del client. Un "|" nudo in un testo stampato in chat o in una finestra
+-- mangia lettere (|r) o va a capo (|n): "/au narrator [history|reset|clear]" diventava "historyeset".
+-- Ammessi solo "||" (una barra visibile) e le coppie di colore "|cffxxxxxx ... |r".
+---------------------------------------------------------------------------
+local function BarePipe(s)
+	local i, open = 1, 0
+	while true do
+		local at = s:find("|", i, true)
+		if not at then return nil end
+		local nxt = s:sub(at + 1, at + 1)
+		if nxt == "|" then
+			i = at + 2
+		elseif s:find("^c%x%x%x%x%x%x%x%x", at + 1) then
+			open, i = open + 1, at + 10
+		elseif nxt == "r" and open > 0 then
+			open, i = open - 1, at + 2
+		else
+			return at
+		end
+	end
+end
+
+T.run("#175: nessun '|' nudo nelle righe dell'aiuto e nei testi dell'interfaccia", function()
+	Fresh()
+	-- il controllo stesso
+	T.ok(BarePipe("narrator [history|reset|clear]"), "trova history|reset")
+	T.ok(BarePipe("on | off") and BarePipe("note|n") and BarePipe("a |r"), "trova '| ', '|n' e un |r senza colore")
+	T.ok(not BarePipe("on || off") and not BarePipe("|cffffffff/s|r x") and not BarePipe("on / off"), "ammette || e i colori")
+	-- le righe della tabella dei comandi
+	for _, spec in ipairs(Commands.list) do
+		if spec.usage then T.ok(not BarePipe(spec.usage), "riga dell'aiuto senza '|' nudo: " .. spec.usage) end
+	end
+	-- ogni testo dell'interfaccia, in ogni lingua (anche soul_help, mem_help, rel_help, arc_cmd_help...)
+	local checked = 0
+	local function Walk(lang, path, v)
+		if type(v) == "string" then
+			checked = checked + 1
+			T.ok(not BarePipe(v), lang .. "." .. path .. ": nessun '|' nudo")
+		elseif type(v) == "table" then
+			for k, x in pairs(v) do Walk(lang, path .. "." .. tostring(k), x) end
+		end
+	end
+	for code, lang in pairs(NS.languages) do Walk(code, "ui", lang.ui) end
+	T.ok(checked > 500, "controllati " .. checked .. " testi")
+	for _, key in ipairs({ "soul_help", "mem_help", "rel_help", "arc_cmd_help", "rel_scope_usage", "other_trait_bad" }) do
+		T.ok(NS.languages.en.ui[key] and NS.languages.it.ui[key], key .. ": c'è in EN e IT")
+	end
+	-- e l'aiuto come arriva davvero in chat
+	for _, lang in ipairs({ "it", "en" }) do
+		NS.db.locale = lang
+		for _, arg in ipairs({ "", "all", "start", "narrator", "chat", "character", "diagnostics" }) do
+			for line in Cmd("help " .. arg):gmatch("[^\n]+") do
+				T.ok(not BarePipe(line), lang .. ": /au help " .. arg .. ": " .. line)
+			end
+		end
+	end
+	NS.db.locale = "it"
+end)
+
+---------------------------------------------------------------------------
+-- #189 (UI-19): /au help a gruppi, così una finestra di chat predefinita (circa dieci righe) li mostra per intero
+---------------------------------------------------------------------------
+local function Lines(out)
+	local n = 0
+	for _ in out:gmatch("[^\n]+") do n = n + 1 end
+	return n
+end
+
+T.run("#189: /au help stampa i gruppi, /au help <gruppo> le righe di un gruppo", function()
+	Fresh()
+	local groups = {}
+	for _, g in ipairs(Commands.GROUPS) do groups[g] = true end
+	T.eq(#Commands.GROUPS, 5, "cinque gruppi: Start, Narrator, Chat, Character, Diagnostics")
+	for _, spec in ipairs(Commands.list) do
+		if spec.usage then T.ok(groups[spec.group], spec.name .. ": ha un gruppo (" .. tostring(spec.group) .. ")") end
+		if spec.see then T.ok(Commands.byName[spec.see] and Commands.byName[spec.see].usage, spec.name .. ": rimanda a una riga") end
+		T.ok(spec.usage or spec.see, spec.name .. ": compare nell'aiuto, da solo o con un altro comando")
+	end
+	for _, lang in ipairs({ "it", "en" }) do
+		NS.db.locale = lang
+		local out = Cmd("help")
+		T.ok(Lines(out) <= 10, lang .. ": /au help sta in una finestra di chat (" .. Lines(out) .. " righe)")
+		for _, g in ipairs(Commands.GROUPS) do
+			T.ok(out:find("/au help " .. g .. " - ", 1, true), lang .. ": il gruppo " .. g .. " è elencato")
+		end
+		T.ok(out:find("/au help all - ", 1, true), lang .. ": e /au help all")
+		T.ok(not out:find("/au debug", 1, true), lang .. ": la diagnostica non è nella prima schermata")
+		local seen = 0
+		for _, g in ipairs(Commands.GROUPS) do
+			local text = Cmd("help " .. g)
+			T.ok(Lines(text) >= 3 and Lines(text) <= 10, lang .. ": /au help " .. g .. " sta in una finestra (" .. Lines(text) .. " righe)")
+			T.ok(text:find(NS:L("help_grp_" .. g), 1, true), lang .. ": il titolo nomina il gruppo " .. g)
+			for _, spec in ipairs(Commands.list) do
+				if spec.usage and spec.group == g then
+					seen = seen + 1
+					T.ok(text:find("/au " .. spec.usage, 1, true), lang .. ": " .. g .. " elenca /au " .. spec.name)
+				end
+			end
+		end
+		local all = Cmd("help all")
+		T.eq(Lines(all), seen + 1, lang .. ": /au help all = tutte le righe dei gruppi, più il titolo")
+		T.ok(all:find("/au wizard", 1, true) < all:find("/au debug", 1, true), lang .. ": in /au help all la diagnostica viene in fondo")
+		-- un comando: la sua riga; un comando senza riga propria: quella del comando a cui rimanda
+		local one = Cmd("help journal")
+		T.eq(Lines(one), 1, lang .. ": /au help journal è una riga")
+		T.ok(one:find("/au journal [list", 1, true), lang .. ": ed è quella di /au journal")
+		T.ok(Cmd("help off"):find("/au on / off", 1, true), lang .. ": /au help off mostra /au on / off")
+		T.ok(Cmd("help farewell"):find("/au greet / farewell", 1, true), lang .. ": /au help farewell mostra gli eventi a mano")
+		T.eq(Cmd("help CHAT"), Cmd("help chat"), lang .. ": maiuscole e minuscole uguali")
+		-- una parola sconosciuta: lo dice, poi i gruppi
+		local unknown = Cmd("help boh")
+		T.ok(unknown:find("boh", 1, true) and unknown:find("/au help start", 1, true), lang .. ": parola sconosciuta: messaggio e gruppi")
+		-- le parole dei gruppi sono inglesi in ogni lingua: in italiano /au help personaggio non è un gruppo
+		T.ok(Cmd("help personaggio"):find("/au help character", 1, true), lang .. ": i gruppi si scrivono in inglese")
+	end
+	NS.db.locale = "it"
+	T.ok(Cmd("help chat"):find("Chat (i nomi", 1, true), "it: il titolo del gruppo è in italiano")
+	T.ok(NS.Keywords.registry.help_groups.diagnostics, "le parole dei gruppi sono registrate (controllo solo inglese)")
+end)
+
+---------------------------------------------------------------------------
+-- #189 (UI-19): il pulsante "pronuncia": posto predefinito, suggerimento fedele alla modalità, opzione "apre l'editor"
+---------------------------------------------------------------------------
+T.run("#189: il pulsante 'pronuncia' dice cosa farà il clic, e può aprire l'editor invece di inviare", function()
+	Fresh()
+	local Speak = NS.SpeakButton
+	local b
+	for _, w in ipairs(FindWidgets(function(x) return x.name == "AzerothUnspokenButton" end)) do b = w end
+	T.ok(b ~= nil, "il pulsante esiste")
+	-- non più al centro dello schermo, sopra il personaggio: accanto al riquadro del narratore
+	local d = Speak.DEFAULT_POS
+	T.ok(d[1] ~= "CENTER" and d[2] == "BOTTOM" and d[3] >= 220 and d[4] == 240, "posto predefinito accanto al narratore")
+	T.eq(NS.db.ui.buttonOpensEditor, false, "l'opzione 'apre l'editor' è spenta di serie")
+
+	local function Tip()
+		local out = {}
+		for _, line in ipairs(Speak:TooltipLines()) do table.insert(out, line[1]) end
+		return table.concat(out, "\n")
+	end
+	NS.db.locale = "en"
+	-- modalità privata: non si invia mai nulla, e il suggerimento non lo promette
+	NS.db.chat.mode = "PRIVATE"
+	local tip = Tip()
+	T.ok(tip:find(NS:L("button_idle_private"), 1, true) and tip:find(NS:L("button_hint_private"), 1, true), "privata: " .. tip)
+	T.ok(not tip:lower():find("speak", 1, true) and not tip:lower():find("send", 1, true), "privata: né 'speak' né 'send'")
+	-- conferma, senza proposta: propone, non invia
+	NS.db.chat.mode = "CONFIRM_TO_SEND"
+	T.ok(Tip():find(NS:L("button_hint_new"), 1, true), "conferma senza proposta: propone una frase")
+	-- conferma, con una proposta: il clic invia
+	NS.Gateway:Propose({ text = "Per l'onore dei miei avi.", form = "say", event = "battle", speaker = "character" },
+		{ player = "Thalia" }, {})
+	T.ok(NS.Gateway:GetPending() ~= nil, "una proposta in attesa")
+	tip = Tip()
+	T.ok(tip:find("Per l'onore dei miei avi.", 1, true) and tip:find(NS:L("button_hint_send"), 1, true), "conferma: " .. tip)
+	-- anteprima: il primo clic apre l'editor
+	NS.db.chat.mode = "PREVIEW"
+	T.ok(Tip():find(NS:L("button_hint_review"), 1, true), "anteprima: apre l'editor, poi si invia")
+	-- con l'opzione, il clic apre l'editor e non invia
+	NS.db.chat.mode = "CONFIRM_TO_SEND"
+	T.ok(Cmd("button editor on"):find(NS:L("button_editor_on"), 1, true), "/au button editor on lo conferma")
+	T.eq(NS.db.ui.buttonOpensEditor, true, "opzione accesa")
+	T.ok(Tip():find(NS:L("button_hint_editor"), 1, true), "il suggerimento lo dice")
+	SENT = {}
+	HW = true
+	b.scripts.OnClick(b)
+	HW = false
+	T.ok(NS.Narrator:IsEditing(), "il clic apre l'editor")
+	T.ok(NS.Gateway:GetPending() ~= nil, "la proposta resta in attesa")
+	for _, s in ipairs(SENT) do T.ok(s:find("^PRINT:"), "nulla in chat: " .. s) end
+	NS.Narrator:CloseEditor()
+	-- il tasto e /au speak inviano comunque
+	HW = true
+	AzerothUnspoken_Speak()
+	HW = false
+	T.ok(NS.Gateway:GetPending() == nil, "il tasto invia la proposta")
+	local public = 0
+	for _, s in ipairs(SENT) do if not s:find("^PRINT:") then public = public + 1 end end
+	T.eq(public, 1, "una riga in chat, dal tasto")
+	-- senza opzione, il clic invia
+	Cmd("button editor off")
+	T.eq(NS.db.ui.buttonOpensEditor, false, "opzione spenta")
+	ADVANCE(NS.db.chat.floodSeconds + 1)   -- fuori dal limite anti-flood dell'invio di prima
+	NS.Gateway:Propose({ text = "Ancora una volta.", form = "say", event = "battle", speaker = "character" },
+		{ player = "Thalia" }, {})
+	SENT = {}
+	HW = true
+	b.scripts.OnClick(b)
+	HW = false
+	T.ok(NS.Gateway:GetPending() == nil and not NS.Narrator:IsEditing(), "il clic invia")
+	-- /au button editor senza valore cambia stato; un valore sconosciuto non cambia nulla
+	Cmd("button editor")
+	T.eq(NS.db.ui.buttonOpensEditor, true, "editor senza valore: acceso")
+	T.ok(Cmd("button editor boh"):find("boh", 1, true), "valore sconosciuto: messaggio")
+	T.eq(NS.db.ui.buttonOpensEditor, true, "e nessun cambio")
+	Cmd("button editor off")
+	-- on, off, reset
+	Cmd("button off")
+	T.ok(not NS.db.ui.showButton and not b.shown, "/au button off lo nasconde")
+	Cmd("button off")
+	T.ok(not NS.db.ui.showButton, "di nuovo off: resta nascosto")
+	Cmd("button on")
+	T.ok(NS.db.ui.showButton and b.shown, "/au button on lo mostra")
+	NS.db.ui.buttonPos = { "TOPLEFT", "TOPLEFT", 10, -10 }
+	NS.db.ui.showButton = false
+	T.ok(Cmd("button reset"):find(NS:L("button_reset"), 1, true), "/au button reset lo conferma")
+	T.ok(NS.db.ui.buttonPos == nil and NS.db.ui.showButton and b.shown, "reset: posto predefinito, e visibile")
+	T.ok(Cmd("button boh"):find("boh", 1, true) and NS.db.ui.showButton, "argomento sconosciuto: messaggio, nessun cambio")
+	T.ok(NS.Keywords.registry.button.editor, "le parole di /au button sono registrate")
+	NS.db.chat.mode = "PRIVATE"
+	NS.Gateway:Discard()
+	NS.db.locale = "it"
 end)
 
 -- ritorno in vita da fantasma (il percorso più comune in Classic: rilasciare lo spirito e tornare al corpo)

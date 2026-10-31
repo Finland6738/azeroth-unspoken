@@ -96,7 +96,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 
 | Comando | Effetto |
 |---|---|
-| `/au help` | elenco dei comandi (anche `/au` da solo) |
+| `/au help [group]` | i gruppi di comandi (anche `/au` da solo); `/au help all` elenca tutti i comandi |
 | `/au on` · `/au off` | accende o spegne le frasi automatiche |
 | `/au pause` | pausa immediata del narratore, solo per la sessione; di nuovo per riprendere |
 | `/au language [it\|en]` | lingua delle frasi e dell'interfaccia (forma breve `/au lang`); la predefinita è l'inglese |
@@ -116,7 +116,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au chance [<event> <0-100>]` | probabilità di un evento; senza argomenti elenca i valori |
 | `/au cooldown <seconds>` | pausa minima tra due frasi automatiche |
 | `/au ignore <spell>` | un incantesimo non produce più frasi; senza argomenti elenca quelli ignorati |
-| `/au button` | mostra o nasconde il pulsante "pronuncia" |
+| `/au button [on/off/reset/editor on/off]` | mostra, nasconde o rimette a posto il pulsante "pronuncia"; `editor on`: il clic apre l'editor invece di inviare |
 | `/au soul` | apre la finestra del carattere del personaggio. Anche `list`, `neutral`, `archetype <id>`, `trp3 on\|off`, `<trait> <0-100>` (`idealism`, `concreteness`, `optimism`, `altruism`, `stoicism`, `ambition`, `spirituality`, `patriotism`, `curiosity`, `vengefulness`, `irony`; `voice`; `-` toglie la scelta) e `avoid <topic>` |
 | `/au emotion` | l'umore del personaggio; `on`, `off`, `reset` |
 | `/au journal` | apre il diario del personaggio (ricordi, luoghi, flag, sessione). Anche `list`, `places`, `flag <name>`, `export`, `pin <n>`, `delete <n>`, `forget <place>` e `reset [all\|memories\|ordinary\|places\|flags]` (chiede conferma) |

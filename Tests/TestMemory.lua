@@ -1455,9 +1455,9 @@ T.run("/au debug e impostazioni", function()
 	local out = Run("debug")
 	T.ok(out:find("Living Memory: ", 1, true), "/au debug mostra la memoria")
 	T.ok(out:find("places", 1, true) and out:find("in Elwynn Forest", 1, true), "con luoghi e zona attuale: " .. out)
-	T.ok(Run("help"):find("/au journal", 1, true), "l'aiuto elenca /au journal")
+	T.ok(Run("help all"):find("/au journal", 1, true), "l'aiuto elenca /au journal")
 	NS.db.locale = "en"
-	T.ok(Run("help"):find("/au journal", 1, true), "l'aiuto inglese elenca /au journal")
+	T.ok(Run("help all"):find("/au journal", 1, true), "l'aiuto inglese elenca /au journal")
 	NS.db.locale = "it"
 	-- il modulo memoria è ormai attivo nelle impostazioni
 	for _, w in ipairs(FindWidgets(function(x) return rawget(x, "Refresh") ~= nil end)) do w:Refresh() end
