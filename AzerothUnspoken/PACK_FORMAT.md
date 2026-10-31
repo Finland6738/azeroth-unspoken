@@ -1,5 +1,7 @@
 # Azeroth Unspoken: phrase pack format (schema v2)
 
+> **Licence:** this guide and its examples are under the [MIT licence](../AzerothUnspoken_Example/LICENSE): copy them freely to start your pack. A pack that uses only the interface described here may have any licence ([LICENSING.md](../LICENSING.md)); the phrases of Azeroth Unspoken itself are not covered and may not be copied ([LICENSE-CONTENT.md](../LICENSE-CONTENT.md)).
+
 The engine (`Core\`, `Engine\`, `Systems\`, `Integration\`, `UI\`) contains no texts.
 All phrases live in packs: the base rules in `Data\`, their texts in one folder per language
 (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`), the lines bound to one continent in the regional folders, and

@@ -5,5 +5,6 @@
 ## Version: 0.1.0
 ## Dependencies: AzerothUnspoken
 ## X-Category: Roleplay
+## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
 
 Versi.lua

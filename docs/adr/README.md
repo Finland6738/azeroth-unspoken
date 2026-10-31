@@ -41,10 +41,11 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0031](0031-intensity-traits-emotional-state-and-the-tone-of-a-return.md) | Intensity traits, an emotional state with decay, and the tone of a return | accepted |
 | [0032](0032-monologues-of-whole-phrases-and-composite-situations.md) | Monologues of whole phrases, and composite situations of the Director | accepted |
 | [0033](0033-keys-shared-between-packs-refused-unless-overridden.md) | Keys shared between packs: refused, unless the pack says `override = true` | accepted |
+| [0034](0034-licensing-gpl-code-reserved-phrases.md) | Licensing: GPL code, reserved phrases, MIT pack template, CC BY documentation | accepted |
 
 ## Pending decisions
 
-- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0034).
+None at the moment.
 
 ## How to write a new one
 
