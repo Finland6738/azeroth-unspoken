@@ -38,6 +38,34 @@ Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-06, UI
 - **Docs:** [The Narrator](docs/wiki/The-Narrator.md), [Settings](docs/wiki/Settings.md), [Chat Gateway](docs/wiki/Chat-Gateway.md) and [ARCHITECTURE.md](docs/ARCHITECTURE.md). The narrator, proposal and settings mockups are regenerated from the new code.
 - **To check in game (G1):** the hover pause with a real mouse, the fade and "reduce motion", the **II** glyph, the label length in Italian with the countdown, and the settings canvas height with fourteen rows.
 
+### U-relations: the Relationships window fits the screen and shows its list (#171, #172, #184, parts of #179 and #180)
+
+Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-01, UI-02, UI-14, and the relationships parts of UI-09 and UI-10). Nothing here is tested in the game client yet.
+
+- **Fixed: the list rows hid their own text (#171).** Each row was a red panel button drawn over the cells. The rows are now plain buttons that own their cells, with a stripe every other row and a highlight under the mouse. A cell that is too long ends with "...", and the row's tooltip shows the whole row.
+- **Fixed: the window was taller than the screen (#172).** It was 758 units, and 914 for a player's detail, against 768 at UI scale 1. Every view is now 660 units tall and 720 wide:
+  - the detail has two columns (axes, label and feelings on the left; how you see them, note and tags on the right), with the observed block across the window and the person's buttons in the footer;
+  - the seven options moved to a new **Options** tab, next to **Relationships** and **People met**.
+- **Fixed: the label, note and tags boxes lost text or wrote it on the wrong person (#184).**
+  - They now save when they lose focus: Enter, another box, another tab, Back, Close.
+  - A draft always goes to the person it was typed for, even when the journal opens someone else.
+  - Leaving a box untouched writes nothing, so an empty label box no longer clears a label chosen from the list.
+  - Esc puts back the saved text.
+  - The search box gives the keyboard back on Enter and when the view changes.
+- **Fixed: the shared-list warning grew over the detail's buttons (#179, relationships part).** It now appears in the Options tab, under the privacy note, laid out top-down. The confirmation dialog itself is for wave 2 (#178).
+- **Fixed: labels wider than their buttons (#180, relationships part).**
+  - The trait buttons are 332 units wide, the label and first feeling buttons 244.
+  - The tabs, filters, "Add to the list" and the footer buttons are sized from their text with `GetStringWidth()`.
+  - The Type column is 76 units.
+  - The label button reads "Chosen: friend" or "Automatic: acquaintance"; "click: change" moved to its tooltip.
+- **Added:** strings `rel_tab_options`, `rel_options_hint`, `rel_row_tip`, `rel_custom_tip` and `rel_edit_tip`, in English and Italian.
+- **Tests:** `Tests/TestRelations.lua` checks four things in Italian and English:
+  - every view is at most 680 units tall;
+  - no two widgets overlap and no label is wider than its button;
+  - the longest trait, label, feeling and option values fit;
+  - the cells belong to their row, and the boxes save on focus loss to the right person.
+- **Docs:** [Relationships](docs/wiki/Relationships.md) describes the new layout and the Options tab. The relationships and consent mockups are regenerated from the new layout, with a new `relations-options.png`.
+
 ### Licensing (issue #2)
 
 The project now has a licence, chosen by the owner ([ADR 0034](docs/adr/0034-licensing-gpl-code-reserved-phrases.md)).

@@ -2,6 +2,8 @@
 
 Each function returns the HTML of one window placed in a stage. Coordinates: WoW TOPLEFT (x, y) -> left x, top -y.
 """
+import re
+
 from mockkit import VOICE, VOICE_COLOR, btn, edit, fs, frame, sel, slider, wow, tooltip
 
 FRAME_BG = (0.05, 0.04, 0.09, 0.95)      # W.Background(frame, 0.05, 0.04, 0.09, 0.95): journal, relations, profile
@@ -290,75 +292,99 @@ def export_window(left, top, title, text):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Relationships (UI/RelationsFrame.lua): 640 x 758 (list), 914 (player detail)
+# Relationships (UI/RelationsFrame.lua): 720 x 660 in every view (U1: #171, #172, #179, #180)
 # ---------------------------------------------------------------------------------------------------------------
 REL_OPTIONS = [("Automatic NPCs", "on"), ("Suggest people", "on"), ("Register by itself", "off"),
                ("Attraction axis", "off"), ("Recognise on target", "off"), ("Recognise nearby", "off"),
                ("Share with the account", "off")]
 REL_PRIVACY = "No chat or whisper content is read or saved. Players join the list only through an action of yours."
+REL_OPTIONS_HINT = "Hover over an option to read what it does. Nothing here reads chat or whispers."
 REL_SHARE_WARNING = ("Shared list. Your choices about people (axes, labels, feelings, notes, tags) would be kept in the account "
                      "and ALL your characters would share the same opinions of them: Privacy: anyone using this account sees "
                      "them, and the file may travel with your saved variables. Role play: a character would feel what another "
                      "one chose. Observations (when and where each character met someone) stay with each character. Choices a "
                      "character already holds stay its own until you share them.")
+REL_W, REL_H, REL_INNER = 720, 660, 688
 
 
-def relations(left, top, view, height=758, rows=None, cands=None, detail=None, share_armed=False, options=None,
-              hover_option=None, candidates=3):
+def fit(text, lo, hi):
+    """The width the addon gives a button: its label (about 6.3 units a character) plus 24, between lo and hi."""
+    plain = re.sub(r"\|c[0-9a-fA-F]{8}|\|r", "", text)
+    return max(lo, min(hi, round(len(plain) * 6.3) + 24))
+
+
+def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=False, options=None,
+              hover_option=None, candidates=3, hover_row=None):
     out = [fs("Relationships", "gfnl", left=16, top=12),
            fs("How you stand with the people you meet: NPCs are worked out automatically (dialogs, quests, merchants), "
               "players are chosen by you. There is never any chat or whisper text here, and nothing goes online.",
-              "gfhs", left=16, top=36, width=608),
-           btn(sel("Relationships", view != "people"), 150, 24, left=16, top=76),
-           btn(sel(f"People met ({candidates})", view == "people"), 190, 24, left=170, top=76)]
-    top_row, row_h = 162, 26
+              "gfhs", left=16, top=34, width=REL_INNER)]
+    x = 16
+    for text, on in ((sel("Relationships", view in ("list", "detail")), None),
+                     (sel(f"People met ({candidates})", view == "people"), None),
+                     (sel("Options", view == "options"), None)):
+        w = fit(text, 110, 240)
+        out.append(btn(text, w, 24, left=x, top=84))
+        x += w + 4
+    top_row, row_h, pager = 168, 26, 500
     if view == "list":
-        out += [btn("All", 130, 22, left=16, top=110), btn("Label: any", 190, 22, left=152, top=110),
-                fs("Search", "gfn", left=356, top=114, width=60), edit("", 190, 22, left=420, top=110)]
-        cols = [("Name", 16, 140), ("Type", 160, 54), ("Label", 218, 112), ("Disposition", 334, 112),
-                ("Last seen v", 450, 84), ("Encounters", 538, 86)]
-        for name, x, w in cols:
-            out.append(btn(name, w, 20, left=x, top=138))
+        out += [btn("All", fit("All", 100, 130), 22, left=16, top=116),
+                btn("Label: any", fit("Label: any", 150, 280), 22, left=152, top=116),
+                fs("Search", "gfn", left=436, top=120, width=60, extra=";text-align:right"),
+                edit("", 200, 22, left=504, top=116)]
+        cols = [("Name", 16, 150), ("Type", 170, 76), ("Label", 250, 124), ("Disposition", 378, 128),
+                ("Last seen v", 510, 92), ("Encounters", 606, 98)]
+        for name, cx, w in cols:
+            out.append(btn(name, w - 2, 20, left=cx, top=144))
         for i, r in enumerate((rows or [])[:12]):
             y = top_row + i * row_h
-            # the cell texts are regions of the window, the row is a child button: the client draws the child frame
-            # above every layer of its parent, so the opaque button is predicted to hide the texts (review UI-01)
-            for (name, x, w), cell in zip(cols, r):
-                out.append(fs(cell, "gfh", mode="trunc", left=x + 4, top=y + 6, width=w - 8))
-            out.append(btn("", 608, row_h - 2, left=16, top=y))
+            # a plain row button (no panel art) that owns its cells; a light stripe every other row, a highlight on hover
+            shade = "rgba(179,140,255,0.18)" if hover_row == i else ("rgba(255,255,255,0.04)" if i % 2 else "transparent")
+            out.append(f'<div class="abs" style="left:16px;top:{y}px;width:{REL_INNER}px;height:{row_h - 2}px;'
+                       f'background:{shade}"></div>')
+            for (name, cx, w), cell in zip(cols, r):
+                out.append(fs(cell, "gfh", mode="trunc", left=cx + 4, top=y + 6, width=w - 8))
         if not rows:
-            out.append(fs("|cff9d9d9dNo relationships yet.|r", "gfh", left=20, top=top_row + 6, width=132, mode="trunc"))
+            out.append(fs("|cff9d9d9dNo relationships yet.|r", "gfh", left=20, top=top_row + 6, width=REL_INNER - 8,
+                          mode="trunc"))
     elif view == "people":
-        out += [fs("Add a player", "gfn", left=16, top=114, width=120), edit("", 250, 22, left=140, top=110),
-                btn("Add to the list", 130, 22, left=398, top=110),
+        out += [fs("Add a player", "gfn", left=16, top=120, width=120), edit("", 250, 22, left=140, top=116),
+                btn("Add to the list", fit("Add to the list", 130, 220), 22, left=398, top=116),
                 fs("The addon suggests people you meet (group, trades, Total RP 3 profiles, private replies). No one joins "
-                   "the list without your click on +. Suggestions last only for this session.", "gfhs", left=16, top=138,
-                   width=608)]
+                   "the list without your click on +. Suggestions last only for this session.", "gfhs", left=16, top=146,
+                   width=REL_INNER)]
         for i, (name, src) in enumerate(cands or []):
-            y = top_row + i * row_h
-            out.append(fs(f"{name}  |cff9d9d9d{src}|r", "gfh", left=20, top=y + 6, width=480))
-            out.append(btn("+", 28, 22, left=548, top=y))
-            out.append(btn("x", 28, 22, left=580, top=y))
+            y = 178 + i * row_h
+            out.append(fs(f"{name}  |cff9d9d9d{src}|r", "gfh", left=20, top=y + 6, width=600, mode="trunc"))
+            out.append(btn("+", 28, 22, left=644, top=y))
+            out.append(btn("x", 28, 22, left=676, top=y))
         if not cands:
-            out.append(fs("|cff9d9d9dNo suggestions this session.|r", "gfh", left=20, top=top_row + 6, width=480))
+            out.append(fs("|cff9d9d9dNo suggestions this session.|r", "gfh", left=20, top=184, width=600))
+    elif view == "options":
+        col_w = (REL_INNER - 16) // 2
+        for i, (name, state) in enumerate(options or REL_OPTIONS):
+            label = "Confirm: share" if (share_armed and name.startswith("Share")) else f"{name}: {state}"
+            out.append(btn(label, col_w, 24, left=16 + (i % 2) * (col_w + 16), top=116 + (i // 2) * 30,
+                           state="hover" if hover_option == i else ""))
+        # top-down: the hint, the privacy note, then (while it waits for the second click) the shared-list warning
+        out += [fs(REL_OPTIONS_HINT, "gfhs", left=16, top=244, width=REL_INNER),
+                fs(REL_PRIVACY, "gfhs", left=16, top=268, width=REL_INNER)]
+        if share_armed:
+            out.append(fs(REL_SHARE_WARNING, "gfh", left=16, top=294, width=REL_INNER))
     elif view == "detail":
         out += detail_widgets(detail)
-    if view != "detail":
-        py = top_row + 12 * row_h + 6
-        out += [btn("<", 28, 24, left=16, top=py, state="disabled"),
-                fs("page 1 of 1", "gfn", left=52, top=py + 4, width=140),
-                btn(">", 28, 24, left=196, top=py, state="disabled"),
-                fs("relationships: 9 NPCs, 4 players, 3 suggested people.", "gfhs", left=300, top=py + 4, width=324,
+    if view in ("list", "people"):
+        out += [btn("<", 28, 24, left=16, top=pager, state="disabled"),
+                fs("page 1 of 1", "gfn", left=52, top=pager + 4, width=140),
+                btn(">", 28, 24, left=196, top=pager, state="disabled"),
+                fs("relationships: 9 NPCs, 4 players, 3 suggested people.", "gfhs", left=240, top=pager + 4, width=464,
                    extra=";text-align:right")]
-    opts = options or REL_OPTIONS
-    for i, (name, state) in enumerate(opts):
-        label = "Confirm: share" if (share_armed and name.startswith("Share")) else f"{name}: {state}"
-        out.append(btn(label, 200, 22, left=16 + (i % 3) * 204, bottom=104 - (i // 3) * 28,
-                       state="hover" if hover_option == i else ""))
-    out.append(fs(REL_SHARE_WARNING if share_armed else REL_PRIVACY, "gfhs", left=16, bottom=132, width=608))
-    out += [btn("Export", 110, 24, left=16, bottom=16), btn("Forget everything", 190, 24, left=136, bottom=16),
-            btn("Close", 110, 24, right=16, bottom=16)]
-    return frame("".join(out), bg=FRAME_BG, left=left, top=top, width=640, height=height)
+    if view != "detail":
+        ew = fit("Export", 100, 160)
+        out += [btn("Export", ew, 24, left=16, bottom=16),
+                btn("Forget everything", fit("Forget everything", 150, 220), 24, left=16 + ew + 8, bottom=16)]
+    out.append(btn("Close", fit("Close", 100, 160), 24, right=16, bottom=16))
+    return frame("".join(out), bg=FRAME_BG, left=left, top=top, width=REL_W, height=REL_H)
 
 
 AXES = [("Familiarity", 0, 100), ("Trust", -100, 100), ("Respect", -100, 100), ("Affection", -100, 100),
@@ -367,44 +393,45 @@ AXES = [("Familiarity", 0, 100), ("Trust", -100, 100), ("Respect", -100, 100), (
 
 def detail_widgets(d):
     is_player = d["kind"] == "player"
-    out = [fs(f"{d['name']}  |cff9d9d9d({'Player' if is_player else 'NPC'})|r", "gfnl", left=16, top=108, width=608),
-           fs(f"Label: {d['label']}   Disposition: {d['disposition']}", "gfh", left=16, top=132, width=608),
-           fs("What you chose", "gfn", left=16, top=156, width=608)]
+    out = [fs(f"{d['name']}  |cff9d9d9d({'Player' if is_player else 'NPC'})|r", "gfnl", left=16, top=114, width=400),
+           fs(f"Label: {d['label']}   Disposition: {d['disposition']}", "gfh", left=16, top=138, width=REL_INNER)]
+    if d.get("scope"):
+        out.append(btn(d["scope"], fit(d["scope"], 140, 280), 24, right=16, top=110))
+    # left column: the axes, the label and the feelings
+    out.append(fs("What you chose", "gfn", left=16, top=162, width=340))
     for i, ((name, lo, hi), v) in enumerate(zip(AXES, d["axes"])):
-        y = 176 + i * 26
-        out += [fs(name, "gfn", left=16, top=y + 5, width=112), slider(v, lo, hi, 300, left=134, top=y + 2),
-                fs(str(v), "gfh", left=444, top=y + 5, width=44, extra=";text-align:right"),
-                btn("-", 24, 22, left=496, top=y), btn("+", 24, 22, left=524, top=y)]
-    y = 176 + 7 * 26 + 4      # rows are built for all seven axes; attraction (off) is hidden but keeps its room
-    out += [fs("Label", "gfn", left=16, top=y + 5, width=112), btn(d["label_btn"], 200, 24, left=134, top=y),
-            edit(d.get("custom", ""), 200, 22, left=346, top=y + 1)]
-    y += 30
-    out += [fs("Feeling", "gfn", left=16, top=y + 5, width=112), btn(f"Feeling: {d['f1']}", 150, 24, left=134, top=y),
-            btn(f"and: {d['f2']}", 150, 24, left=288, top=y), btn("Typical axes", 150, 24, left=442, top=y)]
-    y += 30
-    out += [fs("Note", "gfn", left=16, top=y + 5, width=112), edit(d["note"], 480, 22, left=134, top=y + 1)]
-    y += 30
-    out += [fs("Tags", "gfn", left=16, top=y + 5, width=112), edit(d["tags"], 480, 22, left=134, top=y + 1)]
-    y += 32
-    out.append(fs("How you see them (shapes the lines; 'unknown' leaves it to the addon)", "gfn", left=16, top=y + 5,
-                  width=608))
-    y += 22
-    for r, ids in enumerate(d["traits"]):
-        for c, label in enumerate(ids):
-            out.append(btn(label, 196, 24, left=16 + c * 204, top=y + r * 28))
-    y += 2 * 28 + 6
+        y = 182 + i * 26
+        out += [fs(name, "gfn", left=16, top=y + 5, width=92, mode="trunc"), slider(v, lo, hi, 150, left=112, top=y + 2),
+                fs(str(v), "gfh", left=266, top=y + 5, width=34, extra=";text-align:right"),
+                btn("-", 24, 22, left=306, top=y), btn("+", 24, 22, left=332, top=y)]
+    y = 182 + 7 * 26 + 4      # rows are built for all seven axes; attraction (off) is hidden but keeps its room
+    out += [fs("Label", "gfn", left=16, top=y + 5, width=92), btn(d["label_btn"], 244, 24, left=112, top=y),
+            edit(d.get("custom", ""), 244, 22, left=112, top=y + 28)]
+    y += 58
+    out += [fs("Feeling", "gfn", left=16, top=y + 5, width=92), btn(f"Feeling: {d['f1']}", 244, 24, left=112, top=y),
+            btn(f"and: {d['f2']}", 120, 24, left=112, top=y + 28), btn("Typical axes", 120, 24, left=236, top=y + 28)]
+    # right column: how you see them, then the note and the tags
+    out.append(fs("How you see them (shapes the lines; 'unknown' leaves it to the addon)", "gfn", left=372, top=162,
+                  width=332))
+    y = 196
+    for label in d["traits"]:
+        out.append(btn(label, 332, 24, left=372, top=y))
+        y += 28
+    y += 6
+    out += [fs("Note", "gfn", left=372, top=y, width=332), edit(d["note"], 332, 22, left=372, top=y + 18),
+            fs("Tags", "gfn", left=372, top=y + 48, width=332), edit(d["tags"], 332, 22, left=372, top=y + 66)]
+    # the observed block across the window (players only), then the actions in the footer
+    x = 16 + fit("Back to the list", 120, 180) + 8
+    out.append(btn("Back to the list", fit("Back to the list", 120, 180), 24, left=16, bottom=16))
     if is_player:
-        out += [fs("What the addon observed", "gfn", left=16, top=y + 2, width=608),
-                fs(d["seen_line"], "gfhs", left=16, top=y + 22, width=608),
-                fs(d["seen_facts"], "gfhs", left=16, top=y + 52, width=608)]
-        y += 124
-        out += [btn(d.get("forget", "Forget observations"), 200, 24, left=16, top=y),
-                btn(d.get("delete", "Remove person"), 200, 24, left=226, top=y),
-                btn("Back to the list", 140, 24, left=436, top=y)]
-        if d.get("scope"):
-            out.append(btn(d["scope"], 330, 24, left=16, top=y + 32))
-    else:
-        out += [btn("Remove person", 200, 24, left=16, top=y), btn("Back to the list", 140, 24, left=226, top=y)]
+        out += [fs("What the addon observed", "gfn", left=16, top=490, width=REL_INNER),
+                fs(d["seen_line"], "gfhs", left=16, top=510, width=340),
+                fs(d["seen_facts"], "gfhs", left=372, top=510, width=332)]
+        forget = d.get("forget", "Forget observations")
+        out.append(btn(forget, fit(forget, 150, 210), 24, left=x, bottom=16))
+        x += fit(forget, 150, 210) + 8
+    delete = d.get("delete", "Remove person")
+    out.append(btn(delete, fit(delete, 150, 210), 24, left=x, bottom=16))
     return out
 
 
