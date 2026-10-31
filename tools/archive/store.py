@@ -7,6 +7,10 @@ See docs/adr/0027-sqlite-authoring-archive-and-exporter.md. In short:
   authors, the reviews and the changelog, as text that diffs well in a pull request;
 - the SQLite file is generated from both (`build`) and is never committed;
 - `export` writes the pack folders from the **approved** intentions and moves them out of the overlay.
+
+The arc definitions, the dialogue scripts and the journal texts of the arcs (#143) are read from the folders into the
+tables `arc`, `script` and `arc_text` and written back from them; they are approved content of the folders (they do not
+go through the review flow or the overlay yet).
 """
 import csv
 import datetime
@@ -19,6 +23,7 @@ import sqlite3
 
 import lualit
 import packfiles
+import structures
 from lualit import Unsupported
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -79,7 +84,7 @@ def connect(path=":memory:"):
 def create_schema(con):
     with open(os.path.join(HERE, "schema.sql"), encoding="utf-8") as f:
         con.executescript(f.read())
-    con.execute("INSERT INTO meta VALUES ('schema', '1')")
+    con.execute("INSERT INTO meta VALUES ('schema', '2')")
 
 
 def now():
@@ -206,6 +211,26 @@ def reindex(con, ids=None):
     for table, col in (("event", "events"), ("register", "styles"), ("depth", "depth"), ("tag", "tags"), ("motif", "motifs")):
         con.executemany("INSERT OR IGNORE INTO intention_%s VALUES (?,?,?)" % table,
                         [(r["id"], i, str(v)) for r in rows for i, v in enumerate(jload(r[col]) or [])])
+    if ids is None:
+        reindex_structures(con)
+
+
+def reindex_structures(con):
+    """Rebuilds the search indexes of the arcs (`arc_step`) and the scripts (`script_node`, `script_reply`)."""
+    for t in ("arc_step", "script_node", "script_reply"):
+        con.execute("DELETE FROM " + t)
+    for r in con.execute("SELECT id, definition FROM arc").fetchall():
+        for i, st in enumerate(jload(r["definition"]).get("steps") or []):
+            if isinstance(st, dict):
+                con.execute("INSERT INTO arc_step VALUES (?,?,?,?,?,?,?)", (r["id"], i, st.get("from"), st.get("to"),
+                            jdump(st.get("on")), st.get("wait"), st.get("choose")))
+    for r in con.execute("SELECT key, definition FROM script").fetchall():
+        d = jload(r["definition"])
+        for n, node in (d.get("nodes") or {}).items():
+            con.execute("INSERT INTO script_node VALUES (?,?,?,?)", (r["key"], n, node.get("event"), jdump(node.get("choices"))))
+        for rid, c in (d.get("choices") or {}).items():
+            con.execute("INSERT INTO script_reply VALUES (?,?,?,?,?,?)", (r["key"], rid, c.get("go"), c.get("flag"),
+                        c.get("relation"), jdump(c.get("label"))))
 
 
 def get_rule(con, id):
@@ -243,6 +268,28 @@ def get_variants(con, id, lang):
     return out
 
 
+def get_arc(con, id):
+    """The definition of an arc as data (what `NS:RegisterArcs` takes)."""
+    r = con.execute("SELECT definition FROM arc WHERE id = ?", (id,)).fetchone()
+    if r is None:
+        raise ArchiveError("unknown arc: %s" % id)
+    return jload(r["definition"])
+
+
+def get_arc_text(con, id, lang):
+    """The journal texts of an arc in a language (what `NS:AddArcTexts` takes), or None."""
+    r = con.execute("SELECT text FROM arc_text WHERE arc_id = ? AND lang = ?", (id, lang)).fetchone()
+    return jload(r["text"]) if r else None
+
+
+def get_script(con, key):
+    """A dialogue script as data (what `NS:RegisterDialogues` takes under `scripts`)."""
+    r = con.execute("SELECT definition FROM script WHERE key = ?", (key,)).fetchone()
+    if r is None:
+        raise ArchiveError("unknown script: %s" % key)
+    return jload(r["definition"])
+
+
 # ---- the pack folders ---------------------------------------------------------------------------------------------
 
 def parse_toc(path):
@@ -260,7 +307,8 @@ def parse_toc(path):
 
 def discover(root):
     """The files of the folders the archive reads: [(role, relative path, region, lang)]. Folders without a language or
-    a region (the base, the example, the verses) are read only for the rules of `Data/Registry*.lua` of the base."""
+    a region (the base, the example, the verses) are read only for the rules of `Data/Registry*.lua` of the base and for its
+    arc definitions (`Data/Arcs.lua`) and dialogue scripts (`Data/Dialogues.lua`)."""
     base = "AzerothUnspoken"
     out = []
     for d in sorted(os.listdir(root)):
@@ -271,6 +319,8 @@ def discover(root):
         lang, region = meta.get("X-AzerothUnspoken-Language"), meta.get("X-AzerothUnspoken-Region")
         if d == base:
             out += [("rules", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Data/Registry[A-Za-z]*\.lua$", f)]
+            out += [("arcs", "%s/%s" % (d, f), None, None) for f in files if f == "Data/Arcs.lua"]
+            out += [("scripts", "%s/%s" % (d, f), None, None) for f in files if f == "Data/Dialogues.lua"]
         elif lang:
             out += [("texts", "%s/%s" % (d, f), region, lang) for f in files if f.endswith(".lua")]
         elif region:
@@ -279,8 +329,8 @@ def discover(root):
 
 
 def import_folders(con, root):
-    """Reads the pack folders into the database as approved intentions. Returns a report dict (counts, skipped files).
-    A rules file whose rules are computed by code (a loop, a helper function) is not archived: it stays Lua."""
+    """Reads the pack folders into the database as approved intentions, arcs and scripts. Returns a report dict (counts,
+    skipped files). A rules file whose rules are computed by code (a loop, a helper function) is not archived: it stays Lua."""
     ensure_author(con, LEGACY, "Content written before the archive", "legacy")
     files = discover(root)
     skipped, problems, parsed = [], [], []
@@ -310,12 +360,39 @@ def import_folders(con, root):
                 problems.append("intention %s is in two packs" % id)
                 continue
             insert_intention(con, id, sf.pack_id, entry.data)
+    for role, rel, region, lang in files:
+        if role not in ("arcs", "scripts"):
+            continue
+        src = packfiles.read(os.path.join(root, rel))
+        try:
+            sf = (packfiles.parse_arcs if role == "arcs" else packfiles.parse_scripts)(rel, src)
+        except Unsupported as e:
+            m = re.search(r'Register(?:Arcs|Dialogues)\(\{\s*pack\s*=\s*"([^"]+)"', src)
+            skipped.append({"path": rel, "pack_id": m.group(1) if m else None,
+                            "reason": "the %s are computed by code (%s)" % ("arcs" if role == "arcs" else "scripts", e)})
+            continue
+        if sf.pack_id not in rules:
+            problems.append("%s: %s of an unknown pack %s" % (rel, "arcs" if role == "arcs" else "scripts", sf.pack_id))
+            continue
+        packfiles.link(src, [sf])
+        _store_file(con, sf, sf.pack_id)
+        table = "arc" if role == "arcs" else "script"
+        for id, entry in sf.entries.items():
+            if con.execute("SELECT 1 FROM %s WHERE %s = ?" % (table, "id" if role == "arcs" else "key"), (id,)).fetchone():
+                problems.append("%s %s is defined twice" % ("arc" if role == "arcs" else "script", id))
+                continue
+            con.execute("INSERT INTO %s VALUES (?,?,?)" % table, (id, sf.pack_id, jdump(entry.data)))
     skipped_texts = {}
     for role, rel, region, lang in files:
         if role != "texts":
             continue
+        src = packfiles.read(os.path.join(root, rel))
         try:
-            sf = packfiles.parse_texts(rel, packfiles.read(os.path.join(root, rel)), region)
+            sf = packfiles.parse_texts(rel, src, region)
+            parts = [sf]
+            if "AddArcTexts" in src:
+                parts.append(packfiles.parse_arc_texts(rel, src))
+            packfiles.link(src, parts)
         except Unsupported as e:
             problems.append("%s: %s" % (rel, e))
             continue
@@ -340,6 +417,23 @@ def import_folders(con, root):
                     problems.append("%s: texts of %s repeated in %s" % (rel, id, sf.lang))
                     continue
                 set_variants(con, id, sf.lang, entry.data)
+        for at in parts[1:]:
+            if at.pack_id not in rules:
+                problems.append("%s: arc texts of an unknown pack %s" % (rel, at.pack_id))
+                continue
+            if at.lang != lang:
+                problems.append("%s: arc texts in %s, the .toc says %s" % (rel, at.lang, lang))
+            _store_file(con, at, at.pack_id)
+            for id, entry in at.entries.items():
+                row = con.execute("SELECT pack_id FROM arc WHERE id = ?", (id,)).fetchone()
+                if row is None:
+                    problems.append("%s: journal texts for the unknown arc %s" % (rel, id))
+                elif row["pack_id"] != at.pack_id:
+                    problems.append("%s: the arc %s belongs to the pack %s" % (rel, id, row["pack_id"]))
+                elif con.execute("SELECT 1 FROM arc_text WHERE arc_id = ? AND lang = ?", (id, at.lang)).fetchone():
+                    problems.append("%s: journal texts of %s repeated in %s" % (rel, id, at.lang))
+                else:
+                    con.execute("INSERT INTO arc_text VALUES (?,?,?)", (id, at.lang, jdump(entry.data)))
     for s in skipped:
         s["texts"] = skipped_texts.get(s["pack_id"], {})
     con.execute("INSERT OR REPLACE INTO meta VALUES ('skipped', ?)", (jdump(skipped),))
@@ -348,60 +442,90 @@ def import_folders(con, root):
 
 
 def _store_file(con, sf, pack_id):
-    con.execute("INSERT INTO source_file VALUES (?,?,?,?,?,?,?)",
-                (sf.path, sf.role, pack_id, sf.region, sf.lang, sf.prelude, sf.epilogue))
-    con.executemany("INSERT INTO source_chunk VALUES (?,?,?,?,?,?)",
-                    [(sf.path, i, c[0], c[1], c[3], c[2]) for i, c in enumerate(sf.chunks)])
+    con.execute("INSERT INTO source_file VALUES (?,?,?,?,?,?,?,?)",
+                (sf.path, sf.part, sf.role, pack_id, sf.region, sf.lang, sf.prelude, sf.epilogue))
+    con.executemany("INSERT INTO source_chunk VALUES (?,?,?,?,?,?,?)",
+                    [(sf.path, sf.part, i, c[0], c[1], c[3], c[2]) for i, c in enumerate(sf.chunks)])
 
 
-def load_file(con, path):
+def load_file(con, path, part=0):
     """A SourceFile from the database (what export needs to write a file back)."""
-    f = con.execute("SELECT * FROM source_file WHERE path = ?", (path,)).fetchone()
+    f = con.execute("SELECT * FROM source_file WHERE path = ? AND part = ?", (path, part)).fetchone()
     sf = packfiles.SourceFile(path, f["role"], f["prelude"], f["epilogue"])
-    sf.pack_id, sf.region, sf.lang = f["pack_id"], f["region"], f["lang"]
-    for c in con.execute("SELECT kind, ref, text, sig FROM source_chunk WHERE path = ? ORDER BY seq", (path,)):
+    sf.pack_id, sf.region, sf.lang, sf.part = f["pack_id"], f["region"], f["lang"], part
+    for c in con.execute("SELECT kind, ref, text, sig FROM source_chunk WHERE path = ? AND part = ? ORDER BY seq", (path, part)):
         sf.chunks.append((c["kind"], c["ref"], c["text"], c["sig"]))
     return sf
 
 
+def _db_ids(con, sf):
+    """The ids the database holds for the group of files of `sf` (the same role, pack and language)."""
+    if sf.role == "texts":
+        return {r["id"] for r in con.execute(
+            "SELECT DISTINCT intention_id AS id FROM variant v JOIN intention i ON i.id = v.intention_id"
+            " WHERE i.pack_id = ? AND v.lang = ?", (sf.pack_id, sf.lang))}
+    if sf.role == "arcs":
+        return {r["id"] for r in con.execute("SELECT id FROM arc WHERE pack_id = ?", (sf.pack_id,))}
+    if sf.role == "scripts":
+        return {r["key"] for r in con.execute("SELECT key FROM script WHERE pack_id = ?", (sf.pack_id,))}
+    return {r["id"] for r in con.execute("SELECT arc_id AS id FROM arc_text t JOIN arc a ON a.id = t.arc_id"
+                                         " WHERE a.pack_id = ? AND t.lang = ?", (sf.pack_id, sf.lang))}
+
+
+def _db_data(con, sf, id):
+    """The data of one entry of the group of `sf`, or None when the database no longer holds it as approved content."""
+    if sf.role == "texts":
+        row = con.execute("SELECT state FROM intention WHERE id = ?", (id,)).fetchone()
+        v = get_variants(con, id, sf.lang)
+        return v if row and row["state"] == "approved" and v else None
+    if sf.role == "arcs":
+        return get_arc(con, id)
+    if sf.role == "scripts":
+        return get_script(con, id)
+    return get_arc_text(con, id, sf.lang)
+
+
+RENDERERS = {"rules": packfiles.render_rule, "texts": packfiles.render_variants, "arcs": packfiles.render_arc,
+             "scripts": packfiles.render_script, "arc_texts": packfiles.render_arc_text}
+
+
 def export_folders(con, root, out_root=None, canonical=False):
-    """Writes the pack folders from the approved intentions. `root` is where the folders are read for their layout
-    (the layout is in the database), `out_root` where they are written (default: `root`). With `canonical`, every
-    entry is rendered again instead of being kept as written (used to test the renderer). Returns the paths written."""
+    """Writes the pack folders from the approved intentions, the arcs and the scripts. `root` is where the folders are read
+    for their layout (the layout is in the database), `out_root` where they are written (default: `root`). With
+    `canonical`, every entry is rendered again instead of being kept as written (used to test the renderer). Returns the
+    paths written."""
     out_root = out_root or root
     written = []
-    paths = [r["path"] for r in con.execute("SELECT path FROM source_file ORDER BY path")]
-    held = {}   # (pack, lang) -> ids some file of the database holds
-    files = {p: load_file(con, p) for p in paths}
-    for sf in files.values():
-        if sf.role == "texts":
-            held.setdefault((sf.pack_id, sf.lang), set()).update(c[1] for c in sf.chunks if c[0] == "entry")
-    designated = {}
-    for p in paths:
-        if files[p].role == "texts":
-            designated.setdefault((files[p].pack_id, files[p].lang), p)
-    for p in paths:
-        sf = files[p]
+    keys = [(r["path"], r["part"]) for r in con.execute("SELECT path, part FROM source_file ORDER BY path, part")]
+    files = {k: load_file(con, *k) for k in keys}
+    group = lambda sf: (sf.role, sf.pack_id, sf.lang)   # noqa: E731
+    held = {}        # group -> ids some file of the database holds
+    designated = {}  # group -> the first file of the group: where the ids no file holds are appended
+    for k in keys:
+        sf = files[k]
+        if sf.role != "rules":
+            held.setdefault(group(sf), set()).update(c[1] for c in sf.chunks if c[0] == "entry")
+            designated.setdefault(group(sf), k)
+    texts = {}
+    for k in keys:
+        sf = files[k]
         if sf.role == "rules":
             current = {r["id"]: get_rule(con, r["id"]) for r in con.execute(
                 "SELECT id FROM intention WHERE pack_id = ? AND state = 'approved' ORDER BY id", (sf.pack_id,))}
-            render = packfiles.render_rule
         else:
             have = {c[1] for c in sf.chunks if c[0] == "entry"}
-            if designated[(sf.pack_id, sf.lang)] == p:
-                have |= {r["id"] for r in con.execute(
-                    "SELECT DISTINCT intention_id AS id FROM variant v JOIN intention i ON i.id = v.intention_id"
-                    " WHERE i.pack_id = ? AND v.lang = ?", (sf.pack_id, sf.lang))} - held[(sf.pack_id, sf.lang)]
+            if designated[group(sf)] == k:
+                have |= _db_ids(con, sf) - held[group(sf)]
             current = {}
-            for id in sorted(have):
-                row = con.execute("SELECT state FROM intention WHERE id = ?", (id,)).fetchone()
-                v = get_variants(con, id, sf.lang)
-                if row and row["state"] == "approved" and v:
-                    current[id] = v
-            render = packfiles.render_variants
+            for id in sorted(have & _db_ids(con, sf)):
+                data = _db_data(con, sf, id)
+                if data is not None:
+                    current[id] = data
         if canonical:
             sf.chunks = [c if c[0] == "gap" else (c[0], c[1], c[2], "-") for c in sf.chunks]
-        text = packfiles.build(sf, current, render)
+        texts.setdefault(k[0], []).append(packfiles.build(sf, current, RENDERERS[sf.role]))
+    for p, parts in texts.items():
+        text = "".join(parts)
         target = os.path.join(out_root, p)
         if not os.path.exists(target) or packfiles.read(target) != text:
             packfiles.write(target, text)
@@ -518,6 +642,47 @@ def build_db(path=":memory:", root=ROOT, overlay=OVERLAY_DIR):
     con.commit()
     con.report = report
     return con
+
+
+# ---- arcs and scripts ----------------------------------------------------------------------------------------------
+
+ARC_EVENTS = ("arc_open", "arc_step", "arc_resolve")
+
+
+def check_structures(con):
+    """The problems of the arc definitions and the dialogue scripts of the archive, as `(level, ref, message)`: dangling
+    transitions, unreachable states and nodes, missing languages, replies that put words in the player's mouth (see
+    `structures.py`), and the lines of the arc events that do not name their arc. Errors block; warnings inform."""
+    out = []
+    languages = {r["id"]: jload(r["languages"]) or [] for r in con.execute("SELECT id, languages FROM pack")}
+    speakers, arc_lines = {}, {}
+    for r in con.execute("SELECT id, events, speaker, conditions FROM intention WHERE state = 'approved'"):
+        cond = jload(r["conditions"]) or {}
+        arc = cond.get("arc") if isinstance(cond, dict) else None
+        for ev in jload(r["events"]) or []:
+            speakers.setdefault(ev, set()).add(r["speaker"])
+            if ev in ARC_EVENTS:
+                if not isinstance(arc, dict) or not isinstance(arc.get("id"), str):
+                    out.append(("error", r["id"], "the event '%s' needs a condition arc = { id = ... }" % ev))
+                    continue
+                st = arc.get("state")
+                for state in (st if isinstance(st, list) else [st]):
+                    arc_lines.setdefault(arc["id"], set()).add((ev, state))
+    arcs = {r["id"]: (r["pack_id"], jload(r["definition"])) for r in con.execute("SELECT id, pack_id, definition FROM arc")}
+    for id, (pack, d) in sorted(arcs.items()):
+        texts = {r["lang"]: jload(r["text"]) for r in con.execute("SELECT lang, text FROM arc_text WHERE arc_id = ?", (id,))}
+        out += structures.check_arc(id, d, texts, languages.get(pack, []), arc_lines.get(id, set()))
+        states = d.get("states") or list(structures.BASE_STATES)
+        for ev, state in sorted(arc_lines.get(id, set()), key=str):
+            if state is not None and state not in states:
+                out.append(("error", id, "a line of the event %s names the state '%s', which the arc does not have" % (ev, state)))
+    for ref, st in sorted({(a, None) for a in arc_lines if a not in arcs}):
+        out.append(("warning", ref, "lines of the arc events for an arc that this archive does not hold"))
+    scripts = {r["key"]: (r["pack_id"], jload(r["definition"])) for r in con.execute("SELECT key, pack_id, definition FROM script")}
+    raw = {k: d for k, (_, d) in scripts.items()}
+    for key, (pack, _) in sorted(scripts.items()):
+        out += structures.check_script(key, raw, languages.get(pack, []), speakers)
+    return out
 
 
 # ---- the review flow ----------------------------------------------------------------------------------------------
@@ -711,8 +876,14 @@ def roundtrip(root=ROOT, canonical=False):
                 same = same and all(get_variants(con, r["id"], l) == get_variants(again, r["id"], l) for l in langs)
                 if not same:
                     diffs.append(r["id"])
+            for table, key in (("arc", "id"), ("script", "key"), ("arc_text", "arc_id || '/' || lang")):
+                a = {r[0]: r[1] for r in con.execute("SELECT %s, %s FROM %s" % (key, "definition" if table != "arc_text" else "text", table))}
+                b = {r[0]: r[1] for r in again.execute("SELECT %s, %s FROM %s" % (key, "definition" if table != "arc_text" else "text", table))}
+                for k in sorted(set(a) | set(b)):
+                    if k not in a or k not in b or json.dumps(json.loads(a[k]), sort_keys=True) != json.dumps(json.loads(b[k]), sort_keys=True):
+                        diffs.append("%s %s" % (table, k))
             return diffs
-        for p in [r["path"] for r in con.execute("SELECT path FROM source_file ORDER BY path")]:
+        for p in [r["path"] for r in con.execute("SELECT DISTINCT path FROM source_file ORDER BY path")]:
             if packfiles.read(os.path.join(tmp, p)) != packfiles.read(os.path.join(root, p)):
                 diffs.append(p)
         return diffs

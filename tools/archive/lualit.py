@@ -312,6 +312,11 @@ def quote(s):
     return "".join(out)
 
 
+def key_source(k):
+    """The source of a table key: a bare name when it can be one, else `["..."]`."""
+    return k if isinstance(k, str) and _IDENT.match(k) and k not in _KEYWORDS else "[%s]" % literal(k)
+
+
 def literal(v):
     """One-line Lua source of a Python value (list -> array table, dict -> keyed table)."""
     if isinstance(v, bool):
@@ -341,3 +346,57 @@ def literal(v):
                 parts.append("[%s] = %s" % (literal(k), literal(x)))
         return "{ " + ", ".join(parts) + " }"
     raise TypeError("cannot write %r" % (v,))
+
+
+def _plain(v):
+    return not isinstance(v, (dict, list, tuple)) or (isinstance(v, dict) and LUA in v)
+
+
+def _fields(v):
+    """The fields of a dict as (key source or None, value) in order: positional values first, then keyed ones."""
+    out = [(None, x) for x in v.get(POS, [])] if isinstance(v, dict) else [(None, x) for x in v]
+    if isinstance(v, dict):
+        for k, x in v.items():
+            if k == POS:
+                continue
+            out.append((k if isinstance(k, str) and _IDENT.match(k) and k not in _KEYWORDS else "[%s]" % literal(k), x))
+    return [(("%s = " % k) if k else "", x) for k, x in out]
+
+
+def pretty(v, level=0, width=118, block=False, col=0):
+    """Source of a value laid out over lines (the canonical style of arcs, dialogue scripts and arc texts): one line when
+    it fits in `width` columns from `col`, else a table of tables (or of lists) as a block (one item per line), else a
+    table with its short fields packed on the first line and every long or nested field on a line of its own. `level`
+    is the indentation (in tabs) of the line the value starts on; `block` forces the block layout (an entry)."""
+    if _plain(v) or not v:
+        return literal(v)
+    one = literal(v)
+    if not block and col + len(one) <= width:
+        return one
+    fields = _fields(v)
+    pad = "\t" * (level + 1)
+    nested_only = all(not _plain(x) for _, x in fields)
+    if block or nested_only:
+        lines = [pad + k + pretty(x, level + 1, width, col=len(pad.expandtabs(4)) + len(k)) + "," for k, x in fields]
+        return "{\n" + "\n".join(lines) + "\n" + "\t" * level + "}"
+    # hanging: the short fields on the first line, the others one per line
+    first, rest = [], []
+    for k, x in fields:
+        lit = literal(x)
+        (first if _plain(x) or len(lit) <= 40 else rest).append((k, x, lit))
+    lines, cur = [], "{ "
+    base = col + 2
+    for k, x, lit in first:
+        item = k + lit + ","
+        if len(cur) > 2 and base + len(cur) + len(item) > width:
+            lines.append(cur.rstrip())
+            cur = ""
+        cur += item + " "
+    if len(cur.strip()) > 0 and cur != "{ ":
+        lines.append(cur.rstrip())
+    for k, x, lit in rest:
+        lines.append(k + pretty(x, level + 1, width, col=len(pad.expandtabs(4)) + len(k)) + ",")
+    out = lines[0]
+    for ln in lines[1:]:
+        out += "\n" + pad + ln
+    return (out[:-1] if out.endswith(",") else out) + " }"
