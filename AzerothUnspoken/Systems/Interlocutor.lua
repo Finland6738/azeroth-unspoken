@@ -708,6 +708,7 @@ end
 ---@return boolean ok
 function I:SetTrait(kind, id, trait, value)
 	local R = NS.Relationships
+	if R and kind == "player" then R:Adopt(id) end   -- with the shared list on, the choice goes where the person's choices live
 	local rec = R and R:Get(kind, id)
 	if not rec or not R:Writable() then return false end
 	local def = Traits.defs[trait]

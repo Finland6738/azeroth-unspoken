@@ -452,7 +452,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
-             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations", "TestPlayers",
+             "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestPacks"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
@@ -685,6 +685,48 @@ check(rl6.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB.relations
 newer = "{schemaVersion=7,relationships={version=3,npcs={},players={['Eve-Stormrage']={user={future=true},seen={first=1},nickname='x'}}}}"
 rl7, rn7 = load_addon(saved_global_r, newer, with_example=False)
 check(rl7.eval("function() return AzerothUnspoken.Relationships.readOnly end")() is True and rl7.eval("function() return AzerothUnspokenCharacterDB.relationships.players['Eve-Stormrage'].nickname end")() == "x", "relazioni v3: sola lettura, dati intatti")
+
+# e) the list shared in the account (R4b2, #114, ADR 0030): in the account file, never in the character's, kept when the
+# option is off, and shared with another character of the same account
+rs1, rsn1 = load_addon(with_example=False, zone="Durotar")
+rs1.execute("""
+    local R = AzerothUnspoken.Relationships
+    R:AddPlayer('Aldric-Stormrage', 'user'); R:SetNote('player', 'Aldric-Stormrage', 'Mine before sharing'); R:SetAxis('player', 'Aldric-Stormrage', 'trust', 60)
+    R:StartSharing(); R:StartSharing()
+    R:AddPlayer('Brenna-Stormrage', 'user'); R:SetNote('player', 'Brenna-Stormrage', 'Shared note'); R:SetAxis('player', 'Brenna-Stormrage', 'respect', 55)
+    R:Observe('Brenna-Stormrage', 'group')
+    assert(R:ShareAll() == 1)
+""")
+saved_char_s = rs1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+saved_global_s = rs1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+epoch_s = rs1.globals().FAKE_EPOCH
+check("sharedPlayers" in saved_global_s and "Shared note" in saved_global_s and "Mine before sharing" in saved_global_s, "lista condivisa: le scelte sono nel file dell'account")
+check("Shared note" not in saved_char_s and "Mine before sharing" not in saved_char_s, "lista condivisa: le scelte condivise non restano nel file del personaggio")
+check("Brenna-Stormrage" in saved_char_s, "lista condivisa: il personaggio tiene le sue osservazioni")
+def shr(lua_rt, expr):
+    return lua_rt.eval("function() local R = AzerothUnspoken.Relationships; return " + expr + " end")()
+rs2, rsn2 = load_addon(saved_global_s, saved_char_s, with_example=False, epoch=epoch_s + 60, zone="Durotar")
+check(shr(rs2, "R:Sharing()") is True and shr(rs2, "R:Get('player', 'Brenna-Stormrage').user.note") == "Shared note", "lista condivisa: dopo /reload le scelte e l'opzione ci sono")
+check(shr(rs2, "R:Get('player', 'Aldric-Stormrage').user.axes.trust") == 60 and shr(rs2, "R:ScopeOf('Aldric-Stormrage')") == "shared", "lista condivisa: la migrazione (ShareAll) sopravvive a /reload")
+check(shr(rs2, "R:Get('player', 'Brenna-Stormrage').seen.count") == 1, "lista condivisa: le osservazioni restano del personaggio")
+check(not list(rsn2.Diagnostics.errors.values()), "lista condivisa: nessun errore dopo /reload")
+# another character of the same account: the account file with a new character file
+rs3, rsn3 = load_addon(saved_global_s, None, with_example=False, epoch=epoch_s + 120, zone="Durotar")
+check(shr(rs3, "R:IsListed('Brenna-Stormrage') and R:IsListed('Aldric-Stormrage')") is True, "lista condivisa: un altro personaggio vede le persone dell'account")
+check(shr(rs3, "R:Get('player', 'Brenna-Stormrage').user.note") == "Shared note" and shr(rs3, "R:Get('player', 'Brenna-Stormrage').seen.count") == 0, "lista condivisa: vede le scelte, non le osservazioni")
+check(shr(rs3, "next(AzerothUnspokenCharacterDB.relationships.players)") is None, "lista condivisa: non ha record propri finche' non incontra qualcuno")
+# the option off in the account: nothing is deleted, nothing is listed from it
+rs2.execute("AzerothUnspoken.Relationships:StopSharing()")
+saved_global_off = rs2.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+rs4, rsn4 = load_addon(saved_global_off, None, with_example=False, epoch=epoch_s + 180, zone="Durotar")
+check(shr(rs4, "R:Sharing()") is False and shr(rs4, "R:IsListed('Brenna-Stormrage')") is False, "lista condivisa: spenta, non elenca nessuno")
+check(rs4.eval("function() return AzerothUnspokenDB.sharedPlayers.players['Brenna-Stormrage'].user.note end")() == "Shared note", "lista condivisa: spenta, i dati dell'account restano")
+# a file of a newer version is left alone
+rs1.execute("AzerothUnspokenDB.sharedPlayers.version = 9")
+newer_g = rs1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+rs5, rsn5 = load_addon(newer_g, None, with_example=False)
+check(shr(rs5, "R.sharedReadOnly") is True and shr(rs5, "R:Sharing()") is False, "lista condivisa: una versione piu' nuova non si usa")
+check(rs5.eval("function() return AzerothUnspokenDB.sharedPlayers.version end")() == 9 and shr(rs5, "AzerothUnspokenDB.sharedPlayers.players['Brenna-Stormrage'].user.note") == "Shared note", "lista condivisa: una versione piu' nuova resta intatta")
 print("  ok" if not FAILURES else "")
 
 

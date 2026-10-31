@@ -1,5 +1,7 @@
 -- Azeroth Unspoken: configurazione, SavedVariables, migrazioni e validazione
---   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... } }
+--   AzerothUnspokenDB          (account)       = { schemaVersion, settings = { ... }, sharedPlayers = { version, players } }
+--     sharedPlayers: the opt-in list of people shared by the account's characters (#114), created only when the user
+--     turns the option on; its own version, shape and rules are in Systems/Relationships.lua
 --   AzerothUnspokenCharacterDB (personaggio)   = { schemaVersion, memory, personality, memories, arcs, history }
 --     personality = { version, archetype, traits = { [tratto] = valore }, trp3 }  (Systems/Personality.lua)
 --     memories = { version, nextId, entries, places, flags, stats }                (Systems/LivingMemory.lua)
@@ -79,6 +81,8 @@ Config.CHAT_LIMITS = {
 ---@field autoRegisterPlayers boolean registra da solo chi si incontra (spento di base: i giocatori li sceglie l'utente)
 ---@field proposePlayers boolean propone candidati (gruppo, scambi, profili TRP3, risposte in privato)
 ---@field recognizeTarget boolean riconosce un giocatore noto anche quando è il bersaglio (spento di base, #106)
+---@field proximity boolean nameplates and mouseover can recognise a listed player, for this session only (off by default, #113)
+---@field sharePlayers boolean the list of people is shared by the account's characters (off by default, #114)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -147,6 +151,12 @@ Config.defaults = {
 		proposePlayers = true,
 		-- #106: also recognise a known player when targeted (off: joining a group or an interaction recognise them)
 		recognizeTarget = false,
+		-- #113: nameplates and mouseover may recognise a player already in the list, for this session only; they never
+		-- create a record. Off by default (D11 in #130)
+		proximity = false,
+		-- #114: the choices about people are kept in the account and shared by all characters. Off by default (D12);
+		-- turned on only after a warning (Relationships:StartSharing)
+		sharePlayers = false,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -527,6 +537,8 @@ function Config:Load()
 	self:Validate(char, self.characterDefaults, "character", self.issues)
 
 	NS.db, NS.cdb = settings, char
+	-- the account-level table, for the shared list of people (#114): data from a newer schema is not touched or used
+	NS.gdb = (not self.readOnly.global) and g or nil
 	return settings
 end
 

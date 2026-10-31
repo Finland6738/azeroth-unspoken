@@ -112,7 +112,9 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	"WEATHER_CHANGED", "DIEL_CYCLE_CHANGED", "PLAYER_UPDATE_RESTING", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS",
 	"MAP_EXPLORATION_UPDATED", "AREA_POIS_UPDATED", "QUEST_LOG_UPDATE", "UPDATE_FACTION", "FACTION_STANDING_CHANGED",
 	-- il mondo (R3)
-	"PLAYER_CONTROL_LOST", "PLAYER_CONTROL_GAINED", "QUEST_REMOVED" }) do
+	"PLAYER_CONTROL_LOST", "PLAYER_CONTROL_GAINED", "QUEST_REMOVED",
+	-- proximity (#113)
+	"NAME_PLATE_UNIT_ADDED", "UPDATE_MOUSEOVER_UNIT" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -124,7 +126,9 @@ local function Subject(u)
 	if u == "player" then return P end
 	if u == "target" then return P.target end
 	if u == "npc" then return P.npc end
+	if u == "mouseover" then return P.mouseover end
 	local kind, n = u:match("^(%a+)(%d+)$")
+	if kind == "nameplate" and P.nameplates then return P.nameplates[tonumber(n)] end
 	if kind == "party" and P.party then return P.party[tonumber(n)] end
 	if kind == "raid" and P.raidMembers then return P.raidMembers[tonumber(n)] end
 	return nil

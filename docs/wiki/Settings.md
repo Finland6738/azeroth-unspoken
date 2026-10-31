@@ -9,7 +9,7 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 - **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices.
 - **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.
 
-**Per account or per character?** General settings (everything on this page unless noted) are shared by all characters on your account. Personality, memories, relationships and stories belong to **each character**.
+**Per account or per character?** General settings (everything on this page unless noted) are shared by all characters on your account. Personality, memories, relationships and stories belong to **each character**; the only exception is the optional **Share with the account** list of relationships (off by default), which keeps your choices about people in the account.
 
 Changes take effect at once. There is no Save button.
 
@@ -157,6 +157,8 @@ The journal opens from the panel button **Character journal...** or `/au journal
 | Register by itself | off | relationships window, `/au relationships auto on\|off` | Adds the players you meet without asking. |
 | Attraction axis | off | relationships window, `/au relationships attraction on\|off` | Turns on the optional attraction axis. |
 | Recognise on target | off | relationships window | Lets the narrator also recognise a known player when you target them (joining your group or an interaction already do). |
+| Recognise nearby | off | relationships window, `/au relationships proximity on\|off` | Nameplates and mouseover can let the narrator recognise a player already in your list (and suggest people with a Total RP 3 profile if you allowed reading them). This session only: nothing is saved and no one is added. |
+| Share with the account | off | relationships window, `/au relationships share on\|off` | Keeps your choices about people in the account and shares them between your characters. Turning it on shows a warning (privacy, role play) and needs a second click; turning it off deletes nothing. |
 
 The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].
 

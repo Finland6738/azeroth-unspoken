@@ -7,7 +7,7 @@ Azeroth Unspoken is built to respect your privacy and that of the people you pla
 - **Everything stays on your computer.** The addon opens no connections, downloads nothing and sends no data anywhere. There is no AI and no tracking.
 - **Nothing reaches public chat without your action**, except in the *automatic* mode you choose and confirm yourself. See [[Chat Gateway]].
 - **No chat text is saved**, and no whisper text.
-- **No player is recorded unless you choose them.**
+- **No player is recorded unless you choose them.** Nameplates and mouseover can never add one, and are off by default.
 - **Other players' Total RP 3 profiles are read only with your consent**, never saved.
 - **You can erase everything**, at any time.
 
@@ -18,7 +18,8 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 **For your whole account** (`AzerothUnspokenDB.lua`):
 
 - your [[settings|Settings]]: language, intensity, style, chat mode, modules, narrator box, and so on;
-- which phrase packs you turned off, your event probabilities and ignored spells.
+- which phrase packs you turned off, your event probabilities and ignored spells;
+- **only if you turn on [[Share with the account|Relationships]]** (off by default): the **choices** you made about players (name, axes, label, feelings, note, tags, how you see them), shared by all your characters. Never what a character observed, never any text.
 
 **For each character** (`AzerothUnspokenCharacterDB.lua`):
 
@@ -41,6 +42,7 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 Some information helps the narrator in the moment and is forgotten when you log out:
 
 - that someone made an emote at you (not its text);
+- people whose nameplate appeared or whom you pointed at, **only if** you turned on *Recognise nearby* (off by default): the addon notes in memory that it already recognised a person from your list, and it keeps nothing about strangers;
 - the name of someone you whispered to, so the addon can **suggest** them as a person to add. It does not add them;
 - suggested people, recent actions of the person in front of you, the current encounter.
 - what the game said about the world: the weather, whether it is day, your quests (their numbers and whether a step or the whole quest is done, **never their text**), your reputation standings, whether you are resting or on a flight. None of it is saved.
@@ -53,6 +55,8 @@ Some information helps the narrator in the moment and is forgotten when you log 
 | Automatic sending | off; needs a second confirmation | [[Chat Gateway]] |
 | Registering players by themselves | off | [[Relationships]] |
 | Recognising a known player when you target them | off | [[Relationships]] |
+| Recognising a known player by nameplate or mouseover | off | [[Relationships]] |
+| Sharing your choices about players between your characters (in the account file) | off; warning and a second step | [[Relationships]] |
 | Your own Total RP 3 name | on | [[Settings]] |
 | Your own Total RP 3 traits | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
 | Reading other players' Total RP 3 | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
@@ -72,7 +76,7 @@ On Windows, the game keeps saved data in:
 
 `<WoW>` is your game folder, `<account>` your account folder, `<realm>` and `<character>` the realm and character names. The game writes these files when you log out or reload the interface.
 
-> **Do not share these files publicly.** They contain your character names, the names of players you added and your private notes.
+> **Do not share these files publicly.** They contain your character names, the names of players you added and your private notes. If you turned on the shared list, the account file contains them too.
 
 ## How to reset
 
@@ -82,6 +86,7 @@ On Windows, the game keeps saved data in:
 |---|---|
 | Journal (memories, places, flags) | `/au journal reset` (or `memories`, `ordinary`, `places`, `flags`), then the same command again within 15 seconds; or **Forget everything** in the journal |
 | Relationships | `/au relationships reset` (or `npcs`, `players`), then again within 15 seconds; or **Forget everything** in the relationships window |
+| The shared list of the account | `/au relationships reset shared`, then again within 15 seconds (turning the option off keeps it, unused) |
 | One memory, place or relationship | the delete buttons in the journal or relationships window, or `/au journal delete <n>`, `/au relationships remove <name>` |
 | What the addon observed about one player | **Forget observations** in the relationships window, or `/au relationships forget <name>` (the person and your choices stay) |
 | Personality | `/au soul neutral` |

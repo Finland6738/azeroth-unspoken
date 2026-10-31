@@ -37,6 +37,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0027](0027-sqlite-authoring-archive-and-exporter.md) | SQLite authoring archive, exporter to the pack folders and coverage reports | accepted |
 | [0028](0028-world-variables-weather-day-subzones-quests-reputation-rest-and-flight.md) | World variables: weather, day and night, subzones, quests, reputation, rest and flight | accepted |
 | [0029](0029-specificity-tiers-themes-motifs-and-category-quotas.md) | Specificity tiers, themes and motifs, and per-session category quotas | accepted |
+| [0030](0030-proximity-session-proposal-and-account-shared-list.md) | Proximity as a session proposal, and a list of people shared by the account's characters | accepted |
 
 ## Pending decisions
 

@@ -31,6 +31,8 @@ ALLOWED = {
     ("Systems/Relationships.lua", "R:CycleFeeling"): "user action: the feeling buttons",
     ("Systems/Relationships.lua", "R:ApplyFeelingPreset"): "user action: the typical-axes button, feeling ... preset",
     ("Systems/Relationships.lua", "R:AddPlayer"): "user action (or the explicit auto option): creates the empty block",
+    ("Systems/Relationships.lua", "R:SetScope"): "user action: the scope button of the detail, /au relationships scope (moves or copies the user block between the character and the shared list)",
+    ("Systems/Relationships.lua", "R:CopySharedHere"): "user action: /au relationships share copy (copies the shared choices into this character)",
     ("Systems/Relationships.lua", "R.MigrateV1"): "one-time move of version 1 data into the new shape",
     ("Systems/Relationships.lua", "CleanRecord"): "shapes loaded data: copies what the user chose, adds nothing",
     ("Systems/Relationships.lua", "CleanChoicesInto"): "shapes loaded data: copies what the user chose, adds nothing",

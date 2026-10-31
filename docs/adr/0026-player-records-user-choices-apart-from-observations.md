@@ -61,8 +61,8 @@ The software already never changed a player's axes by itself (`SetAxis` and `Adj
 ## Hooks left for the next issues
 
 - **#112 (GUID, after the in-game identity tests #111):** `seen.guid` exists and is cleaned on load but nothing writes it. It will be written by the observation code, never shown and never used for an automatic merge; a rename will be asked of the user (D14).
-- **#113 (proximity):** a new kind in `R.ENCOUNTERS` plus a setting off by default; `R:Observe` already ignores anyone who is not listed, so proximity cannot create a record (D11).
-- **#114 (shared list in the account):** the list stays per character (`R:Data()`); a shared list would be a separate opt-in store with its own privacy warning (D12).
+- **#113 (proximity):** done in [ADR 0030](0030-proximity-session-proposal-and-account-shared-list.md): not a new kind in `R.ENCOUNTERS` after all (a sighting is passive and constant), but a session-only proposal through `R:Recognize` that writes nothing.
+- **#114 (shared list in the account):** done in [ADR 0030](0030-proximity-session-proposal-and-account-shared-list.md): a separate opt-in store in `AzerothUnspokenDB.sharedPlayers`, the character's own choices winning as a whole. The rule above holds for the shared `user` block too.
 - **Suggestions of a change of feeling** (D13): a future module reads `seen` and shows a proposal; accepting calls `SetFeelings` or `SetAxis`, which are user actions. The criteria are still open.
 
 ## References

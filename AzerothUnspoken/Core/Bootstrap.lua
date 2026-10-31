@@ -4,6 +4,7 @@
 ---@field version string
 ---@field db AUSettings impostazioni dell'account (AzerothUnspokenDB.settings)
 ---@field cdb table dati del personaggio (AzerothUnspokenCharacterDB)
+---@field gdb? table account-level data (AzerothUnspokenDB: settings and sharedPlayers); nil when it comes from a newer schema
 ---@field paused boolean pausa immediata del narratore, solo di sessione
 ---@field Config AUConfig
 ---@field Gateway AUChatGateway

@@ -26,7 +26,7 @@ local COLS = {             -- colonne dell'elenco: id, ascissa, larghezza
 	{ "name", 16, 140 }, { "kind", 160, 54 }, { "label", 218, 112 }, { "disposition", 334, 112 }, { "last", 450, 84 },
 	{ "count", 538, 86 },
 }
-local HEIGHT_LIST, HEIGHT_PLAYER = 730, 850   -- the window grows for the detail of a player (two sections, #107)
+local HEIGHT_LIST, HEIGHT_PLAYER = 758, 914   -- the window grows for the detail of a player (two sections, #107; #114)
 local AXIS_STEP = 26
 
 local frame
@@ -295,12 +295,24 @@ local function BuildDetail()
 	frame.dDelete:SetPoint("TOPLEFT", 226, y)
 	frame.dBack = W.Button(frame, "", 140, 24, function() RelationsFrame:ShowView("list") end)
 	frame.dBack:SetPoint("TOPLEFT", 436, y)
+	W.Tooltip(frame.dDelete, function()
+		return NS:L(R:Sharing() and view.subject and view.subject.kind == "player" and "rel_delete_shared_tip" or "rel_delete")
+	end)
+	-- #114: with the shared list on, whose choices count for this person (one list for the account, or this character's own)
+	frame.dScope = W.Button(frame, "", 330, 24, function()
+		local s = view.subject
+		if not s or s.kind ~= "player" then return end
+		R:SetScope(s.key, R:ScopeOf(s.key) == "shared" and "character" or "shared")
+	end)
+	frame.dScope:SetPoint("TOPLEFT", 16, y - 32)
+	W.Tooltip(frame.dScope, function() return NS:L("rel_scope_tip") end)
 	frame.dYPlayer = y
 end
 
 local OPTIONS = {
 	{ "npcAuto", "rel_opt_npc" }, { "proposePlayers", "rel_opt_propose" }, { "autoRegisterPlayers", "rel_opt_auto" },
-	{ "attraction", "rel_opt_attraction" }, { "recognizeTarget", "rel_opt_target" },
+	{ "attraction", "rel_opt_attraction" }, { "recognizeTarget", "rel_opt_target" }, { "proximity", "rel_opt_proximity" },
+	{ "sharePlayers", "rel_opt_share" },
 }
 
 local function Build()
@@ -337,16 +349,22 @@ local function Build()
 	frame.options = {}
 	for i, opt in ipairs(OPTIONS) do
 		local b = W.Button(frame, "", 200, 22, function()
-			R:SetSetting(opt[1], not R:Setting(opt[1]))
+			if opt[1] == "sharePlayers" then
+				-- turning the shared list on needs a second click (with the warning); turning it off needs one
+				if R:Setting("sharePlayers") then R:StopSharing() else R:StartSharing() end
+				C_Timer.After(R.CONFIRM_SECONDS + 0.5, function() RelationsFrame:Refresh() end)
+			else
+				R:SetSetting(opt[1], not R:Setting(opt[1]))
+			end
 			RelationsFrame:Refresh()
 		end)
-		-- two rows of options above the export and reset buttons
-		b:SetPoint("BOTTOMLEFT", 16 + ((i - 1) % 3) * 204, i <= 3 and 76 or 48)
+		-- three rows of options above the export and reset buttons
+		b:SetPoint("BOTTOMLEFT", 16 + ((i - 1) % 3) * 204, 104 - math.floor((i - 1) / 3) * 28)
 		W.Tooltip(b, function() return NS:L(opt[2] .. "_tip") end)
 		frame.options[i] = { button = b, key = opt[1], text = opt[2] }
 	end
 	frame.privacy = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.privacy:SetPoint("BOTTOMLEFT", 16, 104)
+	frame.privacy:SetPoint("BOTTOMLEFT", 16, 132)
 	frame.privacy:SetWidth(608)
 	frame.privacy:SetJustifyH("LEFT")
 	frame.export = W.Button(frame, "", 110, 24, function() RelationsFrame:ShowExport() end)
@@ -401,7 +419,7 @@ local function DetailWidgets()
 	local out = { frame.dTitle, frame.dSummary, frame.dUserTitle, frame.dLabelTitle, frame.dLabelBtn, frame.dCustom,
 		frame.dFeelingTitle, frame.dFeeling1, frame.dFeeling2, frame.dPreset, frame.dNoteTitle, frame.dNote,
 		frame.dTagsTitle, frame.dTags, frame.dTraitsTitle, frame.dSeenTitle, frame.dSeenLine, frame.dSeenFacts,
-		frame.dForget, frame.dDelete, frame.dBack }
+		frame.dForget, frame.dDelete, frame.dBack, frame.dScope }
 	for _, b in pairs(frame.dTraitBtns) do table.insert(out, b) end
 	for _, row in ipairs(axisRows) do
 		for _, w in ipairs({ row.label, row.slider, row.value, row.minus, row.plus }) do table.insert(out, w) end
@@ -547,6 +565,9 @@ local function RefreshDetail()
 	frame.dBack:ClearAllPoints(); frame.dBack:SetPoint("TOPLEFT", isPlayer and 436 or 226, y)
 	frame.dDelete:SetText(NS:L(view.armed and "rel_delete_confirm" or "rel_delete"))
 	frame.dBack:SetText(NS:L("rel_back"))
+	frame.dScope:ClearAllPoints(); frame.dScope:SetPoint("TOPLEFT", 16, y - 32)
+	frame.dScope:SetShown(isPlayer and R:Sharing())
+	frame.dScope:SetText(NS:L(R:ScopeOf(s.key) == "shared" and "rel_scope_btn_shared" or "rel_scope_btn_character"))
 	frame.prev:Hide(); frame.next:Hide(); frame.pageText:Hide()
 end
 
@@ -567,11 +588,15 @@ function RelationsFrame:Refresh()
 	elseif view.name == "people" then RefreshPeople()
 	else RefreshDetail() end
 	for _, o in ipairs(frame.options) do
-		o.button:SetText(NS:L(o.text) .. ": " .. NS:L(R:Setting(o.key) and "on" or "off"))
+		if o.key == "sharePlayers" and R:ShareArmed() then
+			o.button:SetText(NS:L("rel_opt_share_confirm"))
+		else
+			o.button:SetText(NS:L(o.text) .. ": " .. NS:L(R:Setting(o.key) and "on" or "off"))
+		end
 	end
 	local st = R:Stats()
 	frame.stats:SetText(NS:L("rel_summary", st.npcs, st.players, st.candidates))
-	frame.privacy:SetText(NS:L("rel_privacy"))
+	frame.privacy:SetText(R:ShareArmed() and NS:L("rel_share_warning") or NS:L("rel_privacy"))
 	frame.export:SetText(NS:L("rel_export"))
 	frame.reset:SetText(NS:L(view.armedReset and "rel_reset_confirm_btn" or "rel_reset"))
 	frame.close:SetText(NS:L("rel_close"))

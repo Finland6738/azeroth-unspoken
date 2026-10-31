@@ -18,6 +18,12 @@
 --          Interlocutor:SetTrait; the software never writes it by itself (a test proves it);
 --   seen = what the addon observed (first, last, count, encounters by type, a ring of short facts, no text).
 -- NPC records stay flat: their axes are computed by the addon.
+-- Proximity (#113, ADR 0030): with the option on (off by default) nameplates and mouseover can recognise a player who is
+-- ALREADY listed, or (with the TRP3 consent) suggest one who has a TRP3 profile. For this session only: nothing is saved,
+-- no record is created, nothing is kept about strangers, and a secret identity is not read.
+-- Shared list (#114, ADR 0030): with the option on (off by default) the choices about people live in
+-- AzerothUnspokenDB.sharedPlayers and are shared by the account's characters; a per-character record with choices of its
+-- own wins over the shared one; the observations (`seen`) and `noted` always stay per character.
 local ADDON, NS = ...
 local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 
@@ -114,6 +120,10 @@ R.ENCOUNTER_GAP = 600          -- seconds: the same kind of encounter with the s
 R.FACTS = 5                    -- short facts kept per player (a ring: the oldest goes first)
 R.FEELINGS_MAX = 2             -- feelings the user can choose for one person
 R.ZONE_LEN = 40
+R.SHARED_VERSION = 1           -- shape of AzerothUnspokenDB.sharedPlayers (#114)
+R.PROXIMITY_GAP = 60           -- seconds between two proximity proposals in a session (#113)
+R.PROXIMITY_MAX = 10           -- proximity proposals in a session (#113)
+R.CONFIRM_SECONDS = 15         -- how long the confirmation of a risky action (sharing, reset) stays open
 -- what can happen with a listed player. ENCOUNTERS count as encounters (`count`, `last`); SHARED are facts of an
 -- experience lived together (they update `last` and the tally by kind, not `count`). relShared accepts any of them.
 R.ENCOUNTERS = { group = true, trade = true, duel = true, invite = true, emote = true, whisper = true, target = true }
@@ -135,9 +145,11 @@ R.candidates = {}              -- [chiave] = { key, source, t }: persone propost
 R.dismissed = {}               -- [chiave] = true: proposte che l'utente ha scartato (solo sessione)
 R.recalls = {}                 -- [evento] = true: eventi che citano un rapporto (il validatore chiede una condizione)
 R.interaction = nil            -- { npcID, name, kind, t }: l'NPC con cui si sta parlando
-R.session = { seen = {}, offered = {}, recognized = {}, prior = {} }
+R.session = { seen = {}, offered = {}, recognized = {}, prior = {}, proximity = { n = 0, secret = 0 } }
+R.sharedReadOnly = false       -- the shared list was written by a newer version: it is not read or changed
 
 local EMPTY = {}
+local DeepCopy = NS.Config.DeepCopy
 Traits.RegisterScope("rel")   -- i tag delle frasi sulle relazioni: rel.relation:friend, rel.trust:high...
 
 ---------------------------------------------------------------------------
@@ -365,6 +377,7 @@ function R:SetSetting(name, on)
 	local s = NS.db and NS.db.relations
 	if type(s) ~= "table" or s[name] == nil then return false end
 	s[name] = on and true or false
+	if name == "proximity" then self:ApplyProximity() end
 	self:Changed()
 	return true
 end
@@ -531,6 +544,93 @@ function R:Data()
 	return d
 end
 
+---------------------------------------------------------------------------
+-- The list shared in the account (#114, D12, ADR 0030)
+---------------------------------------------------------------------------
+-- Two layers keep the choices about a person:
+--   * the CHARACTER layer (`cdb.relationships.players`): always there, the default; it also holds this character's
+--     observations (`seen`) and `noted`, whatever the option;
+--   * the SHARED layer (`gdb.sharedPlayers.players`): opt-in, `{ source, user }` per person, no observations.
+-- With the option off only the character layer exists for the rest of the addon and nothing is deleted from the other.
+-- With it on, a person is listed if either layer has them, and the choices that count are those of the character
+-- record when it has choices of its own (or says `scope = "character"`), else those of the shared record. The two
+-- blocks are never mixed field by field: one of them wins as a whole.
+---@return boolean
+function R:Sharing()
+	return NS.gdb ~= nil and not self.sharedReadOnly and self:Setting("sharePlayers")
+end
+
+---The store of the shared list. `create` makes it (only a user action does); nil if there is none or it is unusable.
+---@param create? boolean
+---@return { version: integer, players: table<string, table> }?
+function R:Shared(create)
+	local g = NS.gdb
+	if not g or self.sharedReadOnly then return nil end
+	local s = g.sharedPlayers
+	if type(s) ~= "table" then
+		if not create then return nil end
+		s = { version = self.SHARED_VERSION, players = {} }
+		g.sharedPlayers = s
+	end
+	if type(s.players) ~= "table" then s.players = {} end
+	if not IsNumber(s.version) then s.version = self.SHARED_VERSION end
+	return s
+end
+
+-- the shared records that count now: none unless sharing is on
+local function SharedPlayers(self)
+	if not self:Sharing() then return EMPTY end
+	local s = self:Shared()
+	return s and s.players or EMPTY
+end
+
+-- a character record keeps choices of its own: it wins over the shared one
+local function OwnChoices(rec)
+	return type(rec) == "table" and (rec.scope == "character" or (type(rec.user) == "table" and next(rec.user) ~= nil))
+end
+
+---Is the person in the list: in this character's, or (sharing on) in the account's?
+---@param key string "Name-Realm"
+---@return boolean
+function R:IsListed(key)
+	local d = self:Data()
+	return d ~= nil and (d.players[key] ~= nil or SharedPlayers(self)[key] ~= nil)
+end
+
+---Whose choices count for a person now: "character" (the default and the only one with sharing off), "shared", or nil.
+---@param key string
+---@return "character"|"shared"|nil
+function R:ScopeOf(key)
+	local cr, sr = self:Data().players[key], SharedPlayers(self)[key]
+	if not cr and not sr then return nil end
+	if sr and not OwnChoices(cr) then return "shared" end
+	return "character"
+end
+
+---This character's record of a person, made on the first observation of someone who is listed only in the shared
+---list (empty choices, only observations: it adds no opinion of its own).
+---@param key string
+---@param create? boolean
+---@return AURelationRecord?
+function R:CharRecord(key, create)
+	local d = self:Data()
+	local rec = d.players[key]
+	if rec or not create then return rec end
+	local sr = SharedPlayers(self)[key]
+	if not sr then return nil end
+	rec = { source = sr.source, user = {}, seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} } }
+	d.players[key] = rec
+	return rec
+end
+
+-- every listed person: [key] = true, from both layers
+local function PlayerKeys(self)
+	local out = {}
+	for k in pairs(self:Data().players) do out[k] = true end
+	for k in pairs(SharedPlayers(self)) do out[k] = true end
+	return out
+end
+
 ---@return boolean
 function R:Enabled()
 	return NS.db ~= nil and NS.cdb ~= nil and NS.db.modules.relations ~= false and not self.readOnly
@@ -655,6 +755,7 @@ local function CleanRecord(rec, kind)
 		CleanChoicesInto(user, out.user)
 		out.seen = CleanSeen(rec.seen)
 		out.name = CleanText(rec.name, R.NAME_LEN)
+		if rec.scope == "character" then out.scope = "character" end
 	else
 		CleanAxesInto(rec, out)
 		out.first = IsNumber(rec.first) and rec.first or 0
@@ -727,6 +828,34 @@ function R:Sanitize()
 	d.version = self.VERSION
 	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
 	self:CompactNPCs()
+	return dropped + self:SanitizeShared()
+end
+
+---Cleans the shared list of the account (#114) like the character's: bad entries are dropped, only `{ source, user }`
+---is kept (observations are never shared). Data from a newer version is left untouched and the list goes unused.
+---@return integer dropped
+function R:SanitizeShared()
+	self.sharedReadOnly = false
+	local g = NS.gdb
+	local s = g and g.sharedPlayers
+	if type(s) ~= "table" then return 0 end
+	local v = tonumber(s.version) or self.SHARED_VERSION
+	if v > self.SHARED_VERSION then
+		self.sharedReadOnly = true
+		NS.Diagnostics:Error("relations", ("sharedPlayers.version %d > %d: not used"):format(v, self.SHARED_VERSION))
+		return 0
+	end
+	local dropped, players = 0, {}
+	for k, rec in pairs(type(s.players) == "table" and s.players or EMPTY) do
+		local key = type(k) == "string" and CleanText(k, R.NAME_LEN) or nil
+		local clean = key == k and CleanRecord(rec, "player") or nil
+		if clean then
+			players[key] = { source = clean.source, user = clean.user }
+		else
+			dropped = dropped + 1
+		end
+	end
+	s.players, s.version = players, self.SHARED_VERSION
 	return dropped
 end
 
@@ -737,7 +866,14 @@ function R:Get(kind, key)
 	local d = self:Data()
 	if not d then return nil end
 	if kind == "npc" then return d.npcs[tonumber(key)] end
-	if kind == "player" then return d.players[key] end
+	if kind == "player" then
+		local cr, sr = d.players[key], SharedPlayers(self)[key]
+		if not sr or OwnChoices(cr) then return cr end
+		-- the shared choices count: a view whose `user` is the shared block itself (so a user action that writes
+		-- through it writes the shared record) and whose observations are this character's
+		return { key = key, view = true, source = cr and cr.source or sr.source, noted = cr and cr.noted, user = sr.user,
+			seen = cr and cr.seen or { first = 0, last = 0, count = 0, kinds = {}, facts = {} } }
+	end
 	return nil
 end
 
@@ -771,8 +907,10 @@ end
 local function AfterChange(self, kind, rec, oldLabel)
 	local info = self:Resolve(kind, rec)
 	if info.derived ~= oldLabel and self.config.memorable[info.derived] and not (rec.noted and rec.noted[info.derived]) then
-		rec.noted = rec.noted or {}
-		rec.noted[info.derived] = true
+		-- the journal memory is this character's: a shared-list view keeps it in the character record
+		local holder = rec.view and self:CharRecord(rec.key, true) or rec
+		holder.noted = holder.noted or {}
+		holder.noted[info.derived] = true
 		if NS.LivingMemory and NS.LivingMemory.Record then
 			NS.LivingMemory:Record({ kind = "relation", tags = { kind, info.derived }, source = "addon" })
 		end
@@ -923,7 +1061,9 @@ local ENCOUNTER_OF = { group = "group", trade = "trade", whisper = "whisper", tr
 function R:CountPlayers()
 	local d = self:Data()
 	local n = 0
-	for _ in pairs(d and d.players or EMPTY) do n = n + 1 end
+	if d then
+		for _ in pairs(PlayerKeys(self)) do n = n + 1 end
+	end
 	return n
 end
 
@@ -941,12 +1081,15 @@ function R:AddPlayer(name, source)
 	if not key then return nil, "bad_name" end
 	if key == OwnKey() then return nil, "self" end
 	local d = self:Data()
-	if d.players[key] then return d.players[key], "exists" end
+	if self:IsListed(key) then return self:Get("player", key), "exists" end
 	if self:CountPlayers() >= self.MAX_PLAYERS then return nil, "limit" end
 	local now = Now()
 	-- nothing has been observed yet, and no meeting is invented: the addition itself is not an encounter
 	local rec = { source = source, user = {}, seen = { first = now, last = 0, count = 0, kinds = {}, facts = {} } }
 	d.players[key] = rec
+	-- with the shared list on, a person the user adds is also in the account's list (the explicit option "register
+	-- automatically" is not a user choice about the person: that record stays with this character)
+	if source == "user" and self:Sharing() then self:Shared(true).players[key] = { source = source, user = {} } end
 	local c = self.candidates[key]
 	self.candidates[key] = nil
 	-- a person proposed because of a real encounter this session: that encounter is the first observation
@@ -965,9 +1108,7 @@ function R:Propose(name, source)
 	if not self:Enabled() then return nil end
 	local key = R.PlayerKey(name)
 	if not key or key == OwnKey() then return nil end
-	local d = self:Data()
-	local rec = d.players[key]
-	if rec then
+	if self:IsListed(key) then
 		self:Observe(key, ENCOUNTER_OF[source] or "group")
 		return key
 	end
@@ -976,6 +1117,15 @@ function R:Propose(name, source)
 		if ENCOUNTER_OF[source] then self:Observe(key, ENCOUNTER_OF[source]) end
 		return key
 	end
+	return self:Suggest(key, source)
+end
+
+---Puts a person who is not listed among this session's suggestions (memory only, never saved, never a record, whatever
+---the option "register automatically" says). Used by Propose and by proximity (#113).
+---@param key string "Name-Realm"
+---@param source string where the suggestion comes from (rel_src_<source> names it)
+---@return string? key nil if suggestions are off or the user dismissed the person
+function R:Suggest(key, source)
 	if not self:Setting("proposePlayers") or self.dismissed[key] then return nil end
 	local c = self.candidates[key]
 	if c then
@@ -1033,7 +1183,7 @@ function R:Observe(name, kind)
 	if not self:Enabled() or not (R.ENCOUNTERS[kind] or R.SHARED[kind]) then return nil end
 	local key = R.PlayerKey(name)
 	if not key or key == OwnKey() then return nil end
-	local rec = self:Data().players[key]
+	local rec = self:CharRecord(key, true)
 	if not rec then return nil end
 	local seen = rec.seen
 	if type(seen) ~= "table" then
@@ -1069,7 +1219,7 @@ end
 function R:Met(name, kind)
 	local key = R.PlayerKey(name)
 	if not key or not self:Enabled() then return end
-	if self:Data().players[key] then
+	if self:IsListed(key) then
 		self:Observe(key, kind)
 		if R.RECOGNIZE[kind] then self:Recognize(key) end
 	elseif kind == "group" or kind == "trade" or kind == "whisper" then
@@ -1085,8 +1235,7 @@ end
 ---@return boolean offered
 function R:Recognize(key)
 	if not self:Enabled() or not NS.Director then return false end
-	local rec = self:Data().players[key]
-	if not rec then return false end
+	if not self:IsListed(key) then return false end
 	local done = SessionTable(self, "recognized")
 	if done[key] then return false end
 	done[key] = GetTime()
@@ -1104,9 +1253,10 @@ end
 ---@return boolean ok
 function R:ForgetObservations(key)
 	if not self:Writable() then return false end
-	local rec = self:Data().players[key]
-	if not rec then return false end
-	rec.seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} }
+	if not self:IsListed(key) then return false end
+	-- a person listed only in the shared list has no observations of this character to forget
+	local rec = self:CharRecord(key)
+	if rec then rec.seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} } end
 	local prior, done = self.session.prior, self.session.recognized
 	if prior then prior[key] = nil end
 	if done then done[key] = nil end
@@ -1145,6 +1295,7 @@ end
 -- here (#107, ADR 0026; Tests/check_user_block.py and the "software never writes user" test).
 local function Edit(self, kind, key)
 	if not self:Writable() then return nil end
+	if kind == "player" then self:Adopt(key) end
 	local rec = self:Get(kind, kind == "npc" and tonumber(key) or key)
 	if not rec then return nil end
 	if kind == "player" and type(rec.user) ~= "table" then rec.user = {} end
@@ -1338,8 +1489,11 @@ function R:Remove(kind, key)
 		if not key or not d.npcs[key] then return false end
 		d.npcs[key] = nil
 	elseif kind == "player" then
-		if not d.players[key] then return false end
+		if not self:IsListed(key) then return false end
 		d.players[key] = nil
+		-- removing a person while the shared list is on removes them from the account's list too: they are the same list
+		local shared = self:Sharing() and self:Shared()
+		if shared then shared.players[key] = nil end
 	else
 		return false
 	end
@@ -1361,8 +1515,156 @@ function R:Reset(what)
 		for _ in pairs(d.players) do n = n + 1 end
 		d.players = {}
 	end
+	-- the account's list is cleared only when asked for by name: "reset players" is this character's list
+	if what == "shared" then
+		local shared = self:Shared()
+		if shared then
+			for _ in pairs(shared.players) do n = n + 1 end
+			shared.players = {}
+		end
+	end
 	self:Changed()
 	return n
+end
+
+---------------------------------------------------------------------------
+-- The shared list: what the user can do with it (#114, D12, ADR 0030). Every function here answers a user action.
+---------------------------------------------------------------------------
+---With the shared list on and this character holding no choices of its own for a person, the person's choices live in
+---the shared record: it is made before a user action writes (called by Edit and by Interlocutor:SetTrait).
+---@param key string
+function R:Adopt(key)
+	if not self:Writable() or not self:Sharing() then return end
+	local cr = self:Data().players[key]
+	if not cr or OwnChoices(cr) then return end
+	local shared = self:Shared(true)
+	if shared and not shared.players[key] then shared.players[key] = { source = cr.source, user = {} } end
+end
+
+---Chooses whose choices count for one person (a user action: the button of the detail, /au relationships scope).
+---  "character": this character gets a copy of the shared choices and keeps its own from now on; the shared record
+---               is left as it is for the other characters;
+---  "shared":    this character's own choices move to the shared record (they replace the choices already there) and
+---               the character record keeps only its observations.
+---@param key string
+---@param scope "character"|"shared"
+---@return boolean ok
+---@return boolean|string|nil replaced true if choices already in the shared record were replaced; or why it failed
+function R:SetScope(key, scope)
+	if not self:Writable() then return false, "off" end
+	if not self:Sharing() then return false, "not_sharing" end
+	if scope ~= "shared" and scope ~= "character" then return false, "bad_scope" end
+	local cr = self:Data().players[key]
+	local shared = self:Shared(true)
+	local sr = shared.players[key]
+	if not cr and not sr then return false, "missing" end
+	if scope == "character" then
+		if OwnChoices(cr) then return true end
+		cr = self:CharRecord(key, true)
+		cr.user = DeepCopy(sr and sr.user or {})
+		cr.scope = "character"
+		self:Changed()
+		return true
+	end
+	if not OwnChoices(cr) then return true end
+	local own = next(cr.user) ~= nil
+	local replaced = own and sr ~= nil and next(sr.user) ~= nil
+	-- a character that had no choices of its own (only `scope`) must not blank the ones already shared
+	if own or not sr then shared.players[key] = { source = sr and sr.source or cr.source, user = cr.user } end
+	cr.user, cr.scope = {}, nil
+	self:Changed()
+	return true, replaced
+end
+
+---Migration into the shared list (a user action: `/au relationships share all`): the choices this character holds for
+---people the shared list does not have yet move there. A person the shared list already has choices for keeps this
+---character's own choices (they win; nothing is overwritten). Nothing else changes and nothing is deleted.
+---@return integer moved
+---@return integer kept
+function R:ShareAll()
+	if not self:Writable() or not self:Sharing() then return 0, 0 end
+	local shared = self:Shared(true)
+	local keys = {}
+	for key, cr in pairs(self:Data().players) do
+		if OwnChoices(cr) then table.insert(keys, key) end
+	end
+	table.sort(keys)
+	local moved, kept = 0, 0
+	for _, key in ipairs(keys) do
+		local sr = shared.players[key]
+		if sr and next(sr.user) ~= nil and next(self:Data().players[key].user) ~= nil then
+			kept = kept + 1
+		elseif self:SetScope(key, "shared") then
+			moved = moved + 1
+		end
+	end
+	return moved, kept
+end
+
+---The way back (a user action: `/au relationships share copy`): every person of the shared list gets a record in this
+---character, with the shared choices copied as the character's own, so that turning the option off loses nothing for
+---this character. The shared list itself is not touched.
+---@return integer copied
+---@return integer skipped people left out because the character's list is full
+function R:CopySharedHere()
+	if not self:Writable() or not self:Sharing() then return 0, 0 end
+	local shared = self:Shared()
+	if not shared then return 0, 0 end
+	local keys = {}
+	for key in pairs(shared.players) do table.insert(keys, key) end
+	table.sort(keys)
+	local d = self:Data()
+	local copied, skipped, held = 0, 0, 0
+	for _ in pairs(d.players) do held = held + 1 end
+	for _, key in ipairs(keys) do
+		local cr = d.players[key]
+		if not OwnChoices(cr) then
+			local sr = shared.players[key]
+			if not cr and held >= self.MAX_PLAYERS then
+				skipped = skipped + 1
+			else
+				if not cr then held = held + 1 end
+				cr = self:CharRecord(key, true)
+				cr.user = DeepCopy(sr.user)
+				if next(cr.user) ~= nil then cr.scope = "character" end
+				copied = copied + 1
+			end
+		end
+	end
+	self:Changed()
+	return copied, skipped
+end
+
+---Turning the shared list on takes two steps, so that nobody does it by accident: the first call opens a confirmation
+---(the caller shows the privacy and role-play warning), the second one inside CONFIRM_SECONDS turns it on.
+---@return "armed"|"on"|"off"|"unavailable"
+function R:StartSharing()
+	if not self:Writable() then return "off" end
+	if self:Setting("sharePlayers") then return "on" end
+	if NS.gdb == nil or self.sharedReadOnly then return "unavailable" end
+	local now = GetTime()
+	local p = self.pendingShare
+	if p and now <= p.untilT then
+		self.pendingShare = nil
+		self:SetSetting("sharePlayers", true)
+		self:Shared(true)
+		return "on"
+	end
+	self.pendingShare = { untilT = now + self.CONFIRM_SECONDS }
+	return "armed"
+end
+
+---Turning it off is one step and deletes nothing: the shared list stays in the account, unused, until it is turned on
+---again or cleared (`/au relationships reset shared`).
+function R:StopSharing()
+	self.pendingShare = nil
+	self:SetSetting("sharePlayers", false)
+end
+
+---@return boolean waiting a confirmation to turn the shared list on is open
+function R:ShareArmed()
+	local p = self.pendingShare
+	return p ~= nil and GetTime() <= p.untilT
 end
 
 ---------------------------------------------------------------------------
@@ -1400,7 +1702,7 @@ function R:Rows(filter)
 		table.insert(rows, { kind = kind, key = key, name = name, rec = rec, info = info })
 	end
 	for id, rec in pairs(d.npcs) do Add("npc", id, rec) end
-	for key, rec in pairs(d.players) do Add("player", key, rec) end
+	for key in pairs(PlayerKeys(self)) do Add("player", key, self:Get("player", key)) end
 	local sort = filter.sort or "last"
 	local function Cmp(a, b)
 		if sort == "name" then return NS.Lower(a.name) < NS.Lower(b.name) end
@@ -1438,7 +1740,7 @@ function R:Stats()
 	local d = self:Data()
 	local n, p, c = 0, 0, 0
 	for _ in pairs(d and d.npcs or EMPTY) do n = n + 1 end
-	for _ in pairs(d and d.players or EMPTY) do p = p + 1 end
+	p = self:CountPlayers()
 	for _ in pairs(self.candidates) do c = c + 1 end
 	return { npcs = n, players = p, candidates = c }
 end
@@ -1524,7 +1826,7 @@ function R:ScanGroup(announce)
 			local name, realm = Compat.SafeCall("UnitFullName", unit)
 			local key = R.PlayerKey(name, realm)
 			if key and key ~= OwnKey() then
-				local rec = d.players[key]
+				local rec = self:Get("player", key)
 				if rec then
 					out[self:Resolve("player", rec).label] = true
 					listed[key] = true
@@ -1843,12 +2145,105 @@ function handlers.TARGET_CHANGED(env)
 	local name, realm = Compat.SafeCall("UnitFullName", "target")
 	local key = R.PlayerKey(name, realm)
 	if not key then return end
-	if R:Data().players[key] then
+	if R:IsListed(key) then
 		R:Observe(key, "target")
 		if R:Setting("recognizeTarget") then R:Recognize(key) end
 	elseif R:Setting("proposePlayers") and NS.TotalRP3 and NS.TotalRP3:IsKnownPlayer("target") then
 		R:Propose(key, "trp3")
 	end
+end
+
+---------------------------------------------------------------------------
+-- Proximity (#113, D11, ADR 0030): off by default, for this session only
+---------------------------------------------------------------------------
+-- Nameplates and mouseover can recognise a player who is ALREADY in the list: the same `relation_player` candidate as
+-- joining a group, with the same guard (once per person and session, R:Recognize) and the Director's own budget and
+-- chance. With the TRP3 consent (S6c) a person who has a TRP3 profile but is not listed is suggested to the user, in
+-- memory, like a target. It never writes: no record, no observation, no `seen`, nothing kept about a stranger, and no
+-- name is read from a unit whose identity is secret.
+-- the session counters of proximity (made on first use: a session table made by older code or a test has none)
+local function Prox(self)
+	local p = self.session.proximity
+	if not p then
+		p = { n = 0, secret = 0 }
+		self.session.proximity = p
+	end
+	return p
+end
+
+local function ProximityUnit(unit)
+	return unit == "mouseover" or (type(unit) == "string" and unit:match("^nameplate%d+$") ~= nil)
+end
+
+---Can proximity produce another proposal now? The option is on, the session budget is not spent and the pause since
+---the last proposal is over. Cheap on purpose: the sources ask it before publishing anything.
+---@return boolean
+function R:ProximityReady()
+	if not self:Enabled() or not self:Setting("proximity") then return false end
+	local p = Prox(self)
+	if p.n >= self.PROXIMITY_MAX then return false end
+	return p.t == nil or GetTime() - p.t >= self.PROXIMITY_GAP
+end
+
+---A player is near (a nameplate appeared, the mouse is over them).
+---@param unit string "nameplateN" or "mouseover"
+---@return "recognized"|"suggested"|nil what it did
+function R:Nearby(unit)
+	if not self:ProximityReady() or not ProximityUnit(unit) then return nil end
+	local p = Prox(self)
+	-- a secret identity is not read at all
+	if Compat:IsUnitIdentitySecret(unit) then p.secret = p.secret + 1; return nil end
+	if Compat.SafeCall("UnitIsPlayer", unit) ~= true then return nil end
+	local name, realm = Compat.SafeCall("UnitFullName", unit)
+	if Compat.IsSecret(name) or Compat.IsSecret(realm) then p.secret = p.secret + 1; return nil end
+	local key = R.PlayerKey(name, realm)
+	if not key or key == OwnKey() then return nil end
+	local result
+	if self:IsListed(key) then
+		-- once per person and session: someone already recognised costs nothing and uses no budget
+		if not self:Recognize(key) then return nil end
+		result = "recognized"
+	else
+		local trp3 = NS.TotalRP3
+		if not (trp3 and trp3:HasOtherConsent() and trp3:IsKnownPlayer(unit)) then return nil end
+		if self.candidates[key] or not self:Suggest(key, "proximity") then return nil end
+		result = "suggested"
+	end
+	p.n, p.t = p.n + 1, GetTime()
+	return result
+end
+
+local function ProximitySource(via)
+	return { normalize = function(unit)
+		if via == "mouseover" then unit = "mouseover" end
+		if not R:ProximityReady() or not ProximityUnit(unit) then return nil end
+		if Compat:IsUnitIdentitySecret(unit) then
+			local p = Prox(R)
+			p.secret = p.secret + 1
+			return nil
+		end
+		if Compat.SafeCall("UnitIsPlayer", unit) ~= true then return nil end
+		return "PROXIMITY_UNIT", { unit = unit, via = via }, { window = 0 }
+	end }
+end
+
+R.PROXIMITY_EVENTS = { NAME_PLATE_UNIT_ADDED = "nameplate", UPDATE_MOUSEOVER_UNIT = "mouseover" }
+
+---Registers the nameplate and mouseover events while the option is on and unregisters them while it is off, so that
+---with the option off the client does not call the addon for them at all (they fire very often).
+function R:ApplyProximity()
+	local on = self:Enabled() and self:Setting("proximity")
+	for event, via in pairs(R.PROXIMITY_EVENTS) do
+		if on and not EventBus.sources[event] then
+			EventBus:AddSource(event, ProximitySource(via))
+		elseif not on and EventBus.sources[event] then
+			EventBus:RemoveSource(event)
+		end
+	end
+end
+
+function handlers.PROXIMITY_UNIT(env)
+	R:Nearby(env.context.unit)
 end
 
 for eventType, fn in pairs(handlers) do
@@ -1967,8 +2362,11 @@ end
 function R:Status()
 	if not self:Enabled() then return self.readOnly and "read-only (newer data)" or "off" end
 	local st = self:Stats()
-	return ("%d NPCs, %d players, %d candidates; npcAuto %s, attraction %s, autoRegister %s"):format(st.npcs, st.players,
-		st.candidates, tostring(self:Setting("npcAuto")), tostring(self:AttractionOn()), tostring(self:Setting("autoRegisterPlayers")))
+	local prox = Prox(self)
+	return ("%d NPCs, %d players, %d candidates; npcAuto %s, attraction %s, autoRegister %s; proximity %s (%d proposed, %d secret), shared list %s"):format(
+		st.npcs, st.players, st.candidates, tostring(self:Setting("npcAuto")), tostring(self:AttractionOn()),
+		tostring(self:Setting("autoRegisterPlayers")), tostring(self:Setting("proximity")), prox.n, prox.secret,
+		self:Sharing() and "on" or "off")
 end
 
 ---------------------------------------------------------------------------
@@ -1989,7 +2387,7 @@ local function FindSubject(self, text)
 	if key and self:Get("player", key) then return "player", key end
 	local lower = NS.Lower(text)
 	local d = self:Data()
-	for k in pairs(d.players) do
+	for k in pairs(PlayerKeys(self)) do
 		if NS.Lower(k) == NS.Lower(key or text) or NS.Lower(k:match("^[^-]+")) == lower then return "player", k end
 	end
 	for npcID, rec in pairs(d.npcs) do
@@ -2001,7 +2399,7 @@ end
 local WORDS = NS.Keywords.Register("relationships", {
 	list = "list", people = "candidates", add = "add", remove = "remove", note = "note", tags = "tags", label = "label",
 	set = "set", export = "export", auto = "auto", attraction = "attraction", reset = "reset", dismiss = "dismiss",
-	detail = "detail", feeling = "feeling", forget = "forget",
+	detail = "detail", feeling = "feeling", forget = "forget", proximity = "proximity", share = "share", scope = "scope",
 })
 
 local FEELING_WORDS = NS.Keywords.Register("relationships.feelings", {
@@ -2014,7 +2412,9 @@ local AXIS_WORDS = NS.Keywords.Register("relationships.axes", {
 	loyalty = "loyalty", attraction = "attraction",
 })
 
-local RESET_WORDS = NS.Keywords.Register("relationships.reset", { all = "all", npcs = "npcs", players = "players" })
+local RESET_WORDS = NS.Keywords.Register("relationships.reset", { all = "all", npcs = "npcs", players = "players", shared = "shared" })
+local SHARE_WORDS = NS.Keywords.Register("relationships.share", { all = "all", copy = "copy", status = "status" })
+local SCOPE_WORDS = NS.Keywords.Register("relationships.scope", { shared = "shared", character = "character", ["this"] = "character" })
 
 local function Summary(self, kind, key)
 	local rec = self:Get(kind, key)
@@ -2118,6 +2518,48 @@ function R:Command(rest)
 		local on = NS.Keywords.OnOff(w)
 		if on ~= nil then self:SetSetting(name, on) end
 		Say(action == "auto" and "rel_auto_now" or "rel_attraction_now", NS:L(self:Setting(name) and "on" or "off"))
+	elseif action == "proximity" then
+		local on = NS.Keywords.OnOff(NS.Lower(arg))
+		if on ~= nil then self:SetSetting("proximity", on) end
+		Say("rel_proximity_now", NS:L(self:Setting("proximity") and "on" or "off"))
+	elseif action == "share" then
+		-- /au relationships share [on | off | status | all | copy]: turning it on asks for a confirmation with the warning
+		local w = NS.Lower(arg)
+		local on = NS.Keywords.OnOff(w)
+		local sub = SHARE_WORDS[w]
+		if on == true then
+			local r = self:StartSharing()
+			if r == "armed" then Say("rel_share_warning"); Say("rel_share_confirm")
+			elseif r == "on" then Say("rel_share_now", NS:L("on"))
+			elseif r == "unavailable" then Say("rel_share_unavailable") end
+		elseif on == false then
+			self:StopSharing()
+			Say("rel_share_now", NS:L("off"))
+			Say("rel_share_off_tip")
+		elseif sub == "all" then
+			if not self:Sharing() then Say("rel_share_needs_on"); return end
+			local moved, kept = self:ShareAll()
+			Say("rel_share_all_done", moved, kept)
+		elseif sub == "copy" then
+			if not self:Sharing() then Say("rel_share_needs_on"); return end
+			local copied, skipped = self:CopySharedHere()
+			Say("rel_share_copy_done", copied, skipped)
+		else
+			Say("rel_share_now", NS:L(self:Sharing() and "on" or "off"))
+		end
+	elseif action == "scope" then
+		-- /au relationships scope <name> shared|character
+		local who, word = arg:match("^([^ ]+) *(.-)$")
+		local what = word and SCOPE_WORDS[NS.Lower(word)]
+		local kind, key = FindSubject(self, who or "")
+		if kind ~= "player" then Say("rel_missing", arg); return end
+		if not what then Say("rel_scope_usage"); return end
+		local ok, replaced = self:SetScope(key, what)
+		if ok then
+			Say(what == "shared" and "rel_scope_shared" or "rel_scope_character", key)
+			if replaced == true then Say("rel_scope_replaced") end
+		elseif replaced == "not_sharing" then Say("rel_share_needs_on")
+		else Say("rel_missing", arg) end
 	elseif action == "reset" then
 		local what = RESET_WORDS[NS.Lower(arg)] or "all"
 		local nowT = GetTime()
@@ -2139,12 +2581,13 @@ end
 ---------------------------------------------------------------------------
 function R:OnInit()
 	self.readOnly = NS.Config.readOnly ~= nil and NS.Config.readOnly.character == true
-	self.session = { seen = {}, offered = {}, recognized = {}, prior = {} }
-	self.candidates, self.dismissed = {}, {}
+	self.session = { seen = {}, offered = {}, recognized = {}, prior = {}, proximity = { n = 0, secret = 0 } }
+	self.candidates, self.dismissed, self.pendingShare = {}, {}, nil
 	self.groupDirty, self.groupKeys, self.fightWith, self.scanPending = true, {}, nil, false
 	local dropped = self:Sanitize()
 	if dropped > 0 then NS.Diagnostics:Error("relations", ("%d voci malformate scartate"):format(dropped)) end
 	if not self.readOnly then self:MaintainAll() end
+	self:ApplyProximity()
 	Hook("BuyMerchantItem", _G, "BuyMerchantItem", function() R:OnMerchantAction("merchant_buy") end)
 	Hook("RepairAllItems", _G, "RepairAllItems", function() R:OnMerchantAction("merchant_repair") end)
 	Hook("C_Container.UseContainerItem", _G.C_Container, "UseContainerItem", function() R:OnMerchantAction("merchant_sell") end)
