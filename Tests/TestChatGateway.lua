@@ -874,3 +874,148 @@ T.run("#13: una proposta non pubblica o inviata non si può cambiare", function(
 	local ok, why = Gateway:Reroll()
 	T.ok(not ok and why == "reroll_empty", "dopo l'invio non c'è più nulla da cambiare")
 end)
+
+---------------------------------------------------------------------------
+-- #152, #163 (D16, ADR 0032): monologues and literary lines are private in every mode
+---------------------------------------------------------------------------
+NS:RegisterPack({
+	id = "t_literary", languages = { "itIT" },
+	registry = {
+		["lit.hymn"] = { event = "t_lit", speaker = "narrator", form = "emote", styles = { "ancient" },
+			tags = { "lore", "genre_hymn" } },
+		["lit.song"] = { event = "t_lit", speaker = "character", form = "say", styles = { "ancient" },
+			tags = { "genre_song" } },
+		["lit.plain"] = { event = "t_lit", speaker = "character", form = "say", styles = { "everyday" } },
+		["lit.only"] = { event = "t_litonly", speaker = "character", form = "say", styles = { "ancient" },
+			tags = { "lore" } },
+	},
+	texts = { itIT = {
+		["lit.hymn"] = "canta un inno sulle strade che nessuno conosce.", ["lit.song"] = "Veglia su chi cammina stanotte.",
+		["lit.plain"] = "Una frase come le altre.", ["lit.only"] = "Parole incise sulla pietra.",
+	} },
+})
+
+-- a monologue as the Director passes it, one as a pack with wrong data would (no kind on the record), a verses line
+-- (narrator emote and character say)
+local function PrivateRecs()
+	return {
+		monologue = { id = "mono.zone.crest", kind = "monologue", form = "emote", speaker = "narrator", event = "zone",
+			text = "pauses where the road crests, and the land opens below." },
+		monologueNoKind = { id = "mono.zone.dusk", form = "emote", speaker = "narrator", event = "zone",
+			text = "stops as the light goes." },
+		verses = { id = "lit.hymn", form = "emote", speaker = "narrator", event = "t_lit", text = "canta un inno." },
+		song = { id = "lit.song", form = "say", speaker = "character", event = "t_lit", text = "Veglia su chi cammina." },
+	}
+end
+
+T.run("#152, #163: a monologue or a literary line never reaches chat, in any mode", function()
+	T.ok(NS.Engine.byId["mono.zone.crest"] and NS.Engine.byId["mono.zone.dusk"], "the base monologues exist")
+	for name in pairs(PrivateRecs()) do
+		for _, mode in ipairs({ "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }) do
+			local tag = name .. "/" .. mode
+			Reset()
+			if mode == "AUTO_ONLY_IF_ALLOWED" then Auto() else Gateway:SetMode(mode) end
+			P.instance = true   -- /say would also go out without a gesture
+			local rec = PrivateRecs()[name]
+			T.ok(Gateway:Propose(rec, CTX, { auto = true }), tag .. ": shown in the narrator")
+			T.ok(Gateway:GetPending() == nil, tag .. ": no proposal")
+			T.eq(#Public(), 0, tag .. ": nothing sent")
+			T.ok(rec.sentTo == nil, tag .. ": not marked as sent")
+			local ok, why = Gateway:CopyToChat()
+			T.ok(not ok and why == "empty", tag .. ": nothing to copy to the chat box")
+			Press()   -- with no proposal the key improvises an ordinary line (a proposal at most): never this one
+			T.eq(#Public(), 0, tag .. ": the key sends nothing")
+			Gateway:Discard()
+			-- the same when the player asked for the line (not auto)
+			Gateway:Propose(PrivateRecs()[name], CTX, {})
+			T.ok(Gateway:GetPending() == nil and #Public() == 0, tag .. ": private when asked too")
+		end
+	end
+	Reset()
+end)
+
+T.run("#152, #163: a composite-situation line is an ordinary line and stays public-capable", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	local rec = { id = "sit.closecall.say", form = "say", speaker = "character", event = "victory",
+		situation = "close_call", text = "Per un soffio." }
+	T.ok(NS.Engine.byId["sit.closecall.say"] ~= nil, "the base composite line exists")
+	T.ok(Gateway:PrivateReason(rec) == nil, "no private reason")
+	Gateway:Propose(rec, CTX, { auto = true })
+	T.ok(Gateway:GetPending() ~= nil, "a proposal, as any line")
+	Press()
+	T.eq(#Public(), 1, "and the gesture sends it")
+	-- the same line in the automatic mode with the second consent goes out as an ordinary line would
+	Reset()
+	Auto()
+	Gateway:Propose({ id = "sit.closecall.say", form = "emote", speaker = "narrator", event = "victory",
+		situation = "close_call", text = "tira il fiato." }, CTX, { auto = true })
+	T.eq(#Public(), 1, "AUTO: an emote composite line is sent like any emote")
+	Reset()
+end)
+
+T.run("#152, #163: the guard holds when a private line is already pending", function()
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	for name, rec in pairs(PrivateRecs()) do
+		local function Plant()
+			Gateway.pending = { text = rec.text, display = rec.text, speaker = "character", event = rec.event,
+				id = rec.id, form = "say", channel = "SAY", time = GetTime() }
+		end
+		Plant()
+		HW = true
+		local ok, why = Gateway:SendPending()
+		HW = false
+		T.ok(not ok and why == "private_only", name .. ": SendPending refuses")
+		T.ok(Gateway:GetPending() == nil, name .. ": and drops it")
+		Plant()
+		ok, why = Gateway:CopyToChat()
+		T.ok(not ok and why == "private_only", name .. ": CopyToChat refuses")
+		T.ok(Gateway:GetPending() == nil, name .. ": and drops it")
+		HW = true
+		ok, why = Gateway:Send("testo", "SAY", { proposal = { id = rec.id, kind = rec.kind, speaker = "character" } })
+		HW = false
+		T.ok(not ok and why == "private_only", name .. ": Send refuses the proposal")
+	end
+	T.eq(#Public(), 0, "nothing reached the chat")
+	Reset()
+end)
+
+T.run("#152, #163: Reroll never turns into a private line", function()
+	Reset()
+	NS.db.locale = "it"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	-- t_lit has one plain line and two literary ones: a reroll never lands on a literary line
+	NS.cdb.memory.recent = {}
+	Gateway:Propose({ id = "lit.plain", form = "say", speaker = "character", event = "t_lit", text = "x" },
+		NS:BuildContext(), {})
+	for _ = 1, 30 do
+		Gateway:Reroll()
+		local p = Gateway:GetPending()
+		T.ok(p and p.id == "lit.plain", "the plain line stays (got " .. tostring(p and p.id) .. ")")
+		NS.cdb.memory.recent = {}
+	end
+	T.eq(#Public(), 0, "nothing sent")
+	-- an event with literary lines only: the narrator shows the line, no proposal
+	Gateway:Discard()
+	NS.cdb.memory.recent = {}
+	T.ok(Gateway:Narrate("t_litonly", NS:BuildContext(), { form = "say" }), "shown")
+	T.ok(Gateway:GetPending() == nil, "literary line only: no proposal")
+	-- and a reroll with only literary alternatives keeps the proposal
+	Gateway:Propose({ id = "lit.plain", form = "say", speaker = "character", event = "t_litonly", text = "x" },
+		NS:BuildContext(), {})
+	local ok, why = Gateway:Reroll()
+	T.ok(not ok and why == "no_phrase", "the only alternatives are literary: no reroll")
+	T.eq(Gateway:GetPending() and Gateway:GetPending().id, "lit.plain", "the proposal stays")
+	Reset()
+end)
+
+T.run("#152, #163: PrivateReason reads voice, tags (list or set), parts and the rule", function()
+	T.eq(Gateway:PrivateReason({ speaker = "inner" }), "voice", "inner")
+	T.eq(Gateway:PrivateReason({ speaker = "character", tags = { "genre_song" } }), "literary", "list")
+	T.eq(Gateway:PrivateReason({ speaker = "character", tags = { lore = true } }), "literary", "set")
+	T.eq(Gateway:PrivateReason({ speaker = "character", tags = { "wry" } }), nil, "an ordinary tag")
+	T.eq(Gateway:PrivateReason({ speaker = "narrator", parts = { "a", "b" } }), "monologue", "parts")
+	T.eq(Gateway:PrivateReason({ speaker = "character", id = "lit.song" }), "literary", "from the rule")
+	T.eq(Gateway:PrivateReason({ speaker = "narrator", id = "mono.zone.crest" }), "monologue", "from the rule")
+end)

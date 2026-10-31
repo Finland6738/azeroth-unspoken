@@ -229,7 +229,42 @@ Personality.cache = nil
 Personality.gameLayers = {}
 Personality.gameOrder = {}
 
----Il profilo salvato del personaggio (creato e ripulito se manca o è rovinato).
+Personality.readOnly = false   -- data written by a newer version: it is read from a copy and never changed (#154)
+Personality.copy = nil
+
+local DeepCopy = NS.Config.DeepCopy
+
+-- a usable internal version: a whole number from 1 up
+local function ValidVersion(v)
+	return type(v) == "number" and v == v and v >= 1 and v < math.huge and v == math.floor(v)
+end
+
+-- a version 1 profile keeps the old exclusive choices (temperament, morality, faith, motivation) in `traits`
+function Personality:IsLegacyShape(p)
+	if type(p.traits) ~= "table" then return false end
+	for _, trait in ipairs(self.LEGACY) do
+		if type(p.traits[trait]) == "string" then return true end
+	end
+	return false
+end
+
+---Stores the profile's version safely. A usable version below the current one is migrated; one above it makes the
+---profile read-only (ADR 0006 §5); a missing or damaged one is not a reason to convert again: the shape decides, so
+---a profile that already has the current shape keeps its choices (#154).
+function Personality:CheckVersion(p)
+	local v = p.version
+	if type(v) == "number" and v == v and v > self.VERSION and v < math.huge then return "newer" end
+	if ValidVersion(v) then
+		if v < self.VERSION then self:Migrate(p) end
+	elseif self:IsLegacyShape(p) then
+		self:Migrate(p)
+	end
+	p.version = self.VERSION
+	return "ok"
+end
+
+---Il profilo salvato del personaggio (creato e ripulito se manca o è rovinato). Con dati di una versione più nuova
+---è una copia: si legge, ma quello che si scrive non arriva al file salvato.
 ---@return AUPersonalityProfile
 function Personality:Profile()
 	local c = NS.cdb
@@ -239,12 +274,30 @@ function Personality:Profile()
 		p = {}
 		c.personality = p
 	end
+	if self.readOnly and self.copy and self.copyOf == p then return self.copy end
+	if type(p.version) == "number" and p.version > self.VERSION and p.version < math.huge then
+		if not self.readOnly or self.copyOf ~= p then
+			NS.Diagnostics:Error("soul", ("personality.version %s > %d: read-only"):format(tostring(p.version), self.VERSION))
+		end
+		self.readOnly, self.copyOf, self.copy = true, p, DeepCopy(p)
+		self.copy.traits = type(self.copy.traits) == "table" and self.copy.traits or {}
+		self.copy.archetype = type(self.copy.archetype) == "string" and self.copy.archetype or "custom"
+		self.copy.trp3 = self.copy.trp3 == true
+		return self.copy
+	end
+	self.readOnly, self.copyOf, self.copy = false, nil, nil
 	if type(p.traits) ~= "table" then p.traits = {} end
-	if type(p.archetype) ~= "string" then p.archetype = "neutral" end
+	if type(p.archetype) ~= "string" then p.archetype = Traits.IsEmpty(p.traits) and "neutral" or "custom" end
 	if type(p.trp3) ~= "boolean" then p.trp3 = false end
-	if type(p.version) ~= "number" or p.version < self.VERSION then self:Migrate(p) end
-	p.version = self.VERSION
+	self:CheckVersion(p)
 	return p
+end
+
+---Can the profile be changed? False with data from a newer version (it is only read).
+---@return boolean
+function Personality:Writable()
+	self:Profile()
+	return not self.readOnly
 end
 
 ---Converte un profilo della versione 1 (scelte esclusive di S5) in intensità (R4, #96, ADR 0031). Un archetipo scelto
@@ -279,6 +332,10 @@ end
 ---@return integer dropped
 function Personality:Sanitize()
 	local p = self:Profile()
+	if self.readOnly then
+		self:Refresh()
+		return 0
+	end
 	local clean, dropped = Traits.Sanitize(p.traits)
 	-- un vecchio tratto a scelta in un profilo della versione 2 (file modificato a mano): diventa intensità
 	clean = self.FromLegacy(clean)
@@ -297,6 +354,10 @@ function Personality:Sanitize()
 	end
 	if p.archetype ~= "neutral" and p.archetype ~= "custom" and not self:GetArchetype(p.archetype) then
 		p.archetype = Traits.IsEmpty(clean) and "neutral" or "custom"
+		dropped = dropped + 1
+	elseif p.archetype == "neutral" and not Traits.IsEmpty(clean) then
+		-- "neutral" means no choices at all: a profile that has some is a custom one (#156)
+		p.archetype = "custom"
 		dropped = dropped + 1
 	end
 	self:Refresh()
@@ -379,7 +440,7 @@ end
 ---@return boolean ok
 function Personality:SetArchetype(id)
 	local a = self:GetArchetype(id)
-	if not a then return false end
+	if not a or not self:Writable() then return false end
 	local p = self:Profile()
 	-- la voce interiore e gli argomenti da evitare non fanno parte di un archetipo: restano come sono (tranne neutral)
 	local keep = a.id ~= "neutral" and { innerVoice = p.traits.innerVoice, avoid = p.traits.avoid } or {}
@@ -398,7 +459,7 @@ end
 ---@return boolean ok
 function Personality:SetTrait(id, value)
 	local def = Traits.defs[id]
-	if not def then return false end
+	if not def or not self:Writable() then return false end
 	-- un vecchio tratto a scelta (API di S5): imposta gli assi corrispondenti
 	if self.MIGRATION[id] then return value ~= nil and self:SetLegacy(id, value) end
 	local p = self:Profile()
@@ -423,7 +484,7 @@ end
 ---@return boolean ok
 function Personality:SetLegacy(trait, value)
 	local map = self.MIGRATION[trait] and self.MIGRATION[trait][value]
-	if not map then return false end
+	if not map or not self:Writable() then return false end
 	for axis, v in pairs(map) do self:SetTrait(axis, v) end
 	return true
 end
@@ -431,6 +492,7 @@ end
 ---Toglie le scelte esplicite degli assi da cui un vecchio tratto a scelta si legge (/au soul faith -).
 ---@param trait string
 function Personality:ClearLegacy(trait)
+	if not self:Writable() then return end
 	for _, rule in pairs(Traits.defs[trait] and Traits.defs[trait].derive or {}) do self:SetTrait(rule[1], nil) end
 end
 
@@ -451,7 +513,7 @@ end
 ---@return boolean? on nuovo stato, nil se l'argomento non esiste
 function Personality:ToggleTopic(topic)
 	local def = Traits.defs.avoid
-	if not def.valid[topic] then return nil end
+	if not def.valid[topic] or not self:Writable() then return nil end
 	local p = self:Profile()
 	local set = Traits.Copy({ avoid = p.traits.avoid }).avoid or {}
 	local on = not set[topic]
@@ -468,6 +530,7 @@ end
 ---Consenso a leggere i tratti dal profilo pubblico del proprio personaggio in Total RP 3.
 ---@param on boolean
 function Personality:SetTRP3Consent(on)
+	if not self:Writable() then return end
 	self:Profile().trp3 = on == true
 	self:Refresh()
 end
@@ -640,6 +703,10 @@ function Personality:Command(rest)
 		word = "list"
 	end
 	local action = SOUL_WORDS[word]
+	if (action == "neutral" or (arg ~= "" and action ~= "list")) and not self:Writable() then
+		Say("soul_readonly")
+		return
+	end
 	if action == "list" then
 		for _, line in ipairs(self:Summary()) do NS:Print(line) end
 	elseif action == "neutral" then

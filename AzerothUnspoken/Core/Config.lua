@@ -378,7 +378,9 @@ Config.migrations = {
 		[2] = function(db)
 			local s = db.settings
 			if type(s) ~= "table" then return end
-			if type(s.output) == "table" then
+			-- only on data that still has the old shape: a file that lost its schemaVersion but already has `chat` keeps
+			-- the second consent the user gave (#154)
+			if type(s.output) == "table" and (s.output.mode ~= nil or type(s.chat) ~= "table") then
 				local old = s.output.mode
 				s.output.mode = nil
 				if type(s.chat) ~= "table" then s.chat = {} end
@@ -417,7 +419,9 @@ Config.migrations = {
 			if type(p.traits) ~= "table" then p.traits = nil end
 			if type(p.archetype) ~= "string" then p.archetype = nil end
 			if type(p.trp3) ~= "boolean" then p.trp3 = nil end
-			p.version = 1
+			-- the placeholder had no version; a profile that already has one keeps it (Personality:Profile decides what
+			-- to do with it), so a repeated migration does not convert a version 2 profile again (#154)
+			if p.version == nil then p.version = 1 end
 		end,
 		-- 4: memories (segnaposto vuoto fino a S5) diventa la Living Memory. Una tabella vuota o rovinata riparte da zero;
 		-- i campi che mancano li aggiunge Merge e le voci malformate le scarta LivingMemory:Sanitize all'avvio.
@@ -459,8 +463,8 @@ Config.migrations = {
 		end,
 		-- 7: memoria di anti-ripetizione limitata (#86). uses torna entro il tetto (restano le voci più usate) e variant
 		-- resta solo per le frasi ancora in uses. I valori malformati li scarta Engine:SanitizeMemory; l'ultimo uso delle
-		-- voci senza cooldown (o con il cooldown finito) lo toglie Engine:DecayMemory all'ingresso nel mondo, quando
-		-- tutti i pacchetti sono registrati. Si perdono solo dati che non cambiano più la scelta: i cooldown restano.
+		-- voci senza cooldown (o con il cooldown finito) lo toglie Engine:DecayMemory al caricamento dell'addon di base, prima
+		-- dei pacchetti esterni (di un id non ancora registrato resta al massimo 30 giorni, #156). Si perdono solo dati che non cambiano più la scelta: i cooldown restano.
 		[7] = function(db)
 			local m = db.memory
 			if type(m) ~= "table" or type(m.uses) ~= "table" then return end
@@ -500,13 +504,13 @@ function Config:Migrate(db, kind)
 	return true
 end
 
----La versione dello schema di un file, come intero: un valore assente, non numerico, NaN o negativo conta 0 (file
----rovinato, riparte dalle migrazioni), uno frazionario si arrotonda per difetto (#51).
+---La versione dello schema di un file, come intero: un valore assente, non numerico, NaN, infinito o negativo conta 0
+---(file rovinato, riparte dalle migrazioni, che sono idempotenti), uno frazionario si arrotonda per difetto (#51, #154).
 ---@param db table
 ---@return number version
 function Config:SchemaOf(db)
 	local n = tonumber(db.schemaVersion)
-	if not n or n ~= n or n < 0 then return 0 end
+	if not n or n ~= n or n < 0 or n == math.huge then return 0 end
 	return math.floor(n)
 end
 
@@ -541,8 +545,20 @@ function Config:Load()
 
 	local char = c
 	if self.readOnly.character then char = DeepCopy(c) end
+	-- a section written by a newer internal version of its module (personality, emotion, memories, relationships,
+	-- arcs) is neither completed nor validated: Merge and Validate would reset what this version does not know. The
+	-- module sees it as it is and goes read-only (ADR 0006 §5, #154).
+	local newer = {}
+	for key, def in pairs(self.characterDefaults) do
+		local saved = char[key]
+		if type(def) == "table" and type(def.version) == "number" and type(saved) == "table"
+			and type(saved.version) == "number" and saved.version > def.version and saved.version < math.huge then
+			newer[key], char[key] = saved, nil
+		end
+	end
 	Config.Merge(self.characterDefaults, char)
 	self:Validate(char, self.characterDefaults, "character", self.issues)
+	for key, saved in pairs(newer) do char[key] = saved end
 
 	NS.db, NS.cdb = settings, char
 	-- the account-level table, for the shared list of people (#114): data from a newer schema is not touched or used

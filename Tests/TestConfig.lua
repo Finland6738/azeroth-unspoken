@@ -386,19 +386,59 @@ T.run("valori numerici: comandi con gli stessi limiti delle impostazioni, schema
 	Cmd("chance battle 250"); T.eq(NS.db.chance.battle, 100, "prob 250: 100")
 	Cmd("chance battle 25"); T.eq(NS.db.chance.battle, 25, "prob valida")
 	-- schemaVersion non intero, NaN, negativo: le migrazioni girano e lo schema corrente viene scritto
-	for _, bad in ipairs({ 2.5, 0 / 0, -3, "x", 4.999 }) do
+	for _, bad in ipairs({ 2.5, 0 / 0, -3, "x", 4.999, math.huge, -math.huge }) do
 		AzerothUnspokenDB = { schemaVersion = bad, settings = {} }
 		AzerothUnspokenCharacterDB = { schemaVersion = bad, memory = {} }
 		Config:Load()
 		T.eq(AzerothUnspokenDB.schemaVersion, Config.SCHEMA_VERSION, "globale con " .. tostring(bad))
 		T.eq(AzerothUnspokenCharacterDB.schemaVersion, Config.SCHEMA_VERSION, "personaggio con " .. tostring(bad))
 	end
-	-- una versione più nuova, anche frazionaria o infinita, resta in sola lettura
+	-- una versione più nuova, anche frazionaria, resta in sola lettura; l'infinito è un valore rovinato, non una versione (#154)
 	AzerothUnspokenDB = { schemaVersion = Config.SCHEMA_VERSION + 1.5, settings = { intensity = 7 } }
-	AzerothUnspokenCharacterDB = { schemaVersion = math.huge, memory = {} }
+	AzerothUnspokenCharacterDB = { schemaVersion = Config.SCHEMA_VERSION + 1, memory = {} }
 	Config:Load()
 	T.eq(Config.readOnly.global, true, "una versione più nuova resta in sola lettura")
-	T.eq(Config.readOnly.character, true, "infinito: più nuovo")
+	T.eq(Config.readOnly.character, true, "anche quella del personaggio")
+	AzerothUnspokenDB = { schemaVersion = math.huge, settings = { intensity = 7 } }
+	AzerothUnspokenCharacterDB = { schemaVersion = math.huge, memory = {} }
+	Config:Load()
+	T.eq(Config.readOnly.global, false, "infinito: un valore rovinato, non una versione più nuova")
+	T.eq(Config.readOnly.character, false, "infinito anche per il personaggio")
+	T.eq(AzerothUnspokenDB.settings.intensity, 7, "e le scelte restano")
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	Config:Load()
+end)
+
+-- #154: le migrazioni sono idempotenti sui dati che hanno già la forma corrente (uno schemaVersion perso le rigira)
+T.run("schemaVersion perso: le migrazioni non rifanno ciò che è già fatto", function()
+	for _, lost in ipairs({ false, -1, math.huge, 0 / 0, "x" }) do
+		AzerothUnspokenDB = { schemaVersion = lost or nil, settings = { chat = { mode = "AUTO_ONLY_IF_ALLOWED" },
+			output = { autoPublicSay = true }, intensity = 61 } }
+		AzerothUnspokenCharacterDB = { schemaVersion = lost or nil,
+			personality = { version = 2, archetype = "custom", legacy = { temperament = "stoic" },
+				traits = { stoicism = 95 }, trp3 = false },
+			relationships = { version = 2, npcs = {}, players = { ["Aldric-Stormrage"] = { user = { note = "n" }, seen = { first = 1, last = 2, count = 3 } } } } }
+		Config:Load()
+		local g, c = AzerothUnspokenDB.settings, AzerothUnspokenCharacterDB
+		T.eq(g.chat.mode, "AUTO_ONLY_IF_ALLOWED", tostring(lost) .. ": the chat mode is kept")
+		T.eq(g.output.autoPublicSay, true, tostring(lost) .. ": the second consent already given is not taken back")
+		T.eq(c.personality.version, 2, tostring(lost) .. ": the personality keeps its version")
+		T.eq(c.personality.legacy.temperament, "stoic", tostring(lost) .. ": and its legacy choices")
+		T.eq(c.personality.traits.stoicism, 95, tostring(lost) .. ": and its edited intensity")
+		T.eq(c.relationships.players["Aldric-Stormrage"].user.note, "n", tostring(lost) .. ": the relationships")
+		T.eq(AzerothUnspokenDB.schemaVersion, Config.SCHEMA_VERSION, tostring(lost) .. ": the schema is written")
+	end
+	-- a section written by a newer version of its module is not completed or validated
+	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
+	AzerothUnspokenCharacterDB = { schemaVersion = Config.SCHEMA_VERSION, personality = { version = 3, trp3 = "future" },
+		emotion = { version = 2, values = "future" }, relationships = { version = 3, players = "future" } }
+	Config:Load()
+	local c = AzerothUnspokenCharacterDB
+	T.eq(c.personality.trp3, "future", "personality v3: a value this version does not know is not reset")
+	T.eq(c.personality.traits, nil, "and no field is added")
+	T.eq(c.emotion.values, "future", "emotion v2 untouched")
+	T.eq(c.relationships.players, "future", "relationships v3 untouched")
+	T.ok(c.memory ~= nil and c.memories.version == 2, "the other sections are completed as usual")
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()
 end)

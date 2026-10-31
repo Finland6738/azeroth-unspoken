@@ -85,6 +85,25 @@ Engine.pendingTexts = {} -- testi arrivati prima della loro regola: [id][lingua]
 -- Le quattro voci del GDD §5.3.
 Engine.SPEAKERS = { narrator = true, inner = true, character = true, npc = true }
 
+---D16 (#130, #163): a literary form (a verse, a song, an inscription) carries the tag `lore` or a `genre_*` tag and
+---stays in the private narrator. The Chat Gateway and the validator both read this one definition.
+---@param tag any
+---@return boolean
+function Engine.IsLiteraryTag(tag)
+	return tag == "lore" or (type(tag) == "string" and tag:sub(1, 6) == "genre_")
+end
+
+---Whether a rule marks itself as a literary form: `tags` is a set (a registered rule) or a list (a record).
+---@param tags? table
+---@return boolean
+function Engine.HasLiteraryTag(tags)
+	if type(tags) ~= "table" then return false end
+	for k, v in pairs(tags) do
+		if Engine.IsLiteraryTag(type(k) == "string" and k or v) then return true end
+	end
+	return false
+end
+
 -- Profondità stilistica (GDD §4.3), dalla più semplice alla più elevata.
 Engine.DEPTH_ORDER = { "natural", "literary", "elevated" }
 Engine.DEPTHS = { natural = true, literary = true, elevated = true }

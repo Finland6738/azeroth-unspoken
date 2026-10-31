@@ -44,6 +44,7 @@ NS:RegisterLanguage("it", {
 
 		-- Chat Gateway
 		gw_empty = "niente da inviare.",
+		gw_private_only = "questa frase è privata (un monologo o una forma letteraria): non va mai in chat.",
 		gw_reroll_empty = "nessuna proposta da cambiare.",
 		gw_reroll_editing = "stai modificando la proposta: chiudi l'editor (Esc) prima di cambiare frase.",
 		gw_reroll_kept = "la tua versione modificata è stata sostituita. Il testo era: %s",
@@ -206,6 +207,7 @@ NS:RegisterLanguage("it", {
 		emotion_on = "emozioni accese: gli eventi cambiano l'umore del personaggio e le frasi lo seguono.",
 		emotion_off = "emozioni spente: nessuno stato emotivo, nulla di salvato. Il narratore funziona come prima.",
 		emotion_reset = "stato emotivo azzerato.",
+		emotion_readonly = "i dati delle emozioni vengono da una versione più nuova dell'addon: si leggono, non si cambiano.",
 		emotion_state = "emozioni: %s",
 		help_journal = "memoria e diario del personaggio",
 		help_stories = "le storie personali del personaggio",
@@ -267,6 +269,7 @@ NS:RegisterLanguage("it", {
 		soul_clear_tip = "Togli la scelta: il tratto torna ai valori di Total RP 3 (se consenti), del gioco o neutri.",
 		soul_avoid_title = "Argomenti da evitare (mai nelle frasi)",
 		soul_reset_done = "profilo neutro: nessuna scelta sui tratti.",
+		soul_readonly = "i dati della personalità vengono da una versione più nuova dell'addon: si leggono, non si cambiano.",
 		soul_arch_list = "archetipi: %s",
 		soul_arch_set = "archetipo scelto: %s. Vale subito.",
 		soul_value = "%s: %s",

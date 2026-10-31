@@ -184,7 +184,11 @@ is needed; a thought (`inner`) is never put in a frame.
 
 ### Personality: affinity tags
 
-`tags` without a colon (`"wry"`, `"heroic"`) are descriptive: the engine ignores them. With a colon (or a threshold) they
+`tags` without a colon (`"wry"`, `"heroic"`) are descriptive: the engine ignores them, with one exception: **`lore` and
+`genre_*` mark a literary form** (a verse, a song, an inscription; decision D16). Such a line is only for the private voices
+(`inner`, `npc`): the validator reports `literaryPublic` (error) for one in `narrator` or `character`, the archive refuses
+it, and the Chat Gateway never turns it into chat text whatever its voice. Monologues (`kind = "monologue"`) are private
+in the same way. With a colon (or a threshold) they
 link the phrase to the traits of the player's character (Character Soul, optional; without traits the phrase is neutral):
 
 | Tag | Effect |

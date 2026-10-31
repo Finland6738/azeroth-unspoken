@@ -442,3 +442,205 @@ T.run("M6: return after a defeat (enter, die, come back) has a coherent tone", f
 	T.ok(returns > 0, ("the return spoke (%d different lines, %d of return)"):format(n, returns))
 	T.eq(#light, 0, "no cheerful or ironic return line: " .. table.concat(light, ", "))
 end)
+
+---------------------------------------------------------------------------
+-- #154, #156: data from a newer version is read, never rewritten; loaded data is cleaned
+---------------------------------------------------------------------------
+local function Deep(v)
+	if type(v) ~= "table" then return v end
+	local out = {}
+	for k, x in pairs(v) do out[k] = Deep(x) end
+	return out
+end
+
+local function Same(a, b)
+	if type(a) ~= type(b) then return false end
+	if type(a) ~= "table" then return a == b end
+	for k, v in pairs(a) do if not Same(v, b[k]) then return false end end
+	for k in pairs(b) do if a[k] == nil then return false end end
+	return true
+end
+
+local function ErrorsAbout(text)
+	local n = 0
+	for _, e in ipairs(NS.Diagnostics.errors) do
+		if e.message:find(text, 1, true) then n = n + 1 end
+	end
+	return n
+end
+
+local function BackToNormal()
+	NS.cdb.personality, NS.cdb.emotion = nil, nil
+	NS.Config.Merge(NS.Config.characterDefaults, NS.cdb)
+	Personality:Sanitize()
+	Emotion:Load()
+end
+
+T.run("#154: a personality from a newer version is read from a copy and never rewritten", function()
+	Fresh()
+	local saved = { version = 3, archetype = "futurist", base = "futurist",
+		traits = { idealism = 70, resolve = 80, avoid = { death = true, spiders = true } } }
+	NS.cdb.personality = saved
+	local before = Deep(saved)
+	NS.Diagnostics.errors = {}
+	T.eq(Personality:Sanitize(), 0, "nothing is cleaned")
+	T.eq(Personality.readOnly, true, "read-only")
+	T.eq(ErrorsAbout("personality.version 3 > 2"), 1, "/au debug says so")
+	T.ok(Same(before, NS.cdb.personality), "the saved profile is exactly as it was: no version 2, no custom archetype")
+	T.eq(Personality:Profile().traits.resolve, 80, "the copy still holds what this version does not know")
+	T.eq(Personality:Effective().idealism, 70, "and the known traits count")
+	-- every way to write refuses
+	T.eq(Personality:SetTrait("irony", 50), false, "SetTrait refuses")
+	T.eq(Personality:SetTrait("avoid", nil), false, "clearing refuses")
+	T.eq(Personality:SetArchetype("neutral"), false, "SetArchetype refuses")
+	T.eq(Personality:ToggleTopic("death"), nil, "ToggleTopic refuses")
+	T.eq(Personality:SetLegacy("temperament", "stoic"), false, "SetLegacy refuses")
+	Personality:SetTRP3Consent(true)
+	T.eq(Personality:Reset(), false, "Reset refuses")
+	T.ok(Same(before, NS.cdb.personality), "still exactly as it was")
+	T.eq(Personality:Profile().trp3, false, "the consent did not change either")
+	SENT = {}
+	Personality:Command("irony 50")
+	T.ok(T.sentContains(NS:L("soul_readonly")), "the command says why")
+	Personality:Command("neutral")
+	T.ok(Same(before, NS.cdb.personality), "the commands changed nothing")
+	-- a second start: same result
+	Personality.readOnly = false
+	Personality:Sanitize()
+	T.ok(Same(before, NS.cdb.personality), "and a second load")
+	BackToNormal()
+	T.eq(Personality.readOnly, false, "back to normal data: writable again")
+	T.eq(Personality:SetTrait("irony", 50), true, "and it writes")
+end)
+
+T.run("#154: a profile whose version is lost or damaged is not converted again", function()
+	Fresh()
+	local function Profile(version)
+		return { version = version, archetype = "custom", legacy = { temperament = "stoic" },
+			traits = { stoicism = 95, irony = 40, avoid = { death = true } }, trp3 = false }
+	end
+	for _, v in ipairs({ -1, 0, 0.5, "x" }) do
+		NS.cdb.personality = Profile(v)
+		NS.Diagnostics.errors = {}
+		Personality:Sanitize()
+		local p = NS.cdb.personality
+		T.eq(p.traits.stoicism, 95, tostring(v) .. ": the edited intensity stays")
+		T.eq(p.legacy and p.legacy.temperament, "stoic", tostring(v) .. ": the old choice stays in legacy")
+		T.eq(p.version, 2, tostring(v) .. ": the version is repaired")
+	end
+	-- a version 1 profile still converts, also when its version is lost
+	for _, v in ipairs({ 1, -1 }) do
+		NS.cdb.personality = { version = v, archetype = "custom", traits = { temperament = "gruff" }, trp3 = false }
+		Personality:Sanitize()
+		T.eq(NS.cdb.personality.traits.altruism, 25, tostring(v) .. ": a version 1 profile is converted")
+		T.eq(NS.cdb.personality.version, 2, tostring(v) .. ": to version 2")
+	end
+	BackToNormal()
+end)
+
+T.run("#156: an archetype that is not a string gives the same result as an unknown one", function()
+	Fresh()
+	NS.cdb.personality = { version = 2, archetype = 5, traits = { irony = 100, optimism = 0 }, trp3 = false }
+	Personality:Sanitize()
+	T.eq(NS.cdb.personality.archetype, "custom", "traits without a valid archetype: custom")
+	NS.cdb.personality = { version = 2, archetype = {}, traits = {}, trp3 = false }
+	Personality:Sanitize()
+	T.eq(NS.cdb.personality.archetype, "neutral", "no traits: neutral")
+	NS.cdb.personality = { version = 2, archetype = "neutral", traits = { irony = 80 }, trp3 = false }
+	Personality:Sanitize()
+	T.eq(NS.cdb.personality.archetype, "custom", "'neutral' with traits is a custom profile")
+	BackToNormal()
+end)
+
+T.run("#154: an emotional state from a newer version is read and never rewritten", function()
+	Fresh()
+	local wall = time()
+	local saved = { version = 2, values = { nostalgic = { v = 0.9, at = wall, extra = "x" } }, newField = true }
+	NS.cdb.emotion = saved
+	local before = Deep(saved)
+	NS.Diagnostics.errors = {}
+	Emotion:Load()
+	T.eq(Emotion.readOnly, true, "read-only")
+	T.eq(ErrorsAbout("emotion.version 2 > 1"), 1, "/au debug says so")
+	T.ok(Same(before, NS.cdb.emotion), "the saved record is exactly as it was: version 2, the extra fields")
+	T.ok(Near(Emotion:Value("nostalgic"), 0.9, 0.01), "the emotion is read from the copy")
+	Emotion:Add("happy", 0.8)
+	Emotion:Add("nostalgic", 0.05)
+	Emotion:Persist()
+	T.ok(Same(before, NS.cdb.emotion), "Persist does nothing")
+	Emotion:Reset()
+	T.ok(Same(before, NS.cdb.emotion), "Reset does nothing")
+	T.ok(Emotion:Value("nostalgic") > 0.8, "and it did not clear the state")
+	SENT = {}
+	Emotion:Command("reset")
+	T.ok(T.sentContains(NS:L("emotion_readonly")), "the command says why")
+	T.ok(Same(before, NS.cdb.emotion), "the command changed nothing")
+	Emotion:Load()
+	T.ok(Same(before, NS.cdb.emotion), "and a second load")
+	BackToNormal()
+	T.eq(Emotion.readOnly, false, "back to normal data: writable again")
+	Emotion:Add("melancholic", 0.8)
+	Emotion:Persist()
+	T.ok(NS.cdb.emotion.values.melancholic ~= nil, "and it saves")
+end)
+
+T.run("#156: loaded emotions are rebuilt: a value within 0-1, no time in the future, no other field", function()
+	Fresh()
+	local wall = time()
+	NS.cdb.emotion = { version = 1, values = {
+		nostalgic = { v = 0.9, at = wall + 365 * 86400, junk = string.rep("x", 200000) },   -- a clock one year ahead
+		melancholic = { v = 7, at = wall - 60, extra = { 1, 2, 3 } },
+		serene = { v = -3, at = wall },
+	} }
+	NS.Diagnostics.errors = {}
+	Emotion:OnInit()
+	local values = NS.cdb.emotion.values
+	T.eq(values.nostalgic.at, wall, "the future time is now")
+	T.eq(values.nostalgic.junk, nil, "the extra field is gone")
+	T.eq(values.melancholic.v, 1, "the value is clamped")
+	T.eq(values.melancholic.extra, nil, "no extra field")
+	T.eq(values.serene, nil, "a value of zero is not an emotion")
+	for e, rec in pairs(values) do
+		local keys = 0
+		for _ in pairs(rec) do keys = keys + 1 end
+		T.eq(keys, 2, e .. ": only a value and a time")
+	end
+	T.ok(Near(Emotion:Value("nostalgic"), 0.9, 0.01), "no decay was lost: it starts from now")
+	T.ok(ErrorsAbout("brought back inside their limits") == 1, "/au debug reports it")
+	-- it ages normally from now on
+	LEAP(Emotion.halfLife.nostalgic)
+	Emotion:Load()
+	T.ok(Near(Emotion:Value("nostalgic"), 0.45, 0.02), "and the next login decays it: " .. tostring(Emotion:Value("nostalgic")))
+	-- a second load of clean data changes nothing and reports nothing
+	local before = Deep(NS.cdb.emotion)
+	NS.Diagnostics.errors = {}
+	Emotion:OnInit()
+	T.ok(Same(before, NS.cdb.emotion), "a second load changes nothing")
+	T.eq(#NS.Diagnostics.errors, 0, "and reports nothing")
+end)
+
+T.run("#156: the anti-repetition memory loses future times and huge counters", function()
+	Fresh()
+	local good = next(Engine.byId)
+	local now = time()
+	NS.cdb.memory = { uses = { [good] = 7.5e299, other = 3 }, last = { [good] = now + 365 * 86400, far = 1e15, past = now - 10 },
+		recent = {}, lastTone = {}, variant = {} }
+	NS.Diagnostics.errors = {}
+	local dropped, clamped = Engine:SanitizeMemory()
+	T.eq(dropped, 0, "nothing malformed")
+	T.eq(clamped, 3, "three values brought back")
+	T.eq(NS.cdb.memory.uses[good], Engine.COUNT_MAX, "a huge counter is capped")
+	T.eq(NS.cdb.memory.uses.other, 3, "a normal one stays")
+	T.eq(NS.cdb.memory.last[good], now, "a future last use is now")
+	T.eq(NS.cdb.memory.last.far, now, "and so is a ruined one")
+	T.eq(NS.cdb.memory.last.past, now - 10, "a past one stays")
+	-- through the start-up decay: the cooldown ends instead of lasting for ever
+	NS.cdb.memory.last = { [good] = now + 365 * 86400, far = 1e15 }
+	Engine:DecayMemory()
+	T.eq(ErrorsAbout("future times or oversized counters"), 1, "/au debug reports it")
+	T.ok(NS.cdb.memory.last[good] == nil or NS.cdb.memory.last[good] <= now, "a known phrase is blocked at most for its cooldown")
+	T.ok(NS.cdb.memory.last.far == nil or NS.cdb.memory.last.far <= now, "an unknown id too")
+	LEAP(31 * 86400)
+	Engine:DecayMemory()
+	T.eq(NS.cdb.memory.last.far, nil, "and an unknown id goes after the dormant period")
+end)

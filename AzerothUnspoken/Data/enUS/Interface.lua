@@ -39,6 +39,7 @@ NS:RegisterLanguage("en", {
 
 		-- Chat Gateway
 		gw_empty = "nothing to send.",
+		gw_private_only = "this line is private (a monologue or a literary form): it is never sent to chat.",
 		gw_reroll_empty = "no proposal to change.",
 		gw_reroll_editing = "you are editing the proposal: close the editor (Esc) before changing the line.",
 		gw_reroll_kept = "your edited version was replaced. The text was: %s",
@@ -201,6 +202,7 @@ NS:RegisterLanguage("en", {
 		emotion_on = "emotions on: events change the character's mood, and the lines follow it.",
 		emotion_off = "emotions off: no emotional state, nothing saved. The narrator works as before.",
 		emotion_reset = "emotional state cleared.",
+		emotion_readonly = "the emotion data comes from a newer version of the addon: it is read, not changed.",
 		emotion_state = "emotions: %s",
 		help_journal = "character memory and journal",
 		help_stories = "the character's personal stories",
@@ -262,6 +264,7 @@ NS:RegisterLanguage("en", {
 		soul_clear_tip = "Remove the choice: the trait falls back to Total RP 3 (if you allow it), game data or neutral.",
 		soul_avoid_title = "Topics to avoid (never in lines)",
 		soul_reset_done = "neutral profile: no trait choices.",
+		soul_readonly = "the personality data comes from a newer version of the addon: it can be read, not changed.",
 		soul_arch_list = "archetypes: %s",
 		soul_arch_set = "archetype chosen: %s. Takes effect now.",
 		soul_value = "%s: %s",
