@@ -1103,6 +1103,8 @@ T.run("finestra: persone incontrate e opzioni", function()
 	boxes[2]:TypeEnter("Dara-Stormrage")
 	T.ok(R:Get("player", "Dara-Stormrage") ~= nil, "un nome scritto dall'utente")
 	-- opzioni
+	RelationsFrame:ShowView("options")   -- U1 (#172): le opzioni hanno una scheda loro
+	T.eq(RelationsFrame:CurrentView(), "options", "vista opzioni")
 	local b = ButtonWithText("Registra da solo")
 	T.ok(b ~= nil and b:GetText():find(NS:L("off"), 1, true), "opzione spenta di base")
 	b:Click()
@@ -1228,6 +1230,249 @@ T.run("testi dell'interfaccia: IT ed EN", function()
 		if k:find("^rel_") then T.ok(it[k] ~= nil, "IT ha " .. k) end
 	end
 	T.ok(n >= 60, "chiavi delle relazioni: " .. n)
+end)
+
+---------------------------------------------------------------------------
+-- U1: layout of the window (#171, #172, #179, #180) and the edit boxes (#184)
+---------------------------------------------------------------------------
+-- the width of a label in units, as the review estimates it: 6.3 per character, colour escapes left out
+local function LabelUnits(text)
+	local plain = tostring(text or ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+	local _, chars = plain:gsub("[^\128-\191]", "")
+	return chars * 6.3
+end
+
+-- where a widget anchored to the window sits, in window units (top = 0, down is negative); nil when it is anchored to
+-- another region (laid out top-down after it) or has no text
+local function Rect(w, frame)
+	local p = w._s.points and w._s.points[#w._s.points]
+	if not p or type(p[2]) ~= "number" then return nil end
+	local point, x, y = p[1], p[2], p[3]
+	local width, height = w:GetWidth(), w:GetHeight()
+	if w.kind == "FontString" then
+		local text = w:GetText()
+		if text == "" then return nil end
+		width = w._s.w or LabelUnits(text)
+		local lines = 0
+		for part in (text .. "\n"):gmatch("([^\n]*)\n") do lines = lines + math.max(1, math.ceil(LabelUnits(part) / width)) end
+		height = lines * 14
+	end
+	local left = point:find("RIGHT") and (frame:GetWidth() + x - width) or x
+	local top = point:find("BOTTOM") and (-frame:GetHeight() + y + height) or y
+	return { l = left, r = left + width, t = top, b = top - height, w = w }
+end
+
+local function Describe(r)
+	return ("%s '%s' [%d,%d %d,%d]"):format(r.w.kind, tostring(r.w:GetText()), r.l, r.t, r.r, r.b)
+end
+
+-- every shown widget of the window lies inside it, no two overlap, and every button label fits its button
+local function CheckLayout(where)
+	local frame = _G[ROOT]
+	T.ok(frame:GetHeight() <= 680, where .. ": at most 680 units tall (" .. frame:GetHeight() .. ")")
+	local rects = {}
+	for _, w in ipairs(frame.children) do
+		if w:IsShown() and w.kind ~= "Texture" then
+			local r = Rect(w, frame)
+			if r then table.insert(rects, r) end
+		end
+	end
+	local bad = {}
+	for i, a in ipairs(rects) do
+		if a.l < 0 or a.r > frame:GetWidth() or a.t > 0 or a.b < -frame:GetHeight() then table.insert(bad, "outside: " .. Describe(a)) end
+		for j = i + 1, #rects do
+			local b = rects[j]
+			if a.l < b.r and b.l < a.r and a.b < b.t and b.b < a.t then table.insert(bad, Describe(a) .. " over " .. Describe(b)) end
+		end
+		if a.w.kind == "Button" and a.w:GetText() ~= "" and LabelUnits(a.w:GetText()) + 12 > a.w:GetWidth() then
+			table.insert(bad, "label wider than its button: " .. Describe(a))
+		end
+	end
+	T.eq(table.concat(bad, "; "), "", where .. ": nothing outside, nothing overlapping, no label overflowing")
+end
+
+T.run("U1 #171: the list rows are plain buttons that own their cells", function()
+	Fresh()
+	local zeno = Person("Zeno-Stormrage", { familiarity = 30, trust = 40, affection = 40 })
+	Person("Aldo-Stormrage", { familiarity = 10 })
+	RelationsFrame:Open("list")
+	local cells = Under(ROOT, function(w) return w.kind == "FontString" and w:IsShown() and w:GetText() == zeno end)
+	T.eq(#cells, 1, "the name is in one cell")
+	local row = cells[1]:GetParent()
+	T.ok(row.kind == "Button" and row:IsShown(), "the cell belongs to its row button, drawn with it and not under it")
+	T.ok(row:GetParent() == _G[ROOT], "and the row belongs to the window")
+	local n = 0
+	for _, c in ipairs(row.children) do if c.kind == "FontString" and c:GetText() ~= "" then n = n + 1 end end
+	T.eq(n, 6, "the six cells of the row are on the row")
+	T.eq(row:GetText(), "", "the row has no label of its own")
+	T.ok(row.scripts.OnEnter ~= nil, "a tooltip shows the whole row")
+	row.scripts.OnEnter(row); row.scripts.OnLeave(row)
+	row:Click()
+	T.eq(RelationsFrame:CurrentView(), "detail", "a click opens the person")
+	T.eq(#Texts(function(t) return t:find(zeno, 1, true) == 1 end), 1, "the right one")
+	-- the empty state still shows its message
+	R:Reset("all")
+	RelationsFrame:Open("list")
+	T.eq(#Texts(function(t) return t:find(NS:L("rel_empty"), 1, true) ~= nil end), 1, "the empty list says so")
+	RelationsFrame:Close()
+end)
+
+T.run("U1 #172 #179 #180: every view fits 680 units, nothing overlaps, labels fit, in Italian and English", function()
+	for _, lang in ipairs({ "it", "en" }) do
+		Fresh()
+		NS.db.locale = lang
+		R:SetSetting("attraction", true)   -- seven axes: the tallest detail
+		local key = Person("Aldric-Stormrage", { trust = 55, affection = 45, familiarity = 50 })
+		P.zone = "Stranglethorn Vale"
+		for _, kind in ipairs({ "group", "trade", "duel", "invite", "emote", "group_combat" }) do
+			R:Observe(key, kind)
+			ADVANCE(120)
+		end
+		R:SetFeelings("player", key, { "resentment", "gratitude" })
+		Talk(1234, "Pip")
+		for i = 1, 14 do Person(("Person%02d-Stormrage"):format(i), { trust = i }) end
+		R:Propose("Brenna-Stormrage", "group"); R:Propose("Kesh-Stormrage", "trp3")
+		RelationsFrame:Open("list")
+		CheckLayout(lang .. " list")
+		RelationsFrame:Open("people")
+		CheckLayout(lang .. " people")
+		RelationsFrame:Open("options")
+		CheckLayout(lang .. " options")
+		-- the shared list waiting for its confirmation: the warning comes after the privacy note, not over a button
+		ButtonWithText(NS:L("rel_opt_share")):Click()
+		T.ok(R:ShareArmed(), lang .. ": the shared list waits for a second click")
+		local frame = _G[ROOT]
+		T.ok(frame.warning:IsShown() and frame.warning:GetText():find("Privacy", 1, true) ~= nil, lang .. ": the warning is on screen")
+		local p = frame.warning._s.points[1]
+		T.ok(p[2] == frame.privacy and p[3] == "BOTTOMLEFT", lang .. ": laid out under the privacy note, top-down")
+		CheckLayout(lang .. " options, share armed")
+		ButtonWithText(NS:L("rel_opt_share_confirm")):Click()
+		T.ok(R:Sharing(), lang .. ": on")
+		T.ok(not frame.warning:IsShown(), lang .. ": the warning goes away")
+		RelationsFrame:Open({ kind = "player", key = key })
+		T.ok(ButtonWithText(NS:L("rel_scope_btn_character")) ~= nil, lang .. ": the scope button is there")
+		CheckLayout(lang .. " player detail")
+		ButtonWithText(NS:L("rel_forget")):Click(); ButtonWithText(NS:L("rel_delete")):Click()
+		CheckLayout(lang .. " player detail, both actions armed")
+		RelationsFrame:Open({ kind = "npc", key = 1234 })
+		CheckLayout(lang .. " NPC detail")
+		R:StopSharing()
+		RelationsFrame:Close()
+	end
+	NS.db.locale = "it"
+end)
+
+T.run("U1 #180: the longest values fit the detail's buttons, in Italian and English", function()
+	Fresh()
+	local key = Person("Zeno-Stormrage", { familiarity = 30 })
+	RelationsFrame:Open({ kind = "player", key = key })
+	local frame = _G[ROOT]
+	local traitW, labelW = frame.dTraitBtns.role:GetWidth(), frame.dLabelBtn:GetWidth()
+	local feel1W, feel2W, presetW = frame.dFeeling1:GetWidth(), frame.dFeeling2:GetWidth(), frame.dPreset:GetWidth()
+	local optionW = frame.options[1].button:GetWidth()
+	for _, lang in ipairs({ "it", "en" }) do
+		NS.db.locale = lang
+		local bad = {}
+		local function Fits(text, width)
+			if LabelUnits(text) + 12 > width then table.insert(bad, ("'%s' (%d) in %d"):format(text, LabelUnits(text), width)) end
+		end
+		for trait, def in pairs(NS.Traits.defs) do
+			if frame.dTraitBtns[trait] then
+				for _, v in ipairs(def.values) do
+					Fits(NS.Traits.Name(trait) .. ": " .. NS.Traits.ValueName(trait, v) .. " (" .. NS:L("rel_trait_auto") .. ")", traitW)
+				end
+			end
+		end
+		for _, id in ipairs(R:LabelIds()) do
+			for _, sex in ipairs({ "male", "female" }) do
+				Fits(NS:L("rel_label_auto", R:LabelName(id, sex)), labelW)
+				Fits(NS:L("rel_label_set", R:LabelName(id, sex)), labelW)
+			end
+		end
+		for id in pairs(R.feelingById) do
+			Fits(NS:L("rel_feeling_btn", R:FeelingName(id)), feel1W)
+			Fits(NS:L("rel_feeling_btn2", R:FeelingName(id)), feel2W)
+		end
+		Fits(NS:L("rel_feeling_preset"), presetW)
+		for _, o in ipairs(frame.options) do
+			Fits(NS:L(o.text) .. ": " .. NS:L("off"), optionW)
+			Fits(NS:L(o.text) .. ": " .. NS:L("on"), optionW)
+		end
+		Fits(NS:L("rel_opt_share_confirm"), optionW)
+		T.eq(table.concat(bad, "; "), "", lang .. ": every value fits")
+	end
+	NS.db.locale = "it"
+	RelationsFrame:Close()
+end)
+
+T.run("U1 #184: the boxes save when they lose focus, to the person they were opened for", function()
+	Fresh()
+	local zeno = Person("Zeno-Stormrage", { familiarity = 30 })
+	local aldo = Person("Aldo-Stormrage", { familiarity = 10 })
+	local function Focus(box, text)
+		box:SetFocus(); box.scripts.OnEditFocusGained(box)
+		box:SetText(text)
+	end
+	local function Lose(box) box:ClearFocus(); box.scripts.OnEditFocusLost(box) end
+	RelationsFrame:Open({ kind = "player", key = zeno })
+	local boxes = Boxes()
+	local search, custom, note, tags = boxes[1], boxes[3], boxes[4], boxes[5]
+	-- a draft survives a redraw and goes to its person when another one is opened (the journal's "...")
+	Focus(note, "Draft for Zeno")
+	R:SetAxis("player", zeno, "trust", 20)
+	T.eq(note:GetText(), "Draft for Zeno", "a redraw keeps the draft")
+	RelationsFrame:Open({ kind = "player", key = aldo })
+	T.eq(R:Get("player", zeno).user.note, "Draft for Zeno", "the draft is saved to Zeno")
+	T.eq(R:Get("player", aldo).user.note, nil, "never to Aldo")
+	T.ok(not note:HasFocus(), "the box lets go of the keyboard")
+	T.eq(note:GetText(), "", "and shows Aldo's note")
+	-- a click on another box (focus lost)
+	Focus(tags, "guild, fair")
+	Lose(tags)
+	T.eq(table.concat(R:Get("player", aldo).user.tags or {}, "|"), "guild|fair", "focus lost: the tags are saved")
+	-- Enter saves and lets go
+	Focus(custom, "brother in arms")
+	custom.scripts.OnEnterPressed(custom)
+	T.eq(R:Get("player", aldo).user.label, "brother in arms", "Enter saves the label")
+	T.ok(not custom:HasFocus(), "and lets go")
+	-- Esc puts the saved text back
+	Focus(custom, "something else")
+	custom.scripts.OnEscapePressed(custom)
+	T.eq(R:Get("player", aldo).user.label, "brother in arms", "Esc saves nothing")
+	T.eq(custom:GetText(), "brother in arms", "and shows the saved text")
+	-- an untouched box writes nothing: leaving the empty label box does not clear a label chosen from the list
+	R:SetLabel("player", aldo, nil)
+	R:CycleLabel("player", aldo)
+	local chosen = R:Get("player", aldo).user.label
+	T.ok(chosen ~= nil and R.labelById[chosen] ~= nil, "a label from the list")
+	T.eq(custom:GetText(), "", "the box is empty")
+	Focus(custom, "")
+	Lose(custom)
+	T.eq(R:Get("player", aldo).user.label, chosen, "leaving the empty box keeps the chosen label")
+	-- Back and Close keep the draft
+	Focus(note, "Back draft")
+	ButtonWithText(NS:L("rel_back")):Click()
+	T.eq(RelationsFrame:CurrentView(), "list", "back to the list")
+	T.eq(R:Get("player", aldo).user.note, "Back draft", "Back saves the note")
+	RelationsFrame:Open({ kind = "player", key = aldo })
+	Focus(note, "Close draft")
+	RelationsFrame:Close()
+	T.eq(R:Get("player", aldo).user.note, "Close draft", "Close saves the note")
+	-- a draft for a person removed meanwhile goes nowhere
+	RelationsFrame:Open({ kind = "player", key = zeno })
+	Focus(note, "Lost draft")
+	R:Remove("player", zeno)
+	RelationsFrame:Open({ kind = "player", key = aldo })
+	T.eq(R:Get("player", aldo).user.note, "Close draft", "the other person is untouched")
+	-- the search box lets go of the keyboard on Enter and on a change of view
+	RelationsFrame:Open("list")
+	search:SetFocus()
+	search.scripts.OnEnterPressed(search)
+	T.ok(not search:HasFocus(), "Enter in the search box gives the keyboard back to the game")
+	search:SetFocus()
+	RelationsFrame:Open("people")
+	T.ok(not search:HasFocus(), "and so does a change of view")
+	RelationsFrame:Close()
 end)
 
 T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle impostazioni", function()

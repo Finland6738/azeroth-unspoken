@@ -111,7 +111,7 @@ When a player from your list joins your group, challenges you, invites you or us
 
 ## People who are only nearby (optional, off by default)
 
-Walking past someone is not meeting them, so by default the addon ignores nameplates and the mouseover. If you turn on **Recognise nearby** (the window, or `/au relationships proximity on`), the narrator may recognise a person **already in your list** when their nameplate appears or you point at them, with the same rule as joining a group: **at most once per person per session**, in the private narrator, and silence is always possible. If you also allowed [[reading other players' Total RP 3 profiles|Character-Soul-and-Total-RP-3]], someone who is **not** in your list but has a Total RP 3 profile can appear in *People met* as a suggestion for this session.
+Walking past someone is not meeting them, so by default the addon ignores nameplates and the mouseover. If you turn on **Recognise nearby** (the Options tab of the window, or `/au relationships proximity on`), the narrator may recognise a person **already in your list** when their nameplate appears or you point at them, with the same rule as joining a group: **at most once per person per session**, in the private narrator, and silence is always possible. If you also allowed [[reading other players' Total RP 3 profiles|Character-Soul-and-Total-RP-3]], someone who is **not** in your list but has a Total RP 3 profile can appear in *People met* as a suggestion for this session.
 
 What it never does:
 
@@ -152,24 +152,28 @@ Pack authors: a line tagged `warm` in a greeting, farewell or reaction to an act
 
 Open the window with `/au relationships` or the **Relationships...** button in the [[settings panel|Settings]].
 
-**The Relationships tab** is a table with **Name**, **Type** (NPC or Player), **Label**, **Disposition**, **Last seen** and **Encounters**. Click a column header to sort. Filter by **All**, **NPCs** or **Players**, by label, or type in **Search**.
+The window is 660 units tall in every view, so it fits the screen at UI scale 1. It has three tabs: **Relationships**, **People met** and **Options**.
+
+**The Relationships tab** is a table with **Name**, **Type** (NPC or Player), **Label**, **Disposition**, **Last seen** and **Encounters**. Click a column header to sort. Filter by **All**, **NPCs** or **Players**, by label, or type in **Search** (Enter gives the keyboard back to the game). A cell that is too long ends with "..."; point at the row to read all of it, and click it to open the person.
 
 **The People met tab** lists this session's suggestions. Add with **+**, or dismiss.
 
-**The detail view** (click a name) has two sections (and, with the shared list on, a **Choices: shared / this character** button). **What you chose**:
+**The detail view** (click a name) has two columns, and for a player a third block underneath. With the shared list on, a **Choices: shared / this character** button sits at the top right. **What you chose**:
 
-- the axes, with sliders you can adjust;
-- **Label**: *Automatic* or *Chosen*. Click to cycle through the labels (including **ally**) and back to automatic, or type your own words in the box next to it;
+- on the left, the axes, with sliders you can adjust;
+- **Label**: *Automatic* or *Chosen*. Click to cycle through the labels (including **ally**) and back to automatic, or type your own words in the box below it;
 - **Feeling**: up to two feelings in words, and **Typical axes** to set the axes to match the first one;
-- **Note** and **Tags**: private, for you;
-- **How you see them**: personality traits of the person (temperament, morality, goals, way of speaking, role) as you see them; *unknown* leaves it to the addon.
+- on the right, **How you see them**: personality traits of the person (role, temperament, morality, goals, way of speaking) as you see them; *unknown* leaves it to the addon;
+- **Note** and **Tags**: private, for you.
 
-For a player there is a second section, **What the addon observed**: first recorded, last seen, the number of encounters by kind and the last five facts. And two different buttons:
+The label, note and tags boxes save when you leave them: Enter, a click in another box, another tab, **Back to the list** or **Close**. A text you were typing always goes to the person it was typed for, even if you open someone else from the journal. **Esc** puts back the saved text.
+
+For a player there is a block across the window, **What the addon observed**: first recorded, last seen, the number of encounters by kind and, on the right, the last five facts. At the bottom, next to **Back to the list**, two different buttons:
 
 - **Forget observations** (asks for confirmation) erases only what the addon observed: the counts, the encounters and the facts. The person stays in your list with everything you chose.
 - **Remove person** (asks for confirmation) deletes the person and everything about them.
 
-At the bottom of the window:
+**The Options tab** (point at an option to read what it does):
 
 | Option | Default | What it does |
 |---|---|---|
@@ -181,7 +185,9 @@ At the bottom of the window:
 | **Recognise nearby** | off | nameplates and mouseover can let the narrator recognise a known player, for this session only; nothing is saved |
 | **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second click turn it on) |
 
-Also: **Export** (text to copy) and **Forget everything** (with confirmation).
+Under the options, the privacy note. When you click **Share with the account**, the warning appears below it and the button becomes **Confirm: share** for 15 seconds.
+
+The list, People met and Options tabs also have **Export** (text to copy) and **Forget everything** (with confirmation) at the bottom.
 
 ## Commands
 
@@ -236,17 +242,17 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Setting | Default | Where |
 |---|---|---|
 | Relationships module | on | [[settings panel|Settings]], modules |
-| Automatic NPCs | on | relationships window |
-| Suggest people | on | relationships window |
-| Register by itself | off | window, `/au relationships auto` |
-| Attraction axis | off | window, `/au relationships attraction` |
-| Recognise on target | off | window |
-| Recognise nearby | off | window, `/au relationships proximity` |
-| Share with the account | off | window, `/au relationships share` |
+| Automatic NPCs | on | relationships window, Options tab |
+| Suggest people | on | relationships window, Options tab |
+| Register by itself | off | Options tab, `/au relationships auto` |
+| Attraction axis | off | Options tab, `/au relationships attraction` |
+| Recognise on target | off | Options tab |
+| Recognise nearby | off | Options tab, `/au relationships proximity` |
+| Share with the account | off | Options tab, `/au relationships share` |
 
 ## What you will see
 
-- The window and its two tabs, filling up as you play.
+- The window and its three tabs, filling up as you play.
 - Lines that change tone with the bond: more formal with strangers, warmer with friends, more intimate with close bonds.
 - An occasional memory in the [[journal|Memory-and-Journal]] when a bond changes in a meaningful way.
 

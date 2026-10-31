@@ -23,8 +23,8 @@ NS:RegisterLanguage("it", {
 		rel_cand_add_tip = "Aggiungi alla lista.", rel_cand_dismiss_tip = "Scarta la proposta (fino al prossimo accesso).",
 		rel_no_candidates = "Nessuna proposta in questa sessione.",
 		rel_src_group = "nel gruppo", rel_src_trade = "uno scambio", rel_src_trp3 = "ha un profilo Total RP 3", rel_src_whisper = "risposta in privato",
-		rel_label = "Etichetta", rel_label_set = "Scelta: %s (clic: cambia)", rel_label_auto = "Automatica: %s (clic: scegli)",
-		rel_label_tip = "L'etichetta scelta a mano ha la precedenza su quella calcolata. Giri tra le etichette fino a tornare all'automatica. Per un testo tuo, scrivilo nella casella accanto.",
+		rel_label = "Etichetta", rel_label_set = "Scelta: %s", rel_label_auto = "Automatica: %s",
+		rel_label_tip = "Clic: etichetta successiva. L'etichetta scelta a mano ha la precedenza su quella calcolata. Giri tra le etichette fino a tornare all'automatica. Per un testo tuo, scrivilo nella casella sotto.",
 		rel_note = "Nota", rel_tags = "Tag", rel_last = "ultima",
 		rel_traits_title = "Come lo vedi (influenza le frasi; «non so» lascia decidere all'addon)",
 		rel_trait_unknown = "non so", rel_trait_auto = "automatico",
@@ -83,6 +83,12 @@ NS:RegisterLanguage("it", {
 		rel_scope_btn_shared = "Scelte: condivise", rel_scope_btn_character = "Scelte: questo personaggio",
 		rel_scope_tip = "La lista condivisa è accesa. 'Condivise': ogni personaggio usa le stesse scelte per questa persona. 'Questo personaggio': questo personaggio tiene una copia sua e ignora quelle condivise. Clic per passare dall'una all'altra (le scelte si spostano o si copiano, mai perse).",
 		rel_delete_shared_tip = "La lista condivisa è accesa: togliere la persona la toglie dalla lista dell'account per tutti i tuoi personaggi.",
+		-- U1 (#171, #172, #180, #184): la scheda delle opzioni, il suggerimento delle righe, le caselle che salvano quando le lasci
+		rel_tab_options = "Opzioni",
+		rel_options_hint = "Passa il mouse su un'opzione per leggere cosa fa. Nulla qui legge la chat o i whisper.",
+		rel_row_tip = "Clic: apri la relazione.",
+		rel_custom_tip = "La tua etichetta, con parole tue. Si salva quando lasci la casella: Invio, un'altra casella, un'altra vista o Chiudi. Esc rimette il testo salvato.",
+		rel_edit_tip = "Si salva quando lasci la casella: Invio, un'altra casella, un'altra vista o Chiudi. Esc rimette il testo salvato.",
 		rel_help = "uso: /au relationships [list / people / add <nome> / dismiss <nome> / remove <nome/npc:ID> / detail <nome> / note <nome> <testo> / tags <nome> <tag,...> / label <nome> <testo> / set <nome> <asse> <valore> / export / auto on/off / attraction on/off / feeling <nome> <sentimento> [preset] / forget <nome> / proximity on/off / share [on/off/all/copy] / scope <nome> shared/character / reset [all/npcs/players/shared]]",
 	},
 })
