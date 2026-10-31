@@ -169,7 +169,7 @@ See [[Memory and Journal|Memory-and-Journal]].
 | `/au relationships export` | Shows your relationships as text you can copy. |
 | `/au relationships auto on\|off` | Registers the players you meet by themselves. Off by default. |
 | `/au relationships attraction on\|off` | Turns the optional attraction axis on or off. Off by default. |
-| `/au relationships reset [all\|npcs\|players]` | Erases relationships. Asks you to repeat within 15 seconds to confirm. |
+| `/au relationships reset [all|npcs|players|shared]\|npcs\|players]` | Erases relationships. Asks you to repeat within 15 seconds to confirm. |
 
 A name can be `Name` or `Name-Realm`. An NPC is written `npc:` followed by its number, as shown by `/au relationships list`. See [[Relationships]].
 
