@@ -1,6 +1,7 @@
 """Seeded pick trace of the engine, to compare two versions of the addon (R1: #83, #84, #86). Offline; never shipped.
 
-Usage: python -I -X utf8 Tests/trace_picks.py [--addon DIR] [--picks 3000] [--seed 7] [--synthetic N] > trace.txt
+Usage: python -I -X utf8 Tests/trace_picks.py [--addon DIR] [--picks 3000] [--seed 7] [--synthetic N]
+                                              [--soul ARCHETYPE] [--emotion NAME=VALUE,...] > trace.txt
 
 It loads the addon (no example pack), seeds math.random and asks Engine:PickEntry for a fixed sequence of events,
 forms, languages, zones, subzones, hours, classes, races and targets, keeping the anti-repetition memory between picks
@@ -31,10 +32,19 @@ def main(argv):
                     "selection alone with an engine that had no cap")
     ap.add_argument("--r1", action="store_true", help="switch off what R3 added to the selection (Engine.R1_COMPAT): "
                     "the trace must then be the same as the engine of R1 on the same data")
+    ap.add_argument("--soul", help="archetype of the character's personality (R4), e.g. veteran; default neutral")
+    ap.add_argument("--emotion", help="emotional state at the start (R4), e.g. worried=0.6,tense=0.3; it fades as the "
+                    "trace advances the time")
     a = ap.parse_args(argv)
     lua, ns, _ = B.load_addon(os.path.abspath(a.addon))
     if a.r1:
         ns.Engine.R1_COMPAT = True
+    if a.soul:
+        assert ns.Personality.SetArchetype(ns.Personality, a.soul), "unknown archetype " + a.soul
+    for pair in (a.emotion or "").split(","):
+        if pair:
+            name, value = pair.split("=")
+            ns.Emotion.Add(ns.Emotion, name, float(value))
     if a.uses_max and ns.Engine.USES_MAX:
         ns.Engine.USES_MAX, ns.Engine.USES_TRIM = a.uses_max, a.uses_max
     if a.synthetic:

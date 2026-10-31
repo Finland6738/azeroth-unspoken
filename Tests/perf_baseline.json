@@ -1,0 +1,5 @@
+{
+ "about": "Lua instructions per Engine:PickEntry, in thousands, of the scale projection of run_tests.py (2,000 synthetic rules, two languages, 150 picks, seed 1). run_tests.py warns above warn_ratio times this value (#157). Update it in the PR that changes it on purpose.",
+ "pick_kinstr_2000": 21.0,
+ "warn_ratio": 1.25
+}

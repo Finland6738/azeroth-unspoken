@@ -386,7 +386,11 @@ function Place.Factor(entry, ctx)
 	end
 	return f
 end
-Engine:SetWeightHook("C", "place", Place.Factor)
+-- pure (#157) except where the length of the texts counts (battleground, arena, boss)
+Engine:SetWeightHook("C", "place", Place.Factor, function(ctx)
+	local kind = Place.RhythmKind(ctx.place)
+	return kind ~= "pvp" and kind ~= "arena" and kind ~= "encounter"
+end)
 
 NS.NarrativeDirector:SetRhythm("place", function(event, ctx)
 	local r = Place.RHYTHM[Place.RhythmKind(ctx.place) or ""]

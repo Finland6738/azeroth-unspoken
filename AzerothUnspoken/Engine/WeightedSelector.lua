@@ -172,15 +172,6 @@ function Engine:DecayMemory()
 	end
 end
 
-local function IsRecent(key, id)
-	local list = Mem().recent[key]
-	if not list then return false end
-	for _, r in ipairs(list) do
-		if r == id then return true end
-	end
-	return false
-end
-
 -- entry: la voce usata (frase, cornice o vocabolario; senza, la frase con quell'id); l'ultimo uso si ricorda solo se
 -- ha un cooldown (#86)
 local function Remember(key, id, keep, entry)
@@ -355,14 +346,22 @@ end
 --   E: R4 (stato emotivo, Systems/Emotion.lua; 1 quando il modulo è spento)
 ---@type table<string, table<string, fun(entry: AUPhrase, ctx: table): number>>
 Engine.weightHooks = { C = {}, P = {}, R = {}, E = {} }
+-- Pure hooks (#157, #138): [factor][name] = true, or fn(ctx) -> true when the hook is pure in that context. A pure
+-- hook reads only the context and the rule's descriptive fields (voice, registers, tags, theme, motifs, depth...),
+-- never the id, the texts, the conditions or the order of the rule, and draws no random numbers; during one pick it
+-- gives the same value for every rule with the same descriptive fields, so the selection computes it once for them
+-- (Engine.MEMO).
+Engine.weightHookPure = { C = {}, P = {}, R = {}, E = {} }
 
 ---Aggiunge, sostituisce o toglie (fn = nil) un aggancio di un fattore del peso.
 ---@param factor "C"|"P"|"R"|"E"
 ---@param name string
 ---@param fn? fun(entry: AUPhrase, ctx: table): number
-function Engine:SetWeightHook(factor, name, fn)
+---@param pure? boolean|fun(ctx: table): boolean the hook is pure (always, or in the contexts where this says so)
+function Engine:SetWeightHook(factor, name, fn, pure)
 	assert(self.weightHooks[factor], "fattore del peso sconosciuto: " .. tostring(factor))
 	self.weightHooks[factor][name] = fn
+	self.weightHookPure[factor][name] = fn and (pure == true or type(pure) == "function") and pure or nil
 end
 
 local function Hooks(factor, entry, ctx)
@@ -460,8 +459,11 @@ end
 -- le voci usate di recente restano escluse finché ce ne sono altre disponibili
 local function WeightedPick(items, key)
 	local pool, total = {}, 0
+	-- the window as a set, once, not scanned for every item (#157)
+	local recent = {}
+	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
 	for _, it in ipairs(items) do
-		if it.w > 0 and not IsRecent(key, it.e.id) then
+		if it.w > 0 and not recent[it.e.id] then
 			table.insert(pool, it)
 			total = total + it.w
 		end
@@ -490,6 +492,108 @@ end
 Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor = Score, WeightedPick, Remember, KeepFor
 
 ---------------------------------------------------------------------------
+-- Memo of one pick (#157, #138, ADR 0024)
+---------------------------------------------------------------------------
+-- During one pick the context, the style profile, the thematic memory and the time do not change. So:
+--   - pure conditions (no chance, func or pack condition: the rule is not `impure`) give the same answer for every
+--     rule that shares the conditions table (PhraseRegistry interns them): Eligible evaluates them once per table;
+--   - every factor of the weight except the novelty of uses (N, per id) depends only on the rule's descriptive fields
+--     (its shape, PhraseRegistry, with its registers, tags, theme and motifs) and on the context, as long as the hooks
+--     of the factor are pure (Engine.weightHookPure): ScoreMemo computes them once per combination and voice, with the
+--     same operations in the same order as Score, so the weights are the same numbers and the picks the same picks.
+-- The weights are memoized only when a pick weighs at least MEMO_MIN rules: in a small pick the combinations rarely
+-- repeat and the memo would cost more (its tables) than it saves. Engine.MEMO = false switches the memo (and the cache
+-- of merged candidates) off: the test of the pick results (TestScale.lua) runs the same picks both ways and requires
+-- the same trace.
+Engine.MEMO = true
+Engine.MEMO_MIN = 128
+
+local ShapeOf = Engine.ShapeOf
+local NONE = {}   -- memo key of an absent field
+
+-- the factors whose hooks are all pure in this context: [factor] = true
+local function PureFactors(ctx)
+	local out = {}
+	for factor, hooks in pairs(Engine.weightHooks) do
+		local pure, all = Engine.weightHookPure[factor] or EMPTY, true
+		for name in pairs(hooks) do
+			local p = pure[name]
+			if type(p) == "function" then
+				local ok, res = pcall(p, ctx)
+				p = ok and res == true
+			end
+			if p ~= true then all = false; break end
+		end
+		out[factor] = all
+	end
+	return out
+end
+
+---A fresh memo for one pick (the part for the weights is made by the first ScoreMemo).
+---@return table
+function Engine.NewPickMemo()
+	return { match = {} }
+end
+
+-- the factors of one combination of descriptive fields and voice; C, P, R and E only when every hook of the factor is
+-- pure
+local function ShapeFactors(entry, lastTone, ctx, profile, voice, pure)
+	local m = {}
+	m.tone = (lastTone and Engine.Tone(entry) == lastTone) and true or false
+	m.nov = Engine.ThemeNovelty(entry, voice)
+	if pure.C then m.C = (1 + Engine.SPEC_BONUS * (entry.spec or 0)) * Hooks("C", entry, ctx) end
+	if pure.P then m.P = Hooks("P", entry, ctx) end
+	m.S = Engine.StyleFactor(entry, ctx) * Engine.StyleResolver:Affinity(entry, profile)
+	if pure.R then m.R = Hooks("R", entry, ctx) end
+	if pure.E then m.E = Hooks("E", entry, ctx) end
+	return m
+end
+
+---Score(entry, _, _, lastTone, ctx, profile, voice) with the memo of the pick: the same number.
+---@param entry AUPhrase
+---@param lastTone? string
+---@param ctx table
+---@param profile AUStyleProfile
+---@param voice? string
+---@param memo table Engine.NewPickMemo
+---@return number
+local function ScoreMemo(entry, lastTone, ctx, profile, voice, memo)
+	local shape = ShapeOf(entry)
+	if not shape then return Score(entry, nil, nil, lastTone, ctx, profile, voice) end
+	if not memo.shapes then
+		memo.shapes, memo.keys, memo.pure, memo.uses = {}, {}, PureFactors(ctx), Mem().uses
+	end
+	-- shape, registers, tags, theme, motifs, voice: the descriptive fields of the rule (all but id, text, when, ord)
+	local node = memo.shapes
+	local keys = memo.keys
+	keys[1], keys[2], keys[3], keys[4], keys[5] = shape, entry.styles or NONE, entry.tags or NONE, entry.theme or NONE,
+		entry.motifs or NONE
+	for i = 1, 5 do
+		local nxt = node[keys[i]]
+		if not nxt then
+			nxt = {}
+			node[keys[i]] = nxt
+		end
+		node = nxt
+	end
+	local m = node[voice or false]
+	if not m then
+		m = ShapeFactors(entry, lastTone, ctx, profile, voice, memo.pure)
+		node[voice or false] = m
+	end
+	-- the operations of Score, in its order
+	local N = 1 / (1 + Engine.USE_DECAY * (memo.uses[entry.id] or 0))
+	if m.tone then N = N * Engine.SAME_TONE end
+	N = N * m.nov
+	local C = m.C or (1 + Engine.SPEC_BONUS * (entry.spec or 0)) * Hooks("C", entry, ctx)
+	local P = m.P or Hooks("P", entry, ctx)
+	local R = m.R or Hooks("R", entry, ctx)
+	local E = m.E or Hooks("E", entry, ctx)
+	return entry.weight * C * P * N * m.S * R * E
+end
+Engine.ScoreMemo = ScoreMemo
+
+---------------------------------------------------------------------------
 -- Scelta
 ---------------------------------------------------------------------------
 ---Le voci di una lista che valgono adesso: forma, pacchetto acceso, cooldown, una variante utilizzabile, condizioni.
@@ -499,8 +603,9 @@ Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor = Score, Weig
 ---@param ctx table
 ---@param form? "say"|"emote"
 ---@param now number
+---@param memo? table answers of pure conditions tables during one pick ([when] = boolean: Engine.NewPickMemo().match)
 ---@return table[]
-function Engine:Eligible(list, lang, ctx, form, now)
+function Engine:Eligible(list, lang, ctx, form, now, memo)
 	local out = {}
 	if not list then return out end
 	local mem = Mem()
@@ -517,7 +622,19 @@ function Engine:Eligible(list, lang, ctx, form, now)
 			elseif p.impure or not p.ord then
 				ok = Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(p.when, ctx)
 			else
-				ok = Engine.SafeMatch(p.when, ctx) and Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack)
+				local when, m = p.when, nil
+				if when == nil then
+					m = true
+				elseif memo then
+					m = memo[when]
+					if m == nil then
+						m = Engine.SafeMatch(when, ctx)
+						memo[when] = m
+					end
+				else
+					m = Engine.SafeMatch(when, ctx)
+				end
+				ok = m and Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack)
 			end
 			if ok then table.insert(out, p) end
 		end
@@ -700,15 +817,14 @@ end
 ---@return table items the same list, or a new list with the chosen tiers
 ---@return integer tier the lowest tier kept
 function Engine.TierPool(items, key)
-	-- the recent ids as a set, once: IsRecent scans the window for every candidate
+	-- the recent ids as a set, once
 	local recent = {}
 	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
-	local fresh = {}
-	for _, it in ipairs(items) do
-		if it.w > 0 and not recent[it.e.id] then
-			local t = Engine.Tier(it.e)
-			fresh[t] = (fresh[t] or 0) + 1
-		end
+	local fresh, tiers = {}, {}
+	for i, it in ipairs(items) do
+		local t = Engine.Tier(it.e)
+		tiers[i] = t
+		if it.w > 0 and not recent[it.e.id] then fresh[t] = (fresh[t] or 0) + 1 end
 	end
 	local n, tier = 0, nil
 	for t = Engine.MAX_TIER, 1, -1 do
@@ -717,8 +833,8 @@ function Engine.TierPool(items, key)
 	end
 	if not tier then return items, 0 end
 	local out = {}
-	for _, it in ipairs(items) do
-		if Engine.Tier(it.e) >= tier then table.insert(out, it) end
+	for i, it in ipairs(items) do
+		if tiers[i] >= tier then table.insert(out, it) end
 	end
 	return out, tier
 end
@@ -781,17 +897,22 @@ function Engine:PickOwn(event, ctx, form, composite)
 	local lastTone = mem.lastTone[event]
 	-- registri adatti all'evento, alla zona e alla profondità (GDD §5.2)
 	local profile = self.StyleResolver:Resolve(event, ctx)
+	-- #157, #138: what does not change during the pick is computed once (see Engine.MEMO)
+	local memo = self.MEMO and Engine.NewPickMemo() or nil
+	local match = memo and memo.match
 
 	local items = {}
-	local own = self:Eligible(list, lang, ctx, form, now)
+	local own = self:Eligible(list, lang, ctx, form, now, match)
+	local weights = memo and #own >= self.MEMO_MIN and memo
 	for _, p in ipairs(own) do
-		table.insert(items, { e = p, w = Score(p, event, #own, lastTone, ctx, profile) })
+		table.insert(items, { e = p, w = weights and ScoreMemo(p, lastTone, ctx, profile, nil, weights)
+			or Score(p, event, #own, lastTone, ctx, profile) })
 	end
 
 	local frames
 	if form == "emote" then
-		frames = self:Eligible(self.frames[event], lang, ctx, nil, now)
-		for _, f in ipairs(self:Eligible(self.frames["*"], lang, ctx, nil, now)) do
+		frames = self:Eligible(self.frames[event], lang, ctx, nil, now, match)
+		for _, f in ipairs(self:Eligible(self.frames["*"], lang, ctx, nil, now, match)) do
 			table.insert(frames, f)
 		end
 		if #frames > 0 then
@@ -800,12 +921,15 @@ function Engine:PickOwn(event, ctx, form, composite)
 			local says = {}
 			local sayList = self:Candidates(event, ctx, "say")
 			if composite then sayList = Situational(sayList) end
-			for _, p in ipairs(self:Eligible(sayList, lang, ctx, "say", now)) do
+			for _, p in ipairs(self:Eligible(sayList, lang, ctx, "say", now, match)) do
 				if p.speaker == "character" then table.insert(says, p) end
 			end
+			local voice = r3 and "narrator" or nil
+			weights = memo and #says >= self.MEMO_MIN and memo
 			for _, p in ipairs(says) do
 				table.insert(items, { e = p, framed = true,
-					w = 0.8 * Score(p, event, #says, lastTone, ctx, profile, r3 and "narrator" or nil) })
+					w = 0.8 * (weights and ScoreMemo(p, lastTone, ctx, profile, voice, weights)
+						or Score(p, event, #says, lastTone, ctx, profile, voice)) })
 			end
 		end
 	end

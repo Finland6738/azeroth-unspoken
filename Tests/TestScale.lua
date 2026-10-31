@@ -309,3 +309,118 @@ T.run("R3 (#89): the tiers narrow the pool of eligible rules on purpose, never w
 	end
 	T.ok(narrowed > 0 and narrowed < cases, ("the tiers narrow some pools, not all: %d of %d"):format(narrowed, cases))
 end)
+
+---------------------------------------------------------------------------
+-- #157, #138: memo of one pick, cache of merged candidates, shared rule shapes and conditions
+---------------------------------------------------------------------------
+-- The memo and the caches must not change a single pick: the same seeded sequence of picks, with the same memory of
+-- uses, gives the same trace with Engine.MEMO on and off. Run after the synthetic archive above is loaded, so many
+-- rules share their shape and their conditions.
+local TRACE_EVENTS = { { "battle", "say" }, { "battle", "emote" }, { "victory", "say" }, { "zone", "emote" },
+	{ "zone", "say" }, { "muse", "say" }, { "greet", "say" }, { "death", "emote" }, { "lowhp", "say" }, { "travel", "emote" } }
+
+local function Trace(memo, picks, seed)
+	Engine.MEMO = memo
+	NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+	Engine:ResetLines()
+	math.randomseed(seed)
+	local out = {}
+	for i = 1, picks do
+		local ev = TRACE_EVENTS[i % #TRACE_EVENTS + 1]
+		local ctx = Scene(SCENES[math.floor(i / 3) % #SCENES + 1])
+		NS.db.locale = (math.floor(i / 7) % 2 == 0) and "en" or "it"
+		local rec = Engine:PickEntry(ev[1], ctx, ev[2])
+		out[i] = rec and (rec.id .. " " .. tostring(rec.variant) .. " " .. tostring(rec.frame) .. " " .. rec.text) or "-"
+	end
+	Engine.MEMO = true
+	return out
+end
+
+local function SameTrace(label, picks, seed)
+	-- every pick with the memo of the weights, also the small ones
+	local min = Engine.MEMO_MIN
+	Engine.MEMO_MIN = 0
+	local a, b = Trace(false, picks, seed), Trace(true, picks, seed)
+	Engine.MEMO_MIN = min
+	local first
+	for i = 1, picks do
+		if a[i] ~= b[i] then first = first or i end
+	end
+	T.ok(first == nil, label .. ": the same picks with and without the memo" ..
+		(first and (" (first difference at pick " .. first .. ": " .. a[first] .. " / " .. b[first] .. ")") or ""))
+	local spoke = 0
+	for i = 1, picks do if b[i] ~= "-" then spoke = spoke + 1 end end
+	T.ok(spoke > picks / 2, label .. ": most picks speak (" .. spoke .. ")")
+end
+
+T.run("#157: the memo of a pick changes no pick (neutral, soul and emotions, impure hook)", function()
+	local locale, soul = NS.db.locale, NS.Personality:Profile().archetype
+	SameTrace("neutral", 400, 5)
+	NS.Personality:SetArchetype("veteran")
+	NS.Emotion:Reset()
+	NS.Emotion:Add("worried", 0.6); NS.Emotion:Add("tense", 0.3)
+	SameTrace("veteran, worried", 400, 6)
+	NS.Personality:SetArchetype("rogue")
+	NS.Emotion:Reset()
+	NS.Emotion:Add("happy", 0.7)
+	-- a hook that reads the id is not pure: it is called for every rule, the pure ones still once per shape
+	Engine:SetWeightHook("C", "t.scale.impure", function(e) return (#e.id % 3 == 0) and 1.7 or 1 end)
+	SameTrace("rogue, happy, impure hook", 400, 7)
+	Engine:SetWeightHook("C", "t.scale.impure", nil)
+	NS.Emotion:Reset()
+	NS.Personality:SetArchetype(soul ~= "custom" and soul or "neutral")
+	NS.db.locale = locale
+	NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+end)
+
+T.run("#138: rules share their shape and their conditions; a write changes only its rule", function()
+	local a, b = Engine.byId["syn.000001"], nil
+	local shape = Engine.ShapeOf(a)
+	T.ok(shape ~= nil, "a registered rule has a shape")
+	local own = 0
+	for _ in pairs(a) do own = own + 1 end
+	T.ok(own <= 8, "the rule table keeps only its own fields (" .. own .. ")")
+	-- another rule with the same shape
+	for id, p in pairs(Engine.byId) do
+		if p ~= a and Engine.ShapeOf(p) == shape then b = p; break end
+	end
+	T.ok(b ~= nil, "two synthetic clones share a shape")
+	if b then
+		local cooldown = b.cooldown
+		a.cooldown = 4321
+		T.eq(a.cooldown, 4321, "the write is read back")
+		T.eq(b.cooldown, cooldown, "the other rule of the shape does not change")
+		T.ok(Engine.ShapeOf(a) ~= shape and Engine.ShapeOf(b) == shape, "the rule got a copy of its shape")
+		a.cooldown = nil
+		T.eq(a.cooldown, nil, "a shape field can be removed from one rule")
+		T.eq(a.speaker, b.speaker, "the copy keeps the other fields")
+	end
+	-- interned conditions: the clones of one rule that kept its conditions share the table
+	local byKey, shared = {}, 0
+	for _, p in pairs(Engine.byId) do
+		if p.when then
+			if byKey[p.when] then shared = shared + 1 end
+			byKey[p.when] = true
+		end
+	end
+	T.ok(shared > 100, "many rules share their conditions table (" .. shared .. ")")
+end)
+
+T.run("#138: the cache of merged candidates follows the index", function()
+	local ctx = Scene(SCENES[2])
+	local before = Engine:Candidates("battle", ctx, "say")
+	T.ok(Engine:Candidates("battle", ctx, "say") == before, "the same context gives the cached list")
+	local shapes0, whens0 = Engine.InternCounts()
+	NS:RegisterPack({ id = "t_scale_cache", registry = {
+		["t.scale.cache.z"] = { event = "battle", speaker = "character", conditions = { zone = "Elwynn Forest" } },
+		["t.scale.cache.g"] = { event = "battle", speaker = "character" },
+	}, texts = { enUS = { ["t.scale.cache.z"] = "Cache, zone.", ["t.scale.cache.g"] = "Cache, generic." } } })
+	local after = Engine:Candidates("battle", ctx, "say")
+	T.eq(#after, #before + 2, "a new rule is in the next union")
+	T.ok(after[#after - 1].id == "t.scale.cache.g" and after[#after].id == "t.scale.cache.z", "in registration order")
+	Engine:DropPack("t_scale_cache")
+	T.eq(#Engine:Candidates("battle", ctx, "say"), #before, "a dropped pack leaves the union")
+	local shapes1, whens1 = Engine.InternCounts()
+	T.ok(shapes1 == shapes0 and whens1 == whens0, ("a dropped pack releases its shapes and conditions (%d/%d, %d/%d)")
+		:format(shapes1, shapes0, whens1, whens0))
+end)

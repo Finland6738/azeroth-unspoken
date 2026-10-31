@@ -136,8 +136,14 @@ end
 function Engine.AnyUsable(list, ctx, speaker, owner)
 	if not list then return false end
 	local public = Engine.PUBLIC_SPEAKERS[speaker] or false
+	-- #157: Usable inlined (Eligible asks this for every candidate)
+	local disabled, HasData = NS.db.disabledPacks, Engine.HasData
 	for _, v in ipairs(list) do
-		if Usable(v, ctx, public, owner) then return true end
+		if type(v) == "string" then
+			if not disabled[owner] and HasData(v, ctx, public) then return true end
+		elseif v.ok and not disabled[v.pack] and HasData(v.t, ctx, public) then
+			return true
+		end
 	end
 	return false
 end

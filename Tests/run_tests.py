@@ -4,7 +4,7 @@ Uso: python -I -X utf8 Tests/run_tests.py [cartella addon]
      (predefinita: AzerothUnspoken accanto alla cartella Tests)
 Esce con codice 1 se un controllo fallisce.
 """
-import re, subprocess, sys, os
+import json, re, subprocess, sys, os
 from lupa import lua51
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -537,6 +537,16 @@ print(f"  caricamento {proj['load_s']:.2f} s, memoria {proj['memory_kb'] / 1024:
 check(proj["found"] == proj["picks"], "proiezione: ogni scelta trova una frase")
 # prima di R1 una regola costava circa 4.900 B in questa misura (#84 chiede almeno il 22% in meno)
 check(proj["per_entry_b"] < 2500, f"proiezione: memoria per regola sotto 2.500 B ({proj['per_entry_b']:.0f})")
+# #157: the Lua instructions per pick do not depend on the machine, so a regression shows in the PR that causes it. A
+# warning, not a failure: new content changes the number too. After a deliberate change, update the baseline.
+with open(os.path.join(HERE, "perf_baseline.json"), encoding="utf-8") as f:
+    perf_base = json.load(f)
+ki, ki_base = proj["pick_kinstr"], perf_base["pick_kinstr_2000"]
+print(f"  istruzioni Lua per scelta: {ki:.1f} mila (p95 {proj['pick_p95_kinstr']:.1f}); riferimento {ki_base:.1f} mila "
+      "(Tests/perf_baseline.json)")
+if ki > ki_base * perf_base["warn_ratio"]:
+    print(f"  WARNING: a pick costs {ki / ki_base:.0%} of the baseline: check the change with Tests/bench_scale.py "
+          "--archive-dir (#157)")
 
 # 9b) persistenza simulata dopo /reload: le SavedVariables escono da un runtime come testo e rientrano in un altro
 print("\nPERSISTENZA DELLA MEMORIA (/reload simulato)")
