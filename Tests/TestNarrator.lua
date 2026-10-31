@@ -338,7 +338,14 @@ T.run("wizard: le scelte arrivano alle impostazioni", function()
 	Find("Elevated"):Click()
 	T.eq(NS.db.proseDepth, "elevated", "profondità")
 	w.next:Click()
-	-- passo 5: un modulo
+	-- passo 5: un modulo. L'asterisco segna solo i moduli senza effetto (#77): NPC e Storie funzionano
+	T.ok(not Find("NPC dialogues"):GetText():find("*", 1, true), "NPC dialogues non ha l'asterisco")
+	T.ok(not Find("Stories"):GetText():find("*", 1, true), "Stories non ha l'asterisco")
+	T.ok(Find("Social *"), "Social ha l'asterisco")
+	T.ok(Find("Audio"):GetText():find("*", 1, true), "Audio ha l'asterisco")
+	for module in pairs(NS.Config.MODULE_LIVE) do
+		T.ok(NS.db.modules[module] ~= nil, "il modulo '" .. module .. "' esiste nelle impostazioni")
+	end
 	Find("Audio"):Click()
 	T.eq(NS.db.modules.audio, true, "modulo audio")
 	T.eq(NS.db.preset, "custom", "preset personalizzato dopo la modifica a mano")

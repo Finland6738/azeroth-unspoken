@@ -448,7 +448,7 @@ NS:AddTexts("itIT", {
 	},
 	["npcd.guard.danger.known1"] = {
 		"A te lo dico senza giri: tieni lo sguardo alto e le spalle coperte. Ti ho visto abbastanza da sapere che sai badare a te.",
-		"Con te posso essere franco: non ti dico di stare {g:attento|attenta}, perché lo sei già.",
+		"Con te posso parlare chiaro: non ti dico di stare {g:attento|attenta}, perché lo sei già.",
 	},
 	["npcd.guard.danger.dughan1"] = {
 		"Guai ne arrivano sempre da qualche parte. Il mio compito è che non arrivino da qui.",

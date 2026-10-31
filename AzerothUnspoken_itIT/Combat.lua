@@ -105,7 +105,7 @@ NS:AddTexts("itIT", {
 	},
 	["battle.demon.01"] = {
 		"Questo mondo non è tuo, demone. Non lo sarà mai.",
-		"Torna da dove sei strisciato. Quest'aria non è roba tua.",
+		"Torna da dove provieni. Quest'aria non è roba tua.",
 	},
 	["battle.demon.02"] = {
 		"Ho sentito il tuo nome sussurrato nel buio. Stanotte lo dimenticheranno.",
@@ -116,8 +116,8 @@ NS:AddTexts("itIT", {
 		"Ci avete messo le catene una volta. Ora tocca a voi sentirne il peso.",
 	},
 	["battle.beast.01"] = {
-		"Perdonami, fratello delle zanne. Uno solo di noi vedrà il tramonto.",
-		"Niente di personale, vecchio mio. Abbiamo fame tutti e due.",
+		"Perdonami, creatura delle zanne. Uno solo di noi vedrà il tramonto.",
+		"Niente di personale, bestia mia. Abbiamo fame tutti e due.",
 	},
 	["battle.beast.02"] = {
 		"Brava bestia. Bella bestia. Ferma bestia...",

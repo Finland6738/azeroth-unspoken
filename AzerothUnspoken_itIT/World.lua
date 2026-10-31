@@ -128,7 +128,7 @@ NS:AddTexts("itIT", {
 	["world.sub.02"] = {
 		"{subzone}. Un nome piccolo per un tratto di strada piccolo, eppure chiede di essere ricordato.",
 		"Ogni luogo ha un nome prima di avere una storia. Questo è {subzone}.",
-		{ "{subzone}. Lo aggiungo all'elenco dei luoghi in cui sono stato, che è anche un elenco di chi sono {g:stato|stata}.", depth = "elevated" },
+		{ "{subzone}. Lo aggiungo all'elenco dei luoghi in cui sono {g:stato|stata}, che è anche un elenco di chi sono {g:stato|stata}.", depth = "elevated" },
 	},
 	["world.sub.03"] = {
 		"Dunque questa è {subzone}. Vediamo che cos'ha da dire.",
@@ -324,7 +324,7 @@ NS:AddTexts("itIT", {
 	},
 	["world.flight.start.02"] = {
 		"Si va su. Speriamo che chi guida sappia la strada meglio di me.",
-		"Beh. Sono stato su sedili peggiori. Pochi erano così in alto.",
+		"Beh. Sono {g:stato|stata} su sedili peggiori. Pochi erano così in alto.",
 	},
 	["world.flight.arrive.01"] = {
 		"Di nuovo terra solida. Le gambe ci mettono un attimo a ricordare a che servono.",

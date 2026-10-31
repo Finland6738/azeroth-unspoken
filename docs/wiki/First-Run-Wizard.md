@@ -46,8 +46,6 @@ Turn single modules on or off: Personal, World, NPC dialogues, Memory, Relations
 
 Modules marked with `*` are not active yet. *Social* and *Audio* are placeholders for future versions: you can set them, but they do nothing today. The Social module will never share anything without your explicit consent.
 
-> **Note.** In version 0.1.0 the wizard also shows a `*` next to *NPC dialogues* and *Stories*, although both already work. The [[settings panel|Settings]] shows them correctly.
-
 ### 6. Total RP 3 (only if installed)
 
 Two separate choices:

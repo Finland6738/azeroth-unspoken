@@ -111,6 +111,48 @@ end
 -- una lettera, anche accentata (byte alti di UTF-8): niente %a, che dipende dalla locale
 local LETTER = "[A-Za-z\128-\255]"
 
+-- Accordo senza segnaposto in italiano (#70, #71). Un testo che parla di chi parla o di chi ascolta con un participio o
+-- un aggettivo al maschile fuori da {g:} e {og:} suona sbagliato a una personaggia, a un NPC donna o a un bersaglio di
+-- sesso ignoto. Il controllo è volutamente stretto, perché è un avviso e non deve scattare a vuoto: una forma di
+-- essere, sentire o restare alla prima o seconda persona, seguita (con al più qualche avverbio) da una di queste
+-- parole. Elenco corto di forme maschili che hanno una femminile in -a: chi scrive ne aggiunge se serve.
+Validator.IT_AGREEMENT_VERBS = { sono = true, ero = true, ["sarò"] = true, sarei = true, sei = true, eri = true,
+	sarai = true, saresti = true, essere = true, sento = true, senti = true, sentivo = true, sentivi = true,
+	resto = true, resti = true, restavo = true, restavi = true, rimango = true, rimani = true }
+Validator.IT_AGREEMENT_ADVERBS = { ["così"] = true, molto = true, troppo = true, ancora = true, sempre = true,
+	["già"] = true, davvero = true, quasi = true, proprio = true, ["più"] = true, meno = true, ormai = true, non = true,
+	mai = true, ben = true, tanto = true, abbastanza = true, ora = true, adesso = true, mica = true }
+Validator.IT_AGREEMENT_WORDS = {}
+for w in ("stato stanco pronto sicuro certo grato contento convinto stufo spaventato arrivato tornato venuto nato "
+	.. "rimasto cresciuto preoccupato cambiato partito uscito entrato perso ritrovato salvato disposto curioso "
+	.. "orgoglioso attento vivo sveglio nascosto fortunato deluso ferito libero innamorato affamato assetato ubriaco "
+	.. "sorpreso straniero strisciato morto caduto abituato franco"):gmatch("%S+") do
+	Validator.IT_AGREEMENT_WORDS[w] = true
+end
+
+---La prima forma maschile che si accorda senza segnaposto in un testo italiano, o nil.
+---@param text string
+---@param lang string codice breve (solo "it" si controlla)
+---@return string? phrase la parola trovata, con il verbo che la regge
+function Validator.UnmarkedAgreement(text, lang)
+	if lang ~= "it" then return nil end
+	-- i segnaposto e la punteggiatura spezzano il discorso ("|"): l'accordo si cerca dentro una frase
+	local flat = NS.Lower(text):gsub("{[^{}]*}", " | "):gsub("[%.%?!;:,\"()]", " | ")
+	for _, mark in ipairs({ "«", "»", "—", "…" }) do
+		flat = flat:gsub(mark, " | ")
+	end
+	local verb
+	for word in flat:gmatch("[A-Za-z\128-\255|]+") do
+		if verb and Validator.IT_AGREEMENT_WORDS[word] then return verb .. " " .. word end
+		if Validator.IT_AGREEMENT_VERBS[word] then
+			verb = word
+		elseif not (verb and Validator.IT_AGREEMENT_ADVERBS[word]) then
+			verb = nil
+		end
+	end
+	return nil
+end
+
 -- #100: a line of a composite situation whose definition asks the weather (rain_dusk_return) names it rightly
 local function SituationWeather(p)
 	if not p.situational then return false end
@@ -625,6 +667,7 @@ function Validator:Run(opts)
 				for _, lang in ipairs(langList) do
 					local list = p.text[lang]
 					local okCount = 0
+					local agreementWarned = false
 					local weatherWarned = Engine.UsesWeather(p.when) or PlaceBound(p.when) or SituationWeather(p)
 					if not weatherWarned then
 						weatherWarned = true
@@ -660,6 +703,15 @@ function Validator:Run(opts)
 									weatherWarned = true
 									Add("warning", "weatherWord", p.pack, id, lang,
 										("variante %d nomina il meteo ('%s') senza la condizione weather: con il meteo illeggibile uscirebbe lo stesso"):format(i, word))
+								end
+							end
+							-- un accordo al maschile fuori da {g:} e {og:} (#70, #71): un avviso per regola e lingua
+							if not agreementWarned then
+								local found = Validator.UnmarkedAgreement(var.t, lang)
+								if found then
+									agreementWarned = true
+									Add("warning", "itAgreement", p.pack, id, lang,
+										("variante %d: '%s' si accorda al maschile senza {g:} né {og:}: usa il segnaposto o una forma neutra"):format(i, found))
 								end
 							end
 							if Engine.PUBLIC_SPEAKERS[p.speaker] then
@@ -922,6 +974,13 @@ function Validator:Run(opts)
 	if not scope and NS.NPCAlive then
 		for _, p in ipairs(NS.NPCAlive:Check()) do
 			Add(p.level, "badDialogue", nil, p.key, nil, p.msg)
+		end
+	end
+
+	-- chiavi condivise tra pacchetti (#69): copioni, NPC, luoghi e archi rifiutati o sostituiti
+	if not scope and NS.Packs then
+		for _, p in ipairs(NS.Packs:CheckKeys()) do
+			Add(p.level, p.code, nil, p.key, nil, p.msg)
 		end
 	end
 

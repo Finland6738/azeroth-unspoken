@@ -117,11 +117,19 @@ end
 ---------------------------------------------------------------------------
 -- Dati: registro degli NPC e tendenze (Data/NPCs.lua)
 ---------------------------------------------------------------------------
----Registra NPC per npcID: { [npcID] = { name, role, temperament, morality, goals, speech, race } }.
+---Registra NPC per npcID: { [npcID] = { name, role, temperament, morality, goals, speech, race } }. Le chiavi di testo
+---`pack` e `override` della tabella dicono chi registra e se sostituisce un NPC di un altro pacchetto (#69, anche
+---`override = true` sulla singola voce); senza, un npcID già registrato da un altro pacchetto si rifiuta.
 ---@param map table
 function NS:RegisterNPCs(map)
+	local ids = {}
 	for id, e in pairs(type(map) == "table" and map or EMPTY) do
-		if IsNumber(id) and id > 0 and type(e) == "table" then
+		if IsNumber(id) and id > 0 and type(e) == "table" then table.insert(ids, id) end
+	end
+	table.sort(ids)
+	for _, id in ipairs(ids) do
+		local e = map[id]
+		if NS.Packs:Claim("npc", math.floor(id), map.pack, map.override == true or e.override == true) then
 			local clean = I.Clean(e)
 			clean.name = type(e.name) == "string" and e.name or nil
 			clean.race = type(e.race) == "string" and e.race or nil

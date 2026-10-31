@@ -284,6 +284,63 @@ function Packs:Reload()
 end
 
 ---------------------------------------------------------------------------
+-- Keys shared between packs (#69)
+---------------------------------------------------------------------------
+-- Scripts (RegisterDialogues), NPCs (RegisterNPCs), places (RegisterPlaces) and arcs (RegisterArcs) are registered
+-- by key. A pack that registers a key another pack already holds is REFUSED (the entry is not registered, a
+-- `keyCollision` error goes to /au debug and to the validator) unless it says `override = true`, on the entry or on
+-- the whole call: then it replaces the entry, and a `keyOverride` warning records who replaced what. The same pack
+-- registering its own key again (a regional pack built again after a return) replaces it silently: it is the owner.
+-- A pack with no `pack` id is never recognised as the owner: it can claim a free key but not register it twice.
+Packs.KEY_KINDS = { script = "script", npc = "NPC", place = "place", arc = "arc" }
+Packs.claims = {}       -- [kind .. ":" .. key] = pack id that holds the key ("" = a pack with no id)
+Packs.collisions = {}   -- { code = "keyCollision" | "keyOverride", kind, key, pack, owner } in order, no repeats
+
+---Asks to register `key`. Returns true if the caller may write the entry.
+---@param kind string script | npc | place | arc
+---@param key string|number
+---@param pack? string id of the pack that registers (nil: unnamed)
+---@param override? boolean the entry (or the call) asked to replace
+---@return boolean allowed
+function Packs:Claim(kind, key, pack, override)
+	local id = kind .. ":" .. tostring(key)
+	local owner = self.claims[id]
+	pack = type(pack) == "string" and pack ~= "" and pack or ""
+	if owner == nil or (owner == pack and pack ~= "") then
+		self.claims[id] = pack
+		return true
+	end
+	local code = override == true and "keyOverride" or "keyCollision"
+	local who, other = pack ~= "" and pack or "(a pack with no id)", owner ~= "" and owner or "(a pack with no id)"
+	local msg = ("%s '%s': %s %s %s"):format(Packs.KEY_KINDS[kind] or kind, tostring(key), who,
+		override == true and "replaces the entry of" or "was refused: already registered by", other)
+	local seen = false
+	for _, c in ipairs(self.collisions) do
+		if c.code == code and c.kind == kind and tostring(c.key) == tostring(key) and c.pack == pack then seen = true end
+	end
+	if not seen then
+		table.insert(self.collisions, { code = code, kind = kind, key = key, pack = pack, owner = owner, msg = msg })
+	end
+	NS.Diagnostics:Error("packs", msg)
+	if override == true then
+		self.claims[id] = pack
+		return true
+	end
+	return false
+end
+
+---Problems of the shared keys for the validator: { level, code, key, msg }.
+---@return { level: string, code: string, key: string, msg: string }[]
+function Packs:CheckKeys()
+	local out = {}
+	for _, c in ipairs(self.collisions) do
+		table.insert(out, { level = c.code == "keyCollision" and "error" or "warning", code = c.code,
+			key = c.kind .. ":" .. tostring(c.key), msg = c.msg })
+	end
+	return out
+end
+
+---------------------------------------------------------------------------
 -- Regions (#101)
 ---------------------------------------------------------------------------
 local function Builders(region)

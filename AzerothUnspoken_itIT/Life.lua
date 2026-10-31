@@ -102,7 +102,7 @@ NS:AddTexts("itIT", {
 		"inciampa sull'ultimo passo e crolla come un sacco di farina.",
 	},
 	["rez.01"] = {
-		"Il buio non mi ha voluto. Non so se esserne {g:grato|grata}.",
+		"Il buio non mi ha {g:voluto|voluta}. Non so se esserne {g:grato|grata}.",
 		{ "Sono ancora qui. Va bene così, credo.", depth = "natural" },
 		{ "Ero sulla soglia, e la porta si è richiusa senza una parola. Non so se fosse un rifiuto o una grazia.", depth = "elevated" },
 	},
@@ -154,7 +154,7 @@ NS:AddTexts("itIT", {
 	},
 	["rez.nelf.01"] = {
 		"Ho camminato nel Sogno, e il Sogno mi ha lasciato andare.",
-		"Le radici mi hanno trattenuto per un po', poi hanno allentato la presa.",
+		"Le radici mi hanno {g:trattenuto|trattenuta} per un po', poi hanno allentato la presa.",
 	},
 	["rez.dwarf.01"] = {
 		"Gli antenati mi hanno rimandato indietro. Dicono che la forgia non è ancora spenta.",

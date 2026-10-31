@@ -321,7 +321,7 @@ NS:AddTexts("itIT", {
 	},
 	["muse.warlock.01"] = {
 		"Tutto ha un prezzo. Il trucco è far pagare qualcun altro.",
-		"Il potere non chiede mai quanto sei disposto a dare. Lo scopre da solo.",
+		"Il potere non chiede mai quanto si è disposti a dare. Lo scopre da solo.",
 	},
 	["muse.priest.01"] = {
 		"La fede non è sapere che andrà bene. È camminare anche quando non lo sai.",

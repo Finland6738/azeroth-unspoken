@@ -138,11 +138,17 @@ local function Frame() return NS.DialogueFrame end
 ---------------------------------------------------------------------------
 ---Registra i copioni dei dialoghi. `{ scripts = { [chiave] = AUDialogueScript } }`: la chiave è l'archetipo
 ---("innkeeper") o "npc:<npcID>" per un NPC specifico (che di solito riprende l'archetipo con `extends`).
----`pack` (the id of the pack the scripts belong to) is how the authoring archive files them (#143); the game does not need it.
----@param def { pack?: string, scripts: table<string, AUDialogueScript> }
+---`pack` (the id of the pack the scripts belong to) is the owner of the keys (#69) and how the authoring archive files them (#143). Una chiave già registrata da un altro pacchetto si rifiuta, a meno di `override = true` (sul copione o su `def`).
+---@param def { pack?: string, override?: boolean, scripts: table<string, AUDialogueScript> }
 function NS:RegisterDialogues(def)
-	for key, s in pairs(type(def) == "table" and def.scripts or EMPTY) do
-		if type(key) == "string" and type(s) == "table" then
+	local keys = {}
+	for key in pairs(type(def) == "table" and def.scripts or EMPTY) do
+		if type(key) == "string" then table.insert(keys, key) end
+	end
+	table.sort(keys)
+	for _, key in ipairs(keys) do
+		local s = def.scripts[key]
+		if type(s) == "table" and NS.Packs:Claim("script", key, def.pack, def.override == true or s.override == true) then
 			N.scripts[key] = s
 			if type(def.pack) == "string" then N.scriptPack[key] = def.pack end
 			N.resolved = {}
