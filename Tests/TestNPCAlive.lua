@@ -187,6 +187,36 @@ T.run("le risposte sono neutre: 1-3, brevi, senza segnaposto e senza attribuire 
 	end
 end)
 
+T.run("una risposta che mette parole in bocca al giocatore è un errore, salvo domande e risposte `editable` (#143)", function()
+	Fresh()
+	T.ok(N.PutsWords("I feel afraid.", "en"), "un sentimento è segnalato")
+	T.ok(N.PutsWords("I'm afraid of the road.", "en"), "anche con l'apostrofo")
+	T.ok(N.PutsWords("Mi sento solo.", "it"), "in italiano")
+	T.ok(N.PutsWords("Ho paura della strada.", "it"), "una paura")
+	T.ok(not N.PutsWords("I am looking for a place to rest.", "en"), "un'azione è neutra")
+	T.ok(not N.PutsWords("Cerco un posto per riposare.", "it"), "anche in italiano")
+	T.ok(not N.PutsWords("Do you feel the cold too?", "en"), "una domanda è sempre neutra")
+	T.ok(not N.PutsWords("I am about to rest.", "en"), "'I am a' vale solo come parola intera")
+	NS:RegisterDialogues({ pack = "test_pack", scripts = { voiced = {
+		role = "innkeeper", start = "open",
+		nodes = { open = { event = "npcd_innkeeper_open", choices = { "sad", "own", "bye" } },
+			bye = { event = "npcd_innkeeper_bye" } },
+		choices = {
+			sad = { label = { it = "Mi sento solo.", en = "I feel alone." }, go = "bye" },
+			own = { label = { it = "Giuro di tornare.", en = "I promise to come back." }, go = "bye", editable = true },
+			bye = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+		},
+	} } })
+	T.eq(N.scriptPack.voiced, "test_pack", "il pacchetto che dichiara il copione è registrato")
+	local text = {}
+	for _, p in ipairs(N:Check()) do if p.key == "voiced" then table.insert(text, p.level .. " " .. p.msg) end end
+	local all = table.concat(text, "\n")
+	T.ok(all:find("risposta 'sad' (it)", 1, true) ~= nil and all:find("risposta 'sad' (en)", 1, true) ~= nil,
+		"la risposta che dice un sentimento è un errore in entrambe le lingue")
+	T.ok(all:find("risposta 'own'", 1, true) == nil, "la risposta `editable` è lasciata stare")
+	N.scripts.voiced, N.scriptPack.voiced, N.resolved = nil, nil, {}
+end)
+
 T.run("le battute escono solo dentro un dialogo (né da /au evento né dal Director)", function()
 	Fresh()
 	T.ok(Engine:PickEntry("npcd_innkeeper_open", NS:BuildContext(), "say") == nil, "fuori da un dialogo nessuna battuta")

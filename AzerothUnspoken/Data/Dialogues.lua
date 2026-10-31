@@ -1,44 +1,22 @@
 -- La struttura dei dialoghi ambientali (step S8, GDD §7.3, §21-B; ADR 0020): per ogni archetipo, i nodi (che battuta
 -- dice l'NPC) e le risposte del giocatore (che cosa si può scegliere, dove porta, che flag e che relazione tocca).
 -- Le battute stanno in Data/RegistryDialogues.lua (regole) e AzerothUnspoken_itIT|enUS/Dialogues.lua (testi): qui solo il
--- copione. Un pacchetto può aggiungerne con NS:RegisterDialogues{ scripts = { ... } } (stessa forma, vedi
+-- copione. Un pacchetto può aggiungerne con NS:RegisterDialogues{ pack, scripts = { ... } } (stessa forma, vedi
 -- PACK_FORMAT.md, «Dialoghi ambientali»).
+--
+-- Dati letterali, non codice (#143): nessuna funzione costruisce i copioni, così l'archivio (tools/archive) li legge, li
+-- controlla e li riscrive senza differenze. Le risposte comuni (`leave`, `thanks`) sono ripetute in ogni copione.
 --
 -- Regole (GDD §7.3):
 --   - da 1 a 3 risposte per nodo; le risposte sono NEUTRE: domande e azioni (che cosa si chiede, che cosa si fa), mai un
 --     carattere, un sentimento o una decisione morale attribuiti al personaggio (il giocatore controlla sempre ciò
---     che si dice di lui);
+--     che si dice di lui). Il validatore lo controlla; una risposta che il giocatore potrà riscrivere dichiara
+--     `editable = true` ed è l'unica eccezione;
 --   - i flag sono narrativi e locali: `flag = "asked_news"` diventa `npcd_innkeeper_asked_news` nella memoria (S6) e
 --     serve alle battute (`remembered`); mai una quest ufficiale, mai un effetto sul gioco vero;
 --   - `relation` è una fonte di incremento di Data/Relationships.lua (poco, con tetti giornalieri);
 --   - ogni percorso porta a un nodo senza risposte o a una risposta senza `go`: si può sempre chiudere.
 local ADDON, NS = ...
-
----Una risposta del giocatore.
----@param it string
----@param en string
----@param go? string nodo di arrivo (senza: chiude)
----@param extra? { flag?: string, relation?: string, when?: table }
-local function Choice(it, en, go, extra)
-	local c = { label = { it = it, en = en }, go = go }
-	for k, v in pairs(extra or {}) do c[k] = v end
-	return c
-end
-
-local TALK = "ambient_talk"   -- fonte di relazione per una domanda a cui l'NPC risponde
-
--- Le risposte comuni a più archetipi
-local function Common()
-	return {
-		leave = Choice("Arrivederci.", "Farewell.", "bye"),
-		thanks = Choice("Grazie.", "Thank you.", "thanks", { relation = TALK }),
-	}
-end
-
-local function With(base, more)
-	for k, v in pairs(more) do base[k] = v end
-	return base
-end
 
 NS:RegisterDialogues({
 	pack = "base_dialogues",
@@ -56,12 +34,17 @@ NS:RegisterDialogues({
 				thanks = { event = "npcd_innkeeper_thanks" },
 				bye = { event = "npcd_innkeeper_bye" },
 			},
-			choices = With(Common(), {
-				news = Choice("Che notizie corrono?", "What news is going round?", "news", { flag = "asked_news", relation = TALK }),
-				rest = Choice("Cerco un posto per riposare.", "I am looking for a place to rest.", "rest", { flag = "asked_rest", relation = TALK }),
-				more = Choice("Dimmi di più.", "Tell me more.", "more", { flag = "asked_more" }),
-				sit = Choice("Mi fermo un momento.", "I will stop a while.", "sit", { flag = "stayed_a_while", relation = TALK }),
-			}),
+			choices = {
+				leave = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+				thanks = { label = { it = "Grazie.", en = "Thank you." }, go = "thanks", relation = "ambient_talk" },
+				news = { go = "news", flag = "asked_news", relation = "ambient_talk",
+					label = { it = "Che notizie corrono?", en = "What news is going round?" } },
+				rest = { go = "rest", flag = "asked_rest", relation = "ambient_talk",
+					label = { it = "Cerco un posto per riposare.", en = "I am looking for a place to rest." } },
+				more = { label = { it = "Dimmi di più.", en = "Tell me more." }, go = "more", flag = "asked_more" },
+				sit = { go = "sit", flag = "stayed_a_while", relation = "ambient_talk",
+					label = { it = "Mi fermo un momento.", en = "I will stop a while." } },
+			},
 		},
 		-- IL MERCANTE: una domanda sulla merce, una sul prezzo, una sulle voci. Nessun prezzo vero né sconto.
 		merchant = {
@@ -75,11 +58,16 @@ NS:RegisterDialogues({
 				thanks = { event = "npcd_merchant_thanks" },
 				bye = { event = "npcd_merchant_bye" },
 			},
-			choices = With(Common(), {
-				wares = Choice("Che cosa vendi?", "What do you sell?", "wares", { flag = "asked_wares", relation = TALK }),
-				haggle = Choice("Il prezzo si può discutere?", "Is the price open to discussion?", "haggle", { flag = "asked_price" }),
-				news = Choice("Hai sentito qualche voce?", "Have you heard any rumors?", "news", { relation = TALK }),
-			}),
+			choices = {
+				leave = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+				thanks = { label = { it = "Grazie.", en = "Thank you." }, go = "thanks", relation = "ambient_talk" },
+				wares = { go = "wares", flag = "asked_wares", relation = "ambient_talk",
+					label = { it = "Che cosa vendi?", en = "What do you sell?" } },
+				haggle = { go = "haggle", flag = "asked_price",
+					label = { it = "Il prezzo si può discutere?", en = "Is the price open to discussion?" } },
+				news = { go = "news", relation = "ambient_talk",
+					label = { it = "Hai sentito qualche voce?", en = "Have you heard any rumors?" } },
+			},
 		},
 		-- LA GUARDIA: una domanda sui pericoli, una sull'orientarsi. Solo per le guardie del registro curato.
 		guard = {
@@ -92,10 +80,15 @@ NS:RegisterDialogues({
 				thanks = { event = "npcd_guard_thanks" },
 				bye = { event = "npcd_guard_bye" },
 			},
-			choices = With(Common(), {
-				danger = Choice("Ci sono pericoli sulla strada?", "Are there dangers on the road?", "danger", { flag = "asked_danger", relation = TALK }),
-				directions = Choice("Come ci si orienta da queste parti?", "How does one find one's way around here?", "directions", { relation = TALK }),
-			}),
+			choices = {
+				leave = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+				thanks = { label = { it = "Grazie.", en = "Thank you." }, go = "thanks", relation = "ambient_talk" },
+				danger = { go = "danger", flag = "asked_danger", relation = "ambient_talk",
+					label = { it = "Ci sono pericoli sulla strada?", en = "Are there dangers on the road?" } },
+				directions = { go = "directions", relation = "ambient_talk",
+					label = { it = "Come ci si orienta da queste parti?",
+						en = "How does one find one's way around here?" } },
+			},
 		},
 		-- IL MAESTRO DI VOLO
 		flightmaster = {
@@ -107,9 +100,12 @@ NS:RegisterDialogues({
 				thanks = { event = "npcd_flightmaster_thanks" },
 				bye = { event = "npcd_flightmaster_bye" },
 			},
-			choices = With(Common(), {
-				route = Choice("Com'è il viaggio?", "What is the journey like?", "route", { flag = "asked_route", relation = TALK }),
-			}),
+			choices = {
+				leave = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+				thanks = { label = { it = "Grazie.", en = "Thank you." }, go = "thanks", relation = "ambient_talk" },
+				route = { go = "route", flag = "asked_route", relation = "ambient_talk",
+					label = { it = "Com'è il viaggio?", en = "What is the journey like?" } },
+			},
 		},
 		-- L'ADDESTRATORE
 		trainer = {
@@ -122,10 +118,14 @@ NS:RegisterDialogues({
 				thanks = { event = "npcd_trainer_thanks" },
 				bye = { event = "npcd_trainer_bye" },
 			},
-			choices = With(Common(), {
-				advice = Choice("Hai un consiglio per me?", "Have you any advice for me?", "advice", { flag = "asked_advice", relation = TALK }),
-				practice = Choice("Come ci si esercita?", "How does one practice?", "practice", { relation = TALK }),
-			}),
+			choices = {
+				leave = { label = { it = "Arrivederci.", en = "Farewell." }, go = "bye" },
+				thanks = { label = { it = "Grazie.", en = "Thank you." }, go = "thanks", relation = "ambient_talk" },
+				advice = { go = "advice", flag = "asked_advice", relation = "ambient_talk",
+					label = { it = "Hai un consiglio per me?", en = "Have you any advice for me?" } },
+				practice = { go = "practice", relation = "ambient_talk",
+					label = { it = "Come ci si esercita?", en = "How does one practice?" } },
+			},
 		},
 	},
 })
