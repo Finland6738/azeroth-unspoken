@@ -101,7 +101,7 @@ See [[Chat Gateway]].
 ## The journal or relationships are empty or will not change
 
 - *memory is off* or *relationships are off*: turn the **Memory** or **Relationships** module back on in the settings.
-- *the data comes from a newer version of the addon: it can be read, not changed*: you went back to an older version of the addon after using a newer one. Install the newer version again.
+- *the data comes from a newer version of the addon: it can be read, not changed*: you went back to an older version of the addon after using a newer one. Install the newer version again. This also applies to your personality and mood: from a newer version they are read, never rewritten, and `/au soul` and `/au emotion` tell you they cannot change them. Nothing is lost.
 - The journal fills slowly by design: only significant moments are kept.
 
 ## A window or the box is in the wrong place

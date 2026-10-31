@@ -30,6 +30,8 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 - the [[relationships|Relationships]]: the NPCs you dealt with and, **only for players you chose**, their name with the notes, tags, labels and feelings you wrote, kept apart from what the addon observed about them (how many times you met, of which kind, where and when: never what was said);
 - the state of your [[personal stories|Story-Arcs]].
 
+When the game loads these files the addon checks them. Numbers out of range, times in the future and lists longer than their limit (300 players, 1,000 NPCs, and so on) are brought back to what is allowed, and `/au debug` lists what was cleaned (never a name). Data written by a newer version of the addon is read but never changed.
+
 ## What is never stored
 
 - The text of chat messages, whispers or emotes.
@@ -88,7 +90,7 @@ On Windows, the game keeps saved data in:
 |---|---|
 | Journal (memories, places, flags) | `/au journal reset` (or `memories`, `ordinary`, `places`, `flags`), then the same command again within 15 seconds; or **Forget everything** in the journal |
 | Relationships | `/au relationships reset` (or `npcs`, `players`), then again within 15 seconds; or **Forget everything** in the relationships window |
-| The shared list of the account | `/au relationships reset shared`, then again within 15 seconds (turning the option off keeps it, unused) |
+| The shared list of the account | `/au relationships reset shared`, then again within 15 seconds (turning the option off keeps it, unused; your other characters drop the records they made only because someone was on it) |
 | One memory, place or relationship | the delete buttons in the journal or relationships window, or `/au journal delete <n>`, `/au relationships remove <name>` |
 | What the addon observed about one player | **Forget observations** in the relationships window, or `/au relationships forget <name>` (the person and your choices stay) |
 | Personality | `/au soul neutral` |

@@ -214,22 +214,39 @@ function Emotion:Context()
 	return out
 end
 
----Clears the state (and what is saved).
+---Clears the state (and what is saved). Nothing happens while the saved data is read-only (newer version).
 function Emotion:Reset()
-	self.v, self.t, self.cause = {}, {}, nil
 	local data = self:Data()
+	if self.readOnly then return end
+	self.v, self.t, self.cause = {}, {}, nil
 	if data then data.values = {} end
 end
 
 ---------------------------------------------------------------------------
 -- Saved data: AzerothUnspokenCharacterDB.emotion = { version, values = { [emotion] = { v, at } } }
 ---------------------------------------------------------------------------
+Emotion.readOnly = false         -- data written by a newer version: it is read from a copy and never changed (#154)
+Emotion.copy, Emotion.copyOf = nil, nil
+
+---The saved record. From a newer version it is a copy (ADR 0006 §5): the file keeps what it has, `readOnly` is set
+---and Persist and Reset do nothing.
 ---@return table?
 function Emotion:Data()
 	local c = NS.cdb
 	if not c then return nil end
 	if type(c.emotion) ~= "table" then c.emotion = { version = self.VERSION, values = {} } end
 	local d = c.emotion
+	local v = d.version
+	if type(v) == "number" and v > self.VERSION and v < math.huge then
+		if self.copyOf ~= d then
+			NS.Diagnostics:Error("emotion", ("emotion.version %s > %d: read-only"):format(tostring(v), self.VERSION))
+			self.copyOf, self.copy = d, NS.Config.DeepCopy(d)
+		end
+		self.readOnly = true
+		if type(self.copy.values) ~= "table" then self.copy.values = {} end
+		return self.copy
+	end
+	self.readOnly, self.copyOf, self.copy = false, nil, nil
 	if type(d.values) ~= "table" then d.values = {} end
 	d.version = self.VERSION
 	return d
@@ -239,7 +256,7 @@ end
 ---saved moment is the moment of the value, so the decay continues across a logout.
 function Emotion:Persist()
 	local d = self:Data()
-	if not d then return end
+	if not d or self.readOnly then return end
 	local values, now, wall = {}, Now(), time()
 	if self:Enabled() then
 		for _, e in ipairs(self.LIST) do
@@ -252,27 +269,33 @@ function Emotion:Persist()
 	d.values = values
 end
 
----Reads the saved emotions, decayed by the time spent away. Malformed entries are dropped.
+---Reads the saved emotions, decayed by the time spent away. Malformed entries are dropped; what is kept is rebuilt as
+---`{ v, at }` with v inside 0-1 and a time that is not in the future (a clock set ahead and then corrected would give
+---no decay at all), so nothing else a damaged file held survives (#156).
 ---@return integer dropped
+---@return integer clamped values or times brought back inside their limits
 function Emotion:Load()
 	local d = self:Data()
-	if not d then return 0 end
-	local dropped, kept, now, wall = 0, {}, Now(), time()
+	if not d then return 0, 0 end
+	local dropped, clamped, kept, now, wall = 0, 0, {}, Now(), time()
 	self.v, self.t = {}, {}
 	for e, rec in pairs(d.values) do
 		local half = Engine.EMOTION_SET[e] and self.halfLife[e]
 		if half and half >= self.SLOW and type(rec) == "table" and IsNumber(rec.v) and IsNumber(rec.at) then
-			local v = math.max(0, math.min(1, rec.v)) * 0.5 ^ (math.max(0, wall - rec.at) / half)
+			local value, at = math.max(0, math.min(1, rec.v)), rec.at
+			if value ~= rec.v then clamped = clamped + 1 end
+			if at > wall then at, clamped = wall, clamped + 1 end
+			local v = value * 0.5 ^ ((wall - at) / half)
 			if v >= self.FLOOR and self:Enabled() then
 				self.v[e], self.t[e] = v, now
-				kept[e] = rec
+				kept[e] = { v = value, at = at }
 			end
 		else
 			dropped = dropped + 1
 		end
 	end
-	d.values = self:Enabled() and kept or {}
-	return dropped
+	if not self.readOnly then d.values = self:Enabled() and kept or {} end
+	return dropped, clamped
 end
 
 ---------------------------------------------------------------------------
@@ -359,13 +382,19 @@ function Emotion:Command(rest)
 		if action == "off" then self:Reset() end
 		NS:Print(NS:L(action == "on" and "emotion_on" or "emotion_off"))
 	elseif action == "reset" then
-		self:Reset()
-		NS:Print(NS:L("emotion_reset"))
+		self:Data()
+		if self.readOnly then
+			NS:Print(NS:L("emotion_readonly"))
+		else
+			self:Reset()
+			NS:Print(NS:L("emotion_reset"))
+		end
 	end
 	NS:Print(NS:L("emotion_state", self:Status()))
 end
 
 function Emotion:OnInit()
-	local dropped = self:Load()
+	local dropped, clamped = self:Load()
 	if dropped > 0 then NS.Diagnostics:Error("emotion", ("%d voci malformate scartate"):format(dropped)) end
+	if clamped > 0 then NS.Diagnostics:Error("emotion", ("%d values or times brought back inside their limits"):format(clamped)) end
 end

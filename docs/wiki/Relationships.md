@@ -131,7 +131,7 @@ Before you turn it on, read the warning:
 - **Privacy:** anyone using this account sees the shared opinions, and the saved file travels with your other saved data.
 - **Role play:** your characters would feel the same about the same people. A character cannot "not know" what another chose, unless you tell it to keep its own.
 
-Turning it on takes **two steps** (click, read the warning, click again within 15 seconds, or repeat `/au relationships share on`). Turning it off is **one step and deletes nothing**.
+Turning it on takes **two steps** (click, read the warning, click again within 15 seconds, or repeat `/au relationships share on`). Turning it off is **one step and deletes nothing** of the shared list. The only thing that goes is a record one of your characters made just because it met someone who was on the list (no choices of its own: how many times it met them): it is cleaned the next time that character logs in. A person you chose to keep for a character, with your choices, never goes.
 
 How it works:
 
@@ -140,7 +140,7 @@ How it works:
 - **Per person:** in the detail of a player, the button **Choices: shared / Choices: this character** switches it. *This character* gives it a copy of the shared choices to keep and ignores the shared ones from then on. *Shared* moves its choices into the account's list (replacing what was there). `/au relationships scope <name> shared|character` does the same.
 - **Move what you already have:** `/au relationships share all` moves the choices of this character into the shared list. Where the account already has choices for a person, **this character's own stay** and nothing is overwritten. You can repeat it.
 - **Way back:** before turning it off, `/au relationships share copy` copies the shared choices into this character, so it keeps them. If you turn it off without copying, the shared list stays in the account, unused, and comes back if you turn it on again.
-- **Removing** a person while sharing is on removes them from the account's list, for all your characters. `/au relationships reset players` clears only this character's list; `/au relationships reset shared` clears the account's.
+- **Removing** a person while sharing is on removes them from the account's list, for all your characters, and every other character drops what it had noted about them only through the list when it next logs in. `/au relationships reset players` clears only this character's list; `/au relationships reset shared` clears the account's.
 
 ## Greetings, farewells and duels follow the relationship
 
@@ -252,7 +252,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 
 ## Tips
 
-- The list holds up to 1,000 NPCs and 300 players per character.
+- The list holds up to 1,000 NPCs and 300 players per character (and 300 in the account's shared list). If a saved list is longer than that, the addon cuts it when you log in: people you chose something about are never removed, the others go first, the least observed first, and `/au debug` says it happened.
 - Playing several characters and want the same opinions of your friends? Try **Share with the account**, then `/au relationships share all` on the character that has them. Want one character to see a person differently? Use the scope button of that person.
 - Players you saved with an older version keep everything: your choices and the old count and last-seen date are moved to the two new sections the first time you log in.
 - The journal's **Forget everything** button does not touch relationships: use the relationships window or `/au relationships reset`.

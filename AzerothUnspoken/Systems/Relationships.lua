@@ -109,6 +109,7 @@ R.VERSION = 2                  -- forma dei dati in AzerothUnspokenCharacterDB.r
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
+R.COUNTER_MAX = 1e6            -- a loaded counter (encounters, tally by kind, talks) is brought back to this (#156)
 R.MAX_CANDIDATES = 40          -- proposte in memoria (mai salvate)
 R.NOTE_LEN, R.LABEL_LEN, R.TAG_LEN, R.MAX_TAGS, R.NAME_LEN = 240, 24, 24, 6, 64
 R.SCAN_DELAY = 1               -- seconds between the last roster update and the group scan
@@ -589,36 +590,60 @@ local function OwnChoices(rec)
 	return type(rec) == "table" and (rec.scope == "character" or (type(rec.user) == "table" and next(rec.user) ~= nil))
 end
 
+-- A record this character made only because the person was in the shared list (`via = "shared"`, no choices of its
+-- own) is not a person of its own: while the shared record is missing (the person was removed, sharing is off, or the
+-- account's list cannot be read) it is ignored, and loading drops it (#155).
+local function Dormant(self, key, rec)
+	return type(rec) == "table" and rec.via == "shared" and not OwnChoices(rec) and SharedPlayers(self)[key] == nil
+end
+
+-- this character's record of a person, unless it only lives on from the shared list that is gone
+local function CharOf(self, key)
+	local rec = self:Data().players[key]
+	if rec and Dormant(self, key, rec) then return nil end
+	return rec
+end
+
+-- the character now keeps the person on its own (a user action gave it choices or copied them): the record no longer
+-- depends on the shared list, and the source is the one the shared record had
+local function Claim(cr, sr)
+	if cr.via == "shared" then
+		cr.via = nil
+		cr.source = cr.source or (sr and sr.source)
+	end
+end
+
 ---Is the person in the list: in this character's, or (sharing on) in the account's?
 ---@param key string "Name-Realm"
 ---@return boolean
 function R:IsListed(key)
 	local d = self:Data()
-	return d ~= nil and (d.players[key] ~= nil or SharedPlayers(self)[key] ~= nil)
+	return d ~= nil and (CharOf(self, key) ~= nil or SharedPlayers(self)[key] ~= nil)
 end
 
 ---Whose choices count for a person now: "character" (the default and the only one with sharing off), "shared", or nil.
 ---@param key string
 ---@return "character"|"shared"|nil
 function R:ScopeOf(key)
-	local cr, sr = self:Data().players[key], SharedPlayers(self)[key]
+	local cr, sr = CharOf(self, key), SharedPlayers(self)[key]
 	if not cr and not sr then return nil end
 	if sr and not OwnChoices(cr) then return "shared" end
 	return "character"
 end
 
 ---This character's record of a person, made on the first observation of someone who is listed only in the shared
----list (empty choices, only observations: it adds no opinion of its own).
+---list (empty choices, only observations: it adds no opinion of its own, and it carries `via = "shared"` instead of a
+---source, so it does not outlive the shared record, #155).
 ---@param key string
 ---@param create? boolean
 ---@return AURelationRecord?
 function R:CharRecord(key, create)
 	local d = self:Data()
-	local rec = d.players[key]
+	local rec = CharOf(self, key)
 	if rec or not create then return rec end
 	local sr = SharedPlayers(self)[key]
 	if not sr then return nil end
-	rec = { source = sr.source, user = {}, seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} } }
+	rec = { via = "shared", user = {}, seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} } }
 	d.players[key] = rec
 	return rec
 end
@@ -626,7 +651,9 @@ end
 -- every listed person: [key] = true, from both layers
 local function PlayerKeys(self)
 	local out = {}
-	for k in pairs(self:Data().players) do out[k] = true end
+	for k, rec in pairs(self:Data().players) do
+		if not Dormant(self, k, rec) then out[k] = true end
+	end
 	for k in pairs(SharedPlayers(self)) do out[k] = true end
 	return out
 end
@@ -691,9 +718,32 @@ local function CleanChoicesInto(src, out)
 	end
 end
 
+-- what loading brought back inside its limits (#156); Sanitize reports it to diagnostics
+local clamped = 0
+
+-- a time is never in the future: a clock that was set ahead and then corrected leaves records that never age
+local function Past(t)
+	local now = Now()
+	if t > now then
+		clamped = clamped + 1
+		return now
+	end
+	return t
+end
+
+-- a whole counter within COUNTER_MAX
+local function Counter(n)
+	n = math.floor(n)
+	if n > R.COUNTER_MAX then
+		clamped = clamped + 1
+		return R.COUNTER_MAX
+	end
+	return n
+end
+
 local function CleanFact(f)
 	if type(f) ~= "table" or type(f.k) ~= "string" or not f.k:match("^[a-z_]+$") or #f.k > 20 or not IsNumber(f.t) then return nil end
-	local out = { k = f.k, t = f.t }
+	local out = { k = f.k, t = Past(f.t) }
 	if IsNumber(f.p) and f.p > 0 then out.p = math.floor(f.p) end
 	out.z = CleanText(f.z, R.ZONE_LEN)
 	return out
@@ -703,14 +753,14 @@ end
 local function CleanSeen(seen, fallback)
 	seen = type(seen) == "table" and seen or {}
 	local out = {}
-	out.first = IsNumber(seen.first) and seen.first or (fallback and fallback.first) or 0
-	out.last = IsNumber(seen.last) and seen.last or out.first
-	out.count = IsNumber(seen.count) and math.max(0, math.floor(seen.count)) or 0
+	out.first = IsNumber(seen.first) and Past(seen.first) or (fallback and fallback.first) or 0
+	out.last = IsNumber(seen.last) and Past(seen.last) or out.first
+	out.count = IsNumber(seen.count) and Counter(math.max(0, seen.count)) or 0
 	out.kinds = {}
 	if type(seen.kinds) == "table" then
 		for k, n in pairs(seen.kinds) do
 			if type(k) == "string" and k:match("^[a-z_]+$") and #k <= 20 and IsNumber(n) and n >= 1 then
-				out.kinds[k] = math.floor(n)
+				out.kinds[k] = Counter(n)
 			end
 		end
 	end
@@ -756,18 +806,22 @@ local function CleanRecord(rec, kind)
 		out.seen = CleanSeen(rec.seen)
 		out.name = CleanText(rec.name, R.NAME_LEN)
 		if rec.scope == "character" then out.scope = "character" end
+		if rec.via == "shared" then out.via = "shared" end
 	else
 		CleanAxesInto(rec, out)
-		out.first = IsNumber(rec.first) and rec.first or 0
-		out.last = IsNumber(rec.last) and rec.last or out.first
-		out.count = IsNumber(rec.count) and math.max(0, math.floor(rec.count)) or 0
+		out.first = IsNumber(rec.first) and Past(rec.first) or 0
+		out.last = IsNumber(rec.last) and Past(rec.last) or out.first
+		out.count = IsNumber(rec.count) and Counter(math.max(0, rec.count)) or 0
 		out.name = CleanText(rec.name, R.NAME_LEN)
 		CleanChoicesInto(rec, out)
 	end
 	if rec.source == "user" or rec.source == "auto" then out.source = rec.source end
 	if kind == "npc" then
-		if IsNumber(rec.decayDay) then out.decayDay = math.floor(rec.decayDay) end
-		if IsNumber(rec.talks) and rec.talks > 0 then out.talks = math.floor(rec.talks) end
+		if IsNumber(rec.decayDay) then
+			out.decayDay = math.floor(rec.decayDay)
+			if out.decayDay > Day(Now()) then out.decayDay, clamped = Day(Now()), clamped + 1 end
+		end
+		if IsNumber(rec.talks) and rec.talks > 0 then out.talks = Counter(rec.talks) end
 		local t = rec.today
 		-- i contatori di un giorno passato non servono più: Increment li sostituisce alla prossima interazione (#52)
 		if type(t) == "table" and IsNumber(t.day) and math.floor(t.day) == Day(Now())
@@ -812,6 +866,7 @@ function R:Sanitize()
 	end
 	local dropped = 0
 	local npcs, players = {}, {}
+	clamped = 0
 	for k, rec in pairs(d.npcs) do
 		local id = IsNumber(k) and k > 0 and k == math.floor(k) and k or nil
 		local clean = id and CleanRecord(rec, "npc")
@@ -828,7 +883,100 @@ function R:Sanitize()
 	d.version = self.VERSION
 	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
 	self:CompactNPCs()
-	return dropped + self:SanitizeShared()
+	dropped = dropped + self:SanitizeShared()
+	-- what this load cleaned goes to /au debug (#155, #156)
+	local pruned = self:PruneShared()
+	local capped, over = self:CapPlayers()
+	local Say = function(text) NS.Diagnostics:Error("relations", text) end
+	if clamped > 0 then Say(("%d times or counters brought back inside their limits"):format(clamped)) end
+	if pruned > 0 then Say(("%d observation records of people who left the shared list dropped"):format(pruned)) end
+	if capped > 0 then Say(("%d players over the limit of %d dropped (those without choices first)"):format(capped, self.MAX_PLAYERS)) end
+	if over > 0 then Say(("%d players are over the limit of %d: they hold choices, so they were kept"):format(over, self.MAX_PLAYERS)) end
+	return dropped
+end
+
+---A person that nothing of this character's own keeps in the list: no choices, in no layer. Dropped first when a list is
+---over its limit.
+local function Droppable(rec, shared)
+	return not OwnChoices(rec) and not (type(shared) == "table" and next(shared.user) ~= nil)
+end
+
+-- removes entries from the front of `list` (the least observed first) until `count` fits `limit`
+local function DropExcess(list, count, limit, drop)
+	table.sort(list, function(a, b)
+		if a.n ~= b.n then return a.n < b.n end
+		if a.t ~= b.t then return a.t < b.t end
+		return a.key < b.key
+	end)
+	local removed = 0
+	for _, e in ipairs(list) do
+		if count - removed <= limit then break end
+		drop(e.key)
+		removed = removed + 1
+	end
+	return removed
+end
+
+---Keeps the list of people within MAX_PLAYERS for loaded data too, not only when one is added (#156): this character's
+---records first and then, with the shared list on, the people of both layers together. Records without choices go
+---first, the least observed ones first; a person who holds choices is never dropped, so a list full of them stays over
+---the limit and is only reported.
+---@return integer removed
+---@return integer over people left above the limit because they hold choices
+function R:CapPlayers()
+	local d = self:Data()
+	if not d then return 0, 0 end
+	local max, removed, over = self.MAX_PLAYERS, 0, 0
+	local total, list = 0, {}
+	for key, rec in pairs(d.players) do
+		total = total + 1
+		if Droppable(rec) then
+			local seen = type(rec.seen) == "table" and rec.seen or EMPTY
+			table.insert(list, { key = key, n = seen.count or 0, t = seen.last or 0 })
+		end
+	end
+	if total > max then
+		local n = DropExcess(list, total, max, function(key) d.players[key] = nil end)
+		removed, over = removed + n, math.max(over, total - n - max)
+	end
+	if self:Sharing() then
+		local shared = self:Shared()
+		local keys, count = PlayerKeys(self), 0
+		list = {}
+		for key in pairs(keys) do
+			count = count + 1
+			local cr, sr = d.players[key], shared and shared.players[key]
+			if Droppable(cr, sr) then
+				local seen = cr and type(cr.seen) == "table" and cr.seen or EMPTY
+				table.insert(list, { key = key, n = seen.count or 0, t = seen.last or 0 })
+			end
+		end
+		if count > max then
+			local n = DropExcess(list, count, max, function(key)
+				d.players[key] = nil
+				if shared then shared.players[key] = nil end
+			end)
+			removed, over = removed + n, math.max(over, count - n - max)
+		end
+	end
+	return removed, over
+end
+
+---Drops this character's records that live only on the shared list (`via = "shared"`, no choices of their own) while
+---the shared record is not there: the person was removed, sharing is off. A record with choices is never dropped, and
+---neither is anything while the account's list cannot be read (a newer version wrote it) (#155).
+---@return integer dropped
+function R:PruneShared()
+	local d = self:Data()
+	if not d or NS.gdb == nil or self.sharedReadOnly then return 0 end
+	local n = 0
+	for key, rec in pairs(d.players) do
+		if Dormant(self, key, rec) then
+			d.players[key] = nil
+			n = n + 1
+		end
+	end
+	return n
 end
 
 ---Cleans the shared list of the account (#114) like the character's: bad entries are dropped, only `{ source, user }`
@@ -855,6 +1003,21 @@ function R:SanitizeShared()
 			dropped = dropped + 1
 		end
 	end
+	-- the account's list has the same limit, with or without sharing: a record without choices goes first
+	local list, count = {}, 0
+	for key, rec in pairs(players) do
+		count = count + 1
+		if next(rec.user) == nil then table.insert(list, { key = key, n = 0, t = 0 }) end
+	end
+	if count > self.MAX_PLAYERS then
+		local n = DropExcess(list, count, self.MAX_PLAYERS, function(key) players[key] = nil end)
+		if n > 0 then
+			NS.Diagnostics:Error("relations", ("%d shared players over the limit of %d dropped (those without choices first)"):format(n, self.MAX_PLAYERS))
+		end
+		if count - n > self.MAX_PLAYERS then
+			NS.Diagnostics:Error("relations", ("%d shared players are over the limit of %d: they hold choices, so they were kept"):format(count - n - self.MAX_PLAYERS, self.MAX_PLAYERS))
+		end
+	end
 	s.players, s.version = players, self.SHARED_VERSION
 	return dropped
 end
@@ -867,7 +1030,7 @@ function R:Get(kind, key)
 	if not d then return nil end
 	if kind == "npc" then return d.npcs[tonumber(key)] end
 	if kind == "player" then
-		local cr, sr = d.players[key], SharedPlayers(self)[key]
+		local cr, sr = CharOf(self, key), SharedPlayers(self)[key]
 		if not sr or OwnChoices(cr) then return cr end
 		-- the shared choices count: a view whose `user` is the shared block itself (so a user action that writes
 		-- through it writes the shared record) and whose observations are this character's
@@ -1535,7 +1698,7 @@ end
 ---@param key string
 function R:Adopt(key)
 	if not self:Writable() or not self:Sharing() then return end
-	local cr = self:Data().players[key]
+	local cr = CharOf(self, key)
 	if not cr or OwnChoices(cr) then return end
 	local shared = self:Shared(true)
 	if shared and not shared.players[key] then shared.players[key] = { source = cr.source, user = {} } end
@@ -1554,7 +1717,7 @@ function R:SetScope(key, scope)
 	if not self:Writable() then return false, "off" end
 	if not self:Sharing() then return false, "not_sharing" end
 	if scope ~= "shared" and scope ~= "character" then return false, "bad_scope" end
-	local cr = self:Data().players[key]
+	local cr = CharOf(self, key)
 	local shared = self:Shared(true)
 	local sr = shared.players[key]
 	if not cr and not sr then return false, "missing" end
@@ -1563,6 +1726,7 @@ function R:SetScope(key, scope)
 		cr = self:CharRecord(key, true)
 		cr.user = DeepCopy(sr and sr.user or {})
 		cr.scope = "character"
+		Claim(cr, sr)
 		self:Changed()
 		return true
 	end
@@ -1627,6 +1791,7 @@ function R:CopySharedHere()
 				cr = self:CharRecord(key, true)
 				cr.user = DeepCopy(sr.user)
 				if next(cr.user) ~= nil then cr.scope = "character" end
+				Claim(cr, sr)
 				copied = copied + 1
 			end
 		end
@@ -1654,11 +1819,14 @@ function R:StartSharing()
 	return "armed"
 end
 
----Turning it off is one step and deletes nothing: the shared list stays in the account, unused, until it is turned on
----again or cleared (`/au relationships reset shared`).
+---Turning it off is one step and deletes nothing of the shared list: it stays in the account, unused, until it is
+---turned on again or cleared (`/au relationships reset shared`). This character's observation records of people who
+---were only in the shared list are dropped, never a record with choices (the `user` blocks are never touched).
 function R:StopSharing()
 	self.pendingShare = nil
 	self:SetSetting("sharePlayers", false)
+	-- this character's records that only came from the shared list go with it; the choices never do (#155)
+	if self:Writable() and self:PruneShared() > 0 then self:Changed() end
 end
 
 ---@return boolean waiting a confirmation to turn the shared list on is open
