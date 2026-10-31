@@ -41,7 +41,14 @@ local function NoPersonalData(text, what)
 	-- the clock reading of debugprofilestop (os.clock in the mock) is a number that can contain any digits
 	text = text:gsub("debugprofilestop: %-> [0-9.]+", "")
 	for _, word in ipairs(SECRETS) do
-		T.ok(not text:find(word, 1, true), what .. ": no '" .. word .. "'")
+		-- a numeric secret counts only as a whole number: the digits inside a longer number (a timing) are not a leak
+		local found
+		if word:find("^%d+$") then
+			found = text:find("%f[%d.]" .. word .. "%f[^%d]")
+		else
+			found = text:find(word, 1, true)
+		end
+		T.ok(not found, what .. ": no '" .. word .. "'")
 	end
 	T.ok(not text:find("\r", 1, true), what .. ": LF line endings")
 end

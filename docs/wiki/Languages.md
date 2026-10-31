@@ -11,6 +11,7 @@ Azeroth Unspoken speaks **English** and **Italian**. Every line exists in both l
 - **Command names are always English**, in both languages (see below).
 - The setting is shared by all characters on your account.
 - Phrase packs can add more languages. A new language appears in the list as soon as its pack is installed.
+- **Spell names are not translated.** The game client gives the addon the spell name in the client's own language, so an English client reports English names. The curated Italian lines therefore never name the spell ("questo incantesimo" instead): an English name would stand out in the middle of an Italian sentence.
 - Only the language you chose is read into memory. The download contains both, and you do not need to delete the other one.
 
 ## How to change it

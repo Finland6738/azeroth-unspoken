@@ -219,9 +219,11 @@ end
 -- una variante come tabella { t, ok, depth, pack, raw } (#84)
 local View = Engine.VariantView
 
+-- {spell} is the client's own name for the spell (#104): a language other than the client's may leave it out, so it
+-- does not count when the languages are compared
 local function Signature(tags)
 	local list = {}
-	for t in pairs(tags) do table.insert(list, t) end
+	for t in pairs(tags) do if t ~= "spell" then table.insert(list, t) end end
 	table.sort(list)
 	return table.concat(list, ",")
 end
