@@ -592,7 +592,8 @@ spoken = lua3.eval("""function()
     end
 end""")()
 check(spoken == "memory_return", f"memoria: al ritorno parla il richiamo di memoria ({spoken})")
-hist = list(ns3.Narrator.history.values())
+# story notices enter the history too (#177): the cascade check counts the lines only
+hist = [e for e in ns3.Narrator.history.values() if not e.notice]
 check(len(hist) == 1, "memoria: una sola frase, niente cascata")
 print("  frase di ritorno:", hist[0].text if hist else None)
 check(lua3.eval("function() return AzerothUnspoken.LivingMemory:Find(%d) ~= nil and AzerothUnspoken.LivingMemory:Find(%d).perm end" % (first_id, first_id))() is True,

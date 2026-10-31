@@ -38,7 +38,8 @@ NS.Gateway = Gateway
 ---@field event string
 ---@field form string say | emote
 ---@field channel string canale scelto
----@field time number GetTime() alla creazione
+---@field time number GetTime() alla creazione (spostato in avanti dalle pause sotto il mouse)
+---@field pausedAt? number GetTime() da cui l'attesa è ferma perché il mouse è sul narratore (#177)
 ---@field player? string nome per le emote
 ---@field reviewed? boolean in PREVIEW: il giocatore ha già aperto l'editor
 ---@field ctx? table contesto con cui è nata (serve a "Un'altra": stesso evento, stesso contesto)
@@ -408,7 +409,7 @@ function Gateway:OnBlocked(env)
 		if #log > 0 then table.remove(log) end
 		self.sentTotal = math.max(0, (self.sentTotal or 1) - 1)
 		if a.proposal and not self.pending then
-			a.proposal.time = GetTime()
+			a.proposal.time, a.proposal.pausedAt = GetTime(), nil
 			self.pending = a.proposal
 			if NS.Narrator and NS.Narrator.NoteBlocked then NS.Narrator:NoteBlocked(a.channel, a.proposal) end
 			self:Changed()
@@ -443,14 +444,42 @@ function Gateway:SetEditing(on)
 	on = on and self.pending ~= nil
 	if on == self.editing then return end
 	self.editing = on
-	if not on and self.pending then self.pending.time = GetTime() end
+	if not on and self.pending then
+		self.pending.time = GetTime()
+		if self.pending.pausedAt then self.pending.pausedAt = GetTime() end
+	end
+end
+
+---#177: while the mouse is over the narrator the waiting time stops, and it resumes where it was. The narrator calls
+---this every frame, so a proposal that arrives under the mouse is paused too.
+---@param on boolean
+function Gateway:SetHovered(on)
+	local p = self.pending
+	if not p then return end
+	if on and not p.pausedAt then
+		p.pausedAt = GetTime()
+	elseif not on and p.pausedAt then
+		p.time = p.time + (GetTime() - p.pausedAt)
+		p.pausedAt = nil
+	end
+end
+
+---Seconds the proposal still waits: nil when it waits until the player closes it (chat.pendingSeconds = 0). It can go
+---below zero: GetPending then drops the proposal.
+---@param p AUProposal
+---@return number? left
+function Gateway:PendingLeft(p)
+	local wait = NS.db.chat.pendingSeconds
+	if wait <= 0 or self.editing then return nil end
+	return wait - ((p.pausedAt or GetTime()) - p.time)
 end
 
 ---@return AUProposal?
 function Gateway:GetPending()
 	local p = self.pending
 	if not p then return nil end
-	if not self.editing and GetTime() - p.time > NS.db.chat.pendingSeconds then
+	local left = self:PendingLeft(p)
+	if left and left < 0 then
 		self:Discard()
 		return nil
 	end
