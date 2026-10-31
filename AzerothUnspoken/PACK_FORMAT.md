@@ -843,7 +843,7 @@ registry = {
 |---|---|
 | `{player}` | the character's name (the Total RP 3 one, if active) |
 | `{target}` | target |
-| `{spell}` | the spell just cast |
+| `{spell}` | the spell just cast, **as the game client names it** (an English client gives English names, whatever the phrase language). The base Italian lines avoid it; a pack in another language than the client's should word the line so the name can stand out (a quoted name, "the spell") or leave it out |
 | `{zone}`, `{subzone}` | place |
 | `{landmark}` | the name the client gives to the landmark you are in (a line with it is not composed outside a landmark) |
 | `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}` | in the chosen language |
@@ -1058,7 +1058,7 @@ a **warning** is advice.
 | `dupId`, `badId` | error | id already used by another pack, or not valid (the duplicate phrase is ignored) |
 | `noText`, `emptyLang`, `emptyVariant` | error | no text, all variants empty, empty or non-string variant |
 | `missingLang` | error | the text is missing in a language of the pack (`languages`, or those the pack writes in) |
-| `placeholderMismatch` | error | IT and EN do not use the same placeholder combinations |
+| `placeholderMismatch` | error | IT and EN do not use the same placeholder combinations (`{spell}` is left out of the comparison: one language may name the spell and the other not) |
 | `badDialogue` | error or warning | a wrong `RegisterDialogues` script: missing node or reply, event without lines or not of the `npc` voice, invalid flag, text missing in a language, unreachable node |
 | `badArc` | error or warning | a wrong `RegisterArcs` arc: invalid id, states or steps, undefined choice, unknown field (including a reward), title, account or choices missing in a language; an `arc_open`/`arc_step`/`arc_resolve` rule without `arc = { id }` or with a state the arc does not have; warning: a step without lines (the arc advances in silence) |
 | `badPlaceholder` | error | unknown placeholder, malformed gender (`{g:}`, `{og:}`), unclosed brace, `{line}` outside frames, vocabulary inside vocabulary |

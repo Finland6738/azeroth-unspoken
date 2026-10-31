@@ -64,7 +64,7 @@ NS:RegisterPack({
 		{ event = "lowhp", it = "sputa sangue e si rialza a fatica. «{line}»", en = "spits blood and drags {g:himself|herself} up. \"{line}\"" },
 
 		-- incantesimi
-		{ event = { "attack", "heal", "buff" }, it = "pronuncia {spell}, e le parole antiche bruciano nell'aria. «{line}»", en = "speaks {spell}, and the old words burn in the air. \"{line}\"" },
+		{ event = { "attack", "heal", "buff" }, it = "pronuncia l'incantesimo, e le parole antiche bruciano nell'aria. «{line}»", en = "speaks {spell}, and the old words burn in the air. \"{line}\"" },
 		{ event = "heal", it = "posa una mano su {target}. «{line}»", en = "lays a hand upon {target}. \"{line}\"" },
 		{ event = "rezother", it = "si inginocchia accanto a {target} e chiama nel buio. «{line}»", en = "kneels beside {target} and calls into the dark. \"{line}\"" },
 

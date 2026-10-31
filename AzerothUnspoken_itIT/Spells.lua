@@ -84,11 +84,11 @@ NS:AddTexts("itIT", {
 		"Il vento cala. Ora.",
 	},
 	["atk.spell.01"] = {
-		"{spell}! Ascolta il suo nome, e tremane.",
+		"Ascolta queste parole, e tremane.",
 		"Ascolta bene queste parole: sono le ultime che senti oggi.",
 	},
 	["atk.spell.02"] = {
-		"Si chiama {spell}. Te lo dico perché dopo non potrai chiederlo.",
+		"È un nome antico. Te lo dico perché dopo non potrai chiederlo.",
 		"Non chiedermi come si chiama. Tanto non avrai modo di scriverlo.",
 	},
 	["atk.taunt.01"] = {
@@ -173,7 +173,7 @@ NS:AddTexts("itIT", {
 		"Così reggi un colpo in più. Uno. Non fare il furbo.",
 	},
 	["buff.03"] = {
-		"Che {spell} ti avvolga come un mantello nella notte fredda.",
+		"Che questo incantesimo ti avvolga come un mantello nella notte fredda.",
 		"Ecco una coperta che nessuno vede. Tienila stretta quando arriva il freddo.",
 	},
 	["buff.04"] = {

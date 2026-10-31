@@ -372,4 +372,20 @@ T.run("#61: {og:} ha sempre una variante neutra; #66: l'inglese usa l'ortografia
 			end
 		end
 	end
+	-- #104: the client is English, so {spell} would put an English spell name inside an Italian line
+	for id, p in pairs(BASE) do
+		for _, v in ipairs(p.text.it or {}) do
+			v = Engine.VariantView(v)
+			T.ok(not v.t:find("{spell}", 1, true), id .. ": no {spell} in an Italian line: " .. v.t)
+		end
+	end
+	for ev, list in pairs(Engine.frames) do
+		for _, f in ipairs(list) do
+			local it = f.text and f.text.it
+			for _, v in ipairs(type(it) == "table" and it or { it }) do
+				v = type(v) == "table" and Engine.VariantView(v).t or v
+				T.ok(not tostring(v):find("{spell}", 1, true), ev .. ": no {spell} in an Italian frame: " .. tostring(v))
+			end
+		end
+	end
 end)

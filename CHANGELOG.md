@@ -10,6 +10,11 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### Fixes: spell names in Italian lines (#104) and a flaky test (#139)
+
+- **Fixed: no English spell names inside Italian lines** (#104). The client is English, so `{spell}` gave English names ("lanci Fireball"). Rather than ship a translation table of official names that cannot be checked offline, the three Italian lines and the Italian frame that used `{spell}` now say "questo incantesimo" or leave the name out; the English text is unchanged. The validator no longer requires both languages to use `{spell}` together. A test keeps `{spell}` out of the base Italian text. `PACK_FORMAT.md` and the Languages wiki page explain that `{spell}` is the client's name.
+- **Fixed: flaky `/au prof` privacy test** (#139). The "no 1234" check could match the digits inside a probe timing; numeric secrets now count only as whole numbers.
+
 ### R3a: selection quality, tiers, themes and quotas (issues #89, #90 and #91)
 
 The narrator now varies **what it talks about**, not only the words: a place-specific line comes first where it exists, the same theme, image, voice or opening does not come back at once, "says" and "murmurs" stop framing a third of the emotes, and combat no longer fills the session ([ADR 0028](docs/adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md)). This is the first change of the roadmap meant to make the selection **choose differently** from R1.
