@@ -23,8 +23,8 @@ NS:RegisterLanguage("en", {
 		rel_cand_add_tip = "Add to the list.", rel_cand_dismiss_tip = "Dismiss the suggestion (until next login).",
 		rel_no_candidates = "No suggestions this session.",
 		rel_src_group = "in your group", rel_src_trade = "a trade", rel_src_trp3 = "has a Total RP 3 profile", rel_src_whisper = "private reply",
-		rel_label = "Label", rel_label_set = "Chosen: %s (click: change)", rel_label_auto = "Automatic: %s (click: choose)",
-		rel_label_tip = "A label you choose takes precedence over the calculated one. Cycle through the labels until you are back to automatic. For your own wording, type it in the box next to it.",
+		rel_label = "Label", rel_label_set = "Chosen: %s", rel_label_auto = "Automatic: %s",
+		rel_label_tip = "Click: next label. A label you choose takes precedence over the calculated one. Cycle through the labels until you are back to automatic. For your own wording, type it in the box below.",
 		rel_note = "Note", rel_tags = "Tags", rel_last = "last",
 		rel_traits_title = "How you see them (shapes the lines; 'unknown' leaves it to the addon)",
 		rel_trait_unknown = "unknown", rel_trait_auto = "automatic",
@@ -83,6 +83,12 @@ NS:RegisterLanguage("en", {
 		rel_scope_btn_shared = "Choices: shared", rel_scope_btn_character = "Choices: this character",
 		rel_scope_tip = "The shared list is on. 'Shared': every character uses the same choices for this person. 'This character': this character keeps its own copy and ignores the shared ones. Click to switch (the choices are moved or copied, never lost).",
 		rel_delete_shared_tip = "The shared list is on: removing the person removes them from the account's list for all your characters.",
+		-- U1 (#171, #172, #180, #184): the options tab, the row tooltip, the boxes that save when you leave them
+		rel_tab_options = "Options",
+		rel_options_hint = "Hover over an option to read what it does. Nothing here reads chat or whispers.",
+		rel_row_tip = "Click: open the relationship.",
+		rel_custom_tip = "Your own label, in your words. Saved when you leave the box: Enter, another box, another view or Close. Esc puts back the saved text.",
+		rel_edit_tip = "Saved when you leave the box: Enter, another box, another view or Close. Esc puts back the saved text.",
 		rel_help = "usage: /au relationships [list | people | add <name> | dismiss <name> | remove <name|npc:ID> | detail <name> | note <name> <text> | tags <name> <tag,...> | label <name> <text> | set <name> <axis> <value> | export | auto on|off | attraction on|off | feeling <name> <feeling> [preset] | forget <name> | proximity on|off | share [on|off|all|copy] | scope <name> shared|character | reset [all|npcs|players|shared]]",
 	},
 })
