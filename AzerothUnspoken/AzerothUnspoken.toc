@@ -38,6 +38,7 @@ Integration\ChatGateway.lua
 
 # --- sistemi ---
 Systems\Personality.lua
+Systems\Emotion.lua
 Systems\Director.lua
 Systems\Triggers.lua
 Systems\World.lua
@@ -73,6 +74,7 @@ Data\Frames.lua
 Data\Relationships.lua
 Data\Places.lua
 Data\Landmarks.lua
+Data\Emotions.lua
 Data\NPCs.lua
 Data\RegistryCombat.lua
 Data\RegistrySpells.lua
@@ -81,6 +83,7 @@ Data\RegistryExploration.lua
 Data\RegistrySocial.lua
 Data\RegistryClasses.lua
 Data\RegistrySoul.lua
+Data\RegistryEmotions.lua
 Data\RegistryMemory.lua
 Data\RegistryRelations.lua
 Data\RegistryContext.lua

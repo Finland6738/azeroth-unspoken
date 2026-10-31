@@ -58,13 +58,13 @@ CREATE TABLE intention (
     form          TEXT,
     styles        TEXT,                          -- JSON list: the registers
     depth         TEXT,                          -- JSON list
-    tags          TEXT,                          -- JSON list
+    tags          TEXT,                          -- JSON list (trait tags, `stoicism>=60` thresholds and `emo:` tags, R4)
     theme         TEXT,                          -- one theme of the closed vocabulary (#90, Data/Themes.lua)
     motifs        TEXT,                          -- JSON list: zero to three motifs (#90)
     tier          TEXT,                          -- JSON: an explicit specificity tier (#89), a number or a name
     weight        NUMERIC,
     cooldown      NUMERIC,
-    conditions    TEXT,                          -- JSON (a Lua condition table)
+    conditions    TEXT,                          -- JSON (a Lua condition table; R4 adds emotion, emotionMin/Max, traitMin/Max)
     extra         TEXT,                          -- JSON: rule fields the archive does not model
     ctx           TEXT NOT NULL DEFAULT '*',     -- selection-index keys (ADR 0024), '*' = generic; comma separated
     region        TEXT,                          -- the region of its pack (NULL = every place)

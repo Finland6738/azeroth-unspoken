@@ -123,6 +123,7 @@ function Diagnostics:Report(verbose)
 		if NS.Director and NS.Director.Status then Add("Narrative Director: " .. NS.Director:Status()) end
 		if NS.Profiler then Add("Profile: " .. NS.Profiler:Summary()) end
 		if NS.LivingMemory then Add("Living Memory: " .. NS.LivingMemory:Status()) end
+		if NS.Emotion then Add("Emotion: " .. NS.Emotion:Status()) end
 		if NS.Relationships then Add("Relationships: " .. NS.Relationships:Status()) end
 		if NS.NPCAlive then Add("NPC Alive: " .. NS.NPCAlive:Status()) end
 		if NS.StoryArcs then Add("Story Arcs: " .. NS.StoryArcs:Status()) end

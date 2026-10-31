@@ -1,6 +1,6 @@
 # 0016. Character Soul: opt-in traits as data, soft affinity and hard filters, Total RP 3 with consent
 
-- Status: accepted
+- Status: accepted; amended by [ADR 0031](0031-intensity-traits-emotional-state-and-the-tone-of-a-return.md) (R4: traits are intensities, the old choices are derived from them)
 - Date: 2026-10-29 (step S5; GDD §7.1, §8; ADR 0004 and 0015)
 
 ## Context

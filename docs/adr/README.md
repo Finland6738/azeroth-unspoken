@@ -38,10 +38,11 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0028](0028-world-variables-weather-day-subzones-quests-reputation-rest-and-flight.md) | World variables: weather, day and night, subzones, quests, reputation, rest and flight | accepted |
 | [0029](0029-specificity-tiers-themes-motifs-and-category-quotas.md) | Specificity tiers, themes and motifs, and per-session category quotas | accepted |
 | [0030](0030-proximity-session-proposal-and-account-shared-list.md) | Proximity as a session proposal, and a list of people shared by the account's characters | accepted |
+| [0031](0031-intensity-traits-emotional-state-and-the-tone-of-a-return.md) | Intensity traits, an emotional state with decay, and the tone of a return | accepted |
 
 ## Pending decisions
 
-- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0030).
+- **License** of code and texts: [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2). When it is taken, it will get the first free number (today 0032).
 
 ## How to write a new one
 

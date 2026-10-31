@@ -9,6 +9,8 @@ NS.db.locale = "it"
 local function Fresh()
 	NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
 	Engine:ResetLines()
+	-- a calm character (R4): the emotions raised by the events of other test files do not leak into the measures
+	if NS.Emotion then NS.Emotion:Reset() end
 end
 
 local function Has(result, code, id)

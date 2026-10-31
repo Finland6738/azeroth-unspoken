@@ -1,5 +1,10 @@
--- Azeroth Unspoken: Character Soul, la personalità del personaggio del giocatore (GDD §7.1, ADR 0016).
--- Tratti opt-in: temperamento, morale, curiosità, fede, motivazione, ironia, argomenti da evitare, voce interiore.
+-- Azeroth Unspoken: Character Soul, la personalità del personaggio del giocatore (GDD §7.1, ADR 0016, ADR 0030).
+-- Tratti opt-in. Dalla R4 (#96) la personalità è fatta di intensità da 0 a 100 su dieci assi che possono convivere
+-- (stoico e vendicativo insieme): idealismo (cinico <-> idealista), concretezza (sognatore <-> pragmatico), ottimismo
+-- (pessimista <-> ottimista), altruismo, stoicismo, ambizione, spiritualità, patriottismo, curiosità, sete di vendetta;
+-- più l'ironia, gli argomenti da evitare e la voce interiore. Gli archetipi sono preimpostazioni modificabili. I vecchi
+-- tratti a scelta (temperamento, morale, fede, motivazione) restano come tag delle frasi e si leggono dagli assi
+-- (`derive` in Engine/Traits.lua); un profilo salvato della versione 1 si converte da solo (Personality:Migrate).
 -- Nessun tratto è obbligatorio: il profilo neutro (nessun tratto) lascia il narratore com'è. I tratti cambiano
 -- l'eleggibilità e i pesi delle frasi senza imporre esiti:
 --   - fattore P del peso (Engine:SetWeightHook "P"): affinità morbida dai tag delle frasi (Engine/Traits.lua),
@@ -12,16 +17,18 @@ local ADDON, NS = ...
 local Traits, Engine = NS.Traits, NS.Engine
 
 ---@class AUPersonalityProfile dati salvati per personaggio (AzerothUnspokenCharacterDB.personality)
----@field version integer
+---@field version integer 2: intensità (R4); 1: scelte esclusive di S5, convertite da Personality:Migrate
 ---@field archetype string neutral | id di un archetipo | custom
+---@field base? string l'archetipo da cui è partito un profilo personalizzato (solo per mostrarlo)
 ---@field traits AUTraits scelte esplicite
 ---@field trp3 boolean consenso a leggere i tratti dal profilo pubblico del proprio personaggio in Total RP 3
+---@field legacy? table<string, string> le scelte della versione 1 prima della conversione (identificatori, mai testo)
 
 ---@class AUPersonality
 local Personality = NS:RegisterModule("personality")
 NS.Personality = Personality
 
-Personality.VERSION = 1
+Personality.VERSION = 2
 Personality.CACHE_SECONDS = 15   -- ogni quanto si rilegge il profilo di Total RP 3
 
 ---------------------------------------------------------------------------
@@ -30,15 +37,47 @@ Personality.CACHE_SECONDS = 15   -- ogni quanto si rilegge il profilo di Total R
 -- Fasce delle scale 0-100
 local BANDS = { { "low", 33 }, { "mid", 66 }, { "high", 100 } }
 
-Traits.Define({ id = "temperament", kind = "choice",
-	values = { "resolute", "merciful", "stoic", "cheerful", "melancholic", "gruff", "fierce" } })
-Traits.Define({ id = "morality", kind = "choice",
-	values = { "righteous", "pragmatic", "conflicted", "disillusioned", "hopeful" } })
-Traits.Define({ id = "curiosity", kind = "scale", min = 0, max = 100, bands = BANDS })
-Traits.Define({ id = "faith", kind = "choice", values = { "devout", "spiritual", "doubting", "skeptic" } })
-Traits.Define({ id = "motivation", kind = "choice",
-	values = { "duty", "vengeance", "glory", "knowledge", "redemption", "freedom", "protection" } })
+-- Gli assi della personalità (R4, #96): intensità da 0 a 100. I primi tre sono bipolari (0 e 100 sono due modi
+-- d'essere opposti, 50 è l'equilibrio); gli altri vanno da "per nulla" a "del tutto". Un asse non impostato è "non so".
+Personality.AXES = { "idealism", "concreteness", "optimism", "altruism", "stoicism", "ambition", "spirituality",
+	"patriotism", "curiosity", "vengefulness" }
+-- i poli degli assi bipolari, per l'interfaccia (chiavi soul_pole_<asse>_low e _high)
+Personality.BIPOLAR = { idealism = true, concreteness = true, optimism = true }
+for _, id in ipairs(Personality.AXES) do
+	Traits.Define({ id = id, kind = "scale", min = 0, max = 100, bands = BANDS })
+end
 Traits.Define({ id = "irony", kind = "scale", min = 0, max = 100, bands = BANDS })
+
+-- I tratti a scelta di S5. Il profilo del personaggio non li salva più, ma le frasi li usano come tag
+-- (temperament:stoic) e l'interlocutore (S6c, ambito other) sceglie ancora temperamento e morale: per un profilo
+-- fatto di intensità ogni valore si legge da un asse. Le soglie stanno ai bordi delle fasce (33/67), salvo dove il
+-- valore chiede un carattere più marcato.
+Traits.Define({ id = "temperament", kind = "choice",
+	values = { "resolute", "merciful", "stoic", "cheerful", "melancholic", "gruff", "fierce" },
+	derive = {
+		resolute = { "ambition", ">=", 60 }, merciful = { "altruism", ">=", 67 }, stoic = { "stoicism", ">=", 67 },
+		cheerful = { "optimism", ">=", 67 }, melancholic = { "optimism", "<=", 33 }, gruff = { "altruism", "<=", 33 },
+		fierce = { "vengefulness", ">=", 60 },
+	} })
+Traits.Define({ id = "morality", kind = "choice",
+	values = { "righteous", "pragmatic", "conflicted", "disillusioned", "hopeful" },
+	derive = {
+		righteous = { "idealism", ">=", 67 }, pragmatic = { "concreteness", ">=", 67 },
+		conflicted = { "idealism", "in", 34, 66 }, disillusioned = { "idealism", "<=", 33 },
+		hopeful = { "optimism", ">=", 67 },
+	} })
+Traits.Define({ id = "faith", kind = "choice", values = { "devout", "spiritual", "doubting", "skeptic" },
+	derive = {
+		devout = { "spirituality", ">=", 80 }, spiritual = { "spirituality", ">=", 60 },
+		doubting = { "spirituality", "<=", 40 }, skeptic = { "spirituality", "<=", 20 },
+	} })
+Traits.Define({ id = "motivation", kind = "choice",
+	values = { "duty", "vengeance", "glory", "knowledge", "redemption", "freedom", "protection" },
+	derive = {
+		duty = { "patriotism", ">=", 60 }, vengeance = { "vengefulness", ">=", 67 }, glory = { "ambition", ">=", 67 },
+		knowledge = { "curiosity", ">=", 67 }, redemption = { "optimism", "<=", 40 }, freedom = { "patriotism", "<=", 33 },
+		protection = { "altruism", ">=", 60 },
+	} })
 -- gli argomenti da evitare non si contraddicono mai: un tag topic:morte esclude la frase
 Traits.Define({ id = "avoid", kind = "set", tag = "topic", exclusive = true, hard = true,
 	values = { "death", "blood", "betrayal", "family", "religion", "undead", "demons", "romance" } })
@@ -47,12 +86,41 @@ Traits.Define({ id = "innerVoice", kind = "choice", hard = true,
 	values = { "off", "quiet", "present", "vivid" } })
 
 -- ordine di presentazione nell'interfaccia e nei comandi
-Personality.TRAIT_ORDER = { "temperament", "morality", "curiosity", "faith", "motivation", "irony", "innerVoice", "avoid" }
+Personality.TRAIT_ORDER = { "idealism", "concreteness", "optimism", "altruism", "stoicism", "ambition", "spirituality",
+	"patriotism", "curiosity", "vengefulness", "irony", "innerVoice", "avoid" }
+-- i tratti a scelta della versione 1, che il profilo non salva più
+Personality.LEGACY = { "temperament", "morality", "faith", "motivation" }
 
--- parole dei comandi (/au soul <trait> ...): sempre in inglese
+-- Conversione della versione 1 (Personality:Migrate) e comandi con le vecchie parole (/au soul temperament stoic):
+-- ogni scelta diventa intensità che soddisfano la sua regola `derive`, così i tag delle frasi che valevano prima
+-- valgono ancora. Se due scelte toccano lo stesso asse vale la prima, nell'ordine di LEGACY.
+Personality.MIGRATION = {
+	temperament = {
+		resolute = { ambition = 70, stoicism = 55 }, merciful = { altruism = 80 }, stoic = { stoicism = 80 },
+		cheerful = { optimism = 80 }, melancholic = { optimism = 20 }, gruff = { altruism = 25 },
+		fierce = { vengefulness = 75 },
+	},
+	morality = {
+		righteous = { idealism = 80 }, pragmatic = { concreteness = 80 }, conflicted = { idealism = 50 },
+		disillusioned = { idealism = 20 }, hopeful = { optimism = 80 },
+	},
+	faith = { devout = { spirituality = 90 }, spiritual = { spirituality = 70 }, doubting = { spirituality = 35 },
+		skeptic = { spirituality = 10 } },
+	motivation = {
+		duty = { patriotism = 75 }, vengeance = { vengefulness = 80 }, glory = { ambition = 80 },
+		knowledge = { curiosity = 80 }, redemption = { optimism = 35 }, freedom = { patriotism = 20 },
+		protection = { altruism = 75 },
+	},
+}
+
+-- parole dei comandi (/au soul <trait> ...): sempre in inglese. Le vecchie parole (temperament, morality, faith,
+-- motivation) impostano gli assi corrispondenti.
 local TRAIT_ALIAS = NS.Keywords.Register("soul.traits", {
-	temperament = "temperament", morality = "morality", curiosity = "curiosity", faith = "faith",
-	motivation = "motivation", irony = "irony", avoid = "avoid", voice = "innerVoice", innervoice = "innerVoice",
+	idealism = "idealism", concreteness = "concreteness", optimism = "optimism", altruism = "altruism",
+	stoicism = "stoicism", ambition = "ambition", spirituality = "spirituality", patriotism = "patriotism",
+	curiosity = "curiosity", vengefulness = "vengefulness", irony = "irony", avoid = "avoid",
+	voice = "innerVoice", innervoice = "innerVoice",
+	temperament = "temperament", morality = "morality", faith = "faith", motivation = "motivation",
 })
 local SOUL_WORDS = NS.Keywords.Register("soul", { list = "list", neutral = "neutral", reset = "neutral", archetype = "archetype", trp3 = "trp3" })
 
@@ -61,8 +129,27 @@ Personality.INNER_FACTOR = { off = 0, quiet = 0.5, present = 1, vivid = 1.6 }
 -- fattori dell'ironia sulle frasi di registro ironico che non portano un tag irony:
 Personality.IRONY_FACTOR = { low = 0.5, mid = 1, high = 1.5 }
 
+---Le intensità che corrispondono alle scelte della versione 1 (tratti a scelta di S5). Gli altri tratti (curiosità,
+---ironia, voce interiore, argomenti) passano come sono. Un valore sconosciuto si ignora.
+---@param old table profilo della versione 1
+---@return AUTraits traits
+function Personality.FromLegacy(old)
+	local out = {}
+	if type(old) ~= "table" then return out end
+	for k, v in pairs(old) do
+		if not Personality.MIGRATION[k] then out[k] = v end
+	end
+	for _, trait in ipairs(Personality.LEGACY) do
+		local map = Personality.MIGRATION[trait][old[trait]]
+		for axis, value in pairs(map or {}) do
+			if out[axis] == nil then out[axis] = value end
+		end
+	end
+	return out
+end
+
 ---------------------------------------------------------------------------
--- Archetipi
+-- Archetipi: preimpostazioni di intensità (R4). Sceglierne uno riempie gli assi; poi si modifica liberamente.
 ---------------------------------------------------------------------------
 ---@class AUArchetype
 ---@field id string
@@ -73,20 +160,24 @@ Personality.IRONY_FACTOR = { low = 0.5, mid = 1, high = 1.5 }
 ---@type AUArchetype[]
 Personality.archetypes = {
 	{ id = "neutral", traits = {} },
-	{ id = "veteran", traits = { temperament = "stoic", morality = "disillusioned", faith = "doubting",
-		motivation = "duty", irony = 60, curiosity = 30 } },
-	{ id = "traveler", traits = { temperament = "cheerful", morality = "hopeful", faith = "spiritual",
-		motivation = "freedom", irony = 40, curiosity = 90 } },
-	{ id = "guardian", traits = { temperament = "merciful", morality = "righteous", faith = "devout",
-		motivation = "protection", irony = 15, curiosity = 40 } },
-	{ id = "rogue", traits = { temperament = "gruff", morality = "pragmatic", faith = "skeptic",
-		motivation = "freedom", irony = 90, curiosity = 60 } },
-	{ id = "scholar", traits = { temperament = "stoic", morality = "conflicted", faith = "skeptic",
-		motivation = "knowledge", irony = 45, curiosity = 95 } },
-	{ id = "avenger", traits = { temperament = "fierce", morality = "conflicted", faith = "doubting",
-		motivation = "vengeance", irony = 25, curiosity = 25 } },
-	{ id = "penitent", traits = { temperament = "melancholic", morality = "conflicted", faith = "spiritual",
-		motivation = "redemption", irony = 20, curiosity = 50 } },
+	{ id = "veteran", traits = { stoicism = 80, idealism = 20, spirituality = 35, patriotism = 75, optimism = 40,
+		irony = 60, curiosity = 30 } },
+	{ id = "traveler", traits = { optimism = 80, curiosity = 90, spirituality = 70, patriotism = 20, altruism = 55,
+		irony = 40 } },
+	{ id = "guardian", traits = { altruism = 80, idealism = 80, spirituality = 90, patriotism = 70, stoicism = 55,
+		irony = 15, curiosity = 40 } },
+	{ id = "rogue", traits = { altruism = 25, concreteness = 80, spirituality = 10, patriotism = 20, ambition = 60,
+		idealism = 30, irony = 90, curiosity = 60 } },
+	{ id = "scholar", traits = { stoicism = 80, curiosity = 95, spirituality = 10, idealism = 50, concreteness = 60,
+		irony = 45 } },
+	{ id = "avenger", traits = { vengefulness = 85, idealism = 50, spirituality = 35, optimism = 35, stoicism = 30,
+		irony = 25, curiosity = 25 } },
+	{ id = "penitent", traits = { optimism = 20, idealism = 50, spirituality = 70, altruism = 60, irony = 20,
+		curiosity = 50 } },
+	{ id = "patriot", traits = { patriotism = 90, ambition = 65, idealism = 70, stoicism = 60, optimism = 60,
+		irony = 20, curiosity = 35 } },
+	{ id = "dreamer", traits = { concreteness = 15, optimism = 70, curiosity = 75, idealism = 75, spirituality = 60,
+		irony = 30 } },
 }
 
 ---@param id string
@@ -151,8 +242,37 @@ function Personality:Profile()
 	if type(p.traits) ~= "table" then p.traits = {} end
 	if type(p.archetype) ~= "string" then p.archetype = "neutral" end
 	if type(p.trp3) ~= "boolean" then p.trp3 = false end
+	if type(p.version) ~= "number" or p.version < self.VERSION then self:Migrate(p) end
 	p.version = self.VERSION
 	return p
+end
+
+---Converte un profilo della versione 1 (scelte esclusive di S5) in intensità (R4, #96, ADR 0030). Un archetipo scelto
+---diventa la sua preimpostazione; scelte personalizzate passano da FromLegacy. Le scelte di prima restano in
+---`legacy` (solo identificatori), la voce interiore, gli argomenti da evitare, la curiosità e l'ironia non cambiano.
+---@param p AUPersonalityProfile
+function Personality:Migrate(p)
+	local old = type(p.traits) == "table" and p.traits or {}
+	local legacy
+	for _, trait in ipairs(self.LEGACY) do
+		local v = old[trait]
+		if type(v) == "string" and Traits.defs[trait].valid[v] then
+			legacy = legacy or {}
+			legacy[trait] = v
+		end
+	end
+	local preset = p.archetype ~= "neutral" and p.archetype ~= "custom" and self:GetArchetype(p.archetype)
+	local traits
+	if preset then
+		traits = Traits.Copy(preset.traits)
+		-- voce interiore e argomenti non fanno parte di un archetipo
+		traits.innerVoice, traits.avoid = old.innerVoice, old.avoid
+	else
+		traits = self.FromLegacy(old)
+	end
+	p.traits = traits
+	p.legacy = legacy
+	p.version = self.VERSION
 end
 
 ---Pulisce i dati salvati (un tratto sconosciuto o un valore sbagliato si scarta: il profilo non rompe mai l'addon).
@@ -160,7 +280,21 @@ end
 function Personality:Sanitize()
 	local p = self:Profile()
 	local clean, dropped = Traits.Sanitize(p.traits)
+	-- un vecchio tratto a scelta in un profilo della versione 2 (file modificato a mano): diventa intensità
+	clean = self.FromLegacy(clean)
 	p.traits = clean
+	if p.base ~= nil and not (type(p.base) == "string" and self:GetArchetype(p.base)) then p.base = nil end
+	if p.legacy ~= nil then
+		local keep
+		for trait, v in pairs(type(p.legacy) == "table" and p.legacy or {}) do
+			local def = self.MIGRATION[trait] and Traits.defs[trait]
+			if def and type(v) == "string" and def.valid[v] then
+				keep = keep or {}
+				keep[trait] = v
+			end
+		end
+		p.legacy = keep
+	end
 	if p.archetype ~= "neutral" and p.archetype ~= "custom" and not self:GetArchetype(p.archetype) then
 		p.archetype = Traits.IsEmpty(clean) and "neutral" or "custom"
 		dropped = dropped + 1
@@ -199,7 +333,7 @@ end
 
 local function SafeLayer(name, fn)
 	local ok, traits = pcall(fn)
-	if ok and type(traits) == "table" then return (Traits.Sanitize(traits)) end
+	if ok and type(traits) == "table" then return (Traits.Sanitize(Personality.FromLegacy(traits))) end
 	if not ok and NS.Diagnostics then NS.Diagnostics:Error("soul:game:" .. name, traits) end
 	return nil
 end
@@ -217,7 +351,8 @@ function Personality:Effective()
 	if profile.trp3 and NS.TotalRP3 then
 		local ok, read = pcall(NS.TotalRP3.GetSoulTraits, NS.TotalRP3)
 		if ok and type(read) == "table" then
-			table.insert(layers, { name = "trp3", traits = Traits.Sanitize(read) })
+			-- Total RP 3 dà valori dei vecchi tratti a scelta: diventano intensità come un profilo della versione 1
+			table.insert(layers, { name = "trp3", traits = Traits.Sanitize(Personality.FromLegacy(read)) })
 		elseif not ok and NS.Diagnostics then
 			NS.Diagnostics:Error("soul:trp3", read)
 		end
@@ -246,8 +381,12 @@ function Personality:SetArchetype(id)
 	local a = self:GetArchetype(id)
 	if not a then return false end
 	local p = self:Profile()
+	-- la voce interiore e gli argomenti da evitare non fanno parte di un archetipo: restano come sono (tranne neutral)
+	local keep = a.id ~= "neutral" and { innerVoice = p.traits.innerVoice, avoid = p.traits.avoid } or {}
 	p.traits = Traits.Copy(a.traits)
+	p.traits.innerVoice, p.traits.avoid = keep.innerVoice, keep.avoid
 	p.archetype = a.id
+	p.base = nil
 	self:Refresh()
 	return true
 end
@@ -260,6 +399,8 @@ end
 function Personality:SetTrait(id, value)
 	local def = Traits.defs[id]
 	if not def then return false end
+	-- un vecchio tratto a scelta (API di S5): imposta gli assi corrispondenti
+	if self.MIGRATION[id] then return value ~= nil and self:SetLegacy(id, value) end
 	local p = self:Profile()
 	if value == nil then
 		p.traits[id] = nil
@@ -268,9 +409,41 @@ function Personality:SetTrait(id, value)
 		if clean[id] == nil then return false end
 		p.traits[id] = clean[id]
 	end
+	if p.archetype ~= "custom" and p.archetype ~= "neutral" then p.base = p.archetype end
 	p.archetype = Traits.IsEmpty(p.traits) and "neutral" or "custom"
+	if p.archetype == "neutral" then p.base = nil end
 	self:Refresh()
 	return true
+end
+
+---Imposta gli assi che corrispondono a un valore di un vecchio tratto a scelta (/au soul temperament stoic):
+---la stessa conversione dei profili della versione 1.
+---@param trait string temperament | morality | faith | motivation
+---@param value string
+---@return boolean ok
+function Personality:SetLegacy(trait, value)
+	local map = self.MIGRATION[trait] and self.MIGRATION[trait][value]
+	if not map then return false end
+	for axis, v in pairs(map) do self:SetTrait(axis, v) end
+	return true
+end
+
+---Toglie le scelte esplicite degli assi da cui un vecchio tratto a scelta si legge (/au soul faith -).
+---@param trait string
+function Personality:ClearLegacy(trait)
+	for _, rule in pairs(Traits.defs[trait] and Traits.defs[trait].derive or {}) do self:SetTrait(rule[1], nil) end
+end
+
+---I valori di un vecchio tratto a scelta che un profilo ha adesso, letti dagli assi ("Stoico, Risoluto").
+---@param trait string
+---@param traits AUTraits
+---@return string?
+function Personality:DescribeLegacy(trait, traits)
+	local def, names = Traits.defs[trait], {}
+	for _, value in ipairs(def.values) do
+		if Traits.Has(def, traits, value) then table.insert(names, Traits.ValueName(trait, value)) end
+	end
+	return #names > 0 and table.concat(names, ", ") or nil
 end
 
 ---Aggiunge o toglie un argomento da evitare.
@@ -366,12 +539,21 @@ Personality.STYLE_PREFERENCES = {
 NS.StyleResolver:SetModifier("soul", function(profile, ctx)
 	local soul = ctx and ctx.soul
 	if soul == nil then soul = Personality:Effective() end
-	for trait, map in pairs(Personality.STYLE_PREFERENCES) do
-		for _, style in ipairs(map[soul[trait]] or {}) do NS.StyleResolver.Prefer(profile, style) end
+	if next(soul) == nil then return end
+	-- i valori si leggono anche dagli assi (R4): con le intensità più tendenze possono convivere
+	for _, trait in ipairs(Personality.LEGACY) do
+		local map, def = Personality.STYLE_PREFERENCES[trait], Traits.defs[trait]
+		if map then
+			for _, value in ipairs(def.values) do
+				if map[value] and Traits.Has(def, soul, value) then
+					for _, style in ipairs(map[value]) do NS.StyleResolver.Prefer(profile, style) end
+				end
+			end
+		end
 	end
 	if soul.irony and Traits.Band(Traits.defs.irony, soul.irony) == "high" then NS.StyleResolver.Prefer(profile, "ironic") end
 	-- l'esempio del GDD §5.2: contro un non morto una personalità misericordiosa preferisce il tono solenne
-	if soul.temperament == "merciful" and ctx and ctx.ctype == "undead" then
+	if ctx and ctx.ctype == "undead" and Traits.Has(Traits.defs.temperament, soul, "merciful") then
 		NS.StyleResolver.Prefer(profile, "ceremonial")
 	end
 end)
@@ -405,10 +587,10 @@ local SOURCE_KEY = { explicit = "soul_src_explicit", trp3 = "soul_src_trp3", gam
 function Personality:Summary()
 	local traits, sources = self:Effective()
 	local profile = self:Profile()
-	local lines = { NS:L("soul_summary", self:ArchetypeName(profile.archetype)) }
+	local lines = { NS:L("soul_summary", self:ArchetypeLabel(profile)) }
 	for _, id in ipairs(self.TRAIT_ORDER) do
 		local def = Traits.defs[id]
-		local text = Traits.Describe(def, traits)
+		local text = self:DescribeTrait(id, traits)
 		local src = sources[id] and NS:L(SOURCE_KEY[sources[id]]) or NS:L("soul_src_neutral")
 		table.insert(lines, ("  %s: %s (%s)"):format(Traits.Name(id), text or NS:L("soul_none"), src))
 	end
@@ -416,6 +598,31 @@ function Personality:Summary()
 		table.insert(lines, NS:L("soul_trp3_state", profile.trp3 and NS:L("on") or NS:L("off")))
 	end
 	return lines
+end
+
+---Testo del valore di un tratto: per un asse bipolare con il polo ("70 (idealista)").
+---@param id string
+---@param traits AUTraits
+---@return string?
+function Personality:DescribeTrait(id, traits)
+	local def = Traits.defs[id]
+	local v = traits[id]
+	if self.BIPOLAR[id] and type(v) == "number" then
+		local band = Traits.Band(def, v)
+		local word = band == "mid" and NS:L("soul_pole_balanced") or NS:L("soul_pole_" .. id .. "_" .. band)
+		return ("%d (%s)"):format(math.floor(v + 0.5), word)
+	end
+	return Traits.Describe(def, traits)
+end
+
+---Il nome dell'archetipo del profilo; un profilo personalizzato dice da quale preimpostazione è partito.
+---@param profile AUPersonalityProfile
+---@return string
+function Personality:ArchetypeLabel(profile)
+	if profile.archetype == "custom" and profile.base and self:GetArchetype(profile.base) then
+		return NS:L("soul_arch_from", self:ArchetypeName(profile.base))
+	end
+	return self:ArchetypeName(profile.archetype)
 end
 
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
@@ -453,7 +660,9 @@ function Personality:Command(rest)
 		if found and self:SetArchetype(found) then
 			Say("soul_arch_set", self:ArchetypeName(found))
 		else
-			Say("invalid_value", arg, "neutral, veteran, traveler, guardian, rogue, scholar, avenger, penitent")
+			local ids = {}
+			for _, a in ipairs(self.archetypes) do table.insert(ids, a.id) end
+			Say("invalid_value", arg, table.concat(ids, ", "))
 		end
 	elseif action == "trp3" then
 		if not (NS.TotalRP3 and NS.TotalRP3:IsPresent()) then
@@ -471,7 +680,22 @@ function Personality:Command(rest)
 			return
 		end
 		local def = Traits.defs[id]
-		if def.kind == "set" then
+		if self.MIGRATION[id] then
+			-- una vecchia parola: imposta (o toglie) gli assi che le corrispondono, o dice quali valori valgono adesso
+			if arg == "" then
+				Say("soul_value", Traits.Name(id), self:DescribeLegacy(id, (self:Effective())) or NS:L("soul_none"))
+			elseif CLEAR_WORDS[NS.Lower(arg)] then
+				self:ClearLegacy(id)
+				Say("soul_cleared", Traits.Name(id))
+			else
+				local value = Traits.ParseValue(def, arg)
+				if value and self:SetLegacy(id, value) then
+					Say("soul_legacy_set", Traits.ValueName(id, value))
+				else
+					Say("invalid_value", arg, table.concat(def.values, ", "))
+				end
+			end
+		elseif def.kind == "set" then
 			local topic = Traits.ParseValue(def, arg)
 			if topic then
 				local on = self:ToggleTopic(topic)
@@ -486,14 +710,14 @@ function Personality:Command(rest)
 			end
 		elseif arg == "" then
 			local traits = self:Effective()
-			Say("soul_value", Traits.Name(id), Traits.Describe(def, traits) or NS:L("soul_none"))
+			Say("soul_value", Traits.Name(id), self:DescribeTrait(id, traits) or NS:L("soul_none"))
 		elseif CLEAR_WORDS[NS.Lower(arg)] then
 			self:SetTrait(id, nil)
 			Say("soul_cleared", Traits.Name(id))
 		else
 			local value = Traits.ParseValue(def, arg)
 			if value ~= nil and self:SetTrait(id, value) then
-				Say("soul_set", Traits.Name(id), Traits.Describe(def, self:Profile().traits) or "")
+				Say("soul_set", Traits.Name(id), self:DescribeTrait(id, self:Profile().traits) or "")
 			else
 				local names = {}
 				for _, v in ipairs(def.values or {}) do table.insert(names, v) end

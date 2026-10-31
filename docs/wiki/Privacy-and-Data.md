@@ -24,7 +24,8 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 **For each character** (`AzerothUnspokenCharacterDB.lua`):
 
 - the list of lines recently used, so the narrator does not repeat itself;
-- your character's [[personality|Character-Soul-and-Total-RP-3]];
+- your character's [[personality|Character-Soul-and-Total-RP-3]]: the intensity of each trait you set (a number from 0 to 100), the archetype it started from and, if you had chosen a personality in an earlier version, those old choices as plain words ("stoic", "devout");
+- **only if emotions are on**: the slow, strong part of your character's [[mood|Character-Soul-and-Total-RP-3#emotions]] (resolve, serenity, nostalgia, melancholy), each as **a number and the time** it was recorded. Never what caused it, never any text. Fast emotions (tension, anger, worry...) are never saved. Turning emotions off clears it;
 - the [[journal|Memory-and-Journal]]: significant moments, places visited, flags;
 - the [[relationships|Relationships]]: the NPCs you dealt with and, **only for players you chose**, their name with the notes, tags, labels and feelings you wrote, kept apart from what the addon observed about them (how many times you met, of which kind, where and when: never what was said);
 - the state of your [[personal stories|Story-Arcs]].
@@ -44,7 +45,8 @@ Some information helps the narrator in the moment and is forgotten when you log 
 - that someone made an emote at you (not its text);
 - people whose nameplate appeared or whom you pointed at, **only if** you turned on *Recognise nearby* (off by default): the addon notes in memory that it already recognised a person from your list, and it keeps nothing about strangers;
 - the name of someone you whispered to, so the addon can **suggest** them as a person to add. It does not add them;
-- suggested people, recent actions of the person in front of you, the current encounter.
+- suggested people, recent actions of the person in front of you, the current encounter;
+- your character's mood (all emotions) and what last changed it: only the slow, strong emotions are saved (see above).
 - what the game said about the world: the weather, whether it is day, your quests (their numbers and whether a step or the whole quest is done, **never their text**), your reputation standings, whether you are resting or on a flight. None of it is saved.
 
 ## Consent switches
@@ -90,6 +92,7 @@ On Windows, the game keeps saved data in:
 | One memory, place or relationship | the delete buttons in the journal or relationships window, or `/au journal delete <n>`, `/au relationships remove <name>` |
 | What the addon observed about one player | **Forget observations** in the relationships window, or `/au relationships forget <name>` (the person and your choices stay) |
 | Personality | `/au soul neutral` |
+| Mood (emotions) | `/au emotion reset`, or `/au emotion off` to stop it altogether |
 | Stories | `/au stories skip all`, or turn them off with `/au stories off` |
 | Lines recently used | `/au memory` |
 | Narrator history | `/au narrator clear` |

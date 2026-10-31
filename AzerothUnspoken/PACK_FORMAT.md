@@ -184,26 +184,36 @@ is needed; a thought (`inner`) is never put in a frame.
 
 ### Personality: affinity tags
 
-`tags` without a colon (`"wry"`, `"heroic"`) are descriptive: the engine ignores them. With a colon they link the phrase to the traits of the
-player's character (Character Soul, optional; without traits the phrase is neutral):
+`tags` without a colon (`"wry"`, `"heroic"`) are descriptive: the engine ignores them. With a colon (or a threshold) they
+link the phrase to the traits of the player's character (Character Soul, optional; without traits the phrase is neutral):
 
 | Tag | Effect |
 |---|---|
-| `temperament:stoic` | **soft affinity**: the weight goes up (×1.6) if the profile has that value, down (×0.6) if it has another one, and does not change if the trait is not set |
-| `req:faith:devout` | **hard requirement**: the phrase comes out only if the profile has that value. Several `req` of the same trait are alternatives, different traits add up. The neutral profile excludes it as well |
-| `not:faith:devout` | **hard exclusion**: the phrase does not come out if the profile has that value |
+| `temperament:stoic`, `stoicism:high` | **soft affinity**, graded by intensity: ×1.6 when the profile is inside the band (or has that value), ×0.6 at 20 points or more away (or another value), in between near the edge; no change if the trait is not set |
+| `stoicism>=60`, `optimism<=30` | soft affinity with a **threshold** on an axis (0-100), graded the same way |
+| `req:faith:devout`, `req:stoicism>=60` | **hard requirement**: the phrase comes out only if the profile has that value (or reaches the threshold). Several `req` of the same trait are alternatives, different traits add up. The neutral profile excludes it as well |
+| `not:faith:devout`, `not:optimism<=30` | **hard exclusion**: the phrase does not come out if the profile has that value |
 | `topic:death` | **topic to avoid**: the phrase does not come out if the player has chosen to avoid it |
+| `emo:worried` | the phrase **carries an emotion** (see "Emotions and strong traits" below): factor `E` |
 
-Traits and values: `temperament` (`resolute`, `merciful`, `stoic`, `cheerful`, `melancholic`, `gruff`, `fierce`), `morality`
-(`righteous`, `pragmatic`, `conflicted`, `disillusioned`, `hopeful`), `curiosity` and `irony` (scales: `low`, `mid`, `high`), `faith`
-(`devout`, `spiritual`, `doubting`, `skeptic`), `motivation` (`duty`, `vengeance`, `glory`, `knowledge`, `redemption`, `freedom`,
-`protection`), `innerVoice` (`off`, `quiet`, `present`, `vivid`; concerns phrases with `speaker = "inner"`) and, for `topic:`,
-`death`, `blood`, `betrayal`, `family`, `religion`, `undead`, `demons`, `romance`.
+**Axes** (R4, intensities from 0 to 100, bands `low` 0-33, `mid` 34-66, `high` 67-100): `idealism` (cynical <-> idealist),
+`concreteness` (dreamer <-> pragmatic), `optimism` (pessimist <-> optimist), `altruism`, `stoicism`, `ambition`,
+`spirituality`, `patriotism`, `curiosity`, `vengefulness`; and `irony` (a scale). **Values read from the axes** (the
+traits of S5, still valid as tags): `temperament` (`resolute` ambition ≥ 60, `merciful` altruism ≥ 67, `stoic`
+stoicism ≥ 67, `cheerful` optimism ≥ 67, `melancholic` optimism ≤ 33, `gruff` altruism ≤ 33, `fierce` vengefulness ≥ 60),
+`morality` (`righteous` idealism ≥ 67, `pragmatic` concreteness ≥ 67, `conflicted` idealism 34-66, `disillusioned`
+idealism ≤ 33, `hopeful` optimism ≥ 67), `faith` (`devout` spirituality ≥ 80, `spiritual` ≥ 60, `doubting` ≤ 40,
+`skeptic` ≤ 20), `motivation` (`duty` patriotism ≥ 60, `vengeance` vengefulness ≥ 67, `glory` ambition ≥ 67,
+`knowledge` curiosity ≥ 67, `redemption` optimism ≤ 40, `freedom` patriotism ≤ 33, `protection` altruism ≥ 60). Several
+can hold at once: a character can be stoic and fierce. `innerVoice` (`off`, `quiet`, `present`, `vivid`; concerns phrases
+with `speaker = "inner"`) and, for `topic:`, `death`, `blood`, `betrayal`, `family`, `religion`, `undead`, `demons`, `romance`.
 
 Writing rule: a phrase that **states** something about the character (faith, a past of vengeance) uses `req:`; one that says
-the same things **in a tone** uses soft affinity; one that touches a delicate topic (blood, family) carries `topic:`.
+the same things **in a tone** uses soft affinity; one that touches a delicate topic (blood, family) carries `topic:`. A phrase
+that only a strong trait may say is better gated by the **conditions** `traitMin` / `traitMax` (below) than by a `req:`
+tag: with a condition the phrase is not even a candidate for a neutral profile.
 An `ironic` register without an `irony:` tag is already weighted by the player's irony. The validator flags (`badTag`) affinity
-tags with a trait or a value that does not exist. Examples in `Data/RegistrySoul.lua`.
+tags with a trait, a value or a threshold that does not exist. Examples in `Data/RegistrySoul.lua` and `Data/RegistryEmotions.lua`.
 
 ### Registers (`styles`) and depth (`depth`)
 
@@ -410,6 +420,11 @@ without that memory. `ctx.memory` also has `flags` (the narrative flags) and `se
 - Narrative flags are set with `AzerothUnspoken.LivingMemory:SetFlag("name")` (ASCII letters, digits and `_`, at most
   32 characters) and are also set by the game (`first_death`, `first_capital`, `level_10`, `level_20`…).
 - A topic to avoid (`topic:death`) also excludes the recall phrases that touch it: write the tag as for any phrase.
+- **The tone follows the last visit** (#98). A cheerful or ironic return phrase (event `memory_return`, or conditions with
+  `repeatVisit = true` or `visitsMin`; an `ironic` register or a `temperament:cheerful` / `emo:happy` tag) must declare
+  `lastVisitBad = false`, so it never comes out after a death or a flight there. Gallows humour **about** the bad visit
+  (`lastVisitBad = true`, `"death"` or `"flight"`) is allowed only for an ironic character: it carries `req:irony:high`.
+  The validator reports `lightReturnAfterBadVisit` otherwise. `lastVisitBad = false` does not count for the weight `C`.
 
 ### Relationships: greetings, farewells, companions, known NPCs
 
@@ -564,6 +579,51 @@ A landmark is a named place inside a subzone. A pack registers its own with `Aze
 Entering a subzone that is a landmark fires `landmark`; any other subzone fires `subzone_enter`; **neither loads a pack** (packs load on a change of continent, see the section on regional packs).
 
 Not all the world's data are in the archive: the rules and texts are (`Data/RegistryWorld.lua` and the language folders, round trip of the authoring archive unchanged); the landmark list is engine data like `Data/Places.lua`.
+
+### Emotions and strong traits
+
+The character's **emotional state** (R4, `Systems/Emotion.lua`, a module the user can switch off) is in `ctx.emotion`:
+the emotions above 0.05, from 0 to 1, and the `dominant` one (from 0.25). Emotions: `serene`, `happy`, `determined`,
+`curious`, `worried`, `tense`, `furious`, `melancholic`, `nostalgic`, `admiring`. Events raise and lower them (appraisal
+rules in `Data/Emotions.lua`) and they fade with time.
+
+| Condition | Value | True when |
+|---|---|---|
+| `emotion` | an emotion or a list | it is the dominant emotion |
+| `emotionMin` | `{ worried = 0.3, tense = 0.2 }` | each listed emotion is at least that strong (an absent emotion counts 0) |
+| `emotionMax` | `{ happy = 0.2 }` | each listed emotion is at most that strong |
+| `traitMin` | `{ stoicism = 70 }` | each listed axis of the personality is set and at least that value |
+| `traitMax` | `{ optimism = 25 }` | each listed axis is set and at most that value |
+
+With the emotion module off **every emotion condition is false**: a phrase written for an emotion never comes out. An
+axis that is not set satisfies neither `traitMin` nor `traitMax`. These conditions do not raise the specificity tier: the
+phrases compete by weight with the others of their place. A phrase that carries an emotion should also have the tag
+`emo:<emotion>`: while an emotion dominates, phrases of that emotion weigh up to ×1.6 and phrases of a **clashing** one
+(a happy phrase while worried) down to ×0.15 (factor `E`). The old tags `temperament:cheerful`, `temperament:melancholic`,
+`temperament:fierce` and `temperament:stoic` count as happy, melancholic, furious and serene.
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "umori",
+    languages = { "itIT", "enUS" },
+    registry = {
+        ["umori.zone.worried"] = { event = "zone", speaker = "inner", styles = { "intimate" },
+            tags = { "emo:worried" }, conditions = { emotion = { "worried", "tense" } } },
+        ["umori.death.stoic"] = { event = "death", speaker = "character", styles = { "ancient" },
+            tags = { "topic:death" }, conditions = { traitMin = { stoicism = 70 } } },
+    },
+    texts = {
+        itIT = { ["umori.zone.worried"] = "Ogni ombra sembra più lunga, oggi. Tengo gli occhi sulla strada.",
+            ["umori.death.stoic"] = "Dunque. Io e la terra ci rincontriamo." },
+        enUS = { ["umori.zone.worried"] = "Every shadow looks longer today. I keep my eyes on the road.",
+            ["umori.death.stoic"] = "So. The ground and I meet again." },
+    },
+})
+```
+
+**Writing rule** (GDD §5.4): the emotion is **implied**, never named. Not "I'm worried", but what a worried person notices
+and does ("I keep my hand near the hilt"). Not every phrase must show the mood or a trait: most phrases stay neutral.
 
 ### New conditions
 
@@ -1065,6 +1125,7 @@ a **warning** is advice.
 | `frameNoLine` | error | a frame without `{line}` |
 | `badCondition` | error | unknown condition or one with a value of the wrong type |
 | `recallWithoutMemory` | error | a phrase of a recall event (`memory_return`…) without a memory condition |
+| `lightReturnAfterBadVisit` | error | a cheerful or ironic return phrase without `lastVisitBad = false` (or, about the bad visit, without `req:irony:high`) |
 | `tooLong` | error | over 255 bytes in the worst case (long names in placeholders) for `/s`, `/e`, party, guild...; for thoughts, over 400 bytes is a warning |
 | `tooLongFramed` | warning | with the longest frame it exceeds 255 bytes |
 | `badUTF8` | error | text that is not valid UTF-8, control character, U+FFFD (corrupted text) |
@@ -1083,13 +1144,14 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
 
 1. It gathers the event's phrases that have at least one usable variant in the chosen language (not empty, with the
    required data, from an enabled pack), that satisfy the conditions and their own `cooldown`.
-2. Weight **W = B × C × P × N × S × R** (GDD §10):
+2. Weight **W = B × C × P × N × S × R × E** (GDD §10):
    - `B` = `weight`;
    - `C` = 1 + 0.35 × number of conditions (context);
    - `P` = the player's personality (Character Soul): soft affinity, requirements and topics to avoid (see "Personality"); 1 if the profile is neutral;
    - `N` = novelty: ÷ (1 + 0.3 × recent uses), and ×0.6 if the main register is the same as that of the last phrase of the same event;
    - `S` = style: depth (×0.3 if the phrase is written for other depths) × registers (StyleResolver, above);
    - `R` = relationship with the person of the interaction (`rel.` tags, see "Relationships"); 1 without a relationship. The interlocutor and the place also weigh in, in the `C` factor (`other.` and `place.` tags);
+   - `E` = the emotional state (`emo:` tags, see "Emotions and strong traits"); 1 when the character is calm or the module is off;
    `N` also weighs the novelty of the session: the theme, the motifs and the voice of the last interventions.
 3. No factor excludes a phrase for reasons of style: there is always a fallback.
 4. The **specificity tiers** keep the most specific phrases first while three of them are not recent (above).

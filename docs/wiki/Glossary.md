@@ -4,11 +4,13 @@ Words used in this manual and in the addon, in alphabetical order.
 
 **Short form.** A shorter spelling of a command: `/au lang` for `/au language`, `/au rel` for `/au relationships`. Command names are always English and have no other aliases. See [[Commands Reference|Commands]].
 
-**Archetype.** A ready-made personality, such as *Disillusioned veteran* or *Scholar*, that sets several traits at once. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
+**Archetype.** A ready-made personality, such as *Disillusioned veteran* or *Scholar*, that fills the trait sliders as a starting point. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
 **Automatic mode.** The only chat mode in which some lines go out without a key press: emotes, and `/say` inside instances. Off by default; it needs a confirmation. See [[Chat Gateway]].
 
 **Axis.** One dimension of a relationship: familiarity, trust, respect, affection, fear, loyalty, and the optional attraction. See [[Relationships]].
+
+**Emotions.** Your character's mood (worried, serene, nostalgic...), changed by what happens and faded by time. Optional: `/au emotion off`. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3#emotions]].
 
 **Feeling.** How you feel about a person, in words (trust, liking, wariness, fear, resentment, gratitude), chosen by you. See [[Relationships]].
 
@@ -20,7 +22,7 @@ Words used in this manual and in the addon, in alphabetical order.
 
 **Character voice.** Words your character could say out loud. One of the [[four voices|The-Narrator]]; it can become a chat proposal.
 
-**Character Soul.** Your character's personality as the addon understands it.
+**Character Soul.** Your character's personality as the addon understands it: traits from 0 to 100, irony, inner voice and topics to avoid.
 
 **Chat Gateway.** The part of the addon that decides what may reach chat, and how. See [[Chat Gateway]].
 

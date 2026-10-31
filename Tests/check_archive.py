@@ -144,6 +144,65 @@ def world_content():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def emotion_content():
+    """The conditions and tags of R4 (emotions and intensity traits; ADR 0031) are plain data for the archive: the
+    lines of base_emotions import, the new conditions are there, a draft with them is checked, exports and round-trips
+    with an empty diff, and the list of emotions is the engine's."""
+    print("EMOTIONS AND TRAITS (ADR 0031)")
+    import re
+    src = open(os.path.join(ROOT, "AzerothUnspoken", "Engine", "RuleEngine.lua"), encoding="utf-8").read()
+    m = re.search(r"Engine\.EMOTIONS = \{([^}]*)\}", src)
+    check(m is not None and tuple(re.findall(r'"([a-z]+)"', m.group(1))) == store.EMOTIONS,
+          "the archive knows the emotions of the engine")
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    rows = [r[0] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'base_emotions'")]
+    check(len(rows) >= 30, "the emotions pack is archived, intention by intention (%d)" % len(rows))
+    used, tags = set(), set()
+    for id in rows:
+        rule = store.get_rule(con, id)
+        used.update((rule.get("conditions") or {}).keys())
+        tags.update(t.split(":")[0] for t in rule.get("tags") or [])
+        check(store.check_content(con, id) == [], "%s passes the archive checks" % id)
+    check({"emotion", "emotionMin", "traitMin", "traitMax"} <= used, "the new conditions are in archived rules")
+    check("emo" in tags, "the emo: tags are archived")
+    check(store.get_rule(con, "mem.ret.forest.cheerful")["conditions"].get("lastVisitBad") is False,
+          "the #98 guard of a cheerful return is data")
+    check(store.index_keys({"emotion": "worried"}) == ["*"] and store.index_keys({"traitMin": {"stoicism": 70}}) == ["*"],
+          "emotion and trait conditions are not index dimensions")
+
+    tmp = tempfile.mkdtemp(prefix="au-archive-emo-")
+    try:
+        root, overlay = copy_repo(tmp)
+        db = os.path.join(tmp, "build", "authoring.sqlite")
+
+        def run(*args):
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                return cli.main(["--root", root, "--overlay", overlay, "--db", db] + list(args))
+        good = {"id": "emo.test.new", "pack": "base_emotions", "event": "zone", "speaker": "inner",
+                "styles": ["intimate"], "depth": ["natural"], "tags": ["emo:tense", "stoicism>=40"], "theme": "fear",
+                "conditions": {"emotion": ["tense", "worried"], "emotionMin": {"tense": 0.3}, "traitMax": {"optimism": 40}},
+                "author": "ai-test", "texts": {"enUS": ["Every sound is a footstep today.", "Too quiet."],
+                                               "itIT": ["Oggi ogni rumore è un passo.", "Troppo silenzio."]}}
+        bad = dict(good, id="emo.test.bad", tags=["emo:bored"], conditions={"emotion": "sleepy", "emotionMin": {"tense": 3}})
+        with open(os.path.join(tmp, "drafts.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+            f.write(json.dumps(good) + "\n" + json.dumps(bad) + "\n")
+        run("drafts", os.path.join(tmp, "drafts.jsonl"))
+        check(len(store._emotion_problems(bad["tags"], bad["conditions"])) == 3, "unknown emotions are problems for the archive")
+        c2 = store.build_db(":memory:", root, overlay)
+        check(c2.execute("SELECT 1 FROM intention WHERE id = 'emo.test.bad'").fetchone() is None and
+              c2.execute("SELECT 1 FROM intention WHERE id = 'emo.test.new'").fetchone() is not None,
+              "the draft with unknown emotions is refused, the good one is kept")
+        c2.close()
+        check(run("approve", "emo.test.new") == 0 and run("export") == 0, "a line with emotion conditions is approved and exported")
+        rules = packfiles.read(os.path.join(root, "AzerothUnspoken", "Data", "RegistryEmotions.lua"))
+        check('["emo.test.new"]' in rules and 'emotionMin = { tense = 0.3 }' in rules and '"stoicism>=40"' in rules,
+              "the new conditions and tags are written as Lua data")
+        check(store.roundtrip(root) == [] and store.roundtrip(root, canonical=True) == [],
+              "the written folders round-trip with an empty diff, canonical rendering included")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def lualit_checks():
     print("LUA LITERALS")
     import lualit
@@ -332,6 +391,7 @@ def report():
 
 roundtrip()
 world_content()
+emotion_content()
 lualit_checks()
 review_flow()
 report()

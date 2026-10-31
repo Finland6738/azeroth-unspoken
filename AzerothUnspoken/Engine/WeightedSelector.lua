@@ -191,7 +191,7 @@ local function Remember(key, id, keep, entry)
 end
 
 ---------------------------------------------------------------------------
--- Peso W = B x C x P x N x S x R (GDD §10)
+-- Peso W = B x C x P x N x S x R x E (GDD §10; E da R4)
 ---------------------------------------------------------------------------
 -- B  peso base della regola (weight)
 -- C  attinenza al contesto: 1 + 0,35 per condizione soddisfatta, per gli aggiunti "C" (S6c: interlocutore e luogo)
@@ -200,6 +200,7 @@ end
 --    con il tema, i motivi e la voce delle ultime frasi della sessione (Engine.ThemeNovelty)
 -- S  affinità di stile: profondità (StyleFactor) per registri (StyleResolver:Affinity)
 -- R  relazione con l'interlocutore: neutra (1) finché lo step S6b non aggancia le relazioni
+-- E  stato emotivo (R4, Systems/Emotion.lua): neutro (1) senza un'emozione dominante o con il modulo spento
 -- Un fattore 0 esclude la frase (le condizioni la escludono già prima, in Eligible).
 
 -- Fattore S per la sola profondità (GDD §4.3). Una frase scritta per altre profondità non viene esclusa: pesa
@@ -324,11 +325,12 @@ end
 -- I risultati dello stesso fattore si moltiplicano. Un aggancio che sbaglia o restituisce un valore non valido
 -- vale 1 (neutro) e l'errore va in diagnostica: un sistema rotto non spegne il narratore.
 --   C: S6c (interlocutore ctx.other, luogo ctx.place)   P: S5 (personalità)   R: S6b (relazioni; 0 = incoerente)
+--   E: R4 (stato emotivo, Systems/Emotion.lua; 1 quando il modulo è spento)
 ---@type table<string, table<string, fun(entry: AUPhrase, ctx: table): number>>
-Engine.weightHooks = { C = {}, P = {}, R = {} }
+Engine.weightHooks = { C = {}, P = {}, R = {}, E = {} }
 
 ---Aggiunge, sostituisce o toglie (fn = nil) un aggancio di un fattore del peso.
----@param factor "C"|"P"|"R"
+---@param factor "C"|"P"|"R"|"E"
 ---@param name string
 ---@param fn? fun(entry: AUPhrase, ctx: table): number
 function Engine:SetWeightHook(factor, name, fn)
@@ -384,6 +386,7 @@ end
 ---@field N number
 ---@field S number
 ---@field R number
+---@field E number stato emotivo (R4)
 ---@field W number il prodotto
 
 ---I fattori del peso di una voce. Senza contesto (cornici, vocabolario) C, P, S e R restano neutri tranne la
@@ -395,7 +398,7 @@ end
 ---@param voice? string voice the phrase is shown in (a framed phrase: narrator); nil = its own
 ---@return AUWeightFactors
 function Engine.Factors(entry, lastTone, ctx, profile, voice)
-	local f = { B = entry.weight, C = 1 + Engine.SPEC_BONUS * (entry.spec or 0), P = 1, S = 1, R = 1 }
+	local f = { B = entry.weight, C = 1 + Engine.SPEC_BONUS * (entry.spec or 0), P = 1, S = 1, R = 1, E = 1 }
 	f.N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
 	if lastTone and Engine.Tone(entry) == lastTone then f.N = f.N * Engine.SAME_TONE end
 	if ctx then f.N = f.N * Engine.ThemeNovelty(entry, voice) end
@@ -404,15 +407,16 @@ function Engine.Factors(entry, lastTone, ctx, profile, voice)
 		f.P = Hooks("P", entry, ctx)
 		f.S = Engine.StyleFactor(entry, ctx) * Engine.StyleResolver:Affinity(entry, profile)
 		f.R = Hooks("R", entry, ctx)
+		f.E = Hooks("E", entry, ctx)
 	end
-	f.W = f.B * f.C * f.P * f.N * f.S * f.R
+	f.W = f.B * f.C * f.P * f.N * f.S * f.R * f.E
 	return f
 end
 
 -- peso effettivo di una voce (W), dati la memoria e, per le frasi, il contesto e il profilo di stile. È Factors(...).W
 -- senza la tabella dei fattori (#83: si calcola per ogni candidata): stessi conti, nello stesso ordine.
 local function Score(entry, key, poolSize, lastTone, ctx, profile, voice)
-	local C, P, S, R = 1 + Engine.SPEC_BONUS * (entry.spec or 0), 1, 1, 1
+	local C, P, S, R, E = 1 + Engine.SPEC_BONUS * (entry.spec or 0), 1, 1, 1, 1
 	local N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
 	if lastTone and Engine.Tone(entry) == lastTone then N = N * Engine.SAME_TONE end
 	if ctx then N = N * Engine.ThemeNovelty(entry, voice) end
@@ -421,8 +425,9 @@ local function Score(entry, key, poolSize, lastTone, ctx, profile, voice)
 		P = Hooks("P", entry, ctx)
 		S = Engine.StyleFactor(entry, ctx) * Engine.StyleResolver:Affinity(entry, profile)
 		R = Hooks("R", entry, ctx)
+		E = Hooks("E", entry, ctx)
 	end
-	return entry.weight * C * P * N * S * R
+	return entry.weight * C * P * N * S * R * E
 end
 
 -- le voci usate di recente restano escluse finché ce ne sono altre disponibili

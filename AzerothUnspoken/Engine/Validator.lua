@@ -56,6 +56,44 @@ Validator.WEATHER_EVENTS = { zone = true, memory_return = true, weather_change =
 	subzone_enter = true, landmark = true, journey = true, rest_enter = true, quest_progress = true, quest_complete = true,
 	reputation_change = true }
 
+-- #98: what is a return line and what is a light (cheerful or ironic) one
+Validator.RETURN_EVENTS = { memory_return = true }
+Validator.LIGHT_TAGS = { ["temperament:cheerful"] = true, ["emo:happy"] = true }
+
+---A line spoken when the character comes back to a place: a return event, or a line conditioned on a repeated visit.
+---@param p AUPhrase
+---@return boolean
+function Validator.IsReturnLine(p)
+	for _, ev in ipairs(p.events or {}) do
+		if Validator.RETURN_EVENTS[ev] then return true end
+	end
+	local when = p.when
+	return type(when) == "table" and (when.repeatVisit == true or when.visitsMin ~= nil)
+end
+
+---A cheerful or ironic line: an ironic register, or a tag that makes it cheerful.
+---@param p AUPhrase
+---@return boolean
+function Validator.IsLightLine(p)
+	for _, st in ipairs(p.styles or {}) do
+		if st == "ironic" then return true end
+	end
+	for tag in pairs(p.tags or {}) do
+		if Validator.LIGHT_TAGS[tag] then return true end
+	end
+	return false
+end
+
+---Is a light return line safe after a bad visit? lastVisitBad = false at the top level, or a line about the bad visit
+---(lastVisitBad true, "death" or "flight") that only an ironic character can get.
+---@param p AUPhrase
+---@return boolean
+function Validator.LightReturnGuarded(p)
+	local when = type(p.when) == "table" and p.when or {}
+	if when.lastVisitBad == false then return true end
+	return when.lastVisitBad ~= nil and p.tags ~= nil and p.tags["req:irony:high"] == true
+end
+
 local function PlaceBound(when)
 	if type(when) ~= "table" then return false end
 	for _, k in ipairs({ "mood", "zone", "subzone", "place" }) do
@@ -398,6 +436,13 @@ function Validator:Run(opts)
 						break
 					end
 				end
+			end
+			-- tone and the last visit (#98): a cheerful or ironic return line must not be eligible after a death or a
+			-- flight. It declares lastVisitBad = false, or, if it is gallows humour about that bad visit, it is only for an
+			-- ironic character (req:irony:high)
+			if Validator.IsReturnLine(p) and Validator.IsLightLine(p) and not Validator.LightReturnGuarded(p) then
+				Add("error", "lightReturnAfterBadVisit", p.pack, id, nil,
+					"cheerful or ironic return line without lastVisitBad = false (or req:irony:high for a line about the bad visit)")
 			end
 			-- eventi che citano una persona (relation_npc): la frase dichiara la condizione che garantisce il rapporto
 			if NS.Relationships then

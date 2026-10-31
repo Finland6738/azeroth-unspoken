@@ -37,6 +37,33 @@ local function Memory(ctx)
 	return type(m) == "table" and m or nil
 end
 
+-- Emozioni (R4, Systems/Emotion.lua): ctx.emotion = { dominant = "worried", worried = 0.4, ... }. Senza stato emotivo
+-- (modulo spento) ogni condizione di emozione vale "falsa": una frase scritta per un'emozione non esce mai.
+Engine.EMOTIONS = { "serene", "happy", "determined", "curious", "worried", "tense", "furious", "melancholic", "nostalgic",
+	"admiring" }
+Engine.EMOTION_SET = {}
+for _, e in ipairs(Engine.EMOTIONS) do Engine.EMOTION_SET[e] = true end
+
+local function Emotions(ctx)
+	local e = ctx.emotion
+	return type(e) == "table" and e or nil
+end
+
+-- ogni coppia { nome = soglia } della tabella vale per `get(nome)`; nil (non lo so) non vale mai
+local function AllAtLeast(map, get, atLeast)
+	if type(map) ~= "table" then return false end
+	for name, n in pairs(map) do
+		local x = get(name)
+		if type(x) ~= "number" or type(n) ~= "number" then return false end
+		if atLeast then
+			if x < n then return false end
+		elseif x > n then
+			return false
+		end
+	end
+	return true
+end
+
 -- numero (almeno) oppure { minimo, massimo } con massimo escluso, come `hour`
 local function InRange(v, x)
 	if x == nil then return false end
@@ -238,6 +265,29 @@ local SPECIAL = {
 		return type(q) == "table" and q.justCompleted == true and (q.attempts or 0) >= v
 	end,
 	journeyMin = function(v, ctx) return type(ctx.journeySeconds) == "number" and ctx.journeySeconds >= v end,
+	-- emozioni (R4): l'emozione dominante, oppure soglie per emozione (un'emozione assente vale 0, ma senza stato
+	-- emotivo nessuna condizione vale)
+	emotion = function(v, ctx)
+		local e = Emotions(ctx)
+		return e ~= nil and e.dominant ~= nil and MatchValue(v, e.dominant)
+	end,
+	emotionMin = function(v, ctx)
+		local e = Emotions(ctx)
+		return e ~= nil and AllAtLeast(v, function(name) return e[name] or 0 end, true)
+	end,
+	emotionMax = function(v, ctx)
+		local e = Emotions(ctx)
+		return e ~= nil and AllAtLeast(v, function(name) return e[name] or 0 end, false)
+	end,
+	-- intensità della personalità (R4, ctx.soul): un asse non impostato non soddisfa né il minimo né il massimo
+	traitMin = function(v, ctx)
+		local soul = type(ctx.soul) == "table" and ctx.soul or nil
+		return soul ~= nil and AllAtLeast(v, function(name) return soul[name] end, true)
+	end,
+	traitMax = function(v, ctx)
+		local soul = type(ctx.soul) == "table" and ctx.soul or nil
+		return soul ~= nil and AllAtLeast(v, function(name) return soul[name] end, false)
+	end,
 	chance   = function(v) return math.random(100) <= v end,
 	func     = function(v, ctx)
 		local ok, res = pcall(v, ctx)
@@ -304,6 +354,8 @@ Engine.CONDITIONS = {
 	-- memoria (Systems/LivingMemory.lua)
 	firstVisit = "bool", repeatVisit = "bool", lastVisitBad = "boolstr", visitsMin = "num", visitsMax = "num",
 	daysSinceLastVisit = "numrange", remembered = "str",
+	-- emozioni e intensità della personalità (R4, Systems/Emotion.lua, Systems/Personality.lua)
+	emotion = "str", emotionMin = "fracmap", emotionMax = "fracmap", traitMin = "pctmap", traitMax = "pctmap",
 	-- relazioni (Systems/Relationships.lua); gli assi aggiungono <asse>Min e <asse>Max
 	relation = "str", disposition = "str", relationKind = "str", isKnown = "bool", withRelation = "str",
 	-- feelings the user chose and what the addon observed of a listed player (#109, #110)
@@ -335,6 +387,7 @@ Engine.CONDITION_VALUES = {
 		revered = true, exalted = true },
 	repDirection = { up = true, down = true },
 	journey = { start = true, arrival = true },
+	emotion = Engine.EMOTION_SET,
 	-- ids e tag dei punti di riferimento: si riempiono con NS:RegisterLandmarks (Systems/World.lua)
 	landmark = {},
 	group = { solo = true, party = true, raid = true },
@@ -553,7 +606,7 @@ function Engine.UsesMemory(when)
 end
 
 local VALUE_KINDS = { bool = true, str = true, num = true, frac = true, pct = true, hour = true, boolstr = true,
-	numrange = true, boolnum = true }
+	numrange = true, boolnum = true, fracmap = true, pctmap = true }
 
 ---Dichiara una condizione nuova per le frasi di un pacchetto.
 ---Con una funzione `fn(valore, ctx) -> boolean` la condizione è calcolata; senza, confronta ctx[nome] col valore.
@@ -586,6 +639,23 @@ TypeError = function(kind, v)
 		return (t ~= "table" or type(v[1]) ~= "number" or type(v[2]) ~= "number") and "serve { dalle, alle }"
 	end
 	if kind == "func" then return t ~= "function" and "serve una funzione" end
+	-- { emozione = 0..1 } e { asse della personalità = 0..100 } (R4)
+	if kind == "fracmap" or kind == "pctmap" then
+		if t ~= "table" or next(v) == nil then return "serve una tabella { nome = soglia }" end
+		for name, n in pairs(v) do
+			if kind == "fracmap" then
+				if not Engine.EMOTION_SET[name] then return ("emozione '%s' sconosciuta"):format(tostring(name)) end
+				if type(n) ~= "number" or n < 0 or n > 1 then return ("'%s': serve un numero da 0 a 1"):format(name) end
+			else
+				local def = NS.Traits and NS.Traits.defs[name]
+				if not (def and def.kind == "scale") then return ("'%s' non è un asse della personalità"):format(tostring(name)) end
+				if type(n) ~= "number" or n < def.min or n > def.max then
+					return ("'%s': serve un numero da %d a %d"):format(name, def.min, def.max)
+				end
+			end
+		end
+		return false
+	end
 	if kind == "boolstr" then
 		if t == "boolean" then return false end
 		return TypeError("str", v) and "serve true, false, una stringa o un elenco"

@@ -13,7 +13,7 @@ Azeroth Unspoken is a quiet narrator that walks beside your character. It notice
 - **A private narrator.** Lines appear in a small box on your screen that only you can see. You decide how often it speaks and in what style.
 - **Hand-written lines, never generated.** Over a thousand situations, each with several versions in English and Italian, written by people. The same line is never repeated back to back.
 - **Four voices.** The narrator, your character's inner voice, your character speaking, and the NPCs around you. See [[The Narrator and the Four Voices|The-Narrator]].
-- **Your character's personality.** Give your character a temperament, a faith, a motivation or a ready-made archetype, and the lines follow it. It can also start from your [Total RP 3](https://totalrp3.info/) profile if you allow it.
+- **Your character's personality and mood.** Give your character traits from 0 to 100 (stoic and vengeful at once, if you like) or a ready-made archetype, and the lines follow them. The character also has a mood that events change and time heals. It can also start from your [Total RP 3](https://totalrp3.info/) profile if you allow it.
 - **Memory and a journal.** It remembers the moments that matter (your first time in a zone, a return, a death, a level) and recalls them only when they really happened.
 - **Relationships.** It keeps track of how you stand with the NPCs you deal with, and with the players you choose to add.
 - **Who you meet and where you are.** Lines change with the person in front of you and the place: a capital, a dungeon, a raid, a battleground.

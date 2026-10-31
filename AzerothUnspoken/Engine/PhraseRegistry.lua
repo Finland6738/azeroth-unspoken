@@ -119,8 +119,10 @@ Engine.TIER_CONDITIONS = {
 	place = { subzone = 3, zone = 2, mapID = 2, continent = 1, tags = 1, mood = 1, territory = 1, capital = 1,
 		friendlyCapital = 1, hostileCapital = 1, instanceType = 1 },
 }
--- conditions that do not make a rule more specific: chance, the user's settings and exclusions
-Engine.TIER_NEUTRAL = { chance = true, depth = true, intensityMin = true, intensityMax = true, ["not"] = true }
+-- conditions that do not make a rule more specific: chance, the user's settings and exclusions; and the character's
+-- mood and personality (R4): a line for a worried or a stoic character competes by weight with the others of its place
+Engine.TIER_NEUTRAL = { chance = true, depth = true, intensityMin = true, intensityMax = true, ["not"] = true,
+	emotion = true, emotionMin = true, emotionMax = true, traitMin = true, traitMax = true }
 
 -- Data of the direction (#91), filled by Data/Themes.lua and by the packs (`quotas = {}`, `hunger = {}`):
 -- QUOTAS[category] = { share = 0..1, window = interventions, span = seconds }, HUNGER[category] = { factor, after }
@@ -186,7 +188,9 @@ local function Specificity(when)
 		if (k == "other" or k == "place") and type(v) == "table" then
 			-- sotto-tabelle dell'interlocutore e del luogo (S6c): conta ogni campo
 			for _ in pairs(v) do n = n + 1 end
-		elseif k ~= "chance" then
+		elseif k ~= "chance" and not (k == "lastVisitBad" and v == false) then
+			-- #98: lastVisitBad = false only keeps a light return line away from a bad visit; it does not make it
+			-- more specific (nor heavier) than it was
 			n = n + 1
 		end
 	end
