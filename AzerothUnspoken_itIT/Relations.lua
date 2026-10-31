@@ -380,16 +380,16 @@ NS:AddTexts("itIT", {
 	-- un giocatore noto riconosciuto (#106), per sentimento (#109) e per ciò che l'addon ha osservato (#110)
 	---------------------------------------------------------------------------
 	["rel.player.trust"] = {
-		"{other}. Uno dei pochi a cui darei le spalle senza voltarmi.",
+		"{other}. Tra i pochi a cui darei le spalle senza voltarmi.",
 		"Ecco {other}. Alcune persone si controllano due volte; con questa ho smesso di controllare da un pezzo.",
 		{ "{other}. Bene. Posso respirare.", depth = "natural" },
-		{ "La fiducia non si riceve: la si trova già costruita quando serve. Con {other} era lì in piedi prima ancora che andassi a cercarla.", depth = "elevated" },
+		{ "La fiducia non si riceve: la si trova già costruita quando serve. Con {other} era già lì prima ancora che andassi a cercarla.", depth = "elevated" },
 	},
 	["rel.player.liking"] = {
 		"Di nuovo {other}, e mi accorgo di sorridere già. Difficile dire perché: certe persone sono semplicemente facili da apprezzare.",
 		"Ah, {other}. La strada pesa meno con certi volti lungo il cammino.",
 		{ "Oh, {other}! Bene.", depth = "natural" },
-		{ "Certi incontri non chiedono motivi. {other} entra in vista e la giornata si sistema un po' meglio.", depth = "elevated" },
+		{ "Certi incontri non chiedono motivi. {other} compare e la giornata si sistema un po' meglio.", depth = "elevated" },
 	},
 	["rel.player.gratitude"] = {
 		"{other}. Non ho dimenticato ciò che è stato fatto per me, e non lo dimenticherò, per quanto ne parli poco.",
@@ -401,16 +401,16 @@ NS:AddTexts("itIT", {
 		"{other}. Un cenno, un sorriso, e gli occhi aperti. Vecchia abitudine, motivi più recenti.",
 		"Un nome noto, e non di quelli che lascio vicino alla borsa. La cortesia non costa nulla; la fiducia costa molto.",
 		{ "{other}. Attenzione.", depth = "natural" },
-		{ "Non credo che {other} voglia il male, esattamente. So solo quanto spesso sia proprio «esattamente» la parola che cede.", depth = "elevated" },
+		{ "Non credo che {other} voglia del male, esattamente. So solo quanto spesso sia proprio «esattamente» la parola che cede.", depth = "elevated" },
 	},
 	["rel.player.fear"] = {
 		"Ancora {other}. Il polso se ne accorge prima di me. Tengo il volto fermo e il passo regolare.",
-		"Conosco quell'andatura. Non sarò io il primo a guardare {other}, né l'ultimo a distogliere lo sguardo.",
+		"Conosco quell'andatura. Non sarò io a guardare {other} per {g:primo|prima}, né a distogliere lo sguardo per {g:ultimo|ultima}.",
 		{ "{other}. Calma.", depth = "natural" },
 		{ "La paura è solo attenzione che non sa dove andare. La mia si è voltata tutta verso {other}, e non si lascia convincere.", depth = "elevated" },
 	},
 	["rel.player.resentment"] = {
-		"{other}. Non ho dimenticato, e non ho perdonato. Per ora sarò civile: la civiltà costa meno di una rissa.",
+		"{other}. Non ho dimenticato, e non ho perdonato. Per ora resterò cortese: la cortesia costa meno di una rissa.",
 		"Ecco {other}. Certi debiti non si pagano in monete, e questo è ancora aperto.",
 		{ "{other}. Ovviamente.", depth = "natural" },
 		{ "Il rancore ha una memoria eccellente e un senso del tempo pessimo. Ogni dettaglio di {other} è esattamente dove l'ho lasciato.", depth = "elevated" },
@@ -427,8 +427,8 @@ NS:AddTexts("itIT", {
 	},
 	["rel.player.rival"] = {
 		"{other}. Non lo direi mai ad alta voce, ma quando {other} è nei paraggi mi impegno di più.",
-		"Un rivale che si rispetti, sulla stessa strada. Doveva succedere.",
-		{ "{other}. Secondo round, allora.", depth = "natural" },
+		"Una rivalità che si rispetti, sulla stessa strada. Doveva succedere.",
+		{ "{other}. Seconda ripresa, allora.", depth = "natural" },
 	},
 	["rel.player.enemy"] = {
 		"{other}. Le nostre strade si incrociano ancora, e nessuno dei due ha cambiato idea.",
@@ -445,7 +445,7 @@ NS:AddTexts("itIT", {
 		"Qualunque cosa io provi per {other}, non è sollievo. Continuo a camminare.",
 	},
 	["rel.player.known"] = {
-		"Conosco quel nome: {other}. Ci siamo già incrociati.",
+		"Conosco quel nome: {other}. Le nostre strade si sono già incrociate.",
 		"{other}. Un volto della strada: i dettagli torneranno tra un istante.",
 		{ "Ah, ecco {other}.", depth = "natural" },
 	},
@@ -473,13 +473,13 @@ NS:AddTexts("itIT", {
 		{ "Chi è stato nella stessa linea, di fronte alla stessa cosa, porta con sé un piccolo paese in comune. Il mio comprende {other}.", depth = "elevated" },
 	},
 	["rel.player.shared.duel"] = {
-		"Ci siamo affrontati in duello, {other} e io: il polso ricorda meglio della mente.",
+		"Abbiamo incrociato le armi in duello, {other} e io: il polso ricorda meglio della mente.",
 		"Mi sono {g:misurato|misurata} con {other}. È un modo di presentarsi, come un altro.",
 		{ "{other}. Il nostro duello è ancora nel polso.", depth = "natural" },
 	},
 	["rel.greet.ally"] = {
 		"{target}, salute. Siamo dallo stesso lato di questa faccenda, e questo vale un saluto.",
-		"Alleanza: parola piccola, ma la intendo per intero.",
+		"Alleanza: parola piccola, ma la dico sul serio.",
 		{ "Ci sei. Bene, andiamo.", depth = "natural" },
 	},
 	["rel.bye.ally"] = {
