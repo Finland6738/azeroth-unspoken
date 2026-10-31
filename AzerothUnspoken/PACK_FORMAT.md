@@ -1319,7 +1319,7 @@ A situation is data:
 ```text
 situations = {
     close_call = { lead = "victory", with = { "lowhp" }, within = 30 },
-    rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = { "dusk", "night" } } },
+    rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = "dusk" } },
 }
 ```
 

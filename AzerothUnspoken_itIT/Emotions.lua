@@ -8,7 +8,7 @@ NS:AddTexts("itIT", {
 	},
 	["emo.zone.curious"] = {
 		"{zone}. Voglio vedere cosa c'è dietro quella collina, e dietro quella dopo.",
-		"Terra nuova. Ogni sentiero qui è una domanda a cui voglio rispondere.",
+		"Ogni sentiero qui è una domanda a cui voglio rispondere.",
 	},
 	["emo.zone.melancholic"] = {
 		"Il vento attraversa {zone} come se anche lui cercasse qualcuno.",
@@ -23,7 +23,7 @@ NS:AddTexts("itIT", {
 		"Terra di casa. Qui sto più {g:dritto|dritta}.",
 	},
 	["emo.zone.cynic"] = {
-		"Belle parole incise su ogni porta. Ho imparato a leggere le clausole in piccolo.",
+		"Belle parole incise su ogni porta. Ho imparato a leggere quel che sta scritto sotto.",
 		"Qui tutti vogliono qualcosa. Almeno i ratti lo ammettono.",
 	},
 	["emo.zone.ambitious"] = {
@@ -31,7 +31,7 @@ NS:AddTexts("itIT", {
 		"{zone}. Vediamo cosa serve per essere ricordati qui.",
 	},
 	["mem.ret.emo.bad.worried"] = {
-		"Di nuovo qui. Ricordo esattamente dove sono {g:caduto|caduta}. Ci girerò intorno.",
+		"Di nuovo qui. Ricordo esattamente dove è andata storta. Ci girerò intorno.",
 		"L'ultima volta questo posto ha vinto. Adesso piano, e niente eroismi.",
 	},
 	["mem.ret.emo.bad.determined"] = {
@@ -56,7 +56,7 @@ NS:AddTexts("itIT", {
 	},
 	["emo.death.stoic"] = {
 		"Dunque. Io e la terra ci rincontriamo.",
-		"Il dolore è un maestro. Uno sgarbato.",
+		"Il dolore è un maestro, e pure sgarbato.",
 	},
 	["emo.rez.determined"] = {
 		"In piedi. Il lavoro non è finito.",
@@ -91,7 +91,7 @@ NS:AddTexts("itIT", {
 		"Questo è il passo. Mantienilo.",
 	},
 	["emo.victory.vengeful"] = {
-		"Questo è per l'ultima volta.",
+		"Questa è per la volta scorsa.",
 		"Pagato. Con gli interessi.",
 	},
 	["emo.victory.altruist"] = {
@@ -119,7 +119,7 @@ NS:AddTexts("itIT", {
 		"Continuo a contare quello che ho perso invece di quello che resta.",
 	},
 	["emo.muse.nostalgic"] = {
-		"Mi mancano cose che non sapevo mi sarebbero mancate. Una cucina. Una voce che mi chiama dentro.",
+		"Mi mancano cose che non sapevo mi sarebbero mancate. Una cucina. Una voce che mi chiama a casa.",
 		"Strano come le vecchie strade ti camminino accanto.",
 	},
 	["emo.muse.admiring"] = {

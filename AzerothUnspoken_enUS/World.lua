@@ -68,7 +68,7 @@ NS:AddTexts("enUS", {
 	---------------------------------------------------------------------------
 	["world.zone.rain"] = {
 		"I arrive in the rain. Whatever this place is, it is showing me its wet face first.",
-		"New ground, and rain upon it. A fair welcome, as welcomes go.",
+		"Rain to greet me, and I walk into it. A fair welcome, as welcomes go.",
 		{ "Rain here too. I begin to think it follows me.", depth = "natural" },
 	},
 	["world.zone.rain.first"] = {
@@ -241,7 +241,7 @@ NS:AddTexts("enUS", {
 	},
 	["world.quest.again.01"] = {
 		"At last. It took me more tries than I will admit, and I will not admit it.",
-		"Done, finally. The task and I had a long argument, and I won on points.",
+		"Done, finally. The task and I had a long argument, and in the end I had the last word.",
 		{ "Third time, fourth time, I lost count. The task is done, and so, a little, am I.", depth = "natural" },
 	},
 	["world.quest.again.e"] = {
@@ -341,7 +341,7 @@ NS:AddTexts("enUS", {
 		{ "So much road behind me, and none of it walked. I wonder what that does to a journey.", depth = "elevated" },
 	},
 	["world.flight.long.e"] = {
-		"steps off after the long flight, and the ground seems heavy and slow after so many hours among the clouds.",
+		"steps off after the long flight, and the ground seems heavy and slow after so long among the clouds.",
 		"lands at the end of a long crossing, and spends a moment simply standing on something that does not move.",
 	},
 }, "base_world")

@@ -8,7 +8,7 @@ NS:AddTexts("enUS", {
 	},
 	["emo.zone.curious"] = {
 		"{zone}. I want to see what is behind that hill, and the one after it.",
-		"New ground. Every path here is a question I mean to answer.",
+		"Every path here is a question I mean to answer.",
 	},
 	["emo.zone.melancholic"] = {
 		"The wind goes through {zone} as if it were looking for someone too.",
@@ -23,7 +23,7 @@ NS:AddTexts("enUS", {
 		"Home ground. I stand straighter here.",
 	},
 	["emo.zone.cynic"] = {
-		"Fine words carved over every gate. I've learned to read the small print.",
+		"Fine words carved over every gate. I've learned to read what is written under them.",
 		"Everyone here wants something. At least the rats are honest about it.",
 	},
 	["emo.zone.ambitious"] = {
@@ -31,7 +31,7 @@ NS:AddTexts("enUS", {
 		"{zone}. Let's see what it takes to be remembered here.",
 	},
 	["mem.ret.emo.bad.worried"] = {
-		"Here again. I remember exactly where I fell. I'll walk around it.",
+		"Here again. I remember exactly where it went wrong. I'll walk around it.",
 		"Last time this place won. Slower now, and no heroics.",
 	},
 	["mem.ret.emo.bad.determined"] = {

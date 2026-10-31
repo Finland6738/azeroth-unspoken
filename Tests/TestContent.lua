@@ -400,3 +400,63 @@ T.run("#61: {og:} ha sempre una variante neutra; #66: l'inglese usa l'ortografia
 		end
 	end
 end)
+
+T.run("#158 #159: the texts claim no more than their conditions, the Italian agrees with the speaker", function()
+	local function Texts(id, lang)
+		local out = {}
+		for _, v in ipairs((BASE[id] and BASE[id].text[lang]) or {}) do out[#out + 1] = Engine.VariantView(v).t end
+		T.ok(#out > 0, id .. ": texts in " .. lang)
+		return out
+	end
+	local function NoneHas(id, words)
+		for _, lang in ipairs({ "en", "it" }) do
+			for _, t in ipairs(Texts(id, lang)) do
+				for _, w in ipairs(words) do T.ok(not t:lower():find(w, 1, true), id .. ": «" .. w .. "» in " .. t) end
+			end
+		end
+	end
+	-- novelty words only where the rule asks for a first visit
+	for _, id in ipairs({ "world.zone.rain", "sit.woundedarrival.inner", "emo.zone.curious" }) do
+		T.ok(not (BASE[id].when or {}).firstVisit, id .. ": no firstVisit")
+		NoneHas(id, { "new ground", "terra nuova" })
+	end
+	-- lastVisitBad = true is also a flight: no death named
+	T.eq(BASE["mem.ret.emo.bad.worried"].when.lastVisitBad, true, "lastVisitBad = true")
+	NoneHas("mem.ret.emo.bad.worried", { "where i fell", "caduto", "caduta" })
+	-- the rain return is at dusk only; the inn monologue has no hour
+	T.eq(Engine.SITUATIONS.rain_dusk_return.when.time, "dusk", "rain_dusk_return at dusk")
+	NoneHas("mono.rest.hearth.2", { "tonight", "stasera" })
+	NoneHas("mono.rest.hearth.3", { "until morning", "domattina" })
+	NoneHas("world.flight.long.e", { "hours", " ore " })
+	-- outdoors, and not in a capital
+	for _, id in ipairs({ "mono.zone.crest", "mono.zone.dusk" }) do
+		local when = BASE[id].when
+		local ctx = { time = "dusk", indoors = false, mood = "forest" }
+		T.ok(Engine.Match(when, ctx), id .. ": outdoors in the wild")
+		ctx.mood = "city"
+		T.ok(not Engine.Match(when, ctx), id .. ": not in a city")
+		ctx.mood, ctx.indoors = "forest", true
+		T.ok(not Engine.Match(when, ctx), id .. ": not indoors")
+	end
+	T.ok(not Engine.Match(BASE["world.clear.01"].when, { weather = "clear", indoors = true }), "clear sky: not indoors")
+	T.ok(Engine.Match(BASE["world.clear.01"].when, { weather = "clear", indoors = false }), "clear sky: outdoors")
+	-- free order: the second part of the stars names the stars itself
+	for _, lang in ipairs({ "en", "it" }) do
+		for _, t in ipairs(Texts("mono.muse.stars.2", lang)) do
+			T.ok(t:find("star", 1, true) or t:find("stella", 1, true), "mono.muse.stars.2 names the stars: " .. t)
+		end
+	end
+	NoneHas("mono.muse.road.3", { "end of it" })
+	-- the Italian speaker agrees with the character's sex
+	local AGREE = { ["world.fog.01"] = "{g:vicino|vicina}", ["world.sub.03"] = "{g:degno|degna}",
+		["world.quest.complete.03"] = "{g:pronto|pronta}", ["world.flight.arrive.e"] = "{g:fermo|ferma}",
+		["rel.player.fear"] = "{g:primo|prima}" }
+	for id, form in pairs(AGREE) do
+		local found = false
+		for _, t in ipairs(Texts(id, "it")) do if t:find(form, 1, true) then found = true end end
+		T.ok(found, id .. ": " .. form)
+	end
+	NoneHas("ctx.act.duel.wary", { "mai fidato" })
+	NoneHas("rel.player.known", { "ci siamo già incrociati" })
+	NoneHas("rel.player.shared.duel", { "ci siamo affrontati" })
+end)
