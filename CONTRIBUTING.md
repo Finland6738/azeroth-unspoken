@@ -2,7 +2,7 @@
 
 Thanks for your interest. This document explains how to report problems, write phrases and packs, change the code and open a pull request.
 
-> **License to be decided.** The project does not have a license yet ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)). Until one is chosen, open an issue first to discuss it if you want to propose a contribution of a certain size.
+> **Licensing.** Code is GPL-3.0-or-later, phrases and narrative data are all rights reserved, the example pack is MIT and the documentation is CC BY 4.0 ([LICENSING.md](LICENSING.md)). Read [Licensing of contributions](#licensing-of-contributions) before opening a pull request.
 
 ## Language
 
@@ -336,3 +336,20 @@ Text files have **LF line endings**: `.gitattributes` enforces it.
 - Changes that break the tests or that mix several steps.
 
 Thanks for the help.
+
+## Licensing of contributions
+
+By opening a pull request you confirm that you wrote what you submit, or have the right to submit it, and that it copies
+nothing from the game or from other projects without a compatible licence. You keep the copyright of your work, and you
+agree that:
+
+- **code** you contribute is licensed under **GPL-3.0-or-later**, with the additional permission for phrase packs in
+  [LICENSING.md](LICENSING.md);
+- **documentation** you contribute is licensed under **CC BY 4.0**;
+- for **phrases, translations and narrative data** (the folders listed in [LICENSE-CONTENT.md](LICENSE-CONTENT.md)),
+  you grant the project owner a perpetual, worldwide, non-exclusive, royalty-free and irrevocable licence to use, change,
+  distribute and sublicense your contribution as part of Azeroth Unspoken, and to change the licence under which the
+  project's content is distributed;
+- your contribution to the **example pack** or to `PACK_FORMAT.md` is licensed under **MIT**.
+
+If you cannot accept these terms, say so in the pull request before it is merged.

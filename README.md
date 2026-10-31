@@ -259,7 +259,13 @@ The full index is [docs/README.md](docs/README.md). Starting points:
 
 ## License
 
-**License to be defined.** Until one is chosen, default copyright applies: all rights are reserved. The options (code and texts) are discussed in [issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2).
+Azeroth Unspoken is free, and its code is open. Its phrases are protected. The full terms are in [LICENSING.md](LICENSING.md); the reasons are in [ADR 0034](docs/adr/0034-licensing-gpl-code-reserved-phrases.md).
+
+- **Code:** [GPL-3.0-or-later](LICENSE). You may study, change and share it; shared versions stay open under the same licence. Phrase packs that use only the public pack interface may have any licence.
+- **Phrases and narrative data:** [all rights reserved](LICENSE-CONTENT.md). You may play with them, quote short extracts, show them in screenshots, videos and streams, and propose corrections and translations. Copying them into other works, re-uploading them or using them to train AI systems needs written permission.
+- **Example pack and pack guide:** [MIT](AzerothUnspoken_Example/LICENSE), free to copy for your own pack.
+- **Documentation:** CC BY 4.0.
+- **The name "Azeroth Unspoken"** is not licensed: a modified version shared with others needs another name.
 
 ## Credits
 

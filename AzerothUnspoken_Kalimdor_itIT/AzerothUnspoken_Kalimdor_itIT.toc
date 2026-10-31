@@ -8,5 +8,6 @@
 ## X-AzerothUnspoken-Region: kalimdor
 ## X-AzerothUnspoken-Language: itIT
 ## X-Category: Roleplay
+## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
 
 Exploration.lua

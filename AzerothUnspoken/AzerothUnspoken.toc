@@ -8,6 +8,7 @@
 ## OptionalDeps: totalRP3
 ## IconTexture: Interface\Icons\INV_Misc_Book_09
 ## X-Category: Roleplay
+## X-License: GPL-3.0-or-later (code); phrases and narrative data: all rights reserved. See LICENSING.md
 
 # --- nucleo ---
 Core\Bootstrap.lua

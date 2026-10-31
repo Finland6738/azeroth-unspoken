@@ -10,6 +10,9 @@ A private narrator for your roleplay: it shows hand-written lines that fit what 
 **Is it free?**
 Yes. It is a fan project.
 
+**Can I reuse its lines or its code?**
+The code is open (GPL-3.0): you may study it, change it and share it, as long as shared versions stay open and use another name. The lines are protected: you may quote a few of them, show them in screenshots, videos and streams, and suggest corrections or translations, but copying them elsewhere needs the author's permission. You may write your own phrase pack under any licence, starting from the example pack. The details are in the [licensing page](https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSING.md).
+
 **Which game versions does it work with?**
 World of Warcraft: Forever. Other clients are not supported.
 

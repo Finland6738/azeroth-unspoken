@@ -10,6 +10,25 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### Licensing (issue #2)
+
+The project now has a licence, chosen by the owner ([ADR 0034](docs/adr/0034-licensing-gpl-code-reserved-phrases.md)).
+
+- **Added: [`LICENSING.md`](LICENSING.md)**, the overview of what each licence covers.
+  - **Code:** GPL-3.0-or-later ([`LICENSE`](LICENSE)).
+    - An additional permission lets phrase packs that use only the public pack interface have any licence.
+    - The name "Azeroth Unspoken" is not licensed: a modified version needs another name.
+  - **Phrases and narrative data:** all rights reserved, with permitted uses ([`LICENSE-CONTENT.md`](LICENSE-CONTENT.md)). Covered: `AzerothUnspoken/Data/`, the language, regional and verses packs, and `authoring/`.
+  - **Example pack and `PACK_FORMAT.md`:** MIT ([`AzerothUnspoken_Example/LICENSE`](AzerothUnspoken_Example/LICENSE)).
+  - **Documentation:** CC BY 4.0.
+- **Changed:**
+  - Every `.toc` file declares its licence in `## X-License`.
+  - The Licence sections of `README.md` and `README.it.md`, and the notice at the top of `PACK_FORMAT.md`.
+  - `CONTRIBUTING.md` has a new section, "Licensing of contributions".
+  - The wiki FAQ answers "Can I reuse its lines or its code?".
+  - The ADR index no longer lists the licence as a pending decision.
+- No change to the addon's behaviour.
+
 ### U1: UI and UX review and mockups of every window (issues #171-#194)
 
 A review of the interface by an expert panel (frontend, visual design, accessibility, WoW addon UI) and mockups of

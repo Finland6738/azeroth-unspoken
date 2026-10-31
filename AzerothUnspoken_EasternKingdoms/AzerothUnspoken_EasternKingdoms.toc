@@ -7,5 +7,6 @@
 ## LoadOnDemand: 1
 ## X-AzerothUnspoken-Region: eastern
 ## X-Category: Roleplay
+## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
 
 Exploration.lua
