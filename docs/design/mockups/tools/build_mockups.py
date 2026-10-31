@@ -87,7 +87,10 @@ def build_narrator():
 
 def build_proposal():
     stage_narrator("proposal", "Chat proposal - waiting for confirmation", "Chat-Gateway", h=320,
-                   speaker="character", text=f"«{L_GREET}»", proposal="SAY", hover_btn="send")
+                   speaker="character", text=f"«{L_GREET}»", proposal="SAY", hover_btn="send", left_s=18)
+    # #176: a private line arrived while the proposal waits: it is in the history, the proposal stays on screen
+    stage_narrator("proposal-held", "Chat proposal - a private line waits in the history", "Chat-Gateway", h=320,
+                   speaker="character", text=f"«{L_GREET}»", proposal="SAY", left_s=12, held=1, seed=12)
     stage_narrator("proposal-editor", "Chat proposal - editor open", "Chat-Gateway", h=340,
                    speaker="character", text=f"«{L_GREET}»", proposal="SAY",
                    editor="Good evening, friend, if there are still good ones left.")

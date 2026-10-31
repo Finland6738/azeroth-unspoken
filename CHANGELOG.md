@@ -10,6 +10,34 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-narrator: the narrator box and the chat proposal (#176, #173, #177, parts of #179 and #175)
+
+Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-06, UI-03, UI-07, the settings part of UI-09 and the pause glyph of UI-05). Nothing here is tested in the game client yet.
+
+- **Fixed: a proposal could be sent after it had left the narrator (#176).**
+  - While the Gateway holds a proposal, the narrator box shows it.
+  - A private line, a monologue or a story notice that arrives meanwhile goes to the history at once. The label says how many lines wait ("+1 in history"). They reach the box, oldest first, after the proposal is sent, discarded or expired; a line kept waiting more than two minutes stays only in the history.
+  - The speak key, the speak button, `/au speak` and **Send** all read the one pending proposal, which is the line on screen.
+  - A send the client blocks puts the proposal back on screen even when another line had taken the box.
+  - After a send, the history marks the proposal's own entry (with the edited text), not a line that came after it.
+- **Fixed: the opacity was applied twice and faded the text too (#173).**
+  - The setting is now the background's opacity only: 55–100%, default 80%. Saved values under 55% become 55%.
+  - The text always stays fully opaque; the frame alpha is used only for the fade-out.
+  - The voice label is 12 px or more.
+  - The panel row reads **Background opacity** and steps by 5%.
+- **Fixed: fixed time limits (#177).**
+  - The mouse over the narrator box stops the proposal's waiting time, not only the fade; it resumes where it was.
+  - New setting **Proposal waits**: 25, 60 or 120 s, or until dismissed (`chat.pendingSeconds`, 0 = until dismissed). The label counts the seconds down.
+  - New setting **Reading speed** (`ui.narrator.readingSpeed`, characters a second, default 14, about 0.07 s per UTF-8 character; was 0.03 s per byte).
+  - New setting **Reduce motion** (`ui.narrator.reduceMotion`): no fade.
+  - Story notices get the normal reading time and a place in the history (marked `notice`).
+- **Fixed: the settings help text sat on the third row of module buttons (#179, settings part).** It is anchored under the last row of the module grid. The rows are 26 units apart so that the three new rows fit.
+- **Fixed: the pause button showed a single bar (#175, pause glyph).** It reads **II**: `|` is the client's escape character. The `/au help` strings are another session's.
+- **Added:** strings `proposal_left`, `narrator_held`, `opt_waits`, `waits_forever`, `opt_reading`, `reading_cps`, `opt_motion` and `opt_motion_tip`, in English and Italian; `opt_alpha` reads "Background opacity".
+- **Tests:** `Tests/TestNarrator.lua` covers the held lines and their order, discard and x, the blocked send, the hover pause and countdown, "until dismissed", the reading time in UTF-8 characters, reduce motion, the background opacity and label size, the new settings rows and the help anchor. `Tests/TestChatGateway.lua` covers `SetHovered`, `PendingLeft` and the shared source of truth; `Tests/TestConfig.lua` the new limits.
+- **Docs:** [The Narrator](docs/wiki/The-Narrator.md), [Settings](docs/wiki/Settings.md), [Chat Gateway](docs/wiki/Chat-Gateway.md) and [ARCHITECTURE.md](docs/ARCHITECTURE.md). The narrator, proposal and settings mockups are regenerated from the new code.
+- **To check in game (G1):** the hover pause with a real mouse, the fade and "reduce motion", the **II** glyph, the label length in Italian with the countdown, and the settings canvas height with fourteen rows.
+
 ### U-perf: selection speed and memory (issues #157 and #138)
 
 The selection does less work per pick and the registry uses less memory, **without changing a single pick**: the same seed and context give the same line ([ADR 0024](docs/adr/0024-selection-index-compact-registry-and-bounded-memory.md), "Update").
