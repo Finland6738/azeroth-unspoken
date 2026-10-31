@@ -10,6 +10,29 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-journal: journal window layout, confirmations and memory states (issues #179, #180, #190 and #193)
+
+The journal parts of the UI review (UI-09, UI-10, UI-20, UI-23). Tested with the mock client only: the layout and the
+tooltips still need a look in the game (G1).
+
+- **Fixed: the tab note no longer covers the last row (#179).** The note (Session, Stories, Relationships, People
+  met) has its own line under the tabs; the list shows as many rows as fit below it (10 with a one-line note).
+- **Fixed: tab labels no longer overflow their buttons (#180).** Each tab is as wide as its name, measured in the
+  game's font, and the tabs take a second line when they do not fit. The open tab is highlighted and underlined
+  instead of only coloured (no more `» «`). A row cut at the window's edge shows its whole text in a tooltip.
+- **Fixed: deleting a memory, forgetting a place and clearing a flag ask for a second click (#190).** The **x**
+  becomes **OK** and the row asks *"Delete this memory? Click OK:"*; any other click, a few seconds or closing the
+  window cancels. Each arming has its own token, so the timer of an old "Forget everything" no longer disarms a newer
+  one, and closing the window disarms everything.
+- **Fixed: memory off or read-only is shown in the journal (#193).** The memory tabs say *"Memory is off: turn it
+  on in the settings"* or *"Read-only: saved by a newer version of the addon"*, and their buttons and **Forget
+  everything** are greyed out instead of doing nothing.
+- **Fixed: `/au debug` (#193).** Hidden values print `<hidden>` instead of the Italian `<nascosto>`, and the report
+  lists the **hook** group (and any group it counts) instead of leaving it out of the lines.
+- **Changed:** the wiki pages [Memory and Journal](docs/wiki/Memory-and-Journal.md) and
+  [Troubleshooting](docs/wiki/Troubleshooting.md), the G1 checklist, and the journal mockups (`journal-*.png`) and
+  `chat-debug.png`, regenerated from the updated component.
+
 ### U-content: phrase fixes from the third review (issues #158, #159)
 
 The content findings of the third review (Q8, #167), fixed in the language packs and in the rules. The English

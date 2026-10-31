@@ -40,6 +40,8 @@ Open it with `/au journal` or the **Character journal...** button in the [[setti
 | **Stories** | your [[personal stories|Story-Arcs]] |
 | **Relationships** and **People met** | a view of your [[relationships|Relationships]] |
 
+The tabs are as wide as their names and take a second line when they do not fit. The open tab is highlighted and underlined. A tab's note, such as *"This session only"*, sits on its own line under the tabs. A row too long for the window is cut: point at it to read it whole in a tooltip.
+
 On each row you can:
 
 - **pin** a memory to make it **permanent** (it is never compacted), or unpin it;
@@ -47,10 +49,12 @@ On each row you can:
 - **forget** a place (the next visit counts as a first visit again);
 - **clear** a flag.
 
+Deleting, forgetting and clearing cannot be undone, so they ask twice. The first click on **x** turns it into **OK** and the row asks, for example, *"Delete this memory? Click OK:"*. Click **OK** within a few seconds to confirm. Any other click, or closing the window, cancels.
+
 At the bottom:
 
 - **Export** shows the whole journal as text. Select it and press **Ctrl+C** to copy it. The addon cannot write files, so copying is the way to keep a copy outside the game.
-- **Forget everything** erases the memory. Click it, then **Confirm: forget**. It does not touch relationships.
+- **Forget everything** erases the memory. Click it, then **Confirm: forget** within a few seconds. It does not touch relationships.
 - **Close**.
 
 Use **<** and **>** to turn pages.
@@ -108,6 +112,8 @@ To keep things light, the journal keeps up to **500 ordinary memories** per char
 | Memory module | on | [[settings panel|Settings]], modules |
 
 With the module off, nothing new is remembered, recall lines stop, and `/au journal` says that memory is off.
+
+The journal window can still be opened from the settings panel. Its memory tabs then say *"Memory is off: turn it on in the settings"* under the tabs: you can read the journal, but the row buttons and **Forget everything** are greyed out. The same happens, with *"Read-only: saved by a newer version of the addon"*, when the memory was saved by a newer version of the addon. The Stories, Relationships and People met tabs follow their own modules.
 
 ## What you will see
 

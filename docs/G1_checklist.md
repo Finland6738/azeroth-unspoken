@@ -18,7 +18,7 @@ Alla fine ti chiedo di mandarmi:
 2. **ogni messaggio d'errore** che compare (le finestre con scritte rosse o "Azeroth Unspoken ha generato un errore"): uno screenshot va bene;
 3. il **modulo riassuntivo** in fondo a questo file, con una riga per ogni passo (`OK`, `NO`, oppure una nota).
 
-Il testo di `/au debug`, `/au debug full` e della traccia (`/au debug trace`) si può condividere: l'addon non vi scrive i nomi di altri giocatori (chi ti ha sussurrato, sfidato, invitato o fatto uno scambio, il bersaglio di un incantesimo): al loro posto compare `<nascosto>`. Se ne trovi uno, **è un errore da segnalare** (issue #53). Gli screenshot della chat o della finestra delle relazioni, invece, mostrano i nomi: coprili, se non vuoi condividerli.
+Il testo di `/au debug`, `/au debug full` e della traccia (`/au debug trace`) si può condividere: l'addon non vi scrive i nomi di altri giocatori (chi ti ha sussurrato, sfidato, invitato o fatto uno scambio, il bersaglio di un incantesimo): al loro posto compare `<hidden>`. Se ne trovi uno, **è un errore da segnalare** (issue #53). Gli screenshot della chat o della finestra delle relazioni, invece, mostrano i nomi: coprili, se non vuoi condividerli.
 
 Per vedere gli errori del gioco, prima di cominciare scrivi nella chat (premi Invio, scrivi, premi Invio):
 
@@ -461,7 +461,7 @@ Corrette fuori dal gioco le issue #45, #46, #47, #48, #49, #50, #51, #52, #53, #
     - **Cosa aspettarti:** dopo qualche secondo **una sola** frase: il richiamo di memoria («Rieccomi...») e non l'atmosfera di zona; in `/au debug` (riga Narrative Director) `memory_return=spoken` e `zone=outranked`. All'accesso e dopo un `/reload` nessun richiamo.
     - **Cosa riportare:** l'**ordine** in cui arrivano `WORLD_ENTER` (PLAYER_ENTERING_WORLD) e `ZONE_ENTER` (ZONE_CHANGED_NEW_AREA) nella traccia, per ogni tipo di passaggio; se la frase manca o è doppia.
 95. **I rapporti non hanno nomi altrui (issue #53).** Dopo uno scambio, un sussurro, una sfida a duello, un invito e un'emote rivolta a te: `/au debug full` e `/au debug trace`.
-    - **Cosa aspettarti:** nessun nome di altri giocatori (appare `<nascosto>`); zona, nome dell'incantesimo e NPC restano leggibili.
+    - **Cosa aspettarti:** nessun nome di altri giocatori (appare `<hidden>`); zona, nome dell'incantesimo e NPC restano leggibili.
     - **Cosa riportare:** ogni nome di persona che compare (errore da segnalare).
 96. **Ritorno in vita da fantasma (issue #56).** Muori, rilascia lo spirito, torna al corpo (o fatti resuscitare).
     - **Cosa aspettarti:** la frase di ritorno in vita parte **una sola volta**, quando torni davvero vivo, non quando diventi fantasma.

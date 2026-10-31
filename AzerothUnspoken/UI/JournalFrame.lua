@@ -11,6 +11,8 @@ local LM = NS.LivingMemory
 ---@class AUJournalAction
 ---@field label string testo del pulsante (breve)
 ---@field tip? string suggerimento
+---@field confirm? string chiave della domanda: l'azione non si annulla, quindi chiede un secondo clic
+---@field key? string identità stabile dell'azione armata (predefinita: il testo della riga)
 ---@field fn fun() cosa fare; l'elenco si aggiorna da solo
 
 ---@class AUJournalRow
@@ -21,39 +23,71 @@ local LM = NS.LivingMemory
 ---@field id string
 ---@field label string chiave del testo dell'interfaccia
 ---@field rows fun(): AUJournalRow[]
----@field note? string chiave di una nota sotto l'elenco
+---@field note? string chiave di una nota sotto le schede
+---@field memory? boolean scheda della memoria: spenta o in sola lettura, si legge e basta
 
 ---@class AUJournalFrame
 local JournalFrame = NS:RegisterModule("journal")
 NS.JournalFrame = JournalFrame
 
-local PAGE = 11                 -- righe per pagina
+local MAX_ROWS = 11             -- righe per pagina, al massimo: la nota e le schede su due file ne tolgono
 local ROW_H = 28
-local RESET_ARM_SECONDS = 6     -- dopo il primo clic su "Dimentica tutto" si ha questo tempo per confermare
+local ROW_W = 500               -- larghezza del testo di una riga; oltre, il testo si taglia e il suggerimento lo mostra intero
+local INNER_W = 568             -- larghezza utile della finestra
+local TAB_TOP, TAB_H, TAB_GAP = 78, 24, 4
+local TAB_PAD, TAB_MIN = 24, 48 -- margine del testo nei pulsanti delle schede; larghezza minima
+local LIST_TOP, LIST_BOTTOM = 112, 424  -- l'elenco sta tra questi due (le pagine iniziano a 424 dall'alto)
+local ARM_SECONDS = 6           -- dopo il primo clic di una conferma si ha questo tempo per il secondo
 
 ---@type AUJournalTab[]
 JournalFrame.tabs = {}
 local frame, exportFrame
 local rows, tabButtons = {}, {}
-local state = { tab = "memories", page = 1, armed = false }
-
-local function Selected(text, on)
-	return on and ("|cff7fff7f» " .. text .. " «|r") or text
-end
+-- armed: "Dimentica tutto" armato; confirm: la chiave dell'azione di riga armata; token: l'ultimo armamento
+local state = { tab = "memories", page = 1, armed = false, confirm = nil, token = 0 }
+local pageSize = MAX_ROWS
 
 ---Aggiunge o sostituisce una scheda.
 ---@param id string
----@param def { label: string, rows: fun(): AUJournalRow[], note?: string }
+---@param def { label: string, rows: fun(): AUJournalRow[], note?: string, memory?: boolean }
 function JournalFrame:RegisterTab(id, def)
 	if type(id) ~= "string" or type(def) ~= "table" or type(def.rows) ~= "function" then return false end
+	local tab = { id = id, label = def.label, rows = def.rows, note = def.note, memory = def.memory == true }
 	for i, t in ipairs(self.tabs) do
 		if t.id == id then
-			self.tabs[i] = { id = id, label = def.label, rows = def.rows, note = def.note }
+			self.tabs[i] = tab
 			return true
 		end
 	end
-	table.insert(self.tabs, { id = id, label = def.label, rows = def.rows, note = def.note })
+	table.insert(self.tabs, tab)
 	return true
+end
+
+---La memoria si può cambiare? nil se sì, altrimenti la chiave del perché (sola lettura o modulo spento).
+---@return string?
+function JournalFrame:MemoryLock()
+	if LM.readOnly then return "mem_state_readonly" end
+	if NS.db and NS.db.modules and NS.db.modules.memory == false then return "mem_state_off" end
+	return nil
+end
+
+-- Le conferme a due clic ("Dimentica tutto" e le cancellazioni di una riga): un solo armamento alla volta, ciascuno
+-- con il suo gettone; il timer disarma soltanto l'armamento che l'ha avviato, mai uno più recente.
+local function Disarm()
+	state.armed, state.confirm = false, nil
+end
+
+---@param what true|string true: "Dimentica tutto"; una stringa: la chiave dell'azione di riga
+local function Arm(what)
+	Disarm()
+	state.token = state.token + 1
+	local token = state.token
+	if what == true then state.armed = true else state.confirm = what end
+	C_Timer.After(ARM_SECONDS, function()
+		if state.token ~= token then return end
+		Disarm()
+		JournalFrame:Refresh()
+	end)
 end
 
 local function CurrentTab()
@@ -68,7 +102,7 @@ end
 ---------------------------------------------------------------------------
 local function Muted(text) return "|cff9d9d9d" .. text .. "|r" end
 
-JournalFrame:RegisterTab("memories", { label = "mem_tab_memories", rows = function()
+JournalFrame:RegisterTab("memories", { label = "mem_tab_memories", memory = true, rows = function()
 	local out = {}
 	for _, e in ipairs(LM:List()) do
 		local id = e.id
@@ -79,38 +113,41 @@ JournalFrame:RegisterTab("memories", { label = "mem_tab_memories", rows = functi
 					local ok, why = LM:SetPermanent(id)
 					if not ok and why == "limit" then NS:Print(NS:L("mem_perm_limit")) end
 				end },
-				{ label = "x", tip = NS:L("mem_delete_tip"), fn = function() LM:Delete(id) end },
+				{ label = "x", tip = NS:L("mem_delete_tip"), confirm = "mem_confirm_delete", key = "memory:" .. id,
+					fn = function() LM:Delete(id) end },
 			},
 		})
 	end
 	return out
 end })
 
-JournalFrame:RegisterTab("places", { label = "mem_tab_places", rows = function()
+JournalFrame:RegisterTab("places", { label = "mem_tab_places", memory = true, rows = function()
 	local out = {}
 	for _, p in ipairs(LM:Places()) do
 		local name = p.key or p.name
 		table.insert(out, {
 			text = ("%s  %s"):format(LM:DescribePlace(p), Muted(LM.Stamp(p.last))),
-			actions = { { label = "x", tip = NS:L("mem_forget_tip"), fn = function() LM:ForgetPlace(name) end } },
+			actions = { { label = "x", tip = NS:L("mem_forget_tip"), confirm = "mem_confirm_forget", key = "place:" .. name,
+				fn = function() LM:ForgetPlace(name) end } },
 		})
 	end
 	return out
 end })
 
-JournalFrame:RegisterTab("flags", { label = "mem_tab_flags", rows = function()
+JournalFrame:RegisterTab("flags", { label = "mem_tab_flags", memory = true, rows = function()
 	local out = {}
 	local data = LM:Data()
 	for _, name in ipairs(LM:FlagNames()) do
 		table.insert(out, {
 			text = ("%s  %s"):format(name, Muted(LM.Stamp(data.flags[name].t))),
-			actions = { { label = "x", tip = NS:L("mem_flag_tip"), fn = function() LM:ClearFlag(name) end } },
+			actions = { { label = "x", tip = NS:L("mem_flag_tip"), confirm = "mem_confirm_flag", key = "flag:" .. name,
+				fn = function() LM:ClearFlag(name) end } },
 		})
 	end
 	return out
 end })
 
-JournalFrame:RegisterTab("session", { label = "mem_tab_session", note = "mem_session_note", rows = function()
+JournalFrame:RegisterTab("session", { label = "mem_tab_session", note = "mem_session_note", memory = true, rows = function()
 	local out = {}
 	for _, e in ipairs(LM:SessionList()) do
 		table.insert(out, { text = ("%s  %s"):format(LM:Describe(e), Muted(LM.Stamp(e.t))) })
@@ -259,44 +296,106 @@ JournalFrame:RegisterTab("stories", { label = "arc_tab", note = "arc_note", rows
 ---------------------------------------------------------------------------
 -- Finestra
 ---------------------------------------------------------------------------
+-- un'azione di riga: le azioni con conferma chiedono un secondo clic sulla stessa riga; ogni altro clic disarma
+local function RunAction(row, k)
+	local a = row.actions and row.actions[k]
+	if not a or row.locked then return end
+	if a.confirm and state.confirm ~= row.keys[k] then
+		Arm(row.keys[k])
+		JournalFrame:Refresh()
+		return
+	end
+	Disarm()
+	a.fn()
+	JournalFrame:Refresh()
+end
+
 local function BuildRow(i)
-	local y = -112 - (i - 1) * ROW_H
-	local row = {}
+	local row = { keys = {}, tips = {} }
 	row.text = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-	row.text:SetPoint("TOPLEFT", 16, y - 6)
-	row.text:SetWidth(500)
+	row.text:SetWidth(ROW_W)
 	row.text:SetJustifyH("LEFT")
 	if row.text.SetWordWrap then row.text:SetWordWrap(false) end
+	-- sopra il testo, per il suggerimento con la riga intera; prende il mouse solo quando la riga è tagliata
+	row.hit = CreateFrame("Frame", nil, frame)
+	row.hit:SetSize(ROW_W, ROW_H - 4)
+	row.hit:EnableMouse(false)
+	W.Tooltip(row.hit, function() return row.full or "" end)
 	row.b = {}
 	for k = 1, 2 do
-		local b = W.Button(frame, "", 24, 24, function()
-			local a = row.actions and row.actions[k]
-			if a then
-				a.fn()
-				JournalFrame:Refresh()
-			end
-		end)
-		b:SetPoint("TOPLEFT", 528 + (k - 1) * 28, y)
-		W.Tooltip(b, function() local a = row.actions and row.actions[k]; return a and a.tip or "" end)
+		local b = W.Button(frame, "", 24, 24, function() RunAction(row, k) end)
+		W.Tooltip(b, function() return row.tips[k] or "" end)
 		row.b[k] = b
 	end
 	rows[i] = row
 end
 
+local function PlaceRow(row, y)
+	row.text:ClearAllPoints()
+	row.text:SetPoint("TOPLEFT", 16, -(y + 6))
+	row.hit:ClearAllPoints()
+	row.hit:SetPoint("TOPLEFT", 16, -(y + 2))
+	for k = 1, 2 do
+		row.b[k]:ClearAllPoints()
+		row.b[k]:SetPoint("TOPLEFT", 528 + (k - 1) * 28, -y)
+	end
+end
+
 local function EnsureTabButtons()
-	-- le schede si stringono quando sono molte (la finestra è larga 568 utili)
-	local count = math.max(1, #JournalFrame.tabs)
-	local width = math.min(110, math.floor(568 / count) - 4)
-	for i, t in ipairs(JournalFrame.tabs) do
+	for _, t in ipairs(JournalFrame.tabs) do
 		if not tabButtons[t.id] then
-			local b = W.Button(frame, "", width, 24, function()
+			tabButtons[t.id] = W.Button(frame, "", TAB_MIN, TAB_H, function()
+				Disarm()
 				state.tab, state.page = t.id, 1
 				JournalFrame:Refresh()
 			end)
-			b:SetPoint("TOPLEFT", 16 + (i - 1) * (width + 4), -78)
-			tabButtons[t.id] = b
 		end
 	end
+end
+
+---Larghezza di un testo nel carattere delle righe e dei pulsanti (hanno la stessa misura).
+---@param text string
+---@return number
+local function TextWidth(text)
+	frame.measure:SetText(text)
+	local w = frame.measure:GetStringWidth() or 0
+	-- un client che non misura i testi nascosti: una stima di 7 unità per carattere
+	if w <= 0 and text ~= "" then w = Chars(text) * 7 end
+	return w
+end
+
+-- Schede larghe quanto il loro testo, su più file quando non stanno in una; la scheda scelta è evidenziata e
+-- sottolineata, non solo colorata. Restituisce dove finiscono, dall'alto.
+---@param current? AUJournalTab
+---@return number bottom
+local function LayoutTabs(current)
+	local x, line = 0, 0
+	frame.tabMark:Hide()
+	for _, b in pairs(tabButtons) do b:Hide() end   -- anche quelli di una scheda tolta
+	for _, t in ipairs(JournalFrame.tabs) do
+		local b = tabButtons[t.id]
+		b:Show()
+		local label = NS:L(t.label)
+		local w = math.max(TAB_MIN, math.min(INNER_W, math.ceil(TextWidth(label)) + TAB_PAD))
+		if x > 0 and x + w > INNER_W then x, line = 0, line + 1 end
+		local top = TAB_TOP + line * (TAB_H + TAB_GAP)
+		b:SetWidth(w)
+		b:ClearAllPoints()
+		b:SetPoint("TOPLEFT", 16 + x, -top)
+		if t == current then
+			b:SetText("|cffffffff" .. label .. "|r")
+			if b.LockHighlight then b:LockHighlight() end
+			frame.tabMark:ClearAllPoints()
+			frame.tabMark:SetPoint("TOPLEFT", 16 + x + 4, -(top + TAB_H))
+			frame.tabMark:SetSize(w - 8, 3)
+			frame.tabMark:Show()
+		else
+			b:SetText(label)
+			if b.UnlockHighlight then b:UnlockHighlight() end
+		end
+		x = x + w + TAB_GAP
+	end
+	return TAB_TOP + (line + 1) * (TAB_H + TAB_GAP)
 end
 
 local function Build()
@@ -310,23 +409,31 @@ local function Build()
 	frame:RegisterForDrag("LeftButton")
 	frame:SetScript("OnDragStart", frame.StartMoving)
 	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
+	-- chiusa la finestra, nessuna conferma resta armata
+	frame:SetScript("OnHide", Disarm)
 	W.Background(frame, 0.05, 0.04, 0.09, 0.95)
 
 	frame.title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 	frame.title:SetPoint("TOPLEFT", 16, -12)
 	frame.intro = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	frame.intro:SetPoint("TOPLEFT", 16, -38)
-	frame.intro:SetWidth(568)
+	frame.intro:SetWidth(INNER_W)
 	frame.intro:SetJustifyH("LEFT")
+	-- misura i testi e non si vede mai
+	frame.measure = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+	frame.measure:Hide()
+	frame.tabMark = frame:CreateTexture(nil, "OVERLAY")
+	W.SetBackgroundAlpha(frame.tabMark, 1, 0.82, 0, 1)
 
-	for i = 1, PAGE do BuildRow(i) end
-
+	-- la nota della scheda e lo stato della memoria: una riga propria sotto le schede, sopra l'elenco
 	frame.note = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.note:SetPoint("BOTTOMLEFT", 16, 84)
-	frame.note:SetWidth(568)
+	frame.note:SetWidth(INNER_W)
 	frame.note:SetJustifyH("LEFT")
 
+	for i = 1, MAX_ROWS do BuildRow(i) end
+
 	frame.prev = W.Button(frame, "", 28, 24, function()
+		Disarm()
 		state.page = state.page - 1
 		JournalFrame:Refresh()
 	end)
@@ -336,6 +443,7 @@ local function Build()
 	frame.pageText:SetWidth(140)
 	frame.pageText:SetJustifyH("LEFT")
 	frame.next = W.Button(frame, "", 28, 24, function()
+		Disarm()
 		state.page = state.page + 1
 		JournalFrame:Refresh()
 	end)
@@ -345,23 +453,24 @@ local function Build()
 	frame.stats:SetWidth(340)
 	frame.stats:SetJustifyH("RIGHT")
 
-	frame.export = W.Button(frame, "", 110, 24, function() JournalFrame:ShowExport() end)
+	frame.export = W.Button(frame, "", 110, 24, function()
+		Disarm()
+		JournalFrame:Refresh()
+		JournalFrame:ShowExport()
+	end)
 	frame.export:SetPoint("BOTTOMLEFT", 16, 16)
 	-- "Dimentica tutto" chiede conferma: il primo clic arma il pulsante, il secondo (entro pochi secondi) azzera
 	frame.reset = W.Button(frame, "", 170, 24, function()
 		if state.armed then
-			state.armed = false
+			Disarm()
 			LM:Reset("all")
 		else
-			state.armed = true
-			C_Timer.After(RESET_ARM_SECONDS, function()
-				state.armed = false
-				JournalFrame:Refresh()
-			end)
+			Arm(true)
 		end
 		JournalFrame:Refresh()
 	end)
 	frame.reset:SetPoint("BOTTOMLEFT", 136, 16)
+	W.Tooltip(frame.reset, function() return NS:L(JournalFrame:MemoryLock() or "mem_reset_tip") end)
 	frame.close = W.Button(frame, "", 110, 24, function() JournalFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
 	frame:Hide()
@@ -374,30 +483,50 @@ function JournalFrame:Refresh()
 	frame.title:SetText(NS:L("mem_title"))
 	frame.intro:SetText(NS:L("mem_intro"))
 	local tab = CurrentTab()
-	for _, t in ipairs(self.tabs) do
-		local b = tabButtons[t.id]
-		if b then b:SetText(Selected(NS:L(t.label), t == tab)) end
-	end
+	local lock = self:MemoryLock()
+	local tabLock = tab and tab.memory and lock or nil
+	if lock then Disarm() end
+
+	-- dall'alto: le schede, la nota (con lo stato della memoria), poi tante righe quante ne stanno sopra le pagine
+	local top = LayoutTabs(tab)
+	local note = tab and tab.note and NS:L(tab.note) or ""
+	if tabLock then note = "|cffff9040" .. NS:L(tabLock) .. "|r" .. (note ~= "" and ("\n" .. note) or "") end
+	frame.note:ClearAllPoints()
+	frame.note:SetPoint("TOPLEFT", 16, -(top + 2))
+	frame.note:SetText(note)
+	frame.note:SetShown(note ~= "")
+	if note ~= "" then top = top + 2 + math.ceil(frame.note:GetStringHeight() or 0) + 4 end
+	top = math.max(LIST_TOP, top)
+	pageSize = math.max(1, math.min(MAX_ROWS, math.floor((LIST_BOTTOM - top) / ROW_H)))
 
 	local list = tab and tab.rows() or {}
-	local pages = math.max(1, math.ceil(#list / PAGE))
+	local pages = math.max(1, math.ceil(#list / pageSize))
 	state.page = math.max(1, math.min(pages, state.page))
-	for i = 1, PAGE do
-		local item = list[(state.page - 1) * PAGE + i]
+	for i = 1, MAX_ROWS do
 		local row = rows[i]
+		local item = i <= pageSize and list[(state.page - 1) * pageSize + i] or nil
+		PlaceRow(row, top + (i - 1) * ROW_H)
 		row.actions = item and item.actions or nil
-		if item then
-			row.text:SetText(item.text)
-		else
-			row.text:SetText(i == 1 and #list == 0 and Muted(NS:L("mem_empty")) or "")
-		end
+		row.locked = tabLock ~= nil
+		local text = item and item.text or (i == 1 and #list == 0 and Muted(NS:L("mem_empty")) or "")
 		for k = 1, 2 do
-			local a = item and item.actions and item.actions[k]
-			row.b[k]:SetShown(a ~= nil)
-			if a then row.b[k]:SetText(a.label) end
+			local a = row.actions and row.actions[k]
+			local b = row.b[k]
+			row.keys[k] = a and (tab.id .. ":" .. (a.key or item.text) .. ":" .. k) or nil
+			b:SetShown(a ~= nil)
+			if a then
+				local armed = a.confirm ~= nil and state.confirm == row.keys[k]
+				b:SetText(armed and NS:L("mem_confirm_btn") or a.label)
+				b:SetEnabled(tabLock == nil)
+				row.tips[k] = tabLock and NS:L(tabLock) or (armed and NS:L("mem_confirm_tip") or a.tip)
+				if armed then text = "|cffff9040" .. NS:L(a.confirm) .. "|r " .. text end
+			end
 		end
+		row.text:SetText(text)
+		-- riga tagliata: il suggerimento la mostra intera
+		row.full = text ~= "" and TextWidth(text) > ROW_W and text or nil
+		row.hit:EnableMouse(row.full ~= nil)
 	end
-	frame.note:SetText(tab and tab.note and NS:L(tab.note) or "")
 	frame.pageText:SetText(NS:L("mem_page", state.page, pages))
 	frame.prev:SetText(NS:L("mem_prev"))
 	frame.next:SetText(NS:L("mem_next"))
@@ -407,6 +536,7 @@ function JournalFrame:Refresh()
 	frame.stats:SetText(NS:L("mem_summary", st.memories, st.permanent, st.places, st.flags))
 	frame.export:SetText(NS:L("mem_export"))
 	frame.reset:SetText(NS:L(state.armed and "mem_reset_confirm_btn" or "mem_reset"))
+	frame.reset:SetEnabled(lock == nil)
 	frame.close:SetText(NS:L("mem_close"))
 end
 
@@ -427,7 +557,7 @@ function JournalFrame:Open(tab)
 		end
 	end
 	if tab then state.tab, state.page = tab, 1 end
-	state.armed = false
+	Disarm()
 	frame:Show()
 	self:Refresh()
 	return true
