@@ -3,6 +3,9 @@
 -- (titolo, racconto per stato, scelte) e le battute stanno in AzerothUnspoken_itIT/Arcs.lua e AzerothUnspoken_enUS/Arcs.lua.
 -- Un pacchetto aggiunge archi con NS:RegisterArcs{ pack, arcs, texts } (stessa forma, vedi PACK_FORMAT.md, «Story Arcs»).
 --
+-- Dati letterali, non codice (#143): nessuna funzione costruisce gli archi, così l'archivio (tools/archive) li legge, li
+-- controlla e li riscrive senza differenze. Una costante locale con dati (STARTER_ZONE) è ammessa: si legge come dato.
+--
 -- Regole (GDD §7.5): nessuna ricompensa e nessun effetto sul gioco (la definizione non ha campi per averli); ogni passo
 -- scatta da un evento vero (luogo, memoria, relazione, flag, livello, morte) o dalla scelta del giocatore; ciò che si
 -- attribuisce al personaggio, in una scelta, lo decide il giocatore; nessuna lore inventata spacciata per canone.
@@ -12,25 +15,18 @@
 -- i due basta. Il personaggio comincia in una zona che dipende dalla sua razza (era classica).
 local ADDON, NS = ...
 
--- zona di partenza per razza (token di UnitRace): nome nel client inglese e uiMapID di Classic Era
-local STARTERS = {
-	Dwarf = { "Dun Morogh", 1426 }, Gnome = { "Dun Morogh", 1426 }, Human = { "Elwynn Forest", 1429 },
-	NightElf = { "Teldrassil", 1438 }, Orc = { "Durotar", 1411 }, Scourge = { "Tirisfal Glades", 1420 },
-	Tauren = { "Mulgore", 1412 }, Troll = { "Durotar", 1411 },
+-- «sono nella zona in cui è cominciata l'avventura della mia razza» (token di UnitRace, nome della zona nel client
+-- inglese e uiMapID di Classic Era): l'elenco per `any`, scritto per esteso perché i dati non si calcolano (#143)
+local STARTER_ZONE = {
+	{ race = "Dwarf", place = { any = { { mapID = 1426 }, { zone = "Dun Morogh" } } } },
+	{ race = "Gnome", place = { any = { { mapID = 1426 }, { zone = "Dun Morogh" } } } },
+	{ race = "Human", place = { any = { { mapID = 1429 }, { zone = "Elwynn Forest" } } } },
+	{ race = "NightElf", place = { any = { { mapID = 1438 }, { zone = "Teldrassil" } } } },
+	{ race = "Orc", place = { any = { { mapID = 1411 }, { zone = "Durotar" } } } },
+	{ race = "Scourge", place = { any = { { mapID = 1420 }, { zone = "Tirisfal Glades" } } } },
+	{ race = "Tauren", place = { any = { { mapID = 1412 }, { zone = "Mulgore" } } } },
+	{ race = "Troll", place = { any = { { mapID = 1411 }, { zone = "Durotar" } } } },
 }
-
--- «sono nella zona in cui è cominciata l'avventura della mia razza»: l'elenco per `any`
-local function StarterZone()
-	local races = {}
-	for race in pairs(STARTERS) do table.insert(races, race) end
-	table.sort(races)
-	local any = {}
-	for _, race in ipairs(races) do
-		local zone, map = STARTERS[race][1], STARTERS[race][2]
-		table.insert(any, { race = race, place = { any = { { mapID = map }, { zone = zone } } } })
-	end
-	return any
-end
 
 NS:RegisterArcs({
 	pack = "base_arcs",
@@ -43,10 +39,10 @@ NS:RegisterArcs({
 		path = {
 			choices = { reflect = { options = { "gratitude", "distance", "silence" } } },
 			steps = {
-				{ from = "LOCKED", to = "DISCOVERED", on = { "zone" }, when = { levelMin = 12, any = StarterZone() } },
+				{ from = "LOCKED", to = "DISCOVERED", on = { "zone" }, when = { levelMin = 12, any = STARTER_ZONE } },
 				{ from = "DISCOVERED", to = "REFLECTED", on = { "zone", "player" }, wait = 120, choose = "reflect",
-					when = { any = StarterZone() } },
-				{ from = "REFLECTED", to = "RESOLVED", on = { "zone" }, wait = 60, when = { ["not"] = { any = StarterZone() } } },
+					when = { any = STARTER_ZONE } },
+				{ from = "REFLECTED", to = "RESOLVED", on = { "zone" }, wait = 60, when = { ["not"] = { any = STARTER_ZONE } } },
 			},
 		},
 

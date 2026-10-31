@@ -1,5 +1,5 @@
 -- Le battute degli archi narrativi (step S9): regole degli eventi arc_open, arc_step e arc_resolve, una per intenzione.
--- Solo le regole; i testi stanno in AzerothUnspoken_itIT/Arcs.lua e AzerothUnspoken_enUS/Arcs.lua.
+-- Solo le regole, come dati letterali (#143: l'archivio li legge e li riscrive senza differenze); i testi stanno in AzerothUnspoken_itIT/Arcs.lua e AzerothUnspoken_enUS/Arcs.lua.
 --
 -- Come funzionano:
 --   - sono pronunciate dal Systems/StoryArcs.lua quando un passo scatta, dal Narrative Director (priorità «evento
@@ -12,64 +12,6 @@ local ADDON, NS = ...
 
 local ALL = { "natural", "literary", "elevated" }
 
--- una regola di battuta di un arco
-local function Rule(event, speaker, arc, styles, extra)
-	local r = { event = event, speaker = speaker, styles = styles, depth = ALL, conditions = { arc = arc } }
-	for k, v in pairs(extra or {}) do r[k] = v end
-	return r
-end
-
-local registry = {
-	-----------------------------------------------------------------------
-	-- Il sentiero ritrovato
-	-----------------------------------------------------------------------
-	["arc.path.open.i"] = Rule("arc_open", "inner", { id = "path", state = "DISCOVERED" }, { "intimate", "ancient" }),
-	["arc.path.open.e"] = Rule("arc_open", "narrator", { id = "path", state = "DISCOVERED" }, { "ancient" }),
-	["arc.path.refl.gratitude"] = Rule("arc_step", "inner", { id = "path", state = "REFLECTED", choice = "gratitude" }, { "intimate" }),
-	["arc.path.refl.distance"] = Rule("arc_step", "inner", { id = "path", state = "REFLECTED", choice = "distance" }, { "intimate", "everyday" }),
-	["arc.path.refl.silence"] = Rule("arc_step", "inner", { id = "path", state = "REFLECTED", choice = "silence" }, { "ancient" }),
-	["arc.path.done.gratitude"] = Rule("arc_resolve", "narrator", { id = "path", state = "RESOLVED", choice = "gratitude" }, { "intimate" }),
-	["arc.path.done.distance"] = Rule("arc_resolve", "narrator", { id = "path", state = "RESOLVED", choice = "distance" }, { "epic", "intimate" }),
-	["arc.path.done.silence"] = Rule("arc_resolve", "narrator", { id = "path", state = "RESOLVED", choice = "silence" }, { "ancient" }),
-
-	-----------------------------------------------------------------------
-	-- Un volto noto (legato a un NPC conosciuto: {other} è il suo nome)
-	-----------------------------------------------------------------------
-	["arc.face.open.i"] = Rule("arc_open", "inner", { id = "knownface", state = "DISCOVERED" }, { "intimate", "everyday" }),
-	["arc.face.open.e"] = Rule("arc_open", "narrator", { id = "knownface", state = "DISCOVERED" }, { "intimate" }),
-	["arc.face.refl.thank"] = Rule("arc_step", "inner", { id = "knownface", state = "REFLECTED", choice = "thank" }, { "intimate" }),
-	["arc.face.refl.remember"] = Rule("arc_step", "inner", { id = "knownface", state = "REFLECTED", choice = "remember" }, { "intimate", "tragic" }),
-	["arc.face.refl.distance"] = Rule("arc_step", "inner", { id = "knownface", state = "REFLECTED", choice = "distance" }, { "everyday", "ironic" }),
-	["arc.face.done.thank"] = Rule("arc_resolve", "narrator", { id = "knownface", state = "RESOLVED", choice = "thank" }, { "intimate" }),
-	["arc.face.done.remember"] = Rule("arc_resolve", "narrator", { id = "knownface", state = "RESOLVED", choice = "remember" }, { "intimate", "ancient" }),
-	["arc.face.done.distance"] = Rule("arc_resolve", "narrator", { id = "knownface", state = "RESOLVED", choice = "distance" }, { "everyday" }),
-
-	-----------------------------------------------------------------------
-	-- Il luogo della caduta (argomento: la morte, che il Character Soul può far evitare)
-	-----------------------------------------------------------------------
-	["arc.fall.open.i"] = Rule("arc_open", "inner", { id = "fallen", state = "DISCOVERED" }, { "intimate", "tragic" }, { tags = { "topic:death" } }),
-	["arc.fall.open.e"] = Rule("arc_open", "narrator", { id = "fallen", state = "DISCOVERED" }, { "tragic" }, { tags = { "topic:death" } }),
-	["arc.fall.refl.silence"] = Rule("arc_step", "inner", { id = "fallen", state = "REFLECTED", choice = "silence" }, { "tragic", "ceremonial" }, { tags = { "topic:death" } }),
-	["arc.fall.refl.prepare"] = Rule("arc_step", "inner", { id = "fallen", state = "REFLECTED", choice = "prepare" }, { "everyday" }, { tags = { "topic:death" } }),
-	["arc.fall.refl.onward"] = Rule("arc_step", "inner", { id = "fallen", state = "REFLECTED", choice = "onward" }, { "epic", "intimate" }, { tags = { "topic:death" } }),
-	["arc.fall.done.silence"] = Rule("arc_resolve", "narrator", { id = "fallen", state = "RESOLVED", choice = "silence" }, { "ceremonial", "intimate" }, { tags = { "topic:death" } }),
-	["arc.fall.done.prepare"] = Rule("arc_resolve", "narrator", { id = "fallen", state = "RESOLVED", choice = "prepare" }, { "everyday" }, { tags = { "topic:death" } }),
-	["arc.fall.done.onward"] = Rule("arc_resolve", "narrator", { id = "fallen", state = "RESOLVED", choice = "onward" }, { "epic" }, { tags = { "topic:death" } }),
-
-	-----------------------------------------------------------------------
-	-- Le tre porte (stati propri: DISCOVERED, JOURNEY, REFLECTED, RESOLVED)
-	-----------------------------------------------------------------------
-	["arc.gates.open.i"] = Rule("arc_open", "inner", { id = "capitals", state = "DISCOVERED" }, { "intimate", "everyday" }),
-	["arc.gates.open.e"] = Rule("arc_open", "narrator", { id = "capitals", state = "DISCOVERED" }, { "ancient", "ceremonial" }),
-	["arc.gates.journey.i"] = Rule("arc_step", "inner", { id = "capitals", state = "JOURNEY" }, { "intimate" }),
-	["arc.gates.refl.shelter"] = Rule("arc_step", "inner", { id = "capitals", state = "REFLECTED", choice = "shelter" }, { "intimate" }),
-	["arc.gates.refl.crossroads"] = Rule("arc_step", "inner", { id = "capitals", state = "REFLECTED", choice = "crossroads" }, { "everyday", "ancient" }),
-	["arc.gates.refl.promise"] = Rule("arc_step", "inner", { id = "capitals", state = "REFLECTED", choice = "promise" }, { "epic", "ceremonial" }),
-	["arc.gates.done.shelter"] = Rule("arc_resolve", "narrator", { id = "capitals", state = "RESOLVED", choice = "shelter" }, { "intimate" }),
-	["arc.gates.done.crossroads"] = Rule("arc_resolve", "narrator", { id = "capitals", state = "RESOLVED", choice = "crossroads" }, { "everyday", "ironic" }),
-	["arc.gates.done.promise"] = Rule("arc_resolve", "narrator", { id = "capitals", state = "RESOLVED", choice = "promise" }, { "epic", "ceremonial" }),
-}
-
 NS:RegisterPack({
 	id = "base_arcs",
 	name = "Base: storie personali (Story Arcs)",
@@ -80,5 +22,120 @@ NS:RegisterPack({
 		arc_step = { category = "reflection", chance = 100, cooldown = 0 },
 		arc_resolve = { category = "reflection", chance = 100, cooldown = 0 },
 	},
-	registry = registry,
+	registry = {
+		---------------------------------------------------------------------------
+		-- Il sentiero ritrovato
+		---------------------------------------------------------------------------
+		["arc.path.open.i"] = { event = "arc_open", speaker = "inner", styles = { "intimate", "ancient" },
+			depth = ALL,
+			conditions = { arc = { id = "path", state = "DISCOVERED" } } },
+		["arc.path.open.e"] = { event = "arc_open", speaker = "narrator", styles = { "ancient" },
+			depth = ALL,
+			conditions = { arc = { id = "path", state = "DISCOVERED" } } },
+		["arc.path.refl.distance"] = { event = "arc_step", speaker = "inner", styles = { "intimate", "everyday" },
+			depth = ALL,
+			conditions = { arc = { choice = "distance", id = "path", state = "REFLECTED" } } },
+		["arc.path.refl.gratitude"] = { event = "arc_step", speaker = "inner", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "gratitude", id = "path", state = "REFLECTED" } } },
+		["arc.path.refl.silence"] = { event = "arc_step", speaker = "inner", styles = { "ancient" },
+			depth = ALL,
+			conditions = { arc = { choice = "silence", id = "path", state = "REFLECTED" } } },
+		["arc.path.done.distance"] = { event = "arc_resolve", speaker = "narrator", styles = { "epic", "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "distance", id = "path", state = "RESOLVED" } } },
+		["arc.path.done.gratitude"] = { event = "arc_resolve", speaker = "narrator", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "gratitude", id = "path", state = "RESOLVED" } } },
+		["arc.path.done.silence"] = { event = "arc_resolve", speaker = "narrator", styles = { "ancient" },
+			depth = ALL,
+			conditions = { arc = { choice = "silence", id = "path", state = "RESOLVED" } } },
+
+		---------------------------------------------------------------------------
+		-- Un volto noto (legato a un NPC conosciuto: {other} è il suo nome)
+		---------------------------------------------------------------------------
+		["arc.face.open.i"] = { event = "arc_open", speaker = "inner", styles = { "intimate", "everyday" },
+			depth = ALL,
+			conditions = { arc = { id = "knownface", state = "DISCOVERED" } } },
+		["arc.face.open.e"] = { event = "arc_open", speaker = "narrator", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { id = "knownface", state = "DISCOVERED" } } },
+		["arc.face.refl.distance"] = { event = "arc_step", speaker = "inner", styles = { "everyday", "ironic" },
+			depth = ALL,
+			conditions = { arc = { choice = "distance", id = "knownface", state = "REFLECTED" } } },
+		["arc.face.refl.remember"] = { event = "arc_step", speaker = "inner", styles = { "intimate", "tragic" },
+			depth = ALL,
+			conditions = { arc = { choice = "remember", id = "knownface", state = "REFLECTED" } } },
+		["arc.face.refl.thank"] = { event = "arc_step", speaker = "inner", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "thank", id = "knownface", state = "REFLECTED" } } },
+		["arc.face.done.distance"] = { event = "arc_resolve", speaker = "narrator", styles = { "everyday" },
+			depth = ALL,
+			conditions = { arc = { choice = "distance", id = "knownface", state = "RESOLVED" } } },
+		["arc.face.done.remember"] = { event = "arc_resolve", speaker = "narrator", styles = { "intimate", "ancient" },
+			depth = ALL,
+			conditions = { arc = { choice = "remember", id = "knownface", state = "RESOLVED" } } },
+		["arc.face.done.thank"] = { event = "arc_resolve", speaker = "narrator", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "thank", id = "knownface", state = "RESOLVED" } } },
+
+		---------------------------------------------------------------------------
+		-- Il luogo della caduta (argomento: la morte, che il Character Soul può far evitare)
+		---------------------------------------------------------------------------
+		["arc.fall.open.i"] = { event = "arc_open", speaker = "inner", styles = { "intimate", "tragic" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { id = "fallen", state = "DISCOVERED" } } },
+		["arc.fall.open.e"] = { event = "arc_open", speaker = "narrator", styles = { "tragic" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { id = "fallen", state = "DISCOVERED" } } },
+		["arc.fall.refl.onward"] = { event = "arc_step", speaker = "inner", styles = { "epic", "intimate" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { choice = "onward", id = "fallen", state = "REFLECTED" } } },
+		["arc.fall.refl.prepare"] = { event = "arc_step", speaker = "inner", styles = { "everyday" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { choice = "prepare", id = "fallen", state = "REFLECTED" } } },
+		["arc.fall.refl.silence"] = { event = "arc_step", speaker = "inner", styles = { "tragic", "ceremonial" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { choice = "silence", id = "fallen", state = "REFLECTED" } } },
+		["arc.fall.done.onward"] = { event = "arc_resolve", speaker = "narrator", styles = { "epic" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { choice = "onward", id = "fallen", state = "RESOLVED" } } },
+		["arc.fall.done.prepare"] = { event = "arc_resolve", speaker = "narrator", styles = { "everyday" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { choice = "prepare", id = "fallen", state = "RESOLVED" } } },
+		["arc.fall.done.silence"] = { event = "arc_resolve", speaker = "narrator", styles = { "ceremonial", "intimate" },
+			tags = { "topic:death" }, depth = ALL,
+			conditions = { arc = { choice = "silence", id = "fallen", state = "RESOLVED" } } },
+
+		---------------------------------------------------------------------------
+		-- Le tre porte (stati propri: DISCOVERED, JOURNEY, REFLECTED, RESOLVED)
+		---------------------------------------------------------------------------
+		["arc.gates.open.i"] = { event = "arc_open", speaker = "inner", styles = { "intimate", "everyday" },
+			depth = ALL,
+			conditions = { arc = { id = "capitals", state = "DISCOVERED" } } },
+		["arc.gates.open.e"] = { event = "arc_open", speaker = "narrator", styles = { "ancient", "ceremonial" },
+			depth = ALL,
+			conditions = { arc = { id = "capitals", state = "DISCOVERED" } } },
+		["arc.gates.journey.i"] = { event = "arc_step", speaker = "inner", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { id = "capitals", state = "JOURNEY" } } },
+		["arc.gates.refl.crossroads"] = { event = "arc_step", speaker = "inner", styles = { "everyday", "ancient" },
+			depth = ALL,
+			conditions = { arc = { choice = "crossroads", id = "capitals", state = "REFLECTED" } } },
+		["arc.gates.refl.promise"] = { event = "arc_step", speaker = "inner", styles = { "epic", "ceremonial" },
+			depth = ALL,
+			conditions = { arc = { choice = "promise", id = "capitals", state = "REFLECTED" } } },
+		["arc.gates.refl.shelter"] = { event = "arc_step", speaker = "inner", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "shelter", id = "capitals", state = "REFLECTED" } } },
+		["arc.gates.done.crossroads"] = { event = "arc_resolve", speaker = "narrator", styles = { "everyday", "ironic" },
+			depth = ALL,
+			conditions = { arc = { choice = "crossroads", id = "capitals", state = "RESOLVED" } } },
+		["arc.gates.done.promise"] = { event = "arc_resolve", speaker = "narrator", styles = { "epic", "ceremonial" },
+			depth = ALL,
+			conditions = { arc = { choice = "promise", id = "capitals", state = "RESOLVED" } } },
+		["arc.gates.done.shelter"] = { event = "arc_resolve", speaker = "narrator", styles = { "intimate" },
+			depth = ALL,
+			conditions = { arc = { choice = "shelter", id = "capitals", state = "RESOLVED" } } },
+	},
 })
