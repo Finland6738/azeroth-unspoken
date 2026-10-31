@@ -232,6 +232,17 @@ def build_journal():
         seed=58)
     add("journal-reset-armed", "Journal - 'Forget everything' armed", w, h, J("memories", SAMPLE_MEMORIES[:5], armed=True),
         "Journal", "Memory-and-Journal", seed=59)
+    add("journal-delete-armed", "Journal - deleting a memory asks for OK", w, h,
+        J("memories", SAMPLE_MEMORIES, page=(1, 2), confirm=(1, "Delete this memory? Click OK:")), "Journal",
+        "Memory-and-Journal", seed=61)
+    add("journal-memory-off", "Journal - memory off", w, h, J("memories", SAMPLE_MEMORIES, page=(1, 2), lock="off"),
+        "Journal", "Memory-and-Journal / Troubleshooting", seed=62)
+    long_story = ("|cffffd200[P]|r Story: The Place of the Fall, where the road bends towards the lake and the old "
+                  "watchtower  |cff9d9d9d2026-10-30 22:41|r")
+    add("journal-row-tooltip", "Journal - a long row and its tooltip", w, h,
+        J("memories", [(long_story, ["P", "x"])] + SAMPLE_MEMORIES[1:], page=(1, 2),
+          tip=(0, "|cffffd200[P]|r Story: The Place of the Fall, where the road bends towards the lake and the old "
+                  "watchtower  |cff9d9d9d2026-10-30 22:41|r")), "Journal", "Memory-and-Journal", seed=63)
     export = ("Azeroth Unspoken - journal of Elyra (exported 2026-10-31 21:20)\n\n"
               "[P] Story: The Place of the Fall - 2026-10-30 22:41\nReturn: Duskwood - 2026-10-30 22:05\n"
               "Death: Duskwood - 2026-10-28 21:52\nA chat: Darkshire - 2026-10-27 20:13\nLevel reached 24 - 2026-10-26 19:40\n\n"

@@ -100,9 +100,11 @@ See [[Chat Gateway]].
 
 ## The journal or relationships are empty or will not change
 
-- *memory is off* or *relationships are off*: turn the **Memory** or **Relationships** module back on in the settings.
+- *memory is off* or *relationships are off*: turn the **Memory** or **Relationships** module back on in the settings. In the journal window the memory tabs say *"Memory is off"* under the tabs and their buttons are greyed out.
+- *Read-only: saved by a newer version of the addon* in the journal window: see the next point.
 - *the data comes from a newer version of the addon: it can be read, not changed*: you went back to an older version of the addon after using a newer one. Install the newer version again. This also applies to your personality and mood: from a newer version they are read, never rewritten, and `/au soul` and `/au emotion` tell you they cannot change them. Nothing is lost.
 - The journal fills slowly by design: only significant moments are kept.
+- Clicking **x** on a row only asks *"Delete this memory? Click OK:"*: click **OK** to confirm. The question goes away after a few seconds, on any other click, or when the window closes.
 
 ## A window or the box is in the wrong place
 
@@ -146,7 +148,7 @@ The report also has a **Profile** line with the latest timings (`/au prof` has t
 
 ### Sharing it without other players' names
 
-The report does **not** print other players' names: where a name could appear, it shows `<nascosto>` (Italian for "hidden") instead. Before you paste it anywhere:
+The report does **not** print other players' names: where a name could appear, it shows `<hidden>` instead. Before you paste it anywhere:
 
 1. Read it through once.
 2. Replace anything personal that remains, such as your own character name, an account name or a folder path, with a placeholder like `<character>`, `<account>` or `<path>`.

@@ -246,37 +246,85 @@ def settings(left, top, reload_needed=False, auto_state="off", tooltip_row=None)
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Journal (UI/JournalFrame.lua): 600 x 500, 11 rows of 28, seven tabs
+# Journal (UI/JournalFrame.lua): 600 x 500; tabs as wide as their text, the note on its own line under them, then up
+# to 11 rows of 28 above the pages
 # ---------------------------------------------------------------------------------------------------------------
 JOURNAL_TABS = [("memories", "Memories"), ("places", "Places"), ("flags", "Flags"), ("session", "Session"),
                 ("stories", "Stories"), ("relations", "Relationships"), ("people", "People met")]
+JOURNAL_MEMORY_TABS = {"memories", "places", "flags", "session"}
+JOURNAL_LOCK = {"off": "Memory is off: turn it on in the settings (the Memory module). You can read the journal, "
+                       "not change it.",
+                "readonly": "Read-only: saved by a newer version of the addon. You can read the journal, not change it."}
+
+# The layout of JournalFrame:Refresh(), done in the page because it depends on the measured width of the labels
+# (GetStringWidth in the client): each tab max(48, text + 24) wide, a new line when 568 units are full; the selected
+# tab underlined; the note at the tabs' bottom + 2; the rows from max(112, under the note + 4), as many as fit above 424.
+JOURNAL_LAYOUT_JS = """<script>
+(function (f) {
+  var x = 0, line = 0, mark = f.querySelector('.jmark');
+  f.querySelectorAll('.jtab').forEach(function (b) {
+    var w = Math.max(48, Math.min(568, Math.ceil(b.querySelector('.lbl').offsetWidth) + 24));
+    if (x > 0 && x + w > 568) { x = 0; line++; }
+    var top = 78 + line * 28;
+    b.style.left = (16 + x) + 'px'; b.style.top = top + 'px'; b.style.width = w + 'px';
+    if (b.dataset.sel) { mark.style.left = (20 + x) + 'px'; mark.style.top = (top + 24) + 'px'; mark.style.width = (w - 8) + 'px'; }
+    x += w + 4;
+  });
+  var top = 78 + (line + 1) * 28, note = f.querySelector('.jnote');
+  if (note) { note.style.top = (top + 2) + 'px'; top += 2 + Math.ceil(note.offsetHeight) + 4; }
+  top = Math.max(112, top);
+  var size = Math.min(11, Math.floor((424 - top) / 28));
+  f.querySelectorAll('.jrow').forEach(function (r, i) {
+    r.style.top = (top + i * 28) + 'px';
+    if (i >= size) r.style.display = 'none';
+  });
+})(document.currentScript.parentNode);
+</script>"""
 
 
 def journal(left, top, tab, rows, note="", page=(1, 1), stats="memory: 14 memories (2 permanent), 9 places, 3 flags.",
-            armed=False):
+            armed=False, lock=None, confirm=None, tip=None):
+    """lock: None | "off" | "readonly" (memory tabs only); confirm: (row index, question) of an armed x;
+    tip: (row index, full text) of a cut row under the mouse."""
     out = [fs("Character journal", "gfnl", left=16, top=12),
            fs("Your character's memories: only significant moments, never chat text. You can delete them or make them "
               "permanent; the addon cannot write files, so to export them copy the text.", "gfhs", left=16, top=38,
               width=568)]
-    width = min(110, 568 // len(JOURNAL_TABS) - 4)
-    for i, (tid, label) in enumerate(JOURNAL_TABS):
-        out.append(btn(sel(label, tid == tab), width, 24, left=16 + i * (width + 4), top=78))
+    for tid, label in JOURNAL_TABS:
+        on = tid == tab
+        b = btn(f"|cffffffff{label}|r" if on else label, 48, 24, state="hover" if on else "", left=16, top=78)
+        out.append(b.replace('class="btn', 'class="btn jtab', 1).replace("<div ", '<div data-sel="1" ', 1) if on
+                   else b.replace('class="btn', 'class="btn jtab', 1))
+    out.append('<div class="abs jmark" style="height:3px;background:#ffd100"></div>')
+    tab_lock = lock if tab in JOURNAL_MEMORY_TABS else None
+    note_text = (f"|cffff9040{JOURNAL_LOCK[tab_lock]}|r" + (f"\n{note}" if note else "")) if tab_lock else note
+    if note_text:
+        out.append(fs(note_text, "gfhs jnote", left=16, top=108, width=568))
     for i, r in enumerate(rows[:11]):
-        y = 112 + i * 28
         text, actions = (r if isinstance(r, tuple) else (r, []))
-        out.append(fs(text, "gfh", mode="trunc", left=16, top=y + 6, width=500))
+        row = []
+        armed_row = confirm is not None and confirm[0] == i
+        if armed_row:
+            text = f"|cffff9040{confirm[1]}|r {text}"
+        row.append(fs(text, "gfh", mode="trunc", left=16, top=6, width=500))
         for k, a in enumerate(actions[:2]):
-            out.append(btn(a, 24, 24, left=528 + k * 28, top=y))
+            label = "OK" if armed_row and a == "x" else a
+            row.append(btn(label, 24, 24, left=528 + k * 28, top=0, state="disabled" if tab_lock else ""))
+        if tip is not None and tip[0] == i:
+            row.append(tooltip([(tip[1], "ffffff")], left=40, bottom=24, max_width=420))
+        out.append(f'<div class="abs jrow" style="left:0;width:600px;height:28px;top:112px">{"".join(row)}</div>')
     if not rows:
-        out.append(fs("|cff9d9d9dNothing to show.|r", "gfh", left=16, top=118, width=500))
-    out.append(fs(note, "gfhs", left=16, bottom=84, width=568))
+        out.append(f'<div class="abs jrow" style="left:0;width:600px;height:28px;top:112px">'
+                   f'{fs("|cff9d9d9dNothing to show.|r", "gfh", left=16, top=6, width=500)}</div>')
     out.append(btn("<", 28, 24, left=16, bottom=52, state="" if page[0] > 1 else "disabled"))
     out.append(fs(f"page {page[0]} of {page[1]}", "gfn", left=52, bottom=57, width=140))
     out.append(btn(">", 28, 24, left=196, bottom=52, state="" if page[0] < page[1] else "disabled"))
     out.append(fs(stats, "gfhs", right=16, bottom=58, width=340, extra=";text-align:right"))
     out.append(btn("Export", 110, 24, left=16, bottom=16))
-    out.append(btn("Confirm: forget" if armed else "Forget everything", 170, 24, left=136, bottom=16))
+    out.append(btn("Confirm: forget" if armed else "Forget everything", 170, 24, left=136, bottom=16,
+                   state="disabled" if lock else ""))
     out.append(btn("Close", 110, 24, right=16, bottom=16))
+    out.append(JOURNAL_LAYOUT_JS)
     return frame("".join(out), bg=FRAME_BG, left=left, top=top, width=600, height=500)
 
 
