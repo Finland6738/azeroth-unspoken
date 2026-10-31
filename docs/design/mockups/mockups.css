@@ -1,0 +1,214 @@
+/* Azeroth Unspoken - shared style of the UI mockups (docs/design/mockups).
+ *
+ * Illustrative mockups built from the addon code, NOT in-game screenshots. Nothing here comes from Blizzard: no
+ * textures, icons, fonts or screenshots. The client's standard widgets (UIPanelButtonTemplate, InputBoxTemplate,
+ * GameTooltip, StaticPopup, the chat frame) are drawn as plain original stand-ins with the same size and position as
+ * in the code. Fonts are system fonts (a serif for the game fonts, a sans-serif for the chat font).
+ *
+ * Units: 1 CSS pixel = 1 unit of UIParent. Positions come from the SetPoint/SetSize calls of AzerothUnspoken/UI/.
+ */
+:root {
+	--game-font: Georgia, "Times New Roman", serif;
+	--chat-font: "Arial Narrow", Arial, "Liberation Sans Narrow", sans-serif;
+	--gold: #ffd100;          /* GameFontNormal, NORMAL_FONT_COLOR (1, 0.82, 0) */
+	--white: #ffffff;         /* GameFontHighlight */
+	--muted: #9d9d9d;         /* |cff9d9d9d in the journal and the relationships */
+	--selected: #7fff7f;      /* |cff7fff7f, the "» chosen «" marker */
+	--frame-bg: rgba(13, 10, 23, 0.95);   /* W.Background(frame, 0.05, 0.04, 0.09, 0.95) */
+	--caption-bg: rgba(0, 0, 0, 0.72);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #111; }
+body { font-family: var(--game-font); color: var(--white); }
+
+/* the stage: a piece of UIParent over an original CSS/SVG landscape */
+.stage { position: relative; overflow: hidden; }
+.stage > svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* the caption every image carries */
+.caption {
+	position: absolute; right: 8px; bottom: 6px; z-index: 50;
+	font: 11px/1.3 Arial, sans-serif; color: #e8e8e8; background: var(--caption-bg);
+	padding: 3px 7px; border-radius: 3px; max-width: 70%; text-align: right;
+}
+.caption b { color: #ffe9a8; font-weight: 600; }
+.badge-proposed {
+	position: absolute; left: 8px; top: 6px; z-index: 50;
+	font: bold 12px/1.3 Arial, sans-serif; color: #10240f; background: #9be37a;
+	padding: 3px 8px; border-radius: 3px; letter-spacing: 0.04em;
+}
+.badge-current {
+	position: absolute; left: 8px; top: 6px; z-index: 50;
+	font: bold 12px/1.3 Arial, sans-serif; color: #eee; background: rgba(0, 0, 0, 0.65);
+	padding: 3px 8px; border-radius: 3px; letter-spacing: 0.04em;
+}
+.note {
+	position: absolute; z-index: 40; font: 11px/1.35 Arial, sans-serif; color: #fff;
+	background: rgba(150, 20, 20, 0.85); padding: 2px 6px; border-radius: 3px;
+}
+
+/* frames and regions */
+.f { position: absolute; }
+.abs { position: absolute; }
+.bg { position: absolute; inset: 0; }
+
+/* font objects (sizes of the classic-era client) with the usual 1px drop shadow */
+.fs { position: absolute; line-height: 1.25; text-shadow: 1px 1px 0 #000; white-space: pre-wrap; }
+.nowrap { white-space: pre; }
+.trunc { white-space: pre; overflow: hidden; text-overflow: ellipsis; }
+.gfn  { font-size: 12px; color: var(--gold); }
+.gfh  { font-size: 12px; color: var(--white); }
+.gfhs { font-size: 10px; color: var(--white); }
+.gfns { font-size: 10px; color: var(--gold); }
+.gfnl { font-size: 16px; color: var(--gold); }
+.chatfont { font-family: var(--chat-font); font-size: 14px; color: var(--white); }
+
+/* stand-in for UIPanelButtonTemplate: an original red-brown gradient, gold text, same size as in the code.
+ * The client does not clip the label: text wider than the button spills over its edges (shown as such here). */
+.btn {
+	position: absolute; display: flex; align-items: center; justify-content: center;
+	background: linear-gradient(#8a1c14, #4a0b07 55%, #360704);
+	border: 1px solid #1c0402; border-radius: 3px;
+	box-shadow: inset 0 1px 0 rgba(255, 210, 140, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.5), 0 1px 1px rgba(0, 0, 0, 0.6);
+	color: var(--gold); font-size: 12px; white-space: pre; text-shadow: 1px 1px 0 #000;
+	overflow: visible;
+}
+.btn.disabled { color: #808080; background: linear-gradient(#4a4242, #262020); }
+.btn.pressed { background: linear-gradient(#5a0f0a, #8a1c14); }
+.btn.hover { box-shadow: inset 0 0 6px rgba(255, 220, 120, 0.7), 0 1px 1px rgba(0, 0, 0, 0.6); }
+.btn.overflows { outline: 2px dashed #ff4d4d; outline-offset: 1px; }
+
+/* stand-in for InputBoxTemplate */
+.edit {
+	position: absolute; display: flex; align-items: center; padding: 0 6px;
+	background: rgba(0, 0, 0, 0.6); border: 1px solid #5c5c5c; border-radius: 2px;
+	font-family: var(--chat-font); font-size: 14px; color: #fff; white-space: pre; overflow: hidden;
+}
+.edit.focus { border-color: #c9a227; box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.4); }
+.edit .sel { background: #3a5fbf; }
+.edit .caret { display: inline-block; width: 1px; height: 15px; background: #fff; margin-left: 1px; vertical-align: middle; }
+.edit .ph { color: #8a8a8a; }
+
+/* stand-in for GameTooltip */
+.tooltip {
+	position: absolute; z-index: 30; padding: 8px 10px; max-width: 280px;
+	background: rgba(8, 10, 24, 0.94); border: 1px solid #6f7a96; border-radius: 4px;
+	font-size: 12px; line-height: 1.3; text-shadow: 1px 1px 0 #000;
+}
+.tooltip .t1 { font-size: 14px; }
+
+/* slider drawn with coloured textures (UI/Widgets.lua W.Slider) */
+.slider { position: absolute; height: 16px; }
+.slider .bar { position: absolute; left: 0; top: 6px; height: 4px; background: rgb(64, 56, 89); }
+.slider .zero { position: absolute; top: 2px; width: 2px; height: 12px; background: rgba(204, 204, 230, 0.8); }
+.slider .thumb { position: absolute; top: 0; width: 8px; height: 16px; background: rgb(179, 140, 255); }
+
+/* stand-in for the chat frame (DEFAULT_CHAT_FRAME) */
+.chatframe {
+	position: absolute; padding: 6px 8px; background: rgba(0, 0, 0, 0.45);
+	font-family: var(--chat-font); font-size: 14px; line-height: 1.3; color: #fff; text-shadow: 1px 1px 0 #000;
+	overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
+}
+.chatframe .line { white-space: pre-wrap; }
+.chatinput {
+	position: absolute; height: 24px; padding: 0 8px; display: flex; align-items: center;
+	background: rgba(0, 0, 0, 0.7); border: 1px solid #555; font-family: var(--chat-font); font-size: 14px; color: #fff;
+}
+
+/* neutral placeholders for the parts of the client UI a mockup only hints at */
+.placeholder {
+	position: absolute; border: 1px dashed rgba(255, 255, 255, 0.35); background: rgba(0, 0, 0, 0.25);
+	font: 11px/1.3 Arial, sans-serif; color: rgba(255, 255, 255, 0.6); display: flex; align-items: center;
+	justify-content: center; text-align: center;
+}
+
+/* stand-in for the speak button icon: an original book glyph (the addon itself uses a client icon texture) */
+.speak { position: absolute; width: 36px; height: 36px; }
+.speak .icon { position: absolute; inset: 0; border: 1px solid #000; border-radius: 2px; overflow: hidden; }
+.speak.desat .icon { filter: grayscale(1) brightness(0.8); }
+.speak .glow {
+	position: absolute; left: -15px; top: -15px; width: 66px; height: 66px; border-radius: 10px;
+	box-shadow: 0 0 0 3px rgba(255, 215, 90, 0.85) inset, 0 0 14px 6px rgba(255, 200, 60, 0.55) inset;
+	mix-blend-mode: screen;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------
+ * PROPOSED design (UI review): tokens and components of the refined windows. Original, no Blizzard art.
+ * ------------------------------------------------------------------------------------------------------------------ */
+.p {
+	--surface-0: #0f0c08; --surface-1: #17120c; --glass: rgba(12, 10, 16, 0.80);
+	--edge-outer: #6b5420; --edge-inner: #2a2215; --rule: rgba(255, 209, 0, 0.18);
+	--gold: #ffd100; --gold-dim: #c9a227; --text: #f2ebdd; --text-2: #cfc6b4; --muted: #9a907e;
+	--display: Constantia, Cambria, Georgia, serif; --body: Cambria, Georgia, serif;
+	font-family: var(--body); color: var(--text);
+}
+.p .win {
+	position: absolute; background: var(--surface-0); border: 1px solid var(--edge-outer); border-radius: 2px;
+	box-shadow: inset 0 0 0 1px var(--edge-inner), 0 2px 10px rgba(0, 0, 0, 0.6);
+	background-image: radial-gradient(ellipse at 50% 0%, rgba(255, 209, 0, 0.05), transparent 60%);
+}
+.p .band {
+	position: absolute; left: 1px; right: 1px; top: 1px; height: 40px; background: linear-gradient(var(--surface-1), #120e09);
+	border-bottom: 1px solid var(--rule); display: flex; align-items: center; padding: 0 12px 0 20px; gap: 12px;
+}
+.p .band .title { font-family: var(--display); font-size: 17px; color: var(--gold); letter-spacing: 0.03em; flex: 1; }
+.p .band .meta { font-size: 11px; color: var(--muted); font-variant: small-caps; letter-spacing: 0.08em; }
+.p .x { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; color: #bfb49a;
+	border: 1px solid transparent; border-radius: 3px; font: 14px Arial, sans-serif; }
+.p .x.focus { border-color: rgba(255, 209, 0, 0.5); color: var(--gold); }
+.p .keyhint { font: 10px Arial, sans-serif; color: var(--muted); border: 1px solid #4a4030; border-radius: 3px; padding: 0 4px; }
+.p .pbtn {
+	position: absolute; height: 24px; padding: 0 14px; display: flex; align-items: center; justify-content: center; gap: 6px;
+	border-radius: 3px; font-size: 12px; letter-spacing: 0.04em; white-space: nowrap; font-variant: small-caps;
+}
+.p .pbtn.primary { background: linear-gradient(#8c6a12, #5a430b); border: 1px solid var(--gold-dim); color: #fff3c4; }
+.p .pbtn.ghost { background: transparent; border: 1px solid rgba(201, 162, 39, 0.45); color: #e6d9b8; }
+.p .pbtn.text { background: transparent; border: 1px solid transparent; color: #b8a99a; text-decoration: underline;
+	text-underline-offset: 3px; }
+.p .pbtn.danger { background: transparent; border: 1px solid rgba(255, 96, 96, 0.5); color: #ff9a9a; }
+.p .pbtn.focus { box-shadow: 0 0 0 2px rgba(255, 209, 0, 0.55); }
+.p .card {
+	position: absolute; background: rgba(255, 255, 255, 0.03); border: 1px solid #3a3226; border-radius: 3px; padding: 9px 12px;
+}
+.p .card.on { border-color: var(--gold); background: rgba(255, 209, 0, 0.07); }
+.p .card .h { font-size: 15px; color: var(--text); }
+.p .card .s { font-size: 11.5px; color: var(--muted); line-height: 1.35; margin-top: 3px; }
+.p .card .tick { position: absolute; right: 10px; top: 8px; color: var(--gold); font: 14px Arial, sans-serif; }
+.p .radio { display: inline-block; width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--gold-dim);
+	margin-right: 8px; vertical-align: -1px; }
+.p .on .radio { background: radial-gradient(var(--gold) 45%, transparent 50%); }
+.p .dots { position: absolute; display: flex; gap: 8px; }
+.p .dots i { width: 6px; height: 6px; border-radius: 50%; background: #3a3226; display: block; }
+.p .dots i.past { background: var(--gold-dim); } .p .dots i.now { background: var(--gold); box-shadow: 0 0 6px rgba(255, 209, 0, 0.6); }
+.p .lbl-sc { font-size: 11px; color: var(--gold); font-variant: small-caps; letter-spacing: 0.08em; }
+.p .tab { position: absolute; height: 28px; padding: 0 12px; display: flex; align-items: center; font-size: 13px; color: var(--text-2);
+	border-bottom: 2px solid transparent; }
+.p .tab.on { color: var(--gold); border-bottom-color: var(--gold); }
+.p .row { position: absolute; left: 16px; right: 16px; height: 30px; display: flex; align-items: center; gap: 10px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 13px; }
+.p .row .stamp { color: var(--muted); font-size: 11px; margin-left: auto; }
+.p .row .ico { color: #bfb49a; font: 12px Arial, sans-serif; width: 22px; text-align: center; }
+.p .pin { color: var(--gold); font: 11px Arial, sans-serif; }
+
+/* refined narrator */
+.p .nar { position: absolute; width: 460px; background: var(--glass); border: 1px solid rgba(201, 162, 39, 0.30);
+	border-radius: 2px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); overflow: hidden; }
+.p .nar .accent { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+.p .nar .head { height: 22px; display: flex; align-items: center; padding: 0 6px 0 14px; gap: 8px; }
+.p .nar .voice { font-size: 11px; letter-spacing: 0.1em; font-variant: small-caps; }
+.p .nar .meta { font-size: 11px; color: var(--muted); }
+.p .nar .icons { margin-left: auto; display: flex; gap: 4px; color: #bfb49a; font: 12px Arial, sans-serif; opacity: 0.8; }
+.p .nar .icons span { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+.p .nar .body { padding: 0 14px 12px 14px; font-size: 15px; line-height: 1.45; text-shadow: 0 1px 1px #000; }
+.p .nar .timeline { position: absolute; left: 3px; bottom: 0; height: 2px; }
+.p .nar .bar { border-top: 1px solid var(--rule); height: 34px; display: flex; align-items: center; gap: 6px; padding: 0 8px 0 14px; }
+.p .nar .bar .pbtn { position: static; height: 22px; padding: 0 10px; }
+.p .chip { height: 20px; padding: 0 9px; border-radius: 10px; font-size: 10.5px; letter-spacing: 0.08em; font-variant: small-caps;
+	display: flex; align-items: center; }
+.p .pedit { margin: 0 8px; height: 26px; background: rgba(0, 0, 0, 0.5); border: 1px solid var(--gold-dim); border-radius: 2px;
+	display: flex; align-items: center; padding: 0 8px; font-size: 14px; }
+.p .hint { font: 10px Arial, sans-serif; color: var(--muted); padding: 4px 16px 8px; }
+.p .callout { position: absolute; font: 11px/1.35 Arial, sans-serif; color: #10240f; background: #c8f0b4; border-radius: 3px;
+	padding: 3px 7px; max-width: 220px; }
+.p .nar[data-mini] .body { font-size: 13px; padding-bottom: 10px; }
