@@ -236,6 +236,11 @@ Config.maps = {
 	disabledPacks = function(v) return v == true end,
 }
 
+-- Moduli che hanno già un effetto: l'impostazione e la guida iniziale mostrano un asterisco accanto agli altri (#77).
+-- Una sola lista, perché le due schermate non si possano più allontanare.
+Config.MODULE_LIVE = { personal = true, world = true, npc = true, memory = true, storyArcs = true, relations = true,
+	emotion = true, publicChat = true }
+
 -- Preset del GDD §4.1: combinazioni dei moduli. publicChat, totalRP3 e audio non cambiano col preset.
 Config.PRESET_ORDER = { "complete", "personal", "world", "social" }
 Config.presets = {

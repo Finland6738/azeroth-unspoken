@@ -131,7 +131,7 @@ Type `/au prof`. It shows how long the addon takes to pick a line and to read th
 3. the state of the Chat Gateway (mode, channel, sends, the last refusal), the narrator's rhythm, memory, relationships, NPC dialogues and stories;
 4. **Capabilities**: what the client allows the addon to do, marked *AVAILABLE*, *RESTRICTED* or *MISSING*;
 5. **Events**: the game events seen so far and the last few recognized;
-6. **Caught errors**, if any;
+6. **Caught errors**, if any. A phrase pack that registered a script, NPC, place or story another pack already holds shows up here too, as a refused entry or as a replacement the pack asked for (see [[Phrase Packs|Phrase-Packs]]);
 7. how many lines are available.
 
 Variants:

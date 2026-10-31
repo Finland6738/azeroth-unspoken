@@ -454,7 +454,7 @@ print("\nTEST LUA")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
-             "TestSelection", "TestWorld", "TestPacks"):
+             "TestSelection", "TestWorld", "TestKeyClaims", "TestPacks"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si

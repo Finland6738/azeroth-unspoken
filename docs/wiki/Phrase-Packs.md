@@ -69,7 +69,16 @@ The pack's name is shown as its author wrote it, which may be in another languag
 
 > Validator: 1005 lines in 15 packs, 2109 variants: 0 errors, 3 warnings.
 
-**Errors** usually mean a line will not work; **warnings** are smaller things, such as a line that is a bit long. If a pack shows errors, tell its author. If a built-in pack shows errors, please [[report it|Reporting-Bugs-and-Feedback]].
+**Errors** usually mean a line will not work; **warnings** are smaller things, such as a line that is a bit long or an Italian line that agrees a word in the masculine without a gender placeholder. If a pack shows errors, tell its author. If a built-in pack shows errors, please [[report it|Reporting-Bugs-and-Feedback]].
+
+## Two packs, one entry
+
+Packs can add scripts of NPC dialogues, NPCs, places and stories, and each one has a **key** (an archetype such as `innkeeper`, an NPC number, the name of a place, the id of a story). A pack that uses a key another pack already holds **does not silently replace it**:
+
+- by default the new entry is **refused** and the one already there stays. `/au validate` shows a `keyCollision` error that names both packs, and `/au debug` lists the same notice;
+- a pack can ask to replace an entry on purpose (the author writes `override = true`). It then replaces it, and `/au validate` shows a `keyOverride` warning and `/au debug` a notice, so you can see which pack changed which entry.
+
+If the base innkeeper suddenly behaves differently after you install a pack, look for a `keyOverride` warning. To get the base behavior back, remove or turn off that pack (`/au pack <id> off`, then `/reload`). Pack authors: see the pack guide.
 
 ## Writing your own pack
 

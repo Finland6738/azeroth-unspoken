@@ -10,7 +10,7 @@ NS:AddTexts("itIT", {
 		"Mai prima d'ora i miei passi hanno toccato questo suolo. Eppure gli alberi sembrano attendermi da sempre.",
 		"Una foresta che non conosco. Che il bosco mi accolga, o almeno mi lasci passare.",
 		{ "Alberi nuovi. Nessuno qui sa il mio nome, ed è un sollievo.", depth = "natural" },
-		{ "Entro in un bosco che non mi ha mai visto. Per lui sono soltanto un rumore di passi tra mille stagioni.", depth = "elevated" },
+		{ "Entro in un bosco che non mi ha mai {g:visto|vista}. Per lui sono soltanto un rumore di passi tra mille stagioni.", depth = "elevated" },
 	},
 	["mem.first.forest.02"] = {
 		"Prima volta in questi boschi. Ricorderò questa strada.",

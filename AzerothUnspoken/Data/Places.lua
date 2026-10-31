@@ -14,6 +14,7 @@
 local ADDON, NS = ...
 
 NS:RegisterPlaces({
+	pack = "base_places",
 	continents = { [1414] = "kalimdor", [1415] = "eastern" },
 	zones = {
 		-- Regni Orientali

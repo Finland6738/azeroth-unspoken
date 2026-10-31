@@ -433,3 +433,41 @@ T.run("#23: registri sbagliati nelle cornici, in RegisterEventStyles e in Regist
 	SR.EVENT_STYLES.vtest, SR.MOOD_STYLES.vmood = savedEvent, savedMood
 	T.ok(not Has(Validator:Run(), "unknownStyle", "mood:vmood"), "ripulito")
 end)
+
+T.run("#70, #71: un accordo al maschile fuori da {g:} e {og:} in italiano si segnala", function()
+	local U = Validator.UnmarkedAgreement
+	for _, text in ipairs({ "Sono stanco.", "Ora sono abbastanza pronto per guai più grossi.", "Torna da dove sei venuto, e non voltarti.",
+		"Con te posso essere franco.", "Mi sento così stanco, non so.", "Non sono più stato lo stesso." }) do
+		T.ok(U(text, "it") ~= nil, "segnalato: " .. text)
+	end
+	T.eq(U("Sono stanco, davvero.", "it"), "sono stanco", "la forma trovata")
+	for _, text in ipairs({ "Sono {g:stanco|stanca}.", "Con te posso parlare chiaro.", "Sono io.", "Sono solo di passaggio.",
+		"Il tuo coraggio è stato notato.", "Sei forte.", "Sono. Stanco.", "Non sono {og:stato|stata} io.",
+		"Lo sei già, {og:stanco|stanca}.", "Chi è stato qui non torna." }) do
+		T.ok(U(text, "it") == nil, "non segnalato: " .. text)
+	end
+	T.ok(U("I am tired and I was alone, a man.", "en") == nil, "l'inglese non si controlla")
+
+	local r = Validate({
+		languages = { "itIT", "enUS" },
+		registry = { ["ag.bad"] = Good(), ["ag.good"] = Good() },
+		texts = {
+			itIT = { ["ag.bad"] = { "Una frase pulita.", "Sono stanco di aspettare." }, ["ag.good"] = { "Sono {g:stanco|stanca} di aspettare." } },
+			enUS = { ["ag.bad"] = "I am tired of waiting.", ["ag.good"] = "I am tired of waiting." },
+		},
+	})
+	local w = Has(r, "itAgreement", "ag.bad", "it")
+	T.ok(w and w.level == "warning" and w.msg:find("variante 2", 1, true), "avviso per la variante 2, in italiano")
+	T.ok(not Has(r, "itAgreement", "ag.bad", "en"), "nessun avviso in inglese")
+	T.ok(not Has(r, "itAgreement", "ag.good"), "con il segnaposto non c'è avviso")
+end)
+
+T.run("#70, #71: i testi italiani di base non hanno accordi senza segnaposto né chiavi in conflitto", function()
+	local r = Validator:Run()
+	for _, list in ipairs({ r.errors, r.warnings }) do
+		for _, p in ipairs(list) do
+			T.ok(p.code ~= "itAgreement" or (p.id or ""):find("^ag%.") ~= nil, "accordo senza segnaposto: " .. tostring(p.id) .. ": " .. p.msg)
+			T.ok(p.code ~= "keyCollision" and p.code ~= "keyOverride", "chiave condivisa: " .. p.msg)
+		end
+	end
+end)

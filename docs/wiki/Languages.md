@@ -38,6 +38,10 @@ Until you reload, the lines keep coming in the previous language. Nothing reload
 
 If the folder of the chosen language is missing, the addon says so once in the chat and keeps the lines in English (see [[Troubleshooting]]).
 
+## Gender in Italian
+
+Italian agrees participles and adjectives with the speaker. The lines use your character's gender (the game's, or the one Total RP 3 gives) wherever the character talks about themself, and the gender of the person in front of you where the line is about them. When the addon does not know someone's gender (a creature, a target you have not looked at, an NPC the game does not describe), the line uses a form that needs no agreement, or another line is chosen. English lines never need this.
+
 ## Commands are always in English
 
 The language you choose changes what the addon **says**: lines, windows, buttons, messages, and the descriptions in `/au help`. It never changes what you **type**. Command names and their arguments are English in every language: `/au journal`, `/au pause`, `/au channel party`, `/au depth literary`. With Italian chosen, `/au help` still lists `/au journal`, with the description in Italian.

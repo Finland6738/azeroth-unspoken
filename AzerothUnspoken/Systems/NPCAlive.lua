@@ -116,10 +116,17 @@ local function Frame() return NS.DialogueFrame end
 ---------------------------------------------------------------------------
 ---Registra i copioni dei dialoghi. `{ scripts = { [chiave] = AUDialogueScript } }`: la chiave è l'archetipo
 ---("innkeeper") o "npc:<npcID>" per un NPC specifico (che di solito riprende l'archetipo con `extends`).
----@param def { scripts: table<string, AUDialogueScript> }
+---Una chiave già registrata da un altro pacchetto si rifiuta, a meno di `override = true` (sul copione o su `def`): #69.
+---@param def { pack?: string, override?: boolean, scripts: table<string, AUDialogueScript> }
 function NS:RegisterDialogues(def)
-	for key, s in pairs(type(def) == "table" and def.scripts or EMPTY) do
-		if type(key) == "string" and type(s) == "table" then
+	local keys = {}
+	for key in pairs(type(def) == "table" and def.scripts or EMPTY) do
+		if type(key) == "string" then table.insert(keys, key) end
+	end
+	table.sort(keys)
+	for _, key in ipairs(keys) do
+		local s = def.scripts[key]
+		if type(s) == "table" and NS.Packs:Claim("script", key, def.pack, def.override == true or s.override == true) then
 			N.scripts[key] = s
 			N.resolved = {}
 			-- le battute dei nodi escono solo dentro un dialogo

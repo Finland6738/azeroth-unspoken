@@ -10,6 +10,7 @@
 local ADDON, NS = ...
 
 NS:RegisterNPCs({
+	pack = "base_npcs",
 	-- locandieri e osti delle prime zone
 	[295] = { name = "Innkeeper Farley", role = "innkeeper", temperament = "cheerful", speech = "jovial", goals = "profit" },
 	[6740] = { name = "Innkeeper Allison", role = "innkeeper", speech = "warm", goals = "profit" },

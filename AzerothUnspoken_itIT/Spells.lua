@@ -261,11 +261,11 @@ NS:AddTexts("itIT", {
 		"In piedi, nella Luce. Il tuo servizio non è finito.",
 	},
 	["rezo.e.01"] = {
-		"posa la fronte su quella del caduto e sussurra un nome, finché il respiro non torna.",
+		"posa la fronte su quella di chi giace a terra e sussurra un nome, finché il respiro non torna.",
 		"posa una mano sul petto immobile e aspetta, finché sotto il palmo qualcosa non torna a battere.",
 	},
 	["rezo.e.02"] = {
-		"si inginocchia nella polvere accanto al corpo e gli scosta i capelli dalla fronte, prima di cominciare.",
-		"allarga le braccia sopra il compagno caduto; per un lungo momento non si sente nemmeno il vento.",
+		"si inginocchia nella polvere accanto al corpo e scosta i capelli dalla fronte inerte, prima di cominciare.",
+		"allarga le braccia sopra chi giace a terra; per un lungo momento non si sente nemmeno il vento.",
 	},
 }, "base_spells")

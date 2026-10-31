@@ -41,6 +41,7 @@ local function With(base, more)
 end
 
 NS:RegisterDialogues({
+	pack = "base_dialogues",
 	scripts = {
 		-- IL LOCANDIERE (vertical slice B, GDD §21): apertura, due domande, una pausa, saluto.
 		innkeeper = {

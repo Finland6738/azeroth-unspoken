@@ -241,9 +241,12 @@ end
 
 ---Registra gli archi di un pacchetto. `{ pack = "id", arcs = { [id] = AUArcDef }, texts = { itIT = { [id] = AUArcText } } }`.
 ---Un arco con una definizione sbagliata resta registrato ma non parte mai: il validatore dice perché.
----@param spec { pack?: string, arcs?: table<string, AUArcDef>, texts?: table<string, table> }
+---Un id già registrato da un altro pacchetto si rifiuta (con i suoi testi), a meno di `override = true` sull'arco o
+---su `spec` (#69).
+---@param spec { pack?: string, override?: boolean, arcs?: table<string, AUArcDef>, texts?: table<string, table> }
 function NS:RegisterArcs(spec)
 	if type(spec) ~= "table" then return end
+	local refused = {}
 	local ids = {}
 	for id in pairs(type(spec.arcs) == "table" and spec.arcs or EMPTY) do
 		if type(id) == "string" then table.insert(ids, id) end
@@ -251,9 +254,12 @@ function NS:RegisterArcs(spec)
 	table.sort(ids)
 	for _, id in ipairs(ids) do
 		local raw = spec.arcs[id]
-		if type(raw) == "table" then
+		if type(raw) == "table" and not NS.Packs:Claim("arc", id, raw.pack or spec.pack, spec.override == true or raw.override == true) then
+			refused[id] = true
+		elseif type(raw) == "table" then
 			local def = {}
 			for k, v in pairs(raw) do def[k] = v end
+			def.override = nil
 			def.id = def.id or id
 			def.pack = def.pack or spec.pack
 			if def.id ~= id then def.bad = { ("la chiave '%s' e l'id '%s' sono diversi"):format(id, tostring(def.id)) } end
@@ -270,7 +276,16 @@ function NS:RegisterArcs(spec)
 			if saved then SA:Data().items[id] = CleanItem(id, saved, def) or saved end
 		end
 	end
-	for lang, map in pairs(type(spec.texts) == "table" and spec.texts or EMPTY) do NS:AddArcTexts(lang, map, spec.pack) end
+	for lang, map in pairs(type(spec.texts) == "table" and spec.texts or EMPTY) do
+		if next(refused) and type(map) == "table" then
+			local kept = {}
+			for id, text in pairs(map) do
+				if not refused[id] then kept[id] = text end
+			end
+			map = kept
+		end
+		NS:AddArcTexts(lang, map, spec.pack)
+	end
 end
 
 ---Aggiunge i testi di archi già registrati o da registrare: `{ [id] = { title, summary, states, choices } }`.

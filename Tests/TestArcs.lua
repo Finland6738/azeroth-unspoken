@@ -21,6 +21,7 @@ local function Fresh()
 		local id = SA.order[i]
 		if not isBase[id] then
 			SA.defs[id], SA.texts[id] = nil, nil
+			NS.Packs.claims["arc:" .. id] = nil   -- l'arco di prova non c'è più: la chiave torna libera (#69)
 			table.remove(SA.order, i)
 		end
 	end
@@ -133,6 +134,7 @@ end
 local function Forget(...)
 	for _, id in ipairs({ ... }) do
 		SA.defs[id] = nil
+		NS.Packs.claims["arc:" .. id] = nil
 		for i = #SA.order, 1, -1 do
 			if SA.order[i] == id then table.remove(SA.order, i) end
 		end

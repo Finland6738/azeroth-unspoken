@@ -1384,3 +1384,33 @@ T.run("#42: {cry} e {foe} rispettano gli argomenti da evitare", function()
 	T.ok(bad ~= nil, "badTag sulla voce di vocabolario")
 	T.eq(#r.errors, 1, "solo il tag sbagliato")
 end)
+
+-- #71: in una battuta `npc` la persona dell'interazione è l'NPC stesso: {og:} ne legge il sesso, {g:} quello del giocatore
+T.run("#71: {og:} nelle battute degli NPC accorda con l'NPC, {g:} con il giocatore", function()
+	Fresh()
+	local function Ctx(who)
+		local c = N:ContextFor({ who = who })
+		c.sex = "male"   -- il giocatore è un uomo
+		return c
+	end
+	local female = Ctx({ kind = "npc", name = "Mara", npcID = 295, role = "innkeeper", sex = "female" })
+	local male = Ctx({ kind = "npc", name = "Aldo", npcID = 6740, role = "innkeeper", sex = "male" })
+	local unknown = Ctx({ kind = "npc", name = "Ignota", npcID = 5111, role = "innkeeper" })
+	T.eq(female.otherSex, "female", "NPC donna: ctx.otherSex")
+	T.eq(male.otherSex, "male", "NPC uomo: ctx.otherSex")
+	T.eq(unknown.otherSex, nil, "NPC di sesso ignoto: nessun sesso")
+	local text = "Con te sono {og:franco|franca}, e tu sei {g:attento|attenta}."
+	T.eq(Engine:Render(text, "it", female), "Con te sono franca, e tu sei attento.", "NPC donna, giocatore uomo")
+	T.eq(Engine:Render(text, "it", male), "Con te sono franco, e tu sei attento.", "NPC uomo")
+	T.eq(Engine:Render(text, "it", unknown), nil, "NPC di sesso ignoto: la variante con {og:} non si compone")
+	T.ok(not Engine.HasData(text, unknown), "HasData lo sa prima di comporre")
+	-- il dialogo di prova ha un NPC uomo dichiarato
+	local test = Ctx(N:TestWho())
+	T.eq(test.otherSex, "male", "NPC di prova: uomo")
+	-- nessuna battuta di base dà un aggettivo al maschile all'NPC che parla di sé senza segnaposto
+	local rule = Engine.byId["npcd.guard.danger.known1"]
+	T.ok(rule ~= nil, "la battuta della guardia c'è")
+	for i, v in ipairs(rule and rule.text.it or {}) do
+		T.ok(not Validator.UnmarkedAgreement(Engine.VariantView(v, rule.pack).t, "it"), "guardia, variante " .. i .. ": nessun accordo senza segnaposto")
+	end
+end)

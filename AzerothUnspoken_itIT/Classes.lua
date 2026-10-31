@@ -32,7 +32,7 @@ NS:AddTexts("itIT", {
 	["cls.pal.battle.01"] = {
 		"Le tenebre hanno molti volti. La Luce ne ha uno solo, e oggi è il mio.",
 		"Ciò che è guasto non regge a lungo davanti a una luce onesta. Vediamo quanto reggi tu.",
-		{ "Per la Luce che veglia sui vivi: torna da dove sei venuto, e non voltarti.", depth = "elevated" },
+		{ "Per la Luce che veglia sui vivi: torna da dove provieni, e non voltarti.", depth = "elevated" },
 	},
 	["cls.pal.battle.02"] = {
 		"Non temo il buio. Lo porto via con me, un passo alla volta.",

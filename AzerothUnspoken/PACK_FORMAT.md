@@ -513,16 +513,18 @@ AzerothUnspoken:RegisterPack({
 - **Events** (`base_context` pack): `npc_meet` (an NPC with a recognized role), `other_action` (someone performs an action toward us), `encounter_end` (end of a boss fight). They do not speak without the person or the fight, not even by hand. Entering a dungeon or a battleground is the `zone` event with `place = { instanceType = … }`.
 - **Rhythm**: in a battleground, in an arena and against a boss, short phrases (up to 80 bytes) weigh more; in a raid the narrator speaks less.
 - **Editorial rules** (GDD §5.3, §5.4): a merchant does not declaim like a king; race and class give a greeting tied to the homeland or the trade, never a moral judgment.
-- **Data** of the packs: `AzerothUnspoken:RegisterPlaces{ zones, subzones, instances, continents }` (tags and themes by client name; `map`/`id` with `verified = true` only if tested in game), `AzerothUnspoken:RegisterNPCs{ [npcID] = { role, temperament, … } }`, `AzerothUnspoken:RegisterTendencies{ class = { … } }` (never morality). A key that is already registered (a zone, an `npcID`) **replaces** the previous entry, it does not merge with it: to add data to a place of the base database also write its original fields.
+- **Data** of the packs: `AzerothUnspoken:RegisterPlaces{ zones, subzones, instances, continents }` (tags and themes by client name; `map`/`id` with `verified = true` only if tested in game), `AzerothUnspoken:RegisterNPCs{ [npcID] = { role, temperament, … } }`, `AzerothUnspoken:RegisterTendencies{ class = { … } }` (never morality). Give each call your `pack` id (`pack = "nani"`, a plain text key next to the `npcID` keys for `RegisterNPCs`). A key that another pack already registered (a zone, an `npcID`) is **refused**, not merged and not silently replaced: see "Keys shared between packs".
   Complete example:
 
 <!-- test -->
 ```lua
 AzerothUnspoken:RegisterPlaces({
+    pack = "mio_pacchetto",
     zones = { ["Valle di Prova"] = { tags = { "forest", "sacred" }, mood = "forest", continent = "kalimdor" } },
 })
 AzerothUnspoken:RegisterNPCs({
-    [990001] = { name = "Oste di Prova", role = "innkeeper", temperament = "gruff", speech = "terse" },
+    pack = "mio_pacchetto",
+    [990002] = { name = "Guardia di Prova", role = "guard", temperament = "resolute", speech = "formal" },
 })
 AzerothUnspoken:RegisterTendencies({ class = { PRIEST = { goals = "faith" } } })
 ```
@@ -681,9 +683,10 @@ AzerothUnspoken:RegisterPack({
     },
 })
 AzerothUnspoken:RegisterNPCs({
+    pack = "ostello",
     [990001] = { name = "Oste di Prova", role = "innkeeper", temperament = "gruff", speech = "terse" },
 })
-AzerothUnspoken:RegisterDialogues({ scripts = {
+AzerothUnspoken:RegisterDialogues({ pack = "ostello", scripts = {
     ["npc:990001"] = {
         extends = "innkeeper",           -- the base script: `news`, `bye` nodes, `leave` replies...
         role = "innkeeper", npcID = 990001, start = "open",
@@ -694,11 +697,38 @@ AzerothUnspoken:RegisterDialogues({ scripts = {
 } })
 ```
 
-A key that is already registered (`innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`, or an `npc:<npcID>` from
-another pack) **is replaced as a whole, not merged**: `AzerothUnspoken:RegisterDialogues({ scripts = { innkeeper = … } })`
-replaces the base script, and the innkeeper, across the whole game, has only the nodes you write (no warning). To
-change an archetype, write a complete script, or use a new key with `extends`. The same goes for the
-data of `RegisterNPCs`, `RegisterPlaces`, and for an arc with the same id as another one (the last pack loaded wins).
+To change an archetype (`innkeeper`, `merchant`, `guard`, `flightmaster`, `trainer`) give the specific NPC its own
+script with `extends`, as above: a key held by another pack cannot be taken over by accident (see below).
+
+### Keys shared between packs (`pack`, `override`)
+
+Scripts (`RegisterDialogues`), NPCs (`RegisterNPCs`), places (`RegisterPlaces`: zones, subzones, instances) and arcs
+(`RegisterArcs`) are registered **by key**: the archetype or `npc:<npcID>`, the `npcID`, the client name of the place,
+the arc id. The base database registers its own under the ids `base_dialogues`, `base_npcs`, `base_places` and `base_arcs`.
+The rule (issue #69) is the same for the four:
+
+- **Say who you are.** Pass `pack = "your_pack_id"` to every call (for `RegisterNPCs`, a text key beside the numeric
+  keys; for `RegisterArcs` it already was). The same pack registering its own key again (a regional pack built again
+  after a return) simply replaces it. A call with no `pack` is never recognised as the owner: it can take a free key but
+  not register it twice.
+- **A key held by another pack is refused**: that entry is not registered (the others of the call are), the base
+  data stays as it was, and an error appears in `/au debug` and in `/au validate` (`keyCollision`, with both pack ids).
+  An arc refused this way also loses its `texts` in that call.
+- **To replace on purpose, say it**: `override = true` on the entry, or on the whole call. The entry replaces the old
+  one **as a whole** (it is never merged: write all the nodes of a script, all the fields of a place), and a
+  `keyOverride` warning in `/au debug` and `/au validate` records who replaced what.
+
+```lua
+-- not tested here: this call logs the notice on purpose
+AzerothUnspoken:RegisterDialogues({ pack = "mio_pacchetto", override = true, scripts = {
+    innkeeper = { role = "innkeeper", start = "open", nodes = { ... }, choices = { ... } },   -- the whole script
+} })
+AzerothUnspoken:RegisterPlaces({ pack = "mio_pacchetto", zones = {
+    ["Elwynn Forest"] = { override = true, map = 1429, tags = { "forest", "farmland", "sacred" } },   -- every field
+} })
+```
+
+To **extend** an archetype without replacing it, prefer a new key with `extends` (`npc:<npcID>`, or your own role).
 
 A complete script with all its nodes (this is how `Data/Dialogues.lua` is built):
 
@@ -929,6 +959,21 @@ greeted, healed, or stands beside you in battle). The rules:
 - English usually does not need it: `{og:}` does not enter the placeholder signature, so Italian can use it
   even if English does not.
 
+**Italian agreement** (issues #70, #71). The text has to read well for a woman, a man and someone whose sex is not known:
+- the character's own participles and adjectives always take `{g:}` (`{g:stato|stata}`), also after `mi` / `ti` when the
+  participle is in evidence (`non mi ha {g:visto|vista}`): it costs nothing, because without a known sex the masculine
+  is used. The masculine without a placeholder is no longer used for the character;
+- an NPC that speaks of itself in an NPC line writes `{og:franco|franca}`: in those lines `ctx.other` **is** the NPC, so
+  `{og:}` gives the NPC's gender (the same in an offered dialogue, in `/au talk test` and in a dialogue opened by hand).
+  The NPC's sex is not always known, so the line keeps a variant with no agreement («Con te posso parlare chiaro»), or
+  better is written with no agreement at all;
+- a target of unknown sex (the person healed or raised, a beast, an enemy) takes no generic masculine: «chi giace a
+  terra» instead of «il caduto», «bestia mia» instead of «vecchio mio». `{og:}` is not for them (it is only for the
+  interlocutor);
+- the validator warns (`itAgreement`) about the commonest cases: a form of *essere*, *sentirsi* or *restare* in the
+  first or second person followed by a masculine participle or adjective from a list (stato, venuto, stanco, pronto,
+  sicuro...), outside a placeholder. It is a warning, not an error: it cannot see every case.
+
 The English of the base packs follows **American spelling**, the same as the client (`color`, `honor`, `traveler`,
 `recognize`, `gray`): the content test flags the most common British forms (issue #66).
 
@@ -1121,6 +1166,9 @@ a **warning** is advice.
 | `placeholderMismatch` | error | IT and EN do not use the same placeholder combinations (`{spell}` is left out of the comparison: one language may name the spell and the other not) |
 | `badDialogue` | error or warning | a wrong `RegisterDialogues` script: missing node or reply, event without lines or not of the `npc` voice, invalid flag, text missing in a language, unreachable node |
 | `badArc` | error or warning | a wrong `RegisterArcs` arc: invalid id, states or steps, undefined choice, unknown field (including a reward), title, account or choices missing in a language; an `arc_open`/`arc_step`/`arc_resolve` rule without `arc = { id }` or with a state the arc does not have; warning: a step without lines (the arc advances in silence) |
+| `keyCollision` | error | a script, NPC, place or arc registered under a key another pack already holds, with no `override = true`: refused (see "Keys shared between packs") |
+| `keyOverride` | warning | an entry that replaced one of another pack with `override = true`: who replaced what |
+| `itAgreement` | warning | an Italian text with a gendered agreement outside `{g:}` / `{og:}` (see "Placeholders"): a participle or adjective in the masculine that refers to the character or the interlocutor |
 | `badPlaceholder` | error | unknown placeholder, malformed gender (`{g:}`, `{og:}`), unclosed brace, `{line}` outside frames, vocabulary inside vocabulary |
 | `frameNoLine` | error | a frame without `{line}` |
 | `badCondition` | error | unknown condition or one with a value of the wrong type |

@@ -132,32 +132,40 @@ end
 
 ---Registra luoghi: { zones = { [nome] = voce }, subzones = {...}, instances = {...}, continents = { [uiMapID] = token } }.
 ---Una voce ha tags, mood, map, id, verified, faction, capital, continent, kind (vedi Data/Places.lua).
+---`pack` dice chi registra; una zona, sottozona o istanza già registrata da un altro pacchetto si rifiuta, a meno di
+---`override = true` (sulla voce o su `def`): #69.
 ---@param def table
 function NS:RegisterPlaces(def)
 	if type(def) ~= "table" then return end
-	for name, e in pairs(def.zones or EMPTY) do
-		local c = type(name) == "string" and CleanEntry(e)
-		if c then
-			c.name = name
-			Place.zones[name] = c
-			if c.map then Place.byMap[c.map] = c end
-			-- l'atmosfera principale resta disponibile come ctx.mood (S1-S4)
-			if c.mood and not NS.zoneMoods[NS.Lower(name)] then NS.zoneMoods[NS.Lower(name)] = c.mood end
+	local function Each(pool, kind, fn)
+		local names = {}
+		for name in pairs(pool or EMPTY) do
+			if type(name) == "string" then table.insert(names, name) end
+		end
+		table.sort(names)
+		for _, name in ipairs(names) do
+			local e = pool[name]
+			-- si chiede la chiave prima di ripulire la voce: CleanEntry aggiunge i tag a quelli noti
+			if type(e) == "table" and NS.Packs:Claim("place", kind .. ":" .. name, def.pack,
+				def.override == true or e.override == true) then
+				local c = CleanEntry(e)
+				c.name = name
+				fn(name, c)
+			end
 		end
 	end
-	for name, e in pairs(def.subzones or EMPTY) do
-		local c = type(name) == "string" and CleanEntry(e)
-		if c then c.name = name; Place.subzones[name] = c end
-	end
-	for name, e in pairs(def.instances or EMPTY) do
-		local c = type(name) == "string" and CleanEntry(e)
-		if c then
-			c.name = name
-			Place.instances[name] = c
-			if c.id then Place.byInstanceID[c.id] = c end
-			if c.map then Place.byMap[c.map] = c end
-		end
-	end
+	Each(def.zones, "zone", function(name, c)
+		Place.zones[name] = c
+		if c.map then Place.byMap[c.map] = c end
+		-- l'atmosfera principale resta disponibile come ctx.mood (S1-S4)
+		if c.mood and not NS.zoneMoods[NS.Lower(name)] then NS.zoneMoods[NS.Lower(name)] = c.mood end
+	end)
+	Each(def.subzones, "subzone", function(name, c) Place.subzones[name] = c end)
+	Each(def.instances, "instance", function(name, c)
+		Place.instances[name] = c
+		if c.id then Place.byInstanceID[c.id] = c end
+		if c.map then Place.byMap[c.map] = c end
+	end)
 	for id, token in pairs(def.continents or EMPTY) do
 		if Num(id) and type(token) == "string" then Place.continents[id] = token end
 	end

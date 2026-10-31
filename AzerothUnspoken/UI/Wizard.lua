@@ -10,7 +10,7 @@ NS.Wizard = Wizard
 
 local frame, pageFrames, step = nil, {}, 1
 local MODULE_ORDER = { "personal", "world", "npc", "memory", "relations", "storyArcs", "social", "audio" }
-local MODULE_LIVE = { personal = true, world = true, memory = true, relations = true }   -- moduli che oggi hanno già un effetto
+local MODULE_LIVE = NS.Config.MODULE_LIVE   -- moduli che oggi hanno già un effetto (una lista sola con il pannello, #77)
 
 local function Selected(text, on)
 	return on and ("|cff7fff7f» " .. text .. " «|r") or text

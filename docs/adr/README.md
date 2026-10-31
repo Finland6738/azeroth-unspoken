@@ -39,6 +39,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0029](0029-specificity-tiers-themes-motifs-and-category-quotas.md) | Specificity tiers, themes and motifs, and per-session category quotas | accepted |
 | [0030](0030-proximity-session-proposal-and-account-shared-list.md) | Proximity as a session proposal, and a list of people shared by the account's characters | accepted |
 | [0031](0031-intensity-traits-emotional-state-and-the-tone-of-a-return.md) | Intensity traits, an emotional state with decay, and the tone of a return | accepted |
+| [0032](0032-keys-shared-between-packs-refused-unless-overridden.md) | Keys shared between packs: refused, unless the pack says `override = true` | accepted |
 
 ## Pending decisions
 
