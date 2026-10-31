@@ -210,8 +210,7 @@ T.run("una risposta che mette parole in bocca al giocatore è un errore, salvo d
 	T.eq(N.scriptPack.voiced, "test_pack", "il pacchetto che dichiara il copione è registrato")
 	local text = {}
 	for _, p in ipairs(N:Check()) do if p.key == "voiced" then table.insert(text, p.level .. " " .. p.msg) end end
-	local all = table.concat(text, "
-")
+	local all = table.concat(text, "\n")
 	T.ok(all:find("risposta 'sad' (it)", 1, true) ~= nil and all:find("risposta 'sad' (en)", 1, true) ~= nil,
 		"la risposta che dice un sentimento è un errore in entrambe le lingue")
 	T.ok(all:find("risposta 'own'", 1, true) == nil, "la risposta `editable` è lasciata stare")
