@@ -59,7 +59,7 @@ it. Severity is the highest given by a panel member, unless the merged finding w
 - **Recommendation:** create the cells on the row button, or make the rows plain buttons with a highlight texture and
   no panel art (the usual list-row pattern).
 - **Sources:** FE-01, VD-01. **Labels:** bug, priority:high. **Issue:** [#171](https://github.com/Finland6738/azeroth-unspoken/issues/171)
-- **Mockup:** `relations-list.png` shows the predicted result.
+- **Mockup:** `relations-list.png` showed the predicted result; since the fix it shows the plain rows that own their cells.
 
 ### High
 
@@ -465,7 +465,7 @@ current one, in the review or an issue, more than in the player's manual.
 | `narrator-paused.png` | paused: the header, the chat note, the dimmed speak button | The-Narrator |
 | `narrator-in-context.png` | the default position on a 1366×768 screen | Home, The-Narrator |
 | `narrator-it.png`, `narrator-inner-it.png` | the narrator in Italian | Languages, README.it |
-| `proposal.png`, `proposal-editor.png`, `proposal-sent.png`, `proposal-emote.png` | a chat proposal, its editor, after sending, an emote proposal | Chat-Gateway |
+| `proposal.png`, `proposal-held.png`, `proposal-editor.png`, `proposal-sent.png`, `proposal-emote.png` | a chat proposal (with its countdown), a proposal with a private line held in the history (#176), its editor, after sending, an emote proposal | Chat-Gateway |
 | `speak-button.png` | the speak button idle, waiting and paused, with tooltips | Chat-Gateway, Commands |
 | `wizard-1.png` … `wizard-7.png` | each wizard step (step 6 only with Total RP 3) | First-Run-Wizard |
 | `wizard-1-it.png`, `wizard-7-it.png` | wizard steps in Italian | First-Run-Wizard, Languages |
@@ -475,8 +475,8 @@ current one, in the review or an issue, more than in the player's manual.
 | `journal-stories.png`, `journal-story-detail.png` | the stories tab and a story with its choice | Story-Arcs |
 | `journal-relationships.png`, `journal-people.png` | the relationships and people tabs of the journal | Relationships |
 | `journal-empty.png`, `journal-reset-armed.png`, `journal-export.png` | empty state, "Forget everything" armed, the export window | Memory-and-Journal, Privacy-and-Data |
-| `relations-list.png`, `relations-people.png`, `relations-empty.png` | the relationships list (as predicted, UI-01), people met, empty | Relationships |
-| `relations-detail-player.png`, `relations-detail-npc.png`, `relations-detail-shared.png` | a player's detail (user and observed sections), an NPC's, with the shared list | Relationships |
+| `relations-list.png`, `relations-people.png`, `relations-empty.png`, `relations-options.png` | the relationships list (fixed, UI-01), people met, empty, the options tab | Relationships |
+| `relations-detail-player.png`, `relations-detail-npc.png`, `relations-detail-shared.png` | a player's detail in two columns, 660 units tall (UI-02 fixed), an NPC's, with the shared list | Relationships |
 | `consent-auto.png`, `consent-shared-list.png`, `consent-trp3-others.png`, `consent-proximity.png` | the consent screens | Privacy-and-Data, Chat-Gateway, Relationships, Character-Soul-and-Total-RP-3 |
 | `consent-reload.png` | the reload dialog after a change of language | Languages |
 | `profile.png`, `profile-neutral.png` | character soul with choices, and neutral | Character-Soul-and-Total-RP-3 |

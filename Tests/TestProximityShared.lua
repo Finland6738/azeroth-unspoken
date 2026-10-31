@@ -754,7 +754,7 @@ end)
 T.run("the window: the options and the scope button", function()
 	Fresh()
 	local key = Person("Aldric-Stormrage", { trust = 55 })
-	RelationsFrame:Open("list")
+	RelationsFrame:Open("options")   -- U1 (#172): the options have a tab of their own
 	local proximity, share = ButtonWithText(NS:L("rel_opt_proximity")), ButtonWithText(NS:L("rel_opt_share"))
 	T.ok(proximity ~= nil and share ~= nil, "both options are in the window")
 	T.ok(proximity:GetText():find(NS:L("off"), 1, true), "proximity shows 'off'")

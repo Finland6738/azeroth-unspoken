@@ -342,7 +342,7 @@ function Emotion.Factor(entry, ctx)
 	return f
 end
 
-Engine:SetWeightHook("E", "emotion", Emotion.Factor)
+Engine:SetWeightHook("E", "emotion", Emotion.Factor, true)   -- pure: only the tags of the line (#157)
 
 NS.StyleResolver:SetModifier("emotion", function(profile, ctx)
 	local emo = ctx and ctx.emotion
