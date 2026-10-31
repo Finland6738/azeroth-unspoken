@@ -25,9 +25,15 @@ local function OldEligible(list, lang, ctx, form, now)
 	local out = {}
 	local mem = NS.cdb.memory
 	for _, p in ipairs(list or {}) do
-		if (not form or p.form == form) and not NS.db.disabledPacks[p.pack]
-			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
-			and #Engine.UsableVariants(p.text[lang], ctx, p.speaker, p.pack) > 0 and Engine.SafeMatch(p.when, ctx) then
+		-- #99: a part said only inside a monologue is never a candidate; a monologue is one when its parts are usable
+		local usable
+		if p.kind == "monologue" then
+			usable = not Engine.R1_COMPAT and Engine.SafeMatch(p.when, ctx) and Engine:MonologueUsable(p, lang, ctx, now)
+		else
+			usable = #Engine.UsableVariants(p.text[lang], ctx, p.speaker, p.pack) > 0 and Engine.SafeMatch(p.when, ctx)
+		end
+		if (not form or p.form == form) and not NS.db.disabledPacks[p.pack] and p.chainable ~= "only"
+			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown) and usable then
 			table.insert(out, p)
 		end
 	end

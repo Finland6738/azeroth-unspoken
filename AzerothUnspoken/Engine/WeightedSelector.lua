@@ -180,6 +180,15 @@ local function Remember(key, id, keep, entry)
 	end
 	table.insert(list, 1, id)
 	while #list > keep do table.remove(list) end
+	Engine.NoteUse(id, entry)
+end
+
+---Counts a use of a voice (factor N) and, if it has a cooldown, its last use. Remember does it for the chosen phrase,
+---a monologue (#99) for each of its parts, which are not in the anti-repetition window of an event.
+---@param id string
+---@param entry? table
+function Engine.NoteUse(id, entry)
+	local mem = Mem()
 	local uses = mem.uses
 	if uses[id] == nil then
 		CountUses(uses)
@@ -232,6 +241,8 @@ Engine.FRAME_PENALTY = 2       -- frame weight / (1 + FRAME_PENALTY x uses of th
 Engine.FRAME_THEME_BONUS = 1.5 -- a frame written for the theme of the phrase
 Engine.OPENING_WINDOW = 8      -- a variant does not open like the newest OPENING_WINDOW interventions, if it can
 Engine.TIER_MIN = 3            -- #89: the most specific tier with at least TIER_MIN non-recent candidates
+Engine.MONOLOGUE_WINDOW = 6    -- #99: a monologue weighs less while another one is among the newest interventions
+Engine.MONOLOGUE_REPEAT = 0.2  -- ... by this factor
 
 Engine.lines = {}
 local lineVersion, novelty = 0, nil
@@ -259,7 +270,7 @@ function Engine.Opening(text)
 end
 
 ---Remembers an intervention of the session (PickEntry calls it when a phrase is composed).
----@param line { theme?: string, motifs?: string[], speaker?: string, frame?: string, opening?: string, category?: string }
+---@param line { theme?: string, motifs?: string[], speaker?: string, frame?: string, opening?: string, category?: string, kind?: string }
 function Engine:NoteLine(line)
 	line.at = GetTime()
 	table.insert(self.lines, 1, line)
@@ -282,6 +293,7 @@ local function NoveltyState()
 		end
 		if w > 0 and i <= Engine.FRAME_WINDOW and l.frame then st.frames[l.frame] = (st.frames[l.frame] or 0) + 1 end
 		if w > 0 and i <= Engine.OPENING_WINDOW and l.opening then st.openings[l.opening] = true end
+		if w > 0 and i <= Engine.MONOLOGUE_WINDOW and l.kind == "monologue" then st.monologue = true end
 	end
 	local a, b = Engine.lines[1], Engine.lines[2]
 	if a and b and a.speaker == b.speaker and now - (b.at or now) < Engine.THEME_DECAY then st.voice = a.speaker end
@@ -309,6 +321,8 @@ function Engine.ThemeNovelty(entry, voice)
 		if n > 0 then f = f / (1 + Engine.MOTIF_PENALTY * n) end
 	end
 	if st.voice and st.voice == (voice or entry.speaker) then f = f * Engine.VOICE_REPEAT end
+	-- #99: a monologue is a longer moment; two close together would sound like a speech
+	if st.monologue and entry.kind == "monologue" then f = f * Engine.MONOLOGUE_REPEAT end
 	return f
 end
 
@@ -479,12 +493,15 @@ function Engine:Eligible(list, lang, ctx, form, now)
 	local mem = Mem()
 	local disabled = NS.db.disabledPacks
 	for _, p in ipairs(list) do
-		if (not form or p.form == form) and not disabled[p.pack]
+		if (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
 			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown) then
 			-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre (chance,
 			-- func; e le cornici, che non hanno ord) solo dopo i testi, come sempre: la sequenza casuale non cambia
 			local ok
-			if p.impure or not p.ord then
+			if p.kind == "monologue" then
+				-- #99: its conditions, then every part (a whole phrase with its own conditions and texts); off in R1_COMPAT
+				ok = not self.R1_COMPAT and Engine.SafeMatch(p.when, ctx) and self:MonologueUsable(p, lang, ctx, now)
+			elseif p.impure or not p.ord then
 				ok = Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(p.when, ctx)
 			else
 				ok = Engine.SafeMatch(p.when, ctx) and Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack)
@@ -498,6 +515,72 @@ end
 local function Capitalize(s)
 	-- la prima lettera ASCII in maiuscolo; i caratteri accentati restano come sono
 	return (s:gsub("^([ «\"]*)([a-z])", function(sp, c) return sp .. c:upper() end))
+end
+
+---------------------------------------------------------------------------
+-- Monologues (#99, ADR 0032): two or three whole phrases, one intervention
+---------------------------------------------------------------------------
+-- A monologue has no texts: it chains the whole phrases named in `parts` (rules with `chainable`), each rendered
+-- from its own variants. Nothing is cut or glued inside a phrase (ADR 0001): the parts were written to follow one
+-- another, and the validator checks that they share the voice, the register and the theme or a motif.
+
+---Every part of the monologue exists, is chainable, is in an enabled pack, is out of its cooldown, matches its own
+---conditions and has a usable variant.
+---@param p AUPhrase
+---@param lang string
+---@param ctx table
+---@param now number
+---@return boolean
+function Engine:MonologueUsable(p, lang, ctx, now)
+	local parts = p.parts
+	if not parts or #parts < self.MONOLOGUE_MIN_PARTS or #parts > self.MONOLOGUE_MAX_PARTS then return false end
+	local mem, disabled = Mem(), NS.db.disabledPacks
+	for _, id in ipairs(parts) do
+		local q = self.byId[id]
+		if not q or not q.chainable or q.kind or disabled[q.pack]
+			or (q.cooldown and mem.last[q.id] and now - mem.last[q.id] < q.cooldown)
+			or not Engine.SafeMatch(q.when, ctx) or not Engine.AnyUsable(q.text[lang], ctx, q.speaker, q.pack) then
+			return false
+		end
+	end
+	return true
+end
+
+---The parts of a monologue in the order they are said: as written, or with `order = "free"` the first one and then
+---the others shuffled.
+---@param p AUPhrase
+---@return string[]
+function Engine.MonologueOrder(p)
+	local out = {}
+	for i, id in ipairs(p.parts) do out[i] = id end
+	if p.order == "free" then
+		for i = #out, 3, -1 do
+			local j = math.random(2, i)
+			out[i], out[j] = out[j], out[i]
+		end
+	end
+	return out
+end
+
+---Renders a monologue: one variant of each part (as RenderPhrase chooses it), joined by a space. The parts after
+---the first are whole sentences and start with a capital letter; the first keeps the form of the monologue (an emote
+---goes after the character's name).
+---@param p AUPhrase
+---@param lang string
+---@param ctx table
+---@return string? text
+---@return { id: string, variant: integer }[]? parts
+function Engine:RenderMonologue(p, lang, ctx)
+	local texts, used = {}, {}
+	for i, id in ipairs(Engine.MonologueOrder(p)) do
+		local q = self.byId[id]
+		local text, variant = self:RenderPhrase(q, lang, ctx)
+		if not text then return nil end
+		text = text:gsub("[ \t\n]+", " "):gsub("^ ", ""):gsub(" $", "")
+		if i > 1 or p.form == "say" then text = Capitalize(text) end
+		texts[i], used[i] = text, { id = id, variant = variant }
+	end
+	return table.concat(texts, " "), used
 end
 
 -- Sceglie e compone una frase. form = "say" | "emote".
@@ -520,6 +603,9 @@ end
 ---@field variant? integer indice della variante scelta tra i testi della lingua
 ---@field via? string the related event that spoke when `event` had no phrase (#89)
 ---@field frame? string id of the frame a spoken phrase was told in
+---@field kind? "monologue" #99: the record is a monologue
+---@field parts? string[] #99: the ids of the parts, in the order they were said
+---@field situation? string #100: the composite situation the line was written for
 ---@field display? string testo come lo vede il narratore (aggiunto dal Gateway)
 ---@field channel? string canale scelto dal Gateway
 ---@field proposal? AUProposal proposta creata dal Gateway
@@ -576,6 +662,20 @@ function Engine:Weight(p, event, ctx)
 	return Engine.Factors(p, Mem().lastTone[event], ctx, self.StyleResolver:Resolve(event, ctx))
 end
 
+---The first situation of ctx.situation that the line's `situation` condition names (#100), for the record and the
+---counters.
+---@param p AUPhrase
+---@param ctx table
+---@return string?
+function Engine.FirstSituation(p, ctx)
+	local want = p.when and p.when.situation
+	if want == nil or type(ctx.situation) ~= "table" then return nil end
+	for _, id in ipairs(Engine.AsList(want)) do
+		if ctx.situation[id] then return id end
+	end
+	return nil
+end
+
 ---Specificity tiers (#89, ADR 0029): the candidates of the most specific tier that still has at least TIER_MIN
 ---candidates not used recently, together with those of every tier above it. With a place that has its own phrases they
 ---win until they are used, then the pool widens one tier at a time down to the generic ones (the explicit fallback
@@ -612,11 +712,18 @@ end
 
 ---Sceglie e compone una frase. Se l'evento non ha frasi, prova l'evento affine dichiarato (#89: `fallback`), al
 ---massimo tre passi e mai un evento già provato; il record dice l'evento chiesto e, in `via`, quello che ha parlato.
+---With `composite` (#100) only the lines written for the situations of ctx.situation are candidates, and there is no
+---related-event fallback: the caller falls back to the ordinary pick.
 ---@param event string
 ---@param ctx table contesto di NS:BuildContext
 ---@param form "say"|"emote"
+---@param composite? boolean
 ---@return AUPhraseRecord?
-function Engine:PickEntry(event, ctx, form)
+function Engine:PickEntry(event, ctx, form, composite)
+	if composite then
+		if self.R1_COMPAT or type(ctx.situation) ~= "table" then return nil end
+		return self:PickOwn(event, ctx, form, true)
+	end
 	local rec = self:PickOwn(event, ctx, form)
 	if rec or self.R1_COMPAT then return rec end
 	local tried, ev = { [event] = true }, event
@@ -635,17 +742,28 @@ function Engine:PickEntry(event, ctx, form)
 end
 
 ---Sceglie e compone una frase dell'evento, senza ripieghi.
+-- only the lines written for a composite situation (#100)
+local function Situational(list)
+	local out = {}
+	for _, p in ipairs(list or EMPTY) do
+		if p.situational then table.insert(out, p) end
+	end
+	return out
+end
+
 ---@param event string
 ---@param ctx table
 ---@param form "say"|"emote"
+---@param composite? boolean only the lines of a composite situation (#100)
 ---@return AUPhraseRecord?
-function Engine:PickOwn(event, ctx, form)
+function Engine:PickOwn(event, ctx, form, composite)
 	if not self:EventAllowed(event, ctx) then return nil end
 	local lang = NS:TextLang()
 	local now = time()
 	local r3 = not self.R1_COMPAT
 	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event]
 	local list = self:Candidates(event, ctx, form)
+	if composite then list = Situational(list) end
 	local mem = Mem()
 	local lastTone = mem.lastTone[event]
 	-- registri adatti all'evento, alla zona e alla profondità (GDD §5.2)
@@ -667,7 +785,9 @@ function Engine:PickOwn(event, ctx, form)
 			-- solo la voce pubblica del personaggio si può raccontare in una cornice:
 			-- un pensiero (inner) non diventa un'emote
 			local says = {}
-			for _, p in ipairs(self:Eligible(self:Candidates(event, ctx, "say"), lang, ctx, "say", now)) do
+			local sayList = self:Candidates(event, ctx, "say")
+			if composite then sayList = Situational(sayList) end
+			for _, p in ipairs(self:Eligible(sayList, lang, ctx, "say", now)) do
 				if p.speaker == "character" then table.insert(says, p) end
 			end
 			for _, p in ipairs(says) do
@@ -686,7 +806,12 @@ function Engine:PickOwn(event, ctx, form)
 		local it = WeightedPick(items, event)
 		if not it then return nil end
 		local p = it.e
-		local text, variant = self:RenderPhrase(p, lang, ctx)
+		local text, variant, parts
+		if p.kind == "monologue" then
+			text, parts = self:RenderMonologue(p, lang, ctx)
+		else
+			text, variant = self:RenderPhrase(p, lang, ctx)
+		end
 		local frame
 		if text and it.framed then
 			-- mai frammenti incompatibili: solo le cornici di un registro vicino a quello della frase e, se la cornice
@@ -713,7 +838,20 @@ function Engine:PickOwn(event, ctx, form)
 		if text then
 			Remember(event, p.id, keep, p)
 			mem.lastTone[event] = Engine.Tone(p)
-			if #p.text[lang] > 1 then
+			local partIds
+			if parts then
+				-- #99: each part counts as used and remembers its variant, as if it had been said on its own
+				partIds = {}
+				for i, part in ipairs(parts) do
+					local q = self.byId[part.id]
+					Engine.NoteUse(part.id, q)
+					if #q.text[lang] > 1 then
+						mem.variant = mem.variant or {}
+						mem.variant[part.id] = part.variant
+					end
+					partIds[i] = part.id
+				end
+			elseif #p.text[lang] > 1 then
 				mem.variant = mem.variant or {}
 				mem.variant[p.id] = variant
 			end
@@ -724,12 +862,18 @@ function Engine:PickOwn(event, ctx, form)
 			-- una frase parlata dentro una cornice è raccontata dal narratore
 			local speaker = it.framed and "narrator" or p.speaker
 			if r3 then
-				local opening = Engine.Opening(Engine.VariantText(frame and (frame.text[lang] or EMPTY)[1] or p.text[lang][variant]))
+				local source
+				if parts then
+					source = self.byId[parts[1].id].text[lang][parts[1].variant]
+				else
+					source = frame and (frame.text[lang] or EMPTY)[1] or p.text[lang][variant]
+				end
 				self:NoteLine({ theme = p.theme, motifs = p.motifs, speaker = speaker, frame = frame and frame.id,
-					opening = opening, category = p.category })
+					opening = Engine.Opening(Engine.VariantText(source)), category = p.category, kind = p.kind })
 			end
 			return { text = text, speaker = speaker, form = form, id = p.id, event = event,
-				category = p.category, style = Engine.Tone(p), variant = variant, frame = frame and frame.id }
+				category = p.category, style = Engine.Tone(p), variant = variant, frame = frame and frame.id,
+				kind = p.kind, parts = partIds, situation = composite and Engine.FirstSituation(p, ctx) or nil }
 		end
 		it.w = 0
 	end

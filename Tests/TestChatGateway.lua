@@ -513,6 +513,9 @@ T.run("voce delle frasi: regola dello schema v2 e ripiego del formato vecchio", 
 			counts.inner = counts.inner + 1
 		elseif p.speaker == "npc" then
 			T.eq(p.form, "say", p.id .. ": la voce NPC è parlata (resta privata)")
+		elseif p.speaker == "narrator" and p.chainable then
+			-- #99: the parts of a narrator monologue after the first are whole sentences (say), never said alone in chat
+			T.eq(p.form, "say", p.id .. ": parte di un monologo del narratore")
 		else
 			T.eq(p.speaker, "character", p.id .. ": say = voce del personaggio")
 			counts.say = counts.say + 1

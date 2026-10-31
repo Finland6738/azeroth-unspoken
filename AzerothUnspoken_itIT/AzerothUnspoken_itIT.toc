@@ -20,5 +20,7 @@ Memory.lua
 Relations.lua
 Context.lua
 World.lua
+Situations.lua
+Monologues.lua
 Dialogues.lua
 Arcs.lua

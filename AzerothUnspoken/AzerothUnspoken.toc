@@ -88,6 +88,8 @@ Data\RegistryMemory.lua
 Data\RegistryRelations.lua
 Data\RegistryContext.lua
 Data\RegistryWorld.lua
+Data\RegistrySituations.lua
+Data\RegistryMonologues.lua
 Data\RegistryDialogues.lua
 Data\Dialogues.lua
 Data\RegistryArcs.lua

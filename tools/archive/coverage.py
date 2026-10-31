@@ -88,9 +88,12 @@ def compute(con, thresholds=None, state="approved"):
         "warnings": [{"ref": r, "message": m} for lv, r, m in problems if lv == "warning"],
     }
 
-    # ---- M1: event x context cells
+    # ---- M1: event x context cells. A part that is only said inside a monologue (#99: chainable "only") is not a line
+    # of its event; the monologue is (its texts are its parts')
     cell = collections.defaultdict(list)   # (event, context key) -> intention ids
     for r in rows:
+        if store.jload(r["chainable"]) == "only":
+            continue
         for ev in json.loads(r["events"]):
             for key in r["ctx"].split(","):
                 cell[(ev, key)].append(r["id"])
@@ -114,6 +117,8 @@ def compute(con, thresholds=None, state="approved"):
     missing = []
     if t["languages_complete"]:
         for r in rows:
+            if r["kind"] == "monologue":
+                continue   # #99: no texts of its own
             for lang in pack_langs.get(r["pack_id"], langs):
                 if not nvar[r["id"]][lang]:
                     missing.append({"id": r["id"], "lang": lang})

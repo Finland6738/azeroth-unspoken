@@ -67,7 +67,15 @@ T.run("almeno 300 intenzioni bilingui, e ognuna ha IT ed EN", function()
 	local n = Count(BASE)
 	T.ok(n >= 300, "intenzioni di base: " .. n)
 	for id, p in pairs(BASE) do
-		T.ok(Variants(p, "it") >= 1 and Variants(p, "en") >= 1, id .. ": IT ed EN")
+		if p.kind == "monologue" then
+			-- #99: a monologue has no texts of its own; every one of its parts has both languages
+			for _, part in ipairs(p.parts) do
+				local q = Engine.byId[part]
+				T.ok(q and Variants(q, "it") >= 1 and Variants(q, "en") >= 1, id .. ": part " .. part .. " IT ed EN")
+			end
+		else
+			T.ok(Variants(p, "it") >= 1 and Variants(p, "en") >= 1, id .. ": IT ed EN")
+		end
 	end
 end)
 
@@ -77,7 +85,7 @@ T.run("almeno due varianti per le scene più comuni", function()
 		"levelup" }) do
 		local list, short = ByEvent(ev), {}
 		for id, p in pairs(list) do
-			if Variants(p, "it") < 2 or Variants(p, "en") < 2 then table.insert(short, id) end
+			if p.kind ~= "monologue" and (Variants(p, "it") < 2 or Variants(p, "en") < 2) then table.insert(short, id) end
 		end
 		table.sort(short)
 		T.ok(#short == 0, ev .. ": intenzioni con una sola variante: " .. table.concat(short, ", "))
@@ -225,13 +233,16 @@ T.run("#27: le frasi di base portano i tag del Character Soul", function()
 	local tagged, n, untagged = 0, 0, {}
 	-- le battute dei dialoghi ambientali (S8) sono dell'NPC e non del personaggio: i tag del Character Soul non le riguardano;
 	-- quelle degli archi (S9) seguono le scelte del giocatore (condizione arc.choice), non il carattere dedotto
+	-- the parts said only inside a monologue (#99) are not lines of their own: the monologue carries the tags
 	for id, p in pairs(BASE) do
-		if p.pack ~= "base_dialogues" and p.pack ~= "base_arcs" then n = n + 1 end
-		local scoped = false
-		for tag in pairs(p.tags) do
-			if type(tag) == "string" and (tag:find("^rel%.") or tag:find("^other%.") or tag:find("^place%.")) then scoped = true end
+		if p.chainable ~= "only" then
+			if p.pack ~= "base_dialogues" and p.pack ~= "base_arcs" then n = n + 1 end
+			local scoped = false
+			for tag in pairs(p.tags) do
+				if type(tag) == "string" and (tag:find("^rel%.") or tag:find("^other%.") or tag:find("^place%.")) then scoped = true end
+			end
+			if SoulTagged(p) then tagged = tagged + 1 elseif not scoped then table.insert(untagged, id) end
 		end
-		if SoulTagged(p) then tagged = tagged + 1 elseif not scoped then table.insert(untagged, id) end
 	end
 	T.ok(tagged / n >= 0.8, ("intenzioni con tag di affinità o di argomento: %d su %d"):format(tagged, n))
 	-- argomenti delicati: ogni frase di morte porta topic:death; ogni preghiera topic:religion; ogni amore topic:romance
