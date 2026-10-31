@@ -10,6 +10,23 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U1: UI and UX review and mockups of every window (issues #171-#194)
+
+A review of the interface by an expert panel (frontend, visual design, accessibility, WoW addon UI) and mockups of
+every window, made from the code only: nothing has been tested in the real client yet. No addon code changed.
+
+- **Added: [`docs/design/UI_REVIEW.md`](docs/design/UI_REVIEW.md).** 23 findings merged from 94 (1 Critical, 9 High,
+  11 Medium, 2 Low), each with file and line and a recommendation, a contrast table computed from the code's colours
+  and an English/Italian string-length table. Each finding is a GitHub issue (#171-#193); the outcome is #194.
+- **Added: [`docs/design/mockups/`](docs/design/mockups/index.html).** 64 HTML mockups on one shared stylesheet (the
+  narrator in each voice, history and pause, the chat proposal and its editor, the speak button, each wizard step in
+  English and two in Italian, the settings panel, every journal tab, the relationships window and its details, the
+  character soul, the NPC dialogue, the consent screens, `/au help` and `/au debug`), their PNG renders, 6 PROPOSED
+  mockups and `narrator-demo.gif`. Original landscapes and stand-in widgets: no Blizzard art, icon, font or
+  screenshot. Every image says it is an illustrative mockup, not an in-game screenshot. The generators are in
+  `docs/design/mockups/tools/` (headless browser for the PNGs, Pillow for the GIF).
+- The README and the wiki are not changed here: the report lists each image and the page it is meant for (U2).
+
 ### Q9a: monologues and literary lines never reach public chat (issues #152, #163 and #153)
 
 Fixes from the third review (Q8), the most urgent first ([ADR 0003](docs/adr/0003-private-narrator-and-chat-gateway.md), [ADR 0032](docs/adr/0032-monologues-of-whole-phrases-and-composite-situations.md), owner decision D16 in #130).
