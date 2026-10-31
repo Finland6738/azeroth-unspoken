@@ -13,8 +13,8 @@ NS:AddTexts("enUS", {
 		"Close. Close counts for nothing, friend.",
 	},
 	["sit.secondwind.say"] = {
-		"Down once. That was the only time you get.",
-		"You should have made sure I stayed in the dirt.",
+		"Down once today. Not twice.",
+		"I have been in the dirt once today. I am not going back.",
 	},
 	["sit.secondwind.inner"] = {
 		"A little while ago I was a body on the ground. Now this. The world is strange, and I am still in it.",
@@ -29,7 +29,7 @@ NS:AddTexts("enUS", {
 		"Learned that one the hard way. I will not need to learn it twice.",
 	},
 	["sit.woundedarrival.inner"] = {
-		"New ground, and I arrive in it limping. Not the entrance I would have chosen.",
+		"I arrive limping. Not the entrance I would have chosen.",
 		"{zone}. I would admire it more if every step did not hurt.",
 	},
 	["sit.woundedarrival.e"] = {

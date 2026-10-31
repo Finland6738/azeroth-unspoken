@@ -14,7 +14,7 @@ NS:AddTexts("itIT", {
 	},
 	["mono.muse.road.3"] = {
 		"Da qualche parte, più avanti, c'è un fuoco a cui non mi sono ancora {g:seduto|seduta}.",
-		"Qualunque cosa aspetti alla fine, preferisco andarle incontro che aspettarla.",
+		"Qualunque cosa aspetti alla fine della strada, preferisco andarle incontro che aspettarla.",
 	},
 
 	-- mono.muse.scar
@@ -37,8 +37,8 @@ NS:AddTexts("itIT", {
 		"Finalmente notte. Il mondo è più quieto quando non può vedermi.",
 	},
 	["mono.muse.stars.2"] = {
-		"Potrei dare un nome a qualcuna, se ci provassi. Preferisco di no.",
-		"I vecchi racconti dicono che ognuna è una sentinella. Stanotte spero che si annoino.",
+		"Potrei dare un nome a qualche stella, se ci provassi. Preferisco di no.",
+		"I vecchi racconti dicono che ogni stella è una sentinella. Stanotte spero che si annoino.",
 	},
 	["mono.muse.stars.3"] = {
 		"Solo il respiro, il freddo e questo piccolo pezzo di buio che è mio.",
@@ -80,10 +80,10 @@ NS:AddTexts("itIT", {
 	},
 	["mono.rest.hearth.2"] = {
 		"Qui nessuno sa cosa ho fatto oggi, e nessuno lo chiede.",
-		"L'oste mi fa un cenno come a chiunque altro. Stasera sono chiunque altro.",
+		"L'oste mi saluta con un cenno, come fa con chiunque. Qui dentro sono davvero chiunque.",
 	},
 	["mono.rest.hearth.3"] = {
-		"Dormirò come un sasso, e la strada resterà fuori fino a domattina.",
+		"Dormirò come un sasso, e la strada resterà fuori finché non mi sveglio.",
 		"Domani può bussare. Per ora la porta resta chiusa.",
 	},
 

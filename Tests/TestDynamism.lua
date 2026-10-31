@@ -284,6 +284,8 @@ T.run("composition: order, window, conditions and R1_COMPAT", function()
 	T.ok((Director:Compose({ event = "memory_return", seq = 10009 }, wet, GetTime()) or {}).rain_dusk_return,
 		"a return in the rain at dusk")
 	T.ok(Director:Compose({ event = "memory_return", seq = 10010 }, dry, GetTime()) == nil, "not under a clear sky")
+	local night = NS:BuildContext({ weather = "rain", time = "night" })
+	T.ok(Director:Compose({ event = "memory_return", seq = 10011 }, night, GetTime()) == nil, "not at night (#159)")
 end)
 
 T.run("a composite line is never said outside its situation", function()

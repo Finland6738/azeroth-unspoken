@@ -10,6 +10,39 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-content: phrase fixes from the third review (issues #158, #159)
+
+The content findings of the third review (Q8, #167), fixed in the language packs and in the rules. The English
+meaning is the reference for every Italian rewrite.
+
+- **Fixed (#158, Italian):**
+  - The speaker's gender is now marked with `{g:}` where it was always masculine (`world.fog.01`, `world.sub.03`,
+    `world.quest.complete.03`, `world.flight.arrive.e`, `rel.player.fear`); `ctx.act.duel.wary` is rewritten without
+    a gendered word, since both the speaker and the challenger were involved.
+  - The other person is no longer masculine by default: neutral rewrites of `rel.player.trust`, `rel.player.known`,
+    `rel.player.shared.duel` and `rel.player.rival`.
+  - Meaning errors: «per l'ultima volta» (now «per la volta scorsa»), «civiltà» (now «cortesia»), «abbassa il
+    cappuccio» (now «si cala il cappuccio sugli occhi»), and the calque «il più vicino a casa che la strada arrivi».
+  - Thirteen calques reworded (Emotions, Situations, World, Relations, Monologues).
+  - Light modernisms: "won on points" and "small print" in both languages, «Secondo round» in Italian.
+- **Fixed (#159, texts that claimed more than their conditions):**
+  - "New ground" / «Terra nuova» removed from `world.zone.rain`, `sit.woundedarrival.inner` and `emo.zone.curious`,
+    which also speak on a return.
+  - `mem.ret.emo.bad.worried` no longer names a fall: `lastVisitBad = true` also covers a flight.
+  - The situation `rain_dusk_return` is now dusk only (it allowed night, and all its texts describe the light going).
+  - `mono.rest.hearth` says nothing about the hour ("Tonight", "until morning"), since it speaks at any time.
+  - `mono.zone.crest` and `mono.zone.dusk` now need the outdoors and a zone that is not a city (they could speak on
+    entering Ironforge or the Undercity); `world.clear.01` now needs the outdoors like every other weather rule.
+  - Monologue parts that read wrong in some orders: `mono.muse.stars.2` names the stars itself, `mono.muse.road.3`
+    says "the end of the road".
+  - `world.flight.long.e` no longer speaks of "hours" of flight; the `sit.secondwind.say` lines no longer assume the
+    enemy just beaten is the one who killed the character.
+- **Changed:** `PACK_FORMAT.md` and ADR 0032 describe `rain_dusk_return` at dusk only.
+- **Added:** a test of these fixes in `Tests/TestContent.lua`, and the night case in `Tests/TestDynamism.lua`.
+- Not changed: the Versi line `inn.rhyme.01` ("the friend who won't come again") keeps its ambiguity without
+  `topic:death`, the owner's call in #159. The automatic checks for these classes of problem are #162.
+- Nothing was tested in the client: the reworded lines remain to be read in game (G1).
+
 ### U-narrator: the narrator box and the chat proposal (#176, #173, #177, parts of #179 and #175)
 
 Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-06, UI-03, UI-07, the settings part of UI-09 and the pause glyph of UI-05). Nothing here is tested in the game client yet.
