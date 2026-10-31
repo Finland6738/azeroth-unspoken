@@ -288,6 +288,15 @@ local SPECIAL = {
 		local soul = type(ctx.soul) == "table" and ctx.soul or nil
 		return soul ~= nil and AllAtLeast(v, function(name) return soul[name] end, false)
 	end,
+	-- composite situation (#100, Systems/Director.lua): one of the situations the Director composed for this moment
+	situation = function(v, ctx)
+		local s = ctx.situation
+		if type(s) ~= "table" then return false end
+		for _, name in ipairs(AsList(v)) do
+			if s[name] then return true end
+		end
+		return false
+	end,
 	chance   = function(v) return math.random(100) <= v end,
 	func     = function(v, ctx)
 		local ok, res = pcall(v, ctx)
@@ -364,6 +373,8 @@ Engine.CONDITIONS = {
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
 	arc = "sub",
+	-- composite situations of the Director (#100): ids declared with `situations = {}` (Data/Themes.lua)
+	situation = "str",
 	-- operatori
 	chance = "pct", func = "func", ["not"] = "group", any = "subs",
 }
@@ -398,6 +409,8 @@ Engine.CONDITION_VALUES = {
 	relationKind = { npc = true, player = true },
 	-- feelings are registered by Data/Relationships.lua; relShared by Systems/Relationships.lua (R.ENCOUNTERS, R.SHARED)
 	feeling = {}, relShared = {},
+	-- the composite situations (#100): filled by NS:RegisterSituation
+	situation = {},
 }
 
 -- Campi delle sotto-tabelle e tipo del valore (come Engine.CONDITIONS; "actions" = azione, elenco o { ..., within = n })

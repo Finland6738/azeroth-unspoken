@@ -41,6 +41,11 @@ NS.Engine = Engine
 ---@field tier? integer explicit specificity tier (#89); read the tier with Engine.Tier(p)
 ---@field theme? string theme of the phrase (#90), from Engine.THEMES
 ---@field motifs? string[] concrete images of the phrase (#90, at most three), from Engine.MOTIFS
+---@field kind? "monologue" a monologue (#99): no texts of its own, it chains the whole phrases in `parts`
+---@field parts? string[] ids of the two or three whole phrases of a monologue, in the order they are said
+---@field order? "fixed"|"free" free: the parts after the first may come in any order (monologue only)
+---@field chainable? true|"only" the phrase may be a part of a monologue; "only" = never said on its own
+---@field situational? true the conditions ask a composite situation (#100): a line written for that situation
 -- events, styles, tags, motifs e depth sono condivisi tra le frasi con gli stessi valori (#84): sola lettura.
 
 ---@class AURegistryEntry la regola di una frase nel formato v2
@@ -57,6 +62,10 @@ NS.Engine = Engine
 ---@field tier? integer|string explicit specificity tier (#89); absent = deduced from the conditions
 ---@field theme? string one theme (#90)
 ---@field motifs? string[] zero to three motifs (#90)
+---@field kind? "monologue" #99: a monologue made of the whole phrases in `parts`
+---@field parts? string[] #99: two or three ids of chainable phrases
+---@field order? "fixed"|"free" #99: the order of the parts after the first (default fixed)
+---@field chainable? boolean|"only" #99: the phrase may be a part of a monologue; "only" = only as a part
 
 Engine.packs = {}       -- [id] = pacchetto
 Engine.packOrder = {}
@@ -128,6 +137,19 @@ Engine.TIER_NEUTRAL = { chance = true, depth = true, intensityMin = true, intens
 -- QUOTAS[category] = { share = 0..1, window = interventions, span = seconds }, HUNGER[category] = { factor, after }
 Engine.QUOTAS = {}
 Engine.HUNGER = {}
+
+-- Composite situations (#100, ADR 0032), filled by Data/Themes.lua and by the packs (`situations = {}`). When the
+-- candidates of a moment, together with the events offered in the last seconds, match a situation, the Director puts
+-- its id in ctx.situation and the lines written for it (condition `situation`) are tried first. Each definition:
+-- { lead = event that speaks, with = { events all required }, withAny = { events, one required }, within = seconds,
+--   when = { conditions on the context of the lead } }. SITUATION_ORDER keeps the declaration ids sorted.
+Engine.SITUATIONS = {}
+Engine.SITUATION_ORDER = {}
+Engine.SITUATION_WITHIN = 30   -- seconds, when a situation does not say
+
+-- Monologues (#99, ADR 0032): two or three whole phrases said as one intervention
+Engine.MONOLOGUE_MIN_PARTS = 2
+Engine.MONOLOGUE_MAX_PARTS = 3
 
 -- Eventi di base e la loro categoria. Un pacchetto ne aggiunge con NS:RegisterEvent o con `events = {}`.
 local BASE_EVENTS = {
@@ -683,6 +705,25 @@ function Engine:AddEntry(pack, id, e, legacy)
 	-- theme and motifs (#90): kept as written, the validator checks them against the vocabularies
 	if e.theme ~= nil then p.theme = e.theme end
 	if e.motifs ~= nil then p.motifs = SharedList(AsList(e.motifs)) end
+	-- monologues and their parts (#99): only the fields a rule writes are stored (ADR 0024); the validator checks that
+	-- the parts exist, are chainable, share the voice and go together
+	if e.kind ~= nil then
+		if e.kind == "monologue" then
+			p.kind = "monologue"
+			p.parts = SharedList(AsList(e.parts))
+			if e.order ~= nil then p.order = e.order end
+		else
+			Issue(pack, "badKind", id, ("kind '%s' unknown (only \"monologue\")"):format(tostring(e.kind)))
+		end
+	elseif e.parts ~= nil or e.order ~= nil then
+		Issue(pack, "badKind", id, "parts and order belong to a rule with kind = \"monologue\"")
+	end
+	if e.chainable == true or e.chainable == "only" then
+		p.chainable = e.chainable
+	elseif e.chainable ~= nil and e.chainable ~= false then
+		Issue(pack, "badChainable", id, ("chainable '%s' not valid (true or \"only\")"):format(tostring(e.chainable)))
+	end
+	if type(when) == "table" and when.situation ~= nil then p.situational = true end
 
 	self.byId[id] = p
 	self.nextOrd = self.nextOrd + 1
@@ -857,6 +898,23 @@ function NS:SetCategoryHunger(category, def)
 	if type(category) == "string" then self.Engine.HUNGER[category] = def end
 end
 
+---A composite situation (#100, ADR 0032): when the Director's candidates match it, the lines written for it speak
+---first (condition `situation`). Registering an id again replaces it. The validator checks the definition.
+---@param id string
+---@param def { lead: string, with?: string[], withAny?: string[], within?: number, when?: table }
+---@param packId? string
+function NS:RegisterSituation(id, def, packId)
+	local Engine = self.Engine
+	if type(id) ~= "string" or id == "" or type(def) ~= "table" then return end
+	if not Engine.SITUATIONS[id] then
+		table.insert(Engine.SITUATION_ORDER, id)
+		table.sort(Engine.SITUATION_ORDER)
+	end
+	def.pack = def.pack or packId
+	Engine.SITUATIONS[id] = def
+	Engine.CONDITION_VALUES.situation[id] = true
+end
+
 ---------------------------------------------------------------------------
 -- API pubblica
 ---------------------------------------------------------------------------
@@ -892,6 +950,7 @@ function NS:RegisterPack(pack)
 	for _, m in ipairs(pack.motifs or {}) do self:RegisterMotif(m) end
 	for _, c in ipairs(SortedKeys(pack.quotas or {})) do self:SetCategoryQuota(c, pack.quotas[c]) end
 	for _, c in ipairs(SortedKeys(pack.hunger or {})) do self:SetCategoryHunger(c, pack.hunger[c]) end
+	for _, name in ipairs(SortedKeys(pack.situations or {})) do self:RegisterSituation(name, pack.situations[name], pack.id) end
 	for _, name in ipairs(SortedKeys(pack.conditions or {})) do
 		-- una funzione (condizione calcolata), un tipo di valore ("bool", "str"...) o { fn =, kind = }
 		local def = pack.conditions[name]

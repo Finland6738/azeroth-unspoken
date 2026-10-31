@@ -301,6 +301,54 @@ those written for another depth **weigh less** (×0.3), so silence never results
 A phrase without `depth` is never penalized. As a rule of thumb: `natural` is direct and everyday,
 `literary` is the base tone, `elevated` is ornate, ancient or ceremonial.
 
+### Monologues (`kind`, `parts`, `order`, `chainable`)
+
+A **monologue** (#99, [ADR 0032](../docs/adr/0032-monologues-of-whole-phrases-and-composite-situations.md)) is two or
+three whole phrases said one after the other as **one** intervention: one line in the narrator, one slot of the
+Director's budget and quotas. It is a rule with `kind = "monologue"` and `parts`, the ids of the phrases in the order
+they are said; it has **no texts of its own**. Each part is an ordinary rule with its own texts and `chainable`:
+
+- `chainable = "only"`: written to go in a monologue, never said alone (it is not a candidate of its event);
+- `chainable = true`: a phrase that also stands on its own.
+
+Rules the validator checks:
+
+- **private voices only**: the monologue and its parts speak as `narrator` or `inner`, never in chat;
+- the first part has the **form** of the monologue (a narrator `emote` follows the character's name); the other parts
+  are whole sentences in the form `say` (for the inner voice everything is `say`);
+- every part has the monologue's **theme** or one of its **motifs**, and a register near the monologue's;
+- 2-3 parts; per language the longest variant of a part is at most 160 bytes and the longest combination at most 380;
+- `order = "free"` lets the parts after the first change places (the first always opens); the default is `"fixed"`;
+- not in combat or spellcraft (a warning): a monologue is for a quiet moment.
+
+**Every variant of a part must go with every variant of the next part**: read them in all their combinations. The
+engine never cuts, joins or fills a phrase (ADR 0001); it only says whole phrases in a row. A monologue weighs less
+(×0.2) while another one is among the last six interventions, and each part counts as used when the monologue speaks.
+`Engine.R1_COMPAT` switches monologues off.
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "pensieri",
+    languages = { "itIT", "enUS" },
+    registry = {
+        ["pensieri.ponte"] = { event = "muse", speaker = "inner", styles = { "intimate" },
+            theme = "journey", motifs = { "river", "road" },
+            kind = "monologue", parts = { "pensieri.ponte.1", "pensieri.ponte.2" } },
+        ["pensieri.ponte.1"] = { event = "muse", speaker = "inner", styles = { "intimate" },
+            theme = "journey", motifs = { "river" }, chainable = "only" },
+        ["pensieri.ponte.2"] = { event = "muse", speaker = "inner", styles = { "intimate" },
+            theme = "journey", motifs = { "road" }, chainable = "only" },
+    },
+    texts = {
+        itIT = { ["pensieri.ponte.1"] = { "Il fiume non si ferma per nessuno.", "L'acqua sotto il ponte ha fretta." },
+            ["pensieri.ponte.2"] = { "Nemmeno io, a quanto pare.", "Forse ha ragione lei." } },
+        enUS = { ["pensieri.ponte.1"] = { "The river stops for no one.", "The water under the bridge is in a hurry." },
+            ["pensieri.ponte.2"] = { "Nor do I, it seems.", "Perhaps it knows something." } },
+    },
+})
+```
+
 ## Events
 
 | Event | When |
@@ -388,6 +436,7 @@ Phrases with more conditions are more specific and receive a higher weight.
 | `element` | `fire`, `frost`, `shadow`, `holy`, `nature`, `arcane`, `physical` |
 | `depth` | the depth chosen by the user: `natural`, `literary`, `elevated` |
 | `intensityMin`, `intensityMax` | intensity chosen by the user (0–100) |
+| `situation` | a composite situation of the Director (one id or a list, see "Direction: composite situations"): the phrase is written for it and speaks only in it |
 | `chance` | extra probability for this phrase alone, from 0 to 100 |
 | `firstVisit`, `repeatVisit` | `true` / `false`: it is the first visit to this zone, or a return (see "Memory" below) |
 | `lastVisitBad` | `true` / `false`, or `"death"` / `"flight"`: the previous visit to this zone ended badly, by a death or a flight |
@@ -1198,6 +1247,10 @@ a **warning** is advice.
 | `badFallback` | error | a related event that is not declared, or a chain of fallbacks that comes back to its start |
 | `badQuota`, `badHunger` | error | a category quota or hunger with values out of range (see "Direction") |
 | `orphanText` | error | texts for an id that no pack has registered |
+| `monologueParts`, `monologueOrder`, `monologuePart`, `monologueVoice`, `monologueForm`, `monologueStyle`, `monologueTheme`, `monologueLength` | error | a monologue with fewer than 2 or more than 3 parts, a wrong `order`, a part that does not exist, is repeated, is not `chainable` or is a monologue, a public voice (also for a `chainable` phrase), a part in the wrong form, with a far register, with neither the theme nor a motif of the monologue, or too long (see "Monologues") |
+| `badKind`, `badChainable` | error | `kind` other than `"monologue"`, `parts` or `order` without it; `chainable` other than `true` or `"only"` |
+| `monologueBusy`, `monologueText`, `orphanPart` | warning | a monologue in combat or spellcraft; texts written for a monologue (they are never said); a `chainable = "only"` phrase that no monologue uses |
+| `badSituation`, `situationLead` | error | a composite situation with an undeclared event, a window outside 1-300 s, wrong conditions or nothing to compose; a phrase for a situation in an event that is not its lead |
 | `noSpeaker`, `noStyle`, `innerEmote` | warning | missing voice or register; a thought in the form of an emote |
 | `unknownEvent`, `unknownCategory`, `unknownStyle`, `unregisteredLanguage` | warning | undeclared event, category or register; language without `RegisterLanguage` |
 
@@ -1222,6 +1275,8 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
 6. Once the phrase is chosen, it chooses a **variant**: among those of the right depth (or with no indication), different from the last one used and, if it can, not opening with the same two words as the last interventions.
 7. The memory of uses and variants is saved between sessions, per character, and uses fade at every access; the memory of themes, motifs, voices, frames and openings lasts only the session.
 8. If the event has no phrase at all, its related event speaks (`fallback`), else silence.
+8a. A monologue is chosen like a phrase (with its own weight and conditions) and renders a variant of each part.
+   When the Director composed a situation for the moment, the phrases written for it are tried before all the others.
 9. Before the engine, the **Narrative Director** decides (spontaneous events, not explicit requests): intensity,
    probability per event (`/au chance`), pauses (global `/au cooldown`, per category, per event), budget per category,
    the quota and hunger of each category (see "Direction"), priority and suspension during cutscenes and demanding combat. A new event has the "ambient" priority;
@@ -1246,6 +1301,56 @@ The base values are in `AzerothUnspoken/Data/Themes.lua`; a later pack replaces 
 AzerothUnspoken:RegisterPack({
     id = "regia",
     hunger = { social = { factor = 1.5, after = 900 } },
+})
+```
+
+## Direction: composite situations
+
+When several things happen together, the Director can tell them **in one line written for that combination** instead
+of choosing one and dropping the others (#100, [ADR 0032](../docs/adr/0032-monologues-of-whole-phrases-and-composite-situations.md)).
+A situation is data:
+
+```text
+situations = {
+    close_call = { lead = "victory", with = { "lowhp" }, within = 30 },
+    rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = { "dusk", "night" } } },
+}
+```
+
+- `lead`: the event whose line speaks (and whose gate, die and budget count);
+- `with`: events that must all have been offered to the Director in this moment or in the last `within` seconds
+  (default 30, at most 300); `withAny`: at least one of them;
+- `when`: conditions on the context of the lead (the same as in a rule).
+
+A phrase for a situation is a rule of the lead event with the condition `situation = "<id>"`. When the winner of a
+moment leads a situation, these phrases are tried **first**; with none that fits, the ordinary phrases of the event
+speak as before. They never speak outside their situation. **Still one line**: a candidate of the same moment that
+the situation includes is *merged* (it does not speak and its `onResult` receives `"merged"`), and an offer is merged
+into a situation once (a second victory after the same low health is an ordinary victory). Write the phrase so that it
+carries both halves of the moment without naming the mechanics ("Still standing", not "my health was low").
+
+The base situations are in `AzerothUnspoken/Data/Themes.lua`: `close_call`, `second_wind` (a victory soon after a
+resurrection), `hard_won_level` (a level after low health or a death), `wounded_arrival` (a new zone still wounded) and
+`rain_dusk_return`. A pack can add its own (`situations = {}`, or `AzerothUnspoken:RegisterSituation(id, def)`) and
+write phrases for any of them.
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "notturni",
+    languages = { "itIT", "enUS" },
+    situations = {
+        night_close_call = { lead = "victory", with = { "lowhp" }, within = 30, when = { time = "night" } },
+    },
+    registry = {
+        ["notturni.vittoria"] = { event = "victory", speaker = "inner", styles = { "intimate" },
+            theme = "mortality", motifs = { "night" },
+            conditions = { situation = { "night_close_call", "close_call" } } },
+    },
+    texts = {
+        itIT = { ["notturni.vittoria"] = "Buio, sangue e ancora fiato. Per stanotte basta così." },
+        enUS = { ["notturni.vittoria"] = "Dark, blood, and breath still in me. That will do for tonight." },
+    },
 })
 ```
 

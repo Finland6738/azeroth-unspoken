@@ -16,6 +16,7 @@ Reported, averaged over the seeds and the two characters:
     interventions that are a phrase inside a frame;
   - a content word (4 letters or more, not a stop word) of an intervention already used in the 4 before it;
   - same voice three times in a row; share of each category; how many zone, victory and reflection lines spoke;
+  - how many interventions were monologues (#99) and lines of a composite situation (#100), and which situations;
   - time of Engine:PickEntry (mean, p95), which must stay close to the R1 numbers.
 
 --r1 switches off what R3 added to the selection and the direction (tiers, fallback, thematic novelty, voice
@@ -66,10 +67,10 @@ Engine.RenderEntry = function(self, entry, lang, ctx, line, nested)
 	return render(self, entry, lang, ctx, line, nested)
 end
 local pick = Engine.PickEntry
-Engine.PickEntry = function(self, event, ctx, form)
+Engine.PickEntry = function(self, event, ctx, form, composite)
 	SIM.frame = nil
 	local t0 = os.clock()
-	local rec = pick(self, event, ctx, form)
+	local rec = pick(self, event, ctx, form, composite)
 	table.insert(SIM.times, (os.clock() - t0) * 1000)
 	if rec then rec.simFrame = SIM.frame end
 	return rec
@@ -82,7 +83,8 @@ ns.Gateway.Propose = function(self, rec, ctx, opts)
 		local f = rec.simFrame
 		table.insert(SIM.out, { id = rec.id, event = rec.event, category = rec.category or Engine.EventCategory(rec.event),
 			speaker = rec.speaker, text = rec.text, theme = p and p.theme or "", auto = opts and opts.auto or false,
-			frame = f and f.id or "", frameText = f and Engine.VariantText((f.text.en or f.text.it)[1]) or "" })
+			frame = f and f.id or "", frameText = f and Engine.VariantText((f.text.en or f.text.it)[1]) or "",
+			kind = rec.kind or "", situation = rec.situation or "" })
 	end
 	return shown
 end
@@ -167,6 +169,15 @@ def metrics(out, times):
     m["category_pct"] = {k: round(100 * v / n, 1) for k, v in sorted(cats.items())}
     m["zone_lines"] = sum(1 for r in out if r["event"] == "zone")
     m["victory_lines"] = sum(1 for r in out if r["event"] == "victory")
+    m["monologues"] = sum(1 for r in out if r["kind"] == "monologue")
+    m["composites"] = sum(1 for r in out if r["situation"])
+    m["monologue_pct"] = 100 * m["monologues"] / n
+    m["composite_pct"] = 100 * m["composites"] / n
+    sits = {}
+    for r in out:
+        if r["situation"]:
+            sits[r["situation"]] = sits.get(r["situation"], 0) + 1
+    m["situations"] = dict(sorted(sits.items()))
     times = sorted(times)
     m["pick_mean_ms"] = statistics.mean(times)
     m["pick_p95_ms"] = times[int(len(times) * 0.95) - 1]
@@ -186,6 +197,11 @@ def session_metrics(addon, hours=3, seeds=(1, 2, 3), r1=False):
         for c, v in r.get("category_pct", {}).items():
             cats[c] = cats.get(c, 0) + v / len(rows)
     avg["category_pct"] = {c: round(v, 1) for c, v in sorted(cats.items())}
+    sits = {}
+    for r in rows:
+        for c, v in r.get("situations", {}).items():
+            sits[c] = sits.get(c, 0) + v / len(rows)
+    avg["situations"] = {c: round(v, 2) for c, v in sorted(sits.items())}
     return avg
 
 

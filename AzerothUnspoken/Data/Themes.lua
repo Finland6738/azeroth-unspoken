@@ -66,4 +66,20 @@ NS:RegisterPack({
 		exploration = { factor = 2.0, after = 600 },
 		reflection = { factor = 1.5, after = 900 },
 	},
+	-- composite situations (#100, ADR 0032): when the Director's winner is the `lead` event and the other events were
+	-- offered in the last `within` seconds (all of `with`, one of `withAny`), or its context matches `when`, the lines
+	-- written for the situation (condition `situation`, Data/RegistrySituations.lua) speak first. Still one line; with
+	-- no fitting line the ordinary pick follows. An offer is merged into a situation once.
+	situations = {
+		-- a victory with low health earlier in the same fight: a hard-won victory
+		close_call = { lead = "victory", with = { "lowhp" }, within = 30 },
+		-- a victory soon after getting up again
+		second_wind = { lead = "victory", with = { "rez" }, within = 240 },
+		-- a level reached right after a hard fight or a death
+		hard_won_level = { lead = "levelup", withAny = { "lowhp", "death" }, within = 180 },
+		-- a new zone entered still wounded from a fight
+		wounded_arrival = { lead = "zone", with = { "lowhp" }, within = 120 },
+		-- a return in the rain as the light goes
+		rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = { "dusk", "night" } } },
+	},
 })

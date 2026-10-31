@@ -1,4 +1,4 @@
-# 0032. Keys shared between packs: refused, unless the pack says `override = true`
+# 0033. Keys shared between packs: refused, unless the pack says `override = true`
 
 - Status: Accepted
 - Date: 2026-10-31 (issue #69, found in the review #58; the Italian gender agreement of #70 and #71 is handled in the same change and described in `PACK_FORMAT.md`)

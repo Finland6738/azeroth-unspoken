@@ -39,6 +39,26 @@ The narrator tries not to sound like a combat commentary or a broken record:
 
 If the narrator seems quiet during long fights, this is why: silence is a normal outcome. `/au debug` shows the reason of the last decisions (for example `quota:combat`).
 
+## When two things happen together
+
+Sometimes two moments come together, and the narrator tells them **as one**, in a line written for that combination:
+
+- a **victory after nearly falling** in the same fight: *"Still standing. I am not entirely sure how."* instead of an ordinary victory;
+- a **victory soon after coming back to life**;
+- a **new level right after a hard fight or a death**: *"So that is what it cost."*;
+- arriving in a **new zone still wounded** from a fight;
+- **coming back** to a place you know **in the rain, as the light goes**.
+
+It is still **one line**: the other moment does not get a line of its own afterwards. In a typical evening of play this happens a handful of times; the rest of the time each moment speaks for itself, as before. `/au prof` counts these moments.
+
+## Short monologues
+
+Now and then, in a quiet moment (a thought you ask for, arriving somewhere, an inn, after a new level or coming back to life), the narrator or your inner voice says **two or three sentences in a row** instead of one: a short train of thought, in one entry of the box.
+
+> *"The road has a way of emptying the head. I let it. My boots know this world better than any map I have bought. Somewhere ahead there is a fire I have not sat at yet."*
+
+They are rare on purpose, never in combat, and **never go to chat**: only the narrator and the inner voice have them. Each sentence is written whole; the addon never assembles words.
+
 ## How to use it
 
 - **Just play.** Lines come by themselves. Their frequency depends on [[intensity|Intensity-and-Depth]].

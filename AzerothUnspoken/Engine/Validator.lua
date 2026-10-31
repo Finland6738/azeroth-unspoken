@@ -153,6 +153,16 @@ function Validator.UnmarkedAgreement(text, lang)
 	return nil
 end
 
+-- #100: a line of a composite situation whose definition asks the weather (rain_dusk_return) names it rightly
+local function SituationWeather(p)
+	if not p.situational then return false end
+	for _, sid in ipairs(Engine.AsList(p.when.situation)) do
+		local def = Engine.SITUATIONS[sid]
+		if def and type(def.when) == "table" and Engine.UsesWeather(def.when) then return true end
+	end
+	return false
+end
+
 ---La prima parola del meteo che il testo nomina, o nil.
 ---@param text string
 ---@param lang string codice breve (en, it)
@@ -179,7 +189,102 @@ end
 local WARM_GUARDED = { greet = true, farewell = true, other_action = true, relation_player = true }
 
 local LOAD_LEVEL = { dupId = "error", badId = "error", noEvent = "error", badForm = "error", badSpeaker = "error",
-	noSpeaker = "warning", badWeight = "error", badCooldown = "error", badConditions = "error", badTier = "error" }
+	noSpeaker = "warning", badWeight = "error", badCooldown = "error", badConditions = "error", badTier = "error",
+	badKind = "error", badChainable = "error" }
+
+-- Monologues (#99, ADR 0032): private voices only; byte limits of a part (its longest variant) and of the whole
+-- monologue (the sum of the longest variant of each part), per language. A monologue is read in the narrator in one
+-- breath: longer than this it becomes a page.
+Validator.MONOLOGUE_SPEAKERS = { narrator = true, inner = true }
+Validator.MONOLOGUE_PART_MAX = 160
+Validator.MONOLOGUE_MAX = 380
+-- categories where a monologue would come in the middle of the action
+Validator.MONOLOGUE_BUSY = { combat = true, spellcraft = true }
+
+---The problems of a monologue (#99): shape, parts, voice, form, register, theme or motif, length. Each problem is
+---{ level, code, lang?, msg }.
+---@param p AUPhrase
+---@param langs string[] languages to measure
+---@return table[]
+function Validator.MonologueProblems(p, langs)
+	local out = {}
+	local function Bad(level, code, msg, lang) table.insert(out, { level = level, code = code, lang = lang, msg = msg }) end
+	local parts = p.parts or {}
+	if #parts < Engine.MONOLOGUE_MIN_PARTS or #parts > Engine.MONOLOGUE_MAX_PARTS then
+		Bad("error", "monologueParts", ("%d parts: a monologue has %d to %d"):format(#parts, Engine.MONOLOGUE_MIN_PARTS,
+			Engine.MONOLOGUE_MAX_PARTS))
+	end
+	if p.order ~= nil and p.order ~= "fixed" and p.order ~= "free" then
+		Bad("error", "monologueOrder", ("order '%s' not valid (fixed or free)"):format(tostring(p.order)))
+	end
+	if not Validator.MONOLOGUE_SPEAKERS[p.speaker] then
+		Bad("error", "monologueVoice", ("voice '%s': a monologue is for private voices (narrator, inner)"):format(tostring(p.speaker)))
+	end
+	if Validator.MONOLOGUE_BUSY[p.category] then
+		Bad("warning", "monologueBusy", ("a monologue in the category '%s' comes in the middle of the action"):format(p.category))
+	end
+	if next(p.text) ~= nil then
+		Bad("warning", "monologueText", "a monologue has no texts of its own: the texts of its parts are said")
+	end
+	local seen, parsed = {}, {}
+	for i, id in ipairs(parts) do
+		local q = type(id) == "string" and Engine.byId[id] or nil
+		if not q then
+			Bad("error", "monologuePart", ("part '%s' does not exist"):format(tostring(id)))
+		elseif seen[id] then
+			Bad("error", "monologuePart", ("part '%s' repeated"):format(id))
+		elseif q.kind == "monologue" then
+			Bad("error", "monologuePart", ("part '%s' is a monologue"):format(id))
+		elseif not q.chainable then
+			Bad("error", "monologuePart", ("part '%s' is not marked chainable"):format(id))
+		else
+			table.insert(parsed, q)
+			if q.speaker ~= p.speaker then
+				Bad("error", "monologueVoice", ("part '%s' speaks as %s, the monologue as %s"):format(id, q.speaker, p.speaker))
+			end
+			-- the first part has the form of the monologue (an emote after the name); the others are whole sentences
+			local form = i == 1 and p.form or "say"
+			if q.form ~= form then
+				Bad("error", "monologueForm", ("part %d '%s' must be in the form %s"):format(i, id, form))
+			end
+			if not Engine.StyleResolver:Compatible(q.styles, p.styles) then
+				Bad("error", "monologueStyle", ("part '%s' has a register far from the monologue's"):format(id))
+			end
+			-- compatible by theme and motif: the theme of the monologue, or one of its motifs
+			local fits = q.theme ~= nil and q.theme == p.theme
+			for _, m in ipairs(q.motifs or {}) do
+				for _, n in ipairs(p.motifs or {}) do
+					if m == n then fits = true end
+				end
+			end
+			if not fits then
+				Bad("error", "monologueTheme", ("part '%s' shares neither the theme nor a motif of the monologue"):format(id))
+			end
+		end
+		if type(id) == "string" then seen[id] = true end
+	end
+	if p.theme == nil then Bad("error", "monologueTheme", "a monologue declares its theme") end
+	-- length, per language: the longest variant of each part, and their sum
+	for _, lang in ipairs(langs) do
+		local total = 0
+		for _, q in ipairs(parsed) do
+			local longest = 0
+			for _, var in ipairs(q.text[lang] or {}) do
+				local n = #Engine.VariantText(var)
+				if n > longest then longest = n end
+			end
+			if longest > Validator.MONOLOGUE_PART_MAX then
+				Bad("error", "monologueLength", ("part '%s': %d bytes, at most %d"):format(q.id, longest,
+					Validator.MONOLOGUE_PART_MAX), lang)
+			end
+			total = total + longest + 1
+		end
+		if total - 1 > Validator.MONOLOGUE_MAX then
+			Bad("error", "monologueLength", ("%d bytes in all, at most %d"):format(total - 1, Validator.MONOLOGUE_MAX), lang)
+		end
+	end
+	return out
+end
 
 ---------------------------------------------------------------------------
 -- UTF-8
@@ -407,6 +512,13 @@ function Validator:Run(opts)
 
 	local packsSeen = {}
 	local ids = Engine.SortedKeys(Engine.byId)
+	-- the phrases some monologue uses (#99)
+	local chained = {}
+	for _, p in pairs(Engine.byId) do
+		if p.kind == "monologue" then
+			for _, part in ipairs(p.parts or {}) do chained[part] = true end
+		end
+	end
 	for _, id in ipairs(ids) do
 		local p = Engine.byId[id]
 		if InScope(p.pack) then
@@ -468,6 +580,29 @@ function Validator:Run(opts)
 					Add("error", "badCondition", p.pack, id, nil, msg)
 				end
 			end
+			-- monologues and their parts (#99)
+			if p.kind == "monologue" then
+				local langs = pack and DeclaredLangs(pack) or {}
+				if #langs == 0 then langs = { "en", "it" } end
+				for _, b in ipairs(Validator.MonologueProblems(p, langs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
+			elseif p.chainable == "only" and not chained[id] then
+				Add("warning", "orphanPart", p.pack, id, nil, "chainable = \"only\" but no monologue uses it")
+			end
+			if p.chainable and not Validator.MONOLOGUE_SPEAKERS[p.speaker] then
+				Add("error", "monologueVoice", p.pack, id, nil, "a chainable phrase is for private voices (narrator, inner)")
+			end
+			-- #100: a line for a composite situation belongs to the situation's lead event
+			if p.situational then
+				for _, sid in ipairs(Engine.AsList(p.when.situation)) do
+					local def = Engine.SITUATIONS[sid]
+					local leads = false
+					for _, ev in ipairs(p.events) do if def and def.lead == ev then leads = true end end
+					if def and not leads then
+						Add("error", "situationLead", p.pack, id, nil,
+							("situation '%s' is led by '%s', not by the events of this line"):format(sid, tostring(def.lead)))
+					end
+				end
+			end
 			-- richiamo di memoria: una frase di un evento di richiamo cita un ricordo, quindi deve dichiarare la
 			-- condizione che lo garantisce (firstVisit, repeatVisit, lastVisitBad, remembered...)
 			if NS.LivingMemory then
@@ -518,122 +653,125 @@ function Validator:Run(opts)
 				Add("warning", "innerEmote", p.pack, id, nil, "una voce interiore non si dice in emote")
 			end
 
-			-- testi
-			local langs = pack and DeclaredLangs(pack) or {}
-			local present = {}
-			for lang in pairs(p.text) do present[lang] = true end
-			local hasAny = false
-			local sigs = {}   -- [lingua] = { [firma] = true }
-			local langList = {}
-			for lang in pairs(present) do table.insert(langList, lang) end
-			table.sort(langList)
-			for _, lang in ipairs(langList) do
-				local list = p.text[lang]
-				local okCount = 0
-				local agreementWarned = false
-				local weatherWarned = Engine.UsesWeather(p.when) or PlaceBound(p.when)
-				if not weatherWarned then
-					weatherWarned = true
-					for _, ev in ipairs(p.events) do
-						if Validator.WEATHER_EVENTS[ev] then weatherWarned = false; break end
+			-- testi (a monologue has none: its parts are checked above, #99)
+			if p.kind ~= "monologue" then
+				-- testi
+				local langs = pack and DeclaredLangs(pack) or {}
+				local present = {}
+				for lang in pairs(p.text) do present[lang] = true end
+				local hasAny = false
+				local sigs = {}   -- [lingua] = { [firma] = true }
+				local langList = {}
+				for lang in pairs(present) do table.insert(langList, lang) end
+				table.sort(langList)
+				for _, lang in ipairs(langList) do
+					local list = p.text[lang]
+					local okCount = 0
+					local agreementWarned = false
+					local weatherWarned = Engine.UsesWeather(p.when) or PlaceBound(p.when) or SituationWeather(p)
+					if not weatherWarned then
+						weatherWarned = true
+						for _, ev in ipairs(p.events) do
+							if Validator.WEATHER_EVENTS[ev] then weatherWarned = false; break end
+						end
 					end
-				end
-				sigs[lang] = {}
-				for i, var in ipairs(list) do
-					var = View(var, p.pack)
-					st.variants = st.variants + 1
-					st.byLang[lang] = (st.byLang[lang] or 0) + 1
-					if not var.ok then
-						Add("error", "emptyVariant", p.pack, id, lang,
-							var.raw and ("variante %d non è una stringa (%s)"):format(i, var.raw)
-							or ("variante %d vuota"):format(i))
-					else
-						okCount = okCount + 1
-						hasAny = true
-						local valid, why = Engine.IsValidUTF8(var.t)
-						if not valid then
-							Add("error", "badUTF8", p.pack, id, lang, ("variante %d: %s"):format(i, why))
-						end
-						local info = Analyze(var.t, lang, { vocabBytes = VocabBytes(lang) })
-						for _, prob in ipairs(info.problems) do
-							Add("error", "badPlaceholder", p.pack, id, lang, ("variante %d: %s"):format(i, prob))
-						end
-						sigs[lang][Signature(info.tags)] = true
-						-- il meteo nominato senza la condizione che lo garantisce (#92): un avviso per regola e lingua
-						if not weatherWarned then
-							local word = Validator.WeatherWord(var.t, lang)
-							if word then
-								weatherWarned = true
-								Add("warning", "weatherWord", p.pack, id, lang,
-									("variante %d nomina il meteo ('%s') senza la condizione weather: con il meteo illeggibile uscirebbe lo stesso"):format(i, word))
+					sigs[lang] = {}
+					for i, var in ipairs(list) do
+						var = View(var, p.pack)
+						st.variants = st.variants + 1
+						st.byLang[lang] = (st.byLang[lang] or 0) + 1
+						if not var.ok then
+							Add("error", "emptyVariant", p.pack, id, lang,
+								var.raw and ("variante %d non è una stringa (%s)"):format(i, var.raw)
+								or ("variante %d vuota"):format(i))
+						else
+							okCount = okCount + 1
+							hasAny = true
+							local valid, why = Engine.IsValidUTF8(var.t)
+							if not valid then
+								Add("error", "badUTF8", p.pack, id, lang, ("variante %d: %s"):format(i, why))
 							end
-						end
-						-- un accordo al maschile fuori da {g:} e {og:} (#70, #71): un avviso per regola e lingua
-						if not agreementWarned then
-							local found = Validator.UnmarkedAgreement(var.t, lang)
-							if found then
-								agreementWarned = true
-								Add("warning", "itAgreement", p.pack, id, lang,
-									("variante %d: '%s' si accorda al maschile senza {g:} né {og:}: usa il segnaposto o una forma neutra"):format(i, found))
+							local info = Analyze(var.t, lang, { vocabBytes = VocabBytes(lang) })
+							for _, prob in ipairs(info.problems) do
+								Add("error", "badPlaceholder", p.pack, id, lang, ("variante %d: %s"):format(i, prob))
 							end
-						end
-						if Engine.PUBLIC_SPEAKERS[p.speaker] then
-							for tag in pairs(info.tags) do
-								if Engine.USER_TEXT[tag] then
-									Add("error", "userTextPublic", p.pack, id, lang,
-										("variante %d: {%s} può contenere un testo scritto dall'utente, ammesso solo nelle voci private (inner, npc), non in '%s'"):format(i, tag, p.speaker))
+							sigs[lang][Signature(info.tags)] = true
+							-- il meteo nominato senza la condizione che lo garantisce (#92): un avviso per regola e lingua
+							if not weatherWarned then
+								local word = Validator.WeatherWord(var.t, lang)
+								if word then
+									weatherWarned = true
+									Add("warning", "weatherWord", p.pack, id, lang,
+										("variante %d nomina il meteo ('%s') senza la condizione weather: con il meteo illeggibile uscirebbe lo stesso"):format(i, word))
 								end
 							end
-						end
-						for d in pairs(var.depth or {}) do
-							if not Engine.DEPTHS[d] then
-								Add("error", "badDepth", p.pack, id, lang, ("variante %d: profondità '%s' sconosciuta"):format(i, d))
+							-- un accordo al maschile fuori da {g:} e {og:} (#70, #71): un avviso per regola e lingua
+							if not agreementWarned then
+								local found = Validator.UnmarkedAgreement(var.t, lang)
+								if found then
+									agreementWarned = true
+									Add("warning", "itAgreement", p.pack, id, lang,
+										("variante %d: '%s' si accorda al maschile senza {g:} né {og:}: usa il segnaposto o una forma neutra"):format(i, found))
+								end
 							end
-						end
-						-- lunghezza: il peggiore dei canali possibili
-						local worst, worstCh = info.bytes, nil
-						local channels = CHANNELS[p.speaker] or {}
-						local limit, limitCh = math.huge, nil
-						for _, ch in ipairs(channels) do
-							if Validator.LIMITS[ch] < limit then limit, limitCh = Validator.LIMITS[ch], ch end
-						end
-						if worst > limit then
-							local private = p.speaker == "inner" or p.speaker == "npc"
-							Add(private and "warning" or "error", "tooLong", p.pack, id, lang, ("variante %d: fino a %d byte, il limite di %s è %d"):format(i, worst, limitCh, limit))
-						end
-						-- parlata raccontata in una cornice: cornice più frase nel limite di /e
-						if p.speaker == "character" and p.form == "say" then
-							local over = FrameOverhead(lang, p.events)
-							if over > 0 and worst + over > Validator.LIMITS.EMOTE then
-								Add("warning", "tooLongFramed", p.pack, id, lang,
-									("variante %d: dentro la cornice più lunga arriva a %d byte (limite %d)"):format(
-										i, worst + over, Validator.LIMITS.EMOTE))
+							if Engine.PUBLIC_SPEAKERS[p.speaker] then
+								for tag in pairs(info.tags) do
+									if Engine.USER_TEXT[tag] then
+										Add("error", "userTextPublic", p.pack, id, lang,
+											("variante %d: {%s} può contenere un testo scritto dall'utente, ammesso solo nelle voci private (inner, npc), non in '%s'"):format(i, tag, p.speaker))
+									end
+								end
 							end
-						end
-						if p.form == "emote" and (var.t:match("^[A-Z\"]") or var.t:sub(1, 2) == "«") then
-							Add("error", "emoteCase", p.pack, id, lang,
-								("variante %d: l'emote inizia in maiuscolo o con le virgolette (il gioco antepone il nome)"):format(i))
+							for d in pairs(var.depth or {}) do
+								if not Engine.DEPTHS[d] then
+									Add("error", "badDepth", p.pack, id, lang, ("variante %d: profondità '%s' sconosciuta"):format(i, d))
+								end
+							end
+							-- lunghezza: il peggiore dei canali possibili
+							local worst, worstCh = info.bytes, nil
+							local channels = CHANNELS[p.speaker] or {}
+							local limit, limitCh = math.huge, nil
+							for _, ch in ipairs(channels) do
+								if Validator.LIMITS[ch] < limit then limit, limitCh = Validator.LIMITS[ch], ch end
+							end
+							if worst > limit then
+								local private = p.speaker == "inner" or p.speaker == "npc"
+								Add(private and "warning" or "error", "tooLong", p.pack, id, lang, ("variante %d: fino a %d byte, il limite di %s è %d"):format(i, worst, limitCh, limit))
+							end
+							-- parlata raccontata in una cornice: cornice più frase nel limite di /e
+							if p.speaker == "character" and p.form == "say" then
+								local over = FrameOverhead(lang, p.events)
+								if over > 0 and worst + over > Validator.LIMITS.EMOTE then
+									Add("warning", "tooLongFramed", p.pack, id, lang,
+										("variante %d: dentro la cornice più lunga arriva a %d byte (limite %d)"):format(
+											i, worst + over, Validator.LIMITS.EMOTE))
+								end
+							end
+							if p.form == "emote" and (var.t:match("^[A-Z\"]") or var.t:sub(1, 2) == "«") then
+								Add("error", "emoteCase", p.pack, id, lang,
+									("variante %d: l'emote inizia in maiuscolo o con le virgolette (il gioco antepone il nome)"):format(i))
+							end
 						end
 					end
+					if okCount == 0 and #list > 0 then
+						Add("error", "emptyLang", p.pack, id, lang, "tutte le varianti sono vuote")
+					end
 				end
-				if okCount == 0 and #list > 0 then
-					Add("error", "emptyLang", p.pack, id, lang, "tutte le varianti sono vuote")
+				if not hasAny then
+					Add("error", "noText", p.pack, id, nil, "nessun testo in nessuna lingua")
 				end
-			end
-			if not hasAny then
-				Add("error", "noText", p.pack, id, nil, "nessun testo in nessuna lingua")
-			end
-			for _, lang in ipairs(langs) do
-				local list = p.text[lang]
-				local usable = false
-				for _, var in ipairs(list or {}) do if Engine.VariantOk(var) then usable = true; break end end
-				if not usable then
-					Add("error", "missingLang", p.pack, id, lang, ("manca il testo in '%s'"):format(lang))
+				for _, lang in ipairs(langs) do
+					local list = p.text[lang]
+					local usable = false
+					for _, var in ipairs(list or {}) do if Engine.VariantOk(var) then usable = true; break end end
+					if not usable then
+						Add("error", "missingLang", p.pack, id, lang, ("manca il testo in '%s'"):format(lang))
+					end
 				end
-			end
-			-- segnaposto: stesse firme in tutte le lingue dichiarate
-			for _, m in ipairs(CompareSignatures(sigs, langs)) do
-				Add("error", "placeholderMismatch", p.pack, id, m[1], m[2])
+				-- segnaposto: stesse firme in tutte le lingue dichiarate
+				for _, m in ipairs(CompareSignatures(sigs, langs)) do
+					Add("error", "placeholderMismatch", p.pack, id, m[1], m[2])
+				end
 			end
 		end
 	end
@@ -770,6 +908,45 @@ function Validator:Run(opts)
 				Add("error", "badHunger", nil, "hunger:" .. cat, nil, "hunger needs a factor 1-5 and after > 0")
 			elseif not Engine.CATEGORIES[cat] then
 				Add("warning", "unknownCategory", nil, "hunger:" .. cat, nil, ("categoria '%s' sconosciuta"):format(cat))
+			end
+		end
+	end
+
+	-- composite situations (#100): a declared lead event, declared events to merge, a window, valid conditions
+	if not scope then
+		local span = NS.Director and NS.Director.RECENT_SPAN or 300
+		for _, sid in ipairs(Engine.SITUATION_ORDER) do
+			local def = Engine.SITUATIONS[sid]
+			local key = "situation:" .. sid
+			if type(def.lead) ~= "string" or not Engine.events[def.lead] then
+				Add("error", "badSituation", def.pack, key, nil, ("lead '%s' is not a declared event"):format(tostring(def.lead)))
+			end
+			local n = 0
+			for _, field in ipairs({ "with", "withAny" }) do
+				local list = def[field]
+				if list ~= nil and type(list) ~= "table" then
+					Add("error", "badSituation", def.pack, key, nil, field .. " must be a list of events")
+				else
+					for _, ev in ipairs(list or {}) do
+						n = n + 1
+						if type(ev) ~= "string" or not Engine.events[ev] then
+							Add("error", "badSituation", def.pack, key, nil, ("%s: '%s' is not a declared event"):format(field, tostring(ev)))
+						end
+					end
+				end
+			end
+			if def.within ~= nil and not (type(def.within) == "number" and def.within > 0 and def.within <= span) then
+				Add("error", "badSituation", def.pack, key, nil, ("within must be 1-%d seconds"):format(span))
+			end
+			if def.when ~= nil then
+				if type(def.when) ~= "table" then
+					Add("error", "badSituation", def.pack, key, nil, "when must be a table of conditions")
+				else
+					for _, msg in ipairs(Engine.CheckConditions(def.when)) do Add("error", "badSituation", def.pack, key, nil, msg) end
+				end
+			end
+			if n == 0 and def.when == nil then
+				Add("error", "badSituation", def.pack, key, nil, "a situation needs other events (with, withAny) or conditions (when)")
 			end
 		end
 	end

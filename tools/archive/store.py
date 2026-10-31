@@ -47,13 +47,17 @@ OVERLAY_TABLES = {
     # file: (table, columns, key)
     "authors.csv": ("author", ("id", "name", "kind", "note"), ("id",)),
     "intentions.csv": ("intention", ("id", "pack_id", "state", "author_id", "events", "category", "speaker", "form",
-                                     "styles", "depth", "tags", "theme", "motifs", "tier", "weight", "cooldown",
-                                     "conditions", "extra", "attribution", "invented_lore"), ("id",)),
+                                     "styles", "depth", "tags", "theme", "motifs", "tier", "kind", "parts", "part_order",
+                                     "chainable", "weight", "cooldown", "conditions", "extra", "attribution",
+                                     "invented_lore"), ("id",)),
     "variants.csv": ("variant", ("intention_id", "lang", "ord", "text", "depth"), ("intention_id", "lang", "ord")),
     "reviews.csv": ("review", ("id", "intention_id", "reviewer", "verdict", "note", "date"), ("id",)),
     "changelog.csv": ("changelog", ("id", "date", "author", "action", "intention_id", "from_state", "to_state", "note"), ("id",)),
 }
-JSON_COLUMNS = {"events", "styles", "depth", "tags", "motifs", "tier", "conditions", "extra"}
+JSON_COLUMNS = {"events", "styles", "depth", "tags", "motifs", "tier", "parts", "chainable", "conditions", "extra"}
+# monologues (#99): the rule field `order` is the column part_order (ORDER is an SQL keyword)
+MONOLOGUE_PARTS = (2, 3)
+PRIVATE_SPEAKERS = ("narrator", "inner")
 TIERS = {"generic": 0, "situation": 1, "region": 1, "zone": 2, "subzone": 3, "landmark": 4}
 MAX_MOTIFS = 3
 # the emotions of R4 (Engine.EMOTIONS in Engine/RuleEngine.lua; Tests/check_archive.py checks the two lists match)
@@ -178,16 +182,17 @@ def insert_intention(con, id, pack_id, rule, state="approved", author=LEGACY, at
     rule = dict(rule)
     events = rule.pop("event", None) or []
     known = {k: rule.pop(k, None) for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown",
-                                            "conditions", "theme", "motifs", "tier")}
+                                            "conditions", "theme", "motifs", "tier", "kind", "parts", "order", "chainable")}
     extra = dict(rule) or None
     keys = index_keys(known["conditions"])
     con.execute(
         "INSERT INTO intention (id, pack_id, state, author_id, events, category, speaker, form, styles, depth, tags, theme,"
-        " motifs, tier, weight, cooldown, conditions, extra, ctx, region, attribution, invented_lore, origin) VALUES"
-        " (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        " motifs, tier, kind, parts, part_order, chainable, weight, cooldown, conditions, extra, ctx, region, attribution,"
+        " invented_lore, origin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (id, pack_id, state, author, jdump(events), known["category"], known["speaker"], known["form"],
          jdump(known["styles"]), jdump(known["depth"]), jdump(known["tags"]), known["theme"], jdump(known["motifs"]),
-         jdump(known["tier"]), known["weight"], known["cooldown"],
+         jdump(known["tier"]), known["kind"], jdump(known["parts"]), known["order"], jdump(known["chainable"]),
+         known["weight"], known["cooldown"],
          jdump(known["conditions"]), jdump(extra), ",".join(keys), pack["region"], attribution or "", int(bool(invented_lore)),
          origin))
 
@@ -254,6 +259,14 @@ def get_rule(con, id):
         out["theme"] = r["theme"]
     if r["motifs"] is not None:
         out["motifs"] = jload(r["motifs"])
+    if r["kind"] is not None:
+        out["kind"] = r["kind"]
+    if r["parts"] is not None:
+        out["parts"] = jload(r["parts"])
+    if r["part_order"] is not None:
+        out["order"] = r["part_order"]
+    if r["chainable"] is not None:
+        out["chainable"] = jload(r["chainable"])
     out.update(jload(r["extra"]) or {})
     return out
 
@@ -603,11 +616,15 @@ def load_overlay(con, directory=OVERLAY_DIR):
         for k in ("category", "speaker", "form"):
             if r[k] != "":
                 rule[k] = r[k]
-        for k in ("styles", "depth", "tags", "motifs", "tier", "conditions"):
+        for k in ("styles", "depth", "tags", "motifs", "tier", "parts", "chainable", "conditions"):
             if r[k] != "":
                 rule[k] = json.loads(r[k])
         if r["theme"] != "":
             rule["theme"] = r["theme"]
+        if r["kind"] != "":
+            rule["kind"] = r["kind"]
+        if r["part_order"] != "":
+            rule["order"] = r["part_order"]
         for k in ("weight", "cooldown"):
             if r[k] != "":
                 rule[k] = json.loads(r[k])
@@ -721,6 +738,40 @@ def _emotion_problems(tags, cond):
     return problems
 
 
+def _monologue_problems(con, r):
+    """#99: a monologue chains two or three existing chainable phrases of a private voice; a chainable phrase is private;
+    a rule field of a monologue is only on a monologue. The engine's validator checks the rest (form, register, theme,
+    length) when the folders are loaded."""
+    problems = []
+    kind, parts, order, chainable = r["kind"], jload(r["parts"]), r["part_order"], jload(r["chainable"])
+    if kind is not None and kind != "monologue":
+        problems.append("kind must be monologue")
+    if chainable is not None and chainable not in (True, False, "only"):
+        problems.append('chainable must be true or "only"')
+    if chainable and r["speaker"] not in PRIVATE_SPEAKERS:
+        problems.append("a chainable phrase is for private voices (narrator, inner)")
+    if kind != "monologue":
+        if parts is not None or order is not None:
+            problems.append("parts and order belong to a monologue")
+        return problems
+    if r["speaker"] not in PRIVATE_SPEAKERS:
+        problems.append("a monologue is for private voices (narrator, inner)")
+    if order is not None and order not in ("fixed", "free"):
+        problems.append("order must be fixed or free")
+    if not isinstance(parts, list) or not MONOLOGUE_PARTS[0] <= len(parts) <= MONOLOGUE_PARTS[1]:
+        problems.append("a monologue has %d to %d parts" % MONOLOGUE_PARTS)
+        return problems
+    for part in parts:
+        q = con.execute("SELECT kind, chainable, speaker, state FROM intention WHERE id = ?", (part,)).fetchone()
+        if q is None:
+            problems.append("part %s does not exist" % part)
+        elif q["kind"] is not None or not jload(q["chainable"]):
+            problems.append("part %s is not a chainable phrase" % part)
+        elif q["speaker"] != r["speaker"]:
+            problems.append("part %s speaks as %s, the monologue as %s" % (part, q["speaker"], r["speaker"]))
+    return problems
+
+
 def check_content(con, id, stage="approve"):
     """The problems of an intention's content for a stage: "draft" (the shape is valid), "review" (and every language of
     the pack has a text) or "approve" (and invented lore in a narrator line has an attribution, decision D7). An empty
@@ -749,6 +800,8 @@ def check_content(con, id, stage="approve"):
             if m not in motifs:
                 problems.append("unknown motif: %s" % m)
     problems.extend(_emotion_problems(jload(r["tags"]) or [], jload(r["conditions"])))
+    problems.extend(_monologue_problems(con, r))
+    monologue = r["kind"] == "monologue"
     tier = jload(r["tier"])
     if tier is not None and tier not in TIERS and tier not in TIERS.values():
         problems.append("tier must be 0-4 or one of %s" % ", ".join(TIERS))
@@ -756,8 +809,10 @@ def check_content(con, id, stage="approve"):
     langs = jload(pack["languages"]) or []
     for lang in sorted({v[0] for v in con.execute("SELECT lang FROM variant WHERE intention_id = ?", (id,))} | set(langs)):
         texts = [v["text"] for v in con.execute("SELECT text FROM variant WHERE intention_id = ? AND lang = ?", (id, lang))]
-        if not texts and stage != "draft" and lang in langs:
+        if not texts and stage != "draft" and lang in langs and not monologue:
             problems.append("no text in %s" % lang)
+        if texts and monologue:
+            problems.append("a monologue has no texts of its own (%s): its parts are said" % lang)
         if len(set(texts)) != len(texts):
             problems.append("repeated variant in %s" % lang)
         for t in texts:
@@ -807,15 +862,15 @@ def add_draft(con, d, default_author="ai"):
     if row is None:
         raise ArchiveError("%s: unknown pack %r" % (id, pack))
     unknown = set(d) - {"id", "pack", "event", "events", "category", "speaker", "form", "styles", "depth", "tags", "weight",
-                        "cooldown", "conditions", "theme", "motifs", "tier", "texts", "author", "attribution",
-                        "invented_lore"}
+                        "cooldown", "conditions", "theme", "motifs", "tier", "kind", "parts", "order", "chainable", "texts",
+                        "author", "attribution", "invented_lore"}
     if unknown:
         raise ArchiveError("%s: unknown fields %s" % (id, ", ".join(sorted(unknown))))
     rule = {"event": d.get("event") or d.get("events") or []}
     if isinstance(rule["event"], str):
         rule["event"] = [rule["event"]]
     for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "conditions", "theme",
-              "motifs", "tier"):
+              "motifs", "tier", "kind", "parts", "order", "chainable"):
         if d.get(k) is not None:
             rule[k] = d[k]
     texts = d.get("texts") or {}
