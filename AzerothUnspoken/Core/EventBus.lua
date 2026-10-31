@@ -163,6 +163,23 @@ function EventBus:AddSource(wowEvent, def)
 	if self.frame then Compat:RegisterEvent(self.frame, wowEvent, def.unit) end
 end
 
+-- A source that is only wanted while an option is on (nameplates and mouseover for proximity, #113): it stops being
+-- registered, so the client does not even call the addon.
+function EventBus:RemoveSource(wowEvent)
+	if not self.sources[wowEvent] then return end
+	self.sources[wowEvent] = nil
+	for i, e in ipairs(self.sourceOrder) do
+		if e == wowEvent then table.remove(self.sourceOrder, i) break end
+	end
+	if self.frame and self.frame.UnregisterEvent then pcall(self.frame.UnregisterEvent, self.frame, wowEvent) end
+	-- an event that is off on purpose is not a missing one: drop its capability line from the diagnostics
+	local id = "event:" .. wowEvent
+	Compat.caps[id] = nil
+	for i, c in ipairs(Compat.capOrder) do
+		if c == id then table.remove(Compat.capOrder, i) break end
+	end
+end
+
 function EventBus:OnGameEvent(wowEvent, ...)
 	local def = self.sources[wowEvent]
 	if not def then return end

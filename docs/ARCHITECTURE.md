@@ -112,7 +112,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Integration/ChatGateway.lua`** | modes, proposals, channels, sending only from a player action, anti-flood, `AzerothUnspoken_Speak`; `Reroll` ("Another": replaces the proposal with another line for the same event and context, without sending or spending the Director's budget). |
 | **`Systems/Personality.lua`** | the Character Soul: eight opt-in traits, archetypes, effective profile (choice > Total RP 3 > game data > neutral), the `P` factor of the weight, register preferences, the `soul` condition, `ctx.soul`, the `/au soul` command. |
 | **`Systems/LivingMemory.lua`** | the Living Memory ([ADR 0017](adr/0017-living-memory-selective-memories-and-honest-recall.md)): memories, visited places and flags per character (`cdb.memories`), session moments, compaction to 500, permanent ones, reset, migrations, `ctx.memory`, recall events with a guard (`RegisterRecall`), text export, the `/au journal` command. |
-| **`Systems/Relationships.lua`** | the relationships ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)): seven independent axes, labels and disposition derived from the data, NPCs computed from the `npcID` (dialogue, quest, vendor, flight, trainer, inn) with diminishing returns, a daily cap and decay, players chosen by the user with suggestions and, for each, a `user` block (what the user chose, written only by user actions) apart from a `seen` block (what the addon observed: encounters by type, last facts), feelings in words, `ctx.relation` and the like, the `R` factor, register by familiarity, the `relation_npc` and `relation_player` events, the `/au relationships` command ([ADR 0026](adr/0026-player-records-user-choices-apart-from-observations.md)). |
+| **`Systems/Relationships.lua`** | the relationships ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)): seven independent axes, labels and disposition derived from the data, NPCs computed from the `npcID` (dialogue, quest, vendor, flight, trainer, inn) with diminishing returns, a daily cap and decay, players chosen by the user with suggestions and, for each, a `user` block (what the user chose, written only by user actions) apart from a `seen` block (what the addon observed: encounters by type, last facts), feelings in words, `ctx.relation` and the like, the `R` factor, register by familiarity, the `relation_npc` and `relation_player` events, optional proximity recognition by nameplate and mouseover (session only, writes nothing), an optional list shared by the account's characters, the `/au relationships` command ([ADR 0026](adr/0026-player-records-user-choices-apart-from-observations.md), [ADR 0030](adr/0030-proximity-session-proposal-and-account-shared-list.md)). |
 | **`Systems/Place.lua`** | the place ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.place` (zone, uiMapID, continent, tags, territory, capital, instance, boss encounter, role in the group, battleground), `Place:Lookup` on the data in `Data/Places.lua`, `Place.Key` (stable memory key), the `C` factor of `place.` tags and short lines, rhythm by instance type, demand during bosses, the `encounter_end` event, the `/au place` command. |
 | **`Systems/Interlocutor.lua`** | the interlocutor ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.other` (game data, role, personality with the S5 traits, recent actions, relationship), sources in order (user > public TRP3 with consent > `Data/NPCs.lua` > role from reliable interactions > weak tendency > neutral), the `C` factor of `other.` tags, register by manner of speaking and role, the `npc_meet` and `other_action` events, the `/au who` command. |
 | **`Systems/NPCAlive.lua`** | NPC Alive ([ADR 0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)): ambient dialogues with an NPC. State machine `idle → offered → opened → choice → response → ended` with verified transitions, identity (a specific NPC from the curated registry or an archetype from the current interaction; never if uncertain or secret), scripts (`NS:RegisterDialogues`: nodes, replies, flags), lines from the engine rules, local effects (flag, relationship, memory), an automatic offer that expires, interruptions (combat, death, zone, another NPC, quest), the `AzerothUnspoken_NPCDialogue` key binding, the `/au talk` command. |
@@ -413,6 +413,38 @@ flowchart LR
 - **Conditions from the observations** (#110): `ctx.relDaysSince`, `ctx.relMetHere` and `ctx.relShared` come from `seen` and from `session.prior`, the state before the session's first meeting.
 - **Migration**: `R.MigrateV1` (version 1 → 2) runs in `Sanitize`; data of a newer version stays read-only.
 
+#### Proximity: nameplates and mouseover ([ADR 0030](adr/0030-proximity-session-proposal-and-account-shared-list.md))
+
+```mermaid
+flowchart LR
+    O["relations.proximity<br/>(off by default)"] -- "on: AddSource" --> S["NAME_PLATE_UNIT_ADDED<br/>UPDATE_MOUSEOVER_UNIT"]
+    S --> F["ProximityReady: option, 60 s pause,<br/>10 per session<br/>players only, identity not secret"]
+    F --> P["PROXIMITY_UNIT → R:Nearby"]
+    P -- "listed (character or shared)" --> RC["R:Recognize<br/>once per person and session"]
+    P -- "not listed + TRP3 consent<br/>+ profile in the registry" --> SG["R:Suggest 'proximity'<br/>(memory only)"]
+    RC --> DIR["Director: relation_player<br/>(budget, moment, chance)"]
+    P -. "never" .-> NO["no record · no seen · no count<br/>nothing about strangers"]
+```
+
+- The two client events are registered **only while the option is on** (`EventBus:AddSource` / `EventBus:RemoveSource`, `R:ApplyProximity`); with it off the client does not call the addon for them.
+- `R:Nearby(unit)` reads nothing from a unit whose identity is secret (`Compat:IsUnitIdentitySecret`), and drops a secret name or realm. A listed player goes through `R:Recognize` (the guard shared with the group, the interactions and the target); with the Total RP 3 consent of S6c an unlisted person with a TRP3 profile becomes a session suggestion (`source = "proximity"`).
+- It **writes nothing** (a sighting is not an encounter) and keeps nothing about a stranger, not even in memory. "Register by itself" does not apply: `R:Suggest` never registers.
+- Limits: `R.PROXIMITY_GAP` = 60 s between proposals and `R.PROXIMITY_MAX` = 10 per session; a person already recognised costs none of the budget.
+
+#### The list shared in the account ([ADR 0030](adr/0030-proximity-session-proposal-and-account-shared-list.md))
+
+`relations.sharePlayers` (off by default; two steps with a warning to turn on) keeps the **choices** about people in `AzerothUnspokenDB.sharedPlayers` and shares them between the account's characters.
+
+| Layer | Where | Holds |
+|---|---|---|
+| character (always, the default) | `cdb.relationships.players` | `user` (choices), `seen`, `noted`, `scope` |
+| shared (opt-in) | `gdb.sharedPlayers = { version = 1, players = { [key] = { source, user } } }` | choices only: no observations, no journal flags |
+
+- **Precedence**: a character record with choices of its own (non-empty `user`, or `scope = "character"`) wins **as a whole**; otherwise the shared block counts. Blocks are never mixed field by field. `R:Get("player", key)` returns the real character record, or a view (`rec.view`) whose `user` is the shared block and whose `seen` is this character's; `R:ScopeOf(key)` says which one counts.
+- **Writes** go to the block that counts (`Edit` calls `R:Adopt` to make the shared record on demand); `R:SetScope` switches a person between *shared* and *character*. Only user actions put people in the shared list (`AddPlayer` with sharing on, `SetScope`, `ShareAll`).
+- **Migration and the way back**: turning it on moves nothing; `R:ShareAll` moves this character's choices up (the character's own win where the account has choices); `R:CopySharedHere` copies the account's choices into the character. **Off** keeps the account list intact and unused.
+- Listing, counts, the window and the export use the union of the layers; `Remove person` with sharing on removes from both; `reset players` clears the character's records and `reset shared` the account's list.
+
 ### NPC Alive
 
 `Systems/NPCAlive.lua` and `UI/DialogueFrame.lua` ([ADR 0020](adr/0020-simulated-dialogue-and-real-dialogue-npc-alive.md)) are the ambient dialogues: a **simulated** micro-dialogue with an identifiable NPC, in a separate window, never in chat.
@@ -557,7 +589,7 @@ flowchart LR
 
 | Variable | Content |
 |---|---|
-| `AzerothUnspokenDB` | `schemaVersion` (currently 7) and `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`), `interlocutor` (`trp3Others`: consent to read other people's public Total RP 3 profile), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (button, wizard done, `narrator`: duration, opacity, size, lock, history; `dialogue`: size, opacity, lock, position). |
+| `AzerothUnspokenDB` | `schemaVersion` (currently 7), `sharedPlayers` (only if the user turned the shared list on: `version` 1 and the choices about people, see above) and `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`, `recognizeTarget`, `proximity`, `sharePlayers`), `interlocutor` (`trp3Others`: consent to read other people's public Total RP 3 profile), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (button, wizard done, `narrator`: duration, opacity, size, lock, history; `dialogue`: size, opacity, lock, position). |
 | `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (anti-repetition, bounded: uses, last variants, running cooldowns, recent lines, tone), `personality` (`version`, `archetype`, `traits`, `trp3`: explicit Character Soul choices and consent to Total RP 3) `relationships` (relationships: `version` 2, `npcs` by `npcID`, `players` by "Name-Realm" with a `user` and a `seen` block; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
 
 Every per-character datum also has its **own version** (`personality.version`, `memories.version`, `relationships.version`, `arcs.version`), with migrations and cleanup (`Sanitize`) in its own module. A version newer than the one known (you went back to an older addon) is read but **not rewritten**.
@@ -567,7 +599,8 @@ Every per-character datum also has its **own version** (`personality.version`, `
 | `AzerothUnspokenDB` / `AzerothUnspokenCharacterDB` | `Config.SCHEMA_VERSION` = 7 | `Config.migrations.global[n]` and `.character[n]` |
 | `cdb.personality` | 1 | `Personality:Sanitize` |
 | `cdb.memories` | 2 (place key by uiMapID, #31) | `LM.migrations[n]` |
-| `cdb.relationships` | 1 | `R:Sanitize` |
+| `cdb.relationships` | 2 (user/seen blocks, #107) | `R:Sanitize`, `R.MigrateV1` |
+| `gdb.sharedPlayers` | 1 (#114) | `R:SanitizeShared` |
 | `cdb.arcs` | 1 | `SA.migrations`, `SA:Sanitize` |
 
 ```mermaid
@@ -581,7 +614,7 @@ flowchart LR
 
 - Defaults are in `Config.defaults` and `Config.characterDefaults`; validity rules in `Config.rules`.
 - Migrations are `Config.migrations.global[n]` and `.character[n]` ([ADR 0006](adr/0006-savedvariables-and-schema-versions.md)).
-- **Chat content is never saved**, nor the lines of the dialogues, nor the arcs' texts (only the ids of the choices); of the relationships with players only those chosen by the user are saved, with the counts, places and times of the meetings the addon observed for people already in the list (never a text). The `privacy.*` fields (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) already exist, switched off, for the future Social module.
+- **Chat content is never saved**, nor the lines of the dialogues, nor the arcs' texts (only the ids of the choices); of the relationships with players only those chosen by the user are saved, with the counts, places and times of the meetings the addon observed for people already in the list (never a text). Proximity (nameplates, mouseover) saves nothing and keeps nothing about strangers; the account-wide list of choices exists only if the user turned it on. The `privacy.*` fields (`socialOptIn`, `shareMemories`, `acceptSceneInvites`) already exist, switched off, for the future Social module.
 - The rest of the state (immediate pause `NS.paused`, pending proposal, history, error log, memory of the last send) lives in memory only.
 
 ### Folders of the download and when they are loaded

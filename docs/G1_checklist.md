@@ -627,6 +627,46 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
 
 ---
 
+## R4b2: prossimità e lista condivisa (aggiunto dalle issue #113 e #114)
+
+**A cosa serve.** Due opzioni, **entrambe spente di base**. **Riconosci chi è vicino**: nameplate e mouseover possono far riconoscere al narratore una persona **già in lista** (e, con il consenso a leggere i profili Total RP 3 degli altri, proporre chi ha un profilo), solo per la sessione, senza aggiungere né salvare nulla. **Condividi con l'account**: le **scelte** sulle persone (non le osservazioni) stanno nell'account e le usano tutti i tuoi personaggi. Servono **un secondo giocatore** (o più persone attorno, in città) e, per la condivisione, **due personaggi** dello stesso account. Tutto è provato fuori dal gioco con la finta API; qui si verifica che il client vero mandi gli eventi e che la finestra, ora più alta, entri nello schermo.
+
+- **R4b2.1 · Spento di base.** Con `/au debug` leggi la riga delle relazioni: deve dire **proximity false** e **shared list off**. Passa in una città piena di gente, prendi qualcuno con il mouse.
+    - **Cosa aspettarti:** nessuna frase di riconoscimento e nessuna nuova persona; il narratore non cambia comportamento.
+    - **Cosa riportare:** se il comportamento cambia con l'opzione spenta.
+- **R4b2.2 · Nameplate.** Aggiungi alla lista un amico (o un tuo secondo personaggio), poi accendi **Riconosci chi è vicino** (finestra, oppure `/au relationships proximity on`). `/au chance relation_player 100`. Fatti vedere da lui con le nameplate dei giocatori attive, anche a distanza.
+    - **Cosa aspettarti:** una frase di riconoscimento nel narratore **privato** (mai in chat), **una sola per persona e per sessione** (se esce dal campo e rientra, nessuna seconda), e non più di una proposta al minuto. Nella scheda della persona gli **incontri non salgono** (`Incontri` resta com'era) e non compare nessun nuovo fatto.
+    - **Cosa riportare:** se la frase è comparsa, dopo quanto, e se `/au debug` mostra **proximity true (1 proposed, ...)**.
+- **R4b2.3 · Mouseover.** Con la stessa opzione, passa il mouse su un'altra persona **già in lista** (un modello 3D nel mondo, non solo la nameplate).
+    - **Cosa aspettarti:** lo stesso comportamento (una volta per persona e per sessione).
+    - **Cosa riportare:** se l'evento `UPDATE_MOUSEOVER_UNIT` non arriva in qualche caso (frame dell'interfaccia, gruppo).
+- **R4b2.4 · Estranei.** Con l'opzione accesa, passa tra persone **non** in lista.
+    - **Cosa aspettarti:** niente di niente: nessuna persona in lista, nessuna proposta (a meno del punto 5), nessun testo. Accendi **Registra da solo**: anche così nessuno entra in lista.
+    - **Cosa riportare:** qualunque persona comparsa da sola.
+- **R4b2.5 · Profili Total RP 3.** Con Total RP 3 installato, consenso ai profili degli altri acceso (`/au who trp3 on` o il pannello delle impostazioni) e il profilo di un'altra persona **non in lista** nel registro di TRP3, passale vicino con l'opzione accesa.
+    - **Cosa aspettarti:** la persona compare in **Persone incontrate** come proposta («vicino a te (profilo Total RP 3)»); **non** entra in lista; sparisce alla prossima sessione. Senza consenso, nulla.
+    - **Cosa riportare:** se compare, e se `UnitFullName` funziona sull'unità della nameplate.
+- **R4b2.6 · Identità segrete.** Dove il gioco nasconde i nomi (istanze con restrizioni, se ne trovi una), con l'opzione accesa.
+    - **Cosa aspettarti:** nessuna frase, nessun errore Lua; `/au debug` conta le identità segrete (**secret**) senza nomi.
+    - **Cosa riportare:** gli errori, se ce ne sono, e dove.
+- **R4b2.7 · Il limite.** Passa tra molte persone **in lista** (se ne hai più di una).
+    - **Cosa aspettarti:** al massimo una proposta al minuto e dieci per sessione; chi è già stato riconosciuto non pesa. Dopo `/reload` si riparte da zero.
+    - **Cosa riportare:** se una pausa di 60 secondi ti sembra troppo corta o troppo lunga.
+- **R4b2.8 · Lista condivisa: accendere.** Nella finestra premi **Condividi con l'account** (oppure `/au relationships share on`).
+    - **Cosa aspettarti:** un **avviso** (privacy e gioco di ruolo) e il pulsante che chiede **Conferma: condividi**; solo il secondo clic (entro 15 secondi) la accende. La finestra entra nello schermo con tre righe di opzioni.
+    - **Cosa riportare:** testo dell'avviso se si taglia o si sovrappone.
+- **R4b2.9 · Condividere.** Con il personaggio A aggiungi una persona e scrivi una nota; poi `/au relationships share all` per le persone che A aveva già. Esci e entra con il personaggio B (stesso account).
+    - **Cosa aspettarti:** B vede le persone e le **scelte** di A (nota, assi, sentimenti) ma **non** gli incontri di A; il primo incontro di B con la persona crea i suoi. Una modifica fatta da B compare in A dopo il cambio di personaggio.
+    - **Cosa riportare:** se i dati dell'account si salvano e si ricaricano tra i personaggi (`AzerothUnspokenDB.lua`).
+- **R4b2.10 · Il pulsante delle scelte.** Nella scheda di una persona premi **Scelte: condivise** / **Scelte: questo personaggio**.
+    - **Cosa aspettarti:** «questo personaggio» tiene una copia delle scelte e smette di seguire quelle condivise; «condivise» le rimette nell'account (sostituendo quelle che c'erano). Con la lista condivisa spenta il pulsante non c'è.
+    - **Cosa riportare:** se il pulsante entra nella finestra e il testo è chiaro.
+- **R4b2.11 · Spegnere senza perdere nulla.** `/au relationships share copy`, poi `/au relationships share off`, poi `/reload`.
+    - **Cosa aspettarti:** il personaggio tiene le sue scelte; il file dell'account conserva la lista (`sharedPlayers`); con `share on` due volte torna com'era. `/au relationships reset shared` la cancella (con conferma).
+    - **Cosa riportare:** qualunque dato perso.
+
+---
+
 ## R3a: varietà della scelta (aggiunto dalle issue #89, #90 e #91)
 
 **A cosa serve.** Il narratore ora preferisce le frasi del luogo dove ci sono, non torna subito sullo stesso tema, sulla stessa immagine o sulla stessa voce, cambia il gesto delle emote e non lascia che i combattimenti occupino più di circa quattro frasi su dieci. Tutto è misurato fuori dal gioco con una sessione simulata; qui si verifica che nel gioco vero il ritmo sia piacevole. Bastano un'ora di gioco normale (missioni e combattimenti) e `/au prof`.
