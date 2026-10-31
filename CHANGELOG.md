@@ -10,6 +10,10 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### Funding: Ko-fi link
+
+- **Added: `.github/FUNDING.yml`** with the Ko-fi account, so GitHub shows a Sponsor button. A short "Support the project" section in the README (English and Italian) and on the wiki home page. Donations are optional, unlock nothing, and are never requested inside the addon.
+
 ### U-relations: the Relationships window fits the screen and shows its list (#171, #172, #184, parts of #179 and #180)
 
 Fixes from the UI review U1 ([UI_REVIEW.md](docs/design/UI_REVIEW.md): UI-01, UI-02, UI-14, and the relationships parts of UI-09 and UI-10). Nothing here is tested in the game client yet.
