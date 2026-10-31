@@ -51,6 +51,9 @@ OVERLAY_TABLES = {
 JSON_COLUMNS = {"events", "styles", "depth", "tags", "motifs", "tier", "conditions", "extra"}
 TIERS = {"generic": 0, "situation": 1, "region": 1, "zone": 2, "subzone": 3, "landmark": 4}
 MAX_MOTIFS = 3
+# the emotions of R4 (Engine.EMOTIONS in Engine/RuleEngine.lua; Tests/check_archive.py checks the two lists match)
+EMOTIONS = ("serene", "happy", "determined", "curious", "worried", "tense", "furious", "melancholic", "nostalgic",
+            "admiring")
 
 
 class ArchiveError(Exception):
@@ -528,6 +531,31 @@ TRANSITIONS = {
 }
 
 
+def _emotion_problems(tags, cond):
+    """R4: an `emo:` tag and the conditions `emotion`, `emotionMin`, `emotionMax` name known emotions (0..1)."""
+    problems = []
+    for t in tags if isinstance(tags, list) else []:
+        if isinstance(t, str) and t.startswith("emo:") and t[4:] not in EMOTIONS:
+            problems.append("unknown emotion in tag: %s" % t)
+    if not isinstance(cond, dict):
+        return problems
+    wanted = cond.get("emotion")
+    for e in wanted if isinstance(wanted, list) else ([wanted] if wanted is not None else []):
+        if e not in EMOTIONS:
+            problems.append("unknown emotion: %s" % e)
+    for key in ("emotionMin", "emotionMax"):
+        m = cond.get(key)
+        if m is None:
+            continue
+        if not isinstance(m, dict) or not m:
+            problems.append("%s must be { emotion = 0..1 }" % key)
+            continue
+        for e, n in m.items():
+            if e not in EMOTIONS or isinstance(n, bool) or not isinstance(n, (int, float)) or not 0 <= n <= 1:
+                problems.append("%s: %s = %s is not an emotion from 0 to 1" % (key, e, n))
+    return problems
+
+
 def check_content(con, id, stage="approve"):
     """The problems of an intention's content for a stage: "draft" (the shape is valid), "review" (and every language of
     the pack has a text) or "approve" (and invented lore in a narrator line has an attribution, decision D7). An empty
@@ -555,6 +583,7 @@ def check_content(con, id, stage="approve"):
         for m in ms:
             if m not in motifs:
                 problems.append("unknown motif: %s" % m)
+    problems.extend(_emotion_problems(jload(r["tags"]) or [], jload(r["conditions"])))
     tier = jload(r["tier"])
     if tier is not None and tier not in TIERS and tier not in TIERS.values():
         problems.append("tier must be 0-4 or one of %s" % ", ".join(TIERS))

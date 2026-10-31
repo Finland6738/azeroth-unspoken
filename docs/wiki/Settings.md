@@ -107,6 +107,7 @@ Modules are big switches for whole features. All are on by default, except Audio
 | **World** | on | spontaneous lines about the world: entering a zone, travelling, the weather, dawn and dusk, subzones and named places, flights |
 | **NPC dialogues** | on | [[NPC ambient dialogues|NPC-Dialogues]] |
 | **Memory** | on | the [[journal and memories|Memory-and-Journal]] |
+| **Emotions** | on | your character's [[mood|Character-Soul-and-Total-RP-3#emotions]]: events change it, time heals it, lines follow it. Off = the narrator as before, and the saved mood is cleared. Also `/au emotion on\|off` |
 | **Relationships** | on | [[relationships|Relationships]] with NPCs and players |
 | **Stories** | on | [[personal stories|Story-Arcs]] |
 | **Social** `*` | on | not active yet: a placeholder for future social play |
@@ -117,7 +118,7 @@ Modules marked `*` do nothing in this version.
 
 ### Presets
 
-A preset sets several modules at once. Choose one in the wizard. Changing a single module makes the preset "Custom". Presets do not change Chat proposals, Audio or Total RP 3.
+A preset sets several modules at once. Choose one in the wizard. Changing a single module makes the preset "Custom". Presets do not change Chat proposals, Emotions, Audio or Total RP 3.
 
 | Preset | Personal | World | NPC dialogues | Memory | Relationships | Stories | Social |
 |---|---|---|---|---|---|---|---|
@@ -141,7 +142,7 @@ See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 | Setting | Default | Where |
 |---|---|---|
 | Archetype | Neutral | `/au soul archetype <id>`, personality window (panel button **Character soul...**) |
-| Traits | none chosen | `/au soul <trait> <value>`, personality window |
+| Traits | none chosen | `/au soul <trait> <0-100>`, the sliders of the personality window |
 | Topics to avoid | none | `/au soul avoid <topic>`, personality window |
 
 ## Memory (per character)

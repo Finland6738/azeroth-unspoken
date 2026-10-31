@@ -43,7 +43,7 @@ flowchart LR
         REG["PhraseRegistry"]
         RULE["RuleEngine<br/>when"]
         ND["NarrativeDirector + Pacing<br/>gate, priority, budget"]
-        SEL["WeightedSelector<br/>W = B×C×P×N×S×R"]
+        SEL["WeightedSelector<br/>W = B×C×P×N×S×R×E"]
         STY["StyleResolver<br/>registers"]
         TPL["TemplateRenderer"]
     end
@@ -110,7 +110,8 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Engine/TemplateRenderer.lua`** | placeholders, gender, vocabulary, frames. If a piece of data is missing, the line is discarded. |
 | **`Integration/TotalRP3.lua`** | optional adapter ([ADR 0004](adr/0004-total-rp-3-optional-with-adapter.md)): the profile name and, with consent, the public psychological traits of the player's **own** profile, mapped onto the Soul traits ([ADR 0016](adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md)). |
 | **`Integration/ChatGateway.lua`** | modes, proposals, channels, sending only from a player action, anti-flood, `AzerothUnspoken_Speak`; `Reroll` ("Another": replaces the proposal with another line for the same event and context, without sending or spending the Director's budget). |
-| **`Systems/Personality.lua`** | the Character Soul: eight opt-in traits, archetypes, effective profile (choice > Total RP 3 > game data > neutral), the `P` factor of the weight, register preferences, the `soul` condition, `ctx.soul`, the `/au soul` command. |
+| **`Systems/Personality.lua`** | the Character Soul: ten opt-in intensities from 0 to 100 (R4) plus irony, inner voice and topics to avoid, archetypes as presets, the migration of S5 profiles, effective profile (choice > Total RP 3 > game data > neutral), the `P` factor of the weight, register preferences, the `soul` condition, `ctx.soul`, the `/au soul` command. |
+| **`Systems/Emotion.lua`** | the emotional state (R4): ten emotions raised by appraisal rules in `Data/Emotions.lua`, modulated by the personality and fading by half-life; `ctx.emotion`, the `E` factor, a register preference, persistence of slow strong emotions, `/au emotion`. A module that can be switched off. |
 | **`Systems/LivingMemory.lua`** | the Living Memory ([ADR 0017](adr/0017-living-memory-selective-memories-and-honest-recall.md)): memories, visited places and flags per character (`cdb.memories`), session moments, compaction to 500, permanent ones, reset, migrations, `ctx.memory`, recall events with a guard (`RegisterRecall`), text export, the `/au journal` command. |
 | **`Systems/Relationships.lua`** | the relationships ([ADR 0018](adr/0018-multi-axis-relations-automatic-npcs-and-user-chosen-players.md)): seven independent axes, labels and disposition derived from the data, NPCs computed from the `npcID` (dialogue, quest, vendor, flight, trainer, inn) with diminishing returns, a daily cap and decay, players chosen by the user with suggestions and, for each, a `user` block (what the user chose, written only by user actions) apart from a `seen` block (what the addon observed: encounters by type, last facts), feelings in words, `ctx.relation` and the like, the `R` factor, register by familiarity, the `relation_npc` and `relation_player` events, optional proximity recognition by nameplate and mouseover (session only, writes nothing), an optional list shared by the account's characters, the `/au relationships` command ([ADR 0026](adr/0026-player-records-user-choices-apart-from-observations.md), [ADR 0030](adr/0030-proximity-session-proposal-and-account-shared-list.md)). |
 | **`Systems/Place.lua`** | the place ([ADR 0019](adr/0019-interlocutor-and-place-ordered-sources-and-places-by-mapid.md)): `ctx.place` (zone, uiMapID, continent, tags, territory, capital, instance, boss encounter, role in the group, battleground), `Place:Lookup` on the data in `Data/Places.lua`, `Place.Key` (stable memory key), the `C` factor of `place.` tags and short lines, rhythm by instance type, demand during bosses, the `encounter_end` event, the `/au place` command. |
@@ -156,6 +157,7 @@ flowchart TB
 
     subgraph SYS["Systems/ (each one is a module with its own switch)"]
         SOUL["Personality<br/>the character's nature"]
+        EMO["Emotion<br/>the character's mood"]
         MEM["LivingMemory<br/>memories, places, flags"]
         REL["Relationships<br/>axes, labels, people"]
         PLC["Place<br/>where we are"]
@@ -165,8 +167,8 @@ flowchart TB
     end
 
     subgraph HOOK["Hook points"]
-        CTX["BuildContext<br/>ctx.soul · ctx.memory · ctx.relation<br/>ctx.place · ctx.other · ctx.arcs"]
-        WH["Engine:SetWeightHook<br/>factors P, R, C"]
+        CTX["BuildContext<br/>ctx.soul · ctx.emotion · ctx.memory · ctx.relation<br/>ctx.place · ctx.other · ctx.arcs"]
+        WH["Engine:SetWeightHook<br/>factors P, R, C, E"]
         SM["StyleResolver:SetModifier<br/>preferred registers"]
         EG["Engine:SetEventGuard<br/>the event speaks only if the guard says yes"]
         RH["NarrativeDirector<br/>SetRhythm · SetDemandCheck · SetEventPriority"]
@@ -175,6 +177,8 @@ flowchart TB
 
     BUS --> MEM & REL & INT & NPC & ARC & PLC
     SOUL --> CTX & WH & SM
+    EMO --> CTX & WH & SM
+    SOUL -. "modulates the appraisal" .-> EMO
     MEM --> CTX & EG & JT
     REL --> CTX & WH & SM & EG & JT
     PLC --> CTX & WH & RH & EG
@@ -190,15 +194,17 @@ flowchart TB
 | Hook | Used by | What it is for |
 |---|---|---|
 | `ctx.soul` | Personality | the effective profile: choice > Total RP 3 > game data > neutral |
+| `ctx.emotion` | Emotion | the emotions above 0.05 and the dominant one; nil with the module off |
 | `ctx.memory` | LivingMemory | first visit, return, visit that ended badly, flags: **only from real memories** |
 | `ctx.relation` (and `rel`, `disposition`, `isKnown`) | Relationships | the relationship with the person of the interaction |
 | `ctx.other`, `ctx.otherTraits` | Interlocutor | who we have in front of us, with the source of each piece of data |
 | `ctx.place` | Place | zone, map, territory, instance, encounter, role in the group |
 | `ctx.arcs` | StoryArcs | the arcs in progress and concluded, and the line about to come out |
-| `P` factor | Personality (`soul`) | soft affinity and hard filters of the `trait:value`, `req:`, `not:`, `topic:` tags |
+| `P` factor | Personality (`soul`) | soft affinity (graded by intensity) and hard filters of the `trait:value`, `trait>=n`, `req:`, `not:`, `topic:` tags |
+| `E` factor | Emotion (`emotion`) | a line of the dominant emotion (`emo:` tag, or an old tag that implies one) weighs more, a clashing one less |
 | `R` factor | Relationships (`relations`) | tags with the `rel.` scope |
 | `C` factor | Place (`place`), Interlocutor (`other`) | tags with the `place.` and `other.` scope, short lines in battlegrounds |
-| register modifier | Personality, Relationships, Interlocutor | temperament, familiarity and manner of speaking shift the preferred registers |
+| register modifier | Personality, Emotion, Relationships, Interlocutor | temperament, the dominant emotion, familiarity and manner of speaking shift the preferred registers |
 | event guard | memory (`memory_return`…), relationships (`relation_npc`, `relation_player`), interlocutor (`npc_meet`, `other_action`), place (`encounter_end`), NPC Alive (`npcd_*`), arcs (`arc_*`) | an event that cites a fact does not speak if the fact is not there |
 | `SetRhythm` / `SetDemandCheck` | Place, NPC Alive | more sober in raids and against bosses, silence during a dialogue |
 | `SetEventPriority` | memory, relationships, arcs | memory recall or exceptional event in §10 of the GDD |
@@ -317,7 +323,7 @@ flowchart TD
     X2["no candidate at all"] -.-> FB["related event (fallback, #89),<br/>then silence"]
 ```
 
-- **Weight** (`Engine.Factors`, GDD §10): `B` = `weight`; `C` = 1 + 0.35 × conditions (plus the `C` hooks of S6c); `P` = personality (Character Soul): soft affinity of the `trait:value` tags (×1.6 / ×0.6), inner voice and irony; 0 excludes the line via `req:`, `not:` and `topic:`; neutral (1) with the neutral profile ([details](#the-character-soul)); `N` = ÷ (1 + 0.3 × recent uses), ×0.6 if the register is the same as that of the last line of the event, and the novelty of the session (#90, `Engine.ThemeNovelty`): ÷ (1 + 1.5 × presences of its theme in the last 6 interventions), ÷ (1 + 0.8 × presences of its motifs), ×0.35 if it would be the third line in a row in the same voice; `S` = depth (×0.3 if different) × register affinity of the StyleResolver (×0.5 outside the event, +25% for each zone, depth and voice preference); `R` = relationship with the person of the interaction ([see below](#relationships)): tags with the `rel.` scope as soft affinity or hard filter (0 excludes), neutral without a person. `Engine:Weight(line, event, ctx)` returns the breakdown.
+- **Weight** (`Engine.Factors`, GDD §10): `W = B × C × P × N × S × R × E`. `B` = `weight`; `C` = 1 + 0.35 × conditions (plus the `C` hooks of S6c); `P` = personality (Character Soul): soft affinity of the `trait:value` tags (×1.6 / ×0.6), inner voice and irony; 0 excludes the line via `req:`, `not:` and `topic:`; neutral (1) with the neutral profile ([details](#the-character-soul)); `N` = ÷ (1 + 0.3 × recent uses), ×0.6 if the register is the same as that of the last line of the event, and the novelty of the session (#90, `Engine.ThemeNovelty`): ÷ (1 + 1.5 × presences of its theme in the last 6 interventions), ÷ (1 + 0.8 × presences of its motifs), ×0.35 if it would be the third line in a row in the same voice; `S` = depth (×0.3 if different) × register affinity of the StyleResolver (×0.5 outside the event, +25% for each zone, depth and voice preference); `R` = relationship with the person of the interaction ([see below](#relationships)): tags with the `rel.` scope as soft affinity or hard filter (0 excludes), neutral without a person; `E` = the emotional state ([see above](#the-emotional-state)): ×1.6 for a line of the dominant emotion, down to ×0.15 for a clashing one, 1 when calm or with the module off. `Engine:Weight(line, event, ctx)` returns the breakdown.
 - **Specificity tiers** (#89, `Engine.Tier`, `Engine.TierPool`): each rule has a tier, deduced from its conditions or written as `tier` (0 generic, 1 situation or region, 2 zone, 3 subzone, 4 landmark). Among the eligible lines the pick keeps the most specific tier that, together with the tiers above it, still has `Engine.TIER_MIN` (3) lines not used recently; when those are used the pool widens one tier at a time down to the generic lines. An event with no line at all tries its related event (`fallback`, at most three steps; the record says `via`), then stays silent. See [ADR 0028](adr/0029-specificity-tiers-themes-motifs-and-category-quotas.md).
 - **Themes and motifs** (#90): a rule declares one `theme` and up to three `motifs` from the closed vocabularies of `Data/Themes.lua`. The memory of the session (`Engine.lines`: theme, motifs, voice, frame and first two words of the last 12 interventions, fading in 30 minutes) is **never saved**. It weighs `N`, keeps a variant from opening like the last 8 interventions, and weighs down a frame used in the last 8 interventions for any event; a frame with `themes` tells only phrases of those themes.
 - **Character**: traits weight the lines and, for hard tags, exclude them; see [the Character Soul](#the-character-soul).
@@ -345,12 +351,37 @@ flowchart LR
     S --> C["soul condition"]
 ```
 
-- **Traits**: temperament, morale, curiosity (scale), faith, motivation, irony (scale), inner voice and topics to avoid (a set). Ready-made archetypes plus the neutral profile; choosing an archetype copies its traits, changing one makes the profile "custom". A change takes effect immediately: the next lines use the new profile.
-- **Tags on lines** (`tags` field): `trait:value` soft affinity (×1.6 if it matches, ×0.6 if the profile has a different value, never zero); `req:trait:value` (the line asserts something about the character: it comes out only if the profile says so), `not:trait:value` and `topic:topic` are **hard** filters (factor 0). Tags without a colon stay descriptive. The validator checks the affinity tags.
+- **Traits** (R4, [ADR 0031](adr/0031-intensity-traits-emotional-state-and-the-tone-of-a-return.md)): ten intensities from 0 to 100 that can coexist: `idealism` (cynical <-> idealist), `concreteness` (dreamer <-> pragmatic), `optimism` (pessimist <-> optimist), `altruism`, `stoicism`, `ambition`, `spirituality`, `patriotism`, `curiosity`, `vengefulness`; plus irony (a scale), inner voice and topics to avoid (a set). Archetypes are **presets**: choosing one fills the sliders, editing one makes the profile "custom (from ...)". A change takes effect immediately. A saved S5 profile (version 1) is converted once (`Personality:Migrate`): each old choice becomes intensities that still satisfy it.
+- **Old choices, derived.** `temperament`, `morality`, `faith`, `motivation` are no longer saved for the character but stay as tag vocabulary: each value is a rule on an axis (`temperament:stoic` = `stoicism >= 67`), read from the axes when the profile has not chosen it. The interlocutor (S6c) still chooses temperament and morality.
+- **Tags on lines** (`tags` field): `trait:value` and `axis>=n` / `axis<=n` soft affinity, **graded**: ×1.6 inside the band or past the threshold, ×0.6 at 20 points or more away, in between near the edge; never zero. `req:trait:value`, `req:axis>=n` (the line asserts something about the character: it comes out only if the profile says so), `not:...` and `topic:topic` are **hard** filters (factor 0). A line that only a strong trait may say uses the conditions `traitMin` / `traitMax` instead, so it is not even a candidate for a neutral profile. Tags without a colon stay descriptive. The validator checks the affinity tags.
 - **Priority** (GDD §8), trait by trait: explicit choice > Total RP 3 > game data > neutral values; the summary (`/au soul list`) says the source of each trait.
 - **Total RP 3**: only with the `personality.trp3` consent and the `totalRP3` module on; it reads only `characteristics/PS` of your own profile and never writes. If the API is missing or changes, the layer disappears and the choices remain (capability `integration:totalRP3:traits`).
 - **Reuse**: `Engine/Traits.lua` knows nothing about the player. S6c uses it for `ctx.other` (tag scope `other.`) and for place tags (scope `place.`), S6b for the relationship axes.
-- **Interface**: `/au soul` opens `UI/ProfileFrame.lua` (archetype, traits, topics, consent, neutral profile); `/au soul list | neutro | archetipo <id> | trp3 on|off | <trait> <value> | evita <topic>`.
+- **Interface**: `/au soul` opens `UI/ProfileFrame.lua` (archetype, a slider per intensity, inner voice, topics, consent, neutral profile); `/au soul list | neutral | archetype <id> | trp3 on|off | <trait> <0-100|low|mid|high|-> | avoid <topic>`; the old words (`/au soul temperament stoic`) set the matching axes.
+
+### The emotional state
+
+`Systems/Emotion.lua` gives the character a mood that events change and time heals ([ADR 0031](adr/0031-intensity-traits-emotional-state-and-the-tone-of-a-return.md), owner decision D8).
+
+```mermaid
+flowchart LR
+    EV["Director:Offer(event)"] --> AP["Appraisal rules<br/>(Data/Emotions.lua)<br/>event + conditions -> gains"]
+    SO["ctx.soul<br/>(stoic rises slower...)"] --> AP
+    AP --> ST["State: value + GetTime()<br/>per emotion, decays by half-life<br/>(computed on demand)"]
+    ST --> CE["ctx.emotion<br/>dominant + intensities"]
+    CE --> C1["emotion · emotionMin · emotionMax"]
+    CE --> E1["E factor: emo: tags<br/>match ×1.6 · clash ×0.15"]
+    CE --> R1["register preference"]
+    ST -. "slow and ≥ 0.3:<br/>{ v, at = time() }" .-> SV["cdb.emotion"]
+```
+
+- **Emotions**: serene, happy, determined, curious, worried, tense, furious, melancholic, nostalgic, admiring, each from 0 to 1 with its own half-life (tense 3 minutes ... melancholic 2 hours). No timer: the value is decayed when read.
+- **Appraisal**: `Director:Offer` appraises every spontaneous event before its line is chosen (death, resurrection, low health, battle, victory, level up, quest, first visit, a return to a place of a bad memory, landmark, inn, long flight, dawn, dusk, prayer, a known player, weather). Rules are data: `{ event, when?, gain = { emotion = -1..1 } }`. The personality multiplies a rise (`modulation`): a stoic character rises more slowly, an optimist worries less, a vengeful one burns faster.
+- **Lines**: conditions `emotion` (the dominant one), `emotionMin`, `emotionMax`; the `E` factor (a line of the dominant emotion weighs more, a line of a clashing emotion much less, `temperament:cheerful` counts as happy); a register preference for the dominant emotion. These conditions do not raise the specificity tier.
+- **Off**: the module `emotion` (settings, `/au emotion off`). Then `ctx.emotion` is nil, E is 1, every emotion condition is false and the saved values are cleared: the narrator behaves as before R4. `Engine.R1_COMPAT` switches it off too.
+- **Saved**: only slow emotions at 0.3 or more, as a number and `time()`; decayed at login by the time away. Never the cause, never text (ADR 0017).
+- **Debug**: `/au debug` has an **Emotion** line (state, dominant, last cause, what is saved); `/au emotion [on|off|reset]`.
+
 
 ### Living Memory
 
@@ -590,14 +621,15 @@ flowchart LR
 | Variable | Content |
 |---|---|
 | `AzerothUnspokenDB` | `schemaVersion` (currently 7), `sharedPlayers` (only if the user turned the shared list on: `version` 1 and the choices about people, see above) and `settings`: `locale`, `preset`, `intensity`, `proseDepth`, `modules`, `output`, `chat`, `privacy`, `pacing`, `enabled`, `chance`, `ignored`, `disabledPacks`, `relations` (`npcAuto`, `attraction`, `autoRegisterPlayers`, `proposePlayers`, `recognizeTarget`, `proximity`, `sharePlayers`), `interlocutor` (`trp3Others`: consent to read other people's public Total RP 3 profile), `npcAlive` (`autoOffer`), `arcs` (`maxActive`), `ui` (button, wizard done, `narrator`: duration, opacity, size, lock, history; `dialogue`: size, opacity, lock, position). |
-| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (anti-repetition, bounded: uses, last variants, running cooldowns, recent lines, tone), `personality` (`version`, `archetype`, `traits`, `trp3`: explicit Character Soul choices and consent to Total RP 3) `relationships` (relationships: `version` 2, `npcs` by `npcID`, `players` by "Name-Realm" with a `user` and a `seen` block; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
+| `AzerothUnspokenCharacterDB` | `schemaVersion`, `memory` (anti-repetition, bounded: uses, last variants, running cooldowns, recent lines, tone), `personality` (`version`, `archetype`, `base`, `traits`, `trp3`, `legacy`: explicit Character Soul intensities, the preset they started from, consent to Total RP 3 and the S5 choices before the conversion, as identifiers), `emotion` (`version`, `values`: only slow emotions at 0.3 or more, each as `{ v, at = time() }`) `relationships` (relationships: `version` 2, `npcs` by `npcID`, `players` by "Name-Realm" with a `user` and a `seen` block; see above), `memories` (Living Memory: `version`, `nextId`, `entries`, `places`, `flags`, `stats`, see above) `arcs` (Story Arcs: `version`, `items` by arc with state, mode, choices and moment, `stats`; see above) and, for future steps, `history` (empty today). |
 
 Every per-character datum also has its **own version** (`personality.version`, `memories.version`, `relationships.version`, `arcs.version`), with migrations and cleanup (`Sanitize`) in its own module. A version newer than the one known (you went back to an older addon) is read but **not rewritten**.
 
 | Datum | Schema version | Where the migration lives |
 |---|---|---|
 | `AzerothUnspokenDB` / `AzerothUnspokenCharacterDB` | `Config.SCHEMA_VERSION` = 7 | `Config.migrations.global[n]` and `.character[n]` |
-| `cdb.personality` | 1 | `Personality:Sanitize` |
+| `cdb.personality` | 2 (intensities, R4; 1 = S5 choices, converted by `Personality:Migrate`) | `Personality:Profile`, `Personality:Sanitize` |
+| `cdb.emotion` | 1 | `Emotion:Load` |
 | `cdb.memories` | 2 (place key by uiMapID, #31) | `LM.migrations[n]` |
 | `cdb.relationships` | 2 (user/seen blocks, #107) | `R:Sanitize`, `R.MigrateV1` |
 | `gdb.sharedPlayers` | 1 (#114) | `R:SanitizeShared` |

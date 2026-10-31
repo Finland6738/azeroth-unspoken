@@ -714,6 +714,29 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
 
 ---
 
+## R4: personalità a intensità ed emozioni (aggiunto dalle issue #96, #97 e #98)
+
+Prova con un personaggio che aveva già scelto una personalità prima di questa versione, se ne hai uno.
+
+- **R4.1 · La conversione del profilo.** Entra con un personaggio che aveva un archetipo o dei tratti scelti. Scrivi `/au soul list`.
+    - **Cosa aspettarti:** i tratti sono diventati intensità da 0 a 100 che dicono la stessa cosa (uno stoico ha stoicismo 80, un devoto spiritualità 90...); l'ironia, la curiosità, la voce interiore, gli argomenti da evitare e il consenso a Total RP 3 sono rimasti. Nessun errore in `/au debug`.
+    - **Cosa riportare:** il riepilogo, e se qualcosa che avevi scelto è andato perso.
+- **R4.2 · I cursori.** `/au soul`. Trascina il cursore di due tratti, poi premi la **x** di uno. Cambia archetipo con il pulsante in alto.
+    - **Cosa aspettarti:** il valore cambia mentre trascini e si salva quando lasci il cursore; i tratti a due poli dicono il lato (cinico, equilibrio, idealista...); con la x il tratto torna «non impostato». Dopo una modifica l'archetipo appare come «personalizzato (da ...)». La finestra entra nello schermo e i cursori si possono prendere bene.
+    - **Cosa riportare:** se il cursore segue il mouse alla tua scala dell'interfaccia (______), se la finestra esce dallo schermo, e i testi tagliati.
+- **R4.3 · L'umore dopo una morte.** `/au chance memory_return 100`. Muori in una zona, rinasci, esci dalla zona e rientraci dopo almeno dieci minuti. Poi scrivi `/au emotion` e `/au debug`.
+    - **Cosa aspettarti:** dopo la morte `/au emotion` mostra un umore preoccupato o malinconico, con «last cause death»; al ritorno la frase di richiamo **non** è allegra né scherzosa (niente «Ciao, alberi!»): parla con cautela, con determinazione o con amarezza. La riga **Emotion** di `/au debug` mostra le stesse emozioni.
+    - **Cosa riportare:** le frasi del ritorno, e l'umore mostrato da `/au emotion` dopo la morte, al ritorno e dopo mezz'ora.
+- **R4.4 · La locanda e il tempo che passa.** Dopo la prova R4.3, entra in una locanda (`/au chance rest_enter 100`). Poi esci dal gioco e rientra dopo un'ora o più.
+    - **Cosa aspettarti:** alla locanda la tensione scende e l'umore diventa sereno; al nuovo accesso le emozioni veloci sono sparite e restano solo quelle lente (malinconia, nostalgia...), più deboli. Nel file salvato del personaggio (`AzerothUnspokenCharacterDB.lua`, sezione `emotion`) ci sono solo numeri e un orario, nessun testo.
+    - **Cosa riportare:** `/au emotion` prima e dopo, e la sezione `emotion` del file salvato.
+- **R4.5 · Il carattere cambia l'umore.** Scegli l'archetipo `scholar` (molto stoico) e ripeti una morte; poi l'archetipo `avenger` (vendicativo) e ripetila.
+    - **Cosa aspettarti:** lo stoico si agita meno (valori più bassi in `/au emotion`); il vendicativo si arrabbia di più (furious più alto) e può avere frasi più dure.
+    - **Cosa riportare:** i valori di `/au emotion` nei due casi.
+- **R4.6 · Spegnere le emozioni.** `/au emotion off` (o il modulo **Emozioni** nel pannello). Ripeti una morte e un ritorno.
+    - **Cosa aspettarti:** `/au emotion` dice «off», `/au debug` mostra «Emotion: off», il narratore funziona come prima e nella sezione `emotion` del file salvato non resta nulla. `/au emotion on` le riaccende.
+    - **Cosa riportare:** qualsiasi frase che sembra legata all'umore mentre le emozioni sono spente.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -737,6 +760,12 @@ R3b missioni ............ QUEST_ACCEPTED (argomenti) ______  QUEST_TURNED_IN ___
 R3b reputazione ......... reaction 1-8? ___  una frase per cambio di livello? ___  UPDATE_FACTION a raffica? ___
 R3b locanda/volo ........ PLAYER_UPDATE_RESTING ___  rest_enter solo entrando? ___  volo: CONTROL_LOST/UnitOnTaxi/CONTROL_GAINED ______  paura = nessun volo? ___
 R3b silenzio ............ in combattimento nessuna? ___  modulo Mondo spento? ___
+R4 conversione ......... tratti convertiti? ___  perso qualcosa? ___  errori? ___
+R4 cursori ............. seguono il mouse? ___  finestra nello schermo? ___ (scala ______)
+R4 morte e ritorno ..... umore dopo la morte ______  frase di ritorno allegra? (deve essere NO) ___
+R4 locanda/riaccesso ... sereno in locanda? ___  solo emozioni lente salvate? ___  testo nel file? (deve essere NO) ___
+R4 carattere ........... stoico più calmo? ___  vendicativo più arrabbiato? ___
+R4 spente .............. off in /au debug? ___  file vuoto? ___
 SP-01 caricamento ....... (OK / NO / nota)   Client build: ______  Errori rossi: sì/no
 SP-01 wizard ............ (OK / NO / nota)
 SP-01 /au debug ......... (OK / NO / nota)   Capacità MISSING/RESTRICTED: ______

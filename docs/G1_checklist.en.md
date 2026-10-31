@@ -183,6 +183,29 @@ Same steps as the section **R3b** of [G1_checklist.md](G1_checklist.md) (R3b.1 t
     - **Expect:** none of these lines in combat; none at intensity 0; with the World module off, no line about weather, dawn, dusk, subzone, places or flights (quests, reputation and rest stay: they are personal).
     - **Report:** any line that comes out when it should not.
 
+## R4: intensity personality and emotions (issues #96, #97 and #98)
+
+Test with a character that had chosen a personality before this version, if you have one.
+
+- **R4.1 · The profile conversion.** Log in with a character that had an archetype or chosen traits. Type `/au soul list`.
+    - **Expect:** the traits became intensities from 0 to 100 that mean the same (a stoic has stoicism 80, a devout one spirituality 90...); irony, curiosity, inner voice, topics to avoid and the consent to Total RP 3 stayed. No error in `/au debug`.
+    - **Report:** the summary, and whether anything you had chosen was lost.
+- **R4.2 · The sliders.** `/au soul`. Drag the slider of two traits, then press the **x** of one. Change archetype with the button at the top.
+    - **Expect:** the value changes while you drag and is saved when you let go; two-sided traits say the side (cynical, balanced, idealist...); the x makes the trait "not set" again. After an edit the archetype shows as "custom (from ...)". The window fits the screen and the sliders are easy to grab.
+    - **Report:** whether the slider follows the mouse at your interface scale (______), whether the window goes off screen, and any cut text.
+- **R4.3 · The mood after a death.** `/au chance memory_return 100`. Die in a zone, resurrect, leave the zone and come back after at least ten minutes. Then type `/au emotion` and `/au debug`.
+    - **Expect:** after the death `/au emotion` shows a worried or melancholic mood, with "last cause death"; on the return the recall line is **not** cheerful or joking (no "Hello, trees!"): it is cautious, determined or bitter. The **Emotion** line of `/au debug` shows the same emotions.
+    - **Report:** the lines of the return, and the mood `/au emotion` shows after the death, on the return and half an hour later.
+- **R4.4 · The inn and the passing time.** After R4.3, walk into an inn (`/au chance rest_enter 100`). Then log out and back in after an hour or more.
+    - **Expect:** at the inn the tension drops and the mood turns serene; at the new login the fast emotions are gone and only the slow ones (melancholy, nostalgia...) remain, weaker. In the character's saved file (`AzerothUnspokenCharacterDB.lua`, section `emotion`) there are only numbers and a time, no text.
+    - **Report:** `/au emotion` before and after, and the `emotion` section of the saved file.
+- **R4.5 · The character shapes the mood.** Choose the `scholar` archetype (very stoic) and die again; then the `avenger` archetype (vengeful) and die again.
+    - **Expect:** the stoic is shaken less (lower values in `/au emotion`); the vengeful one gets angrier (higher furious) and may have harder lines.
+    - **Report:** the values of `/au emotion` in both cases.
+- **R4.6 · Switching emotions off.** `/au emotion off` (or the **Emotions** module in the panel). Die and come back again.
+    - **Expect:** `/au emotion` says "off", `/au debug` shows "Emotion: off", the narrator works as before and nothing is left in the `emotion` section of the saved file. `/au emotion on` turns them back on.
+    - **Report:** any line that seems tied to the mood while emotions are off.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -217,4 +240,10 @@ R3b quests .............. QUEST_ACCEPTED (arguments) ______  QUEST_TURNED_IN ___
 R3b reputation .......... reaction 1-8? ___  one line per change of standing? ___  UPDATE_FACTION in bursts? ___
 R3b inn / flight ........ PLAYER_UPDATE_RESTING ___  rest_enter only on entering? ___  flight: CONTROL_LOST/UnitOnTaxi/CONTROL_GAINED ______  fear = no flight? ___
 R3b silence ............. none in combat? ___  World module off? ___
+R4 conversion ........... traits converted? ___  anything lost? ___  errors? ___
+R4 sliders .............. follow the mouse? ___  window on screen? ___ (scale ______)
+R4 death and return ..... mood after the death ______  cheerful return line? (must be NO) ___
+R4 inn/new login ........ serene at the inn? ___  only slow emotions saved? ___  text in the file? (must be NO) ___
+R4 character ............ stoic calmer? ___  vengeful angrier? ___
+R4 off .................. off in /au debug? ___  file empty? ___
 ```
