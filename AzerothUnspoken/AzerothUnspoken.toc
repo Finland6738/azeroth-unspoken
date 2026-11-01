@@ -16,6 +16,7 @@ Core\Keywords.lua
 Core\Compat.lua
 Core\Diagnostics.lua
 Core\Config.lua
+Core\Consent.lua
 Core\EventBus.lua
 Core\ContextResolver.lua
 Core\Profiler.lua
@@ -52,6 +53,7 @@ Systems\StoryArcs.lua
 
 # --- interfaccia ---
 UI\Widgets.lua
+UI\Windows.lua
 UI\NarratorFrame.lua
 UI\SpeakButton.lua
 UI\Wizard.lua

@@ -82,7 +82,7 @@ Per aggiornare, cancella tutte le cartelle `AzerothUnspoken*` e copia le nuove (
 
 ## Primo avvio
 
-Pochi secondi dopo l'ingresso in gioco compare una **procedura guidata** di 6 passi (7 se Total RP 3 è presente): lingua, tipo di esperienza, intensità, stile, moduli, Total RP 3 e chat con una frase di prova. È saltabile in qualunque momento e si riapre con `/au wizard`.
+Pochi secondi dopo l'ingresso in gioco (quando il gioco ha finito di caricare e mai in combattimento) compare una **guida** di 7 passi (8 se Total RP 3 è presente): benvenuto con un esempio vivo del narratore e la lingua, tipo di esperienza, intensità, stile, moduli, Total RP 3, cosa può arrivare in chat e una pagina finale con i tasti, il pulsante e dove sono le impostazioni. Ogni passo è saltabile e si riapre con `/au wizard`.
 
 Con le impostazioni predefinite l'addon è **silenzioso verso gli altri**: le frasi compaiono solo nel riquadro del narratore, in basso al centro.
 
@@ -102,7 +102,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au language [it\|en]` | lingua delle frasi e dell'interfaccia (forma breve `/au lang`); la predefinita è l'inglese |
 | `/au intensity <0-100>` | quanto spesso parla il narratore: 0 = muto per gli eventi spontanei, 50 = bilanciato, 100 = intenso |
 | `/au depth natural\|literary\|elevated` | profondità dello stile: le frasi scritte per quel tono pesano di più (le altre restano possibili) |
-| `/au mode private\|preview\|confirm\|auto` | che cosa può arrivare in chat; predefinito: `private`. `auto` non si attiva al primo comando: mostra un avviso e va ripetuto entro 10 secondi |
+| `/au mode private\|preview\|confirm\|auto` | che cosa può arrivare in chat; predefinito: `private`. `auto` non si attiva al primo comando: mostra un avviso e va ripetuto dopo un paio di secondi (entro 30) |
 | `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | canale predefinito delle proposte (forme brevi `s`, `e`, `p`, `g`, `i`) |
 | `/au speak` | come il tasto "pronuncia": conferma la proposta in attesa, oppure ne propone una nuova |
 | `/au cancel` | scarta la proposta in attesa |

@@ -781,6 +781,28 @@ function I:SetTRP3Consent(on)
 	return on
 end
 
+-- Reading other players' profiles is a consent: turning it ON asks for a confirmation (#178, Core/Consent.lua)
+NS.Consent:Register("trp3others", { text = "consent_trp3_text", accept = function()
+	I:SetTRP3Consent(true)
+end })
+
+---What a click or a command on "Read others' Total RP 3" does: ON in two steps (the warning, then the confirmation
+---after Consent.MIN_DELAY seconds), OFF in one.
+---@param on? boolean the wanted state; nil flips it
+---@return "on"|"off"|"asked"|"wait" result
+function I:ChangeTRP3Consent(on)
+	if on == nil then on = not NS.db.interlocutor.trp3Others end
+	if not on then
+		NS.Consent:Cancel("trp3others")
+		self:SetTRP3Consent(false)
+		return "off"
+	end
+	if NS.db.interlocutor.trp3Others then return "on" end
+	local r = NS.Consent:Step("trp3others")
+	if r == "confirmed" then return "on" end
+	return r == "wait" and "wait" or "asked"
+end
+
 ---------------------------------------------------------------------------
 -- Comando (/au who) e diagnostica
 ---------------------------------------------------------------------------
@@ -827,8 +849,10 @@ function I:Command(rest)
 		local on
 		on = NS.Keywords.OnOff(arg)
 		if on == nil then on = not s.trp3Others end
-		on = self:SetTRP3Consent(on)
-		Say(on and "other_trp3_on" or "other_trp3_off")
+		local r = self:ChangeTRP3Consent(on)
+		if r == "asked" then Say("consent_repeat") return end
+		if r == "wait" then Say("consent_wait") return end
+		Say(r == "on" and "other_trp3_on" or "other_trp3_off")
 		return
 	end
 	if word == "trait" then

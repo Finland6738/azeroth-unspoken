@@ -71,79 +71,6 @@ def narrator_bright_page():
     return ("proposed-narrator-bright", "PROPOSED narrator over a bright scene", w, h, body, "The-Narrator (accessibility)")
 
 
-def wizard_page():
-    w, h = 760, 520
-    lang = lambda left, name, on: (  # noqa: E731
-        f'<div class="card{" on" if on else ""}" style="left:{left}px;top:242px;width:232px;height:58px">'
-        f'<div class="h">{name}</div><div class="s">lines and interface</div>{"<div class=tick>✓</div>" if on else ""}</div>')
-    dots = "".join(f'<i class="{"now" if i == 0 else ""}"></i>' for i in range(7))
-    win = (f'<div class="win" style="left:120px;top:50px;width:520px;height:400px">'
-           f'<div class="band"><span class="title">Azeroth Unspoken</span><span class="meta">step 1 of 7</span>'
-           f'<span class="x">✕</span></div>'
-           f'<div class="dots" style="left:224px;top:52px">{dots}</div>'
-           f'<div class="abs" style="left:20px;top:72px;font-size:20px">Welcome, traveller</div>'
-           f'<div class="abs" style="left:20px;top:102px;width:480px;font-size:13px;color:var(--text-2);line-height:1.4">'
-           f'A private narrator for your character. Lines appear only on your screen; nothing reaches chat unless you '
-           f'choose it.</div>'
-           + nar(20, 146, "narrator", "Elyra stops as the light drains from between the trunks.",
-                 remaining=0.8).replace("width:460px", "width:480px").replace('class="nar"', 'class="nar" data-mini="1"')
-           + f'<div class="abs lbl-sc" style="left:20px;top:222px">Language of the lines</div>'
-           + lang(20, "English", True) + lang(268, "Italiano", False)
-           + f'<div class="abs" style="left:20px;top:312px;font-size:11px;color:var(--muted)">Independent of the game '
-             f'client\'s language. Change it any time with /au language.</div>'
-           + f'<div class="abs" style="left:1px;right:1px;bottom:1px;height:52px;border-top:1px solid var(--rule)"></div>'
-           + f'<div class="pbtn text" style="left:12px;bottom:14px">Skip – keep the safe defaults</div>'
-           + f'<div class="pbtn primary focus" style="right:20px;bottom:14px;width:110px">Next →</div>'
-           + "</div>")
-    body = ('<div class="p">' + win
-            + callout("Title band, close box and Esc; progress dots instead of 'step 1 of 7' in the title.", left=650, top=60)
-            + callout("A live sample of the narrator teaches the voices before any setting.", left=650, top=170)
-            + callout("Cards instead of red buttons; the choice is shown with a border and a tick, not only colour.",
-                      left=650, top=250)
-            + callout("Keyboard: Tab moves, Enter = Next, Esc = Skip with safe defaults.", left=650, top=400)
-            + "</div>")
-    return ("proposed-wizard", "PROPOSED wizard - first page", w, h, body, "First-Run-Wizard (comparison)")
-
-
-def wizard_chat_page():
-    w, h = 760, 560
-    modes = [("Private narrator only", "Lines stay on your screen. Nothing ever goes to chat.", True, "recommended"),
-             ("Preview", "The speak key opens the line in an editor; you send it with Enter.", False, ""),
-             ("Confirm to send", "The speak key or button sends the proposed line in one gesture.", False, ""),
-             ("Automatic where allowed", "Emotes, and /say in instances, are posted by themselves in your character's "
-                                         "name, visible to everyone nearby. Needs a separate confirmation.", False, "")]
-    cards = ""
-    y = 112
-    for name, help_, on, tag in modes:
-        hh = 66 if len(help_) > 80 else 52
-        warn = ' style="border-color:rgba(255,96,96,0.45)"' if name.startswith("Automatic") else ""
-        t = f' <span class="keyhint" style="color:var(--gold)">{tag}</span>' if tag else ""
-        cards += (f'<div class="card{" on" if on else ""}" style="left:20px;top:{y}px;width:480px;height:{hh}px"'
-                  f'{warn if not on else ""}><div class="h"><span class="radio"></span>{name}{t}</div>'
-                  f'<div class="s" style="margin-left:19px">{help_}</div></div>')
-        y += hh + 8
-    dots = "".join(f'<i class="{"past" if i < 6 else "now"}"></i>' for i in range(7))
-    win = (f'<div class="win" style="left:120px;top:30px;width:520px;height:480px">'
-           f'<div class="band"><span class="title">Azeroth Unspoken</span><span class="meta">step 7 of 7</span>'
-           f'<span class="x">✕</span></div><div class="dots" style="left:224px;top:52px">{dots}</div>'
-           f'<div class="abs" style="left:20px;top:70px;font-size:20px">What may reach chat?</div>'
-           + cards
-           + f'<div class="pbtn ghost" style="left:20px;bottom:66px">Try the narrator</div>'
-           + f'<div class="abs" style="left:150px;bottom:70px;font-size:11px;color:var(--muted)">the wizard moves up so the '
-             f'test line stays visible</div>'
-           + f'<div class="abs" style="left:1px;right:1px;bottom:1px;height:52px;border-top:1px solid var(--rule)"></div>'
-           + f'<div class="pbtn text" style="left:12px;bottom:14px">Skip</div>'
-           + f'<div class="pbtn ghost" style="right:140px;bottom:14px">Back</div>'
-           + f'<div class="pbtn primary" style="right:20px;bottom:14px;width:110px">Finish</div></div>')
-    body = ('<div class="p">' + win
-            + callout("One card per mode: the description sits inside its card and never overlaps the next one.",
-                      left=650, top=130)
-            + callout("Automatic mode says plainly that lines are posted in the character's name and seen by others; "
-                      "its confirmation is a dialog, not a second click.", left=650, top=300)
-            + "</div>")
-    return ("proposed-wizard-chat", "PROPOSED wizard - chat step", w, h, body, "First-Run-Wizard / Chat-Gateway (comparison)")
-
-
 def journal_page():
     w, h = 760, 600
     tabs = [("Memories", True), ("Places", False), ("Flags", False), ("Session", False), ("Stories", False),
@@ -233,5 +160,5 @@ def relations_detail_page():
 
 
 def build():
-    return [narrator_page(), narrator_bright_page(), wizard_page(), wizard_chat_page(), journal_page(),
+    return [narrator_page(), narrator_bright_page(), journal_page(),
             relations_detail_page()]

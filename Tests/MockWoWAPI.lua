@@ -323,7 +323,13 @@ function Widget:GetStringHeight() return 14 * (1 + math.floor(#(self._s.text or 
 function Widget:GetStringWidth() return math.min(#(self._s.text or "") * 6, 400) end
 function Widget:SetPoint(...) self._s.points = self._s.points or {}; table.insert(self._s.points, { ... }) end
 function Widget:ClearAllPoints() self._s.points = nil end
-function Widget:GetPoint() local p = self._s.points and self._s.points[#self._s.points]; if p then return unpack(p) end return "CENTER", UIParent, "CENTER", 0, 0 end
+-- come il client: sempre (punto, frame relativo, punto relativo, x, y), qualunque forma abbia avuto SetPoint
+function Widget:GetPoint()
+	local p = self._s.points and self._s.points[#self._s.points]
+	if not p then return "CENTER", UIParent, "CENTER", 0, 0 end
+	if type(p[2]) == "table" then return p[1], p[2], p[3] or p[1], p[4] or 0, p[5] or 0 end
+	return p[1], self.parent or UIParent, p[1], p[2] or 0, p[3] or 0
+end
 function Widget:SetScript(k, fn) self.scripts[k] = fn end
 function Widget:GetScript(k) return self.scripts[k] end
 function Widget:HookScript(k, fn) local old = self.scripts[k]; self.scripts[k] = function(...) if old then old(...) end fn(...) end end
@@ -358,6 +364,49 @@ function Widget:Click() if self.scripts.OnClick then self.scripts.OnClick(self, 
 -- digita e conferma in una casella di testo
 function Widget:TypeEnter(text) self._s.text = text; if self.scripts.OnEnterPressed then self.scripts.OnEnterPressed(self) end end
 
+-- Livelli e strati (#181): Raise() porta il widget sopra gli altri; RAISES conta i rialzi in ordine
+RAISES = 0
+function Widget:SetFrameStrata(v) self._s.strata = v end
+function Widget:GetFrameStrata() return self._s.strata or "MEDIUM" end
+function Widget:SetFrameLevel(v) self._s.level = v end
+function Widget:GetFrameLevel() return self._s.level or 1 end
+function Widget:SetToplevel(v) self._s.toplevel = v end
+function Widget:IsToplevel() return self._s.toplevel == true end
+function Widget:Raise() RAISES = RAISES + 1; self._s.raised = RAISES end
+function Widget:GetEffectiveScale() return 1 end
+-- Geometria minima: un solo punto di ancoraggio e una dimensione (UIParent 1024x768). Altrimenti nil, come un frame
+-- non ancora disposto. Serve a provare che le finestre non coprono il narratore.
+SCREEN_W, SCREEN_H = 1024, 768
+local function PointXY(l, b, r, t, point)
+	local x = (point:find("LEFT") and l) or (point:find("RIGHT") and r) or (l + r) / 2
+	local y = (point:find("BOTTOM") and b) or (point:find("TOP") and t) or (b + t) / 2
+	return x, y
+end
+local function RectOf(w)
+	if w == UIParent then return 0, 0, SCREEN_W, SCREEN_H end
+	local pts = w._s.points
+	if not pts or #pts ~= 1 or not w._s.w or not w._s.h then return nil end
+	local p = pts[1]
+	local point, rel, relPoint, x, y = p[1], nil, nil, 0, 0
+	if type(p[2]) == "table" then rel, relPoint, x, y = p[2], p[3] or point, p[4] or 0, p[5] or 0
+	else x, y = p[2] or 0, p[3] or 0 end
+	rel = rel or w.parent or UIParent
+	relPoint = relPoint or point
+	local rl, rb, rr, rt = RectOf(rel)
+	if not rl then return nil end
+	local ax, ay = PointXY(rl, rb, rr, rt, relPoint)
+	ax, ay = ax + x, ay + y
+	local fw, fh = w._s.w, w._s.h
+	local left = (point:find("LEFT") and ax) or (point:find("RIGHT") and ax - fw) or ax - fw / 2
+	local bottom = (point:find("BOTTOM") and ay) or (point:find("TOP") and ay - fh) or ay - fh / 2
+	return left, bottom, left + fw, bottom + fh
+end
+function Widget:GetRect() local l, b, r, t = RectOf(self); if l then return l, b, r - l, t - b end end
+function Widget:GetLeft() local l = RectOf(self); return l end
+function Widget:GetBottom() local _, b = RectOf(self); return b end
+function Widget:GetRight() local _, _, r = RectOf(self); return r end
+function Widget:GetTop() local _, _, _, t = RectOf(self); return t end
+
 function CreateWidget(kind, parent)
 	local f = setmetatable({ _s = {}, kind = kind, parent = parent, scripts = {}, events = {}, shown = true, children = {} }, widgetMeta)
 	if parent and rawget(parent, "children") then table.insert(parent.children, f) end
@@ -371,6 +420,7 @@ function CreateFrame(kind, name, parent)
 	return f
 end
 UIParent = CreateWidget("Frame")
+UIParent._s.w, UIParent._s.h = 1024, 768
 -- tutti i widget creati, per i test (cerca per tipo e testo)
 function FindWidgets(pred)
 	local out = {}

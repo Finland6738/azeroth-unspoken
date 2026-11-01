@@ -451,7 +451,7 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
-for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator",
+for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator", "TestWizardConsent",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks"):
@@ -712,7 +712,7 @@ rs1, rsn1 = load_addon(with_example=False, zone="Durotar")
 rs1.execute("""
     local R = AzerothUnspoken.Relationships
     R:AddPlayer('Aldric-Stormrage', 'user'); R:SetNote('player', 'Aldric-Stormrage', 'Mine before sharing'); R:SetAxis('player', 'Aldric-Stormrage', 'trust', 60)
-    R:StartSharing(); R:StartSharing()
+    R:StartSharing(); ADVANCE(3); R:StartSharing()
     R:AddPlayer('Brenna-Stormrage', 'user'); R:SetNote('player', 'Brenna-Stormrage', 'Shared note'); R:SetAxis('player', 'Brenna-Stormrage', 'respect', 55)
     R:Observe('Brenna-Stormrage', 'group')
     assert(R:ShareAll() == 1)

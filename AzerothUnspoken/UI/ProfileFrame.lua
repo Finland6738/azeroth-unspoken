@@ -80,7 +80,6 @@ local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenProfile", UIParent)
 	frame:SetSize(680, 690)
 	frame:SetPoint("CENTER", 0, 20)
-	frame:SetFrameStrata("DIALOG")
 	frame:SetMovable(true)
 	frame:EnableMouse(true)
 	frame:SetClampedToScreen(true)
@@ -146,6 +145,7 @@ local function Build()
 	frame.close = W.Button(frame, "", 110, 24, function() ProfileFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
 	frame:Hide()
+	NS.Windows:Register(frame)   -- #181
 end
 
 function ProfileFrame:Refresh()

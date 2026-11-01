@@ -84,7 +84,7 @@ To update, delete every `AzerothUnspoken*` folder and copy the new ones (a new v
 
 ## First launch
 
-A few seconds after you enter the game a **wizard** appears, with 6 steps (7 if Total RP 3 is present): language, kind of experience, intensity, style, modules, Total RP 3, and chat with a sample line. You can skip it at any time and reopen it with `/au wizard`.
+A few seconds after the game has loaded (and never in combat) a short **guide** appears, with 7 steps (8 if Total RP 3 is present): a welcome with a live sample of the narrator and the language, kind of experience, intensity, style, modules, Total RP 3, what may reach chat, and a last page with the keys, the speak button and where the settings are. Every step can be skipped, and it reopens with `/au wizard`.
 
 With the default settings the addon is **silent towards other players**: lines only appear in the narrator box, at the bottom centre of the screen.
 
@@ -104,7 +104,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au language [it\|en]` | language of lines and interface (short form `/au lang`); the default is English |
 | `/au intensity <0-100>` | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
 | `/au depth natural\|literary\|elevated` | style depth: lines written for that tone weigh more (the others stay possible) |
-| `/au mode private\|preview\|confirm\|auto` | what may reach chat; default: `private`. `auto` does not turn on with the first command: it shows a warning and must be repeated within 10 seconds |
+| `/au mode private\|preview\|confirm\|auto` | what may reach chat; default: `private`. `auto` does not turn on with the first command: it shows a warning and must be repeated after a couple of seconds (within 30) |
 | `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | default channel for proposals (short forms `s`, `e`, `p`, `g`, `i`) |
 | `/au speak` | same as the "speak" key: confirms the pending proposal, or makes a new one |
 | `/au cancel` | discards the pending proposal |

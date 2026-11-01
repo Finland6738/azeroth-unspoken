@@ -212,3 +212,11 @@ body { font-family: var(--game-font); color: var(--white); }
 .p .callout { position: absolute; font: 11px/1.35 Arial, sans-serif; color: #10240f; background: #c8f0b4; border-radius: 3px;
 	padding: 3px 7px; max-width: 220px; }
 .p .nar[data-mini] .body { font-size: 13px; padding-bottom: 10px; }
+
+/* first-run guide cards and progress dots (UI/Widgets.lua W.Card, UI/Wizard.lua): the flat design */
+.wcard { position: absolute; box-sizing: border-box; border: 1px solid #453b26; background: #1a160f; }
+.wcard.on { border-color: #ffd100; background: #2b230a; }
+.wcard .wm { position: absolute; right: 12px; top: 12px; width: 10px; height: 10px; background: #4d4230; }
+.wcard.on .wm { background: #ffd100; }
+.wdot { position: absolute; top: 46px; width: 8px; height: 8px; background: #4d4230; }
+.wdot.past { background: #c9a227; } .wdot.now { background: #ffd100; }

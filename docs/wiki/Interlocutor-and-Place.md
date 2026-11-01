@@ -25,7 +25,7 @@ If nothing is known, the person is **neutral**. A role is only assigned from som
 
 ### Other players' Total RP 3 profiles
 
-With your consent (**off** by default), the addon can read the **public** race, class and personality traits of other players' Total RP 3 profiles. It never reads notes, history or free text, and it saves nothing. Turn it on with `/au who trp3 on`, or **Read others' Total RP 3** in the [[settings panel|Settings]]. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
+With your consent (**off** by default), the addon can read the **public** race, class and personality traits of other players' Total RP 3 profiles. It never reads notes, history or free text, and it saves nothing. Turn it on (two steps: a warning, then a confirmation after a couple of seconds) with `/au who trp3 on`, or **Read others' Total RP 3** in the [[settings panel|Settings]]. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
 ### Emotes aimed at you
 

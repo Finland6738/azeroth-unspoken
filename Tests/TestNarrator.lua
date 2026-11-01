@@ -293,7 +293,7 @@ T.run("wizard del primo avvio", function()
 	T.ok(NS.Wizard:Open(), "si apre")
 	T.ok(NS.Wizard:IsOpen(), "visibile")
 	local w = _G.AzerothUnspokenWizard
-	T.ok(w.title:GetText():find("1 di 6", 1, true), "primo passo di sei: " .. w.title:GetText())
+	T.ok(w.count:GetText():find("1 di 7", 1, true), "primo passo di sette: " .. w.count:GetText())
 	-- avanti fino alla fine, provando i pulsanti di ogni pagina
 	local steps, clicks = 0, 0
 	while NS.Wizard:IsOpen() and steps < 12 do
@@ -302,7 +302,7 @@ T.run("wizard del primo avvio", function()
 		w.next:Click()
 	end
 	T.ok(clicks >= 15, "pulsanti provati: " .. clicks)
-	T.eq(steps, 6, "sei passi senza Total RP 3")
+	T.eq(steps, 7, "sette passi senza Total RP 3")
 	T.ok(not NS.Wizard:IsOpen(), "si chiude alla fine")
 	T.ok(NS.db.ui.wizardDone, "segnato come fatto")
 	T.eq(#NS.Diagnostics.errors, 0, "nessun errore")
@@ -320,16 +320,16 @@ T.run("wizard del primo avvio", function()
 		steps = steps + 1
 		w.next:Click()
 	end
-	T.eq(steps, 7, "sette passi con Total RP 3")
+	T.eq(steps, 8, "otto passi con Total RP 3")
 	AddOn_TotalRP3 = nil
 
 	-- Indietro funziona
 	NS.db.ui.wizardDone = false
 	NS.Wizard:Open()
 	w.next:Click(); w.next:Click()
-	T.ok(w.title:GetText():find("3 di 6", 1, true), "terzo passo")
+	T.ok(w.count:GetText():find("3 di 7", 1, true), "terzo passo")
 	w.back:Click()
-	T.ok(w.title:GetText():find("2 di 6", 1, true), "indietro")
+	T.ok(w.count:GetText():find("2 di 7", 1, true), "indietro")
 
 	-- Salta: chiude subito e lascia i valori predefiniti
 	NS.db.ui.wizardDone = false
@@ -394,6 +394,8 @@ T.run("wizard: le scelte arrivano alle impostazioni", function()
 	Find("Try the narrator"):Click()
 	T.ok(frame:IsShown(), "la prova mostra il narratore")
 	T.eq(Gateway:GetPending(), nil, "la prova non crea proposte")
+	w.next:Click()
+	T.ok(NS.Wizard:IsOpen(), "l'ultima pagina: tasti, pulsante e impostazioni")
 	w.next:Click()
 	T.ok(not NS.Wizard:IsOpen(), "fine")
 	NS.db.locale = "it"
@@ -540,16 +542,19 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 	cmd("mode auto")
 	T.eq(NS.db.chat.mode, "CONFIRM_TO_SEND", "il primo comando non cambia nulla")
 	T.ok(not NS.db.output.autoPublicSay, "nessun consenso")
-	T.ok(T.sentContains("ATTENZIONE"), "mostra l'avviso")
+	T.ok(T.sentContains("NOME DEL TUO PERSONAGGIO"), "mostra l'avviso intero")
 	cmd("mode auto")
-	T.eq(NS.db.chat.mode, "AUTO_ONLY_IF_ALLOWED", "il secondo comando entro 10 s attiva")
+	T.eq(NS.db.chat.mode, "CONFIRM_TO_SEND", "il secondo comando subito dopo non passa (#178)")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
+	cmd("mode auto")
+	T.eq(NS.db.chat.mode, "AUTO_ONLY_IF_ALLOWED", "il secondo comando, dopo una pausa, attiva")
 	T.ok(NS.db.output.autoPublicSay, "con il consenso")
 	Gateway:SetMode("CONFIRM_TO_SEND")
 	-- scaduto il tempo, serve di nuovo l'avviso
 	cmd("mode auto")
-	ADVANCE(11)
+	ADVANCE(NS.Consent.WINDOW + 1)
 	cmd("mode auto")
-	T.ok(not NS.db.output.autoPublicSay, "oltre 10 s la conferma non vale: nuovo avviso")
+	T.ok(not NS.db.output.autoPublicSay, "oltre la finestra la conferma non vale: nuovo avviso")
 	cmd("mode confirm")   -- un altro comando disarma
 	cmd("mode auto")
 	T.ok(not NS.db.output.autoPublicSay, "un altro cambio di modalità annulla l'avviso")
@@ -577,9 +582,13 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 	Gateway:SetMode("CONFIRM_TO_SEND")
 	autoRow:Click()
 	T.ok(not NS.db.output.autoPublicSay and Gateway:IsAutoArmed(), "primo clic: avviso e attesa")
-	T.ok(autoRow:GetText():find("clic di nuovo", 1, true), "la riga chiede di cliccare di nuovo")
+	T.ok(autoRow:GetText():find(NS:L("consent_off_reading"), 1, true), "la riga dice, a parole: spento, leggi prima")
 	autoRow:Click()
-	T.ok(NS.db.output.autoPublicSay and Gateway:IsAutoActive(), "secondo clic: attivo")
+	T.ok(not NS.db.output.autoPublicSay, "un doppio clic non supera la conferma (#178)")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
+	T.ok(autoRow:GetText():find(NS:L("consent_off_ready"), 1, true), "dopo la pausa la riga dice: spento, conferma")
+	autoRow:Click()
+	T.ok(NS.db.output.autoPublicSay and Gateway:IsAutoActive(), "secondo clic, dopo la pausa: attivo")
 	autoRow:Click()
 	T.ok(not NS.db.output.autoPublicSay and NS.db.chat.mode == "CONFIRM_TO_SEND", "un altro clic lo spegne e torna a 'conferma'")
 
@@ -589,7 +598,7 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 	NS.Wizard:Open()
 	local w = _G.AzerothUnspokenWizard
 	for _ = 1, 5 do w.next:Click() end
-	T.ok(w.title:GetText():find("6 di 6", 1, true), "ultimo passo")
+	T.ok(w.count:GetText():find("6 di 7", 1, true), "il passo della chat")
 	local function Find(text)
 		for _, p in ipairs(w.content.children) do
 			for _, x in ipairs(p.children) do
@@ -602,8 +611,11 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 	auto:Click()
 	T.eq(NS.db.chat.mode, "PRIVATE", "un clic nel wizard non cambia la modalità")
 	T.ok(not NS.db.output.autoPublicSay, "né dà il consenso")
-	Find("clic di nuovo"):Click()
-	T.ok(NS.db.output.autoPublicSay and NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED", "il secondo clic la attiva")
+	auto:Click()
+	T.ok(not NS.db.output.autoPublicSay, "un doppio clic non la attiva (#178)")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
+	auto:Click()
+	T.ok(NS.db.output.autoPublicSay and NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED", "il secondo clic, dopo la pausa, la attiva")
 	w.skip:Click()
 	Gateway:SetMode("PRIVATE")
 end)
@@ -626,10 +638,10 @@ T.run("#11: il testo d'aiuto del wizard segue la lingua scelta", function()
 	local w = _G.AzerothUnspokenWizard
 	local function HelpText()
 		for _, x in ipairs(w.content.children[1].children) do
-			if x.kind == "FontString" then return x:GetText() end
+			if x.kind == "FontString" and x:GetText() == NS:L("wiz_language_help") then return x:GetText() end
 		end
 	end
-	T.ok(NS:L("wiz_language_help"):find("In che lingua", 1, true), "testo italiano")
+	T.ok(NS:L("wiz_language_help"):find("Indipendente", 1, true), "testo italiano")
 	T.eq(HelpText(), NS:L("wiz_language_help"), "la pagina mostra l'aiuto in italiano")
 	for _, p in ipairs(w.content.children) do
 		for _, x in ipairs(p.children) do
@@ -638,7 +650,7 @@ T.run("#11: il testo d'aiuto del wizard segue la lingua scelta", function()
 	end
 	T.eq(NS.db.locale, "en", "lingua cambiata")
 	T.eq(HelpText(), NS:L("wiz_language_help"), "l'aiuto è nella lingua nuova")
-	T.ok(HelpText():find("Which language", 1, true), "in inglese")
+	T.ok(HelpText():find("Independent of the game client", 1, true), "in inglese")
 	w.skip:Click()
 	NS.db.locale = "it"
 end)

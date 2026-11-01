@@ -23,7 +23,6 @@ local Compat = NS.Compat
 ---@field pending? AUProposal proposta in attesa
 ---@field inPlayerAction boolean vero solo dentro PlayerAction
 ---@field lastRefusal? string motivo dell'ultimo invio rifiutato
----@field autoAskedAt? number GetTime() dell'avviso mostrato prima di attivare l'invio automatico
 ---@field editing boolean il giocatore sta modificando la proposta
 ---@field sendLog { time: number, auto: boolean }[]
 local Gateway = NS:RegisterModule("gateway")
@@ -139,7 +138,7 @@ function Gateway:SetMode(value, opts)
 	if not mode then return false end
 	NS.db.chat.mode = mode
 	NS.db.output.autoPublicSay = (mode == "AUTO_ONLY_IF_ALLOWED" and opts ~= nil and opts.confirmAuto == true)
-	self.autoAskedAt = nil
+	NS.Consent:Cancel("auto")
 	if mode == "PRIVATE" or not NS.db.modules.publicChat then self:Discard() end
 	self:Changed()
 	return true, mode
@@ -157,28 +156,27 @@ function Gateway:CycleMode()
 	return self:SetMode("PRIVATE")
 end
 
-local AUTO_CONFIRM_SECONDS = 10
+-- L'invio automatico (emote sempre, /say nelle istanze, a nome del personaggio, visto da chi è vicino) si sceglie con due
+-- passi (#178, Core/Consent.lua): il primo mostra l'avviso intero in una finestra di conferma e non cambia nulla; il
+-- secondo conta solo dopo Consent.MIN_DELAY secondi (un doppio clic non lo supera) ed entro Consent.WINDOW. Vale per il
+-- comando (/au mode auto, ripetuto), il pannello e la procedura guidata.
+NS.Consent:Register("auto", { text = "consent_auto_text", accept = function()
+	Gateway:SetMode("AUTO_ONLY_IF_ALLOWED", { confirmAuto = true })
+end })
 
--- L'invio automatico (emote sempre, /say nelle istanze, a nome del personaggio) si sceglie con due gesti:
--- il primo mostra l'avviso e non cambia nulla, il secondo, entro 10 secondi, lo attiva. Vale per il comando
--- (/au mode auto, ripetuto), il pannello e la procedura guidata.
----@return "warned"|"enabled" state
+---@return "warned"|"wait"|"enabled" state warned: the warning is up; wait: the second step came too early
 function Gateway:SelectAuto()
 	if NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED" and NS.db.output.autoPublicSay then return "enabled" end
-	local now = GetTime()
-	if self:IsAutoArmed() then
-		self:SetMode("AUTO_ONLY_IF_ALLOWED", { confirmAuto = true })
-		return "enabled"
-	end
-	self.autoAskedAt = now
-	NS:Print(NS:L("chat_auto_warning"))
+	local r = NS.Consent:Step("auto")
+	if r == "confirmed" then return "enabled" end
+	if r == "wait" then return "wait" end
 	return "warned"
 end
 
--- l'avviso è stato mostrato da poco: un secondo gesto conferma
+-- la domanda è aperta (avviso mostrato da poco): un secondo gesto, dopo qualche istante, conferma
 ---@return boolean
 function Gateway:IsAutoArmed()
-	return self.autoAskedAt ~= nil and GetTime() - self.autoAskedAt <= AUTO_CONFIRM_SECONDS
+	return NS.Consent:IsOpen("auto")
 end
 
 -- l'invio automatico è davvero acceso (modalità e consenso)

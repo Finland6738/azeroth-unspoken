@@ -12,8 +12,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from mockkit import (PREFIX, VOICE_COLOR, btn, chat_lines, edit, fs, frame, page, placeholder, sel,  # noqa: E402
                      speak_button, tooltip, wow)
-from components import (dialogue, export_window, history_line, journal, narrator, profile, relations,  # noqa: E402
-                        settings, wizard)
+from components import (dialogue, export_window, history_line, journal, narrator, popup, profile,  # noqa: E402
+                        relations, settings, ui, wizard)
 import proposed  # noqa: E402
 
 PLAYER = "Elyra"   # invented character name
@@ -131,24 +131,28 @@ def build_speak_button():
 
 
 def build_wizard():
-    w, h = 640, 440
-    for step in range(1, 8):
+    w, h = 680, 540
+    names = ["Welcome and language", "Experience", "Intensity", "Style", "Modules", "Total RP 3", "Chat and test",
+             "Keys, button and settings"]
+    for step in range(1, 9):
         trp3 = step == 6
-        title = f"First-run wizard - step {step}: " + ["Language", "Experience", "Intensity", "Style", "Modules", "Total RP 3", "Chat and test"][step - 1]
-        add(f"wizard-{step}", title, w, h, wizard(step, trp3=trp3, left=80, top=50), "Wizard", "First-Run-Wizard",
+        add(f"wizard-{step}", f"First-run guide - step {step}: {names[step - 1]}", w, h,
+            wizard(step, trp3=trp3, left=80, top=50, trp3_others="needs" if trp3 else ""), "Wizard", "First-Run-Wizard",
             scene="neutral", seed=20 + step,
-            caption_extra="Total RP 3 installed: 7 steps." if trp3 else "")
-    for step in (1, 7):
-        add(f"wizard-{step}-it", f"First-run wizard - step {step}: " + ("Language" if step == 1 else "Chat and test") + " (Italian)", w, h,
-            wizard(step, lang="it", left=80, top=50), "Wizard", "First-Run-Wizard / Languages", scene="neutral",
-            seed=30 + step)
-    # "Try the narrator": the wizard (CENTER +40, DIALOG) covers the narrator box (BOTTOM +240, MEDIUM) at 1366 x 768
+            caption_extra="Shown only when Total RP 3 is installed: 8 steps, otherwise 7." if trp3 else "")
+    for step in (1, 7, 8):
+        add(f"wizard-{step}-it", f"First-run guide - step {step}: {names[step - 1]} (Italian)", w, h,
+            wizard(step, lang="it", trp3=False, left=80, top=50), "Wizard", "First-Run-Wizard / Languages",
+            scene="neutral", seed=30 + step)
+    # "Try the narrator" (#181): the narrator box steps aside, below the guide, and is above it; 1366 x 768
     W, H = 1366, 768
-    body = (narrator((W - 440) // 2, 240, speaker="narrator", text=f"{PLAYER} {L_DUSK_E}")
-            + wizard(7, left=(W - 480) // 2, top=(H - 330) // 2 - 40)
-            + f'<div class="note" style="left:{(W + 480) // 2 + 10}px;top:{(H + 330) // 2 - 70}px">The test line appears '
-              f'under the wizard</div>')
-    add("wizard-test-overlap", "Wizard - 'Try the narrator' at 1366 x 768", W, H, body, "Wizard", "First-Run-Wizard",
+    gl, gt = (W - 520) // 2, (H - 440) // 2 - 40
+    below = 118   # the guide's bottom edge is 204 up; the box (about 60 high) sits GAP (8) under it
+    body = (wizard(7, left=gl, top=gt)
+            + narrator((W - 440) // 2, below, speaker="narrator", text=f"{PLAYER} {L_DUSK_E}")
+            + f'<div class="note" style="left:{gl + 520 + 10}px;top:{gt + 330}px">The narrator box steps aside, '
+              f'below the guide, and is above every window while it shows the test line</div>')
+    add("wizard-test-line", "Guide - 'Try the narrator' at 1366 x 768", W, H, body, "Wizard", "First-Run-Wizard",
         scene="dusk", seed=37, scale=1)
 
 
@@ -299,32 +303,33 @@ def build_relations():
 
 def build_consent():
     w, h = 800, 740
-    # shared list: the first click arms the option, and the warning appears under the privacy note
-    add("consent-shared-list", "Consent - share relationships with the account", w, h,
-        relations(40, 40, "options", share_armed=True), "Consent", "Relationships / Privacy-and-Data", seed=80)
-    # proximity: the option and its tooltip
-    body = (relations(40, 40, "options", hover_option=5)
-            + tooltip([("Nameplates and mouseover can let the narrator recognise a person from your list, and suggest people "
-                        "with a Total RP 3 profile if you allowed reading them. For this session only: nothing is saved, no "
-                        "one is added. Off by default.", "ffffff")], left=420, top=128, width=300))
+    # shared list (#178): the first click asks; the button says "off, confirm" once the pause is over; the whole warning
+    # sits in the window, next to the buttons, in the normal font; the client's own dialog repeats it
+    body = (relations(40, 40, "options", armed="share")
+            + popup(150, 470, 500, 190, ui("en", "consent_share_text"), ui("en", "consent_turn_on"), ui("en", "consent_cancel"),
+                    accept_disabled=False))
+    add("consent-shared-list", "Consent - share relationships with the account", w, h, body, "Consent",
+        "Relationships / Privacy-and-Data", seed=80)
+    # proximity: the same two steps
+    body = (relations(40, 40, "options", armed="proximity")
+            + popup(150, 470, 500, 170, ui("en", "consent_proximity_text"), ui("en", "consent_turn_on"),
+                    ui("en", "consent_cancel"), accept_disabled=False))
     add("consent-proximity", "Consent - recognise nearby people", w, h, body, "Consent",
         "Relationships / Privacy-and-Data", seed=81)
-    # automatic sending: warning in chat, then the wizard button asks for a second click
+    # automatic sending: the chat step of the guide, and the dialog with the whole warning; its button is disabled
+    # while it is read (about two seconds), so a double-click cannot reach it
     W, H = 900, 640
-    body = (wizard(7, left=210, top=30, auto_armed=True)
-            + chat_lines([PREFIX + "WARNING: in automatic mode emotes (always) and /say (in instances) are sent by "
-                          "themselves, in your character's name, without you doing anything. Everything else stays a "
-                          "proposal to confirm. To turn it on, confirm within 10 seconds."],
-                         left=10, bottom=10, width=520, height=150))
+    body = (wizard(7, left=30, top=60, auto_state="reading")
+            + popup(520, 150, 340, 250, ui("en", "consent_auto_text"), ui("en", "consent_turn_on"), ui("en", "consent_cancel")))
     add("consent-auto", "Consent - automatic sending", W, H, body, "Consent", "Chat-Gateway / Privacy-and-Data",
-        seed=82)
-    # reading other players' Total RP 3: settings row and its tooltip
-    body = (settings(30, 30, tooltip_row=(2, 12))
-            + tooltip([("With your consent the addon reads, from other players' public Total RP 3 profiles, only race, "
-                        "class and psychological traits: never notes, history or texts. Off by default; 'Name from Total "
-                        "RP 3' must be on too.", "ffffff")], left=380, top=330, width=290))
+        seed=82, caption_extra="The Turn on button is disabled for the first two seconds.")
+    # reading other players' Total RP 3: the state in words, with the dependency, and the dialog
+    body = (settings(30, 30, others_state=ui("en", "consent_on_needs", ui("en", "consent_needs_name_short")))
+            + popup(120, 450, 420, 200, ui("en", "consent_trp3_text"), ui("en", "consent_turn_on"), ui("en", "consent_cancel"),
+                    accept_disabled=False))
     add("consent-trp3-others", "Consent - read other players' Total RP 3", 720, 700, body, "Consent",
-        "Character-Soul-and-Total-RP-3 / Privacy-and-Data", seed=83)
+        "Character-Soul-and-Total-RP-3 / Privacy-and-Data", seed=83,
+        caption_extra="Behind the dialog, the settings row after the consent was given with 'Name from Total RP 3' off.")
     # reload after a change of language (StaticPopup stand-in)
     W, H = 640, 300
     pop = frame(fs("Azeroth Unspoken: the lines in Italiano need a reload of the interface. Reload now?", "gfh", left=20,

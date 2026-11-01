@@ -425,11 +425,11 @@ local function BuildOptions()
 	for i, opt in ipairs(OPTIONS) do
 		local b = W.Button(frame, "", colW, 24, function()
 			if opt[1] == "sharePlayers" then
-				-- turning the shared list on needs a second click (with the warning); turning it off needs one
+				-- #178: on in two steps (the warning, then the confirmation after a moment); off in one
 				if R:Setting("sharePlayers") then R:StopSharing() else R:StartSharing() end
-				C_Timer.After(R.CONFIRM_SECONDS + 0.5, function() RelationsFrame:Refresh() end)
 			else
-				R:SetSetting(opt[1], not R:Setting(opt[1]))
+				-- proximity is a consent like the shared list (#178); the other options flip
+				R:ChangeSetting(opt[1])
 			end
 			RelationsFrame:Refresh()
 		end)
@@ -452,7 +452,6 @@ local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenRelations", UIParent)
 	frame:SetSize(WIDTH, HEIGHT)
 	frame:SetPoint("CENTER", 0, 10)
-	frame:SetFrameStrata("DIALOG")
 	frame:SetMovable(true)
 	frame:EnableMouse(true)
 	frame:SetClampedToScreen(true)
@@ -501,6 +500,9 @@ local function Build()
 	frame.close = W.Button(frame, "", 110, 24, function() RelationsFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
 	frame:Hide()
+	NS.Windows:Register(frame)   -- #181
+	-- a question that opens (after the pause for reading) or expires changes the buttons without a click (#178)
+	NS.Consent:OnChange(function() RelationsFrame:Refresh() end)
 end
 
 ---------------------------------------------------------------------------
@@ -620,19 +622,29 @@ local function RefreshPeople()
 	frame.next:SetEnabled(view.page < pages)
 end
 
+-- the consents of this window and the question each one keeps open (#178)
+local CONSENT_OF = { sharePlayers = "share", proximity = "proximity" }
+
 local function RefreshOptions()
 	for _, o in ipairs(frame.options) do
-		if o.key == "sharePlayers" and R:ShareArmed() then
-			o.button:SetText(NS:L("rel_opt_share_confirm"))
-		else
-			o.button:SetText(NS:L(o.text) .. ": " .. NS:L(R:Setting(o.key) and "on" or "off"))
+		local id = CONSENT_OF[o.key]
+		local state = NS:L(R:Setting(o.key) and "on" or "off")
+		if id and not R:Setting(o.key) then
+			local q = NS.Consent:State(id)
+			if q == "reading" then state = NS:L("consent_off_reading") elseif q == "ready" then state = NS:L("consent_off_ready") end
 		end
+		o.button:SetText(NS:L(o.text) .. ": " .. state)
 	end
+	-- one line under the options for each consent, then the privacy note (not tooltips only, #178)
 	frame.optionsHint:SetText(NS:L("rel_options_hint"))
 	frame.privacy:SetText(NS:L("rel_privacy"))
-	local armed = R:ShareArmed()
-	frame.warning:SetShown(armed)
-	frame.warning:SetText(armed and NS:L("rel_share_warning") or "")
+	-- the warning of the consent being asked sits in the window, next to the buttons, in the normal font
+	local text
+	for _, key in ipairs({ "sharePlayers", "proximity" }) do
+		if NS.Consent:IsOpen(CONSENT_OF[key]) then text = NS:L("consent_" .. CONSENT_OF[key] .. "_text") end
+	end
+	frame.warning:SetShown(text ~= nil)
+	frame.warning:SetText(text or "")
 end
 
 local function RefreshDetail()
