@@ -23,6 +23,11 @@
 -- gave it). The disposition bands are visible levels: a move between them is told by the private narrator (rare, never
 -- in combat) and a memorable one leaves a journal line. Each NPC warms up at its own pace (the temperament: role,
 -- personality, curated overrides and a race factor, all in Data/Relationships.lua and Data/NPCs.lua).
+-- N4 (#216, version 4): a quest accepted from an NPC is a promise to them (`relationships.promises`, keyed by quest id:
+-- the giver's npcID and times only, never a quest text). Abandoning it costs trust; a promise left open long is recalled
+-- when you meet the giver; a late turn-in brings relief. With a named NPC at Friend or above the promise is an oath:
+-- breaking it leaves a slowly fading mark on the NPC (`oathT`) and on the map where it was sworn (`relationships.marks`).
+-- The notices go to the private narrator; the numbers are in Data/Relationships.lua (`promises`).
 -- Proximity (#113, ADR 0030): with the option on (off by default) nameplates and mouseover can recognise a player who is
 -- ALREADY listed, or (with the TRP3 consent) suggest one who has a TRP3 profile. For this session only: nothing is saved,
 -- no record is created, nothing is kept about strangers, and a secret identity is not read.
@@ -110,7 +115,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 3                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214)
+R.VERSION = 4                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -156,6 +161,10 @@ R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionSt
 	-- N2 (#214): Data/Relationships.lua fills them
 	temperament = { min = 0.4, max = 2, roles = {}, temperaments = {}, races = {}, pace = {} },
 	levels = { perSession = 4, npcHours = 20, held = 3, variants = 1, memorable = {} },
+	-- N4 (#216): Data/Relationships.lua fills it
+	promises = { maxDays = 120, max = 40, settle = 3, remindDays = 7, remindHours = 20, lateDays = 7, perSession = 4,
+		variants = 1, oath = { band = "friend", curated = false },
+		marks = { npcDays = 240, cityDays = 90, npcTrust = 0.25, cityTrust = 0.6 } },
 	-- N3 (#215): Data/Relationships.lua fills it
 	romance = { minLevel = "friend", gain = {}, decay = 1, cap = 0, humanoid = { names = {} },
 		vow = { attraction = 100, label = "lover", variants = 1 } } }
@@ -381,6 +390,20 @@ function R:RegisterData(def)
 			if IsNumber(lv[k]) and lv[k] >= 0 then c.levels[k] = lv[k] end
 		end
 		for k, v in pairs(type(lv.memorable) == "table" and lv.memorable or EMPTY) do c.levels.memorable[k] = v end
+	end
+	-- N4 (#216): promises and oaths (numbers key by key; the oath band must be a known disposition band)
+	local pr = def.promises
+	if type(pr) == "table" then
+		local cp = c.promises
+		for _, k in ipairs({ "maxDays", "max", "settle", "remindDays", "remindHours", "lateDays", "perSession", "variants" }) do
+			if IsNumber(pr[k]) and pr[k] >= 0 then cp[k] = pr[k] end
+		end
+		local oath = type(pr.oath) == "table" and pr.oath or EMPTY
+		if type(oath.band) == "string" and self.dispositionById[oath.band] then cp.oath.band = oath.band end
+		if type(oath.curated) == "boolean" then cp.oath.curated = oath.curated end
+		for k, v in pairs(type(pr.marks) == "table" and pr.marks or EMPTY) do
+			if cp.marks[k] ~= nil and IsNumber(v) and v >= 0 then cp.marks[k] = v end
+		end
 	end
 	-- N3 (#215): romance (the gains merged by source, so a pack can add one; the sex rule is not data)
 	local rm = def.romance
@@ -652,6 +675,9 @@ function R:Data()
 	end
 	if type(d.npcs) ~= "table" then d.npcs = {} end
 	if type(d.players) ~= "table" then d.players = {} end
+	-- N4 (#216): open promises by quest id, and the maps that remember a broken oath
+	if type(d.promises) ~= "table" then d.promises = {} end
+	if type(d.marks) ~= "table" then d.marks = {} end
 	if not IsNumber(d.version) then d.version = self.VERSION end
 	return d
 end
@@ -951,6 +977,7 @@ local function CleanRecord(rec, kind)
 		out.met = R.CleanMet(rec.met)
 		if type(rec.race) == "string" and rec.race:match("^[A-Za-z]+$") and #rec.race <= R.RACE_LEN then out.race = rec.race end
 		if IsNumber(rec.levelT) and rec.levelT > 0 then out.levelT = Past(rec.levelT) end
+		if IsNumber(rec.oathT) and rec.oathT > 0 then out.oathT = Past(rec.oathT) end
 		local t = rec.today
 		-- i contatori di un giorno passato non servono più: Increment li sostituisce alla prossima interazione (#52)
 		if type(t) == "table" and IsNumber(t.day) and math.floor(t.day) == Day(Now())
@@ -976,6 +1003,65 @@ local function CleanRecord(rec, kind)
 			if type(k) == "string" and k:match("^[a-z_]+$") and v == true then noted[k] = true end
 		end
 		if next(noted) then out.noted = noted end
+	end
+	return out
+end
+
+---@class AURelationPromise an open promise (N4, #216): quest id (the key), the giver and times, nothing else
+---@field npc integer the npcID of the quest giver
+---@field t number when the quest was accepted (epoch)
+---@field r? number when the giver last recalled it (epoch)
+---@field oath? boolean sworn as an oath (a named NPC at the oath band or above)
+---@field map? integer oaths: the uiMapID where it was sworn (the giver's town or city)
+
+---N4 (#216): the open promises within their limits: a positive whole quest id, a giver still in the list, times in the
+---past and not older than `promises.maxDays`; at most `promises.max` of them (the oldest go first).
+---@param list any
+---@param npcs table<integer, AURelationRecord>
+---@return table<integer, AURelationPromise> clean
+---@return integer dropped
+function R:CleanPromises(list, npcs)
+	local cfg = self.config.promises
+	local out, keep, dropped = {}, {}, 0
+	local oldest = Now() - cfg.maxDays * R.DAY
+	for id, p in pairs(type(list) == "table" and list or EMPTY) do
+		local ok = IsNumber(id) and id > 0 and id == math.floor(id) and type(p) == "table" and IsNumber(p.npc)
+			and npcs[p.npc] ~= nil and IsNumber(p.t) and p.t > 0
+		local t = ok and Past(p.t)
+		if ok and t >= oldest then
+			local q = { npc = p.npc, t = t }
+			if IsNumber(p.r) and p.r > 0 then q.r = Past(p.r) end
+			if p.oath == true then
+				q.oath = true
+				if IsNumber(p.map) and p.map > 0 then q.map = math.floor(p.map) end
+			end
+			out[id] = q
+			table.insert(keep, id)
+		elseif not ok then
+			dropped = dropped + 1
+		end
+	end
+	if #keep > cfg.max then
+		table.sort(keep, function(a, b)
+			if out[a].t ~= out[b].t then return out[a].t < out[b].t end
+			return a < b
+		end)
+		for i = 1, #keep - cfg.max do out[keep[i]] = nil end
+	end
+	return out, dropped
+end
+
+---N4 (#216): the maps that remember a broken oath, { [uiMapID] = time }; a mark that has faded is let go.
+---@param marks any
+---@return table<integer, number>
+function R:CleanMarks(marks)
+	local out = {}
+	local days = self.config.promises.marks.cityDays
+	for id, t in pairs(type(marks) == "table" and marks or EMPTY) do
+		if IsNumber(id) and id > 0 and id == math.floor(id) and IsNumber(t) and t > 0 then
+			t = Past(t)
+			if Now() - t < days * R.DAY then out[id] = t end
+		end
 	end
 	return out
 end
@@ -1009,6 +1095,10 @@ function R:Sanitize()
 		if clean and key == k then players[key] = clean else dropped = dropped + 1 end
 	end
 	d.npcs, d.players = npcs, players
+	-- N4 (#216): promises whose giver is gone, malformed or too old are let go; faded marks too
+	local promises, bad = self:CleanPromises(d.promises, npcs)
+	d.promises, d.marks = promises, self:CleanMarks(d.marks)
+	dropped = dropped + bad
 	d.version = self.VERSION
 	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
 	self:CompactNPCs()
@@ -1221,8 +1311,13 @@ function R:CompactNPCs()
 	for _ in pairs(d.npcs) do total = total + 1 end
 	if total <= self.MAX_NPCS then return 0 end
 	local list = {}
+	-- N4 (#216): nor those waiting on a promise or remembering a broken oath
+	local promised = {}
+	for _, p in pairs(d.promises or EMPTY) do promised[p.npc] = true end
 	for id, rec in pairs(d.npcs) do
-		if not (rec.label or rec.note or rec.tags or rec.feeling) then table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 }) end
+		if not (rec.label or rec.note or rec.tags or rec.feeling or rec.oathT or promised[id]) then
+			table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 })
+		end
 	end
 	table.sort(list, function(a, b)
 		if a.f ~= b.f then return a.f < b.f end
@@ -1330,8 +1425,9 @@ end
 ---@param now number
 ---@param temper? number N2 (#214): the multiplier of the NPC's temperament, on the gains and on the daily caps (1)
 ---@param inc? table N3 (#215): a row of the same shape to use instead of config.increments[source] (the romance)
+---@param trustMult? number N4 (#216): a broken oath remembered: multiplies a positive trust gain (1)
 ---@return table<string, number>? gained
-function R:Increment(rec, source, now, temper, inc)
+function R:Increment(rec, source, now, temper, inc, trustMult)
 	inc = inc or self.config.increments[source]
 	if not inc then return nil end
 	local t = IsNumber(temper) and temper > 0 and temper or 1
@@ -1355,6 +1451,7 @@ function R:Increment(rec, source, now, temper, inc)
 			if delta > 0 then
 				local span = def.max
 				delta = delta * (1 - self.config.lifetimeSoftness * Clamp(v / span, 0, 1))
+				if axis == "trust" and IsNumber(trustMult) then delta = delta * Clamp(trustMult, 0, 1) end
 			end
 			local room = ((inc.cap and inc.cap[axis]) or math.huge) * t
 			room = room - (gains[axis] or 0)
@@ -1399,7 +1496,7 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	if not uncounted then rec.count = (rec.count or 0) + 1 end
 	local clean = CleanText(name, self.NAME_LEN)
 	if clean then rec.name = clean end
-	local gained = self:Increment(rec, source, now, temper.gain)
+	local gained = self:Increment(rec, source, now, temper.gain, nil, self:MarkTrust(npcID, rec, temper.forget))
 	local warmed = self:Romance(npcID, rec, source, now, temper.gain, before, gained)
 	if warmed then
 		gained = gained or {}
@@ -1722,6 +1819,361 @@ function R:Circumstances()
 	local level = Compat.SafeCall("UnitLevel", "player")
 	if IsNumber(level) and level >= 1 then met.level = math.floor(level) end
 	return R.CleanMet(met)
+end
+
+---------------------------------------------------------------------------
+-- N4 (#216): promises and oaths. A quest accepted from an NPC is a word given to them. Only quest ids, the giver's
+-- npcID and times are kept (and, for an oath, the map where it was sworn). The notices go to the private narrator,
+-- never to chat, and are rare by rule (Data/Relationships.lua `promises`).
+---------------------------------------------------------------------------
+-- this session's bookkeeping: notices shown, quests that left the log and wait to be settled, abandons seen, NPCs and
+-- maps that already recalled a broken oath (made on first use: a session table made by older code or a test has none)
+local function PromiseSession(self)
+	local s = self.session
+	if type(s.promises) ~= "table" then
+		s.promises = { n = 0, turn = {}, removed = {}, abandoned = {}, oaths = {}, cities = {} }
+	end
+	return s.promises
+end
+
+-- how much is left of a mark made at `t` that lasts `days` days: 1 when fresh, fading evenly to 0
+local function MarkLeft(t, days)
+	if not IsNumber(t) or not IsNumber(days) or days <= 0 then return 0 end
+	return Clamp(1 - (Now() - t) / (days * R.DAY), 0, 1)
+end
+
+---What is left of the mark of a broken oath this NPC carries: 0 none, 1 fresh. Long-lived peoples remember longer: the
+---days of the mark are divided by the NPC's `forget` (R:Temper).
+---@param npcID integer
+---@param rec? AURelationRecord
+---@param forget? number the NPC's forget, when the caller already has it
+---@return number
+function R:OathMark(npcID, rec, forget)
+	rec = rec or self:Get("npc", npcID)
+	if not rec or not IsNumber(rec.oathT) then return 0 end
+	local k = IsNumber(forget) and forget > 0 and forget or self:Temper(npcID, rec).forget
+	return MarkLeft(rec.oathT, self.config.promises.marks.npcDays / k)
+end
+
+---What is left of the memory of a broken oath on a map (the town or city where it was sworn): 0 none, 1 fresh.
+---@param mapID? integer
+---@return number
+function R:CityMark(mapID)
+	local d = self:Data()
+	if not d or not IsNumber(mapID) then return 0 end
+	return MarkLeft(d.marks[mapID], self.config.promises.marks.cityDays)
+end
+
+---The factor on the trust an NPC can gain now: 1 without marks, down to `marks.npcTrust` with the NPC who was betrayed
+---and to `marks.cityTrust` with anyone met on a map that remembers a broken oath; both multiply, and both fade.
+---@param npcID integer
+---@param rec? AURelationRecord
+---@param forget? number
+---@return number
+function R:MarkTrust(npcID, rec, forget)
+	local m = self.config.promises.marks
+	local f = 1
+	local own = self:OathMark(npcID, rec, forget)
+	if own > 0 then f = f * (1 - own * (1 - m.npcTrust)) end
+	local d = self:Data()
+	if d and next(d.marks) then
+		local city = self:CityMark((HereNow()))
+		if city > 0 then f = f * (1 - city * (1 - m.cityTrust)) end
+	end
+	return f
+end
+
+---Would a promise to this NPC be an oath? A named NPC (one of the curated register with `oath.curated`, otherwise any
+---NPC whose name the addon kept) already at the oath band (Friend) or above.
+---@param npcID integer
+---@param rec? AURelationRecord
+---@return boolean
+function R:Sworn(npcID, rec)
+	local o = self.config.promises.oath
+	local band = self.dispositionById[o.band]
+	if not band or not rec then return false end
+	if o.curated then
+		local I = NS.Interlocutor
+		if not (I and I.npcs and I.npcs[npcID]) then return false end
+	elseif not rec.name then
+		return false
+	end
+	local _, now = self:Disposition(self:Axes(rec))
+	local b = self.dispositionById[now]
+	return b ~= nil and b.max >= band.max
+end
+
+-- the private narrator can show a system notice now: on, intensity above 0, not paused, no invasive screen
+local function NarratorFree()
+	local db = NS.db
+	if not (db and NS.Narrator and NS.Narrator.Notice) or NS.paused or (db.intensity or 0) <= 0
+		or not db.output.privateNarrator then return false end
+	return not Compat:InvasiveScreen()
+end
+
+---A promise notice in the private narrator (Narrator:Notice: never chat), if the moment allows it: the option is on,
+---the narrator is free, the character is not fighting (the notice is dropped, not held) and the session has room
+---(`promises.perSession`). The variants of each kind take turns.
+---@param prefix string the text key without its variant number (rel_promise_remind_...)
+---@return boolean shown
+function R:PromiseNotice(prefix, ...)
+	if not self:Setting("promiseNotices") or not NarratorFree() then return false end
+	if Compat.SafeCall("UnitAffectingCombat", "player") == true then return false end
+	local ps, cfg = PromiseSession(self), self.config.promises
+	if ps.n >= cfg.perSession then return false end
+	ps.n = ps.n + 1
+	local turn = (ps.turn[prefix] or 0) % math.max(1, math.floor(cfg.variants)) + 1
+	ps.turn[prefix] = turn
+	NS.Narrator:Notice(NS:L(prefix .. turn, ...))
+	return true
+end
+
+---Changes the axes of a listed NPC for something that is not a meeting (a word kept or broken): the temperament
+---applies, `last` and `count` stay as they are. A move to another level leaves its journal line; with `quiet` (a promise
+---notice was just shown) the level notice is not added to it, and the NPC's level notices rest their usual hours.
+---@param npcID integer
+---@param source string a key of config.increments
+---@param quiet? boolean
+---@return table<string, number>? gained
+function R:Affect(npcID, source, quiet)
+	if not self:Writable() then return nil end
+	local rec = self:Get("npc", npcID)
+	if not rec then return nil end
+	local old = DerivedOf(self, rec)
+	local temper = self:Temper(npcID, rec, source)
+	local _, before = self:Disposition(self:Axes(rec))
+	local gained = self:Increment(rec, source, Now(), temper.gain)
+	AfterChange(self, "npc", rec, old)
+	local _, after = self:Disposition(self:Axes(rec))
+	if after ~= before then
+		if quiet then rec.levelT = Now() end
+		self:LevelChanged(npcID, rec, before, after)
+	end
+	self:Changed()
+	return gained
+end
+
+---A quest accepted from an NPC (QUEST_ACCEPTED after that NPC's quest dialogue) is a promise to them. With a named NPC
+---at the oath band or above it is an oath, which also keeps the map where it was sworn (where the character stands).
+---@param questID integer
+---@param npcID integer
+---@return AURelationPromise?
+function R:Promise(questID, npcID)
+	if not self:Writable() or not IsNumber(questID) or questID <= 0 then return nil end
+	local rec = self:Get("npc", npcID)
+	if not rec then return nil end
+	local d = self:Data()
+	questID = math.floor(questID)
+	local p = { npc = npcID, t = Now() }
+	if self:Sworn(npcID, rec) then
+		p.oath = true
+		p.map = HereNow() or (type(rec.met) == "table" and rec.met.mapID) or nil
+	end
+	d.promises[questID] = p
+	d.promises = self:CleanPromises(d.promises, d.npcs)
+	self:Changed()
+	return d.promises[questID]
+end
+
+---A quest turned in: the promise is kept. Handed late to the giver it brings relief (a notice); a kept oath also raises
+---the giver's trust and loyalty a little. A quest without a promise does nothing.
+---@param questID integer
+---@param takerID? integer the NPC the quest was handed to, when known
+---@return integer? days how long the promise had waited
+function R:KeepPromise(questID, takerID)
+	local d = self:Data()
+	local p = d and IsNumber(questID) and d.promises[questID]
+	if not p or not self:Writable() then return nil end
+	d.promises[questID] = nil
+	PromiseSession(self).removed[questID] = nil
+	local days = math.max(0, math.floor((Now() - p.t) / R.DAY))
+	local shown = false
+	if takerID == p.npc and days >= self.config.promises.lateDays then
+		shown = self:PromiseNotice("rel_promise_relief_", self:DisplayName("npc", p.npc), days)
+	end
+	if p.oath then self:Affect(p.npc, "oath_kept", shown) end
+	self:Changed()
+	return days
+end
+
+---A quest left the log (QUEST_REMOVED). A turn-in may come just before or just after it, so the promise is settled
+---`promises.settle` seconds later, or at once when the abandon itself was seen (R:OnAbandon).
+---@param questID integer
+function R:QuestRemoved(questID)
+	local d = self:Data()
+	if not d or not IsNumber(questID) or not d.promises[questID] then return end
+	local ps = PromiseSession(self)
+	ps.removed[questID] = GetTime()
+	if ps.abandoned[questID] then
+		self:SettlePromises()
+		return
+	end
+	-- without a timer the next quest or NPC event settles it (both call SettlePromises)
+	Compat.After(self.config.promises.settle + 0.1, function()
+		if R:Enabled() then NS.Diagnostics:Guard("relations:promises", R.SettlePromises, R) end
+	end)
+end
+
+---The quests that left the log and were not turned in meanwhile: broken, once `promises.settle` seconds have passed or
+---at once when the abandon was seen. A quest the client calls completed is never broken (a turn-in that was missed).
+function R:SettlePromises()
+	local d = self:Data()
+	local ps = PromiseSession(self)
+	if not d then return end
+	local now, ids = GetTime(), {}
+	for id, t in pairs(ps.removed) do
+		if not d.promises[id] then
+			ps.removed[id] = nil
+		elseif ps.abandoned[id] or now - t >= self.config.promises.settle then
+			table.insert(ids, id)
+		end
+	end
+	table.sort(ids)
+	for _, id in ipairs(ids) do
+		ps.removed[id], ps.abandoned[id] = nil, nil
+		if Compat.SafeCall("C_QuestLog.IsQuestFlaggedCompleted", id) == true then
+			d.promises[id] = nil
+		else
+			self:BreakPromise(id)
+		end
+	end
+end
+
+---A promise broken (the quest abandoned): the giver's trust falls (`promise_broken`). An oath broken costs far more
+---(`oath_broken`), marks the NPC and the map where it was sworn, and leaves a journal line without names.
+---@param questID integer
+---@return boolean broken
+function R:BreakPromise(questID)
+	local d = self:Data()
+	local p = d and d.promises[questID]
+	if not p or not self:Writable() then return false end
+	d.promises[questID] = nil
+	local rec = self:Get("npc", p.npc)
+	if not rec then return false end
+	local name = self:DisplayName("npc", p.npc)
+	local shown
+	if p.oath then
+		rec.oathT = Now()
+		if p.map then d.marks[p.map] = Now() end
+		if NS.LivingMemory and NS.LivingMemory.Record then
+			NS.LivingMemory:Record({ kind = "relation_oath", tags = { "npc", "broken" }, source = "addon",
+				zone = (self:Circumstances() or EMPTY).zone })
+		end
+		shown = self:PromiseNotice("rel_oath_broken_", name)
+	else
+		shown = self:PromiseNotice("rel_promise_broken_", name)
+	end
+	self:Affect(p.npc, p.oath and "oath_broken" or "promise_broken", shown)
+	return true
+end
+
+---The quest picked in the abandon dialog (a hook on C_QuestLog.SetAbandonQuest), then the abandon confirmed (a hook on
+---C_QuestLog.AbandonQuest): the removal that follows is settled at once.
+function R:OnAbandonChosen()
+	local id = Compat.SafeCall("C_QuestLog.GetAbandonQuest")
+	PromiseSession(self).choosing = IsNumber(id) and id > 0 and id or nil
+end
+
+function R:OnAbandon()
+	local ps = PromiseSession(self)
+	local id = ps.choosing or Compat.SafeCall("C_QuestLog.GetAbandonQuest")
+	ps.choosing = nil
+	if not IsNumber(id) or id <= 0 then return end
+	ps.abandoned[id] = GetTime()
+	if ps.removed[id] then self:SettlePromises() end
+end
+
+---The open promises to an NPC, oldest first: { { id, p }, ... }.
+---@param npcID integer
+---@return table[]
+function R:PromisesTo(npcID)
+	local out = {}
+	local d = self:Data()
+	for id, p in pairs(d and d.promises or EMPTY) do
+		if p.npc == npcID then table.insert(out, { id = id, p = p }) end
+	end
+	table.sort(out, function(a, b)
+		if a.p.t ~= b.p.t then return a.p.t < b.p.t end
+		return a.id < b.id
+	end)
+	return out
+end
+
+---Meeting an NPC (any interaction). At most one notice: an NPC who remembers a broken oath says so once a session; a
+---map that remembers one, once a session; otherwise the oldest promise to this NPC left open `remindDays` or more is
+---recalled, unless it is ready to hand in, and not again for `remindHours`. A promise whose quest the client says is no
+---longer in the log is let go without a word (its end was missed).
+---@param npcID integer
+function R:MeetPromises(npcID)
+	if not self:Writable() or not IsNumber(npcID) then return end
+	self:SettlePromises()
+	local d = self:Data()
+	local ps, cfg = PromiseSession(self), self.config.promises
+	local rec = self:Get("npc", npcID)
+	local mapID, zone
+	if next(d.marks) then mapID, zone = HereNow() end
+	if rec and not ps.oaths[npcID] and self:OathMark(npcID, rec) > 0 then
+		ps.oaths[npcID] = true
+		if self:PromiseNotice("rel_oath_remembered_", self:DisplayName("npc", npcID)) then
+			-- the one who was betrayed has said it: the place does not say it again
+			if mapID then ps.cities[mapID] = true end
+			return
+		end
+	end
+	if mapID then
+		if zone and not ps.cities[mapID] and self:CityMark(mapID) > 0 then
+			ps.cities[mapID] = true
+			if self:PromiseNotice("rel_oath_city_", zone) then return end
+		end
+	end
+	local now = Now()
+	for _, e in ipairs(self:PromisesTo(npcID)) do
+		local p = e.p
+		if now - p.t < cfg.remindDays * R.DAY then break end
+		if not (IsNumber(p.r) and now - p.r < cfg.remindHours * 3600) then
+			if Compat.SafeCall("C_QuestLog.IsOnQuest", e.id) == false then
+				d.promises[e.id] = nil
+			elseif Compat.SafeCall("C_QuestLog.IsComplete", e.id) ~= true then
+				if self:PromiseNotice("rel_promise_remind_", self:DisplayName("npc", npcID),
+					math.floor((now - p.t) / R.DAY)) then
+					p.r = now
+				end
+				return
+			end
+		end
+	end
+end
+
+---N4 (#216): what the context says about the word given to the NPC of the interaction:
+---  ctx.relPromiseDays  whole days the oldest open promise to this NPC has waited (absent without one)
+---  ctx.relOathbroken   this NPC remembers an oath you broke (the mark has not faded)
+---@param ctx table
+---@param npcID integer
+---@param rec AURelationRecord
+function R:PromiseContext(ctx, npcID, rec)
+	local oldest = self:PromisesTo(npcID)[1]
+	if oldest then ctx.relPromiseDays = math.max(0, math.floor((Now() - oldest.p.t) / R.DAY)) end
+	if self:OathMark(npcID, rec) > 0 then ctx.relOathbroken = true end
+end
+
+---N4 (#216): the word given to an NPC, in words: "Your word: 2 open, the oldest for 12 days (1 sworn as an oath).
+---Remembers the oath you broke (80% of it left)." Empty when there is nothing to say.
+---@param npcID integer
+---@param rec AURelationRecord
+---@return string
+function R:PromiseText(npcID, rec)
+	local parts = {}
+	local list = self:PromisesTo(npcID)
+	if #list > 0 then
+		local oaths = 0
+		for _, e in ipairs(list) do if e.p.oath then oaths = oaths + 1 end end
+		local days = math.max(0, math.floor((Now() - list[1].p.t) / R.DAY))
+		table.insert(parts, oaths > 0 and NS:L("rel_promises_oaths", #list, days, oaths)
+			or NS:L("rel_promises_line", #list, days))
+	end
+	local mark = self:OathMark(npcID, rec)
+	if mark > 0 then table.insert(parts, NS:L("rel_oath_mark", math.floor(mark * 100 + 0.5))) end
+	return table.concat(parts, " ")
 end
 
 local function LastFactOf(seen, kind)
@@ -2057,6 +2509,10 @@ function R:Remove(kind, key)
 		key = tonumber(key)
 		if not key or not d.npcs[key] then return false end
 		d.npcs[key] = nil
+		-- N4 (#216): the promises to someone the user removed go with them
+		for id, p in pairs(d.promises) do
+			if p.npc == key then d.promises[id] = nil end
+		end
 	elseif kind == "player" then
 		if not self:IsListed(key) then return false end
 		d.players[key] = nil
@@ -2079,6 +2535,8 @@ function R:Reset(what)
 	if what == "all" or what == "npcs" or what == nil then
 		for _ in pairs(d.npcs) do n = n + 1 end
 		d.npcs = {}
+		-- N4 (#216): the promises and the maps' memory of a broken oath belong to the NPCs
+		d.promises, d.marks = {}, {}
 	end
 	if what == "all" or what == "players" or what == nil then
 		for _ in pairs(d.players) do n = n + 1 end
@@ -2435,6 +2893,9 @@ function R:Context(ctx, extra)
 	if not self:Enabled() then return end
 	local g = self:GroupRelations()
 	if next(g) then ctx.groupRelations = g end
+	-- N4 (#216): the place remembers a broken oath (read only while some map does)
+	local d = self:Data()
+	if d and next(d.marks) and self:CityMark((HereNow())) > 0 then ctx.oathbreakerHere = true end
 	local kind, key, rec = self:Subject(ctx, extra)
 	if not rec then
 		ctx.isKnown, ctx.relTraits = false, EMPTY
@@ -2448,7 +2909,12 @@ function R:Context(ctx, extra)
 	ctx.rel, ctx.isKnown, ctx.relTraits = info.axes, info.isKnown, info.traits
 	ctx.relName = self:DisplayName(kind, key)
 	ctx.relFeelings = info.traits.feeling or EMPTY       -- set of ids: the condition `feeling`
-	if kind == "player" then self:ObservationContext(ctx, key, rec) else self:MetContext(ctx, rec) end
+	if kind == "player" then
+		self:ObservationContext(ctx, key, rec)
+	else
+		self:MetContext(ctx, rec)
+		self:PromiseContext(ctx, key, rec)
+	end
 	-- N3 (#215): the character made the private vow to this NPC (the condition relVowed)
 	ctx.relVowed = kind == "npc" and type(rec.noted) == "table" and rec.noted.vow == true or nil
 end
@@ -2633,6 +3099,10 @@ end })
 EventBus:AddSource("QUEST_TURNED_IN", { normalize = function(questID)
 	return "QUEST_STATE", { state = "turned_in", questID = QuestID(questID) }, {}
 end })
+-- N4 (#216): a quest that leaves the log (turned in, or abandoned). World.lua rereads the log on it too.
+EventBus:AddSource("QUEST_REMOVED", { normalize = function(questID)
+	return "QUEST_STATE", { state = "removed", questID = QuestID(questID) }, {}
+end })
 -- Giocatori da proporre: il gruppo cambia, uno scambio, una risposta in privato. Di una risposta in privato si
 -- legge solo il nome del destinatario: il testo non si legge né si conserva.
 EventBus:AddSource("GROUP_ROSTER_UPDATE", { normalize = function()
@@ -2675,6 +3145,8 @@ function handlers.NPC_INTERACT(env)
 		R:RecordNPC(c.npcID, c.npcName, kind)
 	end
 	R:OfferKnown(c.npcID, kind)
+	-- N4 (#216): a promise still open, or a broken oath remembered
+	R:MeetPromises(c.npcID)
 end
 
 function handlers.NPC_INTERACT_END()
@@ -2685,13 +3157,23 @@ function handlers.QUEST_STATE(env)
 	if not R:Enabled() then return end
 	local now = GetTime()
 	local who
-	if env.context.state == "accepted" then
+	local state, questID = env.context.state, env.context.questID
+	if state == "accepted" then
 		who, R.questGiver = R.questGiver, nil
-		if who and now - who.t <= R.QUEST_SECONDS then R:RecordNPC(who.npcID, who.name, "quest_accept") end
-	elseif env.context.state == "turned_in" then
+		if who and now - who.t <= R.QUEST_SECONDS then
+			-- N4 (#216): the quest is a promise to the giver (only with its id: never a guess)
+			local rec = R:RecordNPC(who.npcID, who.name, "quest_accept")
+			if rec and questID then R:Promise(questID, who.npcID) end
+		end
+	elseif state == "turned_in" then
 		who, R.questTaker = R.questTaker, nil
-		if who and now - who.t <= R.QUEST_SECONDS then R:RecordNPC(who.npcID, who.name, "quest_turnin") end
+		local taker = who and now - who.t <= R.QUEST_SECONDS and who.npcID or nil
+		if taker then R:RecordNPC(who.npcID, who.name, "quest_turnin") end
+		if questID then R:KeepPromise(questID, taker) end
+	elseif state == "removed" and questID then
+		R:QuestRemoved(questID)
 	end
+	R:SettlePromises()
 end
 
 -- The roster changes often (raids send dozens of updates): the group is read once, a moment after the last one.
@@ -3165,6 +3647,9 @@ local function Summary(self, kind, key)
 	-- N2 (#214): an NPC's level, temperament and first meeting
 	if kind == "npc" then
 		text = text .. " " .. self:LevelText(info) .. " " .. self:TemperText(key, rec) .. " " .. self:MetText(rec)
+		-- N4 (#216): the word given to it
+		local promises = self:PromiseText(key, rec)
+		if promises ~= "" then text = text .. " " .. promises end
 		local vow = self:VowText(rec)
 		if vow ~= "" then text = text .. " " .. vow end
 	end
@@ -3339,6 +3824,9 @@ function R:OnInit()
 	Hook("BuyMerchantItem", _G, "BuyMerchantItem", function() R:OnMerchantAction("merchant_buy") end)
 	Hook("RepairAllItems", _G, "RepairAllItems", function() R:OnMerchantAction("merchant_repair") end)
 	Hook("C_Container.UseContainerItem", _G.C_Container, "UseContainerItem", function() R:OnMerchantAction("merchant_sell") end)
+	-- N4 (#216): the abandon of a quest, when the client goes through these (otherwise QUEST_REMOVED and a short wait)
+	Hook("C_QuestLog.SetAbandonQuest", _G.C_QuestLog, "SetAbandonQuest", function() R:OnAbandonChosen() end)
+	Hook("C_QuestLog.AbandonQuest", _G.C_QuestLog, "AbandonQuest", function() R:OnAbandon() end)
 	if NS.LivingMemory then
 		NS.LivingMemory:RegisterKind("relation", 3)
 		-- N2 (#214): a bond that reached a memorable level: "A bond grows: Close friend (Goldshire)", no name
@@ -3348,6 +3836,12 @@ function R:OnInit()
 			if not (band and R.dispositionById[band]) then return nil end
 			local down = e.tags[3] == "down"
 			local text = NS:L(down and "rel_mem_level_down" or "rel_mem_level_up", R:DispositionName(band))
+			return e.zone and (text .. " (" .. e.zone .. ")") or text
+		end)
+		-- N4 (#216): an oath broken: "An oath broken (Goldshire)", no name
+		NS.LivingMemory:RegisterKind("relation_oath", 4)
+		NS.LivingMemory:RegisterDescriber("relation_oath", function(e)
+			local text = NS:L("rel_mem_oath_broken")
 			return e.zone and (text .. " (" .. e.zone .. ")") or text
 		end)
 		-- N3 (#215): the private vow at the top of a romance, no name: "A quiet vow (Goldshire)"

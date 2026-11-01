@@ -617,7 +617,15 @@ C_QuestLog = {
 		return QUEST_OBJECTIVES[id] or { { text = "Find Mirabel", type = "object", finished = false, numFulfilled = 0, numRequired = 1 } }
 	end,
 	IsComplete = function(id) return QUEST_READY[id] == true end,
+	-- N4 (#216): QUEST_GONE[id] = true: no longer in the log; QUEST_DONE[id] = true: flagged completed. The abandon
+	-- dialog: SetAbandonQuest(id) picks the quest, AbandonQuest() confirms it (the client then fires QUEST_REMOVED)
+	IsOnQuest = function(id) return QUEST_GONE[id] ~= true end,
+	IsQuestFlaggedCompleted = function(id) return QUEST_DONE[id] == true end,
+	SetAbandonQuest = function(id) ABANDON_QUEST = id end,
+	GetAbandonQuest = function() return ABANDON_QUEST or 0 end,
+	AbandonQuest = function() end,
 }
+QUEST_GONE, QUEST_DONE, ABANDON_QUEST = {}, {}, nil
 -- posizione sulla mappa: P.pos = { x, y }; nelle istanze il client non la dà
 C_Map.GetPlayerMapPosition = function(mapID, unit)
 	if P.instance or not P.pos or unit ~= "player" then return nil end

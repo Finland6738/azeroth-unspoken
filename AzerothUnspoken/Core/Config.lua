@@ -96,6 +96,7 @@ Config.CHAT_LIMITS = {
 ---@field proximity boolean nameplates and mouseover can recognise a listed player, for this session only (off by default, #113)
 ---@field sharePlayers boolean the list of people is shared by the account's characters (off by default, #114)
 ---@field levelNotices boolean the private narrator says when an NPC moves to another level of disposition (on, #214)
+---@field promiseNotices boolean the private narrator recalls promises and oaths given to NPCs (on, #216)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -175,6 +176,8 @@ Config.defaults = {
 		sharePlayers = false,
 		-- #214: a short private narrator line when an NPC moves to another level of disposition (rare, never in combat)
 		levelNotices = true,
+		-- #216: promises and oaths to NPCs recalled by the private narrator (rare, never in combat)
+		promiseNotices = true,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -227,7 +230,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 3, npcs = {}, players = {} },
+	relationships = { version = 4, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	history = {},

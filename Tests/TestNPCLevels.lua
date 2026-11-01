@@ -239,7 +239,7 @@ end)
 
 T.run("the first meeting: saved data is cleaned, version 3", function()
 	Fresh()
-	T.eq(R.VERSION, 3, "relationships.version 3")
+	T.eq(R.VERSION >= 3, true, "relationships.version 3 or later (N4 made it 4)")
 	NS.cdb.relationships = { version = 2, players = {}, npcs = {
 		[5] = { first = 1, last = 2, count = 1, race = "NightElf", levelT = 10,
 			met = { time = "night", weather = "rain", zone = "Elwynn Forest", mapID = 1429, level = 7, text = "never" } },
@@ -249,7 +249,7 @@ T.run("the first meeting: saved data is cleaned, version 3", function()
 	} }
 	R:Sanitize()
 	local d = NS.cdb.relationships
-	T.eq(d.version, 3, "version 2 moves to 3 (nothing to migrate)")
+	T.eq(d.version, R.VERSION, "version 2 moves to the current version (nothing to migrate)")
 	local a = d.npcs[5]
 	T.ok(a.met.time == "night" and a.met.weather == "rain" and a.met.zone == "Elwynn Forest" and a.met.mapID == 1429 and a.met.level == 7, "valid circumstances kept")
 	T.eq(a.met.text, nil, "an unknown field is not kept"); T.eq(a.race, "NightElf", "race kept"); T.eq(a.levelT, 10, "levelT kept")

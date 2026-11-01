@@ -390,6 +390,20 @@ NS:AddTexts("itIT", {
 		"Sono passati mesi dal nostro primo incontro. Abbastanza perché un volto diventi parte della strada.",
 		{ "Ci conosciamo da un pezzo, ormai.", depth = "natural" },
 	},
+	-- N4 (#216): la parola data a un NPC
+	["rel.npc.promise.waiting"] = {
+		"Devo ancora un compito a questa persona. I giorni hanno il vizio di accumularsi tra una promessa e il suo compimento.",
+		{ "Avevo detto che ci avrei pensato io. Non l'ho ancora fatto.", depth = "natural" },
+	},
+	["rel.npc.oath.broken"] = {
+		"Ho giurato, e non ho mantenuto. Ogni saluto, qui, ora ha quel giuramento in mezzo.",
+		{ "Se lo ricordano. Anch'io.", depth = "natural" },
+		{ "Un giuramento infranto è una porta che non si richiude più; ne sento lo spiffero ogni volta che torno qui.", depth = "elevated" },
+	},
+	["rel.npc.oath.here"] = {
+		"Le voci corrono, in un posto così. Chissà quanti qui sanno del giuramento che ho infranto.",
+		{ "La gente parla. Preferirei che parlasse d'altro.", depth = "natural" },
+	},
 	-- N3 (#215): una storia d'amore con un NPC
 	["rel.npc.attraction"] = {
 		"Niente da vedere qui. Solo un battito che ha dimenticato il proprio passo.",

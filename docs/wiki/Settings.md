@@ -167,6 +167,8 @@ The journal opens from the panel button **Character journal...** or `/au journal
 | Recognise on target | off | relationships window | Lets the narrator also recognise a known player when you target them (joining your group or an interaction already do). |
 | Recognise nearby | off | relationships window, `/au relationships proximity on\|off` | Nameplates and mouseover can let the narrator recognise a player already in your list (and suggest people with a Total RP 3 profile if you allowed reading them). Turning it on asks for a confirmation. This session only: nothing is saved and no one is added. |
 | Share with the account | off | relationships window, `/au relationships share on\|off` | Keeps your choices about people in the account and shares them between your characters. Turning it on shows a warning in a confirmation dialog (privacy, role play) and needs a second step; turning it off deletes nothing. |
+| Level notices | on | relationships window | A short private line when an NPC moves to another level. Rare, never in combat, never in chat. |
+| Promise notices | on | relationships window | A short private line when an NPC reminds you of a quest you promised, is relieved by a late one, or remembers an oath you broke. Rare, never in combat, never in chat. The promises are kept either way. |
 
 The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].
 

@@ -387,6 +387,20 @@ NS:AddTexts("enUS", {
 		"Months now since our first meeting. Long enough for a face to become part of the road.",
 		{ "We go back a while, this one and I.", depth = "natural" },
 	},
+	-- N4 (#216): the word given to an NPC
+	["rel.npc.promise.waiting"] = {
+		"I still owe this one a task. The days have a way of piling up between a promise and its keeping.",
+		{ "I said I would see to it. I have not, yet.", depth = "natural" },
+	},
+	["rel.npc.oath.broken"] = {
+		"I swore, and did not keep it. Every greeting here now has that oath standing between us.",
+		{ "They remember. So do I.", depth = "natural" },
+		{ "An oath broken is a door that does not close again; I feel the draught of it each time I stand here.", depth = "elevated" },
+	},
+	["rel.npc.oath.here"] = {
+		"Word travels in a place like this. I wonder how many here know about the oath I broke.",
+		{ "People talk. I would rather they talked about something else.", depth = "natural" },
+	},
 	-- N3 (#215): romance with an NPC
 	["rel.npc.attraction"] = {
 		"Nothing to see here. Only a pulse that has forgotten its own pace.",

@@ -556,9 +556,7 @@ end })
 EventBus:AddSource("QUEST_LOG_UPDATE", { normalize = function()
 	return "QUEST_LOG_CHANGED", nil, { key = "log", window = 1 }
 end })
-EventBus:AddSource("QUEST_REMOVED", { normalize = function()
-	return "QUEST_LOG_CHANGED", nil, { key = "removed", window = 1 }
-end })
+-- QUEST_REMOVED is a source of Systems/Relationships.lua (QUEST_STATE "removed", N4 #216): handlers.QUEST_STATE rereads the log
 
 EventBus:AddSource("UPDATE_FACTION", { normalize = function()
 	return "FACTION_UPDATE", nil, { key = "faction", window = 1 }
@@ -603,13 +601,15 @@ function handlers.FACTION_UPDATE()
 	World:Settle("reputation", World.SETTLE_REPUTATION, function() World:ScanReputation() end)
 end
 
--- QUEST_ACCEPTED e QUEST_TURNED_IN, normalizzati da Systems/Relationships.lua con l'id della missione (se il client lo dà)
+-- QUEST_ACCEPTED, QUEST_TURNED_IN e QUEST_REMOVED, normalizzati da Systems/Relationships.lua con l'id della missione (se il client lo dà)
 function handlers.QUEST_STATE(env)
 	local c = env.context
 	if c.state == "accepted" then
 		World:Accepted(c.questID)
 	elseif c.state == "turned_in" then
 		World:TurnedIn(c.questID)
+	elseif c.state == "removed" then
+		World:Settle("quests", World.SETTLE_QUESTS, function() World:ScanQuests() end)
 	end
 end
 

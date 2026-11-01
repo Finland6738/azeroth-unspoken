@@ -45,6 +45,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0035](0035-attacks-kills-and-deaths-without-the-combat-log.md) | Attacks, kills and deaths without the combat log: threat, blows and two new unit events | proposed (to confirm in game, #212) |
 | [0036](0036-npc-temperament-visible-levels-and-the-first-meeting.md) | NPC temperament, visible levels and the first meeting | accepted |
 | [0037](0037-romance-with-npcs-opposite-sex-and-the-vow.md) | Romance with NPCs: opposite sex only, slow attraction and a private vow | accepted |
+| [0038](0038-promises-oaths-and-the-oathbreaker-mark.md) | Promises, oaths and the oathbreaker mark | accepted |
 
 ## Pending decisions
 

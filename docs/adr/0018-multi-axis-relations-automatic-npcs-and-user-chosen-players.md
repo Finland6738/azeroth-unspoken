@@ -34,6 +34,7 @@ NPCs are many and reliably identifiable (`npcID` from the GUID): an automatic ca
 - [ADR 0037](0037-romance-with-npcs-opposite-sex-and-the-vow.md) (#215) lets the optional attraction axis grow by itself
   for a humanoid NPC of the opposite sex already at Friend (a fixed rule, no setting), and adds a private vow, once per
   NPC, at the top of the romance. The axis stays off by default.
+- [ADR 0038](0038-promises-oaths-and-the-oathbreaker-mark.md) (#216) makes a quest accepted from an NPC a promise to them (quest ids and times only): abandoning it costs trust, an oath to a named Friend leaves a slowly fading mark on the NPC and on the map where it was sworn. `relationships.version` is 4.
 
 ## Alternatives considered
 
