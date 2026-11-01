@@ -154,6 +154,8 @@ NS.Relationships:RegisterData({
 		promise_broken = { gain = { trust = -6, respect = -2 }, decay = 0.8 },
 		oath_broken = { gain = { trust = -35, loyalty = -25, affection = -20, respect = -10 }, decay = 1 },
 		oath_kept = { gain = { trust = 3, loyalty = 4 }, decay = 0.7, cap = { trust = 6, loyalty = 8 } },
+		-- N6 (#218): an NPC notices that you grew close to their rival (`rivalries` below). Not a meeting either.
+		rival_noticed = { gain = { affection = -4, trust = -2 }, decay = 1 },
 	},
 	lifetimeSoftness = 0.5,
 
@@ -240,5 +242,51 @@ NS.Relationships:RegisterData({
 		decay = 0.6, cap = 2,
 		humanoid = { id = 7, names = { "Humanoid", "Umanoide" } },
 		vow = { attraction = 80, label = "lover", variants = 2 },
+	},
+
+	-- N6 (#218): local reputation. Narration only: nothing here changes how anyone behaves in the game.
+	-- A town is where you meet an NPC: the subzone (Goldshire), or the whole city in a capital (`capital` in
+	-- Data/Places.lua). In the open (no subzone) and in instances there is none. `aliases` folds a building that the
+	-- client names on its own into its town (English client names, from Classic Era: to verify in Forever with /au place).
+	-- At most `max` towns are remembered (the oldest without a title go first).
+	--   word     word gets around: `share` of every change an interaction or a promise makes to an NPC's `axes` goes to
+	--            the word of their town, both ways, never beyond `limit` per axis (sources in `skip` do not spread).
+	--            The other NPCs of the town hear it the next time you meet them, a newcomer all of it at the first
+	--            meeting, multiplied by their temperament. The word is `good` (or `bad`) from a disposition of
+	--            `notice` (or -`notice`): a newcomer then greets you warmer (or colder), and the narrator may say so.
+	--   esteem   the sum of the disposition of the NPCs of the town (each counted within -`perNpc`..`perNpc`) plus
+	--            `perQuest` for each quest turned in there.
+	--   titles   honorary titles in the spirit of the thanes: the highest whose `esteem` is reached, with at least
+	--            `minNpcs` NPCs known there. A title is kept while the esteem stays above `keep` x its threshold; a town
+	--            that remembers a broken oath (N4 `promises.marks.cityDays`) withholds it while the mark lasts, and
+	--            gives no new one. `name`: the title, %s is the town (a language with gender lists { male, female }).
+	--   perSession, variants  the private notices of a session (word, title, rival) and the texts rel_word_*_N,
+	--            rel_title_N, rel_rival_*_N of Data/<lang>/RelationsUI.lua
+	towns = {
+		max = 60, perSession = 3, variants = 2,
+		aliases = {
+			["Lion's Pride Inn"] = "Goldshire",
+			["Scarlet Raven Tavern"] = "Darkshire",
+			["Thunderbrew Distillery"] = "Kharanos",
+			["Stoutlager Inn"] = "Thelsamar",
+			["Gallows' End Tavern"] = "Brill",
+		},
+		word = { share = 0.25, limit = 15, notice = 6,
+			axes = { trust = true, respect = true, affection = true, loyalty = true },
+			skip = { rival_noticed = true } },
+		esteem = { perNpc = 60, perQuest = 4, minNpcs = 3, keep = 0.75 },
+		titles = {
+			{ id = "friend", esteem = 120, name = { en = "Friend of %s", it = { "Amico di %s", "Amica di %s" } } },
+			{ id = "champion", esteem = 280, name = { en = "Champion of %s", it = { "Campione di %s", "Campionessa di %s" } } },
+		},
+	},
+
+	-- N6 (#218): NPC rivalries. The pairs are curated in Data/NPCs.lua (NS:RegisterRivalries). When you meet an NPC
+	-- whose rival is already at `band` or above with you, they notice, once for that rival: `rival_noticed` of
+	-- `increments` above (their own numbers only) and a private notice, ironic from a temperament in `ironic`, jealous
+	-- otherwise (rel_rival_ironic_N, rel_rival_jealous_N). The condition `relRival` lasts `days` days after.
+	rivalries = {
+		band = "friend", days = 30,
+		ironic = { cheerful = true, merciful = true, melancholic = true },
 	},
 })

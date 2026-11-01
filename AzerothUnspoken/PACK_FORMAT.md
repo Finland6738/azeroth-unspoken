@@ -515,6 +515,9 @@ in the list, **they are all false** (except `isKnown = false`): a phrase that ci
 | `relPromiseDays = 7` or `{ 7, 30 }` | whole days the oldest open promise to that NPC has waited: a quest accepted from them and not yet handed in or abandoned (N4, #216). False with no open promise |
 | `relOathbroken = true` | that NPC remembers an oath the character broke (the mark has not faded yet) |
 | `oathbreakerHere = true` | the place where the character is (the map) remembers an oath broken there. It needs no person: it is not a relationship condition |
+| `townTitle = "friend"` (or a list) | the honorary title the character holds in the town where they stand (N6, #218): `friend`, `champion` or one a pack registered in `towns.titles`. False elsewhere, and while the town remembers a broken oath. Not a relationship condition |
+| `townWord = "good"` or `"bad"` | the word of the character in the town where they stand: the weakened share of what they did with its NPCs. False in between and outside a known town. Not a relationship condition |
+| `relRival = "jealous"` or `"ironic"` (or a list) | that NPC noticed, within the last `rivalries.days` days, that the character grew close to their curated rival; the tone follows the NPC's temperament. A relationship condition |
 
 `feeling`, `relDaysSince`, `relMetHere` and `relShared` need a person in the list like the others, and count as a relationship condition for the validator. The last three are for **players** (they come from what the addon observed, `seen`); for an NPC they are false. `relMetLevels`, `relMetDays`, `relMetTime` and `relMetWeather` are for **NPCs** (the first meeting the addon kept, N2): for a player they are false, and an NPC met before version 3 of the relationships has only `relMetDays`. They count as relationship conditions too, as do `relPromiseDays` and `relOathbroken` (for an NPC only).
 
@@ -585,6 +588,7 @@ AzerothUnspoken:RegisterPack({
 - **Rhythm**: in a battleground, in an arena and against a boss, short phrases (up to 80 bytes) weigh more; in a raid the narrator speaks less.
 - **Editorial rules** (GDD §5.3, §5.4): a merchant does not declaim like a king; race and class give a greeting tied to the homeland or the trade, never a moral judgment.
 - **Data** of the packs: `AzerothUnspoken:RegisterPlaces{ zones, subzones, instances, continents }` (tags and themes by client name; `map`/`id` with `verified = true` only if tested in game), `AzerothUnspoken:RegisterNPCs{ [npcID] = { role, temperament, … } }`, `AzerothUnspoken:RegisterTendencies{ class = { … } }` (never morality). Give each call your `pack` id (`pack = "nani"`, a plain text key next to the `npcID` keys for `RegisterNPCs`). A key that another pack already registered (a zone, an `npcID`) is **refused**, not merged and not silently replaced: see "Keys shared between packs".
+- **Rivalries** (N6, #218): `AzerothUnspoken:RegisterRivalries({ pack = "...", { npcA, npcB, kind = "trade" } })` adds curated pairs of NPC rivals (both ways; `kind` is `trade`, `craft` or `lore`). Growing close to one makes the other notice, with a private line only. `NS:RegisterRelationData({ towns = { aliases = {...}, titles = {...} } })` adds a building folded into its town or an honorary title.
   Complete example:
 
 <!-- test -->
@@ -1020,6 +1024,7 @@ registry = {
 | `{landmark}` | the name the client gives to the landmark you are in (a line with it is not composed outside a landmark) |
 | `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}` | in the chosen language |
 | `{relation}` | the label of the relationship with the person of the interaction (relationships, S6b) |
+| `{title}` | the honorary title held in the town where the character stands, "Friend of Goldshire" (N6, #218); a line with it is not composed elsewhere. Use it in private voices (`inner`) |
 | `{other}`, `{otherrole}`, `{otherrace}`, `{otherclass}` | the interlocutor: name, role, race and class in the chosen language (or the custom race and class from Total RP 3) |
 | `{instance}`, `{encounter}` | the instance and the boss fight in progress or just finished |
 | `{g:masculine\|feminine}` | gender variant **of the character**: `{g:pronto\|pronta}` |

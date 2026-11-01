@@ -110,6 +110,16 @@ With an NPC who is already your **Friend** or more, a promise is **an oath**. Ke
 
 All of this is narration: an NPC never refuses you a quest or behaves differently in the game. The lines are **private**, rare (a few a session), never in a fight and never in chat. Turn them off with **Promise notices** in the Options tab; the promises and marks are still kept. The detail of an NPC shows your word: *Your word: 2 open, the oldest for 12 days (1 sworn as an oath).* and *Remembers the oath you broke (90% of it left).*
 
+### Local reputation: word gets around, honorary titles, rivals
+
+Every NPC belongs to **a town**: the place where you meet them. In the countryside that is the village or spot the game names under the minimap (Goldshire, Sentinel Hill...; an inn counts as its village), and in a capital it is the whole city. Out in the open, and inside dungeons, there is no town.
+
+- **Word gets around.** A share of what you do with one NPC (about a quarter of it) reaches the others of the same town, good and bad alike: hand in quests to the marshal and the smith greets you a little warmer the next time; break your word to someone and the whole village hears of it. An NPC you meet there for the first time has heard all of it, so a newcomer may greet you as someone already known (*Remy has heard of you before you say a word: the talk in Goldshire has been kind.*) or with caution. The word has a limit, so it can open a door but never makes a friend on its own, and the NPC who caused it does not hear it twice.
+- **Honorary titles**, in the spirit of the thanes of old tales. With enough esteem in a town (the bonds with its people and the quests you handed in there) and at least three NPCs who know you, you become **Friend of Goldshire**, and later **Champion of Goldshire**. The private narrator tells you once (*In Goldshire, people have begun to call you Friend of Goldshire.*), the [[journal|Memory-and-Journal]] keeps it for good, and the narrator may use the title when you are there. A title fades only if the esteem falls well below what earned it. A town that remembers **an oath you broke** there withholds your title, and gives no new one, until the memory fades.
+- **Rivals.** A few NPCs are rivals by nature (two innkeepers who compete for the same travellers, the two forges of Goldshire). Become a **Friend** of one, and the other notices the next time you meet: a little less warmth, and a jealous or ironic private line (*A cooler welcome from Innkeeper Allison: word is you favour Innkeeper Farley these days.*). Once for each rival.
+
+It is all narration: no NPC changes what it does in the game, and a title is a name the narrator uses, nothing more. The lines are **private**, rare (a few a session, one per meeting), never in a fight and never in chat. Turn them off with **Town notices** in the Options tab; the word and the titles are still kept. The detail of an NPC shows their town, the word of you there, your title there and their rivals: *Their town: Goldshire, where word of you is good (9). There you are Friend of Goldshire. Rival of: Corina Steele.* The [export](#commands) lists your towns too.
+
 ## Players: your choice
 
 **No player joins your list without an action of yours.** The addon may **suggest** people you meet:
@@ -243,6 +253,7 @@ Both have the red outline of the actions that lose data. The first click arms th
 | **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second step turn it on) |
 | **Level notices** | on | a short private line when an NPC moves to another level; rare, never in combat, never in chat |
 | **Promise notices** | on | a short private line when an NPC reminds you of a quest you promised, is relieved by a late one, or remembers an oath you broke; rare, never in combat, never in chat |
+| **Town notices** | on | a short private line when word of you reached a newcomer, when a town gives you an honorary title, or when an NPC notices you grew close to their rival; rare, never in combat, never in chat |
 
 Under the options, a line about each consent and the privacy note, in the normal text size. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
 
@@ -313,6 +324,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Share with the account | off | Options tab, `/au relationships share` |
 | Level notices | on | Options tab |
 | Promise notices | on | Options tab |
+| Town notices | on | Options tab |
 
 ## What you will see
 
@@ -322,6 +334,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 - Now and then a short private line when an NPC reaches another level, and a memory of the first meeting when you see them again.
 - With the attraction axis on, very rarely, a romance with an NPC of the opposite sex, and once a private vow.
 - A reminder from an NPC who is still waiting for a quest you took, their relief when you come back late, and the long memory of an oath you broke.
+- Newcomers in a town who have heard of you, an honorary title in a town that esteems you, and a rival who notices.
 
 ## Tips
 

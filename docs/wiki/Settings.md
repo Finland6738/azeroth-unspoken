@@ -169,6 +169,7 @@ The journal opens from the panel button **Character journal...** or `/au journal
 | Share with the account | off | relationships window, `/au relationships share on\|off` | Keeps your choices about people in the account and shares them between your characters. Turning it on shows a warning in a confirmation dialog (privacy, role play) and needs a second step; turning it off deletes nothing. |
 | Level notices | on | relationships window | A short private line when an NPC moves to another level. Rare, never in combat, never in chat. |
 | Promise notices | on | relationships window | A short private line when an NPC reminds you of a quest you promised, is relieved by a late one, or remembers an oath you broke. Rare, never in combat, never in chat. The promises are kept either way. |
+| Town notices | on | relationships window | A short private line when word of you has reached a newcomer in a town, when a town gives you an honorary title (Friend of Goldshire), or when an NPC notices you grew close to their rival. Rare, never in combat, never in chat. The word and the titles are kept either way. |
 
 The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].
 

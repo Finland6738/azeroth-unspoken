@@ -1097,6 +1097,39 @@ il client finto.
     - **Cosa aspettarti:** in combattimento nessuna riga (non aspetta la fine: si perde); con l'opzione spenta nessuna
       riga, ma la promessa resta nel dettaglio. Nulla in chat in nessun caso.
 
+## N6: le voci corrono, titoli d'onore, rivali (aggiunto dall'issue #218)
+
+Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Funzioni lette dall'addon per questa
+parte, già usate altrove e tutte nel dump di Forever: `GetSubZoneText`, `GetRealZoneText`, `IsInInstance`,
+`C_Map.GetBestMapForUnit`. Provato solo con il client finto.
+
+- **N6.1 · Il luogo.** A Goldshire parla con un NPC, poi aprilo in `/au relationships`.
+    - **Cosa aspettarti:** sotto **Che cosa sa l'addon**, «Il suo luogo: Goldshire, dove la voce su di te è …». Dentro la
+      locanda (Lion's Pride Inn) il luogo resta Goldshire. A Stormwind il luogo è «Stormwind City» in ogni quartiere.
+    - **Cosa riportare:** il nome che compare dentro la locanda e in due quartieri di una capitale; un NPC in aperta
+      campagna non deve avere un luogo.
+- **N6.2 · Le voci corrono.** Consegna qualche missione a un NPC di un villaggio, poi parla per la prima volta con un
+  altro NPC dello stesso villaggio.
+    - **Cosa aspettarti:** a volte una riga privata («<nome> ha già sentito parlare di te prima che tu apra bocca: a
+      <luogo> se ne parla bene.»); nel dettaglio del nuovo NPC un po' di fiducia senza averci fatto nulla. Un NPC di un
+      altro villaggio non sa nulla.
+    - **Cosa riportare:** se la riga compare, e i numeri di fiducia del nuovo NPC.
+- **N6.3 · Un titolo d'onore.** Fai diventare **Amici** tre NPC dello stesso villaggio (o consegna lì molte missioni).
+    - **Cosa aspettarti:** una volta, «A <luogo> hanno cominciato a chiamarti Amico di <luogo>.» (Amica per un
+      personaggio femminile); nel diario «Un titolo d'onore: Amico di <luogo>»; il dettaglio dice «Lì sei Amico di
+      <luogo>.». Fuori dal villaggio il narratore non lo usa.
+    - **Cosa riportare:** dopo quanto tempo arriva, e se il genere è giusto.
+- **N6.4 · Un giuramento infranto toglie il titolo.** Nel villaggio del titolo, infrangi un giuramento (passo N4.6).
+    - **Cosa aspettarti:** il dettaglio dice «Lì eri …, ma il luogo te lo nega finché ricorda un giuramento infranto.»
+- **N6.5 · Rivali.** Diventa **Amico** di Innkeeper Farley (Goldshire), poi parla con Innkeeper Allison (Stormwind).
+    - **Cosa aspettarti:** una volta, una riga gelosa («Un'accoglienza più fredda da Innkeeper Allison: si dice che ora
+      preferisci Innkeeper Farley.») e un po' meno affetto nel suo dettaglio, che dice «Rivale di: Innkeeper Farley.».
+      Lo stesso con Smith Argus e Corina Steele a Goldshire. Una seconda volta nulla.
+    - **Cosa riportare:** gli npcID con `/au who` se non succede nulla (i numeri vengono da Classic Era).
+- **N6.6 · Mai in combattimento, mai in chat, una riga per incontro.** Spegni **Avvisi dei luoghi** nella scheda Opzioni.
+    - **Cosa aspettarti:** nessuna riga con l'opzione spenta, ma le voci e i titoli restano nel dettaglio e
+      nell'esportazione; mai più di una riga dei luoghi in un incontro; nulla in chat.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -1240,6 +1273,10 @@ N4 consegna ............. riga di abbandono dopo una consegna? (deve essere NO) 
 N4 promemoria/sollievo .. promemoria dopo 7 giorni? ___  sollievo? ___  mai se pronta? ___
 N4 giuramento ........... «giurate»? ___  spergiuro: riga, livello giù, diario? ___  l'NPC ricorda? ___  la zona (nome) ______
 N4 silenzio ............. in combattimento nessuna? ___  opzione spenta nessuna? ___  nulla in chat? ___
+N6 luogo ................ nella locanda ______  nei quartieri ______  in campagna nessuno? ___
+N6 voci ................. riga a un NPC nuovo? ___  fiducia senza far nulla? ___  altro villaggio nulla? ___
+N6 titolo ............... riga? ___  diario? ___  genere giusto? ___  negato dopo uno spergiuro? ___
+N6 rivali ............... Allison nota Farley? ___  Corina nota Argus? ___  una volta sola? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

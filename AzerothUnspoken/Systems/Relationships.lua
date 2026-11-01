@@ -28,6 +28,12 @@
 -- when you meet the giver; a late turn-in brings relief. With a named NPC at Friend or above the promise is an oath:
 -- breaking it leaves a slowly fading mark on the NPC (`oathT`) and on the map where it was sworn (`relationships.marks`).
 -- The notices go to the private narrator; the numbers are in Data/Relationships.lua (`promises`).
+-- N6 (#218, version 5): local reputation. An NPC belongs to the town where you meet them (`town`: the subzone, or the
+-- city in a capital). A share of every change in an NPC's axes goes to the word of their town (`relationships.towns`),
+-- and the other NPCs there hear it when you next meet them (`heard`: how much of the word they took in). The esteem of a
+-- town (their dispositions and the quests turned in there) earns an honorary title the narrator uses there; a town that
+-- remembers a broken oath (N4 marks) withholds it. Curated rival pairs (Data/NPCs.lua) notice when you grow close to the
+-- other (`rival`). Numbers and lists in Data/Relationships.lua (`towns`, `rivalries`).
 -- Proximity (#113, ADR 0030): with the option on (off by default) nameplates and mouseover can recognise a player who is
 -- ALREADY listed, or (with the TRP3 consent) suggest one who has a TRP3 profile. For this session only: nothing is saved,
 -- no record is created, nothing is kept about strangers, and a secret identity is not read.
@@ -115,7 +121,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 4                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216)
+R.VERSION = 5                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: towns, town, heard, rival, #218)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -167,7 +173,14 @@ R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionSt
 		marks = { npcDays = 240, cityDays = 90, npcTrust = 0.25, cityTrust = 0.6 } },
 	-- N3 (#215): Data/Relationships.lua fills it
 	romance = { minLevel = "friend", gain = {}, decay = 1, cap = 0, humanoid = { names = {} },
-		vow = { attraction = 100, label = "lover", variants = 1 } } }
+		vow = { attraction = 100, label = "lover", variants = 1 } },
+	-- N6 (#218): Data/Relationships.lua fills them
+	towns = { max = 60, perSession = 3, variants = 1, aliases = {},
+		word = { share = 0, limit = 15, notice = 6, axes = {}, skip = {} },
+		esteem = { perNpc = 60, perQuest = 4, minNpcs = 3, keep = 0.75 } },
+	rivalries = { band = "friend", days = 30, ironic = {} } }
+R.titles, R.titleById = {}, {} -- N6 (#218): honorary titles of a town, by rising esteem
+R.rivals = {}                  -- N6 (#218): [npcID] = { [rival npcID] = kind }, both ways (NS:RegisterRivalries)
 R.candidates = {}              -- [chiave] = { key, source, t }: persone proposte, solo in questa sessione
 R.dismissed = {}               -- [chiave] = true: proposte che l'utente ha scartato (solo sessione)
 R.recalls = {}                 -- [evento] = true: eventi che citano un rapporto (il validatore chiede una condizione)
@@ -429,8 +442,82 @@ function R:RegisterData(def)
 			if IsNumber(v.variants) and v.variants >= 1 then cr.vow.variants = math.floor(v.variants) end
 		end
 	end
+	-- N6 (#218): local reputation and rivalries (numbers key by key; lists merged, so a pack can add an alias or a title)
+	local tw = def.towns
+	if type(tw) == "table" then
+		local ct = c.towns
+		for _, k in ipairs({ "max", "perSession", "variants" }) do
+			if IsNumber(tw[k]) and tw[k] >= 0 then ct[k] = math.floor(tw[k]) end
+		end
+		for k, v in pairs(type(tw.aliases) == "table" and tw.aliases or EMPTY) do
+			if type(k) == "string" and type(v) == "string" and v ~= "" then ct.aliases[k] = v end
+		end
+		local w = type(tw.word) == "table" and tw.word or EMPTY
+		for _, k in ipairs({ "share", "limit", "notice" }) do
+			if IsNumber(w[k]) and w[k] >= 0 then ct.word[k] = w[k] end
+		end
+		for k, v in pairs(type(w.axes) == "table" and w.axes or EMPTY) do
+			if self.axisById[k] then ct.word.axes[k] = v == true or nil end
+		end
+		for k, v in pairs(type(w.skip) == "table" and w.skip or EMPTY) do
+			if type(k) == "string" then ct.word.skip[k] = v == true or nil end
+		end
+		for k, v in pairs(type(tw.esteem) == "table" and tw.esteem or EMPTY) do
+			if ct.esteem[k] ~= nil and IsNumber(v) and v >= 0 then ct.esteem[k] = v end
+		end
+		for _, t in ipairs(type(tw.titles) == "table" and tw.titles or EMPTY) do
+			if type(t.id) == "string" and t.id:match("^[a-z_]+$") and IsNumber(t.esteem) and t.esteem > 0
+				and type(t.name) == "table" then
+				local title = { id = t.id, esteem = t.esteem, name = t.name }
+				if self.titleById[t.id] then
+					for i, x in ipairs(self.titles) do if x.id == t.id then self.titles[i] = title end end
+				else
+					table.insert(self.titles, title)
+				end
+				self.titleById[t.id] = title
+				Engine.CONDITION_VALUES.townTitle[t.id] = true
+			end
+		end
+		table.sort(self.titles, function(a, b) return a.esteem < b.esteem end)
+	end
+	local rv = def.rivalries
+	if type(rv) == "table" then
+		local cv = c.rivalries
+		if type(rv.band) == "string" and self.dispositionById[rv.band] then cv.band = rv.band end
+		if IsNumber(rv.days) and rv.days >= 0 then cv.days = rv.days end
+		for k, v in pairs(type(rv.ironic) == "table" and rv.ironic or EMPTY) do
+			if type(k) == "string" then cv.ironic[k] = v == true or nil end
+		end
+	end
 	DefineChoiceTraits()
 	return true
+end
+
+R.RIVAL_KINDS = { trade = true, craft = true, lore = true }
+
+---N6 (#218): curated rivalries, `{ pack = "...", { npcA, npcB, kind = "trade" }, ... }` (Data/NPCs.lua). A pair holds
+---both ways; a pair of the same NPC, a number that is not an npcID or an unknown kind is skipped.
+---@param def table
+---@return integer added
+function R:RegisterRivalries(def)
+	local n = 0
+	for _, pair in ipairs(type(def) == "table" and def or EMPTY) do
+		local a, b = type(pair) == "table" and pair[1], type(pair) == "table" and pair[2]
+		local kind = type(pair) == "table" and (pair.kind or "trade")
+		if IsNumber(a) and IsNumber(b) and a > 0 and b > 0 and a == math.floor(a) and b == math.floor(b) and a ~= b
+			and self.RIVAL_KINDS[kind] then
+			self.rivals[a] = self.rivals[a] or {}
+			self.rivals[b] = self.rivals[b] or {}
+			self.rivals[a][b], self.rivals[b][a] = kind, kind
+			n = n + 1
+		end
+	end
+	return n
+end
+
+---@param def table
+function NS:RegisterRivalries(def)
+	return R:RegisterRivalries(def)
 end
 
 ---Aggiunge etichette (o assi) da un pacchetto di frasi: `{ labels = { { id, priority, name = { it, en }, when } } }`.
@@ -678,6 +765,8 @@ function R:Data()
 	-- N4 (#216): open promises by quest id, and the maps that remember a broken oath
 	if type(d.promises) ~= "table" then d.promises = {} end
 	if type(d.marks) ~= "table" then d.marks = {} end
+	-- N6 (#218): what each town remembers (the word, the quests, the title), by the town's name
+	if type(d.towns) ~= "table" then d.towns = {} end
 	if not IsNumber(d.version) then d.version = self.VERSION end
 	return d
 end
@@ -945,6 +1034,20 @@ function R.CleanMet(met)
 	return next(out) and out or nil
 end
 
+---N6 (#218): a word of a town (or what of it an NPC heard): the axes of `towns.word.axes`, within the limit, zeros left
+---out. Nil when nothing is left.
+---@param word any
+---@return table<string, number>?
+function R.CleanWord(word)
+	if type(word) ~= "table" then return nil end
+	local w = R.config.towns.word
+	local out = {}
+	for axis, v in pairs(word) do
+		if w.axes[axis] and IsNumber(v) and v ~= 0 then out[axis] = Clamp(v, -w.limit, w.limit) end
+	end
+	return next(out) and out or nil
+end
+
 local function CleanRecord(rec, kind)
 	if type(rec) ~= "table" then return nil end
 	local out = {}
@@ -978,6 +1081,13 @@ local function CleanRecord(rec, kind)
 		if type(rec.race) == "string" and rec.race:match("^[A-Za-z]+$") and #rec.race <= R.RACE_LEN then out.race = rec.race end
 		if IsNumber(rec.levelT) and rec.levelT > 0 then out.levelT = Past(rec.levelT) end
 		if IsNumber(rec.oathT) and rec.oathT > 0 then out.oathT = Past(rec.oathT) end
+		-- N6 (#218): the town, what of its word the NPC took in, the rival they noticed
+		out.town = CleanText(rec.town, R.ZONE_LEN)
+		out.heard = R.CleanWord(rec.heard)
+		local rival = rec.rival
+		if type(rival) == "table" and IsNumber(rival.npc) and rival.npc > 0 and IsNumber(rival.t) and rival.t > 0 then
+			out.rival = { npc = math.floor(rival.npc), t = Past(rival.t) }
+		end
 		local t = rec.today
 		-- i contatori di un giorno passato non servono più: Increment li sostituisce alla prossima interazione (#52)
 		if type(t) == "table" and IsNumber(t.day) and math.floor(t.day) == Day(Now())
@@ -1066,6 +1176,48 @@ function R:CleanMarks(marks)
 	return out
 end
 
+---@class AURelationTown what a town remembers of the character (N6, #218), keyed by the town's name
+---@field t number the last meeting there (epoch)
+---@field map? integer the uiMapID read there (the map of N4's marks)
+---@field word? table<string, number> the word that gets around: a weakened share of the changes, per axis
+---@field quests? integer quests turned in there
+---@field title? string the honorary title held there (an id of `towns.titles`)
+---@field best? string the highest title ever held there (its notice and journal line come once)
+
+---N6 (#218): the towns within their limits: a name of at most ZONE_LEN bytes, a time in the past, the word within its
+---limit, known title ids; at most `towns.max` of them (the oldest without a title go first, then the oldest).
+---@param towns any
+---@return table<string, AURelationTown> clean
+---@return integer dropped
+function R:CleanTowns(towns)
+	local out, keep, dropped = {}, {}, 0
+	for name, tw in pairs(type(towns) == "table" and towns or EMPTY) do
+		local key = type(name) == "string" and CleanText(name, R.ZONE_LEN) or nil
+		if key == name and type(tw) == "table" and IsNumber(tw.t) and tw.t > 0 then
+			local town = { t = Past(tw.t), word = R.CleanWord(tw.word) }
+			if IsNumber(tw.map) and tw.map > 0 then town.map = math.floor(tw.map) end
+			if IsNumber(tw.quests) and tw.quests > 0 then town.quests = Counter(math.floor(tw.quests)) end
+			if type(tw.title) == "string" and self.titleById[tw.title] then town.title = tw.title end
+			if type(tw.best) == "string" and self.titleById[tw.best] then town.best = tw.best end
+			out[key] = town
+			table.insert(keep, key)
+		else
+			dropped = dropped + 1
+		end
+	end
+	local max = self.config.towns.max
+	if #keep > max then
+		table.sort(keep, function(a, b)
+			local ta, tb = out[a].title ~= nil, out[b].title ~= nil
+			if ta ~= tb then return tb end
+			if out[a].t ~= out[b].t then return out[a].t < out[b].t end
+			return a < b
+		end)
+		for i = 1, #keep - max do out[keep[i]] = nil end
+	end
+	return out, dropped
+end
+
 ---Ripulisce i dati salvati: scarta le voci malformate e riporta gli assi nei limiti.
 ---@return integer dropped
 function R:Sanitize()
@@ -1099,6 +1251,9 @@ function R:Sanitize()
 	local promises, bad = self:CleanPromises(d.promises, npcs)
 	d.promises, d.marks = promises, self:CleanMarks(d.marks)
 	dropped = dropped + bad
+	-- N6 (#218): the towns and their word
+	local towns, badTowns = self:CleanTowns(d.towns)
+	d.towns, dropped = towns, dropped + badTowns
 	d.version = self.VERSION
 	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
 	self:CompactNPCs()
@@ -1480,6 +1635,7 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	local d = self:Data()
 	local now = Now()
 	local rec = d.npcs[npcID]
+	local newcomer = rec == nil
 	if not rec then
 		-- N2 (#214): the circumstances of the first meeting, kept for later recall
 		rec = { first = now, last = now, count = 0, met = self:Circumstances() }
@@ -1491,6 +1647,16 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	local old = DerivedOf(self, rec)
 	local temper = self:Temper(npcID, rec, source)
 	self:Decay(rec, now, temper.forget)
+	-- N6 (#218): the town where they are met hears of you first (a newcomer all its word), quietly: no level notice
+	local townName, mapID = self:TownHere()
+	local town = self:Town(townName, true)
+	if town then
+		town.t, town.map = now, mapID or town.map
+		self:Hear(rec, townName, town, temper.gain)
+		rec.town = townName
+		if source == "quest_turnin" then town.quests = Counter((town.quests or 0) + 1) end
+	end
+	self.localQueue = {}
 	local _, before = self:Disposition(self:Axes(rec))
 	rec.last = now
 	if not uncounted then rec.count = (rec.count or 0) + 1 end
@@ -1502,6 +1668,18 @@ function R:RecordNPC(npcID, name, source, uncounted)
 		gained = gained or {}
 		gained.attraction = (gained.attraction or 0) + warmed
 	end
+	-- N6 (#218): a rival who notices, then the word of this meeting gets around the town and its title follows; of the
+	-- local notices only the most important is shown, once the meeting is settled
+	if not uncounted then self:NoticeRival(npcID, rec, now, temper) end
+	if town then
+		local word = newcomer and self:WordOf(town)
+		if word then self:LocalNotice("rel_word_" .. word .. "_", self:NpcName(npcID), townName) end
+		self:Spread(rec, gained, source)
+		self:UpdateTitle(townName)
+	end
+	local q = self.localQueue
+	self.localQueue = nil
+	if q.prefix then self:LocalNotice(q.prefix, unpack(q.args, 1, q.args.n)) end
 	self:CompactNPCs()
 	AfterChange(self, "npc", rec, old)
 	if warmed and d.npcs[npcID] == rec then self:Vow(npcID, rec) end
@@ -1911,21 +2089,26 @@ local function NarratorFree()
 	return not Compat:InvasiveScreen()
 end
 
+-- a system notice in the private narrator under an option, a session quota (`ss`: { n, turn }, `cfg.perSession`) and
+-- variants that take turns per prefix (`cfg.variants`); dropped, not held, in combat (N4 promises, N6 local notices)
+local function SessionNotice(self, option, ss, cfg, prefix, ...)
+	if not self:Setting(option) or not NarratorFree() then return false end
+	if Compat.SafeCall("UnitAffectingCombat", "player") == true then return false end
+	if ss.n >= cfg.perSession then return false end
+	ss.n = ss.n + 1
+	local turn = (ss.turn[prefix] or 0) % math.max(1, math.floor(cfg.variants)) + 1
+	ss.turn[prefix] = turn
+	NS.Narrator:Notice(NS:L(prefix .. turn, ...))
+	return true
+end
+
 ---A promise notice in the private narrator (Narrator:Notice: never chat), if the moment allows it: the option is on,
 ---the narrator is free, the character is not fighting (the notice is dropped, not held) and the session has room
 ---(`promises.perSession`). The variants of each kind take turns.
 ---@param prefix string the text key without its variant number (rel_promise_remind_...)
 ---@return boolean shown
 function R:PromiseNotice(prefix, ...)
-	if not self:Setting("promiseNotices") or not NarratorFree() then return false end
-	if Compat.SafeCall("UnitAffectingCombat", "player") == true then return false end
-	local ps, cfg = PromiseSession(self), self.config.promises
-	if ps.n >= cfg.perSession then return false end
-	ps.n = ps.n + 1
-	local turn = (ps.turn[prefix] or 0) % math.max(1, math.floor(cfg.variants)) + 1
-	ps.turn[prefix] = turn
-	NS.Narrator:Notice(NS:L(prefix .. turn, ...))
-	return true
+	return SessionNotice(self, "promiseNotices", PromiseSession(self), self.config.promises, prefix, ...)
 end
 
 ---Changes the axes of a listed NPC for something that is not a meeting (a word kept or broken): the temperament
@@ -1943,6 +2126,11 @@ function R:Affect(npcID, source, quiet)
 	local temper = self:Temper(npcID, rec, source)
 	local _, before = self:Disposition(self:Axes(rec))
 	local gained = self:Increment(rec, source, Now(), temper.gain)
+	-- N6 (#218): a word kept or broken gets around the NPC's town, and the town's esteem follows
+	if rec.town then
+		self:Spread(rec, gained, source)
+		self:UpdateTitle(rec.town)
+	end
 	AfterChange(self, "npc", rec, old)
 	local _, after = self:Disposition(self:Axes(rec))
 	if after ~= before then
@@ -2174,6 +2362,354 @@ function R:PromiseText(npcID, rec)
 	local mark = self:OathMark(npcID, rec)
 	if mark > 0 then table.insert(parts, NS:L("rel_oath_mark", math.floor(mark * 100 + 0.5))) end
 	return table.concat(parts, " ")
+end
+
+---------------------------------------------------------------------------
+-- N6 (#218): local reputation. An NPC belongs to the town where you meet them; word of what you did with one gets
+-- around to the others (a weakened share, both ways); the esteem of a town earns an honorary title; curated rivals
+-- notice when you grow close to the other. Narration only and private (Data/Relationships.lua `towns`, `rivalries`).
+---------------------------------------------------------------------------
+-- this session's local notices (made on first use: a session table made by older code or a test has none)
+local function LocalSession(self)
+	local s = self.session
+	if type(s.towns) ~= "table" then s.towns = { n = 0, turn = {} } end
+	return s.towns
+end
+
+---The name of an NPC for a notice or the window: the kept name, else the curated one, else "NPC #id".
+---@param npcID integer
+---@return string
+function R:NpcName(npcID)
+	local rec = self:Get("npc", npcID)
+	local entry = NS.Interlocutor and NS.Interlocutor.npcs and NS.Interlocutor.npcs[npcID]
+	if not (rec and rec.name) and entry and type(entry.name) == "string" then return entry.name end
+	return self:DisplayName("npc", npcID)
+end
+
+---The town where the character stands: the whole city in a capital (Data/Places.lua `capital`), else the subzone,
+---folded by `towns.aliases`; nil in the open, in an instance, or when the client does not say. Also the uiMapID there
+---(the map that N4's marks remember).
+---@return string? name
+---@return integer? mapID
+function R:TownHere()
+	if Compat.SafeCall("IsInInstance") == true then return nil end
+	local mapID, zone = HereNow()
+	local entry = zone and NS.Place and NS.Place.zones and NS.Place.zones[zone]
+	if type(entry) == "table" and entry.capital then return zone, mapID end
+	local sub = Compat.SafeCall("GetSubZoneText")
+	sub = type(sub) == "string" and not Compat.IsSecret(sub) and CleanText(sub, R.ZONE_LEN) or nil
+	if not sub then return nil, mapID end
+	return CleanText(self.config.towns.aliases[sub] or sub, R.ZONE_LEN), mapID
+end
+
+---Drops the towns over `towns.max`, in place: the oldest without a title first, then the oldest.
+---@param towns table<string, AURelationTown>
+function R:CapTowns(towns)
+	local keys = {}
+	for name in pairs(towns) do table.insert(keys, name) end
+	local max = self.config.towns.max
+	if #keys <= max then return end
+	table.sort(keys, function(a, b)
+		local ta, tb = towns[a].title ~= nil, towns[b].title ~= nil
+		if ta ~= tb then return tb end
+		if towns[a].t ~= towns[b].t then return towns[a].t < towns[b].t end
+		return a < b
+	end)
+	for i = 1, #keys - max do towns[keys[i]] = nil end
+end
+
+---The record of a town; with `create`, made if missing (a meeting there).
+---@param name? string
+---@param create? boolean
+---@return AURelationTown?
+function R:Town(name, create)
+	local d = self:Data()
+	if not d or type(name) ~= "string" then return nil end
+	if not d.towns[name] and create then
+		d.towns[name] = { t = Now() }
+		self:CapTowns(d.towns)
+	end
+	return d.towns[name]
+end
+
+---The word of a town in one token, from the disposition of its word: "good" from `word.notice`, "bad" from -`notice`,
+---nil in between; and that disposition.
+---@param town? AURelationTown
+---@return string? word
+---@return number value
+function R:WordOf(town)
+	if not (town and town.word) then return nil, 0 end
+	local value = self:Disposition(town.word)
+	local n = self.config.towns.word.notice
+	if value >= n then return "good", value end
+	if value <= -n then return "bad", value end
+	return nil, value
+end
+
+---An NPC met in a town hears its word: whatever the word moved since they last heard it changes their axes (by their
+---temperament), both ways; a newcomer hears all of it. An NPC first met in another town takes this town's word as heard
+---(they moved: what they heard elsewhere stays with them).
+---@param rec AURelationRecord
+---@param name string the town
+---@param town AURelationTown
+---@param temper number the NPC's temperament (R:Temper().gain)
+function R:Hear(rec, name, town, temper)
+	local word = town.word or EMPTY
+	if rec.town and rec.town ~= name then
+		rec.heard = R.CleanWord(word)
+		return
+	end
+	local heard = rec.heard or {}
+	for axis in pairs(self.config.towns.word.axes) do
+		local def = self.axisById[axis]
+		local diff = (word[axis] or 0) - (heard[axis] or 0)
+		if def and diff ~= 0 then
+			rec[axis] = Clamp(AxisValue(rec, axis) + diff * temper, def.min, def.max)
+			heard[axis] = word[axis]
+		end
+	end
+	rec.heard = R.CleanWord(heard)
+end
+
+---A change in an NPC's axes gets around their town: `word.share` of it, both ways, within `word.limit` per axis. What
+---this NPC gave counts as heard by them: it does not come back to them. A source in `word.skip` does not spread.
+---@param rec AURelationRecord
+---@param gained? table<string, number>
+---@param source string
+---@return boolean moved
+function R:Spread(rec, gained, source)
+	local w = self.config.towns.word
+	if not (rec.town and gained) or w.share <= 0 or w.skip[source] then return false end
+	local town = self:Town(rec.town)
+	if not town then return false end
+	local word, heard = town.word or {}, rec.heard or {}
+	local moved = false
+	for axis, delta in pairs(gained) do
+		if w.axes[axis] and IsNumber(delta) and delta ~= 0 then
+			local old = word[axis] or 0
+			local new = Clamp(old + delta * w.share, -w.limit, w.limit)
+			if new ~= old then
+				word[axis] = new
+				heard[axis] = (heard[axis] or 0) + new - old
+				moved = true
+			end
+		end
+	end
+	town.word, rec.heard = R.CleanWord(word), R.CleanWord(heard)
+	return moved
+end
+
+---The esteem of a town: the disposition of each NPC of it (within -`esteem.perNpc`..`perNpc`) plus `esteem.perQuest`
+---for each quest turned in there; and how many NPCs it counted.
+---@param name string
+---@return number esteem
+---@return integer npcs
+function R:Esteem(name)
+	local d = self:Data()
+	local cfg = self.config.towns.esteem
+	local sum, n = 0, 0
+	for _, rec in pairs(d and d.npcs or EMPTY) do
+		if rec.town == name then
+			sum, n = sum + Clamp((self:Disposition(self:Axes(rec))), -cfg.perNpc, cfg.perNpc), n + 1
+		end
+	end
+	local town = d and d.towns[name]
+	return sum + (town and town.quests or 0) * cfg.perQuest, n
+end
+
+---The title held in a town, and whether the town withholds it now: it remembers a broken oath (N4's mark on its map).
+---@param name? string
+---@return string? id
+---@return boolean withheld
+function R:TitleOf(name)
+	local town = self:Town(name)
+	local id = town and town.title
+	if not (id and self.titleById[id]) then return nil, false end
+	return id, self:CityMark(town.map) > 0
+end
+
+---A title in words, "Friend of Goldshire": the form of the character's sex where the language has one.
+---@param id string
+---@param name string the town
+---@return string?
+function R:TitleName(id, name)
+	local t = self.titleById[id]
+	if not t then return nil end
+	local sex = Compat.SafeCall("UnitSex", "player") == 3 and "female" or "male"
+	return (Name(t.name, sex):format(name))
+end
+
+-- the local notice of a meeting: RecordNPC gathers them and shows only the most important (a title, then a rival, then
+-- the word); outside a meeting a notice is shown at once
+local LOCAL_RANK = { rel_title_ = 3, rel_rival_ironic_ = 2, rel_rival_jealous_ = 2, rel_word_good_ = 1, rel_word_bad_ = 1 }
+
+---A local notice (word, title, rival) in the private narrator: option `localNotices`, `towns.perSession` a session,
+---never in combat, never chat. During a meeting it waits for the end of it (R:RecordNPC).
+---@param prefix string the text key without its variant number
+---@return boolean shown or queued
+function R:LocalNotice(prefix, ...)
+	local q = self.localQueue
+	if q then
+		if not q.prefix or (LOCAL_RANK[prefix] or 0) > (LOCAL_RANK[q.prefix] or 0) then
+			q.prefix, q.args = prefix, { n = select("#", ...), ... }
+		end
+		return true
+	end
+	return SessionNotice(self, "localNotices", LocalSession(self), self.config.towns, prefix, ...)
+end
+
+---The title a town gives after a change: the highest whose esteem is reached with at least `esteem.minNpcs` NPCs; one
+---held is kept while the esteem stays above `esteem.keep` x its threshold. A town that remembers a broken oath gives no
+---new title. A title held for the first time leaves a permanent journal line (no name) and a private notice.
+---@param name? string
+---@return string? id the title held now
+function R:UpdateTitle(name)
+	local town = self:Town(name)
+	if not town or not self:Writable() then return nil end
+	local cfg = self.config.towns.esteem
+	local esteem, n = self:Esteem(name)
+	local enough = n >= cfg.minNpcs
+	local reach, held = 0, 0
+	for i, t in ipairs(self.titles) do
+		if enough and esteem >= t.esteem then reach = i end
+		if t.id == town.title then held = i end
+	end
+	local rank = reach
+	for i = held, reach + 1, -1 do
+		if enough and esteem >= self.titles[i].esteem * cfg.keep then
+			rank = i
+			break
+		end
+	end
+	if rank > held and self:CityMark(town.map) > 0 then rank = held end
+	local title = self.titles[rank]
+	town.title = title and title.id or nil
+	local best = town.best and self.titleById[town.best]
+	if title and not (best and best.esteem >= title.esteem) then
+		town.best = title.id
+		if NS.LivingMemory and NS.LivingMemory.Record then
+			NS.LivingMemory:Record({ kind = "relation_title", tags = { "town", title.id }, source = "addon", perm = true,
+				zone = name })
+		end
+		self:LocalNotice("rel_title_", name, self:TitleName(title.id, name))
+	end
+	return town.title
+end
+
+---The curated rival of this NPC you are close to now: one already at `rivalries.band` or above (the lowest npcID first).
+---@param npcID integer
+---@return integer? rivalID
+function R:CloseRival(npcID)
+	local list = self.rivals[npcID]
+	if not list then return nil end
+	local d = self:Data()
+	local ids = {}
+	for id in pairs(list) do table.insert(ids, id) end
+	table.sort(ids)
+	for _, id in ipairs(ids) do
+		local rec = d.npcs[id]
+		if rec then
+			local _, band = self:Disposition(self:Axes(rec))
+			if BandAtLeast(self, band, self.config.rivalries.band) then return id end
+		end
+	end
+	return nil
+end
+
+-- ironic or jealous, by the NPC's temperament (`rivalries.ironic`)
+local function RivalTone(self, temperament)
+	return self.config.rivalries.ironic[temperament or ""] and "ironic" or "jealous"
+end
+
+---Meeting an NPC whose rival you grew close to: they notice, once for that rival (rec.rival), with `rival_noticed` on
+---their own axes and a private notice, ironic or jealous by their temperament. A rival no longer close is let go.
+---@param npcID integer
+---@param rec AURelationRecord
+---@param now number
+---@param temper AURelationTemper
+---@return table<string, number>? gained not spread: the town does not share a rival's spite
+function R:NoticeRival(npcID, rec, now, temper)
+	local close = self:CloseRival(npcID)
+	if not close then
+		rec.rival = nil
+		return nil
+	end
+	if rec.rival and rec.rival.npc == close then return nil end
+	rec.rival = { npc = close, t = now }
+	local gained = self:Increment(rec, "rival_noticed", now, temper.gain)
+	self:LocalNotice("rel_rival_" .. RivalTone(self, temper.temperament) .. "_", self:NpcName(npcID), self:NpcName(close))
+	return gained
+end
+
+---N6 (#218): the town where the character stands, for the content (it needs no person):
+---  ctx.townName       the town (subzone or city) the addon knows
+---  ctx.townWord       good | bad: the word of you there (absent in between)
+---  ctx.townTitle      the honorary title held there (absent while the town remembers a broken oath)
+---  ctx.townTitleName  that title in words, for {title}
+---@param ctx table
+function R:TownContext(ctx)
+	local d = self:Data()
+	if not (d and next(d.towns)) then return end
+	local name = self:TownHere()
+	local town = name and d.towns[name]
+	if not town then return end
+	ctx.townName = name
+	ctx.townWord = self:WordOf(town)
+	local id, withheld = self:TitleOf(name)
+	if id and not withheld then ctx.townTitle, ctx.townTitleName = id, self:TitleName(id, name) end
+end
+
+---N6 (#218): ctx.relRival, jealous | ironic, while the NPC of the interaction remembers noticing their rival
+---(`rivalries.days`).
+---@param ctx table
+---@param npcID integer
+---@param rec AURelationRecord
+function R:RivalContext(ctx, npcID, rec)
+	local r = rec.rival
+	if type(r) == "table" and Now() - r.t < self.config.rivalries.days * R.DAY then
+		ctx.relRival = RivalTone(self, self:Temper(npcID, rec).temperament)
+	end
+end
+
+---N6 (#218): an NPC's town, the word and your title there, and their rivals, in words. Empty when nothing to say.
+---@param npcID integer
+---@param rec AURelationRecord
+---@return string
+function R:TownText(npcID, rec)
+	local parts = {}
+	local town = self:Town(rec.town)
+	if town then
+		local word, value = self:WordOf(town)
+		table.insert(parts, NS:L("rel_town_line", rec.town, NS:L("rel_word_" .. (word or "mixed")),
+			math.floor(value + 0.5)))
+		local id, withheld = self:TitleOf(rec.town)
+		if id then
+			table.insert(parts, NS:L(withheld and "rel_title_withheld" or "rel_title_held", self:TitleName(id, rec.town)))
+		end
+	end
+	local ids = {}
+	for id in pairs(self.rivals[npcID] or EMPTY) do table.insert(ids, id) end
+	table.sort(ids)
+	if ids[1] then
+		local names = {}
+		for _, id in ipairs(ids) do table.insert(names, self:NpcName(id)) end
+		table.insert(parts, NS:L("rel_rival_line", table.concat(names, ", ")))
+	end
+	if rec.rival then table.insert(parts, NS:L("rel_rival_noticed", self:NpcName(rec.rival.npc))) end
+	return table.concat(parts, " ")
+end
+
+---N6 (#218): the towns the addon knows, by name: { { name, town, esteem, npcs }, ... }.
+---@return table[]
+function R:Towns()
+	local out = {}
+	local d = self:Data()
+	for name, town in pairs(d and d.towns or EMPTY) do
+		local esteem, n = self:Esteem(name)
+		table.insert(out, { name = name, town = town, esteem = esteem, npcs = n })
+	end
+	table.sort(out, function(a, b) return a.name < b.name end)
+	return out
 end
 
 local function LastFactOf(seen, kind)
@@ -2535,8 +3071,8 @@ function R:Reset(what)
 	if what == "all" or what == "npcs" or what == nil then
 		for _ in pairs(d.npcs) do n = n + 1 end
 		d.npcs = {}
-		-- N4 (#216): the promises and the maps' memory of a broken oath belong to the NPCs
-		d.promises, d.marks = {}, {}
+		-- N4 (#216): the promises and the maps' memory of a broken oath belong to the NPCs; N6 (#218): so do the towns
+		d.promises, d.marks, d.towns = {}, {}, {}
 	end
 	if what == "all" or what == "players" or what == nil then
 		for _ in pairs(d.players) do n = n + 1 end
@@ -2896,6 +3432,8 @@ function R:Context(ctx, extra)
 	-- N4 (#216): the place remembers a broken oath (read only while some map does)
 	local d = self:Data()
 	if d and next(d.marks) and self:CityMark((HereNow())) > 0 then ctx.oathbreakerHere = true end
+	-- N6 (#218): the town where the character stands: the word of them there and their title (no person needed)
+	self:TownContext(ctx)
 	local kind, key, rec = self:Subject(ctx, extra)
 	if not rec then
 		ctx.isKnown, ctx.relTraits = false, EMPTY
@@ -2914,6 +3452,7 @@ function R:Context(ctx, extra)
 	else
 		self:MetContext(ctx, rec)
 		self:PromiseContext(ctx, key, rec)
+		self:RivalContext(ctx, key, rec)
 	end
 	-- N3 (#215): the character made the private vow to this NPC (the condition relVowed)
 	ctx.relVowed = kind == "npc" and type(rec.noted) == "table" and rec.noted.vow == true or nil
@@ -3572,6 +4111,20 @@ function R:ExportText()
 			Add(line)
 		end
 	end
+	-- N6 (#218): the towns, their esteem, the word and the titles
+	local towns = self:Towns()
+	if towns[1] then
+		Add("")
+		Add(("== %s (%d) =="):format(NS:L("rel_export_towns"), #towns))
+		for _, e in ipairs(towns) do
+			local word, value = self:WordOf(e.town)
+			local id, withheld = self:TitleOf(e.name)
+			local title = id and self:TitleName(id, e.name) or "-"
+			if id and withheld then title = title .. " " .. NS:L("rel_title_withheld_short") end
+			Add(NS:L("rel_export_town", e.name, e.npcs, math.floor(e.esteem + 0.5), NS:L("rel_word_" .. (word or "mixed")),
+				math.floor(value + 0.5), title))
+		end
+	end
 	return table.concat(lines, "\n")
 end
 
@@ -3652,6 +4205,9 @@ local function Summary(self, kind, key)
 		if promises ~= "" then text = text .. " " .. promises end
 		local vow = self:VowText(rec)
 		if vow ~= "" then text = text .. " " .. vow end
+		-- N6 (#218): their town, your title there, their rivals
+		local town = self:TownText(key, rec)
+		if town ~= "" then text = text .. " " .. town end
 	end
 	return text
 end
@@ -3845,6 +4401,13 @@ function R:OnInit()
 			return e.zone and (text .. " (" .. e.zone .. ")") or text
 		end)
 		-- N3 (#215): the private vow at the top of a romance, no name: "A quiet vow (Goldshire)"
+		-- N6 (#218): an honorary title, first held in a town: "An honorary title: Friend of Goldshire", no NPC name
+		NS.LivingMemory:RegisterKind("relation_title", 4)
+		NS.LivingMemory:RegisterDescriber("relation_title", function(e)
+			local id = e.tags and e.tags[2]
+			if not (id and R.titleById[id] and e.zone) then return nil end
+			return NS:L("rel_mem_title", R:TitleName(id, e.zone))
+		end)
 		NS.LivingMemory:RegisterKind("relation_vow", 4)
 		NS.LivingMemory:RegisterDescriber("relation_vow", function(e)
 			local text = NS:L("rel_mem_vow")

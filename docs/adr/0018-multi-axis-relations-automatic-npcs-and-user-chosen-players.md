@@ -35,6 +35,7 @@ NPCs are many and reliably identifiable (`npcID` from the GUID): an automatic ca
   for a humanoid NPC of the opposite sex already at Friend (a fixed rule, no setting), and adds a private vow, once per
   NPC, at the top of the romance. The axis stays off by default.
 - [ADR 0038](0038-promises-oaths-and-the-oathbreaker-mark.md) (#216) makes a quest accepted from an NPC a promise to them (quest ids and times only): abandoning it costs trust, an oath to a named Friend leaves a slowly fading mark on the NPC and on the map where it was sworn. `relationships.version` is 4.
+- [ADR 0039](0039-local-reputation-word-titles-and-rivals.md) (#218) groups NPCs by the town where they are met: a weakened share of every change spreads to the others there, the esteem of a town earns an honorary title, and curated rival pairs notice each other. `relationships.version` is 5.
 
 ## Alternatives considered
 

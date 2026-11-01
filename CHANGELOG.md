@@ -8,6 +8,39 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N6: local reputation, honorary titles and NPC rivalries (issue #218)
+
+A step of the NPC relationships milestone, after N2 and building on N4's town memory. Narration only: NPCs never change
+their behaviour in the game, and nothing goes to public chat. Tested with the mock client only: nothing here has run in
+the real client yet (G1, steps N6.1-N6.6). The decisions are in
+[ADR 0039](docs/adr/0039-local-reputation-word-titles-and-rivals.md).
+
+- **Added: towns.** An NPC belongs to the town where you meet them: the subzone (an inn counts as its village, through
+  `towns.aliases`), or the whole city in a capital. None in the open or in an instance.
+- **Added: word gets around.** A quarter of every change an interaction or a promise makes to an NPC's trust, respect,
+  affection or loyalty goes to the word of their town, good and bad alike, within a limit (15 per axis). The other NPCs
+  there hear it at their next meeting, a newcomer all of it ("Remy has heard of you before you say a word: the talk in
+  Goldshire has been kind."), and nobody hears their own share back. A broken promise reaches the giver's town even when
+  you are far away.
+- **Added: honorary titles.** The esteem of a town (its NPCs' dispositions and the quests turned in there) earns
+  **Friend of Goldshire**, then **Champion of Goldshire**, with at least three NPCs who know you. Once: a private line
+  and a permanent journal memory with no NPC name ("An honorary title: Friend of Goldshire"). A title is kept until the
+  esteem falls well below it; a town that remembers a broken oath (N4) withholds it. New placeholder `{title}`.
+- **Added: NPC rivalries.** Curated pairs in `Data/NPCs.lua` (`NS:RegisterRivalries`): five pairs of innkeepers who
+  compete for the same travellers and the two forges of Goldshire. Become a Friend of one and the other notices at the
+  next meeting, once per rival: a little less warmth (`rival_noticed`, not spread to the town) and a jealous or ironic
+  line by their temperament.
+- **Added: the notices, the window and an option.** All lines go to the private narrator: at most 3 a session, one per
+  meeting (a title first, then a rival, then the word), dropped in combat, silent with the narrator. New option **Town
+  notices** (on). The NPC detail and `/au relationships detail` show the town, the word there, your title and the
+  rivals; the export lists the towns.
+- **Added: conditions and lines.** `townTitle`, `townWord` (no person needed) and `relRival` (a relationship
+  condition), with four IT/EN recall intentions for `relation_npc` in the inner voice (base 1,183, loaded 1,190).
+- **Changed: `relationships.version` is 5** (`towns`, the NPC fields `town`, `heard`, `rival`). Version 4 data needs no
+  migration; an older addon now leaves version 5 data read-only. At most 60 towns are kept. All shares, limits,
+  thresholds, titles, aliases and pairs are in `towns`, `rivalries` and `increments` of `Data/Relationships.lua` and in
+  `Data/NPCs.lua`.
+
 ### N4: promises, oaths and oathbreakers (issue #216)
 
 A step of the NPC relationships milestone, after N2. Narration only: NPCs never change their behaviour in the game, and

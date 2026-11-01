@@ -134,7 +134,7 @@ T.run("a quest accepted from an NPC is a promise to them: ids and times only", f
 	T.eq(p.npc, 7001, "to the giver"); T.eq(p.t, time(), "with the time")
 	for k in pairs(p) do T.ok(({ npc = true, t = true, r = true, oath = true, map = true })[k] ~= nil, "a known field: " .. k) end
 	T.eq(p.oath, nil, "a stranger: a promise, not an oath")
-	T.eq(NS.cdb.relationships.version, 4, "relationships.version 4")
+	T.eq(NS.cdb.relationships.version, R.VERSION, "relationships.version 4 or later (N6 made it 5)")
 	-- no quest dialogue just before: nobody to promise to
 	FIRE("QUEST_ACCEPTED", 55)
 	T.eq(Promises()[55], nil, "no giver, no promise")
@@ -508,7 +508,7 @@ T.run("saved promises and marks are cleaned", function()
 	Npc(7001).oathT = now + DAY
 	R:Sanitize()
 	local d = NS.cdb.relationships
-	T.eq(d.version, 4, "version 3 moves to 4 (nothing to migrate)")
+	T.eq(d.version, R.VERSION, "version 3 moves to the current version (nothing to migrate)")
 	T.ok(d.promises[54] and d.promises[54].title == nil and d.promises[54].oath and d.promises[54].map == ELWYNN, "a good one kept, without unknown fields")
 	T.eq(d.promises[55], nil, "a missing giver"); T.eq(d.promises[56], nil, "too old")
 	T.ok(d.promises[57] and d.promises[57].t <= now and d.promises[57].r <= now, "future times brought back")

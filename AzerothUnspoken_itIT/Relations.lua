@@ -404,6 +404,23 @@ NS:AddTexts("itIT", {
 		"Le voci corrono, in un posto così. Chissà quanti qui sanno del giuramento che ho infranto.",
 		{ "La gente parla. Preferirei che parlasse d'altro.", depth = "natural" },
 	},
+	-- N6 (#218): la reputazione locale
+	["rel.npc.town.title"] = {
+		"{title}, mi chiamano qui. Non ho ancora deciso se il nome mi sta bene, o io a lui.",
+		{ "{title}. Strano come un luogo decida chi sei.", depth = "natural" },
+	},
+	["rel.npc.town.word.good"] = {
+		"Un volto che conosco appena, e già un sorriso per me. Qualcuno, qui, ha parlato bene di me.",
+		{ "Hanno sentito parlare di me. In bene, a quanto pare.", depth = "natural" },
+	},
+	["rel.npc.town.word.bad"] = {
+		"Uno sconosciuto, eppure quello sguardo guardingo. Qualunque cosa abbia sentito su di me, è entrata prima di me.",
+		{ "Hanno sentito parlare di me. Non della parte buona.", depth = "natural" },
+	},
+	["rel.npc.rival.noticed"] = {
+		"Lo sento dal saluto: sa benissimo a quale porta sono {g:andato|andata} a bussare.",
+		{ "Sa dove passo il mio tempo, altrove. Ovviamente lo sa.", depth = "natural" },
+	},
 	-- N3 (#215): una storia d'amore con un NPC
 	["rel.npc.attraction"] = {
 		"Niente da vedere qui. Solo un battito che ha dimenticato il proprio passo.",
