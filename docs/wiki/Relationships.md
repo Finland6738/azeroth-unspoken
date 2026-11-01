@@ -51,7 +51,7 @@ These are also the **levels** of a bond: Hated is level 1, Deep bond level 9. Th
 Bonds with NPCs grow **by themselves** from what you actually do together:
 
 - talking to them;
-- taking and handing in quests;
+- taking and handing in quests (and keeping or breaking the word you gave: see [Your word](#your-word-promises-and-oaths));
 - buying, selling and repairing at a merchant;
 - flights, inns, training, the bank.
 
@@ -83,6 +83,21 @@ When an NPC moves to another level through something you did together, the narra
 - never for a change you made yourself with the sliders.
 
 Reaching a level worth remembering (**Friend**, **Close friend**, **Deep bond**, or falling to **Hostile** or **Hated**) also leaves a line in the [[journal|Memory-and-Journal]], once per NPC and level, with no names: *A bond grows: Close friend (Goldshire)*. Turn the narrator lines off with **Level notices** in the Options tab.
+
+### Your word: promises and oaths
+
+Taking a quest from an NPC is **a promise to them**. The addon remembers which quest you promised to whom, and when: nothing else (never the quest's title or text).
+
+- **Abandon it** and that NPC trusts you a little less. Handing it in to someone else still counts as keeping your word.
+- **Leave it open a long time** (a week) and, when you next meet the NPC who gave it, they may remind you they are still waiting: *Marshal Dughan has waited 10 days for the task you took on, and has not forgotten it.* Not again for most of a day, and not when you are bringing it back finished.
+- **Come back late** (after a week) and hand it in to the one who gave it, and they are relieved: *Relief on the face of Marshal Dughan: 9 days late, but your word held.*
+
+With an NPC who is already your **Friend** or more, a promise is **an oath**. Keeping it earns a little more trust and loyalty. **Breaking it** costs far more: the bond usually drops a level, a line goes to the [[journal|Memory-and-Journal]] with no name (*An oath broken (Elwynn Forest)*), and you carry an **oathbreaker** mark:
+
+- **that NPC remembers** for a long time (about eight months, fading little by little; the long-lived peoples remember even longer). They say so the first time you meet them in a session, and they trust you more slowly while the mark lasts;
+- **their town or city remembers** too, for about three months: the first NPC you meet there in a session may let you know the word got there first, and the people there trust you a little more slowly.
+
+All of this is narration: an NPC never refuses you a quest or behaves differently in the game. The lines are **private**, rare (a few a session), never in a fight and never in chat. Turn them off with **Promise notices** in the Options tab; the promises and marks are still kept. The detail of an NPC shows your word: *Your word: 2 open, the oldest for 12 days (1 sworn as an oath).* and *Remembers the oath you broke (90% of it left).*
 
 ## Players: your choice
 
@@ -265,6 +280,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - What the addon observed is kept apart from what you chose, and never changes it.
 - Your notes, tags and own labels are **private**: they are never used in a line that could go to chat.
 - The first meeting with an NPC keeps only the time of day, the weather, the zone and your level: no text.
+- A promise keeps only the quest's number, the NPC's number and the times; an oath also keeps the number of the map where you swore it. Never a quest title or text.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
 
@@ -283,6 +299,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Recognise nearby | off | Options tab, `/au relationships proximity` |
 | Share with the account | off | Options tab, `/au relationships share` |
 | Level notices | on | Options tab |
+| Promise notices | on | Options tab |
 
 ## What you will see
 
@@ -290,6 +307,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 - Lines that change tone with the bond: more formal with strangers, warmer with friends, more intimate with close bonds.
 - An occasional memory in the [[journal|Memory-and-Journal]] when a bond changes in a meaningful way.
 - Now and then a short private line when an NPC reaches another level, and a memory of the first meeting when you see them again.
+- A reminder from an NPC who is still waiting for a quest you took, their relief when you come back late, and the long memory of an oath you broke.
 
 ## Tips
 

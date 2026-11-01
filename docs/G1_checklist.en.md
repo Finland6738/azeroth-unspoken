@@ -336,6 +336,19 @@ English counterpart of the section **N2** of [G1_checklist.md](G1_checklist.md).
 - **N2.6 · Never in combat.** Hand in a quest that raises a level while in combat (or enter combat just before). **Expect:** nothing during the fight; the line comes as soon as the fight ends. Nothing in chat.
 - **N2.7 · Journal.** Take an NPC to **Friend** (or higher). **Expect:** in the journal "A bond grows: Friend (<zone>)", once for that NPC, without its name. With **Level notices** off (Options tab) the narrator line is not there, the journal line is.
 
+## N4: promises, oaths and oathbreakers (issue #216)
+
+English counterpart of the section **N4** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: no NPC changes its behaviour in the game, and nothing goes to chat. New to the addon, all in the Forever dump: `QUEST_REMOVED`, `C_QuestLog.SetAbandonQuest` / `AbandonQuest` / `GetAbandonQuest` (hooked with `hooksecurefunc`), `C_QuestLog.IsOnQuest`, `C_QuestLog.IsComplete`, `C_QuestLog.IsQuestFlaggedCompleted`. Tried only with the mock client.
+
+- **N4.1 · A promise.** Accept a quest from an NPC who speaks (not from an item), then open the NPC in `/au relationships`. **Expect:** under **What the addon knows**, "Your word: 1 open, the oldest for 0 days.". A quest taken from an item or a sign is a promise to nobody. **Report:** the text; if the line is missing after a quest from an NPC, which NPC and which quest.
+- **N4.2 · Abandon.** Abandon that quest from the quest log (the Abandon button and the confirmation). **Expect:** at once, or after three seconds at most, a private narrator line: "You gave <name> your word, and let it fall. ...". In the detail that NPC's trust dropped a few points. **Report:** how long until the line; the `hook:C_QuestLog.AbandonQuest` and `hook:C_QuestLog.SetAbandonQuest` lines of `/au debug` (available or missing).
+- **N4.3 · An ordinary turn-in.** Accept a quest and hand it in to its NPC. **Expect:** no line about your word (handed in on time); the promise leaves the detail. **Never** the abandon line for a quest handed in. **Report:** an abandon line after a turn-in (very important: it means `QUEST_TURNED_IN` and `QUEST_REMOVED` do not come in the expected order), and whether the quest went to a different NPC.
+- **N4.4 · Reminder and relief.** Keep a quest open for more than a calendar week, then talk to the NPC who gave it, without having finished it. **Expect:** "<name> has waited <n> days for the task you took on, and has not forgotten it." Not again for about a day; nothing when the quest is ready to hand in. Handing it in to that NPC later: "Relief on the face of <name>: <n> days late, but your word held." **Report:** the texts and the days.
+- **N4.5 · An oath.** With an NPC who is already a **Friend** (level 6 or more in the detail), accept a quest. **Expect:** the detail says "(1 sworn as an oath)".
+- **N4.6 · Oathbreaker.** Abandon that quest. **Expect:** "You swore it to <name>, who trusted you, ..."; the NPC usually drops a level (without a second level line); in the journal "An oath broken (<zone>)", with no names. Talking to that NPC again in the same session: "<name> has not forgotten the oath you broke.", once; the detail says "Remembers the oath you broke (100% of it left)."
+- **N4.7 · The city remembers.** In the same zone or city, talk to another NPC. **Expect:** once a session, "<zone> still talks of the oath you broke." (or the second variant). Nothing in another zone. **Report:** the zone name shown (it is the map of `C_Map.GetBestMapForUnit`: inside a building of a capital it may be a different map).
+- **N4.8 · Never in combat, never in chat.** Enter combat and talk to an NPC who waits on an old promise (if it happens), then turn off **Promise notices** in the Options tab. **Expect:** no line in combat (it does not wait for the end: it is dropped); with the option off no line, but the promise stays in the detail. Nothing in chat, ever.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -386,4 +399,10 @@ N2 first meeting ........ right time? ___  right or missing weather? ___  zone a
 N2 NPC block ............ level and next? ___  temperament? ___  overlaps? (must be NO) ___
 N2 temperament .......... innkeeper faster than guard? ___  NPC race from the client? ______
 N2 notices .............. private line? ___  never in combat? ___  after the fight? ___  too many? ___  journal Friend? ___
+N4 promise .............. line in the detail? ___  none from an item? ___
+N4 abandon .............. private line (after how many s) ______  hook AbandonQuest ______  SetAbandonQuest ______
+N4 turn-in .............. abandon line after a turn-in? (must be NO) ___  to another NPC? ___
+N4 reminder/relief ...... reminder after 7 days? ___  relief? ___  never when ready? ___
+N4 oath ................. "sworn"? ___  broken: line, level down, journal? ___  the NPC remembers? ___  the zone (name) ______
+N4 silence .............. none in combat? ___  none with the option off? ___  nothing in chat? ___
 ```

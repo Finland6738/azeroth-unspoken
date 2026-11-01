@@ -1029,6 +1029,51 @@ client finto.
     - **Cosa aspettarti:** nel diario «Un legame cresce: Amico (<zona>)», una sola volta per quell'NPC, senza il suo nome.
       Con **Avvisi di livello** spento (scheda Opzioni) la riga del narratore non c'è, il diario sì.
 
+## N4: promesse, giuramenti e spergiuri (aggiunto dall'issue #216)
+
+Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Eventi e funzioni nuovi per l'addon, tutti
+nel dump di Forever: `QUEST_REMOVED`, `C_QuestLog.SetAbandonQuest` / `AbandonQuest` / `GetAbandonQuest` (agganciati con
+`hooksecurefunc`), `C_QuestLog.IsOnQuest`, `C_QuestLog.IsComplete`, `C_QuestLog.IsQuestFlaggedCompleted`. Provato solo con
+il client finto.
+
+- **N4.1 · Una promessa.** Accetta una missione da un NPC che parla (non da un oggetto), poi apri l'NPC in
+  `/au relationships`.
+    - **Cosa aspettarti:** in **Cosa sa l'addon**, «La tua parola: 1 promesse aperte, la più vecchia da 0 giorni.». Una
+      missione presa da un oggetto o da un cartello non è una promessa a nessuno.
+    - **Cosa riportare:** il testo; se con una missione accettata da un NPC la riga manca, quale NPC e quale missione.
+- **N4.2 · Abbandono.** Abbandona quella missione dal registro (il pulsante Abbandona e la conferma).
+    - **Cosa aspettarti:** subito, o al massimo dopo tre secondi, una riga privata del narratore: «Avevi dato la tua
+      parola a <nome>, e l'hai lasciata cadere. …». Nel dettaglio la fiducia di quell'NPC è scesa di qualche punto.
+    - **Cosa riportare:** quanto tempo dopo arriva la riga; le righe `hook:C_QuestLog.AbandonQuest` e
+      `hook:C_QuestLog.SetAbandonQuest` di `/au debug` (disponibili o mancanti).
+- **N4.3 · Una consegna normale.** Accetta una missione e consegnala al suo NPC.
+    - **Cosa aspettarti:** nessuna riga sulla parola data (consegnata in tempo); la promessa sparisce dal dettaglio.
+      **Mai** la riga dell'abbandono per una missione consegnata.
+    - **Cosa riportare:** una riga di abbandono dopo una consegna (molto importante: vuol dire che `QUEST_TURNED_IN` e
+      `QUEST_REMOVED` non arrivano nell'ordine atteso), e se la missione era consegnata a un NPC diverso.
+- **N4.4 · Promemoria e sollievo.** Tieni una missione aperta per più di una settimana di calendario, poi parla con
+  l'NPC che te l'ha data, senza averla finita.
+    - **Cosa aspettarti:** «<nome> aspetta da <n> giorni il compito che avevi accettato, e non l'ha dimenticato.» Non di
+      nuovo per circa un giorno; nulla se la missione è pronta da consegnare. Consegnandola poi a quell'NPC: «Sollievo
+      sul volto di <nome>: con <n> giorni di ritardo, ma la tua parola ha tenuto.»
+    - **Cosa riportare:** i testi e i giorni.
+- **N4.5 · Un giuramento.** Con un NPC che è già **Amico** (livello 6 o più nel dettaglio), accetta una missione.
+    - **Cosa aspettarti:** il dettaglio dice «(1 giurate)».
+- **N4.6 · Spergiuro.** Abbandona quella missione.
+    - **Cosa aspettarti:** «L'avevi giurato a <nome>, che si fidava di te, …»; di solito l'NPC scende di un livello (senza
+      una seconda riga di livello); nel diario «Un giuramento infranto (<zona>)», senza nomi. Parlando di nuovo con
+      quell'NPC nella stessa sessione: «<nome> non ha dimenticato il giuramento che hai infranto.», una volta; il dettaglio
+      dice «Ricorda il giuramento che hai infranto (ne resta il 100%).»
+- **N4.7 · La città ricorda.** Nella stessa zona o città, parla con un altro NPC.
+    - **Cosa aspettarti:** una volta per sessione, «<zona> non ha dimenticato il tuo giuramento infranto.» (o la seconda
+      variante). In un'altra zona nulla.
+    - **Cosa riportare:** il nome della zona che compare (è la mappa di `C_Map.GetBestMapForUnit`: dentro un edificio di
+      una capitale potrebbe essere una mappa diversa).
+- **N4.8 · Mai in combattimento, mai in chat.** Entra in combattimento e parla con un NPC che aspetta una promessa
+  vecchia (se capita), poi spegni **Avvisi delle promesse** nella scheda Opzioni.
+    - **Cosa aspettarti:** in combattimento nessuna riga (non aspetta la fine: si perde); con l'opzione spenta nessuna
+      riga, ma la promessa resta nel dettaglio. Nulla in chat in nessun caso.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -1163,6 +1208,12 @@ N2 primo incontro ....... ora giusta? ___  meteo giusto o assente? ___  zona e l
 N2 riquadro NPC ......... livello e prossimo? ___  temperamento? ___  si sovrappone? (deve essere NO) ___
 N2 temperamento ......... locandiere più veloce della guardia? ___  razza dell'NPC dal client? ______
 N2 avvisi ............... riga privata? ___  mai in combattimento? ___  dopo il combattimento? ___  troppe? ___  diario Amico? ___
+N4 promessa ............ riga nel dettaglio? ___  da un oggetto nessuna? ___
+N4 abbandono ............ riga privata (dopo quanti s) ______  hook AbandonQuest ______  SetAbandonQuest ______
+N4 consegna ............. riga di abbandono dopo una consegna? (deve essere NO) ___  a un altro NPC? ___
+N4 promemoria/sollievo .. promemoria dopo 7 giorni? ___  sollievo? ___  mai se pronta? ___
+N4 giuramento ........... «giurate»? ___  spergiuro: riga, livello giù, diario? ___  l'NPC ricorda? ___  la zona (nome) ______
+N4 silenzio ............. in combattimento nessuna? ___  opzione spenta nessuna? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

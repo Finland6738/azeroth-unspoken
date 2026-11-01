@@ -15,6 +15,7 @@ The addon keeps only **significant moments**, never chat text. For example:
 | **Level reached** | you gain a level (every tenth level is a milestone) |
 | **Story** | a [[personal story|Story-Arcs]] ends |
 | **A bond changes** | a [[relationship|Relationships]] changes in a meaningful way |
+| **An oath broken** | you abandon a quest you had sworn to an NPC who was your friend (see [[Relationships]]) |
 | **A chat** | you finish an [[NPC ambient dialogue|NPC-Dialogues]] |
 
 It also remembers **places**: how many times you visited, when first and last, and whether the last visit ended badly.

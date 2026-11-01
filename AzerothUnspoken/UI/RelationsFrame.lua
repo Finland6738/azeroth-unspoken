@@ -417,7 +417,7 @@ end
 local OPTIONS = {
 	{ "npcAuto", "rel_opt_npc" }, { "proposePlayers", "rel_opt_propose" }, { "autoRegisterPlayers", "rel_opt_auto" },
 	{ "attraction", "rel_opt_attraction" }, { "recognizeTarget", "rel_opt_target" }, { "proximity", "rel_opt_proximity" },
-	{ "sharePlayers", "rel_opt_share" }, { "levelNotices", "rel_opt_levels" },
+	{ "sharePlayers", "rel_opt_share" }, { "levelNotices", "rel_opt_levels" }, { "promiseNotices", "rel_opt_promises" },
 }
 
 -- the options have a view of their own (#172): two columns of buttons, then the privacy note and, while the shared list
@@ -441,7 +441,7 @@ local function BuildOptions()
 		frame.options[i] = { button = b, key = opt[1], text = opt[2] }
 	end
 	-- the consents and the privacy note in the 12-unit font (#182), each under the one above
-	frame.optionsHint = Text(frame, W.TEXT_FONT, 16, -244, INNER)
+	frame.optionsHint = Text(frame, W.TEXT_FONT, 16, -116 - math.ceil(#OPTIONS / 2) * 30 - 8, INNER)
 	frame.privacy = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
 	frame.privacy:SetPoint("TOPLEFT", frame.optionsHint, "BOTTOMLEFT", 0, -10)
 	frame.privacy:SetWidth(INNER)
@@ -697,7 +697,9 @@ local function RefreshDetail()
 	if not isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_npc"))
 		frame.dSeenLine:SetText(R:LevelText(info) .. "\n" .. R:TemperText(s.key, rec))
-		frame.dSeenFacts:SetText(R:MetText(rec, Stamp))
+		-- N4 (#216): the word given to the NPC, after the first meeting
+		local promises = R:PromiseText(s.key, rec)
+		frame.dSeenFacts:SetText(R:MetText(rec, Stamp) .. (promises ~= "" and ("\n" .. promises) or ""))
 	end
 	if isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_seen"))

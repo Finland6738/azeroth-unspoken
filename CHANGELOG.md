@@ -8,6 +8,37 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N4: promises, oaths and oathbreakers (issue #216)
+
+A step of the NPC relationships milestone, after N2. Narration only: NPCs never change their behaviour in the game, and
+nothing goes to public chat. Tested with the mock client only: nothing here has run in the real client yet (G1, steps
+N4.1-N4.8). The decisions are in [ADR 0038](docs/adr/0038-promises-oaths-and-the-oathbreaker-mark.md).
+
+- **Added: a quest is a promise.** A quest accepted after an NPC's quest dialogue is a promise to that NPC. Only the quest
+  id, the NPC's id and times are kept (`relationships.promises`), never a quest title or text. Handing it in keeps it,
+  to whoever it is handed. Abandoning it (`QUEST_REMOVED` with no turn-in, settled after a three-second wait or at once
+  through the abandon dialog, never for a quest the client flags as completed) lowers the giver's trust
+  (`promise_broken`), without counting as a meeting.
+- **Added: reminders and relief.** A promise left open a week or more is recalled when you meet the giver ("Marshal
+  Dughan has waited 10 days for the task you took on, and has not forgotten it."), not again for most of a day and never
+  while the quest is ready to hand in; a late turn-in to the giver brings relief. A promise whose quest left the log
+  unseen is let go without a word.
+- **Added: oaths and the oathbreaker mark.** With a named NPC already a Friend or more, a promise is an oath, and keeps
+  the map where it was sworn. Keeping it earns a little trust and loyalty (`oath_kept`); breaking it costs far more
+  (`oath_broken`, usually a level), leaves a journal line with no name ("An oath broken"), and marks the NPC (about eight
+  months, longer for the long-lived peoples) and the map (about three months). While a mark fades, the trust that NPC, or
+  anyone met on that map, can give is smaller; the NPC and the place each say they remember, once a session.
+- **Added: the notices, the window and an option.** Every line goes to the private narrator (`Narrator:Notice`): at most
+  4 a session, dropped in combat, silent with the narrator. New option **Promise notices** (on). The detail of an NPC and
+  `/au relationships detail` show the open promises and the mark.
+- **Added: conditions and lines.** `relPromiseDays` and `relOathbroken` (relationship conditions) and `oathbreakerHere`
+  (the place, no person needed), with three IT/EN recall intentions for `relation_npc`. More come with N9 (#221).
+- **Changed: `relationships.version` is 4** (`promises`, `marks`, the NPC field `oathT`). Version 3 data needs no
+  migration; an older addon now leaves version 4 data read-only. NPCs with an open promise or a mark are never dropped by
+  the compaction. `QUEST_REMOVED` is now normalized by the relationships module (`QUEST_STATE` `removed`); the world
+  module still rereads the quest log on it. All gains, days and limits are in `promises` and `increments` of
+  `Data/Relationships.lua`.
+
 ### N2: visible levels, the first meeting and the NPC temperament (issue #214)
 
 Second step of the NPC relationships milestone (owner decisions of 2026-11-01). Narration only: NPCs never change their

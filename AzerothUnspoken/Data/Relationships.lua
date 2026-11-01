@@ -149,6 +149,11 @@ NS.Relationships:RegisterData({
 		trainer = { gain = { familiarity = 2, respect = 1.5 }, decay = 0.6, cap = { familiarity = 4, respect = 3 } },
 		binder = { gain = { familiarity = 2, trust = 1, affection = 1 }, decay = 0.5,
 			cap = { familiarity = 3, trust = 1.5, affection = 1.5 } },
+		-- N4 (#216): the word given with a quest. These are not meetings: they change the axes of the quest giver
+		-- without counting an interaction. A negative gain is never capped; the temperament scales it too.
+		promise_broken = { gain = { trust = -6, respect = -2 }, decay = 0.8 },
+		oath_broken = { gain = { trust = -35, loyalty = -25, affection = -20, respect = -10 }, decay = 1 },
+		oath_kept = { gain = { trust = 3, loyalty = 4 }, decay = 0.7, cap = { trust = 6, loyalty = 8 } },
 	},
 	lifetimeSoftness = 0.5,
 
@@ -192,5 +197,28 @@ NS.Relationships:RegisterData({
 	levels = {
 		perSession = 4, npcHours = 20, held = 3, variants = 2,
 		memorable = { friend = true, close = true, bond = true, enemy = true, hated = true },
+	},
+
+	-- N4 (#216): promises and oaths. Accepting a quest from an NPC is a word given to them; only the quest id, the
+	-- giver's npcID and times are kept (never a quest title or text).
+	--   maxDays      an open promise older than this is forgotten without a word (the end of the quest was missed)
+	--   max          open promises kept at most (the oldest go first; the quest log holds far fewer)
+	--   settle       seconds to wait after a quest leaves the log for its turn-in before calling it abandoned
+	--   remindDays   a promise open this long: the giver reminds you of it when you meet them
+	--   remindHours  the same promise is not recalled again for this many hours
+	--   lateDays     a promise kept after this many days brings relief, if you hand it to the giver
+	--   perSession   the promise notices of a session (reminders, relief, broken words, oaths remembered)
+	--   variants     the texts rel_promise_*_N and rel_oath_*_N of Data/<lang>/RelationsUI.lua
+	-- An oath: a promise to an NPC already at `oath.band` or above. With `oath.curated` only the NPCs of the curated
+	-- register (Data/NPCs.lua) swear oaths; otherwise any NPC whose name the addon kept. Breaking one leaves a mark on
+	-- the NPC (`marks.npcDays`, divided by the NPC's `forget`: long-lived peoples remember longer) and on the map where
+	-- it was sworn, their town or city (`marks.cityDays`). A mark fades evenly to nothing; while it lasts, the trust
+	-- that the NPC (`npcTrust`) or anyone met on that map (`cityTrust`) can gain is multiplied by down to that factor.
+	-- Narration only: the marks change the addon's own numbers and words, never how anyone behaves in the game.
+	promises = {
+		maxDays = 120, max = 40, settle = 3, remindDays = 7, remindHours = 20, lateDays = 7, perSession = 4,
+		variants = 2,
+		oath = { band = "friend", curated = false },
+		marks = { npcDays = 240, cityDays = 90, npcTrust = 0.25, cityTrust = 0.6 },
 	},
 })
