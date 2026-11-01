@@ -119,7 +119,7 @@ local function CreateButton()
 	button:SetScript("OnLeave", function() GameTooltip:Hide() end)
 
 	-- la proposta in attesa scade: aggiorna l'aspetto ogni tanto
-	C_Timer.NewTicker(2, function()
+	NS.Compat.Ticker(2, function()
 		if NS.Gateway.pending then NS.Gateway:GetPending() end
 	end)
 	UpdateButton()

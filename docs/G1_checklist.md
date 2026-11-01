@@ -627,6 +627,29 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
 
 ---
 
+## U-api: robustezza delle API e prossimità in una folla (aggiunto dalle issue #166 e #164)
+
+Nulla di questo è stato provato nel client vero. Serve una **capitale affollata** (Orgrimmar o Roccavento) e un amico in lista.
+
+- **U-api.1 · Prossimità nella folla.** Aggiungi alla lista una o due persone, accendi **Riconosci chi è vicino**, `/au prof reset` (se disponibile), e resta due minuti in una capitale piena di giocatori con le nameplate dei giocatori accese.
+    - **Cosa aspettarti:** nessun rallentamento visibile (fotogrammi al secondo come con l'opzione spenta); `/au debug` mostra nella riga delle relazioni quante osservazioni sono state **throttled** (centinaia in una folla) e **0 proposte** finché nessuno in lista si avvicina; `/au prof` non mostra costi insoliti per `NAME_PLATE_UNIT_ADDED` o `UPDATE_MOUSEOVER_UNIT`.
+    - **Cosa riportare:** il numero di throttled dopo due minuti, i fotogrammi al secondo con l'opzione accesa e spenta, e se `UnitFullName` funziona sull'unità della nameplate.
+- **U-api.2 · Una persona in lista nella folla.** Con la stessa opzione, fatti raggiungere da una persona in lista mentre ci sono molti altri giocatori attorno.
+    - **Cosa aspettarti:** la persona viene riconosciuta (una volta per sessione) entro pochi secondi, anche con la folla; può servire che torni sulla nameplate o che tu la indichi col mouse.
+    - **Cosa riportare:** quanto ci vuole, e se resta non riconosciuta nonostante più apparizioni.
+- **U-api.3 · Senza persone in lista.** Con la lista vuota e senza consenso a Total RP 3, la stessa folla.
+    - **Cosa aspettarti:** `/au debug` mostra 0 throttled e 0 secret: non viene letto nemmeno un nome.
+    - **Cosa riportare:** qualunque valore diverso da zero.
+- **U-api.4 · Modulo Relazioni spento.** Spegni il modulo **Relazioni** nelle impostazioni (con la prossimità accesa) e passa tra la folla.
+    - **Cosa aspettarti:** nessun evento di nameplate o mouseover per l'addon (`/au debug` non elenca più `event:NAME_PLATE_UNIT_ADDED`).
+    - **Cosa riportare:** se compaiono ancora.
+- **U-api.5 · `/au probe` e `/au packs`.** Lancia `/au probe` dopo un po' di gioco, e `/au packs` dopo aver viaggiato tra due continenti.
+    - **Cosa aspettarti:** `/au probe` arriva fino alla riga **Summary** senza errori Lua, anche se qualche API risponde in modo strano; `/au packs` non mostra cartelle «caricata, ma senza contenuto» né ripetizioni dello stesso messaggio. Se hai disattivato una cartella dall'elenco degli addon, il messaggio compare una volta sola, anche dopo molti viaggi.
+    - **Cosa riportare:** ogni errore Lua, e il testo del messaggio se compare.
+- **U-api.6 · Missioni.** Con il diario delle missioni vuoto e poi con alcune missioni, `/au debug`.
+    - **Cosa aspettarti:** «quests 0» solo se il registro è davvero vuoto; con le missioni, il numero giusto. Se il client nega il registro (per esempio in un'istanza con restrizioni) la riga mostra «quests ?», non 0.
+    - **Cosa riportare:** il valore nei due casi.
+
 ## R4b2: prossimità e lista condivisa (aggiunto dalle issue #113 e #114)
 
 **A cosa serve.** Due opzioni, **entrambe spente di base**. **Riconosci chi è vicino**: nameplate e mouseover possono far riconoscere al narratore una persona **già in lista** (e, con il consenso a leggere i profili Total RP 3 degli altri, proporre chi ha un profilo), solo per la sessione, senza aggiungere né salvare nulla. **Condividi con l'account**: le **scelte** sulle persone (non le osservazioni) stanno nell'account e le usano tutti i tuoi personaggi. Servono **un secondo giocatore** (o più persone attorno, in città) e, per la condivisione, **due personaggi** dello stesso account. Tutto è provato fuori dal gioco con la finta API; qui si verifica che il client vero mandi gli eventi e che la finestra, ora più alta, entri nello schermo.

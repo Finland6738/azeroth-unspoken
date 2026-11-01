@@ -73,8 +73,8 @@ local MODE_ALIAS = NS.Keywords.Register("mode", {
 })
 
 function NS:InInstance()
-	local inInstance, kind = IsInInstance()
-	return inInstance and kind ~= "none"
+	local inInstance, kind = NS.Compat.SafeCall("IsInInstance")
+	return (inInstance and kind ~= "none") and true or false
 end
 
 -- al massimo `limit` byte (Config.CHAT_LIMITS[canale], 255 se il canale non è in tabella), senza spezzare
@@ -203,10 +203,11 @@ end
 ---@return boolean
 function Gateway:ChannelAvailable(channel)
 	if channel == "SAY" or channel == "EMOTE" or channel == "YELL" then return true end
-	if channel == "PARTY" then return IsInGroup() and true or false end
-	if channel == "RAID" then return IsInRaid() and true or false end
-	if channel == "GUILD" then return (IsInGuild and IsInGuild()) and true or false end
-	if channel == "INSTANCE_CHAT" then return (NS:InInstance() and IsInGroup(LE_PARTY_CATEGORY_INSTANCE or 2)) and true or false end
+	local SafeCall = NS.Compat.SafeCall
+	if channel == "PARTY" then return SafeCall("IsInGroup") == true end
+	if channel == "RAID" then return SafeCall("IsInRaid") == true end
+	if channel == "GUILD" then return SafeCall("IsInGuild") == true end
+	if channel == "INSTANCE_CHAT" then return NS:InInstance() and SafeCall("IsInGroup", LE_PARTY_CATEGORY_INSTANCE or 2) == true end
 	return false
 end
 

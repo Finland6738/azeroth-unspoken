@@ -16,7 +16,8 @@ The WoW Forever client (Interface 16001) can hide some values from addons (names
 5. **Error isolation**: `Diagnostics:Guard(module, fn, ...)` runs with `xpcall`, records the error (at most 30, grouped) and carries on. It is used by module startup, commands, event sources and bus handlers.
 6. **Probe at load time**: `Compat:Probe()` fills in the matrix (client, APIs, events, values, restrictions, chat, integrations) and `/au debug [full]` shows it. It also serves as a tool for the GDD's technical spikes (SP-01, SP-02).
 7. **`WOW_PROJECT_ID` is not trusted** to choose a compatibility branch (in the beta it could be 1): targeted checks are done instead. Forever detection (`isForever`) uses `WOW_PROJECT_CAMELOT` or Interface 16001–19999.
-8. **No combat log**: `CombatLogGetCurrentEventInfo` is not in the Forever API dump (GDD §2.3); reactions are based on normal game events.
+8. **Timers and the small calls go through Compat too (#166).** `Compat.After(delay, fn)` and `Compat.Ticker(interval, fn)` wrap `C_Timer.After` and `C_Timer.NewTicker`: a missing or raising `C_Timer` gives `false` / `nil` and never an error, and the caller decides whether to run the action at once or give it up. `IsInInstance`, `IsInGroup`, `IsInRaid`, `IsInGuild`, `UnitSex`, `UnitExists`, `GetLocale` and `GetCursorPosition` use `SafeCall` like the rest. A reading that is *unknown* stays unknown: the quest log scan returns nil, not zero, when an entry is hidden or raises, and `/au probe` guards every step so that one unexpected answer costs one line.
+9. **No combat log**: `CombatLogGetCurrentEventInfo` is not in the Forever API dump (GDD §2.3); reactions are based on normal game events.
 
 ## Alternatives considered
 

@@ -648,6 +648,61 @@ T.run("quests: a missing or restricted API changes nothing", function()
 	C_QuestLog = saved
 end)
 
+-- #166: whatever the client does not give is "unknown" (ctx.quest nil), never "no quests"
+T.run("quests: an unreadable entry makes the log unknown, not empty (#166)", function()
+	local saved = C_QuestLog
+	local function Case(label, setup)
+		Reset()
+		Quest(101, false, 0, 1)
+		FIRE("QUEST_LOG_UPDATE")
+		ADVANCE(2)
+		T.eq(World.quests.count, 1, label .. ": the baseline is read")
+		C_QuestLog = setmetatable({}, { __index = saved })
+		setup(C_QuestLog)
+		FIRE("QUEST_LOG_UPDATE")
+		ADVANCE(2)
+		local ctx = NS:BuildContext()
+		T.eq(World.quests, nil, label .. ": unknown")
+		T.eq(ctx.quest, nil, label .. ": no ctx.quest")
+		T.ok(not Engine.Match({ questActive = false }, ctx), label .. ": questActive = false does not match")
+		T.ok(not Engine.Match({ questActive = true }, ctx), label .. ": questActive = true does not match")
+		T.ok(not Engine.Match({ questReady = false }, ctx), label .. ": questReady = false does not match")
+		C_QuestLog = saved
+		-- the next good reading is a new baseline: no invented progress
+		SENT = {}
+		FIRE("QUEST_LOG_UPDATE")
+		ADVANCE(2)
+		T.eq(World.quests and World.quests.count, 1, label .. ": read again once the client answers")
+		T.ok(not Offered("quest_progress"), label .. ": and it is a baseline, not a progress")
+	end
+	Case("GetInfo raises", function(q) q.GetInfo = function() error("restricted") end end)
+	Case("GetInfo gives a secret", function(q) q.GetInfo = function() return MakeSecret() end end)
+	Case("isHeader is secret", function(q) q.GetInfo = function() return { isHeader = MakeSecret(), questID = 101 } end end)
+	Case("questID is secret", function(q) q.GetInfo = function() return { isHeader = false, questID = MakeSecret() } end end)
+	Case("questID is not a number", function(q) q.GetInfo = function() return { isHeader = false, questID = "x" } end end)
+	Case("count is NaN", function(q) q.GetNumQuestLogEntries = function() return 0 / 0, 1 end end)
+	Case("count is infinite", function(q) q.GetNumQuestLogEntries = function() return math.huge, 1 end end)
+	Case("count is negative", function(q) q.GetNumQuestLogEntries = function() return -1, 1 end end)
+	Case("IsComplete raises", function(q) q.IsComplete = function() error("restricted") end end)
+	Case("IsComplete gives nothing", function(q) q.IsComplete = function() return nil end end)
+	Case("GetQuestObjectives raises", function(q) q.GetQuestObjectives = function() error("restricted") end end)
+	Case("GetQuestObjectives gives text", function(q) q.GetQuestObjectives = function() return "x" end end)
+	C_QuestLog = saved
+	-- an empty but readable log is a real zero
+	Reset()
+	FIRE("QUEST_LOG_UPDATE")
+	ADVANCE(2)
+	T.eq(World.quests and World.quests.count, 0, "an empty log that the client reads is zero quests")
+	local ctx = NS:BuildContext()
+	T.ok(ctx.quest ~= nil and Engine.Match({ questActive = false }, ctx), "and questActive = false matches")
+	-- no title is kept: only ids and numbers
+	Reset()
+	Quest(102, false, 0, 1)
+	FIRE("QUEST_LOG_UPDATE")
+	ADVANCE(2)
+	T.eq(World.quests.list[102].title, nil, "the quest title is not kept in memory")
+end)
+
 T.run("quests: not in combat", function()
 	Reset()
 	P.combat = true

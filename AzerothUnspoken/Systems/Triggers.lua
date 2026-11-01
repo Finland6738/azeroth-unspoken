@@ -62,7 +62,7 @@ function handlers.WORLD_ENTER(env)
 	-- dopo una schermata di caricamento la zona nuova va offerta anche se ZONE_CHANGED_NEW_AREA arriva prima o non
 	-- arriva (#47): lastZone evita il doppione quando arriva dopo. All'accesso e dopo una ricarica no.
 	if changed then
-		C_Timer.After(3, function()
+		NS.Compat.After(3, function()
 			if not InCombat() then Fire("zone") end
 		end)
 	end
@@ -126,7 +126,7 @@ function handlers.COMBAT_START()
 	combatStart = GetTime()
 	lowHpDone = false
 	-- un attimo di attesa perché il bersaglio sia aggiornato
-	C_Timer.After(0.3, function()
+	NS.Compat.After(0.3, function()
 		if InCombat() then Fire("battle") end
 	end)
 end
@@ -157,19 +157,19 @@ end
 function handlers.PLAYER_REVIVE(env)
 	if wasDead and not env.context.deadOrGhost then
 		wasDead = false
-		C_Timer.After(1.5, function() Fire("rez") end)
+		NS.Compat.After(1.5, function() Fire("rez") end)
 	end
 end
 
 function handlers.LEVEL_UP(env)
-	C_Timer.After(1, function() Fire("levelup", { level = env.context.level }) end)
+	NS.Compat.After(1, function() Fire("levelup", { level = env.context.level }) end)
 end
 
 function handlers.ZONE_ENTER(env)
 	local zone = env.context.zone
 	if zone and zone ~= lastZone then
 		lastZone = zone
-		C_Timer.After(3, function()
+		NS.Compat.After(3, function()
 			if not InCombat() then Fire("zone") end
 		end)
 	end

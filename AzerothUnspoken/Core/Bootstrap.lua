@@ -23,7 +23,8 @@ AzerothUnspoken = NS     -- API pubblica per i pacchetti di frasi, le macro e il
 
 BINDING_HEADER_AZEROTHUNSPOKEN = "Azeroth Unspoken"
 -- nomi dei tasti: la schermata dei comandi si legge prima che l'utente scelga la lingua dell'addon
-if GetLocale and GetLocale() == "itIT" then
+-- (Compat is not loaded yet: the call is protected here)
+if GetLocale and select(2, pcall(GetLocale)) == "itIT" then
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Conferma e pronuncia la frase proposta (o improvvisa)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pausa immediata del narratore (attiva/disattiva)"
 	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Cambia la frase proposta con un'altra"

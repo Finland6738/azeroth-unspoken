@@ -988,7 +988,7 @@ local function Schedule(self, delay)
 	local at = GetTime() + delay
 	if self.nextFlush and self.nextFlush > GetTime() and self.nextFlush <= at then return end
 	self.nextFlush = at
-	C_Timer.After(delay, function()
+	Compat.After(delay, function()
 		if SA.nextFlush == at then SA.nextFlush = nil end
 		SA:Flush()
 	end)
@@ -1080,7 +1080,7 @@ local handlers = {}
 local function ZoneCheck()
 	SA.zoneToken = (SA.zoneToken or 0) + 1
 	local token = SA.zoneToken
-	C_Timer.After(SA.ZONE_DELAY, function()
+	Compat.After(SA.ZONE_DELAY, function()
 		if SA.zoneToken == token then SA:Fire("zone") end
 	end)
 end

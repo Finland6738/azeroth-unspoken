@@ -86,6 +86,33 @@ function Compat.SafeCall(fn, ...)
 	return a, b, c, d
 end
 
+-- Un timer del client (C_Timer.After): true se è stato programmato, false se il client non ce l'ha o ha sollevato un
+-- errore (#166). Chi non può fare a meno dell'azione la esegue subito quando riceve false; chi può farne a meno la lascia.
+---@param delay number secondi (un valore non valido vale 0)
+---@param fn function
+---@return boolean scheduled
+function Compat.After(delay, fn)
+	if type(fn) ~= "function" then return false end
+	if type(delay) ~= "number" or delay ~= delay or delay < 0 or delay == math.huge then delay = 0 end
+	local after = Resolve("C_Timer.After")
+	if type(after) ~= "function" then return false end
+	return pcall(after, delay, fn) and true or false
+end
+
+-- Un timer periodico (C_Timer.NewTicker): il suo oggetto, oppure nil se il client non ce l'ha o ha sollevato un errore.
+---@param interval number secondi (almeno 0.1)
+---@param fn function
+---@return table? ticker
+function Compat.Ticker(interval, fn)
+	if type(fn) ~= "function" then return nil end
+	if type(interval) ~= "number" or interval ~= interval or interval < 0.1 or interval == math.huge then interval = 0.1 end
+	local new = Resolve("C_Timer.NewTicker")
+	if type(new) ~= "function" then return nil end
+	local ok, ticker = pcall(new, interval, fn)
+	if not ok then return nil end
+	return ticker or nil
+end
+
 ---------------------------------------------------------------------------
 -- Versione del client
 ---------------------------------------------------------------------------
@@ -417,7 +444,7 @@ function Compat:Probe()
 	Value("zone", "GetRealZoneText")
 	Value("subzone", "GetSubZoneText")
 	Value("mapID", C_Map and C_Map.GetBestMapForUnit, "player")
-	if UnitExists and UnitExists("target") then
+	if self.SafeCall("UnitExists", "target") == true then
 		if self:IsUnitIdentitySecret("target") then
 			self:SetCap("value:target.identity", "value", RESTRICTED, "C_Secrets")
 		else

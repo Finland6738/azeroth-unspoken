@@ -136,6 +136,8 @@ NS:RegisterLanguage("en", {
 		packs_state = "folders: lines in %s, region %s (loads %d, builds %d, drops %d, waits for combat %d)",
 		packs_loaded = "loaded", packs_not_loaded = "not loaded (not needed now)", packs_absent = "not installed",
 		packs_failed_short = "could not be loaded (%s)",
+		packs_empty = "the folder %s loaded but gave no content: it is empty or from another version. Copy it again from the download.",
+		packs_loaded_empty = "loaded, but gave no content",
 		cooldown_now = "pause between automatic lines: %d seconds",
 		no_phrase = "no fitting line for '%s' right now.",
 		ignored = "'%s' will no longer produce lines.", unignored = "'%s' produces lines again.",

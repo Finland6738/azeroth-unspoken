@@ -81,12 +81,19 @@ local function Out(state, a, b, c, d, err)
 	return state, detail
 end
 
+-- a finite number, or nil (NaN, infinity, text, secret: whatever the client gives is shown as unknown, never raised)
+local function Finite(v)
+	if type(v) == "number" and v == v and v ~= math.huge and v ~= -math.huge then return v end
+	return nil
+end
+
+-- "HH:MM", or nil when the client gives no usable time. A minute that is not a number counts as 0, an hour that is
+-- not a number as unknown (#166: a text minute used to raise and lose the whole report).
 local function GameTime()
 	local state, h, m = Compat.Query("GetGameTime")
-	if state == AVAILABLE and type(h) == "number" then
-		return ("%02d:%02d"):format(math.floor(h), math.floor(m or 0))
-	end
-	return nil
+	h = state == AVAILABLE and Finite(h) or nil
+	if not h then return nil end
+	return ("%02d:%02d"):format(math.floor(h), math.floor(Finite(m) or 0))
 end
 
 ---------------------------------------------------------------------------
@@ -402,35 +409,49 @@ local ITEMS = {
 ---@return string[] lines plain text, without colour codes or names: safe to paste into an issue
 ---@return table totals { AVAILABLE, RESTRICTED, MISSING }
 function Probe:Run()
-	self:Listen()
-	shared = {}
+	-- Every step is guarded: one API that answers with something unexpected costs one line, never the report.
 	local lines, totals = {}, { AVAILABLE = 0, RESTRICTED = 0, MISSING = 0 }
 	local function Add(s) table.insert(lines, s) end
-	local b = Compat.build or Compat:GetBuildInfo()
+	local function Guard(label, fn)
+		local ok, err = pcall(fn)
+		if not ok then Add(("[RESTRICTED] %s: probe error: %s"):format(label, Trim(err))) end
+	end
+	Guard("listeners", function() self:Listen() end)
+	shared = {}
 	local profiler = NS.Profiler
+	local b = Compat.build or Compat:GetBuildInfo()
 
-	Add(("== %s %s probe, session %s =="):format(NS.name, NS.version, Duration(Now() - (profiler and profiler.startedAt or 0))))
-	Add(("Client %s build %s, Interface %d, locale %s, Forever %s"):format(b.version, b.build, b.interface,
-		tostring(b.locale), tostring(b.isForever)))
-	local zone = Compat.SafeCall("GetRealZoneText")
-	local _, map = Compat.Query("C_Map.GetBestMapForUnit", "player")
-	local inInstance, kind = Compat.SafeCall("IsInInstance")
-	Add(("Now: zone %s, mapID %s, instance %s, combat %s, resting %s, game time %s"):format(
-		type(zone) == "string" and zone ~= "" and zone or "?", type(map) == "number" and Num(map) or "?",
-		inInstance and tostring(kind) or "none", Compat.SafeCall("InCombatLockdown") == true and "yes" or "no",
-		Compat.SafeCall("IsResting") == true and "yes" or "no", GameTime() or "?"))
-	Add(("Event listeners: started at session %s"):format(Duration(self.listenStart - (profiler and profiler.startedAt or 0))))
+	Guard("header", function()
+		Add(("== %s %s probe, session %s =="):format(NS.name, NS.version, Duration(Now() - (profiler and profiler.startedAt or 0))))
+		Add(("Client %s build %s, Interface %s, locale %s, Forever %s"):format(tostring(b.version), tostring(b.build),
+			tostring(b.interface), tostring(b.locale), tostring(b.isForever)))
+	end)
+	Guard("now", function()
+		local zone = Compat.SafeCall("GetRealZoneText")
+		local _, map = Compat.Query("C_Map.GetBestMapForUnit", "player")
+		local inInstance, kind = Compat.SafeCall("IsInInstance")
+		Add(("Now: zone %s, mapID %s, instance %s, combat %s, resting %s, game time %s"):format(
+			type(zone) == "string" and zone ~= "" and zone or "?", type(map) == "number" and Num(map) or "?",
+			inInstance and tostring(kind) or "none", Compat.SafeCall("InCombatLockdown") == true and "yes" or "no",
+			Compat.SafeCall("IsResting") == true and "yes" or "no", GameTime() or "?"))
+	end)
+	Guard("listening", function()
+		Add(("Event listeners: started at session %s"):format(Duration(self.listenStart - (profiler and profiler.startedAt or 0))))
+	end)
 
 	for _, item in ipairs(ITEMS) do
 		local id, state, detail = item.id or item.event, nil, nil
 		if item.event then
-			state, detail = EventResult(item.event)
 			id = "event " .. item.event
+			local ok, s, d = pcall(EventResult, item.event)
+			if ok then state, detail = s, d else state, detail = RESTRICTED, "probe error: " .. Trim(s) end
 		else
 			local ok, s, d = pcall(item.run)
 			if ok then state, detail = s, d else state, detail = RESTRICTED, "probe error: " .. Trim(s) end
 		end
-		totals[state] = (totals[state] or 0) + 1
+		-- a probe that answers with no state or an unknown one is reported as restricted, not counted as a success
+		if totals[state] == nil then state, detail = RESTRICTED, "probe gave no valid state" end
+		totals[state] = totals[state] + 1
 		Add(("[%s] %s%s"):format(state, id, detail and (": " .. detail) or ""))
 	end
 	Add(("Summary: %d AVAILABLE, %d RESTRICTED, %d MISSING. AVAILABLE means the call worked, not that the data is useful."):format(

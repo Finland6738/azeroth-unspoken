@@ -20,6 +20,52 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-api: client API robustness and a calmer proximity (issues #166, #164)
+
+Fixes from the third review (Q8, #167). Everything here is tested with the mock client only; the in-game checks are
+in `docs/G1_checklist.md` and `docs/G1_checklist.en.md` (section "U-api").
+
+- **Fixed: the quest scan no longer invents "no quests" (#166).** If the client raises, hides (secret) or gives an
+  unexpected value for the quest log (a count that is NaN, infinite or negative, an entry that cannot be read, a
+  completion or objective call that fails), the log is *unknown*: `ctx.quest` is nil, `questActive = false` and
+  `questReady = false` do not match, and the next good reading is a fresh baseline (no false progress). A log that
+  the client reads as empty is still zero. The quest title is no longer kept in memory (the comment said it was not).
+- **Fixed: `/au probe` can no longer lose the report (#166).** The game time with a minute that is not a number
+  raised outside the per-probe guard. Now the header, the event samples and every probe are guarded; a probe that
+  raises or gives no valid state is shown as `RESTRICTED` and counted, and the others carry on.
+- **Fixed: a pack folder that cannot load is not tried again on every continent change (#166).** A failure that cannot
+  change in a session (`MISSING`, `DISABLED`, `CORRUPT`, `INTERFACE_VERSION`, the `DEP_*` reasons, `NO_API`) is
+  remembered: ten region changes made 23 `LoadAddOn` calls, now one. Any other failure (an error raised by the call)
+  gets three tries in all (`Packs.MAX_ATTEMPTS`).
+- **Added: a folder that loads but registers nothing is reported once (#166).** The new message `packs_empty` says
+  that the folder gave no content, and `/au packs` shows it as "loaded, but gave no content". It used to be silent.
+- **Changed: every client call goes through Compat (#166).** New `Compat.After` and `Compat.Ticker` (timers that
+  never raise: a missing `C_Timer` or a raising one gives `false`/`nil`), used by the Director, Triggers, the world,
+  memory, NPC dialogues, arcs, places, relationships, the journal, the relations window and the speak button.
+  `IsInInstance`, `IsInGroup`, `IsInRaid`, `IsInGuild`, `UnitSex`, `UnitExists`, `GetLocale` and `GetCursorPosition`
+  are protected too (a raising `IsInGroup` used to raise a Lua error from the channel button). The first-run
+  wizard's own `C_Timer.After` is left for the wizard work (#178).
+- **Fixed: a crowd of strangers no longer costs a bus event and a name read each (#164).** With "Recognise nearby" on,
+  every nameplate and mouseover was an event and a `UnitFullName` read. Now, before anything is published: a
+  constant-time check that there is someone to find (a listed player, or the Total RP 3 consent), a throttle per unit
+  token (0.5 s) and a global one (20 lookups a second), and one name read checked against the in-memory list.
+  Only a person that can be acted on reaches the bus; one already recognised this session does not. Nothing about
+  a stranger is kept (the limiter holds times per unit token and counters). Measured offline with a synthetic crowd
+  (`Tests/bench_proximity.py`, 300 nameplate events a second for 10 s over 40 tokens, plus the mouse):
+
+  | Scenario | `UnitFullName` reads, before → after | Bus events, before → after | CPU of the mock run |
+  |---|---|---|---|
+| empty list | 3101 → 0 | 3101 → 0 | 254 → 64 ms |
+| 20 listed | 2790 → 221 | 2790 → 1 | 320 → 108 ms |
+| 20 listed + TRP3 consent | 2790 → 221 | 2790 → 1 | 263 → 129 ms |
+
+  The CPU column includes the mock's own cost per event, so it understates the gain. In a flood a single sighting of
+  a listed player can be thrown away by the throttle: the next nameplate or mouseover is looked at. `/au debug`
+  shows how many sightings were throttled.
+- **Fixed: switching the relations module off now unregisters the proximity events (#164).** The settings window and
+  the presets call `R:ApplyProximity`, and the sources unregister themselves on the first event after the module
+  or the option went off by any other path.
+
 ### U: slash-command help and the speak button (issues #175, #189)
 
 Fixes from the UI review (UI-05 and UI-19 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Not yet checked in the real
