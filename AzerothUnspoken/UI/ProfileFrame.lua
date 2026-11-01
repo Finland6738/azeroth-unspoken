@@ -16,8 +16,10 @@ local rows = {}        -- [tratto] = { label, value | slider + text, clear, sour
 local topics = {}      -- [argomento] = pulsante
 ProfileFrame.rows = rows   -- per i test
 local ROW_HEIGHT = 26
-local WIDTH, HEIGHT = 680, 700
+local WIDTH, HEIGHT = 700, 700
 local TOP = 118            -- the archetype row, under an introduction of up to four lines (#182)
+local SLIDER_STEP = 5       -- #183: the "-", "+" and mouse wheel of a trait slider (0-100)
+local CLEAR_X = 556        -- the "x" that removes a choice, the same column on every row
 local RESET_SECONDS = 6    -- after the first click on "Neutral profile" there is this long for the second
 -- "Neutral profile" waits for a second click (#190); a redraw when the arming expires
 local confirmReset = W.Confirm(RESET_SECONDS, function() ProfileFrame:Refresh() end)
@@ -49,31 +51,33 @@ local function BuildTraitRow(id, y)
 	row.label:SetJustifyH("LEFT")
 	local x = 190
 	if def.kind == "scale" then
-		-- un cursore: il valore cambia mentre si trascina e si salva al rilascio
-		row.slider = W.Slider(frame, 200, def.min, def.max, function(v, final)
+		-- un cursore: il valore cambia mentre si trascina e si salva al rilascio. #183: "-" and "+" at its ends and the
+		-- mouse wheel move it by SLIDER_STEP, saved at once
+		row.slider = W.Slider(frame, 236, def.min, def.max, function(v, final)
 			row.text:SetText(Personality:DescribeTrait(id, { [id] = v }) or "")
 			if final then Change(function() Personality:SetTrait(id, v) end) end
-		end)
-		row.slider:SetPoint("TOPLEFT", x, y - 4)
+		end, { step = SLIDER_STEP, buttons = true })
+		row.slider:SetPoint("TOPLEFT", x, y)
 		W.Tooltip(row.slider, function() return NS:L("soul_slider_tip") end)
+		W.Tooltip(row.slider.minus, function() return NS:L("soul_step_tip", SLIDER_STEP) end)
+		W.Tooltip(row.slider.plus, function() return NS:L("soul_step_tip", SLIDER_STEP) end)
 		row.text = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-		row.text:SetPoint("TOPLEFT", x + 210, y - 6)
+		row.text:SetPoint("TOPLEFT", x + 242, y - 6)
 		row.text:SetWidth(120)
 		row.text:SetJustifyH("LEFT")
-		x = x + 336
 	else
 		row.value = W.FlatButton(frame, "", 170, 24, function()
 			Change(function() Personality:SetTrait(id, NextChoice(def, Explicit(id))) end)
 		end)
 		row.value:SetPoint("TOPLEFT", x, y)
-		x = x + 336
 	end
+	x = CLEAR_X
 	row.clear = W.FlatButton(frame, "x", 24, 24, function() Change(function() Personality:SetTrait(id, nil) end) end)
 	row.clear:SetPoint("TOPLEFT", x, y)
 	W.Tooltip(row.clear, function() return NS:L("soul_clear_tip") end)
 	row.source = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	row.source:SetPoint("TOPLEFT", x + 30, y - 6)
-	row.source:SetWidth(90)
+	row.source:SetWidth(WIDTH - 16 - x - 30)
 	row.source:SetJustifyH("LEFT")
 	rows[id] = row
 end
@@ -107,7 +111,7 @@ local function Build()
 	frame.arch:SetPoint("TOPLEFT", 150, -TOP)
 	frame.archHelp = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	frame.archHelp:SetPoint("TOPLEFT", 332, -(TOP + 5))
-	frame.archHelp:SetWidth(332)
+	frame.archHelp:SetWidth(WIDTH - 16 - 332)
 	frame.archHelp:SetJustifyH("LEFT")
 
 	-- tratti (gli argomenti da evitare hanno la loro griglia)

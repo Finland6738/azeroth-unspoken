@@ -12,8 +12,12 @@ local CHANNEL_WORDS = K.Register("channel", {
 	auto = "auto", say = "SAY", s = "SAY", emote = "EMOTE", e = "EMOTE",
 	party = "PARTY", p = "PARTY", raid = "RAID", guild = "GUILD", g = "GUILD",
 	instance = "INSTANCE_CHAT", i = "INSTANCE_CHAT",
+	next = "next",   -- #183: not a channel: the next one for the waiting proposal
 })
 local NARRATOR_WORDS = K.Register("narrator", { history = "history", reset = "reset", clear = "clear" })
+-- #185: the "In combat" setting
+local COMBAT_WORDS = K.Register("combat", { show = "show", chat = "chatframe", chatframe = "chatframe", hold = "hold",
+	silent = "silent" })
 
 -- eventi richiamabili a mano: il nome del comando (e dell'argomento di test/event/chance) -> l'evento
 local MANUAL = K.Register("manual_events", {
@@ -215,12 +219,28 @@ end
 
 local function Channel(rest, db)
 	local ch = CHANNEL_WORDS[NS.Lower(rest)]
+	-- #183: "next" changes the channel of the waiting proposal, not the default one
+	if ch == "next" then
+		NS.Gateway:NextChannel()
+		return
+	end
 	if ch then
 		db.chat.channel = ch
 	elseif rest ~= "" then
 		NS:Print(NS:L("invalid_value", rest, NS:L("values_channel")))
 	end
 	NS:Print(NS:L("channel_now", NS:L("channel_" .. db.chat.channel)))
+end
+
+-- #185: /au combat show / chat / hold / silent
+local function Combat(rest)
+	local v = COMBAT_WORDS[NS.Lower(rest)]
+	if v then
+		NS.Config:Set("pacing.inCombat", v)
+	elseif rest ~= "" then
+		NS:Print(NS:L("invalid_value", rest, NS:L("values_combat")))
+	end
+	NS:Print(NS:L("combat_now", NS:L("combat_" .. NS.Gateway:CombatSetting())))
 end
 
 local function Intensity(rest, db)
@@ -314,13 +334,14 @@ Commands.list = {
 	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity", group = "narrator" },
 	{ name = "depth", fn = Depth, usage = "depth natural / literary / elevated", desc = "help_depth", group = "narrator" },
 	{ name = "mode", fn = Mode, usage = "mode private / preview / confirm / auto", desc = "help_mode", group = "chat" },
-	{ name = "channel", fn = Channel, usage = "channel auto / say / emote / party / raid / guild / instance",
+	{ name = "channel", fn = Channel, usage = "channel auto / say / emote / party / raid / guild / instance / next",
 		desc = "help_channel", group = "chat" },
 	{ name = "speak", fn = function() AzerothUnspoken_Speak() end, usage = "speak", desc = "help_speak", group = "chat" },
 	{ name = "another", fn = function() NS.Gateway:Reroll() end, usage = "another", desc = "help_another", group = "chat" },
 	{ name = "cancel", fn = function() NS.Gateway:Discard() end, usage = "cancel", desc = "help_cancel", group = "chat" },
 	{ name = "copy", fn = function() NS.Gateway:CopyToChat() end, usage = "copy", desc = "help_copy", group = "chat" },
 	{ name = "trp3", fn = Trp3, usage = "trp3 [ooc on/off / markup on/off]", desc = "help_trp3", group = "chat" },
+	{ name = "combat", fn = Combat, usage = "combat show / chat / hold / silent", desc = "help_combat", group = "chat" },
 	{ name = "narrator", fn = Narrator, usage = "narrator [history / reset / clear]", desc = "help_narrator", group = "narrator" },
 	{ name = "soul", fn = function(rest) NS.Personality:Command(rest) end,
 		usage = "soul [list / neutral / archetype <id> / trp3 on/off / <trait> <value> / avoid <topic>]", desc = "help_soul",
