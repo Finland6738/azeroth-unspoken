@@ -920,8 +920,11 @@ T.run("la relazione con l'NPC si muove poco e con i tetti giornalieri; l'interaz
 		N:Close()
 	end
 	rec = R:Get("npc", 295)
-	T.ok(rec.familiarity - f0 <= 3 + 2.5 + 0.01, "tetto giornaliero della familiarità: +" .. (rec.familiarity - f0))
-	T.ok(rec.trust - t0 <= 1 + 2.5 + 0.01, "tetto giornaliero della fiducia: +" .. (rec.trust - t0))
+	-- the caps follow the NPC's temperament (N2, #214): a cheerful innkeeper warms faster than the base numbers
+	local k = R:Temper(295, rec).gain
+	T.ok(k > 1, "Innkeeper Farley warms quickly (" .. k .. ")")
+	T.ok(rec.familiarity - f0 <= (3 + 2.5) * k + 0.01, "tetto giornaliero della familiarità: +" .. (rec.familiarity - f0))
+	T.ok(rec.trust - t0 <= (1 + 2.5) * k + 0.01, "tetto giornaliero della fiducia: +" .. (rec.trust - t0))
 	T.eq(rec.count, count, "il numero di interazioni non cambia")
 	-- un dialogo di prova non tocca nulla
 	Fresh()

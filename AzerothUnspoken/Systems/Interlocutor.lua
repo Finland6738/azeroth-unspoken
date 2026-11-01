@@ -117,7 +117,7 @@ end
 ---------------------------------------------------------------------------
 -- Dati: registro degli NPC e tendenze (Data/NPCs.lua)
 ---------------------------------------------------------------------------
----Registra NPC per npcID: { [npcID] = { name, role, temperament, morality, goals, speech, race } }. Le chiavi di testo
+---Registra NPC per npcID: { [npcID] = { name, role, temperament, morality, goals, speech, race, warmth, forget } }. Le chiavi di testo
 ---`pack` e `override` della tabella dicono chi registra e se sostituisce un NPC di un altro pacchetto (#69, anche
 ---`override = true` sulla singola voce); senza, un npcID già registrato da un altro pacchetto si rifiuta.
 ---@param map table
@@ -133,6 +133,9 @@ function NS:RegisterNPCs(map)
 			local clean = I.Clean(e)
 			clean.name = type(e.name) == "string" and e.name or nil
 			clean.race = type(e.race) == "string" and e.race or nil
+			-- N2 (#214): the curated temperament of the relationship (multipliers, read by Systems/Relationships.lua)
+			if IsNumber(e.warmth) and e.warmth > 0 then clean.warmth = e.warmth end
+			if IsNumber(e.forget) and e.forget > 0 then clean.forget = e.forget end
 			I.npcs[math.floor(id)] = clean
 		end
 	end

@@ -444,13 +444,13 @@ T.run("schemaVersion perso: le migrazioni non rifanno ciò che è già fatto", f
 	-- a section written by a newer version of its module is not completed or validated
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	AzerothUnspokenCharacterDB = { schemaVersion = Config.SCHEMA_VERSION, personality = { version = 3, trp3 = "future" },
-		emotion = { version = 2, values = "future" }, relationships = { version = 3, players = "future" } }
+		emotion = { version = 2, values = "future" }, relationships = { version = 4, players = "future" } }
 	Config:Load()
 	local c = AzerothUnspokenCharacterDB
 	T.eq(c.personality.trp3, "future", "personality v3: a value this version does not know is not reset")
 	T.eq(c.personality.traits, nil, "and no field is added")
 	T.eq(c.emotion.values, "future", "emotion v2 untouched")
-	T.eq(c.relationships.players, "future", "relationships v3 untouched")
+	T.eq(c.relationships.players, "future", "relationships v4 untouched")
 	T.ok(c.memory ~= nil and c.memories.version == 2, "the other sections are completed as usual")
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()

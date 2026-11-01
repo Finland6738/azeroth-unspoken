@@ -375,7 +375,8 @@ local function BuildDetail()
 	W.Tooltip(frame.dNote, function() return NS:L("rel_edit_tip") end)
 	W.Tooltip(frame.dTags, function() return NS:L("rel_edit_tip") end)
 
-	-- what the addon observed (players only): a block of its own across the window, never editable
+	-- what the addon observed (players) or knows (NPCs: level, temperament, first meeting): a block of its own across
+	-- the window, never editable
 	frame.dSeenTitle = Text(frame, "GameFontNormal", LEFT_X, SEEN_Y, INNER)
 	frame.dSeenLine = Text(frame, "GameFontHighlightSmall", LEFT_X, SEEN_Y - 20, 340)
 	frame.dSeenFacts = Text(frame, "GameFontHighlightSmall", RIGHT_X, SEEN_Y - 20, RIGHT_W)
@@ -415,7 +416,7 @@ end
 local OPTIONS = {
 	{ "npcAuto", "rel_opt_npc" }, { "proposePlayers", "rel_opt_propose" }, { "autoRegisterPlayers", "rel_opt_auto" },
 	{ "attraction", "rel_opt_attraction" }, { "recognizeTarget", "rel_opt_target" }, { "proximity", "rel_opt_proximity" },
-	{ "sharePlayers", "rel_opt_share" },
+	{ "sharePlayers", "rel_opt_share" }, { "levelNotices", "rel_opt_levels" },
 }
 
 -- the options have a view of their own (#172): two columns of buttons, then the privacy note and, while the shared list
@@ -688,8 +689,15 @@ local function RefreshDetail()
 		if auto then text = text .. " (" .. NS:L("rel_trait_auto") .. ")" end
 		b:SetText(NS.Traits.Name(trait) .. ": " .. text)
 	end
-	-- what the addon observed: a block of its own for players, with its own action
-	for _, w in ipairs({ frame.dSeenTitle, frame.dSeenLine, frame.dSeenFacts, frame.dForget }) do w:SetShown(isPlayer) end
+	-- what the addon observed: a block of its own for players, with its own action; for an NPC (N2, #214) its visible
+	-- level, its temperament and the first meeting
+	for _, w in ipairs({ frame.dSeenTitle, frame.dSeenLine, frame.dSeenFacts }) do w:SetShown(true) end
+	frame.dForget:SetShown(isPlayer)
+	if not isPlayer then
+		frame.dSeenTitle:SetText(NS:L("rel_section_npc"))
+		frame.dSeenLine:SetText(R:LevelText(info) .. "\n" .. R:TemperText(s.key, rec))
+		frame.dSeenFacts:SetText(R:MetText(rec, Stamp))
+	end
 	if isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_seen"))
 		local facts = {}

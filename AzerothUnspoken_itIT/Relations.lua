@@ -368,6 +368,28 @@ NS:AddTexts("itIT", {
 		"si ferma più a lungo del necessario, e la conversazione si scioglie come tra persone che si conoscono bene.",
 		"accenna un sorriso prima ancora di parlare: certi incontri cominciano così.",
 	},
+	-- N2 (#214): il primo incontro ricordato
+	["rel.npc.met.novice"] = {
+		"La prima volta che mi sono {g:fermato|fermata} qui ero ancora alle prime armi. Mi hanno {g:visto|vista} crescere, un poco alla volta.",
+		{ "Ero poco più che una recluta, al nostro primo incontro.", depth = "natural" },
+		{ "Questo volto mi conosceva prima che la strada mi avesse insegnato qualcosa; ogni stagione da allora si è scritta sopra quella prima pagina goffa.", depth = "elevated" },
+	},
+	["rel.npc.met.night"] = {
+		"Il nostro primo incontro fu di notte. Alla luce del giorno, questo volto mi sembra ancora un po' nuovo.",
+		"Ho conosciuto prima questa voce, nel buio, e solo dopo il volto che la accompagna.",
+	},
+	["rel.npc.met.rain"] = {
+		"Pioveva, la prima volta che ho trovato questa porta. Strano, le cose che si conservano.",
+		{ "Di quel primo giorno ricordo la pioggia, più delle parole.", depth = "natural" },
+	},
+	["rel.npc.met.snow"] = {
+		"Nevicava, al nostro primo incontro: ricordo il freddo meglio delle parole.",
+		"Ogni volta che torno, una parte di me si scuote ancora dal mantello la neve di quel primo giorno.",
+	},
+	["rel.npc.met.long"] = {
+		"Sono passati mesi dal nostro primo incontro. Abbastanza perché un volto diventi parte della strada.",
+		{ "Ci conosciamo da un pezzo, ormai.", depth = "natural" },
+	},
 	["rel.npc.innkeeper"] = {
 		"Eccomi di nuovo. C'è ancora quella zuppa, o devo accontentarmi del pane?",
 		"Sempre un piacere. Hai una stanza per chi ha fatto troppa strada?",

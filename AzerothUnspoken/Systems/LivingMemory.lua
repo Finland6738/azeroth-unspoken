@@ -362,6 +362,16 @@ function LM:RegisterKind(kind, importance)
 	return true
 end
 
+LM.describers = {}
+
+---How the journal writes a kind of memory, from its tokens (the tags, the zone): `fn(entry, label)` returns the line,
+---or nil for the usual "label: zone". Never a name or a text: the memory holds none.
+---@param kind string
+---@param fn fun(e: AUMemoryEntry, label: string): string?
+function LM:RegisterDescriber(kind, fn)
+	if type(kind) == "string" and type(fn) == "function" then self.describers[kind] = fn end
+end
+
 ---@class AUMemorySpec
 ---@field kind string tipo registrato
 ---@field zone? string
@@ -952,6 +962,12 @@ function LM:Describe(e)
 	local label = NS:L(key)
 	if label == key then label = tostring(e.kind) end
 	if e.kind == "level" and e.level then return label .. " " .. e.level end
+	-- a system may describe its own kind from the tokens it recorded (N2 #214: the level a bond reached)
+	local describe = self.describers[e.kind]
+	if describe then
+		local ok, text = pcall(describe, e, label)
+		if ok and type(text) == "string" and text ~= "" then return text end
+	end
 	-- il ricordo di una storia conclusa (S9) dice quale: il titolo dell'arco, se si riconosce dai tag
 	local arc = e.kind == "story" and NS.StoryArcs and NS.StoryArcs:TitleFromTags(e.tags)
 	if arc then return label .. ": " .. arc end
