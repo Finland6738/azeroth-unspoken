@@ -30,7 +30,7 @@ that romance is **with the opposite sex only, fixed**, after hearing the alterna
    label is `lover`, `R:Vow` writes a **permanent journal memory** (`relation_vow`, tokens only, no name, like every
    relationship memory since ADR 0018) and the private narrator says one line through `Narrator:Notice` naming the NPC,
    never through the Chat Gateway; with the narrator silent or in combat only the journal line is written. The mark is
-   `rec.noted.vow`, which the saved data already keeps. A slider the user moved never makes the vow.
+   `rec.noted.vow`, which the saved data already keeps. A slider the user moved never makes the vow by itself: only an interaction that raises attraction can.
 5. **Lines.** The condition `relVowed` (a relationship condition for the validator) lets lines speak after the vow;
    two `relation_npc` intentions in Italian and English, rare (weight 0.5) and in the inner voice: `rel.npc.attraction`
    (attraction 30 or more, not yet beloved) and `rel.npc.vowed`. More come with N9 (#221).

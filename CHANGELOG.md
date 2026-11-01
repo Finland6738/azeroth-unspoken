@@ -22,7 +22,7 @@ their behaviour in the game, and nothing goes to chat. Tested with the mock clie
 - **Added: the vow.** At the top of a romance (attraction 80 and the **beloved** label) a private vow is written in the
   journal once per NPC, as a permanent memory with no name ("A quiet vow, spoken to no one aloud"), and the private
   narrator says one line naming the NPC (never in combat, never with the narrator silent, never in chat). The NPC detail
-  in the Relationships window and `/au relationships detail` say "You made a private vow to them." A slider never makes
+  in the Relationships window and `/au relationships detail` say "You made a private vow to them." A slider alone never makes
   the vow.
 - **Added: two rare recall intentions** for `relation_npc` in Italian and English, in the inner voice: a growing
   attraction (`rel.npc.attraction`) and after the vow (`rel.npc.vowed`), with the new relationship condition

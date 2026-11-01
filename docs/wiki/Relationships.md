@@ -93,7 +93,7 @@ Only if you turn on the **Attraction axis** (off by default). Romance is possibl
 - When attraction is high and the bond is **beloved**, your character makes a **private vow**, once per NPC: a quiet line in the narrator, for you only (never during a fight, never in chat), and a permanent line in the [[journal|Memory-and-Journal]] with no name: *A quiet vow, spoken to no one aloud (Goldshire)*. The NPC detail then says *You made a private vow to them.*
 - Now and then, rarely, your character's inner voice notices the attraction, or remembers the vow.
 
-Nothing changes in the game: the NPC does not behave differently. Moving the attraction slider yourself never makes the vow.
+Nothing changes in the game: the NPC does not behave differently. Moving the attraction slider yourself does not make the vow by itself: only something you do with the NPC can.
 
 ## Players: your choice
 
