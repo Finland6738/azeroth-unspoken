@@ -430,6 +430,15 @@ NS:AddTexts("itIT", {
 		"Il voto è ancora lì, mai pronunciato, e non si è fatto più leggero.",
 		"Ho promesso in silenzio. Il silenzio mantiene le promesse meglio delle parole.",
 	},
+	-- N5 (#217): il soprannome dato da un NPC, e un favore ancora aperto
+	["rel.npc.nickname"] = {
+		"\"{nickname}.\" Mi chiama così solo questa persona, e chissà come, rispondo.",
+		{ "{nickname}. È nato come uno scherzo. Non lo è più.", depth = "natural" },
+	},
+	["rel.npc.favour.open"] = {
+		"C'era una piccola cosa che avevo detto di fare per questa persona. Le piccole cose sono le più facili da lasciar cadere.",
+		{ "Devo ancora un favore, qui. Piccolo. Ma lo devo.", depth = "natural" },
+	},
 	["rel.npc.innkeeper"] = {
 		"Eccomi di nuovo. C'è ancora quella zuppa, o devo accontentarmi del pane?",
 		"Sempre un piacere. Hai una stanza per chi ha fatto troppa strada?",

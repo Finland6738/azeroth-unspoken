@@ -28,7 +28,12 @@
 -- when you meet the giver; a late turn-in brings relief. With a named NPC at Friend or above the promise is an oath:
 -- breaking it leaves a slowly fading mark on the NPC (`oathT`) and on the map where it was sworn (`relationships.marks`).
 -- The notices go to the private narrator; the numbers are in Data/Relationships.lua (`promises`).
--- N6 (#218, version 5): local reputation. An NPC belongs to the town where you meet them (`town`: the subzone, or the
+-- N5 (#217, version 5): a named NPC at Friend or above may ask a small favour the game can check by itself (come back,
+-- buy from me, rest at my inn, visit a zone): `rec.favour`, one per NPC, with an expiry; done, it raises the axes and
+-- leaves a journal line. At Close friend or above the NPC gives the character a nickname from curated lists (`rec.nick`,
+-- an id of Data/Relationships.lua `nicknames`), which their lines use through {nickname}. Counters `quests` (quests
+-- handed to the NPC) and `favourN` (favours done) feed the nicknames for deeds.
+-- N6 (#218, version 6): local reputation. An NPC belongs to the town where you meet them (`town`: the subzone, or the
 -- city in a capital). A share of every change in an NPC's axes goes to the word of their town (`relationships.towns`),
 -- and the other NPCs there hear it when you next meet them (`heard`: how much of the word they took in). The esteem of a
 -- town (their dispositions and the quests turned in there) earns an honorary title the narrator uses there; a town that
@@ -121,7 +126,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 5                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: towns, town, heard, rival, #218)
+R.VERSION = 6                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -147,6 +152,10 @@ R.PROXIMITY_UNIT_MAX = 80      -- unit tokens remembered (about forty nameplates
 R.CONFIRM_SECONDS = 15         -- how long the confirmation of a risky action (sharing, reset) stays open
 R.RACE_LEN = 20                -- a race token (NightElf, Scourge...)
 R.LEVEL_MAX = 200              -- a character level read back from saved data is brought within 1..LEVEL_MAX
+R.ID_LEN = 32                  -- a favour template or nickname id kept with an NPC record (#217)
+R.FAVOUR_KINDS = { ["return"] = true, buy = true, rest = true, visit = true }   -- what the engine can check (#217)
+R.DEEDS = { quests = true, favours = true, level = true, days = true }          -- the deeds a nickname can ask (#217)
+R.FAVOUR_MAX_DAYS = 60          -- a loaded favour lapses within this many days of being asked, whatever its file says (#217)
 -- what can happen with a listed player. ENCOUNTERS count as encounters (`count`, `last`); SHARED are facts of an
 -- experience lived together (they update `last` and the tally by kind, not `count`). relShared accepts any of them.
 R.ENCOUNTERS = { group = true, trade = true, duel = true, invite = true, emote = true, whisper = true, target = true }
@@ -174,11 +183,16 @@ R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionSt
 	-- N3 (#215): Data/Relationships.lua fills it
 	romance = { minLevel = "friend", gain = {}, decay = 1, cap = 0, humanoid = { names = {} },
 		vow = { attraction = 100, label = "lover", variants = 1 } },
+	-- N5 (#217): Data/Relationships.lua fills them
+	favours = { band = "friend", chance = 0, perSession = 2, max = 3, restDays = 3, variants = 1, reward = "favour_done",
+		templates = {}, places = {} },
+	nicknames = { band = "close", variants = 1, deeds = {}, classes = {}, races = {}, any = {} },
 	-- N6 (#218): Data/Relationships.lua fills them
 	towns = { max = 60, perSession = 3, variants = 1, aliases = {},
 		word = { share = 0, limit = 15, notice = 6, axes = {}, skip = {} },
 		esteem = { perNpc = 60, perQuest = 4, minNpcs = 3, keep = 0.75 } },
 	rivalries = { band = "friend", days = 30, ironic = {} } }
+R.nickById = {}                -- N5 (#217): every nickname entry of the data, by id
 R.titles, R.titleById = {}, {} -- N6 (#218): honorary titles of a town, by rising esteem
 R.rivals = {}                  -- N6 (#218): [npcID] = { [rival npcID] = kind }, both ways (NS:RegisterRivalries)
 R.candidates = {}              -- [chiave] = { key, source, t }: persone proposte, solo in questa sessione
@@ -441,6 +455,71 @@ function R:RegisterData(def)
 			if type(v.label) == "string" then cr.vow.label = v.label end
 			if IsNumber(v.variants) and v.variants >= 1 then cr.vow.variants = math.floor(v.variants) end
 		end
+	end
+	-- N5 (#217): favours (a template with the id of an existing one replaces it, so a pack can tune or add one)
+	local fv = def.favours
+	if type(fv) == "table" then
+		local cf = c.favours
+		for _, k in ipairs({ "chance", "perSession", "max", "restDays", "variants" }) do
+			if IsNumber(fv[k]) and fv[k] >= 0 then cf[k] = fv[k] end
+		end
+		if type(fv.band) == "string" and self.dispositionById[fv.band] then cf.band = fv.band end
+		if type(fv.reward) == "string" then cf.reward = fv.reward end
+		for _, t in ipairs(type(fv.templates) == "table" and fv.templates or EMPTY) do
+			if type(t.id) == "string" and t.id:match("^[a-z_]+$") and #t.id <= R.ID_LEN and R.FAVOUR_KINDS[t.kind]
+				and IsNumber(t.days) and t.days > 0 then
+				local tpl = { id = t.id, kind = t.kind, days = t.days, wait = IsNumber(t.wait) and math.max(0, t.wait) or 0,
+					reward = type(t.reward) == "string" and t.reward or nil }
+				if type(t.roles) == "table" and #t.roles > 0 then
+					tpl.roles = {}
+					for _, role in ipairs(t.roles) do if type(role) == "string" then tpl.roles[role] = true end end
+				end
+				local found
+				for i, x in ipairs(cf.templates) do if x.id == t.id then cf.templates[i], found = tpl, true end end
+				if not found then table.insert(cf.templates, tpl) end
+			end
+		end
+		for _, p in ipairs(type(fv.places) == "table" and fv.places or EMPTY) do
+			if type(p.zone) == "string" and p.zone ~= "" and IsNumber(p.min) and IsNumber(p.max) then
+				table.insert(cf.places, { zone = p.zone, min = p.min, max = p.max })
+			end
+		end
+	end
+	-- N5 (#217): nicknames (lists merged: a pack adds entries; an id seen again replaces the entry)
+	local nk = def.nicknames
+	if type(nk) == "table" then
+		local cn = c.nicknames
+		if type(nk.band) == "string" and self.dispositionById[nk.band] then cn.band = nk.band end
+		if IsNumber(nk.variants) and nk.variants >= 1 then cn.variants = math.floor(nk.variants) end
+		local function Names(list)
+			local out = {}
+			for _, n in ipairs(type(list) == "table" and list or EMPTY) do
+				if type(n.id) == "string" and n.id:match("^[a-z_0-9]+$") and #n.id <= R.ID_LEN then
+					local entry = { id = n.id }
+					for lang, v in pairs(n) do if lang ~= "id" then entry[lang] = v end end
+					self.nickById[n.id] = entry
+					table.insert(out, entry)
+				end
+			end
+			return out
+		end
+		for _, g in ipairs(type(nk.deeds) == "table" and nk.deeds or EMPTY) do
+			if type(g.when) == "table" then
+				local when = {}
+				for k, v in pairs(g.when) do if R.DEEDS[k] and IsNumber(v) then when[k] = v end end
+				local names = Names(g.names)
+				if #names > 0 then table.insert(cn.deeds, { when = when, names = names }) end
+			end
+		end
+		for _, group in ipairs({ "classes", "races" }) do
+			for token, list in pairs(type(nk[group]) == "table" and nk[group] or EMPTY) do
+				if type(token) == "string" then
+					cn[group][token] = cn[group][token] or {}
+					for _, e in ipairs(Names(list)) do table.insert(cn[group][token], e) end
+				end
+			end
+		end
+		for _, e in ipairs(Names(nk.any)) do table.insert(cn.any, e) end
 	end
 	-- N6 (#218): local reputation and rivalries (numbers key by key; lists merged, so a pack can add an alias or a title)
 	local tw = def.towns
@@ -1034,6 +1113,30 @@ function R.CleanMet(met)
 	return next(out) and out or nil
 end
 
+---@class AURelationFavour an open favour (N5, #217): what the engine needs to check it, nothing else
+---@field k string the template id (Data/Relationships.lua favours.templates)
+---@field t number when it was asked (epoch)
+---@field e number when it lapses (epoch)
+---@field map? integer rest: the uiMapID where it was asked (the inn's town)
+---@field zone? string rest: the zone where it was asked; visit: the zone to go to (English client name)
+---@field s? boolean visit: the zone was reached, the next meeting with the NPC completes it
+
+---N5 (#217): an open favour within its limits, or nil. A lapsed favour is kept here (the caller lets it go and notes
+---when it ended); an unknown template id is kept too, since a pack may add it later in the load.
+---@param f any
+---@return AURelationFavour?
+function R.CleanFavour(f)
+	if type(f) ~= "table" or type(f.k) ~= "string" or not f.k:match("^[a-z_]+$") or #f.k > R.ID_LEN then return nil end
+	if not (IsNumber(f.t) and f.t > 0 and IsNumber(f.e) and f.e > 0) then return nil end
+	-- an expiry far beyond any template's days (a damaged file) would keep the favour open for ever
+	local out = { k = f.k, t = Past(f.t) }
+	out.e = math.floor(math.min(f.e, out.t + R.FAVOUR_MAX_DAYS * R.DAY))
+	if IsNumber(f.map) and f.map > 0 then out.map = math.floor(f.map) end
+	out.zone = CleanText(f.zone, R.ZONE_LEN)
+	if f.s == true then out.s = true end
+	return out
+end
+
 ---N6 (#218): a word of a town (or what of it an NPC heard): the axes of `towns.word.axes`, within the limit, zeros left
 ---out. Nil when nothing is left.
 ---@param word any
@@ -1081,6 +1184,12 @@ local function CleanRecord(rec, kind)
 		if type(rec.race) == "string" and rec.race:match("^[A-Za-z]+$") and #rec.race <= R.RACE_LEN then out.race = rec.race end
 		if IsNumber(rec.levelT) and rec.levelT > 0 then out.levelT = Past(rec.levelT) end
 		if IsNumber(rec.oathT) and rec.oathT > 0 then out.oathT = Past(rec.oathT) end
+		-- N5 (#217): the open favour, the end of the last one, the counters of deeds and the nickname
+		out.favour = R.CleanFavour(rec.favour)
+		if IsNumber(rec.favourT) and rec.favourT > 0 then out.favourT = Past(rec.favourT) end
+		if IsNumber(rec.favourN) and rec.favourN > 0 then out.favourN = Counter(rec.favourN) end
+		if IsNumber(rec.quests) and rec.quests > 0 then out.quests = Counter(rec.quests) end
+		if type(rec.nick) == "string" and rec.nick:match("^[a-z_0-9]+$") and #rec.nick <= R.ID_LEN then out.nick = rec.nick end
 		-- N6 (#218): the town, what of its word the NPC took in, the rival they noticed
 		out.town = CleanText(rec.town, R.ZONE_LEN)
 		out.heard = R.CleanWord(rec.heard)
@@ -1231,6 +1340,8 @@ function R:Sanitize()
 		NS.Diagnostics:Error("relations", ("relationships.version %d > %d: sola lettura"):format(v, self.VERSION))
 		return 0
 	end
+	-- versions 2 to 5 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
+	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218) start absent and are cleaned below
 	local dropped = 0
 	local npcs, players = {}, {}
 	clamped = 0
@@ -1470,7 +1581,8 @@ function R:CompactNPCs()
 	local promised = {}
 	for _, p in pairs(d.promises or EMPTY) do promised[p.npc] = true end
 	for id, rec in pairs(d.npcs) do
-		if not (rec.label or rec.note or rec.tags or rec.feeling or rec.oathT or promised[id]) then
+		-- N5 (#217): nor those with an open favour or who gave a nickname
+		if not (rec.label or rec.note or rec.tags or rec.feeling or rec.oathT or promised[id] or rec.favour or rec.nick) then
 			table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 })
 		end
 	end
@@ -1519,7 +1631,11 @@ function R:MaintainAll()
 	local d = self:Data()
 	if not d then return end
 	local now = Now()
-	for id, rec in pairs(d.npcs) do self:Decay(rec, now, self:Temper(id, rec).forget) end
+	for id, rec in pairs(d.npcs) do
+		self:Decay(rec, now, self:Temper(id, rec).forget)
+		-- N5 (#217): a favour that lapsed while the character was away
+		self:LapseFavour(rec, now)
+	end
 end
 
 ---------------------------------------------------------------------------
@@ -1660,6 +1776,8 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	local _, before = self:Disposition(self:Axes(rec))
 	rec.last = now
 	if not uncounted then rec.count = (rec.count or 0) + 1 end
+	-- N5 (#217): the quests handed to this NPC, a deed for the nicknames
+	if source == "quest_turnin" then rec.quests = math.min((rec.quests or 0) + 1, R.COUNTER_MAX) end
 	local clean = CleanText(name, self.NAME_LEN)
 	if clean then rec.name = clean end
 	local gained = self:Increment(rec, source, now, temper.gain, nil, self:MarkTrust(npcID, rec, temper.forget))
@@ -2712,6 +2830,311 @@ function R:Towns()
 	return out
 end
 
+---------------------------------------------------------------------------
+-- N5 (#217): favours and nicknames. A named NPC at Friend or above may ask a small favour the game can check by itself
+-- (Data/Relationships.lua `favours`); at Close friend or above it gives the character a nickname (`nicknames`). Narration
+-- only: the private narrator, the journal and the NPC's own lines. Never chat, never a change in what the NPC does.
+---------------------------------------------------------------------------
+-- this session's bookkeeping: favours asked, and whose turn each text's variants have (made on first use)
+local function FavourSession(self)
+	local s = self.session
+	if type(s.favours) ~= "table" then s.favours = { asked = 0, turn = {} } end
+	return s.favours
+end
+
+-- a favour or nickname notice in the private narrator, if the moment allows it: the option on, the narrator free, not
+-- in combat. The variants of each text take turns. Never chat.
+local function FavourNotice(self, option, prefix, variants, ...)
+	if not self:Setting(option) or not NarratorFree() then return false end
+	if Compat.SafeCall("UnitAffectingCombat", "player") == true then return false end
+	local fs = FavourSession(self)
+	local turn = (fs.turn[prefix] or 0) % math.max(1, math.floor(variants)) + 1
+	fs.turn[prefix] = turn
+	NS.Narrator:Notice(NS:L(prefix .. turn, ...))
+	return true
+end
+
+-- the NPC is at `band` or above now
+local function AtBand(self, rec, band)
+	local _, now = self:Disposition(self:Axes(rec))
+	return BandAtLeast(self, now, band)
+end
+
+---The template of a favour (Data/Relationships.lua favours.templates), or nil for an id the data does not have.
+---@param id string
+---@return table?
+function R:FavourDef(id)
+	for _, t in ipairs(self.config.favours.templates) do
+		if t.id == id then return t end
+	end
+	return nil
+end
+
+---A favour not done in time lapses without a word and without a cost; the NPC rests `restDays` from its end.
+---@param rec AURelationRecord
+---@param now? number
+---@return boolean lapsed
+function R:LapseFavour(rec, now)
+	local f = rec.favour
+	if not f or (now or Now()) < f.e then return false end
+	rec.favour, rec.favourT = nil, Past(f.e)
+	return true
+end
+
+---The favours open now, with every NPC.
+---@return integer
+function R:OpenFavours()
+	local n, now = 0, Now()
+	for _, rec in pairs(self:Data().npcs) do
+		if rec.favour and now < rec.favour.e then n = n + 1 end
+	end
+	return n
+end
+
+---The zones a `visit` favour may send the character to: on the continent where they stand (Data/Places.lua), within
+---the level range, not the zone they are in. Without a known continent, any zone of the list for the level.
+---@return string[]
+function R:FavourPlaces()
+	local out = {}
+	local mapID, zone = HereNow()
+	local P = NS.Place
+	local here = P and P.Lookup and P:Lookup(mapID, zone)
+	local continent = here and here.continent
+	local level = Compat.SafeCall("UnitLevel", "player")
+	level = IsNumber(level) and level or 1
+	for _, p in ipairs(self.config.favours.places) do
+		local entry = P and P.zones and P.zones[p.zone]
+		if (not continent or (entry and entry.continent == continent)) and level >= p.min and level <= p.max
+			and not (zone and NS.Lower(zone) == NS.Lower(p.zone)) then
+			table.insert(out, p.zone)
+		end
+	end
+	return out
+end
+
+---A meeting may bring a favour asked: a named NPC at `favours.band` or above, without an open favour, rested
+---`restDays` since the last one, with room in the session (`perSession`) and in all (`max`), and the private narrator
+---free to say it (a favour nobody heard is not asked); then `chance`. The NPC's role picks the templates it may ask (a
+---`visit` needs somewhere to go) and the favours it already did turn the choice.
+---@param npcID integer
+---@param rec AURelationRecord
+---@param source? string the kind of the interaction (its role when nothing better is known)
+---@return AURelationFavour?
+function R:AskFavour(npcID, rec, source)
+	local cf = self.config.favours
+	if not self:Setting("favours") or not rec.name or rec.favour or #cf.templates == 0 then return nil end
+	local now = Now()
+	if IsNumber(rec.favourT) and now - rec.favourT < cf.restDays * R.DAY then return nil end
+	if not AtBand(self, rec, cf.band) then return nil end
+	local fs = FavourSession(self)
+	if fs.asked >= cf.perSession or self:OpenFavours() >= cf.max then return nil end
+	if not NarratorFree() or Compat.SafeCall("UnitAffectingCombat", "player") == true then return nil end
+	if math.random() >= cf.chance then return nil end
+	local role = self:Temper(npcID, rec, source).role
+	local list, places = {}, nil
+	for _, t in ipairs(cf.templates) do
+		local fits = not t.roles or (role ~= nil and t.roles[role] == true)
+		if fits and t.kind == "visit" then
+			places = places or self:FavourPlaces()
+			fits = #places > 0
+		end
+		if fits then table.insert(list, t) end
+	end
+	if #list == 0 then return nil end
+	local tpl = list[(npcID + (rec.favourN or 0)) % #list + 1]
+	local f = { k = tpl.id, t = now, e = now + tpl.days * R.DAY }
+	if tpl.kind == "rest" then
+		f.map, f.zone = HereNow()
+		if not (f.map or f.zone) then return nil end
+	elseif tpl.kind == "visit" then
+		f.zone = places[(npcID + (rec.count or 0)) % #places + 1]
+	end
+	if not FavourNotice(self, "favours", "rel_favour_ask_" .. tpl.id .. "_", cf.variants, self:DisplayName("npc", npcID),
+		f.zone or "") then return nil end
+	fs.asked = fs.asked + 1
+	rec.favour = f
+	self:Changed()
+	return f
+end
+
+---A favour done: the NPC's axes rise (the template's `reward` row, else `favours.reward`; not a meeting), a journal line
+---without names, and a private notice when the moment allows it.
+---@param npcID integer
+---@param rec AURelationRecord
+---@return boolean done
+function R:CompleteFavour(npcID, rec)
+	local f = rec and rec.favour
+	if not f or not self:Writable() then return false end
+	local tpl = self:FavourDef(f.k)
+	rec.favour, rec.favourT = nil, Now()
+	rec.favourN = math.min((rec.favourN or 0) + 1, R.COUNTER_MAX)
+	if NS.LivingMemory and NS.LivingMemory.Record then
+		NS.LivingMemory:Record({ kind = "relation_favour", tags = { "npc", f.k }, source = "addon",
+			zone = (self:Circumstances() or EMPTY).zone })
+	end
+	local shown = tpl ~= nil and FavourNotice(self, "favours", "rel_favour_done_" .. f.k .. "_", self.config.favours.variants,
+		self:DisplayName("npc", npcID), f.zone or "")
+	self:Affect(npcID, (tpl and tpl.reward) or self.config.favours.reward, shown)
+	return true
+end
+
+---A meeting with an NPC (NPC_INTERACT): a lapsed favour is let go; a `return` favour from its wait on, or a `visit`
+---whose zone was reached, is done. Otherwise the NPC may give a nickname or, without an open favour, ask one. At most
+---one of the three in a meeting.
+---@param npcID integer
+---@param source? string the kind of the interaction
+function R:MeetFavours(npcID, source)
+	if not self:Writable() or not IsNumber(npcID) then return end
+	local rec = self:Get("npc", npcID)
+	if not rec then return end
+	local now = Now()
+	if self:LapseFavour(rec, now) then self:Changed() end
+	local f = rec.favour
+	local tpl = f and self:FavourDef(f.k)
+	if tpl and ((tpl.kind == "return" and now - f.t >= tpl.wait * 3600) or (tpl.kind == "visit" and f.s)) then
+		self:CompleteFavour(npcID, rec)
+		return
+	end
+	if self:GiveNickname(npcID, rec) then return end
+	self:AskFavour(npcID, rec, source)
+end
+
+---A purchase from an NPC (the merchant hook): a `buy` favour to them is done, from its wait on.
+---@param npcID integer
+function R:FavourBought(npcID)
+	local rec = IsNumber(npcID) and self:Get("npc", npcID)
+	local f = rec and rec.favour
+	if not f or self:LapseFavour(rec) then return end
+	local tpl = self:FavourDef(f.k)
+	if tpl and tpl.kind == "buy" and Now() - f.t >= tpl.wait * 3600 then self:CompleteFavour(npcID, rec) end
+end
+
+---Where the character is now, for the favours that wait on a place: resting on the map where a `rest` favour was asked
+---(from its wait on) completes it; entering the zone of a `visit` notes it, and the next meeting with the NPC completes
+---it. Called at a login or reload, on a zone change and when the rested state changes.
+function R:FavourPlaceCheck()
+	if not self:Writable() then return end
+	local d = self:Data()
+	local now = Now()
+	local mapID, zone = HereNow()
+	local lower = zone and NS.Lower(zone)
+	local resting = Compat.SafeCall("IsResting") == true
+	local ids = {}
+	for id, rec in pairs(d.npcs) do
+		if rec.favour then table.insert(ids, id) end
+	end
+	table.sort(ids)
+	for _, id in ipairs(ids) do
+		local rec = d.npcs[id]
+		local f = rec.favour
+		local tpl = self:FavourDef(f.k)
+		local here = (mapID ~= nil and f.map == mapID) or (lower ~= nil and f.zone ~= nil and NS.Lower(f.zone) == lower)
+		if self:LapseFavour(rec, now) then
+			self:Changed()
+		elseif tpl and tpl.kind == "rest" and resting and here and now - f.t >= tpl.wait * 3600 then
+			self:CompleteFavour(id, rec)
+		elseif tpl and tpl.kind == "visit" and not f.s and here then
+			f.s = true
+			FavourNotice(self, "favours", "rel_favour_there_", self.config.favours.variants, self:DisplayName("npc", id), f.zone)
+			self:Changed()
+		end
+	end
+end
+
+---The deeds a nickname can ask, with this NPC: quests handed to them, favours done for them, the character's level,
+---whole days since you met.
+---@param rec AURelationRecord
+---@return table<string, number>
+function R:Deeds(rec)
+	local level = Compat.SafeCall("UnitLevel", "player")
+	return { quests = rec.quests or 0, favours = rec.favourN or 0, level = IsNumber(level) and level or 0,
+		days = IsNumber(rec.first) and rec.first > 0 and math.floor((Now() - rec.first) / R.DAY) or 0 }
+end
+
+---The nickname this NPC would give: from the deeds first (every group whose `when` holds), otherwise from the lists of
+---the character's class and race together with `any`. The same NPC always picks the same entry of a list.
+---@param npcID integer
+---@param rec AURelationRecord
+---@return table? entry
+function R:PickNickname(npcID, rec)
+	local cn = self.config.nicknames
+	local deeds, pool = self:Deeds(rec), {}
+	for _, g in ipairs(cn.deeds) do
+		local ok = true
+		for k, v in pairs(g.when) do
+			if (deeds[k] or 0) < v then ok = false end
+		end
+		if ok then
+			for _, e in ipairs(g.names) do table.insert(pool, e) end
+		end
+	end
+	if #pool == 0 then
+		local _, class = Compat.SafeCall("UnitClass", "player")
+		local _, race = Compat.SafeCall("UnitRace", "player")
+		for _, e in ipairs(type(class) == "string" and cn.classes[class] or EMPTY) do table.insert(pool, e) end
+		for _, e in ipairs(type(race) == "string" and cn.races[race] or EMPTY) do table.insert(pool, e) end
+		for _, e in ipairs(cn.any) do table.insert(pool, e) end
+	end
+	if #pool == 0 then return nil end
+	return pool[npcID % #pool + 1]
+end
+
+---A nickname in the user's language, in the form for the character's sex; nil for an id the data does not have.
+---@param id? string
+---@return string?
+function R:NickName(id)
+	local e = id and self.nickById[id]
+	if not e then return nil end
+	return Name(e, Compat.SafeCall("UnitSex", "player") == 3 and "female" or "male")
+end
+
+---Meeting a named NPC at `nicknames.band` or above who has not given one yet: they give the character a nickname, said
+---by the private narrator (given only when it can be heard) and kept in the journal. Kept with the NPC as an id.
+---@param npcID integer
+---@param rec AURelationRecord
+---@return boolean given
+function R:GiveNickname(npcID, rec)
+	local cn = self.config.nicknames
+	if rec.nick or not rec.name or not self:Setting("nicknames") or not AtBand(self, rec, cn.band) then return false end
+	local e = self:PickNickname(npcID, rec)
+	if not e or not FavourNotice(self, "nicknames", "rel_nick_given_", cn.variants, self:DisplayName("npc", npcID),
+		self:NickName(e.id)) then return false end
+	rec.nick = e.id
+	if NS.LivingMemory and NS.LivingMemory.Record then
+		NS.LivingMemory:Record({ kind = "relation_nick", tags = { "npc", e.id }, source = "addon",
+			zone = (self:Circumstances() or EMPTY).zone })
+	end
+	self:Changed()
+	return true
+end
+
+---N5 (#217): what the context says about favours and the nickname of the NPC of the interaction:
+---  ctx.relFavour  this NPC asked a favour that is still open
+---  ctx.relNick    the nickname this NPC gave the character, in the user's language (the placeholder {nickname})
+---@param ctx table
+---@param rec AURelationRecord
+function R:FavourContext(ctx, rec)
+	if rec.favour and Now() < rec.favour.e then ctx.relFavour = true end
+	if rec.nick and self:Setting("nicknames") then ctx.relNick = self:NickName(rec.nick) end
+end
+
+---N5 (#217): the nickname, the open favour and the favours done, in words: "Calls you "Anvil". A favour asked: come
+---back tomorrow (2 days left). Favours done: 3." Empty when there is nothing to say.
+---@param rec AURelationRecord
+---@return string
+function R:FavourText(rec)
+	local parts = {}
+	local nick = rec.nick and self:NickName(rec.nick)
+	if nick then table.insert(parts, NS:L("rel_nick_line", nick)) end
+	local f = rec.favour
+	if f and Now() < f.e and self:FavourDef(f.k) then
+		table.insert(parts, NS:L("rel_favour_line", NS:L("rel_favour_what_" .. f.k, f.zone or ""),
+			math.max(1, math.ceil((f.e - Now()) / R.DAY))))
+	end
+	if (rec.favourN or 0) > 0 then table.insert(parts, NS:L("rel_favours_done", rec.favourN)) end
+	return table.concat(parts, " ")
+end
+
 local function LastFactOf(seen, kind)
 	for i = #seen.facts, 1, -1 do
 		if seen.facts[i].k == kind then return seen.facts[i] end
@@ -3452,6 +3875,7 @@ function R:Context(ctx, extra)
 	else
 		self:MetContext(ctx, rec)
 		self:PromiseContext(ctx, key, rec)
+		self:FavourContext(ctx, rec)
 		self:RivalContext(ctx, key, rec)
 	end
 	-- N3 (#215): the character made the private vow to this NPC (the condition relVowed)
@@ -3686,6 +4110,8 @@ function handlers.NPC_INTERACT(env)
 	R:OfferKnown(c.npcID, kind)
 	-- N4 (#216): a promise still open, or a broken oath remembered
 	R:MeetPromises(c.npcID)
+	-- N5 (#217): a favour done, a nickname given or a favour asked
+	R:MeetFavours(c.npcID, kind)
 end
 
 function handlers.NPC_INTERACT_END()
@@ -3716,6 +4142,12 @@ function handlers.QUEST_STATE(env)
 end
 
 -- The roster changes often (raids send dozens of updates): the group is read once, a moment after the last one.
+-- N5 (#217): the favours that wait on a place (rest at an inn, visit a zone)
+local function FavourPlaces()
+	if R:Enabled() then R:FavourPlaceCheck() end
+end
+handlers.WORLD_ENTER, handlers.ZONE_ENTER, handlers.REST_CHANGE = FavourPlaces, FavourPlaces, FavourPlaces
+
 function handlers.GROUP_CHANGED()
 	R.groupDirty = true
 	if R.scanPending then return end
@@ -3965,6 +4397,8 @@ function R:OnMerchantAction(source)
 	local frame = _G.MerchantFrame
 	if type(frame) == "table" and type(frame.IsShown) == "function" and frame:IsShown() ~= true then return end
 	self:RecordNPC(i.npcID, i.name, source)
+	-- N5 (#217): a purchase may be the favour this merchant asked
+	if source == "merchant_buy" then self:FavourBought(i.npcID) end
 end
 
 local function Hook(id, target, name, fn)
@@ -4205,6 +4639,9 @@ local function Summary(self, kind, key)
 		if promises ~= "" then text = text .. " " .. promises end
 		local vow = self:VowText(rec)
 		if vow ~= "" then text = text .. " " .. vow end
+		-- N5 (#217): the nickname and the favours
+		local favours = self:FavourText(rec)
+		if favours ~= "" then text = text .. " " .. favours end
 		-- N6 (#218): their town, your title there, their rivals
 		local town = self:TownText(key, rec)
 		if town ~= "" then text = text .. " " .. town end
@@ -4398,6 +4835,20 @@ function R:OnInit()
 		NS.LivingMemory:RegisterKind("relation_oath", 4)
 		NS.LivingMemory:RegisterDescriber("relation_oath", function(e)
 			local text = NS:L("rel_mem_oath_broken")
+			return e.zone and (text .. " (" .. e.zone .. ")") or text
+		end)
+		-- N5 (#217): a favour done for an NPC, no name: "A favour done for a friend (Goldshire)"
+		NS.LivingMemory:RegisterKind("relation_favour", 3)
+		NS.LivingMemory:RegisterDescriber("relation_favour", function(e)
+			local text = NS:L("rel_mem_favour")
+			return e.zone and (text .. " (" .. e.zone .. ")") or text
+		end)
+		-- N5 (#217): a nickname an NPC gave the character (a curated word, no name): "A nickname: Anvil (Goldshire)"
+		NS.LivingMemory:RegisterKind("relation_nick", 3)
+		NS.LivingMemory:RegisterDescriber("relation_nick", function(e)
+			local nick = R:NickName(e.tags and e.tags[2])
+			if not nick then return nil end
+			local text = NS:L("rel_mem_nick", nick)
 			return e.zone and (text .. " (" .. e.zone .. ")") or text
 		end)
 		-- N3 (#215): the private vow at the top of a romance, no name: "A quiet vow (Goldshire)"

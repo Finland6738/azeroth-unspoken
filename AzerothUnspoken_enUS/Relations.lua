@@ -427,6 +427,15 @@ NS:AddTexts("enUS", {
 		"The vow is still there, unspoken, and it has not grown any lighter.",
 		"I promised in silence. Silence keeps its promises better than words do.",
 	},
+	-- N5 (#217): the nickname an NPC gave, and a favour still open
+	["rel.npc.nickname"] = {
+		"\"{nickname}.\" Only this one calls me that, and somehow I answer to it.",
+		{ "{nickname}. It started as a joke. It is not one any more.", depth = "natural" },
+	},
+	["rel.npc.favour.open"] = {
+		"There was a small thing I said I would do for this one. Small things are the easiest to let slip.",
+		{ "I still owe a favor here. A little one. Still owed.", depth = "natural" },
+	},
 	["rel.npc.innkeeper"] = {
 		"Here I am again. Is there still some of that stew, or do I settle for bread?",
 		"Always a pleasure. Got a room for someone who walked too far?",

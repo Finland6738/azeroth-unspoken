@@ -110,6 +110,24 @@ With an NPC who is already your **Friend** or more, a promise is **an oath**. Ke
 
 All of this is narration: an NPC never refuses you a quest or behaves differently in the game. The lines are **private**, rare (a few a session), never in a fight and never in chat. Turn them off with **Promise notices** in the Options tab; the promises and marks are still kept. The detail of an NPC shows your word: *Your word: 2 open, the oldest for 12 days (1 sworn as an oath).* and *Remembers the oath you broke (90% of it left).*
 
+### Favors
+
+An NPC who is already your **Friend** or more, and whose name the addon knows, may now and then ask you **a small favor** when you meet them. Only favors the game can check by itself:
+
+- **Come back tomorrow**: meet them again, from the next day on.
+- **Buy from me** (merchants): buy something from them on a later visit.
+- **Rest at my inn** (innkeepers): spend a night resting in their town, that is, log in or start resting there some hours later.
+- **Go and see a zone**: a zone on the same continent, right for your level. Entering it is noted (*So this is the place Elsa wanted you to see: Duskwood.*); the next time you meet them, the favor is done.
+
+A favor **completes by itself**: the NPC trusts you a little more and grows a little fonder, a line goes to the [[journal|Memory-and-Journal]] with no name (*A favor done for a friend (Goldshire)*), and the private narrator says it. Each NPC asks **one favor at a time**, with a few days to do it; a favor not done in time simply lapses, without a word and **without a cost**. A few a session at most, never more than three open at once, and the same NPC waits some days before asking again. A favor is asked only when the narrator can say it (never in a fight, never with the narrator silent). The NPC detail shows it: *A favor asked: go to Duskwood, then tell them of it (5 days left).* and *Favors done for them: 3.* Turn favors off with **Favors** in the Options tab.
+
+### Nicknames
+
+An NPC who is your **Close friend** or more, and whose name the addon knows, gives your character **a nickname** once: *Hilda calls you "Anvil" now. It seems to have stuck.* The nickname comes from short curated lists: first for your **deeds** with them (many quests handed to them, several favors done, a long road together), otherwise for your **class** and **race**, or one anyone could earn. In Italian it takes the form for your character's sex.
+
+The NPC keeps it and **uses it in their lines**: when you open their dialogue window, they may greet you by it (*Ah, Anvil! Your corner by the fire is free, as if it knew.*), and your inner voice may think of it now and then. The journal remembers the moment (*A nickname: Anvil (Goldshire)*) and the NPC detail shows it (*Calls you "Anvil".*). Turn nicknames off with **Nicknames** in the Options tab: they are no longer given, and the lines stop using them (the ones already given are kept).
+
+All of this is narration: an NPC never behaves differently in the game, and nothing goes to chat.
 ### Local reputation: word gets around, honorary titles, rivals
 
 Every NPC belongs to **a town**: the place where you meet them. In the countryside that is the village or spot the game names under the minimap (Goldshire, Sentinel Hill...; an inn counts as its village), and in a capital it is the whole city. Out in the open, and inside dungeons, there is no town.
@@ -253,6 +271,8 @@ Both have the red outline of the actions that lose data. The first click arms th
 | **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second step turn it on) |
 | **Level notices** | on | a short private line when an NPC moves to another level; rare, never in combat, never in chat |
 | **Promise notices** | on | a short private line when an NPC reminds you of a quest you promised, is relieved by a late one, or remembers an oath you broke; rare, never in combat, never in chat |
+| **Favors** | on | NPCs at Friend or above may ask a small favor the game can check by itself; it completes on its own |
+| **Nicknames** | on | NPCs at Close friend or above give your character a nickname, which their lines use |
 | **Town notices** | on | a short private line when word of you reached a newcomer, when a town gives you an honorary title, or when an NPC notices you grew close to their rival; rare, never in combat, never in chat |
 
 Under the options, a line about each consent and the privacy note, in the normal text size. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
@@ -305,6 +325,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - The first meeting with an NPC keeps only the time of day, the weather, the zone and your level: no text.
 - Romance reads the NPC's sex and creature type when you talk to them and keeps them only until you log out. The vow is a mark on the NPC's record and a journal line with no name.
 - A promise keeps only the quest's number, the NPC's number and the times; an oath also keeps the number of the map where you swore it. Never a quest title or text.
+- A favor keeps which favor it is, when it was asked and until when, and the zone or map it is about; a nickname keeps only its number in the list. The NPC also counts the quests you handed to them and the favors you did for them.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
 
@@ -324,6 +345,8 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Share with the account | off | Options tab, `/au relationships share` |
 | Level notices | on | Options tab |
 | Promise notices | on | Options tab |
+| Favors | on | Options tab |
+| Nicknames | on | Options tab |
 | Town notices | on | Options tab |
 
 ## What you will see
@@ -334,6 +357,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 - Now and then a short private line when an NPC reaches another level, and a memory of the first meeting when you see them again.
 - With the attraction axis on, very rarely, a romance with an NPC of the opposite sex, and once a private vow.
 - A reminder from an NPC who is still waiting for a quest you took, their relief when you come back late, and the long memory of an oath you broke.
+- Now and then a small favor asked by a friend, done by itself when you do it; and from a close friend, once, a nickname they use from then on.
 - Newcomers in a town who have heard of you, an honorary title in a town that esteems you, and a rival who notices.
 
 ## Tips

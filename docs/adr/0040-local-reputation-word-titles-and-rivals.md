@@ -1,4 +1,4 @@
-# 0039. Local reputation: word gets around, honorary titles and NPC rivals
+# 0040. Local reputation: word gets around, honorary titles and NPC rivals
 
 - Status: Accepted
 - Date: 2026-11-01 (issue #218, step N6 of the NPC relationships milestone; owner decisions of 2026-11-01)
@@ -44,9 +44,10 @@ NPC never behaves differently in the game), never public chat (D16), the numbers
 7. **Conditions and a placeholder for the content.** `townTitle` and `townWord` need no person; `relRival` is a
    relationship condition. `{title}` gives the title held where the character stands and is used by inner-voice lines
    only. Four recall intentions for `relation_npc` use them; more come with N9 (#221).
-8. **`relationships.version` 5.** `towns` and the NPC fields `town`, `heard`, `rival` bump the internal version: version 4
-   data needs no migration, and an older addon treats version 5 as read-only (ADR 0006). At most `towns.max` towns are
-   kept (the oldest without a title go first); resetting the NPCs forgets the towns.
+8. **`relationships.version` 6.** `towns` and the NPC fields `town`, `heard`, `rival` bump the internal version, after
+   N5's version 5 (ADR 0039: favours and nicknames). Version 4 and version 5 data need no migration (the new fields start
+   absent; N5's fields are kept), and an older addon treats version 6 as read-only (ADR 0006). At most `towns.max` towns
+   are kept (the oldest without a title go first); resetting the NPCs forgets the towns.
 
 ## Alternatives considered
 
@@ -73,7 +74,7 @@ NPC never behaves differently in the game), never public chat (D16), the numbers
 
 ## References
 
-- Issue #218; ADR 0006, 0018, 0036, 0038.
+- Issue #218; ADR 0006, 0018, 0036, 0038, 0039.
 - `Systems/Relationships.lua` (local reputation), `Data/Relationships.lua` (`towns`, `rivalries`, `rival_noticed`),
   `Data/NPCs.lua` (rivalries), `Engine/RuleEngine.lua` (conditions), `Engine/TemplateRenderer.lua` (`{title}`),
   `UI/RelationsFrame.lua` (detail, option), `Data/RegistryRelations.lua` (recall lines).

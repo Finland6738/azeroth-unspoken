@@ -28,6 +28,8 @@ local function Fresh()
 	R.candidates, R.dismissed, R.session = {}, {}, { seen = {}, offered = {} }
 	R.interaction, R.questGiver, R.questTaker, R.group, R.groupDirty = nil, nil, nil, nil, true
 	for k, v in pairs(Config.defaults.relations) do NS.db.relations[k] = v end
+	-- N5 (#217): favours and nicknames have their own tests (TestFavours.lua); here they would add notices
+	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	P.target, P.npc, P.party, P.group, P.raid = nil, nil, nil, false, false
 	P.zone, P.combat, P.dead, P.hp, P.hpMax = "Durotar", false, false, 100, 100
@@ -890,7 +892,7 @@ T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 				for _, v in ipairs(p.text[lang]) do
 					v = Engine.VariantView(v)
 					T.ok(v.ok, id .. " " .. lang .. ": variante valida")
-					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend", otherSex = "female", otherName = "Pip",
+					local text = Engine:Render(v.t, lang, { target = "Pip", relationLabel = "amico", relation = "friend", otherSex = "female", otherName = "Pip", relNick = "Anvil",
 						townTitleName = "Friend of Goldshire" }, nil)
 					T.ok(text ~= nil and not text:find("[{}]"), id .. " " .. lang .. ": si compone")
 					T.ok(#v.t < 200, id .. " " .. lang .. ": breve")
@@ -932,7 +934,7 @@ T.run("migrazione dello schema 5", function()
 	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "personaggio a 5")
 	T.eq(AzerothUnspokenDB.schemaVersion, 7, "account a 5")
 	local d = AzerothUnspokenCharacterDB.relationships
-	T.ok(d and d.version == 5 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
+	T.ok(d and d.version == 6 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
 	T.eq(NS.db.relations.autoRegisterPlayers, false, "registrazione automatica spenta nelle impostazioni nuove")
 	T.eq(NS.db.relations.attraction, false, "attrazione spenta"); T.eq(NS.db.modules.relations, true, "modulo acceso")
 	T.eq(NS.db.intensity, 33, "impostazioni precedenti conservate")
@@ -1571,14 +1573,14 @@ end)
 -- #50: i dati di una versione interna più nuova non si portano alla versione 1 e non si perdono campi
 T.run("relazioni di una versione più nuova: sola lettura, dati intatti", function()
 	Fresh()
-	NS.cdb.relationships = { version = 6, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
+	NS.cdb.relationships = { version = 7, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
 		players = { ["Ale-Reame"] = { seen = { first = 1, last = 2, count = 1 }, nickname = "futuro" } } }
 	NS.Diagnostics.errors = {}
 	R.readOnly = false
 	local dropped = R:Sanitize()
 	T.eq(dropped, 0, "niente scartato")
 	T.eq(R.readOnly, true, "sola lettura")
-	T.eq(NS.cdb.relationships.version, 6, "la versione resta la 6")
+	T.eq(NS.cdb.relationships.version, 7, "la versione resta la 7")
 	T.eq(NS.cdb.relationships.npcs[1234].mood, "futuro", "campo sconosciuto di un NPC conservato")
 	T.eq(NS.cdb.relationships.players["Ale-Reame"].nickname, "futuro", "campo sconosciuto di un giocatore conservato")
 	local logged = false

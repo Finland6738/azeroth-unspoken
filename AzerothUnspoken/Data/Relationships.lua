@@ -154,6 +154,9 @@ NS.Relationships:RegisterData({
 		promise_broken = { gain = { trust = -6, respect = -2 }, decay = 0.8 },
 		oath_broken = { gain = { trust = -35, loyalty = -25, affection = -20, respect = -10 }, decay = 1 },
 		oath_kept = { gain = { trust = 3, loyalty = 4 }, decay = 0.7, cap = { trust = 6, loyalty = 8 } },
+		-- N5 (#217): a favour done for an NPC (not a meeting, like the rows above)
+		favour_done = { gain = { trust = 4, affection = 4, loyalty = 2 }, decay = 0.7,
+			cap = { trust = 8, affection = 8, loyalty = 4 } },
 		-- N6 (#218): an NPC notices that you grew close to their rival (`rivalries` below). Not a meeting either.
 		rival_noticed = { gain = { affection = -4, trust = -2 }, decay = 1 },
 	},
@@ -242,6 +245,97 @@ NS.Relationships:RegisterData({
 		decay = 0.6, cap = 2,
 		humanoid = { id = 7, names = { "Humanoid", "Umanoide" } },
 		vow = { attraction = 80, label = "lover", variants = 2 },
+	},
+
+	-- N5 (#217): favours. A named NPC at `band` or above may ask a small favour when you meet them (with `chance`), one
+	-- the game can check by itself through events the addon already listens to. It completes by itself: a reward in the
+	-- relationship (the `reward` row of increments, or the template's own) and a journal line. At most one open favour
+	-- per NPC and `max` in all; `perSession` asks in a session; after a favour (done or lapsed) the same NPC waits
+	-- `restDays` days before asking again. A favour not done within its `days` lapses without a word and without a cost.
+	-- Narration only: the NPC never behaves differently in the game, and nothing goes to chat.
+	-- Templates: `id` (the texts rel_favour_ask_<id>_N, rel_favour_done_<id>_N and rel_favour_what_<id> of
+	-- Data/<lang>/RelationsUI.lua, `variants` each), `kind` (what the engine checks, below), `days` (the time to do it),
+	-- `wait` (hours before it can be done), `roles` (only NPCs with one of these roles ask it; none = anyone).
+	--   return  come back: a meeting with the same NPC from `wait` hours on ("come back tomorrow")
+	--   buy     buy from me: a purchase from the same NPC from `wait` hours on (only a merchant's role asks it)
+	--   rest    rest at my inn: the character is resting on the map where it was asked, from `wait` hours on (at a login
+	--           or when the rested state begins), as when you stay the night (only an innkeeper asks it)
+	--   visit   go to a zone of `places` (on the asking NPC's continent, for the character's level, not the zone you
+	--           are in), then come back to the NPC: entering the zone is noted, the next meeting completes it
+	-- `places`: zone names of the English client (as in Data/Places.lua, which gives the continent) and a level range.
+	favours = {
+		band = "friend", chance = 0.35, perSession = 2, max = 3, restDays = 3, variants = 2, reward = "favour_done",
+		templates = {
+			{ id = "return", kind = "return", days = 3, wait = 18 },
+			{ id = "buy", kind = "buy", days = 4, wait = 1, roles = { "merchant" } },
+			{ id = "rest", kind = "rest", days = 3, wait = 6, roles = { "innkeeper" } },
+			{ id = "visit", kind = "visit", days = 7 },
+		},
+		places = {
+			{ zone = "Elwynn Forest", min = 1, max = 12 }, { zone = "Dun Morogh", min = 1, max = 12 },
+			{ zone = "Tirisfal Glades", min = 1, max = 12 }, { zone = "Westfall", min = 9, max = 20 },
+			{ zone = "Loch Modan", min = 9, max = 20 }, { zone = "Silverpine Forest", min = 9, max = 20 },
+			{ zone = "Redridge Mountains", min = 14, max = 26 }, { zone = "Duskwood", min = 18, max = 32 },
+			{ zone = "Wetlands", min = 20, max = 32 }, { zone = "Hillsbrad Foothills", min = 20, max = 34 },
+			{ zone = "Arathi Highlands", min = 28, max = 42 }, { zone = "Stranglethorn Vale", min = 30, max = 47 },
+			{ zone = "The Hinterlands", min = 40, max = 52 }, { zone = "Stormwind City", min = 1, max = 60 },
+			{ zone = "Ironforge", min = 1, max = 60 }, { zone = "Undercity", min = 1, max = 60 },
+			{ zone = "Durotar", min = 1, max = 12 }, { zone = "Mulgore", min = 1, max = 12 },
+			{ zone = "Teldrassil", min = 1, max = 12 }, { zone = "Darkshore", min = 10, max = 22 },
+			{ zone = "The Barrens", min = 10, max = 27 }, { zone = "Ashenvale", min = 18, max = 32 },
+			{ zone = "Stonetalon Mountains", min = 15, max = 28 }, { zone = "Thousand Needles", min = 24, max = 37 },
+			{ zone = "Desolace", min = 30, max = 42 }, { zone = "Dustwallow Marsh", min = 35, max = 47 },
+			{ zone = "Feralas", min = 40, max = 52 }, { zone = "Tanaris", min = 40, max = 52 },
+		},
+	},
+
+	-- N5 (#217): nicknames. A named NPC at `band` or above gives the character a nickname once, when you meet them: the
+	-- private narrator says it and the journal keeps it. It is kept with the NPC (its id) and their lines use it with
+	-- the placeholder {nickname} (the condition relNick). Chosen from curated lists: the deeds first (every group whose
+	-- `when` holds: `quests` handed to this NPC, `favours` done for them, the character's `level`, `days` since you
+	-- met), otherwise the lists of the character's class and race together with `any`. The same NPC always picks the
+	-- same entry of a list. A language with gender writes { masculine, feminine }; the character's sex chooses.
+	nicknames = {
+		band = "close", variants = 2,
+		deeds = {
+			{ when = { favours = 3 }, names = {
+				{ id = "good_turn", en = "Good Turn", it = "Buonafatta" },
+				{ id = "ready_hand", en = "Ready-Hand", it = "Manolesta" } } },
+			{ when = { quests = 8 }, names = {
+				{ id = "errand_runner", en = "Errand-Runner", it = { "Galoppino", "Galoppina" } },
+				{ id = "never_late", en = "Never-Late", it = "Puntuale" } } },
+			{ when = { level = 50, days = 60 }, names = {
+				{ id = "old_road", en = "Old Road", it = "Vecchia Strada" } } },
+		},
+		classes = {
+			WARRIOR = { { id = "anvil", en = "Anvil", it = "Incudine" }, { id = "iron_shins", en = "Iron-Shins", it = "Stinchi di Ferro" } },
+			PALADIN = { { id = "lantern", en = "Lantern", it = "Lanterna" }, { id = "bright_shield", en = "Bright-Shield", it = "Scudo Lucente" } },
+			HUNTER = { { id = "far_eye", en = "Far-Eye", it = "Occhio Lungo" }, { id = "quiet_step", en = "Quiet-Step", it = "Passo Lieve" } },
+			ROGUE = { { id = "shadow_coin", en = "Shadow-Coin", it = "Moneta d'Ombra" }, { id = "light_fingers", en = "Light-Fingers", it = "Dita Leste" } },
+			PRIEST = { { id = "candle", en = "Candle", it = "Candela" }, { id = "kind_word", en = "Kind-Word", it = "Buona Parola" } },
+			SHAMAN = { { id = "storm_child", en = "Storm-Child", it = { "Figlio della Tempesta", "Figlia della Tempesta" } },
+				{ id = "stone_listener", en = "Stone-Listener", it = "Ascoltapietre" } },
+			MAGE = { { id = "spark", en = "Spark", it = "Scintilla" }, { id = "ink_sleeves", en = "Ink-Sleeves", it = "Maniche d'Inchiostro" } },
+			WARLOCK = { { id = "ember", en = "Ember", it = "Brace" }, { id = "night_reader", en = "Night-Reader", it = { "Lettore Notturno", "Lettrice Notturna" } } },
+			DRUID = { { id = "oak_heart", en = "Oak-Heart", it = "Cuor di Quercia" }, { id = "moss_cloak", en = "Moss-Cloak", it = "Manto di Muschio" } },
+		},
+		races = {
+			Human = { { id = "plough_born", en = "Plough-Born", it = { "Figlio dei Campi", "Figlia dei Campi" } } },
+			Dwarf = { { id = "stout_heart", en = "Stout-Heart", it = "Cuor Saldo" } },
+			NightElf = { { id = "moon_walker", en = "Moon-Walker", it = "Camminaluna" } },
+			Gnome = { { id = "cog", en = "Cog", it = "Ingranaggio" } },
+			Orc = { { id = "red_tusk", en = "Red-Tusk", it = "Zanna Rossa" } },
+			Scourge = { { id = "cold_hands", en = "Cold-Hands", it = "Mani Fredde" } },
+			Tauren = { { id = "tall_grass", en = "Tall-Grass", it = "Erba Alta" } },
+			Troll = { { id = "loose_tide", en = "Loose-Tide", it = "Marea Sciolta" } },
+			BloodElf = { { id = "gilded", en = "Gilded", it = { "Dorato", "Dorata" } } },
+			Draenei = { { id = "far_star", en = "Far-Star", it = "Stella Lontana" } },
+		},
+		any = {
+			{ id = "wanderer", en = "Wanderer", it = "Viandante" },
+			{ id = "dust_boots", en = "Dust-Boots", it = "Stivali Impolverati" },
+			{ id = "stranger_no_more", en = "Stranger-No-More", it = { "Non Più Straniero", "Non Più Straniera" } },
+		},
 	},
 
 	-- N6 (#218): local reputation. Narration only: nothing here changes how anyone behaves in the game.

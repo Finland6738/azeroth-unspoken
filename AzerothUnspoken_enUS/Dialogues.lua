@@ -26,6 +26,10 @@ NS:AddTexts("enUS", {
 		"I see you here often. A face that comes back does one good.",
 		"Well met again. Your usual corner is free, if you like.",
 	},
+	["npcd.innkeeper.open.nick1"] = {
+		"Ah, {nickname}! Your corner by the fire is free, as if it knew.",
+		"{nickname}, back again. Sit, sit: the stew will not keep.",
+	},
 	["npcd.innkeeper.open.stranger1"] = {
 		"I don't know you yet. But the fire warms everyone alike.",
 		"New around here? Then let's get acquainted over a mug.",
@@ -246,6 +250,10 @@ NS:AddTexts("enUS", {
 		"My favorite customer! Well, one of the few who comes back.",
 		"Welcome back. The stall is the same, but the goods change more often than you'd think.",
 	},
+	["npcd.merchant.open.nick1"] = {
+		"{nickname}! I had a feeling you would turn up today.",
+		"Look who it is: {nickname}. For you I will even dust the good shelf.",
+	},
 	["npcd.merchant.open.stranger1"] = {
 		"New around here? A word of advice: the stall is honest, the price less so. Kidding. Mostly.",
 		"Never seen you before: good, new customers still have all their coins.",
@@ -398,6 +406,10 @@ NS:AddTexts("enUS", {
 		"I recognize you. So far you've bothered nobody, which suits me.",
 		"You again. Good sign: trouble doesn't come back to say hello.",
 	},
+	["npcd.guard.open.nick1"] = {
+		"{nickname}. Quiet watch so far. Keep it that way.",
+		"Evening, {nickname}. Nothing to report, which is how I like it.",
+	},
 	["npcd.guard.open.stranger1"] = {
 		"I don't know you. No trouble, as long as you bring none.",
 		"New? Then a single rule: be kind and we'll get along.",
@@ -534,6 +546,10 @@ NS:AddTexts("enUS", {
 		"I know you: the one who never looks down. Or always does, and pretends not.",
 		"Welcome back up here. The beast has sniffed you and doesn't object.",
 	},
+	["npcd.flightmaster.open.nick1"] = {
+		"{nickname}! The beast lifted its head when you came up the path.",
+		"Up again, {nickname}? The winds are kind today.",
+	},
 	["npcd.flightmaster.open.jovial1"] = {
 		"Up, up! The sky is free, the ticket a little less!",
 		"Where you're going you arrive flying head up. If you land, head up too!",
@@ -609,6 +625,10 @@ NS:AddTexts("enUS", {
 	["npcd.trainer.open.known1"] = {
 		"Here you are again. You've the look of someone who practiced, or at least thought about it.",
 		"Have you brought progress or excuses? Both are welcome, but only the first is useful.",
+	},
+	["npcd.trainer.open.nick1"] = {
+		"{nickname}. Let us see whether the road has taught you anything.",
+		"Here comes {nickname}. Show me what you have kept, and what you have lost.",
 	},
 	["npcd.trainer.open.stranger1"] = {
 		"I don't know you: good, I've no bad habits to correct. Yet.",

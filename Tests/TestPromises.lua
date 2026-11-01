@@ -29,6 +29,8 @@ local function Fresh()
 	R.interaction, R.questGiver, R.questTaker, R.group, R.groupDirty = nil, nil, nil, nil, true
 	NS.Interlocutor.roles = {}
 	for k, v in pairs(Config.defaults.relations) do NS.db.relations[k] = v end
+	-- N5 (#217): favours and nicknames have their own tests (TestFavours.lua); here they would add notices
+	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	P.target, P.npc, P.party, P.group, P.raid = nil, nil, nil, false, false
 	P.zone, P.combat, P.dead, P.hp, P.hpMax, P.mapID = "Elwynn Forest", false, false, 100, 100, ELWYNN

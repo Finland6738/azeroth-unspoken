@@ -1097,6 +1097,50 @@ il client finto.
     - **Cosa aspettarti:** in combattimento nessuna riga (non aspetta la fine: si perde); con l'opzione spenta nessuna
       riga, ma la promessa resta nel dettaglio. Nulla in chat in nessun caso.
 
+## N5: favori e soprannomi (aggiunto dall'issue #217)
+
+Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Niente di nuovo dal client: i favori usano
+`NPC_INTERACT`, l'aggancio a `BuyMerchantItem`, `PLAYER_UPDATE_RESTING` / `IsResting`, `ZONE_CHANGED_NEW_AREA` e
+`PLAYER_ENTERING_WORLD` con `GetRealZoneText` e `C_Map.GetBestMapForUnit`, già usati. Provato solo con il client finto.
+Un favore si chiede con una probabilità (circa un incontro su tre): alcuni passi richiedono qualche incontro.
+
+- **N5.1 · Un favore chiesto.** Parla qualche volta (anche in giorni diversi) con un NPC con un nome che è già **Amico**
+  (livello 6 o più nel dettaglio).
+    - **Cosa aspettarti:** prima o poi una riga privata: «<nome> vorrebbe rivederti domani. …» (o un altro favore); il
+      dettaglio dice «Un favore chiesto: … (restano <n> giorni).». Nessun favore da uno sconosciuto, nessuno in
+      combattimento.
+    - **Cosa riportare:** il testo, quanti incontri ci sono voluti, quale NPC (ruolo).
+- **N5.2 · Torna domani.** Con un favore «tornare» aperto, parla di nuovo con l'NPC il giorno dopo (18 ore o più).
+    - **Cosa aspettarti:** «<nome> è felice di rivederti, come avevi promesso.» (o la seconda variante); nel diario «Un
+      favore fatto a un amico (<zona>)», senza nomi; il favore sparisce dal dettaglio e compare «Favori fatti per questa
+      persona: 1.».
+- **N5.3 · Compra da me.** Con un mercante Amico, aspetta il favore «comprare», poi in una visita successiva (un'ora o
+  più) compra qualcosa da lui.
+    - **Cosa aspettarti:** «<nome> conta le monete due volte, …» subito dopo l'acquisto. Un acquisto nella stessa visita, o
+      da un altro mercante, non conta.
+    - **Cosa riportare:** se la riga arriva, e la riga `hook:BuyMerchantItem` di `/au debug`.
+- **N5.4 · Riposa nella mia locanda.** Con un locandiere Amico, aspetta il favore «riposare», esci dal gioco in quella
+  locanda e rientra sei o più ore dopo.
+    - **Cosa aspettarti:** all'accesso, «Hai dormito sotto il tetto di <nome>, …». Entrare altrove non conta.
+    - **Cosa riportare:** se `IsResting` è già vero all'accesso (la riga arriva subito) o solo quando rientri nella
+      locanda.
+- **N5.5 · Vai a vedere una zona.** Con un favore «visitare» («… se la tua strada passa mai per <zona> …»), vai in quella
+  zona.
+    - **Cosa aspettarti:** entrando, «Ecco il posto che <nome> voleva che vedessi: <zona>. …»; la volta dopo che parli con
+      l'NPC, «<nome> ascolta il tuo racconto di <zona> con gli occhi che brillano.»
+    - **Cosa riportare:** la zona nominata (deve essere sul tuo continente e adatta al tuo livello) e se l'ingresso è
+      stato notato.
+- **N5.6 · Un soprannome.** Porta un NPC con un nome a **Grande amico** (livello 8).
+    - **Cosa aspettarti:** una volta, «Ora <nome> ti chiama "<soprannome>". …»; il diario dice «Un soprannome:
+      <soprannome> (<zona>)»; il dettaglio dice «Ti chiama "<soprannome>".»; se l'NPC ha la finestra di dialogo
+      (locandiere, mercante, guardia, maestro di volo, addestratore), la battuta d'apertura a volte ti saluta con il
+      soprannome. In italiano il soprannome prende la forma del sesso del personaggio.
+    - **Cosa riportare:** il soprannome e se si addice al personaggio.
+- **N5.7 · Scadenza, opzioni, riservatezza.** Lascia scadere un favore senza farlo, poi parla con l'NPC. Spegni **Favori**
+  e **Soprannomi** nella scheda Opzioni.
+    - **Cosa aspettarti:** il favore scaduto sparisce senza una riga e senza che l'NPC ti voglia meno bene; con le opzioni
+      spente nessun nuovo favore o soprannome, e le battute dei dialoghi smettono di usare il soprannome. Nulla in chat in
+      nessun caso.
 ## N6: le voci corrono, titoli d'onore, rivali (aggiunto dall'issue #218)
 
 Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Funzioni lette dall'addon per questa

@@ -418,6 +418,7 @@ local OPTIONS = {
 	{ "npcAuto", "rel_opt_npc" }, { "proposePlayers", "rel_opt_propose" }, { "autoRegisterPlayers", "rel_opt_auto" },
 	{ "attraction", "rel_opt_attraction" }, { "recognizeTarget", "rel_opt_target" }, { "proximity", "rel_opt_proximity" },
 	{ "sharePlayers", "rel_opt_share" }, { "levelNotices", "rel_opt_levels" }, { "promiseNotices", "rel_opt_promises" },
+	{ "favours", "rel_opt_favours" }, { "nicknames", "rel_opt_nicknames" },
 	{ "localNotices", "rel_opt_local" },
 }
 
@@ -698,12 +699,14 @@ local function RefreshDetail()
 	if not isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_npc"))
 		frame.dSeenLine:SetText(R:LevelText(info) .. "\n" .. R:TemperText(s.key, rec))
-		-- N3 (#215): the private vow, when the character made it; N4 (#216): the word given to the NPC; N6 (#218): their
-		-- town, your title there and their rivals
-		local vow, promises, town = R:VowText(rec), R:PromiseText(s.key, rec), R:TownText(s.key, rec)
+		-- N3 (#215): the private vow, when the character made it; N4 (#216): the word given to the NPC; N5 (#217): the
+		-- nickname and the favours; N6 (#218): their town, your title there and their rivals
+		local vow, promises, favours = R:VowText(rec), R:PromiseText(s.key, rec), R:FavourText(rec)
+		local town = R:TownText(s.key, rec)
 		local extra = {}
 		if vow ~= "" then table.insert(extra, vow) end
 		if promises ~= "" then table.insert(extra, promises) end
+		if favours ~= "" then table.insert(extra, favours) end
 		if town ~= "" then table.insert(extra, town) end
 		frame.dSeenFacts:SetText(R:MetText(rec, Stamp) .. (#extra > 0 and ("\n" .. table.concat(extra, "\n")) or ""))
 	end

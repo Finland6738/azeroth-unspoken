@@ -46,7 +46,8 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0036](0036-npc-temperament-visible-levels-and-the-first-meeting.md) | NPC temperament, visible levels and the first meeting | accepted |
 | [0037](0037-romance-with-npcs-opposite-sex-and-the-vow.md) | Romance with NPCs: opposite sex only, slow attraction and a private vow | accepted |
 | [0038](0038-promises-oaths-and-the-oathbreaker-mark.md) | Promises, oaths and the oathbreaker mark | accepted |
-| [0039](0039-local-reputation-word-titles-and-rivals.md) | Local reputation: word gets around, honorary titles and NPC rivals | accepted |
+| [0039](0039-favours-and-nicknames.md) | Favours the game can check, and nicknames from curated lists | accepted |
+| [0040](0040-local-reputation-word-titles-and-rivals.md) | Local reputation: word gets around, honorary titles and NPC rivals | accepted |
 
 ## Pending decisions
 

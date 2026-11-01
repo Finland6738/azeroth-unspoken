@@ -252,6 +252,10 @@ local SPECIAL = {
 	oathbreakerHere = function(v, ctx) return (ctx.oathbreakerHere == true) == v end,
 	-- the private vow to an NPC at the top of a romance (N3, #215): ctx.relVowed
 	relVowed = function(v, ctx) return (ctx.relVowed == true) == v end,
+	-- favours and nicknames (N5, #217): ctx.relFavour (the NPC asked a favour still open), ctx.relNick (the nickname
+	-- the NPC gave the character, the placeholder {nickname})
+	relFavour = function(v, ctx) return (ctx.relFavour == true) == v end,
+	relNick = function(v, ctx) return (ctx.relNick ~= nil) == v end,
 	-- local reputation (N6, #218): ctx.townTitle (the honorary title held where the character stands), ctx.townWord
 	-- (good | bad: the word of them there) need no person; ctx.relRival (jealous | ironic: the NPC of the interaction
 	-- noticed you grew close to their rival) is a relationship condition
@@ -425,6 +429,8 @@ Engine.CONDITIONS = {
 	relPromiseDays = "numrange", relOathbroken = "bool", oathbreakerHere = "bool",
 	-- the private vow to an NPC (N3, #215)
 	relVowed = "bool",
+	-- favours and nicknames (N5, #217)
+	relFavour = "bool", relNick = "bool",
 	-- local reputation (N6, #218)
 	townTitle = "str", townWord = "str", relRival = "str",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
@@ -543,7 +549,7 @@ Engine.SUB_VALUES = {
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
 	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true,
 	relMetLevels = true, relMetDays = true, relMetTime = true, relMetWeather = true, relVowed = true,
-	relPromiseDays = true, relOathbroken = true, relRival = true }
+	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true, relRival = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

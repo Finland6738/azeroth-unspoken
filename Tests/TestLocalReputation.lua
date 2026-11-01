@@ -31,6 +31,8 @@ local function Fresh()
 	R.interaction, R.questGiver, R.questTaker, R.group, R.groupDirty, R.localQueue = nil, nil, nil, nil, true, nil
 	NS.Interlocutor.roles = {}
 	for k, v in pairs(Config.defaults.relations) do NS.db.relations[k] = v end
+	-- N5's favours and nicknames have notices of their own: off here, so the notices counted are this step's
+	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	P.target, P.npc, P.party, P.group, P.raid, P.instance = nil, nil, nil, false, false, nil
 	P.zone, P.subzone, P.combat, P.dead, P.hp, P.hpMax, P.mapID = "Elwynn Forest", "Goldshire", false, false, 100, 100, ELWYNN
@@ -461,9 +463,33 @@ T.run("the conditions: townTitle, townWord, relRival", function()
 	end
 end)
 
-T.run("saved data: version 5, towns and NPC fields cleaned, reset", function()
+T.run("saved data: version 4 and version 5 (N5) data move to version 6, nothing lost", function()
+	for _, v in ipairs({ 4, 5 }) do
+		Fresh()
+		NS.cdb.relationships = { version = v, players = {}, promises = {}, marks = {},
+			npcs = { [7001] = { first = 1, last = 2, count = 3, name = "Marshal Dughan", trust = 40, oathT = time() - DAY,
+				favour = { k = "return", t = time() - 60, e = time() + DAY }, favourN = 2, quests = 4, nick = "anvil" } } }
+		R.readOnly = false
+		R:Sanitize()
+		local d, rec = NS.cdb.relationships, NS.cdb.relationships.npcs[7001]
+		T.eq(d.version, 6, "version " .. v .. " moves to 6")
+		T.eq(R.readOnly, false, "version " .. v .. ": writable")
+		T.ok(rec.trust == 40 and rec.oathT ~= nil, "version " .. v .. ": the axes and N4's mark kept")
+		if v == 5 then
+			T.ok(rec.favour and rec.favour.k == "return" and rec.favourN == 2 and rec.quests == 4 and rec.nick == "anvil",
+				"version 5: N5's favour, counters and nickname kept")
+		end
+		T.ok(rec.town == nil and rec.heard == nil and rec.rival == nil and next(d.towns) == nil, "version " .. v .. ": no town yet")
+		-- the first meeting after the upgrade puts the NPC in a town and keeps the rest
+		Talk(7001, "Marshal Dughan")
+		T.eq(rec.town, "Goldshire", "version " .. v .. ": now of Goldshire")
+		if v == 5 then T.eq(rec.nick, "anvil", "the nickname still there") end
+	end
+end)
+
+T.run("saved data: version 6, towns and NPC fields cleaned, reset", function()
 	Fresh()
-	T.eq(R.VERSION, 5, "relationships.version 5")
+	T.eq(R.VERSION, 6, "relationships.version 6 (N5 made it 5)")
 	local d = NS.cdb.relationships
 	d.npcs[7001] = { first = 1, last = 2, count = 1, town = "Goldshire\1", heard = { trust = 99, familiarity = 5, bogus = 1, loyalty = 0 },
 		rival = { npc = 295, t = time() + 999 } }
