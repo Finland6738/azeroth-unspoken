@@ -370,6 +370,16 @@ English counterpart of the section **N5** of [G1_checklist.md](G1_checklist.md).
 - **N5.5 · Go and see a zone.** With a "visit" favor ("... if your road ever passes through <zone> ..."), go to that zone. **Expect:** on entering it, "So this is the place <name> wanted you to see: <zone>. ..."; the next time you talk to the NPC, "<name> listens to your tale of <zone> with shining eyes." **Report:** the zone named (it must be on your continent and right for your level) and whether entering it was noticed.
 - **N5.6 · A nickname.** Bring a named NPC to **Close friend** (level 8). **Expect:** once, "<name> calls you "<nickname>" now. ..."; the journal says "A nickname: <nickname> (<zone>)"; the detail says "Calls you "<nickname>"."; if the NPC has a dialogue window (innkeeper, merchant, guard, flight master, trainer), its opening line sometimes greets you by the nickname. In Italian (`/au lang it`) the nickname takes the form for your character's sex. **Report:** the nickname and whether it suits the character.
 - **N5.7 · Lapse, options, privacy.** Leave a favor undone past its days, then talk to the NPC. Turn **Favors** and **Nicknames** off in the Options tab. **Expect:** the lapsed favor disappears without a line and without the NPC liking you less; with the options off no new favors or nicknames, and the dialogue lines stop using the nickname. Nothing in chat, ever.
+## N6: word gets around, honorary titles, rivals (issue #218)
+
+English counterpart of the section **N6** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: no NPC changes its behaviour in the game, and nothing goes to chat. Read by the addon for this part, already used elsewhere and all in the Forever dump: `GetSubZoneText`, `GetRealZoneText`, `IsInInstance`, `C_Map.GetBestMapForUnit`. Tried with the mock client only.
+
+- **N6.1 · The town.** In Goldshire talk to an NPC, then open them in `/au relationships`. **Expect:** under **What the addon knows**, "Their town: Goldshire, where word of you is ...". Inside the inn (Lion's Pride Inn) the town stays Goldshire. In Stormwind the town is "Stormwind City" in every district. **Report:** the name shown inside the inn and in two districts of a capital; an NPC out in the open must have no town.
+- **N6.2 · Word gets around.** Hand in a few quests to an NPC of a village, then talk for the first time to another NPC of the same village. **Expect:** sometimes a private line ("<name> has heard of you before you say a word: the talk in <town> has been kind."); in the new NPC's detail some trust without having done anything with them. An NPC of another village knows nothing. **Report:** whether the line shows, and the new NPC's trust.
+- **N6.3 · An honorary title.** Make three NPCs of the same village **Friends** (or hand in many quests there). **Expect:** once, "In <town>, people have begun to call you Friend of <town>."; in the journal "An honorary title: Friend of <town>"; the detail says "There you are Friend of <town>.". Outside the village the narrator does not use it. **Report:** how long it takes, and whether the Italian form follows the character's sex (Amico/Amica).
+- **N6.4 · A broken oath withholds the title.** In the village of the title, break an oath (step N4.6). **Expect:** the detail says "There you were ..., but the town withholds it while it remembers a broken oath."
+- **N6.5 · Rivals.** Become a **Friend** of Innkeeper Farley (Goldshire), then talk to Innkeeper Allison (Stormwind). **Expect:** once, a jealous line ("A cooler welcome from Innkeeper Allison: word is you favour Innkeeper Farley these days.") and a little less affection in her detail, which says "Rival of: Innkeeper Farley.". The same with Smith Argus and Corina Steele in Goldshire. Nothing the second time. **Report:** the npcIDs from `/au who` if nothing happens (the numbers come from Classic Era).
+- **N6.6 · Never in combat, never in chat, one line per meeting.** Turn off **Town notices** in the Options tab. **Expect:** no line with the option off, but the word and the titles stay in the detail and the export; never more than one town line in a meeting; nothing in chat.
 
 ## Summary form (copy and fill in)
 
@@ -430,4 +440,8 @@ N4 turn-in .............. abandon line after a turn-in? (must be NO) ___  to ano
 N4 reminder/relief ...... reminder after 7 days? ___  relief? ___  never when ready? ___
 N4 oath ................. "sworn"? ___  broken: line, level down, journal? ___  the NPC remembers? ___  the zone (name) ______
 N4 silence .............. none in combat? ___  none with the option off? ___  nothing in chat? ___
+N6 town ................. inside the inn ______  in the districts ______  none in the open? ___
+N6 word ................. line to a new NPC? ___  trust without doing anything? ___  nothing in another village? ___
+N6 title ................ line? ___  journal? ___  right gender? ___  withheld after a broken oath? ___
+N6 rivals ............... Allison notices Farley? ___  Corina notices Argus? ___  only once? ___  nothing in chat? ___
 ```

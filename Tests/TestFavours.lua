@@ -542,7 +542,7 @@ T.run("favours and nicknames are saved with the NPC, cleaned, and keep the NPC i
 	rec.favourN, rec.quests, rec.nick, rec.favourT = 2, 9, "anvil", time() - DAY
 	R:Sanitize()
 	rec = Npc(8200)
-	T.eq(NS.cdb.relationships.version, 5, "relationships.version 5")
+	T.eq(NS.cdb.relationships.version, R.VERSION, "relationships.version 5 or later (N6 made it 6)")
 	T.ok(rec.favour and rec.favour.k == "visit" and rec.favour.zone == "Duskwood" and rec.favour.s == true, "the favour kept")
 	T.ok(rec.favourN == 2 and rec.quests == 9 and rec.nick == "anvil" and rec.favourT == time() - DAY, "the counters and the nickname")
 	-- malformed fields are dropped

@@ -28,6 +28,8 @@ NS:RegisterNPCs({
 	[823] = { name = "Deputy Willem", role = "guard", speech = "formal", goals = "duty", race = "Human", warmth = 1 },
 	-- blacksmiths: gruff, slow to warm (a number of Classic Era, to verify in game like the others)
 	[514] = { name = "Smith Argus", role = "merchant", temperament = "gruff", speech = "terse", goals = "profit", race = "Human" },
+	-- N6 (#218): the weaponsmith of Goldshire, the rival forge of Smith Argus (only the role)
+	[54] = { name = "Corina Steele", role = "merchant", race = "Human" },
 	-- guardie di città (S8): solo il ruolo, perché il registro le riconosce con certezza per npcID; nessun carattere
 	-- inventato. Numeri della numerazione di Classic Era, da verificare in gioco con `/au who` (issue #36)
 	[68] = { name = "Stormwind City Guard", role = "guard", race = "Human" },
@@ -40,6 +42,21 @@ NS:RegisterNPCs({
 	[4949] = { name = "Thrall", role = "leader", race = "Orc" },
 	[3057] = { name = "Cairne Bloodhoof", role = "leader", race = "Tauren" },
 	[10181] = { name = "Lady Sylvanas Windrunner", role = "leader" },
+})
+
+-- N6 (#218): rivalries between NPCs, in pairs (both ways). Growing close to one makes the other notice: a jealous or an
+-- ironic private line and a little less warmth from them (Data/Relationships.lua `rivalries`). Narration only. These
+-- are the addon's own atmospheric reading of neighbours in the same trade, never a lore claim (GDD §5.4): innkeepers
+-- who compete for the same travellers, two smiths of one village. `kind`: trade | craft | lore. The npcIDs come from
+-- the Classic Era numbering and are not verified in Forever (`/au who` in game): a wrong number simply never fires.
+NS:RegisterRivalries({
+	pack = "base_rivals",
+	{ 295, 6740, kind = "trade" },    -- Innkeeper Farley (Goldshire) and Innkeeper Allison (Stormwind)
+	{ 5111, 1247, kind = "trade" },   -- Innkeeper Firebrew (Ironforge) and Innkeeper Belm (Kharanos)
+	{ 6929, 6928, kind = "trade" },   -- Innkeeper Gryshka (Orgrimmar) and Innkeeper Grosk (Razor Hill)
+	{ 6746, 6747, kind = "trade" },   -- Innkeeper Pala (Thunder Bluff) and Innkeeper Kauth (Bloodhoof Village)
+	{ 5688, 6741, kind = "trade" },   -- Innkeeper Renee (Brill) and Innkeeper Norman (Undercity)
+	{ 514, 54, kind = "craft" },      -- Smith Argus and Corina Steele, the two forges of Goldshire
 })
 
 -- Tendenze DEBOLI (fonte 5): solo un piccolo aumento di peso per le frasi con il tag corrispondente

@@ -401,6 +401,23 @@ NS:AddTexts("enUS", {
 		"Word travels in a place like this. I wonder how many here know about the oath I broke.",
 		{ "People talk. I would rather they talked about something else.", depth = "natural" },
 	},
+	-- N6 (#218): local reputation
+	["rel.npc.town.title"] = {
+		"{title}, they call me here. I have not decided yet whether the name fits me, or I it.",
+		{ "{title}. Strange, how a place decides who you are.", depth = "natural" },
+	},
+	["rel.npc.town.word.good"] = {
+		"A face I barely know, and already a smile for me. Someone here has been speaking kindly.",
+		{ "They have heard of me. Good things, it seems.", depth = "natural" },
+	},
+	["rel.npc.town.word.bad"] = {
+		"A stranger, and still that guarded look. Whatever they heard about me, it walked in before I did.",
+		{ "They have heard of me. Not the good part.", depth = "natural" },
+	},
+	["rel.npc.rival.noticed"] = {
+		"I can feel it in the greeting: they know exactly whose door I have been knocking on.",
+		{ "They know where else I spend my time. Of course they do.", depth = "natural" },
+	},
 	-- N3 (#215): romance with an NPC
 	["rel.npc.attraction"] = {
 		"Nothing to see here. Only a pulse that has forgotten its own pace.",

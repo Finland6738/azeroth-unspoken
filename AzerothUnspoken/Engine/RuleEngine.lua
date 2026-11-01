@@ -256,6 +256,30 @@ local SPECIAL = {
 	-- the NPC gave the character, the placeholder {nickname})
 	relFavour = function(v, ctx) return (ctx.relFavour == true) == v end,
 	relNick = function(v, ctx) return (ctx.relNick ~= nil) == v end,
+	-- local reputation (N6, #218): ctx.townTitle (the honorary title held where the character stands), ctx.townWord
+	-- (good | bad: the word of them there) need no person; ctx.relRival (jealous | ironic: the NPC of the interaction
+	-- noticed you grew close to their rival) is a relationship condition
+	townTitle = function(v, ctx)
+		if ctx.townTitle == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.townTitle == name then return true end
+		end
+		return false
+	end,
+	townWord = function(v, ctx)
+		if ctx.townWord == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.townWord == name then return true end
+		end
+		return false
+	end,
+	relRival = function(v, ctx)
+		if ctx.relRival == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.relRival == name then return true end
+		end
+		return false
+	end,
 	-- il mondo (R3, Systems/World.lua): una lettura che il client non dà vale "non lo so", cioè falsa per `true` e per
 	-- `false` (tranne dove è scritto): una frase che nomina il meteo o il volo non esce se l'API manca
 	dayTime = function(v, ctx) return ctx.isDay ~= nil and ctx.isDay == v end,
@@ -407,6 +431,8 @@ Engine.CONDITIONS = {
 	relVowed = "bool",
 	-- favours and nicknames (N5, #217)
 	relFavour = "bool", relNick = "bool",
+	-- local reputation (N6, #218)
+	townTitle = "str", townWord = "str", relRival = "str",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -450,6 +476,8 @@ Engine.CONDITION_VALUES = {
 	-- the first meeting with an NPC (N2, #214): the same tokens as `time` and `weather`
 	relMetTime = { dawn = true, day = true, dusk = true, night = true },
 	relMetWeather = { clear = true, rain = true, snow = true, storm = true, sand = true, fog = true },
+	-- local reputation (N6, #218): the titles are registered by Data/Relationships.lua (`towns.titles`)
+	townTitle = {}, townWord = { good = true, bad = true }, relRival = { jealous = true, ironic = true },
 	-- the composite situations (#100): filled by NS:RegisterSituation
 	situation = {},
 }
@@ -521,7 +549,7 @@ Engine.SUB_VALUES = {
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
 	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true,
 	relMetLevels = true, relMetDays = true, relMetTime = true, relMetWeather = true, relVowed = true,
-	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true }
+	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true, relRival = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

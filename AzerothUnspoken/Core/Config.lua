@@ -99,6 +99,7 @@ Config.CHAT_LIMITS = {
 ---@field promiseNotices boolean the private narrator recalls promises and oaths given to NPCs (on, #216)
 ---@field favours boolean NPCs at Friend or above may ask small favours the game can check (on, #217)
 ---@field nicknames boolean NPCs at Close friend or above give the character a nickname, used in their lines (on, #217)
+---@field localNotices boolean the private narrator tells the word of you in a town, a title earned there, a rival who noticed (on, #218)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -183,6 +184,8 @@ Config.defaults = {
 		-- #217: favours asked by NPCs at Friend or above, and nicknames given at Close friend (private narrator, journal)
 		favours = true,
 		nicknames = true,
+		-- #218: local reputation (word of you in a town, honorary titles, NPC rivalries) told by the private narrator
+		localNotices = true,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -235,7 +238,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 4, npcs = {}, players = {} },
+	relationships = { version = 6, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	history = {},
