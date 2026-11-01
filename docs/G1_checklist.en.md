@@ -336,6 +336,16 @@ English counterpart of the section **N2** of [G1_checklist.md](G1_checklist.md).
 - **N2.6 · Never in combat.** Hand in a quest that raises a level while in combat (or enter combat just before). **Expect:** nothing during the fight; the line comes as soon as the fight ends. Nothing in chat.
 - **N2.7 · Journal.** Take an NPC to **Friend** (or higher). **Expect:** in the journal "A bond grows: Friend (<zone>)", once for that NPC, without its name. With **Level notices** off (Options tab) the narrator line is not there, the journal line is.
 
+## N3: romance with NPCs, opposite sex only, with a vow (issue #215)
+
+English counterpart of the section **N3** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only, private, never in chat. APIs already used elsewhere (`UnitSex`, `UnitCreatureType`, both in the Forever dump); new is reading them on the dialogue's NPC (`npc`). Tried only with the mock client.
+
+- **N3.1 · The readings.** Turn on the attraction axis (`/au relationships attraction on`). Talk to a humanoid NPC of the opposite sex, then to one of your own sex and, if you find one that talks, to a non-humanoid NPC (a beast or an elemental that gives quests). **Report:** whether `UnitSex("npc")` and `UnitCreatureType("npc")` give values for the NPC of a dialogue (type `/run print(UnitSex("npc"), UnitCreatureType("npc"))` with the dialogue open).
+- **N3.2 · Growth.** With an NPC of the opposite sex who is already a **Friend** (or after `/au relationships set npc:<number> affection 60` and `trust 40`), talk to them a few times in one day. **Expect:** attraction rises a little (at most about 2 points a day). With an NPC of your own sex, or a merchant you only trade with, it does not move.
+- **N3.3 · Below Friend.** With an NPC at Acquaintance, talk a few times. **Expect:** attraction does not move.
+- **N3.4 · The vow.** Set `/au relationships set npc:<number> attraction 79` and `affection 60`, then talk to them. **Expect:** one private line in the narrator ("No one hears it, and <name> never will: …" or "A vow, made in silence: …"), nothing in chat; in the journal "A quiet vow, spoken to no one aloud (<zone>)", without the name; the detail says "You made a private vow to them." Talking again never repeats it.
+- **N3.5 · The axis off.** Turn the attraction axis off. **Expect:** no attraction, no romance lines, no vow.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -386,4 +396,7 @@ N2 first meeting ........ right time? ___  right or missing weather? ___  zone a
 N2 NPC block ............ level and next? ___  temperament? ___  overlaps? (must be NO) ___
 N2 temperament .......... innkeeper faster than guard? ___  NPC race from the client? ______
 N2 notices .............. private line? ___  never in combat? ___  after the fight? ___  too many? ___  journal Friend? ___
+N3 readings ............. UnitSex("npc") ______  UnitCreatureType("npc") ______
+N3 romance .............. grows with a Friend of the opposite sex? ___  not with own sex/merchant/below Friend? ___
+N3 vow .................. private line? ___  journal without name? ___  only once? ___  nothing in chat? ___
 ```

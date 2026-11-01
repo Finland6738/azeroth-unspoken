@@ -105,6 +105,12 @@ NS:RegisterLanguage("en", {
 		rel_met_weather_clear = "under a clear sky", rel_met_weather_rain = "in the rain", rel_met_weather_snow = "in the snow",
 		rel_met_weather_storm = "in a storm", rel_met_weather_sand = "in a sandstorm", rel_met_weather_fog = "in the fog",
 		rel_met_zone = "in %s", rel_met_level = "you were level %d",
+		-- N3 (#215): the private vow at the top of a romance (journal, narrator, window)
+		mem_kind_relation_vow = "A private vow",
+		rel_mem_vow = "A quiet vow, spoken to no one aloud",
+		rel_vow_1 = "No one hears it, and %s never will: you promise yourself to them all the same.",
+		rel_vow_2 = "A vow, made in silence: wherever the road goes, it will lead back to %s.",
+		rel_vow_made = "You made a private vow to them.",
 		rel_help = "usage: /au relationships [list / people / add <name> / dismiss <name> / remove <name/npc:ID> / detail <name> / note <name> <text> / tags <name> <tag,...> / label <name> <text> / set <name> <axis> <value> / export / auto on/off / attraction on/off / feeling <name> <feeling> [preset] / forget <name> / proximity on/off / share [on/off/all/copy] / scope <name> shared/character / reset [all/npcs/players/shared]]",
 	},
 })

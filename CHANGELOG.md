@@ -8,6 +8,29 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N3: romance with NPCs, opposite sex only, with a vow (issue #215)
+
+A step of the NPC relationships milestone (owner decisions of 2026-11-01). Narration only and private: NPCs never change
+their behaviour in the game, and nothing goes to chat. Tested with the mock client only (G1, steps N3.1-N3.5).
+
+- **Added: attraction grows by itself, slowly, with the attraction axis on (off by default).** Only with a humanoid NPC
+  of the opposite sex (the character's `UnitSex` against the NPC's, its `UnitCreatureType`; both read at the dialogue,
+  for the session only, never saved). This is a fixed rule, by the owner's decision: there is no preference setting.
+  Only from positive interactions with an NPC that was already a **Friend** or more, and never from a merchant or a
+  flight master: a chat, quests, the inn, a trainer, the addon's ambient talk. Diminishing returns, a daily cap of 2
+  points and the NPC's temperament, all in `romance` of `Data/Relationships.lua`.
+- **Added: the vow.** At the top of a romance (attraction 80 and the **beloved** label) a private vow is written in the
+  journal once per NPC, as a permanent memory with no name ("A quiet vow, spoken to no one aloud"), and the private
+  narrator says one line naming the NPC (never in combat, never with the narrator silent, never in chat). The NPC detail
+  in the Relationships window and `/au relationships detail` say "You made a private vow to them." A slider never makes
+  the vow.
+- **Added: two rare recall intentions** for `relation_npc` in Italian and English, in the inner voice: a growing
+  attraction (`rel.npc.attraction`) and after the vow (`rel.npc.vowed`), with the new relationship condition
+  `relVowed`. More come with N9 (#221). The decisions are in
+  [ADR 0037](docs/adr/0037-romance-with-npcs-opposite-sex-and-the-vow.md).
+- **Changed: a scale test** no longer assumes that the first synthetic clone shares its shape with another rule (which
+  base rule it copies depends on how many base rules there are).
+
 ### N2: visible levels, the first meeting and the NPC temperament (issue #214)
 
 Second step of the NPC relationships milestone (owner decisions of 2026-11-01). Narration only: NPCs never change their

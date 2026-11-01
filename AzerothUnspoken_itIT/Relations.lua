@@ -390,6 +390,15 @@ NS:AddTexts("itIT", {
 		"Sono passati mesi dal nostro primo incontro. Abbastanza perché un volto diventi parte della strada.",
 		{ "Ci conosciamo da un pezzo, ormai.", depth = "natural" },
 	},
+	-- N3 (#215): una storia d'amore con un NPC
+	["rel.npc.attraction"] = {
+		"Niente da vedere qui. Solo un battito che ha dimenticato il proprio passo.",
+		{ "Respira. È solo una conversazione. È solo una conversazione.", depth = "natural" },
+	},
+	["rel.npc.vowed"] = {
+		"Il voto è ancora lì, mai pronunciato, e non si è fatto più leggero.",
+		"Ho promesso in silenzio. Il silenzio mantiene le promesse meglio delle parole.",
+	},
 	["rel.npc.innkeeper"] = {
 		"Eccomi di nuovo. C'è ancora quella zuppa, o devo accontentarmi del pane?",
 		"Sempre un piacere. Hai una stanza per chi ha fatto troppa strada?",
