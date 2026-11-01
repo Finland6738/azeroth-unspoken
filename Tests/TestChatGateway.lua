@@ -14,7 +14,7 @@ local function Reset()
 	NS.db.output.autoPublicSay = false
 	Gateway.sendLog = {}
 	Gateway.inPlayerAction = false
-	Gateway.autoAskedAt = nil
+	NS.Consent:Reset()
 	Gateway:Discard()
 	ADVANCE(100)
 end
@@ -667,22 +667,26 @@ T.run("#8: SelectAuto è l'unico accesso al secondo consenso", function()
 	SENT = {}
 	T.eq(Gateway:SelectAuto(), "warned", "primo gesto: avviso")
 	T.ok(Gateway:IsAutoArmed() and not Gateway:IsAutoActive(), "in attesa di conferma")
-	T.ok(T.sentContains("ATTENZIONE"), "con il testo dell'avviso")
+	T.ok(T.sentContains("NOME DEL TUO PERSONAGGIO"), "con il testo intero dell'avviso (in chat senza finestra di conferma)")
 	T.eq(Gateway:GetMode(), "CONFIRM_TO_SEND", "nulla è cambiato")
-	T.eq(Gateway:SelectAuto(), "enabled", "secondo gesto: attivo")
+	-- #178: un doppio clic non supera la conferma
+	T.eq(Gateway:SelectAuto(), "wait", "secondo gesto subito dopo: ignorato")
+	T.ok(Gateway:IsAutoArmed() and not Gateway:IsAutoActive(), "resta in attesa, nulla è cambiato")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
+	T.eq(Gateway:SelectAuto(), "enabled", "secondo gesto dopo la pausa: attivo")
 	T.ok(Gateway:IsAutoActive() and NS.db.output.autoPublicSay, "modalità e consenso")
 	T.eq(Gateway:SelectAuto(), "enabled", "già attivo: nessun nuovo avviso")
 	-- scaduta l'attesa
 	Gateway:SetMode("PRIVATE")
 	Gateway:SelectAuto()
-	ADVANCE(11)
-	T.ok(not Gateway:IsAutoArmed(), "dopo 10 s l'attesa decade")
+	ADVANCE(NS.Consent.WINDOW + 1)
+	T.ok(not Gateway:IsAutoArmed(), "dopo la finestra l'attesa decade")
 	T.eq(Gateway:SelectAuto(), "warned", "serve un nuovo avviso")
 	-- un cambio di modalità disarma
 	Gateway:SetMode("PREVIEW")
 	T.ok(not Gateway:IsAutoArmed(), "un altro cambio di modalità disarma")
 	-- il consenso non sopravvive a un cambio di modalità
-	Gateway:SelectAuto(); Gateway:SelectAuto()
+	Gateway:SelectAuto(); ADVANCE(NS.Consent.MIN_DELAY + 0.5); Gateway:SelectAuto()
 	T.ok(NS.db.output.autoPublicSay, "attivo")
 	Gateway:SetMode("CONFIRM_TO_SEND")
 	T.ok(not NS.db.output.autoPublicSay, "uscendo da AUTO il consenso si spegne")

@@ -1,25 +1,28 @@
 # First-Run Wizard
 
-The first time you enter the world with Azeroth Unspoken installed, a short setup wizard opens after about three seconds. It helps you choose the most important settings in a minute. Everything it sets can be changed later.
+The first time you enter the world with Azeroth Unspoken installed, a short guide opens a few seconds after the game has finished loading (and never while you are in combat: it waits until you are free). It helps you choose the most important settings in a minute, and it tells you where everything else is. Everything it sets can be changed later.
 
 ## How to use it
 
-- **Next** goes to the next step, **Back** to the previous one, and **Finish** (on the last step) closes the wizard.
-- **Skip** closes it at once and keeps the default settings. The defaults are the safe ones: the narrator stays private and nothing goes to chat.
-- You can drag the wizard window to move it.
+- **Next** goes to the next step, **Back** to the previous one, and **Finish** (on the last step) closes the guide. **Enter** is Next.
+- **Every step can be skipped.** **Skip - keep the defaults** (and the **x** in the corner, and **Esc**) closes the guide at once and keeps what you have chosen so far; everything else stays at its default. The defaults are the safe ones: the narrator stays private and nothing goes to chat.
+- The dots under the title show where you are. You can drag the window to move it.
+- It never covers the narrator box: when the narrator needs room (for the test line, for a proposal) the box steps aside for as long as the guide is open.
 - Reopen it at any time with `/au wizard`, or with the **Reopen the setup guide** button in the [[settings panel|Settings]].
 
-The wizard opens only once per account. After you finish or skip it, it does not come back by itself.
+The guide opens only once per account. After you finish or skip it, it does not come back by itself.
 
 ## The steps
 
-The wizard has **6 steps**, or **7 if Total RP 3 is installed**.
+The guide has **7 steps**, or **8 if Total RP 3 is installed**. A chosen card has a gold border and a filled square; the card of the default choice says "default".
 
-### 1. Language
+### 1. Welcome and language
 
-Choose the language of the narrator's lines and of the addon's interface: **English** or **Italiano**. This does not depend on the language of your game client.
+A promise in one sentence: *a private narrator for your character; lines appear only on your screen and nothing reaches chat unless you choose it.* Under it, a **live sample of the narrator**, so you see the box before you change any setting.
 
-> **Note.** The addon starts in **English**. If you prefer Italian for the interface and the lines, click **Italiano** on this first page. If you skipped the wizard, type `/au language it`. Command names stay English in both languages. See [[Languages]].
+Then choose the language of the narrator's lines and of the addon's interface: **English** or **Italiano**. This does not depend on the language of your game client.
+
+> **Note.** The addon starts in **English**. If you prefer Italian for the interface and the lines, choose **Italiano** on this first page. If you skipped the guide, type `/au language it`. Command names stay English in both languages. See [[Languages]].
 
 ### 2. What experience do you want?
 
@@ -42,7 +45,7 @@ How elevated the language is: **Natural**, **Literary** (default) or **Elevated*
 
 ### 5. Modules
 
-Turn single modules on or off: Personal, World, NPC dialogues, Memory, Relationships, Stories, Social, Audio. Changing a module here makes your preset "Custom".
+Turn single modules on or off: Personal, World, NPC dialogues, Memory, Relationships, Stories, Social, Audio. Each card says **On** or **Off** in words. Changing a module here makes your preset "Custom".
 
 Modules marked with `*` are not active yet. *Social* and *Audio* are placeholders for future versions: you can set them, but they do nothing today. The Social module will never share anything without your explicit consent.
 
@@ -51,22 +54,33 @@ Modules marked with `*` are not active yet. *Social* and *Audio* are placeholder
 Two separate choices:
 
 - **Name from Total RP 3** (on by default): the narrator may use your RP profile's first name in lines. It reads your own profile only, and only the name.
-- **Read others' Total RP 3** (off by default): with your consent, the addon reads only race, class and personality traits from **other players'** public profiles, so the narrator can react to who is in front of you. Never notes or history.
+- **Read others' Total RP 3** (off by default): with your consent, the addon reads only race, class and personality traits from **other players'** public profiles, so the narrator can react to who is in front of you. Never notes or history. **Turning it on asks for a confirmation in a dialog** (see below), and it does nothing unless *Name from Total RP 3* is on too: the card says "on, needs Name from Total RP 3" in that case.
 
 See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
-### 7. Chat and test
+### 7. What may reach chat?
 
-Choose what may reach chat:
+One card per mode, with its description inside it:
 
 | Choice | Meaning |
 |---|---|
-| **Private narrator only** (default) | lines stay in the narrator box; nothing goes to chat |
-| **Preview** | your character's lines become proposals; the speak key opens an editor and you send with Enter |
-| **Confirm to send** | the proposal is ready; the speak key or button sends it |
-| **Automatic (where allowed)** | some lines go out by themselves. It needs a second click within 10 seconds to turn on |
+| **Private narrator only** (default) | lines stay on your screen; nothing ever goes to chat |
+| **Preview** | the speak key opens the line in an editor and you send it with Enter |
+| **Confirm to send** | the speak key or button sends the proposed line in one gesture |
+| **Automatic (where allowed)** | emotes, and `/say` in instances, are posted by themselves **in your character's name, visible to everyone nearby**. It needs a separate confirmation |
 
-The **Try the narrator** button shows a sample line in the narrator box, so you can see where it appears. See [[Chat Gateway]].
+Choosing **Automatic** does not turn it on: a **confirmation dialog** shows the whole warning, with a **Turn on** button that stays disabled for the first two seconds, so a double-click cannot get through. See [[Chat Gateway]].
+
+The **Try the narrator** button shows a sample line in the narrator box. The box shows the line above every window and steps out from under the guide, so it is always visible.
+
+### 8. Keys, button and settings
+
+The last page tells you where everything is:
+
+- **The four keys** (none is bound until you choose): **Speak** (asks for a line, and sends the proposal when there is one; never in private mode), **Pause** (silences the narrator at once), **Another line** (swaps the proposal) and **NPC** (opens or closes the ambient dialogue). Bind them under *Options > Keybindings > AddOns*; the **Open key bindings** button takes you there when the client allows it.
+- **The speak button** sits beside the narrator box (shown by default). Drag it with the right mouse button; `/au button` shows or hides it.
+- **The settings:** `/au options` (the **Open settings** button does the same). All commands: `/au help`. This guide again: `/au wizard`.
+- A line with **the defaults**, read from the addon's own configuration: intensity, the pause between lines, how long a proposal waits, the chat mode, the speak button, reading others' Total RP 3, proximity and the shared list.
 
 ## What you will see
 

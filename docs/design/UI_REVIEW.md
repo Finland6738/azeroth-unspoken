@@ -467,9 +467,9 @@ current one, in the review or an issue, more than in the player's manual.
 | `narrator-it.png`, `narrator-inner-it.png` | the narrator in Italian | Languages, README.it |
 | `proposal.png`, `proposal-held.png`, `proposal-editor.png`, `proposal-sent.png`, `proposal-emote.png` | a chat proposal (with its countdown), a proposal with a private line held in the history (#176), its editor, after sending, an emote proposal | Chat-Gateway |
 | `speak-button.png` | the speak button idle, waiting and paused, with tooltips | Chat-Gateway, Commands |
-| `wizard-1.png` … `wizard-7.png` | each wizard step (step 6 only with Total RP 3) | First-Run-Wizard |
-| `wizard-1-it.png`, `wizard-7-it.png` | wizard steps in Italian | First-Run-Wizard, Languages |
-| `wizard-test-overlap.png` | "Try the narrator" hidden under the wizard | review (UI-11) |
+| `wizard-1.png` … `wizard-8.png` | each step of the first-run guide as rebuilt for UI-18 (step 6 only with Total RP 3) | First-Run-Wizard |
+| `wizard-1-it.png`, `wizard-7-it.png`, `wizard-8-it.png` | guide steps in Italian | First-Run-Wizard, Languages |
+| `wizard-test-line.png` | "Try the narrator" after the fix of UI-11: the box steps aside, below the guide | First-Run-Wizard (UI-11, fixed) |
 | `settings.png`, `settings-reload.png` | the settings panel, and after a change of language | Settings, Languages |
 | `journal-memories.png`, `journal-places.png`, `journal-flags.png`, `journal-session.png` | the journal tabs | Memory-and-Journal |
 | `journal-stories.png`, `journal-story-detail.png` | the stories tab and a story with its choice | Story-Arcs |
@@ -484,7 +484,6 @@ current one, in the review or an issue, more than in the player's manual.
 | `chat-help.png`, `chat-help-window.png` | `/au help` in full and as the client reads the escapes | Commands |
 | `chat-debug.png` | `/au debug` | Troubleshooting, Reporting-Bugs-and-Feedback |
 | `proposed-narrator.png`, `proposed-narrator-bright.png` | PROPOSED narrator: voice accent, hierarchy, editor, bright scene | comparison (UI-03, UI-16) |
-| `proposed-wizard.png`, `proposed-wizard-chat.png` | PROPOSED wizard: welcome page, chat step | comparison (UI-08, UI-18) |
 | `proposed-journal.png` | PROPOSED window style on the journal | comparison (UI-04, UI-10, UI-17) |
 | `proposed-relations-detail.png` | PROPOSED relationship detail that fits 768 units | comparison (UI-02) |
 

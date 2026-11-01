@@ -1342,11 +1342,14 @@ T.run("U1 #172 #179 #180: every view fits 680 units, nothing overlaps, labels fi
 		ButtonWithText(NS:L("rel_opt_share")):Click()
 		T.ok(R:ShareArmed(), lang .. ": the shared list waits for a second click")
 		local frame = _G[ROOT]
-		T.ok(frame.warning:IsShown() and frame.warning:GetText():find("Privacy", 1, true) ~= nil, lang .. ": the warning is on screen")
+		T.ok(frame.warning:IsShown() and frame.warning:GetText():find(NS:L("consent_share_text"):sub(1, 30), 1, true) ~= nil, lang .. ": the warning is on screen")
 		local p = frame.warning._s.points[1]
 		T.ok(p[2] == frame.privacy and p[3] == "BOTTOMLEFT", lang .. ": laid out under the privacy note, top-down")
 		CheckLayout(lang .. " options, share armed")
-		ButtonWithText(NS:L("rel_opt_share_confirm")):Click()
+		ButtonWithText(NS:L("rel_opt_share")):Click()
+		T.ok(not R:Sharing(), lang .. ": a second click right away does not pass")
+		ADVANCE(NS.Consent.MIN_DELAY + 0.5)
+		ButtonWithText(NS:L("rel_opt_share")):Click()
 		T.ok(R:Sharing(), lang .. ": on")
 		T.ok(not frame.warning:IsShown(), lang .. ": the warning goes away")
 		RelationsFrame:Open({ kind = "player", key = key })
@@ -1398,7 +1401,9 @@ T.run("U1 #180: the longest values fit the detail's buttons, in Italian and Engl
 			Fits(NS:L(o.text) .. ": " .. NS:L("off"), optionW)
 			Fits(NS:L(o.text) .. ": " .. NS:L("on"), optionW)
 		end
-		Fits(NS:L("rel_opt_share_confirm"), optionW)
+		for _, state in ipairs({ "consent_off_reading", "consent_off_ready" }) do
+			Fits(NS:L("rel_opt_share") .. ": " .. NS:L(state), optionW)
+		end
 		T.eq(table.concat(bad, "; "), "", lang .. ": every value fits")
 	end
 	NS.db.locale = "it"
@@ -1516,7 +1521,7 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 	for _, w in ipairs(FindWidgets(function(w) return w.name == NS.name and w.scripts.OnShow end)) do w.scripts.OnShow() end
 	local function Row()
 		for _, b in ipairs(FindWidgets(function(w) return w.kind == "Button" and w.scripts.OnClick end)) do
-			if (b:GetText() or ""):find("Leggi il Total RP 3 degli altri", 1, true) == 1 then return b end
+			if (b:GetText() or ""):find("Total RP 3 degli altri", 1, true) == 1 then return b end
 		end
 	end
 	local row = Row()
@@ -1524,10 +1529,19 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 	T.ok(row:GetText():find(NS:L("off"), 1, true), "mostra lo stato: spento")
 	SENT = {}
 	row:Click()
-	T.eq(NS.db.interlocutor.trp3Others, true, "il clic accende il consenso")
+	T.eq(NS.db.interlocutor.trp3Others, false, "il primo clic chiede soltanto (#178)")
+	T.ok(T.sentContains("Total RP 3"), "e mostra l'avviso")
+	row:Click()
+	T.eq(NS.db.interlocutor.trp3Others, false, "un doppio clic non lo accende")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
+	row:Click()
+	T.eq(NS.db.interlocutor.trp3Others, true, "il secondo clic, dopo una pausa, accende il consenso")
 	T.ok(T.sentContains("letti"), "e lo dice")
 	row:Click()
-	T.eq(NS.db.interlocutor.trp3Others, false, "il secondo lo spegne")
+	T.eq(NS.db.interlocutor.trp3Others, false, "spegnerlo è un clic solo")
+	SlashCmdList.AZEROTHUNSPOKEN("who trp3 on")
+	T.eq(NS.db.interlocutor.trp3Others, false, "il comando chiede soltanto")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
 	SlashCmdList.AZEROTHUNSPOKEN("who trp3 on")
 	T.eq(NS.db.interlocutor.trp3Others, true, "il comando resta valido e coerente")
 	T.eq(I:SetTRP3Consent(false), false, "SetTRP3Consent")

@@ -961,6 +961,8 @@ T.run("/au luogo e /au chi", function()
 	SECRET_UNITS.target = true
 	T.ok(Cmd("who"):find("nascosta", 1, true), "identità segreta")
 	SECRET_UNITS = {}
+	T.ok(Cmd("who trp3 on") ~= "" and NS.db.interlocutor.trp3Others == false, "consenso TRP3: il primo comando chiede soltanto (#178)")
+	ADVANCE(NS.Consent.MIN_DELAY + 0.5)
 	T.ok(Cmd("who trp3 on"):find("letti", 1, true) and NS.db.interlocutor.trp3Others == true, "consenso TRP3 acceso")
 	T.ok(Cmd("who trp3 off"):find("non letti", 1, true) and NS.db.interlocutor.trp3Others == false, "spento")
 	-- tratti scelti dall'utente per chi ha davanti (solo se è nella lista delle relazioni)

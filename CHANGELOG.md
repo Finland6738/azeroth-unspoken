@@ -20,6 +20,64 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-wizard: consents, the first-run guide and the windows (issues #178, #188, #181)
+
+Fixes from the UI review (UI-08, UI-18 and UI-11 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Tested with the mock
+client only: nothing here has run in the real client yet (G1).
+
+- **Fixed: a double-click passed the two-step confirmations (#178).** Four consents are turned on in two steps: automatic
+  sending in chat, the account-shared list, reading other players' Total RP 3 profiles and proximity (nameplates and
+  mouseover). The first step shows the whole warning and changes nothing. The second counts only after **2 seconds**
+  and inside **30**: a second click or command that comes too soon is ignored. Turning one off is always one step.
+  The new `Core/Consent.lua` is the one place that does it, and `Gateway:SelectAuto`, `Relationships:StartSharing`,
+  `Relationships:ChangeSetting` and `Interlocutor:ChangeTRP3Consent` use it.
+- **Changed: the warning is where the player looks (#178).** It is a confirmation dialog (`StaticPopup`) with the whole
+  warning in plain words (for automatic sending: posted in your character's name, seen by everyone nearby, without
+  you pressing anything) and two explicit buttons, **Turn on** (disabled for the first 2 seconds) and **Cancel**.
+  Without a dialog in the client, the same text goes to chat. The shared-list warning in the relationships window is
+  shorter and in the normal font, under the options. Before this the automatic-sending warning went to the chat frame.
+- **Changed: the state of every consent is written in words (#178).** *on*, *off*, and while a question is open *off,
+  read first* then *off, confirm*; the rows redraw by themselves when the question opens or expires ("click again to
+  confirm" can no longer stay on a button). *Read others' Total RP 3* says *on, needs name* when it is on but
+  *Name from Total RP 3* is off, and the settings panel explains it in a line. A line under the relationships options
+  now explains proximity and the shared list on screen, not only in tooltips.
+- **Changed: the commands follow.** `/au mode auto`, `/au relationships share on`, `/au relationships proximity on`
+  and `/au who trp3 on` show the warning the first time and ask to repeat the command after a few seconds (within
+  30); a repeat that comes too soon says so. The old 10 and 15 second windows are gone. Italian: the settings row is
+  now "Total RP 3 degli altri" (it was "Leggi il Total RP 3 degli altri") so that its state fits the button.
+- **Changed: the first-run wizard is a guide, in the flat "proposed" design of the review (#188).** A warm dark surface
+  with a thin gold edge and a title band, flat buttons (gold fill for Next, gold outline for the others, a text link
+  for Skip) in place of the default red buttons (new `W.FlatWindow`, `W.FlatButton`, `W.Card` in `UI/Widgets.lua`).
+  7 steps (8 with Total RP 3), with cards, progress dots, a close
+  box, **Enter = Next** and **Esc = Skip**. Page 1 is a welcome with the promise ("a private narrator... nothing
+  reaches chat unless you choose it"), a **live sample of the narrator** and the language cards. The chat step has one
+  card per mode with its description inside, the default marked, and a plain statement that automatic mode posts in
+  the character's name for everyone nearby; its confirmation is the dialog above. A new last page lists the four keys
+  (speak, pause, another line, NPC) and says no key is bound until you choose, where the speak button is, `/au options`,
+  `/au help` and `/au wizard`, with buttons to open the key bindings and the settings, and a line with **the real
+  defaults, read from `Config.defaults`** (`Wizard:DefaultsLine`). Every step can be skipped (Skip, the close box, Esc
+  or Next); closing the guide in any way counts as skipped.
+- **Fixed: the guide opened at the wrong time and built its pages again at every opening (#188).** It now opens
+  3 seconds after `PLAYER_ENTERING_WORLD` and waits while the player is in combat; the pages are built once and every
+  text is set again on each render, so a change of language is followed.
+- **Fixed: windows covered the narrator and stacked without raising (#181).** The new `UI/Windows.lua` registers the
+  wizard, journal, relationships and character soul windows: HIGH strata (below the client's dialogs, so a raised
+  window never covers a confirmation), `SetToplevel`, raised when clicked and when opened, and **cascaded** when one
+  opens exactly over another (the journal's "..." no longer opens Relationships on top of the journal). Whenever a
+  window opens, closes or is dragged the narrator box steps out from under it (below it, else above it) and comes
+  back to the player's own place afterwards; its saved place is never changed. While the box carries a proposal or
+  the wizard's test line it is above every window. A window too tall for the screen to leave room (660 units on a
+  768-unit screen) cannot be avoided: the box is then above it. The ambient dialogue window also keeps clear of the
+  box.
+- **Added: tests** (`Tests/TestWizardConsent.lua`, and the existing tests updated for the two steps): a double-click
+  never passes, for each of the four consents; the dialog's text, buttons and disabled button; expiry; commands; the
+  state in words and the dependency; every step skippable; the defaults come from `Config`; pages built once;
+  opening in combat; windows registered, raised, cascaded, and the narrator never under them. The mock client gained
+  strata, levels, `Raise`, `SetToplevel` and a small layout (`GetLeft`, `GetRect`, a screen of 1024 x 768).
+- **Docs:** wiki pages First-Run-Wizard (rewritten), Settings, Chat-Gateway, Commands, Relationships, Privacy-and-Data,
+  Character-Soul-and-Total-RP-3 and Interlocutor-and-Place; the README files; `ARCHITECTURE.md`; ADR 0003; the mockups
+  (`wizard-1` to `wizard-8`, `wizard-test-line`, the four `consent-*` pages; the proposed wizard pages are gone because
+  they are now built); the in-game checklist (section U-wizard).
 ### U: checks for the classes of problems of the third review (issues #162, #165)
 
 The third review (Q8, #167) found problems that every check passed. These checks would have caught them; each passes

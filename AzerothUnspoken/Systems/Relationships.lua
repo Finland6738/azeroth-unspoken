@@ -387,6 +387,29 @@ function R:SetSetting(name, on)
 	return true
 end
 
+-- Proximity (D11) is a consent: turning it ON asks for a confirmation like the shared list (#178)
+NS.Consent:Register("proximity", { text = "consent_proximity_text", accept = function()
+	R:SetSetting("proximity", true)
+end })
+
+---What a click or a command on an option does: a plain option flips; the consent options (proximity) turn ON in two
+---steps and OFF in one. Not for the shared list (StartSharing / StopSharing).
+---@param name string
+---@param on? boolean the wanted state; nil flips it
+---@return "on"|"off"|"asked"|"wait" result
+function R:ChangeSetting(name, on)
+	if on == nil then on = not self:Setting(name) end
+	if name ~= "proximity" or not on then
+		if name == "proximity" then NS.Consent:Cancel("proximity") end
+		self:SetSetting(name, on)
+		return on and "on" or "off"
+	end
+	if self:Setting("proximity") then return "on" end
+	local r = NS.Consent:Step("proximity")
+	if r == "confirmed" then return "on" end
+	return r == "wait" and "wait" or "asked"
+end
+
 ---@param id string
 ---@param sex? string sesso della persona (male | female): sceglie la forma di genere del nome
 ---@return string
@@ -1804,30 +1827,31 @@ function R:CopySharedHere()
 	return copied, skipped
 end
 
----Turning the shared list on takes two steps, so that nobody does it by accident: the first call opens a confirmation
----(the caller shows the privacy and role-play warning), the second one inside CONFIRM_SECONDS turns it on.
----@return "armed"|"on"|"off"|"unavailable"
+---Turning the shared list on takes two steps (#178, Core/Consent.lua), so that nobody does it by accident: the first
+---call opens the confirmation with the privacy and role-play warning; the second one turns it on, but only after
+---Consent.MIN_DELAY seconds (a double-click does not pass) and inside Consent.WINDOW.
+---@return "armed"|"wait"|"on"|"off"|"unavailable"
 function R:StartSharing()
 	if not self:Writable() then return "off" end
 	if self:Setting("sharePlayers") then return "on" end
 	if NS.gdb == nil or self.sharedReadOnly then return "unavailable" end
-	local now = GetTime()
-	local p = self.pendingShare
-	if p and now <= p.untilT then
-		self.pendingShare = nil
-		self:SetSetting("sharePlayers", true)
-		self:Shared(true)
-		return "on"
-	end
-	self.pendingShare = { untilT = now + self.CONFIRM_SECONDS }
+	local r = NS.Consent:Step("share")
+	if r == "confirmed" then return "on" end
+	if r == "wait" then return "wait" end
 	return "armed"
 end
+
+NS.Consent:Register("share", { text = "consent_share_text", accept = function()
+	if not R:Writable() or NS.gdb == nil or R.sharedReadOnly then return end
+	R:SetSetting("sharePlayers", true)
+	R:Shared(true)
+end })
 
 ---Turning it off is one step and deletes nothing of the shared list: it stays in the account, unused, until it is
 ---turned on again or cleared (`/au relationships reset shared`). This character's observation records of people who
 ---were only in the shared list are dropped, never a record with choices (the `user` blocks are never touched).
 function R:StopSharing()
-	self.pendingShare = nil
+	NS.Consent:Cancel("share")
 	self:SetSetting("sharePlayers", false)
 	-- this character's records that only came from the shared list go with it; the choices never do (#155)
 	if self:Writable() and self:PruneShared() > 0 then self:Changed() end
@@ -1835,8 +1859,7 @@ end
 
 ---@return boolean waiting a confirmation to turn the shared list on is open
 function R:ShareArmed()
-	local p = self.pendingShare
-	return p ~= nil and GetTime() <= p.untilT
+	return NS.Consent:IsOpen("share")
 end
 
 ---------------------------------------------------------------------------
@@ -2761,7 +2784,9 @@ function R:Command(rest)
 		Say(action == "auto" and "rel_auto_now" or "rel_attraction_now", NS:L(self:Setting(name) and "on" or "off"))
 	elseif action == "proximity" then
 		local on = NS.Keywords.OnOff(NS.Lower(arg))
-		if on ~= nil then self:SetSetting("proximity", on) end
+		local r = on ~= nil and self:ChangeSetting("proximity", on) or nil
+		if r == "asked" then Say("consent_repeat") return end
+		if r == "wait" then Say("consent_wait") return end
 		Say("rel_proximity_now", NS:L(self:Setting("proximity") and "on" or "off"))
 	elseif action == "share" then
 		-- /au relationships share [on | off | status | all | copy]: turning it on asks for a confirmation with the warning
@@ -2770,7 +2795,8 @@ function R:Command(rest)
 		local sub = SHARE_WORDS[w]
 		if on == true then
 			local r = self:StartSharing()
-			if r == "armed" then Say("rel_share_warning"); Say("rel_share_confirm")
+			if r == "armed" then Say("consent_repeat")
+			elseif r == "wait" then Say("consent_wait")
 			elseif r == "on" then Say("rel_share_now", NS:L("on"))
 			elseif r == "unavailable" then Say("rel_share_unavailable") end
 		elseif on == false then
@@ -2823,7 +2849,9 @@ end
 function R:OnInit()
 	self.readOnly = NS.Config.readOnly ~= nil and NS.Config.readOnly.character == true
 	self.session = { seen = {}, offered = {}, recognized = {}, prior = {}, proximity = { n = 0, secret = 0 } }
-	self.candidates, self.dismissed, self.pendingShare = {}, {}, nil
+	self.candidates, self.dismissed = {}, {}
+	NS.Consent:Cancel("share")
+	NS.Consent:Cancel("proximity")
 	self.groupDirty, self.groupKeys, self.fightWith, self.scanPending = true, {}, nil, false
 	local dropped = self:Sanitize()
 	if dropped > 0 then NS.Diagnostics:Error("relations", ("%d voci malformate scartate"):format(dropped)) end

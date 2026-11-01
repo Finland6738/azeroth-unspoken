@@ -402,7 +402,6 @@ local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenJournal", UIParent)
 	frame:SetSize(600, 500)
 	frame:SetPoint("CENTER", 0, 10)
-	frame:SetFrameStrata("DIALOG")
 	frame:SetMovable(true)
 	frame:EnableMouse(true)
 	frame:SetClampedToScreen(true)
@@ -474,6 +473,7 @@ local function Build()
 	frame.close = W.Button(frame, "", 110, 24, function() JournalFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
 	frame:Hide()
+	NS.Windows:Register(frame)   -- #181: DIALOG, raised on a click, cascaded, the narrator steps aside
 end
 
 ---Ridisegna l'elenco (se la finestra è aperta).

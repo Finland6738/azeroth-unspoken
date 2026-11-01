@@ -140,6 +140,28 @@ function Narrator:ApplySettings()
 	self:Layout()
 end
 
+---The box never sits under a window (#181): it goes to the player's own place, and, while a window covers that place,
+---below the window (else above it) until they no longer overlap. The saved place is not touched.
+function Narrator:Avoid()
+	if not frame or not NS.Windows or self.dragging then return end
+	W.RestorePosition(frame, Cfg().pos, DEFAULT_POS)
+	local left, bottom, crowded = NS.Windows:SpotFor(frame)
+	self.crowded = crowded == true
+	if left then
+		frame:ClearAllPoints()
+		frame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", left, bottom)
+	end
+	self.avoiding = left ~= nil
+end
+
+---While the box carries a proposal or the wizard's test line it is above every window; otherwise it is an ordinary
+---HUD element (#181).
+function Narrator:UpdateLayer()
+	if not frame then return end
+	local up = (self.proposal ~= nil) or (self.current ~= nil and self.current.test == true)
+	frame:SetFrameStrata(up and "FULLSCREEN_DIALOG" or "MEDIUM")
+end
+
 function Narrator:Layout()
 	if not frame then return end
 	local p = self.proposal and NS.Gateway:GetPending() or nil
@@ -153,6 +175,8 @@ function Narrator:Layout()
 		-- senza una casella della chat da riempire il pulsante non c'è (GDD §3.8)
 		frame.copyBtn:SetShown(NS.Compat:CanOpenChat())
 	end
+	self:UpdateLayer()
+	self:Avoid()
 end
 
 -- the voice, then the proposal's channel and countdown (#177), or the channel it was sent to, and the held lines
@@ -224,6 +248,7 @@ function Narrator:Clear()
 	self.proposal = nil
 	self.held = {}
 	self:CloseEditor()
+	self:UpdateLayer()
 	if frame then frame:Hide() end
 end
 
@@ -344,6 +369,12 @@ end
 function Narrator:ShowTest()
 	local ctx = NS:BuildContext()
 	NS.Gateway:Narrate("muse", ctx, { privateOnly = true })
+	-- #181: the test line is above the windows (the wizard that asked for it included) and out from under them
+	if self.current then
+		self.current.test = true
+		self:UpdateLayer()
+		self:Avoid()
+	end
 end
 
 ---------------------------------------------------------------------------
@@ -425,10 +456,11 @@ local function Build()
 	header:EnableMouse(true)
 	header:RegisterForDrag("LeftButton")
 	header:SetScript("OnDragStart", function()
-		if not Cfg().locked then frame:StartMoving() end
+		if not Cfg().locked then Narrator.dragging = true; frame:StartMoving() end
 	end)
 	header:SetScript("OnDragStop", function()
 		frame:StopMovingOrSizing()
+		Narrator.dragging = false
 		Cfg().pos = W.SavePosition(frame)
 	end)
 	frame.header = header

@@ -164,7 +164,7 @@ Reading other players' profiles is a separate consent, **off by default**. When 
 - nothing it reads is saved;
 - *Name from Total RP 3* must be on too.
 
-Turn it on with `/au who trp3 on`, the **Read others' Total RP 3** row of the [[settings panel|Settings]], or the wizard. Turn it off the same way. See also [[Interlocutor and Place|Interlocutor-and-Place]].
+Turn it on with `/au who trp3 on`, the **Read others' Total RP 3** row of the [[settings panel|Settings]], or the wizard. Turning it **on** takes two steps: a confirmation dialog shows the warning, and **Turn on** (or the same click or command again, after a couple of seconds) confirms. Turning it **off** is one step. While *Name from Total RP 3* is off, the row says *on, needs name*: it is on but does nothing yet. See also [[Interlocutor and Place|Interlocutor-and-Place]].
 
 If Total RP 3 is missing, or changes in a way the addon does not understand, the integration simply switches itself off. `/au soul trp3` then says that Total RP 3 is not installed.
 

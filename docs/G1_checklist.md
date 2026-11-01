@@ -179,11 +179,11 @@ Qui si verifica che l'addon non scriva mai da solo in chat con le impostazioni p
 
 ### E. Automatico, dove permesso (facoltativo, ma utile)
 
-L'invio automatico non si accende con un clic solo (issue #8): serve un avviso e una conferma entro 10 secondi.
+L'invio automatico non si accende con un clic solo (issue #8): serve un avviso intero in una finestra di conferma e una conferma dopo almeno 2 secondi ed entro 30 (issue #178).
 
 Questa modalità fa scrivere l'addon da solo **solo emote** e, nelle istanze, `/say`. Provala solo se vuoi: è proprio per scoprire cosa permette il client.
 
-14. Scrivi `/au mode auto`: compare un **avviso** e la modalità **non** cambia. Scrivi di nuovo `/au mode auto` entro 10 secondi: ora è attiva. Poi `/au chance zone 100` e `/au cooldown 0`. Cammina fino a un'altra zona.
+14. Scrivi `/au mode auto`: compare un **avviso** e la modalità **non** cambia. Scrivi di nuovo `/au mode auto` subito: non cambia nulla. Scrivilo ancora dopo qualche secondo (entro 30): ora è attiva. Poi `/au chance zone 100` e `/au cooldown 0`. Cammina fino a un'altra zona.
     - **Cosa aspettarti:** una **emote** compare in chat da sola (`Nome sospira…`), oppure una proposta per `/s` che resta in attesa. Non deve comparire nessun `/say` da solo nel mondo aperto.
     - **Cosa riportare:** se compare un `/say` da solo (errore grave); se l'emote non parte e `/au debug` mostra `last refusal blocked` (o `error`): vuol dire che il client blocca anche le emote automatiche. Scrivi se `blocked by the client` aumenta.
 15. (Solo se entri in un'istanza) Rifai il passo 14 dentro l'istanza.
@@ -205,7 +205,7 @@ Corrette fuori dal gioco le issue #3, #4, #5, #6, #8, #11, #12, #14, #17 e #19. 
 22. **L'editor non scade (issue #4).** Con `/au mode preview` fai comparire una proposta, premi il tasto "pronuncia" (si apre l'editor) e **aspetta 40 secondi** scrivendo qualcosa a metà.
     - **Cosa aspettarti:** l'editor resta aperto e il testo non si perde; Invio lo spedisce. Se chiudi l'editor con Esc la proposta resta ancora circa 25 secondi.
     - **Cosa riportare:** se l'editor si chiude da solo.
-23. **Invio automatico: due gesti (issue #8).** Apri `/au options`: la riga **Modalità chat** scorre solo privato, anteprima e conferma. La riga **Invio automatico** al primo clic mostra l'avviso in chat e il testo "clic di nuovo per confermare"; al secondo clic si accende. Nella procedura guidata (`/au wizard`, ultimo passo) il pulsante "automatica" funziona allo stesso modo.
+23. **Invio automatico: due gesti (issue #8).** Apri `/au options`: la riga **Modalità chat** scorre solo privato, anteprima e conferma. La riga **Invio automatico** al primo clic mostra l'avviso intero in una finestra di conferma e il testo "spento, leggi prima"; un secondo clic subito dopo non fa nulla; dopo qualche secondo la riga dice "spento, conferma" e il secondo clic (o **Attiva** nella finestra) la accende. Nella guida del primo avvio (`/au wizard`, passo della chat) la carta "automatica" funziona allo stesso modo.
     - **Cosa riportare:** se un solo clic basta, o se il testo del pulsante non cambia.
 24. **Il mouse sopra il riquadro (issue #17).** Fai comparire una frase (`/au narrator`) e tieni il mouse **sopra il testo** durante la dissolvenza.
     - **Cosa aspettarti:** il riquadro resta visibile finché il mouse è sopra. Quando lo sposti svanisce.
@@ -657,7 +657,7 @@ Nulla di questo è stato provato nel client vero. Serve una **capitale affollata
 - **R4b2.1 · Spento di base.** Con `/au debug` leggi la riga delle relazioni: deve dire **proximity false** e **shared list off**. Passa in una città piena di gente, prendi qualcuno con il mouse.
     - **Cosa aspettarti:** nessuna frase di riconoscimento e nessuna nuova persona; il narratore non cambia comportamento.
     - **Cosa riportare:** se il comportamento cambia con l'opzione spenta.
-- **R4b2.2 · Nameplate.** Aggiungi alla lista un amico (o un tuo secondo personaggio), poi accendi **Riconosci chi è vicino** (finestra, oppure `/au relationships proximity on`). `/au chance relation_player 100`. Fatti vedere da lui con le nameplate dei giocatori attive, anche a distanza.
+- **R4b2.2 · Nameplate.** Aggiungi alla lista un amico (o un tuo secondo personaggio), poi accendi **Riconosci chi è vicino** (finestra, oppure `/au relationships proximity on`: due passi, con una finestra di conferma, issue #178). `/au chance relation_player 100`. Fatti vedere da lui con le nameplate dei giocatori attive, anche a distanza.
     - **Cosa aspettarti:** una frase di riconoscimento nel narratore **privato** (mai in chat), **una sola per persona e per sessione** (se esce dal campo e rientra, nessuna seconda), e non più di una proposta al minuto. Nella scheda della persona gli **incontri non salgono** (`Incontri` resta com'era) e non compare nessun nuovo fatto.
     - **Cosa riportare:** se la frase è comparsa, dopo quanto, e se `/au debug` mostra **proximity true (1 proposed, ...)**.
 - **R4b2.3 · Mouseover.** Con la stessa opzione, passa il mouse su un'altra persona **già in lista** (un modello 3D nel mondo, non solo la nameplate).
@@ -676,7 +676,7 @@ Nulla di questo è stato provato nel client vero. Serve una **capitale affollata
     - **Cosa aspettarti:** al massimo una proposta al minuto e dieci per sessione; chi è già stato riconosciuto non pesa. Dopo `/reload` si riparte da zero.
     - **Cosa riportare:** se una pausa di 60 secondi ti sembra troppo corta o troppo lunga.
 - **R4b2.8 · Lista condivisa: accendere.** Nella finestra premi **Condividi con l'account** (oppure `/au relationships share on`).
-    - **Cosa aspettarti:** un **avviso** (privacy e gioco di ruolo) e il pulsante che chiede **Conferma: condividi**; solo il secondo clic (entro 15 secondi) la accende. La finestra entra nello schermo con tre righe di opzioni.
+    - **Cosa aspettarti:** un **avviso** (privacy e gioco di ruolo) in una finestra di conferma e nella finestra delle relazioni; il pulsante dice "spento, leggi prima" e poi "spento, conferma"; solo il secondo clic dopo qualche secondo (entro 30) la accende. La finestra entra nello schermo con tre righe di opzioni.
     - **Cosa riportare:** testo dell'avviso se si taglia o si sovrappone.
 - **R4b2.9 · Condividere.** Con il personaggio A aggiungi una persona e scrivi una nota; poi `/au relationships share all` per le persone che A aveva già. Esci e entra con il personaggio B (stesso account).
     - **Cosa aspettarti:** B vede le persone e le **scelte** di A (nota, assi, sentimenti) ma **non** gli incontri di A; il primo incontro di B con la persona crea i suoi. Una modifica fatta da B compare in A dopo il cambio di personaggio.
@@ -784,6 +784,49 @@ Nessuna API nuova: si prova come suonano le frasi e se i tempi delle situazioni 
 
 ---
 
+## U-wizard: consensi, guida del primo avvio e finestre (aggiunto dalle issue #178, #188 e #181)
+
+Nessuna API nuova, ma tutto ciò che il giocatore vede e clicca: finora è stato provato solo con il client finto. Servono due personaggi (uno nuovo, per vedere il primo avvio) e, per i passi con Total RP 3, Total RP 3 installato. Per rifare il primo avvio: `/au wizard`.
+
+- **U1 · La guida si apre al momento giusto.** Con un personaggio che non ha mai visto la guida, entra in gioco. Ripeti entrando **in combattimento** (se riesci: attacca un animale appena entrato, oppure fai `/reload` durante un combattimento).
+    - **Cosa aspettarti:** la guida compare dopo qualche secondo dalla fine del caricamento, **mai durante la schermata di caricamento**. Se sei in combattimento aspetta che finisca. Compare una sola volta.
+    - **Cosa riportare:** quando è comparsa; se è comparsa in combattimento o sotto la schermata di caricamento.
+- **U2 · La prima pagina.** Guarda la pagina 1.
+    - **Cosa aspettarti:** «Benvenuto, viandante» (o «Welcome, traveller»), una frase che dice che il narratore è **privato** e nulla arriva in chat se non lo scegli tu, un **esempio del narratore** con il tuo nome, le **carte** delle lingue (la scelta ha il bordo dorato e un quadratino pieno). Nei punti in basso: i puntini di avanzamento, «step 1 of 7». Cambia lingua con una carta: tutta la pagina cambia lingua subito.
+    - **Cosa riportare:** testi tagliati o sovrapposti, la guida in inglese e in italiano (screenshot).
+- **U3 · Saltare.** Prova ogni modo: **Salta - tieni i valori predefiniti**, la **x** in alto, il tasto **Esc**, e **Invio** (deve valere «Avanti»). Fallo in punti diversi (pagina 1, pagina 4, ultima).
+    - **Cosa aspettarti:** Salta, x ed Esc chiudono la guida, restano le scelte già fatte e il resto resta predefinito; non torna al prossimo accesso. Invio passa alla pagina dopo. Gli altri tasti (muoverti con WASD) **non** sono bloccati mentre la guida è aperta.
+    - **Cosa riportare:** se Esc apre invece il menu di gioco; se i tasti di movimento smettono di funzionare con la guida aperta (errore grave).
+- **U4 · Cosa può arrivare in chat.** Vai al passo della chat. Clicca **automatica (dove permesso)**.
+    - **Cosa aspettarti:** la carta dice che le emote e `/say` nelle istanze partono da sole **a nome del personaggio, visibili a chi è vicino**; il clic **non** la accende: compare una **finestra di conferma** con l'avviso intero, **Attiva** e **Annulla**. **Attiva** è **disattivato per i primi 2 secondi**. Prova a cliccare due volte di seguito molto in fretta sulla carta o su **Attiva**: non deve accendersi. Dopo la pausa **Attiva** funziona; **Annulla** (o Esc) lascia tutto com'era.
+    - **Cosa riportare:** se la finestra compare **sopra** la guida (deve), se **Attiva** è davvero spento all'inizio, se un doppio clic la accende (errore grave), lo screenshot.
+- **U5 · Prova del narratore.** Nello stesso passo premi **Prova il narratore**.
+    - **Cosa aspettarti:** il riquadro del narratore mostra la frase di prova **per intero e sopra la guida**, **non** coperto da essa: si sposta sotto (o sopra) la guida. Se chiudi la guida torna al suo posto.
+    - **Cosa riportare:** se la frase si vede tutta; dove si è messo il riquadro; se dopo la chiusura è tornato dove lo avevi messo (e se il tuo posto è stato cambiato).
+- **U6 · L'ultima pagina.** Vai all'ultima pagina.
+    - **Cosa aspettarti:** i **quattro tasti** (pronuncia, pausa, un'altra frase, NPC) spiegati, la frase «nessun tasto è assegnato finché non lo scegli tu», dove sta il pulsante «pronuncia» (accanto al riquadro del narratore), `/au options`, `/au help`, `/au wizard`, e **i valori predefiniti** (intensità 50, 45 s tra le frasi, una proposta aspetta 25 s, chat privata, pulsante acceso, Total RP 3 degli altri spento, prossimità spenta, lista condivisa spenta). Il pulsante **Apri i tasti** apre le combinazioni tasti (o dice dove sono); **Apri le impostazioni** apre il pannello.
+    - **Cosa riportare:** se i valori predefiniti scritti corrispondono a quelli veri (`/au options`); se i due pulsanti funzionano.
+- **U7 · Total RP 3 degli altri.** Con Total RP 3 installato (passo «Total RP 3» della guida, oppure la riga **Total RP 3 degli altri** del pannello `/au options`). Clicca la carta/riga.
+    - **Cosa aspettarti:** il primo clic mostra la finestra con l'avviso (solo razza, classe e tratti, mai note o storia); la riga dice «spento, leggi prima» e poi «spento, conferma»; un doppio clic non lo accende; con **Attiva** dopo la pausa si accende. Se **Nome da Total RP 3** è spento, la riga dice **«acceso, serve nome»** e sotto il pannello una riga lo spiega. Spegnerlo è un clic solo.
+    - **Cosa riportare:** il testo della riga (tagliato? sovrapposto?) in italiano e in inglese.
+- **U8 · Lista condivisa e prossimità.** Apri `/au relationships`, scheda **Opzioni**. Clicca **Condividi con l'account**, poi **Riconosci chi è vicino**.
+    - **Cosa aspettarti:** per ciascuno compare la finestra di conferma con l'avviso e, nella finestra delle relazioni, lo stesso avviso sotto la nota sulla privacy, in carattere normale (non minuscolo). Il pulsante dice «spento, leggi prima», poi «spento, conferma». Un doppio clic non accende nulla; dopo la pausa sì. Spegnere è un clic solo e non cancella nulla.
+    - **Cosa riportare:** testi tagliati; se la riga sotto le opzioni che spiega i due consensi si legge.
+- **U9 · I comandi.** `/au mode auto`, `/au relationships share on`, `/au relationships proximity on`, `/au who trp3 on`, ciascuno **due volte**: la seconda subito, la terza dopo qualche secondo.
+    - **Cosa aspettarti:** la prima volta l'avviso (finestra di conferma o testo in chat) e «ripeti dopo qualche secondo»; la seconda subito: «nulla è cambiato, leggi prima»; la terza, dopo una pausa e **entro 30 secondi**, accende. Passati 30 secondi la domanda decade.
+    - **Cosa riportare:** se il comando funziona senza finestra di conferma (testo in chat) o con.
+- **U10 · Le finestre non coprono il narratore.** Fai comparire una proposta (`/au mode confirm`, poi il tasto o il pulsante «pronuncia» finché ne appare una). Apri una dopo l'altra: il diario (`/au journal`), le relazioni (`/au relationships`), l'anima (`/au soul`), la guida (`/au wizard`).
+    - **Cosa aspettarti:** con la proposta in attesa il riquadro del narratore **non resta sotto** nessuna finestra: o si sposta sotto/sopra la finestra, o, se la finestra è troppo grande per lo schermo (relazioni e anima a 768 di altezza), resta **sopra** di essa con la barra **Invia / Modifica / Scarta** raggiungibile. Chiuse le finestre, torna dove lo hai messo (`/au narrator reset` non serve).
+    - **Cosa riportare:** per ogni finestra: coperto? spostato? sopra? la risoluzione e la scala dell'interfaccia.
+- **U11 · Le finestre si alzano.** Apri il diario e da lì, con il pulsante «...», le relazioni. Clicca sul diario dietro, poi sulle relazioni, poi sull'anima (`/au soul`).
+    - **Cosa aspettarti:** la finestra cliccata va **davanti** alle altre; la seconda finestra **non** si apre esattamente sopra la prima (è spostata in basso a destra) e i loro pulsanti non si mescolano. Una finestra che hai spostato tu resta dove l'hai messa.
+    - **Cosa riportare:** se una finestra resta dietro un'altra dopo il clic; se una finestra compare **sopra** la finestra di conferma dei consensi (non deve).
+- **U12 · Il dialogo ambientale.** Apri un dialogo con un NPC (`/au talk` o il pulsante) mentre il narratore mostra una frase.
+    - **Cosa aspettarti:** la finestra del dialogo non copre il riquadro del narratore.
+    - **Cosa riportare:** se si sovrappongono.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -813,6 +856,9 @@ R4 morte e ritorno ..... umore dopo la morte ______  frase di ritorno allegra? (
 R4 locanda/riaccesso ... sereno in locanda? ___  solo emozioni lente salvate? ___  testo nel file? (deve essere NO) ___
 R4 carattere ........... stoico più calmo? ___  vendicativo più arrabbiato? ___
 R4 spente .............. off in /au debug? ___  file vuoto? ___
+U guida .................. compare dopo il caricamento? ___  mai in combattimento? ___  saltare: Salta/x/Esc/Invio ok? ___  WASD ok? ___
+U consensi ............... finestra di conferma? ___  «Attiva» spento 2 s? ___  doppio clic non passa (4 consensi)? ___  «acceso, serve nome»? ___
+U finestre ............... il narratore non resta sotto? ___  sopra se troppo grande? ___  clic alza? ___  cascata? ___  sopra la conferma? (deve essere NO) ___
 R3c monologhi .......... visti (quanti) ______  combinazioni che stonano ______  mai in chat? ___
 R3c situazioni ......... vittoria di misura ___  livello sudato ___  ritorno sotto la pioggia ___  una sola frase? ___  secondi tra salute bassa e vittoria ______
 SP-01 caricamento ....... (OK / NO / nota)   Client build: ______  Errori rossi: sì/no

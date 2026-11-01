@@ -25,11 +25,11 @@ You can also change the mode in the [[wizard|First-Run-Wizard]] (last step) or i
 
 ### Turning on automatic mode
 
-Automatic mode means lines go out in your character's name **without you doing anything**. So it never turns on with one click:
+Automatic mode means lines go out in your character's name, seen by everyone nearby, **without you doing anything**. So it never turns on with one click, and never with a double-click:
 
-1. Type `/au mode auto` (or click **Automatic sending** in the panel, or the automatic button in the wizard).
-2. A warning explains what will happen.
-3. Repeat the same command or click again **within 10 seconds** to confirm. Otherwise nothing changes.
+1. Type `/au mode auto` (or click **Automatic sending** in the panel, or the automatic card in the wizard).
+2. A **confirmation dialog** shows the whole warning: emotes, and `/say` inside instances, would be posted by themselves, in your character's name, visible to everyone nearby, without you pressing anything. Its **Turn on** button is disabled for the first two seconds. Without a dialog (some clients), the same warning goes to the chat box.
+3. Press **Turn on**, or repeat the same command or click again **after the short pause and within 30 seconds**. A second click that comes too soon is ignored, and the button says *off, read first* and then *off, confirm*. If you do nothing, nothing changes.
 
 To leave automatic mode, choose any other mode, for example `/au mode confirm` or `/au mode private`. Clicking **Automatic sending** while it is on switches you to *Confirm to send*.
 

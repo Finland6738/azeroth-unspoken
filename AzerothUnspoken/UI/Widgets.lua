@@ -162,3 +162,148 @@ function W.RestorePosition(frame, pos, default)
 		frame:SetPoint(default[1], UIParent, default[2], default[3], default[4])
 	end
 end
+
+-- The flat look of the first-run guide (#188, the "proposed" design of the UI review): warm dark surfaces, a thin gold
+-- edge, flat buttons. Only coloured textures, so it works in every client. Other windows may adopt it later.
+W.PALETTE = {
+	surface = { 0.06, 0.05, 0.03 },   -- window
+	band = { 0.09, 0.07, 0.04 },      -- title band
+	edge = { 0.42, 0.33, 0.13 },      -- outer edge of a window
+	rule = { 0.33, 0.27, 0.1 },
+	gold = { 1, 0.82, 0 },
+	goldDim = { 0.79, 0.64, 0.15 },
+	card = { 0.1, 0.085, 0.06 },
+	cardEdge = { 0.27, 0.23, 0.15 },
+	cardOn = { 0.17, 0.14, 0.04 },
+	muted = { 0.3, 0.26, 0.18 },
+}
+
+-- four 1-unit edges around a frame; returns them so that they can be recoloured
+local function Edges(frame, width, height)
+	local edges = {}
+	for _, e in ipairs({ { "TOPLEFT", "TOPRIGHT", width, 1 }, { "BOTTOMLEFT", "BOTTOMRIGHT", width, 1 },
+		{ "TOPLEFT", "BOTTOMLEFT", 1, height }, { "TOPRIGHT", "BOTTOMRIGHT", 1, height } }) do
+		local t = frame:CreateTexture(nil, "BORDER")
+		t:SetPoint(e[1])
+		t:SetSize(e[3], e[4])
+		table.insert(edges, t)
+	end
+	return edges
+end
+
+local function Tint(texture, c, a)
+	if texture.SetColorTexture then texture:SetColorTexture(c[1], c[2], c[3], a or 1) end
+end
+
+---Window chrome of the flat design: a surface, a gold edge and, with `band` units, a darker title band.
+---@param frame table
+---@param width number
+---@param height number
+---@param band? number height of the title band
+---@return table parts { bg, edges, band }
+function W.FlatWindow(frame, width, height, band)
+	local P = W.PALETTE
+	local parts = { bg = W.Background(frame, P.surface[1], P.surface[2], P.surface[3], 0.97) }
+	parts.edges = Edges(frame, width, height)
+	for _, t in ipairs(parts.edges) do Tint(t, P.edge) end
+	if band then
+		parts.band = frame:CreateTexture(nil, "BORDER")
+		parts.band:SetPoint("TOPLEFT", 1, -1)
+		parts.band:SetPoint("TOPRIGHT", -1, -1)
+		parts.band:SetHeight(band)
+		Tint(parts.band, P.band)
+	end
+	return parts
+end
+
+---A flat button. kind: "primary" (gold fill), "ghost" (gold outline, the default) or "text" (no box, left aligned).
+---`:SetText` and `:GetText` work as on any button.
+---@param parent table
+---@param text? string
+---@param width number
+---@param height? number
+---@param onClick? fun(self: table, button: string)
+---@param kind? "primary"|"ghost"|"text"
+---@return table button
+function W.FlatButton(parent, text, width, height, onClick, kind)
+	local P = W.PALETTE
+	kind = kind or "ghost"
+	height = height or 24
+	local b = CreateFrame("Button", nil, parent)
+	b:SetSize(width, height)
+	b.bg = W.Background(b, 0, 0, 0, 0)
+	b.edges = kind == "text" and {} or Edges(b, width, height)
+	b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	if kind == "text" then
+		b.label:SetPoint("LEFT", 2, 0)
+	else
+		b.label:SetPoint("CENTER", 0, 0)
+	end
+	local function Paint(hover)
+		if kind == "primary" then
+			Tint(b.bg, hover and { 0.58, 0.44, 0.08 } or { 0.45, 0.34, 0.06 }, 1)
+			for _, t in ipairs(b.edges) do Tint(t, P.goldDim) end
+			b.label:SetTextColor(1, 0.95, 0.77)
+		elseif kind == "ghost" then
+			Tint(b.bg, hover and { 0.2, 0.16, 0.06 } or { 0, 0, 0 }, hover and 1 or 0)
+			for _, t in ipairs(b.edges) do Tint(t, P.goldDim, hover and 1 or 0.55) end
+			b.label:SetTextColor(0.9, 0.85, 0.72)
+		else
+			b.label:SetTextColor(hover and 1 or 0.72, hover and 0.82 or 0.66, hover and 0 or 0.6)
+		end
+	end
+	function b:SetText(t) self.label:SetText(t or "") end
+	function b:GetText() return self.label:GetText() end
+	b:SetText(text)
+	if onClick then b:SetScript("OnClick", onClick) end
+	-- hooks, so a tooltip set later with W.Tooltip does not replace the hover colour
+	b:HookScript("OnEnter", function() Paint(true) end)
+	b:HookScript("OnLeave", function() Paint(false) end)
+	Paint(false)
+	return b
+end
+
+-- Card (#188): a clickable panel with a title, a description inside it and a marker; the choice is shown with a gold
+-- border and a filled marker, never by colour alone (the description can also say it in words). Only coloured
+-- textures, like everything here. `:SetCard(title, sub, on, tag)` redraws; `:GetText()` is the title.
+---@param parent table
+---@param width number
+---@param height number
+---@param onClick? fun(self: table, button: string)
+---@return table card
+function W.Card(parent, width, height, onClick)
+	local P = W.PALETTE
+	local b = CreateFrame("Button", nil, parent)
+	b:SetSize(width, height)
+	b.bg = W.Background(b, P.card[1], P.card[2], P.card[3], 1)
+	b.edges = Edges(b, width, height)
+	b.mark = b:CreateTexture(nil, "ARTWORK")
+	b.mark:SetSize(10, 10)
+	b.mark:SetPoint("TOPRIGHT", -12, -12)
+	b.title = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	b.title:SetPoint("TOPLEFT", 12, -8)
+	b.title:SetPoint("TOPRIGHT", -30, -8)
+	b.title:SetJustifyH("LEFT")
+	b.sub = b:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+	b.sub:SetPoint("TOPLEFT", b.title, "BOTTOMLEFT", 0, -4)
+	b.sub:SetWidth(width - 24)
+	b.sub:SetJustifyH("LEFT")
+	b.sub:SetJustifyV("TOP")
+	if onClick then b:SetScript("OnClick", onClick) end
+	b:HookScript("OnEnter", function(self)
+		if not self.on then Tint(self.bg, { 0.14, 0.12, 0.08 }, 1) end
+	end)
+	b:HookScript("OnLeave", function(self) self:SetCard(nil, nil, self.on) end)
+	function b:SetText(text) self.title:SetText(text or "") end
+	function b:GetText() return self.title:GetText() end
+	function b:SetCard(title, sub, on, tag)
+		if title then self.title:SetText(tag and (title .. "  |cffffd100(" .. tag .. ")|r") or title) end
+		if sub then self.sub:SetText(sub) end
+		self.on = on == true
+		for _, t in ipairs(self.edges) do Tint(t, self.on and P.gold or P.cardEdge, 1) end
+		Tint(self.mark, self.on and P.gold or P.muted, 1)
+		Tint(self.bg, self.on and P.cardOn or P.card, 1)
+	end
+	b:SetCard(nil, nil, false)
+	return b
+end

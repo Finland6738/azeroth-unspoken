@@ -63,6 +63,7 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 
 - **Just play.** Lines come by themselves. Their frequency depends on [[intensity|Intensity-and-Depth]].
 - **Move the box.** Drag it with the mouse. Lock it in place from the [[settings panel|Settings]] (**Position locked**). Put it back with `/au narrator reset`.
+- **Windows never hide it.** When the guide, the journal, the relationships or the character window open on top of the box, the box steps out from under them (below, or above) and goes back to your own place when they close; the place you chose is never changed. While it shows a chat proposal or the guide's test line it is above every window. A window too big for the screen to leave room (relationships on a 768-unit-high screen) cannot be avoided, so the box stays above it. Windows you click come to the front, and a window that opens over another one is shifted a little.
 - **Pause at once.** Click the **II** button on the box, use the pause key, or type `/au pause`. Again to resume. The pause lasts until you resume it or log out.
 - **Keep a line on screen.** Put the mouse over the box: the line stays as long as the mouse is there, and a waiting chat proposal stops counting down.
 - **Read again.** Click the **H** button on the box, or type `/au narrator history`, to see recent lines.

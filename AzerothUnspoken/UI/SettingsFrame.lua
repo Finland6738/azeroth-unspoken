@@ -39,6 +39,16 @@ end
 
 local function OnOff(v) return v and NS:L("on") or NS:L("off") end
 
+-- the state of a consent in words (#178): "on", "off", and for a question that is open "off, read the warning" or
+-- "off, click again to confirm"; `needs` adds the dependency of a consent that is on but does nothing yet
+local function ConsentState(id, on, needs)
+	if on then return needs and NS:L("consent_on_needs", needs) or OnOff(true) end
+	local state = NS.Consent:State(id)
+	if state == "reading" then return NS:L("consent_off_reading") end
+	if state == "ready" then return NS:L("consent_off_ready") end
+	return OnOff(false)
+end
+
 -- the next value of a list in ascending order, after the current one; nil after the last
 local function NextAbove(list, current)
 	for _, v in ipairs(list) do
@@ -108,9 +118,7 @@ local function CreatePanel()
 		function() NS.Gateway:CycleMode() end)
 	-- l'invio automatico è una scelta a parte, con avviso e conferma: non si raggiunge scorrendo le modalità
 	Row(1, 7, function()
-		local state = NS.Gateway:IsAutoActive() and OnOff(true)
-			or (NS.Gateway:IsAutoArmed() and NS:L("auto_confirm_again") or OnOff(false))
-		return NS:L("opt_auto") .. ": " .. state
+		return NS:L("opt_auto") .. ": " .. ConsentState("auto", NS.Gateway:IsAutoActive())
 	end, function()
 		if NS.Gateway:IsAutoActive() then NS.Gateway:SetMode("CONFIRM_TO_SEND") else NS.Gateway:SelectAuto() end
 	end)
@@ -158,11 +166,15 @@ local function CreatePanel()
 	Row(2, 12, function() return NS:L("opt_journal") end, function() if NS.JournalFrame then NS.JournalFrame:Toggle() end end)
 	Row(2, 13, function() return NS:L("opt_relations") end, function() if NS.RelationsFrame then NS.RelationsFrame:Toggle() end end)
 	-- consenso a leggere il Total RP 3 pubblico degli altri giocatori: spento di base (#37)
-	local others = Row(2, 14, function() return NS:L("opt_trp3_others") .. ": " .. OnOff(NS.db.interlocutor.trp3Others) end,
-		function()
-			local on = NS.Interlocutor:SetTRP3Consent(not NS.db.interlocutor.trp3Others)
-			NS:Print(NS:L(on and "other_trp3_on" or "other_trp3_off"))
-		end)
+	-- #178: on in two steps (the warning, then the confirmation); it does nothing without "Name from Total RP 3"
+	local others = Row(2, 14, function()
+		local needs = not NS.db.modules.totalRP3 and NS:L("consent_needs_name_short") or nil
+		return NS:L("opt_trp3_others") .. ": " .. ConsentState("trp3others", NS.db.interlocutor.trp3Others, needs)
+	end, function()
+		local r = NS.Interlocutor:ChangeTRP3Consent()
+		if r == "on" or r == "off" then NS:Print(NS:L(r == "on" and "other_trp3_on" or "other_trp3_off"))
+		elseif r == "wait" then NS:Print(NS:L("consent_wait")) end
+	end)
 	W.Tooltip(others, function() return NS:L("opt_trp3_others_tip") end)
 
 	-- moduli: griglia a quattro colonne, sotto la riga 14 (-48 - 13 * ROW - 24 = -410)
@@ -209,11 +221,14 @@ local function CreatePanel()
 		help:SetText((needsReload and (NS:L("packs_reload_needed", NS.languages[NS:Lang()].name,
 			NS.languages[NS:TextLang()].name) .. "\n\n") or "")
 			.. NS:L("chatmode_" .. NS.db.chat.mode .. "_help") .. "\n\n"
+			.. ((NS.db.interlocutor.trp3Others and not NS.db.modules.totalRP3) and (NS:L("consent_trp3_idle") .. "\n\n") or "")
 			.. NS:L("panel_help", total, #NS.Engine.packOrder))
 	end
 	-- il cambio di lingua ritraduce le etichette fisse
 	function panel:Rebuild() self:Refresh() end
 	panel:SetScript("OnShow", function() panel:Refresh() end)
+	-- the state of a consent changes with the time (the confirmation opens, the question expires)
+	NS.Consent:OnChange(function() if panel:IsShown() then panel:Refresh() end end)
 
 	if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
 		local category = Settings.RegisterCanvasLayoutCategory(panel, panel.name)

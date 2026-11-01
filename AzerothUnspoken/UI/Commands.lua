@@ -169,8 +169,9 @@ local function Mode(rest, db)
 	if rest ~= "" then
 		local mode = NS.Gateway:ParseMode(rest)
 		if mode == "AUTO_ONLY_IF_ALLOWED" then
-			-- l'invio automatico si sceglie con due comandi: il primo avvisa, il secondo (entro 10 s) conferma
-			if NS.Gateway:SelectAuto() == "warned" then NS:Print(NS:L("auto_repeat")) end
+			-- l'invio automatico si sceglie con due comandi: il primo avvisa, il secondo (dopo qualche secondo, #178) conferma
+			local r = NS.Gateway:SelectAuto()
+			if r == "warned" then NS:Print(NS:L("consent_repeat")) elseif r == "wait" then NS:Print(NS:L("consent_wait")) end
 		elseif mode then
 			NS.Gateway:SetMode(mode)
 		else

@@ -2,9 +2,10 @@
 
 Each function returns the HTML of one window placed in a stage. Coordinates: WoW TOPLEFT (x, y) -> left x, top -y.
 """
+import os
 import re
 
-from mockkit import VOICE, VOICE_COLOR, btn, edit, fs, frame, sel, slider, wow, tooltip
+from mockkit import VOICE, VOICE_COLOR, btn, edit, fs, frame, sel, slider, style, wow, tooltip
 
 FRAME_BG = (0.05, 0.04, 0.09, 0.95)      # W.Background(frame, 0.05, 0.04, 0.09, 0.95): journal, relations, profile
 WIZARD_BG = (0.05, 0.04, 0.09, 0.94)
@@ -76,132 +77,151 @@ def history_line(time, speaker, text, lang="en", sent=None):
 # ---------------------------------------------------------------------------------------------------------------
 # Wizard (UI/Wizard.lua): 480 x 330, CENTER (0, 40), strata DIALOG
 # ---------------------------------------------------------------------------------------------------------------
-WIZ = {
-    "en": {"title": "Azeroth Unspoken", "step": "step %d of %d", "skip": "Skip", "back": "Back", "next": "Next",
-           "finish": "Finish",
-           "steps": ["Language", "What experience do you want?", "Intensity", "Style", "Modules", "Total RP 3",
-                     "Chat and test"],
-           "language_help": "Which language should the narrator's lines be in? It does not depend on the client language.",
-           "preset_help": "These are combinations of the modules: you can change them any time.",
-           "presets": [("Complete", "All modules: character, world, NPCs, memory, stories."),
-                       ("Personal RPG", "Your character: thoughts, memories, personal stories."),
-                       ("Narrative world", "Places, atmosphere and NPCs, less introspection."),
-                       ("Social RP", "For playing with others. Nothing is shared without your consent.")],
-           "intensity_help": "How often should the narrator speak up? It changes frequency, not length or style.",
-           "band3": "50-60 - Balanced: atmosphere, memories and long silences.", "suggested": "(suggested value)",
-           "depth_help": "How elevated should the language be? It changes which lines the narrator prefers: the others stay possible, but less likely.",
-           "depths": [("Natural", "Everyday and concise. \"These walls have stood for centuries. I wonder who lived here.\""),
-                      ("Literary", "Evocative but readable. \"The stones still keep the traces of those who called this place home.\""),
-                      ("Elevated", "Solemn and ceremonial. \"The towers fell and the voices went quiet, yet the stones still keep watch over the lost days.\"")],
-           "modules_help": "Pick the modules. Those marked * arrive in later versions: you can already set them. The Social module is a placeholder: it shares nothing without your explicit consent.",
-           "modules": [("Personal", True, True), ("World", True, True), ("NPC dialogues", True, True),
-                       ("Memory", True, True), ("Relationships", True, True), ("Stories", True, True),
-                       ("Social", True, False), ("Audio", False, False)],
-           "social_consent": "Social RP: joining scenes with other players will always be voluntary (opt-in) and shares no memories or data without your consent.",
-           "trp3_help": "Total RP 3 is installed. The addon can use your RP profile's name in lines (yours only, name only). It works 100% without it too.",
-           "trp3_btn": "Name from Total RP 3",
-           "trp3_others_help": "Optional, off by default: read only race, class and traits from OTHER players' public profiles, so the narrator can react to who is in front of you. Never notes or history.",
-           "trp3_others_btn": "Read others' Total RP 3",
-           "chat_help": "What may reach chat? By default nothing: the narrator stays private. Whatever you pick, every send in your character's name starts only from a gesture of yours, except in 'automatic'.",
-           "modes": [("private narrator only", "Private narrator only (default): lines appear in the box and stay visible to you alone. Nothing goes to chat."),
-                     ("preview", "Preview: the character's lines become proposals. The 'speak' key opens the editor, where you can change them and send with Enter."),
-                     ("confirm to send", "Confirm to send: the proposal is ready and the 'speak' key or button sends it in one gesture. You can always edit or discard it."),
-                     ("automatic (where allowed)", "Automatic where allowed: emotes go out by themselves, and /say in instances; the rest stays a proposal. A few per minute, always. It turns on only with an explicit confirmation.")],
-           "confirm_again": "click again to confirm", "test": "Try the narrator"},
-    "it": {"title": "Azeroth Unspoken", "step": "passo %d di %d", "skip": "Salta", "back": "Indietro", "next": "Avanti",
-           "finish": "Fine",
-           "steps": ["Lingua", "Che esperienza vuoi?", "Intensità", "Stile", "Moduli", "Total RP 3", "Chat e prova"],
-           "language_help": "In che lingua vuoi leggere le frasi del narratore? Non dipende dalla lingua del client.",
-           "preset_help": "Sono combinazioni dei moduli: potrai cambiarle quando vuoi.",
-           "presets": [("Completo", "Tutti i moduli: persona, mondo, NPC, memoria, storie."),
-                       ("RPG personale", "Il tuo personaggio: pensieri, ricordi, storie personali."),
-                       ("Mondo narrativo", "Luoghi, atmosfera e NPC, meno introspezione."),
-                       ("Social RP", "Per giocare con altri. Nulla si condivide senza il tuo consenso.")],
-           "intensity_help": "Quanto spesso deve farsi sentire il narratore? Cambia la frequenza, non la lunghezza né lo stile.",
-           "band3": "50-60 - Bilanciato: atmosfera, ricordi e lunghi silenzi.", "suggested": "(valore consigliato)",
-           "depth_help": "Quanto deve essere elevato il linguaggio? Cambia quali frasi il narratore preferisce: le altre restano possibili, ma meno probabili.",
-           "depths": [("Naturale", "Quotidiano e conciso. «Queste mura sono qui da secoli. Chissà chi ci viveva.»"),
-                      ("Letterario", "Evocativo ma leggibile. «Le pietre custodiscono ancora le tracce di chi chiamava questo luogo casa.»"),
-                      ("Elevato", "Solenne e cerimoniale. «Caddero le torri e tacquero le voci, ma le pietre ancora vegliano sui giorni perduti.»")],
-           "modules_help": "Scegli i moduli. Quelli con * arriveranno nelle prossime versioni: li puoi già impostare. Il modulo Social è un segnaposto: non condivide nulla senza un tuo consenso esplicito.",
-           "modules": [("Personale", True, True), ("Mondo", True, True), ("Dialoghi NPC", True, True),
-                       ("Memoria", True, True), ("Relazioni", True, True), ("Storie", True, True),
-                       ("Social", True, False), ("Audio", False, False)],
-           "social_consent": "Social RP: partecipare a scene con altri giocatori sarà sempre un'adesione volontaria (opt-in) e non condivide ricordi né dati senza il tuo consenso.",
-           "trp3_help": "Total RP 3 è installato. L'addon può usare il nome del tuo profilo RP nelle frasi (solo il tuo, solo il nome). Funziona al 100% anche senza.",
-           "trp3_btn": "Nome da Total RP 3",
-           "trp3_others_help": "Facoltativo, spento di base: leggere dai profili pubblici degli ALTRI giocatori solo razza, classe e tratti, per far reagire il narratore a chi hai davanti. Mai note né storia.",
-           "trp3_others_btn": "Leggi il Total RP 3 degli altri",
-           "chat_help": "Cosa può arrivare in chat? Per impostazione predefinita nulla: il narratore resta privato. Qualunque modalità scegli, ogni invio a nome del tuo personaggio parte solo da un tuo gesto, tranne in 'automatica'.",
-           "modes": [("solo narratore privato", "Solo narratore privato (predefinita): le frasi compaiono nel riquadro e restano visibili solo a te. Nulla va in chat."),
-                     ("anteprima", "Anteprima: le frasi del personaggio diventano proposte. Il tasto 'pronuncia' apre l'editor, dove puoi cambiarle e inviarle con Invio."),
-                     ("conferma per inviare", "Conferma per inviare: la proposta è pronta, il tasto o il pulsante 'pronuncia' la invia con un solo gesto. Puoi sempre modificarla o scartarla."),
-                     ("automatica (dove permesso)", "Automatica dove permesso: le emote partono da sole e il /say nelle istanze; il resto resta una proposta. Poche al minuto, sempre. Si attiva solo con una conferma esplicita.")],
-           "confirm_again": "clic di nuovo per confermare", "test": "Prova il narratore"},
-}
+# ---------------------------------------------------------------------------------------------------------------
+# Interface texts: read from the addon's own locale files, so a mockup can never show a text the addon does not have
+# ---------------------------------------------------------------------------------------------------------------
+_REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+_PAIR = re.compile(r'\b([A-Za-z][A-Za-z0-9_]*) = "((?:[^"\\]|\\.)*)"')
+_STR = {}
 
 
-def wizard(step, lang="en", trp3=False, left=0, top=0, auto_armed=False, mode=0, hover_skip=False):
-    """step 1..7 (6 = Total RP 3, shown only when it is installed)."""
-    t = WIZ[lang]
-    total = 7 if trp3 else 6
-    number = step if (trp3 or step < 6) else step - 1
-    title = f"{t['title']} - {t['step'] % (number, total)}: {t['steps'][step - 1]}"
-    c = []   # content: TOPLEFT of the content frame = (0, -36) of the wizard
+def ui(lang, key, *args):
+    """The interface text `key` in `lang` (en | it) from Data/<lang>/Interface.lua and RelationsUI.lua."""
+    if lang not in _STR:
+        table = {}
+        folder = {"en": "enUS", "it": "itIT"}[lang]
+        for name in ("Interface.lua", "RelationsUI.lua"):
+            text = open(os.path.join(_REPO, "AzerothUnspoken", "Data", folder, name), encoding="utf-8").read()
+            for k, v in _PAIR.findall(text):
+                table[k] = v.replace("\\n", "\n").replace('\\"', '"').replace("\\\\", "\\")
+        _STR[lang] = table
+    s = _STR[lang][key]
+    return s % args if args else s
+
+
+# Config.defaults, the values the guide states (Wizard:DefaultsLine reads them at run time)
+DEFAULTS = {"preset": "complete", "intensity": 50, "proseDepth": "literary", "chatMode": "PRIVATE"}
+LANG_NAMES = {"en": "English", "it": "Italiano"}
+MODES = ["PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED"]
+MODULES = [("personal", True), ("world", True), ("npc", True), ("memory", True), ("relations", True),
+           ("storyArcs", True), ("social", False), ("audio", False)]
+LIVE = {"personal", "world", "npc", "memory", "relations", "storyArcs"}
+
+
+def wcard(left, top, w, h, title, sub, on=False, tag=None, lang="en"):
+    """A card of the guide (Widgets.lua W.Card): a gold border and a filled marker when chosen; the text says the rest."""
+    t = title + (f"  |cffffd100({tag})|r" if tag else "")
+    return (f'<div class="wcard{" on" if on else ""}" style="{style(left=left, top=top, width=w, height=h)}">'
+            f'<div class="wm"></div>{fs(t, "gfn", left=12, top=8, width=w - 42, mode="trunc")}'
+            f'{fs(sub, "gfhs", left=12, top=26, width=w - 24)}</div>')
+
+
+def fbtn(text, w, kind="ghost", h=24, **pos):
+    """A flat button of the guide (Widgets.lua W.FlatButton): primary (gold fill), ghost (gold outline), text (no box)."""
+    return f'<div class="p"><div class="pbtn {kind}" style="{style(width=w, height=h, **pos)}">{wow(text)}</div></div>'
+
+
+def popup(left, top, width, height, text, accept, cancel, accept_disabled=True):
+    """A client confirmation dialog (StaticPopup) drawn as a plain stand-in: the whole warning, explicit buttons."""
+    return (f'<div class="abs" style="{style(left=left, top=top, width=width, height=height)};border:2px solid #7b7b8f;'
+            f'border-radius:6px;background:rgba(8,6,14,0.97)">'
+            + fs(text, "gfh", left=16, top=14, width=width - 32)
+            + btn(accept, 150, 24, left=width // 2 - 156, bottom=14, state="disabled" if accept_disabled else "")
+            + btn(cancel, 150, 24, left=width // 2 + 6, bottom=14) + '</div>')
+
+
+def wizard(step, lang="en", trp3=False, left=0, top=0, mode=0, intensity=50, auto_state="", trp3_others="",
+           name_on=False):
+    """The first-run guide, 520 x 440 (UI/Wizard.lua). Steps 1..8; 6 (Total RP 3) only when it is installed, 8 is
+    the keys page. `mode` is the chosen chat mode (0..3), `auto_state` "" | "reading" | "ready" is the question of
+    automatic sending, `trp3_others` "" | "off" | "needs" the state of reading others' profiles."""
+    L = lambda key, *a: ui(lang, key, *a)  # noqa: E731
+    visible = [s for s in range(1, 9) if trp3 or s != 6]
+    number, total = visible.index(step) + 1, len(visible)
+    c = []   # content: its TOPLEFT is (0, -64) of the window
+    Y = 64
+    heads = {1: "wiz_step_language", 2: "wiz_step_preset", 3: "wiz_step_intensity", 4: "wiz_step_depth",
+             5: "wiz_step_modules", 6: "wiz_step_trp3", 7: "wiz_step_chat", 8: "wiz_step_keys"}
+    c.append(fs(L(heads[step]), "gfnl", left=20, top=Y + 2, width=480))
     if step == 1:
-        c.append(fs(t["language_help"], "gfh", left=16, top=8, width=448))
-        for i, (name, on) in enumerate((("Italiano", lang == "it"), ("English", lang == "en"))):
-            c.append(btn(sel(name, on), 220, 26, left=16, top=60 + i * 32))
+        c.append(fs(L("wiz_welcome_text"), "gfh", left=20, top=Y + 30, width=480))
+        c.append(f'<div class="abs" style="left:20px;top:{Y + 72}px;width:480px;height:46px;background:rgba(8,5,15,.95)">'
+                 f'<div class="abs" style="left:0;top:0;width:3px;height:46px;background:#b9a1ff"></div>'
+                 + fs("|cffb9a1ff" + L("voice_narrator") + "|r", "gfns", left=12, top=6)
+                 + fs(L("wiz_sample", "Elyra"), "gfh", left=12, top=22, width=456) + "</div>")
+        c.append(fs(L("wiz_language_label"), "gfns", left=20, top=Y + 134))
+        for i, code in enumerate(("en", "it")):
+            c.append(wcard(20 + i * 252, Y + 154, 236, 56, LANG_NAMES[code], L("wiz_language_card"), on=code == lang))
+        c.append(fs(L("wiz_language_help"), "gfhs", left=20, top=Y + 222, width=480))
     elif step == 2:
-        c.append(fs(t["preset_help"], "gfh", left=16, top=8, width=448))
-        for i, (name, help_) in enumerate(t["presets"]):
-            y = 64 + i * 40
-            c.append(btn(sel(name, i == 0), 200, 26, left=16, top=y))
-            c.append(fs(help_, "gfhs", left=226, top=y + 13, width=230, extra=";transform:translateY(-50%)"))
+        c.append(fs(L("wiz_preset_help"), "gfhs", left=20, top=Y + 30, width=480))
+        for i, name in enumerate(("complete", "personal", "world", "social")):
+            c.append(wcard(20, Y + 54 + i * 58, 480, 52, L("preset_" + name), L("preset_" + name + "_help"),
+                           on=name == DEFAULTS["preset"], tag=L("wiz_default_tag") if name == DEFAULTS["preset"] else None))
     elif step == 3:
-        c.append(fs(t["intensity_help"], "gfh", left=16, top=8, width=448))
-        c.append(btn("-", 30, 26, left=100, top=106))
-        c.append(fs("50", "gfnl", left=150, top=110, width=120))
-        c.append(btn("+", 30, 26, left=230, top=106))
-        c.append(fs(t["band3"] + "\n\n" + t["suggested"], "gfh", left=16, top=150, width=448))
+        c.append(fs(L("wiz_intensity_help"), "gfh", left=20, top=Y + 30, width=480))
+        c.append(fbtn("-", 30, h=26, left=20, top=Y + 84))
+        c.append(fs(str(intensity), "gfnl", left=62, top=Y + 88, width=60, extra=";text-align:center"))
+        c.append(fbtn("+", 30, h=26, left=126, top=Y + 84))
+        band = {50: 3}.get(intensity, 3)
+        c.append(fs(L("intensity_band_%d" % band) + "\n\n" + L("wiz_suggested"), "gfh", left=20, top=Y + 130, width=480))
     elif step == 4:
-        c.append(fs(t["depth_help"], "gfh", left=16, top=8, width=448))
-        for i, (name, ex) in enumerate(t["depths"]):
-            y = 64 + i * 66
-            c.append(btn(sel(name, i == 1), 130, 26, left=16, top=y))
-            c.append(fs(ex, "gfhs", left=156, top=y - 4, width=300))
+        c.append(fs(L("wiz_depth_help"), "gfhs", left=20, top=Y + 30, width=480))
+        for i, d in enumerate(("natural", "literary", "elevated")):
+            c.append(wcard(20, Y + 62 + i * 76, 480, 70, L("depth_" + d), L("depth_%s_example" % d),
+                           on=d == DEFAULTS["proseDepth"], tag=L("wiz_default_tag") if d == DEFAULTS["proseDepth"] else None))
     elif step == 5:
-        c.append(fs(t["modules_help"], "gfhs", left=16, top=8, width=448))
-        for i, (name, on, live) in enumerate(t["modules"]):
-            col, row = i % 2, i // 2
-            c.append(btn(sel(name + ("" if live else " *"), on), 210, 24, left=16 + col * 226, top=56 + row * 30))
-        c.append(fs(t["social_consent"], "gfhs", left=16, top=190, width=448))
+        c.append(fs(L("wiz_modules_help"), "gfhs", left=20, top=Y + 30, width=480))
+        for i, (m, on) in enumerate(MODULES):
+            nm = L("module_" + m) + ("" if m in LIVE else " *")
+            c.append(wcard(20 + (i % 2) * 252, Y + 66 + (i // 2) * 50, 236, 44, nm, L("on" if on else "off").capitalize(), on=on))
+        c.append(fs(L("wiz_social_consent"), "gfhs", left=20, top=Y + 270, width=480))
     elif step == 6:
-        c.append(fs(t["trp3_help"], "gfh", left=16, top=8, width=448))
-        c.append(btn(sel(t["trp3_btn"], True), 260, 26, left=16, top=110))
-        c.append(fs(t["trp3_others_help"], "gfhs", left=16, top=148, width=448))
-        c.append(btn(t["trp3_others_btn"], 260, 26, left=16, top=198))
+        c.append(fs(L("wiz_trp3_help"), "gfh", left=20, top=Y + 30, width=480))
+        c.append(wcard(20, Y + 70, 480, 62, L("opt_rpname"), L("on" if name_on else "off").capitalize(), on=name_on))
+        if trp3_others == "needs":
+            state, on = L("consent_on_needs", L("opt_rpname")), True
+        else:
+            state, on = L("off"), False
+        c.append(wcard(20, Y + 142, 480, 96, L("opt_trp3_others"), state + ". " + L("wiz_trp3_others_help"), on=on))
     elif step == 7:
-        c.append(fs(t["chat_help"], "gfhs", left=16, top=8, width=448))
-        for i, (short, help_) in enumerate(t["modes"]):
-            y = 70 + i * 30
-            label = t["confirm_again"] if (i == 3 and auto_armed) else sel(short, i == mode)
-            c.append(btn(label, 170, 24, left=16, top=y))
-            c.append(fs(help_, "gfhs", left=194, top=y + 12, width=270, extra=";transform:translateY(-50%)"))
-        c.append(btn(t["test"], 200, 26, left=16, top=204))
-    content = f'<div class="abs" style="left:0;right:0;top:36px;bottom:48px">{"".join(c)}</div>'
-    last = step == 7
-    chrome = (fs(title, "gfn", left=16, top=12, width=448)
-              + btn(t["skip"], 100, 24, left=16, bottom=14, state="hover" if hover_skip else "")
-              + btn(t["finish"] if last else t["next"], 110, 24, right=16, bottom=14)
-              + (btn(t["back"], 100, 24, right=134, bottom=14) if step > 1 else ""))
-    return frame(content + chrome, bg=WIZARD_BG, left=left, top=top, width=480, height=330)
+        c.append(fs(L("wiz_chat_help"), "gfhs", left=20, top=Y + 26, width=480))
+        for i, m in enumerate(MODES):
+            sub = L("wiz_mode_" + m)
+            if m == "AUTO_ONLY_IF_ALLOWED" and auto_state:
+                sub += " " + L("consent_off_" + auto_state)
+            c.append(wcard(20, Y + 58 + i * 58, 480, 54, L("chatmode_%s_short" % m), sub, on=i == mode,
+                           tag=L("wiz_default_tag") if m == DEFAULTS["chatMode"] else None))
+        c.append(fbtn(L("wiz_test"), 200, h=26, left=20, top=Y + 290))
+        c.append(fs(L("wiz_test_hint"), "gfhs", left=232, top=Y + 295, width=240))
+    elif step == 8:
+        lines = [L("wiz_keys_intro")] + [L("wiz_key_" + k) for k in ("speak", "pause", "reroll", "npc")]
+        c.append(fs("\n".join(lines), "gfh", left=20, top=Y + 30, width=480))
+        c.append(fs(L("wiz_where", L("on")), "gfh", left=20, top=Y + 140, width=480))
+        c.append(fs(L("wiz_defaults", 50, 45, 25, L("chatmode_PRIVATE_short"), L("on"), L("off"), L("off"), L("off")),
+                    "gfhs", left=20, top=Y + 214, width=480))
+        c.append(fbtn(L("wiz_open_bindings"), 200, h=26, left=20, top=Y + 276))
+        c.append(fbtn(L("wiz_open_settings"), 200, h=26, left=232, top=Y + 276))
+    dots = "".join(
+        f'<div class="wdot{" now" if i + 1 == number else (" past" if i + 1 < number else "")}" '
+        f'style="left:{260 + (i + 1 - 4.5) * 16 - 4}px"></div>' for i in range(total))
+    chrome = ('<div class="p"><div class="abs" style="left:1px;right:1px;top:1px;height:40px;background:#17120a"></div></div>'
+              + fs(L("wiz_title"), "gfnl", left=20, top=14)
+              + fs(L("wiz_step", number, total), "gfns", left=300, top=18, width=168, extra=";text-align:right")
+              + fbtn("x", 24, h=22, right=14, top=12) + dots
+              + '<div class="abs" style="left:1px;right:1px;bottom:52px;height:1px;background:#54451a"></div>'
+              + fbtn(L("wiz_skip"), 200, "text", left=16, bottom=14)
+              + fbtn(L("wiz_finish") if number == total else L("wiz_next"), 110, "primary", right=16, bottom=14)
+              + (fbtn(L("wiz_back"), 90, "ghost", right=134, bottom=14) if number > 1 else ""))
+    # the window: a warm surface with a thin gold edge, as in the "proposed" design of the UI review
+    return (f'<div class="p"><div class="win" style="{style(left=left, top=top, width=520, height=440)};background-color:#0f0c08;'
+            f'background-image:none">' + "".join(c) + chrome + '</div></div>')
 
 
 # ---------------------------------------------------------------------------------------------------------------
 # Settings panel (UI/SettingsFrame.lua): a canvas in the client's options window
 # ---------------------------------------------------------------------------------------------------------------
-def settings(left, top, reload_needed=False, auto_state="off", tooltip_row=None):
+def settings(left, top, reload_needed=False, auto_state="off", tooltip_row=None, others_state="off"):
     col = (16, 330)
     out = [fs("Azeroth Unspoken 0.1.0", "gfnl", left=16, top=16)]
 
@@ -221,7 +241,7 @@ def settings(left, top, reload_needed=False, auto_state="off", tooltip_row=None)
     c2 = ["Narrator box: on", ("Text duration: 8 s", True), "Reading speed: 14 characters/s",
           ("Background opacity: 80%", True), ("Text size: 14", True), "Reduce motion: off",
           "Position locked: off", "Move the box back to the middle", "History", "Try the narrator",
-          "Character soul...", "Character journal...", "Relationships...", "Read others' Total RP 3: off"]
+          "Character soul...", "Character journal...", "Relationships...", f"Read others' Total RP 3: {others_state}"]
     for c, items in ((1, c1), (2, c2)):
         for i, it in enumerate(items, 1):
             label, step = (it if isinstance(it, tuple) else (it, False))
@@ -346,12 +366,7 @@ REL_OPTIONS = [("Automatic NPCs", "on"), ("Suggest people", "on"), ("Register by
                ("Attraction axis", "off"), ("Recognise on target", "off"), ("Recognise nearby", "off"),
                ("Share with the account", "off")]
 REL_PRIVACY = "No chat or whisper content is read or saved. Players join the list only through an action of yours."
-REL_OPTIONS_HINT = "Hover over an option to read what it does. Nothing here reads chat or whispers."
-REL_SHARE_WARNING = ("Shared list. Your choices about people (axes, labels, feelings, notes, tags) would be kept in the account "
-                     "and ALL your characters would share the same opinions of them: Privacy: anyone using this account sees "
-                     "them, and the file may travel with your saved variables. Role play: a character would feel what another "
-                     "one chose. Observations (when and where each character met someone) stay with each character. Choices a "
-                     "character already holds stay its own until you share them.")
+REL_OPTIONS_HINT = ui("en", "rel_options_hint")   # two lines of 10 px: the consents are explained on screen (#178)
 REL_W, REL_H, REL_INNER = 720, 660, 688
 
 
@@ -362,7 +377,7 @@ def fit(text, lo, hi):
 
 
 def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=False, options=None,
-              hover_option=None, candidates=3, hover_row=None):
+              hover_option=None, candidates=3, hover_row=None, armed=None):
     out = [fs("Relationships", "gfnl", left=16, top=12),
            fs("How you stand with the people you meet: NPCs are worked out automatically (dialogs, quests, merchants), "
               "players are chosen by you. There is never any chat or whisper text here, and nothing goes online.",
@@ -410,15 +425,20 @@ def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=F
             out.append(fs("|cff9d9d9dNo suggestions this session.|r", "gfh", left=20, top=184, width=600))
     elif view == "options":
         col_w = (REL_INNER - 16) // 2
+        armed = armed or ("share" if share_armed else None)
         for i, (name, state) in enumerate(options or REL_OPTIONS):
-            label = "Confirm: share" if (share_armed and name.startswith("Share")) else f"{name}: {state}"
+            # #178: a question that is open is written in words on its button: "off, read first" for the first
+            # couple of seconds, "off, confirm" after
+            if (armed == "share" and name.startswith("Share")) or (armed == "proximity" and name.startswith("Recognise nearby")):
+                state = ui("en", "consent_off_ready")
+            label = f"{name}: {state}"
             out.append(btn(label, col_w, 24, left=16 + (i % 2) * (col_w + 16), top=116 + (i // 2) * 30,
                            state="hover" if hover_option == i else ""))
         # top-down: the hint, the privacy note, then (while it waits for the second click) the shared-list warning
         out += [fs(REL_OPTIONS_HINT, "gfhs", left=16, top=244, width=REL_INNER),
-                fs(REL_PRIVACY, "gfhs", left=16, top=268, width=REL_INNER)]
-        if share_armed:
-            out.append(fs(REL_SHARE_WARNING, "gfh", left=16, top=294, width=REL_INNER))
+                fs(REL_PRIVACY, "gfhs", left=16, top=282, width=REL_INNER)]
+        if armed:
+            out.append(fs(ui("en", "consent_%s_text" % armed), "gfh", left=16, top=310, width=REL_INNER))
     elif view == "detail":
         out += detail_widgets(detail)
     if view in ("list", "people"):

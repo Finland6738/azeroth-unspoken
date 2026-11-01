@@ -90,7 +90,7 @@ See [[The Narrator and the Four Voices|The-Narrator]].
 | `/au button reset` | Puts the speak button back in its default place, beside the narrator box, and shows it. |
 | `/au button editor on\|off` | With `on`, a click on the speak button opens a waiting proposal in the editor instead of sending it. The speak key and `/au speak` still send. Off by default. With no value, switches it. |
 
-> **About `auto`.** `/au mode auto` does not turn automatic sending on at once. It prints a warning, and you must type the same command again **within 10 seconds** to confirm.
+> **About `auto`.** `/au mode auto` does not turn automatic sending on at once. It shows a warning, and you must type the same command again **after a couple of seconds and within 30** to confirm. A repeat that comes too soon is ignored.
 
 See [[Chat Gateway]] for the full picture.
 
@@ -164,8 +164,8 @@ See [[Memory and Journal|Memory-and-Journal]].
 | `/au relationships dismiss <name>` | Dismisses a suggestion until your next login. |
 | `/au relationships remove <name\|npc:ID>` | Deletes a relationship. |
 | `/au relationships detail <name>` | Prints one relationship: label, disposition and axes. |
-| `/au relationships proximity on\|off` | Recognise known players by nameplate and mouseover (this session only; off by default). |
-| `/au relationships share [on\|off\|all\|copy]` | The list of people shared by your characters (off by default). `on` shows the warning; repeat within 15 s to confirm. `all` moves this character's choices into it, `copy` copies the shared choices into this character. |
+| `/au relationships proximity on\|off` | Recognise known players by nameplate and mouseover (this session only; off by default). `on` shows a warning; repeat after a couple of seconds, within 30 s, to confirm. `off` is immediate. |
+| `/au relationships share [on\|off\|all\|copy]` | The list of people shared by your characters (off by default). `on` shows the warning; repeat after a couple of seconds, within 30 s, to confirm. `all` moves this character's choices into it, `copy` copies the shared choices into this character. |
 | `/au relationships scope <name> shared\|character` | Whose choices count for one player. |
 | `/au relationships note <name> <text>` | Writes your private note. |
 | `/au relationships tags <name> <tag,...>` | Sets your tags. |

@@ -65,6 +65,10 @@ function F:BlizzardRects()
 		local r = Rect(_G[name])
 		if r then table.insert(out, r) end
 	end
+	-- #181: the narrator box is not covered either (it carries the proposal the speak key sends)
+	local narrator = NS.Narrator and NS.Narrator:GetFrame()
+	local r = narrator and Rect(narrator)
+	if r then table.insert(out, r) end
 	return out
 end
 

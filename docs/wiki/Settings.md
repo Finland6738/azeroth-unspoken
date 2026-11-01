@@ -67,7 +67,7 @@ Events added by phrase packs have their own default (30% if the pack sets none).
 | Setting | Default | Panel row | Command | What it does |
 |---|---|---|---|---|
 | Chat mode | Private narrator only | **Chat** (cycles private, preview, confirm) | `/au mode private\|preview\|confirm` | What may reach chat. |
-| Automatic sending | off | **Automatic sending** (click, then click again within 10 s) | `/au mode auto` (twice within 10 s) | Lets some lines go out by themselves. |
+| Automatic sending | off | **Automatic sending** (a confirmation dialog, then **Turn on**; or click again after a couple of seconds) | `/au mode auto` (twice, a few seconds apart) | Lets some lines go out by themselves, in your character's name, seen by everyone nearby. The row says *off, read first*, then *off, confirm*, then *on*. |
 | Default channel | automatic | **Default channel** (click to cycle) | `/au channel <channel>` | Where proposals go. Automatic = `/say` for your character's words, `/emote` for the narrator's. |
 | Proposal waits | 25 s | **Proposal waits** (click to cycle: 25, 60, 120 s, until dismissed) | — | How long a proposal waits before it expires. The time stops while the mouse is over the narrator box and while you edit the proposal. *Until dismissed*: it waits until you send or discard it. |
 | Chat proposals module | on | module **Chat proposals** | — | Off: the same as private mode. |
@@ -135,7 +135,7 @@ A preset sets several modules at once. Choose one in the wizard. Changing a sing
 |---|---|---|---|
 | Name from Total RP 3 | on | panel **Name from Total RP 3**, wizard | Uses your own RP profile's first name in lines. |
 | Traits from Total RP 3 | off | `/au soul trp3 on`, personality window | Uses your own profile's public personality traits where you made no choice. |
-| Read others' Total RP 3 | off | panel **Read others' Total RP 3**, wizard, `/au who trp3 on` | Reads race, class and traits from other players' public profiles. Needs *Name from Total RP 3* on too. |
+| Read others' Total RP 3 | off | panel **Read others' Total RP 3**, wizard, `/au who trp3 on` | Reads race, class and traits from other players' public profiles. Turning it on asks for a confirmation (like automatic sending). Needs *Name from Total RP 3* on too: with that off the row says *on, needs name* and a line under the panel explains it. |
 
 See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
@@ -160,8 +160,8 @@ The journal opens from the panel button **Character journal...** or `/au journal
 | Register by itself | off | relationships window, `/au relationships auto on\|off` | Adds the players you meet without asking. |
 | Attraction axis | off | relationships window, `/au relationships attraction on\|off` | Turns on the optional attraction axis. |
 | Recognise on target | off | relationships window | Lets the narrator also recognise a known player when you target them (joining your group or an interaction already do). |
-| Recognise nearby | off | relationships window, `/au relationships proximity on\|off` | Nameplates and mouseover can let the narrator recognise a player already in your list (and suggest people with a Total RP 3 profile if you allowed reading them). This session only: nothing is saved and no one is added. |
-| Share with the account | off | relationships window, `/au relationships share on\|off` | Keeps your choices about people in the account and shares them between your characters. Turning it on shows a warning (privacy, role play) and needs a second click; turning it off deletes nothing. |
+| Recognise nearby | off | relationships window, `/au relationships proximity on\|off` | Nameplates and mouseover can let the narrator recognise a player already in your list (and suggest people with a Total RP 3 profile if you allowed reading them). Turning it on asks for a confirmation. This session only: nothing is saved and no one is added. |
+| Share with the account | off | relationships window, `/au relationships share on\|off` | Keeps your choices about people in the account and shares them between your characters. Turning it on shows a warning in a confirmation dialog (privacy, role play) and needs a second step; turning it off deletes nothing. |
 
 The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].
 

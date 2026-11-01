@@ -53,17 +53,19 @@ Some information helps the narrator in the moment and is forgotten when you log 
 
 ## Consent switches
 
+Four of them are **consents that cannot be given by mistake**: automatic sending, reading others' Total RP 3 profiles, recognising people by nameplate or mouseover, and the shared list. Turning one on takes two steps: a confirmation dialog shows the whole warning, and its **Turn on** button (or a second click, or the same command again) counts only after a couple of seconds, so a double-click never passes. Turning one off is always one step.
+
 | What | Default | Where |
 |---|---|---|
 | Sending lines to chat | off (private) | [[Chat Gateway]] |
-| Automatic sending | off; needs a second confirmation | [[Chat Gateway]] |
+| Automatic sending | off; a warning dialog and a confirmation | [[Chat Gateway]] |
 | Registering players by themselves | off | [[Relationships]] |
 | Recognising a known player when you target them | off | [[Relationships]] |
-| Recognising a known player by nameplate or mouseover | off | [[Relationships]] |
-| Sharing your choices about players between your characters (in the account file) | off; warning and a second step | [[Relationships]] |
+| Recognising a known player by nameplate or mouseover | off; a warning dialog and a confirmation | [[Relationships]] |
+| Sharing your choices about players between your characters (in the account file) | off; a warning dialog and a confirmation | [[Relationships]] |
 | Your own Total RP 3 name | on | [[Settings]] |
 | Your own Total RP 3 traits | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
-| Reading other players' Total RP 3 | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
+| Reading other players' Total RP 3 | off; a warning dialog and a confirmation | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
 
 The addon never writes anything to Total RP 3.
 

@@ -131,7 +131,7 @@ Before you turn it on, read the warning:
 - **Privacy:** anyone using this account sees the shared opinions, and the saved file travels with your other saved data.
 - **Role play:** your characters would feel the same about the same people. A character cannot "not know" what another chose, unless you tell it to keep its own.
 
-Turning it on takes **two steps** (click, read the warning, click again within 15 seconds, or repeat `/au relationships share on`). Turning it off is **one step and deletes nothing** of the shared list. The only thing that goes is a record one of your characters made just because it met someone who was on the list (no choices of its own: how many times it met them): it is cleaned the next time that character logs in. A person you chose to keep for a character, with your choices, never goes.
+Turning it on takes **two steps** (click, read the warning in the confirmation dialog, then **Turn on** or click again after a couple of seconds and within 30 seconds; or repeat `/au relationships share on` the same way). A second click that comes too soon, a double-click, is ignored. Turning it off is **one step and deletes nothing** of the shared list. The only thing that goes is a record one of your characters made just because it met someone who was on the list (no choices of its own: how many times it met them): it is cleaned the next time that character logs in. A person you chose to keep for a character, with your choices, never goes.
 
 How it works:
 
@@ -182,10 +182,10 @@ For a player there is a block across the window, **What the addon observed**: fi
 | **Register by itself** | off | adds the players you meet without asking |
 | **Attraction axis** | off | turns on the optional attraction axis |
 | **Recognise on target** | off | lets the narrator also recognise a known player when you target them |
-| **Recognise nearby** | off | nameplates and mouseover can let the narrator recognise a known player, for this session only; nothing is saved |
-| **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second click turn it on) |
+| **Recognise nearby** | off | nameplates and mouseover can let the narrator recognise a known player, for this session only; nothing is saved. Turning it on asks for a confirmation, like the shared list |
+| **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second step turn it on) |
 
-Under the options, the privacy note. When you click **Share with the account**, the warning appears below it and the button becomes **Confirm: share** for 15 seconds.
+Under the options, a line about each consent and the privacy note. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
 
 The list, People met and Options tabs also have **Export** (text to copy) and **Forget everything** (with confirmation) at the bottom.
 
@@ -209,8 +209,8 @@ The list, People met and Options tabs also have **Export** (text to copy) and **
 | `/au relationships export` | text to copy |
 | `/au relationships auto on\|off` | register players by themselves |
 | `/au relationships attraction on\|off` | the attraction axis |
-| `/au relationships proximity on\|off` | recognise known players by nameplate and mouseover (this session only) |
-| `/au relationships share [on\|off\|all\|copy]` | the list shared by your characters: `on` shows the warning, repeat within 15 s to turn it on; `all` moves this character's choices into it; `copy` copies the shared choices into this character; no word shows whether it is on |
+| `/au relationships proximity on\|off` | recognise known players by nameplate and mouseover (this session only); `on` asks for a confirmation (repeat after a couple of seconds) |
+| `/au relationships share [on\|off\|all\|copy]` | the list shared by your characters: `on` shows the warning, repeat after a couple of seconds (within 30 s) to turn it on; `all` moves this character's choices into it; `copy` copies the shared choices into this character; no word shows whether it is on |
 | `/au relationships scope <name> shared\|character` | whose choices count for one player |
 | `/au relationships reset [all\|npcs\|players\|shared]` | erases relationships (`shared`: the account's list); repeat within 15 s to confirm |
 
