@@ -26,6 +26,10 @@ NS:AddTexts("itIT", {
 		"Ti vedo spesso da queste parti. Fa piacere una faccia che torna.",
 		"Ben {g:ritrovato|ritrovata}. Il solito angolo è libero, se ti va.",
 	},
+	["npcd.innkeeper.open.nick1"] = {
+		"Ah, {nickname}! Il tuo angolo vicino al fuoco è libero, come se lo sapesse.",
+		"{nickname}, di nuovo qui. Siedi, siedi: lo stufato non aspetta.",
+	},
 	["npcd.innkeeper.open.stranger1"] = {
 		"Non ti conosco ancora. Ma il fuoco scalda tutti allo stesso modo.",
 		"{g:Nuovo|Nuova} da queste parti? Allora presentiamoci con un boccale.",
@@ -246,6 +250,10 @@ NS:AddTexts("itIT", {
 		"Il mio cliente preferito! Cioè, uno dei pochi che torna.",
 		"{g:Bentornato|Bentornata}. Il banco è lo stesso, ma la merce cambia più spesso di quanto sembri.",
 	},
+	["npcd.merchant.open.nick1"] = {
+		"{nickname}! Me lo sentivo che oggi saresti {g:passato|passata} di qua.",
+		"Guarda chi si vede: {nickname}. Per te spolvero perfino lo scaffale buono.",
+	},
 	["npcd.merchant.open.stranger1"] = {
 		"{g:Nuovo|Nuova} da queste parti? Un consiglio: il banco è onesto, il prezzo meno. Scherzo. Più o meno.",
 		"Non ti ho mai visto: bene, i clienti nuovi hanno ancora le monete tutte.",
@@ -398,6 +406,10 @@ NS:AddTexts("itIT", {
 		"Ti riconosco. Per ora non hai dato fastidio a nessuno, e mi sta bene.",
 		"Tu di nuovo. Buon segno: i guai non tornano a salutare.",
 	},
+	["npcd.guard.open.nick1"] = {
+		"{nickname}. Turno tranquillo, finora. Vediamo di tenerlo così.",
+		"Salute, {nickname}. Niente da segnalare, ed è così che mi piace.",
+	},
 	["npcd.guard.open.stranger1"] = {
 		"Non ti conosco. Nessun problema, finché non ne porti.",
 		"{g:Nuovo|Nuova}? Allora una regola sola: sii gentile e andremo d'accordo.",
@@ -534,6 +546,10 @@ NS:AddTexts("itIT", {
 		"Ti riconosco: sei {g:quello|quella} che non guarda mai giù. O che guarda sempre, ma finge di no.",
 		"{g:Bentornato|Bentornata} in alto. La bestia ti ha già annusato e non protesta.",
 	},
+	["npcd.flightmaster.open.nick1"] = {
+		"{nickname}! La bestia ha alzato la testa appena hai preso il sentiero.",
+		"Di nuovo in volo, {nickname}? Oggi i venti sono gentili.",
+	},
 	["npcd.flightmaster.open.jovial1"] = {
 		"Su, su! Il cielo è gratis, il biglietto un po' meno!",
 		"Dalle parti dove vai si arriva in volo a testa alta. Se si atterra, a testa alta pure!",
@@ -609,6 +625,10 @@ NS:AddTexts("itIT", {
 	["npcd.trainer.open.known1"] = {
 		"Rieccoti. Hai l'aria di chi ha esercitato, o almeno di chi ci ha pensato.",
 		"Hai portato i progressi o le scuse? Entrambi sono benvenuti, ma solo i primi servono.",
+	},
+	["npcd.trainer.open.nick1"] = {
+		"{nickname}. Vediamo se la strada ti ha insegnato qualcosa.",
+		"Ecco {nickname}. Mostrami cosa hai conservato, e cosa hai perso.",
 	},
 	["npcd.trainer.open.stranger1"] = {
 		"Non ti conosco: bene, vuol dire che non ho cattive abitudini da correggere. Ancora.",

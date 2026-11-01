@@ -252,6 +252,10 @@ local SPECIAL = {
 	oathbreakerHere = function(v, ctx) return (ctx.oathbreakerHere == true) == v end,
 	-- the private vow to an NPC at the top of a romance (N3, #215): ctx.relVowed
 	relVowed = function(v, ctx) return (ctx.relVowed == true) == v end,
+	-- favours and nicknames (N5, #217): ctx.relFavour (the NPC asked a favour still open), ctx.relNick (the nickname
+	-- the NPC gave the character, the placeholder {nickname})
+	relFavour = function(v, ctx) return (ctx.relFavour == true) == v end,
+	relNick = function(v, ctx) return (ctx.relNick ~= nil) == v end,
 	-- il mondo (R3, Systems/World.lua): una lettura che il client non dà vale "non lo so", cioè falsa per `true` e per
 	-- `false` (tranne dove è scritto): una frase che nomina il meteo o il volo non esce se l'API manca
 	dayTime = function(v, ctx) return ctx.isDay ~= nil and ctx.isDay == v end,
@@ -401,6 +405,8 @@ Engine.CONDITIONS = {
 	relPromiseDays = "numrange", relOathbroken = "bool", oathbreakerHere = "bool",
 	-- the private vow to an NPC (N3, #215)
 	relVowed = "bool",
+	-- favours and nicknames (N5, #217)
+	relFavour = "bool", relNick = "bool",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -515,7 +521,7 @@ Engine.SUB_VALUES = {
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
 	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true,
 	relMetLevels = true, relMetDays = true, relMetTime = true, relMetWeather = true, relVowed = true,
-	relPromiseDays = true, relOathbroken = true }
+	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

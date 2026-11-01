@@ -35,6 +35,8 @@ local function Fresh()
 	R:Sanitize()
 	R:OnInit()
 	for k, v in pairs(Config.defaults.relations) do NS.db.relations[k] = v end
+	-- N5 (#217): favours and nicknames have their own tests (TestFavours.lua); here they would add notices
+	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	R:ApplyProximity()
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	NS.db.interlocutor.trp3Others = false

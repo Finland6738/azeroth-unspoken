@@ -29,6 +29,8 @@ local function Fresh()
 	R.interaction, R.questGiver, R.questTaker, R.group, R.groupDirty = nil, nil, nil, nil, true
 	NS.Interlocutor.roles = {}
 	for k, v in pairs(Config.defaults.relations) do NS.db.relations[k] = v end
+	-- N5 (#217): favours and nicknames have their own tests (TestFavours.lua); here they would add notices
+	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	P.target, P.npc, P.party, P.group, P.raid = nil, nil, nil, false, false
 	P.zone, P.combat, P.dead, P.hp, P.hpMax, P.mapID = "Elwynn Forest", false, false, 100, 100, ELWYNN
@@ -134,7 +136,7 @@ T.run("a quest accepted from an NPC is a promise to them: ids and times only", f
 	T.eq(p.npc, 7001, "to the giver"); T.eq(p.t, time(), "with the time")
 	for k in pairs(p) do T.ok(({ npc = true, t = true, r = true, oath = true, map = true })[k] ~= nil, "a known field: " .. k) end
 	T.eq(p.oath, nil, "a stranger: a promise, not an oath")
-	T.eq(NS.cdb.relationships.version, 4, "relationships.version 4")
+	T.eq(NS.cdb.relationships.version, 5, "relationships.version 5 (N5 #217 made it 5)")
 	-- no quest dialogue just before: nobody to promise to
 	FIRE("QUEST_ACCEPTED", 55)
 	T.eq(Promises()[55], nil, "no giver, no promise")
@@ -508,7 +510,7 @@ T.run("saved promises and marks are cleaned", function()
 	Npc(7001).oathT = now + DAY
 	R:Sanitize()
 	local d = NS.cdb.relationships
-	T.eq(d.version, 4, "version 3 moves to 4 (nothing to migrate)")
+	T.eq(d.version, 5, "version 3 moves to the current one (nothing to migrate)")
 	T.ok(d.promises[54] and d.promises[54].title == nil and d.promises[54].oath and d.promises[54].map == ELWYNN, "a good one kept, without unknown fields")
 	T.eq(d.promises[55], nil, "a missing giver"); T.eq(d.promises[56], nil, "too old")
 	T.ok(d.promises[57] and d.promises[57].t <= now and d.promises[57].r <= now, "future times brought back")

@@ -35,6 +35,8 @@ local function Fresh()
 	R:Sanitize()
 	R:OnInit()
 	for k, v in pairs(Config.defaults.relations) do NS.db.relations[k] = v end
+	-- N5 (#217): favours and nicknames have their own tests (TestFavours.lua); here they would add notices
+	NS.db.relations.favours, NS.db.relations.nicknames = false, false
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	R.interaction, R.questGiver, R.questTaker = nil, nil, nil
 	P.target, P.npc, P.party, P.group, P.raid = nil, nil, nil, false, false
@@ -159,8 +161,8 @@ end
 ---------------------------------------------------------------------------
 T.run("a player record has a user block and a seen block", function()
 	Fresh()
-	T.eq(R.VERSION, 4, "relationships.version is 4 (N4 #216: promises, marks)")
-	T.eq(NS.cdb.relationships.version, 4, "a new character starts at version 4")
+	T.eq(R.VERSION, 5, "relationships.version is 5 (N5 #217: favours, nicknames)")
+	T.eq(NS.cdb.relationships.version, 5, "a new character starts at version 5")
 	local key, rec = Person("Aldric-Stormrage", { trust = 55, affection = 45 })
 	T.ok(type(rec.user) == "table" and type(rec.seen) == "table", "both blocks exist")
 	for _, flat in ipairs({ "first", "last", "count", "trust", "affection", "label", "note", "tags", "traits", "role" }) do
@@ -199,7 +201,7 @@ T.run("migration of relationships.version 1 to 2", function()
 	local dropped = R:Sanitize()
 	T.eq(dropped, 0, "nothing dropped")
 	local d = NS.cdb.relationships
-	T.eq(d.version, 4, "the current version now")
+	T.eq(d.version, 5, "the current version now")
 	local a = d.players["Aldric-Stormrage"]
 	T.eq(a.user.axes.trust, 55, "axes into user.axes"); T.eq(a.user.axes.affection, -20, "negative axis too")
 	T.eq(a.user.label, "sworn brother", "label"); T.eq(a.user.note, "Saved me", "note"); T.eq(a.user.tags[1], "guild", "tags")
@@ -235,10 +237,10 @@ T.run("migration of relationships.version 1 to 2", function()
 	T.eq(dara.seen.count, 0, "negative count"); T.eq(dara.seen.kinds.group, 2, "valid kind kept"); T.eq(dara.seen.kinds["Bad Kind"], nil, "bad kind dropped")
 	T.ok(#dara.seen.facts == 2 and dara.seen.facts[1].text == nil, "bad facts dropped and no text field survives")
 	-- data from a newer version stays read-only and untouched
-	NS.cdb.relationships = { version = 5, npcs = {}, players = { ["Eve-Stormrage"] = { user = { future = true }, seen = { first = 1 }, nickname = "x" } } }
+	NS.cdb.relationships = { version = 6, npcs = {}, players = { ["Eve-Stormrage"] = { user = { future = true }, seen = { first = 1 }, nickname = "x" } } }
 	R.readOnly = false
 	R:Sanitize()
-	T.ok(R.readOnly and NS.cdb.relationships.players["Eve-Stormrage"].nickname == "x" and NS.cdb.relationships.version == 5, "version 5: read-only, intact")
+	T.ok(R.readOnly and NS.cdb.relationships.players["Eve-Stormrage"].nickname == "x" and NS.cdb.relationships.version == 6, "version 6: read-only, intact")
 	Fresh()
 end)
 
