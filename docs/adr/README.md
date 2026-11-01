@@ -42,11 +42,12 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0032](0032-monologues-of-whole-phrases-and-composite-situations.md) | Monologues of whole phrases, and composite situations of the Director | accepted |
 | [0033](0033-keys-shared-between-packs-refused-unless-overridden.md) | Keys shared between packs: refused, unless the pack says `override = true` | accepted |
 | [0034](0034-licensing-gpl-code-reserved-phrases.md) | Licensing: GPL code, reserved phrases, MIT pack template, CC BY documentation | accepted |
-| [0035](0035-npc-temperament-visible-levels-and-the-first-meeting.md) | NPC temperament, visible levels and the first meeting | accepted |
+| [0035](0035-attacks-kills-and-deaths-without-the-combat-log.md) | Attacks, kills and deaths without the combat log: threat, blows and two new unit events | proposed (to confirm in game, #212) |
+| [0036](0036-npc-temperament-visible-levels-and-the-first-meeting.md) | NPC temperament, visible levels and the first meeting | accepted |
 
 ## Pending decisions
 
-None at the moment.
+- [0035](0035-attacks-kills-and-deaths-without-the-combat-log.md): the detection recipe for attacks, kills, deaths and witnesses (N0, #212). It is accepted, changed or rejected after the owner runs section N0 of the in-game checklist.
 
 ## How to write a new one
 

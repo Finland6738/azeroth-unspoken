@@ -1,4 +1,4 @@
-# 0035. NPC temperament, visible levels and the first meeting
+# 0036. NPC temperament, visible levels and the first meeting
 
 - Status: Accepted
 - Date: 2026-11-01 (issue #214, step N2 of the NPC relationships milestone; owner decisions of 2026-11-01)

@@ -30,7 +30,7 @@ NPCs are many and reliably identifiable (`npcID` from the GUID): an automatic ca
 ## Later changes
 
 - [ADR 0026](0026-player-records-user-choices-apart-from-observations.md) (#107-#110) splits a player record into `user` (what the user chose) and `seen` (what the addon observed), adds feelings in words, the `ally` label, the `relation_player` event and the conditions `relDaysSince`, `relMetHere` and `relShared`. Points 3, 5, 7 and 8 above stand, with the player fields (`label`, `note`, `tags`, `first`/`last`/`count`, the axes) now inside those two blocks and `relationships.version` at 2.
-- [ADR 0035](0035-npc-temperament-visible-levels-and-the-first-meeting.md) (#214) gives each NPC a temperament (a multiplier on the gains, the daily caps and the decay, from data), keeps the circumstances of the first meeting, and makes the disposition bands visible levels with a rare private notice. `relationships.version` is 3.
+- [ADR 0036](0036-npc-temperament-visible-levels-and-the-first-meeting.md) (#214) gives each NPC a temperament (a multiplier on the gains, the daily caps and the decay, from data), keeps the circumstances of the first meeting, and makes the disposition bands visible levels with a rare private notice. `relationships.version` is 3.
 
 ## Alternatives considered
 

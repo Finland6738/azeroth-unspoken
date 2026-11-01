@@ -480,7 +480,7 @@ for f_ in ("Widgets.lua", "JournalFrame.lua", "RelationsFrame.lua", "ProfileFram
 check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dialogue window ({win_frames_})")
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestProximityShared",
-             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
+             "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")

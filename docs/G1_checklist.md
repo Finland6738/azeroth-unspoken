@@ -953,6 +953,47 @@ Tasti, cursori, pulsanti e il comportamento in combattimento. Nessuna API nuova:
 
 ---
 
+## N0: attacchi, uccisioni e morti senza il registro di combattimento (aggiunto dall'issue #212)
+
+**A cosa serve.** Le relazioni con gli NPC (milestone 9) devono sapere quando attacchi un NPC, quando lo uccidi o lui uccide te, e chi ha visto: ostilità e tradimento (N1), la nemesi (N7) e il compagno animale (N8). Forever **non dà agli addon il registro di combattimento**, quindi l'addon deve indovinare da eventi e funzioni comuni. Nessuno sa ancora quali rispondono su Forever, in che ordine e con quali falsi allarmi. Questi passi lo dicono; le risposte confermano o cambiano la ricetta di [ADR 0035](adr/0035-attacks-kills-and-deaths-without-the-combat-log.md) (proposta, da confermare in gioco). Provato solo con il client finto.
+
+**Come funziona.** `/au probe` (sezione R0) ha nuove righe:
+- lette sul tuo **bersaglio** quando scrivi il comando: `UnitThreatSituation(player, target)`, `UnitIsDead`, `UnitIsTapDenied`, `UnitClassification`, `UnitIsQuestBoss`, `UnitCreatureType`, `UnitFactionGroup`, `UnitGUID(target) npcID`, `CheckInteractDistance` e **`named (candidate rule, ADR 0035)`**, cioè se secondo l'addon quell'NPC conta come «con un nome»;
+- gli eventi `PLAYER_REGEN_DISABLED` e `ENABLED` (entrata e uscita dal combattimento), `PLAYER_ENTER_COMBAT` (attacco automatico), `UNIT_SPELLCAST_SENT`, `UNIT_COMBAT` (un colpo su un'unità), `UNIT_THREAT_LIST_UPDATE`, `UNIT_THREAT_SITUATION_UPDATE`, `UNIT_DIED`, `PARTY_KILL`, `PLAYER_DEAD`, `NAME_PLATE_UNIT_ADDED` e `REMOVED`;
+- le righe **`N0 fight N, start`** e **`N0 fight N, end`** (gli ultimi 3 combattimenti) e **`N0 death N`** (le ultime 2 morti): chi ha colpito per primo, quante unità ti combattevano, quali barre dei nomi c'erano intorno, se il bersaglio è morto e chi ti stava attaccando quando sei morto.
+
+Nessun nome né GUID: solo numeri, sì/no, il numero dell'NPC (`npcID`, uguale su tutti i server: si può cercare su un sito di database) e parole fisse del client (`elite`, `WOUND`, `Horde`...). **Prima di ogni passo scrivi `/au probe reset`** (azzera combattimenti e morti) e alla fine del passo `/au probe copy`. Accendi le **barre dei nomi** (tasto **V** per i nemici, **Maiusc+V** per gli amici, oppure Opzioni > Interfaccia > Nomi), altrimenti i testimoni non si possono contare.
+
+**Quanto tempo.** Circa 40 minuti, in una zona iniziale, con un personaggio di qualunque livello. Fai i passi che puoi; per gli altri scrivi «non fatto».
+
+- **N0.1 · Inizio.** Subito dopo l'accesso, `/au probe`.
+    - **Cosa aspettarti:** le nuove righe qui sopra; senza bersaglio, le righe del bersaglio dicono `no target selected`; `C_CombatLog.IsCombatLogRestricted` con un valore; gli eventi `registered`; `N0 fights seen: 0`.
+    - **Cosa riportare:** le righe `MISSING` o `RESTRICTED`.
+- **N0.2 · Chi conta come «con un nome».** Fuori dal combattimento, seleziona uno alla volta e scrivi `/au probe` per ciascuno: un animale qualunque; un mostro con il drago sul ritratto (**élite**); un **raro** se lo incontri (drago argentato); il bersaglio di una missione «uccidi X» (**quest boss**, se ce n'è uno nella zona); una **guardia**; un locandiere o un mercante con cui hai parlato (hanno una scheda nelle relazioni); un NPC dell'**altra fazione** (una guardia di una città nemica, un maestro di volo dell'altra parte: selezionalo da lontano, non serve combattere).
+    - **Cosa aspettarti:** `UnitClassification` `normal`, `elite`, `rare`, `rareelite` o `worldboss`; `UnitIsQuestBoss` vero solo per il bersaglio della missione; `UnitCreatureType` con `humanoid yes` per le persone; `named` dice `named` per l'élite, il raro, il quest boss e l'NPC con cui hai parlato, e `not named, ordinary (normal)` per l'animale.
+    - **Cosa riportare:** le righe del bersaglio di ogni NPC (da `UnitThreatSituation` a `named`), con un titolo come «N0.2 élite», e **quali NPC secondo te dovrebbero contare come «con un nome» e non contano** (o il contrario).
+- **N0.3 · Attacchi tu per primo.** `/au probe reset`. Scegli un animale **giallo** (neutrale), che da solo non attacca, selezionalo e colpiscilo con l'**attacco automatico** (clic destro). Uccidilo. Poi `/au probe copy`. Se il personaggio usa incantesimi, ripeti con un **incantesimo** come primo colpo.
+    - **Cosa aspettarti:** `N0 fight 1, start: ... opened by player (swing ...)` (o `(cast ...)` con un incantesimo); alla fine `dead yes`, `same unit yes`, `UNIT_DIED engaged 1`, `PARTY_KILL by me 1`.
+    - **Cosa riportare:** il testo. Soprattutto: `opened by` dice `player`? `UNIT_DIED` e `PARTY_KILL` scattano, o sono `hidden`?
+- **N0.4 · Ti attacca lui per primo.** `/au probe reset`. Avvicinati a un mostro **rosso** (aggressivo) **senza selezionarlo** e lascia che colpisca per primo. Poi selezionalo e uccidilo. `/au probe copy`.
+    - **Cosa aspettarti:** `opened by enemy (hit on player ...)`; `it targets me yes` se l'avevi già selezionato all'inizio del combattimento.
+    - **Cosa riportare:** il testo, e se l'avevi selezionato prima o dopo il primo colpo.
+- **N0.5 · Due o tre insieme.** `/au probe reset`. Attira due o tre mostri insieme e uccidili (con un incantesimo ad area se ne hai uno). `/au probe copy`.
+    - **Cosa aspettarti:** `N engaged` e `N attacking me` a 2 o 3; `UNIT_DIED engaged` e `PARTY_KILL by me` sommano i morti.
+    - **Cosa riportare:** il testo, e quanti ne hai uccisi.
+- **N0.6 · I testimoni.** `/au probe reset`. Con le barre dei nomi amiche accese (**Maiusc+V**), combatti un mostro **vicino a guardie o alla gente di un villaggio** (una strada con le pattuglie, il bordo di una città). `/au probe copy`. Se un tuo incantesimo ad area tocca un NPC amico, scrivilo (non dovrebbe essere possibile: il gioco li protegge).
+    - **Cosa aspettarti:** `witnesses: N nameplates, N friendly npc, N near` con numeri sopra zero; `friendly npc hit 0`.
+    - **Cosa riportare:** il testo, e quanti NPC amici vedevi intorno (più o meno).
+- **N0.7 · Il mostro di un altro.** Se un giocatore sta combattendo un mostro, selezionalo (la sua barra diventa grigia) e `/au probe`.
+    - **Cosa aspettarti:** `UnitIsTapDenied(target): -> true`.
+    - **Cosa riportare:** le righe del bersaglio. Non attaccare il mostro dell'altro giocatore se gli dà fastidio.
+- **N0.8 · Un famiglio o un gruppo.** Solo se il personaggio ha un famiglio (cacciatore, stregone) o sei in gruppo: `/au probe reset`, lascia che il famiglio o un compagno dia l'ultimo colpo di un combattimento, `/au probe copy`.
+    - **Cosa aspettarti:** `PARTY_KILL by me 0, pet 1` (o `other 1` per un compagno).
+    - **Cosa riportare:** il testo, e chi ha dato l'ultimo colpo.
+- **N0.9 · La tua morte.** `/au probe reset`. Lascia che un mostro più forte ti uccida (costa solo la corsa fino al corpo). **Prima di liberare lo spirito**, `/au probe copy`.
+    - **Cosa aspettarti:** `N0 death 1: during a fight` o `... after the fight ended`; `last unit attacking me npcID ...` con il numero del mostro che ti ha ucciso; `it is my target yes` se lo avevi selezionato.
+    - **Cosa riportare:** il testo, quale mostro ti ha ucciso e se era il tuo bersaglio.
+- **N0.10 · Invio dei risultati.** Scrivi un **commento nell'issue #212** (<https://github.com/Finland6738/azeroth-unspoken/issues/212>) con i testi uno sotto l'altro, ciascuno con il suo titolo («N0.3 attacco per primo», «N0.9 morte»...). **Nessun nome di altri giocatori**; i numeri `npcID` possono restare.
 ## N2: livelli visibili, primo incontro e temperamento degli NPC (aggiunto dall'issue #214)
 
 Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. API già usate altrove (`UnitRace` sull'NPC
@@ -1114,6 +1155,10 @@ R0 locanda e volo ....... PLAYER_UPDATE_RESTING ___  TAXIMAP_OPENED ___  UnitOnT
 R0 combattimento ........ LoadAddOn in combattimento ______  Combat=1 dentro? ___
 R0 dopo un'ora .......... memoria (KB) ______  rallentamenti? ___
 R0 nomi altrui .......... nei rapporti? (deve essere NO) ___  issue ______
+N0 con un nome .......... élite ___  raro ___  quest boss ___  guardia ___  locandiere ___  altra fazione ___  verdetti sbagliati ______
+N0 attacco .............. opened by player (swing/cast)? ___  by enemy? ___  UNIT_DIED scatta? ___  PARTY_KILL by me? ___  hidden? ___
+N0 più nemici/testimoni . engaged ___  attacking me ___  testimoni (barre/amici/vicini) ______  tap denied vero? ___
+N0 famiglio / morte ..... PARTY_KILL pet/other ___  morte: durante/dopo il combattimento ______  ultimo attaccante = chi ti ha ucciso? ___
 N2 primo incontro ....... ora giusta? ___  meteo giusto o assente? ___  zona e livello? ___
 N2 riquadro NPC ......... livello e prossimo? ___  temperamento? ___  si sovrappone? (deve essere NO) ___
 N2 temperamento ......... locandiere più veloce della guardia? ___  razza dell'NPC dal client? ______
