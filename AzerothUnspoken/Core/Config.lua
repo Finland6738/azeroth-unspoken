@@ -268,6 +268,8 @@ function Config:ApplyPreset(name)
 	if not preset or not NS.db then return false end
 	for module, on in pairs(preset) do NS.db.modules[module] = on end
 	NS.db.preset = name
+	-- the proximity events follow the relations module (#164)
+	if NS.Relationships then NS.Relationships:ApplyProximity() end
 	return true
 end
 

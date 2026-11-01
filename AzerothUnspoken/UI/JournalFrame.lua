@@ -83,7 +83,7 @@ local function Arm(what)
 	state.token = state.token + 1
 	local token = state.token
 	if what == true then state.armed = true else state.confirm = what end
-	C_Timer.After(ARM_SECONDS, function()
+	NS.Compat.After(ARM_SECONDS, function()
 		if state.token ~= token then return end
 		Disarm()
 		JournalFrame:Refresh()

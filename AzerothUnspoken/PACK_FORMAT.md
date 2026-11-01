@@ -480,6 +480,14 @@ without that memory. `ctx.memory` also has `flags` (the narrative flags) and `se
   `lastVisitBad = false`, so it never comes out after a death or a flight there. Gallows humour **about** the bad visit
   (`lastVisitBad = true`, `"death"` or `"flight"`) is allowed only for an ironic character: it carries `req:irony:high`.
   The validator reports `lightReturnAfterBadVisit` otherwise. `lastVisitBad = false` does not count for the weight `C`.
+- **A death is not a flight** (#162). `lastVisitBad = true` is a death **or** a flight: a phrase that names the death
+  ("where I fell", «dove sono {g:caduto|caduta}») uses `lastVisitBad = "death"`. The validator warns (`badVisitDeath`)
+  about a death named under `true` or `"flight"`.
+- **New ground and coming back** (#162). A phrase of a place event (`zone`, `subzone_enter`, `landmark`) that assumes a
+  first visit ("new ground", «terra nuova», "first time") declares `firstVisit = true`; one that assumes a return
+  ("here again", «di nuovo qui») declares a return (`repeatVisit = true`, `visitsMin`...). Otherwise it also speaks on the
+  other kind of visit. The validator warns (`visitWord`); phrases with another memory condition are left alone, since a
+  return may remember "the first time". "Again" alone is not checked ("the grass bends and rises again").
 
 ### Relationships: greetings, farewells, companions, known NPCs
 
@@ -1036,9 +1044,15 @@ greeted, healed, or stands beside you in battle). The rules:
 - a target of unknown sex (the person healed or raised, a beast, an enemy) takes no generic masculine: «chi giace a
   terra» instead of «il caduto», «bestia mia» instead of «vecchio mio». `{og:}` is not for them (it is only for the
   interlocutor);
-- the validator warns (`itAgreement`) about the commonest cases: a form of *essere*, *sentirsi* or *restare* in the
-  first or second person followed by a masculine participle or adjective from a list (stato, venuto, stanco, pronto,
-  sicuro...), outside a placeholder. It is a warning, not an error: it cannot see every case.
+- the validator warns (`itAgreement`) about the commonest cases: a form of *essere*, *esserne*, *sentirsi* or *restare*
+  in the first or second person, or *mi trovi* / *mi trova*, followed by a masculine participle or adjective from a list
+  (stato, venuto, stanco, pronto, sicuro, degno, vicino, fermo, primo, ultimo...), outside a placeholder. In a narrator
+  emote the third person (*resta*, *rimane*, *sta*, *sembra*, *sente*) counts too, because its subject is the character
+  ("scende a terra e resta {g:fermo|ferma}"). It is a warning, not an error: it cannot see every case;
+- the speaker and the other person **together** in the masculine plural («ci siamo incrociati», «ci eravamo lasciati»)
+  is wrong when both are women, and no placeholder can fix it, because `{g:}` knows one sex only. Write a neutral form
+  («le nostre strade si sono incrociate», «ci conosciamo già»). The validator warns (`itAgreementOther`) about a
+  reciprocal *ci* or *vi* with *essere* followed by a word in -ati, -iti or -uti.
 
 The English of the base packs follows **American spelling**, the same as the client (`color`, `honor`, `traveler`,
 `recognize`, `gray`): the content test flags the most common British forms (issue #66).
@@ -1145,6 +1159,11 @@ call `NS:AddTexts("enUS", { ... }, "base_combat")` as before. Only the folder of
 is missing, the base addon says so and uses English. A pack that is not LoadOnDemand (no `LoadOnDemand` line, like the
 example pack) is loaded by the client at login and keeps working as it always did, with every language inside.
 
+A LoadOnDemand folder that the client loads but that registers nothing (it never calls `NS:AddTexts`, `NS:RegisterPack`,
+`NS:RegisterRegionalPack` or another `NS:Add*` / `NS:Register*` function) is reported once to the user as empty, and
+`/au packs` shows it as "loaded, but gave no content". A folder the client refuses for a reason that cannot change in
+a session (missing, disabled, corrupt, wrong interface version) is tried once, not on every continent change.
+
 A **regional pack** is a folder of rules (region, no language) and one folder of texts per language (region and
 language). The files do not register their tables directly: they register **builders**, functions that return them.
 The base addon runs them when the character enters the region, drops the rules when the character leaves it, and runs
@@ -1239,6 +1258,11 @@ a **warning** is advice.
 | `keyCollision` | error | a script, NPC, place or arc registered under a key another pack already holds, with no `override = true`: refused (see "Keys shared between packs") |
 | `keyOverride` | warning | an entry that replaced one of another pack with `override = true`: who replaced what |
 | `itAgreement` | warning | an Italian text with a gendered agreement outside `{g:}` / `{og:}` (see "Placeholders"): a participle or adjective in the masculine that refers to the character or the interlocutor |
+| `itAgreementOther` | warning | an Italian text where the speaker and the other person, together, are in the masculine plural («ci siamo incrociati»): wrong when both are women; write a neutral form (see "Placeholders") |
+| `weatherWord` | warning | a phrase of an event that describes the surroundings names the weather of the moment (rain, snow, fog...) without the condition `weather` (see "The world") |
+| `timeWord` | warning | a phrase names the time of day ("dusk", "night", "tonight", «stasera»...) but its conditions (or those of its monologue or situation, or its `dawn`/`dusk` event) allow another time: "dusk" fits `dusk` only, "night" and "tonight" fit `dusk` and `night`, "dawn" fits `dawn`. Without a `time` condition only the events that describe the surroundings are checked, and there a place-bound phrase may say "dusk" (Duskwood) but not "tonight" |
+| `visitWord` | warning | a phrase of a place event assumes a first visit ("new ground") without `firstVisit = true`, or a return ("here again") without a return condition (see "Memory") |
+| `badVisitDeath` | warning | a phrase names the character's death under `lastVisitBad = true` or `"flight"`: use `"death"` (see "Memory") |
 | `badPlaceholder` | error | unknown placeholder, malformed gender (`{g:}`, `{og:}`), unclosed brace, `{line}` outside frames, vocabulary inside vocabulary |
 | `frameNoLine` | error | a frame without `{line}` |
 | `badCondition` | error | unknown condition or one with a value of the wrong type |

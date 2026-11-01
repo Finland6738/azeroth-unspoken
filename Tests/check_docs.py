@@ -9,6 +9,14 @@
 3. Wiki (`docs/wiki`, la sola fonte del wiki di GitHub, ADR 0013): ogni link `[[Testo|Pagina]]` o `[testo](Pagina#àncora)`
    punta a una pagina di docs/wiki (e all'àncora, se c'è), ogni pagina è nella barra laterale, e nessuna pagina contiene
    percorsi personali, indirizzi email o parole da sviluppatori.
+4. (#162) Commands: every `/au ...` quoted in README, the pack guide, CONTRIBUTING and docs/ (not the logs: CHANGELOG,
+   ROADMAP, docs/design) is a command of `Commands.list`, with words its keyword table accepts and no old Italian word
+   (the deny list of Tests/TestCommands.lua). A line that talks about Italian words may quote one as the example.
+5. (#162) A link labelled "ADR NNNN" points to the file of ADR NNNN.
+6. (#162) The ADRs are numbered without gaps, each is in docs/adr/README.md with the title of its file, and a "first free
+   number" sentence, if there is one, is right.
+7. (#162) The "Modules" line of README.md and README.it.md lists the modules of the Settings window, in its order.
+Each check of 4-7 is also run on a bad example made on purpose (self_test), which it must refuse.
 
 Uso: python -I -X utf8 Tests/check_docs.py [cartella del repository]. Esce con 1 se qualcosa fallisce.
 """
@@ -221,9 +229,255 @@ def check_wiki():
     check(not found, "nessun dato personale né contenuto da sviluppatori nel wiki" + ("" if not found else ":\n    " + "\n    ".join(found)))
 
 
+def markdown_files(*parts, skip=()):
+    """The .md files under the given folders (or the given files), sorted."""
+    out = []
+    for part in parts:
+        path = os.path.join(ROOT, part)
+        if os.path.isfile(path):
+            out.append(path)
+            continue
+        for base, dirs, names in os.walk(path):
+            dirs[:] = [d for d in dirs if os.path.normpath(os.path.join(base, d)) not in
+                       [os.path.normpath(os.path.join(ROOT, s)) for s in skip]]
+            out += [os.path.join(base, n) for n in names if n.endswith(".md")]
+    return sorted(out)
+
+
+# #162 (Q8): where the commands quoted in the docs are checked. CHANGELOG.md, ROADMAP.md and the design reviews are logs
+# of the past and keep the old names on purpose.
+COMMAND_DOCS = ("README.md", "README.it.md", "CONTRIBUTING.md", "AzerothUnspoken/PACK_FORMAT.md", "docs")
+COMMAND_DOCS_SKIP = ("docs/design",)
+# a line that says "Italian" may quote an Italian word as the example of what the addon refuses (`/au diario`)
+ITALIAN_EXAMPLE = re.compile(r"italian|italiano|italiana|italiane|did you mean|suggerimento", re.IGNORECASE)
+
+
+def italian_words():
+    """The old Italian command words, from the deny list of Tests/TestCommands.lua (one list for both checks)."""
+    src = open(os.path.join(HERE, "TestCommands.lua"), encoding="utf-8").read()
+    m = re.search(r"local ITALIAN = \{(.*?)\}", src, flags=re.S)
+    return set(re.findall(r'"([^"]+)"', m.group(1)))
+
+
+def quoted_commands(path):
+    """[(line number, line, command text)] of the `/au ...` in inline code and of the lines of code blocks."""
+    out, fence = [], False
+    for no, l in enumerate(open(path, encoding="utf-8").read().split("\n"), 1):
+        if l.startswith("```"):
+            fence = not fence
+            continue
+        if fence:
+            m = re.match(r"^\s*(/(?:au|unspoken) .*)$", l)
+            if m:
+                out.append((no, l, m.group(1)))
+            continue
+        for m in re.finditer(r"`(/(?:au|unspoken) [^`]+)`", l):
+            out.append((no, l, m.group(1)))
+    return out
+
+
+# first words a command takes besides its own keyword table (the table named like the command)
+FIRST_WORD_TABLES = {"soul": ("soul.traits", "soul.clear"), "stories": ("stories.actions",), "help": ("help_groups",)}
+
+
+def command_problems(text, commands, registry, italian):
+    """What is wrong with one quoted command: an unknown command, an old Italian word, or a word that the keyword table
+    of the command (`<command>` for the first word, `<command>.<first word>` for the second) does not accept. Commands
+    without a table (event, test, talk...) are judged only for Italian words; words with capitals or digits,
+    placeholders (<x>, [x]) and free text are never judged. Alternatives (a|b, a/b) are judged one by one."""
+    words = text.split()[1:]
+    if not words:
+        return []
+    name = words[0].lower()
+    if name not in commands:
+        return [f"'{name}' is not a command"]
+    full = commands[name]
+    out = []
+    for pos, word in enumerate(words[1:3], 1):
+        if pos == 1:
+            accepted = set(registry.get(full, set()))
+            for extra in FIRST_WORD_TABLES.get(full, ()):
+                accepted |= registry.get(extra, set())
+            if full == "help":
+                accepted |= set(commands)
+            label = f"/au {full}"
+        else:
+            accepted = set(registry.get(f"{full}.{words[1].lower()}", set()))
+            if accepted:
+                # on/off are understood after any word that takes them (share on, editor on...)
+                accepted |= registry.get("on_off.on", set()) | registry.get("on_off.off", set())
+            label = f"/au {full} {words[1]}"
+        for alt in re.split(r"[|/]", word.replace("\\", "")):
+            if alt in italian:
+                out.append(f"'{alt}' is an old Italian word")
+            elif accepted and re.fullmatch(r"[a-z]+", alt) and alt not in accepted:
+                out.append(f"'{alt}' is not a word of {label}")
+    return out
+
+
+def command_tables(lua):
+    """The command names (short forms included) with their full name, and the keyword tables, from the addon."""
+    names = lua.eval("""function()
+        local out = {}
+        for name, spec in pairs(AzerothUnspoken.Commands.byName) do out[name] = spec.name end
+        return out
+    end""")()
+    commands = {k: v for k, v in names.items()}
+    registry = {name: set(tbl.keys()) for name, tbl in lua.globals().AzerothUnspoken.Keywords.registry.items()}
+    return commands, registry
+
+
+def check_commands(lua):
+    print("\nCOMANDI CITATI NEI DOCUMENTI (#162)")
+    commands, registry = command_tables(lua)
+    italian = italian_words()
+    check(len(italian) > 100 and len(commands) > 40, f"{len(italian)} old Italian words and {len(commands)} command names read")
+    bad, total = [], 0
+    for path in markdown_files(*COMMAND_DOCS, skip=COMMAND_DOCS_SKIP):
+        rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
+        for no, line, text in quoted_commands(path):
+            total += 1
+            if ITALIAN_EXAMPLE.search(line):
+                continue
+            for problem in command_problems(text, commands, registry, italian):
+                bad.append(f"{rel}:{no}: `{text}`: {problem}")
+    check(not bad, f"{total} commands quoted in the docs, all real" + ("" if not bad else ":\n    " + "\n    ".join(bad)))
+
+
+ADR_DIR = os.path.join(ROOT, "docs", "adr")
+
+
+def adr_label_problems(line):
+    """[(label number, target file)] of the links of a line whose label "ADR NNNN" is not the number of the file."""
+    out = []
+    for m in re.finditer(r"\[ADR (\d{4})[^\]]*\]\(([^)\s]+)\)", line):
+        target = os.path.basename(m.group(2).partition("#")[0])
+        if re.match(r"^\d{4}-", target) and not target.startswith(m.group(1)):
+            out.append((m.group(1), target))
+    return out
+
+
+def check_adr_links():
+    print("\nETICHETTE DEI LINK ALLE ADR (#162)")
+    bad, total = [], 0
+    for path in markdown_files(".", skip=(".git", ".venv", "archive", "node_modules", ".claude")):
+        for no, l in enumerate(open(path, encoding="utf-8").read().split("\n"), 1):
+            total += len(re.findall(r"\[ADR \d{4}[^\]]*\]\([^)\s]*\d{4}-", l))
+            for label, target in adr_label_problems(l):
+                bad.append(f"{os.path.relpath(path, ROOT)}:{no}: [ADR {label}] points to {target}")
+    check(not bad, f"{total} links labelled 'ADR NNNN', each to its own number" + ("" if not bad else ":\n    " + "\n    ".join(bad)))
+
+
+def adr_index_problems(adr_dir):
+    """What is wrong with the ADR folder and its index: a gap or a duplicate number, an ADR missing from the index, an
+    index title that is not the file's title, a wrong "first free number"."""
+    out = []
+    files = sorted(n for n in os.listdir(adr_dir) if re.match(r"^\d{4}-.*\.md$", n))
+    numbers = [int(n[:4]) for n in files]
+    if numbers != list(range(1, len(numbers) + 1)):
+        out.append(f"the numbers are not 0001 to {len(numbers):04d} without gaps: {numbers}")
+    index = open(os.path.join(adr_dir, "README.md"), encoding="utf-8").read()
+    rows = dict(re.findall(r"^\| \[\d{4}\]\(([^)]+)\) \| (.*?) \|", index, flags=re.M))
+    for n in files:
+        h1 = open(os.path.join(adr_dir, n), encoding="utf-8").readline().strip()
+        title = re.sub(r"^#\s*\d{4}\.\s*", "", h1)
+        if n not in rows:
+            out.append(f"{n} is not in the index")
+        elif rows[n].strip() != title:
+            out.append(f"{n}: index '{rows[n].strip()}', file '{title}'")
+    m = re.search(r"first free number \(today (\d{4})\)", index)
+    if m and int(m.group(1)) != len(numbers) + 1:
+        out.append(f"the first free number is {len(numbers) + 1:04d}, the index says {m.group(1)}")
+    return out
+
+
+def check_adr_index():
+    print("\nINDICE DELLE ADR (#162)")
+    bad = adr_index_problems(ADR_DIR)
+    check(not bad, "ADR numbered without gaps, all in docs/adr/README.md with the title of the file"
+          + ("" if not bad else ":\n    " + "\n    ".join(bad)))
+
+
+def module_problems(readme_text, label, expected):
+    """None if the README's "Modules" line lists the expected labels in order, else what it lists (or a message)."""
+    m = re.search(r"^- \*\*" + label + r"\*\*: (.*?) \(", readme_text, flags=re.M)
+    if m is None:
+        return f"no '- **{label}**:' line"
+    listed = [w.strip() for w in m.group(1).split(",")]
+    return None if listed == expected else f"README {listed}, window {expected}"
+
+
+def module_labels(lua, lang):
+    """The labels of the modules in the Settings window (UI/SettingsFrame.lua MODULE_ORDER), in its order."""
+    src = open(os.path.join(ADDON, "UI", "SettingsFrame.lua"), encoding="utf-8").read()
+    order = re.findall(r'"(\w+)"', re.search(r"local MODULE_ORDER = \{(.*?)\}", src).group(1))
+    ui = lua.globals().AzerothUnspoken.languages
+    return [str(ui[lang].ui["module_" + k]) for k in order]
+
+
+def check_modules(lua):
+    print("\nMODULI NEL README (#162)")
+    for readme, lang, label in (("README.md", "en", "Modules"), ("README.it.md", "it", "Moduli")):
+        problem = module_problems(open(os.path.join(ROOT, readme), encoding="utf-8").read(), label, module_labels(lua, lang))
+        check(problem is None, f"{readme}: the modules are those of the Settings window, in its order"
+              + ("" if problem is None else f" ({problem})"))
+
+
+def self_test(lua):
+    """Each docs check of #162 fails on a bad example made on purpose, and passes on a good one."""
+    import tempfile
+    print("\nPROVA DEI CONTROLLI SUI DOCUMENTI (#162)")
+    commands, registry = command_tables(lua)
+    italian = italian_words()
+    for text, needle in (("/au pausa", "not a command"), ("/au depth letterario", "Italian"),
+                         ("/au mode privato", "Italian"), ("/au depth poetic", "not a word of /au depth"),
+                         ("/au journal reset everything", "not a word of /au journal reset"),
+                         ("/au relationships reset shared|everyone", "everyone"), ("/au rel shere on", "not a word")):
+        found = command_problems(text, commands, registry, italian)
+        check(any(needle in p for p in found), f"`{text}` is refused ({found})")
+    for text in ("/au depth literary", "/au mode private", "/au soul curiosity high", "/au stories choose <arc> <option>",
+                 "/au relationships share on|off", "/au rel reset shared", "/au help chat", "/au help journal",
+                 "/au cast Flash Heal", "/au event greet", "/au talk test warm", "/au journal flag Ironforge"):
+        found = command_problems(text, commands, registry, italian)
+        check(not found, f"`{text}` is accepted" + (f" ({found})" if found else ""))
+    check(bool(ITALIAN_EXAMPLE.search("If you type an Italian word such as `/au diario`")), "a line about Italian words may quote one")
+    check(adr_label_problems("see [ADR 0028](docs/adr/0029-specificity-tiers.md#x)") == [("0028", "0029-specificity-tiers.md")],
+          "a link labelled ADR 0028 to the file 0029 is refused")
+    check(not adr_label_problems("see [ADR 0029 §2](../adr/0029-specificity-tiers.md) and [the ADRs](docs/adr/README.md)"),
+          "a link labelled with its own number is accepted")
+    with tempfile.TemporaryDirectory() as tmp:
+        def write(name, text):
+            with open(os.path.join(tmp, name), "w", encoding="utf-8", newline="\n") as f:
+                f.write(text)
+        write("0001-one.md", "# 0001. One\n")
+        write("0002-two.md", "# 0002. Two\n")
+        write("README.md", "| [0001](0001-one.md) | One | accepted |\n| [0002](0002-two.md) | Two | accepted |\n"
+                           "It will get the first free number (today 0003).\n")
+        check(not adr_index_problems(tmp), "a complete ADR index is accepted")
+        write("0004-four.md", "# 0004. Four\n")
+        write("README.md", "| [0001](0001-one.md) | Uno | accepted |\n| [0002](0002-two.md) | Two | accepted |\n"
+                           "It will get the first free number (today 0003).\n")
+        found = adr_index_problems(tmp)
+        check(any("gaps" in p for p in found) and any("0004-four.md is not in the index" in p for p in found)
+              and any("index 'Uno'" in p for p in found) and any("first free number" in p for p in found),
+              f"a gap, a missing ADR, a wrong title and a wrong first free number are refused ({found})")
+    expected = module_labels(lua, "en")
+    good = "- **Modules**: " + ", ".join(expected) + " (marks), plus presets.\n"
+    check(module_problems(good, "Modules", expected) is None, "a README listing the modules of the window is accepted")
+    check(module_problems(good.replace("Relationships", "Relations"), "Modules", expected) is not None,
+          "a README with an old module name is refused")
+    check(module_problems(good.replace(", Emotions", ""), "Modules", expected) is not None,
+          "a README without a module is refused")
+
+
 if __name__ == "__main__":
-    check_examples()
+    lua = check_examples()
     check_links()
     check_wiki()
+    check_commands(lua)
+    check_adr_links()
+    check_adr_index()
+    check_modules(lua)
+    self_test(lua)
     print("\n" + ("DOCUMENTAZIONE A POSTO" if not FAILURES else f"{len(FAILURES)} CONTROLLI FALLITI"))
     sys.exit(1 if FAILURES else 0)

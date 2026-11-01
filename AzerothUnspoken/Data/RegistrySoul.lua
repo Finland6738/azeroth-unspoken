@@ -78,7 +78,8 @@ NS:RegisterPack({
 		-- curiosità: un tono, non una storia
 		["soul.zone.curious"] = { event = "zone", speaker = "inner", styles = { "intimate", "everyday" },
 			tags = { "curiosity:high" }, depth = { "natural", "literary", "elevated" },
-			theme = "mystery" },
+			-- every variant meets an unknown land (#162)
+			conditions = { firstVisit = true }, theme = "mystery" },
 		-- libertà: spazi aperti
 		["soul.zone.freedom"] = { event = "zone", speaker = "inner", styles = { "intimate", "epic" },
 			tags = { "motivation:freedom" }, depth = { "natural", "literary" },

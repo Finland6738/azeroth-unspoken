@@ -187,6 +187,8 @@ local function CreatePanel()
 			NS.db.preset = "custom"
 			if module == "publicChat" and not NS.db.modules.publicChat then NS.Gateway:Discard() end
 			if module == "emotion" and not NS.db.modules.emotion and NS.Emotion then NS.Emotion:Reset() end
+			-- the proximity events are registered only while the relations module and the option are on (#164)
+			if module == "relations" and NS.Relationships then NS.Relationships:ApplyProximity() end
 			panel:Refresh()
 		end)
 		local col, row = (i - 1) % 4, math.floor((i - 1) / 4)

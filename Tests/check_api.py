@@ -8,7 +8,7 @@ vale una eccezione motivata (vedi EXCEPTIONS). Il dump è consultazione: non se 
 Uso:  python -I -X utf8 Tests/check_api.py [--api PERCORSO] [--list] [cartella ...]
   --api    percorso di api.json (altrimenti la variabile AU_API_JSON, altrimenti ../WoW-Addons/docs/api.json)
   --list   stampa anche tutto ciò che è stato trovato e va bene
-  cartella cartelle da controllare (predefinite: AzerothUnspoken, AzerothUnspoken_Example e AzerothUnspoken_Versi)
+  cartella cartelle da controllare (predefinite: ogni cartella AzerothUnspoken* con il suo .toc, #165)
 
 Che cosa controlla:
   1. funzioni chiamate (`Nome(`, `C_Spazio.Funzione(`) e passate per nome a SafeCall/Query/Resolve;
@@ -18,7 +18,16 @@ Che cosa controlla:
      Enum.*...), che non stanno nel dump e vanno elencati in OBJECTS con il motivo;
   4. (Q5, #54) i metodi chiamati con `oggetto:Metodo()` (widget: SimpleFrameAPI, SimpleButtonAPI...), confrontati con
      i nomi dei sistemi senza namespace del dump; ciò che è solo di FrameXML sta in METHODS con il motivo;
-  5. i modelli di CreateFrame (`UIPanelButtonTemplate`...), elencati in TEMPLATES.
+  5. i modelli di CreateFrame (`UIPanelButtonTemplate`...), elencati in TEMPLATES;
+  6. (Q8, #165) gli eventi scritti in una tabella: le chiavi e i valori in maiuscolo di una tabella `*_EVENTS`
+     (`R.PROXIMITY_EVENTS = { NAME_PLATE_UNIT_ADDED = ... }`), i campi `event = "NOME"` (le voci di /au probe) e i
+     confronti `event == "NOME"`;
+  7. (#165) `_G.X` e `_G["X"]` come una lettura del globale X, e i nomi di frame scritti in una tabella `*_FRAMES` e
+     letti con `_G[name]` (Compat.INVASIVE_FRAMES, DialogueFrame.BLIZZARD_FRAMES): FrameXML, elencati in FRAMES;
+  8. (#165) ogni stringa a forma di percorso di API (`"C_Spazio.Funzione"`, anche passata a un involucro locale come
+     Value o Hook) e i nomi passati a `Value("id", "Funzione")`: un C_ sconosciuto o una funzione assente è un errore;
+  9. (#165) i metodi chiamati come `pcall(frame.Metodo, frame, ...)`, confrontati come i metodi del punto 4;
+  10. (#165) i nomi degli oggetti font scritti come stringhe (`"GameFontNormalLarge"`), elencati in FONTS.
 Ciò che si usa senza che il dump lo confermi e senza una voce motivata è un errore.
 
 Codice di uscita: 0 = tutto presente (o file del dump assente: test SALTATO con un avviso), 1 = usi non spiegati.
@@ -82,8 +91,6 @@ OBJECTS = {
     "Enum.*": "costanti di FrameXML (Enum.AddOnRestrictionType, Enum.UIMapType): lette solo dopo aver controllato che esistano",
     "LE_PARTY_CATEGORY_INSTANCE": "costante di FrameXML: ripiego su un valore fisso se manca",
     "STANDARD_TEXT_FONT": "costante di FrameXML con il carattere standard",
-    "ChatFontNormal": "oggetto font di FrameXML, usato come ripiego del carattere",
-    "GameFontHighlight": "oggetto font di FrameXML, usato come ripiego del carattere",
     "WOW_PROJECT_*": "costanti di FrameXML (WOW_PROJECT_ID, WOW_PROJECT_CAMELOT): lette da Compat per riconoscere il client",
     "TRP3_API": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
     "AddOn_TotalRP3*": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
@@ -99,6 +106,38 @@ METHODS = {
     "ScrollUp": "ScrollingMessageFrame (mixin di FrameXML): il frame del narratore; un errore lo intercetta la diagnostica",
     "ScrollDown": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
     "ScrollToBottom": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
+    "GetInfo": "Total RP 3 (optional): method of its player object, called inside pcall only when TRP3_API exists",
+    "GetFirstName": "Total RP 3 (optional): as GetInfo",
+}
+
+# (#165) FrameXML frames named in strings and read with `_G[name]` or `_G.X`: not in the dump (they are XML)
+FRAMES = {
+    "CinematicFrame": "FrameXML: Compat.INVASIVE_FRAMES, read with _G[name] and skipped when missing",
+    "MovieFrame": "FrameXML: as CinematicFrame",
+    "MerchantFrame": "FrameXML: Systems/Relationships.lua hooks it only when _G.MerchantFrame exists; also in BLIZZARD_FRAMES",
+    "GossipFrame": "FrameXML: DialogueFrame.BLIZZARD_FRAMES, read with _G[name]; a missing frame is skipped",
+    "QuestFrame": "FrameXML: as GossipFrame",
+    "TaxiFrame": "FrameXML: as GossipFrame",
+    "ClassTrainerFrame": "FrameXML (load on demand): as GossipFrame",
+    "BankFrame": "FrameXML: as GossipFrame",
+    "AuctionFrame": "FrameXML (load on demand): as GossipFrame",
+    "MailFrame": "FrameXML: as GossipFrame",
+    "TradeFrame": "FrameXML: as GossipFrame",
+    "CharacterFrame": "FrameXML: as GossipFrame",
+    "SpellBookFrame": "FrameXML: as GossipFrame",
+    "QuestLogFrame": "FrameXML: as GossipFrame",
+    "WorldMapFrame": "FrameXML: as GossipFrame",
+    "ContainerFrame*": "FrameXML: the bag frames ContainerFrame1..5, as GossipFrame",
+}
+
+# (#165) font objects of FrameXML named in strings (CreateFontString, SetFontObject): not in the dump
+FONTS = {
+    "GameFontNormal": "FrameXML font object: the standard font",
+    "GameFontNormalSmall": "FrameXML font object",
+    "GameFontNormalLarge": "FrameXML font object",
+    "GameFontHighlight": "FrameXML font object; also a fallback of the font",
+    "GameFontHighlightSmall": "FrameXML font object",
+    "ChatFontNormal": "FrameXML font object, the fallback of the font",
 }
 
 # Modelli di CreateFrame che il dump non può elencare (XML di FrameXML)
@@ -196,16 +235,39 @@ def load_dump(path):
     return funcs, events, d.get("meta", {}), methods, namespaces
 
 
-def excepted(name):
-    for pat in EXCEPTIONS:
+def excepted(name, table=None):
+    table = EXCEPTIONS if table is None else table
+    for pat in table:
         if pat == name or (pat.endswith("*") and name.startswith(pat[:-1])):
-            return EXCEPTIONS[pat]
+            return table[pat]
     return None
 
 
+# the namespaces of the dump, filled by main() before collect()
+NAMESPACES = set()
+EVENT_NAME = re.compile(r"[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+")
+API_PATH = re.compile(r"(C_[A-Za-z]\w*|[A-Z]\w*)\.([A-Za-z_]\w*)")
+
+
+def table_body(code, start):
+    """The text between the brace at `start` and its closing brace."""
+    depth, i = 0, start
+    while i < len(code):
+        if code[i] == "{":
+            depth += 1
+        elif code[i] == "}":
+            depth -= 1
+            if depth == 0:
+                return code[start + 1:i]
+        i += 1
+    return code[start + 1:]
+
+
 def collect(folders):
-    """Restituisce (usi di funzioni, usi di eventi): { nome: [(file, riga), ...] }."""
+    """Restituisce (usi di funzioni, usi di eventi, altri usi): { nome: [(file, riga), ...] }; gli altri usi sono
+    { "frames": globali scritti in una tabella *_FRAMES, "methods": metodi chiamati con pcall(obj.M, obj) }."""
     calls, events = {}, {}
+    extra = {"frames": {}, "methods": {}}
 
     def add(table, name, path, pos, code):
         line = code.count("\n", 0, pos) + 1
@@ -255,6 +317,42 @@ def collect(folders):
             if name and re.fullmatch(r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*", name) and name.split(".")[0] not in owned \
                     and name.split(".")[0] not in LUA_GLOBALS and name not in ("nil",):
                 add(calls, name, path, m.start(), code)
+        # (#165) Value("id", "Funzione"): the functions read by Compat:Probe through a local wrapper
+        for m in re.finditer(r'\bValue\s*\(\s*"S\d+"\s*,\s*("S\d+")', code):
+            name = S(m.group(1))
+            if name and re.fullmatch(r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*", name):
+                add(calls, name, path, m.start(), code)
+        # (#165) every string shaped like an API path ("C_Map.GetMapInfo"), whatever function receives it: a path in a
+        # namespace of the dump, or in any C_ namespace, is a function to find (other roots are the addon's own)
+        for m in re.finditer(r'"S(\d+)"', code):
+            text = strings[int(m.group(1))]
+            p = API_PATH.fullmatch(text)
+            if p and (p.group(1).startswith("C_") or p.group(1) in NAMESPACES):
+                add(calls, text, path, m.start(), code)
+        # (#165) events written in a table: keys and upper-case values of a *_EVENTS table, `event = "NAME"` fields
+        # (the items of /au probe) and comparisons `event == "NAME"`
+        for m in re.finditer(r"\b\w*EVENTS\s*=\s*\{", code):
+            body = table_body(code, m.end() - 1)
+            names = re.findall(r"(?:^|[{,;\s])([A-Z][A-Z0-9_]*)\s*=[^=]", body)
+            names += [S(t) for t in re.findall(r'"S\d+"', body)]
+            for name in names:
+                if name and EVENT_NAME.fullmatch(name):
+                    add(events, name, path, m.start(), code)
+        for m in re.finditer(r'\bevent\s*==?\s*("S\d+")|("S\d+")\s*==\s*event\b', code):
+            name = S(m.group(1) or m.group(2))
+            if name and EVENT_NAME.fullmatch(name):
+                add(events, name, path, m.start(), code)
+        # (#165) FrameXML frames named in a *_FRAMES table and read with _G[name]
+        for m in re.finditer(r"\b\w*_FRAMES\s*=\s*\{", code):
+            for t in re.findall(r'"S\d+"', table_body(code, m.end() - 1)):
+                name = S(t)
+                if name and re.fullmatch(r"[A-Za-z_]\w*", name):
+                    add(extra["frames"], name, path, m.start(), code)
+        # (#165) methods called through pcall: pcall(frame.RegisterEvent, frame, ...)
+        for m in re.finditer(r"\b(?:x?pcall|SafeCall)\s*\(\s*([A-Za-z_]\w*(?:\.\w+)*)\.([A-Za-z_]\w*)\s*,\s*"
+                             r"([A-Za-z_]\w*(?:\.\w+)*)\s*[,)]", code):
+            if m.group(1) == m.group(3):
+                add(extra["methods"], m.group(2), path, m.start(), code)
         # tabella delle API sondate da Compat: { "id", "principale", "alternativa" }
         if path.endswith("Compat.lua"):
             m = re.search(r"local APIS = \{(.*?)\n\}", code, re.S)
@@ -280,7 +378,7 @@ def collect(folders):
             name = S(m.group(1))
             if name and re.fullmatch(r"[A-Z][A-Z0-9_]+", name):
                 add(events, name, path, m.start(), code)
-    return calls, events
+    return calls, events, extra
 
 
 # --- (#54) Bytecode di Lua 5.1: ogni lettura di un globale, ogni metodo, ogni stringa -----------------------------
@@ -364,7 +462,8 @@ def _analyse(f, path, out, upmap):
         where = (path, lines[i] if i < len(lines) else 0)
         if op == GETGLOBAL:
             reg[A] = k[Bx]
-            out["globals"].setdefault(k[Bx], []).append(where)
+            if k[Bx] != "_G":
+                out["globals"].setdefault(k[Bx], []).append(where)
         elif op == SETGLOBAL:
             out["setglobals"].add(k[Bx])
         elif op == GETUPVAL:
@@ -377,7 +476,8 @@ def _analyse(f, path, out, upmap):
             key = k[C - 256] if C >= 256 else None
             base = reg.get(B)
             if base is not None and isinstance(key, str):
-                reg[A] = base + "." + key
+                # (#165) _G.X and _G["X"] read the global X
+                reg[A] = key if base == "_G" else base + "." + key
                 out["globals"].setdefault(reg[A], []).append(where)
             else:
                 reg.pop(A, None)
@@ -460,12 +560,16 @@ def owned_fields(folders):
     return names
 
 
-def classify_bytecode(scan, folders, funcs, methods, namespaces):
+def classify_bytecode(scan, folders, funcs, methods, namespaces, extra=None):
     """Confronta ciò che il bytecode ha letto con il dump e con gli elenchi motivati.
     Restituisce { 'globals' | 'methods' | 'templates': { found: [...], explained: {nome: motivo}, missing: {nome: dove} } }."""
     result = {}
+    extra = extra or {"frames": {}, "methods": {}}
     lua_names = LUA_GLOBALS | {"_G"}
-    leaves = set(scan["globals"])
+    scan_globals = dict(scan["globals"])
+    for name, where in extra["frames"].items():
+        scan_globals.setdefault(name, []).extend(where)
+    leaves = set(scan_globals)
     for name in list(leaves):                     # solo le foglie: C_Map non conta se si legge C_Map.GetMapInfo
         parent = name.rsplit(".", 1)[0] if "." in name else None
         if parent in leaves:
@@ -479,17 +583,22 @@ def classify_bytecode(scan, folders, funcs, methods, namespaces):
         for pat in OBJECTS:
             if pat == name or (pat.endswith("*") and name.startswith(pat[:-1])) or pat == rootname:
                 reason = OBJECTS[pat]
+        # a frame or a font, or a field of one (MerchantFrame.IsShown)
+        reason = reason or excepted(name, FRAMES) or excepted(rootname, FRAMES) or excepted(name, FONTS)
         if name in funcs:
             g["found"].append(name)
         elif reason or excepted(name):
             g["explained"][name] = reason or excepted(name)
         else:
-            g["missing"][name] = scan["globals"][name]
+            g["missing"][name] = scan_globals[name]
     result["globals"] = g
 
     owned = owned_fields(folders)
     m = {"found": [], "explained": {}, "missing": {}}
-    for name in sorted(scan["methods"]):
+    used_methods = dict(scan["methods"])
+    for name, where in extra["methods"].items():
+        used_methods.setdefault(name, []).extend(where)
+    for name in sorted(used_methods):
         if name in LUA_STRING_METHODS or name in owned:
             continue
         if name in methods or name in funcs:
@@ -497,8 +606,20 @@ def classify_bytecode(scan, folders, funcs, methods, namespaces):
         elif name in METHODS:
             m["explained"][name] = METHODS[name]
         else:
-            m["missing"][name] = scan["methods"][name]
+            m["missing"][name] = used_methods[name]
     result["methods"] = m
+
+    # (#165) font objects named in strings: a string shaped like a FrameXML font name that is not a function, a method,
+    # a name of the addon or an object already explained
+    f = {"found": [], "explained": {}, "missing": {}}
+    for name in sorted(n for n in scan["strings"] if re.fullmatch(r"[A-Z]\w*Font\w*", n)):
+        if name in funcs or name in methods or name in owned or name in OBJECTS:
+            continue
+        if excepted(name, FONTS):
+            f["explained"][name] = excepted(name, FONTS)
+        else:
+            f["missing"][name] = scan["strings"][name]
+    result["fonts"] = f
 
     t = {"found": [], "explained": {}, "missing": {}}
     for name in sorted(n for n in scan["strings"] if re.fullmatch(r"[A-Z]\w*Template", n)):
@@ -522,8 +643,9 @@ def main(argv):
         else:
             folders.append(os.path.abspath(a))
     if not folders:
-        folders = [os.path.join(ROOT, "AzerothUnspoken"), os.path.join(ROOT, "AzerothUnspoken_Example"),
-                   os.path.join(ROOT, "AzerothUnspoken_Versi")]
+        # (#165) every folder of the download: the addon, the example, the verses, the language and regional packs
+        folders = [os.path.join(ROOT, d) for d in sorted(os.listdir(ROOT))
+                   if d.startswith("AzerothUnspoken") and os.path.isfile(os.path.join(ROOT, d, d + ".toc"))]
     folders = [f for f in folders if os.path.isdir(f)]
 
     if not os.path.isfile(api):
@@ -533,7 +655,8 @@ def main(argv):
         return 0
 
     funcs, events, meta, methods, namespaces = load_dump(api)
-    calls, used_events = collect(folders)
+    NAMESPACES.update(namespaces)
+    calls, used_events, extra = collect(folders)
     for ns in namespaces:                       # `Compat.SafeCall(C_Spell and C_Spell.GetSpellName, ...)`: C_Spell non è una funzione
         calls.pop(ns, None)
     print(f"Dump: build {meta.get('build')}, Interface {meta.get('interface')}, {len(funcs)} funzioni, {len(events)} eventi.")
@@ -565,9 +688,9 @@ def main(argv):
     if scan is None:
         print("Bytecode: SALTATO (lupa non installata: pip install lupa nel venv del progetto).")
     else:
-        res = classify_bytecode(scan, folders, funcs, methods, namespaces)
+        res = classify_bytecode(scan, folders, funcs, methods, namespaces, extra)
         for key, title, label in (("globals", "Globali letti", "globale"), ("methods", "Metodi usati", "metodo"),
-                                  ("templates", "Modelli di CreateFrame", "modello")):
+                                  ("templates", "Modelli di CreateFrame", "modello"), ("fonts", "Oggetti font", "font")):
             r = res[key]
             print(f"{title}: {len(r['found'])} nel dump, {len(r['explained'])} con motivo, {len(r['missing'])} da spiegare.")
             if show_all and r["found"]:

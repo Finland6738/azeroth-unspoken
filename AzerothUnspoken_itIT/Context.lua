@@ -397,7 +397,7 @@ NS:AddTexts("itIT", {
 	},
 	["ctx.zone.rest"] = {
 		"Un fuoco acceso, una sedia libera. Il cammino può aspettare fino a domani.",
-		"Il tintinnio dei boccali, una risata dal fondo della sala. Stanotte nessuno ti chiede niente.",
+		"Il tintinnio dei boccali, una risata dal fondo della sala. Qui nessuno ti chiede niente.",
 	},
 	["ctx.zone.rest.cloak"] = {
 		"si scuote di dosso la polvere della strada e cerca con gli occhi una panca libera.",

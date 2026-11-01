@@ -138,6 +138,8 @@ NS:RegisterLanguage("it", {
 		packs_state = "cartelle: frasi in %s, regione %s (caricamenti %d, costruzioni %d, rilasci %d, attese per il combattimento %d)",
 		packs_loaded = "caricata", packs_not_loaded = "non caricata (ora non serve)", packs_absent = "non installata",
 		packs_failed_short = "non caricabile (%s)",
+		packs_empty = "la cartella %s si è caricata ma non ha dato nessun contenuto: è vuota o di un'altra versione. Copiala di nuovo dal download.",
+		packs_loaded_empty = "caricata, ma senza contenuto",
 		cooldown_now = "pausa tra le frasi automatiche: %d secondi",
 		no_phrase = "nessuna frase adatta per '%s' in questo momento.",
 		ignored = "'%s' non produrrà più frasi.", unignored = "'%s' torna a produrre frasi.",

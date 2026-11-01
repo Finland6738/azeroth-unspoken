@@ -117,38 +117,83 @@ local LETTER = "[A-Za-z\128-\255]"
 -- essere, sentire o restare alla prima o seconda persona, seguita (con al più qualche avverbio) da una di queste
 -- parole. Elenco corto di forme maschili che hanno una femminile in -a: chi scrive ne aggiunge se serve.
 Validator.IT_AGREEMENT_VERBS = { sono = true, ero = true, ["sarò"] = true, sarei = true, sei = true, eri = true,
-	sarai = true, saresti = true, essere = true, sento = true, senti = true, sentivo = true, sentivi = true,
-	resto = true, resti = true, restavo = true, restavi = true, rimango = true, rimani = true }
+	sarai = true, saresti = true, essere = true, esserne = true, sento = true, senti = true, sentivo = true,
+	sentivi = true, resto = true, resti = true, restavo = true, restavi = true, rimango = true, rimani = true }
+-- #162: verbs that agree with the speaker only after "mi" ("che il prossimo mi trovi pronto")
+Validator.IT_AGREEMENT_MI_VERBS = { trovi = true, trova = true, ["troverà"] = true, ["troverai"] = true }
+-- #162: third-person verbs, checked only in a narrator emote, whose subject is the character (the game puts the name
+-- first: "scende a terra e resta fermo")
+Validator.IT_AGREEMENT_EMOTE_VERBS = { resta = true, rimane = true, sta = true, sembra = true, sente = true }
 Validator.IT_AGREEMENT_ADVERBS = { ["così"] = true, molto = true, troppo = true, ancora = true, sempre = true,
 	["già"] = true, davvero = true, quasi = true, proprio = true, ["più"] = true, meno = true, ormai = true, non = true,
-	mai = true, ben = true, tanto = true, abbastanza = true, ora = true, adesso = true, mica = true }
+	mai = true, ben = true, tanto = true, abbastanza = true, ora = true, adesso = true, mica = true,
+	-- "sarò io il primo", "sono l'ultimo"
+	io = true, tu = true, il = true, l = true }
 Validator.IT_AGREEMENT_WORDS = {}
 for w in ("stato stanco pronto sicuro certo grato contento convinto stufo spaventato arrivato tornato venuto nato "
 	.. "rimasto cresciuto preoccupato cambiato partito uscito entrato perso ritrovato salvato disposto curioso "
 	.. "orgoglioso attento vivo sveglio nascosto fortunato deluso ferito libero innamorato affamato assetato ubriaco "
-	.. "sorpreso straniero strisciato morto caduto abituato franco"):gmatch("%S+") do
+	.. "sorpreso straniero strisciato morto caduto abituato franco "
+	-- #162 (Q8)
+	.. "degno vicino fermo fidato seduto fradicio primo ultimo"):gmatch("%S+") do
 	Validator.IT_AGREEMENT_WORDS[w] = true
+end
+
+-- the words of an Italian text, sentence by sentence: placeholders and punctuation become "|"
+local function ItalianWords(text)
+	local flat = NS.Lower(text):gsub("{[^{}]*}", " | "):gsub("[%.%?!;:,\"()]", " | ")
+	for _, mark in ipairs({ "«", "»", "—", "…" }) do
+		flat = flat:gsub(mark, " | ")
+	end
+	return flat:gmatch("[A-Za-z\128-\255|]+")
 end
 
 ---La prima forma maschile che si accorda senza segnaposto in un testo italiano, o nil.
 ---@param text string
 ---@param lang string codice breve (solo "it" si controlla)
+---@param emote? boolean a narrator emote: the third person speaks of the character too (#162)
 ---@return string? phrase la parola trovata, con il verbo che la regge
-function Validator.UnmarkedAgreement(text, lang)
+function Validator.UnmarkedAgreement(text, lang, emote)
 	if lang ~= "it" then return nil end
 	-- i segnaposto e la punteggiatura spezzano il discorso ("|"): l'accordo si cerca dentro una frase
-	local flat = NS.Lower(text):gsub("{[^{}]*}", " | "):gsub("[%.%?!;:,\"()]", " | ")
-	for _, mark in ipairs({ "«", "»", "—", "…" }) do
-		flat = flat:gsub(mark, " | ")
-	end
-	local verb
-	for word in flat:gmatch("[A-Za-z\128-\255|]+") do
+	local verb, prev
+	for word in ItalianWords(text) do
 		if verb and Validator.IT_AGREEMENT_WORDS[word] then return verb .. " " .. word end
-		if Validator.IT_AGREEMENT_VERBS[word] then
+		if Validator.IT_AGREEMENT_VERBS[word] or (emote and Validator.IT_AGREEMENT_EMOTE_VERBS[word]) then
 			verb = word
+		elseif prev == "mi" and Validator.IT_AGREEMENT_MI_VERBS[word] then
+			verb = "mi " .. word
 		elseif not (verb and Validator.IT_AGREEMENT_ADVERBS[word]) then
 			verb = nil
 		end
+		prev = word
+	end
+	return nil
+end
+
+-- #162: "ci siamo incrociati" speaks of the speaker and the other together, in the masculine plural: wrong when both
+-- are women, and {g:} cannot fix it (it knows one sex only). A neutral form is the way ("le nostre strade si sono
+-- incrociate"). The participle is any word in -ati, -iti, -uti after a reciprocal "ci" or "vi" with essere.
+Validator.IT_RECIPROCAL_VERBS = { siamo = true, eravamo = true, saremo = true, saremmo = true, fossimo = true,
+	siete = true, eravate = true, sarete = true }
+
+---The first reciprocal masculine plural ("ci siamo incrociati") of an Italian text, or nil.
+---@param text string
+---@param lang string short code (only "it" is checked)
+---@return string?
+function Validator.UnmarkedReciprocal(text, lang)
+	if lang ~= "it" then return nil end
+	local verb, prev
+	for word in ItalianWords(text) do
+		if verb and #word > 4 and (word:sub(-3) == "ati" or word:sub(-3) == "iti" or word:sub(-3) == "uti") then
+			return verb .. " " .. word
+		end
+		if (prev == "ci" or prev == "vi") and Validator.IT_RECIPROCAL_VERBS[word] then
+			verb = prev .. " " .. word
+		elseif not (verb and Validator.IT_AGREEMENT_ADVERBS[word]) then
+			verb = nil
+		end
+		prev = word
 	end
 	return nil
 end
@@ -168,7 +213,14 @@ end
 ---@param lang string codice breve (en, it)
 ---@return string?
 function Validator.WeatherWord(text, lang)
-	local words = Validator.WEATHER_WORDS[lang]
+	return Validator.FindWord(text, Validator.WEATHER_WORDS[lang])
+end
+
+---The first of the words (whole words or phrases, lower case) that the text contains, or nil.
+---@param text string
+---@param words? string[]
+---@return string?
+function Validator.FindWord(text, words)
 	if not words then return nil end
 	local lower = NS.Lower(text)
 	for _, w in ipairs(words) do
@@ -182,6 +234,155 @@ function Validator.WeatherWord(text, lang)
 		end
 	end
 	return nil
+end
+
+-- #162 (Q8): words that name the time of day, and the times (`time` condition: dawn, day, dusk, night) each one
+-- fits. A line that names one is said at a time the word allows: its rule, its situation or its monologue asks such a
+-- `time`, or it comes from an event that sets it (dawn, dusk). "Night" fits dusk too ("the road will belong to the
+-- night"); "dusk" fits dusk only (rain_dusk_return once allowed night while its lines said "the light is failing").
+-- Without a time condition the words are checked only in the events that describe the surroundings (WEATHER_EVENTS):
+-- in a battle cry "tonight" is bravado. There the words marked `now` ("tonight", "stasera") are always checked, the
+-- others not in a line bound to a place (Duskwood is dark at noon). With a time condition every line is checked.
+-- A warning: the list is short on purpose ("morning" is left out: "this morning" speaks of the past).
+local DAWN, DUSK, NIGHT = { dawn = true }, { dusk = true }, { dusk = true, night = true }
+Validator.TIME_WORDS = {
+	en = { { "tonight", NIGHT, true }, { "this evening", NIGHT, true }, { "good evening", NIGHT, true },
+		{ "dusk", DUSK }, { "twilight", DUSK }, { "sunset", DUSK }, { "nightfall", DUSK },
+		{ "night", NIGHT }, { "midnight", NIGHT }, { "dawn", DAWN }, { "sunrise", DAWN }, { "daybreak", DAWN } },
+	it = { { "stanotte", NIGHT, true }, { "stasera", NIGHT, true }, { "buonasera", NIGHT, true }, { "buona sera", NIGHT, true },
+		{ "crepuscolo", DUSK }, { "tramonto", DUSK }, { "imbrunire", DUSK },
+		{ "notte", NIGHT }, { "mezzanotte", NIGHT }, { "alba", DAWN } },
+}
+-- the events that set the time themselves (Systems/World.lua offers them with `time = period`)
+Validator.TIME_EVENTS = { dawn = DAWN, dusk = DUSK }
+
+---The first time-of-day word of a text: the word, the times it fits and whether it says "now".
+---@param text string
+---@param lang string short code (en, it)
+---@return string? word
+---@return table<string, boolean>? times
+---@return boolean? now
+function Validator.TimeWord(text, lang)
+	local list = Validator.TIME_WORDS[lang]
+	if not list then return nil end
+	local words = {}
+	for _, e in ipairs(list) do table.insert(words, e[1]) end
+	local w = Validator.FindWord(text, words)
+	if not w then return nil end
+	for _, e in ipairs(list) do
+		if e[1] == w then return w, e[2], e[3] == true end
+	end
+end
+
+-- the times a set of conditions allows: a set, nil (any time) or true (bound, but by hour: not checked)
+local function TimesOf(when)
+	if type(when) ~= "table" then return nil end
+	if when.hour ~= nil then return true end
+	if when.time ~= nil and when.time ~= false then
+		local set = {}
+		for _, t in ipairs(Engine.AsList(when.time)) do set[t] = true end
+		return set
+	end
+	if when.dayTime == true then return { dawn = true, day = true } end
+	if when.dayTime == false then return { dusk = true, night = true } end
+	if type(when.any) == "table" and #when.any > 0 then
+		local set = {}
+		for _, sub in ipairs(when.any) do
+			local s = TimesOf(sub)
+			if s == nil or s == true then return s end
+			for t in pairs(s) do set[t] = true end
+		end
+		return set
+	end
+	return nil
+end
+
+-- the times a line can be said: the conditions of the line, of its monologue and of its situations, and the events
+-- that set the time, all together (nil = any time, true = bound by hour)
+local function LineTimes(p, owner)
+	local allowed
+	local function Narrow(set)
+		if set == nil or allowed == true then return end
+		if set == true then allowed = true; return end
+		if allowed == nil then
+			allowed = {}
+			for t in pairs(set) do allowed[t] = true end
+		else
+			for t in pairs(allowed) do if not set[t] then allowed[t] = nil end end
+		end
+	end
+	Narrow(TimesOf(p.when))
+	if owner then Narrow(TimesOf(owner.when)) end
+	if p.situational then
+		for _, sid in ipairs(Engine.AsList(p.when.situation)) do
+			local def = Engine.SITUATIONS[sid]
+			if def then Narrow(TimesOf(def.when)) end
+		end
+	end
+	for _, ev in ipairs(p.events) do Narrow(Validator.TIME_EVENTS[ev]) end
+	if owner then
+		for _, ev in ipairs(owner.events or {}) do Narrow(Validator.TIME_EVENTS[ev]) end
+	end
+	return allowed
+end
+
+---The time-of-day problem of a variant, or nil: the word it names and why it does not fit (#162).
+---@param text string
+---@param lang string
+---@param allowed table|boolean|nil the times the line can be said (LineTimes)
+---@param describes boolean the line describes the surroundings (WEATHER_EVENTS)
+---@param placeBound boolean the line is bound to a place (mood, zone, subzone, place)
+---@return string? word
+---@return string? why
+function Validator.TimeProblem(text, lang, allowed, describes, placeBound)
+	if allowed == true then return nil end
+	local word, fits, now = Validator.TimeWord(text, lang)
+	if not word then return nil end
+	if allowed == nil then
+		if describes and (now or not placeBound) then return word, "the line has no time condition" end
+		return nil
+	end
+	local wrong = {}
+	for t in pairs(allowed) do
+		if not fits[t] then table.insert(wrong, t) end
+	end
+	if #wrong > 0 then
+		table.sort(wrong)
+		return word, "the line can be said at " .. table.concat(wrong, ", ")
+	end
+	return nil
+end
+
+-- #162 (Q8): words that assume a first visit, or a return, in a line about a place. A line of a place event (zone,
+-- subzone_enter, landmark) that says "new ground" asks firstVisit = true; one that says "here again" asks a return
+-- (repeatVisit, visitsMin...). Lines with another memory condition are left alone: a return line may remember "the
+-- first time". A warning; "again" alone is not in the list ("the grass bends and rises again").
+Validator.PLACE_EVENTS = { zone = true, subzone_enter = true, landmark = true }
+Validator.NOVELTY_WORDS = {
+	en = { "new ground", "new place", "first time", "never been", "never set foot", "somewhere new" },
+	it = { "terra nuova", "posto nuovo", "prima volta", "mai stato", "mai stata", "mai messo piede", "un posto nuovo" },
+}
+Validator.RETURN_WORDS = {
+	en = { "here again", "back here", "back again", "here i am again" },
+	it = { "di nuovo qui", "torno qui", "ancora qui", "eccomi di nuovo", "eccomi qui di nuovo" },
+}
+
+-- #162 (Q8): words that name the character's death. lastVisitBad = true is a death or a flight (PACK_FORMAT.md), so a
+-- line that names the death asks lastVisitBad = "death". A warning. The Italian forms are written as the texts write
+-- them, with {g:}.
+Validator.DEATH_WORDS = {
+	en = { "where i fell", "i fell", "i died", "my death", "killed me", "i was killed" },
+	it = { "sono caduto", "sono caduta", "sono {g:caduto|caduta}", "sono morto", "sono morta", "sono {g:morto|morta}",
+		"la mia morte", "mi hanno ucciso", "mi ha ucciso" },
+}
+
+-- the conditions of a line together with those of its monologue (a part has none of its own, usually)
+local function Merged(p, owner)
+	if not owner or type(owner.when) ~= "table" then return p.when or {} end
+	local out = {}
+	for k, v in pairs(owner.when) do out[k] = v end
+	for k, v in pairs(p.when or {}) do out[k] = v end
+	return out
 end
 
 -- livelli dei problemi emersi in caricamento (Engine.loadIssues)
@@ -512,11 +713,12 @@ function Validator:Run(opts)
 
 	local packsSeen = {}
 	local ids = Engine.SortedKeys(Engine.byId)
-	-- the phrases some monologue uses (#99)
+	-- the phrases some monologue uses (#99), with the monologue that uses them
 	local chained = {}
-	for _, p in pairs(Engine.byId) do
+	for _, mid in ipairs(ids) do
+		local p = Engine.byId[mid]
 		if p.kind == "monologue" then
-			for _, part in ipairs(p.parts or {}) do chained[part] = true end
+			for _, part in ipairs(p.parts or {}) do chained[part] = chained[part] or p end
 		end
 	end
 	for _, id in ipairs(ids) do
@@ -671,10 +873,26 @@ function Validator:Run(opts)
 				local langList = {}
 				for lang in pairs(present) do table.insert(langList, lang) end
 				table.sort(langList)
+				-- #162: what the words of the texts are checked against (the monologue counts for its parts)
+				local owner = chained[id]
+				local when = Merged(p, owner)
+				local times = LineTimes(p, owner)
+				local describes, placeEvent = false, false
+				for _, ev in ipairs(p.events) do
+					if Validator.WEATHER_EVENTS[ev] then describes = true end
+					if Validator.PLACE_EVENTS[ev] then placeEvent = true end
+				end
+				for _, ev in ipairs(owner and owner.events or {}) do
+					if Validator.WEATHER_EVENTS[ev] then describes = true end
+					if Validator.PLACE_EVENTS[ev] then placeEvent = true end
+				end
+				local placeBound = PlaceBound(when)
+				local remembers = Engine.UsesMemory(when)
+				local badVisit = when.lastVisitBad == true or when.lastVisitBad == "flight"
 				for _, lang in ipairs(langList) do
 					local list = p.text[lang]
 					local okCount = 0
-					local agreementWarned = false
+					local agreementWarned, reciprocalWarned, timeWarned, visitWarned, deathWarned = false, false, false, false, false
 					local weatherWarned = Engine.UsesWeather(p.when) or PlaceBound(p.when) or SituationWeather(p)
 					if not weatherWarned then
 						weatherWarned = true
@@ -714,11 +932,53 @@ function Validator:Run(opts)
 							end
 							-- un accordo al maschile fuori da {g:} e {og:} (#70, #71): un avviso per regola e lingua
 							if not agreementWarned then
-								local found = Validator.UnmarkedAgreement(var.t, lang)
+								local found = Validator.UnmarkedAgreement(var.t, lang, p.speaker == "narrator" and p.form == "emote")
 								if found then
 									agreementWarned = true
 									Add("warning", "itAgreement", p.pack, id, lang,
 										("variante %d: '%s' si accorda al maschile senza {g:} né {og:}: usa il segnaposto o una forma neutra"):format(i, found))
+								end
+							end
+							-- #162: the speaker and the other together in the masculine plural
+							if not reciprocalWarned then
+								local found = Validator.UnmarkedReciprocal(var.t, lang)
+								if found then
+									reciprocalWarned = true
+									Add("warning", "itAgreementOther", p.pack, id, lang,
+										("variant %d: '%s' is masculine plural for the speaker and the other together, wrong when both are women: use a neutral form"):format(i, found))
+								end
+							end
+							-- #162: a time of day the conditions do not guarantee
+							if not timeWarned then
+								local word, why = Validator.TimeProblem(var.t, lang, times, describes, placeBound)
+								if word then
+									timeWarned = true
+									Add("warning", "timeWord", p.pack, id, lang,
+										("variant %d names the time of day ('%s') but %s: ask a matching time (time = ...)"):format(i, word, why))
+								end
+							end
+							-- #162: a first visit or a return the conditions do not guarantee
+							if placeEvent and not visitWarned then
+								local novel = not remembers and Validator.FindWord(var.t, Validator.NOVELTY_WORDS[lang])
+								local back = (not remembers or when.firstVisit == true)
+									and Validator.FindWord(var.t, Validator.RETURN_WORDS[lang])
+								if novel then
+									visitWarned = true
+									Add("warning", "visitWord", p.pack, id, lang,
+										("variant %d assumes a first visit ('%s') without firstVisit = true: it also speaks on a return"):format(i, novel))
+								elseif back then
+									visitWarned = true
+									Add("warning", "visitWord", p.pack, id, lang,
+										("variant %d assumes a return ('%s') without repeatVisit = true: it also speaks on a first visit"):format(i, back))
+								end
+							end
+							-- #162: a death named where the bad visit may have been a flight
+							if badVisit and not deathWarned then
+								local word = Validator.FindWord(var.t, Validator.DEATH_WORDS[lang])
+								if word then
+									deathWarned = true
+									Add("warning", "badVisitDeath", p.pack, id, lang,
+										("variant %d names a death ('%s') under lastVisitBad = %s, which also means a flight: use lastVisitBad = \"death\""):format(i, word, tostring(when.lastVisitBad)))
 								end
 							end
 							if Engine.PUBLIC_SPEAKERS[p.speaker] then

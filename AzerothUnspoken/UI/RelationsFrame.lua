@@ -382,7 +382,7 @@ local function BuildDetail()
 			R:ForgetObservations(s.key)
 		else
 			view.armedForget = true
-			C_Timer.After(DELETE_ARM_SECONDS, function()
+			NS.Compat.After(DELETE_ARM_SECONDS, function()
 				view.armedForget = false
 				RelationsFrame:Refresh()
 			end)
@@ -398,7 +398,7 @@ local function BuildDetail()
 			RelationsFrame:RemoveSubject()
 		else
 			view.armed = true
-			C_Timer.After(DELETE_ARM_SECONDS, function()
+			NS.Compat.After(DELETE_ARM_SECONDS, function()
 				view.armed = false
 				RelationsFrame:Refresh()
 			end)
@@ -490,7 +490,7 @@ local function Build()
 			R:Reset("all")
 		else
 			view.armedReset = true
-			C_Timer.After(DELETE_ARM_SECONDS, function()
+			NS.Compat.After(DELETE_ARM_SECONDS, function()
 				view.armedReset = false
 				RelationsFrame:Refresh()
 			end)

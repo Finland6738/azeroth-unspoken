@@ -186,3 +186,70 @@ T.run("minuscole sicure per UTF-8 (issue #26)", function()
 	SlashCmdList.AZEROTHUNSPOKEN("depth natural")
 	SlashCmdList.AZEROTHUNSPOKEN("intensity 50")
 end)
+
+-- #166: the timers of the client go through Compat too
+T.run("Compat.After and Compat.Ticker: timers that never raise (#166)", function()
+	local fired = 0
+	T.ok(Compat.After(1, function() fired = fired + 1 end), "scheduled")
+	T.eq(fired, 0, "not yet")
+	ADVANCE(2)
+	T.eq(fired, 1, "fired after the delay")
+	T.ok(not Compat.After(1, nil), "no function: nothing scheduled")
+	T.ok(Compat.After("x", function() fired = fired + 1 end), "a bad delay counts as 0")
+	T.ok(Compat.After(0 / 0, function() fired = fired + 1 end), "a NaN delay counts as 0")
+	T.ok(Compat.After(-3, function() fired = fired + 1 end), "a negative delay counts as 0")
+	ADVANCE(1)
+	T.eq(fired, 4, "the three bad delays fired at once")
+	local n = 0
+	local ticker = Compat.Ticker(1, function() n = n + 1 end)
+	T.ok(ticker ~= nil, "a ticker")
+	ADVANCE(3)
+	T.ok(n >= 2, "it ticks")
+	if ticker and ticker.Cancel then ticker:Cancel() end
+	T.eq(Compat.Ticker(1, nil), nil, "no function: no ticker")
+	local saved = C_Timer
+	C_Timer = nil
+	T.eq(Compat.After(1, function() end), false, "without C_Timer: false, not an error")
+	T.eq(Compat.Ticker(1, function() end), nil, "without C_Timer: no ticker, not an error")
+	C_Timer = { After = function() error("restricted") end, NewTicker = function() error("restricted") end }
+	T.eq(Compat.After(1, function() end), false, "a timer that raises: false")
+	T.eq(Compat.Ticker(1, function() end), nil, "a ticker that raises: nil")
+	C_Timer = saved
+end)
+
+T.run("a missing timer API does not stop the addon (#166)", function()
+	local saved = C_Timer
+	C_Timer = nil
+	local ok, err = pcall(function()
+		-- Director: the arbitration runs at once without timers
+		NS.Director:Offer("zone")
+		FIRE("PLAYER_REGEN_DISABLED")
+		FIRE("PLAYER_LEVEL_UP", 10)
+		FIRE("GROUP_ROSTER_UPDATE")
+	end)
+	C_Timer = saved
+	T.ok(ok, "no Lua error without C_Timer: " .. tostring(err))
+end)
+
+T.run("the calls the gateway makes for the group and the instance never raise (#166)", function()
+	local names = { "IsInGroup", "IsInRaid", "IsInGuild", "IsInInstance" }
+	local saved = {}
+	for _, n in ipairs(names) do saved[n] = _G[n] end
+	for _, n in ipairs(names) do _G[n] = function() error("restricted") end end
+	local ok, err = pcall(function()
+		for _, ch in ipairs({ "PARTY", "RAID", "GUILD", "INSTANCE_CHAT", "SAY", "YELL", "EMOTE" }) do
+			NS.Gateway:ChannelAvailable(ch)
+		end
+		NS.Gateway:CycleChannel()
+		NS:InInstance()
+	end)
+	T.ok(ok, "raising group and instance calls: " .. tostring(err))
+	T.eq(NS.Gateway:ChannelAvailable("PARTY"), false, "a raising IsInGroup is not a group")
+	for _, n in ipairs(names) do _G[n] = function() return MakeSecret() end end
+	T.eq(NS.Gateway:ChannelAvailable("RAID"), false, "a secret answer is not a raid")
+	T.eq(NS:InInstance(), false, "a secret answer is not an instance")
+	for _, n in ipairs(names) do _G[n] = nil end
+	T.eq(NS.Gateway:ChannelAvailable("GUILD"), false, "a missing IsInGuild is false")
+	T.eq(NS:InInstance(), false, "a missing IsInInstance is false")
+	for _, n in ipairs(names) do _G[n] = saved[n] end
+end)

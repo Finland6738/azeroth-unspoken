@@ -120,7 +120,7 @@ function W.Slider(parent, width, min, max, onChange)
 		Place()
 	end
 	local function FromCursor()
-		local x = GetCursorPosition and GetCursorPosition()
+		local x = NS.Compat.SafeCall("GetCursorPosition")
 		local scale = s:GetEffectiveScale()
 		local left = s:GetLeft()
 		if type(x) ~= "number" or type(scale) ~= "number" or type(left) ~= "number" or scale == 0 then return nil end

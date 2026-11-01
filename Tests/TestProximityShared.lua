@@ -1078,3 +1078,197 @@ T.run("#156: loaded times in the future and huge counters are brought back insid
 	T.ok(Same(before, NS.cdb.relationships), "a second load changes nothing")
 	T.eq(#NS.Diagnostics.errors, 0, "and reports nothing")
 end)
+
+---------------------------------------------------------------------------
+-- #164: a crowd of strangers costs (almost) nothing: no bus event and no name read before the list is checked
+---------------------------------------------------------------------------
+-- a crowd: `n` different strangers on the nameplates within `seconds`, spread over `slots` unit tokens
+local function Crowd(n, seconds, slots)
+	P.nameplates = P.nameplates or {}
+	for i = 1, n do
+		local slot = (i - 1) % slots + 1
+		P.nameplates[slot] = { name = "Stranger" .. i, realm = "Stormrage", player = true }
+		FIRE("NAME_PLATE_UNIT_ADDED", "nameplate" .. slot)
+		ADVANCE(seconds / n)
+	end
+end
+
+-- counts the reads of names (and the events published) while fn runs
+local function Cost(fn)
+	local reads, plays = 0, 0
+	local realFull, realIsPlayer = UnitFullName, UnitIsPlayer
+	UnitFullName = function(u) reads = reads + 1; return realFull(u) end
+	UnitIsPlayer = function(u) plays = plays + 1; return realIsPlayer(u) end
+	local published = EventBus.stats.published
+	local ok, err = pcall(fn)
+	UnitFullName, UnitIsPlayer = realFull, realIsPlayer
+	if not ok then error(err, 0) end
+	return reads, plays, EventBus.stats.published - published
+end
+
+T.run("a crowd of strangers with an empty list: no name read, no event (#164)", function()
+	Fresh()
+	ProximityOn()
+	local reads, plays, published = Cost(function() Crowd(200, 1, 40) end)
+	T.eq(reads, 0, "no name read: there is nobody to find")
+	T.eq(plays, 0, "not even UnitIsPlayer")
+	T.eq(published, 0, "no event on the bus")
+	T.eq(R.session.proximity.throttled or 0, 0, "and nothing to throttle")
+	-- the Total RP 3 consent gives proximity someone to find: the cheap check no longer ends it
+	NS.db.interlocutor.trp3Others = true
+	T.ok(R:ProximityHasTargets(), "with the consent there is someone to find")
+	NS.db.interlocutor.trp3Others = false
+	T.ok(not R:ProximityHasTargets(), "and without it there is not")
+	Person("Aldric-Stormrage")
+	T.ok(R:ProximityHasTargets(), "a listed player is someone to find")
+end)
+
+T.run("a crowd of strangers with a list: a bounded number of reads, no event (#164)", function()
+	Fresh()
+	for i = 1, 20 do Person("Friend" .. i .. "-Stormrage") end
+	ProximityOn()
+	local reads, _, published = Cost(function() Crowd(200, 1, 40) end)
+	T.ok(reads <= R.PROXIMITY_BURST + R.PROXIMITY_LOOKUPS * 1 + 1, "names read: " .. reads .. " of 200 sightings in one second")
+	T.eq(published, 0, "no event: a stranger never reaches the bus")
+	T.ok((R.session.proximity.throttled or 0) >= 200 - reads - 1, "the rest were throttled, and counted")
+	T.eq(Candidates("relation_player"), 0, "and nobody was offered")
+	-- a longer flood: the rate holds
+	reads = Cost(function() Crowd(2000, 10, 40) end)
+	T.ok(reads <= R.PROXIMITY_LOOKUPS * 10 + R.PROXIMITY_BURST + 1, "ten seconds of 200 a second: " .. reads .. " reads")
+	-- the crowd is gone: a listed player shows up and is recognised
+	ADVANCE(5)
+	P.nameplates[3] = { name = "Friend7", realm = "Stormrage", player = true }
+	FIRE("NAME_PLATE_UNIT_ADDED", "nameplate3")
+	ADVANCE(1)
+	T.eq(Candidates("relation_player"), 1, "the listed player is still recognised after the crowd")
+	T.eq(offered[1].extra.relationSubject.id, "Friend7-Stormrage", "the right one")
+end)
+
+T.run("the same unit is looked at again only after a short gap (#164)", function()
+	Fresh()
+	Person("Aldric-Stormrage"); Person("Brenna-Stormrage")
+	ProximityOn()
+	local reads = Cost(function()
+		for _ = 1, 30 do
+			P.nameplates = { [1] = { name = "Stranger", realm = "Stormrage", player = true } }
+			FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
+			ADVANCE(0.01)
+		end
+	end)
+	T.eq(reads, 1, "30 events of one token in 0.3 s: one lookup")
+	ADVANCE(R.PROXIMITY_UNIT_GAP + 0.1)
+	reads = Cost(function()
+		FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
+		P.mouseover = { name = "Stranger", realm = "Stormrage", player = true }
+		for _ = 1, 10 do FIRE("UPDATE_MOUSEOVER_UNIT"); ADVANCE(0.01) end
+	end)
+	T.eq(reads, 2, "after the gap the plate is read again, and the mouse once (its own token)")
+	-- the limiter keeps times per unit token and counters, never a name or a person
+	local p = R.session.proximity
+	local function Walk(v, depth)
+		T.ok(depth < 4, "the limiter state is shallow")
+		if type(v) == "string" then T.ok(not v:find("Stranger") and not v:find("Aldric"), "no name in the limiter state: " .. v) end
+		if type(v) == "table" then for k, x in pairs(v) do Walk(k, depth + 1); Walk(x, depth + 1) end end
+	end
+	Walk(p, 0)
+	for token in pairs(p.units) do T.ok(token:match("^nameplate%d+$") or token == "mouseover", "only unit tokens: " .. token) end
+end)
+
+T.run("a listed player is recognised in a mixed crowd, and once only (#164)", function()
+	Fresh()
+	Person("Aldric-Stormrage")
+	ProximityOn()
+	P.nameplates = { [1] = ALDRIC }
+	local published = EventBus.stats.published
+	FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
+	ADVANCE(1)
+	T.eq(Candidates("relation_player"), 1, "recognised")
+	T.eq(EventBus.stats.published - published, 1, "through one event")
+	-- the same person again and again: already recognised, so nothing is published
+	published = EventBus.stats.published
+	for _ = 1, 20 do
+		ADVANCE(1)
+		FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
+	end
+	T.eq(EventBus.stats.published - published, 0, "an already recognised person is not an event")
+	T.eq(Candidates("relation_player"), 1, "and not offered again")
+end)
+
+T.run("a name that cannot be read costs a few lookups, not an event each (#164)", function()
+	Fresh()
+	Person("Aldric-Stormrage")
+	ProximityOn()
+	local realFull = UnitFullName
+	UnitFullName = function() return nil end
+	local published = EventBus.stats.published
+	for i = 1, 30 do
+		P.nameplates = { [(i % 5) + 1] = { name = "X", realm = "Y", player = true } }
+		FIRE("NAME_PLATE_UNIT_ADDED", "nameplate" .. ((i % 5) + 1))
+		ADVANCE(0.1)
+	end
+	UnitFullName = realFull
+	T.eq(EventBus.stats.published - published, 0, "30 sightings with a failing UnitFullName: no event (it was 63)")
+	-- secret values are no name: no event
+	UnitFullName = function() return MakeSecret(), MakeSecret() end
+	P.nameplates = {}
+	for i = 1, 5 do P.nameplates[i] = { name = "X", realm = "Y", player = true } end
+	for i = 1, 5 do
+		FIRE("NAME_PLATE_UNIT_ADDED", "nameplate" .. i)
+		ADVANCE(0.6)
+	end
+	UnitFullName = realFull
+	T.eq(EventBus.stats.published - published, 0, "secret names: no event")
+end)
+
+T.run("with the Total RP 3 consent a stranger without a profile is not an event (#164)", function()
+	Fresh()
+	ProximityOn()
+	NS.db.interlocutor.trp3Others = true
+	TRP3_API = { utils = { str = { getUnitID = function() return "Eve-Stormrage" end } },
+		register = { isUnitIDKnown = function() return false end } }
+	local published = EventBus.stats.published
+	Crowd(30, 3, 10)
+	T.eq(EventBus.stats.published - published, 0, "strangers with no profile: nothing on the bus")
+	TRP3_API = { utils = { str = { getUnitID = function() return "Eve-Stormrage" end } },
+		register = { isUnitIDKnown = function(id) return id == "Eve-Stormrage" end } }
+	ADVANCE(2)
+	P.nameplates = { [1] = EVE }
+	FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
+	T.ok(R.candidates["Eve-Stormrage"] ~= nil, "a stranger who has a profile is still suggested")
+	T.eq(Count(NS.cdb.relationships.players), 0, "and not a record")
+	TRP3_API = nil
+end)
+
+T.run("the events follow the relations module, not only the option (#164)", function()
+	Fresh()
+	Person("Aldric-Stormrage")
+	ProximityOn()
+	T.ok(EventBus.sources.NAME_PLATE_UNIT_ADDED ~= nil, "registered")
+	-- the module is switched off without calling ApplyProximity (the wizard, an old code path): the next event heals it
+	NS.db.modules.relations = false
+	P.nameplates = { [1] = ALDRIC }
+	local published = EventBus.stats.published
+	FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
+	T.eq(EventBus.stats.published - published, 0, "nothing is published with the module off")
+	T.eq(EventBus.sources.NAME_PLATE_UNIT_ADDED, nil, "the nameplate source is removed")
+	T.eq(EventBus.sources.UPDATE_MOUSEOVER_UNIT, nil, "and the mouseover one")
+	-- the module comes back through a preset: the option is still on, so the events are registered again
+	Config:ApplyPreset("complete")
+	T.eq(NS.db.modules.relations, true, "the preset turns the module on")
+	T.ok(EventBus.sources.NAME_PLATE_UNIT_ADDED ~= nil and EventBus.sources.UPDATE_MOUSEOVER_UNIT ~= nil, "registered again")
+	NS.db.modules.relations = false
+	R:ApplyProximity()
+	T.eq(EventBus.sources.NAME_PLATE_UNIT_ADDED, nil, "ApplyProximity removes them with the module off")
+	NS.db.modules.relations = true
+	R:ApplyProximity()
+	T.ok(EventBus.sources.NAME_PLATE_UNIT_ADDED ~= nil, "and registers them with it on")
+end)
+
+T.run("/au debug shows how many sightings were throttled (#164)", function()
+	Fresh()
+	for i = 1, 5 do Person("Friend" .. i .. "-Stormrage") end
+	ProximityOn()
+	Crowd(100, 1, 40)
+	T.ok(R:Status():find("throttled", 1, true) ~= nil, "the status line has the counter: " .. R:Status())
+	T.ok((R.session.proximity.throttled or 0) > 0, "and it is not zero")
+end)

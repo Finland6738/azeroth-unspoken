@@ -489,3 +489,197 @@ T.run("#163 (D16): a literary form in a public voice is an error", function()
 	T.ok(not Has(r, "literaryPublic", "lt.e"), "npc: allowed")
 	T.ok(not Has(r, "literaryPublic", "lt.d"), "an ordinary tag: no error")
 end)
+
+-- #162: the classes of problems found by the third review (Q8). Each check passes on the shipped texts (run_tests.py
+-- asks a validator without warnings) and catches the lines as they were before #198.
+T.run("#162: Italian agreement with the speaker, in the forms Q8 found", function()
+	local U = Validator.UnmarkedAgreement
+	for _, text in ipairs({
+		"Resterà dov'è finché non sarò abbastanza vicino da vederla.",          -- world.fog.01
+		"Cercherò di esserne degno.",                                          -- world.sub.03
+		"Che il prossimo mi trovi pronto altrettanto.",                        -- world.quest.complete.03
+		"Non sarò io il primo a guardare {other}, né l'ultimo a distogliere lo sguardo.", -- rel.player.fear
+		"Una sfida da uno di cui non mi sono mai fidato.",                     -- ctx.act.duel.wary
+	}) do
+		T.ok(U(text, "it") ~= nil, "flagged: " .. text)
+	end
+	T.eq(U("Che il prossimo mi trovi pronto.", "it"), "mi trovi pronto", "the form found, with its 'mi'")
+	-- world.flight.arrive.e: the third person speaks of the character only in a narrator emote
+	local emote = "scende a terra e resta fermo un momento."
+	T.eq(U(emote, "it", true), "resta fermo", "a narrator emote: the third person is the character")
+	T.eq(U(emote, "it"), nil, "elsewhere the third person is someone else")
+	for _, text in ipairs({ "Cercherò di esserne {g:degno|degna}.", "Che il prossimo mi trovi altrettanto {g:pronto|pronta}.",
+		"Il lupo mi trova.", "Ci vediamo al primo bivio.", "Il primo passo è il più duro." }) do
+		T.ok(U(text, "it") == nil, "not flagged: " .. text)
+	end
+	T.eq(U("lancia la lenza e resta immobile.", "it", true), nil, "'immobile' is the same in both genders")
+	T.eq(U("guarda il cielo: ciò che è caduto non torna.", "it", true), nil, "'è' is not a verb of the character")
+
+	local r = Validate({
+		languages = { "itIT" },
+		registry = { ["ag2.emote"] = Good({ speaker = "narrator", form = "emote" }), ["ag2.say"] = Good() },
+		texts = { itIT = { ["ag2.emote"] = emote, ["ag2.say"] = "Il cavallo resta fermo." } },
+	})
+	local w = Has(r, "itAgreement", "ag2.emote", "it")
+	T.ok(w and w.level == "warning", "a narrator emote with 'resta fermo': warning")
+	T.ok(not Has(r, "itAgreement", "ag2.say"), "a spoken line with a third person: no warning")
+end)
+
+T.run("#162: Italian agreement of the speaker and the other together", function()
+	local U = Validator.UnmarkedReciprocal
+	T.eq(U("Ci siamo già incrociati.", "it"), "ci siamo incrociati", "rel.player.known")
+	T.eq(U("{other}. Ci siamo affrontati in duello, e ne porto il segno.", "it"), "ci siamo affrontati", "rel.player.shared.duel")
+	T.ok(U("Ci eravamo lasciati male.", "it") ~= nil, "ci eravamo ...ati")
+	for _, text in ipairs({ "Le nostre strade si sono già incrociate.", "Ci siamo tutti.", "Ci conosciamo già.",
+		"Siamo arrivati fin qui.", "Ci siamo, finalmente." }) do
+		T.ok(U(text, "it") == nil, "not flagged: " .. text)
+	end
+	T.eq(U("We have crossed paths before.", "en"), nil, "English is not checked")
+	local r = Validate({
+		languages = { "itIT" },
+		registry = { ["rc.bad"] = Good(), ["rc.good"] = Good() },
+		texts = { itIT = { ["rc.bad"] = { "Salute.", "Ci siamo già incrociati." }, ["rc.good"] = "Le nostre strade si sono già incrociate." } },
+	})
+	local w = Has(r, "itAgreementOther", "rc.bad", "it")
+	T.ok(w and w.level == "warning" and w.msg:find("variant 2", 1, true), "warning for variant 2")
+	T.ok(not Has(r, "itAgreementOther", "rc.good"), "a neutral form: no warning")
+end)
+
+T.run("#162: time-of-day words against the conditions", function()
+	T.eq((Validator.TimeWord("Tonight I am.", "en")), "tonight", "a 'now' word")
+	T.eq((Validator.TimeWord("The days get shorter.", "en")), nil, "no word")
+	T.eq((Validator.TimeWord("Nightfall comes.", "en")), "nightfall", "whole words only")
+	-- rain_dusk_return allowed night while its texts said dusk (Q8, #159); mono.rest.hearth said "Tonight" at any hour
+	NS:RegisterSituation("vtest_dusk_night", { lead = "memory_return", when = { time = { "dusk", "night" } } }, "base_direction")
+	local r = Validate({
+		languages = { "enUS", "itIT" },
+		registry = {
+			["tw.sit"] = Good({ event = "memory_return", speaker = "narrator", form = "emote",
+				conditions = { repeatVisit = true, situation = "vtest_dusk_night" } }),
+			["tw.list"] = Good({ event = "memory_return", speaker = "inner", conditions = { repeatVisit = true, time = { "dusk", "night" } } }),
+			["tw.dusk"] = Good({ event = "memory_return", speaker = "inner", conditions = { repeatVisit = true, time = "dusk" } }),
+			["tw.night"] = Good({ event = "zone", speaker = "inner", conditions = { time = "dusk" } }),
+			["tw.rest"] = Good({ event = "rest_enter", speaker = "inner", conditions = { indoors = true } }),
+			["tw.place"] = Good({ event = "zone", speaker = "inner", conditions = { zone = "Duskwood" } }),
+			["tw.placenow"] = Good({ event = "zone", speaker = "inner", conditions = { place = { rest = true } } }),
+			["tw.battle"] = Good(),
+			["tw.event"] = Good({ event = "dusk", speaker = "inner" }),
+			["tw.hour"] = Good({ event = "zone", speaker = "inner", conditions = { hour = { 18, 22 } } }),
+		},
+		texts = {
+			enUS = { ["tw.sit"] = "walks the familiar road through the wet dusk.", ["tw.list"] = "The light is failing, and so is the dusk.",
+				["tw.dusk"] = "Dusk again.", ["tw.night"] = "Soon the road will belong to the night.",
+				["tw.rest"] = { "A fire, a chair.", "As if I were anyone. Tonight I am." },
+				["tw.place"] = "Even at noon, you walk through dusk here.", ["tw.placenow"] = "Tonight nobody asks anything of you.",
+				["tw.battle"] = "Let the bards sing of this tonight!", ["tw.event"] = "Dusk, and the lamps.", ["tw.hour"] = "Dusk." },
+			itIT = { ["tw.sit"] = "percorre la strada nota nel crepuscolo bagnato.", ["tw.list"] = "La luce cala nel crepuscolo.",
+				["tw.dusk"] = "Di nuovo il crepuscolo.", ["tw.night"] = "Presto la strada sarà della notte.",
+				["tw.rest"] = { "Un fuoco, una sedia.", "Come se fossi chiunque. Stasera lo sono." },
+				["tw.place"] = "Anche a mezzogiorno qui si cammina al crepuscolo.", ["tw.placenow"] = "Stanotte nessuno ti chiede niente.",
+				["tw.battle"] = "Che i bardi ne cantino stanotte!", ["tw.event"] = "Il crepuscolo, e le lanterne.", ["tw.hour"] = "Il crepuscolo." },
+		},
+	})
+	for _, lang in ipairs({ "en", "it" }) do
+		local w = Has(r, "timeWord", "tw.sit", lang)
+		T.ok(w and w.level == "warning" and w.msg:find("night", 1, true), "a situation that allows night, a dusk text: warning (" .. lang .. ")")
+		T.ok(Has(r, "timeWord", "tw.list", lang), "a time list wider than the word: warning (" .. lang .. ")")
+		T.ok(Has(r, "timeWord", "tw.rest", lang), "'tonight' at any hour in a describing event: warning (" .. lang .. ")")
+		T.ok(Has(r, "timeWord", "tw.placenow", lang), "'tonight' in a line bound to a place: still a warning (" .. lang .. ")")
+		for _, id in ipairs({ "tw.dusk", "tw.night", "tw.place", "tw.battle", "tw.event", "tw.hour" }) do
+			T.ok(not Has(r, "timeWord", id, lang), "no warning for " .. id .. " (" .. lang .. ")")
+		end
+	end
+	Engine.SITUATIONS.vtest_dusk_night = nil
+	Engine.CONDITION_VALUES.situation.vtest_dusk_night = nil
+	for i, sid in ipairs(Engine.SITUATION_ORDER) do
+		if sid == "vtest_dusk_night" then table.remove(Engine.SITUATION_ORDER, i); break end
+	end
+end)
+
+T.run("#162: a monologue part is checked against the monologue's conditions", function()
+	local r = Validate({
+		languages = { "enUS" },
+		registry = {
+			["tm2.hearth"] = { event = "rest_enter", speaker = "inner", styles = { "intimate" }, theme = "journey",
+				kind = "monologue", parts = { "tm2.p1", "tm2.p2" }, conditions = { indoors = true } },
+			["tm2.stars"] = { event = "muse", speaker = "inner", styles = { "intimate" }, theme = "journey",
+				kind = "monologue", parts = { "tm2.p3", "tm2.p4" }, conditions = { time = "night" } },
+			["tm2.p1"] = { event = "rest_enter", speaker = "inner", styles = { "intimate" }, theme = "journey", chainable = "only" },
+			["tm2.p2"] = { event = "rest_enter", speaker = "inner", styles = { "intimate" }, theme = "journey", chainable = "only" },
+			["tm2.p3"] = { event = "muse", speaker = "inner", styles = { "intimate" }, theme = "journey", chainable = "only" },
+			["tm2.p4"] = { event = "muse", speaker = "inner", styles = { "intimate" }, theme = "journey", chainable = "only" },
+		},
+		texts = { enUS = { ["tm2.p1"] = "A fire, a chair.", ["tm2.p2"] = "As if I were anyone. Tonight I am.",
+			["tm2.p3"] = "Night at last.", ["tm2.p4"] = "Tonight the stars are close." } },
+	})
+	T.ok(Has(r, "timeWord", "tm2.p2", "en"), "a part says 'tonight' in a monologue of any hour: warning")
+	T.ok(not Has(r, "timeWord", "tm2.p3", "en") and not Has(r, "timeWord", "tm2.p4", "en"),
+		"parts that say 'night' and 'tonight' in a night monologue: no warning")
+end)
+
+T.run("#162: words of a first visit or a return against the visit conditions", function()
+	local r = Validate({
+		languages = { "enUS", "itIT" },
+		registry = {
+			["vw.rain"] = Good({ event = "zone", speaker = "inner", conditions = { weather = "rain" } }),
+			["vw.first"] = Good({ event = "zone", speaker = "inner", conditions = { firstVisit = true } }),
+			["vw.back"] = Good({ event = "subzone_enter", speaker = "inner" }),
+			["vw.firstback"] = Good({ event = "zone", speaker = "inner", conditions = { firstVisit = true } }),
+			["vw.recall"] = Good({ event = "zone", speaker = "inner", conditions = { repeatVisit = true } }),
+			["vw.battle"] = Good(),
+		},
+		texts = {
+			enUS = { ["vw.rain"] = "New ground, and rain upon it.", ["vw.first"] = "New ground. Eyes open.",
+				["vw.back"] = "Back here, among the stalls.", ["vw.firstback"] = { "A road.", "Here again, it seems." },
+				["vw.recall"] = "I remember the first time I saw these walls.", ["vw.battle"] = "First time I fight one of these." },
+			itIT = { ["vw.rain"] = "Terra nuova, e la pioggia sopra.", ["vw.first"] = "Terra nuova. Occhi aperti.",
+				["vw.back"] = "Di nuovo qui, tra le bancarelle.", ["vw.firstback"] = { "Una strada.", "Di nuovo qui, a quanto pare." },
+				["vw.recall"] = "Ricordo la prima volta che vidi queste mura.", ["vw.battle"] = "Prima volta che ne affronto uno." },
+		},
+	})
+	for _, lang in ipairs({ "en", "it" }) do
+		local w = Has(r, "visitWord", "vw.rain", lang)
+		T.ok(w and w.level == "warning" and w.msg:find("firstVisit", 1, true), "world.zone.rain before #198: warning (" .. lang .. ")")
+		T.ok(Has(r, "visitWord", "vw.back", lang), "a return word without a return: warning (" .. lang .. ")")
+		local f = Has(r, "visitWord", "vw.firstback", lang)
+		T.ok(f and f.msg:find("variant 2", 1, true), "a return word on a first visit: warning (" .. lang .. ")")
+		for _, id in ipairs({ "vw.first", "vw.recall", "vw.battle" }) do
+			T.ok(not Has(r, "visitWord", id, lang), "no warning for " .. id .. " (" .. lang .. ")")
+		end
+	end
+end)
+
+T.run("#162: a death named under lastVisitBad = true (which is also a flight)", function()
+	local r = Validate({
+		languages = { "enUS", "itIT" },
+		registry = {
+			["dv.bad"] = Good({ event = "memory_return", speaker = "inner", conditions = { lastVisitBad = true } }),
+			["dv.flight"] = Good({ event = "memory_return", speaker = "inner", conditions = { lastVisitBad = "flight" } }),
+			["dv.death"] = Good({ event = "memory_return", speaker = "inner", conditions = { lastVisitBad = "death" } }),
+			["dv.vague"] = Good({ event = "memory_return", speaker = "inner", conditions = { lastVisitBad = true } }),
+		},
+		texts = {
+			enUS = { ["dv.bad"] = "Here again. I remember exactly where I fell.", ["dv.flight"] = "I died here, once.",
+				["dv.death"] = "I remember exactly where I fell.", ["dv.vague"] = "Here again. I remember exactly where it went wrong." },
+			itIT = { ["dv.bad"] = "Di nuovo qui. Ricordo esattamente dove sono {g:caduto|caduta}.", ["dv.flight"] = "Qui sono {g:morto|morta}, una volta.",
+				["dv.death"] = "Ricordo esattamente dove sono {g:caduto|caduta}.", ["dv.vague"] = "Di nuovo qui. Ricordo esattamente dove è andata storta." },
+		},
+	})
+	for _, lang in ipairs({ "en", "it" }) do
+		local w = Has(r, "badVisitDeath", "dv.bad", lang)
+		T.ok(w and w.level == "warning" and w.msg:find("death", 1, true), "mem.ret.emo.bad.worried before #198: warning (" .. lang .. ")")
+		T.ok(Has(r, "badVisitDeath", "dv.flight", lang), "a death under lastVisitBad = \"flight\": warning (" .. lang .. ")")
+		T.ok(not Has(r, "badVisitDeath", "dv.death", lang), "lastVisitBad = \"death\": no warning (" .. lang .. ")")
+		T.ok(not Has(r, "badVisitDeath", "dv.vague", lang), "a line that fits both: no warning (" .. lang .. ")")
+	end
+end)
+
+T.run("#162: the shipped texts pass the new checks", function()
+	local NEW = { itAgreement = true, itAgreementOther = true, timeWord = true, visitWord = true, badVisitDeath = true }
+	for _, p in ipairs(Validator:Run().warnings) do
+		-- the packs of this file are v1, v2...
+		if NEW[p.code] and not (p.pack or ""):find("^v%d+$") then
+			T.ok(false, "shipped line: " .. tostring(p.id) .. " " .. p.code .. ": " .. p.msg)
+		end
+	end
+end)

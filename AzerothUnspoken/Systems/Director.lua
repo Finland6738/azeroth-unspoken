@@ -86,9 +86,7 @@ function Director:Offer(event, extra, onResult)
 		onResult = onResult })
 	if self.pendingResolve then return end
 	self.pendingResolve = true
-	if C_Timer and C_Timer.After then
-		C_Timer.After(self.ARBITRATION, function() Director:Resolve() end)
-	else
+	if not NS.Compat.After(self.ARBITRATION, function() Director:Resolve() end) then
 		self:Resolve()
 	end
 end

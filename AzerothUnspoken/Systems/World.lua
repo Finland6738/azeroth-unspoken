@@ -97,7 +97,7 @@ function World:Settle(name, delay, fn)
 	local function Run()
 		if self.tokens[name] == token then NS.Diagnostics:Guard("world:" .. name, fn, self) end
 	end
-	if C_Timer and C_Timer.After then C_Timer.After(delay, Run) else Run() end
+	if not Compat.After(delay, Run) then Run() end
 end
 
 ---Il mondo tace: combattimento, o pochi secondi dopo una schermata di caricamento (parla l'evento di zona).
@@ -306,30 +306,39 @@ function World:CheckSubzone()
 end
 
 ---------------------------------------------------------------------------
--- Missioni (#95): solo id e numeri; il testo non si legge
+-- Missioni (#95): solo id e numeri; né il titolo né il testo si leggono
 ---------------------------------------------------------------------------
 local MAX_LOG = 100
 
--- { [questID] = { title, ready, objDone, prog } }, oppure nil se il client non risponde
+-- Un numero finito (non NaN, non infinito)
+local function Finite(v)
+	return type(v) == "number" and v == v and v ~= math.huge and v ~= -math.huge
+end
+
+-- { [questID] = { ready, objDone, prog } }, il numero di missioni, quelle pronte; oppure nil se qualcosa non si legge
+-- (#166): una voce che il client non dà, nega o segna come segreta rende ignoto tutto il registro, non "zero missioni".
 local function ReadQuestLog()
 	local state, shown = Compat.Query("C_QuestLog.GetNumQuestLogEntries")
-	if state ~= AVAILABLE or type(shown) ~= "number" then return nil end
+	if state ~= AVAILABLE or not Finite(shown) or shown < 0 then return nil end
 	local out, count, ready = {}, 0, 0
 	for i = 1, math.min(shown, MAX_LOG) do
 		local st, info = Compat.Query("C_QuestLog.GetInfo", i)
-		local id = st == AVAILABLE and type(info) == "table" and not info.isHeader and info.questID
-		if type(id) == "number" then
+		if st ~= AVAILABLE or type(info) ~= "table" then return nil end
+		local header, id = Compat.Readable(info.isHeader), Compat.Readable(info.questID)
+		if type(header) ~= "boolean" then return nil end
+		if not header then
+			if not Finite(id) then return nil end
 			local q = { objDone = 0, prog = 0 }
-			if type(info.title) == "string" then q.title = info.title:sub(1, 80) end
-			local _, complete = Compat.Query("C_QuestLog.IsComplete", id)
-			q.ready = complete == true
+			local sc, complete = Compat.Query("C_QuestLog.IsComplete", id)
+			if sc ~= AVAILABLE or type(complete) ~= "boolean" then return nil end
+			q.ready = complete
 			local so, objectives = Compat.Query("C_QuestLog.GetQuestObjectives", id)
-			if so == AVAILABLE and type(objectives) == "table" then
-				for _, o in ipairs(objectives) do
-					if type(o) == "table" then
-						if o.finished == true then q.objDone = q.objDone + 1 end
-						if type(o.numFulfilled) == "number" then q.prog = q.prog + o.numFulfilled end
-					end
+			if so ~= AVAILABLE or type(objectives) ~= "table" then return nil end
+			for _, o in ipairs(objectives) do
+				if type(o) == "table" then
+					if Compat.Readable(o.finished) == true then q.objDone = q.objDone + 1 end
+					local n = Compat.Readable(o.numFulfilled)
+					if Finite(n) then q.prog = q.prog + n end
 				end
 			end
 			out[id] = q
@@ -344,7 +353,11 @@ end
 -- (un solo evento per lettura, la pronta prima). Le missioni nuove e la prima lettura non sono avanzamenti.
 function World:ScanQuests()
 	local ok, current, count, ready = pcall(ReadQuestLog)
-	if not ok or not current then return end
+	if not ok or not current then
+		-- unknown, not "no quests": no ctx.quest, and the next good reading is a new baseline (no false progress)
+		self.quests = nil
+		return
+	end
 	local prev = self.quests
 	self.quests = { list = current, count = count, ready = ready }
 	if not prev then return end
@@ -631,7 +644,5 @@ end
 
 function World:OnInit()
 	self:Reset()
-	if C_Timer and C_Timer.NewTicker then
-		C_Timer.NewTicker(self.POLL, function() NS.Diagnostics:Guard("world:poll", World.Poll, World) end)
-	end
+	Compat.Ticker(self.POLL, function() NS.Diagnostics:Guard("world:poll", World.Poll, World) end)
 end
