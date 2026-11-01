@@ -20,6 +20,38 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U: checks for the classes of problems of the third review (issues #162, #165)
+
+The third review (Q8, #167) found problems that every check passed. These checks would have caught them; each passes
+on today's content and is tested on a bad example made on purpose (the lines as they were before #198).
+
+- **Added: four validator warnings for the words of a line against its conditions (#162).** `timeWord`: a line that
+  names the time of day ("dusk", "night", "tonight", «stasera») asks a `time` the word fits, in its rule, its monologue
+  or its situation ("dusk" is not night, as `rain_dusk_return` once allowed). `visitWord`: a zone line that says "new
+  ground" or "first time" asks `firstVisit = true`, one that says "here again" a return. `badVisitDeath`: a line that
+  names the death ("where I fell") asks `lastVisitBad = "death"`, because `true` is also a flight.
+  `itAgreementOther`: in Italian, the speaker and the other together in the masculine plural («ci siamo incrociati»).
+  They are warnings (they read words), and the offline tests ask for none on the base packs.
+- **Changed: the Italian agreement warning sees more forms (#162).** `itAgreement` now also reads *esserne*, *mi trovi*,
+  the third person of a narrator emote (*resta*, *rimane*, *sta*, *sembra*, *sente*: its subject is the character) and
+  *degno*, *vicino*, *fermo*, *fidato*, *seduto*, *fradicio*, *primo*, *ultimo*.
+- **Added: docs checks (#162).** `Tests/check_docs.py` checks that every `/au` command quoted in the README, the pack
+  guide, `CONTRIBUTING.md` and `docs/` exists, with words its keyword table accepts and no old Italian word; that a
+  link labelled "ADR NNNN" points to that ADR; that every ADR is in the index with its own title; and that the README
+  lists the modules of the Settings window.
+- **Added: `Tests/check_api.py` sees more kinds of use (#165).** Events written in a `*_EVENTS` table (the proximity
+  events `NAME_PLATE_UNIT_ADDED` and `UPDATE_MOUSEOVER_UNIT` were never checked), in `event = "..."` fields (the items of
+  `/au probe`) and in `event == "..."` comparisons; `_G.X` and the frame names of a `*_FRAMES` table, with a new `FRAMES`
+  list of FrameXML frames and why each is safe; every string shaped like an API path (`"C_Map.GetMapInfo"`) and the
+  names given to `Value(...)`; methods called as `pcall(frame.Method, frame)`; font names written as strings, with a
+  new `FONTS` list. It scans every `AzerothUnspoken*` folder, the language and regional packs included. A mutation test
+  in `run_tests.py` makes one typo per kind and expects each to be reported.
+- **Fixed: lines the new checks found.** `ctx.zone.rest` said "Tonight" at any hour ("Here nobody asks anything of
+  you."); `soul.zone.curious` (every variant meets an unknown land) now asks `firstVisit = true`; four Italian lines
+  where the speaker and the other were masculine plural are neutral now (`rel.greet.acquaintance`,
+  `rel.greet.unknown`, `rel.npc.friend.old`, `rel.player.absent.long`); the README named the Relationships module
+  "Relations".
+
 ### U-api: client API robustness and a calmer proximity (issues #166, #164)
 
 Fixes from the third review (Q8, #167). Everything here is tested with the mock client only; the in-game checks are

@@ -11,13 +11,13 @@ NS:AddTexts("itIT", {
 	---------------------------------------------------------------------------
 	["rel.greet.unknown"] = {
 		"Che la strada vi sia lieve, {target}. Non credo di conoscervi.",
-		"Salute a voi. Non ci siamo mai incrociati: il mio nome lo saprete presto.",
+		"Salute a voi. Le nostre strade non si sono mai incrociate: il mio nome lo saprete presto.",
 		{ "Buongiorno. Non ci conosciamo, vero?", depth = "natural" },
 		{ "Vi porgo il saluto che si deve a chi viene da strade ignote: pace a voi, e acqua buona lungo il cammino.", depth = "elevated" },
 	},
 	["rel.greet.acquaintance"] = {
 		"Ah, voi. Il volto lo ricordo; il nome mi ci vuole un attimo.",
-		"Ci siamo già incontrati, mi pare. Come vanno le cose da queste parti?",
+		"Ci conosciamo già, mi pare. Come vanno le cose da queste parti?",
 	},
 	["rel.greet.friend"] = {
 		"Ehi, {target}! Fatti guardare: nessun buco nuovo, vedo.",
@@ -320,7 +320,7 @@ NS:AddTexts("itIT", {
 		"Lui mi ha sempre {g:trattato|trattata} bene. Sorrido prima ancora di accorgermene.",
 	},
 	["rel.npc.friend.old"] = {
-		"Quante volte ci siamo incrociati, ormai? Abbastanza da non avere più bisogno di parole.",
+		"Quante volte si sono incrociate le nostre strade, ormai? Abbastanza da non avere più bisogno di parole.",
 		"Ci conosciamo da così tanto che basta un cenno.",
 	},
 	["rel.npc.comrade"] = {
@@ -450,7 +450,7 @@ NS:AddTexts("itIT", {
 		{ "Ah, ecco {other}.", depth = "natural" },
 	},
 	["rel.player.absent.long"] = {
-		"{other}. È passato tanto tempo: abbastanza da scordare dove ci eravamo lasciati, non abbastanza da scordare che è successo.",
+		"{other}. È passato tanto tempo: abbastanza da scordare come erano rimaste le cose tra noi, non abbastanza da scordare che è successo.",
 		"Molto tempo dall'ultimo incontro con {other}. Le strade raramente riportano le stesse persone alla stessa distanza.",
 		{ "{other}. Sono passati secoli.", depth = "natural" },
 	},

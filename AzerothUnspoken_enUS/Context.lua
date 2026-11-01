@@ -397,7 +397,7 @@ NS:AddTexts("enUS", {
 	},
 	["ctx.zone.rest"] = {
 		"A lit fire, a free chair. The road can wait until tomorrow.",
-		"The clink of tankards, a laugh from the back of the room. Tonight nobody asks anything of you.",
+		"The clink of tankards, a laugh from the back of the room. Here nobody asks anything of you.",
 	},
 	["ctx.zone.rest.cloak"] = {
 		"shakes the road dust off at the door, eyes searching for a free bench.",
