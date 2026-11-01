@@ -144,7 +144,7 @@ Qui si verifica che l'addon non scriva mai da solo in chat con le impostazioni p
 ### B. Conferma per inviare
 
 3. Scrivi `/au mode confirm`. Poi scrivi `/au greet`.
-   - **Cosa aspettarti:** la scritta in alto nel riquadro dice **"proposta per /s"** (o **"/e"**). Sotto la frase compaiono quattro pulsanti: **Invia**, **Modifica**, **/s** (il canale), **Scarta**. Il pulsante "libro" sullo schermo si illumina. In chat non succede nulla.
+   - **Cosa aspettarti:** la scritta in alto nel riquadro dice **"proposta"** con i secondi che restano. Sotto la frase compare una barra: a sinistra il canale (**/s** o **/e**) in un riquadrino colorato, a destra **Scarta**, **Un'altra**, **Modifica**, **Nella chat** e **Invia** (l'unico dorato). Il pulsante "libro" sullo schermo si illumina. In chat non succede nulla.
    - **Cosa riportare:** se i pulsanti mancano o sono sovrapposti.
 4. **Lascia passare 30 secondi** senza toccare nulla.
    - **Cosa aspettarti:** la proposta scade e il riquadro si chiude da solo. Il pulsante "libro" si spegne.
@@ -207,8 +207,8 @@ Corrette fuori dal gioco le issue #3, #4, #5, #6, #8, #11, #12, #14, #17 e #19. 
     - **Cosa riportare:** se l'editor si chiude da solo.
 23. **Invio automatico: due gesti (issue #8).** Apri `/au options`: la riga **Modalità chat** scorre solo privato, anteprima e conferma. La riga **Invio automatico** al primo clic mostra l'avviso intero in una finestra di conferma e il testo "spento, leggi prima"; un secondo clic subito dopo non fa nulla; dopo qualche secondo la riga dice "spento, conferma" e il secondo clic (o **Attiva** nella finestra) la accende. Nella guida del primo avvio (`/au wizard`, passo della chat) la carta "automatica" funziona allo stesso modo.
     - **Cosa riportare:** se un solo clic basta, o se il testo del pulsante non cambia.
-24. **Il mouse sopra il riquadro (issue #17).** Fai comparire una frase (`/au narrator`) e tieni il mouse **sopra il testo** durante la dissolvenza.
-    - **Cosa aspettarti:** il riquadro resta visibile finché il mouse è sopra. Quando lo sposti svanisce.
+24. **Il mouse sopra il riquadro (issue #17).** Fai comparire una frase (`/au narrator`) e tieni il mouse **sopra il testo** mentre la linea sottile in basso si accorcia.
+    - **Cosa aspettarti:** il riquadro resta visibile e la linea si ferma finché il mouse è sopra. Quando lo sposti, poco dopo il riquadro sparisce.
     - **Cosa riportare:** se svanisce comunque (vuol dire che `IsMouseOver` non esiste neppure come metodo del frame).
 25. **Bersaglio dall'identità segreta (issue #6, SP-02).** In un luogo dove il client nasconde l'identità dei bersagli (combattimento in un incontro o in un'istanza con restrizioni, se esiste) seleziona un bersaglio e scrivi `/au debug full`.
     - **Cosa aspettarti:** la riga `value:target.identity` è `RESTRICTED`; nessun errore rosso; le frasi di battaglia escono lo stesso, senza il nome del bersaglio.
@@ -436,8 +436,8 @@ Corrette fuori dal gioco le issue #9, #13, #21, #23, #26, #37 e #38. Restano da 
 69. **"Un'altra" (issue #13).** Con `/au mode confirm` fai comparire una proposta (`/au greet`, `/au event zone`...). Premi **Un'altra** (o `/au another`, o il tasto assegnato in Opzioni > Comandi > AddOn).
     - **Cosa aspettarti:** la frase cambia con un'altra per lo stesso momento, il canale scelto resta, **nulla va in chat**. Premendolo molte volte compaiono frasi diverse; se non ce ne sono altre, un avviso «nessuna frase adatta». Con l'editor aperto (Modifica) rifiuta e dice di chiuderlo. Con l'intensità e le pause normali non cambia la frequenza delle frasi spontanee.
     - **Cosa riportare:** se la barra con sei pulsanti **sta nel riquadro** (testi tagliati o che si toccano, anche in inglese), se il pulsante lavora con una proposta in anteprima, quante frasi diverse vedi per evento.
-70. **La dissolvenza dopo il mouse (issue #21, vedi passo 24).** Tieni il mouse sul riquadro più a lungo della durata della frase, poi toglilo.
-    - **Cosa aspettarti:** il riquadro sbiadisce in circa un secondo e mezzo, non sparisce di colpo a opacità piena.
+70. **Dopo il mouse (issue #21, vedi passo 24).** Tieni il mouse sul riquadro più a lungo della durata della frase, poi toglilo.
+    - **Cosa aspettarti:** il riquadro resta ancora circa un secondo e mezzo, poi sparisce. Dal #186 non sbiadisce più: la linea del tempo in basso finisce e il riquadro se ne va.
 71. **Tratti dell'interlocutore e consenso TRP3 (issue #37).** `/au relationships`, apri una persona: sotto i tag ci sono **Ruolo, Temperamento, Morale, Obiettivi, Modo di parlare**. Clic: valore successivo, dopo l'ultimo «non so». Poi `/au options`: la riga **Leggi il Total RP 3 degli altri** (spenta di base); con TRP3 installato compare anche nel passo Total RP 3 del wizard (`/au wizard`).
     - **Cosa aspettarti:** la finestra (ora più alta) mostra tutto senza tagli, anche con tutti gli assi attivi; i valori scelti compaiono in `/au who` con la fonte «user»; l'interruttore dice cosa fa quando lo accendi e non legge nulla da TRP3 finché è spento.
     - **Cosa riportare:** testi tagliati o sovrapposti, anche in inglese; il pulsante del wizard (pagina TRP3) fuori dalla cornice.
@@ -827,6 +827,46 @@ Nessuna API nuova, ma tutto ciò che il giocatore vede e clicca: finora è stato
 
 ---
 
+## U-narrator-look: l'aspetto del narratore (aggiunto dalle issue #186, #174 e #182)
+
+Solo aspetto e clic, nessuna API nuova; provato solo con il client finto. Serve `/au mode confirm` per le proposte.
+
+- **N1 · Le quattro voci.** Fai comparire una frase per voce: `/au narrator` (narratore o voce interiore), `/au greet`
+  (personaggio), `/au talk` vicino a un locandiere (NPC).
+    - **Cosa aspettarti:** a sinistra del riquadro una **barra sottile** nel colore della voce; il testo **tinto** di quel
+      colore (molto chiaro); la voce interiore in un **carattere diverso** (più stretto). Personaggio (oro chiaro) e NPC
+      (verde più scuro) si distinguono anche guardando lo screenshot in bianco e nero.
+    - **Cosa riportare:** screenshot delle quattro voci; se il carattere della voce interiore **non** cambia (il client
+      non ha `Fonts\ARIALN.TTF`) o il testo sparisce.
+- **N2 · I pulsanti in alto.** Guarda i tre pulsanti in alto a destra, poi passaci sopra con il mouse.
+    - **Cosa aspettarti:** tre icone grigie senza riquadro (due barre, tre righe, una x) che si illuminano al passaggio;
+      sono più grandi di prima e un po' distanti. In pausa la prima diventa un triangolo.
+    - **Cosa riportare:** icone storte, sfocate o tagliate; se è facile premere quella sbagliata.
+- **N3 · La x non scarta più.** Con una proposta in attesa premi la **x**. Poi premi il tasto «pronuncia» due volte.
+    - **Cosa aspettarti:** la x nasconde il riquadro; la proposta **resta**. Al primo tasto ricompare (nulla in chat); al
+      secondo parte. Anche una nuova frase la fa ricomparire.
+    - **Cosa riportare:** se qualcosa parte in chat senza essere sullo schermo (errore grave).
+- **N4 · La barra della proposta.** Guarda la barra in inglese e in italiano (`/au lang it`). Clicca il canale.
+    - **Cosa aspettarti:** tutto sta in una riga senza toccarsi; **Invia** è l'unico dorato e, se hai assegnato il tasto
+      «pronuncia», lo mostra; **Scarta** è solo testo; il canale cambia al clic.
+    - **Cosa riportare:** testi tagliati o sovrapposti (screenshot).
+- **N5 · La linea del tempo.** Fai comparire una frase e guarda il bordo in basso.
+    - **Cosa aspettarti:** una linea sottile nel colore della voce si accorcia; quando finisce il riquadro sparisce, senza
+      dissolvenza. Con «Riduci il movimento» acceso la linea non c'è.
+- **N6 · Testo grande.** `/au options`, **Dimensione del testo** a 28.
+    - **Cosa aspettarti:** la scritta in alto non finisce sotto i pulsanti e non tocca la frase; la striscia in alto
+      cresce.
+    - **Cosa riportare:** screenshot a 10, 14 e 28.
+- **N7 · La cronologia.** Apri la cronologia (pulsante a tre righe). Premi **Esc**. Riaprila, trascinala dalla striscia
+  in alto (i puntini), poi lascia che il riquadro sparisca.
+    - **Cosa aspettarti:** stesso fondo scuro del riquadro, testo grande come quello del narratore; Esc la chiude (e non
+      apre il menu di gioco); la sua **x** la chiude. Prima di trascinarla sta sopra il riquadro e sparisce con lui; dopo,
+      resta dove l'hai messa anche quando il riquadro sparisce, e anche dopo `/reload`. `/au narrator reset` la riporta
+      sopra il riquadro.
+    - **Cosa riportare:** se Esc apre il menu di gioco; se dopo il trascinamento torna al vecchio posto.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -858,6 +898,7 @@ R4 carattere ........... stoico più calmo? ___  vendicativo più arrabbiato? __
 R4 spente .............. off in /au debug? ___  file vuoto? ___
 U guida .................. compare dopo il caricamento? ___  mai in combattimento? ___  saltare: Salta/x/Esc/Invio ok? ___  WASD ok? ___
 U consensi ............... finestra di conferma? ___  «Attiva» spento 2 s? ___  doppio clic non passa (4 consensi)? ___  «acceso, serve nome»? ___
+U narratore ............. barra e tinta per voce? ___  voce interiore in altro carattere? ___  x non scarta? ___  barra leggibile EN/IT? ___  linea del tempo? ___  testo 28 ok? ___  cronologia: Esc, x, trascina, resta? ___
 U finestre ............... il narratore non resta sotto? ___  sopra se troppo grande? ___  clic alza? ___  cascata? ___  sopra la conferma? (deve essere NO) ___
 R3c monologhi .......... visti (quanti) ______  combinazioni che stonano ______  mai in chat? ___
 R3c situazioni ......... vittoria di misura ___  livello sudato ___  ritorno sotto la pioggia ___  una sola frase? ___  secondi tra salute bassa e vittoria ______
@@ -910,7 +951,7 @@ S6c azioni .............. duello ___  invito ___  /wave a te ___  scambio ___  q
 S6c TRP3 altri .......... razza/classe personalizzate? ___  errori? ___
 S6c memoria luoghi ...... zona nota non "nuova"? ___  una sola riga? ___
 Q3 Un'altra (#13) ....... cambia frase? ___  canale resta? ___  nulla in chat? ___  sei pulsanti ci stanno? ___
-Q3 dissolvenza (#21) .... sbiadisce dopo il mouse? ___
+Q3 dopo il mouse (#21) .. resta un attimo, poi sparisce? ___
 Q3 tratti/consenso (#37)  selettori ok? ___  finestra senza tagli? ___  consenso spento di base? ___
 Q3 emote altre lingue ... client ______  riconosciuta? ___  testo esatto non riconosciuto ______  destinatario nel payload? ___
 Q3 suggerimento con accento .. /au intensità dà il suggerimento? ___

@@ -30,7 +30,7 @@ def step_label(text):
 
 
 def frames():
-    """(scene, seed, label, narrator kwargs, extra html, duration ms, fades)"""
+    """(scene, seed, label, narrator kwargs, extra html, duration ms, time line runs out)"""
     say = {"speaker": "character", "text": f"«{L_GREET}»", "proposal": "SAY"}
     return [
         ("dusk", 3, "1 · Arriving in a forest at dusk", {"speaker": "narrator", "text": f"{PLAYER} {L_DUSK_E}"}, "", 3600, True),
@@ -51,10 +51,11 @@ def main():
     css = "file:///" + os.path.join(MOCKUPS, "mockups.css").replace("\\", "/")
     images = []   # (PIL image, duration)
     n = 0
-    for scene, seed, label, nk, extra, ms, fades in frames():
-        for fade, dur in ([(1.0, ms)] + ([(0.55, 160), (0.2, 160)] if fades else [])):
+    for scene, seed, label, nk, extra, ms, runs_out in frames():
+        # #186: no fade; the thin time line along the bottom edge runs out, then the box goes
+        for left, dur in ([(0.9, ms)] + ([(0.3, 320), (0.06, 200)] if runs_out else [])):
             n += 1
-            body = narrator((W - 440) // 2, 70, fade=fade, **nk) + extra + step_label(label)
+            body = narrator((W - 440) // 2, 70, remaining=left, **nk) + extra + step_label(label)
             path = page(f"f{n:02d}", "Narrator in action", W, H, body, scene=scene, seed=seed, scale=SCALE, kind="none",
                         out_dir=tmp, css_href=css)
             png = render(path, path[:-5] + ".png", exe)

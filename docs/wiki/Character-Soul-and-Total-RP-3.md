@@ -136,13 +136,14 @@ A stoic, disillusioned veteran who has not forgotten an old wrong, jokes a lot, 
 
 ## Total RP 3
 
-Total RP 3 is a popular roleplay profile addon. **Azeroth Unspoken works fully without it.** If it is installed, the addon can read three things from it, each with its own switch. It never writes anything to Total RP 3.
+Total RP 3 is a popular roleplay profile addon. **Azeroth Unspoken works fully without it.** If it is installed, the addon can read four things from it, each with its own switch. It never writes anything to Total RP 3.
 
 | What | Default | How to turn it on or off | Reads |
 |---|---|---|---|
 | **Name from Total RP 3** | on | panel, wizard | the first name of **your own** profile, used in lines |
 | **Traits from Total RP 3** | off | `/au soul trp3 on\|off`, personality window | the public personality traits of **your own** profile |
 | **Read others' Total RP 3** | off | panel, wizard, `/au who trp3 on\|off` | race, class and personality traits of **other players'** public profiles |
+| **Stay private when out of character** | on | `/au trp3 ooc on\|off` | whether **your own** status is *in character* or *out of character* |
 
 ### Your own traits
 
@@ -165,6 +166,30 @@ Reading other players' profiles is a separate consent, **off by default**. When 
 - *Name from Total RP 3* must be on too.
 
 Turn it on with `/au who trp3 on`, the **Read others' Total RP 3** row of the [[settings panel|Settings]], or the wizard. Turning it **on** takes two steps: a confirmation dialog shows the warning, and **Turn on** (or the same click or command again, after a couple of seconds) confirms. Turning it **off** is one step. While *Name from Total RP 3* is off, the row says *on, needs name*: it is on but does nothing yet. See also [[Interlocutor and Place|Interlocutor-and-Place]].
+
+### Out of character: the narrator stays private
+
+When your Total RP 3 status is **out of character** (OOC), your character is not speaking, so the addon does not
+propose in-character lines for chat:
+
+- the narrator still shows its lines in its box, **privately**, as in the private mode;
+- nothing becomes a proposal, and nothing is sent by itself, even in automatic mode;
+- a proposal that was waiting when you went OOC is **dropped**, not sent: the speak key, the button, `/au speak` and
+  `/au copy` say why;
+- the first time a line stays private for this reason, a message in the chat frame tells you.
+
+Switch back to *in character* in Total RP 3 and proposals come back. This is **on by default**. Turn it off with
+`/au trp3 ooc off` if you want proposals whatever Total RP 3 says; `/au trp3` shows how it is set and what Total RP 3
+says right now. It only ever keeps lines private, so it works even when *Name from Total RP 3* is off. Without Total
+RP 3, or when Total RP 3 gives no clear status, nothing is held. A row in the settings panel will follow.
+
+### How the addon talks to Total RP 3
+
+The addon uses only Total RP 3's **public** player model (`AddOn_TotalRP3.Player`): your own profile through
+`GetCurrentUser`, other players through `CreateFromUnit`, and plain questions to them (first name, traits, custom race
+and class, roleplay status). It does not use Total RP 3's internal functions. Every call is protected: if a Total RP 3
+update renames or breaks something, the answer is simply "nothing", never an error and never a different field.
+`/au debug full` shows each part as a capability: `integration:totalRP3`, `:traits`, `:status` and `:others`.
 
 If Total RP 3 is missing, or changes in a way the addon does not understand, the integration simply switches itself off. `/au soul trp3` then says that Total RP 3 is not installed.
 

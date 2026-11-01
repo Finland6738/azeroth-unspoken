@@ -1065,3 +1065,135 @@ T.run("#177: the waiting time pauses while hovered, can be unlimited, and has on
 	T.eq(Public()[1], "SAY: Avanti.", "the key sends the line on screen")
 	Reset()
 end)
+
+T.run("#191: Total RP 3 out of character keeps the narrator private, in every mode", function()
+	Reset()
+	local lang = NS.db.locale
+	NS.db.locale = "en"
+	NS.Diagnostics.errors = {}
+	T.eq(NS.Config.defaults.chat.respectOOC, true, "the hold is on by default")
+	T.eq(NS.db.chat.respectOOC, true, "and in the settings")
+	local spec = { status = 2 }
+	FAKE_TRP3(spec)
+	T.ok(Gateway:HeldOOC(), "OOC: the chat is held")
+	for _, mode in ipairs({ "PREVIEW", "CONFIRM_TO_SEND" }) do
+		Gateway:SetMode(mode)
+		T.eq(Gateway:EffectiveMode(), "PRIVATE", mode .. ": effective PRIVATE while OOC")
+		Gateway:Propose(Rec("say"), CTX, { auto = true })
+		T.eq(Gateway:GetPending(), nil, mode .. ": nothing proposed")
+		T.ok(Narrator.current ~= nil and Narrator.current.text == Rec("say").text, mode .. ": the narrator still shows it")
+		Press()
+		T.eq(#Public(), 0, mode .. ": the speak key sends nothing")
+	end
+	-- the hold is said once, not at every line
+	local prints = 0
+	for _, s in ipairs(SENT) do if s:find("out of character", 1, true) then prints = prints + 1 end end
+	T.eq(prints, 1, "the hold is announced once")
+	-- automatic sending: not even an emote goes out
+	Auto()
+	Gateway:Propose(Rec("emote", nil, "stringe l'elsa"), CTX, { auto = true })
+	T.eq(#Public(), 0, "AUTO: nothing sent by itself while OOC")
+	T.eq(Gateway:GetPending(), nil, "and nothing waits")
+	T.eq(Gateway:Status().oocHeld, true, "/au debug says so")
+	-- in character again: proposals come back
+	spec.status = 1
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	T.ok(not Gateway:HeldOOC(), "IC: not held")
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	T.ok(Gateway:GetPending() ~= nil, "IC: a proposal")
+	-- the player goes OOC while a proposal waits: it is dropped, never sent or copied
+	spec.status = 2
+	Press()
+	T.eq(#Public(), 0, "the waiting line is not sent")
+	T.eq(Gateway:GetPending(), nil, "it is dropped")
+	T.eq(Gateway.lastRefusal, "ooc", "and the reason is said")
+	spec.status = 1
+	ADVANCE(10)
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	spec.status = 2
+	local opened = {}
+	local saved = ChatFrame_OpenChat
+	ChatFrame_OpenChat = function(text) table.insert(opened, text) end
+	local ok, why = Gateway:CopyToChat()
+	ChatFrame_OpenChat = saved
+	T.ok(not ok and why == "ooc" and #opened == 0, "copying to the chat box is refused too")
+	-- Send itself refuses an in-character proposal while OOC (defence in depth)
+	ok, why = Gateway:PlayerAction(function()
+		return Gateway:Send("ciao", "SAY", { proposal = { speaker = "character", form = "say", text = "ciao" } })
+	end)
+	T.ok(not ok and why == "ooc", "Send refuses an OOC proposal")
+	-- the setting off: Total RP 3's status is ignored
+	NS.db.chat.respectOOC = false
+	T.ok(not Gateway:HeldOOC(), "setting off: never held")
+	ADVANCE(10)
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	T.ok(Gateway:GetPending() ~= nil, "setting off: proposals while OOC")
+	Press()
+	T.eq(Public()[1], "SAY: Per l'onore dei miei avi.", "and they are sent")
+	NS.db.chat.respectOOC = true
+	-- no Total RP 3, no status, an API that changed: nothing is held
+	spec.status = nil
+	T.ok(not Gateway:HeldOOC(), "no status: not held")
+	FAKE_TRP3({ status = 2, noStatus = true })
+	T.ok(not Gateway:HeldOOC(), "no status methods: not held")
+	AddOn_TotalRP3 = { Player = { GetCurrentUser = function() error("API changed") end } }
+	T.ok(not Gateway:HeldOOC(), "a broken API: not held")
+	AddOn_TotalRP3 = nil
+	T.ok(not Gateway:HeldOOC(), "without Total RP 3: not held")
+	T.eq(#NS.Diagnostics.errors, 0, "no error caught")
+	NS.db.locale = lang
+	Reset()
+end)
+
+T.run("#191: emote markup outside /e is optional, off by default", function()
+	Reset()
+	T.eq(NS.Config.defaults.chat.emoteMarkup, false, "off by default")
+	T.eq(Gateway:TextFor("emote", "sospira.", "SAY", "Garrosh"), "Garrosh sospira.", "off: the name, as before")
+	NS.db.chat.emoteMarkup = true
+	T.eq(Gateway:TextFor("emote", "sospira.", "SAY", "Garrosh"), "*sospira.*", "on: *action* in /say")
+	T.eq(Gateway:TextFor("emote", "sospira.", "PARTY", "Garrosh"), "*sospira.*", "and in group chat")
+	T.eq(Gateway:TextFor("emote", "sospira.", "EMOTE", "Garrosh"), "sospira.", "/e is untouched")
+	T.eq(Gateway:TextFor("say", "Avanti.", "SAY", "Garrosh"), "Avanti.", "spoken lines are untouched")
+	T.eq(Gateway:TextFor("emote", "*saluta*", "SAY", "Garrosh"), "*saluta*", "already marked: not doubled")
+	local long = Gateway:TextFor("emote", ("à"):rep(200), "SAY", "Garrosh")
+	T.ok(#long <= NS.Config.CHAT_LIMITS.SAY and long:sub(1, 1) == "*" and long:sub(-1) == "*",
+		"a long emote keeps both asterisks within the limit")
+	-- the narrator shows what will be sent, and the send follows it
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	NS.db.chat.channel = "SAY"
+	Gateway:Propose(Rec("emote", nil, "alza lo sguardo"), CTX, { auto = true })
+	T.eq(Gateway:GetPending().display, "*alza lo sguardo*", "the proposal shows the markup")
+	Press()
+	T.eq(SENT[#SENT], "SAY: *alza lo sguardo*", "and it is sent so")
+	NS.db.chat.emoteMarkup = false
+	Reset()
+end)
+
+T.run("#191: /au trp3 sets the hold and the markup and explains them", function()
+	Reset()
+	local lang = NS.db.locale
+	NS.db.locale = "en"
+	SlashCmdList.AZEROTHUNSPOKEN("trp3")
+	T.ok(T.sentContains("hold: on"), "without arguments: the hold")
+	T.ok(T.sentContains("markup: off"), "and the markup")
+	SlashCmdList.AZEROTHUNSPOKEN("trp3 markup on")
+	T.eq(NS.db.chat.emoteMarkup, true, "markup on")
+	SlashCmdList.AZEROTHUNSPOKEN("trp3 markup")
+	T.eq(NS.db.chat.emoteMarkup, false, "a bare word toggles")
+	SlashCmdList.AZEROTHUNSPOKEN("trp3 ooc off")
+	T.eq(NS.db.chat.respectOOC, false, "hold off")
+	T.ok(T.sentContains("whatever your Total RP 3 status says"), "explained")
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("trp3 ooc maybe")
+	T.eq(NS.db.chat.respectOOC, false, "an unknown value changes nothing")
+	T.ok(T.sentContains("invalid value"), "and says so")
+	SlashCmdList.AZEROTHUNSPOKEN("trp3 ooc on")
+	T.eq(NS.db.chat.respectOOC, true, "hold on again")
+	FAKE_TRP3({ status = 2 })
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("trp3")
+	T.ok(T.sentContains("says right now: out of character"), "with Total RP 3: its current status")
+	AddOn_TotalRP3 = nil
+	NS.db.locale = lang
+	Reset()
+end)

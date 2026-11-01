@@ -28,7 +28,7 @@ local function Fresh()
 	NS.Diagnostics.errors = {}
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	NS.db.interlocutor.trp3Others = false
-	TRP3_API = nil
+	TRP3_API, AddOn_TotalRP3 = nil, nil
 	P.target, P.npc, P.party, P.group, P.raid = nil, nil, nil, false, false
 	P.zone, P.subzone, P.combat, P.dead, P.hp, P.hpMax, P.resting = "Durotar", "", false, false, 100, 100, false
 	P.instance, P.instanceType, P.instanceName, P.instanceID, P.difficulty = false, nil, nil, nil, nil
@@ -92,26 +92,14 @@ local function Player(name, extra)
 end
 
 -- un finto Total RP 3 con il profilo pubblico di Aldric
-local trpReads
+local trpReads   -- the fake's counters: trpReads.reads are reads of profile data
 local function FakeTRP3(opts)
 	opts = opts or {}
-	trpReads = 0
-	TRP3_API = {
-		utils = { str = { getUnitID = function(unit)
-			if opts.broken then error("API cambiata") end
-			local t = unit == "target" and P.target
-			return t and (t.name .. "-" .. (t.realm or "TestRealm")) or nil
-		end } },
-		register = {
-			isUnitIDKnown = function(id) return id == "Aldric-TestRealm" end,
-			getUnitIDCurrentProfile = function(id)
-				trpReads = trpReads + 1
-				assert(id == "Aldric-TestRealm", "Unknown character")
-				return { characteristics = { RA = "|cffff8000Mezzelfo|r delle colline", CL = "Cacciatrice di taglie",
-					PS = { { ID = 6, V2 = 2 }, { ID = 8, V2 = 19 }, { ID = 7, V2 = 1 } } } }
-			end,
-		},
-	}
+	-- #191: the public player model of Total RP 3 (Tests/MockWoWAPI.lua), no longer TRP3_API.register
+	trpReads = FAKE_TRP3({ broken = opts.broken, profiles = {
+		["Aldric-TestRealm"] = { RA = "|cffff8000Mezzelfo|r delle colline", CL = "Cacciatrice di taglie",
+			PS = { { ID = 6, V2 = 2 }, { ID = 8, V2 = 19 }, { ID = 7, V2 = 1 } } },
+	} })
 end
 
 ---------------------------------------------------------------------------
@@ -416,7 +404,7 @@ T.run("priorità delle fonti: utente > TRP3 > registro NPC > ruolo > tendenza > 
 	P.target = Player("Aldric", { class = "HUNTER", race = "Orc", sex = 2 })
 	local n = Ctx().other
 	T.eq(n.temperament, nil, "senza consenso TRP3 non si legge")
-	T.eq(trpReads, 0, "nessuna lettura")
+	T.eq(trpReads.reads, 0, "nessuna lettura")
 	NS.db.interlocutor.trp3Others = true
 	local t = Ctx().other
 	T.ok(t.temperament == "merciful" and t.sources.temperament == "trp3", "TRP3: temperamento dai tratti pubblici")

@@ -15,7 +15,7 @@ MOCKUPS = os.path.dirname(HERE)                      # docs/design/mockups
 CAPTION = "Illustrative mockup built from the addon code - not an in-game screenshot."
 
 # colours of the four voices (UI/NarratorFrame.lua VOICE_COLOR)
-VOICE_COLOR = {"narrator": "b9a1ff", "inner": "7fd4ff", "character": "ffd36b", "npc": "9be37a"}
+VOICE_COLOR = {"narrator": "b9a1ff", "inner": "7fd4ff", "character": "ffd36b", "npc": "4fb354"}
 VOICE = {
     "en": {"narrator": "Narrator", "inner": "Inner voice", "character": "Character", "npc": "NPC"},
     "it": {"narrator": "Narratore", "inner": "Voce interiore", "character": "Personaggio", "npc": "NPC"},

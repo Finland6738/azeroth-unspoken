@@ -104,11 +104,28 @@ function Gateway:GetMode()
 end
 
 -- Il modulo "publicChat" spento equivale a PRIVATE.
----Il modulo publicChat spento equivale a PRIVATE.
+---Il modulo publicChat spento equivale a PRIVATE. So does a hold by Total RP 3 (#191, HeldOOC).
 ---@return string mode
 function Gateway:EffectiveMode()
 	if not NS.db.modules.publicChat then return "PRIVATE" end
+	if NS.db.chat.mode ~= "PRIVATE" and self:HeldOOC() then return "PRIVATE" end
 	return NS.db.chat.mode
+end
+
+---#191: the player's own Total RP 3 status is "out of character" and `chat.respectOOC` is on (the default). Then the
+---narrator stays private: nothing is proposed for chat, nothing is sent automatically, and a proposal already waiting
+---is dropped instead of sent. Without Total RP 3, or when it does not say OOC plainly, nothing is held.
+---@return boolean
+function Gateway:HeldOOC()
+	local trp3 = NS.TotalRP3
+	return trp3 ~= nil and trp3:HoldsChat() == true
+end
+
+-- #191: a proposal is never sent or copied while the player is out of character; it is dropped and the reason said
+function Gateway:RefuseOOC()
+	self:Discard()
+	self:Report("ooc")
+	return false, "ooc"
 end
 
 -- Accetta nomi in più lingue ("conferma", "confirm", "CONFIRM_TO_SEND"...). nil se sconosciuto.
@@ -222,6 +239,9 @@ end
 
 -- Il testo che parte davvero nel canale. Il gioco antepone il nome del personaggio solo alle emote (/e):
 --  * un'emote in un altro canale (/s, /p...) porta il nome davanti, altrimenti resterebbe senza soggetto;
+--  * with `chat.emoteMarkup` (#191, off by default) it is wrapped in asterisks instead, "*text*": the RP convention
+--    for an action written in /say or group chat, which Total RP 3 colours as an emote ("emote detection", on by
+--    default in Total RP 3). The game already shows who is speaking, so the name is not repeated;
 --  * una frase parlata in /e diventa "dice: «...»" (verbo localizzato), altrimenti sarebbe "Nome Frase".
 ---@param form string say | emote
 ---@param text string testo della frase, senza nome né virgolette
@@ -233,6 +253,12 @@ function Gateway:TextFor(form, text, channel, player)
 	if text == "" then return "" end
 	if form == "emote" then
 		if channel == "EMOTE" then return text end
+		if NS.db and NS.db.chat.emoteMarkup then
+			if text:sub(1, 1) == "*" and text:sub(-1) == "*" and #text > 1 then return text end
+			-- the closing asterisk must survive the cut that Send makes to the channel's limit
+			local limit = (NS.Config.CHAT_LIMITS[channel] or 255) - 2
+			return "*" .. Clip(text, limit) .. "*"
+		end
 		local name = player
 		if name == nil or name == "" then name = Compat.SafeCall(UnitName, "player") end
 		return Trim((name or "") .. " " .. text)
@@ -347,6 +373,8 @@ function Gateway:Send(text, channel, opts)
 	if text == "" then return false, "empty" end
 	-- #152, #163: a proposal that carries a private line is refused here too, whoever calls Send
 	if opts.proposal and self:PrivateReason(opts.proposal) then return false, "private_only" end
+	-- #191: an in-character line never leaves while Total RP 3 says the player is out of character
+	if opts.proposal and self:HeldOOC() then return false, "ooc" end
 	local fromPlayer = self.inPlayerAction
 	if not fromPlayer and not self:CanSendWithoutAction(channel) then return false, "needs_action" end
 	if not self:ChannelAvailable(channel) then return false, "channel_unavailable" end
@@ -520,6 +548,7 @@ function Gateway:SendPending(text)
 		self:Report("private_only")
 		return false, "private_only"
 	end
+	if self:HeldOOC() then return self:RefuseOOC() end
 	local ok, why, err = self:Send(self:TextFor(p.form, text or p.edited or p.text, p.channel, p.player), p.channel,
 		{ proposal = p })
 	if not ok then
@@ -546,6 +575,7 @@ function Gateway:CopyToChat()
 		self:Report("private_only")
 		return false, "private_only"
 	end
+	if self:HeldOOC() then return self:RefuseOOC() end
 	local text = Trim(self:TextFor(p.form, p.edited or p.text, p.channel, p.player))
 	if text == "" then
 		self:Report("empty")
@@ -622,6 +652,10 @@ function Gateway:Propose(rec, ctx, opts)
 	-- il giocatore sta scrivendo: una frase spontanea non gli cambia la proposta sotto le dita
 	if self.editing and opts.auto then return false end
 	local mode = self:EffectiveMode()
+	-- #191: when a hold by Total RP 3 begins, say it once, so a line that stays private is not a mystery
+	local held = mode == "PRIVATE" and NS.db.chat.mode ~= "PRIVATE" and NS.db.modules.publicChat and self:HeldOOC()
+	if held and not self.oocNoted then NS:Print(NS:L("gw_ooc_hold")) end
+	self.oocNoted = held and true or false
 	rec.display = self:Display(rec, ctx)
 	-- "Un'altra" (Reroll) conserva il canale scelto dal giocatore, se è ancora disponibile
 	local channel = opts.channel and self:ChannelAvailable(opts.channel) and opts.channel or self:ResolveChannel(rec)
@@ -752,6 +786,8 @@ function Gateway:Confirm()
 			self:Improvise()
 			return false
 		end
+		-- #186: a proposal hidden with the narrator's "x" comes back on screen first; it never leaves unseen (#176)
+		if NS.Narrator and NS.Narrator:BringBack(p) then return false end
 		if self:EffectiveMode() == "PREVIEW" and not p.reviewed then
 			p.reviewed = true
 			if NS.Narrator and NS.Narrator:OpenEditor() then return false end
@@ -769,7 +805,7 @@ end
 ---------------------------------------------------------------------------
 -- Stato per /au debug
 ---------------------------------------------------------------------------
----@return { mode: string, effective: string, autoPublicSay: boolean, channel: string, pending?: string, lastMinute: integer, lastMinuteAuto: integer, total: integer, lastRefusal?: string }
+---@return { mode: string, effective: string, autoPublicSay: boolean, channel: string, pending?: string, lastMinute: integer, lastMinuteAuto: integer, total: integer, lastRefusal?: string, oocHeld: boolean }
 function Gateway:Status()
 	local now = GetTime()
 	local n, nAuto = Recent(self.sendLog, 60, now)
@@ -778,6 +814,6 @@ function Gateway:Status()
 		mode = self:GetMode(), effective = self:EffectiveMode(), autoPublicSay = NS.db.output.autoPublicSay,
 		channel = NS.db.chat.channel, pending = p and p.channel or nil,
 		lastMinute = n, lastMinuteAuto = nAuto, total = self.sentTotal or 0, lastRefusal = self.lastRefusal,
-		blocked = self.blockedTotal or 0,
+		blocked = self.blockedTotal or 0, oocHeld = self:HeldOOC(),
 	}
 end

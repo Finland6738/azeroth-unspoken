@@ -51,12 +51,12 @@ def build_narrator():
                    speaker="character", text=f"«{L_BATTLE}»", scene="battle", seed=5)
     stage_narrator("narrator-npc", "Narrator frame - NPC voice", "The-Narrator",
                    speaker="npc", text=L_NPC, scene="warm", seed=6)
-    # all four voices together: the colour is the only cue
-    w, h = 640, 520
-    body = "".join(narrator((w - 440) // 2, 40 + i * 112, speaker=s, text=t) for i, (s, t) in enumerate((
+    # all four voices together: accent bar, tinted text, the inner voice's typeface, lightness (#186)
+    w, h = 640, 560
+    body = "".join(narrator((w - 440) // 2, 70 + i * 112, speaker=s, text=t) for i, (s, t) in enumerate((
         ("npc", L_NPC), ("character", f"«{L_BATTLE}»"), ("inner", L_INNER), ("narrator", f"{PLAYER} {L_DUSK_E}"))))
     add("narrator-voices", "Narrator frame - the four voices", w, h, body, "Narrator", "The-Narrator", scene="dusk",
-        seed=8, caption_extra="Only the small label colour tells the voices apart.")
+        seed=8, caption_extra="Accent bar, tinted text, typeface (inner voice) and lightness tell the voices apart.")
     hist = [history_line("21:02", "narrator", f"{PLAYER} {L_DUSK_E}"),
             history_line("21:05", "character", f"«{L_BATTLE}»"),
             history_line("21:09", "inner", L_RETURN),

@@ -57,7 +57,7 @@ T.run("etichette delle quattro voci", function()
 	T.eq(frame.text:GetText(), "«Andiamo.»", "parlato tra virgolette")
 end)
 
-T.run("durata e dissolvenza", function()
+T.run("durata e linea del tempo", function()
 	Reset()
 	NS.db.ui.narrator.duration = 8
 	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
@@ -65,9 +65,14 @@ T.run("durata e dissolvenza", function()
 	T.ok(math.abs(Narrator.remaining - (8 + 16 / 14)) < 1e-9, "durata: base più tempo di lettura")
 	UPDATE(5)
 	T.ok(frame:IsShown(), "ancora visibile dopo 5 s")
-	T.eq(frame:GetAlpha(), 1, "il riquadro è pieno finché non sbiadisce (#173)")
+	T.eq(frame:GetAlpha(), 1, "il riquadro è pieno (#173)")
+	-- #186: a thin time line instead of a fade; it shrinks as the time runs out, the frame alpha stays 1
+	T.ok(frame.timeline:IsShown(), "linea del tempo visibile")
+	local w5 = frame.timeline:GetWidth()
+	T.ok(w5 > 0 and w5 < 437, "più corta dopo 5 s: " .. w5)
 	UPDATE(Narrator.remaining - 5 - 0.5)
-	T.ok(frame:IsShown() and frame:GetAlpha() < 1, "in dissolvenza verso la fine")
+	T.ok(frame:IsShown() and frame:GetAlpha() == 1, "verso la fine: nessuna dissolvenza")
+	T.ok(frame.timeline:GetWidth() < w5, "la linea si accorcia")
 	UPDATE(5)
 	T.ok(not frame:IsShown(), "sparisce da solo")
 	-- la durata è regolabile
@@ -159,7 +164,7 @@ T.run("pausa immediata", function()
 	NS.paused = false
 end)
 
-T.run("proposta: non svanisce, il pulsante x la scarta", function()
+T.run("proposta: non svanisce; la x nasconde il riquadro, non la scarta (#186)", function()
 	Reset()
 	Gateway:SetMode("CONFIRM_TO_SEND")
 	Gateway:Propose(Rec("say"), CTX, {})
@@ -176,9 +181,37 @@ T.run("proposta: non svanisce, il pulsante x la scarta", function()
 		if c:GetText() == "x" then closeBtn = c end
 	end
 	T.ok(closeBtn ~= nil, "pulsante di chiusura")
+	T.eq(closeBtn, frame.closeBtn, "il pulsante del riquadro")
 	closeBtn:Click()
-	T.eq(Gateway:GetPending(), nil, "x scarta la proposta")
-	T.ok(not frame:IsShown(), "e nasconde il riquadro")
+	T.ok(not frame:IsShown(), "x nasconde il riquadro")
+	local p = Gateway:GetPending()
+	T.ok(p ~= nil, "e la proposta resta in attesa")
+	-- #176: the speak key never sends a line that is not on screen: the first press shows it again
+	HW = true
+	AzerothUnspoken_Speak()
+	HW = false
+	T.ok(frame:IsShown() and Narrator.proposal == p, "il tasto la rimostra")
+	T.eq(#SENT, 0, "senza inviarla")
+	HW = true
+	AzerothUnspoken_Speak()
+	HW = false
+	T.eq(SENT[#SENT], "SAY: Il vento porta voci lontane.", "la seconda pressione la invia")
+	-- a new line also brings the hidden proposal back (it waits on screen, the line is held)
+	Gateway:Propose(Rec("say"), CTX, {})
+	frame.closeBtn:Click()
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	T.ok(frame:IsShown() and Narrator.proposal == Gateway:GetPending(), "una nuova frase la riporta sullo schermo")
+	-- text typed in the editor survives the x as the proposal's edited text
+	Narrator:OpenEditor()
+	frame.editor:SetText("Il mio testo")
+	frame.closeBtn:Click()
+	T.eq(Gateway:GetPending().edited, "Il mio testo", "il testo dell'editor resta nella proposta")
+	T.ok(not Gateway.editing, "e l'editor è chiuso")
+	-- the editor never opens in a hidden box (speak button with "opens the editor"): the proposal comes back first
+	T.ok(Narrator:OpenEditor(), "l'editor si apre")
+	T.ok(frame:IsShown() and frame.editor:IsShown(), "nel riquadro di nuovo visibile")
+	Narrator:CloseEditor()
+	Gateway:Discard()
 end)
 
 T.run("ripiego sulla chat locale se il riquadro è spento", function()
@@ -515,11 +548,14 @@ T.run("#17: il mouse sopra il riquadro lo tiene visibile", function()
 	T.ok(frame:IsShown(), "con il mouse sopra resta visibile oltre la durata")
 	T.ok(Narrator.elapsed <= remaining, "il tempo resta fermo")
 	T.eq(frame:GetAlpha(), 1, "e non sbiadisce")
-	-- #21: tolto il mouse, il riquadro sbiadisce (non sparisce a opacità piena)
+	local stopped = frame.timeline:GetWidth()
+	Tick(2)
+	T.eq(frame.timeline:GetWidth(), stopped, "la linea del tempo resta ferma (#186)")
+	-- #21: tolto il mouse, il riquadro resta ancora un poco (non sparisce sotto la mano)
 	frame._s.mouseOver = false
-	Tick(0.1)
-	T.ok(frame:IsShown(), "tolto il mouse: ancora visibile per la dissolvenza")
-	T.ok(frame:GetAlpha() < 1 and frame:GetAlpha() > 0, "tolto il mouse: opacità in calo")
+	Tick(0.5)
+	T.ok(frame:IsShown(), "tolto il mouse: ancora visibile")
+	T.eq(frame:GetAlpha(), 1, "a opacità piena: nessuna dissolvenza (#186)")
 	Tick(3)
 	T.ok(not frame:IsShown(), "tolto il mouse svanisce")
 	-- nessun metodo né funzione globale: il riquadro funziona come prima (falso)
@@ -725,13 +761,13 @@ T.run("#176: dopo uno scarto le frasi trattenute seguono; la x le chiude; quelle
 	T.eq(Gateway:GetPending(), nil, "scartata")
 	Tick(4)
 	T.eq(frame.text:GetText(), "Un pensiero.", "la frase trattenuta compare")
-	-- the x discards the proposal and the held lines
+	-- the x hides the box and drops the held lines (they are in the history); the proposal keeps waiting (#186)
 	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
 	Gateway:Propose(Rec("say", "inner", "Un altro pensiero."), CTX, {})
-	for _, c in ipairs(frame.header.children) do
-		if c:GetText() == "x" then c:Click() end
-	end
-	T.ok(not frame:IsShown() and #Narrator.held == 0, "la x chiude tutto")
+	frame.closeBtn:Click()
+	T.ok(not frame:IsShown() and #Narrator.held == 0, "la x nasconde il riquadro e le frasi trattenute")
+	T.ok(Gateway:GetPending() ~= nil, "la proposta resta in attesa")
+	Gateway:Discard()
 	-- a line held for more than two minutes is not shown any more (it is in the history)
 	NS.db.chat.pendingSeconds = 0
 	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
@@ -916,4 +952,170 @@ T.run("#177, #179, #187: the settings rows, their sections and the help under th
 	NS.db.locale = "it"
 	NS.db.chat.pendingSeconds = 25
 	NS.db.ui.narrator.readingSpeed = 14
+end)
+
+T.run("#186: le voci si distinguono per barra, colore del testo, carattere e luminosità", function()
+	Reset()
+	NS.db.ui.narrator.alpha, NS.db.ui.narrator.fontSize = 0.8, 14
+	-- relative luminance of a hex colour (WCAG)
+	local function Lum(hex)
+		local function L(c) c = c / 255; return c <= 0.04045 and c / 12.92 or ((c + 0.055) / 1.055) ^ 2.4 end
+		return 0.2126 * L(tonumber(hex:sub(1, 2), 16)) + 0.7152 * L(tonumber(hex:sub(3, 4), 16))
+			+ 0.0722 * L(tonumber(hex:sub(5, 6), 16))
+	end
+	local accents, tints = {}, {}
+	for _, speaker in ipairs({ "narrator", "inner", "character", "npc" }) do
+		accents[speaker], tints[speaker] = Narrator:VoiceColors(speaker)
+		T.ok(tints[speaker] ~= "ffffff", speaker .. ": testo tinto")
+	end
+	-- Character and NPC collapsed for protanopes: now they differ in lightness too
+	T.ok(Lum(accents.character) / Lum(accents.npc) >= 1.8, "Personaggio e NPC differiscono in luminosità")
+	T.ok(math.abs(Lum(accents.narrator) - Lum(accents.npc)) > 0.05, "Narratore e NPC pure")
+	-- each text tint keeps 4.5:1 over a white scene seen through the background at 0.6 (grey 102)
+	local grey = Lum("666666")
+	for speaker, tint in pairs(tints) do
+		T.ok((Lum(tint) + 0.05) / (grey + 0.05) >= 4.5, speaker .. ": testo leggibile anche su una scena bianca")
+	end
+	-- under 0.6 the text is white (a tint would drop under 4.5:1)
+	NS.db.ui.narrator.alpha = 0.55
+	local _, low = Narrator:VoiceColors("character")
+	T.eq(low, "ffffff", "sotto 0.6 il testo è bianco")
+	NS.db.ui.narrator.alpha = 0.8
+
+	-- on screen: the accent bar in the voice colour, the tinted text, the inner voice in another typeface
+	local accentColor, textColor
+	frame.accent.SetColorTexture = function(_, r, g, b) accentColor = { r, g, b } end
+	frame.text.SetTextColor = function(_, r, g, b) textColor = { r, g, b } end
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	T.ok(accentColor and math.abs(accentColor[1] - 0x7f / 255) < 1e-6, "barra nel colore della voce interiore")
+	T.ok(textColor and math.abs(textColor[1] - 0xdd / 255) < 1e-6, "testo tinto della voce interiore")
+	local innerPath, innerSize = frame.text:GetFont()
+	T.ok(tostring(innerPath):find("ARIALN", 1, true) ~= nil, "voce interiore in un altro carattere: " .. tostring(innerPath))
+	T.eq(innerSize, 15, "un punto più grande (lettere più strette)")
+	Gateway:Propose(Rec("emote", "narrator", "guarda lontano"), CTX, {})
+	local path, size = frame.text:GetFont()
+	T.eq(path, frame.bodyFont, "il narratore nel carattere normale")
+	T.eq(size, 14, "alla dimensione scelta")
+	T.ok(math.abs(accentColor[1] - 0xb9 / 255) < 1e-6, "e la barra cambia colore")
+	frame.accent.SetColorTexture, frame.text.SetTextColor = nil, nil
+end)
+
+T.run("#186, #183: pulsanti a icona 24x24 a 6 di distanza; l'intestazione cresce con l'etichetta (#182)", function()
+	Reset()
+	local xs = {}
+	for _, b in ipairs({ frame.pauseBtn, frame.historyBtn, frame.closeBtn }) do
+		T.eq(b:GetWidth(), 24, "larghezza 24")
+		T.eq(b:GetHeight(), 24, "altezza 24")
+		T.eq(b.parent, frame.header, "nell'intestazione")
+		table.insert(xs, b._s.points[1][2])
+	end
+	T.eq(xs[2] - xs[1], 30, "6 unità tra pausa e cronologia")
+	T.eq(xs[3] - xs[2], 30, "6 unità tra cronologia e chiusura")
+	-- no letter on the buttons: pause and history are drawn
+	T.eq(frame.pauseBtn.glyph:GetText(), "", "la pausa è disegnata, non scritta")
+	T.eq(frame.historyBtn.glyph:GetText(), "", "la cronologia pure")
+	-- the label stops before the three buttons
+	local right = frame.label._s.points[2]
+	T.ok(right[1] == "RIGHT" and right[2] <= -(4 + 3 * 24 + 2 * 6), "l'etichetta finisce prima dei pulsanti")
+	-- at every text size the header is taller than its label, and the text starts under the header
+	for _, fontSize in ipairs({ 10, 14, 20, 28 }) do
+		NS.db.ui.narrator.fontSize = fontSize
+		Narrator:ApplySettings()
+		local _, labelSize = frame.label:GetFont()
+		T.ok(frame.header:GetHeight() >= labelSize + 8, "intestazione più alta dell'etichetta a " .. fontSize)
+		T.ok(frame.header:GetHeight() >= 28, "e dei pulsanti")
+	end
+	local anchor = frame.text._s.points[1]
+	T.ok(anchor[2] == frame.header and anchor[3] == "BOTTOMLEFT", "il testo è ancorato sotto l'intestazione")
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	T.ok(frame:GetHeight() >= frame.header:GetHeight() + frame.text:GetStringHeight(), "il riquadro contiene tutto")
+	NS.db.ui.narrator.fontSize = 14
+	Narrator:ApplySettings()
+end)
+
+T.run("#186: la barra della proposta: un chip del canale, Invia primario, Scarta discreto", function()
+	Reset()
+	NS.db.locale = "en"
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say", "character", "Andiamo."), CTX, {})
+	T.ok(frame.bar:IsShown(), "barra visibile")
+	T.eq(frame.channelBtn:GetText(), "/s", "il chip dice il canale")
+	T.ok(not frame.label:GetText():find("/s", 1, true), "che l'etichetta non ripete: " .. frame.label:GetText())
+	T.ok(frame.label:GetText():find("proposal", 1, true), "l'etichetta dice che è una proposta")
+	frame.channelBtn:Click()
+	T.eq(Gateway:GetPending().channel, "EMOTE", "il chip cambia il canale")
+	T.eq(frame.channelBtn:GetText(), "/e", "e lo mostra")
+	-- every button fits the bar, Send is the rightmost
+	local function Right(b) return b._s.points[#b._s.points][2] end
+	T.eq(Right(frame.sendBtn), 0, "Invia è l'ultimo a destra")
+	local used = frame.channelBtn:GetWidth()
+	for _, b in ipairs({ frame.sendBtn, frame.copyBtn, frame.editBtn, frame.anotherBtn, frame.discardBtn }) do
+		if b:IsShown() then used = used + b:GetWidth() + 6 end
+	end
+	T.ok(used <= 440 - 12 - 8, "tutto sta nella barra: " .. used)
+	-- Send shows the speak key when one is bound and there is room
+	GetBindingKey = function(name) return name == "AZEROTHUNSPOKEN_SPEAK" and "F6" or nil end
+	Narrator:Refresh()
+	T.ok(frame.sendBtn:GetText():find("F6", 1, true), "Invia mostra il tasto: " .. frame.sendBtn:GetText())
+	GetBindingKey = nil
+	Narrator:Refresh()
+	T.eq(frame.sendBtn:GetText(), "Send", "senza tasto, solo la parola")
+	-- no time line while a proposal waits: its label counts down
+	T.ok(not frame.timeline:IsShown(), "nessuna linea del tempo per una proposta")
+	frame.discardBtn:Click()
+	T.eq(Gateway:GetPending(), nil, "Scarta scarta")
+	NS.db.locale = "it"
+end)
+
+T.run("#174, #182: la cronologia: chiusura, Esc, maniglia, posto proprio, carattere del narratore", function()
+	Reset()
+	local h = Narrator.historyFrame
+	T.ok(h.close ~= nil and h.close:GetText() == "x", "ha una casella di chiusura")
+	local listed = false
+	for _, name in ipairs(UISpecialFrames) do if name == "AzerothUnspokenNarratorHistory" then listed = true end end
+	T.ok(listed, "Esc la chiude (UISpecialFrames)")
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	Narrator:ToggleHistory()
+	T.ok(h:IsShown(), "aperta")
+	h.close:Click()
+	T.ok(not h:IsShown(), "la x la chiude")
+	-- without its own place it sits above the box and hides with it
+	NS.db.ui.narrator.historyPos = nil
+	Narrator:ToggleHistory()
+	T.eq(h._s.points[1][2], frame, "ancorata sopra il riquadro")
+	frame:Hide()
+	T.ok(not h:IsShown(), "si nasconde con il riquadro")
+	-- dragged by its handle, it keeps its own place and stays when the box hides
+	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
+	Narrator:ToggleHistory()
+	NS.db.ui.narrator.locked = true
+	h.handle.scripts.OnDragStart(h.handle)
+	T.ok(not h._s.moving, "bloccata: non si sposta")
+	NS.db.ui.narrator.locked = false
+	h.handle.scripts.OnDragStart(h.handle)
+	T.ok(h._s.moving, "la maniglia la sposta")
+	h:ClearAllPoints()
+	h:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 40, -60)
+	h.handle.scripts.OnDragStop(h.handle)
+	local pos = NS.db.ui.narrator.historyPos
+	T.ok(type(pos) == "table" and pos[1] == "TOPLEFT" and pos[3] == 40, "posizione propria salvata")
+	frame:Hide()
+	T.ok(h:IsShown(), "con un posto suo resta quando il riquadro si nasconde")
+	h:Hide()
+	Narrator:ToggleHistory()
+	T.eq(h._s.points[1][2], UIParent, "e torna al suo posto")
+	Narrator:ResetPosition()
+	T.eq(NS.db.ui.narrator.historyPos, nil, "il ripristino lo dimentica")
+	T.eq(h._s.points[1][2], frame, "di nuovo sopra il riquadro")
+	h:Hide()
+	-- the font follows the narrator's size, and the height follows the lines
+	NS.db.ui.narrator.fontSize = 24
+	Narrator:ApplySettings()
+	local _, size = h.messages:GetFont()
+	T.eq(size, 24, "il carattere segue il narratore")
+	local tall = h:GetHeight()
+	NS.db.ui.narrator.fontSize = 14
+	Narrator:ApplySettings()
+	T.ok(h:GetHeight() < tall, "più bassa con un testo più piccolo")
+	T.eq(#NS.Config:Validate(NS.db), 0, "impostazioni valide")
 end)

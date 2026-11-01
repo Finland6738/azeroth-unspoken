@@ -42,6 +42,8 @@ Config.CHAT_LIMITS = {
 ---@field floodSeconds number pausa minima tra due invii
 ---@field maxPerMinute integer invii al minuto, qualunque canale
 ---@field autoMaxPerMinute integer invii automatici al minuto
+---@field respectOOC boolean #191: Total RP 3 says "out of character": nothing is proposed for chat (on by default)
+---@field emoteMarkup boolean #191: an emote sent outside /e is wrapped in *...* (off by default)
 
 ---@class AUNarratorSettings
 ---@field duration number secondi di lettura di base
@@ -52,6 +54,7 @@ Config.CHAT_LIMITS = {
 ---@field historySize integer
 ---@field locked boolean il riquadro non si sposta
 ---@field pos? table posizione salvata { punto, punto relativo, x, y }
+---@field historyPos? table the history's own saved place once dragged (#174); nil: above the box, hiding with it
 
 ---@class AUDialogueSettings
 ---@field fontSize integer
@@ -133,6 +136,8 @@ Config.defaults = {
 		floodSeconds = 4,        -- pausa minima tra due invii
 		maxPerMinute = 6,        -- invii al minuto, qualunque canale
 		autoMaxPerMinute = 2,    -- invii automatici al minuto
+		respectOOC = true,       -- #191: Total RP 3 says "out of character": the narrator stays private
+		emoteMarkup = false,     -- #191: an emote sent on /say or a group channel is written *like this*
 	},
 	privacy = {
 		socialOptIn = false,

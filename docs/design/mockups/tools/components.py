@@ -10,66 +10,134 @@ from mockkit import VOICE, VOICE_COLOR, btn, edit, fs, frame, slider, style, wow
 CHANNEL = {"SAY": "/s", "EMOTE": "/e", "YELL": "/y", "PARTY": "/p", "RAID": "/raid", "GUILD": "/g", "INSTANCE_CHAT": "/i"}
 
 NARRATOR_TEXT = {
-    "en": {"proposal_for": "proposal for %s", "sent_to": "sent to %s", "send": "Send", "edit": "Edit",
-           "another": "Another", "discard": "Discard", "copy": "To chat", "left": "%d s", "held": "+%d in history"},
-    "it": {"proposal_for": "proposta per %s", "sent_to": "inviato in %s", "send": "Invia", "edit": "Modifica",
-           "another": "Un'altra", "discard": "Scarta", "copy": "Nella chat", "left": "%d s", "held": "+%d in cronologia"},
+    "en": {"proposal": "proposal", "sent_to": "sent to %s", "send": "Send", "edit": "Edit",
+           "another": "Another", "discard": "Discard", "copy": "To chat", "left": "%d s", "held": "+%d in history",
+           "history": "Recent history"},
+    "it": {"proposal": "proposta", "sent_to": "inviato in %s", "send": "Invia", "edit": "Modifica",
+           "another": "Un'altra", "discard": "Scarta", "copy": "Nella chat", "left": "%d s", "held": "+%d in cronologia",
+           "history": "Cronologia recente"},
 }
+# UI/NarratorFrame.lua VOICE_TINT and MUTED (#186): the light tint of each voice's text, the rest of the header label
+VOICE_TINT = {"narrator": "ece6ff", "inner": "ddf3ff", "character": "fff1cc", "npc": "e3f7d6"}
+MUTED = "c8c2d0"
+EDGE = "rgba(66,54,82,0.9)"
+ICON_REST = "#b8adc7"
+
+
+def _icon(kind, right, top, hover=False):
+    """A ghost icon button, 24 x 24 (#183, #186): pause (two bars), resume (a triangle), history (three lines), close."""
+    c = "#fff" if hover else ICON_REST
+    bg = "background:rgba(255,255,255,0.12);" if hover else ""
+    if kind == "II":
+        inner = (f'<i style="position:absolute;left:7.5px;top:6.5px;width:3px;height:11px;background:{c}"></i>'
+                 f'<i style="position:absolute;left:13.5px;top:6.5px;width:3px;height:11px;background:{c}"></i>')
+    elif kind == "H":
+        inner = "".join(f'<i style="position:absolute;left:6px;top:{7 + k * 4}px;width:12px;height:2px;background:{c}"></i>'
+                        for k in range(3))
+    elif kind == ">":
+        inner = (f'<i style="position:absolute;left:7px;top:6px;width:0;height:0;border-top:6px solid transparent;'
+                 f'border-bottom:6px solid transparent;border-left:11px solid {c}"></i>')
+    else:
+        inner = (f'<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;'
+                 f'font-size:15px;color:{c};text-shadow:1px 1px 0 #000;padding-bottom:2px">x</span>')
+    return f'<div class="abs" style="right:{right}px;top:{top}px;width:24px;height:24px;{bg}">{inner}</div>'
+
+
+def _flat(text, kind, hover=False):
+    """W.FlatButton (UI/Widgets.lua): primary = gold fill, ghost = gold outline, text = no box."""
+    if kind == "primary":
+        fill = "rgb(148,112,20)" if hover else "rgb(115,87,15)"
+        look = f"background:{fill};border:1px solid #c9a326;color:#fff2c4;padding:0 10px"
+    elif kind == "ghost":
+        look = (f"background:{'rgb(51,41,15)' if hover else 'transparent'};"
+                f"border:1px solid rgba(201,163,38,{1 if hover else 0.55});color:#e6d9b8;padding:0 10px")
+    else:
+        look = f"border:1px solid transparent;color:{'#ffd100' if hover else '#b8a899'};padding:0 4px"
+    return (f'<div style="height:24px;box-sizing:border-box;display:flex;align-items:center;font-size:12px;'
+            f'white-space:pre;text-shadow:1px 1px 0 #000;{look}">{wow(text)}</div>')
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Narrator (UI/NarratorFrame.lua): 440 wide, BOTTOM of UIParent + 240, height = 24 + text + 10 (+30 editor, +28 bar).
-# The opacity setting is the background's only, at least 0.55 (#173); the frame alpha is only the fade-out. A waiting
-# proposal shows its countdown (`left`, None = until dismissed) and the lines held back while it waits (#176, #177).
+# Narrator (UI/NarratorFrame.lua, #186): 440 wide, BOTTOM of UIParent + 240. A 3-unit accent bar in the voice colour,
+# voice-tinted text (white when the background is under 0.6), the inner voice in another typeface; the header is
+# max(28, label + 12) tall with three ghost icon buttons (24 x 24, 6 apart); height = header + 2 + text + 12 (+30
+# editor, +34 bar). The opacity setting is the background's only, at least 0.55 (#173); a thin time line runs out
+# instead of a fade (`remaining`, None = not drawn). A waiting proposal shows its countdown (`left_s`, None = until
+# dismissed) and the lines held back while it waits (#176, #177); its channel is on the chip of the bar.
 # ---------------------------------------------------------------------------------------------------------------
 def narrator(left, bottom, speaker, text, lang="en", proposal=None, sent=None, editor=None, editor_sel=False,
-             paused=False, alpha=0.8, font=14, fade=1.0, history=None, hover_btn=None, history_alpha=0.8,
-             left_s=25, held=0):
+             paused=False, alpha=0.8, font=14, remaining=0.7, history=None, hover_btn=None, history_alpha=0.8,
+             left_s=25, held=0, key=None):
     t = NARRATOR_TEXT[lang]
-    label = VOICE[lang][speaker]
+    accent = VOICE_COLOR[speaker]
+    tint = VOICE_TINT[speaker] if max(0.55, alpha) >= 0.6 else "ffffff"
+    meta = []
     if proposal:
-        label += " · " + t["proposal_for"] % CHANNEL.get(proposal, proposal)
+        meta.append(t["proposal"])
         if left_s is not None and editor is None:
-            label += " · " + t["left"] % left_s
+            meta.append(t["left"] % left_s)
     elif sent:
-        label += " · " + t["sent_to"] % CHANNEL.get(sent, sent)
+        meta.append(t["sent_to"] % CHANNEL.get(sent, sent))
     if held:
-        label += " · " + t["held"] % held
-    pad = 10 + (30 if editor is not None else 0) + (28 if proposal else 0)
-    smalls = (btn("x", 22, 18, right=2, top=1, font=11) + btn("H", 22, 18, right=26, top=1, font=11)
-              + btn(">" if paused else "II", 22, 18, right=50, top=1, font=11))
-    header = (f'<div class="abs" style="left:0;right:0;top:0;height:20px">'
-              + fs(f"|cff{VOICE_COLOR[speaker]}{label}|r", "gfns", mode="trunc", left=8, right=76, top=4,
-                   extra=f";font-size:{max(12, font - 2)}px")
-              + smalls + "</div>")
-    body = (f'<div style="position:relative;padding:24px 8px {pad}px 8px;font-size:{font}px;line-height:1.25;'
-            f'color:#fff;text-shadow:1px 1px 0 #000;white-space:pre-wrap">{wow(text)}</div>')
-    extra = ""
+        meta.append(t["held"] % held)
+    label = f"|cff{accent}{VOICE[lang][speaker]}|r" + (f"|cff{MUTED} · {' · '.join(meta)}|r" if meta else "")
+    label_size = max(12, font - 2)
+    head = max(28, label_size + 12)
+    pad = 12 + (30 if editor is not None else 0) + (34 if proposal else 0)
+    icon_top = (head - 24) // 2
+    header = (f'<div class="abs" style="left:0;right:0;top:0;height:{head}px">'
+              + fs(label, "gfns", mode="trunc", left=12, right=94, top=round((head - label_size * 1.25) / 2),
+                   extra=f";font-size:{label_size}px")
+              + _icon(">" if paused else "II", 64, icon_top, hover_btn == "pause")
+              + _icon("H", 34, icon_top, hover_btn == "history")
+              + _icon("x", 4, icon_top, hover_btn == "close") + "</div>")
+    face = "font-family:var(--chat-font);" if speaker == "inner" else ""
+    size = font + 1 if speaker == "inner" else font
+    body = (f'<div style="position:relative;padding:{head + 2}px 12px {pad}px 12px;font-size:{size}px;line-height:1.25;'
+            f'{face}color:#{tint};text-shadow:1px 1px 0 #000;white-space:pre-wrap">{wow(text)}</div>')
+    extra = f'<div class="abs" style="left:0;top:0;bottom:0;width:3px;background:#{accent}"></div>'
     if editor is not None:
-        extra += edit(editor, 424, 22, focus=True, selected=editor_sel, caret=not editor_sel, left=12, bottom=36)
+        extra += edit(editor, 411, 22, focus=True, selected=editor_sel, caret=not editor_sel, left=17, bottom=40)
     if proposal:
-        x, bar = 0, []
-        for key, w in (("send", 60), ("edit", 72), ("another", 72), ("chan", 50), ("discard", 64), ("copy", 84)):
-            label_b = CHANNEL.get(proposal, proposal) if key == "chan" else t[key]
-            bar.append(btn(label_b, w, 22, state="hover" if hover_btn == key else "", left=x, top=1))
-            x += w + 4
-        extra += f'<div class="abs" style="left:8px;right:8px;bottom:6px;height:24px">{"".join(bar)}</div>'
-    nar = (f'<div class="f" style="position:relative;width:440px;opacity:{fade:.3f}">'
+        chan = CHANNEL.get(proposal, proposal)
+        edge = f"#{accent}" if hover_btn == "chan" else f"#{accent}99"
+        chip = (f'<div style="height:24px;box-sizing:border-box;padding:0 9px;display:flex;align-items:center;gap:8px;'
+                f'font-size:12px;color:#{accent};text-shadow:1px 1px 0 #000;border:1px solid {edge}">{wow(chan)}'
+                f'<i style="width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;'
+                f'border-top:4px solid #{accent}"></i></div>')
+        send = t["send"] + (f"  |cffd8c79a{key}|r" if key else "")
+        right = "".join(_flat(lbl, kind, hover_btn == k) for k, lbl, kind in (
+            ("discard", t["discard"], "text"), ("another", t["another"], "ghost"), ("edit", t["edit"], "ghost"),
+            ("copy", t["copy"], "ghost"), ("send", send, "primary")))
+        extra += (f'<div class="abs" style="left:3px;right:0;bottom:35px;height:1px;background:rgba(66,54,82,0.7)"></div>'
+                  f'<div class="abs" style="left:12px;right:8px;bottom:6px;height:24px;display:flex;gap:6px">'
+                  f'{chip}<div style="flex:1"></div>{right}</div>')
+    elif remaining:
+        extra += (f'<div class="abs" style="left:3px;bottom:0;height:2px;width:{437 * remaining:.0f}px;'
+                  f'background:#{accent};opacity:0.55"></div>')
+    nar = (f'<div class="f" style="position:relative;width:440px;box-sizing:border-box;border:1px solid {EDGE}">'
            f'<div class="bg" style="background:rgba(0,0,0,{max(0.55, alpha):.3f})"></div>{header}{body}{extra}</div>')
     hist = ""
     if history is not None:
-        lines = "".join(f'<div style="white-space:pre-wrap">{wow(l)}</div>' for l in history)
-        hist = (f'<div class="f" style="position:relative;width:440px;height:190px;margin-bottom:4px">'
+        h = 28 + 8 * -(-font * 5 // 4) + 12
+        lines = "".join(f'<div style="white-space:pre-wrap">{wow(line)}</div>' for line in history)
+        dots = "".join(f'<i style="position:absolute;left:{8 + (k % 2) * 4}px;top:{9 + (k // 2) * 4}px;width:2px;'
+                       f'height:2px;background:{ICON_REST}"></i>' for k in range(6))
+        hist = (f'<div class="f" style="position:relative;width:440px;height:{h}px;margin-bottom:4px;box-sizing:border-box;'
+                f'border:1px solid {EDGE}">'
                 f'<div class="bg" style="background:rgba(0,0,0,{max(0.8, history_alpha):.3f})"></div>'
-                f'<div class="abs chatfont" style="left:8px;right:8px;top:8px;bottom:8px;overflow:hidden;display:flex;'
-                f'flex-direction:column;justify-content:flex-end;line-height:1.25;text-shadow:1px 1px 0 #000">{lines}</div></div>')
+                f'<div class="abs" style="left:0;top:0;right:28px;height:28px">{dots}'
+                + fs(t["history"], "gfns", left=22, top=8) + '</div>' + _icon("x", 2, 2)
+                + f'<div class="abs" style="left:12px;right:8px;top:30px;bottom:8px;overflow:hidden;display:flex;'
+                f'flex-direction:column;justify-content:flex-end;font-size:{font}px;line-height:1.25;'
+                f'text-shadow:1px 1px 0 #000">{lines}</div></div>')
     return (f'<div class="abs" style="left:{left}px;bottom:{bottom}px;width:440px;display:flex;flex-direction:column">'
             f'{hist}{nar}</div>')
 
 
 def history_line(time, speaker, text, lang="en", sent=None):
-    tag = f" |cff808080({NARRATOR_TEXT[lang]['sent_to'] % CHANNEL.get(sent, sent)})|r" if sent else ""
-    return f"|cff808080{time}|r |cff{VOICE_COLOR[speaker]}{VOICE[lang][speaker]}|r {text}{tag}"
+    tag = f" |cff{MUTED}({NARRATOR_TEXT[lang]['sent_to'] % CHANNEL.get(sent, sent)})|r" if sent else ""
+    return f"|cff{MUTED}{time}|r |cff{VOICE_COLOR[speaker]}{VOICE[lang][speaker]}|r |cff{VOICE_TINT[speaker]}{text}|r{tag}"
 
 
 # ---------------------------------------------------------------------------------------------------------------

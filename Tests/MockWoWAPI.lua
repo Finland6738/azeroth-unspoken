@@ -292,6 +292,8 @@ local Any
 local anyMeta = { __index = function() return function() return Any() end end }
 Any = function() return setmetatable({}, anyMeta) end
 GameTooltip = Any()
+-- FrameXML: the frames Esc hides (#174)
+UISpecialFrames = {}
 
 -- Widget con stato minimo: mostra/nasconde, testo, trasparenza, dimensioni, script, figli.
 -- I metodi non definiti qui restituiscono un oggetto "qualunque" e non fanno nulla.
@@ -633,6 +635,68 @@ function SERIALIZE(v)
 		table.insert(out, "[" .. SERIALIZE(k) .. "]=" .. SERIALIZE(v[k]))
 	end
 	return "{" .. table.concat(out, ",") .. "}"
+end
+
+-- (#191) A fake Total RP 3 with its public player model (Total RP 3 3.5.3, Core/Player.lua and Core/Enums.lua):
+-- AddOn_TotalRP3.Player.GetCurrentUser and CreateFromUnit (also under `static`, as middleclass serves them), player
+-- objects with the methods the adapter calls. It sets AddOn_TotalRP3 and clears the internal TRP3_API.
+--   spec.status    the player's own roleplay status: 1 in character, 2 out of character, nil none
+--   spec.first     the first name of the player's own profile
+--   spec.profiles  [characterID] = characteristics ({ RA, CL, PS, ... }) of the profiles Total RP 3 knows
+--   spec.unitID    function(unit) -> characterID (default: name-realm of the mock unit)
+--   spec.broken    CreateFromUnit raises, like an API that changed
+--   spec.noStatus  the player object has neither GetRoleplayStatus nor IsInCharacter
+-- Returns the fake's counters: reads (reads of profile data), created (player objects made).
+function FAKE_TRP3(spec)
+	spec = spec or {}
+	local state = { reads = 0, created = 0 }
+	local selfID = P.name .. "-" .. (P.realm or "TestRealm")
+	local profiles = spec.profiles or {}
+	local Player = {}
+	Player.__index = Player
+	local function Data(obj)
+		if obj.own then return { FN = spec.first } end
+		state.reads = state.reads + 1
+		return profiles[obj.id]
+	end
+	function Player:GetCharacterID() return self.id end
+	function Player:IsCurrentUser() return self.id == selfID end
+	function Player:GetProfile() if self.own or profiles[self.id] then return {} end end
+	function Player:GetCharacteristics() return Data(self) end
+	function Player:GetCustomRace() local c = Data(self); return c and c.RA end
+	function Player:GetCustomClass() local c = Data(self); return c and c.CL end
+	function Player:GetFirstName() return spec.first end
+	function Player:GetInfo(path)
+		local c = Data(self)
+		if path == "characteristics/PS" then return c and c.PS end
+		if path == "character/RP" then return self.own and spec.status or nil end
+		return "PRIVATE-DATA-" .. path
+	end
+	if not spec.noStatus then
+		function Player:GetRoleplayStatus() return self:GetInfo("character/RP") end
+		function Player:IsInCharacter() return self:GetInfo("character/RP") ~= 2 end
+	end
+	local user = setmetatable({ id = selfID, own = true }, Player)
+	local function ID(unit)
+		if spec.unitID then return spec.unitID(unit) end
+		local name, realm = UnitFullName(unit)
+		assert(type(name) == "string", "attempted to construct a Player object from an invalid unit")
+		return name .. "-" .. (realm or GetNormalizedRealmName())
+	end
+	local static = {
+		GetCurrentUser = function() return user end,
+		CreateFromUnit = function(unit)
+			if spec.broken then error("API changed") end
+			local id = ID(unit)
+			if id == selfID then return user end
+			state.created = state.created + 1
+			return setmetatable({ id = id }, Player)
+		end,
+	}
+	AddOn_TotalRP3 = setmetatable({ Player = setmetatable({ static = static }, { __index = static }),
+		Enums = { ROLEPLAY_STATUS = { IN_CHARACTER = 1, OUT_OF_CHARACTER = 2 } } }, {})
+	TRP3_API = nil
+	return state
 end
 
 -- piccolo framework per i test in Lua (Tests/Test*.lua)

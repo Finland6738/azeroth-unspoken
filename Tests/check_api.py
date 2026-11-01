@@ -91,6 +91,7 @@ OBJECTS = {
     "Enum.*": "costanti di FrameXML (Enum.AddOnRestrictionType, Enum.UIMapType): lette solo dopo aver controllato che esistano",
     "LE_PARTY_CATEGORY_INSTANCE": "costante di FrameXML: ripiego su un valore fisso se manca",
     "STANDARD_TEXT_FONT": "costante di FrameXML con il carattere standard",
+    "UISpecialFrames": "FrameXML table of the frames Esc hides: the narrator history adds its name only when the table exists (#174)",
     "WOW_PROJECT_*": "costanti di FrameXML (WOW_PROJECT_ID, WOW_PROJECT_CAMELOT): lette da Compat per riconoscere il client",
     "TRP3_API": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
     "AddOn_TotalRP3*": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
@@ -107,7 +108,7 @@ METHODS = {
     "ScrollUp": "ScrollingMessageFrame (mixin di FrameXML): il frame del narratore; un errore lo intercetta la diagnostica",
     "ScrollDown": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
     "ScrollToBottom": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
-    "GetInfo": "Total RP 3 (optional): method of its player object, called inside pcall only when TRP3_API exists",
+    "GetInfo": "Total RP 3 (optional): method of its public player object (AddOn_TotalRP3.Player), called inside pcall only when it exists",
     "GetFirstName": "Total RP 3 (optional): as GetInfo",
 }
 

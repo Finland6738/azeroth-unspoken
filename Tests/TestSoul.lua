@@ -1069,3 +1069,113 @@ T.run("validatore: i tag di affinità", function()
 	T.ok(codes["s5.bad.trait"] and codes["s5.bad.value"] and codes["s5.bad.req"], "tratto, valore e req sbagliati segnalati")
 	T.ok(not codes["s5.good"], "un tag valido o descrittivo passa")
 end)
+
+T.run("#191: the player's own roleplay status, read defensively through the public API", function()
+	Reset()
+	T.ok(not TotalRP3:IsOutOfCharacter(), "without Total RP 3: never OOC")
+	local spec = { status = 2 }
+	FAKE_TRP3(spec)
+	Compat:Probe()
+	T.eq(Compat:State("integration:totalRP3:status"), Compat.AVAILABLE, "the status capability")
+	T.ok(TotalRP3:IsOutOfCharacter(), "status 2: out of character")
+	NS.db.modules.totalRP3 = false
+	T.ok(TotalRP3:IsOutOfCharacter(), "the name switch does not hide the status: it only ever keeps lines private")
+	NS.db.modules.totalRP3 = true
+	spec.status = 1
+	T.ok(not TotalRP3:IsOutOfCharacter(), "status 1: in character")
+	spec.status = nil
+	T.ok(not TotalRP3:IsOutOfCharacter(), "no status: not OOC")
+	spec.status = "2"
+	T.ok(not TotalRP3:IsOutOfCharacter(), "a status of another type: not OOC")
+	-- the enum moved: the documented value still counts
+	spec.status = 2
+	AddOn_TotalRP3.Enums = nil
+	T.ok(TotalRP3:IsOutOfCharacter(), "no Enums: OUT_OF_CHARACTER = 2")
+	-- only IsInCharacter left
+	local user = AddOn_TotalRP3.Player.GetCurrentUser()
+	local mt = getmetatable(user)
+	local saved = mt.GetRoleplayStatus
+	mt.GetRoleplayStatus = nil
+	T.ok(TotalRP3:IsOutOfCharacter(), "IsInCharacter() == false: OOC")
+	mt.GetRoleplayStatus = function() error("API changed") end
+	T.ok(TotalRP3:IsOutOfCharacter(), "a status method that raises falls back to IsInCharacter")
+	mt.IsInCharacter = function() error("API changed") end
+	T.ok(not TotalRP3:IsOutOfCharacter(), "both raise: not OOC")
+	mt.GetRoleplayStatus = saved
+	-- neither method
+	FAKE_TRP3({ status = 2, noStatus = true })
+	Compat:Probe()
+	T.eq(Compat:State("integration:totalRP3:status"), Compat.MISSING, "no status methods: MISSING")
+	T.ok(not TotalRP3:IsOutOfCharacter(), "and never OOC")
+	-- a Player class whose lookups raise
+	AddOn_TotalRP3 = { Player = setmetatable({}, { __index = function() error("API changed") end }) }
+	Compat:Probe()
+	T.ok(not TotalRP3:IsOutOfCharacter(), "a raising class: not OOC")
+	T.eq(TotalRP3:GetFirstName(), nil, "and no name")
+	T.eq(#NS.Diagnostics.errors, 0, "no error caught")
+	AddOn_TotalRP3 = nil
+end)
+
+T.run("#191: other players' profiles only through the public API, with the same consent", function()
+	Reset()
+	local P = _G.P   -- this file names a local function P
+	local savedTarget = P.target
+	P.target = { name = "Aldric", realm = "TestRealm", player = true, race = "Orc", class = "HUNTER" }
+	local fake = FAKE_TRP3({ profiles = {
+		["Aldric-TestRealm"] = { RA = "|cffff8000Mezzelfo|r", CL = "Cacciatrice", PS = { { ID = 6, V2 = 2 }, { ID = 7, V2 = 1 } },
+			HI = "storia privata" },
+	} })
+	-- the internal API raises if anything touches it
+	TRP3_API = setmetatable({}, { __index = function() error("internal TRP3_API touched") end })
+	NS.db.interlocutor.trp3Others = false
+	Compat:Probe()
+	T.eq(Compat:State("integration:totalRP3:others"), Compat.AVAILABLE, "the others capability")
+	T.ok(Compat.caps["integration:totalRP3:others"].detail:find("no consent", 1, true), "it says the consent is missing")
+	T.eq(TotalRP3:GetOtherProfile("target"), nil, "no consent: nothing")
+	T.eq(fake.reads, 0, "and nothing read")
+	T.ok(TotalRP3:IsKnownPlayer("target"), "presence in the register: through the public API")
+	T.eq(fake.reads, 0, "presence reads no profile data")
+	NS.db.interlocutor.trp3Others = true
+	local o = TotalRP3:GetOtherProfile("target")
+	T.ok(o ~= nil, "consent: the public profile")
+	T.eq(o.race, "Mezzelfo", "race without colour codes")
+	T.eq(o.class, "Cacciatrice", "class")
+	T.eq(o.traits.temperament, "merciful", "temperament")
+	T.eq(o.traits.faith, nil, "only temperament and morality of another player")
+	for k in pairs(o) do T.ok(k == "race" or k == "class" or k == "traits", "only race, class and traits: " .. k) end
+	-- the module off stops it, as before
+	NS.db.modules.totalRP3 = false
+	T.eq(TotalRP3:GetOtherProfile("target"), nil, "module off: nothing")
+	T.ok(not TotalRP3:IsKnownPlayer("target"), "module off: not known")
+	NS.db.modules.totalRP3 = true
+	-- unknown, own character, secret identity
+	P.target = { name = "Nessuno", realm = "TestRealm", player = true }
+	T.ok(not TotalRP3:IsKnownPlayer("target"), "no profile: not known")
+	T.eq(TotalRP3:GetOtherProfile("target"), nil, "no profile: nothing")
+	P.target = { name = P.name, realm = "TestRealm", player = true }
+	T.ok(not TotalRP3:IsKnownPlayer("target"), "the player's own character is not another player")
+	T.eq(TotalRP3:GetOtherProfile("target"), nil, "and its profile is not read as another's")
+	P.target = { name = "Aldric", realm = "TestRealm", player = true }
+	SECRET_UNITS.target = true
+	T.eq(TotalRP3:GetOtherProfile("target"), nil, "secret identity: nothing")
+	T.ok(not TotalRP3:IsKnownPlayer("target"), "secret identity: not known")
+	SECRET_UNITS.target = nil
+	-- an update that breaks or removes the public API: false and nil, never an error
+	FAKE_TRP3({ broken = true, profiles = { ["Aldric-TestRealm"] = { RA = "x" } } })
+	T.ok(not TotalRP3:IsKnownPlayer("target"), "CreateFromUnit raises: not known")
+	T.eq(TotalRP3:GetOtherProfile("target"), nil, "CreateFromUnit raises: nothing")
+	AddOn_TotalRP3 = { Player = { GetCurrentUser = function() return {} end } }
+	Compat:Probe()
+	T.eq(Compat:State("integration:totalRP3:others"), Compat.MISSING, "no CreateFromUnit: MISSING")
+	T.ok(not TotalRP3:IsKnownPlayer("target"), "no CreateFromUnit: not known")
+	-- a version without GetCustomRace/GetCustomClass reads the same fields of GetCharacteristics
+	FAKE_TRP3({ profiles = { ["Aldric-TestRealm"] = { RA = "Nano", CL = "Ladro" } } })
+	local mt = getmetatable(AddOn_TotalRP3.Player.CreateFromUnit("target"))
+	mt.GetCustomRace, mt.GetCustomClass = nil, nil
+	o = TotalRP3:GetOtherProfile("target")
+	T.ok(o and o.race == "Nano" and o.class == "Ladro", "fallback on the characteristics")
+	T.eq(#NS.Diagnostics.errors, 0, "no error caught")
+	TRP3_API, AddOn_TotalRP3 = nil, nil
+	NS.db.interlocutor.trp3Others = false
+	P.target = savedTarget
+end)
