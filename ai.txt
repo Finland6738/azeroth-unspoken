@@ -1,0 +1,16 @@
+# Azeroth Unspoken: reservation of text and data mining rights.
+# Applies to the phrases and narrative data (see LICENSE-CONTENT.md). This is a reservation of rights under
+# EU Directive 2019/790 art. 4(3) and Italian copyright law art. 70-quater, not a technical block.
+# The code is GPL-3.0-or-later and is not covered by this file.
+User-Agent: *
+Disallow: /AzerothUnspoken/Data/
+Disallow: /AzerothUnspoken_enUS/
+Disallow: /AzerothUnspoken_itIT/
+Disallow: /AzerothUnspoken_EasternKingdoms/
+Disallow: /AzerothUnspoken_EasternKingdoms_enUS/
+Disallow: /AzerothUnspoken_EasternKingdoms_itIT/
+Disallow: /AzerothUnspoken_Kalimdor/
+Disallow: /AzerothUnspoken_Kalimdor_enUS/
+Disallow: /AzerothUnspoken_Kalimdor_itIT/
+Disallow: /AzerothUnspoken_Versi/
+Disallow: /authoring/
