@@ -32,6 +32,8 @@ Click it to open the dialogue. If you ignore it, it goes away by itself after ab
 - Click one of the answers to reply.
 - Click **Close**, use the key again, or type `/au talk close` to end it.
 - Drag the window to move it. It tries not to cover the game's own windows.
+- **Esc** does not close it, on purpose: Esc also closes the game's own NPC windows (gossip, vendor, quests), and the dialogue must never take part in that. Use **Close**, the **x** in its header, the key or `/au talk close`.
+- Its **text size** and **opacity** are in the Narrator section of the [[settings panel|Settings]] (**NPC dialogue text size**, **NPC dialogue opacity**), and its size follows **Window scale** in General. The line always sits under the NPC's name, and the answers under the line, so nothing overlaps at large sizes.
 
 The dialogue closes by itself if combat starts, you die, you change zone, you turn to another NPC, or you do not answer for two minutes.
 

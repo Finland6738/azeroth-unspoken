@@ -1518,12 +1518,9 @@ T.run("#37: tratti e ruolo dell'interlocutore dal dettaglio, consenso TRP3 nelle
 	-- consenso a leggere il Total RP 3 degli altri: spento di base, nelle impostazioni e con il comando
 	T.eq(NS.db.interlocutor.trp3Others, false, "spento di base")
 	for _, w in ipairs(FindWidgets(function(w) return w.name == NS.name and w.scripts.OnShow end)) do w.scripts.OnShow() end
-	local function Row()
-		for _, b in ipairs(FindWidgets(function(w) return w.kind == "Button" and w.scripts.OnClick end)) do
-			if (b:GetText() or ""):find("Total RP 3 degli altri", 1, true) == 1 then return b end
-		end
-	end
-	local row = Row()
+	-- #187: the control next to its label, under Privacy
+	T.eq(NS.SettingsFrame:Row("opt_trp3_others").label:GetText(), "Total RP 3 degli altri", "the label of the row")
+	local row = NS.SettingsFrame:Row("opt_trp3_others").button
 	T.ok(row ~= nil, "la riga è nel pannello delle impostazioni")
 	T.ok(row:GetText():find(NS:L("off"), 1, true), "mostra lo stato: spento")
 	SENT = {}

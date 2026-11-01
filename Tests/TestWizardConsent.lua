@@ -174,12 +174,10 @@ T.run("#178: state in words, with the dependency, on every consent", function()
 	Reset()
 	-- the settings panel
 	for _, w in ipairs(FindWidgets(function(w) return w.name == NS.name and w.scripts.OnShow end)) do w.scripts.OnShow() end
-	local function Row(prefix)
-		for _, b in ipairs(FindWidgets(function(w) return w.kind == "Button" and w.scripts.OnClick end)) do
-			if (b:GetText() or ""):find(prefix, 1, true) == 1 then return b end
-		end
-	end
-	local auto = Row(NS:L("opt_auto"))
+	-- #187: a label next to its control; the control says the state
+	local function Row(key) return NS.SettingsFrame:Row(key).button end
+	T.eq(NS.SettingsFrame:Row("opt_auto").label:GetText(), NS:L("opt_auto"), "the label of the row")
+	local auto = Row("opt_auto")
 	T.ok(auto:GetText():find(NS:L("off"), 1, true), "automatic sending: off, in words")
 	auto:Click()
 	T.ok(auto:GetText():find(NS:L("consent_off_reading"), 1, true), "after the question: off, read first")
@@ -188,7 +186,7 @@ T.run("#178: state in words, with the dependency, on every consent", function()
 	ADVANCE(Consent.WINDOW)
 	T.ok(not auto:GetText():find(NS:L("consent_off_ready"), 1, true), "and goes back to 'off' when the question expires")
 	-- Total RP 3 of others needs the name module
-	local others = Row(NS:L("opt_trp3_others"))
+	local others = Row("opt_trp3_others")
 	NS.db.interlocutor.trp3Others, NS.db.modules.totalRP3 = true, false
 	NS.Config:Set("intensity", NS.db.intensity)
 	others.scripts.OnClick(others)   -- turns it off (one step) ...

@@ -7,7 +7,8 @@
 -- The pages are built once, the first time they are shown, and every text is set again on each render, so a change of
 -- language is followed everywhere. The defaults the guide states are read from Config.defaults, never written twice.
 -- It opens after PLAYER_ENTERING_WORLD, outside combat. A consent (automatic sending, reading others' Total RP 3)
--- is asked in a confirmation dialog, never by a second click (Core/Consent.lua).
+-- is asked in a confirmation dialog, never by a second click (Core/Consent.lua). The shell is W.Window (#187), like
+-- every other window; Esc does what Skip does (#174). The text of a consent is in the 12-unit font (#182).
 local ADDON, NS = ...
 local W = NS.Widgets
 local Wizard = NS:RegisterModule("wizard")
@@ -16,7 +17,7 @@ NS.Wizard = Wizard
 local frame, pageFrames, step = nil, {}, 1
 local MODULE_ORDER = { "personal", "world", "npc", "memory", "relations", "storyArcs", "social", "audio" }
 local MODULE_LIVE = NS.Config.MODULE_LIVE   -- modules that already have an effect (one list with the panel, #77)
-local WIDTH, HEIGHT = 520, 440
+local WIDTH, HEIGHT = 520, 480
 local INNER = WIDTH - 40                    -- 20 units of margin on each side
 local MAX_DOTS = 8
 local OPEN_DELAY = 3                        -- seconds after PLAYER_ENTERING_WORLD
@@ -68,7 +69,7 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	local bar = box:CreateTexture(nil, "ARTWORK")
 	bar:SetSize(3, 46)
 	bar:SetPoint("TOPLEFT", 0, 0)
-	if bar.SetColorTexture then bar:SetColorTexture(0.72, 0.63, 1, 1) end
+	W.Tint(bar, W.BRAND)   -- the brand violet (#187); the voice keeps the colour of the narrator's voice
 	local voice = box:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	voice:SetPoint("TOPLEFT", 12, -6)
 	local sample = box:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
@@ -187,7 +188,7 @@ pages[5] = { title = "wiz_step_modules", build = function(p)
 		c:SetPoint("TOPLEFT", 20 + ((i - 1) % 2) * ((INNER + 8) / 2), -66 - math.floor((i - 1) / 2) * 50)
 		cards[module] = c
 	end
-	local consent = Text(p, -270, "GameFontHighlightSmall")
+	local consent = Text(p, -270, W.TEXT_FONT)
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_modules_help"))
@@ -212,11 +213,11 @@ end, build = function(p)
 	end)
 	name:SetPoint("TOPLEFT", 20, -70)
 	-- reading the profiles of OTHERS is a consent: off by default, on only through the confirmation dialog (#178)
-	local others = W.Card(p, INNER, 96, function()
+	local others = W.Card(p, INNER, 112, function()
 		local r = NS.Interlocutor:ChangeTRP3Consent()
 		if r == "wait" then NS:Print(NS:L("consent_wait")) end
 		Wizard:Render()
-	end)
+	end, W.TEXT_FONT)
 	others:SetPoint("TOPLEFT", 20, -142)
 	NS.Consent:OnChange(function() if Wizard:IsOpen() then Wizard:Render() end end)
 	return function()
@@ -238,10 +239,13 @@ end }
 -- 7: what may reach chat, and a test of the narrator
 pages[7] = { title = "wiz_step_chat", build = function(p)
 	local head = Head(p, "wiz_step_chat")
-	local intro = Text(p, -26, "GameFontHighlightSmall")
+	local intro = Text(p, -26, W.TEXT_FONT)
 	local cards = {}
-	for i, mode in ipairs(NS.Gateway.MODES) do
-		local c = W.Card(p, INNER, 54, function()
+	local y = -74                 -- under an introduction of up to three lines
+	for _, mode in ipairs(NS.Gateway.MODES) do
+		-- what reaches chat is read in the 12-unit font; automatic sending has the longest text (#182)
+		local h = mode == "AUTO_ONLY_IF_ALLOWED" and 74 or 50
+		local c = W.Card(p, INNER, h, function()
 			-- automatic sending is not chosen with one click: a dialog shows the whole warning first
 			if mode == "AUTO_ONLY_IF_ALLOWED" then
 				if NS.Gateway:SelectAuto() == "wait" then NS:Print(NS:L("consent_wait")) end
@@ -249,15 +253,16 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 				NS.Gateway:SetMode(mode)
 			end
 			Wizard:Render()
-		end)
-		c:SetPoint("TOPLEFT", 20, -58 - (i - 1) * 58)
+		end, W.TEXT_FONT)
+		c:SetPoint("TOPLEFT", 20, y)
 		cards[mode] = c
+		y = y - h - 4
 	end
 	NS.Consent:OnChange(function() if Wizard:IsOpen() then Wizard:Render() end end)
 	local test = W.FlatButton(p, "", 200, 26, function() NS.Narrator:ShowTest() end)
-	test:SetPoint("TOPLEFT", 20, -290)
-	local hint = Text(p, -295, "GameFontHighlightSmall", 240)
-	hint:SetPoint("TOPLEFT", 232, -295)
+	test:SetPoint("TOPLEFT", 20, y - 6)
+	local hint = Text(p, y - 11, "GameFontHighlightSmall", 240)
+	hint:SetPoint("TOPLEFT", 232, y - 11)
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_chat_help"))
@@ -371,34 +376,32 @@ function Wizard:Back()
 	if n then step = n; self:Render() end
 end
 
----Skip, the close box, Esc and Finish all end here: the choices made so far stay, the rest stays at its default.
-function Wizard:Finish()
+-- the end of the guide, once per opening: the choices made so far stay, the rest stays at its default
+local ending = false
+local function Ended()
 	NS.db.ui.wizardDone = true
-	if frame then frame:Hide() end
 	if NS.Narrator then NS.Narrator:ApplySettings() end
 	NS:Print(NS:L("wiz_done"))
 	if NS.Packs:NeedsReload() then NS.Packs:OfferReload() end
 end
 
+---Skip, the close box, Esc and Finish all end here.
+function Wizard:Finish()
+	ending = true
+	if frame then frame:Hide() end
+	ending = false
+	Ended()
+end
+
 local function Build()
-	frame = CreateFrame("Frame", "AzerothUnspokenWizard", UIParent)
-	frame:SetSize(WIDTH, HEIGHT)
-	frame:SetPoint("CENTER", 0, 40)
-	frame:SetMovable(true)
-	frame:EnableMouse(true)
-	frame:SetClampedToScreen(true)
-	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnDragStart", frame.StartMoving)
-	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
-	W.FlatWindow(frame, WIDTH, HEIGHT, 40)   -- the flat design of the UI review: surface, gold edge, title band
+	-- the shell (#187): hidden at once (#192), title band, close box, Esc (#174), scale (#182). The close box is Skip.
+	frame = W.Window(UIParent, WIDTH, HEIGHT, "wiz_title", { name = "AzerothUnspokenWizard", point = { "CENTER", 0, 40 },
+		onClose = function() Wizard:Finish() end, refresh = function() Wizard:Render() end })
 
 	-- title band: the name, "step n of N", the close box; the progress dots under it
-	frame.title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-	frame.title:SetPoint("TOPLEFT", 20, -14)
 	frame.count = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-	frame.count:SetPoint("TOPRIGHT", -52, -18)
-	frame.close = W.FlatButton(frame, "x", 24, 22, function() Wizard:Finish() end)
-	frame.close:SetPoint("TOPRIGHT", -14, -12)
+	frame.count:SetPoint("TOPRIGHT", -44, -15)
+	frame.close = frame.closeBox
 	W.Tooltip(frame.close, function() return NS:L("wiz_skip_tip") end)
 	frame.dots = {}
 	for i = 1, MAX_DOTS do
@@ -434,9 +437,14 @@ local function Build()
 		if self.SetPropagateKeyboardInput then self:SetPropagateKeyboardInput(not (enter or escape)) end
 		if enter then Wizard:Next() elseif escape then Wizard:Finish() end
 	end)
-	-- however it is closed, a closed guide counts as skipped: it does not come back at every login
-	frame:SetScript("OnHide", function() NS.db.ui.wizardDone = true end)
-	frame:Hide()
+	-- however it is closed, a closed guide counts as skipped: it does not come back at every login. Esc hides it through
+	-- UISpecialFrames (#174), and then ends it as Skip does. A guide hidden with the whole interface (Alt+Z, a
+	-- cinematic) is still shown: it does not end.
+	frame:SetScript("OnHide", function(self)
+		if self:IsShown() then return end
+		NS.db.ui.wizardDone = true
+		if not ending then Ended() end
+	end)
 	NS.Windows:Register(frame)   -- #181: DIALOG, raised on a click, the narrator steps aside for its test line
 end
 

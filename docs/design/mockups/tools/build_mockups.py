@@ -10,7 +10,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from mockkit import (PREFIX, VOICE_COLOR, btn, chat_lines, edit, fs, frame, page, placeholder, sel,  # noqa: E402
+from mockkit import (PREFIX, VOICE_COLOR, btn, chat_lines, edit, fs, frame, page, placeholder,  # noqa: E402
                      speak_button, tooltip, wow)
 from components import (dialogue, export_window, history_line, journal, narrator, popup, profile,  # noqa: E402
                         relations, settings, ui, wizard)
@@ -131,7 +131,7 @@ def build_speak_button():
 
 
 def build_wizard():
-    w, h = 680, 540
+    w, h = 680, 600
     names = ["Welcome and language", "Experience", "Intensity", "Style", "Modules", "Total RP 3", "Chat and test",
              "Keys, button and settings"]
     for step in range(1, 9):
@@ -146,8 +146,8 @@ def build_wizard():
             scene="neutral", seed=30 + step)
     # "Try the narrator" (#181): the narrator box steps aside, below the guide, and is above it; 1366 x 768
     W, H = 1366, 768
-    gl, gt = (W - 520) // 2, (H - 440) // 2 - 40
-    below = 118   # the guide's bottom edge is 204 up; the box (about 60 high) sits GAP (8) under it
+    gl, gt = (W - 520) // 2, (H - 480) // 2 - 40
+    below = 98    # the guide's bottom edge is 184 up; the box (about 78 high) sits GAP (8) under it
     body = (wizard(7, left=gl, top=gt)
             + narrator((W - 440) // 2, below, speaker="narrator", text=f"{PLAYER} {L_DUSK_E}")
             + f'<div class="note" style="left:{gl + 520 + 10}px;top:{gt + 330}px">The narrator box steps aside, '
@@ -157,11 +157,16 @@ def build_wizard():
 
 
 def build_settings():
-    w, h = 720, 730
-    add("settings", "Settings panel", w, h, settings(30, 30), "Settings", "Settings", scene="neutral", seed=40,
-        caption_extra="Shown without the client's options window around it.")
-    add("settings-reload", "Settings panel - language changed, reload needed", w, h, settings(30, 30, reload_needed=True),
-        "Settings", "Settings / Languages", scene="neutral", seed=41)
+    # the five sections scroll inside the client's settings canvas: drawn here unrolled, the whole content at once
+    w = 720
+    add("settings", "Settings panel - the five sections (unrolled)", w, 1390, settings(30, 30), "Settings", "Settings",
+        scene="neutral", seed=40, scale=1,
+        caption_extra="The sections scroll inside the client's options window: shown unrolled, on a plain stand-in.")
+    add("settings-reload", "Settings panel - language changed, reload needed (unrolled)", w, 1500,
+        settings(30, 30, reload_needed=True), "Settings", "Settings / Languages", scene="neutral", seed=41, scale=1)
+    # what fits in the canvas at once: the top of the panel, with the scroll bar
+    add("settings-top", "Settings panel - the top of the scrolling canvas", w, 720, settings(30, 30, view=640),
+        "Settings", "Settings", scene="neutral", seed=42)
 
 
 SAMPLE_MEMORIES = [
@@ -324,7 +329,8 @@ def build_consent():
     add("consent-auto", "Consent - automatic sending", W, H, body, "Consent", "Chat-Gateway / Privacy-and-Data",
         seed=82, caption_extra="The Turn on button is disabled for the first two seconds.")
     # reading other players' Total RP 3: the state in words, with the dependency, and the dialog
-    body = (settings(30, 30, others_state=ui("en", "consent_on_needs", ui("en", "consent_needs_name_short")))
+    body = (settings(30, 30, others_state=ui("en", "consent_on_needs", ui("en", "consent_needs_name_short")),
+                     rpname=False, view=640, scroll=740)
             + popup(120, 450, 420, 200, ui("en", "consent_trp3_text"), ui("en", "consent_turn_on"), ui("en", "consent_cancel"),
                     accept_disabled=False))
     add("consent-trp3-others", "Consent - read other players' Total RP 3", 720, 700, body, "Consent",
@@ -357,6 +363,9 @@ def build_profile():
     add("profile", "Character soul - personality", 760, 790, profile(40, 40, rows, {"blood"}), "Profile",
         "Character-Soul-and-Total-RP-3", seed=90)
     neutral = [(r[0], None if r[1] is None else 50, "not set", "neutral", False) for r in rows]
+    # "Neutral profile" clears every choice: the first click arms it (filled, in words), the second clears (#190)
+    add("profile-reset-armed", "Character soul - 'Neutral profile' waits for a second click", 760, 790,
+        profile(40, 40, rows, {"blood"}, reset_armed=True), "Profile", "Character-Soul-and-Total-RP-3", seed=92)
     add("profile-neutral", "Character soul - neutral profile", 760, 790,
         profile(40, 40, neutral, set(), archetype="Neutral",
                 arch_help="No traits: the narrator does not pick the character for you."),
@@ -366,18 +375,18 @@ def build_profile():
 def build_dialogue():
     w, h = 560, 300
     add("dialogue-offered", "NPC dialogue - offered", w, h,
-        dialogue(90, 60, "|cff9be37aInnkeeper · Bram Ashcombe|r", choices=["Listen (ambient dialogue)"]),
+        dialogue(90, 60, "|cff4fb354Innkeeper · Bram Ashcombe|r", choices=["Listen (ambient dialogue)"]),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=100)
     add("dialogue-line", "NPC dialogue - a line and the answers", w, h,
-        dialogue(90, 40, "|cff9be37aInnkeeper · Bram Ashcombe|r", line=L_NPC,
+        dialogue(90, 40, "|cff4fb354Innkeeper · Bram Ashcombe|r", line=L_NPC,
                  choices=["What news is going round?", "I am looking for a place to rest.", "Farewell."], hover=0),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=101)
     add("dialogue-last", "NPC dialogue - last line", w, h,
-        dialogue(90, 60, "|cff9be37aInnkeeper · Bram Ashcombe|r",
+        dialogue(90, 60, "|cff4fb354Innkeeper · Bram Ashcombe|r",
                  line="You've come to the right place to stop walking. For a while, at least.", choices=["Close"]),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=102)
     add("dialogue-test", "NPC dialogue - /au talk test", w, h,
-        dialogue(90, 40, "|cff9be37aInnkeeper · Test innkeeper|r · test", line=L_NPC,
+        dialogue(90, 40, "|cff4fb354Innkeeper · Test innkeeper|r · test", line=L_NPC,
                  choices=["What news is going round?", "I am looking for a place to rest.", "Farewell."]),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=103)
 

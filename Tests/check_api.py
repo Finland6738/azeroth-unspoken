@@ -95,6 +95,7 @@ OBJECTS = {
     "WOW_PROJECT_*": "costanti di FrameXML (WOW_PROJECT_ID, WOW_PROJECT_CAMELOT): lette da Compat per riconoscere il client",
     "TRP3_API": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
     "AddOn_TotalRP3*": "Total RP 3, facoltativo: letto solo se presente (Integration/TotalRP3.lua)",
+    "UISpecialFrames": "FrameXML table of the frames Esc closes (#174): UI/Widgets.lua W.CloseOnEscape adds a name only when it is a table; DA PROVARE in G1",
     "date": "libreria standard di Lua esposta da WoW",
     "time": "libreria standard di Lua esposta da WoW",
     "debugstack": "funzione di Lua esposta da WoW, usata dentro pcall per la diagnostica",
@@ -145,7 +146,7 @@ FONTS = {
 TEMPLATES = {
     "UIPanelButtonTemplate": "XML di FrameXML: DA PROVARE in G1 (UI/Widgets.lua)",
     "InputBoxTemplate": "XML di FrameXML: UI/Widgets.lua lo prova dentro pcall e ripiega su una casella semplice",
-    "UIPanelScrollFrameTemplate": "XML di FrameXML: UI/JournalFrame.lua ripiega su una finestra senza barra",
+    "UIPanelScrollFrameTemplate": "XML di FrameXML: UI/JournalFrame.lua (export) and UI/SettingsFrame.lua create it inside pcall and fall back to a frame without a bar",
 }
 
 # Metodi delle stringhe di Lua (`s:match(...)`): non sono API di WoW

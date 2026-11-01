@@ -7,6 +7,8 @@
 -- quest, il commercio o altre finestre, e si mette dove non le copre (vedi `BLIZZARD_FRAMES` e `Place`). Non è in
 -- UISpecialFrames: Esc non la chiude, perché con Esc si chiuderebbero anche le finestre di Blizzard dell'NPC.
 -- Il disegno viene da NPCAlive:View(); qui non c'è logica di dialogo.
+-- #182: the window follows the window scale, its text size and opacity are in the settings panel, and each text sits
+-- under the one above (the line under the title, the answers under the line), so nothing overlaps at large sizes.
 local ADDON, NS = ...
 local W = NS.Widgets
 
@@ -18,7 +20,7 @@ local WIDTH = 380
 local MARGIN = 8
 local OVERLAP_PAD = 6
 local CHECK_EVERY = 0.5
-local BADGE_COLOR, NPC_COLOR = "ffd060", "9be37a"
+local BADGE_COLOR, NPC_COLOR = "ffd060", "4fb354"   -- the NPC voice of the narrator (#186)
 
 -- finestre di Blizzard che la nostra non deve coprire (nomi di FrameXML: si controllano solo se esistono)
 F.BLIZZARD_FRAMES = { "GossipFrame", "QuestFrame", "MerchantFrame", "TaxiFrame", "ClassTrainerFrame", "BankFrame",
@@ -143,10 +145,13 @@ local function Title(view)
 	return Colored(NPC_COLOR, role .. name) .. tag
 end
 
+local HEADER_H = 22
+
+-- from the top: the header, the title, the line, then the answers, each under the one above (#182)
 local function Layout(buttons)
-	local top = 22 + 22
-	local textH = frame.text:IsShown() and (frame.text:GetStringHeight() + 8) or 0
-	local y = top + textH
+	frame.shownButtons = buttons
+	local y = HEADER_H + 6 + math.ceil(frame.title:GetStringHeight() or 14) + 6
+	if frame.text:IsShown() then y = y + math.ceil(frame.text:GetStringHeight() or 14) + 8 end
 	for _, b in ipairs(buttons) do
 		b:ClearAllPoints()
 		b:SetPoint("TOPLEFT", frame, "TOPLEFT", MARGIN, -y)
@@ -209,6 +214,11 @@ function F:ApplySettings(skipLayout)
 	W.SetFontSize(frame.title, cfg.fontSize)
 	W.SetBackgroundAlpha(frame.bg, 0.04, 0.04, 0.07, 0.85 * cfg.alpha)
 	frame:SetAlpha(1)
+	W.ApplyScale(frame)
+	if not skipLayout and frame:IsShown() and frame.shownButtons then
+		Layout(frame.shownButtons)
+		self:Place(false)
+	end
 end
 
 ---@return boolean ready la finestra è stata costruita
@@ -233,19 +243,19 @@ end
 ---------------------------------------------------------------------------
 local function Build()
 	frame = CreateFrame("Frame", "AzerothUnspokenDialogue", UIParent)
+	frame:Hide()   -- #192: hidden before anything else can fail
 	frame:SetSize(WIDTH, 120)
 	frame:SetFrameStrata("MEDIUM")
 	frame:SetMovable(true)
 	frame:SetClampedToScreen(true)
 	frame:EnableMouse(true)
 	frame.bg = W.Background(frame, 0.04, 0.04, 0.07, 0.85)
-	frame:Hide()
 
 	-- la fascia dell'etichetta: sempre visibile, con un colore che si distingue dal resto della finestra
 	local header = CreateFrame("Frame", nil, frame)
 	header:SetPoint("TOPLEFT", 0, 0)
 	header:SetPoint("TOPRIGHT", 0, 0)
-	header:SetHeight(22)
+	header:SetHeight(HEADER_H)
 	header:EnableMouse(true)
 	header:RegisterForDrag("LeftButton")
 	W.Background(header, 0.30, 0.20, 0.03, 0.95)
@@ -272,13 +282,14 @@ local function Build()
 	frame.closeBtn = close
 
 	frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-	frame.title:SetPoint("TOPLEFT", MARGIN, -28)
-	frame.title:SetPoint("TOPRIGHT", -MARGIN, -28)
+	frame.title:SetPoint("TOPLEFT", MARGIN, -(HEADER_H + 6))
+	frame.title:SetPoint("TOPRIGHT", -MARGIN, -(HEADER_H + 6))
 	frame.title:SetJustifyH("LEFT")
 
+	-- the line under the title, whatever the size of the text (#182)
 	frame.text = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-	frame.text:SetPoint("TOPLEFT", MARGIN, -48)
-	frame.text:SetPoint("TOPRIGHT", -MARGIN, -48)
+	frame.text:SetPoint("TOPLEFT", frame.title, "BOTTOMLEFT", 0, -6)
+	frame.text:SetPoint("TOPRIGHT", frame.title, "BOTTOMRIGHT", 0, -6)
 	frame.text:SetJustifyH("LEFT")
 	frame.text:SetJustifyV("TOP")
 	frame.text:SetWordWrap(true)
@@ -319,4 +330,6 @@ function F:OnInit()
 		return
 	end
 	self:ApplySettings()
+	-- #192: the text size, opacity and window scale follow the panel at once
+	NS.Config:OnChange(function() F:ApplySettings() end)
 end

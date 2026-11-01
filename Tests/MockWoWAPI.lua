@@ -376,6 +376,9 @@ function Widget:SetToplevel(v) self._s.toplevel = v end
 function Widget:IsToplevel() return self._s.toplevel == true end
 function Widget:Raise() RAISES = RAISES + 1; self._s.raised = RAISES end
 function Widget:GetEffectiveScale() return 1 end
+-- #182: the window scale is recorded, not applied to the geometry
+function Widget:SetScale(v) self._s.scale = v end
+function Widget:GetScale() return self._s.scale or 1 end
 -- Geometria minima: un solo punto di ancoraggio e una dimensione (UIParent 1024x768). Altrimenti nil, come un frame
 -- non ancora disposto. Serve a provare che le finestre non coprono il narratore.
 SCREEN_W, SCREEN_H = 1024, 768
@@ -467,6 +470,16 @@ date = os.date
 STANDARD_TEXT_FONT = "Fonts/FRIZQT__.TTF"
 function IsInGuild() return P.guild or false end
 SlashCmdList = {}
+-- #174: the frames Esc closes (FrameXML's CloseSpecialWindows hides every one that is shown)
+UISpecialFrames = {}
+function PRESS_ESCAPE()
+	local closed = false
+	for _, name in ipairs(UISpecialFrames) do
+		local f = _G[name]
+		if f and f:IsShown() then f:Hide(); closed = true end
+	end
+	return closed
+end
 
 -- Profilo e sonda delle API (R0, #81 e #82). Ogni valore si cambia da un test; per provare un'API assente il test la
 -- mette a nil. Titoli, nomi e coordinate sono "dati personali" finti: il test controlla che non escano mai.

@@ -8,6 +8,57 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### U-windows: one window shell, Esc, the window scale and sturdier windows (issues #174, #187, #182, #192, #190)
+
+Fixes from the UI review (UI-04, UI-17, UI-12, UI-22 and the rest of UI-20 in
+[`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Tested with the mock client only: nothing here has run in the real client
+yet (G1).
+
+- **Added: one window shell, `W.Window` (#187).** The journal, the export window, the relationships, the character soul
+  and the setup guide are made by the same factory in `UI/Widgets.lua`: a warm dark surface with a 1-unit bronze edge, a
+  title band with the title in one style, a close box at the top right, Esc, the window scale and a redraw when the
+  settings change. No Blizzard art: only coloured textures.
+- **Added: Esc closes the addon's windows, and every window has a close box (#174).** The five windows are registered in
+  `UISpecialFrames`, so Esc closes them before it opens the game menu. Esc on the setup guide does what Skip does (the
+  defaults stay and it does not come back at every login). The NPC dialogue window is never registered (ADR 0020: Esc
+  would close Blizzard's NPC windows too). The narrator history is left to the narrator's own work (#186).
+- **Added: a "Window scale" setting, 80% to 150% (#182).** `ui.windowScale` (default 1) is applied with `SetScale` to the
+  five windows and to the NPC dialogue window, at once while they are open.
+- **Added: the NPC dialogue window's text size and opacity are in the settings panel (#182).** They existed in the saved
+  settings, but no row or command reached them.
+- **Changed: the settings panel is grouped (#187).** Five sections under their headers (General, Chat, Narrator,
+  Modules, Privacy), each row a plain label next to its control. A stepper is "-", the value as text and "+": its label is
+  no longer a button that does nothing. The sections scroll inside the client's settings page. The consents (automatic
+  sending, others' Total RP 3, the name from Total RP 3) are under Privacy.
+- **Changed: one visual language (#187).** Flat buttons everywhere in these windows. The chosen tab or option has a full
+  gold edge and a bar under its label, not a colour only (the green text inside a red button is gone, and so are the
+  "» «" marks of the avoided topics and of the relationships' tabs). One brand violet, `#B48CFF`. The actions that lose
+  data (Forget everything, Remove person, Forget observations, Neutral profile, deleting a memory, a place or a flag) have
+  their own style: a red outline, filled while they wait for the second click.
+- **Changed: the text of a consent or a privacy note is 12 units or more (#182).** The introductions of the journal, the
+  relationships and the character soul, the relationships' options, privacy note and warning, the export help, the
+  consents of the setup guide and the help of the settings panel. Each text is anchored under the one above: the
+  journal's tabs start under its introduction, and in the NPC dialogue window the line sits under the title and the
+  answers under the line, so nothing overlaps at large text sizes.
+- **Fixed: "Neutral profile" took one click (#190).** It now asks for a second click within 6 seconds, like the other
+  actions that lose data. Every armed confirmation (Neutral profile and the three of the relationships) disarms only
+  by its own token, so an old timer never cancels a newer confirmation, and all of them disarm when the window closes.
+  The journal did it already (#200).
+- **Fixed: a failed build could leave a window on screen (#192).** Each window is hidden on the line after its
+  `CreateFrame`; `Tests/run_tests.py` checks it.
+- **Fixed: saved positions (#192).** `W.SavePosition` stores the bottom-left corner read with `GetLeft`/`GetBottom`, so a
+  box that grows grows upwards, never down over the action bars.
+- **Fixed: the export box (#192).** It is as tall as its text (measured), not a fixed 1000 units, so a long export
+  scrolls to its end and a short one has no empty scroll; the line of the cursor stays in view.
+- **Fixed: settings changed in one place did not reach the open windows (#192).** One notice, `Config:Changed` (sent by
+  `Config:Set` and by every row of the panel), is followed by the panel, the open windows (scale, title, redraw, so a
+  change of language re-labels them), the narrator and the NPC dialogue window. Turning the addon or the narrator box
+  off takes the line on screen away.
+- **Changed: the NPC's name in the dialogue window is the narrator's NPC green (#186).** `#4FB354`, the same as the NPC
+  voice of the narrator box, instead of the old `#9BE37A`.
+- **Fixed: the classic Interface Options opened on the wrong page (#192).** They are opened with two calls, as that panel
+  needs; the newer Settings panel with one.
+
 ### U-narrator-look: the narrator's look (issue #186; history parts of #174 and #182)
 
 The PROPOSED narrator of the UI review (UI-16 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md),

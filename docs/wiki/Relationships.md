@@ -152,7 +152,7 @@ Pack authors: a line tagged `warm` in a greeting, farewell or reaction to an act
 
 Open the window with `/au relationships` or the **Relationships...** button in the [[settings panel|Settings]].
 
-The window is 660 units tall in every view, so it fits the screen at UI scale 1. It has three tabs: **Relationships**, **People met** and **Options**.
+The window is 660 units tall in every view, so it fits the screen at UI scale 1 and at the default **Window scale**. Close it with **Esc**, the **X** at the top right of its title band or **Close**; what you were typing is kept. It has three tabs: **Relationships**, **People met** and **Options**. The open tab has a full gold edge and a bar under its name.
 
 **The Relationships tab** is a table with **Name**, **Type** (NPC or Player), **Label**, **Disposition**, **Last seen** and **Encounters**. Click a column header to sort. Filter by **All**, **NPCs** or **Players**, by label, or type in **Search** (Enter gives the keyboard back to the game). A cell that is too long ends with "..."; point at the row to read all of it, and click it to open the person.
 
@@ -173,6 +173,8 @@ For a player there is a block across the window, **What the addon observed**: fi
 - **Forget observations** (asks for confirmation) erases only what the addon observed: the counts, the encounters and the facts. The person stays in your list with everything you chose.
 - **Remove person** (asks for confirmation) deletes the person and everything about them.
 
+Both have the red outline of the actions that lose data. The first click arms the button (it fills and asks you to click again); a second click within a few seconds confirms. Each confirmation keeps its own few seconds even if you armed it before, and changing tab, opening another person or closing the window cancels it.
+
 **The Options tab** (point at an option to read what it does):
 
 | Option | Default | What it does |
@@ -185,9 +187,9 @@ For a player there is a block across the window, **What the addon observed**: fi
 | **Recognise nearby** | off | nameplates and mouseover can let the narrator recognise a known player, for this session only; nothing is saved. Turning it on asks for a confirmation, like the shared list |
 | **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second step turn it on) |
 
-Under the options, a line about each consent and the privacy note. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
+Under the options, a line about each consent and the privacy note, in the normal text size. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
 
-The list, People met and Options tabs also have **Export** (text to copy) and **Forget everything** (with confirmation) at the bottom.
+The list, People met and Options tabs also have **Export** (text to copy, in a window that scrolls) and **Forget everything** (red outline, with confirmation; closing the window cancels it) at the bottom.
 
 ## Commands
 

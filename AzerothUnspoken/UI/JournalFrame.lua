@@ -2,8 +2,8 @@
 -- cancellazione selettiva, ricordi permanenti ed esportazione testuale manuale in una finestra copiabile (l'addon non
 -- può scrivere file). Si apre con /au journal (alias /au journal) o dal pannello delle impostazioni.
 -- Le schede sono dati: JournalFrame:RegisterTab(id, def) aggiunge una scheda (S6b ci mette le relazioni, S9 gli archi).
--- Solo pulsanti standard e un elenco a pagine, come il resto dell'interfaccia: nessun modello di scorrimento da cui
--- dipendere, tranne la finestra dell'esportazione (con ripiego).
+-- Il guscio è W.Window (#187): bordo, fascia del titolo, pulsante di chiusura, Esc e scala. Pulsanti piatti e un elenco
+-- a pagine: nessun modello di scorrimento da cui dipendere, tranne la finestra dell'esportazione (con ripiego).
 local ADDON, NS = ...
 local W = NS.Widgets
 local LM = NS.LivingMemory
@@ -34,9 +34,10 @@ local MAX_ROWS = 11             -- righe per pagina, al massimo: la nota e le sc
 local ROW_H = 28
 local ROW_W = 500               -- larghezza del testo di una riga; oltre, il testo si taglia e il suggerimento lo mostra intero
 local INNER_W = 568             -- larghezza utile della finestra
-local TAB_TOP, TAB_H, TAB_GAP = 78, 24, 4
+local TAB_H, TAB_GAP = 24, 4    -- the tabs start under the introduction, whatever its number of lines (#182)
 local TAB_PAD, TAB_MIN = 24, 48 -- margine del testo nei pulsanti delle schede; larghezza minima
-local LIST_TOP, LIST_BOTTOM = 112, 424  -- l'elenco sta tra questi due (le pagine iniziano a 424 dall'alto)
+local HEIGHT = 520
+local LIST_TOP, LIST_BOTTOM = 112, 444  -- l'elenco sta tra questi due (le pagine iniziano a 444 dall'alto)
 local ARM_SECONDS = 6           -- dopo il primo clic di una conferma si ha questo tempo per il secondo
 
 ---@type AUJournalTab[]
@@ -323,7 +324,7 @@ local function BuildRow(i)
 	W.Tooltip(row.hit, function() return row.full or "" end)
 	row.b = {}
 	for k = 1, 2 do
-		local b = W.Button(frame, "", 24, 24, function() RunAction(row, k) end)
+		local b = W.FlatButton(frame, "", 24, 24, function() RunAction(row, k) end)
 		W.Tooltip(b, function() return row.tips[k] or "" end)
 		row.b[k] = b
 	end
@@ -344,7 +345,7 @@ end
 local function EnsureTabButtons()
 	for _, t in ipairs(JournalFrame.tabs) do
 		if not tabButtons[t.id] then
-			tabButtons[t.id] = W.Button(frame, "", TAB_MIN, TAB_H, function()
+			tabButtons[t.id] = W.FlatButton(frame, "", TAB_MIN, TAB_H, function()
 				Disarm()
 				state.tab, state.page = t.id, 1
 				JournalFrame:Refresh()
@@ -364,13 +365,13 @@ local function TextWidth(text)
 	return w
 end
 
--- Schede larghe quanto il loro testo, su più file quando non stanno in una; la scheda scelta è evidenziata e
--- sottolineata, non solo colorata. Restituisce dove finiscono, dall'alto.
+-- Schede larghe quanto il loro testo, su più file quando non stanno in una; la scheda scelta ha il bordo pieno e la
+-- barra sotto il testo (#187), non solo un colore. Restituisce dove finiscono, dall'alto.
 ---@param current? AUJournalTab
+---@param tabTop number dove iniziano, dall'alto
 ---@return number bottom
-local function LayoutTabs(current)
+local function LayoutTabs(current, tabTop)
 	local x, line = 0, 0
-	frame.tabMark:Hide()
 	for _, b in pairs(tabButtons) do b:Hide() end   -- anche quelli di una scheda tolta
 	for _, t in ipairs(JournalFrame.tabs) do
 		local b = tabButtons[t.id]
@@ -378,51 +379,32 @@ local function LayoutTabs(current)
 		local label = NS:L(t.label)
 		local w = math.max(TAB_MIN, math.min(INNER_W, math.ceil(TextWidth(label)) + TAB_PAD))
 		if x > 0 and x + w > INNER_W then x, line = 0, line + 1 end
-		local top = TAB_TOP + line * (TAB_H + TAB_GAP)
+		local top = tabTop + line * (TAB_H + TAB_GAP)
 		b:SetWidth(w)
 		b:ClearAllPoints()
 		b:SetPoint("TOPLEFT", 16 + x, -top)
-		if t == current then
-			b:SetText("|cffffffff" .. label .. "|r")
-			if b.LockHighlight then b:LockHighlight() end
-			frame.tabMark:ClearAllPoints()
-			frame.tabMark:SetPoint("TOPLEFT", 16 + x + 4, -(top + TAB_H))
-			frame.tabMark:SetSize(w - 8, 3)
-			frame.tabMark:Show()
-		else
-			b:SetText(label)
-			if b.UnlockHighlight then b:UnlockHighlight() end
-		end
+		b:SetText(label)
+		b:SetSelected(t == current)
 		x = x + w + TAB_GAP
 	end
-	return TAB_TOP + (line + 1) * (TAB_H + TAB_GAP)
+	return tabTop + (line + 1) * (TAB_H + TAB_GAP)
 end
 
 local function Build()
-	frame = CreateFrame("Frame", "AzerothUnspokenJournal", UIParent)
-	frame:SetSize(600, 500)
-	frame:SetPoint("CENTER", 0, 10)
-	frame:SetMovable(true)
-	frame:EnableMouse(true)
-	frame:SetClampedToScreen(true)
-	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnDragStart", frame.StartMoving)
-	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
-	-- chiusa la finestra, nessuna conferma resta armata
+	-- the shell (#187): hidden at once (#192), title band, close box, Esc (#174), scale (#182)
+	frame = W.Window(UIParent, 600, HEIGHT, "mem_title", { name = "AzerothUnspokenJournal", point = { "CENTER", 0, 10 },
+		refresh = function() JournalFrame:Refresh() end })
+	-- chiusa la finestra (pulsante, Esc, comando), nessuna conferma resta armata
 	frame:SetScript("OnHide", Disarm)
-	W.Background(frame, 0.05, 0.04, 0.09, 0.95)
 
-	frame.title = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-	frame.title:SetPoint("TOPLEFT", 16, -12)
-	frame.intro = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	frame.intro:SetPoint("TOPLEFT", 16, -38)
+	-- the introduction says what is kept and what never is: the font of a privacy note, 12 units (#182)
+	frame.intro = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	frame.intro:SetPoint("TOPLEFT", 16, -W.TOP)
 	frame.intro:SetWidth(INNER_W)
 	frame.intro:SetJustifyH("LEFT")
 	-- misura i testi e non si vede mai
 	frame.measure = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	frame.measure:Hide()
-	frame.tabMark = frame:CreateTexture(nil, "OVERLAY")
-	W.SetBackgroundAlpha(frame.tabMark, 1, 0.82, 0, 1)
 
 	-- la nota della scheda e lo stato della memoria: una riga propria sotto le schede, sopra l'elenco
 	frame.note = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
@@ -431,7 +413,7 @@ local function Build()
 
 	for i = 1, MAX_ROWS do BuildRow(i) end
 
-	frame.prev = W.Button(frame, "", 28, 24, function()
+	frame.prev = W.FlatButton(frame, "", 28, 24, function()
 		Disarm()
 		state.page = state.page - 1
 		JournalFrame:Refresh()
@@ -441,7 +423,7 @@ local function Build()
 	frame.pageText:SetPoint("BOTTOMLEFT", 52, 57)
 	frame.pageText:SetWidth(140)
 	frame.pageText:SetJustifyH("LEFT")
-	frame.next = W.Button(frame, "", 28, 24, function()
+	frame.next = W.FlatButton(frame, "", 28, 24, function()
 		Disarm()
 		state.page = state.page + 1
 		JournalFrame:Refresh()
@@ -452,14 +434,15 @@ local function Build()
 	frame.stats:SetWidth(340)
 	frame.stats:SetJustifyH("RIGHT")
 
-	frame.export = W.Button(frame, "", 110, 24, function()
+	frame.export = W.FlatButton(frame, "", 110, 24, function()
 		Disarm()
 		JournalFrame:Refresh()
 		JournalFrame:ShowExport()
 	end)
 	frame.export:SetPoint("BOTTOMLEFT", 16, 16)
-	-- "Dimentica tutto" chiede conferma: il primo clic arma il pulsante, il secondo (entro pochi secondi) azzera
-	frame.reset = W.Button(frame, "", 170, 24, function()
+	-- "Dimentica tutto" chiede conferma: il primo clic arma il pulsante, il secondo (entro pochi secondi) azzera.
+	-- Lo stile delle azioni che perdono dati (#187): bordo rosso, pieno mentre aspetta la conferma.
+	frame.reset = W.FlatButton(frame, "", 170, 24, function()
 		if state.armed then
 			Disarm()
 			LM:Reset("all")
@@ -467,13 +450,12 @@ local function Build()
 			Arm(true)
 		end
 		JournalFrame:Refresh()
-	end)
+	end, "danger")
 	frame.reset:SetPoint("BOTTOMLEFT", 136, 16)
 	W.Tooltip(frame.reset, function() return NS:L(JournalFrame:MemoryLock() or "mem_reset_tip") end)
-	frame.close = W.Button(frame, "", 110, 24, function() JournalFrame:Close() end)
+	frame.close = W.FlatButton(frame, "", 110, 24, function() JournalFrame:Close() end)
 	frame.close:SetPoint("BOTTOMRIGHT", -16, 16)
-	frame:Hide()
-	NS.Windows:Register(frame)   -- #181: DIALOG, raised on a click, cascaded, the narrator steps aside
+	NS.Windows:Register(frame)   -- #181: raised on a click, cascaded, the narrator steps aside
 end
 
 ---Ridisegna l'elenco (se la finestra è aperta).
@@ -487,8 +469,9 @@ function JournalFrame:Refresh()
 	local tabLock = tab and tab.memory and lock or nil
 	if lock then Disarm() end
 
-	-- dall'alto: le schede, la nota (con lo stato della memoria), poi tante righe quante ne stanno sopra le pagine
-	local top = LayoutTabs(tab)
+	-- dall'alto: l'introduzione, le schede sotto di essa (#182), la nota (con lo stato della memoria), poi tante righe
+	-- quante ne stanno sopra le pagine
+	local top = LayoutTabs(tab, W.TOP + math.ceil(frame.intro:GetStringHeight() or 14) + 10)
 	local note = tab and tab.note and NS:L(tab.note) or ""
 	if tabLock then note = "|cffff9040" .. NS:L(tabLock) .. "|r" .. (note ~= "" and ("\n" .. note) or "") end
 	frame.note:ClearAllPoints()
@@ -516,6 +499,9 @@ function JournalFrame:Refresh()
 			b:SetShown(a ~= nil)
 			if a then
 				local armed = a.confirm ~= nil and state.confirm == row.keys[k]
+				-- an action that cannot be undone has the style of the destructive actions (#187)
+				b:SetStyle(a.confirm and "danger" or "ghost")
+				b:SetArmed(armed)
 				b:SetText(armed and NS:L("mem_confirm_btn") or a.label)
 				b:SetEnabled(tabLock == nil)
 				row.tips[k] = tabLock and NS:L(tabLock) or (armed and NS:L("mem_confirm_tip") or a.tip)
@@ -536,6 +522,7 @@ function JournalFrame:Refresh()
 	frame.stats:SetText(NS:L("mem_summary", st.memories, st.permanent, st.places, st.flags))
 	frame.export:SetText(NS:L("mem_export"))
 	frame.reset:SetText(NS:L(state.armed and "mem_reset_confirm_btn" or "mem_reset"))
+	frame.reset:SetArmed(state.armed)
 	frame.reset:SetEnabled(lock == nil)
 	frame.close:SetText(NS:L("mem_close"))
 end
@@ -581,23 +568,28 @@ end
 ---------------------------------------------------------------------------
 -- Esportazione: un testo da selezionare e copiare
 ---------------------------------------------------------------------------
+local EXPORT_W, EXPORT_H = 600, 440
+local BOX_W = EXPORT_W - 32 - 28   -- the scroll bar of the template sits right of the box
+local BOX_TOP, BOX_BOTTOM = 72, 52
+
+-- The scrolling edit pattern (#192): the box is as tall as its text (measured, at least the visible area), so the
+-- scroll frame scrolls exactly over the whole text, and the cursor stays in view while it moves.
+local function FitBox()
+	local f = exportFrame
+	f.measure:SetText(f.box:GetText() or "")
+	local h = math.ceil(f.measure:GetStringHeight() or 0) + 16
+	local view = f.scroll and f.scroll:GetHeight() or (EXPORT_H - BOX_TOP - BOX_BOTTOM)
+	if type(view) ~= "number" or view <= 0 then view = EXPORT_H - BOX_TOP - BOX_BOTTOM end
+	f.box:SetHeight(math.max(view, h))
+	if f.scroll and f.scroll.UpdateScrollChildRect then f.scroll:UpdateScrollChildRect() end
+end
+
 local function BuildExport()
-	exportFrame = CreateFrame("Frame", "AzerothUnspokenJournalExport", UIParent)
-	exportFrame:SetSize(600, 440)
-	exportFrame:SetPoint("CENTER", 0, 0)
+	exportFrame = W.Window(UIParent, EXPORT_W, EXPORT_H, "mem_export", { name = "AzerothUnspokenJournalExport" })
 	exportFrame:SetFrameStrata("FULLSCREEN_DIALOG")
-	exportFrame:SetMovable(true)
-	exportFrame:EnableMouse(true)
-	exportFrame:SetClampedToScreen(true)
-	exportFrame:RegisterForDrag("LeftButton")
-	exportFrame:SetScript("OnDragStart", exportFrame.StartMoving)
-	exportFrame:SetScript("OnDragStop", exportFrame.StopMovingOrSizing)
-	W.Background(exportFrame, 0.02, 0.02, 0.05, 0.98)
-	exportFrame.title = exportFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-	exportFrame.title:SetPoint("TOPLEFT", 16, -12)
-	exportFrame.help = exportFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-	exportFrame.help:SetPoint("TOPLEFT", 16, -40)
-	exportFrame.help:SetWidth(568)
+	exportFrame.help = exportFrame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	exportFrame.help:SetPoint("TOPLEFT", 16, -W.TOP)
+	exportFrame.help:SetWidth(EXPORT_W - 32)
 	exportFrame.help:SetJustifyH("LEFT")
 
 	-- casella di testo su più righe dentro un riquadro scorrevole; senza il modello standard, la casella da sola
@@ -605,19 +597,31 @@ local function BuildExport()
 	pcall(function()
 		scroll = CreateFrame("ScrollFrame", "AzerothUnspokenJournalExportScroll", exportFrame, "UIPanelScrollFrameTemplate")
 	end)
+	exportFrame.scroll = scroll
 	local box = CreateFrame("EditBox", nil, scroll or exportFrame)
 	box:SetMultiLine(true)
 	box:SetAutoFocus(false)
 	box:SetFontObject(ChatFontNormal or GameFontHighlight)
-	box:SetWidth(530)
-	box:SetHeight(1000)
+	box:SetWidth(BOX_W)
+	-- measures the text in the font and width of the box, never shown
+	exportFrame.measure = exportFrame:CreateFontString(nil, "ARTWORK", "ChatFontNormal")
+	exportFrame.measure:SetWidth(BOX_W)
+	exportFrame.measure:Hide()
 	if scroll then
-		scroll:SetPoint("TOPLEFT", 16, -64)
-		scroll:SetPoint("BOTTOMRIGHT", -36, 52)
+		scroll:SetPoint("TOPLEFT", 16, -BOX_TOP)
+		scroll:SetPoint("BOTTOMRIGHT", -36, BOX_BOTTOM)
 		scroll:SetScrollChild(box)
+		box:SetScript("OnCursorChanged", function(_, _, y, _, h)
+			-- keeps the line of the cursor inside the visible area
+			local top, view = -(tonumber(y) or 0), scroll:GetHeight()
+			local cur = tonumber(scroll:GetVerticalScroll()) or 0
+			h = tonumber(h) or 14
+			if type(view) ~= "number" then return end
+			if top < cur then scroll:SetVerticalScroll(top)
+			elseif top + h > cur + view then scroll:SetVerticalScroll(top + h - view) end
+		end)
 	else
-		box:SetPoint("TOPLEFT", 16, -64)
-		box:SetHeight(320)
+		box:SetPoint("TOPLEFT", 16, -BOX_TOP)
 	end
 	-- sola lettura: ciò che si scrive viene rimesso com'era, così resta solo da selezionare e copiare
 	box:SetScript("OnTextChanged", function(self, byUser)
@@ -628,9 +632,8 @@ local function BuildExport()
 	end)
 	box:SetScript("OnEscapePressed", function() exportFrame:Hide() end)
 	exportFrame.box = box
-	exportFrame.close = W.Button(exportFrame, "", 110, 24, function() exportFrame:Hide() end)
+	exportFrame.close = W.FlatButton(exportFrame, "", 110, 24, function() exportFrame:Hide() end)
 	exportFrame.close:SetPoint("BOTTOMRIGHT", -16, 16)
-	exportFrame:Hide()
 end
 
 ---Apre la finestra con un testo, già selezionato, pronto per Ctrl+C: il diario, o quello che altri moduli passano
@@ -649,11 +652,14 @@ function JournalFrame:ShowExport(text, titleKey)
 	end
 	text = text or LM:ExportText()
 	exportFrame.text = text
-	exportFrame.title:SetText(NS:L(titleKey or "mem_export"))
+	exportFrame.titleKey = titleKey or "mem_export"
+	exportFrame.title:SetText(NS:L(exportFrame.titleKey))
 	exportFrame.help:SetText(NS:L("mem_export_help"))
 	exportFrame.close:SetText(NS:L("mem_close"))
 	exportFrame.box:SetText(text)
 	exportFrame:Show()
+	FitBox()
+	if exportFrame.scroll and exportFrame.scroll.SetVerticalScroll then exportFrame.scroll:SetVerticalScroll(0) end
 	exportFrame.box:HighlightText()
 	exportFrame.box:SetFocus()
 	return true

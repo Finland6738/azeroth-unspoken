@@ -937,7 +937,8 @@ T.run("finestra del profilo", function()
 	Cmd("soul")
 	T.ok(NS.ProfileFrame:IsOpen(), "/au anima la apre")
 	local f, b = ProfileButtons()
-	T.eq(#b, 25, "pulsanti: archetipo, una x per scala, voce interiore, argomenti, consenso, neutro, chiudi")
+	T.eq(#b, 26, "pulsanti: chiusura in alto, archetipo, una x per scala, voce interiore, argomenti, consenso, neutro, chiudi")
+	T.ok(b[1] == f.closeBox, "#174: the close box at the top right comes first")
 	T.ok(f.title:GetText():find("Anima del personaggio", 1, true), "titolo")
 	-- archetipo: ogni clic passa al successivo e vale subito
 	local seen = { [NS.cdb.personality.archetype] = true }
@@ -967,15 +968,16 @@ T.run("finestra del profilo", function()
 	T.eq(NS.cdb.personality.traits.stoicism, nil, "x toglie la scelta")
 	T.ok(rows.stoicism.text:GetText():find("non impostato", 1, true), "senza valore: non impostato")
 	-- voce interiore: il valore successivo, fino a togliere la scelta
-	local voiceValue = b[13]
+	local voiceValue = b[14]
 	voiceValue:Click()
 	T.eq(NS.cdb.personality.traits.innerVoice, "off", "il clic cambia il valore")
 	-- argomenti da evitare
-	local topicButtons = { unpack(b, 15, 22) }
+	local topicButtons = { unpack(b, 16, 23) }
 	T.eq(#topicButtons, 8, "otto argomenti")
 	topicButtons[1]:Click()
 	T.ok(NS.cdb.personality.traits.avoid.death, "argomento acceso")
-	T.ok(topicButtons[1]:GetText():find("morte", 1, true) and topicButtons[1]:GetText():find("»", 1, true), "evidenziato")
+	T.ok(topicButtons[1]:GetText():find("morte", 1, true) and topicButtons[1].selected and topicButtons[1].bar:IsShown(),
+		"evidenziato con il bordo e la barra, non solo con un colore (#187)")
 	topicButtons[1]:Click()
 	T.eq(NS.cdb.personality.traits.avoid, nil, "argomento spento")
 	-- Total RP 3: il consenso si vede solo se c'è Total RP 3
@@ -989,9 +991,29 @@ T.run("finestra del profilo", function()
 	f.trp3:Click()
 	T.eq(NS.cdb.personality.trp3, false, "e tolto")
 	AddOn_TotalRP3 = nil
-	-- profilo neutro e chiudi
+	-- profilo neutro (#190): il primo clic arma, il secondo azzera; un timer vecchio non disarma un armamento nuovo
+	Personality:SetTrait("irony", 70)
+	f.reset:Click()
+	T.ok(not Personality:IsNeutral(), "#190: the first click only arms")
+	T.eq(f.reset:GetText(), NS:L("soul_reset_confirm"), "the button asks for the second click")
+	T.ok(f.reset.armed and f.reset.style == "danger", "in the style of the destructive actions, filled while armed")
+	ADVANCE(4)
 	f.reset:Click()
 	T.ok(Personality:IsNeutral(), "profilo neutro dalla finestra")
+	Personality:SetTrait("irony", 70)
+	f.reset:Click()                  -- arms again
+	ADVANCE(3)                       -- the first arming's timer (6 s from its click) has run out by now
+	T.ok(f.reset.armed, "#190: an old timer does not disarm a newer arming")
+	ADVANCE(4)
+	NS.ProfileFrame:Refresh()
+	T.ok(not f.reset.armed, "the arming expires by itself")
+	f.reset:Click()
+	f.close:Click()
+	Cmd("soul")
+	T.ok(not f.reset.armed and not Personality:IsNeutral(), "#190: closing the window disarms it")
+	Cmd("soul")
+	Personality:Reset()
+	Cmd("soul")
 	f.close:Click()
 	T.ok(not NS.ProfileFrame:IsOpen(), "chiusa")
 	Cmd("soul")
