@@ -83,6 +83,11 @@ T.run("N0 probe: the target's classification, threat and faction as client token
 		"ordinary wolf")
 	T.ok(Find(text, "UnitCreatureType(target)"):find("humanoid no", 1, true), "a beast is not humanoid")
 	NoPersonalData(text, "wolf")
+
+	-- an innkeeper of the curated register (Data/NPCs.lua) is named even when its classification is normal
+	P.target = { name = "Thrall", guid = Guid(295), reaction = 5, ctype = "Humanoid", ctypeID = 7 }
+	T.ok(Find(Cmd("probe"), "named (candidate rule, ADR 0035)"):find("named, curated npc; target friendly npc", 1, true),
+		"a curated NPC is named")
 end)
 
 T.run("N0 probe: no target, a hidden target and a missing API", function()

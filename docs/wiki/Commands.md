@@ -256,9 +256,9 @@ Two commands for the people who help test the addon in the real game. Neither wr
 | `/au prof` | Measures this session: how long the addon takes to pick a line and to read the situation (median and 95th percentile, in milliseconds), the memory it uses, and how many times the narrator spoke or stayed silent, and why (per reason, per event, per category and per hour of play). |
 | `/au prof copy` | The same report in a box with the text selected: press **Ctrl+C** to copy it. |
 | `/au prof reset` | Starts a new measurement. |
-| `/au probe` | Tries the client functions the next features need (weather, day and night, subzones, quests, reputation, flight, resting, hidden values) and prints one line each: **AVAILABLE** (it works), **MISSING** (the client does not have it) or **RESTRICTED** (the client hides or refuses it), with a sample value. The first time, it also starts counting the related game events until you log out: run it again later to see how many times each one happened. |
+| `/au probe` | Tries the client functions the next features need (weather, day and night, subzones, quests, reputation, flight, resting, hidden values, and what your target is: threat, dead, elite or rare, quest boss, creature type, faction) and prints one line each: **AVAILABLE** (it works), **MISSING** (the client does not have it) or **RESTRICTED** (the client hides or refuses it), with a sample value. The first time, it also starts counting the related game events until you log out: run it again later to see how many times each one happened. It also sums up your last three fights and two deaths (who struck first, whether the target died, who was attacking you, how many friendly NPCs were around), with numbers only: the NPC relationships will be built on what it finds. |
 | `/au probe copy` | The same report in a box with the text selected, to copy with **Ctrl+C**. |
-| `/au probe reset` | Sets the event counts back to zero. |
+| `/au probe reset` | Sets the event counts back to zero and forgets the fights and deaths. |
 | `/au probe stop` | Stops counting the events (`/au probe` starts again). |
 
 Nothing is kept after you log out. `/au debug` also shows one line with the latest timings.

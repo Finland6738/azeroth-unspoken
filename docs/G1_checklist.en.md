@@ -267,7 +267,50 @@ English counterpart of the section **U-windows** of [G1_checklist.md](G1_checkli
 - **W6 · Neutral profile.** In `/au soul` choose an archetype, then press **Neutral profile** once and wait 10 seconds; press it twice; press it once and close the window. **Expect:** the first click fills it red and says "Click again: neutral profile", changing nothing; after a few seconds it goes back; two clicks remove every choice; closing the window cancels.
 - **W7 · A long export.** With many memories, **Export** in the journal. **Expect:** the text scrolls to its last line; Ctrl+C copies all of it; a short text leaves no empty space to scroll.
 
-## Summary form (copy and fill in)
+## N0: attacks, kills and deaths without the combat log (issue #212)
+
+English counterpart of the section **N0** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers.
+
+**What it is for.** The NPC relationships (milestone 9) need to know when you attack an NPC, kill it or are killed by it, and who saw it: hostility and betrayal (N1), the nemesis (N7) and the companion pet (N8). Forever gives addons **no combat log**, so the addon must guess from ordinary events and unit functions. Nobody knows yet which of them answer on Forever, in which order, and with which false positives. These steps answer that; the answers confirm or change the detection recipe of [ADR 0035](adr/0035-attacks-kills-and-deaths-without-the-combat-log.md) (proposed, to confirm in game). Tried only with the mock client.
+
+**How it works.** `/au probe` (section R0) now has more lines:
+- read on your **target** when you type the command: `UnitThreatSituation(player, target)`, `UnitIsDead`, `UnitIsTapDenied`, `UnitClassification`, `UnitIsQuestBoss`, `UnitCreatureType`, `UnitFactionGroup`, `UnitGUID(target) npcID`, `CheckInteractDistance` and **`named (candidate rule, ADR 0035)`**, the addon's guess of whether the NPC counts as "named";
+- the events `PLAYER_REGEN_DISABLED` and `ENABLED` (in and out of combat), `PLAYER_ENTER_COMBAT` (auto-attack), `UNIT_SPELLCAST_SENT`, `UNIT_COMBAT` (a blow on a unit), `UNIT_THREAT_LIST_UPDATE`, `UNIT_THREAT_SITUATION_UPDATE`, `UNIT_DIED`, `PARTY_KILL`, `PLAYER_DEAD`, `NAME_PLATE_UNIT_ADDED` and `REMOVED`;
+- the lines **`N0 fight N, start`** and **`N0 fight N, end`** (the last 3 fights) and **`N0 death N`** (the last 2 deaths): who struck first, how many units were fighting you, which nameplates were around, whether the target died, and who was attacking you when you died.
+
+No name or GUID: only numbers, flags, the NPC's number (`npcID`, the same on every server: you can look it up on a database site) and fixed client words (`elite`, `WOUND`, `Horde`...). **Before each step type `/au probe reset`** (it clears the fights and deaths), and type `/au probe copy` at the end of the step. Turn on the **nameplates** (key **V** for enemies, **Shift+V** for friends, or Options > Interface > Names), otherwise the witnesses cannot be counted.
+
+**How long.** About 40 minutes, in a starting zone, with a character of any level. Do the steps you can; write "not done" for the others.
+
+- **N0.1 · Start.** Right after you log in, `/au probe`.
+    - **Expect:** the new lines above; with no target, the target lines say `no target selected`; `C_CombatLog.IsCombatLogRestricted` with a value; the events are `registered`; `N0 fights seen: 0`.
+    - **Report:** the lines that are `MISSING` or `RESTRICTED`.
+- **N0.2 · Who counts as named.** Out of combat, select one at a time and type `/au probe` for each: an ordinary animal; a monster with a dragon on its portrait (**elite**); a **rare** if you meet one (silver dragon); the target of a quest "kill X" (**quest boss**, if there is one in the zone); a **guard**; an innkeeper or a vendor you have spoken to (they have a relation record); an NPC of the **other faction** (a guard of an enemy town, a flight master of the other side: target it from far away, there is no need to fight).
+    - **Expect:** `UnitClassification` `normal`, `elite`, `rare`, `rareelite` or `worldboss`; `UnitIsQuestBoss` true only for the quest target; `UnitCreatureType` with `humanoid yes` for people; `named` says `named` for the elite, the rare, the quest boss and the NPC you have spoken to, and `not named, ordinary (normal)` for the animal.
+    - **Report:** the target lines of each NPC (from `UnitThreatSituation` to `named`), with a heading such as "N0.2 elite", and **which NPCs you think should count as named and do not** (or the other way around).
+- **N0.3 · You attack first.** `/au probe reset`. Choose a **yellow** (neutral) animal, which does not attack on its own, select it and strike it with **auto-attack** (right click). Kill it. Then `/au probe copy`. If your character is a caster, repeat with a **spell** as the first blow.
+    - **Expect:** `N0 fight 1, start: ... opened by player (swing ...)` (or `(cast ...)` with a spell); at the end `dead yes`, `same unit yes`, `UNIT_DIED engaged 1`, `PARTY_KILL by me 1`.
+    - **Report:** the text. Above all: does `opened by` say `player`? Do `UNIT_DIED` and `PARTY_KILL` fire, or are they `hidden`?
+- **N0.4 · It attacks you first.** `/au probe reset`. Walk near a **red** monster (aggressive) **without selecting it** and let it strike first. Then select it and kill it. `/au probe copy`.
+    - **Expect:** `opened by enemy (hit on player ...)`; `it targets me yes` if you had already selected it when combat started.
+    - **Report:** the text, and whether you had selected it before or after the first blow.
+- **N0.5 · Two or three at once.** `/au probe reset`. Pull two or three monsters together and kill them (with an area spell if you have one). `/au probe copy`.
+    - **Expect:** `N engaged` and `N attacking me` at 2 or 3; `UNIT_DIED engaged` and `PARTY_KILL by me` add up to the dead.
+    - **Report:** the text, and how many you killed.
+- **N0.6 · Witnesses.** `/au probe reset`. With the friendly nameplates on (**Shift+V**), fight a monster **near guards or people of a village** (a road with patrols, the edge of a town). `/au probe copy`. If an area spell of yours touches a friendly NPC, write so (it should not be possible: the game protects them).
+    - **Expect:** `witnesses: N nameplates, N friendly npc, N near` with numbers above zero; `friendly npc hit 0`.
+    - **Report:** the text, and how many friendly NPCs you saw around (more or less).
+- **N0.7 · Someone else's monster.** If a player is fighting a monster, select it (its nameplate turns grey) and `/au probe`.
+    - **Expect:** `UnitIsTapDenied(target): -> true`.
+    - **Report:** the target lines. Do not attack the other player's monster if it bothers them.
+- **N0.8 · A pet or a group.** Only if your character has a pet (hunter, warlock) or you are in a group: `/au probe reset`, let the pet or a companion strike the last blow of a fight, `/au probe copy`.
+    - **Expect:** `PARTY_KILL by me 0, pet 1` (or `other 1` for a companion).
+    - **Report:** the text, and who struck the last blow.
+- **N0.9 · Your death.** `/au probe reset`. Let a stronger monster kill you (it costs only the run back to your corpse). **Before you release the spirit**, `/au probe copy`.
+    - **Expect:** `N0 death 1: during a fight` or `... after the fight ended`; `last unit attacking me npcID ...` with the number of the monster that killed you; `it is my target yes` if you had it selected.
+    - **Report:** the text, which monster killed you, and whether it was your target.
+- **N0.10 · Sending the results.** Write a **comment on issue #212** (<https://github.com/Finland6738/azeroth-unspoken/issues/212>) with the texts one below the other, each with its heading ("N0.3 attack first", "N0.9 death"...). **No other players' names**; the `npcID` numbers can stay.
+
 
 ```
 R0 first measurement .... memory (KB) ______  PickEntry p50/p95 ______  BuildContext p50/p95 ______  debugprofilestop? ___
@@ -309,4 +352,8 @@ R4 character ............ stoic calmer? ___  vengeful angrier? ___
 R4 off .................. off in /au debug? ___  file empty? ___
 R3c monologues .......... seen (how many) ______  combinations that do not fit ______  never in chat? ___
 R3c situations .......... close call ___  hard-won level ___  return in the rain ___  only one line? ___  seconds from low health to victory ______
+N0 named ................ elite ___  rare ___  quest boss ___  guard ___  innkeeper ___  other faction ___  wrong verdicts ______
+N0 attack ............... opened by player (swing/cast)? ___  by enemy? ___  UNIT_DIED fires? ___  PARTY_KILL by me? ___  hidden? ___
+N0 several / witnesses .. engaged ___  attacking me ___  witnesses (nameplates/friendly/near) ______  tap denied true? ___
+N0 pet / death .......... PARTY_KILL pet/other ___  death: during/after the fight ______  last attacker = the killer? ___
 ```

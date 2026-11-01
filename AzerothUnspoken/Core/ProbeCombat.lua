@@ -112,8 +112,9 @@ local function Threat(unit)
 	return type(v) == "number" and v or nil
 end
 
----Is this NPC named? The candidate rule of ADR 0035: an elite, rare or boss classification, a quest boss, or an NPC
----the relationships already know. Humanoid and faction are context, not the rule.
+---Is this NPC named? The candidate rule of ADR 0035: an elite, rare or boss classification, a quest boss, an NPC the
+---relationships already know or one of the curated register (Data/NPCs.lua). Humanoid and faction are context, not
+---the rule.
 ---@param unit string
 ---@return boolean? named nil when nothing could be read
 ---@return string reasons
@@ -131,11 +132,15 @@ function Combat.Named(unit)
 		known = true
 		if boss then table.insert(reasons, "quest boss") end
 	end
-	local id, R = NpcID(unit), NS.Relationships
+	local id, R, I = NpcID(unit), NS.Relationships, NS.Interlocutor
 	if id and R and R.Get then
 		known = true
 		local ok, rec = pcall(R.Get, R, "npc", id)
 		if ok and rec then table.insert(reasons, "relation record") end
+	end
+	if id and I and type(I.npcs) == "table" and I.npcs[id] then
+		known = true
+		table.insert(reasons, "curated npc")
 	end
 	if not known then return nil, "nothing readable" end
 	if #reasons == 0 then return false, "ordinary (" .. Token(class, CLASSIFICATIONS) .. ")" end
