@@ -80,6 +80,7 @@ local function Out(state, a, b, c, d, err)
 	if state == RESTRICTED then detail = detail .. " (a result was secret)" end
 	return state, detail
 end
+Probe.Out, Probe.Trim = Out, Trim
 
 -- a finite number, or nil (NaN, infinity, text, secret: whatever the client gives is shown as unknown, never raised)
 local function Finite(v)
@@ -136,7 +137,8 @@ local function SampleReputation()
 	return "GetNumFactions " .. (state == AVAILABLE and Show(n) or state)
 end
 
--- { event, sample }: every event is registered for the session when /au probe first runs
+-- { event, sample, unit }: every event is registered for the session when /au probe first runs. The sample is called
+-- with the event's arguments and returns a short text, or nil for nothing to show.
 local EVENT_PROBES = {
 	{ "WEATHER_CHANGED", SampleWeather },
 	{ "DIEL_CYCLE_CHANGED", SampleDayTime },
@@ -156,6 +158,19 @@ local EVENT_PROBES = {
 Probe.EVENT_PROBES = EVENT_PROBES
 local SAMPLER = {}
 for _, def in ipairs(EVENT_PROBES) do SAMPLER[def[1]] = def[2] or false end
+
+---Adds an event to the probe (other files of the probe, such as Core/ProbeCombat.lua, #212). It is registered at the
+---next /au probe that starts listening.
+---@param event string
+---@param sample? fun(...): string? called with the event's arguments
+---@param unit? string registered with RegisterUnitEvent for this unit only
+function Probe.AddEvent(event, sample, unit)
+	table.insert(EVENT_PROBES, { event, sample, unit })
+	SAMPLER[event] = sample or false
+end
+
+-- called by Probe:Reset, after the counts are cleared
+Probe.resetHooks = {}
 
 ---------------------------------------------------------------------------
 -- Event listeners
@@ -181,8 +196,9 @@ function Probe:Record(event, ...)
 	rec.payload = #shown > 0 and table.concat(shown, ", ") or "no payload"
 	local sampler = SAMPLER[event]
 	if sampler then
-		local ok, text = pcall(sampler)
-		text = ok and text or ("sample failed: " .. Trim(text))
+		local ok, text = pcall(sampler, ...)
+		text = ok and text or (not ok and ("sample failed: " .. Trim(text))) or nil
+		if text == nil then return end
 		if rec.samples[text] == nil then
 			if rec.nSamples >= MAX_SAMPLES then text = "(other)" else rec.nSamples = rec.nSamples + 1 end
 		end
@@ -203,7 +219,7 @@ function Probe:Listen()
 		local event = def[1]
 		local rec = NewRecord()
 		self.events[event] = rec
-		rec.registered = Compat:RegisterEvent(frame, event)
+		rec.registered = Compat:RegisterEvent(frame, event, def[3])
 		local cap = Compat.caps["event:" .. event]
 		rec.detail = cap and cap.detail
 		rec.valid = Compat:IsEventValid(event)
@@ -224,6 +240,7 @@ function Probe:Reset()
 		self.events[event] = rec
 	end
 	self.listenStart = Now()
+	for _, hook in ipairs(self.resetHooks) do pcall(hook) end
 end
 
 local function Duration(seconds)
@@ -258,7 +275,9 @@ end
 ---------------------------------------------------------------------------
 local shared = {}   -- values passed from one probe to the next (the first quest found)
 
----@type { id?: string, event?: string, run?: fun(): string, string? }[]
+-- An item probes an API (`run` returns a state and a detail), shows an event (`event`) or adds free lines that are not
+-- counted (`lines` returns a list of strings).
+---@type { id?: string, event?: string, run?: fun(): string, string?, lines?: fun(): string[] }[]
 local ITEMS = {
 	-- profiling (#81)
 	{ id = "debugprofilestop", run = function() return Out(Compat.Query("debugprofilestop")) end },
@@ -402,6 +421,7 @@ local ITEMS = {
 		return AVAILABLE, table.concat(parts, ", ")
 	end },
 }
+Probe.ITEMS = ITEMS
 
 ---------------------------------------------------------------------------
 -- Report
@@ -441,7 +461,14 @@ function Probe:Run()
 
 	for _, item in ipairs(ITEMS) do
 		local id, state, detail = item.id or item.event, nil, nil
-		if item.event then
+		if item.lines then
+			local ok, list = pcall(item.lines)
+			if ok and type(list) == "table" then
+				for _, line in ipairs(list) do Add(tostring(line)) end
+			else
+				state, detail = RESTRICTED, "probe error: " .. Trim(ok and "no lines" or list)
+			end
+		elseif item.event then
 			id = "event " .. item.event
 			local ok, s, d = pcall(EventResult, item.event)
 			if ok then state, detail = s, d else state, detail = RESTRICTED, "probe error: " .. Trim(s) end
@@ -449,10 +476,12 @@ function Probe:Run()
 			local ok, s, d = pcall(item.run)
 			if ok then state, detail = s, d else state, detail = RESTRICTED, "probe error: " .. Trim(s) end
 		end
-		-- a probe that answers with no state or an unknown one is reported as restricted, not counted as a success
-		if totals[state] == nil then state, detail = RESTRICTED, "probe gave no valid state" end
-		totals[state] = totals[state] + 1
-		Add(("[%s] %s%s"):format(state, id, detail and (": " .. detail) or ""))
+		if not item.lines or state then
+			-- a probe that answers with no state or an unknown one is reported as restricted, not counted as a success
+			if totals[state] == nil then state, detail = RESTRICTED, "probe gave no valid state" end
+			totals[state] = totals[state] + 1
+			Add(("[%s] %s%s"):format(state, id, detail and (": " .. detail) or ""))
+		end
 	end
 	Add(("Summary: %d AVAILABLE, %d RESTRICTED, %d MISSING. AVAILABLE means the call worked, not that the data is useful."):format(
 		totals.AVAILABLE, totals.RESTRICTED, totals.MISSING))
