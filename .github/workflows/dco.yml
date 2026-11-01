@@ -1,0 +1,40 @@
+name: DCO sign-off (advisory)
+
+# Warns, and never blocks, when the commits of an external pull request lack a "Signed-off-by:" line (Developer
+# Certificate of Origin, see CONTRIBUTING.md "Licensing of contributions"). Commits of the owner are not checked.
+# This job is NOT a required status check.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  dco:
+    name: DCO sign-off (advisory)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - name: Warn about commits without a sign-off
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          if [ "$AUTHOR" = "$OWNER" ]; then
+            echo "The pull request is by the owner: no sign-off needed."
+            exit 0
+          fi
+          missing=0
+          while IFS=$'\t' read -r sha msg; do
+            case "$msg" in
+              *"Signed-off-by: "*) ;;
+              *) echo "::warning::Commit ${sha:0:7} has no Signed-off-by line (use git commit -s). See CONTRIBUTING.md, Licensing of contributions."; missing=1 ;;
+            esac
+          done < <(gh api --paginate "repos/$GITHUB_REPOSITORY/pulls/$PR/commits" --jq '.[] | [.sha, (.commit.message | gsub("\n"; " "))] | @tsv')
+          [ "$missing" = 0 ] && echo "All commits are signed off."
+          exit 0

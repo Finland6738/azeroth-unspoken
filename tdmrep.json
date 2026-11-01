@@ -1,0 +1,57 @@
+[
+  {
+    "location": "/AzerothUnspoken/Data/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_enUS/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_itIT/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_EasternKingdoms/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_EasternKingdoms_enUS/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_EasternKingdoms_itIT/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_Kalimdor/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_Kalimdor_enUS/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_Kalimdor_itIT/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/AzerothUnspoken_Versi/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  },
+  {
+    "location": "/authoring/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://github.com/Finland6738/azeroth-unspoken/blob/main/LICENSE-CONTENT.md"
+  }
+]

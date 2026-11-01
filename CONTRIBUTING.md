@@ -353,3 +353,11 @@ agree that:
 - your contribution to the **example pack** or to `PACK_FORMAT.md` is licensed under **MIT**.
 
 If you cannot accept these terms, say so in the pull request before it is merged.
+
+**The agreement is given in two ways.** Tick the required checkbox of the pull request template ("I have read and agree to
+the Licensing of contributions"), and, if you are an external contributor, **sign off every commit** with
+`git commit -s`, which adds a `Signed-off-by: Your Name <email>` line. The sign-off means you certify the
+[Developer Certificate of Origin 1.1](https://developercertificate.org/): you wrote the contribution or have the right
+to submit it under the licences above. The name and email of the sign-off appear in the public history, so use a
+GitHub noreply address if you prefer. A CI job warns (it never blocks) when the commits of an external pull request
+lack a sign-off. Commits by the project owner and the owner's automated sessions are the owner's own work and need none.
