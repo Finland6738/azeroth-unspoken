@@ -105,6 +105,12 @@ NS:RegisterLanguage("it", {
 		rel_met_weather_clear = "a cielo sereno", rel_met_weather_rain = "sotto la pioggia", rel_met_weather_snow = "sotto la neve",
 		rel_met_weather_storm = "durante una tempesta", rel_met_weather_sand = "in una tempesta di sabbia", rel_met_weather_fog = "nella nebbia",
 		rel_met_zone = "in %s", rel_met_level = "eri di livello %d",
+		-- N3 (#215): il voto privato al culmine di una storia d'amore (diario, narratore, finestra)
+		mem_kind_relation_vow = "Un voto privato",
+		rel_mem_vow = "Un voto silenzioso, mai detto ad alta voce",
+		rel_vow_1 = "Nessuno lo sente, e %s non lo saprà mai: eppure ti prometti lo stesso, in silenzio.",
+		rel_vow_2 = "Un voto, fatto in silenzio: ovunque vada la strada, ti riporterà da %s.",
+		rel_vow_made = "Hai fatto un voto privato per questa persona.",
 		rel_help = "uso: /au relationships [list / people / add <nome> / dismiss <nome> / remove <nome/npc:ID> / detail <nome> / note <nome> <testo> / tags <nome> <tag,...> / label <nome> <testo> / set <nome> <asse> <valore> / export / auto on/off / attraction on/off / feeling <nome> <sentimento> [preset] / forget <nome> / proximity on/off / share [on/off/all/copy] / scope <nome> shared/character / reset [all/npcs/players/shared]]",
 	},
 })

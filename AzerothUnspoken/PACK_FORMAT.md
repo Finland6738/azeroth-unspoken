@@ -511,6 +511,7 @@ in the list, **they are all false** (except `isKnown = false`): a phrase that ci
 | `relMetDays = 60` or `{ 7, 30 }` | whole days since the first meeting with that NPC |
 | `relMetTime = "night"` (or a list) | the time of day of the first meeting: `dawn`, `day`, `dusk`, `night` |
 | `relMetWeather = "rain"` (or a list) | the weather of the first meeting, when the client said it: `clear`, `rain`, `snow`, `storm`, `sand`, `fog` |
+| `relVowed = true` | the character made the private vow to that NPC at the top of a romance (N3, #215); false for a player and for nobody |
 
 `feeling`, `relDaysSince`, `relMetHere` and `relShared` need a person in the list like the others, and count as a relationship condition for the validator. The last three are for **players** (they come from what the addon observed, `seen`); for an NPC they are false. `relMetLevels`, `relMetDays`, `relMetTime` and `relMetWeather` are for **NPCs** (the first meeting the addon kept, N2): for a player they are false, and an NPC met before version 3 of the relationships has only `relMetDays`. They count as relationship conditions too.
 

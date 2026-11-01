@@ -697,7 +697,9 @@ local function RefreshDetail()
 	if not isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_npc"))
 		frame.dSeenLine:SetText(R:LevelText(info) .. "\n" .. R:TemperText(s.key, rec))
-		frame.dSeenFacts:SetText(R:MetText(rec, Stamp))
+		-- N3 (#215): the private vow, when the character made it
+		local vow = R:VowText(rec)
+		frame.dSeenFacts:SetText(R:MetText(rec, Stamp) .. (vow ~= "" and ("\n" .. vow) or ""))
 	end
 	if isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_seen"))

@@ -16,7 +16,7 @@ Each relationship has several **independent axes**. Together they give a **label
 | **Affection** | -100 to 100 | how much you like them |
 | **Fear** | 0 to 100 | how much they frighten you |
 | **Loyalty** | -100 to 100 | how bound you feel to them |
-| **Attraction** (optional, off) | 0 to 100 | romantic interest; only if you turn it on |
+| **Attraction** (optional, off) | 0 to 100 | romantic interest; only if you turn it on (see [Romance](#romance)) |
 
 ### Labels
 
@@ -83,6 +83,17 @@ When an NPC moves to another level through something you did together, the narra
 - never for a change you made yourself with the sliders.
 
 Reaching a level worth remembering (**Friend**, **Close friend**, **Deep bond**, or falling to **Hostile** or **Hated**) also leaves a line in the [[journal|Memory-and-Journal]], once per NPC and level, with no names: *A bond grows: Close friend (Goldshire)*. Turn the narrator lines off with **Level notices** in the Options tab.
+
+### Romance
+
+Only if you turn on the **Attraction axis** (off by default). Romance is possible only with an NPC of the **opposite sex** to your character, and only with **humanoid** NPCs (the game says both when you talk to them). This is fixed: there is no setting to change it.
+
+- Attraction grows **slowly**, and only from good moments with an NPC who is already at least a **Friend**: talking, quests, the inn, training, the addon's own little conversations. Buying, selling, repairs and flights never count.
+- A little each day at most; the NPC's temperament counts here too. Reaching the top takes weeks of play with the same NPC.
+- When attraction is high and the bond is **beloved**, your character makes a **private vow**, once per NPC: a quiet line in the narrator, for you only (never during a fight, never in chat), and a permanent line in the [[journal|Memory-and-Journal]] with no name: *A quiet vow, spoken to no one aloud (Goldshire)*. The NPC detail then says *You made a private vow to them.*
+- Now and then, rarely, your character's inner voice notices the attraction, or remembers the vow.
+
+Nothing changes in the game: the NPC does not behave differently. Moving the attraction slider yourself does not make the vow by itself: only something you do with the NPC can.
 
 ## Players: your choice
 
@@ -265,6 +276,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - What the addon observed is kept apart from what you chose, and never changes it.
 - Your notes, tags and own labels are **private**: they are never used in a line that could go to chat.
 - The first meeting with an NPC keeps only the time of day, the weather, the zone and your level: no text.
+- Romance reads the NPC's sex and creature type when you talk to them and keeps them only until you log out. The vow is a mark on the NPC's record and a journal line with no name.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
 
@@ -290,6 +302,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 - Lines that change tone with the bond: more formal with strangers, warmer with friends, more intimate with close bonds.
 - An occasional memory in the [[journal|Memory-and-Journal]] when a bond changes in a meaningful way.
 - Now and then a short private line when an NPC reaches another level, and a memory of the first meeting when you see them again.
+- With the attraction axis on, very rarely, a romance with an NPC of the opposite sex, and once a private vow.
 
 ## Tips
 

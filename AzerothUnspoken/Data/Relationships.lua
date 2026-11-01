@@ -193,4 +193,24 @@ NS.Relationships:RegisterData({
 		perSession = 4, npcHours = 20, held = 3, variants = 2,
 		memorable = { friend = true, close = true, bond = true, enemy = true, hated = true },
 	},
+
+	-- N3 (#215): romance with an NPC. Only with the optional attraction axis on (relations.attraction, off by default).
+	-- Two fixed rules that no setting changes (owner decision of 2026-11-01): the NPC is of the opposite sex to the
+	-- character (UnitSex of both, read from the client: an unknown sex gives nothing) and is humanoid (UnitCreatureType).
+	-- Attraction grows slowly and only from a positive interaction with an NPC that was already at `minLevel` or above
+	-- before it; a source that is not in `gain` (every merchant source, the flight master) gives none. The temperament
+	-- of the NPC multiplies the gain and the cap, as for the other axes. Narration only: nothing changes in the game.
+	--   gain     attraction points per interaction, by source (config.increments)
+	--   decay    diminishing returns within the day, over all the sources together
+	--   cap      daily cap of attraction with one NPC
+	--   humanoid UnitCreatureType's second value (the creature type id) or its name, for a client that gives only that
+	--   vow      the top of the romance: with `attraction` or more and the derived label `label`, a private vow is
+	--            written in the journal once per NPC, and the private narrator says it once (rel_vow_N, `variants`)
+	romance = {
+		minLevel = "friend",
+		gain = { gossip = 0.6, quest_accept = 0.8, quest_turnin = 1.2, binder = 0.6, trainer = 0.3, ambient_talk = 0.5 },
+		decay = 0.6, cap = 2,
+		humanoid = { id = 7, names = { "Humanoid", "Umanoide" } },
+		vow = { attraction = 80, label = "lover", variants = 2 },
+	},
 })
