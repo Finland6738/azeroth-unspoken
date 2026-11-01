@@ -19,7 +19,7 @@ local SPEEDS = { 8, 11, 14, 18, 24 }   -- reading speed, characters a second (#1
 local CONTENT_W = 600                  -- width of the scrolling content
 local LABEL_X, CONTROL_X, CONTROL_W = 16, 250, 220
 local ROW = 28                         -- a row: 24 units of control and 4 of space
-local ACTION_W, ACTION_GAP = 184, 8    -- the buttons that open something, three on a line
+local ACTION_W, ACTION_GAP = 280, 8    -- the buttons that open something or act once, two on a line
 
 local function Cycle(list, current)
 	for i, v in ipairs(list) do
@@ -153,10 +153,10 @@ local function CreatePanel()
 		return row
 	end
 
-	-- the buttons that open something or act once, three on a line; `label()` may change their text
+	-- the buttons that open something or act once, two on a line; `label()` may change their text
 	local function Actions(list)
 		for i, a in ipairs(list) do
-			local col = (i - 1) % 3
+			local col = (i - 1) % 2
 			if i > 1 and col == 0 then y = y + ROW end
 			local row = { key = a[1], value = a[3], action = true }
 			row.button = W.FlatButton(content, "", ACTION_W, 24, function()
