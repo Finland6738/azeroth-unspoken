@@ -47,7 +47,7 @@ World of Warcraft only lets an addon post to `/say` and `/yell` in the open worl
 
 When a proposal is waiting:
 
-- the narrator box shows the line with *"proposal for /say"* (or the channel), and a row of buttons;
+- the narrator box shows the line, the label says *proposal* and counts down, and a bar of buttons appears under it: the channel on a chip at the left, then a quiet **Discard**, **Another**, **Edit**, **To chat** and **Send**, the one gold button;
 - the speak button glows, and its tooltip shows the text and the channel.
 
 | Action | Button on the box | Key or command |
@@ -56,8 +56,8 @@ When a proposal is waiting:
 | Edit it | **Edit** (opens the editor; Enter sends, Esc closes) | in preview mode, the speak key opens the editor |
 | Get a different line | **Another** | `/au another` or its key |
 | Copy into the chat box | **To chat** | `/au copy` (`/au copy`) |
-| Change the channel | the channel button | `/au channel <channel>` sets the default |
-| Throw it away | **Discard**, or **x** | `/au cancel` |
+| Change the channel | the channel chip | `/au channel <channel>` sets the default |
+| Throw it away | **Discard** (the **x** only hides the box: the proposal keeps waiting) | `/au cancel` |
 
 **No proposal waiting?** The speak key, button and `/au speak` ask for a new line that fits the moment (a battle cry in combat, a thought otherwise). It comes as a proposal: press again to send it. In private mode it is shown only to you, in the narrator box.
 

@@ -41,13 +41,16 @@ NS:RegisterLanguage("en", {
 
 		-- the four voices (GDD §5.3)
 		voice_narrator = "Narrator", voice_inner = "Inner voice", voice_character = "Character", voice_npc = "NPC",
-		proposal_for = "proposal for %s", sent_to = "sent to %s",
+		proposal_tag = "proposal", sent_to = "sent to %s",
 		proposal_left = "%d s", narrator_held = "+%d in history",
 		btn_send = "Send", btn_edit = "Edit", btn_discard = "Discard", btn_copy = "To chat",
 		btn_another = "Another", tip_another = "Swap the proposed line for another one for the same moment (sends nothing).",
 		tip_copy = "Copy the line into the chat box, already on the right channel: you send it with Enter.",
 		tip_pause = "Pause right now (again to resume)", tip_history = "Recent history",
-		tip_close = "Hide (and discard the proposal)", tip_channel = "Change channel",
+		tip_close = "Hide the box (a waiting proposal is kept: the speak key shows it again)",
+		tip_channel = "Change channel",
+		tip_history_close = "Close the history (Esc)",
+		tip_history_drag = "Drag to move the history: it then keeps its own place and stays when the box hides",
 		paused_on = "narrator paused. Press the key again (or /au pause) to resume.",
 		paused_off = "narrator active again.",
 

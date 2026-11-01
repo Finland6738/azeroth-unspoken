@@ -54,6 +54,7 @@ Config.CHAT_LIMITS = {
 ---@field historySize integer
 ---@field locked boolean il riquadro non si sposta
 ---@field pos? table posizione salvata { punto, punto relativo, x, y }
+---@field historyPos? table the history's own saved place once dragged (#174); nil: above the box, hiding with it
 
 ---@class AUDialogueSettings
 ---@field fontSize integer

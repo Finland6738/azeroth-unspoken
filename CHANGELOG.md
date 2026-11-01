@@ -8,6 +8,51 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### U-narrator-look: the narrator's look (issue #186; history parts of #174 and #182)
+
+The PROPOSED narrator of the UI review (UI-16 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md),
+`proposed-narrator.png`), built with coloured textures and the client's fonts only, no Blizzard art. Tested with the
+mock client only: nothing here has run in the real client yet (G1, steps N1–N7 of the checklist).
+
+- **Changed: the voices differ in more than a small label (#186).** A 3-unit bar in the voice colour along the left
+  edge, the line tinted in that colour, and the inner voice in another typeface (Arial Narrow, one unit larger), a cue
+  that needs no colour. The NPC colour is a darker green (`#4fb354`, was `#9be37a`), so the four accents also differ in
+  lightness (L\* 87 Character, 81 Inner, 72 Narrator, 65 NPC): for protanopes Character and NPC were ΔE 6.5 apart, now
+  about 19. The tint keeps 4.5:1 over a white scene only with a background of 60% or more; under that the text is
+  white.
+- **Changed: ghost icon buttons in the header (#186, the target size of #183).** Pause (two bars, a triangle while
+  paused), history (three lines) and hide (x) are grey icons with no box until hovered, drawn with textures; each is a
+  24×24 target, 6 units apart. They replace the three red letter buttons.
+- **Changed: "x" only hides the box (#186, #183).** A waiting proposal is no longer discarded: it stays in the Gateway,
+  comes back with the next line, and the speak key first shows it again (a second press sends it), so a line that is
+  not on screen is never sent (#176). Text typed in the editor is kept as the proposal's edited text, and the editor never opens in a
+  hidden box (the speak button's editor option shows the proposal first). The lines held
+  behind the proposal are dropped from the box (they are in the history). `Gateway:Confirm` asks the new
+  `Narrator:BringBack` first.
+- **Changed: the proposal bar (#186).** The channel is a chip in the voice colour at the left (click to change it); on
+  the right a quiet text **Discard**, then **Another**, **Edit**, **To chat** and **Send**, the one primary (gold)
+  button, which shows the speak key when one is bound and there is room. The buttons are sized to their text and
+  right-aligned, with a rule above the bar. The header no longer repeats the channel: it says *proposal* and the
+  countdown (`proposal_tag` replaces `proposal_for`).
+- **Changed: a thin time line instead of the fade (#186).** A 2-unit line in the voice colour along the bottom edge
+  shrinks as the line's time runs out; when it ends the box goes. The frame alpha stays 1, so the opacity setting is
+  still applied once, to the background (#173). The line stops 1.5 s before its end while the box is hovered (#21),
+  is not drawn for a waiting proposal (its label counts down) and is off with *Reduce motion*.
+- **Fixed: fixed offsets at large text sizes (#182, narrator part).** The header height comes from the label's font
+  (at least 28, label + 12), the label stops before the buttons, and the text is anchored under the header instead
+  of 24 units from the top, so at size 28 the label no longer runs under the buttons or into the line.
+- **Added: the history matches the box (#174, #182, history parts).** The same black surface and edge, the narrator's
+  font at the narrator's size (its height follows: eight lines), a close box, **Esc** closes it (`UISpecialFrames`),
+  and a drag handle with a grip. Until it is dragged it sits above the box and hides with it; once dragged it keeps its
+  own place (`ui.narrator.historyPos`, nil by default) and stays when the box hides. `/au narrator reset` forgets it.
+- **Changed: the tooltips.** *x* says the proposal is kept; new tooltips for the history's close box and handle.
+- **Docs:** [The Narrator](docs/wiki/The-Narrator.md), [Chat Gateway](docs/wiki/Chat-Gateway.md), the G1 checklist
+  (new section U-narrator-look); the narrator component of the mockups, the narrator, proposal and history PNGs and
+  `narrator-demo.gif` are regenerated from the new layout.
+- **Known limits:** the voice label and the muted header text are still under 4.5:1 over a white scene at the 55%
+  minimum background (they pass at the default 80%). The dialogue window still uses the old NPC green; it belongs to
+  the window style work (u-windows). The inner voice's typeface needs `Fonts\ARIALN.TTF` in the client (G1 N1).
+
 ### Licensing touch-ups (ADR 0034)
 
 - **Added:** an express reservation of text and data mining rights for the phrases and narrative data
