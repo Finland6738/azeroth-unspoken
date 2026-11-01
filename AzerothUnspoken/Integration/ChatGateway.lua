@@ -752,6 +752,8 @@ function Gateway:Confirm()
 			self:Improvise()
 			return false
 		end
+		-- #186: a proposal hidden with the narrator's "x" comes back on screen first; it never leaves unseen (#176)
+		if NS.Narrator and NS.Narrator:BringBack(p) then return false end
 		if self:EffectiveMode() == "PREVIEW" and not p.reviewed then
 			p.reviewed = true
 			if NS.Narrator and NS.Narrator:OpenEditor() then return false end

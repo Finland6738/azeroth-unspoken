@@ -292,6 +292,8 @@ local Any
 local anyMeta = { __index = function() return function() return Any() end end }
 Any = function() return setmetatable({}, anyMeta) end
 GameTooltip = Any()
+-- FrameXML: the frames Esc hides (#174)
+UISpecialFrames = {}
 
 -- Widget con stato minimo: mostra/nasconde, testo, trasparenza, dimensioni, script, figli.
 -- I metodi non definiti qui restituiscono un oggetto "qualunque" e non fanno nulla.

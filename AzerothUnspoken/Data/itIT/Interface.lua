@@ -46,13 +46,16 @@ NS:RegisterLanguage("it", {
 
 		-- le quattro voci (GDD §5.3)
 		voice_narrator = "Narratore", voice_inner = "Voce interiore", voice_character = "Personaggio", voice_npc = "NPC",
-		proposal_for = "proposta per %s", sent_to = "inviato in %s",
+		proposal_tag = "proposta", sent_to = "inviato in %s",
 		proposal_left = "%d s", narrator_held = "+%d in cronologia",
 		btn_send = "Invia", btn_edit = "Modifica", btn_discard = "Scarta", btn_copy = "Nella chat",
 		btn_another = "Un'altra", tip_another = "Cambia la frase proposta con un'altra per lo stesso momento (non invia nulla).",
 		tip_copy = "Copia la frase nella casella della chat, già sul canale giusto: la invii tu con Invio.",
 		tip_pause = "Pausa immediata (di nuovo per riprendere)", tip_history = "Cronologia recente",
-		tip_close = "Nascondi (e scarta la proposta)", tip_channel = "Cambia canale",
+		tip_close = "Nascondi il riquadro (la proposta in attesa resta: il tasto «pronuncia» la rimostra)",
+		tip_channel = "Cambia canale",
+		tip_history_close = "Chiudi la cronologia (Esc)",
+		tip_history_drag = "Trascina per spostare la cronologia: da allora tiene il suo posto e resta quando il riquadro si nasconde",
 		paused_on = "narratore in pausa. Premi di nuovo il tasto (o /au pause) per riprendere.",
 		paused_off = "narratore di nuovo attivo.",
 
