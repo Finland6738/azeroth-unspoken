@@ -150,6 +150,37 @@ local function Button(rest, db)
 	NS:Print(NS:L(db.ui.showButton and "button_shown" or "button_hidden"))
 end
 
+-- /au trp3 (#191): the Total RP 3 etiquette of the chat. `ooc on/off`: while Total RP 3 says "out of character" the
+-- narrator stays private (chat.respectOOC, on by default); `markup on/off`: an emote sent outside /e is written *like
+-- this* (chat.emoteMarkup, off by default). Without arguments it says how both are set.
+local TRP3_WORDS = K.Register("trp3", { ooc = "ooc", markup = "markup" })
+
+local function Trp3(rest, db)
+	local word, arg = rest:match("^([^ ]*) *(.-)$")
+	local what = TRP3_WORDS[NS.Lower(word or "")]
+	if what then
+		local on = K.OnOff(arg)
+		if on == nil and arg ~= "" then
+			NS:Print(NS:L("invalid_value", arg, NS:L("values_on_off")))
+			return
+		end
+		local key = what == "ooc" and "respectOOC" or "emoteMarkup"
+		if on == nil then on = not db.chat[key] end
+		db.chat[key] = on
+		NS:Print(NS:L(what == "ooc" and (on and "trp3_ooc_on" or "trp3_ooc_off") or (on and "trp3_markup_on" or "trp3_markup_off")))
+		if what == "ooc" then NS.Gateway:Changed() end
+		return
+	elseif rest ~= "" then
+		NS:Print(NS:L("invalid_value", rest, NS:L("values_trp3")))
+		return
+	end
+	NS:Print(NS:L(db.chat.respectOOC and "trp3_ooc_on" or "trp3_ooc_off"))
+	if NS.TotalRP3 and NS.TotalRP3:IsPresent() then
+		NS:Print(NS:L("trp3_ooc_now", NS:L(NS.TotalRP3:IsOutOfCharacter() and "trp3_status_ooc" or "trp3_status_ic")))
+	end
+	NS:Print(NS:L(db.chat.emoteMarkup and "trp3_markup_on" or "trp3_markup_off"))
+end
+
 local function Language(rest, db)
 	local code = NS.Config:NormalizeLocale(rest)
 	if code then
@@ -289,6 +320,7 @@ Commands.list = {
 	{ name = "another", fn = function() NS.Gateway:Reroll() end, usage = "another", desc = "help_another", group = "chat" },
 	{ name = "cancel", fn = function() NS.Gateway:Discard() end, usage = "cancel", desc = "help_cancel", group = "chat" },
 	{ name = "copy", fn = function() NS.Gateway:CopyToChat() end, usage = "copy", desc = "help_copy", group = "chat" },
+	{ name = "trp3", fn = Trp3, usage = "trp3 [ooc on/off / markup on/off]", desc = "help_trp3", group = "chat" },
 	{ name = "narrator", fn = Narrator, usage = "narrator [history / reset / clear]", desc = "help_narrator", group = "narrator" },
 	{ name = "soul", fn = function(rest) NS.Personality:Command(rest) end,
 		usage = "soul [list / neutral / archetype <id> / trp3 on/off / <trait> <value> / avoid <topic>]", desc = "help_soul",

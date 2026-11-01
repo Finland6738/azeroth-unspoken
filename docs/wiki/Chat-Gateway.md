@@ -111,6 +111,20 @@ Command: `/au channel <value>`. Panel: **Default channel**. If the channel is no
 
 When a spoken line is sent as an emote, it is written as *says, "..."* so it still reads naturally.
 
+When a narrator emote is sent on `/say` or a group channel instead of `/emote`, it starts with your character's name
+(*Thalia sighs.*), since the game shows the name only in front of real emotes. With **emote markup** on, it is
+written between asterisks instead (`*sighs.*`), the usual roleplay way to write an action in `/say`, which Total RP 3
+colours as an emote (its *emote detection*, on by default in Total RP 3). The game already shows who is speaking, so
+the name is not repeated. Emote markup is **off by default**: `/au trp3 markup on` turns it on. Lines sent with
+`/emote` never change.
+
+## Out of character (Total RP 3)
+
+If Total RP 3 is installed and your status there is **out of character**, nothing is proposed for chat and nothing is
+sent by itself: the narrator stays private, whatever the mode. A proposal already waiting is dropped, not sent.
+`/au debug` shows *effective PRIVATE* and *held by Total RP 3 OOC true*. This is on by default; `/au trp3 ooc off`
+turns it off. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3#out-of-character-the-narrator-stays-private]].
+
 ## Flood protection
 
 To keep chat pleasant for everyone, these limits always apply:
@@ -141,6 +155,8 @@ If you try to send too fast, you see *"too fast: wait a few seconds before sendi
 | Default channel | automatic | panel **Default channel**, `/au channel` |
 | Chat proposals module | on | panel modules; off works like private mode |
 | Speak button opens the editor | off | `/au button editor on` |
+| Stay private when Total RP 3 says out of character | on | `/au trp3 ooc on\|off` |
+| Emote markup outside `/emote` (`*action*`) | off | `/au trp3 markup on\|off` |
 
 ## What you will see
 

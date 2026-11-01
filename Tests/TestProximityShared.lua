@@ -42,7 +42,7 @@ local function Fresh()
 	P.target, P.npc, P.party, P.group, P.raid, P.mouseover, P.nameplates = nil, nil, nil, false, false, nil, nil
 	P.zone, P.combat, P.dead, P.hp, P.hpMax, P.mapID = "Durotar", false, false, 100, 100, 1411
 	SECRET_UNITS = {}
-	TRP3_API = nil
+	TRP3_API, AddOn_TotalRP3 = nil, nil
 	NS.db.locale, NS.db.enabled, NS.paused, NS.db.chance = "it", true, false, {}
 	NS.db.intensity, NS.db.proseDepth = 100, "literary"
 	NS.db.pacing.globalCooldownSeconds = 0
@@ -351,8 +351,7 @@ end)
 T.run("with the Total RP 3 consent a stranger with a profile is only a session suggestion", function()
 	Fresh()
 	ProximityOn()
-	TRP3_API = { utils = { str = { getUnitID = function(u) return "Eve-Stormrage" end } },
-		register = { isUnitIDKnown = function(id) return id == "Eve-Stormrage" end } }
+	FAKE_TRP3({ unitID = function() return "Eve-Stormrage" end, profiles = { ["Eve-Stormrage"] = {} } })
 	Nameplate(1, EVE)
 	T.eq(Count(R.candidates), 0, "no consent: nothing")
 	NS.db.interlocutor.trp3Others = true
@@ -384,7 +383,7 @@ T.run("with the Total RP 3 consent a stranger with a profile is only a session s
 	-- and adding the suggested person is the user's click: no observation comes from a sighting
 	local rec = R:AddPlayer("Eve-Stormrage", "user")
 	T.eq(rec.seen.count, 0, "a sighting is not an encounter: nothing is counted when the user adds them")
-	TRP3_API = nil
+	TRP3_API, AddOn_TotalRP3 = nil, nil
 end)
 
 T.run("the user block is never written by proximity (also with the shared list on)", function()
@@ -1224,19 +1223,17 @@ T.run("with the Total RP 3 consent a stranger without a profile is not an event 
 	Fresh()
 	ProximityOn()
 	NS.db.interlocutor.trp3Others = true
-	TRP3_API = { utils = { str = { getUnitID = function() return "Eve-Stormrage" end } },
-		register = { isUnitIDKnown = function() return false end } }
+	FAKE_TRP3({ unitID = function() return "Eve-Stormrage" end })
 	local published = EventBus.stats.published
 	Crowd(30, 3, 10)
 	T.eq(EventBus.stats.published - published, 0, "strangers with no profile: nothing on the bus")
-	TRP3_API = { utils = { str = { getUnitID = function() return "Eve-Stormrage" end } },
-		register = { isUnitIDKnown = function(id) return id == "Eve-Stormrage" end } }
+	FAKE_TRP3({ unitID = function() return "Eve-Stormrage" end, profiles = { ["Eve-Stormrage"] = {} } })
 	ADVANCE(2)
 	P.nameplates = { [1] = EVE }
 	FIRE("NAME_PLATE_UNIT_ADDED", "nameplate1")
 	T.ok(R.candidates["Eve-Stormrage"] ~= nil, "a stranger who has a profile is still suggested")
 	T.eq(Count(NS.cdb.relationships.players), 0, "and not a record")
-	TRP3_API = nil
+	TRP3_API, AddOn_TotalRP3 = nil, nil
 end)
 
 T.run("the events follow the relations module, not only the option (#164)", function()

@@ -119,9 +119,9 @@ function Diagnostics:Report(verbose)
 			tostring(NS.paused)))
 		if NS.Gateway then
 			local g = NS.Gateway:Status()
-			Add(("Chat Gateway: mode %s (effective %s), autoPublicSay %s, channel %s, pending %s, sent %d (last minute %d, auto %d), blocked by the client %d, last refusal %s"):format(
+			Add(("Chat Gateway: mode %s (effective %s), autoPublicSay %s, channel %s, pending %s, sent %d (last minute %d, auto %d), blocked by the client %d, last refusal %s, held by Total RP 3 OOC %s"):format(
 				g.mode, g.effective, tostring(g.autoPublicSay), g.channel, tostring(g.pending), g.total, g.lastMinute,
-				g.lastMinuteAuto, g.blocked or 0, tostring(g.lastRefusal)))
+				g.lastMinuteAuto, g.blocked or 0, tostring(g.lastRefusal), tostring(g.oocHeld)))
 		end
 		if NS.Director and NS.Director.Status then Add("Narrative Director: " .. NS.Director:Status()) end
 		if NS.Profiler then Add("Profile: " .. NS.Profiler:Summary()) end

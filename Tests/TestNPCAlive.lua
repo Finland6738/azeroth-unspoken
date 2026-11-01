@@ -42,7 +42,7 @@ local function Fresh()
 	NS.db.npcAlive.autoOffer = true
 	NS.db.output.npcDialogues = true
 	NS.db.output.privateNarrator = true
-	TRP3_API = nil
+	TRP3_API, AddOn_TotalRP3 = nil, nil
 	P.target, P.npc, P.party, P.group, P.raid, P.cinematic = nil, nil, nil, false, false, false
 	P.zone, P.subzone, P.combat, P.dead, P.hp, P.hpMax, P.resting = "Elwynn Forest", "", false, false, 100, 100, false
 	P.instance, P.instanceType, P.instanceName, P.instanceID, P.difficulty = false, nil, nil, nil, nil

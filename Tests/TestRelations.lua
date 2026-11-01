@@ -474,12 +474,11 @@ T.run("nessun giocatore entra in lista senza un'azione dell'utente", function()
 	FIRE("CHAT_MSG_WHISPER_INFORM", "ti racconto il piano segreto di stanotte", "Cora-Stormrage", "", "", "Cora", "", 0, 0, "", 0, 99)
 	T.ok(R.candidates["Cora-Stormrage"] and R.candidates["Cora-Stormrage"].source == "whisper", "risposta in privato: proposta")
 	-- Total RP 3: solo la presenza nel registro
-	TRP3_API = { utils = { str = { getUnitID = function() return "Eve-Stormrage" end } },
-		register = { isUnitIDKnown = function(id) return id == "Eve-Stormrage" end } }
+	FAKE_TRP3({ unitID = function() return "Eve-Stormrage" end, profiles = { ["Eve-Stormrage"] = {} } })
 	P.target = { name = "Eve", realm = "Stormrage", player = true, guid = "Player-1-0000DDDD" }
 	ADVANCE(1); FIRE("PLAYER_TARGET_CHANGED")
 	T.ok(R.candidates["Eve-Stormrage"] and R.candidates["Eve-Stormrage"].source == "trp3", "bersaglio con profilo TRP3: proposta")
-	TRP3_API = nil
+	TRP3_API, AddOn_TotalRP3 = nil, nil
 	T.eq(Count(NS.cdb.relationships.players), 0, "nessuno in lista, dopo tutte le fonti")
 	-- il sistema non può aggiungere da solo: serve source = "user"
 	local rec, why = R:AddPlayer("Aldric-Stormrage", "auto")

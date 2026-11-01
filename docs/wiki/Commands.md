@@ -84,6 +84,9 @@ See [[The Narrator and the Four Voices|The-Narrator]].
 | `/au speak` | The same as the speak key: sends the waiting proposal (or opens the editor in preview mode). With no proposal, makes a new one that fits the moment. |
 | `/au another` | Swaps the waiting proposal for another line for the same moment. Sends nothing. |
 | `/au copy` | Copies the proposal into the chat box, on the right channel. You send it with Enter. |
+| `/au trp3` | Shows the Total RP 3 chat etiquette: whether the narrator stays private while you are out of character, what Total RP 3 says right now, and whether emotes outside `/emote` are written between asterisks. |
+| `/au trp3 ooc on\|off` | With `on` (the default), nothing is proposed or sent to chat while your Total RP 3 status is out of character. With no value, switches it. |
+| `/au trp3 markup on\|off` | With `on`, a narrator emote sent on `/say` or a group channel is written `*like this*` instead of starting with your name. Off by default. With no value, switches it. |
 | `/au cancel` | Discards the waiting proposal. |
 | `/au button` | Shows or hides the speak button. |
 | `/au button on\|off` | Shows (`on`) or hides (`off`) the speak button. |
