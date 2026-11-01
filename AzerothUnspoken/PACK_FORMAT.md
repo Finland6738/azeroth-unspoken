@@ -511,6 +511,7 @@ in the list, **they are all false** (except `isKnown = false`): a phrase that ci
 | `relMetDays = 60` or `{ 7, 30 }` | whole days since the first meeting with that NPC |
 | `relMetTime = "night"` (or a list) | the time of day of the first meeting: `dawn`, `day`, `dusk`, `night` |
 | `relMetWeather = "rain"` (or a list) | the weather of the first meeting, when the client said it: `clear`, `rain`, `snow`, `storm`, `sand`, `fog` |
+| `relVowed = true` | the character made the private vow to that NPC at the top of a romance (N3, #215); false for a player and for nobody |
 | `relPromiseDays = 7` or `{ 7, 30 }` | whole days the oldest open promise to that NPC has waited: a quest accepted from them and not yet handed in or abandoned (N4, #216). False with no open promise |
 | `relOathbroken = true` | that NPC remembers an oath the character broke (the mark has not faded yet) |
 | `oathbreakerHere = true` | the place where the character is (the map) remembers an oath broken there. It needs no person: it is not a relationship condition |

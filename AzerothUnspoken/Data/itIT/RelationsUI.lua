@@ -124,6 +124,12 @@ NS:RegisterLanguage("it", {
 		rel_promises_line = "La tua parola: %d promesse aperte, la più vecchia da %d giorni.",
 		rel_promises_oaths = "La tua parola: %d promesse aperte, la più vecchia da %d giorni (%d giurate).",
 		rel_oath_mark = "Ricorda il giuramento che hai infranto (ne resta il %d%%).",
+		-- N3 (#215): il voto privato al culmine di una storia d'amore (diario, narratore, finestra)
+		mem_kind_relation_vow = "Un voto privato",
+		rel_mem_vow = "Un voto silenzioso, mai detto ad alta voce",
+		rel_vow_1 = "Nessuno lo sente, e %s non lo saprà mai: eppure ti prometti lo stesso, in silenzio.",
+		rel_vow_2 = "Un voto, fatto in silenzio: ovunque vada la strada, ti riporterà da %s.",
+		rel_vow_made = "Hai fatto un voto privato per questa persona.",
 		rel_help = "uso: /au relationships [list / people / add <nome> / dismiss <nome> / remove <nome/npc:ID> / detail <nome> / note <nome> <testo> / tags <nome> <tag,...> / label <nome> <testo> / set <nome> <asse> <valore> / export / auto on/off / attraction on/off / feeling <nome> <sentimento> [preset] / forget <nome> / proximity on/off / share [on/off/all/copy] / scope <nome> shared/character / reset [all/npcs/players/shared]]",
 	},
 })

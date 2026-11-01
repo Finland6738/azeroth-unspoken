@@ -1,4 +1,4 @@
-# 0037. Promises, oaths and the oathbreaker mark
+# 0038. Promises, oaths and the oathbreaker mark
 
 - Status: Accepted
 - Date: 2026-11-01 (issue #216, step N4 of the NPC relationships milestone; owner decisions of 2026-11-01)

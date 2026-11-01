@@ -401,6 +401,15 @@ NS:AddTexts("enUS", {
 		"Word travels in a place like this. I wonder how many here know about the oath I broke.",
 		{ "People talk. I would rather they talked about something else.", depth = "natural" },
 	},
+	-- N3 (#215): romance with an NPC
+	["rel.npc.attraction"] = {
+		"Nothing to see here. Only a pulse that has forgotten its own pace.",
+		{ "Breathe. It is only a conversation. It is only a conversation.", depth = "natural" },
+	},
+	["rel.npc.vowed"] = {
+		"The vow is still there, unspoken, and it has not grown any lighter.",
+		"I promised in silence. Silence keeps its promises better than words do.",
+	},
 	["rel.npc.innkeeper"] = {
 		"Here I am again. Is there still some of that stew, or do I settle for bread?",
 		"Always a pleasure. Got a room for someone who walked too far?",

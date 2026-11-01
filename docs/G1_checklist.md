@@ -1029,6 +1029,28 @@ client finto.
     - **Cosa aspettarti:** nel diario «Un legame cresce: Amico (<zona>)», una sola volta per quell'NPC, senza il suo nome.
       Con **Avvisi di livello** spento (scheda Opzioni) la riga del narratore non c'è, il diario sì.
 
+## N3: storia d'amore con gli NPC, solo con il sesso opposto, con un voto (aggiunto dall'issue #215)
+
+Solo narrazione, privata, mai in chat. API già usate altrove (`UnitSex`, `UnitCreatureType`, entrambe nel dump di
+Forever); nuova è la lettura sull'NPC del dialogo (`npc`). Provato solo con il client finto.
+
+- **N3.1 · Le letture.** Accendi l'asse dell'attrazione (`/au relationships attraction on`). Parla con un NPC umanoide
+  del sesso opposto, poi con uno del tuo stesso sesso e, se lo trovi, con un NPC non umanoide che parla (una bestia o un
+  elementale che dà missioni).
+    - **Cosa riportare:** se `UnitSex("npc")` e `UnitCreatureType("npc")` danno valori per l'NPC di un dialogo (scrivi
+      `/run print(UnitSex("npc"), UnitCreatureType("npc"))` con il dialogo aperto).
+- **N3.2 · La crescita.** Con un NPC del sesso opposto già **Amico** (o dopo `/au relationships set npc:<numero>
+  affection 60` e `trust 40`), parlaci qualche volta nello stesso giorno.
+    - **Cosa aspettarti:** l'attrazione sale di poco (al massimo circa 2 punti al giorno). Con un NPC del tuo stesso sesso,
+      o con un mercante con cui commerci soltanto, non si muove.
+- **N3.3 · Sotto Amico.** Con un NPC Conoscente, parlaci qualche volta.
+    - **Cosa aspettarti:** l'attrazione non si muove.
+- **N3.4 · Il voto.** Imposta `/au relationships set npc:<numero> attraction 79` e `affection 60`, poi parlaci.
+    - **Cosa aspettarti:** una riga privata nel narratore («Nessuno lo sente, e <nome> non lo saprà mai: …» oppure «Un
+      voto, fatto in silenzio: …»), nulla in chat; nel diario «Un voto silenzioso, mai detto ad alta voce (<zona>)»,
+      senza il nome; il dettaglio dice «Hai fatto un voto privato per questa persona.» Parlandoci ancora non si ripete.
+- **N3.5 · Asse spento.** Spegni l'asse dell'attrazione.
+    - **Cosa aspettarti:** nessuna attrazione, nessuna riga d'amore, nessun voto.
 ## N4: promesse, giuramenti e spergiuri (aggiunto dall'issue #216)
 
 Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Eventi e funzioni nuovi per l'addon, tutti
@@ -1208,6 +1230,9 @@ N2 primo incontro ....... ora giusta? ___  meteo giusto o assente? ___  zona e l
 N2 riquadro NPC ......... livello e prossimo? ___  temperamento? ___  si sovrappone? (deve essere NO) ___
 N2 temperamento ......... locandiere più veloce della guardia? ___  razza dell'NPC dal client? ______
 N2 avvisi ............... riga privata? ___  mai in combattimento? ___  dopo il combattimento? ___  troppe? ___  diario Amico? ___
+N3 letture .............. UnitSex("npc") ______  UnitCreatureType("npc") ______
+N3 storia d'amore ....... sale con un Amico del sesso opposto? ___  non con stesso sesso/mercante/sotto Amico? ___
+N3 voto ................. riga privata? ___  diario senza nome? ___  una volta sola? ___  nulla in chat? ___
 N4 promessa ............ riga nel dettaglio? ___  da un oggetto nessuna? ___
 N4 abbandono ............ riga privata (dopo quanti s) ______  hook AbandonQuest ______  SetAbandonQuest ______
 N4 consegna ............. riga di abbandono dopo una consegna? (deve essere NO) ___  a un altro NPC? ___

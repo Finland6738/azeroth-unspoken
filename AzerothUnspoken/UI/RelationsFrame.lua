@@ -697,9 +697,12 @@ local function RefreshDetail()
 	if not isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_npc"))
 		frame.dSeenLine:SetText(R:LevelText(info) .. "\n" .. R:TemperText(s.key, rec))
-		-- N4 (#216): the word given to the NPC, after the first meeting
-		local promises = R:PromiseText(s.key, rec)
-		frame.dSeenFacts:SetText(R:MetText(rec, Stamp) .. (promises ~= "" and ("\n" .. promises) or ""))
+		-- N3 (#215): the private vow, when the character made it; N4 (#216): the word given to the NPC
+		local vow, promises = R:VowText(rec), R:PromiseText(s.key, rec)
+		local extra = {}
+		if vow ~= "" then table.insert(extra, vow) end
+		if promises ~= "" then table.insert(extra, promises) end
+		frame.dSeenFacts:SetText(R:MetText(rec, Stamp) .. (#extra > 0 and ("\n" .. table.concat(extra, "\n")) or ""))
 	end
 	if isPlayer then
 		frame.dSeenTitle:SetText(NS:L("rel_section_seen"))

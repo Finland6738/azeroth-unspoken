@@ -124,6 +124,12 @@ NS:RegisterLanguage("en", {
 		rel_promises_line = "Your word: %d open, the oldest for %d days.",
 		rel_promises_oaths = "Your word: %d open, the oldest for %d days (%d sworn as an oath).",
 		rel_oath_mark = "Remembers the oath you broke (%d%% of it left).",
+		-- N3 (#215): the private vow at the top of a romance (journal, narrator, window)
+		mem_kind_relation_vow = "A private vow",
+		rel_mem_vow = "A quiet vow, spoken to no one aloud",
+		rel_vow_1 = "No one hears it, and %s never will: you promise yourself to them all the same.",
+		rel_vow_2 = "A vow, made in silence: wherever the road goes, it will lead back to %s.",
+		rel_vow_made = "You made a private vow to them.",
 		rel_help = "usage: /au relationships [list / people / add <name> / dismiss <name> / remove <name/npc:ID> / detail <name> / note <name> <text> / tags <name> <tag,...> / label <name> <text> / set <name> <axis> <value> / export / auto on/off / attraction on/off / feeling <name> <feeling> [preset] / forget <name> / proximity on/off / share [on/off/all/copy] / scope <name> shared/character / reset [all/npcs/players/shared]]",
 	},
 })

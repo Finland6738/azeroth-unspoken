@@ -374,7 +374,20 @@ T.run("#157: the memo of a pick changes no pick (neutral, soul and emotions, imp
 end)
 
 T.run("#138: rules share their shape and their conditions; a write changes only its rule", function()
-	local a, b = Engine.byId["syn.000001"], nil
+	-- the first synthetic clone (in id order) that shares its shape with another rule: which base rule a clone copies
+	-- depends on how many base rules there are, so syn.000001 alone may have a shape of its own (N3, #215)
+	local byShape = {}
+	for _, p in pairs(Engine.byId) do
+		local s = Engine.ShapeOf(p)
+		if s then byShape[s] = (byShape[s] or 0) + 1 end
+	end
+	local a, b
+	for i = 1, 200 do
+		local p = Engine.byId[("syn.%06d"):format(i)]
+		if p and (byShape[Engine.ShapeOf(p)] or 0) > 1 then a = p; break end
+	end
+	T.ok(a ~= nil, "a synthetic clone shares its shape")
+	a = a or Engine.byId["syn.000001"]
 	local shape = Engine.ShapeOf(a)
 	T.ok(shape ~= nil, "a registered rule has a shape")
 	local own = 0

@@ -164,7 +164,10 @@ R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionSt
 	-- N4 (#216): Data/Relationships.lua fills it
 	promises = { maxDays = 120, max = 40, settle = 3, remindDays = 7, remindHours = 20, lateDays = 7, perSession = 4,
 		variants = 1, oath = { band = "friend", curated = false },
-		marks = { npcDays = 240, cityDays = 90, npcTrust = 0.25, cityTrust = 0.6 } } }
+		marks = { npcDays = 240, cityDays = 90, npcTrust = 0.25, cityTrust = 0.6 } },
+	-- N3 (#215): Data/Relationships.lua fills it
+	romance = { minLevel = "friend", gain = {}, decay = 1, cap = 0, humanoid = { names = {} },
+		vow = { attraction = 100, label = "lover", variants = 1 } } }
 R.candidates = {}              -- [chiave] = { key, source, t }: persone proposte, solo in questa sessione
 R.dismissed = {}               -- [chiave] = true: proposte che l'utente ha scartato (solo sessione)
 R.recalls = {}                 -- [evento] = true: eventi che citano un rapporto (il validatore chiede una condizione)
@@ -400,6 +403,30 @@ function R:RegisterData(def)
 		if type(oath.curated) == "boolean" then cp.oath.curated = oath.curated end
 		for k, v in pairs(type(pr.marks) == "table" and pr.marks or EMPTY) do
 			if cp.marks[k] ~= nil and IsNumber(v) and v >= 0 then cp.marks[k] = v end
+		end
+	end
+	-- N3 (#215): romance (the gains merged by source, so a pack can add one; the sex rule is not data)
+	local rm = def.romance
+	if type(rm) == "table" then
+		local cr = c.romance
+		if type(rm.minLevel) == "string" then cr.minLevel = rm.minLevel end
+		for k, v in pairs(type(rm.gain) == "table" and rm.gain or EMPTY) do
+			if type(k) == "string" and IsNumber(v) and v >= 0 then cr.gain[k] = v end
+		end
+		if IsNumber(rm.decay) and rm.decay > 0 and rm.decay <= 1 then cr.decay = rm.decay end
+		if IsNumber(rm.cap) and rm.cap >= 0 then cr.cap = rm.cap end
+		local h = rm.humanoid
+		if type(h) == "table" then
+			if IsNumber(h.id) then cr.humanoid.id = h.id end
+			for _, name in ipairs(type(h.names) == "table" and h.names or EMPTY) do
+				if type(name) == "string" then cr.humanoid.names[name] = true end
+			end
+		end
+		local v = rm.vow
+		if type(v) == "table" then
+			if IsNumber(v.attraction) then cr.vow.attraction = v.attraction end
+			if type(v.label) == "string" then cr.vow.label = v.label end
+			if IsNumber(v.variants) and v.variants >= 1 then cr.vow.variants = math.floor(v.variants) end
 		end
 	end
 	DefineChoiceTraits()
@@ -1397,10 +1424,11 @@ end
 ---@param source string fonte (chiave di config.increments)
 ---@param now number
 ---@param temper? number N2 (#214): the multiplier of the NPC's temperament, on the gains and on the daily caps (1)
+---@param inc? table N3 (#215): a row of the same shape to use instead of config.increments[source] (the romance)
 ---@param trustMult? number N4 (#216): a broken oath remembered: multiplies a positive trust gain (1)
 ---@return table<string, number>? gained
-function R:Increment(rec, source, now, temper, trustMult)
-	local inc = self.config.increments[source]
+function R:Increment(rec, source, now, temper, inc, trustMult)
+	inc = inc or self.config.increments[source]
 	if not inc then return nil end
 	local t = IsNumber(temper) and temper > 0 and temper or 1
 	local day = Day(now)
@@ -1468,9 +1496,15 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	if not uncounted then rec.count = (rec.count or 0) + 1 end
 	local clean = CleanText(name, self.NAME_LEN)
 	if clean then rec.name = clean end
-	local gained = self:Increment(rec, source, now, temper.gain, self:MarkTrust(npcID, rec, temper.forget))
+	local gained = self:Increment(rec, source, now, temper.gain, nil, self:MarkTrust(npcID, rec, temper.forget))
+	local warmed = self:Romance(npcID, rec, source, now, temper.gain, before, gained)
+	if warmed then
+		gained = gained or {}
+		gained.attraction = (gained.attraction or 0) + warmed
+	end
 	self:CompactNPCs()
 	AfterChange(self, "npc", rec, old)
+	if warmed and d.npcs[npcID] == rec then self:Vow(npcID, rec) end
 	local _, after = self:Disposition(self:Axes(rec))
 	if after ~= before and d.npcs[npcID] == rec then self:LevelChanged(npcID, rec, before, after) end
 	self:Changed()
@@ -1557,6 +1591,105 @@ function R:FlushLevelNotices()
 	local held = ls.held
 	ls.held = {}
 	for _, n in ipairs(held) do self:ShowLevelNotice(n) end
+end
+
+---------------------------------------------------------------------------
+-- N3 (#215): romance. The optional attraction axis grows slowly with an NPC of the opposite sex, humanoid, already a
+-- friend; at the top of it a private vow, once per NPC. Opposite sex only is a fixed rule (owner decision), not a
+-- setting. Narration only and private: the journal and the private narrator, never chat.
+---------------------------------------------------------------------------
+---What the client says of a unit that romance needs: its sex (2 male, 3 female; nil when unknown or neutral) and
+---whether it is humanoid (nil when the client does not say). Every value goes through Compat: a secret reads as nil.
+---@param unit string
+---@return integer? sex
+---@return boolean? humanoid
+function R.Kin(unit)
+	local sex = Compat.SafeCall("UnitSex", unit)
+	local name, id = Compat.SafeCall("UnitCreatureType", unit)
+	local h = R.config.romance.humanoid
+	local humanoid
+	if IsNumber(id) or type(name) == "string" then humanoid = (IsNumber(id) and id == h.id) or h.names[name] == true end
+	return (sex == 2 or sex == 3) and sex or nil, humanoid
+end
+
+---Keeps for this session what the client said of an NPC at an interaction (never saved: it is read again next time).
+---@param npcID integer
+---@param sex? integer
+---@param humanoid? boolean
+function R:NoteKin(npcID, sex, humanoid)
+	if not IsNumber(npcID) then return end
+	self.session.kin = self.session.kin or {}
+	self.session.kin[npcID] = { sex = sex, humanoid = humanoid }
+end
+
+---Whether the character could fall for this NPC: a humanoid of the opposite sex, both sexes known. Fixed rule.
+---@param npcID integer
+---@return boolean
+---@return string? why "unknown" | "creature" | "sex"
+function R:RomanceEligible(npcID)
+	local kin = self.session.kin and self.session.kin[npcID]
+	if not kin or kin.humanoid == nil then return false, "unknown" end
+	if kin.humanoid ~= true then return false, "creature" end
+	local mine = Compat.SafeCall("UnitSex", "player")
+	if not ((mine == 2 or mine == 3) and kin.sex) then return false, "unknown" end
+	if mine == kin.sex then return false, "sex" end
+	return true
+end
+
+---@param band string a disposition band
+---@param min string the lowest band allowed
+---@return boolean
+local function BandAtLeast(self, band, min)
+	local a, b = self.dispositionById[band], self.dispositionById[min]
+	return a ~= nil and b ~= nil and a.max >= b.max
+end
+
+---The attraction an interaction adds (RecordNPC): only with the axis on, from a source listed in `romance.gain`, with
+---an NPC that was already at `romance.minLevel` before it, when nothing in the interaction was negative, and only for
+---an NPC RomanceEligible accepts. Diminishing returns and a daily cap over all the sources ("romance" in rec.today).
+---@param npcID integer
+---@param rec AURelationRecord
+---@param source string
+---@param now number
+---@param temper number the multiplier of the NPC's temperament
+---@param before string the disposition band before the interaction
+---@param gained? table<string, number> what the interaction gave the other axes
+---@return number? delta
+function R:Romance(npcID, rec, source, now, temper, before, gained)
+	local rm = self.config.romance
+	local base = rm.gain[source]
+	if not (IsNumber(base) and base > 0) or not self:AttractionOn() then return nil end
+	for _, x in pairs(gained or EMPTY) do if x < 0 then return nil end end
+	if not BandAtLeast(self, before, rm.minLevel) or not self:RomanceEligible(npcID) then return nil end
+	local got = self:Increment(rec, "romance", now, temper,
+		{ gain = { attraction = base }, decay = rm.decay, cap = { attraction = rm.cap } })
+	local delta = got and got.attraction
+	return IsNumber(delta) and delta > 0 and delta or nil
+end
+
+---The top of the romance: attraction at `romance.vow.attraction` or more and the derived label `romance.vow.label`. A
+---private vow, once per NPC (rec.noted.vow): a permanent journal memory with no name, and one line of the private
+---narrator when the moment allows it (narrator on, not paused, not in combat, no invasive screen). Never chat.
+---@param npcID integer
+---@param rec AURelationRecord
+---@return boolean made
+function R:Vow(npcID, rec)
+	local v = self.config.romance.vow
+	if (rec.noted and rec.noted.vow) or AxisValue(rec, "attraction") < v.attraction
+		or DerivedOf(self, rec) ~= v.label then return false end
+	rec.noted = rec.noted or {}
+	rec.noted.vow = true
+	if NS.LivingMemory and NS.LivingMemory.Record then
+		NS.LivingMemory:Record({ kind = "relation_vow", tags = { "npc" }, source = "addon", perm = true,
+			zone = (self:Circumstances() or EMPTY).zone })
+	end
+	local db = NS.db
+	if db and NS.Narrator and NS.Narrator.Notice and not NS.paused and (db.intensity or 0) > 0
+		and db.output.privateNarrator and not Compat:InvasiveScreen()
+		and Compat.SafeCall("UnitAffectingCombat", "player") ~= true then
+		NS.Narrator:Notice(NS:L("rel_vow_" .. ((rec.count or 0) % v.variants + 1), self:DisplayName("npc", npcID)))
+	end
+	return true
 end
 
 ---------------------------------------------------------------------------
@@ -2782,6 +2915,8 @@ function R:Context(ctx, extra)
 		self:MetContext(ctx, rec)
 		self:PromiseContext(ctx, key, rec)
 	end
+	-- N3 (#215): the character made the private vow to this NPC (the condition relVowed)
+	ctx.relVowed = kind == "npc" and type(rec.noted) == "table" and rec.noted.vow == true or nil
 end
 
 ---N2 (#214): the first meeting with an NPC, for the recall lines:
@@ -2913,7 +3048,9 @@ local function InteractionNPC()
 	-- N2 (#214): the race token, if the client gives it for this NPC (the temperament's race factor)
 	local _, race = Compat.SafeCall("UnitRace", "npc")
 	if type(race) ~= "string" or Compat.IsSecret(race) or not race:match("^[A-Za-z]+$") or #race > R.RACE_LEN then race = nil end
-	return id, type(name) == "string" and name or nil, race
+	-- N3 (#215): its sex and whether it is humanoid (romance), kept for the session only
+	local sex, humanoid = R.Kin("npc")
+	return id, type(name) == "string" and name or nil, race, sex, humanoid
 end
 
 local EventBus = NS.EventBus
@@ -2924,8 +3061,8 @@ EventBus.dedupWindow.GROUP_CHANGED = 0     -- il gestore segna soltanto il grupp
 -- legge i nomi da queste chiamate); se uno manca nel client, Compat lo segna MISSING e solo quella fonte si spegne.
 local function NpcSource(wowEvent, kind)
 	EventBus:AddSource(wowEvent, { normalize = function()
-		local id, name, race = InteractionNPC()
-		return "NPC_INTERACT", { kind = kind, npcID = id, npcName = name, npcRace = race },
+		local id, name, race, sex, humanoid = InteractionNPC()
+		return "NPC_INTERACT", { kind = kind, npcID = id, npcName = name, npcRace = race, npcSex = sex, npcHumanoid = humanoid },
 			{ key = kind .. ":" .. tostring(id), expect = { "npcID" } }
 	end })
 end
@@ -2998,6 +3135,7 @@ function handlers.NPC_INTERACT(env)
 		R.session.races = R.session.races or {}
 		R.session.races[c.npcID] = c.npcRace
 	end
+	R:NoteKin(c.npcID, c.npcSex, c.npcHumanoid)
 	R.interaction = { npcID = c.npcID, name = c.npcName, kind = (kind == "gossip" or kind == "merchant") and kind or "other", t = now }
 	if kind == "quest_detail" then
 		R.questGiver = { npcID = c.npcID, name = c.npcName, t = now }
@@ -3394,6 +3532,13 @@ function R:MetText(rec, stamp)
 	return NS:L("rel_met_details", stamp(rec.first), table.concat(parts, ", "))
 end
 
+---N3 (#215): "A private vow was made." when the character made the vow to this NPC (empty otherwise).
+---@param rec AURelationRecord
+---@return string
+function R:VowText(rec)
+	return type(rec.noted) == "table" and rec.noted.vow == true and NS:L("rel_vow_made") or ""
+end
+
 ---The feelings of a record in words, "trust, gratitude" (empty if none).
 ---@param rec AURelationRecord
 ---@return string
@@ -3505,6 +3650,8 @@ local function Summary(self, kind, key)
 		-- N4 (#216): the word given to it
 		local promises = self:PromiseText(key, rec)
 		if promises ~= "" then text = text .. " " .. promises end
+		local vow = self:VowText(rec)
+		if vow ~= "" then text = text .. " " .. vow end
 	end
 	return text
 end
@@ -3695,6 +3842,12 @@ function R:OnInit()
 		NS.LivingMemory:RegisterKind("relation_oath", 4)
 		NS.LivingMemory:RegisterDescriber("relation_oath", function(e)
 			local text = NS:L("rel_mem_oath_broken")
+			return e.zone and (text .. " (" .. e.zone .. ")") or text
+		end)
+		-- N3 (#215): the private vow at the top of a romance, no name: "A quiet vow (Goldshire)"
+		NS.LivingMemory:RegisterKind("relation_vow", 4)
+		NS.LivingMemory:RegisterDescriber("relation_vow", function(e)
+			local text = NS:L("rel_mem_vow")
 			return e.zone and (text .. " (" .. e.zone .. ")") or text
 		end)
 	end
