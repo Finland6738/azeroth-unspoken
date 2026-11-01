@@ -8,6 +8,50 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### U-keyboard-combat: keys, sliders and targets; what the narrator does in a fight (issues #183, #185)
+
+Fixes from the UI review (UI-13 and UI-15 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Tested with the mock client
+only: nothing here has run in the real client yet (G1, checklist K1-K4 and C1-C4).
+
+- **Added: key bindings for every action of the proposal bar, the history, the journal and the NPC answers (#183).**
+  Discard, Edit, Next channel, History, Journal and NPC dialogue: answer 1, 2 and 3 join Speak, Another, Pause and NPC
+  dialogue in `Bindings.xml`, with their names in English and Italian. The answers of the NPC dialogue window are
+  numbered, and the answer keys press the button with that number (Talk on an offer, Close at the end).
+- **Added: `/au channel next` (#183).** Moves the waiting proposal to the next channel, like its channel chip; the
+  default channel is not touched.
+- **Added: "-", "+" and the mouse wheel on every slider (#183).** The Character Soul's 11 trait sliders carry their own
+  "-" and "+" (steps of 5); every slider, the relationship axes too, moves by one step with the mouse wheel. The track is
+  lighter, 5.4:1 against the window instead of 1.7:1 (3:1 is the minimum for a control), and a slider follows the cursor
+  (`OnUpdate`) only while it is dragged.
+- **Changed: every button is a 24-unit target (#183).** The window close box, the relationships' filters, column titles,
+  "-" and "+" and add/dismiss, and the NPC dialogue's answers and close button were 18 to 22 units high. The narrator's
+  header buttons were already 24x24, 6 apart, and its "x" only hides (#209).
+- **Changed: short words instead of single symbols (#183).** The journal's row actions say Keep, Delete, Forget, Clear,
+  Open, Pause, Skip, Resume, Start, Go, Pick, Turn off, Add and Dismiss instead of "P", "x", "...", "II", ">", "-" and
+  "+", each button as wide as its word; the NPC dialogue's close button says Close. The narrator's header keeps its three
+  drawn icons: there is no room for words next to the voice label.
+- **Added: a "Paused" badge (#183).** While the narrator is paused the speak button shows **Paused** under it (not dimmed
+  with the button), and a line asked for while paused says *paused* in its label.
+- **Added: an "In combat" setting (#185).** `pacing.inCombat`, in the Narrator section of the panel and with
+  `/au combat show|chat|hold|silent`: what a spontaneous line does during any fight. *Show* is the old behaviour;
+  *chat frame only* writes it in the chat window and the history, never in the box; *hold until combat ends*, the
+  default, keeps the last three lines and shows them half a second after the fight, one after the other, after the
+  victory line; *silent* makes the Narrative Director say nothing in any fight (gate reason `combat`). Demanding fights
+  stay muted as before.
+- **Changed: a chat proposal waits for the end of the fight, in every setting (#185).** A proposal made by a spontaneous
+  event in combat is held until `PLAYER_REGEN_ENABLED`, and one already waiting when the fight begins leaves the screen
+  and comes back after it, with its time from then and any text typed. With *show*, a line that automatic mode sends by
+  itself still goes out. A line the player asks for with a command is never held.
+- **Fixed: the proposal editor took the keyboard in combat (#185).** It never opens in combat (button, key or speak key in
+  preview mode, which shows the line in chat instead; a second press sends it as it is), and a fight that begins while it
+  is open closes it and keeps the text.
+- **Fixed: automatic mode retried after the client blocked a send (#185).** After a blocked automatic send the session
+  falls back to "confirm to send" and says so once: nothing more is sent by itself, so the client's "blocked" dialog
+  cannot come back. The saved choice stays; `/reload`, or choosing automatic sending again, ends it. The settings row and
+  `/au debug` show it.
+- **Fixed: the speak key made a battle line in combat (#185).** With nothing waiting, in combat it now makes no line and
+  says how many lines wait for the end of the fight, or that `/au battlecry` asks for one.
+
 ### U-windows: one window shell, Esc, the window scale and sturdier windows (issues #174, #187, #182, #192, #190)
 
 Fixes from the UI review (UI-04, UI-17, UI-12, UI-22 and the rest of UI-20 in

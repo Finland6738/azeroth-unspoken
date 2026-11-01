@@ -30,7 +30,7 @@ Personality is saved **per character**. If you chose a personality before this v
 Open it with `/au soul` or the **Character soul...** button in the [[settings panel|Settings]]. Close it with **Esc**, the **X** at the top right of its title band or **Close**. There you can:
 
 - pick an **archetype** (click to go to the next one);
-- drag the **slider** of each trait (the value is saved when you let go), or click **x** to clear it;
+- drag the **slider** of each trait (the value is saved when you let go), click its **-** and **+** (steps of 5) or turn the mouse wheel over it, or click **x** to clear it;
 - set the **inner voice**;
 - tick topics to avoid (an avoided topic has a full gold edge and a bar under its name);
 - reset to a **neutral profile**: it removes every choice of the character (archetype, traits, inner voice, topics to avoid), so it asks twice. The button has the red outline of the actions that lose data; the first click turns it into **Click again: neutral profile**, and a second click within a few seconds confirms. Closing the window cancels;

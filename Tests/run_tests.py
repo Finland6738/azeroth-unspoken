@@ -118,6 +118,17 @@ check('name="AZEROTHUNSPOKEN_SPEAK"' in bindings and "AzerothUnspoken_Speak()" i
 check('name="AZEROTHUNSPOKEN_PAUSE"' in bindings and "AzerothUnspoken_TogglePause()" in bindings, "tasto di pausa in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_NPC"' in bindings and "AzerothUnspoken_NPCDialogue()" in bindings, "tasto del dialogo ambientale in Bindings.xml")
 check('name="AZEROTHUNSPOKEN_REROLL"' in bindings and "AzerothUnspoken_Reroll()" in bindings, "tasto 'un'altra' in Bindings.xml")
+# #183: every action of the proposal bar, the history, the journal and the NPC answers have a key, a function that
+# exists after the load and a name in English and in Italian (Core/Bootstrap.lua)
+for name_, call_ in (("DISCARD", "AzerothUnspoken_Discard()"), ("EDIT", "AzerothUnspoken_Edit()"),
+                     ("CHANNEL", "AzerothUnspoken_Channel()"), ("HISTORY", "AzerothUnspoken_History()"),
+                     ("JOURNAL", "AzerothUnspoken_Journal()"), ("ANSWER1", "AzerothUnspoken_NPCAnswer(1)"),
+                     ("ANSWER2", "AzerothUnspoken_NPCAnswer(2)"), ("ANSWER3", "AzerothUnspoken_NPCAnswer(3)")):
+    check(f'name="AZEROTHUNSPOKEN_{name_}"' in bindings and call_ in bindings, f"key {name_} in Bindings.xml")
+boot_ = open(os.path.join(ADDON, "Core", "Bootstrap.lua"), encoding="utf-8").read()
+for m_ in re.finditer(r'<Binding name="(\w+)"[^>]*>\s*(\w+)\(', bindings):
+    check(G[m_.group(2)] is not None, f"{m_.group(1)}: {m_.group(2)} exists after the load")
+    check(boot_.count(f"BINDING_NAME_{m_.group(1)} = ") == 2, f"{m_.group(1)}: a name in English and in Italian")
 for f in toc_files(ADDON, ADDON_NAME):
     check(os.path.isfile(os.path.join(ADDON, f.replace("\\", "/"))), f"file del .toc esistente: {f}")
 for f in ("Integration\\ChatGateway.lua", "UI\\NarratorFrame.lua", "Systems\\Director.lua", "UI\\Wizard.lua"):
@@ -341,6 +352,7 @@ def fight(n):
     for i in range(n):
         G.ADVANCE(100); setP(combat=True); G.FIRE("PLAYER_REGEN_DISABLED")
         G.ADVANCE(30); setP(combat=False); G.FIRE("PLAYER_REGEN_ENABLED")
+        G.ADVANCE(1)   # #185: the lines held during the fight come out half a second after its end
 G.SENT = lua.table()
 NS.db.output.autoPublicSay = False
 fight(10)
@@ -469,7 +481,7 @@ check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dial
 for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
-             "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks"):
+             "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si

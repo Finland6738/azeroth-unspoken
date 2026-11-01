@@ -9,6 +9,7 @@
 -- Il disegno viene da NPCAlive:View(); qui non c'è logica di dialogo.
 -- #182: the window follows the window scale, its text size and opacity are in the settings panel, and each text sits
 -- under the one above (the line under the title, the answers under the line), so nothing overlaps at large sizes.
+-- #183: the answers are numbered and have keys (NPC answer 1-3 in Bindings.xml); every button is 24 units high.
 local ADDON, NS = ...
 local W = NS.Widgets
 
@@ -145,7 +146,8 @@ local function Title(view)
 	return Colored(NPC_COLOR, role .. name) .. tag
 end
 
-local HEADER_H = 22
+local HEADER_H = 28   -- #183: room for a 24-unit close button
+local BUTTON_H = 24
 
 -- from the top: the header, the title, the line, then the answers, each under the one above (#182)
 local function Layout(buttons)
@@ -157,7 +159,7 @@ local function Layout(buttons)
 		b:SetPoint("TOPLEFT", frame, "TOPLEFT", MARGIN, -y)
 		b:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -MARGIN, -y)
 		b:Show()
-		y = y + 26
+		y = y + BUTTON_H + 4
 	end
 	frame:SetHeight(y + MARGIN)
 end
@@ -182,6 +184,7 @@ function F:Render(view)
 	frame.title:SetText(Title(view))
 	frame.endBtn:SetText(NS:L("npc_btn_close"))
 	frame.openBtn:SetText(NS:L("npc_btn_open"))
+	frame.closeBtn:SetText(NS:L("npc_btn_close"))
 	local buttons = {}
 	if view.state == "offered" then
 		frame.text:SetText("")
@@ -193,7 +196,8 @@ function F:Render(view)
 		for i, c in ipairs(view.choices or {}) do
 			local b = frame.choiceButtons[i]
 			if b then
-				b:SetText(c.text)
+				-- #183: the number is the key that answers (NPC answer 1-3)
+				b:SetText(i .. ". " .. c.text)
 				b.choiceIndex = i
 				table.insert(buttons, b)
 			end
@@ -230,6 +234,23 @@ function F:GetFrame() return frame end
 ---Nasconde la finestra (la logica del dialogo è in NPCAlive).
 function F:Hide()
 	if frame then frame:Hide() end
+end
+
+---The key "NPC answer n" (#183): presses the n-th button the window shows (an answer; on an offer, Talk; at the end,
+---Close). Nothing when the window is closed or has no such button.
+---@param n integer 1-3
+---@return boolean pressed
+function F:Press(n)
+	if not frame or not frame:IsShown() then return false end
+	local b = frame.shownButtons and frame.shownButtons[n]
+	if not b or not b:IsShown() then return false end
+	b:Click()
+	return true
+end
+
+---@param n integer
+function AzerothUnspoken_NPCAnswer(n)
+	if NS.db then F:Press(n) end
 end
 
 function F:ResetPosition()
@@ -275,7 +296,8 @@ local function Build()
 	frame.badge = header:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 	frame.badge:SetPoint("LEFT", 8, 0)
 	frame.badge:SetJustifyH("LEFT")
-	local close = W.Button(header, "x", 22, 18, function() NS.NPCAlive:Close("closed") end)
+	-- #183: a 24-unit target with a word, not a small "x"
+	local close = W.Button(header, NS:L("npc_btn_close"), 64, BUTTON_H, function() NS.NPCAlive:Close("closed") end)
 	close:SetPoint("RIGHT", -2, 0)
 	W.Tooltip(close, function() return NS:L("npc_tip_close") end)
 	W.Tooltip(header, function() return NS:L("npc_badge_tip") end)
@@ -297,18 +319,18 @@ local function Build()
 	frame.choiceButtons = {}
 	for i = 1, NS.NPCAlive.MAX_CHOICES do
 		local index = i
-		frame.choiceButtons[i] = W.Button(frame, "", WIDTH - 2 * MARGIN, 22, function()
+		frame.choiceButtons[i] = W.Button(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
 			local ok, why = NS.NPCAlive:Choose(index)
 			if not ok and why then NS.NPCAlive:Explain("npc_refused_", why) end
 		end)
 		frame.choiceButtons[i]:Hide()
 	end
-	frame.openBtn = W.Button(frame, "", WIDTH - 2 * MARGIN, 22, function()
+	frame.openBtn = W.Button(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function()
 		local ok, why = NS.NPCAlive:Open()
 		if not ok and why then NS.NPCAlive:Explain("npc_refused_", why) end
 	end)
 	frame.openBtn:Hide()
-	frame.endBtn = W.Button(frame, "", WIDTH - 2 * MARGIN, 22, function() NS.NPCAlive:Close("finished") end)
+	frame.endBtn = W.Button(frame, "", WIDTH - 2 * MARGIN, BUTTON_H, function() NS.NPCAlive:Close("finished") end)
 	frame.endBtn:Hide()
 
 	-- controllo leggero ogni mezzo secondo: se una finestra di Blizzard si apre sotto la nostra, ci si sposta

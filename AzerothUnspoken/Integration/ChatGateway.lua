@@ -14,7 +14,9 @@
 --    gruppo non partono;
 --  * le voci interiore e NPC non vanno mai in chat pubblica;
 --  * nessun invio vuoto, niente flood, niente invio durante il blocco della chat del client;
---  * una frase si può modificare e si può scegliere il canale prima dell'invio.
+--  * una frase si può modificare e si può scegliere il canale prima dell'invio;
+--  * #185: in combat a proposal waits for the end of the fight, and the other spontaneous lines follow the "In combat"
+--    setting (pacing.inCombat); after the client blocks an automatic send, the session falls back to "confirm to send".
 local ADDON, NS = ...
 local Compat = NS.Compat
 ---@class AUChatGateway
@@ -25,6 +27,8 @@ local Compat = NS.Compat
 ---@field lastRefusal? string motivo dell'ultimo invio rifiutato
 ---@field editing boolean il giocatore sta modificando la proposta
 ---@field sendLog { time: number, auto: boolean }[]
+---@field autoFallback? boolean #185: the client blocked an automatic send; until /reload the mode works as CONFIRM_TO_SEND
+---@field combatHeld { public?: table, lines: table[] } #185: what waits for the end of the fight
 local Gateway = NS:RegisterModule("gateway")
 NS.Gateway = Gateway
 
@@ -106,9 +110,11 @@ end
 -- Il modulo "publicChat" spento equivale a PRIVATE.
 ---Il modulo publicChat spento equivale a PRIVATE. So does a hold by Total RP 3 (#191, HeldOOC).
 ---@return string mode
+---#185: after a blocked automatic send the session works as "confirm to send" (autoFallback); the saved mode is kept.
 function Gateway:EffectiveMode()
 	if not NS.db.modules.publicChat then return "PRIVATE" end
 	if NS.db.chat.mode ~= "PRIVATE" and self:HeldOOC() then return "PRIVATE" end
+	if NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED" and self.autoFallback then return "CONFIRM_TO_SEND" end
 	return NS.db.chat.mode
 end
 
@@ -155,6 +161,8 @@ function Gateway:SetMode(value, opts)
 	if not mode then return false end
 	NS.db.chat.mode = mode
 	NS.db.output.autoPublicSay = (mode == "AUTO_ONLY_IF_ALLOWED" and opts ~= nil and opts.confirmAuto == true)
+	-- #185: choosing a mode again (automatic sending included, with its confirmation) ends the fallback of a block
+	self.autoFallback = nil
 	NS.Consent:Cancel("auto")
 	if mode == "PRIVATE" or not NS.db.modules.publicChat then self:Discard() end
 	self:Changed()
@@ -200,6 +208,16 @@ end
 ---@return boolean
 function Gateway:IsAutoActive()
 	return NS.db.chat.mode == "AUTO_ONLY_IF_ALLOWED" and NS.db.output.autoPublicSay == true
+end
+
+---#185: the client blocked an automatic send. For the rest of the session nothing is sent automatically: every line
+---becomes a proposal to confirm, so the client's "blocked" dialog cannot come back, and the player is told once. The
+---saved choice stays: /reload, or choosing automatic sending again, turns it back on.
+function Gateway:FallBackFromAuto()
+	if self.autoFallback or not self:IsAutoActive() then return end
+	self.autoFallback = true
+	NS:Print(NS:L("gw_auto_fallback"))
+	if NS.Config and NS.Config.Changed then NS.Config:Changed("chat.mode") end
 end
 
 ---------------------------------------------------------------------------
@@ -430,6 +448,8 @@ function Gateway:OnBlocked(env)
 		return
 	end
 	a.blocked = true
+	-- #185: an automatic send was blocked: no more automatic sends this session
+	if a.auto then self:FallBackFromAuto() end
 	if a.logged then
 		-- l'evento è arrivato dopo il ritorno della chiamata: l'invio era già stato contato e la proposta scartata
 		local log = self.sendLog
@@ -640,9 +660,130 @@ function Gateway:PickRecord(event, ctx, form)
 	return nil
 end
 
+---------------------------------------------------------------------------
+-- Combattimento (#185)
+---------------------------------------------------------------------------
+Gateway.COMBAT_SETTINGS = NS.Config.COMBAT_SETTINGS
+Gateway.HOLD_MAX = 3          -- private lines held during a fight: the most recent ones (all are in the history after)
+Gateway.HOLD_MAX_AGE = 300    -- a line held longer than this (a very long fight) is not shown any more
+Gateway.combatHeld = { lines = {} }
+
+---@return boolean
+function Gateway:InCombat()
+	return Compat.SafeCall("InCombatLockdown") == true or Compat.SafeCall("UnitAffectingCombat", "player") == true
+end
+
+---The "In combat" setting (pacing.inCombat): show | chatframe | hold | silent; "hold" when the value is not known.
+---@return string
+function Gateway:CombatSetting()
+	local v = NS.db.pacing.inCombat
+	for _, c in ipairs(self.COMBAT_SETTINGS) do
+		if c == v then return v end
+	end
+	return "hold"
+end
+
+---@return integer held lines that wait for the end of the fight
+function Gateway:HeldForCombat()
+	return #self.combatHeld.lines + (self.combatHeld.public and 1 or 0)
+end
+
+---A spontaneous line in combat (#185). A line that could reach chat waits for the end of the fight in every setting
+---(the proposal bar and its keys never come up in a fight), except, with "show", one the client sends by itself
+---(automatic mode). A private line is shown ("show"), written in the chat frame ("chatframe"), held ("hold") or
+---dropped ("silent": the Narrative Director already stays silent, this is the safety net).
+---@param rec AUPhraseRecord
+---@param ctx? table
+---@param opts table
+---@return "held"|"printed"|"dropped"|nil route what happened; nil: the line goes on as usual
+function Gateway:CombatRoute(rec, ctx, opts)
+	local setting = self:CombatSetting()
+	if setting == "silent" then return "dropped" end
+	local mode = self:EffectiveMode()
+	local public = not opts.privateOnly and mode ~= "PRIVATE" and not self:PrivateReason(rec)
+	local held = self.combatHeld
+	if public then
+		local channel = opts.channel and self:ChannelAvailable(opts.channel) and opts.channel or self:ResolveChannel(rec)
+		if setting == "show" and mode == "AUTO_ONLY_IF_ALLOWED" and NS.db.output.autoPublicSay
+			and self:CanSendWithoutAction(channel) then
+			return nil
+		end
+		-- one proposal at a time, as outside a fight: the newer one takes the place of the older
+		held.public = { rec = rec, ctx = ctx, opts = opts, at = GetTime() }
+		return "held"
+	end
+	if setting == "show" then return nil end
+	rec.display = self:Display(rec, ctx)
+	if setting == "chatframe" then
+		if NS.Narrator then NS.Narrator:Present(rec, { chatFrame = true }) else NS:Print(rec.display) end
+		return "printed"
+	end
+	table.insert(held.lines, { rec = rec, ctx = ctx, opts = opts, at = GetTime() })
+	while #held.lines > self.HOLD_MAX do table.remove(held.lines, 1) end
+	return "held"
+end
+
+---The fight begins (#185): the editor closes (the keyboard is the player's again; the typed text is kept) and a waiting
+---proposal joins the hold, off the screen, until the fight ends.
+function Gateway:OnCombatStart()
+	if NS.Narrator then NS.Narrator:KeepTyped() end
+	local p = self.pending
+	if not p then return end
+	self.combatHeld.public = { proposal = p, at = GetTime() }
+	self.pending, self.editing = nil, false
+	if NS.Narrator then NS.Narrator:HideProposal(p) end
+	self:Changed()
+end
+
+---The fight is over (PLAYER_REGEN_ENABLED): the held proposal waits again, its time from now, and the held lines follow
+---it in the box, oldest first. Nothing comes back while paused or with the addon off. The released lines open a
+---pacing moment, so no spontaneous line pushes them off the box at once.
+---@return integer released
+function Gateway:ReleaseCombat()
+	local held = self.combatHeld
+	self.combatHeld = { lines = {} }
+	if not NS.db or not NS.db.enabled or NS.paused then return 0 end
+	local now, n = GetTime(), 0
+	local pub = held.public
+	if pub and now - pub.at <= self.HOLD_MAX_AGE then
+		if pub.proposal then
+			local p = pub.proposal
+			if not self.pending and self:EffectiveMode() ~= "PRIVATE" and not self:PrivateReason(p) and not self:HeldOOC() then
+				p.time, p.pausedAt = now, nil
+				self.pending = p
+				self:Changed()
+				if NS.Narrator then NS.Narrator:ShowProposal(p) end
+				n = n + 1
+			end
+		elseif self:Deliver(pub.rec, pub.ctx, pub.opts) then
+			n = n + 1
+		end
+	end
+	for _, h in ipairs(held.lines) do
+		if now - h.at <= self.HOLD_MAX_AGE then
+			h.opts.queue = true
+			if self:Deliver(h.rec, h.ctx, h.opts) then n = n + 1 end
+		end
+	end
+	if n > 0 and NS.Pacing then NS.Pacing:Note(now) end
+	return n
+end
+
+-- the release waits a moment, so the line of the victory (Systems/Triggers.lua, through the Director) comes first and
+-- the held lines queue behind it; a new fight in the meantime keeps them held
+Gateway.RELEASE_DELAY = 0.5
+NS.EventBus:Subscribe("COMBAT_START", "gateway", function() Gateway:OnCombatStart() end)
+NS.EventBus:Subscribe("COMBAT_END", "gateway", function()
+	local function Release()
+		if not Gateway:InCombat() then Gateway:ReleaseCombat() end
+	end
+	if not Compat.After(Gateway.RELEASE_DELAY, Release) then Release() end
+end)
+
 -- Porta una frase scelta al narratore e, se la modalità lo prevede, alla chat.
 -- opts.auto: nasce da un evento spontaneo; opts.privateOnly: mai in chat (es. il test del wizard).
----Porta una frase al narratore e, se la modalità lo prevede, alla chat.
+---Porta una frase al narratore e, se la modalità lo prevede, alla chat. #185: a spontaneous line in combat goes
+---through CombatRoute first.
 ---@param rec AUPhraseRecord
 ---@param ctx? table
 ---@param opts? { auto: boolean, privateOnly: boolean, channel: string, reviewed: boolean }
@@ -651,6 +792,20 @@ function Gateway:Propose(rec, ctx, opts)
 	opts = opts or {}
 	-- il giocatore sta scrivendo: una frase spontanea non gli cambia la proposta sotto le dita
 	if self.editing and opts.auto then return false end
+	if opts.auto and self:InCombat() then
+		local route = self:CombatRoute(rec, ctx, opts)
+		if route == "dropped" then return false end
+		if route then return true end
+	end
+	return self:Deliver(rec, ctx, opts)
+end
+
+---The body of Propose, without the combat route: also the release of the lines held in combat.
+---@param rec AUPhraseRecord
+---@param ctx? table
+---@param opts table { auto, privateOnly, channel, reviewed, queue (wait behind the line on screen) }
+---@return boolean
+function Gateway:Deliver(rec, ctx, opts)
 	local mode = self:EffectiveMode()
 	-- #191: when a hold by Total RP 3 begins, say it once, so a line that stays private is not a mystery
 	local held = mode == "PRIVATE" and NS.db.chat.mode ~= "PRIVATE" and NS.db.modules.publicChat and self:HeldOOC()
@@ -664,7 +819,7 @@ function Gateway:Propose(rec, ctx, opts)
 	-- #152, #163: monologues and literary lines are private in every mode, whatever the voice says
 	local publicCapable = not self:PrivateReason(rec) and not opts.privateOnly and mode ~= "PRIVATE"
 	if not publicCapable then
-		if NS.Narrator then NS.Narrator:Present(rec) else NS:Print(rec.display) end
+		if NS.Narrator then NS.Narrator:Present(rec, opts) else NS:Print(rec.display) end
 		return true
 	end
 
@@ -742,6 +897,38 @@ function AzerothUnspoken_Reroll()
 	if NS.db then NS.Gateway:Reroll() end
 end
 
+---Discard, from its key (#183): the waiting proposal goes; without one, a word says there is none.
+---@return boolean discarded
+function Gateway:DiscardPending()
+	if not self:GetPending() then
+		NS:Print(NS:L("gw_nothing_pending"))
+		return false
+	end
+	self:Discard()
+	return true
+end
+
+---The next channel for the waiting proposal, from its key or /au channel next (#183), said in chat.
+---@return boolean ok
+---@return string? channel
+function Gateway:NextChannel()
+	if not self:GetPending() then
+		NS:Print(NS:L("gw_nothing_pending"))
+		return false
+	end
+	local ok, channel = self:CycleChannel()
+	if ok then NS:Print(NS:L("gw_channel_next", NS:L("channel_" .. channel))) end
+	return ok, channel
+end
+
+function AzerothUnspoken_Discard()
+	if NS.db then NS.Gateway:DiscardPending() end
+end
+
+function AzerothUnspoken_Channel()
+	if NS.db then NS.Gateway:NextChannel() end
+end
+
 -- Frase per un evento. Restituisce true se è stata mostrata o proposta.
 ---@param event string
 ---@param ctx table
@@ -769,10 +956,21 @@ end
 ---------------------------------------------------------------------------
 -- Tasto, pulsante e /au speak: la conferma
 ---------------------------------------------------------------------------
+---The speak key with nothing waiting: a line for the moment. #185: not in combat, where the key would add a battle line
+---the player did not ask for; the lines held for the fight are counted instead. /au battlecry still asks for one.
+---@return boolean shown
 function Gateway:Improvise()
+	if self:InCombat() then
+		local held = self:HeldForCombat()
+		NS:Print(held > 0 and NS:L("gw_combat_held", held) or NS:L("gw_combat_improvise"))
+		return false
+	end
 	local ctx = NS:BuildContext()
-	local event = ctx.combat and "battle" or "muse"
-	if not self:Narrate(event, ctx, {}) then NS:Print(NS:L("no_phrase", event)) end
+	if not self:Narrate("muse", ctx, {}) then
+		NS:Print(NS:L("no_phrase", "muse"))
+		return false
+	end
+	return true
 end
 
 -- Con una proposta in attesa: PREVIEW apre l'editor (si invia da lì), CONFIRM_TO_SEND e
@@ -791,7 +989,8 @@ function Gateway:Confirm()
 		if self:EffectiveMode() == "PREVIEW" and not p.reviewed then
 			p.reviewed = true
 			if NS.Narrator and NS.Narrator:OpenEditor() then return false end
-			NS:Print(NS:L("gw_review", p.edited or p.text))
+			-- #185: never the editor in combat; the line is read here and the next press sends it as it is
+			NS:Print(NS:L(self:InCombat() and "gw_combat_editor" or "gw_review", p.edited or p.text))
 			return false
 		end
 		return self:SendPending()
@@ -805,7 +1004,7 @@ end
 ---------------------------------------------------------------------------
 -- Stato per /au debug
 ---------------------------------------------------------------------------
----@return { mode: string, effective: string, autoPublicSay: boolean, channel: string, pending?: string, lastMinute: integer, lastMinuteAuto: integer, total: integer, lastRefusal?: string, oocHeld: boolean }
+---@return { mode: string, effective: string, autoPublicSay: boolean, channel: string, pending?: string, lastMinute: integer, lastMinuteAuto: integer, total: integer, lastRefusal?: string, oocHeld: boolean, autoFallback: boolean, combatHeld: integer }
 function Gateway:Status()
 	local now = GetTime()
 	local n, nAuto = Recent(self.sendLog, 60, now)
@@ -815,5 +1014,6 @@ function Gateway:Status()
 		channel = NS.db.chat.channel, pending = p and p.channel or nil,
 		lastMinute = n, lastMinuteAuto = nAuto, total = self.sentTotal or 0, lastRefusal = self.lastRefusal,
 		blocked = self.blockedTotal or 0, oocHeld = self:HeldOOC(),
+		autoFallback = self.autoFallback == true, combatHeld = self:HeldForCombat(),
 	}
 end

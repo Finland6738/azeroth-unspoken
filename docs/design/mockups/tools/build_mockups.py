@@ -64,13 +64,13 @@ def build_narrator():
             history_line("21:14", "character", f"«{L_GREET}»", sent="SAY")]
     stage_narrator("narrator-history", "Narrator frame - history open", "The-Narrator", h=470,
                    speaker="inner", text=L_INNER, history=hist)
-    # paused: the header shows ">" and the chat says so; the speak button dims
+    # paused: the header shows ">" and the chat says so; the speak button dims and says "Paused" under it (#183)
     w, h = 760, 420
     body = (narrator(160, 150, speaker="inner", text=L_INNER, paused=True)
             + chat_lines([PREFIX + "narrator paused. Press the key again (or /au pause) to resume."],
                          left=10, bottom=10, width=430, height=70)
-            + speak_button(desat=True, opacity=0.5, left=620, top=90)
-            + fs("speak button at 50%", "gfhs", left=590, top=134))
+            + speak_button(desat=True, opacity=0.5, paused=True, left=620, top=90)
+            + fs("speak button at 50%, its badge at full opacity", "gfhs", left=560, top=152))
     add("narrator-paused", "Narrator frame - paused", w, h, body, "Narrator", "The-Narrator", scene="dusk", seed=9)
     # in context: the default position on a 1366 x 768 UIParent, with placeholders for the client UI
     w, h = 1366, 768
@@ -383,7 +383,8 @@ def build_dialogue():
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=101)
     add("dialogue-last", "NPC dialogue - last line", w, h,
         dialogue(90, 60, "|cff4fb354Innkeeper · Bram Ashcombe|r",
-                 line="You've come to the right place to stop walking. For a while, at least.", choices=["Close"]),
+                 line="You've come to the right place to stop walking. For a while, at least.", choices=["Close"],
+                 numbered=False),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=102)
     add("dialogue-test", "NPC dialogue - /au talk test", w, h,
         dialogue(90, 40, "|cff4fb354Innkeeper · Test innkeeper|r · test", line=L_NPC,

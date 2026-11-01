@@ -5,10 +5,34 @@
 	<Binding name="AZEROTHUNSPOKEN_REROLL" category="ADDONS">
 		AzerothUnspoken_Reroll()
 	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_DISCARD" category="ADDONS">
+		AzerothUnspoken_Discard()
+	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_EDIT" category="ADDONS">
+		AzerothUnspoken_Edit()
+	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_CHANNEL" category="ADDONS">
+		AzerothUnspoken_Channel()
+	</Binding>
 	<Binding name="AZEROTHUNSPOKEN_PAUSE" category="ADDONS">
 		AzerothUnspoken_TogglePause()
 	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_HISTORY" category="ADDONS">
+		AzerothUnspoken_History()
+	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_JOURNAL" category="ADDONS">
+		AzerothUnspoken_Journal()
+	</Binding>
 	<Binding name="AZEROTHUNSPOKEN_NPC" category="ADDONS">
 		AzerothUnspoken_NPCDialogue()
+	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_ANSWER1" category="ADDONS">
+		AzerothUnspoken_NPCAnswer(1)
+	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_ANSWER2" category="ADDONS">
+		AzerothUnspoken_NPCAnswer(2)
+	</Binding>
+	<Binding name="AZEROTHUNSPOKEN_ANSWER3" category="ADDONS">
+		AzerothUnspoken_NPCAnswer(3)
 	</Binding>
 </Bindings>

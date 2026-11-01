@@ -125,6 +125,16 @@ sent by itself: the narrator stays private, whatever the mode. A proposal alread
 `/au debug` shows *effective PRIVATE* and *held by Total RP 3 OOC true*. This is on by default; `/au trp3 ooc off`
 turns it off. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3#out-of-character-the-narrator-stays-private]].
 
+## In combat
+
+A chat proposal never comes up during a fight: the bar and its keys would ask for your attention when you need it most. A proposal made by a spontaneous event in combat waits for the end of the fight, and one that was already waiting when the fight began leaves the screen and comes back after it, with its time counting from then and any text you had typed in the editor. The editor itself never opens in combat: in preview mode the speak key shows the line in your chat window instead, and a second press sends it as it is. With nothing waiting, the speak key makes no new line in combat; `/au battlecry` asks for one. A line you ask for with a command is never held.
+
+With the **In combat** setting on **Show**, a line that automatic mode sends by itself (an emote, `/say` in an instance) still goes out in combat; any other proposal waits. See [[The Narrator and the Four Voices|The-Narrator#in-combat]].
+
+## When the client blocks an automatic send
+
+The game client decides what an addon may send without a key press. If it blocks one of the addon's automatic sends, nothing went out, the line becomes a proposal, and the addon says so once: **for the rest of the session nothing is sent automatically**; every line waits for you to confirm it, as in confirm mode. This keeps the client's "blocked" message from coming back. Your choice is kept: `/reload`, or choosing automatic sending again, turns it back on. The settings row says *on, held: confirm to send until /reload* meanwhile, and `/au debug` shows it.
+
 ## Flood protection
 
 To keep chat pleasant for everyone, these limits always apply:
