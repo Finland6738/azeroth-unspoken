@@ -13,8 +13,6 @@
 	--gold: #ffd100;          /* GameFontNormal, NORMAL_FONT_COLOR (1, 0.82, 0) */
 	--white: #ffffff;         /* GameFontHighlight */
 	--muted: #9d9d9d;         /* |cff9d9d9d in the journal and the relationships */
-	--selected: #7fff7f;      /* |cff7fff7f, the "» chosen «" marker */
-	--frame-bg: rgba(13, 10, 23, 0.95);   /* W.Background(frame, 0.05, 0.04, 0.09, 0.95) */
 	--caption-bg: rgba(0, 0, 0, 0.72);
 }
 
@@ -220,3 +218,40 @@ body { font-family: var(--game-font); color: var(--white); }
 .wcard.on .wm { background: #ffd100; }
 .wdot { position: absolute; top: 46px; width: 8px; height: 8px; background: #4d4230; }
 .wdot.past { background: #c9a227; } .wdot.now { background: #ffd100; }
+
+/* ------------------------------------------------------------------------------------------------------------------
+ * The window shell and the flat buttons of the addon (UI/Widgets.lua W.Window, W.FlatWindow, W.FlatButton, #187).
+ * Colours from W.PALETTE: surface (0.06, 0.05, 0.03, 0.97), band (0.09, 0.07, 0.04), edge (0.42, 0.33, 0.13),
+ * rule (0.33, 0.27, 0.1), gold (1, 0.82, 0), goldDim (0.79, 0.64, 0.15), cardOn (0.17, 0.14, 0.04),
+ * danger (0.8, 0.3, 0.24), dangerOn (0.45, 0.1, 0.07). The edges are 1-unit textures inside the frame, so the
+ * content keeps the frame's own coordinates.
+ * ------------------------------------------------------------------------------------------------------------------ */
+.aw { background: rgba(15, 13, 8, 0.97); }
+.aw > .aw-band { position: absolute; left: 1px; right: 1px; top: 1px; height: 36px; background: #17120a; }
+.aw > .aw-rule { position: absolute; left: 1px; right: 1px; top: 37px; height: 1px; background: #54451a; }
+.aw > .aw-edge { position: absolute; inset: 0; border: 1px solid #6b5421; pointer-events: none; }
+
+/* W.FlatButton: ghost (the default), primary, danger, text; .sel = :SetSelected(true), .armed = :SetArmed(true) */
+.btn.flat {
+	background: transparent; border: 1px solid rgba(201, 163, 38, 0.55); border-radius: 0; box-shadow: none;
+	color: #e6d9b8;
+}
+.btn.flat.hover { background: #33290f; border-color: #c9a326; box-shadow: none; }
+.btn.flat.ghost.sel { background: #2b240a; border-color: #ffd100; color: #fff; }
+.btn.flat .bar { position: absolute; left: 4px; right: 4px; bottom: 2px; height: 2px; background: #ffd100; }
+.btn.flat.disabled { background: transparent; border-color: rgba(201, 163, 38, 0.3); color: rgba(230, 217, 184, 0.45); }
+.btn.flat.primary { background: #735710; border-color: #c9a326; color: #fff2c4; }
+.btn.flat.primary.hover { background: #94700f; }
+.btn.flat.primary.disabled { background: rgba(115, 87, 16, 0.5); border-color: rgba(201, 163, 38, 0.45);
+	color: rgba(255, 242, 196, 0.45); }
+.btn.flat.danger { background: transparent; border-color: rgba(204, 77, 61, 0.8); color: #ff9e8c; }
+.btn.flat.danger.hover { background: rgba(77, 20, 13, 0.8); }
+.btn.flat.danger.armed { background: #731a12; border-color: #cc4d3d; color: #ffd9cc; }
+.btn.flat.danger.disabled { background: transparent; border-color: rgba(204, 77, 61, 0.4); color: rgba(255, 158, 140, 0.45); }
+.btn.flat.text { border-color: transparent; justify-content: flex-start; padding-left: 2px; color: #b8a899; }
+.btn.flat.text.hover { background: transparent; color: #ffd100; }
+
+/* the settings canvas: a plain dark stand-in for the client's options window, and the scroll bar of the template */
+.setbg { background: rgba(10, 10, 12, 0.88); border: 1px solid #3a3a3a; }
+.setscroll { position: absolute; width: 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid #444; }
+.setscroll .thumb { position: absolute; left: 2px; right: 2px; height: 40px; background: #666; }

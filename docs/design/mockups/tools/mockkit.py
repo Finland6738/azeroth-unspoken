@@ -52,11 +52,6 @@ def wow(s):
     return "".join(out)
 
 
-def sel(text, on):
-    """The "» chosen «" marker of the wizard, journal, relationships and profile."""
-    return f"|cff7fff7f» {text} «|r" if on else text
-
-
 def style(**p):
     parts = []
     for k, v in p.items():
