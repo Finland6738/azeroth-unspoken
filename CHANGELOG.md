@@ -8,6 +8,30 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N9: phrases for the NPC relationships (part of issue #221)
+
+The content of the NPC relationships milestone for the steps already merged (N2-N6). N1, N7 and N8 get their lines in
+their own steps. Narration only, and nothing goes to public chat: the recall lines are in the inner voice, the openers in
+the dialogue window, the notices in the private narrator. Drafted by an AI session in the project's own voice and
+written through the authoring archive (drafts, export; the round trip is still an empty diff): the owner's review of the
+pull request is the approval. Tested with the mock client only.
+
+- **Added: 45 recall intentions for `relation_npc`**, in English and Italian, two or three variants each, by NPC role
+  (guard, innkeeper, merchant, trainer, quest giver) and by disposition: the first meeting (at dawn, at dusk, in the fog,
+  in a sandstorm, back when you were a novice, a stranger who became a close friend, a long and cold acquaintance);
+  romance and the vow, subtle and rare (`topic:romance`, weight 0.5); promises (a long wait, a friend waiting, a new
+  promise where an oath was broken) and oaths (remembered by a guard, a warm bond that still holds, a cold one, a town's
+  inn and watch); nicknames by role and at Deep bond, favours by role and between close friends; titles (Champion, the
+  watch, the inn), the word reaching a newcomer by role, and rivals (jealous, ironic, between two inns).
+- **Added: 13 dialogue-window openers** (`npcd.<role>.open.*`): a second greeting by the nickname for each role, a
+  welcome for whoever holds a title in the town (guard, innkeeper, merchant, flight master), a cold one after a broken oath, and a newcomer's greeting when the word
+  of you is good (innkeeper) or bad (guard). `{title}` stays in the inner voice, as ADR 0040 decided.
+- **Changed: a third wording for every private notice** of N2-N6 (a level changed, promises and oaths, the vow, favours,
+  nicknames, the word, titles, rivals): `variants` is 3 in `Data/Relationships.lua`, with the texts in
+  `Data/<lang>/RelationsUI.lua`.
+- **Added: more nicknames**: a second one for each people of the classic game and two more for anyone.
+- **Counts:** base 1,248 intentions, 1,255 loaded with the example packs (`base_relations` 165, `base_dialogues` 187).
+
 ### N6: local reputation, honorary titles and NPC rivalries (issue #218)
 
 A step of the NPC relationships milestone, after N2 and building on N4's town memory. Narration only: NPCs never change

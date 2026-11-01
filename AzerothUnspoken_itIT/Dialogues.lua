@@ -722,4 +722,57 @@ NS:AddTexts("itIT", {
 		"A presto. Ti aspetto con qualcosa di nuovo da correggere.",
 		"Torna quando vuoi: ti riconosco dal modo in cui cammini, e ormai è un buon modo.",
 	},
+	-- N9 (#221): openers by the nickname, the title held in the town, a broken oath, the word of a newcomer
+	["npcd.flightmaster.open.nick2"] = {
+		"Il solito, {nickname}? Il cielo aspetta.",
+		"{nickname}, di nuovo qui per un giro nel cielo. Di questo passo ti spunteranno le piume.",
+	},
+	["npcd.flightmaster.open.title1"] = {
+		"Ormai mezza gente, laggiù, ti saluta quando decolli. Ricordati di rispondere.",
+		"Ci lasci di nuovo? Tutto il posto mi chiederà dove sei {g:andato|andata}.",
+	},
+	["npcd.guard.open.nick2"] = {
+		"{nickname}, eh? Passa pure. La strada è più tranquilla quando ci sei tu.",
+		"Ah, {nickname}. C'è qualcosa che dovrei sapere prima del cambio della guardia?",
+	},
+	["npcd.guard.open.oath1"] = {
+		"Tu. So cosa hai giurato, e come è andata a finire. Circola.",
+		"Ricordo la tua faccia. E ricordo anche il giuramento.",
+	},
+	["npcd.guard.open.title1"] = {
+		"Qui la gente parla bene di te. Io sto ancora decidendo, ma ascolto.",
+		"A quanto pare qui hai degli amici. Non complicarmi il lavoro.",
+	},
+	["npcd.guard.open.word1"] = {
+		"Ho sentito parlare di te. Non darmi motivo di sentirne ancora.",
+		"Dunque sei tu. Ti tengo d'occhio.",
+	},
+	["npcd.innkeeper.open.nick2"] = {
+		"Ecco {nickname}! Gli stivali vicino alla porta, e ti trovo qualcosa di caldo.",
+		"{nickname}, hai l'aria di chi ha perso un'altra volta contro la strada. Vieni, siediti.",
+	},
+	["npcd.innkeeper.open.oath1"] = {
+		"Una stanza c'è, se ti serve. Non aspettarti le chiacchiere di un tempo.",
+		"Ancora tu. Siediti dove vuoi. L'accoglienza non è più quella di prima, e sai perché.",
+	},
+	["npcd.innkeeper.open.title1"] = {
+		"Guarda chi c'è: il vanto del posto! Siediti prima che qualcuno ti chieda una storia.",
+		"{g:Il nostro ospite|La nostra ospite} d'onore! Non montarti la testa: le scale scricchiolano ancora.",
+	},
+	["npcd.innkeeper.open.word1"] = {
+		"Allora sei tu la persona di cui parlano tutti. Entra, entra: vediamo se le storie sono vere.",
+		"Ho sentito parlare di te, sai. Tutto bene, finora.",
+	},
+	["npcd.merchant.open.nick2"] = {
+		"{nickname}, il volto che preferisco da questa parte del banco. Cosa ti serve?",
+		"{nickname}! Non dirlo agli altri, ma mi fa piacere quando passi.",
+	},
+	["npcd.merchant.open.title1"] = {
+		"Qui tutti parlano di te. Un nome come il tuo fa bene agli affari. Entra.",
+		"Ah, la persona di cui parlano tutti. Guarda pure quanto vuoi.",
+	},
+	["npcd.trainer.open.nick2"] = {
+		"{nickname}. Dritta la schiena: le cattive abitudini si vedono da qui.",
+		"Allora, {nickname}: cosa hai esercitato, e cosa hai evitato?",
+	},
 }, "base_dialogues")

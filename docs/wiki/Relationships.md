@@ -138,6 +138,14 @@ Every NPC belongs to **a town**: the place where you meet them. In the countrysi
 
 It is all narration: no NPC changes what it does in the game, and a title is a name the narrator uses, nothing more. The lines are **private**, rare (a few a session, one per meeting), never in a fight and never in chat. Turn them off with **Town notices** in the Options tab; the word and the titles are still kept. The detail of an NPC shows their town, the word of you there, your title there and their rivals: *Their town: Goldshire, where word of you is good (9). There you are Friend of Goldshire. Rival of: Corina Steele.* The [export](#commands) lists your towns too.
 
+### What NPCs and your character say about all this
+
+The moments above have their own lines, in English and in Italian, and they change with **who the NPC is** (a guard, an innkeeper, a merchant, a trainer, someone who gives quests) and **how you stand** with them:
+
+- when you meet an NPC you know, your character's **inner voice** may remember how it began (at dawn, in the fog, back when you were a novice and this trainer watched your feet), think of a romance it would never say aloud, of a promise still open or an oath broken, of the nickname they gave you, of the title the town gave you or of a rival who noticed. These thoughts are for you only: they never become a chat proposal;
+- when you open their **dialogue window**, an NPC may greet you by your nickname, as someone the town speaks well of, coldly after a broken oath, or warily if bad word of you got there first;
+- the private notices (a level changed, a promise, a favor, a nickname, the word, a title, a rival) have **three wordings** each, which take turns.
+
 ## Players: your choice
 
 **No player joins your list without an action of yours.** The addon may **suggest** people you meet:

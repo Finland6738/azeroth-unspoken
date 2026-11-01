@@ -558,4 +558,188 @@ NS:AddTexts("itIT", {
 		"Buon cammino. Ci rivedremo dove ci chiamerà la causa.",
 		{ "A presto. Sai dove trovarmi.", depth = "natural" },
 	},
+	-- N9 (#221): the NPC relationships milestone, by role and disposition
+	["rel.npc.attraction.early"] = {
+		"Mi sono {g:sorpreso|sorpresa} a scegliere questa strada apposta. Tutto qui. È solo questo.",
+		{ "Perché finisco sempre su questa strada? Lascia stare. Non rispondere.", depth = "natural" },
+	},
+	["rel.npc.attraction.guard"] = {
+		"Tanto da tenere d'occhio, e ancora uno sguardo per me. Ci leggo troppo. Probabilmente.",
+		{ "In servizio, e ancora quello sguardo. Non fare {g:lo sciocco|la sciocca}.", depth = "natural" },
+	},
+	["rel.npc.attraction.innkeeper"] = {
+		"Mi ripeto che è il focolare a rendere così calda questa locanda.",
+		{ "Un buon focolare, una buona locanda. Per questo resto. Soprattutto per questo.", depth = "natural" },
+	},
+	["rel.npc.attraction.near"] = {
+		"Le mani non sanno cosa fare mentre parliamo. Un tempo lo sapevano.",
+		{ "Ferme, le mani. Di' qualcosa di normale. Qualsiasi cosa normale.", depth = "natural" },
+	},
+	["rel.npc.attraction.trainer"] = {
+		"Sono {g:venuto|venuta} qui per imparare. A metà lezione dimentico sempre cosa.",
+		{ "Concentrati. La lezione. Solo la lezione.", depth = "natural" },
+	},
+	["rel.npc.favour.close"] = {
+		"Quando una persona così vicina chiede così poco, quel poco conta di più.",
+		{ "Poca cosa, quel che mi ha chiesto. Voglio mantenerla.", depth = "natural" },
+	},
+	["rel.npc.favour.innkeeper"] = {
+		"Dietro questa porta mi è stato chiesto qualcosa, e non l'ho ancora fatto. Il benvenuto ha un po' il sapore di un promemoria.",
+		{ "Devo ancora una piccola cosa a chi abita dietro questa porta.", depth = "natural" },
+	},
+	["rel.npc.favour.merchant"] = {
+		"Un piccolo favore, chiesto al banco tra una moneta e l'altra. Continuo a ripromettermi di occuparmene.",
+		{ "Giusto. Quel favore. Presto. Prima di contare un'altra moneta qui.", depth = "natural" },
+	},
+	["rel.npc.met.close"] = {
+		"Un mese fa, o forse più, questo era un volto qualsiasi dietro una porta qualsiasi. Non saprei dire in quale giorno abbia smesso di esserlo.",
+		{ "Un volto qualsiasi dietro una porta, un tempo. Ora fatico a crederci.", depth = "natural" },
+		{ "Ci fu un giorno in cui passavo davanti a questa porta senza pensarci; ora non saprei ritrovarlo, quel giorno, nemmeno cercandolo lungo tutta la strada.", depth = "elevated" },
+	},
+	["rel.npc.met.cold"] = {
+		"Sono settimane che conosco questi occhi, e ogni settimana li ha resi più difficili da guardare. Conoscersi da tanto non vuol dire essere i benvenuti.",
+		{ "Una lunga conoscenza. Senza un solo sguardo gentile.", depth = "natural" },
+	},
+	["rel.npc.met.dawn"] = {
+		"Il nostro primo incontro fu all'alba, con il sonno ancora negli occhi di entrambi. Certe conoscenze cominciano oneste, così.",
+		{ "Era l'alba, la prima volta. Per me questo resta un volto del mattino.", depth = "natural" },
+	},
+	["rel.npc.met.dusk"] = {
+		"La prima volta che ho sentito questa voce era il crepuscolo, e il giorno lasciava la presa. Certi volti arrivano con la sera e se la tengono.",
+		{ "Il crepuscolo, la prima volta. Da allora ogni incontro mi sembra un po' più mattiniero.", depth = "natural" },
+	},
+	["rel.npc.met.fog"] = {
+		"Nebbia, il giorno del primo incontro. Ho tirato dritto senza accorgermi di nessuno, e sono {g:dovuto|dovuta} tornare indietro.",
+		{ "Nella nebbia, la prima volta. Mezzo volto, all'inizio. Il resto è venuto dopo.", depth = "natural" },
+	},
+	["rel.npc.met.guard"] = {
+		"Questa guardia mi ha {g:conosciuto|conosciuta} quando ero {g:così inesperto|così inesperta} da chiedere la strada due volte. Ora mi tocca un cenno del capo, e niente indicazioni.",
+		{ "Mi conosceva quando non valeva nemmeno la pena di fermarmi.", depth = "natural" },
+	},
+	["rel.npc.met.merchant"] = {
+		"Un tempo, a questo banco, contavo le monete due volte prima di ogni acquisto. Chi vendeva faceva finta di non vedere. Non l'ho dimenticato.",
+		{ "Avevo meno monete, la prima volta che sono {g:passato|passata} di qui.", depth = "natural" },
+	},
+	["rel.npc.met.questgiver"] = {
+		"Al primo incontro mi sarei {g:accontentato|accontentata} del compito più piccolo. Da allora i compiti sono cresciuti; spero anch'io.",
+		{ "Allora mi andava bene qualsiasi commissione. Adesso no.", depth = "natural" },
+	},
+	["rel.npc.met.sand"] = {
+		"Sabbia nell'aria al primo incontro: ne ho passato metà a strizzare gli occhi. Mi piace pensare di aver fatto miglior figura, poi.",
+		{ "Una tempesta di sabbia, la prima volta. Da allora abbiamo visto giorni più limpidi.", depth = "natural" },
+	},
+	["rel.npc.met.trainer"] = {
+		"La prima volta davanti a quest'insegnante reggevo a stento la posizione. Ancora oggi mi guarda i piedi prima del viso.",
+		{ "Mi ha insegnato quando non sapevo niente. Spero che si veda.", depth = "natural" },
+		{ "Ciò che quest'insegnante mi ha dato l'ho speso per strada e riguadagnato due volte; eppure, ai suoi occhi, resto {g:il novizio|la novizia} del primo giorno.", depth = "elevated" },
+	},
+	["rel.npc.nickname.bond"] = {
+		"C'è chi conosce il mio nome, e una persona che me ne ha dato un altro. So quale terrei.",
+		{ "{nickname}. Detto così, è quasi una casa.", depth = "natural" },
+	},
+	["rel.npc.nickname.guard"] = {
+		"\"{nickname}\", con la voce di una guardia, davanti a tutti. Faccio finta che mi dispiaccia.",
+		{ "{nickname}. La ronda ha una voce per ognuno. La mia poteva andare peggio.", depth = "natural" },
+	},
+	["rel.npc.nickname.innkeeper"] = {
+		"Gridato da un capo all'altro della sala, \"{nickname}\" suona meno come un nome e più come un posto che ti aspetta.",
+		{ "{nickname}. In questa locanda potrebbe stare inciso sulla mia sedia.", depth = "natural" },
+	},
+	["rel.npc.nickname.merchant"] = {
+		"\"{nickname}\", da dietro il banco, e le monete mi sembrano più leggere in mano, o così mi piace credere.",
+		{ "{nickname}. A chi vende costa meno di una moneta di sconto. A me vale di più.", depth = "natural" },
+	},
+	["rel.npc.nickname.trainer"] = {
+		"Quando chi mi insegna dice \"{nickname}\", è mezzo complimento e mezzo avvertimento. Ho imparato a sentirli entrambi.",
+		{ "{nickname}, mi chiama. Di solito subito prima di una correzione.", depth = "natural" },
+	},
+	["rel.npc.oath.close"] = {
+		"Il legame regge ancora, chissà come, dopo il giuramento infranto. La gentilezza può essere più dura da guardare in faccia della rabbia.",
+		{ "Ancora un sorriso. Non l'ho meritato, non di nuovo.", depth = "natural" },
+		{ "Ho mancato alla parola con chi ancora mi saluta con calore; quel calore è un debito che nessuna moneta salda, e me lo porto dentro a ogni visita.", depth = "elevated" },
+	},
+	["rel.npc.oath.cold"] = {
+		"Qui si è infranto un giuramento, e questo è ciò che ci cresce sopra: un saluto freddo, e silenzi più freddi ancora.",
+		{ "L'ho infranto io. Questo è il prezzo, ed è giusto.", depth = "natural" },
+	},
+	["rel.npc.oath.guard"] = {
+		"Una guardia ricorda i volti per mestiere. Questa ricorda il mio, e il giuramento che ci andava insieme.",
+		{ "L'occhio di chi fa la guardia e sa cosa ho fatto.", depth = "natural" },
+	},
+	["rel.npc.oath.here.guard"] = {
+		"Al cambio della guardia si passano tutto. Il mio giuramento infranto avrà già fatto il giro.",
+		{ "Le guardie parlano. Ne sono {g:sicuro|sicura}.", depth = "natural" },
+	},
+	["rel.npc.oath.here.innkeeper"] = {
+		"Nelle locande le voci arrivano più lontano che altrove. Chissà cosa si è sentito dire, al bancone, del giuramento che ho infranto.",
+		{ "Ogni voce del paese passa da una locanda. Anche quella.", depth = "natural" },
+	},
+	["rel.npc.promise.again"] = {
+		"Un'altra promessa, proprio qui, dove una l'ho già infranta. Si staranno chiedendo se questa reggerà. Anch'io.",
+		{ "Di nuovo la mia parola. Qui vale meno di un tempo.", depth = "natural" },
+	},
+	["rel.npc.promise.friend"] = {
+		"Uno sconosciuto potrei farlo aspettare. Chi mi è amico e aspetta la mia parola pesa in un altro modo.",
+		{ "Si fida che lo porti a termine. Farò meglio a farlo.", depth = "natural" },
+	},
+	["rel.npc.promise.long"] = {
+		"Un mese, o quasi, da quando ho dato la mia parola qui. A un certo punto un ritardo diventa una risposta.",
+		{ "Trenta giorni. Se smettono di chiedere, sarà peggio.", depth = "natural" },
+	},
+	["rel.npc.promise.questgiver"] = {
+		"Il compito che ho preso da qui è ancora con me, piegato in quattro, come se così pesasse meno.",
+		{ "Me lo chiederanno. Dovrò rispondere: non ancora.", depth = "natural" },
+	},
+	["rel.npc.rival.innkeeper"] = {
+		"Due locande, {g:un solo viaggiatore|una sola viaggiatrice}. Dovevo saperlo che qui la birra avrebbe avuto il sapore del confronto.",
+		{ "Sa a quale altro focolare mi siedo. Chi tiene una locanda lo sa sempre.", depth = "natural" },
+	},
+	["rel.npc.rival.ironic"] = {
+		"Un sorriso con una domanda piegata dentro: e come ti tratta la concorrenza? Lascio correre.",
+		{ "Una presa in giro, niente di più. La accetto.", depth = "natural" },
+	},
+	["rel.npc.rival.jealous"] = {
+		"Il benvenuto ha uno spigolo. L'amicizia a una porta si nota alla porta accanto.",
+		{ "Qualcuno, a questa porta, ha contato le mie visite a un'altra.", depth = "natural" },
+	},
+	["rel.npc.town.champion"] = {
+		"{title}. Lo dicono come se fosse sempre stato così. Ricordo quando qui nessuno conosceva il mio nome.",
+		{ "{title}. Un nome grande da portare. Ci sto ancora crescendo dentro.", depth = "natural" },
+	},
+	["rel.npc.town.title.guard"] = {
+		"Anche le guardie, qui, mi conoscono come {title}. Le guardie si fidano tardi: per questo conta.",
+		{ "{title}. Lo dicono perfino le guardie. Quasi sempre senza ridere.", depth = "natural" },
+	},
+	["rel.npc.town.title.innkeeper"] = {
+		"In questa locanda, {title} paga la birra come tutti, e glielo si ricorda a voce alta. Giusto così.",
+		{ "{title}, e la birra la pago ancora. Com'è giusto.", depth = "natural" },
+	},
+	["rel.npc.town.word.bad.guard"] = {
+		"Una guardia con cui non ho mai parlato, e già quell'occhio che misura. Ciò che ha sentito su di me è passato dal cancello prima di me.",
+		{ "Mai vista prima. Eppure il suo occhio dice che di me ha sentito parlare.", depth = "natural" },
+	},
+	["rel.npc.town.word.bad.innkeeper"] = {
+		"Qui il benvenuto è cauto, e le locande di solito non accolgono così. Le chiacchiere su di me non sono state gentili.",
+		{ "Anche alla locanda hanno sentito. Ovvio.", depth = "natural" },
+	},
+	["rel.npc.town.word.good.innkeeper"] = {
+		"Qui il sorriso è arrivato prima del mio nome. Qualcuno in paese ha raccontato storie su di me, e gentili.",
+		{ "La voce su di me è arrivata prima. Buona, a giudicare da quel sorriso.", depth = "natural" },
+	},
+	["rel.npc.town.word.good.merchant"] = {
+		"Un banco nuovo, e già lo sguardo riservato ai clienti abituali. Il mio buon nome è venuto a fare la spesa prima di me.",
+		{ "Il mio nome è entrato prima di me. Pare speso bene.", depth = "natural" },
+	},
+	["rel.npc.vowed.bond"] = {
+		"Nessuno sa cosa ho promesso in silenzio, e questa persona meno di tutti. Certi segreti sono una specie di riparo.",
+		{ "Ancora qui. Ancora fedele a quella promessa.", depth = "natural" },
+	},
+	["rel.npc.vowed.guard"] = {
+		"Monta la guardia, e non immagina che qualcuno, in silenzio, la monti a sua volta.",
+		{ "Abbi cura di te. Non lo dirò ad alta voce.", depth = "natural" },
+	},
+	["rel.npc.vowed.innkeeper"] = {
+		"Una candela alla finestra, e mi concedo di fingere che sia accesa per me. Una piccola finzione. Me la tengo.",
+		{ "Una candela alla finestra. Fra tutte le locande lungo la strada, proprio questa.", depth = "natural" },
+	},
 }, "base_relations")

@@ -555,4 +555,188 @@ NS:AddTexts("enUS", {
 		"Walk well. We meet again wherever the cause calls us.",
 		{ "Until then. You know where to find me.", depth = "natural" },
 	},
+	-- N9 (#221): the NPC relationships milestone, by role and disposition
+	["rel.npc.attraction.early"] = {
+		"I have caught myself choosing this road on purpose. That is all. That is all it is.",
+		{ "Why do I always end up on this road? Never mind. Do not answer that.", depth = "natural" },
+	},
+	["rel.npc.attraction.guard"] = {
+		"So much to keep an eye on, and still a glance to spare for me. I am reading too much into it. Probably.",
+		{ "On duty, and still that look. Do not be foolish.", depth = "natural" },
+	},
+	["rel.npc.attraction.innkeeper"] = {
+		"I tell myself it is the hearth that makes this inn so warm.",
+		{ "A good hearth, a good inn. That is why I stay. Mostly.", depth = "natural" },
+	},
+	["rel.npc.attraction.near"] = {
+		"My hands do not know what to do while we talk. They used to know.",
+		{ "Hands still. Say something ordinary. Anything ordinary.", depth = "natural" },
+	},
+	["rel.npc.attraction.trainer"] = {
+		"I came here to learn. Halfway through the lesson, I always forget what.",
+		{ "Focus. The lesson. Only the lesson.", depth = "natural" },
+	},
+	["rel.npc.favour.close"] = {
+		"When someone this close asks for so little, the little matters more.",
+		{ "Small, what they asked. I mean to keep it.", depth = "natural" },
+	},
+	["rel.npc.favour.innkeeper"] = {
+		"Something was asked of me behind this door, and is not yet done. The welcome feels a little like a reminder.",
+		{ "I still owe this door a small thing.", depth = "natural" },
+	},
+	["rel.npc.favour.merchant"] = {
+		"A small favor, asked over the counter between one coin and the next. I keep meaning to see to it.",
+		{ "Right. That favor. Soon. Before I count another coin here.", depth = "natural" },
+	},
+	["rel.npc.met.close"] = {
+		"A month ago or more, this was a face like any other at a door like any other. I could not say on which day that stopped being true.",
+		{ "A stranger at a door, once. Hard to believe now.", depth = "natural" },
+		{ "There was a day when I walked past this door without a thought; I could not find that day again if I searched the whole road for it.", depth = "elevated" },
+	},
+	["rel.npc.met.cold"] = {
+		"Weeks I have known these eyes, and each week has made them harder to meet. Knowing someone long is not the same as being welcome.",
+		{ "A long acquaintance. Not one kind look in it.", depth = "natural" },
+	},
+	["rel.npc.met.dawn"] = {
+		"Our first meeting was at dawn, with sleep still in both our eyes. Some acquaintances start honest like that.",
+		{ "It was dawn, the first time. To me this is still a morning face.", depth = "natural" },
+	},
+	["rel.npc.met.dusk"] = {
+		"The first time I heard this voice, it was dusk and the day was letting go. Some faces arrive with the evening and keep it.",
+		{ "Dusk, the first time. Every meeting since has felt a little earlier in the day.", depth = "natural" },
+	},
+	["rel.npc.met.fog"] = {
+		"Fog, the day we met. I walked straight past before I knew anyone was there, and had to turn back.",
+		{ "We met in the fog. Half a face, at first. The rest came later.", depth = "natural" },
+	},
+	["rel.npc.met.guard"] = {
+		"This guard knew me when I was green enough to ask the way twice. Now I get a nod, and no directions.",
+		{ "This one knew me when I was nobody worth stopping.", depth = "natural" },
+	},
+	["rel.npc.met.merchant"] = {
+		"I used to count my coins twice at this counter before every purchase. The merchant pretended not to notice. I have not forgotten that.",
+		{ "My coins were fewer the first time I came here.", depth = "natural" },
+	},
+	["rel.npc.met.questgiver"] = {
+		"When we first met I would have been glad of the smallest task. The tasks have grown since; so, I hope, have I.",
+		{ "Back then, any errand would have done. Not now.", depth = "natural" },
+	},
+	["rel.npc.met.sand"] = {
+		"Sand in the air at our first meeting; I spent half of it squinting. I like to think I have made a better impression since.",
+		{ "A sandstorm, the first time. We have both seen clearer days.", depth = "natural" },
+	},
+	["rel.npc.met.trainer"] = {
+		"The first time I stood before this teacher I could barely hold a stance. They still look at my feet before my face.",
+		{ "This one taught me when I knew nothing. I hope it shows.", depth = "natural" },
+		{ "All this teacher gave me I have spent on the road and earned back twice; still, in their eyes, I am measured against the novice who first stood here.", depth = "elevated" },
+	},
+	["rel.npc.nickname.bond"] = {
+		"There are people who know my name, and one who gave me another. I know which I would keep.",
+		{ "{nickname}. Said like that, it is almost a home.", depth = "natural" },
+	},
+	["rel.npc.nickname.guard"] = {
+		"\"{nickname}\", in a guard's voice, in front of everyone. I pretend to mind.",
+		{ "{nickname}. The watch has a voice for everyone. Mine could be worse.", depth = "natural" },
+	},
+	["rel.npc.nickname.innkeeper"] = {
+		"Called across a common room, \"{nickname}\" sounds less like a name than like being expected.",
+		{ "{nickname}. At this inn it might as well be carved on my chair.", depth = "natural" },
+	},
+	["rel.npc.nickname.merchant"] = {
+		"\"{nickname}\", across the counter, and the coins feel lighter in my hand, or so I like to think.",
+		{ "{nickname}. It costs them less than a coin off the price. It is worth more to me.", depth = "natural" },
+	},
+	["rel.npc.nickname.trainer"] = {
+		"When my teacher says \"{nickname}\", it is half a compliment and half a warning. I have learned to hear both.",
+		{ "{nickname}, they call me. Usually right before a correction.", depth = "natural" },
+	},
+	["rel.npc.oath.close"] = {
+		"The bond holds, somehow, after the oath I broke. Kindness can be harder to stand in front of than anger.",
+		{ "A smile, still. I have not earned it, not again.", depth = "natural" },
+		{ "I broke my word to someone who still greets me warmly; that warmth is a debt no coin settles, and I carry it in at every visit.", depth = "elevated" },
+	},
+	["rel.npc.oath.cold"] = {
+		"An oath was broken here, and this is what grows in its place: a cold greeting, and colder silences.",
+		{ "I broke it. This is the price, and it is fair.", depth = "natural" },
+	},
+	["rel.npc.oath.guard"] = {
+		"A guard remembers faces for a living. This one remembers mine, and the oath that went with it.",
+		{ "The eye of a watch that knows what I did.", depth = "natural" },
+	},
+	["rel.npc.oath.here.guard"] = {
+		"At the change of the watch they hand everything on. My broken oath must have done the rounds by now.",
+		{ "The guards talk. I am sure of it.", depth = "natural" },
+	},
+	["rel.npc.oath.here.innkeeper"] = {
+		"Inns are where voices carry farthest. I wonder what this house has heard over the counter about the oath I broke.",
+		{ "Every voice in town passes through an inn. That one too.", depth = "natural" },
+	},
+	["rel.npc.promise.again"] = {
+		"Another promise, here, where I broke one before. They must be wondering whether this one will hold. So am I.",
+		{ "My word again. It is worth less here than it was.", depth = "natural" },
+	},
+	["rel.npc.promise.friend"] = {
+		"A stranger I could keep waiting. A friend waiting on my word is a different weight.",
+		{ "They trust me to see it done. I had better.", depth = "natural" },
+	},
+	["rel.npc.promise.long"] = {
+		"A month, near enough, since I gave my word here. At some point a delay becomes an answer.",
+		{ "Thirty days. If they stop asking, that will be worse.", depth = "natural" },
+	},
+	["rel.npc.promise.questgiver"] = {
+		"The task I took from this one is still with me, folded small, as if that made it lighter.",
+		{ "They will ask. I will have to say: not yet.", depth = "natural" },
+	},
+	["rel.npc.rival.innkeeper"] = {
+		"Two inns, one traveler. I should have known the ale here would taste of comparison.",
+		{ "They know which other hearth I sit at. Innkeepers always know.", depth = "natural" },
+	},
+	["rel.npc.rival.ironic"] = {
+		"A smile with a question folded into it: and how is the competition treating you? I let it pass.",
+		{ "Teasing, not angry. I will take it.", depth = "natural" },
+	},
+	["rel.npc.rival.jealous"] = {
+		"There is an edge to the welcome. Friendship at one door is noticed at the next.",
+		{ "Someone at this door has been counting my visits to another.", depth = "natural" },
+	},
+	["rel.npc.town.champion"] = {
+		"{title}. They say it as if it had always been so. I remember when nobody here knew my name.",
+		{ "{title}. A big name to carry. I am still growing into it.", depth = "natural" },
+	},
+	["rel.npc.town.title.guard"] = {
+		"Even the watch knows me here as {title}. Guards are slow to trust; that is why it counts.",
+		{ "{title}. Even the guards say it. Mostly with a straight face.", depth = "natural" },
+	},
+	["rel.npc.town.title.innkeeper"] = {
+		"At this inn, {title} pays for the ale like everyone else, and is reminded of it loudly. Fair enough.",
+		{ "{title}, and still paying for my ale. As it should be.", depth = "natural" },
+	},
+	["rel.npc.town.word.bad.guard"] = {
+		"A guard I have never spoken to, and already that measuring eye. Whatever they heard of me came through the gate before I did.",
+		{ "Never met this one. Their eye says they have heard of me anyway.", depth = "natural" },
+	},
+	["rel.npc.town.word.bad.innkeeper"] = {
+		"The welcome here is careful, and careful is not how inns greet people. The talk of me has not been kind.",
+		{ "Even the inn has heard. Of course it has.", depth = "natural" },
+	},
+	["rel.npc.town.word.good.innkeeper"] = {
+		"The smile here came before my name did. Someone in this town has been telling stories about me, and kind ones.",
+		{ "Word of me got here first. Good word, by that smile.", depth = "natural" },
+	},
+	["rel.npc.town.word.good.merchant"] = {
+		"A new counter, and already the look kept for regular customers. My good name has been doing my shopping for me.",
+		{ "My name walked in ahead of me. It seems to have been well spent.", depth = "natural" },
+	},
+	["rel.npc.vowed.bond"] = {
+		"No one knows what I promised in silence, this one least of all. Some secrets are a kind of shelter.",
+		{ "Still here. Still keeping it.", depth = "natural" },
+	},
+	["rel.npc.vowed.guard"] = {
+		"They keep the watch, and never guess that someone, in silence, keeps one too.",
+		{ "Take care of yourself. I will not say it aloud.", depth = "natural" },
+	},
+	["rel.npc.vowed.innkeeper"] = {
+		"A candle in the window here, and I let myself pretend it is lit for me. A small pretense. I keep it.",
+		{ "A candle in the window. Of all the inns on the road, this one.", depth = "natural" },
+	},
 }, "base_relations")

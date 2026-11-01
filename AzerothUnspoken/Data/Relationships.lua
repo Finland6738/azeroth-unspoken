@@ -200,7 +200,7 @@ NS.Relationships:RegisterData({
 	-- for the fight to end, at most `held` of them). Reaching a `memorable` band leaves a journal line, once per NPC
 	-- and band. The texts are rel_level_up_N and rel_level_down_N of Data/<lang>/RelationsUI.lua (`variants` each).
 	levels = {
-		perSession = 4, npcHours = 20, held = 3, variants = 2,
+		perSession = 4, npcHours = 20, held = 3, variants = 3,
 		memorable = { friend = true, close = true, bond = true, enemy = true, hated = true },
 	},
 
@@ -222,7 +222,7 @@ NS.Relationships:RegisterData({
 	-- Narration only: the marks change the addon's own numbers and words, never how anyone behaves in the game.
 	promises = {
 		maxDays = 120, max = 40, settle = 3, remindDays = 7, remindHours = 20, lateDays = 7, perSession = 4,
-		variants = 2,
+		variants = 3,
 		oath = { band = "friend", curated = false },
 		marks = { npcDays = 240, cityDays = 90, npcTrust = 0.25, cityTrust = 0.6 },
 	},
@@ -244,7 +244,7 @@ NS.Relationships:RegisterData({
 		gain = { gossip = 0.6, quest_accept = 0.8, quest_turnin = 1.2, binder = 0.6, trainer = 0.3, ambient_talk = 0.5 },
 		decay = 0.6, cap = 2,
 		humanoid = { id = 7, names = { "Humanoid", "Umanoide" } },
-		vow = { attraction = 80, label = "lover", variants = 2 },
+		vow = { attraction = 80, label = "lover", variants = 3 },
 	},
 
 	-- N5 (#217): favours. A named NPC at `band` or above may ask a small favour when you meet them (with `chance`), one
@@ -264,7 +264,7 @@ NS.Relationships:RegisterData({
 	--           are in), then come back to the NPC: entering the zone is noted, the next meeting completes it
 	-- `places`: zone names of the English client (as in Data/Places.lua, which gives the continent) and a level range.
 	favours = {
-		band = "friend", chance = 0.35, perSession = 2, max = 3, restDays = 3, variants = 2, reward = "favour_done",
+		band = "friend", chance = 0.35, perSession = 2, max = 3, restDays = 3, variants = 3, reward = "favour_done",
 		templates = {
 			{ id = "return", kind = "return", days = 3, wait = 18 },
 			{ id = "buy", kind = "buy", days = 4, wait = 1, roles = { "merchant" } },
@@ -296,7 +296,7 @@ NS.Relationships:RegisterData({
 	-- met), otherwise the lists of the character's class and race together with `any`. The same NPC always picks the
 	-- same entry of a list. A language with gender writes { masculine, feminine }; the character's sex chooses.
 	nicknames = {
-		band = "close", variants = 2,
+		band = "close", variants = 3,
 		deeds = {
 			{ when = { favours = 3 }, names = {
 				{ id = "good_turn", en = "Good Turn", it = "Buonafatta" },
@@ -320,14 +320,15 @@ NS.Relationships:RegisterData({
 			DRUID = { { id = "oak_heart", en = "Oak-Heart", it = "Cuor di Quercia" }, { id = "moss_cloak", en = "Moss-Cloak", it = "Manto di Muschio" } },
 		},
 		races = {
-			Human = { { id = "plough_born", en = "Plough-Born", it = { "Figlio dei Campi", "Figlia dei Campi" } } },
-			Dwarf = { { id = "stout_heart", en = "Stout-Heart", it = "Cuor Saldo" } },
-			NightElf = { { id = "moon_walker", en = "Moon-Walker", it = "Camminaluna" } },
-			Gnome = { { id = "cog", en = "Cog", it = "Ingranaggio" } },
-			Orc = { { id = "red_tusk", en = "Red-Tusk", it = "Zanna Rossa" } },
-			Scourge = { { id = "cold_hands", en = "Cold-Hands", it = "Mani Fredde" } },
-			Tauren = { { id = "tall_grass", en = "Tall-Grass", it = "Erba Alta" } },
-			Troll = { { id = "loose_tide", en = "Loose-Tide", it = "Marea Sciolta" } },
+			Human = { { id = "plough_born", en = "Plough-Born", it = { "Figlio dei Campi", "Figlia dei Campi" } },
+				{ id = "lamplighter", en = "Lamplighter", it = "Accendilume" } },
+			Dwarf = { { id = "stout_heart", en = "Stout-Heart", it = "Cuor Saldo" }, { id = "firm_foot", en = "Firm-Foot", it = "Piè Fermo" } },
+			NightElf = { { id = "moon_walker", en = "Moon-Walker", it = "Camminaluna" }, { id = "long_memory", en = "Long-Memory", it = "Memoria Lunga" } },
+			Gnome = { { id = "cog", en = "Cog", it = "Ingranaggio" }, { id = "pocket_giant", en = "Pocket-Giant", it = "Gigante Tascabile" } },
+			Orc = { { id = "red_tusk", en = "Red-Tusk", it = "Zanna Rossa" }, { id = "stone_laugh", en = "Stone-Laugh", it = "Risata di Pietra" } },
+			Scourge = { { id = "cold_hands", en = "Cold-Hands", it = "Mani Fredde" }, { id = "night_owl", en = "Night-Owl", it = { "Nottambulo", "Nottambula" } } },
+			Tauren = { { id = "tall_grass", en = "Tall-Grass", it = "Erba Alta" }, { id = "long_stride", en = "Long-Stride", it = "Passo Lungo" } },
+			Troll = { { id = "loose_tide", en = "Loose-Tide", it = "Marea Sciolta" }, { id = "quick_grin", en = "Quick-Grin", it = "Sorriso Lesto" } },
 			BloodElf = { { id = "gilded", en = "Gilded", it = { "Dorato", "Dorata" } } },
 			Draenei = { { id = "far_star", en = "Far-Star", it = "Stella Lontana" } },
 		},
@@ -335,6 +336,8 @@ NS.Relationships:RegisterData({
 			{ id = "wanderer", en = "Wanderer", it = "Viandante" },
 			{ id = "dust_boots", en = "Dust-Boots", it = "Stivali Impolverati" },
 			{ id = "stranger_no_more", en = "Stranger-No-More", it = { "Non Più Straniero", "Non Più Straniera" } },
+			{ id = "rain_cloak", en = "Rain-Cloak", it = "Mantello di Pioggia" },
+			{ id = "road_friend", en = "Road-Friend", it = { "Amico di Strada", "Amica di Strada" } },
 		},
 	},
 
@@ -357,7 +360,7 @@ NS.Relationships:RegisterData({
 	--   perSession, variants  the private notices of a session (word, title, rival) and the texts rel_word_*_N,
 	--            rel_title_N, rel_rival_*_N of Data/<lang>/RelationsUI.lua
 	towns = {
-		max = 60, perSession = 3, variants = 2,
+		max = 60, perSession = 3, variants = 3,
 		aliases = {
 			["Lion's Pride Inn"] = "Goldshire",
 			["Scarlet Raven Tavern"] = "Darkshire",
