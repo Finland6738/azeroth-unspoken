@@ -1051,6 +1051,7 @@ Forever); nuova è la lettura sull'NPC del dialogo (`npc`). Provato solo con il 
       senza il nome; il dettaglio dice «Hai fatto un voto privato per questa persona.» Parlandoci ancora non si ripete.
 - **N3.5 · Asse spento.** Spegni l'asse dell'attrazione.
     - **Cosa aspettarti:** nessuna attrazione, nessuna riga d'amore, nessun voto.
+
 ## N4: promesse, giuramenti e spergiuri (aggiunto dall'issue #216)
 
 Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Eventi e funzioni nuovi per l'addon, tutti

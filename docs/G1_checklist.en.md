@@ -345,6 +345,7 @@ English counterpart of the section **N3** of [G1_checklist.md](G1_checklist.md).
 - **N3.3 · Below Friend.** With an NPC at Acquaintance, talk a few times. **Expect:** attraction does not move.
 - **N3.4 · The vow.** Set `/au relationships set npc:<number> attraction 79` and `affection 60`, then talk to them. **Expect:** one private line in the narrator ("No one hears it, and <name> never will: …" or "A vow, made in silence: …"), nothing in chat; in the journal "A quiet vow, spoken to no one aloud (<zone>)", without the name; the detail says "You made a private vow to them." Talking again never repeats it.
 - **N3.5 · The axis off.** Turn the attraction axis off. **Expect:** no attraction, no romance lines, no vow.
+
 ## N4: promises, oaths and oathbreakers (issue #216)
 
 English counterpart of the section **N4** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: no NPC changes its behaviour in the game, and nothing goes to chat. New to the addon, all in the Forever dump: `QUEST_REMOVED`, `C_QuestLog.SetAbandonQuest` / `AbandonQuest` / `GetAbandonQuest` (hooked with `hooksecurefunc`), `C_QuestLog.IsOnQuest`, `C_QuestLog.IsComplete`, `C_QuestLog.IsQuestFlaggedCompleted`. Tried only with the mock client.
