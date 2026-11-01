@@ -8,7 +8,7 @@ local Pacing = NS.Pacing
 
 ---@class AUVerdict
 ---@field allow boolean
----@field reason? string disabled | paused | module:<nome> | silent | screen:<nome> | busy | moment | cooldown:<tipo> | budget:<categoria> | quota:<categoria>
+---@field reason? string disabled | paused | module:<nome> | silent | screen:<nome> | busy | combat | moment | cooldown:<tipo> | budget:<categoria> | quota:<categoria>
 ---@field chanceMul? number moltiplicatore della probabilità dell'evento
 ---@field cooldownMul? number moltiplicatore delle pause
 ---@field hunger? number hunger of the category (#91): already in chanceMul
@@ -81,7 +81,7 @@ function ND:SetRhythm(name, fn)
 end
 
 ---------------------------------------------------------------------------
--- Sospensione: combattimento impegnativo e schermate invasive (GDD §4.2, §15.2)
+-- Sospensione: combattimento impegnativo e schermate invasive (GDD §4.2, §15.2); #185: every fight, with "silent"
 ---------------------------------------------------------------------------
 -- Controlli aggiuntivi dell'impegno: fn(ctx) -> true se il momento è impegnativo (S6c: scontro con un boss).
 ---@type table<string, fun(ctx: table): boolean?>
@@ -132,6 +132,9 @@ function ND:Gate(event, ctx, now)
 	if screen then return No("screen:" .. screen) end
 	local important = priority >= self.PRIORITY.exceptional
 	if db.pacing.suppressInHighDemand ~= false and not important and self:HighDemand(ctx) then return No("busy") end
+	-- #185: "In combat: silent" (pacing.inCombat): no spontaneous line during any fight, important or not. The other
+	-- choices (show, chat frame only, hold) are applied by the Chat Gateway to the line that is chosen.
+	if ctx and ctx.combat and db.pacing.inCombat == "silent" then return No("combat") end
 
 	local chanceMul, cooldownMul = self:Scale(db.intensity)
 	-- i momenti importanti non diventano più rari sotto il valore medio

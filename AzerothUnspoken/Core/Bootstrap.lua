@@ -29,11 +29,28 @@ if GetLocale and select(2, pcall(GetLocale)) == "itIT" then
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pausa immediata del narratore (attiva/disattiva)"
 	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Cambia la frase proposta con un'altra"
 	BINDING_NAME_AZEROTHUNSPOKEN_NPC = "Dialogo ambientale con l'NPC (apri/chiudi)"
+	-- #183: every action of the proposal bar, the history, the journal and the NPC answers have a key
+	BINDING_NAME_AZEROTHUNSPOKEN_DISCARD = "Scarta la frase proposta"
+	BINDING_NAME_AZEROTHUNSPOKEN_EDIT = "Modifica la frase proposta (mai in combattimento)"
+	BINDING_NAME_AZEROTHUNSPOKEN_CHANNEL = "Canale successivo per la frase proposta"
+	BINDING_NAME_AZEROTHUNSPOKEN_HISTORY = "Cronologia del narratore (apri/chiudi)"
+	BINDING_NAME_AZEROTHUNSPOKEN_JOURNAL = "Diario (apri/chiudi)"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER1 = "Dialogo con l'NPC: risposta 1"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER2 = "Dialogo con l'NPC: risposta 2"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER3 = "Dialogo con l'NPC: risposta 3"
 else
 	BINDING_NAME_AZEROTHUNSPOKEN_SPEAK = "Confirm and speak the proposed line (or improvise)"
 	BINDING_NAME_AZEROTHUNSPOKEN_PAUSE = "Pause the narrator immediately (toggle)"
 	BINDING_NAME_AZEROTHUNSPOKEN_REROLL = "Swap the proposed line for another one"
 	BINDING_NAME_AZEROTHUNSPOKEN_NPC = "Ambient dialogue with the NPC (open/close)"
+	BINDING_NAME_AZEROTHUNSPOKEN_DISCARD = "Discard the proposed line"
+	BINDING_NAME_AZEROTHUNSPOKEN_EDIT = "Edit the proposed line (never in combat)"
+	BINDING_NAME_AZEROTHUNSPOKEN_CHANNEL = "Next channel for the proposed line"
+	BINDING_NAME_AZEROTHUNSPOKEN_HISTORY = "Narrator history (open/close)"
+	BINDING_NAME_AZEROTHUNSPOKEN_JOURNAL = "Journal (open/close)"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER1 = "NPC dialogue: answer 1"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER2 = "NPC dialogue: answer 2"
+	BINDING_NAME_AZEROTHUNSPOKEN_ANSWER3 = "NPC dialogue: answer 3"
 end
 
 ---------------------------------------------------------------------------

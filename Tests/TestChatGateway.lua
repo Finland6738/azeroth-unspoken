@@ -14,6 +14,11 @@ local function Reset()
 	NS.db.output.autoPublicSay = false
 	Gateway.sendLog = {}
 	Gateway.inPlayerAction = false
+	-- #185: out of combat, the default "In combat" setting, nothing held, no fallback from a blocked automatic send
+	P.combat = false
+	NS.db.pacing.inCombat = "hold"
+	Gateway.combatHeld = { lines = {} }
+	Gateway.autoFallback = nil
 	NS.Consent:Reset()
 	Gateway:Discard()
 	ADVANCE(100)
@@ -1195,5 +1200,221 @@ T.run("#191: /au trp3 sets the hold and the markup and explains them", function(
 	T.ok(T.sentContains("says right now: out of character"), "with Total RP 3: its current status")
 	AddOn_TotalRP3 = nil
 	NS.db.locale = lang
+	Reset()
+end)
+
+---------------------------------------------------------------------------
+-- #185: combat and the fallback after a blocked automatic send
+---------------------------------------------------------------------------
+local function Fight(on)
+	P.combat = on
+	FIRE(on and "PLAYER_REGEN_DISABLED" or "PLAYER_REGEN_ENABLED")
+	ADVANCE(1)   -- the release waits half a second (Gateway.RELEASE_DELAY)
+end
+
+local function Quiet()   -- no spontaneous line from the fights' own triggers (battle, victory)
+	NS.db.chance.battle, NS.db.chance.victory = 0, 0
+	Narrator:Clear()
+	Narrator:ClearHistory()
+end
+
+T.run("#185: a blocked automatic send turns the session to confirm to send, and says so", function()
+	Reset()
+	Auto()
+	local saved = Gateway.CanSendWithoutAction
+	-- a fault of the Gateway's own check: the client blocks what it thought allowed
+	Gateway.CanSendWithoutAction = function() return true end
+	local blocks = BLOCKED_SENDS
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	Gateway.CanSendWithoutAction = saved
+	T.eq(BLOCKED_SENDS, blocks + 1, "the client blocked one send")
+	T.eq(Gateway.autoFallback, true, "fallback on")
+	T.eq(Gateway:EffectiveMode(), "CONFIRM_TO_SEND", "works as confirm to send")
+	T.eq(Gateway:GetMode(), "AUTO_ONLY_IF_ALLOWED", "the saved choice is kept")
+	T.eq(NS.db.output.autoPublicSay, true, "and its consent")
+	T.ok(T.sentContains("il client ha bloccato un invio automatico"), "the player is told")
+	T.ok(Gateway:GetPending() ~= nil, "the line waits as a proposal")
+	T.eq(Gateway:Status().autoFallback, true, "in /au debug")
+	-- an emote, which automatic mode sends by itself, now waits too: no retry, no second dialog
+	Gateway:Discard()
+	SENT = {}
+	Gateway:Propose(Rec("emote"), CTX, { auto = true })
+	T.eq(#Public(), 0, "nothing goes out by itself")
+	T.eq(BLOCKED_SENDS, blocks + 1, "and nothing is tried again")
+	T.ok(Gateway:GetPending() ~= nil, "a proposal")
+	T.ok(not T.sentContains("il client ha bloccato un invio automatico"), "told once")
+	Press()
+	T.eq(#Public(), 1, "the speak key sends it")
+	-- the settings row says it
+	NS.SettingsFrame.panel:Refresh()
+	T.eq(NS.SettingsFrame:Row("opt_auto").button:GetText(), NS:L("consent_auto_fallback"), "the settings row")
+	-- choosing automatic sending again ends the fallback
+	ADVANCE(10)
+	Auto()
+	T.eq(Gateway.autoFallback, nil, "chosen again: fallback off")
+	SENT = {}
+	Gateway:Propose(Rec("emote"), CTX, { auto = true })
+	T.eq(#Public(), 1, "an emote goes out by itself again")
+	-- the block that arrives after the call returned (BLOCK_EVENT_LATE) does the same
+	Reset()
+	Auto()
+	Gateway.CanSendWithoutAction = function() return true end
+	BLOCK_EVENT_LATE = true
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	Gateway.CanSendWithoutAction = saved
+	ADVANCE(1)
+	BLOCK_EVENT_LATE = false
+	T.eq(Gateway.autoFallback, true, "late event: fallback on")
+	T.eq(Gateway:EffectiveMode(), "CONFIRM_TO_SEND", "late event: confirm to send")
+	-- a block of a send made by the player does not change the mode
+	Reset()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	Gateway:Propose(Rec("say"), CTX, {})
+	Gateway:PlayerAction(function() Gateway:SendPending() end)
+	T.eq(Gateway.autoFallback, nil, "not an automatic send: no fallback")
+	Reset()
+end)
+
+T.run("#185: a proposal waits for the end of the fight; the speak key adds no battle line", function()
+	Reset()
+	Quiet()
+	Gateway:SetMode("CONFIRM_TO_SEND")
+	T.eq(NS.Config.defaults.pacing.inCombat, "hold", "the default setting: hold")
+	P.combat = true
+	T.ok(Gateway:Propose(Rec("say"), CTX, { auto = true }), "a spontaneous line in combat counts as said")
+	T.eq(Gateway:GetPending(), nil, "but it is no proposal yet")
+	T.eq(Gateway:HeldForCombat(), 1, "it is held")
+	T.ok(not Narrator:GetFrame():IsShown(), "the box stays away from the fight")
+	local lines = #Narrator.history
+	SENT = {}
+	Press()
+	T.eq(Gateway:GetPending(), nil, "the speak key with nothing waiting: still nothing")
+	T.eq(#Narrator.history, lines, "no battle line made up")
+	T.ok(T.sentContains("aspettano la fine dello scontro"), "it says a line waits")
+	local held = Gateway.combatHeld
+	Gateway.combatHeld = { lines = {} }
+	SENT = {}
+	Press()
+	T.ok(T.sentContains("/au battlecry"), "with nothing held: how to ask for one")
+	T.eq(#Narrator.history, lines, "still no line")
+	SlashCmdList.AZEROTHUNSPOKEN("battlecry")
+	T.ok(Gateway:GetPending() ~= nil, "asked for: a battle line")
+	Gateway:Discard()
+	-- the fight ends: the held proposal comes back
+	Gateway.combatHeld = held
+	Fight(false)
+	local p = Gateway:GetPending()
+	T.ok(p ~= nil and p.text == Rec("say").text, "after the fight the proposal waits")
+	T.ok(Narrator:GetFrame():IsShown() and Narrator.proposal == p, "on screen, with its bar")
+	T.eq(Gateway:HeldForCombat(), 0, "nothing held any more")
+	Reset()
+end)
+
+T.run("#185: a fight takes a waiting proposal off the screen and closes the editor; never the editor in combat", function()
+	Reset()
+	Quiet()
+	Gateway:SetMode("PREVIEW")
+	Gateway:Propose(Rec("say", nil, "Prima dello scontro."), CTX, {})
+	T.ok(Narrator:OpenEditor(), "out of combat the editor opens")
+	local f = Narrator:GetFrame()
+	f.editor:SetText("Testo mio.")
+	Fight(true)
+	T.ok(not Narrator:IsEditing(), "the fight closes the editor: the keys are the player's")
+	T.eq(Gateway:GetPending(), nil, "the proposal leaves the screen")
+	T.ok(not f:IsShown(), "the box hides")
+	T.eq(Gateway:HeldForCombat(), 1, "held")
+	ADVANCE(60)
+	Fight(false)
+	local p = Gateway:GetPending()
+	T.ok(p ~= nil and p.edited == "Testo mio.", "after the fight it waits again, with the typed text")
+	T.ok(p ~= nil and Gateway:PendingLeft(p) > 20, "its time starts again")
+	Gateway:Discard()
+	-- an explicit line in combat is not held: the player asked for it. The editor still never opens
+	P.combat = true
+	Gateway:Propose(Rec("say", nil, "Chiesta in combattimento."), CTX, {})
+	T.ok(Gateway:GetPending() ~= nil, "an explicit request waits at once")
+	T.ok(not Narrator:OpenEditor(), "the editor does not open in combat")
+	SENT = {}
+	Press()
+	T.ok(not Narrator:IsEditing(), "the speak key in preview: no editor")
+	T.ok(T.sentContains("l'editor non si apre mai") and T.sentContains("Chiesta in combattimento."), "the line is read in chat")
+	SENT = {}
+	Press()
+	T.eq(#Public(), 1, "the next press sends it as it is")
+	Gateway:Propose(Rec("say"), CTX, {})
+	SENT = {}
+	AzerothUnspoken_Edit()
+	T.ok(not Narrator:IsEditing() and T.sentContains("si apre dopo lo scontro"), "the Edit key says why")
+	P.combat = false
+	AzerothUnspoken_Edit()
+	T.ok(Narrator:IsEditing(), "out of combat the Edit key opens it")
+	Narrator:CloseEditor()
+	Reset()
+end)
+
+T.run("#185: the In combat setting: show, chat frame only, hold, silent", function()
+	Reset()
+	Quiet()
+	local f = Narrator:GetFrame()
+	local function Line(text) return Rec("emote", "narrator", text) end
+	-- show: as before
+	NS.db.pacing.inCombat = "show"
+	P.combat = true
+	Gateway:Propose(Line("Uno."), CTX, { auto = true })
+	T.ok(f:IsShown() and Narrator.current.display:find("Uno.", 1, true), "show: in the box at once")
+	-- chat frame only: in the history and the chat frame, not in the box
+	Narrator:Clear()
+	NS.db.pacing.inCombat = "chatframe"
+	SENT = {}
+	local h = #Narrator.history
+	T.ok(Gateway:Propose(Line("Due."), CTX, { auto = true }), "chatframe: said")
+	T.ok(not f:IsShown(), "chatframe: not in the box")
+	T.ok(T.sentContains("Due."), "chatframe: in the chat frame")
+	T.eq(#Narrator.history, h + 1, "chatframe: in the history")
+	-- hold: the last three, shown after the fight one after the other
+	NS.db.pacing.inCombat = "hold"
+	for _, t in ipairs({ "Tre.", "Quattro.", "Cinque.", "Sei." }) do Gateway:Propose(Line(t), CTX, { auto = true }) end
+	T.ok(not f:IsShown(), "hold: nothing in the box during the fight")
+	T.eq(Gateway:HeldForCombat(), 3, "hold: the last three")
+	Fight(false)
+	T.ok(f:IsShown() and Narrator.current.display:find("Quattro.", 1, true), "after the fight: the oldest of them first")
+	T.eq(#Narrator.held, 2, "the others wait their turn")
+	-- an explicit request in combat is never held
+	Narrator:Clear()
+	P.combat = true
+	Gateway:Propose(Line("Sette."), CTX, {})
+	T.ok(f:IsShown() and Narrator.current.display:find("Sette.", 1, true), "explicit: shown at once")
+	-- held lines are dropped when the narrator is paused at the end of the fight
+	Narrator:Clear()
+	Gateway:Propose(Line("Otto."), CTX, { auto = true })
+	NS.Director:SetPaused(true)
+	Fight(false)
+	T.ok(not f:IsShown() and Gateway:HeldForCombat() == 0, "paused: nothing comes back")
+	NS.Director:SetPaused(false)
+	-- silent: the Narrative Director stays silent in every fight, and the Gateway drops what slips through
+	NS.db.pacing.inCombat = "silent"
+	local v = NS.NarrativeDirector:Gate("battle", { combat = true }, GetTime() + 1000)
+	T.ok(not v.allow and v.reason == "combat", "silent: the gate says combat (" .. tostring(v.reason) .. ")")
+	T.ok(NS.NarrativeDirector:Gate("battle", { combat = false }, GetTime() + 2000).reason ~= "combat", "out of combat: no")
+	P.combat = true
+	T.eq(Gateway:Propose(Line("Nove."), CTX, { auto = true }), false, "silent: dropped")
+	T.eq(Gateway:HeldForCombat(), 0, "nothing held")
+	-- the value is checked
+	NS.db.pacing.inCombat = "hold"
+	NS.Config:Set("pacing.inCombat", "loud")
+	T.eq(NS.db.pacing.inCombat, "hold", "an unknown value is refused")
+	NS.db.pacing.inCombat = "loud"
+	T.eq(Gateway:CombatSetting(), "hold", "a broken value reads as hold")
+	-- with show, a line the client sends by itself goes out in combat; any other proposal waits
+	Reset()
+	Quiet()
+	Auto()
+	NS.db.pacing.inCombat = "show"
+	P.combat = true
+	Gateway:Propose(Rec("emote"), CTX, { auto = true })
+	T.eq(#Public(), 1, "show + automatic: an emote goes out")
+	Gateway:Propose(Rec("say"), CTX, { auto = true })
+	T.eq(Gateway:GetPending(), nil, "a /say that needs the key waits for the end")
+	T.eq(Gateway:HeldForCombat(), 1, "held")
 	Reset()
 end)

@@ -25,8 +25,11 @@ local function UpdateButton()
 		button.glow:Hide()
 		button.icon:SetDesaturated(true)
 	end
-	-- in pausa il pulsante resta, ma più spento
+	-- in pausa il pulsante resta, ma più spento, e lo dice in parole (#183): the badge is not dimmed with it
 	button:SetAlpha(NS.paused and 0.5 or 1)
+	button.badgeText:SetText(NS:L("paused_badge"))
+	button.badge:SetWidth(math.ceil(button.badgeText:GetStringWidth() or 40) + 10)
+	button.badge:SetShown(NS.paused == true)
 end
 
 local function Place()
@@ -99,6 +102,17 @@ local function CreateButton()
 	button.glow:SetBlendMode("ADD")
 	button.glow:SetPoint("CENTER")
 	button.glow:SetSize(66, 66)
+
+	-- #183: "Paused" in words under the button, at full opacity
+	local badge = CreateFrame("Frame", nil, button)
+	badge:SetHeight(16)
+	badge:SetPoint("TOP", button, "BOTTOM", 0, -2)
+	if badge.SetIgnoreParentAlpha then badge:SetIgnoreParentAlpha(true) end
+	NS.Widgets.Background(badge, 0, 0, 0, 0.85)
+	badge.text = badge:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+	badge.text:SetPoint("CENTER", 0, 0)
+	badge:Hide()
+	button.badge, button.badgeText = badge, badge.text
 
 	Place()
 

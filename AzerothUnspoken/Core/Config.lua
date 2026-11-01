@@ -12,6 +12,7 @@ local ADDON, NS = ...
 ---@class AUConfig
 ---@field SCHEMA_VERSION integer
 ---@field CHAT_MODES string[]
+---@field COMBAT_SETTINGS string[]
 ---@field CHAT_CHANNELS string[]
 ---@field defaults AUSettings
 ---@field presets table<string, table<string, boolean>>
@@ -23,6 +24,9 @@ Config.SCHEMA_VERSION = 7
 
 -- modalità del Chat Gateway (GDD §7.7) e canali selezionabili per le proposte
 Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALLOWED" }
+-- #185: what a spontaneous line does in combat (pacing.inCombat): shown as usual, written in the chat frame only, held
+-- until the fight ends (the default), or not said at all. Chat proposals always wait for the end of the fight.
+Config.COMBAT_SETTINGS = { "show", "chatframe", "hold", "silent" }
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
 
 -- Byte massimi di un messaggio, per canale: la fonte unica del Chat Gateway (che taglia) e del validatore
@@ -102,7 +106,7 @@ Config.CHAT_LIMITS = {
 ---@field output AUOutputSettings
 ---@field chat AUChatSettings
 ---@field privacy table<string, boolean>
----@field pacing { globalCooldownSeconds: number, recentPhraseWindow: integer, suppressInHighDemand: boolean }
+---@field pacing { globalCooldownSeconds: number, recentPhraseWindow: integer, suppressInHighDemand: boolean, inCombat: string }
 ---@field enabled boolean
 ---@field chance table<string, number> probabilità scelte dall'utente, per evento
 ---@field ignored table<string, boolean>
@@ -149,6 +153,7 @@ Config.defaults = {
 		globalCooldownSeconds = 45,
 		recentPhraseWindow = 30,
 		suppressInHighDemand = true,
+		inCombat = "hold",       -- #185: show | chatframe | hold | silent (Config.COMBAT_SETTINGS)
 	},
 	enabled = true,
 	chance = {},           -- [evento] = probabilità % scelta dall'utente
@@ -250,6 +255,7 @@ Config.rules = {
 	["ui.windowScale"] = { min = 0.8, max = 1.5 },
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
+	["pacing.inCombat"] = { enum = Config.COMBAT_SETTINGS },
 }
 
 -- tabelle libere: si controllano le singole voci

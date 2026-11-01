@@ -905,6 +905,52 @@ client finto.
     - **Cosa aspettarti:** il testo scorre fino all'ultima riga; Ctrl+C copia tutto; con un testo corto non c'è spazio
       vuoto da scorrere.
 
+## U-keyboard-combat: tastiera, puntatore e combattimento (aggiunto dalle issue #183 e #185)
+
+Tasti, cursori, pulsanti e il comportamento in combattimento. Nessuna API nuova: gli eventi di inizio e fine scontro
+(`PLAYER_REGEN_DISABLED`/`ENABLED`) erano già usati. Provato solo con il client finto.
+
+- **K1 · I tasti nuovi.** *Opzioni > Tasti > AddOn > Azeroth Unspoken*: assegna Scarta, Modifica, Canale successivo,
+  Cronologia, Diario e Dialogo NPC: risposta 1-3. Con una proposta in attesa (`/au mode confirm`, poi `/au greet`) premi
+  Canale successivo, poi Modifica, poi Esc, poi Scarta. Premi Cronologia e Diario due volte. Con `/au talk` vicino a un
+  locandiere premi Risposta 1.
+    - **Cosa aspettarti:** dodici azioni nella lista, con i nomi nella lingua del client; ogni tasto fa ciò che fa il
+      pulsante (il canale cambia sulla targhetta e in chat compare «canale della proposta: ...»); le risposte sono
+      numerate 1., 2., 3. e il tasto sceglie quella col suo numero.
+    - **Cosa riportare:** un'azione che manca, un tasto che non fa nulla, un errore rosso.
+- **K2 · I cursori dell'anima.** `/au soul`: per un tratto clicca **-** e **+**, poi gira la rotella sopra la barra.
+    - **Cosa aspettarti:** il valore cambia di 5 a ogni passo e resta dopo la chiusura; la barra si distingue bene dal
+      fondo; trascinare funziona come prima.
+    - **Cosa riportare:** la rotella che fa scorrere altro invece del cursore, una barra poco visibile (screenshot).
+- **K3 · Pulsanti e parole.** Guarda il diario (ricordi, storie), le relazioni (elenco, persone) e il dialogo NPC.
+    - **Cosa aspettarti:** le azioni delle righe sono parole brevi (Tieni, Elimina, Apri, Pausa, Salta...) e non escono
+      dal pulsante, anche in italiano; nessun pulsante più piccolo di un'icona d'azione piccola; il dialogo NPC ha
+      «Chiudi» in alto.
+    - **Cosa riportare:** parole tagliate o che coprono il testo della riga (screenshot).
+- **K4 · In pausa.** `/au pause`.
+    - **Cosa aspettarti:** sotto il pulsante «pronuncia» compare **In pausa**, ben leggibile anche se il pulsante è
+      spento; `/au pause` di nuovo lo toglie.
+- **C1 · Uno scontro qualsiasi.** Con le impostazioni predefinite (**In combattimento: trattieni fino alla fine**)
+  combatti contro un mostro normale per una ventina di secondi.
+    - **Cosa aspettarti:** nessuna frase nel riquadro durante lo scontro; mezzo secondo dopo la fine, la frase della
+      vittoria (se c'è) e poi quelle trattenute, una dopo l'altra (al massimo tre).
+    - **Cosa riportare:** una frase che compare in combattimento, o nessuna dopo molti scontri.
+- **C2 · Le altre scelte.** `/au combat chat`, poi `/au combat show`, poi `/au combat silent`, uno scontro per ciascuna.
+    - **Cosa aspettarti:** *chat*: le frasi nella finestra della chat, visibili solo a te, e il riquadro resta via;
+      *show*: come prima; *silent*: nulla durante lo scontro.
+- **C3 · Proposte e editor in combattimento.** `/au mode preview`, poi `/au greet` e premi il tasto «pronuncia» per
+  aprire l'editor; scrivi qualcosa e lasciati attaccare.
+    - **Cosa aspettarti:** all'inizio dello scontro l'editor si chiude e i tasti tornano a muovere il personaggio; il
+      riquadro sparisce; alla fine la proposta torna con il tuo testo. In combattimento il tasto «pronuncia» senza
+      proposta non inventa una frase e lo dice in chat.
+    - **Cosa riportare:** un editor che resta aperto o tiene la tastiera in combattimento (molto importante).
+- **C4 · Invio automatico bloccato (facoltativo, SP-05 E).** Con l'invio automatico acceso, se il client blocca un invio
+  (il messaggio di Blizzard «azione bloccata»).
+    - **Cosa aspettarti:** in chat «il client ha bloccato un invio automatico...»; da lì in poi ogni frase aspetta la
+      conferma e il messaggio di Blizzard non torna; la riga **Invio automatico** dice «acceso, trattenuto»; dopo
+      `/reload` torna automatico.
+    - **Cosa riportare:** il messaggio di Blizzard che torna una seconda volta nella stessa sessione.
+
 ---
 
 ## N2: livelli visibili, primo incontro e temperamento degli NPC (aggiunto dall'issue #214)

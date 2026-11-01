@@ -436,6 +436,8 @@ local function LabelText(cur)
 		table.insert(meta, NS:L("sent_to", CHANNEL_NAME[cur.sentTo] or cur.sentTo))
 	end
 	if #Narrator.held > 0 then table.insert(meta, NS:L("narrator_held", #Narrator.held)) end
+	-- #183: a line asked for while paused says so in words, not only through the dimmed speak button
+	if NS.paused then table.insert(meta, NS:L("narrator_paused")) end
 	local label = Colored(cur.speaker, Narrator:VoiceLabel(cur.speaker))
 	if #meta > 0 then label = label .. "|cff" .. MUTED .. " · " .. table.concat(meta, " · ") .. "|r" end
 	return label
@@ -505,11 +507,28 @@ end
 ---(BringBack), and its bar has Discard. Text typed in the editor is kept as the proposal's edited text.
 function Narrator:Dismiss()
 	self.held = {}
-	if frame and frame.editor:IsShown() then
-		local typed = frame.editor:GetText()
-		self:CloseEditor()
-		if typed ~= "" then NS.Gateway:SetPendingText(typed) end
-	end
+	self:KeepTyped()
+	if frame then frame:Hide() end
+end
+
+---Closes the editor and keeps what was typed as the proposal's edited text (the "x" of the box, the start of a fight).
+function Narrator:KeepTyped()
+	if not frame or not frame.editor:IsShown() then return end
+	local typed = frame.editor:GetText()
+	self:CloseEditor()
+	if typed ~= "" then NS.Gateway:SetPendingText(typed) end
+end
+
+---#185: the fight begins and the Gateway holds the proposal: the box no longer shows it (nor its bar) and hides; the
+---proposal comes back with ShowProposal when the fight ends. The lines held behind it are in the history.
+---@param p AUProposal
+function Narrator:HideProposal(p)
+	local cur = self.current
+	if self.proposal ~= p and not (cur and cur.proposal == p) then return end
+	self:KeepTyped()
+	self.proposal = nil
+	if cur then cur.proposal = nil end
+	self.held = {}
 	if frame then frame:Hide() end
 end
 
@@ -541,14 +560,26 @@ function Narrator:BringBack(p)
 	return true
 end
 
+---#185: a proposal held during a fight waits again: the box shows it (it is already in the history).
+---@param p AUProposal
+---@return boolean shown
+function Narrator:ShowProposal(p)
+	if not frame or not NS.db.output.privateNarrator then return false end
+	ShowPending(p)
+	return true
+end
+
 -- Una frase del narratore: rec = { speaker, display, proposal?, sentTo? }
 ---Mostra una frase nel narratore (o nella chat locale se il riquadro è spento).
+---#185: opts.chatFrame writes it in the chat frame only (the "In combat" setting), opts.queue lets it wait behind the
+---line on screen (the lines released at the end of a fight).
 ---@param rec AUPhraseRecord
-function Narrator:Present(rec)
+---@param opts? { chatFrame?: boolean, queue?: boolean }
+function Narrator:Present(rec, opts)
 	-- the entry is kept on the line: after a send it is marked even when held lines came after it (#176)
 	rec.historyEntry = AddHistory(rec)
 	self:RefreshHistory()
-	if not frame or not NS.db.output.privateNarrator then
+	if not frame or not NS.db.output.privateNarrator or (opts and opts.chatFrame) then
 		-- ripiego: riquadro assente o disattivato, la frase compare nella chat locale, visibile solo a te
 		NS:Print(("|cffffffff[%s]|r %s"):format(self:VoiceLabel(rec.speaker), rec.display))
 		return
@@ -560,6 +591,12 @@ function Narrator:Present(rec)
 		table.insert(self.held, { rec = rec, at = GetTime() })
 		while #self.held > HELD_MAX do table.remove(self.held, 1) end
 		if self.proposal ~= pending or not frame:IsShown() then ShowPending(pending) else self:UpdateLabel() end
+		return
+	end
+	if opts and opts.queue and frame:IsShown() and self.current then
+		table.insert(self.held, { rec = rec, at = GetTime() })
+		while #self.held > HELD_MAX do table.remove(self.held, 1) end
+		self:UpdateLabel()
 		return
 	end
 	Reveal(rec, self:ReadingTime(rec.display))
@@ -655,6 +692,8 @@ function Narrator:OpenEditor()
 	if not frame then return false end
 	local p = NS.Gateway:GetPending()
 	if not p then return false end
+	-- #185: the editor takes every key: never in combat
+	if NS.Gateway:InCombat() then return false end
 	-- never an editor in a hidden box: the proposal hidden with "x" comes back first (#186); with the box off there
 	-- is nothing to type in
 	if not frame:IsShown() then
@@ -685,6 +724,27 @@ end
 ---@return boolean editing l'editor della proposta è aperto
 function Narrator:IsEditing()
 	return frame ~= nil and frame.editor:IsShown() and true or false
+end
+
+---Edit, from the bar's button or its key (#183): the editor, or the reason it does not open.
+---@return boolean opened
+function Narrator:Edit()
+	if self:OpenEditor() then return true end
+	if not NS.Gateway:GetPending() then
+		NS:Print(NS:L("gw_edit_empty"))
+	elseif NS.Gateway:InCombat() then
+		NS:Print(NS:L("gw_combat_no_editor"))
+	end
+	return false
+end
+
+-- tasti assegnati (#183): Edit and History
+function AzerothUnspoken_Edit()
+	if NS.db then Narrator:Edit() end
+end
+
+function AzerothUnspoken_History()
+	if NS.db then Narrator:ToggleHistory() end
 end
 
 ---------------------------------------------------------------------------
@@ -855,7 +915,7 @@ local function Build()
 	end)
 	frame.copyBtn = Btn(NS:L("btn_copy"), "ghost", function() NS.Gateway:CopyToChat() end)
 	W.Tooltip(frame.copyBtn, function() return NS:L("tip_copy") end)
-	frame.editBtn = Btn(NS:L("btn_edit"), "ghost", function() Narrator:OpenEditor() end)
+	frame.editBtn = Btn(NS:L("btn_edit"), "ghost", function() Narrator:Edit() end)
 	frame.anotherBtn = Btn(NS:L("btn_another"), "ghost", function() NS.Gateway:Reroll() end)
 	W.Tooltip(frame.anotherBtn, function() return NS:L("tip_another") end)
 	frame.discardBtn = Btn(NS:L("btn_discard"), "text", function() NS.Gateway:Discard() end)

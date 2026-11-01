@@ -1010,7 +1010,7 @@ T.run("/au journal: finestra, schede, elenco", function()
 	text = AllText(f)
 	T.ok(text:find("Solo di questa sessione", 1, true), "la nota della sessione")
 	T.ok(text:find("Ritorno", 1, true), "anche il momento solo di sessione")
-	T.eq(#Buttons(f, "x"), 0, "la sessione non ha pulsanti di cancellazione")
+	T.eq(#Buttons(f, "Elimina"), 0, "la sessione non ha pulsanti di cancellazione")
 	-- si richiude con lo stesso comando
 	Run("journal")
 	T.ok(not f:IsShown(), "lo stesso comando la chiude")
@@ -1027,7 +1027,7 @@ T.run("diario: cancellazione e permanenza dai pulsanti", function()
 	NS.JournalFrame:Open("memories")
 	local f = JFrame()
 	local n0 = #Data().entries
-	local del = Buttons(f, "x")
+	local del = Buttons(f, "Elimina")
 	T.eq(#del, n0, "un pulsante di cancellazione per ricordo")
 	-- la riga più recente è la prima: cancella la prima, con un secondo clic di conferma (#190)
 	local first = LM:List()[1]
@@ -1039,24 +1039,24 @@ T.run("diario: cancellazione e permanenza dai pulsanti", function()
 	T.eq(#Data().entries, n0 - 1, "il ricordo è cancellato")
 	T.ok(not LM:Find(first.id), "proprio quello")
 	T.eq(#Buttons(f, "OK"), 0, "nessuna conferma resta armata")
-	local pin = Buttons(f, "P")
+	local pin = Buttons(f, "Tieni")
 	local second = LM:List()[1]
 	pin[1]:Click()
 	T.ok(LM:Find(second.id).perm, "il ricordo è permanente")
 	T.ok(AllText(f):find("[P]", 1, true), "segnato con [P]")
-	Buttons(f, "P")[1]:Click()
+	Buttons(f, "Tieni")[1]:Click()
 	T.ok(not LM:Find(second.id).perm, "si toglie dallo stesso pulsante")
 	-- luoghi: dimenticare
 	NS.JournalFrame:Open("places")
 	local places = Count(Data().places)
-	Buttons(f, "x")[1]:Click()
+	Buttons(f, "Dimentica")[1]:Click()
 	T.ok(Count(Data().places) == places and AllText(f):find("Dimenticare questo luogo?", 1, true), "luogo: chiede conferma")
 	Buttons(f, "OK")[1]:Click()
 	T.eq(Count(Data().places), places - 1, "il luogo è dimenticato")
 	-- flag: toglierlo
 	NS.JournalFrame:Open("flags")
 	local flags = Count(Data().flags)
-	Buttons(f, "x")[1]:Click()
+	Buttons(f, "Togli")[1]:Click()
 	T.ok(Count(Data().flags) == flags and AllText(f):find("Togliere questo flag?", 1, true), "flag: chiede conferma")
 	Buttons(f, "OK")[1]:Click()
 	T.eq(Count(Data().flags), flags - 1, "il flag è tolto")
@@ -1249,18 +1249,18 @@ T.run("diario: le conferme si disarmano da sole, con un gettone, e alla chiusura
 	local f = JFrame()
 	local n = #Data().entries
 	-- la conferma di una riga scade
-	Buttons(f, "x")[1]:Click()
+	Buttons(f, "Elimina")[1]:Click()
 	T.eq(#Buttons(f, "OK"), 1, "armata")
 	ADVANCE(7)
 	T.eq(#Buttons(f, "OK"), 0, "dopo qualche secondo torna com'era")
 	T.eq(#Data().entries, n, "e nulla è cancellato")
 	-- un altro clic rinuncia: un'altra scheda, un'altra riga
-	Buttons(f, "x")[1]:Click()
+	Buttons(f, "Elimina")[1]:Click()
 	for _, b in ipairs(Buttons(f)) do if b:GetText():find("Luoghi", 1, true) then b:Click() end end
 	for _, b in ipairs(Buttons(f)) do if b:GetText():find("Ricordi", 1, true) then b:Click() end end
 	T.eq(#Buttons(f, "OK"), 0, "cambiare scheda disarma")
-	Buttons(f, "x")[1]:Click()
-	Buttons(f, "x")[1]:Click()
+	Buttons(f, "Elimina")[1]:Click()
+	Buttons(f, "Elimina")[1]:Click()
 	T.eq(#Buttons(f, "OK"), 1, "una sola conferma alla volta: la seconda riga")
 	T.eq(#Data().entries, n, "armare una riga dopo l'altra non cancella")
 	-- il timer di un armamento vecchio non disarma quello nuovo
@@ -1291,7 +1291,9 @@ T.run("diario: schede misurate, nota sotto le schede, righe intere nel suggerime
 	local function Y(w) local p = w._s.points and w._s.points[#w._s.points]; return p and -p[3] end
 	local function X(w) local p = w._s.points and w._s.points[#w._s.points]; return p and p[2] end
 	local function RowTexts(f)
-		return FindWidgets(function(w) return w.kind == "FontString" and w.parent == f and w._s.w == 500 end)
+		local out = {}
+		for _, r in ipairs(JournalFrame.rows) do table.insert(out, r.text) end
+		return out
 	end
 	for _, lang in ipairs({ "it", "en" }) do
 		NS.db.locale = lang
@@ -1346,7 +1348,7 @@ T.run("diario: schede misurate, nota sotto le schede, righe intere nel suggerime
 	-- il finto client limita GetStringWidth a 400: qui serve la misura vera di una riga lunga
 	f.measure.GetStringWidth = function(self) return #self:GetText() * 6 end
 	NS.JournalFrame:Refresh()
-	local hits = FindWidgets(function(w) return w.kind == "Frame" and w.parent == f and w._s.w == 500 end)
+	local hits = { JournalFrame.rows[1].hit, JournalFrame.rows[2].hit }
 	T.ok(#hits >= 2, "un'area del suggerimento per riga")
 	local shown
 	local old = rawget(GameTooltip, "SetText")
@@ -1375,9 +1377,9 @@ T.run("diario con la memoria spenta o in sola lettura: lo dice e le azioni si fe
 		local text = AllText(f)
 		T.ok(text:find(case[2], 1, true), case[1] .. ": la finestra dice perché: " .. text:sub(1, 300))
 		T.ok(text:find("Prima visita: Elwynn Forest", 1, true), case[1] .. ": i ricordi si leggono")
-		local x = Buttons(f, "x")[1]
+		local x = Buttons(f, "Elimina")[1]
 		T.ok(x ~= nil and not x:IsEnabled(), case[1] .. ": cancellare è disattivato")
-		T.ok(not Buttons(f, "P")[1]:IsEnabled(), case[1] .. ": anche il permanente")
+		T.ok(not Buttons(f, "Tieni")[1]:IsEnabled(), case[1] .. ": anche il permanente")
 		x:Click(); x:Click()
 		T.eq(#Data().entries, n, case[1] .. ": un clic non fa nulla, nemmeno armare")
 		T.eq(#Buttons(f, "OK"), 0, case[1] .. ": nessuna conferma armata")

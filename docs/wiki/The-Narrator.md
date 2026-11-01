@@ -64,7 +64,8 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 - **Just play.** Lines come by themselves. Their frequency depends on [[intensity|Intensity-and-Depth]].
 - **Move the box.** Drag it with the mouse. Lock it in place from the [[settings panel|Settings]] (**Position locked**). Put it back with `/au narrator reset`.
 - **Windows never hide it.** When the guide, the journal, the relationships or the character window open on top of the box, the box steps out from under them (below, or above) and goes back to your own place when they close; the place you chose is never changed. While it shows a chat proposal or the guide's test line it is above every window. A window too big for the screen to leave room (relationships on a 768-unit-high screen) cannot be avoided, so the box stays above it. Windows you click come to the front, and a window that opens over another one is shifted a little.
-- **Pause at once.** Click the pause button (two bars) on the box, use the pause key, or type `/au pause`. Again to resume. The pause lasts until you resume it or log out.
+- **Pause at once.** Click the pause button (two bars) on the box, use the pause key, or type `/au pause`. Again to resume. The pause lasts until you resume it or log out. While paused, the speak button is dimmed and shows **Paused** under it, and a line you ask for says *paused* in its label.
+- **Use the keyboard.** Every action has a key you can bind (none by default): speak, another line, discard, edit, next channel, pause, history, journal and the NPC answers. See [[Commands Reference|Commands#key-bindings]].
 - **Keep a line on screen.** Put the mouse over the box: the line stays as long as the mouse is there (the time line stops just before its end), and a waiting chat proposal stops counting down.
 - **Read again.** Click the history button (three lines) on the box, or type `/au narrator history`, to see recent lines. The history has the same dark surface as the box and follows its text size. Close it with its **x** or with **Esc**. Drag it by its top strip (the dots) to put it somewhere else: from then on it keeps that place and stays open when the box hides; until you drag it, it sits above the box and hides with it. `/au narrator reset` puts both back.
 - **Hide a line.** Click the **x** button. It only hides the box: a waiting chat proposal is **not** discarded. It comes back with the next line, and the speak key first shows it again (a second press sends it), so nothing is ever sent that is not on screen. To throw a proposal away, use **Discard** in its bar.
@@ -79,6 +80,7 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 | `/au narrator reset` | moves the box back to its default place |
 | `/au narrator clear` | empties the history |
 | `/au pause` | pauses or resumes the narrator |
+| `/au combat show\|chat\|hold\|silent` | what the narrator does during a fight (see [In combat](#in-combat)) |
 | `/au on` · `/au off` | turns the addon on or off |
 
 ## Settings
@@ -92,6 +94,7 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 | Reduce motion | off (on: no time line; the box appears and disappears) |
 | Text size | 14 (10–28) |
 | Position locked | no |
+| In combat | hold until combat ends (show, chat frame only, hold, silent) |
 | History | the last 30 lines, this session only |
 
 See the [[Settings Reference|Settings]].
@@ -128,13 +131,33 @@ Besides your fights, deaths and new zones, the narrator now also notices what th
 
 These are ordinary moments: they follow the same pauses, limits and chance as everything else (see [[Settings Reference|Settings]]), they belong to the *World* module (weather, dawn, dusk, places, flights) or to the *Personal* one (quests, reputation, rest), and they are never spoken in combat. If the game does not tell the addon something (for example if the weather cannot be read), the narrator simply does not mention it: it never guesses.
 
+## In combat
+
+An ordinary fight is not the moment to read. The **In combat** setting (in the Narrator section of the [[settings panel|Settings]], or `/au combat`) says what a spontaneous line does during any fight:
+
+| Setting | During the fight | After it |
+|---|---|---|
+| **Show** | in the box, as before | — |
+| **Chat frame only** | written in your chat window, visible only to you, and in the history; the box stays away | — |
+| **Hold until combat ends** (default) | nothing on screen | the last three lines of the fight, one after the other, half a second after it ends (after the line of the victory, if there is one); older ones are dropped, and a line held more than five minutes too |
+| **Silent** | no spontaneous line at all | — |
+
+In every setting:
+
+- a **chat proposal waits for the end of the fight**: the proposal bar never comes up in combat, and a proposal that was waiting when the fight began leaves the screen and comes back after it, with its time from then and any text you had typed;
+- the **editor never opens in combat** (it takes every key): a fight that begins while you edit closes it and keeps your text;
+- the **speak key makes no new line in combat**: with nothing waiting it says how many lines wait for the end of the fight, or how to ask for one (`/au battlecry`);
+- a line you ask for yourself with a command is never held.
+
+Demanding fights (a boss, a raid, an elite enemy in an instance) were already silent, except for important moments such as a death; they still are.
+
 ## When the narrator stays quiet
 
 The narrator does not speak, by design:
 
 - when it is paused, the addon is off, or intensity is 0;
 - during cinematics and similar full-screen moments;
-- during demanding fights (boss fights, raids, elite enemies in instances), except for important moments such as a death;
+- during demanding fights (boss fights, raids, elite enemies in instances), except for important moments such as a death; and during every fight with **In combat: silent** (see [In combat](#in-combat));
 - when a line was shown very recently: there is a pause between lines (45 seconds by default) and a limit per kind of moment;
 - when no line fits. A line is never forced.
 

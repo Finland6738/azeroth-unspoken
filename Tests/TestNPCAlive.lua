@@ -804,10 +804,10 @@ T.run("l'etichetta «dialogo ambientale dell'addon» è sempre visibile, in ital
 	F:Render(N:View())
 	T.ok(frame.badge:GetText():find("addon ambient dialogue", 1, true) ~= nil, "etichetta in inglese: " .. frame.badge:GetText())
 	T.ok(frame.title:GetText():find("innkeeper", 1, true) ~= nil, "ruolo in inglese")
-	T.ok(frame.choiceButtons[1]._s.text == "What news is going round?", "risposte in inglese: " .. tostring(frame.choiceButtons[1]._s.text))
+	T.ok(frame.choiceButtons[1]._s.text == "1. What news is going round?", "risposte in inglese: " .. tostring(frame.choiceButtons[1]._s.text))
 	NS.db.locale = "it"
 	F:Render(N:View())
-	T.eq(frame.choiceButtons[1]._s.text, "Che notizie corrono?", "risposte in italiano")
+	T.eq(frame.choiceButtons[1]._s.text, "1. Che notizie corrono?", "risposte in italiano")
 	T.ok(frame.text:GetText():sub(1, 2) == "«", "la battuta è tra virgolette")
 	N:Close()
 	T.ok(NS:L("npc_badge_tip"):find("non compare in chat", 1, true) ~= nil, "il suggerimento dice che non va in chat")

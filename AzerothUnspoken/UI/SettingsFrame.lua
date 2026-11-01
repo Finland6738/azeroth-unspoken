@@ -16,6 +16,7 @@ local DEPTHS = { "natural", "literary", "elevated" }
 local COOLDOWNS = { 15, 30, 45, 60, 90, 120, 180 }
 local WAITS = { 25, 60, 120 }          -- seconds a proposal waits; after the longest, until it is closed (0, #177)
 local SPEEDS = { 8, 11, 14, 18, 24 }   -- reading speed, characters a second (#177)
+local COMBAT = NS.Config.COMBAT_SETTINGS   -- #185: show, chat frame only, hold until the fight ends, silent
 local CONTENT_W = 600                  -- width of the scrolling content
 local LABEL_X, CONTROL_X, CONTROL_W = 16, 250, 220
 local ROW = 28                         -- a row: 24 units of control and 4 of space
@@ -250,6 +251,10 @@ local function CreatePanel()
 	Toggle("opt_locked", function() return OnOff(NS.db.ui.narrator.locked) end,
 		function() NS.db.ui.narrator.locked = not NS.db.ui.narrator.locked end)
 	Next()
+	-- #185: what a spontaneous line does during a fight; proposals for chat always wait for its end
+	Toggle("opt_combat", function() return NS:L("combat_" .. NS.Gateway:CombatSetting()) end,
+		function() NS.Config:Set("pacing.inCombat", Cycle(COMBAT, NS.Gateway:CombatSetting())) end, "opt_combat_tip")
+	Next()
 	-- #182: the NPC dialogue window's own text size and opacity
 	Stepper("opt_dialogue_size", function() return tostring(NS.db.ui.dialogue.fontSize) end,
 		function() StepNumber("ui.dialogue.fontSize", -1) end, function() StepNumber("ui.dialogue.fontSize", 1) end)
@@ -289,7 +294,11 @@ local function CreatePanel()
 	-- Privacy: the consents, each in words (#178), and what reaches chat
 	Header("opt_section_privacy")
 	-- l'invio automatico è una scelta a parte, con avviso e conferma: non si raggiunge scorrendo le modalità
-	Toggle("opt_auto", function() return ConsentState("auto", NS.Gateway:IsAutoActive()) end, function()
+	-- #185: after a blocked automatic send the row says that the session works as "confirm to send"
+	Toggle("opt_auto", function()
+		if NS.Gateway:IsAutoActive() and NS.Gateway.autoFallback then return NS:L("consent_auto_fallback") end
+		return ConsentState("auto", NS.Gateway:IsAutoActive())
+	end, function()
 		if NS.Gateway:IsAutoActive() then NS.Gateway:SetMode("CONFIRM_TO_SEND") else NS.Gateway:SelectAuto() end
 	end)
 	Next()
