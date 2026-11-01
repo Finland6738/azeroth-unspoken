@@ -8,6 +8,7 @@
 -- è diventata dati letterali, una regola per riga di testo, che l'archivio legge e riscrive senza differenze):
 --   n         battuta neutra del ruolo, per chiunque
 --   known     solo se l'NPC è conosciuto (relazione calcolata dalle interazioni vere: `isKnown`)
+--   nick      only when the NPC gave the character a nickname (N5, #217: `relNick`, the placeholder {nickname})
 --   stranger  solo se non lo è
 --   again     solo se il giocatore ha già fatto la domanda in un dialogo precedente (flag narrativo `remembered`)
 --   gruff, jovial, warm, formal, terse   il modo di parlare o il temperamento dell'NPC (Data/NPCs.lua o scelta dell'utente)
@@ -87,6 +88,9 @@ NS:RegisterPack({
 		["npcd.flightmaster.open.known1"] = { event = "npcd_flightmaster_open", speaker = "npc", styles = { "everyday", "intimate" },
 			tags = { "other.role:flightmaster" }, weight = 2,
 			conditions = { isKnown = true, other = { role = "flightmaster" } } },
+		["npcd.flightmaster.open.nick1"] = { event = "npcd_flightmaster_open", speaker = "npc", styles = { "everyday", "intimate" },
+			tags = { "other.role:flightmaster" }, weight = 3,
+			conditions = { relNick = true, other = { role = "flightmaster" } } },
 		["npcd.flightmaster.open.jovial1"] = { event = "npcd_flightmaster_open", speaker = "npc", styles = { "everyday", "ironic" },
 			tags = { "other.speech:jovial", "other.temperament:cheerful" }, weight = 1,
 			conditions = { other = { any = { { speech = "jovial" }, { temperament = "cheerful" } }, role = "flightmaster" } } },
@@ -187,6 +191,9 @@ NS:RegisterPack({
 		["npcd.guard.open.known1"] = { event = "npcd_guard_open", speaker = "npc", styles = { "everyday", "intimate" },
 			tags = { "other.role:guard" }, weight = 2,
 			conditions = { isKnown = true, other = { role = "guard" } } },
+		["npcd.guard.open.nick1"] = { event = "npcd_guard_open", speaker = "npc", styles = { "everyday", "intimate" },
+			tags = { "other.role:guard" }, weight = 3,
+			conditions = { relNick = true, other = { role = "guard" } } },
 		["npcd.guard.open.stranger1"] = { event = "npcd_guard_open", speaker = "npc", styles = { "everyday" },
 			tags = { "other.role:guard" }, weight = 1,
 			conditions = { isKnown = false, other = { role = "guard" } } },
@@ -299,6 +306,9 @@ NS:RegisterPack({
 		["npcd.innkeeper.open.known1"] = { event = "npcd_innkeeper_open", speaker = "npc", styles = { "everyday", "intimate" },
 			tags = { "other.role:innkeeper" }, weight = 2,
 			conditions = { isKnown = true, other = { role = "innkeeper" } } },
+		["npcd.innkeeper.open.nick1"] = { event = "npcd_innkeeper_open", speaker = "npc", styles = { "everyday", "intimate" },
+			tags = { "other.role:innkeeper" }, weight = 3,
+			conditions = { relNick = true, other = { role = "innkeeper" } } },
 		["npcd.innkeeper.open.stranger1"] = { event = "npcd_innkeeper_open", speaker = "npc", styles = { "everyday" },
 			tags = { "other.role:innkeeper" }, weight = 1,
 			conditions = { isKnown = false, other = { role = "innkeeper" } } },
@@ -450,6 +460,9 @@ NS:RegisterPack({
 		["npcd.merchant.open.known1"] = { event = "npcd_merchant_open", speaker = "npc", styles = { "everyday", "intimate" },
 			tags = { "other.role:merchant" }, weight = 2,
 			conditions = { isKnown = true, other = { role = "merchant" } } },
+		["npcd.merchant.open.nick1"] = { event = "npcd_merchant_open", speaker = "npc", styles = { "everyday", "intimate" },
+			tags = { "other.role:merchant" }, weight = 3,
+			conditions = { relNick = true, other = { role = "merchant" } } },
 		["npcd.merchant.open.stranger1"] = { event = "npcd_merchant_open", speaker = "npc", styles = { "everyday" },
 			tags = { "other.role:merchant" }, weight = 1,
 			conditions = { isKnown = false, other = { role = "merchant" } } },
@@ -547,6 +560,9 @@ NS:RegisterPack({
 		["npcd.trainer.open.known1"] = { event = "npcd_trainer_open", speaker = "npc", styles = { "everyday", "intimate" },
 			tags = { "other.role:trainer" }, weight = 2,
 			conditions = { isKnown = true, other = { role = "trainer" } } },
+		["npcd.trainer.open.nick1"] = { event = "npcd_trainer_open", speaker = "npc", styles = { "everyday", "intimate" },
+			tags = { "other.role:trainer" }, weight = 3,
+			conditions = { relNick = true, other = { role = "trainer" } } },
 		["npcd.trainer.open.stranger1"] = { event = "npcd_trainer_open", speaker = "npc", styles = { "everyday" },
 			tags = { "other.role:trainer" }, weight = 1,
 			conditions = { isKnown = false, other = { role = "trainer" } } },

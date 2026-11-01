@@ -97,6 +97,8 @@ Config.CHAT_LIMITS = {
 ---@field sharePlayers boolean the list of people is shared by the account's characters (off by default, #114)
 ---@field levelNotices boolean the private narrator says when an NPC moves to another level of disposition (on, #214)
 ---@field promiseNotices boolean the private narrator recalls promises and oaths given to NPCs (on, #216)
+---@field favours boolean NPCs at Friend or above may ask small favours the game can check (on, #217)
+---@field nicknames boolean NPCs at Close friend or above give the character a nickname, used in their lines (on, #217)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -178,6 +180,9 @@ Config.defaults = {
 		levelNotices = true,
 		-- #216: promises and oaths to NPCs recalled by the private narrator (rare, never in combat)
 		promiseNotices = true,
+		-- #217: favours asked by NPCs at Friend or above, and nicknames given at Close friend (private narrator, journal)
+		favours = true,
+		nicknames = true,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {

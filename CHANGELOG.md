@@ -8,6 +8,36 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N5: favours and nicknames (issue #217)
+
+A step of the NPC relationships milestone, after N2. Narration only: NPCs never change their behaviour in the game, and
+nothing goes to public chat. Tested with the mock client only: nothing here has run in the real client yet (G1, steps
+N5.1-N5.7). The decisions are in [ADR 0039](docs/adr/0039-favours-and-nicknames.md).
+
+- **Added: favours.** A named NPC at Friend or above may ask a small favour when you meet them, one the game checks by
+  itself: come back (a meeting from the next day on), buy from me (merchants: a purchase on a later visit), rest at my
+  inn (innkeepers: resting in their town hours later, at a login or when the rested state begins), go and see a zone (on
+  the same continent and for the character's level; entering it is noted, the next meeting completes it). It completes
+  by itself: a reward row (`favour_done`, not counted as a meeting), a journal line with no name ("A favor done for a
+  friend") and a private notice. One open favour per NPC, three in all, two asked a session, three days of rest per NPC
+  after one; a favour not done in its days lapses without a word and without a cost. A favour is asked only when the
+  private narrator can say it.
+- **Added: nicknames.** A named NPC at Close friend or above gives the character a nickname once, from curated EN/IT
+  lists: the deeds first (quests handed to that NPC, favours done for them, a long road together), otherwise the
+  character's class and race, or one for anyone; in Italian the form follows the character's sex. The private narrator
+  says it, the journal keeps it ("A nickname: Anvil"), and the NPC's lines use it through the new placeholder
+  `{nickname}` and the condition `relNick`.
+- **Added: content.** Five dialogue-window openers that greet by the nickname (flight master, guard, innkeeper,
+  merchant, trainer) and two recall intentions for `relation_npc` (`rel.npc.nickname`, `rel.npc.favour.open` with the
+  condition `relFavour`), in Italian and English: base 1,186 intentions, 1,193 loaded with the example packs.
+- **Added: the window and two options.** The NPC detail and `/au relationships detail` show the nickname, the open
+  favour with the days left and the favours done. New options **Favors** and **Nicknames** (both on).
+- **Changed: `relationships.version` is 5** (the NPC fields `favour`, `favourT`, `favourN`, `quests`, `nick`). Version 4
+  data needs no migration; an older addon now leaves version 5 data read-only. NPCs with an open favour or a nickname are
+  never dropped by the compaction. Templates, destinations, lists and every number are in `favours`, `nicknames` and
+  `increments` of `Data/Relationships.lua`. In-game English uses the American spelling ("favor"); code and data keep
+  "favour".
+
 ### N4: promises, oaths and oathbreakers (issue #216)
 
 A step of the NPC relationships milestone, after N2. Narration only: NPCs never change their behaviour in the game, and
