@@ -8,6 +8,30 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N0: probing attacks, kills and deaths without the combat log (issue #212)
+
+The first step of the NPC relationships milestone. Forever gives addons no combat log, so hostility (N1), the nemesis
+(N7) and the companion pet (N8) must learn from ordinary events when the player attacks an NPC, kills it or is killed
+by it. This step only measures: nothing in the narration changes. Tested with the mock client only: the owner runs the
+new section N0 of the in-game checklist, then [ADR 0035](docs/adr/0035-attacks-kills-and-deaths-without-the-combat-log.md)
+is confirmed or changed.
+
+- **Added: N0 probes in `/au probe` (#212).** `Core/ProbeCombat.lua` reads on the target the threat situation, dead,
+  tapped by others, classification, quest boss, creature type, faction, npcID and interact distance, and a candidate
+  "named" verdict (elite, rare, world boss, quest boss, an NPC with a relationship record or in the curated register).
+  From the first `/au probe` it also listens to 12 events (`PLAYER_REGEN_DISABLED/ENABLED`, `PLAYER_ENTER_COMBAT`,
+  `UNIT_SPELLCAST_SENT`, `UNIT_COMBAT`, `UNIT_THREAT_LIST_UPDATE`, `UNIT_THREAT_SITUATION_UPDATE`, `UNIT_DIED`,
+  `PARTY_KILL`, `PLAYER_DEAD` and the nameplate events) and sums up the last 3 fights and 2 deaths: who struck first,
+  how many units were engaged or attacking the player, the friendly nameplates around, whether the target died and by
+  whose hand, and which unit was attacking the player at the death. Numbers, flags and fixed client words only, never a
+  name or a GUID; nothing is saved. `/au probe reset` also forgets the fights and deaths. Every API was checked against
+  the Forever dump; `UNIT_DIED` and `PARTY_KILL` were found there and added beyond the issue's list.
+- **Added: ADR 0035 (proposed, to confirm in game)**, the detection recipe for attacks, kills, deaths, witnesses and
+  named NPCs, and section N0 of `docs/G1_checklist.md` and `docs/G1_checklist.en.md` (ten steps for the owner).
+- **Changed: `Core/Probe.lua` can be extended** by other files (`Probe.AddEvent`, `Probe.ITEMS`, free report lines,
+  `Probe.resetHooks`); event samples receive the event's arguments. `Tests/check_api.py` reads the event table of
+  `Core/ProbeCombat.lua`; the mock has the new unit functions and events (`Tests/TestProbeCombat.lua`).
+
 ### U-keyboard-combat: keys, sliders and targets; what the narrator does in a fight (issues #183, #185)
 
 Fixes from the UI review (UI-13 and UI-15 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Tested with the mock client

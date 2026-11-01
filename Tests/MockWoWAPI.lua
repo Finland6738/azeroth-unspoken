@@ -114,7 +114,10 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	-- il mondo (R3)
 	"PLAYER_CONTROL_LOST", "PLAYER_CONTROL_GAINED", "QUEST_REMOVED",
 	-- proximity (#113)
-	"NAME_PLATE_UNIT_ADDED", "UPDATE_MOUSEOVER_UNIT" }) do
+	"NAME_PLATE_UNIT_ADDED", "UPDATE_MOUSEOVER_UNIT",
+	-- attacks, kills and deaths without the combat log (N0, #212)
+	"PLAYER_ENTER_COMBAT", "UNIT_COMBAT", "UNIT_THREAT_LIST_UPDATE", "UNIT_THREAT_SITUATION_UPDATE", "UNIT_DIED",
+	"PARTY_KILL", "NAME_PLATE_UNIT_REMOVED" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -127,6 +130,7 @@ local function Subject(u)
 	if u == "target" then return P.target end
 	if u == "npc" then return P.npc end
 	if u == "mouseover" then return P.mouseover end
+	if u == "pet" then return P.pet end
 	local kind, n = u:match("^(%a+)(%d+)$")
 	if kind == "nameplate" and P.nameplates then return P.nameplates[tonumber(n)] end
 	if kind == "party" and P.party then return P.party[tonumber(n)] end
@@ -221,8 +225,20 @@ function UnitIsPlayer(u)
 	return Identity(u, t and t.player or false)
 end
 function UnitCanAttack(a, b) local t = Subject(b); if a ~= "player" or not t or b == "player" then return false end return t.hostile or false end
-function UnitCreatureType(u) local t = Subject(u); return t and Identity(u, t.ctype) end
+function UnitCreatureType(u) local t = Subject(u); return t and Identity(u, t.ctype), t and t.ctypeID end
 function UnitClassification(u) local t = Subject(u); return t and Identity(u, t.cls or "normal") or nil end
+-- (N0, #212) t.threat: the player's threat situation on the unit (0..3, nil off its threat list); t.tapDenied,
+-- t.questBoss, t.pet (controlled by a player), t.near (CheckInteractDistance); P.combatLogRestricted
+function UnitThreatSituation(u, mob)
+	if u ~= "player" then return nil end
+	local t = Subject(mob)
+	return t and t.threat
+end
+function UnitIsTapDenied(u) local t = Subject(u); return t and t.tapDenied == true or false end
+function UnitIsQuestBoss(u) local t = Subject(u); return t and t.questBoss == true or false end
+function UnitPlayerControlled(u) local t = Subject(u); return t and (t.player or t.pet) == true or false end
+function CheckInteractDistance(u, index) local t = Subject(u); return t and t.near == true or false end
+C_CombatLog = { IsCombatLogRestricted = function() return P.combatLogRestricted == true end }
 function UnitGUID(u)
 	if u == "player" then return "Player-1-00000001" end
 	local t = Subject(u)

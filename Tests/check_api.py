@@ -366,10 +366,10 @@ def collect(folders):
                         name = S(tok)
                         if re.fullmatch(r"[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*", name or ""):
                             add(calls, name, path, m.start() + tup.start(), code)
-        # (R0, #82) eventi della sonda: { "NOME_EVENTO", campionatore }, registrati in un ciclo da Core/Probe.lua
-        if path.endswith("Probe.lua"):
-            m = re.search(r"local EVENT_PROBES = \{(.*?)\n\}", code, re.S)
-            if m:
+        # (R0, #82) eventi della sonda: { "NOME_EVENTO", campionatore }, registrati in un ciclo da Core/Probe.lua;
+        # (N0, #212) lo stesso per Combat.EVENTS di Core/ProbeCombat.lua
+        if re.search(r"Probe\w*\.lua$", path):
+            for m in re.finditer(r"(?:local EVENT_PROBES|Combat\.EVENTS) = \{(.*?)\n\}", code, re.S):
                 for tup in re.finditer(r"\{\s*(\"S\d+\")", m.group(1)):
                     name = S(tup.group(1))
                     if name and re.fullmatch(r"[A-Z][A-Z0-9_]+", name):

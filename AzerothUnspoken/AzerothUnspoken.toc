@@ -21,6 +21,7 @@ Core\EventBus.lua
 Core\ContextResolver.lua
 Core\Profiler.lua
 Core\Probe.lua
+Core\ProbeCombat.lua
 Core\Packs.lua
 
 # --- motore narrativo (non contiene testi) ---
