@@ -8,6 +8,38 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N2: visible levels, the first meeting and the NPC temperament (issue #214)
+
+Second step of the NPC relationships milestone (owner decisions of 2026-11-01). Narration only: NPCs never change their
+behaviour in the game, and nothing goes to public chat. Tested with the mock client only: nothing here has run in the
+real client yet (G1, steps N2.1-N2.7).
+
+- **Added: each NPC warms up at its own pace (the temperament).** A multiplier on every automatic gain and on its daily
+  cap, both ways, from `temperament` in `Data/Relationships.lua`: a default by role (innkeeper 1.3, guard 0.7, leader
+  0.6, banker 0.85), a factor by personality (cheerful 1.15, gruff 0.8, stoic 0.85...), curated overrides in
+  `Data/NPCs.lua` (`warmth`, `forget`) and a race factor in the spirit of the long-lived peoples: night elves and draenei
+  warm at 0.75 and forget at half the pace (the days of grace before familiarity fades are doubled), blood elves and
+  dwarves a little less so. `Data/NPCs.lua` now gives the race of its NPCs and adds a gruff blacksmith (Smith Argus); the
+  race of any other NPC is kept when the client gives it. `R:Temper` explains each multiplier.
+- **Added: the first meeting.** A new NPC record keeps `met`: the time of day, the weather when the client says it, the
+  zone and the character's level then (tokens, a zone name and numbers; no text). New conditions for the recall lines,
+  validated and counted as relationship conditions: `relMetLevels` (levels gained since), `relMetDays`, `relMetTime`,
+  `relMetWeather`. Five recall intentions for `relation_npc` in Italian and English ("I was still a novice the first
+  time I stood here", the first meeting by night, in the rain, in the snow, months ago). More come with N9 (#221).
+- **Added: visible levels.** The nine disposition bands are the levels of a bond (Hated 1, Deep bond 9). When an
+  interaction moves an NPC to another level, the private narrator says so in one line (`Narrator:Notice`, never chat):
+  at most 4 in a session, the same NPC not again for 20 hours (saved), never in combat (held until the fight ends),
+  never with the narrator silent, never for a slider the user moved. Reaching Friend, Close friend or Deep bond, or
+  falling to Hostile or Hated, leaves a journal line once per NPC and level, with no name (`relation_level`, "A bond
+  grows: Close friend"). The numbers are in `levels` of `Data/Relationships.lua`; a new option, **Level notices** (on),
+  turns the lines off.
+- **Added: the Relationships window shows the level.** The detail of an NPC has a block of its own, **What the addon
+  knows**: the level and the way to the next one, the temperament in words and the first meeting.
+  `/au relationships detail` prints the same for an NPC.
+- **Changed: `relationships.version` is 3** (`met`, `race` and `levelT` on NPC records). Version 2 data moves to 3 with
+  nothing to migrate; an older addon now leaves version 3 data read-only instead of dropping the new fields. The journal
+  can describe a kind of memory from its tokens (`LivingMemory:RegisterDescriber`).
+
 ### U-windows: one window shell, Esc, the window scale and sturdier windows (issues #174, #187, #182, #192, #190)
 
 Fixes from the UI review (UI-04, UI-17, UI-12, UI-22 and the rest of UI-20 in

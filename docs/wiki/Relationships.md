@@ -44,6 +44,8 @@ There is one label the addon never gives by itself: **ally**, for someone who st
 
 From worst to best: **Hated**, **Hostile**, **Unfriendly**, **Suspicious**, **Neutral**, **Acquaintance**, **Friend**, **Close friend**, **Deep bond**.
 
+These are also the **levels** of a bond: Hated is level 1, Deep bond level 9. The detail of an NPC shows the level and how far it is to the next one (for example *Level 7 of 9: Friend. Next: Close friend (40%).*).
+
 ## NPCs: automatic
 
 Bonds with NPCs grow **by themselves** from what you actually do together:
@@ -54,6 +56,33 @@ Bonds with NPCs grow **by themselves** from what you actually do together:
 - flights, inns, training, the bank.
 
 Growth slows down with repetition and has daily limits, so a hundred clicks on a vendor do not make you best friends. If you do not see an NPC for a couple of weeks, familiarity slowly fades, never below a small floor.
+
+All of this is **narration only**: an NPC never behaves differently in the game because of a relationship. What changes is what the narrator, the dialogue window and the journal say.
+
+### Each NPC warms up at its own pace
+
+Some people open up quickly, others take their time. The addon gives each NPC a **temperament**:
+
+- **by what they do**: an innkeeper warms up quickly; a guard slowly; a leader of a capital more slowly still;
+- **by their character**, when it is known (from the addon's own list of NPCs, or what you chose under **How you see them**): a cheerful one faster, a gruff blacksmith or a stoic one slower;
+- **by their people**: the long-lived peoples (night elves, draenei, and to a lesser degree blood elves and dwarves) are **slower to warm and slower to forget**, both ways. Their familiarity starts to fade later and fades more slowly.
+
+The temperament multiplies every gain and the daily limits too, so a quick NPC really does get there sooner. The detail of an NPC says it in words, for example *Warms up quickly, forgets at an even pace (innkeeper, cheerful).*
+
+### The first meeting
+
+When you meet an NPC for the first time, the addon keeps the **circumstances**: the time of day, the weather if the game says it, the zone and your level then. The detail shows them (*First met: 2026-11-01, at night, in the rain, in Elwynn Forest, you were level 7.*), and now and then your character may remember them when you meet that NPC again: the first meeting by night, the rain of that day, how much of a novice you were. NPCs you met before this version show only the date of the first record.
+
+### When a bond changes level
+
+When an NPC moves to another level through something you did together, the narrator says so in a short **private** line, for example *Something has eased between you and Innkeeper Farley (once Acquaintance, now Friend).* It is rare on purpose:
+
+- never during a fight: the line waits until the fight is over;
+- at most a few times in a session, and the same NPC is not announced again for most of a day;
+- never when the narrator is silent (intensity 0, paused, or the narrator box off), and never in chat;
+- never for a change you made yourself with the sliders.
+
+Reaching a level worth remembering (**Friend**, **Close friend**, **Deep bond**, or falling to **Hostile** or **Hated**) also leaves a line in the [[journal|Memory-and-Journal]], once per NPC and level, with no names: *A bond grows: Close friend (Goldshire)*. Turn the narrator lines off with **Level notices** in the Options tab.
 
 ## Players: your choice
 
@@ -168,7 +197,7 @@ The window is 660 units tall in every view, so it fits the screen at UI scale 1 
 
 The label, note and tags boxes save when you leave them: Enter, a click in another box, another tab, **Back to the list** or **Close**. A text you were typing always goes to the person it was typed for, even if you open someone else from the journal. **Esc** puts back the saved text.
 
-For a player there is a block across the window, **What the addon observed**: first recorded, last seen, the number of encounters by kind and, on the right, the last five facts. At the bottom, next to **Back to the list**, two different buttons:
+For an NPC the block underneath is **What the addon knows**: the level, the temperament and the first meeting. For a player there is a block across the window, **What the addon observed**: first recorded, last seen, the number of encounters by kind and, on the right, the last five facts. At the bottom, next to **Back to the list**, two different buttons:
 
 - **Forget observations** (asks for confirmation) erases only what the addon observed: the counts, the encounters and the facts. The person stays in your list with everything you chose.
 - **Remove person** (asks for confirmation) deletes the person and everything about them.
@@ -186,6 +215,7 @@ Both have the red outline of the actions that lose data. The first click arms th
 | **Recognise on target** | off | lets the narrator also recognise a known player when you target them |
 | **Recognise nearby** | off | nameplates and mouseover can let the narrator recognise a known player, for this session only; nothing is saved. Turning it on asks for a confirmation, like the shared list |
 | **Share with the account** | off | the choices about people are shared by all your characters (a warning and a second step turn it on) |
+| **Level notices** | on | a short private line when an NPC moves to another level; rare, never in combat, never in chat |
 
 Under the options, a line about each consent and the privacy note, in the normal text size. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
 
@@ -201,7 +231,7 @@ The list, People met and Options tabs also have **Export** (text to copy, in a w
 | `/au relationships add <name>` | adds a player |
 | `/au relationships dismiss <name>` | dismisses a suggestion |
 | `/au relationships remove <name\|npc:ID>` | deletes a relationship |
-| `/au relationships detail <name>` | prints one relationship |
+| `/au relationships detail <name>` | prints one relationship (for an NPC also the level, the temperament and the first meeting) |
 | `/au relationships note <name> <text>` | sets your note |
 | `/au relationships tags <name> <tag,...>` | sets your tags |
 | `/au relationships label <name> <text>` | sets your own label |
@@ -234,6 +264,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - Players are in your list only because you put them there (unless you turned on **Register by itself**). Meetings are recorded only for people **already** in your list.
 - What the addon observed is kept apart from what you chose, and never changes it.
 - Your notes, tags and own labels are **private**: they are never used in a line that could go to chat.
+- The first meeting with an NPC keeps only the time of day, the weather, the zone and your level: no text.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
 
@@ -251,12 +282,14 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Recognise on target | off | Options tab |
 | Recognise nearby | off | Options tab, `/au relationships proximity` |
 | Share with the account | off | Options tab, `/au relationships share` |
+| Level notices | on | Options tab |
 
 ## What you will see
 
 - The window and its three tabs, filling up as you play.
 - Lines that change tone with the bond: more formal with strangers, warmer with friends, more intimate with close bonds.
 - An occasional memory in the [[journal|Memory-and-Journal]] when a bond changes in a meaningful way.
+- Now and then a short private line when an NPC reaches another level, and a memory of the first meeting when you see them again.
 
 ## Tips
 

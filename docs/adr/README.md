@@ -42,6 +42,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0032](0032-monologues-of-whole-phrases-and-composite-situations.md) | Monologues of whole phrases, and composite situations of the Director | accepted |
 | [0033](0033-keys-shared-between-packs-refused-unless-overridden.md) | Keys shared between packs: refused, unless the pack says `override = true` | accepted |
 | [0034](0034-licensing-gpl-code-reserved-phrases.md) | Licensing: GPL code, reserved phrases, MIT pack template, CC BY documentation | accepted |
+| [0035](0035-npc-temperament-visible-levels-and-the-first-meeting.md) | NPC temperament, visible levels and the first meeting | accepted |
 
 ## Pending decisions
 

@@ -907,6 +907,43 @@ client finto.
 
 ---
 
+## N2: livelli visibili, primo incontro e temperamento degli NPC (aggiunto dall'issue #214)
+
+Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. API già usate altrove (`UnitRace` sull'NPC
+del dialogo, `C_Weather`, `C_DateAndTime.IsDayTime`, `GetGameTime`, `UnitLevel`); nuovo è solo l'uso. Provato solo con il
+client finto.
+
+- **N2.1 · Primo incontro.** Parla (gossip) con un NPC mai visto, meglio di notte o sotto la pioggia; poi
+  `/au relationships detail npc:<numero>` (il numero è in `/au relationships list`).
+    - **Cosa aspettarti:** «Primo incontro: <data>, di notte, sotto la pioggia, in <zona>, eri di livello <n>.» Il meteo
+      manca se il client non lo dice; mai un meteo sbagliato.
+    - **Cosa riportare:** il testo esatto, l'ora di gioco e il meteo che vedevi.
+- **N2.2 · Il riquadro dell'NPC.** `/au relationships`, apri un NPC.
+    - **Cosa aspettarti:** sotto le due colonne, **Cosa sa l'addon**: «Livello 5 di 9: Neutrale. Prossimo: Conoscente
+      (…%).», la riga del temperamento («Si affeziona in fretta, …» per un locandiere) e il primo incontro a destra; nulla
+      si sovrappone, nulla esce dalla finestra.
+    - **Cosa riportare:** uno screenshot (risoluzione e scala).
+- **N2.3 · Temperamento.** Parla lo stesso giorno, qualche volta, con un locandiere e con una guardia (per esempio
+  Marshal Dughan a Goldshire) e confronta la familiarità nel dettaglio.
+    - **Cosa aspettarti:** il locandiere sale più in fretta e il suo tetto del giorno è più alto; la guardia più piano.
+- **N2.4 · La razza.** Parla con un NPC elfo della notte o draenei che non è nell'elenco curato.
+    - **Cosa aspettarti:** se il client dice la razza dell'NPC, il dettaglio la nomina tra le ragioni del temperamento
+      («… elfo della notte») e la familiarità sale più piano.
+    - **Cosa riportare:** se `UnitRace("npc")` dà una razza per gli NPC (sì/no, quale).
+- **N2.5 · Avviso di livello.** Porta un NPC al livello successivo con missioni consegnate (o con
+  `/au relationships set npc:<numero> trust 30` e poi un dialogo).
+    - **Cosa aspettarti:** una riga breve nel narratore, solo per te: «Qualcosa si è sciolto tra te e <nome> (prima
+      Neutrale, ora Conoscente).» Nessuna riga se a cambiare il livello è il cursore. Lo stesso NPC non lo ripete per circa
+      un giorno; al massimo quattro avvisi per sessione.
+- **N2.6 · Mai in combattimento.** Consegna una missione che fa salire un livello mentre sei in combattimento (o entra in
+  combattimento subito prima).
+    - **Cosa aspettarti:** nulla durante il combattimento; la riga arriva appena il combattimento finisce. Nulla in chat.
+- **N2.7 · Diario.** Porta un NPC ad **Amico** (o più su).
+    - **Cosa aspettarti:** nel diario «Un legame cresce: Amico (<zona>)», una sola volta per quell'NPC, senza il suo nome.
+      Con **Avvisi di livello** spento (scheda Opzioni) la riga del narratore non c'è, il diario sì.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1031,6 +1068,10 @@ R0 locanda e volo ....... PLAYER_UPDATE_RESTING ___  TAXIMAP_OPENED ___  UnitOnT
 R0 combattimento ........ LoadAddOn in combattimento ______  Combat=1 dentro? ___
 R0 dopo un'ora .......... memoria (KB) ______  rallentamenti? ___
 R0 nomi altrui .......... nei rapporti? (deve essere NO) ___  issue ______
+N2 primo incontro ....... ora giusta? ___  meteo giusto o assente? ___  zona e livello? ___
+N2 riquadro NPC ......... livello e prossimo? ___  temperamento? ___  si sovrappone? (deve essere NO) ___
+N2 temperamento ......... locandiere più veloce della guardia? ___  razza dell'NPC dal client? ______
+N2 avvisi ............... riga privata? ___  mai in combattimento? ___  dopo il combattimento? ___  troppe? ___  diario Amico? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 
