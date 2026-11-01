@@ -149,6 +149,7 @@ R.LEVEL_MAX = 200              -- a character level read back from saved data is
 R.ID_LEN = 32                  -- a favour template or nickname id kept with an NPC record (#217)
 R.FAVOUR_KINDS = { ["return"] = true, buy = true, rest = true, visit = true }   -- what the engine can check (#217)
 R.DEEDS = { quests = true, favours = true, level = true, days = true }          -- the deeds a nickname can ask (#217)
+R.FAVOUR_MAX_DAYS = 60          -- a loaded favour lapses within this many days of being asked, whatever its file says (#217)
 -- what can happen with a listed player. ENCOUNTERS count as encounters (`count`, `last`); SHARED are facts of an
 -- experience lived together (they update `last` and the tally by kind, not `count`). relShared accepts any of them.
 R.ENCOUNTERS = { group = true, trade = true, duel = true, invite = true, emote = true, whisper = true, target = true }
@@ -1038,7 +1039,9 @@ end
 function R.CleanFavour(f)
 	if type(f) ~= "table" or type(f.k) ~= "string" or not f.k:match("^[a-z_]+$") or #f.k > R.ID_LEN then return nil end
 	if not (IsNumber(f.t) and f.t > 0 and IsNumber(f.e) and f.e > 0) then return nil end
-	local out = { k = f.k, t = Past(f.t), e = math.floor(f.e) }
+	-- an expiry far beyond any template's days (a damaged file) would keep the favour open for ever
+	local out = { k = f.k, t = Past(f.t) }
+	out.e = math.floor(math.min(f.e, out.t + R.FAVOUR_MAX_DAYS * R.DAY))
 	if IsNumber(f.map) and f.map > 0 then out.map = math.floor(f.map) end
 	out.zone = CleanText(f.zone, R.ZONE_LEN)
 	if f.s == true then out.s = true end

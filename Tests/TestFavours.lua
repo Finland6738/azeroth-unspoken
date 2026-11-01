@@ -555,6 +555,10 @@ T.run("favours and nicknames are saved with the NPC, cleaned, and keep the NPC i
 	rec.favour = { k = "return", t = time() + 99 * DAY, e = time() + 100 * DAY }
 	R:Sanitize()
 	T.ok(Npc(8200).favour.t <= time(), "times in the past")
+	rec = Npc(8200)
+	rec.favour = { k = "return", t = time(), e = time() + 9999 * DAY }
+	R:Sanitize()
+	T.ok(Npc(8200).favour.e <= time() + R.FAVOUR_MAX_DAYS * DAY, "an expiry far away is brought within the limit")
 	-- the compaction keeps an NPC with a favour or a nickname
 	local d = NS.cdb.relationships
 	for i = 1, R.MAX_NPCS + 5 do d.npcs[100000 + i] = { first = 1, last = 1, count = 1, familiarity = 90 } end
