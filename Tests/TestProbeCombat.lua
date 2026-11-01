@@ -56,7 +56,7 @@ end
 ---------------------------------------------------------------------------
 T.run("N0 probe: the target's classification, threat and faction as client tokens, never its name", function()
 	Fresh()
-	P.target = { name = "Thrall", guid = Guid(4949), reaction = 5, ctype = "Humanoid", ctypeID = 7, cls = "elite",
+	P.target = { name = "Thrall", guid = Guid(70001), reaction = 5, ctype = "Humanoid", ctypeID = 7, cls = "elite",
 		questBoss = true, faction = "Horde", threat = nil, near = true }
 	local text = Cmd("probe")
 	T.ok(Find(text, "C_CombatLog.IsCombatLogRestricted"):find("^%[AVAILABLE%] .*%-> false"), "combat log restriction")
@@ -67,7 +67,7 @@ T.run("N0 probe: the target's classification, threat and faction as client token
 	T.ok(Find(text, "UnitIsQuestBoss(target)"):find("-> true", 1, true), "quest boss")
 	T.ok(Find(text, "UnitCreatureType(target)"):find("-> Humanoid, id 7, humanoid yes", 1, true), "creature type")
 	T.ok(Find(text, "UnitFactionGroup(target)"):find("-> Horde", 1, true), "faction token")
-	T.ok(Find(text, "UnitGUID(target) npcID"):find("npcID 4949", 1, true), "the npcID, not the GUID")
+	T.ok(Find(text, "UnitGUID(target) npcID"):find("npcID 70001", 1, true), "the npcID, not the GUID")
 	T.ok(Find(text, "CheckInteractDistance(target, 4)"):find("-> true", 1, true), "near")
 	local named = Find(text, "named (candidate rule, ADR 0035)")
 	T.ok(named:find("named, elite, quest boss; target friendly npc", 1, true), "named: " .. named)
@@ -97,7 +97,7 @@ T.run("N0 probe: no target, a hidden target and a missing API", function()
 		"UnitGUID(target) npcID", "named (candidate rule, ADR 0035)" }) do
 		T.ok(Find(text, id):find("no target selected", 1, true), "no target: " .. id)
 	end
-	P.target = { name = "Thrall", guid = Guid(4949), reaction = 5, ctype = "Humanoid", cls = "elite", faction = "Horde" }
+	P.target = { name = "Thrall", guid = Guid(70001), reaction = 5, ctype = "Humanoid", cls = "elite", faction = "Horde" }
 	SECRET_UNITS.target = true
 	text = Cmd("probe")
 	SECRET_UNITS.target = nil
