@@ -8,6 +8,16 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Licensing touch-ups (ADR 0034)
+
+- **Added:** an express reservation of text and data mining rights for the phrases and narrative data
+  (`LICENSE-CONTENT.md`, `tdmrep.json`, `ai.txt`), stated as a reservation of rights, not a technical block.
+- **Added:** a `NOTICE.md` in every data folder (licence, reservation, owner), and a statement in `LICENSING.md` that the
+  data files are a separate work not covered by the GPL.
+- **Added:** a required licensing checkbox in the pull request template, the Developer Certificate of Origin sign-off
+  for external contributors, and an advisory (non-blocking) CI job that warns about missing sign-offs.
+- **Changed:** the wiki FAQ explains in plain words what players may do with the phrases.
+
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
 ### U: slash-command help and the speak button (issues #175, #189)

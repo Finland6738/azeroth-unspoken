@@ -43,6 +43,20 @@ Everything else, in particular:
 To ask for permission, open an issue or a discussion in the repository. A permission is valid only if it is written and
 given by the owner of the project.
 
+## Reservation of text and data mining rights
+
+The rights holder (Finland6738) **expressly reserves all rights to text and data mining** of the content described
+above, in every language and by any means, including the reproduction and extraction of the content to train,
+fine-tune, evaluate or ground machine-learning or artificial intelligence systems. This is an express reservation in
+the sense of art. 4(3) of EU Directive 2019/790 and art. 70-quater of the Italian copyright law (L. 633/1941), so the
+exception for text and data mining does not apply to this content.
+
+The reservation is declared in machine-readable form in [`tdmrep.json`](tdmrep.json) (TDMRep format, `tdm-reservation: 1`)
+and [`ai.txt`](ai.txt), and in a `NOTICE.md` in each data folder. It is **a reservation of rights, not a technical
+block**: nothing stops a crawler from reading these public files, and the reservation works only through the law. Text
+and data mining of the content needs the owner's written permission (see above). The code is not covered by this
+reservation.
+
 ## Disclaimer
 
 The content is provided "as is", without warranty of any kind. Names of places, characters and peoples of World of
