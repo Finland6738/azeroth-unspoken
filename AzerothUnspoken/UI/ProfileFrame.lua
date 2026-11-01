@@ -17,7 +17,7 @@ local topics = {}      -- [argomento] = pulsante
 ProfileFrame.rows = rows   -- per i test
 local ROW_HEIGHT = 26
 local WIDTH, HEIGHT = 680, 700
-local TOP = 104            -- the archetype row, under an introduction of up to three lines (#182)
+local TOP = 118            -- the archetype row, under an introduction of up to four lines (#182)
 local RESET_SECONDS = 6    -- after the first click on "Neutral profile" there is this long for the second
 -- "Neutral profile" waits for a second click (#190); a redraw when the arming expires
 local confirmReset = W.Confirm(RESET_SECONDS, function() ProfileFrame:Refresh() end)

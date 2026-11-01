@@ -311,11 +311,11 @@ local function CreatePanel()
 	-- what each choice means, the consents that wait for something, the content: the text of a consent, 12 units (#182),
 	-- under the last row whatever the number of rows
 	local help = content:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
-	help:SetPoint("TOPLEFT", LABEL_X, -(y + 6))
+	help:SetPoint("TOPLEFT", LABEL_X, -(y + 12))
 	help:SetWidth(CONTENT_W - 2 * LABEL_X)
 	help:SetJustifyH("LEFT")
 	panel.help = help
-	local helpTop = y + 6
+	local helpTop = y + 12
 
 	-- the controls, labels and texts again, from the settings
 	function panel:Refresh()
