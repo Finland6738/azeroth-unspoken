@@ -375,18 +375,18 @@ def build_profile():
 def build_dialogue():
     w, h = 560, 300
     add("dialogue-offered", "NPC dialogue - offered", w, h,
-        dialogue(90, 60, "|cff9be37aInnkeeper · Bram Ashcombe|r", choices=["Listen (ambient dialogue)"]),
+        dialogue(90, 60, "|cff4fb354Innkeeper · Bram Ashcombe|r", choices=["Listen (ambient dialogue)"]),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=100)
     add("dialogue-line", "NPC dialogue - a line and the answers", w, h,
-        dialogue(90, 40, "|cff9be37aInnkeeper · Bram Ashcombe|r", line=L_NPC,
+        dialogue(90, 40, "|cff4fb354Innkeeper · Bram Ashcombe|r", line=L_NPC,
                  choices=["What news is going round?", "I am looking for a place to rest.", "Farewell."], hover=0),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=101)
     add("dialogue-last", "NPC dialogue - last line", w, h,
-        dialogue(90, 60, "|cff9be37aInnkeeper · Bram Ashcombe|r",
+        dialogue(90, 60, "|cff4fb354Innkeeper · Bram Ashcombe|r",
                  line="You've come to the right place to stop walking. For a while, at least.", choices=["Close"]),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=102)
     add("dialogue-test", "NPC dialogue - /au talk test", w, h,
-        dialogue(90, 40, "|cff9be37aInnkeeper · Test innkeeper|r · test", line=L_NPC,
+        dialogue(90, 40, "|cff4fb354Innkeeper · Test innkeeper|r · test", line=L_NPC,
                  choices=["What news is going round?", "I am looking for a place to rest.", "Farewell."]),
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=103)
 

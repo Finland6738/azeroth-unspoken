@@ -1098,7 +1098,7 @@ T.run("#174, #182: la cronologia: chiusura, Esc, maniglia, posto proprio, caratt
 	h:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 40, -60)
 	h.handle.scripts.OnDragStop(h.handle)
 	local pos = NS.db.ui.narrator.historyPos
-	T.ok(type(pos) == "table" and pos[1] == "TOPLEFT" and pos[3] == 40, "posizione propria salvata")
+	T.ok(type(pos) == "table" and pos[1] == "BOTTOMLEFT" and pos[3] == 40, "posizione propria salvata (#192: dal suo angolo in basso a sinistra)")
 	frame:Hide()
 	T.ok(h:IsShown(), "con un posto suo resta quando il riquadro si nasconde")
 	h:Hide()

@@ -54,6 +54,8 @@ yet (G1).
   `Config:Set` and by every row of the panel), is followed by the panel, the open windows (scale, title, redraw, so a
   change of language re-labels them), the narrator and the NPC dialogue window. Turning the addon or the narrator box
   off takes the line on screen away.
+- **Changed: the NPC's name in the dialogue window is the narrator's NPC green (#186).** `#4FB354`, the same as the NPC
+  voice of the narrator box, instead of the old `#9BE37A`.
 - **Fixed: the classic Interface Options opened on the wrong page (#192).** They are opened with two calls, as that panel
   needs; the newer Settings panel with one.
 

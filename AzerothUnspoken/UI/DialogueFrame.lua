@@ -20,7 +20,7 @@ local WIDTH = 380
 local MARGIN = 8
 local OVERLAP_PAD = 6
 local CHECK_EVERY = 0.5
-local BADGE_COLOR, NPC_COLOR = "ffd060", "9be37a"
+local BADGE_COLOR, NPC_COLOR = "ffd060", "4fb354"   -- the NPC voice of the narrator (#186)
 
 -- finestre di Blizzard che la nostra non deve coprire (nomi di FrameXML: si controllano solo se esistono)
 F.BLIZZARD_FRAMES = { "GossipFrame", "QuestFrame", "MerchantFrame", "TaxiFrame", "ClassTrainerFrame", "BankFrame",

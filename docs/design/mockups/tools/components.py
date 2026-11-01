@@ -443,7 +443,7 @@ def settings(left, top, reload_needed=False, auto_state="off", others_state="off
     help_ += "Lines available in this language: 4182, from 9 packs.\n\n" + SET_HELP
     # the help text, in the font of a consent (12 units, #182), under the last row: in the flow, so that it sets the
     # height of the content as content:SetHeight(helpTop + help height + 16) does
-    out.append(f'<div class="fs gfh" style="position:relative;left:{SET_LABEL_X}px;margin-top:{y + 6}px;'
+    out.append(f'<div class="fs gfh" style="position:relative;left:{SET_LABEL_X}px;margin-top:{y + 12}px;'
                f'width:{SET_CONTENT_W - 2 * SET_LABEL_X}px;margin-bottom:16px">{wow(help_)}</div>')
     content = (f'<div style="position:relative;width:{SET_CONTENT_W}px;display:flow-root'
                f'{";top:-%dpx" % scroll if scroll else ""}">{"".join(out)}</div>')
@@ -707,9 +707,9 @@ def detail_widgets(d):
 
 # ---------------------------------------------------------------------------------------------------------------
 # Profile (UI/ProfileFrame.lua): 680 x 700, the W.Window shell; the introduction (12 units) at -46, the archetype row
-# at -104, the traits every 26 from -140, the avoided topics, then Total RP 3, Neutral profile and Close at the bottom
+# at -118, the traits every 26 from -154, the avoided topics, then Total RP 3, Neutral profile and Close at the bottom
 # ---------------------------------------------------------------------------------------------------------------
-PROFILE_TOP = 104
+PROFILE_TOP = 118
 
 
 def profile(left, top, rows, avoided, trp3=True, archetype="Hopeful traveler",
