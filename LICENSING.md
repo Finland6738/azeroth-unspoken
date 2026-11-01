@@ -44,11 +44,28 @@ permission. The full terms are in [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md).
 A version of the addon built from the GPL code must therefore ship **its own phrases**, unless the owner gives written
 permission.
 
+### The data files are a separate work
+
+The phrase and narrative data files, although written as Lua tables so that the addon can load them, are a **separate
+work** distributed together with the GPL program, under their own terms (above). Loading them through the public pack
+interface does not make them part of the program, and the GPL of the engine does **not** extend to them. Each data
+folder carries a `NOTICE.md` that says so, names the licence and the owner (Finland6738) and links
+[`LICENSE-CONTENT.md`](LICENSE-CONTENT.md). The notices ship with the addon folders on purpose, so the terms travel with
+the files.
+
+### Text and data mining
+
+All rights to text and data mining of the phrases and narrative data are reserved (EU Directive 2019/790, art. 4(3);
+Italian copyright law, art. 70-quater): see [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md#reservation-of-text-and-data-mining-rights),
+[`tdmrep.json`](tdmrep.json) and [`ai.txt`](ai.txt). It is a reservation of rights, not a technical block.
+
 ## Contributions
 
 By opening a pull request you agree to the terms in [CONTRIBUTING.md](CONTRIBUTING.md#licensing-of-contributions): code
 under GPL-3.0-or-later, documentation under CC BY 4.0, and for phrases and narrative data a licence to the project owner
 that allows them to be distributed with the addon and relicensed in the future. You keep the copyright of what you write.
+
+This is not legal advice: if the project gains commercial value, a specialist should review these terms.
 
 ## Third-party names
 

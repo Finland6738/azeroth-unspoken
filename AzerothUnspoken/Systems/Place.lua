@@ -443,8 +443,8 @@ function handlers.ENCOUNTER_END(env)
 	local success = c.success == 1 or c.success == true
 	Place.last = { id = Num(c.encounterID), name = Str(c.encounterName) or (e and e.name), success = success, t = GetTime() }
 	-- un commento alla fine dello scontro, a combattimento finito (il Director decide se parlare)
-	if NS.Director and C_Timer and C_Timer.After then
-		C_Timer.After(Place.ENCOUNTER_DELAY, function()
+	if NS.Director then
+		Compat.After(Place.ENCOUNTER_DELAY, function()
 			if Compat.SafeCall("UnitAffectingCombat", "player") ~= true then
 				NS.Director:Offer("encounter_end")
 			end

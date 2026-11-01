@@ -40,6 +40,31 @@ legal way to continue it; unclear rights on contributions; the engine closed ins
    content later without asking every contributor.
 8. Every `.toc` file declares its licence in `## X-License`.
 
+## Touch-ups (2026-11-01)
+
+The owner kept the scheme and added four touch-ups after reviewing an analysis of it.
+
+1. **Text and data mining reservation.** The express reservation of art. 4(3) of EU Directive 2019/790 (art. 70-quater
+   of the Italian copyright law) is written as a standalone section of `LICENSE-CONTENT.md` and in every data folder's
+   `NOTICE.md`. For machine readers we chose two small root files: **`tdmrep.json`** (the W3C community group's TDM
+   Reservation Protocol, `tdm-reservation: 1`, one entry per data folder, with a policy link) and **`ai.txt`**
+   (robots.txt-like syntax read by some AI crawlers). Limits, stated plainly: TDMRep is designed for web servers (a
+   `/.well-known/tdmrep.json` file, HTTP headers, HTML meta tags) and GitHub serves neither, so most crawlers will never
+   read these files; `ai.txt` is a convention with no standard body. The reservation is a declaration of rights, not a
+   technical block, and it works through the law, not through the files. Scrapers of GitHub that ignore it are a matter
+   for the hosting site's copyright notices. A clear, human-readable statement in the licence is the part that counts.
+2. **Contribution agreement actually given.** The pull request template has a required checkbox that the contributor has
+   read and agrees to "Licensing of contributions", and external contributors sign off their commits with the
+   **Developer Certificate of Origin** (`git commit -s`). An advisory CI job (`dco.yml`) warns when an external pull
+   request has commits without sign-off; it is not a required check and skips pull requests by the owner, whose own
+   and automated work needs no sign-off.
+3. **Data as a separate work.** `LICENSING.md` states that the data files, although Lua tables, are a separate work
+   distributed with the GPL program under their own terms, and that the GPL does not extend to them. A `NOTICE.md` in
+   each data folder (`AzerothUnspoken/Data/`, the language, regional and verses packs, `authoring/`) names the licence,
+   the reservation and the owner. The notices **ship** in the addon folders (the installer copies whole folders; WoW
+   ignores files not listed in the `.toc`), because licence terms that travel with the files are clearer.
+4. **Records:** this ADR, the changelog and the wiki FAQ.
+
 ## Alternatives considered
 
 - **MIT for the code and CC BY-NC 4.0 for the phrases** (the first proposal in issue #2). Rejected: MIT lets anyone close

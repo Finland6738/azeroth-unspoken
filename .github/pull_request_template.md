@@ -16,6 +16,7 @@ Write the title and the description in English. Say what changed and WHY, and sa
 Every step or fix PR updates the CHANGELOG, the affected docs and the affected wiki pages **in the same PR**
 ([CONTRIBUTING.md](../CONTRIBUTING.md), section 8). The wiki is never edited on GitHub: it is published from `docs/wiki/`.
 
+- [ ] **I have read and agree to the [Licensing of contributions](../CONTRIBUTING.md#licensing-of-contributions) in CONTRIBUTING.md** (required), and external contributors have signed off their commits (`git commit -s`, Developer Certificate of Origin).
 - [ ] The tests pass: `python -I -X utf8 Tests/run_tests.py AzerothUnspoken` (CI must also be green before merging).
 - [ ] `CHANGELOG.md` is updated, in the "Unreleased" section, in the group of this step or fix.
 - [ ] The docs are updated: `docs/ARCHITECTURE.md`, an ADR in `docs/adr/` if a decision changed (and the ADR index), `AzerothUnspoken/PACK_FORMAT.md` if the pack API changed, `README.md` **and** `README.it.md` for commands, numbers, privacy and status.

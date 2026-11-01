@@ -147,9 +147,7 @@ end
 function Profiler:OnInit()
 	self:Install()
 	-- the first sample, a few seconds after login: "memory after login" of the checklist
-	if C_Timer and C_Timer.After then
-		C_Timer.After(LOGIN_SAMPLE, function() Profiler:SampleMemory() end)
-	end
+	Compat.After(LOGIN_SAMPLE, function() Profiler:SampleMemory() end)
 end
 
 ---------------------------------------------------------------------------

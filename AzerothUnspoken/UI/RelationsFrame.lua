@@ -382,7 +382,7 @@ local function BuildDetail()
 			R:ForgetObservations(s.key)
 		else
 			view.armedForget = true
-			C_Timer.After(DELETE_ARM_SECONDS, function()
+			NS.Compat.After(DELETE_ARM_SECONDS, function()
 				view.armedForget = false
 				RelationsFrame:Refresh()
 			end)
@@ -398,7 +398,7 @@ local function BuildDetail()
 			RelationsFrame:RemoveSubject()
 		else
 			view.armed = true
-			C_Timer.After(DELETE_ARM_SECONDS, function()
+			NS.Compat.After(DELETE_ARM_SECONDS, function()
 				view.armed = false
 				RelationsFrame:Refresh()
 			end)
@@ -427,7 +427,7 @@ local function BuildOptions()
 			if opt[1] == "sharePlayers" then
 				-- turning the shared list on needs a second click (with the warning); turning it off needs one
 				if R:Setting("sharePlayers") then R:StopSharing() else R:StartSharing() end
-				C_Timer.After(R.CONFIRM_SECONDS + 0.5, function() RelationsFrame:Refresh() end)
+				NS.Compat.After(R.CONFIRM_SECONDS + 0.5, function() RelationsFrame:Refresh() end)
 			else
 				R:SetSetting(opt[1], not R:Setting(opt[1]))
 			end
@@ -491,7 +491,7 @@ local function Build()
 			R:Reset("all")
 		else
 			view.armedReset = true
-			C_Timer.After(DELETE_ARM_SECONDS, function()
+			NS.Compat.After(DELETE_ARM_SECONDS, function()
 				view.armedReset = false
 				RelationsFrame:Refresh()
 			end)

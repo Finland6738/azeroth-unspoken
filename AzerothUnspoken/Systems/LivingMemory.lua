@@ -849,7 +849,7 @@ end
 
 -- il ritorno in una zona nota: un candidato per il Narrative Director, a richiamo di memoria
 function LM:OfferReturn(key)
-	C_Timer.After(self.RETURN_DELAY, function()
+	NS.Compat.After(self.RETURN_DELAY, function()
 		if self.current and self.current.key == key and not InCombat() and NS.Director then
 			NS.Director:Offer("memory_return")
 		end
@@ -1161,7 +1161,5 @@ function LM:OnInit()
 	local dropped = self:Sanitize()
 	if dropped > 0 then NS.Diagnostics:Error("memory", ("%d voci malformate scartate"):format(dropped)) end
 	-- la fine della visita in corso si aggiorna ogni TICK secondi: il file salvato non ha mai una visita "vecchia"
-	if C_Timer and C_Timer.NewTicker then
-		C_Timer.NewTicker(self.TICK, function() LM:Touch() end)
-	end
+	NS.Compat.Ticker(self.TICK, function() LM:Touch() end)
 end

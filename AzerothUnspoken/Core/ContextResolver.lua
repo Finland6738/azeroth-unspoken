@@ -94,7 +94,7 @@ local function LocalName(group, token, fallback)
 	local lang = NS.languages[NS:Lang()]
 	local t = lang and lang.ui[group]
 	local v = t and token and t[token]
-	if type(v) == "table" then v = (UnitSex("player") == 3) and v[2] or v[1] end
+	if type(v) == "table" then v = (SafeCall(UnitSex, "player") == 3) and v[2] or v[1] end
 	return v or fallback
 end
 

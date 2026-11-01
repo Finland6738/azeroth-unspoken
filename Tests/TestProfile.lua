@@ -317,6 +317,70 @@ T.run("probe: UnitPosition inside and outside an instance", function()
 	P.instance = false
 end)
 
+-- #166: an API that answers with something unexpected costs one line, never the whole report
+T.run("probe: an unexpected answer never loses the report (#166)", function()
+	local function Report(label)
+		local ok, text = pcall(Cmd, "probe")
+		T.ok(ok, label .. ": the command raised nothing: " .. tostring(text))
+		T.ok(ok and text:find("Summary:", 1, true) ~= nil, label .. ": the report reaches its summary")
+		T.ok(ok and text:find("] debugprofilestop", 1, true) ~= nil, label .. ": the probes after the first still run")
+		return ok and text or ""
+	end
+	local savedTime = GetGameTime
+	for label, fn in pairs({
+		["minute is text"] = function() return 14, "x" end,
+		["minute is NaN"] = function() return 14, 0 / 0 end,
+		["minute is secret"] = function() return 14, MakeSecret() end,
+		["hour is NaN"] = function() return 0 / 0, 5 end,
+		["hour is infinite"] = function() return math.huge, 5 end,
+		["hour is text"] = function() return "noon", 5 end,
+		["nothing"] = function() end,
+		["raises"] = function() error("restricted") end,
+	}) do
+		Fresh()
+		GetGameTime = fn
+		Report(label)
+	end
+	-- a text minute counts as 0 and the hour is still shown
+	Fresh()
+	GetGameTime = function() return 14, "x" end
+	T.ok(Cmd("probe"):find("game time 14:00", 1, true), "a text minute counts as 0")
+	GetGameTime = savedTime
+	-- the other client calls of the header and of the probes that answer with garbage
+	local saved = { GetRealZoneText = GetRealZoneText, IsInInstance = IsInInstance, IsResting = IsResting,
+		InCombatLockdown = InCombatLockdown, GetBuildInfo = GetBuildInfo }
+	for _, name in ipairs({ "GetRealZoneText", "IsInInstance", "IsResting", "InCombatLockdown" }) do
+		for _, fn in ipairs({ function() error("restricted") end, function() return MakeSecret() end,
+			function() return {} end }) do
+			Fresh()
+			_G[name] = fn
+			Report(name)
+		end
+		_G[name] = saved[name]
+	end
+	Fresh()
+	GetBuildInfo = function() return 5, {}, nil, "x" end
+	NS.Compat.build = nil
+	Report("GetBuildInfo")
+	GetBuildInfo = saved.GetBuildInfo
+	NS.Compat.build = nil
+	NS.Compat:GetBuildInfo()
+	-- a probe that raises, or gives no state, is reported as RESTRICTED and counted; the others go on
+	Fresh()
+	local items = {}
+	local before = C_Weather
+	C_Weather = { GetCurrentWeather = function() error("boom") end }
+	local text = Report("a probe raises")
+	T.ok(Find(text, "C_Weather.GetCurrentWeather"):find("^%[RESTRICTED%]"), "the failing probe is reported as restricted")
+	C_Weather = before
+	Fresh()
+	local savedSecret = GetAddOnMemoryUsage
+	GetAddOnMemoryUsage = function() return MakeSecret() end
+	text = Report("a secret answer")
+	T.ok(Find(text, "GetAddOnMemoryUsage"):find("^%[RESTRICTED%]"), "a secret answer is restricted")
+	GetAddOnMemoryUsage = savedSecret
+end)
+
 T.run("probe: events are listened to for the session and counted", function()
 	Fresh()
 	local text = Cmd("probe")

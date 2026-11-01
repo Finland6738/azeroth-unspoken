@@ -124,6 +124,10 @@ R.ZONE_LEN = 40
 R.SHARED_VERSION = 1           -- shape of AzerothUnspokenDB.sharedPlayers (#114)
 R.PROXIMITY_GAP = 60           -- seconds between two proximity proposals in a session (#113)
 R.PROXIMITY_MAX = 10           -- proximity proposals in a session (#113)
+R.PROXIMITY_LOOKUPS = 20       -- name lookups per second, all units together (#164)
+R.PROXIMITY_BURST = 20         -- a bucket of this many lookups: a crowd appearing at once is looked at in steps
+R.PROXIMITY_UNIT_GAP = 0.5     -- seconds before the same unit token ("nameplate7", "mouseover") is looked at again
+R.PROXIMITY_UNIT_MAX = 80      -- unit tokens remembered (about forty nameplates and the mouse); more means a bug
 R.CONFIRM_SECONDS = 15         -- how long the confirmation of a risky action (sharing, reset) stays open
 -- what can happen with a listed player. ENCOUNTERS count as encounters (`count`, `last`); SHARED are facts of an
 -- experience lived together (they update `last` and the tally by kind, not `count`). relShared accepts any of them.
@@ -2262,14 +2266,13 @@ end
 function handlers.GROUP_CHANGED()
 	R.groupDirty = true
 	if R.scanPending then return end
-	if C_Timer and C_Timer.After then
-		R.scanPending = true
-		C_Timer.After(R.SCAN_DELAY, function()
-			R.scanPending = false
-			if R:Enabled() then NS.Diagnostics:Guard("relations:scan", R.ScanGroup, R, true) end
-		end)
-	elseif R:Enabled() then
-		R:ScanGroup(true)
+	R.scanPending = true
+	if not Compat.After(R.SCAN_DELAY, function()
+		R.scanPending = false
+		if R:Enabled() then NS.Diagnostics:Guard("relations:scan", R.ScanGroup, R, true) end
+	end) then
+		R.scanPending = false
+		if R:Enabled() then R:ScanGroup(true) end
 	end
 end
 
@@ -2353,19 +2356,73 @@ function R:ProximityReady()
 	return p.t == nil or GetTime() - p.t >= self.PROXIMITY_GAP
 end
 
----A player is near (a nameplate appeared, the mouse is over them).
----@param unit string "nameplateN" or "mouseover"
----@return "recognized"|"suggested"|nil what it did
-function R:Nearby(unit)
-	if not self:ProximityReady() or not ProximityUnit(unit) then return nil end
+---Is there anyone proximity could act on? A listed player (this character's list or the account's shared list) or,
+---with the TRP3 consent, anyone with a profile. Constant time (#164): with an empty list and no consent a crowd costs
+---nothing, not even a name read.
+---@return boolean
+function R:ProximityHasTargets()
+	local d = self:Data()
+	if d and next(d.players) ~= nil then return true end
+	if next(SharedPlayers(self)) ~= nil then return true end
+	local trp3 = NS.TotalRP3
+	return trp3 ~= nil and trp3:HasOtherConsent()
+end
+
+---May the name of this unit be looked up now? (#164) A nameplate event comes for every player who appears, a
+---mouseover for everyone the mouse crosses: a unit token is looked at again only after PROXIMITY_UNIT_GAP seconds, and
+---all units together get at most PROXIMITY_LOOKUPS lookups a second (a bucket of PROXIMITY_BURST). What is kept is a
+---time per unit token ("nameplate7", "mouseover") and a few counters: never a name, a GUID or anything about the person.
+---@param unit string
+---@return boolean
+function R:ProximityAllow(unit)
 	local p = Prox(self)
-	-- a secret identity is not read at all
+	local now = GetTime()
+	local units = p.units
+	if not units then units = {}; p.units, p.unitCount = units, 0 end
+	local last = units[unit]
+	if last and now - last < self.PROXIMITY_UNIT_GAP then
+		p.throttled = (p.throttled or 0) + 1
+		return false
+	end
+	local tokens = p.tokens or self.PROXIMITY_BURST
+	tokens = math.min(self.PROXIMITY_BURST, tokens + (now - (p.stamp or now)) * self.PROXIMITY_LOOKUPS)
+	p.stamp = now
+	if tokens < 1 then
+		p.tokens = tokens
+		p.throttled = (p.throttled or 0) + 1
+		return false
+	end
+	p.tokens = tokens - 1
+	if last == nil then
+		-- the tokens are few (about forty nameplates and the mouse): a table that keeps growing is a bug, so it is cut
+		if p.unitCount >= self.PROXIMITY_UNIT_MAX then units, p.units, p.unitCount = {}, {}, 0 end
+		p.unitCount = p.unitCount + 1
+	end
+	units[unit] = now
+	return true
+end
+
+-- Who is on this unit, as a player key: nil for a secret identity (counted, never read), a non-player, a name that
+-- cannot be read and the character itself.
+local function Sighting(self, unit)
+	local p = Prox(self)
 	if Compat:IsUnitIdentitySecret(unit) then p.secret = p.secret + 1; return nil end
 	if Compat.SafeCall("UnitIsPlayer", unit) ~= true then return nil end
 	local name, realm = Compat.SafeCall("UnitFullName", unit)
 	if Compat.IsSecret(name) or Compat.IsSecret(realm) then p.secret = p.secret + 1; return nil end
 	local key = R.PlayerKey(name, realm)
 	if not key or key == OwnKey() then return nil end
+	return key
+end
+
+---A player is near (a nameplate appeared, the mouse is over them).
+---@param unit string "nameplateN" or "mouseover"
+---@return "recognized"|"suggested"|nil what it did
+function R:Nearby(unit)
+	if not self:ProximityReady() or not ProximityUnit(unit) then return nil end
+	local p = Prox(self)
+	local key = Sighting(self, unit)
+	if not key then return nil end
 	local result
 	if self:IsListed(key) then
 		-- once per person and session: someone already recognised costs nothing and uses no budget
@@ -2381,16 +2438,31 @@ function R:Nearby(unit)
 	return result
 end
 
+-- The source of the client's events. A stranger never reaches the bus (#164): before anything is published the unit
+-- passes the cheap checks (option on, someone to find, the throttle) and then the one name read, against the
+-- in-memory list. Only a person that Nearby can act on becomes a PROXIMITY_UNIT.
+local function ProximityWorth(unit, key)
+	if R:IsListed(key) then
+		-- already recognised this session: nothing more to do, so nothing to publish
+		return not (R.session.recognized and R.session.recognized[key])
+	end
+	local trp3 = NS.TotalRP3
+	if not (trp3 and trp3:HasOtherConsent()) or R.candidates[key] or R.dismissed[key] then return false end
+	return trp3:IsKnownPlayer(unit) == true
+end
+
 local function ProximitySource(via)
 	return { normalize = function(unit)
 		if via == "mouseover" then unit = "mouseover" end
-		if not R:ProximityReady() or not ProximityUnit(unit) then return nil end
-		if Compat:IsUnitIdentitySecret(unit) then
-			local p = Prox(R)
-			p.secret = p.secret + 1
+		if not ProximityUnit(unit) then return nil end
+		if not R:ProximityReady() then
+			-- the module or the option went off without telling us: the events stop being registered
+			if not R:Enabled() or not R:Setting("proximity") then R:ApplyProximity() end
 			return nil
 		end
-		if Compat.SafeCall("UnitIsPlayer", unit) ~= true then return nil end
+		if not R:ProximityHasTargets() or not R:ProximityAllow(unit) then return nil end
+		local key = Sighting(R, unit)
+		if not key or not ProximityWorth(unit, key) then return nil end
 		return "PROXIMITY_UNIT", { unit = unit, via = via }, { window = 0 }
 	end }
 end
@@ -2531,9 +2603,10 @@ function R:Status()
 	if not self:Enabled() then return self.readOnly and "read-only (newer data)" or "off" end
 	local st = self:Stats()
 	local prox = Prox(self)
-	return ("%d NPCs, %d players, %d candidates; npcAuto %s, attraction %s, autoRegister %s; proximity %s (%d proposed, %d secret), shared list %s"):format(
+	return ("%d NPCs, %d players, %d candidates; npcAuto %s, attraction %s, autoRegister %s; proximity %s (%d proposed, %d secret, %d throttled), shared list %s"):format(
 		st.npcs, st.players, st.candidates, tostring(self:Setting("npcAuto")), tostring(self:AttractionOn()),
 		tostring(self:Setting("autoRegisterPlayers")), tostring(self:Setting("proximity")), prox.n, prox.secret,
+		prox.throttled or 0,
 		self:Sharing() and "on" or "off")
 end
 
