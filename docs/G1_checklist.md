@@ -865,6 +865,46 @@ Solo aspetto e clic, nessuna API nuova; provato solo con il client finto. Serve 
       sopra il riquadro.
     - **Cosa riportare:** se Esc apre il menu di gioco; se dopo il trascinamento torna al vecchio posto.
 
+## U-windows: una sola cornice per le finestre, Esc e la scala (aggiunto dalle issue #174, #187, #182, #192 e #190)
+
+Solo aspetto e clic; l'unica API nuova è `UISpecialFrames` (la tabella delle finestre che Esc chiude). Provato solo con il
+client finto.
+
+- **W1 · Esc e la x.** Apri, una per volta, il diario (`/au journal`), l'esportazione (**Esporta** nel diario), le
+  relazioni (`/au relationships`), l'anima (`/au soul`) e la guida (`/au wizard`). Chiudi ciascuna con **Esc**, poi
+  riaprila e chiudila con la **X** in alto a destra.
+    - **Cosa aspettarti:** Esc chiude la finestra e **non** apre il menu di gioco; sulla guida Esc fa come «Salta» (in chat
+      il messaggio di fine, e non torna al prossimo accesso). Con un dialogo ambientale aperto (`/au talk`) Esc **non**
+      lo chiude.
+    - **Cosa riportare:** una finestra che Esc non chiude, o il menu di gioco che si apre sopra.
+- **W2 · La cornice.** Guarda le cinque finestre.
+    - **Cosa aspettarti:** fondo scuro caldo, un bordo sottile color bronzo, una fascia del titolo più scura con il titolo
+      in oro, la X in alto a destra; nessuna grafica di Blizzard. La scheda scelta ha il bordo oro pieno e una barra sotto
+      il nome; «Dimentica tutto», «Rimuovi la persona», «Dimentica le osservazioni» e «Profilo neutro» hanno il bordo
+      rosso.
+    - **Cosa riportare:** bordi mancanti o spessi, testi che escono dai pulsanti (screenshot).
+- **W3 · Scala delle finestre.** `/au options`, sezione **Generale**, **Scala delle finestre** a 80% e a 150%, con il
+  diario aperto e con un dialogo ambientale aperto.
+    - **Cosa aspettarti:** le finestre aperte cambiano dimensione subito; restano dentro lo schermo; il riquadro del
+      narratore non cambia.
+    - **Cosa riportare:** una finestra che a 150% esce dallo schermo a 768 di altezza, o che dopo il trascinamento salta.
+- **W4 · Il pannello delle impostazioni.** `/au options` nel client classico e, se c'è, nel pannello nuovo.
+    - **Cosa aspettarti:** si apre sulla pagina dell'addon al primo comando; cinque sezioni con i titoli (Generale, Chat,
+      Narratore, Moduli, Privacy) che scorrono; ogni riga ha il nome a sinistra e il controllo a destra; la rotella e la
+      barra fanno scorrere fino al testo d'aiuto in fondo.
+    - **Cosa riportare:** se la pagina si apre vuota o su un altro addon; se non scorre; screenshot in alto e in fondo.
+- **W5 · Dialogo ambientale grande.** In **Narratore**, **Testo dei dialoghi NPC** a 24 e **Opacità dei dialoghi NPC**
+  al 50%, poi `/au talk` vicino a un locandiere.
+    - **Cosa aspettarti:** il nome, la battuta e le risposte uno sotto l'altro, senza sovrapporsi; lo sfondo più
+      trasparente.
+- **W6 · Profilo neutro.** In `/au soul` scegli un archetipo, poi premi **Profilo neutro** una volta, aspetta 10
+  secondi; premilo due volte; premilo una volta e chiudi la finestra.
+    - **Cosa aspettarti:** il primo clic lo riempie di rosso e dice «Clicca ancora: profilo neutro», senza cambiare nulla;
+      dopo qualche secondo torna com'era; due clic tolgono ogni scelta; chiudere la finestra annulla.
+- **W7 · Esportazione lunga.** Con molti ricordi, **Esporta** nel diario.
+    - **Cosa aspettarti:** il testo scorre fino all'ultima riga; Ctrl+C copia tutto; con un testo corto non c'è spazio
+      vuoto da scorrere.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
