@@ -1000,8 +1000,10 @@ print("  ok" if not FAILURES else "")
 
 # 10) funzioni ed eventi usati contro il dump delle API di Forever (saltato con un avviso se il dump non c'è)
 print("\nAPI DI FOREVER")
+# #165: also the language and regional folders (they have no API calls today: the check keeps it so)
 proc = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"),
-                       os.path.join(ADDON), os.path.join(EXAMPLE), os.path.join(VERSI)], capture_output=True, text=True, encoding="utf-8")
+                       os.path.join(ADDON), os.path.join(EXAMPLE), os.path.join(VERSI)] + [os.path.join(ROOT, d) for d in PACKS],
+                      capture_output=True, text=True, encoding="utf-8")
 print("\n".join("  " + l for l in proc.stdout.rstrip().split("\n")))
 if proc.stdout.startswith("SALTATO"):
     print("  AVVISO: controllo delle API saltato (dump non trovato)")
@@ -1028,6 +1030,38 @@ if not proc.stdout.startswith("SALTATO"):
     for needle in ("UnitIsFooBarBaz", "NuovoOggettoDiFrameXML", "ModelloInventatoTemplate", "MetodoInesistente",
                    "C_Map.FunzioneInesistente"):
         check("MANCA" in out_ and needle in out_, f"check_api.py segnala {needle}")
+
+# #165: the kinds of use the third review (Q8) found unseen, one mutation each (a typo of a real use)
+if not proc.stdout.startswith("SALTATO"):
+    with tempfile.TemporaryDirectory() as tmp:
+        with open(os.path.join(tmp, "Mutato.lua"), "w", encoding="utf-8", newline="\n") as f_:
+            f_.write("local R = {}\n"
+                     "R.PROXIMITY_EVENTS = { NAME_PLATE_UNIT_ADDED_TYPO = 'nameplate', UPDATE_MOUSEOVER_UNIT = 'mouseover' }\n"
+                     "local PROBES = { { event = 'WEATHER_CHANGED_TYPO' }, { event = 'ZONE_CHANGED' } }\n"
+                     "local function OnEvent(_, event) if event == 'PLAYER_ENTERING_WORLD_TYPO' then return end end\n"
+                     "local m = _G.MerchantFrameTypo\n"
+                     "local g = _G['GossipFrameTypo']\n"
+                     "local INVASIVE_FRAMES = { 'CinematicFrameTypo', 'MovieFrame' }\n"
+                     "local function Value(id, fn) return id, fn end\n"
+                     "Value('player.health', 'UnitHealthTypo')\n"
+                     "Value('x', 'C_Nope.UnitHealthMax')\n"
+                     "local h = { 'C_Map.GetBestMapForUnitTypo', 'C_Map.GetBestMapForUnit' }\n"
+                     "local frame = CreateFrame('Frame')\n"
+                     "pcall(frame.RegisterEventTypo, frame, 'ADDON_LOADED')\n"
+                     "pcall(frame.RegisterEvent, frame, 'ADDON_LOADED')\n"
+                     "local fs = frame:CreateFontString(nil, 'OVERLAY', 'GameFontNormalLargeTypo')\n"
+                     "fs:SetFontObject('GameFontNormal')\n")
+        mut = subprocess.run([sys.executable, "-I", "-X", "utf8", os.path.join(HERE, "check_api.py"), tmp],
+                             capture_output=True, text=True, encoding="utf-8")
+    missing_lines = [l for l in mut.stdout.split("\n") if "MANCA" in l]
+    check(mut.returncode == 1, "check_api.py rifiuta le mutazioni della #165")
+    for needle in ("NAME_PLATE_UNIT_ADDED_TYPO", "WEATHER_CHANGED_TYPO", "PLAYER_ENTERING_WORLD_TYPO", "MerchantFrameTypo",
+                   "GossipFrameTypo", "CinematicFrameTypo", "UnitHealthTypo", "C_Nope.UnitHealthMax",
+                   "C_Map.GetBestMapForUnitTypo", "RegisterEventTypo", "GameFontNormalLargeTypo"):
+        check(any(needle in l for l in missing_lines), f"check_api.py segnala {needle} (#165)")
+    for good in ("UPDATE_MOUSEOVER_UNIT", "ZONE_CHANGED", "MovieFrame", "C_Map.GetBestMapForUnit ", "RegisterEvent ",
+                 "GameFontNormal "):
+        check(not any(good in l + " " for l in missing_lines), f"check_api.py accetta l'uso giusto {good.strip()} (#165)")
 
 # 11) documentazione: gli esempi di PACK_FORMAT.md come pacchetti esterni e i link relativi dei file Markdown
 print("\nDOCUMENTAZIONE")

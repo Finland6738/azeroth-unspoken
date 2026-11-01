@@ -148,7 +148,7 @@ The panel opens with `/au options` (it is also registered among the game's addon
 - **Pause between lines** for automatic lines (45 seconds by default).
 - **Chat**: the mode and the default channel.
 - **Narrator box**: text duration, opacity, size, locked position, history, test.
-- **Modules**: Personal, World, NPC dialogues, Memory, Emotions, Relations, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
+- **Modules**: Personal, World, NPC dialogues, Memory, Emotions, Relationships, Stories, Social, Chat proposals, Audio (those not yet active, *Social* and *Audio*, are marked `*`), plus the presets *Complete*, *Personal RPG*, *Narrative world* and *Social RP*.
 - The "speak" button, the name from Total RP 3 and, with a separate consent, reading other players' public profiles (*Read others' Total RP 3*), the character's personality (`/au soul`), the immediate pause, the wizard.
 - Some choices are made **by command only**: the relationship axes and people (`/au relationships`), attraction and automatic registration of players (`/au relationships attraction|auto`), the automatic NPC dialogue offer (`/au talk offer`) and the maximum number of active stories (`/au stories max`).
 
