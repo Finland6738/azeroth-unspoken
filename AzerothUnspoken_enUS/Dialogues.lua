@@ -722,4 +722,57 @@ NS:AddTexts("enUS", {
 		"See you soon. I'll await you with something new to correct.",
 		"Come back whenever you like: I know you by the way you walk, and by now it's a good way.",
 	},
+	-- N9 (#221): openers by the nickname, the title held in the town, a broken oath, the word of a newcomer
+	["npcd.flightmaster.open.nick2"] = {
+		"The usual, {nickname}? The sky is waiting.",
+		"{nickname}, back for another ride across the sky. You will grow feathers at this rate.",
+	},
+	["npcd.flightmaster.open.title1"] = {
+		"Half the folk down there wave when you take off now. Mind you wave back.",
+		"Leaving us again? The whole place will ask me where you went.",
+	},
+	["npcd.guard.open.nick2"] = {
+		"{nickname}, is it? Walk on through. The street is quieter with you about.",
+		"Ah, {nickname}. Anything I should know before the change of the watch?",
+	},
+	["npcd.guard.open.oath1"] = {
+		"You. I know what you swore, and what came of it. Keep moving.",
+		"I remember your face. I remember the oath, too.",
+	},
+	["npcd.guard.open.title1"] = {
+		"Folk around here speak well of you. I'm still deciding, but I'm listening.",
+		"You have friends here, it seems. Don't make my job harder.",
+	},
+	["npcd.guard.open.word1"] = {
+		"I've heard about you. Don't give me a reason to hear more.",
+		"So you're the one. I'll be watching.",
+	},
+	["npcd.innkeeper.open.nick2"] = {
+		"There's {nickname}! Boots off by the door, and I'll find you something hot.",
+		"{nickname}, you look like the road won again. Come, sit.",
+	},
+	["npcd.innkeeper.open.oath1"] = {
+		"There's a room, if you need one. Don't expect the talk that used to come with it.",
+		"You again. Sit where you like. The welcome isn't what it was, and you know why.",
+	},
+	["npcd.innkeeper.open.title1"] = {
+		"Look who it is: the pride of the place! Sit down before someone asks you for a story.",
+		"Our guest of honor! Don't let it go to your head; the stairs still creak.",
+	},
+	["npcd.innkeeper.open.word1"] = {
+		"So you're the one they keep mentioning. Come in, come in; let's see if the stories are true.",
+		"I've heard of you, you know. All good, so far.",
+	},
+	["npcd.merchant.open.nick2"] = {
+		"{nickname}, my favorite face this side of the counter. What will it be?",
+		"{nickname}! Don't tell the others, but I like it when you come by.",
+	},
+	["npcd.merchant.open.title1"] = {
+		"Everyone here talks of you. Good for trade, a name like yours. Come in.",
+		"Ah, the one the whole place keeps talking about. Browse as long as you like.",
+	},
+	["npcd.trainer.open.nick2"] = {
+		"{nickname}. Stand straight; I can see the bad habits from here.",
+		"So, {nickname}: what have you been practicing, and what have you been avoiding?",
+	},
 }, "base_dialogues")
