@@ -12,7 +12,7 @@ No version has been released yet: there are no distribution packages. The versio
 
 A step of the NPC relationships milestone, after N2. Narration only: NPCs never change their behaviour in the game, and
 nothing goes to public chat. Tested with the mock client only: nothing here has run in the real client yet (G1, steps
-N4.1-N4.8). The decisions are in [ADR 0038](docs/adr/0038-promises-oaths-and-the-oathbreaker-mark.md).
+N4.1-N4.8). The decisions are in [ADR 0037](docs/adr/0037-promises-oaths-and-the-oathbreaker-mark.md).
 
 - **Added: a quest is a promise.** A quest accepted after an NPC's quest dialogue is a promise to that NPC. Only the quest
   id, the NPC's id and times are kept (`relationships.promises`), never a quest title or text. Handing it in keeps it,
