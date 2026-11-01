@@ -20,6 +20,33 @@ No version has been released yet: there are no distribution packages. The versio
 
 Entries are **grouped by step or activity**, from the most recent to the oldest (milestones M0–M3: S1–S9). Within each group, changes to what already existed (*Changed*) and fixes (*Fixed*) come after the new features. Known limits are at the bottom. The groups for the fix and text-review sessions (Q5, Q6) that run in parallel with this documentation are added above, under their own name.
 
+### U-trp3: Total RP 3 etiquette (issue #191)
+
+Fixes from the UI review (UI-21 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Checked against the code of Total RP 3
+3.5.3 and tested with the mock client only: nothing here has run in the real client with Total RP 3 yet (G1).
+
+- **Added: the narrator stays private while you are out of character.** When your own Total RP 3 status is *out of
+  character*, nothing is proposed for chat and nothing is sent by itself, in any mode; a proposal already waiting is
+  dropped, not sent or copied, and the reason is said (`gw_ooc`). The first time a line stays private for this reason
+  a message says so. New setting `chat.respectOOC`, **on by default**, with the command `/au trp3 ooc on|off`. The
+  status is read through the public API (`GetRoleplayStatus`, then `IsInCharacter`) and counts only when Total RP 3
+  says OOC plainly. `/au debug` shows *held by Total RP 3 OOC* and the capability `integration:totalRP3:status`.
+- **Added: optional emote markup.** With `chat.emoteMarkup` on (`/au trp3 markup on`, **off by default**), a narrator
+  emote sent on `/say` or a group channel is written `*action*`, the roleplay convention that Total RP 3's emote
+  detection colours, instead of starting with the character's name. `/emote` is unchanged; the closing asterisk
+  survives the 255-byte cut.
+- **Changed: other players' profiles are read through Total RP 3's public player model only**
+  (`AddOn_TotalRP3.Player.CreateFromUnit` and the player object's methods), no longer through the internal
+  `TRP3_API.utils.str.getUnitID`, `TRP3_API.register.isUnitIDKnown` and `getUnitIDCurrentProfile`. Every lookup and
+  call is inside `pcall`, so an update of Total RP 3 makes the reading answer nothing, never an error. The consent
+  rules do not change: off by default, race, class and traits only. Your own character is never read as "another
+  player". New capability `integration:totalRP3:others`.
+- **Tests:** a shared fake of Total RP 3's public API (`FAKE_TRP3` in `Tests/MockWoWAPI.lua`); the hold in every mode,
+  with a waiting proposal and with a broken API; the markup per channel and its length; the adapter with an internal
+  API that raises if touched.
+- **Not yet:** the row in the settings panel (the panel is being reorganised in parallel; the command covers both
+  settings meanwhile).
+
 ### U-wizard: consents, the first-run guide and the windows (issues #178, #188, #181)
 
 Fixes from the UI review (UI-08, UI-18 and UI-11 in [`UI_REVIEW.md`](docs/design/UI_REVIEW.md)). Tested with the mock

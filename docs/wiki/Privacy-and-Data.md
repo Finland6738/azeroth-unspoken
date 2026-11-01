@@ -8,7 +8,7 @@ Azeroth Unspoken is built to respect your privacy and that of the people you pla
 - **Nothing reaches public chat without your action**, except in the *automatic* mode you choose and confirm yourself. See [[Chat Gateway]].
 - **No chat text is saved**, and no whisper text.
 - **No player is recorded unless you choose them.** Nameplates and mouseover can never add one, and are off by default.
-- **Other players' Total RP 3 profiles are read only with your consent**, never saved.
+- **Other players' Total RP 3 profiles are read only with your consent**, never saved, and only through Total RP 3's public functions.
 - **You can erase everything**, at any time.
 
 ## What is stored
@@ -66,8 +66,14 @@ Four of them are **consents that cannot be given by mistake**: automatic sending
 | Your own Total RP 3 name | on | [[Settings]] |
 | Your own Total RP 3 traits | off | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
 | Reading other players' Total RP 3 | off; a warning dialog and a confirmation | [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] |
+| Staying private while your Total RP 3 status is out of character | on | [[Chat Gateway]] |
 
 The addon never writes anything to Total RP 3.
+
+With *Stay private when out of character* on, the addon asks Total RP 3 only whether **your own** status is in or out
+of character, when a line is about to be proposed or sent. The answer is never saved and never shown to anyone: it can
+only keep a line private. Other players' profiles are read through Total RP 3's public player functions, never its
+internal ones, with the same consent and the same limits as before: race, class and personality traits only.
 
 Your private notes, tags and own labels on relationships are **never** used in a line that could go to chat.
 

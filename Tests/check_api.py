@@ -106,7 +106,7 @@ METHODS = {
     "ScrollUp": "ScrollingMessageFrame (mixin di FrameXML): il frame del narratore; un errore lo intercetta la diagnostica",
     "ScrollDown": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
     "ScrollToBottom": "ScrollingMessageFrame (mixin di FrameXML): come ScrollUp",
-    "GetInfo": "Total RP 3 (optional): method of its player object, called inside pcall only when TRP3_API exists",
+    "GetInfo": "Total RP 3 (optional): method of its public player object (AddOn_TotalRP3.Player), called inside pcall only when it exists",
     "GetFirstName": "Total RP 3 (optional): as GetInfo",
 }
 
