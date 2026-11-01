@@ -365,6 +365,28 @@ NS:AddTexts("enUS", {
 		"lingers longer than needed, and the talk loosens the way it does between people who know each other well.",
 		"is half smiling before a word is said: some meetings begin like that.",
 	},
+	-- N2 (#214): the first meeting remembered
+	["rel.npc.met.novice"] = {
+		"The first time I stood here I was still a novice. They have watched me grow, a little at a time.",
+		{ "I was barely more than a beginner when we first met.", depth = "natural" },
+		{ "This face knew me before the road had taught me anything; every season since has been written over that first, clumsy page.", depth = "elevated" },
+	},
+	["rel.npc.met.night"] = {
+		"Our first meeting was by night. In daylight this face still seems a little new to me.",
+		"I first knew this voice in the dark, before I knew the face that goes with it.",
+	},
+	["rel.npc.met.rain"] = {
+		"It was raining the first time I found this door. Strange, the things one keeps.",
+		{ "I remember the rain that first day, more than the words.", depth = "natural" },
+	},
+	["rel.npc.met.snow"] = {
+		"Snow was falling at our first meeting; I remember the cold better than what was said.",
+		"Whenever I come back, some part of me still shakes the snow of that first day from my cloak.",
+	},
+	["rel.npc.met.long"] = {
+		"Months now since our first meeting. Long enough for a face to become part of the road.",
+		{ "We go back a while, this one and I.", depth = "natural" },
+	},
 	["rel.npc.innkeeper"] = {
 		"Here I am again. Is there still some of that stew, or do I settle for bread?",
 		"Always a pleasure. Got a room for someone who walked too far?",

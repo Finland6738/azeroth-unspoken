@@ -158,4 +158,39 @@ NS.Relationships:RegisterData({
 
 	-- Etichette per cui si lascia un ricordo nel diario (una sola volta per persona e per etichetta)
 	memorable = { friend = true, comrade = true, lover = true, rival = true, enemy = true, feared = true },
+
+	-- N2 (#214): temperament. Each NPC warms up at its own pace: a multiplier on every automatic gain AND on its daily
+	-- cap, in both directions (a slow NPC also sours slowly). Narration only: nothing changes how the NPC behaves.
+	--   gain   = (the curated `warmth` of Data/NPCs.lua, else roles[role] x temperaments[temperament]) x races[race].gain
+	--   forget = (the curated `forget`, else 1) x races[race].forget: multiplies the familiarity lost per day and divides
+	--            the days of grace before it starts (long-lived peoples remember longer)
+	-- A role, temperament or race that is not listed counts 1. Both results stay within `min` and `max`.
+	-- The race is that of the curated entry, or the one the client gave at a meeting (it rarely does for NPCs).
+	temperament = {
+		min = 0.4, max = 2,
+		roles = { innkeeper = 1.3, guard = 0.7, leader = 0.6, banker = 0.85, flightmaster = 1, merchant = 1,
+			questgiver = 1, trainer = 1 },
+		-- the personality of the NPC (Data/NPCs.lua `temperament`, or what the user chose for them)
+		temperaments = { cheerful = 1.15, merciful = 1.1, gruff = 0.8, stoic = 0.85, fierce = 0.8, melancholic = 0.9,
+			resolute = 0.95 },
+		-- in the spirit of the long-lived peoples: slower to warm and slower to forget, both ways
+		races = {
+			NightElf = { gain = 0.75, forget = 0.5 },
+			Draenei = { gain = 0.75, forget = 0.5 },
+			BloodElf = { gain = 0.85, forget = 0.6 },
+			Dwarf = { gain = 0.9, forget = 0.75 },
+		},
+		-- the words of the Relationships window: the first step whose `max` is >= the multiplier
+		pace = { { id = "slow", max = 0.8 }, { id = "steady", max = 1.12 }, { id = "quick", max = 99 } },
+	},
+
+	-- N2 (#214): visible levels. The levels are the disposition bands above, in order (Hated is level 1, Deep bond 9).
+	-- When an NPC moves to another band through an interaction, the private narrator says so: at most `perSession`
+	-- times in a session and once in `npcHours` hours for the same NPC, never in combat (a notice held in combat waits
+	-- for the fight to end, at most `held` of them). Reaching a `memorable` band leaves a journal line, once per NPC
+	-- and band. The texts are rel_level_up_N and rel_level_down_N of Data/<lang>/RelationsUI.lua (`variants` each).
+	levels = {
+		perSession = 4, npcHours = 20, held = 3, variants = 2,
+		memorable = { friend = true, close = true, bond = true, enemy = true, hated = true },
+	},
 })

@@ -324,6 +324,18 @@ English counterpart of the section **U-keyboard-combat** of [G1_checklist.md](G1
 - **C3 · Proposals and the editor in combat.** `/au mode preview`, then `/au greet` and press the speak key to open the editor; type something and get attacked. **Expect:** when the fight begins the editor closes and the keys move the character again; the box goes; after the fight the proposal comes back with your text. In combat the speak key with nothing waiting makes up no line and says so in chat. **Report:** an editor that stays open or keeps the keyboard in combat (very important).
 - **C4 · A blocked automatic send (optional, SP-05 E).** With automatic sending on, if the client blocks a send (Blizzard's "action blocked" message). **Expect:** chat says "the client blocked an automatic send..."; from then on every line waits for confirmation and Blizzard's message does not come back; the **Automatic sending** row says "on, held"; after `/reload` it is automatic again. **Report:** Blizzard's message coming back a second time in the same session.
 
+## N2: visible levels, the first meeting and the NPC temperament (issue #214)
+
+English counterpart of the section **N2** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: no NPC changes its behaviour in the game, and nothing goes to chat. APIs already used elsewhere (`UnitRace` on the dialogue's NPC, `C_Weather`, `C_DateAndTime.IsDayTime`, `GetGameTime`, `UnitLevel`); only the use is new. Tried only with the mock client.
+
+- **N2.1 · First meeting.** Talk (gossip) to an NPC you never met, ideally at night or in the rain; then `/au relationships detail npc:<number>` (the number is in `/au relationships list`). **Expect:** "First met: <date>, at night, in the rain, in <zone>, you were level <n>." The weather is missing when the client does not say it; never a wrong weather. **Report:** the exact text, the game time and the weather you saw.
+- **N2.2 · The NPC block.** `/au relationships`, open an NPC. **Expect:** under the two columns, **What the addon knows**: "Level 5 of 9: Neutral. Next: Acquaintance (…%).", the temperament line ("Warms up quickly, …" for an innkeeper) and the first meeting on the right; nothing overlaps, nothing leaves the window. **Report:** a screenshot (resolution and scale).
+- **N2.3 · Temperament.** On the same day, talk a few times to an innkeeper and to a guard (for example Marshal Dughan in Goldshire) and compare the familiarity in the detail. **Expect:** the innkeeper rises faster and has a higher daily cap; the guard slower.
+- **N2.4 · Race.** Talk to a night elf or draenei NPC that is not in the curated list. **Expect:** if the client gives the NPC's race, the detail names it among the reasons of the temperament ("… night elf") and familiarity rises more slowly. **Report:** whether `UnitRace("npc")` gives a race for NPCs (yes/no, which).
+- **N2.5 · Level notice.** Take an NPC to the next level with quests handed in (or with `/au relationships set npc:<number> trust 30` and then a chat). **Expect:** a short line in the narrator, for you only: "Something has eased between you and <name> (once Neutral, now Acquaintance)." No line when the slider changed the level. The same NPC does not repeat it for about a day; at most four notices a session.
+- **N2.6 · Never in combat.** Hand in a quest that raises a level while in combat (or enter combat just before). **Expect:** nothing during the fight; the line comes as soon as the fight ends. Nothing in chat.
+- **N2.7 · Journal.** Take an NPC to **Friend** (or higher). **Expect:** in the journal "A bond grows: Friend (<zone>)", once for that NPC, without its name. With **Level notices** off (Options tab) the narrator line is not there, the journal line is.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -370,4 +382,8 @@ N0 named ................ elite ___  rare ___  quest boss ___  guard ___  innkee
 N0 attack ............... opened by player (swing/cast)? ___  by enemy? ___  UNIT_DIED fires? ___  PARTY_KILL by me? ___  hidden? ___
 N0 several / witnesses .. engaged ___  attacking me ___  witnesses (nameplates/friendly/near) ______  tap denied true? ___
 N0 pet / death .......... PARTY_KILL pet/other ___  death: during/after the fight ______  last attacker = the killer? ___
+N2 first meeting ........ right time? ___  right or missing weather? ___  zone and level? ___
+N2 NPC block ............ level and next? ___  temperament? ___  overlaps? (must be NO) ___
+N2 temperament .......... innkeeper faster than guard? ___  NPC race from the client? ______
+N2 notices .............. private line? ___  never in combat? ___  after the fight? ___  too many? ___  journal Friend? ___
 ```

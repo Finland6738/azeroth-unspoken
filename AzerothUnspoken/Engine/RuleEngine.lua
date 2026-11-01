@@ -226,6 +226,24 @@ local SPECIAL = {
 		end
 		return false
 	end,
+	-- the first meeting with an NPC (N2, #214): ctx.relMetLevels (levels gained since), ctx.relMetDays, ctx.relMetTime,
+	-- ctx.relMetWeather; absent (false) for a player, or an NPC met before the addon kept these circumstances
+	relMetLevels = function(v, ctx) return InRange(v, ctx.relMetLevels) end,
+	relMetDays = function(v, ctx) return InRange(v, ctx.relMetDays) end,
+	relMetTime = function(v, ctx)
+		if ctx.relMetTime == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.relMetTime == name then return true end
+		end
+		return false
+	end,
+	relMetWeather = function(v, ctx)
+		if ctx.relMetWeather == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.relMetWeather == name then return true end
+		end
+		return false
+	end,
 	-- il mondo (R3, Systems/World.lua): una lettura che il client non dà vale "non lo so", cioè falsa per `true` e per
 	-- `false` (tranne dove è scritto): una frase che nomina il meteo o il volo non esce se l'API manca
 	dayTime = function(v, ctx) return ctx.isDay ~= nil and ctx.isDay == v end,
@@ -369,6 +387,8 @@ Engine.CONDITIONS = {
 	relation = "str", disposition = "str", relationKind = "str", isKnown = "bool", withRelation = "str",
 	-- feelings the user chose and what the addon observed of a listed player (#109, #110)
 	feeling = "str", relDaysSince = "numrange", relMetHere = "bool", relShared = "str",
+	-- the first meeting with an NPC (N2, #214)
+	relMetLevels = "numrange", relMetDays = "numrange", relMetTime = "str", relMetWeather = "str",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -409,6 +429,9 @@ Engine.CONDITION_VALUES = {
 	relationKind = { npc = true, player = true },
 	-- feelings are registered by Data/Relationships.lua; relShared by Systems/Relationships.lua (R.ENCOUNTERS, R.SHARED)
 	feeling = {}, relShared = {},
+	-- the first meeting with an NPC (N2, #214): the same tokens as `time` and `weather`
+	relMetTime = { dawn = true, day = true, dusk = true, night = true },
+	relMetWeather = { clear = true, rain = true, snow = true, storm = true, sand = true, fog = true },
 	-- the composite situations (#100): filled by NS:RegisterSituation
 	situation = {},
 }
@@ -478,7 +501,8 @@ Engine.SUB_VALUES = {
 
 -- condizioni che dipendono da una relazione (ctx.relation e simili)
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
-	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true }
+	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true,
+	relMetLevels = true, relMetDays = true, relMetTime = true, relMetWeather = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

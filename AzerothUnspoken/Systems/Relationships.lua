@@ -18,6 +18,11 @@
 --          Interlocutor:SetTrait; the software never writes it by itself (a test proves it);
 --   seen = what the addon observed (first, last, count, encounters by type, a ring of short facts, no text).
 -- NPC records stay flat: their axes are computed by the addon.
+-- N2 (#214, version 3): an NPC record also keeps `met` (the circumstances of the first meeting: time of day, weather if
+-- known, zone, the character's level then; tokens and a zone name, no text) and `race` (a game token, when the client
+-- gave it). The disposition bands are visible levels: a move between them is told by the private narrator (rare, never
+-- in combat) and a memorable one leaves a journal line. Each NPC warms up at its own pace (the temperament: role,
+-- personality, curated overrides and a race factor, all in Data/Relationships.lua and Data/NPCs.lua).
 -- Proximity (#113, ADR 0030): with the option on (off by default) nameplates and mouseover can recognise a player who is
 -- ALREADY listed, or (with the TRP3 consent) suggest one who has a TRP3 profile. For this session only: nothing is saved,
 -- no record is created, nothing is kept about strangers, and a secret identity is not read.
@@ -105,7 +110,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 2                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107)
+R.VERSION = 3                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -129,6 +134,8 @@ R.PROXIMITY_BURST = 20         -- a bucket of this many lookups: a crowd appeari
 R.PROXIMITY_UNIT_GAP = 0.5     -- seconds before the same unit token ("nameplate7", "mouseover") is looked at again
 R.PROXIMITY_UNIT_MAX = 80      -- unit tokens remembered (about forty nameplates and the mouse); more means a bug
 R.CONFIRM_SECONDS = 15         -- how long the confirmation of a risky action (sharing, reset) stays open
+R.RACE_LEN = 20                -- a race token (NightElf, Scourge...)
+R.LEVEL_MAX = 200              -- a character level read back from saved data is brought within 1..LEVEL_MAX
 -- what can happen with a listed player. ENCOUNTERS count as encounters (`count`, `last`); SHARED are facts of an
 -- experience lived together (they update `last` and the tally by kind, not `count`). relShared accepts any of them.
 R.ENCOUNTERS = { group = true, trade = true, duel = true, invite = true, emote = true, whisper = true, target = true }
@@ -145,7 +152,10 @@ R.dispositions, R.dispositionById = {}, {}
 R.feelings, R.feelingById = {}, {}   -- feelings in words, in data order (Data/Relationships.lua)
 R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionStyles = {}, increments = {},
 	decay = { graceDays = 14, perDay = 0.5, floor = 3 }, memorable = {},
-	disposition = { weights = {}, familiarityWarmth = 0, bands = {} } }
+	disposition = { weights = {}, familiarityWarmth = 0, bands = {} },
+	-- N2 (#214): Data/Relationships.lua fills them
+	temperament = { min = 0.4, max = 2, roles = {}, temperaments = {}, races = {}, pace = {} },
+	levels = { perSession = 4, npcHours = 20, held = 3, variants = 1, memorable = {} } }
 R.candidates = {}              -- [chiave] = { key, source, t }: persone proposte, solo in questa sessione
 R.dismissed = {}               -- [chiave] = true: proposte che l'utente ha scartato (solo sessione)
 R.recalls = {}                 -- [evento] = true: eventi che citano un rapporto (il validatore chiede una condizione)
@@ -344,6 +354,31 @@ function R:RegisterData(def)
 	for k, v in pairs(def.increments or {}) do c.increments[k] = v end
 	if type(def.decay) == "table" then for k, v in pairs(def.decay) do c.decay[k] = v end end
 	for k, v in pairs(def.memorable or {}) do c.memorable[k] = v end
+	-- N2 (#214): the temperament and the levels (tables merged key by key, so a pack can add a role or a race)
+	local tp = def.temperament
+	if type(tp) == "table" then
+		if IsNumber(tp.min) and tp.min > 0 then c.temperament.min = tp.min end
+		if IsNumber(tp.max) and tp.max >= c.temperament.min then c.temperament.max = tp.max end
+		for _, group in ipairs({ "roles", "temperaments" }) do
+			for k, v in pairs(type(tp[group]) == "table" and tp[group] or EMPTY) do
+				if type(k) == "string" and IsNumber(v) and v > 0 then c.temperament[group][k] = v end
+			end
+		end
+		for k, v in pairs(type(tp.races) == "table" and tp.races or EMPTY) do
+			if type(k) == "string" and type(v) == "table" then
+				c.temperament.races[k] = { gain = IsNumber(v.gain) and v.gain > 0 and v.gain or 1,
+					forget = IsNumber(v.forget) and v.forget > 0 and v.forget or 1 }
+			end
+		end
+		if type(tp.pace) == "table" then c.temperament.pace = tp.pace end
+	end
+	local lv = def.levels
+	if type(lv) == "table" then
+		for _, k in ipairs({ "perSession", "npcHours", "held", "variants" }) do
+			if IsNumber(lv[k]) and lv[k] >= 0 then c.levels[k] = lv[k] end
+		end
+		for k, v in pairs(type(lv.memorable) == "table" and lv.memorable or EMPTY) do c.levels.memorable[k] = v end
+	end
 	DefineChoiceTraits()
 	return true
 end
@@ -489,6 +524,28 @@ function R:Disposition(axes)
 	end
 	local last = self.dispositions[#self.dispositions]
 	return value, last and last.id or "neutral"
+end
+
+---N2 (#214): the visible level of a disposition: the place of its band among the bands (1 = the lowest), how many
+---there are, the next band up and how far the value has come from the bottom of its band (0..1; nil at the top).
+---@param value number the disposition (-100..100)
+---@param id string its band
+---@return integer level 0 for a band that is not in the data
+---@return integer total
+---@return string? nextId
+---@return number? progress
+function R:Level(value, id)
+	local list = self.dispositions
+	for i, b in ipairs(list) do
+		if b.id == id then
+			local up = list[i + 1]
+			if not up then return i, #list, nil, nil end
+			local low = list[i - 1] and list[i - 1].max or -100
+			local span = b.max - low
+			return i, #list, up.id, span > 0 and Clamp(((value or 0) - low) / span, 0, 1) or 0
+		end
+	end
+	return 0, #list, nil, nil
 end
 
 ---The record that holds what the user chose: `rec.user` for a player, the record itself for an NPC.
@@ -820,6 +877,21 @@ function R.MigrateV1(rec)
 		seen = { first = rec.first, last = rec.last, count = rec.count } }
 end
 
+---N2 (#214): the circumstances of a first meeting within their limits (tokens of closed sets, a zone name, numbers), or
+---nil when nothing valid is left.
+---@param met any
+---@return AURelationMet?
+function R.CleanMet(met)
+	if type(met) ~= "table" then return nil end
+	local out = {}
+	if type(met.time) == "string" and Engine.CONDITION_VALUES.time[met.time] then out.time = met.time end
+	if type(met.weather) == "string" and Engine.CONDITION_VALUES.weather[met.weather] then out.weather = met.weather end
+	out.zone = CleanText(met.zone, R.ZONE_LEN)
+	if IsNumber(met.mapID) and met.mapID > 0 then out.mapID = math.floor(met.mapID) end
+	if IsNumber(met.level) and met.level >= 1 then out.level = Clamp(math.floor(met.level), 1, R.LEVEL_MAX) end
+	return next(out) and out or nil
+end
+
 local function CleanRecord(rec, kind)
 	if type(rec) ~= "table" then return nil end
 	local out = {}
@@ -849,6 +921,9 @@ local function CleanRecord(rec, kind)
 			if out.decayDay > Day(Now()) then out.decayDay, clamped = Day(Now()), clamped + 1 end
 		end
 		if IsNumber(rec.talks) and rec.talks > 0 then out.talks = Counter(rec.talks) end
+		out.met = R.CleanMet(rec.met)
+		if type(rec.race) == "string" and rec.race:match("^[A-Za-z]+$") and #rec.race <= R.RACE_LEN then out.race = rec.race end
+		if IsNumber(rec.levelT) and rec.levelT > 0 then out.levelT = Past(rec.levelT) end
 		local t = rec.today
 		-- i contatori di un giorno passato non servono più: Increment li sostituisce alla prossima interazione (#52)
 		if type(t) == "table" and IsNumber(t.day) and math.floor(t.day) == Day(Now())
@@ -1138,20 +1213,24 @@ end
 
 ---Il decadimento lento della familiarità di un NPC: dopo `graceDays` giorni senza incontri cala di `perDay` al
 ---giorno, mai sotto `floor`. Gli altri assi non decadono.
+---N2 (#214): `forget` is the temperament of the NPC (R:Temper): the loss per day is multiplied by it and the days of
+---grace divided by it, so a long-lived people forgets later and more slowly.
 ---@param rec AURelationRecord
 ---@param now? number
+---@param forget? number 1 when absent
 ---@return boolean changed
-function R:Decay(rec, now)
+function R:Decay(rec, now, forget)
 	now = now or Now()
 	local cfg = self.config.decay
+	local k = IsNumber(forget) and forget > 0 and forget or 1
 	local today = Day(now)
 	local lastDay = Day(rec.last or now)
-	local from = math.max(rec.decayDay or 0, lastDay + cfg.graceDays)
+	local from = math.max(rec.decayDay or 0, lastDay + math.floor(cfg.graceDays / k + 0.5))
 	local days = today - from
 	local f = AxisValue(rec, "familiarity")
 	local changed = false
 	if days > 0 and f > cfg.floor then
-		rec.familiarity = math.max(cfg.floor, f - days * cfg.perDay)
+		rec.familiarity = math.max(cfg.floor, f - days * cfg.perDay * k)
 		changed = true
 	end
 	if days > 0 or rec.decayDay == nil then rec.decayDay = math.max(today, 0) end
@@ -1163,19 +1242,71 @@ function R:MaintainAll()
 	local d = self:Data()
 	if not d then return end
 	local now = Now()
-	for _, rec in pairs(d.npcs) do self:Decay(rec, now) end
+	for id, rec in pairs(d.npcs) do self:Decay(rec, now, self:Temper(id, rec).forget) end
 end
 
 ---------------------------------------------------------------------------
 -- NPC: incrementi automatici
 ---------------------------------------------------------------------------
+-- N2 (#214): the role an interaction shows, when nothing better is known (as Interlocutor.ROLE_OF for the events)
+local SOURCE_ROLE = { binder = "innkeeper", taxi = "flightmaster", trainer = "trainer", merchant = "merchant",
+	merchant_buy = "merchant", merchant_sell = "merchant", merchant_repair = "merchant", quest_accept = "questgiver",
+	quest_turnin = "questgiver" }
+
+---@class AURelationTemper
+---@field gain number multiplier on the gains and on the daily caps
+---@field forget number multiplier on the slow loss of familiarity
+---@field role? string
+---@field temperament? string
+---@field race? string
+---@field curated boolean the gain comes from a curated `warmth` (Data/NPCs.lua)
+
+---N2 (#214): the temperament of an NPC: how fast it warms up and how slowly it forgets (Data/Relationships.lua
+---`temperament`). The role is the one the user chose, else the curated one (Data/NPCs.lua), else the one an interaction
+---showed (saved with the record, seen this session, or this source); the personality is the user's choice, else the
+---curated one; the race the curated one, else the one the client gave. A curated `warmth` replaces role x personality;
+---the race factor always applies. Only data: nothing here changes what the NPC does in game.
+---@param npcID integer
+---@param rec? AURelationRecord
+---@param source? string the source of this interaction (config.increments)
+---@return AURelationTemper
+function R:Temper(npcID, rec, source)
+	local cfg = self.config.temperament
+	local I = NS.Interlocutor
+	local entry = I and I.npcs and I.npcs[npcID] or EMPTY
+	rec = rec or EMPTY
+	local traits = type(rec.traits) == "table" and rec.traits or EMPTY
+	local role = (rec.roleSource == "user" and rec.role) or entry.role or rec.role or (I and I.roles and I.roles[npcID])
+		or SOURCE_ROLE[source]
+	local temperament = traits.temperament or entry.temperament
+	local race = entry.race or rec.race
+	local gain = entry.warmth or ((cfg.roles[role] or 1) * (cfg.temperaments[temperament] or 1))
+	local r = race and cfg.races[race] or EMPTY
+	gain = gain * (r.gain or 1)
+	local forget = (entry.forget or 1) * (r.forget or 1)
+	return { gain = Clamp(gain, cfg.min, cfg.max), forget = Clamp(forget, cfg.min, cfg.max), role = role,
+		temperament = temperament, race = race, curated = entry.warmth ~= nil }
+end
+
+---The word for a multiplier of the temperament (Data/Relationships.lua `temperament.pace`): slow, steady, quick.
+---@param mult number
+---@return string id
+function R:PaceOf(mult)
+	for _, p in ipairs(self.config.temperament.pace) do
+		if IsNumber(p.max) and mult <= p.max then return p.id end
+	end
+	return "steady"
+end
+
 ---@param rec AURelationRecord
 ---@param source string fonte (chiave di config.increments)
 ---@param now number
+---@param temper? number N2 (#214): the multiplier of the NPC's temperament, on the gains and on the daily caps (1)
 ---@return table<string, number>? gained
-function R:Increment(rec, source, now)
+function R:Increment(rec, source, now, temper)
 	local inc = self.config.increments[source]
 	if not inc then return nil end
+	local t = IsNumber(temper) and temper > 0 and temper or 1
 	local day = Day(now)
 	local today = rec.today
 	if type(today) ~= "table" or today.day ~= day then
@@ -1192,12 +1323,12 @@ function R:Increment(rec, source, now)
 		local def = self.axisById[axis]
 		if def and (not def.optional or self:AttractionOn()) then
 			local v = AxisValue(rec, axis)
-			local delta = base * mult
+			local delta = base * mult * t
 			if delta > 0 then
 				local span = def.max
 				delta = delta * (1 - self.config.lifetimeSoftness * Clamp(v / span, 0, 1))
 			end
-			local room = (inc.cap and inc.cap[axis]) or math.huge
+			local room = ((inc.cap and inc.cap[axis]) or math.huge) * t
 			room = room - (gains[axis] or 0)
 			delta = math.min(delta, math.max(room, 0))
 			if delta ~= 0 then
@@ -1225,20 +1356,110 @@ function R:RecordNPC(npcID, name, source, uncounted)
 	local now = Now()
 	local rec = d.npcs[npcID]
 	if not rec then
-		rec = { first = now, last = now, count = 0 }
+		-- N2 (#214): the circumstances of the first meeting, kept for later recall
+		rec = { first = now, last = now, count = 0, met = self:Circumstances() }
 		d.npcs[npcID] = rec
 	end
+	-- the race, when the client gave it during this session's interaction (it rarely does for an NPC)
+	local race = self.session.races and self.session.races[npcID]
+	if race and not rec.race then rec.race = race end
 	local old = DerivedOf(self, rec)
-	self:Decay(rec, now)
+	local temper = self:Temper(npcID, rec, source)
+	self:Decay(rec, now, temper.forget)
+	local _, before = self:Disposition(self:Axes(rec))
 	rec.last = now
 	if not uncounted then rec.count = (rec.count or 0) + 1 end
 	local clean = CleanText(name, self.NAME_LEN)
 	if clean then rec.name = clean end
-	local gained = self:Increment(rec, source, now)
+	local gained = self:Increment(rec, source, now, temper.gain)
 	self:CompactNPCs()
 	AfterChange(self, "npc", rec, old)
+	local _, after = self:Disposition(self:Axes(rec))
+	if after ~= before and d.npcs[npcID] == rec then self:LevelChanged(npcID, rec, before, after) end
 	self:Changed()
 	return rec, gained
+end
+
+---------------------------------------------------------------------------
+-- N2 (#214): visible levels. A move to another band of disposition through an interaction: a journal line when the
+-- band is memorable (once per NPC and band, no name, no text) and a short private narrator line (rare, never in combat).
+---------------------------------------------------------------------------
+local function LevelSession(self)
+	local s = self.session
+	if type(s.levels) ~= "table" then s.levels = { n = 0, held = {} } end
+	return s.levels
+end
+
+-- the same NPC is not announced again for `npcHours` hours (saved: a /reload does not reset it)
+local function LevelQuiet(self, rec)
+	return IsNumber(rec.levelT) and Now() - rec.levelT < self.config.levels.npcHours * 3600
+end
+
+---An NPC moved to another band of disposition through an interaction (RecordNPC; never the user's own sliders).
+---@param npcID integer
+---@param rec AURelationRecord
+---@param from string the band before
+---@param to string the band now
+function R:LevelChanged(npcID, rec, from, to)
+	local a, b = self.dispositionById[from], self.dispositionById[to]
+	if not (a and b) then return end
+	local up = b.max > a.max
+	local lv = self.config.levels
+	if lv.memorable[to] and not (rec.noted and rec.noted["level_" .. to]) then
+		rec.noted = rec.noted or {}
+		rec.noted["level_" .. to] = true
+		if NS.LivingMemory and NS.LivingMemory.Record then
+			NS.LivingMemory:Record({ kind = "relation_level", tags = { "npc", to, up and "up" or "down" }, source = "addon",
+				zone = (self:Circumstances() or EMPTY).zone })
+		end
+	end
+	if not self:Setting("levelNotices") or LevelQuiet(self, rec) then return end
+	local ls = LevelSession(self)
+	if ls.n >= lv.perSession then return end
+	local notice = { npcID = npcID, from = from, to = to }
+	if Compat.SafeCall("UnitAffectingCombat", "player") == true then
+		-- never in combat: it waits for the end of the fight; a newer move of the same NPC replaces the older one
+		for i = #ls.held, 1, -1 do
+			if ls.held[i].npcID == npcID then
+				notice.from = ls.held[i].from
+				table.remove(ls.held, i)
+			end
+		end
+		if #ls.held < lv.held then table.insert(ls.held, notice) end
+		return
+	end
+	self:ShowLevelNotice(notice)
+end
+
+---Shows a level notice in the private narrator (Narrator:Notice: never chat), if the moment allows it: narrator on,
+---intensity above 0, not paused, no invasive screen, the session quota and the NPC's quiet hours not used up.
+---@param n { npcID: integer, from: string, to: string }
+---@return boolean shown
+function R:ShowLevelNotice(n)
+	local db = NS.db
+	if n.from == n.to or not self:Setting("levelNotices") then return false end
+	if not (db and NS.Narrator and NS.Narrator.Notice) or NS.paused or (db.intensity or 0) <= 0
+		or not db.output.privateNarrator then return false end
+	if Compat:InvasiveScreen() then return false end
+	local rec = self:Get("npc", n.npcID)
+	local ls, lv = LevelSession(self), self.config.levels
+	if not rec or ls.n >= lv.perSession or LevelQuiet(self, rec) then return false end
+	local a, b = self.dispositionById[n.from], self.dispositionById[n.to]
+	if not (a and b) then return false end
+	ls.n = ls.n + 1
+	rec.levelT = Now()
+	local variants = math.max(1, math.floor(lv.variants))
+	local key = (b.max > a.max and "rel_level_up_" or "rel_level_down_") .. ((rec.count or 0) % variants + 1)
+	NS.Narrator:Notice(NS:L(key, self:DisplayName("npc", n.npcID), self:DispositionName(n.from), self:DispositionName(n.to)))
+	return true
+end
+
+---The notices held during a fight, once it is over.
+function R:FlushLevelNotices()
+	local ls = LevelSession(self)
+	local held = ls.held
+	ls.held = {}
+	for _, n in ipairs(held) do self:ShowLevelNotice(n) end
 end
 
 ---------------------------------------------------------------------------
@@ -1343,6 +1564,31 @@ local function HereNow()
 	local zone = Compat.SafeCall("GetRealZoneText") or Compat.SafeCall("GetZoneText")
 	zone = type(zone) == "string" and not Compat.IsSecret(zone) and CleanText(zone, R.ZONE_LEN) or nil
 	return mapID and math.floor(mapID) or nil, zone
+end
+
+---@class AURelationMet the circumstances of a first meeting with an NPC (N2, #214): tokens, a zone name, numbers
+---@field time? string dawn | day | dusk | night
+---@field weather? string clear | rain | snow | storm | sand | fog (absent when the client does not say)
+---@field zone? string
+---@field mapID? integer
+---@field level? integer the character's level then
+
+---N2 (#214): the circumstances of this moment, for the record of a first meeting. Every reading goes through Compat;
+---what the client does not say stays absent (never an invented value).
+---@return AURelationMet?
+function R:Circumstances()
+	local isDay = Compat:IsDayTime()
+	local hour = Compat.SafeCall("GetGameTime")
+	local met = {}
+	if NS.World and NS.World.TimeOfDay and (isDay ~= nil or IsNumber(hour)) then
+		met.time = NS.World:TimeOfDay(IsNumber(hour) and hour or nil, isDay)
+	end
+	local weather = Compat:Weather()
+	if weather ~= "unknown" then met.weather = weather end
+	met.mapID, met.zone = HereNow()
+	local level = Compat.SafeCall("UnitLevel", "player")
+	if IsNumber(level) and level >= 1 then met.level = math.floor(level) end
+	return R.CleanMet(met)
 end
 
 local function LastFactOf(seen, kind)
@@ -2069,7 +2315,25 @@ function R:Context(ctx, extra)
 	ctx.rel, ctx.isKnown, ctx.relTraits = info.axes, info.isKnown, info.traits
 	ctx.relName = self:DisplayName(kind, key)
 	ctx.relFeelings = info.traits.feeling or EMPTY       -- set of ids: the condition `feeling`
-	if kind == "player" then self:ObservationContext(ctx, key, rec) end
+	if kind == "player" then self:ObservationContext(ctx, key, rec) else self:MetContext(ctx, rec) end
+end
+
+---N2 (#214): the first meeting with an NPC, for the recall lines:
+---  ctx.relMetLevels   levels the character gained since (absent if the level then or now is not known)
+---  ctx.relMetDays     whole days since the first meeting
+---  ctx.relMetTime     dawn | day | dusk | night, then
+---  ctx.relMetWeather  the weather then, when the client said it
+---An NPC met before the addon kept these circumstances has only relMetDays.
+---@param ctx table
+---@param rec AURelationRecord
+function R:MetContext(ctx, rec)
+	if IsNumber(rec.first) and rec.first > 0 then
+		ctx.relMetDays = math.max(0, math.floor((Now() - rec.first) / R.DAY))
+	end
+	local met = rec.met
+	if type(met) ~= "table" then return end
+	if IsNumber(met.level) and IsNumber(ctx.level) then ctx.relMetLevels = math.max(0, ctx.level - met.level) end
+	ctx.relMetTime, ctx.relMetWeather = met.time, met.weather
 end
 
 ---The observation conditions of a listed player (#110), from `seen` and from the state before this session's first
@@ -2180,7 +2444,10 @@ local function InteractionNPC()
 	local id = R.NpcID(Compat.SafeCall("UnitGUID", "npc"))
 	if not id then return nil end
 	local name = Compat.SafeCall("UnitName", "npc")
-	return id, type(name) == "string" and name or nil
+	-- N2 (#214): the race token, if the client gives it for this NPC (the temperament's race factor)
+	local _, race = Compat.SafeCall("UnitRace", "npc")
+	if type(race) ~= "string" or Compat.IsSecret(race) or not race:match("^[A-Za-z]+$") or #race > R.RACE_LEN then race = nil end
+	return id, type(name) == "string" and name or nil, race
 end
 
 local EventBus = NS.EventBus
@@ -2191,8 +2458,8 @@ EventBus.dedupWindow.GROUP_CHANGED = 0     -- il gestore segna soltanto il grupp
 -- legge i nomi da queste chiamate); se uno manca nel client, Compat lo segna MISSING e solo quella fonte si spegne.
 local function NpcSource(wowEvent, kind)
 	EventBus:AddSource(wowEvent, { normalize = function()
-		local id, name = InteractionNPC()
-		return "NPC_INTERACT", { kind = kind, npcID = id, npcName = name },
+		local id, name, race = InteractionNPC()
+		return "NPC_INTERACT", { kind = kind, npcID = id, npcName = name, npcRace = race },
 			{ key = kind .. ":" .. tostring(id), expect = { "npcID" } }
 	end })
 end
@@ -2257,6 +2524,10 @@ function handlers.NPC_INTERACT(env)
 	end
 	local now = GetTime()
 	local kind = c.kind
+	if type(c.npcRace) == "string" then
+		R.session.races = R.session.races or {}
+		R.session.races[c.npcID] = c.npcRace
+	end
 	R.interaction = { npcID = c.npcID, name = c.npcName, kind = (kind == "gossip" or kind == "merchant") and kind or "other", t = now }
 	if kind == "quest_detail" then
 		R.questGiver = { npcID = c.npcID, name = c.npcName, t = now }
@@ -2322,6 +2593,7 @@ function handlers.COMBAT_START()
 end
 
 function handlers.COMBAT_END()
+	if R:Enabled() then R:FlushLevelNotices() end
 	local with = R.fightWith
 	R.fightWith = nil
 	if not with or not R:Enabled() then return end
@@ -2584,6 +2856,62 @@ function R:EncountersText(rec)
 	return #parts > 0 and ("%d (%s)"):format(n, table.concat(parts, ", ")) or tostring(n)
 end
 
+---N2 (#214): the visible level in words: "Level 6 of 9: Friend. Next: Close friend (40%)."
+---@param info AURelationInfo
+---@return string
+function R:LevelText(info)
+	local level, total, nextId, progress = self:Level(info.dispositionValue, info.disposition)
+	if not nextId then return NS:L("rel_level_top", level, total, info.dispositionText) end
+	return NS:L("rel_level_line", level, total, info.dispositionText, self:DispositionName(nextId),
+		math.floor((progress or 0) * 100 + 0.5))
+end
+
+-- the localized name of a game race token (Data/<lang>/Interface.lua raceNames), or the token
+local function RaceName(token)
+	local lang = NS.languages[NS:Lang()] or NS.languages.en
+	local v = lang and lang.ui.raceNames and lang.ui.raceNames[token]
+	if type(v) == "table" then v = v[1] end
+	return type(v) == "string" and v or token
+end
+
+---N2 (#214): the temperament of an NPC in words: "Warms up quickly, forgets at an even pace (innkeeper, cheerful)."
+---@param npcID integer
+---@param rec AURelationRecord
+---@return string
+function R:TemperText(npcID, rec)
+	local t = self:Temper(npcID, rec)
+	local why = {}
+	if t.curated then
+		table.insert(why, NS:L("rel_pace_curated"))
+	else
+		if t.role then table.insert(why, NS:L("role_" .. t.role)) end
+		if t.temperament then table.insert(why, NS.Traits.ValueName("temperament", t.temperament)) end
+	end
+	if t.race and self.config.temperament.races[t.race] then table.insert(why, RaceName(t.race)) end
+	-- forgetting is the other way round: a multiplier under 1 forgets slowly
+	local forget = t.forget < 1 and self:PaceOf(t.forget) or (t.forget > 1 and "quick" or "steady")
+	return NS:L("rel_pace_line", NS:L("rel_pace_" .. self:PaceOf(t.gain)), NS:L("rel_pace_" .. forget),
+		#why > 0 and (" (" .. table.concat(why, ", ") .. ")") or "")
+end
+
+---N2 (#214): the first meeting with an NPC in words: "First met: 2026-11-01, at night, in the rain, in Elwynn Forest,
+---you were level 7." Without the circumstances (an NPC met before they were kept) only the first date.
+---@param rec AURelationRecord
+---@param stamp? fun(t: number): string the date format (the window's own)
+---@return string
+function R:MetText(rec, stamp)
+	stamp = stamp or Stamp
+	local met = rec.met
+	if type(met) ~= "table" then return NS:L("rel_met_old", stamp(rec.first)) end
+	local parts = {}
+	if met.time then table.insert(parts, NS:L("rel_met_time_" .. met.time)) end
+	if met.weather then table.insert(parts, NS:L("rel_met_weather_" .. met.weather)) end
+	if met.zone then table.insert(parts, NS:L("rel_met_zone", met.zone)) end
+	if met.level then table.insert(parts, NS:L("rel_met_level", met.level)) end
+	if #parts == 0 then return NS:L("rel_met_line", stamp(rec.first)) end
+	return NS:L("rel_met_details", stamp(rec.first), table.concat(parts, ", "))
+end
+
 ---The feelings of a record in words, "trust, gratitude" (empty if none).
 ---@param rec AURelationRecord
 ---@return string
@@ -2689,6 +3017,10 @@ local function Summary(self, kind, key)
 	local feelings = self:FeelingsText(rec)
 	if feelings ~= "" then text = text .. " " .. NS:L("rel_feeling") .. ": " .. feelings .. "." end
 	if kind == "player" then text = text .. " " .. NS:L("rel_col_count") .. ": " .. self:EncountersText(rec) .. "." end
+	-- N2 (#214): an NPC's level, temperament and first meeting
+	if kind == "npc" then
+		text = text .. " " .. self:LevelText(info) .. " " .. self:TemperText(key, rec) .. " " .. self:MetText(rec)
+	end
 	return text
 end
 
@@ -2860,5 +3192,16 @@ function R:OnInit()
 	Hook("BuyMerchantItem", _G, "BuyMerchantItem", function() R:OnMerchantAction("merchant_buy") end)
 	Hook("RepairAllItems", _G, "RepairAllItems", function() R:OnMerchantAction("merchant_repair") end)
 	Hook("C_Container.UseContainerItem", _G.C_Container, "UseContainerItem", function() R:OnMerchantAction("merchant_sell") end)
-	if NS.LivingMemory then NS.LivingMemory:RegisterKind("relation", 3) end
+	if NS.LivingMemory then
+		NS.LivingMemory:RegisterKind("relation", 3)
+		-- N2 (#214): a bond that reached a memorable level: "A bond grows: Close friend (Goldshire)", no name
+		NS.LivingMemory:RegisterKind("relation_level", 3)
+		NS.LivingMemory:RegisterDescriber("relation_level", function(e)
+			local band = e.tags and e.tags[2]
+			if not (band and R.dispositionById[band]) then return nil end
+			local down = e.tags[3] == "down"
+			local text = NS:L(down and "rel_mem_level_down" or "rel_mem_level_up", R:DispositionName(band))
+			return e.zone and (text .. " (" .. e.zone .. ")") or text
+		end)
+	end
 end
