@@ -17,7 +17,7 @@ For each moment it decides whether to speak. Most of the time it stays silent: s
 
 ## The four voices
 
-Every line belongs to one of four voices. The box shows which voice is speaking.
+Every line belongs to one of four voices. The box tells them apart in more than one way, so that colour is never the only cue: a thin **bar in the voice's colour** along the left edge, the **text tinted** in that colour, the voice's name at the top, and the **inner voice in a different typeface** (narrower, like handwriting in the margin). The four colours also differ in **lightness**, so Character (light gold) and NPC (a darker green) stay apart for players who do not see red and green well.
 
 | Voice | What it is | Example | Can it go to chat? |
 |---|---|---|---|
@@ -64,10 +64,10 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 - **Just play.** Lines come by themselves. Their frequency depends on [[intensity|Intensity-and-Depth]].
 - **Move the box.** Drag it with the mouse. Lock it in place from the [[settings panel|Settings]] (**Position locked**). Put it back with `/au narrator reset`.
 - **Windows never hide it.** When the guide, the journal, the relationships or the character window open on top of the box, the box steps out from under them (below, or above) and goes back to your own place when they close; the place you chose is never changed. While it shows a chat proposal or the guide's test line it is above every window. A window too big for the screen to leave room (relationships on a 768-unit-high screen) cannot be avoided, so the box stays above it. Windows you click come to the front, and a window that opens over another one is shifted a little.
-- **Pause at once.** Click the **II** button on the box, use the pause key, or type `/au pause`. Again to resume. The pause lasts until you resume it or log out.
-- **Keep a line on screen.** Put the mouse over the box: the line stays as long as the mouse is there, and a waiting chat proposal stops counting down.
-- **Read again.** Click the **H** button on the box, or type `/au narrator history`, to see recent lines.
-- **Hide a line.** Click the **x** button. If a chat proposal was waiting, it is discarded.
+- **Pause at once.** Click the pause button (two bars) on the box, use the pause key, or type `/au pause`. Again to resume. The pause lasts until you resume it or log out.
+- **Keep a line on screen.** Put the mouse over the box: the line stays as long as the mouse is there (the time line stops just before its end), and a waiting chat proposal stops counting down.
+- **Read again.** Click the history button (three lines) on the box, or type `/au narrator history`, to see recent lines. The history has the same dark surface as the box and follows its text size. Close it with its **x** or with **Esc**. Drag it by its top strip (the dots) to put it somewhere else: from then on it keeps that place and stays open when the box hides; until you drag it, it sits above the box and hides with it. `/au narrator reset` puts both back.
+- **Hide a line.** Click the **x** button. It only hides the box: a waiting chat proposal is **not** discarded. It comes back with the next line, and the speak key first shows it again (a second press sends it), so nothing is ever sent that is not on screen. To throw a proposal away, use **Discard** in its bar.
 - **Ask for a line.** Use the speak key, the speak button or a command such as `/au muse`. See the [[Commands Reference|Commands]].
 
 ## Commands
@@ -89,7 +89,7 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 | Text duration | 8 seconds, plus the time to read the line (2–30) |
 | Reading speed | 14 characters a second (8, 11, 14, 18 or 24): a 140-character line stays 8 + 10 = 18 seconds |
 | Background opacity | 80% (55–100%); the text itself is always fully opaque |
-| Reduce motion | off (on: the box appears and disappears without fading) |
+| Reduce motion | off (on: no time line; the box appears and disappears) |
 | Text size | 14 (10–28) |
 | Position locked | no |
 | History | the last 30 lines, this session only |
@@ -98,11 +98,20 @@ See the [[Settings Reference|Settings]].
 
 ## What you will see
 
-- A dark, semi-transparent box near the bottom centre of the screen.
-- At the top of the box, the voice: *Narrator*, *Inner voice*, *Character* or *NPC*.
-- The line, which stays long enough to be read and then fades. The darkness of the box is a setting; the text is never faded by it.
-- Small buttons: **II** (pause), **H** (history), **x** (hide).
-- When a chat proposal is waiting, more buttons appear: **Send**, **Edit**, **Another**, **Discard**, **To chat** and the channel, and the label counts down the seconds the proposal still waits. See [[Chat Gateway]].
+- A dark, semi-transparent box near the bottom centre of the screen, with a thin bar in the voice's colour on its left
+  edge.
+- At the top of the box, the voice: *Narrator*, *Inner voice*, *Character* or *NPC*. The top strip grows with the text
+  size, so a large label never runs under the buttons or into the line.
+- The line, tinted in the voice's colour (white when the background is lighter than 60%, where a tint would be harder
+  to read). It stays long enough to be read; a **thin time line** along the bottom edge shows how long it has left,
+  and when it runs out the box goes. Nothing fades: the darkness of the box is a setting, applied once, and the text is
+  never faded by it.
+- Three quiet icon buttons at the top right, light grey until you point at them: **pause** (two bars; a triangle while
+  paused), **history** (three lines) and **x** (hide). Each is a 24-unit square, with a little space between them.
+- When a chat proposal is waiting, a bar appears under the line: on the left a **chip** with the channel (click it to
+  change channel), then a quiet **Discard**, **Another**, **Edit**, **To chat** and **Send**, the one gold button,
+  which also shows the speak key when you have bound one. The label says *proposal* and counts down the seconds it
+  still waits. See [[Chat Gateway]].
 - While a proposal waits, it stays in the box: other lines (a thought, a story notice) go to the history at once, the label says how many (for example *+1 in history*), and they come to the box after you send or discard the proposal, or when it expires. A line kept waiting more than two minutes stays only in the history.
 - Now and then a discreet notice, for example when a [[personal story|Story-Arcs]] can begin. It stays as long as any other line and is kept in the history.
 
