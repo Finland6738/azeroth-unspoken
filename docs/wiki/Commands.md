@@ -81,7 +81,9 @@ See [[The Narrator and the Four Voices|The-Narrator]].
 |---|---|
 | `/au mode [mode]` | Sets what may reach chat. Modes: `private` (default), `preview`, `confirm`, `auto` (see the note below). With no mode, shows the current one and explains it. |
 | `/au channel [channel]` | The default channel for proposals: `auto` (default), `say` (short form `s`), `emote` (`e`), `party` (`p`), `raid`, `guild` (`g`), `instance` (`i`). |
-| `/au speak` | The same as the speak key: sends the waiting proposal (or opens the editor in preview mode). With no proposal, makes a new one that fits the moment. |
+| `/au channel next` | Moves the **waiting proposal** to the next channel you can use now (the same as its channel chip or the **Next channel** key). The default channel does not change. |
+| `/au combat [show\|chat\|hold\|silent]` | What a spontaneous line does during a fight: shown as usual, written in your chat window only, held until the fight ends (the default) or not said. A chat proposal always waits for the end of the fight. With no value, shows the current setting. |
+| `/au speak` | The same as the speak key: sends the waiting proposal (or opens the editor in preview mode; never in combat, where the line is shown in chat and a second press sends it as it is). With no proposal, makes a new one that fits the moment; in combat it makes none (it says how many lines wait for the end of the fight): ask with `/au battlecry` if you want one. |
 | `/au another` | Swaps the waiting proposal for another line for the same moment. Sends nothing. |
 | `/au copy` | Copies the proposal into the chat box, on the right channel. You send it with Enter. |
 | `/au trp3` | Shows the Total RP 3 chat etiquette: whether the narrator stays private while you are out of character, what Total RP 3 says right now, and whether emotes outside `/emote` are written between asterisks. |
@@ -269,14 +271,20 @@ Earlier development builds also accepted Italian command names and a few English
 
 ## Key bindings
 
-Open the game menu, then **Options → Keybindings → AddOns → Azeroth Unspoken**. Four actions can be bound. None has a key by default.
+Open the game menu, then **Options → Keybindings → AddOns → Azeroth Unspoken**. Twelve actions can be bound, so everything the proposal bar, the history, the journal and the NPC dialogue offer can be done without the mouse. None has a key by default.
 
 | Action | What it does |
 |---|---|
 | **Confirm and speak the proposed line (or improvise)** | the same as `/au speak` |
 | **Swap the proposed line for another one** | the same as `/au another` |
+| **Discard the proposed line** | the same as `/au cancel` (Discard in the proposal bar) |
+| **Edit the proposed line (never in combat)** | opens the proposal in the editor (Edit in the proposal bar); in combat it says the editor opens after the fight |
+| **Next channel for the proposed line** | the same as `/au channel next` (the channel chip) |
 | **Pause the narrator immediately (toggle)** | the same as `/au pause` |
+| **Narrator history (open/close)** | the same as `/au narrator history` |
+| **Journal (open/close)** | the same as `/au journal` |
 | **Ambient dialogue with the NPC (open/close)** | opens or closes the NPC dialogue |
+| **NPC dialogue: answer 1**, **2**, **3** | presses the first, second or third button of the NPC dialogue window: an answer (they are numbered 1, 2, 3), **Talk** on an offer, **Close** at the end |
 
 The names of the actions follow your game client's language (Italian clients see them in Italian).
 

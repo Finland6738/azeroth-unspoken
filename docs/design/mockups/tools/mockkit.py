@@ -136,10 +136,15 @@ BOOK_SVG = ("<svg viewBox='0 0 36 36' width='36' height='36' xmlns='http://www.w
             "<circle cx='27' cy='9' r='2.2' fill='#ffd36b'/></svg>")
 
 
-def speak_button(desat=False, glow=False, opacity=1.0, **p):
+def speak_button(desat=False, glow=False, opacity=1.0, paused=False, **p):
+    """paused: the "Paused" badge under the button (#183), at full opacity while the button is dimmed."""
     g = '<div class="glow"></div>' if glow else ""
-    return (f'<div class="speak{" desat" if desat else ""}" style="{style(**p)};opacity:{opacity}">'
+    btn_ = (f'<div class="speak{" desat" if desat else ""}" style="{style(**p)};opacity:{opacity}">'
             f'<div class="icon">{BOOK_SVG}</div>{g}</div>')
+    if not paused:
+        return btn_
+    badge = f'<div class="speak" style="{style(**p)}"><div class="badge fs gfns">Paused</div></div>'
+    return btn_ + badge
 
 
 # ---------------------------------------------------------------------------------------------------------------

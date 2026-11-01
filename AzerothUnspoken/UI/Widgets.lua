@@ -70,30 +70,42 @@ function W.EditBox(parent, width, height)
 	return box
 end
 
+-- The slider track (#183): (0.55, 0.50, 0.70) is 5.4:1 against the window surface, above the 3:1 that a control needs
+-- (it was 1.7:1). The test computes the ratio from these values.
+W.SLIDER_TRACK = { 0.55, 0.5, 0.7 }
+W.SLIDER_STEP_BUTTON, W.SLIDER_GAP = 24, 4   -- the "-" and "+" of a slider: 24x24 targets (#183)
+
 -- Cursore a trascinamento, solo con texture colorate (nessun modello): una barra, un indicatore e, per le scale con
 -- valori negativi, un segno sullo zero. `onChange(valore, finale)` parte a ogni movimento (finale = false) e al rilascio
 -- del mouse (finale = true): chi salva i dati lo fa nel secondo caso. Anche i test e la tastiera usano :Set(v, final).
+-- #183: the mouse wheel moves it by one step; with `opts.buttons` it carries its own "-" and "+" (24x24) at the ends of
+-- `width`, and the track is the space between them; `:Step(n)` moves by n steps, saved at once (final). The frame
+-- follows the cursor (OnUpdate) only while the mouse button is down.
 ---@param parent table
----@param width number
+---@param width number the whole width, buttons included
 ---@param min number
 ---@param max number
 ---@param onChange? fun(value: number, final: boolean)
+---@param opts? { step?: number, buttons?: boolean }
 ---@return table slider
-function W.Slider(parent, width, min, max, onChange)
+function W.Slider(parent, width, min, max, onChange, opts)
+	opts = opts or {}
 	local s = CreateFrame("Frame", nil, parent)
-	s:SetSize(width, 16)
+	s:SetSize(width, opts.buttons and W.SLIDER_STEP_BUTTON or 16)
 	s:EnableMouse(true)
-	s.min, s.max, s.value, s.width = min, max, min, width
+	local inset = opts.buttons and (W.SLIDER_STEP_BUTTON + W.SLIDER_GAP + 4) or 0
+	s.min, s.max, s.value, s.width, s.inset = min, max, min, width - 2 * inset, inset
+	s.step = opts.step or math.max(1, math.floor((max - min) / 20 + 0.5))
 	local bar = s:CreateTexture(nil, "BACKGROUND")
-	bar:SetPoint("LEFT", s, "LEFT", 0, 0)
-	bar:SetSize(width, 4)
-	if bar.SetColorTexture then bar:SetColorTexture(0.25, 0.22, 0.35, 1) end
+	bar:SetPoint("LEFT", s, "LEFT", inset, 0)
+	bar:SetSize(s.width, 4)
+	W.SetBackgroundAlpha(bar, W.SLIDER_TRACK[1], W.SLIDER_TRACK[2], W.SLIDER_TRACK[3], 1)
 	s.bar = bar
 	if min < 0 and max > 0 then
 		local zero = s:CreateTexture(nil, "ARTWORK")
-		zero:SetPoint("CENTER", s, "LEFT", width * (-min) / (max - min), 0)
+		zero:SetPoint("CENTER", s, "LEFT", inset + s.width * (-min) / (max - min), 0)
 		zero:SetSize(2, 12)
-		if zero.SetColorTexture then zero:SetColorTexture(0.8, 0.8, 0.9, 0.8) end
+		if zero.SetColorTexture then zero:SetColorTexture(0.9, 0.9, 0.95, 0.9) end
 	end
 	local thumb = s:CreateTexture(nil, "OVERLAY")
 	thumb:SetSize(8, 16)
@@ -103,7 +115,7 @@ function W.Slider(parent, width, min, max, onChange)
 	local function Place()
 		local f = (s.value - s.min) / (s.max - s.min)
 		thumb:ClearAllPoints()
-		thumb:SetPoint("CENTER", s, "LEFT", s.width * f, 0)
+		thumb:SetPoint("CENTER", s, "LEFT", s.inset + s.width * f, 0)
 	end
 
 	---@param v number
@@ -120,33 +132,70 @@ function W.Slider(parent, width, min, max, onChange)
 		self.value = math.max(self.min, math.min(self.max, tonumber(v) or self.min))
 		Place()
 	end
+	---Moves by `n` steps (the "-" and "+", the wheel) and saves at once.
+	---@param n number
+	function s:Step(n)
+		self:Set(self.value + n * self.step, true)
+	end
 	local function FromCursor()
 		local x = NS.Compat.SafeCall("GetCursorPosition")
 		local scale = s:GetEffectiveScale()
 		local left = s:GetLeft()
 		if type(x) ~= "number" or type(scale) ~= "number" or type(left) ~= "number" or scale == 0 then return nil end
-		local f = math.max(0, math.min(1, (x / scale - left) / s.width))
+		local f = math.max(0, math.min(1, (x / scale - left - s.inset) / s.width))
 		return s.min + f * (s.max - s.min)
+	end
+	-- #183: follows the cursor only while dragging; idle, the slider costs nothing per frame
+	local function Follow()
+		local v = FromCursor()
+		if v then s:Set(v, false) end
+	end
+	local function StopFollowing()
+		s.dragging = false
+		s:SetScript("OnUpdate", nil)
 	end
 	s:SetScript("OnMouseDown", function()
 		s.dragging = true
-		local v = FromCursor()
-		if v then s:Set(v, false) end
+		s:SetScript("OnUpdate", Follow)
+		Follow()
 	end)
 	s:SetScript("OnMouseUp", function()
 		if not s.dragging then return end
-		s.dragging = false
+		StopFollowing()
 		local v = FromCursor()
 		s:Set(v or s.value, true)
 	end)
-	s:SetScript("OnUpdate", function()
+	-- a window closed while the button is down ends the drag where it is
+	s:SetScript("OnHide", function()
 		if s.dragging then
-			local v = FromCursor()
-			if v then s:Set(v, false) end
+			StopFollowing()
+			s:Set(s.value, true)
 		end
 	end)
+	if s.EnableMouseWheel then s:EnableMouseWheel(true) end
+	s:SetScript("OnMouseWheel", function(_, delta) s:Step(delta > 0 and 1 or -1) end)
+	if opts.buttons then
+		s.minus = W.FlatButton(s, "-", W.SLIDER_STEP_BUTTON, W.SLIDER_STEP_BUTTON, function() s:Step(-1) end)
+		s.minus:SetPoint("LEFT", s, "LEFT", 0, 0)
+		s.plus = W.FlatButton(s, "+", W.SLIDER_STEP_BUTTON, W.SLIDER_STEP_BUTTON, function() s:Step(1) end)
+		s.plus:SetPoint("RIGHT", s, "RIGHT", 0, 0)
+	end
 	Place()
 	return s
+end
+
+---Contrast ratio of two colours (WCAG relative luminance), for the tests of the 3:1 rule of controls (#183).
+---@param a number[] { r, g, b } 0-1
+---@param b number[]
+---@return number ratio
+function W.Contrast(a, b)
+	local function L(c)
+		local function ch(v) return v <= 0.03928 and v / 12.92 or ((v + 0.055) / 1.055) ^ 2.4 end
+		return 0.2126 * ch(c[1]) + 0.7152 * ch(c[2]) + 0.0722 * ch(c[3])
+	end
+	local la, lb = L(a), L(b)
+	if la < lb then la, lb = lb, la end
+	return (la + 0.05) / (lb + 0.05)
 end
 
 -- Saved position (#192): the frame's bottom-left corner, read with GetLeft/GetBottom, as { "BOTTOMLEFT", "BOTTOMLEFT",
@@ -452,8 +501,8 @@ function W.Window(parent, width, height, title, opts)
 	f.title:SetJustifyH("LEFT")
 	if f.title.SetWordWrap then f.title:SetWordWrap(false) end
 	local close = opts.onClose or function() f:Hide() end
-	f.closeBox = W.FlatButton(f, "X", 24, 22, function() close() end)
-	f.closeBox:SetPoint("TOPRIGHT", -8, -7)
+	f.closeBox = W.FlatButton(f, "X", 24, 24, function() close() end)
+	f.closeBox:SetPoint("TOPRIGHT", -8, -6)
 	W.Tooltip(f.closeBox, function() return NS:L("win_close_tip") end)
 
 	if opts.name and not opts.noEscape then W.CloseOnEscape(opts.name) end

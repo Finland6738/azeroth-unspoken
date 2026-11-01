@@ -414,6 +414,7 @@ def settings(left, top, reload_needed=False, auto_state="off", others_state="off
     stepper("opt_fontsize", "14")
     toggle("opt_motion", L("off")); nxt()
     toggle("opt_locked", L("off")); nxt()
+    toggle("opt_combat", L("combat_hold")); nxt()   # #185
     stepper("opt_dialogue_size", "13")
     stepper("opt_dialogue_alpha", "92%")
     actions(["opt_pause", "opt_test", "opt_history", "opt_resetpos"])
@@ -468,6 +469,9 @@ def settings(left, top, reload_needed=False, auto_state="off", others_state="off
 JOURNAL_TABS = [("memories", "Memories"), ("places", "Places"), ("flags", "Flags"), ("session", "Session"),
                 ("stories", "Stories"), ("relations", "Relationships"), ("people", "People met")]
 JOURNAL_MEMORY_TABS = {"memories", "places", "flags", "session"}
+# #183: the words of the row actions (the sample rows name them with the old symbols)
+JOURNAL_WORDS = {"P": "Keep", ("memories", "x"): "Delete", ("places", "x"): "Forget", ("flags", "x"): "Clear",
+                 ("stories", "x"): "Skip", "...": "Open", "II": "Pause", ">": "Pick", "+": "Add", ("people", "x"): "Dismiss"}
 JOURNAL_CONFIRM_TABS = {"memories", "places", "flags"}   # their "x" cannot be undone: a second click, the danger style
 JOURNAL_LOCK = {"off": "Memory is off: turn it on in the settings (the Memory module). You can read the journal, "
                        "not change it.",
@@ -516,12 +520,20 @@ def journal(left, top, tab, rows, note="", page=(1, 1), stats="memory: 14 memori
         armed_row = confirm is not None and confirm[0] == i
         if armed_row:
             text = f"|cffff9040{confirm[1]}|r {text}"
-        row.append(fs(text, "gfh", mode="trunc", left=16, top=6, width=500))
-        for k, a in enumerate(actions[:2]):
+        x = 584
+        buttons = []
+        for k in reversed(range(len(actions[:2]))):
+            a = actions[k]
             danger = a == "x" and tab in JOURNAL_CONFIRM_TABS
             on = armed_row and danger
-            row.append(flat(L("mem_confirm_btn") if on else a, 24, 24, kind="danger" if danger else "ghost", armed=on,
-                            disabled=bool(tab_lock), left=528 + k * 28, top=0))
+            word = L("mem_confirm_btn") if on else JOURNAL_WORDS.get((tab, a), JOURNAL_WORDS.get(a, a))
+            bw = max(24, round(len(word) * 6.3) + 16)
+            x -= bw
+            buttons.insert(0, flat(word, bw, 24, kind="danger" if danger else "ghost", armed=on,
+                                   disabled=bool(tab_lock), left=x, top=0))
+            x -= 4
+        row.append(fs(text, "gfh", mode="trunc", left=16, top=6, width=min(568, x - 24)))
+        row += buttons
         if tip is not None and tip[0] == i:
             row.append(tooltip([(tip[1], "ffffff")], left=40, bottom=24, max_width=420))
         out.append(f'<div class="abs jrow" style="left:0;width:600px;height:28px;top:112px">{"".join(row)}</div>')
@@ -706,8 +718,9 @@ def detail_widgets(d):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Profile (UI/ProfileFrame.lua): 680 x 700, the W.Window shell; the introduction (12 units) at -46, the archetype row
-# at -118, the traits every 26 from -154, the avoided topics, then Total RP 3, Neutral profile and Close at the bottom
+# Profile (UI/ProfileFrame.lua): 700 x 700, the W.Window shell; the introduction (12 units) at -46, the archetype row
+# at -118, the traits every 26 from -154 (a slider is "-", the track and "+", #183), the avoided topics, then Total RP 3,
+# Neutral profile and Close at the bottom
 # ---------------------------------------------------------------------------------------------------------------
 PROFILE_TOP = 118
 
@@ -716,20 +729,21 @@ def profile(left, top, rows, avoided, trp3=True, archetype="Hopeful traveler",
             arch_help="Cheerful and curious, finds hope at every turn of the road.", reset_armed=False):
     """reset_armed: "Neutral profile" after its first click, waiting for the second (#190)."""
     L = lambda key, *a: ui("en", key, *a)  # noqa: E731
-    out = [fs(L("soul_intro"), "gfh", left=16, top=TOP, width=648),
+    out = [fs(L("soul_intro"), "gfh", left=16, top=TOP, width=668),
            fs(L("soul_archetype"), "gfn", left=16, top=PROFILE_TOP + 5, width=130),
            flat(archetype, 170, 24, left=150, top=PROFILE_TOP),
-           fs(arch_help, "gfhs", left=332, top=PROFILE_TOP + 5, width=332)]
+           fs(arch_help, "gfhs", left=332, top=PROFILE_TOP + 5, width=352)]
     y = PROFILE_TOP + 36
     for name, value, text, source, explicit in rows:
         out.append(fs(name, "gfn", left=16, top=y + 5, width=170, mode="trunc"))
         if value is None:
             out.append(flat(text, 170, 24, left=190, top=y))
         else:
-            out += [slider(value, 0, 100, 200, left=190, top=y + 4), fs(text, "gfhs", left=400, top=y + 6, width=120)]
+            out += [flat("-", 24, 24, left=190, top=y), slider(value, 0, 100, 172, left=222, top=y + 4),
+                    flat("+", 24, 24, left=402, top=y), fs(text, "gfhs", left=432, top=y + 6, width=120)]
         if explicit:
-            out.append(flat("x", 24, 24, left=526, top=y))
-        out.append(fs(source, "gfhs", left=556, top=y + 6, width=90))
+            out.append(flat("x", 24, 24, left=556, top=y))
+        out.append(fs(source, "gfhs", left=586, top=y + 6, width=98))
         y += 26
     out.append(fs(L("soul_avoid_title"), "gfn", left=16, top=y + 6))
     topics = ["death", "blood", "betrayal", "family", "religion", "the undead", "demons", "romance"]
@@ -741,17 +755,18 @@ def profile(left, top, rows, avoided, trp3=True, archetype="Hopeful traveler",
     out += [flat(L("soul_reset_confirm" if reset_armed else "soul_reset"), 220, 24, kind="danger", armed=reset_armed,
                  left=16, bottom=16),
             flat(L("soul_close"), 110, 24, right=16, bottom=16)]
-    return window(left, top, 680, 700, L("soul_title"), "".join(out))
+    return window(left, top, 700, 700, L("soul_title"), "".join(out))
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# NPC dialogue (UI/DialogueFrame.lua): 380 wide, a header band of 22; the title 6 under it, the line 6 under the title,
-# the answers (buttons of 22 every 26) 8 under the line; the height is the last answer + 4 + 8 (#182)
+# NPC dialogue (UI/DialogueFrame.lua): 380 wide, a header band of 28 with Close; the title 6 under it, the line 6 under
+# the title, the answers (buttons of 24 every 28, numbered: the keys NPC answer 1-3, #183) 8 under the line; the height
+# is the last answer + 4 + 8 (#182)
 # ---------------------------------------------------------------------------------------------------------------
-def dialogue(left, top, title, line=None, choices=(), font=13, alpha=0.92, hover=None):
+def dialogue(left, top, title, line=None, choices=(), font=13, alpha=0.92, hover=None, numbered=True):
     bg = (0.04, 0.04, 0.07, 0.85 * alpha)
-    head = (f'<div class="abs" style="left:0;right:0;top:0;height:22px;background:rgba(77,51,8,0.95)">'
-            + fs("|cffffd060addon ambient dialogue|r", "gfns", left=8, top=5) + btn("x", 22, 18, right=2, top=2, font=11)
+    head = (f'<div class="abs" style="left:0;right:0;top:0;height:28px;background:rgba(77,51,8,0.95)">'
+            + fs("|cffffd060addon ambient dialogue|r", "gfns", left=8, top=8) + btn("Close", 64, 24, right=2, top=2, font=11)
             + "</div>")
     # each text under the one above, in the flow, so the measured heights place the answers (Layout)
     flow = [f'<div class="fs gfh" style="position:relative;font-size:{font}px">{wow(title)}</div>']
@@ -759,7 +774,8 @@ def dialogue(left, top, title, line=None, choices=(), font=13, alpha=0.92, hover
         flow.append(f'<div class="fs gfh" style="position:relative;margin-top:6px;font-size:{font}px">'
                     f'{wow("«" + line + "»")}</div>')
     for i, c in enumerate(choices):
-        flow.append(btn(c, 364, 22, state="hover" if hover == i else "", position="relative",
+        label = f"{i + 1}. {c}" if line and numbered else c
+        flow.append(btn(label, 364, 24, state="hover" if hover == i else "", position="relative",
                         margin_top=(8 if line else 6) if i == 0 else 4))
-    body = (f'{head}<div style="position:relative;padding:28px 8px 12px 8px">{"".join(flow)}</div>')
+    body = (f'{head}<div style="position:relative;padding:34px 8px 12px 8px">{"".join(flow)}</div>')
     return frame(body, bg=bg, left=left, top=top, width=380)

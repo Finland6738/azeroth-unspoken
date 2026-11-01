@@ -20,6 +20,9 @@ local function Reset()
 	NS.db.pacing.globalCooldownSeconds = 45
 	NS.db.pacing.suppressInHighDemand = true
 	NS.db.chance = {}
+	-- these tests count the lines of the fights as they are said: "show" (#185 holds them by default, TestChatGateway)
+	NS.db.pacing.inCombat = "show"
+	Gateway.combatHeld = { lines = {} }
 	for k in pairs(NS.db.modules) do NS.db.modules[k] = (k ~= "audio") end
 	NS.db.ui.narrator.historySize = 1000
 	Gateway:Discard()

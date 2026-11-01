@@ -32,7 +32,7 @@ NS.JournalFrame = JournalFrame
 
 local MAX_ROWS = 11             -- righe per pagina, al massimo: la nota e le schede su due file ne tolgono
 local ROW_H = 28
-local ROW_W = 500               -- larghezza del testo di una riga; oltre, il testo si taglia e il suggerimento lo mostra intero
+local ROW_W = 500               -- larghezza iniziale del testo di una riga: PlaceActions la riduce ai pulsanti (#183)
 local INNER_W = 568             -- larghezza utile della finestra
 local TAB_H, TAB_GAP = 24, 4    -- the tabs start under the introduction, whatever its number of lines (#182)
 local TAB_PAD, TAB_MIN = 24, 48 -- margine del testo nei pulsanti delle schede; larghezza minima
@@ -44,6 +44,7 @@ local ARM_SECONDS = 6           -- dopo il primo clic di una conferma si ha ques
 JournalFrame.tabs = {}
 local frame, exportFrame
 local rows, tabButtons = {}, {}
+JournalFrame.rows = rows   -- per i test: { text, hit, b[1..2], width }
 -- armed: "Dimentica tutto" armato; confirm: la chiave dell'azione di riga armata; token: l'ultimo armamento
 local state = { tab = "memories", page = 1, armed = false, confirm = nil, token = 0 }
 local pageSize = MAX_ROWS
@@ -110,11 +111,11 @@ JournalFrame:RegisterTab("memories", { label = "mem_tab_memories", memory = true
 		table.insert(out, {
 			text = ("%s%s  %s"):format(e.perm and "|cffffd200[P]|r " or "", LM:Describe(e), Muted(LM.Stamp(e.t))),
 			actions = {
-				{ label = "P", tip = NS:L("mem_perm_tip"), fn = function()
+				{ label = NS:L("act_keep"), tip = NS:L("mem_perm_tip"), fn = function()
 					local ok, why = LM:SetPermanent(id)
 					if not ok and why == "limit" then NS:Print(NS:L("mem_perm_limit")) end
 				end },
-				{ label = "x", tip = NS:L("mem_delete_tip"), confirm = "mem_confirm_delete", key = "memory:" .. id,
+				{ label = NS:L("act_delete"), tip = NS:L("mem_delete_tip"), confirm = "mem_confirm_delete", key = "memory:" .. id,
 					fn = function() LM:Delete(id) end },
 			},
 		})
@@ -128,7 +129,7 @@ JournalFrame:RegisterTab("places", { label = "mem_tab_places", memory = true, ro
 		local name = p.key or p.name
 		table.insert(out, {
 			text = ("%s  %s"):format(LM:DescribePlace(p), Muted(LM.Stamp(p.last))),
-			actions = { { label = "x", tip = NS:L("mem_forget_tip"), confirm = "mem_confirm_forget", key = "place:" .. name,
+			actions = { { label = NS:L("act_forget"), tip = NS:L("mem_forget_tip"), confirm = "mem_confirm_forget", key = "place:" .. name,
 				fn = function() LM:ForgetPlace(name) end } },
 		})
 	end
@@ -141,7 +142,7 @@ JournalFrame:RegisterTab("flags", { label = "mem_tab_flags", memory = true, rows
 	for _, name in ipairs(LM:FlagNames()) do
 		table.insert(out, {
 			text = ("%s  %s"):format(name, Muted(LM.Stamp(data.flags[name].t))),
-			actions = { { label = "x", tip = NS:L("mem_flag_tip"), confirm = "mem_confirm_flag", key = "flag:" .. name,
+			actions = { { label = NS:L("act_clear"), tip = NS:L("mem_flag_tip"), confirm = "mem_confirm_flag", key = "flag:" .. name,
 				fn = function() LM:ClearFlag(name) end } },
 		})
 	end
@@ -184,7 +185,8 @@ end
 
 local function Heading(text) return { text = "|cffffd200" .. text .. "|r" } end
 
-local function ArcAction(label, tipKey, fn) return { label = label, tip = NS:L(tipKey), fn = fn } end
+-- #183: an action is a short word ("Open", "Pause"), not a symbol explained only by its tooltip
+local function ArcAction(labelKey, tipKey, fn) return { label = NS:L(labelKey), tip = NS:L(tipKey), fn = fn } end
 
 local function ArcRows()
 	local out = {}
@@ -213,36 +215,36 @@ local function ArcRows()
 				end
 				if #rec.offer.options == 0 then
 					table.insert(out, { text = NS:L("arc_detail_go"),
-						actions = { ArcAction(">", "arc_tip_go", function() SA:Choose(id) end) } })
+						actions = { ArcAction("act_go", "arc_tip_go", function() SA:Choose(id) end) } })
 				end
 				for _, o in ipairs(rec.offer.options) do
 					local option = o.id
 					table.insert(out, { text = NS:L("arc_detail_pick", o.label),
-						actions = { ArcAction(">", "arc_tip_pick", function() SA:Choose(id, option) end) } })
+						actions = { ArcAction("act_pick", "arc_tip_pick", function() SA:Choose(id, option) end) } })
 				end
 			end
 			if rec.bucket == "available" and rec.mode == "active" then
-				table.insert(out, { text = NS:L("arc_action_start"), actions = { ArcAction(">", "arc_tip_start", function()
+				table.insert(out, { text = NS:L("arc_action_start"), actions = { ArcAction("act_start", "arc_tip_start", function()
 					local ok, why = SA:Start(id)
 					if not ok then NS:Print(NS:L("arc_why_" .. tostring(why))) end
 				end) } })
 			end
 			if rec.bucket ~= "resolved" then
 				if rec.mode == "active" then
-					table.insert(out, { text = NS:L("arc_action_suspend"), actions = { ArcAction("II", "arc_tip_suspend", function() SA:Suspend(id) end) } })
+					table.insert(out, { text = NS:L("arc_action_suspend"), actions = { ArcAction("act_pause", "arc_tip_suspend", function() SA:Suspend(id) end) } })
 				elseif rec.mode == "suspended" or rec.mode == "skipped" then
-					table.insert(out, { text = NS:L("arc_action_resume"), actions = { ArcAction(">", "arc_tip_resume", function()
+					table.insert(out, { text = NS:L("arc_action_resume"), actions = { ArcAction("act_resume", "arc_tip_resume", function()
 						local ok, why = SA:Resume(id)
 						if not ok then NS:Print(NS:L("arc_why_" .. tostring(why))) end
 					end) } })
 				elseif rec.mode == "off" then
-					table.insert(out, { text = NS:L("arc_action_enable"), actions = { ArcAction(">", "arc_tip_enable", function() SA:Enable(id) end) } })
+					table.insert(out, { text = NS:L("arc_action_enable"), actions = { ArcAction("act_enable", "arc_tip_enable", function() SA:Enable(id) end) } })
 				end
 				if rec.mode ~= "skipped" then
-					table.insert(out, { text = NS:L("arc_action_skip"), actions = { ArcAction("x", "arc_tip_skip", function() SA:Skip(id) end) } })
+					table.insert(out, { text = NS:L("arc_action_skip"), actions = { ArcAction("act_skip", "arc_tip_skip", function() SA:Skip(id) end) } })
 				end
 				if rec.mode ~= "off" then
-					table.insert(out, { text = NS:L("arc_action_disable"), actions = { ArcAction("-", "arc_tip_disable", function() SA:Disable(id) end) } })
+					table.insert(out, { text = NS:L("arc_action_disable"), actions = { ArcAction("act_disable", "arc_tip_disable", function() SA:Disable(id) end) } })
 				end
 			elseif rec.ended or rec.state == "RESOLVED" then
 				table.insert(out, { text = Muted(NS:L("arc_detail_memory")) })
@@ -253,21 +255,21 @@ local function ArcRows()
 	end
 
 	local list = SA:Listing()
-	local function Open(id) return ArcAction("...", "arc_tip_open", function() selectedArc = id end) end
+	local function Open(id) return ArcAction("act_open", "arc_tip_open", function() selectedArc = id end) end
 	if #list.active > 0 then
 		table.insert(out, Heading(NS:L("arc_hdr_active", SA:ActiveCount(), SA:MaxActive())))
 		for _, rec in ipairs(list.active) do
 			local id = rec.id
 			local mode = rec.mode ~= "active" and (" [" .. NS:L("arc_mode_" .. rec.mode) .. "]") or ""
 			local text = rec.offer and NS:L("arc_row_waiting", rec.title) or NS:L("arc_row", rec.title, rec.stateLabel)
-			table.insert(out, { text = text .. mode, actions = { Open(id), ArcAction("x", "arc_tip_skip", function() SA:Skip(id) end) } })
+			table.insert(out, { text = text .. mode, actions = { Open(id), ArcAction("act_skip", "arc_tip_skip", function() SA:Skip(id) end) } })
 		end
 	end
 	if #list.available > 0 then
 		table.insert(out, Heading(NS:L("arc_hdr_available")))
 		for _, rec in ipairs(list.available) do
 			local id = rec.id
-			table.insert(out, { text = NS:L("arc_row_available", rec.title), actions = { Open(id), ArcAction("x", "arc_tip_skip", function() SA:Skip(id) end) } })
+			table.insert(out, { text = NS:L("arc_row_available", rec.title), actions = { Open(id), ArcAction("act_skip", "arc_tip_skip", function() SA:Skip(id) end) } })
 		end
 	end
 	if #list.resolved > 0 then
@@ -286,8 +288,8 @@ local function ArcRows()
 		for _, l in ipairs(Wrap(NS:L("arc_empty"), "")) do table.insert(out, { text = Muted(l) }) end
 	end
 	if #list.active > 0 or #list.available > 0 then
-		table.insert(out, { text = Muted(NS:L("arc_all_suspend")), actions = { ArcAction("II", "arc_tip_suspend", function() SA:ForAll("suspend") end) } })
-		table.insert(out, { text = Muted(NS:L("arc_all_skip")), actions = { ArcAction("x", "arc_tip_skip", function() SA:ForAll("skip") end) } })
+		table.insert(out, { text = Muted(NS:L("arc_all_suspend")), actions = { ArcAction("act_pause", "arc_tip_suspend", function() SA:ForAll("suspend") end) } })
+		table.insert(out, { text = Muted(NS:L("arc_all_skip")), actions = { ArcAction("act_skip", "arc_tip_skip", function() SA:ForAll("skip") end) } })
 	end
 	return out
 end
@@ -332,14 +334,11 @@ local function BuildRow(i)
 end
 
 local function PlaceRow(row, y)
+	row.y = y
 	row.text:ClearAllPoints()
 	row.text:SetPoint("TOPLEFT", 16, -(y + 6))
 	row.hit:ClearAllPoints()
 	row.hit:SetPoint("TOPLEFT", 16, -(y + 2))
-	for k = 1, 2 do
-		row.b[k]:ClearAllPoints()
-		row.b[k]:SetPoint("TOPLEFT", 528 + (k - 1) * 28, -y)
-	end
 end
 
 local function EnsureTabButtons()
@@ -363,6 +362,27 @@ local function TextWidth(text)
 	-- un client che non misura i testi nascosti: una stima di 7 unità per carattere
 	if w <= 0 and text ~= "" then w = Chars(text) * 7 end
 	return w
+end
+
+-- #183: the row's buttons are short words ("Open", "Keep"), each as wide as its word (24 at least), from the right
+-- margin; the text of the row takes the rest, and a longer text is cut (its tooltip has it whole)
+local ACTION_PAD, ACTION_GAP = 16, 4
+local function PlaceActions(row)
+	local x = 16 + INNER_W
+	for k = 2, 1, -1 do
+		local b = row.b[k]
+		if b:IsShown() then
+			local w = math.max(24, math.ceil(TextWidth(b:GetText() or "")) + ACTION_PAD)
+			b:SetWidth(w)
+			x = x - w
+			b:ClearAllPoints()
+			b:SetPoint("TOPLEFT", x, -row.y)
+			x = x - ACTION_GAP
+		end
+	end
+	row.width = math.min(INNER_W, x - 16 - 8)
+	row.text:SetWidth(row.width)
+	row.hit:SetSize(row.width, ROW_H - 4)
 end
 
 -- Schede larghe quanto il loro testo, su più file quando non stanno in una; la scheda scelta ha il bordo pieno e la
@@ -508,9 +528,10 @@ function JournalFrame:Refresh()
 				if armed then text = "|cffff9040" .. NS:L(a.confirm) .. "|r " .. text end
 			end
 		end
+		PlaceActions(row)
 		row.text:SetText(text)
 		-- riga tagliata: il suggerimento la mostra intera
-		row.full = text ~= "" and TextWidth(text) > ROW_W and text or nil
+		row.full = text ~= "" and TextWidth(text) > row.width and text or nil
 		row.hit:EnableMouse(row.full ~= nil)
 	end
 	frame.pageText:SetText(NS:L("mem_page", state.page, pages))
@@ -563,6 +584,11 @@ function JournalFrame:Toggle()
 		return true
 	end
 	return self:Open()
+end
+
+-- tasto assegnato (#183): open or close the journal
+function AzerothUnspoken_Journal()
+	if NS.db then JournalFrame:Toggle() end
 end
 
 ---------------------------------------------------------------------------

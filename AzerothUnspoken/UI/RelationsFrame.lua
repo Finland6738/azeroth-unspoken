@@ -171,7 +171,7 @@ local function RowTip(item)
 end
 
 local function BuildList()
-	frame.kindBtn = W.FlatButton(frame, "", 130, 22, function()
+	frame.kindBtn = W.FlatButton(frame, "", 130, 24, function()
 		local idx = 1
 		for i, k in ipairs(KIND_FILTERS) do if (k or nil) == filter.kind then idx = i end end
 		filter.kind = KIND_FILTERS[idx % #KIND_FILTERS + 1] or nil
@@ -179,7 +179,7 @@ local function BuildList()
 		RelationsFrame:Refresh()
 	end)
 	frame.kindBtn:SetPoint("TOPLEFT", 16, -116)
-	frame.labelBtn = W.FlatButton(frame, "", 190, 22, function()
+	frame.labelBtn = W.FlatButton(frame, "", 190, 24, function()
 		local ids = R:LabelIds()
 		local nextId
 		if filter.label == nil then nextId = ids[1] else
@@ -191,7 +191,7 @@ local function BuildList()
 	end)
 	frame.labelBtn:SetPoint("TOPLEFT", 152, -116)
 	frame.searchLabel = Text(frame, "GameFontNormal", 436, -120, 60, "RIGHT")
-	frame.search = W.EditBox(frame, 200, 22)
+	frame.search = W.EditBox(frame, 200, 24)
 	frame.search:SetPoint("TOPLEFT", 504, -116)
 	frame.search:SetMaxLetters(32)
 	frame.search:SetScript("OnTextChanged", function(self, byUser)
@@ -204,7 +204,8 @@ local function BuildList()
 	frame.search:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
 	for _, col in ipairs(COLS) do
 		local id = col[1]
-		local b = W.FlatButton(frame, "", col[3] - 2, 20, function()
+		-- #183: the column titles are 24-unit targets too
+		local b = W.FlatButton(frame, "", col[3] - 2, 24, function()
 			if filter.sort == id then
 				-- stesso titolo: inverte la direzione (predefinita: i testi dalla A alla Z, i numeri dal più alto)
 				local textual = id == "name" or id == "kind" or id == "label"
@@ -217,7 +218,7 @@ local function BuildList()
 			view.page = 1
 			RelationsFrame:Refresh()
 		end)
-		b:SetPoint("TOPLEFT", col[2], -144)
+		b:SetPoint("TOPLEFT", col[2], -142)
 		headers[id] = b
 	end
 	-- #171: plain row buttons (no panel art) that own their cells, so the button never covers the text
@@ -255,19 +256,19 @@ local function BuildPeople()
 	end
 	frame.addBox:SetScript("OnEnterPressed", function(self) AddTyped(); self:ClearFocus() end)
 	frame.addBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
-	frame.addBtn = W.FlatButton(frame, "", 130, 22, AddTyped)
+	frame.addBtn = W.FlatButton(frame, "", 130, 24, AddTyped)
 	frame.addBtn:SetPoint("TOPLEFT", 398, -116)
 	frame.peopleNote = Text(frame, "GameFontHighlightSmall", 16, -146, INNER)
 	for i = 1, PAGE do
 		local y = TOP_PEOPLE - (i - 1) * ROW_H
 		local row = {}
 		row.text = Line(Text(frame, "GameFontHighlight", 20, y - 6, 600))
-		row.add = W.FlatButton(frame, "+", 28, 22, function()
+		row.add = W.FlatButton(frame, "+", 28, 24, function()
 			if row.cand then RelationsFrame:AddPlayer(row.cand.key) end
 		end)
 		row.add:SetPoint("TOPLEFT", 644, y)
 		W.Tooltip(row.add, function() return NS:L("rel_cand_add_tip") end)
-		row.dismiss = W.FlatButton(frame, "x", 28, 22, function()
+		row.dismiss = W.FlatButton(frame, "x", 28, 24, function()
 			if row.cand then R:Dismiss(row.cand.key) end
 			RelationsFrame:Refresh()
 		end)
@@ -301,14 +302,14 @@ local function BuildDetail()
 			if final and view.subject then
 				R:SetAxis(view.subject.kind, view.subject.key, axis.id, v)
 			end
-		end)
-		row.slider:SetPoint("TOPLEFT", CTRL_X, y - 2)
+		end, { step = R.SLIDER_STEP })   -- #183: the mouse wheel moves it like "-" and "+"
+		row.slider:SetPoint("TOPLEFT", CTRL_X, y - 4)
 		row.value = Text(frame, "GameFontHighlight", 266, y - 5, 34, "RIGHT")
-		row.minus = W.FlatButton(frame, "-", 24, 22, function()
+		row.minus = W.FlatButton(frame, "-", 24, 24, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, -R.SLIDER_STEP) end
 		end)
 		row.minus:SetPoint("TOPLEFT", 306, y)
-		row.plus = W.FlatButton(frame, "+", 24, 22, function()
+		row.plus = W.FlatButton(frame, "+", 24, 24, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, R.SLIDER_STEP) end
 		end)
 		row.plus:SetPoint("TOPLEFT", 332, y)
@@ -879,7 +880,7 @@ if NS.JournalFrame then
 			table.insert(out, {
 				text = ("%s  %s  %s"):format(row.name, row.info.text, Muted(("%s (%d)"):format(row.info.dispositionText,
 					math.floor(row.info.dispositionValue + 0.5)))),
-				actions = { { label = "...", tip = NS:L("rel_open_tip"), fn = function()
+				actions = { { label = NS:L("act_open"), tip = NS:L("rel_open_tip"), fn = function()
 					RelationsFrame:Open({ kind = kind, key = key })
 				end } },
 			})
@@ -893,8 +894,8 @@ if NS.JournalFrame then
 			table.insert(out, {
 				text = ("%s  %s"):format(key, Muted(NS:L("rel_src_" .. c.source))),
 				actions = {
-					{ label = "+", tip = NS:L("rel_cand_add_tip"), fn = function() RelationsFrame:AddPlayer(key) end },
-					{ label = "x", tip = NS:L("rel_cand_dismiss_tip"), fn = function() R:Dismiss(key) end },
+					{ label = NS:L("act_add"), tip = NS:L("rel_cand_add_tip"), fn = function() RelationsFrame:AddPlayer(key) end },
+					{ label = NS:L("act_dismiss"), tip = NS:L("rel_cand_dismiss_tip"), fn = function() R:Dismiss(key) end },
 				},
 			})
 		end

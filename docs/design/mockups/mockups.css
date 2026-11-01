@@ -98,8 +98,8 @@ body { font-family: var(--game-font); color: var(--white); }
 
 /* slider drawn with coloured textures (UI/Widgets.lua W.Slider) */
 .slider { position: absolute; height: 16px; }
-.slider .bar { position: absolute; left: 0; top: 6px; height: 4px; background: rgb(64, 56, 89); }
-.slider .zero { position: absolute; top: 2px; width: 2px; height: 12px; background: rgba(204, 204, 230, 0.8); }
+.slider .bar { position: absolute; left: 0; top: 6px; height: 4px; background: rgb(140, 128, 179); }
+.slider .zero { position: absolute; top: 2px; width: 2px; height: 12px; background: rgba(230, 230, 242, 0.9); }
 .slider .thumb { position: absolute; top: 0; width: 8px; height: 16px; background: rgb(179, 140, 255); }
 
 /* stand-in for the chat frame (DEFAULT_CHAT_FRAME) */
@@ -123,6 +123,7 @@ body { font-family: var(--game-font); color: var(--white); }
 
 /* stand-in for the speak button icon: an original book glyph (the addon itself uses a client icon texture) */
 .speak { position: absolute; width: 36px; height: 36px; }
+.speak .badge { position: absolute; top: 38px; left: 50%; transform: translateX(-50%); height: 16px; padding: 0 5px; background: rgba(0, 0, 0, 0.85); white-space: nowrap; }
 .speak .icon { position: absolute; inset: 0; border: 1px solid #000; border-radius: 2px; overflow: hidden; }
 .speak.desat .icon { filter: grayscale(1) brightness(0.8); }
 .speak .glow {
