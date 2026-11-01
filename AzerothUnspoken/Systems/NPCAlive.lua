@@ -547,7 +547,7 @@ function N:Offer(who, opts)
 	self:SetState("offered", opts and opts.auto and "auto" or "command")
 	if who.npcID and opts and opts.auto then self.offered[who.npcID .. ":" .. tostring(opts.kind)] = GetTime() end
 	local id = s.id
-	C_Timer.After(self.OFFER_SECONDS, function()
+	Compat.After(self.OFFER_SECONDS, function()
 		local cur = N.session
 		if cur and cur.id == id and N.state == "offered" and GetTime() >= cur.deadline then N:End("offer_expired") end
 	end)
@@ -558,7 +558,7 @@ end
 local function Arm(self, s, seconds)
 	s.deadline = GetTime() + seconds
 	local id = s.id
-	C_Timer.After(seconds, function()
+	Compat.After(seconds, function()
 		local cur = N.session
 		if cur and cur.id == id and N:IsActive() and GetTime() >= cur.deadline then N:End("idle") end
 	end)

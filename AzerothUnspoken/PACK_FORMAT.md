@@ -1145,6 +1145,11 @@ call `NS:AddTexts("enUS", { ... }, "base_combat")` as before. Only the folder of
 is missing, the base addon says so and uses English. A pack that is not LoadOnDemand (no `LoadOnDemand` line, like the
 example pack) is loaded by the client at login and keeps working as it always did, with every language inside.
 
+A LoadOnDemand folder that the client loads but that registers nothing (it never calls `NS:AddTexts`, `NS:RegisterPack`,
+`NS:RegisterRegionalPack` or another `NS:Add*` / `NS:Register*` function) is reported once to the user as empty, and
+`/au packs` shows it as "loaded, but gave no content". A folder the client refuses for a reason that cannot change in
+a session (missing, disabled, corrupt, wrong interface version) is tried once, not on every continent change.
+
 A **regional pack** is a folder of rules (region, no language) and one folder of texts per language (region and
 language). The files do not register their tables directly: they register **builders**, functions that return them.
 The base addon runs them when the character enters the region, drops the rules when the character leaves it, and runs

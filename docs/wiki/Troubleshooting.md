@@ -60,10 +60,11 @@ The addon is one download with several folders (see [[Installation and Updating|
 | *the folder AzerothUnspoken_itIT could not be loaded (MISSING) ... the lines stay in English* | The folder of your language is not installed: the lines come in English. | Copy every `AzerothUnspoken` folder of the download into `AddOns`, then `/reload`. |
 | *... (DISABLED)* | The folder is unticked in the AddOns list. | Tick every **Azeroth Unspoken** entry on the character selection screen. |
 | *... (CORRUPT)*, *(INTERFACE_VERSION)* or another reason | The game refused the folder. | Delete all the `AzerothUnspoken` folders and copy them again from a fresh download. If it repeats, [[report it|Reporting-Bugs-and-Feedback]] with the message. |
+| *the folder ... loaded but gave no content* | The folder is there but empty, damaged or from another version, so it adds no lines. `/au packs` shows it as *loaded, but gave no content*. | Delete all the `AzerothUnspoken` folders and copy them again from a fresh download, then `/reload`. |
 | *no line texts could be loaded: the narrator stays silent* | Neither language folder could be loaded. Windows and commands still work. | As above: copy every folder, then `/reload`. |
 | *the regional folder AzerothUnspoken_Kalimdor could not be loaded* | The lines of that continent are missing; the lines that hold everywhere still come. | As above. |
 
-`/au packs` lists every folder with its state: *loaded*, *not loaded (not needed now)* (for example the other language, or the other continent), *not installed* or *could not be loaded*. The first line also says the language of the lines and the continent the addon has loaded.
+`/au packs` lists every folder with its state: *loaded*, *not loaded (not needed now)* (for example the other language, or the other continent), *not installed*, *could not be loaded* or *loaded, but gave no content*. A folder that cannot load because it is missing or disabled is tried once per session, not on every continent change; enabling or copying it needs a `/reload`. The first line also says the language of the lines and the continent the addon has loaded.
 
 ## Lines are not sent to chat
 

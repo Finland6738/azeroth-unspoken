@@ -544,7 +544,7 @@ local SEPARATORS = "[\1-\47\58-\64\91-\96\123-\126]"
 ---@return boolean
 function I.TextAddressesYou(text, locale)
 	if type(text) ~= "string" then return false end
-	locale = locale or (GetLocale and GetLocale()) or "enUS"
+	locale = locale or NS.Compat.SafeCall("GetLocale") or "enUS"
 	local set = I.YOU_WORDS[NS.Lower(tostring(locale)):sub(1, 2)]
 	if not set then return false end
 	local lower = NS.Lower(text)

@@ -335,3 +335,104 @@ T.run("subzone and world events never load a pack (R3, #94)", function()
 	T.eq(P.zone, dur, "the continent did not change")
 	P.subzone = ""
 end)
+
+---------------------------------------------------------------------------
+-- #166: bounded retries, and a folder that loads but gives nothing is reported
+---------------------------------------------------------------------------
+local function Cleanup(...)
+	for _, name in ipairs({ ... }) do
+		ADDONS[name] = nil
+		for i = #ADDON_LIST, 1, -1 do if ADDON_LIST[i] == name then table.remove(ADDON_LIST, i) end end
+		Packs.status[name], Packs.reason[name], Packs.attempts[name], Packs.empty[name] = nil, nil, nil, nil
+	end
+	Packs:Discover()
+end
+
+T.run("a folder that cannot load is not tried again on every region change (#166)", function()
+	ADD_ADDON("TestDisabledRegion", { meta = { ["X-AzerothUnspoken-Region"] = "eastern" }, fail = "DISABLED" })
+	ADD_ADDON("TestMissingFlagRegion", { meta = { ["X-AzerothUnspoken-Region"] = "eastern" }, fail = "MISSING" })
+	Packs:Discover()
+	SENT = {}
+	for _ = 1, 5 do Travel("Elwynn Forest"); Travel("Durotar") end
+	T.eq(Calls("TestDisabledRegion"), 1, "DISABLED: one LoadAddOn call over ten region changes")
+	T.eq(Calls("TestMissingFlagRegion"), 1, "MISSING: one call")
+	T.eq(Packs.status.TestDisabledRegion, "failed", "the state is failed")
+	T.eq(Packs.reason.TestDisabledRegion, "DISABLED", "with the client's reason")
+	local printed = 0
+	for _, s in ipairs(SENT) do
+		if type(s) == "string" and s:find("TestDisabledRegion", 1, true) then printed = printed + 1 end
+	end
+	T.eq(printed, 1, "reported once")
+	T.ok(Packs.active.eastern ~= nil or Packs.region == "kalimdor", "the rest of the region still works")
+	-- the folders that did work were not retried either
+	Cleanup("TestDisabledRegion", "TestMissingFlagRegion")
+
+	-- a failure that may be passing (an error raised by the call): a few tries, then it stops
+	ADD_ADDON("TestRaisingRegion", { meta = { ["X-AzerothUnspoken-Region"] = "eastern" }, raise = "boom" })
+	Packs:Discover()
+	for _ = 1, 6 do Travel("Elwynn Forest"); Travel("Durotar") end
+	T.eq(Calls("TestRaisingRegion"), Packs.MAX_ATTEMPTS, "an error is tried MAX_ATTEMPTS times in all")
+	T.eq(Packs.reason.TestRaisingRegion, "ERROR", "reason ERROR")
+	Cleanup("TestRaisingRegion")
+
+	-- without the API at all: one try in the session, whatever the number of region changes
+	local load = C_AddOns.LoadAddOn
+	ADD_ADDON("TestNoApiRegion", { meta = { ["X-AzerothUnspoken-Region"] = "eastern" } })
+	Packs:Discover()
+	local calls = 0
+	C_AddOns.LoadAddOn = nil
+	local ok1, why1 = Packs:Load("TestNoApiRegion")
+	local ok2, why2 = Packs:Load("TestNoApiRegion")
+	C_AddOns.LoadAddOn = function(...) calls = calls + 1; return load(...) end
+	local ok3 = Packs:Load("TestNoApiRegion")
+	T.ok(not ok1 and not ok2 and why1 == "NO_API" and why2 == "NO_API", "NO_API is remembered")
+	T.ok(not ok3 and calls == 0, "and the API coming back later in the session is not retried")
+	C_AddOns.LoadAddOn = load
+	Cleanup("TestNoApiRegion")
+	Travel("Durotar")
+end)
+
+T.run("a folder that loads but registers nothing is reported once (#166)", function()
+	T.eq(next(Packs.empty), nil, "no folder of the download is empty")
+	ADD_ADDON("TestEmptyRegion", { meta = { ["X-AzerothUnspoken-Region"] = "eastern" }, load = function() end })
+	ADD_ADDON("TestEmptyLang", { meta = { ["X-AzerothUnspoken-Language"] = "deDE" }, load = function() end })
+	ADD_ADDON("TestFullRegion", { meta = { ["X-AzerothUnspoken-Region"] = "eastern" }, load = function()
+		AzerothUnspoken:RegisterRegionalPack("eastern", function() return { id = "test_full_eastern" } end)
+	end })
+	Packs:Discover()
+	SENT = {}
+	Travel("Elwynn Forest")
+	T.eq(Packs.status.TestEmptyRegion, "loaded", "the client loaded it")
+	T.eq(Packs.empty.TestEmptyRegion, true, "but it gave nothing")
+	T.eq(Packs.empty.TestFullRegion, nil, "a folder that registers a regional pack is not empty")
+	T.ok(Printed(NS:L("packs_empty", "TestEmptyRegion")), "the user is told")
+	T.ok(not Printed("TestFullRegion"), "nothing is said about the one that works")
+	local says = 0
+	for _, s in ipairs(SENT) do
+		if type(s) == "string" and s:find("TestEmptyRegion", 1, true) then says = says + 1 end
+	end
+	T.eq(says, 1, "once")
+	Travel("Durotar")
+	Travel("Elwynn Forest")
+	says = 0
+	for _, s in ipairs(SENT) do
+		if type(s) == "string" and s:find("TestEmptyRegion", 1, true) then says = says + 1 end
+	end
+	T.eq(says, 1, "still once after another visit")
+	T.ok(Printed("TestEmptyRegion"), "it was printed")
+	-- /au packs shows it
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("packs")
+	T.ok(Printed(NS:L("packs_loaded_empty")), "/au packs says the folder gave no content")
+	-- a language folder that registers nothing
+	SENT = {}
+	local ok, failed = Packs:LoadLanguage("de")
+	T.ok(Packs.empty.TestEmptyLang, "an empty language folder is empty too")
+	T.ok(Printed(NS:L("packs_empty", "TestEmptyLang")), "and reported")
+	-- the English texts of the download register content: never reported
+	T.eq(Packs.empty.AzerothUnspoken_enUS, nil, "the real language folder is not empty")
+	Engine:DropPack("test_full_eastern")
+	Cleanup("TestEmptyRegion", "TestEmptyLang", "TestFullRegion")
+	Packs.reported = {}
+	Travel("Durotar")
+end)

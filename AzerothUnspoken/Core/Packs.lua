@@ -51,6 +51,16 @@ Packs.waiting = nil     -- a step that waits for the end of combat: "language" |
 Packs.pinned = false    -- ActivateAll: every region stays built (tests and tools)
 Packs.stats = { loads = 0, builds = 0, drops = 0, deferred = 0 }
 Packs.reported = {}     -- [message key .. name] = true: each problem is printed once per session
+Packs.attempts = {}     -- [name] = failed LoadAddOn calls this session (#166)
+Packs.empty = {}        -- [name] = true: the folder loaded but registered no content (#166)
+Packs.registrations = 0 -- calls to the NS:Add* / NS:Register* functions so far (see WatchRegistrations)
+
+-- A load that failed for one of these reasons cannot succeed later in the session (the folder is not there, is
+-- disabled, damaged or for another version): it is not tried again. Any other failure (an error raised by the call, a
+-- reason the client gave that is not in the list) gets MAX_ATTEMPTS tries in all.
+Packs.PERMANENT = { MISSING = true, DISABLED = true, NO_API = true, CORRUPT = true, INTERFACE_VERSION = true,
+	DEP_MISSING = true, DEP_DISABLED = true, DEP_CORRUPT = true, DEP_INTERFACE_VERSION = true }
+Packs.MAX_ATTEMPTS = 3
 
 local function InCombat()
 	return Compat.SafeCall("InCombatLockdown") == true or Compat.SafeCall("UnitAffectingCombat", "player") == true
@@ -126,7 +136,31 @@ function Packs:Exists(name)
 	return exists
 end
 
----Loads a folder with C_AddOns.LoadAddOn. Never in combat (the caller defers). Never raises.
+---Counts the calls to the registration functions of the addon (NS:AddTexts, NS:RegisterPack, NS:RegisterRegionalPack,
+---NS:RegisterNPCs...): a folder that registered nothing when it loaded is empty (#166). Wraps the functions that exist
+---now, once; the folders load later.
+function Packs:WatchRegistrations()
+	if self.watching then return end
+	self.watching = true
+	for key, fn in pairs(NS) do
+		if type(key) == "string" and type(fn) == "function" and (key:sub(1, 3) == "Add" or key:sub(1, 8) == "Register") then
+			NS[key] = function(...)
+				Packs.registrations = Packs.registrations + 1
+				return fn(...)
+			end
+		end
+	end
+end
+
+-- a folder that failed and cannot succeed now: permanent reason, or too many tries
+local function GivenUp(self, name)
+	if self.status[name] ~= "failed" then return false end
+	return self.PERMANENT[self.reason[name]] == true or (self.attempts[name] or 0) >= self.MAX_ATTEMPTS
+end
+
+---Loads a folder with C_AddOns.LoadAddOn. Never in combat (the caller defers). Never raises. A failure that cannot
+---change during the session is remembered (no new call on the next region change); a load that works but registers
+---nothing is reported once as empty.
 ---@param name string
 ---@return boolean ok
 ---@return string? reason the client's reason (MISSING, DISABLED, DEP_MISSING, CORRUPT, INTERFACE_VERSION...), or
@@ -136,6 +170,8 @@ function Packs:Load(name)
 		self.status[name] = "loaded"
 		return true
 	end
+	if GivenUp(self, name) then return false, self.reason[name] end
+	local before = self.registrations
 	local state, loaded, reason = Compat.Query("C_AddOns.LoadAddOn", name)
 	if state == Compat.MISSING then
 		reason = "NO_API"
@@ -146,9 +182,14 @@ function Packs:Load(name)
 	else
 		self.status[name], self.reason[name] = "loaded", nil
 		self.stats.loads = self.stats.loads + 1
+		if self.registrations == before then
+			self.empty[name] = true
+			self:Report("packs_empty", name, name)
+		end
 		return true
 	end
 	self.status[name], self.reason[name] = "failed", reason
+	self.attempts[name] = (self.attempts[name] or 0) + 1
 	return false, reason
 end
 
@@ -525,7 +566,7 @@ function Packs:StatusLines()
 		local state = self.status[name]
 		local text
 		if state == "loaded" then
-			text = NS:L("packs_loaded")
+			text = NS:L(self.empty[name] and "packs_loaded_empty" or "packs_loaded")
 		elseif state == "failed" then
 			text = NS:L("packs_failed_short", tostring(self.reason[name]))
 		elseif self:Exists(name) == false then
@@ -540,6 +581,7 @@ function Packs:StatusLines()
 end
 
 function Packs:OnInit()
+	self:WatchRegistrations()
 	self:Discover()
 	self:StartLanguage()
 	NS.EventBus:Subscribe("WORLD_ENTER", "packs", function() Packs:Update() end)
