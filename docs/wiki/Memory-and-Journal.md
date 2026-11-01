@@ -29,7 +29,7 @@ Memory is saved **per character**.
 
 ### The journal window
 
-Open it with `/au journal` or the **Character journal...** button in the [[settings panel|Settings]].
+Open it with `/au journal` or the **Character journal...** button in the [[settings panel|Settings]]. Close it with **Esc**, the **X** at the top right of its title band or **Close**. Drag the window by any free spot to move it; its size follows the **Window scale** setting.
 
 | Tab | Shows |
 |---|---|
@@ -40,7 +40,7 @@ Open it with `/au journal` or the **Character journal...** button in the [[setti
 | **Stories** | your [[personal stories|Story-Arcs]] |
 | **Relationships** and **People met** | a view of your [[relationships|Relationships]] |
 
-The tabs are as wide as their names and take a second line when they do not fit. The open tab is highlighted and underlined. A tab's note, such as *"This session only"*, sits on its own line under the tabs. A row too long for the window is cut: point at it to read it whole in a tooltip.
+The tabs sit under the short introduction, however many lines it takes at your text size. They are as wide as their names and take a second line when they do not fit. The open tab has a full gold edge and a bar under its name, so it does not depend on colour alone. A tab's note, such as *"This session only"*, sits on its own line under the tabs. A row too long for the window is cut: point at it to read it whole in a tooltip.
 
 On each row you can:
 
@@ -49,12 +49,12 @@ On each row you can:
 - **forget** a place (the next visit counts as a first visit again);
 - **clear** a flag.
 
-Deleting, forgetting and clearing cannot be undone, so they ask twice. The first click on **x** turns it into **OK** and the row asks, for example, *"Delete this memory? Click OK:"*. Click **OK** within a few seconds to confirm. Any other click, or closing the window, cancels.
+Deleting, forgetting and clearing cannot be undone, so they ask twice, and their **x** has the red outline of the actions that lose data. The first click on **x** turns it into **OK** and the row asks, for example, *"Delete this memory? Click OK:"*. Click **OK** within a few seconds to confirm. Any other click, or closing the window, cancels.
 
 At the bottom:
 
-- **Export** shows the whole journal as text. Select it and press **Ctrl+C** to copy it. The addon cannot write files, so copying is the way to keep a copy outside the game.
-- **Forget everything** erases the memory. Click it, then **Confirm: forget** within a few seconds. It does not touch relationships.
+- **Export** shows the whole journal as text, in a window of its own that scrolls to the end however long the journal is. Select it and press **Ctrl+C** to copy it; **Esc** or the **X** closes it. The addon cannot write files, so copying is the way to keep a copy outside the game.
+- **Forget everything** (red outline) erases the memory. Click it, then **Confirm: forget** within a few seconds. It does not touch relationships. A second arming always gets its full few seconds, and closing the window cancels.
 - **Close**.
 
 Use **<** and **>** to turn pages.

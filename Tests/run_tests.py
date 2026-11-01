@@ -451,7 +451,22 @@ check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le f
 
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)
 print("\nTEST LUA")
-for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator", "TestWizardConsent",
+# #192: a window is hidden on the line after its CreateFrame (W.Window does it for every window that uses it), so a Build
+# that fails half-way never leaves a frame on screen that blocks the clicks. The windows' files only: the narrator box
+# and the speak button are shown on purpose.
+win_frames_ = 0
+for f_ in ("Widgets.lua", "JournalFrame.lua", "RelationsFrame.lua", "ProfileFrame.lua", "Wizard.lua", "DialogueFrame.lua"):
+    src_ = open(os.path.join(ADDON, "UI", f_), encoding="utf-8").read().split("\n")
+    for i_, line_ in enumerate(src_):
+        m_ = re.match(r'\s*(?:local\s+)?(\w+) = CreateFrame\("\w+", ("AzerothUnspoken\w+"|opts\.name), (UIParent|parent or UIParent)\)', line_)
+        if m_:
+            win_frames_ += 1
+            check(i_ + 1 < len(src_) and src_[i_ + 1].strip().startswith(m_.group(1) + ":Hide()"),
+                  f"{f_}:{i_ + 1}: hidden right after CreateFrame (#192)")
+    if f_ != "Widgets.lua" and f_ != "DialogueFrame.lua":
+        check("W.Window(" in "\n".join(src_), f"{f_}: the window is made by W.Window (#187)")
+check(win_frames_ == 2, f"the named frames of the windows: W.Window and the dialogue window ({win_frames_})")
+for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContext", "TestChatGateway", "TestNarrator", "TestWizardConsent", "TestWindows",
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks"):

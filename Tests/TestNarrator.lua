@@ -561,15 +561,9 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 	Gateway:SetMode("CONFIRM_TO_SEND")
 
 	-- pannello: scorrere le modalità non arriva mai all'automatica
-	local function ButtonStarting(prefix)
-		local found
-		for _, b in ipairs(FindWidgets(function(w) return w.kind == "Button" and w.scripts.OnClick end)) do
-			if (b:GetText() or ""):find(prefix, 1, true) == 1 then found = b end
-		end
-		return found
-	end
 	Gateway:SetMode("PRIVATE")
-	local panelButton = ButtonStarting("Chat: ")
+	-- #187: the control of a row, next to its label
+	local panelButton = NS.SettingsFrame:Row("opt_chatmode").button
 	T.ok(panelButton ~= nil, "riga della modalità chat nel pannello")
 	for _ = 1, 8 do
 		panelButton:Click()
@@ -577,7 +571,7 @@ T.run("#8: l'invio automatico richiede due gesti, da comando, pannello e wizard"
 		T.ok(not NS.db.output.autoPublicSay, "né accende il consenso")
 	end
 	-- riga dedicata: due clic
-	local autoRow = ButtonStarting("Invio automatico")
+	local autoRow = NS.SettingsFrame:Row("opt_auto").button
 	T.ok(autoRow ~= nil, "riga 'Invio automatico'")
 	Gateway:SetMode("CONFIRM_TO_SEND")
 	autoRow:Click()
@@ -821,7 +815,7 @@ T.run("#177: tempo di lettura per carattere UTF-8, velocità e 'riduci il movime
 	NS.db.ui.narrator.reduceMotion = false
 end)
 
-T.run("#177, #179: le nuove righe delle impostazioni e l'aiuto sotto la griglia dei moduli", function()
+T.run("#177, #179, #187: the settings rows, their sections and the help under the last row", function()
 	Reset()
 	NS.db.locale = "en"
 	-- the panel rewrites its labels when it is shown
@@ -829,59 +823,96 @@ T.run("#177, #179: le nuove righe delle impostazioni e l'aiuto sotto la griglia 
 	local panel = panels[#panels]   -- the panel built last is the one in use
 	T.ok(panel ~= nil, "pannello trovato")
 	panel.scripts.OnShow(panel)
-	local function Row(prefix)
-		for _, b in ipairs(panel.children) do
-			if b.kind == "Button" and (b:GetText() or ""):find(prefix, 1, true) == 1 then return b end
-		end
-	end
-	local waits = Row("Proposal waits")
-	T.ok(waits ~= nil, "riga 'Proposal waits'")
+	local function Row(key) return panel.rows[key] end
+	-- #187: a plain label next to its control; the control shows the value only
+	local waits = Row("opt_waits")
+	T.ok(waits ~= nil and waits.label:GetText() == "Proposal waits", "riga 'Proposal waits', with its label as text")
+	T.eq(waits.button:GetText(), "25 s", "the button shows the value")
 	local seen = {}
 	for _ = 1, 4 do
-		waits:Click()
+		waits.button:Click()
 		table.insert(seen, NS.db.chat.pendingSeconds)
 	end
 	T.eq(table.concat(seen, ","), "60,120,0,25", "25, 60, 120 s, fino alla chiusura")
 	NS.db.chat.pendingSeconds = 120
-	waits:Click()
-	T.eq(waits:GetText(), "Proposal waits: until dismissed", "l'etichetta lo dice")
-	local reading = Row("Reading speed")
-	T.ok(reading ~= nil and reading:GetText() == "Reading speed: 14 characters/s", "riga della velocità di lettura")
-	reading:Click()
+	waits.button:Click()
+	T.eq(waits.button:GetText(), "until dismissed", "l'etichetta lo dice")
+	local reading = Row("opt_reading")
+	T.ok(reading ~= nil and reading.button:GetText() == "14 characters/s", "riga della velocità di lettura")
+	reading.button:Click()
 	T.eq(NS.db.ui.narrator.readingSpeed, 18, "più veloce")
-	local motion = Row("Reduce motion")
-	T.ok(motion ~= nil, "riga 'Reduce motion'")
-	motion:Click()
+	local motion = Row("opt_motion")
+	T.ok(motion ~= nil and motion.label:GetText() == "Reduce motion", "riga 'Reduce motion'")
+	motion.button:Click()
 	T.eq(NS.db.ui.narrator.reduceMotion, true, "accesa")
-	motion:Click()
+	motion.button:Click()
 	T.eq(NS.db.ui.narrator.reduceMotion, false, "spenta")
-	T.ok(Row("Background opacity") ~= nil, "l'opacità dice che è dello sfondo")
+	T.eq(Row("opt_alpha").label:GetText(), "Background opacity", "l'opacità dice che è dello sfondo")
+	-- #187: a stepper's value is text, never a button that does nothing
+	for _, key in ipairs({ "opt_intensity", "opt_duration", "opt_alpha", "opt_fontsize", "opt_scale", "opt_dialogue_size", "opt_dialogue_alpha" }) do
+		local r = Row(key)
+		T.ok(r and r.text and r.text.kind == "FontString" and r.minus.kind == "Button" and r.plus.kind == "Button",
+			key .. ": -, the value as text, +")
+	end
+	T.eq(Row("opt_fontsize").text:GetText(), tostring(NS.db.ui.narrator.fontSize), "the stepper shows the value")
+	Row("opt_fontsize").plus:Click()
+	T.eq(Row("opt_fontsize").text:GetText(), tostring(NS.db.ui.narrator.fontSize), "and follows it")
+	Row("opt_fontsize").minus:Click()
 	T.eq(#NS.Config:Validate(NS.db), 0, "valori validi")
 
-	-- #179: the help text is anchored under the last row of the module grid, not at a fixed height
-	local grid = {}
-	for _, b in ipairs(panel.children) do
-		local pt = b.kind == "Button" and b._s.points and b._s.points[1]
-		if pt and pt[1] == "TOPLEFT" and type(pt[2]) == "number" and pt[2] == 16 and pt[3] <= -440 then
-			table.insert(grid, { button = b, y = pt[3] })
+	-- #187: five sections with their headers, in this order
+	local heads = {}
+	for _, h in ipairs(panel.headers) do
+		T.eq(h.fs:GetText(), NS:L(h.key), h.key .. ": the header says its name")
+		table.insert(heads, { key = h.key, y = h.fs._s.points[1][3] })
+	end
+	table.sort(heads, function(a, b) return a.y > b.y end)
+	local order = {}
+	for _, h in ipairs(heads) do table.insert(order, h.key:sub(13)) end
+	T.eq(table.concat(order, ","), "general,chat,narrator,modules,privacy", "the five sections, top to bottom")
+
+	-- no two controls on the same spot, every label left of its control
+	local spots, clash = {}, {}
+	for key, r in pairs(panel.rows) do
+		for _, c in ipairs({ r.button or false, r.minus or false }) do
+			if c then
+				local p = c._s.points[1]
+				local spot = p[2] .. "," .. p[3]
+				if spots[spot] then table.insert(clash, key .. "/" .. spots[spot]) end
+				spots[spot] = key
+				if r.label then T.ok(r.label._s.points[1][2] < p[2], key .. ": the label is left of its control") end
+			end
 		end
 	end
-	table.sort(grid, function(a, b) return a.y < b.y end)
-	T.ok(#grid == 3, "tre righe di moduli: " .. #grid)
-	local help = {}
-	for _, w in ipairs(panel.children) do
-		local pt = w.kind == "FontString" and w._s.points and w._s.points[1]
-		if pt and type(pt[2]) == "table" and pt[2].parent == panel and pt[3] == "BOTTOMLEFT" then table.insert(help, w) end
+	T.eq(table.concat(clash, ";"), "", "no two controls on the same spot")
+
+	-- #179: the help text is under the last row, whatever the number of rows
+	local lowest = 0
+	for _, r in pairs(panel.rows) do
+		local c = r.button or r.minus
+		if c ~= panel.reload then lowest = math.min(lowest, c._s.points[1][3] - 24) end
 	end
-	T.ok(#help == 1, "un testo d'aiuto ancorato sotto un pulsante")
-	T.eq(help[1]._s.points[1][2], grid[1].button, "sotto l'ultima riga della griglia")
-	-- every settings row ends above the module title (-418): fourteen rows of 26
-	for _, b in ipairs(panel.children) do
-		local pt = b.kind == "Button" and b._s.points and b._s.points[1]
-		if pt and pt[1] == "TOPLEFT" and type(pt[2]) == "number" and pt[3] > -410 and pt[3] < -40 then
-			T.ok(pt[3] - 24 >= -418, "riga sopra il titolo dei moduli: " .. tostring(b:GetText()))
-		end
-	end
+	T.ok(panel.help._s.points[1][3] < lowest, "the help is under the last row")
+	T.ok(panel.help:GetText():find(NS:L("chatmode_" .. NS.db.chat.mode .. "_help"), 1, true) ~= nil, "and explains the chat mode")
+	-- #182: the window scale is a setting, and the open windows follow it at once
+	NS.JournalFrame:Open()
+	Row("opt_scale").plus:Click()
+	T.eq(NS.db.ui.windowScale, 1.1, "window scale +10%")
+	T.eq(_G.AzerothUnspokenJournal:GetScale(), 1.1, "#192: the open journal follows the settings at once")
+	for _ = 1, 10 do Row("opt_scale").plus:Click() end
+	T.eq(NS.db.ui.windowScale, 1.5, "at most 150%")
+	for _ = 1, 20 do Row("opt_scale").minus:Click() end
+	T.eq(NS.db.ui.windowScale, 0.8, "at least 80%")
+	T.eq(Row("opt_scale").text:GetText(), "80%", "in words")
+	NS.db.ui.windowScale = 1
+	NS.JournalFrame:Close()
+	-- #192: turning the narrator box off takes the line on screen away
+	Gateway:Propose(Rec("say", "inner", "Una frase breve."), CTX, {})
+	T.ok(frame:IsShown(), "a line on screen")
+	Row("opt_narrator").button:Click()
+	T.ok(not frame:IsShown(), "the narrator box off: the line goes away at once")
+	Row("opt_narrator").button:Click()
+	T.ok(NS.db.output.privateNarrator, "on again")
 	NS.db.locale = "it"
 	NS.db.chat.pendingSeconds = 25
 	NS.db.ui.narrator.readingSpeed = 14

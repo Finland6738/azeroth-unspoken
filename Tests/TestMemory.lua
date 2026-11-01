@@ -1308,12 +1308,13 @@ T.run("diario: schede misurate, nota sotto le schede, righe intere nel suggerime
 				end
 				T.ok(b ~= nil, lang .. ": la scheda " .. u.id .. " c'è, senza segni aggiunti")
 				if b then
+					-- #187: the chosen tab has a full edge and a bar under its label, the others do not
+					T.eq(b.selected == true and b.bar:IsShown(), u.id == t.id, lang .. ": " .. u.id .. " marked only when chosen")
 					T.ok(b:GetWidth() >= #NS:L(u.label) * 6 + 20, lang .. ": " .. u.id .. " larga quanto il testo")
 					T.ok(X(b) >= 16 and X(b) - 16 + b:GetWidth() <= 568, lang .. ": " .. u.id .. " dentro la finestra")
 					tabsBottom = math.max(tabsBottom, Y(b) + 24)
 				end
 			end
-			T.ok(f.tabMark:IsShown(), lang .. ": la scheda scelta è sottolineata")
 			local rowsTop = Y(RowTexts(f)[1]) - 6
 			-- la nota sta su una riga propria, tra le schede e l'elenco
 			if t.note then

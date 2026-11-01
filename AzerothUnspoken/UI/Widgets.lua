@@ -1,5 +1,6 @@
 -- Azeroth Unspoken: piccoli componenti dell'interfaccia, solo con elementi presenti in tutti i client
--- (nessun backdrop, nessun modello di cursore: pulsanti standard e texture colorate).
+-- (nessun backdrop, nessun modello di cursore, nessuna grafica di Blizzard: texture colorate). Ogni finestra nasce da
+-- W.Window (#187): un solo guscio, con bordo, fascia del titolo, pulsante di chiusura, Esc e scala.
 local ADDON, NS = ...
 local W = {}
 NS.Widgets = W
@@ -96,7 +97,7 @@ function W.Slider(parent, width, min, max, onChange)
 	end
 	local thumb = s:CreateTexture(nil, "OVERLAY")
 	thumb:SetSize(8, 16)
-	if thumb.SetColorTexture then thumb:SetColorTexture(0.7, 0.55, 1, 1) end
+	if thumb.SetColorTexture then thumb:SetColorTexture(W.BRAND[1], W.BRAND[2], W.BRAND[3], 1) end
 	s.thumb = thumb
 
 	local function Place()
@@ -148,8 +149,16 @@ function W.Slider(parent, width, min, max, onChange)
 	return s
 end
 
--- posizione salvata come { punto, punto relativo, x, y }
+-- Saved position (#192): the frame's bottom-left corner, read with GetLeft/GetBottom, as { "BOTTOMLEFT", "BOTTOMLEFT",
+-- x, y }. A box dragged by its top would otherwise keep the anchor of a raw GetPoint (TOP or CENTER), and when it grows
+-- it would grow downwards over the action bars. Without a rectangle (not laid out yet) the raw anchor is kept.
+---@param frame table
+---@return table pos
 function W.SavePosition(frame)
+	local left, bottom = frame:GetLeft(), frame:GetBottom()
+	if type(left) == "number" and type(bottom) == "number" and left == left and bottom == bottom then
+		return { "BOTTOMLEFT", "BOTTOMLEFT", math.floor(left + 0.5), math.floor(bottom + 0.5) }
+	end
 	local point, _, relPoint, x, y = frame:GetPoint()
 	return { point, relPoint, x, y }
 end
@@ -163,8 +172,8 @@ function W.RestorePosition(frame, pos, default)
 	end
 end
 
--- The flat look of the first-run guide (#188, the "proposed" design of the UI review): warm dark surfaces, a thin gold
--- edge, flat buttons. Only coloured textures, so it works in every client. Other windows may adopt it later.
+-- The look of every window (#187, the "proposed" design of the UI review): warm dark surfaces, a thin bronze edge, a
+-- title band, flat buttons. Only coloured textures, so it works in every client and uses no Blizzard art.
 W.PALETTE = {
 	surface = { 0.06, 0.05, 0.03 },   -- window
 	band = { 0.09, 0.07, 0.04 },      -- title band
@@ -176,16 +185,26 @@ W.PALETTE = {
 	cardEdge = { 0.27, 0.23, 0.15 },
 	cardOn = { 0.17, 0.14, 0.04 },
 	muted = { 0.3, 0.26, 0.18 },
+	danger = { 0.8, 0.3, 0.24 },      -- an action that loses data: outline and label
+	dangerOn = { 0.45, 0.1, 0.07 },   -- the same action waiting for its confirmation
 }
+-- The one brand violet (#187): the addon's name in chat, the slider thumb, the highlight of a row.
+W.BRAND = { 0.706, 0.549, 1 }
+W.BRAND_HEX = "b48cff"
+W.TITLE_FONT = "GameFontNormalLarge"   -- one title style, in the band of every window
+W.TEXT_FONT = "GameFontHighlight"      -- 12 units: the text of a consent or of a privacy note is never smaller (#182)
+W.BAND = 36                            -- height of the title band
+W.TOP = 46                             -- where the content of a window starts, from the top
 
--- four 1-unit edges around a frame; returns them so that they can be recoloured
-local function Edges(frame, width, height)
+-- four 1-unit edges around a frame, each anchored on two corners so that it follows a later change of size
+local function Edges(frame)
 	local edges = {}
-	for _, e in ipairs({ { "TOPLEFT", "TOPRIGHT", width, 1 }, { "BOTTOMLEFT", "BOTTOMRIGHT", width, 1 },
-		{ "TOPLEFT", "BOTTOMLEFT", 1, height }, { "TOPRIGHT", "BOTTOMRIGHT", 1, height } }) do
+	for _, e in ipairs({ { "TOPLEFT", "TOPRIGHT", true }, { "BOTTOMLEFT", "BOTTOMRIGHT", true },
+		{ "TOPLEFT", "BOTTOMLEFT", false }, { "TOPRIGHT", "BOTTOMRIGHT", false } }) do
 		local t = frame:CreateTexture(nil, "BORDER")
 		t:SetPoint(e[1])
-		t:SetSize(e[3], e[4])
+		t:SetPoint(e[2])
+		if e[3] then t:SetHeight(1) else t:SetWidth(1) end
 		table.insert(edges, t)
 	end
 	return edges
@@ -194,17 +213,19 @@ end
 local function Tint(texture, c, a)
 	if texture.SetColorTexture then texture:SetColorTexture(c[1], c[2], c[3], a or 1) end
 end
+W.Tint = Tint
 
----Window chrome of the flat design: a surface, a gold edge and, with `band` units, a darker title band.
+---Window chrome of the flat design: a surface, a bronze edge and, with `band` units, a darker title band and a rule
+---under it.
 ---@param frame table
 ---@param width number
 ---@param height number
 ---@param band? number height of the title band
----@return table parts { bg, edges, band }
+---@return table parts { bg, edges, band, rule }
 function W.FlatWindow(frame, width, height, band)
 	local P = W.PALETTE
 	local parts = { bg = W.Background(frame, P.surface[1], P.surface[2], P.surface[3], 0.97) }
-	parts.edges = Edges(frame, width, height)
+	parts.edges = Edges(frame)
 	for _, t in ipairs(parts.edges) do Tint(t, P.edge) end
 	if band then
 		parts.band = frame:CreateTexture(nil, "BORDER")
@@ -212,18 +233,26 @@ function W.FlatWindow(frame, width, height, band)
 		parts.band:SetPoint("TOPRIGHT", -1, -1)
 		parts.band:SetHeight(band)
 		Tint(parts.band, P.band)
+		parts.rule = frame:CreateTexture(nil, "BORDER")
+		parts.rule:SetPoint("TOPLEFT", 1, -(band + 1))
+		parts.rule:SetPoint("TOPRIGHT", -1, -(band + 1))
+		parts.rule:SetHeight(1)
+		Tint(parts.rule, P.rule)
 	end
 	return parts
 end
 
----A flat button. kind: "primary" (gold fill), "ghost" (gold outline, the default) or "text" (no box, left aligned).
----`:SetText` and `:GetText` work as on any button.
+---A flat button. kind: "primary" (gold fill), "ghost" (gold outline, the default), "danger" (red outline: an action
+---that loses data; `:SetArmed(true)` fills it while it waits for its confirmation) or "text" (no box, left aligned).
+---`:SetSelected(on)` marks the chosen tab or option with a full gold edge and a bar under the label, never by colour
+---alone (#187). `:SetText`, `:GetText` and `:SetEnabled` work as on any button. `:SetStyle(kind)` changes the kind of a
+---boxed button (a row button that is sometimes an action that loses data).
 ---@param parent table
 ---@param text? string
 ---@param width number
 ---@param height? number
 ---@param onClick? fun(self: table, button: string)
----@param kind? "primary"|"ghost"|"text"
+---@param kind? "primary"|"ghost"|"danger"|"text"
 ---@return table button
 function W.FlatButton(parent, text, width, height, onClick, kind)
 	local P = W.PALETTE
@@ -231,52 +260,90 @@ function W.FlatButton(parent, text, width, height, onClick, kind)
 	height = height or 24
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(width, height)
+	b.style = kind
 	b.bg = W.Background(b, 0, 0, 0, 0)
-	b.edges = kind == "text" and {} or Edges(b, width, height)
+	b.edges = kind == "text" and {} or Edges(b)
+	b.bar = b:CreateTexture(nil, "ARTWORK")   -- the bar under the label of a selected tab or option
+	b.bar:SetPoint("BOTTOMLEFT", 4, 2)
+	b.bar:SetPoint("BOTTOMRIGHT", -4, 2)
+	b.bar:SetHeight(2)
+	Tint(b.bar, P.gold)
+	b.bar:Hide()
 	b.label = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	if kind == "text" then
 		b.label:SetPoint("LEFT", 2, 0)
 	else
 		b.label:SetPoint("CENTER", 0, 0)
 	end
-	local function Paint(hover)
+	function b:Paint()
+		local off = self.disabled == true
+		local hover = self.hover and not off
+		local dim = off and 0.45 or 1
+		local kind = self.style
 		if kind == "primary" then
-			Tint(b.bg, hover and { 0.58, 0.44, 0.08 } or { 0.45, 0.34, 0.06 }, 1)
-			for _, t in ipairs(b.edges) do Tint(t, P.goldDim) end
-			b.label:SetTextColor(1, 0.95, 0.77)
+			Tint(self.bg, hover and { 0.58, 0.44, 0.08 } or { 0.45, 0.34, 0.06 }, off and 0.5 or 1)
+			for _, t in ipairs(self.edges) do Tint(t, P.goldDim, dim) end
+			self.label:SetTextColor(1, 0.95, 0.77, dim)
+		elseif kind == "danger" then
+			Tint(self.bg, self.armed and P.dangerOn or { 0.3, 0.08, 0.05 }, self.armed and 1 or (hover and 0.8 or 0))
+			for _, t in ipairs(self.edges) do Tint(t, P.danger, off and 0.4 or (self.armed and 1 or 0.8)) end
+			self.label:SetTextColor(1, self.armed and 0.85 or 0.62, self.armed and 0.8 or 0.55, dim)
 		elseif kind == "ghost" then
-			Tint(b.bg, hover and { 0.2, 0.16, 0.06 } or { 0, 0, 0 }, hover and 1 or 0)
-			for _, t in ipairs(b.edges) do Tint(t, P.goldDim, hover and 1 or 0.55) end
-			b.label:SetTextColor(0.9, 0.85, 0.72)
+			local on = self.selected == true
+			Tint(self.bg, on and P.cardOn or (hover and { 0.2, 0.16, 0.06 } or { 0, 0, 0 }), (on or hover) and 1 or 0)
+			for _, t in ipairs(self.edges) do Tint(t, on and P.gold or P.goldDim, off and 0.3 or ((on or hover) and 1 or 0.55)) end
+			if on then self.label:SetTextColor(1, 1, 1, 1) else self.label:SetTextColor(0.9, 0.85, 0.72, dim) end
 		else
-			b.label:SetTextColor(hover and 1 or 0.72, hover and 0.82 or 0.66, hover and 0 or 0.6)
+			self.label:SetTextColor(hover and 1 or 0.72, hover and 0.82 or 0.66, hover and 0 or 0.6, dim)
 		end
+		self.bar:SetShown(self.selected == true)
 	end
 	function b:SetText(t) self.label:SetText(t or "") end
 	function b:GetText() return self.label:GetText() end
+	function b:SetSelected(on)
+		self.selected = on == true
+		self:Paint()
+	end
+	function b:SetArmed(on)
+		self.armed = on == true
+		self:Paint()
+	end
+	function b:SetStyle(k)
+		if self.style == "text" or k == "text" then return end
+		self.style = k
+		self:Paint()
+	end
+	local enable = b.SetEnabled
+	function b:SetEnabled(on)
+		if enable then enable(self, on) end
+		self.disabled = not on
+		self:Paint()
+	end
 	b:SetText(text)
 	if onClick then b:SetScript("OnClick", onClick) end
 	-- hooks, so a tooltip set later with W.Tooltip does not replace the hover colour
-	b:HookScript("OnEnter", function() Paint(true) end)
-	b:HookScript("OnLeave", function() Paint(false) end)
-	Paint(false)
+	b:HookScript("OnEnter", function(self) self.hover = true; self:Paint() end)
+	b:HookScript("OnLeave", function(self) self.hover = false; self:Paint() end)
+	b:Paint()
 	return b
 end
 
 -- Card (#188): a clickable panel with a title, a description inside it and a marker; the choice is shown with a gold
 -- border and a filled marker, never by colour alone (the description can also say it in words). Only coloured
 -- textures, like everything here. `:SetCard(title, sub, on, tag)` redraws; `:GetText()` is the title.
+-- `font` is the description's font: W.TEXT_FONT for the text of a consent (#182).
 ---@param parent table
 ---@param width number
 ---@param height number
 ---@param onClick? fun(self: table, button: string)
+---@param font? string
 ---@return table card
-function W.Card(parent, width, height, onClick)
+function W.Card(parent, width, height, onClick, font)
 	local P = W.PALETTE
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(width, height)
 	b.bg = W.Background(b, P.card[1], P.card[2], P.card[3], 1)
-	b.edges = Edges(b, width, height)
+	b.edges = Edges(b)
 	b.mark = b:CreateTexture(nil, "ARTWORK")
 	b.mark:SetSize(10, 10)
 	b.mark:SetPoint("TOPRIGHT", -12, -12)
@@ -284,7 +351,7 @@ function W.Card(parent, width, height, onClick)
 	b.title:SetPoint("TOPLEFT", 12, -8)
 	b.title:SetPoint("TOPRIGHT", -30, -8)
 	b.title:SetJustifyH("LEFT")
-	b.sub = b:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+	b.sub = b:CreateFontString(nil, "OVERLAY", font or "GameFontHighlightSmall")
 	b.sub:SetPoint("TOPLEFT", b.title, "BOTTOMLEFT", 0, -4)
 	b.sub:SetWidth(width - 24)
 	b.sub:SetJustifyH("LEFT")
@@ -306,4 +373,131 @@ function W.Card(parent, width, height, onClick)
 	end
 	b:SetCard(nil, nil, false)
 	return b
+end
+
+---------------------------------------------------------------------------
+-- Windows (#174, #187, #182, #192)
+---------------------------------------------------------------------------
+W.windows = {}   -- every window made by W.Window, in the order it was made
+
+---The scale of the addon's windows (#182): ui.windowScale, 0.8-1.5.
+---@return number
+function W.WindowScale()
+	local s = NS.db and NS.db.ui and tonumber(NS.db.ui.windowScale)
+	if not s or s ~= s then return 1 end
+	return math.max(0.8, math.min(1.5, s))
+end
+
+---@param frame table
+function W.ApplyScale(frame)
+	if frame and frame.SetScale then frame:SetScale(W.WindowScale()) end
+end
+
+-- the open windows follow a change of the settings (#192): scale, title, then their own redraw
+local function FollowSettings()
+	for _, f in ipairs(W.windows) do
+		if f:IsShown() then
+			W.ApplyScale(f)
+			if f.titleKey then f.title:SetText(NS:L(f.titleKey)) end
+			if f.auRefresh then
+				local ok, err = pcall(f.auRefresh)
+				if not ok and NS.Diagnostics then NS.Diagnostics:Error("window:" .. tostring(f.auName), tostring(err)) end
+			end
+		end
+	end
+end
+W.FollowSettings = FollowSettings
+
+---Lets Esc close a named window (#174): the client hides every frame named in UISpecialFrames when Esc is pressed,
+---before it opens the game menu. Never for the NPC dialogue window (ADR 0020).
+---@param name string
+function W.CloseOnEscape(name)
+	local list = type(UISpecialFrames) == "table" and UISpecialFrames or nil
+	if not list or type(name) ~= "string" then return end
+	for _, n in ipairs(list) do if n == name then return end end
+	table.insert(list, name)
+end
+
+---One window shell for the addon (#187): hidden at once (#192), movable, a surface with a bronze edge, a title band
+---with the title and a close box, Esc (#174), the window scale (#182) and a redraw when the settings change (#192).
+---opts: name (the global name, needed for Esc), onClose (what the close box does; default: hide; Esc always hides, so a
+---window that must do more on Esc does it in OnHide), refresh (the window's redraw, called when the settings change
+---while it is open), noEscape, point ({ point, x, y } on UIParent). The content starts W.TOP units from the top.
+---@param parent? table
+---@param width number
+---@param height number
+---@param title? string key of the title
+---@param opts? { name?: string, onClose?: fun(), refresh?: fun(), noEscape?: boolean, point?: table }
+---@return table frame with .title, .closeBox, .chrome
+function W.Window(parent, width, height, title, opts)
+	opts = opts or {}
+	local f = CreateFrame("Frame", opts.name, parent or UIParent)
+	f:Hide()   -- #192: hidden before anything else can fail, so a broken build never leaves a frame that blocks clicks
+	f.auName = opts.name
+	f:SetSize(width, height)
+	local pt = opts.point or { "CENTER", 0, 0 }
+	f:SetPoint(pt[1], pt[2], pt[3])
+	f:SetMovable(true)
+	f:EnableMouse(true)
+	f:SetClampedToScreen(true)
+	f:RegisterForDrag("LeftButton")
+	f:SetScript("OnDragStart", f.StartMoving)
+	f:SetScript("OnDragStop", f.StopMovingOrSizing)
+	f.chrome = W.FlatWindow(f, width, height, W.BAND)
+
+	f.titleKey = title
+	f.title = f:CreateFontString(nil, "ARTWORK", W.TITLE_FONT)
+	f.title:SetPoint("TOPLEFT", 16, -11)
+	f.title:SetWidth(width - 72)
+	f.title:SetJustifyH("LEFT")
+	if f.title.SetWordWrap then f.title:SetWordWrap(false) end
+	local close = opts.onClose or function() f:Hide() end
+	f.closeBox = W.FlatButton(f, "X", 24, 22, function() close() end)
+	f.closeBox:SetPoint("TOPRIGHT", -8, -7)
+	W.Tooltip(f.closeBox, function() return NS:L("win_close_tip") end)
+
+	if opts.name and not opts.noEscape then W.CloseOnEscape(opts.name) end
+	f.auRefresh = opts.refresh
+	f:HookScript("OnShow", function(self)
+		W.ApplyScale(self)
+		if self.titleKey then self.title:SetText(NS:L(self.titleKey)) end
+	end)
+	table.insert(W.windows, f)
+	if not W.following and NS.Config and NS.Config.OnChange then
+		W.following = true
+		NS.Config:OnChange(FollowSettings)
+	end
+	return f
+end
+
+-- Two-click confirmation (#190): `:Arm(key)` starts one with a token of its own, `:Disarm()` ends it; the timer ends
+-- only the arming that started it, never a newer one. Windows call `:Disarm()` in OnHide, so nothing stays armed.
+---@param seconds number
+---@param onExpire? fun() the redraw when an arming expires
+---@return table confirm
+function W.Confirm(seconds, onExpire)
+	local c = { armed = nil, token = 0 }
+	---@param key? any what is armed (default: true)
+	function c:Arm(key)
+		self.token = self.token + 1
+		local token = self.token
+		if key == nil then key = true end
+		self.armed = key
+		NS.Compat.After(seconds, function()
+			if self.token ~= token then return end
+			self.armed = nil
+			if onExpire then onExpire() end
+		end)
+	end
+	function c:Disarm()
+		self.token = self.token + 1
+		self.armed = nil
+	end
+	---@param key? any nil: is anything armed
+	---@return boolean
+	function c:Is(key)
+		if key == nil then return self.armed ~= nil end
+		return self.armed == key
+	end
+	return c
 end

@@ -72,6 +72,7 @@ Config.CHAT_LIMITS = {
 ---@field dialogue AUDialogueSettings finestra dei dialoghi ambientali (S8)
 ---@field buttonPos? table
 ---@field buttonOpensEditor boolean il clic sul pulsante "pronuncia" apre l'editor invece di inviare (#189)
+---@field windowScale number scale of the addon's windows and of the NPC dialogue window, 0.8-1.5 (#182)
 
 ---@class AUOutputSettings
 ---@field privateNarrator boolean riquadro del narratore (false: ripiego sulla chat locale)
@@ -193,6 +194,9 @@ Config.defaults = {
 			alpha = 0.92,        -- opacità dello sfondo, 0.3-1
 			locked = false,      -- true: la finestra non si sposta
 		},
+		-- #182: the scale of the journal, export, relationships, character soul, setup guide and NPC dialogue windows
+		-- (SetScale); the narrator box has its own text size
+		windowScale = 1,
 	},
 }
 
@@ -235,6 +239,7 @@ Config.rules = {
 	["ui.narrator.historySize"] = { min = 5, max = 100, integer = true },
 	["ui.dialogue.fontSize"] = { min = 10, max = 24, integer = true },
 	["ui.dialogue.alpha"] = { min = 0.3, max = 1 },
+	["ui.windowScale"] = { min = 0.8, max = 1.5 },
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 }
@@ -622,5 +627,30 @@ function Config:Set(path, value)
 	if path == "locale" then value = self:NormalizeLocale(value) end
 	if value == nil then return false end
 	parent[key] = value
+	self:Changed(path)
 	return true, value
+end
+
+---------------------------------------------------------------------------
+-- "Settings changed" (#192): one notice that every open window follows (UI/Widgets.lua W.Window, the settings panel,
+-- the narrator and the dialogue window). Config:Set sends it; code that writes NS.db directly calls Config:Changed.
+---------------------------------------------------------------------------
+Config.listeners = {}
+local notifying = false
+
+---@param fn fun(path?: string)
+function Config:OnChange(fn)
+	table.insert(self.listeners, fn)
+end
+
+---Tells the open windows that a setting changed. A listener that changes a setting does not start another round.
+---@param path? string the setting, when one is known
+function Config:Changed(path)
+	if notifying then return end
+	notifying = true
+	for _, fn in ipairs(self.listeners) do
+		local ok, err = pcall(fn, path)
+		if not ok and NS.Diagnostics then NS.Diagnostics:Error("config:changed", tostring(err)) end
+	end
+	notifying = false
 end

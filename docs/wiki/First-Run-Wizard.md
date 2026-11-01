@@ -5,8 +5,9 @@ The first time you enter the world with Azeroth Unspoken installed, a short guid
 ## How to use it
 
 - **Next** goes to the next step, **Back** to the previous one, and **Finish** (on the last step) closes the guide. **Enter** is Next.
-- **Every step can be skipped.** **Skip - keep the defaults** (and the **x** in the corner, and **Esc**) closes the guide at once and keeps what you have chosen so far; everything else stays at its default. The defaults are the safe ones: the narrator stays private and nothing goes to chat.
-- The dots under the title show where you are. You can drag the window to move it.
+- **Every step can be skipped.** **Skip - keep the defaults** (and the **X** at the top right of the title band, and **Esc**) closes the guide at once and keeps what you have chosen so far; everything else stays at its default. The defaults are the safe ones: the narrator stays private and nothing goes to chat.
+- The dots under the title show where you are. You can drag the window to move it. It has the same frame as every other window of the addon, and its size follows the **Window scale** setting.
+- The texts you read before giving a consent (what may reach chat, reading others' Total RP 3, the social note) are in the normal text size, not the small one.
 - It never covers the narrator box: when the narrator needs room (for the test line, for a proposal) the box steps aside for as long as the guide is open.
 - Reopen it at any time with `/au wizard`, or with the **Reopen the setup guide** button in the [[settings panel|Settings]].
 

@@ -4,9 +4,9 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 
 ## Where settings live
 
-- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. Most rows are buttons: click to switch or cycle a value; rows with **-** and **+** change a number.
+- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has five sections under their headers: **General**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. Each row is a name, with its control next to it: a button that shows the value (click to switch or cycle it), or **-**, the value and **+** for a number. A row of buttons at the end of General and Narrator opens a window or acts once.
 - **Commands.** Many settings also have a command. See the [[Commands Reference|Commands]].
-- **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices.
+- **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices. Every window has a close box (**X**) at the top right and closes with **Esc**; the NPC dialogue window is the exception, because Esc also closes the game's own NPC windows (see [[NPC Dialogues|NPC-Dialogues]]).
 - **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.
 
 **Per account or per character?** General settings (everything on this page unless noted) are shared by all characters on your account. Personality, memories, relationships and stories belong to **each character**; the only exception is the optional **Share with the account** list of relationships (off by default), which keeps your choices about people in the account.
@@ -22,13 +22,12 @@ Changes take effect at once. There is no Save button.
 | Intensity | 50 | **Intensity** (- / + by 10) | `/au intensity <0-100>` | How often the narrator speaks. 0 = silent for spontaneous events. |
 | Style depth | Literary | **Style depth** (click to cycle) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
 | Pause between lines | 45 s | **Pause between lines** (cycles 15, 30, 45, 60, 90, 120, 180) | `/au cooldown <0-3600>` | Minimum pause between two spontaneous lines. |
-| Speak button | shown | **'Speak' button** | `/au button` | Shows or hides the speak button. `/au button editor on` makes a click open the editor instead of sending (see [[Chat Gateway]]). |
-| Narrator pause | not paused | **Pause the narrator** / **Resume the narrator** | `/au pause` | Immediate pause, for this session only. |
+| Window scale | 100% | **Window scale** (- / + by 10%) | — | 80–150%. The size of the journal, export, relationships, character soul, setup guide and NPC dialogue windows. Open windows follow at once. The narrator box has its own **Text size**. |
 | Event probability | per event, see below | — | `/au chance <event> <0-100>` | Chance that an event produces a line. |
 | Ignored spells | none | — | `/au ignore <spell>` | Spells that never produce lines. |
 | Phrase packs on/off | all on | — | `/au pack <id> on\|off` | See [[Phrase Packs|Phrase-Packs]]. |
 
-The panel also has **Reopen the setup guide**.
+General ends with buttons that open the **Character journal...**, **Relationships...** and **Character soul...** windows, and **Reopen the setup guide**.
 
 See [[Intensity and Prose Depth|Intensity-and-Depth]] for how intensity, depth and the pause work together.
 
@@ -67,8 +66,9 @@ Events added by phrase packs have their own default (30% if the pack sets none).
 | Setting | Default | Panel row | Command | What it does |
 |---|---|---|---|---|
 | Chat mode | Private narrator only | **Chat** (cycles private, preview, confirm) | `/au mode private\|preview\|confirm` | What may reach chat. |
-| Automatic sending | off | **Automatic sending** (a confirmation dialog, then **Turn on**; or click again after a couple of seconds) | `/au mode auto` (twice, a few seconds apart) | Lets some lines go out by themselves, in your character's name, seen by everyone nearby. The row says *off, read first*, then *off, confirm*, then *on*. |
+| Automatic sending | off | **Automatic sending**, in the **Privacy** section (a confirmation dialog, then **Turn on**; or click again after a couple of seconds) | `/au mode auto` (twice, a few seconds apart) | Lets some lines go out by themselves, in your character's name, seen by everyone nearby. The row says *off, read first*, then *off, confirm*, then *on*. |
 | Default channel | automatic | **Default channel** (click to cycle) | `/au channel <channel>` | Where proposals go. Automatic = `/say` for your character's words, `/emote` for the narrator's. |
+| Speak button | shown | **'Speak' button** | `/au button` | Shows or hides the speak button. `/au button editor on` makes a click open the editor instead of sending (see [[Chat Gateway]]). |
 | Proposal waits | 25 s | **Proposal waits** (click to cycle: 25, 60, 120 s, until dismissed) | — | How long a proposal waits before it expires. The time stops while the mouse is over the narrator box and while you edit the proposal. *Until dismissed*: it waits until you send or discard it. |
 | Chat proposals module | on | module **Chat proposals** | — | Off: the same as private mode. |
 
@@ -94,10 +94,12 @@ See [[Chat Gateway]].
 | Text size | 14 | **Text size** (- / + by 1) | 10–28. The voice label is 12 or more. |
 | Reduce motion | off | **Reduce motion** | On: the box appears and disappears without fading. |
 | Position locked | no | **Position locked** | Locked: the box cannot be dragged. |
-| Position | near the bottom centre | **Move the box back to the middle** | Drag the box to move it. `/au narrator reset` also resets it. |
+| Position | near the bottom centre | **Move the box back to the middle** | Drag the box to move it. `/au narrator reset` also resets it. The place is saved by the box's bottom-left corner, so a longer line makes the box grow upwards, never down over the action bars. |
 | History | 30 lines | **History** (opens the list) | This session only. |
+| NPC dialogue text size | 13 | **NPC dialogue text size** (- / + by 1) | 10–24. The text of the [[NPC dialogue window|NPC-Dialogues]]: its title, line and answers are laid out again for the new size. |
+| NPC dialogue opacity | 92% | **NPC dialogue opacity** (- / + by 5%) | 30–100%. The background of the NPC dialogue window. |
 
-The panel also has **Try the narrator**, which shows a sample line. See [[The Narrator and the Four Voices|The-Narrator]].
+The Narrator section ends with **Pause the narrator** (**Resume the narrator** while paused; also `/au pause`, for this session only), **Try the narrator**, which shows a sample line, **History** and **Move the box back to the middle**. Turning the **Narrator box** or the **Addon** off takes the line on screen away at once. See [[The Narrator and the Four Voices|The-Narrator]].
 
 ## Modules
 
@@ -116,7 +118,7 @@ Modules are big switches for whole features. All are on by default, except Audio
 | **Chat proposals** | on | the [[Chat Gateway]]; off = private only |
 | **Audio** `*` | off | not active yet: a placeholder |
 
-Modules marked `*` do nothing in this version.
+Modules marked `*` do nothing in this version. In the panel each module is a name and an **on**/**off** button; a module that is on has a full gold edge and a bar under its state.
 
 ### Presets
 
@@ -129,7 +131,9 @@ A preset sets several modules at once. Choose one in the wizard. Changing a sing
 | **Narrative world** | off | on | on | on | on | off | off |
 | **Social RP** | on | off | off | on | on | off | on |
 
-## Total RP 3
+## Privacy and Total RP 3
+
+The panel's **Privacy** section has the three choices about what may leave your screen or be read from others: **Automatic sending** (see [Chat](#chat)), **Read others' Total RP 3** and **Name from Total RP 3**. Under them, in the normal text size, the panel explains the chat mode you chose and any consent that waits for something.
 
 | Setting | Default | Where | What it does |
 |---|---|---|---|
@@ -171,7 +175,7 @@ The window opens from the panel button **Relationships...** or `/au relationship
 |---|---|---|---|
 | Automatic offer | on | `/au talk offer on\|off` | The dialogue button appears by itself when you open a vendor, flight or training window, or talk to a known innkeeper. |
 
-The dialogue window can be dragged. See [[NPC Dialogues|NPC-Dialogues]].
+The dialogue window can be dragged. Its text size, opacity and scale are in the panel (see [Narrator box](#narrator-box) and [General](#general)). See [[NPC Dialogues|NPC-Dialogues]].
 
 ## Stories (per character, except the maximum)
 
