@@ -1310,44 +1310,71 @@ A LoadOnDemand folder that the client loads but that registers nothing (it never
 a session (missing, disabled, corrupt, wrong interface version) is tried once, not on every continent change.
 
 A **regional pack** is a folder of rules (region, no language) and one folder of texts per language (region and
-language). The files do not register their tables directly: they register **builders**, functions that return them.
-A builder belongs to an **area** or to the whole **region**: the base addon runs the builders of the area the
-character is in (and those of its region) when it arrives, drops their rules when it leaves, and runs them again on
-the way back (WoW cannot unload an addon, so the folder itself stays loaded until `/reload`):
+language). The files do not register their tables directly: they give their entries as a **source**, Lua source in a
+string, or as a **builder**, a function that returns the tables. A source or a builder belongs to an **area** or to the
+whole **region**: the base addon builds the area the character is in (and its region) when it arrives, drops its rules
+when it leaves, and builds it again on the way back (WoW cannot unload an addon, so the folder itself stays loaded
+until `/reload`). The source is the form of the download (ADR 0049): what a visited area leaves in memory is its source,
+kept as small encoded pieces, instead of compiled code that weighs as much as the built rules.
 
 <!-- test -->
 ```lua
 -- AzerothUnspoken_Nani_Kalimdor/Rules.lua (## X-AzerothUnspoken-Region: kalimdor); built only in the area durotar
-AzerothUnspoken:RegisterRegionalPack("durotar", function()
+AzerothUnspoken:RegisterRegionalPack("durotar", {
+    id = "nani_kalimdor",
+    languages = { "itIT", "enUS" },
+}, [==[
+    ["nanir.zone.01"] = { event = "zone", speaker = "inner", styles = { "intimate" }, conditions = { zone = "Durotar" } },
+]==])
+-- AzerothUnspoken_Nani_Kalimdor_enUS/Texts.lua (## X-AzerothUnspoken-Region: kalimdor and Language: enUS)
+AzerothUnspoken:RegisterRegionalTexts("durotar", "enUS", "nani_kalimdor", [==[
+    ["nanir.zone.01"] = { "Red dust, and not one stone that remembers a dwarf." },
+]==])
+-- AzerothUnspoken_Nani_Kalimdor_itIT/Texts.lua (## X-AzerothUnspoken-Region: kalimdor and Language: itIT)
+AzerothUnspoken:RegisterRegionalTexts("durotar", "itIT", "nani_kalimdor", [==[
+    ["nanir.zone.01"] = { "Polvere rossa, e nemmeno una pietra che ricordi un nano." },
+]==])
+```
+
+The same pack with builders (the form before C0b, still accepted; fine for a small pack, but its compiled code stays in
+memory until `/reload`):
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterRegionalPack("mulgore", function()
     return {
-        id = "nani_kalimdor",
-        languages = { "itIT", "enUS" },
+        id = "nani_mulgore",
+        languages = { "enUS" },
         registry = {
-            ["nanir.zone.01"] = { event = "zone", speaker = "inner", styles = { "intimate" }, conditions = { zone = "Durotar" } },
+            ["nanir.zone.02"] = { event = "zone", speaker = "inner", styles = { "intimate" }, conditions = { zone = "Mulgore" } },
         },
     }
 end)
--- AzerothUnspoken_Nani_Kalimdor_enUS/Texts.lua (## X-AzerothUnspoken-Region: kalimdor and Language: enUS)
-AzerothUnspoken:RegisterRegionalTexts("durotar", "enUS", "nani_kalimdor", function()
-    return { ["nanir.zone.01"] = { "Red dust, and not one stone that remembers a dwarf." } }
-end)
--- AzerothUnspoken_Nani_Kalimdor_itIT/Texts.lua (## X-AzerothUnspoken-Region: kalimdor and Language: itIT)
-AzerothUnspoken:RegisterRegionalTexts("durotar", "itIT", "nani_kalimdor", function()
-    return { ["nanir.zone.01"] = { "Polvere rossa, e nemmeno una pietra che ricordi un nano." } }
+AzerothUnspoken:RegisterRegionalTexts("mulgore", "enUS", "nani_mulgore", function()
+    return { ["nanir.zone.02"] = { "Grass to the knees, and the wind that never stops." } }
 end)
 ```
 
-- `RegisterRegionalPack(key, builder)`: the key is an **area** (`durotar`, `elwynnforest`: built only there) or a
+- `RegisterRegionalPack(key, pack, source)` or `RegisterRegionalPack(key, builder)`: the key is an **area** (`durotar`, `elwynnforest`: built only there) or a
   **continent** (`kalimdor`, `eastern`: built anywhere on it, for the few lines that name places all over it). The
   area of a zone is the lower-case letters of its English name (`Elwynn Forest` is `elwynnforest`), unless
   `Data/Places.lua` gives it another `area`: a capital shares the area of the zone around it (`Orgrimmar` is in
   `durotar`, `Stormwind City` in `elwynnforest`, `Thunder Bluff` in `mulgore`, `Undercity` in `tirisfalglades`,
-  `Ironforge` in `dunmorogh`, `Darnassus` in `teldrassil`). The builder returns a v2 pack (`id`, `registry`, optional
-  `languages`, `frames`, `vocab`); its `id` must be unique. `RegisterRegionalTexts(key, language, packId, builder)`:
-  the same key; the builder returns `{ [id] = variants }`, like `AddTexts`; `packId` is the pack of the rules (the
-  texts then cost the least memory).
+  `Ironforge` in `dunmorogh`, `Darnassus` in `teldrassil`). With a source, `pack` is a v2 pack without its registry
+  (`id`, optional `name`, `languages` and declarations) and `source` holds the entries of the registry, one
+  `["id"] = { ... },` after the other, nothing else (comments between them are fine); with a builder, the function
+  returns the whole v2 pack (`id`, `registry`, optional `languages`, `frames`, `vocab`). The `id` must be unique.
+  `RegisterRegionalTexts(key, language, packId, source)` (or `builder`): the same key; the source holds
+  `["id"] = { variants },` entries (the builder returns `{ [id] = variants }`, like `AddTexts`); `packId` is the pack of
+  the rules (the texts then cost the least memory). A source may use any level of long brackets (`[[`, `[==[`) that its
+  texts do not contain; a source with a syntax error is reported in `/au debug` and the entries before it still load.
 - An area is built when the character enters one of its zones, outside combat, after the area left has been dropped;
-  an instance or a zone the data does not know keeps the area that is built. Subzones never change it.
+  an instance or a zone the data does not know keeps the area that is built. Subzones never change it. The work is
+  spread over frames (a few milliseconds each, never in combat): the area's lines start once it is built whole, and
+  the lines that hold everywhere speak meanwhile.
+- What visited areas keep has a bound (`Packs.KEEP_KB`, 32 MB of sources): past it, the sources of the areas built least
+  recently are let go, and those areas have no regional lines until `/reload`. `/au packs` shows what is kept and what
+  was let go. A builder function is never let go (its code cannot be).
 - Put in a regional pack only what is bound to its area: rules with `zone`, `subzone` or `place` conditions of the
   zones of that area (a line outside them would be built and never said). Generic lines stay in a language pack or in an ordinary pack, available everywhere. Races, classes,
   weather and situations are conditions, never a pack of their own.
@@ -1362,7 +1389,8 @@ The base folders and the regional folders are read and written by the authoring 
 tool outside the game: it imports them, and writes the **approved** content back. The format described in this guide does
 not change, and an external pack does not need the archive. To stay readable by it, a base or regional file keeps the shape
 shown above: one `RegisterPack` (or `RegisterRegionalPack`) whose `registry` is a literal table of `["id"] = { ... }`, and
-one `AddTexts` (or `RegisterRegionalTexts`) per language file with literal variants. The Story Arcs and the NPC Alive
+one `AddTexts` (or `RegisterRegionalTexts`) per language file with literal variants; a regional file may give its entries
+as a source (the form of the download), whose entries the archive reads and writes inside the string. The Story Arcs and the NPC Alive
 scripts of the base are read the same way (#143): `RegisterArcs({ pack = …, arcs = { … } })` in `Data/Arcs.lua`,
 `RegisterDialogues({ pack = …, scripts = { … } })` in `Data/Dialogues.lua` and `AddArcTexts(lang, { … }, packId)` in the
 language folders, each with literal tables. A file that computes its rules in code (a helper function, a loop) still

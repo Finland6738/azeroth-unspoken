@@ -4,7 +4,11 @@ A *rules file* holds one `NS:RegisterPack({ ... registry = { ["id"] = { rule }, 
 `AU:RegisterRegionalPack(key, function() return { ... } end)` (regional: the key is an area, "durotar", or the
 continent, ADR 0048). A *texts file* holds one
 `NS:AddTexts(lang, { ["id"] = { variants } }, packId)` or one `AU:RegisterRegionalTexts(region, lang, packId, function()
-return { ... } end)`. Everything else in the file (header comments, the pack's name, other calls) is kept verbatim.
+return { ... } end)`. C0b (ADR 0049): a regional file may give its entries as a source instead,
+`AU:RegisterRegionalPack(key, { id = ..., name = ... }, [==[ ["id"] = { rule }, ... ]==])` and
+`AU:RegisterRegionalTexts(key, lang, packId, [==[ ["id"] = { variants }, ... ]==])` (the form of the download): the
+entries are read inside the string, which plays the part of the table's braces. Everything else in the file (header
+comments, the pack's name, other calls) is kept verbatim.
 
 A file is read as `prelude` + chunks + `epilogue`. A chunk is a *gap* (blank lines and comments between entries) or an
 *entry* (`["id"] = value,`, its exact source). Writing a file back is the concatenation of its parts, so a file that
@@ -143,6 +147,24 @@ def _parser(src):
     return p
 
 
+def _source_table(p):
+    """C0b (ADR 0049): the entries of a regional source, `[==[ ["id"] = { ... }, ... ]==]`, read as the fields of a table
+    whose braces are the brackets of the string: the prelude ends with `[==[`, the epilogue starts with `]==]`, and every
+    entry keeps its exact span in the file."""
+    kind, _, start, end = p.peek()
+    m = re.match(r"\[(=*)\[", p.src[start:end]) if kind == "string" else None
+    if not m:
+        raise Unsupported("expected the source of the entries at %d" % start)
+    p.take()
+    inner_start, inner_end = start + len(m.group(0)), end - len(m.group(1)) - 2
+    tokens = [("punct", "{", inner_start - 1, inner_start)]
+    tokens += [(k, t, s + inner_start, e + inner_start) for k, t, s, e in lualit.tokenize(p.src[inner_start:inner_end])]
+    tokens.append(("punct", "}", inner_end, inner_end + 1))
+    sub = lualit.Parser(p.src, tokens)
+    sub.env = p.env
+    return sub.table()
+
+
 def parse_rules(path, src, region=None):
     """A rules file. Raises `Unsupported` when the rules are computed by code."""
     p = _parser(src)
@@ -157,17 +179,24 @@ def parse_rules(path, src, region=None):
             area = key
         else:
             area = None
-        if not p.skip_to("return"):
+        p.expect(",")
+        # C0b: the pack without its registry, then the registry entries as a source (or, before, a builder function)
+        source = p.peek()[1] == "{"
+        if not source and not p.skip_to("return"):
             raise Unsupported("no return in the regional builder")
     else:
         p.expect("(")
+        source = False
     pack = p.table()
     registry = None
+    if source:
+        p.expect(",")
+        registry = _source_table(p)
     sf = SourceFile(path, "rules", "", "")
     sf.region = region
     sf.area = area if region else None
     for f in pack.fields:
-        if f.key == "registry" and isinstance(f.value, lualit.Table):
+        if f.key == "registry" and isinstance(f.value, lualit.Table) and not source:
             registry = f.value
         elif f.key in ("id", "name") and isinstance(f.value, str):
             setattr(sf, "pack_id" if f.key == "id" else "pack_name", f.value)
@@ -193,9 +222,13 @@ def parse_texts(path, src, region=None, lang=None):
         p.expect(",")
         sf.pack_id = p.value()
         sf.region = r
-        if not p.skip_to("return"):
-            raise Unsupported("no return in the regional texts")
-        table = p.table()
+        p.expect(",")
+        if p.peek()[0] == "string":
+            table = _source_table(p)   # C0b: the entries as a source
+        else:
+            if not p.skip_to("return"):
+                raise Unsupported("no return in the regional texts")
+            table = p.table()
     else:
         while True:
             if not p.skip_to("AddTexts"):
@@ -460,5 +493,9 @@ def build(sf, current, render):
         parts.append(closing)
     else:
         parts.append(gap)
+    # C0b: in a source (`[==[ ... ]==]`) no entry may hold the closing brackets
+    m = re.search(r"\[(=*)\[\Z", sf.prelude)
+    if m and ("]%s]" % m.group(1)) in "".join(parts[1:]):
+        raise Unsupported("%s: an entry holds the closing brackets of the source" % sf.path)
     parts.append(sf.epilogue)
     return "".join(parts)

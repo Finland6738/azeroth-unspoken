@@ -27,6 +27,13 @@ folder (the layout of the download today); --layout area gives each area its own
 The character visits every area of Kalimdor, then of the Eastern Kingdoms, then Kalimdor again; the script reports the
 memory at login and after each change (after a full collection), the peak of a change (the memory right after it, the
 collector stopped during the change), the time of a change (load, drop and build) and the picks in the last area.
+C0b (ADR 0049): --form source (the default) writes the areas as sources, the form of the download, and --form builder as
+builder functions (before C0b); --budget is Packs.BUDGET_MS, the share of a frame a change may take (0: in one go), and
+--keep the bound Packs.KEEP_KB. A change is then Update and one Packs:Step per frame until it ends: the script reports
+the frames of a change and the addon time of each (the clock of the client, debugprofilestop, is the CPU time of
+the thread here: wall time on a busy machine counts other programs),
+apart for the frames that load a folder (the client reads its files in one call: once per area and session). The same
+script measures the engine before C0b (it has no Packs:Step: a change is one frame).
 
 The numbers are a projection from lupa on the machine that runs the script, not a measurement in the client: the
 working targets of R1 (PickEntry under 5 ms and memory under 40 MB at 50,000 entries) stay hypotheses until the
@@ -88,9 +95,40 @@ def load_addon(addon, packs="all", locale=None, zone=None):
     if packs == "all":
         lua.eval("function() AzerothUnspoken.Packs:ActivateAll() end")()
     lua.globals().ENTER_GAME(True, False)
+    # C0b: a change of area started at login ends before the measures (it is spread over frames in the client)
+    lua.execute("if AzerothUnspoken.Packs.Complete then AzerothUnspoken.Packs:Complete() end")
     base_load = time.perf_counter() - t0
     run_file(lua, os.path.join(HERE, "SyntheticArchive.lua"), "SyntheticArchive.lua")
     return lua, lua.globals().AzerothUnspoken, base_load
+
+
+def cpu_clock():
+    """C0b: a clock in milliseconds of the CPU time of this thread, for the share of a frame and its measure: wall time
+    counts the moments the system gave the processor to other programs (on a busy machine a fixed 0.5 ms loop measured
+    up to 39 ms), CPU time does not. Windows: the cycles of the thread (QueryThreadCycleTime) at the rate measured here;
+    elsewhere time.thread_time."""
+    if os.name != "nt":
+        return lambda: time.thread_time() * 1000
+    import ctypes
+    from ctypes import wintypes
+    k = ctypes.windll.kernel32
+    k.GetCurrentThread.restype = wintypes.HANDLE
+    k.QueryThreadCycleTime.argtypes = [wintypes.HANDLE, ctypes.POINTER(ctypes.c_ulonglong)]
+    k.QueryThreadCycleTime.restype = wintypes.BOOL
+    handle, c = k.GetCurrentThread(), ctypes.c_ulonglong()
+
+    def cycles():
+        k.QueryThreadCycleTime(handle, ctypes.byref(c))
+        return c.value
+    rate = 0.0
+    for _ in range(50):
+        t0, c0 = time.perf_counter(), cycles()
+        x = 0
+        for i in range(20000):
+            x += i
+        t1, c1 = time.perf_counter(), cycles()
+        rate = max(rate, (c1 - c0) / ((t1 - t0) * 1000))
+    return lambda: cycles() / rate
 
 
 def memory_kb(lua):
@@ -206,24 +244,32 @@ def pick_stats(lua, ns, zones, picks, seed):
 EASTERN_AREAS = 22   # the first 22 zones of SYNTH_ZONES are in the Eastern Kingdoms, the other 18 in Kalimdor
 
 
-def measure_areas(addon, total, resident, layout, picks, seed):
-    """The projection by area (C0, ADR 0048): see the module docstring."""
+def measure_areas(addon, total, resident, layout, picks, seed, form="source", budget=4.0, keep_kb=None):
+    """The projection by area (C0, ADR 0048; C0b, ADR 0049): see the module docstring."""
     t0 = time.perf_counter()
     lua, ns, base_load = load_addon(addon, "lazy")
     ns.db.locale = "en"
     G = lua.globals()
+    # C0b: the clock of the client (debugprofilestop) is the CPU time of this thread here (cpu_clock), for the share of
+    # a frame and its measure
+    G.debugprofilestop = cpu_clock()
+    old_engine = lua.eval("function() return AzerothUnspoken.Packs.Step == nil end")()
+    if not old_engine:
+        lua.eval("function(b) AzerothUnspoken.Packs.BUDGET_MS = b end")(budget if budget > 0 else float("inf"))
+        if keep_kb is not None:
+            lua.eval("function(k) AzerothUnspoken.Packs.KEEP_KB = k end")(keep_kb)
     zones = list(G.SYNTH_ZONES.values())
     per_area = (total - resident) // len(zones)
     # the sources are made in Lua and kept in Python until LoadAddOn asks for them: Lua then holds only what the folder
     # leaves (the compiled builders), as in the client
-    make = lua.eval("""function(ns, n, area, zone, seed)
-        return SYNTH_AREA_SOURCES(ns, n, { area = area, zone = zone, seed = seed })
+    make = lua.eval("""function(ns, n, area, zone, seed, form)
+        return SYNTH_AREA_SOURCES(ns, n, { area = area, zone = zone, seed = seed, form = form })
     end""")
     areas, src = [], {}
     for j, zone in enumerate(zones):
         cont = "eastern" if j < EASTERN_AREAS else "kalimdor"
         area = ns.Place.AreaKey(zone)
-        rules, texts = make(ns, per_area, area, zone, seed + j)
+        rules, texts = make(ns, per_area, area, zone, seed + j, form)
         areas.append((zone, area, cont))
         src[area] = (rules, texts)
     G.FETCH_SOURCE = lambda key, part: src[key][0 if part == "rules" else 1]
@@ -264,32 +310,50 @@ def measure_areas(addon, total, resident, layout, picks, seed):
     resident_kb = memory_kb(lua)
     setup_s = time.perf_counter() - t0
 
+    # one change: Update, then a Packs:Step per frame until the change ends (C0b; before it, Update did it all), with
+    # the time of each frame and whether a folder was loaded in it
     step = lua.eval("""function(zone)
         collectgarbage("collect"); collectgarbage("collect")
         local before = collectgarbage("count")
         collectgarbage("stop")
         P.zone, P.subzone = zone, ""
-        local t0 = os.clock()
-        AzerothUnspoken.Packs:Update()
-        local s = os.clock() - t0
+        local Packs = AzerothUnspoken.Packs
+        local frames, loads = {}, {}
+        local n0, t0 = #LOAD_CALLS, debugprofilestop()
+        Packs:Update()
+        frames[1], loads[1] = debugprofilestop() - t0, #LOAD_CALLS - n0
+        while Packs.job do
+            n0, t0 = #LOAD_CALLS, debugprofilestop()
+            Packs:Step()
+            table.insert(frames, debugprofilestop() - t0)
+            table.insert(loads, #LOAD_CALLS - n0)
+        end
         local peak = collectgarbage("count")
         collectgarbage("restart")
         collectgarbage("collect"); collectgarbage("collect")
-        return before, peak, collectgarbage("count"), s, #LOAD_CALLS
+        local kept = Packs.SourceBytes and Packs:SourceBytes() or 0
+        return before, peak, collectgarbage("count"), frames, loads, #LOAD_CALLS, kept
     end""")
     kal = [z for z, _, c in areas if c == "kalimdor"]
     eas = [z for z, _, c in areas if c == "eastern"]
     journey = kal + eas + kal
     rows = []
     for zone in journey:
-        before, peak, after, s, loads = step(zone)
-        rows.append({"zone": zone, "before_kb": before, "peak_kb": peak, "after_kb": after, "s": s, "loads": loads})
+        before, peak, after, frames, loads, calls, kept = step(zone)
+        frames, loads = list(frames.values()), list(loads.values())
+        rows.append({"zone": zone, "before_kb": before, "peak_kb": peak, "after_kb": after, "s": sum(frames) / 1000,
+                     "frames": frames, "loads": loads, "load_calls": calls, "kept_kb": kept / 1024})
     found, times, kinstr = pick_stats(lua, ns, [journey[-1]], picks, seed)
     return {"total": total, "resident": resident, "per_area": per_area, "areas": len(zones), "layout": layout,
-            "folders": folders, "setup_s": setup_s, "base_load_s": base_load, "resident_kb": resident_kb, "rows": rows,
+            "form": form, "budget": budget, "folders": folders, "setup_s": setup_s, "base_load_s": base_load, "resident_kb": resident_kb, "rows": rows,
             "picks": picks,
             "found": found, "pick_mean_ms": statistics.mean(times), "pick_p95_ms": times[int(len(times) * 0.95) - 1],
             "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]}
+
+
+def pct(xs, q):
+    xs = sorted(xs)
+    return xs[max(0, int(len(xs) * q + 0.5) - 1)] if xs else 0.0
 
 
 def print_areas(r):
@@ -297,17 +361,25 @@ def print_areas(r):
     n_kal = r["areas"] - EASTERN_AREAS
     mb = lambda kb: kb / 1024   # noqa: E731
     changes = rows[1:]
-    print(f"layout {r['layout']}: {r['folders']} regional folders, {r['areas']} areas of {r['per_area']} entries, "
-          f"{r['resident']} resident entries ({r['total']} in all, English only)")
+    print(f"layout {r['layout']}, form {r['form']}, budget {r['budget']} ms: {r['folders']} regional folders, "
+          f"{r['areas']} areas of {r['per_area']} entries, {r['resident']} resident entries ({r['total']} in all, English only)")
     print(f"  memory of the base and the resident entries: {mb(r['resident_kb']):.1f} MB; with the first area (its folders "
           f"loaded, the area built): {mb(rows[0]['after_kb']):.1f} MB")
     print(f"  after every area of Kalimdor: {mb(rows[n_kal - 1]['after_kb']):.1f} MB; after the Eastern Kingdoms: "
-          f"{mb(rows[r['areas'] - 1]['after_kb']):.1f} MB; at the end of the journey: {mb(rows[-1]['after_kb']):.1f} MB")
+          f"{mb(rows[r['areas'] - 1]['after_kb']):.1f} MB; at the end of the journey: {mb(rows[-1]['after_kb']):.1f} MB "
+          f"(regional sources kept {mb(rows[-1]['kept_kb']):.1f} MB)")
     print(f"  peak of a change: at most {mb(max(x['peak_kb'] - x['before_kb'] for x in changes)):.1f} MB over the memory "
           f"before it; highest memory {mb(max(x['peak_kb'] for x in changes)):.1f} MB")
     ts = sorted(x["s"] * 1000 for x in changes)
-    print(f"  change of area: mean {statistics.mean(ts):.0f} ms, p95 {ts[int(len(ts) * 0.95) - 1]:.0f} ms, "
-          f"max {ts[-1]:.0f} ms (LoadAddOn calls {rows[-1]['loads']})")
+    print(f"  change of area, addon time in all: mean {statistics.mean(ts):.0f} ms, p95 {pct(ts, 0.95):.0f} ms, "
+          f"max {ts[-1]:.0f} ms (LoadAddOn calls {rows[-1]['load_calls']})")
+    plain = [f for x in changes for f, n in zip(x["frames"], x["loads"]) if n == 0]
+    loading = [f for x in changes for f, n in zip(x["frames"], x["loads"]) if n > 0]
+    nframes = [len(x["frames"]) for x in changes]
+    print(f"  frames of a change: mean {statistics.mean(nframes):.0f}, max {max(nframes)}; addon time per frame: mean "
+          f"{statistics.mean(plain):.2f} ms, p95 {pct(plain, 0.95):.2f} ms, max {max(plain):.2f} ms"
+          + (f"; the {len(loading)} frames that load folders (first visit): mean {statistics.mean(loading):.1f} ms, "
+             f"max {max(loading):.1f} ms" if loading else ""))
     print(f"  picks in the last area: mean {r['pick_mean_ms']:.2f} ms, p95 {r['pick_p95_ms']:.2f} ms; "
           f"{r['pick_kinstr']:.1f} thousand instructions (p95 {r['pick_p95_kinstr']:.1f}), {r['found']} of {r['picks']} found")
     sys.stdout.flush()
@@ -329,6 +401,11 @@ def main(argv):
     ap.add_argument("--total", type=int, default=300000, help="with --areas: entries in all (one language)")
     ap.add_argument("--resident", type=int, default=30000, help="with --areas: entries always in memory")
     ap.add_argument("--layout", default="continent,area", help="with --areas: continent, area or both")
+    ap.add_argument("--form", default="source", choices=("source", "builder"),
+                    help="with --areas: the regional entries as a source (C0b, ADR 0049) or as builder functions (before)")
+    ap.add_argument("--budget", type=float, default=4.0,
+                    help="with --areas: milliseconds of a frame a change may take (Packs.BUDGET_MS); 0 = in one go")
+    ap.add_argument("--keep", type=float, help="with --areas: the bound in KB on the sources kept (Packs.KEEP_KB)")
     ap.add_argument("--json")
     ap.add_argument("--archive-dir", help="write the synthetic archives here, or read them if they are there: two "
                     "versions of the engine then measure the same rules (#157)")
@@ -338,7 +415,7 @@ def main(argv):
         print(f"addon {os.path.basename(addon)} at commit {commit(addon)}")
         rows = []
         for layout in [l for l in a.layout.split(",") if l]:
-            r = measure_areas(addon, a.total, a.resident, layout, a.picks, a.seed)
+            r = measure_areas(addon, a.total, a.resident, layout, a.picks, a.seed, a.form, a.budget, a.keep)
             print_areas(r)
             rows.append(r)
         if a.json:

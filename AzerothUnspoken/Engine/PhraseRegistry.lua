@@ -90,6 +90,13 @@ Engine.vocab = {}       -- [nome] = { voce, ... }
 Engine.events = {}      -- [evento] = { category, pack }
 Engine.loadIssues = {}  -- problemi emersi in caricamento, per il validatore
 Engine.pendingTexts = {} -- testi arrivati prima della loro regola: [id][lingua] = { varianti }
+-- C0b (ADR 0049): an area built over several frames. While `staging` is set (Engine:BeginStaging) a new rule goes to
+-- its own byEvent and index instead of the shared ones, so no pick sees a half-built area; Engine:EndStaging adds them
+-- all at once. `Pause` is set by Core/Packs.lua only while it runs a build: the long loops (the rules of a pack, the
+-- texts of a map, the rules of a dropped pack) call it between two entries, and it gives the frame back when the
+-- frame's time is spent. Elsewhere both are nil and nothing changes.
+Engine.staging = nil
+Engine.Pause = nil
 
 ---------------------------------------------------------------------------
 -- Vocabolari chiusi dello schema
@@ -773,10 +780,14 @@ local function FreeTexts(s, r)
 	s.at[r], s.dead = nil, s.dead + n
 end
 
--- the slots freed at the top of the array go back to it; the array is rebuilt when they are many
+-- the slots freed at the top of the array go back to it; the array is rebuilt when they are many. C0b: a pause every
+-- 1,024 slots (Engine.Pause, a change of area spread over frames)
 local function TrimTexts(s)
+	local pause, n = Engine.Pause, 0
 	while s.top > 0 and s.v[s.top] == false do
 		s.v[s.top], s.top, s.dead = nil, s.top - 1, s.dead - 1
+		n = n + 1
+		if pause and n % 1024 == 0 then pause() end
 	end
 	if s.dead > Engine.TEXT_COMPACT and s.dead * 2 > s.top then CompactTexts(s) end
 end
@@ -1069,6 +1080,14 @@ function Engine:RebuildIndex()
 	for ev, list in pairs(self.byEvent) do
 		for _, r in ipairs(list) do AddToIndex(index, ev, r, RuleKeys(r)) end
 	end
+	-- C0b: the rules of an area being built have their own index, rebuilt the same way
+	local s = self.staging
+	if s then
+		s.index = {}
+		for ev, list in pairs(s.byEvent) do
+			for _, r in ipairs(list) do AddToIndex(s.index, ev, r, RuleKeys(r)) end
+		end
+	end
 	for _, r in pairs(ordOf) do
 		IMPURE[r] = (WHEN[r] ~= nil and not Pure(WHEN[r])) or nil
 		if views[r] then views[r].impure = IMPURE[r] end
@@ -1304,11 +1323,14 @@ function Engine:AddEntry(pack, id, e, legacy)
 	-- condizioni che possono usare numeri casuali o codice: Eligible le valuta per ultime, come sempre
 	IMPURE[r] = (when ~= nil and not Pure(when)) or nil
 	local keys = RuleKeys(r)
+	-- C0b: during a build over several frames the rule waits in the staging lists (Engine:EndStaging)
+	local s = self.staging
+	local byEvent, index = s and s.byEvent or self.byEvent, s and s.index or self.index
 	for _, ev in ipairs(p.events) do
-		local list = self.byEvent[ev]
-		if not list then list = {}; self.byEvent[ev] = list end
+		local list = byEvent[ev]
+		if not list then list = {}; byEvent[ev] = list end
 		list[#list + 1] = r
-		AddToIndex(self.index, ev, r, keys)
+		AddToIndex(index, ev, r, keys)
 	end
 	-- the rules of a pack are the ords from first to last whose shape names it (Engine:PackIds)
 	pack.first = pack.first or r
@@ -1381,8 +1403,55 @@ end
 
 -- Traduzioni e testi aggiuntivi: { [id frase] = "testo" | { "variante", ... } }
 function Engine:AddTranslations(lang, map, packId)
-	for id, list in pairs(map) do self:AddTexts(lang, id, list, packId) end
+	local pause = Engine.Pause
+	for id, list in pairs(map) do
+		self:AddTexts(lang, id, list, packId)
+		if pause then pause() end
+	end
 	self:FlushPending()
+end
+
+---------------------------------------------------------------------------
+-- C0b: building over several frames (ADR 0049)
+---------------------------------------------------------------------------
+---From now on new rules wait in the staging lists, out of the selection, until Engine:EndStaging.
+function Engine:BeginStaging()
+	self.staging = self.staging or { byEvent = {}, index = {} }
+end
+
+-- appends the ords of `from` to `into[key]` (the list itself when there is none yet)
+local function AppendOrds(into, key, from)
+	local list = into[key]
+	if not list then
+		into[key] = from
+		return
+	end
+	local n = #list
+	for i = 1, #from do list[n + i] = from[i] end
+end
+
+---The rules that waited go into byEvent and the index at once. Every one of them was registered after every rule
+---already there (a dropped area gives its ords back before the next is built), so each list stays in order of
+---registration.
+function Engine:EndStaging()
+	local s = self.staging
+	if not s then return end
+	self.staging = nil
+	for ev, list in pairs(s.byEvent) do AppendOrds(self.byEvent, ev, list) end
+	for ev, byForm in pairs(s.index) do
+		local main = self.index[ev]
+		if not main then
+			self.index[ev] = byForm
+		else
+			for form, byKey in pairs(byForm) do
+				if not main[form] then
+					main[form] = byKey
+				else
+					for k, list in pairs(byKey) do AppendOrds(main[form], k, list) end
+				end
+			end
+		end
+	end
 end
 
 ---------------------------------------------------------------------------
@@ -1585,7 +1654,9 @@ end
 	})
    Il formato vecchio resta valido: phrases = { { id=, event=, form=, tone=, when=, it=, en= } }. ]]
 ---@param pack table
-function NS:RegisterPack(pack)
+---@param order? string[] C0b: the ids of the registry already in the order of SortedKeys (Core/Packs.lua sorts a large
+---regional pack over several frames)
+function NS:RegisterPack(pack, order)
 	assert(type(pack) == "table" and pack.id, "RegisterPack: serve un id")
 	if Engine.packs[pack.id] then
 		NS:Print(("pacchetto '%s' già registrato"):format(pack.id))
@@ -1625,8 +1696,10 @@ function NS:RegisterPack(pack)
 	end
 
 	-- regole v2 (in ordine di id: la selezione con un seme fisso resta ripetibile)
-	for _, id in ipairs(SortedKeys(pack.registry or {})) do
+	local pause = Engine.Pause
+	for _, id in ipairs(order or SortedKeys(pack.registry or {})) do
 		Engine:AddEntry(pack, id, pack.registry[id], false)
+		if pause then pause() end
 	end
 	-- formato vecchio, convertito
 	for _, ph in ipairs(pack.phrases or {}) do Engine:AddLegacyPhrase(pack, ph) end
@@ -1650,10 +1723,17 @@ function NS:RegisterPack(pack)
 end
 
 -- removes from a list (in place) the entries whose `pack` field is packId, or (#138) the ords in the set `gone`; true
--- if something was removed
-local function Without(list, packId, gone)
-	local j, removed = 0, false
-	for i = 1, #list do
+-- if something was removed. C0b: with `from`, the lowest ord of `gone`, the list is a list of ords in order of
+-- registration, so only its tail (the ords from `from` on) is walked: a dropped area costs its own rules, not the length
+-- of the lists it shares with the base content.
+local function Without(list, packId, gone, from)
+	local j, removed, start = 0, false, 1
+	if from then
+		start = #list + 1
+		while start > 1 and list[start - 1] >= from do start = start - 1 end
+		j = start - 1
+	end
+	for i = start, #list do
 		local x = list[i]
 		list[i] = nil
 		if gone and gone[x] or not gone and x.pack == packId then
@@ -1674,38 +1754,70 @@ end
 ---@param packId string
 ---@return integer dropped number of rules removed (nil if the pack is not registered)
 function Engine:DropPack(packId)
-	local pack = self.packs[packId]
-	if not pack then return nil end
-	local events, gone, n = {}, {}, 0
-	for r = pack.first or 1, pack.last or 0 do
-		local shape = SHAPE[r]
-		if shape and shape.pack == packId then
-			gone[r] = true
-			n = n + 1
-			for _, ev in ipairs(shape.events) do events[ev] = true end
-		end
-	end
+	if not self.packs[packId] then return nil end
+	self:HidePack(packId)
+	return self:FreePack(packId)
+end
+
+-- the ords of a pack out of byEvent and the index (and out of the staging lists, C0b)
+local function HideOrds(byEvent, index, events, packId, gone, from)
 	for ev in pairs(events) do
-		if self.byEvent[ev] then
-			Without(self.byEvent[ev], packId, gone)
-			if #self.byEvent[ev] == 0 then self.byEvent[ev] = nil end
+		if byEvent[ev] then
+			Without(byEvent[ev], packId, gone, from)
+			if #byEvent[ev] == 0 then byEvent[ev] = nil end
 		end
-		for _, byKey in pairs(self.index[ev] or EMPTY_LIST) do
+		for _, byKey in pairs(index[ev] or EMPTY_LIST) do
 			for k, list in pairs(byKey) do
-				Without(list, packId, gone)
+				Without(list, packId, gone, from)
 				if #list == 0 then byKey[k] = nil end
 			end
 		end
 	end
-	-- the columns and the texts of the rules (#138)
-	for r in pairs(gone) do
-		local id = ID[r]
-		ReleaseShape(SHAPE[r])
-		ReleaseWhen(WHEN[r])
-		for _, store in pairs(self.TX) do FreeTexts(store, r) end
-		ordOf[id], self.pendingTexts[id], views[r] = nil, nil, nil
-		ID[r], SHAPE[r], WHEN[r], STYLES[r], TAGS[r], THEME[r], MOTIFS[r], IMPURE[r] = nil, nil, nil, nil, nil, nil,
-			nil, nil
+end
+
+---C0b, the first half of DropPack: the rules of the pack leave byEvent, the index and the staging lists at once, so no
+---pick sees them any more; their columns and texts stay until Engine:FreePack.
+---@param packId string
+function Engine:HidePack(packId)
+	local pack = self.packs[packId]
+	if not pack or pack.gone then return end
+	local events, gone = {}, {}
+	for r = pack.first or 1, pack.last or 0 do
+		local shape = SHAPE[r]
+		if shape and shape.pack == packId then
+			gone[r] = true
+			for _, ev in ipairs(shape.events) do events[ev] = true end
+		end
+	end
+	pack.gone = gone
+	HideOrds(self.byEvent, self.index, events, packId, gone, pack.first)
+	if self.staging then HideOrds(self.staging.byEvent, self.staging.index, events, packId, gone, pack.first) end
+end
+
+---C0b, the second half of DropPack: frees the columns and the texts of the rules of a hidden pack (Engine.Pause
+---between two rules), then its frames and vocabulary, and forgets the pack.
+---@param packId string
+---@return integer? dropped number of rules removed (nil if the pack is not registered)
+function Engine:FreePack(packId)
+	local pack = self.packs[packId]
+	if not pack then return nil end
+	if not pack.gone then self:HidePack(packId) end
+	local pause, n = Engine.Pause, 0
+	-- the columns and the texts of the rules (#138); a rule freed by a run that stopped half-way is skipped
+	for r = pack.first or 1, pack.last or 0 do
+		if pack.gone[r] then
+			if SHAPE[r] then
+				local id = ID[r]
+				ReleaseShape(SHAPE[r])
+				ReleaseWhen(WHEN[r])
+				for _, store in pairs(self.TX) do FreeTexts(store, r) end
+				ordOf[id], self.pendingTexts[id], views[r] = nil, nil, nil
+				ID[r], SHAPE[r], WHEN[r], STYLES[r], TAGS[r], THEME[r], MOTIFS[r], IMPURE[r] = nil, nil, nil, nil, nil,
+					nil, nil, nil
+				if pause then pause() end
+			end
+			n = n + 1
+		end
 	end
 	-- a pack dropped from the top gives its ords back, so a region left and the next one entered reuse them and the
 	-- columns do not grow with every change; only the order of the rules counts, never the number
@@ -1717,7 +1829,7 @@ function Engine:DropPack(packId)
 	for i = #self.loadIssues, 1, -1 do
 		if self.loadIssues[i].pack == packId then table.remove(self.loadIssues, i) end
 	end
-	self.packs[packId] = nil
+	self.packs[packId], pack.gone = nil, nil
 	for i, id in ipairs(self.packOrder) do
 		if id == packId then table.remove(self.packOrder, i); break end
 	end

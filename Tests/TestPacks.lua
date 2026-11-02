@@ -488,3 +488,180 @@ T.run("a folder that loads but registers nothing is reported once (#166)", funct
 	Packs.reported = {}
 	Travel("Durotar")
 end)
+
+---------------------------------------------------------------------------
+-- C0b (ADR 0049): sources kept compact, a change spread over frames, the bound on what visited areas keep
+---------------------------------------------------------------------------
+-- the state the selection reads: every rule (ord, id, pack, texts) and every list of byEvent and of the index
+local function Dump()
+	local out = {}
+	for id, p in Engine:Rules() do
+		local t = {}
+		for _, lang in ipairs(Engine.TextLangs(p.ord)) do
+			for _, v in ipairs(Engine.TextList(p.ord, lang) or {}) do table.insert(t, lang .. ":" .. Engine.VariantText(v)) end
+		end
+		table.insert(out, p.ord .. " " .. id .. " " .. p.pack .. " " .. table.concat(t, "|"))
+	end
+	local lists = {}
+	for ev, byForm in pairs(Engine.index) do
+		for form, byKey in pairs(byForm) do
+			for k, list in pairs(byKey) do table.insert(lists, ev .. "/" .. form .. "/" .. k .. ":" .. table.concat(list, ",")) end
+		end
+	end
+	for ev, list in pairs(Engine.byEvent) do table.insert(lists, "byEvent " .. ev .. ":" .. table.concat(list, ",")) end
+	table.sort(lists)
+	return table.concat(out, "\n") .. "\n" .. table.concat(lists, "\n")
+end
+
+local function Frames(limit)
+	local n = 0
+	while Packs.job and n < (limit or 100000) do
+		UPDATE(0.016)
+		n = n + 1
+	end
+	return n
+end
+
+local function ReadRepo(path)
+	local f = io.open(REPO_ROOT .. "/" .. path, "rb")
+	if not f then return "" end
+	local s = f:read("*a")
+	f:close()
+	return s
+end
+
+T.run("C0b: the regional sources are kept as compact pieces that decode exactly", function()
+	Travel("Elwynn Forest")
+	Travel("Durotar")
+	local files = {}
+	for _, d in ipairs({ "Kalimdor", "Kalimdor_enUS", "EasternKingdoms", "EasternKingdoms_enUS" }) do
+		for _, f in ipairs({ "Durotar", "Orgrimmar", "Elwynn", "Stormwind", "Exploration" }) do
+			table.insert(files, ReadRepo("AzerothUnspoken_" .. d .. "/" .. f .. ".lua"))
+		end
+	end
+	local all = table.concat(files, "\n")
+	local sources, kept, whole, found = 0, 0, 0, 0
+	for _, b in pairs(Packs.builders) do
+		local list = {}
+		for _, e in ipairs(b.rules) do if type(e) == "table" then table.insert(list, e.src) end end
+		for _, ts in pairs(b.texts) do
+			for _, t in ipairs(ts) do if t.src then table.insert(list, t.src) end end
+		end
+		for _, S in ipairs(list) do
+			sources = sources + 1
+			T.eq(S.raw, nil, "every piece is cut once the area was built: " .. S.name)
+			local parts = {}
+			for i, piece in ipairs(S.pieces) do
+				parts[i] = S.plain[i] and piece or NS.Codec.Decode(S.kind, piece)
+				if not S.plain[i] then
+					T.eq(NS.Codec.Encode(S.kind, parts[i]), piece, "the code of a piece is its encoding: " .. S.name)
+				end
+				kept = kept + #piece
+			end
+			local text = table.concat(parts)
+			whole = whole + #text
+			if all:find("[==[\n" .. text .. "]==]", 1, true) then found = found + 1 end
+		end
+	end
+	T.eq(sources, 12, "the six rules files and the six English texts files of the download are sources")
+	T.eq(found, sources, "each source decodes to the exact text of its file")
+	T.ok(kept < whole * 0.6, ("the pieces are far smaller than the source (%d of %d bytes)"):format(kept, whole))
+	-- a source with no dictionary, or holding a code byte, is kept as written
+	T.eq(NS.Codec.Encode("rules", "a\1b"), nil, "a code byte: not encoded")
+	T.eq(NS.Codec.Encode("xx", "abc"), nil, "no dictionary: not encoded")
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("packs")
+	T.ok(Printed(NS:L("packs_sources", ("%.0f"):format(Packs:SourceBytes() / 1024), "-")), "/au packs shows what is kept")
+end)
+
+T.run("C0b: a source cut inside an entry is read with the next piece", function()
+	local piece = Packs.PIECE
+	Packs.PIECE = 1
+	ADD_ADDON("MySourcePack", { meta = { ["X-AzerothUnspoken-Region"] = "kalimdor",
+		["X-AzerothUnspoken-Areas"] = "mulgore" }, load = function()
+		AzerothUnspoken:RegisterRegionalPack("mulgore", { id = "my_mulgore", languages = { "enUS" } }, [==[
+	["my.m.1"] = { event = "zone", speaker = "inner", styles = { "ancient" },
+		conditions = {
+			["zone"] = "Mulgore" } },
+	-- a comment between two entries
+	["my.m.2"] = { event = "zone", speaker = "inner", styles = { "ancient" }, conditions = { zone = "Mulgore" } },
+]==])
+		AzerothUnspoken:RegisterRegionalTexts("mulgore", "enUS", "my_mulgore", [==[
+	["my.m.1"] = { "Wind on the long grass." },
+	["my.m.2"] = { "The bluffs, red at dusk." },
+]==])
+	end })
+	Packs:Discover()
+	Travel("Mulgore")
+	T.ok(Engine.byId["my.m.1"] ~= nil and Engine.byId["my.m.1"].when.zone == "Mulgore", "the entry cut in two is whole")
+	T.eq(Engine.byId["my.m.2"] and Engine.byId["my.m.2"].text.en[1], "The bluffs, red at dusk.", "and the next one too")
+	Travel("Durotar")
+	T.eq(Engine.byId["my.m.1"], nil, "dropped on leaving")
+	Travel("Mulgore")
+	T.eq(Engine.byId["my.m.1"] and Engine.byId["my.m.1"].text.en[1], "Wind on the long grass.", "built again from the pieces")
+	Packs.PIECE = piece
+	Travel("Durotar")
+	Cleanup("MySourcePack")
+end)
+
+T.run("C0b: a change of area is spread over frames and no pick sees a half-built area", function()
+	Travel("Durotar")
+	local full = Dump()
+	Travel("The Barrens")
+	Packs.BUDGET_MS = 0
+	Travel("Durotar")
+	T.ok(Packs.job ~= nil, "the change goes on in the next frames")
+	local frames = Frames(3)
+	T.ok(Packs.job ~= nil and Engine.staging ~= nil, "the area is being built, out of the selection")
+	T.ok(not InIndex("kalimdor_durotar") and not InIndex("kalimdor_orgrimmar"), "no pick sees a rule of it yet")
+	-- in combat the change waits
+	P.combat = true
+	local steps = #Packs.job.steps
+	Frames(5)
+	T.eq(#Packs.job.steps, steps, "no step in combat")
+	P.combat = false
+	frames = frames + Frames()
+	T.eq(Packs.job, nil, "the change ended")
+	T.ok(frames > 10, ("over many frames (%d)"):format(frames))
+	T.eq(Engine.staging, nil, "nothing waits any more")
+	T.eq(Dump(), full, "the same rules, ords, texts and index as a change in one go")
+	local c = Packs.lastChange
+	T.ok(c.key == "durotar" and c.frames > 10 and c.max >= 0 and c.ready ~= nil, "the frames of the change are recorded")
+	-- a change towards another place stops the one in progress; what it built half-way is dropped
+	Travel("The Barrens")
+	Frames()
+	Travel("Durotar")
+	Frames(20)
+	T.ok(Engine.staging ~= nil, "Durotar half-built")
+	Travel("Elwynn Forest")
+	Frames()
+	T.eq(Engine.packs.kalimdor_durotar, nil, "the half-built area is gone")
+	T.ok(not InIndex("kalimdor_durotar") and not InIndex("kalimdor_exploration"), "and nothing of Kalimdor is left")
+	T.ok(Engine.packs.eastern_elwynn ~= nil, "Elwynn built")
+	local async = Dump()
+	Packs.BUDGET_MS = math.huge
+	Travel("Durotar")
+	Travel("Elwynn Forest")
+	T.eq(async, Dump(), "the same as Elwynn built in one go")
+	Travel("Durotar")
+end)
+
+T.run("C0b: beyond the bound the areas built least recently are released", function()
+	local keep = Packs.KEEP_KB
+	Travel("Elwynn Forest")
+	Travel("Durotar")
+	T.eq(next(Packs.released), nil, "under the bound nothing is released")
+	Packs.KEEP_KB = 0
+	Travel("Elwynn Forest")
+	T.ok(Packs.released.durotar and Packs.released.kalimdor, "the sources of Kalimdor are released")
+	T.ok(not Packs.released.elwynnforest, "not those of the area built now")
+	local _, idle = Packs:SourceBytes()
+	T.eq(idle, 0, "nothing is kept for the areas not built")
+	SENT = {}
+	SlashCmdList.AZEROTHUNSPOKEN("packs")
+	T.ok(Printed("durotar, kalimdor"), "/au packs names them")
+	Travel("Durotar")
+	T.eq(Engine.packs.kalimdor_durotar, nil, "Durotar has no regional lines until /reload")
+	T.ok(Engine.byId["dur.battle.blade.01"] == nil, "none of its rules")
+	Packs.KEEP_KB = keep
+end)

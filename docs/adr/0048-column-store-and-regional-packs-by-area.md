@@ -1,6 +1,6 @@
 # 0048. A column store for the rules, and regional packs built and dropped by area
 
-- Status: Accepted (**nothing of it has run in the client**: the loading on a change of zone is in `docs/G1_checklist.md`, section C0; owner decision of 2026-11-02 to finish the development without in-game test gates)
+- Status: Accepted; §4 followed by [ADR 0049](0049-compact-area-sources-and-a-change-spread-over-frames.md) (**nothing of it has run in the client**: the loading on a change of zone is in `docs/G1_checklist.md`, section C0; owner decision of 2026-11-02 to finish the development without in-game test gates)
 - Date: 2026-11-02 (phase C0 of the content-scale plan, issue #138; [ADR 0024](0024-selection-index-compact-registry-and-bounded-memory.md), [ADR 0025](0025-language-and-regional-packs-loaded-on-demand.md))
 
 ## Context
@@ -71,6 +71,18 @@ What the numbers say:
 - Now: the column store; the area as the unit built and dropped; continent folders, with folders of areas possible through the `.toc`. With today's content (583 regional rules) nothing else is needed: one area is under 0.3 MB built.
 - **When a continent's regional content passes about 10,000 entries per language** (about 7 MB of compiled builders, the cost of loading its folders), the folders are split by area (`X-AzerothUnspoken-Areas`; the folder count grows by two or three per area: the AddOns list grows, which is why it waits until it is needed).
 - **Before the content reaches about 2,000-3,000 entries per area**, two follow-ups of #138 are needed and are left open: (a) build an area over several frames (or cap the size of an area), so that a change on foot does not stutter; (b) bound the code kept by visited areas: for example release the builders of the areas least recently visited beyond a budget (their lines come back after `/reload`), or keep an area as a compact source compiled on demand. Both change behaviour the owner can see and are decided with the in-game numbers of `/au prof` (D3).
+
+## Update: the follow-ups of §4 (C0b, 2026-11-02)
+
+Both follow-ups of §4 are done in [ADR 0049](0049-compact-area-sources-and-a-change-spread-over-frames.md): the regional files give their entries as a **source** (a string, kept as encoded pieces) instead of builder functions, with a bound on what visited areas keep (32 MB of sources), and a change of area is a job spread over frames (at most 4 ms of a frame, outside combat) that builds the new area out of the selection and adds it whole. The same projection (`Tests/bench_scale.py --areas`, 300,000 entries in one language, folders by area; times are now CPU time of the thread, since wall time on a busy machine counted other programs):
+
+| | ADR 0048 | ADR 0049 |
+|---|---|---|
+| with the first area | 36.4 MB | 36.2 MB |
+| after every area of both continents | 221.0 MB | 69.0 MB at most (sources kept at the 32 MB bound) |
+| a change of area | one frame: 490 ms mean, 547 ms p95, 581 ms at most of CPU time (1.16 s and 1.44 s of wall time in the table above) | about 230 frames; per frame 2.9 ms mean, 3.96 ms p95, 7.8 ms at most; 11-16 ms in a frame that reads a new area's folder |
+
+The rule of §4 on folders by area stays, for a new reason given in ADR 0049 §4.
 
 ## Alternatives considered
 

@@ -354,6 +354,8 @@ def discover(root):
         if not (d.startswith(base) and os.path.isfile(toc)):
             continue
         meta, files = parse_toc(toc)
+        # C0b: the dictionary of the compact sources (tools/build_codec.py) is not content
+        files = [f for f in files if os.path.basename(f) != "Codec.lua"]
         lang, region = meta.get("X-AzerothUnspoken-Language"), meta.get("X-AzerothUnspoken-Region")
         if d == base:
             out += [("rules", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Data/Registry[A-Za-z]*\.lua$", f)]

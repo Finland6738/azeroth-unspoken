@@ -53,6 +53,10 @@ Facts and constraints:
 
 Item 5 kept the continent "until the archive per continent outgrows the budget". Phase C0 took the next step with no change to the folder format ([ADR 0048](0048-column-store-and-regional-packs-by-area.md)): a builder belongs to an **area** (a zone, or a capital with its zone) or to a continent; the area the character is in is built and the area left dropped on every change of zone, outside combat; folders stay per continent, and a folder may declare `## X-AzerothUnspoken-Areas` to be loaded only in its areas. The trial slice moved to the areas `durotar` and `elwynnforest`. The 300,000-entry projection of ADR 0048 gives the size at which the folders must be split by area and the follow-ups needed before areas grow large (a build spread over frames, a bound on the compiled code of visited areas).
 
+## Update: sources instead of builders, and a change over frames (C0b, 2026-11-02)
+
+What a region left keeps is no longer the code of its builders: the regional files of the download give their entries as a source, a string kept as encoded pieces (about a third of the compiled code), with a bound past which the areas built least recently are let go until `/reload`; a change of area is spread over frames, outside combat, and the new area enters the selection whole ([ADR 0049](0049-compact-area-sources-and-a-change-spread-over-frames.md)). Builder functions are still accepted.
+
 ## Alternatives considered
 
 - **A build step that generates the folders** from the current `Data/` tree. It keeps the old paths, but doubles every text in the repository (source and output), needs a CI check that both agree, and would be replaced by the exporter of #87 anyway.

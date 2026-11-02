@@ -1403,7 +1403,7 @@ valore predefinito. Se un passo non va, apri una issue con quello che hai visto.
 
 ---
 
-## C0: archivio a colonne e pacchetti per area (issue #138, ADR 0048)
+## C0: archivio a colonne e pacchetti per area (issue #138, ADR 0048 e 0049)
 
 Niente di C0 è stato provato nel client: ogni numero viene da lupa su un PC. Le scelte sono le stesse di prima
 (verificato offline); il client deve confermare il caricamento. Parti con `/au debug` vuoto e `/au packs` a portata.
@@ -1425,6 +1425,26 @@ Niente di C0 è stato provato nel client: ogni numero viene da lupa su un PC. Le
 7. **Memoria.** `/au prof` a Durotar dopo l'accesso, dopo le Barrens e dopo il ritorno: annota ogni volta i KB
    dell'addon. L'area lasciata non deve restare: il secondo e il terzo numero entro poche centinaia di KB dal primo.
 8. **Errori.** `/au debug`: nessun errore `packs`, nessuna cartella del download "caricata, ma senza contenuto".
+
+**C0b (ADR 0049): sorgenti compatte e cambio distribuito su più fotogrammi.** Anche questo non è mai stato provato nel
+client. Le regole regionali ora sono una sorgente (il testo Lua in una stringa) che l'addon conserva a pezzi codificati;
+un cambio di area lavora al massimo 4 ms per fotogramma, fuori dal combattimento.
+
+9. **Il cambio non si sente.** Attraversa più volte il confine Durotar/Barrens (Elwynn/Westfall) a piedi e a cavallo,
+   con `/au packs` dopo ognuno. La riga "ultimo cambio di area" dice ora anche su quanti fotogrammi e il fotogramma più
+   lungo: annota i ms in tutto, i fotogrammi e il massimo. Uno scatto al confine? (sì/no). Il massimo dovrebbe restare
+   sotto 8 ms, salvo il primo ingresso in un'area (il client legge i file della cartella in un colpo solo).
+10. **Mentre l'area si prepara.** Subito dopo il confine `/au packs` può dire "costruzione delle frasi di ... in corso":
+    in quei secondi parlano le righe generali, mai una riga di metà area. Nessun errore Lua.
+11. **Avanti e indietro in fretta.** Supera il confine e torna indietro prima che finisca la preparazione: alla fine
+    `/au packs` dice l'area giusta e si sentono le sue righe; nessun errore in `/au debug`.
+12. **Combattimento durante la preparazione.** Entra in un'area nuova e attacca subito un mostro: la preparazione si
+    ferma durante il combattimento (il numero di fotogrammi in `/au packs` non cresce) e riprende dopo.
+13. **Memoria delle aree visitate.** Dopo più aree, `/au packs` riporta "sorgenti regionali conservate: N KB": annotalo
+    con i KB di `/au prof`. "aree rilasciate" deve dire `-` (il limite di 32 MB non si raggiunge con il contenuto di
+    oggi).
+14. **`debugprofilestop`.** Se `/au prof` dice che il client non ha `debugprofilestop`, i ms dei cambi sono quelli di
+    `os.clock` (meno precisi): annotalo.
 
 ## Modulo riassuntivo (copia e compila)
 
@@ -1585,6 +1605,8 @@ L2 versi ................ uno alla volta? ___  troppo in fretta/piano? ___  rote
 R5 fetta di prova ...... ripetute in 90 min? ___  fuori luogo (%) ______  PickEntry p95 ______  memoria (KB) ______
 L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: nessuno? ___  nulla in chat? ___
 C0 aree ................ area in /au packs ______  ms di un cambio ______  scatto? ___  KB accesso/dopo/ritorno ______
+C0b fotogrammi ......... ms in tutto ______  fotogrammi ______  fotogramma più lungo ______  scatto? ___  errori? ___
+C0b memoria ............ sorgenti conservate (KB) ______  aree rilasciate ______
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

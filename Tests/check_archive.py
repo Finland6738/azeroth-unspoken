@@ -749,6 +749,9 @@ def review_flow():
         check('"{zone}. A line written through the archive."' in texts_en and '{ "Another one.", depth = "natural" }' in texts_en and
               "Una riga scritta con l'archivio." in texts_it, "its texts are appended to the file of each language")
         check('["zone.test.kal.01"]' in kal and '"Red earth."' in kal_en, "a regional intention goes to the folders of its region")
+        check(kal.index("[==[") < kal.index('["zone.test.kal.01"]') < kal.index("]==]") and
+              kal_en.index("[==[") < kal_en.index('"Red earth."') < kal_en.index("]==]"),
+              "C0b: in a regional source the new entry is written inside the string of the entries")
         check('["zone.gen.02"]' not in rules and '["zone.gen.02"]' not in texts_en and '["zone.gen.02"]' not in texts_it,
               "the retired intention leaves the rules and the texts of every language")
         check("zone.test.half" not in rules and "zone.test.lore" not in rules, "what is not approved stays out of the folders")

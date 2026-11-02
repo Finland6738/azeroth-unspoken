@@ -163,6 +163,7 @@ end
 -- (AzerothUnspoken:RegisterRegionalTexts(area, lang, pack, builder)) of n clones bound to the zone of the area: the
 -- clone keeps its conditions, with the zone of the area in place of any place it asked.
 --   opts.area, opts.zone (required), opts.seed (default 1), opts.lang (default "enUS"), opts.prefix (default the area)
+--   opts.form "builder" (default: a builder function, as before C0b) or "source" (the entries in a string, ADR 0049)
 function SYNTH_AREA_SOURCES(NS, n, opts)
 	local Engine = NS.Engine
 	local lang = opts.lang or "enUS"
@@ -191,6 +192,14 @@ function SYNTH_AREA_SOURCES(NS, n, opts)
 			if t then table.insert(out, t .. " [" .. prefix .. i .. "." .. k .. "]") end
 		end
 		table.insert(texts, ("[%q] = %s,\n"):format(id, Serialize(out)))
+	end
+	if opts.form == "source" then
+		-- C0b (ADR 0049): the entries as a source, as the folders of the download write them
+		local rulesSrc = ("AzerothUnspoken:RegisterRegionalPack(%q, { id = %q, languages = { %q } }, [==[\n")
+			:format(opts.area, packId, lang) .. table.concat(rules) .. "]==])\n"
+		local textsSrc = ("AzerothUnspoken:RegisterRegionalTexts(%q, %q, %q, [==[\n"):format(opts.area, lang, packId)
+			.. table.concat(texts) .. "]==])\n"
+		return rulesSrc, textsSrc
 	end
 	local rulesSrc = ("AzerothUnspoken:RegisterRegionalPack(%q, function() return { id = %q, languages = { %q }, registry = {\n")
 		:format(opts.area, packId, lang) .. table.concat(rules) .. "} } end)\n"
