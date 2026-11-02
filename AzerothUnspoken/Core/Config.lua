@@ -28,6 +28,8 @@ Config.CHAT_MODES = { "PRIVATE", "PREVIEW", "CONFIRM_TO_SEND", "AUTO_ONLY_IF_ALL
 -- until the fight ends (the default), or not said at all. Chat proposals always wait for the end of the fight.
 Config.COMBAT_SETTINGS = { "show", "chatframe", "hold", "silent" }
 Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INSTANCE_CHAT" }
+-- #118, D15: how often the literary forms speak (literary.frequency): never, rare (the default), normal
+Config.LITERARY_FREQUENCIES = { "never", "rare", "normal" }
 
 -- Byte massimi di un messaggio, per canale: la fonte unica del Chat Gateway (che taglia) e del validatore
 -- (che segnala le frasi troppo lunghe). SendChatMessage accetta 255 byte. PRIVATE non è un canale: è il
@@ -36,6 +38,8 @@ Config.CHAT_CHANNELS = { "auto", "SAY", "EMOTE", "PARTY", "RAID", "GUILD", "INST
 Config.CHAT_LIMITS = {
 	SAY = 255, YELL = 255, EMOTE = 255, PARTY = 255, RAID = 255, GUILD = 255, INSTANCE_CHAT = 255,
 	PRIVATE = 400,
+	-- #126, D20: a literary form (category lore) is read in the narrator, never in chat: a tale may reach about 600 bytes
+	READING = 600,
 }
 
 -- GDD §11.4, più le impostazioni del prototipo
@@ -121,6 +125,7 @@ Config.CHAT_LIMITS = {
 ---@field interlocutor { trp3Others: boolean } S6c: consenso a leggere i profili pubblici TRP3 degli altri giocatori
 ---@field npcAlive AUNPCAliveSettings NPC Alive (S8)
 ---@field arcs AUArcSettings Story Arcs (S9)
+---@field literary { frequency: string } #118: literary forms never | rare | normal (Config.LITERARY_FREQUENCIES)
 ---@field ui AUUISettings
 
 Config.defaults = {
@@ -206,6 +211,11 @@ Config.defaults = {
 	arcs = {
 		maxActive = 2,
 	},
+	-- Literary forms (#118, D15): verses, songs, inscriptions and tales, only in the private narrator (D16). Rare and on by
+	-- default: about one every 20-30 minutes at intensity 50, never in combat. "never" turns them off, "normal" doubles them
+	literary = {
+		frequency = "rare",
+	},
 	ui = {
 		showButton = true,
 		wizardDone = false,
@@ -272,6 +282,7 @@ Config.rules = {
 	["pacing.globalCooldownSeconds"] = { min = 0, max = 3600 },
 	["pacing.recentPhraseWindow"] = { min = 1, max = 200, integer = true },
 	["pacing.inCombat"] = { enum = Config.COMBAT_SETTINGS },
+	["literary.frequency"] = { enum = Config.LITERARY_FREQUENCIES },
 }
 
 -- tabelle libere: si controllano le singole voci

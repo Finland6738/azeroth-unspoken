@@ -104,6 +104,7 @@ The addon answers to `/au` and `/unspoken`. Each command has one English name; t
 | `/au language [it\|en]` | language of lines and interface (short form `/au lang`); the default is English |
 | `/au intensity <0-100>` | how often the narrator speaks: 0 = silent for spontaneous events, 50 = balanced, 100 = intense |
 | `/au depth natural\|literary\|elevated` | style depth: lines written for that tone weigh more (the others stay possible) |
+| `/au literary never\|rare\|normal` | literary forms (verses, songs, tales, only in the private narrator): rare by default, about one every 20-30 minutes |
 | `/au mode private\|preview\|confirm\|auto` | what may reach chat; default: `private`. `auto` does not turn on with the first command: it shows a warning and must be repeated after a couple of seconds (within 30) |
 | `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | default channel for proposals (short forms `s`, `e`, `p`, `g`, `i`) |
 | `/au speak` | same as the "speak" key: confirms the pending proposal, or makes a new one |

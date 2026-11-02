@@ -25,6 +25,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au language it` | switches to Italian |
 | `/au intensity <0-100>` | how often the narrator speaks |
 | `/au depth <style>` | how elevated the language is |
+| `/au literary <value>` | how often verses and songs come: never, rare, normal |
 | `/au mode <mode>` | what may reach chat |
 | `/au speak` | sends the waiting proposal, or makes a new one |
 | `/au soul` | your character's personality |
@@ -58,6 +59,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 |---|---|
 | `/au intensity [0-100]` | Sets how often the narrator speaks. 0 = silent for spontaneous events, 50 = balanced (default), 100 = intense. With no number, shows the current value. |
 | `/au depth [natural\|literary\|elevated]` | Sets the style depth (default: literary). With no value, shows the current one. |
+| `/au literary [never\|rare\|normal]` | How often [[literary forms|Literary-Forms]] (verses, songs, inscriptions, tales) come in the private narrator: rare (the default, about one every 20-30 minutes at intensity 50), normal (about twice as often) or never (none, not even with `/au event lore_test`). Never in combat. With no value, shows the current one. |
 | `/au cooldown <seconds>` | The minimum pause between two spontaneous lines, 0 to 3600 seconds (default 45). |
 | `/au chance [<event> <0-100>]` | The probability, in percent, that an event produces a line. With no values, lists every event and its probability. Example: `/au chance zone 60`. |
 | `/au ignore [<spell>]` | A spell no longer produces lines. Type it again to undo. With no spell name, lists the ignored spells. Example: `/au ignore Hearthstone`. |

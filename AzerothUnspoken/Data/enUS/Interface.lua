@@ -70,6 +70,13 @@ NS:RegisterLanguage("en", {
 		combat_now = "in combat: %s",
 		values_combat = "show, chat, hold, silent",
 		help_combat = "what the narrator does during a fight",
+		-- #118: literary forms
+		opt_literary = "Literary forms",
+		opt_literary_tip = "Verses, songs, inscriptions and tales, read only in your private narrator and never offered for chat. Rare (default): about one every 20-30 minutes at intensity 50, never in combat. Normal: about twice as often. Never: none at all, not even when asked for.",
+		literary_never = "never", literary_rare = "rare", literary_normal = "normal",
+		literary_now = "literary forms: %s",
+		values_literary = "never, rare, normal",
+		help_literary = "how often verses, songs and tales come (private narrator only)",
 		gw_combat_improvise = "in combat the speak key does not make up a new line. /au battlecry asks for one.",
 		gw_combat_held = "%d line(s) wait for the end of the fight.",
 		gw_combat_editor = "the editor never opens in combat. The proposal: %s\nPress again to send it as it is, or /au cancel.",

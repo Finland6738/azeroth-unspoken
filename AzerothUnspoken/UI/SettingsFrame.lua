@@ -17,6 +17,7 @@ local COOLDOWNS = { 15, 30, 45, 60, 90, 120, 180 }
 local WAITS = { 25, 60, 120 }          -- seconds a proposal waits; after the longest, until it is closed (0, #177)
 local SPEEDS = { 8, 11, 14, 18, 24 }   -- reading speed, characters a second (#177)
 local COMBAT = NS.Config.COMBAT_SETTINGS   -- #185: show, chat frame only, hold until the fight ends, silent
+local LITERARY = NS.Config.LITERARY_FREQUENCIES   -- #118: literary forms never, rare, normal
 local CONTENT_W = 600                  -- width of the scrolling content
 local LABEL_X, CONTROL_X, CONTROL_W = 16, 250, 220
 local ROW = 28                         -- a row: 24 units of control and 4 of space
@@ -189,6 +190,10 @@ local function CreatePanel()
 		function() NS.Config:Set("intensity", NS.db.intensity + 10) end)
 	Toggle("opt_depth", function() return NS:L("depth_" .. NS.db.proseDepth) end,
 		function() NS.db.proseDepth = Cycle(DEPTHS, NS.db.proseDepth) end)
+	Next()
+	-- #118: how often the literary forms come (private narrator only): never, rare (default), normal
+	Toggle("opt_literary", function() return NS:L("literary_" .. NS.db.literary.frequency) end,
+		function() NS.Config:Set("literary.frequency", Cycle(LITERARY, NS.db.literary.frequency)) end, "opt_literary_tip")
 	Next()
 	Toggle("opt_cooldown", function() return NS.db.pacing.globalCooldownSeconds .. " s" end, function()
 		local nxt = COOLDOWNS[1]

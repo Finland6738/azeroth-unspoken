@@ -128,6 +128,16 @@ Engine.TONE_STYLE = {
 Engine.CATEGORIES = { combat = true, spellcraft = true, life = true, exploration = true, reflection = true, social = true,
 	general = true }
 
+-- Categories with their own pacing (#118, ADR 0042), filled by NS:RegisterCategory(id, def), Data/Themes.lua and the
+-- packs (`categories = { id = def }`): CATEGORY_DEFS[id] = { budget = interventions per `window` seconds at intensity 50,
+-- window = seconds, cooldown = seconds between two at intensity 50, minCooldown = seconds never shortened }. Such a
+-- category paces its own phrases whatever the event they speak on (Pacing:Closed); the categories of Pacing.BUDGET
+-- pace their events, as before.
+Engine.CATEGORY_DEFS = {}
+-- the category of the literary forms (#118, D15): rare, never in combat, never in public chat (D16), and the user's
+-- setting "literary forms: never / rare / normal" (literary.frequency)
+Engine.LITERARY_CATEGORY = "lore"
+
 -- Themes and motifs (#90, ADR 0029): closed vocabularies, filled by Data/Themes.lua and by the packs that declare
 -- `themes = {}` or `motifs = {}`. The validator rejects a rule or a frame that names one not declared.
 Engine.THEMES = {}
@@ -889,7 +899,10 @@ function Engine:AddEntry(pack, id, e, legacy)
 	end
 	p.speaker, p.form = speaker, form
 
-	p.category = e.category or Engine.EventCategory(p.events[1]) or "general"
+	-- #118: a literary form (tags lore, genre_*) is in the literary category unless it says otherwise (the validator
+	-- refuses another one), so its rarity and the user's setting hold even for a pack that forgot the field
+	p.category = e.category or (Engine.HasLiteraryTag(ToSet(e.tags)) and Engine.LITERARY_CATEGORY)
+		or Engine.EventCategory(p.events[1]) or "general"
 	local styles = {}
 	for _, s in ipairs(e.styles and AsList(e.styles) or LegacyTones(e.tone)) do table.insert(styles, s) end
 	p.styles = SharedList(styles)
@@ -1096,8 +1109,16 @@ function NS:RegisterStyle(id)
 	if type(id) == "string" and id ~= "" then self.Engine.STYLES[id] = true end
 end
 
-function NS:RegisterCategory(id)
-	if type(id) == "string" and id ~= "" then self.Engine.CATEGORIES[id] = true end
+---Declares a category. With `def` (#118, ADR 0042) the category has its own pacing, data-driven: `budget`
+---interventions in `window` seconds (default Pacing.WINDOW) and `cooldown` seconds between two, both at intensity 50
+---and scaled like the others, never under `minCooldown`. Its phrases are paced wherever they speak (Pacing:Closed).
+---Declaring a category again with a def replaces the def. The validator checks the values.
+---@param id string
+---@param def? { budget?: number, window?: number, cooldown?: number, minCooldown?: number }
+function NS:RegisterCategory(id, def)
+	if type(id) ~= "string" or id == "" then return end
+	self.Engine.CATEGORIES[id] = true
+	if def ~= nil then self.Engine.CATEGORY_DEFS[id] = def end
 end
 
 ---Adds a theme to the closed vocabulary (#90).
@@ -1175,7 +1196,11 @@ function NS:RegisterPack(pack)
 			fallback = def.fallback })
 	end
 	for _, s in ipairs(pack.styles or {}) do self:RegisterStyle(s) end
+	-- `categories`: a list of ids, and/or (#118) ids with their pacing, { lore = { budget =, window =, cooldown = } }
 	for _, c in ipairs(pack.categories or {}) do self:RegisterCategory(c) end
+	for _, c in ipairs(SortedKeys(pack.categories or {})) do
+		if type(c) == "string" then self:RegisterCategory(c, pack.categories[c]) end
+	end
 	for _, t in ipairs(pack.themes or {}) do self:RegisterTheme(t) end
 	for _, m in ipairs(pack.motifs or {}) do self:RegisterMotif(m) end
 	for _, c in ipairs(SortedKeys(pack.quotas or {})) do self:SetCategoryQuota(c, pack.quotas[c]) end

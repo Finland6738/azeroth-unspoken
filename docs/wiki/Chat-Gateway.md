@@ -8,7 +8,9 @@ By default every line stays in the private [[narrator box|The-Narrator]]. If you
 
 Only two [[voices|The-Narrator]] can ever become chat: the **character** voice (as spoken words) and the **narrator** voice (as an emote). The inner voice and NPC voices never go to chat. Neither do [[NPC ambient dialogues|NPC-Dialogues]] and [[personal stories|Story-Arcs]].
 
-Some lines are private whatever their voice, in every mode (also in automatic mode, and when you press "Another" or "To chat"): the narrator's **monologues**, and **literary forms** (verses, songs, inscriptions: lines tagged `lore` or `genre_*`). They appear in the narrator box and nowhere else.
+Some lines are private whatever their voice, in every mode (also in automatic mode, and when you press "Another" or "To chat"): the narrator's **monologues**, and **literary forms** (verses, songs, inscriptions, tales: lines tagged `lore` or `genre_*`, or in the literary category). They appear in the narrator box and nowhere else.
+
+A chat message is always **one line**. If a line written with a line break ever becomes a proposal, the break is shown and sent as " / ", and the proposal box shows exactly that.
 
 ## The four modes
 

@@ -610,9 +610,14 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 	if not list then return out end
 	local mem = Mem()
 	local disabled = NS.db.disabledPacks
+	-- #118: the categories with their own pacing that cannot speak in this spontaneous pick (Pacing:Closed), and the
+	-- literary forms when the setting says never or the character is fighting (any pick, asked for or not)
+	local closed = ctx and ctx.closed
+	local literary = NS.Pacing:LiteraryClosed(ctx) and self.LITERARY_CATEGORY or nil
 	for _, p in ipairs(list) do
 		if (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
-			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown) then
+			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
+			and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary) then
 			-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre (chance,
 			-- func; e le cornici, che non hanno ord) solo dopo i testi, come sempre: la sequenza casuale non cambia
 			local ok
@@ -640,6 +645,16 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 		end
 	end
 	return out
+end
+
+---The spaces of a composed text (#117): runs of spaces and tabs become one space and line breaks are kept: a verse per
+---line, at most one empty line between two stanzas, none at the start or the end, no space around a break. A text with
+---no break comes out as before. Explicit classes: %s splits accented letters in some locales.
+---@param text string
+---@return string
+function Engine.NormalizeSpace(text)
+	text = text:gsub("\r\n?", "\n"):gsub("[ \t]+", " "):gsub(" ?\n ?", "\n"):gsub("\n\n\n+", "\n\n")
+	return (text:gsub("^[ \n]+", ""):gsub("[ \n]+$", ""))
 end
 
 local function Capitalize(s)
@@ -995,8 +1010,8 @@ function Engine:PickOwn(event, ctx, form, composite)
 				mem.variant = mem.variant or {}
 				mem.variant[p.id] = variant
 			end
-			-- classi esplicite: %s in alcune impostazioni locali spezza le lettere accentate
-			text = text:gsub("[ \t\n]+", " "):gsub("^ ", ""):gsub(" $", "")
+			-- #117: line breaks are kept (verses); the other spaces are normalised
+			text = Engine.NormalizeSpace(text)
 			-- le emote non si toccano: il gioco antepone il nome del personaggio
 			if form == "say" then text = Capitalize(text) end
 			-- una frase parlata dentro una cornice è raccontata dal narratore

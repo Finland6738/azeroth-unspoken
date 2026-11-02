@@ -107,7 +107,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Engine/StyleResolver.lua`** | registers suited to the moment (GDD §5.2): allowed per event, preferred by zone, depth and voice; the affinity of a line (part of the `S` factor); compatibility between frame and line. |
 | **`Engine/Traits.lua`** | the trait model (GDD §7.1): definitions (`choice`, `scale` with bands, `set`), profiles holding only the traits that are set, `Sanitize`, `Merge` (priority between sources), affinity tags (`Evaluate`, `CheckTag`), localized names. It knows nothing about the character: Character Soul (S5), interlocutor (S6c) and relationships (S6b) reuse it. |
 | **`Engine/WeightedSelector.lua`** | eligibility over the candidates of the index, weight `W = B × C × P × N × S × R × E` (`Engine.Factors`, `Engine:Weight`, hooks via `Engine:SetWeightHook`), the memo of one pick (`Engine.MEMO`, #157), anti-repetition, bounded memory of uses (#86), event guards (`Engine:SetEventGuard`), `PickEntry`/`Pick`. |
-| **`Engine/Pacing.lua`** | cooldowns (moment, global, category, event) and per-category budgets for spontaneous interventions; state in memory only. |
+| **`Engine/Pacing.lua`** | cooldowns (moment, global, category, event) and per-category budgets for spontaneous interventions; state in memory only. #118: categories with their own pacing (`Engine.CATEGORY_DEFS`, `RegisterCategory(id, def)`), the literary category and its setting (`Frequency`, `LiteraryClosed`), the set of categories that wait (`Closed`). |
 | **`Engine/NarrativeDirector.lua`** | the priorities of §10, an intensity-driven opportunity gate, suspension (intrusive screens, demanding combat), the die roll, candidate order; hooks for rhythm and demand. |
 | **`Engine/TemplateRenderer.lua`** | placeholders, gender, vocabulary, frames. If a piece of data is missing, the line is discarded. |
 | **`Integration/TotalRP3.lua`** | optional adapter ([ADR 0004](adr/0004-total-rp-3-optional-with-adapter.md)): the profile name and, with consent, the public psychological traits of the player's **own** profile, mapped onto the Soul traits ([ADR 0016](adr/0016-character-soul-opt-in-traits-and-total-rp-3-with-consent.md)). |
@@ -125,7 +125,7 @@ Files are loaded in the order of the `.toc` (`AzerothUnspoken/AzerothUnspoken.to
 | **`Systems/Director.lua`** | the Narrative Director of spontaneous events: `Offer` (candidate), `Resolve` (at most one intervention per moment), `Evaluate` (the gate, S2's hook point), immediate pause, summary for `/au debug`. |
 | **`Systems/Triggers.lua`** | subscriber to the bus: turns normalized events into narrative events (`battle`, `victory`, `lowhp`, `death`, `rez`, `levelup`, `zone`, `attack`, `heal`, `buff`, `travel`, `rezother`) and offers them to the Director; holds the probabilities and cooldowns specific to each event. |
 | **`UI/Widgets.lua`** | small shared interface components. |
-| **`UI/NarratorFrame.lua`** | the private narrator: panel, duration (base plus reading time per UTF-8 character), background opacity (the text is never faded; the frame alpha is only the fade-out, skipped with "reduce motion"), history, editor, buttons, pause. While the Gateway holds a proposal the box shows it: other lines go to the history and wait in `Narrator.held` until it is resolved (#176). |
+| **`UI/NarratorFrame.lua`** | the private narrator: panel, duration (base plus reading time per UTF-8 character), background opacity (the text is never faded; the frame alpha is only the fade-out, skipped with "reduce motion"), history, editor, buttons, pause. While the Gateway holds a proposal the box shows it: other lines go to the history and wait in `Narrator.held` until it is resolved (#176). #126: the text is in a scroll frame (`frame.scroll`, child `frame.body`) as tall as the text up to `MAX_LINES`; a text with line breaks appears one line at a time (`RevealTimes`, `UpdateVerses`), the wheel scrolls it only when it overflows (`Scroll`); the history writes one message per line. |
 | **`UI/SpeakButton.lua`** | the "Speak" button and the key binding: the gesture that confirms the Chat Gateway. |
 | **`UI/ProfileFrame.lua`** | the profile window: archetype, traits, topics to avoid, Total RP 3 consent, neutral profile. |
 | **`UI/JournalFrame.lua`** | the Journal: tabs (memories, places, flags, session, stories; more via `RegisterTab`), selective deletion, permanence, reset with confirmation, a copyable export window. |
@@ -295,9 +295,10 @@ flowchart TD
 |---|---|---|
 | Moment | 4 s between any two interventions (explicit ones too) | nobody |
 | Global cooldown | `pacing.globalCooldownSeconds` (45) × (1.5 − intensity/100) | exceptional events |
-| Category cooldown | `Pacing.CATEGORY_COOLDOWN` (combat 15 s, exploration 30 s...) × the same factor | exceptional events |
+| Category cooldown | `Pacing.CATEGORY_COOLDOWN` (combat 15 s, exploration 30 s...) × the same factor; a category declared with its pacing (`Engine.CATEGORY_DEFS`, #118) uses its own `cooldown`, never under `minCooldown` | exceptional events |
 | Event cooldown | `NS.EVENT_COOLDOWN` × the same factor | nobody |
-| Budget | `Pacing.BUDGET` per category in 10 minutes (combat 6...) × intensity/50 | exceptional events |
+| Budget | `Pacing.BUDGET` per category in 10 minutes (combat 6...) × intensity/50; a declared category uses its own `budget` in its own `window` | exceptional events |
+| Category of the phrase (#118) | the categories of `Engine.CATEGORY_DEFS` pace their **phrases** on any event: `Pacing:Closed` puts those that wait (pause, budget, and for `lore` the setting `literary.frequency` and a fight) in `ctx.closed` and `Engine:Eligible` leaves their phrases out; `Pacing:RecordPhrase` starts the pause (a request) and spends the budget (spontaneous). `lore`: 1 in 25 minutes, pause 20, floor 10 ([ADR 0042](adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md)) | nobody; `never` and a fight close `lore` for requests too |
 | Quota (#91) | `Engine.QUOTAS` (data, `Data/Themes.lua`): a category at most `share` of the last `window` interventions, explicit ones included, of the last `span` seconds (combat 40% of 10 in 15 minutes); reason `quota:<category>` | exceptional events |
 | Intrusive screens | `InCinematic`, `IsInCinematicScene`, `CinematicFrame`/`MovieFrame` visible | nobody |
 | Demanding combat | in combat with a boss, in a raid, elite in an instance (`pacing.suppressInHighDemand`) | exceptional events |
@@ -737,7 +738,7 @@ A pack is a separate addon with `## Dependencies: AzerothUnspoken`. The API is d
 |---|---|
 | `AzerothUnspoken:RegisterPack({ id, name, languages, registry, texts, events, styles, categories, conditions, frames, vocab })` | schema v2: rules (`registry`), texts per language with variants (`texts`), events, registers, new categories and conditions, frames and vocabulary |
 | `AzerothUnspoken:AddTexts(language, { [id] = texts }, packId)` | texts (also translations and extra variants) for ids of this or of other packs (`AddTranslations` is the old alias) |
-| `AzerothUnspoken:RegisterEvent(name, { category, chance, cooldown })` · `RegisterStyle` · `RegisterCategory` · `RegisterCondition` | new events, registers, categories and conditions |
+| `AzerothUnspoken:RegisterEvent(name, { category, chance, cooldown })` · `RegisterStyle` · `RegisterCategory(id, { budget, window, cooldown, minCooldown }?)` · `RegisterCondition` | new events, registers, categories (with their own pacing, #118) and conditions |
 | `AzerothUnspoken:RegisterLanguage(code, { name, ui })` | adds a language (interface texts) |
 | `AzerothUnspoken:RegisterSpellKeywords({ kind = …, element = …, classElement = … })` | classifies spells and creates new kinds (each one fires the event of the same name) |
 | `AzerothUnspoken:SetEventDefaults(event, probability, pause)` | default probability and pause of a new event |

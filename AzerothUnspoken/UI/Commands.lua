@@ -18,6 +18,8 @@ local NARRATOR_WORDS = K.Register("narrator", { history = "history", reset = "re
 -- #185: the "In combat" setting
 local COMBAT_WORDS = K.Register("combat", { show = "show", chat = "chatframe", chatframe = "chatframe", hold = "hold",
 	silent = "silent" })
+-- #118: the "Literary forms" setting
+local LITERARY_WORDS = K.Register("literary", { never = "never", off = "never", rare = "rare", normal = "normal" })
 
 -- eventi richiamabili a mano: il nome del comando (e dell'argomento di test/event/chance) -> l'evento
 local MANUAL = K.Register("manual_events", {
@@ -243,6 +245,17 @@ local function Combat(rest)
 	NS:Print(NS:L("combat_now", NS:L("combat_" .. NS.Gateway:CombatSetting())))
 end
 
+-- #118: /au literary never / rare / normal
+local function Literary(rest, db)
+	local v = LITERARY_WORDS[NS.Lower(rest)]
+	if v then
+		NS.Config:Set("literary.frequency", v)
+	elseif rest ~= "" then
+		NS:Print(NS:L("invalid_value", rest, NS:L("values_literary")))
+	end
+	NS:Print(NS:L("literary_now", NS:L("literary_" .. db.literary.frequency)))
+end
+
 local function Intensity(rest, db)
 	local n = tonumber(rest)
 	if n then NS.Config:Set("intensity", n) end
@@ -333,6 +346,7 @@ Commands.list = {
 	{ name = "language", short = { "lang" }, fn = Language, usage = "language [it / en]", desc = "help_language", group = "start" },
 	{ name = "intensity", fn = Intensity, usage = "intensity <0-100>", desc = "help_intensity", group = "narrator" },
 	{ name = "depth", fn = Depth, usage = "depth natural / literary / elevated", desc = "help_depth", group = "narrator" },
+	{ name = "literary", fn = Literary, usage = "literary never / rare / normal", desc = "help_literary", group = "start" },
 	{ name = "mode", fn = Mode, usage = "mode private / preview / confirm / auto", desc = "help_mode", group = "chat" },
 	{ name = "channel", fn = Channel, usage = "channel auto / say / emote / party / raid / guild / instance / next",
 		desc = "help_channel", group = "chat" },
@@ -456,6 +470,7 @@ Commands.HINTS = {
 	pulsante = "button", pacchetti = "packs", pacchetto = "pack", valida = "validate", controlla = "validate",
 	info = "stats", memoria = "memory", opzioni = "options", lingua = "language", canale = "channel", modo = "mode",
 	chat = "mode", intensita = "intensity", ["intensità"] = "intensity", profondita = "depth", ["profondità"] = "depth",
+	letterarie = "literary", poesia = "literary",
 	pausa = "pause", narratore = "narrator", anima = "soul", profilo = "soul", saluto = "greet", addio = "farewell",
 	brindisi = "toast", pensiero = "muse", minaccia = "threat", grido = "battlecry", preghiera = "pray",
 	vittoria = "victory", ringrazia = "thanks", grazie = "thanks", scherzo = "jest", prob = "chance",

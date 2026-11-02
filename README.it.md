@@ -102,6 +102,7 @@ L'addon risponde a `/au` e a `/unspoken`. Ogni comando ha un solo nome, inglese;
 | `/au language [it\|en]` | lingua delle frasi e dell'interfaccia (forma breve `/au lang`); la predefinita è l'inglese |
 | `/au intensity <0-100>` | quanto spesso parla il narratore: 0 = muto per gli eventi spontanei, 50 = bilanciato, 100 = intenso |
 | `/au depth natural\|literary\|elevated` | profondità dello stile: le frasi scritte per quel tono pesano di più (le altre restano possibili) |
+| `/au literary never\|rare\|normal` | forme letterarie (versi, canzoni, racconti, solo nel narratore privato): rare di base, circa una ogni 20-30 minuti |
 | `/au mode private\|preview\|confirm\|auto` | che cosa può arrivare in chat; predefinito: `private`. `auto` non si attiva al primo comando: mostra un avviso e va ripetuto dopo un paio di secondi (entro 30) |
 | `/au channel auto\|say\|emote\|party\|raid\|guild\|instance` | canale predefinito delle proposte (forme brevi `s`, `e`, `p`, `g`, `i`) |
 | `/au speak` | come il tasto "pronuncia": conferma la proposta in attesa, oppure ne propone una nuova |

@@ -44,6 +44,8 @@ How often the narrator speaks up, from 0 to 100, in steps of 10 with the **-** a
 
 How elevated the language is: **Natural**, **Literary** (default) or **Elevated**. Each choice shows an example line. The other styles stay possible, just less likely.
 
+The guide does not ask about **literary forms** (verses, songs, inscriptions, tales in the private narrator): they are on and **rare** by default, about one every 20-30 minutes at intensity 50, never in combat. Change it any time in the settings (**Literary forms**: never, rare, normal) or with `/au literary`. See [[Literary Forms|Literary-Forms]].
+
 ### 5. Modules
 
 Turn single modules on or off: Personal, World, NPC dialogues, Memory, Relationships, Stories, Social, Audio. Each card says **On** or **Off** in words. Changing a module here makes your preset "Custom".

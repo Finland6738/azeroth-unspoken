@@ -7,6 +7,9 @@
 -- once and to the box after the proposal is sent, discarded or expired.
 -- The look (#186): a voice accent bar, voice-tinted text, another typeface for the inner voice, ghost icon buttons and
 -- a thin time line. Only coloured textures and the client's fonts: no Blizzard art.
+-- Long private reading (#126, D20): a text with line breaks (a verse, a song, a tale) keeps them (#117), appears one line
+-- at a time (the time to read the line before, and a short pause) and scrolls with the mouse wheel inside a box of at
+-- most MAX_LINES lines. The history keeps the line breaks too.
 local ADDON, NS = ...
 local W = NS.Widgets
 ---@class AUNarratorEntry
@@ -30,6 +33,9 @@ local PAD = 12                -- text margin from the left edge (after the accen
 local ICON, ICON_GAP = 24, 6  -- #183: header buttons are 24x24 targets, 6 units apart
 local BAR_GAP = 6             -- between the buttons of the proposal bar
 local HISTORY_LINES = 8       -- the history is as tall as eight lines of the narrator text (#182)
+local MAX_LINES = 12          -- #126: the text box grows up to this many lines, then the text scrolls
+local VERSE_PAUSE = 0.8       -- #126: seconds between a line read and the next one appearing
+local HISTORY_INDENT = "    " -- #117: the lines after the first of an entry in the history
 local EDGE = { 0.26, 0.21, 0.32 }
 local INNER_FONT = "Fonts\\ARIALN.TTF"   -- #186: the inner voice in another typeface, a cue that needs no colour
 
@@ -80,12 +86,52 @@ local function CharCount(text)
 	return n
 end
 
----Seconds a line stays on screen: the base duration plus the time to read it at the chosen speed (#177).
+---The lines of a text (#117): one per verse, "" for the empty line between two stanzas.
+---@param text? string
+---@return string[]
+function Narrator.Lines(text)
+	local out = {}
+	for line in ((text or "") .. "\n"):gmatch("([^\n]*)\n") do table.insert(out, line) end
+	return out
+end
+
+---When each line of a text with line breaks appears (#126): the first at once, each next one after the time to read the
+---one before at the chosen speed and VERSE_PAUSE; an empty line comes with the verse after it. nil for one line.
+---@param text? string
+---@return string[]? lines
+---@return number[]? at seconds from the start, per line
+---@return number? total the time to read every line
+function Narrator:RevealTimes(text)
+	if type(text) ~= "string" or not text:find("\n", 1, true) then return nil end
+	local speed = Cfg().readingSpeed
+	local lines, at, t = self.Lines(text), {}, 0
+	for i, line in ipairs(lines) do
+		at[i] = t
+		if line ~= "" then t = t + CharCount(line) / speed + VERSE_PAUSE end
+	end
+	return lines, at, t
+end
+
+---Seconds a line stays on screen: the base duration plus the time to read it at the chosen speed (#177). A text with
+---line breaks has the time of each line and the pause after it (#126).
 ---@param text string
 ---@return number seconds
 function Narrator:ReadingTime(text)
 	local cfg = Cfg()
+	local _, _, verses = self:RevealTimes(text)
+	if verses then return cfg.duration + verses end
 	return cfg.duration + CharCount(text or "") / cfg.readingSpeed
+end
+
+-- #126: the height of a line of the narrator text, like the history's (#182)
+local function LineHeight()
+	return math.ceil(Cfg().fontSize * 1.25)
+end
+
+---The tallest the text box grows (#126): MAX_LINES lines; a longer text scrolls.
+---@return number
+function Narrator:MaxTextHeight()
+	return MAX_LINES * LineHeight()
 end
 
 ---The background opacity actually drawn: the setting, never under MIN_BACKGROUND (#173). The text is not faded.
@@ -245,8 +291,13 @@ function Narrator:RefreshHistory()
 		local tag = e.sentTo and (" |cff" .. MUTED .. "(" .. NS:L("sent_to", CHANNEL_NAME[e.sentTo] or e.sentTo) .. ")|r")
 			or ""
 		local _, tint = self:VoiceColors(e.speaker)
+		-- #117: a text with line breaks keeps them, one message per line, the later ones indented
+		local lines = self.Lines(e.text)
 		h.messages:AddMessage(("|cff%s%s|r %s |cff%s%s|r%s"):format(MUTED, e.time,
-			Colored(e.speaker, self:VoiceLabel(e.speaker)), tint, e.text, tag))
+			Colored(e.speaker, self:VoiceLabel(e.speaker)), tint, lines[1], tag))
+		for i = 2, #lines do
+			h.messages:AddMessage(("|cff%s%s%s|r"):format(tint, HISTORY_INDENT, lines[i] ~= "" and lines[i] or " "))
+		end
 	end
 	h.messages:ScrollToBottom()
 end
@@ -407,12 +458,61 @@ local function LayoutBar(p)
 	if Arrange(key) > room and key then Arrange(nil) end
 end
 
+-- the height of the whole text and of the part on screen (#126: the lines revealed so far)
+local function TextHeights()
+	local shown = frame.text:GetStringHeight()
+	local cur, v = Narrator.current, Narrator.verses
+	if not (cur and v and v.rec == cur and v.shown < #v.lines) then return shown, shown end
+	local part = frame.text:GetText()
+	frame.text:SetText(cur.display)
+	local full = frame.text:GetStringHeight()
+	frame.text:SetText(part)
+	return full, shown
+end
+
+---#126: the box follows the line just revealed, unless the player scrolled.
+---@param shown number height of the text on screen
+function Narrator:FollowText(shown)
+	if not frame or self.userScrolled then return end
+	local offset = math.max(0, math.min(self.scrollMax or 0, shown - (self.viewHeight or shown)))
+	if offset ~= self.scrollOffset then
+		self.scrollOffset = offset
+		frame.scroll:SetVerticalScroll(offset)
+	end
+end
+
+---The mouse wheel over a text taller than the box (#126): a step of two lines. The box keeps the place the player chose.
+---@param delta number 1 up, -1 down
+---@return boolean scrolled
+function Narrator:Scroll(delta)
+	if not frame or not self.overflow then return false end
+	local offset = math.max(0, math.min(self.scrollMax or 0, (self.scrollOffset or 0) - delta * 2 * LineHeight()))
+	self.userScrolled = true
+	self.scrollOffset = offset
+	frame.scroll:SetVerticalScroll(offset)
+	return true
+end
+
 function Narrator:Layout()
 	if not frame then return end
 	local p = self.proposal and NS.Gateway:GetPending() or nil
 	local head = HeaderHeight()
 	frame.header:SetHeight(head)
-	local h = head + 2 + frame.text:GetStringHeight() + 12
+	-- #126: the box is as tall as the whole text from the start, up to MAX_LINES lines; the rest scrolls
+	local full, shown = TextHeights()
+	local view = math.min(full, self:MaxTextHeight())
+	self.viewHeight, self.scrollMax = view, math.max(0, full - view)
+	self.overflow = self.scrollMax > 0
+	frame.scroll:SetHeight(math.max(1, view))
+	frame.body:SetHeight(math.max(1, full))
+	-- only a text that does not fit takes the mouse wheel; nothing in the text takes a click
+	frame.scroll:EnableMouseWheel(self.overflow)
+	if not self.overflow and self.scrollOffset ~= 0 then
+		self.scrollOffset = 0
+		frame.scroll:SetVerticalScroll(0)
+	end
+	self:FollowText(shown)
+	local h = head + 2 + view + 12
 	if frame.editor:IsShown() then h = h + 30 end
 	if p then h = h + 34 end
 	frame:SetHeight(h)
@@ -480,6 +580,12 @@ function Narrator:Refresh()
 	if cur then
 		self:UpdateLabel()
 		frame.text:SetText(cur.display)
+		-- #126: only the lines revealed so far
+		local v = self.verses
+		if v and v.rec == cur then
+			v.shown = 0
+			self:UpdateVerses()
+		end
 		PaintVoice(cur.speaker)
 	end
 	-- "|" is the client's escape character: the pause icon is drawn, its name is "II" (#175)
@@ -493,8 +599,21 @@ function Narrator:Refresh()
 	self:Layout()
 end
 
+---#126: the lines of a text with line breaks that are due by now are on screen; the box follows the last one.
+function Narrator:UpdateVerses()
+	local v = self.verses
+	if not frame or not v or v.rec ~= self.current then return end
+	local n, elapsed = 1, self.elapsed or 0
+	while v.at[n + 1] and v.at[n + 1] <= elapsed do n = n + 1 end
+	if n == v.shown then return end
+	v.shown = n
+	frame.text:SetText(table.concat(v.lines, "\n", 1, n))
+	self:FollowText(frame.text:GetStringHeight())
+end
+
 function Narrator:Clear()
 	self.current = nil
+	self.verses = nil
 	self.proposal = nil
 	self.held = {}
 	self:CloseEditor()
@@ -540,6 +659,15 @@ local function Reveal(rec, seconds)
 	Narrator.proposal = rec.proposal
 	Narrator.elapsed = 0
 	Narrator.remaining = seconds
+	-- #126: a text with line breaks appears one line at a time, unless motion is reduced (then all at once, with the
+	-- same reading time); the box starts at the top
+	Narrator.verses = nil
+	if not rec.proposal and not Cfg().reduceMotion then
+		local lines, at = Narrator:RevealTimes(rec.display)
+		if lines then Narrator.verses = { rec = rec, lines = lines, at = at, shown = 0 } end
+	end
+	Narrator.userScrolled, Narrator.scrollOffset = false, 0
+	frame.scroll:SetVerticalScroll(0)
 	frame:Show()
 	Narrator:Refresh()
 	Narrator:ApplySettings()
@@ -798,7 +926,7 @@ local function BuildHistory()
 	-- the narrator's own font, at its size (ApplySettings)
 	m:SetFontObject(GameFontHighlight)
 	m:SetJustifyH("LEFT")
-	m:SetMaxLines(100)
+	m:SetMaxLines(400)   -- #117: an entry with line breaks takes one line per verse
 	m:SetFading(false)
 	m:EnableMouseWheel(true)
 	m:SetScript("OnMouseWheel", function(self, delta)
@@ -864,10 +992,21 @@ local function Build()
 	frame.historyBtn = Icon("H", function() return NS:L("tip_history") end, function() Narrator:ToggleHistory() end, 1)
 	frame.pauseBtn = Icon("II", function() return NS:L("tip_pause") end, function() NS.Director:TogglePause() end, 2)
 
-	-- #182: the text starts under the header, whatever its height
-	frame.text = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-	frame.text:SetPoint("TOPLEFT", header, "BOTTOMLEFT", PAD, -2)
-	frame.text:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", -PAD, -2)
+	-- #182: the text starts under the header, whatever its height. #126: inside a scroll box, as tall as the text up to
+	-- MAX_LINES lines (Layout); it takes the mouse wheel only when the text does not fit, never a click
+	frame.scroll = CreateFrame("ScrollFrame", nil, frame)
+	frame.scroll:SetPoint("TOPLEFT", header, "BOTTOMLEFT", PAD, -2)
+	frame.scroll:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", -PAD, -2)
+	frame.scroll:SetHeight(1)
+	frame.scroll:EnableMouse(false)
+	frame.scroll:EnableMouseWheel(false)
+	frame.scroll:SetScript("OnMouseWheel", function(_, delta) Narrator:Scroll(delta) end)
+	frame.body = CreateFrame("Frame", nil, frame.scroll)
+	frame.body:SetSize(WIDTH - 2 * PAD, 1)
+	frame.scroll:SetScrollChild(frame.body)
+	frame.text = frame.body:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+	frame.text:SetPoint("TOPLEFT", frame.body, "TOPLEFT", 0, 0)
+	frame.text:SetWidth(WIDTH - 2 * PAD)
 	frame.text:SetJustifyH("LEFT")
 	frame.text:SetJustifyV("TOP")
 	frame.text:SetWordWrap(true)
@@ -933,6 +1072,7 @@ local function Build()
 			-- il tempo (and the time line) stops GRACE seconds before the end: once the mouse leaves, the box stays a
 			-- moment longer instead of vanishing under the hand (#21)
 			Narrator.elapsed = math.min(Narrator.elapsed, math.max(0, remaining - GRACE))
+			Narrator:UpdateVerses()
 			Narrator:UpdateTimeLine()
 			return
 		end
@@ -941,6 +1081,7 @@ local function Build()
 			-- #186: no fade (#173 keeps the frame alpha at 1); the time line has run out and the box goes
 			if not Narrator:NextHeld() then self:Hide() end
 		else
+			Narrator:UpdateVerses()
 			Narrator:UpdateTimeLine()
 		end
 	end)

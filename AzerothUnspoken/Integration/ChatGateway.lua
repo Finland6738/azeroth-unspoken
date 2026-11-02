@@ -56,7 +56,8 @@ local PUBLIC_VOICE = { narrator = true, character = true }
 ---The central guard of the gateway (#152, #163, ADR 0003, ADR 0032): why a line can never become public text, or nil
 ---when it may. It reads the record, then the rule it came from, so it holds even when the data is wrong: a monologue
 ---(any voice: it speaks as the narrator or the inner voice and is never sent to chat), a literary line (tags `lore`,
----`genre_*`) and a private voice (inner, npc). Every path to chat asks it: Propose, Reroll, SendPending, CopyToChat.
+---`genre_*`, or the literary category `lore`, #118) and a private voice (inner, npc). Every path to chat asks it:
+---Propose, Reroll, SendPending, CopyToChat.
 ---@param rec table a phrase record or a proposal (kind, speaker, id, tags)
 ---@return string? why "monologue" | "literary" | "voice"
 function Gateway:PrivateReason(rec)
@@ -64,8 +65,13 @@ function Gateway:PrivateReason(rec)
 	local rule = rec.id and NS.Engine.byId[rec.id] or nil
 	if rec.kind == "monologue" or (rule and rule.kind == "monologue") then return "monologue" end
 	if type(rec.parts) == "table" and #rec.parts > 0 then return "monologue" end
-	-- D16 (#130, #163): `lore` and `genre_*` mark a literary form, which stays private whatever its voice
-	if NS.Engine.HasLiteraryTag(rec.tags) or (rule and NS.Engine.HasLiteraryTag(rule.tags)) then return "literary" end
+	-- D16 (#130, #163): `lore` and `genre_*` mark a literary form, which stays private whatever its voice; so does the
+	-- literary category (#118), whatever the tags say
+	local literary = NS.Engine.LITERARY_CATEGORY
+	if NS.Engine.HasLiteraryTag(rec.tags) or (rule and NS.Engine.HasLiteraryTag(rule.tags))
+		or rec.category == literary or (rule and rule.category == literary) then
+		return "literary"
+	end
 	if not PUBLIC_VOICE[rec.speaker] then return "voice" end
 	return nil
 end
@@ -98,6 +104,16 @@ NS.Clip = Clip
 local function Trim(s)
 	return (s:gsub("^[ \t\r\n]+", ""):gsub("[ \t\r\n]+$", ""))
 end
+
+---One line for chat (#117): a line break, with the spaces around it, becomes " / ". SendChatMessage takes one line;
+---the private narrator and the history keep the breaks. Every text bound for chat passes here (TextFor, Send, the
+---editor).
+---@param text string
+---@return string
+local function OneLine(text)
+	return (text:gsub("[ \t]*[\r\n][ \t\r\n]*", " / "))
+end
+Gateway.OneLine = OneLine
 
 ---------------------------------------------------------------------------
 -- Modalità
@@ -267,7 +283,7 @@ end
 ---@param player? string nome del personaggio (anche da Total RP 3)
 ---@return string
 function Gateway:TextFor(form, text, channel, player)
-	text = Trim(text or "")
+	text = OneLine(Trim(text or ""))
 	if text == "" then return "" end
 	if form == "emote" then
 		if channel == "EMOTE" then return text end
@@ -387,7 +403,8 @@ end
 ---@return any? err
 function Gateway:Send(text, channel, opts)
 	opts = opts or {}
-	text = Trim(text or "")
+	-- #117: never a line break in a chat message, whoever calls Send
+	text = OneLine(Trim(text or ""))
 	if text == "" then return false, "empty" end
 	-- #152, #163: a proposal that carries a private line is refused here too, whoever calls Send
 	if opts.proposal and self:PrivateReason(opts.proposal) then return false, "private_only" end
@@ -545,7 +562,8 @@ end
 ---@return boolean ok
 function Gateway:SetPendingText(text)
 	local p = self:GetPending()
-	text = Trim(text or "")
+	-- #117: the editor is one line, like the message it sends
+	text = OneLine(Trim(text or ""))
 	if not p or text == "" then return false end
 	p.edited = text
 	p.display = self:DisplayFor(p)
@@ -940,7 +958,11 @@ function Gateway:Narrate(event, ctx, opts)
 	if not rec then return false end
 	local shown = self:Propose(rec, ctx, opts)
 	-- una frase chiesta dal giocatore apre il "momento" del pacing: nessuna frase spontanea subito dopo
-	if shown and not (opts and opts.auto) and NS.Pacing then NS.Pacing:Note(GetTime(), NS.Engine.EventCategory(event)) end
+	if shown and not (opts and opts.auto) and NS.Pacing then
+		NS.Pacing:Note(GetTime(), NS.Engine.EventCategory(event))
+		-- #118: a literary piece asked for starts the pause of its category too (never two within minutes)
+		NS.Pacing:RecordPhrase(rec.category, GetTime(), false)
+	end
 	return shown, shown and rec or nil
 end
 

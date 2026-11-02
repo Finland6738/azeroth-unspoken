@@ -75,6 +75,13 @@ NS:RegisterLanguage("it", {
 		combat_now = "in combattimento: %s",
 		values_combat = "show, chat, hold, silent",
 		help_combat = "che cosa fa il narratore durante uno scontro",
+		-- #118: forme letterarie
+		opt_literary = "Forme letterarie",
+		opt_literary_tip = "Versi, canzoni, iscrizioni e racconti, letti solo nel tuo narratore privato e mai proposti per la chat. Rare (predefinito): circa una ogni 20-30 minuti a intensità 50, mai in combattimento. Normali: circa il doppio. Mai: nessuna, nemmeno a richiesta.",
+		literary_never = "mai", literary_rare = "rare", literary_normal = "normali",
+		literary_now = "forme letterarie: %s",
+		values_literary = "never, rare, normal",
+		help_literary = "quanto spesso arrivano versi, canzoni e racconti (solo nel narratore privato)",
 		gw_combat_improvise = "in combattimento il tasto 'pronuncia' non inventa una frase nuova. /au battlecry ne chiede una.",
 		gw_combat_held = "%d frasi aspettano la fine dello scontro.",
 		gw_combat_editor = "in combattimento l'editor non si apre mai. La proposta: %s\nPremi di nuovo per inviarla così com'è, oppure /au cancel.",

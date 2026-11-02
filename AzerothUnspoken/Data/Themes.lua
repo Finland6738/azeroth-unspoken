@@ -1,5 +1,5 @@
 -- Closed vocabularies of themes and motifs (#90, ADR 0029), the direction data of the selection: the related-event
--- fallbacks (#89) and the per-session category quotas and hunger (#91).
+-- fallbacks (#89), the per-session category quotas and hunger (#91) and the categories with their own pacing (#118).
 -- A theme is the idea a phrase is about (one per rule); a motif is a concrete image the phrase shows (zero to three).
 -- The validator rejects a theme or a motif that is not declared here or by a pack (`themes = {}`, `motifs = {}`).
 -- The selection remembers, for the session only, the themes, motifs, voices, openings and frames of the last
@@ -53,6 +53,13 @@ NS:RegisterPack({
 	events = {
 		rezother = { fallback = "heal" },
 		threat = { fallback = "battle" },
+	},
+	-- categories with their own pacing (#118, ADR 0042): the literary forms (verses, songs, inscriptions, tales) are
+	-- rare. At intensity 50 at most one in 25 minutes and a pause of 20 minutes; at any intensity never two within ten
+	-- minutes. Their phrases are paced wherever they speak; the setting "literary forms" (never / rare / normal) scales
+	-- them and a fight closes them
+	categories = {
+		lore = { budget = 1, window = 1500, cooldown = 1200, minCooldown = 600 },
 	},
 	-- per-session category quotas (#91): a category may take at most `share` of the last `window` spontaneous
 	-- interventions; exceptional moments (death, resurrection, level up) are never refused

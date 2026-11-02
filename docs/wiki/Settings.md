@@ -21,6 +21,7 @@ Changes take effect at once. There is no Save button.
 | Phrase language | English (`en`) | **Phrase language** (click to cycle) | `/au language it` | Language of lines and interface. Choose it in the wizard or with the command. See [[Languages]]. |
 | Intensity | 50 | **Intensity** (- / + by 10) | `/au intensity <0-100>` | How often the narrator speaks. 0 = silent for spontaneous events. |
 | Style depth | Literary | **Style depth** (click to cycle) | `/au depth natural\|literary\|elevated` | Which style of line is preferred. |
+| Literary forms | Rare | **Literary forms** (click to cycle) | `/au literary never\|rare\|normal` | How often verses, songs, inscriptions and tales come, only in the private narrator and never in combat. Rare: about one every 20-30 minutes at intensity 50. Normal: about twice as often. Never: none at all. See [[Literary Forms|Literary-Forms]]. |
 | Pause between lines | 45 s | **Pause between lines** (cycles 15, 30, 45, 60, 90, 120, 180) | `/au cooldown <0-3600>` | Minimum pause between two spontaneous lines. |
 | Window scale | 100% | **Window scale** (- / + by 10%) | — | 80–150%. The size of the journal, export, relationships, character soul, setup guide and NPC dialogue windows. Open windows follow at once. The narrator box has its own **Text size**. |
 | Event probability | per event, see below | — | `/au chance <event> <0-100>` | Chance that an event produces a line. |
