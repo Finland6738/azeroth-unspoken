@@ -339,7 +339,22 @@ function Widget:SetWidth(w) self._s.w = w end
 function Widget:SetHeight(h) self._s.h = h end
 function Widget:GetWidth() return self._s.w or 100 end
 function Widget:GetHeight() return self._s.h or 20 end
-function Widget:GetStringHeight() return 14 * (1 + math.floor(#(self._s.text or "") / 60)) end
+-- 60 bytes a line, and (#117) every line break starts a new line
+function Widget:GetStringHeight()
+	local h = 0
+	for line in ((self._s.text or "") .. "\n"):gmatch("([^\n]*)\n") do h = h + 14 * (1 + math.floor(#line / 60)) end
+	return h
+end
+-- #126: scroll frames and the history's message frame keep what the addon gave them
+function Widget:SetVerticalScroll(v) self._s.scroll = v end
+function Widget:GetVerticalScroll() return self._s.scroll or 0 end
+function Widget:SetScrollChild(c) self._s.scrollChild = c end
+function Widget:EnableMouseWheel(v) self._s.wheel = v and true or false end
+function Widget:IsMouseWheelEnabled() return self._s.wheel == true end
+function Widget:EnableMouse(v) self._s.mouse = v and true or false end
+function Widget:IsMouseEnabled() return self._s.mouse == true end
+function Widget:AddMessage(m) self._s.messages = self._s.messages or {}; table.insert(self._s.messages, m) end
+function Widget:Clear() self._s.messages = {} end
 function Widget:GetStringWidth() return math.min(#(self._s.text or "") * 6, 400) end
 function Widget:SetPoint(...) self._s.points = self._s.points or {}; table.insert(self._s.points, { ... }) end
 function Widget:ClearAllPoints() self._s.points = nil end

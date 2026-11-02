@@ -183,7 +183,7 @@ Inscriptions, solemn formulas, remembered verses, inn rhymes, road songs, prover
 **Voice and frequency**
 
 6. **Never in public chat (D16).** A literary piece is spoken by a private voice only: `inner` (what the character reads, remembers or hums) or `npc` (an NPC sings or recites in an ambient dialogue). Never `narrator` or `character`, which can become chat proposals; no chat excerpt either. `Tests/check_versi.py` checks it for the verses pack.
-7. **Rare (D15).** `combat = false` on every rule, a cooldown of three to seven days per piece (`cooldown = 3 * DAY` ... `7 * DAY`), and conditions that make the moment right (first visit, a return with a real memory, a known person, a lost boss fight) rather than a high weight.
+7. **Rare (D15).** `category = "lore"` on every rule (the engine keeps the category to about one piece every 20-30 minutes at intensity 50 and follows the user's setting **Literary forms**, [ADR 0042](docs/adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md)), `combat = false`, a cooldown of three to seven days per piece (`cooldown = 3 * DAY` ... `7 * DAY`), and conditions that make the moment right (first visit, a return with a real memory, a known person, a lost boss fight) rather than a high weight.
 8. **Tags.** `lore`, one `genre_*` tag (`genre_inscription`, `genre_formula`, `genre_verse`, `genre_nursery_rhyme`, `genre_inn_rhyme`, `genre_road_song`, `genre_saying`, `genre_proverb`, `genre_hymn`, `genre_lament`) and one `origin_*` tag (`origin_carved`, `origin_sung`, `origin_spoken`, `origin_remembered`), plus `topic:death` or `topic:religion` where the piece touches them, so that a player who avoids the topic never sees it. Do not use a colon in the genre and origin tags: a colon makes an affinity tag.
 
 **Writing**
@@ -197,18 +197,18 @@ Inscriptions, solemn formulas, remembered verses, inn rhymes, road songs, prover
     - Italian: the traditional metres, counting the synalepha: settenario, ottonario, decasillabo, endecasillabo. Rhyme is welcome, not required; mix metres in one piece only on purpose.
 11. **Re-create, do not translate.** English and Italian are two poems with the same intention, register and length, each with its own metre; images and rhymes may differ ("three times the kettle knows where you rest" / "alla terza, anche il boccale sa già come bevi il vino"). English is American English ([#66](https://github.com/Finland6738/azeroth-unspoken/issues/66)).
 12. **No placeholders** in songs and formulas (`{player}`, `{zone}`, `{target}`...): a song does not know the name of whoever hums it.
-13. **Form today.** One line per text, verses separated by `" / "`, at most 255 bytes in every language, frame included. Real line breaks come with [#117](https://github.com/Finland6738/azeroth-unspoken/issues/117).
+13. **Form.** The attribution on the first line, ending with a colon, then one verse per line (`\n`, [#117](https://github.com/Finland6738/azeroth-unspoken/issues/117)); an empty line (`\n\n`) between two stanzas. The narrator shows the lines one at a time and scrolls a long text ([#126](https://github.com/Finland6738/azeroth-unspoken/issues/126)). A song or a verse stays under 255 bytes in every language; only a tale may reach 600.
 
 **Review checklist for a literary piece**
 
 - [ ] Classic era only; canonical names correct, with a checkable reference.
 - [ ] Attributed to a voice; nothing invented is stated as fact; no prophecy.
 - [ ] No invented name or language; no song credited to a canonical character.
-- [ ] `inner` or `npc` only; `combat = false`; cooldown of three to seven days; no race or faction condition.
+- [ ] `inner` or `npc` only; `category = "lore"`; `combat = false`; cooldown of three to seven days; no race or faction condition.
 - [ ] `lore`, `genre_*`, `origin_*` and the `topic:` tags it needs.
 - [ ] Read aloud in both languages; no warning phrase, or a reason for it; nothing it "reminds you of".
 - [ ] Metre counted line by line in both languages; the Italian is a re-creation, not a calque.
-- [ ] No placeholders; one line with `" / "`; 255 bytes at most; `/au validate` and the tests pass.
+- [ ] No placeholders; the attribution, then one verse per line; 255 bytes at most (600 for a tale); `/au validate` and the tests pass.
 
 ### Writing content through the archive
 

@@ -1025,8 +1025,10 @@ T.run("#186, #183: pulsanti a icona 24x24 a 6 di distanza; l'intestazione cresce
 		T.ok(frame.header:GetHeight() >= labelSize + 8, "intestazione più alta dell'etichetta a " .. fontSize)
 		T.ok(frame.header:GetHeight() >= 28, "e dei pulsanti")
 	end
-	local anchor = frame.text._s.points[1]
+	-- #126: the text is in a scroll box anchored under the header
+	local anchor = frame.scroll._s.points[1]
 	T.ok(anchor[2] == frame.header and anchor[3] == "BOTTOMLEFT", "il testo è ancorato sotto l'intestazione")
+	T.ok(frame.text.parent == frame.body and frame.scroll._s.scrollChild == frame.body, "dentro la casella che scorre")
 	Gateway:Propose(Rec("say", "inner", "Un pensiero."), CTX, {})
 	T.ok(frame:GetHeight() >= frame.header:GetHeight() + frame.text:GetStringHeight(), "il riquadro contiene tutto")
 	NS.db.ui.narrator.fontSize = 14

@@ -8,6 +8,10 @@
 --   categoria CATEGORY_COOLDOWN[categoria] tra due interventi della stessa categoria
 --   evento    NS.EVENT_COOLDOWN[evento] tra due interventi dello stesso evento
 --   budget    BUDGET[categoria] interventi in WINDOW secondi, scalati con l'intensità
+--   #118      a category declared with its own pacing (NS:RegisterCategory(id, def), Engine.CATEGORY_DEFS: the literary
+--             forms, `lore`) has its budget, window and pause there, and paces its own phrases whatever their event:
+--             the Director puts the categories that cannot speak now in ctx.closed (Pacing:Closed) and Engine:Eligible
+--             leaves their phrases out. The literary ones also follow the setting literary.frequency (never/rare/normal)
 --   quota     #91: a category may take at most Engine.QUOTAS[category].share of the last `window` interventions
 --             (spontaneous and explicit) of the last `span` seconds (data: Data/Themes.lua and the packs)
 --   id        il cooldown della frase (campo `cooldown` della regola) e la finestra anti-ripetizione restano
@@ -96,8 +100,60 @@ end
 ---@return integer
 function Pacing:Budget(category, intensity)
 	intensity = math.max(0, math.min(100, tonumber(intensity) or 50))
-	local base = self.BUDGET[category] or self.DEFAULT_BUDGET
+	local def = Engine.CATEGORY_DEFS[category]
+	local base = def and tonumber(def.budget) or self.BUDGET[category] or self.DEFAULT_BUDGET
+	local freq = self:Frequency(category)
+	if freq then base = base * freq.budget end
 	return math.ceil(base * intensity / 50)
+end
+
+-- #118, D15: the setting "literary forms" (literary.frequency) for the literary category: "rare" (the default) is the
+-- category as declared, "normal" twice the budget and half the pause (never under minCooldown); "never" closes it
+Pacing.LITERARY = {
+	rare = { budget = 1, cooldown = 1 },
+	normal = { budget = 2, cooldown = 0.5 },
+}
+
+---The user's frequency for a category (#118): only the literary category has one. nil = as declared.
+---@param category string
+---@return { budget: number, cooldown: number }?
+function Pacing:Frequency(category)
+	if category ~= Engine.LITERARY_CATEGORY or not NS.db or type(NS.db.literary) ~= "table" then return nil end
+	return self.LITERARY[NS.db.literary.frequency]
+end
+
+---Whether the literary forms may not speak at all now (#118): the setting is "never", or the character is fighting
+---(D15: never in combat). Explicit requests included: the setting is the user's, the fight is the fight.
+---@param ctx? table
+---@return boolean
+function Pacing:LiteraryClosed(ctx)
+	local db = NS.db
+	if db and type(db.literary) == "table" and db.literary.frequency == "never" then return true end
+	return (ctx and ctx.combat) and true or false
+end
+
+---The window of the budget of a category, in seconds: its own (#118) or WINDOW.
+---@param category string
+---@return number
+function Pacing:Window(category)
+	local def = Engine.CATEGORY_DEFS[category]
+	local w = def and tonumber(def.window)
+	return (w and w > 0) and w or self.WINDOW
+end
+
+---Seconds between two interventions of a category, with the multiplier of the intensity and of the rhythm (#118: its
+---own pause, the user's frequency and its floor).
+---@param category string
+---@param mul number
+---@return number
+function Pacing:CategoryCooldown(category, mul)
+	local def = Engine.CATEGORY_DEFS[category]
+	local cc = (def and tonumber(def.cooldown) or self.CATEGORY_COOLDOWN[category] or 0) * mul
+	local freq = self:Frequency(category)
+	if freq then cc = cc * freq.cooldown end
+	local floor = def and tonumber(def.minCooldown)
+	if floor and cc < floor then cc = floor end
+	return cc
 end
 
 ---Interventi della categoria ancora dentro la finestra (toglie i vecchi).
@@ -107,8 +163,44 @@ end
 function Pacing:Spent(category, now)
 	local list = self.spent[category]
 	if not list then return 0 end
-	while list[1] and now - list[1] >= self.WINDOW do table.remove(list, 1) end
+	local window = self:Window(category)
+	while list[1] and now - list[1] >= window do table.remove(list, 1) end
 	return #list
+end
+
+---The categories with their own pacing (#118) that cannot speak now, whatever the event: their pause is running, their
+---budget is spent, or (the literary forms) the setting or a fight closes them. nil when every one may speak. The
+---Director puts the set in ctx.closed for a spontaneous pick; the phrases of these categories are left out.
+---@param now number
+---@param mul number multiplier of the pauses (intensity, rhythm)
+---@param intensity number
+---@param ctx? table
+---@return table<string, boolean>? closed
+function Pacing:Closed(now, mul, intensity, ctx)
+	local out
+	for cat in pairs(Engine.CATEGORY_DEFS) do
+		local last = self.byCategory[cat]
+		if (last and now - last < self:CategoryCooldown(cat, mul)) or self:Spent(cat, now) >= self:Budget(cat, intensity)
+			or (cat == Engine.LITERARY_CATEGORY and self:LiteraryClosed(ctx)) then
+			out = out or {}
+			out[cat] = true
+		end
+	end
+	return out
+end
+
+---A phrase of a category with its own pacing spoke on an event of another category (#118): its pause starts and, when
+---it was spontaneous, it spends its budget. The event's category is recorded as usual (Record, Note).
+---@param category? string the phrase's category
+---@param now number
+---@param spontaneous boolean
+function Pacing:RecordPhrase(category, now, spontaneous)
+	if not category or not Engine.CATEGORY_DEFS[category] then return end
+	self.byCategory[category] = now
+	if spontaneous then
+		self.spent[category] = self.spent[category] or {}
+		table.insert(self.spent[category], now)
+	end
 end
 
 ---@class AUPacingQuery
@@ -118,19 +210,22 @@ end
 ---@field important boolean momento importante: salta pausa globale, di categoria e budget
 ---@field intensity number
 ---@field now number
+---@field ctx? table #118: the context, for the literary category (closed by the setting or a fight)
 
 ---Il pacing permette un intervento? Restituisce true oppure false e il motivo.
 ---@param q AUPacingQuery
 ---@return boolean ok
----@return string? reason moment | cooldown:global | cooldown:category | cooldown:event | budget:<categoria> | quota:<categoria>
+---@return string? reason moment | literary | cooldown:global | cooldown:category | cooldown:event | budget:<categoria> | quota:<categoria>
 function Pacing:Check(q)
 	local now, mul = q.now, q.cooldownMul or 1
 	self.started = self.started or now
 	if self.lastAny and now - self.lastAny < self.MOMENT then return false, "moment" end
+	-- #118: an event of the literary category itself follows the setting and never speaks in a fight
+	if q.category == Engine.LITERARY_CATEGORY and self:LiteraryClosed(q.ctx) then return false, "literary" end
 	if not q.important then
 		local global = (NS.db and NS.db.pacing.globalCooldownSeconds or 45) * mul
 		if self.last and now - self.last < global then return false, "cooldown:global" end
-		local cc = (self.CATEGORY_COOLDOWN[q.category] or 0) * mul
+		local cc = self:CategoryCooldown(q.category, mul)
 		local lc = self.byCategory[q.category]
 		if lc and now - lc < cc then return false, "cooldown:category" end
 	end

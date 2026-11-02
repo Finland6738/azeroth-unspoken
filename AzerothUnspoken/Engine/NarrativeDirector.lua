@@ -8,7 +8,7 @@ local Pacing = NS.Pacing
 
 ---@class AUVerdict
 ---@field allow boolean
----@field reason? string disabled | paused | module:<nome> | silent | screen:<nome> | busy | combat | moment | cooldown:<tipo> | budget:<categoria> | quota:<categoria>
+---@field reason? string disabled | paused | module:<nome> | silent | screen:<nome> | busy | combat | moment | literary | cooldown:<tipo> | budget:<categoria> | quota:<categoria>
 ---@field chanceMul? number moltiplicatore della probabilità dell'evento
 ---@field cooldownMul? number moltiplicatore delle pause
 ---@field hunger? number hunger of the category (#91): already in chanceMul
@@ -152,7 +152,7 @@ function ND:Gate(event, ctx, now)
 	end
 
 	local ok, why = Pacing:Check({ event = event, category = category, cooldownMul = cooldownMul,
-		important = important, intensity = db.intensity, now = now })
+		important = important, intensity = db.intensity, now = now, ctx = ctx })
 	if not ok then return No(why) end
 	-- #91: a category silent for a while is more likely to speak (never above 100%, see Roll)
 	local hunger = Pacing:Hunger(category, now)

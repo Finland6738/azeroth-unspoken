@@ -394,6 +394,31 @@ English counterpart of the section **N1** of [G1_checklist.md](G1_checklist.md).
 - **N1.7 · Coming home.** Stay away from your hearthstone's town for more than five days, then come back. **Expect:** a warm line ("Home again. ..."), or a cold one after N1.6.
 - **N1.8 · The options.** Turn off **Eternal grudge**: the detail says how many days the grudge holds. Turn off **Hostility notices**: no line, but the grudge stays. Never anything in chat.
 
+## L2: verses on several lines, rare literary forms, long reading (issues #117, #118 and #126)
+
+English counterpart of the section **L2** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Tested with
+the mock client only ([ADR 0042](adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md)): the owner
+chose not to stop for in-game tests. It needs the `AzerothUnspoken_Versi` folder.
+
+- **L2.1 · One verse per line.** `/au event lore_test` a few times. **Expect:** the first line (who carries the words,
+  ending with a colon), then the verses **one at a time**, each after the time to read the one before; the box is
+  already as tall as the whole piece and does not jump. **Report:** lines that come too fast or too slowly; a verse
+  that wraps badly.
+- **L2.2 · Wheel and clicks.** Set the text size to 24 and repeat L2.1 until a piece does not fit (more than twelve
+  lines). **Expect:** the box stops at twelve lines and the text scrolls with the **mouse wheel** over it; the box
+  follows the last line until you scroll it. A click on the text still reaches the game. **Report:** a wheel that does
+  nothing, or a text that blocks clicks.
+- **L2.3 · Reduce motion.** Turn **Reduce motion** on and repeat L2.1. **Expect:** the whole piece at once, for the same
+  time.
+- **L2.4 · The history.** Open the history. **Expect:** the piece on several lines, the first with the time and the
+  voice, the others indented.
+- **L2.5 · Never in chat.** With `/au mode confirm` (and `auto`, if you turned it on) repeat L2.1, and try it in combat.
+  **Expect:** no proposal, nothing in chat; in combat no piece at all.
+- **L2.6 · How often.** Play an hour with **Literary forms** on *rare* (the default) where the pieces belong (step 106),
+  then an hour on *normal*; try *never* with `/au event lore_test`. **Expect:** rare: about one piece every 20-30
+  minutes at most, never two within ten minutes; normal: about twice as many; never: none, not even by hand.
+  **Report:** how many pieces in an hour and whether the rhythm feels right.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -461,4 +486,6 @@ N1 strike first ......... line? ___  after (s) ______  with a spell? ___  Hated?
 N1 kill / witnesses ..... kill line? ___  pet? ___  witness with less trust? ___  the town knows? ___
 N1 faction / guest-right  other faction's city? ___  innkeeper recognised? ___  GetBindLocation ______  journal? ___
 N1 home / options ....... warm/cold return? ___  eternal grudge off: days? ___  notices off? ___  nothing in chat? ___
+L2 verses ............... one at a time? ___  too fast/slow? ___  wheel? ___  clicks pass? ___  history line breaks? ___
+L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  never: none? ___  nothing in chat? ___
 ```

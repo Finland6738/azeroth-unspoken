@@ -5,6 +5,8 @@
 --   Triggers: Fire(evento) -> Director:Offer -> (ARBITRATION s) -> Director:Resolve
 --     candidati in ordine di priorità -> contesto -> Evaluate (gate) -> dado -> Gateway:Narrate
 --     il primo che produce una frase vince, gli altri tacciono; nessuno = silenzio
+--   #118 (ADR 0042): a category declared with its own pacing (the literary forms, `lore`) is paced on its phrases: the
+--     categories that cannot speak now go in ctx.closed and their phrases are left out of the pick
 --   #100 (ADR 0032): before the winner speaks, Compose looks for a composite situation (Data/Themes.lua) whose lead is
 --     the winner and whose other events were offered in this moment or in the last seconds; its ids go in
 --     ctx.situation and the lines written for it are tried first. Still one line: the merged candidates stay silent.
@@ -157,9 +159,12 @@ function Director:Resolve()
 		else
 			local situations, matched = self:Compose(c, ctx, GetTime())
 			ctx.situation = situations
+			-- #118: the categories with their own pacing (the literary forms) that cannot speak now, on any event
+			ctx.closed = Pacing:Closed(GetTime(), verdict.cooldownMul or 1, NS.db.intensity, ctx)
 			local shown, rec = NS.Gateway:Narrate(c.event, ctx, { auto = true })
 			if shown then
 				Pacing:Record(c.event, verdict.category, GetTime())
+				if rec and rec.category ~= verdict.category then Pacing:RecordPhrase(rec.category, GetTime(), true) end
 				-- #100: the offers the composite line was written for are merged into it, once
 				local merged = {}
 				local used = rec and rec.situation and matched and matched[rec.situation]

@@ -8,6 +8,43 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### L2: verses on several lines, rare literary forms, long private reading (issues #117, #118, #126)
+
+Step L2 of the literary forms milestone. The engine now gives verses their shape and their rarity, and the narrator
+reads long texts. Owner decisions D15, D16 and D20 of #130;
+[ADR 0042](docs/adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md). Tested with the mock client
+only (the owner chose to skip the in-game gates); what still needs the real client is in section L2 of the
+[in-game checklist](docs/G1_checklist.md).
+
+- **Added: categories with their own pacing** (#118). `RegisterCategory(id, { budget, window, cooldown, minCooldown })`
+  and the pack field `categories = { id = def }`, in data. Such a category paces its **phrases** on any event: the
+  Director leaves them out of a spontaneous pick while the category waits (`Pacing:Closed`, `ctx.closed`). The seven
+  base categories keep their tables and behave as before. Validator `badCategory`.
+- **Added: the literary category `lore`.** One piece in 25 minutes and a pause of 20 at intensity 50, never two within
+  10 minutes at any intensity, never in combat. A rule tagged `lore` or `genre_*` is in `lore` unless it says otherwise
+  (validator `literaryCategory`). Offline simulation of four hours: 8 pieces at intensity 50, at least 30 minutes apart.
+- **Added: the setting "Literary forms"** (`literary.frequency`: never, rare by default, normal), a row in the
+  General section of the panel and `/au literary never|rare|normal`, in English and Italian. Normal doubles the pieces;
+  never turns them off, also for `/au event lore_test`.
+- **Changed: line breaks are kept** (#117). The selection no longer collapses `\n`: one verse per line, at most one
+  empty line between stanzas; a text without a break comes out exactly as before (`Engine.NormalizeSpace`).
+- **Changed: nothing literary and no line break reaches chat** (D16). The Chat Gateway's private guard also reads the
+  category `lore`, in every mode, automatic included; every text bound for chat (`TextFor`, `Send`, the editor) turns a
+  break into `" / "`. Validator warning `multilinePublic` for a break in a public voice.
+- **Added: long private reading** (#126, D20). The narrator text is in a scroll box as tall as the whole text, up to
+  twelve lines; a longer text scrolls with the mouse wheel (taken only when it overflows, never a click). Verses appear
+  one at a time, each after the time to read the one before plus 0.8 s; "Reduce motion" shows them at once with the same
+  reading time. The history keeps the line breaks (one message per line, indented). A literary form in a private voice
+  may reach 600 bytes (`CHAT_LIMITS.READING`).
+- **Changed: the verses pack** (`AzerothUnspoken_Versi`): every piece in the category `lore`, the attribution on the
+  first line and one verse per line instead of `" / "`; `lore_test` is a `lore` event. `Tests/check_versi.py` follows.
+- **Tests:** `Tests/TestLiterary.lua` (131 checks: category pacing, the validator, line breaks, chat safety in every
+  mode, the four-hour pacing simulation, the reveal, scrolling, history and the setting); the mock gives line breaks a
+  height and keeps scroll offsets and history messages.
+- **Docs:** ADR 0042, PACK_FORMAT (line breaks, `categories`), CONTRIBUTING (literary forms rules 7 and 13 and the
+  checklist), ARCHITECTURE, README (EN/IT), the wiki pages Literary Forms, The Narrator, Settings, Commands, Chat
+  Gateway and First-Run Wizard, checklist section L2 (IT/EN).
+
 ### N1: hostility, grudges, betrayal, witnesses and guest-right (issue #213)
 
 Step N1 of the NPC relationships milestone. Raising a hand against an NPC is now remembered. Narration only: no NPC

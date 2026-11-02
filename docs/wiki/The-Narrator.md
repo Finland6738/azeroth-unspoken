@@ -59,6 +59,12 @@ Now and then, in a quiet moment (a thought you ask for, arriving somewhere, an i
 
 They are rare on purpose, never in combat, and **never go to chat**: only the narrator and the inner voice have them. Each sentence is written whole; the addon never assembles words.
 
+## Verses and long texts
+
+A [[literary form|Literary-Forms]] (a verse, a song, an inscription, a tale) keeps its **line breaks**: one verse per line. The lines appear **one at a time**, each after the time to read the one before at your reading speed, plus a short pause. The box is as tall as the whole piece from the start, so it does not jump as the lines come, up to **twelve lines** of your text size. A longer piece scrolls: move the **mouse wheel** over the text (the box follows the newest line until you scroll it yourself). The text still lets your clicks pass through to the game. With **Reduce motion** on, the whole piece appears at once. The history shows the verses on separate lines, the later ones indented.
+
+These pieces are private: they are never offered for chat.
+
 ## How to use it
 
 - **Just play.** Lines come by themselves. Their frequency depends on [[intensity|Intensity-and-Depth]].
@@ -89,9 +95,9 @@ They are rare on purpose, never in combat, and **never go to chat**: only the na
 |---|---|
 | Narrator box | on (off: lines appear in your chat window, visible only to you) |
 | Text duration | 8 seconds, plus the time to read the line (2–30) |
-| Reading speed | 14 characters a second (8, 11, 14, 18 or 24): a 140-character line stays 8 + 10 = 18 seconds |
+| Reading speed | 14 characters a second (8, 11, 14, 18 or 24): a 140-character line stays 8 + 10 = 18 seconds. A piece with several lines adds a short pause (0.8 s) after each line |
 | Background opacity | 80% (55–100%); the text itself is always fully opaque |
-| Reduce motion | off (on: no time line; the box appears and disappears) |
+| Reduce motion | off (on: no time line; the box appears and disappears; verses appear all at once) |
 | Text size | 14 (10–28) |
 | Position locked | no |
 | In combat | hold until combat ends (show, chat frame only, hold, silent) |

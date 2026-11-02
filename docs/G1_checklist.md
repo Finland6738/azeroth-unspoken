@@ -1214,6 +1214,37 @@ costarti la vita (arrivano le guardie): fallo dove la corsa al corpo è breve.
 
 ---
 
+## L2: versi su più righe, forme letterarie rare, lettura lunga (aggiunto dalle issue #117, #118 e #126)
+
+Provato solo con il client finto ([ADR 0042](adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md)):
+il proprietario ha deciso di non fermarsi per le prove nel gioco. Serve la cartella `AzerothUnspoken_Versi`. Se un passo
+non va, apri una issue con quello che hai visto.
+
+- **L2.1 · Un verso per riga.** `/au event lore_test` qualche volta.
+    - **Cosa aspettarti:** la prima riga (chi porta le parole, con i due punti), poi i versi **uno alla volta**, ciascuno
+      dopo il tempo di leggere il precedente; il riquadro è già alto quanto tutto il pezzo e non salta.
+    - **Cosa riportare:** se le righe arrivano troppo in fretta o troppo piano; se un verso va a capo male.
+- **L2.2 · Rotellina e clic.** Porta la grandezza del testo a 24 (`/au options`, **Dimensione del testo**) e ripeti
+  L2.1 finché un pezzo non ci sta più nel riquadro (più di dodici righe).
+    - **Cosa aspettarti:** il riquadro si ferma a dodici righe e il testo scorre con la **rotellina** sopra di lui; il
+      riquadro segue l'ultima riga finché non lo muovi tu. Un clic sul testo passa al gioco (per esempio muove la
+      visuale) anche mentre il riquadro scorre.
+    - **Cosa riportare:** se la rotellina non fa nulla, o se il testo blocca i clic.
+- **L2.3 · Riduci il movimento.** Accendi **Riduci il movimento** e ripeti L2.1.
+    - **Cosa aspettarti:** il pezzo compare tutto insieme e resta lo stesso tempo.
+- **L2.4 · La cronologia.** Apri la cronologia (**H** sul riquadro, o `/au narrator history`).
+    - **Cosa aspettarti:** il pezzo su più righe, la prima con l'ora e la voce, le altre rientrate.
+- **L2.5 · Mai in chat.** Con `/au mode confirm` (e poi `/au mode auto`, se l'hai acceso) ripeti L2.1, e prova
+  `/au event lore_test` in combattimento.
+    - **Cosa aspettarti:** nessuna proposta, nulla in chat; in combattimento nessun pezzo («nessuna frase»).
+- **L2.6 · Quanto spesso.** Gioca un'ora con la riga **Forme letterarie** su *rare* (predefinito) nei posti dei pezzi
+  (passo 106), poi un'ora su *normali*; prova anche *mai* con `/au event lore_test`.
+    - **Cosa aspettarti:** rare: circa un pezzo ogni 20-30 minuti al massimo, mai due a meno di dieci minuti; normali:
+      circa il doppio; mai: nessun pezzo, nemmeno a mano.
+    - **Cosa riportare:** quanti pezzi in un'ora e se il ritmo ti sembra giusto.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1363,6 +1394,8 @@ N1 colpo per primo ...... riga? ___  dopo (s) ______  con un incantesimo? ___  O
 N1 uccisione/testimoni .. riga dell'uccisione? ___  famiglio? ___  testimone con meno fiducia? ___  il luogo lo sa? ___
 N1 fazione/ospitalità ... città dell'altra fazione? ___  locandiere riconosciuto? ___  GetBindLocation ______  diario? ___
 N1 casa/opzioni ......... ritorno caldo/freddo? ___  rancore eterno spento: giorni? ___  avvisi spenti? ___  nulla in chat? ___
+L2 versi ................ uno alla volta? ___  troppo in fretta/piano? ___  rotellina? ___  clic passano? ___  cronologia a capo? ___
+L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: nessuno? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

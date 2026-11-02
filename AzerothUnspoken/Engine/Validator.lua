@@ -793,12 +793,20 @@ function Validator:Run(opts)
 			if p.chainable and not Validator.MONOLOGUE_SPEAKERS[p.speaker] then
 				Add("error", "monologueVoice", p.pack, id, nil, "a chainable phrase is for private voices (narrator, inner)")
 			end
-			-- D16 (#163): a literary form (tags lore, genre_*) never speaks in a public voice, and a monologue is never one
+			-- D16 (#163): a literary form (tags lore, genre_*, or the category lore, #118) never speaks in a public voice,
+			-- and a monologue is never one
+			local literary = Engine.HasLiteraryTag(p.tags)
 			if Engine.PUBLIC_SPEAKERS[p.speaker] then
-				if Engine.HasLiteraryTag(p.tags) then
+				if literary or p.category == Engine.LITERARY_CATEGORY then
 					Add("error", "literaryPublic", p.pack, id, nil,
 						("tag lore or genre_*: a literary form is for private voices (inner, npc), not '%s' (decision D16)"):format(p.speaker))
 				end
+			end
+			-- #118: a literary form is in the literary category, so that it is rare and follows the user's setting
+			if literary and p.category ~= Engine.LITERARY_CATEGORY then
+				Add("error", "literaryCategory", p.pack, id, nil,
+					("tag lore or genre_*: a literary form is in the category '%s', not '%s'"):format(Engine.LITERARY_CATEGORY,
+						tostring(p.category)))
 			end
 			-- #100: a line for a composite situation belongs to the situation's lead event
 			if p.situational then
@@ -1001,6 +1009,10 @@ function Validator:Run(opts)
 							for _, ch in ipairs(channels) do
 								if Validator.LIMITS[ch] < limit then limit, limitCh = Validator.LIMITS[ch], ch end
 							end
+							-- #126, D20: a literary form in a private voice is read in the narrator: up to READING bytes
+							if p.category == Engine.LITERARY_CATEGORY and not Engine.PUBLIC_SPEAKERS[p.speaker] then
+								limit, limitCh = Validator.LIMITS.READING, "READING"
+							end
 							if worst > limit then
 								local private = p.speaker == "inner" or p.speaker == "npc"
 								Add(private and "warning" or "error", "tooLong", p.pack, id, lang, ("variante %d: fino a %d byte, il limite di %s è %d"):format(i, worst, limitCh, limit))
@@ -1013,6 +1025,11 @@ function Validator:Run(opts)
 										("variante %d: dentro la cornice più lunga arriva a %d byte (limite %d)"):format(
 											i, worst + over, Validator.LIMITS.EMOTE))
 								end
+							end
+							-- #117: line breaks are for the private voices; in chat the Gateway writes " / " instead
+							if Engine.PUBLIC_SPEAKERS[p.speaker] and var.t:find("[\r\n]") then
+								Add("warning", "multilinePublic", p.pack, id, lang,
+									("variant %d: a line break in a public voice becomes \" / \" in chat"):format(i))
 							end
 							if p.form == "emote" and (var.t:match("^[A-Z\"]") or var.t:sub(1, 2) == "«") then
 								Add("error", "emoteCase", p.pack, id, lang,
@@ -1166,6 +1183,16 @@ function Validator:Run(opts)
 				Add("error", "badQuota", nil, "quota:" .. cat, nil, "a quota needs share 0-1, window >= 1 and span > 0")
 			elseif not Engine.CATEGORIES[cat] then
 				Add("warning", "unknownCategory", nil, "quota:" .. cat, nil, ("categoria '%s' sconosciuta"):format(cat))
+			end
+		end
+		-- #118: the categories with their own pacing
+		for _, cat in ipairs(Engine.SortedKeys(Engine.CATEGORY_DEFS)) do
+			local d = Engine.CATEGORY_DEFS[cat]
+			local function Num(v, min) return v == nil or (type(v) == "number" and v == v and v >= min and v < math.huge) end
+			if type(d) ~= "table" or not Num(d.budget, 1) or not Num(d.window, 1) or not Num(d.cooldown, 0)
+				or not Num(d.minCooldown, 0) then
+				Add("error", "badCategory", nil, "category:" .. tostring(cat), nil,
+					"a category's pacing needs budget >= 1, window >= 1, cooldown >= 0 and minCooldown >= 0 (numbers)")
 			end
 		end
 		for _, cat in ipairs(Engine.SortedKeys(Engine.HUNGER)) do

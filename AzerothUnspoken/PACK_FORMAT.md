@@ -164,6 +164,10 @@ AzerothUnspoken:RegisterPack({
   to have the same combinations of placeholders.
 - Languages are written as `itIT` / `enUS` (or in short form: `it`, `en`). A phrase appears only in the languages in which
   it is written: languages are never mixed.
+- **Line breaks** (`\n`, #117) are kept: a verse per line, an empty line (`\n\n`) between two stanzas. Other runs of
+  spaces become one space. They are for the private voices (`inner`, `npc`), where the narrator shows the lines one at a
+  time and scrolls a long text (#126); a chat message is always one line, so in a public voice a break becomes `" / "`
+  (validator warning `multilinePublic`). Literary forms use them; ordinary lines stay one sentence or two.
 
 ### Who speaks (`speaker`)
 
@@ -1288,7 +1292,10 @@ a **warning** is advice.
 | `badCondition` | error | unknown condition or one with a value of the wrong type |
 | `recallWithoutMemory` | error | a phrase of a recall event (`memory_return`…) without a memory condition |
 | `lightReturnAfterBadVisit` | error | a cheerful or ironic return phrase without `lastVisitBad = false` (or, about the bad visit, without `req:irony:high`) |
-| `tooLong` | error | over 255 bytes in the worst case (long names in placeholders) for `/s`, `/e`, party, guild...; for thoughts, over 400 bytes is a warning |
+| `tooLong` | error | over 255 bytes in the worst case (long names in placeholders) for `/s`, `/e`, party, guild...; for thoughts, over 400 bytes is a warning (600 for a literary form, category `lore`, #126) |
+| `multilinePublic` | warning | a line break in a public voice (`narrator`, `character`): chat gets `" / "` instead (#117) |
+| `literaryCategory` | error | a rule tagged `lore` or `genre_*` in a category other than `lore` (#118) |
+| `badCategory` | error | a category's pacing out of range: `budget` and `window` at least 1, `cooldown` and `minCooldown` at least 0 (#118) |
 | `tooLongFramed` | warning | with the longest frame it exceeds 255 bytes |
 | `badUTF8` | error | text that is not valid UTF-8, control character, U+FFFD (corrupted text) |
 | `emoteCase` | error | an emote that starts with a capital letter or with quotation marks |
@@ -1345,6 +1352,39 @@ A pack can also tune how often a whole category speaks in a session (#91, [ADR 0
 
 The base values are in `AzerothUnspoken/Data/Themes.lua`; a later pack replaces the value of a category. The same with
 `AzerothUnspoken:SetCategoryQuota("combat", { share = 0.5 })` and `AzerothUnspoken:SetCategoryHunger(...)`.
+
+### A category with its own pacing (`categories`)
+
+A category can bring its own budget and pause (#118, [ADR 0042](../docs/adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md)):
+`categories = { id = { budget = 1, window = 1500, cooldown = 1200, minCooldown = 600 } }`, or
+`AzerothUnspoken:RegisterCategory(id, def)`. `budget` interventions in `window` seconds (default 600) and `cooldown`
+seconds between two, both at intensity 50 and scaled with it like every category, never under `minCooldown`. Such a
+category paces **its phrases**, whatever event they speak on: a rule with `category = "id"` on `zone` is left out of a
+spontaneous pick while the category waits, and the event keeps its own category. A plain list
+(`categories = { "id" }`) declares categories without pacing, as before.
+
+The base data declare **`lore`**, the category of the literary forms: one piece in 25 minutes and a pause of 20 at
+intensity 50, never two within 10 minutes, scaled by the user's setting **Literary forms** (`literary.frequency`: never,
+rare, normal) and closed during a fight, also for pieces asked for by hand. A rule tagged `lore` or `genre_*` is in
+`lore` when it says no category (the validator refuses another one, `literaryCategory`); `lore` is private in every
+chat mode, whatever the voice (D16), and its texts may reach 600 bytes in a private voice (`READING`).
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "canti",
+    languages = { "itIT", "enUS" },
+    categories = { canti_rari = { budget = 1, window = 3600, cooldown = 1800 } },
+    registry = {
+        ["canti.road.01"] = { event = "travel", speaker = "inner", category = "lore",
+            tags = { "lore", "genre_road_song", "origin_sung" }, conditions = { combat = false } },
+    },
+    texts = {
+        enUS = { ["canti.road.01"] = "A song from the road, half remembered:\nThe road is long and the sky is wide,\nand every inn has a door inside." },
+        itIT = { ["canti.road.01"] = "Una canzone di strada, ricordata a metà:\nLa strada è lunga, il cielo è grande,\ne ogni locanda ha un posto accanto al fuoco." },
+    },
+})
+```
 
 <!-- test -->
 ```lua

@@ -5,10 +5,11 @@ it next to AzerothUnspoken). Then:
 1. the .toc and the files: Interface 16001, dependency on AzerothUnspoken, UTF-8 without BOM, LF line endings;
 2. the validator (the same code as `/au validate versi`): zero errors and zero warnings;
 3. the pieces: 12-16, each with a `lore_test` twin; private voices only (D16); never in combat; cooldown of three to
-   seven days; genre and origin tags; one line of at most 255 bytes, no placeholders, verses separated by " / ";
+   seven days; genre and origin tags; the literary category `lore` (#118); at most 255 bytes, no placeholders, the
+   attribution on the first line and one verse per line (#117, at least four), no " / " left;
    the mix asked by #115 (inscriptions, returns, inn rhymes, road songs with a natural form, encounters, hymn);
 4. never offered to the Chat Gateway: `/au event lore_test` in the "confirm" mode with public chat on reaches the
-   private narrator, creates no proposal and sends nothing, in English and in Italian;
+   private narrator with its line breaks, creates no proposal and sends nothing, in English and in Italian;
 5. the real events: the right pieces are candidates at a ruin, a sacred place, a prayer and a Hearthstone, and not
    elsewhere; a used piece waits for its cooldown.
 
@@ -121,7 +122,7 @@ PIECES_LUA = """function()
     local out = {}
     for id, p in pairs(E.byId) do
         if p.pack == "versi" then
-            local r = { id = id, speaker = p.speaker, form = p.form, cooldown = p.cooldown or -1,
+            local r = { id = id, speaker = p.speaker, form = p.form, cooldown = p.cooldown or -1, category = p.category,
                 combat = p.when and p.when.combat, event = table.concat(p.events, ","), tags = {}, texts = {},
                 natural = 0, twin = id:find("^versi%.test%.") ~= nil }
             for t in pairs(p.tags) do table.insert(r.tags, t) end
@@ -153,6 +154,7 @@ def check_pieces(lua, ns):
     check(all(r.speaker in ("inner", "npc") for r in rows), "private voices only, inner or npc (D16)")
     check(all(r.form == "say" for r in rows), "no piece is an emote")
     check(all(r.combat is False for r in rows), "combat = false on every rule")
+    check(all(r.category == "lore" for r in rows), "the literary category 'lore' on every rule (#118)")
     check(all(3 * DAY <= r.cooldown <= 7 * DAY for r in real), "cooldown of three to seven days on every piece")
     def tags(r):
         return list(r.tags.values())
@@ -167,7 +169,7 @@ def check_pieces(lua, ns):
             raw = t.t.encode("utf-8")
             if len(raw) > 255:
                 long_.append(f"{r.id} {t.lang} ({len(raw)} bytes)")
-            if "\n" in t.t or "\r" in t.t:
+            if "\r" in t.t or " / " in t.t:
                 multi.append(f"{r.id} {t.lang}")
             if "{" in t.t or "}" in t.t:
                 holes.append(f"{r.id} {t.lang}")
@@ -176,13 +178,14 @@ def check_pieces(lua, ns):
             # the natural form of a road song is prose; every other text is verse
             if r.natural and len(t.t) < 120:
                 continue
-            if t.t.count(" / ") < 3:
+            lines = t.t.split("\n")
+            if len(lines) < 5 or not lines[0].endswith(":") or any(not x.strip() for x in lines):
                 verses.append(f"{r.id} {t.lang}")
     check(not langs, "English and Italian for every piece" + ("" if not langs else ": " + ", ".join(langs)))
     check(not long_, "every text fits in 255 bytes" + ("" if not long_ else ": " + ", ".join(long_)))
-    check(not multi, "one line per text (line breaks come with #117)" + ("" if not multi else ": " + ", ".join(multi)))
+    check(not multi, "real line breaks, no ' / ' and no CR (#117)" + ("" if not multi else ": " + ", ".join(multi)))
     check(not holes, "no placeholders in songs and formulas" + ("" if not holes else ": " + ", ".join(holes)))
-    check(not verses, "verses separated by ' / ' (at least four)" + ("" if not verses else ": " + ", ".join(verses)))
+    check(not verses, "the attribution, then one verse per line (at least four)" + ("" if not verses else ": " + ", ".join(verses)))
     found = [f"{r.id} {t.lang}: {w}" for r in real for t in r.texts.values() for w in WARNING_PHRASES
              if w in t.t.lower()]
     check(not found, "no warning phrase of CONTRIBUTING.md (Literary forms)" + ("" if not found else ": " + ", ".join(found)))
@@ -240,13 +243,16 @@ def check_lore_test():
         check(not any(r.proposal or r.sentTo for r in recs),
               f"[{locale}] no proposal for the Chat Gateway, even in the confirm mode")
         check(not public, f"[{locale}] nothing sent to chat" + ("" if not public else f": {public[:2]}"))
+        last = ns.Narrator.history[len(ns.Narrator.history)]
+        check("\n" in str(last.text) and str(last.text) == str(recs[-1].text),
+              f"[{locale}] the narrator and its history keep the line breaks (#117)")
         check(len(seen) >= 15, f"[{locale}] every piece comes out by hand ({len(seen)} different texts)")
         # the language is judged on every text, not on one picked from a set in hash order: a single piece may have none of the marker words
         sample = next(iter(seen), "")
         markers = ("è", "à", "ò", "ù", "il ", "la ", "le ", "che ", " e ", " di ", " un ")
         italian = sum(1 for t in seen if any(w in t for w in markers)) * 2 > len(seen)
-        check(all(" / " in t for t in seen) and (italian if locale == "it" else not italian),
-              f"[{locale}] in the chosen language: {sample[:60]}...")
+        check(all("\n" in t and " / " not in t for t in seen) and (italian if locale == "it" else not italian),
+              f"[{locale}] in the chosen language: {sample.replace(chr(10), ' | ')[:60]}...")
         diag = [str(e.message) for e in ns.Diagnostics.errors.values()]
         check(not diag, f"[{locale}] no error in diagnostics" + (f" ({diag})" if diag else ""))
 
