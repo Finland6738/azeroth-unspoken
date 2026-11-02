@@ -2,7 +2,7 @@
 Forest and Stormwind City. Offline, Lua 5.1 through lupa; never shipped.
 
 Usage: python -I -X utf8 Tests/bench_trial.py [--addon DIR] [--sessions 2] [--minutes 90] [--seeds 1,2,3]
-                                              [--long HOURS] [--json FILE]
+                                              [--long HOURS] [--json FILE] [--mix HOURS [--model [FILE]]]
 
 It loads the addon with every pack (English) and plays the three characters of the issue: an orc warrior and a troll
 mage in Durotar, a human paladin in Elwynn Forest, each for `--sessions` sessions of `--minutes` minutes (12 hours
@@ -19,16 +19,19 @@ Reported per character, averaged over the seeds:
   - texts said twice within a session (the criterion of A1 §6.2: none within 90 minutes) and across the sessions;
   - the minute of the first exact repetition, if any;
   - time of Engine:PickEntry (mean, p95; the in-game target is a p95 under 5 ms).
+With --mix H (C0c) it only measures the event mix of a day of play (quests, levels, merchants and flights added to
+the route) and, with --model, writes it into the need model of the archive (`cli need`).
 With --long H, each character also plays H hours in a row on the same route (the saved memory kept): the first
 exact repetition, the share of repeated texts, and per area the trial texts spoken per hour while there. The expected
 hours to exhaust an area's own lines are its texts per language divided by that rate (perfect anti-repetition).
 """
-import argparse, json, os, statistics, sys
+import argparse, collections, json, os, statistics, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import bench_scale as B  # noqa: E402
 
+MODEL = os.path.join(HERE, "..", "tools", "archive", "need_model.json")
 TRIAL_PACKS = {"kalimdor_durotar": "Durotar", "kalimdor_orgrimmar": "Orgrimmar", "eastern_elwynn": "Elwynn Forest",
                "eastern_stormwind": "Stormwind City"}
 
@@ -82,7 +85,7 @@ DRIVER = r"""
 local ns = ...
 local Engine = ns.Engine
 ns.db.locale = "en"
-SIM = { out = {}, times = {} }
+SIM = { out = {}, times = {}, hours = {} }
 local pick = Engine.PickEntry
 Engine.PickEntry = function(self, event, ctx, form, composite)
 	local t0 = os.clock()
@@ -103,7 +106,7 @@ end
 """
 
 SESSION = r"""
-local ns, ch, minutes, seed, session, startHour, loop = ...
+local ns, ch, minutes, seed, session, startHour, loop, rich = ...
 math.randomseed(seed * 100 + session)
 SIM.session, SIM.clock = session, 0
 P.name, P.class, P.race, P.faction, P.sex, P.level = ch.name, ch.cls, ch.race, ch.faction, ch.sex, 6 + session
@@ -115,8 +118,38 @@ local function Advance(s)
 		local step = math.min(left, 30)
 		ADVANCE(step); left = left - step
 		SIM.clock = SIM.clock + step
+		SIM.hours[P.zone] = (SIM.hours[P.zone] or 0) + step / 3600
 		P.hour = math.floor(startHour + SIM.clock / 3600) % 24
 	end
+end
+-- --mix (C0c): the rest of a day of play, through the client's events like the rest: a quest handed in every 9
+-- minutes, a level every 3 hours, a merchant at every rest, a flight to and from the capital
+local NPC = 0
+local function Talk(name, open, close)
+	NPC = NPC + 1
+	P.npc = { name = name, guid = ("Creature-0-3134-0-6-%d-0000A2E9A1"):format(3000 + NPC % 40), sex = 2, reaction = 5 }
+	FIRE(open); Advance(20)
+	FIRE(close); P.npc = nil; Advance(2)
+end
+local nextQuest, nextLevel, quest = 540, 3 * 3600, 0
+local function Chores()
+	if not rich then return end
+	if SIM.clock >= nextQuest then
+		quest = quest + 1
+		Talk("Quest Giver", "QUEST_COMPLETE", "QUEST_FINISHED")
+		FIRE("QUEST_TURNED_IN", 5000 + quest); Advance(5)
+		nextQuest = nextQuest + 540
+	end
+	if SIM.clock >= nextLevel then
+		P.level = P.level + 1
+		FIRE("PLAYER_LEVEL_UP", P.level); Advance(5)
+		nextLevel = nextLevel + 3 * 3600
+	end
+end
+local function Fly()
+	Talk("Flight Master", "TAXIMAP_OPENED", "GOSSIP_CLOSED")
+	P.onTaxi = true; FIRE("PLAYER_CONTROL_LOST"); Advance(120)
+	P.onTaxi = false; FIRE("PLAYER_CONTROL_GAINED"); Advance(5)
 end
 local function Offer(ev, extra) D:Offer(ev, extra); Advance(0.2) end
 local WEATHER = { ["Durotar"] = { "Clear", "Sandstorm", "Clear", "Rain" }, ["Orgrimmar"] = { "Clear", "Sandstorm" },
@@ -148,6 +181,7 @@ while SIM.clock < limit do
 	local stop = ch.route[i]
 	local zone, sub, mins, fights, rest = stop[1], stop[2], stop[3], stop[4], stop[5]
 	if P.zone ~= zone then
+		if rich and P.zone then Fly() end
 		P.zone, P.subzone = zone, sub
 		FIRE("ZONE_CHANGED_NEW_AREA"); Advance(25)
 	else
@@ -155,6 +189,7 @@ while SIM.clock < limit do
 	end
 	FIRE("ZONE_CHANGED"); Advance(20)
 	if rest then P.resting = true; FIRE("PLAYER_UPDATE_RESTING"); Advance(30) end
+	if rich and rest then Talk("Merchant", "MERCHANT_SHOW", "MERCHANT_CLOSED") end
 	if math.random(100) <= 25 then Weather() end
 	local stopEnd = SIM.clock + mins * 60
 	while SIM.clock < stopEnd and SIM.clock < limit do
@@ -165,6 +200,7 @@ while SIM.clock < limit do
 			Advance(45)
 		end
 		if SIM.clock >= nextSpeak then ns.Gateway:Improvise(); nextSpeak = nextSpeak + 300 end
+		Chores()
 		-- a death in the first session, in the open: the character comes back to the same zone later
 		if session == 1 and not died and i == ch.die and fights then
 			died = true
@@ -181,8 +217,9 @@ end
 """
 
 
-def play(addon, ch, sessions, minutes, seed, loop=False):
-    """One character: `sessions` sessions of `minutes` minutes in one runtime (the saved memory is kept)."""
+def play(addon, ch, sessions, minutes, seed, loop=False, rich=False, hours=None):
+    """One character: `sessions` sessions of `minutes` minutes in one runtime (the saved memory is kept). `rich` adds
+    the quests, levels, merchants and flights of --mix; `hours`, a dict, receives the hours spent in each zone."""
     lua, ns, _ = B.load_addon(addon)
     lua.execute("function __drv(...) " + DRIVER + " end")
     lua.globals().__drv(ns)
@@ -196,8 +233,10 @@ def play(addon, ch, sessions, minutes, seed, loop=False):
         if s > 1:
             lua.globals().ADVANCE(5)
             lua.globals().LEAP(12 * 3600)
-        lua.globals().__sess(ns, t, minutes, seed, s, (8 + 7 * seed + 9 * s) % 24, loop)
+        lua.globals().__sess(ns, t, minutes, seed, s, (8 + 7 * seed + 9 * s) % 24, loop, rich)
     sim = lua.globals().SIM
+    if hours is not None:
+        hours.update(dict(sim.hours.items()))
     out = [dict(r.items()) for r in sim.out.values()]
     return out, list(sim.times.values())
 
@@ -252,6 +291,29 @@ def long_metrics(out, hours):
             "per_area": per_area}
 
 
+CAPITALS = ("Orgrimmar", "Stormwind City")
+
+
+def mix(addon, hours, seeds):
+    """--mix (C0c): the interventions per hour of each event in the open world and in a capital, from `hours` hours of
+    play per character and seed with the quests, levels, merchants and flights of a day of play. The need model of the
+    archive (`tools/archive/need_model.json`, `cli need`) reads it as its measured rates."""
+    counts = {"open": collections.Counter(), "city": collections.Counter()}
+    time = {"open": 0.0, "city": 0.0}
+    for ch in CHARACTERS:
+        for seed in seeds:
+            spent = {}
+            out, _ = play(addon, ch, 1, hours * 60, seed, loop=True, rich=True, hours=spent)
+            for r in out:
+                counts["city" if r["zone"] in CAPITALS else "open"][r["event"]] += 1
+            for zone, h in spent.items():
+                time["city" if zone in CAPITALS else "open"] += h
+    return {"command": "python -I -X utf8 Tests/bench_trial.py --mix %g --seeds %s --model" % (hours, ",".join(map(str, seeds))),
+            "hours": {k: round(v, 2) for k, v in time.items()},
+            "per_hour": {k: round(sum(c.values()) / max(time[k], 1e-9), 3) for k, c in counts.items()},
+            "rates": {k: {e: round(n / max(time[k], 1e-9), 4) for e, n in sorted(c.items())} for k, c in counts.items()}}
+
+
 def pack_sizes(addon):
     """Intentions and English texts of each trial pack (the measure counts the language the simulation speaks)."""
     lua, ns, _ = B.load_addon(addon)
@@ -273,9 +335,23 @@ def main(argv):
     ap.add_argument("--seeds", default="1,2,3")
     ap.add_argument("--long", type=float, default=0, help="also play this many hours in a row per character")
     ap.add_argument("--json")
+    ap.add_argument("--mix", type=float, default=0, help="only measure the event mix: this many hours per character and seed")
+    ap.add_argument("--model", nargs="?", const=MODEL, help="with --mix: write the rates into this need model "
+                    "(default tools/archive/need_model.json)")
     a = ap.parse_args(argv)
     addon = os.path.abspath(a.addon)
     seeds = [int(s) for s in a.seeds.split(",")]
+    if a.mix:
+        m = mix(addon, a.mix, seeds)
+        print(json.dumps(m, indent=1))
+        if a.model:
+            with open(a.model, encoding="utf-8") as f:
+                model = json.load(f)
+            model["measured"] = m
+            with open(a.model, "w", encoding="utf-8", newline="\n") as f:
+                f.write(json.dumps(model, ensure_ascii=False, indent=1) + "\n")
+            print("wrote", a.model)
+        return m
     result = {"sizes": pack_sizes(addon), "characters": {}, "long": {}}
     print("trial packs:", result["sizes"])
     for ch in CHARACTERS:

@@ -2,7 +2,7 @@
 
 The guarantee is the round trip: importing the pack folders of this repository into the archive and exporting them
 again gives an **empty diff**. Around it: the renderer of new and edited entries, the review flow (only approved
-content is exported), the overlay, the search and the coverage report. Everything runs on temporary copies; the repository
+content is exported), the overlay, the search, the coverage report, the need of the content waves and the near duplicates (ADR 0050). Everything runs on temporary copies; the repository
 is never written.
 
 Usage: python -I -X utf8 Tests/check_archive.py   (exit code 1 if a check fails)
@@ -21,6 +21,8 @@ sys.path.insert(0, os.path.join(ROOT, "tools", "archive"))
 import coverage  # noqa: E402
 import cli  # noqa: E402
 import literary  # noqa: E402
+import neardup  # noqa: E402
+import need  # noqa: E402
 import packfiles  # noqa: E402
 import store  # noqa: E402
 import structures  # noqa: E402
@@ -839,6 +841,164 @@ def report():
           (res["intentions"], res["variants"], len(res["cells"]), len(res["gaps"]), len(res["repeat"]["below_window"])))
 
 
+def need_report():
+    print("NEED OF THE CONTENT WAVES (C0c, ADR 0050)")
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    model = need.load_model()
+    places = need.world(ROOT)
+    check(places["Orgrimmar"]["setting"] == "city" and places["Molten Core"]["kind"] == "raid" and
+          places["Durotar"]["mood"] == "desert" and places["Stranglethorn Vale"]["faction"] is None,
+          "the places of the era come from Data/Places.lua with their moods (%d places)" % len(places))
+    rate, only = need.rates(model)
+    check(all(abs(sum(r.values()) - model["interventions_per_hour"]) < 1e-6 for r in rate.values()),
+          "every setting speaks at the default pace (%g interventions per hour)" % model["interventions_per_hour"])
+    check(rate["open"]["muse"] > rate["open"]["battle"] > 0 and "weather_change" not in rate["instance"] and
+          rate["instance"].get("encounter_end", 0) > 0 and only["pet_bond"] == {"HUNTER"},
+          "measured and assumed rates: the speak key and fights in the open, no weather inside, companions by class")
+    sh = need.shares(model, "npcd_guard_open")
+    check(sh["place"] == 0.5 and abs(sum(sh.values()) - 1) < 1e-9 and need.shares(model, "nemesis_song") == {"generic": 1.0},
+          "the shares of a layer group (with a wildcard) add up to one with the generic share")
+    chars = need.characters(model)
+    orc = next(c for c in chars if c["race"] == "Orc")
+    slots = need.timeline(model, orc, places)
+    check(len(slots) == int(model["life_hours"] / model["slot_hours"]) and slots[0] == ("Durotar", "1-10") and
+          slots[-1][1] == "60" and {p for p, _ in slots[:20]} <= {"Durotar", "Orgrimmar"},
+          "a life is %d slots: the starting zone first, the life at 60 last" % len(slots))
+    check(sum(1 for p, b in slots if b == "60" and places[p]["kind"] == "raid") > 0 and
+          sum(1 for p, b in slots if p == "Orgrimmar") > sum(1 for p, b in slots if p == "Undercity") > 0,
+          "the endgame visits raids, and the home capital more than the others")
+    pools, _ = need.need(model, places)
+    check(all(p["need_soft"] <= p["need_strict"] for p in pools.values()), "the soft need of a pool is never above its strict need")
+    start = pools[("muse", "place", "mulgore")]
+    check(start["need_soft"] == start["need_strict"] > 0, "a starting zone lived in less than 40 hours needs the same in both")
+    gen = pools[("muse", "generic", "")]
+    check(gen["need_soft"] < gen["need_strict"] / 5, "a generic pool spread over the life needs far less in 40 hours")
+    check(("muse", "place", "stranglethornvale@horde") in pools and ("muse", "place", "stranglethornvale@alliance") in pools
+          and ("muse", "place", "durotar@horde") not in pools, "a contested zone has a pool per faction, a faction zone one")
+    check(("pet_bond", "class", "hunter") in pools and ("pet_bond", "class", "mage") not in pools,
+          "the companions speak only for their classes")
+    fast = dict(model, interventions_per_hour=2 * model["interventions_per_hour"])
+    p2, _ = need.need(fast, places)
+    total = sum(p["need_strict"] for p in pools.values())
+    check(1.9 * total < sum(p["need_strict"] for p in p2.values()) < 2.1 * total, "the need grows with the pace")
+    # what an intention of today counts for
+    cl = lambda c, area=None: need.classify(c, area, places, model)   # noqa: E731
+    check(cl({"zone": "Orgrimmar"}) == [("place", "orgrimmar")] and
+          cl({"zone": "Stranglethorn Vale"}) == [("place", "stranglethornvale@alliance"), ("place", "stranglethornvale@horde")] and
+          cl({"zone": "Ashenvale", "faction": "Horde"}) == [("place", "ashenvale@horde")] and
+          cl({"subzone": "Razor Hill"}, "durotar") == [("place", "durotar")] and
+          cl({"class": "HUNTER", "time": "night"}) == [("class", "hunter")] and cl({"race": "Scourge"}) == [("race", "scourge")] and
+          cl({"levelMin": 45}) == [("band", "40-50"), ("band", "50-60"), ("band", "60")] and
+          cl({"relation": "friend"}) == [("generic", "")] and cl(None) == [("generic", "")],
+          "an intention counts for the pool of its first condition (zone, class, race... level band) or the generic one")
+    check(need.usable([{"depth": None}, {"depth": "natural"}, {"depth": "literary"}], "literary") == 2 and
+          need.usable([{"depth": "natural"}, {"depth": "elevated"}], "literary") == 2 and
+          need.usable([{"depth": '["literary","elevated"]'}], "literary") == 1,
+          "texts usable at the default depth: of that depth or none, all of them when no variant is")
+    check(4.5 < need.random_factor(0.10) < 5.0 and 9.5 < need.random_factor(0.05) < 10.0,
+          "a random pick needs about 5 times its firings for 10%% of repeats, 10 times for 5%% (%.2f, %.2f)" % (
+              need.random_factor(0.10), need.random_factor(0.05)))
+    res = need.compute(con, ROOT, model)
+    t = res["totals"]
+    check(t["need_strict"] > t["need_soft"] > 0 and all(t["gap_strict"][l] <= t["need_strict"] for l in res["languages"]),
+          "the report sums the need and the gap per language")
+    check(res["by_place"]["durotar"]["have"]["enUS"] > 400 and res["by_place"]["ironforge"]["have"]["enUS"] == 0,
+          "the places of the trial slice hold their texts, the others none yet")
+    ws = res["waves"]
+    lang = res["languages"][0]
+    left = sum(r["need_strict"] - r["have"][lang] for r in res["pools"] if r["need_strict"] > r["have"][lang])
+    check(ws and all(w["texts"] <= model["waves"]["max"] for w in ws) and sum(w["texts"] for w in ws) == left and
+          ws[0]["units"][0]["kind"] == "generic" and ws[0]["target"].startswith("soft") and ws[-1]["target"].endswith("strict"),
+          "the waves cover the gap once, soft need first, none above %d texts (%d waves)" % (model["waves"]["max"], len(ws)))
+    data = json.loads(need.to_json(res))
+    check(data["totals"] == res["totals"] and len(data["pools"]) == len(res["pools"]) and
+          data["pool_columns"][-1] == "have_" + res["languages"][-1], "the JSON report holds the pools one per line")
+    md = need.to_markdown(res)
+    check(md.startswith("# Content need") and "## By place" in md and "\r" not in md, "the Markdown report")
+    with tempfile.TemporaryDirectory() as tmp:
+        path = os.path.join(tmp, "WAVES.md")
+        packfiles.write(path, "# Waves\n\nintro\n\n%s\nold\n%s\n\n## How to run a wave\n" % (need.BEGIN, need.END))
+        need.write_waves(path, res)
+        text = packfiles.read(path)
+        check("intro" in text and "## How to run a wave" in text and "old" not in text and "| W01 |" in text,
+              "the table of WAVES.md is replaced between its markers, the text around it kept")
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            rc = cli.main(["--db", os.path.join(tmp, "a.sqlite"), "need", "--wave", "W01"])
+        check(rc == 0 and "conditions:" in out.getvalue(), "`cli need --wave` prints the pools of a wave")
+    committed = os.path.join(ROOT, "docs", "content", "need.json")
+    if os.path.exists(committed):
+        old = json.load(open(committed, encoding="utf-8"))["totals"]
+        if old != json.loads(json.dumps(t)):
+            print("warning: docs/content/NEED.md is stale (run `python tools/archive/cli.py need --write`)")
+    print("  need per language: strict %d, soft %d; gap %s; %d waves; random pick %s" % (
+        t["need_strict"], t["need_soft"], t["gap_strict"], len(ws), t["random_pick"]))
+
+
+def near_duplicates():
+    print("NEAR DUPLICATES (C0c, ADR 0050)")
+    check(neardup.words("Lok'tar, {name}! The road—again.") == ["lok'tar", "{name}", "the", "road", "again"],
+          "a text is its words, a placeholder one word")
+    items = [
+        ("a.1", 0, "approved", "The wind comes down from the hills and finds the road empty."),
+        ("a.2", 0, "approved", "The wind comes down from the hills and finds the road full."),       # near (0.8)
+        ("a.3", 0, "approved", "the WIND comes down from the hills, and finds the road empty!"),     # exact of a.1
+        ("a.4", 0, "approved", "Nothing here sounds like the others at all, I promise you."),
+        ("t.f", 0, "approved", "My friend, at last."), ("t.m", 0, "approved", "My friend, at last."),  # allowed twins
+        ("a.5", 0, "draft", "A wolf howls somewhere behind the old farm and then stops."),
+        ("a.6", 0, "approved", "A wolf howls somewhere behind the old mill and then stops."),        # near, with a draft
+    ]
+    r = neardup.find(items, {"allow_exact": [["t.f", "t.m"]]})
+    check([sorted(e["ids"]) for e in r["exact"] if not e["allowed"]] == [["a.1", "a.3"]] and
+          [e["ids"] for e in r["exact"] if e["allowed"]] == [["t.f", "t.m"]],
+          "exact duplicates are found whatever the case and punctuation; reviewed twins are allowed")
+    pairs = {(p["a"], p["b"]) for p in r["near"]}
+    check(("a.1", "a.2") in pairs and ("a.2", "a.3") in pairs and ("a.5", "a.6") in pairs and ("a.1", "a.3") not in pairs and
+          not any("a.4" in p for p in pairs), "near duplicates over the threshold, an exact one not twice, a different text never")
+    only = neardup.find(items, {"allow_exact": [["t.f", "t.m"]]}, only={"a.5"})
+    check({(p["a"], p["b"]) for p in only["near"]} == {("a.5", "a.6")} and not only["exact"],
+          "with `only` the pairs of the chosen intentions alone (the drafts of a wave)")
+    same = [("o%d" % i, 0, "approved", "They say the river %s %s %s." % (w, w * 2, w * 3)) for i, w in
+            enumerate(("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"))]
+    check(neardup.find(same)["openings"] == [("they say the", 12)], "an opening shared by more than ten texts is over-used")
+    # prefix filtering finds every pair a full comparison finds
+    import random
+    rnd = random.Random(7)
+    vocab = ["road", "wind", "blade", "hill", "fire", "night", "old", "the", "a", "of", "and", "comes", "falls", "home",
+             "song", "stone", "water", "dark", "light", "still"]
+    texts = []
+    for i in range(300):
+        base = [rnd.choice(vocab) for _ in range(rnd.randint(4, 14))]
+        texts.append(("r%d" % i, 0, "approved", " ".join(base)))
+        if i % 10 == 0:
+            base[rnd.randrange(len(base))] = "changed"
+            texts.append(("r%dx" % i, 0, "approved", " ".join(base)))
+    fast = {(p["a"], p["b"]) for p in neardup.find(texts)["near"]}
+    sh = [neardup.shingles(neardup.words(t[3]), 3) for t in texts]
+    full = set()
+    for i in range(len(texts)):
+        for j in range(i):
+            if sh[i] and sh[j] and " ".join(neardup.words(texts[i][3])) != " ".join(neardup.words(texts[j][3])):
+                if len(sh[i] & sh[j]) / len(sh[i] | sh[j]) >= 0.5:
+                    full.add((texts[j][0], texts[i][0]))
+    check(fast == full and len(full) >= 10, "the index finds the same %d pairs as comparing every pair" % len(full))
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    opts = coverage.load_thresholds()["near_duplicates"]
+    res = neardup.check(con, opts)
+    check(all(e["allowed"] for r_ in res.values() for e in r_["exact"]), "today's archive has no exact duplicate but reviewed twins")
+    print("  today: " + "; ".join("%s %d texts, %d exact (allowed), %d near pairs at %.2f, %d openings and %d closings over %d" % (
+        l, r_["texts"], len(r_["exact"]), len(r_["near"]), opts["jaccard"], len(r_["openings"]), len(r_["closings"]),
+        r_["edge_limit"]) for l, r_ in res.items()))
+    with tempfile.TemporaryDirectory() as tmp:
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            ok = cli.main(["--db", os.path.join(tmp, "a.sqlite"), "dups", "--state", "approved", "--limit", "1"])
+            sheet = os.path.join(tmp, "sheet.md")
+            sampled = cli.main(["--db", os.path.join(tmp, "a.sqlite"), "sample", "--pack", "kalimdor_durotar", "--out", sheet])
+        text = packfiles.read(sheet)
+        check(ok == 0, "`cli dups` passes on today's archive")
+        check(sampled == 0 and text.startswith("# Review sheet") and text.count("\n## ") >= 10 and "(literary piece: owner review)" in text,
+              "`cli sample` draws a review sheet with every literary piece of the choice")
+
+
 roundtrip()
 equivalence()
 structures_content()
@@ -849,5 +1009,7 @@ literary_content()
 lualit_checks()
 review_flow()
 report()
+need_report()
+near_duplicates()
 print("\n" + ("ok" if not FAILURES else "%d FAILED" % len(FAILURES)))
 sys.exit(1 if FAILURES else 0)

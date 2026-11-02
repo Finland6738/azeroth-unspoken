@@ -1,0 +1,1019 @@
+{
+ "_doc": "The need model of the content waves (C0c, ADR 0050; `cli need`). Every number here is a hypothesis to tune, except `measured`, written by `python -I -X utf8 Tests/bench_trial.py --mix 20 --seeds 1,2 --model` (the real Narrative Director). Keys starting with _ are notes.",
+ "life_hours": 400,
+ "soft_hours": 40,
+ "slot_hours": 0.5,
+ "_interventions_per_hour": "The default pace (intensity 50) measured in the trial slice: 20-25 interventions per hour, the speak key every 5 minutes included. Every setting is scaled to it; the measured mix keeps the share of each event. The need grows in proportion.",
+ "interventions_per_hour": 22.5,
+ "default_depth": "literary",
+ "_min_firings": "A pool that fires fewer times than this in a whole life needs no text of its own: its share falls to the generic pool.",
+ "min_firings": 1,
+ "_assumed": "Events the trial run does not drive (commands, NPC dialogues, groups, pets, arcs, instances): interventions per hour in each setting before the scaling. `classes` restricts an event to characters of those classes.",
+ "assumed": {
+  "dawn": {
+   "open": 0.15,
+   "city": 0.15
+  },
+  "dusk": {
+   "open": 0.15,
+   "city": 0.15
+  },
+  "travel": {
+   "open": 0.2,
+   "city": 0.2
+  },
+  "death": {
+   "open": 0.15,
+   "instance": 0.5
+  },
+  "rez": {
+   "open": 0.1,
+   "instance": 0.4
+  },
+  "rezother": {
+   "instance": 0.3
+  },
+  "buff": {
+   "open": 0.4,
+   "city": 0.2,
+   "instance": 0.6
+  },
+  "threat": {
+   "open": 0.2,
+   "instance": 1.2
+  },
+  "quest_progress": {
+   "open": 1.0
+  },
+  "reputation_change": {
+   "open": 0.1,
+   "city": 0.1,
+   "instance": 0.1
+  },
+  "encounter_end": {
+   "instance": 1.0
+  },
+  "ally_death": {
+   "open": 0.03,
+   "instance": 0.3
+  },
+  "greet": {
+   "open": 0.2,
+   "city": 0.5
+  },
+  "farewell": {
+   "open": 0.15,
+   "city": 0.4
+  },
+  "thanks": {
+   "open": 0.15,
+   "city": 0.3,
+   "instance": 0.2
+  },
+  "pray": {
+   "open": 0.08,
+   "city": 0.15
+  },
+  "jest": {
+   "open": 0.08,
+   "city": 0.15,
+   "instance": 0.1
+  },
+  "toast": {
+   "city": 0.15
+  },
+  "relation_player": {
+   "open": 0.2,
+   "city": 0.4,
+   "instance": 0.5
+  },
+  "other_action": {
+   "open": 0.1,
+   "city": 0.2,
+   "instance": 0.3
+  },
+  "npcd_innkeeper_open": {
+   "open": 0.08,
+   "city": 0.2
+  },
+  "npcd_innkeeper_news": {
+   "open": 0.05,
+   "city": 0.12
+  },
+  "npcd_innkeeper_rest": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_innkeeper_sit": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_innkeeper_more": {
+   "open": 0.02,
+   "city": 0.05
+  },
+  "npcd_innkeeper_bye": {
+   "open": 0.05,
+   "city": 0.12
+  },
+  "npcd_innkeeper_thanks": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_guard_open": {
+   "open": 0.05,
+   "city": 0.2
+  },
+  "npcd_guard_directions": {
+   "open": 0.03,
+   "city": 0.15
+  },
+  "npcd_guard_danger": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_guard_bye": {
+   "open": 0.03,
+   "city": 0.12
+  },
+  "npcd_guard_thanks": {
+   "open": 0.02,
+   "city": 0.06
+  },
+  "npcd_merchant_open": {
+   "open": 0.08,
+   "city": 0.2
+  },
+  "npcd_merchant_news": {
+   "open": 0.04,
+   "city": 0.1
+  },
+  "npcd_merchant_wares": {
+   "open": 0.04,
+   "city": 0.1
+  },
+  "npcd_merchant_haggle": {
+   "open": 0.02,
+   "city": 0.05
+  },
+  "npcd_merchant_bye": {
+   "open": 0.05,
+   "city": 0.12
+  },
+  "npcd_merchant_thanks": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_trainer_open": {
+   "open": 0.03,
+   "city": 0.1
+  },
+  "npcd_trainer_advice": {
+   "open": 0.02,
+   "city": 0.06
+  },
+  "npcd_trainer_practice": {
+   "open": 0.01,
+   "city": 0.04
+  },
+  "npcd_trainer_bye": {
+   "open": 0.02,
+   "city": 0.06
+  },
+  "npcd_trainer_thanks": {
+   "open": 0.01,
+   "city": 0.04
+  },
+  "npcd_flightmaster_open": {
+   "open": 0.05,
+   "city": 0.1
+  },
+  "npcd_flightmaster_route": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_flightmaster_bye": {
+   "open": 0.03,
+   "city": 0.06
+  },
+  "npcd_flightmaster_thanks": {
+   "open": 0.01,
+   "city": 0.03
+  },
+  "arc_open": {
+   "open": 0.03,
+   "city": 0.03
+  },
+  "arc_step": {
+   "open": 0.06,
+   "city": 0.06
+  },
+  "arc_resolve": {
+   "open": 0.02,
+   "city": 0.02
+  },
+  "nemesis_meet": {
+   "open": 0.03
+  },
+  "nemesis_song": {
+   "open": 0.005,
+   "city": 0.005
+  },
+  "npc_grief": {
+   "open": 0.01,
+   "city": 0.01
+  },
+  "lament": {
+   "open": 0.005,
+   "city": 0.005
+  },
+  "pet_call": {
+   "open": 0.3,
+   "instance": 0.3,
+   "classes": [
+    "HUNTER",
+    "WARLOCK"
+   ]
+  },
+  "pet_dismiss": {
+   "open": 0.1,
+   "city": 0.2,
+   "classes": [
+    "HUNTER",
+    "WARLOCK"
+   ]
+  },
+  "pet_mood": {
+   "open": 0.1,
+   "city": 0.1,
+   "classes": [
+    "HUNTER"
+   ]
+  },
+  "pet_bond": {
+   "open": 0.03,
+   "classes": [
+    "HUNTER"
+   ]
+  },
+  "pet_grief": {
+   "open": 0.02,
+   "instance": 0.05,
+   "classes": [
+    "HUNTER",
+    "WARLOCK"
+   ]
+  }
+ },
+ "_instance": "An instance (dungeon, raid, battleground) speaks like the open world without these events.",
+ "instance_drop": [
+  "weather_change",
+  "rest_enter",
+  "journey",
+  "quest_complete",
+  "quest_progress",
+  "npc_meet",
+  "relation_npc",
+  "dawn",
+  "dusk",
+  "travel",
+  "levelup",
+  "landmark",
+  "memory_return"
+ ],
+ "_layers": "Which share of the firings of an event a pool of each kind should answer (the rest is the generic pool of the event). place = the zone, capital or instance; mood = the atmosphere of the zone (m:, Data/Vocabulary.lua); band = the level band (levelMin/levelMax). The shares are the plan of the waves: same-tier pools share the firings by size, a zone pool (tier 2) speaks first while it has unused lines (ADR 0029).",
+ "layers": [
+  {
+   "name": "places",
+   "events": [
+    "zone",
+    "subzone_enter",
+    "landmark",
+    "rest_enter",
+    "journey",
+    "memory_return",
+    "travel"
+   ],
+   "shares": {
+    "place": 0.7,
+    "mood": 0.1,
+    "race": 0.05,
+    "time": 0.05,
+    "weather": 0.05
+   }
+  },
+  {
+   "name": "sky",
+   "events": [
+    "weather_change",
+    "dawn",
+    "dusk"
+   ],
+   "shares": {
+    "place": 0.45,
+    "weather": 0.3,
+    "mood": 0.1,
+    "time": 0.05
+   }
+  },
+  {
+   "name": "muse",
+   "events": [
+    "muse"
+   ],
+   "shares": {
+    "place": 0.35,
+    "mood": 0.05,
+    "class": 0.1,
+    "race": 0.1,
+    "faction": 0.05,
+    "time": 0.05,
+    "weather": 0.05,
+    "band": 0.1
+   }
+  },
+  {
+   "name": "combat",
+   "events": [
+    "battle",
+    "attack",
+    "victory",
+    "lowhp",
+    "threat",
+    "death",
+    "rez"
+   ],
+   "shares": {
+    "class": 0.25,
+    "race": 0.1,
+    "ctype": 0.15,
+    "place": 0.15,
+    "band": 0.1
+   }
+  },
+  {
+   "name": "spells",
+   "events": [
+    "heal",
+    "buff",
+    "rezother"
+   ],
+   "shares": {
+    "class": 0.5,
+    "race": 0.1
+   }
+  },
+  {
+   "name": "progress",
+   "events": [
+    "quest_complete",
+    "quest_progress",
+    "reputation_change"
+   ],
+   "shares": {
+    "place": 0.35,
+    "class": 0.1,
+    "race": 0.1,
+    "band": 0.15
+   }
+  },
+  {
+   "name": "levels",
+   "events": [
+    "levelup"
+   ],
+   "shares": {
+    "band": 0.5,
+    "class": 0.2,
+    "race": 0.1
+   }
+  },
+  {
+   "name": "people",
+   "events": [
+    "npc_meet",
+    "relation_npc",
+    "npcd_*"
+   ],
+   "shares": {
+    "place": 0.5,
+    "faction": 0.1,
+    "race": 0.1
+   }
+  },
+  {
+   "name": "social",
+   "events": [
+    "greet",
+    "farewell",
+    "thanks",
+    "pray",
+    "jest",
+    "toast"
+   ],
+   "shares": {
+    "place": 0.15,
+    "race": 0.2,
+    "class": 0.1,
+    "faction": 0.1,
+    "time": 0.1
+   }
+  },
+  {
+   "name": "players",
+   "events": [
+    "relation_player",
+    "other_action"
+   ],
+   "shares": {
+    "race": 0.2,
+    "faction": 0.2
+   }
+  },
+  {
+   "name": "instances",
+   "events": [
+    "encounter_end"
+   ],
+   "shares": {
+    "place": 0.8
+   }
+  },
+  {
+   "name": "companions",
+   "events": [
+    "pet_*"
+   ],
+   "shares": {
+    "class": 0.5
+   }
+  }
+ ],
+ "time": {
+  "dawn": 0.125,
+  "day": 0.4167,
+  "dusk": 0.125,
+  "night": 0.3333
+ },
+ "ctype": {
+  "beast": 0.35,
+  "humanoid": 0.35,
+  "undead": 0.1,
+  "elemental": 0.06,
+  "demon": 0.05,
+  "dragon": 0.03,
+  "giant": 0.03,
+  "mechanical": 0.03
+ },
+ "_weather": "The weather of a setting by the mood of its zone (Compat.WEATHER_KINDS); no weather inside an instance.",
+ "weather": {
+  "default": {
+   "clear": 0.5,
+   "rain": 0.3,
+   "fog": 0.1,
+   "storm": 0.1
+  },
+  "snow": {
+   "clear": 0.35,
+   "snow": 0.5,
+   "fog": 0.15
+  },
+  "desert": {
+   "clear": 0.6,
+   "sand": 0.3,
+   "storm": 0.1
+  },
+  "swamp": {
+   "clear": 0.3,
+   "rain": 0.45,
+   "fog": 0.15,
+   "storm": 0.1
+  },
+  "jungle": {
+   "clear": 0.3,
+   "rain": 0.45,
+   "fog": 0.15,
+   "storm": 0.1
+  },
+  "fire": {
+   "clear": 1.0
+  },
+  "deep": {
+   "clear": 1.0
+  }
+ },
+ "_bands": "Hours of /played in each level band; 60 is the life after the last level.",
+ "bands": [
+  [
+   "1-10",
+   10
+  ],
+  [
+   "10-20",
+   22
+  ],
+  [
+   "20-30",
+   30
+  ],
+  [
+   "30-40",
+   38
+  ],
+  [
+   "40-50",
+   45
+  ],
+  [
+   "50-60",
+   55
+  ],
+  [
+   "60",
+   200
+  ]
+ ],
+ "band_levels": {
+  "1-10": [
+   1,
+   10
+  ],
+  "10-20": [
+   10,
+   20
+  ],
+  "20-30": [
+   20,
+   30
+  ],
+  "30-40": [
+   30,
+   40
+  ],
+  "40-50": [
+   40,
+   50
+  ],
+  "50-60": [
+   50,
+   59
+  ],
+  "60": [
+   60,
+   60
+  ]
+ },
+ "capital_share": {
+  "1-10": 0.05,
+  "10-20": 0.1,
+  "20-30": 0.1,
+  "30-40": 0.1,
+  "40-50": 0.1,
+  "50-60": 0.1
+ },
+ "dungeon_share": {
+  "1-10": 0,
+  "10-20": 0.1,
+  "20-30": 0.12,
+  "30-40": 0.12,
+  "40-50": 0.12,
+  "50-60": 0.15
+ },
+ "races": {
+  "Human": {
+   "token": "Human",
+   "faction": "Alliance",
+   "start": "Elwynn Forest",
+   "capital": "Stormwind City",
+   "classes": [
+    "WARRIOR",
+    "PALADIN",
+    "ROGUE",
+    "PRIEST",
+    "MAGE",
+    "WARLOCK"
+   ],
+   "next": {
+    "Westfall": 0.6,
+    "Redridge Mountains": 0.2,
+    "Loch Modan": 0.2
+   }
+  },
+  "Dwarf": {
+   "token": "Dwarf",
+   "faction": "Alliance",
+   "start": "Dun Morogh",
+   "capital": "Ironforge",
+   "classes": [
+    "WARRIOR",
+    "PALADIN",
+    "HUNTER",
+    "ROGUE",
+    "PRIEST"
+   ],
+   "next": {
+    "Loch Modan": 0.6,
+    "Westfall": 0.4
+   }
+  },
+  "Gnome": {
+   "token": "Gnome",
+   "faction": "Alliance",
+   "start": "Dun Morogh",
+   "capital": "Ironforge",
+   "classes": [
+    "WARRIOR",
+    "ROGUE",
+    "MAGE",
+    "WARLOCK"
+   ],
+   "next": {
+    "Loch Modan": 0.6,
+    "Westfall": 0.4
+   }
+  },
+  "NightElf": {
+   "token": "NightElf",
+   "faction": "Alliance",
+   "start": "Teldrassil",
+   "capital": "Darnassus",
+   "classes": [
+    "WARRIOR",
+    "HUNTER",
+    "ROGUE",
+    "PRIEST",
+    "DRUID"
+   ],
+   "next": {
+    "Darkshore": 1.0
+   }
+  },
+  "Orc": {
+   "token": "Orc",
+   "faction": "Horde",
+   "start": "Durotar",
+   "capital": "Orgrimmar",
+   "classes": [
+    "WARRIOR",
+    "HUNTER",
+    "ROGUE",
+    "SHAMAN",
+    "WARLOCK"
+   ],
+   "next": {
+    "The Barrens": 1.0
+   }
+  },
+  "Troll": {
+   "token": "Troll",
+   "faction": "Horde",
+   "start": "Durotar",
+   "capital": "Orgrimmar",
+   "classes": [
+    "WARRIOR",
+    "HUNTER",
+    "ROGUE",
+    "PRIEST",
+    "SHAMAN",
+    "MAGE"
+   ],
+   "next": {
+    "The Barrens": 1.0
+   }
+  },
+  "Tauren": {
+   "token": "Tauren",
+   "faction": "Horde",
+   "start": "Mulgore",
+   "capital": "Thunder Bluff",
+   "classes": [
+    "WARRIOR",
+    "HUNTER",
+    "SHAMAN",
+    "DRUID"
+   ],
+   "next": {
+    "The Barrens": 1.0
+   }
+  },
+  "Undead": {
+   "token": "Scourge",
+   "faction": "Horde",
+   "start": "Tirisfal Glades",
+   "capital": "Undercity",
+   "classes": [
+    "WARRIOR",
+    "ROGUE",
+    "PRIEST",
+    "MAGE",
+    "WARLOCK"
+   ],
+   "next": {
+    "Silverpine Forest": 0.6,
+    "The Barrens": 0.4
+   }
+  }
+ },
+ "factions": {
+  "Horde": {
+   "hub": "Orgrimmar",
+   "capitals": [
+    "Orgrimmar",
+    "Thunder Bluff",
+    "Undercity"
+   ],
+   "dungeons": {
+    "10-20": {
+     "Ragefire Chasm": 0.4,
+     "Wailing Caverns": 0.6
+    }
+   },
+   "routes": {
+    "kalimdor": {
+     "20-30": {
+      "Stonetalon Mountains": 0.35,
+      "Ashenvale": 0.4,
+      "Thousand Needles": 0.25
+     },
+     "30-40": {
+      "Thousand Needles": 0.15,
+      "Desolace": 0.35,
+      "Dustwallow Marsh": 0.2,
+      "Stranglethorn Vale": 0.3
+     },
+     "40-50": {
+      "Tanaris": 0.3,
+      "Feralas": 0.3,
+      "Dustwallow Marsh": 0.1,
+      "Stranglethorn Vale": 0.15,
+      "Azshara": 0.15
+     },
+     "50-60": {
+      "Un'Goro Crater": 0.25,
+      "Felwood": 0.2,
+      "Azshara": 0.1,
+      "Winterspring": 0.2,
+      "Silithus": 0.1,
+      "Burning Steppes": 0.15
+     }
+    },
+    "eastern": {
+     "20-30": {
+      "Hillsbrad Foothills": 0.5,
+      "Stonetalon Mountains": 0.2,
+      "Ashenvale": 0.3
+     },
+     "30-40": {
+      "Arathi Highlands": 0.3,
+      "Stranglethorn Vale": 0.35,
+      "Alterac Mountains": 0.1,
+      "Badlands": 0.1,
+      "Desolace": 0.15
+     },
+     "40-50": {
+      "The Hinterlands": 0.25,
+      "Stranglethorn Vale": 0.2,
+      "Badlands": 0.15,
+      "Swamp of Sorrows": 0.15,
+      "Tanaris": 0.15,
+      "Searing Gorge": 0.1
+     },
+     "50-60": {
+      "Searing Gorge": 0.05,
+      "Burning Steppes": 0.25,
+      "Western Plaguelands": 0.25,
+      "Eastern Plaguelands": 0.2,
+      "Blasted Lands": 0.1,
+      "Un'Goro Crater": 0.15
+     }
+    }
+   }
+  },
+  "Alliance": {
+   "hub": "Stormwind City",
+   "capitals": [
+    "Stormwind City",
+    "Ironforge",
+    "Darnassus"
+   ],
+   "dungeons": {
+    "10-20": {
+     "The Deadmines": 0.6,
+     "The Stockade": 0.2,
+     "Wailing Caverns": 0.2
+    }
+   },
+   "routes": {
+    "eastern": {
+     "20-30": {
+      "Redridge Mountains": 0.25,
+      "Duskwood": 0.4,
+      "Wetlands": 0.35
+     },
+     "30-40": {
+      "Arathi Highlands": 0.25,
+      "Stranglethorn Vale": 0.3,
+      "Hillsbrad Foothills": 0.15,
+      "Alterac Mountains": 0.1,
+      "Badlands": 0.1,
+      "Dustwallow Marsh": 0.1
+     },
+     "40-50": {
+      "The Hinterlands": 0.25,
+      "Stranglethorn Vale": 0.2,
+      "Badlands": 0.1,
+      "Swamp of Sorrows": 0.15,
+      "Tanaris": 0.15,
+      "Searing Gorge": 0.15
+     },
+     "50-60": {
+      "Burning Steppes": 0.25,
+      "Western Plaguelands": 0.25,
+      "Eastern Plaguelands": 0.2,
+      "Blasted Lands": 0.1,
+      "Un'Goro Crater": 0.1,
+      "Searing Gorge": 0.1
+     }
+    },
+    "kalimdor": {
+     "20-30": {
+      "Ashenvale": 0.5,
+      "Stonetalon Mountains": 0.2,
+      "Wetlands": 0.3
+     },
+     "30-40": {
+      "Desolace": 0.3,
+      "Thousand Needles": 0.2,
+      "Dustwallow Marsh": 0.2,
+      "Stranglethorn Vale": 0.3
+     },
+     "40-50": {
+      "Tanaris": 0.3,
+      "Feralas": 0.3,
+      "Azshara": 0.15,
+      "Stranglethorn Vale": 0.15,
+      "Dustwallow Marsh": 0.1
+     },
+     "50-60": {
+      "Un'Goro Crater": 0.25,
+      "Felwood": 0.2,
+      "Winterspring": 0.2,
+      "Azshara": 0.1,
+      "Silithus": 0.1,
+      "Moonglade": 0.05,
+      "Burning Steppes": 0.1
+     }
+    }
+   }
+  }
+ },
+ "dungeons": {
+  "20-30": {
+   "Shadowfang Keep": 0.3,
+   "Blackfathom Deeps": 0.3,
+   "Gnomeregan": 0.2,
+   "Razorfen Kraul": 0.2
+  },
+  "30-40": {
+   "Scarlet Monastery": 0.6,
+   "Razorfen Downs": 0.2,
+   "Uldaman": 0.2
+  },
+  "40-50": {
+   "Zul'Farrak": 0.35,
+   "Maraudon": 0.3,
+   "Uldaman": 0.15,
+   "The Temple of Atal'Hakkar": 0.2
+  },
+  "50-60": {
+   "Blackrock Depths": 0.4,
+   "Dire Maul": 0.2,
+   "Stratholme": 0.2,
+   "Scholomance": 0.1,
+   "Blackrock Spire": 0.1
+  }
+ },
+ "_endgame": "The 200 hours after level 60, by share of time; capitals: the home capital, the hub of the faction, the others.",
+ "endgame": {
+  "capitals": 0.35,
+  "capital_split": {
+   "home": 0.5,
+   "hub": 0.3,
+   "others": 0.2
+  },
+  "world": [
+   0.2,
+   {
+    "Winterspring": 0.2,
+    "Eastern Plaguelands": 0.2,
+    "Silithus": 0.2,
+    "Burning Steppes": 0.15,
+    "Felwood": 0.1,
+    "Western Plaguelands": 0.1,
+    "Un'Goro Crater": 0.05
+   }
+  ],
+  "dungeons": [
+   0.2,
+   {
+    "Blackrock Spire": 0.3,
+    "Stratholme": 0.2,
+    "Scholomance": 0.2,
+    "Dire Maul": 0.15,
+    "Blackrock Depths": 0.15
+   }
+  ],
+  "raids": [
+   0.15,
+   {
+    "Molten Core": 0.3,
+    "Onyxia's Lair": 0.1,
+    "Blackwing Lair": 0.2,
+    "Zul'Gurub": 0.15,
+    "Ruins of Ahn'Qiraj": 0.1,
+    "Ahn'Qiraj": 0.1,
+    "Naxxramas": 0.05
+   }
+  ],
+  "battlegrounds": [
+   0.1,
+   {
+    "Warsong Gulch": 0.35,
+    "Arathi Basin": 0.35,
+    "Alterac Valley": 0.3
+   }
+  ]
+ },
+ "_waves": "Waves of texts per language (one session with parallel writers, like PR #241); the soft target is filled first, then the strict one. Units go in this order of kinds, the most frequent first within a kind.",
+ "waves": {
+  "size": 2500,
+  "min": 2000,
+  "max": 3000,
+  "order": [
+   "generic",
+   "start",
+   "capital",
+   "class",
+   "race",
+   "faction",
+   "mood",
+   "time",
+   "weather",
+   "ctype",
+   "band",
+   "zone",
+   "dungeon",
+   "endgame",
+   "raid",
+   "battleground"
+  ]
+ },
+ "measured": {
+  "command": "python -I -X utf8 Tests/bench_trial.py --mix 20 --seeds 1,2 --model",
+  "hours": {
+   "open": 91.89,
+   "city": 28.15
+  },
+  "per_hour": {
+   "open": 36.587,
+   "city": 28.315
+  },
+  "rates": {
+   "open": {
+    "arc_open": 0.0653,
+    "attack": 1.1536,
+    "battle": 5.0604,
+    "death": 0.0218,
+    "heal": 0.8162,
+    "journey": 1.3277,
+    "landmark": 0.9794,
+    "levelup": 0.3591,
+    "lowhp": 1.9153,
+    "memory_return": 0.0653,
+    "muse": 12.0144,
+    "npc_meet": 1.8609,
+    "quest_complete": 3.983,
+    "relation_npc": 0.1306,
+    "rest_enter": 0.1306,
+    "rez": 0.0435,
+    "subzone_enter": 1.5889,
+    "victory": 4.3857,
+    "weather_change": 0.6856
+   },
+   "city": {
+    "journey": 4.2987,
+    "levelup": 0.1066,
+    "memory_return": 0.3908,
+    "muse": 11.9015,
+    "npc_meet": 2.2027,
+    "quest_complete": 4.6185,
+    "relation_npc": 0.0355,
+    "rest_enter": 1.3145,
+    "subzone_enter": 2.1671,
+    "weather_change": 1.2434,
+    "zone": 0.0355
+   }
+  }
+ },
+ "_races": "token = the race as a condition writes it (UnitRace's token: the Undead are Scourge); next = the zones of the band 10-20."
+}
