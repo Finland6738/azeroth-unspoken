@@ -27,7 +27,9 @@ from lualit import Unsupported
 
 BASE = "AzerothUnspoken"
 RULE_KEYS = ("event", "category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "tier", "theme",
-             "motifs", "kind", "order", "parts", "chainable", "conditions")
+             "motifs", "kind", "order", "parts", "chainable", "conditions", "genre", "purpose", "origin", "show")
+# the literary metadata of a rule (#119), rendered on a line of their own
+LITERARY_KEYS = ("genre", "purpose", "origin")
 VARIANT_KEYS = ("depth",)
 
 
@@ -356,9 +358,10 @@ def render_arc_text(id, data, indent):
 
 def render_rule(id, rule, indent):
     """The canonical text of a rule entry (from `["id"]` to the comma, no newline at the end): the identity on the first
-    line, then tags, depth, weight and cooldown, then theme, motifs and tier (#89, #90), then the monologue fields (#99),
-    then the conditions. `indent` is the indentation of the entry."""
-    first, second, theme, chain, third = [], [], [], [], []
+    line, then tags, depth, weight and cooldown, then theme, motifs and tier (#89, #90), then the literary metadata
+    (#119), then the monologue and stanza fields (#99, #127), then the conditions. `indent` is the indentation of the
+    entry."""
+    first, second, theme, literary, chain, third = [], [], [], [], [], []
     ev = rule.get("event")
     if isinstance(ev, list) and len(ev) == 1:
         ev = ev[0]
@@ -378,12 +381,15 @@ def render_rule(id, rule, indent):
     for k in rule:
         if k not in RULE_KEYS:
             second.append("%s = %s" % (k, lualit.literal(rule[k])))
-    for k in ("kind", "order", "parts", "chainable"):
+    for k in LITERARY_KEYS:
+        if k in rule:
+            literary.append("%s = %s" % (k, lualit.literal(rule[k])))
+    for k in ("kind", "show", "order", "parts", "chainable"):
         if k in rule:
             chain.append("%s = %s" % (k, lualit.literal(rule[k])))
     if "conditions" in rule:
         third.append("conditions = " + lualit.literal(rule["conditions"]))
-    lines = [", ".join(g) for g in (first, second, theme, chain, third) if g]
+    lines = [", ".join(g) for g in (first, second, theme, literary, chain, third) if g]
     return "[%s] = { %s }," % (lualit.quote(id), (",\n" + indent + "\t").join(lines))
 
 
@@ -392,7 +398,7 @@ def render_variants(id, variants, indent):
     lines = ["[%s] = {" % lualit.quote(id)]
     for v in variants:
         if v.get("depth"):
-            lines.append("%s\t{ %s, depth = %s }," % (indent, lualit.quote(v["text"]), lualit.quote(v["depth"])))
+            lines.append("%s\t{ %s, depth = %s }," % (indent, lualit.quote(v["text"]), lualit.literal(v["depth"])))
         else:
             lines.append("%s\t%s," % (indent, lualit.quote(v["text"])))
     lines.append(indent + "},")

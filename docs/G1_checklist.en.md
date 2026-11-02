@@ -419,6 +419,22 @@ chose not to stop for in-game tests. It needs the `AzerothUnspoken_Versi` folder
   minutes at most, never two within ten minutes; normal: about twice as many; never: none, not even by hand.
   **Report:** how many pieces in an hour and whether the rhythm feels right.
 
+## L3: literary metadata, the right moment, songs of stanzas (issues #119, #120, #127 and #128)
+
+English counterpart of the section **L3** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Tested with
+the mock client only ([ADR 0043](adr/0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md)): the owner chose not to stop for in-game tests. It needs the
+`AzerothUnspoken_Versi` folder.
+
+- **L3.1 · A song of stanzas.** `/au event lore_test` until the walking song comes (*A walking song comes back...*), a
+  few times. **Expect:** the first line, two of the four verses with an empty line between them (always in the same
+  order, a different pair from time to time), then the refrain after an empty line; the box scrolls past twelve lines.
+  **Report:** a pair that does not make sense together, a refrain that is missing or doubled, a box that cuts the song.
+- **L3.2 · The right moment.** Pray (`/au pray`) once by day and once after dusk. **Expect:** the hymn only after dusk
+  (it names the night). **Report:** a piece that names something (the night, snow, a return, faith) that is not true
+  where and when it comes.
+- **L3.3 · On a long ride.** Ride or fly for a few minutes with **Literary forms** on *normal*. **Expect:** now and then
+  the walking song at the end of the ride, never in combat, never in chat.
+
 ## Summary form (copy and fill in)
 
 ```

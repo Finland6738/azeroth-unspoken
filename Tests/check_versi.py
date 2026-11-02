@@ -1,17 +1,22 @@
-"""Checks of the verses pack AzerothUnspoken_Versi (step L0, issues #115 and #116; run by run_tests.py).
+"""Checks of the verses pack AzerothUnspoken_Versi (L0, #115 #116; L3, #119 #120 #127; run by run_tests.py).
 
 The pack is loaded **as an external addon**, after the base addon, with its own namespace (like a player who installs
 it next to AzerothUnspoken). Then:
 1. the .toc and the files: Interface 16001, dependency on AzerothUnspoken, UTF-8 without BOM, LF line endings;
 2. the validator (the same code as `/au validate versi`): zero errors and zero warnings;
 3. the pieces: 12-16, each with a `lore_test` twin; private voices only (D16); never in combat; cooldown of three to
-   seven days; genre and origin tags; the literary category `lore` (#118); at most 255 bytes, no placeholders, the
-   attribution on the first line and one verse per line (#117, at least four), no " / " left;
-   the mix asked by #115 (inscriptions, returns, inn rhymes, road songs with a natural form, encounters, hymn);
+   seven days; genre and origin tags; the literary category `lore` (#118); the literary metadata of #119 (genre,
+   purpose, origin) on every rule; at most 255 bytes, no placeholders, the attribution on the first line and one verse
+   per line (#117, at least four), no " / " left; the mix asked by #115 (inscriptions, returns, inn rhymes, road songs
+   with a natural form, encounters, hymn) and one song of interchangeable stanzas (#127);
 4. never offered to the Chat Gateway: `/au event lore_test` in the "confirm" mode with public chat on reaches the
-   private narrator with its line breaks, creates no proposal and sends nothing, in English and in Italian;
+   private narrator with its line breaks, creates no proposal and sends nothing, in English and in Italian; the song
+   of stanzas comes out as its frame with two of its stanzas, in their order;
 5. the real events: the right pieces are candidates at a ruin, a sacred place, a prayer and a Hearthstone, and not
-   elsewhere; a used piece waits for its cooldown.
+   elsewhere (the hymn and the late inn song only in the evening and at night: they name it, #120); a used piece waits
+   for its cooldown;
+6. the archive (#128): the pieces are archived with their metadata, and tools/archive/literary.py reads the facts of a
+   rule (the matrix and the warning words) exactly as the engine's validator does.
 
 Usage: python -I -X utf8 Tests/check_versi.py [repository folder]. Exits with 1 if something fails.
 """
@@ -27,16 +32,11 @@ PACK_NAME = "AzerothUnspoken_Versi"
 PACK = os.path.join(ROOT, PACK_NAME)
 DAY = 86400
 
-# The warning phrases of CONTRIBUTING.md, "Literary forms" (lowercase): echoes of Tolkien, of Blizzard's texts and of
-# famous verses. A match must be justified in review; in this pack there is none.
-WARNING_PHRASES = [
-    "road goes ever on", "not all who wander", "all that is gold", "far over the misty", "under the mountain",
-    "one ring", "to rule them", "to bind them", "speak, friend", "shall not pass", "where now the horse",
-    "man in the moon", "cat and the fiddle", "elbereth", "westward over the sea", "grey havens", "the shadow lies",
-    "hole in the ground", "seven stars", "light be with you", "ishnu-alah", "throm-ka", "lok'tar",
-    "strength and honor", "for the horde", "for the alliance", "victory or death", "love is patient",
-    "ashes to ashes", "ring a ring", "once upon a time",
-]
+# The warning phrases of CONTRIBUTING.md, "Literary forms": echoes of Tolkien, of Blizzard's texts and of famous verses.
+# A match must be justified in review; in this pack there is none. One list, shared with the archive's exporter (#128).
+sys.path.insert(0, os.path.join(ROOT, "tools", "archive"))
+import literary  # noqa: E402
+from literary import WARNING_PHRASES  # noqa: E402
 
 FAILURES = []
 
@@ -124,12 +124,13 @@ PIECES_LUA = """function()
         if p.pack == "versi" then
             local r = { id = id, speaker = p.speaker, form = p.form, cooldown = p.cooldown or -1, category = p.category,
                 combat = p.when and p.when.combat, event = table.concat(p.events, ","), tags = {}, texts = {},
-                natural = 0, twin = id:find("^versi%.test%.") ~= nil }
+                natural = 0, twin = id:find("^versi%.test%.") ~= nil, genre = p.genre, purpose = p.purpose,
+                origin = p.origin, kind = p.kind, show = p.show }
             for t in pairs(p.tags) do table.insert(r.tags, t) end
             for lang, list in pairs(p.text) do
                 for _, v in ipairs(list) do
                     v = E.VariantView(v, p.pack)
-                    table.insert(r.texts, { lang = lang, t = v.t })
+                    table.insert(r.texts, { lang = lang, t = v.t, n = _ })
                     if v.depth and v.depth.natural then r.natural = r.natural + 1 end
                 end
             end
@@ -146,6 +147,9 @@ def check_pieces(lua, ns):
     real = [r for r in rows if not r.twin]
     twins = [r for r in rows if r.twin]
     check(12 <= len(real) <= 16, f"12-16 pieces ({len(real)})")
+    check(all(r.genre and r.purpose and r.origin for r in rows), "genre, purpose and origin on every rule (#119)")
+    check(all(r.origin in ("common", "personal") or str(r.origin).startswith("culture:") for r in rows),
+          "origin is common, personal or culture:<people> (D17: never a race)")
     real_keys = {r.id[len("versi."):] for r in real}
     twin_keys = {r.id[len("versi.test."):] for r in twins}
     check(real_keys == twin_keys, "every piece has its lore_test twin, and only those")
@@ -171,10 +175,21 @@ def check_pieces(lua, ns):
                 long_.append(f"{r.id} {t.lang} ({len(raw)} bytes)")
             if "\r" in t.t or " / " in t.t:
                 multi.append(f"{r.id} {t.lang}")
-            if "{" in t.t or "}" in t.t:
+            # a song of stanzas (#127) keeps its {stanzas} mark in the frame, and nothing else
+            if "{" in t.t.replace("{stanzas}", "") or "}" in t.t.replace("{stanzas}", ""):
                 holes.append(f"{r.id} {t.lang}")
     for r in real:
         for t in r.texts.values():
+            if r.kind == "stanzas":
+                # the frame: the attribution, the mark, the refrain; then the stanzas, four verses each
+                lines = t.t.split("\n")
+                if t.n == 1:
+                    good = lines[0].endswith(":") and "{stanzas}" in lines and len(lines) >= 5
+                else:
+                    good = len(lines) == 4 and all(x.strip() for x in lines) and "{" not in t.t
+                if not good:
+                    verses.append(f"{r.id} {t.lang}")
+                continue
             # the natural form of a road song is prose; every other text is verse
             if r.natural and len(t.t) < 120:
                 continue
@@ -203,6 +218,9 @@ def check_pieces(lua, ns):
     check(count(lambda r: r.event == "other_action") == 2, "2 sayings for an encounter (trust, wariness)")
     check(count(lambda r: r.event == "pray") == 1, "1 hymn on pray")
     check(count(lambda r: r.event == "encounter_end") == 1, "1 lament after a lost boss fight")
+    songs = [r for r in real if r.kind == "stanzas"]
+    check(len(songs) == 1 and songs[0].event == "journey" and songs[0].genre == "song" and songs[0].purpose == "accompany"
+          and songs[0].show == 2, "1 walking song of interchangeable stanzas on journey, two stanzas a time (#127)")
 
 
 # Every record the Gateway receives, and what it made of it: a proposal for the chat or only the private narrator.
@@ -247,6 +265,16 @@ def check_lore_test():
         check("\n" in str(last.text) and str(last.text) == str(recs[-1].text),
               f"[{locale}] the narrator and its history keep the line breaks (#117)")
         check(len(seen) >= 15, f"[{locale}] every piece comes out by hand ({len(seen)} different texts)")
+        # #127: the song is its frame with two of its stanzas, in their declared order
+        song = ns.Engine.byId["versi.road.stanzas.01"]
+        stanzas = [str(ns.Engine.VariantText(song.text[locale][i])) for i in range(2, len(song.text[locale]) + 1)]
+        sung = [str(r.text) for r in recs if str(r.id) == "versi.test.road.stanzas.01"]
+        ok = bool(sung)
+        for text in sung:
+            at = [text.find(s) for s in stanzas]
+            shown = [i for i, a in enumerate(at) if a >= 0]
+            ok = ok and len(shown) == 2 and at[shown[0]] < at[shown[1]] and "{stanzas}" not in text
+        check(ok, f"[{locale}] the song of stanzas: the frame with two stanzas in their order ({len(sung)} times)")
         # the language is judged on every text, not on one picked from a set in hash order: a single piece may have none of the marker words
         sample = next(iter(seen), "")
         markers = ("è", "à", "ò", "ù", "il ", "la ", "le ", "che ", " e ", " di ", " un ")
@@ -286,7 +314,11 @@ def check_events():
         check(expect <= got and not (absent & got), f"first visit to {zone}: candidates {sorted(got) or 'none'}")
     lua, ns = new_runtime()
     cand = lua.eval(CANDIDATES_LUA)
-    check("versi.hymn.pray.01" in set(cand("pray", None).keys()), "the hymn is a candidate for pray")
+    night = lua.eval("function() return { time = 'night' } end")()
+    check("versi.hymn.pray.01" in set(cand("pray", night).keys()), "the hymn is a candidate for pray at night")
+    day = lua.eval("function() return { time = 'day' } end")()
+    check("versi.hymn.pray.01" not in set(cand("pray", day).keys()), "and not by day: it names the night (#120)")
+    check("versi.road.stanzas.01" in set(cand("journey", None).keys()), "the walking song is a candidate for a long ride")
     extra = lua.eval("function() return { spell = 'Hearthstone', spellKind = 'travel' } end")()
     got = set(cand("travel", extra).keys())
     check({"versi.road.song.01", "versi.road.song.02"} <= got, "both road songs are candidates for a Hearthstone")
@@ -297,9 +329,28 @@ def check_events():
     check(not set(cand("other_action", None).keys()), "no saying without someone known acting toward us")
     check(not set(cand("memory_return", None).keys()), "no remembered verse without a memory")
     lua.eval("function() AzerothUnspoken.Engine.Remember('pray', 'versi.hymn.pray.01', 5) end")()
-    check("versi.hymn.pray.01" not in set(cand("pray", None).keys()), "a used piece waits for its cooldown")
+    check("versi.hymn.pray.01" not in set(cand("pray", night).keys()), "a used piece waits for its cooldown")
     lua.globals().LEAP(3 * DAY + 60)
-    check("versi.hymn.pray.01" in set(cand("pray", None).keys()), "and comes back after it")
+    check("versi.hymn.pray.01" in set(cand("pray", night).keys()), "and comes back after it")
+
+
+def check_archive(lua, ns):
+    """#128: the pieces are archived (tools/archive) with their metadata, and the archive reads the facts of a rule (the
+    matrix and the warning words of #120) as the engine's validator does."""
+    print("\nARCHIVE (#128)")
+    import store  # noqa: E402 (tools/archive, on the path above)
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "no-overlay"))
+    ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
+    check(len(ids) == 16, f"the archive holds the 16 pieces ({len(ids)})")
+    facts = lua.eval("""function(id)
+        local out = {}
+        for k in pairs(AzerothUnspoken.Validator.LiteraryFacts(AzerothUnspoken.Engine.byId[id])) do table.insert(out, k) end
+        return out
+    end""")
+    diff = [i for i in ids if sorted(facts(i).values()) != sorted(literary.facts(store.get_rule(con, i)))]
+    check(not diff, "the archive and the validator see the same facts of every piece" + ("" if not diff else f": {diff}"))
+    check(all(ns.Engine.byId[i].genre == store.get_rule(con, i)["genre"] for i in ids), "and the same metadata")
+    con.close()
 
 
 if __name__ == "__main__":
@@ -307,6 +358,7 @@ if __name__ == "__main__":
     lua_, ns_ = new_runtime()
     check_pack(lua_, ns_)
     check_pieces(lua_, ns_)
+    check_archive(lua_, ns_)
     check_lore_test()
     check_events()
     print("\n" + ("VERSES PACK OK" if not FAILURES else f"{len(FAILURES)} CHECKS FAILED"))

@@ -488,6 +488,334 @@ function Validator.MonologueProblems(p, langs)
 end
 
 ---------------------------------------------------------------------------
+-- Literary metadata, the genre x situation matrix and stanzas (#119, #120, #127, ADR 0043)
+---------------------------------------------------------------------------
+-- syllables of two corresponding verses of two stanzas may differ by this much: the count is an estimate (vowel
+-- groups; in Italian the words of a verse are joined, which counts a synalepha as one syllable)
+Validator.METRE_TOLERANCE = 2
+
+---The problem of an `origin` value (#119, D17), or nil: `common`, `personal` or `culture:<people>`, with a people of
+---Engine.CULTURES when that list is not empty.
+---@param origin any
+---@return string?
+function Validator.OriginProblem(origin)
+	if type(origin) ~= "string" then return ("origin '%s' is not a string"):format(tostring(origin)) end
+	if Engine.ORIGINS[origin] then return nil end
+	local people = origin:match("^culture:([a-z][a-z0-9_]*)$")
+	if not people then
+		return ("origin '%s' not valid: common, personal or culture:<people> (lower case)"):format(origin)
+	end
+	if next(Engine.CULTURES) ~= nil and not Engine.CULTURES[people] then
+		return ("origin '%s': '%s' is not a declared culture"):format(origin, people)
+	end
+	return nil
+end
+
+-- the conditions as facts: `name` (asked, not false), `name=value`, `name=false`; `place.` and `other.` in front of the
+-- conditions of those tables. `not` and `any` guarantee nothing and are not read.
+local function ConditionFacts(facts, when, prefix)
+	for k, v in pairs(when) do
+		if type(k) == "string" and k ~= "not" and k ~= "any" then
+			local path = prefix .. k
+			if type(v) == "table" then
+				if #v > 0 then
+					facts[path] = true
+					for _, x in ipairs(v) do
+						if type(x) == "string" or type(x) == "number" then facts[path .. "=" .. tostring(x)] = true end
+					end
+				elseif next(v) ~= nil then
+					facts[path] = true
+					ConditionFacts(facts, v, path .. ".")
+				end
+			elseif v == false then
+				facts[path .. "=false"] = true
+			else
+				facts[path] = true
+				if v ~= true then facts[path .. "=" .. tostring(v)] = true end
+			end
+		end
+	end
+end
+
+---The facts of a rule that the matrix and the warning words read (#120): `event=`, `style=`, `tag=`, `genre=`,
+---`purpose=`, `origin=` and its conditions (see Data/Themes.lua, `literary`).
+---@param p AUPhrase
+---@return table<string, boolean>
+function Validator.LiteraryFacts(p)
+	local facts = {}
+	for _, ev in ipairs(p.events or {}) do facts["event=" .. ev] = true end
+	for _, s in ipairs(p.styles or {}) do facts["style=" .. s] = true end
+	for t in pairs(p.tags or {}) do facts["tag=" .. t] = true end
+	for _, k in ipairs({ "genre", "purpose", "origin" }) do
+		if type(p[k]) == "string" then facts[k .. "=" .. p[k]] = true end
+	end
+	if type(p.when) == "table" then ConditionFacts(facts, p.when, "") end
+	return facts
+end
+
+local function AnyFact(facts, list)
+	for _, f in ipairs(list or {}) do
+		if facts[f] then return f end
+	end
+	return nil
+end
+
+---The rows of the genre x situation matrix (#120) that a rule breaks: { row, fact } where `fact` is the forbidden fact
+---that holds (a `never` row) or nil (a `needs` row with none of its facts).
+---@param p AUPhrase
+---@param facts? table<string, boolean>
+---@return { row: table, fact?: string }[]
+function Validator.MatrixProblems(p, facts)
+	facts = facts or Validator.LiteraryFacts(p)
+	local out = {}
+	for _, row in ipairs(Engine.LITERARY_MATRIX) do
+		if (row.genre == nil or row.genre == p.genre) and (row.purpose == nil or row.purpose == p.purpose)
+			and (row.genre ~= nil or row.purpose ~= nil) then
+			local bad = AnyFact(facts, row.never)
+			if bad then
+				table.insert(out, { row = row, fact = bad })
+			elseif row.needs and not AnyFact(facts, row.needs) then
+				table.insert(out, { row = row })
+			end
+		end
+	end
+	return out
+end
+
+---The first warning word (#120) a text names that the rule's facts do not justify: the word and its entry, or nil.
+---@param text string
+---@param lang string short code (en, it)
+---@param facts table<string, boolean>
+---@return string? word
+---@return table? entry
+function Validator.LiteraryWord(text, lang, facts)
+	for _, w in ipairs(Engine.LITERARY_WORDS) do
+		if not AnyFact(facts, w.needs) then
+			local found = Validator.FindWord(text, w[lang])
+			if found then return found, w end
+		end
+	end
+	return nil
+end
+
+-- the accented vowels of the Italian texts, as plain vowels (the syllable estimate counts vowel groups)
+local ACCENTS = { ["à"] = "a", ["á"] = "a", ["è"] = "e", ["é"] = "e", ["ì"] = "i", ["í"] = "i", ["ò"] = "o", ["ó"] = "o",
+	["ù"] = "u", ["ú"] = "u", ["À"] = "a", ["È"] = "e", ["É"] = "e", ["Ì"] = "i", ["Ò"] = "o", ["Ù"] = "u" }
+
+---An estimate of the syllables of a verse (#127): vowel groups. In English a word's final silent e is not counted
+---("stone", but not "table" or "be"); in Italian the words are joined first, so two vowels across a space make one
+---syllable (synalepha). Good enough to tell stanzas of one metre from stanzas of another, not to scan a verse.
+---@param verse string
+---@param lang string short code (en, it)
+---@return integer
+function Validator.Syllables(verse, lang)
+	local s = verse:lower()
+	for from, to in pairs(ACCENTS) do s = s:gsub(from, to) end
+	if lang == "it" then
+		s = s:gsub("[^a-z]", "")
+		local n = 0
+		for _ in s:gmatch("[aeiou]+") do n = n + 1 end
+		return n
+	end
+	local n = 0
+	for word in s:gmatch("[a-z']+") do
+		word = word:gsub("'", "")
+		local k = 0
+		for _ in word:gmatch("[aeiouy]+") do k = k + 1 end
+		if k > 1 and word:match("[^aeiouyl]e$") then k = k - 1 end
+		n = n + math.max(k, word ~= "" and 1 or 0)
+	end
+	return n
+end
+
+-- the verses of a text: its non-empty lines
+local function Verses(text)
+	local out = {}
+	for line in (text .. "\n"):gmatch("([^\n]*)\n") do
+		line = line:gsub("^[ \t\r]+", ""):gsub("[ \t\r]+$", "")
+		if line ~= "" then table.insert(out, line) end
+	end
+	return out
+end
+Validator.Verses = Verses
+
+---The problems of a song of interchangeable stanzas (#127, ADR 0043): its shape, and per language the frame, the
+---number of stanzas, their verses and metre, and that every stanza is the song's own. Each problem is
+---{ level, code, lang?, msg }. Stanzas shared with another song are found by Validator:Run (it sees every song).
+---@param p AUPhrase
+---@param langs string[] the languages to check (short codes)
+---@return table[]
+function Validator.StanzaProblems(p, langs)
+	local out = {}
+	local function Bad(level, code, msg, lang) table.insert(out, { level = level, code = code, lang = lang, msg = msg }) end
+	if p.genre ~= "song" then
+		Bad("error", "stanzaGenre", ("a song of stanzas has genre = \"song\", not '%s'"):format(tostring(p.genre)))
+	end
+	local show = p.show == nil and 1 or p.show
+	if type(show) ~= "number" or show ~= math.floor(show) or show < 1 or show > Engine.STANZAS_SHOW_MAX then
+		Bad("error", "stanzaShow", ("show '%s': 1 to %d stanzas"):format(tostring(p.show), Engine.STANZAS_SHOW_MAX))
+		show = 1
+	end
+	local shape = {}   -- [lang] = { stanzas, verses per stanza }
+	for _, lang in ipairs(langs) do
+		local list = p.text[lang] or {}
+		if #list > 0 then
+			local frame = list[1]
+			local ft = Engine.VariantOk(frame) and Engine.VariantText(frame) or ""
+			local a, b = ft:find(Engine.STANZA_MARK, 1, true)
+			if not a or ft:find(Engine.STANZA_MARK, b + 1, true) then
+				Bad("error", "stanzaFrame", ("the first variant is the frame, with %s once"):format(Engine.STANZA_MARK), lang)
+			end
+			local n = #list - 1
+			if n < Engine.STANZAS_MIN or n > Engine.STANZAS_MAX then
+				Bad("error", "stanzaCount", ("%d stanzas: a song has %d to %d"):format(n, Engine.STANZAS_MIN, Engine.STANZAS_MAX), lang)
+			end
+			local verses, metre, longest = nil, nil, {}
+			for i = 1, #list do
+				local var = list[i]
+				if Engine.VariantDepth(var) then
+					Bad("error", "stanzaDepth", ("variant %d: the frame and the stanzas have no depth of their own"):format(i), lang)
+				end
+				if Engine.VariantPack(var, p.pack) ~= p.pack then
+					Bad("error", "stanzaMix", ("variant %d comes from the pack '%s': the stanzas of a song are written together"):format(
+						i, tostring(Engine.VariantPack(var, p.pack))), lang)
+				end
+				if i > 1 and Engine.VariantOk(var) then
+					local t = Engine.VariantText(var)
+					if t:find(Engine.STANZA_MARK, 1, true) then
+						Bad("error", "stanzaFrame", ("stanza %d holds %s"):format(i - 1, Engine.STANZA_MARK), lang)
+					end
+					local vs = Verses(t)
+					local counts = {}
+					for k, v in ipairs(vs) do counts[k] = Validator.Syllables(v, lang) end
+					if not verses then
+						verses, metre = #vs, counts
+					elseif #vs ~= verses then
+						Bad("error", "stanzaVerses", ("stanza %d has %d verses, stanza 1 has %d"):format(i - 1, #vs, verses), lang)
+					else
+						for k = 1, #vs do
+							if math.abs(counts[k] - metre[k]) > Validator.METRE_TOLERANCE then
+								Bad("error", "stanzaMetre", ("stanza %d, verse %d: about %d syllables, %d in stanza 1"):format(
+									i - 1, k, counts[k], metre[k]), lang)
+								break
+							end
+						end
+					end
+					table.insert(longest, #t)
+				end
+			end
+			shape[lang] = { n, verses }
+			-- the longest reading: the frame with the `show` longest stanzas, an empty line between two
+			table.sort(longest, function(x, y) return x > y end)
+			local total = #ft - (a and #Engine.STANZA_MARK or 0)
+			for k = 1, math.min(show, #longest) do total = total + longest[k] + (k > 1 and 2 or 0) end
+			if total > Validator.LIMITS.READING then
+				Bad("warning", "tooLong", ("the frame with %d stanzas: up to %d bytes, the READING limit is %d"):format(show, total,
+					Validator.LIMITS.READING), lang)
+			end
+		end
+	end
+	-- the same stanzas in every language: as many, with as many verses
+	local ref, refLang
+	for _, lang in ipairs(langs) do
+		local s = shape[lang]
+		if s then
+			if not ref then
+				ref, refLang = s, lang
+			elseif s[1] ~= ref[1] or s[2] ~= ref[2] then
+				Bad("error", "stanzaLangs", ("%d stanzas of %s verses; in %s %d of %s"):format(s[1], tostring(s[2]), refLang,
+					ref[1], tostring(ref[2])), lang)
+			end
+		end
+	end
+	return out
+end
+
+---The problems of a literary form's metadata (#119) and its warnings (#120): the vocabularies, the fields on a rule
+---that is not literary, the missing metadata, placeholders in a song or a formula, the verses across languages, the
+---matrix and the warning words. Each problem is { level, code, lang?, msg }.
+---@param p AUPhrase
+---@param langs string[] short language codes of the texts
+---@return table[]
+function Validator.LiteraryProblems(p, langs)
+	local out = {}
+	local function Bad(level, code, msg, lang) table.insert(out, { level = level, code = code, lang = lang, msg = msg }) end
+	if p.genre ~= nil and not (type(p.genre) == "string" and Engine.GENRES[p.genre]) then
+		Bad("error", "badGenre", ("unknown genre '%s' (see Data/Themes.lua, literary)"):format(tostring(p.genre)))
+	end
+	if p.purpose ~= nil and not (type(p.purpose) == "string" and Engine.PURPOSES[p.purpose]) then
+		Bad("error", "badPurpose", ("unknown purpose '%s' (see Data/Themes.lua, literary)"):format(tostring(p.purpose)))
+	end
+	if p.origin ~= nil then
+		local why = Validator.OriginProblem(p.origin)
+		if why then Bad("error", "badOrigin", why) end
+	end
+	if not Engine.IsLiteraryRule(p) then
+		if p.purpose ~= nil or p.origin ~= nil then
+			Bad("error", "literaryField", "purpose and origin belong to a literary form (a genre, the tag lore or genre_*)")
+		end
+		return out
+	end
+	if p.genre == nil or p.purpose == nil or p.origin == nil then
+		Bad("warning", "literaryMeta", "a literary form declares its genre, purpose and origin (#119)")
+	end
+	-- a rule offered only on a manual event (chance 0 by default: lore_test) has no situation to judge
+	local manual = #p.events > 0
+	for _, ev in ipairs(p.events) do
+		if (NS.DEFAULT_CHANCE or {})[ev] ~= 0 then manual = false end
+	end
+	local facts = Validator.LiteraryFacts(p)
+	if not manual then
+		for _, m in ipairs(Validator.MatrixProblems(p, facts)) do
+			local what = m.row.genre and ("genre " .. m.row.genre) or ("purpose " .. m.row.purpose)
+			Bad("warning", "literaryMatrix", m.fact
+				and ("%s never with %s (matrix row %s)"):format(what, m.fact, tostring(m.row.id))
+				or ("%s asks one of %s (matrix row %s)"):format(what, table.concat(m.row.needs, ", "), tostring(m.row.id)))
+		end
+	end
+	-- the texts: placeholders in a fixed genre, the warning words, the verses across languages
+	local fixed = Engine.FIXED_GENRES[p.genre]
+	local versesBy = {}
+	for _, lang in ipairs(langs) do
+		local wordWarned = manual
+		local counts = {}
+		for i, var in ipairs(p.text[lang] or {}) do
+			if Engine.VariantOk(var) then
+				local t = Engine.VariantText(var)
+				if p.kind == "stanzas" and i == 1 then t = t:gsub("{stanzas}", "") end
+				if fixed and t:find("{[^{}]*}") then
+					Bad("error", "literaryPlaceholder", ("variant %d: a %s keeps its words, no placeholder"):format(i, p.genre), lang)
+				end
+				if not wordWarned then
+					local word, w = Validator.LiteraryWord(t, lang, facts)
+					if word then
+						wordWarned = true
+						Bad("warning", "literaryWord", ("variant %d names '%s' (%s) but the rule asks none of %s"):format(i, word,
+							tostring(w.id), table.concat(w.needs or {}, ", ")), lang)
+					end
+				end
+				-- a natural form in prose is not counted; a song of stanzas is checked by StanzaProblems
+				if p.kind ~= "stanzas" then table.insert(counts, #Verses(t)) end
+			end
+		end
+		table.sort(counts)
+		versesBy[lang] = table.concat(counts, ",")
+	end
+	local ref, refLang
+	for _, lang in ipairs(langs) do
+		if versesBy[lang] and versesBy[lang] ~= "" then
+			if not ref then
+				ref, refLang = versesBy[lang], lang
+			elseif versesBy[lang] ~= ref then
+				Bad("warning", "verseCount", ("lines per variant %s, in %s %s: the same number of verses in every language"):format(
+					versesBy[lang], refLang, ref), lang)
+			end
+		end
+	end
+	return out
+end
+
+---------------------------------------------------------------------------
 -- UTF-8
 ---------------------------------------------------------------------------
 ---Vero se la stringa è UTF-8 ben formato (niente sequenze troncate, sovrabbondanti o surrogati).
@@ -713,6 +1041,8 @@ function Validator:Run(opts)
 
 	local packsSeen = {}
 	local ids = Engine.SortedKeys(Engine.byId)
+	-- the stanzas of the songs seen so far (#127): [lang .. verses] = { id, list } of the song
+	local stanzaOwner = {}
 	-- the phrases some monologue uses (#99), with the monologue that uses them
 	local chained = {}
 	for _, mid in ipairs(ids) do
@@ -793,9 +1123,9 @@ function Validator:Run(opts)
 			if p.chainable and not Validator.MONOLOGUE_SPEAKERS[p.speaker] then
 				Add("error", "monologueVoice", p.pack, id, nil, "a chainable phrase is for private voices (narrator, inner)")
 			end
-			-- D16 (#163): a literary form (tags lore, genre_*, or the category lore, #118) never speaks in a public voice,
-			-- and a monologue is never one
-			local literary = Engine.HasLiteraryTag(p.tags)
+			-- D16 (#163): a literary form (tags lore, genre_*, the category lore, #118, a genre, #119, or stanzas, #127)
+			-- never speaks in a public voice, and a monologue is never one
+			local literary = Engine.HasLiteraryTag(p.tags) or p.genre ~= nil or p.kind == "stanzas"
 			if Engine.PUBLIC_SPEAKERS[p.speaker] then
 				if literary or p.category == Engine.LITERARY_CATEGORY then
 					Add("error", "literaryPublic", p.pack, id, nil,
@@ -807,6 +1137,31 @@ function Validator:Run(opts)
 				Add("error", "literaryCategory", p.pack, id, nil,
 					("tag lore or genre_*: a literary form is in the category '%s', not '%s'"):format(Engine.LITERARY_CATEGORY,
 						tostring(p.category)))
+			end
+			-- #119, #120: the literary metadata, the genre x situation matrix and the warning words; #127: the stanzas
+			do
+				local textLangs = Engine.SortedKeys(p.text)
+				for _, b in ipairs(Validator.LiteraryProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
+				if p.kind == "stanzas" then
+					for _, b in ipairs(Validator.StanzaProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
+					-- the stanzas of a song are its own: the same stanza in two songs mixes them (a rule that shares the
+					-- very list of texts, like the lore_test twin of a song, is the same song)
+					for _, lang in ipairs(textLangs) do
+						local list = p.text[lang]
+						for i = 2, #list do
+							local t = Engine.VariantOk(list[i]) and Engine.VariantText(list[i])
+							if t then
+								local key = lang .. "\31" .. table.concat(Validator.Verses(t), "\n")
+								local other = stanzaOwner[key]
+								if other and other.list ~= list then
+									Add("error", "stanzaMix", p.pack, id, lang,
+										("stanza %d is also a stanza of '%s': never mix the stanzas of two songs"):format(i - 1, other.id))
+								end
+								stanzaOwner[key] = other or { id = id, list = list }
+							end
+						end
+					end
+				end
 			end
 			-- #100: a line for a composite situation belongs to the situation's lead event
 			if p.situational then
@@ -924,7 +1279,9 @@ function Validator:Run(opts)
 							if not valid then
 								Add("error", "badUTF8", p.pack, id, lang, ("variante %d: %s"):format(i, why))
 							end
-							local info = Analyze(var.t, lang, { vocabBytes = VocabBytes(lang) })
+							-- #127: the mark of a song's frame is where its stanzas go, not a placeholder
+							local info = Analyze(p.kind == "stanzas" and i == 1 and var.t:gsub("{stanzas}", "") or var.t, lang,
+								{ vocabBytes = VocabBytes(lang) })
 							for _, prob in ipairs(info.problems) do
 								Add("error", "badPlaceholder", p.pack, id, lang, ("variante %d: %s"):format(i, prob))
 							end

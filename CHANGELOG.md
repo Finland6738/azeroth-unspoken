@@ -8,6 +8,47 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### L3: literary metadata, the right moment, songs of stanzas, pieces in the archive (issues #119, #120, #127, #128)
+
+Step L3 of the literary forms milestone. A literary piece now says what it is, what it is for and whose it is; the
+validator warns when it comes at the wrong moment; a song can change its verses from one time to the next; and the
+pieces are written and reviewed through the authoring archive. Owner decisions D16 and D17 of #130;
+[ADR 0043](docs/adr/0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md). Tested with the mock client only (the owner chose to skip the in-game gates); what still needs the
+real client is in section L3 of the [in-game checklist](docs/G1_checklist.md).
+
+- **Added: literary metadata** (#119). Rule fields `genre` (verse, song, formula, epigraph, prose, tale), `purpose`
+  (remember, mourn, amuse, accompany, bless, warn, advise, celebrate) and `origin` (`common`, `personal`,
+  `culture:<people>`, matched later against the culture the user chooses, never the race: D17). Closed vocabularies in
+  `Data/Themes.lua` (`literary`), extendable by a pack; carried in the shared rule shape. A genre makes a rule literary
+  (category `lore`, private: the Chat Gateway reads it too). No `excerpt`: literary forms never go to chat (D16).
+  Validator: `badGenre`, `badPurpose`, `badOrigin`, `literaryField`, `literaryPlaceholder` (errors), `literaryMeta`,
+  `verseCount` (warnings).
+- **Added: the genre x situation matrix and the warning words** (#120), as data and as validator **warnings**
+  (`literaryMatrix`, `literaryWord`): `amuse` never in a dark, plagued or cursed place or after a death, `mourn` never
+  ironic or everyday, an `epigraph` at a ruin, a sacred place, a monument or a landmark, `accompany` on a journey; the
+  night, snow, a return and faith (English and Italian) ask their condition.
+- **Added: songs of interchangeable stanzas** (#127), the one exception to whole lines (ADR 0001). `kind = "stanzas"`,
+  `show` 1 or 2: a frame with the refrain and `{stanzas}`, then three to six stanzas; one or two are said, in their
+  order, never the same opening twice in a row. Validator errors for a wrong frame, count, verses, metre (a syllable
+  estimate), languages, depth, and for any stanza of another song (`stanza*`).
+- **Added: literary pieces in the archive** (#128). Columns `genre`, `purpose`, `piece_origin`, `stanza_show`; the table
+  `piece_meta` with the editorial record of every piece (metre, rhyme scheme, verses, stanzas, refrain, lore reference,
+  review steps metre -> lore -> originality) in `authoring/pieces.csv`, and the view `piece`; `cli piece`; `approve`
+  needs the three steps; `check` and `export` report the warnings (matrix, words, the warning phrases of CONTRIBUTING.md,
+  verses, records) without failing; `search --genre --purpose`; variants may keep a list of depths.
+- **Changed: the verses pack** (`AzerothUnspoken_Versi`) is written through the archive: `Registry.lua`,
+  `Texts_enUS.lua`, `Texts_itIT.lua` (its `Versi.lua` is gone) and `Twins.lua`, which makes the `lore_test` twins in
+  code. Every piece has its metadata and its record (the 15 of L0 reviewed in PR #136); a new walking song of four
+  stanzas, two at a time, on `journey`, waits for the owner's review. The hymn and the late inn song come only in the
+  evening and at night (they name it); the Italian saying of trust has four verses, like the English.
+- **Tests:** `Tests/TestLiteraryMeta.lua` (319 checks: fields, vocabularies, matrix and words with positive and negative
+  samples, stanzas rendered and refused, the Gateway); `Tests/check_archive.py` (literary pieces: archive, record, review
+  order, export, warnings); `Tests/check_versi.py` (metadata, the song of stanzas, the archive sees the same facts as the
+  validator).
+- **Docs:** ADR 0043 (and a note in ADR 0001), PACK_FORMAT (Literary forms, validator codes, the archive),
+  CONTRIBUTING (metadata, the right moment, stanzas, the record and its review), ARCHITECTURE, the wiki page Literary
+  Forms, checklist section L3 (IT/EN).
+
 ### L2: verses on several lines, rare literary forms, long private reading (issues #117, #118, #126)
 
 Step L2 of the literary forms milestone. The engine now gives verses their shape and their rarity, and the narrator

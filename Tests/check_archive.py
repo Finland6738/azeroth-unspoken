@@ -20,6 +20,7 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, "tools", "archive"))
 import coverage  # noqa: E402
 import cli  # noqa: E402
+import literary  # noqa: E402
 import packfiles  # noqa: E402
 import store  # noqa: E402
 import structures  # noqa: E402
@@ -519,6 +520,114 @@ def monologue_content():
     con.close()
 
 
+def literary_content():
+    """#119, #120, #127, #128 (ADR 0043): the verses pack is archived with its literary metadata and the editorial record
+    of every piece; drafts of pieces are checked (vocabularies, stanzas), approved only after the review steps in order,
+    exported with their metadata, and the export reports the warnings (matrix, words, phrases) without failing."""
+    print("LITERARY PIECES (#119, #120, #127, #128)")
+    con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
+    ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
+    check(len(ids) == 16 and not any(i.startswith("versi.test.") for i in ids),
+          "the 16 pieces of the verses pack are archived; the lore_test twins are code and stay out (%d)" % len(ids))
+    r = store.get_rule(con, "versi.road.stanzas.01")
+    check(r["genre"] == "song" and r["purpose"] == "accompany" and r["origin"] == "common" and r["kind"] == "stanzas" and
+          r["show"] == 2, "genre, purpose, origin, kind and show are rule fields of their own columns")
+    check(con.execute("SELECT COUNT(*) FROM intention WHERE extra LIKE '%genre%' OR extra LIKE '%purpose%'"
+                      " OR extra LIKE '%\"show\"%'").fetchone()[0] == 0, "no literary field is left in `extra`")
+    check(store.get_variants(con, "versi.road.song.01", "enUS")[0]["depth"] == ["literary", "elevated"],
+          "a variant written for two depths keeps its list")
+    check(len(store.get_variants(con, "versi.road.stanzas.01", "itIT")) == 5, "a song of stanzas: its frame and four stanzas")
+    rows = con.execute("SELECT * FROM piece ORDER BY content_id").fetchall()
+    done = [x["content_id"] for x in rows if x["metre_status"] == "ok" and x["lore_status"] == "none" and x["originality_status"] == "ok"]
+    check(len(rows) == 16 and len(done) == 15 and "versi.road.stanzas.01" not in done,
+          "every piece has its editorial record (authoring/pieces.csv, seen through the view `piece`): the 15 of L0 reviewed, "
+          "the new song waiting for the owner")
+    report = store.literary_report(con)
+    check(report == [("versi.road.stanzas.01", "approved, but its review is not complete: metre, lore, originality pending")],
+          "the only literary warning of the repository: the new song waits for the owner's review (%s)" % report[:3])
+    check(all(store.check_content(con, i, "draft") == [] for i in ids), "every piece passes the archive checks")
+    con.close()
+
+    # the warnings of literary.py, on samples
+    lit = {"event": ["death"], "tags": ["lore"], "genre": "song", "purpose": "amuse", "styles": ["everyday"],
+           "conditions": {"place": {"tags": ["cursed"]}, "not": {"time": "night"}}}
+    w = literary.warnings(lit, {"enUS": ["A song:\nnot all who wander\nunder the night", "A song:\none"],
+                                "itIT": ["Una canzone:\nuno\ndue\ntre", "Una canzone:\nuno"]}, ROOT)
+    check(any("matrix row amuse_in_grief" in x for x in w), "the matrix: amuse with a death or a cursed place")
+    check(any("names 'night'" in x for x in w), "a warning word without its condition (`not` is no condition)")
+    check(any("warning phrase 'not all who wander'" in x for x in w), "a warning phrase of CONTRIBUTING.md")
+    check(any("verses per variant" in x for x in w), "the verses across languages")
+    ok = dict(lit, event=["zone"], purpose="remember", conditions={"time": "night"})
+    check(literary.warnings(ok, {"enUS": ["A song:\nunder the night"], "itIT": ["Canto:\nsotto la notte"]}, ROOT) == [],
+          "and none for a piece whose rule asks what it names")
+    check("place.tags=cursed" in literary.facts(lit) and "time" not in literary.facts(lit) and "time=night" in literary.facts(ok),
+          "the facts of a rule, as the validator reads them")
+    check(literary.origin_problem("culture:dwarf") is None and literary.origin_problem("race:orc") and
+          literary.origin_problem("culture:Orc"), "origin: common, personal or culture:<people> (D17)")
+
+    tmp = tempfile.mkdtemp(prefix="au-archive-lit-")
+    try:
+        root, overlay = copy_repo(tmp)
+        db = os.path.join(tmp, "build", "authoring.sqlite")
+        out = io.StringIO()
+
+        def run(*args):
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+                return cli.main(["--root", root, "--overlay", overlay, "--db", db, "--author", "ai-test"] + list(args))
+        frame = "A test song:\n{stanzas}\n\nSo sing it once,\nand sing it twice."
+        st = ["the cat sat on the mat today\nthe dog lay by the door\nthe bird flew high above the hay\nthe fish swam near the shore",
+              "the cow stood in the field all day\nthe pig slept in the straw\nthe goat ran up the hill to play\nthe horse stood by the saw",
+              "the fox went down the lane at dusk\nthe owl sat on the beam\nthe hare ran past the empty husk\nthe trout lay in the stream"]
+        frame_it = "Una canzone di prova:\n{stanzas}\n\nCantala una volta,\ne poi ancora."
+        st_it = ["la gatta dorme sopra il tetto\nil cane guarda la via\nil merlo canta sul suo letto\nil pesce nuota via",
+                 "la mucca bruca dentro il prato\nil porco dorme al sole\nla capra salta sul selciato\nil mulo non ne vuole",
+                 "la volpe scende per la strada\nil gufo veglia in alto\nla lepre corre nella biada\nla trota fa un salto"]
+        base = {"pack": "versi", "event": "travel", "speaker": "inner", "styles": ["everyday"], "tags": ["lore", "genre_road_song"],
+                "genre": "song", "purpose": "accompany", "origin": "common", "conditions": {"combat": False}}
+        lines = [
+            dict(base, id="versi.test.draft.song", kind="stanzas", show=1, piece={"meter": "8.6.8.6", "rhyme_scheme": "XAXA",
+                 "lines": 4, "stanzas": 3, "refrain": 1, "singable": 1}, texts={"enUS": [frame] + st, "itIT": [frame_it] + st_it}),
+            dict(base, id="versi.test.draft.two", kind="stanzas", texts={"enUS": [frame] + st[:2], "itIT": [frame_it] + st_it[:2]}),
+            dict(base, id="versi.test.draft.genre", genre="limerick", texts={}),
+            dict(base, id="versi.test.draft.race", origin="race:orc", texts={}),
+            dict(base, id="versi.test.draft.hole", texts={"enUS": ["A song:\nsing, {player}"], "itIT": ["Canto:\ncanta"]}),
+            {"id": "zone.test.purpose", "pack": "base_exploration", "event": "zone", "speaker": "inner", "purpose": "amuse",
+             "texts": {}},
+        ]
+        drafts = os.path.join(tmp, "drafts.jsonl")
+        with open(drafts, "w", encoding="utf-8", newline="\n") as f:
+            f.write("\n".join(json.dumps(x) for x in lines) + "\n")
+        check(run("drafts", drafts) == 1, "drafts of pieces: two stanzas, an unknown genre, a race as origin, a placeholder in a "
+              "song, a purpose on a line that is not literary are refused")
+        con = store.connect(db)
+        check([r[0] for r in con.execute("SELECT id FROM intention WHERE state = 'draft'")] == ["versi.test.draft.song"],
+              "the good song of stanzas is kept as a draft")
+        m = con.execute("SELECT * FROM piece_meta WHERE intention_id = 'versi.test.draft.song'").fetchone()
+        check(m["meter"] == "8.6.8.6" and m["stanzas"] == 3 and m["metre_status"] == "pending",
+              "its editorial record starts with the draft, every review step pending")
+        con.close()
+        check("versi.test.draft.song" in packfiles.read(os.path.join(overlay, "pieces.csv")), "the record is in the overlay")
+        check(run("approve", "versi.test.draft.song") == 1, "a piece is not approved before its review")
+        check(run("piece", "versi.test.draft.song", "--lore", "none") == 1, "the lore review comes after the metre review")
+        check(run("piece", "versi.test.draft.song", "--metre", "ok") == 0 and run("piece", "versi.test.draft.song", "--lore", "none") == 0
+              and run("piece", "versi.test.draft.song", "--originality", "ok") == 0, "metre and language, lore, originality, in order")
+        check(run("approve", "versi.test.draft.song") == 0, "then it is approved")
+        out.truncate(0)
+        check(run("export") == 0, "export")
+        text = packfiles.read(os.path.join(root, "AzerothUnspoken_Versi", "Registry.lua"))
+        check('["versi.test.draft.song"]' in text and 'genre = "song", purpose = "accompany", origin = "common"' in text and
+              'kind = "stanzas", show = 1' in text, "the rule is written with its literary metadata and its stanza fields")
+        check("{stanzas}" in packfiles.read(os.path.join(root, "AzerothUnspoken_Versi", "Texts_itIT.lua")),
+              "its frame and stanzas are written in the texts of each language")
+        check("literary pieces: 1 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
+              "the export reports the literary warnings (here: the new song of the repository waits for the owner's review)")
+        check(store.roundtrip(root) == [], "the round trip of the exported folders is still an empty diff")
+        check(lua_syntax_ok([os.path.join(root, "AzerothUnspoken_Versi", f) for f in ("Registry.lua", "Texts_enUS.lua")]) in
+              (None, []), "the written files are valid Lua")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def lualit_checks():
     print("LUA LITERALS")
     import lualit
@@ -711,6 +820,7 @@ structures_content()
 world_content()
 emotion_content()
 monologue_content()
+literary_content()
 lualit_checks()
 review_flow()
 report()

@@ -66,10 +66,10 @@ function Gateway:PrivateReason(rec)
 	if rec.kind == "monologue" or (rule and rule.kind == "monologue") then return "monologue" end
 	if type(rec.parts) == "table" and #rec.parts > 0 then return "monologue" end
 	-- D16 (#130, #163): `lore` and `genre_*` mark a literary form, which stays private whatever its voice; so does the
-	-- literary category (#118), whatever the tags say
+	-- literary category (#118), whatever the tags say, and a rule with a genre (#119) or stanzas (#127)
 	local literary = NS.Engine.LITERARY_CATEGORY
-	if NS.Engine.HasLiteraryTag(rec.tags) or (rule and NS.Engine.HasLiteraryTag(rule.tags))
-		or rec.category == literary or (rule and rule.category == literary) then
+	if NS.Engine.HasLiteraryTag(rec.tags) or rec.category == literary or rec.kind == "stanzas"
+		or NS.Engine.IsLiteraryRule(rule) then
 		return "literary"
 	end
 	if not PUBLIC_VOICE[rec.speaker] then return "voice" end

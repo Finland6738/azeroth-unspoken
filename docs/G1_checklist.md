@@ -1243,6 +1243,25 @@ non va, apri una issue con quello che hai visto.
       circa il doppio; mai: nessun pezzo, nemmeno a mano.
     - **Cosa riportare:** quanti pezzi in un'ora e se il ritmo ti sembra giusto.
 
+## L3: metadati letterari, il momento giusto, canzoni a strofe (aggiunto dalle issue #119, #120, #127 e #128)
+
+Provato solo con il client finto ([ADR 0043](adr/0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md)): il proprietario ha deciso di non fermarsi per le prove nel gioco.
+Serve la cartella `AzerothUnspoken_Versi`. Se un passo non va, apri una issue con quello che hai visto.
+
+- **L3.1 · Una canzone a strofe.** `/au event lore_test` finché non arriva la canzone da cammino (*Torna in mente una
+  canzone da cammino...*), qualche volta.
+    - **Cosa aspettarti:** la prima riga, due delle quattro strofe con una riga vuota fra loro (sempre nello stesso
+      ordine, una coppia diversa ogni tanto), poi il ritornello dopo una riga vuota; oltre le dodici righe il riquadro
+      scorre.
+    - **Cosa riportare:** una coppia di strofe che insieme non ha senso, un ritornello che manca o si ripete, un
+      riquadro che taglia la canzone.
+- **L3.2 · Il momento giusto.** Prega (`/au pray`) una volta di giorno e una dopo il tramonto.
+    - **Cosa aspettarti:** l'inno solo dopo il tramonto (nomina la notte).
+    - **Cosa riportare:** un pezzo che nomina qualcosa (la notte, la neve, un ritorno, la fede) che non è vero dove e
+      quando arriva.
+- **L3.3 · In un lungo viaggio.** Cavalca o vola per qualche minuto con **Forme letterarie** su *normali*.
+    - **Cosa aspettarti:** ogni tanto la canzone da cammino alla fine del viaggio, mai in combattimento, mai in chat.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
