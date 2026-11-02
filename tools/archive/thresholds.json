@@ -5,5 +5,24 @@
   "k_variants": 20,
   "repeat_window": 100,
   "opening_share_max": 0.15,
-  "languages_complete": true
+  "languages_complete": true,
+  "near_duplicates": {
+    "_doc": "ADR 0050: word 3-grams with a Jaccard of at least 0.5 are a near duplicate (a warning; a wave adds none). An exact duplicate fails cli check unless every pair of its intentions is in allow_exact (reviewed twins: these two are the female and male lines of a friend, the same in English). An opening or closing of 3 words shared by more than max(10, 0.2% of the texts of at least 5 words) is over-used (a warning).",
+    "n": 3,
+    "jaccard": 0.5,
+    "edge": 3,
+    "edge_min_words": 5,
+    "edge_min": 10,
+    "edge_share": 0.002,
+    "allow_exact": [
+      [
+        "rel.greet.friend.f",
+        "rel.greet.friend.m"
+      ],
+      [
+        "rel.npc.friend.f",
+        "rel.npc.friend.m"
+      ]
+    ]
+  }
 }

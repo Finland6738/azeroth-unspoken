@@ -8,6 +8,31 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0c: the need of the content, a near-duplicate check, and the plan of the content waves (issue #138)
+
+The last technical step of the content-scale plan: tools that tell the content sessions what to write, how much, in
+which order, and that refuse the same text twice. No change to the addon. [ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md).
+
+- **Added: `cli need`**, the need model (`tools/archive/need.py`, `need_model.json`): for every event x context pool (a
+  place, class, race, faction, mood, time, weather, creature or level band of an event, or its generic lines) the texts
+  it needs so that no character hears one twice in 400 hours (strict) or in any 40 (soft), from the measured event mix
+  at the default pace (22.5 interventions per hour) and the lives of 16 typical characters (level paths of both
+  factions, capitals, dungeons, then 200 hours at level 60), against the usable texts the archive holds. `--write`
+  writes [docs/content/NEED.md](docs/content/NEED.md), `docs/content/need.json` and the table of
+  [docs/content/WAVES.md](docs/content/WAVES.md); `--wave W01` prints a wave's pools and conditions.
+  Today: **30,347** texts per language (strict), **7,341** (soft); gap 28,462 and 6,539. With today's random pick the
+  same pools would need about 137,000 texts for at most 10% of repeats in 400 hours, 284,000 for 5%: the owner's range.
+- **Added: `Tests/bench_trial.py --mix H [--model]`**: the event mix of a day of play (quests, levels, merchants and
+  flights added to the route) through the real Narrative Director, written into the need model.
+- **Added: near duplicates** (`tools/archive/neardup.py`): `cli check` fails on an exact duplicate (the same words in one
+  language, unless the twins are allowed in `thresholds.json`) and warns of near duplicates (word 3-grams, Jaccard at
+  least 0.5) and of over-used 3-word openings and closings; `cli dups --state draft` lists those of a wave's drafts.
+  Prefix filtering finds every pair: today's 9,286 texts in under a second, 300,000 synthetic texts in about 37 s.
+  Today: 6 near pairs in English and 4 in Italian, 2 allowed exact twins (the female and male lines of a friend).
+- **Added: `cli sample`**, a seeded review sheet of about 2% of the chosen intentions with every literary piece.
+- **Added: the plan of the content waves** ([docs/content/WAVES.md](docs/content/WAVES.md)): 11 waves of about 2,500
+  texts per language, the soft need first, and how to run a wave (authors, ids, archive flow, checks, owner review).
+
 ### C0b: compact area sources, and a change of area spread over frames (issue #138)
 
 The follow-up of ADR 0048 §4: what visited areas keep is bounded, and a change of area no longer stutters.

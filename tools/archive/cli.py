@@ -22,6 +22,12 @@ Commands (see CONTRIBUTING.md, "Writing content through the archive"):
                           and the dialogue scripts: unreachable nodes, dangling transitions, missing languages, replies
                           that put words in the player's mouth; report the warnings of the literary pieces
     report                coverage and gap report (issue #88): Markdown, JSON, job summary; never fails the build
+    need [--write]        the need of the content waves (C0c, ADR 0050): the texts each event x context pool needs so that
+                          no text repeats in a life of 400 hours (and in 40), the gap, the plan of the waves; --write
+                          puts it in docs/content/NEED.md, need.json and the table of WAVES.md; --wave W01 prints a wave
+    dups [filters]        near and exact duplicates (ADR 0050) of the texts of the intentions chosen by --state, --pack,
+                          --by (author) or ids, against every text of their language; exits 1 on an exact duplicate
+    sample [filters]      a random review sheet of about 2% of the intentions chosen (every literary piece always)
 """
 import argparse
 import json
@@ -31,8 +37,12 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import coverage  # noqa: E402
+import need  # noqa: E402
+import neardup  # noqa: E402
 import packfiles  # noqa: E402
 import store  # noqa: E402
+
+CONTENT_DOCS = os.path.join(store.ROOT, "docs", "content")
 
 
 def newest_input(root, overlay):
@@ -297,7 +307,130 @@ def cmd_check(a):
     errors = [p for p in problems if p[0] == "error"]
     print("arcs and dialogue scripts: %d errors, %d warnings" % (len(errors), len(problems) - len(errors)))
     print_literary(con, a)
-    return 1 if diffs or canon or errors else 0
+    blocking = print_dups(neardup.check(con, dup_options(a)))
+    return 1 if diffs or canon or errors or blocking else 0
+
+
+def dup_options(a):
+    th = coverage.load_thresholds(a.thresholds) if getattr(a, "thresholds", None) else coverage.load_thresholds()
+    return th.get("near_duplicates") or {}
+
+
+def print_dups(res, limit=10):
+    """The duplicates found (ADR 0050): an exact one not allowed is an error, the rest are warnings. Returns the errors."""
+    gh = os.environ.get("GITHUB_ACTIONS")
+    errors = 0
+    for lang, r in res.items():
+        for e in r["exact"]:
+            if e["allowed"]:
+                continue
+            errors += 1
+            print(("::error title=Exact duplicate::%s: %s: %s" if gh else "error: exact duplicate in %s: %s: %s") %
+                  (lang, ", ".join(e["ids"]), e["text"]), file=sys.stderr)
+        for p in r["near"][:limit or None]:
+            print(("::warning title=Near duplicate::%s: %s ~ %s (%.2f)" if gh else "warning: near duplicate in %s: %s ~ %s (%.2f)") %
+                  (lang, p["a"], p["b"], p["jaccard"]))
+            if not gh:
+                print("    %s\n    %s" % (p["text_a"].replace("\n", " / "), p["text_b"].replace("\n", " / ")))
+        for name in ("openings", "closings"):
+            for k, n in r[name]:
+                print(("::warning title=Over-used %s::%s: '%s' in %d texts (limit %d)" if gh else
+                       "warning: over-used %s in %s: '%s' in %d texts (limit %d)") % (name[:-1], lang, k, n, r["edge_limit"]))
+        allowed = sum(1 for e in r["exact"] if e["allowed"])
+        print("duplicates %s: %d texts, %d exact (%d allowed twins), %d near pairs, %d openings and %d closings over %d" % (
+            lang, r["texts"], len(r["exact"]), allowed, len(r["near"]), len(r["openings"]), len(r["closings"]), r["edge_limit"]))
+    return errors
+
+
+def chosen(con, a):
+    """The intentions chosen by ids or by --state, --pack and --by (None = all of them)."""
+    if getattr(a, "ids", None):
+        return set(a.ids)
+    where, args = [], []
+    for col, v in (("state", a.state), ("pack_id", a.pack), ("author_id", getattr(a, "by", None))):
+        if v:
+            where.append("%s = ?" % col)
+            args.append(v)
+    if not where:
+        return None
+    return {r[0] for r in con.execute("SELECT id FROM intention WHERE " + " AND ".join(where), args)}
+
+
+def cmd_dups(a):
+    con = open_db(a)
+    res = neardup.check(con, dup_options(a), only=chosen(con, a))
+    return 1 if print_dups(res, a.limit) else 0
+
+
+def cmd_need(a):
+    con = open_db(a)
+    res = need.compute(con, a.root, need.load_model(a.model) if a.model else None, a.state or "approved")
+    if a.wave:
+        w = next((w for w in res["waves"] if w["id"] == a.wave), None)
+        if w is None:
+            print("unknown wave: %s (W01-W%02d)" % (a.wave, len(res["waves"])), file=sys.stderr)
+            return 1
+        print("%s (%s need): %d texts per language" % (w["id"], w["target"], w["texts"]))
+        for u in w["units"]:
+            print("  %s %s, %s need (%d texts)  conditions: %s" % (u["kind"], u["name"], u["target"], u["texts"], u["condition"]))
+            for ev, _, _, n, has, needs, _ in u["pools"]:
+                print("    %-26s %5d more  (has %d, needs %d)" % (ev, n, has, needs))
+        return 0
+    md = need.to_markdown(res, a.top)
+    if a.write:
+        packfiles.write(os.path.join(CONTENT_DOCS, "NEED.md"), md)
+        packfiles.write(os.path.join(CONTENT_DOCS, "need.json"), need.to_json(res))
+        need.write_waves(os.path.join(CONTENT_DOCS, "WAVES.md"), res)
+        print("wrote docs/content/NEED.md, need.json and the waves of WAVES.md")
+    t = res["totals"]
+    print("need per language: strict (%d h) %d, soft (%d h) %d; gap %s; %d waves" % (
+        res["model"]["life_hours"], t["need_strict"], res["model"]["soft_hours"], t["need_soft"],
+        ", ".join("%s %d / %d" % (l, t["gap_strict"][l], t["gap_soft"][l]) for l in res["languages"]), len(res["waves"])))
+    if a.json:
+        packfiles.write(a.json, need.to_json(res))
+    if a.markdown:
+        packfiles.write(a.markdown, md)
+    return 0
+
+
+def cmd_sample(a):
+    """A random review sheet (ADR 0050): about `share` of the chosen intentions, at least `min`, every literary piece."""
+    import random
+    con = open_db(a)
+    ids = chosen(con, a)
+    rows = [r for r in con.execute("SELECT * FROM intention ORDER BY id") if ids is None or r["id"] in ids]
+    pieces = {r[0] for r in con.execute("SELECT intention_id FROM piece_meta")}
+
+    def literary(r):
+        tags = store.jload(r["tags"]) or []
+        return r["genre"] is not None or r["id"] in pieces or any(t == "lore" or str(t).startswith("genre_") for t in tags)
+
+    lit = [r for r in rows if literary(r)]
+    rest = [r for r in rows if not literary(r)]
+    n = min(len(rest), max(a.min, int(round(a.share * len(rest)))))
+    pick = sorted(random.Random(a.seed).sample(rest, n), key=lambda r: r["id"]) + lit
+    out = ["# Review sheet", "",
+           "%d of %d intentions (%.1f%%, seed %d) and every literary piece (%d). Mark each one ok, fix (say what) or "
+           "reject; a fix or a reject sends that kind of line of the wave back to its writers (docs/content/WAVES.md)." % (
+               n, len(rest), 100.0 * n / max(1, len(rest)), a.seed, len(lit)), ""]
+    for r in pick:
+        cond = store.jload(r["conditions"])
+        out += ["## %s%s" % (r["id"], "  (literary piece: owner review)" if literary(r) else ""), "",
+                "- event %s, voice %s, pack %s, author %s, state %s%s" % (
+                    ", ".join(json.loads(r["events"])), r["speaker"], r["pack_id"], r["author_id"], r["state"],
+                    ", conditions `%s`" % json.dumps(cond, ensure_ascii=False) if cond else ""),
+                "- verdict: [ ] ok  [ ] fix  [ ] reject", ""]
+        for lang in sorted({v[0] for v in con.execute("SELECT lang FROM variant WHERE intention_id = ?", (r["id"],))}):
+            out.append("%s:" % lang)
+            out += ["> %s" % v["text"].replace("\n", " / ") for v in store.get_variants(con, r["id"], lang)]
+            out.append("")
+    text = "\n".join(out) + "\n"
+    if a.out:
+        packfiles.write(a.out, text)
+        print("wrote %s: %d intentions" % (a.out, len(pick)))
+    else:
+        print(text)
+    return 0
 
 
 def cmd_report(a):
@@ -391,6 +524,31 @@ def main(argv=None):
     p.add_argument("--json", help="write the full report as JSON here")
     p.add_argument("--strict", action="store_true", help="exit 1 when a threshold is breached (not used in CI)")
     p.set_defaults(fn=cmd_report)
+    p = sub.add_parser("need", help="the need of the content waves (ADR 0050)")
+    p.add_argument("--write", action="store_true", help="write docs/content/NEED.md, need.json and the waves of WAVES.md")
+    p.add_argument("--wave", help="print the pools of one wave (W01...)")
+    p.add_argument("--state", choices=store.STATES, help="the content counted as written (default approved)")
+    p.add_argument("--model", help="JSON model (default tools/archive/need_model.json)")
+    p.add_argument("--top", type=int, default=30, help="rows of the long tables")
+    p.add_argument("--json", help="also write the full report as JSON here")
+    p.add_argument("--markdown", help="also write the Markdown report here")
+    p.set_defaults(fn=cmd_need)
+    for name in ("dups", "sample"):
+        p = sub.add_parser(name)
+        p.add_argument("ids", nargs="*", help="intentions (default: the ones the filters choose, or all)")
+        p.add_argument("--state", choices=store.STATES)
+        p.add_argument("--pack")
+        p.add_argument("--by", help="author id of the intentions")
+        if name == "dups":
+            p.add_argument("--limit", type=int, default=50, help="near pairs printed per language (0 = all)")
+            p.add_argument("--thresholds", help="JSON file (default: tools/archive/thresholds.json)")
+            p.set_defaults(fn=cmd_dups)
+        else:
+            p.add_argument("--share", type=float, default=0.02, help="share of the intentions that are not literary")
+            p.add_argument("--min", type=int, default=10, help="at least this many of them")
+            p.add_argument("--seed", type=int, default=1)
+            p.add_argument("--out", help="write the sheet here (Markdown)")
+            p.set_defaults(fn=cmd_sample)
     a = ap.parse_args(argv)
     for attr in ("state", "pack", "event", "tag", "register", "theme", "motif", "region", "area", "voice", "text", "lang", "limit",
                  "genre", "purpose"):
