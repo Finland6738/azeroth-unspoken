@@ -77,9 +77,9 @@ def roundtrip():
     check(n >= 800, "the archive holds the literal rules of the base and the regional packs (%d intentions)" % n)
     check(con.report["skipped"] == [], "no file is left out: no rules are computed by code any more (%s)" %
           sorted(str(s["pack_id"]) for s in con.report["skipped"]))
-    check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_arcs'").fetchone()[0] == 44 and
-          con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_dialogues'").fetchone()[0] == 187,
-          "the 44 lines of the Story Arcs and the 187 of NPC Alive are archived (#143; 33 + 11 of the nemesis, N7 #219; 169 + 5 nickname openers, N5 #217, + 13 openers, N9 #221)")
+    check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_arcs'").fetchone()[0] == 52 and
+          con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_dialogues'").fetchone()[0] == 193,
+          "the 52 lines of the Story Arcs and the 193 of NPC Alive are archived (#143; 33 + 11 of the nemesis, N7 #219, + 8, N9 #221; 169 + 5 nickname openers, N5 #217, + 13 + 6 openers, N9 #221)")
     ids = {r["id"] for r in con.execute("SELECT id FROM intention")}
     check(all(i in ids for i in ("zone.gen.01", "victory.long.01", "zone.durotar.01", "ctx.act.duel")),
           "rules with code (func), mixed tables and regional rules are all there")
@@ -527,8 +527,8 @@ def literary_content():
     print("LITERARY PIECES (#119, #120, #127, #128)")
     con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
     ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
-    check(len(ids) == 22 and not any(i.startswith("versi.test.") for i in ids),
-          "the 22 pieces of the verses pack are archived; the lore_test twins are code and stay out (%d)" % len(ids))
+    check(len(ids) == 43 and not any(i.startswith("versi.test.") for i in ids),
+          "the 43 pieces of the verses pack are archived; the lore_test twins are code and stay out (%d)" % len(ids))
     r = store.get_rule(con, "versi.road.stanzas.01")
     check(r["genre"] == "song" and r["purpose"] == "accompany" and r["origin"] == "common" and r["kind"] == "stanzas" and
           r["show"] == 2, "genre, purpose, origin, kind and show are rule fields of their own columns")
@@ -539,11 +539,19 @@ def literary_content():
     check(len(store.get_variants(con, "versi.road.stanzas.01", "itIT")) == 5, "a song of stanzas: its frame and four stanzas")
     rows = con.execute("SELECT * FROM piece ORDER BY content_id").fetchall()
     done = [x["content_id"] for x in rows if x["metre_status"] == "ok" and x["lore_status"] == "none" and x["originality_status"] == "ok"]
-    waiting = ["versi.lament.ally.01", "versi.lament.npc.01", "versi.lament.pet.01", "versi.nemesis.song.01",
-               "versi.nemesis.song.02", "versi.nemesis.song.03", "versi.road.stanzas.01"]
-    check(len(rows) == 22 and len(done) == 15 and not any(w in done for w in waiting),
+    # N9 (#221): 21 more pieces, every one waiting for the owner too
+    n9 = ["versi.culture.dwarf.01", "versi.culture.forsaken.01", "versi.culture.gnome.01", "versi.culture.human.01",
+          "versi.culture.kaldorei.01", "versi.culture.orc.01", "versi.culture.queldorei.01", "versi.culture.tauren.01",
+          "versi.culture.troll.01", "versi.inn.saying.orc.01", "versi.inn.stanzas.01", "versi.inn.tale.tauren.01",
+          "versi.lament.ally.02", "versi.lament.ally.03", "versi.lament.npc.02", "versi.lament.pet.02",
+          "versi.nemesis.song.04", "versi.nemesis.song.05", "versi.nemesis.song.06", "versi.nemesis.song.07",
+          "versi.tale.road.01"]
+    waiting = sorted(["versi.lament.ally.01", "versi.lament.npc.01", "versi.lament.pet.01", "versi.nemesis.song.01",
+                      "versi.nemesis.song.02", "versi.nemesis.song.03", "versi.road.stanzas.01"] + n9)
+    check(len(rows) == 43 and len(done) == 15 and not any(w in done for w in waiting),
           "every piece has its editorial record (authoring/pieces.csv, seen through the view `piece`): the 15 of L0 reviewed, "
-          "the song of stanzas (L3), the three songs of a nemesis's fall (N7) and the three laments (N8) waiting for the owner")
+          "the song of stanzas (L3), the three songs of a nemesis's fall (N7), the three laments (N8) and the 21 pieces of N9 "
+          "waiting for the owner")
     report = store.literary_report(con)
     check(report == [(w, "approved, but its review is not complete: metre, lore, originality pending") for w in waiting],
           "the only literary warnings of the repository: the new songs wait for the owner's review (%s)" % report[:5])
@@ -624,7 +632,7 @@ def literary_content():
               'kind = "stanzas", show = 1' in text, "the rule is written with its literary metadata and its stanza fields")
         check("{stanzas}" in packfiles.read(os.path.join(root, "AzerothUnspoken_Versi", "Texts_itIT.lua")),
               "its frame and stanzas are written in the texts of each language")
-        check("literary pieces: 7 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
+        check("literary pieces: 28 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
               "the export reports the literary warnings (here: the new songs of the repository wait for the owner's review)")
         check(store.roundtrip(root) == [], "the round trip of the exported folders is still an empty diff")
         check(lua_syntax_ok([os.path.join(root, "AzerothUnspoken_Versi", f) for f in ("Registry.lua", "Texts_enUS.lua")]) in

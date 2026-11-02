@@ -73,7 +73,7 @@ development without in-game tests: N8 is built on the API dump (build 70170: `UN
    with a name kept, at `letters.band` (Close friend) or above, never a foe, not met for `letters.absenceDays` (21) days
    and not written for `letters.npcDays` (60): the closest writes, at most `letters.perLogin` (1), `letters.gapDays` (7)
    after the last letter. A letter is a permanent journal line of the kind `letter` whose tokens are the NPC's id, a role
-   (innkeeper, merchant, trainer, else `any`) and a variant: the text (`rel_letter_<role>_<n>` in
+   (the roles of `letters.roles`: innkeeper, merchant, trainer, and since N9 (#221) guard and quest giver; else `any`) and a variant: the text (`rel_letter_<role>_<n>` in
    `Data/<lang>/RelationsUI.lua`) is read when the journal shows it, with the NPC's name from the record. A private
    notice says a letter is waiting. The option **Letters** (`relations.letters`, on) turns them off.
 8. **Conditions and a placeholder.** `petMood` (`unhappy`, `content`, `happy`), `petStage` (the stages of the data),

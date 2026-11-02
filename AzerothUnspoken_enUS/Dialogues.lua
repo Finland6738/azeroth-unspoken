@@ -775,4 +775,29 @@ NS:AddTexts("enUS", {
 		"{nickname}. Stand straight; I can see the bad habits from here.",
 		"So, {nickname}: what have you been practicing, and what have you been avoiding?",
 	},
+	-- N9 (#221): openers for a grudge (N1: attacked, killed, guest-right broken), a betrayal heard in the town, a return home
+	["npcd.guard.open.betray1"] = {
+		"Word travels fast here. Mind yourself; we're all watching now.",
+		"So it's you they talk about. Walk carefully.",
+	},
+	["npcd.guard.open.foe1"] = {
+		"Keep your hands where I can see them. I remember the last time they moved.",
+		"You. Say what you need and move along.",
+	},
+	["npcd.innkeeper.open.home1"] = {
+		"Well, look who the road gave back! Sit, sit. The fire missed you.",
+		"There you are. I was starting to think you'd found a better inn. You didn't, I hope.",
+	},
+	["npcd.innkeeper.open.host1"] = {
+		"You have a nerve, coming under this roof. There's a bed. There's no welcome.",
+		"I keep my door open because it's my trade. Not for you.",
+	},
+	["npcd.merchant.open.foe1"] = {
+		"Coin on the counter first. Then we talk. Then you leave.",
+		"I sell to anyone. Even you. Don't make me regret it.",
+	},
+	["npcd.trainer.open.foe1"] = {
+		"I'll teach you, because I swore to teach whoever comes. Not because you deserve it.",
+		"The lesson stands. What you did with the last one, I haven't forgotten.",
+	},
 }, "base_dialogues")

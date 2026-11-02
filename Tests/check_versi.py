@@ -4,11 +4,12 @@ The pack is loaded **as an external addon**, after the base addon, with its own 
 it next to AzerothUnspoken). Then:
 1. the .toc and the files: Interface 16001, dependency on AzerothUnspoken, UTF-8 without BOM, LF line endings;
 2. the validator (the same code as `/au validate versi`): zero errors and zero warnings;
-3. the pieces: 12-20 (the 16 of L0-L3 and the 3 songs of a nemesis's fall, N7), each with a `lore_test` twin; private voices only (D16); never in combat; cooldown of three to
+3. the pieces: 12-60 (the 16 of L0-L3, the songs of a nemesis's fall of N7, the laments of N8, the pieces of N9), each with a `lore_test` twin; private voices only (D16); never in combat; cooldown of three to
    seven days; genre and origin tags; the literary category `lore` (#118); the literary metadata of #119 (genre,
-   purpose, origin) on every rule; at most 255 bytes, no placeholders, the attribution on the first line and one verse
+   purpose, origin) on every rule; at most 255 bytes (600 for a tale), no placeholders, the attribution on the first line and one verse
    per line (#117, at least four), no " / " left; the mix asked by #115 (inscriptions, returns, inn rhymes, road songs
-   with a natural form, encounters, hymn) and one song of interchangeable stanzas (#127);
+   with a natural form, encounters, hymn), two songs of interchangeable stanzas (#127) and a piece of every culture of
+   origin in its own people's inner voice (#124, N9);
 4. never offered to the Chat Gateway: `/au event lore_test` in the "confirm" mode with public chat on reaches the
    private narrator with its line breaks, creates no proposal and sends nothing, in English and in Italian; the song
    of stanzas comes out as its frame with two of its stanzas, in their order;
@@ -146,7 +147,7 @@ def check_pieces(lua, ns):
     rows = list(lua.eval(PIECES_LUA)().values())
     real = [r for r in rows if not r.twin]
     twins = [r for r in rows if r.twin]
-    check(12 <= len(real) <= 25, f"12-25 pieces ({len(real)})")
+    check(12 <= len(real) <= 60, f"12-60 pieces ({len(real)})")
     check(all(r.genre and r.purpose and r.origin for r in rows), "genre, purpose and origin on every rule (#119)")
     check(all(r.origin in ("common", "personal") or str(r.origin).startswith("culture:") for r in rows),
           "origin is common, personal or culture:<people> (D17: never a race)")
@@ -171,7 +172,7 @@ def check_pieces(lua, ns):
             langs.append(r.id)
         for t in texts:
             raw = t.t.encode("utf-8")
-            if len(raw) > 255:
+            if len(raw) > (600 if r.genre == "tale" else 255):
                 long_.append(f"{r.id} {t.lang} ({len(raw)} bytes)")
             if "\r" in t.t or " / " in t.t:
                 multi.append(f"{r.id} {t.lang}")
@@ -197,7 +198,7 @@ def check_pieces(lua, ns):
             if len(lines) < 5 or not lines[0].endswith(":") or any(not x.strip() for x in lines):
                 verses.append(f"{r.id} {t.lang}")
     check(not langs, "English and Italian for every piece" + ("" if not langs else ": " + ", ".join(langs)))
-    check(not long_, "every text fits in 255 bytes" + ("" if not long_ else ": " + ", ".join(long_)))
+    check(not long_, "every text fits in 255 bytes (a tale in 600)" + ("" if not long_ else ": " + ", ".join(long_)))
     check(not multi, "real line breaks, no ' / ' and no CR (#117)" + ("" if not multi else ": " + ", ".join(multi)))
     check(not holes, "no placeholders in songs and formulas" + ("" if not holes else ": " + ", ".join(holes)))
     check(not verses, "the attribution, then one verse per line (at least four)" + ("" if not verses else ": " + ", ".join(verses)))
@@ -211,16 +212,22 @@ def check_pieces(lua, ns):
         return sum(1 for r in real if pred(r))
     check(count(lambda r: r.event == "zone") == 4, "4 inscriptions and formulas on zone (ruin, sacred)")
     check(count(lambda r: r.event == "memory_return") == 3, "3 verses remembered on return")
-    check(count(lambda r: "npcd_innkeeper" in r.event) == 2 and all(r.speaker == "npc" for r in real if "npcd_" in r.event),
-          "2 inn rhymes in the innkeeper's voice")
+    check(count(lambda r: "npcd_innkeeper" in r.event) == 5 and all(r.speaker == "npc" for r in real if "npcd_" in r.event),
+          "5 inn pieces in the innkeeper's voice (2 rhymes, a song of stanzas, a tale and a saying of a culture)")
     roads = [r for r in real if r.event == "travel"]
     check(len(roads) == 2 and all(r.natural == 2 for r in roads), "2 road songs, each with a natural form in both languages")
     check(count(lambda r: r.event == "other_action") == 2, "2 sayings for an encounter (trust, wariness)")
     check(count(lambda r: r.event == "pray") == 1, "1 hymn on pray")
     check(count(lambda r: r.event == "encounter_end") == 1, "1 lament after a lost boss fight")
-    songs = [r for r in real if r.kind == "stanzas"]
-    check(len(songs) == 1 and songs[0].event == "journey" and songs[0].genre == "song" and songs[0].purpose == "accompany"
-          and songs[0].show == 2, "1 walking song of interchangeable stanzas on journey, two stanzas a time (#127)")
+    songs = {r.id: r for r in real if r.kind == "stanzas"}
+    walk, inn = songs.get("versi.road.stanzas.01"), songs.get("versi.inn.stanzas.01")
+    check(len(songs) == 2 and walk and walk.event == "journey" and walk.genre == "song" and walk.purpose == "accompany"
+          and walk.show == 2, "a walking song of interchangeable stanzas on journey, two stanzas a time (#127)")
+    check(inn and inn.speaker == "npc" and "npcd_innkeeper" in inn.event and inn.show == 1,
+          "and an inn song of stanzas in the innkeeper's voice, one stanza a time (N9)")
+    cultures = {str(r.origin)[len("culture:"):] for r in real if str(r.origin).startswith("culture:") and r.speaker == "inner"}
+    check(cultures == {"human", "dwarf", "gnome", "kaldorei", "queldorei", "orc", "troll", "tauren", "forsaken"},
+          f"every culture of origin has a piece in its own people's inner voice (#124, N9): {sorted(cultures)}")
 
 
 # Every record the Gateway receives, and what it made of it: a proposal for the chat or only the private narrator.
@@ -341,7 +348,7 @@ def check_archive(lua, ns):
     import store  # noqa: E402 (tools/archive, on the path above)
     con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "no-overlay"))
     ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
-    check(len(ids) == 22, f"the archive holds the 22 pieces (16 + 3 songs of a nemesis's fall, N7, + 3 laments, N8) ({len(ids)})")
+    check(len(ids) == 43, f"the archive holds the 43 pieces (16 + 3 songs of a nemesis's fall, N7, + 3 laments, N8, + 21, N9) ({len(ids)})")
     facts = lua.eval("""function(id)
         local out = {}
         for k in pairs(AzerothUnspoken.Validator.LiteraryFacts(AzerothUnspoken.Engine.byId[id])) do table.insert(out, k) end

@@ -209,7 +209,7 @@ T.run("companion: every line is private, in the inner voice, and speaks only fro
 			end
 		end
 	end
-	T.eq(n, 23, "23 lines")
+	T.eq(n, 44, "44 lines (23 of N8, 21 of N9)")
 	for _, ev in ipairs({ "pet_grief", "npc_grief", "ally_death" }) do
 		for _, p in ipairs(NS.Engine.byEvent[ev]) do
 			T.ok(p.tags["topic:death"] == true, p.id .. ": topic death (a character who avoids it has none)")
@@ -783,7 +783,7 @@ T.run("companion: /au debug status and the options grid", function()
 			"rel_pet_stage_trusted", "rel_pet_stage_bonded" }) do
 			T.ok(NS.languages[lang].ui[k] ~= nil, lang .. ": " .. k)
 		end
-		for _, role in ipairs({ "innkeeper", "merchant", "trainer", "any" }) do
+		for _, role in ipairs({ "innkeeper", "merchant", "trainer", "guard", "questgiver", "any" }) do
 			for v = 1, C.config.letters.variants do
 				local k = ("rel_letter_%s_%d"):format(role, v)
 				local text = NS.languages[lang].ui[k]

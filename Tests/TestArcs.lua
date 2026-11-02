@@ -1418,7 +1418,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 	for _, ev in ipairs({ "arc_open", "arc_step", "arc_resolve" }) do
 		for _, p in ipairs(Engine.byEvent[ev]) do if p.pack == "base_arcs" then n = n + 1 end end
 	end
-	T.eq(n, 40, "40 battute di base (33 di S9 + 7 della nemesi, N7)")
+	T.eq(n, 45, "45 battute di base (33 di S9 + 7 della nemesi, N7, + 5, N9)")
 end)
 
 T.run("un avviso discreto nel narratore, mai in chat, quando un arco aspetta una scelta o può cominciare", function()

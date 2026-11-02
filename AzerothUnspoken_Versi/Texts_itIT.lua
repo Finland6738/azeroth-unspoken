@@ -114,4 +114,73 @@ AU:AddTexts("itIT", {
 	["versi.lament.pet.01"] = {
 		"Un lamento dei cacciatori, detto piano su un compagno caduto:\nCorresti innanzi a me per ogni bosco,\nsenza chiedere mai strada o ragione;\nriposa adesso, amico, nel sottobosco:\nil peso del cammino è mia porzione.",
 	},
+	-- N9 (#221): more songs of a fall and laments, a piece for each culture of origin (#124: the inner voice for its own
+	-- people), a tale and a saying heard from an innkeeper, a common tale and an inn song of interchangeable stanzas
+	["versi.culture.dwarf.01"] = {
+		"Un canto da bevuta delle sale delle forge, urlato a boccali alzati:\nPietra fredda, ferro scuro,\nstona il maglio sul lavoro;\nmesci, e annega il giorno duro:\nla fucina avrà ristoro.",
+	},
+	["versi.culture.forsaken.01"] = {
+		"Un detto dei risorti, che passa di cantina in cantina con una risata secca:\nFredda tomba, fredda via,\nlungo il sonno, e lunga l'ora;\ntieni il senno, e il resto via:\ntutto il resto è andato, allora.",
+	},
+	["versi.culture.gnome.01"] = {
+		"Una filastrocca d'officina, di quelle scritte col gesso sopra ogni banco:\nSegna il fuoco, segna il fumo,\nsegna il botto e lo spavento;\nogni molla che consumo\ndà al banco un po' di talento.",
+	},
+	["versi.culture.human.01"] = {
+		"Un canto d'aratura delle fattorie, di quelli che si cantano dietro il bue:\nSolco dritto, solco lungo,\ngira terra, gira canto;\nquel che il campo dà, lo dà,\ne chi l'ara vivrà tanto.",
+	},
+	["versi.culture.kaldorei.01"] = {
+		"Un canto di guardia delle sentinelle, intonato piano quando la luna supera gli alberi:\nSali piano sul bosco che dorme,\ne ogni ramo d'argento riveste;\nnoi vegliammo, sorelle in attesa:\nora veglia tu, luna, al tuo posto.",
+	},
+	["versi.culture.orc.01"] = {
+		"Un canto di marcia dei clan, battuto sul tamburo prima che la polvere si posi:\nBatti il cuoio, pesta il sasso,\nfianco a fianco, passo a passo;\nquel che è perso sta alle spalle,\nnostro è il resto, monti e valle.",
+	},
+	["versi.culture.queldorei.01"] = {
+		"Un verso che gli esuli dei boschi d'oro dicono ancora, quando la luce cade di sbieco:\nLe foglie a casa eran d'oro,\nnon parevano un tesoro;\nora, lontano, a ogni autunno\nle rivedo in ogni ramo.",
+	},
+	["versi.culture.tauren.01"] = {
+		"Una benedizione dell'alba della gente delle pianure, detta con una mano posata sul terreno:\nErba, alzati: è giunto il sole.\nTerra, porta i nostri piedi.\nVento, va' avanti, e alla mandria\ndi' che camminiamo lievi.",
+	},
+	["versi.culture.troll.01"] = {
+		"Un detto della gente delle isole, che passa dai vecchi ai giovani accanto al fuoco:\nSale l'onda e poi ricade,\ne la riva scorda ogni orma;\nva' leggero per le strade,\ntieni i tuoi, e al mare il resto.",
+	},
+	["versi.inn.saying.orc.01"] = {
+		"Una cosa che mi disse una volta un carovaniere dei clan, e non l'ho più scordata:\nNutri la pancia, e il rancore dimagrisce;\nlasciala vuota, e impara ogni nome.\nPerciò mangia, e lascia andare qualcosa:\nla strada te lo insegnerà comunque.",
+	},
+	["versi.inn.stanzas.01"] = {
+		"Una canzone che gli avventori attaccano ogni volta che si siede qualcuno di nuovo:\n{stanzas}\n\nAvvicina lo sgabello e il boccale accanto:\nil fuoco è già basso, ma l'oste regge il canto.",
+		"Entrò il contadino col fango al ginocchio,\ngiurò che la pioggia gli amava il finocchio;\npoi brindò alla pioggia, brindò alla radice,\ne uscì con un piede bagnato e felice.",
+		"Entrò la soldata, lo scudo ammaccato,\ne narrò del drago che aveva sfidato;\nal terzo boccale era un branco di oche,\nal quarto era un'oca, e di pretese poche.",
+		"Entrò il minatore, la polvere in barba,\ngiurando che il buio per nulla lo turba;\ntemeva soltanto di vedere il fondo,\ne lo nascondeva versando, giocondo.",
+		"Entrò la straniera, senza nome o vanto,\nsedette in un angolo, la birra accanto;\nle abbiamo cantato le strofe, e alla fine\nsapeva ogni verso, e cantò il gran finale.",
+	},
+	["versi.inn.tale.tauren.01"] = {
+		"Una storia che mi raccontò un viandante delle pianure, anni fa:\nUna ragazza, una volta, sfidò la pioggia in una corsa attraverso l'erba.\nCorse finché il cuore le diventò tuono, e la pioggia la prese lo stesso.\nUn anziano la trovò fradicia, che rideva in cima a un colle.\n«Hai perso», le disse. «E l'erba ha bevuto. Non tutte le corse sono tue da vincere.»",
+	},
+	["versi.lament.ally.02"] = {
+		"Un canto funebre di cantina dei risorti, detto per chi non si rialza:\nMorimmo, e non restammo sotto;\ntrovammo i piedi, e via di lì.\nChe tu ti levi o che riposi,\ndeciderà il buio, per te.",
+	},
+	["versi.lament.ally.03"] = {
+		"Un lamento di riva della gente delle isole, cantato al battere dell'acqua:\nTi ha preso l'acqua, come prende,\ne alla riva ha dato il tuo nome;\nti cantiamo oltre la scogliera,\ne il canto rimane lo stesso.",
+	},
+	["versi.lament.npc.02"] = {
+		"Un canto di veglia delle campagne, cantato piano quando si porta fuori un vicino:\nLascia il cancello accostato,\nlascia il pane sulla tavola;\nchi ci aiutava col tetto\nva più avanti, per la strada.",
+	},
+	["versi.lament.pet.02"] = {
+		"Un pianto delle sentinelle per un compagno di caccia caduto, intonato senza melodia:\nPiù lieve della foglia era il tuo passo,\npiù chiaro del torrente era il tuo sguardo;\nriposa fra radici che ti stringono,\ne corri ancora il bosco, dentro un sogno.",
+	},
+	["versi.nemesis.song.04"] = {
+		"Il vecchio vanto dei cacciatori, detto una volta su un terrore caduto e mai più:\nQui finì la paura della strada,\nqui si voltò chi era braccato;\nsegna la terra, e lasciala stare:\nil racconto è cominciato.",
+	},
+	["versi.nemesis.song.05"] = {
+		"Un canto di faida dei clan, ringhiato basso a faida chiusa:\nTre volte mi gettò nella polvere,\ntre volte la polvere disse no;\nora il tamburo dica ciò che sa:\nil debito è pagato. Lascia andare.",
+	},
+	["versi.nemesis.song.06"] = {
+		"Un canto delle sale dei clan di montagna, intonato mentre s'incide una tacca nella pietra dello stipite:\nTaglia il segno, scrivi il giorno,\nserbi il sasso ogni parola;\nun terrore in meno intorno,\nnella roccia un'altra ancora.",
+	},
+	["versi.nemesis.song.07"] = {
+		"Un verso delle pianure, detto su un grande nemico caduto prima di lasciarlo alla terra:\nQuesti colli eran già tuoi,\nl'erba ti seguiva al passo;\ngiaci, e rendi alla terra il suo:\nserban i colli il tuo posto.",
+	},
+	["versi.tale.road.01"] = {
+		"Una storia che raccontano i carrettieri, per far passare un miglio lento:\nUn carrettiere, una volta, maledisse il suo mulo che si era piantato su una strada sgombra.\nTirò, supplicò, si sedette accanto a lui a tenere il muso.\nPiù tardi, quel giorno, una frana venne giù proprio alla curva davanti.\nIl mulo aveva sentito le pietre molto prima. Non lo maledisse mai più.",
+	},
 }, "versi")

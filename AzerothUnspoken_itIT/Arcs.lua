@@ -285,4 +285,37 @@ NS:AddTexts("itIT", {
 		"Tre volte {other} mi ha visto a terra. Non è più un caso: è una strada da percorrere fino in fondo.",
 		"{other}. Certi debiti si contano in cadute, e io ne ho contate abbastanza.",
 	},
+	-- N9 (#221): the nemesis again (N7): a second fall told by the narrator, meetings, the opening and the fall in other tones
+	["arc.nemesis.done.ironic.i"] = {
+		"Giù {other}. Gongolerei, ma le mie ginocchia ricordano troppo.",
+		"{other}, finalmente. Chiamate un bardo: sono troppo {g:stanco|stanca} per gonfiare la storia da {g:solo|sola}.",
+	},
+	["arc.nemesis.done.still.e"] = {
+		"resta a lungo accanto a {other}, a terra, e lascia che il silenzio dica ciò che le parole non direbbero.",
+		"guarda a lungo {other} a terra. Qualunque cosa fosse dovuta, è pagata.",
+	},
+	["arc.nemesis.done.stoic.i"] = {
+		"{other} è a terra. Nessuna esultanza: solo il fiato che mi esce, lungo e lento.",
+		"Quella era la fine di {other}. Un debito chiuso. Mi sento più {g:leggero|leggera}, e più {g:vecchio|vecchia}.",
+	},
+	["arc.nemesis.haunt.e"] = {
+		"si rialza dalla polvere per la seconda volta, e in entrambe l'ombra aveva un solo nome: {other}.",
+		"si rimette in piedi a fatica e conta: due volte, ed entrambe {other}.",
+	},
+	["arc.nemesis.meet.ironic.i"] = {
+		"{other}. Dovremmo smettere di vederci così. Possibilmente con me in piedi, alla fine.",
+		"Ah, bene. {other}. Il mio modo preferito di guardare il terreno da vicino.",
+	},
+	["arc.nemesis.meet.night.i"] = {
+		"{other}, nel buio. Certo che doveva essere il buio.",
+		"Notte, e {other} là dentro. Il polso l'ha saputo prima degli occhi.",
+	},
+	["arc.nemesis.meet.stoic.i"] = {
+		"{other}. Niente più paura, solo il conto. Saldiamolo.",
+		"Tre cadute fanno una lunga lezione. {other}, l'ho imparata.",
+	},
+	["arc.nemesis.open.ironic.i"] = {
+		"{other}. Mi ricorderò di te, il che è più di quanto farai tu per me.",
+		"Bene. Adesso {other} ha una storia, e purtroppo ce l'ho anch'io.",
+	},
 }, "base_arcs")

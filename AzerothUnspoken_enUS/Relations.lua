@@ -860,4 +860,162 @@ NS:AddTexts("enUS", {
 		"{pet} has gone sullen. Fed late and worked hard: I would sulk too.",
 		"{pet} gives me a look I know too well. I owe it something, and it knows.",
 	},
+	-- N9 (#221), second part: hostility (N1: grudge, hatred, betrayal, the other faction's town, guest-right, coming home),
+	-- the companion pet and grief (N8), by role and disposition where the engine reads them. The inner voice only.
+	["rel.ally.fall.devout"] = {
+		"Whatever watches over the fallen, let it find {other} quickly. I keep the prayer short, and mean all of it.",
+		{ "Go gently, {other}. Be found.", depth = "natural" },
+	},
+	["rel.ally.fall.night"] = {
+		"{other} fell, and the night did not even pause. I will remember it, since the night will not.",
+		{ "{other}. A dark night, darker now.", depth = "natural" },
+	},
+	["rel.ally.fall.rival"] = {
+		"{other}, down. We argued over every kill. I would give this one up gladly to hear the argument again.",
+		{ "Get up, {other}. You still owe me an argument.", depth = "natural" },
+	},
+	["rel.ally.fall.stoic"] = {
+		"{other} fell well. I will say so later, to whoever asks. Now there is work.",
+		{ "{other}. Later. Now, the work.", depth = "natural" },
+	},
+	["rel.grief.npc.friend"] = {
+		"{other} was one of the faces that made this town feel known. It just became a little stranger.",
+		{ "{other}. One friend fewer on this road.", depth = "natural" },
+	},
+	["rel.grief.npc.guard"] = {
+		"{other} stood at this post every time I passed. The post is still here.",
+		{ "{other}'s post, empty.", depth = "natural" },
+	},
+	["rel.grief.npc.merchant"] = {
+		"{other} always had a word for me across the counter, and some news I had not asked for. The counter is very quiet.",
+		{ "{other}. The counter is quiet.", depth = "natural" },
+	},
+	["rel.grief.npc.questgiver"] = {
+		"{other} sent me down so many roads. This is the one I did not expect at the end of them.",
+		{ "{other}. No more errands. No more anything.", depth = "natural" },
+	},
+	["rel.grief.npc.trainer"] = {
+		"Everything {other} taught me is still in my hands. That will have to be how I keep the memory.",
+		{ "{other}. I still have the lessons.", depth = "natural" },
+	},
+	["rel.grief.npc.vowed"] = {
+		"I gave {other} my word, in silence, and never said it aloud. Now there is no one to say it to.",
+		{ "{other}. I never told you.", depth = "natural" },
+	},
+	["rel.grief.pet.new"] = {
+		"I had barely learned the name of {pet}. It deserved more roads than I gave it.",
+		{ "Too soon, {pet}. Far too soon.", depth = "natural" },
+	},
+	["rel.grief.pet.stoic"] = {
+		"I lay {pet} where the ground is soft and say nothing. There is nothing to say that it did not already know.",
+		{ "Rest, {pet}. That is all.", depth = "natural" },
+	},
+	["rel.grief.pet.trusted"] = {
+		"{pet} kept watch so I could sleep. Now there is no one to keep it, and I doubt I will sleep much.",
+		{ "{pet}. Who keeps watch now?", depth = "natural" },
+	},
+	["rel.home.cold.stoic"] = {
+		"I bound myself to this place, and then I broke faith with it. The door still opens. That is all it does now.",
+		{ "The door opens. Nothing more.", depth = "natural" },
+	},
+	["rel.home.return.night"] = {
+		"Late, and the house asleep. Someone left a candle on the stair all the same, the way you do for one who is expected.",
+		{ "A candle on the stair. Expected, then.", depth = "natural" },
+	},
+	["rel.home.return.rain"] = {
+		"Rain on the roads all the way here, and now rain on the shutters instead. That is the whole difference, and it is everything.",
+		{ "Rain outside. A fire inside. Home.", depth = "natural" },
+	},
+	["rel.home.return.weary"] = {
+		"However long the road was, my boots knew this doorstep before I did.",
+		{ "My boots found the way. They always do.", depth = "natural" },
+	},
+	["rel.npc.foe.attacked.guard"] = {
+		"That guard watches my hands, not my face. I taught them to, the day I drew on them.",
+		{ "Eyes on my hands. Fair enough.", depth = "natural" },
+	},
+	["rel.npc.foe.attacked.merchant"] = {
+		"They count my coins twice now, as if a blade might be hiding among them.",
+		{ "Every coin counted twice. I earned that.", depth = "natural" },
+	},
+	["rel.npc.foe.attacked.questgiver"] = {
+		"They still have work that needs doing. They would just rather it were done by anyone but me.",
+		{ "Anyone but me, says that face. Anyone at all.", depth = "natural" },
+	},
+	["rel.npc.foe.attacked.trainer"] = {
+		"The one who taught me my craft. I turned that craft on them once, and they remember whose lesson it was.",
+		"Every lesson I had here, I paid back with a blow. Some teachers keep better accounts than others.",
+	},
+	["rel.npc.foe.feared"] = {
+		"They flinch when I reach for my purse. Hatred I could stand. This is worse.",
+		{ "They flinch. I did that.", depth = "natural" },
+	},
+	["rel.npc.foe.hated"] = {
+		"No warmth left to win back here. Only that look, steady as a drawn blade, and I would not wager on it softening.",
+		{ "Pure hatred. I earned all of it.", depth = "natural" },
+	},
+	["rel.npc.foe.host.stoic"] = {
+		"Guest-right is older than any town. I broke it under this roof, and no coin buys back a threshold.",
+		{ "A broken threshold stays broken.", depth = "natural" },
+	},
+	["rel.npc.foe.killed.ironic"] = {
+		"On their feet, and still looking at me like a debt collector. Death clearly did not take.",
+		{ "Up and about. Still sore about it.", depth = "natural" },
+	},
+	["rel.npc.town.betrayed.friend"] = {
+		"They still greet me, and they mean it. But they lower their voice to do it, as if being my friend here were something to hide.",
+		{ "A friend still. A quieter one.", depth = "natural" },
+	},
+	["rel.npc.town.betrayed.guard"] = {
+		"The guards here have heard what I did. Every nod comes a heartbeat late.",
+		{ "A late nod. They know.", depth = "natural" },
+	},
+	["rel.npc.town.betrayed.innkeeper"] = {
+		"The innkeeper still pours. The talk that came with the cup has stopped, and the whole room hears it stop.",
+		{ "Same ale. No talk with it.", depth = "natural" },
+	},
+	["rel.npc.town.betrayed.merchant"] = {
+		"My coin is still good here. My word, it seems, is not: they watch me as if I might walk off with the counter.",
+		{ "My coin, yes. My word, no.", depth = "natural" },
+	},
+	["rel.pet.bond.familiar.demon"] = {
+		"{pet} has stopped testing the edges of the binding every hour. Every other hour now. Progress.",
+		{ "Less sulking from {pet}. Barely.", depth = "natural" },
+	},
+	["rel.pet.call.rain"] = {
+		"{pet} shakes off the rain all over me, which I suspect is the whole greeting.",
+		{ "Rain on {pet}, and now on me.", depth = "natural" },
+	},
+	["rel.pet.call.trusted"] = {
+		"{pet} comes at the first call and takes the flank without being told. We have done this enough.",
+		{ "{pet}. The flank. Good.", depth = "natural" },
+	},
+	["rel.pet.call.unhappy"] = {
+		"{pet} comes, but slowly, with a look at my pack that says exactly where the food is.",
+		{ "Yes, {pet}. Food first.", depth = "natural" },
+	},
+	["rel.pet.dismiss.bonded"] = {
+		"I send {pet} off, and for a few steps I still keep a pace that is no longer beside me.",
+		{ "Go on, {pet}. I'll manage. Mostly.", depth = "natural" },
+	},
+	["rel.pet.dismiss.night"] = {
+		"{pet} melts into the dark, and the night around me feels a size larger.",
+		{ "Rest, {pet}. The night watch is mine.", depth = "natural" },
+	},
+	["rel.pet.mood.happy.bonded"] = {
+		"{pet} leans its whole weight against my leg. After all these roads, that is still how it says it.",
+		{ "{pet}, leaning on me. I don't mind.", depth = "natural" },
+	},
+	["rel.pet.mood.unhappy.new"] = {
+		"{pet} and I are off to a poor start. A full meal and a little patience: that is how trust begins.",
+		{ "A poor start, {pet}. We will mend it.", depth = "natural" },
+	},
+	["rel.town.foe.ironic"] = {
+		"Ah, this place. I left an impression here. Several, mostly on their guards.",
+		{ "They remember me fondly. With spears.", depth = "natural" },
+	},
+	["rel.town.foe.night"] = {
+		"Their torches burn along the walls tonight, and I know at least one of them is lit with me in mind.",
+		{ "Torches on the walls. Some of them for me.", depth = "natural" },
+	},
 }, "base_relations")

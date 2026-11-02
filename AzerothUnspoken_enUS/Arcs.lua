@@ -285,4 +285,37 @@ NS:AddTexts("enUS", {
 		"Three times {other} has seen me on the ground. It is no longer chance: it is a road to walk to its end.",
 		"{other}. Some debts are counted in falls, and I have counted enough.",
 	},
+	-- N9 (#221): the nemesis again (N7): a second fall told by the narrator, meetings, the opening and the fall in other tones
+	["arc.nemesis.done.ironic.i"] = {
+		"Down goes {other}. I would gloat, but my knees remember too much.",
+		"{other}, finally. Somebody fetch a bard; I am too tired to exaggerate it myself.",
+	},
+	["arc.nemesis.done.still.e"] = {
+		"stays a long moment beside the fallen {other}, and lets the silence say what words would not.",
+		"looks down at {other} for a long while. Whatever was owed is paid.",
+	},
+	["arc.nemesis.done.stoic.i"] = {
+		"{other} is down. No cheering; only the breath going out of me, long and slow.",
+		"That was {other}. A debt closed. I feel lighter, and older.",
+	},
+	["arc.nemesis.haunt.e"] = {
+		"rises from the dust a second time, and both times the shadow had one name: {other}.",
+		"gets up slowly and counts: twice now, and both times {other}.",
+	},
+	["arc.nemesis.meet.ironic.i"] = {
+		"{other}. We should stop meeting like this. Preferably with me upright at the end.",
+		"Oh, good. {other}. My favorite way to see the ground up close.",
+	},
+	["arc.nemesis.meet.night.i"] = {
+		"{other}, in the dark. Of course it would be the dark.",
+		"Night, and {other} in it. My pulse knew before my eyes did.",
+	},
+	["arc.nemesis.meet.stoic.i"] = {
+		"{other}. No fear left, only the count. Let us settle it.",
+		"Three falls make a long lesson. {other}, I have learned it.",
+	},
+	["arc.nemesis.open.ironic.i"] = {
+		"{other}. I will remember you, which is more than you will do for me.",
+		"Well. {other} has a story now, and so, unfortunately, do I.",
+	},
 }, "base_arcs")
