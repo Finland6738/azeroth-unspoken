@@ -6,7 +6,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Ideas are welcome. For an open conversation before writing a formal request, you can also start a topic in the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback).
+        Ideas are welcome.
+        **Privacy:** do not paste other players' names, whispers, chat logs, account names or folder paths from your PC. Replace them with placeholders such as `<player>` or `<account>`.
+        For an open conversation before writing a formal request, you can also start a topic in the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback).
   - type: textarea
     id: idea
     attributes:

@@ -75,9 +75,28 @@ end
 ---------------------------------------------------------------------------
 -- Costruzione
 ---------------------------------------------------------------------------
+-- #182: the views lie under the tabs, and the tabs under the intro, whose height is measured with GetStringHeight(). Every
+-- widget placed from the top goes through Place with its offset for the usual two-line intro; when the intro takes more
+-- lines the tabs and everything under them move down by `shift`, and the window grows by as much.
+local TABS_Y = 84          -- the tabs under an intro of two lines (W.TOP + 28 + 10)
+local shift, placed = 0, {}
+local function Place(w, point, x, y)
+	placed[#placed + 1] = { w, point, x, y }
+	w:SetPoint(point, x, y - shift)
+end
+
+local function Reflow(newShift)
+	if newShift == shift then return end
+	shift = newShift
+	for _, p in ipairs(placed) do
+		p[1]:ClearAllPoints()
+		p[1]:SetPoint(p[2], p[3], p[4] - shift)
+	end
+end
+
 local function Text(parent, template, x, y, width, justify)
 	local fs = parent:CreateFontString(nil, "ARTWORK", template or "GameFontHighlight")
-	fs:SetPoint("TOPLEFT", x, y)
+	Place(fs, "TOPLEFT", x, y)
 	if width then fs:SetWidth(width) end
 	fs:SetJustifyH(justify or "LEFT")
 	return fs
@@ -178,7 +197,7 @@ local function BuildList()
 		view.page = 1
 		RelationsFrame:Refresh()
 	end)
-	frame.kindBtn:SetPoint("TOPLEFT", 16, -116)
+	Place(frame.kindBtn, "TOPLEFT", 16, -116)
 	frame.labelBtn = W.FlatButton(frame, "", 190, 24, function()
 		local ids = R:LabelIds()
 		local nextId
@@ -189,10 +208,10 @@ local function BuildList()
 		view.page = 1
 		RelationsFrame:Refresh()
 	end)
-	frame.labelBtn:SetPoint("TOPLEFT", 152, -116)
+	Place(frame.labelBtn, "TOPLEFT", 152, -116)
 	frame.searchLabel = Text(frame, "GameFontNormal", 436, -120, 60, "RIGHT")
 	frame.search = W.EditBox(frame, 200, 24)
-	frame.search:SetPoint("TOPLEFT", 504, -116)
+	Place(frame.search, "TOPLEFT", 504, -116)
 	frame.search:SetMaxLetters(32)
 	frame.search:SetScript("OnTextChanged", function(self, byUser)
 		if byUser == false then return end
@@ -218,7 +237,7 @@ local function BuildList()
 			view.page = 1
 			RelationsFrame:Refresh()
 		end)
-		b:SetPoint("TOPLEFT", col[2], -142)
+		Place(b, "TOPLEFT", col[2], -142)
 		headers[id] = b
 	end
 	-- #171: plain row buttons (no panel art) that own their cells, so the button never covers the text
@@ -226,7 +245,7 @@ local function BuildList()
 		local row = {}
 		row.btn = CreateFrame("Button", nil, frame)
 		row.btn:SetSize(INNER, ROW_H - 2)
-		row.btn:SetPoint("TOPLEFT", 16, TOP - (i - 1) * ROW_H)
+		Place(row.btn, "TOPLEFT", 16, TOP - (i - 1) * ROW_H)
 		row.btn:RegisterForClicks("LeftButtonUp")
 		row.btn:SetScript("OnClick", function()
 			if row.row then RelationsFrame:SelectSubject(row.row.kind, row.row.key) end
@@ -248,7 +267,7 @@ end
 local function BuildPeople()
 	frame.addLabel = Text(frame, "GameFontNormal", 16, -120, 120)
 	frame.addBox = W.EditBox(frame, 250, 22)
-	frame.addBox:SetPoint("TOPLEFT", 140, -116)
+	Place(frame.addBox, "TOPLEFT", 140, -116)
 	frame.addBox:SetMaxLetters(48)
 	local function AddTyped()
 		local name = frame.addBox:GetText()
@@ -257,7 +276,7 @@ local function BuildPeople()
 	frame.addBox:SetScript("OnEnterPressed", function(self) AddTyped(); self:ClearFocus() end)
 	frame.addBox:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
 	frame.addBtn = W.FlatButton(frame, "", 130, 24, AddTyped)
-	frame.addBtn:SetPoint("TOPLEFT", 398, -116)
+	Place(frame.addBtn, "TOPLEFT", 398, -116)
 	frame.peopleNote = Text(frame, "GameFontHighlightSmall", 16, -146, INNER)
 	for i = 1, PAGE do
 		local y = TOP_PEOPLE - (i - 1) * ROW_H
@@ -268,7 +287,7 @@ local function BuildPeople()
 			if not row.cand then return end
 			if row.cand.kind then RelationsFrame:AnswerIdentity(row.cand.key, true) else RelationsFrame:AddPlayer(row.cand.key) end
 		end)
-		row.add:SetPoint("TOPLEFT", 644, y)
+		Place(row.add, "TOPLEFT", 644, y)
 		W.Tooltip(row.add, function()
 			return NS:L(row.cand and row.cand.kind and ("rel_id_accept_" .. row.cand.kind .. "_tip") or "rel_cand_add_tip")
 		end)
@@ -276,7 +295,7 @@ local function BuildPeople()
 			if row.cand and row.cand.kind then R:KeepIdentity(row.cand.key) elseif row.cand then R:Dismiss(row.cand.key) end
 			RelationsFrame:Refresh()
 		end)
-		row.dismiss:SetPoint("TOPLEFT", 676, y)
+		Place(row.dismiss, "TOPLEFT", 676, y)
 		W.Tooltip(row.dismiss, function() return NS:L(row.cand and row.cand.kind and "rel_id_keep_tip" or "rel_cand_dismiss_tip") end)
 		candRows[i] = row
 	end
@@ -291,7 +310,7 @@ local function BuildDetail()
 		if not s or s.kind ~= "player" then return end
 		R:SetScope(s.key, R:ScopeOf(s.key) == "shared" and "character" or "shared")
 	end)
-	frame.dScope:SetPoint("TOPRIGHT", -16, -110)
+	Place(frame.dScope, "TOPRIGHT", -16, -110)
 	W.Tooltip(frame.dScope, function() return NS:L("rel_scope_tip") end)
 
 	-- left column: the axes, the label and the feelings
@@ -307,16 +326,16 @@ local function BuildDetail()
 				R:SetAxis(view.subject.kind, view.subject.key, axis.id, v)
 			end
 		end, { step = R.SLIDER_STEP })   -- #183: the mouse wheel moves it like "-" and "+"
-		row.slider:SetPoint("TOPLEFT", CTRL_X, y - 4)
+		Place(row.slider, "TOPLEFT", CTRL_X, y - 4)
 		row.value = Text(frame, "GameFontHighlight", 266, y - 5, 34, "RIGHT")
 		row.minus = W.FlatButton(frame, "-", 24, 24, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, -R.SLIDER_STEP) end
 		end)
-		row.minus:SetPoint("TOPLEFT", 306, y)
+		Place(row.minus, "TOPLEFT", 306, y)
 		row.plus = W.FlatButton(frame, "+", 24, 24, function()
 			if view.subject then R:AdjustAxis(view.subject.kind, view.subject.key, axis.id, R.SLIDER_STEP) end
 		end)
-		row.plus:SetPoint("TOPLEFT", 332, y)
+		Place(row.plus, "TOPLEFT", 332, y)
 		W.Tooltip(row.slider, function() return R:AxisName(axis.id) .. ": " .. (axis.help and (axis.help[NS:Lang()] or axis.help.en) or "") end)
 		axisRows[i] = row
 	end
@@ -325,11 +344,11 @@ local function BuildDetail()
 	frame.dLabelBtn = W.FlatButton(frame, "", CTRL_W, 24, function()
 		if view.subject then R:CycleLabel(view.subject.kind, view.subject.key) end
 	end)
-	frame.dLabelBtn:SetPoint("TOPLEFT", CTRL_X, y)
+	Place(frame.dLabelBtn, "TOPLEFT", CTRL_X, y)
 	W.Tooltip(frame.dLabelBtn, function() return frame.dLabelBtn:GetText() .. "\n" .. NS:L("rel_label_tip") end)
 	y = y - 28
 	frame.dCustom = W.EditBox(frame, CTRL_W, 22)
-	frame.dCustom:SetPoint("TOPLEFT", CTRL_X, y)
+	Place(frame.dCustom, "TOPLEFT", CTRL_X, y)
 	frame.dCustom:SetMaxLetters(R.LABEL_LEN)
 	W.Tooltip(frame.dCustom, function() return NS:L("rel_custom_tip") end)
 	y = y - 30
@@ -338,18 +357,18 @@ local function BuildDetail()
 	frame.dFeeling1 = W.FlatButton(frame, "", CTRL_W, 24, function()
 		if view.subject then R:CycleFeeling(view.subject.kind, view.subject.key, 1) end
 	end)
-	frame.dFeeling1:SetPoint("TOPLEFT", CTRL_X, y)
+	Place(frame.dFeeling1, "TOPLEFT", CTRL_X, y)
 	W.Tooltip(frame.dFeeling1, function() return NS:L("rel_feeling_tip") end)
 	y = y - 28
 	frame.dFeeling2 = W.FlatButton(frame, "", 120, 24, function()
 		if view.subject then R:CycleFeeling(view.subject.kind, view.subject.key, 2) end
 	end)
-	frame.dFeeling2:SetPoint("TOPLEFT", CTRL_X, y)
+	Place(frame.dFeeling2, "TOPLEFT", CTRL_X, y)
 	W.Tooltip(frame.dFeeling2, function() return NS:L("rel_feeling_tip") end)
 	frame.dPreset = W.FlatButton(frame, "", 120, 24, function()
 		if view.subject then R:ApplyFeelingPreset(view.subject.kind, view.subject.key) end
 	end)
-	frame.dPreset:SetPoint("TOPLEFT", CTRL_X + 124, y)
+	Place(frame.dPreset, "TOPLEFT", CTRL_X + 124, y)
 	W.Tooltip(frame.dPreset, function() return NS:L("rel_feeling_preset_tip") end)
 
 	-- right column: how the user sees them (traits and role), then the note and the tags
@@ -361,7 +380,7 @@ local function BuildDetail()
 			local s = view.subject
 			if s and NS.Interlocutor:CycleTrait(s.kind, s.key, trait) ~= false then RelationsFrame:Refresh() end
 		end)
-		b:SetPoint("TOPLEFT", RIGHT_X, y)
+		Place(b, "TOPLEFT", RIGHT_X, y)
 		W.Tooltip(b, function() return b:GetText() .. "\n" .. NS:L("rel_trait_tip") end)
 		frame.dTraitBtns[trait] = b
 		y = y - 28
@@ -369,12 +388,12 @@ local function BuildDetail()
 	y = y - 6
 	frame.dNoteTitle = Text(frame, "GameFontNormal", RIGHT_X, y, RIGHT_W)
 	frame.dNote = W.EditBox(frame, RIGHT_W, 22)
-	frame.dNote:SetPoint("TOPLEFT", RIGHT_X, y - 18)
+	Place(frame.dNote, "TOPLEFT", RIGHT_X, y - 18)
 	frame.dNote:SetMaxLetters(R.NOTE_LEN)
 	y = y - 48
 	frame.dTagsTitle = Text(frame, "GameFontNormal", RIGHT_X, y, RIGHT_W)
 	frame.dTags = W.EditBox(frame, RIGHT_W, 22)
-	frame.dTags:SetPoint("TOPLEFT", RIGHT_X, y - 18)
+	Place(frame.dTags, "TOPLEFT", RIGHT_X, y - 18)
 	frame.dTags:SetMaxLetters(160)
 	for _, edit in ipairs(EDITS) do WireEdit(frame[edit.field], edit) end
 	W.Tooltip(frame.dNote, function() return NS:L("rel_edit_tip") end)
@@ -444,7 +463,7 @@ local function BuildOptions()
 			end
 			RelationsFrame:Refresh()
 		end)
-		b:SetPoint("TOPLEFT", 16 + ((i - 1) % 2) * (colW + 16), -116 - math.floor((i - 1) / 2) * 30)
+		Place(b, "TOPLEFT", 16 + ((i - 1) % 2) * (colW + 16), -116 - math.floor((i - 1) / 2) * 30)
 		W.Tooltip(b, function() return NS:L(opt[2] .. "_tip") end)
 		frame.options[i] = { button = b, key = opt[1], text = opt[2] }
 	end
@@ -473,7 +492,10 @@ local function Build()
 	frame.measure:Hide()
 
 	-- what the window keeps and what it never does: a privacy note, 12 units (#182)
-	frame.intro = Text(frame, W.TEXT_FONT, 16, -W.TOP, INNER)
+	frame.intro = frame:CreateFontString(nil, "ARTWORK", W.TEXT_FONT)
+	frame.intro:SetPoint("TOPLEFT", 16, -W.TOP)
+	frame.intro:SetWidth(INNER)
+	frame.intro:SetJustifyH("LEFT")
 	frame.tabList = W.FlatButton(frame, "", 150, 24, function() RelationsFrame:ShowView("list") end)
 	frame.tabPeople = W.FlatButton(frame, "", 190, 24, function() RelationsFrame:ShowView("people") end)
 	frame.tabOptions = W.FlatButton(frame, "", 120, 24, function() RelationsFrame:ShowView("options") end)
@@ -484,10 +506,10 @@ local function Build()
 	BuildOptions()
 
 	frame.prev = W.FlatButton(frame, "<", 28, 24, function() view.page = view.page - 1; RelationsFrame:Refresh() end)
-	frame.prev:SetPoint("TOPLEFT", 16, PAGER_Y)
+	Place(frame.prev, "TOPLEFT", 16, PAGER_Y)
 	frame.pageText = Text(frame, "GameFontNormal", 52, PAGER_Y - 4, 140)
 	frame.next = W.FlatButton(frame, ">", 28, 24, function() view.page = view.page + 1; RelationsFrame:Refresh() end)
-	frame.next:SetPoint("TOPLEFT", 196, PAGER_Y)
+	Place(frame.next, "TOPLEFT", 196, PAGER_Y)
 	frame.stats = Text(frame, "GameFontHighlightSmall", 240, PAGER_Y - 4, 464, "RIGHT")
 
 	frame.export = W.FlatButton(frame, "", 110, 24, function() RelationsFrame:ShowExport() end)
@@ -766,7 +788,7 @@ local function RefreshTabs()
 	}) do
 		local w = Fit(t[1], t[2], 110, 240)
 		t[1]:SetSelected(t[3])
-		t[1]:ClearAllPoints(); t[1]:SetPoint("TOPLEFT", x, -84)
+		t[1]:ClearAllPoints(); t[1]:SetPoint("TOPLEFT", x, -(TABS_Y + shift))
 		x = x + w + 4
 	end
 end
@@ -774,9 +796,11 @@ end
 ---Ridisegna la finestra (se è aperta).
 function RelationsFrame:Refresh()
 	if not frame or not frame:IsShown() then return end
-	frame:SetHeight(HEIGHT)
 	frame.title:SetText(NS:L("rel_title"))
 	frame.intro:SetText(NS:L("rel_intro"))
+	-- #182: the tabs sit under the intro, whatever its number of lines
+	Reflow(math.max(0, W.TOP + math.ceil(frame.intro:GetStringHeight() or 28) + 10 - TABS_Y))
+	frame:SetHeight(HEIGHT + shift)
 	RefreshTabs()
 	local detail, paged = view.name == "detail", view.name == "list" or view.name == "people"
 	SetShown(ListWidgets(), view.name == "list")

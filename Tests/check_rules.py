@@ -121,8 +121,69 @@ def workflows():
             check(word in t, f"the pull request template mentions {word}")
 
 
+# the labels that exist in the repository (gh label list); an issue form may apply only these
+KNOWN_LABELS = {"bug", "documentation", "duplicate", "enhancement", "good first issue", "help wanted", "invalid", "question",
+                "wontfix", "docs", "in-game", "content", "priority:high", "priority:medium", "priority:low", "needs-triage",
+                "no-docs-needed", "decision", "analysis", "accessibility"}
+PRIVACY_RULE = re.compile(r"do not paste other players' names", re.IGNORECASE)
+EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
+
+
+def read(*parts):
+    with open(os.path.join(ROOT, *parts), encoding="utf-8", newline="") as fh:
+        return fh.read()
+
+
+def community():
+    print("COMMUNITY PROFILE (#196): issue forms, Code of Conduct")
+    forms = sorted(glob.glob(os.path.join(ROOT, ".github", "ISSUE_TEMPLATE", "*.yml")))
+    names = [os.path.basename(f) for f in forms]
+    for needed in ("bug_report.yml", "feature_request.yml", "content_report.yml", "ingame_test.yml", "config.yml"):
+        check(needed in names, f"{needed} exists")
+    # no YAML library in the runner: the shape is checked by hand (top-level keys, ids, labels, the privacy reminder)
+    for name in names:
+        text = read(".github", "ISSUE_TEMPLATE", name)
+        check("\r" not in text and "\t" not in text, f"{name}: LF line endings, no tabs (YAML)")
+        if name == "config.yml":
+            check("blank_issues_enabled: false" in text and "contact_links:" in text, "config.yml: blank issues off, contact links")
+            continue
+        for key in ("name:", "description:", "title:", "labels:", "body:"):
+            check(re.search(r"^" + key, text, re.MULTILINE) is not None, f"{name}: top-level {key}")
+        labels = re.search(r"^labels:\s*\[(.*)\]\s*$", text, re.MULTILINE)
+        used = [l.strip().strip('"') for l in labels.group(1).split(",")] if labels else []
+        check(bool(used) and all(l in KNOWN_LABELS for l in used), f"{name}: only labels that exist ({used})")
+        ids = re.findall(r"^    id: (\S+)", text, re.MULTILINE)
+        check(len(ids) == len(set(ids)) and len(ids) >= 3, f"{name}: unique field ids ({len(ids)})")
+        types = re.findall(r"^  - type: (\w+)", text, re.MULTILINE)
+        check(all(t in ("markdown", "input", "textarea", "dropdown", "checkboxes") for t in types) and "markdown" in types,
+              f"{name}: known field types, with the introduction")
+        check(PRIVACY_RULE.search(text) is not None, f"{name}: repeats the privacy rule")
+        check(EMAIL.search(text) is None, f"{name}: no email address")
+    content = read(".github", "ISSUE_TEMPLATE", "content_report.yml")
+    check('labels: ["content", "needs-triage"]' in content, "content_report.yml: labels content and needs-triage")
+    for field in ("line", "language", "voice", "where", "problem", "debug"):
+        check(f"id: {field}\n" in content, f"content_report.yml: field {field}")
+    ingame = read(".github", "ISSUE_TEMPLATE", "ingame_test.yml")
+    check('labels: ["in-game"]' in ingame, "ingame_test.yml: label in-game")
+    for field in ("client", "steps", "result", "seen", "debug"):
+        check(f"id: {field}\n" in ingame, f"ingame_test.yml: field {field}")
+    check("G1_checklist.en.md" in ingame, "ingame_test.yml: links the checklist")
+    coc = read("CODE_OF_CONDUCT.md")
+    check("Contributor Covenant" in coc and "version 2.1" in coc, "CODE_OF_CONDUCT.md: Contributor Covenant 2.1")
+    check("Enforcement Guidelines" in coc and "Permanent Ban" in coc, "CODE_OF_CONDUCT.md: the enforcement ladder")
+    check("Report content" in coc and "github.com/Finland6738" in coc, "CODE_OF_CONDUCT.md: the contact is GitHub, never an address")
+    check(EMAIL.search(coc) is None and "mailto:" not in coc, "CODE_OF_CONDUCT.md: no email address")
+    contributing = read("CONTRIBUTING.md")
+    check("CODE_OF_CONDUCT.md" in contributing and "issues/new/choose" in contributing,
+          "CONTRIBUTING.md names the forms and the Code of Conduct")
+    wiki = read("docs", "wiki", "Reporting-Bugs-and-Feedback.md")
+    for form in ("Content report", "In-game test result"):
+        check(form in contributing and form in wiki, f"CONTRIBUTING.md and the wiki page Reporting-Bugs-and-Feedback name the form {form}")
+
+
 docs_rule()
 privacy_scanner()
 workflows()
+community()
 print("\n" + ("ok" if not FAILURES else f"{len(FAILURES)} FAILED"))
 sys.exit(1 if FAILURES else 0)

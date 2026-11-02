@@ -1,0 +1,76 @@
+name: Content report
+description: A line (phrase) that is wrong, odd or claims more than the moment allows.
+title: "[Content] "
+labels: ["content", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping the narrator find its voice.
+        **Privacy:** do not paste other players' names, whispers, chat logs, account names or folder paths from your PC. Replace them with placeholders such as `<player>` or `<account>`. Your own character's name is your choice; if in doubt, use `<character>`.
+        Not sure the line is wrong, or want to talk about the tone in general? Use the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback) instead.
+  - type: textarea
+    id: line
+    attributes:
+      label: The line, as shown
+      description: Copy the line exactly as the narrator or the dialogue window showed it.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language of the line
+      options:
+        - English
+        - Italiano
+    validations:
+      required: true
+  - type: dropdown
+    id: voice
+    attributes:
+      label: Voice
+      description: Who speaks. If you are not sure, choose "Not sure".
+      options:
+        - Narrator
+        - Inner voice
+        - Character (your own words, proposed)
+        - NPC (ambient dialogue)
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where and when it appeared
+      description: Zone or subzone, what was happening (a fight, a quest, weather, a conversation), time of day, and the narrator's intensity and depth if you changed them.
+      placeholder: "Duskwood, at night, right after a fight, intensity 50"
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is wrong?
+      options:
+        - Meaning (it says something else, or nothing)
+        - Grammar or gender agreement
+        - Tone (too cheerful, too grim, out of register)
+        - Lore (it contradicts the world)
+        - It claims more than its conditions (it names something that is not there)
+        - Too long or does not fit the box
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Why, and what it should say (optional)
+      description: A suggestion is welcome, but a description of the problem is enough.
+  - type: textarea
+    id: debug
+    attributes:
+      label: Version line of `/au debug`
+      description: Paste the first two lines of `/au debug` (addon version and client). Remove names of other players first.
+      render: text
+    validations:
+      required: true

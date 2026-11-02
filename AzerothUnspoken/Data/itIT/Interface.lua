@@ -87,7 +87,7 @@ NS:RegisterLanguage("it", {
 		gw_combat_editor = "in combattimento l'editor non si apre mai. La proposta: %s\nPremi di nuovo per inviarla così com'è, oppure /au cancel.",
 		gw_combat_no_editor = "in combattimento l'editor non si apre mai: si apre dopo lo scontro.",
 		gw_auto_fallback = "il client ha bloccato un invio automatico. Per il resto della sessione nulla parte da solo: ogni frase aspetta la tua conferma (il tasto 'pronuncia' o Invia). /reload, o una nuova scelta dell'invio automatico, lo riattiva.",
-		consent_auto_fallback = "acceso, trattenuto: conferma per inviare fino al /reload",
+		consent_auto_fallback = "acceso, trattenuto: conferma fino al /reload",
 
 		-- Chat Gateway
 		gw_empty = "niente da inviare.",

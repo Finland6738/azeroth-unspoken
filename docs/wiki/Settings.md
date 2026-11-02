@@ -4,7 +4,7 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 
 ## Where settings live
 
-- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has five sections under their headers: **General**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. Each row is a name, with its control next to it: a button that shows the value (click to switch or cycle it), or **-**, the value and **+** for a number. A row of buttons at the end of General and Narrator opens a window or acts once.
+- **The settings panel.** Open it with `/au options`. It is also listed among the game's addon options, under **Azeroth Unspoken**. It has five sections under their headers: **General**, **Chat**, **Narrator**, **Modules** and **Privacy**; scroll to see them all. Each row is a name, with its control next to it: a button that shows the value (click to switch or cycle it), or **-**, the value and **+** for a number. A value button grows to fit a long value. A row of buttons at the end of General and Narrator opens a window or acts once.
 - **Commands.** Many settings also have a command. See the [[Commands Reference|Commands]].
 - **Windows.** Personality, journal, relationships and stories have their own windows, with their own choices. Every window has a close box (**X**) at the top right and closes with **Esc**; the NPC dialogue window is the exception, because Esc also closes the game's own NPC windows (see [[NPC Dialogues|NPC-Dialogues]]).
 - **The wizard.** The [[setup wizard|First-Run-Wizard]] sets the most important ones in one go.

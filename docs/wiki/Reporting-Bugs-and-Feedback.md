@@ -7,6 +7,8 @@ There are two places to write, depending on what you want to say.
 | You want to... | Use |
 |---|---|
 | report something that does not work | a **Bug report** issue |
+| report a line that is wrong or odd | a **Content report** issue |
+| tell us the result of a step of the in-game checklist | an **In-game test result** issue |
 | suggest a new feature or an improvement | a **Feature request** issue |
 | share impressions, ask a question, discuss an idea, or you are not sure it is a bug | the **Feedback** category of GitHub Discussions |
 
@@ -14,7 +16,7 @@ Both need a free GitHub account. Please write in **English** if you can; Italian
 
 ## Bug reports and feature requests
 
-Open the [issue forms](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose) and choose one.
+Open the [issue forms](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose) and choose one. Every form repeats the privacy rule (see [What NOT to include](#what-not-to-include)).
 
 ### Bug report
 
@@ -44,6 +46,26 @@ Helpful extras:
 - for a phrase pack problem, the output of `/au validate full`;
 - a screenshot, if the problem is visual.
 
+### Content report
+
+For a line the narrator or an NPC said that is wrong or odd. The form asks for:
+
+| Field | What to write |
+|---|---|
+| **The line, as shown** | the text exactly as it appeared |
+| **Language of the line** | English or Italiano |
+| **Voice** | narrator, inner voice, character (your own words, proposed), NPC (ambient dialogue), or not sure |
+| **Where and when it appeared** | the zone, what was happening, the time of day, your intensity and depth |
+| **What is wrong?** | meaning, grammar or gender agreement, tone, lore, a line that claims more than its conditions (it names something that is not there), too long for the box, other |
+| **Why, and what it should say** (optional) | a suggestion is welcome |
+| **Version line of `/au debug`** | the first two lines of `/au debug`, without other players' names |
+
+The report gets the labels `content` and `needs-triage`.
+
+### In-game test result
+
+For anyone who runs a step of the in-game checklist ([English](https://github.com/Finland6738/azeroth-unspoken/blob/main/docs/G1_checklist.en.md), [Italian](https://github.com/Finland6738/azeroth-unspoken/blob/main/docs/G1_checklist.md)). The form asks for the client build, the addon version, the step numbers (for example `R0.2`), the result (pass, fail or partial), what you saw and the `/au debug` output with names removed. It gets the label `in-game`. See [Helping with tests](#helping-with-tests).
+
 ### Feature request
 
 For a new feature or an improvement. The form asks:
@@ -70,7 +92,7 @@ The addon has not been tested in the real game client yet, so two commands colle
 
 1. **Measure.** After you have played for a few minutes, type `/au prof copy`. A box opens with the text selected: press **Ctrl+C**. It shows how long the addon takes, its memory and how often the narrator spoke or stayed silent.
 2. **Probe.** Right after you log in, type `/au probe` once (it starts counting events such as weather changes and day and night). Then go about your play. In the places the guide asks for (a capital, the open world, a dungeon, rain or snow, dusk) type `/au probe copy` and press **Ctrl+C**.
-3. **Share.** Open a [Bug report](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose) (it is not a bug: the form is the one we have), write "Not a bug: measurements" in **What happened?**, say where you were in **Steps to reproduce**, and paste the text into **Lua errors or diagnostics**. Put a short heading above each paste, such as "capital" or "rain".
+3. **Share.** Open an [In-game test result](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose) issue, write the step numbers (for example `R0.4`), say where you were in **What you saw**, and paste the text into the last box. Put a short heading above each paste, such as "capital" or "rain".
 
 Both reports are in English and contain **no player names, no character name and no coordinates**: they show numbers, `AVAILABLE`/`MISSING`/`RESTRICTED` and, for texts, only their length. Still read them once before pasting, and replace anything personal with a placeholder. If you ever find another player's name in one of them, that is a bug: please report it.
 
@@ -90,6 +112,10 @@ Please protect your privacy and that of other players. **Do not paste:**
 Your own character's name is your choice; if in doubt, use `<character>`.
 
 `/au debug` already hides other players' names, but read it once before posting. See [[Troubleshooting]].
+
+## Behaviour
+
+Everyone who writes in the issues, the discussions or the pull requests follows the [Code of Conduct](https://github.com/Finland6738/azeroth-unspoken/blob/main/CODE_OF_CONDUCT.md). To report a problem with someone's behaviour, use GitHub's **Report content** option on the comment, or contact the maintainer through GitHub. The project publishes no email address.
 
 ## What happens next
 
