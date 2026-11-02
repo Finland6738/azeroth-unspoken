@@ -563,7 +563,7 @@ Il testo dei rapporti è sempre in **inglese**, qualunque lingua scelga: serve p
 - **R0.12 · Dopo un'ora di gioco.** A un'ora dall'accesso scrivi `/au prof copy`.
     - **Cosa aspettarti:** `Memory samples (session time): ...` con il campione dell'inizio e quello di adesso; `spoken per session hour: ...`.
     - **Cosa riportare:** il testo, e se il gioco è diventato più lento.
-- **R0.13 · Mandare i risultati.** Apri una issue nuova (<https://github.com/Finland6738/azeroth-unspoken/issues/new/choose>) con il modulo **Bug report**: titolo `[Bug] R0 in-game results` (non è un errore: è il modulo che abbiamo). In **What happened?** scrivi «Not a bug: R0 measurements (#81, #82)». In **Steps to reproduce** scrivi i posti e i momenti dei passi che hai fatto. Nel campo **Lua errors or diagnostics** incolla i testi (uno sotto l'altro, ognuno con un titolo come «R0.4 capital: probe») dei passi che hai fatto. **Senza nomi di altri giocatori** (e, se vuoi, anche senza il nome del tuo personaggio); mai percorsi del tuo PC.
+- **R0.13 · Mandare i risultati.** Apri una issue nuova (<https://github.com/Finland6738/azeroth-unspoken/issues/new/choose>) con il modulo **In-game test result**: titolo `[In-game] R0 results`. In **Checklist step numbers** scrivi i passi che hai fatto (per esempio `R0.2, R0.4`), scegli il **Result**, e in **What you saw** scrivi i posti e i momenti dei passi. Nell'ultimo campo incolla i testi (uno sotto l'altro, ognuno con un titolo come «R0.4 capital: probe») dei passi che hai fatto. **Senza nomi di altri giocatori** (e, se vuoi, anche senza il nome del tuo personaggio); mai percorsi del tuo PC.
     - **Cosa aspettarti:** i rapporti non hanno nomi, ma rileggili una volta.
     - **Cosa riportare:** il link della issue.
 

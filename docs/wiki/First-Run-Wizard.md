@@ -15,7 +15,7 @@ The guide opens only once per account. After you finish or skip it, it does not 
 
 ## The steps
 
-The guide has **7 steps**, or **8 if Total RP 3 is installed**. A chosen card has a gold border and a filled square; the card of the default choice says "default".
+The guide has **7 steps**, or **8 if Total RP 3 is installed**. Every step lays its blocks out from the top, each under the one above, and the window grows by itself when a step needs more room (a long text in your language, for example); its buttons are as wide as their labels. A chosen card has a gold border and a filled square; the card of the default choice says "default".
 
 ### 1. Welcome and language
 

@@ -1,0 +1,57 @@
+name: In-game test result
+description: The result of a step of the in-game checklist (G1) in the real client.
+title: "[In-game] "
+labels: ["in-game"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing in the real game. The steps are in the checklist: [English](https://github.com/Finland6738/azeroth-unspoken/blob/main/docs/G1_checklist.en.md) and [Italian](https://github.com/Finland6738/azeroth-unspoken/blob/main/docs/G1_checklist.md).
+        **Privacy:** do not paste other players' names, whispers, chat logs, account names or folder paths from your PC. Replace them with placeholders such as `<player>` or `<account>`. Remove names from the `/au debug` text before pasting it.
+  - type: input
+    id: client
+    attributes:
+      label: Client build
+      description: WoW Forever build and client language, from the second line of `/au debug`.
+      placeholder: "1.60.1.70658, English"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Addon version
+      description: The first line of `/au debug`.
+      placeholder: "0.x.y"
+    validations:
+      required: true
+  - type: input
+    id: steps
+    attributes:
+      label: Checklist step numbers
+      description: The numbers of the steps this report is about, as written in the checklist.
+      placeholder: "R0.2, R0.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Pass (it looked and behaved as expected)
+        - Fail (it did not work, or looked broken)
+        - Partial (some of it worked)
+    validations:
+      required: true
+  - type: textarea
+    id: seen
+    attributes:
+      label: What you saw
+      description: What happened against what the step said to expect. For a window, say the interface language and the UI scale, and attach a screenshot if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: debug
+    attributes:
+      label: Output of `/au debug` (names removed)
+      description: Paste the output of `/au debug`, or of `/au prof copy` or `/au probe copy` if the step asks for it. Replace any other player's name with `<player>`.
+      render: text

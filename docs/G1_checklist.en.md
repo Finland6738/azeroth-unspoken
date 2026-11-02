@@ -50,7 +50,7 @@ The reports are always in **English**, whatever language you chose: they are mea
 - **R0.12 · After an hour of play.** One hour after login, type `/au prof copy`.
     - **Expect:** `Memory samples (session time): ...` with the sample from the start and the one from now; `spoken per session hour: ...`.
     - **Report:** the text, and whether the game became slower.
-- **R0.13 · Sending the results.** Open a new issue (<https://github.com/Finland6738/azeroth-unspoken/issues/new/choose>) with the **Bug report** form: title `[Bug] R0 in-game results` (it is not a bug: the form is the one we have). In **What happened?** write "Not a bug: R0 measurements (#81, #82)". In **Steps to reproduce** write the places and moments of the steps you did. In **Lua errors or diagnostics** paste the texts (one below the other, each with a heading such as "R0.4 capital: probe") of the steps you did. **No other players' names** (and, if you wish, not your character's name either); never paths from your PC.
+- **R0.13 · Sending the results.** Open a new issue (<https://github.com/Finland6738/azeroth-unspoken/issues/new/choose>) with the **In-game test result** form: title `[In-game] R0 results`. In **Checklist step numbers** write the steps you did (for example `R0.2, R0.4`), choose the **Result**, and in **What you saw** write the places and moments of the steps. In the last box paste the texts (one below the other, each with a heading such as "R0.4 capital: probe"). **No other players' names** (and, if you wish, not your character's name either); never paths from your PC.
     - **Expect:** the reports have no names, but read them once more.
     - **Report:** the link of the issue.
 

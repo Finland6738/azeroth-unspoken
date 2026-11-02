@@ -124,8 +124,9 @@ local function CreatePanel()
 		return fs
 	end
 
-	-- a label and a button that shows the value; a click changes it
-	local function Toggle(key, value, onClick, tip, x, labelW, controlX, controlW)
+	-- a label and a button that shows the value; a click changes it. The button is as wide as its value (#180), from
+	-- `controlW` up to the right margin of the content, unless `fixed` (the language row has a button beside it).
+	local function Toggle(key, value, onClick, tip, x, labelW, controlX, controlW, fixed)
 		local row = { key = key, value = value }
 		row.label = Label(key, x, labelW)
 		row.button = W.FlatButton(content, "", controlW or CONTROL_W, 24, function()
@@ -133,6 +134,9 @@ local function CreatePanel()
 			NS.Config:Changed(key)
 		end)
 		row.button:SetPoint("TOPLEFT", controlX or CONTROL_X, -y)
+		row.minW = controlW or CONTROL_W
+		row.maxW = fixed and row.minW or math.max(row.minW, CONTENT_W - (controlX or CONTROL_X) - LABEL_X)
+		row.button.auMax = row.maxW
 		if tip then W.Tooltip(row.button, function() return NS:L(tip) end) end
 		rows[key] = row
 		return row
@@ -179,7 +183,7 @@ local function CreatePanel()
 	Toggle("opt_enabled", function() return OnOff(NS.db.enabled) end, function() NS.db.enabled = not NS.db.enabled end)
 	Next()
 	local language = Toggle("opt_language", function() return NS.languages[NS:Lang()].name end, CycleLanguage, nil,
-		nil, nil, nil, 130)
+		nil, nil, nil, 130, true)
 	-- reload after a change of language (#85): shown only while the phrases are still in the previous language
 	panel.reload = W.FlatButton(content, "", CONTROL_W - 138, 24, function() NS.Packs:Reload() end, "primary")
 	panel.reload:SetPoint("TOPLEFT", CONTROL_X + 138, -y)
@@ -340,6 +344,7 @@ local function CreatePanel()
 				r.button:SetText(r.value and r.value() or NS:L(key))
 			elseif r.button then
 				r.button:SetText(r.value())
+				if r.maxW and r.maxW > r.minW then W.FitButton(r.button, r.minW, r.maxW) end
 			else
 				r.text:SetText(r.value())
 			end

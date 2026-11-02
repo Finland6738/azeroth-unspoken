@@ -312,7 +312,7 @@ Pack authors: a line tagged `warm` in a greeting, farewell or reaction to an act
 
 Open the window with `/au relationships` or the **Relationships...** button in the [[settings panel|Settings]].
 
-The window is 660 units tall in every view, so it fits the screen at UI scale 1 and at the default **Window scale**. Close it with **Esc**, the **X** at the top right of its title band or **Close**; what you were typing is kept. It has three tabs: **Relationships**, **People met** and **Options**. The open tab has a full gold edge and a bar under its name.
+The window is 660 units tall in every view, so it fits the screen at UI scale 1 and at the default **Window scale**. The tabs sit under the short note at the top; if that note ever takes more lines (a larger font, a longer translation), the tabs and the views move down and the window grows to fit. Close it with **Esc**, the **X** at the top right of its title band or **Close**; what you were typing is kept. It has three tabs: **Relationships**, **People met** and **Options**. The open tab has a full gold edge and a bar under its name.
 
 **The Relationships tab** is a table with **Name**, **Type** (NPC or Player), **Label**, **Disposition**, **Last seen** and **Encounters**. Click a column header to sort. Filter by **All**, **NPCs** or **Players**, by label, or type in **Search** (Enter gives the keyboard back to the game). A cell that is too long ends with "..."; point at the row to read all of it, and click it to open the person.
 

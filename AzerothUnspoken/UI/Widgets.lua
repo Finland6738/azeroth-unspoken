@@ -391,6 +391,7 @@ function W.Card(parent, width, height, onClick, font)
 	local P = W.PALETTE
 	local b = CreateFrame("Button", nil, parent)
 	b:SetSize(width, height)
+	b.auCard = true
 	b.bg = W.Background(b, P.card[1], P.card[2], P.card[3], 1)
 	b.edges = Edges(b)
 	b.mark = b:CreateTexture(nil, "ARTWORK")
@@ -398,7 +399,7 @@ function W.Card(parent, width, height, onClick, font)
 	b.mark:SetPoint("TOPRIGHT", -12, -12)
 	b.title = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	b.title:SetPoint("TOPLEFT", 12, -8)
-	b.title:SetPoint("TOPRIGHT", -30, -8)
+	b.title:SetWidth(width - 42)   -- up to the marker; a width of its own, so that GetStringHeight() is what is drawn
 	b.title:SetJustifyH("LEFT")
 	b.sub = b:CreateFontString(nil, "OVERLAY", font or "GameFontHighlightSmall")
 	b.sub:SetPoint("TOPLEFT", b.title, "BOTTOMLEFT", 0, -4)
@@ -420,8 +421,52 @@ function W.Card(parent, width, height, onClick, font)
 		Tint(self.mark, self.on and P.gold or P.muted, 1)
 		Tint(self.bg, self.on and P.cardOn or P.card, 1)
 	end
+	---#179: the height the card needs for what it says now: the title, the description measured with GetStringHeight(),
+	---and the margins; never under `min`. Call it after SetCard; the page lays the next block under the new height.
+	---@param min? number
+	---@return number height
+	function b:Fit(min)
+		local h = 8 + math.ceil(self.title:GetStringHeight() or 14) + 4 + math.ceil(self.sub:GetStringHeight() or 0) + 10
+		self:SetHeight(math.max(min or 0, h))
+		return self:GetHeight()
+	end
 	b:SetCard(nil, nil, false)
 	return b
+end
+
+---A button as wide as its label (#180): the label measured with GetStringWidth() in the font of the button, plus `pad`
+---(24 by default), between `min` and `max` units. A label wider than `max` is cut (the width of the label is `max`
+---minus the margins) and the whole text shows in the tooltip, which the caller can still replace with W.Tooltip.
+---@param b table a button made by W.FlatButton
+---@param min number
+---@param max number
+---@param pad? number
+---@return number width
+function W.FitButton(b, min, max, pad)
+	local text = b.label:GetText() or ""
+	local w = b.label:GetStringWidth()
+	-- a client that does not measure a hidden text: about 7 units a character
+	if type(w) ~= "number" or (w <= 0 and text ~= "") then w = #text * 7 end
+	pad = pad or 24
+	local want = math.ceil(w) + pad
+	local width = math.max(min, math.min(max, want))
+	b:SetWidth(width)
+	b.auClipped = want > max
+	if b.auClipped then
+		b.label:SetWidth(width - 8)
+		if b.label.SetWordWrap then b.label:SetWordWrap(false) end
+		if not b.auTipSet then
+			b.auTipSet = true
+			b:HookScript("OnEnter", function(self)
+				if not self.auClipped then return end
+				GameTooltip:SetOwner(self, "ANCHOR_TOP")
+				GameTooltip:SetText(self.label:GetText() or "", 1, 1, 1, 1, true)
+				GameTooltip:Show()
+			end)
+			b:HookScript("OnLeave", function(self) if self.auClipped then GameTooltip:Hide() end end)
+		end
+	end
+	return width
 end
 
 ---------------------------------------------------------------------------

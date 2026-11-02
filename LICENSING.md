@@ -7,7 +7,7 @@ Azeroth Unspoken has **three licences**, one for each kind of work in the reposi
 | **Code**: the engine, the interface, the integrations, tests and tools | everything not listed below, for example `AzerothUnspoken/Core/`, `Engine/`, `Integration/`, `Systems/`, `UI/`, `Bindings.xml`, the `.toc` files, `Tests/`, `tools/`, `.github/`, `docs/design/mockups/tools/` | **GPL-3.0-or-later** ([`LICENSE`](LICENSE)), with an additional permission for phrase packs (below) |
 | **Phrases and narrative data** | `AzerothUnspoken/Data/`, `AzerothUnspoken_enUS/`, `AzerothUnspoken_itIT/`, `AzerothUnspoken_EasternKingdoms*/`, `AzerothUnspoken_Kalimdor*/`, `AzerothUnspoken_Versi/`, `authoring/` | **All rights reserved**, with the permitted uses listed in [`LICENSE-CONTENT.md`](LICENSE-CONTENT.md) |
 | **Pack template** | `AzerothUnspoken_Example/`, `AzerothUnspoken/PACK_FORMAT.md` | **MIT** ([`AzerothUnspoken_Example/LICENSE`](AzerothUnspoken_Example/LICENSE)) |
-| **Documentation** | `README.md`, `README.it.md`, `CONTRIBUTING.md`, `ROADMAP.md`, `CHANGELOG.md`, `LICENSING.md`, `docs/` (wiki, ADRs, design report and mockup images) except its code | **CC BY 4.0** ([legal code](https://creativecommons.org/licenses/by/4.0/legalcode)) |
+| **Documentation** | `README.md`, `README.it.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `ROADMAP.md`, `CHANGELOG.md`, `LICENSING.md`, `docs/` (wiki, ADRs, design report and mockup images) except its code | **CC BY 4.0** ([legal code](https://creativecommons.org/licenses/by/4.0/legalcode)) |
 
 Copyright © 2026 Finland6738 and the contributors. The reasons for this choice are in
 [ADR 0034](docs/adr/0034-licensing-gpl-code-reserved-phrases.md).

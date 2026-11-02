@@ -347,10 +347,44 @@ function Widget:GetWidth() return self._s.w or 100 end
 function Widget:GetHeight() return self._s.h or 20 end
 -- 60 bytes a line, and (#117) every line break starts a new line
 function Widget:GetStringHeight()
+	if REALISTIC_TEXT then return self:RealisticHeight() end
 	local h = 0
 	for line in ((self._s.text or "") .. "\n"):gmatch("([^\n]*)\n") do h = h + 14 * (1 + math.floor(#line / 60)) end
 	return h
 end
+-- #179 #182: an opt-in measure that follows the width and the font, as the client does: 6.3 units a character in the
+-- 12-unit font (the estimate of the UI review), in proportion to the font size, and a line height of size + 2. The
+-- layout tests turn it on (REALISTIC_TEXT = true); every other test keeps the 60-byte estimate above.
+FONT_SIZES = { GameFontNormalSmall = 10, GameFontHighlightSmall = 10, GameFontNormal = 12, GameFontHighlight = 12,
+	GameFontNormalLarge = 16, GameFontHighlightLarge = 16, GameFontNormalHuge = 20 }
+function Widget:FontSize()
+	local f = self._s.font
+	if f and tonumber(f[2]) then return f[2] end
+	return FONT_SIZES[self._s.fontObject or ""] or 12
+end
+function Widget:CharUnits() return 6.3 * self:FontSize() / 12 end
+local function Plain(text) return (text or ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "") end
+local function Utf8Length(text)
+	local _, n = text:gsub("[^\128-\191]", "")
+	return n
+end
+function Widget:RealisticWidth()
+	local w = 0
+	for line in (Plain(self._s.text) .. "\n"):gmatch("([^\n]*)\n") do w = math.max(w, Utf8Length(line) * self:CharUnits()) end
+	return w
+end
+function Widget:RealisticHeight()
+	local text = Plain(self._s.text)
+	if text == "" then return 0 end
+	local unit, width, lines = self:CharUnits(), self._s.w, 0
+	for line in (text .. "\n"):gmatch("([^\n]*)\n") do
+		local need = Utf8Length(line) * unit
+		lines = lines + ((width and self._s.wrap ~= false) and math.max(1, math.ceil(need / width)) or 1)
+	end
+	return lines * (self:FontSize() + 2)
+end
+function Widget:SetFontObject(f) self._s.fontObject = type(f) == "string" and f or nil end
+function Widget:SetWordWrap(v) self._s.wrap = v and true or false end
 -- #126: scroll frames and the history's message frame keep what the addon gave them
 function Widget:SetVerticalScroll(v) self._s.scroll = v end
 function Widget:GetVerticalScroll() return self._s.scroll or 0 end
@@ -361,7 +395,10 @@ function Widget:EnableMouse(v) self._s.mouse = v and true or false end
 function Widget:IsMouseEnabled() return self._s.mouse == true end
 function Widget:AddMessage(m) self._s.messages = self._s.messages or {}; table.insert(self._s.messages, m) end
 function Widget:Clear() self._s.messages = {} end
-function Widget:GetStringWidth() return math.min(#(self._s.text or "") * 6, 400) end
+function Widget:GetStringWidth()
+	if REALISTIC_TEXT then return math.ceil(self:RealisticWidth()) end
+	return math.min(#(self._s.text or "") * 6, 400)
+end
 function Widget:SetPoint(...) self._s.points = self._s.points or {}; table.insert(self._s.points, { ... }) end
 function Widget:ClearAllPoints() self._s.points = nil end
 -- come il client: sempre (punto, frame relativo, punto relativo, x, y), qualunque forma abbia avuto SetPoint
@@ -388,7 +425,11 @@ function Widget:SetFocus() self._s.focused = true end
 function Widget:ClearFocus() self._s.focused = false end
 function Widget:HasFocus() return self._s.focused == true end
 function Widget:GetParent() return self.parent end
-function Widget:CreateFontString() return CreateWidget("FontString", self) end
+function Widget:CreateFontString(_, _, template)
+	local f = CreateWidget("FontString", self)
+	f._s.fontObject = template
+	return f
+end
 function Widget:CreateTexture() return CreateWidget("Texture", self) end
 function Widget:StartMoving() self._s.moving = true end
 function Widget:StopMovingOrSizing() self._s.moving = false end

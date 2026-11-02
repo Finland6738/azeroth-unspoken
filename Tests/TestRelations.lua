@@ -1237,6 +1237,10 @@ end)
 ---------------------------------------------------------------------------
 -- U1: layout of the window (#171, #172, #179, #180) and the edit boxes (#184)
 ---------------------------------------------------------------------------
+-- the layout tests measure text as the client does (width and font aware, 6.3 units a character: see the mock), so the
+-- intro that takes two lines in game takes two lines here; the tests after them go back to the 60-byte estimate
+REALISTIC_TEXT = true
+
 -- the width of a label in units, as the review estimates it: 6.3 per character, colour escapes left out
 local function LabelUnits(text)
 	local plain = tostring(text or ""):gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
@@ -1269,9 +1273,9 @@ local function Describe(r)
 end
 
 -- every shown widget of the window lies inside it, no two overlap, and every button label fits its button
-local function CheckLayout(where)
+local function CheckLayout(where, maxHeight)
 	local frame = _G[ROOT]
-	T.ok(frame:GetHeight() <= 680, where .. ": at most 680 units tall (" .. frame:GetHeight() .. ")")
+	T.ok(frame:GetHeight() <= (maxHeight or 680), where .. ": at most " .. (maxHeight or 680) .. " units tall (" .. frame:GetHeight() .. ")")
 	local rects = {}
 	for _, w in ipairs(frame.children) do
 		if w:IsShown() and w.kind ~= "Texture" then
@@ -1367,6 +1371,49 @@ T.run("U1 #172 #179 #180: every view fits 680 units, nothing overlaps, labels fi
 	NS.db.locale = "it"
 end)
 
+-- #182: the views lie under the tabs and the tabs under the intro, measured with GetStringHeight(): an intro of more
+-- lines pushes everything down and the window grows, instead of the intro running into the tabs
+T.run("U1 #182: a longer intro pushes the tabs and the views down and the window grows", function()
+	Fresh()
+	NS.db.locale = "en"
+	local key = Person("Aldric-Stormrage", { trust = 55, affection = 45, familiarity = 50 })
+	Person("Zeno-Stormrage", { familiarity = 30 })
+	local function IntroBottomAndTabs()
+		local frame = _G[ROOT]
+		local intro = Rect(frame.intro, frame)
+		local tabY = frame.tabList._s.points[#frame.tabList._s.points][3]
+		return frame, intro, tabY
+	end
+	-- the usual intro: two lines, the tabs where they have always been
+	RelationsFrame:Open("list")
+	local frame, intro, tabY = IntroBottomAndTabs()
+	T.eq(tabY, -84, "two lines: the tabs at -84")
+	T.eq(frame:GetHeight(), 660, "and the window at 660")
+	local kindY = frame.kindBtn._s.points[#frame.kindBtn._s.points][3]
+	-- a longer one, from a translation or a larger font: five lines
+	local saved = NS.languages.en.ui.rel_intro
+	NS.languages.en.ui.rel_intro = saved .. " " .. saved
+	for _, view in ipairs({ "list", "people", "options" }) do
+		RelationsFrame:Open(view)
+		frame, intro, tabY = IntroBottomAndTabs()
+		local lines = math.ceil(intro.t - intro.b) / 14
+		T.ok(lines >= 3, view .. ": the intro takes " .. lines .. " lines")
+		T.ok(tabY <= intro.b, view .. (": the tabs (%d) start under the intro (%d)"):format(tabY, intro.b))
+		T.ok(frame:GetHeight() > 660, view .. ": the window grew to " .. frame:GetHeight())
+		CheckLayout("long intro, " .. view, 760)
+	end
+	T.ok(frame.kindBtn._s.points[#frame.kindBtn._s.points][3] < kindY, "the views moved down with the tabs")
+	RelationsFrame:Open({ kind = "player", key = key })
+	CheckLayout("long intro, detail", 760)
+	RelationsFrame:Close()
+	NS.languages.en.ui.rel_intro = saved
+	RelationsFrame:Open("list")
+	T.eq(frame.tabList._s.points[#frame.tabList._s.points][3], -84, "back to a short intro: the tabs return")
+	T.eq(frame:GetHeight(), 660, "and the window")
+	RelationsFrame:Close()
+	NS.db.locale = "it"
+end)
+
 T.run("U1 #180: the longest values fit the detail's buttons, in Italian and English", function()
 	Fresh()
 	local key = Person("Zeno-Stormrage", { familiarity = 30 })
@@ -1411,6 +1458,8 @@ T.run("U1 #180: the longest values fit the detail's buttons, in Italian and Engl
 	NS.db.locale = "it"
 	RelationsFrame:Close()
 end)
+
+REALISTIC_TEXT = false
 
 T.run("U1 #184: the boxes save when they lose focus, to the person they were opened for", function()
 	Fresh()

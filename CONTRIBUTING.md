@@ -44,6 +44,17 @@ Three non-negotiable principles:
 
 Open an [issue](https://github.com/Finland6738/azeroth-unspoken/issues), written in English. **Search first** to see whether it already exists.
 
+Choose the [issue form](https://github.com/Finland6738/azeroth-unspoken/issues/new/choose) that fits:
+
+| Form | For | Labels |
+|---|---|---|
+| **Bug report** | something that does not work as expected | `bug`, `needs-triage` |
+| **Feature request** | a new feature or an improvement | `enhancement`, `needs-triage` |
+| **Content report** | a line that is wrong, odd or claims more than its conditions allow (meaning, grammar or gender agreement, tone, lore) | `content`, `needs-triage` |
+| **In-game test result** | the result of a step of the [in-game checklist](docs/G1_checklist.en.md) in the real client | `in-game` |
+
+Questions, impressions and ideas you want to talk over go to the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback). Every form repeats the privacy rule: **no other players' names, whispers, chat logs, account names or folder paths from your PC.** Everyone taking part follows the [Code of Conduct](CODE_OF_CONDUCT.md); to report a conduct problem use GitHub's *Report content* option or contact the maintainer through GitHub (the project publishes no email address).
+
 **Labels**: `bug`, `enhancement`, `docs`, `in-game` (to be verified in the client), `content` (phrases), `good first issue`, and a priority `priority:high`, `priority:medium` or `priority:low`.
 
 **A good report** contains:

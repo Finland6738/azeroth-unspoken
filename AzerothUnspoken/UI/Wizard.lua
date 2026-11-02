@@ -9,6 +9,9 @@
 -- It opens after PLAYER_ENTERING_WORLD, outside combat. A consent (automatic sending, reading others' Total RP 3)
 -- is asked in a confirmation dialog, never by a second click (Core/Consent.lua). The shell is W.Window (#187), like
 -- every other window; Esc does what Skip does (#174). The text of a consent is in the 12-unit font (#182).
+-- Every page lays its blocks out top-down (#179): each block sits under the one above it, measured with
+-- GetStringHeight() (a card with Card:Fit()), and the window grows when a page needs more than HEIGHT. Buttons are as
+-- wide as their label, between a minimum and a maximum, with the whole text in the tooltip when it is cut (#180).
 local ADDON, NS = ...
 local W = NS.Widgets
 local Wizard = NS:RegisterModule("wizard")
@@ -18,6 +21,7 @@ local frame, pageFrames, step = nil, {}, 1
 local MODULE_ORDER = { "personal", "world", "npc", "memory", "relations", "storyArcs", "social", "audio" }
 local MODULE_LIVE = NS.Config.MODULE_LIVE   -- modules that already have an effect (one list with the panel, #77)
 local WIDTH, HEIGHT = 520, 480
+local CONTENT_TOP, CONTENT_BOTTOM = 64, 56    -- the title band and the footer around the page
 local INNER = WIDTH - 40                    -- 20 units of margin on each side
 local MAX_DOTS = 8
 local OPEN_DELAY = 3                        -- seconds after PLAYER_ENTERING_WORLD
@@ -29,13 +33,14 @@ local function Defaults() return NS.Config.defaults end
 
 local function Words(on) return NS:L(on and "on" or "off") end
 
--- text of a page: a fixed place and width, set again on every render
+-- text of a page: a width, set again on every render; Flow gives it its place
 local function Text(parent, y, template, width)
 	local fs = parent:CreateFontString(nil, "ARTWORK", template or "GameFontHighlight")
 	fs:SetPoint("TOPLEFT", 20, y)
 	fs:SetWidth(width or INNER)
 	fs:SetJustifyH("LEFT")
 	fs:SetJustifyV("TOP")
+	fs.auText = true
 	return fs
 end
 
@@ -43,6 +48,39 @@ end
 local function Head(parent, key)
 	local h = Text(parent, -2, "GameFontNormalLarge")
 	return function() h:SetText(NS:L(key)) end
+end
+
+local START = 30        -- where the blocks of a page start, under the heading
+local GAP = 8           -- the space under a block when the row does not say otherwise
+local BOTTOM_MARGIN = 10
+
+-- the height of a block: a card fits its description, a text is measured, anything else keeps its size
+local function Measure(r)
+	if r.auCard then return r:Fit(r.minHeight) end
+	if r.auText then return math.ceil(r:GetStringHeight() or 0) end
+	return r:GetHeight()
+end
+
+---#179: lays the rows of a page out top-down from `y`; every row sits under the one above, as tall as its tallest
+---block (the cards of a row become equally tall). A row is a list of blocks, side by side from x = 20 with `sep` units
+---between them (8), `gap` units under the row (GAP), and `dy` (a block's offset down, for a value next to a button).
+---@param rows table[]
+---@param y? number
+---@return number bottom where the next block would start
+local function Flow(rows, y)
+	y = y or START
+	for _, row in ipairs(rows) do
+		local x, h = 20, 0
+		for i, r in ipairs(row) do
+			r:ClearAllPoints()
+			r:SetPoint("TOPLEFT", row.x and row.x[i] or x, -(y + (row.dy and row.dy[i] or 0)))
+			h = math.max(h, Measure(r))
+			x = (row.x and row.x[i] or x) + r:GetWidth() + (row.sep or 8)
+		end
+		for _, r in ipairs(row) do if r.auCard then r:SetHeight(h) end end
+		y = y + h + (row.gap or GAP)
+	end
+	return y
 end
 
 ---The defaults the guide states, from Config.defaults: one line, so the guide cannot disagree with the addon.
@@ -64,7 +102,6 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	-- a live sample of the narrator: the voice, then a line, before any setting
 	local box = CreateFrame("Frame", nil, p)
 	box:SetSize(INNER, 46)
-	box:SetPoint("TOPLEFT", 20, -72)
 	W.Background(box, 0.03, 0.025, 0.015, 0.95)
 	local bar = box:CreateTexture(nil, "ARTWORK")
 	bar:SetSize(3, 46)
@@ -77,7 +114,7 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 	sample:SetWidth(INNER - 24)
 	sample:SetJustifyH("LEFT")
 	local label = Text(p, -134, "GameFontNormalSmall")
-	local cards = {}
+	local cards, byRow = {}, {}
 	for i, code in ipairs(NS.languageOrder) do
 		local c = W.Card(p, (INNER - 8) / 2, 56, function()
 			NS.db.locale = code
@@ -85,8 +122,11 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 			NS.Packs:OnLanguageChanged(true)
 			Wizard:Render()
 		end)
-		c:SetPoint("TOPLEFT", 20 + ((i - 1) % 2) * ((INNER + 8) / 2), -154 - math.floor((i - 1) / 2) * 64)
+		c.minHeight = 56
 		cards[code] = c
+		local r = math.floor((i - 1) / 2) + 1
+		byRow[r] = byRow[r] or {}
+		table.insert(byRow[r], c)
 	end
 	local note = Text(p, -222, "GameFontHighlightSmall")
 	return function()
@@ -98,6 +138,14 @@ pages[1] = { title = "wiz_step_language", build = function(p)
 		label:SetText(NS:L("wiz_language_label"))
 		for code, c in pairs(cards) do c:SetCard(NS.languages[code].name, NS:L("wiz_language_card"), NS.db.locale == code) end
 		note:SetText(NS:L("wiz_language_help"))
+		-- the sample box grows with a sample that takes a second line
+		local boxH = math.max(46, 22 + math.ceil(sample:GetStringHeight() or 14) + 8)
+		box:SetHeight(boxH)
+		bar:SetHeight(boxH)
+		local rows = { { intro, gap = 12 }, { box, gap = 12 }, { label, gap = 6 } }
+		for _, row in ipairs(byRow) do table.insert(rows, row) end
+		table.insert(rows, { note })
+		return Flow(rows)
 	end
 end }
 
@@ -106,21 +154,25 @@ pages[2] = { title = "wiz_step_preset", build = function(p)
 	local head = Head(p, "wiz_step_preset")
 	local intro = Text(p, -30, "GameFontHighlightSmall")
 	local cards = {}
-	for i, name in ipairs(NS.Config.PRESET_ORDER) do
+	for _, name in ipairs(NS.Config.PRESET_ORDER) do
 		local c = W.Card(p, INNER, 52, function()
 			NS.Config:ApplyPreset(name)
 			Wizard:Render()
 		end)
-		c:SetPoint("TOPLEFT", 20, -54 - (i - 1) * 58)
+		c.minHeight = 52
 		cards[name] = c
 	end
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_preset_help"))
-		for name, c in pairs(cards) do
+		local rows = { { intro, gap = 10 } }
+		for _, name in ipairs(NS.Config.PRESET_ORDER) do
+			local c = cards[name]
 			c:SetCard(NS:L("preset_" .. name), NS:L("preset_" .. name .. "_help"), NS.db.preset == name,
 				Tag(Defaults().preset == name))
+			table.insert(rows, { c, gap = 6 })
 		end
+		return Flow(rows)
 	end
 end }
 
@@ -133,12 +185,9 @@ pages[3] = { title = "wiz_step_intensity", build = function(p)
 		Wizard:Render()
 	end
 	local minus = W.FlatButton(p, "-", 30, 26, function() Step(-10) end)
-	minus:SetPoint("TOPLEFT", 20, -84)
 	local value = Text(p, -88, "GameFontNormalLarge", 60)
-	value:SetPoint("TOPLEFT", 62, -88)
 	value:SetJustifyH("CENTER")
 	local plus = W.FlatButton(p, "+", 30, 26, function() Step(10) end)
-	plus:SetPoint("TOPLEFT", 126, -84)
 	local example = Text(p, -130)
 	return function()
 		head()
@@ -148,6 +197,8 @@ pages[3] = { title = "wiz_step_intensity", build = function(p)
 		local band = (i == 0 and 0) or (i <= 20 and 1) or (i <= 40 and 2) or (i <= 60 and 3) or (i <= 80 and 4) or 5
 		example:SetText(NS:L("intensity_band_" .. band)
 			.. (i == Defaults().intensity and ("\n\n" .. NS:L("wiz_suggested")) or ""))
+		return Flow({ { intro, gap = 14 }, { minus, value, plus, x = { 20, 62, 126 }, dy = { 0, 4, 0 }, gap = 16 },
+			{ example } })
 	end
 end }
 
@@ -156,21 +207,24 @@ pages[4] = { title = "wiz_step_depth", build = function(p)
 	local head = Head(p, "wiz_step_depth")
 	local intro = Text(p, -30, "GameFontHighlightSmall")
 	local cards = {}
-	for i, depth in ipairs({ "natural", "literary", "elevated" }) do
+	for _, depth in ipairs({ "natural", "literary", "elevated" }) do
 		local c = W.Card(p, INNER, 70, function()
 			NS.db.proseDepth = depth
 			Wizard:Render()
 		end)
-		c:SetPoint("TOPLEFT", 20, -62 - (i - 1) * 76)
+		c.minHeight = 70
 		cards[depth] = c
 	end
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_depth_help"))
-		for depth, c in pairs(cards) do
-			c:SetCard(NS:L("depth_" .. depth), NS:L("depth_" .. depth .. "_example"), NS.db.proseDepth == depth,
+		local rows = { { intro, gap = 10 } }
+		for _, depth in ipairs({ "natural", "literary", "elevated" }) do
+			cards[depth]:SetCard(NS:L("depth_" .. depth), NS:L("depth_" .. depth .. "_example"), NS.db.proseDepth == depth,
 				Tag(Defaults().proseDepth == depth))
+			table.insert(rows, { cards[depth], gap = 6 })
 		end
+		return Flow(rows)
 	end
 end }
 
@@ -178,15 +232,18 @@ end }
 pages[5] = { title = "wiz_step_modules", build = function(p)
 	local head = Head(p, "wiz_step_modules")
 	local intro = Text(p, -30, "GameFontHighlightSmall")
-	local cards = {}
+	local cards, byRow = {}, {}
 	for i, module in ipairs(MODULE_ORDER) do
 		local c = W.Card(p, (INNER - 8) / 2, 44, function()
 			NS.db.modules[module] = not NS.db.modules[module]
 			NS.db.preset = "custom"
 			Wizard:Render()
 		end)
-		c:SetPoint("TOPLEFT", 20 + ((i - 1) % 2) * ((INNER + 8) / 2), -66 - math.floor((i - 1) / 2) * 50)
+		c.minHeight = 44
 		cards[module] = c
+		local r = math.floor((i - 1) / 2) + 1
+		byRow[r] = byRow[r] or {}
+		table.insert(byRow[r], c)
 	end
 	local consent = Text(p, -270, W.TEXT_FONT)
 	return function()
@@ -198,6 +255,13 @@ pages[5] = { title = "wiz_step_modules", build = function(p)
 			c:SetCard(name, Words(NS.db.modules[module]), NS.db.modules[module])
 		end
 		consent:SetText(NS:L("wiz_social_consent"))
+		local rows = { { intro, gap = 10 } }
+		for _, row in ipairs(byRow) do
+			row.gap = 6
+			table.insert(rows, row)
+		end
+		table.insert(rows, { consent })
+		return Flow(rows)
 	end
 end }
 
@@ -211,14 +275,14 @@ end, build = function(p)
 		NS.db.modules.totalRP3 = not NS.db.modules.totalRP3
 		Wizard:Render()
 	end)
-	name:SetPoint("TOPLEFT", 20, -70)
+	name.minHeight = 62
 	-- reading the profiles of OTHERS is a consent: off by default, on only through the confirmation dialog (#178)
 	local others = W.Card(p, INNER, 112, function()
 		local r = NS.Interlocutor:ChangeTRP3Consent()
 		if r == "wait" then NS:Print(NS:L("consent_wait")) end
 		Wizard:Render()
 	end, W.TEXT_FONT)
-	others:SetPoint("TOPLEFT", 20, -142)
+	others.minHeight = 112
 	NS.Consent:OnChange(function() if Wizard:IsOpen() then Wizard:Render() end end)
 	return function()
 		head()
@@ -233,6 +297,7 @@ end, build = function(p)
 			if q == "reading" then state = NS:L("consent_off_reading") elseif q == "ready" then state = NS:L("consent_off_ready") end
 		end
 		others:SetCard(NS:L("opt_trp3_others"), state .. ". " .. NS:L("wiz_trp3_others_help"), on)
+		return Flow({ { intro, gap = 12 }, { name, gap = 10 }, { others } })
 	end
 end }
 
@@ -241,11 +306,9 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 	local head = Head(p, "wiz_step_chat")
 	local intro = Text(p, -26, W.TEXT_FONT)
 	local cards = {}
-	local y = -74                 -- under an introduction of up to three lines
 	for _, mode in ipairs(NS.Gateway.MODES) do
 		-- what reaches chat is read in the 12-unit font; automatic sending has the longest text (#182)
-		local h = mode == "AUTO_ONLY_IF_ALLOWED" and 74 or 50
-		local c = W.Card(p, INNER, h, function()
+		local c = W.Card(p, INNER, mode == "AUTO_ONLY_IF_ALLOWED" and 74 or 50, function()
 			-- automatic sending is not chosen with one click: a dialog shows the whole warning first
 			if mode == "AUTO_ONLY_IF_ALLOWED" then
 				if NS.Gateway:SelectAuto() == "wait" then NS:Print(NS:L("consent_wait")) end
@@ -254,19 +317,18 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 			end
 			Wizard:Render()
 		end, W.TEXT_FONT)
-		c:SetPoint("TOPLEFT", 20, y)
+		c.minHeight = mode == "AUTO_ONLY_IF_ALLOWED" and 74 or 50
 		cards[mode] = c
-		y = y - h - 4
 	end
 	NS.Consent:OnChange(function() if Wizard:IsOpen() then Wizard:Render() end end)
 	local test = W.FlatButton(p, "", 200, 26, function() NS.Narrator:ShowTest() end)
-	test:SetPoint("TOPLEFT", 20, y - 6)
-	local hint = Text(p, y - 11, "GameFontHighlightSmall", 240)
-	hint:SetPoint("TOPLEFT", 232, y - 11)
+	local hint = Text(p, 0, "GameFontHighlightSmall", 240)
 	return function()
 		head()
 		intro:SetText(NS:L("wiz_chat_help"))
-		for mode, c in pairs(cards) do
+		local rows = { { intro, gap = 10 } }
+		for _, mode in ipairs(NS.Gateway.MODES) do
+			local c = cards[mode]
 			local isAuto = mode == "AUTO_ONLY_IF_ALLOWED"
 			local chosen = isAuto and NS.Gateway:IsAutoActive() or (not isAuto and NS.Gateway:GetMode() == mode)
 			local sub = NS:L("wiz_mode_" .. mode)
@@ -276,9 +338,15 @@ pages[7] = { title = "wiz_step_chat", build = function(p)
 				elseif q == "ready" then sub = sub .. " " .. NS:L("consent_off_ready") end
 			end
 			c:SetCard(NS:L("chatmode_" .. mode .. "_short"), sub, chosen, Tag(Defaults().chat.mode == mode))
+			table.insert(rows, { c, gap = 4 })
 		end
 		test:SetText(NS:L("wiz_test"))
+		W.FitButton(test, 140, 232)
+		hint:SetWidth(INNER - test:GetWidth() - 12)
 		hint:SetText(NS:L("wiz_test_hint"))
+		rows[#rows].gap = 10
+		table.insert(rows, { test, hint, sep = 12 })
+		return Flow(rows)
 	end
 end }
 
@@ -290,9 +358,7 @@ pages[8] = { title = "wiz_step_keys", build = function(p)
 	local where = Text(p, -140)
 	local defaults = Text(p, -214, "GameFontHighlightSmall")
 	local bind = W.FlatButton(p, "", 200, 26, function() Wizard:OpenKeyBindings() end)
-	bind:SetPoint("TOPLEFT", 20, -276)
 	local options = W.FlatButton(p, "", 200, 26, function() if NS.OpenSettings then NS.OpenSettings() end end)
-	options:SetPoint("TOPLEFT", 232, -276)
 	return function()
 		head()
 		local lines = { NS:L("wiz_keys_intro") }
@@ -302,6 +368,11 @@ pages[8] = { title = "wiz_step_keys", build = function(p)
 		defaults:SetText(Wizard:DefaultsLine())
 		bind:SetText(NS:L("wiz_open_bindings"))
 		options:SetText(NS:L("wiz_open_settings"))
+		-- two buttons side by side, each as wide as its label, up to half the line
+		local half = (INNER - 12) / 2
+		W.FitButton(bind, 140, half)
+		W.FitButton(options, 140, half)
+		return Flow({ { keys, gap = 12 }, { where, gap = 10 }, { defaults, gap = 12 }, { bind, options, sep = 12 } })
 	end
 end }
 
@@ -347,7 +418,10 @@ function Wizard:Render()
 		page.update = page.build(f)
 		for i, other in pairs(pageFrames) do other:SetShown(i == step) end
 	end
-	if page.update then page.update() end
+	local bottom = page.update and page.update()
+	-- #179: the window is as tall as the page needs, never less than HEIGHT
+	local needed = (type(bottom) == "number" and bottom or 0) + BOTTOM_MARGIN + CONTENT_TOP + CONTENT_BOTTOM
+	frame:SetHeight(math.max(HEIGHT, math.ceil(needed)))
 	local total, number = self:NumberOfPages(), 0
 	for i = 1, step do if Visible(i) then number = number + 1 end end
 	frame.title:SetText(NS:L("wiz_title"))
@@ -364,6 +438,10 @@ function Wizard:Render()
 	frame.back:SetText(NS:L("wiz_back"))
 	frame.back:SetShown(Neighbour(step, -1) ~= nil)
 	frame.next:SetText(Neighbour(step, 1) and NS:L("wiz_next") or NS:L("wiz_finish"))
+	-- #180: the footer buttons are as wide as their labels; "Skip" is the one that can be long, and gets what the others leave
+	W.FitButton(frame.next, 90, 120)
+	W.FitButton(frame.back, 80, 100)
+	W.FitButton(frame.skip, 120, WIDTH - 32 - 16 - 120 - 100, 14)
 end
 
 function Wizard:Next()
@@ -417,12 +495,12 @@ local function Build()
 	if rule.SetColorTexture then rule:SetColorTexture(0.33, 0.27, 0.1, 1) end
 
 	frame.content = CreateFrame("Frame", nil, frame)
-	frame.content:SetPoint("TOPLEFT", 0, -64)
-	frame.content:SetPoint("BOTTOMRIGHT", 0, 56)
+	frame.content:SetPoint("TOPLEFT", 0, -CONTENT_TOP)
+	frame.content:SetPoint("BOTTOMRIGHT", 0, CONTENT_BOTTOM)
 
 	frame.skip = W.FlatButton(frame, "", 200, 24, function() Wizard:Finish() end, "text")
 	frame.skip:SetPoint("BOTTOMLEFT", 16, 14)
-	W.Tooltip(frame.skip, function() return NS:L("wiz_skip_tip") end)
+	W.Tooltip(frame.skip, function() return NS:L("wiz_skip_tip") end)   -- the tip says the whole label too
 	frame.next = W.FlatButton(frame, "", 110, 24, function() Wizard:Next() end, "primary")
 	frame.next:SetPoint("BOTTOMRIGHT", -16, 14)
 	frame.back = W.FlatButton(frame, "", 90, 24, function() Wizard:Back() end)
