@@ -707,6 +707,8 @@ EventBus:AddSource("UNIT_DIED", { normalize = function(guid)
 	guid = Compat.Readable(guid)
 	local nem = Nemesis(guid)
 	if nem then nem:Died(guid, "unknown") end
+	-- N8 (#220, #125): the pet, a group member, an NPC the character was close to (Systems/Companion.lua), by GUID
+	if NS.Companion and type(guid) == "string" then NS.Companion:Died(guid) end
 	local which = type(guid) == "string" and Watching() and FightOf(guid)
 	if not which then return nil end
 	return "FOE_DIED", { by = "unknown", which = which }

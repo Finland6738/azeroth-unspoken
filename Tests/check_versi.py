@@ -146,7 +146,7 @@ def check_pieces(lua, ns):
     rows = list(lua.eval(PIECES_LUA)().values())
     real = [r for r in rows if not r.twin]
     twins = [r for r in rows if r.twin]
-    check(12 <= len(real) <= 20, f"12-20 pieces ({len(real)})")
+    check(12 <= len(real) <= 25, f"12-25 pieces ({len(real)})")
     check(all(r.genre and r.purpose and r.origin for r in rows), "genre, purpose and origin on every rule (#119)")
     check(all(r.origin in ("common", "personal") or str(r.origin).startswith("culture:") for r in rows),
           "origin is common, personal or culture:<people> (D17: never a race)")
@@ -341,7 +341,7 @@ def check_archive(lua, ns):
     import store  # noqa: E402 (tools/archive, on the path above)
     con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "no-overlay"))
     ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
-    check(len(ids) == 19, f"the archive holds the 19 pieces (16 + 3 songs of a nemesis's fall, N7) ({len(ids)})")
+    check(len(ids) == 22, f"the archive holds the 22 pieces (16 + 3 songs of a nemesis's fall, N7, + 3 laments, N8) ({len(ids)})")
     facts = lua.eval("""function(id)
         local out = {}
         for k in pairs(AzerothUnspoken.Validator.LiteraryFacts(AzerothUnspoken.Engine.byId[id])) do table.insert(out, k) end

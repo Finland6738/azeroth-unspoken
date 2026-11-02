@@ -489,7 +489,7 @@ end)
 
 T.run("saved data: version 6, towns and NPC fields cleaned, reset", function()
 	Fresh()
-	T.eq(R.VERSION, 7, "relationships.version 7 (N5 made it 5, N6 6, N1 7)")
+	T.eq(R.VERSION, 8, "relationships.version 8 (N5 made it 5, N6 6, N1 7, N8 8)")
 	local d = NS.cdb.relationships
 	d.npcs[7001] = { first = 1, last = 2, count = 1, town = "Goldshire\1", heard = { trust = 99, familiarity = 5, bogus = 1, loyalty = 0 },
 		rival = { npc = 295, t = time() + 999 } }

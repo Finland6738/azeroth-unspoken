@@ -462,4 +462,45 @@ NS.Relationships:RegisterData({
 		holderAge = 10, linger = 3, meetGap = 1800,
 		song = "nemesis_song",
 	},
+
+	-- N8 (#220, #125): the companion pet, grief and letters (Systems/Companion.lua, ADR 0046). Detection follows ADR 0035
+	-- and the API dump (UNIT_PET, C_PetInfo.GetPetHappiness, UnitIsDead, UNIT_DIED, the group's units), NOT confirmed in game.
+	--   pet      the hunter's or warlock's pet. `stages`: the bond grows with the hours the pet is out with the character
+	--            (`hours`, read every time the pet comes or goes and at the end of a fight); reaching one says a line
+	--            (event pet_bond) and, from `memorable` on, leaves a journal line. `callGap`/`moodGap`: seconds between
+	--            two lines of a call or dismissal / a change of mood for the same pet; `settle`: seconds after entering
+	--            the world in which a pet appearing is not a call; `max`: pets kept (the one seen longest ago goes);
+	--            `moods`: C_PetInfo.GetPetHappiness's first value in words (warlock demons have none)
+	--   grief    an NPC at `band` or above found dead (targeted, or dying while targeted), never one the character
+	--            attacked: one line and one journal page, then not again for `againDays` days for that NPC;
+	--            `perSession` griefs for NPCs in a session. The pet's death is mourned once per death
+	--   ally     a group member who dies (UNIT_DIED with their GUID, then UnitIsDeadOrGhost, never a feigned death or a
+	--            secret identity) where the character stands in a place of `places`: one lament per loss, `gap` seconds
+	--            between two laments, `allyGap` for the same companion, `perSession` in a session
+	--   lament   the event of the laments (the verses pack): a lament goes into the songbook with a grief, when one fits
+	--   letters  at login, an NPC at `band` or above not met for `absenceDays` days writes a letter, kept in the journal
+	--            (never game mail, never chat): `perLogin` letters, `gapDays` days between two, `npcDays` days before
+	--            the same NPC writes again; the texts are rel_letter_<role>_N of Data/<lang>/RelationsUI.lua (`roles`,
+	--            else `any`, `variants` each)
+	-- Narration only: nothing changes how a pet or an NPC behaves in the game, and nothing goes to chat.
+	companion = {
+		pet = {
+			stages = {
+				{ id = "new", hours = 0 },
+				{ id = "familiar", hours = 2 },
+				{ id = "trusted", hours = 12 },
+				{ id = "bonded", hours = 40 },
+			},
+			memorable = { trusted = true, bonded = true },
+			callGap = 1200, moodGap = 900, settle = 20, max = 20,
+			moods = { "unhappy", "content", "happy" },
+		},
+		grief = { band = "friend", againDays = 30, perSession = 3 },
+		ally = { places = { none = true, party = true, raid = true }, gap = 300, allyGap = 900, perSession = 6 },
+		lament = "lament",
+		letters = {
+			band = "close", absenceDays = 21, perLogin = 1, gapDays = 7, npcDays = 60, variants = 3,
+			roles = { innkeeper = true, merchant = true, trainer = true },
+		},
+	},
 })

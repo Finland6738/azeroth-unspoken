@@ -54,6 +54,7 @@ Systems\NPCAlive.lua
 Systems\StoryArcs.lua
 Systems\Songbook.lua
 Systems\Nemesis.lua
+Systems\Companion.lua
 
 # --- interfaccia ---
 UI\Widgets.lua

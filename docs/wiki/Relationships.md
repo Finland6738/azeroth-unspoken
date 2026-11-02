@@ -163,6 +163,30 @@ Some foes are not forgotten. When an **elite or rare** NPC kills your character 
 
 Nothing changes in the game: the nemesis fights as it always did. Who killed you is read **without a combat log**, from who was attacking you in the last seconds (when only one was, or when it was your target): this reading is **not yet confirmed in the real client**, and when the game does not say, no nemesis is made. Everything is private, never in chat. Don't want nemeses? `/au stories disable nemesis` (and `enable` to bring them back), or skip a single one in the Stories tab. A character who avoids the topic of death has none.
 
+### Your companion pet
+
+A hunter's beast or a warlock's demon is more than a spell: the addon keeps a **bond** with each pet you have, by its name.
+
+- The bond **grows with the hours the pet spends out with you**: *a new companion*, then *a familiar presence* (about 2 hours), *a trusted companion* (about 12) and *a bond beyond words* (about 40). Each step brings a line of your inner voice; the last two are written in the [[journal|Memory-and-Journal]].
+- **Calling** it and **dismissing** it bring a short thought now and then (at most once in twenty minutes for each pet; never when the pet is simply there as you log in, or on a flight path).
+- A hunter's pet has a **mood** (happy, content, unhappy): when it changes, your character may notice. A demon has none.
+
+Nothing changes in the game: the pet behaves as always. Turn the lines off with **Companion pet** (the bond is still counted). The pet is read from the game's ordinary signals (its arrival and departure, its name and its happiness): this reading is **not yet confirmed in the real client**.
+
+### Grief
+
+The narrator **mourns once** for each loss, with a line of your inner voice, a page in the [[journal|Memory-and-Journal]] and, with the verses pack installed, a **lament** in your [[songbook|Literary-Forms]] (a private notice gives its title). A grief that comes in a fight waits for the fight to end.
+
+- **Your pet dies.** Once for each death; a pet you bring back can be mourned again another time. A pet that was already dead when you logged in is not mourned.
+- **An NPC you were close to** (Friend or above, never one you attacked) is found dead: you target them while they lie dead, or they die while you are looking at them. Not again for a month for the same NPC, at most three a session. The journal page is kept for good.
+- **A group member dies** beside you (in a party or a raid, in the open world, a dungeon or a raid; not in a battleground or an arena): one lament for each loss, at most one every five minutes (a wipe is one lament), not again for the same person for a quarter of an hour. The line may say their name, and if they are in your list it follows how you stand with them; the journal page only says *a companion of the road* and keeps **no name**. A hidden identity, a feigned death or a death the game does not confirm is never mourned.
+
+These deaths are read **without a combat log**, from the game's death signal and the group's list: this reading is **not yet confirmed in the real client** (nor tried with two players in a group). A character who avoids the topic of death hears none of these lines.
+
+### Letters
+
+When you log in after a long time away from someone you are **close to** (Close friend or above, not met for three weeks or more, never someone you attacked), they may **write you a letter**: it waits in the [[journal|Memory-and-Journal]], with a private notice. An innkeeper, a merchant or a trainer writes as one; anyone else as a friend. At most one letter a login and one a week, and the same person writes again only after two months. Letters are **never** game mail and never go to chat. Turn them off with **Letters**.
+
 ### What NPCs and your character say about all this
 
 The moments above have their own lines, in English and in Italian, and they change with **who the NPC is** (a guard, an innkeeper, a merchant, a trainer, someone who gives quests) and **how you stand** with them:
@@ -364,6 +388,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
 - A nemesis keeps only its NPC number, its name, the state of its story and the times, with the other stories; nothing of a fight is saved.
+- A pet keeps its name, its family, the hours together, its bond and how many times it died; an NPC keeps when you last mourned them and when they last wrote. A letter in the journal keeps only the writer's number and which letter it is. Nothing of a group member is saved: the journal page of their loss has no name.
 
 See [[Privacy and Data|Privacy-and-Data]].
 
@@ -386,6 +411,8 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Town notices | on | Options tab |
 | Eternal grudge | on | Options tab |
 | Hostility notices | on | Options tab |
+| Companion pet | on | Options tab |
+| Letters | on | Options tab |
 
 ## What you will see
 
@@ -398,6 +425,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 - Now and then a small favor asked by a friend, done by itself when you do it; and from a close friend, once, a nickname they use from then on.
 - Newcomers in a town who have heard of you, an honorary title in a town that esteems you, and a rival who notices.
 - After a fight you started: a grudge, a betrayal seen, guest-right broken; and a welcome when you come home after a long journey.
+- A thought when you call or dismiss your pet, when its mood changes and when your bond grows; grief when it falls, when an NPC you were close to lies dead, or when a companion of the road dies beside you; and now and then a letter from an old friend at login.
 
 ## Tips
 

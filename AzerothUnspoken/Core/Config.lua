@@ -106,6 +106,8 @@ Config.CHAT_LIMITS = {
 ---@field localNotices boolean the private narrator tells the word of you in a town, a title earned there, a rival who noticed (on, #218)
 ---@field eternalGrudge boolean a named NPC the character attacked stays Hated for ever; off, redemption is very rare and slow (on, #213)
 ---@field hostilityNotices boolean the private narrator tells an attack remembered, a betrayal seen, guest-right broken, the return home (on, #213)
+---@field companion boolean the companion pet's lines (bond, mood, call, dismissal) and the grief for it (on, #220)
+---@field letters boolean an NPC you are close to and have not met for weeks writes a letter to the journal (on, #220)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -196,6 +198,9 @@ Config.defaults = {
 		-- #213: hostility. The eternal grudge (owner decision: on) and the private notices of attacks and of coming home
 		eternalGrudge = true,
 		hostilityNotices = true,
+		-- #220: the companion pet (its bond, mood, call, dismissal and death) and the letters of NPCs you are close to
+		companion = true,
+		letters = true,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -253,7 +258,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 7, npcs = {}, players = {} },
+	relationships = { version = 8, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	-- Songbook (#122, ADR 0044): the literary pieces heard and the user's marks, ids and times only (never a text);

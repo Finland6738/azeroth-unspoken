@@ -421,6 +421,7 @@ local OPTIONS = {
 	{ "favours", "rel_opt_favours" }, { "nicknames", "rel_opt_nicknames" },
 	{ "localNotices", "rel_opt_local" },
 	{ "eternalGrudge", "rel_opt_grudge" }, { "hostilityNotices", "rel_opt_hostility" },
+	{ "companion", "rel_opt_companion" }, { "letters", "rel_opt_letters" },
 }
 
 -- the options have a view of their own (#172): two columns of buttons, then the privacy note and, while the shared list

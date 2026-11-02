@@ -131,6 +131,7 @@ function Diagnostics:Report(verbose)
 		if NS.NPCAlive then Add("NPC Alive: " .. NS.NPCAlive:Status()) end
 		if NS.StoryArcs then Add("Story Arcs: " .. NS.StoryArcs:Status()) end
 		if NS.Nemesis then Add("Nemesis: " .. NS.Nemesis:Status()) end
+		if NS.Companion then Add("Companion: " .. NS.Companion:Status()) end
 		if NS.World then Add("World: " .. NS.World:Status()) end
 		for _, issue in ipairs(NS.Config.issues or {}) do Add("  config: " .. issue) end
 	else
