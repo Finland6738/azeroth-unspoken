@@ -201,6 +201,18 @@ If Total RP 3 is missing, or changes in a way the addon does not understand, the
 - In chat, after a command, a short confirmation such as *"Stoicism: 75 (high). Takes effect now."*
 - In play: lines that sound more like your character over time. The effect is gentle by design.
 
+![Illustrative mockup: the Character soul window](../design/mockups/png/profile.png)
+
+*Illustrative mockup, not an in-game screenshot: traits from 0 to 100, the inner voice, the culture of origin and the topics to avoid.*
+
+![Illustrative mockup: Neutral profile waiting for a second click](../design/mockups/png/profile-reset-armed.png)
+
+*Illustrative mockup, not an in-game screenshot: Neutral profile clears every choice, after a second click.*
+
+![Illustrative mockup: the consent to read other players' Total RP 3](../design/mockups/png/consent-trp3-others.png)
+
+*Illustrative mockup, not an in-game screenshot: reading other players' Total RP 3 profiles is a consent of its own.*
+
 ## Tips
 
 - Start with an archetype, then adjust one or two sliders. Leave the traits you have no idea about unset: unknown is better than a guess.

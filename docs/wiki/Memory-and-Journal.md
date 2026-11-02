@@ -132,6 +132,22 @@ The journal window can still be opened from the settings panel. Its memory tabs 
 - Now and then, a line that recalls a real memory, in the narrator box.
 - After a command, a short confirmation in your chat window, such as *"memory #12 is now permanent."*
 
+![Illustrative mockup: the journal, Memories tab](../design/mockups/png/journal-memories.png)
+
+*Illustrative mockup, not an in-game screenshot: the Memories tab, with a letter, a bond that grew, a companion and a grief.*
+
+![Illustrative mockup: a letter in the journal](../design/mockups/png/journal-letter.png)
+
+*Illustrative mockup, not an in-game screenshot: a letter from an NPC you are close to; a row too long for the window shows its whole text when you point at it.*
+
+![Illustrative mockup: deleting a memory asks for a second click](../design/mockups/png/journal-delete-armed.png)
+
+*Illustrative mockup, not an in-game screenshot: Delete asks for a second click: the row says what will happen and the button turns into OK.*
+
+![Illustrative mockup: the export window of the journal](../design/mockups/png/journal-export.png)
+
+*Illustrative mockup, not an in-game screenshot: Export opens the journal as text, selected and ready to copy.*
+
 ## Tips
 
 - Pin the memories that define your character, so they stay forever.

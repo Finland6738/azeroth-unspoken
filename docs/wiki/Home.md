@@ -8,6 +8,11 @@ Azeroth Unspoken is a quiet narrator that walks beside your character. It notice
 
 > **Before you start.** Azeroth Unspoken is young (version 0.1.0). So far it has only been tested outside the game, against a simulated client, and not yet in the real WoW Forever client. Most things should just work, but some details may look or behave a little differently in game. If you find something odd, please [[tell us|Reporting-Bugs-and-Feedback]].
 
+![Illustrative mockup: an animated tour of the windows of Azeroth Unspoken](../design/mockups/interface-tour.gif)
+
+*Illustrative mockup built from the addon code, not an in-game screenshot. Every window, one by one, in the
+[[Interface Tour|Interface-Tour]].*
+
 ## What it does
 
 - **A private narrator.** Lines appear in a small box on your screen that only you can see. You decide how often it speaks and in what style.
@@ -42,6 +47,7 @@ Azeroth Unspoken is a quiet narrator that walks beside your character. It notice
 |---|---|
 | install or update the addon | [[Installation and Updating|Installation-and-Updating]] |
 | understand the setup wizard | [[First-Run Wizard|First-Run-Wizard]] |
+| see what every window looks like | [[Interface Tour|Interface-Tour]] |
 | look up a command | [[Commands Reference|Commands]] |
 | look up a setting and its default | [[Settings Reference|Settings]] |
 | change how often and how the narrator speaks | [[Intensity and Prose Depth|Intensity-and-Depth]] |

@@ -13,6 +13,14 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 - Commands do not send anything to chat by themselves. A command that produces a line shows it in the narrator box, or as a proposal if you turned chat proposals on (see [[Chat Gateway]]).
 - In the tables, `<this>` is a value you fill in, `[this]` is optional, and `a\|b` means "a or b". In the game, `/au help` writes `a / b` (or `a/b` inside an option): a bare `|` is the client's escape character, so the addon never prints one.
 
+![Illustrative mockup: /au help in a chat window](../design/mockups/png/chat-help-window.png)
+
+*Illustrative mockup, not an in-game screenshot: /au help lists the five groups of commands.*
+
+![Illustrative mockup: /au help all in the chat frame](../design/mockups/png/chat-help.png)
+
+*Illustrative mockup, not an in-game screenshot: /au help all prints every command, group by group.*
+
 ## Quick list
 
 | Command | Does |

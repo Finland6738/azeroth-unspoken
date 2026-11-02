@@ -157,6 +157,10 @@ The report does **not** print other players' names: where a name could appear, i
 
 To copy text from the chat window, you can use an addon that copies chat, or take a screenshot (check it for names too).
 
+![Illustrative mockup: /au debug in the chat frame](../design/mockups/png/chat-debug.png)
+
+*Illustrative mockup, not an in-game screenshot: the report of /au debug; the values shown are those of a test environment, not of a real client.*
+
 ## Still stuck?
 
 Ask in the [Feedback discussions](https://github.com/Finland6738/azeroth-unspoken/discussions/categories/feedback) or open a bug report. See [[Reporting Bugs and Feedback|Reporting-Bugs-and-Feedback]].

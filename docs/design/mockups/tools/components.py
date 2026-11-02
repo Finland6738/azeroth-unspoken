@@ -65,9 +65,30 @@ def _flat(text, kind, hover=False):
 # instead of a fade (`remaining`, None = not drawn). A waiting proposal shows its countdown (`left_s`, None = until
 # dismissed) and the lines held back while it waits (#176, #177); its channel is on the chip of the bar.
 # ---------------------------------------------------------------------------------------------------------------
+MAX_LINES = 12   # #126: the text box grows up to this many lines of the narrator font, then the text scrolls
+
+
+def _text_block(text, font, reveal=None, scroll=None):
+    """The text of the box. One line: plain wrapped text. A text with line breaks (#117, #126): one block per verse,
+    the box as tall as the whole text from the start, at most MAX_LINES lines; `reveal` = the verses on screen so far
+    (the others keep their room, unseen); `scroll` = "end" (the box follows the last line) or a number of lines."""
+    if "\n" not in text and reveal is None:
+        return wow(text)
+    lh = -(-font * 5 // 4)
+    verses = text.split("\n")
+    shown = len(verses) if reveal is None else reveal
+    out = "".join(f'<div style="flex-shrink:0;min-height:{lh}px{";visibility:hidden" if i >= shown else ""}">'
+                  f'{wow(v) if v else "&nbsp;"}</div>' for i, v in enumerate(verses))
+    just = "flex-end" if scroll == "end" else "flex-start"
+    shift = f'margin-top:-{scroll * lh}px;' if isinstance(scroll, int) else ""
+    return (f'<div style="max-height:{MAX_LINES * lh}px;overflow:hidden;display:flex;flex-direction:column;'
+            f'justify-content:{just}"><div style="{shift}display:flex;flex-direction:column">{out}</div></div>')
+
+
 def narrator(left, bottom, speaker, text, lang="en", proposal=None, sent=None, editor=None, editor_sel=False,
              paused=False, alpha=0.8, font=14, remaining=0.7, history=None, hover_btn=None, history_alpha=0.8,
-             left_s=25, held=0, key=None):
+             left_s=25, held=0, key=None, reveal=None, scroll=None):
+    """reveal / scroll: a long private reading (#126), see _text_block."""
     t = NARRATOR_TEXT[lang]
     accent = VOICE_COLOR[speaker]
     tint = VOICE_TINT[speaker] if max(0.55, alpha) >= 0.6 else "ffffff"
@@ -94,7 +115,8 @@ def narrator(left, bottom, speaker, text, lang="en", proposal=None, sent=None, e
     face = "font-family:var(--chat-font);" if speaker == "inner" else ""
     size = font + 1 if speaker == "inner" else font
     body = (f'<div style="position:relative;padding:{head + 2}px 12px {pad}px 12px;font-size:{size}px;line-height:1.25;'
-            f'{face}color:#{tint};text-shadow:1px 1px 0 #000;white-space:pre-wrap">{wow(text)}</div>')
+            f'{face}color:#{tint};text-shadow:1px 1px 0 #000;white-space:pre-wrap">'
+            f'{_text_block(text, font, reveal, scroll)}</div>')
     extra = f'<div class="abs" style="left:0;top:0;bottom:0;width:3px;background:#{accent}"></div>'
     if editor is not None:
         extra += edit(editor, 411, 22, focus=True, selected=editor_sel, caret=not editor_sel, left=17, bottom=40)
@@ -136,8 +158,12 @@ def narrator(left, bottom, speaker, text, lang="en", proposal=None, sent=None, e
 
 
 def history_line(time, speaker, text, lang="en", sent=None):
+    """#117: a text with line breaks keeps them, one history line per verse, the later ones indented by four spaces."""
     tag = f" |cff{MUTED}({NARRATOR_TEXT[lang]['sent_to'] % CHANNEL.get(sent, sent)})|r" if sent else ""
-    return f"|cff{MUTED}{time}|r |cff{VOICE_COLOR[speaker]}{VOICE[lang][speaker]}|r |cff{VOICE_TINT[speaker]}{text}|r{tag}"
+    tint = VOICE_TINT[speaker]
+    first, *rest = text.split("\n")
+    out = f"|cff{MUTED}{time}|r |cff{VOICE_COLOR[speaker]}{VOICE[lang][speaker]}|r |cff{tint}{first}|r{tag}"
+    return out + "".join(f"\n|cff{tint}    {line or ' '}|r" for line in rest)
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -153,7 +179,7 @@ def ui(lang, key, *args):
     if lang not in _STR:
         table = {}
         folder = {"en": "enUS", "it": "itIT"}[lang]
-        for name in ("Interface.lua", "RelationsUI.lua"):
+        for name in ("Interface.lua", "RelationsUI.lua", "ArcsUI.lua", "ContextUI.lua"):
             text = open(os.path.join(_REPO, "AzerothUnspoken", "Data", folder, name), encoding="utf-8").read()
             for k, v in _PAIR.findall(text):
                 table[k] = v.replace("\\n", "\n").replace('\\"', '"').replace("\\\\", "\\")
@@ -344,7 +370,8 @@ SET_MODULES = [("personal", True), ("world", True), ("npc", True), ("memory", Tr
 SET_LIVE = {"personal", "world", "npc", "memory", "storyArcs", "relations", "emotion", "publicChat"}   # Config.MODULE_LIVE
 
 
-def settings(left, top, reload_needed=False, auto_state="off", others_state="off", rpname=True, view=None, scroll=0):
+def settings(left, top, reload_needed=False, auto_state="off", others_state="off", rpname=True, view=None, scroll=0,
+             literary="rare"):
     """rpname: "Name from Total RP 3" on. view None: the whole scrolling content, unrolled under the title. view = a height: the panel that tall, its
     content scrolled down by `scroll` units, with the scroll bar of the template."""
     L = lambda key, *a: ui("en", key, *a)  # noqa: E731
@@ -396,6 +423,7 @@ def settings(left, top, reload_needed=False, auto_state="off", others_state="off
     nxt()
     stepper("opt_intensity", "50")
     toggle("opt_depth", L("depth_literary")); nxt()
+    toggle("opt_literary", L("literary_" + literary)); nxt()   # #118
     toggle("opt_cooldown", "45 s"); nxt()
     stepper("opt_scale", "100%")
     actions(["opt_journal", "opt_relations", "opt_soul", "opt_wizard"])
@@ -467,7 +495,7 @@ def settings(left, top, reload_needed=False, auto_state="off", others_state="off
 # the pages (444 from the top)
 # ---------------------------------------------------------------------------------------------------------------
 JOURNAL_TABS = [("memories", "Memories"), ("places", "Places"), ("flags", "Flags"), ("session", "Session"),
-                ("stories", "Stories"), ("relations", "Relationships"), ("people", "People met")]
+                ("stories", "Stories"), ("songbook", "Songbook"), ("relations", "Relationships"), ("people", "People met")]
 JOURNAL_MEMORY_TABS = {"memories", "places", "flags", "session"}
 # #183: the words of the row actions (the sample rows name them with the old symbols)
 JOURNAL_WORDS = {"P": "Keep", ("memories", "x"): "Delete", ("places", "x"): "Forget", ("flags", "x"): "Clear",
@@ -510,7 +538,7 @@ def journal(left, top, tab, rows, note="", page=(1, 1), stats="memory: 14 memori
     out = [fs(L("mem_intro"), "gfh jintro", left=16, top=TOP, width=568)]
     for tid, label in JOURNAL_TABS:
         out.append(flat(label, 48, 24, selected=tid == tab, cls="jtab", left=16, top=TOP))
-    tab_lock = lock if tab in JOURNAL_MEMORY_TABS else None
+    tab_lock = lock if tab in JOURNAL_MEMORY_TABS | {"songbook"} else None
     note_text = (f"|cffff9040{JOURNAL_LOCK[tab_lock]}|r" + (f"\n{note}" if note else "")) if tab_lock else note
     if note_text:
         out.append(fs(note_text, "gfhs jnote", left=16, top=112, width=568))
@@ -524,7 +552,9 @@ def journal(left, top, tab, rows, note="", page=(1, 1), stats="memory: 14 memori
         buttons = []
         for k in reversed(range(len(actions[:2]))):
             a = actions[k]
-            danger = a == "x" and tab in JOURNAL_CONFIRM_TABS
+            # "!Word": an action with a confirmation (the songbook's Forget), in the danger style
+            danger = (a == "x" and tab in JOURNAL_CONFIRM_TABS) or a.startswith("!")
+            a = a.lstrip("!")
             on = armed_row and danger
             word = L("mem_confirm_btn") if on else JOURNAL_WORDS.get((tab, a), JOURNAL_WORDS.get(a, a))
             bw = max(24, round(len(word) * 6.3) + 16)
@@ -569,9 +599,13 @@ def export_window(left, top, title, text):
 # Relationships (UI/RelationsFrame.lua): 720 x 660 in every view, the W.Window shell; the introduction (12 units) at
 # -46, the tabs at -84 (U1: #171, #172, #179, #180; #187)
 # ---------------------------------------------------------------------------------------------------------------
-REL_OPTIONS = [("Automatic NPCs", "on"), ("Suggest people", "on"), ("Register by itself", "off"),
-               ("Attraction axis", "off"), ("Recognise on target", "off"), ("Recognise nearby", "off"),
-               ("Share with the account", "off")]
+# RelationsFrame.lua OPTIONS, in its order, with the Config.defaults state of each (the names from RelationsUI.lua)
+REL_OPTION_KEYS = [("rel_opt_npc", "on"), ("rel_opt_propose", "on"), ("rel_opt_auto", "off"),
+                   ("rel_opt_attraction", "off"), ("rel_opt_target", "off"), ("rel_opt_proximity", "off"),
+                   ("rel_opt_share", "off"), ("rel_opt_levels", "on"), ("rel_opt_promises", "on"),
+                   ("rel_opt_favours", "on"), ("rel_opt_nicknames", "on"), ("rel_opt_local", "on"),
+                   ("rel_opt_grudge", "on"), ("rel_opt_hostility", "on"), ("rel_opt_companion", "on"),
+                   ("rel_opt_letters", "on"), ("rel_opt_guid", "on")]
 REL_W, REL_H, REL_INNER = 720, 660, 688
 
 
@@ -587,6 +621,7 @@ def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=F
     R = lambda key, *a: ui("en", key, *a)  # noqa: E731
     out = [fs(R("rel_intro"), "gfh", left=16, top=TOP, width=REL_INNER)]
     x = 16
+    rel_options = options or [(R(k), st) for k, st in REL_OPTION_KEYS]
     # the chosen tab: a full gold edge and a bar under its label (#187), not a colour only
     for text, on in ((R("rel_tab"), view in ("list", "detail")), (f"{R('rel_tab_people')} ({candidates})", view == "people"),
                      (R("rel_tab_options"), view == "options")):
@@ -621,7 +656,9 @@ def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=F
                 fs(R("rel_people_note"), "gfhs", left=16, top=146, width=REL_INNER)]
         for i, (name, src) in enumerate(cands or []):
             y = 178 + i * row_h
-            out.append(fs(f"{name}  |cff9d9d9d{src}|r", "gfh", left=20, top=y + 6, width=600, mode="trunc"))
+            # src None: a question about a listed person's identity (#112), the whole sentence in the row
+            text = name if src is None else f"{name}  |cff9d9d9d{src}|r"
+            out.append(fs(text, "gfh", left=20, top=y + 6, width=600, mode="trunc"))
             out.append(flat("+", 28, 22, left=644, top=y))
             out.append(flat("x", 28, 22, left=676, top=y))
         if not cands:
@@ -629,7 +666,7 @@ def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=F
     elif view == "options":
         col_w = (REL_INNER - 16) // 2
         armed = armed or ("share" if share_armed else None)
-        for i, (name, state) in enumerate(options or REL_OPTIONS):
+        for i, (name, state) in enumerate(rel_options):
             # #178: a question that is open is written in words on its button: "off, read first" for the first
             # couple of seconds, "off, confirm" after
             if (armed == "share" and name.startswith("Share")) or (armed == "proximity" and name.startswith("Recognise nearby")):
@@ -639,7 +676,8 @@ def relations(left, top, view, rows=None, cands=None, detail=None, share_armed=F
         # top-down, each under the one above, in the 12-unit font (#182): the hint, the privacy note (10 under it),
         # then (while it waits for the second click) the warning of the consent (12 under it)
         out.append(stack([(R("rel_options_hint"), "gfh", 0), (R("rel_privacy"), "gfh", 10),
-                          (R("consent_%s_text" % armed) if armed else "", "gfh", 12)], left=16, top=244, width=REL_INNER))
+                          (R("consent_%s_text" % armed) if armed else "", "gfh", 12)], left=16,
+                         top=116 + -(-len(rel_options) // 2) * 30 + 8, width=REL_INNER))
     elif view == "detail":
         out += detail_widgets(detail)
     if view in ("list", "people"):
@@ -703,6 +741,12 @@ def detail_widgets(d):
     back = R("rel_back")
     x = 16 + fit(back, 120, 180) + 8
     out.append(flat(back, fit(back, 120, 180), 24, left=16, bottom=16))
+    if not is_player and d.get("knows"):
+        # N2 (#214): the level, the temperament and the first meeting; N3-N8 add the vow, the word given, the favours and
+        # the nickname, the town and its title, the grudge (RelationsFrame RefreshDetail)
+        out += [fs(R("rel_section_npc"), "gfn", left=16, top=490, width=REL_INNER),
+                fs(d["knows"][0], "gfhs", left=16, top=510, width=340),
+                fs(d["knows"][1], "gfhs", left=372, top=510, width=332)]
     if is_player:
         out += [fs("What the addon observed", "gfn", left=16, top=490, width=REL_INNER),
                 fs(d["seen_line"], "gfhs", left=16, top=510, width=340),
@@ -726,7 +770,7 @@ PROFILE_TOP = 118
 
 
 def profile(left, top, rows, avoided, trp3=True, archetype="Hopeful traveler",
-            arch_help="Cheerful and curious, finds hope at every turn of the road.", reset_armed=False):
+            arch_help="Cheerful and curious, finds hope at every turn of the road.", reset_armed=False, culture="human"):
     """reset_armed: "Neutral profile" after its first click, waiting for the second (#190)."""
     L = lambda key, *a: ui("en", key, *a)  # noqa: E731
     out = [fs(L("soul_intro"), "gfh", left=16, top=TOP, width=668),
@@ -745,6 +789,13 @@ def profile(left, top, rows, avoided, trp3=True, archetype="Hopeful traveler",
             out.append(flat("x", 24, 24, left=556, top=y))
         out.append(fs(source, "gfhs", left=586, top=y + 6, width=98))
         y += 26
+    # #124: the culture of origin, chosen by hand (a button through the cultures, its "x", what it changes)
+    out.append(fs(L("soul_culture"), "gfn", left=16, top=y + 5, width=170, mode="trunc"))
+    out.append(flat(L("culture_" + culture) if culture else L("soul_none"), 170, 24, left=190, top=y))
+    if culture:
+        out.append(flat("x", 24, 24, left=556, top=y))
+    out.append(fs(L("soul_src_explicit" if culture else "soul_culture_unset"), "gfhs", left=586, top=y + 6, width=98))
+    y += 26
     out.append(fs(L("soul_avoid_title"), "gfn", left=16, top=y + 6))
     topics = ["death", "blood", "betrayal", "family", "religion", "the undead", "demons", "romance"]
     # an avoided topic: a full edge and a bar under its name (#187), not a colour only

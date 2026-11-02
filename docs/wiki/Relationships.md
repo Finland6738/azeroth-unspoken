@@ -451,6 +451,38 @@ See [[Privacy and Data|Privacy-and-Data]].
 - After a fight you started: a grudge, a betrayal seen, guest-right broken; and a welcome when you come home after a long journey.
 - A thought when you call or dismiss your pet, when its mood changes and when your bond grows; grief when it falls, when an NPC you were close to lies dead, or when a companion of the road dies beside you; and now and then a letter from an old friend at login.
 
+![Illustrative mockup: the Relationships window, list](../design/mockups/png/relations-list.png)
+
+*Illustrative mockup, not an in-game screenshot: the list of NPCs and players, from close friends to a Hated foe.*
+
+![Illustrative mockup: the detail of an NPC](../design/mockups/png/relations-detail-npc.png)
+
+*Illustrative mockup, not an in-game screenshot: an NPC's detail with what the addon knows: level, temperament, first meeting, nickname, a favor, the town and your title there.*
+
+![Illustrative mockup: the detail of a hated NPC](../design/mockups/png/relations-detail-foe.png)
+
+*Illustrative mockup, not an in-game screenshot: a Hated NPC: a grudge for ever, the mark of a broken oath, a title the town withholds.*
+
+![Illustrative mockup: the detail of a player](../design/mockups/png/relations-detail-player.png)
+
+*Illustrative mockup, not an in-game screenshot: a player's detail: what you chose on the left and above, what the addon observed below.*
+
+![Illustrative mockup: the People met tab](../design/mockups/png/relations-people.png)
+
+*Illustrative mockup, not an in-game screenshot: People met: two questions about a person's identity, then three suggestions.*
+
+![Illustrative mockup: the options of relationships](../design/mockups/png/relations-options.png)
+
+*Illustrative mockup, not an in-game screenshot: the options, each on or off with a click.*
+
+![Illustrative mockup: the confirmation for sharing the list](../design/mockups/png/consent-shared-list.png)
+
+*Illustrative mockup, not an in-game screenshot: sharing the list with the account asks a second time, with the whole warning.*
+
+![Illustrative mockup: three private notices](../design/mockups/png/narrator-notices.png)
+
+*Illustrative mockup, not an in-game screenshot: a bond reaching a new level, a letter waiting in the journal, a song in the songbook; in game they come one at a time.*
+
 ## Tips
 
 - The list holds up to 1,000 NPCs and 300 players per character (and 300 in the account's shared list). If a saved list is longer than that, the addon cuts it when you log in: people you chose something about are never removed, the others go first, the least observed first, and `/au debug` says it happened.

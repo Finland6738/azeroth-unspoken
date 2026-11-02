@@ -18,6 +18,14 @@ For now these pieces come from an optional pack, **Azeroth Unspoken - Verses** (
 - **Your prose depth counts.** At the *natural* depth the road songs come out as one short sentence, and the other pieces are rarer. See [[Intensity and Prose Depth|Intensity-and-Depth]].
 - **Your topics count.** The hymn touches religion and the lament touches death: if you chose to avoid those topics in your character's profile, they do not appear. See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]].
 
+![Illustrative mockup: a long private reading appearing line by line](../design/mockups/png/narrator-reading.png)
+
+*Illustrative mockup, not an in-game screenshot: a verse appears one line at a time; the box is as tall as the whole text from the start.*
+
+![Illustrative mockup: a reading longer than twelve lines](../design/mockups/png/narrator-reading-scroll.png)
+
+*Illustrative mockup, not an in-game screenshot: past twelve lines the text scrolls with the mouse wheel, and the box follows the line just revealed.*
+
 ## Trying them
 
 You do not need to wait for the right place. Type:
@@ -53,6 +61,14 @@ When a [[nemesis|Relationships]] falls by your hand, a **song of its fall** is a
 With a **grief** (your pet falls, an NPC you were close to is found dead, a companion of the road dies beside you: see [[Relationships]]) a **lament** for that loss is added the same way, with a private notice. Never in chat, never during a fight.
 
 The songbook keeps at most about 300 pieces (well under 10 KB); when it is full the oldest pieces you only heard make room. `/au songbook list` prints it, `/au songbook reset` empties it. With the memory turned off nothing is noted.
+
+![Illustrative mockup: the journal, Songbook tab](../design/mockups/png/journal-songbook.png)
+
+*Illustrative mockup, not an in-game screenshot: the Songbook: the pieces your character heard, a favourite first, with their marks.*
+
+![Illustrative mockup: a piece of the songbook](../design/mockups/png/journal-songbook-piece.png)
+
+*Illustrative mockup, not an in-game screenshot: a piece open in the Songbook, with its marks: learned by heart, favourite, muted.*
 
 ## A verse that comes back
 

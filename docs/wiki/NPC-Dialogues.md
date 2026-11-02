@@ -94,3 +94,15 @@ Nothing else changes, in the game or in the addon. If the Memory or Relationship
 - The small **Listen (ambient dialogue)** button next to the NPC's window.
 - A separate dialogue window with the NPC's name, the label **addon ambient dialogue**, the NPC's line and your answers.
 - Nothing in chat.
+
+![Illustrative mockup: the NPC dialogue offered](../design/mockups/png/dialogue-offered.png)
+
+*Illustrative mockup, not an in-game screenshot: the dialogue offered when you talk to an innkeeper.*
+
+![Illustrative mockup: an NPC dialogue with its answers](../design/mockups/png/dialogue-line.png)
+
+*Illustrative mockup, not an in-game screenshot: a line and its answers, chosen with a click or the keys 1 to 3.*
+
+![Illustrative mockup: the last line of an NPC dialogue](../design/mockups/png/dialogue-last.png)
+
+*Illustrative mockup, not an in-game screenshot: the last line of the dialogue, with Close.*

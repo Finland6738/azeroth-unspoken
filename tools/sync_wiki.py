@@ -3,8 +3,10 @@
 docs/wiki/*.md is the only source of the wiki (ADR 0013). This script:
   1. clones the wiki repository into a temporary folder (or uses --wiki-dir, an existing clone);
   2. copies every docs/wiki/*.md page, with a "generated, do not edit here" note at the top;
-  3. removes the wiki pages that are no longer in docs/wiki;
-  4. commits with the noreply identity configured in this repository and pushes.
+  3. copies every image a page shows (a relative link such as ../design/mockups/png/<name>.png, which also displays in
+     the repository) into the wiki's images/ folder, and points the link of the published page there;
+  4. removes the wiki pages, and the images, that are no longer used;
+  5. commits with the noreply identity configured in this repository and pushes.
 
 GitHub creates the wiki repository only after the first page is saved from the browser: until then the clone
 fails with "Repository not found" and the script exits with code 2 (or 0 with --warn-if-missing).
@@ -23,6 +25,7 @@ Usage, from the repository root (or a worktree):
 import base64
 import glob
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -38,6 +41,9 @@ NOTE = ("<!-- Generated from docs/wiki in the azeroth-unspoken repository by too
         "Do not edit this page here: changes are overwritten. Edit docs/wiki and open a pull request. -->\n\n")
 # estensioni che GitHub mostra come pagine del wiki: quelle che non sono più in docs/wiki si tolgono
 PAGE_EXTENSIONS = (".md", ".markdown", ".mediawiki", ".textile", ".rdoc", ".org", ".creole", ".asciidoc", ".rst", ".pod")
+# the images of the pages: a relative Markdown image link, published in the wiki's images/ folder
+IMAGE_LINK = re.compile(r"(!\[[^\]]*\]\()([^)\s]+\.(?:png|gif|jpe?g|svg|webp))(\))", re.IGNORECASE)
+IMAGE_DIR = "images"
 
 
 def repository():
@@ -87,15 +93,36 @@ def identity():
     return name, email
 
 
+def image_url(name):
+    """Where the wiki serves a file of its images/ folder."""
+    return f"https://raw.githubusercontent.com/wiki/{repository()}/{IMAGE_DIR}/{name}"
+
+
 def source_pages():
-    pages = {}
+    """(pages, images): the text of each page to publish, and {file name in images/: source path} of the images they
+    show. An image link that is not a file of the repository, or two images with the same name, stop the script."""
+    pages, images = {}, {}
     for path in sorted(glob.glob(os.path.join(SOURCE, "*.md"))):
         with open(path, encoding="utf-8") as f:
             text = f.read().replace("\r\n", "\n")
-        pages[os.path.basename(path)] = NOTE + text
+
+        def publish(m, page=os.path.basename(path)):
+            target = m.group(2)
+            if re.match(r"^[a-z]+:", target):
+                return m.group(0)   # an absolute address: left as it is
+            src = os.path.normpath(os.path.join(SOURCE, target))
+            if not os.path.isfile(src) or not src.startswith(ROOT + os.sep):
+                raise SystemExit(f"{page}: the image {target} is not a file of the repository.")
+            name = os.path.basename(src)
+            if images.get(name, src) != src:
+                raise SystemExit(f"{page}: two different images are called {name}.")
+            images[name] = src
+            return m.group(1) + image_url(name) + m.group(3)
+
+        pages[os.path.basename(path)] = NOTE + IMAGE_LINK.sub(publish, text)
     if "Home.md" not in pages:
         raise SystemExit("docs/wiki/Home.md is missing: nothing to publish.")
-    return pages
+    return pages, images
 
 
 def clone(target, warn_if_missing=False):
@@ -120,9 +147,29 @@ def clone(target, warn_if_missing=False):
     return True
 
 
-def apply(pages, wiki):
-    """Scrive le pagine e toglie quelle sparite. Restituisce (aggiunte o cambiate, tolte)."""
+def apply(pages, wiki, images=None):
+    """Scrive le pagine e le immagini, toglie quelle non più usate. Restituisce (aggiunte o cambiate, tolte)."""
     changed, removed = [], []
+    images = images or {}
+    folder = os.path.join(wiki, IMAGE_DIR)
+    if os.path.isdir(folder):
+        for name in sorted(os.listdir(folder)):
+            if os.path.isfile(os.path.join(folder, name)) and name not in images:
+                os.remove(os.path.join(folder, name))
+                removed.append(IMAGE_DIR + "/" + name)
+    for name, src in sorted(images.items()):
+        os.makedirs(folder, exist_ok=True)
+        dest = os.path.join(folder, name)
+        with open(src, "rb") as f:
+            data = f.read()
+        old = None
+        if os.path.isfile(dest):
+            with open(dest, "rb") as f:
+                old = f.read()
+        if old != data:
+            with open(dest, "wb") as f:
+                f.write(data)
+            changed.append(IMAGE_DIR + "/" + name)
     for name in sorted(os.listdir(wiki)):
         path = os.path.join(wiki, name)
         if os.path.isfile(path) and name.lower().endswith(PAGE_EXTENSIONS) and name not in pages:
@@ -147,7 +194,7 @@ def main(argv):
     wiki_dir = argv[argv.index("--wiki-dir") + 1] if "--wiki-dir" in argv else None
     warn_if_missing = "--warn-if-missing" in argv
     name, email = identity()
-    pages = source_pages()
+    pages, images = source_pages()
 
     temp = None
     if wiki_dir is None:
@@ -162,7 +209,7 @@ def main(argv):
             shutil.copytree(wiki_dir, work, ignore=shutil.ignore_patterns(".git"))
         else:
             work = wiki_dir
-        changed, removed = apply(pages, work)
+        changed, removed = apply(pages, work, images)
         for n in changed:
             print("  write  " + n)
         for n in removed:
@@ -171,7 +218,7 @@ def main(argv):
             print("The wiki is already up to date.")
             return 0
         if dry_run:
-            print(f"Dry run: {len(changed)} pages to write, {len(removed)} to remove. Nothing committed.")
+            print(f"Dry run: {len(changed)} files to write, {len(removed)} to remove. Nothing committed.")
             return 0
         head = (os.environ.get("GITHUB_SHA") or "")[:7] or git(["rev-parse", "--short", "HEAD"], ROOT, check=False).stdout.strip() or "unknown"
         git(["add", "-A"], work)
@@ -181,7 +228,7 @@ def main(argv):
             proc = git(["push", "origin", "HEAD"], work, check=False, auth=True)
             if proc.returncode != 0:
                 sys.exit("git push failed:\n" + scrub(proc.stderr))
-            print(f"Published {len(changed)} pages, removed {len(removed)}: https://github.com/{repository()}/wiki")
+            print(f"Published {len(changed)} files, removed {len(removed)}: https://github.com/{repository()}/wiki")
         else:
             temp = None   # il clone resta, per guardarlo
             print("Committed in " + work + ", not pushed (--no-push).")

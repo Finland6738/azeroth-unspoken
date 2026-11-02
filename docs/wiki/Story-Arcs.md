@@ -87,6 +87,18 @@ Stories are private. Their lines stay in the narrator box and never go to chat, 
 - Story lines in the narrator box at the key moments.
 - In the journal, the Stories tab, and a permanent memory when a story ends.
 
+![Illustrative mockup: the journal, Stories tab with the nemeses](../design/mockups/png/journal-stories.png)
+
+*Illustrative mockup, not an in-game screenshot: the Stories tab: a story under way, the stories of two nemeses, a story that can begin.*
+
+![Illustrative mockup: a story waiting for a choice](../design/mockups/png/journal-story-detail.png)
+
+*Illustrative mockup, not an in-game screenshot: a story waiting for your choice, with its three answers.*
+
+![Illustrative mockup: a nemesis story in the journal](../design/mockups/png/journal-nemesis.png)
+
+*Illustrative mockup, not an in-game screenshot: the page of a nemesis story (the foe is invented).*
+
 ## Tips
 
 - If you do not want stories at all, turn the **Stories** module off. Nothing else changes.
