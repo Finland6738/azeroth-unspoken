@@ -11,12 +11,16 @@ Commands (see CONTRIBUTING.md, "Writing content through the archive"):
     show ID               one intention with its texts, reviews and history
     drafts FILE.jsonl     add intentions as drafts, one JSON object per line
     submit|reject|approve|retire|restore ID...   move intentions along draft -> review -> approved -> retired
-    export                write the pack folders from the approved intentions (and drop them from the overlay)
+    piece ID [fields]     the editorial record of a literary piece (#128): --meter, --rhyme, --lines, --stanzas, --refrain,
+                          --singable, --lore-ref, --note, and one review step: --metre ok, then --lore ok|none, then
+                          --originality ok (draft -> metre and language -> lore -> originality -> approved)
+    export                write the pack folders from the approved intentions (and drop them from the overlay); report the
+                          warnings of the literary pieces (matrix, warning words and phrases)
     arcs [ID]             the story arcs: steps, choices and journal texts (all of them, or one as JSON)
     scripts [KEY]         the NPC Alive dialogue scripts: nodes and replies (all of them, or one as JSON)
     check                 prove the round trip (folders -> archive -> folders must give an empty diff) and check the arcs
                           and the dialogue scripts: unreachable nodes, dangling transitions, missing languages, replies
-                          that put words in the player's mouth
+                          that put words in the player's mouth; report the warnings of the literary pieces
     report                coverage and gap report (issue #88): Markdown, JSON, job summary; never fails the build
 """
 import argparse
@@ -72,7 +76,8 @@ def save(con, args):
 def row_line(con, r):
     ev = ",".join(json.loads(r["events"]))
     first = con.execute("SELECT text FROM variant WHERE intention_id = ? ORDER BY lang, ord LIMIT 1", (r["id"],)).fetchone()
-    text = (first["text"][:60] + "...") if first and len(first["text"]) > 60 else (first["text"] if first else "")
+    text = first["text"].replace("\n", " / ") if first else ""   # the verses of a literary piece on one line
+    text = (text[:60] + "...") if len(text) > 60 else text
     return "%-34s %-8s %-9s %-14s %-9s %s" % (r["id"], r["state"], r["speaker"] or "", ev[:14], r["region"] or "-", text)
 
 
@@ -93,6 +98,10 @@ def query(con, a):
         else:
             where.append("i.region = ?")
             args.append(a.region)
+    for col, value in (("genre", getattr(a, "genre", None)), ("purpose", getattr(a, "purpose", None))):
+        if value:
+            where.append("i.%s = ?" % col)
+            args.append(value)
     if getattr(a, "theme", None):
         where.append("i.theme = ?")
         args.append(a.theme)
@@ -161,6 +170,11 @@ def cmd_show(a):
             print("  - %s%s" % (v["text"], "   (depth %s)" % v["depth"] if v.get("depth") else ""))
     for rv in con.execute("SELECT * FROM review WHERE intention_id = ? ORDER BY id", (a.id,)):
         print("review %s %s by %s: %s" % (rv["date"], rv["verdict"], rv["reviewer"], rv["note"]))
+    m = con.execute("SELECT * FROM piece_meta WHERE intention_id = ?", (a.id,)).fetchone()
+    if m is not None:
+        print("piece: " + ", ".join("%s %s" % (k, m[k]) for k in store.PIECE_COLUMNS[1:] if m[k] not in (None, "")))
+    for _, msg in [w for w in store.literary_report(con, a.root, store.STATES) if w[0] == a.id]:
+        print("literary warning: " + msg)
     problems = store.check_content(con, a.id)
     print("approvable" if not problems else "blocks approval: " + "; ".join(problems))
     return 0
@@ -206,6 +220,34 @@ def cmd_export(a):
     for p in written:
         print("wrote", p)
     print("%d files written" % len(written))
+    print_literary(con, a)
+    return 0
+
+
+def print_literary(con, a):
+    """The warnings of the literary pieces (#120, #128): printed, never a failure."""
+    warnings = store.literary_report(con, a.root)
+    for id, msg in warnings:
+        print(("::warning title=Literary piece::%s: %s" if os.environ.get("GITHUB_ACTIONS") else "warning: %s: %s") % (id, msg))
+    print("literary pieces: %d warnings" % len(warnings))
+
+
+def cmd_piece(a):
+    con = open_db(a)
+    fields = {k: v for k, v in (("meter", a.meter), ("rhyme_scheme", a.rhyme), ("lines", a.lines), ("stanzas", a.stanzas),
+                                ("refrain", a.refrain), ("singable", a.singable), ("lore_ref", a.lore_ref),
+                                ("note", a.note)) if v is not None}
+    steps = [(s, getattr(a, s)) for s in ("metre", "lore", "originality") if getattr(a, s) is not None]
+    author = a.author or os.environ.get("AU_ARCHIVE_AUTHOR", "owner")
+    try:
+        m = store.set_piece(con, a.id, author, fields)
+        for step, status in steps:
+            m = store.set_piece(con, a.id, author, step=step, status=status)
+    except store.ArchiveError as e:
+        print(e, file=sys.stderr)
+        return 1
+    save(con, a)
+    print("%s: %s" % (a.id, ", ".join("%s %s" % (k, m[k]) for k in store.PIECE_COLUMNS[1:] if m[k] not in (None, ""))))
     return 0
 
 
@@ -251,6 +293,7 @@ def cmd_check(a):
         print("%s: %s: %s" % (level, ref, msg), file=sys.stderr)
     errors = [p for p in problems if p[0] == "error"]
     print("arcs and dialogue scripts: %d errors, %d warnings" % (len(errors), len(problems) - len(errors)))
+    print_literary(con, a)
     return 1 if diffs or canon or errors else 0
 
 
@@ -292,6 +335,8 @@ def main(argv=None):
         p.add_argument("--register")
         p.add_argument("--theme", help="theme of the closed vocabulary (#90)")
         p.add_argument("--motif", help="motif; * is a wildcard")
+        p.add_argument("--genre", help="literary form (#119): verse, song, formula, epigraph, prose, tale")
+        p.add_argument("--purpose", help="what a literary piece is for (#119)")
         p.add_argument("--region", help="continent token of the pack, or 'any' for content of every place")
         p.add_argument("--voice", choices=store.SPEAKERS)
         p.add_argument("--text", help="text contained in a variant")
@@ -311,6 +356,21 @@ def main(argv=None):
         p.add_argument("--note", help="the reason, kept in the review and the changelog")
         p.add_argument("--author", default=argparse.SUPPRESS, help="who decides (default: owner, or $AU_ARCHIVE_AUTHOR)")
         p.set_defaults(fn=cmd_move)
+    p = sub.add_parser("piece", help="the editorial record of a literary piece (#128)")
+    p.add_argument("id")
+    p.add_argument("--meter", help="the metre as the author names it")
+    p.add_argument("--rhyme", help="the rhyme scheme (ABAB, AABB, - for none)")
+    p.add_argument("--lines", type=int, help="verses of the piece (of one stanza for a song of stanzas)")
+    p.add_argument("--stanzas", type=int, help="stanzas written")
+    p.add_argument("--refrain", type=int, choices=(0, 1))
+    p.add_argument("--singable", type=int, choices=(0, 1))
+    p.add_argument("--lore-ref", dest="lore_ref", help="the in-game source of a lore claim")
+    p.add_argument("--note")
+    p.add_argument("--metre", choices=("pending", "ok"), help="step 1: metre and language review")
+    p.add_argument("--lore", choices=("pending", "ok", "none"), help="step 2: lore review (none: it names no lore)")
+    p.add_argument("--originality", choices=("pending", "ok"), help="step 3: originality check")
+    p.add_argument("--author", default=argparse.SUPPRESS, help="who reviews (default: owner, or $AU_ARCHIVE_AUTHOR)")
+    p.set_defaults(fn=cmd_piece)
     sub.add_parser("export").set_defaults(fn=cmd_export)
     sub.add_parser("check").set_defaults(fn=cmd_check)
     for name in ("arcs", "scripts"):
@@ -328,7 +388,8 @@ def main(argv=None):
     p.add_argument("--strict", action="store_true", help="exit 1 when a threshold is breached (not used in CI)")
     p.set_defaults(fn=cmd_report)
     a = ap.parse_args(argv)
-    for attr in ("state", "pack", "event", "tag", "register", "theme", "motif", "region", "voice", "text", "lang", "limit"):
+    for attr in ("state", "pack", "event", "tag", "register", "theme", "motif", "region", "voice", "text", "lang", "limit",
+                 "genre", "purpose"):
         if not hasattr(a, attr):
             setattr(a, attr, None)
     try:

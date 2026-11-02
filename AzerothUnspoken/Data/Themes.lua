@@ -89,4 +89,57 @@ NS:RegisterPack({
 		-- a return in the rain as the light goes
 		rain_dusk_return = { lead = "memory_return", when = { weather = { "rain", "storm" }, time = "dusk" } },
 	},
+	-- literary forms (#119, #120, ADR 0043): the closed vocabularies of the rule fields `genre` (the form) and `purpose`
+	-- (what the piece is for), the genre x situation matrix and the warning words. `origin` is `common`, `personal` or
+	-- `culture:<people>` (D17: matched against the culture the user chooses, never against race). The matrix and the
+	-- words give warnings only: a piece may break one on purpose, the review says why. They name facts of a rule:
+	-- `event=`, `style=`, `tag=`, `genre=`, `purpose=` and its conditions as `name` (asked, not false) or `name=value`,
+	-- with `place.` or `other.` in front of the conditions inside those tables; `not` and `any` guarantee nothing and
+	-- are not read. The authoring archive reads this same table (tools/archive/literary.py).
+	literary = {
+		genres = {
+			"verse",      -- verses said or remembered, not sung
+			"song",       -- sung: a refrain, a tune, a hymn, a lament
+			"formula",    -- a fixed form of words: a saying, a proverb, a blessing, a vow
+			"epigraph",   -- words carved or written on a place or a thing
+			"prose",      -- a short passage in prose: a page, a letter, a chronicle
+			"tale",       -- a story told by someone, always attributed (D7)
+		},
+		purposes = {
+			"remember",   -- keeps a past, a place, the dead
+			"mourn",      -- grief, a lament
+			"amuse",      -- a joke, a tavern rhyme, play
+			"accompany",  -- keeps company on the road
+			"bless",      -- a prayer, a blessing, a protection
+			"warn",       -- a warning, a caution
+			"advise",     -- a lesson, a piece of advice
+			"celebrate",  -- a feast, a victory, a meeting
+		},
+		-- `never`: none of these facts may hold; `needs`: at least one must hold
+		matrix = {
+			{ id = "amuse_in_grief", purpose = "amuse",
+				never = { "place.tags=dark", "place.tags=plague", "place.tags=cursed", "mood=dark", "mood=plague",
+					"mood=cursed", "place.mood=dark", "place.mood=plague", "place.mood=cursed", "event=death", "event=rez",
+					"event=rezother", "event=encounter_end", "lastVisitBad", "tag=topic:death" } },
+			{ id = "mourn_lightly", purpose = "mourn", never = { "style=ironic", "style=everyday" } },
+			{ id = "epigraph_without_stone", genre = "epigraph",
+				needs = { "place.tags=ruin", "place.tags=sacred", "place.tags=monument", "landmark", "event=landmark" } },
+			{ id = "accompany_standing_still", purpose = "accompany", needs = { "event=travel", "event=journey" } },
+		},
+		-- words that ask a condition: a piece that names them is said only when its rule guarantees one of `needs`
+		words = {
+			{ id = "night", en = { "night", "tonight", "midnight", "nightfall" },
+				it = { "notte", "stanotte", "mezzanotte", "nottata" },
+				needs = { "time=night", "time=dusk", "dayTime=false", "hour", "event=dusk" } },
+			{ id = "snow", en = { "snow", "snows", "snowfall", "snowflakes" }, it = { "neve", "nevica", "nevicata", "nevi" },
+				needs = { "weather=snow", "place.tags=snow", "place.tags=winter", "place.tags=frozen" } },
+			{ id = "return", en = { "return", "returned", "returning", "came back", "come back home" },
+				it = { "ritorno", "tornato", "tornata", "tornati", "tornare a casa" },
+				needs = { "event=memory_return", "repeatVisit", "visitsMin", "daysSinceLastVisit", "lastVisitBad",
+					"remembered" } },
+			{ id = "faith", en = { "faith", "faithful", "prayer", "prayers", "holy" },
+				it = { "fede", "fedele", "preghiera", "preghiere", "santo", "santa" },
+				needs = { "event=pray", "tag=topic:religion", "tag=faith:devout", "place.tags=sacred" } },
+		},
+	},
 })

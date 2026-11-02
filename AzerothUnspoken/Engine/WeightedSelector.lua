@@ -728,6 +728,61 @@ function Engine:RenderMonologue(p, lang, ctx)
 	return table.concat(texts, " "), used
 end
 
+---------------------------------------------------------------------------
+-- Interchangeable stanzas (#127, ADR 0043): the one exception to whole phrases
+---------------------------------------------------------------------------
+-- A song with `kind = "stanzas"` keeps, in each language, its frame as the first variant (the attribution and the
+-- fixed refrain, with Engine.STANZA_MARK where the stanzas go) and its stanzas as the others, in the order they were
+-- written. One or two stanzas (`show`) are said, always of this song and always in that order; the validator checks
+-- that the stanzas were written together (same verse count and metre, the same stanzas in every language, none added
+-- by another pack).
+
+---The indices (in the texts of the language) of the stanzas to say: `show` of them, at random but in their declared
+---order, avoiding the one that opened the song last time when there is a choice.
+---@param p AUPhrase
+---@param list AUVariantValue[]
+---@return integer[]
+function Engine.StanzaChoice(p, list)
+	local pool = {}
+	for i = 2, #list do
+		if Engine.VariantOk(list[i]) and Engine.VariantPack(list[i], p.pack) == p.pack then table.insert(pool, i) end
+	end
+	local show = math.min(math.max(tonumber(p.show) or 1, 1), Engine.STANZAS_SHOW_MAX, #pool)
+	local last = Mem().variant and Mem().variant[p.id]
+	if last and #pool > show then
+		for k = #pool, 1, -1 do
+			if pool[k] == last then table.remove(pool, k) end
+		end
+	end
+	local chosen = {}
+	for _ = 1, show do
+		table.insert(chosen, table.remove(pool, math.random(#pool)))
+	end
+	table.sort(chosen)
+	return chosen
+end
+
+---Renders a song of interchangeable stanzas: the frame with the chosen stanzas in place of the mark, one empty line
+---between two stanzas.
+---@param p AUPhrase
+---@param lang string
+---@param ctx table
+---@return string? text
+---@return integer? first the index of the first stanza said (remembered like a variant)
+function Engine:RenderStanzas(p, lang, ctx)
+	local list = p.text[lang]
+	if not list or not Engine.VariantOk(list[1]) then return nil end
+	local frame = Engine.VariantText(list[1])
+	local a, b = frame:find(Engine.STANZA_MARK, 1, true)
+	local chosen = Engine.StanzaChoice(p, list)
+	if not a or #chosen == 0 then return nil end
+	local stanzas = {}
+	for k, i in ipairs(chosen) do stanzas[k] = Engine.VariantText(list[i]) end
+	local text = self:Render(frame:sub(1, a - 1) .. table.concat(stanzas, "\n\n") .. frame:sub(b + 1), lang, ctx)
+	if not text then return nil end
+	return text, chosen[1]
+end
+
 -- Sceglie e compone una frase. form = "say" | "emote".
 -- In forma "emote" si usano le frasi narrative e anche le frasi parlate
 -- inserite in una cornice narrativa adatta all'evento.
@@ -964,6 +1019,9 @@ function Engine:PickOwn(event, ctx, form, composite)
 		local text, variant, parts
 		if p.kind == "monologue" then
 			text, parts = self:RenderMonologue(p, lang, ctx)
+		elseif p.kind == "stanzas" then
+			-- #127: the frame and one or two stanzas; `variant` is the first stanza said (not repeated next time)
+			text, variant = self:RenderStanzas(p, lang, ctx)
 		else
 			text, variant = self:RenderPhrase(p, lang, ctx)
 		end
@@ -1020,6 +1078,8 @@ function Engine:PickOwn(event, ctx, form, composite)
 				local source
 				if parts then
 					source = self.byId[parts[1].id].text[lang][parts[1].variant]
+				elseif p.kind == "stanzas" then
+					source = p.text[lang][1]   -- #127: the song opens with its frame
 				else
 					source = frame and (frame.text[lang] or EMPTY)[1] or p.text[lang][variant]
 				end

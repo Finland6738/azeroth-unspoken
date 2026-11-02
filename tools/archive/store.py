@@ -21,6 +21,7 @@ import os
 import re
 import sqlite3
 
+import literary
 import lualit
 import packfiles
 import structures
@@ -43,16 +44,22 @@ INDEX_DIMENSIONS = (
     (None, "ctype", "t:", str), (None, "time", "h:", str),
 )
 
+PIECE_COLUMNS = ("intention_id", "meter", "rhyme_scheme", "lines", "stanzas", "refrain", "singable", "lore_ref",
+                 "metre_status", "lore_status", "originality_status", "note")
+# the fields of a piece a draft may give (`piece` in a drafts line) or `cli piece` may set
+PIECE_FIELDS = ("meter", "rhyme_scheme", "lines", "stanzas", "refrain", "singable", "lore_ref", "note")
 OVERLAY_TABLES = {
     # file: (table, columns, key)
     "authors.csv": ("author", ("id", "name", "kind", "note"), ("id",)),
     "intentions.csv": ("intention", ("id", "pack_id", "state", "author_id", "events", "category", "speaker", "form",
                                      "styles", "depth", "tags", "theme", "motifs", "tier", "kind", "parts", "part_order",
-                                     "chainable", "weight", "cooldown", "conditions", "extra", "attribution",
-                                     "invented_lore"), ("id",)),
+                                     "chainable", "genre", "purpose", "piece_origin", "stanza_show", "weight", "cooldown",
+                                     "conditions", "extra", "attribution", "invented_lore"), ("id",)),
     "variants.csv": ("variant", ("intention_id", "lang", "ord", "text", "depth"), ("intention_id", "lang", "ord")),
     "reviews.csv": ("review", ("id", "intention_id", "reviewer", "verdict", "note", "date"), ("id",)),
     "changelog.csv": ("changelog", ("id", "date", "author", "action", "intention_id", "from_state", "to_state", "note"), ("id",)),
+    # the editorial record of every literary piece (#128), approved ones too: the folders cannot hold it
+    "pieces.csv": ("piece_meta", PIECE_COLUMNS, ("intention_id",)),
 }
 JSON_COLUMNS = {"events", "styles", "depth", "tags", "motifs", "tier", "parts", "chainable", "conditions", "extra"}
 # monologues (#99): the rule field `order` is the column part_order (ORDER is an SQL keyword)
@@ -184,25 +191,37 @@ def insert_intention(con, id, pack_id, rule, state="approved", author=LEGACY, at
     rule = dict(rule)
     events = rule.pop("event", None) or []
     known = {k: rule.pop(k, None) for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown",
-                                            "conditions", "theme", "motifs", "tier", "kind", "parts", "order", "chainable")}
+                                            "conditions", "theme", "motifs", "tier", "kind", "parts", "order", "chainable",
+                                            "genre", "purpose", "origin", "show")}
     extra = dict(rule) or None
     keys = index_keys(known["conditions"])
     con.execute(
         "INSERT INTO intention (id, pack_id, state, author_id, events, category, speaker, form, styles, depth, tags, theme,"
-        " motifs, tier, kind, parts, part_order, chainable, weight, cooldown, conditions, extra, ctx, region, attribution,"
-        " invented_lore, origin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        " motifs, tier, kind, parts, part_order, chainable, genre, purpose, piece_origin, stanza_show, weight, cooldown,"
+        " conditions, extra, ctx, region, attribution, invented_lore, origin)"
+        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (id, pack_id, state, author, jdump(events), known["category"], known["speaker"], known["form"],
          jdump(known["styles"]), jdump(known["depth"]), jdump(known["tags"]), known["theme"], jdump(known["motifs"]),
          jdump(known["tier"]), known["kind"], jdump(known["parts"]), known["order"], jdump(known["chainable"]),
-         known["weight"], known["cooldown"],
+         known["genre"], known["purpose"], known["origin"], known["show"], known["weight"], known["cooldown"],
          jdump(known["conditions"]), jdump(extra), ",".join(keys), pack["region"], attribution or "", int(bool(invented_lore)),
          origin))
+
+
+def _depth_column(d):
+    """The depth of a variant as a column: a name, or a JSON list when the variant is written for several depths (the
+    road songs of the verses pack, #128)."""
+    return jdump(d) if isinstance(d, list) else d
+
+
+def _depth_value(s):
+    return jload(s) if s and s.startswith("[") else s
 
 
 def set_variants(con, id, lang, variants):
     con.execute("DELETE FROM variant WHERE intention_id = ? AND lang = ?", (id, lang))
     con.executemany("INSERT INTO variant VALUES (?,?,?,?,?)",
-                    [(id, lang, i, v["text"], v.get("depth")) for i, v in enumerate(variants)])
+                    [(id, lang, i, v["text"], _depth_column(v.get("depth"))) for i, v in enumerate(variants)])
 
 
 def reindex(con, ids=None):
@@ -269,6 +288,9 @@ def get_rule(con, id):
         out["order"] = r["part_order"]
     if r["chainable"] is not None:
         out["chainable"] = jload(r["chainable"])
+    for k, col in (("genre", "genre"), ("purpose", "purpose"), ("origin", "piece_origin"), ("show", "stanza_show")):
+        if r[col] is not None:
+            out[k] = r[col]
     out.update(jload(r["extra"]) or {})
     return out
 
@@ -278,7 +300,7 @@ def get_variants(con, id, lang):
     for v in con.execute("SELECT text, depth FROM variant WHERE intention_id = ? AND lang = ? ORDER BY ord", (id, lang)):
         item = {"text": v["text"]}
         if v["depth"]:
-            item["depth"] = v["depth"]
+            item["depth"] = _depth_value(v["depth"])
         out.append(item)
     return out
 
@@ -323,7 +345,8 @@ def parse_toc(path):
 def discover(root):
     """The files of the folders the archive reads: [(role, relative path, region, lang)]. Folders without a language or
     a region (the base, the example, the verses) are read only for the rules of `Data/Registry*.lua` of the base and for its
-    arc definitions (`Data/Arcs.lua`) and dialogue scripts (`Data/Dialogues.lua`)."""
+    arc definitions (`Data/Arcs.lua`) and dialogue scripts (`Data/Dialogues.lua`), and in another folder (the verses,
+    #128) for its `Registry*.lua` and `Texts*.lua`, whose language is the one their `AddTexts` call names (lang None)."""
     base = "AzerothUnspoken"
     out = []
     for d in sorted(os.listdir(root)):
@@ -340,6 +363,9 @@ def discover(root):
             out += [("texts", "%s/%s" % (d, f), region, lang) for f in files if f.endswith(".lua")]
         elif region:
             out += [("rules", "%s/%s" % (d, f), region, None) for f in files if f.endswith(".lua")]
+        else:
+            out += [("rules", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Registry[A-Za-z]*\.lua$", f)]
+            out += [("texts", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Texts[A-Za-z_]*\.lua$", f)]
     return out
 
 
@@ -418,8 +444,11 @@ def import_folders(con, root):
         if sf.pack_id not in rules:
             problems.append("%s: texts of an unknown pack %s" % (rel, sf.pack_id))
             continue
-        if sf.lang != lang:
+        if lang is not None and sf.lang != lang:
             problems.append("%s: language %s in the file, %s in the .toc" % (rel, sf.lang, lang))
+        if lang is None and sf.lang not in (jload(con.execute("SELECT languages FROM pack WHERE id = ?",
+                                                              (sf.pack_id,)).fetchone()["languages"]) or []):
+            problems.append("%s: language %s is not one of the pack's" % (rel, sf.lang))
         _store_file(con, sf, sf.pack_id)
         for id, entry in sf.entries.items():
             row = con.execute("SELECT pack_id FROM intention WHERE id = ?", (id,)).fetchone()
@@ -627,6 +656,11 @@ def load_overlay(con, directory=OVERLAY_DIR):
             rule["kind"] = r["kind"]
         if r["part_order"] != "":
             rule["order"] = r["part_order"]
+        for k, col in (("genre", "genre"), ("purpose", "purpose"), ("origin", "piece_origin")):
+            if r[col] != "":
+                rule[k] = r[col]
+        if r["stanza_show"] != "":
+            rule["show"] = int(r["stanza_show"])
         for k in ("weight", "cooldown"):
             if r[k] != "":
                 rule[k] = json.loads(r[k])
@@ -639,6 +673,16 @@ def load_overlay(con, directory=OVERLAY_DIR):
     for row in data["variants.csv"]:
         iid, lang, ord_, text, depth = row
         con.execute("INSERT INTO variant VALUES (?,?,?,?,?)", (iid, lang, int(ord_), text, depth or None))
+    for row in data["pieces.csv"]:
+        r = dict(zip(PIECE_COLUMNS, row))
+        if con.execute("SELECT 1 FROM intention WHERE id = ?", (r["intention_id"],)).fetchone() is None:
+            continue   # the record of a piece that no longer exists: dropped at the next save
+        for k in ("lines", "stanzas"):
+            r[k] = int(r[k]) if r[k] != "" else None
+        for k in ("refrain", "singable"):
+            r[k] = int(r[k] or 0)
+        con.execute("INSERT OR REPLACE INTO piece_meta (%s) VALUES (%s)" % (", ".join(PIECE_COLUMNS),
+                    ",".join("?" * len(PIECE_COLUMNS))), [r[c] for c in PIECE_COLUMNS])
     for row in data["reviews.csv"]:
         con.execute("INSERT OR REPLACE INTO review VALUES (?,?,?,?,?,?)", row)
     for row in data["changelog.csv"]:
@@ -746,8 +790,8 @@ def _monologue_problems(con, r):
     length) when the folders are loaded."""
     problems = []
     kind, parts, order, chainable = r["kind"], jload(r["parts"]), r["part_order"], jload(r["chainable"])
-    if kind is not None and kind != "monologue":
-        problems.append("kind must be monologue")
+    if kind is not None and kind not in ("monologue", "stanzas"):
+        problems.append("kind must be monologue or stanzas")
     if chainable is not None and chainable not in (True, False, "only"):
         problems.append('chainable must be true or "only"')
     if chainable and r["speaker"] not in PRIVATE_SPEAKERS:
@@ -771,6 +815,59 @@ def _monologue_problems(con, r):
             problems.append("part %s is not a chainable phrase" % part)
         elif q["speaker"] != r["speaker"]:
             problems.append("part %s speaks as %s, the monologue as %s" % (part, q["speaker"], r["speaker"]))
+    return problems
+
+
+def _literary_problems(con, r, rule):
+    """#119, #127: the vocabularies of a piece, its fields only on a literary form, no placeholder in a song or a formula,
+    and the shape of a song of stanzas (its frame, three to six stanzas of as many verses, the same in every language).
+    The metre of the stanzas and the warnings are the engine's validator's and `literary_report`'s."""
+    problems = []
+    lit = literary.data(ROOT)
+    if r["genre"] is not None and r["genre"] not in lit["genres"]:
+        problems.append("unknown genre: %s" % r["genre"])
+    if r["purpose"] is not None and r["purpose"] not in lit["purposes"]:
+        problems.append("unknown purpose: %s" % r["purpose"])
+    if r["piece_origin"] is not None:
+        why = literary.origin_problem(r["piece_origin"])
+        if why:
+            problems.append(why)
+    if not literary.is_literary(rule):
+        if r["purpose"] is not None or r["piece_origin"] is not None:
+            problems.append("purpose and origin belong to a literary form (a genre, the tag lore or genre_*)")
+        return problems
+    if r["category"] not in (None, "lore"):
+        problems.append("a literary form is in the category lore, not %s (#118)" % r["category"])
+    texts = {}
+    for v in con.execute("SELECT lang, text FROM variant WHERE intention_id = ? ORDER BY lang, ord", (r["id"],)):
+        texts.setdefault(v["lang"], []).append(v["text"])
+    stanzas = r["kind"] == "stanzas"
+    if r["stanza_show"] is not None and not stanzas:
+        problems.append("show belongs to a song of stanzas (kind = stanzas)")
+    for lang, items in texts.items():
+        for i, t in enumerate(items):
+            plain = t.replace(literary.STANZA_MARK, "", 1) if stanzas and i == 0 else t
+            if r["genre"] in literary.FIXED_GENRES and re.search(r"\{[^{}]*\}", plain):
+                problems.append("a %s keeps its words, no placeholder (%s)" % (r["genre"], lang))
+                break
+    if not stanzas:
+        return problems
+    if r["genre"] != "song":
+        problems.append("a song of stanzas has genre song")
+    if r["stanza_show"] is not None and r["stanza_show"] not in range(1, literary.STANZAS_SHOW_MAX + 1):
+        problems.append("show must be 1 to %d" % literary.STANZAS_SHOW_MAX)
+    shapes = {}
+    for lang, items in texts.items():
+        if items[0].count(literary.STANZA_MARK) != 1:
+            problems.append("the first text in %s is the frame, with %s once" % (lang, literary.STANZA_MARK))
+        if not literary.STANZAS[0] <= len(items) - 1 <= literary.STANZAS[1]:
+            problems.append("%d stanzas in %s: a song has %d to %d" % ((len(items) - 1, lang) + literary.STANZAS))
+        counts = {len(literary.verses(t)) for t in items[1:]}
+        if len(counts) > 1:
+            problems.append("the stanzas in %s have different numbers of verses %s" % (lang, sorted(counts)))
+        shapes[lang] = literary.stanza_shape(items)
+    if len(set(shapes.values())) > 1:
+        problems.append("not the same stanzas in every language: %s" % sorted(shapes.items()))
     return problems
 
 
@@ -803,9 +900,9 @@ def check_content(con, id, stage="approve"):
                 problems.append("unknown motif: %s" % m)
     problems.extend(_emotion_problems(jload(r["tags"]) or [], jload(r["conditions"])))
     problems.extend(_monologue_problems(con, r))
-    literary = [t for t in (jload(r["tags"]) or []) if t == "lore" or str(t).startswith("genre_")]
-    if literary and r["speaker"] in PUBLIC_SPEAKERS:
-        problems.append("tag %s: a literary form is for private voices (inner, npc), not %s (D16)" % (literary[0], r["speaker"]))
+    lit_tags = [t for t in (jload(r["tags"]) or []) if t == "lore" or str(t).startswith("genre_")]
+    if lit_tags and r["speaker"] in PUBLIC_SPEAKERS:
+        problems.append("tag %s: a literary form is for private voices (inner, npc), not %s (D16)" % (lit_tags[0], r["speaker"]))
     monologue = r["kind"] == "monologue"
     tier = jload(r["tier"])
     if tier is not None and tier not in TIERS and tier not in TIERS.values():
@@ -827,7 +924,94 @@ def check_content(con, id, stage="approve"):
                 problems.append("unbalanced braces in %s: %s" % (lang, t[:40]))
     if stage == "approve" and r["invented_lore"] and r["speaker"] == "narrator" and not r["attribution"].strip():
         problems.append("invented lore in a narrator line needs an attribution (decision D7)")
+    rule = get_rule(con, id)
+    problems.extend(_literary_problems(con, r, rule))
+    # #128: a piece is approved after its metre and language review, its lore review and its originality check
+    if stage == "approve" and literary.is_literary(rule):
+        m = con.execute("SELECT * FROM piece_meta WHERE intention_id = ?", (id,)).fetchone()
+        if m is None:
+            problems.append("a literary piece needs its editorial record (cli piece)")
+        else:
+            missing = [s for s in literary.REVIEW_STEPS if m[s + "_status"] == "pending"]
+            if missing:
+                problems.append("a literary piece is approved after its review: %s pending" % ", ".join(missing))
     return problems
+
+
+def set_piece(con, id, author, fields=None, step=None, status=None):
+    """The editorial record of a literary piece (#128): the fields of PIECE_FIELDS and one review step at a time, in the
+    order metre -> lore -> originality (a step is `ok` only after the steps before it; `lore` may be `none` when the piece
+    names no lore). Every change is a changelog row. Returns the record."""
+    r = con.execute("SELECT * FROM intention WHERE id = ?", (id,)).fetchone()
+    if r is None:
+        raise ArchiveError("unknown intention: %s" % id)
+    if not literary.is_literary(get_rule(con, id)):
+        raise ArchiveError("%s is not a literary piece (no genre, no tag lore or genre_*)" % id)
+    ensure_author(con, author)
+    con.execute("INSERT OR IGNORE INTO piece_meta (intention_id) VALUES (?)", (id,))
+    notes = []
+    for k, v in (fields or {}).items():
+        if k not in PIECE_FIELDS:
+            raise ArchiveError("%s: unknown field of a piece: %s" % (id, k))
+        if k in ("lines", "stanzas", "refrain", "singable") and v is not None:
+            v = int(v)
+        con.execute("UPDATE piece_meta SET %s = ? WHERE intention_id = ?" % k, (v, id))
+        notes.append("%s=%s" % (k, v))
+    if step is not None:
+        if step not in literary.REVIEW_STEPS:
+            raise ArchiveError("%s: the review steps are %s" % (id, ", ".join(literary.REVIEW_STEPS)))
+        allowed = ("pending", "ok", "none") if step == "lore" else ("pending", "ok")
+        if status not in allowed:
+            raise ArchiveError("%s: %s can be %s" % (id, step, ", ".join(allowed)))
+        m = con.execute("SELECT * FROM piece_meta WHERE intention_id = ?", (id,)).fetchone()
+        before = literary.REVIEW_STEPS[:literary.REVIEW_STEPS.index(step)]
+        if status != "pending" and any(m[s + "_status"] == "pending" for s in before):
+            raise ArchiveError("%s: %s comes after %s" % (id, step, " and ".join(before)))
+        if step == "metre" and status == "ok":
+            bad = [p for p in _literary_problems(con, r, get_rule(con, id))]
+            if bad:
+                raise ArchiveError("%s: %s" % (id, "; ".join(bad)))
+        con.execute("UPDATE piece_meta SET %s_status = ? WHERE intention_id = ?" % step, (status, id))
+        notes.append("%s=%s" % (step, status))
+    seq = con.execute("SELECT COUNT(*) FROM changelog WHERE intention_id = ?", (id,)).fetchone()[0]
+    con.execute("INSERT INTO changelog VALUES (?,?,?,?,?,?,?,?)",
+                (row_id("c", id, "piece", seq, *notes), now(), author, "piece", id, r["state"], r["state"], ", ".join(notes)))
+    return con.execute("SELECT * FROM piece_meta WHERE intention_id = ?", (id,)).fetchone()
+
+
+def literary_report(con, root=ROOT, states=("approved", "review")):
+    """The warnings of the literary pieces (#120, #128), as (id, message): the genre x situation matrix, the warning words,
+    the warning phrases of CONTRIBUTING.md, the verses across languages, a piece without its editorial record, a record
+    whose verses or stanzas differ from the texts, an approved piece whose review is not complete. Never an error."""
+    out = []
+    where = ",".join("?" * len(states))
+    for r in con.execute("SELECT * FROM intention WHERE state IN (%s) ORDER BY id" % where, states):
+        rule = get_rule(con, r["id"])
+        if not literary.is_literary(rule):
+            continue
+        texts = {}
+        for v in con.execute("SELECT lang, text FROM variant WHERE intention_id = ? ORDER BY lang, ord", (r["id"],)):
+            texts.setdefault(v["lang"], []).append(v["text"])
+        for msg in literary.warnings(rule, texts, root):
+            out.append((r["id"], msg))
+        m = con.execute("SELECT * FROM piece_meta WHERE intention_id = ?", (r["id"],)).fetchone()
+        if m is None:
+            out.append((r["id"], "no editorial record (authoring/pieces.csv): metre, rhyme scheme, review"))
+            continue
+        stanzas = r["kind"] == "stanzas"
+        for lang, items in sorted(texts.items()):
+            body = items[1:] if stanzas else items[:1]
+            # the verses of the first text after its attribution line (of the first stanza for a song of stanzas)
+            n = len(literary.verses(body[0])) - (0 if stanzas else 1) if body else 0
+            if m["lines"] is not None and n != m["lines"]:
+                out.append((r["id"], "%s: %d verses, the record says %d" % (lang, n, m["lines"])))
+            if stanzas and m["stanzas"] is not None and len(body) != m["stanzas"]:
+                out.append((r["id"], "%s: %d stanzas, the record says %d" % (lang, len(body), m["stanzas"])))
+        if r["state"] == "approved":
+            missing = [s for s in literary.REVIEW_STEPS if m[s + "_status"] == "pending"]
+            if missing:
+                out.append((r["id"], "approved, but its review is not complete: %s pending" % ", ".join(missing)))
+    return out
 
 
 def transition(con, action, id, author, note=""):
@@ -868,14 +1052,14 @@ def add_draft(con, d, default_author="ai"):
         raise ArchiveError("%s: unknown pack %r" % (id, pack))
     unknown = set(d) - {"id", "pack", "event", "events", "category", "speaker", "form", "styles", "depth", "tags", "weight",
                         "cooldown", "conditions", "theme", "motifs", "tier", "kind", "parts", "order", "chainable", "texts",
-                        "author", "attribution", "invented_lore"}
+                        "author", "attribution", "invented_lore", "genre", "purpose", "origin", "show", "piece"}
     if unknown:
         raise ArchiveError("%s: unknown fields %s" % (id, ", ".join(sorted(unknown))))
     rule = {"event": d.get("event") or d.get("events") or []}
     if isinstance(rule["event"], str):
         rule["event"] = [rule["event"]]
     for k in ("category", "speaker", "form", "styles", "depth", "tags", "weight", "cooldown", "conditions", "theme",
-              "motifs", "tier", "kind", "parts", "order", "chainable"):
+              "motifs", "tier", "kind", "parts", "order", "chainable", "genre", "purpose", "origin", "show"):
         if d.get(k) is not None:
             rule[k] = d[k]
     texts = d.get("texts") or {}
@@ -893,11 +1077,19 @@ def add_draft(con, d, default_author="ai"):
         set_variants(con, id, lang, variants)
     reindex(con, [id])
     bad = check_content(con, id, "draft")
+    piece = d.get("piece")
+    if piece is not None and not literary.is_literary(rule):
+        bad.append("`piece` is the editorial record of a literary form")
+    elif piece is not None and (not isinstance(piece, dict) or set(piece) - set(PIECE_FIELDS)):
+        bad.append("`piece` takes %s" % ", ".join(PIECE_FIELDS))
     if bad:
         con.execute("DELETE FROM intention WHERE id = ?", (id,))
         raise ArchiveError("%s: %s" % (id, "; ".join(bad)))
     con.execute("INSERT INTO changelog VALUES (?,?,?,?,?,?,?,?)",
                 (row_id("c", id, "add"), now(), author, "add", id, None, "draft", ""))
+    # a literary piece starts its editorial record with the draft (#128): every review step pending
+    if literary.is_literary(rule):
+        set_piece(con, id, author, piece or {})
     return id
 
 

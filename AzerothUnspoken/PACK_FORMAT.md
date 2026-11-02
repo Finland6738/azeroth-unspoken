@@ -121,6 +121,8 @@ AzerothUnspoken:RegisterPack({
 | `theme` | one theme of the closed vocabulary (see "Themes and motifs") | none (no thematic novelty) |
 | `motifs` | list of zero to three motifs of the closed vocabulary | none |
 | `tier` | specificity tier: `0`-`4` or `generic`, `situation`, `region`, `zone`, `subzone`, `landmark` | deduced from the conditions |
+| `genre`, `purpose`, `origin` | a literary form: what it is, what it is for, whose it is (see "Literary forms") | not a literary form, unless tagged `lore` or `genre_*` |
+| `kind`, `show` | `"monologue"` (see "Monologues") or `"stanzas"`, a song of interchangeable stanzas, with `show` 1 or 2 (see "Literary forms") | an ordinary phrase |
 | `conditions` | table of conditions (also `when`) | always true |
 
 ### The texts, with variants
@@ -355,6 +357,61 @@ AzerothUnspoken:RegisterPack({
             ["pensieri.ponte.2"] = { "Nemmeno io, a quanto pare.", "Forse ha ragione lei." } },
         enUS = { ["pensieri.ponte.1"] = { "The river stops for no one.", "The water under the bridge is in a hurry." },
             ["pensieri.ponte.2"] = { "Nor do I, it seems.", "Perhaps it knows something." } },
+    },
+})
+```
+
+### Literary forms (`genre`, `purpose`, `origin`, `kind = "stanzas"`)
+
+A verse, a song, an inscription, a saying or a tale is a **literary form** (#119, [ADR 0043](../docs/adr/0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md)).
+It is always private (`inner` or `npc`), in the category `lore` (rare, never in combat, the setting "Literary forms"),
+and says what it is in three fields with closed vocabularies (`Data/Themes.lua`, `literary`; a pack can add values with
+`literary = { genres = {...}, purposes = {...} }`):
+
+| Field | Values |
+|---|---|
+| `genre` | `verse`, `song`, `formula` (a saying, a proverb, a vow), `epigraph` (carved or written on a place), `prose`, `tale` |
+| `purpose` | `remember`, `mourn`, `amuse`, `accompany`, `bless`, `warn`, `advise`, `celebrate` |
+| `origin` | `common` (anyone could have heard it), `personal`, `culture:<people>` in lower case: matched against the culture the user chooses, never against the race (decision D17) |
+
+A `genre` alone makes a rule a literary form (category `lore`, private). A `song` or a `formula` has no placeholder.
+The validator also warns when a piece breaks the **genre x situation matrix** (an `amuse` piece in a dark, plagued or
+cursed place or after a death; a `mourn` piece in an ironic or everyday register; an `epigraph` away from a ruin, a
+sacred place, a monument or a landmark; an `accompany` piece away from a journey) or names a **warning word** (the night,
+snow, a return, faith) that its conditions do not guarantee. Both lists are data in `Data/Themes.lua` (`literary.matrix`,
+`literary.words`); a pack may add rows. Only warnings: the review decides. There is no excerpt: a piece never goes to chat.
+
+**Interchangeable stanzas** (#127, the one exception to whole phrases). A song with `kind = "stanzas"` has, in each
+language, a **frame** first (the attribution and the fixed refrain, with `{stanzas}` once where the stanzas go) and then
+three to six **stanzas**, in the order they are sung. `show` (1 or 2, default 1) of them are said each time, at random
+but always in that order, with an empty line between two; the one that opened the song last time does not open it next
+time. The stanzas are written together: the same number of verses and about the same syllables verse by verse, the same
+stanzas in every language, none of another song or added by another pack (validator errors).
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "canzoni",
+    languages = { "itIT", "enUS" },
+    registry = {
+        ["canzoni.strada"] = { event = "journey", speaker = "inner", styles = { "everyday" },
+            tags = { "lore", "genre_road_song", "origin_sung" }, cooldown = 4 * 86400,
+            genre = "song", purpose = "accompany", origin = "common",
+            kind = "stanzas", show = 1, conditions = { combat = false } },
+    },
+    texts = {
+        enUS = { ["canzoni.strada"] = {
+            "A walking song comes to mind:\n{stanzas}\n\nStep by step,\nthe road is long.",
+            "The hill is steep,\nthe pack is old.",
+            "The rain will come,\nthe sun will go.",
+            "The fire is low,\nthe night is cold.",
+        } },
+        itIT = { ["canzoni.strada"] = {
+            "Viene in mente una canzone da cammino:\n{stanzas}\n\nPasso su passo,\nla via è lunga.",
+            "Erto è il colle,\nvecchia la sacca.",
+            "Viene la pioggia,\nil sole va.",
+            "Basso è il fuoco,\nfredda la sera.",
+        } },
     },
 })
 ```
@@ -1237,7 +1294,9 @@ scripts of the base are read the same way (#143): `RegisterArcs({ pack = …, ar
 `RegisterDialogues({ pack = …, scripts = { … } })` in `Data/Dialogues.lua` and `AddArcTexts(lang, { … }, packId)` in the
 language folders, each with literal tables. A file that computes its rules in code (a helper function, a loop) still
 works in the game, but it is left out of the archive and of its reports, which list it as "not archived". Since #143 no
-file of the base is in that case.
+file of the base is in that case. The verses pack (`AzerothUnspoken_Versi`) is read too (#128): its `Registry*.lua` and
+`Texts*.lua` files, in the same shapes; the archive also keeps the editorial record of each literary piece (metre, rhyme
+scheme, review), which the game never reads.
 
 ## Previous format (converted on load)
 
@@ -1294,7 +1353,12 @@ a **warning** is advice.
 | `lightReturnAfterBadVisit` | error | a cheerful or ironic return phrase without `lastVisitBad = false` (or, about the bad visit, without `req:irony:high`) |
 | `tooLong` | error | over 255 bytes in the worst case (long names in placeholders) for `/s`, `/e`, party, guild...; for thoughts, over 400 bytes is a warning (600 for a literary form, category `lore`, #126) |
 | `multilinePublic` | warning | a line break in a public voice (`narrator`, `character`): chat gets `" / "` instead (#117) |
-| `literaryCategory` | error | a rule tagged `lore` or `genre_*` in a category other than `lore` (#118) |
+| `literaryCategory` | error | a rule tagged `lore` or `genre_*`, or with a `genre` or stanzas, in a category other than `lore` (#118) |
+| `badGenre`, `badPurpose`, `badOrigin` | error | a `genre` or a `purpose` not in the vocabularies; an `origin` other than `common`, `personal`, `culture:<people>` (#119) |
+| `literaryField`, `literaryPlaceholder` | error | `purpose` or `origin` on a rule that is not a literary form; a placeholder in a `song` or a `formula` (#119) |
+| `literaryMeta`, `verseCount` | warning | a literary form without `genre`, `purpose` and `origin`; a different number of verses in two languages (#119) |
+| `literaryMatrix`, `literaryWord` | warning | a pairing the genre x situation matrix forbids; a warning word (night, snow, return, faith) without its condition (#120; not for a rule offered only on a manual event) |
+| `stanzaGenre`, `stanzaShow`, `stanzaFrame`, `stanzaCount`, `stanzaVerses`, `stanzaMetre`, `stanzaLangs`, `stanzaDepth`, `stanzaMix` | error | a song of stanzas that is not a `song`, a `show` other than 1-2, a frame without `{stanzas}` once (or a stanza with it), fewer than 3 or more than 6 stanzas, stanzas of different length or metre, not the same stanzas in every language, a depth of their own, a stanza of another song or added by another pack (#127) |
 | `badCategory` | error | a category's pacing out of range: `budget` and `window` at least 1, `cooldown` and `minCooldown` at least 0 (#118) |
 | `tooLongFramed` | warning | with the longest frame it exceeds 255 bytes |
 | `badUTF8` | error | text that is not valid UTF-8, control character, U+FFFD (corrupted text) |
@@ -1305,7 +1369,7 @@ a **warning** is advice.
 | `badQuota`, `badHunger` | error | a category quota or hunger with values out of range (see "Direction") |
 | `orphanText` | error | texts for an id that no pack has registered |
 | `monologueParts`, `monologueOrder`, `monologuePart`, `monologueVoice`, `monologueForm`, `monologueStyle`, `monologueTheme`, `monologueLength` | error | a monologue with fewer than 2 or more than 3 parts, a wrong `order`, a part that does not exist, is repeated, is not `chainable` or is a monologue, a public voice (also for a `chainable` phrase), a part in the wrong form, with a far register, with neither the theme nor a motif of the monologue, or too long (see "Monologues") |
-| `badKind`, `badChainable` | error | `kind` other than `"monologue"`, `parts` or `order` without it; `chainable` other than `true` or `"only"` |
+| `badKind`, `badChainable` | error | `kind` other than `"monologue"` or `"stanzas"`, `parts` or `order` without a monologue, `show` without stanzas; `chainable` other than `true` or `"only"` |
 | `monologueBusy`, `monologueText`, `orphanPart` | warning | a monologue in combat or spellcraft; texts written for a monologue (they are never said); a `chainable = "only"` phrase that no monologue uses |
 | `badSituation`, `situationLead` | error | a composite situation with an undeclared event, a window outside 1-300 s, wrong conditions or nothing to compose; a phrase for a situation in an event that is not its lead |
 | `noSpeaker`, `noStyle`, `innerEmote` | warning | missing voice or register; a thought in the form of an emote |

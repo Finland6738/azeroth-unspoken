@@ -32,6 +32,7 @@ The risk with an addon of this kind is producing lines that are ungrammatical, r
 - Negative:
   - variety depends on how many lines are written: a lot of content is needed (steps S7 and S11 of the roadmap);
   - discipline is needed to keep engine and data separate as features grow (for example, relationship labels will have to live in data, not in code).
+- One exception, bounded by the validator: the interchangeable stanzas of a song (#127, [ADR 0043](0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md)). One or two stanzas of the same song, written together in the same metre, are said with its fixed refrain, always in their order; stanzas of two songs are never mixed.
 - Step S3 introduces a v2 data schema (rule registry separate from the per-language texts) that carries this separation further, without changing the principle.
 
 ## References

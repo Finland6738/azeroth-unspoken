@@ -41,11 +41,17 @@ NS.Engine = Engine
 ---@field tier? integer explicit specificity tier (#89); read the tier with Engine.Tier(p)
 ---@field theme? string theme of the phrase (#90), from Engine.THEMES
 ---@field motifs? string[] concrete images of the phrase (#90, at most three), from Engine.MOTIFS
----@field kind? "monologue" a monologue (#99): no texts of its own, it chains the whole phrases in `parts`
+---@field kind? "monologue"|"stanzas" a monologue (#99): no texts of its own, it chains the whole phrases in `parts`;
+---or a song of interchangeable stanzas (#127, ADR 0043): in each language its first variant is the frame (the
+---attribution and the refrain, with {stanzas} where the stanzas go), the others are the stanzas in their declared order
 ---@field parts? string[] ids of the two or three whole phrases of a monologue, in the order they are said
 ---@field order? "fixed"|"free" free: the parts after the first may come in any order (monologue only)
 ---@field chainable? true|"only" the phrase may be a part of a monologue; "only" = never said on its own
 ---@field situational? true the conditions ask a composite situation (#100): a line written for that situation
+---@field genre? string #119: the literary form (Engine.GENRES): verse, song, formula, epigraph, prose, tale
+---@field purpose? string #119: what the piece is for (Engine.PURPOSES): remember, mourn, amuse, accompany...
+---@field origin? string #119: common | personal | culture:<people> (D17: the culture the user chooses, never the race)
+---@field show? integer #127: how many stanzas of a song with `kind = "stanzas"` are said (1 or 2)
 -- events, styles, tags, motifs e depth sono condivisi tra le frasi con gli stessi valori (#84): sola lettura.
 
 ---@class AURegistryEntry la regola di una frase nel formato v2
@@ -62,10 +68,14 @@ NS.Engine = Engine
 ---@field tier? integer|string explicit specificity tier (#89); absent = deduced from the conditions
 ---@field theme? string one theme (#90)
 ---@field motifs? string[] zero to three motifs (#90)
----@field kind? "monologue" #99: a monologue made of the whole phrases in `parts`
+---@field kind? "monologue"|"stanzas" #99: a monologue made of the whole phrases in `parts`; #127: a song of stanzas
 ---@field parts? string[] #99: two or three ids of chainable phrases
 ---@field order? "fixed"|"free" #99: the order of the parts after the first (default fixed)
 ---@field chainable? boolean|"only" #99: the phrase may be a part of a monologue; "only" = only as a part
+---@field genre? string #119: verse | song | formula | epigraph | prose | tale (a literary form)
+---@field purpose? string #119: remember | mourn | amuse | accompany | bless | warn | advise | celebrate
+---@field origin? string #119: common | personal | culture:<people>
+---@field show? integer #127: with kind = "stanzas", the stanzas said each time (1 or 2, default 1)
 
 Engine.packs = {}       -- [id] = pacchetto
 Engine.packOrder = {}
@@ -104,6 +114,15 @@ function Engine.HasLiteraryTag(tags)
 	return false
 end
 
+---Whether a registered rule is a literary form: a literary tag, the literary category, a genre (#119) or stanzas (#127).
+---@param p? table
+---@return boolean
+function Engine.IsLiteraryRule(p)
+	if type(p) ~= "table" then return false end
+	return Engine.HasLiteraryTag(p.tags) or p.category == Engine.LITERARY_CATEGORY or p.genre ~= nil
+		or p.kind == "stanzas"
+end
+
 -- Profondità stilistica (GDD §4.3), dalla più semplice alla più elevata.
 Engine.DEPTH_ORDER = { "natural", "literary", "elevated" }
 Engine.DEPTHS = { natural = true, literary = true, elevated = true }
@@ -137,6 +156,27 @@ Engine.CATEGORY_DEFS = {}
 -- the category of the literary forms (#118, D15): rare, never in combat, never in public chat (D16), and the user's
 -- setting "literary forms: never / rare / normal" (literary.frequency)
 Engine.LITERARY_CATEGORY = "lore"
+
+-- Literary metadata (#119, #120, ADR 0043): closed vocabularies of `genre` and `purpose`, filled by Data/Themes.lua and
+-- by the packs (`literary = { genres = {}, purposes = {} }`), and the warnings of the validator: the genre x situation
+-- matrix and the words that ask a condition (`matrix`, `words`). `origin` is `common`, `personal` or
+-- `culture:<people>`; CULTURES is the list of peoples the user can choose (#124): while it is empty any lower-case name
+-- is accepted.
+Engine.GENRES = {}
+Engine.PURPOSES = {}
+Engine.ORIGINS = { common = true, personal = true }
+Engine.CULTURES = {}
+Engine.LITERARY_MATRIX = {}
+Engine.LITERARY_WORDS = {}
+-- genres whose words are fixed: no placeholder may change them (a song keeps its metre, a formula its words)
+Engine.FIXED_GENRES = { song = true, formula = true }
+
+-- Interchangeable stanzas (#127, ADR 0043, the one exception to ADR 0001): a song with `kind = "stanzas"` has, in each
+-- language, a frame (its first variant: the attribution and the refrain, with STANZA_MARK where the stanzas go) and
+-- STANZAS_MIN to STANZAS_MAX stanzas written together; `show` of them (1 or 2) are said, in their declared order.
+Engine.STANZA_MARK = "{stanzas}"
+Engine.STANZAS_MIN, Engine.STANZAS_MAX = 3, 6
+Engine.STANZAS_SHOW_MAX = 2
 
 -- Themes and motifs (#90, ADR 0029): closed vocabularies, filled by Data/Themes.lua and by the packs that declare
 -- `themes = {}` or `motifs = {}`. The validator rejects a rule or a frame that names one not declared.
@@ -431,7 +471,8 @@ local function ReleaseWhen(when)
 end
 
 -- Shared rule shapes (#138, ADR 0024): the fields that repeat across rules (pack, events, voice, form, category, depth,
--- weight, cooldown, specificity, tier, the monologue fields) live in one shape per distinct combination, which is the
+-- weight, cooldown, specificity, tier, the monologue fields, the literary metadata of #119 and #127) live in one shape
+-- per distinct combination, which is the
 -- rule's metatable (__index = shape). The rule table keeps what is its own or nearly so: id, text, when (shared, see
 -- above), ord, and its registers, tags, theme and motifs, whose combinations are almost unique in written content (the
 -- base packs: 1,169 rules would make 1,104 shapes with them), so a rule fills the eight slots of its hash part instead
@@ -439,7 +480,7 @@ end
 -- shape field gives the rule a private copy of its shape first (copy on write), so it never changes the other rules of
 -- the shape. The shape is also part of the key the selection memoizes by (WeightedSelector, per pick).
 Engine.SHAPE_FIELDS = { "pack", "events", "speaker", "form", "category", "depth", "depthList", "weight", "cooldown", "spec",
-	"tier", "kind", "parts", "order", "chainable", "situational", "legacy" }
+	"tier", "kind", "parts", "order", "chainable", "situational", "legacy", "genre", "purpose", "origin", "show" }
 local SHAPE_FIELD = {}
 for _, k in ipairs(Engine.SHAPE_FIELDS) do SHAPE_FIELD[k] = true end
 local shapes, shapeRules = {}, {}   -- [key] = shape, [key] = rules that use it (released by DropPack)
@@ -899,9 +940,11 @@ function Engine:AddEntry(pack, id, e, legacy)
 	end
 	p.speaker, p.form = speaker, form
 
-	-- #118: a literary form (tags lore, genre_*) is in the literary category unless it says otherwise (the validator
-	-- refuses another one), so its rarity and the user's setting hold even for a pack that forgot the field
-	p.category = e.category or (Engine.HasLiteraryTag(ToSet(e.tags)) and Engine.LITERARY_CATEGORY)
+	-- #118: a literary form (tags lore, genre_*; a genre, #119; stanzas, #127) is in the literary category unless it
+	-- says otherwise (the validator refuses another one), so its rarity and the user's setting hold even for a pack
+	-- that forgot the field
+	local literary = Engine.HasLiteraryTag(ToSet(e.tags)) or e.genre ~= nil or e.kind == "stanzas"
+	p.category = e.category or (literary and Engine.LITERARY_CATEGORY)
 		or Engine.EventCategory(p.events[1]) or "general"
 	local styles = {}
 	for _, s in ipairs(e.styles and AsList(e.styles) or LegacyTones(e.tone)) do table.insert(styles, s) end
@@ -951,12 +994,29 @@ function Engine:AddEntry(pack, id, e, legacy)
 			p.kind = "monologue"
 			p.parts = SharedList(AsList(e.parts))
 			if e.order ~= nil then p.order = e.order end
+		elseif e.kind == "stanzas" then
+			-- #127: a song of interchangeable stanzas; the validator checks the frame, the stanzas and `show`
+			p.kind = "stanzas"
+			if e.parts ~= nil or e.order ~= nil then
+				Issue(pack, "badKind", id, "parts and order belong to a rule with kind = \"monologue\"")
+			end
 		else
-			Issue(pack, "badKind", id, ("kind '%s' unknown (only \"monologue\")"):format(tostring(e.kind)))
+			Issue(pack, "badKind", id, ("kind '%s' unknown (\"monologue\" or \"stanzas\")"):format(tostring(e.kind)))
 		end
 	elseif e.parts ~= nil or e.order ~= nil then
 		Issue(pack, "badKind", id, "parts and order belong to a rule with kind = \"monologue\"")
 	end
+	if e.show ~= nil then
+		if e.kind == "stanzas" then
+			p.show = e.show
+		else
+			Issue(pack, "badKind", id, "show belongs to a rule with kind = \"stanzas\"")
+		end
+	end
+	-- literary metadata (#119): kept as written, the validator checks them against the vocabularies
+	if e.genre ~= nil then p.genre = e.genre end
+	if e.purpose ~= nil then p.purpose = e.purpose end
+	if e.origin ~= nil then p.origin = e.origin end
 	if e.chainable == true or e.chainable == "only" then
 		p.chainable = e.chainable
 	elseif e.chainable ~= nil and e.chainable ~= false then
@@ -1133,6 +1193,29 @@ function NS:RegisterMotif(id)
 	if type(id) == "string" and id ~= "" then self.Engine.MOTIFS[id] = true end
 end
 
+---Literary vocabularies and warnings (#119, #120, ADR 0043): `genres` and `purposes` join the closed vocabularies,
+---the `matrix` rows and the `words` join the warnings of the validator (each keeps the id of the pack that declared it).
+---@param def { genres?: string[], purposes?: string[], matrix?: table[], words?: table[] }
+---@param packId? string
+function NS:RegisterLiterary(def, packId)
+	local Engine = self.Engine
+	if type(def) ~= "table" then return end
+	for _, g in ipairs(def.genres or {}) do
+		if type(g) == "string" and g ~= "" then Engine.GENRES[g] = true end
+	end
+	for _, u in ipairs(def.purposes or {}) do
+		if type(u) == "string" and u ~= "" then Engine.PURPOSES[u] = true end
+	end
+	for key, list in pairs({ matrix = Engine.LITERARY_MATRIX, words = Engine.LITERARY_WORDS }) do
+		for _, row in ipairs(def[key] or {}) do
+			if type(row) == "table" then
+				row.pack = row.pack or packId
+				table.insert(list, row)
+			end
+		end
+	end
+end
+
 ---Per-session quota of a category (#91): at most `share` (0-1) of the last `window` spontaneous interventions, counting
 ---only those of the last `span` seconds. nil removes it. The validator checks the values.
 ---@param category string
@@ -1203,6 +1286,7 @@ function NS:RegisterPack(pack)
 	end
 	for _, t in ipairs(pack.themes or {}) do self:RegisterTheme(t) end
 	for _, m in ipairs(pack.motifs or {}) do self:RegisterMotif(m) end
+	if type(pack.literary) == "table" then self:RegisterLiterary(pack.literary, pack.id) end
 	for _, c in ipairs(SortedKeys(pack.quotas or {})) do self:SetCategoryQuota(c, pack.quotas[c]) end
 	for _, c in ipairs(SortedKeys(pack.hunger or {})) do self:SetCategoryHunger(c, pack.hunger[c]) end
 	for _, name in ipairs(SortedKeys(pack.situations or {})) do self:RegisterSituation(name, pack.situations[name], pack.id) end

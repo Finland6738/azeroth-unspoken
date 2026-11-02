@@ -46,9 +46,9 @@ def docs_rule():
     check(ok, "the example pack counts as the addon, and passes with CHANGELOG and docs")
     ok, _ = ev(["AzerothUnspoken_Example/Example.lua"], [])
     check(not ok, "example pack change alone: fails")
-    ok, _ = ev(["AzerothUnspoken_Versi/Versi.lua"], [])
+    ok, _ = ev(["AzerothUnspoken_Versi/Registry.lua"], [])
     check(not ok, "verses pack change alone: fails")
-    ok, _ = ev(["AzerothUnspoken_Versi/Versi.lua", "CHANGELOG.md", "docs/wiki/Phrase-Packs.md"], [])
+    ok, _ = ev(["AzerothUnspoken_Versi/Registry.lua", "CHANGELOG.md", "docs/wiki/Phrase-Packs.md"], [])
     check(ok, "the verses pack counts as the addon, and passes with CHANGELOG and docs")
     for path in ("AzerothUnspoken_enUS/Combat.lua", "AzerothUnspoken_Kalimdor_itIT/Exploration.lua"):
         ok, _ = ev([path], [])

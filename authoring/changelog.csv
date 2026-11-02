@@ -1,1 +1,62 @@
 id,date,author,action,intention_id,from_state,to_state,note
+20261102T120000Z-015ccd129c,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.01,approved,approved,lore=none
+20261102T120000Z-04444dde55,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.02,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=1, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-052c32e3ac,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.02,approved,approved,metre=ok
+20261102T120000Z-0ee0963282,2026-11-02T12:00:00Z,legacy,piece,versi.meet.trust.01,approved,approved,originality=ok
+20261102T120000Z-18388e6e78,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.03,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-1bcc677744,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=1, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-1e1cec375b,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.02,approved,approved,lore=none
+20261102T120000Z-1ea71419d2,2026-11-02T12:00:00Z,legacy,piece,versi.hymn.pray.01,approved,approved,lore=none
+20261102T120000Z-1f54a2ab6b,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.01,approved,approved,lore=none
+20261102T120000Z-2a9c091ce3,2026-11-02T12:00:00Z,legacy,piece,versi.meet.wary.01,approved,approved,metre=ok
+20261102T120000Z-2d52320c12,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.names.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-2f7fba9bf1,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.02,approved,approved,originality=ok
+20261102T120000Z-2fb6921b0f,2026-11-02T12:00:00Z,legacy,piece,versi.meet.trust.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=ABAB (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-37148e2858,2026-11-02T12:00:00Z,legacy,piece,versi.lament.wipe.01,approved,approved,"meter=common metre 8.6.8.6 (en); short lines (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-38d162b8a9,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.02,approved,approved,originality=ok
+20261102T120000Z-3cc37679a3,2026-11-02T12:00:00Z,legacy,piece,versi.meet.wary.01,approved,approved,originality=ok
+20261102T120000Z-3d6c930dd6,2026-11-02T12:00:00Z,legacy,piece,versi.meet.wary.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-3e87728d5e,2026-11-02T12:00:00Z,legacy,piece,versi.meet.trust.01,approved,approved,lore=none
+20261102T120000Z-4454a527f7,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=AABB (en), lines=4, singable=1, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-4a64740846,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.02,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=ABAB (en), lines=4, singable=1, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-4d07190e54,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.01,approved,approved,metre=ok
+20261102T120000Z-50daaf6c57,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-52c4461600,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-53cc1dbec4,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.sacred.01,approved,approved,originality=ok
+20261102T120000Z-567fd9695e,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.01,approved,approved,originality=ok
+20261102T120000Z-62397646f3,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.02,approved,approved,metre=ok
+20261102T120000Z-645357d921,2026-11-02T12:00:00Z,legacy,piece,versi.hymn.pray.01,approved,approved,originality=ok
+20261102T120000Z-6d8c2be48e,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.01,approved,approved,originality=ok
+20261102T120000Z-72c25275d4,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.03,approved,approved,lore=none
+20261102T120000Z-73dd7fa35b,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.sacred.01,approved,approved,lore=none
+20261102T120000Z-7b5edbdd3c,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.02,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-7c3646fbae,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.01,approved,approved,originality=ok
+20261102T120000Z-7dcef25405,2026-11-02T12:00:00Z,legacy,piece,versi.lament.wipe.01,approved,approved,lore=none
+20261102T120000Z-7e4093b847,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.02,approved,approved,originality=ok
+20261102T120000Z-7ff3576591,2026-11-02T12:00:00Z,ai-l3,piece,versi.road.stanzas.01,approved,approved,"meter=common metre 8.6.8.6 (en); alternating nine and eight syllables (it), rhyme_scheme=XAXA, lines=4, stanzas=4, refrain=1, singable=1, note=L3 (#127): the prototype song of interchangeable stanzas; the three review steps are the owner's"
+20261102T120000Z-801204397e,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.names.01,approved,approved,originality=ok
+20261102T120000Z-8185e58a3d,2026-11-02T12:00:00Z,legacy,piece,versi.meet.wary.01,approved,approved,lore=none
+20261102T120000Z-8ac463845e,2026-11-02T12:00:00Z,legacy,piece,versi.hymn.pray.01,approved,approved,"meter=common metre 8.6.8.6 (en); short lines (it), rhyme_scheme=XAXA (en), lines=4, singable=1, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-8b0f96c4a5,2026-11-02T12:00:00Z,legacy,piece,versi.lament.wipe.01,approved,approved,metre=ok
+20261102T120000Z-8b5aed08a4,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.01,approved,approved,originality=ok
+20261102T120000Z-8e8e5a9f53,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.02,approved,approved,metre=ok
+20261102T120000Z-950842ab3c,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.01,approved,approved,lore=none
+20261102T120000Z-95d73d4077,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.02,approved,approved,originality=ok
+20261102T120000Z-9b236a0387,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.sacred.01,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=AABB (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"
+20261102T120000Z-9f9b50de3a,2026-11-02T12:00:00Z,legacy,piece,versi.meet.trust.01,approved,approved,metre=ok
+20261102T120000Z-a4fff64468,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.03,approved,approved,metre=ok
+20261102T120000Z-accd3806a1,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.01,approved,approved,metre=ok
+20261102T120000Z-b53b530e27,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.names.01,approved,approved,metre=ok
+20261102T120000Z-b56fe6c034,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.names.01,approved,approved,lore=none
+20261102T120000Z-b898b14baf,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.ruin.02,approved,approved,lore=none
+20261102T120000Z-be8fc0a569,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.02,approved,approved,lore=none
+20261102T120000Z-c5ab17df29,2026-11-02T12:00:00Z,legacy,piece,versi.road.song.01,approved,approved,metre=ok
+20261102T120000Z-c74a5cca52,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.02,approved,approved,lore=none
+20261102T120000Z-c96522c1ff,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.03,approved,approved,originality=ok
+20261102T120000Z-cc6178f1be,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.01,approved,approved,lore=none
+20261102T120000Z-d1ff614df8,2026-11-02T12:00:00Z,legacy,piece,versi.inscription.sacred.01,approved,approved,metre=ok
+20261102T120000Z-d36ec0c8f3,2026-11-02T12:00:00Z,legacy,piece,versi.lament.wipe.01,approved,approved,originality=ok
+20261102T120000Z-d8c3c27448,2026-11-02T12:00:00Z,legacy,piece,versi.hymn.pray.01,approved,approved,metre=ok
+20261102T120000Z-d9fbcae28d,2026-11-02T12:00:00Z,legacy,piece,versi.return.verse.02,approved,approved,metre=ok
+20261102T120000Z-e0fca31dc1,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.01,approved,approved,metre=ok
+20261102T120000Z-ff57014187,2026-11-02T12:00:00Z,legacy,piece,versi.inn.rhyme.02,approved,approved,"meter=four-stress lines (en); short lines of seven to nine syllables (it), rhyme_scheme=XAXA (en), lines=4, singable=0, note=L0 (#115): reviewed with the pack in PR #136, before the archive held it; record added in L3 (#128)"

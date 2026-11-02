@@ -66,10 +66,15 @@ CREATE TABLE intention (
     theme         TEXT,                          -- one theme of the closed vocabulary (#90, Data/Themes.lua)
     motifs        TEXT,                          -- JSON list: zero to three motifs (#90)
     tier          TEXT,                          -- JSON: an explicit specificity tier (#89), a number or a name
-    kind          TEXT,                          -- 'monologue' (#99): no texts, it chains the phrases in `parts`
+    kind          TEXT,                          -- 'monologue' (#99): no texts, it chains the phrases in `parts`;
+                                                 -- 'stanzas' (#127): a song, its frame then its stanzas in every language
     parts         TEXT,                          -- JSON list: the ids of the two or three parts of a monologue (#99)
     part_order    TEXT,                          -- the rule field `order` of a monologue: 'fixed' or 'free' (#99)
     chainable     TEXT,                          -- JSON: true or "only", the phrase may be a part of a monologue (#99)
+    genre         TEXT,                          -- literary form (#119): verse, song, formula, epigraph, prose, tale
+    purpose       TEXT,                          -- what a piece is for (#119): remember, mourn, amuse, accompany...
+    piece_origin  TEXT,                          -- the rule field `origin` (#119): common, personal, culture:<people>
+    stanza_show   INTEGER,                       -- the rule field `show` of a song of stanzas (#127): 1 or 2
     weight        NUMERIC,
     cooldown      NUMERIC,
     conditions    TEXT,                          -- JSON (a Lua condition table; R4 adds emotion, emotionMin/Max, traitMin/Max;
@@ -103,6 +108,32 @@ CREATE TABLE variant (
     depth        TEXT,
     PRIMARY KEY (intention_id, lang, ord)
 );
+
+-- Literary pieces (#128, ADR 0043): an intention that is a literary form (a genre, the tag lore or genre_*, stanzas)
+-- has one row here with its editorial record. The rule fields of a piece (genre, purpose, origin, show) are columns of
+-- the intention, exported to the folders; this table holds what the game never reads, and lives in the overlay
+-- (authoring/pieces.csv) for every piece, approved ones too. A piece is approved only after its metre and language
+-- review, its lore review (`none` when it names no lore) and its originality check, in this order.
+CREATE TABLE piece_meta (
+    intention_id       TEXT PRIMARY KEY REFERENCES intention(id) ON DELETE CASCADE,
+    meter              TEXT NOT NULL DEFAULT '',   -- the metre as written by the author ("common metre", "ottonari")
+    rhyme_scheme       TEXT NOT NULL DEFAULT '',   -- "ABAB", "AABB", "-" for none
+    lines              INTEGER,                    -- verses of the piece (of one stanza for a song of stanzas)
+    stanzas            INTEGER,                    -- stanzas (a song of stanzas: how many are written)
+    refrain            INTEGER NOT NULL DEFAULT 0 CHECK (refrain IN (0, 1)),
+    singable           INTEGER NOT NULL DEFAULT 0 CHECK (singable IN (0, 1)),
+    lore_ref           TEXT NOT NULL DEFAULT '',   -- the source of a lore claim (a quest, a book in game), '' for none
+    metre_status       TEXT NOT NULL DEFAULT 'pending' CHECK (metre_status IN ('pending', 'ok')),
+    lore_status        TEXT NOT NULL DEFAULT 'pending' CHECK (lore_status IN ('pending', 'ok', 'none')),
+    originality_status TEXT NOT NULL DEFAULT 'pending' CHECK (originality_status IN ('pending', 'ok')),
+    note               TEXT NOT NULL DEFAULT ''
+);
+-- the piece as analysis A2 §6.1 describes it: the rule fields and the editorial record together
+CREATE VIEW piece AS
+    SELECT i.id AS content_id, i.genre, i.purpose, i.piece_origin AS origin, i.kind, i.stanza_show AS show,
+           m.meter, m.rhyme_scheme, m.lines, m.stanzas, m.refrain, m.singable, m.lore_ref, m.metre_status, m.lore_status,
+           m.originality_status, m.note, i.state
+    FROM intention i JOIN piece_meta m ON m.intention_id = i.id;
 
 -- review states: draft -> review -> approved -> retired; ids are timestamps so that two branches rarely collide
 CREATE TABLE review (
