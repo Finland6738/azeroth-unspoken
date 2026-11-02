@@ -742,4 +742,32 @@ NS:AddTexts("itIT", {
 		"Una candela alla finestra, e mi concedo di fingere che sia accesa per me. Una piccola finzione. Me la tengo.",
 		{ "Una candela alla finestra. Fra tutte le locande lungo la strada, proprio questa.", depth = "natural" },
 	},
+	["rel.home.cold"] = {
+		"Casa, la chiamano. Il fuoco arde come sempre: è l'accoglienza che si è spenta.",
+		{ "La stessa locanda. Una stanza più fredda.", depth = "natural" },
+	},
+	["rel.home.return"] = {
+		"Strade lunghe, e alla fine lo stesso fuoco. Casa è una parola più piccola di come suona, e migliore.",
+		{ "Casa. La sedia vicino al fuoco è ancora mia.", depth = "natural" },
+	},
+	["rel.npc.foe.attacked"] = {
+		"Non ha dimenticato il giorno in cui ho colpito per {g:primo|prima}. Nemmeno io.",
+		{ "Ricorda. Certo che ricorda.", depth = "natural" },
+	},
+	["rel.npc.foe.host"] = {
+		"Questo focolare mi aveva accolto. Ho risposto con il ferro, e da allora qui il fuoco è freddo.",
+		{ "Nessuna porta si chiude più forte di quella che hai rotto.", depth = "natural" },
+	},
+	["rel.npc.foe.killed"] = {
+		"Una volta ho messo fine ai suoi giorni. Chi sta qui ora mi guarda come se ricordasse.",
+		{ "Certi volti non dovrebbero guardarti due volte.", depth = "natural" },
+	},
+	["rel.npc.town.betrayed"] = {
+		"Qui la voce di ciò che ho fatto ha fatto il giro. Anche i più gentili ora mi misurano.",
+		{ "Abbassano la voce quando passo.", depth = "natural" },
+	},
+	["rel.town.foe"] = {
+		"Qui non mi hanno dimenticato, e i motivi glieli ho dati io.",
+		{ "Ogni guardia qui conosce la mia faccia.", depth = "natural" },
+	},
 }, "base_relations")

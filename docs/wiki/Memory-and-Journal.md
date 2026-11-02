@@ -18,6 +18,7 @@ The addon keeps only **significant moments**, never chat text. For example:
 | **An oath broken** | you abandon a quest you had sworn to an NPC who was your friend (see [[Relationships]]) |
 | **A favor done** | you did a small favor a friendly NPC asked of you (see [[Relationships]]) |
 | **A nickname** | a close friend among the NPCs gave your character a nickname: the line shows it (see [[Relationships]]) |
+| **Guest-right broken** | you raised your hand against the innkeeper of your hearth, or under their roof (kept for good, the town only; see [[Relationships]]) |
 | **An honorary title** | a town gives you a title for the first time, such as *Friend of Goldshire* (kept for good; see [[Relationships]]) |
 | **A chat** | you finish an [[NPC ambient dialogue|NPC-Dialogues]] |
 

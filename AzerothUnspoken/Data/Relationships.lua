@@ -159,6 +159,13 @@ NS.Relationships:RegisterData({
 			cap = { trust = 8, affection = 8, loyalty = 4 } },
 		-- N6 (#218): an NPC notices that you grew close to their rival (`rivalries` below). Not a meeting either.
 		rival_noticed = { gain = { affection = -4, trust = -2 }, decay = 1 },
+		-- N1 (#213): hostility (`hostility` below). Not meetings either. `attack` and `attack_host` fall on the named NPC
+		-- the character struck first, `kill` when that NPC died by the character's hand (or pet), `attack_witnessed` on
+		-- a known NPC who saw it. After `attack` the NPC also drops to `hostility.grudge.drop` (Hated).
+		attack = { gain = { trust = -40, affection = -50, loyalty = -40, respect = -15, fear = 10 }, decay = 1 },
+		attack_host = { gain = { trust = -60, affection = -60, loyalty = -60, respect = -30 }, decay = 1 },
+		kill = { gain = { fear = 15, respect = -10 }, decay = 1 },
+		attack_witnessed = { gain = { trust = -12, affection = -8, loyalty = -6, fear = 4 }, decay = 0.7 },
 	},
 	lifetimeSoftness = 0.5,
 
@@ -370,7 +377,9 @@ NS.Relationships:RegisterData({
 		},
 		word = { share = 0.25, limit = 15, notice = 6,
 			axes = { trust = true, respect = true, affection = true, loyalty = true },
-			skip = { rival_noticed = true } },
+			skip = { rival_noticed = true,
+				-- N1 (#213): hostility moves the word by its own rules (`hostility.word`), only when someone saw
+				attack = true, attack_host = true, kill = true, attack_witnessed = true } },
 		esteem = { perNpc = 60, perQuest = 4, minNpcs = 3, keep = 0.75 },
 		titles = {
 			{ id = "friend", esteem = 120, name = { en = "Friend of %s", it = { "Amico di %s", "Amica di %s" } } },
@@ -385,5 +394,54 @@ NS.Relationships:RegisterData({
 	rivalries = {
 		band = "friend", days = 30,
 		ironic = { cheerful = true, merciful = true, melancholic = true },
+	},
+
+	-- N1 (#213): hostility. Narration only: nothing here changes how anyone behaves in the game, and nothing goes to chat.
+	-- Detection follows ADR 0035 (unconfirmed in game): a fight is an attack only when the character struck its target
+	-- first (an auto-attack or a spell at an attackable target that was not already fighting them); pets, players, group
+	-- members' fights, area blows on other units and ordinary mobs never count. Kinds of victim:
+	--   foe       the opposite faction (Alliance or Horde): the town or city remembers you as a foe (`foe.days`), no NPC
+	--             remembers you one by one
+	--   betrayal  your own faction, or someone friendly before the fight: a betrayal, the town's trust follows (below)
+	--   neutral   anyone else who was not hostile before the fight (reaction `reaction` or above)
+	-- Who remembers individually: a named NPC only (a `named.classes` classification, a quest boss, an NPC the addon
+	-- already knows, or one of the curated register Data/NPCs.lua).
+	--   grudge   an attacked named NPC drops to `drop` (Hated). With the option "Eternal grudge" (relations.eternalGrudge,
+	--            on) no automatic gain lifts an axis above `ceiling` for ever; with it off the ceiling holds `graceDays`
+	--            after the last attack, then every positive gain is multiplied by `redeem` (slow redemption)
+	--   witnesses friendly NPCs on the nameplates shown (not players, not pets), near (`near`: a CheckInteractDistance
+	--            index) when the client says; at most `max`. A witness the addon already knows takes `attack_witnessed`;
+	--            only when someone saw (or the host was struck) does the word reach the town: `word[kind]` is added to
+	--            the town's word (N6) within its limit
+	--   betrayal the town of a betrayal remembers it `days` days (fading): meanwhile the trust anyone there can gain is
+	--            multiplied by down to `trust`
+	--   host     guest-right: the innkeeper of your hearth (the binder) is home. Attacking them, or anyone inside their
+	--            inn (the subzone where you bound), is the gravest betrayal: `attack_host` on the host, the whole town
+	--            knows (no witness needed, `word.host`), a mark of `host.days` (trust down to `host.trust`) and a
+	--            permanent journal line
+	--   home     coming back to the hearth's town after `home.awayDays` days or more away: a private line (a warm one, or
+	--            a cold one while the town remembers a betrayal of the host); the condition homeReturn holds `home.minutes`
+	--   perSession, variants  the private notices of a session and the texts rel_foe_*_N, rel_home_*_N of
+	--            Data/<lang>/RelationsUI.lua
+	hostility = {
+		reaction = 4,
+		named = { classes = { elite = true, rare = true, rareelite = true, worldboss = true }, questBoss = true },
+		opening = 3, linger = 3,
+		grudge = {
+			drop = { trust = -90, affection = -90, loyalty = -85, respect = -60 },
+			ceiling = { trust = -80, affection = -80, loyalty = -80, respect = -50 },
+			graceDays = 180, redeem = 0.25,
+		},
+		witnesses = { max = 12, near = 4 },
+		word = {
+			betrayal = { trust = -6, affection = -4, loyalty = -4 },
+			neutral = { trust = -4, affection = -3 },
+			host = { trust = -15, affection = -15, loyalty = -15, respect = -10 },
+		},
+		betrayal = { days = 30, trust = 0.5 },
+		host = { days = 120, trust = 0.25 },
+		foe = { days = 90 },
+		home = { awayDays = 5, minutes = 10 },
+		perSession = 3, variants = 2,
 	},
 })

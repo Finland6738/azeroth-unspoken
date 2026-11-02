@@ -1,6 +1,6 @@
 # 0035. Attacks, kills and deaths without the combat log: threat, blows and two new unit events
 
-- Status: proposed (**to confirm in game**: the owner runs section N0 of `docs/G1_checklist.md`, then this ADR is accepted, changed or rejected)
+- Status: proposed (**to confirm in game**: the owner runs section N0 of `docs/G1_checklist.md`, then this ADR is accepted, changed or rejected). On 2026-11-02 the owner decided not to wait for that run: N1 ([ADR 0041](0041-hostility-grudges-betrayal-witnesses-and-guest-right.md), #213) is built on this recipe as proposed, **unconfirmed in game**; what the run or play shows wrong becomes a new issue.
 - Date: 2026-11-01
 
 ## Context
@@ -49,7 +49,7 @@ All reads go through Compat (`SafeCall`, `Query`, `Readable`); a hidden identity
 ## Consequences
 
 - Positive: N1, N7 and N8 share one recipe and one set of reads; every fact has an "unknown" that keeps the narration silent rather than wrong; nothing changes how an NPC behaves in game (narration only).
-- Negative or costs: the recipe guesses. False positives the probe is meant to measure: area blows on many units (several engaged, item 2), another player's or a group member's blows on the same target (item 3, "the target was hit"), a pet's kill (item 4), a guard who walks by without seeing (item 6). Until the owner's run, this ADR is a proposal and no N1, N7 or N8 code depends on it.
+- Negative or costs: the recipe guesses. False positives the probe is meant to measure: area blows on many units (several engaged, item 2), another player's or a group member's blows on the same target (item 3, "the target was hit"), a pet's kill (item 4), a guard who walks by without seeing (item 6). Until the owner's run, this ADR is a proposal; N1's code (`Systems/Hostility.lua`) follows it anyway by the owner's decision of 2026-11-02, reading the witnesses from the nameplate units once at the start of a fight instead of listening to the nameplate events (ADR 0041).
 
 ## References
 

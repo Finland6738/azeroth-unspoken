@@ -48,6 +48,7 @@ Systems\World.lua
 Systems\Place.lua
 Systems\LivingMemory.lua
 Systems\Relationships.lua
+Systems\Hostility.lua
 Systems\Interlocutor.lua
 Systems\NPCAlive.lua
 Systems\StoryArcs.lua

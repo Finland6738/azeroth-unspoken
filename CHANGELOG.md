@@ -8,6 +8,39 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N1: hostility, grudges, betrayal, witnesses and guest-right (issue #213)
+
+Step N1 of the NPC relationships milestone. Raising a hand against an NPC is now remembered. Narration only: no NPC
+behaves differently in the game, and nothing goes to public chat. The fight is read without a combat log, with the
+recipe of [ADR 0035](docs/adr/0035-attacks-kills-and-deaths-without-the-combat-log.md), which is **not yet confirmed in
+game**: the owner chose to build on it before the N0 run. Decisions:
+[ADR 0041](docs/adr/0041-hostility-grudges-betrayal-witnesses-and-guest-right.md). Tested with the mock client only.
+
+- **Added: attacks the character starts** (`Systems/Hostility.lua`). A fight counts when the character struck its
+  target first (auto-attack, or a spell at an attackable target not already fighting them). The target is read when it
+  is chosen, so a neutral NPC that turns hostile when struck still counts as neutral. Players, pets, a target already
+  busy with someone else, mobs that were hostile before the fight (left to the nemesis, N7), hidden identities and other
+  units hit by area blows never count. No GUID reaches the event bus.
+- **Added: grudges of named NPCs.** Only a named NPC (elite, rare, a quest boss, already known, or curated) remembers
+  you one by one: it drops to **Hated** and keeps a grudge (`foe`: times, attacks, kills, host). Ordinary NPCs are never
+  recorded. A kill by the character or their pet is remembered too.
+- **Added: the "Eternal grudge" option** (`relations.eternalGrudge`, on by default): no meeting, quest or good word lifts
+  an attacked NPC out of Hated. Off: the grudge holds 180 days after the last attack, then the gains come at a quarter.
+- **Added: witnesses, betrayal and the other faction.** Friendly NPCs near on the nameplates shown are the witnesses; a
+  known one thinks less of you, and only then does the word reach the town (N6). A witnessed attack on your own faction
+  leaves the town wary for a month (slower trust there). The other faction's town or city remembers you as a foe as a
+  whole.
+- **Added: guest-right.** The innkeeper who binds the hearth is home. Attacking them, or anyone inside their inn, is the
+  gravest betrayal: the whole town knows, a long mark, and a permanent journal line *Guest-right broken*. Coming back to
+  the hearth's town after five days or more has its own private line, warm or cold.
+- **Added: options, notices, conditions, lines.** Options **Eternal grudge** and **Hostility notices** (one private
+  notice per fight, never in combat, never in chat). Conditions `relFoe`, `townBetrayed`, `townFoe`, `homeReturn`. Seven
+  inner-voice intentions in English and Italian through the authoring archive (base 1,255, loaded 1,262). The NPC detail
+  and `/au relationships detail` show the grudge and the keeper of the hearth.
+- **Changed: `relationships.version` 7** (NPC `foe`, `home`, town `betray`, `host`, `foe`). Version 6 data load with no
+  migration step. All numbers and lists are in `Data/Relationships.lua` (`hostility`, `increments.attack`,
+  `attack_host`, `kill`, `attack_witnessed`).
+
 ### N9: phrases for the NPC relationships (part of issue #221)
 
 The content of the NPC relationships milestone for the steps already merged (N2-N6). N1, N7 and N8 get their lines in

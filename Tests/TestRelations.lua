@@ -934,7 +934,7 @@ T.run("migrazione dello schema 5", function()
 	T.eq(AzerothUnspokenCharacterDB.schemaVersion, 7, "personaggio a 5")
 	T.eq(AzerothUnspokenDB.schemaVersion, 7, "account a 5")
 	local d = AzerothUnspokenCharacterDB.relationships
-	T.ok(d and d.version == 6 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
+	T.ok(d and d.version == 7 and next(d.npcs) == nil and next(d.players) == nil, "relazioni vuote create")
 	T.eq(NS.db.relations.autoRegisterPlayers, false, "registrazione automatica spenta nelle impostazioni nuove")
 	T.eq(NS.db.relations.attraction, false, "attrazione spenta"); T.eq(NS.db.modules.relations, true, "modulo acceso")
 	T.eq(NS.db.intensity, 33, "impostazioni precedenti conservate")
@@ -981,7 +981,7 @@ T.run("dati di una versione più nuova: si leggono, non si cambiano", function()
 	T.ok(Cmd("relationships list"):find("più nuova", 1, true), "il comando lo dice")
 	R.readOnly = false
 	-- da Config: schema futuro
-	AzerothUnspokenCharacterDB = { schemaVersion = 99, relationships = { version = 7, npcs = { [5] = { trust = 10 } }, players = {} } }
+	AzerothUnspokenCharacterDB = { schemaVersion = 99, relationships = { version = 8, npcs = { [5] = { trust = 10 } }, players = {} } }
 	Config:Load()
 	T.ok(Config.readOnly.character, "Config lo riconosce")
 	R:OnInit()
@@ -1573,14 +1573,14 @@ end)
 -- #50: i dati di una versione interna più nuova non si portano alla versione 1 e non si perdono campi
 T.run("relazioni di una versione più nuova: sola lettura, dati intatti", function()
 	Fresh()
-	NS.cdb.relationships = { version = 7, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
+	NS.cdb.relationships = { version = 8, npcs = { [1234] = { first = 1, last = 2, count = 3, name = "Grik", mood = "futuro" } },
 		players = { ["Ale-Reame"] = { seen = { first = 1, last = 2, count = 1 }, nickname = "futuro" } } }
 	NS.Diagnostics.errors = {}
 	R.readOnly = false
 	local dropped = R:Sanitize()
 	T.eq(dropped, 0, "niente scartato")
 	T.eq(R.readOnly, true, "sola lettura")
-	T.eq(NS.cdb.relationships.version, 7, "la versione resta la 7")
+	T.eq(NS.cdb.relationships.version, 8, "la versione resta la 8")
 	T.eq(NS.cdb.relationships.npcs[1234].mood, "futuro", "campo sconosciuto di un NPC conservato")
 	T.eq(NS.cdb.relationships.players["Ale-Reame"].nickname, "futuro", "campo sconosciuto di un giocatore conservato")
 	local logged = false

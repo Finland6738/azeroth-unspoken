@@ -739,4 +739,32 @@ NS:AddTexts("enUS", {
 		"A candle in the window here, and I let myself pretend it is lit for me. A small pretense. I keep it.",
 		{ "A candle in the window. Of all the inns on the road, this one.", depth = "natural" },
 	},
+	["rel.home.cold"] = {
+		"Home, they call it. The fire burns as it always did; it is the welcome that went out.",
+		{ "Same inn. A colder room.", depth = "natural" },
+	},
+	["rel.home.return"] = {
+		"Long roads, and at the end of them this same fire. Home is a smaller word than it sounds, and a better one.",
+		{ "Home. The chair by the fire is still mine.", depth = "natural" },
+	},
+	["rel.npc.foe.attacked"] = {
+		"They have not forgotten the day I struck first. Neither have I.",
+		{ "They remember. Of course they do.", depth = "natural" },
+	},
+	["rel.npc.foe.host"] = {
+		"This hearth took me in. I answered with steel, and the fire here has been cold ever since.",
+		{ "No door shuts harder than the one you broke.", depth = "natural" },
+	},
+	["rel.npc.foe.killed"] = {
+		"I ended them once. Whoever stands here now looks at me as if they remember.",
+		{ "Some faces should not look at you twice.", depth = "natural" },
+	},
+	["rel.npc.town.betrayed"] = {
+		"Word of what I did has gone round this place. Even the kind ones measure me now.",
+		{ "They talk more quietly when I pass.", depth = "natural" },
+	},
+	["rel.town.foe"] = {
+		"They have not forgotten me here, and I gave them reasons.",
+		{ "Every guard here knows my face.", depth = "natural" },
+	},
 }, "base_relations")
