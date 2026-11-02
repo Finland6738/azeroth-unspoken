@@ -363,11 +363,16 @@ function R:Hostility(fact)
 	if type(fact) ~= "table" or not IsNumber(fact.npcID) then return nil end
 	local d = self:Data()
 	local now = Now()
-	local town = fact.town and self:Town(fact.town, true)
-	if town then town.t, town.map = now, fact.map or town.map end
+	-- the town is made (or touched) only when something is written into it
+	local function TownNow()
+		local town = fact.town and self:Town(fact.town, true)
+		if town then town.t, town.map = now, fact.map or town.map end
+		return town
+	end
 	local notice, args
 	if fact.kind == "foe" then
 		-- the other faction: the town or city remembers you as a whole, not guard by guard
+		local town = TownNow()
 		if not town then return nil end
 		local foe = town.foe or { n = 0 }
 		town.foe = { t = now, n = Counter((foe.n or 0) + 1) }
@@ -413,7 +418,8 @@ function R:Hostility(fact)
 		end
 	end
 	-- the word reaches the town when someone saw it; when the host was struck, the whole town knows
-	if town and (seen > 0 or host) then
+	local town = (seen > 0 or host) and TownNow() or nil
+	if town then
 		local cfg = self.config.hostility
 		TellTown(self, town, cfg.word[host and "host" or fact.kind], told)
 		if host or fact.kind == "betrayal" then
@@ -528,7 +534,8 @@ function H.Snapshot()
 		faction = Token(SafeCall("UnitFactionGroup", "target"), FACTIONS),
 		cls = type(cls) == "string" and not Compat.IsSecret(cls) and cls or nil,
 		boss = SafeCall("UnitIsQuestBoss", "target") == true,
-		busy = SafeCall("UnitAffectingCombat", "target") == true }
+		busy = SafeCall("UnitAffectingCombat", "target") == true,
+		humanoid = select(2, R.Kin("target")) }
 end
 
 ---Is the NPC of this snapshot named? A classification of `hostility.named.classes`, a quest boss, an NPC the addon
@@ -545,7 +552,8 @@ function H.Named(snap)
 end
 
 ---Which story the target is: "foe" (the opposite faction), "betrayal" (the own faction, or friendly before the fight),
----"neutral" (not hostile before the fight); nil for a mob that was hostile, or when it cannot be told.
+---"neutral" (a humanoid not hostile before the fight); nil for a mob that was hostile, a beast, or when it cannot be
+---told.
 ---@param snap table
 ---@return string?
 function H.Kind(snap)
@@ -556,7 +564,9 @@ function H.Kind(snap)
 	end
 	if not snap.reaction then return nil end
 	if snap.reaction >= 5 then return "betrayal" end
-	if snap.reaction >= R.config.hostility.reaction then return "neutral" end
+	-- someone not hostile, and a person: hunting a yellow beast (or anything the client does not call humanoid) is not
+	-- hostility
+	if snap.reaction >= R.config.hostility.reaction and snap.humanoid == true then return "neutral" end
 	return nil
 end
 

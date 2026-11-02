@@ -30,9 +30,10 @@ the proposed recipe, behind Compat and `issecretvalue`, and what turns out wrong
    classification, quest boss, busy in combat) in memory only; the fight uses it when its target is the same GUID, so a
    neutral NPC that turns hostile when struck is still read as it was (ADR 0035, open question 3).
 3. **Three stories, by the victim before the fight.** The opposite faction (`UnitFactionGroup` Alliance or Horde, not
-   the character's): **foe**. The own faction, or friendly before the fight (reaction 5 or more): **betrayal**. Anyone
-   else not hostile (reaction `hostility.reaction`, 4, or more): **neutral**. A mob hostile before the fight belongs to
-   the nemesis (N7, #219) and is ignored here; an unreadable faction or reaction is unknown, and unknown is silent.
+   the character's): **foe**. The own faction, or friendly before the fight (reaction 5 or more): **betrayal**. A
+   humanoid (`UnitCreatureType`, the id of `romance.humanoid`) otherwise not hostile (reaction `hostility.reaction`, 4,
+   or more): **neutral**; hunting a yellow beast is not hostility. A mob hostile before the fight belongs to the nemesis
+   (N7, #219) and is ignored here; an unreadable faction, reaction or creature type is unknown, and unknown is silent.
 4. **Only named NPCs remember one by one.** Named is ADR 0035's rule, from data: a classification of
    `hostility.named.classes` (elite, rare, rareelite, worldboss), a quest boss, an NPC the addon already knows, or one of
    the curated register. An attacked named NPC (of a betrayal or a neutral story) gets a record if it had none (not a

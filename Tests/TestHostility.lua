@@ -408,6 +408,15 @@ T.run("hostility: nobody saw it, the town knows nothing", function()
 	Fresh()
 	Fight(Unit(70711))
 	T.eq(#Notices(), 0, "silence")
+	-- a yellow beast hunted in front of the guards: not hostility, not even a town record
+	Fresh()
+	P.nameplates = { Unit(70714, { reaction = 5, near = true }) }
+	local boar = Unit(70715, { cls = "rare" })
+	boar.ctype, boar.ctypeID = "Beast", 1
+	Fight(boar)
+	T.eq(Npc(70715), nil, "a beast keeps no grudge here (the nemesis is N7's)")
+	T.eq(Towns()["Razor Hill"], nil, "no town record for a hunt")
+	T.eq(#Notices(), 0, "silence")
 	-- an ordinary NPC seen: the town hears, nobody is recorded one by one
 	Fresh()
 	P.nameplates = { Unit(70712, { reaction = 5, near = true }) }

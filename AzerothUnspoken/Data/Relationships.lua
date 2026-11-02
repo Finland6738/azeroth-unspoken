@@ -403,7 +403,8 @@ NS.Relationships:RegisterData({
 	--   foe       the opposite faction (Alliance or Horde): the town or city remembers you as a foe (`foe.days`), no NPC
 	--             remembers you one by one
 	--   betrayal  your own faction, or someone friendly before the fight: a betrayal, the town's trust follows (below)
-	--   neutral   anyone else who was not hostile before the fight (reaction `reaction` or above)
+	--   neutral   a humanoid (romance.humanoid) who was not hostile before the fight (reaction `reaction` or above); a
+	--             yellow beast hunted is not hostility
 	-- Who remembers individually: a named NPC only (a `named.classes` classification, a quest boss, an NPC the addon
 	-- already knows, or one of the curated register Data/NPCs.lua).
 	--   grudge   an attacked named NPC drops to `drop` (Hated). With the option "Eternal grudge" (relations.eternalGrudge,
