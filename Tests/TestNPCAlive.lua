@@ -129,7 +129,7 @@ T.run("copioni registrati e controllati: nodi, risposte, flag, lingue", function
 		for id, node in pairs(s.nodes) do
 			T.ok(node.event:find("^npcd_") ~= nil, key .. "/" .. id .. ": evento npcd_")
 			T.ok(#(Engine.byEvent[node.event] or {}) >= 2, key .. "/" .. id .. ": almeno due battute")
-			for _, p in ipairs(Engine.byEvent[node.event]) do T.eq(p.speaker, "npc", p.id .. ": voce NPC") end
+			for _, p in ipairs(Engine:EventRules(node.event)) do T.eq(p.speaker, "npc", p.id .. ": voce NPC") end
 		end
 	end
 end)
@@ -1154,13 +1154,13 @@ T.run("chi è conosciuto e chi no sentono battute diverse", function()
 	local ctx = NS:BuildContext({ npcDialogue = true, otherSubject = { kind = "npc", key = "npc:5688", npcID = 5688 },
 		relationSubject = { kind = "npc", id = 5688 } })
 	local ids = {}
-	for _, p in ipairs(Engine:Eligible(Engine.byEvent.npcd_innkeeper_more, "it", ctx, "say", time())) do ids[p.id] = true end
+	for _, p in ipairs(Engine:Eligible(Engine:EventRules("npcd_innkeeper_more"), "it", ctx, "say", time())) do ids[p.id] = true end
 	T.ok(ids["npcd.innkeeper.more.stranger1"] and not ids["npcd.innkeeper.more.known1"], "«more»: da sconosciuto")
 	R:SetAxis("npc", 5688, "familiarity", 70)
 	ctx = NS:BuildContext({ npcDialogue = true, otherSubject = { kind = "npc", key = "npc:5688", npcID = 5688 },
 		relationSubject = { kind = "npc", id = 5688 } })
 	ids = {}
-	for _, p in ipairs(Engine:Eligible(Engine.byEvent.npcd_innkeeper_more, "it", ctx, "say", time())) do ids[p.id] = true end
+	for _, p in ipairs(Engine:Eligible(Engine:EventRules("npcd_innkeeper_more"), "it", ctx, "say", time())) do ids[p.id] = true end
 	T.ok(ids["npcd.innkeeper.more.known1"] and not ids["npcd.innkeeper.more.stranger1"], "«more»: da conosciuto")
 end)
 

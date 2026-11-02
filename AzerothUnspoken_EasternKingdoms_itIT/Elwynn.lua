@@ -1,7 +1,7 @@
 -- Italian texts of the regional pack eastern_elwynn (#102). The rules are in AzerothUnspoken_EasternKingdoms/Elwynn.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("eastern", "itIT", "eastern_elwynn", function()
+AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_elwynn", function()
 	return {
 		["elw.battle.bear.01"] = {
 			"pianta i piedi mentre l'orso si alza sulle zampe, un muro di pelo bruno e fiato caldo.",

@@ -79,10 +79,10 @@ NS.Engine = Engine
 
 Engine.packs = {}       -- [id] = pacchetto
 Engine.packOrder = {}
-Engine.byEvent = {}     -- [evento] = { frase, ... }, tutte le regole dell'evento in ordine di registrazione
-Engine.index = {}       -- [evento][forma][chiave] = { frase, ... }: indice di selezione per luogo (#83, vedi Candidates)
+-- #138 (column store, ADR 0024): a rule is a number, its ord; byEvent and the index hold ords, byId gives views
+Engine.byEvent = {}     -- [evento] = { ord, ... }, tutte le regole dell'evento in ordine di registrazione
+Engine.index = {}       -- [evento][forma][chiave] = { ord, ... }: indice di selezione per luogo (#83, vedi Candidates)
 Engine.nextOrd = 0      -- ordine di registrazione dell'ultima frase
-Engine.byId = {}        -- [id frase] = frase
 Engine.frames = {}      -- [evento o "*"] = { cornice, ... }
 -- #123 (ADR 0044): the recall and reading frames, apart from the emote frames: { recall = { frame, ... }, reading = { ... } }
 Engine.loreFrames = { recall = {}, reading = {} }
@@ -333,11 +333,18 @@ local tierCache = setmetatable({}, { __mode = "k" })
 
 ---The specificity tier of a rule (#89): 0 generic, 1 situation or region, 2 zone, 3 subzone, 4 landmark. The
 ---explicit `tier` of the rule, or the one its conditions give.
----@param p table rule
+---@param p table|integer rule: a view, a frame or an ord (#138)
 ---@return integer
 function Engine.Tier(p)
-	if p.tier then return p.tier end
-	local when = p.when
+	local when
+	if type(p) == "number" then
+		local t = Engine.R.shape[p].tier
+		if t then return t end
+		when = Engine.R.when[p]
+	else
+		if p.tier then return p.tier end
+		when = p.when
+	end
 	if type(when) ~= "table" then return 0 end
 	local t = tierCache[when]
 	if not t then
@@ -486,7 +493,8 @@ end
 -- shape field gives the rule a private copy of its shape first (copy on write), so it never changes the other rules of
 -- the shape. The shape is also part of the key the selection memoizes by (WeightedSelector, per pick).
 Engine.SHAPE_FIELDS = { "pack", "events", "speaker", "form", "category", "depth", "depthList", "weight", "cooldown", "spec",
-	"tier", "kind", "parts", "order", "chainable", "situational", "legacy", "genre", "purpose", "origin", "show" }
+	"tier", "kind", "parts", "order", "chainable", "situational", "legacy", "genre", "purpose", "origin", "show",
+	"twinOf" }   -- twinOf (#122): the piece a `lore_test` twin of the Versi pack stands for, written on its view
 local SHAPE_FIELD = {}
 for _, k in ipairs(Engine.SHAPE_FIELDS) do SHAPE_FIELD[k] = true end
 local shapes, shapeRules = {}, {}   -- [key] = shape, [key] = rules that use it (released by DropPack)
@@ -500,12 +508,16 @@ local function NewShape(from)
 	return s
 end
 
--- __newindex of every shape: the key is not in the rule table
+-- __newindex of every shape: the key is not in the rule table. A view of a rule (#138) writes the new shape to the
+-- column too, so the selection sees it
 ShapeWrite = function(p, k, v)
 	if SHAPE_FIELD[k] then
-		local own = NewShape(getmetatable(p))
+		local old = getmetatable(p)
+		local own = NewShape(old)
 		own[k] = v
 		setmetatable(p, own)
+		local r = rawget(p, "ord")
+		if r and Engine.R.shape[r] == old then Engine.R.shape[r] = own end
 	else
 		rawset(p, k, v)
 	end
@@ -565,6 +577,244 @@ function Engine.InternCounts()
 	for _ in pairs(shapes) do a = a + 1 end
 	for _ in pairs(sharedWhens) do b = b + 1 end
 	return a, b
+end
+
+---------------------------------------------------------------------------
+-- Column store (#138, ADR 0024): no table per rule
+---------------------------------------------------------------------------
+-- A rule is a number, its ord (order of registration). Its fields are columns indexed by ord, in Engine.R: id, shape
+-- (the shared fields above: the voice of rule r is R.shape[r].speaker), when, styles, tags, theme, motifs and impure.
+-- Its texts are in one flat array per language, Engine.TX[lang].v: the variants of a rule in one language are
+-- contiguous, and TX[lang].at[r] = count * TEXT_SPAN + first slot (Engine.TextRange). At 50,000 rules this saves the
+-- rule table, its text table and one list of variants per language: about 600 bytes a rule.
+-- The selection (WeightedSelector) reads the columns. Everything else reads a rule through a view, Engine.Rule(r) or
+-- Engine.byId[id]: a table like the rule tables before #138 (own fields id, ord, when, styles, tags, theme, motifs,
+-- impure and text = { [lang] = variants }, the shape as metatable), made on demand and kept while something holds it
+-- (a weak cache), so one rule gives one view. A view is read-only except for the shape fields (a test that changes a
+-- cooldown): they write the column too (copy on write, as before). Its text lists are copies: texts are added with
+-- AddTexts. Engine:Rules(), Engine:EventRules(ev) and Engine:PackIds(packId) list rules for tools and tests; pairs()
+-- over byId shows nothing.
+local ID, SHAPE, WHEN, STYLES, TAGS, THEME, MOTIFS, IMPURE = {}, {}, {}, {}, {}, {}, {}, {}
+Engine.R = { id = ID, shape = SHAPE, when = WHEN, styles = STYLES, tags = TAGS, theme = THEME, motifs = MOTIFS,
+	impure = IMPURE }
+local ordOf = {}        -- [id] = ord
+Engine.ordOf = ordOf
+-- [short language code] = { v = { variant, ... }, at = { [ord] = count * TEXT_SPAN + first }, top = last slot used,
+-- dead = slots freed (false) below top }
+Engine.TX = {}
+local TEXT_SPAN = 4294967296   -- 2^32: first < 2^32, count * 2^32 + first stays exact in a double
+Engine.TEXT_SPAN = TEXT_SPAN
+Engine.TEXT_COMPACT = 4096     -- freed slots of a language beyond which, when they are half of it, the array is rebuilt
+
+local views = setmetatable({}, { __mode = "v" })
+
+---The ord of the rule with this id, or nil.
+---@param id string
+---@return integer?
+function Engine.OrdOf(id)
+	return ordOf[id]
+end
+
+---The id of a rule (an ord), or of a view, frame or vocabulary entry.
+---@param e integer|table
+---@return string?
+function Engine.IdOf(e)
+	if type(e) == "number" then return ID[e] end
+	return e and e.id
+end
+
+---Where the variants of rule r in a language are: the flat array, the first slot and how many (0 when there is none).
+---@param r integer
+---@param lang string short code
+---@return table? v
+---@return integer first
+---@return integer count
+function Engine.TextRange(r, lang)
+	local s = Engine.TX[lang]
+	local at = s and s.at[r]
+	if not at then return s and s.v, 0, 0 end
+	local first = at % TEXT_SPAN
+	return s.v, first, (at - first) / TEXT_SPAN
+end
+
+---How many variants rule r has in a language.
+---@param r integer
+---@param lang string
+---@return integer
+function Engine.TextCount(r, lang)
+	local _, _, n = Engine.TextRange(r, lang)
+	return n
+end
+
+---The variants of rule r in a language, as a new list (nil when there is none): for tools, tests and the composing of
+---the chosen phrase, not for the check of every candidate.
+---@param r integer
+---@param lang string
+---@return AUVariantValue[]?
+function Engine.TextList(r, lang)
+	local v, first, n = Engine.TextRange(r, lang)
+	if n == 0 then return nil end
+	local out = {}
+	for i = 1, n do out[i] = v[first + i - 1] end
+	return out
+end
+
+---The languages rule r has texts in (sorted), even an empty list kept for the validator.
+---@param r integer
+---@return string[]
+function Engine.TextLangs(r)
+	local out = {}
+	for lang, s in pairs(Engine.TX) do
+		if s.at[r] then table.insert(out, lang) end
+	end
+	table.sort(out)
+	return out
+end
+
+-- the text table of a view: { [lang] = copy of the variants }
+local function TextTable(r)
+	local out = {}
+	for lang, s in pairs(Engine.TX) do
+		if s.at[r] then out[lang] = Engine.TextList(r, lang) or {} end
+	end
+	return out
+end
+
+---The view of rule r (see above), or nil if no rule has that ord. A table (a view, a frame) comes back as it is.
+---@param r integer|table
+---@return AUPhrase?
+function Engine.Rule(r)
+	if type(r) ~= "number" then return r end
+	local p = views[r]
+	if p then return p end
+	local shape = SHAPE[r]
+	if not shape then return nil end
+	p = setmetatable({ id = ID[r], ord = r, when = WHEN[r], styles = STYLES[r], tags = TAGS[r], theme = THEME[r],
+		motifs = MOTIFS[r], impure = IMPURE[r], text = TextTable(r) }, shape)
+	views[r] = p
+	return p
+end
+
+-- byId: the view of the rule with that id (read-only; pairs shows nothing, use Engine:Rules)
+Engine.byId = setmetatable({}, {
+	__index = function(_, id)
+		local r = ordOf[id]
+		return r and Engine.Rule(r)
+	end,
+	__newindex = function() error("Engine.byId is read-only: rules are registered with AddEntry (#138)", 2) end,
+})
+
+---Every registered rule in order of registration: for id, p in Engine:Rules() do ... end (p is a view).
+---@return fun(): string?, AUPhrase?
+function Engine:Rules()
+	local r, top = 0, self.nextOrd
+	return function()
+		repeat r = r + 1 until r > top or SHAPE[r]
+		if r > top then return nil end
+		return ID[r], Engine.Rule(r)
+	end
+end
+
+---The rules of an event as views, in order of registration (a new list; empty when the event has none).
+---@param event string
+---@return AUPhrase[]
+function Engine:EventRules(event)
+	local out = {}
+	for i, r in ipairs(self.byEvent[event] or EMPTY_SET) do out[i] = Engine.Rule(r) end
+	return out
+end
+
+---The ids of the rules a pack registered, in order of registration (a new list).
+---@param packId string
+---@return string[]
+function Engine:PackIds(packId)
+	local out, pack = {}, self.packs[packId]
+	if not (pack and pack.first) then return out end
+	for r = pack.first, pack.last do
+		local s = SHAPE[r]
+		if s and s.pack == packId then table.insert(out, ID[r]) end
+	end
+	return out
+end
+
+-- the store of a language, made when missing
+local function TextStore(lang)
+	local s = Engine.TX[lang]
+	if not s then
+		s = { v = {}, at = {}, top = 0, dead = 0 }
+		Engine.TX[lang] = s
+	end
+	return s
+end
+
+-- rebuilds the flat array of a language without its freed slots, the variants of each rule in their order
+local function CompactTexts(s)
+	local v, at, nv, nat, k = s.v, s.at, {}, {}, 0
+	for r = 1, Engine.nextOrd do
+		local a = at[r]
+		if a then
+			local first = a % TEXT_SPAN
+			local n = (a - first) / TEXT_SPAN
+			nat[r] = n * TEXT_SPAN + k + 1
+			for i = 0, n - 1 do nv[k + 1 + i] = v[first + i] end
+			k = k + n
+		end
+	end
+	s.v, s.at, s.top, s.dead = nv, nat, k, 0
+end
+
+-- frees the variants of rule r in a language (DropPack)
+local function FreeTexts(s, r)
+	local a = s.at[r]
+	if not a then return end
+	local first = a % TEXT_SPAN
+	local n = (a - first) / TEXT_SPAN
+	for i = first, first + n - 1 do s.v[i] = false end
+	s.at[r], s.dead = nil, s.dead + n
+end
+
+-- the slots freed at the top of the array go back to it; the array is rebuilt when they are many
+local function TrimTexts(s)
+	while s.top > 0 and s.v[s.top] == false do
+		s.v[s.top], s.top, s.dead = nil, s.top - 1, s.dead - 1
+	end
+	if s.dead > Engine.TEXT_COMPACT and s.dead * 2 > s.top then CompactTexts(s) end
+end
+
+-- the variants of rule r in a language as a list, the empty list when there are none (AppendVariant compares with them)
+local function TextsOrEmpty(r, lang)
+	return Engine.TextList(r, lang) or {}
+end
+
+-- adds variants to rule r in a language: the rule's variants stay contiguous, at the top of the array (a block that is
+-- not at the top moves there first; its old slots are freed)
+local function AppendRuleVariants(r, lang, vars)
+	local s = TextStore(lang)
+	local a = s.at[r]
+	local first, n = s.top + 1, 0
+	if a then
+		first = a % TEXT_SPAN
+		n = (a - first) / TEXT_SPAN
+	end
+	if n == 0 then
+		first = s.top + 1
+	elseif #vars > 0 and first + n - 1 ~= s.top then
+		local new = s.top + 1
+		for i = 0, n - 1 do
+			s.v[new + i], s.v[first + i] = s.v[first + i], false
+		end
+		s.top, s.dead, first = s.top + n, s.dead + n, new
+	end
+	for _, var in ipairs(vars) do
+		s.v[first + n] = var
+		n = n + 1
+	end
+	if n > 0 then s.top = math.max(s.top, first + n - 1) end
+	-- an empty list is kept too: the validator sees that the language was given
+	s.at[r] = n * TEXT_SPAN + first
+	-- a view held somewhere sees the new texts
+	local p = views[r]
+	if p then p.text[lang] = Engine.TextList(r, lang) or {} end
 end
 
 ---------------------------------------------------------------------------
@@ -793,36 +1043,40 @@ function Engine.ContextKeys(ctx)
 	return keys
 end
 
-local function AddToIndex(index, ev, p, keys)
+local function AddToIndex(index, ev, r, keys)
+	local form = SHAPE[r].form
 	local byForm = index[ev]
 	if not byForm then byForm = {}; index[ev] = byForm end
-	local byKey = byForm[p.form]
-	if not byKey then byKey = {}; byForm[p.form] = byKey end
+	local byKey = byForm[form]
+	if not byKey then byKey = {}; byForm[form] = byKey end
 	for _, k in ipairs(keys) do
 		local list = byKey[k]
 		if not list then list = {}; byKey[k] = list end
-		table.insert(list, p)
+		list[#list + 1] = r
 	end
 end
 
 -- The groups of a rule. #138: a keyed group holds only rules whose check draws no random numbers, so a pick can check
 -- each group apart (Engine:EligibleFor): impure conditions already make a rule generic (IndexKeys), and so does a
 -- monologue, whose check reads the conditions of its parts.
-local function RuleKeys(p)
-	return p.kind ~= "monologue" and Engine.IndexKeys(p.when) or GENERIC
+local function RuleKeys(r)
+	return SHAPE[r].kind ~= "monologue" and Engine.IndexKeys(WHEN[r]) or GENERIC
 end
 
 ---Ricostruisce l'indice da byEvent (quando cambia ciò che una condizione può fare, vedi NS:RegisterCondition).
 function Engine:RebuildIndex()
 	local index = {}
 	for ev, list in pairs(self.byEvent) do
-		for _, p in ipairs(list) do AddToIndex(index, ev, p, RuleKeys(p)) end
+		for _, r in ipairs(list) do AddToIndex(index, ev, r, RuleKeys(r)) end
 	end
-	for _, p in pairs(self.byId) do p.impure = (p.when ~= nil and not Pure(p.when)) or nil end
+	for _, r in pairs(ordOf) do
+		IMPURE[r] = (WHEN[r] ~= nil and not Pure(WHEN[r])) or nil
+		if views[r] then views[r].impure = IMPURE[r] end
+	end
 	self.index = index
 end
 
--- the union of two lists in order of registration (ord); a rule in both appears once
+-- the union of two lists of ords in order of registration; a rule in both appears once
 local function Merge2(a, b)
 	local out, i, j, na, nb, k = {}, 1, 1, #a, #b, 0
 	while i <= na and j <= nb do
@@ -830,7 +1084,7 @@ local function Merge2(a, b)
 		k = k + 1
 		if x == y then
 			out[k], i, j = x, i + 1, j + 1
-		elseif x.ord < y.ord then
+		elseif x < y then
 			out[k], i = x, i + 1
 		else
 			out[k], j = y, j + 1
@@ -845,8 +1099,8 @@ local function Shorter(a, b) return #a < #b end
 
 ---The union of lists of rules, each in order of registration: one list in that order, a rule in several lists once.
 ---Two lists at a time, the shortest first, so a long list is walked once (#138). One list comes back as it is.
----@param lists AUPhrase[][]
----@return AUPhrase[]
+---@param lists integer[][] lists of ords
+---@return integer[]
 function Engine.MergeByOrd(lists)
 	local n = #lists
 	if n == 0 then return EMPTY_LIST end
@@ -862,7 +1116,7 @@ end
 ---@param event string
 ---@param ctx table
 ---@param form "say"|"emote"
----@return AUPhrase[][]
+---@return integer[][] lists of ords
 function Engine:CandidateGroups(event, ctx, form)
 	local byKey = self.index[event] and self.index[event][form]
 	if not byKey then return {} end
@@ -879,7 +1133,7 @@ end
 ---@param event string
 ---@param ctx table
 ---@param form? "say"|"emote" nil = tutte le forme
----@return AUPhrase[]
+---@return integer[] ords
 function Engine:Candidates(event, ctx, form)
 	local byForm = self.index[event]
 	if not byForm then return EMPTY_LIST end
@@ -920,8 +1174,8 @@ function Engine:AddEntry(pack, id, e, legacy)
 		Issue(pack, "badId", tostring(id), "id mancante o non è una stringa")
 		return
 	end
-	if self.byId[id] then
-		Issue(pack, "dupId", id, ("id duplicato (già nel pacchetto '%s')"):format(self.byId[id].pack))
+	if ordOf[id] then
+		Issue(pack, "dupId", id, ("id duplicato (già nel pacchetto '%s')"):format(SHAPE[ordOf[id]].pack))
 		NS:Print(("id duplicato '%s' nel pacchetto '%s'"):format(id, pack.id))
 		return
 	end
@@ -1041,24 +1295,35 @@ function Engine:AddEntry(pack, id, e, legacy)
 	end
 	if type(when) == "table" and when.situation ~= nil then p.situational = true end
 
-	-- the rule: its own fields and its shape (#138), eight slots of its hash part at most (a monologue's impure, rare,
-	-- takes a ninth)
+	-- the rule: a new ord and its columns (#138), with its shape
 	self.nextOrd = self.nextOrd + 1
-	---@type AUPhrase
-	p = setmetatable({ id = id, text = {}, when = SharedWhen(when), ord = self.nextOrd, styles = p.styles, tags = p.tags,
-		theme = p.theme, motifs = p.motifs }, Shape(p))
-	self.byId[id] = p
+	local r = self.nextOrd
+	ID[r], SHAPE[r], WHEN[r], STYLES[r], TAGS[r] = id, Shape(p), SharedWhen(when), p.styles, p.tags
+	THEME[r], MOTIFS[r] = p.theme, p.motifs
+	ordOf[id] = r
 	-- condizioni che possono usare numeri casuali o codice: Eligible le valuta per ultime, come sempre
-	p.impure = (when ~= nil and not Pure(when)) or nil
-	local keys = RuleKeys(p)
+	IMPURE[r] = (when ~= nil and not Pure(when)) or nil
+	local keys = RuleKeys(r)
 	for _, ev in ipairs(p.events) do
-		self.byEvent[ev] = self.byEvent[ev] or {}
-		table.insert(self.byEvent[ev], p)
-		AddToIndex(self.index, ev, p, keys)
+		local list = self.byEvent[ev]
+		if not list then list = {}; self.byEvent[ev] = list end
+		list[#list + 1] = r
+		AddToIndex(self.index, ev, r, keys)
 	end
-	pack.ids = pack.ids or {}
-	table.insert(pack.ids, id)
-	return p
+	-- the rules of a pack are the ords from first to last whose shape names it (Engine:PackIds)
+	pack.first = pack.first or r
+	pack.last = r
+	return r
+end
+
+---Gives rule `toId` the variants of rule `fromId` in every language, as they are (the same values, in their order,
+---no check): the `lore_test` twins of the Versi pack say the texts of their piece (#115).
+---@param fromId string
+---@param toId string
+function Engine:CopyTexts(fromId, toId)
+	local from, to = ordOf[fromId], ordOf[toId]
+	if not (from and to) then return end
+	for _, lang in ipairs(Engine.TextLangs(from)) do AppendRuleVariants(to, lang, Engine.TextList(from, lang) or {}) end
 end
 
 -- converte una frase del formato vecchio nella regola v2 e nei suoi testi
@@ -1067,10 +1332,10 @@ function Engine:AddLegacyPhrase(pack, ph)
 		pack._auto = (pack._auto or 0) + 1
 		ph.id = pack.id .. "#" .. pack._auto
 	end
-	local p = self:AddEntry(pack, ph.id, ph, true)
-	if not p then return end
+	local r = self:AddEntry(pack, ph.id, ph, true)
+	if not r then return end
 	NormalizeText(ph, pack.id)
-	for lang, list in pairs(ph.text) do p.text[lang] = list end
+	for _, lang in ipairs(SortedKeys(ph.text)) do AppendRuleVariants(r, lang, ph.text[lang]) end
 end
 
 ---------------------------------------------------------------------------
@@ -1081,10 +1346,14 @@ function Engine:AddTexts(lang, id, list, packId)
 	lang = LangCode(lang)
 	if not lang or type(id) ~= "string" then return end
 	packId = packId or "texts"
-	local p = self.byId[id]
-	if p then
-		p.text[lang] = p.text[lang] or {}
-		AppendVariants(p.text[lang], list, packId, p.pack)
+	local r = ordOf[id]
+	if r then
+		-- the new variants, without those the rule has (AppendVariant skips a text it already has)
+		local target = TextsOrEmpty(r, lang)
+		local n0 = #target
+		AppendVariants(target, list, packId, SHAPE[r].pack)
+		-- the common case, a rule with no text yet in the language: the list is the new variants, no copy
+		AppendRuleVariants(r, lang, n0 == 0 and target or { unpack(target, n0 + 1) })
 	else
 		-- in attesa della regola: il proprietario non si conosce ancora, le varianti restano tabelle fino a FlushPending
 		local byLang = self.pendingTexts[id] or {}
@@ -1096,11 +1365,14 @@ end
 
 function Engine:FlushPending()
 	for id, byLang in pairs(self.pendingTexts) do
-		local p = self.byId[id]
-		if p then
+		local r = ordOf[id]
+		if r then
+			local owner = SHAPE[r].pack
 			for lang, variants in pairs(byLang) do
-				p.text[lang] = p.text[lang] or {}
-				for _, var in ipairs(variants) do AppendVariant(p.text[lang], Compact(var, p.pack)) end
+				local target = TextsOrEmpty(r, lang)
+				local n0 = #target
+				for _, var in ipairs(variants) do AppendVariant(target, Compact(var, owner)) end
+				AppendRuleVariants(r, lang, { unpack(target, n0 + 1) })
 			end
 			self.pendingTexts[id] = nil
 		end
@@ -1377,13 +1649,14 @@ function NS:RegisterPack(pack)
 	pack.registry, pack.texts, pack.translations, pack.phrases, pack.frames, pack.vocab = nil, nil, nil, nil, nil, nil
 end
 
--- removes from a list (in place) the entries whose `pack` field is packId; true if something was removed
-local function Without(list, packId)
+-- removes from a list (in place) the entries whose `pack` field is packId, or (#138) the ords in the set `gone`; true
+-- if something was removed
+local function Without(list, packId, gone)
 	local j, removed = 0, false
 	for i = 1, #list do
 		local x = list[i]
 		list[i] = nil
-		if x.pack == packId then
+		if gone and gone[x] or not gone and x.pack == packId then
 			removed = true
 		else
 			j = j + 1
@@ -1403,30 +1676,41 @@ end
 function Engine:DropPack(packId)
 	local pack = self.packs[packId]
 	if not pack then return nil end
-	local events, n = {}, 0
-	for _, id in ipairs(pack.ids or EMPTY_LIST) do
-		local p = self.byId[id]
-		if p and p.pack == packId then
-			ReleaseShape(Engine.ShapeOf(p))
-			ReleaseWhen(p.when)
-			self.byId[id] = nil
-			self.pendingTexts[id] = nil
+	local events, gone, n = {}, {}, 0
+	for r = pack.first or 1, pack.last or 0 do
+		local shape = SHAPE[r]
+		if shape and shape.pack == packId then
+			gone[r] = true
 			n = n + 1
-			for _, ev in ipairs(p.events) do events[ev] = true end
+			for _, ev in ipairs(shape.events) do events[ev] = true end
 		end
 	end
 	for ev in pairs(events) do
 		if self.byEvent[ev] then
-			Without(self.byEvent[ev], packId)
+			Without(self.byEvent[ev], packId, gone)
 			if #self.byEvent[ev] == 0 then self.byEvent[ev] = nil end
 		end
 		for _, byKey in pairs(self.index[ev] or EMPTY_LIST) do
 			for k, list in pairs(byKey) do
-				Without(list, packId)
+				Without(list, packId, gone)
 				if #list == 0 then byKey[k] = nil end
 			end
 		end
 	end
+	-- the columns and the texts of the rules (#138)
+	for r in pairs(gone) do
+		local id = ID[r]
+		ReleaseShape(SHAPE[r])
+		ReleaseWhen(WHEN[r])
+		for _, store in pairs(self.TX) do FreeTexts(store, r) end
+		ordOf[id], self.pendingTexts[id], views[r] = nil, nil, nil
+		ID[r], SHAPE[r], WHEN[r], STYLES[r], TAGS[r], THEME[r], MOTIFS[r], IMPURE[r] = nil, nil, nil, nil, nil, nil,
+			nil, nil
+	end
+	-- a pack dropped from the top gives its ords back, so a region left and the next one entered reuse them and the
+	-- columns do not grow with every change; only the order of the rules counts, never the number
+	while self.nextOrd > 0 and SHAPE[self.nextOrd] == nil do self.nextOrd = self.nextOrd - 1 end
+	for _, store in pairs(self.TX) do TrimTexts(store) end
 	for _, list in pairs(self.frames) do Without(list, packId) end
 	for _, list in pairs(self.loreFrames) do Without(list, packId) end
 	for _, list in pairs(self.vocab) do Without(list, packId) end
@@ -1454,13 +1738,13 @@ function Engine:Stats(lang)
 	local byEvent, total = {}, 0
 	for ev, list in pairs(self.byEvent) do
 		local n = 0
-		for _, p in ipairs(list) do
-			if p.text[lang] and #p.text[lang] > 0 then n = n + 1 end
+		for _, r in ipairs(list) do
+			if Engine.TextCount(r, lang) > 0 then n = n + 1 end
 		end
 		byEvent[ev] = n
 	end
-	for _, p in pairs(self.byId) do
-		if p.text[lang] and #p.text[lang] > 0 then total = total + 1 end
+	for _, r in pairs(ordOf) do
+		if Engine.TextCount(r, lang) > 0 then total = total + 1 end
 	end
 	return total, byEvent
 end

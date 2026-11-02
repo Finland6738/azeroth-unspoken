@@ -49,7 +49,7 @@ The narrator reads the game's **weather** (clear, rain, snow, storm, sand, fog),
 - A subzone speaks at most once every ten minutes, and only if you stay a moment: walking along a border does not make the narrator chatter.
 - Arriving in a new zone, the narrator speaks of the zone first; weather and subzone wait a few seconds.
 - If the game does not report the weather, the narrator says nothing about it.
-- Nothing here changes which phrase packs are loaded: those follow the continent only.
+- Nothing here changes which phrase packs are loaded: those follow the continent, and the lines of a place are prepared for its **area** (the zone, or a capital with the zone around it) only while you are there. Subzones never change it.
 
 ### Instance types and rhythm
 

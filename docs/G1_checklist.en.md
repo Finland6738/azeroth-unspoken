@@ -518,6 +518,29 @@ sessions of 90 minutes each**, with `/au prof` at the start and at the end, and 
 - **R5.7 · Measures.** `/au prof` at the end of each session. **Expect:** p95 of `PickEntry` under 5 ms; the memory of
   the addon. **Report:** the interventions per hour, the reasons of silence, the memory and the p95.
 
+## C0: the column store and the packs by area (issue #138, ADR 0048)
+
+Nothing of C0 has run in the client: every number is from lupa on one PC. The picks are the same as before (checked
+offline); what the client must confirm is the loading. Start with `/au debug` clear and `/au packs` at hand.
+
+1. **Login in Durotar (or Elwynn Forest).** `/au packs`: the first line says `region/area kalimdor/durotar`
+   (`eastern/elwynnforest`); the Kalimdor folders (rules and your language) are "loaded", the other continent's are not.
+   A line of the area is heard within a few minutes (`/au speak` near a village of the slice).
+2. **Walk into Orgrimmar (Stormwind City).** No new area: `/au packs` still says `durotar` (`elwynnforest`), and the
+   lines of the capital are heard there. No stutter on the gate.
+3. **Walk on to The Barrens (Westfall).** `/au packs`: area `thebarrens` (`westfall`); the line "last change of area"
+   shows how many regional rules were built and in how many ms (the client's clock). Note the ms. A Durotar line is no
+   longer heard in the Barrens. Did the screen stutter on the border? (yes/no, and how long)
+4. **Come back to Durotar.** The area is built again with **no new LoadAddOn** (the loads counter of `/au packs` does
+   not grow). The Durotar lines come back.
+5. **Change zone in combat** (pull a monster across the border). Nothing is built until the fight ends; then the area
+   follows. No Lua error.
+6. **Enter a dungeon of the continent (Ragefire Chasm, The Deadmines).** The area stays the one outside (an instance
+   is not an area of the data); no error.
+7. **Memory.** `/au prof` in Durotar after login, after the Barrens and after coming back: note the KB of the addon
+   each time. The area left should not stay: the second and third numbers within a few hundred KB of the first.
+8. **Errors.** `/au debug`: no `packs` error, no "loaded, but gave no content" for a folder of the download.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -594,4 +617,5 @@ N8 letters / options .... letter at login? ___  in the journal? ___  /reload not
 L2 verses ............... one at a time? ___  too fast/slow? ___  wheel? ___  clicks pass? ___  history line breaks? ___
 R5 trial slice ......... repeated within 90 min? ___  out of place (%) ______  PickEntry p95 ______  memory (KB) ______
 L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  never: none? ___  nothing in chat? ___
+C0 areas ............... area in /au packs ______  ms of a change ______  stutter? ___  KB login/after/back ______
 ```

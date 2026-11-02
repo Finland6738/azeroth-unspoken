@@ -1,7 +1,7 @@
 -- English texts of the regional pack kalimdor_orgrimmar (#102). The rules are in AzerothUnspoken_Kalimdor/Orgrimmar.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("kalimdor", "enUS", "kalimdor_orgrimmar", function()
+AU:RegisterRegionalTexts("durotar", "enUS", "kalimdor_orgrimmar", function()
 	return {
 		["org.dawn.01"] = {
 			"watches the first light of dawn spill over the canyon rim and run down the red stone.",

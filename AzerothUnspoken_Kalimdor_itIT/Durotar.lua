@@ -1,7 +1,7 @@
 -- Italian texts of the regional pack kalimdor_durotar (#102). The rules are in AzerothUnspoken_Kalimdor/Durotar.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("kalimdor", "itIT", "kalimdor_durotar", function()
+AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_durotar", function()
 	return {
 		["dur.battle.blade.01"] = {
 			"Cultista! I tuoi padroni non ti salveranno.",

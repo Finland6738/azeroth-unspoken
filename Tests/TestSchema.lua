@@ -38,7 +38,7 @@ T.run("regola v2: campi, valori predefiniti e testi per lingua", function()
 	T.ok(p ~= nil, "frase registrata")
 	T.eq(p.pack, "t_v2", "pacchetto")
 	T.eq(#p.events, 2, "due eventi"); T.eq(p.events[2], "t_ev_b", "secondo evento")
-	T.ok(Engine.byEvent["t_ev_a"][1] == p and Engine.byEvent["t_ev_b"][1] == p, "indice per evento")
+	T.ok(Engine.byEvent["t_ev_a"][1] == p.ord and Engine.byEvent["t_ev_b"][1] == p.ord, "indice per evento")
 	T.eq(p.category, "combat", "categoria"); T.eq(p.speaker, "inner", "voce")
 	T.eq(p.form, "say", "la voce interiore non è un'emote")
 	T.eq(p.styles[1], "intimate", "registro principale"); T.eq(p.styles[2], "ancient", "registro secondario")
@@ -346,7 +346,7 @@ end)
 T.run("il database di base ha le tre voci e tutte le profondità", function()
 	local by = { narrator = 0, inner = 0, character = 0, npc = 0 }
 	local base = 0
-	for _, p in pairs(Engine.byId) do
+	for _, p in Engine:Rules() do
 		-- the base database: the base packs and the regional packs of the download (#101)
 		if p.pack:sub(1, 5) == "base_" or Engine.packs[p.pack].region then
 			base = base + 1

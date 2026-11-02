@@ -1517,7 +1517,7 @@ function SA:Check()
 		for i, step in ipairs(def.steps or EMPTY) do
 			local event = step.from == "LOCKED" and self.EVENTS.open or (step.to == "RESOLVED" and self.EVENTS.resolve or self.EVENTS.step)
 			local found = false
-			for _, p in ipairs(Engine.byEvent[event] or EMPTY) do
+			for _, p in ipairs(Engine:EventRules(event)) do
 				local a = p.when and p.when.arc
 				if type(a) == "table" and a.id == id and (a.state == nil or Has(Engine.AsList(a.state), step.to)) then found = true; break end
 			end
@@ -1526,7 +1526,7 @@ function SA:Check()
 	end
 	-- le regole degli eventi arc_*: dichiarano l'arco, e lo stato che citano esiste
 	for event in pairs(self.EVENT_SET) do
-		for _, p in ipairs(Engine.byEvent[event] or EMPTY) do
+		for _, p in ipairs(Engine:EventRules(event)) do
 			local a = p.when and p.when.arc
 			if type(a) ~= "table" or type(a.id) ~= "string" then
 				Add("error", p.id, ("evento '%s' senza una condizione arc = { id = ... }"):format(event))

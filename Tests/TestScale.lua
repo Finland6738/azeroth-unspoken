@@ -14,9 +14,10 @@
 local NS = ...
 local Engine = NS.Engine
 
+-- #138: the selection gives ords, the reference views
 local function Ids(list)
 	local out = {}
-	for i, p in ipairs(list) do out[i] = p.id end
+	for i, p in ipairs(list) do out[i] = Engine.IdOf(p) end
 	return table.concat(out, ",")
 end
 
@@ -24,7 +25,8 @@ end
 local function OldEligible(list, lang, ctx, form, now)
 	local out = {}
 	local mem = NS.cdb.memory
-	for _, p in ipairs(list or {}) do
+	for _, r in ipairs(list or {}) do
+		local p = Engine.Rule(r)
 		-- #99: a part said only inside a monologue is never a candidate; a monologue is one when its parts are usable
 		local usable
 		if p.kind == "monologue" then
@@ -157,7 +159,7 @@ T.run("#83: index keys follow the comparisons of the rule engine", function()
 	T.ok(Engine.index.t_scale_ev.say["t:beast"] ~= nil, "indexed by creature type")
 	local calls = 0
 	NS:RegisterCondition("ctype", function(v, ctx) calls = calls + 1; return true end)
-	T.ok(Engine.index.t_scale_ev.say["t:beast"] == nil and Engine.index.t_scale_ev.say["*"][1].id == "t.scale.ctype",
+	T.ok(Engine.index.t_scale_ev.say["t:beast"] == nil and Engine.IdOf(Engine.index.t_scale_ev.say["*"][1]) == "t.scale.ctype",
 		"after the pack changed ctype, the rule is generic")
 end)
 
@@ -167,9 +169,9 @@ T.run("#83: candidates are a part of byEvent, in registration order", function()
 		for _, ev in ipairs(Events()) do
 			local c = Engine:Candidates(ev, ctx)
 			local last = 0
-			for _, p in ipairs(c) do
-				T.ok(p.ord > last, ev .. ": increasing order")
-				last = p.ord
+			for _, r in ipairs(c) do
+				T.ok(r > last, ev .. ": increasing order")
+				last = r
 			end
 			T.ok(#c <= #Engine.byEvent[ev], ev .. ": never more than byEvent")
 		end
@@ -189,9 +191,9 @@ end)
 T.run("#84: source tables are not kept, variants are strings", function()
 	local pack = Engine.packs.base_combat
 	T.ok(pack ~= nil and pack.registry == nil and pack.texts == nil, "registry and texts released after registration")
-	T.ok(pack.ids and #pack.ids > 0 and pack.languages, "ids and languages stay for the validator")
+	T.ok(#Engine:PackIds("base_combat") > 0 and pack.languages, "ids and languages stay for the validator")
 	local strings, tables = 0, 0
-	for _, p in pairs(Engine.byId) do
+	for _, p in Engine:Rules() do
 		for _, list in pairs(p.text) do
 			for _, v in ipairs(list) do
 				if type(v) == "string" then strings = strings + 1 else tables = tables + 1 end
@@ -377,7 +379,7 @@ T.run("#138: rules share their shape and their conditions; a write changes only 
 	-- the first synthetic clone (in id order) that shares its shape with another rule: which base rule a clone copies
 	-- depends on how many base rules there are, so syn.000001 alone may have a shape of its own (N3, #215)
 	local byShape = {}
-	for _, p in pairs(Engine.byId) do
+	for _, p in Engine:Rules() do
 		local s = Engine.ShapeOf(p)
 		if s then byShape[s] = (byShape[s] or 0) + 1 end
 	end
@@ -390,11 +392,14 @@ T.run("#138: rules share their shape and their conditions; a write changes only 
 	a = a or Engine.byId["syn.000001"]
 	local shape = Engine.ShapeOf(a)
 	T.ok(shape ~= nil, "a registered rule has a shape")
+	-- #138 (column store): a rule is a number; its view keeps only the rule's own fields, its shape is the metatable
+	T.eq(type(Engine.byEvent.battle[1]), "number", "no table per rule: the lists hold ords")
 	local own = 0
 	for _ in pairs(a) do own = own + 1 end
-	T.ok(own <= 8, "the rule table keeps only its own fields (" .. own .. ")")
+	T.ok(own <= 9, "the view keeps only its own fields (" .. own .. ")")
+	T.eq(Engine.R.shape[a.ord], shape, "the shape of the view is the column's")
 	-- another rule with the same shape
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p ~= a and Engine.ShapeOf(p) == shape then b = p; break end
 	end
 	T.ok(b ~= nil, "two synthetic clones share a shape")
@@ -404,13 +409,14 @@ T.run("#138: rules share their shape and their conditions; a write changes only 
 		T.eq(a.cooldown, 4321, "the write is read back")
 		T.eq(b.cooldown, cooldown, "the other rule of the shape does not change")
 		T.ok(Engine.ShapeOf(a) ~= shape and Engine.ShapeOf(b) == shape, "the rule got a copy of its shape")
+		T.eq(Engine.R.shape[a.ord].cooldown, 4321, "the selection reads the write in the column")
 		a.cooldown = nil
 		T.eq(a.cooldown, nil, "a shape field can be removed from one rule")
 		T.eq(a.speaker, b.speaker, "the copy keeps the other fields")
 	end
 	-- interned conditions: the clones of one rule that kept its conditions share the table
 	local byKey, shared = {}, 0
-	for _, p in pairs(Engine.byId) do
+	for _, p in Engine:Rules() do
 		if p.when then
 			if byKey[p.when] then shared = shared + 1 end
 			byKey[p.when] = true
@@ -429,7 +435,8 @@ T.run("#138: the union of the groups follows the index", function()
 	}, texts = { enUS = { ["t.scale.cache.z"] = "Cache, zone.", ["t.scale.cache.g"] = "Cache, generic." } } })
 	local after = Engine:Candidates("battle", ctx, "say")
 	T.eq(#after, #before + 2, "a new rule is in the next union")
-	T.ok(after[#after - 1].id == "t.scale.cache.g" and after[#after].id == "t.scale.cache.z", "in registration order")
+	T.ok(Engine.IdOf(after[#after - 1]) == "t.scale.cache.g" and Engine.IdOf(after[#after]) == "t.scale.cache.z",
+		"in registration order")
 	Engine:DropPack("t_scale_cache")
 	T.eq(#Engine:Candidates("battle", ctx, "say"), #before, "a dropped pack leaves the union")
 	local shapes1, whens1 = Engine.InternCounts()
@@ -443,9 +450,10 @@ T.run("#138: a pick checks the groups of the index apart, with the same result a
 	for _, byForm in pairs(Engine.index) do
 		for _, byKey in pairs(byForm) do
 			for k, list in pairs(byKey) do
-				for _, p in ipairs(list) do
-					if k ~= "*" and (p.impure or p.kind == "monologue") then keyedImpure = keyedImpure + 1 end
-					if k == "*" and p.kind == "monologue" then monologues = monologues + 1 end
+				for _, r in ipairs(list) do
+					local kind = Engine.R.shape[r].kind
+					if k ~= "*" and (Engine.R.impure[r] or kind == "monologue") then keyedImpure = keyedImpure + 1 end
+					if k == "*" and kind == "monologue" then monologues = monologues + 1 end
 				end
 			end
 		end
@@ -457,7 +465,8 @@ T.run("#138: a pick checks the groups of the index apart, with the same result a
 		["t.scale.mono"] = { event = "muse", speaker = "inner", kind = "monologue", conditions = { zone = "Duskwood" },
 			parts = { "mono.muse.road.1", "mono.muse.road.2" } },
 	} })
-	T.ok(Engine.index.muse.say["*"][#Engine.index.muse.say["*"]].id == "t.scale.mono", "a zone-bound monologue is generic")
+	T.ok(Engine.IdOf(Engine.index.muse.say["*"][#Engine.index.muse.say["*"]]) == "t.scale.mono",
+		"a zone-bound monologue is generic")
 	Engine:DropPack("t_scale_mono")
 
 	-- the grouped check (with the memo of the pick) against Eligible on the merged candidates (without it)
@@ -482,8 +491,8 @@ T.run("#138: a pick checks the groups of the index apart, with the same result a
 							T.ok(false, ("%s %s %s %s: grouped [%s] / merged [%s]"):format(s.zone, ev, form, lang, Ids(new), Ids(old)))
 						end
 					end
-					for _, p in ipairs(old) do
-						if p.impure then chance = chance + 1 end
+					for _, r in ipairs(old) do
+						if Engine.R.impure[r] then chance = chance + 1 end
 					end
 				end
 			end

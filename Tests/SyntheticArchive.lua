@@ -79,16 +79,10 @@ local function VariantText(v)
 	return nil
 end
 
-function SYNTH_SOURCE(NS, n, opts)
-	opts = opts or {}
-	local Engine = NS.Engine
-	local seed = opts.seed or 1
-	local placeShare = opts.placeShare or 0.6
-	local langs = opts.langs or { "itIT", "enUS" }
-
-	-- the base rules, in id order, with texts in every requested language
+-- the base rules, in id order, with texts in every requested language
+local function BaseRules(Engine, langs)
 	local base = {}
-	for _, id in ipairs(Engine.SortedKeys(Engine.byId)) do
+	for _, id in ipairs(Engine.SortedKeys(Engine.ordOf)) do
 		local p = Engine.byId[id]
 		local ok = #p.events > 0 and not HasFunction(p.when)
 		for _, lang in ipairs(langs) do
@@ -98,6 +92,16 @@ function SYNTH_SOURCE(NS, n, opts)
 		if ok then table.insert(base, p) end
 	end
 	assert(#base > 0, "SYNTH_SOURCE: no base rules")
+	return base
+end
+
+function SYNTH_SOURCE(NS, n, opts)
+	opts = opts or {}
+	local Engine = NS.Engine
+	local seed = opts.seed or 1
+	local placeShare = opts.placeShare or 0.6
+	local langs = opts.langs or { "itIT", "enUS" }
+	local base = BaseRules(Engine, langs)
 
 	-- a small linear congruential generator: independent of math.random, so the archive does not depend on how
 	-- many random numbers the engine drew before
@@ -152,4 +156,45 @@ function SYNTH_SOURCE(NS, n, opts)
 		table.insert(out, ("}, %q)\n"):format(packId))
 	end
 	return table.concat(out), { pack = packId, zones = SYNTH_ZONES, events = events }
+end
+
+-- C0 (ADR 0048): the sources of one regional area, as the folders write them. SYNTH_AREA_SOURCES(NS, n, opts) returns
+-- the rules (AzerothUnspoken:RegisterRegionalPack(area, builder)) and the texts of one language
+-- (AzerothUnspoken:RegisterRegionalTexts(area, lang, pack, builder)) of n clones bound to the zone of the area: the
+-- clone keeps its conditions, with the zone of the area in place of any place it asked.
+--   opts.area, opts.zone (required), opts.seed (default 1), opts.lang (default "enUS"), opts.prefix (default the area)
+function SYNTH_AREA_SOURCES(NS, n, opts)
+	local Engine = NS.Engine
+	local lang = opts.lang or "enUS"
+	local base = BaseRules(Engine, { lang })
+	local prefix = opts.prefix or opts.area
+	local state = opts.seed or 1
+	local function Rand(m)
+		state = (state * 1103515245 + 12345) % 2147483648
+		return state % m + 1
+	end
+	local packId = "synth_" .. prefix
+	local rules, texts = {}, {}
+	for i = 1, n do
+		local p = base[Rand(#base)]
+		local id = ("syn.%s.%06d"):format(prefix, i)
+		local when = Copy(p.when) or {}
+		when.zone, when.subzone, when.place, when.landmark = opts.zone, nil, nil, nil
+		table.insert(rules, ("[%q] = %s,\n"):format(id, Serialize({
+			event = Copy(p.events), speaker = p.speaker, form = p.form, category = p.category,
+			styles = Copy(p.styles), depth = Keys(p.depth), tags = Keys(p.tags), weight = p.weight,
+			cooldown = p.cooldown, conditions = when, theme = p.theme, motifs = Copy(p.motifs),
+		})))
+		local out = {}
+		for k, v in ipairs(p.text[Engine.LangCode(lang)]) do
+			local t = VariantText(v)
+			if t then table.insert(out, t .. " [" .. prefix .. i .. "." .. k .. "]") end
+		end
+		table.insert(texts, ("[%q] = %s,\n"):format(id, Serialize(out)))
+	end
+	local rulesSrc = ("AzerothUnspoken:RegisterRegionalPack(%q, function() return { id = %q, languages = { %q }, registry = {\n")
+		:format(opts.area, packId, lang) .. table.concat(rules) .. "} } end)\n"
+	local textsSrc = ("AzerothUnspoken:RegisterRegionalTexts(%q, %q, %q, function() return {\n"):format(opts.area, lang, packId)
+		.. table.concat(texts) .. "} end)\n"
+	return rulesSrc, textsSrc
 end

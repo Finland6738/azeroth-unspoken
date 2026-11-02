@@ -2,6 +2,11 @@
 -- La memoria è per personaggio (AzerothUnspokenCharacterDB.memory) e resta tra le sessioni.
 local ADDON, NS = ...
 local Engine = NS.Engine
+-- #138: the columns of the rules (PhraseRegistry, column store). The selection reads them directly; a rule is its ord
+local R = Engine.R
+local ID, SHAPE, WHEN, STYLES, TAGS, THEME, MOTIFS, IMPURE = R.id, R.shape, R.when, R.styles, R.tags, R.theme, R.motifs,
+	R.impure
+local TX, TEXT_SPAN = Engine.TX, Engine.TEXT_SPAN
 
 local function Mem() return NS.cdb.memory end
 local EMPTY = {}
@@ -118,9 +123,9 @@ end
 ---I cooldown delle voci che esistono adesso (frasi e cornici; il vocabolario non ne ha) e gli id noti.
 local function KnownIds()
 	local known, cooldown = {}, {}
-	for id, p in pairs(Engine.byId) do
+	for id, r in pairs(Engine.ordOf) do
 		known[id] = true
-		cooldown[id] = p.cooldown
+		cooldown[id] = SHAPE[r].cooldown
 	end
 	for _, list in pairs(Engine.frames) do
 		for _, f in ipairs(list) do
@@ -176,7 +181,8 @@ end
 -- entry: la voce usata (frase, cornice o vocabolario; senza, la frase con quell'id); l'ultimo uso si ricorda solo se
 -- ha un cooldown (#86)
 local function Remember(key, id, keep, entry)
-	entry = entry or Engine.byId[id]
+	-- #138: the shape of the rule with that id is enough (it has the cooldown)
+	entry = entry or (Engine.ordOf[id] and SHAPE[Engine.ordOf[id]])
 	local mem = Mem()
 	mem.recent[key] = mem.recent[key] or {}
 	local list = mem.recent[key]
@@ -378,6 +384,18 @@ local function Hooks(factor, entry, ctx)
 	return f
 end
 
+-- #138: rule r as a table for Score and the weight hooks, without making a view: one table, loaded with the columns of
+-- the rule before each use, with the rule's shape as metatable (entry.speaker reads as on a view). A hook reads it during
+-- the call and keeps nothing; it has no texts (a hook that needs them reads Engine.TextRange(entry.ord, lang)).
+local cursor = {}
+local function Load(r)
+	-- without the metatable while it is loaded: a field that was nil would otherwise be written through the shape
+	setmetatable(cursor, nil)
+	cursor.id, cursor.ord, cursor.when, cursor.styles, cursor.tags = ID[r], r, WHEN[r], STYLES[r], TAGS[r]
+	cursor.theme, cursor.motifs = THEME[r], MOTIFS[r]
+	return setmetatable(cursor, SHAPE[r])
+end
+
 -- Guardie degli eventi: [evento][nome] = fn(ctx) -> boolean. Se una guardia dice no (o sbaglia), l'evento non
 -- produce alcuna frase, qualunque via lo abbia chiesto. Serve ai richiami di memoria: una frase che cita un
 -- ricordo esce solo se il ricordo esiste davvero (GDD §7.4), anche con un comando manuale.
@@ -440,6 +458,7 @@ end
 ---@param voice? string voice the phrase is shown in (a framed phrase: narrator); nil = its own
 ---@return AUWeightFactors
 function Engine.Factors(entry, lastTone, ctx, profile, voice)
+	entry = Engine.Rule(entry)   -- #138: an ord gives its view
 	local f = { B = entry.weight, C = 1 + Engine.SPEC_BONUS * (entry.spec or 0), P = 1, S = 1, R = 1, E = 1 }
 	f.N = 1 / (1 + Engine.USE_DECAY * (Mem().uses[entry.id] or 0))
 	if lastTone and Engine.Tone(entry) == lastTone then f.N = f.N * Engine.SAME_TONE end
@@ -479,7 +498,9 @@ local function WeightedPick(items, key)
 	local recent = {}
 	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
 	for _, it in ipairs(items) do
-		if it.w > 0 and not recent[it.e.id] then
+		-- #138: e is a rule's ord, or a frame
+		local e = it.e
+		if it.w > 0 and not recent[ID[e] or e.id] then
 			table.insert(pool, it)
 			total = total + it.w
 		end
@@ -505,7 +526,11 @@ local function KeepFor(n)
 	return math.max(1, math.min(window, math.floor(n * 0.6)))
 end
 
-Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor = Score, WeightedPick, Remember, KeepFor
+Engine.WeightedPick, Engine.Remember, Engine.KeepFor = WeightedPick, Remember, KeepFor
+---Score for tests and tools: a rule may be given by its ord (#138).
+function Engine.Score(entry, ...)
+	return Score(Engine.Rule(entry), ...)
+end
 
 ---------------------------------------------------------------------------
 -- Memo of one pick (#157, #138, ADR 0024)
@@ -524,7 +549,6 @@ Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor = Score, Weig
 Engine.MEMO = true
 Engine.MEMO_MIN = 128
 
-local ShapeOf = Engine.ShapeOf
 local NONE = {}   -- memo key of an absent field
 
 -- the factors whose hooks are all pure in this context: [factor] = true
@@ -582,113 +606,150 @@ local function Child(node, key)
 	return child
 end
 
----Score(entry, _, _, lastTone, ctx, profile, voice) with the memo of the pick: the same number.
----@param entry AUPhrase
+---Score(rule, _, _, lastTone, ctx, profile, voice) with the memo of the pick: the same number.
+---@param r integer|AUPhrase the rule's ord (#138), or its view
 ---@param lastTone? string
 ---@param ctx table
 ---@param profile AUStyleProfile
 ---@param voice? string
 ---@param memo table Engine.NewPickMemo
 ---@return number
-local function ScoreMemo(entry, lastTone, ctx, profile, voice, memo)
-	local shape = ShapeOf(entry)
-	if not shape then return Score(entry, nil, nil, lastTone, ctx, profile, voice) end
+local function ScoreMemo(r, lastTone, ctx, profile, voice, memo)
+	if type(r) ~= "number" then r = r.ord end
+	local shape = SHAPE[r]
 	if not memo.shapes then
 		memo.shapes, memo.pure, memo.uses = {}, PureFactors(ctx), Mem().uses
 	end
 	-- shape, registers, tags, theme, motifs, voice: the descriptive fields of the rule (all but id, text, when, ord).
 	-- #138: the lookups written out, the cheapest way in Lua 5.1 (the memo is asked once per weighed rule)
 	local node = memo.shapes[shape] or Child(memo.shapes, shape)
-	local key = entry.styles or NONE
+	local key = STYLES[r] or NONE
 	node = node[key] or Child(node, key)
-	key = entry.tags or NONE
+	key = TAGS[r] or NONE
 	node = node[key] or Child(node, key)
-	key = entry.theme or NONE
+	key = THEME[r] or NONE
 	node = node[key] or Child(node, key)
-	key = entry.motifs or NONE
+	key = MOTIFS[r] or NONE
 	node = node[key] or Child(node, key)
 	local m = node[voice or false]
 	if not m then
-		m = ShapeFactors(entry, lastTone, ctx, profile, voice, memo.pure)
+		m = ShapeFactors(Load(r), lastTone, ctx, profile, voice, memo.pure)
 		node[voice or false] = m
 	end
-	local uses = memo.uses[entry.id]
+	local uses = memo.uses[ID[r]]
 	if uses == nil and m.W0 then return m.W0 end
 	-- the operations of Score, in its order
 	local N = 1 / (1 + Engine.USE_DECAY * (uses or 0))
 	if m.tone then N = N * Engine.SAME_TONE end
 	N = N * m.nov
-	local C = m.C or (1 + Engine.SPEC_BONUS * (entry.spec or 0)) * Hooks("C", entry, ctx)
-	local P = m.P or Hooks("P", entry, ctx)
-	local R = m.R or Hooks("R", entry, ctx)
-	local E = m.E or Hooks("E", entry, ctx)
-	return entry.weight * C * P * N * m.S * R * E
+	local C = m.C or (1 + Engine.SPEC_BONUS * (shape.spec or 0)) * Hooks("C", Load(r), ctx)
+	local P = m.P or Hooks("P", Load(r), ctx)
+	local R = m.R or Hooks("R", Load(r), ctx)
+	local E = m.E or Hooks("E", Load(r), ctx)
+	return shape.weight * C * P * N * m.S * R * E
 end
 Engine.ScoreMemo = ScoreMemo
 
 ---------------------------------------------------------------------------
 -- Scelta
 ---------------------------------------------------------------------------
+-- #138: the frames (tables without an ord) of a list that hold now: the checks of Eligible, texts before conditions
+local function EligibleEntries(list, lang, ctx, form, now, memo, closed, literary, muted)
+	local out = {}
+	local mem, disabled, AnyUsable = Mem(), NS.db.disabledPacks, Engine.AnyUsable
+	for _, p in ipairs(list) do
+		local when = p.when
+		if not (memo and when ~= nil and memo[when] == false)
+			and (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
+			and not (muted and muted[p.id])
+			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
+			and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary)
+			and AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(when, ctx) then
+			table.insert(out, p)
+		end
+	end
+	return out
+end
+
 ---Le voci di una lista che valgono adesso: forma, pacchetto acceso, cooldown, una variante utilizzabile, condizioni.
 ---Per le frasi di un evento la lista è Engine:Candidates (l'indice, #83); con tutto byEvent il risultato è lo stesso.
----@param list? table[]
+---#138: a list of rules is a list of ords (byEvent, the index) and the result is ords; a list of views (tests, tools)
+---gives views, and a list of frames gives frames.
+---@param list? (integer|table)[]
 ---@param lang string
 ---@param ctx table
 ---@param form? "say"|"emote"
 ---@param now number
 ---@param memo? table answers of pure conditions tables during one pick ([when] = boolean: Engine.NewPickMemo().match)
----@return table[]
+---@return (integer|table)[]
 function Engine:Eligible(list, lang, ctx, form, now, memo)
 	local out = {}
 	if not list then return out end
-	local mem = Mem()
-	local disabled = NS.db.disabledPacks
 	-- #118: the categories with their own pacing that cannot speak in this spontaneous pick (Pacing:Closed), and the
 	-- literary forms when the setting says never or the character is fighting (any pick, asked for or not)
 	local closed = ctx and ctx.closed
 	local literary = NS.Pacing:LiteraryClosed(ctx) and self.LITERARY_CATEGORY or nil
 	-- #122: the pieces the user muted in the songbook (Systems/Songbook.lua), nil when there is none
 	local muted = self.muted
-	local AnyUsable = Engine.AnyUsable
-	for _, p in ipairs(list) do
-		local when = p.when
+	local head = list[1]
+	if type(head) == "table" then
+		if not (head.ord and SHAPE[head.ord]) then
+			return EligibleEntries(list, lang, ctx, form, now, memo, closed, literary, muted)
+		end
+		-- views: the same check on their ords
+		local ords = {}
+		for i, p in ipairs(list) do ords[i] = p.ord end
+		out = self:Eligible(ords, lang, ctx, form, now, memo)
+		for i, r in ipairs(out) do out[i] = Engine.Rule(r) end
+		return out
+	end
+	local last = Mem().last
+	local disabled = NS.db.disabledPacks
+	local RuleUsable = Engine.RuleUsable
+	local WHEN, SHAPE, ID, IMPURE = WHEN, SHAPE, ID, IMPURE   -- locals: the loop reads them for every candidate
+	local store = TX[lang]
+	local tv, tat = store and store.v, store and store.at
+	for _, r in ipairs(list) do
+		local when, p = WHEN[r], SHAPE[r]
 		-- #138: conditions already false in this pick end the check at once. Only pure conditions are in the memo, and
 		-- purity belongs to the conditions table, so no rule that shares it could have drawn a random number here
 		if not (memo and when ~= nil and memo[when] == false)
-			and (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
-			and not (muted and muted[p.id])
-			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
-			and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary) then
-			-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre (chance,
-			-- func; e le cornici, che non hanno ord) solo dopo i testi, come sempre: la sequenza casuale non cambia
-			local ok
-			if p.kind == "monologue" then
-				-- #99: its conditions, then every part (a whole phrase with its own conditions and texts); off in R1_COMPAT
-				ok = not self.R1_COMPAT and Engine.SafeMatch(p.when, ctx) and self:MonologueUsable(p, lang, ctx, now)
-			elseif p.impure or not p.ord then
-				ok = AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(when, ctx)
-			else
-				local m
-				if when == nil then
-					m = true
-				elseif memo then
-					m = memo[when]
-					if m == nil then
-						m = Engine.SafeMatch(when, ctx)
-						memo[when] = m
-					end
+			and (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only" then
+			local id = ID[r]
+			if not (muted and muted[id])
+				and not (p.cooldown and last[id] and now - last[id] < p.cooldown)
+				and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary) then
+				-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre
+				-- (chance, func; e le cornici, sopra) solo dopo i testi, come sempre: la sequenza casuale non cambia
+				local ok
+				if p.kind == "monologue" then
+					-- #99: its conditions, then every part (a whole phrase with its own conditions and texts); off in R1_COMPAT
+					ok = not self.R1_COMPAT and Engine.SafeMatch(when, ctx) and self:MonologueUsable(r, lang, ctx, now)
+				elseif IMPURE[r] then
+					ok = RuleUsable(r, lang, ctx) and Engine.SafeMatch(when, ctx)
 				else
-					m = Engine.SafeMatch(when, ctx)
+					local m
+					if when == nil then
+						m = true
+					elseif memo then
+						m = memo[when]
+						if m == nil then
+							m = Engine.SafeMatch(when, ctx)
+							memo[when] = m
+						end
+					else
+						m = Engine.SafeMatch(when, ctx)
+					end
+					if m then
+						-- #138: the common case of RuleUsable, a first variant with no placeholder (its pack, the
+						-- rule's, is on); a = count * TEXT_SPAN + first slot, and a count of 0 has no first variant
+						local a = tat and tat[r]
+						local first = a and a >= TEXT_SPAN and tv[a % TEXT_SPAN]
+						ok = (type(first) == "string" and not find(first, "{", 1, true)) or RuleUsable(r, lang, ctx)
+					end
 				end
-				if m then
-					-- #138: the common case of AnyUsable, a first variant with no placeholder (its pack, the rule's, is on)
-					local texts = p.text[lang]
-					local first = texts and texts[1]
-					ok = (type(first) == "string" and not find(first, "{", 1, true))
-						or AnyUsable(texts, ctx, p.speaker, p.pack)
-				end
+				if ok then out[#out + 1] = r end
 			end
-			if ok then table.insert(out, p) end
 		end
 	end
 	return out
@@ -706,7 +767,7 @@ end
 ---@param lang string
 ---@param now number
 ---@param memo? table answers of pure conditions tables during one pick (see Eligible)
----@return AUPhrase[]
+---@return integer[] ords
 function Engine:EligibleFor(event, ctx, form, lang, now, memo)
 	-- with Engine.MEMO = false the merged list, as before: the test of the pick results compares the two ways
 	if form == nil or Engine.MEMO == false then
@@ -748,20 +809,21 @@ end
 
 ---Every part of the monologue exists, is chainable, is in an enabled pack, is out of its cooldown, matches its own
 ---conditions and has a usable variant.
----@param p AUPhrase
+---@param p integer|AUPhrase the monologue's ord (#138) or its view
 ---@param lang string
 ---@param ctx table
 ---@param now number
 ---@return boolean
 function Engine:MonologueUsable(p, lang, ctx, now)
-	local parts = p.parts
+	local parts = (type(p) == "number" and SHAPE[p] or p).parts
 	if not parts or #parts < self.MONOLOGUE_MIN_PARTS or #parts > self.MONOLOGUE_MAX_PARTS then return false end
 	local mem, disabled = Mem(), NS.db.disabledPacks
 	for _, id in ipairs(parts) do
-		local q = self.byId[id]
+		local r = self.ordOf[id]
+		local q = r and SHAPE[r]
 		if not q or not q.chainable or q.kind or disabled[q.pack]
-			or (q.cooldown and mem.last[q.id] and now - mem.last[q.id] < q.cooldown)
-			or not Engine.SafeMatch(q.when, ctx) or not Engine.AnyUsable(q.text[lang], ctx, q.speaker, q.pack) then
+			or (q.cooldown and mem.last[id] and now - mem.last[id] < q.cooldown)
+			or not Engine.SafeMatch(WHEN[r], ctx) or not Engine.RuleUsable(r, lang, ctx) then
 			return false
 		end
 	end
@@ -936,7 +998,7 @@ end
 ---@param ctx table
 ---@return AUWeightFactors
 function Engine:Weight(p, event, ctx)
-	return Engine.Factors(p, Mem().lastTone[event], ctx, self.StyleResolver:Resolve(event, ctx))
+	return Engine.Factors(Engine.Rule(p), Mem().lastTone[event], ctx, self.StyleResolver:Resolve(event, ctx))
 end
 
 ---The first situation of ctx.situation that the line's `situation` condition names (#100), for the record and the
@@ -959,7 +1021,7 @@ end
 ---chain: landmark -> subzone -> zone -> region, atmosphere or situation -> generic of the event; then, in PickEntry,
 ---the related event; then silence). If even all of them have fewer, every
 ---candidate stays, as before. Recent ids still drop out in WeightedPick.
----@param items { e: AUPhrase, w: number }[]
+---@param items { e: integer|AUPhrase, w: number }[] e: the rule's ord (#138) or its view
 ---@param key string key of the anti-repetition window (the event)
 ---@return table items the same list, or a new list with the chosen tiers
 ---@return integer tier the lowest tier kept
@@ -970,11 +1032,17 @@ function Engine.TierPool(items, key)
 	local fresh, tiers = {}, {}
 	-- #138: the deduced tier once per conditions table in this call (many rules share one, see Engine.Tier)
 	local byWhen = {}
+	local SHAPE, WHEN, ID = SHAPE, WHEN, ID
 	for i, it in ipairs(items) do
 		local e = it.e
-		local t = e.tier
+		-- an ord has a shape in the column; a view (tests) is read as a table
+		local s, t, when = SHAPE[e], nil, nil
+		if s then
+			t, when = s.tier, WHEN[e]
+		else
+			t, when = e.tier, e.when
+		end
 		if t == nil then
-			local when = e.when
 			if when == nil then
 				t = 0
 			else
@@ -986,7 +1054,7 @@ function Engine.TierPool(items, key)
 			end
 		end
 		tiers[i] = t
-		if it.w > 0 and not recent[it.e.id] then fresh[t] = (fresh[t] or 0) + 1 end
+		if it.w > 0 and not recent[ID[e] or e.id] then fresh[t] = (fresh[t] or 0) + 1 end
 	end
 	local n, tier = 0, nil
 	for t = Engine.MAX_TIER, 1, -1 do
@@ -1036,8 +1104,8 @@ end
 -- only the lines written for a composite situation (#100)
 local function Situational(list)
 	local out = {}
-	for _, p in ipairs(list or EMPTY) do
-		if p.situational then table.insert(out, p) end
+	for _, r in ipairs(list or EMPTY) do
+		if SHAPE[r].situational then table.insert(out, r) end
 	end
 	return out
 end
@@ -1080,9 +1148,10 @@ function Engine:PickOwn(event, ctx, form, composite)
 	local items = {}
 	local own = EligibleOf(form)
 	local weights = memo and #own >= self.MEMO_MIN and memo
-	for _, p in ipairs(own) do
-		table.insert(items, { e = p, w = weights and ScoreMemo(p, lastTone, ctx, profile, nil, weights)
-			or Score(p, event, #own, lastTone, ctx, profile) })
+	-- #138: the candidates are ords; a rule becomes a view only once chosen
+	for _, r in ipairs(own) do
+		table.insert(items, { e = r, w = weights and ScoreMemo(r, lastTone, ctx, profile, nil, weights)
+			or Score(Load(r), event, #own, lastTone, ctx, profile) })
 	end
 
 	local frames
@@ -1095,15 +1164,15 @@ function Engine:PickOwn(event, ctx, form, composite)
 			-- solo la voce pubblica del personaggio si può raccontare in una cornice:
 			-- un pensiero (inner) non diventa un'emote
 			local says = {}
-			for _, p in ipairs(EligibleOf("say")) do
-				if p.speaker == "character" then table.insert(says, p) end
+			for _, r in ipairs(EligibleOf("say")) do
+				if SHAPE[r].speaker == "character" then table.insert(says, r) end
 			end
 			local voice = r3 and "narrator" or nil
 			weights = memo and #says >= self.MEMO_MIN and memo
-			for _, p in ipairs(says) do
-				table.insert(items, { e = p, framed = true,
-					w = 0.8 * (weights and ScoreMemo(p, lastTone, ctx, profile, voice, weights)
-						or Score(p, event, #says, lastTone, ctx, profile, voice)) })
+			for _, r in ipairs(says) do
+				table.insert(items, { e = r, framed = true,
+					w = 0.8 * (weights and ScoreMemo(r, lastTone, ctx, profile, voice, weights)
+						or Score(Load(r), event, #says, lastTone, ctx, profile, voice)) })
 			end
 		end
 	end
@@ -1119,7 +1188,7 @@ function Engine:PickOwn(event, ctx, form, composite)
 	for _ = 1, 6 do
 		local it = WeightedPick(items, event)
 		if not it then return nil end
-		local p = it.e
+		local p = Engine.Rule(it.e)
 		local text, variant, parts
 		if p.kind == "monologue" then
 			text, parts = self:RenderMonologue(p, lang, ctx)

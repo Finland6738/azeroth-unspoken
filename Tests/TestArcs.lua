@@ -1398,7 +1398,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 		end
 		T.ok(SA.texts[id].it.title ~= SA.texts[id].en.title, id .. ": titoli diversi nelle due lingue")
 	end
-	for _, p in pairs(Engine.byEvent.arc_open) do
+	for _, p in ipairs(Engine:EventRules("arc_open")) do
 		for _, lang in ipairs({ "it", "en" }) do
 			for _, v in ipairs(p.text[lang] or {}) do
 				v = Engine.VariantView(v)
@@ -1408,7 +1408,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 		end
 	end
 	for _, ev in ipairs({ "arc_step", "arc_resolve" }) do
-		for _, p in pairs(Engine.byEvent[ev]) do
+		for _, p in ipairs(Engine:EventRules(ev)) do
 			for _, lang in ipairs({ "it", "en" }) do
 				for _, v in ipairs(p.text[lang] or {}) do Check(Engine.VariantText(v), p.id) end
 			end
@@ -1416,7 +1416,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 	end
 	local n = 0
 	for _, ev in ipairs({ "arc_open", "arc_step", "arc_resolve" }) do
-		for _, p in ipairs(Engine.byEvent[ev]) do if p.pack == "base_arcs" then n = n + 1 end end
+		for _, p in ipairs(Engine:EventRules(ev)) do if p.pack == "base_arcs" then n = n + 1 end end
 	end
 	T.eq(n, 45, "45 battute di base (33 di S9 + 7 della nemesi, N7, + 5, N9)")
 end)

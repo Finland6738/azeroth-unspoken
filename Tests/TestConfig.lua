@@ -320,7 +320,7 @@ T.run("anti-ripetizione rovinata: le voci malformate si scartano e le scelte fun
 	local Engine = NS.Engine
 	AzerothUnspokenDB, AzerothUnspokenCharacterDB = nil, nil
 	Config:Load()
-	local good = next(Engine.byId)
+	local good = next(Engine.ordOf)
 	NS.cdb.memory = {
 		uses = { [good] = 2, a = "x", b = {}, c = 0 / 0, d = math.huge, [5] = 1 },
 		last = { [good] = 100, e = "y", f = -5 },

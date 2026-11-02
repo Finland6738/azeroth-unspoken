@@ -881,7 +881,7 @@ end)
 ---------------------------------------------------------------------------
 T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 	local n, events, speakers = 0, {}, {}
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.pack == "base_relations" then
 			n = n + 1
 			events[p.events[1]] = (events[p.events[1]] or 0) + 1
@@ -909,7 +909,7 @@ T.run("almeno 40 frasi bilingui legate alle relazioni", function()
 	T.eq(#r.errors, 0, "il validatore non trova errori"); T.eq(#r.warnings, 0, "né avvisi")
 	-- nessuna frase si ripete identica in italiano
 	local seen = {}
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.pack == "base_relations" then
 			for _, v in ipairs(p.text.it) do v = Engine.VariantText(v); T.ok(not seen[v], "testo IT duplicato: " .. v); seen[v] = true end
 		end
@@ -1652,7 +1652,7 @@ T.run("etichetta personale: mai in chat pubblica", function()
 	Fresh()
 	-- nessuna frase di base con {relation} è di una voce pubblica, in nessuna lingua
 	local nInner = 0
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		for _, list in pairs(p.text) do
 			for _, v in ipairs(list) do
 				v = Engine.VariantView(v)
@@ -1717,7 +1717,7 @@ T.run("saluti, congedi e duelli rispettano il rapporto (#105)", function()
 	local function Pool(event, ctx)
 		local out = {}
 		for _, lang in ipairs({ "it", "en" }) do
-			for _, p in ipairs(Engine:Eligible(Engine.byEvent[event], lang, ctx, nil, time())) do out[p.id] = p end
+			for _, p in ipairs(Engine:Eligible(Engine:EventRules(event), lang, ctx, nil, time())) do out[p.id] = p end
 		end
 		return out
 	end

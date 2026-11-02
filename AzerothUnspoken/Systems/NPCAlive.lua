@@ -256,7 +256,7 @@ function N:Check()
 			elseif not Engine.byEvent[node.event] or #Engine.byEvent[node.event] == 0 then
 				Add("error", key, ("nodo '%s': nessuna battuta per '%s'"):format(id, node.event))
 			else
-				for _, p in ipairs(Engine.byEvent[node.event]) do
+				for _, p in ipairs(Engine:EventRules(node.event)) do
 					if p.speaker ~= "npc" then
 						Add("error", key, ("battuta '%s' dell'evento '%s' non è della voce npc"):format(p.id, node.event))
 					end

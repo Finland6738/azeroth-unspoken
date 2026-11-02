@@ -49,6 +49,10 @@ Facts and constraints:
 7. **Anti-repetition memory.** At login (`Engine:DecayMemory`) the ids of a regional pack not built yet are unknown: their uses decay like the others and leave under 0.2 (a few logins) or with the cap; their last use is kept at most `Engine.DORMANT_LAST_MAX` (30 days; the longest cooldown of the content is seven days). No schema change.
 8. **Tools.** `tools/install_addon.py` installs every `AzerothUnspoken*` folder with a `.toc`. The tests install the folders in the mock (`INSTALL_PACKS`, `C_AddOns` with `LoadAddOn`, `IsAddOnLoaded`, `DoesAddOnExist`, metadata) either all loaded and built (`ActivateAll`: the validator and the selection see the whole database, as before) or LoadOnDemand, loaded by `Core/Packs.lua` as in the client (`Tests/TestPacks.lua`). The docs rule of the PRs covers every `AzerothUnspoken_*` folder.
 
+## Update: the area as the unit built and dropped (C0, 2026-11-02)
+
+Item 5 kept the continent "until the archive per continent outgrows the budget". Phase C0 took the next step with no change to the folder format ([ADR 0048](0048-column-store-and-regional-packs-by-area.md)): a builder belongs to an **area** (a zone, or a capital with its zone) or to a continent; the area the character is in is built and the area left dropped on every change of zone, outside combat; folders stay per continent, and a folder may declare `## X-AzerothUnspoken-Areas` to be loaded only in its areas. The trial slice moved to the areas `durotar` and `elwynnforest`. The 300,000-entry projection of ADR 0048 gives the size at which the folders must be split by area and the follow-ups needed before areas grow large (a build spread over frames, a bound on the compiled code of visited areas).
+
 ## Alternatives considered
 
 - **A build step that generates the folders** from the current `Data/` tree. It keeps the old paths, but doubles every text in the repository (source and output), needs a CI check that both agree, and would be replaced by the exporter of #87 anyway.

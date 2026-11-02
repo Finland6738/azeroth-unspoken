@@ -363,7 +363,8 @@ function N:PickSong(key, from)
 	end
 	local ctx = NS:BuildContext(extra)
 	local fresh, known = {}, {}
-	for _, p in ipairs(Engine:Eligible(Engine.byEvent[self.config.song], NS:TextLang(), ctx, nil, time())) do
+	for _, r in ipairs(Engine:Eligible(Engine.byEvent[self.config.song], NS:TextLang(), ctx, nil, time())) do
+		local p = Engine.Rule(r)   -- #138: Eligible gives ords
 		if Engine.IsLiteraryRule(p) then
 			table.insert(NS.Songbook:Heard(p.id) and known or fresh, p.id)
 		end

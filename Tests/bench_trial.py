@@ -256,7 +256,8 @@ def pack_sizes(addon):
     """Intentions and English texts of each trial pack (the measure counts the language the simulation speaks)."""
     lua, ns, _ = B.load_addon(addon)
     sizes = {}
-    for id_, p in ns.Engine.byId.items():
+    for id_ in ns.Engine.ordOf:
+        p = ns.Engine.byId[id_]
         if p.pack in TRIAL_PACKS:
             s = sizes.setdefault(p.pack, [0, 0])
             s[0] += 1

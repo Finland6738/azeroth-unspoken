@@ -1403,6 +1403,29 @@ valore predefinito. Se un passo non va, apri una issue con quello che hai visto.
 
 ---
 
+## C0: archivio a colonne e pacchetti per area (issue #138, ADR 0048)
+
+Niente di C0 è stato provato nel client: ogni numero viene da lupa su un PC. Le scelte sono le stesse di prima
+(verificato offline); il client deve confermare il caricamento. Parti con `/au debug` vuoto e `/au packs` a portata.
+
+1. **Accesso a Durotar (o nella Foresta di Elwynn).** `/au packs`: la prima riga dice `regione/area kalimdor/durotar`
+   (`eastern/elwynnforest`); le cartelle di Kalimdor (regole e la tua lingua) sono "caricate", quelle dell'altro
+   continente no. Entro pochi minuti si sente una riga dell'area (`/au speak` vicino a un villaggio della fetta).
+2. **Entra a piedi a Orgrimmar (Stormwind).** Nessuna area nuova: `/au packs` dice ancora `durotar` (`elwynnforest`)
+   e lì si sentono le righe della capitale. Nessuno scatto alla porta.
+3. **Prosegui verso le Barrens (Westfall).** `/au packs`: area `thebarrens` (`westfall`); la riga "ultimo cambio di
+   area" dice quante regole regionali sono state costruite e in quanti ms (l'orologio del client). Annota i ms. Nelle
+   Barrens non si sente più una riga di Durotar. Lo schermo ha avuto uno scatto al confine? (sì/no, e quanto)
+4. **Torna a Durotar.** L'area si ricostruisce **senza un nuovo LoadAddOn** (il contatore dei caricamenti di
+   `/au packs` non cresce). Tornano le righe di Durotar.
+5. **Cambia zona in combattimento** (porta un mostro oltre il confine). Non si costruisce nulla finché il combattimento
+   non finisce; poi l'area segue. Nessun errore Lua.
+6. **Entra in un dungeon del continente (Ragefire Chasm, The Deadmines).** L'area resta quella di fuori (un'istanza non
+   è un'area dei dati); nessun errore.
+7. **Memoria.** `/au prof` a Durotar dopo l'accesso, dopo le Barrens e dopo il ritorno: annota ogni volta i KB
+   dell'addon. L'area lasciata non deve restare: il secondo e il terzo numero entro poche centinaia di KB dal primo.
+8. **Errori.** `/au debug`: nessun errore `packs`, nessuna cartella del download "caricata, ma senza contenuto".
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1561,6 +1584,7 @@ N8 lettere/opzioni ...... lettera al login? ___  nel diario? ___  /reload nulla?
 L2 versi ................ uno alla volta? ___  troppo in fretta/piano? ___  rotellina? ___  clic passano? ___  cronologia a capo? ___
 R5 fetta di prova ...... ripetute in 90 min? ___  fuori luogo (%) ______  PickEntry p95 ______  memoria (KB) ______
 L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: nessuno? ___  nulla in chat? ___
+C0 aree ................ area in /au packs ______  ms di un cambio ______  scatto? ___  KB accesso/dopo/ritorno ______
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

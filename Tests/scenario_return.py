@@ -62,7 +62,7 @@ ADVANCE(10)
 -- the chance of a light return line now: the weights of the eligible lines (the emotions of the return included)
 local ctx = ns:BuildContext()
 local total, light = 0, 0
-for _, p in ipairs(Engine:Eligible(Engine.byEvent.memory_return, lang, ctx, nil, time())) do
+for _, p in ipairs(Engine:Eligible(Engine:EventRules("memory_return"), lang, ctx, nil, time())) do
 	local w = Engine:Weight(p, "memory_return", ctx).W
 	total = total + w
 	if Light(p) then light = light + w end

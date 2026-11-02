@@ -278,7 +278,7 @@ T.run("#97: module off, R1_COMPAT: behaviour as before", function()
 		"no emotion condition holds")
 	T.eq(Emotion:Status(), "off", "debug says off")
 	-- every line conditioned on an emotion is out
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.when and (p.when.emotion or p.when.emotionMin or p.when.emotionMax) then
 			T.ok(not Engine.SafeMatch(p.when, ctx), id .. ": never eligible with the module off")
 		end
@@ -393,7 +393,7 @@ T.run("#98: after a simulated death no cheerful return is eligible", function()
 		local ctx = NS:BuildContext()
 		T.eq(ctx.memory.lastVisitBad, true, arche .. ": the last visit ended badly")
 		local light = {}
-		for _, p in ipairs(Engine:Eligible(Engine.byEvent.memory_return, "en", ctx, nil, time())) do
+		for _, p in ipairs(Engine:Eligible(Engine:EventRules("memory_return"), "en", ctx, nil, time())) do
 			if LightLine(p) and Personality.Factor(p, ctx) > 0 then table.insert(light, p.id) end
 		end
 		if arche == "rogue" then
@@ -621,7 +621,7 @@ end)
 
 T.run("#156: the anti-repetition memory loses future times and huge counters", function()
 	Fresh()
-	local good = next(Engine.byId)
+	local good = next(Engine.ordOf)
 	local now = time()
 	NS.cdb.memory = { uses = { [good] = 7.5e299, other = 3 }, last = { [good] = now + 365 * 86400, far = 1e15, past = now - 10 },
 		recent = {}, lastTone = {}, variant = {} }

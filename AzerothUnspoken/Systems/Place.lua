@@ -20,6 +20,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 ---@field mapID? integer uiMapID (C_Map.GetBestMapForUnit)
 ---@field mapName? string nome della mappa (C_Map.GetMapInfo)
 ---@field continent? string kalimdor | eastern | ...
+---@field area? string the area of the zone (C0, ADR 0048): the unit the regional packs are built and dropped by
 ---@field tags table<string, boolean> atmosfera e temi (zona, sottozona e istanza insieme)
 ---@field mood? string atmosfera principale (come ctx.mood)
 ---@field territory? string friendly | hostile | contested | sanctuary | combat
@@ -111,6 +112,16 @@ local function DefineTraits()
 end
 Traits.RegisterScope("place")
 
+---The key of an area (C0, ADR 0048): the lower-case letters of a name ("Elwynn Forest" -> "elwynnforest"), the form
+---Core/Packs.lua gives every regional key. nil for anything else.
+---@param v any
+---@return string?
+function Place.AreaKey(v)
+	if type(v) ~= "string" then return nil end
+	v = NS.Lower(v):gsub("[^a-z_]", "")
+	return v ~= "" and v or nil
+end
+
 local function CleanEntry(e)
 	if type(e) ~= "table" then return nil end
 	local out = { tags = {} }
@@ -124,6 +135,7 @@ local function CleanEntry(e)
 	out.capital = e.capital == true or nil
 	if out.capital then out.tags.capital = true; Place.TAGS.capital = true end
 	if type(e.continent) == "string" then out.continent = e.continent end
+	if type(e.area) == "string" then out.area = Place.AreaKey(e.area) end
 	if e.kind == "party" or e.kind == "raid" or e.kind == "pvp" or e.kind == "arena" or e.kind == "scenario" then
 		out.kind = e.kind
 	end
@@ -155,6 +167,8 @@ function NS:RegisterPlaces(def)
 		end
 	end
 	Each(def.zones, "zone", function(name, c)
+		-- C0 (ADR 0048): a zone's area is its own name unless it says another (a capital, the zone around it)
+		c.area = c.area or Place.AreaKey(name)
 		Place.zones[name] = c
 		if c.map then Place.byMap[c.map] = c end
 		-- l'atmosfera principale resta disponibile come ctx.mood (S1-S4)
@@ -293,6 +307,7 @@ function Place:Read(ctx)
 	if entry then
 		for t in pairs(entry.tags) do p.tags[t] = true end
 		p.continent = p.continent or entry.continent
+		p.area = entry.area
 		p.capital = entry.capital
 		p.faction = entry.faction
 	end
@@ -361,15 +376,16 @@ end
 ---------------------------------------------------------------------------
 -- Narratore: fattore C, ritmo, impegno
 ---------------------------------------------------------------------------
+-- the length of the shortest text of a rule (#138: read in the column store by its ord; the rule given to a weight
+-- hook keeps nothing between two calls, so nothing is cached on it)
 local function Shortest(entry)
-	if entry.shortest ~= nil and entry.shortestLang == NS:Lang() then return entry.shortest end
-	local best
-	for _, v in ipairs(entry.text and entry.text[NS:Lang()] or EMPTY) do
-		local t = NS.Engine.VariantText(v)
+	local Engine, lang, best = NS.Engine, NS:Lang(), nil
+	local list = entry.ord and Engine.TextList(entry.ord, lang) or (entry.text and entry.text[lang])
+	for _, v in ipairs(list or EMPTY) do
+		local t = Engine.VariantText(v)
 		if type(t) == "string" and (not best or #t < best) then best = #t end
 	end
-	entry.shortest, entry.shortestLang = best or 0, NS:Lang()
-	return entry.shortest
+	return best or 0
 end
 
 ---Fattore C del luogo: tag `place.` delle frasi, e in campo di battaglia (o contro un boss) le frasi brevi.

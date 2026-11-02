@@ -783,7 +783,7 @@ T.run("the recognition line stays in the private narrator", function()
 	end
 	-- every relation_player line is an inner voice: private by construction, like the narrator
 	local n = 0
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.events[1] == "relation_player" then
 			n = n + 1
 			T.eq(p.speaker, "inner", id .. " is an inner voice")
@@ -858,7 +858,7 @@ T.run("examples in the data use the new conditions, and frequency is unchanged",
 	Fresh()
 	math.randomseed(3)
 	local uses = { relDaysSince = 0, relMetHere = 0, relShared = 0, feeling = 0 }
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.pack == "base_relations" then
 			for k in pairs(uses) do if p.when and p.when[k] ~= nil then uses[k] = uses[k] + 1 end end
 		end

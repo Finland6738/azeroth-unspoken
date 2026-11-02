@@ -1,7 +1,7 @@
 -- English texts of the regional pack eastern_elwynn (#102). The rules are in AzerothUnspoken_EasternKingdoms/Elwynn.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("eastern", "enUS", "eastern_elwynn", function()
+AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_elwynn", function()
 	return {
 		["elw.battle.bear.01"] = {
 			"plants both feet as the bear rears up, a wall of brown fur and hot breath.",

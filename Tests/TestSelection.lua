@@ -210,7 +210,7 @@ end)
 
 T.run("#90: the existing content is tagged", function()
 	local tagged, total, motifs = 0, 0, 0
-	for _, p in pairs(Engine.byId) do
+	for _, p in Engine:Rules() do
 		if p.pack:find("^base_") or p.pack:find("_exploration$") then
 			if p.pack ~= "base_arcs" and p.pack ~= "base_dialogues" then
 				total = total + 1
@@ -223,7 +223,7 @@ T.run("#90: the existing content is tagged", function()
 	T.ok(motifs > total / 3, "and many have motifs: " .. motifs)
 	for _, ev in ipairs({ "battle", "victory", "zone", "lowhp", "muse", "greet" }) do
 		local themes = {}
-		for _, p in ipairs(Engine.byEvent[ev]) do if p.theme then themes[p.theme] = true end end
+		for _, p in ipairs(Engine:EventRules(ev)) do if p.theme then themes[p.theme] = true end end
 		local n = 0
 		for _ in pairs(themes) do n = n + 1 end
 		T.ok(n >= 4, ev .. ": at least four themes to alternate (" .. n .. ")")

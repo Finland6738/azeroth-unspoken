@@ -6,7 +6,7 @@ local Engine = NS.Engine
 
 -- intenzioni del database di base, con il loro primo evento
 local BASE = {}
-for id, p in pairs(Engine.byId) do
+for id, p in Engine:Rules() do
 	if p.pack:sub(1, 5) == "base_" then BASE[id] = p end
 end
 

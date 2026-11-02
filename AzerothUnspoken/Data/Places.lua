@@ -9,7 +9,9 @@
 --
 -- Campi: tags (atmosfera e temi), mood (atmosfera principale, come NS:RegisterZoneMoods), continent (kalimdor |
 -- eastern), faction (chi governa il luogo: Alliance | Horde; assente = conteso o neutrale), capital (true),
--- kind (solo istanze: party | raid | pvp | arena). Le frasi chiedono i tag con `place = { tags = { ... } }`.
+-- kind (solo istanze: party | raid | pvp | arena), area (C0, ADR 0048: the area whose regional packs are built while
+-- the character is in the zone; absent = the zone's own name in lower-case letters, "Elwynn Forest" -> "elwynnforest";
+-- a capital shares the area of the zone around it). Le frasi chiedono i tag con `place = { tags = { ... } }`.
 -- Regola del GDD §5.4: i tag descrivono l'atmosfera, non affermano fatti di lore.
 local ADDON, NS = ...
 
@@ -40,9 +42,9 @@ NS:RegisterPlaces({
 		["Swamp of Sorrows"] = { map = 1435, continent = "eastern", tags = { "swamp", "ruin" } },
 		["Blasted Lands"] = { map = 1419, continent = "eastern", tags = { "fire", "wilds", "cursed" } },
 		["Stranglethorn Vale"] = { map = 1434, continent = "eastern", tags = { "jungle", "coast", "troll" } },
-		["Stormwind City"] = { map = 1453, continent = "eastern", faction = "Alliance", capital = true, tags = { "capital", "human", "port" } },
-		["Ironforge"] = { map = 1455, continent = "eastern", faction = "Alliance", capital = true, tags = { "capital", "dwarven", "mountain" } },
-		["Undercity"] = { map = 1458, continent = "eastern", faction = "Horde", capital = true, tags = { "capital", "forsaken", "dark" } },
+		["Stormwind City"] = { map = 1453, continent = "eastern", faction = "Alliance", capital = true, area = "elwynnforest", tags = { "capital", "human", "port" } },
+		["Ironforge"] = { map = 1455, continent = "eastern", faction = "Alliance", capital = true, area = "dunmorogh", tags = { "capital", "dwarven", "mountain" } },
+		["Undercity"] = { map = 1458, continent = "eastern", faction = "Horde", capital = true, area = "tirisfalglades", tags = { "capital", "forsaken", "dark" } },
 		-- Kalimdor
 		["Durotar"] = { map = 1411, continent = "kalimdor", faction = "Horde", tags = { "desert", "orcish" } },
 		["Mulgore"] = { map = 1412, continent = "kalimdor", faction = "Horde", tags = { "plains", "tauren" } },
@@ -62,9 +64,9 @@ NS:RegisterPlaces({
 		["Moonglade"] = { map = 1450, continent = "kalimdor", tags = { "sacred", "forest" } },
 		["Silithus"] = { map = 1451, continent = "kalimdor", tags = { "desert", "cursed" } },
 		["Winterspring"] = { map = 1452, continent = "kalimdor", tags = { "snow", "mountain", "wilds" } },
-		["Orgrimmar"] = { map = 1454, continent = "kalimdor", faction = "Horde", capital = true, tags = { "capital", "orcish", "desert" } },
-		["Thunder Bluff"] = { map = 1456, continent = "kalimdor", faction = "Horde", capital = true, tags = { "capital", "tauren", "plains" } },
-		["Darnassus"] = { map = 1457, continent = "kalimdor", faction = "Alliance", capital = true, tags = { "capital", "elven", "sacred" } },
+		["Orgrimmar"] = { map = 1454, continent = "kalimdor", faction = "Horde", capital = true, area = "durotar", tags = { "capital", "orcish", "desert" } },
+		["Thunder Bluff"] = { map = 1456, continent = "kalimdor", faction = "Horde", capital = true, area = "mulgore", tags = { "capital", "tauren", "plains" } },
+		["Darnassus"] = { map = 1457, continent = "kalimdor", faction = "Alliance", capital = true, area = "teldrassil", tags = { "capital", "elven", "sacred" } },
 	},
 	-- sottozone con un'atmosfera propria: le città neutrali e i porti (i tag si aggiungono a quelli della zona)
 	subzones = {

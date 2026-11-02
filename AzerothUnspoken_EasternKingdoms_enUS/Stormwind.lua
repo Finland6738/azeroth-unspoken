@@ -1,7 +1,7 @@
 -- English texts of the regional pack eastern_stormwind (#102). The rules are in AzerothUnspoken_EasternKingdoms/Stormwind.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("eastern", "enUS", "eastern_stormwind", function()
+AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_stormwind", function()
 	return {
 		["sw.dawn"] = {
 			"Dawn over Stormwind. The first bell, the first cart, the first argument of the day.",
