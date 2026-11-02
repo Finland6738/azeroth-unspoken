@@ -1080,6 +1080,9 @@ end
 T.run("la voce segue il temperamento e il modo di parlare: burbero, gioviale, neutro", function()
 	Fresh()
 	math.randomseed(2026)
+	-- the voice of the temperament, not of a place: a zone without lines of its own (since #102 the innkeepers of
+	-- Durotar, Orgrimmar, Elwynn and Stormwind have some, shared by every temperament there)
+	P.zone = "Ashenvale"
 	-- Innkeeper Gryshka (npcID 6929): burbera e laconica; Innkeeper Farley (295): gioviale e allegro
 	local gruff = Opening(function() Talk(6929, "Innkeeper Gryshka", "GOSSIP_SHOW"); N:End("closed"); P.target = nil end, 80)
 	local jovial = Opening(function() Talk(295, "Innkeeper Farley", "GOSSIP_SHOW"); N:End("closed") end, 80)

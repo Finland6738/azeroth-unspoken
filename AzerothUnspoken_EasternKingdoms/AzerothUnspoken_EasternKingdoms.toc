@@ -10,3 +10,5 @@
 ## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
 
 Exploration.lua
+Elwynn.lua
+Stormwind.lua

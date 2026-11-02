@@ -1368,6 +1368,41 @@ Serve la cartella `AzerothUnspoken_Versi`. Se un passo non va, apri una issue co
 
 ---
 
+## R5: la fetta di prova, Durotar, Orgrimmar, Elwynn e Stormwind (aggiunto dalla issue #102)
+
+Misurato solo fuori dal gioco (`Tests/bench_trial.py`): questa prova è la seconda metà della #102. Le frasi delle quattro
+zone sono nelle cartelle regionali (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` e le loro cartelle di
+lingua). Tre personaggi: un guerriero orco e un mago troll che partono in Durotar, un paladino umano che parte nella
+foresta di Elwynn; **due sessioni di 90 minuti ciascuno**, con `/au prof` all'inizio e alla fine, e l'**Intensità** al
+valore predefinito. Se un passo non va, apri una issue con quello che hai visto.
+
+- **R5.1 · L'arrivo e le sottozone.** Gioca dalla valle di partenza verso l'esterno.
+    - **Cosa aspettarti:** frasi sulla zona, poi sui luoghi che attraversi (Razor Hill, Sen'jin Village, le Echo Isles,
+      Tiragarde Keep; Northshire, Goldshire, le miniere e i laghi), mai una frase di un'altra zona.
+    - **Cosa riportare:** una sottozona le cui frasi non arrivano mai (il suo nome in `/au place`: i nomi sono quelli
+      del client inglese e non sono confermati, #36), una frase sul luogo sbagliato.
+- **R5.2 · Ripetizioni.** Annota ogni frase che leggi due volte.
+    - **Cosa aspettarti:** nessuna frase ripetuta nei 90 minuti di una sessione.
+    - **Cosa riportare:** la frase ripetuta, il minuto, e se è stata detta nello stesso luogo.
+- **R5.3 · Una morte e il ritorno.** Muori una volta all'aperto, torna in vita, esci dalla zona e rientra.
+    - **Cosa aspettarti:** una frase di ritorno sobria che ricorda la morte; nessuna allegra.
+    - **Cosa riportare:** una frase leggera dopo la morte.
+- **R5.4 · La capitale.** Visita Orgrimmar o Stormwind, riposa alla locanda, attraversa due o tre quartieri, parla con
+  una guardia e con un locandiere.
+    - **Cosa aspettarti:** frasi di città (i quartieri, la locanda, le indicazioni della guardia) adatte al quartiere.
+    - **Cosa riportare:** un'indicazione sbagliata, una frase che nomina un posto in cui non sei.
+- **R5.5 · Meteo e ora.** Annota il tempo e l'ora quando arriva una frase sul meteo, sull'alba o sul tramonto.
+    - **Cosa aspettarti:** la frase corrisponde a quello che vedi.
+    - **Cosa riportare:** pioggia nominata a cielo sereno, notte nominata a mezzogiorno.
+- **R5.6 · Giudizio.** Ogni 15 minuti dai un voto alle ultime frasi: pertinenti? ripetitive? fuori personaggio?
+    - **Cosa aspettarti:** meno del 10% degli interventi giudicati fuori luogo.
+    - **Cosa riportare:** la quota, e le frasi che hai segnato.
+- **R5.7 · Misure.** `/au prof` alla fine di ogni sessione.
+    - **Cosa aspettarti:** p95 di `PickEntry` sotto i 5 ms; la memoria dell'addon.
+    - **Cosa riportare:** gli interventi all'ora, le ragioni dei silenzi, la memoria e il p95.
+
+---
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1524,6 +1559,7 @@ N8 lutto ................ famiglio? ___  demone non congedato? ___  NPC caro? __
 N8 alleato (#125) ....... riga? ___  pagina senza nome? ___  una per disfatta? ___  morte finta/campo di battaglia nulla? ___
 N8 lettere/opzioni ...... lettera al login? ___  nel diario? ___  /reload nulla? ___  opzioni spente? ___  nulla in chat? ___
 L2 versi ................ uno alla volta? ___  troppo in fretta/piano? ___  rotellina? ___  clic passano? ___  cronologia a capo? ___
+R5 fetta di prova ...... ripetute in 90 min? ___  fuori luogo (%) ______  PickEntry p95 ______  memoria (KB) ______
 L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: nessuno? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```

@@ -487,13 +487,20 @@ T.run("landmark: by name, by distance, and the landmark event", function()
 	P.instance = false
 	World.landmarks["test.well"], World.bySubzone["the old well"] = nil, nil
 
-	-- the event and the context
+	-- the event and the context. The Lion's Pride Inn has lines of its own since the trial slice of #102, so the lines
+	-- of the tag `inn` (with {landmark}) are tried at an inn with none
+	Reset()
+	NS:RegisterLandmarks({ { id = "test.inn", zone = "Mulgore", subzone = "The Test Inn", tags = { "inn" } } })
+	P.zone = "Mulgore"
+	EnterSubzone("The Test Inn")
+	T.eq(Result("landmark"), "spoken", "the landmark event, not subzone_enter")
+	T.ok(not Offered("subzone_enter"), "one event for the moment")
+	T.ok(LastText():find("The Test Inn", 1, true), "{landmark} is the name the client gives: " .. LastText())
+	World.landmarks["test.inn"], World.bySubzone["the test inn"] = nil, nil
 	Reset()
 	P.zone = "Elwynn Forest"
 	EnterSubzone("Lion's Pride Inn")
-	T.eq(Result("landmark"), "spoken", "the landmark event, not subzone_enter")
-	T.ok(not Offered("subzone_enter"), "one event for the moment")
-	T.ok(LastText():find("Lion's Pride Inn", 1, true), "{landmark} is the name the client gives: " .. LastText())
+	T.eq(Result("landmark"), "spoken", "the inn of Goldshire: the landmark event too")
 	local ctx = NS:BuildContext()
 	T.eq(ctx.landmark, "elwynn.lions_pride_inn", "ctx.landmark")
 	T.eq(ctx.landmarkName, "Lion's Pride Inn", "ctx.landmarkName")

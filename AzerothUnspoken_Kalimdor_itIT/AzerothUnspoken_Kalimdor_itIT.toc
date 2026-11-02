@@ -11,3 +11,5 @@
 ## X-License: All rights reserved (phrases and narrative data). See LICENSING.md
 
 Exploration.lua
+Durotar.lua
+Orgrimmar.lua

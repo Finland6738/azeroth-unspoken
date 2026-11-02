@@ -546,12 +546,16 @@ def literary_content():
           "versi.lament.ally.02", "versi.lament.ally.03", "versi.lament.npc.02", "versi.lament.pet.02",
           "versi.nemesis.song.04", "versi.nemesis.song.05", "versi.nemesis.song.06", "versi.nemesis.song.07",
           "versi.tale.road.01"]
+    # #102: two pieces of each area of the trial slice, in the regional packs, waiting for the owner too
+    r5 = ["dur.lore.razorhill.saying.01", "dur.lore.senjin.song.01", "elw.lore.abbey.inscription.01",
+          "elw.lore.inn.rhyme.01", "org.lore.drag.song.01", "org.lore.honor.formula.01", "sw.lore.canal_song",
+          "sw.lore.masons"]
     waiting = sorted(["versi.lament.ally.01", "versi.lament.npc.01", "versi.lament.pet.01", "versi.nemesis.song.01",
-                      "versi.nemesis.song.02", "versi.nemesis.song.03", "versi.road.stanzas.01"] + n9)
-    check(len(rows) == 43 and len(done) == 15 and not any(w in done for w in waiting),
+                      "versi.nemesis.song.02", "versi.nemesis.song.03", "versi.road.stanzas.01"] + n9 + r5)
+    check(len(rows) == 51 and len(done) == 15 and not any(w in done for w in waiting),
           "every piece has its editorial record (authoring/pieces.csv, seen through the view `piece`): the 15 of L0 reviewed, "
-          "the song of stanzas (L3), the three songs of a nemesis's fall (N7), the three laments (N8) and the 21 pieces of N9 "
-          "waiting for the owner")
+          "the song of stanzas (L3), the three songs of a nemesis's fall (N7), the three laments (N8), the 21 pieces of N9 "
+          "and the 8 of the trial slice (#102) waiting for the owner")
     report = store.literary_report(con)
     check(report == [(w, "approved, but its review is not complete: metre, lore, originality pending") for w in waiting],
           "the only literary warnings of the repository: the new songs wait for the owner's review (%s)" % report[:5])
@@ -632,7 +636,7 @@ def literary_content():
               'kind = "stanzas", show = 1' in text, "the rule is written with its literary metadata and its stanza fields")
         check("{stanzas}" in packfiles.read(os.path.join(root, "AzerothUnspoken_Versi", "Texts_itIT.lua")),
               "its frame and stanzas are written in the texts of each language")
-        check("literary pieces: 28 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
+        check("literary pieces: 36 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
               "the export reports the literary warnings (here: the new songs of the repository wait for the owner's review)")
         check(store.roundtrip(root) == [], "the round trip of the exported folders is still an empty diff")
         check(lua_syntax_ok([os.path.join(root, "AzerothUnspoken_Versi", f) for f in ("Registry.lua", "Texts_enUS.lua")]) in
