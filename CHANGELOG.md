@@ -8,6 +8,47 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0: a column store for the rules, and regional packs by area (issue #138)
+
+The first technical phase of the content-scale plan approved on 2026-11-02 (100,000-300,000 texts per language):
+the engine can now hold 50,000 entries of one language in under 40 MB, and builds regional lines one area at a time.
+**Nothing has run in the client**: the checks are in `docs/G1_checklist.md`, section C0.
+[ADR 0048](docs/adr/0048-column-store-and-regional-packs-by-area.md).
+
+- **Changed: rules are stored in columns** (`Engine/PhraseRegistry.lua`): a rule is a number, its `ord`; its fields
+  are columns of `Engine.R` and its variants one flat array per language (`Engine.TX`). At 50,000 synthetic entries in
+  one language the addon uses **38.9 MB instead of 69.9 MB** (`Tests/bench_scale.py --langs enUS`); at today's size
+  8.3 MB instead of 9.5. **No pick changes**: the equivalence tests of `Tests/TestScale.lua` pass, and
+  `Tests/trace_picks.py` printed byte-identical traces against `main` in the eight configurations of #239. A pick costs
+  about 5-10% more Lua instructions (`Tests/perf_baseline.json`: 16.4 → 20.2 thousand at 2,000 entries; `main` itself
+  measured 19.3).
+- **Changed (for code and tools that read rules): views.** `Engine.byId[id]` and `Engine.Rule(r)` give a view of a
+  rule, a table like the rule tables before; `pairs(Engine.byId)` shows nothing, so `Engine:Rules()`,
+  `Engine:EventRules(ev)` and `Engine:PackIds(packId)` list rules. `byEvent`, the index, `Eligible`, `EligibleFor` and
+  `Candidates` hold ords; `Engine:AddEntry` returns the ord; `Engine.TextList`, `TextCount`, `TextLangs`, `TextRange`,
+  `OrdOf`, `IdOf`, `RuleUsable` and `Engine:CopyTexts` are new. A view's text lists are copies, and only its shape fields
+  (a cooldown, `twinOf`) can be written. The systems that read rule lists (companion, nemesis, NPC dialogues, story
+  arcs, the place hook, the validator, the Versi twins), the tests and the tools follow.
+- **Changed: regional packs are built and dropped by area.** An area is a zone, or a capital with the zone around it
+  (`Data/Places.lua`: Orgrimmar is in `durotar`, Stormwind City in `elwynnforest`); `ctx.place.area` carries it. The key
+  of `RegisterRegionalPack` and `RegisterRegionalTexts` is now an area or a continent: on a change of zone, outside
+  combat, the area left is dropped first and the new one built. The folders stay per continent; a folder may declare
+  `## X-AzerothUnspoken-Areas` to be loaded only in its areas. `/au packs` shows the region and the area and the last
+  change (rules built, ms).
+- **Changed: the trial slice** (#241) is in the areas `durotar` and `elwynnforest`; every one of its 583 rules names
+  its zone, so no line changes where it can be heard. The two exploration packs stay packs of their continent.
+- **Changed: the archive** reads the area of a regional pack (`pack.area`, `intention.area`, `cli search --area`, a
+  coverage table by area); the round trip is still an empty diff.
+- **Added: `Tests/bench_scale.py --areas`**, the projection of 300,000 entries in one language loaded by area
+  (`SYNTH_AREA_SOURCES` in `Tests/SyntheticArchive.lua`): 26 MB for the base and 30,000 resident entries, 36 MB with
+  the first area of 6,750 entries when the folders are per area (115 MB when a whole continent's folder is loaded), a
+  change of area of that size in about a second. The numbers and what they ask before the content grows (folders by
+  area past about 10,000 entries per continent, a build spread over frames, a bound on the code of visited areas) are
+  in ADR 0048.
+- **Docs:** ADR 0048, updates of ADR 0024 and 0025, ARCHITECTURE, PACK_FORMAT (areas, the `Areas` field), the wiki
+  (Installation and Updating, Commands, Phrase Packs, Interlocutor and Place, FAQ), the in-game checklists (section C0),
+  ROADMAP (row C0).
+
 ### U2: interface mockups in the wiki and a tour GIF in the README
 
 The last step of the development the owner asked for on 2026-11-02: show the interface. **Every image is an

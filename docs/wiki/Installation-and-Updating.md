@@ -27,7 +27,7 @@ There are no packaged releases yet. To get the addon:
    - **`AzerothUnspoken_Example`**, a small sample phrase pack (a few lines for fishing and for some places), and **`AzerothUnspoken_Versi`**, the verses pack (inscriptions, songs and rhymes, see [[Literary Forms|Literary-Forms]]). These two are optional. See [[Phrase Packs|Phrase-Packs]].
 4. Start the game. On the character selection screen click **AddOns** and make sure every **Azeroth Unspoken** entry is ticked. Most of them are marked *Load on demand*: that is expected (see below).
 
-You do not choose anything else. The addon reads **only the language you chose**, never the other one, and reads the lines of a continent **only while you are on it**. It does this by itself, when you log in and when you travel, and never during a fight. Races, classes, weather and situations are not separate folders: they are part of the lines.
+You do not choose anything else. The addon reads **only the language you chose**, never the other one, reads the lines of a continent **only while you are on it**, and keeps ready only the lines of the **area** you are in: a zone, or a capital with the zone around it (Durotar and Orgrimmar are one area). When you walk into another area, the lines of the old one are put away and those of the new one are prepared. It does this by itself, when you log in and when you travel, and never during a fight. Races, classes, weather and situations are not separate folders: they are part of the lines.
 
 The other files and folders in the download are for developers: do not copy them into `AddOns`.
 

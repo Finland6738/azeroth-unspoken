@@ -19,6 +19,15 @@ moment, so a version that adds or removes rules generates a different archive (R
 measured was heavier, which looked like a slower engine). With --archive-dir the archive of each size is written there
 the first time and read back afterwards: run the older version first, then the newer one with the same folder.
 
+With --areas (C0, ADR 0048) it projects instead a whole archive loaded by area, as Core/Packs.lua loads it in the client:
+--total entries in one language, --resident of them always in memory (registered at login like the base content) and
+the rest split evenly over the 40 areas of SYNTH_ZONES (22 in the Eastern Kingdoms, 18 in Kalimdor), each area a
+regional pack bound to its zone. --layout continent puts every area of a continent in one rules folder and one texts
+folder (the layout of the download today); --layout area gives each area its own two folders (X-AzerothUnspoken-Areas).
+The character visits every area of Kalimdor, then of the Eastern Kingdoms, then Kalimdor again; the script reports the
+memory at login and after each change (after a full collection), the peak of a change (the memory right after it, the
+collector stopped during the change), the time of a change (load, drop and build) and the picks in the last area.
+
 The numbers are a projection from lupa on the machine that runs the script, not a measurement in the client: the
 working targets of R1 (PickEntry under 5 ms and memory under 40 MB at 50,000 entries) stay hypotheses until the
 in-game measurements of /au prof (D3 in #130). The test suite runs a reduced size (see run_tests.py); the full sizes
@@ -144,7 +153,17 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
     else:
         info.update({"compile_s": 0, "register_s": 0, "load_s": 0, "memory_kb": mem0, "per_entry_b": 0})
 
-    # picks: a fixed sequence of events, forms and zones; the memory of the selection grows as in a session
+    found, times, kinstr = pick_stats(lua, ns, zones, picks, seed)
+    info.update({"picks": picks, "found": found, "pick_mean_ms": statistics.mean(times),
+                 "pick_p95_ms": times[int(len(times) * 0.95) - 1], "pick_max_ms": times[-1],
+                 "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]})
+    return info
+
+
+def pick_stats(lua, ns, zones, picks, seed):
+    """The picks of the projection: a fixed sequence of events, forms and zones; the memory of the selection grows as
+    in a session. Returns (picks that found a line, sorted times in ms, sorted thousands of instructions)."""
+    G = lua.globals()
     pick = lua.eval("""function(ns, event, form, zone, hour)
         P.zone = zone; P.hour = hour
         local ctx = ns:BuildContext()
@@ -181,10 +200,117 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
                 found += 1
     times.sort()
     kinstr.sort()
-    info.update({"picks": picks, "found": found, "pick_mean_ms": statistics.mean(times),
-                 "pick_p95_ms": times[int(len(times) * 0.95) - 1], "pick_max_ms": times[-1],
-                 "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]})
-    return info
+    return found, times, kinstr
+
+
+EASTERN_AREAS = 22   # the first 22 zones of SYNTH_ZONES are in the Eastern Kingdoms, the other 18 in Kalimdor
+
+
+def measure_areas(addon, total, resident, layout, picks, seed):
+    """The projection by area (C0, ADR 0048): see the module docstring."""
+    t0 = time.perf_counter()
+    lua, ns, base_load = load_addon(addon, "lazy")
+    ns.db.locale = "en"
+    G = lua.globals()
+    zones = list(G.SYNTH_ZONES.values())
+    per_area = (total - resident) // len(zones)
+    # the sources are made in Lua and kept in Python until LoadAddOn asks for them: Lua then holds only what the folder
+    # leaves (the compiled builders), as in the client
+    make = lua.eval("""function(ns, n, area, zone, seed)
+        return SYNTH_AREA_SOURCES(ns, n, { area = area, zone = zone, seed = seed })
+    end""")
+    areas, src = [], {}
+    for j, zone in enumerate(zones):
+        cont = "eastern" if j < EASTERN_AREAS else "kalimdor"
+        area = ns.Place.AreaKey(zone)
+        rules, texts = make(ns, per_area, area, zone, seed + j)
+        areas.append((zone, area, cont))
+        src[area] = (rules, texts)
+    G.FETCH_SOURCE = lambda key, part: src[key][0 if part == "rules" else 1]
+    G.RUN_AREA_PART = lua.eval("""function(key, part, name)
+        assert(loadstring(FETCH_SOURCE(key, part), "=" .. name))()
+    end""")
+    install = lua.eval("""function(name, region, lang, areas, keys, part)
+        local meta = { ["X-AzerothUnspoken-Region"] = region, ["X-AzerothUnspoken-Language"] = lang,
+            ["X-AzerothUnspoken-Areas"] = areas }
+        ADD_ADDON(name, { meta = meta, load = function()
+            for _, key in ipairs(keys) do RUN_AREA_PART(key, part, name .. "/" .. key) end
+        end })
+    end""")
+    folders = 0
+    if layout == "continent":
+        for cont in ("eastern", "kalimdor"):
+            keys = lua.table_from([a for _, a, c in areas if c == cont])
+            install("SynthAreas_" + cont, cont, None, None, keys, "rules")
+            install("SynthAreas_" + cont + "_enUS", cont, "enUS", None, keys, "texts")
+            folders += 2
+    else:
+        for _, area, cont in areas:
+            keys = lua.table_from([area])
+            install("SynthArea_" + area, cont, None, area, keys, "rules")
+            install("SynthArea_" + area + "_enUS", cont, "enUS", area, keys, "texts")
+            folders += 2
+    lua.execute("AzerothUnspoken.Packs:Discover()")
+    # the resident content, registered at login like the base content
+    gen, _ = lua.eval("""function(ns, n, seed)
+        return SYNTH_SOURCE(ns, n, { seed = seed, placeShare = 0.6, langs = { "enUS" } })
+    end""")(ns, resident, seed)
+    lua.eval("function(src, ns) assert(loadstring(src, '=resident'))(ns) end")(gen, ns)
+    del gen
+    # the journey starts from nothing regional: the area of the login (the real trial slice) is dropped first
+    lua.execute("""local Packs = AzerothUnspoken.Packs
+        for key in pairs(Packs.active) do Packs:Drop(key) end
+        Packs.region, Packs.area = nil, nil""")
+    resident_kb = memory_kb(lua)
+    setup_s = time.perf_counter() - t0
+
+    step = lua.eval("""function(zone)
+        collectgarbage("collect"); collectgarbage("collect")
+        local before = collectgarbage("count")
+        collectgarbage("stop")
+        P.zone, P.subzone = zone, ""
+        local t0 = os.clock()
+        AzerothUnspoken.Packs:Update()
+        local s = os.clock() - t0
+        local peak = collectgarbage("count")
+        collectgarbage("restart")
+        collectgarbage("collect"); collectgarbage("collect")
+        return before, peak, collectgarbage("count"), s, #LOAD_CALLS
+    end""")
+    kal = [z for z, _, c in areas if c == "kalimdor"]
+    eas = [z for z, _, c in areas if c == "eastern"]
+    journey = kal + eas + kal
+    rows = []
+    for zone in journey:
+        before, peak, after, s, loads = step(zone)
+        rows.append({"zone": zone, "before_kb": before, "peak_kb": peak, "after_kb": after, "s": s, "loads": loads})
+    found, times, kinstr = pick_stats(lua, ns, [journey[-1]], picks, seed)
+    return {"total": total, "resident": resident, "per_area": per_area, "areas": len(zones), "layout": layout,
+            "folders": folders, "setup_s": setup_s, "base_load_s": base_load, "resident_kb": resident_kb, "rows": rows,
+            "picks": picks,
+            "found": found, "pick_mean_ms": statistics.mean(times), "pick_p95_ms": times[int(len(times) * 0.95) - 1],
+            "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]}
+
+
+def print_areas(r):
+    rows = r["rows"]
+    n_kal = r["areas"] - EASTERN_AREAS
+    mb = lambda kb: kb / 1024   # noqa: E731
+    changes = rows[1:]
+    print(f"layout {r['layout']}: {r['folders']} regional folders, {r['areas']} areas of {r['per_area']} entries, "
+          f"{r['resident']} resident entries ({r['total']} in all, English only)")
+    print(f"  memory of the base and the resident entries: {mb(r['resident_kb']):.1f} MB; with the first area (its folders "
+          f"loaded, the area built): {mb(rows[0]['after_kb']):.1f} MB")
+    print(f"  after every area of Kalimdor: {mb(rows[n_kal - 1]['after_kb']):.1f} MB; after the Eastern Kingdoms: "
+          f"{mb(rows[r['areas'] - 1]['after_kb']):.1f} MB; at the end of the journey: {mb(rows[-1]['after_kb']):.1f} MB")
+    print(f"  peak of a change: at most {mb(max(x['peak_kb'] - x['before_kb'] for x in changes)):.1f} MB over the memory "
+          f"before it; highest memory {mb(max(x['peak_kb'] for x in changes)):.1f} MB")
+    ts = sorted(x["s"] * 1000 for x in changes)
+    print(f"  change of area: mean {statistics.mean(ts):.0f} ms, p95 {ts[int(len(ts) * 0.95) - 1]:.0f} ms, "
+          f"max {ts[-1]:.0f} ms (LoadAddOn calls {rows[-1]['loads']})")
+    print(f"  picks in the last area: mean {r['pick_mean_ms']:.2f} ms, p95 {r['pick_p95_ms']:.2f} ms; "
+          f"{r['pick_kinstr']:.1f} thousand instructions (p95 {r['pick_p95_kinstr']:.1f}), {r['found']} of {r['picks']} found")
+    sys.stdout.flush()
 
 
 def main(argv):
@@ -199,11 +325,26 @@ def main(argv):
     ap.add_argument("--packs", default="all", choices=("all", "lazy"),
                     help="all = both languages and every region in memory; lazy = only what Core/Packs.lua loads (the "
                     "chosen language, English, and the region of the character), as in the client")
+    ap.add_argument("--areas", action="store_true", help="C0 (ADR 0048): the projection by area (see above)")
+    ap.add_argument("--total", type=int, default=300000, help="with --areas: entries in all (one language)")
+    ap.add_argument("--resident", type=int, default=30000, help="with --areas: entries always in memory")
+    ap.add_argument("--layout", default="continent,area", help="with --areas: continent, area or both")
     ap.add_argument("--json")
     ap.add_argument("--archive-dir", help="write the synthetic archives here, or read them if they are there: two "
                     "versions of the engine then measure the same rules (#157)")
     a = ap.parse_args(argv)
     addon = os.path.abspath(a.addon)
+    if a.areas:
+        print(f"addon {os.path.basename(addon)} at commit {commit(addon)}")
+        rows = []
+        for layout in [l for l in a.layout.split(",") if l]:
+            r = measure_areas(addon, a.total, a.resident, layout, a.picks, a.seed)
+            print_areas(r)
+            rows.append(r)
+        if a.json:
+            with open(a.json, "w", encoding="utf-8", newline="\n") as f:
+                json.dump(rows, f, indent=1)
+        return rows
     rows = []
     langs = tuple(l for l in a.langs.split(",") if l)
     print(f"addon {os.path.basename(addon)} at commit {commit(addon)}")

@@ -1352,7 +1352,8 @@ function Engine:AddTexts(lang, id, list, packId)
 		local target = TextsOrEmpty(r, lang)
 		local n0 = #target
 		AppendVariants(target, list, packId, SHAPE[r].pack)
-		AppendRuleVariants(r, lang, { unpack(target, n0 + 1) })
+		-- the common case, a rule with no text yet in the language: the list is the new variants, no copy
+		AppendRuleVariants(r, lang, n0 == 0 and target or { unpack(target, n0 + 1) })
 	else
 		-- in attesa della regola: il proprietario non si conosce ancora, le varianti restano tabelle fino a FlushPending
 		local byLang = self.pendingTexts[id] or {}

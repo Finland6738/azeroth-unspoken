@@ -78,7 +78,7 @@ def setup(addon, regions, per_region, variants, seed):
         local Packs = AzerothUnspoken.Packs
         Packs:Discover()
         CUR_REGION = nil
-        Packs.CurrentRegion = function() return CUR_REGION end
+        Packs.CurrentPlace = function() return CUR_REGION end   -- C0: a synthetic region, no area
     """)
     return lua, ns, keys
 
