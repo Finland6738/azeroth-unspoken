@@ -87,7 +87,14 @@ def journey(lua, keys, rounds, drop=True):
     G = lua.globals()
     if not drop:
         lua.execute("AzerothUnspoken.Packs.Drop = function() end")
-    update = lua.eval("function(r) CUR_REGION = r; local t0 = os.clock(); AzerothUnspoken.Packs:Update(); return os.clock() - t0 end")
+    # C0b: a change spread over frames is completed at once here (Tests/bench_scale.py --areas measures the frames)
+    update = lua.eval("""function(r)
+        CUR_REGION = r
+        local Packs, t0 = AzerothUnspoken.Packs, os.clock()
+        Packs:Update()
+        if Packs.Complete then Packs:Complete() end
+        return os.clock() - t0
+    end""")
     mem = lambda: B.memory_kb(lua)
     rows = [{"step": "login (base, English, Kalimdor)", "kb": mem(), "loads": len(list(G.LOAD_CALLS.values())), "s": 0}]
     for rnd in range(rounds):

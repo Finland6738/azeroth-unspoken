@@ -8,6 +8,40 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0b: compact area sources, and a change of area spread over frames (issue #138)
+
+The follow-up of ADR 0048 §4: what visited areas keep is bounded, and a change of area no longer stutters.
+**Nothing has run in the client**: the checks are in `docs/G1_checklist.md`, section C0, items 9-14.
+[ADR 0049](docs/adr/0049-compact-area-sources-and-a-change-spread-over-frames.md).
+
+- **Changed: regional files give their entries as a source.** `RegisterRegionalPack(key, pack, source)` and
+  `RegisterRegionalTexts(key, lang, packId, source)` take the entries as Lua source in a string (`[==[ ... ]==]`); the
+  12 regional files of the download are written that way (the same entries, one tab less: the engine builds exactly the
+  same rules, ords, texts and index). Builder functions are still accepted. A source is cut into 4 KB pieces on its
+  first build and each piece is kept **encoded** (`Core/SourceCodec.lua`: frequent words and runs of punctuation become
+  one or two control bytes with `string.gsub`; dictionaries `Data/Codec.lua` and `Codec.lua` of each language folder,
+  written by the new `tools/build_codec.py`). The trial slice keeps 31% (rules) and 42% (English texts) of its source.
+- **Added: a bound on what visited areas keep** (`Packs.KEEP_KB`, 32 MB): past it the sources of the areas built least
+  recently are let go, and those areas have no regional lines until `/reload`. `/au packs` shows the KB kept and the
+  areas let go.
+- **Changed: a change of area is spread over frames.** `Packs:Update` starts a job that `Packs:Step` runs from an
+  `OnUpdate`, at most 4 ms of a frame (`Packs.BUDGET_MS`), never in combat. The area left leaves the selection at once
+  and is freed between frames; the new area is built out of the selection (`Engine:BeginStaging`/`EndStaging`) and
+  enters it whole, so no pick sees a half-built area and the general lines speak meanwhile. A change towards another
+  place stops the one in progress. `/au packs` shows the frames of the last change and the longest one.
+- **Measured** (`Tests/bench_scale.py --areas`, 300,000 entries in one language, folders by area; times are CPU time
+  of the thread): with the first area 36.2 MB (36.4 before); after every area of both continents **69.0 MB at most
+  (221 MB before)**, the sources kept at the bound (117 MB without it); a frame of a change 2.9 ms on average, 3.96 ms at p95, 7.8 ms at most,
+  except the frame in which the client reads a new area's folder (11-16 ms, once per area and session). Picks unchanged:
+  `Tests/trace_picks.py` byte-identical to `main` in the eight configurations of #239.
+- **Changed: the archive** reads and writes the entries of a source (`tools/archive/packfiles.py`); the round trip is
+  still an empty diff, and a new regional entry is written inside the string.
+- **Added: `Tests/bench_scale.py --areas --form --budget --keep`**, the frames of a change measured in CPU time (wall
+  time on a busy machine counts other programs).
+- **Docs:** ADR 0049, update of ADR 0048, ARCHITECTURE, PACK_FORMAT (the source form, the bound, the frames), the wiki
+  (Installation and Updating, Phrase Packs, Commands, FAQ), the in-game checklists (section C0, items 9-14), ROADMAP
+  (row C0).
+
 ### C0: a column store for the rules, and regional packs by area (issue #138)
 
 The first technical phase of the content-scale plan approved on 2026-11-02 (100,000-300,000 texts per language):

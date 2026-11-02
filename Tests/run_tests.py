@@ -68,6 +68,9 @@ def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None
         run_file(lua, os.path.join(ADDON, f.replace("\\", "/")), f, ADDON_NAME, ns)
     if packs != "none":
         lua.globals().INSTALL_PACKS(ROOT.replace("\\", "/"), lua.table_from(PACKS), packs == "all")
+    # C0b (ADR 0049): a change of area is spread over frames in the client; the tests build it in one go unless they
+    # set a budget themselves (TestPacks does, for the build over frames)
+    lua.execute("AzerothUnspoken.Packs.BUDGET_MS = math.huge")
     lua.globals().FIRE("ADDON_LOADED", ADDON_NAME)
     if packs == "all":
         lua.eval("function() AzerothUnspoken.Packs:ActivateAll() end")()
@@ -492,6 +495,9 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
     if name == "TestScale":
         # R1: il generatore dell'archivio sintetico (solo per i test, mai nel .toc)
         run_file(lt, os.path.join(HERE, "SyntheticArchive.lua"), "SyntheticArchive.lua")
+    if name == "TestPacks":
+        # C0b: the regional files are read back to compare them with the pieces kept in memory
+        lt.globals().REPO_ROOT = ROOT.replace("\\", "/")
     run_file(lt, os.path.join(HERE, name + ".lua"), name + ".lua", nst)
     t = lt.globals().T
     print(f"  {name}: {t.passed} superati, {t.failed} falliti")

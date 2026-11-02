@@ -56,6 +56,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0046](0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md) | The companion pet, grief, the death of an ally, and letters in the journal | accepted |
 | [0047](0047-observed-guid-as-an-identity-aid-for-players.md) | The observed GUID as an identity aid for players | accepted (stability unconfirmed in game) |
 | [0048](0048-column-store-and-regional-packs-by-area.md) | A column store for the rules, and regional packs built and dropped by area | accepted (loading on a change of zone untested in game) |
+| [0049](0049-compact-area-sources-and-a-change-spread-over-frames.md) | Compact sources for the regional areas, and a change of area spread over frames | accepted (frames and memory untested in game) |
 
 ## Pending decisions
 

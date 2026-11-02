@@ -518,7 +518,7 @@ sessions of 90 minutes each**, with `/au prof` at the start and at the end, and 
 - **R5.7 · Measures.** `/au prof` at the end of each session. **Expect:** p95 of `PickEntry` under 5 ms; the memory of
   the addon. **Report:** the interventions per hour, the reasons of silence, the memory and the p95.
 
-## C0: the column store and the packs by area (issue #138, ADR 0048)
+## C0: the column store and the packs by area (issue #138, ADR 0048 and 0049)
 
 Nothing of C0 has run in the client: every number is from lupa on one PC. The picks are the same as before (checked
 offline); what the client must confirm is the loading. Start with `/au debug` clear and `/au packs` at hand.
@@ -540,6 +540,25 @@ offline); what the client must confirm is the loading. Start with `/au debug` cl
 7. **Memory.** `/au prof` in Durotar after login, after the Barrens and after coming back: note the KB of the addon
    each time. The area left should not stay: the second and third numbers within a few hundred KB of the first.
 8. **Errors.** `/au debug`: no `packs` error, no "loaded, but gave no content" for a folder of the download.
+
+**C0b (ADR 0049): compact sources and a change spread over frames.** This has never run in the client either. The
+regional rules are now a source (Lua text in a string) that the addon keeps as encoded pieces; a change of area works
+at most 4 ms per frame, outside combat.
+
+9. **The change is not felt.** Cross the Durotar/Barrens border (Elwynn/Westfall) several times on foot and mounted,
+   with `/au packs` after each. The line "last change of area" now also says over how many frames and the longest frame:
+   note the ms in all, the frames and the longest. A stutter on the border? (yes/no). The longest should stay under
+   8 ms, except on the first entry into an area (the client reads the files of the folder in one go).
+10. **While the area is prepared.** Right after the border `/au packs` may say "building the lines of ...": in those
+    seconds the general lines speak, never a line of a half-built area. No Lua error.
+11. **Back and forth quickly.** Cross the border and come back before the preparation ends: in the end `/au packs`
+    says the right area and its lines are heard; no error in `/au debug`.
+12. **Combat during the preparation.** Enter a new area and attack a monster at once: the preparation stops during the
+    fight (the frames in `/au packs` do not grow) and goes on afterwards.
+13. **Memory of the areas visited.** After several areas, `/au packs` shows "regional sources kept: N KB": note it with
+    the KB of `/au prof`. "areas released" must say `-` (the 32 MB bound is not reached with today's content).
+14. **`debugprofilestop`.** If `/au prof` says the client has no `debugprofilestop`, the ms of the changes come from
+    `os.clock` (less precise): note it.
 
 ## Summary form (copy and fill in)
 
@@ -618,4 +637,6 @@ L2 verses ............... one at a time? ___  too fast/slow? ___  wheel? ___  cl
 R5 trial slice ......... repeated within 90 min? ___  out of place (%) ______  PickEntry p95 ______  memory (KB) ______
 L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  never: none? ___  nothing in chat? ___
 C0 areas ............... area in /au packs ______  ms of a change ______  stutter? ___  KB login/after/back ______
+C0b frames ............. ms in all ______  frames ______  longest frame ______  stutter? ___  errors? ___
+C0b memory ............. sources kept (KB) ______  areas released ______
 ```
