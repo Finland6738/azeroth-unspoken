@@ -8,6 +8,53 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N7: the nemesis and the songs of its fall (issue #219)
+
+Step N7 of the NPC relationships milestone. An elite or rare NPC that kills the character becomes a nemesis, with a
+story of its own that grows at each death by its hand and closes with its fall, and a song of that fall in the
+songbook. Owner decisions of 2026-11-01 (narration only, never chat, data-driven) and 2026-11-02 (build on ADR 0035
+before the N0 run); [ADR 0045](docs/adr/0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md).
+Who killed the character and the nemesis's fall are read **without the combat log** with the recipe of
+[ADR 0035](docs/adr/0035-attacks-kills-and-deaths-without-the-combat-log.md), **not yet confirmed in game**; tested with
+the mock client only (what still needs the real client is section N7 of the [in-game checklist](docs/G1_checklist.md)).
+
+- **Added: arcs told for many NPCs** (`Systems/StoryArcs.lua`). An arc may declare `instances = n` (1-5, with
+  `subject = "npc"`): one story per NPC, saved as `"<id>#<npcID>"`, at most `n` at a time with slots of their own (not
+  those of `arcs.maxActive`); its stories move only on their NPC's events and may close from any opened state. The arc
+  itself skipped or disabled stops all of them. Two new real events for the steps: `slain` (an NPC killed the
+  character) and `fall` (the character killed an NPC). Journal texts add `subjectTitle` (`{name}`); the journal lists
+  the stories under way under the arc's title with their slots (**Nemeses (1 of 3)**). The archive's arc checks
+  (`tools/archive/structures.py`) follow.
+- **Added: the nemesis** (`Systems/Nemesis.lua`, the arc `nemesis` in `Data/Arcs.lua`). The killer is the last unit
+  that held the character's aggro (`UNIT_THREAT_LIST_UPDATE`, `UnitThreatSituation` 2-3) in the last 10 seconds of the
+  fight, when only one did, or the target among several; an elite, rare, rare elite or world boss in the open world
+  becomes a nemesis (*The Shadow of <name>*: *the mark*, *the long shadow*, *the feud* at the next deaths). At most
+  three. Meeting it again (targeting it, or it attacking) brings a line (`nemesis_meet`, at most once every half hour
+  each). Its fall by the character's or their pet's hand, or with the character alone on it (N1's `UNIT_DIED` and
+  `PARTY_KILL` sources tell the module, by GUID, never on the bus), closes the story: the closing line, its page in the
+  journal, a permanent memory. A character who avoids the topic of death has no nemesis; `/au stories disable nemesis`
+  turns them off. All the numbers and lists are data: `nemesis` in `Data/Relationships.lua`. Never in chat, no NPC
+  behaves differently.
+- **Added: the songs of a fall.** When a nemesis falls, a literary piece of the event `nemesis_song` goes into the
+  songbook (`Songbook:Add`, ids and times only) with a private notice of its title, after the fight, unless the literary
+  forms are set to *never*. Three songs in the verses pack, English then Italian, attributed to a voice: a hunters'
+  victory song (a fall at the first meeting), a feud song (after a long feud), a saying of the hill folk that mourns a
+  fallen foe. Written through the authoring archive with their metadata and editorial records; their three review
+  steps are the owner's.
+- **Added: lines.** 11 intentions in `base_arcs`, English and Italian: 7 for the steps of the nemesis's story and 4 for
+  meeting it again (base 1266, loaded 1273).
+- **Changed:** `arcs.version` **2** (the items `"<id>#<npcID>"`; version 1 data loads unchanged; an older addon reads
+  it only). A story never begun is dropped, the arcs come before the stories in the 100 items, and at most 20 closed
+  stories are kept for an arc. `/au debug` has a line "Nemesis:".
+- **Tests:** `Tests/TestNemesis.lua` (142 checks: the data, the validator of arcs told for many NPCs, killed by one or
+  among several, who does not count, the deeper states and the slots, the meeting and its gap, the fall by the
+  character, the pet, alone or by someone else, the song after the fight and with the literary forms off, the user's
+  choices, the saved data, nothing in chat, no GUID saved); `TestArcs`, `TestSchema`, `TestValidator`,
+  `check_archive.py` and `check_versi.py` follow the new arc, lines and songs.
+- **Docs:** ADR 0045 (and notes in ADR 0021 and 0035), PACK_FORMAT (Story Arcs: `instances`, `slain`, `fall`,
+  `subjectTitle`, the nemesis data), ARCHITECTURE, the wiki pages Relationships, Story Arcs and Literary Forms,
+  checklist section N7 (IT/EN), ROADMAP.
+
 ### L4: the songbook, a verse that comes back, the culture of origin (issues #122, #123, #124)
 
 Step L4 of the literary forms milestone. The character now keeps the pieces it heard, a piece can come back as a

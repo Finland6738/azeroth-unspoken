@@ -1059,7 +1059,7 @@ AzerothUnspoken:RegisterPack({                      -- the arc's lines (see belo
 | Step field | Meaning |
 |---|---|
 | `from`, `to` | states; `to` is the one after `from` in `states` |
-| `on` | the **real events** that can trigger it: `zone` (you enter a zone, after two seconds), `death`, `level`, `npc` (gossip, vendor, flight, trainer, innkeeper, bank: not quests), `flag` (a new narrative flag set by an addon system: for example one of the S8 ambient dialogues, with `remembered = "npcd_innkeeper_asked_news"`; not the ones the player sets by hand, nor the automatic memory ones such as `first_death`, which are read with `remembered` inside the `death`, `level` or `zone` event that causes them), `player` (a direct choice by the player, from the Journal or with `/au stories choose`) |
+| `on` | the **real events** that can trigger it: `zone` (you enter a zone, after two seconds), `death`, `level`, `npc` (gossip, vendor, flight, trainer, innkeeper, bank: not quests), `flag` (a new narrative flag set by an addon system: for example one of the S8 ambient dialogues, with `remembered = "npcd_innkeeper_asked_news"`; not the ones the player sets by hand, nor the automatic memory ones such as `first_death`, which are read with `remembered` inside the `death`, `level` or `zone` event that causes them), `slain` (an NPC killed the character, N7: read without the combat log, unconfirmed in game), `fall` (the character, or their pet, killed an NPC, N7), `player` (a direct choice by the player, from the Journal or with `/au stories choose`). `npc`, `slain` and `fall` carry the NPC |
 | `when` | RuleEngine conditions, evaluated on the context of the moment, the same as for phrases (place with `place = { mapID, zone, tags, capital }`; memory with `firstVisit`, `repeatVisit`, `lastVisitBad`, `remembered`; relationships with `isKnown`, `familiarityMin`, `trustMin`; `other = { role, npcID }`; `levelMin`; `race`), plus `arc = { … }` (below), `arcDone = "<id>"` (another arc is finished) and `capitalsVisitedMin = n` |
 | `wait` | clock seconds that must pass since entering the starting state |
 | `choose` | the step waits for the player to choose among the options of `choices[...]`: the choice is saved as the **option id** |
@@ -1068,6 +1068,24 @@ AzerothUnspoken:RegisterPack({                      -- the arc's lines (see belo
 - **One step per event, per arc.** With a choice pending the arc waits for the player. `player` steps have no event: the Journal offers them when the conditions and the wait hold. The flags that the arcs themselves leave (`arc_…`) advance nothing.
 - **`subject = "npc"`**: the arc binds to the first NPC that opens it (`npc` event, with `when = { other = { role = … }, familiarityMin = … }`). In the later steps, `arc = { withSubject = true }` asks that the event's NPC be the same one; in the lines `{other}` is its name. The addon only reads the relationship it already keeps (S6b relationships): it changes nothing about the NPC.
 - **`topic = "death"`** (or another Character Soul topic): if the character avoids that topic, the arc neither opens nor advances.
+- **`instances = n`** (1 to 5, with `subject = "npc"`; N7, [ADR 0045](../docs/adr/0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md)): the arc is told **once for each NPC**, at most `n` at a time, with slots of its own (not those of `arcs.maxActive`). Each story is saved as `"<id>#<npcID>"` with the arc's states and steps; it moves only on the events of its NPC (`npc`, `slain`, `fall`) or the player's choice, and a step to `RESOLVED` may leave **any** opened state (its NPC can fall at any point). Its texts add `subjectTitle`, the title of one story with `{name}` (the NPC's name, at most 70 bytes); the lines still name the arc (`arc = { id = "nemesis" }`). Skipping or disabling the arc itself (`/au stories disable <id>`) stops all its stories. The base arc `nemesis` is the example:
+
+```lua
+nemesis = {
+    subject = "npc", topic = "death", instances = 3,
+    states = { "LOCKED", "MARKED", "HAUNTED", "SWORN", "RESOLVED" },
+    steps = {
+        { from = "LOCKED", to = "MARKED", on = { "slain" } },
+        { from = "MARKED", to = "HAUNTED", on = { "slain" } },
+        { from = "HAUNTED", to = "SWORN", on = { "slain" } },
+        { from = "MARKED", to = "RESOLVED", on = { "fall" } },
+        { from = "HAUNTED", to = "RESOLVED", on = { "fall" } },
+        { from = "SWORN", to = "RESOLVED", on = { "fall" } },
+    },
+},
+```
+
+  Who can become a nemesis, where, and the gaps are data: `nemesis = { arc, classes, places, holderAge, linger, meetGap, song }` in `Data/Relationships.lua` (a pack can tune them with `NS:RegisterRelationData`). Meeting a nemesis again speaks the event `nemesis_meet` (rules with `arc = { id = "nemesis", state = … }`, `{other}` = its name; the addon decides when, never `/au event`). When one falls, a literary piece of the event `nemesis_song` (the verses pack: chance 0, never spoken) whose conditions hold for the story (`arc = { id = "nemesis", from = "HAUNTED" }`: the state it fell in) goes into the songbook.
 - **Slots**: at most 1–2 active arcs (`arcs.maxActive`, `/au stories max <1|2>`). If an opening event arrives when the slots are full, the arc stays "available" and the player starts it from the Journal.
 - **The player is in control.** Every arc can be **suspended**, **skipped** or **disabled**, one by one or all at once (`/au stories`, Journal); the `storyArcs` module turns everything off. A suspended or skipped arc can be resumed; a disabled one can be re-enabled.
 - **The ending** (`RESOLVED`) leaves a permanent memory in Living Memory (`kind = "story"`, tags `arc`, `done` and the arc id: no text). Every state reached sets the flag `arc_<id>_<state>` (lowercase), which phrases read with `remembered`.

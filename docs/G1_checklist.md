@@ -1212,6 +1212,35 @@ costarti la vita (arrivano le guardie): fallo dove la corsa al corpo è breve.
 - **N1.8 · Le opzioni.** Spegni **Rancore eterno**: il dettaglio dice quanti giorni resta il rancore. Spegni **Avvisi di
   ostilità**: nessuna riga, ma il rancore resta. Mai nulla in chat.
 
+## N7: la nemesi e i canti della sua caduta (aggiunto dall'issue #219)
+
+Solo narrazione: la nemesi combatte come ha sempre fatto, e nulla va in chat. Chi ti ha ucciso e la caduta della nemesi si
+leggono **senza registro di combattimento** con la ricetta dell'ADR 0035 (punti 4 e 5), **non ancora confermata nel
+gioco** (il proprietario ha deciso di non aspettare la sezione N0): se un passo non va, apri una issue con quello che hai
+visto. Funzioni nuove per questa parte, tutte nel dump di Forever: `UNIT_THREAT_LIST_UPDATE`, `UnitThreatSituation`,
+`PLAYER_DEAD`, `UNIT_DIED`, `PARTY_KILL`, `UnitClassification`, `IsInInstance`. Per il canto serve la cartella
+`AzerothUnspoken_Versi`. Provato solo con il client finto ([ADR 0045](adr/0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md)).
+
+- **N7.1 · Una nemesi.** Fatti uccidere, fuori dai dungeon, da un mostro **élite** (il drago d'oro sul ritratto) che stai
+  combattendo da solo.
+    - **Cosa aspettarti:** tornato in vita, una riga del narratore o della voce interiore che lo nomina; nel diario,
+      scheda **Storie**, il titolo **Nemesi (1 di 3)** e la storia *L'ombra di <nome>*, stato *il segno*.
+    - **Cosa riportare:** se la storia non nasce, con `/au debug` (la riga «Nemesis:») e quanti mostri ti attaccavano.
+- **N7.2 · Chi non conta.** Fatti uccidere da un mostro normale, poi da un élite in un dungeon, poi muori cadendo.
+    - **Cosa aspettarti:** nessuna nemesi.
+- **N7.3 · Più a fondo.** Fatti uccidere ancora dalla stessa nemesi, due volte.
+    - **Cosa aspettarti:** *l'ombra lunga*, poi *la contesa*, ciascuna con una sua riga.
+- **N7.4 · Ritrovarla.** Più di mezz'ora dopo, seleziona la nemesi.
+    - **Cosa aspettarti:** una riga breve che la nomina; selezionarla di nuovo subito dopo non dice nulla.
+- **N7.5 · La caduta.** Uccidi la nemesi da solo (o con il tuo famiglio).
+    - **Cosa aspettarti:** a fine scontro la riga della chiusura; un avviso privato «“L'ombra di <nome>” è finita. Un
+      canto di quella caduta è nel tuo canzoniere: …»; nel diario la storia tra quelle concluse, con la sua pagina; in
+      **Canzoniere** il canto, che si apre intero. Se l'uccide un altro giocatore, la storia continua.
+    - **Cosa riportare:** se la caduta non viene vista (e chi ha dato il colpo finale), se il canto manca.
+- **N7.6 · Le scelte.** `/au stories disable nemesis`, poi fatti uccidere da un élite; poi `/au stories enable nemesis`.
+    - **Cosa aspettarti:** con la nemesi spenta nessuna storia; riaccesa, di nuovo. Una quarta nemesi aspetta tra le
+      storie che possono cominciare finché non ne sospendi una. Mai nulla in chat.
+
 ---
 
 ## L2: versi su più righe, forme letterarie rare, lettura lunga (aggiunto dalle issue #117, #118 e #126)
@@ -1436,6 +1465,8 @@ N1 colpo per primo ...... riga? ___  dopo (s) ______  con un incantesimo? ___  O
 N1 uccisione/testimoni .. riga dell'uccisione? ___  famiglio? ___  testimone con meno fiducia? ___  il luogo lo sa? ___
 N1 fazione/ospitalità ... città dell'altra fazione? ___  locandiere riconosciuto? ___  GetBindLocation ______  diario? ___
 N1 casa/opzioni ......... ritorno caldo/freddo? ___  rancore eterno spento: giorni? ___  avvisi spenti? ___  nulla in chat? ___
+N7 nemesi ............... élite: storia? ___  mostro normale/dungeon/caduta nulla? ___  riga al ritorno in vita? ___  quanti ti attaccavano ______
+N7 incontro/caduta ...... riga all'incontro? ___  caduta vista? ___  chi ha dato il colpo ______  canto nel canzoniere? ___  nulla in chat? ___
 L2 versi ................ uno alla volta? ___  troppo in fretta/piano? ___  rotellina? ___  clic passano? ___  cronologia a capo? ___
 L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: nessuno? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________

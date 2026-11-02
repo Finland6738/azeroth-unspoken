@@ -11,6 +11,9 @@ NS:RegisterLanguage("it", {
 		arc_hdr_available = "Storie che possono cominciare",
 		arc_hdr_resolved = "Storie concluse",
 		arc_hdr_skipped = "Storie saltate o disattivate",
+		-- N7 (#219): le storie di un arco raccontato per più NPC (le nemesi), con i loro posti
+		arc_hdr_many = "%s (%d di %d)",
+		arc_subject_unknown = "un nemico senza nome",
 		arc_empty = "Nessuna storia, per ora. Cominciano da sole quando succede qualcosa di vero: un ritorno, un incontro, una perdita. Se non le vuoi, spegni il modulo Storie nelle impostazioni.",
 		arc_back = "< Torna alle storie",
 		arc_row = "%s: %s",
@@ -48,6 +51,8 @@ NS:RegisterLanguage("it", {
 		-- avvisi discreti nel narratore
 		arc_notice_available = "Una storia può cominciare: «%s». Il diario dice come (/au stories).",
 		arc_notice_choice = "Una storia attende una tua scelta: «%s» (/au stories journal).",
+		-- N7: il canto della caduta di una nemesi è nel canzoniere
+		nemesis_song_notice = "«%s» è finita. Un canto di quella caduta è nel tuo canzoniere: «%s» (/au songbook).",
 
 		-- perché non si può fare
 		arc_why_disabled = "Le storie sono spente: riaccendile con /au stories on.",

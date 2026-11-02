@@ -29,7 +29,7 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 - the [[journal|Memory-and-Journal]]: significant moments, places visited, flags;
 - the **songbook** of the [[literary forms|Literary-Forms]]: which verses and songs your character heard and when, and which ones you marked (learned, favourite, muted), as **names of pieces and times only**, never their words; at most about 300, under 10 KB;
 - the [[relationships|Relationships]]: the NPCs you dealt with (and the quests you promised them, by number only; the favor one of them asked and the nickname one gave, by their number in the list; the towns where you met them, with what the word of you there adds up to and any honorary title, as numbers and place names; the grudge of an NPC you attacked, as times and counts; the innkeeper of your hearth, by number, with their town and inn; what a town remembers of a betrayal or a foe, as times) and, **only for players you chose**, their name with the notes, tags, labels and feelings you wrote, kept apart from what the addon observed about them (how many times you met, of which kind, where and when: never what was said);
-- the state of your [[personal stories|Story-Arcs]].
+- the state of your [[personal stories|Story-Arcs]] (a nemesis keeps only its NPC number and name, the state of its story and the times).
 
 When the game loads these files the addon checks them. Numbers out of range, times in the future and lists longer than their limit (300 players, 1,000 NPCs, and so on) are brought back to what is allowed, and `/au debug` lists what was cleaned (never a name). Data written by a newer version of the addon is read but never changed.
 

@@ -7,9 +7,13 @@ Pure functions over the decoded definitions: the database is only read by `store
 """
 import re
 
-TRIGGERS = ("zone", "death", "level", "npc", "flag", "player")
+TRIGGERS = ("zone", "death", "level", "npc", "flag", "player", "slain", "fall")
+# the events that carry an NPC (N7, ADR 0045): an arc tied to an NPC opens on one of these, and an arc told for many NPCs
+# (`instances`) moves only on these (or on the player's choice)
+NPC_TRIGGERS = ("npc", "slain", "fall")
+MAX_INSTANCES = 5        # StoryArcs.MAX_INSTANCES
 BASE_STATES = ("LOCKED", "DISCOVERED", "REFLECTED", "RESOLVED")
-ARC_FIELDS = {"id", "pack", "subject", "topic", "states", "choices", "steps"}
+ARC_FIELDS = {"id", "pack", "subject", "topic", "states", "choices", "steps", "instances"}
 STEP_FIELDS = {"from", "to", "on", "when", "wait", "choose"}
 MAX_CHOICES = 3          # replies shown at once (Systems/NPCAlive.lua, GDD 7.3)
 LABEL_BYTES = 70         # NPCAlive.LABEL_BYTES: the longest reply
@@ -82,6 +86,13 @@ def check_arc(id, d, texts, languages, rule_states=None):
         err("the states must start at LOCKED and end at RESOLVED")
     if len(set(states)) != len(states):
         err("a state is repeated")
+    many = d.get("instances") is not None
+    if many:
+        n = d["instances"]
+        if isinstance(n, bool) or not isinstance(n, int) or not 1 <= n <= MAX_INSTANCES:
+            err("instances must be a whole number from 1 to %d" % MAX_INSTANCES)
+        if d.get("subject") != "npc":
+            err("an arc told for many NPCs (instances) is tied to an NPC: subject = 'npc'")
     choices = d.get("choices") or {}
     if not isinstance(choices, dict):
         err("choices must be a table")
@@ -108,7 +119,8 @@ def check_arc(id, d, texts, languages, rule_states=None):
         fr, to = st.get("from"), st.get("to")
         if fr not in states or to not in states:
             err("%s: dangling transition %s -> %s (a state that is not declared)" % (name, fr, to))
-        elif states.index(to) != states.index(fr) + 1:
+        elif states.index(to) != states.index(fr) + 1 and not (many and to == states[-1] and fr != states[0]):
+            # an arc told for many NPCs may close from any opened state: its NPC can fall at any point of the story
             err("%s: from %s one goes only to the next state, not to %s" % (name, fr, to))
         else:
             outgoing.setdefault(fr, []).append(st)
@@ -119,8 +131,12 @@ def check_arc(id, d, texts, languages, rule_states=None):
             for t in on:
                 if t not in TRIGGERS:
                     err("%s: unknown event '%s'" % (name, t))
+                elif many and t != "player" and t not in NPC_TRIGGERS:
+                    err("%s: an arc told for many NPCs moves only on its NPC's events (npc, slain, fall), not '%s'" % (name, t))
             if fr == "LOCKED" and "player" in on:
                 err("%s: an arc does not open by itself on a choice: it needs a real event" % name)
+            if fr == "LOCKED" and d.get("subject") == "npc" and not any(t in NPC_TRIGGERS for t in on):
+                err("%s: an arc tied to an NPC opens on an event that carries one (npc, slain, fall)" % name)
         if st.get("choose") is not None:
             if st["choose"] not in choices:
                 err("%s: dangling choice '%s' (not defined in `choices`)" % (name, st["choose"]))
@@ -162,6 +178,11 @@ def check_arc(id, d, texts, languages, rule_states=None):
                 err("text '%s' (%s): unbalanced braces" % (what, lang))
         need(t.get("title"), "title", LABEL_BYTES)
         need(t.get("summary"), "summary")
+        if many:
+            # a story of an arc told for many NPCs has its own title, with its NPC's name
+            need(t.get("subjectTitle"), "subjectTitle", LABEL_BYTES)
+            if isinstance(t.get("subjectTitle"), str) and "{name}" not in t["subjectTitle"]:
+                err("text 'subjectTitle' (%s): {name} is missing" % lang)
         for s in states:
             if s != "LOCKED":
                 need((t.get("states") or {}).get(s), "states.%s" % s)

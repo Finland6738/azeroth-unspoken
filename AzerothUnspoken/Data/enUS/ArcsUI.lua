@@ -11,6 +11,9 @@ NS:RegisterLanguage("en", {
 		arc_hdr_available = "Stories that can begin",
 		arc_hdr_resolved = "Concluded stories",
 		arc_hdr_skipped = "Skipped or disabled stories",
+		-- N7 (#219): the stories of an arc told for many NPCs (the nemeses), with their own slots
+		arc_hdr_many = "%s (%d of %d)",
+		arc_subject_unknown = "a foe without a name",
 		arc_empty = "No stories yet. They begin by themselves when something real happens: a return, a meeting, a loss. If you do not want them, turn the Stories module off in the settings.",
 		arc_back = "< Back to stories",
 		arc_row = "%s: %s",
@@ -48,6 +51,8 @@ NS:RegisterLanguage("en", {
 		-- discreet notices in the narrator
 		arc_notice_available = "A story can begin: \"%s\". The journal says how (/au stories).",
 		arc_notice_choice = "A story waits for your choice: \"%s\" (/au stories journal).",
+		-- N7: the song of a nemesis's fall went into the songbook
+		nemesis_song_notice = "\"%s\" is over. A song of that fall is in your songbook: \"%s\" (/au songbook).",
 
 		-- why it cannot be done
 		arc_why_disabled = "Stories are off: turn them back on with /au stories on.",

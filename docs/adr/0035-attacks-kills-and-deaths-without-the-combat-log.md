@@ -1,6 +1,6 @@
 # 0035. Attacks, kills and deaths without the combat log: threat, blows and two new unit events
 
-- Status: proposed (**to confirm in game**: the owner runs section N0 of `docs/G1_checklist.md`, then this ADR is accepted, changed or rejected). On 2026-11-02 the owner decided not to wait for that run: N1 ([ADR 0041](0041-hostility-grudges-betrayal-witnesses-and-guest-right.md), #213) is built on this recipe as proposed, **unconfirmed in game**; what the run or play shows wrong becomes a new issue.
+- Status: proposed (**to confirm in game**: the owner runs section N0 of `docs/G1_checklist.md`, then this ADR is accepted, changed or rejected). On 2026-11-02 the owner decided not to wait for that run: N1 ([ADR 0041](0041-hostility-grudges-betrayal-witnesses-and-guest-right.md), #213) is built on this recipe as proposed, **unconfirmed in game**; so is N7 ([ADR 0045](0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md), #219), which uses item 5 (killed by) and item 4 (the fall of a nemesis); what the run or play shows wrong becomes a new issue.
 - Date: 2026-11-01
 
 ## Context

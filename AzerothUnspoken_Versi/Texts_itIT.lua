@@ -88,4 +88,17 @@ AU:AddTexts("itIT", {
 	["versi.lament.wipe.01"] = {
 		"Il lamento che si mormora dopo uno scontro perduto:\nCaduti insieme, tutti,\nnessuno cadde solo;\nalzati e lega quanto\nsi lega: il resto è pietra.",
 	},
+
+	------------------------------------------------------------------------
+	-- Canti della caduta di una nemesi (N7): nel canzoniere quando una nemesi cade
+	------------------------------------------------------------------------
+	["versi.nemesis.song.01"] = {
+		"Un canto da cacciatori, di quelli gridati a pericolo passato:\nAlza il boccale, alza la voce,\nciò che temevamo è giù;\nci colpì una volta, feroce,\ne qui cadde, e non s'alza più.",
+	},
+	["versi.nemesis.song.02"] = {
+		"Un canto di contesa, cantato basso al fuoco da chi ne porta una:\nMi gettò nella polvere,\nmi ci gettò ancora;\nma chi cade sa risorgere,\ne il debito si salda ora.",
+	},
+	["versi.nemesis.song.03"] = {
+		"Un vecchio detto della gente dei colli, quasi un canto, per un nemico caduto:\nAnche il lupo ucciso dal pastore\nl'han pianto i colli che ha percorso;\ni colli non tengono parti né rancore:\nuna voce selvaggia in meno, e nessun rimorso.",
+	},
 }, "versi")

@@ -158,8 +158,8 @@ print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varian
 # 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
 # e luogo (S6c) + 7 del pacchetto di esempio; S7 (contenuti Alpha): 803 di base + 7 del pacchetto di esempio;
 # S8 (NPC Alive): + 169 battute dei dialoghi ambientali = 972 di base + 7 = 979
-# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016; + 21 righe di riconoscimento, sentimenti e alleati (#106, #109, #110) = 1037; + 63 del mondo (R3: meteo, ore, luoghi, missioni, reputazione, locanda, volo) = 1100; + 35 di emozioni e tratti forti (R4) = 1135; + 10 delle situazioni composte (#100) + 8 monologhi e 23 loro parti (#99) = 1176; + 5 richiami del primo incontro con un NPC (N2, #214) = 1181; + 2 di una storia d'amore con un NPC (N3, #215) = 1183; + 3 della parola data a un NPC (N4, #216) = 1186; + 7 di favori e soprannomi (N5, #217) = 1193; + 4 della reputazione locale (N6, #218) = 1197; + 58 delle relazioni con gli NPC (N9, #221) = 1255; + 7 dell'ostilità (N1, #213) = 1262
-check(ids == 1262, f"1262 frasi caricate (trovate {ids})")
+# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016; + 21 righe di riconoscimento, sentimenti e alleati (#106, #109, #110) = 1037; + 63 del mondo (R3: meteo, ore, luoghi, missioni, reputazione, locanda, volo) = 1100; + 35 di emozioni e tratti forti (R4) = 1135; + 10 delle situazioni composte (#100) + 8 monologhi e 23 loro parti (#99) = 1176; + 5 richiami del primo incontro con un NPC (N2, #214) = 1181; + 2 di una storia d'amore con un NPC (N3, #215) = 1183; + 3 della parola data a un NPC (N4, #216) = 1186; + 7 di favori e soprannomi (N5, #217) = 1193; + 4 della reputazione locale (N6, #218) = 1197; + 58 delle relazioni con gli NPC (N9, #221) = 1255; + 7 dell'ostilità (N1, #213) = 1262; + 11 della nemesi (N7, #219: 7 battute dell'arco, 4 dell'incontro) = 1273
+check(ids == 1273, f"1273 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -482,7 +482,7 @@ for name in ("TestMock", "TestCompat", "TestConfig", "TestEventBus", "TestContex
              "TestDirector", "TestNarrativeDirector", "TestSchema", "TestValidator", "TestSoul", "TestEmotion", "TestMemory", "TestRelations", "TestPlayers", "TestNPCLevels", "TestNPCRomance", "TestPromises", "TestFavours", "TestLocalReputation", "TestHostility", "TestProximityShared",
              "TestOtherPlace", "TestNPCAlive", "TestArcs", "TestCommands", "TestProfile", "TestProbeCombat", "TestContent", "TestScale",
              "TestSelection", "TestWorld", "TestDynamism", "TestKeyClaims", "TestPacks", "TestKeyboard", "TestLiterary",
-             "TestLiteraryMeta", "TestSongbook"):
+             "TestLiteraryMeta", "TestSongbook", "TestNemesis"):
     # TestPacks: the folders of the download are loaded by Core/Packs.lua like in the client (#85, #101)
     lt, nst = load_addon(packs="lazy" if name == "TestPacks" else "all")
     # un'installazione nuova parte in inglese (#132); i test dei testi sono scritti in italiano, quindi la lingua si
@@ -1021,7 +1021,7 @@ check(arc_item(ar7, "path", "mode") == "suspended", "archi: un arco sospeso rest
 ar8, an8 = load_addon(saved_global_d, '{schemaVersion=5,memory={uses={},last={},recent={},lastTone={},variant={}},arcs={},history={}}',
                       with_example=False, zone="Durotar")
 check(ar8.eval("function() return AzerothUnspokenCharacterDB.schemaVersion end")() == 7, "archi: migrazione dallo schema 5 al 7")
-check(ar8.eval("function() return AzerothUnspokenCharacterDB.arcs.version end")() == 1, "archi: lo stato degli archi nasce dal segnaposto")
+check(ar8.eval("function() return AzerothUnspokenCharacterDB.arcs.version end")() == 2, "archi: lo stato degli archi nasce dal segnaposto (versione 2, N7)")
 ar8.globals().ADVANCE(8)
 check(arc_state(ar8, "path") == "DISCOVERED", "archi: dopo la migrazione gli archi si aprono")
 print("  ok" if not FAILURES else "")

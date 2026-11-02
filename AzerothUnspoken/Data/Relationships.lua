@@ -445,4 +445,21 @@ NS.Relationships:RegisterData({
 		home = { awayDays = 5, minutes = 10 },
 		perSession = 3, variants = 2,
 	},
+
+	-- N7 (#219): the nemesis (Systems/Nemesis.lua, ADR 0045). An NPC that kills the character becomes a nemesis when its
+	-- classification is one of `classes` and the character stands in a place of `places` (IsInInstance types: "none" is
+	-- the open world; a dungeon's elites are many and expected). Its story is the arc `arc` (Data/Arcs.lua), told once for
+	-- each nemesis, at most `instances` of the arc at a time. Detection follows ADR 0035 (unconfirmed in game):
+	--   holderAge  seconds: the killer is the last unit holding the character's aggro this long before the death
+	--   linger     seconds after a nemesis's death before its fall is settled (a late PARTY_KILL still counts)
+	--   meetGap    seconds between two lines of a meeting with the same nemesis (targeting it, or it attacking)
+	--   song       the event of the songs of a fall (the verses pack): one goes into the songbook when a nemesis falls
+	-- Narration only: nothing here changes how an NPC behaves in the game, and nothing goes to chat.
+	nemesis = {
+		arc = "nemesis",
+		classes = { elite = true, rare = true, rareelite = true, worldboss = true },
+		places = { none = true },
+		holderAge = 10, linger = 3, meetGap = 1800,
+		song = "nemesis_song",
+	},
 })

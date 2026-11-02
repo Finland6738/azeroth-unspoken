@@ -150,7 +150,18 @@ Raising a hand against an NPC is remembered. The addon notices when **you strike
 - **Guest-right.** The innkeeper who binds your hearthstone is **home**. Attacking them, or anyone inside their inn, is the gravest betrayal: the whole town knows without witnesses, the town stays cold to you for months, and the [[journal|Memory-and-Journal]] keeps *Guest-right broken* for good.
 - **Coming home.** Back in your hearth's town after five days or more away, a short private line welcomes you, or tells you the hearth is cold if you broke guest-right there.
 
-Monsters that were already hostile do not count here (they belong to a later step, the nemesis). The fight is read **without a combat log** (Forever gives addons none), from the game's ordinary signals (who struck first, who you were fighting, who died): this reading is **not yet confirmed in the real client**. When the game does not say something, the addon stays silent rather than guess. The notices are private (a few a session, after the fight, never in chat); turn them off with **Hostility notices**. The detail of an NPC shows the grudge (*Holds a grudge: you attacked them 3 days ago (2 times). The grudge is for ever.*) and marks the keeper of your hearth.
+Monsters that were already hostile do not count here (they can become a **nemesis**, below). The fight is read **without a combat log** (Forever gives addons none), from the game's ordinary signals (who struck first, who you were fighting, who died): this reading is **not yet confirmed in the real client**. When the game does not say something, the addon stays silent rather than guess. The notices are private (a few a session, after the fight, never in chat); turn them off with **Hostility notices**. The detail of an NPC shows the grudge (*Holds a grudge: you attacked them 3 days ago (2 times). The grudge is for ever.*) and marks the keeper of your hearth.
+
+### Nemesis: the foe that brought you down
+
+Some foes are not forgotten. When an **elite or rare** NPC kills your character in the open world (not in a dungeon or a raid, where elites are many), it becomes your **nemesis**: a [[story|Story-Arcs]] of its own, *The Shadow of Grimtusk*, under **Nemeses** in the journal's Stories tab.
+
+- **Meeting it again** (targeting it, or it attacking you) brings a short line from the narrator or your inner voice, at most once every half hour for each nemesis.
+- **Each further death** by its hand deepens the story: *the mark*, then *the long shadow*, then *the feud*.
+- **Its fall by your hand** (or your pet's, or with you alone on it) closes the story from any point: a closing line, its page in the journal and a permanent memory. A **song of that fall** goes into your [[songbook|Literary-Forms]] (with the verses pack installed), and a private notice gives its title. Someone else's kill does not count.
+- At most **three nemeses** at a time, with their own slots (the other stories keep theirs). A fourth waits as a story that can begin: suspend or skip one to make room.
+
+Nothing changes in the game: the nemesis fights as it always did. Who killed you is read **without a combat log**, from who was attacking you in the last seconds (when only one was, or when it was your target): this reading is **not yet confirmed in the real client**, and when the game does not say, no nemesis is made. Everything is private, never in chat. Don't want nemeses? `/au stories disable nemesis` (and `enable` to bring them back), or skip a single one in the Stories tab. A character who avoids the topic of death has none.
 
 ### What NPCs and your character say about all this
 
@@ -352,6 +363,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - A favor keeps which favor it is, when it was asked and until when, and the zone or map it is about; a nickname keeps only its number in the list. The NPC also counts the quests you handed to them and the favors you did for them.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
+- A nemesis keeps only its NPC number, its name, the state of its story and the times, with the other stories; nothing of a fight is saved.
 
 See [[Privacy and Data|Privacy-and-Data]].
 

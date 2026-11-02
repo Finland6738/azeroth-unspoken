@@ -83,6 +83,18 @@ NS:AddArcTexts("enUS", {
 			},
 		},
 	},
+	nemesis = {
+		title = "Nemeses",
+		subjectTitle = "The Shadow of {name}",
+		summary = "Some foes are not forgotten once the fight is over. One of them cut your road short, and its shadow now falls across the miles ahead: a story that grows each time it brings you down, and ends only with its fall.",
+		stateNames = { MARKED = "the mark", HAUNTED = "the long shadow", SWORN = "the feud" },
+		states = {
+			MARKED = "It brought you down once. You know its shape now: the story waits for another meeting, or for its fall.",
+			HAUNTED = "It has brought you down twice. The road keeps leading you back its way: the story deepens with every fall, and ends only with its own.",
+			SWORN = "Three times and more it has had the better of you. This is no longer chance but a feud: the story ends when it falls by your hand.",
+			RESOLVED = "It fell by your hand. The shadow lifts from the road, and a memory of this story stays in the journal.",
+		},
+	},
 }, "base_arcs")
 
 NS:AddTexts("enUS", {
@@ -225,5 +237,52 @@ NS:AddTexts("enUS", {
 	},
 	["arc.gates.done.promise"] = {
 		"crosses the gateway to the open road, and the promise made between the walls keeps pace, light and stubborn.",
+	},
+
+	---------------------------------------------------------------------------
+	-- Nemeses (N7, #219): {other} is the nemesis's name
+	---------------------------------------------------------------------------
+	["arc.nemesis.done.e"] = {
+		"sees {other} fall at last. The shadow that lay across the road lifts, and the road is only a road again.",
+		"watches {other} go down, and for a long moment the world is very quiet, as if it too had been holding its breath.",
+	},
+	["arc.nemesis.done.i"] = {
+		"It is over. {other} lies still, and the road ahead is just a road again.",
+		"So ends the tale of {other}. Somewhere, I suspect, someone will make a song of it.",
+	},
+	["arc.nemesis.haunt.i"] = {
+		"{other} again. Twice now: whatever it guards, I keep walking straight into it.",
+		"Twice fallen to the same hand. I begin to know the ways of {other} better than the way home.",
+	},
+	["arc.nemesis.meet.e"] = {
+		"catches sight of {other}, and the old shadow stirs on the road.",
+	},
+	["arc.nemesis.meet.haunted.i"] = {
+		"{other} again. Twice it has ended my road; I would rather it did not make three.",
+		"There: {other}. My hands remember before I do.",
+	},
+	["arc.nemesis.meet.marked.i"] = {
+		"{other}. The last time we met, the meeting ended in the dust.",
+		"That shape I know. {other}, and the memory of the dust.",
+	},
+	["arc.nemesis.meet.sworn.i"] = {
+		"{other}. Every fall has led here. Let this one be the last, one way or the other.",
+		"We know each other too well by now, {other} and I.",
+	},
+	["arc.nemesis.open.e"] = {
+		"rises from the dust with one name lodged in the memory like a splinter: {other}.",
+		"takes up the road again, and the road now has a shadow on it called {other}.",
+	},
+	["arc.nemesis.open.i"] = {
+		"{other}. I will remember that name, and the ground I fell on.",
+		"Not every foe is forgotten once the fight is done. {other} will not be.",
+		{ "{other} got the better of me. Next time I will know what I face.", depth = "natural" },
+	},
+	["arc.nemesis.sworn.e"] = {
+		"stands once more, and the name of {other} is no longer a memory but a direction.",
+	},
+	["arc.nemesis.sworn.i"] = {
+		"Three times {other} has seen me on the ground. It is no longer chance: it is a road to walk to its end.",
+		"{other}. Some debts are counted in falls, and I have counted enough.",
 	},
 }, "base_arcs")

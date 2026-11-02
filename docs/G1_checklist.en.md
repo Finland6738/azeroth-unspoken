@@ -394,6 +394,17 @@ English counterpart of the section **N1** of [G1_checklist.md](G1_checklist.md).
 - **N1.7 · Coming home.** Stay away from your hearthstone's town for more than five days, then come back. **Expect:** a warm line ("Home again. ..."), or a cold one after N1.6.
 - **N1.8 · The options.** Turn off **Eternal grudge**: the detail says how many days the grudge holds. Turn off **Hostility notices**: no line, but the grudge stays. Never anything in chat.
 
+## N7: the nemesis and the songs of its fall (issue #219)
+
+English counterpart of the section **N7** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: the nemesis fights as it always did, and nothing goes to chat. Who killed you and the nemesis's fall are read **without a combat log** with the recipe of ADR 0035 (items 4 and 5), **not yet confirmed in game** (the owner chose not to wait for section N0): if a step goes wrong, open an issue with what you saw. New reads for this part, all in the Forever dump: `UNIT_THREAT_LIST_UPDATE`, `UnitThreatSituation`, `PLAYER_DEAD`, `UNIT_DIED`, `PARTY_KILL`, `UnitClassification`, `IsInInstance`. The song needs the `AzerothUnspoken_Versi` folder. Tried with the mock client only ([ADR 0045](adr/0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md)).
+
+- **N7.1 · A nemesis.** Outside dungeons, get killed by an **elite** monster (the gold dragon on its portrait) you are fighting alone. **Expect:** back alive, a line of the narrator or the inner voice that names it; in the journal, tab **Stories**, the heading **Nemeses (1 of 3)** and the story *The Shadow of <name>*, state *the mark*. **Report:** if no story begins, `/au debug` (the line "Nemesis:") and how many monsters were attacking you.
+- **N7.2 · Who does not count.** Get killed by an ordinary monster, then by an elite in a dungeon, then die from a fall. **Expect:** no nemesis.
+- **N7.3 · Deeper.** Get killed by the same nemesis twice more. **Expect:** *the long shadow*, then *the feud*, each with its own line.
+- **N7.4 · Meeting it again.** More than half an hour later, target the nemesis. **Expect:** a short line that names it; targeting it again right after says nothing.
+- **N7.5 · The fall.** Kill the nemesis alone (or with your pet). **Expect:** after the fight the closing line; a private notice (*"The Shadow of <name>" is over. A song of that fall is in your songbook: ...*); in the journal the story among the concluded ones, with its page; in **Songbook** the song, which opens whole. If another player kills it, the story goes on. **Report:** if the fall is not seen (and who struck the last blow), if the song is missing.
+- **N7.6 · The choices.** `/au stories disable nemesis`, then get killed by an elite; then `/au stories enable nemesis`. **Expect:** with the nemesis off no story; on again, again. A fourth nemesis waits among the stories that can begin until you suspend one. Never anything in chat.
+
 ## L2: verses on several lines, rare literary forms, long reading (issues #117, #118 and #126)
 
 English counterpart of the section **L2** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Tested with
@@ -523,6 +534,8 @@ N1 strike first ......... line? ___  after (s) ______  with a spell? ___  Hated?
 N1 kill / witnesses ..... kill line? ___  pet? ___  witness with less trust? ___  the town knows? ___
 N1 faction / guest-right  other faction's city? ___  innkeeper recognised? ___  GetBindLocation ______  journal? ___
 N1 home / options ....... warm/cold return? ___  eternal grudge off: days? ___  notices off? ___  nothing in chat? ___
+N7 nemesis .............. elite: story? ___  ordinary/dungeon/fall nothing? ___  line when alive? ___  how many attacked you ______
+N7 meeting / fall ....... line on meeting? ___  fall seen? ___  who struck last ______  song in the songbook? ___  nothing in chat? ___
 L2 verses ............... one at a time? ___  too fast/slow? ___  wheel? ___  clicks pass? ___  history line breaks? ___
 L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  never: none? ___  nothing in chat? ___
 ```

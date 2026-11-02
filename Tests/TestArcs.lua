@@ -11,7 +11,7 @@ local Director, Narrator, Pacing, JournalFrame, Validator = NS.Director, NS.Narr
 local function Guid(id) return ("Creature-0-3134-0-6-%d-0000A2E9A1"):format(id) end
 local function Count(t) local n = 0; for _ in pairs(t or {}) do n = n + 1 end; return n end
 
-local BASE = { "path", "knownface", "fallen", "capitals" }
+local BASE = { "path", "knownface", "fallen", "capitals", "nemesis" }   -- nemesis: N7, #219 (Tests/TestNemesis.lua)
 
 local function Fresh()
 	-- gli archi di prova di un test non restano per il successivo
@@ -168,7 +168,7 @@ T.run("gli archi di base sono registrati, validi e con i testi in italiano e ing
 			end
 		end
 	end
-	T.eq(#SA.order, 4, "quattro archi di base")
+	T.eq(#SA.order, 5, "cinque archi di base (con la nemesi, N7)")
 	local problems = SA:Check()
 	local msgs = {}
 	for _, p in ipairs(problems) do table.insert(msgs, p.level .. " " .. p.key .. ": " .. p.msg) end
@@ -1418,7 +1418,7 @@ T.run("testi: nessuna ricompensa né promessa sul gioco, lingue distinte", funct
 	for _, ev in ipairs({ "arc_open", "arc_step", "arc_resolve" }) do
 		for _, p in ipairs(Engine.byEvent[ev]) do if p.pack == "base_arcs" then n = n + 1 end end
 	end
-	T.eq(n, 33, "33 battute di base")
+	T.eq(n, 40, "40 battute di base (33 di S9 + 7 della nemesi, N7)")
 end)
 
 T.run("un avviso discreto nel narratore, mai in chat, quando un arco aspetta una scelta o può cominciare", function()

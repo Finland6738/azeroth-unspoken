@@ -580,6 +580,8 @@ function R:RegisterData(def)
 	end
 	-- N1 (#213): hostility (Systems/Hostility.lua)
 	if type(def.hostility) == "table" and self.RegisterHostility then self:RegisterHostility(def.hostility) end
+	-- N7 (#219): the nemesis (Systems/Nemesis.lua): who can become one, where, the gaps and the event of the songs
+	if type(def.nemesis) == "table" and NS.Nemesis then NS.Nemesis:RegisterData(def.nemesis) end
 	DefineChoiceTraits()
 	return true
 end
