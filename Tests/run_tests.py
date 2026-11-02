@@ -456,7 +456,7 @@ check(len(fishing) == 3, "frasi di pesca dal pacchetto di esempio, nel narratore
 check(not list(G.SENT.values()), "la pesca non scrive in chat con la modalità privata")
 
 # 8) le 54 frasi delle classi fanno parte del database di base (erano fuori dal .toc fino a S2)
-cls = [p for p in Engine.byId.values() if p.pack == "base_classes"]
+cls = [Engine.byId[i] for i in Engine.PackIds(Engine, "base_classes").values()]
 print(f"\nbase_classes: {len(cls)} frasi")
 check(len(cls) == 54, "base_classes contiene 54 frasi")
 check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le frasi delle classi hanno IT ed EN")
@@ -533,7 +533,7 @@ check(loads_ == ["AzerothUnspoken_itIT", "AzerothUnspoken_EasternKingdoms", "Aze
       "lingua all'avvio, poi la regione del personaggio (regole e testi in italiano)")
 by_lang = pl.eval("""function()
     local it, en = 0, 0
-    for _, p in pairs(AzerothUnspoken.Engine.byId) do
+    for _, p in AzerothUnspoken.Engine:Rules() do
         if p.text.it and #p.text.it > 0 then it = it + 1 end
         if p.text.en and #p.text.en > 0 then en = en + 1 end
     end
@@ -928,7 +928,7 @@ again = dl2.eval("""function()
     local ctx = NS:BuildContext({ npcDialogue = true, otherSubject = { kind = 'npc', key = 'npc:295', npcID = 295 },
         relationSubject = { kind = 'npc', id = 295 } })
     local found = false
-    for _, p in ipairs(NS.Engine:Eligible(NS.Engine.byEvent.npcd_innkeeper_open, 'it', ctx, 'say', time())) do
+    for _, p in ipairs(NS.Engine:Eligible(NS.Engine:EventRules("npcd_innkeeper_open"), 'it', ctx, 'say', time())) do
         if p.id == 'npcd.innkeeper.open.again1' then found = true end
     end
     return found

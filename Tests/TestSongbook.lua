@@ -103,8 +103,8 @@ T.run("#122: a literary piece shown goes in the songbook as an id and a time, ne
 		end
 	end
 	-- a lore_test twin notes its piece
-	local twin = Engine:AddEntry(Engine.packs.sbtest, "sb.test.verse", { event = "sb_only", speaker = "inner", genre = "verse",
-		purpose = "remember", origin = "common", tags = { "lore" } })
+	local twin = Engine.Rule(Engine:AddEntry(Engine.packs.sbtest, "sb.test.verse", { event = "sb_only", speaker = "inner", genre = "verse",
+		purpose = "remember", origin = "common", tags = { "lore" } }))
 	twin.twinOf = "sb.verse"
 	Songbook:NoteShown({ id = "sb.test.verse" })
 	T.ok(Songbook:Heard("sb.verse") ~= nil and Songbook:Heard("sb.test.verse") == nil, "a twin notes its piece, never itself")

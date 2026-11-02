@@ -200,7 +200,7 @@ T.run("companion: every line is private, in the inner voice, and speaks only fro
 	local n = 0
 	for _, ev in ipairs(events) do
 		T.ok(NS.Engine.byEvent[ev] and #NS.Engine.byEvent[ev] > 0, ev .. " has lines")
-		for _, p in ipairs(NS.Engine.byEvent[ev] or {}) do
+		for _, p in ipairs(NS.Engine:EventRules(ev)) do
 			n = n + 1
 			T.eq(p.speaker, "inner", p.id .. ": the inner voice")
 			T.ok(Gateway:PrivateReason({ id = p.id, speaker = p.speaker, tags = p.tags }) ~= nil, p.id .. ": never chat")
@@ -211,13 +211,13 @@ T.run("companion: every line is private, in the inner voice, and speaks only fro
 	end
 	T.eq(n, 44, "44 lines (23 of N8, 21 of N9)")
 	for _, ev in ipairs({ "pet_grief", "npc_grief", "ally_death" }) do
-		for _, p in ipairs(NS.Engine.byEvent[ev]) do
+		for _, p in ipairs(NS.Engine:EventRules(ev)) do
 			T.ok(p.tags["topic:death"] == true, p.id .. ": topic death (a character who avoids it has none)")
 		end
 	end
 	-- the laments: literary pieces, private (the verses pack is checked by Tests/check_versi.py; these are the test's)
 	local laments = 0
-	for _, p in ipairs(NS.Engine.byEvent.lament or {}) do
+	for _, p in ipairs(NS.Engine:EventRules("lament")) do
 		laments = laments + 1
 		T.ok(Engine.IsLiteraryRule(p), p.id .. ": a literary piece")
 		T.eq(Gateway:PrivateReason({ id = p.id, speaker = p.speaker }), "literary", p.id .. ": never chat (D16)")

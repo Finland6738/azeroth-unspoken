@@ -1104,10 +1104,11 @@ function Validator:Run(opts)
 				if code and (not NS.Packs or NS.Packs:TextsLoaded(code)) then set[code] = true end
 			end
 		else
-			for _, id in ipairs(pack.ids or {}) do
-				for lang, list in pairs(Engine.byId[id].text) do
+			for _, id in ipairs(Engine:PackIds(pack.id)) do
+				local p = Engine.byId[id]
+				for lang, list in pairs(p.text) do
 					for _, var in ipairs(list) do
-						if Engine.VariantPack(var, Engine.byId[id].pack) == pack.id then set[lang] = true end
+						if Engine.VariantPack(var, p.pack) == pack.id then set[lang] = true end
 					end
 				end
 			end
@@ -1151,7 +1152,7 @@ function Validator:Run(opts)
 	end
 
 	local packsSeen = {}
-	local ids = Engine.SortedKeys(Engine.byId)
+	local ids = Engine.SortedKeys(Engine.ordOf)
 	-- the stanzas of the songs seen so far (#127): [lang .. verses] = { id, list } of the song
 	local stanzaOwner = {}
 	-- the phrases some monologue uses (#99), with the monologue that uses them
@@ -1257,8 +1258,9 @@ function Validator:Run(opts)
 				for _, b in ipairs(Validator.RecallProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
 				if p.kind == "stanzas" then
 					for _, b in ipairs(Validator.StanzaProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
-					-- the stanzas of a song are its own: the same stanza in two songs mixes them (a rule that shares the
-					-- very list of texts, like the lore_test twin of a song, is the same song)
+					-- the stanzas of a song are its own: the same stanza in two songs mixes them (the lore_test twin of a
+					-- song, `twinOf`, is the same song: #138, texts are copied to it, no longer shared as one list)
+					local song = p.twinOf or id
 					for _, lang in ipairs(textLangs) do
 						local list = p.text[lang]
 						for i = 2, #list do
@@ -1266,11 +1268,11 @@ function Validator:Run(opts)
 							if t then
 								local key = lang .. "\31" .. table.concat(Validator.Verses(t), "\n")
 								local other = stanzaOwner[key]
-								if other and other.list ~= list then
+								if other and other.song ~= song then
 									Add("error", "stanzaMix", p.pack, id, lang,
 										("stanza %d is also a stanza of '%s': never mix the stanzas of two songs"):format(i - 1, other.id))
 								end
-								stanzaOwner[key] = other or { id = id, list = list }
+								stanzaOwner[key] = other or { id = id, song = song }
 							end
 						end
 					end

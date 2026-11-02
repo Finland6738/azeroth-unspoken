@@ -88,7 +88,7 @@ function SYNTH_SOURCE(NS, n, opts)
 
 	-- the base rules, in id order, with texts in every requested language
 	local base = {}
-	for _, id in ipairs(Engine.SortedKeys(Engine.byId)) do
+	for _, id in ipairs(Engine.SortedKeys(Engine.ordOf)) do
 		local p = Engine.byId[id]
 		local ok = #p.events > 0 and not HasFunction(p.when)
 		for _, lang in ipairs(langs) do

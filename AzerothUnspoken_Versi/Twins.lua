@@ -9,20 +9,22 @@ local pack = Engine.packs.versi
 if not pack then return end
 
 local pieces = {}
-for _, id in ipairs(pack.ids or {}) do
+for _, id in ipairs(Engine:PackIds(pack.id)) do
 	if not id:find("^versi%.test%.") then table.insert(pieces, id) end
 end
 for _, id in ipairs(pieces) do
 	local p = Engine.byId[id]
-	local twin = p and Engine:AddEntry(pack, "versi.test." .. id:sub(#"versi." + 1), {
+	local twinId = "versi.test." .. id:sub(#"versi." + 1)
+	-- AddEntry gives the ord of the new rule (#138, column store); the twin is read and written through its view
+	local twin = p and Engine.Rule(Engine:AddEntry(pack, twinId, {
 		event = "lore_test", speaker = p.speaker, category = p.category, styles = p.styles,
 		depth = p.depthList or (p.depth and Engine.SortedKeys(p.depth)), tags = Engine.SortedKeys(p.tags),
 		genre = p.genre, purpose = p.purpose, origin = p.origin, kind = p.kind, show = p.show,
 		conditions = { combat = false },
-	})
-	-- the same lists of variants (read only): a song of stanzas keeps its frame and its stanzas in their order
+	}))
+	-- the same variants, in their order: a song of stanzas keeps its frame and its stanzas in their order
 	if twin then
-		for lang, list in pairs(p.text) do twin.text[lang] = list end
+		Engine:CopyTexts(id, twinId)
 		-- #122: trying a twin by hand notes its piece in the songbook, never the twin
 		twin.twinOf = id
 	end

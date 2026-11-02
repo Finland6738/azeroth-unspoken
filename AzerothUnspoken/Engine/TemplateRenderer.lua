@@ -155,6 +155,29 @@ function Engine.AnyUsable(list, ctx, speaker, owner)
 	return false
 end
 
+---AnyUsable for the variants of rule r (#138, column store): read in place in the flat array of the language, with the
+---voice and the pack of the rule.
+---@param r integer
+---@param lang string
+---@param ctx table
+---@return boolean
+function Engine.RuleUsable(r, lang, ctx)
+	local v, first, n = Engine.TextRange(r, lang)
+	if n == 0 then return false end
+	local shape = Engine.R.shape[r]
+	local public = Engine.PUBLIC_SPEAKERS[shape.speaker] or false
+	local disabled, HasData, owner = NS.db.disabledPacks, Engine.HasData, shape.pack
+	for i = first, first + n - 1 do
+		local x = v[i]
+		if type(x) == "string" then
+			if not disabled[owner] and HasData(x, ctx, public) then return true end
+		elseif x.ok and not disabled[x.pack] and HasData(x.t, ctx, public) then
+			return true
+		end
+	end
+	return false
+end
+
 ---Una variante a caso di una cornice o di una voce di vocabolario, composta; nil se nessuna si compone.
 function Engine:RenderEntry(entry, lang, ctx, line, nested)
 	local list = entry.text[lang]

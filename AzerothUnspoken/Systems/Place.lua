@@ -361,15 +361,16 @@ end
 ---------------------------------------------------------------------------
 -- Narratore: fattore C, ritmo, impegno
 ---------------------------------------------------------------------------
+-- the length of the shortest text of a rule (#138: read in the column store by its ord; the rule given to a weight
+-- hook keeps nothing between two calls, so nothing is cached on it)
 local function Shortest(entry)
-	if entry.shortest ~= nil and entry.shortestLang == NS:Lang() then return entry.shortest end
-	local best
-	for _, v in ipairs(entry.text and entry.text[NS:Lang()] or EMPTY) do
-		local t = NS.Engine.VariantText(v)
+	local Engine, lang, best = NS.Engine, NS:Lang(), nil
+	local list = entry.ord and Engine.TextList(entry.ord, lang) or (entry.text and entry.text[lang])
+	for _, v in ipairs(list or EMPTY) do
+		local t = Engine.VariantText(v)
 		if type(t) == "string" and (not best or #t < best) then best = #t end
 	end
-	entry.shortest, entry.shortestLang = best or 0, NS:Lang()
-	return entry.shortest
+	return best or 0
 end
 
 ---Fattore C del luogo: tag `place.` delle frasi, e in campo di battaglia (o contro un boss) le frasi brevi.

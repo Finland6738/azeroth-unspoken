@@ -509,7 +509,7 @@ T.run("voce delle frasi: regola dello schema v2 e ripiego del formato vecchio", 
 	-- schema v2: la voce è nella regola. Le emote sono del narratore, il pensiero (inner) non è mai un'emote,
 	-- il resto è la voce pubblica del personaggio
 	local counts = { say = 0, emote = 0, inner = 0 }
-	for _, p in pairs(NS.Engine.byId) do
+	for _, p in NS.Engine:Rules() do
 		T.ok(NS.Engine.SPEAKERS[p.speaker], p.id .. ": speaker valido")
 		if p.form == "emote" then
 			T.eq(p.speaker, "narrator", p.id .. ": emote = narratore")

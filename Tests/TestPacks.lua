@@ -18,7 +18,7 @@ end
 -- phrases of the base packs with a text in the language
 local function WithText(lang)
 	local n = 0
-	for _, p in pairs(Engine.byId) do
+	for _, p in Engine:Rules() do
 		if p.pack:sub(1, 5) == "base_" and p.text[lang] and #p.text[lang] > 0 then n = n + 1 end
 	end
 	return n
@@ -38,17 +38,20 @@ local function Printed(text)
 	return false
 end
 
--- every list of the selection index: no rule of a dropped pack is left behind
+-- every list of the selection index: no rule of a dropped pack is left behind (#138: the lists hold ords; a dropped
+-- rule's ord has no columns any more)
 local function InIndex(packId)
+	local SHAPE = Engine.R.shape
+	local function Left(r) return not SHAPE[r] or SHAPE[r].pack == packId end
 	for _, byForm in pairs(Engine.index) do
 		for _, byKey in pairs(byForm) do
 			for _, list in pairs(byKey) do
-				for _, p in ipairs(list) do if p.pack == packId then return true end end
+				for _, r in ipairs(list) do if Left(r) then return true end end
 			end
 		end
 	end
 	for _, list in pairs(Engine.byEvent) do
-		for _, p in ipairs(list) do if p.pack == packId then return true end end
+		for _, r in ipairs(list) do if Left(r) then return true end end
 	end
 	return false
 end
@@ -96,7 +99,8 @@ T.run("regional content appears and disappears with the zone", function()
 	-- the selection sees Elwynn and not Durotar
 	P.zone, P.race = "Elwynn Forest", "Human"
 	local seen = false
-	for _, p in ipairs(Engine:Candidates("zone", NS:BuildContext(), "say")) do
+	for _, r in ipairs(Engine:Candidates("zone", NS:BuildContext(), "say")) do
+		local p = Engine.Rule(r)
 		if p.id == "zone.elwynn.01" then seen = true end
 		T.ok(p.pack ~= "kalimdor_exploration", "no Kalimdor candidate in Elwynn")
 	end

@@ -773,7 +773,7 @@ end)
 T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 114 con S7 e i duelli di #105)", function()
 	Fresh()
 	local n, byEvent, byWho = 0, {}, { other = 0, place = 0 }
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.pack == "base_context" then
 			n = n + 1
 			T.ok(#(p.text.it or {}) > 0 and #(p.text.en or {}) > 0, "testi IT ed EN: " .. id)
@@ -790,7 +790,7 @@ T.run("frasi bilingui di interlocutore e luogo (86 di S6c, 114 con S7 e i duelli
 	end
 	for _, needed in ipairs({ "party", "raid", "pvp", "arena" }) do
 		local found = false
-		for _, p in pairs(Engine.byId) do
+		for _, p in Engine:Rules() do
 			if p.pack == "base_context" and p.when and p.when.place and p.when.place.instanceType == needed then found = true end
 		end
 		T.ok(found, "luogo coperto: " .. needed)
@@ -803,7 +803,7 @@ T.run("le frasi seguono interlocutore e luogo", function()
 	Talk(295, "Innkeeper Farley", "CONFIRM_BINDER")
 	local ctx = Ctx()
 	local ids = {}
-	for _, p in ipairs(Engine:Eligible(Engine.byEvent.npc_meet, "it", ctx, nil, time())) do ids[p.id] = true end
+	for _, p in ipairs(Engine:Eligible(Engine:EventRules("npc_meet"), "it", ctx, nil, time())) do ids[p.id] = true end
 	T.ok(ids["ctx.npc.innkeeper"] and ids["ctx.npc.innkeeper.jovial"], "frasi del locandiere gioviale")
 	T.ok(not ids["ctx.npc.merchant"] and not ids["ctx.npc.innkeeper.gruff"], "niente mercante, niente burbero")
 	T.ok(not ids["ctx.npc.cheerful"], "il generico allegro esclude i locandieri")
@@ -841,7 +841,7 @@ T.run("le frasi seguono interlocutore e luogo", function()
 	P.target = Player("Ilyas", { faction = "Alliance", race = "Human", class = "WARRIOR", hostile = true })
 	local g = Ctx()
 	local greet = {}
-	for _, p in ipairs(Engine:Eligible(Engine.byEvent.greet, "it", g, nil, time())) do greet[p.id] = true end
+	for _, p in ipairs(Engine:Eligible(Engine:EventRules("greet"), "it", g, nil, time())) do greet[p.id] = true end
 	T.ok(greet["ctx.greet.enemy"] and greet["ctx.greet.warrior"], "saluto alla fazione avversaria e al guerriero")
 	T.ok(not greet["ctx.greet.human"], "il 'volto di casa' solo tra persone della stessa razza")
 end)

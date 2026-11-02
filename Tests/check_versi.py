@@ -121,7 +121,7 @@ def check_pack(lua, ns):
 PIECES_LUA = """function()
     local E = AzerothUnspoken.Engine
     local out = {}
-    for id, p in pairs(E.byId) do
+    for id, p in E:Rules() do
         if p.pack == "versi" then
             local r = { id = id, speaker = p.speaker, form = p.form, cooldown = p.cooldown or -1, category = p.category,
                 combat = p.when and p.when.combat, event = table.concat(p.events, ","), tags = {}, texts = {},
@@ -296,7 +296,7 @@ CANDIDATES_LUA = """function(event, extra, form)
     local A = AzerothUnspoken
     local ctx = A:BuildContext(extra)
     local out = {}
-    for _, p in ipairs(A.Engine:Eligible(A.Engine.byEvent[event], A:Lang(), ctx, form or "say", time())) do
+    for _, p in ipairs(A.Engine:Eligible(A.Engine:EventRules(event), A:Lang(), ctx, form or "say", time())) do
         if p.pack == "versi" then out[p.id] = true end
     end
     return out

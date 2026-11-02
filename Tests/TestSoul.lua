@@ -208,7 +208,7 @@ T.run("profilo neutro: nulla cambia", function()
 	T.ok(type(ctx.soul) == "table" and next(ctx.soul) == nil, "ctx.soul esiste ed è vuoto")
 	-- ogni frase del database di base senza requisiti ha P = 1
 	local checked, req = 0, 0
-	for id, ph in pairs(Engine.byId) do
+	for id, ph in Engine:Rules() do
 		local hasReq = false
 		for tag in pairs(ph.tags) do if tag:sub(1, 4) == "req:" then hasReq = true end end
 		if hasReq then
@@ -468,7 +468,7 @@ T.run("filtri rigidi: i requisiti delle frasi di esempio del database", function
 	Reset()
 	local function Ids(soul)
 		local out = {}
-		for id, ph in pairs(Engine.byId) do
+		for id, ph in Engine:Rules() do
 			if id:sub(1, 5) == "soul." and Personality.Factor(ph, Soul(soul)) > 0 then out[id] = true end
 		end
 		return out
@@ -492,7 +492,7 @@ T.run("condizione soul e ctx.soul", function()
 	Reset()
 	local function Eligible(event)
 		local out = {}
-		for _, p in ipairs(Engine:Eligible(Engine.byEvent[event], "it", NS:BuildContext(), nil, time())) do out[p.id] = true end
+		for _, p in ipairs(Engine:Eligible(Engine:EventRules(event), "it", NS:BuildContext(), nil, time())) do out[p.id] = true end
 		return out
 	end
 	local e = Eligible("s5cond")

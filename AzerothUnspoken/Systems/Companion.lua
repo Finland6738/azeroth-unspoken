@@ -331,7 +331,8 @@ function C:PickLament(kind, extra)
 	ctxExtra.grief, ctxExtra.companion = kind, nil
 	local ctx = NS:BuildContext(ctxExtra)
 	local fresh, known = {}, {}
-	for _, p in ipairs(Engine:Eligible(list, NS:TextLang(), ctx, nil, Now())) do
+	for _, r in ipairs(Engine:Eligible(list, NS:TextLang(), ctx, nil, Now())) do
+		local p = Engine.Rule(r)   -- #138: Eligible gives ords
 		if Engine.IsLiteraryRule(p) then
 			table.insert(NS.Songbook:Heard(p.id) and known or fresh, p.id)
 		end

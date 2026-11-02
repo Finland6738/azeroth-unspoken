@@ -336,7 +336,7 @@ T.run("weather: unreadable weather changes nothing and names nothing", function(
 	-- the rules that name the weather cannot be chosen
 	local ctx = NS:BuildContext()
 	local n = 0
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.when and p.when.weather and Engine.Match(p.when, ctx) then n = n + 1 end
 	end
 	T.eq(n, 0, "no weather rule matches an unknown weather")
@@ -354,13 +354,13 @@ T.run("weather: a rain line is chosen under rain and never under a clear sky", f
 	P.weather = { type = Enum.WeatherType.Rain, intensity = 0.6 }
 	local ctx = NS:BuildContext({ weather = "rain" })
 	local found = 0
-	for _, p in ipairs(Engine.byEvent.weather_change or {}) do
+	for _, p in ipairs(Engine:EventRules("weather_change")) do
 		if Engine.Match(p.when, ctx) then found = found + 1 end
 	end
 	T.ok(found >= 3, "at least three rules for rain: " .. found)
 	P.weather = { type = Enum.WeatherType.Clear, intensity = 0 }
 	ctx = NS:BuildContext()
-	for _, p in ipairs(Engine.byEvent.weather_change or {}) do
+	for _, p in ipairs(Engine:EventRules("weather_change")) do
 		if Engine.Match(p.when, ctx) then
 			T.ok(p.when.weather == "clear", "under a clear sky only clear lines: " .. p.id)
 		end
@@ -1074,7 +1074,7 @@ end)
 
 T.run("the shipped world content: every rule has two texts in both languages", function()
 	local count = 0
-	for id, p in pairs(Engine.byId) do
+	for id, p in Engine:Rules() do
 		if p.pack == "base_world" then
 			count = count + 1
 			for _, lang in ipairs({ "it", "en" }) do
@@ -1085,7 +1085,7 @@ T.run("the shipped world content: every rule has two texts in both languages", f
 	T.ok(count >= 50, "a first set of lines: " .. count)
 	for _, e in ipairs(EVENTS) do
 		local n = 0
-		for _, p in ipairs(Engine.byEvent[e] or {}) do if p.pack == "base_world" then n = n + 1 end end
+		for _, p in ipairs(Engine:EventRules(e)) do if p.pack == "base_world" then n = n + 1 end end
 		T.ok(n >= 2, "at least two rules for " .. e .. ": " .. n)
 	end
 end)

@@ -507,7 +507,7 @@ T.run("the nickname in the NPC's lines: {nickname}, the condition relNick, the d
 	end
 	local function Ids(ctx)
 		local ids = {}
-		for _, p in ipairs(Engine:Eligible(Engine.byEvent.npcd_innkeeper_open, "en", ctx, "say", time())) do ids[p.id] = true end
+		for _, p in ipairs(Engine:Eligible(Engine:EventRules("npcd_innkeeper_open"), "en", ctx, "say", time())) do ids[p.id] = true end
 		return ids
 	end
 	T.eq(Ctx().relNick, nil, "no nickname yet")
