@@ -77,9 +77,9 @@ def roundtrip():
     check(n >= 800, "the archive holds the literal rules of the base and the regional packs (%d intentions)" % n)
     check(con.report["skipped"] == [], "no file is left out: no rules are computed by code any more (%s)" %
           sorted(str(s["pack_id"]) for s in con.report["skipped"]))
-    check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_arcs'").fetchone()[0] == 33 and
+    check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_arcs'").fetchone()[0] == 44 and
           con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_dialogues'").fetchone()[0] == 187,
-          "the 33 lines of the Story Arcs and the 187 of NPC Alive are archived (#143; 169 + 5 nickname openers, N5 #217, + 13 openers, N9 #221)")
+          "the 44 lines of the Story Arcs and the 187 of NPC Alive are archived (#143; 33 + 11 of the nemesis, N7 #219; 169 + 5 nickname openers, N5 #217, + 13 openers, N9 #221)")
     ids = {r["id"] for r in con.execute("SELECT id FROM intention")}
     check(all(i in ids for i in ("zone.gen.01", "victory.long.01", "zone.durotar.01", "ctx.act.duel")),
           "rules with code (func), mixed tables and regional rules are all there")
@@ -194,10 +194,10 @@ def structures_content():
     con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
     arcs = [r[0] for r in con.execute("SELECT id FROM arc ORDER BY id")]
     scripts = [r[0] for r in con.execute("SELECT key FROM script ORDER BY key")]
-    check(arcs == ["capitals", "fallen", "knownface", "path"], "the four arcs are archived: %s" % arcs)
+    check(arcs == ["capitals", "fallen", "knownface", "nemesis", "path"], "the five arcs are archived (the nemesis, N7): %s" % arcs)
     check(scripts == ["flightmaster", "guard", "innkeeper", "merchant", "trainer"], "the five dialogue scripts are archived: %s" % scripts)
-    check(con.execute("SELECT COUNT(*) FROM arc_text").fetchone()[0] == 8 and
-          con.execute("SELECT COUNT(*) FROM arc_step").fetchone()[0] == 13, "the journal texts (two languages) and the 13 steps are there")
+    check(con.execute("SELECT COUNT(*) FROM arc_text").fetchone()[0] == 10 and
+          con.execute("SELECT COUNT(*) FROM arc_step").fetchone()[0] == 19, "the journal texts (two languages) and the 19 steps are there")
     check(con.execute("SELECT COUNT(*) FROM script_node").fetchone()[0] == 27 and
           con.execute("SELECT COUNT(*) FROM script_reply").fetchone()[0] == 22,
           "the nodes and the replies are indexed for queries")
@@ -212,10 +212,10 @@ def structures_content():
     problems = store.check_structures(con)
     check(problems == [], "the base arcs and scripts pass every check %s" % problems[:3])
     res = coverage.compute(con, coverage.load_thresholds())
-    check(res["not_archived"] == 0 and res["structures"]["arcs"] == 4 and res["structures"]["scripts"] == 5 and
+    check(res["not_archived"] == 0 and res["structures"]["arcs"] == 5 and res["structures"]["scripts"] == 5 and
           res["structures"]["errors"] == [], "the report counts 0 intentions not archived and the structures")
     md = coverage.to_markdown(res)
-    check("Intentions not archived (rules computed by code): **0**" in md and "Story arcs: **4**" in md, "and says so in the headline")
+    check("Intentions not archived (rules computed by code): **0**" in md and "Story arcs: **5**" in md, "and says so in the headline")
 
     # ---- the checks, on definitions written to be wrong
     langs = ["itIT", "enUS"]
@@ -527,8 +527,8 @@ def literary_content():
     print("LITERARY PIECES (#119, #120, #127, #128)")
     con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "authoring"))
     ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
-    check(len(ids) == 16 and not any(i.startswith("versi.test.") for i in ids),
-          "the 16 pieces of the verses pack are archived; the lore_test twins are code and stay out (%d)" % len(ids))
+    check(len(ids) == 19 and not any(i.startswith("versi.test.") for i in ids),
+          "the 19 pieces of the verses pack are archived; the lore_test twins are code and stay out (%d)" % len(ids))
     r = store.get_rule(con, "versi.road.stanzas.01")
     check(r["genre"] == "song" and r["purpose"] == "accompany" and r["origin"] == "common" and r["kind"] == "stanzas" and
           r["show"] == 2, "genre, purpose, origin, kind and show are rule fields of their own columns")
@@ -539,12 +539,13 @@ def literary_content():
     check(len(store.get_variants(con, "versi.road.stanzas.01", "itIT")) == 5, "a song of stanzas: its frame and four stanzas")
     rows = con.execute("SELECT * FROM piece ORDER BY content_id").fetchall()
     done = [x["content_id"] for x in rows if x["metre_status"] == "ok" and x["lore_status"] == "none" and x["originality_status"] == "ok"]
-    check(len(rows) == 16 and len(done) == 15 and "versi.road.stanzas.01" not in done,
+    waiting = ["versi.nemesis.song.01", "versi.nemesis.song.02", "versi.nemesis.song.03", "versi.road.stanzas.01"]
+    check(len(rows) == 19 and len(done) == 15 and not any(w in done for w in waiting),
           "every piece has its editorial record (authoring/pieces.csv, seen through the view `piece`): the 15 of L0 reviewed, "
-          "the new song waiting for the owner")
+          "the song of stanzas (L3) and the three songs of a nemesis's fall (N7) waiting for the owner")
     report = store.literary_report(con)
-    check(report == [("versi.road.stanzas.01", "approved, but its review is not complete: metre, lore, originality pending")],
-          "the only literary warning of the repository: the new song waits for the owner's review (%s)" % report[:3])
+    check(report == [(w, "approved, but its review is not complete: metre, lore, originality pending") for w in waiting],
+          "the only literary warnings of the repository: the new songs wait for the owner's review (%s)" % report[:5])
     check(all(store.check_content(con, i, "draft") == [] for i in ids), "every piece passes the archive checks")
     con.close()
 
@@ -622,8 +623,8 @@ def literary_content():
               'kind = "stanzas", show = 1' in text, "the rule is written with its literary metadata and its stanza fields")
         check("{stanzas}" in packfiles.read(os.path.join(root, "AzerothUnspoken_Versi", "Texts_itIT.lua")),
               "its frame and stanzas are written in the texts of each language")
-        check("literary pieces: 1 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
-              "the export reports the literary warnings (here: the new song of the repository waits for the owner's review)")
+        check("literary pieces: 4 warnings" in out.getvalue() and "originality pending" in out.getvalue(),
+              "the export reports the literary warnings (here: the new songs of the repository wait for the owner's review)")
         check(store.roundtrip(root) == [], "the round trip of the exported folders is still an empty diff")
         check(lua_syntax_ok([os.path.join(root, "AzerothUnspoken_Versi", f) for f in ("Registry.lua", "Texts_enUS.lua")]) in
               (None, []), "the written files are valid Lua")

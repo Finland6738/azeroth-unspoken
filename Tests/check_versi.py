@@ -4,7 +4,7 @@ The pack is loaded **as an external addon**, after the base addon, with its own 
 it next to AzerothUnspoken). Then:
 1. the .toc and the files: Interface 16001, dependency on AzerothUnspoken, UTF-8 without BOM, LF line endings;
 2. the validator (the same code as `/au validate versi`): zero errors and zero warnings;
-3. the pieces: 12-16, each with a `lore_test` twin; private voices only (D16); never in combat; cooldown of three to
+3. the pieces: 12-20 (the 16 of L0-L3 and the 3 songs of a nemesis's fall, N7), each with a `lore_test` twin; private voices only (D16); never in combat; cooldown of three to
    seven days; genre and origin tags; the literary category `lore` (#118); the literary metadata of #119 (genre,
    purpose, origin) on every rule; at most 255 bytes, no placeholders, the attribution on the first line and one verse
    per line (#117, at least four), no " / " left; the mix asked by #115 (inscriptions, returns, inn rhymes, road songs
@@ -146,7 +146,7 @@ def check_pieces(lua, ns):
     rows = list(lua.eval(PIECES_LUA)().values())
     real = [r for r in rows if not r.twin]
     twins = [r for r in rows if r.twin]
-    check(12 <= len(real) <= 16, f"12-16 pieces ({len(real)})")
+    check(12 <= len(real) <= 20, f"12-20 pieces ({len(real)})")
     check(all(r.genre and r.purpose and r.origin for r in rows), "genre, purpose and origin on every rule (#119)")
     check(all(r.origin in ("common", "personal") or str(r.origin).startswith("culture:") for r in rows),
           "origin is common, personal or culture:<people> (D17: never a race)")
@@ -341,7 +341,7 @@ def check_archive(lua, ns):
     import store  # noqa: E402 (tools/archive, on the path above)
     con = store.build_db(":memory:", ROOT, os.path.join(ROOT, "no-overlay"))
     ids = [r["id"] for r in con.execute("SELECT id FROM intention WHERE pack_id = 'versi' ORDER BY id")]
-    check(len(ids) == 16, f"the archive holds the 16 pieces ({len(ids)})")
+    check(len(ids) == 19, f"the archive holds the 19 pieces (16 + 3 songs of a nemesis's fall, N7) ({len(ids)})")
     facts = lua.eval("""function(id)
         local out = {}
         for k in pairs(AzerothUnspoken.Validator.LiteraryFacts(AzerothUnspoken.Engine.byId[id])) do table.insert(out, k) end

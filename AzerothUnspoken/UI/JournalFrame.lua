@@ -265,6 +265,18 @@ local function ArcRows()
 			table.insert(out, { text = text .. mode, actions = { Open(id), ArcAction("act_skip", "arc_tip_skip", function() SA:Skip(id) end) } })
 		end
 	end
+	-- N7: the stories of an arc told for many NPCs (the nemeses), under the arc's title with their own slots
+	local base
+	for _, rec in ipairs(list.many) do
+		if rec.base ~= base then
+			base = rec.base
+			table.insert(out, Heading(NS:L("arc_hdr_many", SA:Title(base), SA:InstanceCount(base), SA.defs[base].instances)))
+		end
+		local id = rec.id
+		local mode = rec.mode ~= "active" and (" [" .. NS:L("arc_mode_" .. rec.mode) .. "]") or ""
+		table.insert(out, { text = NS:L("arc_row", rec.title, rec.stateLabel) .. mode,
+			actions = { Open(id), ArcAction("act_skip", "arc_tip_skip", function() SA:Skip(id) end) } })
+	end
 	if #list.available > 0 then
 		table.insert(out, Heading(NS:L("arc_hdr_available")))
 		for _, rec in ipairs(list.available) do
@@ -287,7 +299,7 @@ local function ArcRows()
 	if #out == 0 then
 		for _, l in ipairs(Wrap(NS:L("arc_empty"), "")) do table.insert(out, { text = Muted(l) }) end
 	end
-	if #list.active > 0 or #list.available > 0 then
+	if #list.active > 0 or #list.many > 0 or #list.available > 0 then
 		table.insert(out, { text = Muted(NS:L("arc_all_suspend")), actions = { ArcAction("act_pause", "arc_tip_suspend", function() SA:ForAll("suspend") end) } })
 		table.insert(out, { text = Muted(NS:L("arc_all_skip")), actions = { ArcAction("act_skip", "arc_tip_skip", function() SA:ForAll("skip") end) } })
 	end

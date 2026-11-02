@@ -53,6 +53,7 @@ Systems\Interlocutor.lua
 Systems\NPCAlive.lua
 Systems\StoryArcs.lua
 Systems\Songbook.lua
+Systems\Nemesis.lua
 
 # --- interfaccia ---
 UI\Widgets.lua

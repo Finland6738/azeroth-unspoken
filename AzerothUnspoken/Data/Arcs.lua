@@ -1,4 +1,5 @@
--- Gli archi narrativi di base (step S9, GDD §7.5; ADR 0021): quattro micro-storie personali. Solo la struttura: gli stati,
+-- Gli archi narrativi di base (step S9, GDD §7.5; ADR 0021): quattro micro-storie personali, più la nemesi (N7, un
+-- arco raccontato per più NPC, ADR 0045). Solo la struttura: gli stati,
 -- i passi con i loro eventi e le loro condizioni. Le battute del narratore sono regole in Data/RegistryArcs.lua; i testi
 -- (titolo, racconto per stato, scelte) e le battute stanno in AzerothUnspoken_itIT/Arcs.lua e AzerothUnspoken_enUS/Arcs.lua.
 -- Un pacchetto aggiunge archi con NS:RegisterArcs{ pack, arcs, texts } (stessa forma, vedi PACK_FORMAT.md, «Story Arcs»).
@@ -93,6 +94,28 @@ NS:RegisterArcs({
 					when = { capitalsVisitedMin = 3, place = { capital = true } } },
 				{ from = "JOURNEY", to = "REFLECTED", on = { "player" }, wait = 600, choose = "meaning" },
 				{ from = "REFLECTED", to = "RESOLVED", on = { "zone" }, wait = 60, when = { place = { capital = false } } },
+			},
+		},
+
+		---------------------------------------------------------------------------
+		-- La nemesi (N7, #219; ADR 0045): un NPC elite o raro che uccide il personaggio (Systems/Nemesis.lua, dati in
+		-- Data/Relationships.lua, `nemesis`). Un arco per più soggetti: una storia per ogni nemesi, al massimo tre alla
+		-- volta. Ogni altra morte per sua mano la fa crescere (MARKED, HAUNTED, SWORN); la sua caduta per mano del
+		-- personaggio la chiude da qualsiasi stato, con un canto nel canzoniere. L'argomento è la morte: chi lo evita
+		-- non ha nemesi. Nessun effetto sul gioco: l'NPC non cambia in nulla.
+		---------------------------------------------------------------------------
+		nemesis = {
+			subject = "npc",
+			topic = "death",
+			instances = 3,
+			states = { "LOCKED", "MARKED", "HAUNTED", "SWORN", "RESOLVED" },
+			steps = {
+				{ from = "LOCKED", to = "MARKED", on = { "slain" } },
+				{ from = "MARKED", to = "HAUNTED", on = { "slain" } },
+				{ from = "HAUNTED", to = "SWORN", on = { "slain" } },
+				{ from = "MARKED", to = "RESOLVED", on = { "fall" } },
+				{ from = "HAUNTED", to = "RESOLVED", on = { "fall" } },
+				{ from = "SWORN", to = "RESOLVED", on = { "fall" } },
 			},
 		},
 	},

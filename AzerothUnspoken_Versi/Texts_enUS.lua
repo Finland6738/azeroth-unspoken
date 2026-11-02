@@ -88,4 +88,17 @@ AU:AddTexts("enUS", {
 	["versi.lament.wipe.01"] = {
 		"The lament fighters mutter after a lost field:\nWe fell together, every one,\nand none of us alone.\nSo rise, and bind what can be bound,\nand leave the rest to stone.",
 	},
+
+	------------------------------------------------------------------------
+	-- Songs of a nemesis's fall (N7): put in the songbook when a nemesis falls
+	------------------------------------------------------------------------
+	["versi.nemesis.song.01"] = {
+		"A hunters' song, the kind roared once the danger is past:\nRaise the cup and raise the cheer,\nthe thing we feared has had its day;\nit struck us once, it struck us here,\nand here it fell, and here it lay.",
+	},
+	["versi.nemesis.song.02"] = {
+		"A feud song, sung low at the fire by those who carry one:\nOnce it laid me in the dust,\ntwice it bade me stay and rot;\nrise I did, as rise I must,\nand the debt was not forgot.",
+	},
+	["versi.nemesis.song.03"] = {
+		"An old saying of the hill folk, half a song, for a foe that fell:\nEven the wolf the shepherd slew\nwas mourned by the hills it wandered through;\nthe hills take no side and they keep no score:\none wild voice the less, and nothing more.",
+	},
 }, "versi")

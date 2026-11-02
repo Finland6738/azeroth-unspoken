@@ -83,6 +83,18 @@ NS:AddArcTexts("itIT", {
 			},
 		},
 	},
+	nemesis = {
+		title = "Nemesi",
+		subjectTitle = "L'ombra di {name}",
+		summary = "Certi nemici non si dimenticano a battaglia finita. Uno di loro ti ha spezzato la strada, e ora la sua ombra si allunga sulle miglia a venire: una storia che cresce ogni volta che ti abbatte, e finisce soltanto con la sua caduta.",
+		stateNames = { MARKED = "il segno", HAUNTED = "l'ombra lunga", SWORN = "la contesa" },
+		states = {
+			MARKED = "Ti ha abbattuto una volta. Adesso ne conosci la sagoma: la storia aspetta un nuovo incontro, o la sua caduta.",
+			HAUNTED = "Ti ha abbattuto due volte. La strada continua a riportarti da quella parte: la storia si fa più fonda a ogni caduta, e finisce soltanto con la sua.",
+			SWORN = "Tre volte e più ha avuto la meglio. Non è più un caso ma una contesa: la storia finisce quando cadrà per mano tua.",
+			RESOLVED = "La sua caduta è venuta per mano tua. L'ombra si leva dalla strada, e un ricordo di questa storia resta nel diario.",
+		},
+	},
 }, "base_arcs")
 
 NS:AddTexts("itIT", {
@@ -225,5 +237,52 @@ NS:AddTexts("itIT", {
 	},
 	["arc.gates.done.promise"] = {
 		"attraversa il portone verso la strada aperta, e la promessa fatta tra le mura procede al suo passo, leggera e ostinata.",
+	},
+
+	---------------------------------------------------------------------------
+	-- La nemesi (N7, #219): {other} è il nome della nemesi
+	---------------------------------------------------------------------------
+	["arc.nemesis.done.e"] = {
+		"vede infine cadere {other}. L'ombra stesa sulla strada si leva, e la strada torna a essere soltanto una strada.",
+		"guarda cadere {other}, e per un lungo istante il mondo tace, come se anche lui avesse trattenuto il fiato.",
+	},
+	["arc.nemesis.done.i"] = {
+		"È finita. {other} non si muove più, e la strada davanti è di nuovo soltanto una strada.",
+		"Così finisce la storia di {other}. Da qualche parte, immagino, qualcuno ne farà un canto.",
+	},
+	["arc.nemesis.haunt.i"] = {
+		"Ancora {other}. Due volte, ormai: qualunque cosa custodisca, ci vado a sbattere ogni volta.",
+		"Due volte per la stessa mano. Comincio a conoscere i modi di {other} meglio della strada di casa.",
+	},
+	["arc.nemesis.meet.e"] = {
+		"scorge {other}, e la vecchia ombra si muove sulla strada.",
+	},
+	["arc.nemesis.meet.haunted.i"] = {
+		"Di nuovo {other}. Due volte mi ha chiuso la strada; preferirei che non fossero tre.",
+		"Ecco: {other}. Le mani ricordano prima di me.",
+	},
+	["arc.nemesis.meet.marked.i"] = {
+		"{other}. L'ultima volta, quell'incontro è finito nella polvere.",
+		"Quella sagoma la conosco. {other}, e il ricordo della polvere.",
+	},
+	["arc.nemesis.meet.sworn.i"] = {
+		"{other}. Ogni caduta portava qui. Che questa sia l'ultima, in un modo o nell'altro.",
+		"Ormai ci conosciamo fin troppo, {other} e io.",
+	},
+	["arc.nemesis.open.e"] = {
+		"si rialza dalla polvere con un nome piantato nella memoria come una scheggia: {other}.",
+		"riprende la strada, e la strada adesso ha un'ombra che si chiama {other}.",
+	},
+	["arc.nemesis.open.i"] = {
+		"{other}. Ricorderò quel nome, e la terra su cui sono {g:caduto|caduta}.",
+		"Non tutti i nemici si dimenticano a battaglia finita. {other} non lo dimenticherò.",
+		{ "{other} ha avuto la meglio. La prossima volta saprò che cosa ho davanti.", depth = "natural" },
+	},
+	["arc.nemesis.sworn.e"] = {
+		"si rimette in piedi ancora una volta, e il nome di {other} non è più un ricordo ma una direzione.",
+	},
+	["arc.nemesis.sworn.i"] = {
+		"Tre volte {other} mi ha visto a terra. Non è più un caso: è una strada da percorrere fino in fondo.",
+		"{other}. Certi debiti si contano in cadute, e io ne ho contate abbastanza.",
 	},
 }, "base_arcs")
