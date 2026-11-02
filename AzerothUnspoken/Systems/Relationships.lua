@@ -44,6 +44,10 @@
 -- automatic gain lifts them out of it. A town remembers a betrayal (`betray`, `host`) or an enemy of the other faction
 -- (`foe`); `relationships.home` is the innkeeper of the hearth (guest-right). Numbers in Data/Relationships.lua
 -- (`hostility`). Narration only: nothing changes how an NPC behaves in the game.
+-- N8 (#220, #125, version 8): the companion pet, grief and letters (Systems/Companion.lua). The hunter's or warlock's
+-- pets (`relationships.pets`: name, family, hours together, the bond's stage, deaths; no GUID), when an NPC the
+-- character was close to was last mourned (`mourned`) and last wrote a letter (`letter`), and the last letter
+-- (`relationships.letterT`). Numbers in Data/Relationships.lua (`companion`).
 -- Proximity (#113, ADR 0030): with the option on (off by default) nameplates and mouseover can recognise a player who is
 -- ALREADY listed, or (with the TRP3 consent) suggest one who has a TRP3 profile. For this session only: nothing is saved,
 -- no record is created, nothing is kept about strangers, and a secret identity is not read.
@@ -131,7 +135,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 7                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213)
+R.VERSION = 8                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213; 8: pets, letterT, mourned, letter, #220)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -582,6 +586,8 @@ function R:RegisterData(def)
 	if type(def.hostility) == "table" and self.RegisterHostility then self:RegisterHostility(def.hostility) end
 	-- N7 (#219): the nemesis (Systems/Nemesis.lua): who can become one, where, the gaps and the event of the songs
 	if type(def.nemesis) == "table" and NS.Nemesis then NS.Nemesis:RegisterData(def.nemesis) end
+	-- N8 (#220, #125): the companion pet, grief and letters (Systems/Companion.lua)
+	if type(def.companion) == "table" and NS.Companion then NS.Companion:RegisterData(def.companion) end
 	DefineChoiceTraits()
 	return true
 end
@@ -860,6 +866,8 @@ function R:Data()
 	if type(d.marks) ~= "table" then d.marks = {} end
 	-- N6 (#218): what each town remembers (the word, the quests, the title), by the town's name
 	if type(d.towns) ~= "table" then d.towns = {} end
+	-- N8 (#220): the companion pets, by a number of their own
+	if type(d.pets) ~= "table" then d.pets = {} end
 	if not IsNumber(d.version) then d.version = self.VERSION end
 	return d
 end
@@ -1209,6 +1217,9 @@ local function CleanRecord(rec, kind)
 		out.heard = R.CleanWord(rec.heard)
 		-- N1 (#213): the grudge of an NPC the character attacked
 		out.foe = R.CleanFoe and R.CleanFoe(rec.foe) or nil
+		-- N8 (#220): when the character last mourned this NPC, when they last wrote
+		if IsNumber(rec.mourned) and rec.mourned > 0 then out.mourned = Past(rec.mourned) end
+		if IsNumber(rec.letter) and rec.letter > 0 then out.letter = Past(rec.letter) end
 		local rival = rec.rival
 		if type(rival) == "table" and IsNumber(rival.npc) and rival.npc > 0 and IsNumber(rival.t) and rival.t > 0 then
 			out.rival = { npc = math.floor(rival.npc), t = Past(rival.t) }
@@ -1358,9 +1369,9 @@ function R:Sanitize()
 		NS.Diagnostics:Error("relations", ("relationships.version %d > %d: sola lettura"):format(v, self.VERSION))
 		return 0
 	end
-	-- versions 2 to 6 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
-	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218; foe, home: 7, #213) start absent and
-	-- are cleaned below
+	-- versions 2 to 7 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
+	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218; foe, home: 7, #213; pets, letterT,
+	-- mourned, letter: 8, #220) start absent and are cleaned below
 	local dropped = 0
 	local npcs, players = {}, {}
 	clamped = 0
@@ -1386,6 +1397,12 @@ function R:Sanitize()
 	d.towns, dropped = towns, dropped + badTowns
 	-- N1 (#213): the hearth's innkeeper, only while still listed
 	d.home = R.CleanHome and R.CleanHome(d.home, npcs) or nil
+	-- N8 (#220): the companion pets and the time of the last letter
+	if R.CleanPets then
+		local pets, badPets = R.CleanPets(d.pets)
+		d.pets, dropped = pets, dropped + badPets
+	end
+	d.letterT = IsNumber(d.letterT) and d.letterT > 0 and Past(d.letterT) or nil
 	d.version = self.VERSION
 	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
 	self:CompactNPCs()
@@ -3534,6 +3551,8 @@ function R:Reset(what)
 		d.promises, d.marks, d.towns = {}, {}, {}
 		-- N1 (#213): the hearth's innkeeper is one of them
 		d.home = nil
+		-- N8 (#220): the pets, the letters' time
+		d.pets, d.letterT = {}, nil
 	end
 	if what == "all" or what == "players" or what == nil then
 		for _ in pairs(d.players) do n = n + 1 end
@@ -3897,6 +3916,8 @@ function R:Context(ctx, extra)
 	self:TownContext(ctx)
 	-- N1 (#213): the town remembers a betrayal or an enemy; the character just came home (no person needed)
 	if self.HostilityContext then self:HostilityContext(ctx) end
+	-- N8 (#220): the pet out now ({pet}, petMood, petStage, petKind; no person needed)
+	if self.CompanionContext then self:CompanionContext(ctx) end
 	local kind, key, rec = self:Subject(ctx, extra)
 	if not rec then
 		ctx.isKnown, ctx.relTraits = false, EMPTY

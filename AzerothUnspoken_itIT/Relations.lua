@@ -770,4 +770,97 @@ NS:AddTexts("itIT", {
 		"Qui non mi hanno dimenticato, e i motivi glieli ho dati io.",
 		{ "Ogni guardia qui conosce la mia faccia.", depth = "natural" },
 	},
+	-- N8 (#220, #125): the companion pet ({pet}), grief for the pet, an NPC ({other}) and a group member ({other})
+	["rel.ally.fall"] = {
+		"{other} è a terra. Segno il punto e vado avanti: lo si deve ai morti, e ancor più ai vivi.",
+		{ "{other}, a terra. Avanti.", depth = "natural" },
+	},
+	["rel.ally.fall.deep"] = {
+		"Uno di noi è caduto nel buio di questo luogo. Queste pietre tengono un conto lungo.",
+		"Un altro nome che queste sale terranno. Almeno io lo porterò fuori di qui.",
+	},
+	["rel.ally.fall.friend"] = {
+		"Non {other}. Avevamo giurato di guardarci le spalle, e io ho distolto lo sguardo.",
+		"{other}, no. Alzati. Ti prego, alzati.",
+	},
+	["rel.ally.fall.stranger"] = {
+		"Del nome di {other} conoscevo appena il suono. Adesso la strada non me lo lascerà dimenticare.",
+		"{other} ha combattuto al mio fianco per un'ora, e al mio fianco ha trovato la fine. Anche questa è una parentela.",
+	},
+	["rel.grief.npc"] = {
+		"{other}. Conoscevo quella voce, quel volto. Ora c'è solo l'immobilità, e quello che ricordo.",
+		{ "{other}... non può essere.", depth = "natural" },
+	},
+	["rel.grief.npc.close"] = {
+		"Non {other}. Fra tutti i volti di questa strada, non quello.",
+		"{other}. Continuavo a ripromettermi di tornare prima.",
+	},
+	["rel.grief.npc.innkeeper"] = {
+		"Il focolare di {other} arderà per qualcun altro, ora. Devo a quel fuoco più notti di quante ne possa contare.",
+		"Niente più benvenuti caldi da {other}. La strada si è fatta più fredda.",
+	},
+	["rel.grief.pet.beast"] = {
+		"{pet} non si muove. Mi inginocchio, e il mondo va avanti intorno a noi come se niente fosse.",
+		{ "No. Non {pet}.", depth = "natural" },
+	},
+	["rel.grief.pet.bonded"] = {
+		"Tante strade con {pet} alle calcagna. Il silenzio dove c'erano quei passi è la cosa più forte, qui.",
+		"{pet} ha percorso con me ogni strada. Questa è la prima che percorrerò da {g:solo|sola}.",
+	},
+	["rel.grief.pet.demon"] = {
+		"{pet} non c'è più: il buio se l'è ripreso. Non dovrei rimpiangere una creatura vincolata. Un poco la rimpiango.",
+		"Patto o non patto, {pet} stava tra me e il pericolo. Qualcosa vorrà pur dire.",
+	},
+	["rel.pet.bond.bonded"] = {
+		"{pet} e io. Due nomi, una strada. Non saprei più dire chi dei due segue l'altro.",
+		"Non c'è parola per ciò che {pet} è per me, ormai. Compagno non basta.",
+	},
+	["rel.pet.bond.demon"] = {
+		"Persino {pet} esita, ormai, prima di deridermi. Da un demone è quasi affetto.",
+		"{pet} mi chiama ancora {g:padrone|padrona} storcendo la bocca. Ultimamente la storce di meno.",
+	},
+	["rel.pet.bond.familiar"] = {
+		"{pet} non aspetta più il comando. Sa già dove sto andando.",
+		"{pet} e io abbiamo trovato un ritmo. Nessuno dei due deve più voltarsi.",
+	},
+	["rel.pet.bond.trusted"] = {
+		"Con {pet} di guardia dormo meglio. Quando è successo?",
+		"Se {pet} si ferma, mi fermo. Ho imparato a fidarmi di ciò che sente prima di me.",
+	},
+	["rel.pet.call.beast"] = {
+		"Un fischio, e {pet} è al mio fianco. Qualcosa, a questo mondo, risponde ancora quando lo chiami.",
+		{ "Eccoti, {pet}.", depth = "natural" },
+	},
+	["rel.pet.call.bonded"] = {
+		"Di nuovo {pet}, e la strada sembra più corta. Abbiamo camminato troppo insieme per chiamarlo servizio.",
+		"{pet} si mette al mio fianco senza un rumore, come se non fosse passato nemmeno un giorno.",
+	},
+	["rel.pet.call.demon"] = {
+		"Il cerchio si apre e {pet} ne esce, con l'aria di chi si annoia già. Un patto è un patto.",
+		{ "{pet}. Un vincolo che non piace a nessuno dei due.", depth = "natural" },
+	},
+	["rel.pet.call.new"] = {
+		"Ci studiamo a vicenda, {pet} e io: stiamo ancora imparando a conoscerci.",
+		"Un nome nuovo da imparare, {pet}. Un passo nuovo da seguire.",
+	},
+	["rel.pet.dismiss.beast"] = {
+		"{pet} sparisce tra i cespugli. Il silenzio che lascia è un po' troppo largo.",
+		{ "Riposa, {pet}.", depth = "natural" },
+	},
+	["rel.pet.dismiss.demon"] = {
+		"{pet} svanisce là dove aspetta tra un'evocazione e l'altra. Non chiedo dove.",
+		"{pet} se ne va con un ultimo ghigno. L'aria è più leggera, e chissà perché più vuota.",
+	},
+	["rel.pet.mood.content"] = {
+		"{pet} si calma. Una pancia piena aggiusta più cose di quanto si creda.",
+		"{pet} ha smesso di brontolare. La pace torna, un pasto alla volta.",
+	},
+	["rel.pet.mood.happy"] = {
+		"{pet} è di ottimo umore. Difficile restare cupi con quella gioia che saltella accanto.",
+		"Oggi {pet} ha l'aria di chi è soddisfatto di sé. Giusto: lo sono anch'io.",
+	},
+	["rel.pet.mood.unhappy"] = {
+		"{pet} ha il muso. Pasti in ritardo e troppa fatica: lo terrei anch'io.",
+		"{pet} mi lancia uno sguardo che conosco fin troppo bene. Sono in debito, e lo sa.",
+	},
 }, "base_relations")

@@ -293,6 +293,37 @@ local SPECIAL = {
 	townBetrayed = function(v, ctx) return (ctx.townBetrayed == true) == v end,
 	townFoe = function(v, ctx) return (ctx.townFoe == true) == v end,
 	homeReturn = function(v, ctx) return (ctx.homeReturn == true) == v end,
+	-- the companion pet and grief (N8, #220, #125): ctx.petMood (unhappy | content | happy), ctx.petStage (the bond's
+	-- stage, Data/Relationships.lua `companion.pet.stages`), ctx.petKind (beast | demon) of the pet out now or of the
+	-- line's pet; ctx.grief (pet | npc | ally) on a grief and its lament. None needs a person
+	petMood = function(v, ctx)
+		if ctx.petMood == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.petMood == name then return true end
+		end
+		return false
+	end,
+	petStage = function(v, ctx)
+		if ctx.petStage == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.petStage == name then return true end
+		end
+		return false
+	end,
+	petKind = function(v, ctx)
+		if ctx.petKind == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.petKind == name then return true end
+		end
+		return false
+	end,
+	grief = function(v, ctx)
+		if ctx.grief == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.grief == name then return true end
+		end
+		return false
+	end,
 	-- il mondo (R3, Systems/World.lua): una lettura che il client non dà vale "non lo so", cioè falsa per `true` e per
 	-- `false` (tranne dove è scritto): una frase che nomina il meteo o il volo non esce se l'API manca
 	dayTime = function(v, ctx) return ctx.isDay ~= nil and ctx.isDay == v end,
@@ -448,6 +479,8 @@ Engine.CONDITIONS = {
 	townTitle = "str", townWord = "str", relRival = "str",
 	-- hostility (N1, #213)
 	relFoe = "str", townBetrayed = "bool", townFoe = "bool", homeReturn = "bool",
+	-- the companion pet and grief (N8, #220, #125)
+	petMood = "str", petStage = "str", petKind = "str", grief = "str",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -495,6 +528,8 @@ Engine.CONDITION_VALUES = {
 	townTitle = {}, townWord = { good = true, bad = true }, relRival = { jealous = true, ironic = true },
 	-- hostility (N1, #213)
 	relFoe = { attacked = true, killed = true, host = true },
+	-- the companion pet and grief (N8, #220, #125): the stages and moods are filled from the data (Systems/Companion.lua)
+	petMood = {}, petStage = {}, petKind = { beast = true, demon = true }, grief = { pet = true, npc = true, ally = true },
 	-- the composite situations (#100): filled by NS:RegisterSituation
 	situation = {},
 }

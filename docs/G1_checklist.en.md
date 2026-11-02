@@ -405,6 +405,19 @@ English counterpart of the section **N7** of [G1_checklist.md](G1_checklist.md).
 - **N7.5 · The fall.** Kill the nemesis alone (or with your pet). **Expect:** after the fight the closing line; a private notice (*"The Shadow of <name>" is over. A song of that fall is in your songbook: ...*); in the journal the story among the concluded ones, with its page; in **Songbook** the song, which opens whole. If another player kills it, the story goes on. **Report:** if the fall is not seen (and who struck the last blow), if the song is missing.
 - **N7.6 · The choices.** `/au stories disable nemesis`, then get killed by an elite; then `/au stories enable nemesis`. **Expect:** with the nemesis off no story; on again, again. A fourth nemesis waits among the stories that can begin until you suspend one. Never anything in chat.
 
+## N8: the companion pet, grief, the death of an ally and letters (issues #220 and #125)
+
+English counterpart of the section **N8** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: the pet and the NPCs behave as always, and nothing goes to chat. The pet, the deaths and the group are read from the signals of the Forever dump, **not yet confirmed in game** (the owner chose not to wait for in-game probes or a two-client group test): if a step goes wrong, open an issue with what you saw. New reads for this part, all in the dump: `UNIT_PET`, `UNIT_HAPPINESS`, `C_PetInfo.GetPetHappiness`, `UnitIsDead`, `UnitIsDeadOrGhost`, `UnitIsFeignDeath`, `UNIT_DIED`, the units `party1..4` and `raid1..40`, `C_Secrets`. The laments need the `AzerothUnspoken_Versi` folder. Tried with the mock client only ([ADR 0046](adr/0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md)).
+
+- **N8.1 · The pet.** With a hunter (or a warlock) dismiss the pet, wait a little, call it back. **Expect:** now and then a line of the inner voice that names it, on the call and on the dismissal; not again for twenty minutes; no line when the pet is already there as you enter the game or after a flight. **Report:** `/au debug` (the line "Companion:"): the pet's name and the hours counted.
+- **N8.2 · The mood.** As a hunter, let the pet go hungry until it is unhappy, then feed it. **Expect:** a line when the mood changes (at most one every quarter of an hour). A warlock has none.
+- **N8.3 · The bond.** Play a couple of hours with the pet out. **Expect:** a line *a familiar presence*; after about 12 hours *a trusted companion*, written in the journal (*The bond with <name> grew: ...*).
+- **N8.4 · The pet's grief.** Let the pet die in a fight (or, as a warlock, the demon). **Expect:** after the fight a line that mourns it, once; in the journal *<name> fell*; with the verses, a private notice (*A lament for the one you lost is in your songbook: ...*). Revived and dead again, again. A demon that vanishes as it dies must not look dismissed. **Report:** if the grief is missing, or if the demon's death gives the dismissal line.
+- **N8.5 · A dear NPC.** Target, dead, an NPC you are at least *Friend* with (for example after the other faction raided a village), or watch them die while targeted. **Expect:** a line that names them, a page *You mourned <name>* in the journal; not again for a month. A neutral NPC or one you attacked: nothing.
+- **N8.6 · An ally (#125).** In a group with another player, let them die beside you (best a friend who lends themselves to it); then try with a hunter who feigns death, and in a battleground. **Expect:** after the fight a line that names them, a page *A companion of the road fell* with no name, a lament in the songbook; only one for a whole group's wipe. Feigned death and battleground: nothing. **Report:** if nothing comes (`UNIT_DIED` for other players might not fire), if it comes for a feigned death.
+- **N8.7 · A letter.** With an NPC at least *Close friend* you have not met for three weeks, enter the game. **Expect:** after a few seconds a private notice (*A letter came for you while you were away, from <name>...*); in the journal the whole letter. Never game mail. A /reload brings no letter.
+- **N8.8 · The options.** In the relationships window turn off **Companion pet** and **Letters**. **Expect:** no line about the pet (the bond is still counted), no letter. Never anything in chat.
+
 ## L2: verses on several lines, rare literary forms, long reading (issues #117, #118 and #126)
 
 English counterpart of the section **L2** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Tested with
@@ -536,6 +549,10 @@ N1 faction / guest-right  other faction's city? ___  innkeeper recognised? ___  
 N1 home / options ....... warm/cold return? ___  eternal grudge off: days? ___  notices off? ___  nothing in chat? ___
 N7 nemesis .............. elite: story? ___  ordinary/dungeon/fall nothing? ___  line when alive? ___  how many attacked you ______
 N7 meeting / fall ....... line on meeting? ___  fall seen? ___  who struck last ______  song in the songbook? ___  nothing in chat? ___
+N8 pet .................. call/dismiss? ___  mood? ___  bond (hours) ______  nothing on entering/after a flight? ___
+N8 grief ................ pet? ___  demon not dismissed? ___  dear NPC? ___  lament? ___  journal? ___
+N8 ally (#125) .......... line? ___  page with no name? ___  one per wipe? ___  feigned death/battleground nothing? ___
+N8 letters / options .... letter at login? ___  in the journal? ___  /reload nothing? ___  options off? ___  nothing in chat? ___
 L2 verses ............... one at a time? ___  too fast/slow? ___  wheel? ___  clicks pass? ___  history line breaks? ___
 L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  never: none? ___  nothing in chat? ___
 ```

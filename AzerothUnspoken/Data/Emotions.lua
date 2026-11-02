@@ -88,6 +88,11 @@ NS.Emotion:Register({
 		{ event = "relation_player", when = { relation = { "rival", "enemy", "wary", "disliked" } },
 			gain = { tense = 0.3, furious = 0.1 } },
 		{ event = "rezother", gain = { determined = 0.15, admiring = 0.1 } },
+		-- the companion pet and grief (N8, #220, #125)
+		{ event = "pet_bond", gain = { happy = 0.2, serene = 0.1 } },
+		{ event = "pet_grief", gain = { melancholic = 0.4, happy = -0.4, serene = -0.2 } },
+		{ event = "npc_grief", gain = { melancholic = 0.45, nostalgic = 0.2, happy = -0.5, serene = -0.2 } },
+		{ event = "ally_death", gain = { melancholic = 0.35, worried = 0.2, happy = -0.4 } },
 		-- weather
 		{ event = "weather_change", when = { weather = { "rain", "fog" } }, gain = { melancholic = 0.1, serene = -0.05 } },
 		{ event = "weather_change", when = { weather = "storm" }, gain = { tense = 0.15 } },

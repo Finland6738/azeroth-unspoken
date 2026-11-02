@@ -20,6 +20,11 @@ The addon keeps only **significant moments**, never chat text. For example:
 | **A nickname** | a close friend among the NPCs gave your character a nickname: the line shows it (see [[Relationships]]) |
 | **Guest-right broken** | you raised your hand against the innkeeper of your hearth, or under their roof (kept for good, the town only; see [[Relationships]]) |
 | **An honorary title** | a town gives you a title for the first time, such as *Friend of Goldshire* (kept for good; see [[Relationships]]) |
+| **A bond with a companion** | the bond with your pet becomes *trusted* or *beyond words* (kept for good; see [[Relationships]]) |
+| **A companion fallen** | your pet died |
+| **Mourning** | you found dead an NPC you were close to (kept for good) |
+| **A companion of the road lost** | a member of your group died beside you (no name is kept) |
+| **A letter** | an NPC you are close to wrote to you while you were away: the line is the letter (kept for good; never game mail) |
 | **A chat** | you finish an [[NPC ambient dialogue|NPC-Dialogues]] |
 
 It also remembers **places**: how many times you visited, when first and last, and whether the last visit ended badly.

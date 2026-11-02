@@ -101,4 +101,17 @@ AU:AddTexts("enUS", {
 	["versi.nemesis.song.03"] = {
 		"An old saying of the hill folk, half a song, for a foe that fell:\nEven the wolf the shepherd slew\nwas mourned by the hills it wandered through;\nthe hills take no side and they keep no score:\none wild voice the less, and nothing more.",
 	},
+
+	------------------------------------------------------------------------
+	-- Laments for a loss (N8): put in the songbook with a grief
+	------------------------------------------------------------------------
+	["versi.lament.ally.01"] = {
+		"A lament of those who travel in company, for one who did not rise:\nWe shared the fire, we shared the bread,\nwe shared the long road, mile on mile;\nnow one more name among the dead,\nand one less voice, and one less smile.",
+	},
+	["versi.lament.npc.01"] = {
+		"A mourning verse they say in small towns when a familiar face is gone:\nThe door still swings, the kettle sings,\nthe lamp is lit at dusk the same;\nbut no one answers when it rings,\nand no one calls me by my name.",
+	},
+	["versi.lament.pet.01"] = {
+		"A hunters' lament, said low over a fallen companion:\nYou ran ahead of me through every wood,\nyou never asked the reason or the road;\nlie easy now, old friend, where you have stood:\nthe weight of what comes after is my load.",
+	},
 }, "versi")

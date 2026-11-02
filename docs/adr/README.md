@@ -53,6 +53,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0043](0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md) | Literary metadata, the genre x situation matrix, interchangeable stanzas (the one exception to ADR 0001) and pieces in the archive | accepted |
 | [0044](0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md) | The songbook, recall and reading frames, and the culture of origin chosen by hand | accepted |
 | [0045](0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md) | Nemesis: arcs told for many NPCs, who killed the character, and the song of a fall | accepted |
+| [0046](0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md) | The companion pet, grief, the death of an ally, and letters in the journal | accepted |
 
 ## Pending decisions
 

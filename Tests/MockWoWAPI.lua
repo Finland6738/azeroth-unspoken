@@ -117,7 +117,9 @@ for _, e in ipairs({ "ADDON_LOADED", "PLAYER_LOGIN", "PLAYER_ENTERING_WORLD", "Z
 	"NAME_PLATE_UNIT_ADDED", "UPDATE_MOUSEOVER_UNIT",
 	-- attacks, kills and deaths without the combat log (N0, #212)
 	"PLAYER_ENTER_COMBAT", "UNIT_COMBAT", "UNIT_THREAT_LIST_UPDATE", "UNIT_THREAT_SITUATION_UPDATE", "UNIT_DIED",
-	"PARTY_KILL", "NAME_PLATE_UNIT_REMOVED" }) do
+	"PARTY_KILL", "NAME_PLATE_UNIT_REMOVED",
+	-- the companion pet (N8, #220)
+	"UNIT_PET", "UNIT_HAPPINESS" }) do
 	VALID_EVENTS[e] = true
 end
 C_EventUtils = { IsEventValid = function(e) return VALID_EVENTS[e] == true end }
@@ -236,6 +238,10 @@ function UnitThreatSituation(u, mob)
 	local t = Subject(mob)
 	return t and t.threat
 end
+-- (N8, #220) P.pet = { name, guid, family, dead }; P.petHappiness: C_PetInfo.GetPetHappiness's first value (nil: none, a demon);
+-- t.feign: a feigned death (UnitIsFeignDeath)
+C_PetInfo = { GetPetHappiness = function() if not P.pet then return nil end return P.petHappiness, 0, 0 end }
+function UnitIsFeignDeath(u) local t = Subject(u); return t and t.feign == true or false end
 function UnitIsTapDenied(u) local t = Subject(u); return t and t.tapDenied == true or false end
 function UnitIsQuestBoss(u) local t = Subject(u); return t and t.questBoss == true or false end
 function UnitPlayerControlled(u) local t = Subject(u); return t and (t.player or t.pet) == true or false end

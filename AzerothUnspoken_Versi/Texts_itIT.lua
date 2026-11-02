@@ -101,4 +101,17 @@ AU:AddTexts("itIT", {
 	["versi.nemesis.song.03"] = {
 		"Un vecchio detto della gente dei colli, quasi un canto, per un nemico caduto:\nAnche il lupo ucciso dal pastore\nl'han pianto i colli che ha percorso;\ni colli non tengono parti né rancore:\nuna voce selvaggia in meno, e nessun rimorso.",
 	},
+
+	------------------------------------------------------------------------
+	-- Laments for a loss (N8): put in the songbook with a grief
+	------------------------------------------------------------------------
+	["versi.lament.ally.01"] = {
+		"Un lamento di chi viaggia in compagnia, per chi non si è rialzato:\nDividemmo il fuoco, dividemmo il pane,\ne la lunga strada, miglio dopo miglio;\nora un nome in più fra le ombre lontane,\ne una voce in meno, e in meno un consiglio.",
+	},
+	["versi.lament.npc.01"] = {
+		"Un verso di lutto che si dice nei paesi quando un volto noto se ne va:\nLa porta cigola, il paiolo canta,\nal tramonto la lampada s'accende;\nma più nessuno risponde a chi bussa,\nné più il mio nome dalla soglia scende.",
+	},
+	["versi.lament.pet.01"] = {
+		"Un lamento dei cacciatori, detto piano su un compagno caduto:\nCorresti innanzi a me per ogni bosco,\nsenza chiedere mai strada o ragione;\nriposa adesso, amico, nel sottobosco:\nil peso del cammino è mia porzione.",
+	},
 }, "versi")

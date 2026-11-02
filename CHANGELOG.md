@@ -8,6 +8,58 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N8: the companion pet, grief, the death of an ally and letters (issues #220, #125)
+
+Step N8 of the NPC relationships milestone, with the ally's death of the analysis A2 (L11). A bond with the hunter's or
+warlock's pet; the narrator mourns once for the pet, an NPC the character was close to and a group member; close NPCs
+write letters to the journal. Owner decisions of 2026-11-01 (narration only, never chat, data-driven) and 2026-11-02
+(build on the API dump and ADR 0035 without in-game probes or a two-client group test);
+[ADR 0046](docs/adr/0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md). The pet, the deaths
+and the group are read from signals of the API dump, **not yet confirmed in game**; tested with the mock client only
+(what still needs the real client is section N8 of the [in-game checklist](docs/G1_checklist.md)).
+
+- **Added: the companion pet** (`Systems/Companion.lua`). The hunter's beast or the warlock's demon
+  (`UNIT_PET`, its name and family; never another class's pet, never a hidden identity) gets a record by its name, with
+  no GUID. The bond grows with the hours the pet is out: *a new companion*, *a familiar presence* (2 h), *a trusted
+  companion* (12 h), *a bond beyond words* (40 h); each step says a line (`pet_bond`), the last two leave a permanent
+  journal line. Calling and dismissing the pet (`pet_call`, `pet_dismiss`, at most once in 20 minutes each, never on
+  entering the world or on a flight) and a change of a hunter's pet's mood (`UNIT_HAPPINESS`, `C_PetInfo.GetPetHappiness`:
+  `pet_mood`, at most once in 15 minutes) bring a line. Option **Companion pet** (on).
+- **Added: grief.** The narrator mourns once per loss, in the inner voice, after the fight: the pet's death
+  (`pet_grief`: `UNIT_DIED` with its GUID, the pet dead on `UNIT_PET`, or a demon that vanished a second before its
+  death event), an NPC at Friend or above found dead or dying while targeted (`npc_grief`, never one with a grudge, not
+  again for 30 days, three a session), with a journal page each (*Fang fell*, *You mourned Bartleby*, kept for good).
+  A grief stirs melancholy, a new bond a little joy (`Data/Emotions.lua`).
+- **Added: the death of an ally (`ally_death`, #125).** `UNIT_DIED` compared with the GUIDs of the group (read on the
+  roster update, never a secret identity), verified on the same unit (`UnitIsDeadOrGhost`, never a feigned death), in
+  the open world, dungeons and raids (never battlegrounds or arenas): one lament per loss, five minutes between two (a
+  wipe is one), a quarter of an hour for the same member, six a session. The line may name the member and follow the
+  relation the user chose; the journal page (*A companion of the road fell*) keeps no name.
+- **Added: laments.** With a grief, a literary piece of the event `lament` whose condition `grief` holds goes into the
+  songbook (ids and times only) with a private notice, out of combat and unless the literary forms are *never*. Three
+  laments in the verses pack, English then Italian (a hunters' lament for a pet, a small-town mourning verse, a lament of
+  travelling companions), written through the authoring archive with metadata and editorial records; their three review
+  steps are the owner's.
+- **Added: letters.** At login (not a `/reload`), the closest NPC at Close friend or above not met for 21 days, never a
+  foe, writes a letter: a permanent journal line read in the user's language (an innkeeper's, a merchant's, a
+  trainer's or a friend's, three of each, English and Italian) and a private notice. One a login, one a week, the same
+  NPC every 60 days. Never game mail, never chat. Option **Letters** (on).
+- **Added: lines.** 23 intentions in `base_relations`, English and Italian, all in the inner voice, the griefs tagged
+  `topic:death` (base 1289, loaded 1296). Conditions `petMood`, `petStage`, `petKind`, `grief`; placeholder `{pet}`.
+- **Changed:** `relationships.version` **8** (`pets`, `letterT`, NPC `mourned` and `letter`; version 7 loads unchanged,
+  an older addon reads it only); `/au relationships reset npcs` clears the pets too. N1's `UNIT_DIED` source also tells
+  the new module, by GUID, never on the bus. `/au debug` has a line "Companion:". The relationships window has two more
+  options (16).
+- **Tests:** `Tests/TestCompanion.lua` (366 checks: the data, the private voices and the guards, the pet's call,
+  dismissal, mood and bond, who has no companion, the pet's grief once per death and the demon that vanishes, the NPC's
+  grief and who is not mourned, the ally's death verified and guarded (secret identity, secret GUID, feigned death,
+  roster changes, battlegrounds, quota, raid), the laments, the letters and their gaps, the saved data, no GUID and no
+  ally's name saved); `TestRelations`, `TestSchema`, `TestValidator`, `TestPlayers`, `TestHostility`,
+  `TestLocalReputation`, `TestConfig`, `check_archive.py` and `check_versi.py` follow the new version, lines and pieces.
+- **Docs:** ADR 0046 (and a note in ADR 0035), PACK_FORMAT (conditions, `{pet}`, the events), ARCHITECTURE, the wiki
+  pages Relationships, Memory and Journal, Literary Forms, Settings and Privacy and Data, checklist section N8 (IT/EN),
+  README (EN/IT), ROADMAP.
+
 ### N7: the nemesis and the songs of its fall (issue #219)
 
 Step N7 of the NPC relationships milestone. An elite or rare NPC that kills the character becomes a nemesis, with a

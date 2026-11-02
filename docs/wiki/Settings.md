@@ -174,6 +174,8 @@ The journal opens from the panel button **Character journal...** or `/au journal
 | Nicknames | on | relationships window | NPCs at Close friend or above give your character a nickname, which their lines use. Off: no new nicknames, and the lines stop using them. |
 | Eternal grudge | on | relationships window | A named NPC you attacked first stays Hated for ever. Off: the grudge holds about half a year after the last attack, then they may come round, very slowly. Narration only. |
 | Hostility notices | on | relationships window | A short private line after a fight you started with an NPC (a grudge, a kill, a betrayal seen, guest-right broken) and when you come back to your hearth's town after a long journey. Never in combat, never in chat. |
+| Companion pet | on | relationships window | Your hunter's or warlock's pet: a bond that grows with the hours together, a private thought when you call or dismiss it or its mood changes, and grief if it falls. Off, the bond is still counted. Narration only. |
+| Letters | on | relationships window | An NPC you are close to and have not met for weeks may write you a letter: it waits in the journal and is announced at login. Never game mail, never chat. |
 | Town notices | on | relationships window | A short private line when word of you has reached a newcomer in a town, when a town gives you an honorary title (Friend of Goldshire), or when an NPC notices you grew close to their rival. Rare, never in combat, never in chat. The word and the titles are kept either way. |
 
 The window opens from the panel button **Relationships...** or `/au relationships`. See [[Relationships]].

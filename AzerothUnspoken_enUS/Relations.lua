@@ -767,4 +767,97 @@ NS:AddTexts("enUS", {
 		"They have not forgotten me here, and I gave them reasons.",
 		{ "Every guard here knows my face.", depth = "natural" },
 	},
+	-- N8 (#220, #125): the companion pet ({pet}), grief for the pet, an NPC ({other}) and a group member ({other})
+	["rel.ally.fall"] = {
+		"{other} is down. I mark the place and keep going: the dead are owed that much, the living more.",
+		{ "{other}, down. Keep moving.", depth = "natural" },
+	},
+	["rel.ally.fall.deep"] = {
+		"One of us fell in the dark of this place. These stones keep a long count.",
+		"Another name for these halls to keep. I will carry it out of here, at least.",
+	},
+	["rel.ally.fall.friend"] = {
+		"Not {other}. We swore to watch each other's backs, and I looked away.",
+		"{other}, no. Get up. Please, get up.",
+	},
+	["rel.ally.fall.stranger"] = {
+		"I barely knew the sound of {other}'s name. The road will not let me forget it now.",
+		"{other} fought beside me for an hour, and fell beside me. That is a kind of kinship.",
+	},
+	["rel.grief.npc"] = {
+		"{other}. I knew that voice, that face. Now there is only stillness, and what I remember.",
+		{ "{other}... no.", depth = "natural" },
+	},
+	["rel.grief.npc.close"] = {
+		"Not {other}. Of all the faces on this road, not that one.",
+		"{other}. I kept meaning to come back sooner.",
+	},
+	["rel.grief.npc.innkeeper"] = {
+		"The hearth of {other} will burn for someone else now. I owe that fire more nights than I can count.",
+		"No more warm welcomes from {other}. The road just grew colder.",
+	},
+	["rel.grief.pet.beast"] = {
+		"{pet} lies still. I kneel, and the world goes on around us as if nothing had happened.",
+		{ "No. Not {pet}.", depth = "natural" },
+	},
+	["rel.grief.pet.bonded"] = {
+		"So many roads with {pet} at my heel. The silence where those steps were is the loudest thing here.",
+		"{pet} walked every road with me. This is the first I will walk alone.",
+	},
+	["rel.grief.pet.demon"] = {
+		"{pet} is gone, torn back into the dark. I should not miss a bound thing. I do, a little.",
+		"Bound or not, {pet} stood between me and harm. That counts for something.",
+	},
+	["rel.pet.bond.bonded"] = {
+		"{pet} and I. Two names, one road. I could no longer say which of us follows the other.",
+		"There is no word for what {pet} is to me now. Companion falls short.",
+	},
+	["rel.pet.bond.demon"] = {
+		"Even {pet} hesitates before mocking me now. From a demon, that is almost affection.",
+		"{pet} still calls me master with a curl of the lip. The curl is smaller lately.",
+	},
+	["rel.pet.bond.familiar"] = {
+		"{pet} no longer waits for the command. It already knows where I am going.",
+		"{pet} and I have found a rhythm. Neither of us needs to look back any more.",
+	},
+	["rel.pet.bond.trusted"] = {
+		"I sleep easier with {pet} on watch. When did that happen?",
+		"If {pet} stops, I stop. I have learned to trust what it hears before I do.",
+	},
+	["rel.pet.call.beast"] = {
+		"A whistle, and {pet} is at my side. Some things in this world still answer when called.",
+		{ "There you are, {pet}.", depth = "natural" },
+	},
+	["rel.pet.call.bonded"] = {
+		"{pet} again, and the road feels shorter. We have walked too far together to call it service.",
+		"{pet} falls in beside me without a sound, as if we had never parted.",
+	},
+	["rel.pet.call.demon"] = {
+		"The circle opens and {pet} steps out, already bored with me. A bargain is a bargain.",
+		{ "{pet}. A bond neither of us enjoys.", depth = "natural" },
+	},
+	["rel.pet.call.new"] = {
+		"{pet} watches me the way I watch {pet}. We are still learning each other's ways.",
+		"A new name to learn, {pet}. A new pace to match.",
+	},
+	["rel.pet.dismiss.beast"] = {
+		"{pet} slips off into the brush. The quiet it leaves behind is a little too wide.",
+		{ "Rest, {pet}.", depth = "natural" },
+	},
+	["rel.pet.dismiss.demon"] = {
+		"{pet} fades back to wherever it waits between summonings. I do not ask where.",
+		"{pet} goes with a last sneer. The air is lighter, and somehow emptier.",
+	},
+	["rel.pet.mood.content"] = {
+		"{pet} settles, calmer now. A full belly mends more than people think.",
+		"{pet} has stopped grumbling. Peace returns, one meal at a time.",
+	},
+	["rel.pet.mood.happy"] = {
+		"{pet} is in fine spirits. Hard to stay grim with that bounding along beside me.",
+		"{pet} seems almost proud of itself today. Fair enough: so am I.",
+	},
+	["rel.pet.mood.unhappy"] = {
+		"{pet} has gone sullen. Fed late and worked hard: I would sulk too.",
+		"{pet} gives me a look I know too well. I owe it something, and it knows.",
+	},
 }, "base_relations")

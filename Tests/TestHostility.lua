@@ -592,7 +592,7 @@ end)
 T.run("hostility: saved data (version 7) is cleaned, capped and reset", function()
 	Fresh()
 	local now = time()
-	T.eq(R.VERSION, 7, "relationships.version is 7")
+	T.eq(R.VERSION, 8, "relationships.version is 8 (N1 made it 7, N8 8)")
 	NS.cdb.relationships = { version = 6, npcs = {
 		[1] = { first = 1, last = 2, count = 1, trust = -90, foe = { t = now - DAY, n = 3, k = 1, host = true, first = now - 9 * DAY } },
 		[2] = { first = 1, last = 2, count = 1, foe = { t = now + 99 * DAY, n = -4, k = "x", host = "yes" } },
@@ -607,7 +607,7 @@ T.run("hostility: saved data (version 7) is cleaned, capped and reset", function
 		home = { npc = 1, town = "Fresh", inn = "Fresh Inn", t = now - DAY, seen = now + DAY } }
 	R:Sanitize()
 	local d = NS.cdb.relationships
-	T.eq(d.version, 7, "version 6 loads with no migration step")
+	T.eq(d.version, R.VERSION, "version 6 loads with no migration step")
 	local f1 = d.npcs[1].foe
 	T.ok(f1.n == 3 and f1.k == 1 and f1.host == true and f1.first == now - 9 * DAY, "a grudge kept")
 	local f2 = d.npcs[2].foe

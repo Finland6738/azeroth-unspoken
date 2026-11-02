@@ -28,7 +28,9 @@ AU:RegisterPack({
 	-- manual only: nothing in the game fires it, and chance 0 keeps the Director away from it
 	events = { lore_test = { category = "lore", chance = 0, cooldown = 0 },
 		-- N7 (#219): the songs of a nemesis's fall, chosen by Systems/Nemesis.lua (never spoken by the Director)
-		nemesis_song = { category = "lore", chance = 0, cooldown = 0 } },
+		nemesis_song = { category = "lore", chance = 0, cooldown = 0 },
+		-- N8 (#220, #125): the laments for a loss (the pet, an NPC, a group member), chosen by Systems/Companion.lua
+		lament = { category = "lore", chance = 0, cooldown = 0 } },
 	registry = {
 		------------------------------------------------------------------------
 		-- Inscriptions and solemn formulas: first visit to a ruin or a sacred place
@@ -140,5 +142,22 @@ AU:RegisterPack({
 			tags = { "lore", "genre_lament", "origin_spoken", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
 			genre = "verse", purpose = "mourn", origin = "common",
 			conditions = { combat = false, arc = { id = "nemesis" } } },
+
+		------------------------------------------------------------------------
+		-- Laments for a loss (N8, #220, #125): never spoken here; Systems/Companion.lua chooses one when the pet, an NPC
+		-- the character was close to or a group member dies, and puts it in the songbook (ids and times only)
+		------------------------------------------------------------------------
+		["versi.lament.ally.01"] = { event = "lament", category = "lore", speaker = "inner", styles = { "tragic", "epic" },
+			tags = { "lore", "genre_lament", "origin_sung", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
+			genre = "song", purpose = "mourn", origin = "common",
+			conditions = { combat = false, grief = "ally" } },
+		["versi.lament.npc.01"] = { event = "lament", category = "lore", speaker = "inner", styles = { "tragic", "intimate" },
+			tags = { "lore", "genre_lament", "origin_spoken", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
+			genre = "verse", purpose = "mourn", origin = "common",
+			conditions = { combat = false, grief = "npc" } },
+		["versi.lament.pet.01"] = { event = "lament", category = "lore", speaker = "inner", styles = { "tragic", "intimate" },
+			tags = { "lore", "genre_lament", "origin_spoken", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
+			genre = "verse", purpose = "mourn", origin = "common",
+			conditions = { combat = false, grief = "pet" } },
 	},
 })

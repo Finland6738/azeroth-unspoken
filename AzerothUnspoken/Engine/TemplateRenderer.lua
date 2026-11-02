@@ -6,7 +6,7 @@ local Score, WeightedPick, Remember, KeepFor = Engine.Score, Engine.WeightedPick
 -- {player} {target} {spell} {zone} {subzone} {level} {class} {race} {faction} {relation} (S6b: l'etichetta del rapporto)
 -- {other} {otherrole} {otherrace} {otherclass} {instance} {encounter} (S6c: interlocutore e luogo)
 -- {landmark} (R3: il punto di riferimento)   {nickname} (N5: the nickname an NPC gave the character)
--- {title} (N6: the honorary title held in the town)
+-- {title} (N6: the honorary title held in the town)   {pet} (N8: the companion pet's name)
 -- {g:maschile|femminile} (genere del personaggio)   {og:maschile|femminile} (genere dell'interlocutore, S8/#41)
 -- {line} (solo nelle cornici)   {nome_vocabolario}
 -- segnaposto -> campo del contesto. Il validatore usa questa tabella per riconoscere i segnaposto ammessi.
@@ -23,6 +23,8 @@ local BUILTIN = {
 	nickname = "relNick",
 	-- N6 (#218): the honorary title held in the town where the character stands ("Friend of Goldshire")
 	title = "townTitleName",
+	-- N8 (#220): the companion pet's name (the pet out now, or the one a line is about); without one, no line
+	pet = "petName",
 }
 Engine.PLACEHOLDERS = BUILTIN
 

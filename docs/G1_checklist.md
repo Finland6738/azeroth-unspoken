@@ -1241,6 +1241,46 @@ visto. Funzioni nuove per questa parte, tutte nel dump di Forever: `UNIT_THREAT_
     - **Cosa aspettarti:** con la nemesi spenta nessuna storia; riaccesa, di nuovo. Una quarta nemesi aspetta tra le
       storie che possono cominciare finché non ne sospendi una. Mai nulla in chat.
 
+## N8: il compagno animale, il lutto, la morte di un alleato e le lettere (aggiunto dalle issue #220 e #125)
+
+Solo narrazione: il famiglio e gli NPC si comportano come sempre, e nulla va in chat. Il famiglio, le morti e il gruppo
+si leggono dai segnali del dump di Forever, **non ancora confermati nel gioco** (il proprietario ha deciso di non
+aspettare le prove nel gioco né la prova con due client in gruppo): se un passo non va, apri una issue con quello che
+hai visto. Funzioni nuove per questa parte, tutte nel dump: `UNIT_PET`, `UNIT_HAPPINESS`, `C_PetInfo.GetPetHappiness`,
+`UnitIsDead`, `UnitIsDeadOrGhost`, `UnitIsFeignDeath`, `UNIT_DIED`, le unità `party1..4` e `raid1..40`, `C_Secrets`.
+Per i lamenti serve la cartella `AzerothUnspoken_Versi`. Provato solo con il client finto ([ADR 0046](adr/0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md)).
+
+- **N8.1 · Il famiglio.** Con un cacciatore (o uno stregone) congeda il famiglio, aspetta un po', richiamalo.
+    - **Cosa aspettarti:** ogni tanto una riga della voce interiore che lo nomina, al richiamo e al congedo; non di
+      nuovo per venti minuti; nessuna riga se il famiglio è già lì quando entri nel gioco o dopo un volo.
+    - **Cosa riportare:** `/au debug` (la riga «Companion:»): il nome del famiglio e le ore contate.
+- **N8.2 · L'umore.** Da cacciatore, lascia che il famiglio abbia fame finché non è scontento, poi dagli da mangiare.
+    - **Cosa aspettarti:** una riga quando l'umore cambia (al massimo una ogni quarto d'ora). Uno stregone non ne ha.
+- **N8.3 · Il legame.** Gioca un paio d'ore con il famiglio fuori.
+    - **Cosa aspettarti:** una riga *una presenza familiare*; dopo circa 12 ore *un compagno fidato*, scritto nel
+      diario («Il legame con <nome> è cresciuto: …»).
+- **N8.4 · Il lutto del famiglio.** Lascia morire il famiglio in uno scontro (o, da stregone, il demone).
+    - **Cosa aspettarti:** a fine scontro una riga che lo piange, una volta; nel diario «<nome> è caduto»; con i versi,
+      un avviso privato «Un lamento per chi hai perduto è nel tuo canzoniere: …». Rianimato e morto di nuovo, di nuovo.
+      Il demone che sparisce morendo non deve sembrare congedato.
+    - **Cosa riportare:** se manca il lutto, o se la morte del demone dà la riga del congedo.
+- **N8.5 · Un NPC caro.** Seleziona morto un NPC con cui sei almeno *Amico* (per esempio dopo un attacco dell'altra
+  fazione a un villaggio), o guardalo morire selezionato.
+    - **Cosa aspettarti:** una riga che lo nomina, una pagina «Hai pianto <nome>» nel diario; non di nuovo per un mese.
+      Un NPC neutrale o uno che hai attaccato: nulla.
+- **N8.6 · Un alleato (#125).** In gruppo con un altro giocatore, lascia che muoia accanto a te (meglio un amico che
+  si presta); poi prova con un cacciatore che finge la morte, e in un campo di battaglia.
+    - **Cosa aspettarti:** a fine scontro una riga che lo nomina, una pagina «Un compagno di strada è caduto» senza nome,
+      un lamento nel canzoniere; una sola per una disfatta di tutto il gruppo. Morte finta e campo di battaglia: nulla.
+    - **Cosa riportare:** se nulla arriva (`UNIT_DIED` per gli altri giocatori potrebbe non venire), se arriva per una
+      morte finta.
+- **N8.7 · Una lettera.** Con un NPC almeno *Grande amico* che non vedi da tre settimane (o cambia la data del PC
+  solo se sai farlo in sicurezza), entra nel gioco.
+    - **Cosa aspettarti:** dopo qualche secondo un avviso privato «Mentre eri via è arrivata una lettera per te, da
+      <nome>…»; nel diario la lettera intera. Mai posta del gioco. Un /reload non porta lettere.
+- **N8.8 · Le opzioni.** Nella finestra delle relazioni spegni **Compagno animale** e **Lettere**.
+    - **Cosa aspettarti:** nessuna riga sul famiglio (il legame si conta lo stesso), nessuna lettera. Mai nulla in chat.
+
 ---
 
 ## L2: versi su più righe, forme letterarie rare, lettura lunga (aggiunto dalle issue #117, #118 e #126)
@@ -1467,6 +1507,10 @@ N1 fazione/ospitalità ... città dell'altra fazione? ___  locandiere riconosciu
 N1 casa/opzioni ......... ritorno caldo/freddo? ___  rancore eterno spento: giorni? ___  avvisi spenti? ___  nulla in chat? ___
 N7 nemesi ............... élite: storia? ___  mostro normale/dungeon/caduta nulla? ___  riga al ritorno in vita? ___  quanti ti attaccavano ______
 N7 incontro/caduta ...... riga all'incontro? ___  caduta vista? ___  chi ha dato il colpo ______  canto nel canzoniere? ___  nulla in chat? ___
+N8 famiglio ............. richiamo/congedo? ___  umore? ___  legame (ore) ______  nulla all'ingresso/dopo un volo? ___
+N8 lutto ................ famiglio? ___  demone non congedato? ___  NPC caro? ___  lamento? ___  diario? ___
+N8 alleato (#125) ....... riga? ___  pagina senza nome? ___  una per disfatta? ___  morte finta/campo di battaglia nulla? ___
+N8 lettere/opzioni ...... lettera al login? ___  nel diario? ___  /reload nulla? ___  opzioni spente? ___  nulla in chat? ___
 L2 versi ................ uno alla volta? ___  troppo in fretta/piano? ___  rotellina? ___  clic passano? ___  cronologia a capo? ___
 L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: nessuno? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________

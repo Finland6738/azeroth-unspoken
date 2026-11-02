@@ -621,6 +621,10 @@ in the list, **they are all false** (except `isKnown = false`): a phrase that ci
 | `townBetrayed = true` | the town where the character stands remembers a betrayal (an attack on its own people that someone saw, or on the host of the hearth), until it fades. Not a relationship condition |
 | `townFoe = true` | the town or city where the character stands remembers them as a foe of the other faction. Not a relationship condition |
 | `homeReturn = true` | the character came back to the town of their hearth after a long journey, a few minutes ago. Not a relationship condition |
+| `petKind = "beast"` or `"demon"` | the companion pet (N8, #220) is a hunter's beast or a warlock's demon: the pet out now, or the one the line is about. Not a relationship condition |
+| `petStage = "familiar"` (or a list) | the bond with that pet: `new`, `familiar`, `trusted`, `bonded`, or a stage a pack registered in `companion.pet.stages` |
+| `petMood = "happy"`, `"content"` or `"unhappy"` (or a list) | that pet's mood (`C_PetInfo.GetPetHappiness`; hunters only: a demon has none) |
+| `grief = "pet"`, `"npc"` or `"ally"` (or a list) | the loss a grief or a lament is about (N8, #220, #125): the pet, an NPC the character was close to, a group member. Only the events `pet_grief`, `npc_grief`, `ally_death` and `lament` carry it |
 
 `feeling`, `relDaysSince`, `relMetHere` and `relShared` need a person in the list like the others, and count as a relationship condition for the validator. The last three are for **players** (they come from what the addon observed, `seen`); for an NPC they are false. `relMetLevels`, `relMetDays`, `relMetTime` and `relMetWeather` are for **NPCs** (the first meeting the addon kept, N2): for a player they are false, and an NPC met before version 3 of the relationships has only `relMetDays`. They count as relationship conditions too, as do `relPromiseDays`, `relOathbroken`, `relFavour` and `relNick` (for an NPC only).
 
@@ -1086,6 +1090,8 @@ nemesis = {
 ```
 
   Who can become a nemesis, where, and the gaps are data: `nemesis = { arc, classes, places, holderAge, linger, meetGap, song }` in `Data/Relationships.lua` (a pack can tune them with `NS:RegisterRelationData`). Meeting a nemesis again speaks the event `nemesis_meet` (rules with `arc = { id = "nemesis", state = … }`, `{other}` = its name; the addon decides when, never `/au event`). When one falls, a literary piece of the event `nemesis_song` (the verses pack: chance 0, never spoken) whose conditions hold for the story (`arc = { id = "nemesis", from = "HAUNTED" }`: the state it fell in) goes into the songbook.
+
+  **The companion pet, grief and letters** (N8, #220, #125, [ADR 0046](../docs/adr/0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md)) are told by `Systems/Companion.lua` on the events of `base_relations` `pet_call`, `pet_dismiss`, `pet_mood`, `pet_bond`, `pet_grief`, `npc_grief` and `ally_death`: each has a guard (the addon decides when, never `/au event`), and a pack may add lines to them, in the inner voice, with the conditions `petKind`, `petStage`, `petMood`, `grief` and `{pet}` (an NPC's or a group member's grief has the person as `{other}` and as the relationship's subject). With a grief, a literary piece of the event `lament` (the verses pack: chance 0, never spoken) whose `grief` condition holds goes into the songbook. The numbers and lists are `companion = { pet, grief, ally, lament, letters }` in `Data/Relationships.lua`.
 - **Slots**: at most 1–2 active arcs (`arcs.maxActive`, `/au stories max <1|2>`). If an opening event arrives when the slots are full, the arc stays "available" and the player starts it from the Journal.
 - **The player is in control.** Every arc can be **suspended**, **skipped** or **disabled**, one by one or all at once (`/au stories`, Journal); the `storyArcs` module turns everything off. A suspended or skipped arc can be resumed; a disabled one can be re-enabled.
 - **The ending** (`RESOLVED`) leaves a permanent memory in Living Memory (`kind = "story"`, tags `arc`, `done` and the arc id: no text). Every state reached sets the flag `arc_<id>_<state>` (lowercase), which phrases read with `remembered`.
@@ -1147,6 +1153,7 @@ registry = {
 | `{level}`, `{class}`, `{race}`, `{faction}`, `{targettype}` | in the chosen language |
 | `{relation}` | the label of the relationship with the person of the interaction (relationships, S6b) |
 | `{title}` | the honorary title held in the town where the character stands, "Friend of Goldshire" (N6, #218); a line with it is not composed elsewhere. Use it in private voices (`inner`) |
+| `{pet}` | the companion pet's name (N8, #220): the pet out now, or the one the line is about; a line with it is not composed without a pet |
 | `{other}`, `{otherrole}`, `{otherrace}`, `{otherclass}` | the interlocutor: name, role, race and class in the chosen language (or the custom race and class from Total RP 3) |
 | `{instance}`, `{encounter}` | the instance and the boss fight in progress or just finished |
 | `{g:masculine\|feminine}` | gender variant **of the character**: `{g:pronto\|pronta}` |
