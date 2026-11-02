@@ -185,7 +185,7 @@ def ensure_author(con, id, name=None, kind="ai", note=""):
 def insert_intention(con, id, pack_id, rule, state="approved", author=LEGACY, attribution="", invented_lore=False,
                      origin="folders"):
     """Inserts one intention from a normalized rule dict (see packfiles.rule_data)."""
-    pack = con.execute("SELECT region FROM pack WHERE id = ?", (pack_id,)).fetchone()
+    pack = con.execute("SELECT region, area FROM pack WHERE id = ?", (pack_id,)).fetchone()
     if pack is None:
         raise ArchiveError("unknown pack: %s" % pack_id)
     rule = dict(rule)
@@ -198,13 +198,13 @@ def insert_intention(con, id, pack_id, rule, state="approved", author=LEGACY, at
     con.execute(
         "INSERT INTO intention (id, pack_id, state, author_id, events, category, speaker, form, styles, depth, tags, theme,"
         " motifs, tier, kind, parts, part_order, chainable, genre, purpose, piece_origin, stanza_show, weight, cooldown,"
-        " conditions, extra, ctx, region, attribution, invented_lore, origin)"
-        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        " conditions, extra, ctx, region, area, attribution, invented_lore, origin)"
+        " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (id, pack_id, state, author, jdump(events), known["category"], known["speaker"], known["form"],
          jdump(known["styles"]), jdump(known["depth"]), jdump(known["tags"]), known["theme"], jdump(known["motifs"]),
          jdump(known["tier"]), known["kind"], jdump(known["parts"]), known["order"], jdump(known["chainable"]),
          known["genre"], known["purpose"], known["origin"], known["show"], known["weight"], known["cooldown"],
-         jdump(known["conditions"]), jdump(extra), ",".join(keys), pack["region"], attribution or "", int(bool(invented_lore)),
+         jdump(known["conditions"]), jdump(extra), ",".join(keys), pack["region"], pack["area"], attribution or "", int(bool(invented_lore)),
          origin))
 
 
@@ -394,7 +394,8 @@ def import_folders(con, root):
         parsed.append(sf)
     skipped_packs = {s["pack_id"] for s in skipped if s["pack_id"]}
     for sf in parsed:
-        con.execute("INSERT INTO pack VALUES (?,?,?,?,?)", (sf.pack_id, sf.pack_name or "", sf.region, jdump(sf.languages), sf.path))
+        con.execute("INSERT INTO pack VALUES (?,?,?,?,?,?)", (sf.pack_id, sf.pack_name or "", sf.region, sf.area,
+                                                              jdump(sf.languages), sf.path))
         _store_file(con, sf, sf.pack_id)
         for id, entry in sf.entries.items():
             if con.execute("SELECT 1 FROM intention WHERE id = ?", (id,)).fetchone():

@@ -1,13 +1,13 @@
 -- Regional pack Eastern Kingdoms, Elwynn Forest (the trial slice of #102: the abbey, the farms, the lakes, the mines
 -- and Goldshire). Written through the authoring archive (tools/archive, CONTRIBUTING.md); the texts are in
--- AzerothUnspoken_EasternKingdoms_enUS/Elwynn.lua and AzerothUnspoken_EasternKingdoms_itIT/Elwynn.lua. Loaded with
--- the rest of the region when the character enters it and dropped when the character leaves it (ADR 0025). Races,
--- classes, weather, the time of day and the moment are conditions inside the rules, never separate packs. Subzone
--- names are those of the English Classic client and are not yet confirmed in Forever (#36): a wrong name only keeps
--- a line silent.
+-- AzerothUnspoken_EasternKingdoms_enUS/Elwynn.lua and AzerothUnspoken_EasternKingdoms_itIT/Elwynn.lua. Built while the
+-- character is in the area "elwynnforest" (Elwynn Forest and Stormwind City) and dropped when it leaves it (ADR 0048);
+-- the folder is loaded with the region (ADR 0025). Races, classes, weather, the time of day and the moment are
+-- conditions inside the rules, never separate packs. Subzone names are those of the English Classic client and are not
+-- yet confirmed in Forever (#36): a wrong name only keeps a line silent.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalPack("eastern", function()
+AU:RegisterRegionalPack("elwynnforest", function()
 	return {
 		id = "eastern_elwynn",
 		name = "Eastern Kingdoms: Elwynn Forest",

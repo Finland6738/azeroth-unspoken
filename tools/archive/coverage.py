@@ -68,6 +68,7 @@ def compute(con, thresholds=None, state="approved"):
     res["variants"] = {lang: sum(n[lang] for n in nvar.values()) for lang in langs}
     res["by_state"] = {r["state"]: r["n"] for r in con.execute("SELECT state, COUNT(*) n FROM intention GROUP BY state")}
     res["by_region"] = by(lambda r: r["region"] or "(any place)")
+    res["by_area"] = by(lambda r: r["area"] or ("(the whole region)" if r["region"] else "(any place)"))
     res["by_voice"] = by(lambda r: r["speaker"] or "(none)")
     res["by_depth"] = by(lambda r: json.loads(r["depth"]) if r["depth"] else ["(all)"], many=True)
     res["by_register"] = by(lambda r: json.loads(r["styles"]) if r["styles"] else ["(none)"], many=True)
@@ -173,7 +174,7 @@ def to_markdown(res, top=25):
               "**%d** errors, %d warnings" % (st["arcs"], st["arc_steps"], ", ".join("%s %d" % kv for kv in st["arc_texts"].items()) or "none",
                                               st["scripts"], st["nodes"], st["replies"], len(st["errors"]), len(st["warnings"]))]
     lines += [""]
-    for title, key in (("By region", "by_region"), ("By voice", "by_voice"), ("By depth", "by_depth"),
+    for title, key in (("By region", "by_region"), ("By area", "by_area"), ("By voice", "by_voice"), ("By depth", "by_depth"),
                        ("By register", "by_register"), ("By pack", "by_pack")):
         lines += ["## " + title, ""]
         lines += _table(["", "intentions"] + ["texts " + l for l in langs],

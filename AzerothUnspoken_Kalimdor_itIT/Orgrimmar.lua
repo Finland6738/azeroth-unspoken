@@ -1,7 +1,7 @@
 -- Italian texts of the regional pack kalimdor_orgrimmar (#102). The rules are in AzerothUnspoken_Kalimdor/Orgrimmar.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("kalimdor", "itIT", "kalimdor_orgrimmar", function()
+AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_orgrimmar", function()
 	return {
 		["org.dawn.01"] = {
 			"guarda la prima luce dell'alba traboccare dall'orlo del canyon e scorrere giù per la pietra rossa.",

@@ -16,11 +16,13 @@ CREATE TABLE author (
     note TEXT NOT NULL DEFAULT ''
 );
 
--- a pack: one rules file and its texts in each language; `region` is the continent token of a regional pack
+-- a pack: one rules file and its texts in each language; `region` is the continent token of a regional pack and `area`
+-- the area its builder is keyed by (C0, ADR 0048: "durotar"; NULL for a pack built on the whole continent)
 CREATE TABLE pack (
     id         TEXT PRIMARY KEY,
     name       TEXT NOT NULL DEFAULT '',
     region     TEXT,
+    area       TEXT,
     languages  TEXT NOT NULL DEFAULT '[]',
     rules_path TEXT NOT NULL
 );
@@ -82,6 +84,7 @@ CREATE TABLE intention (
     extra         TEXT,                          -- JSON: rule fields the archive does not model
     ctx           TEXT NOT NULL DEFAULT '*',     -- selection-index keys (ADR 0024), '*' = generic; comma separated
     region        TEXT,                          -- the region of its pack (NULL = every place)
+    area          TEXT,                          -- the area of its pack (C0, ADR 0048; NULL = the whole region)
     attribution   TEXT NOT NULL DEFAULT '',      -- who says an invented legend (decision D7 in #130)
     invented_lore INTEGER NOT NULL DEFAULT 0 CHECK (invented_lore IN (0, 1)),
     origin        TEXT NOT NULL DEFAULT 'folders' CHECK (origin IN ('folders', 'overlay'))

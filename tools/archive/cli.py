@@ -7,7 +7,7 @@ Commands (see CONTRIBUTING.md, "Writing content through the archive"):
     build                 rebuild the database (build/authoring.sqlite) from the pack folders and the overlay
     stats                 counts by state and pack
     list [--state S]      list intentions (default: the drafts)
-    search [filters]      by --event, --tag, --theme, --motif, --region, --voice, --text, --pack, --state, --lang
+    search [filters]      by --event, --tag, --theme, --motif, --region, --area, --voice, --text, --pack, --state, --lang
     show ID               one intention with its texts, reviews and history
     drafts FILE.jsonl     add intentions as drafts, one JSON object per line
     submit|reject|approve|retire|restore ID...   move intentions along draft -> review -> approved -> retired
@@ -92,6 +92,9 @@ def query(con, a):
     if a.voice:
         where.append("i.speaker = ?")
         args.append(a.voice)
+    if getattr(a, "area", None):
+        where.append("i.area = ?")
+        args.append(a.area)
     if a.region:
         if a.region in ("any", "none"):
             where.append("i.region IS NULL")
@@ -338,6 +341,7 @@ def main(argv=None):
         p.add_argument("--genre", help="literary form (#119): verse, song, formula, epigraph, prose, tale")
         p.add_argument("--purpose", help="what a literary piece is for (#119)")
         p.add_argument("--region", help="continent token of the pack, or 'any' for content of every place")
+        p.add_argument("--area", help="area of the pack (ADR 0048: durotar, elwynnforest)")
         p.add_argument("--voice", choices=store.SPEAKERS)
         p.add_argument("--text", help="text contained in a variant")
         p.add_argument("--lang")
@@ -388,7 +392,7 @@ def main(argv=None):
     p.add_argument("--strict", action="store_true", help="exit 1 when a threshold is breached (not used in CI)")
     p.set_defaults(fn=cmd_report)
     a = ap.parse_args(argv)
-    for attr in ("state", "pack", "event", "tag", "register", "theme", "motif", "region", "voice", "text", "lang", "limit",
+    for attr in ("state", "pack", "event", "tag", "register", "theme", "motif", "region", "area", "voice", "text", "lang", "limit",
                  "genre", "purpose"):
         if not hasattr(a, attr):
             setattr(a, attr, None)

@@ -1,7 +1,8 @@
 """The pack folders as the archive sees them: discovery, reading and writing of the Lua data files.
 
 A *rules file* holds one `NS:RegisterPack({ ... registry = { ["id"] = { rule }, ... } })` (base) or one
-`AU:RegisterRegionalPack(region, function() return { ... } end)` (regional). A *texts file* holds one
+`AU:RegisterRegionalPack(key, function() return { ... } end)` (regional: the key is an area, "durotar", or the
+continent, ADR 0048). A *texts file* holds one
 `NS:AddTexts(lang, { ["id"] = { variants } }, packId)` or one `AU:RegisterRegionalTexts(region, lang, packId, function()
 return { ... } end)`. Everything else in the file (header comments, the pack's name, other calls) is kept verbatim.
 
@@ -53,6 +54,7 @@ class SourceFile:
         self.pack_name = None
         self.languages = []
         self.region = None
+        self.area = None          # the area key of a regional rules file (None: built on the whole continent)
         self.lang = None
         self.entries = {}         # id -> Entry (the entries of the chunks)
         self.part = 0             # the order of the table in its file (a file can hold several, see `link`)
@@ -148,6 +150,13 @@ def parse_rules(path, src, region=None):
     if not regional:
         raise Unsupported("no RegisterPack call")
     if region:
+        # C0 (ADR 0048): the key of the builder is the area, unless it is the continent itself
+        p.expect("(")
+        key = p.value()
+        if isinstance(key, str) and key != region:
+            area = key
+        else:
+            area = None
         if not p.skip_to("return"):
             raise Unsupported("no return in the regional builder")
     else:
@@ -156,6 +165,7 @@ def parse_rules(path, src, region=None):
     registry = None
     sf = SourceFile(path, "rules", "", "")
     sf.region = region
+    sf.area = area if region else None
     for f in pack.fields:
         if f.key == "registry" and isinstance(f.value, lualit.Table):
             registry = f.value

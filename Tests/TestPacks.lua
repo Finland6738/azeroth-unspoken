@@ -114,7 +114,7 @@ T.run("regional content appears and disappears with the zone", function()
 	T.ok(Engine.byId["zone.durotar.01"] ~= nil and #Engine.byId["zone.durotar.01"].text.en >= 1, "Durotar rebuilt with its texts")
 	T.eq(Engine.byId["zone.elwynn.01"], nil, "Elwynn dropped")
 	T.eq(#LOAD_CALLS, loads, "no new LoadAddOn: the folders are already loaded")
-	T.eq(Packs.stats.builds, builds + 1, "one build")
+	T.eq(Packs.stats.builds, builds + 2, "two builds: the continent and the area (C0)")
 	-- a place the addon does not know (no data, no map): what is built stays
 	P.mapID = nil
 	Travel("Nowhere Special")
@@ -187,7 +187,7 @@ T.run("/au packs shows the folders", function()
 	SlashCmdList.AZEROTHUNSPOKEN("packs")
 	T.ok(Printed("AzerothUnspoken_enUS"), "the English folder is listed")
 	T.ok(Printed("AzerothUnspoken_itIT"), "and the Italian one")
-	T.ok(Printed("region kalimdor"), "the region is shown")
+	T.ok(Printed("kalimdor/durotar"), "the region and the area are shown")
 end)
 
 T.run("a missing language folder: English instead, a clear message, no error", function()
@@ -317,6 +317,54 @@ T.run("an external regional pack declared in its .toc", function()
 	T.ok(Loaded("MyRegionPack") and Loaded("MyRegionPack_enUS"), "loaded with the region")
 	T.ok(Engine.byId["my.k.1"] ~= nil and Engine.VariantText(Engine.byId["my.k.1"].text.en[1]) == "Red earth.", "rule and text")
 	T.eq(type(Engine.byId["my.k.1"].text.en[1]), "string", "the text is compact (attributed to its rule's pack)")
+end)
+
+---------------------------------------------------------------------------
+-- C0 (ADR 0048): the area is the unit that is built and dropped
+---------------------------------------------------------------------------
+T.run("C0: only the area of the character is built; the continent pack stays on the continent", function()
+	Travel("Durotar")
+	T.eq(Packs.area, "durotar", "the area of Durotar")
+	T.ok(Engine.packs.kalimdor_durotar ~= nil and Engine.packs.kalimdor_orgrimmar ~= nil,
+		"Durotar and Orgrimmar are one area: both packs are built")
+	T.ok(Engine.packs.kalimdor_exploration ~= nil, "the pack of the whole continent is built too")
+	local loads = #LOAD_CALLS
+	Travel("The Barrens")
+	T.eq(Packs.region, "kalimdor", "still Kalimdor")
+	T.eq(Packs.area, "thebarrens", "another area")
+	T.eq(Engine.packs.kalimdor_durotar, nil, "the area left is dropped")
+	T.ok(not InIndex("kalimdor_durotar") and not InIndex("kalimdor_orgrimmar"), "nothing of it in the index")
+	T.ok(Engine.packs.kalimdor_exploration ~= nil, "the continent pack stays")
+	T.eq(#LOAD_CALLS, loads, "no LoadAddOn: the folders of the continent are already loaded")
+	T.ok(Packs.lastChange ~= nil and Packs.lastChange.key == "thebarrens" and Packs.lastChange.dropped == 1,
+		"the change is recorded for /au packs")
+	Travel("Orgrimmar")
+	T.eq(Packs.area, "durotar", "a capital is in the area of the zone around it")
+	T.ok(Engine.packs.kalimdor_orgrimmar ~= nil, "Orgrimmar is built again")
+	-- an instance or a zone outside the data keeps the area that is built
+	P.zone = nil
+	FIRE("ZONE_CHANGED_NEW_AREA")
+	T.eq(Packs.area, "durotar", "an unknown zone keeps the area")
+	Travel("Durotar")
+end)
+
+T.run("C0: a folder that holds only some areas is loaded only there", function()
+	ADD_ADDON("MyAreaPack", { meta = { ["X-AzerothUnspoken-Region"] = "kalimdor",
+		["X-AzerothUnspoken-Areas"] = "Mulgore, the barrens" }, load = function()
+		AzerothUnspoken:RegisterRegionalPack("thebarrens", function()
+			return { id = "my_barrens", registry = { ["my.b.1"] = { event = "zone", speaker = "inner", styles = { "ancient" },
+				conditions = { zone = "The Barrens" } } }, texts = { enUS = { ["my.b.1"] = "Dry grass." } } }
+		end)
+	end })
+	Packs:Discover()
+	T.ok(Packs.catalog.MyAreaPack.areas.mulgore and Packs.catalog.MyAreaPack.areas.thebarrens, "the areas of the metadata")
+	Travel("Durotar")
+	T.ok(not Loaded("MyAreaPack"), "not loaded in another area of the region")
+	Travel("The Barrens")
+	T.ok(Loaded("MyAreaPack"), "loaded in its area")
+	T.ok(Engine.byId["my.b.1"] ~= nil, "and built")
+	Travel("Durotar")
+	T.eq(Engine.byId["my.b.1"], nil, "dropped when the character leaves the area")
 end)
 
 T.run("subzone and world events never load a pack (R3, #94)", function()

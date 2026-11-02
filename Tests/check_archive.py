@@ -87,6 +87,11 @@ def roundtrip():
     check("func" in r["conditions"] and "$lua" in r["conditions"]["func"], "a condition with code is kept as raw text")
     check(con.execute("SELECT region FROM intention WHERE id = 'zone.durotar.01'").fetchone()[0] == "kalimdor",
           "a regional rule carries the region of its pack")
+    # C0 (ADR 0048): the area of the builder, none for a pack of the whole continent
+    areas = {r[0]: r[1] for r in con.execute("SELECT id, area FROM pack WHERE region IS NOT NULL")}
+    check(areas.get("kalimdor_orgrimmar") == "durotar" and areas.get("eastern_stormwind") == "elwynnforest"
+          and areas.get("kalimdor_exploration") is None,
+          "a regional pack carries its area (Orgrimmar is in the area of Durotar), a continent pack none")
     check(store.index_keys({"mood": "forest", "time": "dawn"}) == ["m:forest"] and
           store.index_keys({"race": ["Orc", "Troll"]}) == ["r:orc", "r:troll"] and
           store.index_keys({"chance": 50, "zone": "Durotar"}) == ["*"] and store.index_keys(None) == ["*"] and

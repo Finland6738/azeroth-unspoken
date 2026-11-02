@@ -4,10 +4,15 @@
 --   - the phrase texts live in one LoadOnDemand folder per language (AzerothUnspoken_enUS, AzerothUnspoken_itIT):
 --     at start-up only the folder of the chosen language is loaded, never the others;
 --   - a region (a continent) has a folder of rules (AzerothUnspoken_Kalimdor) and one folder of texts per language
---     (AzerothUnspoken_Kalimdor_enUS). They are loaded when the character enters the region and their rules leave the
---     engine's tables when the character leaves it. WoW cannot unload an addon: a regional folder registers builders
---     (functions that return its tables) and the builders run again on the way back. What stays in memory after
---     leaving is the code of the builders with its strings, not the tables built from them.
+--     (AzerothUnspoken_Kalimdor_enUS), loaded when the character enters the region. WoW cannot unload an addon: a
+--     regional folder registers builders (functions that return its tables), and the builders run when they are
+--     needed and again on the way back. What stays in memory after leaving is the code of the builders with its
+--     strings, not the tables built from them;
+--   - C0 (ADR 0048): a builder belongs to an AREA (a zone, or a capital with the zone around it: Durotar and
+--     Orgrimmar are the area "durotar", Systems/Place.lua) or to a whole continent. The area the character is in is
+--     built and every other area is dropped when the character changes zone, so only one area's tables are in memory.
+--     A folder may also hold only some areas (`## X-AzerothUnspoken-Areas: durotar, mulgore` in its .toc): it is then
+--     loaded only in those areas.
 -- Every load waits for the end of combat. Nothing here asks the user to choose a pack: races, classes, weather and
 -- situations are conditions inside the loaded content. Every client call goes through Compat (#82: not yet tested
 -- in the client) and a missing or broken folder is reported once, with a fallback, never as a Lua error.
@@ -19,6 +24,7 @@ NS.Packs = Packs
 -- metadata of the .toc that declare what a folder holds (also for external packs, see PACK_FORMAT.md)
 Packs.META_LANGUAGE = "X-AzerothUnspoken-Language"
 Packs.META_REGION = "X-AzerothUnspoken-Region"
+Packs.META_AREAS = "X-AzerothUnspoken-Areas"   -- C0: a regional folder that holds only these areas (comma-separated)
 Packs.MAX_ADDONS = 1000   -- addons listed at most when looking for packs
 
 -- The folders of the download. They are known even when the client cannot list addons or read their metadata.
@@ -37,6 +43,7 @@ Packs.BUILTIN = {
 ---@field name string folder (addon) name
 ---@field lang? string short language code of its phrase texts
 ---@field region? string region key (the continent token of ctx.place.continent)
+---@field areas? table<string, boolean> C0: the areas a regional folder holds (nil = every area of its region)
 ---@field builtin? boolean
 
 Packs.catalog = {}      -- [name] = AUPackFolder
@@ -44,12 +51,17 @@ Packs.status = {}       -- [name] = "loaded" | "failed"
 Packs.reason = {}       -- [name] = reason of the failure (the client's, or NO_API / ERROR)
 Packs.textLangs = {}    -- [lang] = true: the phrase texts of that language are in memory
 Packs.textLang = nil    -- language of the phrase texts loaded at start-up (nil until the language step ran)
-Packs.builders = {}     -- [region] = { rules = { fn, ... }, texts = { [lang] = { { fn =, pack = }, ... } } }
-Packs.active = {}       -- [region] = { ids = { pack id, ... }, langs = { [lang] = true } }: built regions
+-- [key] = { rules = { fn, ... }, texts = { [lang] = { { fn =, pack = }, ... } } }: the key is a region (a continent)
+-- or, C0, an area
+Packs.builders = {}
+Packs.active = {}       -- [key] = { ids = { pack id, ... }, langs = { [lang] = true } }: built regions and areas
 Packs.region = nil      -- region the character is in (nil = not known yet)
+Packs.area = nil        -- C0: area the character is in (nil = not known: what is built stays)
 Packs.waiting = nil     -- a step that waits for the end of combat: "language" | "region"
 Packs.pinned = false    -- ActivateAll: every region stays built (tests and tools)
 Packs.stats = { loads = 0, builds = 0, drops = 0, deferred = 0 }
+-- C0: the last change of area, for /au packs and /au prof: { key, ms (build), dropped, built, rules }
+Packs.lastChange = nil
 Packs.reported = {}     -- [message key .. name] = true: each problem is printed once per session
 Packs.attempts = {}     -- [name] = failed LoadAddOn calls this session (#166)
 Packs.empty = {}        -- [name] = true: the folder loaded but registered no content (#166)
@@ -96,8 +108,11 @@ function Packs:Discover()
 			if type(name) == "string" and name ~= ADDON and not catalog[name] then
 				local _, lang = Compat.Query("C_AddOns.GetAddOnMetadata", name, self.META_LANGUAGE)
 				local _, region = Compat.Query("C_AddOns.GetAddOnMetadata", name, self.META_REGION)
+				local _, areas = Compat.Query("C_AddOns.GetAddOnMetadata", name, self.META_AREAS)
 				lang, region = NS.Engine.LangCode(lang), RegionKey(region)
-				if lang or region then catalog[name] = { name = name, lang = lang, region = region } end
+				if lang or region then
+					catalog[name] = { name = name, lang = lang, region = region, areas = region and Packs.AreaSet(areas) }
+				end
 			end
 		end
 	end
@@ -105,11 +120,30 @@ function Packs:Discover()
 	return catalog
 end
 
--- folders of the catalog that match, in name order (deterministic): region nil = not regional
-local function Folders(region, lang)
+---The areas of a `## X-AzerothUnspoken-Areas` line as a set (nil when there is none: every area of the region).
+---@param v any "durotar, mulgore"
+---@return table<string, boolean>?
+function Packs.AreaSet(v)
+	if type(v) ~= "string" then return nil end
+	local set
+	for part in v:gmatch("[^,]+") do
+		local key = RegionKey(part)
+		if key then
+			set = set or {}
+			set[key] = true
+		end
+	end
+	return set
+end
+
+-- folders of the catalog that match, in name order (deterministic): region nil = not regional. C0: with `area`, a
+-- folder that holds only some areas matches only one of them; without, only the folders of the whole region
+local function Folders(region, lang, area)
 	local out = {}
 	for name, f in pairs(Packs.catalog) do
-		if f.region == region and f.lang == lang then table.insert(out, name) end
+		if f.region == region and f.lang == lang and (f.areas == nil or (area ~= nil and f.areas[area])) then
+			table.insert(out, name)
+		end
 	end
 	table.sort(out)
 	return out
@@ -394,8 +428,9 @@ local function Builders(region)
 end
 
 ---Registers the rules of a regional pack (called by the regional folder when it is loaded). The builder returns a
----v2 pack table (as for RegisterPack); it runs when the region is entered, and again after a return.
----@param region string region key (the continent token: "kalimdor", "eastern")
+---v2 pack table (as for RegisterPack); it runs when the area (or the region) is entered, and again after a return.
+---@param region string C0: an area key ("durotar", "elwynnforest": built only in that area) or a continent token
+---("kalimdor", "eastern": built anywhere on the continent, for the few lines that name places all over it)
 ---@param builder fun(): table
 function NS:RegisterRegionalPack(region, builder)
 	region = RegionKey(region)
@@ -430,6 +465,7 @@ function NS:RegisterRegionalTexts(region, lang, packId, builder)
 end
 
 function Packs:BuildRules(region, builder, a)
+	-- C0: the key is an area or a continent; the pack keeps it as its `region` (the validator and the tests read it)
 	local ok, pack = pcall(builder)
 	if not ok or type(pack) ~= "table" or type(pack.id) ~= "string" then
 		NS.Diagnostics:Error("packs", ("region %s: a rules builder failed: %s"):format(region, tostring(ok and "no pack id" or pack)))
@@ -475,43 +511,93 @@ function Packs:Drop(region)
 	self.stats.drops = self.stats.drops + 1
 end
 
----Enters a region: loads its folders (rules, then texts of the phrase language) and builds it.
+---Loads the folders of a region (rules, then texts of the phrase language): those of the whole region and, C0, those
+---that hold only the area. Once per session each: a folder loaded stays loaded.
 ---@param region string
-function Packs:Enter(region)
+---@param area? string
+function Packs:LoadFolders(region, area)
 	local lang = self:TextLang()
-	for _, name in ipairs(Folders(region, nil)) do
-		local ok, reason = self:Load(name)
-		if not ok and self:Exists(name) ~= false then self:Report("packs_region_failed", name, name, reason) end
+	for _, l in ipairs({ false, lang }) do
+		for _, name in ipairs(Folders(region, l or nil, area)) do
+			local ok, reason = self:Load(name)
+			-- a missing regional folder is not an error: the base content covers every place
+			if not ok and self:Exists(name) ~= false then self:Report("packs_region_failed", name, name, reason) end
+		end
 	end
-	for _, name in ipairs(Folders(region, lang)) do
-		local ok, reason = self:Load(name)
-		if not ok and self:Exists(name) ~= false then self:Report("packs_region_failed", name, name, reason) end
-	end
-	-- a missing regional folder is not an error: the base content covers every place
-	return self:Build(region, { [lang] = true })
 end
 
----Region of the character now: the continent of ctx.place (map first, then the places data). nil if unknown
----(an instance outside the data, a client without map APIs): then the regions stay as they are.
----@return string?
-function Packs:CurrentRegion()
+---Enters a region or an area: loads the folders and builds it (only what its builders hold).
+---@param key string a region or an area
+---@param region? string the region of the area (default: key itself is the region)
+---@param area? string
+function Packs:Enter(key, region, area)
+	self:LoadFolders(region or key, area)
+	return self:Build(key, { [self:TextLang()] = true })
+end
+
+---Region and area of the character now: the continent of ctx.place (map first, then the places data) and the area of
+---its zone (C0, Data/Places.lua). nil if unknown (an instance outside the data, a client without map APIs).
+---@return string? region
+---@return string? area
+function Packs:CurrentPlace()
 	if not NS.Place then return nil end
 	local ok, p = pcall(NS.Place.Read, NS.Place)
 	if not ok or type(p) ~= "table" then return nil end
-	return RegionKey(p.continent)
+	return RegionKey(p.continent), RegionKey(p.area)
 end
 
----Follows the character: the region it is in is built, the others are dropped. In combat it waits.
+---Region of the character now (see CurrentPlace).
+---@return string?
+function Packs:CurrentRegion()
+	return (self:CurrentPlace())
+end
+
+-- Clock in milliseconds for the timing of a change (the client's debugprofilestop through Compat, else os.clock)
+local function Clock()
+	local ms = Compat.SafeCall("debugprofilestop")
+	if type(ms) == "number" then return ms end
+	return os and os.clock and os.clock() * 1000 or 0
+end
+
+---Follows the character: the region it is in and, C0, the area of its zone are built; every other region and area is
+---dropped first, so a change never holds two areas at once. An unknown area (an instance, a zone outside the data)
+---keeps the area that is built, until the character leaves the region. In combat it waits.
 function Packs:Update()
 	if self.pinned or self.textLang == nil then return end
-	local region = self:CurrentRegion()
-	if region then self.region = region end
+	local region, area = self:CurrentPlace()
+	if region then
+		if region ~= self.region then self.area = nil end
+		self.region = region
+	end
+	if area and region then self.area = area end
 	if not self.region then return end
 	if InCombat() then return self:Defer("region") end
-	for r in pairs(self.active) do
-		if r ~= self.region then self:Drop(r) end
+	local want = { [self.region] = true }
+	if self.area then want[self.area] = true end
+	local dropped = 0
+	for key in pairs(self.active) do
+		if not want[key] then
+			self:Drop(key)
+			dropped = dropped + 1
+		end
 	end
-	if not self.active[self.region] then self:Enter(self.region) end
+	local t0, built = Clock(), 0
+	if not self.active[self.region] then
+		self:Enter(self.region, self.region, self.area)
+		built = built + 1
+	end
+	if self.area and not self.active[self.area] then
+		self:Enter(self.area, self.region, self.area)
+		built = built + 1
+	end
+	if built > 0 or dropped > 0 then
+		local rules = 0
+		for _, a in pairs(self.active) do
+			for _, id in ipairs(a.ids) do rules = rules + #NS.Engine:PackIds(id) end
+		end
+		self.lastChange = { key = self.area or self.region, ms = Clock() - t0, dropped = dropped, built = built,
+			rules = rules }
+	end
 end
 
 ---Builds every region in every language whose texts were registered (tests, tools such as the validator run offline):
@@ -559,8 +645,10 @@ end
 ---@return string[]
 function Packs:StatusLines()
 	local lines = {}
-	table.insert(lines, NS:L("packs_state", LangName(self:TextLang()), self.region or "-",
-		self.stats.loads, self.stats.builds, self.stats.drops, self.stats.deferred))
+	table.insert(lines, NS:L("packs_state", LangName(self:TextLang()), (self.region or "-") .. (self.area and
+		("/" .. self.area) or ""), self.stats.loads, self.stats.builds, self.stats.drops, self.stats.deferred))
+	local c = self.lastChange
+	if c then table.insert(lines, NS:L("packs_change", c.key, c.rules, ("%.0f"):format(c.ms))) end
 	for _, name in ipairs(NS.Engine.SortedKeys(self.catalog)) do
 		local f = self.catalog[name]
 		local state = self.status[name]
@@ -574,7 +662,8 @@ function Packs:StatusLines()
 		else
 			text = NS:L("packs_not_loaded")
 		end
-		local what = f.region and (f.region .. (f.lang and (" " .. f.lang) or "")) or (f.lang or "")
+		local what = f.region and (f.region .. (f.areas and (" " .. table.concat(NS.Engine.SortedKeys(f.areas), ","))
+			or "") .. (f.lang and (" " .. f.lang) or "")) or (f.lang or "")
 		table.insert(lines, ("%s [%s]: %s"):format(name, what, text))
 	end
 	return lines

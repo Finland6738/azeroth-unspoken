@@ -1,7 +1,7 @@
 -- Italian texts of the regional pack eastern_stormwind (#102). The rules are in AzerothUnspoken_EasternKingdoms/Stormwind.lua.
 local AU = AzerothUnspoken
 
-AU:RegisterRegionalTexts("eastern", "itIT", "eastern_stormwind", function()
+AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_stormwind", function()
 	return {
 		["sw.dawn"] = {
 			"L'alba su Roccavento. La prima campana, il primo carro, il primo litigio della giornata.",
