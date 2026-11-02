@@ -23,7 +23,7 @@ Not yet in the real client: so far it has been tested outside the game, against 
 No. It is fully offline. Every line was written by a person, and the addon only picks among them.
 
 **Does it slow the game down?**
-It is designed to be light: it listens to a few events and does little work. If you notice a slowdown, please report it.
+It is designed to be light: it listens to a few events and does little work. In tests outside the game, picking a line takes well under a millisecond with today's lines, and under 3 milliseconds almost always (95 times in 100) with 50,000 lines loaded; the addon then uses about 60 MB of memory (about 8 MB with today's lines). These numbers come from a simulated client: `/au prof` shows the real ones on your computer. If you notice a slowdown, please report it.
 
 ## Chat and other players
 
