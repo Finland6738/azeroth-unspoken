@@ -23,5 +23,7 @@ for _, id in ipairs(pieces) do
 	-- the same lists of variants (read only): a song of stanzas keeps its frame and its stanzas in their order
 	if twin then
 		for lang, list in pairs(p.text) do twin.text[lang] = list end
+		-- #122: trying a twin by hand notes its piece in the songbook, never the twin
+		twin.twinOf = id
 	end
 end

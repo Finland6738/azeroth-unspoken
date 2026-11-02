@@ -40,6 +40,24 @@ In the [[settings panel|Settings]] (General), the row **Literary forms** cycles 
 
 They never come during a fight, whatever the setting.
 
+## The songbook
+
+Every piece your character hears or reads goes in the **songbook**: the tab **Songbook** of the [[journal|Memory-and-Journal]], or `/au songbook`. It keeps **which** pieces and **when**, never their words: the words are read from the pack when you open a piece, so a piece whose pack you removed is listed by its name only, until you forget it. Open a piece to read it whole, and:
+
+- **Learn** it by heart, or mark it as a **Favourite**: it comes back to mind more often, and a favourite heads the list;
+- **Mute** it: it is never said again, anywhere, until you let it speak again;
+- **Forget** it (two clicks): it leaves the songbook and can be heard again.
+
+The songbook keeps at most about 300 pieces (well under 10 KB); when it is full the oldest pieces you only heard make room. `/au songbook list` prints it, `/au songbook reset` empties it. With the memory turned off nothing is noted.
+
+## A verse that comes back
+
+Some hours after you heard a piece, at a quiet moment (resting at an inn, a long ride, dusk, nightfall, a change of weather), it may **come back to mind**: a line such as *A tune I heard somewhere starts up again in my head:* and then its verses, in the inner voice. An inscription comes back as something read (*The words cut in that stone come back to me, letter by letter:*). Only a piece the songbook says you really heard can come back, never in a fight, never in chat, never with the inner voice turned off, and always as rare as the other pieces.
+
+## Your culture of origin
+
+In the [[character soul|Character-Soul-and-Total-RP-3]] you may choose the **culture of origin**: the people your character grew up among. Only your choice counts, never race or class: a human raised among the kaldorei can choose *Kaldorei*. A piece of that culture comes more often; a piece of another culture comes only from someone else's mouth (an innkeeper sings it), never as your character's own; with no culture chosen, only the pieces that belong to no culture are said.
+
 ## Turning them off
 
 Choose **Never** (above), or type `/au pack versi off` (and `/au pack versi on` to bring them back), or simply do not install the `AzerothUnspoken_Versi` folder.

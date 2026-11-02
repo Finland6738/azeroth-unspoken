@@ -84,6 +84,8 @@ Engine.index = {}       -- [evento][forma][chiave] = { frase, ... }: indice di s
 Engine.nextOrd = 0      -- ordine di registrazione dell'ultima frase
 Engine.byId = {}        -- [id frase] = frase
 Engine.frames = {}      -- [evento o "*"] = { cornice, ... }
+-- #123 (ADR 0044): the recall and reading frames, apart from the emote frames: { recall = { frame, ... }, reading = { ... } }
+Engine.loreFrames = { recall = {}, reading = {} }
 Engine.vocab = {}       -- [nome] = { voce, ... }
 Engine.events = {}      -- [evento] = { category, pack }
 Engine.loadIssues = {}  -- problemi emersi in caricamento, per il validatore
@@ -160,12 +162,16 @@ Engine.LITERARY_CATEGORY = "lore"
 -- Literary metadata (#119, #120, ADR 0043): closed vocabularies of `genre` and `purpose`, filled by Data/Themes.lua and
 -- by the packs (`literary = { genres = {}, purposes = {} }`), and the warnings of the validator: the genre x situation
 -- matrix and the words that ask a condition (`matrix`, `words`). `origin` is `common`, `personal` or
--- `culture:<people>`; CULTURES is the list of peoples the user can choose (#124): while it is empty any lower-case name
--- is accepted.
+-- `culture:<people>`; CULTURES is the list of peoples the user can choose (#124, ADR 0044, `literary.cultures`, in the
+-- order of CULTURE_ORDER): while it is empty any lower-case name is accepted. CULTURE_FACTORS weighs a `culture:` piece
+-- against the chosen culture (Systems/Personality.lua) and RECALL tunes the recall of a piece (Systems/Songbook.lua).
 Engine.GENRES = {}
 Engine.PURPOSES = {}
 Engine.ORIGINS = { common = true, personal = true }
 Engine.CULTURES = {}
+Engine.CULTURE_ORDER = {}
+Engine.CULTURE_FACTORS = { own = 1, heard = 1, other = 1 }
+Engine.RECALL = { moments = {}, minAge = 0, learned = 1, favourite = 1 }
 Engine.LITERARY_MATRIX = {}
 Engine.LITERARY_WORDS = {}
 -- genres whose words are fixed: no placeholder may change them (a song keeps its metre, a formula its words)
@@ -1116,6 +1122,14 @@ function Engine:AddFrame(pack, f)
 	table.insert(pack.frameList, f)
 	pack.langsUsed = pack.langsUsed or {}
 	for lang in pairs(f.text) do pack.langsUsed[lang] = true end
+	-- #123: a recall or reading frame (`mode`) never frames an emote: it brings back a literary piece in the inner voice
+	if f.mode ~= nil then
+		f.genres = f.genres and AsList(f.genres) or nil
+		f.genreSet = ToSet(f.genres)
+		local list = self.loreFrames[f.mode]
+		if list then table.insert(list, f) end
+		return
+	end
 	for _, ev in ipairs(AsList(f.event or "*")) do
 		self.frames[ev] = self.frames[ev] or {}
 		table.insert(self.frames[ev], f)
@@ -1212,6 +1226,31 @@ function NS:RegisterLiterary(def, packId)
 				row.pack = row.pack or packId
 				table.insert(list, row)
 			end
+		end
+	end
+	-- #124: the cultures the user may choose, in their order, and the factor of a `culture:` piece
+	local added = false
+	for _, c in ipairs(def.cultures or {}) do
+		if type(c) == "string" and c:find("^[a-z][a-z0-9_]*$") and not Engine.CULTURES[c] then
+			Engine.CULTURES[c] = true
+			table.insert(Engine.CULTURE_ORDER, c)
+			added = true
+		end
+	end
+	if added and NS.Personality and NS.Personality.CulturesChanged then NS.Personality:CulturesChanged() end
+	for _, key in ipairs({ "own", "heard", "other" }) do
+		local v = type(def.culture) == "table" and def.culture[key]
+		if type(v) == "number" and v >= 0 and v < math.huge then Engine.CULTURE_FACTORS[key] = v end
+	end
+	-- #122, #123: the recall of a piece the songbook confirms
+	if type(def.recall) == "table" then
+		local r = def.recall
+		for _, ev in ipairs(type(r.moments) == "table" and r.moments or {}) do
+			if type(ev) == "string" then table.insert(Engine.RECALL.moments, ev) end
+		end
+		for _, key in ipairs({ "minAge", "learned", "favourite" }) do
+			local v = r[key]
+			if type(v) == "number" and v >= 0 and v < math.huge then Engine.RECALL[key] = v end
 		end
 	end
 end
@@ -1379,6 +1418,7 @@ function Engine:DropPack(packId)
 		end
 	end
 	for _, list in pairs(self.frames) do Without(list, packId) end
+	for _, list in pairs(self.loreFrames) do Without(list, packId) end
 	for _, list in pairs(self.vocab) do Without(list, packId) end
 	for i = #self.loadIssues, 1, -1 do
 		if self.loadIssues[i].pack == packId then table.remove(self.loadIssues, i) end

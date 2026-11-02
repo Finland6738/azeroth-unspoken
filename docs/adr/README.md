@@ -51,6 +51,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0041](0041-hostility-grudges-betrayal-witnesses-and-guest-right.md) | Hostility: lasting grudges, betrayal, witnesses and guest-right | accepted |
 | [0042](0042-literary-forms-category-pacing-line-breaks-and-long-reading.md) | Literary forms: a category paced on its phrases, line breaks kept in private, long reading in the narrator | accepted |
 | [0043](0043-literary-metadata-genre-matrix-interchangeable-stanzas-and-pieces-in-the-archive.md) | Literary metadata, the genre x situation matrix, interchangeable stanzas (the one exception to ADR 0001) and pieces in the archive | accepted |
+| [0044](0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md) | The songbook, recall and reading frames, and the culture of origin chosen by hand | accepted |
 
 ## Pending decisions
 

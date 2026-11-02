@@ -159,7 +159,11 @@ function NS:BuildContext(extra)
 	if self.db then ctx.depth, ctx.intensity = self.db.proseDepth, self.db.intensity end
 	-- il carattere: solo i tratti impostati (scelta > Total RP 3 > dati di gioco); vuoto = profilo neutro. Una
 	-- tabella condivisa e in sola lettura: la leggono le condizioni, il fattore P e il StyleResolver (Systems/Personality.lua)
-	if self.Personality then ctx.soul = self.Personality:Effective() end
+	if self.Personality then
+		ctx.soul = self.Personality:Effective()
+		-- #124 (D17): the culture of origin the user chose by hand, never deduced from race or class; nil when not chosen
+		ctx.culture = self.Personality:Culture()
+	end
 	-- lo stato emotivo (R4, Systems/Emotion.lua): emozioni sopra la soglia e la dominante; nil se il modulo è spento
 	if self.Emotion then ctx.emotion = self.Emotion:Context() end
 

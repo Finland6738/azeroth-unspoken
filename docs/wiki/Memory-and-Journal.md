@@ -43,6 +43,7 @@ Open it with `/au journal` or the **Character journal...** button in the [[setti
 | **Flags** | narrative flags (small markers set by stories, dialogues or you) |
 | **Session** | the moments of this session only; forgotten when you log out |
 | **Stories** | your [[personal stories|Story-Arcs]] |
+| **Songbook** | the verses, songs and inscriptions your character heard or read (see [[Literary Forms|Literary-Forms]]): open one to read it whole, learn it by heart, mark it as a favourite, mute it or forget it |
 | **Relationships** and **People met** | a view of your [[relationships|Relationships]] |
 
 The tabs sit under the short introduction, however many lines it takes at your text size. They are as wide as their names and take a second line when they do not fit. The open tab has a full gold edge and a bar under its name, so it does not depend on colour alone. A tab's note, such as *"This session only"*, sits on its own line under the tabs. A row too long for the window is cut: point at it to read it whole in a tooltip.

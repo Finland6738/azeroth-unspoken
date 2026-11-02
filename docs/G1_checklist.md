@@ -1262,6 +1262,29 @@ Serve la cartella `AzerothUnspoken_Versi`. Se un passo non va, apri una issue co
 - **L3.3 · In un lungo viaggio.** Cavalca o vola per qualche minuto con **Forme letterarie** su *normali*.
     - **Cosa aspettarti:** ogni tanto la canzone da cammino alla fine del viaggio, mai in combattimento, mai in chat.
 
+## L4: il canzoniere, un verso che torna, la cultura d'origine (aggiunto dalle issue #122, #123 e #124)
+
+Provato solo con il client finto ([ADR 0044](adr/0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md)): il proprietario ha deciso di non fermarsi per le prove nel gioco.
+Serve la cartella `AzerothUnspoken_Versi`. Se un passo non va, apri una issue con quello che hai visto.
+
+- **L4.1 · Il canzoniere.** `/au event lore_test` due o tre volte, poi `/au songbook`.
+    - **Cosa aspettarti:** il diario si apre su **Canzoniere** con i pezzi appena sentiti, per la loro prima riga, il più
+      recente in alto; *Apri* mostra tutto il testo, un verso per riga, e *Impara*, *Preferito*, *Zittisci*, *Dimentica*.
+    - **Cosa riportare:** un pezzo che manca dall'elenco, un testo tagliato o rovinato, una scheda o un pulsante la cui
+      scritta non ci sta.
+- **L4.2 · Zittire.** Zittisci un pezzo, poi `/au event lore_test` molte volte.
+    - **Cosa aspettarti:** quel pezzo mai più, finché non gli ridai voce.
+    - **Cosa riportare:** un pezzo zittito che torna.
+- **L4.3 · Un verso che torna.** Con pezzi sentiti almeno sei ore prima (di gioco o no), riposa in una locanda o fai un
+  lungo viaggio con **Forme letterarie** su *normali*.
+    - **Cosa aspettarti:** ogni tanto una riga come *Un motivo sentito chissà dove mi riprende in testa:* e i versi di un
+      pezzo già sentito, nella voce interiore, solo nel narratore, mai in combattimento, mai in chat.
+    - **Cosa riportare:** il ricordo di un pezzo mai sentito, l'attribuzione del pezzo ancora lì, un ricordo in chat.
+- **L4.4 · La cultura d'origine.** `/au soul`, la riga **Cultura d'origine**: clicca per scorrere le culture, poi **x**.
+    - **Cosa aspettarti:** il pulsante largo quanto il nome più lungo, in italiano e in inglese; all'inizio nessuna
+      scelta, qualunque sia la razza; `/au soul list` mostra la scelta.
+    - **Cosa riportare:** un nome tagliato, una cultura scelta da sola.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)

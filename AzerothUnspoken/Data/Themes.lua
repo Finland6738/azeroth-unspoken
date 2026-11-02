@@ -53,6 +53,9 @@ NS:RegisterPack({
 	events = {
 		rezother = { fallback = "heal" },
 		threat = { fallback = "battle" },
+		-- #122, #123 (ADR 0044): a piece the songbook says was heard comes back as a memory, in a recall or reading frame.
+		-- The Director offers it with the quiet moments of `literary.recall.moments`; it is a literary form (category lore)
+		lore_recall = { category = "lore", chance = 30, cooldown = 1800 },
 	},
 	-- categories with their own pacing (#118, ADR 0042): the literary forms (verses, songs, inscriptions, tales) are
 	-- rare. At intensity 50 at most one in 25 minutes and a pause of 20 minutes; at any intensity never two within ten
@@ -141,5 +144,17 @@ NS:RegisterPack({
 				it = { "fede", "fedele", "preghiera", "preghiere", "santo", "santa" },
 				needs = { "event=pray", "tag=topic:religion", "tag=faith:devout", "place.tags=sacred" } },
 		},
+		-- #124 (D17, ADR 0044): the cultures of origin the user may choose in the character soul, by hand, never deduced
+		-- from race or class (a human raised among the kaldorei chooses kaldorei). A piece `culture:<people>` names one of
+		-- them. `culture` is the factor of such a piece: `own` when it is the chosen culture, `heard` for another
+		-- culture in a voice that is not the character's (an NPC sings it, the narrator reads it), `other` for another
+		-- culture in the first person (the inner voice, the character). No culture chosen: no `culture:` piece at all
+		cultures = { "human", "dwarf", "gnome", "kaldorei", "queldorei", "orc", "troll", "tauren", "forsaken" },
+		culture = { own = 1.4, heard = 0.8, other = 0 },
+		-- #122, #123 (ADR 0044): the recall of a piece the songbook confirms. `moments`: the events with which the
+		-- Director offers `lore_recall`; `minAge`: seconds since the piece was heard before it may come back; `learned`
+		-- and `favourite`: weights of a piece learned by heart or marked by the user
+		recall = { moments = { "rest_enter", "journey", "dusk", "night", "weather_change" }, minAge = 21600, learned = 1.5,
+			favourite = 2 },
 	},
 })

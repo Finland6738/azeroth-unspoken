@@ -8,6 +8,50 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### L4: the songbook, a verse that comes back, the culture of origin (issues #122, #123, #124)
+
+Step L4 of the literary forms milestone. The character now keeps the pieces it heard, a piece can come back as a
+memory with the same text, and the user chooses the culture the character grew up in. Owner decisions D16, D17 and D19
+of #130; [ADR 0044](docs/adr/0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md). Tested with the
+mock client only (the owner chose to skip the in-game gates); what still needs the real client is in section L4 of the
+[in-game checklist](docs/G1_checklist.md).
+
+- **Added: the songbook** (#122, `Systems/Songbook.lua`). `cdb.songbook = { version, heard, learned, muted, favourite }`,
+  each a map from a piece id to a time: **never a text** (D19). Per character, at most 300 ids and about 10 KB (the
+  oldest pieces only heard go first; the user's marks stay), with its version, migration, `Sanitize` and read-only data
+  from a newer version. Every literary piece shown is noted (a `lore_test` twin notes its piece); with the memory off
+  nothing is. `Songbook:Add(id, "heard" | "learned")` for other systems (N7: the song of a nemesis's fall).
+- **Added: the Journal tab Songbook.** The pieces by their first line, favourites first; a piece opens with its whole
+  text read from the loaded pack (a song of stanzas with every stanza) and **Learn**, **Favourite**, **Mute**,
+  **Forget** (two clicks). A piece whose pack is not loaded is listed by its id. A **muted** piece is never chosen
+  again, by any event. `/au songbook [list / reset]`. English and Italian.
+- **Added: recall and reading frames** (#123). Frames with `mode = "recall" | "reading"`, `genres` and `styles`, apart
+  from the emote frames; six in `Data/Frames.lua`, first person, English and Italian. The event `lore_recall` brings
+  back a piece the songbook confirms (heard at least six hours before, not muted, out of its cooldown), in the inner
+  voice and with its own id: the frame takes the place of the piece's first line, the attribution, and the verses
+  follow. A guard keeps it silent otherwise; never in combat, never with the literary forms set to *never* or the
+  inner voice off, never in chat (D16). The Director offers it with the quiet moments (resting, a journey, dusk, night,
+  a change of weather), only when the songbook has a candidate; a favourite or learned piece comes back more often.
+  Validator: `loreFrameMode`, `loreFrameEvent`, `loreFrameGenre`, `loreFrameLine`, `recallLength` (errors),
+  `recallFrame` (warning).
+- **Added: the culture of origin** (#124, D17). A row **Culture of origin** in the character soul (a button as wide as
+  the longest culture name, measured, and an `x`) and `/au soul culture <culture / ->`: chosen by hand, never from race
+  or class, never from Total RP 3 or an archetype; the neutral profile clears it. Cultures in data
+  (`literary.cultures`: human, dwarf, gnome, kaldorei, queldorei, orc, troll, tauren, forsaken); a `culture:<people>`
+  origin must name one. A `culture:` piece weighs x1.4 in the chosen culture, x0.8 for another culture heard from
+  someone else, 0 for another culture in the first person, and is never said with no culture chosen (only `common` and
+  `personal` pieces). `ctx.culture` and the condition `culture`. The archive checks the declared cultures too.
+- **Changed:** the Journal has one more tab (in the mock's measures the tabs take one more line, so a page of the
+  session holds a row less); the soul window has one more row.
+- **Tests:** `Tests/TestSongbook.lua` (240 checks: no text saved, the bounds and the saved size, Sanitize, migration and
+  newer versions, mute, the guard of `lore_recall`, one id as a song and a memory, recall and reading frames, the
+  Director's companions, the validator, the three cases of the culture factor and the unset culture, the Journal tab,
+  the culture button); `Tests/check_archive.py` (declared cultures); `TestSoul`, `TestMemory`, `TestLiteraryMeta`
+  follow the new row, tab and cultures.
+- **Docs:** ADR 0044, PACK_FORMAT (cultures, the songbook and recall frames, validator codes), CONTRIBUTING (the
+  attribution line and culture pieces), ARCHITECTURE, the wiki pages Literary Forms, Memory and Journal, Character Soul
+  and Total RP 3, Commands, Privacy and Data, checklist section L4 (IT/EN).
+
 ### L3: literary metadata, the right moment, songs of stanzas, pieces in the archive (issues #119, #120, #127, #128)
 
 Step L3 of the literary forms milestone. A literary piece now says what it is, what it is for and whose it is; the

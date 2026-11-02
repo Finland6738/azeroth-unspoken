@@ -435,6 +435,27 @@ the mock client only ([ADR 0043](adr/0043-literary-metadata-genre-matrix-interch
 - **L3.3 · On a long ride.** Ride or fly for a few minutes with **Literary forms** on *normal*. **Expect:** now and then
   the walking song at the end of the ride, never in combat, never in chat.
 
+## L4: the songbook, a verse that comes back, the culture of origin (issues #122, #123 and #124)
+
+English counterpart of the section **L4** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Tested with
+the mock client only ([ADR 0044](adr/0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md)): the owner
+chose not to stop for in-game tests. It needs the `AzerothUnspoken_Versi` folder.
+
+- **L4.1 · The songbook.** `/au event lore_test` two or three times, then `/au songbook`. **Expect:** the journal opens
+  on **Songbook** with the pieces just heard, by their first line, the newest first; *Open* shows the whole text, one
+  verse per row, and *Learn*, *Favourite*, *Mute*, *Forget*. **Report:** a piece missing from the list, a cut or
+  garbled text, a tab or a button whose label does not fit.
+- **L4.2 · Mute.** Mute a piece, then `/au event lore_test` many times. **Expect:** that piece never again, until it is
+  unmuted. **Report:** a muted piece that comes back.
+- **L4.3 · A verse comes back.** With pieces heard at least six hours (of play or not) before, rest in an inn or ride a
+  long way with **Literary forms** on *normal*. **Expect:** now and then a line like *A tune I heard somewhere starts up
+  again in my head:* and the verses of a piece heard before, in the inner voice, in the narrator only, never in combat,
+  never in chat. **Report:** a recall of a piece never heard, the attribution of the piece still there, a recall in
+  chat.
+- **L4.4 · The culture of origin.** `/au soul`, the row **Culture of origin**: click through the cultures, then **x**.
+  **Expect:** the button as wide as the longest name, in English and in Italian; nothing chosen at first, whatever the
+  race; `/au soul list` shows the choice. **Report:** a name cut, a culture chosen by itself.
+
 ## Summary form (copy and fill in)
 
 ```

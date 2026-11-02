@@ -32,8 +32,9 @@ Open it with `/au soul` or the **Character soul...** button in the [[settings pa
 - pick an **archetype** (click to go to the next one);
 - drag the **slider** of each trait (the value is saved when you let go), click its **-** and **+** (steps of 5) or turn the mouse wheel over it, or click **x** to clear it;
 - set the **inner voice**;
+- choose the **culture of origin** (click to go through them, **x** to clear it): the people your character grew up among. Only your choice counts, never race or class. It changes which [[verses and songs|Literary-Forms]] come: those of your culture more often, those of another only from someone else's mouth; with none chosen, only the pieces that belong to no culture;
 - tick topics to avoid (an avoided topic has a full gold edge and a bar under its name);
-- reset to a **neutral profile**: it removes every choice of the character (archetype, traits, inner voice, topics to avoid), so it asks twice. The button has the red outline of the actions that lose data; the first click turns it into **Click again: neutral profile**, and a second click within a few seconds confirms. Closing the window cancels;
+- reset to a **neutral profile**: it removes every choice of the character (archetype, traits, inner voice, topics to avoid, culture of origin), so it asks twice. The button has the red outline of the actions that lose data; the first click turns it into **Click again: neutral profile**, and a second click within a few seconds confirms. Closing the window cancels;
 - turn on **Traits from Total RP 3** (only if Total RP 3 is installed).
 
 Next to each trait, the window shows its value (for the two-sided traits, which side: *cynical*, *balanced*, *idealist*...) and where it comes from: *chosen* (by you), *Total RP 3*, *game* (a hint from game data) or *neutral*.
@@ -117,6 +118,7 @@ The narrator lets the mood **colour the lines**, without naming it: after a deat
 | `/au soul <trait> -` | removes your choice (also `none`) |
 | `/au soul avoid <topic>` | adds a topic to avoid, or removes it if already there |
 | `/au soul avoid -` | clears all topics to avoid |
+| `/au soul culture <culture>` | chooses the culture of origin: `human`, `dwarf`, `gnome`, `kaldorei`, `queldorei`, `orc`, `troll`, `tauren`, `forsaken`; `-` clears it, with no word it shows it |
 | `/au soul neutral` (`neutro`, `reset`) | clears every choice |
 | `/au soul trp3 on\|off` | reads traits from your own Total RP 3 profile (see below) |
 

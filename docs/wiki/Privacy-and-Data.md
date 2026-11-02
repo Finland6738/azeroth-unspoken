@@ -24,9 +24,10 @@ The game saves addon data in its own saved-data folder (see [below](#where-the-f
 **For each character** (`AzerothUnspokenCharacterDB.lua`):
 
 - the list of lines recently used, so the narrator does not repeat itself;
-- your character's [[personality|Character-Soul-and-Total-RP-3]]: the intensity of each trait you set (a number from 0 to 100), the archetype it started from and, if you had chosen a personality in an earlier version, those old choices as plain words ("stoic", "devout");
+- your character's [[personality|Character-Soul-and-Total-RP-3]]: the intensity of each trait you set (a number from 0 to 100), the culture of origin you chose (a word such as `dwarf`), the archetype it started from and, if you had chosen a personality in an earlier version, those old choices as plain words ("stoic", "devout");
 - **only if emotions are on**: the slow, strong part of your character's [[mood|Character-Soul-and-Total-RP-3#emotions]] (resolve, serenity, nostalgia, melancholy), each as **a number and the time** it was recorded. Never what caused it, never any text. Fast emotions (tension, anger, worry...) are never saved. Turning emotions off clears it;
 - the [[journal|Memory-and-Journal]]: significant moments, places visited, flags;
+- the **songbook** of the [[literary forms|Literary-Forms]]: which verses and songs your character heard and when, and which ones you marked (learned, favourite, muted), as **names of pieces and times only**, never their words; at most about 300, under 10 KB;
 - the [[relationships|Relationships]]: the NPCs you dealt with (and the quests you promised them, by number only; the favor one of them asked and the nickname one gave, by their number in the list; the towns where you met them, with what the word of you there adds up to and any honorary title, as numbers and place names; the grudge of an NPC you attacked, as times and counts; the innkeeper of your hearth, by number, with their town and inn; what a town remembers of a betrayal or a foe, as times) and, **only for players you chose**, their name with the notes, tags, labels and feelings you wrote, kept apart from what the addon observed about them (how many times you met, of which kind, where and when: never what was said);
 - the state of your [[personal stories|Story-Arcs]].
 

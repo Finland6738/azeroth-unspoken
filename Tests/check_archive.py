@@ -564,6 +564,9 @@ def literary_content():
           "the facts of a rule, as the validator reads them")
     check(literary.origin_problem("culture:dwarf") is None and literary.origin_problem("race:orc") and
           literary.origin_problem("culture:Orc"), "origin: common, personal or culture:<people> (D17)")
+    cultures = literary.data(ROOT).get("cultures") or []
+    check("dwarf" in cultures and literary.origin_problem("culture:dwarf", cultures) is None and
+          literary.origin_problem("culture:atlantean", cultures), "#124: only a declared culture, read from Data/Themes.lua")
 
     tmp = tempfile.mkdtemp(prefix="au-archive-lit-")
     try:

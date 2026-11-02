@@ -957,6 +957,8 @@ function Gateway:Narrate(event, ctx, opts)
 	local rec = self:PickRecord(event, ctx, opts and opts.form)
 	if not rec then return false end
 	local shown = self:Propose(rec, ctx, opts)
+	-- #122: a literary piece shown goes in the songbook (its id and the time, never its text)
+	if shown and NS.Songbook then NS.Diagnostics:Guard("songbook", NS.Songbook.NoteShown, NS.Songbook, rec) end
 	-- una frase chiesta dal giocatore apre il "momento" del pacing: nessuna frase spontanea subito dopo
 	if shown and not (opts and opts.auto) and NS.Pacing then
 		NS.Pacing:Note(GetTime(), NS.Engine.EventCategory(event))

@@ -31,6 +31,7 @@ Every command of Azeroth Unspoken. Type them in the chat box, like any other sla
 | `/au soul` | your character's personality |
 | `/au emotion` | your character's mood |
 | `/au journal` | your character's journal |
+| `/au songbook` | the verses and songs your character heard |
 | `/au relationships` | your relationships |
 | `/au stories` | your personal stories |
 | `/au talk` | the ambient dialogue with an NPC |
@@ -137,6 +138,7 @@ Anything you write after the command is used as the target, for example `/au gre
 | `/au soul trp3 on\|off` | Uses the public traits of your own Total RP 3 profile where you made no choice. Off by default. |
 | `/au soul <trait> <value>` | Sets a trait to a number from 0 to 100 (or `low`, `mid`, `high`). Traits: `idealism`, `concreteness`, `optimism`, `altruism`, `stoicism`, `ambition`, `spirituality`, `patriotism`, `curiosity`, `vengefulness`, `irony`; `voice` (inner voice: `off`, `quiet`, `present`, `vivid`). Use `-` (or `none`) as the value to remove a choice. With no value, shows the current one. The old words still work as shortcuts: `/au soul temperament stoic`, `/au soul faith devout` set the matching intensities. |
 | `/au soul avoid <topic>` | Adds or removes a topic to avoid: `death`, `blood`, `betrayal`, `family`, `religion`, `undead`, `demons`, `romance`. `/au soul avoid -` clears them all. |
+| `/au soul culture <culture>` | Chooses the culture of origin, by hand (never from race or class): `human`, `dwarf`, `gnome`, `kaldorei`, `queldorei`, `orc`, `troll`, `tauren`, `forsaken`. `-` clears it; with no word, shows it. |
 | `/au emotion` | Shows your character's mood: the emotions, the strongest one, what last changed it, what is saved. |
 | `/au emotion off` · `/au emotion on` | Switches emotions off (the narrator as before, the saved mood cleared) or on. Same as the **Emotions** module. |
 | `/au emotion reset` | Clears the current mood. |
@@ -156,6 +158,9 @@ See [[Character Soul and Total RP 3|Character-Soul-and-Total-RP-3]] for every va
 | `/au journal delete <n>` | Deletes memory number `n`. |
 | `/au journal forget <place>` | Forgets a place: next time it is a first visit again. |
 | `/au journal reset [what]` | Erases memory. `what` is `all` (default), `memories`, `ordinary`, `places` or `flags`. Asks you to repeat the command within 15 seconds to confirm. |
+| `/au songbook` | Opens the journal on the **Songbook** tab: the verses, songs and inscriptions your character heard or read. |
+| `/au songbook list` | Prints the songbook. |
+| `/au songbook reset` | Empties the songbook. |
 | `/au memory` | Clears the list of **lines already used**, so they can come up again soon. It does **not** touch the journal. No confirmation. |
 
 See [[Memory and Journal|Memory-and-Journal]].
