@@ -263,17 +263,21 @@ local function BuildPeople()
 		local y = TOP_PEOPLE - (i - 1) * ROW_H
 		local row = {}
 		row.text = Line(Text(frame, "GameFontHighlight", 20, y - 6, 600))
+		-- a row is a suggested person, or (#112) a question about a listed person's identity: + says yes, x says no
 		row.add = W.FlatButton(frame, "+", 28, 24, function()
-			if row.cand then RelationsFrame:AddPlayer(row.cand.key) end
+			if not row.cand then return end
+			if row.cand.kind then RelationsFrame:AnswerIdentity(row.cand.key, true) else RelationsFrame:AddPlayer(row.cand.key) end
 		end)
 		row.add:SetPoint("TOPLEFT", 644, y)
-		W.Tooltip(row.add, function() return NS:L("rel_cand_add_tip") end)
+		W.Tooltip(row.add, function()
+			return NS:L(row.cand and row.cand.kind and ("rel_id_accept_" .. row.cand.kind .. "_tip") or "rel_cand_add_tip")
+		end)
 		row.dismiss = W.FlatButton(frame, "x", 28, 24, function()
-			if row.cand then R:Dismiss(row.cand.key) end
+			if row.cand and row.cand.kind then R:KeepIdentity(row.cand.key) elseif row.cand then R:Dismiss(row.cand.key) end
 			RelationsFrame:Refresh()
 		end)
 		row.dismiss:SetPoint("TOPLEFT", 676, y)
-		W.Tooltip(row.dismiss, function() return NS:L("rel_cand_dismiss_tip") end)
+		W.Tooltip(row.dismiss, function() return NS:L(row.cand and row.cand.kind and "rel_id_keep_tip" or "rel_cand_dismiss_tip") end)
 		candRows[i] = row
 	end
 end
@@ -421,7 +425,7 @@ local OPTIONS = {
 	{ "favours", "rel_opt_favours" }, { "nicknames", "rel_opt_nicknames" },
 	{ "localNotices", "rel_opt_local" },
 	{ "eternalGrudge", "rel_opt_grudge" }, { "hostilityNotices", "rel_opt_hostility" },
-	{ "companion", "rel_opt_companion" }, { "letters", "rel_opt_letters" },
+	{ "companion", "rel_opt_companion" }, { "letters", "rel_opt_letters" }, { "guidAid", "rel_opt_guid" },
 }
 
 -- the options have a view of their own (#172): two columns of buttons, then the privacy note and, while the shared list
@@ -600,7 +604,9 @@ local function RefreshPeople()
 	frame.addLabel:SetText(NS:L("rel_add_player"))
 	Fit(frame.addBtn, NS:L("rel_add_btn"), 130, 220)
 	frame.peopleNote:SetText(NS:L("rel_people_note"))
-	local list = R:Candidates()
+	-- the questions about identity (#112) come first: the user is asked, and nothing changes until they answer
+	local list = R:IdentityList()
+	for _, c in ipairs(R:Candidates()) do table.insert(list, c) end
 	local pages = math.max(1, math.ceil(#list / PAGE))
 	view.page = math.max(1, math.min(pages, view.page))
 	for i = 1, PAGE do
@@ -610,7 +616,9 @@ local function RefreshPeople()
 		row.text:SetShown(item ~= nil or (i == 1 and #list == 0))
 		row.add:SetShown(item ~= nil)
 		row.dismiss:SetShown(item ~= nil)
-		if item then
+		if item and item.kind then
+			row.text:SetText(item.kind == "renamed" and NS:L("rel_id_renamed", item.key, item.newKey) or NS:L("rel_id_guid", item.key))
+		elseif item then
 			row.text:SetText(("%s  %s"):format(item.key, Muted(NS:L("rel_src_" .. item.source))))
 		elseif i == 1 then
 			row.text:SetText(Muted(NS:L("rel_no_candidates")))
@@ -753,7 +761,7 @@ local function RefreshTabs()
 	local x = 16
 	for _, t in ipairs({
 		{ frame.tabList, NS:L("rel_tab"), onList },
-		{ frame.tabPeople, NS:L("rel_tab_people") .. " (" .. R:Stats().candidates .. ")", onPeople },
+		{ frame.tabPeople, NS:L("rel_tab_people") .. " (" .. (R:Stats().candidates + R:Stats().identity) .. ")", onPeople },
 		{ frame.tabOptions, NS:L("rel_tab_options"), onOptions },
 	}) do
 		local w = Fit(t[1], t[2], 110, 240)
@@ -829,6 +837,18 @@ function RelationsFrame:AddPlayer(name)
 	end
 	NS:Print(NS:L(why == "exists" and "rel_exists" or "rel_add_failed", name, NS:L("rel_why_" .. tostring(why))))
 	return false
+end
+
+---The user answers a question about a person's identity (#112) with a click: yes changes the record, no leaves it.
+function RelationsFrame:AnswerIdentity(key, yes)
+	if yes then
+		local ok, why = R:AcceptIdentity(key)
+		NS:Print(ok and NS:L("rel_id_accepted", key) or NS:L("rel_id_failed", key, NS:L("rel_id_why_" .. tostring(why))))
+	else
+		R:KeepIdentity(key)
+	end
+	self:Refresh()
+	return true
 end
 
 function RelationsFrame:RemoveSubject()
@@ -913,6 +933,16 @@ if NS.JournalFrame then
 	end })
 	NS.JournalFrame:RegisterTab("people", { label = "rel_tab_people", note = "rel_people_note", rows = function()
 		local out = {}
+		for _, it in ipairs(R:IdentityList()) do
+			local key = it.key
+			table.insert(out, {
+				text = it.kind == "renamed" and NS:L("rel_id_renamed", key, it.newKey) or NS:L("rel_id_guid", key),
+				actions = {
+					{ label = NS:L("act_add"), tip = NS:L("rel_id_accept_" .. it.kind .. "_tip"), fn = function() RelationsFrame:AnswerIdentity(key, true) end },
+					{ label = NS:L("act_dismiss"), tip = NS:L("rel_id_keep_tip"), fn = function() RelationsFrame:AnswerIdentity(key, false) end },
+				},
+			})
+		end
 		for _, c in ipairs(R:Candidates()) do
 			local key = c.key
 			table.insert(out, {

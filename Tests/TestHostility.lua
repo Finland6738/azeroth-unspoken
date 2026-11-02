@@ -592,7 +592,7 @@ end)
 T.run("hostility: saved data (version 7) is cleaned, capped and reset", function()
 	Fresh()
 	local now = time()
-	T.eq(R.VERSION, 8, "relationships.version is 8 (N1 made it 7, N8 8)")
+	T.eq(R.VERSION, 9, "relationships.version is 9 (#112 made it 9; N1 made it 7, N8 8)")
 	NS.cdb.relationships = { version = 6, npcs = {
 		[1] = { first = 1, last = 2, count = 1, trust = -90, foe = { t = now - DAY, n = 3, k = 1, host = true, first = now - 9 * DAY } },
 		[2] = { first = 1, last = 2, count = 1, foe = { t = now + 99 * DAY, n = -4, k = "x", host = "yes" } },

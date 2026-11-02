@@ -282,6 +282,26 @@ How it works:
 - **Way back:** before turning it off, `/au relationships share copy` copies the shared choices into this character, so it keeps them. If you turn it off without copying, the shared list stays in the account, unused, and comes back if you turn it on again.
 - **Removing** a person while sharing is on removes them from the account's list, for all your characters, and every other character drops what it had noted about them only through the list when it next logs in. `/au relationships reset players` clears only this character's list; `/au relationships reset shared` clears the account's.
 
+## Same name, new character; same person, new name (identity code)
+
+A person in your list is found by **name and realm**. A character deleted and recreated with the same name, or a rename, can fool that. So, for people **already in your list**, the addon also keeps the **identity code** the game gives a player (a `GUID`), read when they are in your group or your target. It is **never shown, exported or sent**: it lives only in your saved data, for that character, and is not shared with the account.
+
+It is used to **ask you**, never to decide:
+
+- **Same name, different code:** "this looks like a different character from the one you noted: is it the same person?" **+** remembers the new code; **x** leaves everything as it was and does not ask again this session. If it is another person, use **Forget the observations** on them.
+- **Same code, new name:** "Aldric may now be called Aldrik: merge them?" **+** moves the record to the new name with everything in it (your choices, what the addon saw, the shared record too); **x** leaves things as they are. A name that is already in your list refuses the merge.
+
+The questions are in the **People** tab (they come first), in `/au relationships identity` and in a private line when they first appear; answer with **+** and **x** or with `/au relationships identity accept <name>` and `keep <name>`. They are never saved and never change by themselves.
+
+What it never does:
+
+- it **never changes or merges anything on its own** and never writes your choices;
+- it **keeps nothing about strangers**: a stranger's code is only compared in memory with the codes of people in your list;
+- it **does not read a code the game hides** (secret identities), and treats a missing or odd code as unknown: the name keeps working as before;
+- it **stops by itself for the session** if codes change too often (three mismatches), since whether they are stable in game is **not yet confirmed**.
+
+Turn it off with **Identity code** in the Options tab or `/au relationships guid off` (`on` turns it back on); `/au relationships guid clear` forgets every stored code. Removing a person, **Forget the observations** and **Forget everything** drop it too.
+
 ## Greetings, farewells and duels follow the relationship
 
 What your character says to someone fits what you feel about them. Warm lines ("old friends around the fire", "so good to see you", "good to run into you again") are **never** used for a person you marked as an **enemy**, **disliked**, **distrusted** (wary) or **feared one**; they get their own greetings and farewells, cold, guarded or tense. A **duel** request is answered differently for a friend (playful), a respected rival (a long-awaited match), an enemy (no words left), a distrusted or feared person (an inner warning) and someone you do not know (the usual banter).
@@ -361,6 +381,8 @@ The list, People met and Options tabs also have **Export** (text to copy, in a w
 | `/au relationships proximity on\|off` | recognise known players by nameplate and mouseover (this session only); `on` asks for a confirmation (repeat after a couple of seconds) |
 | `/au relationships share [on\|off\|all\|copy]` | the list shared by your characters: `on` shows the warning, repeat after a couple of seconds (within 30 s) to turn it on; `all` moves this character's choices into it; `copy` copies the shared choices into this character; no word shows whether it is on |
 | `/au relationships scope <name> shared\|character` | whose choices count for one player |
+| `/au relationships identity [accept <name>\|keep <name>]` | the questions about a changed name or a new character with a known name; `accept` or `keep` answers one |
+| `/au relationships guid on\|off\|clear` | the identity code: on or off (on by default); `clear` forgets every stored code |
 | `/au relationships reset [all\|npcs\|players\|shared]` | erases relationships (`shared`: the account's list); repeat within 15 s to confirm |
 
 Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, as shown by `/au relationships list`. The axis names are always the English ones: `familiarity`, `trust`, `respect`, `affection`, `fear`, `loyalty`, `attraction`.
@@ -387,6 +409,7 @@ Names can be `Name` or `Name-Realm`. NPCs are written `npc:` plus their number, 
 - A favor keeps which favor it is, when it was asked and until when, and the zone or map it is about; a nickname keeps only its number in the list. The NPC also counts the quests you handed to them and the favors you did for them.
 - Everything stays on your computer, per character, unless you turn on **Share with the account**: then your choices (not the observations) are kept in the account's file. Erase it with **Forget everything**, `/au relationships reset` or `/au relationships reset shared`.
 - **Recognise nearby** writes nothing, never adds a person and never reads a hidden identity.
+- For people in your list the addon keeps the **identity code** the game gives a player, only in this character's saved data: never shown, exported, sent or shared with the account. It only lets the addon ask you whether a known name is a new character or a known person has a new name; it changes nothing by itself and keeps no code of a stranger.
 - A nemesis keeps only its NPC number, its name, the state of its story and the times, with the other stories; nothing of a fight is saved.
 - A pet keeps its name, its family, the hours together, its bond and how many times it died; an NPC keeps when you last mourned them and when they last wrote. A letter in the journal keeps only the writer's number and which letter it is. Nothing of a group member is saved: the journal page of their loss has no name.
 
@@ -404,6 +427,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Recognise on target | off | Options tab |
 | Recognise nearby | off | Options tab, `/au relationships proximity` |
 | Share with the account | off | Options tab, `/au relationships share` |
+| Identity code | on | Options tab, `/au relationships guid` |
 | Level notices | on | Options tab |
 | Promise notices | on | Options tab |
 | Favors | on | Options tab |
