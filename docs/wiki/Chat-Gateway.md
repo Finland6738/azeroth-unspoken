@@ -177,6 +177,26 @@ If you try to send too fast, you see *"too fast: wait a few seconds before sendi
 - After a send: the line in the box is marked *"sent to /say"* (or the channel), and your character's message appears in chat like any other.
 - In automatic mode: the occasional emote sent by itself, also marked *"sent to"* in the box.
 
+![Illustrative mockup: a line proposed for chat](../design/mockups/png/proposal.png)
+
+*Illustrative mockup, not an in-game screenshot: a line proposed for /say: the channel chip, then Discard, Another, Edit, To chat and Send.*
+
+![Illustrative mockup: the proposal in the editor](../design/mockups/png/proposal-editor.png)
+
+*Illustrative mockup, not an in-game screenshot: Edit opens the line in an editor before it is sent.*
+
+![Illustrative mockup: a proposal after it was sent](../design/mockups/png/proposal-sent.png)
+
+*Illustrative mockup, not an in-game screenshot: after Send the label says where the line went.*
+
+![Illustrative mockup: the speak button and its tooltips](../design/mockups/png/speak-button.png)
+
+*Illustrative mockup, not an in-game screenshot: the speak button in private mode, with a proposal waiting, and with the editor option.*
+
+![Illustrative mockup: the confirmation for automatic sending](../design/mockups/png/consent-auto.png)
+
+*Illustrative mockup, not an in-game screenshot: automatic sending is turned on only through this dialog; its button waits two seconds.*
+
 ## Tips
 
 - If you are unsure, stay in **private** mode for a few sessions to get to know the lines, then try **confirm**.

@@ -15,6 +15,7 @@ The documentation describes only what exists on `main` or is planned in [ROADMAP
 |---|---|
 | [README.md](../README.md) (English) · [README.it.md](../README.it.md) (Italian) | what it does, requirements, installation, first start, commands, settings, privacy, Total RP 3 |
 | [wiki/](wiki/Home.md) → [GitHub wiki](https://github.com/Finland6738/azeroth-unspoken/wiki) | the player's manual, in English: one page per feature, every command and setting, privacy, troubleshooting, FAQ, glossary, bug reports and feedback. `docs/wiki/` is its only source; `tools/sync_wiki.py` publishes it |
+| [design/mockups/](design/mockups/README.md) | illustrative mockups of every window (HTML, PNG, the interface tour GIF), built from the code, and how to rebuild them; the UI review is [design/UI_REVIEW.md](design/UI_REVIEW.md) |
 | [G1_checklist.md](G1_checklist.md) (in Italian) | checklist for testing the addon in the real client (spikes SP-01…SP-05, and the R0 measurements and API probe) |
 | [G1_checklist.en.md](G1_checklist.en.md) | the English counterpart of the R sections of the checklist (R0 measurements with `/au prof` and API probe with `/au probe`, R1, R3a, R3b, R4b, R4b2, R4, R3c), in English |
 | [CHANGELOG.md](../CHANGELOG.md) | notable changes by version |

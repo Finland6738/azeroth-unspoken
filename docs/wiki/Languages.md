@@ -38,6 +38,22 @@ Until you reload, the lines keep coming in the previous language. Nothing reload
 
 If the folder of the chosen language is missing, the addon says so once in the chat and keeps the lines in English (see [[Troubleshooting]]).
 
+![Illustrative mockup: the first-run guide in Italian](../design/mockups/png/wizard-1-it.png)
+
+*Illustrative mockup, not an in-game screenshot: the guide in Italian.*
+
+![Illustrative mockup: the narrator box in Italian](../design/mockups/png/narrator-it.png)
+
+*Illustrative mockup, not an in-game screenshot: a proposal in Italian.*
+
+![Illustrative mockup: a long reading in Italian](../design/mockups/png/narrator-reading-it.png)
+
+*Illustrative mockup, not an in-game screenshot: an inscription read in Italian.*
+
+![Illustrative mockup: the reload dialog after a change of language](../design/mockups/png/consent-reload.png)
+
+*Illustrative mockup, not an in-game screenshot: after a change of language, a dialog offers to reload the interface.*
+
 ## Gender in Italian
 
 Italian agrees participles and adjectives with the speaker. The lines use your character's gender (the game's, or the one Total RP 3 gives) wherever the character talks about themself, and the gender of the person in front of you where the line is about them. When the addon does not know someone's gender (a creature, a target you have not looked at, an NPC the game does not describe), the line uses a form that needs no agreement, or another line is chosen. English lines never need this.

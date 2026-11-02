@@ -8,6 +8,33 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### U2: interface mockups in the wiki and a tour GIF in the README
+
+The last step of the development the owner asked for on 2026-11-02: show the interface. **Every image is an
+illustrative mockup built from the addon code, not an in-game screenshot**: nothing has been tested in the real client
+yet. No Blizzard art, icon, font or screenshot is used (the rules of the UI review, #195).
+
+- **Changed: the mockups of `docs/design/mockups/`** brought up to date with `main` (81 pages and their PNG files): the
+  narrator's long private reading (lines revealed one at a time, at most twelve lines, then scrolling), a verse in the
+  history, a larger text size, private notices (a level reached, a letter, a song); the journal's Songbook tab and a
+  piece, the nemesis stories, letters, griefs and companions among the memories; the Relationships window with its
+  seventeen options, "What the addon knows" of an NPC (level, temperament, first meeting, nickname, favor, town and
+  title), a Hated NPC (eternal grudge, the mark of a broken oath, a title withheld) and the identity questions of People
+  met; the "Literary forms" row of the settings; the culture of origin in the Character soul window. The lines are real
+  lines of the database and of the verses pack.
+- **Changed: `/au help` and `/au debug` in the mockups are captured from the addon** (`tools/chat_capture.py`, the
+  offline runtime of the tests), so they cannot disagree with the code; `tools/debug_output.py` is gone.
+- **Added: `interface-tour.gif`** (21 windows, a few seconds each, about 2 MB), built by `make_gif.py tour` from the PNG
+  files, near the top of `README.md` and `README.it.md`. `narrator-demo.gif` stays.
+- **Added: the images in the wiki**: the manual pages show the mockups of their windows (The Narrator, Chat Gateway,
+  Memory and Journal, Story Arcs, Relationships, First-Run Wizard, Character Soul, NPC Dialogues, Literary Forms,
+  Settings, Commands, Troubleshooting, Languages, Home), each with an "illustrative mockup" caption, and a new page
+  **Interface Tour** lists every window. `tools/sync_wiki.py` now copies the images a page uses into the wiki's
+  `images/` folder; the wiki workflow also runs when the PNG files change. `Tests/check_docs.py` checks that every wiki
+  image exists, is not a `proposed-*` review proposal and says "illustrative mockup" in its alternative text.
+- **Added: `docs/design/mockups/README.md`** with the commands to rebuild everything, and `requirements.txt` with the
+  pinned Pillow and lupa versions.
+
 ### R5: the trial slice, Durotar, Orgrimmar, Elwynn and Stormwind (part of issue #102)
 
 The content half of the trial slice proposed by the analysis A1: four starting areas written in depth, to measure what

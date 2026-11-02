@@ -8,7 +8,8 @@
    che esiste; se ha un'àncora (`#titolo`) il titolo deve esistere nel file di destinazione.
 3. Wiki (`docs/wiki`, la sola fonte del wiki di GitHub, ADR 0013): ogni link `[[Testo|Pagina]]` o `[testo](Pagina#àncora)`
    punta a una pagina di docs/wiki (e all'àncora, se c'è), ogni pagina è nella barra laterale, e nessuna pagina contiene
-   percorsi personali, indirizzi email o parole da sviluppatori.
+   percorsi personali, indirizzi email o parole da sviluppatori. Ogni immagine `![testo](percorso)` è un file del
+   repository, mai una proposta `proposed-*`, e il suo testo alternativo dice "illustrative mockup" (U2).
 4. (#162) Commands: every `/au ...` quoted in README, the pack guide, CONTRIBUTING and docs/ (not the logs: CHANGELOG,
    ROADMAP, docs/design) is a command of `Commands.list`, with words its keyword table accepts and no old Italian word
    (the deny list of Tests/TestCommands.lua). A line that talks about Italian words may quote one as the example.
@@ -197,6 +198,21 @@ def check_wiki():
             if fence:
                 continue
             l = re.sub(r"`[^`]*`", "", l)
+            # images (U2): a relative link to a file of the repository, an illustrative mockup and never a proposal of
+            # the UI review; sync_wiki.py publishes it in the wiki's images/ folder
+            for m in re.finditer(r"!\[([^\]]*)\]\(([^)\s]+)\)", l):
+                alt, target = m.group(1), m.group(2)
+                total += 1
+                where = f"{name}.md:{no}: {target}"
+                if re.match(r"^[a-z]+:", target):
+                    bad.append(where + " (un'immagine del wiki è un file del repository)")
+                elif not os.path.isfile(os.path.normpath(os.path.join(WIKI, unquote(target)))):
+                    bad.append(where + " (immagine inesistente)")
+                elif os.path.basename(target).startswith("proposed-"):
+                    bad.append(where + " (una proposta della revisione, non l'interfaccia)")
+                elif "illustrative mockup" not in alt.lower():
+                    bad.append(where + " (il testo alternativo non dice 'illustrative mockup')")
+            l = re.sub(r"!\[[^\]]*\]\([^)\s]+\)", "", l)
             # [[Pagina]], [[Testo|Pagina]] e i link Markdown relativi: sul wiki il percorso è il nome della pagina
             targets = [m.group(1).split("|")[-1].strip() for m in re.finditer(r"\[\[([^\]]+)\]\]", l)]
             targets += [m.group(1) for m in re.finditer(r"\]\(([^)\s]+)\)", l) if not re.match(r"^[a-z]+:", m.group(1))]

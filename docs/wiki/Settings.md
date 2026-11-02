@@ -13,6 +13,10 @@ Every setting of Azeroth Unspoken, its default value and where to change it.
 
 Changes take effect at once. There is no Save button.
 
+![Illustrative mockup: the settings panel, unrolled](../design/mockups/png/settings.png)
+
+*Illustrative mockup, not an in-game screenshot: the five sections of the panel, unrolled (in game they scroll).*
+
 ## General
 
 | Setting | Default | Panel row | Command | What it does |
@@ -102,6 +106,10 @@ See [[Chat Gateway]].
 | NPC dialogue opacity | 92% | **NPC dialogue opacity** (- / + by 5%) | 30–100%. The background of the NPC dialogue window. |
 
 The Narrator section ends with **Pause the narrator** (**Resume the narrator** while paused; also `/au pause`, for this session only), **Try the narrator**, which shows a sample line, **History** and **Move the box back to the middle**. Turning the **Narrator box** or the **Addon** off takes the line on screen away at once. See [[The Narrator and the Four Voices|The-Narrator]].
+
+![Illustrative mockup: the narrator box with text size 20](../design/mockups/png/narrator-large-font.png)
+
+*Illustrative mockup, not an in-game screenshot: with a larger text size the top strip grows with the label.*
 
 ## Modules
 

@@ -93,6 +93,26 @@ When you click **Finish** or **Skip**, the chat box shows:
 
 From now on lines appear in the narrator box while you play.
 
+![Illustrative mockup: the first-run guide, step 1](../design/mockups/png/wizard-1.png)
+
+*Illustrative mockup, not an in-game screenshot: the guide opens on the language and a sample of the narrator.*
+
+![Illustrative mockup: the first-run guide, intensity](../design/mockups/png/wizard-3.png)
+
+*Illustrative mockup, not an in-game screenshot: the intensity step: how often the narrator speaks.*
+
+![Illustrative mockup: the first-run guide, the chat step](../design/mockups/png/wizard-7.png)
+
+*Illustrative mockup, not an in-game screenshot: what may reach chat; private is the default.*
+
+![Illustrative mockup: the first-run guide, last step](../design/mockups/png/wizard-8.png)
+
+*Illustrative mockup, not an in-game screenshot: the keys, the speak button and the settings.*
+
+![Illustrative mockup: the guide trying the narrator](../design/mockups/png/wizard-test-line.png)
+
+*Illustrative mockup, not an in-game screenshot: Try the narrator: the box steps aside below the guide.*
+
 ## Tips
 
 - Not sure? Click **Skip**, then come back later with `/au wizard`. Just remember that the language can be changed at any time with `/au language it` or `/au language en`.

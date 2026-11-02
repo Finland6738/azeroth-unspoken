@@ -6,6 +6,10 @@
 
 Un compagno narrativo immersivo per World of Warcraft, distintivo e misterioso, che richiama i pensieri e le storie non espresse.
 
+![Mockup illustrativo, non uno screenshot del gioco: un giro animato tra le finestre di Azeroth Unspoken, dal riquadro del narratore e dalle proposte per la chat al dialogo con gli NPC, al diario, alle relazioni, all'anima del personaggio, alle impostazioni, alla guida iniziale e all'output in chat](docs/design/mockups/interface-tour.gif)
+
+*Mockup illustrativi costruiti dal codice dell'addon, non screenshot del gioco: l'addon non è ancora stato provato nel client vero. I testi delle finestre sono quelli inglesi. Ogni finestra con una didascalia: l'[Interface tour](https://github.com/Finland6738/azeroth-unspoken/wiki/Interface-Tour) nel wiki (in inglese) e [docs/design/mockups](docs/design/mockups/README.md).*
+
 Azeroth Unspoken è un addon per **World of Warcraft: Forever** (Interface `16001`). Contiene un motore narrativo locale e un database di frasi curate, in italiano e in inglese, che reagiscono ai luoghi, agli eventi e alle azioni del personaggio: una zona nuova, un combattimento, una ferita grave, un livello guadagnato, un saluto.
 
 > **Stato: in sviluppo (versione 0.1.0 nel `.toc`), funzioni delle milestone M0–M3 scritte.** Il codice è stato provato solo fuori dal gioco, con un client simulato. **Nessuna prova nel client vero è ancora stata fatta** (checklist [G1](docs/G1_checklist.md): prove G1, G2 e G3, 108 passi numerati più le sezioni R): aspettati sorprese. Vedi [Stato del progetto](#stato-del-progetto).

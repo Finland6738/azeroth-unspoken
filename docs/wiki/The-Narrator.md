@@ -124,6 +124,30 @@ See the [[Settings Reference|Settings]].
 - While a proposal waits, it stays in the box: other lines (a thought, a story notice) go to the history at once, the label says how many (for example *+1 in history*), and they come to the box after you send or discard the proposal, or when it expires. A line kept waiting more than two minutes stays only in the history.
 - Now and then a discreet notice, for example when a [[personal story|Story-Arcs]] can begin. It stays as long as any other line and is kept in the history.
 
+![Illustrative mockup: the narrator box in its four voices](../design/mockups/png/narrator-voices.png)
+
+*Illustrative mockup, not an in-game screenshot: the four voices, each with its colour bar and tint.*
+
+![Illustrative mockup: a long private reading appearing line by line](../design/mockups/png/narrator-reading.png)
+
+*Illustrative mockup, not an in-game screenshot: a verse appears one line at a time; the box is as tall as the whole text from the start.*
+
+![Illustrative mockup: the history above the narrator box](../design/mockups/png/narrator-history.png)
+
+*Illustrative mockup, not an in-game screenshot: the history of recent lines; a verse keeps its line breaks, the later lines indented.*
+
+![Illustrative mockup: three private notices](../design/mockups/png/narrator-notices.png)
+
+*Illustrative mockup, not an in-game screenshot: a bond reaching a new level, a letter waiting in the journal, a song in the songbook; in game they come one at a time.*
+
+![Illustrative mockup: the narrator paused](../design/mockups/png/narrator-paused.png)
+
+*Illustrative mockup, not an in-game screenshot: paused: a triangle instead of the two bars, a line in the chat, and the dimmed speak button with its badge.*
+
+![Illustrative mockup: the narrator box in its default place](../design/mockups/png/narrator-in-context.png)
+
+*Illustrative mockup, not an in-game screenshot: where the box sits by default on a 1366 x 768 screen; the dashed boxes stand for the game's own interface.*
+
 ## What it reacts to
 
 Besides your fights, deaths and new zones, the narrator now also notices what the game says about the world around you:

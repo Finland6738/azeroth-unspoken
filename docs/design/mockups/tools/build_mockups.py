@@ -7,7 +7,9 @@ locale files; the sample data (names, memories, relationships) is invented. Ever
 mockup, not an in-game screenshot. Then render.py turns them into PNG files with a headless browser.
 """
 import os
+import re
 import sys
+import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from mockkit import (PREFIX, VOICE_COLOR, btn, chat_lines, edit, fs, frame, page, placeholder,  # noqa: E402
@@ -28,6 +30,35 @@ L_NPC = "Welcome, traveler. There's room by the fire, if the road has worn you d
 IT_DUSK_E = "resta un momento immobile mentre la luce si ritira tra i tronchi e il bosco si riempie di grilli."
 IT_GREET = "Buona sera, se ancora ne esistono di buone."
 IT_INNER = "Le ombre si allungano sul terreno, e l'aria si raffredda di un soffio."
+_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+
+
+def verse(rule_id, lang="en"):
+    """The texts of a piece of the verses pack (AzerothUnspoken_Versi/Texts_<lang>.lua), first variant first."""
+    folder = os.path.join(_ROOT, "AzerothUnspoken_Versi")
+    src = open(os.path.join(folder, "Texts_%s.lua" % {"en": "enUS", "it": "itIT"}[lang]), encoding="utf-8").read()
+    block = re.search(r'\["' + re.escape(rule_id) + r'"\] = \{(.*?)\n\t\},', src, re.S).group(1)
+    return [m.replace("\\n", "\n").replace('\\"', '"') for m in re.findall(r'"((?:[^"\\]|\\.)*)"', block)]
+
+
+def song(rule_id, lang="en", stanzas=None):
+    """A piece as the narrator says it: a song of stanzas (#127) has its frame and, in their order, `stanzas` of them
+    (all when None, as the songbook shows it); the stanzas are apart by an empty line."""
+    texts = verse(rule_id, lang)
+    if "{stanzas}" not in texts[0]:
+        return texts[0]
+    chosen = texts[1:] if stanzas is None else [texts[i] for i in stanzas]
+    return texts[0].replace("{stanzas}", "\n\n".join(chosen))
+
+
+INN_RHYME = song("versi.inn.rhyme.01")                    # the innkeeper's voice (npc)
+ROAD_SONG = song("versi.road.stanzas.01", stanzas=(1, 2))  # the inner voice, two of the four stanzas
+RUIN = song("versi.inscription.ruin.01")                  # the inner voice
+RUIN_IT = song("versi.inscription.ruin.01", "it")
+NEMESIS_SONG = song("versi.nemesis.song.01")
+LAMENT_PET = song("versi.lament.pet.01")
+LAMENT_ALLY = song("versi.lament.ally.01")
+DWARF_SONG = song("versi.culture.dwarf.01")
 
 INDEX = []   # (file, title, group, meant for)
 
@@ -37,9 +68,10 @@ def add(name, title, w, h, body, group, target, **kw):
     INDEX.append((name, title, group, target, kw.get("kind", "current")))
 
 
-def stage_narrator(name, title, target, h=300, scene="dusk", seed=3, **nk):
+def stage_narrator(name, title, target, h=300, scene="dusk", seed=3, caption_extra="", **nk):
     w = 640
-    add(name, title, w, h + 30, narrator((w - 440) // 2, 70, **nk), "Narrator", target, scene=scene, seed=seed)
+    add(name, title, w, h + 30, narrator((w - 440) // 2, 70, **nk), "Narrator", target, scene=scene, seed=seed,
+        caption_extra=caption_extra)
 
 
 def build_narrator():
@@ -61,9 +93,36 @@ def build_narrator():
             history_line("21:05", "character", f"«{L_BATTLE}»"),
             history_line("21:09", "inner", L_RETURN),
             history_line("21:12", "inner", L_INNER),
-            history_line("21:14", "character", f"«{L_GREET}»", sent="SAY")]
+            history_line("21:14", "character", f"«{L_GREET}»", sent="SAY"),
+            history_line("21:20", "inner", RUIN)]
     stage_narrator("narrator-history", "Narrator frame - history open", "The-Narrator", h=470,
-                   speaker="inner", text=L_INNER, history=hist)
+                   speaker="inner", text=L_INNER, history=hist,
+                   caption_extra="A text with line breaks keeps them in the history, the later lines indented.")
+    # #126: a long private reading. The box is as tall as the whole text from the start; the lines appear one at a time
+    stage_narrator("narrator-reading", "Narrator - a long private reading, line by line", "The-Narrator / Literary-Forms",
+                   h=330, scene="warm", seed=13, speaker="npc", text=INN_RHYME, reveal=3, remaining=0.85,
+                   caption_extra="Three of five lines shown so far: each next line comes after the time to read the one "
+                                 "before.")
+    stage_narrator("narrator-reading-scroll", "Narrator - a reading longer than twelve lines", "The-Narrator / Literary-Forms",
+                   h=400, scene="night", seed=14, speaker="inner", text=ROAD_SONG, scroll="end", remaining=0.3,
+                   caption_extra="At most twelve lines: the rest scrolls with the mouse wheel, and the box follows the "
+                                 "line just revealed.")
+    stage_narrator("narrator-reading-it", "Narrator - a long private reading (Italian)", "Languages / Literary-Forms",
+                   h=330, seed=15, lang="it", speaker="inner", text=RUIN_IT, remaining=0.6)
+    # the header is sized from the font: max(28, label + 12) units (#182)
+    stage_narrator("narrator-large-font", "Narrator frame - text size 20", "The-Narrator / Settings", h=330, seed=16,
+                   speaker="narrator", text=f"{PLAYER} {L_DUSK_E}", font=20,
+                   caption_extra="The header grows with the label of a larger text size.")
+    # private notices: a level of a bond (N2), a letter waiting in the journal (N8), a song in the songbook (N7)
+    w, h = 640, 470
+    notices = (("narrator", ui("en", "rel_level_up_1", "Bram Ashcombe", "Acquaintance", "Friend")),
+               ("narrator", ui("en", "rel_letter_notice", "Sister Odile")),
+               ("narrator", ui("en", "nemesis_song_notice", "The Shadow of Old Greyjaw", NEMESIS_SONG.split(":")[0])))
+    body = "".join(narrator((w - 440) // 2, 70 + i * 120, speaker=sp, text=t, remaining=0.9 - i * 0.25)
+                   for i, (sp, t) in enumerate(notices))
+    add("narrator-notices", "Narrator - private notices", w, h, body, "Narrator", "The-Narrator / Relationships",
+        scene="dusk", seed=17, caption_extra="A level reached, a letter waiting, a song in the songbook: private, "
+                                             "never in chat. Shown one at a time in the game.")
     # paused: the header shows ">" and the chat says so; the speak button dims and says "Paused" under it (#183)
     w, h = 760, 420
     body = (narrator(160, 150, speaker="inner", text=L_INNER, paused=True)
@@ -159,17 +218,24 @@ def build_wizard():
 def build_settings():
     # the five sections scroll inside the client's settings canvas: drawn here unrolled, the whole content at once
     w = 720
-    add("settings", "Settings panel - the five sections (unrolled)", w, 1390, settings(30, 30), "Settings", "Settings",
+    add("settings", "Settings panel - the five sections (unrolled)", w, 1420, settings(30, 30), "Settings", "Settings",
         scene="neutral", seed=40, scale=1,
         caption_extra="The sections scroll inside the client's options window: shown unrolled, on a plain stand-in.")
-    add("settings-reload", "Settings panel - language changed, reload needed (unrolled)", w, 1500,
+    add("settings-reload", "Settings panel - language changed, reload needed (unrolled)", w, 1530,
         settings(30, 30, reload_needed=True), "Settings", "Settings / Languages", scene="neutral", seed=41, scale=1)
     # what fits in the canvas at once: the top of the panel, with the scroll bar
     add("settings-top", "Settings panel - the top of the scrolling canvas", w, 720, settings(30, 30, view=640),
         "Settings", "Settings", scene="neutral", seed=42)
 
 
+D = lambda s: "  |cff9d9d9d" + s + "|r"  # noqa: E731   the time stamp of a row (LM.Stamp)
+LETTER = ui("en", "rel_letter_questgiver_2", "Sister Odile")
 SAMPLE_MEMORIES = [
+    (LETTER + D("2026-11-01 19:02"), ["P", "x"]),                                           # N8 letter
+    (ui("en", "rel_mem_level_up", "Bram Ashcombe") + D("2026-10-31 21:40"), ["P", "x"]),     # N2 a level of a bond
+    (ui("en", "rel_mem_pet_bond", "Ember", ui("en", "rel_pet_stage_trusted")) + D("2026-10-31 20:15"), ["P", "x"]),
+    (ui("en", "rel_mem_grief_npc", "Old Fenwick") + " (Darkshire)" + D("2026-10-30 23:02"), ["P", "x"]),
+    ("|cffffd200[P]|r " + ui("en", "rel_mem_title", "Friend of Darkshire") + D("2026-10-30 22:50"), ["P", "x"]),
     ("|cffffd200[P]|r Story: The Place of the Fall  |cff9d9d9d2026-10-30 22:41|r", ["P", "x"]),
     ("Return: Duskwood  |cff9d9d9d2026-10-30 22:05|r", ["P", "x"]),
     ("Death: Duskwood  |cff9d9d9d2026-10-28 21:52|r", ["P", "x"]),
@@ -206,14 +272,51 @@ def build_journal():
         J("session", session, note="This session only: forgotten when you log out."), "Journal", "Memory-and-Journal",
         seed=53)
     H = lambda s: "|cffffd200" + s + "|r"  # noqa: E731
+    # N7 (#219): the stories of an arc told for many NPCs (the nemeses), under the arc's title with their own slots
     stories = [H("Stories under way (1 of 2)"), ("The Place of the Fall: waiting for your choice", ["...", "x"]),
+               H(ui("en", "arc_hdr_many", "Nemeses", 2, 3)),
+               (ui("en", "arc_row", "The Shadow of Old Greyjaw", "the long shadow"), ["...", "x"]),
+               (ui("en", "arc_row", "The Shadow of the Ashen Stalker", "the mark"), ["...", "x"]),
                H("Stories that can begin"), ("The Path Found Again: you can begin it whenever you like", ["...", "x"]),
                H("Concluded stories"), ("A Familiar Face  |cff9d9d9d2026-10-12 20:31|r", ["..."]),
                ("|cff9d9d9dSuspend all stories|r", ["II"]), ("|cff9d9d9dSkip all stories|r", ["x"])]
-    note = ("Stories are tellings of your character, not quests: no rewards, no effect on the game. You can suspend, skip "
-            "or disable them any time.")
-    add("journal-stories", "Journal - Stories", w, h, J("stories", stories, note=note), "Journal", "Story-Arcs",
-        seed=54)
+    note = ui("en", "arc_note")
+    add("journal-stories", "Journal - Stories, with the nemeses", w, h, J("stories", stories, note=note, page=(1, 2)),
+        "Journal", "Story-Arcs", seed=54)
+    nemesis = [("< Back to stories", ["<"]), H("The Shadow of Old Greyjaw"),
+               "Some foes are not forgotten once the fight is over. One of them cut your road short, and its shadow",
+               "now falls across the miles ahead: a story that grows each time it brings you down, and ends only with",
+               "its fall.",
+               "|cff9d9d9dState: the long shadow (under way)|r",
+               "|cffcfcfcfthe mark|r  |cff9d9d9d2026-10-24 21:10|r",
+               "|cffcfcfcfthe long shadow|r  |cff9d9d9d2026-10-29 22:31|r",
+               "   It has brought you down twice. The road keeps leading you back its way: the story deepens with",
+               "   every fall, and ends only with its own.",
+               ("Suspend the story", ["II"])]
+    add("journal-nemesis", "Journal - a nemesis story", w, h, J("stories", nemesis, note=note), "Journal",
+        "Story-Arcs", seed=64, caption_extra="Old Greyjaw is an invented foe.")
+    # #122: the songbook (the pieces heard or read: ids and times only, the words read from the loaded pack)
+    title = lambda t: t.split("\n")[0].rstrip(": ")  # noqa: E731   Songbook:Title, the first line
+    marks = lambda *m: "  |cff9d9d9d[" + ", ".join(m) + "]|r"  # noqa: E731
+    pieces = [("|cffffd200*|r " + title(NEMESIS_SONG) + D("2026-11-01 21:12") + marks("favourite"), ["Open", "!Forget"]),
+              (title(LAMENT_PET) + D("2026-10-31 20:44") + marks("by heart"), ["Open", "!Forget"]),
+              (title(INN_RHYME) + D("2026-10-30 22:20"), ["Open", "!Forget"]),
+              (title(ROAD_SONG) + D("2026-10-29 18:03"), ["Open", "!Forget"]),
+              ("|cff9d9d9d" + title(DWARF_SONG) + "|r" + D("2026-10-27 23:40") + marks("muted"), ["Open", "!Forget"]),
+              (title(RUIN) + D("2026-10-21 20:30"), ["Open", "!Forget"])]
+    add("journal-songbook", "Journal - Songbook", w, h, J("songbook", pieces, note=ui("en", "song_note")), "Journal",
+        "Literary-Forms / Memory-and-Journal", seed=65)
+    verses = ["   " + l if l else "" for l in NEMESIS_SONG.split("\n")]
+    piece = ([("< Back to stories", ["<"]), H(title(NEMESIS_SONG))] + verses
+             + ["|cff9d9d9dLast heard: 2026-11-01 21:12|r", (ui("en", "song_state_heard"), ["Learn"]),
+                (ui("en", "song_state_favourite"), ["Unmark"])])
+    add("journal-songbook-piece", "Journal - a piece of the songbook", w, h,
+        J("songbook", piece, note=ui("en", "song_note"), page=(1, 2)), "Journal", "Literary-Forms", seed=66,
+        caption_extra="The second page has 'It may come back' (Mute) and 'Forget this piece'.")
+    add("journal-letter", "Journal - a letter and its tooltip", w, h,
+        J("memories", SAMPLE_MEMORIES, page=(1, 2), tip=(0, LETTER + D("2026-11-01 19:02"))), "Journal",
+        "Relationships / Memory-and-Journal", seed=67,
+        caption_extra="A letter from an NPC you are close to waits in the journal: never game mail, never chat.")
     detail = [("< Back to stories", ["<"]), H("The Place of the Fall"),
               "A fall leaves a mark on the place where it happened. A short story about going back, and about what you",
               "carry with you when you go on.",
@@ -231,7 +334,8 @@ def build_journal():
     add("journal-relationships", "Journal - Relationships tab", w, h,
         J("relations", rel, note="The 'Forget everything' button of this window does not touch relationships: manage them in /au relationships."),
         "Journal", "Relationships", seed=56)
-    people = [("Kesh  |cff9d9d9din your group|r", ["+", "x"]), ("Anwen  |cff9d9d9dhas a Total RP 3 profile|r", ["+", "x"]),
+    people = [(ui("en", "rel_id_guid", "Torvan"), ["+", "x"]),   # #112: a question about identity comes first
+              ("Kesh  |cff9d9d9din your group|r", ["+", "x"]), ("Anwen  |cff9d9d9dhas a Total RP 3 profile|r", ["+", "x"]),
               ("Dorrik  |cff9d9d9da trade|r", ["+", "x"])]
     add("journal-people", "Journal - People met tab", w, h,
         J("people", people, note="The addon suggests people you meet (group, trades, Total RP 3 profiles, private replies). No one joins the list without your click on +. Suggestions last only for this session."),
@@ -266,7 +370,8 @@ REL_ROWS = [("Torvan", "Player", "friend", "Friend (34)", "2026-10-30", "27"),
             ("Captain Harlow", "NPC", "acquaintance", "Neutral (11)", "2026-10-27", "4"),
             ("Sister Odile", "NPC", "friend", "Friend (41)", "2026-10-24", "11"),
             ("Kesh", "Player", "comrade in arms", "Close friend (58)", "2026-10-22", "31"),
-            ("Old Fenwick", "NPC", "indifferent", "Neutral (0)", "2026-10-19", "2")]
+            ("Old Fenwick", "NPC", "indifferent", "Neutral (0)", "2026-10-19", "2"),
+            ("Warden Kessick", "NPC", "enemy", "Hated (-82)", "2026-10-18", "5")]
 
 PLAYER_DETAIL = {
     "kind": "player", "name": "Torvan", "label": "friend", "disposition": "Friend (34)",
@@ -278,10 +383,34 @@ PLAYER_DETAIL = {
     "seen_facts": "Recent:\n2026-10-30  fought together  (Duskwood)\n2026-10-30  group  (Duskwood)\n2026-10-27  trade  (Darkshire)\n"
                   "2026-10-24  emote\n2026-10-22  duel  (Westfall)",
 }
-NPC_DETAIL = dict(PLAYER_DETAIL, kind="npc", name="Bram Ashcombe", label="acquaintance", disposition="Acquaintance (18)",
-                  axes=[35, 15, 10, 12, 0, 0], label_btn="Automatic: acquaintance", f1="none", f2="none",
-                  note="", tags="", traits=["Role: Innkeeper (automatic)", "Temperament: unknown", "Morality: unknown",
-                                            "Goals: Profit", "Way of speaking: Warm"])
+R_ = lambda key, *a: ui("en", key, *a)  # noqa: E731
+# "What the addon knows" of an NPC (RelationsFrame RefreshDetail): left, the level and the temperament; right, the
+# first meeting, then the nickname and the favours (N5), the town and its title (N6), the word given (N4), the grudge (N1)
+NPC_DETAIL = dict(PLAYER_DETAIL, kind="npc", name="Bram Ashcombe", label="friend", disposition="Friend (41)",
+                  axes=[72, 45, 30, 50, 0, 20], label_btn="Automatic: friend", f1="none", f2="none",
+                  note="", tags="", traits=["Role: Innkeeper (automatic)", "Temperament: Cheerful", "Morality: unknown",
+                                            "Goals: Profit", "Way of speaking: Warm"],
+                  knows=(R_("rel_level_line", 7, 9, "Friend", "Close friend", 44) + "\n"
+                         + R_("rel_pace_line", R_("rel_pace_quick"), R_("rel_pace_slow"), " (innkeeper, Cheerful)"),
+                         R_("rel_met_details", "2026-09-14", ", ".join((R_("rel_met_time_dusk"), R_("rel_met_weather_rain"),
+                                                                       R_("rel_met_zone", "Duskwood"), R_("rel_met_level", 21))))
+                         + "\n" + R_("rel_nick_line", "Good Turn") + " "
+                         + R_("rel_favour_line", R_("rel_favour_what_rest"), 2) + " " + R_("rel_favours_done", 3)
+                         + "\n" + R_("rel_town_line", "Darkshire", R_("rel_word_good"), 64) + " "
+                         + R_("rel_title_held", "Friend of Darkshire")))
+FOE_DETAIL = dict(NPC_DETAIL, name="Warden Kessick", label="enemy", disposition="Hated (-82)",
+                  axes=[48, -90, -70, -85, 30, -60], label_btn="Automatic: enemy",
+                  traits=["Role: Guard (automatic)", "Temperament: Stern", "Morality: unknown", "Goals: Order",
+                          "Way of speaking: Curt"],
+                  knows=(R_("rel_level_line", 1, 9, "Hated", "Hostile", 30) + "\n"
+                         + R_("rel_pace_line", R_("rel_pace_slow"), R_("rel_pace_slow"), " (guard, Stern)"),
+                         R_("rel_met_details", "2026-10-02", ", ".join((R_("rel_met_time_day"), R_("rel_met_zone", "Lakeshire"),
+                                                                       R_("rel_met_level", 19))))
+                         + "\n" + R_("rel_oath_mark", 60)
+                         + "\n" + R_("rel_town_line", "Lakeshire", R_("rel_word_bad"), -35) + " "
+                         + R_("rel_title_withheld", "Friend of Lakeshire")
+                         + "\n" + R_("rel_foe_line_attacked", 12, 2) + " " + R_("rel_grudge_eternal") + " "
+                         + R_("rel_town_betrayed", "Lakeshire")))
 
 
 def build_relations():
@@ -290,8 +419,11 @@ def build_relations():
         "Relationships", "Relationships", seed=70,
         caption_extra="Plain rows that own their cells; the hovered row is highlighted.")
     add("relations-people", "Relationships - People met", w, h,
-        relations(40, 40, "people", cands=[("Kesh", "in your group"), ("Anwen", "has a Total RP 3 profile"),
-                                            ("Dorrik", "a trade")]), "Relationships", "Relationships", seed=71)
+        relations(40, 40, "people", candidates=5,
+                  cands=[(R_("rel_id_guid", "Torvan"), None), (R_("rel_id_renamed", "Mirelle", "Mirellia"), None),
+                         ("Kesh", "in your group"), ("Anwen", "has a Total RP 3 profile"), ("Dorrik", "a trade")]),
+        "Relationships", "Relationships", seed=71,
+        caption_extra="Questions about identity come first: + says it is the same person, x changes nothing.")
     add("relations-empty", "Relationships - empty state", w, h, relations(40, 40, "list", rows=[], candidates=0),
         "Relationships", "Relationships", seed=72)
     add("relations-options", "Relationships - options", w, h, relations(40, 40, "options"), "Relationships",
@@ -300,7 +432,12 @@ def build_relations():
         relations(40, 40, "detail", detail=PLAYER_DETAIL), "Relationships", "Relationships", seed=73,
         caption_extra="660 units tall: it fits a 768-unit screen at UI scale 1.")
     add("relations-detail-npc", "Relationships - an NPC's detail", w, h,
-        relations(40, 40, "detail", detail=NPC_DETAIL), "Relationships", "Relationships", seed=74)
+        relations(40, 40, "detail", detail=NPC_DETAIL), "Relationships", "Relationships", seed=74,
+        caption_extra="What the addon knows: level, temperament, first meeting, nickname, favor, town and title.")
+    add("relations-detail-foe", "Relationships - a hated NPC", w, h,
+        relations(40, 40, "detail", detail=FOE_DETAIL), "Relationships", "Relationships", seed=77,
+        caption_extra="A grudge for ever, the mark of a broken oath, a title withheld. Narration only: no NPC behaves "
+                      "differently in the game.")
     shared = dict(PLAYER_DETAIL, scope="Choices: shared")
     add("relations-detail-shared", "Relationships - player detail with the shared list on", w, h,
         relations(40, 40, "detail", detail=shared), "Relationships", "Relationships", seed=75)
@@ -367,7 +504,7 @@ def build_profile():
     add("profile-reset-armed", "Character soul - 'Neutral profile' waits for a second click", 760, 790,
         profile(40, 40, rows, {"blood"}, reset_armed=True), "Profile", "Character-Soul-and-Total-RP-3", seed=92)
     add("profile-neutral", "Character soul - neutral profile", 760, 790,
-        profile(40, 40, neutral, set(), archetype="Neutral",
+        profile(40, 40, neutral, set(), archetype="Neutral", culture=None,
                 arch_help="No traits: the narrator does not pick the character for you."),
         "Profile", "Character-Soul-and-Total-RP-3", seed=91)
 
@@ -392,90 +529,30 @@ def build_dialogue():
         "NPC dialogue", "NPC-Dialogues", scene="warm", seed=103)
 
 
-# /au help (UI/Commands.lua): the groups and, per group, the usage lines in table order; options are separated by
-# " / " (and "/" inside an option), never by a bare "|", the client's escape character (review UI-05, #175)
-HELP_TITLE = "commands (the command names are always in English, whatever the interface language):"
-HELP_GROUPS = [
-    ("start", "first steps: on and off, pause, settings, first-run guide, language"),
-    ("narrator", "what the narrator says and how often: style, the box, lines on demand, chances"),
-    ("chat", "what may reach chat: mode, channel, proposals, the speak button"),
-    ("character", "your character: personality, mood, journal, stories, relationships, who and where"),
-    ("diagnostics", "checks and reports: debug, tests, phrase packs, statistics"),
-]
-HELP_ALL = "every command, group by group (about 40 lines: scroll the chat up to read them)"
-HELP = {
-    "start": [("help [<group> / <command> / all]",
-               "the command groups; /au help <group> lists a group, /au help <command> explains one"),
-              ("on / off", "enable or disable automatic lines"),
-              ("pause", "pause the narrator immediately (also with the bound key)"),
-              ("language [it / en]", "phrase and interface language"),
-              ("options", "open the settings panel"), ("wizard", "redo the first-run guide")],
-    "narrator": [("intensity <0-100>", "how often the narrator speaks up"),
-                 ("depth natural / literary / elevated", "how elevated the style is"),
-                 ("narrator [history / reset / clear]", "the narrator box"),
-                 ("greet / farewell / toast / muse / threat / battlecry / victory / pray / thanks / jest [target]",
-                  "propose a line for that moment (a name or target is optional)"),
-                 ("event <name>", "propose a line for an event (battle, zone, muse...)"),
-                 ("cast <spell>", "a line for a spell (handy in macros)"),
-                 ("chance <event> <0-100>", "probability of an event"),
-                 ("cooldown <seconds>", "pause between automatic lines"),
-                 ("ignore <spell>", "never comment on a spell (again to undo)")],
-    "chat": [("mode private / preview / confirm / auto", "what may reach chat (default: private; auto asks for confirmation)"),
-             ("channel auto / say / emote / party / raid / guild / instance", "default chat channel"),
-             ("speak", "confirm the waiting proposal (also from a macro or key)"),
-             ("another", "swap the pending proposal for another line (sends nothing)"),
-             ("cancel", "discard the proposal"),
-             ("copy", "copy the proposal into the chat box (you send it with Enter)"),
-             ("button [on / off / editor on/off / reset]",
-              "show, hide or reset the speak button; editor on: a click opens the editor instead of sending")],
-    "character": [("soul [list / neutral / archetype <id> / trp3 on/off / <trait> <value> / avoid <topic>]",
-                   "character personality"),
-                  ("emotion [on / off / reset]", "the character's emotional state: show, switch on or off, reset"),
-                  ("journal [list / places / flag <name> / export / pin <n> / delete <n> / forget <place> / reset]",
-                   "character memory and journal"),
-                  ("stories [list / journal / choose <arc> <option> / start / suspend / resume / skip / disable / "
-                   "enable <arc/all> / max <1/2> / on / off / status]", "the character's personal stories"),
-                  ("relationships [list / people / add <name> / note <name> <text> / export / ...]",
-                   "relationships with NPCs and players (short form: rel)"),
-                  ("place", "where you are: zone, map, tags, territory, instance (to check the place data)"),
-                  ("who [trp3 on/off / trait <trait> <value>]", "who is in front of you: role, personality, recent actions"),
-                  ("talk [test [style] / close / role <role> / offer on/off / status]",
-                   "ambient dialogue with the NPC in front of you")],
-    "diagnostics": [("debug [full / trace]", "diagnostics: client capabilities, recent events, errors"),
-                    ("prof [reset / copy]", "profiling of this session: timings, memory, Director counters (reset / copy)"),
-                    ("probe [reset / stop / copy]",
-                     "probe the client APIs the next features need and report which work (reset / stop / copy)"),
-                    ("test <event>", "preview a line in the local chat"), ("packs", "list the phrase packs"),
-                    ("pack <id> on/off", "turn a phrase pack on or off"),
-                    ("validate [full / <pack>]", "check the phrase packs (errors and warnings)"),
-                    ("stats", "how many lines are available"), ("memory", "clear the anti-repetition memory")],
-}
-
-
 def build_chat():
+    # the lines come from the addon itself (chat_capture.py: UI/Commands.lua and Core/Diagnostics.lua under the
+    # simulated client of the tests), so a mockup cannot disagree with the code
+    from chat_capture import run
     # /au help: the groups, in a default-sized chat window (about ten lines): all of it is visible (review UI-19, #189)
-    groups = [PREFIX + HELP_TITLE] + [PREFIX + f"/au help {g} - {d}" for g, d in HELP_GROUPS]
-    groups.append(PREFIX + f"/au help all - {HELP_ALL}")
     add("chat-help-window", "/au help - the groups, in a default chat window", 640, 400,
-        chat_lines(groups, left=10, top=40, width=600, height=270)
+        chat_lines(run("help"), left=10, top=40, width=600, height=270)
         + '<div class="chatinput" style="left:10px;top:316px;width:600px">/au help</div>',
         "Chat output", "Commands", seed=111,
         caption_extra="The whole output fits in a default chat window. Options use \" / \", never a bare | (UI-05).")
     # /au help all: every group, the diagnostics last
-    lines = [PREFIX + HELP_TITLE]
-    for g, _ in HELP_GROUPS:
-        lines += [PREFIX + f"/au {u} - {d}" for u, d in HELP[g]]
+    lines = run("help all")
     w = 900
     h = 40 + len(lines) * 19 + 40
     add("chat-help", "/au help all in the chat frame (full output)", w, h,
         chat_lines(lines, left=10, top=10, width=880, height=h - 50), "Chat output", "Commands", seed=110, scale=1.25,
-        caption_extra="/au help prints only the groups; /au help <group> prints one group (ten lines at most).")
-    from debug_output import DEBUG_LINES
-    h = 40 + len(DEBUG_LINES) * 19 + 60
+        caption_extra="/au help prints only the groups; /au help <group> prints one group.")
+    lines = run("debug")
+    h = 40 + len(lines) * 19 + 200
     add("chat-debug", "/au debug in the chat frame", w, h,
-        chat_lines([PREFIX + l for l in DEBUG_LINES], left=10, top=10, width=880, height=h - 50), "Chat output",
+        chat_lines(lines, left=10, top=10, width=880, height=h - 50), "Chat output",
         "Troubleshooting / Reporting-Bugs-and-Feedback", seed=112, scale=1.25,
-        caption_extra="Client build values are illustrative.")
+        caption_extra="Captured from the addon with the simulated client of the tests: the client values are not "
+                      "those of a real client.")
 
 
 def write_index():
@@ -520,7 +597,7 @@ def main():
     build_chat()
     for name, title, w, h, body, target in proposed.build():
         add(name, title, w, h, body, "Proposed", target, kind="proposed", scene="dusk" if "narrator" in name else
-            ("neutral" if "wizard" in name else "neutral"), seed=hash(name) % 97 + 120,
+            ("neutral" if "wizard" in name else "neutral"), seed=zlib.crc32(name.encode()) % 97 + 120,
             caption_extra="Proposal from the UI review, not implemented.")
     write_index()
     print(f"{len(INDEX)} mockups written")

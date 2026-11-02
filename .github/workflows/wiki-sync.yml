@@ -1,12 +1,14 @@
 name: Wiki sync
 
 # docs/wiki is the only source of the GitHub wiki (ADR 0013): the wiki is never edited on GitHub. Every push to main
-# that changes docs/wiki publishes it with tools/sync_wiki.py. Manual run: Actions > Wiki sync > Run workflow.
+# that changes docs/wiki (or the mockup images its pages show) publishes it with tools/sync_wiki.py, images included.
+# Manual run: Actions > Wiki sync > Run workflow.
 on:
   push:
     branches: [main]
     paths:
       - "docs/wiki/**"
+      - "docs/design/mockups/png/**"   # the images the wiki pages show, copied to the wiki by the script
       - "tools/sync_wiki.py"
       - ".github/workflows/wiki-sync.yml"
   workflow_dispatch:

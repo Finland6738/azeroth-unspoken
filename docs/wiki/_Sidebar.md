@@ -3,6 +3,7 @@
 **Getting started**
 - [[Installation and Updating|Installation-and-Updating]]
 - [[First-Run Wizard|First-Run-Wizard]]
+- [[Interface Tour|Interface-Tour]]
 
 **Reference**
 - [[Commands Reference|Commands]]
