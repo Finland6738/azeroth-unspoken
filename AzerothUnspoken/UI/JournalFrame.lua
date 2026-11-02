@@ -297,6 +297,103 @@ end
 JournalFrame:RegisterTab("stories", { label = "arc_tab", note = "arc_note", rows = ArcRows })
 
 ---------------------------------------------------------------------------
+-- Songbook (#122, ADR 0044): the pieces heard or read, the whole text read from the loaded pack (the songbook keeps
+-- only ids and times), the user's marks. A piece whose pack is gone is listed by its id and can be forgotten.
+---------------------------------------------------------------------------
+local SB = NS.Songbook
+local selectedPiece          -- id of the piece open in the detail (session only)
+
+-- a user mark: on or off, and a word when the songbook refuses it (full, read-only, memory off)
+local function SongMark(fn, id, on)
+	return function()
+		local ok, why = fn(SB, id, on)
+		if not ok then NS:Print(NS:L("song_why_" .. tostring(why))) end
+	end
+end
+
+local function SongStamp(e)
+	return e.t > 0 and Muted(LM.Stamp(e.t)) or ""
+end
+
+local function SongRows()
+	local out = {}
+	if not SB then return out end
+	local list = SB:Entries()
+	if selectedPiece then
+		local e
+		for _, x in ipairs(list) do
+			if x.id == selectedPiece then e = x; break end
+		end
+		if e then
+			local id = e.id
+			table.insert(out, { text = NS:L("arc_back"), actions = { ArcAction("<", "song_tip_back", function() selectedPiece = nil end) } })
+			table.insert(out, Heading(e.present and e.title or NS:L("song_missing", id)))
+			local text = e.present and SB:FullText(id)
+			if text then
+				-- one row a verse (a long one wraps); an empty line between stanzas stays empty
+				for line in (text .. "\n"):gmatch("([^\n]*)\n") do
+					if line == "" then
+						table.insert(out, { text = "" })
+					else
+						for _, l in ipairs(Wrap(line, "   ")) do table.insert(out, { text = l }) end
+					end
+				end
+			else
+				for _, l in ipairs(Wrap(NS:L("song_detail_missing"), "")) do table.insert(out, { text = Muted(l) }) end
+			end
+			if e.t > 0 then table.insert(out, { text = Muted(NS:L("song_detail_heard", LM.Stamp(e.t))) }) end
+			table.insert(out, { text = NS:L(e.learned and "song_state_learned" or "song_state_heard"), actions = {
+				ArcAction(e.learned and "act_unlearn" or "act_learn", e.learned and "song_tip_unlearn" or "song_tip_learn",
+					SongMark(SB.SetLearned, id, not e.learned)) } })
+			table.insert(out, { text = NS:L(e.favourite and "song_state_favourite" or "song_state_plain"), actions = {
+				ArcAction(e.favourite and "act_unfavourite" or "act_favourite", "song_tip_favourite",
+					SongMark(SB.SetFavourite, id, not e.favourite)) } })
+			table.insert(out, { text = NS:L(e.muted and "song_state_muted" or "song_state_speaks"), actions = {
+				ArcAction(e.muted and "act_unmute" or "act_mute", e.muted and "song_tip_unmute" or "song_tip_mute",
+					SongMark(SB.SetMuted, id, not e.muted)) } })
+			table.insert(out, { text = Muted(NS:L("song_forget_row")), actions = {
+				{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", key = "piece:" .. id,
+					fn = function()
+						SB:Forget(id)
+						selectedPiece = nil
+					end } } })
+			return out
+		end
+		selectedPiece = nil
+	end
+	for _, e in ipairs(list) do
+		local id = e.id
+		local marks = {}
+		if e.favourite then table.insert(marks, NS:L("song_mark_favourite")) end
+		if e.learned then table.insert(marks, NS:L("song_mark_learned")) end
+		if e.muted then table.insert(marks, NS:L("song_mark_muted")) end
+		local title = e.present and e.title or NS:L("song_missing", id)
+		if e.muted or not e.present then title = Muted(title) end
+		local text = ("%s%s  %s"):format(e.favourite and "|cffffd200*|r " or "", title, SongStamp(e))
+		if #marks > 0 then text = text .. "  " .. Muted("[" .. table.concat(marks, ", ") .. "]") end
+		table.insert(out, { text = text, actions = {
+			ArcAction("act_open", "song_tip_open", function() selectedPiece = id end),
+			{ label = NS:L("act_forget"), tip = NS:L("song_tip_forget"), confirm = "song_confirm_forget", key = "piece:" .. id,
+				fn = function() SB:Forget(id) end },
+		} })
+	end
+	if #out == 0 then
+		for _, l in ipairs(Wrap(NS:L("song_empty"), "")) do table.insert(out, { text = Muted(l) }) end
+	end
+	return out
+end
+
+JournalFrame:RegisterTab("songbook", { label = "song_tab", note = "song_note", memory = true, rows = SongRows })
+
+---Opens the journal on a piece of the songbook (its whole text and marks).
+---@param id string
+---@return boolean opened
+function JournalFrame:OpenPiece(id)
+	selectedPiece = id
+	return self:Open("songbook")
+end
+
+---------------------------------------------------------------------------
 -- Finestra
 ---------------------------------------------------------------------------
 -- un'azione di riga: le azioni con conferma chiedono un secondo clic sulla stessa riga; ogni altro clic disarma

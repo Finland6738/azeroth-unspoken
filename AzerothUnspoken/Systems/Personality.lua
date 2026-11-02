@@ -122,7 +122,8 @@ local TRAIT_ALIAS = NS.Keywords.Register("soul.traits", {
 	voice = "innerVoice", innervoice = "innerVoice",
 	temperament = "temperament", morality = "morality", faith = "faith", motivation = "motivation",
 })
-local SOUL_WORDS = NS.Keywords.Register("soul", { list = "list", neutral = "neutral", archetype = "archetype", trp3 = "trp3" })
+local SOUL_WORDS = NS.Keywords.Register("soul", { list = "list", neutral = "neutral", archetype = "archetype", trp3 = "trp3",
+	culture = "culture" })
 
 -- fattori della voce interiore sulle frasi con speaker "inner" (off = 0 = esclusione)
 Personality.INNER_FACTOR = { off = 0, quiet = 0.5, present = 1, vivid = 1.6 }
@@ -352,6 +353,12 @@ function Personality:Sanitize()
 		end
 		p.legacy = keep
 	end
+	-- #124: a culture is a lower-case name; one that no loaded pack declares yet is kept (a pack may declare it after
+	-- this moment) and simply not used until then
+	if p.culture ~= nil and not Personality.ValidCultureName(p.culture) then
+		p.culture = nil
+		dropped = dropped + 1
+	end
 	if p.archetype ~= "neutral" and p.archetype ~= "custom" and not self:GetArchetype(p.archetype) then
 		p.archetype = Traits.IsEmpty(clean) and "neutral" or "custom"
 		dropped = dropped + 1
@@ -446,6 +453,8 @@ function Personality:SetArchetype(id)
 	local keep = a.id ~= "neutral" and { innerVoice = p.traits.innerVoice, avoid = p.traits.avoid } or {}
 	p.traits = Traits.Copy(a.traits)
 	p.traits.innerVoice, p.traits.avoid = keep.innerVoice, keep.avoid
+	-- #124: the culture of origin is not part of an archetype either; the neutral profile clears it with every choice
+	if a.id == "neutral" then p.culture = nil end
 	p.archetype = a.id
 	p.base = nil
 	self:Refresh()
@@ -534,6 +543,82 @@ function Personality:SetTRP3Consent(on)
 	self:Profile().trp3 = on == true
 	self:Refresh()
 end
+
+---------------------------------------------------------------------------
+-- Culture of origin (#124, D17, ADR 0044): chosen by hand, never deduced
+---------------------------------------------------------------------------
+-- The culture the character grew up in, from Engine.CULTURES (Data/Themes.lua, `literary.cultures`). It is saved apart
+-- from the traits (`personality.culture`, an optional field: no new version): no archetype sets it, Total RP 3 and the
+-- game never give it, and race and class are never read. It weighs the literary pieces whose `origin` is
+-- `culture:<people>` (the factor below) and is the context value `culture` for rule conditions.
+
+---A well-formed culture name (lower case, like the `culture:<people>` of a piece).
+---@param name any
+---@return boolean
+function Personality.ValidCultureName(name)
+	return type(name) == "string" and name:find("^[a-z][a-z0-9_]*$") ~= nil
+end
+
+---The culture of origin the user chose, or nil (not chosen, or a culture no loaded pack declares).
+---@return string?
+function Personality:Culture()
+	local c = self:Profile().culture
+	if not Personality.ValidCultureName(c) then return nil end
+	if next(Engine.CULTURES) ~= nil and not Engine.CULTURES[c] then return nil end
+	return c
+end
+
+---Chooses (or clears, with nil) the culture of origin. Only a declared culture.
+---@param name? string
+---@return boolean ok
+function Personality:SetCulture(name)
+	if not self:Writable() then return false end
+	if name ~= nil and not (Personality.ValidCultureName(name) and Engine.CULTURES[name]) then return false end
+	self:Profile().culture = name
+	self:Refresh()
+	if NS.ProfileFrame then NS.ProfileFrame:Refresh() end
+	return true
+end
+
+---The name of a culture in the interface language (key culture_<id>), or its id.
+---@param id string
+---@return string
+function Personality:CultureName(id)
+	local key = "culture_" .. tostring(id)
+	local s = NS:L(key)
+	return s ~= key and s or tostring(id)
+end
+
+---A pack declared new cultures (NS:RegisterLiterary): the window shows them.
+function Personality:CulturesChanged()
+	self:Refresh()
+	if NS.ProfileFrame and NS.ProfileFrame.Refresh then NS.ProfileFrame:Refresh() end
+end
+
+-- the voices that speak as the character: a piece of another culture in one of them would be the character's own
+local FIRST_PERSON = { inner = true, character = true }
+
+---Factor of a literary piece of a culture (`origin = "culture:<people>"`): `own` (x1.4) when it is the chosen culture,
+---`other` (0) for another culture in the first person, `heard` (x0.8) for another culture in another voice (an NPC
+---sings it, the narrator reads it). No culture chosen: 0, so only pieces with no culture (`common`, `personal`) speak.
+---Every other rule: 1. Pure: it reads the origin and the voice of the rule and ctx.culture (#157).
+---@param entry AUPhrase
+---@param ctx table
+---@return number
+function Personality.CultureFactor(entry, ctx)
+	local origin = entry.origin
+	if type(origin) ~= "string" or origin:sub(1, 8) ~= "culture:" then return 1 end
+	local own = ctx and ctx.culture
+	if own == nil then return 0 end
+	local f = Engine.CULTURE_FACTORS
+	if origin:sub(9) == own then return f.own end
+	if FIRST_PERSON[entry.speaker] then return f.other end
+	return f.heard
+end
+
+Engine:SetWeightHook("C", "culture", Personality.CultureFactor, true)
+-- a rule may also ask for it: conditions = { culture = "dwarf" } or { culture = { "orc", "troll" } }
+NS:RegisterCondition("culture", nil, "str")
 
 ---------------------------------------------------------------------------
 -- Pesi: il fattore P
@@ -657,6 +742,10 @@ function Personality:Summary()
 		local src = sources[id] and NS:L(SOURCE_KEY[sources[id]]) or NS:L("soul_src_neutral")
 		table.insert(lines, ("  %s: %s (%s)"):format(Traits.Name(id), text or NS:L("soul_none"), src))
 	end
+	-- #124: the culture of origin, always a choice of the user
+	local culture = self:Culture()
+	table.insert(lines, ("  %s: %s (%s)"):format(NS:L("soul_culture"), culture and self:CultureName(culture) or NS:L("soul_none"),
+		NS:L(culture and "soul_src_explicit" or "soul_src_neutral")))
 	if NS.TotalRP3 and NS.TotalRP3:IsPresent() then
 		table.insert(lines, NS:L("soul_trp3_state", profile.trp3 and NS:L("on") or NS:L("off")))
 	end
@@ -730,6 +819,20 @@ function Personality:Command(rest)
 			local ids = {}
 			for _, a in ipairs(self.archetypes) do table.insert(ids, a.id) end
 			Say("invalid_value", arg, table.concat(ids, ", "))
+		end
+	elseif action == "culture" then
+		-- #124: /au soul culture [<culture> / -]: chosen by hand, never from race or class
+		local id = NS.Lower(arg)
+		if id == "" then
+			local culture = self:Culture()
+			Say("soul_value", NS:L("soul_culture"), culture and self:CultureName(culture) or NS:L("soul_none"))
+		elseif CLEAR_WORDS[id] then
+			self:SetCulture(nil)
+			Say("soul_cleared", NS:L("soul_culture"))
+		elseif self:SetCulture(id) then
+			Say("soul_set", NS:L("soul_culture"), self:CultureName(id))
+		else
+			Say("invalid_value", arg, table.concat(Engine.CULTURE_ORDER, ", "))
 		end
 	elseif action == "trp3" then
 		if not (NS.TotalRP3 and NS.TotalRP3:IsPresent()) then

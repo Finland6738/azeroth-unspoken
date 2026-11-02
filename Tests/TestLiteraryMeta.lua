@@ -84,11 +84,13 @@ T.run("#119: the validator refuses unknown values and fields out of place", func
 	T.ok(probs["W:literaryMeta:meta.b.none"], "a literary form without genre, purpose and origin: a warning")
 	T.ok(probs["E:literaryPlaceholder:meta.b.song"], "a placeholder in a song: an error")
 	T.ok(probs["E:literaryPublic:meta.b.pub"], "a genre in a public voice: an error (D16)")
-	T.eq(Validator.OriginProblem("culture:dwarf"), nil, "culture:dwarf is valid while no culture is declared")
-	Engine.CULTURES.ironforge = true
-	T.ok(Validator.OriginProblem("culture:dwarf") ~= nil, "with declared cultures (#124) an undeclared one is refused")
-	T.eq(Validator.OriginProblem("culture:ironforge"), nil, "a declared one is accepted")
-	Engine.CULTURES.ironforge = nil
+	-- #124 declares the cultures (Data/Themes.lua): only those are accepted; with none declared any lower-case people
+	T.eq(Validator.OriginProblem("culture:dwarf"), nil, "culture:dwarf is declared")
+	T.ok(Validator.OriginProblem("culture:ironforge") ~= nil, "an undeclared one is refused (#124)")
+	local saved = Engine.CULTURES
+	Engine.CULTURES = {}
+	T.eq(Validator.OriginProblem("culture:ironforge"), nil, "with no culture declared any lower-case people passes")
+	Engine.CULTURES = saved
 	T.eq(Gateway:PrivateReason({ id = "meta.b.pub", speaker = "character", text = "x" }), "literary",
 		"the Gateway keeps a rule with a genre private, whatever its voice (D16)")
 	NS.db.disabledPacks.meta_bad = true

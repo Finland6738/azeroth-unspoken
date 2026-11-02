@@ -374,6 +374,15 @@ and says what it is in three fields with closed vocabularies (`Data/Themes.lua`,
 | `purpose` | `remember`, `mourn`, `amuse`, `accompany`, `bless`, `warn`, `advise`, `celebrate` |
 | `origin` | `common` (anyone could have heard it), `personal`, `culture:<people>` in lower case: matched against the culture the user chooses, never against the race (decision D17) |
 
+**Cultures** (#124, [ADR 0044](../docs/adr/0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md)). The
+peoples of `culture:<people>` are declared in `literary.cultures` (`human`, `dwarf`, `gnome`, `kaldorei`, `queldorei`,
+`orc`, `troll`, `tauren`, `forsaken`; a pack may add one, with the interface key `culture_<people>`), and an undeclared
+one is an error. The user chooses the culture of origin by hand in the character soul, never from race or class. A
+`culture:` piece weighs **x1.4** in the chosen culture, **x0.8** for another culture in a voice that is not the
+character's (`npc`, `narrator`), **0** for another culture in the first person (`inner`); with **no culture chosen it is
+never said** (only `common` and `personal` pieces). The numbers are data (`literary.culture`). A rule may also ask
+`conditions = { culture = "dwarf" }` (or a list).
+
 A `genre` alone makes a rule a literary form (category `lore`, private). A `song` or a `formula` has no placeholder.
 The validator also warns when a piece breaks the **genre x situation matrix** (an `amuse` piece in a dark, plagued or
 cursed place or after a death; a `mourn` piece in an ironic or everyday register; an `epigraph` away from a ruin, a
@@ -415,6 +424,33 @@ AzerothUnspoken:RegisterPack({
     },
 })
 ```
+
+**The songbook and recall** (#122, #123, [ADR 0044](../docs/adr/0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md)).
+Every literary piece shown goes in the character's songbook (its id and the time, never its text). Later, at a quiet
+moment (`literary.recall.moments`), the event `lore_recall` may bring it back as a memory, in the inner voice, with the
+same id: a **recall** or **reading frame** takes the place of the piece's **first line** (the attribution) and the
+verses follow. So write the attribution on a line of its own, and keep the verses meaningful without it. Recall frames
+are frames with `mode` (`recall` for a piece heard, `reading` for one read), the `genres` they bring back and `{line}`
+on a line of its own, after the frame's words; they are never used for emotes and have no `event`:
+
+<!-- test -->
+```lua
+AzerothUnspoken:RegisterPack({
+    id = "ricordi",
+    languages = { "itIT", "enUS" },
+    frames = {
+        { id = "ricordi.vela", mode = "recall", genres = { "song" }, styles = { "everyday", "intimate" },
+          en = "A sailor's tune comes back from the harbour:\n{line}",
+          it = "Torna dal porto un motivo di marinai:\n{line}" },
+    },
+})
+```
+
+A piece comes back only if the songbook says it was heard (at least six hours before), it is not muted, a frame of its
+genre and of a near register exists (validator warning `recallFrame` otherwise), and frame and verses fit in 600 bytes
+(error `recallLength`). The user can mute a piece (never said again), mark it as a favourite or as learned by heart
+(it comes back more often) in the Journal tab **Songbook**. Other systems add a piece with
+`AzerothUnspoken.Songbook:Add(id, "heard" | "learned")`.
 
 ## Events
 
@@ -1358,6 +1394,9 @@ a **warning** is advice.
 | `literaryField`, `literaryPlaceholder` | error | `purpose` or `origin` on a rule that is not a literary form; a placeholder in a `song` or a `formula` (#119) |
 | `literaryMeta`, `verseCount` | warning | a literary form without `genre`, `purpose` and `origin`; a different number of verses in two languages (#119) |
 | `literaryMatrix`, `literaryWord` | warning | a pairing the genre x situation matrix forbids; a warning word (night, snow, return, faith) without its condition (#120; not for a rule offered only on a manual event) |
+| `loreFrameMode`, `loreFrameEvent`, `loreFrameGenre`, `loreFrameLine` | error | a recall or reading frame (#123) with a mode other than `recall` or `reading`, an `event`, no genre or an unknown one, `{line}` not on a line of its own |
+| `recallLength` | error | a literary piece whose longest recall frame and longest verses exceed the reading limit of 600 bytes (#123) |
+| `recallFrame` | warning | a literary piece in a private voice with no recall or reading frame of its genre and of a near register: it never comes back as a memory (#123) |
 | `stanzaGenre`, `stanzaShow`, `stanzaFrame`, `stanzaCount`, `stanzaVerses`, `stanzaMetre`, `stanzaLangs`, `stanzaDepth`, `stanzaMix` | error | a song of stanzas that is not a `song`, a `show` other than 1-2, a frame without `{stanzas}` once (or a stanza with it), fewer than 3 or more than 6 stanzas, stanzas of different length or metre, not the same stanzas in every language, a depth of their own, a stanza of another song or added by another pack (#127) |
 | `badCategory` | error | a category's pacing out of range: `budget` and `window` at least 1, `cooldown` and `minCooldown` at least 0 (#118) |
 | `tooLongFramed` | warning | with the longest frame it exceeds 255 bytes |

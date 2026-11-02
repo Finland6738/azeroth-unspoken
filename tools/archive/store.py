@@ -829,7 +829,7 @@ def _literary_problems(con, r, rule):
     if r["purpose"] is not None and r["purpose"] not in lit["purposes"]:
         problems.append("unknown purpose: %s" % r["purpose"])
     if r["piece_origin"] is not None:
-        why = literary.origin_problem(r["piece_origin"])
+        why = literary.origin_problem(r["piece_origin"], lit.get("cultures"))
         if why:
             problems.append(why)
     if not literary.is_literary(rule):

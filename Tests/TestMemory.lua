@@ -1334,11 +1334,12 @@ T.run("diario: schede misurate, nota sotto le schede, righe intere nel suggerime
 		end
 	end
 	NS.db.locale = "it"
-	-- con una nota, meno righe per pagina: 30 voci nella sessione fanno 3 pagine da 10
+	-- con una nota, meno righe per pagina: 30 voci nella sessione fanno 4 pagine (#122: the Songbook tab adds a line of
+	-- tabs in the mock's measures, so a page holds fewer than 10 rows)
 	Fresh()
 	for i = 1, 30 do LM:Record({ kind = "level", level = i, importance = 2, t = 5000 + i }) end
 	NS.JournalFrame:Open("session")
-	T.ok(AllText(JFrame()):find("pagina 1 di 3", 1, true), "sessione: tre pagine")
+	T.ok(AllText(JFrame()):find("pagina 1 di 4", 1, true), "sessione: quattro pagine: " .. tostring(AllText(JFrame()):match("pagina %d+ di %d+")))
 	NS.JournalFrame:Close()
 	-- una riga lunga si taglia e il suggerimento la mostra intera; una corta non ne ha bisogno
 	local long = ("parola "):rep(120)

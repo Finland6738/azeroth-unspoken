@@ -256,6 +256,9 @@ Config.characterDefaults = {
 	relationships = { version = 7, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
+	-- Songbook (#122, ADR 0044): the literary pieces heard and the user's marks, ids and times only (never a text);
+	-- shape, bounds and migrations in Systems/Songbook.lua
+	songbook = { version = 1, heard = {}, learned = {}, muted = {}, favourite = {} },
 	history = {},
 }
 

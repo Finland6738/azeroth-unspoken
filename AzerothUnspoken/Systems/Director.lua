@@ -36,6 +36,28 @@ Director.RECENT_MAX = 24
 Director.RECENT_SPAN = 300
 Director.recent = {}
 
+-- #122 (ADR 0044): [event] = { { event, when } }: offering the event offers its companions too, once each (never their
+-- own companions), when their `when` says so (a quick check with no context, so that the log stays quiet when there is
+-- nothing to say). Systems/Songbook.lua puts lore_recall next to the quiet moments of Data/Themes.lua (`literary.recall`)
+Director.companions = {}
+
+---Offers `companion` whenever `event` is offered and `when()` (if given) is true. Adding it again replaces `when`.
+---@param event string
+---@param companion string
+---@param when? fun(): boolean
+function Director:AddCompanion(event, companion, when)
+	if type(event) ~= "string" or type(companion) ~= "string" or event == companion then return end
+	local list = self.companions[event] or {}
+	for _, c in ipairs(list) do
+		if c.event == companion then
+			c.when = when
+			return
+		end
+	end
+	table.insert(list, { event = companion, when = when })
+	self.companions[event] = list
+end
+
 ---@param intensity number 0-100
 ---@return number chanceMul
 ---@return number cooldownMul
@@ -86,6 +108,19 @@ function Director:Offer(event, extra, onResult)
 	local hunger = Pacing:Hunger(NS.Engine.EventCategory(event) or "general", GetTime())
 	table.insert(self.queue, { event = event, extra = extra, seq = seq, priority = ND:Priority(event), hunger = hunger,
 		onResult = onResult })
+	-- #122: events offered together with this one (the songbook's recall comes with the quiet moments): candidates of
+	-- the same moment, with their own gate, chance and priority; still at most one intervention
+	for _, c in ipairs(self.companions[event] or {}) do
+		local ok, yes = true, true
+		if c.when then ok, yes = pcall(c.when) end
+		if ok and yes then
+			seq = seq + 1
+			table.insert(self.queue, { event = c.event, extra = extra, seq = seq, priority = ND:Priority(c.event),
+				hunger = Pacing:Hunger(NS.Engine.EventCategory(c.event) or "general", GetTime()) })
+		elseif not ok then
+			NS.Diagnostics:Error("director:companion:" .. c.event, yes)
+		end
+	end
 	if self.pendingResolve then return end
 	self.pendingResolve = true
 	if not NS.Compat.After(self.ARBITRATION, function() Director:Resolve() end) then

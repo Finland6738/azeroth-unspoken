@@ -38,7 +38,7 @@ _DATA = {}
 def data(root):
     """The `literary` table of the base data as Python (genres, purposes, matrix, words); empty lists if missing."""
     if root not in _DATA:
-        out = {"genres": [], "purposes": [], "matrix": [], "words": []}
+        out = {"genres": [], "purposes": [], "matrix": [], "words": [], "cultures": []}
         path = os.path.join(root, "AzerothUnspoken", "Data", "Themes.lua")
         if os.path.exists(path):
             p = packfiles._parser(packfiles.read(path))
@@ -58,13 +58,19 @@ def is_literary(rule):
             or rule.get("genre") is not None or rule.get("kind") == "stanzas")
 
 
-def origin_problem(origin):
-    """`common`, `personal` or `culture:<people>` in lower case (D17), else the problem."""
+def origin_problem(origin, cultures=None):
+    """`common`, `personal` or `culture:<people>` in lower case (D17), else the problem. With `cultures` (the declared
+    ones, `literary.cultures` of the base data, #124) the people must be one of them, as `Validator.OriginProblem`."""
     if not isinstance(origin, str):
         return "origin %r is not a string" % (origin,)
-    if origin in ORIGINS or re.fullmatch(r"culture:[a-z][a-z0-9_]*", origin):
+    if origin in ORIGINS:
         return None
-    return "origin %r not valid: common, personal or culture:<people> (lower case)" % origin
+    m = re.fullmatch(r"culture:([a-z][a-z0-9_]*)", origin)
+    if not m:
+        return "origin %r not valid: common, personal or culture:<people> (lower case)" % origin
+    if cultures and m.group(1) not in cultures:
+        return "origin %r: %r is not a declared culture" % (origin, m.group(1))
+    return None
 
 
 def _num(v):

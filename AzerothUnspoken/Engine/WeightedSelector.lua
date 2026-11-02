@@ -383,6 +383,21 @@ end
 ---@type table<string, table<string, fun(ctx: table): boolean>>
 Engine.eventGuards = {}
 
+-- #122, #123 (ADR 0044): events whose lines a system picks itself, [event] = fn(event, ctx, form) -> record or nil. The
+-- guards of the event still decide first; the picker returns a record like PickOwn's. The songbook's recall uses it.
+---@type table<string, fun(event: string, ctx: table, form: string): AUPhraseRecord?>
+Engine.pickers = {}
+-- #122: the ids the user muted in the songbook, a set (nil when there is none): never eligible, whatever the event
+---@type table<string, any>?
+Engine.muted = nil
+
+---Adds, replaces or removes (fn = nil) the picker of an event.
+---@param event string
+---@param fn? fun(event: string, ctx: table, form: string): AUPhraseRecord?
+function Engine:SetPicker(event, fn)
+	if type(event) == "string" then self.pickers[event] = type(fn) == "function" and fn or nil end
+end
+
 ---Aggiunge, sostituisce o toglie (fn = nil) la guardia di un evento.
 ---@param event string
 ---@param name string
@@ -614,8 +629,11 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 	-- literary forms when the setting says never or the character is fighting (any pick, asked for or not)
 	local closed = ctx and ctx.closed
 	local literary = NS.Pacing:LiteraryClosed(ctx) and self.LITERARY_CATEGORY or nil
+	-- #122: the pieces the user muted in the songbook (Systems/Songbook.lua), nil when there is none
+	local muted = self.muted
 	for _, p in ipairs(list) do
 		if (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
+			and not (muted and muted[p.id])
 			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
 			and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary) then
 			-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre (chance,
@@ -957,6 +975,17 @@ end
 ---@return AUPhraseRecord?
 function Engine:PickOwn(event, ctx, form, composite)
 	if not self:EventAllowed(event, ctx) then return nil end
+	-- #122, #123: an event whose lines come from a system, not from rules of its own (lore_recall: the songbook)
+	local picker = self.pickers[event]
+	if picker then
+		if composite then return nil end
+		local ok, rec = pcall(picker, event, ctx, form)
+		if not ok then
+			if NS.Diagnostics then NS.Diagnostics:Error("picker:" .. event, rec) end
+			return nil
+		end
+		return rec
+	end
 	local lang = NS:TextLang()
 	local now = time()
 	local r3 = not self.R1_COMPAT

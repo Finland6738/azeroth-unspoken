@@ -731,6 +731,115 @@ function Validator.StanzaProblems(p, langs)
 	return out
 end
 
+---The problems of a recall or reading frame (#123, ADR 0044): a mode `recall` or `reading`, no event (it brings back a
+---piece on lore_recall), one or more declared genres, and {line} at the start of a line of its own (the verses follow
+---the frame's line). Each problem is { level, code, lang?, msg }.
+---@param f table a frame with `mode`
+---@return table[]
+function Validator.LoreFrameProblems(f)
+	local out = {}
+	local function Bad(code, msg, lang) table.insert(out, { level = "error", code = code, lang = lang, msg = msg }) end
+	if f.mode ~= "recall" and f.mode ~= "reading" then
+		Bad("loreFrameMode", ("mode '%s': a recall or reading frame is `recall` or `reading`"):format(tostring(f.mode)))
+	end
+	if f.event ~= nil then
+		Bad("loreFrameEvent", "a recall or reading frame has no event: it brings back a piece of the songbook (lore_recall)")
+	end
+	if type(f.genres) ~= "table" or #f.genres == 0 then
+		Bad("loreFrameGenre", "a recall or reading frame names the genres it brings back")
+	else
+		for _, g in ipairs(f.genres) do
+			if not (type(g) == "string" and Engine.GENRES[g]) then
+				Bad("loreFrameGenre", ("unknown genre '%s' in a recall or reading frame"):format(tostring(g)))
+			end
+		end
+	end
+	for _, lang in ipairs(Engine.SortedKeys(f.text or {})) do
+		for i, var in ipairs(f.text[lang]) do
+			local t = Engine.VariantOk(var) and Engine.VariantText(var)
+			if type(t) == "string" and not t:find("\n{line}", 1, true) then
+				Bad("loreFrameLine", ("variant %d: {line} on a line of its own, after the frame's words"):format(i), lang)
+			end
+		end
+	end
+	return out
+end
+
+---The bytes a recall adds to the verses of a piece in a language: the longest frame line (the frame without {line}).
+---@param frames table[]
+---@param lang string
+---@return integer
+local function FrameBytes(frames, lang)
+	local most = 0
+	for _, f in ipairs(frames) do
+		for _, var in ipairs(f.text[lang] or {}) do
+			local t = Engine.VariantOk(var) and Engine.VariantText(var)
+			if type(t) == "string" then most = math.max(most, #t - #"{line}") end
+		end
+	end
+	return most
+end
+
+---The problems of a literary piece as a memory (#123, ADR 0044): with a genre and a private voice it should have at
+---least one recall or reading frame of its genre and of a compatible register (StyleResolver:Compatible), else it never
+---comes back (warning `recallFrame`); the longest frame with the longest verses of a variant (its first line, the
+---attribution, gives way to the frame; a song of stanzas with its `show` longest stanzas) stays within the reading limit
+---(error `recallLength`).
+---@param p AUPhrase
+---@param langs string[]
+---@return table[]
+function Validator.RecallProblems(p, langs)
+	local out = {}
+	if not p.genre or not Engine.IsLiteraryRule(p) or Engine.PUBLIC_SPEAKERS[p.speaker] then return out end
+	local frames = {}
+	for _, mode in ipairs({ "recall", "reading" }) do
+		for _, f in ipairs(Engine.loreFrames[mode] or {}) do
+			if f.genreSet and f.genreSet[p.genre] and Engine.StyleResolver:Compatible(f.styles, p.styles) then
+				table.insert(frames, f)
+			end
+		end
+	end
+	if #frames == 0 then
+		table.insert(out, { level = "warning", code = "recallFrame",
+			msg = ("no recall or reading frame for the genre '%s' in a register near %s: the piece never comes back as a memory")
+				:format(tostring(p.genre), table.concat(p.styles or {}, ", ")) })
+		return out
+	end
+	local limit = Validator.LIMITS.READING
+	for _, lang in ipairs(langs) do
+		local list = p.text[lang] or {}
+		local verses = 0
+		if p.kind == "stanzas" then
+			local frame = list[1] and Engine.VariantOk(list[1]) and Engine.VariantText(list[1])
+			local first = type(frame) == "string" and frame:match("^[^\n]*\n") or nil
+			if first then
+				local sizes = {}
+				for i = 2, #list do
+					local t = Engine.VariantOk(list[i]) and Engine.VariantText(list[i])
+					if type(t) == "string" then table.insert(sizes, #t) end
+				end
+				table.sort(sizes, function(a, b) return a > b end)
+				verses = #frame - #first - #Engine.STANZA_MARK
+				for k = 1, math.min(tonumber(p.show) or 1, #sizes) do verses = verses + sizes[k] + (k > 1 and 2 or 0) end
+			end
+		else
+			for _, var in ipairs(list) do
+				local t = Engine.VariantOk(var) and Engine.VariantText(var)
+				local first = type(t) == "string" and t:match("^[^\n]*\n") or nil
+				if first then verses = math.max(verses, #t - #first) end
+			end
+		end
+		if verses > 0 then
+			local total = verses + FrameBytes(frames, lang)
+			if total > limit then
+				table.insert(out, { level = "error", code = "recallLength", lang = lang,
+					msg = ("as a memory, the frame and the verses take up to %d bytes: the reading limit is %d"):format(total, limit) })
+			end
+		end
+	end
+	return out
+end
+
 ---The problems of a literary form's metadata (#119) and its warnings (#120): the vocabularies, the fields on a rule
 ---that is not literary, the missing metadata, placeholders in a song or a formula, the verses across languages, the
 ---matrix and the warning words. Each problem is { level, code, lang?, msg }.
@@ -1142,6 +1251,8 @@ function Validator:Run(opts)
 			do
 				local textLangs = Engine.SortedKeys(p.text)
 				for _, b in ipairs(Validator.LiteraryProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
+				-- #123: the recall and reading frames that can bring the piece back, and the length of the memory
+				for _, b in ipairs(Validator.RecallProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
 				if p.kind == "stanzas" then
 					for _, b in ipairs(Validator.StanzaProblems(p, textLangs)) do Add(b.level, b.code, p.pack, id, b.lang, b.msg) end
 					-- the stanzas of a song are its own: the same stanza in two songs mixes them (a rule that shares the
@@ -1495,6 +1606,9 @@ function Validator:Run(opts)
 					if not (type(th) == "string" and Engine.THEMES[th]) then
 						Add("error", "badTheme", packId, f.id, nil, ("unknown theme '%s' in a frame"):format(tostring(th)))
 					end
+				end
+				if f.mode ~= nil then
+					for _, b in ipairs(Validator.LoreFrameProblems(f)) do Add(b.level, b.code, packId, f.id, b.lang, b.msg) end
 				end
 			end
 			for _, v in ipairs(pack.vocabList or {}) do

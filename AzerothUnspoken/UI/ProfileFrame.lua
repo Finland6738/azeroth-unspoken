@@ -1,5 +1,6 @@
 -- Azeroth Unspoken: finestra del profilo del personaggio (Character Soul, GDD §7.1).
 -- Scelta dell'archetipo (una preimpostazione), un cursore da 0 a 100 per ogni intensità (R4, #96), voce interiore,
+-- the culture of origin (#124: chosen by hand, never from race or class),
 -- argomenti da evitare, consenso a Total RP 3 e profilo neutro.
 -- Ogni cambiamento vale subito (le frasi successive usano già il nuovo profilo) e si salva per personaggio.
 -- Si apre con /au soul o dal pannello delle impostazioni. Il guscio è W.Window (#187): bordo, fascia del titolo, pulsante
@@ -40,6 +41,59 @@ end
 local function Change(fn)
 	fn()
 	ProfileFrame:Refresh()
+end
+
+-- #124: the next culture of origin in Engine.CULTURE_ORDER (after the last: none)
+local function NextCulture(current)
+	local list = NS.Engine.CULTURE_ORDER
+	if current == nil then return list[1] end
+	for i, c in ipairs(list) do
+		if c == current then return list[i + 1] end
+	end
+	return list[1]
+end
+
+-- #124 (D17): the culture of origin, chosen by hand and never deduced from race or class. A button that goes through the
+-- cultures, as wide as the longest name in the interface language (measured, like the tabs of the journal), the "x"
+-- that removes the choice and a note on what it changes
+local CULTURE_PAD, CULTURE_MIN = 24, 170
+local function BuildCultureRow(y)
+	local row = {}
+	row.label = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+	row.label:SetPoint("TOPLEFT", 16, y - 5)
+	row.label:SetWidth(170)
+	row.label:SetJustifyH("LEFT")
+	row.value = W.FlatButton(frame, "", CULTURE_MIN, 24, function()
+		Change(function() Personality:SetCulture(NextCulture(Personality:Culture())) end)
+	end)
+	row.value:SetPoint("TOPLEFT", 190, y)
+	W.Tooltip(row.value, function() return NS:L("soul_culture_tip") end)
+	row.clear = W.FlatButton(frame, "x", 24, 24, function() Change(function() Personality:SetCulture(nil) end) end)
+	row.clear:SetPoint("TOPLEFT", CLEAR_X, y)
+	W.Tooltip(row.clear, function() return NS:L("soul_culture_clear_tip") end)
+	row.source = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+	row.source:SetPoint("TOPLEFT", CLEAR_X + 30, y - 6)
+	row.source:SetWidth(WIDTH - 16 - CLEAR_X - 30)
+	row.source:SetJustifyH("LEFT")
+	frame.culture = row
+end
+
+---The width of the culture button: the longest culture name (or "not set") in the font of the buttons, plus a margin,
+---between CULTURE_MIN and the "x" column.
+---@return number
+function ProfileFrame:CultureWidth()
+	if not frame then return CULTURE_MIN end
+	local widest = 0
+	local names = { NS:L("soul_none") }
+	for _, c in ipairs(NS.Engine.CULTURE_ORDER) do table.insert(names, Personality:CultureName(c)) end
+	for _, name in ipairs(names) do
+		frame.measure:SetText(name)
+		local w = frame.measure:GetStringWidth() or 0
+		-- a client that does not measure hidden texts: about 7 units a character
+		if w <= 0 then w = #name * 7 end
+		if w > widest then widest = w end
+	end
+	return math.max(CULTURE_MIN, math.min(CLEAR_X - 190 - 6, math.ceil(widest) + CULTURE_PAD))
 end
 
 local function BuildTraitRow(id, y)
@@ -94,6 +148,9 @@ local function Build()
 	frame.intro:SetPoint("TOPLEFT", 16, -W.TOP)
 	frame.intro:SetWidth(WIDTH - 32)
 	frame.intro:SetJustifyH("LEFT")
+	-- measures the culture names (#124), never shown; the font of the flat buttons
+	frame.measure = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+	frame.measure:Hide()
 
 	-- archetipo
 	frame.archLabel = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
@@ -122,6 +179,8 @@ local function Build()
 			y = y - ROW_HEIGHT
 		end
 	end
+	BuildCultureRow(y)
+	y = y - ROW_HEIGHT
 
 	-- argomenti da evitare
 	frame.avoidTitle = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
@@ -181,6 +240,13 @@ function ProfileFrame:Refresh()
 		row.source:SetText(src and NS:L("soul_src_" .. src) or NS:L("soul_src_neutral"))
 		row.clear:SetShown(Explicit(id) ~= nil)
 	end
+	-- #124: the culture of origin
+	local culture, cr = Personality:Culture(), frame.culture
+	cr.label:SetText(NS:L("soul_culture"))
+	cr.value:SetWidth(self:CultureWidth())
+	cr.value:SetText(culture and Personality:CultureName(culture) or NS:L("soul_none"))
+	cr.clear:SetShown(culture ~= nil)
+	cr.source:SetText(NS:L(culture and "soul_src_explicit" or "soul_culture_unset"))
 	frame.avoidTitle:SetText(NS:L("soul_avoid_title"))
 	local avoided = effective.avoid or {}
 	-- an avoided topic has a full edge and a bar under its name (#187), not a colour only

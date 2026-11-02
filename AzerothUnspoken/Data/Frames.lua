@@ -78,5 +78,31 @@ NS:RegisterPack({
 		{ event = "farewell", it = "si volta un'ultima volta prima di andare. «{line}»", en = "turns back one last time before leaving. \"{line}\"" },
 		{ event = "pray", it = "si inginocchia e abbassa la voce. «{line}»", en = "kneels and lowers {g:his|her} voice. \"{line}\"" },
 		{ event = "jest", it = "sogghigna. «{line}»", en = "smirks. \"{line}\"" },
+
+		-- #123 (ADR 0044): recall and reading frames. A literary piece the songbook says was heard (or read) comes back
+		-- as a memory, in the inner voice, with the same id and the same text: the frame takes the place of the piece's
+		-- first line (its attribution) and {line} is the rest, verse by verse. `mode`: recall (heard: said or sung) or
+		-- reading (read: carved or written); `genres`: the genres it brings back; `styles`: the registers it suits
+		-- (StyleResolver:Compatible). Never an emote, never in chat (D16). First person, like the inner voice.
+		{ id = "frame.recall.kept", mode = "recall", genres = { "verse", "formula", "song" },
+			styles = { "intimate", "everyday", "ancient" },
+			en = "Words I heard once come back whole, without my looking for them:\n{line}",
+			it = "Tornano parole sentite una volta, intere, senza che le cerchi:\n{line}" },
+		{ id = "frame.recall.tune", mode = "recall", genres = { "song" }, styles = { "everyday", "ironic", "intimate" },
+			en = "A tune I heard somewhere starts up again in my head:\n{line}",
+			it = "Un motivo sentito chissà dove mi riprende in testa:\n{line}" },
+		{ id = "frame.recall.solemn", mode = "recall", genres = { "song", "verse", "formula" },
+			styles = { "ceremonial", "tragic", "epic", "ancient" },
+			en = "From further back than this road, the words return:\n{line}",
+			it = "Da più lontano di questa strada, le parole tornano:\n{line}" },
+		{ id = "frame.recall.told", mode = "recall", genres = { "tale", "prose" },
+			en = "A story I heard once comes back, the way it was told:\n{line}",
+			it = "Torna una storia sentita una volta, così come fu raccontata:\n{line}" },
+		{ id = "frame.reading.stone", mode = "reading", genres = { "epigraph" }, styles = { "ancient", "ceremonial", "intimate" },
+			en = "The words cut in that stone come back to me, letter by letter:\n{line}",
+			it = "Le parole incise in quella pietra mi tornano, lettera per lettera:\n{line}" },
+		{ id = "frame.reading.page", mode = "reading", genres = { "epigraph", "prose" }, styles = { "intimate", "everyday", "tragic" },
+			en = "Lines I read once, somewhere, come back as they were written:\n{line}",
+			it = "Righe lette una volta, chissà dove, tornano come erano scritte:\n{line}" },
 	},
 })

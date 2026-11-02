@@ -52,6 +52,7 @@ Systems\Hostility.lua
 Systems\Interlocutor.lua
 Systems\NPCAlive.lua
 Systems\StoryArcs.lua
+Systems\Songbook.lua
 
 # --- interfaccia ---
 UI\Widgets.lua

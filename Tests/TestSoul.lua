@@ -937,7 +937,7 @@ T.run("finestra del profilo", function()
 	Cmd("soul")
 	T.ok(NS.ProfileFrame:IsOpen(), "/au anima la apre")
 	local f, b = ProfileButtons()
-	T.eq(#b, 26, "pulsanti: chiusura in alto, archetipo, una x per scala, voce interiore, argomenti, consenso, neutro, chiudi")
+	T.eq(#b, 28, "pulsanti: chiusura in alto, archetipo, una x per scala, voce interiore, cultura d'origine e la sua x (#124), argomenti, consenso, neutro, chiudi")
 	T.ok(b[1] == f.closeBox, "#174: the close box at the top right comes first")
 	T.ok(f.title:GetText():find("Anima del personaggio", 1, true), "titolo")
 	-- archetipo: ogni clic passa al successivo e vale subito
@@ -972,7 +972,7 @@ T.run("finestra del profilo", function()
 	voiceValue:Click()
 	T.eq(NS.cdb.personality.traits.innerVoice, "off", "il clic cambia il valore")
 	-- argomenti da evitare
-	local topicButtons = { unpack(b, 16, 23) }
+	local topicButtons = { unpack(b, 18, 25) }
 	T.eq(#topicButtons, 8, "otto argomenti")
 	topicButtons[1]:Click()
 	T.ok(NS.cdb.personality.traits.avoid.death, "argomento acceso")
