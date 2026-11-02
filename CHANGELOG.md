@@ -8,6 +8,47 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### N9: phrases for the NPC relationships, second part (issue #221)
+
+The content of the steps merged after the first part of N9: hostility (N1), the nemesis (N7), the companion pet, grief
+and letters (N8), and the songbook's pieces for every culture of origin. Narration only, and nothing goes to public
+chat: the lines are in the inner voice, the openers in the dialogue window, the notices and letters in the private
+narrator and the journal, the literary pieces in private voices. Drafted by an AI session in the project's own voice and
+written through the authoring archive (drafts, export; the round trip is still an empty diff); the pieces' editorial
+records are in `authoring/pieces.csv` with their three review steps left for the owner. Tested with the mock client only.
+
+- **Added: 18 hostility intentions** (`base_relations`, EN and IT, two variants each): the grudge by role (a guard, a
+  merchant, a trainer, a quest giver you attacked), an NPC you killed, hatred (Hated) and fear, guest-right broken (a
+  stoic voice), the town that heard of a betrayal by role and among friends, the other faction's town at night and in
+  an ironic voice, and coming home in the rain, at night, after a long road, or to a town that remembers.
+- **Added: 6 dialogue-window openers**: a guard, a merchant and a trainer who hold a grudge, the host whose roof you
+  struck, a guard who heard of a betrayal, and an innkeeper who greets you home (`homeReturn`, familiarity 25).
+- **Added: 21 intentions for the companion pet and grief**: the pet's call (trusted, hungry, in the rain), dismissal
+  (bonded, at night), mood (a happy bonded pet, a new one off to a poor start), a demon growing familiar; grief for a
+  new, a trusted pet and in a stoic voice; grief for an NPC by role (guard, merchant, trainer, quest giver), for a
+  friend and for the NPC of a private vow; an ally's death for a rival, at night, in a stoic or a devout voice
+  (`req:faith:devout`). Every grief line carries `topic:death`.
+- **Added: 8 nemesis intentions** (`base_arcs`): the narrator at the second fall (HAUNTED), meetings in an ironic, a
+  night-time and a stoic voice (SWORN only, where it counts three falls), an ironic opening, and its fall told in a
+  stoic, an ironic and a silent narrator's voice.
+- **Added: 21 literary pieces** in the verses pack (43 now): four songs of a nemesis's fall (a hunters' boast; an
+  orcish feud chant for a nemesis that fell after three falls, `arc.from = SWORN`; a dwarven hall song; a tauren verse
+  of respect), four laments (a kaldorei keening for a beast companion, a forsaken dirge and a troll shore lament for a
+  group member, a human wake song for an NPC), one piece of each culture of origin in its own people's inner voice
+  (human, dwarf, gnome, kaldorei, quel'dorei, orc, troll, tauren, forsaken), a tauren tale and an orcish saying told by
+  an innkeeper (any chosen culture hears them), a common tale of the road, and a second song of interchangeable
+  stanzas: the innkeeper's song for a newcomer, four stanzas, one a time. No invented names, every piece attributed to
+  a voice, no faith named.
+- **Changed: a third wording for the hostility notices** (attack, kill, guest-right, witnesses, the city, coming home
+  warm and cold) and **five letters per writer**, with **guards and quest givers** writing as themselves
+  (`Data/Relationships.lua`: `hostility.variants` 3, `companion.letters.variants` 5, `letters.roles`).
+- **Tests:** `Tests/check_versi.py` allows a tale up to 600 bytes, counts the five innkeeper pieces and the two songs of
+  stanzas, and checks that every culture of origin has a piece in its own people's voice; `TestCompanion` checks the
+  letters of the two new writers.
+- **Counts:** base 1,342 intentions, 1,349 loaded with the example packs (`base_relations` 234, `base_dialogues` 193,
+  `base_arcs` 52); the verses pack 43 pieces. Coverage report: 1,385 intentions, 2,902 texts per language (+74 and
+  +131).
+
 ### Faster picks at scale: the groups of the index checked apart (issue #138)
 
 The p95 pick time at 50,000 entries is now under its 5 ms target, **without changing a single pick**: the same seed and context give the same line ([ADR 0024](docs/adr/0024-selection-index-compact-registry-and-bounded-memory.md), "Update: the groups of the index checked apart"). The memory target (40 MB) is not met and #138 stays open for it.

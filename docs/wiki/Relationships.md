@@ -185,7 +185,7 @@ These deaths are read **without a combat log**, from the game's death signal and
 
 ### Letters
 
-When you log in after a long time away from someone you are **close to** (Close friend or above, not met for three weeks or more, never someone you attacked), they may **write you a letter**: it waits in the [[journal|Memory-and-Journal]], with a private notice. An innkeeper, a merchant or a trainer writes as one; anyone else as a friend. At most one letter a login and one a week, and the same person writes again only after two months. Letters are **never** game mail and never go to chat. Turn them off with **Letters**.
+When you log in after a long time away from someone you are **close to** (Close friend or above, not met for three weeks or more, never someone you attacked), they may **write you a letter**: it waits in the [[journal|Memory-and-Journal]], with a private notice. An innkeeper, a merchant, a trainer, a guard or a quest giver writes as one; anyone else as a friend; each has five letters to choose from. At most one letter a login and one a week, and the same person writes again only after two months. Letters are **never** game mail and never go to chat. Turn them off with **Letters**.
 
 ### What NPCs and your character say about all this
 

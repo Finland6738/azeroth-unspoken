@@ -775,4 +775,29 @@ NS:AddTexts("itIT", {
 		"{nickname}. Dritta la schiena: le cattive abitudini si vedono da qui.",
 		"Allora, {nickname}: cosa hai esercitato, e cosa hai evitato?",
 	},
+	-- N9 (#221): openers for a grudge (N1: attacked, killed, guest-right broken), a betrayal heard in the town, a return home
+	["npcd.guard.open.betray1"] = {
+		"Qui le voci corrono. Bada a te: ora ti teniamo d'occhio tutti.",
+		"Allora è di te che parlano. Cammina con prudenza.",
+	},
+	["npcd.guard.open.foe1"] = {
+		"Tieni le mani dove posso vederle. Ricordo l'ultima volta che si sono mosse.",
+		"Tu. Di' quello che ti serve e circola.",
+	},
+	["npcd.innkeeper.open.home1"] = {
+		"Ma guarda chi ci ha ridato la strada! Siediti, siediti. Il fuoco sentiva la tua mancanza.",
+		"Eccoti. Cominciavo a pensare che avessi trovato una locanda migliore. Spero di no.",
+	},
+	["npcd.innkeeper.open.host1"] = {
+		"Hai del fegato, a metterti sotto questo tetto. C'è un letto. Non c'è benvenuto.",
+		"Tengo la porta aperta perché è il mio mestiere. Non per te.",
+	},
+	["npcd.merchant.open.foe1"] = {
+		"Prima le monete sul banco. Poi parliamo. Poi te ne vai.",
+		"Vendo a chiunque. Perfino a te. Non farmene pentire.",
+	},
+	["npcd.trainer.open.foe1"] = {
+		"Ti insegnerò, perché ho giurato di insegnare a chiunque venga. Non perché tu lo meriti.",
+		"La lezione resta. Quello che hai fatto con l'ultima, non l'ho dimenticato.",
+	},
 }, "base_dialogues")

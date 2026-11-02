@@ -443,7 +443,7 @@ NS.Relationships:RegisterData({
 		host = { days = 120, trust = 0.25 },
 		foe = { days = 90 },
 		home = { awayDays = 5, minutes = 10 },
-		perSession = 3, variants = 2,
+		perSession = 3, variants = 3,
 	},
 
 	-- N7 (#219): the nemesis (Systems/Nemesis.lua, ADR 0045). An NPC that kills the character becomes a nemesis when its
@@ -499,8 +499,8 @@ NS.Relationships:RegisterData({
 		ally = { places = { none = true, party = true, raid = true }, gap = 300, allyGap = 900, perSession = 6 },
 		lament = "lament",
 		letters = {
-			band = "close", absenceDays = 21, perLogin = 1, gapDays = 7, npcDays = 60, variants = 3,
-			roles = { innkeeper = true, merchant = true, trainer = true },
+			band = "close", absenceDays = 21, perLogin = 1, gapDays = 7, npcDays = 60, variants = 5,
+			roles = { innkeeper = true, merchant = true, trainer = true, guard = true, questgiver = true },
 		},
 	},
 })

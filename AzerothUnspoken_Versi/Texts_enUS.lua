@@ -114,4 +114,73 @@ AU:AddTexts("enUS", {
 	["versi.lament.pet.01"] = {
 		"A hunters' lament, said low over a fallen companion:\nYou ran ahead of me through every wood,\nyou never asked the reason or the road;\nlie easy now, old friend, where you have stood:\nthe weight of what comes after is my load.",
 	},
+	-- N9 (#221): more songs of a fall and laments, a piece for each culture of origin (#124: the inner voice for its own
+	-- people), a tale and a saying heard from an innkeeper, a common tale and an inn song of interchangeable stanzas
+	["versi.culture.dwarf.01"] = {
+		"A drinking song of the forge-halls, roared with the tankards held high:\nStone is cold and iron gray,\nand the anvil sings off-key;\nfill the cup and drown the day,\nfor the forge will wait for me.",
+	},
+	["versi.culture.forsaken.01"] = {
+		"A saying of the risen, passed from cellar to cellar with a dry laugh:\nCold the grave and cold the road,\nlong the sleep and long the day;\nkeep your wits, and drop the load:\nall the rest has gone its way.",
+	},
+	["versi.culture.gnome.01"] = {
+		"A workshop rhyme, the kind chalked over every workbench:\nNote the spark and note the smoke,\nnote the bang that shook the floor;\nevery bolt that ever broke\ntaught the bench a little more.",
+	},
+	["versi.culture.human.01"] = {
+		"A plowing song from the farms, the kind sung behind the ox:\nFurrow straight and furrow long,\nturn the earth and turn the song;\nwhat the field will give, it gives,\nand the one who plows it lives.",
+	},
+	["versi.culture.kaldorei.01"] = {
+		"A watch-song of the sentinels, sung low when the moon clears the trees:\nRise slow above the sleeping wood\nand silver every bough;\nwe kept the watch as sisters should,\nand you may keep it now.",
+	},
+	["versi.culture.orc.01"] = {
+		"A marching chant of the clans, beaten out on the drum before the dust settles:\nBeat the hide and stamp the stone,\nevery foot beside my own;\nwhat was lost lies far behind,\nall the rest is ours to find.",
+	},
+	["versi.culture.queldorei.01"] = {
+		"A verse the exiles of the golden woods still say, when the light slants just so:\nThe leaves at home were gold all year;\nwe did not think them rare.\nNow every autumn, far from there,\nI see them everywhere.",
+	},
+	["versi.culture.tauren.01"] = {
+		"A dawn blessing of the plains folk, said with a hand pressed flat to the ground:\nGrass, stand up; the sun has come.\nEarth, be patient with our feet.\nWind, go first and tell the herd\nwe walk softly where we meet.",
+	},
+	["versi.culture.troll.01"] = {
+		"A saying of the island folk, passed from the old to the young beside the fire:\nThe tide goes out, the tide comes in;\nthe shore forgets each mark you make.\nSo walk it light, and keep your kin,\nand give the sea what it will take.",
+	},
+	["versi.inn.saying.orc.01"] = {
+		"Something a caravan hand from the clans once told me, and I never forgot it:\nFeed the belly, and the grudge grows thin;\nstarve it, and it learns each name.\nSo eat, and let a little go:\nthe road will teach it all the same.",
+	},
+	["versi.inn.stanzas.01"] = {
+		"A song the regulars strike up whenever someone new sits down:\n{stanzas}\n\nSo pull up a stool and pull up a cup:\nthe fire is low, but the keeper is up.",
+		"The farmer came in with the mud to his knee,\nand swore that the rain was in love with his tree;\nhe drank to the rain, and he drank to the root,\nand went off at last in a single wet boot.",
+		"The soldier came in with a dent in her shield,\nand told of the dragon she fought in the field;\nby three cups the dragon had dwindled to geese,\nby four it was one, and it wanted some peace.",
+		"The miner came in with the dust in his beard,\nand swore that the deep was not all that he feared;\nthe thing that he feared was the foot of his cup,\nso he kept it from showing by filling it up.",
+		"The stranger came in with no name and no tale,\nand sat in the corner and nursed her one ale;\nwe sang her these verses, and when they were done,\nshe knew every word, and she sang the last one.",
+	},
+	["versi.inn.tale.tauren.01"] = {
+		"A tale I had from a traveler of the plains, years ago:\nA young runner once raced the rain across the grass.\nShe ran until her heart was thunder, and still the rain caught her.\nAn elder found her soaked and laughing on a hill.\n\"You lost,\" he said. \"And the grass drank. Not every race is yours to win.\"",
+	},
+	["versi.lament.ally.02"] = {
+		"A cellar dirge of the risen, said for one who does not stand up:\nWe died once, and we did not stay;\nwe found our feet, and walked away.\nSo may you rise, or may you rest:\nwhichever one the dark thinks best.",
+	},
+	["versi.lament.ally.03"] = {
+		"A shore lament of the island folk, sung to the slap of the water:\nThe water took you, as it takes,\nand gave the shore your name;\nwe sing you out beyond the reef,\nand keep the song the same.",
+	},
+	["versi.lament.npc.02"] = {
+		"A wake song of the farmlands, sung slow when a neighbor is carried out:\nLeave the gate upon the latch,\nleave a loaf upon the board;\nhands that helped us mend the thatch\nwalk ahead now, down the road.",
+	},
+	["versi.lament.pet.02"] = {
+		"A keening of the sentinels for a fallen companion of the hunt, sung with no tune at all:\nYour step was softer than the leaf,\nyour eye was brighter than the stream;\nnow lie where roots will hold you close\nand run the woods inside a dream.",
+	},
+	["versi.nemesis.song.04"] = {
+		"The old boast of hunters, said once over a fallen terror and never again:\nHere ends the fear that walked this road,\nhere stood the hunted one;\nmark well the ground, and let it lie:\nthe telling is begun.",
+	},
+	["versi.nemesis.song.05"] = {
+		"A blood-feud chant of the clans, growled low once the feud is closed:\nThree times it threw me to the dirt,\nthree times the dirt said no;\nnow let the drum speak what it knows:\nthe debt is paid. Let go.",
+	},
+	["versi.nemesis.song.06"] = {
+		"A hall song of the mountain clans, sung as a new notch is cut in the stone of the doorpost:\nCut the notch and name the day,\nlet the stone keep what we say;\none less terror, one less fear,\none more notch to tally here.",
+	},
+	["versi.nemesis.song.07"] = {
+		"A plains verse said over a great foe fallen, before the hunters leave it to the earth:\nYou walked these hills before my kin;\nthe grass rose up where you had been.\nLie down, and give the earth its due;\nthe hills will keep a place for you.",
+	},
+	["versi.tale.road.01"] = {
+		"A story caravan drivers tell, to pass a slow mile:\nA driver once cursed his mule for stopping dead on a clear road.\nHe pulled, he pleaded, he sat down and sulked beside it.\nLater that day a rockslide came down the very bend ahead.\nThe mule had heard the stones long before. He never cursed it again.",
+	},
 }, "versi")
