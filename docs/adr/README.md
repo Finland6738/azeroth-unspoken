@@ -54,6 +54,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0044](0044-songbook-recall-and-reading-frames-and-the-culture-of-origin.md) | The songbook, recall and reading frames, and the culture of origin chosen by hand | accepted |
 | [0045](0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md) | Nemesis: arcs told for many NPCs, who killed the character, and the song of a fall | accepted |
 | [0046](0046-companion-pet-grief-the-death-of-an-ally-and-letters-in-the-journal.md) | The companion pet, grief, the death of an ally, and letters in the journal | accepted |
+| [0047](0047-observed-guid-as-an-identity-aid-for-players.md) | The observed GUID as an identity aid for players | accepted (stability unconfirmed in game) |
 
 ## Pending decisions
 

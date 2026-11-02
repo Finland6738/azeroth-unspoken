@@ -177,6 +177,8 @@ See [[Memory and Journal|Memory-and-Journal]].
 | `/au relationships remove <name\|npc:ID>` | Deletes a relationship. |
 | `/au relationships detail <name>` | Prints one relationship: label, disposition and axes. |
 | `/au relationships proximity on\|off` | Recognise known players by nameplate and mouseover (this session only; off by default). `on` shows a warning; repeat after a couple of seconds, within 30 s, to confirm. `off` is immediate. |
+| `/au relationships identity [accept <name>\|keep <name>]` | Lists the questions the identity code raised (a known name that looks like a new character, a known person who may have a new name) and answers one: `accept` remembers the new code or moves the record to the new name, `keep` leaves it. Nothing changes until you answer. |
+| `/au relationships guid on\|off\|clear` | Turns the identity code on or off (on by default); `clear` forgets every stored code. Names and choices stay. |
 | `/au relationships share [on\|off\|all\|copy]` | The list of people shared by your characters (off by default). `on` shows the warning; repeat after a couple of seconds, within 30 s, to confirm. `all` moves this character's choices into it, `copy` copies the shared choices into this character. |
 | `/au relationships scope <name> shared\|character` | Whose choices count for one player. |
 | `/au relationships note <name> <text>` | Writes your private note. |

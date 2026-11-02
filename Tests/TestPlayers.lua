@@ -161,8 +161,8 @@ end
 ---------------------------------------------------------------------------
 T.run("a player record has a user block and a seen block", function()
 	Fresh()
-	T.eq(R.VERSION, 8, "relationships.version is 8 (N5 #217 made it 5: favours, nicknames; N6 #218 6: towns, town, heard, rival; N1 #213 7: foe, home; N8 #220 8: pets, letters)")
-	T.eq(NS.cdb.relationships.version, 8, "a new character starts at version 8")
+	T.eq(R.VERSION, 9, "relationships.version is 9 (#112 made it 9: seen.guid; N5 #217 made it 5: favours, nicknames; N6 #218 6: towns, town, heard, rival; N1 #213 7: foe, home; N8 #220 8: pets, letters)")
+	T.eq(NS.cdb.relationships.version, 9, "a new character starts at version 9")
 	local key, rec = Person("Aldric-Stormrage", { trust = 55, affection = 45 })
 	T.ok(type(rec.user) == "table" and type(rec.seen) == "table", "both blocks exist")
 	for _, flat in ipairs({ "first", "last", "count", "trust", "affection", "label", "note", "tags", "traits", "role" }) do
@@ -237,10 +237,10 @@ T.run("migration of relationships.version 1 to 2", function()
 	T.eq(dara.seen.count, 0, "negative count"); T.eq(dara.seen.kinds.group, 2, "valid kind kept"); T.eq(dara.seen.kinds["Bad Kind"], nil, "bad kind dropped")
 	T.ok(#dara.seen.facts == 2 and dara.seen.facts[1].text == nil, "bad facts dropped and no text field survives")
 	-- data from a newer version stays read-only and untouched
-	NS.cdb.relationships = { version = 9, npcs = {}, players = { ["Eve-Stormrage"] = { user = { future = true }, seen = { first = 1 }, nickname = "x" } } }
+	NS.cdb.relationships = { version = 10, npcs = {}, players = { ["Eve-Stormrage"] = { user = { future = true }, seen = { first = 1 }, nickname = "x" } } }
 	R.readOnly = false
 	R:Sanitize()
-	T.ok(R.readOnly and NS.cdb.relationships.players["Eve-Stormrage"].nickname == "x" and NS.cdb.relationships.version == 9, "version 9: read-only, intact")
+	T.ok(R.readOnly and NS.cdb.relationships.players["Eve-Stormrage"].nickname == "x" and NS.cdb.relationships.version == 10, "version 10: read-only, intact")
 	Fresh()
 end)
 

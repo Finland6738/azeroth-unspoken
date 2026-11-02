@@ -1283,6 +1283,18 @@ Per i lamenti serve la cartella `AzerothUnspoken_Versi`. Provato solo con il cli
 
 ---
 
+## ID: il GUID osservato come aiuto all'identità (aggiunto dall'issue #112, con le prove della #111)
+
+Per le persone già nella tua lista l'addon tiene il codice d'identità (GUID) che il gioco assegna a un giocatore, **mai mostrato**, e lo usa solo per chiederti. Costruito sul dump delle API senza prove nel gioco (decisione del proprietario del 2 novembre 2026): se `UnitGUID` risponde e resta stabile **non è confermato**, e le risposte vanno nella issue #111.
+
+- **ID.1 · Si conserva e non si vede.** Aggiungi un amico del gruppo (`/au relationships add <nome>`), fate gruppo, poi apri la finestra delle relazioni, il dettaglio, l'esportazione e `/au debug`. **Cosa aspettarti:** nessun codice da nessuna parte. **Cosa riportare:** se `/au relationships guid` dice che l'aiuto è acceso e se compare qualcosa di lungo come `Player-...`.
+- **ID.2 · La stessa persona dopo un nuovo accesso e dopo giorni.** Fai gruppo con lo stesso amico dopo essere uscito e rientrato, e il giorno dopo. **Cosa aspettarti:** nessuna domanda (il codice è lo stesso). **Cosa riportare:** se compare una domanda per una persona che non è cambiata: è la risposta alla #111 (il codice non è stabile), con quando.
+- **ID.3 · Stesso nome, personaggio nuovo.** Con un amico disponibile, fagli cancellare il personaggio e crearne un altro con lo stesso nome (o usa un tuo personaggio di un altro account), poi fate gruppo. **Cosa aspettarti:** una riga privata e, nella scheda Persone, la domanda "sembra un personaggio diverso...", con **+** e **x**; non cambia nulla finché non rispondi. **x** e di nuovo gruppo: non lo richiede fino al prossimo accesso.
+- **ID.4 · Cambio di nome o trasferimento.** Se su Forever esiste il servizio di cambio nome, fazione o reame, usalo su un personaggio di un amico, poi fate gruppo. **Cosa aspettarti:** la domanda "<vecchio> ora potrebbe chiamarsi <nuovo>: le unisci?"; **+** sposta la scheda con nota e scelte; **x** la lascia. **Cosa riportare:** se il codice è cambiato con il servizio (la risposta al punto 2 della #111).
+- **ID.5 · Identità nascoste.** Fai gruppo in un campo di battaglia, in un'arena, in un'istanza e in una capitale con qualcuno della tua lista. **Cosa aspettarti:** nessun errore, nessuna domanda da un'identità nascosta, l'incontro contato per nome. **Cosa riportare:** dove l'identità era nascosta (la risposta al punto 4 della #111).
+- **ID.6 · I codici instabili fermano l'aiuto.** Se ID.2 ha mostrato codici che cambiano, fai gruppo con tre o più persone in lista. **Cosa aspettarti:** dopo tre discrepanze le domande si fermano per la sessione e `/au debug` dice "not trusted this session". **Cosa riportare:** la riga.
+- **ID.7 · Dimenticare.** `/au relationships forget <nome>`, `remove <nome>`, `guid clear`, `guid off`. **Cosa aspettarti:** dopo ognuno nessuna domanda su quella persona; con `guid off` non si conserva nulla. Nulla in chat in nessun passo.
+
 ## L2: versi su più righe, forme letterarie rare, lettura lunga (aggiunto dalle issue #117, #118 e #126)
 
 Provato solo con il client finto ([ADR 0042](adr/0042-literary-forms-category-pacing-line-breaks-and-long-reading.md)):

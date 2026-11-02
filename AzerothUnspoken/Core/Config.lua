@@ -99,6 +99,7 @@ Config.CHAT_LIMITS = {
 ---@field recognizeTarget boolean riconosce un giocatore noto anche quando è il bersaglio (spento di base, #106)
 ---@field proximity boolean nameplates and mouseover can recognise a listed player, for this session only (off by default, #113)
 ---@field sharePlayers boolean the list of people is shared by the account's characters (off by default, #114)
+---@field guidAid boolean the observed GUID of a listed player is kept in `seen` and used to ASK about a new character with the same name or a rename (on, #112)
 ---@field levelNotices boolean the private narrator says when an NPC moves to another level of disposition (on, #214)
 ---@field promiseNotices boolean the private narrator recalls promises and oaths given to NPCs (on, #216)
 ---@field favours boolean NPCs at Friend or above may ask small favours the game can check (on, #217)
@@ -186,6 +187,8 @@ Config.defaults = {
 		-- #114: the choices about people are kept in the account and shared by all characters. Off by default (D12);
 		-- turned on only after a warning (Relationships:StartSharing)
 		sharePlayers = false,
+		-- #112: the observed GUID is an identity aid (never shown, only ever suggests); off stops reading and storing it
+		guidAid = true,
 		-- #214: a short private narrator line when an NPC moves to another level of disposition (rare, never in combat)
 		levelNotices = true,
 		-- #216: promises and oaths to NPCs recalled by the private narrator (rare, never in combat)
@@ -258,7 +261,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 8, npcs = {}, players = {} },
+	relationships = { version = 9, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	-- Songbook (#122, ADR 0044): the literary pieces heard and the user's marks, ids and times only (never a text);

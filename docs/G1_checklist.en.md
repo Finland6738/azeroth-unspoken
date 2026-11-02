@@ -418,6 +418,18 @@ English counterpart of the section **N8** of [G1_checklist.md](G1_checklist.md).
 - **N8.7 · A letter.** With an NPC at least *Close friend* you have not met for three weeks, enter the game. **Expect:** after a few seconds a private notice (*A letter came for you while you were away, from <name>...*); in the journal the whole letter. Never game mail. A /reload brings no letter.
 - **N8.8 · The options.** In the relationships window turn off **Companion pet** and **Letters**. **Expect:** no line about the pet (the bond is still counted), no letter. Never anything in chat.
 
+## ID: the observed GUID as an identity aid (issue #112, with the tests of #111)
+
+English counterpart of the section **ID** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. For people already in your list the addon keeps the identity code (GUID) the game gives a player, **never shown**, and uses it only to ask you. Built on the API dump without in-game tests (the owner's decision of 2026-11-02): whether `UnitGUID` answers and stays stable is **not confirmed**, and the answers go in issue #111.
+
+- **ID.1 · It is stored and never shown.** Add a friend from your group (`/au relationships add <name>`), group with them, then open the relationships window, the detail, the export and `/au debug`. **Expect:** no code anywhere. **Report:** whether `/au relationships guid` says the aid is on, and whether anything long like `Player-...` appears.
+- **ID.2 · The same person after a relog and days later.** Group with the same friend after logging out and in, and the next day. **Expect:** no question at all (the code is the same). **Report:** if a question appears for a person who did not change: that is the answer to #111 (the code is not stable), with when.
+- **ID.3 · Same name, new character.** With a friend who is willing, delete their character and make another with the same name (or use a character of yours on another account), then group. **Expect:** a private line and, in the People tab, a question "this looks like a different character...", with **+** and **x**; nothing changed until you answer. **x** and group again: not asked again until the next login.
+- **ID.4 · Rename or transfer.** If a rename or a faction or realm change service exists on Forever, use it on a friend's character, then group. **Expect:** a question "<old> may now be called <new>: merge?"; **+** moves the record with your note and choices; **x** leaves it. **Report:** whether the code changed with the service (the answer to #111 point 2).
+- **ID.5 · Hidden identities.** Group in a battleground, an arena, a dungeon and a capital with someone from your list. **Expect:** no error, no question from a hidden identity, the meeting counted by name. **Report:** where the identity was hidden (the answer to #111 point 4).
+- **ID.6 · Unstable codes stop the aid.** If ID.2 showed codes changing, group with three or more listed people. **Expect:** after three mismatches the questions stop for the session and `/au debug` says "GUID not trusted this session". **Report:** the line.
+- **ID.7 · Forget.** `/au relationships forget <name>`, `remove <name>`, `guid clear`, `guid off`. **Expect:** after each, no question about that person; with `guid off` nothing is stored. Nothing in chat at any step.
+
 ## L2: verses on several lines, rare literary forms, long reading (issues #117, #118 and #126)
 
 English counterpart of the section **L2** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Tested with

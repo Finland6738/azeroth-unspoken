@@ -8,6 +8,17 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### The observed GUID as an identity aid for players (issue #112)
+
+Part of the Player relationships milestone ([ADR 0047](docs/adr/0047-observed-guid-as-an-identity-aid-for-players.md); accepted as written by the owner in #130). Identity stays `Name-Realm`; the game's GUID of a player is kept next to it, never shown, and only ever used to **ask** you. Owner decision of 2026-11-02 (finish without in-game test gates): built defensively, with **GUID stability not confirmed in game** (#111, the in-game identity tests, stays open); tested with the mock client only (what still needs the real client is section ID of the [in-game checklist](docs/G1_checklist.md)).
+
+- **Added: `seen.guid`.** For a person already in your list the GUID is read (through Compat; a secret identity is not read, a secret, malformed or creature GUID is unknown) from the group scan and the target, and stored the first time. Never shown (list, detail, export, `/au debug`), never in the narrator's context, never in the shared list. Proximity still writes nothing and asks nothing.
+- **Added: two questions, never a change.** The same name with another GUID ("the same person?") and the same GUID under a new name ("merge?") become a question in the People tab, in `/au relationships identity` and in one private line; only your answer changes anything: **+** (or `identity accept <name>`) replaces the GUID or moves the record to the new name with everything in it (a name already listed refuses), **x** (or `keep <name>`) leaves it and does not ask again this session. The `user` block is never written by the software.
+- **Added: guards for GUIDs that prove unstable.** Three same-name mismatches in a session stop the aid until the next login (logged in `/au debug`); the option **Identity code** (on) and `/au relationships guid on|off` turn it off; `/au relationships guid clear` drops every GUID. Removing a person, forgetting the observations and resetting drop the GUID and the open questions.
+- **Changed: saved data `relationships.version` 9.** A version 8 file loads unchanged; a `seen.guid` found in an older file was never written by the addon, so it is not trusted and is dropped; malformed GUIDs go and two people never share one. An older addon reads version 9 only.
+- **Docs and tests.** ADR 0047, the wiki (Relationships, Settings, Commands, Privacy and Data), ARCHITECTURE, the README commands, the checklist (section ID, EN/IT) and the roadmap row. New `Tests/TestIdentity.lua` (the same name with another GUID, a rename, secret and malformed GUIDs, forgetting, instability, the saved data, nothing leaking); the tests that fix the version follow it.
+- **Not verified in the real client:** that `UnitGUID` answers for group members and the target as the dump says, that it is stable across sessions and renames, and how it behaves in secret contexts (section ID of `docs/G1_checklist.md`).
+
 ### N8: the companion pet, grief, the death of an ally and letters (issues #220, #125)
 
 Step N8 of the NPC relationships milestone, with the ally's death of the analysis A2 (L11). A bond with the hunter's or

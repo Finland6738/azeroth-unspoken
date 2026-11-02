@@ -110,7 +110,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 ---@field count integer encounters (the same kind within ENCOUNTER_GAP is one encounter)
 ---@field kinds table<string, integer> encounters by kind
 ---@field facts AUPlayerFact[] the last FACTS facts, oldest first
----@field guid? string reserved for #112 (never written by this version)
+---@field guid? string the observed GUID of the person, an identity aid (#112, ADR 0047): kept only here, never shown, exported or sent; a missing or secret GUID is unknown
 
 ---@class AURelationsData dati salvati: AzerothUnspokenCharacterDB.relationships
 ---@field version integer
@@ -135,7 +135,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 8                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213; 8: pets, letterT, mourned, letter, #220)
+R.VERSION = 9                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213; 8: pets, letterT, mourned, letter, #220; 9: seen.guid of players, #112)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -151,6 +151,9 @@ R.ENCOUNTER_GAP = 600          -- seconds: the same kind of encounter with the s
 R.FACTS = 5                    -- short facts kept per player (a ring: the oldest goes first)
 R.FEELINGS_MAX = 2             -- feelings the user can choose for one person
 R.ZONE_LEN = 40
+R.GUID_LEN = 40                -- the longest GUID kept (a player GUID is about 25 characters)
+R.IDENTITY_MAX = 12            -- identity suggestions waiting for the user in a session (memory only, #112)
+R.GUID_UNSTABLE = 3            -- GUID mismatches in one session after which GUIDs are not trusted until the next login (#112)
 R.SHARED_VERSION = 1           -- shape of AzerothUnspokenDB.sharedPlayers (#114)
 R.PROXIMITY_GAP = 60           -- seconds between two proximity proposals in a session (#113)
 R.PROXIMITY_MAX = 10           -- proximity proposals in a session (#113)
@@ -303,6 +306,25 @@ end
 local function OwnKey()
 	local name = Compat.SafeCall("UnitName", "player")
 	return R.PlayerKey(name)
+end
+
+---A player GUID the addon may keep (#112): a string of the form Player-<server>-<id>, not secret, of a bounded length.
+---Anything else (a creature, a secret value, a table, nil) is "unknown" and never stored.
+---@param guid any
+---@return string?
+function R.CleanGuid(guid)
+	if type(guid) ~= "string" or Compat.IsSecret(guid) or #guid > R.GUID_LEN then return nil end
+	if not guid:match("^Player%-%d+%-[0-9A-Za-z]+$") then return nil end
+	return guid
+end
+
+---The GUID of the player on a unit, read through Compat: nil when the identity of the unit is secret, when the client
+---has no answer, or when the answer is a secret value or not a player GUID (#112). The caller treats nil as "unknown".
+---@param unit string
+---@return string?
+function R.UnitGuid(unit)
+	if Compat:IsUnitIdentitySecret(unit) then return nil end
+	return R.CleanGuid(Compat.SafeCall("UnitGUID", unit))
 end
 
 ---------------------------------------------------------------------------
@@ -1099,7 +1121,7 @@ local function CleanSeen(seen, fallback)
 		end
 		while #out.facts > R.FACTS do table.remove(out.facts, 1) end
 	end
-	if type(seen.guid) == "string" and #seen.guid <= 80 and not Compat.IsSecret(seen.guid) then out.guid = seen.guid end
+	out.guid = R.CleanGuid(seen.guid)
 	return out
 end
 
@@ -1371,7 +1393,9 @@ function R:Sanitize()
 	end
 	-- versions 2 to 7 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
 	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218; foe, home: 7, #213; pets, letterT,
-	-- mourned, letter: 8, #220) start absent and are cleaned below
+	-- mourned, letter: 8, #220) start absent and are cleaned below. Version 9 (#112) adds `seen.guid` to players: it
+	-- starts absent too, and a GUID found in data of an older version was never written by the addon, so it is not
+	-- trusted (dropped below)
 	local dropped = 0
 	local npcs, players = {}, {}
 	clamped = 0
@@ -1384,10 +1408,23 @@ function R:Sanitize()
 		local key = type(k) == "string" and CleanText(k, R.NAME_LEN) or nil
 		-- version 1 player records were flat: move the choices into `user` and the counts into `seen` (#107)
 		if v < 2 then rec = R.MigrateV1(rec) end
+		if v < 9 and type(rec) == "table" and type(rec.seen) == "table" then rec.seen.guid = nil end
 		local clean = key and CleanRecord(rec, "player")
 		if clean and key == k then players[key] = clean else dropped = dropped + 1 end
 	end
 	d.npcs, d.players = npcs, players
+	-- #112: two people never share a GUID: in a file that says they do (hand edited, or copied) the first in name order
+	-- keeps it and the others lose it, so a GUID always leads to one person
+	local owners, order = {}, {}
+	for key in pairs(players) do table.insert(order, key) end
+	table.sort(order)
+	for _, key in ipairs(order) do
+		local seen = players[key].seen
+		local guid = seen and seen.guid
+		if guid then
+			if owners[guid] then seen.guid, dropped = nil, dropped + 1 else owners[guid] = key end
+		end
+	end
 	-- N4 (#216): promises whose giver is gone, malformed or too old are let go; faded marks too
 	local promises, bad = self:CleanPromises(d.promises, npcs)
 	d.promises, d.marks = promises, self:CleanMarks(d.marks)
@@ -3293,8 +3330,231 @@ function R:ForgetObservations(key)
 	local prior, done = self.session.prior, self.session.recognized
 	if prior then prior[key] = nil end
 	if done then done[key] = nil end
+	-- the GUID went with the observations (the new `seen` has none), and so does a question about it (#112)
+	self:ForgetIdentity(key)
 	self:Changed()
 	return true
+end
+
+---------------------------------------------------------------------------
+-- The observed GUID as an identity aid (#112, ADR 0047). Identity stays "Name-Realm"; the GUID is kept next to it in
+-- `seen.guid` and only ever used to ASK the user: the same name with another GUID may be another character, the same
+-- GUID under another name may be a rename. Nothing here changes a record by itself; the two user actions below
+-- (AcceptIdentity, KeepIdentity) do. A missing or secret GUID is unknown, and GUIDs are never shown, exported or sent.
+-- That GUIDs are stable in game is NOT confirmed (#111): so a session that sees them change often stops trusting them.
+---------------------------------------------------------------------------
+local function GuidStat(self)
+	local st = self.session.guidStat
+	if not st then
+		st = { changed = 0, off = false }
+		self.session.guidStat = st
+	end
+	return st
+end
+
+local function IdentityItems(self) return SessionTable(self, "identity") end
+
+local function IdentityKey(item) return item.kind .. ":" .. item.key .. ":" .. (item.newKey or "") end
+
+---Who, among this character's players, has this GUID (a person listed only in the shared list has none: the shared
+---layer keeps no observations).
+---@param guid string
+---@return string? key the first in name order if a file made two
+function R:GuidHolder(guid)
+	local found
+	for key, rec in pairs(self:Data().players) do
+		if type(rec.seen) == "table" and rec.seen.guid == guid and not Dormant(self, key, rec) then
+			if not found or key < found then found = key end
+		end
+	end
+	return found
+end
+
+local function PutIdentity(self, item)
+	if SessionTable(self, "identityKept")[IdentityKey(item)] then return false end
+	local items = IdentityItems(self)
+	local old = items[item.key]
+	if old and old.kind == item.kind and old.newKey == item.newKey then
+		old.guid, old.t = item.guid, item.t
+		return true
+	end
+	local count, oldest = 0, nil
+	for k, v in pairs(items) do
+		count = count + 1
+		if not oldest or v.t < items[oldest].t then oldest = k end
+	end
+	if count >= self.IDENTITY_MAX and oldest then items[oldest] = nil end
+	items[item.key] = item
+	-- a private line (never chat), once per question, not in a fight: the question waits in the People tab either way
+	if Compat.SafeCall("UnitAffectingCombat", "player") ~= true then
+		NS:Print(NS:L("rel_id_notice", item.kind == "renamed" and NS:L("rel_id_renamed", item.key, item.newKey) or NS:L("rel_id_guid", item.key)))
+	end
+	return true
+end
+
+---What the addon saw of a person through a unit: their GUID. For a listed person the GUID is stored the first time and
+---compared afterwards; a different one is only SUGGESTED to the user. For a person who is not listed, the GUID is only
+---compared with the listed people's: the same GUID under another name suggests a rename (a merge) of the listed record.
+---Both suggestions live in memory for this session and are shown in the People tab; nothing is changed until the user
+---accepts. An unknown (nil, secret, malformed) GUID does nothing.
+---@param key string "Name-Realm" of the person on the unit
+---@param guid any what UnitGUID returned (R.UnitGuid already cleaned it; this cleans again)
+---@return "stored"|"same"|"differs"|"renamed"|nil result
+function R:NoteGuid(key, guid)
+	if not self:Writable() or not self:Setting("guidAid") then return nil end
+	guid = R.CleanGuid(guid)
+	if not guid or type(key) ~= "string" or key == OwnKey() then return nil end
+	local st = GuidStat(self)
+	if st.off then return nil end
+	local holder = self:GuidHolder(guid)
+	if holder and holder ~= key then
+		-- this GUID is already a listed person's under another name: a rename, never stored twice
+		if self:IsListed(key) then return nil end
+		return PutIdentity(self, { kind = "renamed", key = holder, newKey = key, guid = guid, t = Now() }) and "renamed" or nil
+	end
+	if not self:IsListed(key) then return nil end
+	local rec = self:CharRecord(key, true)
+	if not rec then return nil end
+	if type(rec.seen) ~= "table" then rec.seen = { first = Now(), last = 0, count = 0, kinds = {}, facts = {} } end
+	local stored = rec.seen.guid
+	if not stored then
+		rec.seen.guid = guid
+		return "stored"
+	end
+	if stored == guid then
+		local items = IdentityItems(self)
+		if items[key] and items[key].kind == "guid" then items[key] = nil end
+		return "same"
+	end
+	-- the same name with another GUID. Counting these is the guard against GUIDs that prove unstable: past the limit the
+	-- session stops trusting them and the names carry on as before
+	if SessionTable(self, "identityKept")[IdentityKey({ kind = "guid", key = key })] then return nil end
+	st.changed = st.changed + 1
+	if st.changed >= self.GUID_UNSTABLE then
+		st.off = true
+		self.session.identity = {}
+		NS.Diagnostics:Error("relations", ("%d GUID mismatches in one session: GUIDs not used until the next login"):format(st.changed))
+		return nil
+	end
+	PutIdentity(self, { kind = "guid", key = key, guid = guid, t = Now() })
+	return "differs"
+end
+
+---The identity suggestions waiting for the user, oldest first. Each is { kind = "guid"|"renamed", key = the listed
+---person, newKey = the new name (renamed only), t }. The GUID is not part of what is returned.
+---@return table[]
+function R:IdentityList()
+	local out = {}
+	for _, item in pairs(self.session.identity or EMPTY) do
+		table.insert(out, { kind = item.kind, key = item.key, newKey = item.newKey, t = item.t })
+	end
+	table.sort(out, function(a, b)
+		if a.t ~= b.t then return a.t < b.t end
+		return a.key < b.key
+	end)
+	return out
+end
+
+---Drops the open identity questions about a person (as the listed one or as the new name) and what was decided about
+---them this session: a person removed, or whose observations were forgotten, leaves nothing behind.
+---@param key string
+function R:ForgetIdentity(key)
+	local items = self.session.identity
+	if items then
+		for k, item in pairs(items) do
+			if k == key or item.newKey == key then items[k] = nil end
+		end
+	end
+	local kept = self.session.identityKept
+	if kept then
+		for k in pairs(kept) do
+			local _, a, b = k:match("^([a-z]+):([^:]*):(.*)$")
+			if a == key or b == key then kept[k] = nil end
+		end
+	end
+end
+
+---USER ACTION: the user says the suggestion is right. "guid": the stored GUID is replaced by the new one (same person,
+---a new identity). "renamed": the listed record moves to the new name, with everything in it (the choices of the user,
+---the observations, the journal flags); it is a move, not an edit, and a person already listed under the new name
+---refuses it.
+---@param key string the listed person the suggestion is about
+---@return boolean ok
+---@return string? why missing | exists | gone
+function R:AcceptIdentity(key)
+	if not self:Writable() then return false, "missing" end
+	local item = (self.session.identity or EMPTY)[key]
+	if not item then return false, "missing" end
+	if not self:IsListed(key) then
+		self.session.identity[key] = nil
+		return false, "gone"
+	end
+	local d = self:Data()
+	if item.kind == "guid" then
+		local rec = self:CharRecord(key, true)
+		if not rec then return false, "gone" end
+		rec.seen = type(rec.seen) == "table" and rec.seen or { first = Now(), last = 0, count = 0, kinds = {}, facts = {} }
+		rec.seen.guid = item.guid
+		self.session.identity[key] = nil
+		self:Changed()
+		return true
+	end
+	local new = item.newKey
+	if self:IsListed(new) then return false, "exists" end
+	local shared = self:Sharing() and self:Shared() or nil
+	local moved = false
+	if d.players[key] then
+		d.players[new], d.players[key] = d.players[key], nil
+		moved = true
+	end
+	if shared and shared.players[key] then
+		shared.players[new], shared.players[key] = shared.players[key], nil
+		moved = true
+	end
+	if not moved then return false, "gone" end
+	local rec = self:CharRecord(new, true)
+	if rec then
+		rec.seen = type(rec.seen) == "table" and rec.seen or { first = Now(), last = 0, count = 0, kinds = {}, facts = {} }
+		rec.seen.guid = item.guid
+	end
+	-- the session remembers people by key: the old name's guards and the new name's suggestion are void
+	local prior, done = self.session.prior, self.session.recognized
+	if prior then prior[key] = nil end
+	if done then done[key] = nil end
+	self.candidates[new] = nil
+	self:ForgetIdentity(key)
+	self:ForgetIdentity(new)
+	self:Changed()
+	return true
+end
+
+---USER ACTION: the user says the suggestion is wrong, or not now. Nothing changes and the same question is not asked
+---again this session.
+---@param key string
+---@return boolean ok
+function R:KeepIdentity(key)
+	local item = (self.session.identity or EMPTY)[key]
+	if not item then return false end
+	SessionTable(self, "identityKept")[IdentityKey(item)] = true
+	self.session.identity[key] = nil
+	self:Changed()
+	return true
+end
+
+---USER ACTION: forget every GUID this character keeps (`/au relationships guid clear`). Names and choices stay.
+---@return integer cleared
+function R:ClearGuids()
+	if not self:Writable() then return 0 end
+	local n = 0
+	for _, rec in pairs(self:Data().players) do
+		if type(rec.seen) == "table" and rec.seen.guid then
+			rec.seen.guid = nil
+			n = n + 1
+		end
+	end
+	self.session.identity, self.session.identityKept = {}, {}
+	self:Changed()
+	return n
 end
 
 ---Le proposte, dalla più recente.
@@ -3528,6 +3788,7 @@ function R:Remove(kind, key)
 	elseif kind == "player" then
 		if not self:IsListed(key) then return false end
 		d.players[key] = nil
+		self:ForgetIdentity(key)
 		-- removing a person while the shared list is on removes them from the account's list too: they are the same list
 		local shared = self:Sharing() and self:Shared()
 		if shared then shared.players[key] = nil end
@@ -3557,6 +3818,7 @@ function R:Reset(what)
 	if what == "all" or what == "players" or what == nil then
 		for _ in pairs(d.players) do n = n + 1 end
 		d.players = {}
+		self.session.identity, self.session.identityKept = {}, {}
 	end
 	-- the account's list is cleared only when asked for by name: "reset players" is this character's list
 	if what == "shared" then
@@ -3783,14 +4045,16 @@ function R:Rows(filter)
 	return rows
 end
 
----@return { npcs: integer, players: integer, candidates: integer }
+---@return { npcs: integer, players: integer, candidates: integer, identity: integer }
 function R:Stats()
 	local d = self:Data()
 	local n, p, c = 0, 0, 0
 	for _ in pairs(d and d.npcs or EMPTY) do n = n + 1 end
 	p = self:CountPlayers()
 	for _ in pairs(self.candidates) do c = c + 1 end
-	return { npcs = n, players = p, candidates = c }
+	local i = 0
+	for _ in pairs(self.session.identity or EMPTY) do i = i + 1 end
+	return { npcs = n, players = p, candidates = c, identity = i }
 end
 
 ---------------------------------------------------------------------------
@@ -3874,6 +4138,8 @@ function R:ScanGroup(announce)
 			local name, realm = Compat.SafeCall("UnitFullName", unit)
 			local key = R.PlayerKey(name, realm)
 			if key and key ~= OwnKey() then
+				-- #112: the GUID is an aid for the user's list: stored for a listed person, compared for the rest
+				self:NoteGuid(key, R.UnitGuid(unit))
 				local rec = self:Get("player", key)
 				if rec then
 					out[self:Resolve("player", rec).label] = true
@@ -4267,6 +4533,7 @@ function handlers.TARGET_CHANGED(env)
 	local name, realm = Compat.SafeCall("UnitFullName", "target")
 	local key = R.PlayerKey(name, realm)
 	if not key then return end
+	R:NoteGuid(key, R.UnitGuid("target"))
 	if R:IsListed(key) then
 		R:Observe(key, "target")
 		if R:Setting("recognizeTarget") then R:Recognize(key) end
@@ -4633,11 +4900,12 @@ function R:Status()
 	if not self:Enabled() then return self.readOnly and "read-only (newer data)" or "off" end
 	local st = self:Stats()
 	local prox = Prox(self)
-	return ("%d NPCs, %d players, %d candidates; npcAuto %s, attraction %s, autoRegister %s; proximity %s (%d proposed, %d secret, %d throttled), shared list %s"):format(
+	return ("%d NPCs, %d players, %d candidates; npcAuto %s, attraction %s, autoRegister %s; proximity %s (%d proposed, %d secret, %d throttled), shared list %s, GUID aid %s (%d mismatches%s)"):format(
 		st.npcs, st.players, st.candidates, tostring(self:Setting("npcAuto")), tostring(self:AttractionOn()),
 		tostring(self:Setting("autoRegisterPlayers")), tostring(self:Setting("proximity")), prox.n, prox.secret,
 		prox.throttled or 0,
-		self:Sharing() and "on" or "off")
+		self:Sharing() and "on" or "off", tostring(self:Setting("guidAid")), GuidStat(self).changed,
+		GuidStat(self).off and ", not trusted this session" or "")
 end
 
 ---------------------------------------------------------------------------
@@ -4671,6 +4939,7 @@ local WORDS = NS.Keywords.Register("relationships", {
 	list = "list", people = "candidates", add = "add", remove = "remove", note = "note", tags = "tags", label = "label",
 	set = "set", export = "export", auto = "auto", attraction = "attraction", reset = "reset", dismiss = "dismiss",
 	detail = "detail", feeling = "feeling", forget = "forget", proximity = "proximity", share = "share", scope = "scope",
+	identity = "identity", guid = "guid",
 })
 
 local FEELING_WORDS = NS.Keywords.Register("relationships.feelings", {
@@ -4686,6 +4955,8 @@ local AXIS_WORDS = NS.Keywords.Register("relationships.axes", {
 local RESET_WORDS = NS.Keywords.Register("relationships.reset", { all = "all", npcs = "npcs", players = "players", shared = "shared" })
 local SHARE_WORDS = NS.Keywords.Register("relationships.share", { all = "all", copy = "copy" })
 local SCOPE_WORDS = NS.Keywords.Register("relationships.scope", { shared = "shared", character = "character" })
+local IDENTITY_WORDS = NS.Keywords.Register("relationships.identity", { accept = "accept", keep = "keep" })
+local GUID_WORDS = NS.Keywords.Register("relationships.guid", { clear = "clear" })
 
 local function Summary(self, kind, key)
 	local rec = self:Get(kind, key)
@@ -4852,6 +5123,43 @@ function R:Command(rest)
 			if replaced == true then Say("rel_scope_replaced") end
 		elseif replaced == "not_sharing" then Say("rel_share_needs_on")
 		else Say("rel_missing", arg) end
+	elseif action == "identity" then
+		-- /au relationships identity [accept <name> | keep <name>]: the questions the GUID raised (#112)
+		local word, who = arg:match("^([^ ]*) *(.-)$")
+		local what = word and IDENTITY_WORDS[NS.Lower(word)]
+		if not what then
+			local list = self:IdentityList()
+			if #list == 0 then Say("rel_id_none") end
+			for _, it in ipairs(list) do
+				NS:Print("  " .. (it.kind == "renamed" and NS:L("rel_id_renamed", it.key, it.newKey) or NS:L("rel_id_guid", it.key)))
+			end
+			if #list > 0 then Say("rel_id_usage") end
+			return
+		end
+		-- the person is named as in the list ("Aldric-Realm") or by the first name
+		local key
+		local lower = NS.Lower(who or "")
+		for k in pairs(self.session.identity or EMPTY) do
+			if NS.Lower(k) == lower or NS.Lower(k:match("^[^-]+") or k) == lower then key = k end
+		end
+		if not key then Say("rel_missing", who); return end
+		if what == "accept" then
+			local ok, why = self:AcceptIdentity(key)
+			if ok then Say("rel_id_accepted", key) else Say("rel_id_failed", key, NS:L("rel_id_why_" .. tostring(why))) end
+		else
+			self:KeepIdentity(key)
+			Say("rel_id_kept", key)
+		end
+	elseif action == "guid" then
+		-- /au relationships guid [on | off | clear]: the identity aid (#112). Off stops reading and storing GUIDs
+		local w = NS.Lower(arg)
+		if GUID_WORDS[w] == "clear" then
+			Say("rel_guid_cleared", self:ClearGuids())
+			return
+		end
+		local on = NS.Keywords.OnOff(w)
+		if on ~= nil then self:SetSetting("guidAid", on) end
+		Say("rel_guid_now", NS:L(self:Setting("guidAid") and "on" or "off"))
 	elseif action == "reset" then
 		local what = RESET_WORDS[NS.Lower(arg)] or "all"
 		local nowT = GetTime()

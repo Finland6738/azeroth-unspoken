@@ -189,8 +189,8 @@ T.run("companion: the numbers, stages and lists are data", function()
 	T.eq(c.pet.callGap, 60, "one value tuned")
 	T.eq(c.grief.band, "friend", "an unknown band ignored")
 	C:RegisterData({ pet = { callGap = 1200 } })
-	T.eq(R.VERSION, 8, "relationships.version 8 (N8: pets, letterT, mourned, letter)")
-	T.eq(Config.characterDefaults.relationships.version, 8, "the defaults follow")
+	T.eq(R.VERSION, 9, "relationships.version 9 (N8 made it 8: pets, letterT, mourned, letter; #112 9: seen.guid)")
+	T.eq(Config.characterDefaults.relationships.version, 9, "the defaults follow")
 	T.ok(Config.defaults.relations.companion == true and Config.defaults.relations.letters == true, "both options on by default")
 end)
 
@@ -710,7 +710,7 @@ T.run("saved data: version 8, pets cleaned and capped, no GUID; version 7 loads;
 	d.letterT = time() + 5000
 	d.npcs[77] = { first = 1, last = 2, count = 1, name = "Old", mourned = 50, letter = time() + 99, junk = "x" }
 	R:Sanitize()
-	T.eq(d.version, 8, "version 7 moves to 8 (nothing to migrate)")
+	T.eq(d.version, 9, "version 7 moves to 9 (nothing to migrate)")
 	T.ok(d.pets[1] and d.pets[1].name == "Fang" and d.pets[1].deaths == 2, "a good pet kept")
 	T.eq(d.pets[1].guid, nil, "no GUID kept")
 	T.eq(d.pets[2], nil, "no name: dropped")
@@ -734,7 +734,7 @@ T.run("saved data: version 8, pets cleaned and capped, no GUID; version 7 loads;
 	R:Reset("npcs")
 	T.eq(next(R:Data().pets), nil, "reset npcs: the pets go too")
 	-- a newer version: read only, and the module keeps nothing
-	NS.cdb.relationships = { version = 9, npcs = {}, players = {}, pets = { [1] = { future = true } } }
+	NS.cdb.relationships = { version = 10, npcs = {}, players = {}, pets = { [1] = { future = true } } }
 	R:Sanitize()
 	T.eq(R.readOnly, true, "a newer version: read only")
 	Call()
