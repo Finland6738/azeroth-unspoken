@@ -20,6 +20,13 @@
 -- Passano dal Narrative Director (priorità «evento eccezionale», una sola alla volta, `BEAT_GAP` secondi tra due
 -- battute di archi) e se il momento non è buono restano in attesa (`owed`) senza perdere lo stato: il diario ha sempre
 -- il racconto. Il silenzio è un esito valido.
+--
+-- Archi per più soggetti (N7, #219, ADR 0045): un arco con `instances = n` (e `subject = "npc"`) si racconta una volta
+-- per ogni NPC, fino a n alla volta, con posti suoi (non quelli di `arcs.maxActive`). Ogni storia è una voce
+-- "<id>#<npcID>" con gli stessi stati e passi della definizione; si muove solo con gli eventi del suo NPC (npc, slain:
+-- l'NPC ha ucciso il personaggio, fall: il personaggio l'ha ucciso) e può chiudersi da qualsiasi stato già aperto (il
+-- soggetto può cadere in ogni momento della storia). La voce dell'arco stesso ("<id>") saltata o disattivata spegne
+-- tutte le sue storie. È il caso della nemesi (Systems/Nemesis.lua): le battute restano quelle degli eventi arc_*.
 local ADDON, NS = ...
 local Engine, Compat = NS.Engine, NS.Compat
 
@@ -39,9 +46,12 @@ local Engine, Compat = NS.Engine, NS.Compat
 ---@field states? string[] LOCKED ... RESOLVED (predefiniti: LOCKED, DISCOVERED, REFLECTED, RESOLVED)
 ---@field steps AUArcStep[]
 ---@field choices? table<string, AUArcChoice>
----@field subject? "npc" l'arco è legato a un NPC conosciuto (si fissa all'apertura, da un evento `npc`)
+---@field subject? "npc" l'arco è legato a un NPC (si fissa all'apertura, da un evento con un NPC: npc, slain, fall)
 ---@field topic? string argomento delicato (death, religion...): con quell'argomento tra quelli evitati l'arco non si apre
+---@field instances? integer l'arco si racconta per più NPC, al massimo tanti alla volta (N7, ADR 0045)
 ---@field pack? string
+---@field base? string (solo la vista di una storia "<id>#<npcID>") l'id dell'arco
+---@field npcID? integer (solo la vista di una storia) l'NPC della storia
 
 ---@class AUArcItem lo stato salvato di un arco
 ---@field state string
@@ -57,7 +67,8 @@ local Engine, Compat = NS.Engine, NS.Compat
 ---@field ended? number epoch della chiusura o del salto
 
 ---@class AUArcView ctx.arc: l'arco di cui si valuta un passo o si pronuncia una battuta
----@field id string
+---@field id string l'id dell'arco (anche per una storia "<id>#<npcID>": le regole dichiarano l'arco)
+---@field key string la voce: l'id, o "<id>#<npcID>" per una storia di un arco per più soggetti
 ---@field state string
 ---@field from? string
 ---@field choices table<string, string>
@@ -68,8 +79,10 @@ local Engine, Compat = NS.Engine, NS.Compat
 local SA = NS:RegisterModule("storyarcs")
 NS.StoryArcs = SA
 
-SA.VERSION = 1                   -- forma dei dati in AzerothUnspokenCharacterDB.arcs
+SA.VERSION = 2                   -- forma dei dati in AzerothUnspokenCharacterDB.arcs (2: le storie "<id>#<npcID>", N7)
 SA.ID_LEN = 12
+SA.MAX_INSTANCES = 5             -- il massimo di `instances` di un arco
+SA.KEEP_CLOSED = 20              -- storie chiuse (o saltate) tenute per un arco per più soggetti: le più vecchie vanno
 SA.STATE_LEN = 10
 SA.MAX_ITEMS = 100
 SA.MAX_OPTIONS = 3
@@ -80,14 +93,18 @@ SA.OWED_TTL = 900                -- dopo tanti secondi una battuta rimandata dec
 SA.ZONE_DELAY = 2                -- secondi dall'ingresso in zona alla valutazione (come i ritorni di memoria)
 
 SA.BASE_STATES = { "LOCKED", "DISCOVERED", "REFLECTED", "RESOLVED" }
-SA.TRIGGERS = { zone = true, death = true, level = true, npc = true, flag = true, player = true }
+SA.TRIGGERS = { zone = true, death = true, level = true, npc = true, flag = true, player = true, slain = true, fall = true }
+-- gli eventi che portano un NPC (extra.arcNpc): un arco legato a un NPC si apre solo da uno di questi
+-- slain: un NPC ha ucciso il personaggio; fall: il personaggio ha ucciso un NPC (Systems/Nemesis.lua, ADR 0035)
+SA.NPC_TRIGGERS = { npc = true, slain = true, fall = true }
 SA.MODES = { active = true, suspended = true, skipped = true, off = true }
 -- le interazioni con un NPC che contano come evento `npc` (le quest restano di Blizzard)
 SA.NPC_KINDS = { gossip = true, merchant = true, taxi = true, trainer = true, binder = true, banker = true }
 SA.EVENTS = { open = "arc_open", step = "arc_step", resolve = "arc_resolve" }
 SA.EVENT_SET = { arc_open = true, arc_step = true, arc_resolve = true }
 -- campi ammessi nella definizione di un arco e in un passo: ogni altro (una ricompensa, una quest...) è un errore
-local DEF_FIELDS = { id = true, pack = true, states = true, steps = true, choices = true, subject = true, topic = true }
+local DEF_FIELDS = { id = true, pack = true, states = true, steps = true, choices = true, subject = true, topic = true,
+	instances = true }
 local STEP_FIELDS = { from = true, to = true, on = true, when = true, wait = true, choose = true }
 
 SA.defs = {}                     -- [id] = AUArcDef
@@ -126,6 +143,78 @@ local function Lower(s) return NS.Lower(s) end
 
 local function Say(key, ...) NS:Print(NS:L(key, ...)) end
 
+local function HasAny(list, set)
+	for _, v in ipairs(list or EMPTY) do
+		if set[v] then return true end
+	end
+	return false
+end
+
+---------------------------------------------------------------------------
+-- Storie di un arco per più soggetti (N7): la voce "<id>#<npcID>"
+---------------------------------------------------------------------------
+---@param id string
+---@param npcID integer
+---@return string key
+function SA.InstanceKey(id, npcID) return id .. "#" .. math.floor(npcID) end
+
+---@param key any
+---@return string? id l'arco di una storia
+---@return integer? npcID
+local function SplitKey(key)
+	if type(key) ~= "string" then return nil end
+	local id, n = key:match("^([a-z][a-z0-9_]*)#(%d+)$")
+	n = tonumber(n)
+	if not id or #id > SA.ID_LEN or not n or n < 1 or n > 2147483647 then return nil end
+	return id, n
+end
+SA.SplitKey = SplitKey
+
+SA.views = {}                    -- [key] = la vista di una storia (solo sessione)
+
+---La definizione di una voce: l'arco stesso, o la vista di una sua storia "<id>#<npcID>" (id = la voce, base = l'arco,
+---npcID; tutto il resto è quello dell'arco). nil se la voce non è di un arco registrato (per più soggetti).
+---@param key string
+---@return AUArcDef?
+function SA:Def(key)
+	local def = self.defs[key]
+	if def then return def end
+	local id, npcID = SplitKey(key)
+	def = id and self.defs[id]
+	if not (def and def.instances) then return nil end
+	local view = self.views[key]
+	if not view or getmetatable(view).__index ~= def then
+		view = setmetatable({ id = key, base = id, npcID = npcID }, { __index = def })
+		self.views[key] = view
+	end
+	return view
+end
+
+---Le storie salvate di un arco per più soggetti: le voci "<id>#...", in ordine.
+---@param id string
+---@return string[]
+function SA:InstanceKeys(id)
+	local a, out = self:Data(), {}
+	for key in pairs(a and type(a.items) == "table" and a.items or EMPTY) do
+		if SplitKey(key) == id then table.insert(out, key) end
+	end
+	table.sort(out)
+	return out
+end
+
+---Tutte le voci che si possono mostrare: gli archi in ordine di registrazione, ciascuno seguito dalle sue storie.
+---@return string[]
+function SA:Keys()
+	local out = {}
+	for _, id in ipairs(self.order) do
+		table.insert(out, id)
+		if self.defs[id].instances then
+			for _, key in ipairs(self:InstanceKeys(id)) do table.insert(out, key) end
+		end
+	end
+	return out
+end
+
 ---------------------------------------------------------------------------
 -- Registro degli archi (dati: Data/Arcs.lua)
 ---------------------------------------------------------------------------
@@ -161,6 +250,13 @@ function SA:Validate(def)
 	if states[#states] ~= "RESOLVED" then Add("l'ultimo stato deve essere RESOLVED") end
 	if def.subject ~= nil and def.subject ~= "npc" then Add("subject può essere solo 'npc'") end
 	if def.topic ~= nil and (type(def.topic) ~= "string" or not def.topic:match("^[a-z]+$")) then Add("topic non valido") end
+	local many = def.instances ~= nil
+	if many then
+		if not IsNumber(def.instances) or def.instances % 1 ~= 0 or def.instances < 1 or def.instances > self.MAX_INSTANCES then
+			Add(("instances deve essere un intero da 1 a %d"):format(self.MAX_INSTANCES))
+		end
+		if def.subject ~= "npc" then Add("un arco per più soggetti (instances) è legato a un NPC: subject = 'npc'") end
+	end
 
 	-- scelte
 	local choices = def.choices
@@ -203,7 +299,8 @@ function SA:Validate(def)
 			local fi, ti = IndexOf(states, step.from), IndexOf(states, step.to)
 			if not fi or not ti then
 				Add(("%s: stato '%s' -> '%s' non dichiarato"):format(name, tostring(step.from), tostring(step.to)))
-			elseif ti ~= fi + 1 then
+			elseif ti ~= fi + 1 and not (many and ti == #states and fi > 1) then
+				-- un arco per più soggetti può chiudersi da ogni stato aperto: il suo NPC può cadere in ogni momento
 				Add(("%s: da %s si va solo allo stato successivo (%s), non a %s"):format(name, step.from, tostring(states[fi + 1]), step.to))
 			else
 				outgoing[step.from] = true
@@ -212,12 +309,18 @@ function SA:Validate(def)
 				Add(name .. ": serve almeno un evento in `on`")
 			else
 				for _, trig in ipairs(step.on) do
-					if not self.TRIGGERS[trig] then Add(("%s: evento '%s' sconosciuto"):format(name, tostring(trig))) end
+					if not self.TRIGGERS[trig] then
+						Add(("%s: evento '%s' sconosciuto"):format(name, tostring(trig)))
+					elseif many and trig ~= "player" and not self.NPC_TRIGGERS[trig] then
+						Add(("%s: un arco per più soggetti si muove solo con gli eventi del suo NPC (npc, slain, fall), non '%s'"):format(name, trig))
+					end
 				end
 				if step.from == "LOCKED" then
 					if Has(step.on, "player") then Add(name .. ": un arco non si apre da solo con una scelta: serve un evento vero") end
 					if step.choose then Add(name .. ": il passo d'apertura non può chiedere una scelta") end
-					if def.subject == "npc" and not Has(step.on, "npc") then Add(name .. ": un arco legato a un NPC si apre da un evento `npc`") end
+					if def.subject == "npc" and not HasAny(step.on, self.NPC_TRIGGERS) then
+						Add(name .. ": un arco legato a un NPC si apre da un evento `npc` (o slain, fall)")
+					end
 				end
 			end
 			if step.when ~= nil then
@@ -274,6 +377,12 @@ function NS:RegisterArcs(spec)
 			-- una voce già salvata (l'arco arriva da un pacchetto caricato dopo l'avvio) si ricontrolla con la sua definizione
 			local saved = not def.bad and not SA.readOnly and SA:Item(id)
 			if saved then SA:Data().items[id] = CleanItem(id, saved, def) or saved end
+			if def.instances and not def.bad and not SA.readOnly and NS.cdb then
+				for _, key in ipairs(SA:InstanceKeys(id)) do
+					local items = SA:Data().items
+					items[key] = CleanItem(key, items[key], SA:Def(key)) or items[key]
+				end
+			end
 		end
 	end
 	for lang, map in pairs(type(spec.texts) == "table" and spec.texts or EMPTY) do
@@ -315,15 +424,21 @@ end
 ---@param id string
 ---@return table text { title, summary, states = {}, choices = {} } (tabella vuota se mancano)
 function SA:Text(id)
-	local by = self.texts[id]
+	local by = self.texts[id] or self.texts[SplitKey(id) or ""]
 	if not by then return EMPTY end
 	return by[NS:Lang()] or by.en or by.it or EMPTY
 end
 
+---Il titolo di un arco; per una storia di un arco per più soggetti `subjectTitle` con il nome del suo NPC ({name}).
 ---@param id string
 ---@return string
 function SA:Title(id)
 	local t = self:Text(id)
+	if SplitKey(id) and type(t.subjectTitle) == "string" then
+		local item = self:Item(id)
+		local name = item and item.subject and item.subject.name or NS:L("arc_subject_unknown")
+		return (t.subjectTitle:gsub("{name}", function() return name end))
+	end
 	return type(t.title) == "string" and t.title or id
 end
 
@@ -374,13 +489,16 @@ function SA:Data()
 end
 
 -- Migrazioni interne della forma dei dati: migrations[n] porta da n-1 a n. La 0 (assente) è il segnaposto che lo
--- schema 6 ha già sostituito; la 1 è la forma attuale.
+-- schema 6 ha già sostituito; la 2 è la forma attuale.
 ---@type table<integer, fun(a: table)>
 SA.migrations = {
 	[1] = function(a)
 		if type(a.items) ~= "table" then a.items = {} end
 		if type(a.stats) ~= "table" then a.stats = {} end
 	end,
+	-- N7 (#219): le voci "<id>#<npcID>" delle storie di un arco per più soggetti. I dati della versione 1 sono già
+	-- validi; il numero cambia perché una versione precedente dell'addon scarterebbe quelle voci (così le legge soltanto)
+	[2] = function() end,
 }
 
 local function CleanChoices(t)
@@ -460,14 +578,22 @@ function SA:Sanitize()
 		a.version = n
 	end
 	local dropped, items, count = 0, {}, 0
-	local keys = {}
-	for id in pairs(a.items) do table.insert(keys, tostring(id)) end
+	-- prima gli archi, poi le storie degli archi per più soggetti: le storie non tolgono mai il posto a un arco
+	local keys, stories = {}, {}
+	for id in pairs(a.items) do
+		if type(id) == "string" and SplitKey(id) then table.insert(stories, id) else table.insert(keys, tostring(id)) end
+	end
 	table.sort(keys)
+	table.sort(stories)
+	for _, id in ipairs(stories) do table.insert(keys, id) end
 	for _, id in ipairs(keys) do
 		local raw = a.items[id]
 		local clean = nil
-		if type(id) == "string" and id:match("^[a-z][a-z0-9_]*$") and #id <= self.ID_LEN and count < self.MAX_ITEMS then
-			clean = CleanItem(id, raw, self.defs[id])
+		local plain = id:match("^[a-z][a-z0-9_]*$") and #id <= self.ID_LEN
+		if (plain or SplitKey(id)) and count < self.MAX_ITEMS then
+			clean = CleanItem(id, raw, self:Def(id))
+			-- una storia mai cominciata (nessun evento, nessuna attesa, nessuna scelta del giocatore) non è niente
+			if clean and not plain and clean.state == "LOCKED" and clean.mode == "active" and not clean.waiting then clean = nil end
 		end
 		if clean then
 			items[id] = clean
@@ -477,6 +603,9 @@ function SA:Sanitize()
 		end
 	end
 	a.items = items
+	for _, id in ipairs(self.order) do
+		if self.defs[id].instances then dropped = dropped + self:TrimInstances(id) end
+	end
 	a.stats = { resolved = IsNumber(a.stats.resolved) and math.max(0, math.floor(a.stats.resolved)) or nil,
 		skipped = IsNumber(a.stats.skipped) and math.max(0, math.floor(a.stats.skipped)) or nil }
 	return dropped
@@ -489,14 +618,37 @@ function SA:Item(id)
 	return a and a.items[id] or nil
 end
 
--- la voce dell'arco, creata se manca (solo per un arco registrato e valido)
+---Tiene al massimo KEEP_CLOSED storie chiuse o saltate di un arco per più soggetti: le più vecchie vanno. Le storie in
+---corso, sospese o disponibili restano tutte (sono al massimo `instances`, più quelle che aspettano).
+---@param id string
+---@return integer removed
+function SA:TrimInstances(id)
+	local a = self:Data()
+	if not a or self.readOnly then return 0 end
+	local closed = {}
+	for _, key in ipairs(self:InstanceKeys(id)) do
+		local item = a.items[key]
+		if item.state == "RESOLVED" or item.mode == "skipped" or item.mode == "off" then table.insert(closed, key) end
+	end
+	if #closed <= self.KEEP_CLOSED then return 0 end
+	table.sort(closed, function(x, y)
+		local tx, ty = a.items[x].ended or a.items[x].since or 0, a.items[y].ended or a.items[y].since or 0
+		if tx ~= ty then return tx > ty end
+		return x < y
+	end)
+	for i = self.KEEP_CLOSED + 1, #closed do a.items[closed[i]] = nil end
+	return #closed - self.KEEP_CLOSED
+end
+
+-- la voce dell'arco, creata se manca (solo per un arco registrato e valido, o per una sua storia)
 function SA:Ensure(id)
-	local a, def = self:Data(), self.defs[id]
+	local a, def = self:Data(), self:Def(id)
 	if not a or not def or def.bad then return nil end
 	local item = a.items[id]
 	if not item then
 		item = { state = "LOCKED", mode = "active", since = 0, t = {}, choices = {} }
 		a.items[id] = item
+		if def.base then self:TrimInstances(def.base) end
 	end
 	return item
 end
@@ -522,10 +674,10 @@ function SA:Enabled()
 end
 
 ---------------------------------------------------------------------------
--- Posti: al massimo 1-2 archi attivi
+-- Posti: al massimo 1-2 archi attivi (le storie di un arco per più soggetti hanno i posti loro: `instances`)
 ---------------------------------------------------------------------------
 local function IsLive(self, id, item)
-	local def = self.defs[id]
+	local def = self.defs[id]          -- una storia "<id>#<npcID>" non è in defs: non occupa i posti degli archi
 	return item ~= nil and def ~= nil and not def.bad and item.mode == "active" and item.state ~= "LOCKED"
 		and item.state ~= "RESOLVED"
 end
@@ -550,6 +702,26 @@ function SA:HasSlot()
 	return self:ActiveCount() < self:MaxActive()
 end
 
+---Le storie in corso di un arco per più soggetti (attive, aperte e non chiuse).
+---@param id string
+---@return integer
+function SA:InstanceCount(id)
+	local a, n = self:Data(), 0
+	for _, key in ipairs(self:InstanceKeys(id)) do
+		local item = a.items[key]
+		if item.mode == "active" and item.state ~= "LOCKED" and item.state ~= "RESOLVED" then n = n + 1 end
+	end
+	return n
+end
+
+---C'è un posto per l'arco (o per una storia del suo arco)?
+---@param def AUArcDef
+---@return boolean
+function SA:HasSlotFor(def)
+	if def.base then return self:InstanceCount(def.base) < def.instances end
+	return self:HasSlot()
+end
+
 ---@param n any
 ---@return boolean ok
 ---@return integer? saved
@@ -569,7 +741,9 @@ function SA:Context()
 	local a = self:Data()
 	local done = {}
 	for id, item in pairs(a and a.items or EMPTY) do
-		if item.state == "RESOLVED" and self.defs[id] then done[id] = true end
+		-- una storia chiusa conta per il suo arco: arcDone = "nemesis" vale dopo la caduta di una nemesi
+		local def = item.state == "RESOLVED" and self:Def(id)
+		if def then done[def.base or id] = true end
 	end
 	return { done = done, active = self:ActiveCount(), max = self:MaxActive() }
 end
@@ -579,10 +753,24 @@ end
 ---@param extra? table
 ---@return AUArcView
 local function ArcView(def, item, extra)
-	local view = { id = def.id, state = item and item.state or "LOCKED", choices = item and item.choices or {}, withSubject = false }
+	local view = { id = def.base or def.id, key = def.id, state = item and item.state or "LOCKED",
+		choices = item and item.choices or {}, withSubject = false }
 	if extra and type(extra.arcNpc) == "table" and item and item.subject then
 		view.withSubject = item.subject.npcID == extra.arcNpc.npcID
 	end
+	return view
+end
+
+---La vista di una voce per le condizioni e le battute (ctx.arc), con il suo stato attuale. Per chi racconta qualcosa
+---di un arco fuori dai suoi passi: l'incontro con una nemesi (Systems/Nemesis.lua).
+---@param key string
+---@return AUArcView?
+function SA:View(key)
+	local def = self:Def(key)
+	if not def then return nil end
+	local item = self:Item(key)
+	local view = ArcView(def, item)
+	view.withSubject = item ~= nil and item.subject ~= nil
 	return view
 end
 
@@ -679,7 +867,7 @@ function SA:Apply(def, idx, opts)
 
 	if from == "LOCKED" and not opts.start then
 		-- l'evento d'apertura c'è stato: se i posti sono finiti l'arco resta disponibile e lo avvia il giocatore
-		if not self:HasSlot() then
+		if not self:HasSlotFor(def) then
 			item.waiting, item.waitStep = true, idx
 			if def.subject == "npc" and extra and extra.arcNpc then item.subject = CleanSubject(extra.arcNpc) end
 			Log(self, def.id, from, from, "waiting")
@@ -688,7 +876,7 @@ function SA:Apply(def, idx, opts)
 			return "waiting"
 		end
 	end
-	if from == "LOCKED" and opts.start and not self:HasSlot() then return nil, "full" end
+	if from == "LOCKED" and opts.start and not self:HasSlotFor(def) then return nil, "full" end
 
 	if step.choose and not opts.choice then
 		item.pending = { step = idx, t = now }
@@ -707,11 +895,13 @@ function SA:Apply(def, idx, opts)
 		item.subject = CleanSubject(extra and extra.arcNpc) or item.subject
 	end
 	-- il flag è un dato della memoria: con la memoria spenta o in sola lettura non si scrive nulla
+	-- (una storia di un arco per più soggetti lascia il flag del suo arco: arc_nemesis_marked)
 	local LM = NS.LivingMemory
-	if LM and LM:Enabled() then LM:SetFlag(self.FlagName(def.id, step.to), "addon") end
+	if LM and LM:Enabled() then LM:SetFlag(self.FlagName(def.base or def.id, step.to), "addon") end
 	if step.to == "RESOLVED" then self:Conclude(def, item) end
 	Log(self, def.id, from, step.to, opts.choice and "choice" or (opts.start and "start" or "event"))
-	NS.EventBus:Publish("ARC_STATE", { id = def.id, from = from, to = step.to }, { key = def.id .. ":" .. step.to, window = 0 })
+	NS.EventBus:Publish("ARC_STATE", { id = def.id, base = def.base or def.id, from = from, to = step.to },
+		{ key = def.id .. ":" .. step.to, window = 0 })
 	self:QueueBeat(def, item, step, from)
 	Refresh()
 	return "moved"
@@ -727,7 +917,7 @@ function SA:Conclude(def, item)
 	local LM = NS.LivingMemory
 	if not (LM and LM:Enabled()) then return end
 	local ok, zone = pcall(function() return Compat.SafeCall("GetRealZoneText") or Compat.SafeCall("GetZoneText") end)
-	local e, persisted = LM:Record({ kind = "story", zone = ok and zone or nil, importance = 4, tags = { "arc", "done", def.id },
+	local e, persisted = LM:Record({ kind = "story", zone = ok and zone or nil, importance = 4, tags = { "arc", "done", def.base or def.id },
 		perm = true, source = "addon" })
 	if e and persisted then item.memoryId = e.id end
 end
@@ -741,11 +931,21 @@ function SA:Fire(trigger, extra)
 	local moved = {}
 	if trigger == "player" or not self.TRIGGERS[trigger] or not self:Enabled() then return moved end
 	local a = self:Data()
+	local npcID = extra and type(extra.arcNpc) == "table" and extra.arcNpc.npcID
+	npcID = IsNumber(npcID) and npcID >= 1 and math.floor(npcID) or nil
 	-- prima chi può muoversi con questo evento (il contesto è costoso: si costruisce solo se serve)
 	local runnable = {}
 	for _, id in ipairs(self.order) do
 		local def = self.defs[id]
-		local item = a.items[id]
+		local key = id
+		if def and def.instances then
+			-- un arco per più soggetti: la storia dell'NPC dell'evento (nessuna senza NPC); l'arco stesso saltato o
+			-- disattivato non apre né muove nessuna delle sue storie
+			local whole = a.items[id]
+			key = npcID and not (whole and whole.mode ~= "active") and self.InstanceKey(id, npcID) or nil
+			def = key and self:Def(key)
+		end
+		local item = key and a.items[key]
 		local state = item and item.state or "LOCKED"
 		local mode = item and item.mode or "active"
 		if def and not def.bad and mode == "active" and state ~= "RESOLVED" and not (item and (item.pending or item.waiting)) then
@@ -790,7 +990,7 @@ end
 ---@param ctx? table contesto già costruito
 ---@return { step: integer, choose?: string, options: string[], pending: boolean }? offer
 function SA:Offering(id, ctx)
-	local def, item = self.defs[id], self:Item(id)
+	local def, item = self:Def(id), self:Item(id)
 	if not def or def.bad or not item or item.mode ~= "active" or item.state == "LOCKED" or item.state == "RESOLVED" then return nil end
 	local idx, step
 	if item.pending then
@@ -810,7 +1010,7 @@ end
 ---@return string? reason disabled | unknown | mode | nothing | bad_option | not_now
 function SA:Choose(id, option)
 	if not self:Enabled() then return false, "disabled" end
-	local def, item = self.defs[id], self:Item(id)
+	local def, item = self:Def(id), self:Item(id)
 	if not def or def.bad then return false, "unknown" end
 	if not item or item.mode ~= "active" or item.state == "LOCKED" or item.state == "RESOLVED" then return false, "mode" end
 	if Avoids(def.topic) then return false, "avoided" end
@@ -832,7 +1032,7 @@ end
 ---@return string? reason disabled | unknown | not_available | full
 function SA:Start(id)
 	if not self:Enabled() then return false, "disabled" end
-	local def, item = self.defs[id], self:Item(id)
+	local def, item = self:Def(id), self:Item(id)
 	if not def or def.bad then return false, "unknown" end
 	if not item or item.mode ~= "active" or not item.waiting or not item.waitStep then return false, "not_available" end
 	if Avoids(def.topic) then return false, "avoided" end
@@ -860,7 +1060,7 @@ end
 function SA:Suspend(id)
 	if self.readOnly then return false, "readonly" end
 	local item = self:Item(id)
-	if not item or not self.defs[id] then return false, "unknown" end
+	if not item or not self:Def(id) then return false, "unknown" end
 	if item.mode ~= "active" or item.state == "RESOLVED" then return false, "mode" end
 	item.mode = "suspended"
 	DropOwed(self, id)
@@ -875,9 +1075,9 @@ end
 function SA:Resume(id)
 	if self.readOnly then return false, "readonly" end
 	local item = self:Item(id)
-	if not item or not self.defs[id] then return false, "unknown" end
+	if not item or not self:Def(id) then return false, "unknown" end
 	if (item.mode ~= "suspended" and item.mode ~= "skipped") or item.state == "RESOLVED" then return false, "mode" end
-	if item.state ~= "LOCKED" and not self:HasSlot() then return false, "full" end
+	if item.state ~= "LOCKED" and not self:HasSlotFor(self:Def(id)) then return false, "full" end
 	item.mode, item.ended = "active", nil
 	Refresh()
 	return true
@@ -923,9 +1123,9 @@ end
 function SA:Enable(id)
 	if self.readOnly then return false, "readonly" end
 	local item = self:Item(id)
-	if not item or not self.defs[id] then return false, "unknown" end
+	if not item or not self:Def(id) then return false, "unknown" end
 	if item.mode ~= "off" then return false, "mode" end
-	if item.state ~= "LOCKED" and not self:HasSlot() then
+	if item.state ~= "LOCKED" and not self:HasSlotFor(self:Def(id)) then
 		item.mode = "suspended"
 	else
 		item.mode = "active"
@@ -940,9 +1140,9 @@ end
 function SA:ForAll(what)
 	local a, n = self:Data(), 0
 	if not a or self.readOnly then return 0 end
-	for _, id in ipairs(self.order) do
+	for _, id in ipairs(self:Keys()) do
 		local item = a.items[id]
-		if Visible(item) and self.defs[id] then
+		if Visible(item) and self:Def(id) then
 			local ok
 			if what == "skip" then
 				ok = item.mode ~= "skipped" and self:Skip(id)
@@ -997,7 +1197,7 @@ end
 -- la battuta ha ancora senso? L'arco è ancora attivo e nello stato in cui la battuta è nata
 local function StillValid(self, entry)
 	local item = self:Item(entry.id)
-	return item ~= nil and item.mode == "active" and item.state == entry.to and self.defs[entry.id] ~= nil
+	return item ~= nil and item.mode == "active" and item.state == entry.to and self:Def(entry.id) ~= nil
 end
 
 ---Offre al Director la prima battuta in attesa, se il momento è buono. Lo stato dell'arco non dipende da questo.
@@ -1019,7 +1219,7 @@ function SA:Flush()
 		return
 	end
 	local entry = self.owed[1]
-	local def, item = self.defs[entry.id], self:Item(entry.id)
+	local def, item = self:Def(entry.id), self:Item(entry.id)
 	local view = ArcView(def, item)
 	view.state, view.from, view.beat = entry.to, entry.from, true
 	local extra = { arc = view }
@@ -1090,6 +1290,25 @@ function handlers.ZONE_ENTER() ZoneCheck() end
 function handlers.PLAYER_DEATH() SA:Fire("death") end
 function handlers.LEVEL_UP() SA:Fire("level") end
 
+-- N7: un NPC ha ucciso il personaggio (slain) o il personaggio ha ucciso un NPC (fall). Li riconosce Systems/Nemesis.lua
+-- (ADR 0035, non ancora confermato in gioco); sul bus solo npcID e nome, mai un GUID
+local function NpcExtra(c)
+	if type(c) ~= "table" or type(c.npcID) ~= "number" then return nil end
+	local extra = { arcNpc = { npcID = c.npcID, name = c.name }, relationSubject = { kind = "npc", id = c.npcID } }
+	if NS.Interlocutor then
+		extra.otherSubject = { kind = "npc", key = NS.Interlocutor.Key("npc", c.npcID), name = c.name, npcID = c.npcID }
+	end
+	return extra
+end
+function handlers.SLAIN_BY(env)
+	local extra = NpcExtra(env.context)
+	if extra then SA:Fire("slain", extra) end
+end
+function handlers.FOE_FELL(env)
+	local extra = NpcExtra(env.context)
+	if extra then SA:Fire("fall", extra) end
+end
+
 function handlers.MEMORY_FLAG(env)
 	-- i flag che gli archi stessi lasciano a ogni stato non fanno avanzare nulla: un evento vero muove un arco di un
 	-- solo passo, e non a catena
@@ -1129,7 +1348,8 @@ end
 ---@field stateLabel string
 ---@field line? string il racconto dello stato in cui si trova
 ---@field mode string
----@field bucket string active | available | resolved | skipped
+---@field bucket string active | many | available | resolved | skipped (many: una storia in corso di un arco per più soggetti)
+---@field base string l'arco (per una storia "<id>#<npcID>" l'id dell'arco, altrimenti l'id stesso)
 ---@field choices { prompt: string, label: string, note?: string }[] le scelte già fatte
 ---@field offer? { step: integer, choose?: string, options: { id: string, label: string }[], prompt?: string, pending: boolean }
 ---@field history { state: string, label: string, line?: string, t: number }[] gli stati attraversati, in ordine
@@ -1149,14 +1369,14 @@ end
 ---@param ctx? table contesto già costruito (per i passi che il giocatore può far scattare)
 ---@return AUArcRecord?
 function SA:Record(id, ctx)
-	local def, item = self.defs[id], self:Item(id)
+	local def, item = self:Def(id), self:Item(id)
 	if not def or def.bad or not item then return nil end
 	if item.state == "LOCKED" and not item.waiting and item.mode == "active" then return nil end
 	local text = self:Text(id)
 	local rec = { id = id, title = self:Title(id), summary = type(text.summary) == "string" and text.summary or "",
 		state = item.state, stateLabel = self:StateLabel(id, item.state), line = text.states and text.states[item.state],
 		mode = item.mode, choices = {}, history = {}, since = item.since, ended = item.ended,
-		subject = item.subject and item.subject.name or nil }
+		subject = item.subject and item.subject.name or nil, base = def.base or id }
 	if item.state == "RESOLVED" then
 		rec.bucket = "resolved"
 	elseif item.mode == "skipped" or item.mode == "off" then
@@ -1164,7 +1384,7 @@ function SA:Record(id, ctx)
 	elseif item.state == "LOCKED" then
 		rec.bucket = "available"
 	else
-		rec.bucket = "active"
+		rec.bucket = def.base and "many" or "active"
 	end
 	local keys = {}
 	for k in pairs(item.choices) do table.insert(keys, k) end
@@ -1178,7 +1398,7 @@ function SA:Record(id, ctx)
 			table.insert(rec.history, { state = s, label = self:StateLabel(id, s), line = text.states and text.states[s], t = item.t[s] })
 		end
 	end
-	local offer = rec.bucket == "active" and self:Offering(id, ctx)
+	local offer = (rec.bucket == "active" or rec.bucket == "many") and self:Offering(id, ctx)
 	if offer then
 		local options = {}
 		for _, o in ipairs(offer.options) do
@@ -1191,13 +1411,14 @@ function SA:Record(id, ctx)
 	return rec
 end
 
----Tutti gli archi che il giocatore può vedere (mai quelli ancora chiusi e mai notati), raggruppati.
----@return table<string, AUArcRecord[]> buckets active, available, resolved, skipped
+---Tutti gli archi che il giocatore può vedere (mai quelli ancora chiusi e mai notati), raggruppati. Le storie in corso
+---degli archi per più soggetti stanno in `many`, in ordine di arco.
+---@return table<string, AUArcRecord[]> buckets active, many, available, resolved, skipped
 function SA:Listing()
-	local out = { active = {}, available = {}, resolved = {}, skipped = {} }
+	local out = { active = {}, many = {}, available = {}, resolved = {}, skipped = {} }
 	if not self:Data() then return out end
 	local ctx
-	for _, id in ipairs(self.order) do
+	for _, id in ipairs(self:Keys()) do
 		local item = self:Item(id)
 		if item and item.state ~= "LOCKED" and item.mode == "active" and not ctx then ctx = NS:BuildContext() end
 		local rec = self:Record(id, ctx)
@@ -1215,8 +1436,8 @@ end
 function SA:Find(text)
 	text = Lower(text or "")
 	if text == "" then return nil end
-	if self.defs[text] then return text end
-	for _, id in ipairs(self.order) do
+	if self.defs[text] or (self:Def(text) and self:Item(text)) then return text end
+	for _, id in ipairs(self:Keys()) do
 		if Lower(self:Title(id)) == text then return id end
 	end
 	return nil
@@ -1227,7 +1448,7 @@ function SA:Status()
 	local a = self:Data()
 	local n, resolved, waiting = 0, 0, 0
 	for id, item in pairs(a and a.items or EMPTY) do
-		if self.defs[id] then
+		if self:Def(id) then
 			n = n + 1
 			if item.state == "RESOLVED" then resolved = resolved + 1 end
 			if item.waiting then waiting = waiting + 1 end
@@ -1268,6 +1489,13 @@ function SA:Check()
 				end
 				Need(t.title, "title", self.LABEL_BYTES)
 				Need(t.summary, "summary")
+				-- una storia di un arco per più soggetti ha il suo titolo, con il nome del suo NPC
+				if def.instances then
+					Need(t.subjectTitle, "subjectTitle", self.LABEL_BYTES)
+					if type(t.subjectTitle) == "string" and not t.subjectTitle:find("{name}", 1, true) then
+						Add("error", id, ("testo 'subjectTitle' (%s): manca {name}"):format(lang))
+					end
+				end
 				for _, s in ipairs(states) do
 					if s ~= "LOCKED" then Need(t.states and t.states[s], "states." .. s) end
 				end
@@ -1349,7 +1577,7 @@ function SA:Command(rest)
 	word, arg = Lower(word or ""), arg or ""
 	if word == "" or WORDS[word] == "list" then
 		local list, shown = self:Listing(), 0
-		for _, bucket in ipairs({ "active", "available", "resolved", "skipped" }) do
+		for _, bucket in ipairs({ "active", "many", "available", "resolved", "skipped" }) do
 			for _, rec in ipairs(list[bucket]) do
 				PrintRecord(rec)
 				shown = shown + 1

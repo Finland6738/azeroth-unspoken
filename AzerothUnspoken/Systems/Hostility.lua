@@ -698,21 +698,31 @@ EventBus:AddSource("UNIT_COMBAT", { normalize = function(unit, action)
 	if type(action) ~= "string" or Compat.IsSecret(action) or NOT_A_BLOW[action] then return nil end
 	return "FOE_SIGNAL", { who = unit == "player" and "them" or "target" }
 end })
+-- N7 (#219): a nemesis watched for its fall (Systems/Nemesis.lua) is told here at once, by GUID, and never on the bus.
+local function Nemesis(guid)
+	local Nem = NS.Nemesis
+	return Nem ~= nil and type(guid) == "string" and Nem:Watches(guid) and Nem or nil
+end
 EventBus:AddSource("UNIT_DIED", { normalize = function(guid)
 	guid = Compat.Readable(guid)
+	local nem = Nemesis(guid)
+	if nem then nem:Died(guid, "unknown") end
 	local which = type(guid) == "string" and Watching() and FightOf(guid)
 	if not which then return nil end
 	return "FOE_DIED", { by = "unknown", which = which }
 end })
 EventBus:AddSource("PARTY_KILL", { normalize = function(attacker, victim)
 	victim = Compat.Readable(victim)
+	local nem = Nemesis(victim)
 	local which = type(victim) == "string" and Watching() and FightOf(victim)
-	if not which then return nil end
+	if not which and not nem then return nil end
 	attacker = Compat.Readable(attacker)
 	local by = "hidden"
 	if type(attacker) == "string" then
 		by = attacker == SafeCall("UnitGUID", "player") and "me" or attacker == SafeCall("UnitGUID", "pet") and "pet" or "other"
 	end
+	if nem then nem:Died(victim, by) end
+	if not which then return nil end
 	return "FOE_DIED", { by = by, which = which }
 end })
 

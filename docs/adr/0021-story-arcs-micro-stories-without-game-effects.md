@@ -30,6 +30,8 @@ There are three risks. An arc that opens "by itself" without a real event attrib
 - **Saving the text of the choice or of the line**: rejected. The text would change with the language and is not needed: the option id and the journal account (arc data) are enough.
 - **A line for every step, always**: rejected. With arcs active together there would be a cascade; with `BEAT_GAP` and the queue the voice is only one and the rest is in the journal.
 
+*N7 update ([ADR 0045](0045-nemesis-arcs-told-for-many-npcs-killed-by-and-the-song-of-a-fall.md)):* an arc may declare `instances` and be told once per NPC (`"<id>#<npcID>"`), with slots of its own; its stories move only on their NPC's events (`npc` and the new `slain`, `fall`) and may close from any opened state. The arcs' data is version 2. The nemesis is the first such arc.
+
 *Step 0 update ([ADR 0023](0023-english-first-addon-and-english-command-names.md)):* the commands named here are written with their English names, `/au journal flag` and `/au stories`; the Italian names this ADR first used were removed, and an Italian word now only gets a hint to the English command.
 
 ## Consequences

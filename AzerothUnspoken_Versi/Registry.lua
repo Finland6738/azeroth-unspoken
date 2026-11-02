@@ -26,7 +26,9 @@ AU:RegisterPack({
 	name = "Verses: literary forms (prototype)",
 	languages = { "enUS", "itIT" },
 	-- manual only: nothing in the game fires it, and chance 0 keeps the Director away from it
-	events = { lore_test = { category = "lore", chance = 0, cooldown = 0 } },
+	events = { lore_test = { category = "lore", chance = 0, cooldown = 0 },
+		-- N7 (#219): the songs of a nemesis's fall, chosen by Systems/Nemesis.lua (never spoken by the Director)
+		nemesis_song = { category = "lore", chance = 0, cooldown = 0 } },
 	registry = {
 		------------------------------------------------------------------------
 		-- Inscriptions and solemn formulas: first visit to a ruin or a sacred place
@@ -121,5 +123,22 @@ AU:RegisterPack({
 			tags = { "lore", "genre_lament", "origin_spoken", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
 			genre = "verse", purpose = "mourn", origin = "common",
 			conditions = { combat = false, place = { encounterResult = "wipe" } } },
+
+		------------------------------------------------------------------------
+		-- Songs of a nemesis's fall (N7, #219): never spoken here; Systems/Nemesis.lua chooses one when a nemesis falls
+		-- by the character's hand and puts it in the songbook (ids and times only). `arc.from` is the state it fell in
+		------------------------------------------------------------------------
+		["versi.nemesis.song.01"] = { event = "nemesis_song", category = "lore", speaker = "inner", styles = { "epic", "everyday" },
+			tags = { "lore", "genre_victory_song", "origin_sung", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
+			genre = "song", purpose = "celebrate", origin = "common",
+			conditions = { combat = false, arc = { from = "MARKED", id = "nemesis" } } },
+		["versi.nemesis.song.02"] = { event = "nemesis_song", category = "lore", speaker = "inner", styles = { "epic", "tragic" },
+			tags = { "lore", "genre_feud_song", "origin_sung", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
+			genre = "song", purpose = "remember", origin = "common",
+			conditions = { combat = false, arc = { from = { "HAUNTED", "SWORN" }, id = "nemesis" } } },
+		["versi.nemesis.song.03"] = { event = "nemesis_song", category = "lore", speaker = "inner", styles = { "ancient", "tragic" },
+			tags = { "lore", "genre_lament", "origin_spoken", "topic:death" }, depth = { "literary", "elevated" }, cooldown = 604800,
+			genre = "verse", purpose = "mourn", origin = "common",
+			conditions = { combat = false, arc = { id = "nemesis" } } },
 	},
 })

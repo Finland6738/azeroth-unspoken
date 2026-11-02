@@ -21,6 +21,8 @@ NS:RegisterPack({
 		arc_open = { category = "reflection", chance = 100, cooldown = 0 },
 		arc_step = { category = "reflection", chance = 100, cooldown = 0 },
 		arc_resolve = { category = "reflection", chance = 100, cooldown = 0 },
+		-- N7 (#219): meeting a nemesis again (Systems/Nemesis.lua decides when, at most once every `nemesis.meetGap`)
+		nemesis_meet = { category = "reflection", chance = 100, cooldown = 0 },
 	},
 	registry = {
 		---------------------------------------------------------------------------
@@ -137,5 +139,42 @@ NS:RegisterPack({
 		["arc.gates.done.shelter"] = { event = "arc_resolve", speaker = "narrator", styles = { "intimate" },
 			depth = ALL,
 			conditions = { arc = { choice = "shelter", id = "capitals", state = "RESOLVED" } } },
+
+		---------------------------------------------------------------------------
+		-- La nemesi (N7, #219): una storia per ogni nemesi ({other} è il suo nome); nemesis_meet, l'incontro
+		---------------------------------------------------------------------------
+		["arc.nemesis.done.e"] = { event = "arc_resolve", speaker = "narrator", styles = { "epic", "ceremonial" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "RESOLVED" } } },
+		["arc.nemesis.done.i"] = { event = "arc_resolve", speaker = "inner", styles = { "intimate", "ancient" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "RESOLVED" } } },
+		["arc.nemesis.haunt.i"] = { event = "arc_step", speaker = "inner", styles = { "tragic", "ironic" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "HAUNTED" } } },
+		["arc.nemesis.meet.e"] = { event = "nemesis_meet", speaker = "narrator", styles = { "tragic", "ancient" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = { "MARKED", "HAUNTED", "SWORN" } } } },
+		["arc.nemesis.meet.haunted.i"] = { event = "nemesis_meet", speaker = "inner", styles = { "tragic", "ironic" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "HAUNTED" } } },
+		["arc.nemesis.meet.marked.i"] = { event = "nemesis_meet", speaker = "inner", styles = { "tragic", "intimate" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "MARKED" } } },
+		["arc.nemesis.meet.sworn.i"] = { event = "nemesis_meet", speaker = "inner", styles = { "epic", "tragic" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "SWORN" } } },
+		["arc.nemesis.open.e"] = { event = "arc_open", speaker = "narrator", styles = { "tragic", "epic" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "MARKED" } } },
+		["arc.nemesis.open.i"] = { event = "arc_open", speaker = "inner", styles = { "tragic", "intimate" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "MARKED" } } },
+		["arc.nemesis.sworn.e"] = { event = "arc_step", speaker = "narrator", styles = { "epic", "ancient" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "SWORN" } } },
+		["arc.nemesis.sworn.i"] = { event = "arc_step", speaker = "inner", styles = { "tragic", "epic" },
+			tags = { "topic:death" }, depth = { "natural", "literary", "elevated" },
+			conditions = { arc = { id = "nemesis", state = "SWORN" } } },
 	},
 })

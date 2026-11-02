@@ -12,9 +12,9 @@ Each story begins only from a **real event**: going back somewhere, meeting some
 
 At one point the story asks you a question, with a few possible answers. Your answer shapes how it ends. When a story ends, it leaves a **permanent memory** in your [[journal|Memory-and-Journal]].
 
-At most **two stories** are under way at the same time (you can lower it to one).
+At most **two stories** are under way at the same time (you can lower it to one). The nemeses (below) have slots of their own.
 
-## The four stories
+## The stories
 
 | Story | Id | How it begins |
 |---|---|---|
@@ -22,6 +22,7 @@ At most **two stories** are under way at the same time (you can lower it to one)
 | **A Familiar Face** | `knownface` | After level 5, an innkeeper, merchant, trainer, flight master or banker you keep meeting stops being a stranger. It grows as you get to know each other. |
 | **The Place of the Fall** | `fallen` | Your first death after level 10. You go back to where you fell, and carry it with you as you go on. It never begins if your character avoids the topic of death. |
 | **The Three Gates** | `capitals` | After level 10, having visited two capitals, you walk into a third. A story about what one looks for in passing city gates. |
+| **Nemeses** | `nemesis` | An elite or rare NPC kills you in the open world. One story **for each** nemesis, *The Shadow of …* with its name, at most three at a time: *the mark*, *the long shadow*, *the feud* as it keeps bringing you down, concluded by its fall at your hand. See [[Relationships|Relationships]]. It never begins if your character avoids the topic of death. |
 
 ## How to use it
 
@@ -33,7 +34,7 @@ Stories run by themselves. When something needs you, a discreet notice appears i
 
 ### The Stories tab
 
-Open the [[journal|Memory-and-Journal]] and choose the **Stories** tab, or type `/au stories journal`. You see the stories **under way**, those that **can begin**, those **concluded**, and those **skipped or disabled**. Click a story to see its state, what you chose so far and what it is waiting for. From there you can:
+Open the [[journal|Memory-and-Journal]] and choose the **Stories** tab, or type `/au stories journal`. You see the stories **under way**, your **Nemeses** (with how many of the three slots are taken), those that **can begin**, those **concluded**, and those **skipped or disabled**. Click a story to see its state, what you chose so far and what it is waiting for. From there you can:
 
 - **Begin the story**, if it can begin;
 - **Choose** an answer, when it waits for your choice, or **Go on with the story**;
@@ -60,7 +61,7 @@ You can also **Suspend all stories** or **Skip all stories**.
 | `/au stories on` · `off` | turns all stories on or off |
 | `/au stories status` | prints the internal state, for troubleshooting |
 
-A story can be named by its id (`path`, `knownface`, `fallen`, `capitals`) or by its title. `/au stories list` shows the possible answers when a story is waiting, for example:
+A story can be named by its id (`path`, `knownface`, `fallen`, `capitals`) or by its title. A nemesis is named by its title (`/au stories suspend the shadow of grimtusk`) or by the id `/au stories list` prints for it (`nemesis#…`); `/au stories disable nemesis` turns all nemeses off. `/au stories list` shows the possible answers when a story is waiting, for example:
 
 ```
 /au stories choose capitals crossroads

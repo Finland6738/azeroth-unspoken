@@ -4,7 +4,7 @@ Now and then the narrator can offer something older than a passing thought: word
 
 ## Where they come from
 
-For now these pieces come from an optional pack, **Azeroth Unspoken - Verses** (the folder `AzerothUnspoken_Versi`, pack id `versi`). It is a first test with 16 pieces, each written in English and in Italian. Install it like any other pack: see [[Phrase Packs|Phrase-Packs]].
+For now these pieces come from an optional pack, **Azeroth Unspoken - Verses** (the folder `AzerothUnspoken_Versi`, pack id `versi`). It is a first test with 19 pieces (three of them songs of a nemesis's fall), each written in English and in Italian. Install it like any other pack: see [[Phrase Packs|Phrase-Packs]].
 
 ## What they are like
 
@@ -47,6 +47,8 @@ Every piece your character hears or reads goes in the **songbook**: the tab **So
 - **Learn** it by heart, or mark it as a **Favourite**: it comes back to mind more often, and a favourite heads the list;
 - **Mute** it: it is never said again, anywhere, until you let it speak again;
 - **Forget** it (two clicks): it leaves the songbook and can be heard again.
+
+When a [[nemesis|Relationships]] falls by your hand, a **song of its fall** is added to the songbook (a victory song after one meeting, a feud song after a long feud, or an old saying that mourns a fallen foe), and a private notice gives its title. It needs the verses pack; with the literary forms set to *never* no song is added.
 
 The songbook keeps at most about 300 pieces (well under 10 KB); when it is full the oldest pieces you only heard make room. `/au songbook list` prints it, `/au songbook reset` empties it. With the memory turned off nothing is noted.
 
