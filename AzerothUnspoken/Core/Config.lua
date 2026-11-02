@@ -100,6 +100,8 @@ Config.CHAT_LIMITS = {
 ---@field favours boolean NPCs at Friend or above may ask small favours the game can check (on, #217)
 ---@field nicknames boolean NPCs at Close friend or above give the character a nickname, used in their lines (on, #217)
 ---@field localNotices boolean the private narrator tells the word of you in a town, a title earned there, a rival who noticed (on, #218)
+---@field eternalGrudge boolean a named NPC the character attacked stays Hated for ever; off, redemption is very rare and slow (on, #213)
+---@field hostilityNotices boolean the private narrator tells an attack remembered, a betrayal seen, guest-right broken, the return home (on, #213)
 
 ---@class AUSettings
 ---@field locale string codice di due lettere registrato con RegisterLanguage
@@ -186,6 +188,9 @@ Config.defaults = {
 		nicknames = true,
 		-- #218: local reputation (word of you in a town, honorary titles, NPC rivalries) told by the private narrator
 		localNotices = true,
+		-- #213: hostility. The eternal grudge (owner decision: on) and the private notices of attacks and of coming home
+		eternalGrudge = true,
+		hostilityNotices = true,
 	},
 	-- Interlocutore (S6c): leggere il profilo pubblico Total RP 3 degli altri giocatori è un consenso a parte
 	interlocutor = {
@@ -238,7 +243,7 @@ Config.characterDefaults = {
 	-- Living Memory (S6): ricordi, luoghi e flag. La forma e le migrazioni interne sono in Systems/LivingMemory.lua
 	memories = { version = 2, nextId = 1, entries = {}, places = {}, flags = {}, stats = {} },
 	-- Relazioni (S6b): NPC per npcID e giocatori scelti dall'utente. Forma e pulizia in Systems/Relationships.lua
-	relationships = { version = 6, npcs = {}, players = {} },
+	relationships = { version = 7, npcs = {}, players = {} },
 	-- Story Arcs (S9): lo stato di ogni arco; forma e migrazioni interne in Systems/StoryArcs.lua
 	arcs = { version = 1, items = {}, stats = {} },
 	history = {},

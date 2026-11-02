@@ -39,6 +39,11 @@
 -- town (their dispositions and the quests turned in there) earns an honorary title the narrator uses there; a town that
 -- remembers a broken oath (N4 marks) withholds it. Curated rival pairs (Data/NPCs.lua) notice when you grow close to the
 -- other (`rival`). Numbers and lists in Data/Relationships.lua (`towns`, `rivalries`).
+-- N1 (#213, version 7): hostility (Systems/Hostility.lua). A named NPC the character struck first keeps a grudge
+-- (`foe`: when, how often, kills, whether they were the host) and drops to Hated; with the option "Eternal grudge" no
+-- automatic gain lifts them out of it. A town remembers a betrayal (`betray`, `host`) or an enemy of the other faction
+-- (`foe`); `relationships.home` is the innkeeper of the hearth (guest-right). Numbers in Data/Relationships.lua
+-- (`hostility`). Narration only: nothing changes how an NPC behaves in the game.
 -- Proximity (#113, ADR 0030): with the option on (off by default) nameplates and mouseover can recognise a player who is
 -- ALREADY listed, or (with the TRP3 consent) suggest one who has a TRP3 profile. For this session only: nothing is saved,
 -- no record is created, nothing is kept about strangers, and a secret identity is not read.
@@ -126,7 +131,7 @@ local Engine, Traits, Compat = NS.Engine, NS.Traits, NS.Compat
 local R = NS:RegisterModule("relations")
 NS.Relationships = R
 
-R.VERSION = 6                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218)
+R.VERSION = 7                  -- forma dei dati in AzerothUnspokenCharacterDB.relationships (2: user/seen, #107; 3: met, race, #214; 4: promises, marks, oathT, #216; 5: favour, favourT, favourN, quests, nick, #217; 6: towns, town, heard, rival, #218; 7: foe, home, town betray/host/foe, #213)
 R.MAX_NPCS = 1000
 R.COMPACT_NPCS = 900           -- dopo una compattazione se ne tengono 900
 R.MAX_PLAYERS = 300
@@ -191,7 +196,12 @@ R.config = { knownMin = 15, lifetimeSoftness = 0.5, register = {}, dispositionSt
 	towns = { max = 60, perSession = 3, variants = 1, aliases = {},
 		word = { share = 0, limit = 15, notice = 6, axes = {}, skip = {} },
 		esteem = { perNpc = 60, perQuest = 4, minNpcs = 3, keep = 0.75 } },
-	rivalries = { band = "friend", days = 30, ironic = {} } }
+	rivalries = { band = "friend", days = 30, ironic = {} },
+	-- N1 (#213): Data/Relationships.lua fills it (R:RegisterHostility, Systems/Hostility.lua)
+	hostility = { reaction = 4, named = { classes = {}, questBoss = false }, opening = 3, linger = 3,
+		grudge = { drop = {}, ceiling = {}, graceDays = 180, redeem = 0.25 }, witnesses = { max = 12, near = 4 },
+		word = {}, betrayal = { days = 30, trust = 0.5 }, host = { days = 120, trust = 0.25 }, foe = { days = 90 },
+		home = { awayDays = 5, minutes = 10 }, perSession = 3, variants = 1 } }
 R.nickById = {}                -- N5 (#217): every nickname entry of the data, by id
 R.titles, R.titleById = {}, {} -- N6 (#218): honorary titles of a town, by rising esteem
 R.rivals = {}                  -- N6 (#218): [npcID] = { [rival npcID] = kind }, both ways (NS:RegisterRivalries)
@@ -568,6 +578,8 @@ function R:RegisterData(def)
 			if type(k) == "string" then cv.ironic[k] = v == true or nil end
 		end
 	end
+	-- N1 (#213): hostility (Systems/Hostility.lua)
+	if type(def.hostility) == "table" and self.RegisterHostility then self:RegisterHostility(def.hostility) end
 	DefineChoiceTraits()
 	return true
 end
@@ -1193,6 +1205,8 @@ local function CleanRecord(rec, kind)
 		-- N6 (#218): the town, what of its word the NPC took in, the rival they noticed
 		out.town = CleanText(rec.town, R.ZONE_LEN)
 		out.heard = R.CleanWord(rec.heard)
+		-- N1 (#213): the grudge of an NPC the character attacked
+		out.foe = R.CleanFoe and R.CleanFoe(rec.foe) or nil
 		local rival = rec.rival
 		if type(rival) == "table" and IsNumber(rival.npc) and rival.npc > 0 and IsNumber(rival.t) and rival.t > 0 then
 			out.rival = { npc = math.floor(rival.npc), t = Past(rival.t) }
@@ -1308,6 +1322,8 @@ function R:CleanTowns(towns)
 			if IsNumber(tw.quests) and tw.quests > 0 then town.quests = Counter(math.floor(tw.quests)) end
 			if type(tw.title) == "string" and self.titleById[tw.title] then town.title = tw.title end
 			if type(tw.best) == "string" and self.titleById[tw.best] then town.best = tw.best end
+			-- N1 (#213): a betrayal remembered (and whether the host was struck), an enemy of the other faction
+			if R.CleanTownFoe then R.CleanTownFoe(tw, town) end
 			out[key] = town
 			table.insert(keep, key)
 		else
@@ -1340,8 +1356,9 @@ function R:Sanitize()
 		NS.Diagnostics:Error("relations", ("relationships.version %d > %d: sola lettura"):format(v, self.VERSION))
 		return 0
 	end
-	-- versions 2 to 5 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
-	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218) start absent and are cleaned below
+	-- versions 2 to 6 need no migration of NPC records: the fields of later versions (met, race: 3; promises, marks,
+	-- oathT: 4; favour, nick, quests: 5, #217; towns, town, heard, rival: 6, #218; foe, home: 7, #213) start absent and
+	-- are cleaned below
 	local dropped = 0
 	local npcs, players = {}, {}
 	clamped = 0
@@ -1365,6 +1382,8 @@ function R:Sanitize()
 	-- N6 (#218): the towns and their word
 	local towns, badTowns = self:CleanTowns(d.towns)
 	d.towns, dropped = towns, dropped + badTowns
+	-- N1 (#213): the hearth's innkeeper, only while still listed
+	d.home = R.CleanHome and R.CleanHome(d.home, npcs) or nil
 	d.version = self.VERSION
 	-- il tetto vale anche per i dati caricati, non solo quando se ne aggiungono (#52)
 	self:CompactNPCs()
@@ -1569,6 +1588,8 @@ end
 local function DerivedOf(self, rec)
 	return self:Derive(self:Axes(rec))
 end
+-- N1 (#213): Systems/Hostility.lua changes the axes outside a meeting too, and leaves the same journal line
+R.AfterChange = AfterChange
 
 ---Toglie gli NPC meno importanti oltre il tetto (mai quelli con etichetta, nota o tag scelti dall'utente).
 function R:CompactNPCs()
@@ -1582,7 +1603,10 @@ function R:CompactNPCs()
 	for _, p in pairs(d.promises or EMPTY) do promised[p.npc] = true end
 	for id, rec in pairs(d.npcs) do
 		-- N5 (#217): nor those with an open favour or who gave a nickname
-		if not (rec.label or rec.note or rec.tags or rec.feeling or rec.oathT or promised[id] or rec.favour or rec.nick) then
+		-- N1 (#213): nor those who keep a grudge, nor the host of the hearth
+		local home = d.home and d.home.npc == id
+		if not (rec.label or rec.note or rec.tags or rec.feeling or rec.oathT or promised[id] or rec.favour or rec.nick
+			or rec.foe or home) then
 			table.insert(list, { id = id, f = AxisValue(rec, "familiarity"), t = rec.last or 0 })
 		end
 	end
@@ -1723,6 +1747,8 @@ function R:Increment(rec, source, now, temper, inc, trustMult)
 				local span = def.max
 				delta = delta * (1 - self.config.lifetimeSoftness * Clamp(v / span, 0, 1))
 				if axis == "trust" and IsNumber(trustMult) then delta = delta * Clamp(trustMult, 0, 1) end
+				-- N1 (#213): a grudge holds the axis down (the eternal grudge) or lets it climb only slowly
+				if rec.foe and self.GrudgeLimit then delta = self:GrudgeLimit(rec, axis, v, delta) end
 			end
 			local room = ((inc.cap and inc.cap[axis]) or math.huge) * t
 			room = room - (gains[axis] or 0)
@@ -2176,6 +2202,8 @@ function R:MarkTrust(npcID, rec, forget)
 		local city = self:CityMark((HereNow()))
 		if city > 0 then f = f * (1 - city * (1 - m.cityTrust)) end
 	end
+	-- N1 (#213): the town where the character stands remembers a betrayal
+	if self.BetrayalTrust then f = f * self:BetrayalTrust() end
 	return f
 end
 
@@ -2228,6 +2256,9 @@ end
 function R:PromiseNotice(prefix, ...)
 	return SessionNotice(self, "promiseNotices", PromiseSession(self), self.config.promises, prefix, ...)
 end
+
+-- N1 (#213): the notices of Systems/Hostility.lua follow the same rules
+R.SessionNotice = SessionNotice
 
 ---Changes the axes of a listed NPC for something that is not a meeting (a word kept or broken): the temperament
 ---applies, `last` and `count` stay as they are. A move to another level leaves its journal line; with `quiet` (a promise
@@ -2582,7 +2613,10 @@ function R:Hear(rec, name, town, temper)
 		local def = self.axisById[axis]
 		local diff = (word[axis] or 0) - (heard[axis] or 0)
 		if def and diff ~= 0 then
-			rec[axis] = Clamp(AxisValue(rec, axis) + diff * temper, def.min, def.max)
+			local v, delta = AxisValue(rec, axis), diff * temper
+			-- N1 (#213): good word does not lift a grudge either
+			if delta > 0 and rec.foe and self.GrudgeLimit then delta = self:GrudgeLimit(rec, axis, v, delta) end
+			rec[axis] = Clamp(v + delta, def.min, def.max)
 			heard[axis] = word[axis]
 		end
 	end
@@ -3496,6 +3530,8 @@ function R:Reset(what)
 		d.npcs = {}
 		-- N4 (#216): the promises and the maps' memory of a broken oath belong to the NPCs; N6 (#218): so do the towns
 		d.promises, d.marks, d.towns = {}, {}, {}
+		-- N1 (#213): the hearth's innkeeper is one of them
+		d.home = nil
 	end
 	if what == "all" or what == "players" or what == nil then
 		for _ in pairs(d.players) do n = n + 1 end
@@ -3857,6 +3893,8 @@ function R:Context(ctx, extra)
 	if d and next(d.marks) and self:CityMark((HereNow())) > 0 then ctx.oathbreakerHere = true end
 	-- N6 (#218): the town where the character stands: the word of them there and their title (no person needed)
 	self:TownContext(ctx)
+	-- N1 (#213): the town remembers a betrayal or an enemy; the character just came home (no person needed)
+	if self.HostilityContext then self:HostilityContext(ctx) end
 	local kind, key, rec = self:Subject(ctx, extra)
 	if not rec then
 		ctx.isKnown, ctx.relTraits = false, EMPTY
@@ -3877,6 +3915,8 @@ function R:Context(ctx, extra)
 		self:PromiseContext(ctx, key, rec)
 		self:FavourContext(ctx, rec)
 		self:RivalContext(ctx, key, rec)
+		-- N1 (#213): the grudge of an NPC the character attacked
+		if self.FoeContext then self:FoeContext(ctx, rec) end
 	end
 	-- N3 (#215): the character made the private vow to this NPC (the condition relVowed)
 	ctx.relVowed = kind == "npc" and type(rec.noted) == "table" and rec.noted.vow == true or nil
@@ -4106,6 +4146,8 @@ function handlers.NPC_INTERACT(env)
 		R.questTaker = { npcID = c.npcID, name = c.npcName, t = now }
 	elseif kind == "gossip" or kind == "merchant" or kind == "taxi" or kind == "trainer" or kind == "binder" then
 		R:RecordNPC(c.npcID, c.npcName, kind)
+		-- N1 (#213): the innkeeper who binds the hearth is home (guest-right)
+		if kind == "binder" and R.SetHome then R:SetHome(c.npcID) end
 	end
 	R:OfferKnown(c.npcID, kind)
 	-- N4 (#216): a promise still open, or a broken oath remembered
@@ -4645,6 +4687,9 @@ local function Summary(self, kind, key)
 		-- N6 (#218): their town, your title there, their rivals
 		local town = self:TownText(key, rec)
 		if town ~= "" then text = text .. " " .. town end
+		-- N1 (#213): the grudge
+		local foe = self:FoeText(key, rec)
+		if foe ~= "" then text = text .. " " .. foe end
 	end
 	return text
 end

@@ -217,6 +217,8 @@ function IsInGroup() return P.group or false end
 function GetRealZoneText() return P.zone end
 function GetZoneText() return P.zone end
 function GetSubZoneText() return P.subzone end
+-- (N1, #213) P.bind: the hearth's place as GetBindLocation names it (nil: the client does not say)
+function GetBindLocation() return P.bind end
 function GetGameTime() return P.hour, 0 end
 function UnitExists(u) return Subject(u) ~= nil end
 function UnitIsPlayer(u)

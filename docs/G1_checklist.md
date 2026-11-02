@@ -1174,6 +1174,44 @@ parte, già usate altrove e tutte nel dump di Forever: `GetSubZoneText`, `GetRea
     - **Cosa aspettarti:** nessuna riga con l'opzione spenta, ma le voci e i titoli restano nel dettaglio e
       nell'esportazione; mai più di una riga dei luoghi in un incontro; nulla in chat.
 
+## N1: ostilità, rancore, tradimento, testimoni e ospitalità (aggiunto dall'issue #213)
+
+Solo narrazione: nessun NPC cambia comportamento nel gioco, e nulla va in chat. Lo scontro si legge **senza registro di
+combattimento** con la ricetta dell'ADR 0035, **non ancora confermata nel gioco** (il proprietario ha deciso di non
+aspettare la sezione N0): se un passo non va, apri una issue con quello che hai visto. Funzioni nuove per questa parte,
+tutte nel dump di Forever: `PLAYER_ENTER_COMBAT`, `UNIT_COMBAT`, `UNIT_DIED`, `PARTY_KILL`, `UnitThreatSituation`,
+`CheckInteractDistance`, `UnitIsTapDenied`, `GetBindLocation`. Provato solo con il client finto. Attaccare un NPC può
+costarti la vita (arrivano le guardie): fallo dove la corsa al corpo è breve.
+
+- **N1.1 · Colpisci per primo.** Parla con un NPC **giallo** (neutrale) con un nome, per esempio un mercante di Ratchet
+  o di Booty Bay, poi selezionalo e colpiscilo con l'attacco automatico.
+    - **Cosa aspettarti:** finito lo scontro, una riga privata («Il primo colpo a … l'hai dato tu.» oppure «… ricorderà
+      chi ha alzato la mano per primo.»); in `/au relationships` l'NPC è **Odiato** e il dettaglio dice «Porta rancore:
+      …» e «Il rancore è per sempre.».
+    - **Cosa riportare:** se la riga arriva, dopo quanti secondi, e se il primo colpo con un incantesimo dà lo stesso.
+- **N1.2 · Chi non conta.** Colpisci un animale giallo qualunque; poi lascia che un mostro rosso ti colpisca per primo.
+    - **Cosa aspettarti:** nessuna riga, nessun NPC nuovo nella lista.
+- **N1.3 · Un'uccisione.** Uccidi l'NPC del passo N1.1 (o un altro NPC giallo con un nome).
+    - **Cosa aspettarti:** la riga dell'uccisione («Per mano tua, … ha trovato la fine.»); il dettaglio dice «ha trovato
+      la fine per mano tua». Con un famiglio che dà l'ultimo colpo, lo stesso.
+- **N1.4 · Testimoni.** Accendi le barre dei nomi amiche (**Shift+V**) e ripeti N1.1 vicino ad altri NPC amici che
+  conosci.
+    - **Cosa aspettarti:** il dettaglio di un testimone che conosci mostra meno fiducia; la prossima volta che parli con
+      un altro NPC del luogo, sa già qualcosa. Senza barre amiche, il luogo non sa nulla.
+- **N1.5 · La città dell'altra fazione.** Colpisci per primo una guardia di un villaggio o di una città dell'altra
+  fazione.
+    - **Cosa aspettarti:** «<luogo> ricorderà la tua lama.»; nessuna guardia nella lista, una per una.
+- **N1.6 · Ospitalità.** Lega la pietra del ritorno in una locanda neutrale (Ratchet, Booty Bay, Gadgetzan), poi colpisci
+  il locandiere (oppure qualcuno dentro la locanda).
+    - **Cosa aspettarti:** «Hai alzato la mano sotto il tetto di …»; il locandiere è Odiato; nel diario «Ospitalità
+      tradita (<luogo>)», per sempre; il dettaglio del locandiere dice «Custode del tuo focolare.».
+    - **Cosa riportare:** il testo di `GetBindLocation` se il locandiere non viene riconosciuto
+      (`/dump GetBindLocation()`).
+- **N1.7 · Tornare a casa.** Resta lontano dal luogo della tua pietra del ritorno per più di cinque giorni, poi torna.
+    - **Cosa aspettarti:** una riga calda («Di nuovo a casa. …»), oppure fredda dopo il passo N1.6.
+- **N1.8 · Le opzioni.** Spegni **Rancore eterno**: il dettaglio dice quanti giorni resta il rancore. Spegni **Avvisi di
+  ostilità**: nessuna riga, ma il rancore resta. Mai nulla in chat.
+
 ---
 
 ## Modulo riassuntivo (copia e compila)
@@ -1321,6 +1359,10 @@ N6 luogo ................ nella locanda ______  nei quartieri ______  in campagn
 N6 voci ................. riga a un NPC nuovo? ___  fiducia senza far nulla? ___  altro villaggio nulla? ___
 N6 titolo ............... riga? ___  diario? ___  genere giusto? ___  negato dopo uno spergiuro? ___
 N6 rivali ............... Allison nota Farley? ___  Corina nota Argus? ___  una volta sola? ___  nulla in chat? ___
+N1 colpo per primo ...... riga? ___  dopo (s) ______  con un incantesimo? ___  Odiato? ___  animale/mostro nulla? ___
+N1 uccisione/testimoni .. riga dell'uccisione? ___  famiglio? ___  testimone con meno fiducia? ___  il luogo lo sa? ___
+N1 fazione/ospitalità ... città dell'altra fazione? ___  locandiere riconosciuto? ___  GetBindLocation ______  diario? ___
+N1 casa/opzioni ......... ritorno caldo/freddo? ___  rancore eterno spento: giorni? ___  avvisi spenti? ___  nulla in chat? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

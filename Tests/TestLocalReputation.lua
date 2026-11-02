@@ -463,7 +463,7 @@ T.run("the conditions: townTitle, townWord, relRival", function()
 	end
 end)
 
-T.run("saved data: version 4 and version 5 (N5) data move to version 6, nothing lost", function()
+T.run("saved data: version 4 and version 5 (N5) data move to the current version, nothing lost", function()
 	for _, v in ipairs({ 4, 5 }) do
 		Fresh()
 		NS.cdb.relationships = { version = v, players = {}, promises = {}, marks = {},
@@ -472,7 +472,7 @@ T.run("saved data: version 4 and version 5 (N5) data move to version 6, nothing 
 		R.readOnly = false
 		R:Sanitize()
 		local d, rec = NS.cdb.relationships, NS.cdb.relationships.npcs[7001]
-		T.eq(d.version, 6, "version " .. v .. " moves to 6")
+		T.eq(d.version, R.VERSION, "version " .. v .. " moves to the current one")
 		T.eq(R.readOnly, false, "version " .. v .. ": writable")
 		T.ok(rec.trust == 40 and rec.oathT ~= nil, "version " .. v .. ": the axes and N4's mark kept")
 		if v == 5 then
@@ -489,7 +489,7 @@ end)
 
 T.run("saved data: version 6, towns and NPC fields cleaned, reset", function()
 	Fresh()
-	T.eq(R.VERSION, 6, "relationships.version 6 (N5 made it 5)")
+	T.eq(R.VERSION, 7, "relationships.version 7 (N5 made it 5, N6 6, N1 7)")
 	local d = NS.cdb.relationships
 	d.npcs[7001] = { first = 1, last = 2, count = 1, town = "Goldshire\1", heard = { trust = 99, familiarity = 5, bogus = 1, loyalty = 0 },
 		rival = { npc = 295, t = time() + 999 } }

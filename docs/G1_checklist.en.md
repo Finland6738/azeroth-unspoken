@@ -381,6 +381,19 @@ English counterpart of the section **N6** of [G1_checklist.md](G1_checklist.md).
 - **N6.5 · Rivals.** Become a **Friend** of Innkeeper Farley (Goldshire), then talk to Innkeeper Allison (Stormwind). **Expect:** once, a jealous line ("A cooler welcome from Innkeeper Allison: word is you favour Innkeeper Farley these days.") and a little less affection in her detail, which says "Rival of: Innkeeper Farley.". The same with Smith Argus and Corina Steele in Goldshire. Nothing the second time. **Report:** the npcIDs from `/au who` if nothing happens (the numbers come from Classic Era).
 - **N6.6 · Never in combat, never in chat, one line per meeting.** Turn off **Town notices** in the Options tab. **Expect:** no line with the option off, but the word and the titles stay in the detail and the export; never more than one town line in a meeting; nothing in chat.
 
+## N1: hostility, grudges, betrayal, witnesses and guest-right (issue #213)
+
+English counterpart of the section **N1** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. Narration only: no NPC changes its behaviour in the game, and nothing goes to chat. The fight is read **without a combat log** with the recipe of ADR 0035, **not yet confirmed in game** (the owner chose not to wait for section N0): if a step goes wrong, open an issue with what you saw. New reads for this part, all in the Forever dump: `PLAYER_ENTER_COMBAT`, `UNIT_COMBAT`, `UNIT_DIED`, `PARTY_KILL`, `UnitThreatSituation`, `CheckInteractDistance`, `UnitIsTapDenied`, `GetBindLocation`. Tried with the mock client only. Attacking an NPC may cost your life (the guards come): do it where the run back is short.
+
+- **N1.1 · Strike first.** Talk to a **yellow** (neutral) named NPC, such as a vendor of Ratchet or Booty Bay, then select them and strike them with auto-attack. **Expect:** after the fight, a private line ("You struck ... first. That will not be forgotten."); in `/au relationships` the NPC is **Hated** and the detail says "Holds a grudge: ..." and "The grudge is for ever.". **Report:** whether the line comes, how many seconds after, and whether a spell as the first blow gives the same.
+- **N1.2 · Who does not count.** Strike any yellow animal; then let a red monster strike you first. **Expect:** no line, no new NPC in the list.
+- **N1.3 · A kill.** Kill the NPC of N1.1 (or another yellow named NPC). **Expect:** the kill line ("... fell by your hand."); the detail says "they died by your hand". With a pet striking the last blow, the same.
+- **N1.4 · Witnesses.** Turn on the friendly nameplates (**Shift+V**) and repeat N1.1 near other friendly NPCs you know. **Expect:** the detail of a witness you know shows less trust; the next time you talk to another NPC of the town, they already know something. Without friendly nameplates, the town knows nothing.
+- **N1.5 · The other faction's city.** Strike first a guard of a village or city of the other faction. **Expect:** "<town> will remember your blade."; no guard in the list one by one.
+- **N1.6 · Guest-right.** Bind your hearthstone at a neutral inn (Ratchet, Booty Bay, Gadgetzan), then strike the innkeeper (or someone inside the inn). **Expect:** "You raised your hand under the roof of ..."; the innkeeper is Hated; in the journal "Guest-right broken (<town>)", for good; the innkeeper's detail says "The keeper of your hearth.". **Report:** the text of `GetBindLocation` if the innkeeper is not recognised (`/dump GetBindLocation()`).
+- **N1.7 · Coming home.** Stay away from your hearthstone's town for more than five days, then come back. **Expect:** a warm line ("Home again. ..."), or a cold one after N1.6.
+- **N1.8 · The options.** Turn off **Eternal grudge**: the detail says how many days the grudge holds. Turn off **Hostility notices**: no line, but the grudge stays. Never anything in chat.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -444,4 +457,8 @@ N6 town ................. inside the inn ______  in the districts ______  none i
 N6 word ................. line to a new NPC? ___  trust without doing anything? ___  nothing in another village? ___
 N6 title ................ line? ___  journal? ___  right gender? ___  withheld after a broken oath? ___
 N6 rivals ............... Allison notices Farley? ___  Corina notices Argus? ___  only once? ___  nothing in chat? ___
+N1 strike first ......... line? ___  after (s) ______  with a spell? ___  Hated? ___  animal/monster nothing? ___
+N1 kill / witnesses ..... kill line? ___  pet? ___  witness with less trust? ___  the town knows? ___
+N1 faction / guest-right  other faction's city? ___  innkeeper recognised? ___  GetBindLocation ______  journal? ___
+N1 home / options ....... warm/cold return? ___  eternal grudge off: days? ___  notices off? ___  nothing in chat? ___
 ```

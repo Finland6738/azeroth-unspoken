@@ -420,6 +420,7 @@ local OPTIONS = {
 	{ "sharePlayers", "rel_opt_share" }, { "levelNotices", "rel_opt_levels" }, { "promiseNotices", "rel_opt_promises" },
 	{ "favours", "rel_opt_favours" }, { "nicknames", "rel_opt_nicknames" },
 	{ "localNotices", "rel_opt_local" },
+	{ "eternalGrudge", "rel_opt_grudge" }, { "hostilityNotices", "rel_opt_hostility" },
 }
 
 -- the options have a view of their own (#172): two columns of buttons, then the privacy note and, while the shared list
@@ -703,11 +704,14 @@ local function RefreshDetail()
 		-- nickname and the favours; N6 (#218): their town, your title there and their rivals
 		local vow, promises, favours = R:VowText(rec), R:PromiseText(s.key, rec), R:FavourText(rec)
 		local town = R:TownText(s.key, rec)
+		-- N1 (#213): the grudge, the hearth, a betrayal their town remembers
+		local foe = R:FoeText(s.key, rec)
 		local extra = {}
 		if vow ~= "" then table.insert(extra, vow) end
 		if promises ~= "" then table.insert(extra, promises) end
 		if favours ~= "" then table.insert(extra, favours) end
 		if town ~= "" then table.insert(extra, town) end
+		if foe ~= "" then table.insert(extra, foe) end
 		frame.dSeenFacts:SetText(R:MetText(rec, Stamp) .. (#extra > 0 and ("\n" .. table.concat(extra, "\n")) or ""))
 	end
 	if isPlayer then

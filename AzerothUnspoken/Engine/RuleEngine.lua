@@ -280,6 +280,19 @@ local SPECIAL = {
 		end
 		return false
 	end,
+	-- hostility (N1, #213): ctx.relFoe (attacked | killed | host: the grudge of the NPC of the interaction) is a
+	-- relationship condition; ctx.townBetrayed, ctx.townFoe (what the town where the character stands remembers) and
+	-- ctx.homeReturn (the character just came back to the hearth's town after a long time) need no person
+	relFoe = function(v, ctx)
+		if ctx.relFoe == nil then return false end
+		for _, name in ipairs(AsList(v)) do
+			if ctx.relFoe == name then return true end
+		end
+		return false
+	end,
+	townBetrayed = function(v, ctx) return (ctx.townBetrayed == true) == v end,
+	townFoe = function(v, ctx) return (ctx.townFoe == true) == v end,
+	homeReturn = function(v, ctx) return (ctx.homeReturn == true) == v end,
 	-- il mondo (R3, Systems/World.lua): una lettura che il client non dà vale "non lo so", cioè falsa per `true` e per
 	-- `false` (tranne dove è scritto): una frase che nomina il meteo o il volo non esce se l'API manca
 	dayTime = function(v, ctx) return ctx.isDay ~= nil and ctx.isDay == v end,
@@ -433,6 +446,8 @@ Engine.CONDITIONS = {
 	relFavour = "bool", relNick = "bool",
 	-- local reputation (N6, #218)
 	townTitle = "str", townWord = "str", relRival = "str",
+	-- hostility (N1, #213)
+	relFoe = "str", townBetrayed = "bool", townFoe = "bool", homeReturn = "bool",
 	-- interlocutore e luogo (S6c): sotto-tabelle con i campi di Engine.SUB_FIELDS
 	other = "sub", place = "sub",
 	-- Story Arcs (S9): sotto-tabella `arc` (campi di Engine.SUB_FIELDS.arc); gli archi chiusi si chiedono con arcDone
@@ -478,6 +493,8 @@ Engine.CONDITION_VALUES = {
 	relMetWeather = { clear = true, rain = true, snow = true, storm = true, sand = true, fog = true },
 	-- local reputation (N6, #218): the titles are registered by Data/Relationships.lua (`towns.titles`)
 	townTitle = {}, townWord = { good = true, bad = true }, relRival = { jealous = true, ironic = true },
+	-- hostility (N1, #213)
+	relFoe = { attacked = true, killed = true, host = true },
 	-- the composite situations (#100): filled by NS:RegisterSituation
 	situation = {},
 }
@@ -549,7 +566,7 @@ Engine.SUB_VALUES = {
 Engine.RELATION_CONDITIONS = { relation = true, disposition = true, relationKind = true, isKnown = true,
 	withRelation = true, feeling = true, relDaysSince = true, relMetHere = true, relShared = true,
 	relMetLevels = true, relMetDays = true, relMetTime = true, relMetWeather = true, relVowed = true,
-	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true, relRival = true }
+	relPromiseDays = true, relOathbroken = true, relFavour = true, relNick = true, relRival = true, relFoe = true }
 
 ---Registra le condizioni <asse>Min e <asse>Max di un asse delle relazioni (valgono sugli assi del bersaglio o
 ---dell'NPC dell'interazione: ctx.rel[asse]).

@@ -138,6 +138,20 @@ Every NPC belongs to **a town**: the place where you meet them. In the countrysi
 
 It is all narration: no NPC changes what it does in the game, and a title is a name the narrator uses, nothing more. The lines are **private**, rare (a few a session, one per meeting), never in a fight and never in chat. Turn them off with **Town notices** in the Options tab; the word and the titles are still kept. The detail of an NPC shows their town, the word of you there, your title there and their rivals: *Their town: Goldshire, where word of you is good (9). There you are Friend of Goldshire. Rival of: Corina Steele.* The [export](#commands) lists your towns too.
 
+### Hostility: grudges, betrayal, witnesses and guest-right
+
+Raising a hand against an NPC is remembered. The addon notices when **you strike first** in a fight (you start swinging, or cast at someone who was not fighting you) and looks at who your target was **before** the fight:
+
+- **A named NPC remembers you.** Named means an elite or rare NPC, the boss of one of your quests, someone you already know, or one of the addon's curated NPCs. They drop to **Hated** and keep a grudge. With **Eternal grudge** on (the default) no meeting, quest or kind word ever lifts them out of it; turn it off and, after about half a year, they may come round, very slowly. Ordinary NPCs and wolves are never recorded one by one.
+- **A kill** by your hand or your pet's is remembered too: *Rel fell by your hand. Whatever comes back, it remembers.*
+- **Witnesses.** Friendly NPCs near you whose nameplates are shown are the witnesses. Someone you already know thinks less of you; and only when someone saw it does the **word reach their town** (see the local reputation above), so the other NPCs there hear of it the next time you meet. Friendly nameplates are off by default in the game: with them off, nobody is known to have seen.
+- **Your own faction: betrayal.** Attacking an NPC of your own faction (or one friendly to you), when someone saw it, leaves the town wary of you for about a month: the trust anyone there can gain is slower while it fades.
+- **The other faction: the city remembers.** Attacking an NPC of the other faction in one of its towns or cities makes the whole place remember you as a foe for a few months, not guard by guard.
+- **Guest-right.** The innkeeper who binds your hearthstone is **home**. Attacking them, or anyone inside their inn, is the gravest betrayal: the whole town knows without witnesses, the town stays cold to you for months, and the [[journal|Memory-and-Journal]] keeps *Guest-right broken* for good.
+- **Coming home.** Back in your hearth's town after five days or more away, a short private line welcomes you, or tells you the hearth is cold if you broke guest-right there.
+
+Monsters that were already hostile do not count here (they belong to a later step, the nemesis). The fight is read **without a combat log** (Forever gives addons none), from the game's ordinary signals (who struck first, who you were fighting, who died): this reading is **not yet confirmed in the real client**. When the game does not say something, the addon stays silent rather than guess. The notices are private (a few a session, after the fight, never in chat); turn them off with **Hostility notices**. The detail of an NPC shows the grudge (*Holds a grudge: you attacked them 3 days ago (2 times). The grudge is for ever.*) and marks the keeper of your hearth.
+
 ### What NPCs and your character say about all this
 
 The moments above have their own lines, in English and in Italian, and they change with **who the NPC is** (a guard, an innkeeper, a merchant, a trainer, someone who gives quests) and **how you stand** with them:
@@ -281,6 +295,8 @@ Both have the red outline of the actions that lose data. The first click arms th
 | **Promise notices** | on | a short private line when an NPC reminds you of a quest you promised, is relieved by a late one, or remembers an oath you broke; rare, never in combat, never in chat |
 | **Favors** | on | NPCs at Friend or above may ask a small favor the game can check by itself; it completes on its own |
 | **Nicknames** | on | NPCs at Close friend or above give your character a nickname, which their lines use |
+| **Eternal grudge** | on | a named NPC you attacked stays Hated for ever; off, after a long time they may come round, very slowly |
+| **Hostility notices** | on | a short private line after a fight you started with an NPC (a grudge, a kill, a betrayal seen, guest-right broken) and when you come home after a long journey |
 | **Town notices** | on | a short private line when word of you reached a newcomer, when a town gives you an honorary title, or when an NPC notices you grew close to their rival; rare, never in combat, never in chat |
 
 Under the options, a line about each consent and the privacy note, in the normal text size. Each button says its state **in words**: *on*, *off*, and, while a question is open, *off, read first* (the first couple of seconds) and then *off, confirm*. When you click **Share with the account** or **Recognise nearby**, the whole warning appears in a confirmation dialog and in the window, below the privacy note, in the normal font.
@@ -356,6 +372,8 @@ See [[Privacy and Data|Privacy-and-Data]].
 | Favors | on | Options tab |
 | Nicknames | on | Options tab |
 | Town notices | on | Options tab |
+| Eternal grudge | on | Options tab |
+| Hostility notices | on | Options tab |
 
 ## What you will see
 
@@ -367,6 +385,7 @@ See [[Privacy and Data|Privacy-and-Data]].
 - A reminder from an NPC who is still waiting for a quest you took, their relief when you come back late, and the long memory of an oath you broke.
 - Now and then a small favor asked by a friend, done by itself when you do it; and from a close friend, once, a nickname they use from then on.
 - Newcomers in a town who have heard of you, an honorary title in a town that esteems you, and a rival who notices.
+- After a fight you started: a grudge, a betrayal seen, guest-right broken; and a welcome when you come home after a long journey.
 
 ## Tips
 
