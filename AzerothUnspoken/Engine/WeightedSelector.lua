@@ -5,6 +5,7 @@ local Engine = NS.Engine
 
 local function Mem() return NS.cdb.memory end
 local EMPTY = {}
+local find = string.find
 
 local function Finite(n) return type(n) == "number" and n == n and n ~= math.huge and n ~= -math.huge end
 
@@ -517,9 +518,9 @@ Engine.Score, Engine.WeightedPick, Engine.Remember, Engine.KeepFor = Score, Weig
 --     of the factor are pure (Engine.weightHookPure): ScoreMemo computes them once per combination and voice, with the
 --     same operations in the same order as Score, so the weights are the same numbers and the picks the same picks.
 -- The weights are memoized only when a pick weighs at least MEMO_MIN rules: in a small pick the combinations rarely
--- repeat and the memo would cost more (its tables) than it saves. Engine.MEMO = false switches the memo (and the cache
--- of merged candidates) off: the test of the pick results (TestScale.lua) runs the same picks both ways and requires
--- the same trace.
+-- repeat and the memo would cost more (its tables) than it saves. Engine.MEMO = false switches the memo off, and the
+-- check of the groups of the index apart (Engine:EligibleFor): the test of the pick results (TestScale.lua) runs the
+-- same picks both ways and requires the same trace.
 Engine.MEMO = true
 Engine.MEMO_MIN = 128
 
@@ -551,7 +552,8 @@ function Engine.NewPickMemo()
 end
 
 -- the factors of one combination of descriptive fields and voice; C, P, R and E only when every hook of the factor is
--- pure
+-- pure. #138: with all four, also W0, the whole weight of a rule of the combination not used yet (no entry in `uses`):
+-- the operations of ScoreMemo below with 0 uses, in the same order, so the same number.
 local function ShapeFactors(entry, lastTone, ctx, profile, voice, pure)
 	local m = {}
 	m.tone = (lastTone and Engine.Tone(entry) == lastTone) and true or false
@@ -561,7 +563,23 @@ local function ShapeFactors(entry, lastTone, ctx, profile, voice, pure)
 	m.S = Engine.StyleFactor(entry, ctx) * Engine.StyleResolver:Affinity(entry, profile)
 	if pure.R then m.R = Hooks("R", entry, ctx) end
 	if pure.E then m.E = Hooks("E", entry, ctx) end
+	if m.C and m.P and m.R and m.E then
+		local N = 1 / (1 + Engine.USE_DECAY * 0)
+		if m.tone then N = N * Engine.SAME_TONE end
+		N = N * m.nov
+		m.W0 = entry.weight * m.C * m.P * N * m.S * m.R * m.E
+	end
 	return m
+end
+
+-- a child of a node of the memo, made when missing
+local function Child(node, key)
+	local child = node[key]
+	if not child then
+		child = {}
+		node[key] = child
+	end
+	return child
 end
 
 ---Score(entry, _, _, lastTone, ctx, profile, voice) with the memo of the pick: the same number.
@@ -576,28 +594,28 @@ local function ScoreMemo(entry, lastTone, ctx, profile, voice, memo)
 	local shape = ShapeOf(entry)
 	if not shape then return Score(entry, nil, nil, lastTone, ctx, profile, voice) end
 	if not memo.shapes then
-		memo.shapes, memo.keys, memo.pure, memo.uses = {}, {}, PureFactors(ctx), Mem().uses
+		memo.shapes, memo.pure, memo.uses = {}, PureFactors(ctx), Mem().uses
 	end
-	-- shape, registers, tags, theme, motifs, voice: the descriptive fields of the rule (all but id, text, when, ord)
-	local node = memo.shapes
-	local keys = memo.keys
-	keys[1], keys[2], keys[3], keys[4], keys[5] = shape, entry.styles or NONE, entry.tags or NONE, entry.theme or NONE,
-		entry.motifs or NONE
-	for i = 1, 5 do
-		local nxt = node[keys[i]]
-		if not nxt then
-			nxt = {}
-			node[keys[i]] = nxt
-		end
-		node = nxt
-	end
+	-- shape, registers, tags, theme, motifs, voice: the descriptive fields of the rule (all but id, text, when, ord).
+	-- #138: the lookups written out, the cheapest way in Lua 5.1 (the memo is asked once per weighed rule)
+	local node = memo.shapes[shape] or Child(memo.shapes, shape)
+	local key = entry.styles or NONE
+	node = node[key] or Child(node, key)
+	key = entry.tags or NONE
+	node = node[key] or Child(node, key)
+	key = entry.theme or NONE
+	node = node[key] or Child(node, key)
+	key = entry.motifs or NONE
+	node = node[key] or Child(node, key)
 	local m = node[voice or false]
 	if not m then
 		m = ShapeFactors(entry, lastTone, ctx, profile, voice, memo.pure)
 		node[voice or false] = m
 	end
+	local uses = memo.uses[entry.id]
+	if uses == nil and m.W0 then return m.W0 end
 	-- the operations of Score, in its order
-	local N = 1 / (1 + Engine.USE_DECAY * (memo.uses[entry.id] or 0))
+	local N = 1 / (1 + Engine.USE_DECAY * (uses or 0))
 	if m.tone then N = N * Engine.SAME_TONE end
 	N = N * m.nov
 	local C = m.C or (1 + Engine.SPEC_BONUS * (entry.spec or 0)) * Hooks("C", entry, ctx)
@@ -631,8 +649,13 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 	local literary = NS.Pacing:LiteraryClosed(ctx) and self.LITERARY_CATEGORY or nil
 	-- #122: the pieces the user muted in the songbook (Systems/Songbook.lua), nil when there is none
 	local muted = self.muted
+	local AnyUsable = Engine.AnyUsable
 	for _, p in ipairs(list) do
-		if (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
+		local when = p.when
+		-- #138: conditions already false in this pick end the check at once. Only pure conditions are in the memo, and
+		-- purity belongs to the conditions table, so no rule that shares it could have drawn a random number here
+		if not (memo and when ~= nil and memo[when] == false)
+			and (not form or p.form == form) and not disabled[p.pack] and p.chainable ~= "only"
 			and not (muted and muted[p.id])
 			and not (p.cooldown and mem.last[p.id] and now - mem.last[p.id] < p.cooldown)
 			and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary) then
@@ -643,9 +666,9 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 				-- #99: its conditions, then every part (a whole phrase with its own conditions and texts); off in R1_COMPAT
 				ok = not self.R1_COMPAT and Engine.SafeMatch(p.when, ctx) and self:MonologueUsable(p, lang, ctx, now)
 			elseif p.impure or not p.ord then
-				ok = Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(p.when, ctx)
+				ok = AnyUsable(p.text[lang], ctx, p.speaker, p.pack) and Engine.SafeMatch(when, ctx)
 			else
-				local when, m = p.when, nil
+				local m
 				if when == nil then
 					m = true
 				elseif memo then
@@ -657,12 +680,48 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 				else
 					m = Engine.SafeMatch(when, ctx)
 				end
-				ok = m and Engine.AnyUsable(p.text[lang], ctx, p.speaker, p.pack)
+				if m then
+					-- #138: the common case of AnyUsable, a first variant with no placeholder (its pack, the rule's, is on)
+					local texts = p.text[lang]
+					local first = texts and texts[1]
+					ok = (type(first) == "string" and not find(first, "{", 1, true))
+						or AnyUsable(texts, ctx, p.speaker, p.pack)
+				end
 			end
 			if ok then table.insert(out, p) end
 		end
 	end
 	return out
+end
+
+---The eligible rules of an event, as Eligible(Candidates(event, ctx, form)) gives them: the same rules, in the same
+---order, with the same random numbers drawn (#138). The groups of the index are checked apart and only their eligible
+---rules are merged, so a pick no longer copies a long generic group: of a few thousand candidates, a pick keeps
+---a few dozen. This is the same as checking the merged list because only the generic group can hold a rule whose check
+---draws random numbers (PhraseRegistry: impure conditions and monologues are never keyed), and it is checked in its
+---own order; the keyed groups hold rules with pure conditions, whose answers do not depend on when they are asked.
+---@param event string
+---@param ctx table
+---@param form? "say"|"emote" nil = every form, through Candidates
+---@param lang string
+---@param now number
+---@param memo? table answers of pure conditions tables during one pick (see Eligible)
+---@return AUPhrase[]
+function Engine:EligibleFor(event, ctx, form, lang, now, memo)
+	-- with Engine.MEMO = false the merged list, as before: the test of the pick results compares the two ways
+	if form == nil or Engine.MEMO == false then
+		return self:Eligible(self:Candidates(event, ctx, form), lang, ctx, form, now, memo)
+	end
+	local groups = self:CandidateGroups(event, ctx, form)
+	if #groups <= 1 then return self:Eligible(groups[1], lang, ctx, form, now, memo) end
+	local outs = {}
+	for _, list in ipairs(groups) do
+		local out = self:Eligible(list, lang, ctx, form, now, memo)
+		-- an empty one adds nothing to the union (and merging it would copy the other)
+		if #out > 0 then table.insert(outs, out) end
+	end
+	if #outs == 0 then return {} end
+	return Engine.MergeByOrd(outs)
 end
 
 ---The spaces of a composed text (#117): runs of spaces and tabs become one space and line breaks are kept: a verse per
@@ -909,8 +968,23 @@ function Engine.TierPool(items, key)
 	local recent = {}
 	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
 	local fresh, tiers = {}, {}
+	-- #138: the deduced tier once per conditions table in this call (many rules share one, see Engine.Tier)
+	local byWhen = {}
 	for i, it in ipairs(items) do
-		local t = Engine.Tier(it.e)
+		local e = it.e
+		local t = e.tier
+		if t == nil then
+			local when = e.when
+			if when == nil then
+				t = 0
+			else
+				t = byWhen[when]
+				if t == nil then
+					t = Engine.Tier(e)
+					byWhen[when] = t
+				end
+			end
+		end
 		tiers[i] = t
 		if it.w > 0 and not recent[it.e.id] then fresh[t] = (fresh[t] or 0) + 1 end
 	end
@@ -989,9 +1063,6 @@ function Engine:PickOwn(event, ctx, form, composite)
 	local lang = NS:TextLang()
 	local now = time()
 	local r3 = not self.R1_COMPAT
-	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event]
-	local list = self:Candidates(event, ctx, form)
-	if composite then list = Situational(list) end
 	local mem = Mem()
 	local lastTone = mem.lastTone[event]
 	-- registri adatti all'evento, alla zona e alla profondità (GDD §5.2)
@@ -999,9 +1070,15 @@ function Engine:PickOwn(event, ctx, form, composite)
 	-- #157, #138: what does not change during the pick is computed once (see Engine.MEMO)
 	local memo = self.MEMO and Engine.NewPickMemo() or nil
 	local match = memo and memo.match
+	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event].
+	-- #153: a composite pick keeps only the lines of its situation, from the merged candidates
+	local function EligibleOf(f)
+		if composite then return self:Eligible(Situational(self:Candidates(event, ctx, f)), lang, ctx, f, now, match) end
+		return self:EligibleFor(event, ctx, f, lang, now, match)
+	end
 
 	local items = {}
-	local own = self:Eligible(list, lang, ctx, form, now, match)
+	local own = EligibleOf(form)
 	local weights = memo and #own >= self.MEMO_MIN and memo
 	for _, p in ipairs(own) do
 		table.insert(items, { e = p, w = weights and ScoreMemo(p, lastTone, ctx, profile, nil, weights)
@@ -1018,9 +1095,7 @@ function Engine:PickOwn(event, ctx, form, composite)
 			-- solo la voce pubblica del personaggio si può raccontare in una cornice:
 			-- un pensiero (inner) non diventa un'emote
 			local says = {}
-			local sayList = self:Candidates(event, ctx, "say")
-			if composite then sayList = Situational(sayList) end
-			for _, p in ipairs(self:Eligible(sayList, lang, ctx, "say", now, match)) do
+			for _, p in ipairs(EligibleOf("say")) do
 				if p.speaker == "character" then table.insert(says, p) end
 			end
 			local voice = r3 and "narrator" or nil

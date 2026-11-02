@@ -311,7 +311,7 @@ T.run("R3 (#89): the tiers narrow the pool of eligible rules on purpose, never w
 end)
 
 ---------------------------------------------------------------------------
--- #157, #138: memo of one pick, cache of merged candidates, shared rule shapes and conditions
+-- #157, #138: memo of one pick, groups of the index checked apart, shared rule shapes and conditions
 ---------------------------------------------------------------------------
 -- The memo and the caches must not change a single pick: the same seeded sequence of picks, with the same memory of
 -- uses, gives the same trace with Engine.MEMO on and off. Run after the synthetic archive above is loaded, so many
@@ -419,10 +419,9 @@ T.run("#138: rules share their shape and their conditions; a write changes only 
 	T.ok(shared > 100, "many rules share their conditions table (" .. shared .. ")")
 end)
 
-T.run("#138: the cache of merged candidates follows the index", function()
+T.run("#138: the union of the groups follows the index", function()
 	local ctx = Scene(SCENES[2])
 	local before = Engine:Candidates("battle", ctx, "say")
-	T.ok(Engine:Candidates("battle", ctx, "say") == before, "the same context gives the cached list")
 	local shapes0, whens0 = Engine.InternCounts()
 	NS:RegisterPack({ id = "t_scale_cache", registry = {
 		["t.scale.cache.z"] = { event = "battle", speaker = "character", conditions = { zone = "Elwynn Forest" } },
@@ -436,4 +435,61 @@ T.run("#138: the cache of merged candidates follows the index", function()
 	local shapes1, whens1 = Engine.InternCounts()
 	T.ok(shapes1 == shapes0 and whens1 == whens0, ("a dropped pack releases its shapes and conditions (%d/%d, %d/%d)")
 		:format(shapes1, shapes0, whens1, whens0))
+end)
+
+T.run("#138: a pick checks the groups of the index apart, with the same result and the same random draws", function()
+	-- only the generic group may hold a rule whose check draws random numbers: impure conditions and monologues
+	local keyedImpure, monologues = 0, 0
+	for _, byForm in pairs(Engine.index) do
+		for _, byKey in pairs(byForm) do
+			for k, list in pairs(byKey) do
+				for _, p in ipairs(list) do
+					if k ~= "*" and (p.impure or p.kind == "monologue") then keyedImpure = keyedImpure + 1 end
+					if k == "*" and p.kind == "monologue" then monologues = monologues + 1 end
+				end
+			end
+		end
+	end
+	T.eq(keyedImpure, 0, "no keyed group holds a rule with chance, a function or a monologue")
+	T.ok(monologues > 0, "monologues are in the generic group (" .. monologues .. ")")
+	-- a zone-bound monologue too, although its conditions alone would give it a key
+	NS:RegisterPack({ id = "t_scale_mono", registry = {
+		["t.scale.mono"] = { event = "muse", speaker = "inner", kind = "monologue", conditions = { zone = "Duskwood" },
+			parts = { "mono.muse.road.1", "mono.muse.road.2" } },
+	} })
+	T.ok(Engine.index.muse.say["*"][#Engine.index.muse.say["*"]].id == "t.scale.mono", "a zone-bound monologue is generic")
+	Engine:DropPack("t_scale_mono")
+
+	-- the grouped check (with the memo of the pick) against Eligible on the merged candidates (without it)
+	local mismatches, compared, nonEmpty, chance = 0, 0, 0, 0
+	local now = time()
+	for _, s in ipairs(SCENES) do
+		local ctx = Scene(s)
+		for _, ev in ipairs(Events()) do
+			for _, form in ipairs({ "say", "emote" }) do
+				for _, lang in ipairs({ "it", "en" }) do
+					math.randomseed(compared + 1)
+					local new = Engine:EligibleFor(ev, ctx, form, lang, now, Engine.NewPickMemo().match)
+					local drawNew = math.random()
+					math.randomseed(compared + 1)
+					local old = Engine:Eligible(Engine:Candidates(ev, ctx, form), lang, ctx, form, now)
+					local drawOld = math.random()
+					compared = compared + 1
+					if #new > 0 then nonEmpty = nonEmpty + 1 end
+					if Ids(new) ~= Ids(old) or drawNew ~= drawOld then
+						mismatches = mismatches + 1
+						if mismatches <= 3 then
+							T.ok(false, ("%s %s %s %s: grouped [%s] / merged [%s]"):format(s.zone, ev, form, lang, Ids(new), Ids(old)))
+						end
+					end
+					for _, p in ipairs(old) do
+						if p.impure then chance = chance + 1 end
+					end
+				end
+			end
+		end
+	end
+	T.eq(mismatches, 0, "same eligible rules, in the same order, with the same random draws (" .. compared .. " cases)")
+	T.ok(nonEmpty > compared / 4, "the cases are not all empty (" .. nonEmpty .. ")")
+	T.ok(chance > 0, "rules that draw random numbers were among them (" .. chance .. ")")
 end)

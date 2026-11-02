@@ -64,9 +64,64 @@ The regional packs (`Tests/bench_packs.py`, 8 regions of 5,000 rules): one regio
 
 Against the working targets at 50,000 entries: the mean pick time stays under 5 ms; the p95 and the memory (40 MB) are still above them (#138 stays open). What remains is mostly proportional to the candidates of a pick (walking about 2,000 generic rules of a frequent event, checking their texts) and to the text of each rule (strings, variant lists, the rule table). A synthetic clone shares its shape with the rule it copies, which real content does less: the memory figure at scale is a lower bound of what shapes save. Costs: registering 50,000 rules takes about 45% more Lua instructions (the keys of shapes and conditions; 4.5 → 6.1 s in lupa); at today's size the base packs use 0.2 MB more (601 shapes for 1,169 rules).
 
+## Update: the groups of the index checked apart (#138, 2026-11-02)
+
+Measured again on today's content (1,311 intentions; the addon alone now takes 7.7 MB, against 5.7 MB at the update above) with the same command, `Tests/bench_scale.py --langs enUS --archive-dir`: at 50,000 entries a pick cost 59.1 thousand instructions on average and 187 thousand at p95, and the addon used 60.0 MB. A profile of the slowest picks showed where the instructions went:
+
+- **merging the groups of the index.** The benchmark changes zone and hour at every pick, so the cached union of the groups (item 7) almost never matched, and a pick of `greet` or `victory` copied a generic group of about 3,900 rules: up to 65 thousand instructions, a third of the pick;
+- **checking every candidate**, about 30 instructions each, although most candidates of a frequent event fail on conditions the memo of the pick already knew to be false;
+- **the weights**: about 115 instructions per rule in `ScoreMemo`, most of them to find the node of the memo.
+
+What changed, without changing a single pick:
+
+9. **The groups are checked apart.** `Engine:EligibleFor(event, ctx, form, lang, now, memo)` asks `Engine:CandidateGroups` for the groups the context opens (the generic group and the groups of its keys, as `Candidates` did), runs `Eligible` on each and merges only the eligible rules (`Engine.MergeByOrd`, the two-at-a-time merge of item 7). A pick keeps a few dozen of a few thousand candidates, so it no longer copies the generic group. The result is the result of `Eligible` on the merged list, rule for rule and draw for draw, because only the generic group can hold a rule whose check draws random numbers, and it is checked in its own order:
+   - conditions with `chance`, `func` or a condition of a pack already made a rule generic (item 1);
+   - a **monologue** is now generic too, whatever its conditions: its check reads the conditions of its parts (#99), which may draw. The index loses nothing: a zone-bound monologue is a candidate everywhere and its conditions exclude it, as before.
+   The keyed groups hold rules whose conditions are pure, and a pure answer does not depend on when it is asked. The cache of merged unions (`Engine.MERGED_MAX`, `indexVersion`) is gone. `Engine:Candidates` still merges, for the tests and tools, for a composite situation (#100, rare: it keeps only the lines of the situation) and with `Engine.MEMO = false`, which is now also the reference for the groups.
+10. **Known-false conditions end the check at once.** In `Eligible` a rule whose conditions table the memo has already answered false is skipped before any other check. Only pure tables are in the memo, and purity belongs to the table, so no rule that shares it could have drawn a random number there.
+11. **Cheaper checks, weights and tiers.**
+   - `Eligible` reads the common case of `AnyUsable` itself: a first variant with no placeholder, of the rule's own pack, which the check has just found switched on.
+   - `ScoreMemo` finds its node with five plain lookups instead of a loop over a key table. When the four hooked factors are pure, the node also keeps `W0`: the whole weight of a rule of that combination that has no entry in `uses`, with the operations of `Score` in its order (the same number). Most rules of a large archive were never said, so most weights are one lookup.
+   - `TierPool` deduces the tier once per conditions table in each call.
+   - Merging skips a group with no eligible rule (merging an empty list copied the other).
+12. **Proof.** `Tests/TestScale.lua`:
+   - compares `EligibleFor`, with the memo of a pick, against `Eligible` on the merged candidates, without it: 8 contexts × every event × both forms × two languages, on the base packs and the synthetic archive. Same rules, same order, same random draw afterwards, with rules that draw among them;
+   - checks that no keyed group holds an impure rule or a monologue;
+   - the trace of item 8 (memo off and on) now compares the merged path with the groups as well.
+
+   `Tests/trace_picks.py` printed byte-identical traces against `main` in eight configurations: plain, `--r1`, two souls with emotions, synthetic archives of 3,000, 5,000 (also with `--r1` and with a soul) and 20,000 rules.
+
+Measured on the same synthetic archive (one language, 400 picks; instructions are exact, times are the median of three alternating runs of `main` and this change):
+
+| Entries | Memory before → after | Instructions per pick, mean (p95) | Pick time, mean (p95) |
+|---|---|---|---|
+| today (1,311 intentions) | 7.7 → 7.7 MB | 15.3 → 15.2 thousand (27.4 → 27.3) | 0.36 → 0.42 ms (0.52 → 0.50) |
+| 10,000 | 18.3 → 18.3 MB | 24.0 → 17.7 thousand (55.3 → 43.1) | 0.56 → 0.49 ms (1.00 → 0.78) |
+| 50,000 | 60.0 → 60.0 MB | 59.1 → 28.4 thousand (187 → 127) | 1.30 → 0.76 ms (3.63 → 2.29) |
+
+At today's size the instructions do not change: the picks are small and the groups few. The mean time at that size is within the noise of the machine (the slowest pick of a run, 20 ms, is a collection of the garbage).
+
+Against the working targets at 50,000 entries:
+
+- **p95 under 5 ms: met** (2.29 ms). The p95 at the update above, 10.9 ms, was measured on a busier machine: on this machine `main` already took 3.63 ms. The instructions show the gain independently of the machine: −32% at p95, −52% on average. The slowest picks now come from events with hundreds of eligible generic rules (`muse`: 659 of 700 candidates eligible), where each rule still needs its check, its weight, its tier and its share of the draw, about 180 instructions.
+- **Memory under 40 MB: not met** (60.0 MB). Nothing in this change saves memory.
+
+What the memory target needs, measured. The memory of a synthetic rule (1,097 bytes) is mostly its tables:
+
+| Part | Bytes per rule |
+|---|---|
+| the rule table (8 hash slots) | 384 |
+| the text table and the list of variants | about 210 |
+| the texts themselves (1.85 variants of about 77 bytes) | about 190 |
+| the id and its slot in `byId` | about 95 |
+| `byEvent`, the index and `pack.ids` | about 90 |
+| the rest: shared shapes and conditions, the string table, the free slots of growing lists | about 130 |
+
+The **column store** of the alternatives (one array per field indexed by `ord`, rules as numbers, no table per rule) was simulated on the same 50,000 rules: **37.8 MB** with a list of variants per rule and language, 34.2 MB with every variant in one flat array. It is the only lever left that reaches 40 MB, and only just: the addon itself grows with every feature. It was not taken in this step, for the reason given in the alternatives: rules stop being tables, so `Engine.byId[id].field`, `Engine.byEvent`, `p.text[lang]` and the weight hooks would read through views or accessors in a dozen files of the addon and about 200 places in the tests and tools, and a write to a rule (a test changing a cooldown, the place hook caching a length) would need a place of its own in the columns. Smaller steps do not reach the target: rule tables of four slots save about 80 bytes, texts kept in the rule's array part about 90. #138 stays open for the memory; the budget is decided with `/au prof` in the client (D3), and the column store is the step to take if that budget needs it.
+
 ## Alternatives considered
 
-- **A column store** (parallel arrays of strings, conditions as keys, no table per rule), as in the trial of A1 (about 324 bytes per entry). It meets the memory target, but every system reads rules as tables (`p.speaker`, `p.tags`, `p.when`), and so do the tests and external tools: it would change the internal API of the whole addon in one step. Kept as the next lever if the in-game budget (D3) needs it.
+- **A column store** (parallel arrays of strings, conditions as keys, no table per rule), as in the trial of A1 (about 324 bytes per entry). It meets the memory target, but every system reads rules as tables (`p.speaker`, `p.tags`, `p.when`), and so do the tests and external tools: it would change the internal API of the whole addon in one step. Kept as the next lever if the in-game budget (D3) needs it; simulated in the update of 2026-11-02 at 37.8 MB for 50,000 entries with one language.
 - **Shared rule shapes** (a metatable with the fields that many rules share: pack, voice, form, category, registers, tags). It would save about a third of the record, but `pairs` over a rule would no longer show every field and the gain depends on how varied real tags are; left for after the measurements. Adopted in the update above (#138), without registers, tags, theme and motifs, which are too varied in real content.
 - **A sampled generic group** (draw a bounded random subset of a large generic group). It bounds the time of every pick, but it changes which rules can be chosen: not allowed in R1, which must not change what the player sees.
 - **Replacing `uses` with counts in the recent window.** It changes the weights (`N`), so the selection; the cap keeps the weights identical below 512 different phrases used between logins.

@@ -8,6 +8,22 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Faster picks at scale: the groups of the index checked apart (issue #138)
+
+The p95 pick time at 50,000 entries is now under its 5 ms target, **without changing a single pick**: the same seed and context give the same line ([ADR 0024](docs/adr/0024-selection-index-compact-registry-and-bounded-memory.md), "Update: the groups of the index checked apart"). The memory target (40 MB) is not met and #138 stays open for it.
+
+- **Changed, engine:**
+  - **The groups of the index are checked apart.** A pick checks each group its context opens and merges only the eligible rules (`Engine:EligibleFor`, `Engine:CandidateGroups`, `Engine.MergeByOrd`), instead of merging thousands of candidates first. The cache of merged lists (`Engine.MERGED_MAX`) is gone. Only the generic group can hold a rule whose check draws random numbers, so the draws are the same: monologues are now always in the generic group, like rules with `chance` or a function.
+  - **Conditions already false end the check at once.** A rule whose (shared) conditions the pick already found false is skipped before any other check.
+  - **Cheaper checks, weights and tiers.** The common case of a usable text is read inline; the memo of the weights finds its entry with plain lookups and keeps the whole weight of a rule never used (the same number); `TierPool` deduces each tier once per conditions table.
+  - `Engine:Candidates` still returns the merged list, for tests, tools and composite situations.
+- **Tests:** `Tests/TestScale.lua` compares the groups checked apart with `Eligible` on the merged candidates (every event, both forms, two languages, eight contexts; the same rules, order and random draws) and checks that no keyed group holds a rule that can draw. The memo-off trace now runs the merged path. Eight `trace_picks.py` configurations (up to 20,000 synthetic rules) are byte-identical to `main`. `Tests/perf_baseline.json` follows the new instruction count.
+- **Measured** (`Tests/bench_scale.py --langs enUS --archive-dir`, the same archive, median of three alternating runs; instructions are exact):
+  - today's size: 15.3 → 15.2 thousand instructions per pick; 7.7 MB.
+  - 10,000 entries: 0.56 → 0.49 ms, p95 1.00 → 0.78 ms (24.0 → 17.7 thousand instructions, p95 55 → 43); 18.3 MB.
+  - 50,000 entries: 1.30 → 0.76 ms, p95 3.63 → 2.29 ms (59.1 → 28.4 thousand instructions, p95 187 → 127); 60.0 MB.
+- **Known limits:** memory is unchanged (60.0 MB at 50,000 entries against the 40 MB target). Only a column store of the rules (no table per rule) reaches it: simulated at 37.8 MB, it would change how every system reads rules, so it waits for the in-game budget (D3, `/au prof`). The p95 of the previous measurement (10.9 ms) came from a busier machine: on this one `main` took 3.63 ms. Nothing is measured in the client yet.
+
 ### UI review leftovers and the community profile (issues #179, #180, #182, #196)
 
 The last open parts of the UI review U1 ([#194](https://github.com/Finland6738/azeroth-unspoken/issues/194)), and the community files of the repository. Mock client only: nothing here has run in the real game (the owner decision of 2026-11-02 skips the in-game gates), so the layout is measured with `GetStringHeight()` and `GetStringWidth()` and the numbers in the tests are the review's estimates.

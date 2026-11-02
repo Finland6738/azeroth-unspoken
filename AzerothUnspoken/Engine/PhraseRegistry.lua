@@ -793,14 +793,7 @@ function Engine.ContextKeys(ctx)
 	return keys
 end
 
--- version of the index: any change to its lists (a rule added, a pack dropped, a rebuild) empties the cache of
--- merged candidate lists (Candidates)
-Engine.indexVersion = 0
-local merged, mergedVersion, mergedIndex, mergedCount = {}, -1, nil, 0
-Engine.MERGED_MAX = 32   -- merged lists kept (event, form and context keys); beyond, the cache starts again
-
 local function AddToIndex(index, ev, p, keys)
-	Engine.indexVersion = Engine.indexVersion + 1
 	local byForm = index[ev]
 	if not byForm then byForm = {}; index[ev] = byForm end
 	local byKey = byForm[p.form]
@@ -812,15 +805,21 @@ local function AddToIndex(index, ev, p, keys)
 	end
 end
 
+-- The groups of a rule. #138: a keyed group holds only rules whose check draws no random numbers, so a pick can check
+-- each group apart (Engine:EligibleFor): impure conditions already make a rule generic (IndexKeys), and so does a
+-- monologue, whose check reads the conditions of its parts.
+local function RuleKeys(p)
+	return p.kind ~= "monologue" and Engine.IndexKeys(p.when) or GENERIC
+end
+
 ---Ricostruisce l'indice da byEvent (quando cambia ciò che una condizione può fare, vedi NS:RegisterCondition).
 function Engine:RebuildIndex()
 	local index = {}
 	for ev, list in pairs(self.byEvent) do
-		for _, p in ipairs(list) do AddToIndex(index, ev, p, Engine.IndexKeys(p.when) or GENERIC) end
+		for _, p in ipairs(list) do AddToIndex(index, ev, p, RuleKeys(p)) end
 	end
 	for _, p in pairs(self.byId) do p.impure = (p.when ~= nil and not Pure(p.when)) or nil end
 	self.index = index
-	self.indexVersion = self.indexVersion + 1
 end
 
 -- the union of two lists in order of registration (ord); a rule in both appears once
@@ -842,8 +841,41 @@ local function Merge2(a, b)
 	return out
 end
 
+local function Shorter(a, b) return #a < #b end
+
+---The union of lists of rules, each in order of registration: one list in that order, a rule in several lists once.
+---Two lists at a time, the shortest first, so a long list is walked once (#138). One list comes back as it is.
+---@param lists AUPhrase[][]
+---@return AUPhrase[]
+function Engine.MergeByOrd(lists)
+	local n = #lists
+	if n == 0 then return EMPTY_LIST end
+	if n == 1 then return lists[1] end
+	table.sort(lists, Shorter)
+	local out = lists[1]
+	for i = 2, n do out = Merge2(out, lists[i]) end
+	return out
+end
+
+---The groups of the index that the context opens for one form (#138): the generic group of the event and the groups
+---of the keys of the context, each in order of registration. Read-only, like the index.
+---@param event string
+---@param ctx table
+---@param form "say"|"emote"
+---@return AUPhrase[][]
+function Engine:CandidateGroups(event, ctx, form)
+	local byKey = self.index[event] and self.index[event][form]
+	if not byKey then return {} end
+	local lists = { byKey["*"] }
+	for _, k in ipairs(Engine.ContextKeys(ctx)) do
+		if byKey[k] then table.insert(lists, byKey[k]) end
+	end
+	return lists
+end
+
 ---Le regole dell'evento che possono valere nel contesto, in ordine di registrazione: una parte di byEvent[event] che
 ---contiene ogni regola le cui condizioni possono essere vere (le altre condizioni le controlla Eligible).
+---A pick does not merge the groups any more (Engine:EligibleFor checks them apart, #138): this is for tests and tools.
 ---@param event string
 ---@param ctx table
 ---@param form? "say"|"emote" nil = tutte le forme
@@ -851,35 +883,14 @@ end
 function Engine:Candidates(event, ctx, form)
 	local byForm = self.index[event]
 	if not byForm then return EMPTY_LIST end
-	local keys = Engine.ContextKeys(ctx)
 	local lists = {}
-	for f, byKey in pairs(byForm) do
+	for f in pairs(byForm) do
 		if form == nil or f == form then
-			if byKey["*"] then table.insert(lists, byKey["*"]) end
-			for _, k in ipairs(keys) do
-				if byKey[k] then table.insert(lists, byKey[k]) end
-			end
+			for _, list in ipairs(self:CandidateGroups(event, ctx, f)) do table.insert(lists, list) end
 		end
 	end
-	local n = #lists
-	if n == 0 then return EMPTY_LIST end
-	if n == 1 then return lists[1] end
-	-- #138: the same event, form and context keys give the same union while the index does not change (a session
-	-- stays in one place for many picks); the cached list is read-only, like the groups of the index
-	local cache = Engine.MEMO ~= false
-	if cache and (mergedVersion ~= self.indexVersion or mergedIndex ~= self.index or mergedCount >= Engine.MERGED_MAX) then
-		merged, mergedVersion, mergedIndex, mergedCount = {}, self.indexVersion, self.index, 0
-	end
-	local cacheKey = event .. "\31" .. tostring(form) .. "\31" .. table.concat(keys, "\31")
-	local hit = cache and merged[cacheKey]
-	if hit then return hit end
-	-- unione in ordine di registrazione; una regola in più gruppi (zona e sottozona) compare una volta. #138: two lists
-	-- at a time, the shortest first, so the long generic group is walked once instead of once per group
-	table.sort(lists, function(a, b) return #a < #b end)
-	local out = lists[1]
-	for i = 2, n do out = Merge2(out, lists[i]) end
-	if cache then merged[cacheKey], mergedCount = out, mergedCount + 1 end
-	return out
+	-- unione in ordine di registrazione; una regola in più gruppi (zona e sottozona) compare una volta
+	return Engine.MergeByOrd(lists)
 end
 
 ---------------------------------------------------------------------------
@@ -1039,7 +1050,7 @@ function Engine:AddEntry(pack, id, e, legacy)
 	self.byId[id] = p
 	-- condizioni che possono usare numeri casuali o codice: Eligible le valuta per ultime, come sempre
 	p.impure = (when ~= nil and not Pure(when)) or nil
-	local keys = Engine.IndexKeys(when) or GENERIC
+	local keys = RuleKeys(p)
 	for _, ev in ipairs(p.events) do
 		self.byEvent[ev] = self.byEvent[ev] or {}
 		table.insert(self.byEvent[ev], p)
@@ -1404,7 +1415,6 @@ function Engine:DropPack(packId)
 			for _, ev in ipairs(p.events) do events[ev] = true end
 		end
 	end
-	self.indexVersion = self.indexVersion + 1
 	for ev in pairs(events) do
 		if self.byEvent[ev] then
 			Without(self.byEvent[ev], packId)
