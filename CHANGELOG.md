@@ -8,6 +8,56 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### R5: the trial slice, Durotar, Orgrimmar, Elwynn and Stormwind (part of issue #102)
+
+The content half of the trial slice proposed by the analysis A1: four starting areas written in depth, to measure what
+a place needs before the rest of the world is sized. Drafted by AI sessions in the project's voice (author
+`ai-draft-102`) and written through the authoring archive (drafts, review, approval, export; the round trip is still an
+empty diff), on the owner's decision of 2026-11-02 to finish development without in-game gates. **The in-game playtest
+of #102 (two 90-minute sessions per character) is still to do**: section R5 of `docs/G1_checklist.md`. Tested with the
+mock client only.
+
+- **Added: four regional packs**, loaded with their continent and dropped when it is left, like the others (ADR 0025):
+  `kalimdor_durotar` (170 intentions, 508 texts per language), `kalimdor_orgrimmar` (116, 346), `eastern_elwynn` (178,
+  532) and `eastern_stormwind` (119, 355): **583 intentions and 1,741 texts per language**, in English and Italian.
+  The rules are in `AzerothUnspoken_Kalimdor/Durotar.lua`, `Orgrimmar.lua`, `AzerothUnspoken_EasternKingdoms/Elwynn.lua`,
+  `Stormwind.lua`, the texts in the language folders of each continent.
+- **What they cover**: arrival (first visit, home ground for the area's faction, enemy ground for the other, races,
+  weather, time of day, a few moods), returns (after a death, after a flight, after a long absence; light ones only after
+  a good visit), every subzone of the slice (Valley of Trials, Razor Hill, Sen'jin Village, the Echo Isles, Tiragarde
+  Keep, the ridges and the coast; Northshire, Goldshire and the inn, the mines, the lakes and the farms; the valleys of
+  Orgrimmar and the districts of Stormwind), the speak key, weather changes, dawn and dusk, the creatures of each area in
+  battle and victory, death and revival, level, quests, rest, the hearthstone and flights, the NPCs by role (guards,
+  innkeepers, merchants, trainers, bankers, flight masters, quest givers) and the dialogue nodes of the inn, the guard
+  (with directions at district level), the merchant, the trainer and the flight master, the manual events, and **8
+  literary pieces** (two per area: a Razor Hill saying, a Sen'jin net-mender's song, an inscription at Northshire Abbey,
+  a Goldshire inn rhyme, a trainers' formula of the Valley of Honor, a hawker's song of the Drag, a masons' saying and a
+  canal song of Stormwind), their review steps left for the owner (`authoring/pieces.csv`). Races, classes, the faction,
+  the weather and the hour are conditions inside the lines, never packs.
+- **Place leads where the place is the point**: the lines of arrival, return, subzones, the speak key, weather, dawn,
+  dusk, rest and flights take the specificity tier of their place; the lines of fights, people and manual events are
+  marked `tier = 1`, so they compete by weight with the lines of a relationship or an NPC's temperament instead of
+  silencing them (a victory beside a friend, a gruff innkeeper still sound like themselves in Durotar).
+- **Variants serve every depth**: the trial lines keep their depths on the rule and none on the variants, so all three
+  variants of a line can be said at any depth (a line with one variant per depth would repeat word for word at the
+  default depth) and the variants stay compact strings.
+- **Added: `Tests/bench_trial.py`**, the simulated playtest of the issue: an orc warrior and a troll mage in Durotar and
+  Orgrimmar, a human paladin in Elwynn and Stormwind, two sessions of 90 minutes each through the client's own events
+  (subzones, weather, rest, the hour of the server, a death and the return, a visit to the capital), and optionally a
+  long run. Measured (three seeds, default intensity): about 25-28 interventions per hour, 56-63% of them from the trial
+  packs; **no text repeated within a 90-minute session** (the criterion of A1 §6.2); 0-0.3 repeated across the two
+  sessions (2-2.7 before); in 10 hours of play the first exact repetition comes after 2.8-3.3 hours (2.0-2.3 before)
+  and 8-11% of the interventions repeat a text (19-21% before). Every remaining repetition is a line of the speak key
+  (`muse`, about a third of the interventions). `PickEntry` p95 about 1 ms.
+- **Memory** (offline, lupa): one language and one continent 7.90 MB (7.22 MB before), everything loaded 9.53 MB (7.86
+  MB before).
+- **Changed: the tests** that relied on a generic line where the slice now has its own (the landmark event at the Lion's
+  Pride Inn, the innkeepers' temperament in Elwynn) use a place outside the slice; the counts include the new packs.
+- **Added: section R5 of the in-game checklist** (`docs/G1_checklist.md`, `docs/G1_checklist.en.md`) for the owner's
+  playtest, and the places with lines of their own in the wiki ([Phrase Packs](docs/wiki/Phrase-Packs.md)).
+- The subzone names are those of the English Classic client and are not confirmed in Forever (#36): a wrong name only
+  keeps a line silent.
+
 ### N9: phrases for the NPC relationships, second part (issue #221)
 
 The content of the steps merged after the first part of N9: hostility (N1), the nemesis (N7), the companion pet, grief

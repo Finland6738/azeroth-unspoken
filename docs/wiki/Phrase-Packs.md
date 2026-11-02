@@ -11,6 +11,12 @@ A phrase pack is a small, separate addon that sits next to Azeroth Unspoken in y
   - **`AzerothUnspoken_Example`**: a few lines for fishing and some lines tied to places;
   - **`AzerothUnspoken_Versi`**, the **verses pack** (id `versi`): a first test of literary forms, with inscriptions, remembered verses, inn rhymes, road songs, sayings, a hymn and a lament, in English and Italian. They only ever appear in your private narrator. See [[Literary Forms|Literary-Forms]].
 
+## Places with lines of their own
+
+Four starting areas have a large set of lines of their own, a **trial slice** to learn how much writing a place needs: **Durotar** and **Orgrimmar** for the Horde (in the Kalimdor folders), **Elwynn Forest** and **Stormwind City** for the Alliance (in the Eastern Kingdoms folders). There the narrator knows the subzones you cross (Razor Hill, Sen'jin Village, the Echo Isles; Northshire, Goldshire, the mines and the lakes; the valleys of Orgrimmar and the districts of Stormwind), the weather and the hour, the inns, the guards' directions, the creatures of the place, a death there and the way back, and who you are: an orc at home in Durotar does not hear what a human sent there hears. Races and classes change the lines; they are never separate packs.
+
+Like every regional line, they load by themselves when you enter the continent and leave memory when you leave it. The pack ids are `kalimdor_durotar`, `kalimdor_orgrimmar`, `eastern_elwynn` and `eastern_stormwind` (`/au packs` lists them while you are on their continent). The other zones keep the general lines for now. The names of the subzones are those of the English client and are still to be confirmed in game: if a place never gets its lines, [[report it|Reporting-Bugs-and-Feedback]] with what `/au place` shows there.
+
 ## Enabling the verses pack
 
 The verses pack is optional. To use it:

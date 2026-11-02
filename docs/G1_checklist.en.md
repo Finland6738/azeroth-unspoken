@@ -492,6 +492,32 @@ chose not to stop for in-game tests. It needs the `AzerothUnspoken_Versi` folder
   **Expect:** the button as wide as the longest name, in English and in Italian; nothing chosen at first, whatever the
   race; `/au soul list` shows the choice. **Report:** a name cut, a culture chosen by itself.
 
+## R5: the trial slice, Durotar, Orgrimmar, Elwynn and Stormwind (issue #102)
+
+English counterpart of the section **R5** of [G1_checklist.md](G1_checklist.md). Same steps, same numbers. The lines of
+the four areas are in the regional folders (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` and their
+language folders) and were measured offline only (`Tests/bench_trial.py`): this playtest is the second half of #102.
+Three characters: an orc warrior and a troll mage starting in Durotar, a human paladin starting in Elwynn Forest; **two
+sessions of 90 minutes each**, with `/au prof` at the start and at the end, and **Intensity** left at its default.
+
+- **R5.1 · Arrival and the subzones.** Play from the starting valley outwards. **Expect:** lines about the zone, then
+  about the places you cross (Razor Hill, Sen'jin Village, the Echo Isles, Tiragarde Keep; Northshire, Goldshire, the
+  mines and the lakes), never a line for another zone. **Report:** a subzone whose lines never come (its name in `/au
+  place`: the names are the English client's and unconfirmed, #36), a line about the wrong place.
+- **R5.2 · Repetition.** Keep a note of any line you read twice. **Expect:** no line repeated within a 90-minute session.
+  **Report:** the repeated line, the minute, and whether it was said in the same place.
+- **R5.3 · A death and the return.** Die once in the open, revive, leave the zone and come back. **Expect:** a sober
+  return line that remembers the death; no cheerful one. **Report:** a light line after the death.
+- **R5.4 · The capital.** Visit Orgrimmar or Stormwind, rest at the inn, walk two or three districts, talk to a guard
+  and an innkeeper. **Expect:** city lines (the districts, the inn, the guard's directions) that fit the district.
+  **Report:** a direction that is wrong, a line that names a place you are not in.
+- **R5.5 · Weather and day.** Note the weather and the hour when a weather or dawn/dusk line comes. **Expect:** the line
+  matches what you see. **Report:** rain named under a clear sky, night named at noon.
+- **R5.6 · Rating.** Every 15 minutes, rate the last lines: relevant? repetitive? out of character? **Expect:** under 10%
+  of the interventions rated out of place. **Report:** the share, and the lines you marked.
+- **R5.7 · Measures.** `/au prof` at the end of each session. **Expect:** p95 of `PickEntry` under 5 ms; the memory of
+  the addon. **Report:** the interventions per hour, the reasons of silence, the memory and the p95.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -566,5 +592,6 @@ N8 grief ................ pet? ___  demon not dismissed? ___  dear NPC? ___  lam
 N8 ally (#125) .......... line? ___  page with no name? ___  one per wipe? ___  feigned death/battleground nothing? ___
 N8 letters / options .... letter at login? ___  in the journal? ___  /reload nothing? ___  options off? ___  nothing in chat? ___
 L2 verses ............... one at a time? ___  too fast/slow? ___  wheel? ___  clicks pass? ___  history line breaks? ___
+R5 trial slice ......... repeated within 90 min? ___  out of place (%) ______  PickEntry p95 ______  memory (KB) ______
 L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  never: none? ___  nothing in chat? ___
 ```
