@@ -2,6 +2,8 @@
  "_doc": "The need model of the content waves (C0c, ADR 0050; `cli need`). Every number here is a hypothesis to tune, except `measured`, written by `python -I -X utf8 Tests/bench_trial.py --mix 20 --seeds 1,2 --model` (the real Narrative Director). Keys starting with _ are notes.",
  "life_hours": 400,
  "soft_hours": 40,
+ "_random_repeats": "The third target (owner decision of 2026-11-02, ADR 0050): today's pick stays random (no exhaustive memory of what was said), so the waves go on past the strict need until every pool holds enough texts for at most this share of its interventions in a life to be exact repeats (random_factor: about 10 times its firings for 5%).",
+ "random_repeats": 0.05,
  "slot_hours": 0.5,
  "_interventions_per_hour": "The default pace (intensity 50) measured in the trial slice: 20-25 interventions per hour, the speak key every 5 minutes included. Every setting is scaled to it; the measured mix keeps the share of each event. The need grows in proportion.",
  "interventions_per_hour": 22.5,

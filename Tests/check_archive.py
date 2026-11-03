@@ -906,10 +906,17 @@ def need_report():
           "the places of the trial slice hold their texts, the others none yet")
     ws = res["waves"]
     lang = res["languages"][0]
-    left = sum(r["need_strict"] - r["have"][lang] for r in res["pools"] if r["need_strict"] > r["have"][lang])
+    left = sum(r["need_random"] - r["have"][lang] for r in res["pools"] if r["need_random"] > r["have"][lang])
     check(ws and all(w["texts"] <= model["waves"]["max"] for w in ws) and sum(w["texts"] for w in ws) == left and
-          ws[0]["units"][0]["kind"] == "generic" and ws[0]["target"].startswith("soft") and ws[-1]["target"].endswith("strict"),
-          "the waves cover the gap once, soft need first, none above %d texts (%d waves)" % (model["waves"]["max"], len(ws)))
+          ws[0]["units"][0]["kind"] == "generic" and ws[0]["target"].startswith("soft") and ws[-1]["target"].endswith("random"),
+          "the waves cover the gap once, soft need first, the random one last, none above %d texts (%d waves)" % (
+              model["waves"]["max"], len(ws)))
+    order = [x for w in ws for x in w["target"].split("+")]
+    check(order == sorted(order, key=need.TARGETS.index), "the waves go soft, then strict, then random")
+    check(all(r["need_strict"] <= r["need_random"] for r in res["pools"]) and
+          0.9 * t["random_pick"]["5%"] < t["need_random"] < 1.2 * t["random_pick"]["5%"],
+          "the random need (owner decision, ADR 0050) is at least the strict one in every pool and sums to the 5%% figure "
+          "(%d, %d)" % (t["need_random"], t["random_pick"]["5%"]))
     data = json.loads(need.to_json(res))
     check(data["totals"] == res["totals"] and len(data["pools"]) == len(res["pools"]) and
           data["pool_columns"][-1] == "have_" + res["languages"][-1], "the JSON report holds the pools one per line")
@@ -930,8 +937,8 @@ def need_report():
         old = json.load(open(committed, encoding="utf-8"))["totals"]
         if old != json.loads(json.dumps(t)):
             print("warning: docs/content/NEED.md is stale (run `python tools/archive/cli.py need --write`)")
-    print("  need per language: strict %d, soft %d; gap %s; %d waves; random pick %s" % (
-        t["need_strict"], t["need_soft"], t["gap_strict"], len(ws), t["random_pick"]))
+    print("  need per language: strict %d, soft %d, random %d; gap %s; %d waves; random pick %s" % (
+        t["need_strict"], t["need_soft"], t["need_random"], t["gap_strict"], len(ws), t["random_pick"]))
 
 
 def near_duplicates():

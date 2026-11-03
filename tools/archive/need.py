@@ -20,6 +20,8 @@ see ADR 0050), so:
 
 - strict need of a pool = the most it fires for any character in the whole life;
 - soft need = the most it fires for any character in any `soft_hours` (40) in a row;
+- random need = the size that keeps exact repeats under `random_repeats` (5%) of its firings in the life with today's
+  random pick (no memory beyond a short window): its strict firings times `random_factor` (owner decision, ADR 0050);
 
 and the need of the archive is the sum over the pools: texts are shared between characters, lives are not. The gap of a
 pool is its need minus the usable texts it holds today (variants at the default depth), per language.
@@ -306,9 +308,11 @@ def need(model, places):
                 if ev not in only or cls in only[ev]:
                     note((ev, "class", cls.lower()), strict * s, soft * s, combos)
     floor = model.get("min_firings", 1)
+    factor = random_factor(model.get("random_repeats", 0.05))
     for p in pools.values():
         p["need_strict"] = int(math.ceil(p["strict"] - 1e-9)) if p["strict"] >= floor else 0
         p["need_soft"] = min(p["need_strict"], int(math.ceil(p["soft"] - 1e-9)) if p["soft"] >= floor else 0)
+        p["need_random"] = max(p["need_strict"], int(math.ceil(p["strict"] * factor - 1e-9))) if p["need_strict"] else 0
     return pools, chars
 
 
@@ -475,20 +479,23 @@ def compute(con, root=store.ROOT, model=None, state="approved"):
     rows = []
     for k in sorted(set(pools) | set(have)):
         p = pools.get(k) or {"event": k[0], "layer": k[1], "value": k[2], "strict": 0.0, "soft": 0.0, "per_hour": 0.0,
-                             "need_strict": 0, "need_soft": 0}
+                             "need_strict": 0, "need_soft": 0, "need_random": 0}
         h = have.get(k, {})
         row = {"event": k[0], "layer": k[1], "value": k[2], "per_hour": round(p["per_hour"], 4),
-               "need_strict": p["need_strict"], "need_soft": p["need_soft"], "have": {l: h.get(l, 0) for l in langs}}
+               "need_strict": p["need_strict"], "need_soft": p["need_soft"], "need_random": p["need_random"],
+               "have": {l: h.get(l, 0) for l in langs}}
         row["condition"] = condition(k[1], k[2], places, model)
         row["label"] = label(k[1], k[2], places, model)
         row["gap_strict"] = {l: max(0, row["need_strict"] - row["have"][l]) for l in langs}
         row["gap_soft"] = {l: max(0, row["need_soft"] - row["have"][l]) for l in langs}
+        row["gap_random"] = {l: max(0, row["need_random"] - row["have"][l]) for l in langs}
         if k[1] == "place":
             row["kind"] = place_kind(k[2], places, model)
             row["band"] = zone_band(k[2], places, model)
         rows.append(row)
     rate, _ = rates(model)
-    res = {"model": {k: model[k] for k in ("life_hours", "soft_hours", "slot_hours", "interventions_per_hour", "default_depth")},
+    res = {"model": dict({k: model[k] for k in ("life_hours", "soft_hours", "slot_hours", "interventions_per_hour", "default_depth")},
+                         random_repeats=model.get("random_repeats", 0.05)),
            "measured": {k: (model.get("measured") or {}).get(k) for k in ("command", "hours", "per_hour")},
            "state": state, "languages": langs, "characters": [c["name"] for c in chars],
            "class_combinations": sum(len(c["classes"]) for c in chars),
@@ -500,8 +507,9 @@ def compute(con, root=store.ROOT, model=None, state="approved"):
             return sum(r[field] for r in rows)
         return {l: sum(r[field][l] for r in rows) for l in langs}
 
-    res["totals"] = {"need_strict": total("need_strict"), "need_soft": total("need_soft"),
+    res["totals"] = {"need_strict": total("need_strict"), "need_soft": total("need_soft"), "need_random": total("need_random"),
                      "have": total("have", True), "gap_strict": total("gap_strict", True), "gap_soft": total("gap_soft", True),
+                     "gap_random": total("gap_random", True),
                      "pools": sum(1 for r in rows if r["need_strict"]), "surplus": {
                          l: sum(max(0, r["have"][l] - r["need_strict"]) for r in rows) for l in langs}}
     # today's pick is random among the lines not in the window of the event (30): the size a pool needs then
@@ -549,10 +557,12 @@ def _unit(row):
 
 
 WAVE_POOL = ("event", "layer", "value", "texts", "have", "need", "target")
+TARGETS = ("soft", "strict", "random")
 
 
 def waves(rows, model, langs):
-    """The ordered waves: the soft need of every pool first, then the strict one; units in the order of kinds of the
+    """The ordered waves: the soft need of every pool first, then the strict one, then the random one (the owner's
+    target, ADR 0050); units in the order of kinds of the
     model and, within a kind, the most frequent first (zones by level band); a wave holds about `size` texts per
     language (counted in the first language), never more than `max`."""
     cfg = model["waves"]
@@ -560,12 +570,12 @@ def waves(rows, model, langs):
     lang = langs[0] if langs else None
     bands = [b for b, _ in model["bands"]]
     queue = []
-    for target in ("soft", "strict"):
+    for target in TARGETS:
         units = collections.OrderedDict()
         for r in rows:
             done = r["have"].get(lang, 0) if lang else 0
-            if target == "strict":
-                done = max(done, r["need_soft"])
+            if target != "soft":
+                done = max(done, r["need_soft" if target == "strict" else "need_strict"])
             todo = r["need_" + target] - done
             if todo <= 0:
                 continue
@@ -587,7 +597,7 @@ def waves(rows, model, langs):
         u["pools"].sort(key=lambda p: -p[3])
         while u["texts"] > 0:
             if not plan or plan[-1]["texts"] >= cfg["size"]:
-                plan.append({"texts": 0, "soft": 0, "strict": 0, "units": []})
+                plan.append({"texts": 0, "soft": 0, "strict": 0, "random": 0, "units": []})
             w = plan[-1]
             room = cfg["max"] - w["texts"]
             take, part = [], 0
@@ -607,16 +617,16 @@ def waves(rows, model, langs):
     # a last wave far under the minimum joins the one before it
     if len(plan) > 1 and plan[-1]["texts"] < cfg["min"] / 2:
         last = plan.pop()
-        for k in ("texts", "soft", "strict"):
+        for k in ("texts",) + TARGETS:
             plan[-1][k] += last[k]
         plan[-1]["units"] += last["units"]
     for i, w in enumerate(plan, 1):
         w["id"] = "W%02d" % i
-        w["target"] = "+".join(t for t in ("soft", "strict") if w[t])
+        w["target"] = "+".join(t for t in TARGETS if w[t])
     return plan
 
 
-POOL_COLUMNS = ("event", "layer", "value", "per_hour", "need_strict", "need_soft")   # then what it has in each language
+POOL_COLUMNS = ("event", "layer", "value", "per_hour", "need_strict", "need_soft", "need_random")   # then what it has in each language
 
 
 def to_json(res):
@@ -669,13 +679,18 @@ def to_markdown(res, top=30):
         ["strict need (%d h)" % m["life_hours"], "**%s**" % _fmt(t["need_strict"])] +
         ["%s / **%s**" % (_fmt(t["have"][l]), _fmt(t["gap_strict"][l])) for l in langs],
         ["soft need (%d h)" % m["soft_hours"], "**%s**" % _fmt(t["need_soft"])] +
-        ["%s / **%s**" % (_fmt(t["have"][l]), _fmt(t["gap_soft"][l])) for l in langs]])
+        ["%s / **%s**" % (_fmt(t["have"][l]), _fmt(t["gap_soft"][l])) for l in langs],
+        ["random need (%d h, at most %g%% repeats)" % (m["life_hours"], 100 * m["random_repeats"]),
+         "**%s**" % _fmt(t["need_random"])] +
+        ["%s / **%s**" % (_fmt(t["have"][l]), _fmt(t["gap_random"][l])) for l in langs]])
     lines += ["", "- Pools with a need: %s; typical characters: %d (%s), %d race and class combinations." % (
         _fmt(t["pools"]), len(res["characters"]), ", ".join(res["characters"]), res["class_combinations"]),
         "- With **today's pick** (random among the lines of the event not in its window of 30 picks; ADR 0050) the same "
         "pools would need about **%s** texts per language for at most 10%% of the interventions of 400 hours to be "
-        "repeats, **%s** for at most 5%%: the owner's range of 100,000-300,000 (ADR 0024). An exhaustive memory of what "
-        "was said brings it down to the strict need." % (_fmt(t["random_pick"]["10%"]), _fmt(t["random_pick"]["5%"])),
+        "repeats, **%s** for at most 5%%: the owner's range of 100,000-300,000 (ADR 0024). **Owner decision "
+        "(2026-11-02):** the pick stays random, with no exhaustive memory of what was said, and the waves go on past the "
+        "strict need up to the **random need** above (at most %g%% repeats), spread over the pools like the strict one." % (
+            _fmt(t["random_pick"]["10%"]), _fmt(t["random_pick"]["5%"]), 100 * m["random_repeats"]),
         "- The need grows in proportion to the pace: at intensity 100 the spontaneous budgets double.",
         "- Texts beyond the strict need of their pool (they still widen the choice): " +
         ", ".join("%s %s" % (l, _fmt(n)) for l, n in t["surplus"].items()) + ".",
@@ -717,10 +732,10 @@ BEGIN, END = "<!-- waves:begin (generated by `cli need --write`) -->", "<!-- wav
 def waves_markdown(res):
     """The table of the waves, written between the markers of WAVES.md."""
     ws = res["waves"]
-    lines = [BEGIN, "", "Total: **%d waves**, %s texts per language to the soft need then %s more to the strict one "
-             "(counted in `%s`; every wave is written in every language)." % (
+    lines = [BEGIN, "", "Total: **%d waves**, %s texts per language to the soft need, %s more to the strict one, then %s "
+             "more to the random one (counted in `%s`; every wave is written in every language)." % (
                  len(ws), _fmt(sum(w["soft"] for w in ws)), _fmt(sum(w["strict"] for w in ws)),
-                 res["languages"][0] if res["languages"] else "-"), ""]
+                 _fmt(sum(w["random"] for w in ws)), res["languages"][0] if res["languages"] else "-"), ""]
 
     def conditions(w):
         kinds = []
