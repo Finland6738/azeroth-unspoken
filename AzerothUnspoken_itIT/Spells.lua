@@ -268,4 +268,108 @@ NS:AddTexts("itIT", {
 		"si inginocchia nella polvere accanto al corpo e scosta i capelli dalla fronte inerte, prima di cominciare.",
 		"allarga le braccia sopra chi giace a terra; per un lungo momento non si sente nemmeno il vento.",
 	},
+	["race.dwarf.attack.001"] = {
+		"Dalla montagna, con i miei omaggi!",
+		"Lo senti? È Khaz Modan che bussa.",
+		"Un po' di artigianato nanico, consegnato a domicilio!",
+	},
+	["race.dwarf.buff.001"] = {
+		"Ecco, {target}. Questo ti metterà un po' di granito nella schiena.",
+		"Ora reggerai meglio. La montagna ti presta un po' di sé.",
+	},
+	["race.dwarf.heal.001"] = {
+		"Non muoverti, {target}. Rattoppare la gente è come aggiustare un mantice: mani ferme e niente storie.",
+		"Ecco. Chiuso a tenuta come una buona botte. Vai pure.",
+	},
+	["race.gnome.attack.001"] = {
+		"Forza applicata con l'angolo ottimale!",
+		"Ecco una cosetta su cui stavo lavorando!",
+		"Precisione! Be', entusiasmo. Più o meno è uguale!",
+	},
+	["race.gnome.buff.001"] = {
+		"Potenziamento applicato, {target}! Gli effetti collaterali sono rari e di solito passeggeri.",
+		"Ecco. Ora vai al centodieci per cento. Cerca di non surriscaldarti.",
+	},
+	["race.gnome.heal.001"] = {
+		"Non agitarti, {target}, è solo una riparazione veloce. I rivetti quasi non si vedranno.",
+		"Rattoppo fatto! Non è l'originale di fabbrica, ma funziona.",
+	},
+	["race.human.attack.001"] = {
+		"Per il regno, e per ogni strada che protegge!",
+		"Ecco una lezione che insegnano a Roccavento!",
+		"Assaggia la testardaggine del genere umano!",
+	},
+	["race.human.buff.001"] = {
+		"Ecco, {target}. Un piccolo aiuto non ha mai fatto vergognare nessuno.",
+		"Avanti, a testa alta. Ci si guarda le spalle a vicenda: è l'unico modo in cui siamo durati.",
+	},
+	["race.human.heal.001"] = {
+		"Piano, {target}. Ho ricucito di peggio durante la mietitura, e se ne sono andati tutti sulle loro gambe.",
+		"Ecco fatto, rattoppo concluso. Non costringermi a rifarlo.",
+	},
+	["race.nightelf.attack.001"] = {
+		"Rapido come il gufo!",
+		"Per la foresta!",
+		"Che la luna guidi questo colpo!",
+	},
+	["race.nightelf.buff.001"] = {
+		"La grazia di Elune su di te, {target}. Portala con leggerezza.",
+		"Ecco. Va' con la pazienza della foresta e la rapidità del cervo.",
+	},
+	["race.nightelf.heal.001"] = {
+		"Calma, {target}. La carne si risana come la corteccia, con un piccolo aiuto.",
+		"Ecco. Guarisce come guarisce la foresta: lentamente, dall'interno, e più forte dove resta la cicatrice.",
+	},
+	["race.orc.attack.001"] = {
+		"Le mani libere colpiscono più forte!",
+		"Per i clan, e per i caduti!",
+		"Questo è per i campi!",
+	},
+	["race.orc.buff.001"] = {
+		"Tieni, un po' di testardaggine da orco. È il regalo migliore che ho.",
+		"Ecco. Combatti come se i clan ti stessero guardando.",
+	},
+	["race.orc.heal.001"] = {
+		"In piedi. Gli orchi sono usciti da cose peggiori.",
+		"Stringi i denti e lascia che si richiuda. Una cicatrice è solo una storia con il coperchio.",
+	},
+	["race.scourge.attack.001"] = {
+		"Senti il freddo che mi porto dentro!",
+		"Un regalo dalla tomba, per te!",
+		"Ecco. Un assaggio di quello che ti aspetta.",
+	},
+	["race.scourge.buff.001"] = {
+		"Tieni. Un dono dei morti, fatto liberamente. Più raro di quanto immagini.",
+		"Prendi. A me il calore non serve, a te forse sì.",
+	},
+	["race.scourge.heal.001"] = {
+		"Non muoverti. È strano, rimettere in sesto i vivi. Cerco di farlo con delicatezza.",
+		"Ecco. Tienitelo caro, il tuo battito: se se ne andasse, ti mancherebbe.",
+	},
+	["race.tauren.attack.001"] = {
+		"Senti il peso delle pianure!",
+		"Questo arriva da Mulgore!",
+		"Giù, come l'erba sotto la mandria!",
+	},
+	["race.tauren.buff.001"] = {
+		"Va', con la forza della Madre Terra sotto i piedi.",
+		"Ecco. Adesso stai in piedi un po' più come una montagna.",
+	},
+	["race.tauren.heal.001"] = {
+		"Respira. La terra guarisce piano, ma guarisce sempre.",
+		"Piano. Lascia che la ferita si chiuda come l'erba si richiude su un sentiero.",
+	},
+	["race.troll.attack.001"] = {
+		"Dalle isole, con affetto!",
+		"Tieni, un regalino dei Darkspear!",
+		"Al volo!",
+	},
+	["race.troll.buff.001"] = {
+		"Prendi un po' della fortuna dei Loa. Restituiscila quando hai finito.",
+		"Tieni. Un amuleto senza laccio. Portalo bene.",
+	},
+	["race.troll.heal.001"] = {
+		"Non muoverti. Noi troll guariamo in fretta: tu dovrai prenderne un po' in prestito.",
+		"Ecco. Non è come il sangue di troll, ma si chiude.",
+	},
 }, "base_spells")

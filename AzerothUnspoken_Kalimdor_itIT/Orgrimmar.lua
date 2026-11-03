@@ -580,4 +580,43 @@ AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_orgrimmar", [==[
 		"Gli orchi costruiscono in alto. Almeno giù nella Valley of Spirits qualcuno tiene i fuochi alla vecchia maniera.",
 		"I Darkspear hanno un angolo qui, e un angolo è più di quanto avessimo dopo le isole.",
 	},
+	["org.journey.w01.01"] = {
+		"si alza dalla torre sopra la Valley of Strength, e i tamburi della città svaniscono sotto il battito delle ali della viverna.",
+		"si allontana da Orgrimmar, mentre le pareti del canyon scivolano giù e il fumo delle forge si assottiglia in fili.",
+		"sale nell'aria calda sopra la città, con la grande porta e la strada rossa che rimpiccioliscono in fretta.",
+	},
+	["org.journey.w01.02"] = {
+		"Orgrimmar resta indietro, rumorosa fino all'ultimo. Da qui in poi a gridare ci pensa il vento.",
+		"Dall'alto la città è solo una piega nella roccia, e tutto il suo baccano sta in un soffio di vento.",
+		"La città del Capoguerra, più piccola a ogni battito di cuore. Dalla porta sembrava più grande.",
+	},
+	["org.journey.w01.03"] = {
+		"Lok'tar, Orgrimmar. Tieni accesi i fuochi.",
+		"Via, dove l'Orda ha bisogno di una mano. Vola.",
+	},
+	["org.journey.w01.04"] = {
+		"A terra. Qualcuno mi indichi del cibo e una panca, in quest'ordine.",
+		"Coi piedi per terra. Orgrimmar, cerca di non urlare tutta insieme.",
+	},
+	["org.journey.w01.05"] = {
+		"atterra sulla torre nel buio, con la città sotto illuminata dal bagliore delle forge e dalle torce, rosso su rosso.",
+		"scende dal cielo notturno dentro Orgrimmar, dove i fuochi non si spengono mai del tutto e i tamburi si fanno solo più bassi.",
+	},
+	["org.journey.w01.06"] = {
+		"Volare va bene. Atterrare va bene. È il dopo che non mi piace, quando la Valley of Strength continua a girare piano piano.",
+		"Gambe, svegliatevi. Orgrimmar non si attraversa da sola.",
+	},
+	["org.quest_complete.w01.01"] = {
+		"consegna quanto richiesto in mezzo al baccano del Drag, e riceve un grugnito che in questa città vale un caloroso grazie.",
+		"prende la ricompensa e si fa da parte per lasciar passare un cavaliere di lupi, con le monete già al sicuro.",
+		"riceve un breve cenno e una borsa più pesante, mentre poco lontano un martello batte il tempo.",
+	},
+	["org.quest_complete.w01.02"] = {
+		"Finito. A Orgrimmar questo ti vale un cenno e un nuovo problema, di solito nello stesso fiato.",
+		"Fatto, e nessuno mi ha urlato contro. In questa città è una medaglia.",
+	},
+	["org.quest_complete.w01.03"] = {
+		"Fatto, per l'Orda. Dimmi se c'è dell'altro.",
+		"Un altro debito saldato con l'Orda. Volentieri.",
+	},
 ]==])

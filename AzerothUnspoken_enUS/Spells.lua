@@ -268,4 +268,108 @@ NS:AddTexts("enUS", {
 		"kneels in the dust beside the body and brushes the hair back from the fallen one's face before beginning.",
 		"spreads {g:his|her} arms over the fallen companion; for a long moment not even the wind can be heard.",
 	},
+	["race.dwarf.attack.001"] = {
+		"From the mountain, with my compliments!",
+		"Feel that? That's Khaz Modan knocking.",
+		"Some dwarven craftsmanship, delivered to your door!",
+	},
+	["race.dwarf.buff.001"] = {
+		"There, {target}. That'll put a bit of granite in your spine.",
+		"Stand a little sturdier now. The mountain lends you some of itself.",
+	},
+	["race.dwarf.heal.001"] = {
+		"Hold still, {target}. Patching folk is like mending a bellows: firm hands, no fuss.",
+		"There. Sealed tight as a good keg. Off you go.",
+	},
+	["race.gnome.attack.001"] = {
+		"Applying force at the optimal angle!",
+		"Here's a little something I've been working on!",
+		"Precision! Well, enthusiasm. Close enough!",
+	},
+	["race.gnome.buff.001"] = {
+		"Boost applied, {target}! Side effects are rare and usually temporary.",
+		"There. You're now running at a hundred and ten percent. Try not to overheat.",
+	},
+	["race.gnome.heal.001"] = {
+		"Don't wriggle, {target}, it's only a quick repair. You'll hardly notice the rivets.",
+		"Patched! Not factory condition, but you'll run.",
+	},
+	["race.human.attack.001"] = {
+		"For the realm, and every road it keeps!",
+		"Here's a lesson they teach in Stormwind!",
+		"Taste the stubbornness of humankind!",
+	},
+	["race.human.buff.001"] = {
+		"There, {target}. A little help never shamed anyone.",
+		"Go on, head up. We look after each other; it's the only way we've lasted.",
+	},
+	["race.human.heal.001"] = {
+		"Easy, {target}. I've stitched worse at harvest time, and they all walked off on their own legs.",
+		"There you go, mended. Don't make me do it twice.",
+	},
+	["race.nightelf.attack.001"] = {
+		"Swift as the owl!",
+		"For the forest!",
+		"Let the moon guide this one!",
+	},
+	["race.nightelf.buff.001"] = {
+		"Elune's grace on you, {target}. Wear it lightly.",
+		"There. Go with the patience of the forest and the speed of the stag.",
+	},
+	["race.nightelf.heal.001"] = {
+		"Be easy, {target}. Flesh mends like bark, given a little help.",
+		"There. It heals the way the forest heals: slowly, from within, and strongest at the scar.",
+	},
+	["race.orc.attack.001"] = {
+		"Free hands strike hardest!",
+		"For the clans, and for the fallen!",
+		"This one is for the camps!",
+	},
+	["race.orc.buff.001"] = {
+		"Here, a bit of orc stubbornness. It's the best gift I have.",
+		"There. Fight as if the clans were watching.",
+	},
+	["race.orc.heal.001"] = {
+		"Up. Orcs have walked out of worse than this.",
+		"Grit your teeth and let it mend. A scar is only a story with the lid on.",
+	},
+	["race.scourge.attack.001"] = {
+		"Feel the cold I carry!",
+		"Something from the grave, for you!",
+		"Here. A taste of what's waiting for you.",
+	},
+	["race.scourge.buff.001"] = {
+		"Here. A gift from the dead, given freely. That makes it rarer than you know.",
+		"Take it. I have no use for warmth, but you might.",
+	},
+	["race.scourge.heal.001"] = {
+		"Keep still. It's strange, mending the living. I try to be gentle about it.",
+		"There. Hold on to your heartbeat; you'd miss it if it went.",
+	},
+	["race.tauren.attack.001"] = {
+		"Feel the weight of the plains!",
+		"This one comes from Mulgore!",
+		"Down you go, like grass under the herd!",
+	},
+	["race.tauren.buff.001"] = {
+		"Go, with the strength of the Earth Mother under your feet.",
+		"There. Now stand a little more like a mountain.",
+	},
+	["race.tauren.heal.001"] = {
+		"Breathe. The earth heals slowly, but it always heals.",
+		"Easy. Let the wound close the way grass closes over a trail.",
+	},
+	["race.troll.attack.001"] = {
+		"From the islands, with love!",
+		"Here, a little gift from the Darkspear!",
+		"Catch, mon!",
+	},
+	["race.troll.buff.001"] = {
+		"Take a little of the loa's luck. Give it back when you're done.",
+		"Here, mon. A charm with no string. Wear it well.",
+	},
+	["race.troll.heal.001"] = {
+		"Keep still. Trolls heal fast; you'll have to borrow some of it.",
+		"There. Not as good as troll blood, but it'll close.",
+	},
 }, "base_spells")

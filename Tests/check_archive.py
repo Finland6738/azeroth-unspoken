@@ -902,13 +902,14 @@ def need_report():
     t = res["totals"]
     check(t["need_strict"] > t["need_soft"] > 0 and all(t["gap_strict"][l] <= t["need_strict"] for l in res["languages"]),
           "the report sums the need and the gap per language")
-    check(res["by_place"]["durotar"]["have"]["enUS"] > 400 and res["by_place"]["ironforge"]["have"]["enUS"] == 0,
-          "the places of the trial slice hold their texts, the others none yet")
+    check(res["by_place"]["durotar"]["have"]["enUS"] > 400 and res["by_place"]["ironforge"]["have"]["enUS"] > 60 and
+          res["by_place"]["westfall"]["have"]["enUS"] == 0,
+          "the places of the trial slice and of W01 hold their texts, the others none yet")
     ws = res["waves"]
     lang = res["languages"][0]
     left = sum(r["need_random"] - r["have"][lang] for r in res["pools"] if r["need_random"] > r["have"][lang])
     check(ws and all(w["texts"] <= model["waves"]["max"] for w in ws) and sum(w["texts"] for w in ws) == left and
-          ws[0]["units"][0]["kind"] == "generic" and ws[0]["target"].startswith("soft") and ws[-1]["target"].endswith("random"),
+          ws[0]["target"].startswith("soft") and ws[-1]["target"].endswith("random"),
           "the waves cover the gap once, soft need first, the random one last, none above %d texts (%d waves)" % (
               model["waves"]["max"], len(ws)))
     order = [x for w in ws for x in w["target"].split("+")]

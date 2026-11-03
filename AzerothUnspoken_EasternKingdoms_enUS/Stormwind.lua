@@ -595,4 +595,41 @@ AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_stormwind", [==[
 		"hurries across a square gone slick with rain, the white stone shining like wet bone.",
 		"ducks under an awning while the rain drums on the water of the canals.",
 	},
+	["sw.journey.arrival.w01.01"] = {
+		"A long flight, and Stormwind at the end of it. The stones of the Trade District feel like an old friend's handshake.",
+		"After all that sky, the city's racket is almost welcome. Almost.",
+		"That was a long haul in the saddle. Nothing looks quite as solid as these white walls after it.",
+	},
+	["sw.journey.arrival.w01.02"] = {
+		"climbs down from the gryphon as a dwarf of the roost takes the reins and mutters something kind to the animal.",
+		"lands among the gryphon roosts, feathers drifting, and steps aside as another rider takes off overhead.",
+		"stretches stiff legs at the gryphon roost, the smell of bread and horses drifting in from the Trade District.",
+	},
+	["sw.journey.start.w01.01"] = {
+		"climbs above the Trade District on gryphon wings, the Cathedral's spires catching the light as the city tilts away below.",
+		"wheels once over Stormwind as the gryphon finds the wind, the canals and the violet towers of the Mage Quarter sliding past.",
+		"rises high over the white walls, the great statues at the gate shrinking to toy soldiers behind.",
+	},
+	["sw.journey.start.w01.02"] = {
+		"Stormwind falls behind, bells and all. I always wonder what will have changed by the time I see these walls next.",
+		"Below me the city's racket thins to a hum, then to nothing. The sky up here has no market days.",
+		"Farewell for now, white walls. It's a long way ahead, and I'll carry the noise of your streets with me for a while yet.",
+	},
+	["sw.journey.start.w01.03"] = {
+		"Up we go! Mind the rooftops, beast.",
+		"Off again. Try not to drop me in the canal, friend.",
+	},
+	["sw.quest.w01.01"] = {
+		"Done. A city this size runs on a thousand small loyalties, and today one of them was mine.",
+		"One more thread in the weave that holds Stormwind together. The regent will never hear of it, and that's fine.",
+		"Finished. The king is still missing, but the city keeps going, and so do its people.",
+	},
+	["sw.quest.w01.02"] = {
+		"Done. I'd ask for a statue at the gate, but I hear the waiting list is long.",
+		"Handled. Stormwind thanks you, says nobody, but I'll hear it anyway.",
+	},
+	["sw.quest.w01.03"] = {
+		"is thanked warmly, and the smell of fresh bread drifting down the street seems, for a moment, part of the reward.",
+		"shakes the hand offered in thanks while a child runs past chasing a hoop along the street.",
+	},
 ]==])

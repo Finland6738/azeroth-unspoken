@@ -890,4 +890,21 @@ AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_elwynn", [==[
 		"cammina sotto una pioggia sottile, oltre campi scuriti e steccati che gocciolano a ogni palo.",
 		"prosegue sotto la pioggia; i solchi si riempiono d'acqua, e da qualche parte un contadino maledice il cielo con sincero affetto.",
 	},
+	["elw.journey.arrival.w01.01"] = {
+		"A terra, tra le querce. Dopo il vento lassù, Elwynn profuma di erba tagliata e di pane.",
+		"Piedi su un prato morbido e verde. Qualunque cosa ne pensi il grifone, questa è la metà migliore del viaggio.",
+	},
+	["elw.journey.start.w01.01"] = {
+		"si leva sopra Elwynn su ali di grifone, mentre la foresta si stende là sotto a onde verdi, rotte da tetti e dal filo della strada.",
+		"sale oltre le cime degli alberi, coi camini dei villaggi che fumano molto più in basso e un lago che luccica tra le fronde.",
+		"prende quota nell'aria aperta sopra le querce di Elwynn, con le fattorie disposte là sotto come una coperta di pezze.",
+	},
+	["elw.qp.w01.01"] = {
+		"Ecco tutto. Ora indietro per la strada, prima che i lupi si accorgano che porto qualcosa.",
+		"Qui ho finito. Qualcuno a Elwynn aspetta questo, e portarglielo sarà una bella passeggiata.",
+	},
+	["elw.quest.w01.01"] = {
+		"Ecco fatto. Magari adesso questa gente può tornare al suo raccolto.",
+		"Finito. Che i contadini tornino a preoccuparsi dei loro campi, piuttosto.",
+	},
 ]==])

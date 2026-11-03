@@ -13,3 +13,7 @@
 Exploration.lua
 Elwynn.lua
 Stormwind.lua
+DunMorogh.lua
+Ironforge.lua
+Tirisfal.lua
+Undercity.lua

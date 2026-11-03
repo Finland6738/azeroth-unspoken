@@ -1021,4 +1021,86 @@ NS:AddTexts("itIT", {
 		"Stanotte le loro torce ardono lungo le mura, e so che almeno una è accesa pensando a me.",
 		{ "Torce sulle mura. Qualcuna per me.", depth = "natural" },
 	},
+	["faction.alliance.relation_player.01"] = {
+		"{other}, sotto la mia stessa bandiera. Qui fuori è già mezza amicizia, e l'altra metà ce la siamo guadagnata.",
+		"Una persona amica, e che marcia sotto la nostra bandiera per giunta. Due buone ragioni per rallegrarmi, e le conto tutte e due.",
+		"{other}. Stessa bandiera, stesse strade. Fa piacere vedere una faccia amica.",
+	},
+	["faction.horde.relation_player.01"] = {
+		"{other}. L'Orda è grande e, a occhio, non tutta è amica. Su questo nome invece posso contare.",
+		"Fra tante facce dell'Orda, poche me le lascerei alle spalle senza tenerle d'occhio. {other} è una di quelle.",
+		"{other}. Bene. Un paio d'occhi in meno da sorvegliare.",
+	},
+	["race.dwarf.relation_player.001"] = {
+		"{other}. Nella memoria di un nano un debito si incide come una runa nella pietra. Questo è ancora lì, netto come il primo giorno.",
+		"Ecco {other}. Ho un debito, e un nano tiene quel genere di conti più a lungo di qualsiasi registro.",
+		"{other}. Un debito non scordato. Nemmeno la montagna scorda i suoi.",
+	},
+	["race.dwarf.thanks.001"] = {
+		"Grazie. Se un giorno passi da Forgiardente, il primo giro lo offro io.",
+		"Ti sono {g:obbligato|obbligata}. I nani tengono conti lunghi, e il tuo nome è appena entrato nella colonna buona.",
+	},
+	["race.gnome.relation_player.001"] = {
+		"{other}. Una persona a cui passerei la chiave inglese mentre ho le dita dentro il macchinario.",
+		"Ecco {other}. Nel mio mestiere si direbbe un pezzo portante: se lo togli, cede tutto.",
+		"{other}. I pezzi affidabili sono rari. Le persone affidabili, ancora di più.",
+	},
+	["race.gnome.thanks.001"] = {
+		"Grazie! Se mai ti servisse qualcosa da costruire, da aggiustare o da far saltare un pochino in aria, chiedi di me.",
+		"Molto gentile! Ti farei una medaglia, ma ho finito l'ottone.",
+	},
+	["race.human.relation_player.001"] = {
+		"{other}! Un volto amico, come una finestra accesa su una strada lunga.",
+		"Ecco {other}. Certe persone fanno sembrare qualunque città un villaggio dove conosci tutti.",
+		"{other}. Bene. La giornata è appena diventata un po' più simile a casa.",
+	},
+	["race.human.thanks.001"] = {
+		"Grazie. Da dove vengo io, per una cosa così ti inviteremmo a cena.",
+		"Grazie davvero. È una gentilezza che passerò a chi ne avrà bisogno dopo di me.",
+	},
+	["race.nightelf.relation_player.001"] = {
+		"{other}. Un tempo le amicizie mi sembravano foreste. Ora so che somigliano più alle stagioni, e questa intendo godermela.",
+		"Ecco {other}. Ho imparato a guardare gli amici con attenzione: il tempo è più breve per tutti, rispetto a una volta.",
+		"{other}. Un volto caro va imparato a memoria, anche da chi ha una memoria lunga come la mia.",
+	},
+	["race.nightelf.thanks.001"] = {
+		"Grazie. Il mio popolo ha la memoria lunga; questo resterà nella mia.",
+		"Ti ringrazio. Che la foresta ti ricambi dove io non posso.",
+	},
+	["race.orc.relation_player.001"] = {
+		"{other}. Starei spalla a spalla con questa persona, qualsiasi giorno, in qualsiasi battaglia.",
+		"Ecco {other}. Per il mio popolo un amico è qualcuno con cui divideresti l'ultima acqua. Io la dividerei.",
+		"{other}. Bene. Un'altra lama accanto al fuoco a cui affiderei la schiena.",
+	},
+	["race.orc.thanks.001"] = {
+		"Grazie. Un orco non dimentica un debito così.",
+		"Hai la mia gratitudine, e il mio braccio, ogni volta che ti servirà.",
+	},
+	["race.scourge.relation_player.001"] = {
+		"{other}. Una delle poche persone che non hanno mai fatto un passo indietro quando mi avvicinavo.",
+		"Ecco {other}. Mi guarda e vede una persona. Questo non lo dimentico.",
+		"{other}. Bene. Qualcuno che non ha bisogno che io sia {g:vivo|viva}.",
+	},
+	["race.scourge.thanks.001"] = {
+		"Grazie. È passato tanto tempo da quando qualcuno mi ha {g:aiutato|aiutata} senza trattenere il fiato.",
+		"Grazie. Non sono molti quelli che darebbero una mano a un morto.",
+	},
+	["race.tauren.relation_player.001"] = {
+		"{other}. Certe persone sono come una buona pozza d'acqua: ti ricordi sempre dove si trovano.",
+		"Ecco {other}. Dalle mie parti, a un amico così si mette una scodella accanto al fuoco prima ancora che chieda.",
+		"{other}. Le spalle mi si sciolgono, come accanto a un focolare conosciuto.",
+	},
+	["race.tauren.thanks.001"] = {
+		"Grazie. Il mio popolo direbbe che hai fatto un tratto di strada nelle mie orme.",
+		"Hai la mia gratitudine, e anche la Madre Terra ha visto.",
+	},
+	["race.troll.relation_player.001"] = {
+		"{other}. A questa persona lascerei la mia roba mentre dormo.",
+		"Ah, {other}. I vecchi hanno una parola per gente così: quelli con cui dividi il fuoco.",
+		"{other}. Lì i Loa mi hanno mandato qualcuno di buono.",
+	},
+	["race.troll.thanks.001"] = {
+		"Grazie. Hai la gratitudine di un troll: dura più di quasi tutte le altre.",
+		"Non lo dimentico. I troll ricordano chi ha aiutato e chi ha riso.",
+	},
 }, "base_relations")

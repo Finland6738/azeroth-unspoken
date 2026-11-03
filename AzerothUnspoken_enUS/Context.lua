@@ -473,4 +473,124 @@ NS:AddTexts("enUS", {
 		"stares at the spot where it all went wrong, as if committing it to memory.",
 		"drags a hand down {g:his|her} face as silence settles back over the hall.",
 	},
+	["faction.alliance.npc_meet.01"] = {
+		"A guard of the Alliance. Different post, different armor, the same look in the eye: one of ours until proven otherwise.",
+		"Whatever people this guard comes from, the eyes give me the nod I know: the quick, tired courtesy of our side.",
+	},
+	["faction.alliance.npc_meet.02"] = {
+		"Gryphon or hippogryph, I'm not fussy. Just give me one that's eaten recently.",
+		"Whatever you've got with wings and a decent temper. I'll pay extra for the temper.",
+	},
+	["faction.alliance.other_action.01"] = {
+		"A duel between allies? Fine. Better we find each other's weak spots than let the Horde find them.",
+		"Accepted. Bruise me now, so the real fights find me harder to bruise.",
+	},
+	["faction.horde.npc_meet.01"] = {
+		"Orc, tauren, troll or Forsaken, a guard of the Horde gives me the same look: one of ours, so behave.",
+		"The guard's gaze passes over me and moves on. On our side, that's the warmest welcome a guard knows how to give.",
+	},
+	["faction.horde.npc_meet.02"] = {
+		"Wind rider or bat, I don't mind which. I'll be holding on with both hands either way.",
+		"Whatever's flying today, give it a calm temper and give my hands a strong grip.",
+	},
+	["faction.horde.other_action.01"] = {
+		"An invitation? Good. The Horde was never much for walking alone.",
+		"Count me in. However small the band, it's still a Horde war band.",
+	},
+	["race.dwarf.npc_meet.001"] = {
+		"The first thing I check in any inn is the cellar door. A good cellar, and the rest forgives itself.",
+		"An inn is only as good as its kegs. Let's see what this keeper keeps below.",
+	},
+	["race.dwarf.npc_meet.002"] = {
+		"Workmanship first, prices after. A dwarf never buys the other way round.",
+		"Let's have a look at the goods. Prices are talk; good work doesn't need any.",
+	},
+	["race.dwarf.other_action.001"] = {
+		"A party? Count me in. Every expedition needs someone who can tell rock from rubbish.",
+		"Aye, I'll come along. A dwarf in the group is like a good lamp in the mine.",
+	},
+	["race.gnome.npc_meet.001"] = {
+		"A teacher! Splendid. I've a list of forty questions, and I'll try to keep it to twenty.",
+		"Lessons. My favorite thing, right after taking things apart.",
+	},
+	["race.gnome.npc_meet.002"] = {
+		"Flying beasts. Lovely creatures, but I keep thinking how much better they'd be with a rotor.",
+		"No engine, no fuel gauge, just wings. Primitive. Charming, but primitive.",
+	},
+	["race.gnome.other_action.001"] = {
+		"A duel? Splendid! I've been meaning to field-test a few theories.",
+		"Accepted! If I lose, it was a controlled experiment.",
+	},
+	["race.human.npc_meet.001"] = {
+		"A guard in good order. It still eases something in me, after the years of the Defias on the roads.",
+		"A watchful eye and a well-kept post. Whoever pays this guard, I hope they pay on time.",
+	},
+	["race.human.npc_meet.002"] = {
+		"An innkeeper. Every human village I've known was held together by one of these and a big pot of something.",
+		"Inns are where my people do their real governing: over stew, with the door open.",
+	},
+	["race.human.other_action.001"] = {
+		"A fair trade, then. Back home, the market square decided more than the council ever did.",
+		"Let's trade, and let's each walk away thinking we got the better of it. That's a good bargain.",
+	},
+	["race.nightelf.npc_meet.001"] = {
+		"Winged mounts, and a keeper who knows their tempers. My people never tamed the sky; we asked it politely.",
+		"A flight master. I trust the creatures more than the straps, and the keeper most of all.",
+	},
+	["race.nightelf.npc_meet.002"] = {
+		"A teacher. Shan'do, we say: honored teacher. The word asks for patience on both sides.",
+		"Whatever their age, a teacher is a teacher. I listen with the respect my people give the old trees.",
+	},
+	["race.nightelf.other_action.001"] = {
+		"A small courtesy from across the way. Short-lived peoples greet quickly; I try to answer at the same speed.",
+		"A greeting from someone passing, brief as a firefly. And somehow it still lights something.",
+	},
+	["race.orc.npc_meet.001"] = {
+		"Meat, a fire, and a corner where I can keep my back to the wall. That's all I ask.",
+		"Something hot, and something strong to drink. I'll pay, and I won't break anything. Probably.",
+	},
+	["race.orc.npc_meet.002"] = {
+		"{other} has something to teach me. The elders say a fighter who will not learn is only a stubborn corpse waiting its turn.",
+		"Learning from {other}. Pride tells me I know enough. Pride has lied to orcs before.",
+	},
+	["race.orc.other_action.001"] = {
+		"A duel! Good. Nothing settles the blood like an honest fight.",
+		"You want to test me? Fine. No hard feelings after, whoever wins.",
+	},
+	["race.scourge.npc_meet.001"] = {
+		"{other} asks whether I'll be eating. A kind question, and a brave one. I say no, to spare us both.",
+		"A room? I'll take it. I don't sleep, but brooding is more comfortable with a door to close.",
+	},
+	["race.scourge.npc_meet.002"] = {
+		"No need to worry, my coin is clean. Cleaner than my hands, anyway.",
+		"I'll buy, if you can bring yourself to take money from a corpse.",
+	},
+	["race.scourge.other_action.001"] = {
+		"An invitation? To me? The living are getting braver.",
+		"A group. Fine. I won't eat your rations, and I don't need a turn to sleep.",
+	},
+	["race.tauren.npc_meet.001"] = {
+		"{other} eyes the doorframe, then my horns, then the doorframe again. A look I know well.",
+		"Inn beds are always a little short. I will sleep curled up like a calf. I have had worse.",
+	},
+	["race.tauren.npc_meet.002"] = {
+		"On the plains we traded by the kodo-load. I will try to think smaller.",
+		"Show me what is good. My people never haggled much; we simply walked away.",
+	},
+	["race.tauren.other_action.001"] = {
+		"A duel? Where I come from we wrestle for fun. Mind the horns.",
+		"Very well. If I win, you help me find a door I can walk through without ducking.",
+	},
+	["race.troll.npc_meet.001"] = {
+		"Got anything from the islands? Dried fish, coconut, anything? No? Then show me the rest.",
+		"What's good today, mon? And don't say everything; I can see your face.",
+	},
+	["race.troll.npc_meet.002"] = {
+		"{other} has something to teach. The elders say a troll who stops learning starts to shrink.",
+		"Every teacher I meet adds a bead to the string. {other} may be worth two.",
+	},
+	["race.troll.other_action.001"] = {
+		"A group? Sure, mon. I bring the luck, you bring the snacks.",
+		"Count me in. A Darkspear never says no to good company.",
+	},
 }, "base_context")

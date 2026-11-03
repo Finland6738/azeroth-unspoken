@@ -362,7 +362,8 @@ T.run("weather: a rain line is chosen under rain and never under a clear sky", f
 	ctx = NS:BuildContext()
 	for _, p in ipairs(Engine:EventRules("weather_change")) do
 		if Engine.Match(p.when, ctx) then
-			T.ok(p.when.weather == "clear", "under a clear sky only clear lines: " .. p.id)
+			-- a generic line of the change (W01) names no weather and holds under any sky
+			T.ok(p.when.weather == "clear" or p.when.weather == nil, "under a clear sky only clear lines: " .. p.id)
 		end
 	end
 end)

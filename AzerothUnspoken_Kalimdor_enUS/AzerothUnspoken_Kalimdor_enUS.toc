@@ -13,3 +13,7 @@
 Exploration.lua
 Durotar.lua
 Orgrimmar.lua
+Mulgore.lua
+ThunderBluff.lua
+Teldrassil.lua
+Darnassus.lua

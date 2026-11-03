@@ -161,8 +161,8 @@ print(f"frasi: {ids} in {val.stats.packs} pacchetti, {val.stats.variants} varian
 # 367 frasi di base + 54 delle classi + 16 della personalità + 14 della memoria + 51 delle relazioni + 86 di interlocutore
 # e luogo (S6c) + 7 del pacchetto di esempio; S7 (contenuti Alpha): 803 di base + 7 del pacchetto di esempio;
 # S8 (NPC Alive): + 169 battute dei dialoghi ambientali = 972 di base + 7 = 979
-# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016; + 21 righe di riconoscimento, sentimenti e alleati (#106, #109, #110) = 1037; + 63 del mondo (R3: meteo, ore, luoghi, missioni, reputazione, locanda, volo) = 1100; + 35 di emozioni e tratti forti (R4) = 1135; + 10 delle situazioni composte (#100) + 8 monologhi e 23 loro parti (#99) = 1176; + 5 richiami del primo incontro con un NPC (N2, #214) = 1181; + 2 di una storia d'amore con un NPC (N3, #215) = 1183; + 3 della parola data a un NPC (N4, #216) = 1186; + 7 di favori e soprannomi (N5, #217) = 1193; + 4 della reputazione locale (N6, #218) = 1197; + 58 delle relazioni con gli NPC (N9, #221) = 1255; + 7 dell'ostilità (N1, #213) = 1262; + 11 della nemesi (N7, #219: 7 battute dell'arco, 4 dell'incontro) = 1273; + 23 del compagno animale, del lutto e della morte di un alleato (N8, #220, #125) = 1296; + 53 della seconda parte di N9 (#221: ostilità, compagno e lutto, nemesi, aperture) = 1349; + 583 della fetta di prova (#102: 170 di Durotar, 116 di Orgrimmar, 178 della foresta di Elwynn, 119 di Stormwind) = 1932
-check(ids == 1932, f"1932 frasi caricate (trovate {ids})")
+# S9 (Story Arcs): + 33 battute degli archi = 1005 di base + 7 = 1012; + 4 battute dei duelli per rapporto (#105) = 1016; + 21 righe di riconoscimento, sentimenti e alleati (#106, #109, #110) = 1037; + 63 del mondo (R3: meteo, ore, luoghi, missioni, reputazione, locanda, volo) = 1100; + 35 di emozioni e tratti forti (R4) = 1135; + 10 delle situazioni composte (#100) + 8 monologhi e 23 loro parti (#99) = 1176; + 5 richiami del primo incontro con un NPC (N2, #214) = 1181; + 2 di una storia d'amore con un NPC (N3, #215) = 1183; + 3 della parola data a un NPC (N4, #216) = 1186; + 7 di favori e soprannomi (N5, #217) = 1193; + 4 della reputazione locale (N6, #218) = 1197; + 58 delle relazioni con gli NPC (N9, #221) = 1255; + 7 dell'ostilità (N1, #213) = 1262; + 11 della nemesi (N7, #219: 7 battute dell'arco, 4 dell'incontro) = 1273; + 23 del compagno animale, del lutto e della morte di un alleato (N8, #220, #125) = 1296; + 53 della seconda parte di N9 (#221: ostilità, compagno e lutto, nemesi, aperture) = 1349; + 583 della fetta di prova (#102: 170 di Durotar, 116 di Orgrimmar, 178 della foresta di Elwynn, 119 di Stormwind) = 1932; + 1006 della prima ondata di contenuti (W01: 418 delle classi, 263 delle razze, 21 delle fazioni, 39 degli umori, 7 generiche, 258 dei luoghi) = 2938
+check(ids == 2938, f"2938 frasi caricate (trovate {ids})")
 check(not errors_, "database senza errori del validatore")
 check(not warnings_, "database senza avvisi del validatore")
 sp = {k: v for k, v in val.stats.speakers.items()}
@@ -341,6 +341,7 @@ check(any(s.startswith("EMOTE:") for s in flow), "automatica: le emote partono d
 check(not any(s.startswith("SAY:") for s in flow), "nessun /say senza azione del giocatore")
 check(pending is not None and pending.channel == "SAY", "il parlato resta una proposta per /say")
 text = pending.text
+G.ADVANCE(5)
 G.HW = True
 G.AzerothUnspoken_Speak()
 G.HW = False
@@ -458,10 +459,10 @@ for s_ in fishing: print("  ", s_)
 check(len(fishing) == 3, "frasi di pesca dal pacchetto di esempio, nel narratore")
 check(not list(G.SENT.values()), "la pesca non scrive in chat con la modalità privata")
 
-# 8) le 54 frasi delle classi fanno parte del database di base (erano fuori dal .toc fino a S2)
+# 8) le frasi delle classi fanno parte del database di base (erano fuori dal .toc fino a S2): 54, + 418 della W01
 cls = [Engine.byId[i] for i in Engine.PackIds(Engine, "base_classes").values()]
 print(f"\nbase_classes: {len(cls)} frasi")
-check(len(cls) == 54, "base_classes contiene 54 frasi")
+check(len(cls) == 472, "base_classes contiene 472 frasi (54 + 418 della W01)")
 check(all(len(p.text["it"]) >= 1 and len(p.text["en"]) >= 1 for p in cls), "le frasi delle classi hanno IT ed EN")
 
 # 9) test in Lua di Compat, Config, EventBus (un runtime nuovo per file)

@@ -850,4 +850,21 @@ AU:RegisterRegionalTexts("durotar", "enUS", "kalimdor_durotar", [==[
 		"turns a shoulder to the gusts; grit rattles against armor and stings the eyes.",
 		"squints into the blowing sand. The far ridges come and go like ghosts.",
 	},
+	["dur.journey.w01.01"] = {
+		"From up here Durotar is all red folds and dry creases, like a hide left too long in the sun.",
+		"The canyons look like cracks in a clay pot from this high. Down there a scorpid is very disappointed in me.",
+		"Red earth, gray sea and a thin brown line of road between them. Durotar, the short version.",
+	},
+	["dur.journey.w01.02"] = {
+		"comes down into the heat, and the red dust rises to greet the landing before the wind rider has folded its wings.",
+		"steps off onto hard red ground, squinting as the glare comes back off the rocks all at once.",
+	},
+	["dur.quest_complete.w01.01"] = {
+		"Done. Pay me in water, if it's all the same to you.",
+		"Finished. I'd celebrate, but it's too hot to cheer.",
+	},
+	["dur.quest_progress.w01.01"] = {
+		"That part's done. The rest is out there, under the same hard sun.",
+		"One piece down. Durotar is generous with errands, if nothing else.",
+	},
 ]==])

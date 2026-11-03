@@ -473,4 +473,124 @@ NS:AddTexts("itIT", {
 		"fissa il punto in cui tutto è andato storto, come per impararlo a memoria.",
 		"si passa una mano sul viso mentre il silenzio torna a riempire la sala.",
 	},
+	["faction.alliance.npc_meet.01"] = {
+		"Una guardia dell'Alleanza. Posto diverso, armatura diversa, lo stesso sguardo negli occhi: dei nostri, finché non si dimostra il contrario.",
+		"Da qualunque popolo venga questa guardia, i suoi occhi mi fanno il cenno che conosco: la cortesia rapida e stanca della nostra parte.",
+	},
+	["faction.alliance.npc_meet.02"] = {
+		"Grifone o ippogrifo, non sono {g:schizzinoso|schizzinosa}. Basta che abbia mangiato da poco.",
+		"Qualunque cosa abbia le ali e un buon carattere. Il carattere lo pago a parte.",
+	},
+	["faction.alliance.other_action.01"] = {
+		"Un duello fra alleati? D'accordo. Meglio che i punti deboli ce li scopriamo noi, prima che lo faccia l'Orda.",
+		"Accetto. Ammaccami adesso, così le battaglie vere mi troveranno più {g:duro|dura} da ammaccare.",
+	},
+	["faction.horde.npc_meet.01"] = {
+		"Orco, tauren, troll o Reietto, una guardia dell'Orda mi guarda sempre allo stesso modo: dei nostri, quindi niente scherzi.",
+		"Lo sguardo della guardia mi passa sopra e va oltre. Dalla nostra parte, è il benvenuto più caloroso che una guardia sappia dare.",
+	},
+	["faction.horde.npc_meet.02"] = {
+		"Viverna o pipistrello, per me è uguale. Tanto mi terrò con tutte e due le mani.",
+		"Qualunque cosa voli oggi, a lei un carattere tranquillo e alle mie mani una presa salda.",
+	},
+	["faction.horde.other_action.01"] = {
+		"Un invito? Bene. L'Orda non è mai stata fatta per camminare da sola.",
+		"Ci sto. Piccola quanto vuoi, è pur sempre una banda da guerra dell'Orda.",
+	},
+	["race.dwarf.npc_meet.001"] = {
+		"La prima cosa che guardo in una locanda è la porta della cantina. Con una buona cantina, il resto si perdona da sé.",
+		"Una locanda vale quanto i suoi barili. Vediamo che cosa tiene giù in cantina chi sta al banco.",
+	},
+	["race.dwarf.npc_meet.002"] = {
+		"Prima la fattura, poi i prezzi. Un nano non compra mai al contrario.",
+		"Diamo un'occhiata alla merce. I prezzi sono chiacchiere; il buon lavoro non ne ha bisogno.",
+	},
+	["race.dwarf.other_action.001"] = {
+		"Un gruppo? Ci sto. Ogni spedizione ha bisogno di qualcuno che distingua la roccia dalla robaccia.",
+		"Sì, vengo anch'io. Un nano nel gruppo è come una buona lampada in miniera.",
+	},
+	["race.gnome.npc_meet.001"] = {
+		"Qualcuno che insegna! Splendido. Ho una lista di quaranta domande e cercherò di fermarmi a venti.",
+		"Lezioni. La mia cosa preferita, subito dopo smontare le cose.",
+	},
+	["race.gnome.npc_meet.002"] = {
+		"Bestie volanti. Creature splendide, ma continuo a pensare a quanto sarebbero migliori con un rotore.",
+		"Niente motore, niente indicatore del carburante, solo ali. Primitivo. Affascinante, ma primitivo.",
+	},
+	["race.gnome.other_action.001"] = {
+		"Un duello? Splendido! Era tempo che volevo collaudare qualche teoria sul campo.",
+		"Accetto! Se perdo, era un esperimento controllato.",
+	},
+	["race.human.npc_meet.001"] = {
+		"Una guardia in ordine. Mi rassicura ancora, dopo gli anni dei Defias sulle strade.",
+		"Occhio vigile e posto ben tenuto. Chiunque paghi questa guardia, spero che la paghi puntuale.",
+	},
+	["race.human.npc_meet.002"] = {
+		"Ecco chi tiene la locanda. Ogni villaggio umano che ho conosciuto si reggeva su una persona così e su una grossa pentola di qualcosa.",
+		"Le locande sono il posto dove la mia gente governa davvero: davanti allo stufato, con la porta aperta.",
+	},
+	["race.human.other_action.001"] = {
+		"Uno scambio onesto, allora. A casa mia la piazza del mercato decideva più del consiglio.",
+		"Scambiamo, e che ognuno se ne vada pensando di averci guadagnato. Questo è un buon affare.",
+	},
+	["race.nightelf.npc_meet.001"] = {
+		"Cavalcature alate, e chi ne conosce l'umore. Il mio popolo non ha mai domato il cielo: gliel'ha chiesto con garbo.",
+		"Chi custodisce i voli. Mi fido più delle bestie che delle cinghie, e di chi le custodisce più di tutto.",
+	},
+	["race.nightelf.npc_meet.002"] = {
+		"Chi insegna. Shan'do, diciamo noi: maestro onorato. La parola chiede pazienza da entrambe le parti.",
+		"Qualunque età abbia, chi insegna resta chi insegna. Ascolto con il rispetto che il mio popolo riserva agli alberi più vecchi.",
+	},
+	["race.nightelf.other_action.001"] = {
+		"Una piccola cortesia da poco lontano. I popoli dalla vita breve salutano in fretta; cerco di rispondere alla stessa velocità.",
+		"Un saluto da qualcuno che passa, breve come una lucciola. Eppure accende qualcosa.",
+	},
+	["race.orc.npc_meet.001"] = {
+		"Carne, un fuoco, e un angolo dove tenere le spalle al muro. Non chiedo altro.",
+		"Qualcosa di caldo, e qualcosa di forte da bere. Pago, e non rompo niente. Probabilmente.",
+	},
+	["race.orc.npc_meet.002"] = {
+		"{other} ha qualcosa da insegnarmi. Gli anziani dicono che chi combatte e non impara è solo un cadavere testardo che aspetta il suo turno.",
+		"Imparo da {other}. L'orgoglio mi dice che so abbastanza. L'orgoglio ha già mentito agli orchi, in passato.",
+	},
+	["race.orc.other_action.001"] = {
+		"Un duello! Bene. Niente calma il sangue come un combattimento onesto.",
+		"Vuoi mettermi alla prova? Va bene. Niente rancori dopo, chiunque vinca.",
+	},
+	["race.scourge.npc_meet.001"] = {
+		"{other} mi chiede se mangerò. Una domanda gentile, e coraggiosa. Rispondo di no, per risparmiare entrambi.",
+		"Una stanza? La prendo. Non dormo, ma rimuginare è più comodo con una porta da chiudere.",
+	},
+	["race.scourge.npc_meet.002"] = {
+		"Niente paura, le mie monete sono pulite. Più delle mie mani, di sicuro.",
+		"Compro, se te la senti di prendere soldi da un cadavere.",
+	},
+	["race.scourge.other_action.001"] = {
+		"Un invito? A me? I vivi si fanno sempre più coraggiosi.",
+		"Un gruppo. D'accordo. Non mangio le vostre razioni, e non mi serve un turno per dormire.",
+	},
+	["race.tauren.npc_meet.001"] = {
+		"{other} guarda lo stipite, poi le mie corna, poi di nuovo lo stipite. Uno sguardo che conosco bene.",
+		"I letti delle locande sono sempre un po' corti. Dormirò {g:rannicchiato|rannicchiata} come un vitello. Mi è andata peggio.",
+	},
+	["race.tauren.npc_meet.002"] = {
+		"Nelle pianure si commerciava a carichi di kodo. Cercherò di ragionare in piccolo.",
+		"Fammi vedere la roba buona. Il mio popolo non ha mai mercanteggiato granché: semplicemente, se ne andava.",
+	},
+	["race.tauren.other_action.001"] = {
+		"Un duello? Dalle mie parti si fa la lotta per divertimento. Occhio alle corna.",
+		"E va bene. Se vinco, mi aiuti a trovare una porta da cui passare senza chinarmi.",
+	},
+	["race.troll.npc_meet.001"] = {
+		"Hai niente che venga dalle isole? Pesce secco, cocco, qualcosa? No? Allora fammi vedere il resto.",
+		"Cosa c'è di buono oggi? E non dirmi tutto: ti si legge in faccia.",
+	},
+	["race.troll.npc_meet.002"] = {
+		"{other} ha qualcosa da insegnare. Gli anziani dicono che un troll che smette di imparare comincia a rimpicciolire.",
+		"Ogni maestro che incontro aggiunge una perlina al filo. {other} potrebbe valerne due.",
+	},
+	["race.troll.other_action.001"] = {
+		"Un gruppo? Certo. Io porto la fortuna, tu porti da mangiare.",
+		"Ci sto. Un Darkspear non dice mai di no a una buona compagnia.",
+	},
 }, "base_context")

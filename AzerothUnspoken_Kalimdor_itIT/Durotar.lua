@@ -850,4 +850,21 @@ AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_durotar", [==[
 		"volta una spalla alle raffiche; la sabbia crepita sull'armatura e punge gli occhi.",
 		"strizza gli occhi nella sabbia che vola. Le creste lontane appaiono e spariscono come spettri.",
 	},
+	["dur.journey.w01.01"] = {
+		"Da quassù Durotar è tutta pieghe rosse e grinze secche, come una pelle lasciata troppo al sole.",
+		"Da questa altezza i canyon sembrano crepe in un vaso d'argilla. Laggiù c'è uno scorpione molto deluso da me.",
+		"Terra rossa, mare grigio e una sottile linea bruna di strada nel mezzo. Durotar, in breve.",
+	},
+	["dur.journey.w01.02"] = {
+		"scende nella calura, e la polvere rossa si alza a salutare l'atterraggio prima ancora che la viverna abbia chiuso le ali.",
+		"mette piede sulla dura terra rossa, socchiudendo gli occhi mentre il riverbero rimbalza dalle rocce tutto in una volta.",
+	},
+	["dur.quest_complete.w01.01"] = {
+		"Fatto. Pagami in acqua, se per te è lo stesso.",
+		"Finito. Festeggerei, ma fa troppo caldo per esultare.",
+	},
+	["dur.quest_progress.w01.01"] = {
+		"Questa parte è fatta. Il resto è là fuori, sotto lo stesso sole duro.",
+		"Un pezzo in meno. Di commissioni, se non altro, Durotar è generosa.",
+	},
 ]==])

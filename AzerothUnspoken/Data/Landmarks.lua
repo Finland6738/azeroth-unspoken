@@ -31,6 +31,9 @@ NS:RegisterLandmarks({
 	{ id = "duskwood.darkshire", zone = "Duskwood", subzone = "Darkshire", tags = { "village" } },
 	{ id = "duskwood.raven_hill_cemetery", zone = "Duskwood", subzone = "Raven Hill Cemetery", tags = { "graveyard" } },
 	{ id = "tirisfal.brill", zone = "Tirisfal Glades", subzone = "Brill", tags = { "village" } },
+	{ id = "tirisfal.deathknell", zone = "Tirisfal Glades", subzone = "Deathknell", tags = { "village", "graveyard" } },
+	{ id = "dunmorogh.coldridge_valley", zone = "Dun Morogh", subzone = "Coldridge Valley", tags = { "camp" } },
+	{ id = "dunmorogh.kharanos", zone = "Dun Morogh", subzone = "Kharanos", tags = { "village" } },
 	-- Kalimdor
 	{ id = "durotar.razor_hill", zone = "Durotar", subzone = "Razor Hill", tags = { "village", "camp" } },
 	{ id = "durotar.senjin_village", zone = "Durotar", subzone = "Sen'jin Village", tags = { "village", "coast" } },
@@ -39,4 +42,6 @@ NS:RegisterLandmarks({
 	{ id = "barrens.ratchet", zone = "The Barrens", subzone = "Ratchet", tags = { "village", "port" } },
 	{ id = "teldrassil.dolanaar", zone = "Teldrassil", subzone = "Dolanaar", tags = { "village" } },
 	{ id = "mulgore.bloodhoof_village", zone = "Mulgore", subzone = "Bloodhoof Village", tags = { "village" } },
+	{ id = "mulgore.camp_narache", zone = "Mulgore", subzone = "Camp Narache", tags = { "camp" } },
+	{ id = "teldrassil.shadowglen", zone = "Teldrassil", subzone = "Shadowglen", tags = { "camp" } },
 })

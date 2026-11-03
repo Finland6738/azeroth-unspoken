@@ -38,12 +38,18 @@ local function Offer(ev, extra) Director:Offer(ev, extra); ADVANCE(0.2) end
 -- #99 monologues
 ---------------------------------------------------------------------------
 -- picks of an event until a monologue comes (time passes, as in a session)
+-- (the monologues are generic lines: since W01 the class, race, faction and zone lines of the speak key are more than the
+-- window of 30 picks, so the specificity tiers of #89 would never reach them; the test lifts the tiers to see the
+-- monologue itself)
 local function FindMonologue(event, form, tries)
+	local tierMin = Engine.TIER_MIN
+	Engine.TIER_MIN = math.huge
 	for _ = 1, tries or 400 do
 		local rec = Engine:PickEntry(event, NS:BuildContext(), form)
-		if rec and rec.kind == "monologue" then return rec end
+		if rec and rec.kind == "monologue" then Engine.TIER_MIN = tierMin; return rec end
 		ADVANCE(600)
 	end
+	Engine.TIER_MIN = tierMin
 	return nil
 end
 

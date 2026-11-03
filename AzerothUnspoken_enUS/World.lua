@@ -344,4 +344,272 @@ NS:AddTexts("enUS", {
 		"steps off after the long flight, and the ground seems heavy and slow after so long among the clouds.",
 		"lands at the end of a long crossing, and spends a moment simply standing on something that does not move.",
 	},
+	["mood.city.journey.01"] = {
+		"The noise of the city falls away behind me, every errand and argument at once, and none of them mine anymore.",
+		"Up and away. All that crowding and bargaining shrinks to a murmur, then to nothing.",
+		"A whole city of voices, and in a few heartbeats I can't hear a single one.",
+	},
+	["mood.city.journey.02"] = {
+		"Down into the crowd. After all that quiet up there, a city is a lot of people talking at once.",
+		"Among people again. Mind the elbows; I've only just found my legs.",
+	},
+	["mood.city.rest_enter.01"] = {
+		"Guards on every corner and nothing hunting me. I can loosen a strap or two.",
+		"In a city, the worst danger is a bad bargain. I can live with that for a while.",
+	},
+	["mood.city.weather_change.01"] = {
+		"The sky above is turning a new face. The city hasn't noticed: the stalls stay open and the crowd keeps moving.",
+		"Whatever the sky is doing overhead, nobody down here looks up; there's business to finish.",
+	},
+	["mood.dark.journey.01"] = {
+		"Feet on the ground, and the gloom settles on my shoulders like a cloak someone else has worn.",
+		"Down from the flight, and the light seems thinner already. I'd have liked a longer trip.",
+	},
+	["mood.desert.journey.01"] = {
+		"Down we come, into the dust. I'd forgotten how dry a mouth can get in one breath.",
+		"Landed. And there's the dust, waiting like an old dog at the door.",
+	},
+	["mood.fire.journey.01"] = {
+		"The flight sets me down, and the heat comes up to meet me like an open furnace door. I miss the wind already.",
+		"On the ground again, and the ground is hot. The cool wind up there feels like a story now.",
+	},
+	["mood.jungle.journey.01"] = {
+		"Down from the cool air, straight into a wet green heat that closes over me like a blanket.",
+		"The moment I land, the air turns thick enough to drink. Somewhere close, something is shrieking about it.",
+	},
+	["mood.plague.journey.01"] = {
+		"Landing here feels like walking into a sickroom with the windows nailed shut.",
+		"The air changes on the way down. By the time my feet touch the ground, I already want to leave.",
+	},
+	["mood.plains.journey.01"] = {
+		"As we climb, the grass runs together into one great color under the wind, broken only by a farm or a camp.",
+		"Up here the open land finally makes sense: a single sweep from edge to edge, the wind moving over the grass like a hand.",
+		"Rising over all that open country. From this height even the longest road looks like an afternoon's stroll.",
+	},
+	["mood.plains.weather_change.01"] = {
+		"watches the sky change over the open land from far off, the shift rolling across the grass long before it arrives.",
+		"turns to see the sky changing at the edge of the grassland, with plenty of time to make ready for it.",
+	},
+	["quest_complete.w01.01"] = {
+		"Paid or not, it's off my mind. That alone was worth the walk.",
+		"One less thing to carry in my head. The pack weighs the same, but I don't.",
+		"Done. The best part isn't the reward; it's not having to think about it anymore.",
+	},
+	["quest_complete.w01.02"] = {
+		"There. Exactly as asked. Next time, ask me something easy.",
+		"All done, and only slightly worse for wear. You're welcome.",
+		"Finished. If anyone needs me, I'll be sitting down with my feet up.",
+	},
+	["quest_complete.w01.03"] = {
+		"allows {g:himself|herself} a small, private moment of satisfaction, and leaves it at that.",
+		"permits {g:himself|herself} one quiet smile at a thing done properly, then puts it away.",
+	},
+	["quest_complete.w01.04"] = {
+		"If someone was waiting on this, they're waiting a little less now. That's enough for me.",
+		"Some worry, somewhere, just got smaller. I had a hand in that.",
+	},
+	["quest_complete.w01.05"] = {
+		"I learned something doing that, though not what anyone asked me to learn.",
+		"Every errand teaches something on the side. This one taught me patience, mostly by testing it.",
+	},
+	["quest_complete.w01.06"] = {
+		"Done, and done with my own two hands. Nobody can take that part from me.",
+		"Whatever the reward, the deed is mine, and my hands know it. I'll carry that longer than any coin.",
+	},
+	["race.dwarf.journey.001"] = {
+		"The Wildhammer were born to this. Me, I was born to have a floor under my boots.",
+		"Hold tight, dwarf. The ground's still down there; it's just in no hurry to catch you.",
+		"Stone below, wind all around, and nothing in between but straps and hope.",
+	},
+	["race.dwarf.quest_complete.001"] = {
+		"Finished. Not pretty, maybe, but sound. A dwarf would always rather have sound.",
+		"Job's done. I'd stamp my maker's mark on it, if I had one.",
+		"Every task is a piece of work. This one will hold.",
+	},
+	["race.dwarf.quest_complete.002"] = {
+		"Done! If the Explorers' League ever asks, I want this one written down properly.",
+		"Another tale for the hearth back home. It'll grow a little every time I tell it.",
+		"Finished. Somebody fetch a chronicler; my memory improves with every retelling.",
+	},
+	["race.dwarf.quest_complete.003"] = {
+		"dusts off {g:his|her} hands with two firm claps, like a miner at the end of a shift.",
+		"gives a short, satisfied nod and tucks the matter away, the way a smith racks a finished tool.",
+		"rolls {g:his|her} shoulders like someone setting down a full hod of stone.",
+	},
+	["race.dwarf.quest_progress.001"] = {
+		"One more cart of ore up the shaft. Plenty still down there, mind.",
+		"Progress, stone by stone. The halls of Ironforge weren't carved in an afternoon either.",
+	},
+	["race.gnome.journey.001"] = {
+		"Lift-off! I'd love to see the wing mechanics up close. From a safe distance. Which this is not.",
+		"Altitude rising. Heart rate also rising. Both within acceptable limits, I hope.",
+		"Up we go! Note to self: design something that flies without needing to be fed.",
+	},
+	["race.gnome.quest_complete.001"] = {
+		"Task complete! Efficiency: acceptable. Explosions: none worth mentioning.",
+		"Job done, and nothing caught fire. Somebody write that down.",
+		"Finished! I'd file a report, but I'd only end up redesigning the form.",
+	},
+	["race.gnome.quest_complete.002"] = {
+		"Done. Noted what worked, noted what didn't. The second list is always the more useful.",
+		"Another problem solved. Not elegantly, but solved; elegance can wait for version two.",
+		"Every finished task is the prototype of the next one. This one taught me plenty.",
+	},
+	["race.gnome.quest_complete.003"] = {
+		"ticks an imaginary box in the air with a small, precise flourish.",
+		"rubs {g:his|her} hands together like an inventor watching a machine finally start.",
+		"makes a tiny note in an even tinier notebook and underlines it twice.",
+	},
+	["race.gnome.quest_progress.001"] = {
+		"Progress: measurable. Completion: pending. Morale: surprisingly good.",
+		"Part one works. Parts two to whatever, we shall see.",
+	},
+	["race.human.journey.001"] = {
+		"Feet on the ground. Humans were made to walk; I'm sure of it now.",
+		"Down at last. I'll leave the sky to the birds and to braver folk.",
+		"Solid earth. I could kiss it, if nobody were watching.",
+	},
+	["race.human.quest_complete.001"] = {
+		"A job done and a promise kept. In the villages, that's how you earn your name.",
+		"Word given, word kept. Where I come from, that's worth more than any reward.",
+		"Done. Somebody out there can stop worrying about one thing, at least.",
+	},
+	["race.human.quest_complete.002"] = {
+		"Done, and without filling a single form in triplicate. Stormwind's clerks would faint.",
+		"Finished! If only the Stormwind treasury paid this promptly.",
+		"There. If anyone wants it in writing, I know a clerk who'll lose it.",
+	},
+	["race.human.quest_complete.003"] = {
+		"straightens and lets out a long breath, shoulders easing like a farmhand's at the end of harvest.",
+		"wipes {g:his|her} palms on {g:his|her} clothes, a plain gesture from a land of plain work.",
+		"allows {g:himself|herself} a small, tired smile, the kind kept for jobs nobody else wanted.",
+	},
+	["race.human.quest_progress.001"] = {
+		"That's all of it. Now the walk back, and a word with whoever asked.",
+		"Done, near enough. Better go and say so before something comes undone.",
+	},
+	["race.nightelf.journey.001"] = {
+		"Up, into the wind. The world looks younger from up here, and I know better.",
+		"Rising. Below, forests older than me and forests younger slip away like friends taking leave.",
+		"Wings and wind. For a while I am as unhurried as the clouds.",
+	},
+	["race.nightelf.quest_complete.001"] = {
+		"Done. A small thing, measured against the centuries, and still worth doing well.",
+		"Finished. The forest teaches that small deeds, kept up, become a shape that can be seen from far away.",
+		"Complete. In a hundred years no one will remember it, and still it will have mattered.",
+	},
+	["race.nightelf.quest_complete.002"] = {
+		"inclines {g:his|her} head slightly, a quiet courtesy that closes the matter without a word.",
+		"draws a slow breath and lets it go, as unhurried as leaves settling after the wind.",
+		"rests a hand over {g:his|her} heart a moment, then lets the matter go.",
+	},
+	["race.nightelf.quest_complete.003"] = {
+		"It is done. May it bear fruit in its season.",
+		"Finished. A seed planted; let us see what grows.",
+		"There. Ande'thoras-ethil: may your troubles be fewer now.",
+	},
+	["race.nightelf.quest_progress.001"] = {
+		"Part of it done. The rest will come as leaves come, each in its turn.",
+		"Progress. Slow, but the oldest trees grew the same way.",
+	},
+	["race.orc.journey.001"] = {
+		"Up, on the back of a beast that could eat me. The Horde runs on trust like this.",
+		"The land drops away. From up here it is hard to say whose it is, and that is a strange comfort.",
+		"Off we go. An orc's place is on the ground, but I will admit the view is fine.",
+	},
+	["race.orc.quest_complete.001"] = {
+		"Done. Tell them an orc did it, and did it properly.",
+		"Finished. My word was iron, as it should be.",
+		"That's settled. Next time, give me something harder.",
+	},
+	["race.orc.quest_complete.002"] = {
+		"In the camps nobody asked anything of us but silence. It is good to be asked for something, and to give it.",
+		"Work for my own people, by my own choice. The internment camps never allowed that.",
+		"A task done freely is worth ten done under a whip. I know which kind this was.",
+	},
+	["race.orc.quest_complete.003"] = {
+		"There. Now where is the food?",
+		"Done. Zug zug. Don't make me do it twice.",
+		"Finished. If anyone asks, it was much harder than it looked.",
+	},
+	["race.orc.quest_progress.001"] = {
+		"That's all of it. Now to bring the word back, and see their faces.",
+		"The work is done. The rest is walking back, and orcs are good at walking.",
+	},
+	["race.scourge.journey.001"] = {
+		"Up and away. The wind goes straight through me, which saves it the trouble of going around.",
+		"Flying. If I fall, at least it won't be the first time I've died.",
+		"The world shrinks below. From up here you can't tell which fields the plague took.",
+	},
+	["race.scourge.quest_complete.001"] = {
+		"Done. You may stop staring now.",
+		"There. No need to thank me, and no need to stand so far away.",
+		"Finished. I'd shake your hand, but you would rather I didn't.",
+	},
+	["race.scourge.quest_complete.002"] = {
+		"I chose to do that. No voice in my head but mine. It still feels like a small miracle.",
+		"A task taken up and carried to the end by my own will. The Scourge never gave me that.",
+		"Done, and done because I decided so. Each time it tastes a little less strange.",
+	},
+	["race.scourge.quest_complete.003"] = {
+		"inclines {g:his|her} head with stiff courtesy, a gesture from a life long buried.",
+		"hands the matter over and steps back, like someone used to people preferring a little distance.",
+		"gives a dry, rasping sound that might once have been a satisfied sigh.",
+	},
+	["race.scourge.quest_progress.001"] = {
+		"Part of it, then. I have patience to spare; it's one of the few things I kept.",
+		"Not done, but moving. Like me.",
+	},
+	["race.tauren.journey.001"] = {
+		"A tauren in the sky. My grandfathers would laugh, and then hold on to the saddle with both hands, as I am doing now.",
+		"Hooves were made for the earth. Up here I keep them very still and try not to think about how far away the grass is.",
+		"The beast beneath me grunts. I suspect it is working out my weight and does not like the sum.",
+	},
+	["race.tauren.quest_complete.001"] = {
+		"Done as I said it would be. Among my people a promise is like a hoofprint in clay: it hardens, and it stays.",
+		"Word kept. An elder would nod and say nothing, which from an elder is a great deal.",
+		"Finished, and finished properly. The elders would call that the only way to finish anything.",
+	},
+	["race.tauren.quest_complete.002"] = {
+		"There you are. Next time, ask me for something heavy; that is what I am built for.",
+		"All done. If you need anything carried, pushed, or sat on, you know where to find me.",
+		"Finished. Was that all? I barely had to duck.",
+	},
+	["race.tauren.quest_complete.003"] = {
+		"touches {g:his|her} chest with an open hand, as if putting something back where it belongs.",
+		"dips {g:his|her} horns in a slow, contented nod.",
+		"lets the matter go with the calm of someone used to long seasons and longer roads.",
+	},
+	["race.tauren.quest_progress.001"] = {
+		"That is all of it. Now the long walk back, which is the part my legs enjoy.",
+		"Everything asked is done. A tauren goes back the way a herd does: unhurried, but sure of the road.",
+	},
+	["race.troll.journey.001"] = {
+		"Back on the ground. My stomach is still somewhere over the last hill.",
+		"Earth. Good. Trolls belong on the earth, or in trees, or in water. Not up in the clouds.",
+		"Landed. I was not scared. My hands were just holding on for reasons of their own.",
+	},
+	["race.troll.quest_complete.001"] = {
+		"Done, mon. Easy work, if you don't count the hard parts.",
+		"There you go. Pay me in coin, or in something good to eat. Either one.",
+		"All finished. Now, is there a hammock anywhere around here?",
+	},
+	["race.troll.quest_complete.002"] = {
+		"A job done is a small offering too. The loa notice who keeps their word.",
+		"Finished. I leave a pinch of something for the spirits, out of habit, and walk on.",
+		"That debt is paid. A troll with no debts sleeps easy, and the loa leave you be.",
+	},
+	["race.troll.quest_complete.003"] = {
+		"flicks one long ear and grins, tusks and all, as if this had been the plan from the start.",
+		"stretches long arms over {g:his|her} head until something cracks, and looks pleased with the day.",
+		"gives a lazy two-finger salute and an even lazier grin.",
+	},
+	["race.troll.quest_progress.001"] = {
+		"Halfway, maybe. The loa like a story that has a middle.",
+		"Some of it done. The rest can wait for me; it isn't going anywhere.",
+	},
+	["weather_change.w01.01"] = {
+		"The sky has changed its mind. Mine stays where it was.",
+		"Up in the sky, something's shifting. Down here, the plan holds.",
+	},
 }, "base_world")
