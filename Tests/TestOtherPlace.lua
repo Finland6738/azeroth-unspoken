@@ -835,7 +835,9 @@ T.run("le frasi seguono interlocutore e luogo", function()
 	Fresh()
 	FIRE("DUEL_REQUESTED", "Brenna")
 	local a = Engine:PickEntry("other_action", Ctx(Queued("other_action").extra), "say")
-	T.ok(a ~= nil and a.id:find("^ctx%.act%.duel"), "frase del duello: " .. tostring(a and a.id))
+	-- una frase scritta per il duello: quelle di contesto (ctx.act.duel*) o di una razza, classe... (W01: race.orc.other_action.001)
+	local other = a and Engine.byId[a.id].when and Engine.byId[a.id].when.other
+	T.ok(other ~= nil and other.actions ~= nil and other.actions[1] == "duel", "frase del duello: " .. tostring(a and a.id))
 	T.eq(Engine:PickEntry("other_action", Ctx(), "say"), nil, "nessuna azione: nessuna frase")
 	-- saluto a una persona della fazione avversaria
 	P.target = Player("Ilyas", { faction = "Alliance", race = "Human", class = "WARRIOR", hostile = true })
