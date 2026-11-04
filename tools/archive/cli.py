@@ -23,7 +23,8 @@ Commands (see CONTRIBUTING.md, "Writing content through the archive"):
                           that put words in the player's mouth; report the warnings of the literary pieces
     report                coverage and gap report (issue #88): Markdown, JSON, job summary; never fails the build
     need [--write]        the need of the content waves (C0c, ADR 0050): the texts each event x context pool needs so that
-                          no text repeats in a life of 400 hours (and in 40), the gap, the plan of the waves; --write
+                          no text repeats in a life of 400 hours (and in 40), and the random need (today's random pick,
+                          at most 5% repeats: the owner's target), the gap, the plan of the waves; --write
                           puts it in docs/content/NEED.md, need.json and the table of WAVES.md; --wave W01 prints a wave
     dups [filters]        near and exact duplicates (ADR 0050) of the texts of the intentions chosen by --state, --pack,
                           --by (author) or ids, against every text of their language; exits 1 on an exact duplicate
@@ -383,9 +384,11 @@ def cmd_need(a):
         need.write_waves(os.path.join(CONTENT_DOCS, "WAVES.md"), res)
         print("wrote docs/content/NEED.md, need.json and the waves of WAVES.md")
     t = res["totals"]
-    print("need per language: strict (%d h) %d, soft (%d h) %d; gap %s; %d waves" % (
-        res["model"]["life_hours"], t["need_strict"], res["model"]["soft_hours"], t["need_soft"],
-        ", ".join("%s %d / %d" % (l, t["gap_strict"][l], t["gap_soft"][l]) for l in res["languages"]), len(res["waves"])))
+    print("need per language: strict (%d h) %d, soft (%d h) %d, random (%g%% repeats) %d; gap strict / soft / random %s; "
+          "%d waves" % (res["model"]["life_hours"], t["need_strict"], res["model"]["soft_hours"], t["need_soft"],
+                        100 * res["model"]["random_repeats"], t["need_random"],
+                        ", ".join("%s %d / %d / %d" % (l, t["gap_strict"][l], t["gap_soft"][l], t["gap_random"][l])
+                                  for l in res["languages"]), len(res["waves"])))
     if a.json:
         packfiles.write(a.json, need.to_json(res))
     if a.markdown:

@@ -580,4 +580,43 @@ AU:RegisterRegionalTexts("durotar", "enUS", "kalimdor_orgrimmar", [==[
 		"The orcs build tall. Down in the Valley of Spirits, at least, somebody keeps the fires the old way.",
 		"The Darkspear have a corner here, and a corner is more than we had after the islands.",
 	},
+	["org.journey.w01.01"] = {
+		"rises from the tower above the Valley of Strength, and the city's drums fade beneath the beat of the wind rider's wings.",
+		"lifts away from Orgrimmar, the canyon walls sliding down and the smoke of the forges thinning to threads.",
+		"climbs into the hot air over the city, the great gate and the red road beyond it shrinking fast.",
+	},
+	["org.journey.w01.02"] = {
+		"Orgrimmar drops behind, loud to the last. The wind takes over the shouting from here.",
+		"From the air the city is just a crease in the rock, and all its noise fits in one breath of wind.",
+		"The Warchief's city, smaller with every heartbeat. It looked bigger from the gate.",
+	},
+	["org.journey.w01.03"] = {
+		"Lok'tar, Orgrimmar. Keep the fires lit.",
+		"Off to wherever the Horde needs a hand. Fly on.",
+	},
+	["org.journey.w01.04"] = {
+		"Down. Somebody point me at food and a bench, in that order.",
+		"Feet on the ground. Orgrimmar, try not to shout all at once.",
+	},
+	["org.journey.w01.05"] = {
+		"lands on the tower in the dark, the city below lit by forge-glow and torches, red on red.",
+		"comes down out of the night sky into Orgrimmar, where the fires never quite go out and the drums only soften.",
+	},
+	["org.journey.w01.06"] = {
+		"Flying is fine. Landing is fine. It's the part after, when the Valley of Strength keeps turning gently, that I mind.",
+		"Legs, wake up. Orgrimmar won't cross itself.",
+	},
+	["org.quest_complete.w01.01"] = {
+		"delivers what was asked over the din of the Drag, and gets a grunt that counts as warm thanks in this city.",
+		"takes the reward and steps aside to let a wolf rider pass, coin already tucked away.",
+		"receives a short nod and a heavier purse, while a hammer somewhere close keeps time.",
+	},
+	["org.quest_complete.w01.02"] = {
+		"Finished. In Orgrimmar that earns you a nod and a new problem, usually in the same breath.",
+		"Done, and nobody shouted at me. In this city, that's a medal.",
+	},
+	["org.quest_complete.w01.03"] = {
+		"Done, for the Horde. Tell me if there's more.",
+		"Another debt paid to the Horde. Gladly.",
+	},
 ]==])

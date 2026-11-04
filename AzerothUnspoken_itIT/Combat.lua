@@ -576,4 +576,293 @@ NS:AddTexts("itIT", {
 		"barcolla nel buio; per un istante il nemico è solo una sagoma tra le altre.",
 		"sente il freddo della notte infilarsi nelle ferite.",
 	},
+	["race.dwarf.battle.001"] = {
+		"Khaz Modan! Vieni a tentare la sorte contro la pietra profonda!",
+		"Forgiardente ti manda i suoi saluti. Tutti insieme!",
+		"Ecco a te un nano! Occhio: colpiamo più in alto di quanto siamo alti.",
+	},
+	["race.dwarf.battle.002"] = {
+		"Ogni pietra ha la sua venatura. Ogni bruto ha un lato debole. Trovalo.",
+		"Cerca la crepa, come nella roccia. Colpisci lì, e il resto si spacca da sé.",
+	},
+	["race.dwarf.battle.003"] = {
+		"allarga i piedi e si abbassa, {g:piantato|piantata} come una colonna delle antiche sale.",
+		"china il capo e si mette in guardia, {g:saldo|salda} e inamovibile come una porta nanica.",
+	},
+	["race.dwarf.lowhp.001"] = {
+		"Tieni duro. Le montagne si crepano e restano in piedi per mille anni.",
+		"Anche un'incudine incrinata risuona. Continua a risuonare.",
+		"Perdo come una botte sfondata. Tappala e vai avanti, {g:nano|nana}.",
+	},
+	["race.dwarf.threat.001"] = {
+		"Vattene adesso. Mi dicono che sono difficile da spostare, e ancora più difficile da fermare.",
+		"Avresti più fortuna a discutere con una montagna. Provaci, e vedrai.",
+	},
+	["race.dwarf.victory.001"] = {
+		"Così si fa sotto la montagna, e anche sopra!",
+		"Testardaggine e un braccio forte. Ai nani non hanno mai fatto difetto.",
+		"Giù. A Forgiardente, adesso, un vecchio ha appena sorriso senza sapere perché.",
+	},
+	["race.dwarf.victory.002"] = {
+		"Respira. Controlla l'equipaggiamento. Conta i lividi. La regola dei minatori dopo un crollo vale anche dopo uno scontro.",
+		"Calma. Il cuore rallenta, le mani sono ancora salde. La pietra ti insegna a finire una cosa, e poi a riposare.",
+		"Come trasportare minerale: il peso se ne va, e per un po' resta solo il dolore alle braccia.",
+	},
+	["race.dwarf.victory.003"] = {
+		"Tutto qui? Ho avuto discussioni più dure con un carrello da miniera.",
+		"Ah! L'ariete di mio cugino si batte di più, e prima di colazione.",
+	},
+	["race.gnome.battle.001"] = {
+		"Per Gnomeregan! E per il diritto di finire il mio pranzo!",
+		"Gnomeregan non è perduta finché uno gnomo combatte ancora per lei!",
+		"Ricordate Gnomeregan! Poi smettete di ricordare e abbassatevi!",
+	},
+	["race.gnome.battle.002"] = {
+		"Taglia, velocità, portata. Pesa probabilmente il doppio di me. Va bene: il peso è solo un numero.",
+		"Angoli, distanze, lo spiraglio sotto la sua guardia. I piccoli vedono i pezzi che i grandi dimenticano.",
+		"Calma. Ragiona. Ogni macchina ha un bullone allentato, e anche ogni bruto.",
+	},
+	["race.gnome.battle.003"] = {
+		"scarta di lato con un saltello rapido: un bersaglio minuscolo, e troppo veloce per essere facile.",
+		"raddrizza le spalle strette e guarda in su con tutta la furia di una persona molto più grande.",
+		"molleggia una volta sulle punte, come una molla caricata fino all'ultimo scatto.",
+	},
+	["race.gnome.lowhp.001"] = {
+		"Danni critici. Deviare tutta l'energia sulle gambe. O sulle braccia. In un punto utile!",
+		"Integrità strutturale: preoccupante. Avanti lo stesso, non c'è un ricambio.",
+		"Spie d'allarme ovunque. Ignora quelle che non puoi riparare.",
+	},
+	["race.gnome.lowhp.002"] = {
+		"Sto bene! Più o meno! Qualcuno, chiunque, una mano per favore!",
+		"Questo non era nei piani. Vorrei rivedere i piani!",
+	},
+	["race.gnome.threat.001"] = {
+		"So esattamente quali parti di te reggono il peso. Indietro.",
+		"Attenzione. Piccolo non vuol dire innocuo: chiedi a chiunque abbia provato a pestarmi.",
+	},
+	["race.gnome.victory.001"] = {
+		"Ipotesi confermata! Principalmente colpendolo finché non ha smesso.",
+		"Dati sul campo eccellenti. Eccellentissimi. Qualcuno mi tenga gli appunti, mi tremano le mani.",
+		"E questa, signore e signori, è scienza applicata.",
+	},
+	["race.gnome.victory.002"] = {
+		"Una cosa in meno tra noi e la strada di casa. È una lista lunga, ma si accorcia.",
+		"Per Gnomeregan. A bassa voce, così nessuno chiede perché mi si è incrinata.",
+		"Le piccole vittorie si sommano. È così che si costruisce qualsiasi cosa, città comprese.",
+	},
+	["race.gnome.victory.003"] = {
+		"Più sono grossi, più i calcoli danno soddisfazione.",
+		"Leva, tempismo e un pizzico di cattiveria. I tre pilastri dell'ingegneria gnomesca.",
+	},
+	["race.human.battle.001"] = {
+		"Per Roccavento e per l'Alleanza! Tenete la posizione!",
+		"Per il Leone! Sbrighiamoci!",
+		"Roccavento non scappa mai! Be', a volte marcia in fretta. Non oggi!",
+	},
+	["race.human.battle.002"] = {
+		"Respira. Piedi larghi, occhi sulle mani. In Elwynn ogni ragazzo della milizia impara almeno questo.",
+		"Il cuore batte come il martello di un fabbro. Bene: vuol dire che funziona ancora.",
+		"Non è il primo scontro, non sarà l'ultimo. Supera solo questo.",
+	},
+	["race.human.battle.003"] = {
+		"assume la posizione come una recluta della milizia che ha finalmente capito a cosa servivano le esercitazioni.",
+		"serra la mascella con la calma testarda della gente dei campi, che i predoni li ha già visti.",
+		"avanza senza fronzoli, alla maniera semplice di chi combatte perché qualcuno deve farlo.",
+	},
+	["race.human.lowhp.001"] = {
+		"Non così. Non lontano da casa, senza nessuno che possa dire loro dove.",
+		"Resisti. Ci sono ancora campi da percorrere e tavole a cui sedere. Resisti.",
+	},
+	["race.human.lowhp.002"] = {
+		"Mi sono {g:fatto|fatta} più male cadendo da un carro di fieno! ...No, non è vero.",
+		"Ancora in piedi! Qualcuno mi aiuti a restarci!",
+	},
+	["race.human.threat.001"] = {
+		"Roccavento ha resistito a due guerre. Posso resistere anche a te.",
+		"Al tuo posto me ne andrei. I contadini di Westfall non sono stati gli unici a imparare a reagire.",
+	},
+	["race.human.victory.001"] = {
+		"Roccavento resiste, e io con lei!",
+		"Uno in meno di cui il regno debba preoccuparsi.",
+		"Per il Leone di Roccavento! Chi è il prossimo?",
+	},
+	["race.human.victory.002"] = {
+		"Fortuna e un po' di addestramento. Soprattutto fortuna. Non ditelo a nessuno.",
+		"Respiro ancora. A casa dicevano sempre che avrei combinato qualcosa; nessuno ha mai detto cosa.",
+		"In vita. Può bastare. Il resto si sistemerà dopo.",
+	},
+	["race.human.victory.003"] = {
+		"abbassa la guardia e lancia un'occhiata alla strada alle spalle, come per controllare che la via di casa sia ancora libera.",
+		"espira e si ricompone, con il sollievo semplice di chi ha tenuto i guai lontano da una soglia.",
+	},
+	["race.nightelf.battle.001"] = {
+		"Per Darnassus e per i kaldorei!",
+		"Avanti, allora. Il mio popolo è sopravvissuto a cose peggiori di te.",
+		"Elune-adore. A te servirà più che a me.",
+	},
+	["race.nightelf.battle.002"] = {
+		"Respira lento. Muoviti come il vento nell'erba; colpisci come il gufo.",
+		"Prima il silenzio, poi il colpo. Il mio popolo lo sapeva molto prima che arrivassero gli orchi.",
+	},
+	["race.nightelf.battle.003"] = {
+		"scivola in posizione di combattimento senza un suono, in bilico come una sentinella al margine del bosco.",
+		"si fa immobile, dell'immobilità di un grande felino un battito prima del balzo.",
+	},
+	["race.nightelf.lowhp.001"] = {
+		"Non ancora. Ho visto troppe stagioni per finire in questa.",
+		"La terra è paziente. Che mi aspetti ancora un poco.",
+		"Mortale, sì. Ma non oggi.",
+	},
+	["race.nightelf.threat.001"] = {
+		"Sono {g:stato|stata} paziente più a lungo di quanto il tuo popolo tenga registri. Non mettere alla prova la fine della mia pazienza.",
+		"Vattene. La foresta nasconde molte tombe, e nessuna è la mia.",
+	},
+	["race.nightelf.victory.001"] = {
+		"Rapido e pulito. Le Sentinelle approverebbero.",
+		"Fatto, e senza sprechi. È così che combattono i kaldorei.",
+		"Di nuovo silenzio. Bene: la foresta non ama le grida.",
+	},
+	["race.nightelf.victory.002"] = {
+		"Ricorderò questo scontro più a lungo di chiunque l'abbia visto. È il peso di una memoria lunga.",
+		"Un'altra battaglia per il lungo registro che il mio popolo tiene a mente. Non sembra mai accorciarsi.",
+		"È finita. Ho smesso di contare queste cose; la mia memoria lo fa comunque per me.",
+	},
+	["race.nightelf.victory.003"] = {
+		"abbassa la guardia con la morbidezza di un grande felino che si accoccola, gli occhi ancora sui margini delle cose.",
+		"si raddrizza ed espira, senza fretta, come se lo scontro fosse stato solo una folata passeggera.",
+	},
+	["race.orc.battle.001"] = {
+		"Per l'Orda, e per ogni orco morto in una gabbia!",
+		"Gli antenati del mio clan vogliono una storia. Diamogliela!",
+		"Senti la forza di mani libere!",
+	},
+	["race.orc.battle.002"] = {
+		"lancia un ruggito dal profondo del petto, di quelli con cui un tempo i vecchi clan aprivano la battaglia.",
+		"scopre le zanne e si batte il pugno sul petto, una volta, due volte.",
+	},
+	["race.orc.lowhp.001"] = {
+		"I miei antenati sanguinavano più di così prima di colazione. Non ho finito.",
+		"Non ho lasciato i campi alle spalle per cadere davanti a te.",
+	},
+	["race.orc.victory.001"] = {
+		"Hai combattuto bene. Ti ricorderò così.",
+		"Un buon combattimento. Non c'è vergogna a perderne uno così.",
+		"Abbastanza forte da farmi sudare. Anche questo è un modo di avere onore.",
+	},
+	["race.orc.victory.002"] = {
+		"La rabbia mi sta lasciando, e io la lascio andare. I miei padri non riuscivano a deporla. Io sì.",
+		"Torna la calma. È la parte che la vecchia Orda non ha mai imparato: come fermarsi.",
+		"Respira. La furia ha servito, ora torna nella sua gabbia. La chiave ce l'ho io.",
+	},
+	["race.orc.victory.003"] = {
+		"Ah! Quello era un riscaldamento. C'è un combattimento vero da qualche parte?",
+		"Già finito? Stavo appena cominciando ad arrabbiarmi.",
+	},
+	["race.scourge.battle.001"] = {
+		"Ho già perso tutto una volta. Cosa credi di potermi togliere?",
+		"La mia volontà ora è mia. E non la cedo nemmeno a te.",
+		"Colpisci pure. Ho smesso di sussultare quando ho smesso di respirare.",
+	},
+	["race.scourge.battle.002"] = {
+		"si volta verso il nemico con la calma senza fretta di chi non ha più nulla da temere.",
+		"lascia pendere la mascella in un ghigno muto che i vivi raramente gradiscono.",
+	},
+	["race.scourge.lowhp.001"] = {
+		"La mia volontà ha resistito quando il Re dei Lich la tirava. Può resistere anche adesso.",
+		"Non ancora. Ci sono cose da fare che solo chi non è del tutto morto può fare.",
+		"Tenete duro, vecchie ossa. Ancora un poco.",
+	},
+	["race.scourge.victory.001"] = {
+		"Giù. La morte non è niente di speciale. Io lo so bene.",
+		"Ecco com'è morire, visto da fuori. Me n'ero {g:dimenticato|dimenticata}.",
+		"Resta lì. Nessuno ti rimetterà in piedi per farti camminare. Ti è andata meglio che a me.",
+	},
+	["race.scourge.victory.002"] = {
+		"Niente cuore in corsa, niente mani che tremano. Lo scontro finisce e niente in me se ne accorge. Stranamente, il tremore mi manca.",
+		"Dopo uno scontro i vivi tremano. Io controllo se ho pezzi allentati.",
+		"Ancora in piedi, o quanto di più vicino mi riesca.",
+	},
+	["race.scourge.victory.003"] = {
+		"Per la Dama Oscura. Lo saprà, oppure no. Io lo so.",
+		"Lordaeron era nostra, un tempo. Ogni vittoria rimette una pietra nelle sue mura.",
+	},
+	["race.tauren.battle.001"] = {
+		"Avanti, allora. Ho la pazienza di una montagna, e smuovermi è due volte più difficile.",
+		"Ti servirà di più per spostare un tauren. Chiedi ai centauri.",
+		"Ho piantato gli zoccoli. Spingi, se credi di farcela.",
+	},
+	["race.tauren.battle.002"] = {
+		"Madre Terra, rendi saldo il mio braccio. Antenati, tenete limpidi i miei occhi.",
+		"Spiriti dei padri dei miei padri, state alle mie spalle adesso.",
+		"Voi anziani della mia stirpe, contate i colpi insieme a me.",
+	},
+	["race.tauren.battle.003"] = {
+		"abbassa le corna e raspa una volta il terreno, come un toro delle pianure sul punto di caricare.",
+		"sbuffa, e basta quel suono a far sobbalzare la polvere attorno agli zoccoli.",
+		"si erge in tutta la sua statura, cosa che richiede un po' di tempo, e lascia che il nemico ne guardi ogni palmo.",
+	},
+	["race.tauren.lowhp.001"] = {
+		"Sanguino, sì. Cado, no. Non ancora.",
+		"Nelle pianure, ferito vuol dire più lento. Non vuol dire finito.",
+		"Ho preso cornate peggiori di questa. Eppure sono ancora in piedi.",
+	},
+	["race.tauren.threat.001"] = {
+		"Mi arrabbio molto lentamente. Tu hai appena consumato tutta la mia pazienza.",
+		"Vattene. Non lo ripeto, e non ce ne sarà bisogno.",
+	},
+	["race.tauren.victory.001"] = {
+		"Fatto. Dammi un momento: i cuori grandi rallentano con calma.",
+		"È finita. Un tauren si raffredda come un sasso al sole: piano piano.",
+		"Ecco fatto. Lasciami riprendere fiato. C'è parecchio di me da riempire.",
+	},
+	["race.tauren.victory.002"] = {
+		"Qualunque cosa fosse, ha lottato per vivere. Merita un attimo di silenzio prima che io riparta.",
+		"Il cerchio gira: qualcosa finisce, la terra lo accoglie, qualcos'altro cresce. Io stavo solo dove il cerchio girava.",
+		"Nessun orgoglio in questo, solo il lavoro. I miei anziani mi hanno insegnato a tenerli separati.",
+	},
+	["race.tauren.victory.003"] = {
+		"Nelle pianure il vento soffia più forte di te. Avanti il prossimo!",
+		"Ah! Un cucciolo di kodo mi ha spinto più forte.",
+	},
+	["race.troll.battle.001"] = {
+		"Darkspear! Vieni a vedere perché ci chiamano così!",
+		"I Darkspear non scappano. Balliamo!",
+		"Zanne in fuori, occhi su di te. Hai scelto il troll sbagliato, oggi.",
+	},
+	["race.troll.battle.002"] = {
+		"Colpiscimi forte quanto vuoi. Io guarisco più in fretta di quanto tu ti stanchi.",
+		"Avanti, tagliami. La ferita si richiude prima che tu abbia finito di sorridere.",
+		"Credi di sfiancare un troll? Ci hanno provato in tanti. Guardami: sono ancora qui.",
+	},
+	["race.troll.battle.003"] = {
+		"si accuccia, le lunghe braccia sciolte, come facevano un tempo i cacciatori di teste in agguato nella giungla.",
+		"scopre le zanne e sibila qualche parola nell'antica lingua dei troll.",
+		"ondeggia piano da un piede all'altro, come chi ha imparato a combattere sulla sabbia bagnata.",
+	},
+	["race.troll.lowhp.001"] = {
+		"Aspetta, aspetta. Dammi un respiro, che ricresce tutto.",
+		"Sanguino parecchio. Per fortuna noi troll di sangue ne abbiamo in abbondanza.",
+	},
+	["race.troll.lowhp.002"] = {
+		"Non adesso, spiriti. Devo ancora troppo ai Loa per presentarmi da loro adesso.",
+		"I tamburi nelle orecchie... no. Non sono ancora i miei tamburi. In piedi.",
+	},
+	["race.troll.threat.001"] = {
+		"Continua pure a parlare. Conosco una fattura che ti farà gracidare come una rana per una settimana.",
+		"Ho la memoria lunga e le braccia ancora più lunghe. Vattene.",
+	},
+	["race.troll.victory.001"] = {
+		"Questa finisce nel racconto. Con qualche miglioria.",
+		"Ah! I Loa hanno riso, a questa. Li ho sentiti.",
+		"Niente male. Gli darei un sei, forse un sette per la caduta.",
+	},
+	["race.troll.victory.002"] = {
+		"Lo spirito ora è libero. Va', trova la tua strada. E non venire a cercare me.",
+		"I vecchi dicono che lo spirito resta per un po' vicino al corpo. Io non mi trattengo mai abbastanza per scoprirlo.",
+		"Morto e andato. Dico una parolina perché se ne vada dalla parte giusta.",
+	},
+	["race.troll.victory.003"] = {
+		"Così fanno i Darkspear. Ricordatelo, se ti resta ancora qualcosa da ricordare.",
+		"Un altro per i Darkspear. Chi è il prossimo?",
+	},
 }, "base_combat")

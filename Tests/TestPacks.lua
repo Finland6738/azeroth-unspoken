@@ -531,11 +531,12 @@ local function ReadRepo(path)
 end
 
 T.run("C0b: the regional sources are kept as compact pieces that decode exactly", function()
-	Travel("Elwynn Forest")
-	Travel("Durotar")
+	-- every area with lines of its own: the trial slice and the starting areas of W01
+	for _, z in ipairs({ "Elwynn Forest", "Dun Morogh", "Tirisfal Glades", "Mulgore", "Teldrassil", "Durotar" }) do Travel(z) end
 	local files = {}
 	for _, d in ipairs({ "Kalimdor", "Kalimdor_enUS", "EasternKingdoms", "EasternKingdoms_enUS" }) do
-		for _, f in ipairs({ "Durotar", "Orgrimmar", "Elwynn", "Stormwind", "Exploration" }) do
+		for _, f in ipairs({ "Durotar", "Orgrimmar", "Elwynn", "Stormwind", "Exploration", "DunMorogh", "Ironforge", "Tirisfal",
+			"Undercity", "Mulgore", "ThunderBluff", "Teldrassil", "Darnassus" }) do
 			table.insert(files, ReadRepo("AzerothUnspoken_" .. d .. "/" .. f .. ".lua"))
 		end
 	end
@@ -563,7 +564,7 @@ T.run("C0b: the regional sources are kept as compact pieces that decode exactly"
 			if all:find("[==[\n" .. text .. "]==]", 1, true) then found = found + 1 end
 		end
 	end
-	T.eq(sources, 12, "the six rules files and the six English texts files of the download are sources")
+	T.eq(sources, 28, "the fourteen rules files and the fourteen English texts files of the download are sources")
 	T.eq(found, sources, "each source decodes to the exact text of its file")
 	T.ok(kept < whole * 0.6, ("the pieces are far smaller than the source (%d of %d bytes)"):format(kept, whole))
 	-- a source with no dictionary, or holding a code byte, is kept as written

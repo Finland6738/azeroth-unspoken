@@ -890,4 +890,21 @@ AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_elwynn", [==[
 		"walks on through a fine rain, past fields gone dark and fences dripping at every post.",
 		"goes on under the rain; the furrows fill with water, and somewhere a farmer curses the sky with real affection.",
 	},
+	["elw.journey.arrival.w01.01"] = {
+		"Down among the oaks. After the wind up there, Elwynn smells of cut grass and bread.",
+		"Feet on soft green ground. Whatever the gryphon thinks, this is the better half of the trip.",
+	},
+	["elw.journey.start.w01.01"] = {
+		"rises above Elwynn on gryphon wings, the forest rolling out below in green waves broken by roofs and the thread of the road.",
+		"is borne up over the treetops, village chimneys smoking far beneath and a lake glinting among the trees.",
+		"climbs into open air above the oaks of Elwynn, the farms laid out below like a patchwork quilt.",
+	},
+	["elw.qp.w01.01"] = {
+		"That's the lot. Back along the road now, before the wolves notice I'm carrying something.",
+		"All done out here. Someone in Elwynn is waiting on this, and it's a pleasant walk to bring it.",
+	},
+	["elw.quest.w01.01"] = {
+		"There. Now maybe these folks can get back to their harvest.",
+		"Finished. Let the farmers go back to fretting over their crops instead.",
+	},
 ]==])

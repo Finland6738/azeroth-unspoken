@@ -1018,4 +1018,86 @@ NS:AddTexts("enUS", {
 		"Their torches burn along the walls tonight, and I know at least one of them is lit with me in mind.",
 		{ "Torches on the walls. Some of them for me.", depth = "natural" },
 	},
+	["faction.alliance.relation_player.01"] = {
+		"{other}, under the same banner as me. Out here that's half a friendship already, and we earned the other half.",
+		"A friend, and one who marches under our banner too. Two good reasons to be glad, and I'm counting both.",
+		"{other}. Same banner, same roads. Good to see a friendly face.",
+	},
+	["faction.horde.relation_player.01"] = {
+		"{other}. The Horde is big and not all of it is friendly to my eye. This one is.",
+		"Among so many faces of the Horde, only a few I'd trust at my back without an eye on them. {other} is one.",
+		"{other}. Good. One less pair of eyes to watch.",
+	},
+	["race.dwarf.relation_player.001"] = {
+		"{other}. A debt is cut into a dwarf's memory like a rune into stone. This one's still there, sharp as the day it was made.",
+		"There goes {other}. I owe them, and a dwarf keeps that kind of tally longer than any ledger.",
+		"{other}. Owed, and not forgotten. The mountain doesn't forget its debts either.",
+	},
+	["race.dwarf.thanks.001"] = {
+		"My thanks. Look me up in Ironforge some day and the first round's on me.",
+		"Much obliged. Dwarves keep long accounts, and you've just gone into the good column.",
+	},
+	["race.gnome.relation_player.001"] = {
+		"{other}. Someone I'd hand the wrench to while my fingers are inside the machine.",
+		"There's {other}. In my trade we'd call that a load-bearing part: take it away and everything sags.",
+		"{other}. Reliable parts are rare. Reliable people, rarer still.",
+	},
+	["race.gnome.thanks.001"] = {
+		"Thank you! If you ever need anything built, fixed, or mildly exploded, ask for me.",
+		"Much appreciated! I'd make you a medal, but I'm out of brass.",
+	},
+	["race.human.relation_player.001"] = {
+		"{other}! A friendly face, like a lit window on a long road.",
+		"There's {other}. Some people make any town feel like a village where you know everyone.",
+		"{other}. Good. The day just got a little more like home.",
+	},
+	["race.human.thanks.001"] = {
+		"Thank you. Where I come from, we'd have you over for supper for that.",
+		"Thank you, truly. That's a kindness I'll pass along to the next one who needs it.",
+	},
+	["race.nightelf.relation_player.001"] = {
+		"{other}. Friendships used to feel like forests to me. Now I know they are more like seasons, and I mean to enjoy this one.",
+		"There is {other}. I have learned to look at friends carefully; time is shorter for all of us than it used to be.",
+		"{other}. A dear face is worth learning by heart, even for one whose memory is as long as mine.",
+	},
+	["race.nightelf.thanks.001"] = {
+		"Thank you. My people have long memories; this will stay in mine.",
+		"My thanks. May the forest repay you where I cannot.",
+	},
+	["race.orc.relation_player.001"] = {
+		"{other}. I would stand shoulder to shoulder with that one, any day, in any fight.",
+		"There is {other}. Among my people a friend is someone you would share your last water with. I would share it.",
+		"{other}. Good. One more blade at the fire I would trust with my back.",
+	},
+	["race.orc.thanks.001"] = {
+		"My thanks. An orc does not forget a debt like this.",
+		"You have my thanks, and my arm, whenever you need it.",
+	},
+	["race.scourge.relation_player.001"] = {
+		"{other}. One of the few who never took a step back when I came close.",
+		"There's {other}. They look at me and see a person. I don't forget that.",
+		"{other}. Good. Someone who doesn't need me to be alive.",
+	},
+	["race.scourge.thanks.001"] = {
+		"Thank you. It has been a long time since anyone helped me without holding their breath.",
+		"My thanks. Not many would lend a hand to the dead.",
+	},
+	["race.tauren.relation_player.001"] = {
+		"{other}. Some people are like a good watering hole: you always remember where they are.",
+		"There is {other}. Among my people, a friend like that finds a bowl set by the fire before asking.",
+		"{other}. My shoulders settle, the way they do near a familiar hearth.",
+	},
+	["race.tauren.thanks.001"] = {
+		"Thank you. My people would say you have walked a little way in my hoofprints.",
+		"You have my thanks, and the Earth Mother saw it too.",
+	},
+	["race.troll.relation_player.001"] = {
+		"{other}. That one I'd let watch my things while I sleep.",
+		"Ah, {other}. The old ones have a word for people like that: the ones you share the fire with.",
+		"{other}. The loa sent me a good one there.",
+	},
+	["race.troll.thanks.001"] = {
+		"Thanks, mon. You have a troll's gratitude; it lasts longer than most.",
+		"I won't forget that. Trolls remember who helped and who laughed.",
+	},
 }, "base_relations")

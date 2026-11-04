@@ -344,4 +344,272 @@ NS:AddTexts("itIT", {
 		"scende dopo il lungo volo, e il suolo pare pesante e lento dopo tanto tempo tra le nubi.",
 		"atterra al termine di una lunga traversata, e si concede un momento solo per stare su qualcosa che non si muove.",
 	},
+	["mood.city.journey.01"] = {
+		"Il rumore della città mi resta alle spalle, tutte le commissioni e le liti insieme, e nessuna è più affar mio.",
+		"Su, e via. Tutta quella calca e quel mercanteggiare si riducono a un mormorio, poi a niente.",
+		"Una città intera di voci, e in pochi battiti di cuore non ne sento più nemmeno una.",
+	},
+	["mood.city.journey.02"] = {
+		"Giù, in mezzo alla folla. Dopo tutto quel silenzio lassù, una città è un sacco di gente che parla insieme.",
+		"Fra la gente un'altra volta. Attenti ai gomiti: ho appena ritrovato le gambe.",
+	},
+	["mood.city.rest_enter.01"] = {
+		"Guardie a ogni angolo e niente che mi dia la caccia. Posso allentare una cinghia o due.",
+		"In città il pericolo peggiore è un cattivo affare. Per un po' ci posso convivere.",
+	},
+	["mood.city.weather_change.01"] = {
+		"Il cielo, lassù, sta cambiando faccia. La città non se n'è accorta: i banchi restano aperti e la folla continua a camminare.",
+		"Qualunque cosa faccia il cielo lassù, quaggiù nessuno alza gli occhi: ci sono affari da chiudere.",
+	},
+	["mood.dark.journey.01"] = {
+		"Appena a terra, la cupezza mi si posa sulle spalle come un mantello già indossato da qualcun altro.",
+		"Giù dal volo, e la luce pare già più scarsa. Avrei fatto volentieri un viaggio più lungo.",
+	},
+	["mood.desert.journey.01"] = {
+		"Si scende, dritti nella polvere. Avevo dimenticato quanto si secca la bocca in un solo respiro.",
+		"A terra. Ed ecco la polvere, che aspetta come un vecchio cane sulla porta.",
+	},
+	["mood.fire.journey.01"] = {
+		"Il volo mi posa a terra, e il calore mi viene incontro come la porta aperta di una fornace. Il vento mi manca già.",
+		"Con i piedi a terra, e la terra scotta. Il vento fresco di lassù sembra già una favola.",
+	},
+	["mood.jungle.journey.01"] = {
+		"Giù dall'aria fresca, dritto in un caldo verde e umido che mi si chiude addosso come una coperta.",
+		"Appena tocco terra, l'aria si fa così densa che si potrebbe bere. Qui vicino qualcosa strilla, e non sembra contento.",
+	},
+	["mood.plague.journey.01"] = {
+		"Atterrare qui è come entrare in una stanza di malati con le finestre inchiodate.",
+		"L'aria cambia mentre scendiamo. Quando tocco terra, ho già voglia di andarmene.",
+	},
+	["mood.plains.journey.01"] = {
+		"Mentre saliamo, l'erba si fonde sotto il vento in un solo grande colore, interrotto appena da una fattoria o da un accampamento.",
+		"Da quassù la terra aperta finalmente ha un senso: un'unica distesa da un capo all'altro, con il vento che passa sull'erba come una mano.",
+		"Mi alzo sopra tutta quella campagna aperta. Da quest'altezza anche la strada più lunga sembra una passeggiata di un pomeriggio.",
+	},
+	["mood.plains.weather_change.01"] = {
+		"guarda il cielo cambiare da lontano sopra la terra aperta, e il mutamento scorrere sull'erba molto prima di arrivare fin lì.",
+		"si volta e vede il cielo cambiare al margine della distesa d'erba, con tutto il tempo per prepararsi.",
+	},
+	["quest_complete.w01.01"] = {
+		"Pagato o no, non ci devo più pensare. Già questo valeva la strada.",
+		"Una cosa in meno da portarmi in testa. Lo zaino pesa uguale, io no.",
+		"Fatto. La parte migliore non è la ricompensa: è non doverci più pensare.",
+	},
+	["quest_complete.w01.02"] = {
+		"Ecco. Esattamente come richiesto. La prossima volta, chiedimi qualcosa di facile.",
+		"Tutto fatto, e solo un po' {g:malconcio|malconcia}. Non c'è di che.",
+		"Finito. Se qualcuno mi cerca, mi troverà a sedere con i piedi in alto.",
+	},
+	["quest_complete.w01.03"] = {
+		"si concede un breve momento di soddisfazione, tutto per sé, e la cosa finisce lì.",
+		"si permette un sorriso discreto per un lavoro fatto come si deve, poi lo mette via.",
+	},
+	["quest_complete.w01.04"] = {
+		"Se qualcuno aspettava questo, adesso aspetta un po' meno. Mi basta.",
+		"Una preoccupazione, chissà dove, è appena diventata più piccola. Un po' è merito mio.",
+	},
+	["quest_complete.w01.05"] = {
+		"Facendolo ho imparato qualcosa, anche se non quello che mi avevano chiesto di imparare.",
+		"Ogni incarico insegna qualcosa di straforo. Questo mi ha insegnato la pazienza, soprattutto mettendola alla prova.",
+	},
+	["quest_complete.w01.06"] = {
+		"Fatto, e fatto con le mie mani. Questa parte nessuno me la può togliere.",
+		"Qualunque sia la ricompensa, l'impresa è mia, e le mie mani lo sanno. Me la porterò dietro più a lungo di qualunque moneta.",
+	},
+	["race.dwarf.journey.001"] = {
+		"I Granmartello sono nati per questo. Io sono {g:nato|nata} per avere un pavimento sotto gli stivali.",
+		"Tieniti stretto, {g:nano|nana}. La terra è ancora laggiù: solo, non ha fretta di riprenderti.",
+		"Pietra sotto, vento tutt'intorno, e in mezzo niente se non cinghie e speranza.",
+	},
+	["race.dwarf.quest_complete.001"] = {
+		"Finito. Forse non bello, ma solido. Un nano preferisce sempre il solido.",
+		"Lavoro concluso. Ci metterei sopra il mio marchio, se ne avessi uno.",
+		"Ogni incarico è un pezzo di lavoro. Questo reggerà.",
+	},
+	["race.dwarf.quest_complete.002"] = {
+		"Fatto! Se mai la Lega degli Esploratori chiedesse, questa la voglio messa per iscritto come si deve.",
+		"Un'altra storia per il focolare di casa. Crescerà un poco ogni volta che la racconto.",
+		"Finito. Qualcuno chiami un cronista: la mia memoria migliora a ogni racconto.",
+	},
+	["race.dwarf.quest_complete.003"] = {
+		"si spolvera le mani con due colpi decisi, come un minatore a fine turno.",
+		"fa un cenno breve e soddisfatto e mette via la faccenda, come un fabbro che appende un attrezzo finito.",
+		"rotea le spalle come chi ha appena posato una gerla piena di pietre.",
+	},
+	["race.dwarf.quest_progress.001"] = {
+		"Un altro carrello di minerale su per il pozzo. Laggiù ce n'è ancora parecchio, beninteso.",
+		"Si avanza, pietra dopo pietra. Nemmeno le sale di Forgiardente sono state scavate in un pomeriggio.",
+	},
+	["race.gnome.journey.001"] = {
+		"Decollo! Mi piacerebbe vedere da vicino la meccanica delle ali. Da una distanza di sicurezza. Che non è questa.",
+		"Quota in aumento. Battito cardiaco anche. Entrambi entro limiti accettabili, spero.",
+		"Si sale! Promemoria: progettare qualcosa che voli senza bisogno di mangiare.",
+	},
+	["race.gnome.quest_complete.001"] = {
+		"Incarico completato! Efficienza: accettabile. Esplosioni: nessuna degna di nota.",
+		"Lavoro fatto, e niente ha preso fuoco. Qualcuno se lo segni.",
+		"Finito! Farei un rapporto, ma finirei per riprogettare il modulo.",
+	},
+	["race.gnome.quest_complete.002"] = {
+		"Fatto. Annotato ciò che ha funzionato, annotato ciò che non ha funzionato. La seconda lista è sempre la più utile.",
+		"Un altro problema risolto. Non con eleganza, ma risolto: l'eleganza può aspettare la seconda versione.",
+		"Ogni incarico concluso è il prototipo del successivo. Questo mi ha insegnato parecchio.",
+	},
+	["race.gnome.quest_complete.003"] = {
+		"spunta una casella immaginaria nell'aria con un piccolo gesto preciso.",
+		"si sfrega le mani come un inventore che guarda una macchina accendersi, finalmente.",
+		"annota qualcosa di minuscolo in un taccuino ancora più minuscolo e lo sottolinea due volte.",
+	},
+	["race.gnome.quest_progress.001"] = {
+		"Progressi: misurabili. Completamento: in attesa. Morale: sorprendentemente alto.",
+		"La prima parte funziona. Dalla seconda in poi, vedremo.",
+	},
+	["race.human.journey.001"] = {
+		"Piedi a terra. Gli umani sono fatti per camminare: adesso ne sono {g:convinto|convinta}.",
+		"Giù, finalmente. Il cielo lo lascio agli uccelli e alla gente più coraggiosa.",
+		"Terra solida. La bacerei, se nessuno guardasse.",
+	},
+	["race.human.quest_complete.001"] = {
+		"Un lavoro fatto e una promessa mantenuta. Nei villaggi è così che ci si guadagna un nome.",
+		"Parola data, parola mantenuta. Da dove vengo io, vale più di qualunque ricompensa.",
+		"Fatto. Là fuori qualcuno può smettere di preoccuparsi di almeno una cosa.",
+	},
+	["race.human.quest_complete.002"] = {
+		"Fatto, e senza compilare un solo modulo in triplice copia. Gli scrivani di Roccavento sverrebbero.",
+		"Finito! Se solo il tesoro di Roccavento pagasse con questa puntualità.",
+		"Ecco qua. Se qualcuno lo vuole per iscritto, conosco uno scrivano che lo perderà.",
+	},
+	["race.human.quest_complete.003"] = {
+		"si raddrizza e lascia andare un lungo respiro, le spalle che si sciolgono come quelle di un bracciante a fine raccolto.",
+		"si asciuga le mani sui vestiti, un gesto semplice di una terra di lavoro semplice.",
+		"si concede un piccolo sorriso stanco, quello che si tiene per i lavori che nessun altro voleva.",
+	},
+	["race.human.quest_progress.001"] = {
+		"È tutto. Adesso la strada a ritroso, e due parole con chi me l'ha chiesto.",
+		"Fatto, o quasi. Meglio andare a dirlo prima che qualcosa si disfi.",
+	},
+	["race.nightelf.journey.001"] = {
+		"Su, nel vento. Da quassù il mondo sembra più giovane, e io so che non lo è.",
+		"Si sale. Sotto scivolano via foreste più vecchie di me e foreste più giovani, come amici che si congedano.",
+		"Ali e vento. Per un po' sono senza fretta come le nuvole.",
+	},
+	["race.nightelf.quest_complete.001"] = {
+		"Fatto. Una piccola cosa, misurata sui secoli, e comunque degna di essere fatta bene.",
+		"Finito. La foresta insegna che i piccoli gesti, ripetuti, diventano una forma che si vede da lontano.",
+		"Compiuto. Fra cent'anni nessuno lo ricorderà, eppure avrà contato.",
+	},
+	["race.nightelf.quest_complete.002"] = {
+		"china appena il capo, una cortesia silenziosa che chiude la questione senza parole.",
+		"trae un respiro lento e lo lascia andare, senza fretta, come foglie che si posano dopo il vento.",
+		"posa per un istante una mano sul cuore, poi lascia andare la faccenda.",
+	},
+	["race.nightelf.quest_complete.003"] = {
+		"È fatta. Che porti frutto a suo tempo.",
+		"Finito. Un seme piantato: vediamo che cosa crescerà.",
+		"Ecco. Ande'thoras-ethil: che i tuoi affanni ora siano minori.",
+	},
+	["race.nightelf.quest_progress.001"] = {
+		"Una parte è fatta. Il resto verrà come vengono le foglie: ognuna a suo tempo.",
+		"Si avanza. Lentamente, ma gli alberi più vecchi sono cresciuti allo stesso modo.",
+	},
+	["race.orc.journey.001"] = {
+		"Su, in groppa a una bestia che potrebbe mangiarmi. L'Orda va avanti grazie a una fiducia così.",
+		"La terra si allontana. Da quassù è difficile dire di chi sia, ed è uno strano conforto.",
+		"Si parte. Il posto di un orco è a terra, ma ammetto che il panorama è bello.",
+	},
+	["race.orc.quest_complete.001"] = {
+		"Fatto. Dite pure che l'ha fatto un orco, e come si deve.",
+		"Finito. La mia parola era di ferro, come dev'essere.",
+		"Sistemato. La prossima volta, dammi qualcosa di più difficile.",
+	},
+	["race.orc.quest_complete.002"] = {
+		"Nei campi nessuno ci chiedeva altro che silenzio. È bello sentirsi chiedere qualcosa, e poterlo dare.",
+		"Lavoro per la mia gente, per mia scelta. Nei campi d'internamento non era concesso a nessuno.",
+		"Un compito fatto da liberi ne vale dieci fatti sotto la frusta. So bene di che genere era questo.",
+	},
+	["race.orc.quest_complete.003"] = {
+		"Ecco. E adesso, dov'è il cibo?",
+		"Fatto. Zug zug. Non farmelo fare due volte.",
+		"Finito. Se qualcuno lo chiede, è stato molto più difficile di quanto sembrasse.",
+	},
+	["race.orc.quest_progress.001"] = {
+		"È tutto. Ora riportare la notizia, e guardarli in faccia.",
+		"Il lavoro è fatto. Il resto è tornare a piedi, e gli orchi sono bravi a camminare.",
+	},
+	["race.scourge.journey.001"] = {
+		"Su e via. Il vento mi passa attraverso, così si risparmia la fatica di girarmi intorno.",
+		"In volo. Se cado, almeno non sarà la prima volta che muoio.",
+		"Il mondo si rimpicciolisce sotto di me. Da quassù non si capisce quali campi si sia presa la peste.",
+	},
+	["race.scourge.quest_complete.001"] = {
+		"Fatto. Ora puoi smettere di fissarmi.",
+		"Ecco. Non serve ringraziarmi, e non serve stare così lontano.",
+		"Finito. Ti stringerei la mano, ma preferisci di no.",
+	},
+	["race.scourge.quest_complete.002"] = {
+		"Ho scelto io di farlo. Nessuna voce in testa, solo la mia. Mi sembra ancora un piccolo miracolo.",
+		"Un compito preso e portato fino in fondo per mia volontà. Il Flagello non me l'ha mai concesso.",
+		"Fatto, e fatto perché l'ho deciso io. Ogni volta ha un sapore un po' meno strano.",
+	},
+	["race.scourge.quest_complete.003"] = {
+		"china il capo con una cortesia rigida, un gesto che viene da una vita sepolta da tempo.",
+		"chiude la questione e fa un passo indietro, come chi è abituato a gente che preferisce un po' di distanza.",
+		"emette un suono secco e rauco che un tempo, forse, era un sospiro di soddisfazione.",
+	},
+	["race.scourge.quest_progress.001"] = {
+		"Una parte, dunque. Di pazienza ne ho da vendere: è una delle poche cose che mi sono rimaste.",
+		"Non è finita, ma va avanti. Come me.",
+	},
+	["race.tauren.journey.001"] = {
+		"Un tauren in cielo. I miei nonni riderebbero, e poi si aggrapperebbero alla sella con tutte e due le mani, come sto facendo io.",
+		"Gli zoccoli sono fatti per la terra. Quassù li tengo ben fermi e cerco di non pensare a quanto sia lontana l'erba.",
+		"La bestia sotto di me brontola. Ho il sospetto che stia calcolando il mio peso, e che il risultato non le piaccia.",
+	},
+	["race.tauren.quest_complete.001"] = {
+		"Fatto, come avevo detto. Per il mio popolo una promessa è come l'impronta di uno zoccolo nell'argilla: indurisce e resta.",
+		"Parola mantenuta. Un anziano annuirebbe senza dire niente, che per un anziano è moltissimo.",
+		"Finito, e finito come si deve. Gli anziani direbbero che non c'è altro modo di finire una cosa.",
+	},
+	["race.tauren.quest_complete.002"] = {
+		"Ecco qua. La prossima volta chiedimi qualcosa di pesante: sono {g:fatto|fatta} apposta.",
+		"Tutto fatto. Se c'è qualcosa da portare, da spingere o da schiacciare sedendoci sopra, sai dove trovarmi.",
+		"Finito. Tutto qui? Avrò chinato la testa sì e no una volta.",
+	},
+	["race.tauren.quest_complete.003"] = {
+		"si tocca il petto con la mano aperta, come per rimettere qualcosa al suo posto.",
+		"china le corna in un cenno lento e soddisfatto.",
+		"lascia andare la faccenda con la calma di chi è abituato a stagioni lunghe e a strade ancora più lunghe.",
+	},
+	["race.tauren.quest_progress.001"] = {
+		"Ecco tutto. Ora la lunga camminata di ritorno, che è la parte che piace alle mie gambe.",
+		"Tutto ciò che era stato chiesto è fatto. Un tauren torna come torna una mandria: senza fretta, ma sicuro della strada.",
+	},
+	["race.troll.journey.001"] = {
+		"A terra. Lo stomaco però è rimasto sopra l'ultima collina.",
+		"Terra. Bene. I troll stanno sulla terra, o sugli alberi, o in acqua. Non tra le nuvole.",
+		"{g:Atterrato|Atterrata}. Non avevo paura. Erano le mani a tenersi strette, per motivi loro.",
+	},
+	["race.troll.quest_complete.001"] = {
+		"Fatto. Lavoro facile, se non conti le parti difficili.",
+		"Ecco qua. Pagami in monete, o in qualcosa di buono da mangiare. Va bene uguale.",
+		"Tutto finito. Ora, c'è un'amaca qui intorno?",
+	},
+	["race.troll.quest_complete.002"] = {
+		"Anche un lavoro finito è una piccola offerta. I Loa notano chi mantiene la parola.",
+		"Finito. Lascio un pizzico di qualcosa per gli spiriti, per abitudine, e riprendo la strada.",
+		"Quel debito è saldato. Un troll senza debiti dorme tranquillo, e i Loa ti lasciano in pace.",
+	},
+	["race.troll.quest_complete.003"] = {
+		"muove un lungo orecchio e sorride, zanne comprese, come se fin dall'inizio il piano fosse proprio questo.",
+		"stira le lunghe braccia sopra la testa finché qualcosa scricchiola, e ha l'aria di chi è soddisfatto della giornata.",
+		"fa un pigro saluto con due dita e un sorriso ancora più pigro.",
+	},
+	["race.troll.quest_progress.001"] = {
+		"A metà, forse. Ai Loa piacciono le storie che hanno un centro.",
+		"Una parte è fatta. Il resto può aspettarmi: non scappa.",
+	},
+	["weather_change.w01.01"] = {
+		"Il cielo ha cambiato idea. La mia resta dov'era.",
+		"Su nel cielo qualcosa si muove. Quaggiù, il piano resta quello.",
+	},
 }, "base_world")

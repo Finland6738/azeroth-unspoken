@@ -595,4 +595,41 @@ AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_stormwind", [==[
 		"attraversa di corsa una piazza resa viscida dalla pioggia, la pietra bianca lucida come osso bagnato.",
 		"si ripara sotto una tettoia mentre la pioggia tamburella sull'acqua dei canali.",
 	},
+	["sw.journey.arrival.w01.01"] = {
+		"Un volo lungo, e alla fine Roccavento. Le pietre del Distretto del Commercio sono come la stretta di mano di un vecchio amico.",
+		"Dopo tutto quel cielo, il baccano della città è quasi gradito. Quasi.",
+		"Una lunga tirata in sella. Dopo, niente sembra solido come queste mura bianche.",
+	},
+	["sw.journey.arrival.w01.02"] = {
+		"smonta dal grifone mentre un nano della voliera prende le redini e mormora qualcosa di gentile all'animale.",
+		"atterra tra i nidi dei grifoni, con le piume che volteggiano, e si scansa mentre un altro cavaliere prende il volo sopra la sua testa.",
+		"sgranchisce le gambe rigide alla voliera dei grifoni, mentre dal Distretto del Commercio arriva odore di pane e di cavalli.",
+	},
+	["sw.journey.start.w01.01"] = {
+		"si alza sopra il Distretto del Commercio su ali di grifone, mentre le guglie della Cattedrale colgono la luce e la città si inclina e scivola via.",
+		"compie un giro sopra Roccavento mentre il grifone trova il vento; sotto scorrono i canali e le torri viola del Quartiere dei Maghi.",
+		"si alza alto sopra le mura bianche, mentre le grandi statue della porta si riducono a soldatini.",
+	},
+	["sw.journey.start.w01.02"] = {
+		"Roccavento resta indietro, campane comprese. Mi chiedo sempre cosa sarà cambiato quando rivedrò queste mura.",
+		"Sotto di me il chiasso della città si riduce a un ronzio, poi a niente. Quassù il cielo non conosce giorni di mercato.",
+		"Arrivederci, mura bianche. Ho molta strada davanti, e per un po' porterò ancora con me il rumore delle vostre vie.",
+	},
+	["sw.journey.start.w01.03"] = {
+		"Si vola! Occhio ai tetti, bestione.",
+		"Si riparte. Cerca di non lasciarmi cadere nel canale, amico mio.",
+	},
+	["sw.quest.w01.01"] = {
+		"Fatto. Una città così grande vive di mille piccole lealtà, e oggi una di quelle era la mia.",
+		"Un altro filo nella trama che tiene insieme Roccavento. Il reggente non ne saprà mai nulla, e va bene così.",
+		"Finito. Il re è ancora disperso, ma la città va avanti, e la sua gente con lei.",
+	},
+	["sw.quest.w01.02"] = {
+		"Fatto. Chiederei una statua alla porta, ma pare che la lista d'attesa sia lunga.",
+		"Sistemato. «Roccavento ti ringrazia», non dice nessuno, ma io lo sento lo stesso.",
+	},
+	["sw.quest.w01.03"] = {
+		"riceve un ringraziamento caloroso, e per un attimo il profumo di pane fresco che arriva dalla strada sembra far parte della ricompensa.",
+		"stringe la mano tesa in segno di gratitudine, mentre un bambino passa di corsa inseguendo un cerchio lungo la via.",
+	},
 ]==])

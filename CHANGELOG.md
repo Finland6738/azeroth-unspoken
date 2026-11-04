@@ -8,6 +8,38 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W01: the other starting areas and capitals, the classes, the races, the factions and the moods (issue #138)
+
+The first content wave of [docs/content/WAVES.md](docs/content/WAVES.md), on the soft need of [ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md):
+**1,006 intentions, 2,515 texts per language** (5,030 in both), written by ten parallel writer subagents (authors
+`ai-w01-<unit>`) and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate,
+submit, owner sample, approve, export; the round trip is an empty diff). No literary piece. The addon goes from 1,968 to
+**2,974 intentions** and from 4,643 to **7,158 texts per language**.
+
+- **Added: eight regional packs, one per area**, as the trial slice: `eastern_dunmorogh` and `eastern_ironforge` (area
+  `dunmorogh`), `eastern_tirisfal` and `eastern_undercity` (`tirisfalglades`), `kalimdor_mulgore` and
+  `kalimdor_thunderbluff` (`mulgore`), `kalimdor_teldrassil` and `kalimdor_darnassus` (`teldrassil`): 29-30 intentions and
+  64-69 texts per language each (the speak key, quests, subzones, flights, NPCs, fights, weather, rest, returns), ids
+  `dmo.`, `ifo.`, `tir.`, `und.`, `mul.`, `thb.`, `tel.`, `dar.`. Durotar, Orgrimmar, Elwynn Forest and Stormwind City get
+  their missing flights and quests (25 intentions).
+- **Added: five landmarks** in `Data/Landmarks.lua`: Coldridge Valley, Kharanos, Deathknell, Camp Narache, Shadowglen.
+- **Added: the lines of every class** (`base_classes`, 418 intentions, 1,079 texts per language: the speak key, battle,
+  victory, wounds, attacks, heals, blessings, threats, quests, pets), **of every race** (263 intentions, 683 texts, in the
+  base packs of their events), **of both factions** (21 intentions, 52 texts), **of seven moods** (city, fire, desert,
+  plague, jungle, plains, dark: 39 intentions, 92 texts) and generic quest and weather lines (7 intentions, 16 texts).
+- **Changed: `cli need`** has a third target, the **random need** (owner decision of 2026-11-02, ADR 0050: the pick stays
+  random, no exhaustive memory of what was said): every pool needs its strict firings times `random_factor(0.05)`, about
+  10, for at most 5% of exact repeats in 400 hours; the waves go soft, then strict, then random. Total **284,731** texts
+  per language.
+- **The gap after W01** (per language): soft need 7,341, gap **4,038** (was 6,539); strict need 30,347, gap **25,951**
+  (was 28,462); random need 284,731, gap **279,155**. **96 waves** left (the next is the first row of WAVES.md).
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W01.md](docs/content/reviews/W01.md) (20
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; ADR 0050 (owner decision), ROADMAP, README
+  counts, wiki Phrase Packs.
+- **Known limits:** subzone names are those of the English Classic client, not yet confirmed in Forever (#36). Some pools
+  of the model can hardly fire in the client: the flights of zones without a flight master (Dun Morogh, Mulgore, Elwynn
+  Forest, Durotar) and the flight starts of Undercity (the bat handler stands in the ruins, zone Tirisfal Glades).
+
 ### C0c: the need of the content, a near-duplicate check, and the plan of the content waves (issue #138)
 
 The last technical step of the content-scale plan: tools that tell the content sessions what to write, how much, in
