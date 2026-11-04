@@ -32,7 +32,7 @@ The inner voice and the NPC voice always stay private, whatever you choose in th
 
 The narrator tries not to sound like a combat commentary or a broken record:
 
-- **Lines about the place come first.** Where there are lines written for the zone or the spot you are in, you hear those before the general ones; once you have heard them, the general ones take turns again.
+- **Lines about the place are preferred, the others keep their turn.** Where there are lines written for the zone or the spot you are in, you hear them about half the time; lines about your class, race, faction or the mood of the place about a third; the general ones the rest. Where one kind has nothing new to say, the others share its turn, so no kind of line goes silent.
 - **Not the same thing twice in a row.** It avoids coming back at once to the same idea (a loss, a joke, the road), the same images (a blade, the rain), the same voice three times in a row, and lines that open with the same words. This memory lasts only for the session and is never saved.
 - **Gestures change.** When a spoken line is told as an emote, the gesture around it changes with the tone and the subject of the line, rather than "says" every time.
 - **Fights do not take over.** Fighting may fill at most about four lines in ten of what you hear; death, coming back to life and a new level always get their line. Exploring and quiet thoughts, when they have been silent for a while, get a better chance to speak.

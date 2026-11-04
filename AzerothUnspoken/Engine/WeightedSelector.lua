@@ -251,7 +251,12 @@ Engine.FRAME_WINDOW = 8        -- frames: the newest FRAME_WINDOW interventions
 Engine.FRAME_PENALTY = 2       -- frame weight / (1 + FRAME_PENALTY x uses of the frame in the window)
 Engine.FRAME_THEME_BONUS = 1.5 -- a frame written for the theme of the phrase
 Engine.OPENING_WINDOW = 8      -- a variant does not open like the newest OPENING_WINDOW interventions, if it can
-Engine.TIER_MIN = 3            -- #89: the most specific tier with at least TIER_MIN non-recent candidates
+Engine.TIER_MIN = 3            -- #89: a tier with fewer non-recent candidates competes with the tier below it
+-- #138 (owner decision of 2026-11-04, ADR 0051): the share of the picks of each level of specificity that has usable
+-- lines, renormalised over those levels: generic (tier 0), situation (tier 1: class, race, faction, mood, time,
+-- weather, level band...), place (the last share: zone, subzone and landmark, tiers 2-4). tools/archive/need_model.json
+-- (`tier_shares`) plans the waves with the same numbers (Tests/check_archive.py compares them).
+Engine.TIER_SHARES = { [0] = 15, [1] = 35, [2] = 50 }
 Engine.MONOLOGUE_WINDOW = 6    -- #99: a monologue weighs less while another one is among the newest interventions
 Engine.MONOLOGUE_REPEAT = 0.2  -- ... by this factor
 
@@ -1015,12 +1020,15 @@ function Engine.FirstSituation(p, ctx)
 	return nil
 end
 
----Specificity tiers (#89, ADR 0029): the candidates of the most specific tier that still has at least TIER_MIN
----candidates not used recently, together with those of every tier above it. With a place that has its own phrases they
----win until they are used, then the pool widens one tier at a time down to the generic ones (the explicit fallback
----chain: landmark -> subzone -> zone -> region, atmosphere or situation -> generic of the event; then, in PickEntry,
----the related event; then silence). If even all of them have fewer, every
----candidate stays, as before. Recent ids still drop out in WeightedPick.
+---Specificity tiers (#89, ADR 0029; mixed by share since #138, ADR 0051). The tiers form three levels, as in
+---Engine.TIER_SHARES: generic (0), situation (1) and place (2 and up). Inside the place level the most specific tier
+---with at least TIER_MIN candidates not used recently wins, with the tiers above it (landmark -> subzone -> zone). Then
+---each level with usable lines keeps its share of the picks: one level is drawn by share, renormalised over the
+---levels that have a candidate not used recently, and the pick is made among its candidates (weights and
+---anti-repetition as before). A level with fewer than TIER_MIN such candidates competes inside the level below it,
+---which takes its share too; the generic level stands with a single one, so generic lines never go silent while they
+---have one outside the window. With a single level (or none usable) every candidate stays, as before. Then, in
+---PickEntry, the related event; then silence. Recent ids still drop out in WeightedPick.
 ---@param items { e: integer|AUPhrase, w: number }[] e: the rule's ord (#138) or its view
 ---@param key string key of the anti-repetition window (the event)
 ---@return table items the same list, or a new list with the chosen tiers
@@ -1056,17 +1064,51 @@ function Engine.TierPool(items, key)
 		tiers[i] = t
 		if it.w > 0 and not recent[ID[e] or e.id] then fresh[t] = (fresh[t] or 0) + 1 end
 	end
-	local n, tier = 0, nil
-	for t = Engine.MAX_TIER, 1, -1 do
+	local shares, min = Engine.TIER_SHARES, Engine.TIER_MIN
+	local top = #shares
+	-- the place level: its most specific tier with TIER_MIN fresh candidates, counting those above it
+	local floor, n = top, 0
+	for t = Engine.MAX_TIER, top, -1 do
 		n = n + (fresh[t] or 0)
-		if n >= Engine.TIER_MIN then tier = t; break end
+		if n >= min then floor = t; break end
 	end
-	if not tier then return items, 0 end
+	-- the bands, from the place level down: a thin level joins the one below with its share
+	local bands, hi, accFresh, accShare = {}, top, 0, 0
+	for l = top, 0, -1 do
+		local f = 0
+		if l == top then
+			for t = floor, Engine.MAX_TIER do f = f + (fresh[t] or 0) end
+		else
+			f = fresh[l] or 0
+		end
+		accFresh = accFresh + f
+		if f > 0 then accShare = accShare + (shares[l] or 0) end
+		if accFresh >= min or (l == 0 and accFresh > 0) then
+			bands[#bands + 1] = { lo = l, hi = hi, share = accShare }
+			hi, accFresh, accShare = l - 1, 0, 0
+		end
+	end
+	local band, total = bands[1], 0
+	for _, b in ipairs(bands) do total = total + b.share end
+	if #bands > 1 and total > 0 then
+		local r = math.random() * total
+		for _, b in ipairs(bands) do
+			r = r - b.share
+			band = b
+			if r <= 0 then break end
+		end
+	elseif #bands > 1 then
+		band = nil
+	end
+	-- one level with every tier, or nothing usable: every candidate stays
+	if not band or (band.lo == 0 and band.hi == top and floor == top) then return items, 0 end
 	local out = {}
 	for i, it in ipairs(items) do
-		if tiers[i] >= tier then table.insert(out, it) end
+		local t = tiers[i]
+		local l = t < top and t or top
+		if l >= band.lo and l <= band.hi and (l < top or t >= floor) then out[#out + 1] = it end
 	end
-	return out, tier
+	return out, band.lo < top and band.lo or floor
 end
 
 ---Sceglie e compone una frase. Se l'evento non ha frasi, prova l'evento affine dichiarato (#89: `fallback`), al

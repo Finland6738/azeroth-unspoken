@@ -283,7 +283,13 @@
   "landmark",
   "memory_return"
  ],
- "_layers": "Which share of the firings of an event a pool of each kind should answer (the rest is the generic pool of the event). place = the zone, capital or instance; mood = the atmosphere of the zone (m:, Data/Vocabulary.lua); band = the level band (levelMin/levelMax). The shares are the plan of the waves: same-tier pools share the firings by size, a zone pool (tier 2) speaks first while it has unused lines (ADR 0029).",
+ "_tier_shares": "The share of the picks of each level of specificity with usable lines, renormalised over those levels (Engine.TIER_SHARES in AzerothUnspoken/Engine/WeightedSelector.lua, owner decision of 2026-11-04, ADR 0051; Tests/check_archive.py checks they match): generic = tier 0, situation = tier 1 (class, race, faction, mood, time, weather, creature type, level band), place = tiers 2-4 (zone, subzone, landmark).",
+ "tier_shares": {
+  "generic": 0.15,
+  "situation": 0.35,
+  "place": 0.5
+ },
+ "_layers": "The layers the waves write for each event group and their weights. place = the zone, capital or instance; mood = the atmosphere of the zone (m:, Data/Vocabulary.lua); band = the level band (levelMin/levelMax). Since #138 (ADR 0051) the engine mixes the levels of specificity by share (tier_shares): a layer here says that the event plans its pools, and the weights split the situation share among the situation layers (class, race, faction, mood, time, weather, ctype, band); the place weight only says whether the event has place pools. The generic pool of every event answers the generic share.",
  "layers": [
   {
    "name": "places",

@@ -19,6 +19,8 @@ SYNTH_ZONES = {
 	"Darkshore", "Ashenvale", "Stonetalon Mountains", "Desolace", "Thousand Needles", "Dustwallow Marsh", "Feralas",
 	"Tanaris", "Un'Goro Crater", "Felwood", "Winterspring", "Azshara", "Silithus", "Moonglade",
 }
+-- entries per function of a generated chunk (see SYNTH_SOURCE): far under Lua's 262,143 constants per function
+SYNTH_BLOCK = 5000
 
 local function Keys(set)
 	if type(set) ~= "table" then return nil end
@@ -140,20 +142,28 @@ function SYNTH_SOURCE(NS, n, opts)
 	end
 
 	local packId = "synthetic_" .. n
-	local out = { "local NS = ...\n" }
-	table.insert(out, ("NS:RegisterPack({ id = %q, name = \"Synthetic archive\", registry = {\n"):format(packId))
-	for i = 1, n do
-		local id = ("syn.%06d"):format(i)
-		table.insert(out, ("[%q] = %s,\n"):format(id, Serialize(registry[id])))
-	end
-	table.insert(out, "} })\n")
-	for _, lang in ipairs(langs) do
-		table.insert(out, ("NS:AddTexts(%q, {\n"):format(lang))
-		for i = 1, n do
-			local id = ("syn.%06d"):format(i)
-			table.insert(out, ("[%q] = %s,\n"):format(id, Serialize(texts[lang][id])))
+	-- Lua 5.1 keeps at most 262,143 constants in one function (MAXARG_Bx), and every id and text is one: past about
+	-- 40,000 rules in two languages one chunk would not compile ("constant table overflow"). Each block of SYNTH_BLOCK
+	-- entries is a function of its own, whose table is copied into the one registered: the same registry and the same
+	-- texts as a single table.
+	local out = { "local NS = ...\n", "local function Put(into, t) for k, v in pairs(t) do into[k] = v end end\n",
+		"local registry = {}\n" }
+	local function Blocks(var, entry)
+		for first = 1, n, SYNTH_BLOCK do
+			table.insert(out, ("Put(%s, (function() return {\n"):format(var))
+			for i = first, math.min(n, first + SYNTH_BLOCK - 1) do
+				local id = ("syn.%06d"):format(i)
+				table.insert(out, ("[%q] = %s,\n"):format(id, Serialize(entry(id))))
+			end
+			table.insert(out, "} end)())\n")
 		end
-		table.insert(out, ("}, %q)\n"):format(packId))
+	end
+	Blocks("registry", function(id) return registry[id] end)
+	table.insert(out, ("NS:RegisterPack({ id = %q, name = \"Synthetic archive\", registry = registry })\n"):format(packId))
+	for _, lang in ipairs(langs) do
+		table.insert(out, "local texts = {}\n")
+		Blocks("texts", function(id) return texts[lang][id] end)
+		table.insert(out, ("NS:AddTexts(%q, texts, %q)\n"):format(lang, packId))
 	end
 	return table.concat(out), { pack = packId, zones = SYNTH_ZONES, events = events }
 end

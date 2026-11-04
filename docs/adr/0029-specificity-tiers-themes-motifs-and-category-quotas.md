@@ -1,6 +1,6 @@
 # 0029. Specificity tiers, themes and motifs, and per-session category quotas
 
-- Status: Accepted
+- Status: Accepted; the pick of §1 amended by [ADR 0051](0051-tiers-mixed-by-share.md) (the tiers mixed by share)
 - Date: 2026-10-30 (phase R3 of the roadmap after the analyses A1 and A2, tracking issue #131; issues #89, #90 and #91)
 
 ## Context
@@ -67,6 +67,11 @@ The roadmap fixes the exit of R3 on the offline measure M2: the same theme conse
   - The tier, novelty and quota constants (`TIER_MIN`, `THEME_PENALTY`, `VOICE_REPEAT`, `FRAME_PENALTY`, the quotas) are tuned on the offline simulation only.
   - The memory per entry grows by up to 14% for content with theme and motifs, which moves the 40 MB target of D3 further away at 50,000 entries (90 MB in one language with every entry labelled, against 77 MB).
   - Not done here: the rule "at most one intervention in n names race, class or emotion explicitly" (A1 §4.1), intentional longer pauses after a strong intervention (#91), soft tags for the other dimensions (#89), labels for the arcs and the ambient dialogues.
+
+
+## Update: the tiers mixed by share (#138, 2026-11-04)
+
+The pick of §1 kept only the most specific tier with three lines not used recently. Once the content waves filled the specific pools of an event beyond the anti-repetition window (30 picks), the generic lines of that event, monologues included, could never be reached again (content wave W01, PR #246). By the owner's decision of 2026-11-04, [ADR 0051](0051-tiers-mixed-by-share.md) replaces it: the tiers form three levels (generic, situation, place) with shares of the picks (`Engine.TIER_SHARES`: 15, 35, 50), renormalised over the levels that have a line not used recently; inside the place level the most specific tier still wins while it has three fresh lines; a level with fewer competes in the level below. Weights, the window and the fallback are unchanged.
 
 ## References
 

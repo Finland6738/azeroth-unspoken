@@ -7,7 +7,13 @@ It loads the addon (no example pack), seeds math.random and asks Engine:PickEntr
 forms, languages, zones, subzones, hours, classes, races and targets, keeping the anti-repetition memory between picks
 as a session would. Every line is "event form -> id variant text". Two versions of the engine that select the same
 way print the same file: R1 was checked this way against the engine before the change (see CHANGELOG.md).
-With --synthetic N a synthetic archive of N rules (Tests/SyntheticArchive.lua) is loaded first.
+With --synthetic N a synthetic archive of N rules (Tests/SyntheticArchive.lua) is loaded first. With --levels the trace
+ends with the share of the picks of each level of specificity (generic, situation, place; #138, ADR 0051), on stderr
+so the trace itself stays comparable.
+
+Since #138 the levels are mixed by share (ADR 0051): a trace differs from one of an engine before it wherever an event
+has lines in two levels, on purpose; with --r1 (the tiers off) it does not, and with --one-level (every tier in one
+level: the pick of ADR 0029 before #138) it must be the same as the trace of an engine before #138.
 """
 import argparse, os, sys
 
@@ -33,12 +39,18 @@ def main(argv):
     ap.add_argument("--r1", action="store_true", help="switch off what R3 added to the selection (Engine.R1_COMPAT): "
                     "the trace must then be the same as the engine of R1 on the same data")
     ap.add_argument("--soul", help="archetype of the character's personality (R4), e.g. veteran; default neutral")
+    ap.add_argument("--one-level", action="store_true", help="Engine.TIER_SHARES = { [0] = 1 }: the tiers in one level, "
+                    "the pick of ADR 0029 before #138 (only the most specific tier with TIER_MIN fresh lines)")
+    ap.add_argument("--levels", action="store_true", help="print the share of the picks of each level of specificity "
+                    "(generic, situation, place) at the end, on stderr")
     ap.add_argument("--emotion", help="emotional state at the start (R4), e.g. worried=0.6,tense=0.3; it fades as the "
                     "trace advances the time")
     a = ap.parse_args(argv)
     lua, ns, _ = B.load_addon(os.path.abspath(a.addon))
     if a.r1:
         ns.Engine.R1_COMPAT = True
+    if a.one_level:
+        ns.Engine.TIER_SHARES = lua.eval("{ [0] = 1 }")
     if a.soul:
         assert ns.Personality.SetArchetype(ns.Personality, a.soul), "unknown archetype " + a.soul
     for pair in (a.emotion or "").split(","):
@@ -57,19 +69,27 @@ def main(argv):
             classification = "elite", reaction = 2 } or nil
         local rec = ns.Engine:PickEntry(event, ns:BuildContext(), form)
         if not rec then return "-" end
-        return rec.id .. " " .. tostring(rec.variant) .. " " .. rec.text
+        local t = ns.Engine.Tier(ns.Engine.byId[rec.id])
+        return rec.id .. " " .. tostring(rec.variant) .. " " .. rec.text, t < 2 and t or 2
     end""")
     lua.globals().math.randomseed(a.seed)
     out = sys.stdout
+    levels = [0, 0, 0]
     for i in range(a.picks):
         event, form = EVENTS[i % len(EVENTS)]
         zone, subzone = ZONES[(i // 3) % len(ZONES)]
         cls, race = CLASSES[(i // 7) % len(CLASSES)]
         lang = "it" if (i // 11) % 2 else "en"
-        res = pick(ns, event, form, lang, zone, subzone, (i * 5) % 24, cls, race, i % 4 == 0)
+        res, level = pick(ns, event, form, lang, zone, subzone, (i * 5) % 24, cls, race, i % 4 == 0)
+        if level is not None:
+            levels[level] += 1
         out.write(f"{i} {event} {form} -> {res}\n")
         if i % 50 == 49:
             lua.globals().ADVANCE(600)   # time passes: cooldowns end, as in a session
+    if a.levels:
+        n = sum(levels) or 1
+        sys.stderr.write("levels: generic %.1f%%, situation %.1f%%, place %.1f%% of %d picks\n" % (
+            100 * levels[0] / n, 100 * levels[1] / n, 100 * levels[2] / n, sum(levels)))
 
 
 if __name__ == "__main__":

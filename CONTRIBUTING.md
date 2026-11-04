@@ -141,7 +141,7 @@ Every intention declares **one theme** and **zero to three motifs** (`theme = "l
 - **Use them to vary**, as the quality rule 3 asks: if an event already has many lines with `blood` and `shadow`, write the next one about something else. `python tools/archive/cli.py search --event battle --theme courage` shows how crowded a theme is.
 - **A new theme or motif** is a change to `Data/Themes.lua` (with its meaning) in its own PR, or a declaration in an external pack (`themes = {}`, `motifs = {}`): never a misspelling that the validator would reject.
 - **Drafts written by AI sessions** carry `theme` and `motifs` like the other fields; the reviewer checks them with the texts. The 828 intentions that existed before R3 were labelled this way (the 63 lines of the world of R3b by hand), drafted by AI sessions and reviewed on a sample: fix a label you find wrong with an archive edit or by hand in the rules file.
-- **Tiers** (`tier`) need no tagging: the engine deduces them from the conditions (place-specific above situation-specific above generic). For a place, write **at least three** intentions if they should lead there; one or two compete with the generic ones.
+- **Tiers** (`tier`) need no tagging: the engine deduces them from the conditions (place-specific, situation-specific, generic) and gives each level a share of the picks (place 50%, situation 35%, generic 15%; ADR 0051). For a place, write **at least three** intentions if they should have their own share there; one or two compete with the situation lines.
 
 ### Emotion-aware lines
 

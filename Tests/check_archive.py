@@ -11,6 +11,7 @@ import contextlib
 import io
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -652,6 +653,60 @@ def literary_content():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def file_limits():
+    """Lua 5.1 keeps at most 262,143 constants in one function (#138): no data file comes near it, and a texts file that is
+    full sends the new entries of its pack and language to a new file listed in the .toc, which round-trips."""
+    print("CONSTANTS PER FILE (Lua 5.1: %s per function)" % "{:,}".format(packfiles.LUA_MAX_CONSTANTS))
+    worst = max((packfiles.constants(packfiles.read(os.path.join(ROOT, rel))), rel) for _, rel, _, _ in store.discover(ROOT))
+    check(worst[0] < packfiles.SAFE_CONSTANTS // 4, "every data file is far under the bound: at most %s constants (%s)" % (
+        "{:,}".format(worst[0]), worst[1]))
+    synthetic = "\n".join('["syn.%06d"] = { "text %d" },' % (i, i) for i in range(1, 50))
+    check(packfiles.constants(synthetic) == 98 and packfiles.constants('x = [==[ "a", "b" ]==]') == 1,
+          "the count is the distinct strings and numbers; a source is one string")
+
+    tmp = tempfile.mkdtemp(prefix="au-archive-split-")
+    limit = store.TEXTS_PER_FILE
+    try:
+        root, overlay = copy_repo(tmp)
+        db = os.path.join(tmp, "build", "authoring.sqlite")
+        world = os.path.join(root, "AzerothUnspoken_enUS", "World.lua")
+        held = len(packfiles.parse_texts("World.lua", packfiles.read(world)).entries)
+
+        def run(*args):
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                return cli.main(["--root", root, "--overlay", overlay, "--db", db] + list(args))
+        drafts = [{"id": "world.split.%02d" % i, "pack": "base_world", "event": "weather_change", "speaker": "inner",
+                   "styles": ["intimate"], "depth": ["natural"], "conditions": {"weather": "fog"}, "author": "ai-test",
+                   "texts": {"enUS": ["Fog %d, and the road gone." % i, "Fog again, %d." % i],
+                             "itIT": ["Nebbia %d, e la strada sparita." % i, "Ancora nebbia, %d." % i]}} for i in range(3)]
+        with open(os.path.join(tmp, "drafts.jsonl"), "w", encoding="utf-8", newline="\n") as f:
+            f.write("".join(json.dumps(d) + "\n" for d in drafts))
+        store.TEXTS_PER_FILE = held + 1
+        ok = run("drafts", os.path.join(tmp, "drafts.jsonl")) == 0 and \
+            run("approve", *["world.split.%02d" % i for i in range(3)]) == 0 and run("export") == 0
+        check(ok, "three new lines are approved and exported with a bound of %d entries per texts file" % (held + 1))
+        second = os.path.join(root, "AzerothUnspoken_enUS", "World_2.lua")
+        texts = packfiles.read(world)
+        check('["world.split.00"]' in texts and '["world.split.01"]' not in texts,
+              "the full file takes one entry, up to the bound")
+        check(os.path.exists(second) and '["world.split.01"]' in packfiles.read(second) and
+              packfiles.read(second).startswith("-- Continued from World.lua"),
+              "the next ones go to a new file of the same pack and language")
+        toc = store.parse_toc(os.path.join(root, "AzerothUnspoken_enUS", "AzerothUnspoken_enUS.toc"))[1]
+        check("World_2.lua" in toc and toc.index("World_2.lua") == toc.index("World.lua") + 1,
+              "the new file is listed in the .toc right after the first one")
+        check(lua_syntax_ok([second]) in (None, []), "it is valid Lua")
+        store.TEXTS_PER_FILE = limit
+        con = store.build_db(":memory:", root, store._no_overlay())
+        check([v["text"] for v in store.get_variants(con, "world.split.02", "enUS")] == ["Fog 2, and the road gone.", "Fog again, 2."],
+              "the archive reads the new file back")
+        check(store.roundtrip(root) == [] and store.roundtrip(root, canonical=True) == [],
+              "the written folders round-trip with an empty diff")
+    finally:
+        store.TEXTS_PER_FILE = limit
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def lualit_checks():
     print("LUA LITERALS")
     import lualit
@@ -858,6 +913,25 @@ def need_report():
     sh = need.shares(model, "npcd_guard_open")
     check(sh["place"] == 0.5 and abs(sum(sh.values()) - 1) < 1e-9 and need.shares(model, "nemesis_song") == {"generic": 1.0},
           "the shares of a layer group (with a wildcard) add up to one with the generic share")
+    # #138 (ADR 0051): the levels of specificity share the firings as the engine mixes them
+    lua = packfiles.read(os.path.join(ROOT, "AzerothUnspoken", "Engine", "WeightedSelector.lua"))
+    engine = {need.LEVELS[int(k)]: float(v) for k, v in
+              re.findall(r"\[(\d)\] = ([\d.]+)", re.search(r"Engine\.TIER_SHARES = \{([^}]*)\}", lua).group(1))}
+    total = sum(engine.values())
+    check(set(engine) == set(model["tier_shares"]) and
+          all(abs(engine[l] / total - model["tier_shares"][l]) < 1e-9 for l in engine),
+          "the model plans with the engine's shares of the levels: %s" % model["tier_shares"])
+    muse = need.shares(model, "muse")
+    sit = sum(v for k, v in muse.items() if need.level(k) == "situation")
+    check(abs(muse["place"] - 0.5) < 1e-9 and abs(sit - 0.35) < 1e-9 and abs(muse["generic"] - 0.15) < 1e-9 and
+          muse["class"] > muse["mood"], "muse: place 50%, situation 35% split by the weights, generic 15%")
+    rel = need.shares(model, "relation_player")
+    check("place" not in rel and abs(rel["generic"] - 0.3) < 1e-9,
+          "an event with no place pools: situation and generic renormalised (%.0f%% generic)" % (100 * rel["generic"]))
+    inside = need.channel_shares(model, "muse")[need.CHANNELS.index((2, False))]
+    check("mood" not in inside and "weather" not in inside and abs(sum(inside.values()) - 1) < 1e-9 and
+          inside["class"] > muse["class"] and abs(inside["generic"] - 0.15) < 1e-9,
+          "a layer that does not hold (no mood, no weather inside) leaves its share to the other layers of its level")
     chars = need.characters(model)
     orc = next(c for c in chars if c["race"] == "Orc")
     slots = need.timeline(model, orc, places)
@@ -1014,6 +1088,7 @@ world_content()
 emotion_content()
 monologue_content()
 literary_content()
+file_limits()
 lualit_checks()
 review_flow()
 report()

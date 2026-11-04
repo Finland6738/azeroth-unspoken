@@ -349,7 +349,10 @@ T.run("companion: the pet's mood (hunters), at most once in a while", function()
 	FIRE("UNIT_HAPPINESS", "pet")
 	ADVANCE(2)
 	T.eq(Offered("pet_mood"), 1, "unhappy: a line offered")
-	if Spoken("pet_mood") == 1 then T.ok(Said("sullen") ~= nil, "the unhappy line") end
+	-- any line of an unhappy pet (rel.pet.mood.unhappy, .unhappy.new): which one depends on the random numbers drawn
+	if Spoken("pet_mood") == 1 then
+		T.ok((Said("sullen") or Said("a look I know") or Said("poor start")) ~= nil, "an unhappy line")
+	end
 	P.petHappiness = 3
 	FIRE("UNIT_HAPPINESS", "pet")
 	ADVANCE(2)

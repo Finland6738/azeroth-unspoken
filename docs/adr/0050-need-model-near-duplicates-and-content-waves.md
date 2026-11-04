@@ -73,6 +73,11 @@ The strict need splits as class 10,649, place 8,455, race 6,776, generic 2,058, 
   - `need.json` (0.5 MB) changes with every wave.
   - Near-duplicate candidates are computed at every `cli check`: about half a minute per language at 300,000 texts.
 
+
+## Update: the shares of the levels (#138, 2026-11-04)
+
+The engine now mixes the levels of specificity by share ([ADR 0051](0051-tiers-mixed-by-share.md)), so the model distributes the firings the same way (`tier_shares` in `need_model.json`: place 50%, situation 35%, generic 15%, renormalised over the levels the event plans; the weights of `layers` split the situation share). §1.3 no longer needs `tier = 1` on the place lines of other events, and in §1.5 a layer that does not hold in a slot leaves its share to the other layers of its level, not to the generic pool. The need after W01 becomes 28,938 texts per language strict, 8,893 soft, 270,686 random (92 waves left; it was 30,347, 7,341, 284,731 and 96).
+
 ## References
 
 - `tools/archive/need.py`, `need_model.json`, `neardup.py`, `cli.py` (`need`, `dups`, `sample`, `check`), `thresholds.json` (`near_duplicates`); `Tests/bench_trial.py` (`--mix`), `Tests/check_archive.py` (`need_report`, `near_duplicates`).

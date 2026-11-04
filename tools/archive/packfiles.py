@@ -141,6 +141,19 @@ def variants_data(id, d):
     return out
 
 
+# Lua 5.1 keeps at most 262,143 constants (MAXARG_Bx) in one function, and a data file is one function (its chunk): every
+# distinct string and number of a table written in it is a constant. A file past it does not load ("constant table
+# overflow"); the exporter stays well under it (store.TEXTS_PER_FILE) and refuses to write a file over SAFE_CONSTANTS.
+LUA_MAX_CONSTANTS = 262143
+SAFE_CONSTANTS = 200000
+
+
+def constants(src):
+    """An upper bound of the constants of the largest function of a Lua file: its distinct strings and numbers, counted as
+    if the whole file were one function (a source `[==[ ... ]==]` is one string)."""
+    return len({(k, t) for k, t, _, _ in lualit.tokenize(src) if k in ("string", "number")})
+
+
 def _parser(src):
     p = lualit.Parser(src)
     lualit.collect_constants(src, p)

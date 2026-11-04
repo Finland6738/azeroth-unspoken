@@ -283,7 +283,7 @@ T.run("#86: migration from schema 6", function()
 	cooled.cooldown = nil
 end)
 
-T.run("R3 (#89): the tiers narrow the pool of eligible rules on purpose, never widen it", function()
+T.run("R3 (#89, #138): the tiers narrow the pool of eligible rules on purpose, never widen it", function()
 	NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
 	local narrowed, cases = 0, 0
 	for _, s in ipairs(SCENES) do
@@ -304,7 +304,8 @@ T.run("R3 (#89): the tiers narrow the pool of eligible rules on purpose, never w
 					specific = specific + 1
 				end
 				T.ok(ok, ev .. ": the pool is a part of the eligible rules, from its tier up")
-				T.ok(tier == 0 and #pool == #items or specific >= Engine.TIER_MIN, ev .. ": a narrowed pool keeps TIER_MIN rules")
+				-- #138: a level of TIER_MIN rules or more, or the generic level (it stands with fewer)
+				T.ok(tier == 0 or specific >= Engine.TIER_MIN, ev .. ": a narrowed pool keeps TIER_MIN rules")
 				if #pool < #items then narrowed = narrowed + 1 end
 			end
 		end

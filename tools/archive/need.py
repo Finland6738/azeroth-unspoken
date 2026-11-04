@@ -14,7 +14,10 @@ of its faction (zones by level band, capitals, dungeons), then the life after le
 dungeons, raids, battlegrounds).
 
 Each character lives `life_hours` (400) in slots of `slot_hours`. A pool fires, for that character, the interventions
-of its event in the slots where its value holds, times its share. Exact repetition can be avoided only if the pool has
+of its event in the slots where its value holds, times its share. The shares are those of the engine (#138, ADR 0051):
+each level of specificity with lines answers its `tier_shares` (place 50%, situation 35%, generic 15%, renormalised over
+the levels the event plans and that hold in the slot), and the situation layers of the event share theirs by the
+weights of `layers`. Exact repetition can be avoided only if the pool has
 at least as many texts as it fires (an exhaustive anti-repetition: today's engine keeps a window of 30 picks per event,
 see ADR 0050), so:
 
@@ -41,6 +44,11 @@ MODEL = os.path.join(HERE, "need_model.json")
 SETTINGS = ("open", "city", "instance")
 # the layers of a pool; the order is the one an intention of today is classified by (its first condition of these)
 LAYERS = ("place", "class", "race", "faction", "mood", "time", "weather", "ctype", "band")
+# the level of specificity of a layer, as Engine.TierPool mixes them (#138, ADR 0051): the generic lines (tier 0), the
+# lines of a place (zone, subzone, landmark: tiers 2-4) and the situation (tier 1) for every other layer
+LEVELS = ("generic", "situation", "place")
+# the channels of a group of slots: the slots of each setting in a zone with a mood, then in one without
+CHANNELS = [(s, True) for s in range(3)] + [(s, False) for s in range(3)]
 KINDS = {"party": "dungeon", "raid": "raid", "pvp": "battleground", "arena": "battleground"}
 
 
@@ -99,15 +107,39 @@ def rates(model):
     return out, only
 
 
-def shares(model, event):
-    """The share of the firings of an event each layer answers; the rest is `generic`."""
-    out = {}
+def level(layer):
+    """The level of specificity of a layer (LEVELS)."""
+    return "generic" if layer == "generic" else "place" if layer == "place" else "situation"
+
+
+def plan(model, event):
+    """The layers the waves write for an event and their weights (`layers` of the model; none: only generic lines)."""
     for group in model["layers"]:
         if any(event == e or (e.endswith("*") and event.startswith(e[:-1])) for e in group["events"]):
-            out = dict(group["shares"])
-            break
-    out["generic"] = max(0.0, 1.0 - sum(out.values()))
+            return {k: v for k, v in group["shares"].items() if v > 0}
+    return {}
+
+
+def shares(model, event, holds=None):
+    """The share of the firings of an event each layer answers in a slot, as the engine mixes the levels (#138, ADR 0051):
+    every level with lines (the generic one always; place and situation when the event plans a layer of theirs that
+    holds) takes its `tier_shares`, renormalised over those levels; the situation layers share theirs by their weights.
+    `holds(layer)` says whether a layer holds in the slot (a mood outside a zone with a mood, a weather inside)."""
+    weights = {k: v for k, v in plan(model, event).items() if holds is None or holds(k)}
+    tier = model["tier_shares"]
+    present = {"generic"} | {level(k) for k in weights}
+    total = sum(tier[l] for l in present)
+    situation = sum(v for k, v in weights.items() if level(k) == "situation")
+    out = {"generic": tier["generic"] / total}
+    for k, v in weights.items():
+        out[k] = tier["place"] / total if k == "place" else tier["situation"] / total * v / situation
     return out
+
+
+def channel_shares(model, event):
+    """[shares] of an event in each channel of CHANNELS: no mood outside a zone with one, no weather inside."""
+    return [shares(model, event, lambda k, s=s, mood=mood: (k != "mood" or mood) and
+                   (k != "weather" or SETTINGS[s] != "instance")) for s, mood in CHANNELS]
 
 
 # ---- the lives --------------------------------------------------------------------------------------------------------
@@ -218,17 +250,15 @@ def _windows(series, w):
 
 def profile(model, ch, slots, places):
     """What a life holds whatever the event: for each group of slots (all of them; those of a place, a mood, a band, a
-    weather) the slots in each setting over the whole life, and the distinct counts over every `soft_hours` in a row.
-    The group `all` has three more channels: its slots in a zone without a mood (the mood share falls to the generic)."""
+    weather) the slots in each channel (CHANNELS: the setting, and whether the zone has a mood) over the whole life, and
+    the distinct counts over every `soft_hours` in a row."""
     n, w = len(slots), max(1, int(round(model["soft_hours"] / model["slot_hours"])))
-    vec = collections.defaultdict(lambda: [[0.0] * n for _ in SETTINGS])
-    allv = [[0.0] * n for _ in range(6)]
+    vec = collections.defaultdict(lambda: [[0.0] * n for _ in CHANNELS])
+    allv = [[0.0] * n for _ in CHANNELS]
     for i, (p, band) in enumerate(slots):
         pl = places[p]
-        s = SETTINGS.index(pl["setting"])
+        s = CHANNELS.index((SETTINGS.index(pl["setting"]), bool(pl["mood"])))
         allv[s][i] = 1.0
-        if not pl["mood"]:
-            allv[3 + s][i] = 1.0
         contested = pl["kind"] == "zone" and not pl["faction"]
         vec[("place", key(p) + ("@" + ch["faction"].lower() if contested else ""))][s][i] = 1.0
         if pl["mood"]:
@@ -252,33 +282,38 @@ def _fire(coef, group):
 
 def pool_firings(model, ch, prof, rate, only):
     """{(event, layer, value): (firings in the life, most firings in soft_hours)} of one character for every layer but
-    the class, and {event: firings} of the event in all (the class pools are those times the class share)."""
+    the class, and {event: firings of its class pool} (the same for each class the character can be)."""
     step = model["slot_hours"]
-    out, whole = {}, {}
+    out, classes = {}, {}
     for ev in sorted({e for r in rate.values() for e in r}):
         if ev in only and not only[ev] & set(ch["classes"]):
             continue
         f = tuple(rate[s].get(ev, 0.0) * step for s in SETTINGS)
         if not any(f):
             continue
-        sh = shares(model, ev)
-        g, sm, sw = sh["generic"], sh.get("mood", 0), sh.get("weather", 0)
-        # a layer that does not hold in a slot (no mood, no weather inside) gives its share to the generic pool there
-        out[(ev, "generic", "")] = _fire((f[0] * g, f[1] * g, f[2] * (g + sw), f[0] * sm, f[1] * sm, f[2] * sm),
-                                         prof[("all", "")])
-        whole[ev] = _fire(f + (0, 0, 0), prof[("all", "")])
+        # the share of each layer in each channel: a layer that does not hold in a slot (no mood, no weather inside)
+        # leaves it to the other layers of its level there, or to the other levels
+        sh = channel_shares(model, ev)
+
+        def coef(layer):
+            return tuple(f[s] * sh[c].get(layer, 0) for c, (s, _) in enumerate(CHANNELS))
+        out[(ev, "generic", "")] = _fire(coef("generic"), prof[("all", "")])
+        layers = {k for c in sh for k in c}
         for (layer, value), group in prof.items():
-            s = sh.get(layer, 0)
-            if s and layer != "all":
-                fired = _fire(tuple(x * s for x in f), group)
+            if layer in layers and layer != "all":
+                fired = _fire(coef(layer), group)
                 if fired[0]:
                     out[(ev, layer, value)] = fired
         for layer, values in (("race", {ch["token"]: 1}), ("faction", {ch["faction"].lower(): 1}), ("time", model["time"]),
                               ("ctype", model["ctype"])):
-            s = sh.get(layer, 0)
-            for v, x in (values.items() if s else ()):
-                out[(ev, layer, v.lower())] = (whole[ev][0] * s * x, whole[ev][1] * s * x)
-    return out, whole
+            if layer not in layers:
+                continue
+            fired = _fire(coef(layer), prof[("all", "")])
+            for v, x in values.items():
+                out[(ev, layer, v.lower())] = (fired[0] * x, fired[1] * x)
+        if "class" in layers:
+            classes[ev] = _fire(coef("class"), prof[("all", "")])
+    return out, classes
 
 
 def need(model, places):
@@ -298,15 +333,14 @@ def need(model, places):
 
     for ch in chars:
         prof = profile(model, ch, timeline(model, ch, places), places)
-        fired, whole = pool_firings(model, ch, prof, rate, only)
+        fired, classes = pool_firings(model, ch, prof, rate, only)
         for k, (strict, soft) in fired.items():
             note(k, strict, soft, len(chars))
         # the class changes only its own pools and the companions
-        for ev, (strict, soft) in whole.items():
-            s = shares(model, ev).get("class", 0)
-            for cls in ch["classes"] if s else ():
+        for ev, (strict, soft) in classes.items():
+            for cls in ch["classes"]:
                 if ev not in only or cls in only[ev]:
-                    note((ev, "class", cls.lower()), strict * s, soft * s, combos)
+                    note((ev, "class", cls.lower()), strict, soft, combos)
     floor = model.get("min_firings", 1)
     factor = random_factor(model.get("random_repeats", 0.05))
     for p in pools.values():
@@ -495,7 +529,7 @@ def compute(con, root=store.ROOT, model=None, state="approved"):
         rows.append(row)
     rate, _ = rates(model)
     res = {"model": dict({k: model[k] for k in ("life_hours", "soft_hours", "slot_hours", "interventions_per_hour", "default_depth")},
-                         random_repeats=model.get("random_repeats", 0.05)),
+                         random_repeats=model.get("random_repeats", 0.05), tier_shares=model["tier_shares"]),
            "measured": {k: (model.get("measured") or {}).get(k) for k in ("command", "hours", "per_hour")},
            "state": state, "languages": langs, "characters": [c["name"] for c in chars],
            "class_combinations": sum(len(c["classes"]) for c in chars),
@@ -691,6 +725,10 @@ def to_markdown(res, top=30):
         "(2026-11-02):** the pick stays random, with no exhaustive memory of what was said, and the waves go on past the "
         "strict need up to the **random need** above (at most %g%% repeats), spread over the pools like the strict one." % (
             _fmt(t["random_pick"]["10%"]), _fmt(t["random_pick"]["5%"]), 100 * m["random_repeats"]),
+        "- The firings of an event are spread over its levels of specificity as the engine mixes them (owner decision "
+        "of 2026-11-04, [ADR 0051](../adr/0051-tiers-mixed-by-share.md)): place %d%%, situation %d%%, generic %d%%, "
+        "renormalised over the levels the event plans; the situation layers share theirs by the weights of the model." % (
+            100 * m["tier_shares"]["place"], 100 * m["tier_shares"]["situation"], 100 * m["tier_shares"]["generic"]),
         "- The need grows in proportion to the pace: at intensity 100 the spontaneous budgets double.",
         "- Texts beyond the strict need of their pool (they still widen the choice): " +
         ", ".join("%s %s" % (l, _fmt(n)) for l, n in t["surplus"].items()) + ".",
