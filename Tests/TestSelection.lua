@@ -96,38 +96,43 @@ T.run("#89: the tier is deduced from the conditions", function()
 	Engine:DropPack("t_r3_tier")
 end)
 
-T.run("#89: the most specific tier wins until it is exhausted, generic is the explicit fallback", function()
+-- the level of specificity of a pick (#138): 0 generic, 1 situation, 2 place (zone, subzone, landmark)
+local function Level(id)
+	local t = Engine.Tier(Engine.byId[id])
+	return t < 2 and t or 2
+end
+
+T.run("#89, #138: the specific lines are preferred, every level with usable lines keeps its share", function()
 	P.zone, P.subzone, P.class = "Elwynn Forest", "Goldshire", "WARRIOR"
 	local ctx = NS:BuildContext()
 	math.randomseed(21)
-	local first = 0
-	for _ = 1, 60 do
+	local seen = {}
+	for _ = 1, 600 do
 		Fresh()
-		local rec = Engine:PickEntry("r3tier", ctx, "say")
-		if rec and Engine.Tier(Engine.byId[rec.id]) >= 2 then first = first + 1 end
+		local l = Level(Engine:PickEntry("r3tier", ctx, "say").id)
+		seen[l] = (seen[l] or 0) + 1
 	end
-	T.eq(first, 60, "with nothing used, the place-specific lines (zone and subzone: 4 >= TIER_MIN) always win")
-	-- a session: the specific lines are used, then the pool widens to the generic ones
+	-- place (zone and subzone: 4 >= TIER_MIN) 50, no situation line for a warrior, generic 15: 77% and 23%
+	T.ok(not seen[1], "no line of another class")
+	T.ok(seen[2] > 600 * 0.70 and seen[2] < 600 * 0.84, "the place lines take the share of their level: " .. seen[2] .. "/600")
+	T.ok(seen[0] > 600 * 0.16, "and the generic ones keep theirs: " .. seen[0] .. "/600")
+	-- a session: the specific lines are used, the generic ones speak meanwhile and more once the specific are recent
 	Fresh()
 	local order = {}
-	for i = 1, 8 do
-		local rec = Engine:PickEntry("r3tier", ctx, "say")
-		order[i] = Engine.Tier(Engine.byId[rec.id])
-	end
-	T.ok(order[1] >= 2 and order[2] >= 2, "the first picks are specific: " .. table.concat(order, ","))
+	for i = 1, 8 do order[i] = Level(Engine:PickEntry("r3tier", ctx, "say").id) end
 	local generic = 0
-	for i = 3, 8 do if order[i] == 0 then generic = generic + 1 end end
-	T.ok(generic > 0, "once they are recent, the generic lines speak")
+	for i = 1, 8 do if order[i] == 0 then generic = generic + 1 end end
+	T.ok(generic > 0 and generic < 8, "a session mixes the levels: " .. table.concat(order, ","))
 	-- elsewhere only the generic lines and those of the situation
 	P.zone, P.subzone, P.class = "Durotar", "", "MAGE"
 	ctx = NS:BuildContext()
-	local seen = {}
+	seen = {}
 	for _ = 1, 40 do
 		Fresh()
-		local rec = Engine:PickEntry("r3tier", ctx, "say")
-		seen[Engine.Tier(Engine.byId[rec.id])] = (seen[Engine.Tier(Engine.byId[rec.id])] or 0) + 1
+		local l = Level(Engine:PickEntry("r3tier", ctx, "say").id)
+		seen[l] = (seen[l] or 0) + 1
 	end
-	T.ok(not seen[2] and not seen[3], "no place-specific line outside its place")
+	T.ok(not seen[2], "no place-specific line outside its place")
 	T.eq((seen[0] or 0) + (seen[1] or 0), 40, "one situation line is under TIER_MIN: it competes with the generic ones")
 	T.ok((seen[0] or 0) > 20, "and the generic ones speak: " .. tostring(seen[0]))
 	-- R1 compatibility: every candidate competes, as before
@@ -147,12 +152,101 @@ end)
 T.run("#89: TierPool keeps the anti-repetition window of the whole pool", function()
 	local function It(id) return { e = Engine.byId[id], w = 1 } end
 	local items = { It("r3.tier.gen1"), It("r3.tier.gen2"), It("r3.tier.zone1"), It("r3.tier.zone2"), It("r3.tier.sub") }
+	local shares = Engine.TIER_SHARES
 	Fresh()
+	Engine.TIER_SHARES = { [0] = 0, [1] = 0, [2] = 1 }
 	local out, tier = Engine.TierPool(items, "r3tier")
-	T.eq(#out, 3, "zone and subzone together reach TIER_MIN"); T.eq(tier, 2, "from the zone tier up")
+	T.eq(#out, 3, "zone and subzone together reach TIER_MIN"); T.eq(tier, 2, "the place level, from the zone tier up")
+	Engine.TIER_SHARES = { [0] = 1, [1] = 0, [2] = 0 }
+	out, tier = Engine.TierPool(items, "r3tier")
+	T.eq(#out, 2, "the generic level stands with fewer than TIER_MIN lines"); T.eq(tier, 0, "generic")
+	-- one level for every tier: the pick of ADR 0029 before #138 (Tests/trace_picks.py --one-level)
+	Engine.TIER_SHARES = { [0] = 1 }
+	out, tier = Engine.TierPool(items, "r3tier")
+	T.eq(#out, 3, "one level: only the most specific tiers with TIER_MIN fresh lines, as before"); T.eq(tier, 2, "zone up")
+	Engine.TIER_SHARES = shares
 	Engine.Remember("r3tier", "r3.tier.zone1", 10)
 	out, tier = Engine.TierPool(items, "r3tier")
-	T.eq(#out, 5, "one of them recent: the pool widens to every tier"); T.eq(tier, 0, "down to generic")
+	T.eq(#out, 5, "one of them recent: the place level joins the generic one, every tier"); T.eq(tier, 0, "down to generic")
+end)
+
+-- #138 (ADR 0051): full specific pools, as the content waves write them
+do
+	local mix, mixTexts = {}, {}
+	for i = 1, 40 do
+		mix[("r3.mix.zone%02d"):format(i)] = { event = "r3mix", speaker = "character", styles = { "epic" },
+			conditions = { zone = "Elwynn Forest" } }
+		mix[("r3.mix.class%02d"):format(i)] = { event = "r3mix", speaker = "character", styles = { "epic" },
+			conditions = { class = "WARRIOR" } }
+	end
+	for i = 1, 6 do mix["r3.mix.gen" .. i] = { event = "r3mix", speaker = "character", styles = { "epic" } } end
+	for id in pairs(mix) do mixTexts[id] = { id .. " uno", id .. " due" } end
+	NS:RegisterPack({ id = "t_r3_mix", name = "R3 mix tests", languages = { "itIT" },
+		events = { r3mix = { category = "reflection" } }, registry = mix, texts = { itIT = mixTexts } })
+end
+
+T.run("#138: a generic line stays reachable when the specific pools are fuller than the window", function()
+	P.zone, P.subzone, P.class = "Elwynn Forest", "", "WARRIOR"
+	local ctx = NS:BuildContext()
+	math.randomseed(5)
+	Fresh()
+	local seen, said = {}, {}
+	for _ = 1, 300 do
+		local rec = Engine:PickEntry("r3mix", ctx, "say")
+		local l = Level(rec.id)
+		seen[l] = (seen[l] or 0) + 1
+		if l == 0 then said[rec.id] = true end
+	end
+	local n = 0
+	for _ in pairs(said) do n = n + 1 end
+	-- before #138 the 80 specific lines (more than the window of 30) kept the generic ones silent for good
+	T.ok((seen[0] or 0) >= 300 * 0.08, "the generic lines speak in a session: " .. tostring(seen[0]) .. "/300")
+	T.eq(n, 6, "every generic line is said")
+	T.ok(seen[2] > seen[1] and seen[1] > seen[0], ("the more specific level speaks more: place %d, situation %d, generic %d")
+		:format(seen[2], seen[1], seen[0]))
+	-- the anti-repetition window holds inside each level: no line twice within the window of the event
+	Fresh()
+	local last = {}
+	local ok = true
+	for i = 1, 200 do
+		local id = Engine:PickEntry("r3mix", ctx, "say").id
+		if last[id] and i - last[id] <= Engine.KeepFor(86) then ok = false end
+		last[id] = i
+	end
+	T.ok(ok, "no line comes back inside the window of " .. Engine.KeepFor(86) .. " picks")
+end)
+
+T.run("#138: the shares hold over many picks, renormalised over the levels that have usable lines", function()
+	local function Count(ctx, n)
+		local seen = { [0] = 0, 0, 0 }
+		for _ = 1, n do
+			Fresh()
+			local l = Level(Engine:PickEntry("r3mix", ctx, "say").id)
+			seen[l] = seen[l] + 1
+		end
+		return seen
+	end
+	math.randomseed(9)
+	P.zone, P.subzone, P.class = "Elwynn Forest", "", "WARRIOR"
+	local s = Count(NS:BuildContext(), 2000)
+	local function Near(got, want, what)
+		T.ok(math.abs(got / 2000 - want) < 0.035, ("%s: %.1f%% (share %.1f%%)"):format(what, 100 * got / 2000, 100 * want))
+	end
+	Near(s[2], 0.50, "place"); Near(s[1], 0.35, "situation"); Near(s[0], 0.15, "generic")
+	-- no place line here: 35 and 15 become 70% and 30%
+	P.zone = "Durotar"
+	s = Count(NS:BuildContext(), 2000)
+	T.eq(s[2], 0, "no place line outside its place")
+	Near(s[1], 0.70, "situation, renormalised"); Near(s[0], 0.30, "generic, renormalised")
+	-- the shares are data
+	local shares = Engine.TIER_SHARES
+	Engine.TIER_SHARES = { [0] = 1, [1] = 1, [2] = 2 }
+	P.zone = "Elwynn Forest"
+	s = Count(NS:BuildContext(), 2000)
+	Engine.TIER_SHARES = shares
+	Near(s[2], 0.50, "place, shares 1:1:2"); Near(s[0], 0.25, "generic, shares 1:1:2")
+	P.zone, P.subzone, P.class = "Elwynn Forest", "Goldshire", "WARRIOR"
+	Engine:DropPack("t_r3_mix")
 end)
 
 T.run("#89: related-event fallback, declared in data and validated", function()

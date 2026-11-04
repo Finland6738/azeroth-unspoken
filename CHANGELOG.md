@@ -8,6 +8,62 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### The tiers mixed by share, and data files under Lua's limit of constants (issue #138)
+
+Two engine fixes found by content wave W01 (PR #246); owner decision of 2026-11-04 for the first;
+[ADR 0051](docs/adr/0051-tiers-mixed-by-share.md).
+
+- **Changed: every level of specificity keeps a share of the picks** (`Engine.TierPool`, `Engine.TIER_SHARES`). The pick
+  kept only the most specific tier with three lines not used recently: once the waves filled the class, race and zone
+  pools of an event beyond the anti-repetition window (30 picks), its generic lines, monologues included, were never
+  reached again (an orc warrior in Durotar after W01). Now the tiers form three levels, **place** (zone, subzone,
+  landmark) 50, **situation** (class, race, faction, mood, time, weather, level band...) 35, **generic** 15; the pick
+  draws one level by share, renormalised over the levels that have a line not used recently, then weighs its lines as
+  before (weights, anti-repetition window and variants unchanged). Inside the place level the most specific tier still
+  wins while it has three fresh lines; a level with fewer competes in the level below; the generic level stands with
+  one. Specific lines stay preferred and no level with usable lines goes silent. An event with lines in one level only
+  picks as before, with no extra random number.
+- **Picks change by design.** `Tests/trace_picks.py`: 2,787 of 3,000 seeded picks differ from `main` (generic
+  38.2% → 50.5%, situation 58.5% → 47.3%, place 3.3% → 2.2%: the trace's events and places have few place lines yet).
+  New options: `--levels` prints that split, `--one-level` (`TIER_SHARES = { [0] = 1 }`) gives back the pick of ADR 0029
+  and prints **the same 3,000 picks as `main`**; `--r1` is still identical to `main`. The `tier = 1` the trial slice and W01
+  wrote on the zone lines of fights, people and manual events is no longer needed (WAVES.md, step 4); those lines keep it.
+- **Changed: the need model plans with the same shares** (`tools/archive/need.py`, `need_model.json` `tier_shares`,
+  checked against the engine). Each level the event plans answers its share, renormalised; the weights of `layers` split
+  the situation share; a layer that does not hold in a slot (no mood, no weather inside) leaves its share to its level.
+  Need per language after W01: strict **28,938** (30,347), soft **8,893** (7,341), random **270,686** (284,731); gap
+  6,205 / 24,667 / 265,351; **92 waves** left (96). Place pools grow (8,455 → 11,563 strict), class (10,649 → 7,805) and
+  generic pools (2,058 → 1,513) shrink. NEED.md, need.json and the WAVES.md table regenerated.
+- **Fixed: "constant table overflow".** Lua 5.1 keeps at most 262,143 constants in one function, and a data file is one.
+  - The synthetic archive (`Tests/SyntheticArchive.lua`) writes its entries in blocks of 5,000, each a function of its
+    own: `Tests/bench_scale.py --sizes 50000` runs again.
+  - The exporter (`tools/archive/store.py`) writes at most 20,000 entries in a texts file (about 70,000 constants);
+    past it the new entries of the pack and language go to `<name>_2.lua`, added to the `.toc` after the last file.
+    What is registered does not change and the archive reads it back. A file over 200,000 constants is refused before
+    anything is written. Today's largest file has 1,668 constants.
+- **Measured.**
+  - `Tests/bench_scale.py --sizes 0,10000,50000 --langs enUS` (one synthetic archive for both, `--archive-dir`): 50,000
+    entries compile and load again: **42.4 MB** (642 B per entry; ADR 0048 measured 38.9 MB and 641 B before W01 grew
+    the base from 9.9 to 11.8 MB), a pick **77.4 thousand instructions** (p95 139.1) against 76.7 (137.4) with the old
+    tiers on the same archive: +0.9%; 10,000 entries 18.9 MB, 37.4 thousand. Both languages at 50,000: 60.6 MB.
+  - `--areas` (300,000 entries in one language, 30,000 resident, 40 areas of 6,750; it ran before this change too):
+    folders by area **37.6 MB** with the first area, at most **71.2 MB** after every area, 66.3 MB at the end (sources
+    kept 31.7 MB); a change of area about 184 frames of **3.54 ms** on average (p95 4.07, max 7.71 ms; 11.2 ms mean,
+    15.9 max in the frames that load a folder); picks in the last area 70.2 thousand instructions (p95 118.4). ADR 0049
+    measured 36.2 / 69.0 MB and 2.90 / 3.96 / 7.76 ms before W01. With one folder per continent (the layout of
+    the download today): 67.8 MB with the first area, 60.5 MB after every area, the frames that load a continent's folder
+    154 ms on average (256 ms at most), as before.
+  - `Tests/bench_trial.py --long 20`, the same machine, `main` → this change: first exact repetition orc warrior
+    3.35 → **4.51 h**, troll mage 5.09 → **5.68 h**, human paladin 3.75 → **3.85 h**; texts repeated in 20 hours
+    19.0% → **12.3%**, 16.4% → **13.5%**, 21.5% → **14.2%**: the generic lines widen the choice again.
+  - Run-tests projection: 22.6 thousand instructions per pick against the 20.2 reference, no warning.
+- **Tests:** TestSelection (a generic line reachable when the specific pools hold 80 lines; the shares over 2,000 picks,
+  renormalised, as data; one level = the old pick), TestScale (a narrowed pool may be the generic level), TestDynamism (the
+  monologue test no longer lifts the tiers), TestCompanion (any unhappy pet line, not one variant drawn by luck),
+  check_archive (the model's shares are the engine's; the shares by slot; constants per file; the split of a full
+  texts file round-trips).
+- **Not verified in the client.** The shares are hypotheses to tune with `/au prof`.
+
 ### Content wave W01: the other starting areas and capitals, the classes, the races, the factions and the moods (issue #138)
 
 The first content wave of [docs/content/WAVES.md](docs/content/WAVES.md), on the soft need of [ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md):

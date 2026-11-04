@@ -367,7 +367,7 @@ def discover(root):
             out += [("rules", "%s/%s" % (d, f), region, None) for f in files if f.endswith(".lua")]
         else:
             out += [("rules", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Registry[A-Za-z]*\.lua$", f)]
-            out += [("texts", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Texts[A-Za-z_]*\.lua$", f)]
+            out += [("texts", "%s/%s" % (d, f), None, None) for f in files if re.match(r"Texts[A-Za-z0-9_]*\.lua$", f)]
     return out
 
 
@@ -536,23 +536,87 @@ RENDERERS = {"rules": packfiles.render_rule, "texts": packfiles.render_variants,
              "scripts": packfiles.render_script, "arc_texts": packfiles.render_arc_text}
 
 
+# The entries a texts file written as a table holds at most (#138): an intention is about 3.5 constants in a language (its
+# id and its variants), so 20,000 stay near 70,000 of the 262,143 constants Lua allows in one function (packfiles). Past it
+# the new entries of the pack and language go to the next file, `<name>_2.lua`, listed in the .toc after the last one.
+TEXTS_PER_FILE = 20000
+
+
+def _is_source(sf):
+    """C0b: the entries of the file are a source string (`[==[`), read in pieces: one constant, whatever its size."""
+    return re.search(r"\[=*\[\Z", sf.prelude) is not None
+
+
+def _next_file(sf, taken, n):
+    """A new, empty texts file after `sf` in its group: the n-th one (`Classes_2.lua`), with the prelude of the first file
+    of the group (`sf`) and the end of its call."""
+    stem, ext = os.path.splitext(re.sub(r"_\d+(\.lua)$", r"\1", sf.path))
+    while "%s_%d%s" % (stem, n, ext) in taken:
+        n += 1
+    new = packfiles.SourceFile("%s_%d%s" % (stem, n, ext), sf.role,
+                               "-- Continued from %s: a file holds at most %s entries (Lua keeps at most %s constants in a "
+                               "function, #138).\n" % (os.path.basename(sf.path), "{:,}".format(TEXTS_PER_FILE),
+                                                       "{:,}".format(packfiles.LUA_MAX_CONSTANTS)) + sf.prelude,
+                               sf.epilogue.split("\n", 1)[0] + "\n")
+    new.pack_id, new.region, new.lang = sf.pack_id, sf.region, sf.lang
+    return new, n
+
+
+def _toc_insert(root, out_root, after, path):
+    """Lists `path` in the .toc of its folder right after `after` (paths relative to the repository)."""
+    folder, name = path.split("/", 1)
+    rel_after = after.split("/", 1)[1]
+    toc = folder + "/" + folder + ".toc"
+    src = os.path.join(out_root, toc) if os.path.exists(os.path.join(out_root, toc)) else os.path.join(root, toc)
+    lines = packfiles.read(src).split("\n")
+    at = max(i for i, l in enumerate(lines) if l.strip().replace("\\", "/") == rel_after)
+    lines.insert(at + 1, name)
+    packfiles.write(os.path.join(out_root, toc), "\n".join(lines))
+    return toc
+
+
 def export_folders(con, root, out_root=None, canonical=False):
     """Writes the pack folders from the approved intentions, the arcs and the scripts. `root` is where the folders are read
     for their layout (the layout is in the database), `out_root` where they are written (default: `root`). With
     `canonical`, every entry is rendered again instead of being kept as written (used to test the renderer). Returns the
-    paths written."""
+    paths written. The ids no file holds yet go to the first file of their group (the same role, pack and language); a
+    texts file written as a table takes them while it holds fewer than TEXTS_PER_FILE entries, then the next file of
+    the group, then a new file (added to the .toc). A file over packfiles.SAFE_CONSTANTS is refused."""
     out_root = out_root or root
     written = []
     keys = [(r["path"], r["part"]) for r in con.execute("SELECT path, part FROM source_file ORDER BY path, part")]
     files = {k: load_file(con, *k) for k in keys}
     group = lambda sf: (sf.role, sf.pack_id, sf.lang)   # noqa: E731
-    held = {}        # group -> ids some file of the database holds
-    designated = {}  # group -> the first file of the group: where the ids no file holds are appended
+    held = {}      # group -> ids some file of the database holds
+    members = {}   # group -> its files, in order
     for k in keys:
         sf = files[k]
         if sf.role != "rules":
             held.setdefault(group(sf), set()).update(c[1] for c in sf.chunks if c[0] == "entry")
-            designated.setdefault(group(sf), k)
+            members.setdefault(group(sf), []).append(k)
+    added = {}     # file -> the ids no file holds that go to it
+    tocs = []
+    for g, ks in members.items():
+        first = files[ks[0]]
+        ids = _db_ids(con, first)
+        new = sorted(i for i in ids - held[g] if _db_data(con, first, i) is not None)
+        if not new:
+            continue
+        if first.role != "texts" or _is_source(first):
+            added[ks[0]] = new
+            continue
+        for k in ks:
+            room = TEXTS_PER_FILE - sum(1 for c in files[k].chunks if c[0] == "entry" and c[1] in ids)
+            added[k], new = new[:max(0, room)], new[max(0, room):]
+        n = 2
+        while new:
+            sf, n = _next_file(first, {p for p, _ in files} | {p for p, _ in keys}, n)
+            k = (sf.path, 0)
+            keys.append(k)
+            files[k] = sf
+            tocs.append((ks[-1][0], sf.path))
+            ks.append(k)
+            added[k], new = new[:TEXTS_PER_FILE], new[TEXTS_PER_FILE:]
     texts = {}
     for k in keys:
         sf = files[k]
@@ -560,9 +624,7 @@ def export_folders(con, root, out_root=None, canonical=False):
             current = {r["id"]: get_rule(con, r["id"]) for r in con.execute(
                 "SELECT id FROM intention WHERE pack_id = ? AND state = 'approved' ORDER BY id", (sf.pack_id,))}
         else:
-            have = {c[1] for c in sf.chunks if c[0] == "entry"}
-            if designated[group(sf)] == k:
-                have |= _db_ids(con, sf) - held[group(sf)]
+            have = {c[1] for c in sf.chunks if c[0] == "entry"} | set(added.get(k, ()))
             current = {}
             for id in sorted(have & _db_ids(con, sf)):
                 data = _db_data(con, sf, id)
@@ -571,13 +633,19 @@ def export_folders(con, root, out_root=None, canonical=False):
         if canonical:
             sf.chunks = [c if c[0] == "gap" else (c[0], c[1], c[2], "-") for c in sf.chunks]
         texts.setdefault(k[0], []).append(packfiles.build(sf, current, RENDERERS[sf.role]))
-    for p, parts in texts.items():
-        text = "".join(parts)
+    texts = {p: "".join(parts) for p, parts in texts.items()}
+    for p, text in texts.items():
+        n = packfiles.constants(text)
+        if n > packfiles.SAFE_CONSTANTS:
+            raise Unsupported("%s: about %s constants in one function (Lua allows %s): split the file" % (
+                p, "{:,}".format(n), "{:,}".format(packfiles.LUA_MAX_CONSTANTS)))
+    tocs = [_toc_insert(root, out_root, after, p) for after, p in tocs]
+    for p, text in texts.items():
         target = os.path.join(out_root, p)
         if not os.path.exists(target) or packfiles.read(target) != text:
             packfiles.write(target, text)
             written.append(p)
-    return written
+    return written + sorted(set(tocs))
 
 
 # ---- the overlay (committed text) ---------------------------------------------------------------------------------

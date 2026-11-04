@@ -303,10 +303,12 @@ from the conditions (at the top level and in `place`): `landmark` (R3b) gives 4;
 does any other condition that narrows the moment (a class, a target, a memory, a relation); `chance`, `depth`,
 `intensityMin`/`Max` and anything under `not` give nothing. Write `tier` only to override it.
 
-When a phrase is chosen, the most specific tier wins **while it has at least three phrases not used recently**
-(counting the tiers above it); once they are used, the pool widens one tier at a time down to the generic phrases of
-the event. So a few phrases for a place come out first when the character is there, then leave room to the others.
-Write at least three for a place if you want them to lead.
+When a phrase is chosen, the tiers form three levels that share the picks: **place** (zone, subzone, landmark) about
+50%, **situation** (class, race, faction, mood and the other conditions of tier 1) 35%, **generic** 15%, renormalised over
+the levels that have phrases not used recently. Inside the place level the most specific tier wins while it has at least
+three phrases not used recently (counting the tiers above it). A level with fewer than three such phrases competes inside
+the level below it. So phrases for a place are preferred when the character is there, and the generic ones never go
+silent. Write at least three for a place if you want them to have their own share.
 
 **Depth** (Natural, Literary, Elevated) is the one chosen by the user (`/au depth`). It does not exclude phrases:
 those written for another depth **weigh less** (×0.3), so silence never results from a lack of suitable texts.
@@ -1495,7 +1497,7 @@ Content checks (verified lore, spelling, the speaker's register) remain editoria
    - `E` = the emotional state (`emo:` tags, see "Emotions and strong traits"); 1 when the character is calm or the module is off;
    `N` also weighs the novelty of the session: the theme, the motifs and the voice of the last interventions.
 3. No factor excludes a phrase for reasons of style: there is always a fallback.
-4. The **specificity tiers** keep the most specific phrases first while three of them are not recent (above).
+4. The **specificity tiers** share the picks by level: place 50%, situation 35%, generic 15% of the levels with phrases not recent (above).
 5. Recently used phrases (about 60% of those available, at most `pacing.recentPhraseWindow` = 30) are excluded as long as there are others.
 6. Once the phrase is chosen, it chooses a **variant**: among those of the right depth (or with no indication), different from the last one used and, if it can, not opening with the same two words as the last interventions.
 7. The memory of uses and variants is saved between sessions, per character, and uses fade at every access; the memory of themes, motifs, voices, frames and openings lasts only the session.
