@@ -392,4 +392,46 @@ NS:AddTexts("itIT", {
 		"Anni di pratica in un solo gesto. Prendi pure nota.",
 		"Ecco com'è la pazienza quando finalmente si muove.",
 	},
+	["buff.w04.001"] = {
+		"Ecco qua, {target}. Gratis, per questa volta.",
+		"Offre la casa. Il prossimo ti costa un boccale.",
+		"Questo è un regalo. Non dirlo agli altri.",
+	},
+	["buff.w04.002"] = {
+		"Un po' di più tra il mondo e la pelle. Tutto fa.",
+		"I piccoli vantaggi vincono le giornate lunghe.",
+		"Ogni briciola aiuta. Uno scontro non chiede mai se eri {g:pronto|pronta}.",
+	},
+	["buff.w04.003"] = {
+		"raddrizza le spalle mentre qualcosa di nuovo vi si posa, leggero come uno zaino vuoto.",
+		"flette le dita, saggiando una forza che un attimo fa non c'era.",
+		"si tiene un po' più {g:dritto|dritta}, come se dalla schiena fosse sparito, in silenzio, un peso.",
+	},
+	["buff.w04.004"] = {
+		"Cerca di riportarmelo intero, {target}.",
+		"È in prestito. Lo rivoglio senza ammaccature.",
+	},
+	["buff.w04.005"] = {
+		"Tieni la testa un po' più alta, {target}. Adesso hai più cose a sostenerti.",
+		"Questo dovrebbe tenerti in piedi ancora un po'.",
+		"Uno strato in più tra te e i guai. Fanne buon uso.",
+	},
+	["buff.w04.006"] = {
+		"Non è un'armatura, non proprio. Ma la prendo.",
+		"Non fermerà tutto. Qualcosa sì, e tanto basta.",
+	},
+	["buff.w04.007"] = {
+		"Funziona? Probabilmente. Crederci aiuta? Senz'altro.",
+		"Metà è la benedizione, l'altra metà è convincersi che funzioni.",
+		"Che sia la benedizione o solo il pensiero, mi sento più {g:solido|solida}.",
+	},
+	["heal.w04.001"] = {
+		"Non muoverti, {target}. Funziona meglio se non ti agiti.",
+		"Smetti di dimenarti. Mi rovini il lavoro.",
+		"Muoviti di meno e lasciami ricucire. Grazie.",
+	},
+	["heal.w04.002"] = {
+		"lavora svelto e senza storie, come chi ricuce una cinghia strappata prima di rimettersi in cammino.",
+		"mormora sottovoce, l'attenzione tutta sulla ferita e su nient'altro.",
+	},
 }, "base_spells")

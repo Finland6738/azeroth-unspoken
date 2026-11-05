@@ -193,4 +193,82 @@ AU:RegisterRegionalTexts("kalimdor", "enUS", "kalimdor_dungeons", [==[
 		"That's one less thing hissing at me in this heat.",
 		"Good. Now, does anyone in this city have shade, or water, or manners?",
 	},
+	["ony.battle.01"] = {
+		"Her lair, her brood, her rules. I came to break all three.",
+		"Down here it's the dragon's ground. I'm walking on it anyway.",
+	},
+	["ony.muse.01"] = {
+		"Deathwing's daughter waits at the bottom of this cave, on the bones of whoever came before.",
+		"Whelps in every crevice, eggs in the hollows, and a smell of sulfur and old meat. This is a nursery, the way dragons keep them.",
+		"Word is the dragon down there wears another face in Stormwind, a lady's, at the regent's side. Hard to picture, standing in her real home.",
+	},
+	["ony.muse.02"] = {
+		"listens to the deep, slow breathing that rolls up the tunnel from the cavern below, like air through a cracked bellows.",
+		"steps carefully past a scatter of broken eggshells and blackened bones at the mouth of the great cave.",
+	},
+	["ony.victory.01"] = {
+		"Done. The cave stinks of scorched scale, and the ash is still settling.",
+		"Over. My ears are ringing and the floor is warm, but I'm on my feet.",
+	},
+	["raq.battle.01"] = {
+		"Out of the sand with you. I crossed the whole desert for this.",
+		"Back under the sand, or stay and fall here.",
+	},
+	["raq.muse.01"] = {
+		"A thousand years ago the night elves and the dragons sealed this place behind the Scarab Wall. Now the gates stand open again, and the ruins are crawling.",
+		"Broken columns half buried in sand, carvings nobody alive can read. The Qiraji built big, and built to last.",
+		"The sand sounds hollow underfoot. Who knows how much of the old city lies beneath it, waiting.",
+	},
+	["raq.muse.02"] = {
+		"Sand in my boots, sand in my teeth, and something with too many legs behind every pillar.",
+		"Lovely ruins. Pity about the tenants.",
+	},
+	["raq.victory.01"] = {
+		"shakes sand out of a gauntlet and looks over the broken courtyards, where the drifting sand already creeps over the fallen.",
+		"stands among the toppled columns afterward, catching {g:his|her} breath in the dry, hot air.",
+	},
+	["taq.battle.01"] = {
+		"Out of your hive and into my reach. Come on.",
+		"I came through the Scarab Wall to get here. Don't expect me to stop for you.",
+	},
+	["taq.muse.01"] = {
+		"Under the sand, under the temple, something older than the gods of any people I know is dreaming. The Qiraji only serve it.",
+		"The deeper the temple goes, the more the walls look grown rather than built. Like walking around inside something alive.",
+		"The Qiraji were only ever a weapon, says the Cenarion Circle. Whatever hand holds that weapon is down here, at the bottom.",
+	},
+	["taq.muse.02"] = {
+		"pauses in a hall of curved, ribbed stone; somewhere far below, a slow pulse moves through the floor like a heartbeat.",
+		"brushes sand from {g:his|her} sleeve and looks down the long dark passage, where the walls glisten as if they were breathing.",
+	},
+	["taq.victory.01"] = {
+		"Down, and the walls keep pulsing as if nothing happened. This place doesn't grieve its own.",
+		"One fewer. The temple won't notice; it has thousands more in the dark.",
+	},
+	["wsg.battle.01"] = {
+		"Not through this gulch. Not while I'm in it.",
+		"Turn around and run back to your base. It's the only way you keep your feet.",
+		"You want the flag? You'll have to come through me for it.",
+	},
+	["wsg.lowhp.01"] = {
+		"Not now, not with the flag still out there.",
+		"Down to scraps, but I'm not handing you the gulch.",
+	},
+	["wsg.muse.01"] = {
+		"Two bases, one gulch, two flags. The whole quarrel over Ashenvale, folded small enough to run across.",
+		"Back and forth down the gulch, carrying a scrap of cloth as if it were a crown. And somehow it feels like it matters.",
+		"The trees at the edge of the gulch have watched this fight a thousand times. They don't pick a side either.",
+	},
+	["wsg.muse.02"] = {
+		"checks the fastenings of {g:his|her} gear in the shelter of the base, eyes on the long open run of the gulch beyond.",
+		"looks down the length of the gulch, where the grass is worn to bare earth along the paths everyone runs.",
+	},
+	["wsg.muse.03"] = {
+		"Eyes open. Somebody always tries the tunnel.",
+		"Keep the middle clear and the flag moving. That's the whole trick.",
+	},
+	["wsg.victory.01"] = {
+		"Down. Now, where's the flag? Always, first thing: where's the flag?",
+		"Gone from the fight for a while. Count the seconds, then find the carrier.",
+		"Good. One less pair of hands between the flag and home.",
+	},
 ]==])

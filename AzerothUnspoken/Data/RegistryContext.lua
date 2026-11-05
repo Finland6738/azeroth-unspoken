@@ -711,5 +711,13 @@ NS:RegisterPack({
 			tags = { "warm", "temperament:cheerful" }, depth = { "natural" },
 			theme = "humour", motifs = {},
 			conditions = { race = "Troll", other = { kind = "player", actions = { "duel", within = 30 }, ["not"] = { relation = { "enemy", "disliked", "wary", "feared", "rival" } } } } },
+		["encounter_end.w04.001"] = { event = "encounter_end", speaker = "character", styles = { "everyday", "ironic" },
+			tags = { "temperament:cheerful" }, depth = { "natural" },
+			theme = "glory", motifs = {},
+			conditions = { place = { lastEncounter = true, encounterResult = "win" } } },
+		["encounter_end.w04.002"] = { event = "encounter_end", speaker = "inner", styles = { "tragic", "ironic" },
+			tags = { "temperament:resolute" }, depth = { "natural" },
+			theme = "growth", motifs = {},
+			conditions = { place = { lastEncounter = true, encounterResult = "wipe" } } },
 	},
 })

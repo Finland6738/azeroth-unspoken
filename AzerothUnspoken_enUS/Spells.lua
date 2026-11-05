@@ -392,4 +392,46 @@ NS:AddTexts("enUS", {
 		"Years of practice in one motion. Do take note.",
 		"This is what patience looks like when it finally moves.",
 	},
+	["buff.w04.001"] = {
+		"There you go, {target}. Free of charge, this once.",
+		"On the house. The next one costs you a drink.",
+		"That one's a gift. Don't tell the others.",
+	},
+	["buff.w04.002"] = {
+		"A little extra between the world and the skin. It all adds up.",
+		"Small edges win long days.",
+		"Every scrap helps. A fight never asks whether you were ready.",
+	},
+	["buff.w04.003"] = {
+		"squares {g:his|her} shoulders as something new settles into them, light as an empty pack.",
+		"flexes {g:his|her} fingers, testing a strength that wasn't there a moment ago.",
+		"stands a little straighter, as if a weight had been quietly lifted off {g:his|her} back.",
+	},
+	["buff.w04.004"] = {
+		"Try to bring that back in one piece, {target}.",
+		"It's on loan. I'd like it back without dents.",
+	},
+	["buff.w04.005"] = {
+		"Stand a little taller, {target}. You've more holding you up now.",
+		"That should keep you on your feet a while longer.",
+		"One more layer between you and harm. Use it well.",
+	},
+	["buff.w04.006"] = {
+		"Not armor, not quite. But I'll take it.",
+		"It won't stop everything. It'll stop something, and that's enough.",
+	},
+	["buff.w04.007"] = {
+		"Does it work? Probably. Does believing it help? Definitely.",
+		"Half of it is the blessing. The other half is believing in it.",
+		"Whether it's the blessing or just the thought of it, I feel sturdier.",
+	},
+	["heal.w04.001"] = {
+		"Hold still, {target}. This works better without the flailing.",
+		"Stop wriggling. You'll undo my work.",
+		"Less moving, more mending. Thank you.",
+	},
+	["heal.w04.002"] = {
+		"works quickly and without fuss, the way one mends a torn strap before setting off again.",
+		"murmurs under {g:his|her} breath, attention fixed on the hurt and nothing else.",
+	},
 }, "base_spells")

@@ -1047,4 +1047,212 @@ NS:AddTexts("enUS", {
 		"Done. Fighting beasts is hunger against hunger; this was choice against choice, and that weighs differently.",
 		"It's over. Whoever they were, they won't be telling this story. I'll tell it plainly, if I tell it at all.",
 	},
+	["battle.w04.001"] = {
+		"All right, all right. I'll fit you in.",
+		"Is it too much to ask, getting from one place to the next without this?",
+		"Fine. One more thing I didn't plan for today.",
+	},
+	["battle.w04.002"] = {
+		"The first exchange tells you everything. Watch, don't guess.",
+		"Let the first strike come. It'll tell me the rest.",
+	},
+	["battle.w04.003"] = {
+		"settles {g:his|her} weight, loosens {g:his|her} shoulders, and waits for the first move.",
+		"shifts half a pace sideways to put firmer footing under {g:him|her}.",
+		"lets the world narrow down to the foe and the few steps between them.",
+	},
+	["battle.w04.004"] = {
+		"You wanted my attention. You have all of it.",
+		"Go on, then. You've got my full attention now.",
+		"Look at that. Now you're the only thing on my mind.",
+	},
+	["battle.w04.005"] = {
+		"Can't anyone sit down for five minutes in this world?",
+		"I had plans. Small ones. Sitting down was one of them.",
+	},
+	["battle.w04.006"] = {
+		"One of us walks away from this. Nothing anywhere says which.",
+		"These always end the same way: one up, one not. I'd like to be the first kind.",
+	},
+	["battle.w04.007"] = {
+		"Do we have to? ...Yes, I suppose we do.",
+		"I'd ask you to reconsider, but you don't look the reconsidering sort.",
+		"Any chance we both just walk away? No? I thought not.",
+	},
+	["battle.w04.008"] = {
+		"Harder things than you have tried to grind me down. Here I am.",
+		"I've been hammered on by worse. It only put a keener edge on me.",
+	},
+	["battle.w04.009"] = {
+		"Heart's going like a drum. Good. It means I'm paying attention.",
+		"There's the fear, right on time. It can sit at the back and keep quiet.",
+		"Fear came along too. It can watch, but it doesn't get a say.",
+	},
+	["battle.w04.010"] = {
+		"Let's be quick about this. I've somewhere to be.",
+		"Short and tidy, if you don't mind. I'm expected elsewhere.",
+	},
+	["battle.w04.011"] = {
+		"lets out a short, hard sound through clenched teeth and goes in.",
+		"meets the foe with a grunt and a step forward instead of back.",
+	},
+	["battle.w04.012"] = {
+		"I've a road to walk, and you're standing in the middle of it.",
+		"You're between me and where I'm headed. That's the whole quarrel.",
+		"Nothing personal. You're simply in the way.",
+	},
+	["battle.w04.013"] = {
+		"Lovely. Exactly what I needed: more exercise.",
+		"Another scuffle. My knees send their regards.",
+	},
+	["battle.w04.014"] = {
+		"Whatever you are, you're about to learn what I am.",
+		"I don't need to know what you are. You'll know what I am soon enough.",
+	},
+	["battle.w04.015"] = {
+		"Shoulders down. Hands loose until they're needed. Then not loose at all.",
+		"Weight forward, but not too far. Don't lean in yet.",
+		"Light grip, open eyes, short steps. Same as ever.",
+	},
+	["battle.w04.016"] = {
+		"Fair warning: I don't fight pretty, I fight to the finish.",
+		"A fair fight is for people with time to spare.",
+	},
+	["battle.w04.017"] = {
+		"Outmatched and still coming. I'll give you that much, {target}.",
+		"Brave, at least. That's more than most your size can say.",
+		"You know how this ends, {target}. Points for showing up anyway.",
+	},
+	["lowhp.w04.001"] = {
+		"Oh, that's going to leave a mark. Several.",
+		"That one I felt. Can't say I enjoyed it.",
+		"Ow. Ow. Right. Noted.",
+	},
+	["lowhp.w04.002"] = {
+		"Think. What do I still have? What haven't I tried?",
+		"Options. Count them. Quickly.",
+		"Bandage, potion, legs. Something. Pick something.",
+	},
+	["lowhp.w04.003"] = {
+		"blinks hard, twice, as if trying to bring the world back into focus.",
+		"takes a step back that {g:he|she} never meant to take.",
+		"presses a hand to {g:his|her} side; it comes away wet.",
+	},
+	["lowhp.w04.004"] = {
+		"You should have finished it. Now I'm properly angry.",
+		"That was your chance, and you wasted it.",
+		"Big mistake, leaving me standing. You'll see why.",
+	},
+	["lowhp.w04.005"] = {
+		"If this is the end, it's quieter than I'd imagined.",
+		"The end, maybe. It's smaller than the stories make it.",
+		"Cold hands. Ringing ears. I know where this goes, and I'm not going.",
+	},
+	["lowhp.w04.006"] = {
+		"I've got more in me than this. Let's go and find it.",
+		"There's always something left at the bottom of the barrel.",
+		"Dig deeper. There's always a little more down there.",
+	},
+	["lowhp.w04.007"] = {
+		"Slow it down. Panic burns faster than any wound.",
+		"Steady. Hurry gets you killed quicker than the enemy does.",
+		"Easy. A clear head is worth more than whatever strength is left.",
+	},
+	["lowhp.w04.008"] = {
+		"Ah. The part of the story where things look grim. I know this one.",
+		"Don't write the ending yet. I'm still in it.",
+	},
+	["lowhp.w04.009"] = {
+		"tightens a slipping grip and raises {g:his|her} guard again, a little lower than before.",
+		"draws a ragged breath and plants {g:his|her} feet as if putting down roots.",
+	},
+	["lowhp.w04.010"] = {
+		"There are still things I mean to do. This isn't on the list.",
+		"Too much left half done. I'm not finished yet.",
+		"Not here. I've unfinished business, and it's waiting for me.",
+	},
+	["threat.w04.001"] = {
+		"I'm in a good mood today. It'd be a shame to waste it on you.",
+		"Don't spoil my day. I'd hate to have to return the favor.",
+		"I've been pleasant so far today. Don't be the one who ends that.",
+	},
+	["threat.w04.002"] = {
+		"Count your steps from here. Every one of them is borrowed.",
+		"You can still leave. In a moment, you won't be able to.",
+		"Go now, and you go on your own legs.",
+	},
+	["victory.w04.001"] = {
+		"Over. My ears are ringing with the quiet.",
+		"Done. The world comes back in pieces: a sound here, a smell there.",
+	},
+	["victory.w04.002"] = {
+		"I'd like to say I planned that. I really would.",
+		"All according to plan. There was a plan. More or less.",
+		"Nobody ask me how. I honestly couldn't tell you.",
+	},
+	["victory.w04.003"] = {
+		"That's one matter settled. I've a long list of others.",
+		"Settled, then. On to the next thing on the list.",
+	},
+	["victory.w04.004"] = {
+		"checks {g:his|her} hands, one and then the other, as if counting fingers.",
+		"rolls {g:his|her} shoulders until something pops, and lets out a long sigh.",
+		"cleans {g:his|her} weapon with slow, careful strokes.",
+	},
+	["victory.w04.005"] = {
+		"It'll be my turn one day, on some other ground, against some other hand. Not today.",
+		"Someday this goes the other way. That's the bargain, and today it held.",
+	},
+	["victory.w04.006"] = {
+		"Right. That's earned me a rest and something to drink.",
+		"A sit and a long drink, at the very least. I'd say I've paid for both.",
+	},
+	["victory.w04.007"] = {
+		"Too slow on the second step. Remember that for next time.",
+		"Won, but sloppy. I let my guard drop twice.",
+		"Good result, poor work. The footwork needs mending.",
+	},
+	["victory.w04.008"] = {
+		"Mark it down. Another one for the tally.",
+		"Another notch. The handle's getting crowded.",
+		"One more for the count. I stopped keeping it a while back, but still.",
+	},
+	["victory.w04.009"] = {
+		"I hope it was quick. I'm almost sure it was.",
+		"Quick, at least. I saw to that much.",
+	},
+	["victory.w04.010"] = {
+		"lets {g:his|her} arms drop and stands there a moment, taking stock of {g:himself|herself}.",
+		"lets the guard come undone at last, one joint after another.",
+	},
+	["victory.w04.011"] = {
+		"Should've stayed home, wherever home was.",
+		"Next time, stay home. Oh. Right.",
+	},
+	["victory.w04.012"] = {
+		"It gets easier. I'm not sure I like that it does.",
+		"Easier every time. That ought to bother me more than it does.",
+	},
+	["victory.w04.013"] = {
+		"That's one less thing waiting on the road for someone else.",
+		"Whoever comes along after me will walk a little safer.",
+	},
+	["victory.w04.014"] = {
+		"Ha! And I'd barely warmed up.",
+		"Finished? And I'd only just found my rhythm.",
+		"Ha! I never even had to catch my breath.",
+	},
+	["victory.w04.015"] = {
+		"The world goes on as if nothing happened. For it, nothing did.",
+		"Everything around me carries on, unbothered. From the outside, a fight is a very small thing.",
+	},
+	["victory.w04.016"] = {
+		"You fought hard. That counts for something, even now.",
+		"No shame in that. You held on longer than most.",
+		"To the very end. I can respect that, whatever you were.",
+	},
+	["victory.w04.017"] = {
+		"The body keeps the bill and sends it later. Tomorrow, most likely.",
+		"It'll all hurt later. Later can wait its turn.",
+	},
 }, "base_combat")

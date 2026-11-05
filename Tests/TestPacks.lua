@@ -531,14 +531,14 @@ local function ReadRepo(path)
 end
 
 T.run("C0b: the regional sources are kept as compact pieces that decode exactly", function()
-	-- every area with lines of its own: the trial slice, the starting areas of W01, the zones of W02 and of W03 (the
-	-- dungeon packs of W03 belong to the continents, built with them)
+	-- every area with lines of its own: the trial slice, the starting areas of W01, the zones of W02, W03 and W04 (the
+	-- dungeon packs of W03, which hold the raids and battlegrounds of W04 too, belong to the continents, built with them)
 	for _, z in ipairs({ "Elwynn Forest", "Dun Morogh", "Tirisfal Glades", "Mulgore", "Teldrassil", "Loch Modan", "Westfall",
 		"Redridge Mountains", "Duskwood", "Silverpine Forest", "Wetlands", "Hillsbrad Foothills", "Stranglethorn Vale",
 		"Arathi Highlands", "Alterac Mountains", "Badlands", "Searing Gorge", "The Hinterlands", "Swamp of Sorrows",
 		"Blasted Lands", "Burning Steppes", "Eastern Plaguelands", "The Barrens", "Darkshore", "Ashenvale",
 		"Stonetalon Mountains", "Thousand Needles", "Desolace", "Dustwallow Marsh", "Moonglade", "Azshara", "Tanaris",
-		"Feralas", "Durotar" }) do Travel(z) end
+		"Feralas", "Western Plaguelands", "Felwood", "Un'Goro Crater", "Silithus", "Winterspring", "Durotar" }) do Travel(z) end
 	local files = {}
 	for _, d in ipairs({ "Kalimdor", "Kalimdor_enUS", "EasternKingdoms", "EasternKingdoms_enUS" }) do
 		for _, f in ipairs({ "Durotar", "Orgrimmar", "Elwynn", "Stormwind", "Exploration", "DunMorogh", "Ironforge", "Tirisfal",
@@ -546,7 +546,7 @@ T.run("C0b: the regional sources are kept as compact pieces that decode exactly"
 			"ThousandNeedles", "LochModan", "Westfall", "Redridge", "Duskwood", "Silverpine", "Wetlands", "Hillsbrad",
 			"Stranglethorn", "Desolace", "DustwallowMarsh", "Moonglade", "Azshara", "Tanaris", "Feralas", "Arathi", "Alterac",
 			"Badlands", "SearingGorge", "Hinterlands", "SwampOfSorrows", "BlastedLands", "BurningSteppes",
-			"EasternPlaguelands", "Dungeons" }) do
+			"EasternPlaguelands", "Dungeons", "WesternPlaguelands", "Felwood", "UnGoroCrater", "Silithus", "Winterspring" }) do
 			table.insert(files, ReadRepo("AzerothUnspoken_" .. d .. "/" .. f .. ".lua"))
 		end
 	end
@@ -574,7 +574,7 @@ T.run("C0b: the regional sources are kept as compact pieces that decode exactly"
 			if all:find("[==[\n" .. text .. "]==]", 1, true) then found = found + 1 end
 		end
 	end
-	T.eq(sources, 88, "the forty-four rules files and the forty-four English texts files of the download are sources")
+	T.eq(sources, 98, "the forty-nine rules files and the forty-nine English texts files of the download are sources")
 	T.eq(found, sources, "each source decodes to the exact text of its file")
 	T.ok(kept < whole * 0.6, ("the pieces are far smaller than the source (%d of %d bytes)"):format(kept, whole))
 	-- a source with no dictionary, or holding a code byte, is kept as written
@@ -618,12 +618,18 @@ end)
 T.run("C0b: a change of area is spread over frames and no pick sees a half-built area", function()
 	Travel("Durotar")
 	local full = Dump()
-	-- a zone of Kalimdor with no area pack of its own (The Barrens has one since W02)
+	-- another area of Kalimdor (every zone of Kalimdor has an area pack of its own since W04)
 	Travel("Silithus")
 	Packs.BUDGET_MS = 0
 	Travel("Durotar")
 	T.ok(Packs.job ~= nil, "the change goes on in the next frames")
-	local frames = Frames(3)
+	-- first the area left behind is dropped, over frames of its own; then Durotar is built in the staging
+	local function UntilStaging()
+		local n = 0
+		while Packs.job and not Engine.staging and n < 100000 do UPDATE(0.016); n = n + 1 end
+		return n
+	end
+	local frames = UntilStaging() + Frames(3)
 	T.ok(Packs.job ~= nil and Engine.staging ~= nil, "the area is being built, out of the selection")
 	T.ok(not InIndex("kalimdor_durotar") and not InIndex("kalimdor_orgrimmar"), "no pick sees a rule of it yet")
 	-- in combat the change waits
@@ -643,6 +649,7 @@ T.run("C0b: a change of area is spread over frames and no pick sees a half-built
 	Travel("Silithus")
 	Frames()
 	Travel("Durotar")
+	UntilStaging()
 	Frames(20)
 	T.ok(Engine.staging ~= nil, "Durotar half-built")
 	Travel("Elwynn Forest")

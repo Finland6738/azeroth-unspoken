@@ -1140,4 +1140,54 @@ NS:AddTexts("enUS", {
 		"{other}! There's a friend, mon. The day just got lighter.",
 		"Ah, {other}. Good people are rare as fresh water on a long sea crossing.",
 	},
+	["ally_death.w04.001"] = {
+		"{other} is down. The grieving gets done on the way out, not before.",
+		"{other}. I saw it, and I was too far. Eyes front.",
+		"There's no room for it right now. I'll make room afterward, {other}. I promise.",
+	},
+	["ally_death.w04.002"] = {
+		"There's a gap where {other} was standing. Everyone feels it at once.",
+		"One fewer of us. The others close up without a word being said.",
+		"{other}'s place is empty. My eyes keep going back to it.",
+	},
+	["ally_death.w04.003"] = {
+		"Down isn't gone. Not always. Not yet, {other}.",
+		"In this world the fallen sometimes get up again. I'm counting on it, {other}.",
+		"Hold on, {other}, wherever you've gone. There are ways back.",
+	},
+	["ally_death.w04.004"] = {
+		"That could have been me. Next time it might be.",
+		"{other} today. Who tomorrow? Better not to finish that thought.",
+		"It picks without looking. {other} this time. Anyone, the next.",
+	},
+	["ally_death.w04.005"] = {
+		"I should have been closer. I'll be closer for the rest of them.",
+		"Couldn't cover {other}. I can cover whoever's left.",
+		"Too late for {other}. Not too late for the others. Move.",
+	},
+	["ally_death.w04.006"] = {
+		"Whatever did that to {other} is mine.",
+		"That was {other}. Somebody is going to answer for it.",
+		"I'll settle this for you, {other}. Right now.",
+	},
+	["pet_call.w04.001"] = {
+		"{pet} shakes itself awake and comes to me.",
+		"Here's {pet}, looking me over as if I were the one back from who knows where.",
+		"{pet} turns up with that look: so, where are we going?",
+	},
+	["pet_call.w04.002"] = {
+		"{pet} again. We both pretend this is a partnership.",
+		"{pet} eyes the world like someone waiting for an apology. Hard to argue.",
+		"{pet} answers the call the way a debt collector does: on time, and unwelcome.",
+	},
+	["pet_call.w04.003"] = {
+		"{pet} is in high spirits. Hard not to catch some of it.",
+		"Good mood, {pet}? Then at least one of us is in one.",
+		"{pet} comes over pleased with everything. I could learn something there.",
+	},
+	["pet_dismiss.w04.001"] = {
+		"Off with you, {pet}. I'll call when I need you.",
+		"That'll do, {pet}. The next stretch is mine alone.",
+		"Dismissed, {pet}. Don't go far, wherever it is you go.",
+	},
 }, "base_relations")

@@ -839,4 +839,399 @@ NS:AddTexts("enUS", {
 		"glances up as the sky shifts its weight, then tightens a strap and walks on without comment.",
 		"looks up at the turning sky, shrugs the pack higher on {g:his|her} shoulders, and keeps going.",
 	},
+	["journey.w04.001"] = {
+		"Nothing to do now but sit and be carried. I'd forgotten how rare that is.",
+		"For once the road is someone else's problem. I'll just hold on and watch.",
+		"No reins in my hands, no path to choose. Strange, how restful it is to have no say.",
+	},
+	["journey.w04.002"] = {
+		"Steady, steady. I'm told the trick is not to look down. I'm told a lot of things.",
+		"Wings, straps and nothing underneath. I've agreed to stranger things, though I can't think of one right now.",
+	},
+	["journey.w04.003"] = {
+		"settles into the saddle as the wings find their rhythm, and the ground below begins to look like someone else's business.",
+		"grips the harness as the beat of great wings carries {g:him|her} up and away from the roost.",
+		"rises on steady wingbeats, and everything that was large a moment ago becomes something {g:he|she} could cover with a thumb.",
+	},
+	["journey.w04.004"] = {
+		"Up here, nobody can ask anything of me. The rush of air takes every voice away.",
+		"From this high, every trouble down there looks the same size. Small, and someone else's.",
+		"No one can reach me for a while. It's the closest thing to quiet I'll get.",
+	},
+	["journey.w04.005"] = {
+		"Off we go! Whoever packed my stomach, please check it's still on board.",
+		"And up! If I shout, it's enthusiasm. Mostly.",
+	},
+	["journey.w04.006"] = {
+		"My legs have earned this. Let the wings do the walking for a while.",
+		"Good. Every league up here is a league my feet don't have to argue with.",
+	},
+	["journey.w04.007"] = {
+		"The world never looks this simple from the ground. I know it's a lie. I'll enjoy it anyway.",
+		"Everything below fits together from up here, as if it had been planned. It wasn't, but it's nice to pretend.",
+	},
+	["journey.w04.008"] = {
+		"leans into the first wide turn without meaning to, and then pretends that was on purpose.",
+		"keeps one hand on the strap and the other free, as if to wave at something below, and does not.",
+	},
+	["journey.w04.009"] = {
+		"The ground comes back up to meet me, the way it always does. Thank you, ground.",
+		"Down. My knees aren't sure yet, but the rest of me is glad.",
+		"Feet first, then the rest of me catches up. Landed.",
+	},
+	["journey.w04.010"] = {
+		"slides down from the saddle and stands for a moment, letting the hum of the wings fade out of {g:his|her} ears.",
+		"climbs down stiffly, and works the cramp out of one leg before trusting it with any weight.",
+		"lands, unbuckles, and gives the sky one last look over the shoulder, as if to make sure it stays up there.",
+	},
+	["journey.w04.011"] = {
+		"Fingers, toes, pack. All present. I'll call that a good flight.",
+		"Down in one piece, which is the only review a flight needs.",
+		"There. Down, with everything attached and only a little rearranged.",
+	},
+	["journey.w04.012"] = {
+		"Back to walking pace. Things have their proper size again, and so do I.",
+		"From up there it all looked so tidy. Down here it's back to boots and the long way round.",
+	},
+	["journey.w04.013"] = {
+		"Right, then. Where's the nearest place that doesn't move under me?",
+		"Down. Now point me at whatever brought me here.",
+	},
+	["journey.w04.014"] = {
+		"steps off at the end of the long flight with the ache of the saddle in every joint, and stretches until something cracks.",
+		"comes down from the long crossing stiff in every joint, and spends a while walking in small circles to remember how legs work.",
+	},
+	["journey.w04.015"] = {
+		"That was long enough for my legs to file a complaint. They're filing it now.",
+		"So much sky behind me that the ground feels like news.",
+	},
+	["journey.w04.016"] = {
+		"A different air, different voices. Nothing changes the whole picture as fast as a flight.",
+		"I got here faster than my worries could follow. Let's enjoy the head start while it lasts.",
+	},
+	["journey.w04.017"] = {
+		"The wings turn back the way they came, and I'm left with the ground and my own two feet. As it should be.",
+		"Down, and back to the old partnership: me and the road.",
+	},
+	["landmark.w04.001"] = {
+		"{landmark}. A name someone thought worth giving. I'll give it a moment of my attention, at least.",
+		"{landmark}. Somebody cared enough about this spot to name it. That's always worth a look.",
+		"So this is {landmark}. Smaller than the name, or bigger. It's never quite the same size as the name.",
+	},
+	["landmark.w04.002"] = {
+		"takes in {landmark} with a slow look, the way one learns a face to know it again later.",
+		"commits the look of {landmark} to memory, one detail at a time, in case the road ever leads back.",
+		"pauses at {landmark} and turns once, slowly, to fix where it stands among everything else.",
+	},
+	["landmark.w04.003"] = {
+		"{landmark}. Good. It exists, then; I'd half suspected the maps of making things up.",
+		"Ah, {landmark}. Exactly as advertised, more or less.",
+		"{landmark}. Worth the walk? Ask me again when I've had a look around.",
+	},
+	["landmark.w04.004"] = {
+		"{landmark}. Good to have something on the map I can put my finger on.",
+		"{landmark}. One fixed point, anyway. The rest of the day can arrange itself around it.",
+		"{landmark}. Now I know where I am, which is more than I could say a while ago.",
+	},
+	["landmark.w04.005"] = {
+		"looks {landmark} over with frank, unhurried interest, the way one sizes up a new acquaintance.",
+		"reaches {landmark} and gives the place the courtesy of a proper look before anything else.",
+	},
+	["quest_complete.w04.001"] = {
+		"Hands empty again. Funny how much lighter they feel than when they were full of someone else's business.",
+		"Nothing left in my hands that belongs to anyone else. That is a good way to stand.",
+		"My hands are my own again. I'd forgotten how that feels.",
+	},
+	["quest_complete.w04.002"] = {
+		"Done. I'd like that written down somewhere, preferably in large letters.",
+		"Finished, and nobody had to carry me home. Mark the day.",
+		"That's settled. If it comes undone, I'd rather not hear about it.",
+	},
+	["quest_complete.w04.003"] = {
+		"lets the last of the errand go out in one long breath, and rolls a stiff shoulder.",
+		"straightens after the handover, and for a moment simply stands there, owing nothing to anyone.",
+	},
+	["quest_complete.w04.004"] = {
+		"Already the details are going. In a month I'll remember that I did it, and little of how.",
+		"Strange how fast a finished task goes soft at the edges. Soon it will be one more thing I once did.",
+		"I'll forget the shape of this one soon enough. The ache in my legs will remind me a day or two longer.",
+	},
+	["quest_complete.w04.005"] = {
+		"My word was given, and now it is kept. That is all a word is for.",
+		"I said I would see it through. I have. Nothing more to say about it.",
+		"Promised, and delivered. Let that be the whole of my reputation.",
+	},
+	["quest_complete.w04.006"] = {
+		"Every time I finish one of these, I tell myself it was the last favor. Every time, I lie.",
+		"I keep saying I'll stop running errands for strangers. Strangers keep having errands.",
+		"One more favor for one more stranger. At this rate I'll know half the world by their troubles.",
+	},
+	["quest_complete.w04.007"] = {
+		"tries to look modest about it, and does not quite manage.",
+		"puts on a modest face for the occasion, which fits about as well as borrowed boots.",
+	},
+	["quest_complete.w04.008"] = {
+		"Small work, maybe. But the world is mostly made of small work, and someone has to do it properly.",
+		"Nobody will sing about this. Good. The things worth doing rarely get songs.",
+		"It won't change the world. It changed one corner of it, for a while, and I was the one standing there.",
+	},
+	["quest_complete.w04.009"] = {
+		"Right. That's off the list. What's left on it can wait for my boots to stop aching.",
+		"Good. Done. Nobody ask me for anything for a little while.",
+		"Finished. Anyone with a new job for me can take a number.",
+	},
+	["quest_complete.w04.010"] = {
+		"A task is a road with an end you can see. I have walked this one to its end. The others still curve out of sight.",
+		"Each thing I finish is a milestone, and I am beginning to have a long row of them behind me.",
+	},
+	["quest_complete.w04.011"] = {
+		"wipes both palms down the front of {g:his|her} gear, as if the task had left something on them, and moves on.",
+		"flexes the fingers of one hand, slowly, the way a craftsman does at the end of a piece of work.",
+	},
+	["quest_complete.w04.012"] = {
+		"They always look so surprised when it's actually done. I try not to take it personally.",
+		"That face people make when you come back with it finished. Half relief, half disbelief. I'm collecting them.",
+		"Every time, the same look: as if they'd half expected never to see me again.",
+	},
+	["quest_complete.w04.013"] = {
+		"Another one. Let them add it to the tally, if anyone is keeping one.",
+		"That's how it's done. Remember who did it.",
+		"Write it down. I want this one remembered.",
+	},
+	["quest_complete.w04.014"] = {
+		"Done, and no one to tell who would understand what it cost. That's all right. I know.",
+		"It's the quiet after a finished task I never get used to. Everyone goes back to their day, and so must I.",
+		"The end of a task is a lonely little moment. It passes. They always do.",
+	},
+	["quest_complete.w04.015"] = {
+		"gives a short, formal nod, the kind that closes an account between two parties.",
+		"inclines {g:his|her} head once, and the matter is closed with as little ceremony as it was opened.",
+	},
+	["quest_complete.w04.016"] = {
+		"Good. Now I can think about food again, which my stomach has been suggesting for some time.",
+		"One task down. My stomach has been very patient about it, and now it wants its share.",
+		"First the task, then the rest of me. The rest of me would like a meal.",
+	},
+	["quest_complete.w04.017"] = {
+		"Something in me is a little steadier than it was when I took this on. I'll keep that and leave the rest.",
+		"Whatever I was when I accepted this, I am a little more than that now. Not much. Enough.",
+	},
+	["quest_complete.w04.018"] = {
+		"No need for a speech. A simple 'well done' and a chair would be plenty.",
+		"Don't thank me all at once. Actually, don't thank me. Just point me somewhere I can sit.",
+		"Please, no fuss. I'll settle for a nod and somewhere quiet.",
+	},
+	["quest_complete.w04.019"] = {
+		"One closed. I can already feel the next one tugging at my sleeve.",
+		"Finished, and already the next thing is clearing its throat behind me.",
+		"Is it done? It's done. Good. Now, what was the next thing...",
+	},
+	["quest_complete.w04.020"] = {
+		"taps the side of {g:his|her} pack twice, the small habit of a traveler when one thing ends and another has not yet begun.",
+		"glances back the way the task led, as if to fix it in memory, then turns to face the other way.",
+	},
+	["quest_complete.w04.021"] = {
+		"I know a little more about this corner of the world than I did. Nobody paid me for that part, and it's the part I'll keep.",
+		"Whatever else it was, it was a lesson in how things work around here. I'll remember that longer than the reward.",
+	},
+	["quest_complete.w04.022"] = {
+		"That's that, then. On to whatever's next.",
+		"Finished. I'll not pretend it was hard, and I'll not pretend it was nothing.",
+		"It's done. I'd do it again, but I'd rather not have to.",
+	},
+	["quest_complete.w04.023"] = {
+		"I never know, handing these things over, whether I've ended someone's trouble or only moved it along.",
+		"Over and done. Whether it mends anything is out of my hands now. I hope it does.",
+	},
+	["quest_complete.w04.024"] = {
+		"counts on {g:his|her} fingers for a moment, loses track, and decides it was a good day's work regardless.",
+		"looks around as if expecting a fanfare, finds none, and seems relieved about it.",
+		"nods to no one in particular, the way people do when they have surprised themselves a little.",
+	},
+	["quest_complete.w04.025"] = {
+		"There's always a point where a task could be dropped. I didn't drop this one. That's worth something.",
+		"It would have been easy to walk away from it halfway. Most things would be. I didn't.",
+	},
+	["quest_complete.w04.026"] = {
+		"Glad to be of use. Truly. It's a rare enough feeling to be worth saying out loud.",
+		"I'm glad it was me you asked. That isn't nothing.",
+	},
+	["quest_complete.w04.027"] = {
+		"Half of it was walking, a quarter was waiting, and the rest I'd rather not talk about. Still, done.",
+		"If I wrote down how that actually went, nobody would hire me again. Lucky nobody asks.",
+		"It went more or less to plan, if the plan was mostly improvising. Done is done.",
+	},
+	["quest_complete.w04.028"] = {
+		"stands a moment between one errand and the next, in that short, unclaimed space that belongs to no one else.",
+		"lingers a breath longer than needed, as if the end of a task were a threshold worth standing on.",
+	},
+	["quest_complete.w04.029"] = {
+		"It's a good feeling, a finished thing. I should collect more of them.",
+		"Nothing grand. Just one thing that was broken and isn't now, or was missing and isn't now. I'll take it.",
+	},
+	["quest_complete.w04.030"] = {
+		"Next time someone says 'it'll only take a moment', I'm bringing a witness.",
+		"Every task starts out as 'a small favor'. I'm learning to translate that.",
+	},
+	["quest_complete.w04.031"] = {
+		"One knot fewer in the world's tangle. I won't pretend the tangle noticed.",
+		"Every finished task is a knot untied. The world has plenty more, but this one hangs loose now.",
+	},
+	["quest_complete.w04.032"] = {
+		"shifts {g:his|her} weight from one sore foot to the other, task done, and is in no hurry to go anywhere.",
+		"lets {g:his|her} shoulders drop a full inch, as if a strap had just been cut.",
+	},
+	["quest_complete.w04.033"] = {
+		"Free again, for a moment. No one's errand in my pocket. The map is all mine until I agree to something else.",
+		"This is the best part: the short stretch when I belong to no task at all.",
+	},
+	["quest_progress.w04.001"] = {
+		"Part of it, at least. The rest is out there somewhere, not hurrying to meet me.",
+		"That piece is done. The other pieces are being difficult about it.",
+		"Progress. Not the whole thing, but the whole thing never arrives all at once.",
+	},
+	["quest_progress.w04.002"] = {
+		"checks off the last of it, and turns with the walk back already in mind.",
+		"finishes the final part of the errand; all that remains of the work is the way back.",
+	},
+	["quest_progress.w04.003"] = {
+		"That part's done. Don't stop now, it's only half a job.",
+		"Good. Still more owed, but good.",
+		"Closer. Not there, but closer.",
+	},
+	["subzone_enter.w04.001"] = {
+		"passes some unmarked border into {subzone}, and starts noticing things all over again.",
+		"enters {subzone} with the alert, unhurried look of someone taking stock.",
+		"comes into {subzone} and slows a fraction, the way anyone does when a place changes its name.",
+	},
+	["subzone_enter.w04.002"] = {
+		"{subzone}. Same world, different name. Let's see if the name earns it.",
+		"Here begins {subzone}, if the map is to be believed. Maps usually are, about names.",
+		"{subzone}. Another heading on the day's page.",
+	},
+	["subzone_enter.w04.003"] = {
+		"{subzone}. Lovely name. Let's hope the place lives up to it, or at least doesn't bite.",
+		"Ah, {subzone}. I'll behave if it does.",
+		"{subzone}! Somebody went to the trouble of naming this. Let's find out why.",
+	},
+	["subzone_enter.w04.004"] = {
+		"Every name on the map was someone's whole world once. {subzone} too, I suppose.",
+		"{subzone}. I wonder how many people have walked in here thinking about something else entirely, like me.",
+		"{subzone}. Somebody's home, somebody's shortcut, somebody's bad memory. Today it's my next few steps.",
+	},
+	["subzone_enter.w04.005"] = {
+		"notes the name {subzone} with the faint satisfaction of someone ticking off a list.",
+		"registers {subzone} with a small nod, like a greeting in passing.",
+	},
+	["subzone_enter.w04.006"] = {
+		"{subzone}. I note the name, the ways in and the ways out. The rest can wait.",
+		"{subzone}. First thing in any place: where are the exits. Second: who else is here.",
+		"{subzone}. Lay of the land first, opinions later.",
+	},
+	["subzone_enter.w04.007"] = {
+		"{subzone}. Fine. Eyes open and hands where they can reach something.",
+		"{subzone}, eh? Doesn't change what I'm here for.",
+		"{subzone}. Mind the footing and the company.",
+	},
+	["subzone_enter.w04.008"] = {
+		"{subzone}. Another name I'll carry out of here, whether I want it or not.",
+		"Names pile up behind me. {subzone} goes on the pile, and I keep walking.",
+	},
+	["subzone_enter.w04.009"] = {
+		"pauses at the edge of {subzone} as one waits at a stranger's door, then steps in.",
+		"listens to {subzone} before looking at it: what a place sounds like says a good deal.",
+	},
+	["subzone_enter.w04.010"] = {
+		"{subzone}. Whoever named it either had a poet's soul or had run out of ideas. Hard to say which.",
+		"{subzone}. Fine name. I've met people with worse.",
+		"{subzone}. Somebody stood here once and thought: yes, that'll do for a name.",
+	},
+	["subzone_enter.w04.011"] = {
+		"{subzone}. Whatever waits in here, it'll find me ready.",
+		"Into {subzone}. Steady, and no surprises.",
+		"{subzone}. I've walked into worse. Probably.",
+	},
+	["subzone_enter.w04.012"] = {
+		"takes in {subzone} in quick glances: the lay of it, the people, if any, and the likely ways through.",
+		"reads {subzone} the way a tracker reads ground, quickly and without seeming to.",
+		"measures {subzone} with a single sweeping glance, and files it away.",
+	},
+	["subzone_enter.w04.013"] = {
+		"{subzone}. Let's hope it's kind. Places mostly are, if you don't ask too much of them.",
+		"{subzone}. I'll be polite to it, and see if it returns the favor.",
+	},
+	["subzone_enter.w04.014"] = {
+		"{subzone}. I'll take it on trust, the way I take most names.",
+		"{subzone}, says the map. The map's been wrong before, but not about this sort of thing.",
+		"{subzone}. I'll reserve judgment until something tries to eat me.",
+	},
+	["subzone_enter.w04.015"] = {
+		"Every place keeps something back from anyone just passing through. I wonder what {subzone} is keeping.",
+		"{subzone}. There's always more to a place than one walk through it. I'll only get the outside.",
+	},
+	["subzone_enter.w04.016"] = {
+		"squares {g:his|her} shoulders as {subzone} begins, out of habit more than need.",
+		"settles the pack and steps into {subzone} like someone arriving at work.",
+	},
+	["subzone_enter.w04.017"] = {
+		"{subzone}. Good. I like a place that tells you its name up front.",
+		"{subzone}. At least the place introduces itself. More than some people manage.",
+	},
+	["subzone_enter.w04.018"] = {
+		"{subzone}. Noted. Onward.",
+		"{subzone}. One more name for the road. Keep moving.",
+	},
+	["subzone_enter.w04.019"] = {
+		"says the name {subzone} under the breath, once, as if testing how it sits on the tongue.",
+		"mouths the name {subzone} without a sound, the way people do when they mean to remember it.",
+	},
+	["subzone_enter.w04.020"] = {
+		"{subzone}. The world goes on being divided into pieces with names. I like that about it.",
+		"{subzone}. A name is a promise that something here mattered to someone. I'll keep my eyes open for it.",
+	},
+	["subzone_enter.w04.021"] = {
+		"enters {subzone} without ceremony, hand never far from where it might be needed.",
+		"goes into {subzone} with the plain caution of someone who has walked into enough places to know better.",
+	},
+	["subzone_enter.w04.022"] = {
+		"{subzone}. A different name, the same me walking into it.",
+		"{subzone}. The places change faster than I do. Maybe that's the point of walking.",
+	},
+	["subzone_enter.w04.023"] = {
+		"Well met, {subzone}. Let's get along.",
+		"Hello, {subzone}. I'll try not to make a mess of you.",
+	},
+	["weather_change.w04.001"] = {
+		"stops to sniff the air like a farmer at a field's edge, then nods as if a question had been answered.",
+		"lifts {g:his|her} face to the changed air for a moment, reading it the way some people read a letter.",
+		"squints upward at the change, then goes back to minding the ground underfoot.",
+	},
+	["weather_change.w04.002"] = {
+		"The sky has turned the page. I didn't read the last one closely enough to know what changed.",
+		"Up above, a decision has been made without me. That's how it usually goes with the sky.",
+		"The air feels different on my skin than it did a moment ago. The world keeps its own counsel and changes anyway.",
+	},
+	["weather_change.w04.003"] = {
+		"And there it goes. Whatever it's planning, I'm dressed for something else.",
+		"The sky's changed its plans. Nobody told me, as usual.",
+		"Well, that's different. I liked the old one fine, but nobody asked.",
+	},
+	["weather_change.w04.004"] = {
+		"The sky does what it likes. The road is the same length either way.",
+		"Changed, has it? My boots don't care, and I've decided to agree with my boots.",
+		"Whatever's coming, the road doesn't get any shorter for complaining.",
+	},
+	["weather_change.w04.005"] = {
+		"pulls {g:his|her} gear a little tighter, or a little looser, as the change in the air demands.",
+		"pauses while the air shifts all around, as if waiting to be sure the change means to stay.",
+	},
+	["weather_change.w04.006"] = {
+		"Everything up there is rearranging itself, quietly. I envy how little fuss it makes.",
+		"A change in the air, and something in me changes with it, a little. I never know in which direction.",
+		"The sky moves on to something else, and I find I'd been paying it no attention at all.",
+	},
+	["weather_change.w04.007"] = {
+		"Different sky, same boots, same road. Onward.",
+		"The air's turned. Nothing to do about it but notice and carry on.",
+	},
 }, "base_world")

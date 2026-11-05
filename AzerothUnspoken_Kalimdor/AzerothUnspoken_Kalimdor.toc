@@ -28,3 +28,7 @@ Azshara.lua
 Tanaris.lua
 Feralas.lua
 Dungeons.lua
+Felwood.lua
+UnGoroCrater.lua
+Silithus.lua
+Winterspring.lua
