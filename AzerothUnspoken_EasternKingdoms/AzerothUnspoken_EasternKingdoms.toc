@@ -16,3 +16,11 @@ DunMorogh.lua
 Ironforge.lua
 Tirisfal.lua
 Undercity.lua
+LochModan.lua
+Westfall.lua
+Redridge.lua
+Duskwood.lua
+Silverpine.lua
+Wetlands.lua
+Hillsbrad.lua
+Stranglethorn.lua

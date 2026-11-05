@@ -522,4 +522,12 @@ AU:RegisterRegionalPack("elwynnforest", {
 		tags = { "temperament:cheerful" }, depth = { "natural", "literary" },
 		theme = "fellowship", motifs = { "bread" }, tier = 1,
 		conditions = { zone = "Stormwind City", questJustCompleted = true } },
+	["sw.quest_complete.w02.01"] = { event = "quest_complete", speaker = "character", styles = { "everyday", "ironic" },
+		tags = { "temperament:cheerful" }, depth = { "natural", "literary" },
+		theme = "humour", motifs = { "water" },
+		conditions = { zone = "Stormwind City", questJustCompleted = true } },
+	["sw.quest_complete.w02.02"] = { event = "quest_complete", speaker = "inner", styles = { "intimate", "everyday" },
+		tags = { "temperament:stoic", "motivation:duty" }, depth = { "natural", "literary" },
+		theme = "duty", motifs = { "stone", "banner" },
+		conditions = { zone = "Stormwind City", questJustCompleted = true } },
 ]==])

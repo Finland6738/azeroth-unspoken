@@ -632,4 +632,13 @@ AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_stormwind", [==[
 		"is thanked warmly, and the smell of fresh bread drifting down the street seems, for a moment, part of the reward.",
 		"shakes the hand offered in thanks while a child runs past chasing a hoop along the street.",
 	},
+	["sw.quest_complete.w02.01"] = {
+		"Done. I'll be at the Pig and Whistle if anyone needs proof.",
+		"Finished. One more little knot in this city untied; only ten thousand left.",
+		"Sorted. Tell the next person with a problem I'm down by the canals, catching my breath.",
+	},
+	["sw.quest_complete.w02.02"] = {
+		"Done. White stone, blue banners, and behind them people who needed a hand. I gave one.",
+		"Finished. Even a great city still runs on small help, carried from door to door.",
+	},
 ]==])

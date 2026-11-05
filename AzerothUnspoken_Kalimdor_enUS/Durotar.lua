@@ -867,4 +867,18 @@ AU:RegisterRegionalTexts("durotar", "enUS", "kalimdor_durotar", [==[
 		"That part's done. The rest is out there, under the same hard sun.",
 		"One piece down. Durotar is generous with errands, if nothing else.",
 	},
+	["dur.attack.w02.01"] = {
+		"Eat dust! There's plenty to go around.",
+		"Here's a taste of Durotar!",
+		"Hot ground, hard blows. Welcome.",
+	},
+	["dur.quest_complete.w02.01"] = {
+		"Done. This land gives nothing away for free, and asks the same of anyone who lives on it.",
+		"Finished. Durotar is hard, but it pays its debts in respect, if not in shade.",
+		"Another job done beneath the red cliffs. My shoulders know it; soon someone else will too.",
+	},
+	["dur.quest_progress.w02.01"] = {
+		"That's all of it. Now back across the hot ground to tell them, and hope for a breeze.",
+		"All done. In this heat, the walk to hand it in is the hard part.",
+	},
 ]==])

@@ -131,4 +131,36 @@ AU:RegisterRegionalTexts("tirisfalglades", "enUS", "eastern_undercity", [==[
 		"Overhead it's raining on Lordaeron. The city only notices in the damp that creeps along the walls.",
 		"The canals rise a finger's width: rain above, then. Nobody down here looks up.",
 	},
+	["und.greet.w02.01"] = {
+		"Evening, or morning. Hard to tell down here. Greetings either way.",
+		"Greetings. Mind the canals; they don't give back what falls in.",
+	},
+	["und.muse.w02.01"] = {
+		"A dreadlord stands at the Banshee Queen's side, all wings and courtesy. People here lower their voices when they speak of it, and they rarely do.",
+		"Varimathras keeps to the Royal Quarter, smiling at nothing. The Forsaken watch him the way you'd watch a fire laid too close to the thatch.",
+	},
+	["und.muse.w02.02"] = {
+		"follows the curve of the ring past niches where coffins once lay, now stacked with crates and bolts of cloth.",
+		"passes an alcove carved for the dead long ago, where a merchant now keeps a set of scales and a lamp.",
+	},
+	["und.muse.w02.03"] = {
+		"Rats in every corner, fat and unbothered. Nobody here seems to mind them, and I can't decide what that says about anyone.",
+		"A rat just looked at me as if I were the one who didn't belong. Down here, it may have a point.",
+	},
+	["und.muse.w02.04"] = {
+		"Talk around the city says the apothecaries are brewing a new plague, one to turn against the Scourge. Nobody says what else it might be turned against.",
+		"A plague to fight a plague. That's the rumor down here, passed along in low voices, and nobody seems to find it strange.",
+	},
+	["und.quest_complete.w02.01"] = {
+		"receives a nod from a face that no longer moves much, and finds it worth more than many a smile.",
+		"steps back from the counter as the payment is set down by gray, careful fingers.",
+	},
+	["und.quest_complete.w02.02"] = {
+		"Done. Don't all cheer at once. Or at all; that's fine too.",
+		"Finished. I'd say it brightened the place, but that would take more than me.",
+	},
+	["und.weather_change.w02.01"] = {
+		"Thunder up above, muffled by all that stone. Down here it sounds like someone moving furniture in a far room.",
+		"A storm over the ruins, by the rumble of it. The lamps don't even flicker.",
+	},
 ]==])

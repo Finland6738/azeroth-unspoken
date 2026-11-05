@@ -128,4 +128,37 @@ AU:RegisterRegionalTexts("dunmorogh", "itIT", "eastern_ironforge", [==[
 		"Neve sugli stivali di chiunque arrivi da fuori. Io resto accanto alla forgia e mi fido della loro parola.",
 		"Alle porte la gente batte i piedi per togliersi la neve. Forgiardente non si cura del tempo che fa: conosce solo il caldo.",
 	},
+	["ifo.greet.w02.01"] = {
+		"Salute! Abbastanza caldo, qui dentro, dopo quella strada di montagna?",
+		"Salve. Occhio alle scintille, e ai nani che vanno di fretta.",
+	},
+	["ifo.muse.w02.01"] = {
+		"Rune incise su ogni arco, consumate e morbide proprio all'altezza dove le mani le toccano da generazioni.",
+		"La pietra delle sale è lucida dove stivali e spalle l'hanno strofinata per secoli. Una città prende la forma di chi la abita, come un buon guanto.",
+	},
+	["ifo.muse.w02.02"] = {
+		"Qualcuno, nel Military Ward, sta di nuovo provando un fucile. O alla montagna è venuto il singhiozzo.",
+		"Bum. Poi grida di gioia. Poi un altro bum. Tiro a segno dei nani, o un matrimonio molto vivace.",
+		"Un boato dall'altra parte della città, e nessuno alza nemmeno la testa. Ironforge ha sentito di peggio.",
+	},
+	["ifo.muse.w02.03"] = {
+		"si appoggia a un parapetto di pietra sopra la Great Forge, mentre il calore sale lungo il viso in onde lente e tremolanti.",
+		"osserva la luce rossa dei canali di metallo fuso scorrere sulle pareti scolpite, tanto che i volti di pietra sembrano cambiare espressione.",
+	},
+	["ifo.muse.w02.04"] = {
+		"Il Mystic Ward è l'angolo più silenzioso della città. Persino i nani che ci studiano sembrano aver imparato a posare il martello.",
+		"Sacerdoti e maghi nel Mystic Ward, chini sui libri a mormorare. Dopo il fracasso delle forge, è come entrare in una tasca dei pensieri della montagna.",
+	},
+	["ifo.quest_complete.w02.01"] = {
+		"Fatto. Chi mi ha dato l'incarico ha guardato il risultato come un fabbro guarda una saldatura: con durezza, da ogni lato, e poi un solo cenno breve.",
+		"Finito, ispezionato e approvato. A Ironforge anche un grazie passa prima dalla forgia.",
+	},
+	["ifo.quest_complete.w02.02"] = {
+		"prende la ricompensa con la mano ancora calda del respiro delle forge, e fa un solo cenno.",
+		"si scansa per lasciar passare un carrello di minerale, la ricompensa già nella borsa alla cintura e il compito che affonda nel rumore della città.",
+	},
+	["ifo.weather_change.w02.01"] = {
+		"Qualcuno al portone dice che fuori il cielo si è schiarito. Io mi tengo il bagliore della forgia, ma per i grifoni è una buona notizia.",
+		"Dai cancelli arriva la voce: cielo azzurro su Dun Morogh. Qui dentro nessuno cambia passo per questo.",
+	},
 ]==])

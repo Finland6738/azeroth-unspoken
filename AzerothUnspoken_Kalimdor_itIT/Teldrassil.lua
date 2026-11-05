@@ -125,4 +125,72 @@ AU:RegisterRegionalTexts("teldrassil", "itIT", "kalimdor_teldrassil", [==[
 		"Qui la pioggia arriva tardi: prima cade su mille foglie, e passano solo le gocce più pazienti.",
 		"Pioggia sulle fronde, un rumore come di folla che bisbiglia lassù. Quaggiù, solo una goccia ogni tanto.",
 	},
+	["tel.attack.w02.01"] = {
+		"Rapido come un gufo in picchiata!",
+		"Neanche un suono finché non arriva. Ecco.",
+		"La foresta guarda. Non deludiamola.",
+	},
+	["tel.battle.w02.01"] = {
+		"Facciamola in silenzio. Gli alberi, qui, non amano il baccano.",
+		"Piano, adesso. Non vorrei svegliare tutta l'isola.",
+		"Chiedo scusa, foresta. Ha cominciato lui.",
+	},
+	["tel.battle.w02.02"] = {
+		"scavalca una radice spessa come un muro e si gira ad affrontare l'assalto, mentre le foglie secche turbinano sotto i piedi.",
+		"appoggia le spalle a un grande tronco grigio e affronta ciò che sbuca dalle felci.",
+	},
+	["tel.battle.w02.03"] = {
+		"Un nightsaber. Bellissimo, silenzioso, e sveglissimo. Non sbattere le palpebre.",
+		"Strisce nella penombra, poi gli occhi. Questi felini cacciano in silenzio: dovrò muovermi prima del silenzio.",
+	},
+	["tel.battle.w02.04"] = {
+		"Ragni grossi come uno sgabello. Ma certo. Vieni qua, allora.",
+		"Butterò giù quella tela, e te insieme.",
+		"Otto zampe e zero creanza. Torna nelle tue ragnatele!",
+	},
+	["tel.lowhp.w02.01"] = {
+		"Le radici sono pazienti. Mi accoglierebbero senza dire una parola. Non ancora.",
+		"Quanto silenzio, in questa foresta. Non aggiungerci il mio.",
+		"Più avanti c'è un pozzo lunare. Resta in vita abbastanza da arrivarci.",
+	},
+	["tel.muse.w02.01"] = {
+		"Fatico a credere che quassù ci sia della terra. Ogni collina e ogni ruscello di quest'isola poggiano sui rami di un solo albero.",
+		"Ho battuto un piede sul sentiero, quasi aspettandomi un rumore di vuoto. Niente. L'albero porta con sé la sua terra, e la porta bene.",
+	},
+	["tel.muse.w02.02"] = {
+		"osserva un timberling che arranca tra i tronchi, un piccolo nodo di corteccia e muschio che cammina, e si tiene a rispettosa distanza.",
+		"si blocca quando quello che sembrava un ceppo si alza e se ne va pesante tra le felci, trascinandosi dietro il muschio.",
+		"sente uno scricchiolio e si volta: una piccola creatura d'albero {g:lo|la} sta guardando, e subito si sforza moltissimo di sembrare un alberello.",
+	},
+	["tel.muse.w02.03"] = {
+		"Quel lago è così immobile che gli alberi crescono due volte: una verso l'alto, una verso il basso.",
+		"Guarda l'acqua laggiù. Neanche un'increspatura. Qui anche i pesci nuotano in punta di pinne.",
+	},
+	["tel.muse.w02.04"] = {
+		"I kaldorei hanno piantato quest'albero per riavere ciò che avevano perso a Hyjal. Nessuno dice se abbia funzionato: continuano soltanto a prendersene cura.",
+		"Un nuovo albero del mondo, cresciuto senza le antiche benedizioni. I kaldorei ci camminano sotto con speranza, e con qualcosa di più guardingo della speranza.",
+	},
+	["tel.quest_complete.w02.01"] = {
+		"È fatto. Che la foresta possa riposare un po' più tranquilla.",
+		"Finito. Il compito era piccolo; il luogo che serviva non lo è.",
+		"Fatto. Da qui in poi camminerò in punta di piedi, per farmi perdonare il rumore.",
+	},
+	["tel.quest_progress.w02.01"] = {
+		"C'è tutto. Ora devo ritrovare la strada tra tutti questi alberi identici.",
+		"Ho finito, qui fuori. Il sentiero per tornare indietro passa sotto queste felci, ne sono quasi {g:sicuro|sicura}.",
+	},
+	["tel.victory.w02.01"] = {
+		"abbassa l'arma mentre la luce violacea torna a posarsi sulla radura, e la foresta riprende il suo lungo respiro.",
+		"resta immobile tra le felci finché gli uccelli, uno dopo l'altro, non ricominciano a cantare.",
+		"si toglie dalla spalla una foglia caduta; lassù, la volta degli alberi non si è mossa affatto.",
+	},
+	["tel.victory.w02.02"] = {
+		"Qualunque cosa abbia fatto impazzire i furbolg, non è morta con questo. Vorrei che fosse così.",
+		"Un altro Gnarlpine a terra. Altrove, in quest'albero, il male continua il suo lavoro.",
+	},
+	["tel.victory.w02.03"] = {
+		"Ecco. Dunque, dov'ero? Qui ogni sentiero somiglia a tutti gli altri.",
+		"Fatto. Se qualcuno chiede, è stata una cosa molto elegante.",
+		"Ci voleva meno rumore. Scusate, alberi.",
+	},
 ]==])

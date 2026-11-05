@@ -209,7 +209,7 @@ T.run("companion: every line is private, in the inner voice, and speaks only fro
 			end
 		end
 	end
-	T.eq(n, 51, "51 lines (23 of N8, 21 of N9, 7 of the hunter and the warlock in W01)")
+	T.eq(n, 53, "53 lines (23 of N8, 21 of N9, 7 of the hunter and the warlock in W01, 2 in W02)")
 	for _, ev in ipairs({ "pet_grief", "npc_grief", "ally_death" }) do
 		for _, p in ipairs(NS.Engine:EventRules(ev)) do
 			T.ok(p.tags["topic:death"] == true, p.id .. ": topic death (a character who avoids it has none)")

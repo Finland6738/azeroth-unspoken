@@ -907,4 +907,18 @@ AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_elwynn", [==[
 		"Ecco fatto. Magari adesso questa gente può tornare al suo raccolto.",
 		"Finito. Che i contadini tornino a preoccuparsi dei loro campi, piuttosto.",
 	},
+	["elw.attack.w02.01"] = {
+		"Lascia in pace i contadini!",
+		"Torna nel bosco, tu!",
+		"Via dalla strada e fuori dai campi!",
+	},
+	["elw.quest_complete.w02.01"] = {
+		"consegna l'ultima parte del lavoro e riceve in cambio un sorriso grato, di quelli che arrivano fino agli occhi.",
+		"riceve i ringraziamenti di un viso stanco e riconoscente, e si rimette in strada col passo un po' più leggero.",
+		"si prende una pacca sul braccio e qualche moneta, mentre i prati di Elwynn continuano per la loro strada come se niente fosse.",
+	},
+	["elw.quest_progress.w02.01"] = {
+		"Una parte è fatta. Elwynn nasconde il resto tra campi e boschi, ma qui niente si nasconde poi tanto.",
+		"Non è finita, ma manca meno. Se non altro, è un bel paese in cui darsi da fare.",
+	},
 ]==])

@@ -1006,4 +1006,439 @@ NS:AddTexts("enUS", {
 		"{subzone}. Let's see what the spirits of this place make of me.",
 		"{subzone}. I'll leave a bead somewhere, so the place knows a Darkspear passed through.",
 	},
+	["band.b10_20.muse.01"] = {
+		"I've started drawing my own map on the back of a supply list. The roads are crooked, the distances are wrong, and I'm proud of every line.",
+		"I know which crossroads have an honest signpost and which ones lie. That's worth more than any coin I've earned so far.",
+		"The roads are starting to make sense. Not all of them. Enough that I've stopped asking every guard for directions.",
+	},
+	["band.b10_20.muse.02"] = {
+		"I can now rate every inn bed by how many springs stab you in the back. It's a skill.",
+		"Never trust a stew you can't see the bottom of. I learned that one the hard way.",
+		"Rule of the road: eat when there's food, sleep when there's a roof, and never ask what went into the pie.",
+	},
+	["band.b10_20.muse.03"] = {
+		"tightens the straps of a pack that has grown heavier with every week on the road, and does not seem to mind.",
+		"checks the soles of {g:his|her} boots, frowns at a fresh hole worn by the road, and walks on anyway.",
+		"pauses to look back along the road, as if surprised at how much of it already lies behind.",
+	},
+	["band.b10_20.muse.04"] = {
+		"Some things out there are still too big for me. I've learned to see them before they see me, and to take the long way round.",
+		"I can tell now, at a glance, which beasts are my size and which are not. The second kind gets a wide berth and my respect.",
+	},
+	["band.b1_10.muse.01"] = {
+		"Eleven coppers, a patched bag and half a loaf going hard. I've counted twice. It is still eleven.",
+		"I keep my coins in three different pockets, so one bad day can only take a third of my fortune. A small fortune, granted.",
+		"Every copper already has a job: bread, a bandage, a bed under a roof. Not one of them gets to sit idle.",
+	},
+	["band.b1_10.muse.02"] = {
+		"Every howl out there sounds like it knows my name. And where I sleep.",
+		"I can handle one wolf. Two, if they're polite and take turns.",
+	},
+	["band.b20_30.muse.01"] = {
+		"Places that were names on a map are turning into places I've slept. The world is shrinking, and somehow getting bigger at the same time.",
+		"I can walk a whole day now and still have something left for a fight at the end of it. I remember when a single hill emptied me.",
+		"The road no longer frightens me. It's the things that use it I keep an eye on.",
+	},
+	["band.b20_30.muse.02"] = {
+		"Every tavern has a fellow who swears he saw a dragon. I've stopped buying him drinks, but I still listen.",
+		"Half the rumors on the road are lies, and the other half are worse. I'm learning which half to run from.",
+		"Heard a story about a cave full of gold yesterday. Heard it about the cave before that, too. Caves are popular.",
+	},
+	["band.b20_30.muse.03"] = {
+		"mends a torn strap by the roadside with quick, sure stitches, hands that were clumsy at this not long ago.",
+		"cleans, checks and packs away {g:his|her} gear without looking, hands moving the way a cook's do in a familiar kitchen.",
+		"reads the sky, the dust on the road and the tracks beside it, and picks a path with a steady hand on the map.",
+	},
+	["band.b20_30.muse.04"] = {
+		"The road is full of strangers who share a fire for an hour and are gone at first light. I've stopped expecting to see them again.",
+		"Faces at the inns change faster than I can learn them. I keep the kind ones, and let the rest blur.",
+		"On the road you pass people going the other way. I sometimes wonder what they're leaving behind, and whether it's what I'm walking toward.",
+	},
+	["band.b20_30.muse.05"] = {
+		"I'm not the one who started down this road. That one would have turned around at the first ditch.",
+		"At some point along the way I stopped being a beginner. Nobody told me; I just noticed.",
+		"There's still a lot I can't do. But the list of what I can is longer than it was.",
+	},
+	["band.b30_40.muse.01"] = {
+		"I have a scar for most of the lessons I've learned. The ones without scars I keep forgetting.",
+		"My body keeps a better record of these years than any journal. Every knot and scar has a date I could almost name.",
+		"Old scars ache before a hard day. I've stopped resenting them; they're the most honest advisers I have.",
+	},
+	["band.b30_40.muse.02"] = {
+		"My map has been folded and refolded so often the creases have become roads of their own.",
+		"I had to buy a bigger map. The old one ran out of edges.",
+		"There are fewer blank spaces on my map than there used to be, and I'm not sure I like it.",
+	},
+	["band.b30_40.muse.03"] = {
+		"rolls a stiff shoulder until it gives a dull crack, a sound {g:he|she} seems to know well.",
+		"runs a thumb along an old scar on the back of one hand, without seeming to notice doing it.",
+		"eases down to sit with the slow care of someone whose knees have carried a great deal of road.",
+	},
+	["band.b30_40.muse.04"] = {
+		"I can tell within a few words now whether a job is worth taking. The trick is believing myself.",
+		"When someone says a task is simple, I ask what happened to the last one who tried. It saves time.",
+		"I've learned to read the pause before a request. The longer it is, the worse the job.",
+	},
+	["band.b30_40.muse.05"] = {
+		"The world is wider than anyone told me, and harder, and I'm still glad I set out to see it.",
+		"I've walked far enough to know there's no end to it. That isn't a complaint.",
+		"Every ridge I climb shows me three more. Some days that's a burden. Today it's a promise.",
+	},
+	["band.b30_40.muse.06"] = {
+		"Fear hasn't left me. It's just learned to wait its turn, like a dog by the door.",
+		"I still get afraid. The difference now is that I know exactly how afraid, and of what.",
+	},
+	["band.b30_40.muse.07"] = {
+		"You can spot the green ones a mile off. Clean boots, loud voices, no idea.",
+		"Sometimes I see youngsters charge a beast twice their size, and I almost envy them. Almost.",
+	},
+	["band.b40_50.muse.01"] = {
+		"The farther I go, the more I see what's wrong with the world. Not the small wrongs anymore. The kind that need years and armies.",
+		"I used to think the dangers ended somewhere. Now I know they just get older and better organized.",
+		"The troubles people bring me have changed. Less 'wolves in the field', more 'something has woken under the hills'.",
+	},
+	["band.b40_50.muse.02"] = {
+		"I don't jump at noises anymore. I just work out how far away they are and how much they'll cost me.",
+		"Everything out here wants to eat me, curse me or rob me. I find that oddly reassuring. At least it's honest.",
+	},
+	["band.b40_50.muse.03"] = {
+		"pauses on a rise and studies the land ahead the way a merchant studies a ledger, weighing what it will cost.",
+		"checks every buckle and strap with slow, thorough fingers, a ritual older than whatever fear first taught it.",
+		"stands a long while at the edge of the path, listening, before taking a single step farther.",
+	},
+	["band.b40_50.muse.04"] = {
+		"People step aside for me on the road now. I can't decide whether it's respect or the look on my face.",
+		"Folk I've never met know of me. Not much, and not always right, but they know. It's a heavier coat than it sounds.",
+		"Strangers ask for my help as if I were a wall they could lean on. I hope I'm as solid as they think.",
+	},
+	["band.b40_50.muse.05"] = {
+		"The longer I walk, the less I need to prove. It's the only thing that's gotten lighter.",
+		"I fight less to win now and more to finish. There's a difference, and it took years to find it.",
+		"Courage is cheap at the start of the road. Out here you pay for it daily, and you keep paying.",
+	},
+	["band.b40_50.muse.06"] = {
+		"I've been away so long that home has become a direction more than a place, a door I point at without seeing.",
+		"I used to know every crack in my own doorstep. Now the doorsteps I know best belong to inns.",
+		"If someone asked me where I'm from, I'd still give the old answer and picture the old door. I'm just less sure it's true.",
+	},
+	["band.b40_50.muse.07"] = {
+		"My joints predict trouble better than any seer. Today they say 'everything', which is unhelpful.",
+		"I've reached the stage of adventuring where I check the exits before I check the menu.",
+		"I've collected enough near misses to fill a book. Nobody would believe half of it, and the other half I'd rather forget.",
+	},
+	["band.b50_60.muse.01"] = {
+		"There are fewer and fewer people who can teach me anything. The rest the world will have to teach me itself, and it's a harsh tutor.",
+		"Trainers look at me differently now. Less like a pupil, more like a colleague who still owes them a little coin.",
+		"I've reached the stretch of road where advice runs thin. From here on, I mostly learn by surviving.",
+	},
+	["band.b50_60.muse.02"] = {
+		"The top is close enough to see. It looks smaller than I imagined, and higher.",
+		"Almost there. And I'm starting to understand that 'there' is just a better view of the work left to do.",
+		"Near the end of the climb. Funny: I thought I'd feel finished. I just feel ready.",
+	},
+	["band.b50_60.muse.03"] = {
+		"looks out over the land with the quiet attention of someone who has walked most of it, and remembers what each road cost.",
+		"tests every strap and seam by habit, the way old sailors check knots they tied themselves.",
+		"sits back against a stone and lets the silence stretch, unhurried, like someone who has earned it many times over.",
+	},
+	["band.b50_60.muse.04"] = {
+		"The troubles I hear of now aren't a farmer's troubles. They have names that make old soldiers lower their voices.",
+		"There are things in this world that could end it, and I've started to feel it falls to me, among others, to stand in their way.",
+		"Talk around the fires has changed. Nobody asks me about bandits anymore. They ask about the old terrible things, and whether they can be stopped.",
+	},
+	["band.b50_60.muse.05"] = {
+		"I've been called a hero twice this week. Both times by someone who wanted something. Heroism has a market price.",
+		"My gear has more patches than original stitching, and I wouldn't trade it for a king's wardrobe.",
+		"Young ones keep asking how I got this far. I tell them: mostly by not dying, and a little by luck.",
+	},
+	["band.b50_60.muse.06"] = {
+		"Lately I wonder what I'll do when there's nothing left to grow into. Hold the line, probably. Somebody has to.",
+		"The end of the climb is near, and I keep thinking of the ones still at the bottom. Someone should leave the path in better shape than they found it.",
+		"I don't need to get much stronger. I need to get wiser about what the strength is for.",
+	},
+	["band.b50_60.muse.07"] = {
+		"The quiet moments are rarer now, and better. I've learned to sit inside them without reaching for the next thing.",
+		"Odd how the closer I get to the top, the more I notice small things. A bird on a fence. Bread still warm.",
+		"I've seen enough wonders that most don't stop me anymore. The ones that still do, I keep like coins in a pocket.",
+	},
+	["band.b60.muse.01"] = {
+		"There is nothing left above me to reach for. That leaves the harder question: what to hold onto, and for whom.",
+		"I spent years becoming strong enough. Now I spend my days deciding what's worth that strength.",
+		"The climbing is over. What remains is choosing where to stand, and standing there.",
+	},
+	["band.b60.muse.02"] = {
+		"I've looked at things that would empty a tavern if I described them. I don't. Some memories are better kept than shared.",
+		"I've felt the heat of the world's worst dangers up close. Ordinary fears have a hard time getting my attention now.",
+		"Most people never see what lies at the edges of the world. I have, and I sleep less for it, and fight better.",
+	},
+	["band.b60.muse.03"] = {
+		"Advice for the young ones: choose your fights the way you'd choose a horse. Slowly, and never just because it looked at you.",
+		"When the youngsters ask me the secret, I tell them there isn't one. There's only the next road, and not quitting on it.",
+		"Keep your gear mended and your temper well short of its end. That's most of what I know, and it took me years.",
+	},
+	["band.b60.muse.04"] = {
+		"watches the road with the patience of someone who no longer needs to hurry anywhere to prove anything.",
+		"stands quite still, and those passing by keep a little farther off than the path requires.",
+		"rests one hand on a weathered pack, the gesture of someone who has carried it to the edges of the world and home again.",
+	},
+	["band.b60.muse.05"] = {
+		"When I help someone now, it isn't for the coin or the practice. It's a favor to the world, passed on from whoever helped me early on.",
+		"I don't need the rewards anymore. I take the work because a strong arm left idle is a kind of theft.",
+		"Every small job I take now repays a debt to the people who once did the same for a beginner who couldn't pay.",
+	},
+	["band.b60.muse.06"] = {
+		"I've reached the point where wolves cross the road to avoid me. It took long enough.",
+		"People keep calling me a legend. Legends don't queue at the blacksmith. I do, and the wolves still eye my boots.",
+		"Being at the top mostly means everyone expects you to know the way. I just walk confidently and hope the wolves agree.",
+	},
+	["band.b60.muse.07"] = {
+		"I'm as strong as I'll ever be. It turns out strength doesn't make the world any lighter; it only lets you carry more of it.",
+		"The view from the top is wide, and it shows every place that still needs help. I liked not knowing, a little.",
+		"Hardly anything I meet surprises me now. Sometimes I miss that: being surprised.",
+	},
+	["band.b60.muse.08"] = {
+		"Let the worst this world can raise come for us. I've spent a lifetime getting ready.",
+		"Whatever rises next will find someone waiting. I've had time to prepare.",
+		"I didn't climb this far to sit at the top admiring the view. There's work at every edge of the map.",
+	},
+	["landmark.w02.01"] = {
+		"{landmark}. Rope, tar, fish and a dozen languages on the quay. Ports belong to whoever is passing through.",
+		"{landmark}. Every ship tied up here is a road I could take. I won't, but it's good to know they're there.",
+		"{landmark}: gulls, crates and loud dockhands. Whatever the world sells, it comes ashore somewhere like this.",
+	},
+	["landmark.w02.02"] = {
+		"stops at the edge of {landmark} long enough to take its measure, then goes in.",
+		"reads the name of {landmark} the way travelers do, and adds it to the long list carried in {g:his|her} head.",
+		"slows on reaching {landmark}, as one does at any place that someone took the trouble to name.",
+	},
+	["mood.coast.landmark.w02.01"] = {
+		"comes into {landmark} with the wind off the water tugging at {g:his|her} cloak.",
+		"reaches {landmark}, where every board and rope seems to smell of brine.",
+	},
+	["mood.coast.muse.w02.01"] = {
+		"The tide comes in, the tide goes out. It has kept that appointment longer than anyone has kept a promise.",
+		"Salt on my lips and the long hush of the waves. The sea talks without pause and says the same thing, and it never bores me.",
+		"Out there the water runs to the edge of the world. Some days that feels like freedom; some days like a wall.",
+	},
+	["mood.coast.muse.w02.02"] = {
+		"lifts {g:his|her} head at the smell of salt carried in from the shore, and breathes it in slowly.",
+		"listens to the far sound of the surf, keeping time with it for a few steps without meaning to.",
+	},
+	["mood.coast.subzone_enter.w02.01"] = {
+		"{subzone}. You can hear the sea from here. Everything near the water ends up sounding a bit like it.",
+		"{subzone}. Smells of salt and wet wood. I don't mind it.",
+		"{subzone}. Gulls overhead, arguing as usual. Some things are the same on every shore.",
+	},
+	["mood.deep.muse.w02.01"] = {
+		"No sky down here, only the weight of everything above. I try not to think about how much that is.",
+		"The dark in these places is thick enough to lean on. I don't; something might lean back.",
+	},
+	["mood.desert.landmark.w02.01"] = {
+		"{landmark}. Shade, water, other people. In dry country a name on the map promises those three, or should.",
+		"{landmark}. Whatever else it is, it's a place to stand out of the dust for a while.",
+	},
+	["mood.desert.subzone_enter.w02.01"] = {
+		"{subzone}. Grit in the corners of my eyes before I've taken ten steps.",
+		"{subzone}. Sand underfoot, sand on the wind, and sand in my boots by evening.",
+	},
+	["mood.fire.landmark.w02.01"] = {
+		"{landmark}. Somebody keeps a name alive on this scorched ground. Stubbornness like that deserves a nod.",
+		"{landmark}. Here even a name feels hot to the touch.",
+	},
+	["mood.fire.subzone_enter.w02.01"] = {
+		"steps into {subzone} with a hand raised against the heat coming off the rock.",
+		"squints into {subzone}, where the air shimmers and tastes faintly of ash.",
+	},
+	["mood.forest.landmark.w02.01"] = {
+		"comes into {landmark} beneath the branches, where the trees seem to have stepped back just enough to make room.",
+		"reaches {landmark} and notices how the place keeps to the shade, as if it had asked the forest's leave to stand.",
+	},
+	["mood.forest.muse.w02.01"] = {
+		"Under the trees the hours pass differently. I've stopped counting them and started counting birdcalls.",
+		"The leaves keep up a steady whisper overhead. It isn't about me, and that's the restful part.",
+	},
+	["mood.forest.muse.w02.02"] = {
+		"Every tree looks like the last one. If anyone spots a path, do shout.",
+		"Roots, ferns, more roots. Lovely, as long as you don't need to go anywhere in a straight line.",
+	},
+	["mood.forest.subzone_enter.w02.01"] = {
+		"{subzone}. Keep your voice down; the woods carry it farther than you'd think.",
+		"{subzone}. Mind the roots. They were here first, and they won't move for anyone.",
+	},
+	["mood.jungle.landmark.w02.01"] = {
+		"{landmark}. Somebody carved a place out of all this green and keeps on carving. Stop for a season and the vines would take it back.",
+		"{landmark}. People, roofs, voices: a little island of order, with the jungle leaning in at the edges.",
+	},
+	["mood.mountain.landmark.w02.01"] = {
+		"{landmark}. People who settle in the mountains settle to last. You can tell by how they've dug in.",
+		"{landmark}. A level patch of ground, claimed and kept. Up here that's no small thing.",
+	},
+	["mood.mountain.muse.w02.01"] = {
+		"Up here the ground is all slope and argument. Every step has to be won, and then won again.",
+		"The ridges stand around like old soldiers who've forgotten the war but not the post.",
+	},
+	["mood.mountain.muse.w02.02"] = {
+		"waits for a trickle of loose stones to finish rattling down the slope, then picks a firmer line upward.",
+		"leans into the climb, one hand on the rock, and allows {g:himself|herself} a single look back at how far the path has come.",
+	},
+	["mood.mountain.subzone_enter.w02.01"] = {
+		"{subzone}. Watch your footing; the loose rock here has opinions.",
+		"{subzone}. Uphill, naturally. It's always uphill.",
+	},
+	["mood.plague.landmark.w02.01"] = {
+		"{landmark}. Every name in this country has two stories now: what it was, and what the sickness made of it.",
+		"{landmark}. I look for signs of the living here, and count them carefully when I find them.",
+	},
+	["mood.plague.subzone_enter.w02.01"] = {
+		"{subzone}. Breathe through your sleeve, and touch nothing that's growing.",
+		"{subzone}. Keep moving, and don't drink from anything here.",
+	},
+	["mood.plains.landmark.w02.01"] = {
+		"reaches {landmark}, the first thing in a long while to stand taller than the grass.",
+		"comes upon {landmark} after a long stretch of open grass, and slows to look around.",
+	},
+	["mood.plains.subzone_enter.w02.01"] = {
+		"crests a low rise into {subzone} and stops to take in the long, open run of the land.",
+		"walks into {subzone} with the wind at {g:his|her} back, the grass bending ahead as if to show the way.",
+	},
+	["mood.ruin.muse.w02.01"] = {
+		"Someone cut these stones to fit, and fitted them, and was sure they'd stand forever. Half of them still do.",
+		"A doorway with no house left around it: you see a lot of those in a place like this. I always want to knock.",
+		"Every ruin is an argument someone lost with time. Time doesn't gloat; it just keeps going.",
+	},
+	["mood.ruin.subzone_enter.w02.01"] = {
+		"{subzone}. I pick my way over tumbled stone, guessing where the walls once ran.",
+		"{subzone}. I step around the fallen pieces with care, as if they still belonged to someone.",
+	},
+	["mood.snow.muse.w02.01"] = {
+		"The cold gets in at the cuffs and the collar, patient as a thief. I keep moving; it's the one coin it can't take.",
+		"My breath hangs in front of me, white and slow. Out here even breathing leaves a trace.",
+		"Everything here is white and so still that my own footsteps sound rude.",
+	},
+	["mood.snow.subzone_enter.w02.01"] = {
+		"stamps the cold out of {g:his|her} feet on reaching {subzone}, breath smoking in the frozen air.",
+		"pulls {g:his|her} collar up on entering {subzone}, where the wind comes off the ice with nothing to slow it.",
+	},
+	["mood.swamp.muse.w02.01"] = {
+		"Damp in the boots, damp in the bedroll, damp in the bread. The marsh shares everything it has.",
+		"Something croaks, something splashes, something buzzes at my ear. The swamp is never quiet; it only changes the subject.",
+		"I've stopped trying to stay dry. Now I just try to stay ahead of the leeches.",
+	},
+	["mood.swamp.subzone_enter.w02.01"] = {
+		"{subzone}. Firm ground looks scarce. I'll take what there is and be grateful.",
+		"{subzone}. Reeds, mud and a smell of old water. The marsh just keeps changing its name.",
+	},
+	["muse.clear.w02.01"] = {
+		"Not a cloud anywhere. The sky has nothing to hide, and for once neither do I.",
+		"Clear skies. Distances look shorter than they are; my legs will find out the truth.",
+	},
+	["muse.clear.w02.02"] = {
+		"Clear weather. No excuses today.",
+		"Fine, clear air. Even my boots feel lighter.",
+	},
+	["muse.clear.w02.03"] = {
+		"glances up at the open sky, finds nothing there to worry about, and walks on a little easier.",
+		"breathes the clean, clear air deeply, as if storing some of it away for worse days.",
+	},
+	["muse.day.w02.01"] = {
+		"Middle of the day, and half of it already spent on walking. The other half has plans of its own, I'm sure.",
+		"Good daylight for getting things done. I just have to decide which things, and in what order.",
+		"Daylight makes everything look manageable. I'll enjoy that while it lasts.",
+	},
+	["muse.day.w02.02"] = {
+		"Broad daylight. Whatever's out there can see me coming. Fair enough; I can see it too.",
+		"Daytime. Honest working hours. Let's earn our bread.",
+	},
+	["muse.fog.w02.01"] = {
+		"The fog swallows everything past a dozen paces. The world has shrunk to a small gray room, and I'm in it.",
+		"Shapes loom out of the fog and turn out to be rocks or trees, mostly. It's the 'mostly' that keeps me awake.",
+	},
+	["muse.rain.w02.01"] = {
+		"Rain drums on my hood and finds the gap at the back of my neck, as it always does.",
+		"The rain turns every road into a stream and every thought into a slow one. Fine. I'll think slowly.",
+	},
+	["muse.rain.w02.02"] = {
+		"Rain. Wonderful. My pack weighs twice as much and smells like a wet dog.",
+		"If this keeps up I'll need a boat, not boots.",
+	},
+	["muse.sand.w02.01"] = {
+		"Sand in the teeth, sand in the boots. I'll be shaking this storm out of my clothes for a week.",
+		"Can't see ten paces in this. Cover your face and keep walking; the wind gets bored eventually.",
+	},
+	["muse.snow.w02.01"] = {
+		"stops to watch the snow come down, one slow flake after another, and for a moment forgets to be cold.",
+		"brushes the snow from {g:his|her} shoulders, knowing full well the sky will put it back.",
+	},
+	["race.dwarf.landmark.w02.01"] = {
+		"{landmark}. Before anything else I look at what it stands on and what it's built from. The rest is decoration.",
+		"{landmark}. Somebody picked this ground and dug in. A dwarf respects that before anything else.",
+	},
+	["race.dwarf.subzone_enter.w02.01"] = {
+		"stamps once on the ground of {subzone}, like someone knocking to hear what lies underneath.",
+		"crouches to rub a pinch of the soil of {subzone} between finger and thumb, reading it like a ledger.",
+	},
+	["race.gnome.landmark.w02.01"] = {
+		"{landmark}. I start counting things: posts, doors, chimneys, whatever's there. Numbers make any place less strange.",
+		"{landmark}. Not a single gear in sight, and yet it works. People are remarkable machines.",
+	},
+	["race.gnome.subzone_enter.w02.01"] = {
+		"{subzone}! Right. Mental note: map it later, properly, with measurements.",
+		"{subzone}. Interesting. Everything is interesting, but this is interesting in a whole other way.",
+	},
+	["race.human.landmark.w02.01"] = {
+		"{landmark}. Somebody named this place and meant it to last. Humans do that wherever they stop; it's half our history.",
+		"{landmark}. I try to picture who walked here first, and who gave it the name. A habit of my people: wanting to know whose a place is.",
+	},
+	["race.human.subzone_enter.w02.01"] = {
+		"slows on entering {subzone}, looking about for a signpost, a farmhouse, anything that says people mean to stay here.",
+		"steps into {subzone} and squares {g:his|her} shoulders, the way a traveler does before knocking on a stranger's door.",
+	},
+	["race.nightelf.landmark.w02.01"] = {
+		"{landmark}. I listen for the oldest thing in this place; it is rarely the walls.",
+		"{landmark}. Names change faster than the land beneath them. I greet the land first, then the name.",
+	},
+	["race.nightelf.subzone_enter.w02.01"] = {
+		"{subzone}. Quietly, now. Let it see me before it hears me.",
+		"{subzone}. Ishnu-alah, whoever keeps this place.",
+	},
+	["race.orc.landmark.w02.01"] = {
+		"{landmark}. Before I rest anywhere, I find the weak side of it. Old lessons stay.",
+		"{landmark}. I note who holds it and how well. A place held badly is only a place waiting for its next owner.",
+	},
+	["race.orc.subzone_enter.w02.01"] = {
+		"rolls {g:his|her} neck on entering {subzone}, eyes moving from cover to cover, as orcs learn early to do.",
+		"sniffs the air of {subzone} and spits to one side, as if to say the place will do.",
+	},
+	["race.scourge.landmark.w02.01"] = {
+		"{landmark}. The living built this to keep something out. I try not to take it personally.",
+		"{landmark}. I walk in slowly. Places like this remember what I used to be, even if I don't.",
+	},
+	["race.scourge.subzone_enter.w02.01"] = {
+		"{subzone}. Nobody has screamed yet. Promising.",
+		"{subzone}. Quiet. I like quiet; it doesn't flinch.",
+	},
+	["race.tauren.landmark.w02.01"] = {
+		"{landmark}. I walk in slowly, as one walks into another family's camp: eyes low, hands open.",
+		"{landmark}. Every place with a name has a heart. I look for it: a fire, a well, an old one telling stories.",
+	},
+	["race.tauren.subzone_enter.w02.01"] = {
+		"pauses on the edge of {subzone}, nostrils wide, letting the wind say what it knows before taking another step.",
+		"sets each hoof down with care on entering {subzone}, as if the ground deserved to be asked first.",
+	},
+	["race.troll.landmark.w02.01"] = {
+		"{landmark}. I leave a little something by the entrance for the spirits of the place. Costs nothing; saves trouble.",
+		"{landmark}. Every place with a name has a spirit that answers to it. I greet it quietly; a polite word never hurt anyone.",
+	},
+	["race.troll.subzone_enter.w02.01"] = {
+		"{subzone}. Ears open. Every place has its spirits, and they all want to know who's walking in.",
+		"{subzone}. I hum a little going in. Spirits like a song better than a stranger sneaking.",
+	},
+	["subzone_enter.clear.w02.01"] = {
+		"{subzone}, and not a cloud over it. You can see every corner from here.",
+		"{subzone}. Clear air. Good: whatever's here, I'll see it coming.",
+	},
+	["subzone_enter.day.w02.01"] = {
+		"{subzone}, in good daylight. I take a long look; the light won't always be this generous.",
+		"{subzone}. Daylight, and no hurry. For once the hours seem to be on my side.",
+	},
 }, "base_exploration")

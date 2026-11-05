@@ -1100,4 +1100,44 @@ NS:AddTexts("enUS", {
 		"Thanks, mon. You have a troll's gratitude; it lasts longer than most.",
 		"I won't forget that. Trolls remember who helped and who laughed.",
 	},
+	["faction.alliance.relation_player.w02.01"] = {
+		"{other}. If the Alliance ever asked what it's made of, I'd point at people like that.",
+		"There's {other}. Kings and councils make the Alliance on paper; people like that make it on the road.",
+	},
+	["faction.horde.relation_player.w02.01"] = {
+		"{other}. One of the Horde I'd call by name in any camp, and be glad to.",
+		"There's {other}. The Horde is many peoples; friendship is how they become one.",
+	},
+	["race.dwarf.relation_player.w02.01"] = {
+		"{other}! I'd share my last keg with someone like that, and a dwarf doesn't say such things lightly.",
+		"There's {other}. Some friendships are like good masonry: no mortar showing, and they hold.",
+	},
+	["race.gnome.relation_player.w02.01"] = {
+		"{other}! My day just got a pleasant little upgrade.",
+		"There's {other}. Some people are like a well-oiled hinge: everything moves easier around them.",
+	},
+	["race.human.relation_player.w02.01"] = {
+		"{other}. I still owe that one, and I mean to pay it properly, not with a nod in passing.",
+		"There's {other}. Some debts you're glad to carry, because they remind you someone stopped for you.",
+	},
+	["race.nightelf.relation_player.w02.01"] = {
+		"{other}. Some trust grows like a tree: slowly, and then nothing moves it.",
+		"There is {other}. I would let that one keep watch while I slept, and sleep well.",
+	},
+	["race.orc.relation_player.w02.01"] = {
+		"{other}. I owe that one, and an orc does not let a debt go cold.",
+		"There is {other}. Someone who stood by me. I remember who stands and who runs.",
+	},
+	["race.scourge.relation_player.w02.01"] = {
+		"{other}. Someone I'm glad to see. I'd forgotten that feeling had a taste.",
+		"There's {other}. Whatever I lost when I died, this kind of gladness wasn't in the pile.",
+	},
+	["race.tauren.relation_player.w02.01"] = {
+		"{other}! There's someone I'd walk a long way to share a fire with.",
+		"There is {other}. Some bonds are like the oldest trails: worn deep, and easy to follow.",
+	},
+	["race.troll.relation_player.w02.01"] = {
+		"{other}! There's a friend, mon. The day just got lighter.",
+		"Ah, {other}. Good people are rare as fresh water on a long sea crossing.",
+	},
 }, "base_relations")

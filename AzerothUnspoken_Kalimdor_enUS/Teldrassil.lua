@@ -125,4 +125,72 @@ AU:RegisterRegionalTexts("teldrassil", "enUS", "kalimdor_teldrassil", [==[
 		"The rain reaches me late here: first it falls on a thousand leaves, and only the patient drops get through.",
 		"Rain on the canopy, a sound like a crowd whispering far above. Down here, only a drop now and then.",
 	},
+	["tel.attack.w02.01"] = {
+		"Swift as an owl's drop!",
+		"Not a sound until it lands. There.",
+		"The forest is watching. Let's not disappoint it.",
+	},
+	["tel.battle.w02.01"] = {
+		"Let's keep this quiet. The trees here don't care for a racket.",
+		"Softly, now. I'd hate to wake the whole island.",
+		"Sorry about this, forest. It started it.",
+	},
+	["tel.battle.w02.02"] = {
+		"steps over a root as thick as a wall and turns to meet the attack, dead leaves whirling up underfoot.",
+		"sets {g:his|her} back against a great gray trunk and faces what comes out of the ferns.",
+	},
+	["tel.battle.w02.03"] = {
+		"A nightsaber. Beautiful, silent, and very much awake. Don't blink.",
+		"Stripes in the half-light, then eyes. These cats hunt in silence; I'll have to be quicker than the silence.",
+	},
+	["tel.battle.w02.04"] = {
+		"Spiders the size of a stool. Of course. Come here, then.",
+		"I'll take that web down, and you with it.",
+		"Eight legs and no manners. Back into your webs!",
+	},
+	["tel.lowhp.w02.01"] = {
+		"The roots are patient. They'd take me in without a word. Not yet.",
+		"So much silence in this forest. Don't add mine to it.",
+		"There's a moonwell somewhere ahead. Live long enough to reach it.",
+	},
+	["tel.muse.w02.01"] = {
+		"Hard to believe there's soil up here at all. Every hill and stream on this island rests on the branches of a single tree.",
+		"I stamped on the path once, half expecting it to sound hollow. It didn't. The tree carries its own earth, and carries it well.",
+	},
+	["tel.muse.w02.02"] = {
+		"watches a timberling shuffle between the trunks, a small walking knot of bark and moss, and keeps a respectful distance.",
+		"stops short as what looked like a stump gets up and lumbers off into the ferns, trailing moss.",
+		"hears a creak and turns to find a little tree-creature watching, which then tries very hard to look like a sapling.",
+	},
+	["tel.muse.w02.03"] = {
+		"That lake is so still the trees grow twice: once up, once down.",
+		"Look at the water down there. Not a ripple. Even the fish here must swim on tiptoe.",
+	},
+	["tel.muse.w02.04"] = {
+		"The kaldorei planted this tree to win back what they lost at Hyjal. Nobody says whether it worked; they just keep tending it.",
+		"A new world tree, grown without the old blessings. The kaldorei walk beneath it with hope, and with something warier than hope.",
+	},
+	["tel.quest_complete.w02.01"] = {
+		"It's done. May the forest rest a little easier for it.",
+		"Finished. The task was small; the place it served is not.",
+		"Done. I'll tread softly from here on, to make up for the noise.",
+	},
+	["tel.quest_progress.w02.01"] = {
+		"That's everything. Now to find my way back through all these identical trees.",
+		"All done out here. The path back runs under these ferns somewhere, I'm nearly sure.",
+	},
+	["tel.victory.w02.01"] = {
+		"lowers {g:his|her} weapon as the violet light settles back over the glade, and the forest takes up its long breath once more.",
+		"stands still among the ferns until the birds, one after another, start singing again.",
+		"brushes a fallen leaf from {g:his|her} shoulder; high above, the canopy has not stirred at all.",
+	},
+	["tel.victory.w02.02"] = {
+		"Whatever drove the furbolgs mad, it didn't die with this one. I wish it had.",
+		"Another of the Gnarlpine down. Elsewhere in this tree, the sickness is still at work.",
+	},
+	["tel.victory.w02.03"] = {
+		"There. Now, where was I? Every path here looks like every other path.",
+		"Done. If anyone asks, it was all very graceful.",
+		"That was louder than it needed to be. Sorry, trees.",
+	},
 ]==])

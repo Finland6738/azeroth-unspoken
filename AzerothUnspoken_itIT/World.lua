@@ -612,4 +612,231 @@ NS:AddTexts("itIT", {
 		"Il cielo ha cambiato idea. La mia resta dov'era.",
 		"Su nel cielo qualcosa si muove. Quaggiù, il piano resta quello.",
 	},
+	["band.b10_20.quest_complete.01"] = {
+		"Un altro fatto. Comincio ad avere una reputazione. Piccola, ma sa come mi chiamo.",
+		"Fatto. La gente del posto ha cominciato a salutarmi per strada. Potrei prenderci gusto.",
+		"Finito, e nessuno è dovuto venire a salvarmi. Progressi.",
+	},
+	["band.b10_20.quest_complete.02"] = {
+		"La paga è migliore di un tempo. Anche i lividi, a modo loro: guariscono prima.",
+		"Adesso guadagno abbastanza da comprare qualcosa che voglio, e non solo quello che mi serve. Non l'ho ancora fatto. Ma potrei.",
+	},
+	["band.b10_20.quest_complete.03"] = {
+		"soppesa la borsa con una mano, annuisce una volta e la mette al sicuro, in un posto migliore di quello dell'ultima.",
+		"conta la ricompensa senza fretta, poi batte due volte la mano sulla tasca per essere {g:sicuro|sicura} che ci sia ancora.",
+	},
+	["band.b10_20.quest_progress.01"] = {
+		"Un pezzo è fatto. Sto imparando a tenere il resto a mente invece che su pezzetti di carta.",
+		"A metà strada. Una volta queste cose me le perdevo per via. Adesso no.",
+	},
+	["band.b1_10.quest_complete.01"] = {
+		"Fatto, e {g:pagato|pagata} in monete vere. Potrei abituarmici.",
+		"Un lavoro finito e una borsa un po' più pesante. Borsa piccola, lavoro piccolo, ma tutto mio.",
+	},
+	["band.b1_10.quest_complete.02"] = {
+		"Mi hanno {g:ringraziato|ringraziata} come se avessi fatto chissà cosa. Era una commissione che avrebbe potuto sbrigare qualunque vicino. Il grazie però me lo tengo.",
+		"Adesso qualcuno al mondo mi deve un piccolo favore. Non so ancora cosa farmene, ma mi piace.",
+	},
+	["band.b20_30.quest_complete.01"] = {
+		"Fatto. La gente comincia a chiedere di me per nome. Non so quando sia successo.",
+		"Finito. I lavori si fanno più grossi e, per fortuna, anche la paga.",
+		"Un altro sistemato. Divento {g:bravo|brava} in questo, il che è incoraggiante o preoccupante, dipende.",
+	},
+	["band.b20_30.quest_complete.02"] = {
+		"{g:Pagato|Pagata}, {g:ringraziato|ringraziata} e {g:spedito|spedita} verso il prossimo problema. A quanto pare ormai le cose vanno così.",
+		"Una volta festeggiavo ogni lavoro finito. Adesso controllo le provviste e chiedo cosa c'è dopo.",
+		"Un altro nodo del mondo sciolto. Di nodi ce n'è sempre un altro.",
+	},
+	["band.b20_30.quest_complete.03"] = {
+		"accoglie i ringraziamenti con un breve cenno, come chi ormai ne ha sentiti parecchi.",
+		"mette via la ricompensa senza contarla due volte, un piccolo lusso guadagnato lungo la strada.",
+	},
+	["band.b20_30.quest_complete.04"] = {
+		"Fatto. Direi che è stato facile, ma la mia schiena mi smentirebbe.",
+		"Lavoro finito. I lividi li tengo come ricevuta.",
+	},
+	["band.b20_30.quest_progress.01"] = {
+		"Ecco tutto. Ora la lunga camminata per farglielo sapere.",
+		"Tutto sistemato, qui. Andare a riferire, di solito, è la parte facile.",
+	},
+	["band.b30_40.quest_complete.01"] = {
+		"Fatto. Né il più difficile né il più facile. Una buona giornata di lavoro onesto.",
+		"Finito. Ho smesso di aspettarmi canzoni, e così la paga sembra migliore.",
+		"Ecco. Dite pure che è sistemato. La prossima volta sapranno chi chiamare.",
+	},
+	["band.b30_40.quest_complete.02"] = {
+		"La ricompensa va bene. Ma quello che mi tengo davvero è sapere com'è andata, e come lo rifarei meglio.",
+		"Un altro lavoro, un'altra lezione archiviata. La mia testa sta diventando una biblioteca di errori da non ripetere.",
+		"Non ricordo le facce dei primi per cui ho lavorato. Questa la ricorderò. Buffo come cambiano le cose.",
+	},
+	["band.b30_40.quest_complete.03"] = {
+		"accetta il compenso con la calma di chi l'ha fatto molte volte e presto sarà di nuovo per strada.",
+		"ascolta i ringraziamenti, annuisce al momento giusto, e ha già la testa alla strada.",
+	},
+	["band.b30_40.quest_complete.04"] = {
+		"Fatto. La prossima volta chiedete a qualcuno che costa meno. Ah, già: non c'è nessuno.",
+		"Sistemato. Accetto pagamenti in monete, gratitudine e cibo decente, in quest'ordine.",
+	},
+	["band.b30_40.quest_complete.05"] = {
+		"Qualcuno dormirà più tranquillo grazie a oggi. Non lo incontrerò mai, e va bene così.",
+		"Chi ne trarrà più beneficio non saprà mai il mio nome. Chissà perché, la cosa mi sta bene.",
+	},
+	["band.b30_40.quest_progress.01"] = {
+		"Una parte è fatta. Pazienza: queste cose richiedono sempre più tempo di quanto pensi chi le chiede.",
+		"Un pezzo al suo posto. Ho smesso di aspettarmi che i lavori vadano dritti.",
+		"Progressi. Lenti, ma di quelli che restano.",
+	},
+	["band.b40_50.quest_complete.01"] = {
+		"Fatto. Quello aveva i denti, ma anch'io.",
+		"Finito, e come si deve. Non lascio più lavori a metà: hanno il vizio di crescere.",
+		"È sistemato. Pagatemi, e indicatemi il prossimo pasticcio.",
+	},
+	["band.b40_50.quest_complete.02"] = {
+		"Le ricompense sono migliori di un tempo. Mi accorgo che mi importano meno.",
+		"Un buon lavoro, fatto bene. Ormai è questo che mi soddisfa, più della borsa.",
+		"Le monete vanno e vengono. Resta la soddisfazione silenziosa di una cosa finita come si deve.",
+	},
+	["band.b40_50.quest_complete.03"] = {
+		"accoglie ricompensa e ringraziamenti con la stessa calma, come due nuvole destinate a passare.",
+		"ascolta la gratitudine con un mezzo sorriso stanco, di chi ne ha sentite tutte le versioni.",
+		"intasca il compenso senza guardarlo, gli occhi già all'orizzonte.",
+	},
+	["band.b40_50.quest_complete.04"] = {
+		"Bene. Una cosa in meno di cui la gente deve avere paura. Ne restano tante.",
+		"Fatto. Non aggiusterà il mondo, ma ne aggiusta un angolo.",
+	},
+	["band.b40_50.quest_complete.05"] = {
+		"Mi sono {g:sorpreso|sorpresa} a valutare la ricompensa per quanto potrei rivenderla. Da quando sono così {g:pratico|pratica}?",
+		"Qualche anno fa me ne sarei {g:vantato|vantata} per una settimana. Adesso penso soprattutto a un bagno.",
+	},
+	["band.b40_50.quest_progress.01"] = {
+		"Questo è tutto. Ora a qualcuno arriva una buona notizia.",
+		"Tutto fatto. Il resoconto sarà più breve del lavoro.",
+		"Qui ho finito. È ora di andare a ritirare i ringraziamenti e il prossimo problema.",
+	},
+	["band.b50_60.quest_complete.01"] = {
+		"È fatto. Dite a chi di dovere che non darà più fastidio.",
+		"Sistemato. Non era una cosa da poco. Meno male che è toccata a qualcuno capace di finirla.",
+		"Finito. Il mondo è un po' più sicuro e io un po' più {g:stanco|stanca}. Scambio onesto.",
+	},
+	["band.b50_60.quest_complete.02"] = {
+		"Chi mi affida il lavoro adesso ha facce preoccupate e memorie lunghe. Il lavoro è cresciuto insieme a me.",
+		"Gli incarichi che mi danno oggi sono quelli che nessun altro potrebbe portare a termine. Cerco di non montarmi la testa: soprattutto, pesano.",
+		"Una volta un lavoro finito voleva dire un pasto caldo. Oggi può voler dire che molta gente non saprà mai quanto ci è andata vicino.",
+	},
+	["band.b50_60.quest_complete.03"] = {
+		"accoglie i ringraziamenti con grave cortesia, come si accetta un debito che un giorno verrà riscosso.",
+		"prende la ricompensa e china il capo, un piccolo gesto che porta il peso di molti momenti simili.",
+	},
+	["band.b50_60.quest_complete.04"] = {
+		"Fatto. Mi date una statua? No? Allora un panino.",
+		"Finito. Farei un discorso, ma tengo il fiato per quello che viene dopo.",
+	},
+	["band.b50_60.quest_complete.05"] = {
+		"Un altro favore fatto a gente che probabilmente non rivedrò mai. Una volta mi bruciava. Ora mi sembra il senso di tutto.",
+		"Le ricompense contano poco, ormai. Continuo perché posso, e perché la lista di chi può è corta.",
+	},
+	["band.b50_60.quest_progress.01"] = {
+		"Un pezzo è fatto. Il resto chiede pazienza, e la pazienza è l'unica cosa che adesso ho in abbondanza.",
+		"Progressi. Non ho più fretta con queste cose: ho visto quanto costa la fretta.",
+		"Qualcosa è concluso. Il resto lo farò come si deve, piano, nel modo che funziona.",
+	},
+	["band.b60.quest_complete.01"] = {
+		"Fatto. Consideratelo un favore al mondo, non a me.",
+		"Ci ho pensato io. Tenete i ringraziamenti per chi ne ha ancora bisogno.",
+		"Sistemato. Non ringraziatemi: un giorno fatelo per qualcun altro.",
+	},
+	["band.b60.quest_complete.02"] = {
+		"Un compito piccolo, per il mio metro di adesso. Per loro era tutto. Cerco di non dimenticare mai la seconda parte.",
+		"Mi è costato appena una mattinata. A qualcuno varrà una stagione di pace.",
+		"Lavoro facile, ormai. È proprio per questo che continuo: la parte difficile è decidere di darsi pena.",
+	},
+	["band.b60.quest_complete.03"] = {
+		"ascolta la gratitudine fino in fondo con paziente gentilezza, come si ascolta una storia sentita molte volte e che merita ancora.",
+		"si trattiene un momento dopo i ringraziamenti, come se il compito meritasse un ultimo sguardo prima di essere messo da parte.",
+	},
+	["band.b60.quest_complete.04"] = {
+		"Fatto. Lo aggiungo alla lista delle cose che nessuno crede opera mia.",
+		"Finito. A questo punto più che un'impresa è una visita a domicilio.",
+	},
+	["journey.clear.w02.01"] = {
+		"Un cielo sereno in cui volare. Vedo così lontano che l'orizzonte sembra una voce finalmente confermata.",
+		"Su, e fra me e il bordo lontano della terra non c'è altro che aria pulita.",
+	},
+	["journey.day.w02.01"] = {
+		"Su, nella luce del giorno. Da qui tutta la terra si stende chiara: strade, fiumi, e tutte le piccole faccende nel mezzo.",
+		"Un volo di giorno: tutto là sotto è nitido come una mappa disegnata con cura.",
+	},
+	["journey.night.w02.01"] = {
+		"In volo di notte. Sotto, la terra è buia, tranne qualche fuoco, piccolo e testardo come una promessa.",
+		"Su, nell'aria della notte. La terra si fa buia sotto di me, e solo il vento dice che ci stiamo ancora muovendo.",
+	},
+	["mood.city.journey.w02.01"] = {
+		"scende dal volo nel clamore della città e si concede un istante, lasciando che il rumore trovi il suo livello.",
+		"rimette piede fra la folla e la pietra, mentre il silenzio del cielo lascia il posto alle voci del mercato.",
+	},
+	["mood.coast.journey.w02.01"] = {
+		"Giù, vicino all'acqua. Dopo il volo l'aria è carica di salsedine, e sa di fine della strada.",
+		"A terra, e la prima cosa che sento è la risacca. Un bel suono con cui arrivare.",
+	},
+	["mood.dark.journey.w02.01"] = {
+		"Su, fuori dalla cupezza. Non sapevo quanto pesasse finché le ali non me l'hanno tolta di dosso.",
+		"Le ali salgono e la cupezza resta là sotto. Strano come si respiri meglio quassù.",
+	},
+	["mood.forest.journey.w02.01"] = {
+		"Giù dall'aria aperta, sotto i rami. La luce si fa verde e morbida, e le spalle le vanno dietro.",
+		"A terra. Dopo tutto quel cielo, gli alberi sembrano vicini e gentili, come un tetto che si è costruito da solo.",
+	},
+	["mood.mountain.journey.w02.01"] = {
+		"Su e oltre le creste. Da quassù le montagne sembrano docili, e so bene che è una bugia.",
+		"Le cime scendono sotto le ali una dopo l'altra. Ho scalato più lentamente e visto di meno.",
+	},
+	["mood.plains.journey.w02.01"] = {
+		"Giù. Erba e cielo fin dove arriva lo sguardo. Bene: niente si nasconde.",
+		"Di nuovo a terra. Il vento quaggiù corre quasi quanto il volo.",
+	},
+	["mood.ruin.journey.w02.01"] = {
+		"Giù, in una terra di muri spezzati. Dall'alto le vecchie fondamenta sembravano un disegno lasciato a metà.",
+		"A terra, fra pietre che un tempo erano qualcosa. Il volo era la parte allegra.",
+	},
+	["mood.swamp.journey.w02.01"] = {
+		"scende dal volo e sente tutto in una volta l'odore di acqua ferma e di marcio.",
+		"atterra in un'aria densa e umida, e il primo moscerino {g:lo|la} trova prima del secondo passo.",
+	},
+	["race.dwarf.journey.w02.01"] = {
+		"Giù, e la terra resta dov'è. È tutta qui la mia opinione sul volare.",
+		"Di nuovo terra solida. Il volo è roba da uccelli e da sciocchi, e oggi sono {g:stato|stata} entrambe le cose.",
+	},
+	["race.gnome.journey.w02.01"] = {
+		"Carrello d'atterraggio: gambe. Prestazioni: traballanti ma accettabili.",
+		"Atterraggio confermato. Promemoria: progettare un atterraggio più morbido.",
+	},
+	["race.human.journey.w02.01"] = {
+		"Su, e via. La terra là sotto diventa una mappa, e continuo a cercare le stradine che portano a casa.",
+		"La terra si allontana, e con lei ogni piccola preoccupazione. Mi aspetteranno all'atterraggio, ma per ora sono molto più in basso.",
+	},
+	["race.nightelf.journey.w02.01"] = {
+		"Giù dal vento. I miei piedi trovano la terra come fanno le radici: piano, e poi per sempre.",
+		"Il volo è finito. Lascio che la quiete della terra torni a posarsi in me, prima di riprendere il cammino.",
+	},
+	["race.orc.journey.w02.01"] = {
+		"Terra. Bene. La bestia ha volato bene, ma mi fido di più dei miei piedi.",
+		"Di nuovo a terra. Adesso posso tornare a combattere come si deve.",
+	},
+	["race.scourge.journey.w02.01"] = {
+		"Ancora a terra. Alla terra non importa cosa sono, il che la rende compagnia migliore di tanti.",
+		"Piedi a terra. Niente in me si lamenta del volo. Niente in me si lamenta più di granché.",
+	},
+	["race.tauren.journey.w02.01"] = {
+		"Zoccoli sulla terra, finalmente. La Madre Terra mi regge meglio di qualsiasi ala.",
+		"Il cielo è stato gentile, ma la terra è casa. La sento sotto gli zoccoli prima ancora di vederla.",
+	},
+	["race.troll.journey.w02.01"] = {
+		"Su, su! Guarda lì sotto, tutto così piccolo. Da quassù non fa tanta paura, eh?",
+		"Si parte! Quassù il vento è forte, meglio reggersi bene.",
+	},
+	["weather_change.w02.01"] = {
+		"alza gli occhi mentre il cielo cambia umore, poi stringe una cinghia e riprende a camminare senza commenti.",
+		"guarda il cielo che cambia, si sistema lo zaino più in alto sulle spalle e prosegue.",
+	},
 }, "base_world")

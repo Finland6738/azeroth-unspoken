@@ -2139,4 +2139,84 @@ NS:AddTexts("enUS", {
 		"Edge first, straps second, me at the bottom of the list. Old habit.",
 		"Clean it before you put it away. That's the first thing they teach you.",
 	},
+	["cls.druid.buff.w02.01"] = {
+		"A little of the wild's own stubbornness, passed along. Bark doesn't argue with a blade; it just outlasts it.",
+		"Thorns, bark and a slow green patience. The wild lends them freely; it has plenty.",
+	},
+	["cls.druid.heal.w02.01"] = {
+		"murmurs to the wound as one might to a frightened animal, and the flesh settles and knits.",
+		"closes {g:his|her} eyes for a breath, and the healing spreads slow and green, like moss across a stone.",
+	},
+	["cls.hunter.buff.w02.01"] = {
+		"narrows {g:his|her} eyes toward the horizon, as if the world had just come a little more sharply into focus.",
+		"draws a slow breath through the nose, testing the air like a hound at the start of the chase.",
+	},
+	["cls.hunter.heal.w02.01"] = {
+		"Better. A limping hunter is just bait that brought its own weapon.",
+		"Good enough. Stiff legs, sharp eyes; I've hunted with worse.",
+	},
+	["cls.hunter.pet_call.w02.01"] = {
+		"{pet} shakes itself out and falls in beside me, already sniffing at whatever I missed.",
+		"There's {pet}, ears up, nose busy. The day just gained a sharper set of senses.",
+	},
+	["cls.mage.buff.w02.01"] = {
+		"A little extra wit, applied. Side effects may include noticing things and correcting people.",
+		"There. Your thoughts should run a touch faster now. Try to point them somewhere useful.",
+	},
+	["cls.mage.heal.w02.01"] = {
+		"eyes the closing wound with professional suspicion, as if it had skipped a step in the formula.",
+		"inspects the mended skin, clearly unconvinced that it has followed proper procedure.",
+	},
+	["cls.paladin.buff.w02.01"] = {
+		"A blessing laid on early is a wall built before the siege. I'd rather build walls.",
+		"Given freely, and meant. A blessing handed out grudgingly weighs nothing at all.",
+	},
+	["cls.paladin.heal.w02.01"] = {
+		"sets a steady hand on the hurt, and warm light gathers there until the pain has nowhere left to stand.",
+		"speaks a short, plain word over the wound and keeps {g:his|her} hand there until the bleeding stops.",
+	},
+	["cls.priest.buff.w02.01"] = {
+		"There. A small shelter to carry with you. Walk on.",
+		"Done. It won't stop everything, but it will stand in front of the first blow.",
+	},
+	["cls.priest.heal.w02.01"] = {
+		"keeps both hands steady until the color of the wound changes, and only then lets out a breath.",
+		"speaks a few quiet words, and the hurt gives way under them like ice under a warm palm.",
+	},
+	["cls.rogue.buff.w02.01"] = {
+		"Lighter on my feet, quicker in the fingers. I won't thank anyone out loud; that's not how my trade does it.",
+		"An extra edge, quietly given and quietly taken. My favorite kind of gift.",
+	},
+	["cls.rogue.heal.w02.01"] = {
+		"Back in one piece, more or less. Nobody saw me wince, and that's what counts.",
+		"Better. Let's not make a habit of needing this.",
+	},
+	["cls.shaman.buff.w02.01"] = {
+		"I ask, and the elements lend. A loan, not a gift. I'll remember whose it is.",
+		"Earth under the feet, wind at the back. The spirits have opened their hands a little; I won't waste it.",
+	},
+	["cls.shaman.heal.w02.01"] = {
+		"lays a hand on the hurt and waits, patient as a stream wearing down a stone, until it eases.",
+		"breathes out slowly as the healing takes, and for a moment the air smells of wet earth.",
+	},
+	["cls.warlock.buff.w02.01"] = {
+		"There. A little something from my side of the craft. It wears off long before it could want anything.",
+		"Take it. It's clean enough, and it asks nothing of you.",
+	},
+	["cls.warlock.heal.w02.01"] = {
+		"watches the wound close with an expression that is not quite relief, like someone checking the price on a receipt.",
+		"flexes cold fingers after the mending, and does not look at what it cost.",
+	},
+	["cls.warlock.pet_call.w02.01"] = {
+		"{pet} arrives the way smoke does: all at once, and smelling of somewhere else.",
+		"And here is {pet}, punctual as a creditor. Stay close, and stay in line.",
+	},
+	["cls.warrior.buff.w02.01"] = {
+		"rolls {g:his|her} shoulders once, as if settling a new weight onto them, and takes a firmer grip.",
+		"shifts {g:his|her} stance a hand's width wider and tests the weapon's balance, readier than a moment ago.",
+	},
+	["cls.warrior.heal.w02.01"] = {
+		"Patched. The new scar can join the others; they've got plenty to talk about.",
+		"Good. Now I can go and earn the next one.",
+	},
 }, "base_classes")

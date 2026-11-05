@@ -514,4 +514,12 @@ AU:RegisterRegionalPack("durotar", {
 		tags = { "motivation:duty", "patriotism:high" }, depth = { "literary", "elevated" },
 		theme = "duty", motifs = {}, tier = 1,
 		conditions = { zone = "Orgrimmar", faction = "Horde" } },
+	["org.quest_complete.w02.01"] = { event = "quest_complete", speaker = "narrator", styles = { "everyday", "epic" },
+		tags = { "temperament:stoic" }, depth = { "natural", "literary" },
+		theme = "duty", motifs = { "dust", "wind" },
+		conditions = { zone = "Orgrimmar", questJustCompleted = true } },
+	["org.quest_complete.w02.02"] = { event = "quest_complete", speaker = "inner", styles = { "intimate", "everyday" },
+		tags = { "morality:pragmatic" }, depth = { "natural", "literary" },
+		theme = "growth", motifs = { "coin" },
+		conditions = { zone = "Orgrimmar", questJustCompleted = true } },
 ]==])

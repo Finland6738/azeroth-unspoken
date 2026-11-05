@@ -2139,4 +2139,84 @@ NS:AddTexts("itIT", {
 		"Prima il filo, poi le cinghie, e io in fondo alla lista. Vecchia abitudine.",
 		"Pulisci l'arma prima di riporla. È la prima cosa che ti insegnano.",
 	},
+	["cls.druid.buff.w02.01"] = {
+		"Un po' della testardaggine del bosco, passata di mano. La corteccia non discute con la lama: semplicemente le sopravvive.",
+		"Spine, corteccia e una lenta pazienza verde. Il bosco le presta volentieri: ne ha in abbondanza.",
+	},
+	["cls.druid.heal.w02.01"] = {
+		"sussurra alla ferita come si farebbe con un animale spaventato, e la carne si calma e si richiude.",
+		"chiude gli occhi per un respiro, e la cura si allarga lenta e verde, come il muschio su una pietra.",
+	},
+	["cls.hunter.buff.w02.01"] = {
+		"socchiude gli occhi verso l'orizzonte, come se il mondo si fosse fatto d'un tratto più nitido.",
+		"prende un respiro lento dal naso e saggia l'aria come un segugio all'inizio della caccia.",
+	},
+	["cls.hunter.heal.w02.01"] = {
+		"Meglio. Un cacciatore zoppo è solo un'esca che si è portata l'arma da casa.",
+		"Basta così. Gambe rigide, occhi svegli: ho cacciato in condizioni peggiori.",
+	},
+	["cls.hunter.pet_call.w02.01"] = {
+		"{pet} si dà una scrollata e mi si mette al fianco, già col naso su quello che mi è sfuggito.",
+		"Ecco {pet}, orecchie dritte e naso al lavoro. La giornata ha appena guadagnato un paio di sensi più fini.",
+	},
+	["cls.mage.buff.w02.01"] = {
+		"Un po' di acume in più, applicato. Effetti collaterali: notare le cose e correggere la gente.",
+		"Ecco. Ora i pensieri dovrebbero correre un filo più svelti. Cerca di mandarli in una direzione utile.",
+	},
+	["cls.mage.heal.w02.01"] = {
+		"osserva la ferita che si chiude con un sospetto tutto professionale, come se avesse saltato un passaggio della formula.",
+		"esamina la pelle risanata, per nulla {g:convinto|convinta} che abbia seguito la procedura corretta.",
+	},
+	["cls.paladin.buff.w02.01"] = {
+		"Una benedizione data per tempo è un muro alzato prima dell'assedio. Preferisco alzare muri.",
+		"Data con generosità, e con convinzione. Una benedizione concessa a malincuore non pesa niente.",
+	},
+	["cls.paladin.heal.w02.01"] = {
+		"posa una mano ferma sulla ferita, e una luce calda vi si raccoglie finché il dolore non ha più dove stare.",
+		"pronuncia una parola breve e semplice sulla ferita, e tiene lì la mano finché il sangue non smette di scorrere.",
+	},
+	["cls.priest.buff.w02.01"] = {
+		"Ecco. Un piccolo riparo da portarti dietro. Va' pure.",
+		"Fatto. Non fermerà tutto, ma si metterà davanti al primo colpo.",
+	},
+	["cls.priest.heal.w02.01"] = {
+		"tiene le mani ferme finché il colore della ferita non cambia, e solo allora lascia andare il fiato.",
+		"mormora poche parole sommesse, e il dolore cede sotto di esse come il ghiaccio sotto un palmo caldo.",
+	},
+	["cls.rogue.buff.w02.01"] = {
+		"Passo più leggero, dita più svelte. Non ringrazierò ad alta voce: nel mio mestiere non si usa.",
+		"Un vantaggio in più, dato in silenzio e preso in silenzio. Il mio genere di regalo preferito.",
+	},
+	["cls.rogue.heal.w02.01"] = {
+		"Sono ancora in un pezzo solo, più o meno. Nessuno mi ha visto fare smorfie, ed è quel che conta.",
+		"Meglio. Vediamo di non farci l'abitudine.",
+	},
+	["cls.shaman.buff.w02.01"] = {
+		"Io chiedo, e gli elementi prestano. Un prestito, non un regalo. Mi ricorderò di chi è.",
+		"Terra sotto i piedi, vento alle spalle. Gli spiriti hanno aperto un po' le mani: non lo sprecherò.",
+	},
+	["cls.shaman.heal.w02.01"] = {
+		"posa una mano sulla ferita e aspetta, paziente come un ruscello che consuma una pietra, finché il dolore non cede.",
+		"espira piano mentre la cura fa presa, e per un attimo l'aria sa di terra bagnata.",
+	},
+	["cls.warlock.buff.w02.01"] = {
+		"Ecco. Un piccolo dono dal mio lato del mestiere. Svanisce molto prima di poter desiderare qualcosa.",
+		"Prendilo. È abbastanza pulito, e da te non vuole niente.",
+	},
+	["cls.warlock.heal.w02.01"] = {
+		"guarda la ferita chiudersi con un'espressione che non è proprio sollievo, come chi controlla il prezzo su una ricevuta.",
+		"muove le dita fredde dopo la cura, e non guarda quanto è costata.",
+	},
+	["cls.warlock.pet_call.w02.01"] = {
+		"{pet} arriva come il fumo: tutto in una volta, e con l'odore di un altro posto.",
+		"Ed ecco {pet}, puntuale come un creditore. Stammi vicino, e stammi in riga.",
+	},
+	["cls.warrior.buff.w02.01"] = {
+		"fa ruotare le spalle una volta, come per sistemarci sopra un peso nuovo, e stringe meglio l'impugnatura.",
+		"allarga la posizione di un palmo e saggia l'equilibrio dell'arma, più {g:pronto|pronta} di un attimo fa.",
+	},
+	["cls.warrior.heal.w02.01"] = {
+		"Toppa messa. La cicatrice nuova si unirà alle altre: hanno parecchio da raccontarsi.",
+		"Bene. Adesso posso andare a guadagnarmi la prossima.",
+	},
 }, "base_classes")

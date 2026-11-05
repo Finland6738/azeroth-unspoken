@@ -422,28 +422,35 @@ T.run("#90: frames tied to theme and register, and fresh across events", functio
 	end
 	T.eq(jokeFrame, 0, "a frame written for a theme never tells a phrase of another theme")
 	T.ok(lossFrame > 0, "and it tells those of its theme: " .. lossFrame)
-	-- the generic frames of the base: "says" and "murmurs" are rare in a session of emotes
+	-- the generic frames of the base: "says" and "murmurs" are rare in a session of emotes. They are light (weight 0.15),
+	-- and in this mix of events (three of eight are greetings, toasts and farewells, spoken lines) their share is about
+	-- 9-10%: one seed of 400 picks (about 280 framed, one standard deviation near 1.8 points) gave 7.7-10.4% by seed since
+	-- R3a (#145), and the order of the picks differs between platforms. So five seeds are pooled and the bound keeps a
+	-- margin; the target of the roadmap R3 (under 10% of the framed interventions of a simulated session) is checked by
+	-- M2 in run_tests.py (9a).
 	P.zone, P.subzone = "Elwynn Forest", "Goldshire"
 	ctx = NS:BuildContext()
-	Fresh()
-	math.randomseed(62)
 	local framed, says = 0, 0
-	for i = 1, 400 do
-		local ev = ({ "battle", "victory", "muse", "zone", "greet", "toast", "farewell", "levelup" })[i % 8 + 1]
-		local rec = Engine:PickEntry(ev, ctx, "emote")
-		if rec and rec.frame then
-			framed = framed + 1
-			local f
-			for _, list in pairs(Engine.frames) do
-				for _, x in ipairs(list) do if x.id == rec.frame then f = x end end
+	for _, seed in ipairs({ 62, 63, 64, 65, 66 }) do
+		Fresh()
+		math.randomseed(seed)
+		for i = 1, 400 do
+			local ev = ({ "battle", "victory", "muse", "zone", "greet", "toast", "farewell", "levelup" })[i % 8 + 1]
+			local rec = Engine:PickEntry(ev, ctx, "emote")
+			if rec and rec.frame then
+				framed = framed + 1
+				local f
+				for _, list in pairs(Engine.frames) do
+					for _, x in ipairs(list) do if x.id == rec.frame then f = x end end
+				end
+				local en = Engine.VariantText(f.text.en[1])
+				if en:find("^says,") or en:find("^murmurs,") then says = says + 1 end
 			end
-			local en = Engine.VariantText(f.text.en[1])
-			if en:find("^says,") or en:find("^murmurs,") then says = says + 1 end
+			ADVANCE(40)
 		end
-		ADVANCE(40)
 	end
-	T.ok(framed > 50, "framed interventions: " .. framed)
-	T.ok(says / framed < 0.10, ("\"says\" and \"murmurs\" under 10%% of the frames: %d/%d"):format(says, framed))
+	T.ok(framed > 250, "framed interventions: " .. framed)
+	T.ok(says / framed < 0.12, ("\"says\" and \"murmurs\" under 12%% of the frames of five seeds: %d/%d"):format(says, framed))
 end)
 
 T.run("#90: the thematic memory is never saved (ADR 0017)", function()

@@ -865,4 +865,186 @@ NS:AddTexts("enUS", {
 		"That's how the Darkspear do it. Remember it, if you can still remember anything.",
 		"One more for the Darkspear. Who's next?",
 	},
+	["band.b10_20.battle.01"] = {
+		"Easy, now. I've beaten worse than you this week.",
+		"Come on, then. I've walked a long way to get here.",
+	},
+	["band.b10_20.battle.02"] = {
+		"Watch how it shifts its weight. Everything warns you before it strikes, if you're paying attention.",
+		"Breathe out. Wait for the opening. Don't swing at the first thing that moves.",
+	},
+	["band.b10_20.lowhp.01"] = {
+		"Too much. Too fast. Back off, back off!",
+		"This one's stronger than it looked. Much stronger.",
+	},
+	["band.b10_20.victory.01"] = {
+		"That went better than the last one. I'm keeping count.",
+		"Clean. Well, cleaner. My technique is improving, even if my boots aren't.",
+		"Done, and I barely broke a sweat. Barely.",
+	},
+	["band.b1_10.battle.01"] = {
+		"Right. Feet apart, eyes open, don't drop anything.",
+		"Steady. Remember what they showed you. Mostly the part about not running.",
+	},
+	["band.b1_10.victory.01"] = {
+		"It's down. My hands are shaking, but it's down.",
+		"Won. I'll pretend that was the plan all along, and my hands can stop trembling whenever they like.",
+	},
+	["band.b20_30.battle.01"] = {
+		"I know your kind. Let's not drag this out.",
+		"Fine. I've still got a road to walk after you.",
+		"You picked the wrong traveler today.",
+	},
+	["band.b20_30.battle.02"] = {
+		"settles into a fighting stance that no longer needs thinking about.",
+		"shifts {g:his|her} weight and waits, calmer about it than a season ago.",
+	},
+	["band.b20_30.lowhp.01"] = {
+		"Should've seen that coming. Lesson noted. Now survive it.",
+		"Too hasty. Stupid. Get out of this, get out.",
+	},
+	["band.b20_30.victory.01"] = {
+		"Not a scratch worth mentioning. I remember when every fight left a mark.",
+		"Over, and I'm hardly winded. In the early days I'd have dreamed of that.",
+	},
+	["band.b20_30.victory.02"] = {
+		"Next. No, wait, let me catch my breath first. Then next.",
+		"Good. Someone add that one to the list, once I've got my breath.",
+	},
+	["band.b30_40.battle.01"] = {
+		"I've seen this dance before. I know where it ends.",
+		"Fine. One more on the list, and the list is long.",
+	},
+	["band.b30_40.battle.02"] = {
+		"Don't rush. Nothing here I haven't faced in some shape before.",
+		"Read it, then move. The body knows the rest by now.",
+	},
+	["band.b30_40.battle.03"] = {
+		"squares up to the fight with the unhurried economy of long practice.",
+		"lets out a slow breath and steps forward, no wasted movement anywhere.",
+	},
+	["band.b30_40.lowhp.01"] = {
+		"Not like this. I've come too far for it to end like this.",
+		"Careful now. Panic is what kills, not the wound.",
+		"Bad. Bad. All right, think. You know how to do this.",
+	},
+	["band.b30_40.victory.01"] = {
+		"That's that. Another story I won't bother telling.",
+		"Done. I'd call it close, but I've had closer.",
+		"Down it goes. Same as the others.",
+	},
+	["band.b30_40.victory.02"] = {
+		"Clean it, bind it, move on. Some habits are worth more than talent.",
+		"Check the hands, check the gear, check the horizon. Then breathe.",
+	},
+	["band.b40_50.battle.01"] = {
+		"Come on, then. I've no time for a long one.",
+		"You're not the worst thing I've faced this month.",
+		"I buried my fear in harder ground than this. Let's go.",
+	},
+	["band.b40_50.battle.02"] = {
+		"Measure it. Strength, speed, how it guards. Then decide how much of yourself to spend.",
+		"Spend nothing you don't need to. Not a breath, not a step.",
+	},
+	["band.b40_50.battle.03"] = {
+		"draws a long breath and lets the world narrow down to the thing in front of {g:him|her}.",
+		"goes very still for a heartbeat, and then moves with no hesitation at all.",
+	},
+	["band.b40_50.lowhp.01"] = {
+		"Bad, but not the worst. Hold. Hold.",
+		"I know this feeling. Don't let it win.",
+		"Pain's just information. Read it later.",
+	},
+	["band.b40_50.victory.01"] = {
+		"That's done. On to the next, and the next after that.",
+		"Down. I'd celebrate, but there's always another.",
+		"Finished. Let's not stand about admiring it.",
+	},
+	["band.b40_50.victory.02"] = {
+		"Every fight takes away a little of the old fear and leaves a little more of the old aches.",
+		"Won again. My body keeps the score more honestly than my pride does.",
+		"I win more than I lose now. The losses just cost more.",
+	},
+	["band.b50_60.battle.01"] = {
+		"Let's see if you're worth the trouble.",
+		"I've stood against worse. Try to be interesting.",
+		"Steady. I've done this more times than you've drawn breath.",
+	},
+	["band.b50_60.battle.02"] = {
+		"No fear, just arithmetic. How hard, how fast, how long.",
+		"Nothing in me rushes anymore. Good. Rushing is how veterans become stories.",
+	},
+	["band.b50_60.battle.03"] = {
+		"meets the fight with the flat calm of someone who stopped counting such moments long ago.",
+		"makes the opening move without a word, as if the outcome had been settled before the first blow.",
+	},
+	["band.b50_60.lowhp.01"] = {
+		"Not now. Not this close to the end.",
+		"I've climbed too long to fall here. Up. Up.",
+		"All right, that hurt. Now it's my turn.",
+	},
+	["band.b50_60.victory.01"] = {
+		"Done. Who's next, and are they any better?",
+		"Settled. I'd hoped for more of a challenge.",
+		"Down, and fast. Good. Let's not linger.",
+	},
+	["band.b50_60.victory.02"] = {
+		"Another one. My hands don't shake afterward anymore. I'm not sure that's entirely good.",
+		"It's over. The calm that follows used to surprise me. Now it just waits, and my hands are already still.",
+		"I win these the way a mason lays bricks, with steady hands. Skill, yes. But also tiredness, and no joy left in it.",
+	},
+	["band.b60.battle.01"] = {
+		"I've faced worse than you on better days. Let's be quick.",
+		"Think carefully. I already have.",
+	},
+	["band.b60.battle.02"] = {
+		"Weigh it. Worth the effort, worth the risk, worth the time? Yes. Go.",
+		"Every fight is a choice now. This one I choose.",
+	},
+	["band.b60.battle.03"] = {
+		"considers the foe for a long, measured moment before committing, like a judge weighing a verdict set in stone.",
+		"lets the fight come, calm and heavy as a stone settling into a riverbed.",
+	},
+	["band.b60.lowhp.01"] = {
+		"Hah. Nobody's pushed me this far in a long while. Good.",
+		"So you're the real thing. I'll grant you that. Now watch.",
+	},
+	["band.b60.threat.01"] = {
+		"I don't fight anything I haven't weighed first. I've weighed you. Walk away.",
+		"Look closely at me, then decide whether this is worth your life.",
+	},
+	["band.b60.victory.01"] = {
+		"As expected. No offense meant.",
+		"That's the end of it. I'd hoped to learn something, at least.",
+		"Over. Someone remind me why that was supposed to be dangerous.",
+	},
+	["band.b60.victory.02"] = {
+		"Won, and weighed. It cost little. I'll still count it.",
+		"Another fight ended. Not a triumph, just a thing done right by someone who knew how.",
+	},
+	["battle.humanoid.w02.01"] = {
+		"You can think, at least. Let's see if you can think fast.",
+		"Hands, a weapon, a plan. So have I. Come on.",
+	},
+	["battle.humanoid.w02.02"] = {
+		"watches the foe's eyes rather than the weapon; a thinking enemy gives itself away with the eyes first.",
+		"meets the enemy's stare and shifts {g:his|her} weight, reading the feint before it comes.",
+	},
+	["lowhp.beast.w02.01"] = {
+		"staggers back from the beast, bleeding, and plants {g:his|her} feet again out of sheer stubbornness.",
+		"keeps the weapon between {g:himself|herself} and the beast, breathing hard, refusing it the opening it keeps circling for.",
+	},
+	["lowhp.humanoid.w02.01"] = {
+		"Clever. You found the gap. Don't get used to it.",
+		"That one landed. Enjoy it; it's the last.",
+	},
+	["victory.beast.w02.01"] = {
+		"Rest now. You fought for your life; so did I.",
+		"Lie still. You were only doing what beasts do.",
+	},
+	["victory.humanoid.w02.01"] = {
+		"They had a face, a voice, maybe someone waiting for them. I don't let myself linger on that. Not long, anyway.",
+		"Done. Fighting beasts is hunger against hunger; this was choice against choice, and that weighs differently.",
+		"It's over. Whoever they were, they won't be telling this story. I'll tell it plainly, if I tell it at all.",
+	},
 }, "base_combat")

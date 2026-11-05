@@ -128,4 +128,37 @@ AU:RegisterRegionalTexts("dunmorogh", "enUS", "eastern_ironforge", [==[
 		"Snow on the boots of everyone coming in from outside. I'll stay by the forge and take their word for it.",
 		"Folk are stamping snow off at the gates. Ironforge doesn't bother with weather; it only does heat.",
 	},
+	["ifo.greet.w02.01"] = {
+		"Hail! Warm enough in here for you, after that mountain road?",
+		"Well met. Mind the sparks, and mind the dwarves in a hurry.",
+	},
+	["ifo.muse.w02.01"] = {
+		"Runes cut into every arch, worn soft at just the height where hands have touched them for generations.",
+		"The stone of the halls is polished smooth where boots and shoulders have rubbed it. A city wears in, like a good glove.",
+	},
+	["ifo.muse.w02.02"] = {
+		"Somebody in the Military Ward is testing a rifle again. Either that, or the mountain has hiccups.",
+		"Bang. Then cheering. Then another bang. Dwarven target practice, or a very lively wedding.",
+		"A boom from the far end of the city, and nobody so much as looks up. Ironforge has heard worse.",
+	},
+	["ifo.muse.w02.03"] = {
+		"leans on a stone rail above the Great Forge, the heat rising past {g:his|her} face in slow, shimmering waves.",
+		"watches the red light of the molten channels move across the carved walls, until the stone faces seem to change expression.",
+	},
+	["ifo.muse.w02.04"] = {
+		"The Mystic Ward is the quietest corner of the city. Even the dwarves who study there seem to have learned to put their hammers down.",
+		"Priests and mages in the Mystic Ward, murmuring over their books. After the din of the forges it's like stepping into a pocket of the mountain's own thoughts.",
+	},
+	["ifo.quest_complete.w02.01"] = {
+		"Done. The one who set the task looked over the result the way a smith looks at a weld: hard, from every side, then one short nod.",
+		"Finished, inspected and approved. In Ironforge even thanks go through the forge first.",
+	},
+	["ifo.quest_complete.w02.02"] = {
+		"takes the reward in a hand still warm from the forge-heat of the halls, and nods once.",
+		"steps aside for a cart of ore, the reward already in a belt pouch and the task sinking into the noise of the city.",
+	},
+	["ifo.weather_change.w02.01"] = {
+		"Someone at the gate says the sky outside has cleared. I'll keep the forge-glow, but it's good news for the gryphons.",
+		"Word comes in from the gates: blue sky over Dun Morogh. Nobody in here changes pace on account of it.",
+	},
 ]==])

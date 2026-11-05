@@ -619,4 +619,13 @@ AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_orgrimmar", [==[
 		"Fatto, per l'Orda. Dimmi se c'è dell'altro.",
 		"Un altro debito saldato con l'Orda. Volentieri.",
 	},
+	["org.quest_complete.w02.01"] = {
+		"accetta la ricompensa e una burbera parola di grazie, mentre il vento spinge la polvere rossa giù per la Valley of Strength.",
+		"torna nel caldo e nel frastuono della città, il compito finito e la borsa più pesante.",
+		"intasca la ricompensa sotto le grandi rupi rosse che chiudono la città, e prosegue.",
+	},
+	["org.quest_complete.w02.02"] = {
+		"Fatto. Orgrimmar ha la memoria lunga per chi fa la sua parte, e corta per le scuse.",
+		"Finito. In questa città il rispetto si paga in monete piccole, e ne ho appena guadagnata un'altra.",
+	},
 ]==])

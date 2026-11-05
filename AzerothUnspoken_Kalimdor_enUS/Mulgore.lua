@@ -127,4 +127,68 @@ AU:RegisterRegionalTexts("mulgore", "enUS", "kalimdor_mulgore", [==[
 		"watches the clouds break up over the mesas, and the grass of Mulgore light up gold from one end to the other.",
 		"looks out as the sky opens wide and blue over the plains, the shadows of the last clouds running off across the grass.",
 	},
+	["mul.attack.w02.01"] = {
+		"Hold still. The plains are wide, but not that wide.",
+		"Run if you like. There's nothing out here to hide behind.",
+		"There! Let the wind carry that one to your kin.",
+	},
+	["mul.battle.w02.01"] = {
+		"Out of the grass, then. Let's see you in the open.",
+		"I saw the grass move. Come on, show yourself.",
+		"You picked open country for an ambush. Poor choice.",
+	},
+	["mul.battle.w02.02"] = {
+		"Quilboar. All bristles and bad manners. Time for a trim.",
+		"Spear down, pig. Nobody invited you to Mulgore.",
+	},
+	["mul.battle.w02.03"] = {
+		"sets {g:his|her} feet in the tall grass as the wind flattens it, and turns to meet whatever comes through.",
+		"stands {g:his|her} ground in the open grass, with nowhere to hide and no wish to.",
+	},
+	["mul.battle.w02.04"] = {
+		"It's only hungry. That doesn't make the teeth any smaller.",
+		"The hunters of the plains run their prey until it drops. I'll make this short instead.",
+		"Watch the shoulders, not the jaws. The shoulders tell you when it leaps.",
+	},
+	["mul.lowhp.w02.01"] = {
+		"The swoops are already circling. Not yet. Not for me.",
+		"Breathe. The ground is shaking, or I am. Either way, stay up.",
+		"Too much open sky above me. I'd rather not look at it with my back in the grass.",
+	},
+	["mul.muse.w02.01"] = {
+		"Thunder Bluff rises out of the plains like a table laid for giants. From down here the lifts look like threads.",
+		"Even from the far end of the grass you can see the bluffs, and the smoke of the city drifting off the top.",
+	},
+	["mul.muse.w02.02"] = {
+		"Past the bluffs lie the Red Rocks, where the tauren go to honor their dead. Even the wind blows softer there.",
+		"The tauren speak of the Red Rocks the way one speaks of a grave that is also a hearth: quietly, and with care.",
+	},
+	["mul.muse.w02.03"] = {
+		"watches a prairie dog pop up from its burrow, stare in outrage, and vanish again.",
+		"steps carefully around a whole town of prairie dog burrows, a dozen small heads ducking down as {g:he|she} passes.",
+		"hears the sharp warning whistle of a prairie dog, and the whole colony drops underground at once.",
+	},
+	["mul.quest_complete.w02.01"] = {
+		"It's done. Tell the herders the trail is clear, at least until tomorrow.",
+		"There. One small knot untied on these plains.",
+		"Done, and gladly. The plains have been good to me; it's the least I can do.",
+	},
+	["mul.quest_progress.w02.01"] = {
+		"Not finished yet. The rest is out in the grass, and the grass isn't saying where.",
+		"One part done. The plains keep the rest well hidden, but not forever.",
+	},
+	["mul.victory.w02.01"] = {
+		"And the plainstriders didn't even look up. Tough crowd.",
+		"Well fought, if I say so myself. Nobody else out here will.",
+	},
+	["mul.victory.w02.02"] = {
+		"The earth takes it back. That's the way out here: nothing on the plains goes to waste for long.",
+		"Still now. The swoops will come, then the beetles, then the grass. Mulgore throws nothing away.",
+		"It fought, it lost. Out here that's the whole story, and the plains tell it every day.",
+	},
+	["mul.victory.w02.03"] = {
+		"wipes {g:his|her} weapon on a tuft of grass and looks out across the plains, letting the wind dry the sweat.",
+		"takes a long breath of wind that smells of clean grass, and the fight is already behind {g:him|her}.",
+		"straightens and runs {g:his|her} eyes over the grass, searching for the next shape moving against the wind.",
+	},
 ]==])
