@@ -128,4 +128,37 @@ AU:RegisterRegionalTexts("teldrassil", "enUS", "kalimdor_darnassus", [==[
 		"turns {g:his|her} face up as rain filters down through the great leaves, soft and slow, onto the pale stone.",
 		"listens to the rain whispering on the streams of the city; Darnassus barely seems to notice it.",
 	},
+	["dar.greet.w02.01"] = {
+		"Peace to you, under the leaves.",
+		"Greetings. Quiet roads and clear water to you.",
+	},
+	["dar.muse.w02.01"] = {
+		"Leaves overhead as big as sails. The sky is up there beyond them, but down here the sky is green.",
+		"I've never seen leaves this size. When the wind moves through the crown, the whole city fills with a sound like a far-off tide.",
+	},
+	["dar.muse.w02.02"] = {
+		"I wished a Sentinel good day. She considered it carefully, and I believe she's considering it still.",
+		"Everyone here walks as if there's all the time in the world. Some of them have already seen ten thousand years of it.",
+	},
+	["dar.muse.w02.03"] = {
+		"stops on a curved bridge of pale wood and watches lantern light tremble on the water below.",
+		"follows the path along the lake's edge, where willows trail their branches in water so clear it seems not to be there.",
+		"pauses at the water's edge, where the reflection of the white towers lies so still it looks as if one could walk on it.",
+	},
+	["dar.muse.w02.04"] = {
+		"The kaldorei raised this city in a few short years, after losing so much in the war. It is lovely, and it is very new, and they know it.",
+		"Behind the calm of these terraces there's a whole people that had to begin again. You can see it in how carefully everything is tended.",
+	},
+	["dar.quest_complete.w02.01"] = {
+		"Done. The thanks came with a long look, as if someone were choosing to remember me.",
+		"Finished. In a city with a memory this long, even a small favor may be remembered longer than I'd guess.",
+	},
+	["dar.quest_complete.w02.02"] = {
+		"All done. I'll tell the owls; they seem to keep the records here.",
+		"Finished. Should I whisper it? Everything else in this city is whispered.",
+	},
+	["dar.weather_change.w02.01"] = {
+		"looks up as the clouds thin over the crown of the tree, and a paler light slips down through the leaves onto the terraces.",
+		"notices the green light of the city brighten by a shade as the sky clears, somewhere far above the leaves.",
+	},
 ]==])

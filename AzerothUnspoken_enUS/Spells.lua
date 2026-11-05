@@ -372,4 +372,24 @@ NS:AddTexts("enUS", {
 		"Keep still. Trolls heal fast; you'll have to borrow some of it.",
 		"There. Not as good as troll blood, but it'll close.",
 	},
+	["band.b20_30.attack.01"] = {
+		"That move used to take all my concentration. Now it just happens.",
+		"Practiced it a hundred times. This is the hundred and first.",
+	},
+	["band.b30_40.attack.01"] = {
+		"Not the flashiest move I know. Just the one that works.",
+		"Simple, sharp, and over before you notice.",
+	},
+	["band.b40_50.attack.01"] = {
+		"Every move I make has a reason now. This one's reason is you.",
+		"Practiced until it bored me. Now it's your turn to be bored.",
+	},
+	["band.b50_60.attack.01"] = {
+		"Every motion I've ever learned, folded into this one.",
+		"No flourish. Just the right thing, at the right moment.",
+	},
+	["band.b60.attack.01"] = {
+		"Years of practice in one motion. Do take note.",
+		"This is what patience looks like when it finally moves.",
+	},
 }, "base_spells")

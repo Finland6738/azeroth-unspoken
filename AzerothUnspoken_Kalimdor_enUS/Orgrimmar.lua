@@ -619,4 +619,13 @@ AU:RegisterRegionalTexts("durotar", "enUS", "kalimdor_orgrimmar", [==[
 		"Done, for the Horde. Tell me if there's more.",
 		"Another debt paid to the Horde. Gladly.",
 	},
+	["org.quest_complete.w02.01"] = {
+		"accepts the reward and a gruff word of thanks, while the wind carries red dust down the Valley of Strength.",
+		"steps back into the heat and noise of the city, the task done and the purse heavier.",
+		"pockets the reward beneath the great red cliffs that wall the city in, and moves on.",
+	},
+	["org.quest_complete.w02.02"] = {
+		"Done. Orgrimmar has a long memory for those who pull their weight, and a short one for excuses.",
+		"Finished. In this city respect is paid in small coins, and I've just earned one more.",
+	},
 ]==])

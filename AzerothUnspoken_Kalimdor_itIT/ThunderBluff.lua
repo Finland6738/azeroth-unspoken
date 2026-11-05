@@ -128,4 +128,37 @@ AU:RegisterRegionalTexts("mulgore", "itIT", "kalimdor_thunderbluff", [==[
 		"Ho visto la pioggia attraversare la pianura molto prima che arrivasse qui. Quassù il tempo lo si guarda arrivare.",
 		"Piove. I ponti di corda saranno scivolosi. Li attraverserò come un vecchio kodo: piano, e nel mezzo.",
 	},
+	["thb.greet.w02.01"] = {
+		"Salute. Quassù il vento è forte: tieniti al centro dei ponti.",
+		"Ben trovati quassù, molto sopra l'erba.",
+	},
+	["thb.muse.w02.01"] = {
+		"Pelli tese sui telai in ogni angolo della rupe, ad asciugare al vento. Niente di ciò che i tauren prendono dalla pianura va sprecato.",
+		"Una conciatrice siede con una pelle sulle ginocchia e lavora l'ago, lenta e sicura. L'intera rupe sembra andare al ritmo delle sue mani.",
+	},
+	["thb.muse.w02.02"] = {
+		"osserva un uccello della pianura sospeso immobile sulla corrente che sale lungo la rupe, all'altezza dei suoi occhi.",
+		"vede una viverna virare attorno alla torre, molto più in basso: strano, guardarla dall'alto.",
+		"nota un falco che cavalca il vento lungo la parete, e si rende conto di guardargli la schiena dall'alto.",
+	},
+	["thb.muse.w02.03"] = {
+		"Magatha Grimtotem ha la sua tenda su Elder Rise, in mezzo alla gente di Cairne. I tauren pronunciano il suo nome con cortesia, e di rado.",
+		"Su Elder Rise vive un'anziana dei Grimtotem, trattata con grande cortesia e pochissimo calore. Mi piacerebbe conoscere quella storia.",
+	},
+	["thb.muse.w02.04"] = {
+		"Qualcuno suona il tamburo sulla rupe accanto. I miei piedi hanno cominciato a tenere il tempo senza chiedermi il permesso.",
+		"Tamburi dall'altra parte del ponte. Non vedo chi suoni, ma l'intera rupe sembra conoscere il ritmo.",
+	},
+	["thb.quest_complete.w02.01"] = {
+		"È fatto. Che il tuo fuoco resti acceso e i tuoi kodo ben pasciuti.",
+		"Finito, e volentieri. La rupe è stata una buona padrona di casa.",
+	},
+	["thb.quest_complete.w02.02"] = {
+		"Fatto. Il grazie è arrivato con una voce così profonda che pareva salire dalle assi del ponte.",
+		"Finito. I tauren ringraziano come se avessero tutto il pomeriggio per farlo, e ogni loro parola lenta è sincera.",
+	},
+	["thb.weather_change.w02.01"] = {
+		"guarda il cielo rasserenarsi su Mulgore dal bordo della rupe, mentre le ombre delle nuvole scivolano via dall'erba, molto più in basso.",
+		"sente il vento cambiare e vede la foschia sollevarsi dalla pianura, finché le mese lontane non si stagliano nette contro un azzurro pulito.",
+	},
 ]==])

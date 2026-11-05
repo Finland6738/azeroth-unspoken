@@ -593,4 +593,94 @@ NS:AddTexts("enUS", {
 		"A group? Sure, mon. I bring the luck, you bring the snacks.",
 		"Count me in. A Darkspear never says no to good company.",
 	},
+	["faction.alliance.npc_meet.w02.01"] = {
+		"An innkeeper of the Alliance. Whatever the accent, the welcome sounds the same: sit, eat, pay later.",
+		"Human, dwarf, gnome or elf, an Alliance innkeeper keeps one rule: no brawling indoors, and boots off the table.",
+		"A friendly roof under a friendly banner. After the road, that's worth more than the bed.",
+	},
+	["faction.alliance.other_action.w02.01"] = {
+		"An invitation from one of ours? Gladly. The roads are long, and the Alliance walks them better together.",
+		"Glad to join you. Together we'll get further than either of us would alone.",
+	},
+	["faction.horde.npc_meet.w02.01"] = {
+		"A Horde merchant. Haggling with one of your own is half the pleasure and none of the risk.",
+		"Goods from Orgrimmar, Thunder Bluff, the Undercity... the Horde trades the way it fights: all together, and a little loudly.",
+		"Coin passes from hand to hand and stays in the Horde. That's a bargain I can live with.",
+	},
+	["faction.horde.other_action.w02.01"] = {
+		"A duel between comrades. Good. Better a bruise from a friend than a surprise from the Alliance.",
+		"A friendly duel? Good. We sharpen each other now, and the Alliance gets a harder fight later.",
+	},
+	["race.dwarf.npc_meet.w02.01"] = {
+		"A banker. My people trust two things: stone vaults and their own counting. Let's see how this one counts.",
+		"Gold kept in someone else's vault. Every dwarf knows the itch: you want to go down and check on it yourself.",
+		"A vault and a keeper for it. Good. I'll still count everything twice, as a dwarf should.",
+	},
+	["race.dwarf.other_action.w02.01"] = {
+		"A duel? Gladly. Swing as hard as you like; stone takes a while to notice.",
+		"A bout for sport? Aye, I'm in. Just don't go crying to the innkeeper after.",
+	},
+	["race.gnome.npc_meet.w02.01"] = {
+		"Merchandise! I'm only looking. Mostly looking. Is that a spring-loaded hinge?",
+		"I'd pay double for anything with gears in it. Best the merchant never finds out.",
+		"Let's see the stock. I'll try not to take anything apart until it's paid for.",
+	},
+	["race.gnome.other_action.w02.01"] = {
+		"An invitation! Wonderful. I'll bring the tools; somebody else can bring the muscle.",
+		"A group! Excellent. Teamwork is just engineering with people in it.",
+	},
+	["race.human.npc_meet.w02.01"] = {
+		"That look: someone with a problem, hoping I'm the answer. Humans have built whole kingdoms on less.",
+		"Another errand on offer. Back home they'd call it neighborliness, and expect a pie in return.",
+		"Someone needs a hand. Fine. I never did learn to walk past trouble without stopping.",
+	},
+	["race.human.other_action.w02.01"] = {
+		"A duel, is it? All right. Loser buys the next round, and I'm thirsty already.",
+		"A duel? Fair enough. Steel up, and may the better hand win.",
+	},
+	["race.nightelf.npc_meet.w02.01"] = {
+		"An innkeeper, a roof, a bed with legs. I am still learning to sleep under a ceiling instead of leaves.",
+		"A room? Gladly. I'll leave the shutters open, if the keeper allows; I sleep better with the sky in sight.",
+		"Bread, a bed, a fire someone else keeps. Small comforts, but I have learned to honor them.",
+	},
+	["race.nightelf.other_action.w02.01"] = {
+		"An invitation. I accept. Even the longest road grows shorter in good company.",
+		"You ask me to walk with you. Then I will, for as long as our roads agree.",
+	},
+	["race.orc.npc_meet.w02.01"] = {
+		"Show me steel. Not the pretty kind; the kind that's still good after the third fight.",
+		"I'll pay a fair price. Name an unfair one and we'll talk about it, loudly.",
+		"Leather, steel, rations. An orc buys what keeps the body going, and lets the trinkets be.",
+	},
+	["race.orc.other_action.w02.01"] = {
+		"A war band? Good. Lead or follow, I don't mind, as long as we don't wander.",
+		"You want me in your band? Done. Point me at whatever needs breaking.",
+	},
+	["race.scourge.npc_meet.w02.01"] = {
+		"The guard's hand drifts toward the hilt as I pass. Fair. I'd do the same.",
+		"A guard watches me a little longer than the others. I nod. It costs me nothing, and it confuses them.",
+		"Hands in plain sight, pace unhurried. Guards and the dead get along best that way.",
+	},
+	["race.scourge.other_action.w02.01"] = {
+		"A wave? At me? Well. I'll wave back, slowly, so nothing falls off.",
+		"How friendly. Most people greet me with a torch in hand.",
+	},
+	["race.tauren.npc_meet.w02.01"] = {
+		"{other} has knowledge to share. The elders say a wise tauren keeps one ear for the wind and one for the teacher.",
+		"A teacher. I lower my head, partly out of respect and partly so my horns don't take the lamp down.",
+		"Lessons are like grazing: a little each day, and the herd grows strong.",
+	},
+	["race.tauren.other_action.w02.01"] = {
+		"answers the greeting with a slow, deep nod, the way the people of the plains do.",
+		"lowers {g:his|her} great head in a gentle greeting, horns tilted aside so as not to seem a threat.",
+	},
+	["race.troll.npc_meet.w02.01"] = {
+		"Hey, keeper. Something hot, something strong, and a bed that don't wobble. That's all, mon.",
+		"Inn food. Not as good as fish on a fire by the water, but I don't complain. Much.",
+		"Warm room, smiling keeper. Trolls know a good hut when they find one, mon.",
+	},
+	["race.troll.other_action.w02.01"] = {
+		"A duel? Ha! Come on, then. I'll go easy on you. Maybe.",
+		"You want to dance with a troll? Okay. Don't blame the spirits when you lose.",
+	},
 }, "base_context")

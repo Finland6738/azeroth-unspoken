@@ -127,4 +127,68 @@ AU:RegisterRegionalTexts("mulgore", "itIT", "kalimdor_mulgore", [==[
 		"guarda le nuvole aprirsi sopra le mese, e l'erba di Mulgore accendersi d'oro da un capo all'altro.",
 		"osserva il cielo che si apre largo e azzurro sopra la pianura, mentre le ombre delle ultime nuvole scappano via sull'erba.",
 	},
+	["mul.attack.w02.01"] = {
+		"Sta' fermo. La pianura è vasta, ma non fino a quel punto.",
+		"Scappa pure. Quaggiù non c'è niente dietro cui nasconderti.",
+		"Ecco! Che il vento porti questa ai tuoi simili.",
+	},
+	["mul.battle.w02.01"] = {
+		"Fuori dall'erba, allora. Vediamoti allo scoperto.",
+		"Ho visto l'erba muoversi. Avanti, fatti vedere.",
+		"Hai scelto la prateria aperta per un agguato. Pessima idea.",
+	},
+	["mul.battle.w02.02"] = {
+		"Uomini-cinghiale. Tutti setole e cattive maniere. Ci vuole una spuntatina.",
+		"Giù la lancia, maiale. A Mulgore nessuno ti ha invitato.",
+	},
+	["mul.battle.w02.03"] = {
+		"pianta i piedi nell'erba alta mentre il vento la schiaccia, e si volta ad affrontare quello che ne sbuca.",
+		"resta piantato in mezzo all'erba aperta: nessun riparo, e nessuna voglia di cercarne.",
+	},
+	["mul.battle.w02.04"] = {
+		"Ha solo fame. I denti non diventano più piccoli per questo.",
+		"I cacciatori della pianura sfiancano la preda finché non crolla. Io invece la faccio breve.",
+		"Guarda le spalle, non le fauci. Sono le spalle a dirti quando salta.",
+	},
+	["mul.lowhp.w02.01"] = {
+		"I rapaci girano già in tondo. Non ancora. Non per me.",
+		"Respira. Trema la terra, o tremo io. In ogni caso, resta in piedi.",
+		"Troppo cielo aperto sopra di me. Preferirei non guardarlo con la schiena nell'erba.",
+	},
+	["mul.muse.w02.01"] = {
+		"Thunder Bluff si alza dalla pianura come una tavola apparecchiata per giganti. Da quaggiù gli ascensori sembrano fili.",
+		"Anche dall'altro capo della prateria si vedono le rupi, e il fumo della città che scivola via dalla cima.",
+	},
+	["mul.muse.w02.02"] = {
+		"Oltre le rupi ci sono le Red Rocks, dove i tauren vanno a onorare i loro morti. Lì perfino il vento soffia più piano.",
+		"I tauren parlano delle Red Rocks come si parla di una tomba che è anche un focolare: sottovoce, e con riguardo.",
+	},
+	["mul.muse.w02.03"] = {
+		"osserva un cane della prateria spuntare dalla tana, {g:fissarlo|fissarla} indignato e sparire di nuovo.",
+		"gira con cautela intorno a un intero villaggio di tane di cani della prateria, mentre una dozzina di testoline si abbassa al suo passaggio.",
+		"sente il fischio d'allarme di un cane della prateria, e l'intera colonia sparisce sottoterra in un colpo solo.",
+	},
+	["mul.quest_complete.w02.01"] = {
+		"È fatto. Dite ai mandriani che il sentiero è libero, almeno fino a domani.",
+		"Ecco. Un piccolo nodo sciolto, in questa pianura.",
+		"Fatto, e volentieri. La pianura è stata generosa con me: è il minimo.",
+	},
+	["mul.quest_progress.w02.01"] = {
+		"Non è ancora finita. Il resto è là fuori nell'erba, e l'erba non dice dove.",
+		"Una parte è sistemata. La pianura nasconde bene il resto, ma non per sempre.",
+	},
+	["mul.victory.w02.01"] = {
+		"E i plainstrider non hanno nemmeno alzato la testa. Pubblico difficile.",
+		"Ben combattuto, lo dico da me. Quaggiù nessun altro lo farà.",
+	},
+	["mul.victory.w02.02"] = {
+		"La terra se lo riprende. Quaggiù funziona così: nella pianura niente resta sprecato a lungo.",
+		"Adesso è immobile. Verranno i rapaci, poi gli scarabei, poi l'erba. Mulgore non butta via niente.",
+		"Ha lottato, ha perso. Quaggiù la storia è tutta qui, e la pianura la racconta ogni giorno.",
+	},
+	["mul.victory.w02.03"] = {
+		"pulisce l'arma su un ciuffo d'erba e guarda la pianura, lasciando che il vento asciughi il sudore.",
+		"prende un lungo respiro di vento che sa d'erba pulita, e lo scontro è già alle spalle.",
+		"si raddrizza e passa l'erba con lo sguardo, in cerca della prossima sagoma che avanzi controvento.",
+	},
 ]==])

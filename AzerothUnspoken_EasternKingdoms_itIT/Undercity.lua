@@ -131,4 +131,36 @@ AU:RegisterRegionalTexts("tirisfalglades", "itIT", "eastern_undercity", [==[
 		"Lassù sta piovendo su Lordaeron. La città se ne accorge solo dall'umido che striscia lungo i muri.",
 		"I canali salgono di un dito: lassù piove, dunque. Quaggiù nessuno alza lo sguardo.",
 	},
+	["und.greet.w02.01"] = {
+		"Buonasera, o buongiorno. Quaggiù è difficile dirlo. Salute, in ogni caso.",
+		"Salute. Attenzione ai canali: quello che ci cade dentro non lo restituiscono.",
+	},
+	["und.muse.w02.01"] = {
+		"Accanto alla Regina Banshee c'è un signore del terrore, tutto ali e cortesia. Qui, quando se ne parla, si abbassa la voce, e se ne parla di rado.",
+		"Varimathras non lascia il Royal Quarter e sorride al nulla. I Reietti lo tengono d'occhio come si guarda un fuoco acceso troppo vicino al tetto di paglia.",
+	},
+	["und.muse.w02.02"] = {
+		"segue la curva dell'anello oltre nicchie dove un tempo giacevano bare, ora piene di casse e di pezze di stoffa.",
+		"passa davanti a un'alcova scavata per i morti tanto tempo fa, dove adesso un mercante tiene la bilancia e una lampada.",
+	},
+	["und.muse.w02.03"] = {
+		"Ratti in ogni angolo, grassi e per niente intimoriti. Nessuno qui sembra badarci, e non so bene cosa dica di questa gente.",
+		"Un ratto mi ha appena guardato come se {g:l'intruso|l'intrusa} fossi io. Quaggiù, forse, non ha tutti i torti.",
+	},
+	["und.muse.w02.04"] = {
+		"In città si dice che gli speziali stiano preparando una nuova piaga, da rivolgere contro il Flagello. Nessuno dice contro cos'altro potrebbe rivolgersi.",
+		"Una piaga per combattere una piaga. Quaggiù la voce gira così, a mezza bocca, e nessuno sembra trovarla strana.",
+	},
+	["und.quest_complete.w02.01"] = {
+		"riceve un cenno da un viso che ormai si muove poco, e scopre che vale più di tanti sorrisi.",
+		"si scosta dal banco mentre il compenso viene posato da dita grigie e attente.",
+	},
+	["und.quest_complete.w02.02"] = {
+		"Fatto. Non applaudite tutti insieme. O non applaudite affatto, va bene lo stesso.",
+		"Finito. Direi che ha rallegrato il posto, ma per quello ci vorrebbe ben altro.",
+	},
+	["und.weather_change.w02.01"] = {
+		"Tuoni lassù, smorzati da tutta quella pietra. Quaggiù sembra qualcuno che sposta i mobili in una stanza lontana.",
+		"Un temporale sulle rovine, a giudicare dal brontolio. Le lampade non tremano nemmeno.",
+	},
 ]==])

@@ -977,8 +977,8 @@ def need_report():
     check(t["need_strict"] > t["need_soft"] > 0 and all(t["gap_strict"][l] <= t["need_strict"] for l in res["languages"]),
           "the report sums the need and the gap per language")
     check(res["by_place"]["durotar"]["have"]["enUS"] > 400 and res["by_place"]["ironforge"]["have"]["enUS"] > 60 and
-          res["by_place"]["westfall"]["have"]["enUS"] == 0,
-          "the places of the trial slice and of W01 hold their texts, the others none yet")
+          res["by_place"]["westfall"]["have"]["enUS"] > 60 and res["by_place"]["moltencore"]["have"]["enUS"] == 0,
+          "the places of the trial slice, W01 and W02 hold their texts, the others none yet")
     ws = res["waves"]
     lang = res["languages"][0]
     left = sum(r["need_random"] - r["have"][lang] for r in res["pools"] if r["need_random"] > r["have"][lang])

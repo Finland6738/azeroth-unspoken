@@ -272,4 +272,24 @@ NS:AddTexts("itIT", {
 		"si guarda intorno; l'unico testimone è uno scoiattolo per nulla impressionato.",
 		"sorride da {g:solo|sola} in mezzo alla strada, e un passante allunga il passo.",
 	},
+	["band.b20_30.levelup.01"] = {
+		"Più forte, di nuovo. Le strade che mi spaventavano poco tempo fa adesso sembrano strade qualunque.",
+		"Qualcosa si assesta nelle braccia, un po' più di peso dietro ogni gesto. Lo prendo volentieri.",
+		"Un altro gradino. Il mondo non si rimpicciolisce, ma io ci occupo un po' più di spazio.",
+	},
+	["band.b30_40.levelup.01"] = {
+		"Più forte. Le cicatrici non fanno meno male, ma reggono di più.",
+		"Un'altra tacca sulla lunga salita. Le gambe se le ricordano tutte.",
+		"Eccolo. Non più un salto, solo un altro passo sicuro.",
+	},
+	["band.b40_50.levelup.01"] = {
+		"Più forte ancora, e meno incline a stupirmene.",
+		"Un altro piolo. Per una volta, la scala sopra di me è più corta di quella sotto.",
+		"Crescere una volta sembrava un salto. Adesso sembra una porta che si apre su una stanza più difficile.",
+	},
+	["band.b50_60.levelup.01"] = {
+		"La cima è più vicina. Quassù l'aria è più sottile, e più limpida.",
+		"Più forte, ancora. Non restano molti gradini, e ognuno è ripido.",
+		"Un altro passo. Quasi vedo dove finisce tutto questo, e ciò che viene dopo non mi spaventa.",
+	},
 }, "base_life")

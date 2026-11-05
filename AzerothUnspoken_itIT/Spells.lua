@@ -372,4 +372,24 @@ NS:AddTexts("itIT", {
 		"Non muoverti. Noi troll guariamo in fretta: tu dovrai prenderne un po' in prestito.",
 		"Ecco. Non è come il sangue di troll, ma si chiude.",
 	},
+	["band.b20_30.attack.01"] = {
+		"Una volta quella mossa mi prendeva tutta la concentrazione. Adesso viene da sé.",
+		"Ci ho fatto pratica cento volte. Questa è la centunesima.",
+	},
+	["band.b30_40.attack.01"] = {
+		"Non è la mossa più vistosa che conosco. Solo quella che funziona.",
+		"Semplice, preciso, e finito prima che te ne accorga.",
+	},
+	["band.b40_50.attack.01"] = {
+		"Ogni mossa che faccio adesso ha un motivo. Il motivo di questa sei tu.",
+		"L'ho ripetuta fino alla noia. Adesso la noia tocca a te.",
+	},
+	["band.b50_60.attack.01"] = {
+		"Ogni movimento che abbia mai imparato, racchiuso in questo.",
+		"Niente fronzoli. Solo la cosa giusta, al momento giusto.",
+	},
+	["band.b60.attack.01"] = {
+		"Anni di pratica in un solo gesto. Prendi pure nota.",
+		"Ecco com'è la pazienza quando finalmente si muove.",
+	},
 }, "base_spells")

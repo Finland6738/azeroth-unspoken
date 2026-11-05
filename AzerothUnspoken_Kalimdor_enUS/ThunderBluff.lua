@@ -128,4 +128,37 @@ AU:RegisterRegionalTexts("mulgore", "enUS", "kalimdor_thunderbluff", [==[
 		"I could see the rain crossing the plains long before it got here. Up here, weather is something you watch arrive.",
 		"Rain. The rope bridges will be slick. I'll cross them like an old kodo: slowly, and in the middle.",
 	},
+	["thb.greet.w02.01"] = {
+		"Greetings. The wind is strong up here; keep to the middle of the bridges.",
+		"Well met, high above the grass.",
+	},
+	["thb.muse.w02.01"] = {
+		"Hides stretched on frames in every corner of the rise, drying in the wind. Nothing the tauren take from the plains goes to waste.",
+		"A leatherworker sits with a hide across her knees, working the needle slow and sure. The whole bluff seems to keep the pace of her hands.",
+	},
+	["thb.muse.w02.02"] = {
+		"watches a bird of the plains hang motionless on the updraft beside the bluff, level with {g:his|her} own eyes.",
+		"sees a wind rider bank around the tower far below, a strange thing to look at from above.",
+		"notices a hawk riding the wind along the cliff face, and realizes {g:he|she} is looking down on its back.",
+	},
+	["thb.muse.w02.03"] = {
+		"Magatha Grimtotem keeps her lodge on Elder Rise, among Cairne's own people. The tauren speak her name politely, and not often.",
+		"On Elder Rise lives an elder of the Grimtotem, treated with great courtesy and very little warmth. I'd like to know that story.",
+	},
+	["thb.muse.w02.04"] = {
+		"Somebody's drumming on the next rise. My feet have started keeping time without asking me.",
+		"Drums from across the bridge. I can't see who's playing, but the whole bluff seems to know the rhythm.",
+	},
+	["thb.quest_complete.w02.01"] = {
+		"It is done. May your hearth stay lit and your kodo stay fat.",
+		"Finished, and gladly. The bluff has been a good host.",
+	},
+	["thb.quest_complete.w02.02"] = {
+		"Done. The thanks came in a voice so deep it seemed to rise from the planks of the bridge.",
+		"Finished. The tauren thank you as if they had the whole afternoon for it, and they mean every slow word.",
+	},
+	["thb.weather_change.w02.01"] = {
+		"watches the sky clear over Mulgore from the edge of the bluff, the cloud shadows sliding off the grass far below.",
+		"feels the wind shift and sees the haze lift from the plains, until the far mesas stand sharp against a clean blue sky.",
+	},
 ]==])

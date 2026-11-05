@@ -612,4 +612,231 @@ NS:AddTexts("enUS", {
 		"The sky has changed its mind. Mine stays where it was.",
 		"Up in the sky, something's shifting. Down here, the plan holds.",
 	},
+	["band.b10_20.quest_complete.01"] = {
+		"Another one done. I'm starting to have a reputation. A small one, but it knows my name.",
+		"Done. Folk around here have started nodding at me in the street. I could get to like that.",
+		"Finished, and nobody had to come and rescue me. Progress.",
+	},
+	["band.b10_20.quest_complete.02"] = {
+		"The pay is better than it used to be. So are the bruises, in their way: they heal faster.",
+		"I'm earning enough now to buy something I want instead of only what I need. I haven't yet. But I could.",
+	},
+	["band.b10_20.quest_complete.03"] = {
+		"weighs the purse in one hand, nods once, and tucks it somewhere safer than the last one.",
+		"counts the reward without hurry, then pats the pocket twice with one hand to be sure it's still there.",
+	},
+	["band.b10_20.quest_progress.01"] = {
+		"Part of it done. I'm learning to keep the rest in my head instead of on scraps of paper.",
+		"Halfway there. I used to lose track of these. Not anymore.",
+	},
+	["band.b1_10.quest_complete.01"] = {
+		"Done, and paid in real coin. I could get used to this.",
+		"A job finished and a purse a little heavier. Small purse, small job, but mine.",
+	},
+	["band.b1_10.quest_complete.02"] = {
+		"They thanked me as if I'd done something large. It was an errand any neighbor could have run. I'm keeping the thanks anyway.",
+		"Somebody in this world now owes me a small favor. I don't know what to do with that yet, but I like it.",
+	},
+	["band.b20_30.quest_complete.01"] = {
+		"Done. Folk are starting to send for me by name. I'm not sure when that happened.",
+		"Finished. The jobs are getting bigger, and so, thankfully, is the pay.",
+		"Another one handled. I'm getting good at this, which is either encouraging or worrying.",
+	},
+	["band.b20_30.quest_complete.02"] = {
+		"Paid, thanked and pointed at the next problem. That seems to be the shape of things now.",
+		"I used to celebrate every finished job. Now I check my supplies and ask what's next.",
+		"One more knot in the world untied. There's always another knot.",
+	},
+	["band.b20_30.quest_complete.03"] = {
+		"accepts the thanks with a short nod, the way someone does who has heard a fair few of them by now.",
+		"tucks the reward away without counting it twice, a small luxury earned somewhere along the road.",
+	},
+	["band.b20_30.quest_complete.04"] = {
+		"Done. I'd say it was easy, but my back would call me a liar.",
+		"Job's finished. I'm keeping the bruises as a receipt.",
+	},
+	["band.b20_30.quest_progress.01"] = {
+		"That's everything. Now the long walk to tell them.",
+		"All done out here. Going to report is the easy part, usually.",
+	},
+	["band.b30_40.quest_complete.01"] = {
+		"Done. Not my hardest, not my easiest. A good honest day's work.",
+		"Finished. I've stopped expecting songs about it, which makes the pay feel better.",
+		"There. Tell them it's handled. They'll know who to send for next time.",
+	},
+	["band.b30_40.quest_complete.02"] = {
+		"The reward is fine. What I really keep is knowing how it went, and how I'd do it better.",
+		"Another job, another lesson filed away. My head is turning into a library of mistakes not to repeat.",
+		"I don't remember the faces of the first people I worked for. I'll remember this one. Funny how that changes.",
+	},
+	["band.b30_40.quest_complete.03"] = {
+		"accepts payment with the unhurried manner of someone who has done this many times and will be back on the road soon enough.",
+		"listens to the thanks, nods at the right moments, and is plainly already thinking about the road.",
+	},
+	["band.b30_40.quest_complete.04"] = {
+		"Done. Next time, ask someone cheaper. Oh, wait. There isn't anyone.",
+		"Handled. I accept payment in coin, gratitude and decent food, in that order.",
+	},
+	["band.b30_40.quest_complete.05"] = {
+		"Someone will sleep easier because of today. I won't meet them, and that's all right.",
+		"The people who'll benefit most from this will never know my name. Somehow that sits well with me.",
+	},
+	["band.b30_40.quest_progress.01"] = {
+		"Some of it done. Patience: these things always take longer than the one asking thinks.",
+		"A piece in place. I've stopped expecting jobs to go in a straight line.",
+		"Progress. Slow, but the kind that sticks.",
+	},
+	["band.b40_50.quest_complete.01"] = {
+		"Done. That one had teeth, but so do I.",
+		"Finished, and properly. I don't leave jobs half-done anymore; they have a way of growing.",
+		"It's handled. Pay me, and point me at the next mess.",
+	},
+	["band.b40_50.quest_complete.02"] = {
+		"The rewards are better than they were. I notice I care about them less.",
+		"A good job, done well. These days that's the part that pleases me, more than the purse.",
+		"Coin comes and goes. What stays is the quiet sense of a thing finished properly.",
+	},
+	["band.b40_50.quest_complete.03"] = {
+		"takes the reward and the thanks with equal calm, as if both were clouds that would pass.",
+		"listens to the gratitude with a tired half-smile that has heard every version of it.",
+		"pockets the payment without looking at it, eyes already on the horizon.",
+	},
+	["band.b40_50.quest_complete.04"] = {
+		"Good. One less thing for folk to fear. There are plenty more.",
+		"Done. It won't fix the world, but it fixes a corner of it.",
+	},
+	["band.b40_50.quest_complete.05"] = {
+		"I caught myself judging the reward by what it would sell for. When did I get so practical?",
+		"A few years ago I'd have bragged about this for a week. Now I'm mostly thinking about a bath.",
+	},
+	["band.b40_50.quest_progress.01"] = {
+		"That's the lot. Now someone gets their good news.",
+		"All of it done. The report will be shorter than the work was.",
+		"Finished out here. Time to go and collect my thanks and my next problem.",
+	},
+	["band.b50_60.quest_complete.01"] = {
+		"It's done. Tell whoever needs telling that it won't trouble them again.",
+		"Handled. Not a small thing, that one. I'm glad it fell to someone who could finish it.",
+		"Finished. The world is a little safer and I'm a little more tired. Fair trade.",
+	},
+	["band.b50_60.quest_complete.02"] = {
+		"The people who hand me work now have worried faces and long memories. The work has grown up along with me.",
+		"The jobs I'm given these days are the ones nobody else could finish. I try not to let it go to my head; mostly, it's just heavy.",
+		"Once, a finished job meant a hot meal. These days it can mean a lot of people never learn how close it came.",
+	},
+	["band.b50_60.quest_complete.03"] = {
+		"accepts the thanks with grave courtesy, the way one accepts a debt that will be called in someday.",
+		"takes the reward and inclines {g:his|her} head, a small gesture carrying the weight of many such moments.",
+	},
+	["band.b50_60.quest_complete.04"] = {
+		"Done. Do I get a statue? No? A sandwich, then.",
+		"Finished. I'd make a speech, but I'm saving my breath for whatever's next.",
+	},
+	["band.b50_60.quest_complete.05"] = {
+		"Another favor done for people I'll likely never see again. It used to sting. Now it feels like the point.",
+		"The rewards barely matter now. I keep doing it because I can, and because the list of those who can is short.",
+	},
+	["band.b50_60.quest_progress.01"] = {
+		"One part done. The rest will take patience, and patience is the one thing I've got plenty of now.",
+		"Progress. I don't rush these anymore; I've seen what rushing costs.",
+		"Some of it finished. I'll do the rest properly, the slow way, the way that works.",
+	},
+	["band.b60.quest_complete.01"] = {
+		"Done. Consider it a favor to the world, not to me.",
+		"It's taken care of. Save your thanks for someone who still needs them.",
+		"Handled. Don't thank me; just do the same for someone else someday.",
+	},
+	["band.b60.quest_complete.02"] = {
+		"A small task, by my measure now. To them it was everything. I try never to forget the second part.",
+		"It barely cost me a morning. It'll mean a season of peace for someone.",
+		"Easy work, at this point. That's exactly why I keep doing it: the hard part is choosing to bother.",
+	},
+	["band.b60.quest_complete.03"] = {
+		"hears the gratitude out with patient kindness, as one listens to a story heard many times and still worth hearing.",
+		"lingers a moment after the thanks, as if the task deserved one more look before being set down.",
+	},
+	["band.b60.quest_complete.04"] = {
+		"Done. I'll add it to the list of things nobody believes I did on my own.",
+		"Finished. At this point it's less a quest and more a house call.",
+	},
+	["journey.clear.w02.01"] = {
+		"A clear sky to fly in. I can see so far that the horizon looks like a rumor finally confirmed.",
+		"Up, with nothing between me and the far edge of the land but clean air.",
+	},
+	["journey.day.w02.01"] = {
+		"Up into the daylight. From here the whole land is laid out plain, roads and rivers and all the small business in between.",
+		"A daytime flight: everything below is as clear as a map someone took care over.",
+	},
+	["journey.night.w02.01"] = {
+		"Flying by night. Below, the land is dark except for a few fires, small and stubborn as promises.",
+		"Up into the night air. The ground goes dark beneath me, and only the wind says we're still moving.",
+	},
+	["mood.city.journey.w02.01"] = {
+		"comes down off the flight into the clamor of the city and takes a moment, letting the noise find its level.",
+		"sets foot back among the crowds and the stone, the quiet of the sky giving way to market voices.",
+	},
+	["mood.coast.journey.w02.01"] = {
+		"Down by the water. After the flight the air is heavy with salt, and it tastes like the end of a road.",
+		"Landed, and the first thing I hear is the surf. A good sound to arrive to.",
+	},
+	["mood.dark.journey.w02.01"] = {
+		"Up and out of the gloom. I didn't know how heavy it was until the wings lifted it off me.",
+		"The wings climb and the murk falls away below. Strange how much easier it is to breathe up here.",
+	},
+	["mood.forest.journey.w02.01"] = {
+		"Down out of the open air and under the branches. The light goes green and soft, and my shoulders follow.",
+		"Landed. After all that sky, the trees feel close and kind, like a roof that grew itself.",
+	},
+	["mood.mountain.journey.w02.01"] = {
+		"Up and over the ridges. From here the mountains look tame, which I know is a lie.",
+		"The peaks drop below the wings one by one. I've climbed slower and seen less.",
+	},
+	["mood.plains.journey.w02.01"] = {
+		"Down. Grass and sky as far as I can see. Good: nothing's hiding.",
+		"Back on the ground. The wind out here runs almost as fast as the flight did.",
+	},
+	["mood.ruin.journey.w02.01"] = {
+		"Down, into a land of broken walls. From above, the old foundations looked like a drawing someone gave up on.",
+		"On the ground among stones that used to be something. The flight was the cheerful part.",
+	},
+	["mood.swamp.journey.w02.01"] = {
+		"steps down from the flight and catches the smell of standing water and rot all at once.",
+		"lands in thick, wet air, and the first gnat finds {g:him|her} before the second step.",
+	},
+	["race.dwarf.journey.w02.01"] = {
+		"Down, and the ground stays put. That's the whole of my opinion on flying.",
+		"Solid ground again. Flying's for birds and fools, and today I was both.",
+	},
+	["race.gnome.journey.w02.01"] = {
+		"Landing gear: legs. Performance: wobbly but acceptable.",
+		"Touchdown confirmed. Note to self: design a softer landing.",
+	},
+	["race.human.journey.w02.01"] = {
+		"Up and off. The land below turns into a map, and I keep looking for the little roads that lead home.",
+		"The ground drops away, and every small worry with it. They'll be waiting when I land, but for now they're far below.",
+	},
+	["race.nightelf.journey.w02.01"] = {
+		"Down from the wind. My feet find the ground the way roots do: slowly, and then for good.",
+		"The flight is over. I let the stillness of the earth settle back into me before I walk on.",
+	},
+	["race.orc.journey.w02.01"] = {
+		"Ground. Good. The beast flew well, but I trust my own feet more.",
+		"Back on the ground. Now I can fight properly again.",
+	},
+	["race.scourge.journey.w02.01"] = {
+		"Down on the ground. It doesn't care what I am, which makes it better company than most.",
+		"Feet on the ground. Nothing in me complains about the flight. Nothing in me complains about much, anymore.",
+	},
+	["race.tauren.journey.w02.01"] = {
+		"Hooves on the earth at last. The Earth Mother holds me up better than any wing.",
+		"The sky was kind, but the earth is home. I feel it under my hooves before I see it.",
+	},
+	["race.troll.journey.w02.01"] = {
+		"Up, up, mon! Look at all that, so small. Not so scary from here, eh?",
+		"Off we go! The wind be strong up here, so hold on tight, mon.",
+	},
+	["weather_change.w02.01"] = {
+		"glances up as the sky shifts its weight, then tightens a strap and walks on without comment.",
+		"looks up at the turning sky, shrugs the pack higher on {g:his|her} shoulders, and keeps going.",
+	},
 }, "base_world")

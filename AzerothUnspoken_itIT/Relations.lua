@@ -1103,4 +1103,44 @@ NS:AddTexts("itIT", {
 		"Grazie. Hai la gratitudine di un troll: dura più di quasi tutte le altre.",
 		"Non lo dimentico. I troll ricordano chi ha aiutato e chi ha riso.",
 	},
+	["faction.alliance.relation_player.w02.01"] = {
+		"{other}. Se l'Alleanza si chiedesse di cosa è fatta, indicherei persone così.",
+		"Ecco {other}. Re e consigli fanno l'Alleanza sulla carta; persone così la fanno sulla strada.",
+	},
+	["faction.horde.relation_player.w02.01"] = {
+		"{other}. Nell'Orda, una delle facce che chiamerei per nome in qualunque accampamento, e con piacere.",
+		"Ecco {other}. L'Orda è fatta di molti popoli; l'amicizia è il modo in cui diventano uno.",
+	},
+	["race.dwarf.relation_player.w02.01"] = {
+		"{other}! A una persona così darei l'ultimo barile, e un nano non lo dice alla leggera.",
+		"Ecco {other}. Certe amicizie sono come una buona muratura: la malta non si vede, e tengono.",
+	},
+	["race.gnome.relation_player.w02.01"] = {
+		"{other}! La mia giornata ha appena ricevuto un piccolo, piacevole aggiornamento.",
+		"Ecco {other}. Certe persone sono come un cardine ben oliato: intorno a loro tutto gira più liscio.",
+	},
+	["race.human.relation_player.w02.01"] = {
+		"{other}. Sono ancora in debito, e intendo saldarlo come si deve, non con un cenno di passaggio.",
+		"Ecco {other}. Certi debiti si portano volentieri, perché ricordano che qualcuno si è fermato per te.",
+	},
+	["race.nightelf.relation_player.w02.01"] = {
+		"{other}. Certa fiducia cresce come un albero: lentamente, e poi niente la smuove.",
+		"Ecco {other}. Lascerei a questa persona il turno di guardia mentre dormo, e dormirei bene.",
+	},
+	["race.orc.relation_player.w02.01"] = {
+		"{other}. Ho un debito con questa persona, e un orco non lascia raffreddare i debiti.",
+		"Ecco {other}. Qualcuno che mi è rimasto accanto. Io ricordo chi resta e chi scappa.",
+	},
+	["race.scourge.relation_player.w02.01"] = {
+		"{other}. Qualcuno che sono {g:contento|contenta} di vedere. Avevo dimenticato che quella sensazione avesse un sapore.",
+		"Ecco {other}. Qualunque cosa abbia perso morendo, questo genere di gioia non era nel mucchio.",
+	},
+	["race.tauren.relation_player.w02.01"] = {
+		"{other}! Per dividere un fuoco con una persona così farei tanta strada.",
+		"Ecco {other}. Certi legami sono come i sentieri più antichi: scavati a fondo, e facili da seguire.",
+	},
+	["race.troll.relation_player.w02.01"] = {
+		"{other}! Ecco una persona amica. La giornata si è appena fatta più leggera.",
+		"Ah, {other}. La brava gente è rara come l'acqua dolce in una lunga traversata.",
+	},
 }, "base_relations")

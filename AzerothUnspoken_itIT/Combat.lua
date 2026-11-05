@@ -865,4 +865,186 @@ NS:AddTexts("itIT", {
 		"Così fanno i Darkspear. Ricordatelo, se ti resta ancora qualcosa da ricordare.",
 		"Un altro per i Darkspear. Chi è il prossimo?",
 	},
+	["band.b10_20.battle.01"] = {
+		"Calma. Questa settimana ho già battuto di peggio.",
+		"Avanti, allora. Ho fatto parecchia strada per arrivare fin qui.",
+	},
+	["band.b10_20.battle.02"] = {
+		"Guarda come sposta il peso. Tutto ti avvisa prima di colpire, se presti attenzione.",
+		"Fuori l'aria. Aspetta il varco. Non menare colpi alla prima cosa che si muove.",
+	},
+	["band.b10_20.lowhp.01"] = {
+		"Troppo. Troppo in fretta. Indietro, indietro!",
+		"Questo è più forte di quanto sembrava. Molto più forte.",
+	},
+	["band.b10_20.victory.01"] = {
+		"È andata meglio della volta scorsa. Tengo il conto.",
+		"Pulito. Be', più pulito. La tecnica migliora, gli stivali no.",
+		"Fatto, e ho sudato appena. Appena.",
+	},
+	["band.b1_10.battle.01"] = {
+		"Bene. Piedi larghi, occhi aperti, non far cadere niente.",
+		"Calma. Ricorda cosa ti hanno insegnato. Soprattutto la parte sul non scappare.",
+	},
+	["band.b1_10.victory.01"] = {
+		"È a terra. Mi tremano le mani, ma è a terra.",
+		"Vinto. Farò finta che fosse tutto previsto, e le mani smetteranno di tremare quando vorranno.",
+	},
+	["band.b20_30.battle.01"] = {
+		"Conosco quelli come te. Non tiriamola per le lunghe.",
+		"D'accordo. Dopo di te ho ancora strada da fare.",
+		"Oggi hai scelto il viandante sbagliato.",
+	},
+	["band.b20_30.battle.02"] = {
+		"assume una posizione di guardia a cui ormai non deve più pensare.",
+		"sposta il peso e aspetta, con più calma di una stagione fa.",
+	},
+	["band.b20_30.lowhp.01"] = {
+		"Avrei dovuto vederlo arrivare. Lezione imparata. Adesso sopravvivi.",
+		"Troppa fretta. Che stupidaggine. Esci da qui, esci.",
+	},
+	["band.b20_30.victory.01"] = {
+		"Nemmeno un graffio degno di nota. Ricordo quando ogni scontro lasciava un segno.",
+		"Finito, e ho appena il fiato corto. Agli inizi me lo sarei {g:sognato|sognata}.",
+	},
+	["band.b20_30.victory.02"] = {
+		"Il prossimo. Anzi no, fammi riprendere fiato. Poi il prossimo.",
+		"Bene. Qualcuno aggiunga anche questo alla lista, appena riprendo fiato.",
+	},
+	["band.b30_40.battle.01"] = {
+		"Questa danza l'ho già vista. So come finisce.",
+		"Va bene. Uno in più sulla lista, e la lista è lunga.",
+	},
+	["band.b30_40.battle.02"] = {
+		"Niente fretta. Qui non c'è niente che non abbia già affrontato, in una forma o nell'altra.",
+		"Leggilo, poi muoviti. Il resto ormai il corpo lo sa.",
+	},
+	["band.b30_40.battle.03"] = {
+		"affronta lo scontro con la parsimonia tranquilla di una lunga pratica.",
+		"lascia uscire un respiro lento e avanza, senza un solo gesto sprecato.",
+	},
+	["band.b30_40.lowhp.01"] = {
+		"Non così. Ho fatto troppa strada per finire così.",
+		"Attenzione, adesso. È il panico che uccide, non la ferita.",
+		"Male. Male. D'accordo, ragiona. Sai come si fa.",
+	},
+	["band.b30_40.victory.01"] = {
+		"E questa è fatta. Un'altra storia che non mi prenderò la briga di raccontare.",
+		"Fatto. Lo chiamerei uno scontro tirato, ma ne ho visti di peggio.",
+		"Giù anche questo. Come gli altri.",
+	},
+	["band.b30_40.victory.02"] = {
+		"Pulisci, fascia, prosegui. Certe abitudini valgono più del talento.",
+		"Controlla le mani, l'equipaggiamento, l'orizzonte. Poi respira.",
+	},
+	["band.b40_50.battle.01"] = {
+		"Avanti, allora. Non ho tempo per una cosa lunga.",
+		"Non sei la cosa peggiore che ho affrontato questo mese.",
+		"La paura l'ho seppellita in terreni più duri di questo. Andiamo.",
+	},
+	["band.b40_50.battle.02"] = {
+		"Misuralo. Forza, velocità, come si difende. Poi decidi quanto di te spendere.",
+		"Non spendere niente che non serva. Né un respiro, né un passo.",
+	},
+	["band.b40_50.battle.03"] = {
+		"trae un lungo respiro e lascia che il mondo si restringa a ciò che ha davanti.",
+		"resta immobile per un battito di cuore, poi si muove senza alcuna esitazione.",
+	},
+	["band.b40_50.lowhp.01"] = {
+		"Male, ma non il peggio. Tieni. Tieni duro.",
+		"Conosco questa sensazione. Non lasciarla vincere.",
+		"Il dolore è solo un'informazione. La leggerai dopo.",
+	},
+	["band.b40_50.victory.01"] = {
+		"Ecco fatto. Avanti col prossimo, e con quello dopo.",
+		"A terra. Festeggerei, ma ce n'è sempre un altro.",
+		"Finito. Non stiamo qui ad ammirarlo.",
+	},
+	["band.b40_50.victory.02"] = {
+		"Ogni scontro si porta via un po' della vecchia paura e lascia un po' dei vecchi dolori.",
+		"Vinto, ancora. Il corpo tiene il punteggio più onestamente dell'orgoglio.",
+		"Adesso vinco più di quanto perda. Solo che le sconfitte costano di più.",
+	},
+	["band.b50_60.battle.01"] = {
+		"Vediamo se vali il disturbo.",
+		"Ho affrontato di peggio. Cerca almeno di essere interessante.",
+		"Calma. L'ho fatto più volte di quanti respiri hai tirato in vita tua.",
+	},
+	["band.b50_60.battle.02"] = {
+		"Niente paura, solo aritmetica. Quanto forte, quanto veloce, quanto a lungo.",
+		"Ormai in me non c'è più fretta. Bene. È con la fretta che i veterani diventano storie.",
+	},
+	["band.b50_60.battle.03"] = {
+		"affronta lo scontro con la calma piatta di chi ha smesso da tempo di contare momenti come questo.",
+		"fa la prima mossa senza una parola, come se l'esito fosse deciso prima ancora del primo colpo.",
+	},
+	["band.b50_60.lowhp.01"] = {
+		"Non adesso. Non così vicino alla fine.",
+		"Ho scalato troppo a lungo per cadere qui. Su. Su.",
+		"D'accordo, questo ha fatto male. Adesso tocca a me.",
+	},
+	["band.b50_60.victory.01"] = {
+		"Fatto. Chi è il prossimo, ed è meglio di questo?",
+		"Sistemato. Speravo in qualcosa di più impegnativo.",
+		"A terra, e in fretta. Bene. Non attardiamoci.",
+	},
+	["band.b50_60.victory.02"] = {
+		"Un altro. Le mani non mi tremano più, dopo. Non so se sia del tutto un bene.",
+		"È finita. La calma che segue una volta mi sorprendeva. Ora mi aspetta e basta, e le mani sono già ferme.",
+		"Vinco questi scontri come un muratore posa mattoni, con mani salde. Mestiere, sì. Ma anche stanchezza, e nessuna gioia rimasta.",
+	},
+	["band.b60.battle.01"] = {
+		"Ho affrontato di peggio, in giornate migliori. Facciamo in fretta.",
+		"Pensaci bene. Io l'ho già fatto.",
+	},
+	["band.b60.battle.02"] = {
+		"Pesalo. Vale lo sforzo, il rischio, il tempo? Sì. Vai.",
+		"Ogni scontro adesso è una scelta. Questo lo scelgo.",
+	},
+	["band.b60.battle.03"] = {
+		"studia l'avversario per un lungo momento misurato prima di impegnarsi, come un giudice che pesa un verdetto scolpito nella pietra.",
+		"lascia che lo scontro arrivi, con la calma pesante di una pietra che si posa sul letto di un fiume.",
+	},
+	["band.b60.lowhp.01"] = {
+		"Ah. Era da tempo che nessuno mi spingeva così in là. Bene.",
+		"Allora fai sul serio. Te lo concedo. Adesso guarda.",
+	},
+	["band.b60.threat.01"] = {
+		"Non combatto niente che non abbia prima pesato. Ho pesato anche te. Vattene.",
+		"Guardami bene, poi decidi se vale la tua vita.",
+	},
+	["band.b60.victory.01"] = {
+		"Come previsto. Senza offesa.",
+		"E con questo è finita. Speravo almeno di imparare qualcosa.",
+		"Finito. Qualcuno mi ricordi perché doveva essere pericoloso.",
+	},
+	["band.b60.victory.02"] = {
+		"Vinto, e pesato. È costato poco. Lo conto lo stesso.",
+		"Un altro scontro concluso. Non un trionfo: solo una cosa fatta bene da chi sapeva come farla.",
+	},
+	["battle.humanoid.w02.01"] = {
+		"Almeno tu sai pensare. Vediamo se sai pensare in fretta.",
+		"Mani, un'arma, un piano. Ce li ho anch'io. Avanti.",
+	},
+	["battle.humanoid.w02.02"] = {
+		"guarda gli occhi del nemico più che la sua arma: un avversario che ragiona si tradisce prima con lo sguardo.",
+		"regge lo sguardo dell'avversario e sposta il peso, leggendo la finta prima che arrivi.",
+	},
+	["lowhp.beast.w02.01"] = {
+		"arretra barcollando davanti alla bestia, sanguinante, e pianta di nuovo i piedi per pura testardaggine.",
+		"tiene l'arma fra sé e la bestia, col fiato corto, senza concederle il varco che continua a cercare girando.",
+	},
+	["lowhp.humanoid.w02.01"] = {
+		"Bella mossa. Hai trovato il punto scoperto. Non abituartici.",
+		"Questo è andato a segno. Goditelo: è l'ultimo.",
+	},
+	["victory.beast.w02.01"] = {
+		"Riposa, ora. Hai lottato per la tua vita, e io per la mia.",
+		"Stai giù. Facevi solo quello che fanno le bestie.",
+	},
+	["victory.humanoid.w02.01"] = {
+		"Aveva un volto, una voce, forse qualcuno che l'aspettava. Non mi ci soffermo. Non a lungo, almeno.",
+		"Finita. Con le bestie è fame contro fame; questa era scelta contro scelta, e pesa in un altro modo.",
+		"È finita. Chiunque fosse, questa storia non la racconterà. Io la racconterò com'è andata, se mai la racconterò.",
+	},
 }, "base_combat")

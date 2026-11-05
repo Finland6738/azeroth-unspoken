@@ -593,4 +593,94 @@ NS:AddTexts("itIT", {
 		"Un gruppo? Certo. Io porto la fortuna, tu porti da mangiare.",
 		"Ci sto. Un Darkspear non dice mai di no a una buona compagnia.",
 	},
+	["faction.alliance.npc_meet.w02.01"] = {
+		"Un locandiere dell'Alleanza. Qualunque sia l'accento, il benvenuto suona uguale: siediti, mangia, pagherai dopo.",
+		"Umano, nano, gnomo o elfo, un oste dell'Alleanza ha sempre la stessa regola: niente risse al chiuso, e via gli stivali dal tavolo.",
+		"Un tetto amico sotto una bandiera amica. Dopo la strada, vale più del letto.",
+	},
+	["faction.alliance.other_action.w02.01"] = {
+		"Un invito da qualcuno dei nostri? Volentieri. Le strade sono lunghe, e l'Alleanza le percorre meglio insieme.",
+		"Felice di unirmi. Insieme arriveremo più lontano che ognuno per conto suo.",
+	},
+	["faction.horde.npc_meet.w02.01"] = {
+		"Un mercante dell'Orda. Contrattare con uno dei tuoi è metà del divertimento e nessun rischio.",
+		"Merci da Orgrimmar, Thunder Bluff, Undercity... l'Orda commercia come combatte: tutti insieme, e un po' a voce alta.",
+		"Le monete passano di mano in mano e restano nell'Orda. Un affare che mi sta bene.",
+	},
+	["faction.horde.other_action.w02.01"] = {
+		"Un duello fra compagni. Bene. Meglio un livido da un amico che una sorpresa dall'Alleanza.",
+		"Un duello amichevole? Bene. Teniamoci in esercizio adesso, e dopo l'Alleanza troverà pane per i suoi denti.",
+	},
+	["race.dwarf.npc_meet.w02.01"] = {
+		"Un banchiere. La mia gente si fida di due cose: le cripte di pietra e i propri conti. Vediamo come conta questo qui.",
+		"Oro custodito nel caveau di un altro. Ogni nano conosce quel prurito: vorresti scendere a controllarlo di persona.",
+		"Un caveau e qualcuno che lo custodisce. Bene. Conterò comunque tutto due volte, come si deve per un nano.",
+	},
+	["race.dwarf.other_action.w02.01"] = {
+		"Un duello? Volentieri. Picchia pure quanto vuoi: alla pietra serve un po' per accorgersene.",
+		"Un incontro per sport? Ci sto. Solo, dopo non andare a piangere dall'oste.",
+	},
+	["race.gnome.npc_meet.w02.01"] = {
+		"Merce! Do solo un'occhiata. Più o meno. Quello è un cardine a molla?",
+		"Pagherei il doppio per qualsiasi cosa con degli ingranaggi dentro. Speriamo che il mercante non se ne accorga.",
+		"Vediamo la merce. Cercherò di non smontare niente prima di averlo pagato.",
+	},
+	["race.gnome.other_action.w02.01"] = {
+		"Un invito! Splendido. Io porto gli attrezzi, qualcun altro porti i muscoli.",
+		"Un gruppo! Eccellente. Il lavoro di squadra è ingegneria, solo con le persone dentro.",
+	},
+	["race.human.npc_meet.w02.01"] = {
+		"Quello sguardo: qualcuno con un problema, che spera che io sia la soluzione. Gli umani hanno costruito interi regni su meno.",
+		"Un'altra commissione in vista. Dalle mie parti la chiamerebbero buon vicinato, e si aspetterebbero una torta in cambio.",
+		"Qualcuno ha bisogno di una mano. E sia. Non ho mai imparato a passare accanto a un guaio senza fermarmi.",
+	},
+	["race.human.other_action.w02.01"] = {
+		"Un duello, eh? D'accordo. Chi perde paga il prossimo giro, e io ho già sete.",
+		"Un duello? E sia. Armi in pugno, e vinca la mano migliore.",
+	},
+	["race.nightelf.npc_meet.w02.01"] = {
+		"Un locandiere, un tetto, un letto con le gambe. Sto ancora imparando a dormire sotto un soffitto invece che sotto le foglie.",
+		"Una stanza? Volentieri. Ma lascerò le imposte aperte, se l'oste lo permette: dormo meglio con il cielo in vista.",
+		"Pane, un letto, un fuoco curato da altri. Piccoli agi, ma ho imparato a onorarli.",
+	},
+	["race.nightelf.other_action.w02.01"] = {
+		"Un invito. Accetto. Anche la strada più lunga si accorcia in buona compagnia.",
+		"Mi chiedi di camminare con te. Allora lo farò, finché le nostre strade andranno d'accordo.",
+	},
+	["race.orc.npc_meet.w02.01"] = {
+		"Fammi vedere dell'acciaio. Non quello bello: quello che regge ancora dopo la terza battaglia.",
+		"Pago un prezzo giusto. Dimmene uno ingiusto e ne parliamo, a voce alta.",
+		"Cuoio, acciaio, provviste. Un orco compra quello che lo tiene in piedi, e lascia stare i ninnoli.",
+	},
+	["race.orc.other_action.w02.01"] = {
+		"Una banda da guerra? Bene. Guidare o seguire, per me è uguale, basta non girare a vuoto.",
+		"Mi vuoi nel tuo gruppo? Fatto. Indicami cosa c'è da rompere.",
+	},
+	["race.scourge.npc_meet.w02.01"] = {
+		"Al mio passaggio la mano della guardia scivola verso l'elsa. Giusto. Farei lo stesso.",
+		"Una guardia mi osserva un po' più a lungo degli altri. Faccio un cenno. Non mi costa niente, e la confonde.",
+		"Mani in vista, passo tranquillo. Le guardie e i morti vanno più d'accordo così.",
+	},
+	["race.scourge.other_action.w02.01"] = {
+		"Un saluto? A me? Be'. Ricambio, piano, così non si stacca niente.",
+		"Che gentilezza. Di solito la gente mi saluta con una torcia in mano.",
+	},
+	["race.tauren.npc_meet.w02.01"] = {
+		"{other} ha un sapere da condividere. Gli anziani dicono che un tauren saggio tiene un orecchio per il vento e uno per il maestro.",
+		"Un maestro. Chino la testa, un po' per rispetto e un po' perché le corna non tirino giù la lampada.",
+		"Le lezioni sono come il pascolo: un po' ogni giorno, e la mandria cresce forte.",
+	},
+	["race.tauren.other_action.w02.01"] = {
+		"risponde al saluto con un cenno lento e profondo, alla maniera della gente delle pianure.",
+		"china la grande testa in un saluto gentile, le corna piegate di lato per non sembrare una minaccia.",
+	},
+	["race.troll.npc_meet.w02.01"] = {
+		"Ehi, oste. Qualcosa di caldo, qualcosa di forte, e un letto che non balla. Tutto qui.",
+		"Cibo da locanda. Non buono come il pesce sul fuoco in riva al mare, ma non mi lamento. Non tanto.",
+		"Stanza calda, oste sorridente. I troll riconoscono una buona capanna quando la trovano.",
+	},
+	["race.troll.other_action.w02.01"] = {
+		"Un duello? Ah! Vieni, allora. Ci andrò piano. Forse.",
+		"Vuoi ballare con un troll? D'accordo. Ma quando perdi, non dare la colpa agli spiriti.",
+	},
 }, "base_context")

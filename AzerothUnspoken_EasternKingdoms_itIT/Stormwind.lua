@@ -632,4 +632,13 @@ AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_stormwind", [==[
 		"riceve un ringraziamento caloroso, e per un attimo il profumo di pane fresco che arriva dalla strada sembra far parte della ricompensa.",
 		"stringe la mano tesa in segno di gratitudine, mentre un bambino passa di corsa inseguendo un cerchio lungo la via.",
 	},
+	["sw.quest_complete.w02.01"] = {
+		"Fatto. Se serve una prova, sono al Pig and Whistle.",
+		"Finito. Un altro nodo della città sciolto; ne restano solo diecimila.",
+		"Sistemato. Al prossimo con un problema dite che sono giù ai canali, a riprendere fiato.",
+	},
+	["sw.quest_complete.w02.02"] = {
+		"Fatto. Pietra bianca, stendardi azzurri, e dietro, gente che aveva bisogno di una mano. Gliel'ho data.",
+		"Finito. Anche una grande città vive ancora di piccoli aiuti, portati di porta in porta.",
+	},
 ]==])

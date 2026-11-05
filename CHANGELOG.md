@@ -8,6 +8,63 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W02: thirteen zones, the level bands, and the rest of the soft need of the homes and layers (issue #138)
+
+The second content wave of [docs/content/WAVES.md](docs/content/WAVES.md), on the soft need of
+[ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md) with the tiers mixed by share of
+[ADR 0051](docs/adr/0051-tiers-mixed-by-share.md): **1,110 intentions, 2,666 texts per language** (5,332 in both),
+written by twelve parallel writer subagents (authors `ai-w02-<unit>`) and passed through the archive (drafts,
+`cli dups --state draft` with no exact and no near duplicate, submit, owner sample, approve, export; the round trip is an
+empty diff). No literary piece and no `tier` field. The addon goes from 2,974 to **4,084 intentions** and from 7,158 to
+**9,824 texts per language**.
+
+- **Added: thirteen regional packs, one per area** (each zone is an area of its own): `kalimdor_barrens` (`bar.`),
+  `kalimdor_darkshore` (`dks.`), `kalimdor_ashenvale` (`ash.`), `kalimdor_stonetalon` (`stm.`),
+  `kalimdor_thousandneedles` (`tng.`), `eastern_lochmodan` (`lmd.`), `eastern_westfall` (`wsf.`), `eastern_redridge`
+  (`rdg.`), `eastern_duskwood` (`dsk.`), `eastern_silverpine` (`slp.`), `eastern_wetlands` (`wet.`), `eastern_hillsbrad`
+  (`hil.`), `eastern_stranglethorn` (`stv.`): **757 intentions, 1,831 texts per language** (the speak key, fights,
+  wounds, quests, subzones, landmarks, flights, NPCs met, weather). A contested zone has a pool per faction (its lines
+  write `faction`): Ashenvale, Stonetalon Mountains and Thousand Needles both sides, Hillsbrad Foothills both sides, the
+  Wetlands the Alliance and Stranglethorn Vale the Horde (their other side is in the next wave). A line of a zone that
+  belongs to one side writes that `faction` when it speaks as one of its people.
+- **Added: 21 landmarks** in `Data/Landmarks.lua` for these zones (Camp Taurajo, Auberdine, Astranaar, Splintertree Post,
+  Sun Rock Retreat, Stonetalon Peak, Freewind Post, Mirage Raceway, Thelsamar, Stonewrought Dam, Moonbrook, Stonewatch,
+  the Sepulcher, Pyrewood Village, Menethil Harbor, Dun Modr, Southshore, Tarren Mill, Grom'gol Base Camp, Booty Bay,
+  Nesingwary's Expedition; the Crossroads, Ratchet, Sentinel Hill, Lakeshire, Darkshire and Raven Hill Cemetery were
+  there).
+- **Added: the level bands** (118 intentions, 303 texts per language, in the base packs of their events): from the green
+  beginner of levels 1-10 to the veteran at 60, with no level number, zone, class or race in the text.
+- **Added: the rest of the soft need of the homes and layers**: the starting zones and capitals (101 intentions, 245
+  texts, ids `<prefix>.<event>.w02.NN`), the classes (20 intentions, 40 texts: heals, blessings, pets), the races (48, 104:
+  NPCs met, subzones, landmarks, flights, players), the factions (6, 14), the moods (36, 77) and time, weather, creature
+  type and generic lines (24, 52).
+- **Editorial rules added in this wave** (the brief of the writers): a text that says in the present that the sun, the
+  moon or the stars are out writes `time` (or says it differently); an Italian text keeps the client's English names
+  (the Syndicate, the Night Watch, Dark Iron, as Defias); no invented family or past for the character. Fixed at
+  integration: six cross-writer near pairs (the writers checked their own files only), a new over-used Italian opening
+  ("Ancora in piedi"), lines that claimed more than their conditions (a gnoll that is always a poacher, a quest that is
+  always against the elves, a Night Watch helper with no faction), and a second variant for the 27 intentions written
+  with one.
+- **The gap after W02** (per language): soft need 8,893, gap **3,643** (was 6,205); strict need 28,938, gap **22,021**
+  (was 24,667); random need 270,686, gap **262,260** (was 265,351). **91 waves** left (the next is the first row of
+  WAVES.md: Stranglethorn for the Alliance, Desolace, Dustwallow Marsh, Arathi, Badlands, Alterac, Tanaris...).
+- **Measured.** `Tests/bench_scale.py --sizes 0`: memory 11.8 → 14.1 MB, pick 22.3 → 24.2 thousand Lua instructions
+  (bigger pools; the suite's projection 24.7 thousand against the 20.2 reference, no warning). `Tests/bench_trial.py
+  --long 20`, over seeds 1-4, main → W02: the share of repeated lines falls for all three characters (orc warrior 12.2 →
+  11.9%, troll mage 12.7 → 11.1%, human paladin 14.3 → 13.7%); the first exact repetition comes later for the human
+  paladin (3.60 → 5.33 h on average) and a little sooner on average for the orc warrior (5.15 → 4.84 h) and the troll
+  mage (5.41 → 5.23 h), within the spread of the seeds (3.5-7.0 h): W02 added only a few lines to Durotar and Orgrimmar.
+- **Tests:** the counts; the C0b test of the sources visits all nineteen areas with lines (54 sources); the test of a
+  change of area spread over frames goes through Silithus (The Barrens has an area of its own now); `/au packs` may list
+  other released areas between Durotar and Kalimdor.
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W02.md](docs/content/reviews/W02.md) (22
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** subzone, landmark and target names are those of the English Classic client, not yet confirmed in
+  Forever (#36). The need model puts a `landmark` line with a tag and no zone into no pool, so the generic `landmark`
+  pool counts only the untagged line. The Thousand Needles Alliance pool asks for flights, and the Alliance has no flight
+  master there in Classic: its journey lines are arrivals.
+
 ### The tiers mixed by share, and data files under Lua's limit of constants (issue #138)
 
 Two engine fixes found by content wave W01 (PR #246); owner decision of 2026-11-04 for the first;

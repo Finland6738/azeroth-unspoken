@@ -124,4 +124,73 @@ AU:RegisterRegionalTexts("dunmorogh", "itIT", "eastern_dunmorogh", [==[
 		"si ferma a guardare la neve fresca che scende sulle vette, a smussare ogni traccia e ogni spigolo.",
 		"alza il viso mentre la nevicata si infittisce e le montagne lontane sbiadiscono in sagome grigie.",
 	},
+	["dmo.attack.w02.01"] = {
+		"Senti? È la montagna che restituisce il colpo.",
+		"Prendi questa, e raccontalo al resto della valle!",
+		"Più duro del gelo, e pure più svelto!",
+	},
+	["dmo.battle.w02.01"] = {
+		"Fatti sotto. Per miglia intorno, una zuffa è l'unica cosa che scaldi.",
+		"Bene. Finalmente qualcosa da fare oltre a battere i denti.",
+		"Fatti avanti. Il freddo rallenta tutti e due, ma io ci ho fatto l'abitudine.",
+	},
+	["dmo.battle.w02.02"] = {
+		"pianta gli stivali nella neve battuta mentre la bestia avanza, sbuffando nuvole bianche.",
+		"si gira ad affrontare la carica, la neve sollevata intorno ai piedi e il gelo dimenticato per un istante.",
+	},
+	["dmo.battle.w02.03"] = {
+		"Passi corti. Qui il terreno è mezzo ghiacciato, e chi scivola per primo ha perso.",
+		"Prima l'appoggio, poi i denti. Su questo pendio il pericolo più grosso sta sotto i piedi.",
+	},
+	["dmo.battle.w02.04"] = {
+		"Di nuovo giù dalle tue grotte, troll? Allora sistemiamola qui fuori.",
+		"Frostmane. Pitture, lance e un gran baccano. Avanti, fatti sotto.",
+		"Alza pure la lancia, troll. Ho camminato troppo, in questo gelo, per farmi da parte.",
+	},
+	["dmo.lowhp.w02.01"] = {
+		"Le mani tremano, e stavolta non è il freddo. Tieni duro ancora un po'.",
+		"Troppo rosso sul bianco. Rimetti i piedi sotto di te e falla finita.",
+		"Alla montagna non importa chi ne scende sulle proprie gambe. Fa' che sia io.",
+	},
+	["dmo.muse.w02.01"] = {
+		"Il lago è gelato così limpido che vedo i sassi sul fondo. Pare una finestra che nessuno si è mai preso la briga di aprire.",
+		"Ghiaccio da una riva all'altra, grigio ai bordi e nero al centro, dove l'acqua è fonda. Faccio il giro, grazie.",
+		"Il vento ha spazzato il lago fino al ghiaccio vivo. Lì sotto passa un pesce chiaro, senza nessuna fretta.",
+	},
+	["dmo.muse.w02.02"] = {
+		"Nani di pietra alti come una rupe, a guardia delle porte lassù. Tutto quello che costruiscono i nani è più grande dei nani.",
+		"Le porte di Ironforge si vedono da mezza valle. Quella non è una porta: è una dichiarazione.",
+		"Ho provato a indovinare quanto ci sia voluto a scolpire quell'ingresso. Poi ho smesso: mi faceva male il collo.",
+	},
+	["dmo.muse.w02.03"] = {
+		"si ferma a guardare un cinghiale che grufola nella crosta di neve in cerca di qualcosa di verde: non trova niente e insiste.",
+		"segue con lo sguardo le orme di una lepre sulla neve, finché non finiscono in un groviglio di zampate e qualche ciuffo di pelo.",
+	},
+	["dmo.muse.w02.04"] = {
+		"Gli gnomi rimasti dentro Gnomeregan si aggirano ancora vicino alle sue porte, malati e strani. Da queste parti nessuno ne parla a lungo.",
+		"Giù, verso la vecchia strada degli gnomi, l'aria sa d'olio e di qualcosa di peggio. Il lutto di un'intera città che filtra da sotto la neve.",
+	},
+	["dmo.quest_complete.w02.01"] = {
+		"Una pacca sulla spalla che per poco non mi butta a terra. Il grazie, su queste colline, è come la birra: forte e per niente sottile.",
+		"Un grugnito e una moneta spinta verso di me. Da queste parti, credo, vale come un'effusione.",
+		"Qui nessuno fa discorsi a lavoro finito. Fanno un cenno, pagano, e ti indicano la prossima cosa. Potrei abituarmici.",
+	},
+	["dmo.quest_progress.w02.01"] = {
+		"segna un altro pezzo del compito come fatto e si soffia sulle dita prima di proseguire.",
+		"batte i piedi per ridarci un po' di calore: una parte è finita, il resto aspetta ancora là fuori, nel bianco.",
+	},
+	["dmo.victory.w02.01"] = {
+		"Finita. Se mi fermo qui il sudore mi gela addosso, quindi niente soste.",
+		"Chiusa. Rimettiamoci in marcia prima che il freddo si accorga della sosta.",
+		"E uno. Ora via da questo pendio scoperto, prima che le mani mi si irrigidiscano.",
+	},
+	["dmo.victory.w02.02"] = {
+		"abbassa l'arma, e la neve intorno allo scontro torna già a posarsi sulle orme.",
+		"si raddrizza col fiato grosso, mentre dalla fronda di un pino scivola neve fresca a coprire il peggio.",
+	},
+	["dmo.victory.w02.03"] = {
+		"Questa finisce nel racconto. Prima di arrivare a Kharanos sarà diventata il doppio.",
+		"Qualcuno se lo ricordi. Al bancone mi serviranno testimoni.",
+		"Niente male. Il boccale che mi spetta è appena diventato più grande.",
+	},
 ]==])

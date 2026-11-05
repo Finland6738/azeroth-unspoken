@@ -272,4 +272,24 @@ NS:AddTexts("enUS", {
 		"glances around; the only witness is a thoroughly unimpressed squirrel.",
 		"grins at nothing in the middle of the road, and a passer-by walks a little faster.",
 	},
+	["band.b20_30.levelup.01"] = {
+		"Stronger again. The roads that scared me a while ago look like ordinary roads now.",
+		"Something settles into my arms, a little more weight behind every move. I'll take it.",
+		"Another step up. The world doesn't get smaller, but I take up a little more room in it.",
+	},
+	["band.b30_40.levelup.01"] = {
+		"Stronger. The scars don't hurt any less, but they carry more.",
+		"Another notch on the long climb. My legs remember every one of them.",
+		"There it is. Not a leap anymore, just one more sure step.",
+	},
+	["band.b40_50.levelup.01"] = {
+		"Stronger again, and less inclined to be impressed by it.",
+		"Another rung. For once, the ladder is shorter above me than below.",
+		"Growing used to feel like a jump. Now it feels like a door opening onto a harder room.",
+	},
+	["band.b50_60.levelup.01"] = {
+		"The top is nearer. The air up here is thinner, and clearer.",
+		"Stronger again. There aren't many steps left, and every one of them is steep.",
+		"Another step. I can almost see where this ends, and what comes after doesn't scare me.",
+	},
 }, "base_life")

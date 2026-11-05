@@ -124,4 +124,73 @@ AU:RegisterRegionalTexts("tirisfalglades", "enUS", "eastern_tirisfal", [==[
 		"turns up a collar as a thin, cold rain begins to fall on the dead fields, beading on gray grass that drinks none of it.",
 		"watches the rain come down over Tirisfal, gray water on gray earth, softening nothing.",
 	},
+	["tir.attack.w02.01"] = {
+		"Down you go, into the gray with the rest!",
+		"That one's for the dead fields!",
+		"Feel that? Something in these fields still has a pulse.",
+	},
+	["tir.battle.w02.01"] = {
+		"Another one that didn't stay buried. Let's help with that.",
+		"Somebody dug you up too soon. I'll put you back.",
+		"Up and about, are we? Not for long.",
+	},
+	["tir.battle.w02.02"] = {
+		"Gray fields, gray sky, and something moving in between. Eyes open.",
+		"Out here the danger doesn't snarl. It just creeps closer while you're looking elsewhere.",
+	},
+	["tir.battle.w02.03"] = {
+		"squares up on the soft, sour earth of the Glades, weapon raised before the thing has finished closing in.",
+		"turns to face the attack among the dead furrows, boots sinking a little into the gray soil.",
+	},
+	["tir.battle.w02.04"] = {
+		"All that zeal, crusader, and still nobody asked you here.",
+		"Lordaeron is gone, crusader. Waving its colors won't bring it back.",
+		"Red and white. Very pretty. Let's see how they hold up in the mud.",
+	},
+	["tir.lowhp.w02.01"] = {
+		"Plenty of open graves around here. I don't mean to fill one.",
+		"The soil in this place is full enough already. Keep your feet.",
+		"Falling in Tirisfal is a bad idea. Too many things here are waiting for company.",
+	},
+	["tir.muse.w02.01"] = {
+		"The chapels in these hills still have their bells. Not one has rung in years, and the silence weighs more for it.",
+		"A bell tower above the trees, its rope long rotted through. Someone rang it for weddings once, I suppose. Now it keeps the crows dry.",
+		"The bells hang still out here, and the wind isn't strong enough to stir them. Nobody else will.",
+	},
+	["tir.muse.w02.02"] = {
+		"Apple trees, still trying. The apples look fine. I'm still not eating one.",
+		"Somebody's orchard, gone wild. I'd pick one, but in Tirisfal I'd want to know what the roots have been drinking.",
+	},
+	["tir.muse.w02.03"] = {
+		"watches a crow land on a broken fence, look {g:him|her} over without interest, and go back to its business in the furrow.",
+		"passes a field where crows walk the rows in silence, like mourners who came late and stayed anyway.",
+		"steps aside for a rat crossing the road without hurry, as if it held the deed to the place.",
+	},
+	["tir.muse.w02.04"] = {
+		"The Forsaken apothecaries in Brill always have something green on the boil. They're very polite when they decline to say what.",
+		"The apothecaries smile the way the Forsaken smile, without the face taking much part, and say nothing at all about the flasks.",
+	},
+	["tir.quest_complete.w02.01"] = {
+		"Forsaken thanks come dry as old paper, and exactly as long as they need to be.",
+		"Done. Nobody here will raise a cup over it, and I find I don't mind.",
+		"Finished. In Tirisfal a job done is a small light, and small lights are what this place lives on.",
+	},
+	["tir.quest_progress.w02.01"] = {
+		"goes over the task in {g:his|her} head, one part settled, and heads back out into the gray.",
+		"pauses at the edge of a dead field, one piece of the work behind {g:him|her} and the rest still out among the furrows.",
+	},
+	["tir.victory.w02.01"] = {
+		"steps back from the body and waits a moment, in case it decides to get up again.",
+		"watches the still shape in the gray grass for one long breath, as anyone learns to do in Tirisfal.",
+	},
+	["tir.victory.w02.02"] = {
+		"Done. Wipe the weapon, check the boots, move on. Tirisfal rewards no one for lingering.",
+		"That's handled. No need to look closer at what it was. Keep walking.",
+		"Finished. The Glades stay gray, but they're a few teeth short now.",
+	},
+	["tir.victory.w02.03"] = {
+		"Stay down this time. I mean it.",
+		"That's twice you've died. Try not to make it three.",
+		"Back to sleep, old thing. Nobody's coming to wake you.",
+	},
 ]==])

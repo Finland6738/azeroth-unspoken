@@ -124,4 +124,73 @@ AU:RegisterRegionalTexts("tirisfalglades", "itIT", "eastern_tirisfal", [==[
 		"alza il bavero mentre una pioggia sottile e fredda comincia a cadere sui campi morti, imperlando l'erba grigia che non ne beve una goccia.",
 		"guarda la pioggia scendere su Tirisfal, acqua grigia su terra grigia, senza ammorbidire nulla.",
 	},
+	["tir.attack.w02.01"] = {
+		"Giù, nel grigio, insieme a tutto il resto!",
+		"Questa è per i campi morti!",
+		"Senti? Qualcosa, in questi campi, ha ancora il polso.",
+	},
+	["tir.battle.w02.01"] = {
+		"Un altro che non è rimasto sepolto. Diamogli una mano.",
+		"Qualcuno ti ha disseppellito troppo presto. Ti rimetto a posto io.",
+		"Già in piedi e in giro, eh? Per poco.",
+	},
+	["tir.battle.w02.02"] = {
+		"Campi grigi, cielo grigio, e qualcosa che si muove nel mezzo. Occhi aperti.",
+		"Qui fuori il pericolo non ringhia. Si avvicina piano mentre guardi altrove.",
+	},
+	["tir.battle.w02.03"] = {
+		"si mette in guardia sulla terra molle e acida di Tirisfal, l'arma già alzata prima che l'avversario abbia finito di avvicinarsi.",
+		"si volta ad affrontare l'assalto tra i solchi morti, gli stivali che affondano appena nella terra grigia.",
+	},
+	["tir.battle.w02.04"] = {
+		"Tutto quello zelo, crociato, e nessuno ti ha chiesto di venire.",
+		"Lordaeron non c'è più, crociato. Sventolarne i colori non la riporterà indietro.",
+		"Rosso e bianco. Molto grazioso. Vediamo come reggono nel fango.",
+	},
+	["tir.lowhp.w02.01"] = {
+		"Di tombe aperte, qui intorno, ce ne sono parecchie. Non ho intenzione di riempirne una.",
+		"La terra di questo posto è già piena abbastanza. Resta in piedi.",
+		"Cadere a Tirisfal è una pessima idea. Troppe cose, qui, aspettano compagnia.",
+	},
+	["tir.muse.w02.01"] = {
+		"Le cappelle di queste colline hanno ancora le loro campane. Nessuna suona da anni, e il silenzio pesa di più per questo.",
+		"Un campanile sopra gli alberi, con la corda marcita da tempo. Un tempo qualcuno la tirava per i matrimoni, immagino. Ora tiene all'asciutto le cornacchie.",
+		"Qui fuori le campane pendono immobili, e il vento non basta a smuoverle. Nessun altro lo farà.",
+	},
+	["tir.muse.w02.02"] = {
+		"Meli che ci provano ancora. Le mele sembrano buone. Io comunque non ne mangio.",
+		"Il frutteto di qualcuno, inselvatichito. Ne coglierei una, ma a Tirisfal vorrei prima sapere cosa hanno bevuto le radici.",
+	},
+	["tir.muse.w02.03"] = {
+		"guarda una cornacchia posarsi su uno steccato rotto, {g:squadrarlo|squadrarla} senza interesse e tornare alle sue faccende nel solco.",
+		"passa accanto a un campo dove le cornacchie percorrono i filari in silenzio, come gente arrivata tardi a un funerale e rimasta comunque.",
+		"si scosta per lasciar passare un ratto che attraversa la strada senza fretta, come se il terreno fosse suo per atto notarile.",
+	},
+	["tir.muse.w02.04"] = {
+		"Gli speziali dei Reietti, a Brill, hanno sempre qualcosa di verde sul fuoco. Sono gentilissimi, quando si rifiutano di dirti cosa.",
+		"Gli speziali sorridono come sorridono i Reietti, senza che il viso c'entri granché, e delle fiale non dicono niente.",
+	},
+	["tir.quest_complete.w02.01"] = {
+		"Il grazie dei Reietti è secco come carta vecchia, e lungo esattamente quanto serve.",
+		"Fatto. Nessuno qui alzerà un bicchiere per questo, e scopro che non mi dispiace.",
+		"Finito. A Tirisfal un lavoro concluso è una piccola luce, e di piccole luci questo posto vive.",
+	},
+	["tir.quest_progress.w02.01"] = {
+		"ripassa il compito a mente, una parte sistemata, e torna a immergersi nel grigio.",
+		"si ferma al margine di un campo morto: un pezzo del lavoro alle spalle, il resto ancora là fuori tra i solchi.",
+	},
+	["tir.victory.w02.01"] = {
+		"si scosta dal corpo e aspetta un istante, nel caso decidesse di rialzarsi.",
+		"fissa la sagoma immobile nell'erba grigia per un lungo respiro, come a Tirisfal impara a fare chiunque.",
+	},
+	["tir.victory.w02.02"] = {
+		"Chiusa. Pulire l'arma, controllare gli stivali, rimettersi in cammino. Tirisfal non premia chi indugia.",
+		"Sistemato. Inutile guardare meglio cos'era. Avanti.",
+		"Finita. Tirisfal resta grigia, ma adesso ha qualche dente in meno.",
+	},
+	["tir.victory.w02.03"] = {
+		"Stavolta resta giù. Dico sul serio.",
+		"E sono due volte che muori. Cerca di non arrivare a tre.",
+		"Torna a dormire, vecchio mio. Nessuno verrà più a svegliarti.",
+	},
 ]==])

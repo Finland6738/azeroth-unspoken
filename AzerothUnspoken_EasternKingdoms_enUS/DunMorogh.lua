@@ -124,4 +124,73 @@ AU:RegisterRegionalTexts("dunmorogh", "enUS", "eastern_dunmorogh", [==[
 		"stops to watch fresh snow drift down over the peaks, softening every track and every edge.",
 		"turns {g:his|her} face up as the snowfall thickens and the far mountains fade to gray shapes.",
 	},
+	["dmo.attack.w02.01"] = {
+		"Feel that? That's the mountain hitting back.",
+		"Take that, and tell the rest of the valley!",
+		"Harder than the frost, and quicker too!",
+	},
+	["dmo.battle.w02.01"] = {
+		"Come on, then. A scrap is the only warm thing for miles.",
+		"Good. Something to do besides shiver.",
+		"Step up. The cold slows us both, and I've had more practice.",
+	},
+	["dmo.battle.w02.02"] = {
+		"sets {g:his|her} boots in the packed snow as the beast comes on, its breath streaming white.",
+		"turns to meet the charge with snow kicked up around both feet, the cold forgotten for a moment.",
+	},
+	["dmo.battle.w02.03"] = {
+		"Short steps. The ground here is half ice, and whoever slips first loses.",
+		"Mind the footing first and the teeth second. On this slope the worst danger is underfoot.",
+	},
+	["dmo.battle.w02.04"] = {
+		"Down from your caves again, troll? Then let's settle it out here.",
+		"Frostmane. Paint, spears and a lot of shouting. Go on, then.",
+		"Spear up, troll. I've walked too far in this cold to step aside.",
+	},
+	["dmo.lowhp.w02.01"] = {
+		"My hands are shaking, and not from the cold this time. Hold a little longer.",
+		"Too much red on the white. Get your feet under you and finish this.",
+		"The mountain doesn't care who walks off it. Make sure it's me.",
+	},
+	["dmo.muse.w02.01"] = {
+		"The lake is frozen so clear I can see the stones on the bottom. It looks like a window nobody ever bothered to open.",
+		"Ice from shore to shore, gray at the edges and black in the middle where it runs deep. I'll walk around, thank you.",
+		"The wind has swept the lake down to bare ice. Underneath, a pale fish drifts past, in no hurry at all.",
+	},
+	["dmo.muse.w02.02"] = {
+		"Stone dwarves as tall as a cliff, guarding the gates up there. Everything the dwarves build is bigger than the dwarves.",
+		"You can see the gates of Ironforge from half the valley. That isn't a door; that's a statement.",
+		"I tried to guess how long it took to carve that gate. Then I stopped, because my neck hurt.",
+	},
+	["dmo.muse.w02.03"] = {
+		"stops to watch a boar root through the crust of snow for something green, find nothing, and keep at it.",
+		"follows a line of hare tracks across the snow until they end in a scuffle and a few tufts of fur.",
+	},
+	["dmo.muse.w02.04"] = {
+		"The gnomes who stayed behind in Gnomeregan still wander near its gates, sick and strange. Nobody around here talks about them for long.",
+		"Down toward the old gnomish road the air tastes of oil and something worse. A whole city's grief, seeping out under the snow.",
+	},
+	["dmo.quest_complete.w02.01"] = {
+		"A clap on the shoulder that nearly knocked me flat. Thanks in these hills are like the ale: strong, and not subtle.",
+		"A grunt and a coin pushed my way. Around here, I think that counts as gushing.",
+		"Nobody makes a speech when the work is done. They nod, they pay, they point at the next thing. I could get used to it.",
+	},
+	["dmo.quest_progress.w02.01"] = {
+		"marks one more piece of the task as done and blows on {g:his|her} fingers before going on.",
+		"stamps some warmth back into {g:his|her} feet: one part finished, the rest still waiting out in the white.",
+	},
+	["dmo.victory.w02.01"] = {
+		"Done. If I stand here, the sweat will freeze on me, so I won't.",
+		"Over. Keep moving before the cold notices I've stopped.",
+		"That's one. Now off this open slope before my hands stiffen.",
+	},
+	["dmo.victory.w02.02"] = {
+		"lowers {g:his|her} weapon, and the snow around the fight is already settling back over the tracks.",
+		"straightens up, breathing hard, while fresh powder slides off a pine branch and buries the worst of the mess.",
+	},
+	["dmo.victory.w02.03"] = {
+		"That one's going in the story. It'll be twice the size by the time I reach Kharanos.",
+		"Somebody remember that. I'll want witnesses at the bar.",
+		"Not bad. The mug I'm owed just grew by a size.",
+	},
 ]==])

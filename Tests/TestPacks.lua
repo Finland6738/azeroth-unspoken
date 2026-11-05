@@ -531,12 +531,16 @@ local function ReadRepo(path)
 end
 
 T.run("C0b: the regional sources are kept as compact pieces that decode exactly", function()
-	-- every area with lines of its own: the trial slice and the starting areas of W01
-	for _, z in ipairs({ "Elwynn Forest", "Dun Morogh", "Tirisfal Glades", "Mulgore", "Teldrassil", "Durotar" }) do Travel(z) end
+	-- every area with lines of its own: the trial slice, the starting areas of W01 and the zones of W02
+	for _, z in ipairs({ "Elwynn Forest", "Dun Morogh", "Tirisfal Glades", "Mulgore", "Teldrassil", "Loch Modan", "Westfall",
+		"Redridge Mountains", "Duskwood", "Silverpine Forest", "Wetlands", "Hillsbrad Foothills", "Stranglethorn Vale",
+		"The Barrens", "Darkshore", "Ashenvale", "Stonetalon Mountains", "Thousand Needles", "Durotar" }) do Travel(z) end
 	local files = {}
 	for _, d in ipairs({ "Kalimdor", "Kalimdor_enUS", "EasternKingdoms", "EasternKingdoms_enUS" }) do
 		for _, f in ipairs({ "Durotar", "Orgrimmar", "Elwynn", "Stormwind", "Exploration", "DunMorogh", "Ironforge", "Tirisfal",
-			"Undercity", "Mulgore", "ThunderBluff", "Teldrassil", "Darnassus" }) do
+			"Undercity", "Mulgore", "ThunderBluff", "Teldrassil", "Darnassus", "Barrens", "Darkshore", "Ashenvale", "Stonetalon",
+			"ThousandNeedles", "LochModan", "Westfall", "Redridge", "Duskwood", "Silverpine", "Wetlands", "Hillsbrad",
+			"Stranglethorn" }) do
 			table.insert(files, ReadRepo("AzerothUnspoken_" .. d .. "/" .. f .. ".lua"))
 		end
 	end
@@ -564,7 +568,7 @@ T.run("C0b: the regional sources are kept as compact pieces that decode exactly"
 			if all:find("[==[\n" .. text .. "]==]", 1, true) then found = found + 1 end
 		end
 	end
-	T.eq(sources, 28, "the fourteen rules files and the fourteen English texts files of the download are sources")
+	T.eq(sources, 54, "the twenty-seven rules files and the twenty-seven English texts files of the download are sources")
 	T.eq(found, sources, "each source decodes to the exact text of its file")
 	T.ok(kept < whole * 0.6, ("the pieces are far smaller than the source (%d of %d bytes)"):format(kept, whole))
 	-- a source with no dictionary, or holding a code byte, is kept as written
@@ -608,7 +612,8 @@ end)
 T.run("C0b: a change of area is spread over frames and no pick sees a half-built area", function()
 	Travel("Durotar")
 	local full = Dump()
-	Travel("The Barrens")
+	-- a zone of Kalimdor with no area pack of its own (The Barrens has one since W02)
+	Travel("Silithus")
 	Packs.BUDGET_MS = 0
 	Travel("Durotar")
 	T.ok(Packs.job ~= nil, "the change goes on in the next frames")
@@ -629,7 +634,7 @@ T.run("C0b: a change of area is spread over frames and no pick sees a half-built
 	local c = Packs.lastChange
 	T.ok(c.key == "durotar" and c.frames > 10 and c.max >= 0 and c.ready ~= nil, "the frames of the change are recorded")
 	-- a change towards another place stops the one in progress; what it built half-way is dropped
-	Travel("The Barrens")
+	Travel("Silithus")
 	Frames()
 	Travel("Durotar")
 	Frames(20)
@@ -660,7 +665,12 @@ T.run("C0b: beyond the bound the areas built least recently are released", funct
 	T.eq(idle, 0, "nothing is kept for the areas not built")
 	SENT = {}
 	SlashCmdList.AZEROTHUNSPOKEN("packs")
-	T.ok(Printed("durotar, kalimdor"), "/au packs names them")
+	-- the released areas are listed in order: since W02 other areas of Kalimdor come between these two
+	local named = false
+	for _, s in ipairs(SENT) do
+		if type(s) == "string" and s:find("durotar", 1, true) and s:find("kalimdor", 1, true) then named = true end
+	end
+	T.ok(named, "/au packs names them")
 	Travel("Durotar")
 	T.eq(Engine.packs.kalimdor_durotar, nil, "Durotar has no regional lines until /reload")
 	T.ok(Engine.byId["dur.battle.blade.01"] == nil, "none of its rules")

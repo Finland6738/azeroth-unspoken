@@ -128,4 +128,37 @@ AU:RegisterRegionalTexts("teldrassil", "itIT", "kalimdor_darnassus", [==[
 		"alza il viso mentre la pioggia filtra lenta e leggera tra le grandi foglie, fino alla pietra chiara.",
 		"ascolta la pioggia sussurrare sui ruscelli della città; Darnassus sembra appena accorgersene.",
 	},
+	["dar.greet.w02.01"] = {
+		"Pace a te, sotto le foglie.",
+		"Salute. Strade quiete e acqua limpida per te.",
+	},
+	["dar.muse.w02.01"] = {
+		"Sopra la testa, foglie grandi come vele. Oltre di esse c'è il cielo, ma quaggiù il cielo è verde.",
+		"Non avevo mai visto foglie così grandi. Quando il vento passa tra le fronde, la città intera si riempie di un suono simile a una marea lontana.",
+	},
+	["dar.muse.w02.02"] = {
+		"Ho augurato buona giornata a una Sentinella. Ci ha riflettuto con cura, e credo ci stia riflettendo ancora.",
+		"Qui tutti camminano come se avessero tutto il tempo del mondo. Alcuni ne hanno già visti passare diecimila anni.",
+	},
+	["dar.muse.w02.03"] = {
+		"si ferma su un ponte curvo di legno chiaro e guarda la luce delle lanterne tremare sull'acqua di sotto.",
+		"segue il sentiero lungo la riva del lago, dove i salici lasciano pendere i rami in un'acqua così limpida da sembrare assente.",
+		"si ferma sulla riva, dove il riflesso delle torri bianche giace così immobile che ci si potrebbe camminare sopra.",
+	},
+	["dar.muse.w02.04"] = {
+		"I kaldorei hanno costruito questa città in pochi anni, dopo aver perso tanto nella guerra. È bellissima, ed è nuovissima, e lo sanno.",
+		"Dietro la calma di queste terrazze c'è un popolo intero che ha dovuto ricominciare da capo. Si vede dalla cura che mettono in ogni cosa.",
+	},
+	["dar.quest_complete.w02.01"] = {
+		"Fatto. Il grazie è arrivato con un lungo sguardo, come se qualcuno stesse decidendo di ricordarsi di me.",
+		"Finito. In una città dalla memoria così lunga, anche un piccolo favore può essere ricordato più a lungo di quanto immagini.",
+	},
+	["dar.quest_complete.w02.02"] = {
+		"Tutto fatto. Lo dirò ai gufi: qui sembrano tenere loro i registri.",
+		"Finito. Devo dirlo sottovoce? In questa città tutto il resto si dice sottovoce.",
+	},
+	["dar.weather_change.w02.01"] = {
+		"alza gli occhi mentre le nuvole si diradano sopra la chioma dell'albero, e una luce più chiara scivola tra le foglie fino alle terrazze.",
+		"si accorge che la luce verde della città si schiarisce di un tono mentre il cielo si apre, in alto, molto oltre le foglie.",
+	},
 ]==])

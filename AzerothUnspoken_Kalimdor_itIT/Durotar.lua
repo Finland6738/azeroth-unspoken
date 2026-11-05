@@ -867,4 +867,18 @@ AU:RegisterRegionalTexts("durotar", "itIT", "kalimdor_durotar", [==[
 		"Questa parte è fatta. Il resto è là fuori, sotto lo stesso sole duro.",
 		"Un pezzo in meno. Di commissioni, se non altro, Durotar è generosa.",
 	},
+	["dur.attack.w02.01"] = {
+		"Mangia polvere! Ce n'è in abbondanza.",
+		"Assaggia un po' di Durotar!",
+		"Terra rovente, colpi duri. Benvenuto.",
+	},
+	["dur.quest_complete.w02.01"] = {
+		"Fatto. Questa terra non regala niente, e chiede lo stesso a chiunque ci viva.",
+		"Finito. Durotar è dura, ma i suoi debiti li paga in rispetto, se non in ombra.",
+		"Un altro lavoro chiuso sotto le rupi rosse. Le mie spalle lo sanno; presto lo saprà anche qualcun altro.",
+	},
+	["dur.quest_progress.w02.01"] = {
+		"C'è tutto. Ora di nuovo attraverso la terra rovente per dirlo, sperando in un filo di vento.",
+		"Finito. Con questo caldo, il difficile è rifare la strada per consegnarlo.",
+	},
 ]==])

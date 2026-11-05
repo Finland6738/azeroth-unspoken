@@ -907,4 +907,18 @@ AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_elwynn", [==[
 		"There. Now maybe these folks can get back to their harvest.",
 		"Finished. Let the farmers go back to fretting over their crops instead.",
 	},
+	["elw.attack.w02.01"] = {
+		"Leave the farmers in peace!",
+		"Back to the woods with you!",
+		"Off the road and out of the fields!",
+	},
+	["elw.quest_complete.w02.01"] = {
+		"hands over the last of the work and is paid with a grateful smile, the kind that reaches all the way to the eyes.",
+		"receives the thanks of a tired, grateful face, and steps back onto the road a little lighter.",
+		"gets a clap on the arm and a few coins, while the meadows of Elwynn go on about their business as if nothing had happened.",
+	},
+	["elw.quest_progress.w02.01"] = {
+		"One part done. Elwynn hides the rest among its fields and woods, but nothing here hides very hard.",
+		"Not finished, but closer. A pleasant country to be busy in, at least.",
+	},
 ]==])
