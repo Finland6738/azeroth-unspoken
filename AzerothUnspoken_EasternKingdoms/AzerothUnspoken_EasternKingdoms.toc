@@ -34,3 +34,4 @@ BlastedLands.lua
 BurningSteppes.lua
 EasternPlaguelands.lua
 Dungeons.lua
+WesternPlaguelands.lua

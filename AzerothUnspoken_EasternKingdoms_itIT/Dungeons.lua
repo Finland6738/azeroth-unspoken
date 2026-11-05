@@ -382,4 +382,150 @@ AU:RegisterRegionalTexts("eastern", "itIT", "eastern_dungeons", [==[
 		"Silenzio. La vecchia pietra ha visto mille scontri come questo e non ne ha tenuto nessuno.",
 		"Fatto. La cripta non se ne accorge: c'era prima dello scontro e ci sarà molto dopo.",
 	},
+	["abg.battle.01"] = {
+		"Questo stendardo resta del colore che ha.",
+		"Vuoi questa base? Allora pagala.",
+		"Allontanati dallo stendardo. Finché ci sono io non lo prende nessuno.",
+	},
+	["abg.lowhp.01"] = {
+		"Non ancora. Qualcuno deve tenere questa base finché non arrivano rinforzi.",
+		"Ho preso un colpo, non una sconfitta. Lo stendardo è ancora su.",
+	},
+	["abg.muse.01"] = {
+		"Cinque posti che vale la pena tenere: una stalla, una fattoria, una forgia, una segheria e una miniera. Strano come ogni guerra si riduca a pane, ferro e legname.",
+		"Un tempo questa era buona terra da coltivare. Adesso è una scacchiera, e i pezzi portano la spada.",
+		"Dalla segheria sulla collina si vede tutto il bacino: ogni stendardo, ogni staffetta, ogni decisione sbagliata.",
+	},
+	["abg.muse.02"] = {
+		"guarda gli stendardi del bacino cambiare colore uno dopo l'altro, come se tutta la valle respirasse.",
+		"si ferma sul bordo della strada, lo sguardo che corre da uno stendardo all'altro attraverso la valle.",
+	},
+	["abg.muse.03"] = {
+		"Qualcuno tenga d'occhio la forgia. Tutti si dimenticano della forgia.",
+		"Non correte tutti dietro allo stesso scontro. Una base che nessuno sorveglia è una base persa.",
+	},
+	["abg.victory.01"] = {
+		"A terra. Controlla lo stendardo, poi controlla la strada.",
+		"E uno. Adesso: di che colore è lo stendardo?",
+		"Libero, per un momento. In questa valle un momento è tutto quello che si ottiene.",
+	},
+	["avl.battle.01"] = {
+		"Questa strada è presidiata. Torna indietro, o finisci nella neve.",
+		"Al generale non ci arrivi passando da me.",
+		"Un altro passo su per questa valle ti costa tutto. Fallo, allora.",
+	},
+	["avl.lowhp.01"] = {
+		"Resisti. La neve qui è soffice, ma non ho intenzione di sdraiarmici.",
+		"Non qui. La valle è lunga, e voglio vederne la fine.",
+	},
+	["avl.muse.01"] = {
+		"Un'intera valle di neve e di torri, e due eserciti che giurano entrambi che era loro per primi. Alle montagne non importa di chi fosse.",
+		"Torri, bunker, cimiteri, miniere. Prendere questa valle non è una battaglia: è una lunga stagione fredda di battaglie.",
+		"Qui la lotta dura ore, su e giù per la stessa strada gelata. Certe battaglie si vincono dimenticando quanto si è stanchi.",
+	},
+	["avl.muse.02"] = {
+		"si soffia nelle mani a coppa e scruta la lunga valle bianca, dove le torri lontane si stagliano scure contro i campi di neve.",
+		"batte i piedi per scacciare il freddo e alza gli occhi verso i fianchi della montagna, bianchi e silenziosi sopra il fragore della battaglia.",
+	},
+	["avl.muse.03"] = {
+		"Neve fino alle ginocchia e un esercito per parte. Posto ideale per un picnic.",
+		"Chiunque abbia pianificato questa guerra non ha mai dovuto farla a piedi.",
+	},
+	["avl.victory.01"] = {
+		"si raddrizza dopo lo scontro, il fiato che fuma nel freddo, e cerca con gli occhi dove si sia spostata la battaglia.",
+		"copre di neve con un calcio le macchie scure sul terreno calpestato e prosegue giù per la valle.",
+		"si appoggia a un palo dello steccato, inghiottendo aria gelata, mentre il rumore dei combattimenti sale da più giù nella valle.",
+	},
+	["bwl.battle.01"] = {
+		"Servi un drago che ti mangerebbe in una giornata fiacca. Fatti da parte o cadi qui.",
+		"Servitori di Nefarian, tutti quanti. Venite a guadagnarvi la paga.",
+		"Sono {g:arrivato|arrivata} fin quassù, e credi di essere tu a fermarmi?",
+	},
+	["bwl.lowhp.01"] = {
+		"Non nell'officina di un drago. Non finirò come pezzi di ricambio per qualcuno.",
+		"Resisti. Qualunque cosa Nefarian faccia con chi cade, non voglio scoprirlo.",
+	},
+	["bwl.muse.01"] = {
+		"Nefarian tiene la sua tana sopra il fuoco della montagna, e tutto ciò che lo serve sulle scale più in basso.",
+		"Quassù Nefarian incrocia draghi di ogni colore per farne uno solo. Basta il pensiero per rivoltare lo stomaco.",
+		"Questo posto ha la crudeltà ordinata di un'officina. Gabbie, vasche, l'odore di qualcosa cotto troppo a lungo. Qui si sono fabbricati draghi, e senza delicatezza.",
+	},
+	["bwl.muse.02"] = {
+		"alza gli occhi verso le alte volte nere, dove il raspare di artigli sulla pietra va e viene come una lenta marea.",
+		"sente l'odore di scaglie bruciate e di fumo vecchio che scende lungo il corridoio, e stringe la presa.",
+	},
+	["bwl.muse.03"] = {
+		"Un drago con un laboratorio. Mi piacevano di più quando se ne stavano sdraiati sull'oro.",
+		"Ingegneri goblin al servizio di un drago. Pagherei bene per leggere quel contratto.",
+	},
+	["bwl.victory.01"] = {
+		"scavalca i caduti, badando al pavimento bruciato, e guarda avanti verso la prossima porta nera.",
+		"tira un lungo respiro mentre gli echi si spengono lungo le sale di pietra scura, dove di certo qualcosa di più grande sta ascoltando.",
+		"si toglie la fuliggine dal viso col dorso del guanto; la tana tace, ma solo per ora.",
+	},
+	["mc.battle.01"] = {
+		"Brucia quanto ti pare. Non risalgo finché qui non ho finito.",
+		"Avanti, tizzone. Vediamo chi dei due si raffredda per primo.",
+	},
+	["mc.battle.02"] = {
+		"Guarda il pavimento, non solo il nemico. Quaggiù combatte anche il terreno.",
+		"Attenzione alla lava alle spalle. Un passo sbagliato e lo scontro non conterà più niente.",
+	},
+	["mc.encounter_end.01"] = {
+		"Con {encounter} è finita. Il caldo non è calato di un grado, ma qualcosa quaggiù si è fatto più silenzioso.",
+		"{encounter} non brucerà più per nessuno. Questo scontro me lo ricorderò anche solo per il caldo.",
+	},
+	["mc.lowhp.01"] = {
+		"Non qui. Non diventerò un'altra bruciatura su questo pavimento.",
+		"Sono {g:sceso|scesa} troppo in fondo per spegnermi adesso.",
+	},
+	["mc.muse.01"] = {
+		"Qui vive Ragnaros, sotto Blackrock, fra fiumi di pietra diventata liquida. Il mondo non era fatto per avere una cantina così.",
+		"Fiumi di roccia fusa, pareti che brillano da dentro, aria che tremola. Oltre tutto questo, Ragnaros aspetta.",
+		"Gli elementali di qui erano già vecchi quando il primo nano impugnò un piccone. Per loro non sono nemmeno un nemico, solo una scintilla che non si è ancora spenta.",
+	},
+	["mc.muse.02"] = {
+		"si asciuga il sudore dagli occhi col dorso del polso; il calore sale dalla lava a ondate che fanno ondeggiare la parete in fondo.",
+		"guarda scorrere un lento fiume di roccia fusa, così vicino da sentirsi tirare la pelle del viso.",
+		"respira attraverso un panno contro lo zolfo, gli occhi socchiusi per il riverbero che sale dal basso.",
+	},
+	["mc.muse.03"] = {
+		"Porta una borraccia, mi hanno detto. Intendevano dieci.",
+		"La prossima volta che qualcuno si lamenta del caldo del deserto, me lo porto quaggiù.",
+		"Be', nessuno potrà dire che qui ci sono spifferi.",
+	},
+	["mc.subzone_enter.01"] = {
+		"si addentra ancora nel Core, dove i passaggi si aprono su caverne illuminate di rosso dal basso e la roccia scotta anche attraverso gli stivali.",
+		"passa in un'altra sala del profondo infuocato, con l'aria densa di zolfo e il rombo della lava che scorre.",
+	},
+	["mc.victory.01"] = {
+		"fa un passo indietro mentre la cosa caduta sibila e fuma, e il suo bagliore si spegne in un rosso cupo e poi nel nulla.",
+		"abbassa l'arma, ancora calda al tatto, e aspetta che il sibilo finisca.",
+	},
+	["mc.victory.02"] = {
+		"Spento. Se solo il resto di questo posto capisse l'antifona.",
+		"Un fuoco in meno. Il resto della montagna non sembra essersene accorto.",
+	},
+	["nax.muse.01"] = {
+		"Un'intera necropoli sospesa nel cielo sopra le Plaguelands, e io ci sono dentro. Il pavimento è così freddo che lo si sente attraverso gli stivali.",
+		"La cittadella di Kel'Thuzad. Ogni corridoio sa di tavolo d'obitorio e di ago da cucitura.",
+		"Qui i morti non si custodiscono, si fabbricano, con cura e a centinaia. Le Plaguelands là sotto sono solo il posto dove li mandano a camminare.",
+	},
+	["zg.battle.01"] = {
+		"Il tuo dio del sangue può aspettare il suo turno. Prima tocca a te.",
+		"Esci dal verde, allora. Non sono qui per il panorama.",
+	},
+	["zg.muse.01"] = {
+		"L'antica capitale dei Gurubashi, invasa dalla vegetazione e di nuovo sveglia. I suoi sacerdoti rivogliono il loro dio del sangue, e non lo chiedono con le buone.",
+		"Liane sui gradini, serpenti nelle liane, sacerdoti in cima ai gradini. La città di Hakkar si risveglia, e la giungla tutt'intorno resta immobile.",
+		"In cima a questi templi, i sacerdoti cercano di fare un dio col sangue. L'aria ne ha già il sapore.",
+	},
+	["zg.muse.02"] = {
+		"Pipistrelli, tigri, raptor e sacerdoti che sanguinano apposta. Stranglethorn si è tenuta il meglio per la fine.",
+		"Qui ogni liana potrebbe essere un serpente. Più o meno la metà lo è.",
+	},
+	["zg.victory.01"] = {
+		"ascolta il rumore dello scontro che si perde nella giungla, mentre più in alto i tamburi continuano a battere senza perdere un colpo.",
+		"torna sul vecchio sentiero di pietra, scostandosi le liane dalle spalle, e alza lo sguardo verso i templi.",
+	},
 ]==])

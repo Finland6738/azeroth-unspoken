@@ -343,7 +343,7 @@ T.run("testi senza regola e perimetro del controllo", function()
 	T.ok(Has(full, "orphanText", "orfano.1"), "testo per una frase che non esiste")
 	local scoped = Validator:Run({ packs = { "base_combat" } })
 	T.ok(not Has(scoped, "orphanText"), "la prova su un solo pacchetto non guarda gli orfani")
-	T.eq(scoped.stats.packs, 1, "un solo pacchetto"); T.eq(scoped.stats.phrases, 244, "le 244 frasi di combattimento (139 + 63 della W01 + 42 della W02)")
+	T.eq(scoped.stats.packs, 1, "un solo pacchetto"); T.eq(scoped.stats.phrases, 290, "le 290 frasi di combattimento (139 + 63 della W01 + 42 della W02 + 46 della W04)")
 	-- gli errori di un pacchetto non compaiono nel controllo di un altro
 	local r = Validate({ registry = { ["s.1"] = Good() } })
 	T.ok(Has(r, "noText", "s.1"), "il pacchetto con l'errore lo vede")
@@ -356,11 +356,11 @@ T.run("il database di base non ha né errori né avvisi", function()
 	for _, id in ipairs(Engine.packOrder) do
 		if id:sub(1, 5) == "base_" or Engine.packs[id].region then table.insert(packs, id) end
 	end
-	T.eq(#packs, 63, "diciannove pacchetti di base (quattordici di frasi, cornici, vocabolario, temi e regia #90, il mondo di R3, le emozioni di R4, le situazioni composte #100 e i monologhi #99) e quarantaquattro regionali (#101; quattro della fetta di prova, #102; otto della W01; tredici della W02; diciassette della W03)")
+	T.eq(#packs, 68, "diciannove pacchetti di base (quattordici di frasi, cornici, vocabolario, temi e regia #90, il mondo di R3, le emozioni di R4, le situazioni composte #100 e i monologhi #99) e quarantanove regionali (#101; quattro della fetta di prova, #102; otto della W01; tredici della W02; diciassette della W03; cinque della W04)")
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
 	-- the 8 monologues (#99) have no texts of their own: their 23 parts have two variants each
-	T.eq(r.stats.phrases, 5122, "5122 frasi (+ 11 della nemesi, N7; + 23 del compagno animale e del lutto, N8; + 53 della seconda parte di N9; + 583 della fetta di prova, #102; + 1006 della W01; + 1110 della W02; + 1081 della W03)"); T.ok(r.stats.variants >= 4 * (1266 - 8), "almeno due varianti IT e due EN per frase")
+	T.eq(r.stats.phrases, 6345, "6345 frasi (+ 11 della nemesi, N7; + 23 del compagno animale e del lutto, N8; + 53 della seconda parte di N9; + 583 della fetta di prova, #102; + 1006 della W01; + 1110 della W02; + 1081 della W03; + 1223 della W04)"); T.ok(r.stats.variants >= 4 * (1266 - 8), "almeno due varianti IT e due EN per frase")
 end)
 
 T.run("/au validate", function()
@@ -368,7 +368,7 @@ T.run("/au validate", function()
 	local cmd = SlashCmdList.AZEROTHUNSPOKEN
 	cmd("validate base_combat")
 	local out = table.concat(SENT, "\n")
-	T.ok(out:find("Validatore: 244 frasi in 1 pacchetti", 1, true), "riepilogo: " .. out)
+	T.ok(out:find("Validatore: 290 frasi in 1 pacchetti", 1, true), "riepilogo: " .. out)
 	T.ok(out:find("0 errori, 0 avvisi", 1, true), "senza problemi")
 	T.ok(out:find("Nessun problema trovato.", 1, true), "messaggio finale")
 	SENT = {}

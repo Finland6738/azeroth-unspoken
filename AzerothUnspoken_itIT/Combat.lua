@@ -1047,4 +1047,212 @@ NS:AddTexts("itIT", {
 		"Finita. Con le bestie è fame contro fame; questa era scelta contro scelta, e pesa in un altro modo.",
 		"È finita. Chiunque fosse, questa storia non la racconterà. Io la racconterò com'è andata, se mai la racconterò.",
 	},
+	["battle.w04.001"] = {
+		"Va bene, va bene. Un posto per te lo trovo.",
+		"Possibile che non si arrivi mai da nessuna parte senza un intoppo?",
+		"E va bene. Un'altra cosa che oggi non avevo previsto.",
+	},
+	["battle.w04.002"] = {
+		"Il primo scambio dice tutto. Guarda, non tirare a indovinare.",
+		"Lascia che arrivi il primo colpo. Il resto me lo dirà lui.",
+	},
+	["battle.w04.003"] = {
+		"sposta il peso, scioglie le spalle e aspetta la prima mossa.",
+		"si sposta di mezzo passo di lato, in cerca di un appoggio più saldo.",
+		"lascia che il mondo si restringa al nemico e ai pochi passi che li separano.",
+	},
+	["battle.w04.004"] = {
+		"Volevi la mia attenzione? Ce l'hai tutta.",
+		"Avanti, allora. Adesso mi hai {g:tutto|tutta} per te.",
+		"Guarda un po'. Adesso sei l'unico pensiero che ho.",
+	},
+	["battle.w04.005"] = {
+		"Possibile che in questo mondo non ci si possa sedere cinque minuti?",
+		"Avevo dei programmi. Piccoli. Uno era sedermi.",
+	},
+	["battle.w04.006"] = {
+		"Uno dei due se ne andrà. Non c'è scritto da nessuna parte quale.",
+		"Finiscono sempre così: uno su e uno giù. Preferirei stare dalla parte di sopra.",
+	},
+	["battle.w04.007"] = {
+		"Proprio dobbiamo? ...Sì, mi sa di sì.",
+		"Ti chiederei di ripensarci, ma non mi sembri il tipo.",
+		"C'è speranza di lasciar perdere tutti e due? No? Immaginavo.",
+	},
+	["battle.w04.008"] = {
+		"Cose più dure di te hanno provato a consumarmi. Eccomi qua.",
+		"Ho preso martellate da cose peggiori. Il filo ne è uscito più tagliente.",
+	},
+	["battle.w04.009"] = {
+		"Il cuore batte come un tamburo. Bene: vuol dire che sono {g:attento|attenta}.",
+		"Ecco la paura, puntuale. Che si metta in fondo e stia zitta.",
+		"È venuta anche la paura. Può guardare, ma non ha diritto di parola.",
+	},
+	["battle.w04.010"] = {
+		"Facciamola breve. Ho un posto dove andare.",
+		"Una cosa rapida e pulita, se non ti dispiace. Mi aspettano altrove.",
+	},
+	["battle.w04.011"] = {
+		"si lascia sfuggire un verso breve e duro tra i denti stretti, e si butta avanti.",
+		"accoglie il nemico con un grugnito e un passo avanti, non indietro.",
+	},
+	["battle.w04.012"] = {
+		"Ho una strada da fare, e tu ci sei in mezzo.",
+		"Stai tra me e dove sono {g:diretto|diretta}. Tutta qui, la lite.",
+		"Niente di personale. Sei solo d'intralcio.",
+	},
+	["battle.w04.013"] = {
+		"Splendido. Proprio quello che mi serviva: altro moto.",
+		"Un'altra zuffa. Le ginocchia ringraziano sentitamente.",
+	},
+	["battle.w04.014"] = {
+		"Qualunque cosa tu sia, stai per scoprire che cosa sono io.",
+		"Non mi serve sapere cosa sei. Tra poco saprai tu cosa sono io.",
+	},
+	["battle.w04.015"] = {
+		"Spalle giù. Mani sciolte finché non servono. Poi tutt'altro che sciolte.",
+		"Peso in avanti, ma non troppo. Non sbilanciarti ancora.",
+		"Presa morbida, occhi aperti, passi corti. Come sempre.",
+	},
+	["battle.w04.016"] = {
+		"Ti avverto: non combatto per fare bella figura, combatto fino in fondo.",
+		"Gli scontri leali sono per chi ha tempo da perdere.",
+	},
+	["battle.w04.017"] = {
+		"Sei più debole di me e vieni avanti lo stesso. Questo te lo concedo, {target}.",
+		"Coraggio ne hai, almeno. Più di tanti della tua stazza.",
+		"Sai già come va a finire, {target}. Apprezzo comunque la visita.",
+	},
+	["lowhp.w04.001"] = {
+		"Questa lascerà il segno. Anzi, parecchi.",
+		"Questa l'ho sentita. Non posso dire che mi sia piaciuta.",
+		"Ahi. Ahi. Va bene. Ricevuto.",
+	},
+	["lowhp.w04.002"] = {
+		"Pensa. Cosa mi resta? Cosa non ho ancora provato?",
+		"Le possibilità. Contale. In fretta.",
+		"Bende, pozioni, gambe. Qualcosa. Scegli qualcosa.",
+	},
+	["lowhp.w04.003"] = {
+		"sbatte forte le palpebre, due volte, come per rimettere a fuoco il mondo.",
+		"fa un passo indietro che non aveva nessuna intenzione di fare.",
+		"si preme una mano sul fianco; la ritira bagnata.",
+	},
+	["lowhp.w04.004"] = {
+		"Dovevi finire il lavoro. Adesso sì che mi arrabbio.",
+		"Quella era la tua occasione, e l'hai sprecata.",
+		"Grosso errore, lasciarmi in piedi. Adesso capirai perché.",
+	},
+	["lowhp.w04.005"] = {
+		"Se è la fine, è più silenziosa di come la immaginavo.",
+		"Forse è la fine. È più piccola di come la raccontano.",
+		"Mani fredde. Orecchie che fischiano. So dove porta, e io non ci vado.",
+	},
+	["lowhp.w04.006"] = {
+		"Ne ho ancora, dentro. Andiamo a cercarlo.",
+		"In fondo al barile resta sempre qualcosa.",
+		"Scava più a fondo. Laggiù c'è sempre un altro po'.",
+	},
+	["lowhp.w04.007"] = {
+		"Rallenta. Il panico consuma più in fretta di qualsiasi ferita.",
+		"Calma. La fretta ammazza prima ancora del nemico.",
+		"Piano. Una testa lucida vale più delle forze che restano.",
+	},
+	["lowhp.w04.008"] = {
+		"Ah. La parte della storia in cui le cose si mettono male. Questa la conosco.",
+		"Non scrivete ancora la fine. Ci sono ancora dentro.",
+	},
+	["lowhp.w04.009"] = {
+		"stringe la presa che scivola e rialza la guardia, un po' più in basso di prima.",
+		"prende un respiro spezzato e pianta i piedi come se mettesse radici.",
+	},
+	["lowhp.w04.010"] = {
+		"Ci sono ancora cose che voglio fare. Questa non è nell'elenco.",
+		"Troppe cose lasciate a metà. Non ho ancora finito.",
+		"Non qui. Ho conti in sospeso, e mi aspettano.",
+	},
+	["threat.w04.001"] = {
+		"Oggi sono di buon umore. Sarebbe un peccato sprecarlo con te.",
+		"Non rovinarmi la giornata. Mi dispiacerebbe dover ricambiare.",
+		"Finora oggi sono {g:stato|stata} gentile. Non essere tu a farmi smettere.",
+	},
+	["threat.w04.002"] = {
+		"Conta i passi da qui in avanti. Ognuno è in prestito.",
+		"Puoi ancora andartene. Tra un momento non potrai più.",
+		"Vattene adesso, e te ne vai sulle tue gambe.",
+	},
+	["victory.w04.001"] = {
+		"Finita. Il silenzio mi fischia nelle orecchie.",
+		"Fatto. Il mondo torna a pezzi: un rumore qui, un odore là.",
+	},
+	["victory.w04.002"] = {
+		"Mi piacerebbe dire che era tutto previsto. Mi piacerebbe davvero.",
+		"Tutto secondo i piani. Un piano c'era, giuro. Più o meno.",
+		"Non chiedetemi come. Non saprei proprio dirlo.",
+	},
+	["victory.w04.003"] = {
+		"Una faccenda sistemata. Ne ho una lunga lista.",
+		"Sistemata, questa. Avanti con la prossima voce dell'elenco.",
+	},
+	["victory.w04.004"] = {
+		"si guarda le mani, prima una e poi l'altra, come per contare le dita.",
+		"fa ruotare le spalle finché qualcosa non scricchiola, poi sospira a lungo.",
+		"ripulisce l'arma con gesti lenti e accurati.",
+	},
+	["victory.w04.005"] = {
+		"Un giorno toccherà a me, su un altro terreno, per un'altra mano. Non oggi.",
+		"Prima o poi andrà al contrario. Questo è il patto, e oggi ha retto.",
+	},
+	["victory.w04.006"] = {
+		"Bene. Adesso mi spetta una sosta e un sorso d'acqua.",
+		"Una sosta e un bel sorso, come minimo, me li sono guadagnati.",
+	},
+	["victory.w04.007"] = {
+		"Troppo {g:lento|lenta} al secondo passo. Ricordatelo per la prossima.",
+		"Vinto, ma alla buona. Ho abbassato la guardia due volte.",
+		"Buon risultato, lavoro scadente. Il gioco di gambe va sistemato.",
+	},
+	["victory.w04.008"] = {
+		"Segnatelo. Un altro sul conto.",
+		"Un'altra tacca. Il manico comincia a essere affollato.",
+		"Uno in più. Ho smesso di contarli da un pezzo, ma comunque.",
+	},
+	["victory.w04.009"] = {
+		"Spero sia stato rapido. Ne sono quasi {g:sicuro|sicura}.",
+		"Rapido, almeno. Di questo mi sono {g:assicurato|assicurata}.",
+	},
+	["victory.w04.010"] = {
+		"lascia ricadere le braccia e resta lì un istante, a fare l'inventario di sé.",
+		"scioglie finalmente la guardia, un'articolazione dopo l'altra.",
+	},
+	["victory.w04.011"] = {
+		"Dovevi restartene a casa, ovunque fosse.",
+		"La prossima volta resta a casa. Ah. Già.",
+	},
+	["victory.w04.012"] = {
+		"Diventa più facile. Non so se mi piace che sia così.",
+		"Ogni volta più facile. Dovrebbe turbarmi più di quanto faccia.",
+	},
+	["victory.w04.013"] = {
+		"Una minaccia in meno sulla strada di chi verrà dopo.",
+		"Chi passerà dopo di me camminerà un po' più tranquillo.",
+	},
+	["victory.w04.014"] = {
+		"Ah! E mi stavo appena scaldando.",
+		"Finito? Avevo appena trovato il ritmo.",
+		"Ah! Non mi è servito nemmeno riprendere fiato.",
+	},
+	["victory.w04.015"] = {
+		"Il mondo va avanti come se niente fosse. Per lui, niente è stato.",
+		"Tutto intorno continua, indifferente. Visto da fuori, uno scontro è una cosa minuscola.",
+	},
+	["victory.w04.016"] = {
+		"Hai lottato duro. Conta qualcosa, anche adesso.",
+		"Nessuna vergogna. Hai resistito più di tanti.",
+		"Fino all'ultimo. Questo lo rispetto, qualunque cosa tu fossi.",
+	},
+	["victory.w04.017"] = {
+		"Il corpo tiene il conto e lo presenta dopo. Domani, probabilmente.",
+		"Farà tutto male più tardi. Il più tardi può aspettare il suo turno.",
+	},
 }, "base_combat")

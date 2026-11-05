@@ -193,4 +193,82 @@ AU:RegisterRegionalTexts("kalimdor", "itIT", "kalimdor_dungeons", [==[
 		"Una cosa in meno che mi soffia contro con questo caldo.",
 		"Bene. Ora, qualcuno in questa città ha un po' d'ombra, d'acqua o di buone maniere?",
 	},
+	["ony.battle.01"] = {
+		"La sua tana, la sua covata, le sue regole. Sono {g:venuto|venuta} a spezzarle tutte e tre.",
+		"Quaggiù la terra è del drago. Io ci cammino sopra lo stesso.",
+	},
+	["ony.muse.01"] = {
+		"La figlia di Deathwing aspetta in fondo a questa caverna, sulle ossa di chi è venuto prima.",
+		"Draghetti in ogni fessura, uova negli anfratti, e un odore di zolfo e di carne vecchia. Questo è un nido, come lo intendono i draghi.",
+		"Si dice che il drago laggiù porti un altro volto a Stormwind, quello di una dama al fianco del reggente. Difficile immaginarlo, qui, nella sua vera casa.",
+	},
+	["ony.muse.02"] = {
+		"ascolta il respiro profondo e lento che risale la galleria dalla caverna in basso, come aria in un mantice crepato.",
+		"passa con cautela accanto a gusci d'uovo spaccati e ossa annerite all'imbocco della grande caverna.",
+	},
+	["ony.victory.01"] = {
+		"Fatta. La caverna puzza di scaglie bruciate, e la cenere si sta ancora posando.",
+		"Finita. Mi fischiano le orecchie e il pavimento è caldo, ma sono in piedi.",
+	},
+	["raq.battle.01"] = {
+		"Fuori dalla sabbia. Ho attraversato tutto il deserto per questo.",
+		"Torna sotto la sabbia, oppure resta e cadi qui.",
+	},
+	["raq.muse.01"] = {
+		"Mille anni fa gli elfi della notte e i draghi sigillarono questo posto dietro lo Scarab Wall. Ora le porte sono di nuovo aperte, e le rovine brulicano.",
+		"Colonne spezzate mezze sepolte nella sabbia, incisioni che nessuno dei vivi sa leggere. I Qiraji costruivano in grande, e per durare.",
+		"Qui la sabbia suona vuota sotto i piedi. Chissà quanta parte della vecchia città ci giace sotto, in attesa.",
+	},
+	["raq.muse.02"] = {
+		"Sabbia negli stivali, sabbia fra i denti, e qualcosa con troppe zampe dietro ogni colonna.",
+		"Belle rovine. Peccato per gli inquilini.",
+	},
+	["raq.victory.01"] = {
+		"si scrolla la sabbia da un guanto e guarda i cortili in rovina, dove la sabbia che scivola ricopre già i caduti.",
+		"resta fra le colonne abbattute, a riprendere fiato nell'aria secca e calda.",
+	},
+	["taq.battle.01"] = {
+		"Fuori dal tuo alveare e a portata delle mie armi. Avanti.",
+		"Ho passato lo Scarab Wall per arrivare fin qui. Non aspettarti che mi fermi per te.",
+	},
+	["taq.muse.01"] = {
+		"Sotto la sabbia, sotto il tempio, qualcosa di più vecchio degli dèi di qualunque popolo io conosca sta sognando. I Qiraji si limitano a servirlo.",
+		"Più il tempio scende, più le pareti sembrano cresciute anziché costruite. Come camminare dentro qualcosa di vivo.",
+		"I Qiraji non sono mai stati altro che un'arma, dice il Cenarion Circle. La mano che la impugna è quaggiù, sul fondo.",
+	},
+	["taq.muse.02"] = {
+		"si ferma in una sala di pietra curva e nervata; molto più in basso, un battito lento attraversa il pavimento come quello di un cuore.",
+		"si scuote la sabbia dalla manica e guarda giù per il lungo passaggio buio, dove le pareti luccicano come se respirassero.",
+	},
+	["taq.victory.01"] = {
+		"A terra, e le pareti continuano a pulsare come se niente fosse. Questo posto non piange i suoi.",
+		"Uno in meno. Il tempio non se ne accorgerà: nel buio ne ha a migliaia.",
+	},
+	["wsg.battle.01"] = {
+		"Da questa gola non passi. Non finché ci sono io.",
+		"Girati e torna di corsa alla tua base. È l'unico modo per restare in piedi.",
+		"Vuoi la bandiera? Prima devi passare da me.",
+	},
+	["wsg.lowhp.01"] = {
+		"Non adesso, non con la bandiera ancora là fuori.",
+		"Mi restano gli avanzi, ma la gola non te la lascio.",
+	},
+	["wsg.muse.01"] = {
+		"Due basi, una gola, due bandiere. Tutta la lite per Ashenvale, piegata così piccola da poterla attraversare di corsa.",
+		"Avanti e indietro per la gola, con un pezzo di stoffa portato come una corona. Eppure sembra che conti davvero.",
+		"Gli alberi ai margini della gola hanno visto questa lotta mille volte. Neanche loro scelgono da che parte stare.",
+	},
+	["wsg.muse.02"] = {
+		"controlla le fibbie dell'equipaggiamento al riparo della base, con gli occhi sul lungo tratto scoperto della gola più avanti.",
+		"guarda la gola in tutta la sua lunghezza, dove l'erba è consumata fino alla terra lungo i sentieri che tutti percorrono.",
+	},
+	["wsg.muse.03"] = {
+		"Occhi aperti. C'è sempre qualcuno che prova dal tunnel.",
+		"Tenete sgombro il centro e fate correre la bandiera. Tutto il trucco è questo.",
+	},
+	["wsg.victory.01"] = {
+		"A terra. E adesso, dov'è la bandiera? Sempre, per prima cosa: dov'è la bandiera?",
+		"Uno in meno, almeno per un po'. Conta i secondi, poi cerca chi porta la bandiera.",
+		"Bene. Un paio di mani in meno fra la bandiera e casa.",
+	},
 ]==])

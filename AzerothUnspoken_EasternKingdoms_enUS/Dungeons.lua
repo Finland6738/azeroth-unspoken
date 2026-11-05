@@ -382,4 +382,150 @@ AU:RegisterRegionalTexts("eastern", "enUS", "eastern_dungeons", [==[
 		"Silence. The old stone has seen a thousand fights like this one and kept none of them.",
 		"Done. The vault doesn't notice. It was here before the fight and it'll be here long after.",
 	},
+	["abg.battle.01"] = {
+		"This banner stays the color it is.",
+		"You want this base? Then pay for it.",
+		"Step away from the banner. Nobody takes it while I'm here.",
+	},
+	["abg.lowhp.01"] = {
+		"Not yet. Somebody has to hold this base until help comes.",
+		"Hit, not beaten. The banner's still up.",
+	},
+	["abg.muse.01"] = {
+		"Five places worth holding: a stable, a farm, a forge, a mill and a mine. Strange how every war comes down to bread, iron and timber.",
+		"This was good farmland once. Now it's a game board, and the pieces carry swords.",
+		"From the mill on the hill you can see the whole basin: every banner, every runner, every bad decision.",
+	},
+	["abg.muse.02"] = {
+		"watches the banners across the basin change color one by one, as if the whole valley were breathing in and out.",
+		"pauses at the edge of the road, eyes moving from banner to banner across the valley.",
+	},
+	["abg.muse.03"] = {
+		"Somebody keep an eye on the blacksmith. Everybody forgets the blacksmith.",
+		"Don't all chase the same fight. A base nobody guards is a base gone.",
+	},
+	["abg.victory.01"] = {
+		"Down. Check the banner, then check the road.",
+		"That's one. Now: what color is the banner?",
+		"Clear, for a moment. In this valley a moment is all anyone ever gets.",
+	},
+	["avl.battle.01"] = {
+		"This road is held. Turn back, or end up in the snow.",
+		"You won't reach the general by going through me.",
+		"One more step up this valley costs you everything. Take it, then.",
+	},
+	["avl.lowhp.01"] = {
+		"Hold on. The snow here is soft, but I'm not lying down in it.",
+		"Not here. The valley is long, and I mean to see the end of it.",
+	},
+	["avl.muse.01"] = {
+		"A whole valley of snow and towers, and two armies who both swear it was theirs first. The mountains don't care whose it was.",
+		"Towers, bunkers, graveyards, mines. Taking this valley isn't one battle; it's a long, cold season of them.",
+		"The fight here goes on for hours, up and down the same frozen road. Some battles are won by forgetting how tired you are.",
+	},
+	["avl.muse.02"] = {
+		"blows into cupped hands and squints down the long white valley, where the far towers stand dark against the snowfields.",
+		"stamps the cold out of {g:his|her} feet and looks up at the mountainsides, white and silent above the noise of the battle.",
+	},
+	["avl.muse.03"] = {
+		"Snow to the knees and an army at each end. Lovely spot for a picnic.",
+		"Whoever planned this war never had to march it on foot.",
+	},
+	["avl.victory.01"] = {
+		"straightens up from the fight, breath smoking in the cold, and looks for where the battle has moved on to.",
+		"kicks snow over the dark stains on the trampled ground and moves on down the valley.",
+		"leans on a fence post, gulping cold air, while the noise of fighting carries up from further down the valley.",
+	},
+	["bwl.battle.01"] = {
+		"You serve a dragon who'd eat you on a slow day. Step aside or fall here.",
+		"Nefarian's servants, every one. Come and earn your keep.",
+		"This far up, and you think you'll be the one to stop me?",
+	},
+	["bwl.lowhp.01"] = {
+		"Not in a dragon's workshop. I won't end up as somebody's spare parts.",
+		"Hold on. Whatever Nefarian does with the fallen, I don't want to find out.",
+	},
+	["bwl.muse.01"] = {
+		"Nefarian keeps his lair on top of the mountain's fire, and everything that serves him on the stairs below.",
+		"Somewhere up here Nefarian breeds dragons of every color into a single one. The thought alone turns the stomach.",
+		"This place has the tidy cruelty of a workshop. Cages, vats, the smell of something cooked too long. Dragons were made here, and not gently.",
+	},
+	["bwl.muse.02"] = {
+		"looks up at the high black vaults, where the scrape of claws on stone comes and goes like a slow tide.",
+		"catches the smell of scorched scales and old smoke drifting down the corridor, and tightens {g:his|her} grip.",
+	},
+	["bwl.muse.03"] = {
+		"A dragon with a laboratory. I liked them better when they just lay about on gold.",
+		"Goblin engineers working for a dragon. I'd pay good money to read that contract.",
+	},
+	["bwl.victory.01"] = {
+		"steps over the fallen, careful of the scorched floor, and looks ahead to the next black doorway.",
+		"lets out a long breath as the echoes die away down the dark stone halls, where something larger is surely listening.",
+		"wipes soot from {g:his|her} face with the back of a glove; the lair is quiet, but only for now.",
+	},
+	["mc.battle.01"] = {
+		"Burn as hot as you like. I'm not going back up with this unfinished.",
+		"Over here, ember. Let's see which of us cools first.",
+	},
+	["mc.battle.02"] = {
+		"Watch the floor, not just the foe. Down here the ground fights too.",
+		"Mind the lava at my back. One step wrong and the fight won't matter.",
+	},
+	["mc.encounter_end.01"] = {
+		"{encounter} is done. The heat hasn't dropped a single degree, but something down here just got quieter.",
+		"{encounter} won't burn for anyone again. This is one fight I'll remember by the heat alone.",
+	},
+	["mc.lowhp.01"] = {
+		"Not here. I won't be one more scorch mark on this floor.",
+		"I've come too deep to burn out now.",
+	},
+	["mc.muse.01"] = {
+		"This is where Ragnaros lives, under Blackrock, among rivers of stone gone liquid. The world was never meant to have a cellar like this.",
+		"Rivers of molten rock, walls that glow from inside, air that shimmers. Past all of it, the Firelord waits.",
+		"The elementals here were old when the first dwarf swung a pick. To them I'm hardly a foe, just a spark that hasn't gone out yet.",
+	},
+	["mc.muse.02"] = {
+		"wipes sweat from {g:his|her} eyes with the back of a wrist; the heat comes off the lava in waves that make the far wall swim.",
+		"watches a slow river of molten rock slide past, close enough to feel it pull at the skin of {g:his|her} face.",
+		"breathes through a cloth against the sulfur, eyes narrowed at the glare rising from below.",
+	},
+	["mc.muse.03"] = {
+		"Bring a waterskin, they said. They meant bring ten.",
+		"Next time anyone grumbles about the heat of the desert, I'm bringing them down here.",
+		"Well, nobody can say this place is drafty.",
+	},
+	["mc.subzone_enter.01"] = {
+		"moves deeper into the Core, where the passages open on caverns lit red from below and the rock is warm through the boots.",
+		"passes into another hall of the burning deep, the air thick with sulfur and the roar of moving lava.",
+	},
+	["mc.victory.01"] = {
+		"steps back as the fallen thing hisses and smokes, its glow dying to a dull red and then to nothing.",
+		"lowers {g:his|her} weapon, still hot to the touch, and waits for the hissing to stop.",
+	},
+	["mc.victory.02"] = {
+		"Put out. If only the rest of this place would take the hint.",
+		"One fire fewer. The rest of the mountain doesn't seem to have noticed.",
+	},
+	["nax.muse.01"] = {
+		"A whole necropolis hanging in the sky over the Plaguelands, and I'm inside it. The floor is cold enough to feel through the boots.",
+		"Kel'Thuzad's citadel. Every corridor smells of the slab and the stitching needle.",
+		"Here the dead are not kept, they are made, with care and by the hundred. The Plaguelands below are only where they're sent to walk.",
+	},
+	["zg.battle.01"] = {
+		"Your blood god can wait his turn. You're first.",
+		"Come out of the green, then. I'm not here for the scenery.",
+	},
+	["zg.muse.01"] = {
+		"The old Gurubashi capital, overgrown and stirring again. Its priests want their blood god back, and they aren't asking politely.",
+		"Vines over the steps, snakes in the vines, priests at the top of the steps. Hakkar's city is waking, and the jungle keeps very still around it.",
+		"High on these temples, the priests are trying to make a god out of blood. The air already tastes of it.",
+	},
+	["zg.muse.02"] = {
+		"Bats, tigers, raptors and priests who bleed on purpose. Stranglethorn saved all its best for last.",
+		"Every vine in this place could be a snake. About half of them are.",
+	},
+	["zg.victory.01"] = {
+		"listens as the noise of the fight fades into the jungle, while the drums higher up beat on without missing a stroke.",
+		"steps back onto the old stone path, brushing vines from {g:his|her} shoulders, and looks up toward the temples.",
+	},
 ]==])

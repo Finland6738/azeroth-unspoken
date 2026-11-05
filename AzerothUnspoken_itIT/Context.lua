@@ -683,4 +683,12 @@ NS:AddTexts("itIT", {
 		"Un duello? Ah! Vieni, allora. Ci andrò piano. Forse.",
 		"Vuoi ballare con un troll? D'accordo. Ma quando perdi, non dare la colpa agli spiriti.",
 	},
+	["encounter_end.w04.001"] = {
+		"Fatta, con {encounter}. Qualcuno guardi se per terra luccica qualcosa.",
+		"Con {encounter} abbiamo chiuso. Nessuno tocchi niente finché non abbiamo ripreso fiato.",
+	},
+	["encounter_end.w04.002"] = {
+		"Tutti a terra, e di nuovo silenzio. In piedi. Contiamoci. Ragioniamo.",
+		"A terra, tutti quanti. L'orgoglio fa più male del resto. Si riprova.",
+	},
 }, "base_context")

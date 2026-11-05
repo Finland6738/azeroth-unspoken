@@ -1143,4 +1143,54 @@ NS:AddTexts("itIT", {
 		"{other}! Ecco una persona amica. La giornata si è appena fatta più leggera.",
 		"Ah, {other}. La brava gente è rara come l'acqua dolce in una lunga traversata.",
 	},
+	["ally_death.w04.001"] = {
+		"{other} è a terra. Il lutto si fa sulla via del ritorno, non prima.",
+		"{other}. L'ho visto, ed ero troppo {g:lontano|lontana}. Occhi avanti.",
+		"Adesso non c'è spazio per questo. Lo troverò dopo, {other}. Te lo prometto.",
+	},
+	["ally_death.w04.002"] = {
+		"C'è un vuoto dove stava {other}. Lo sentiamo tutti nello stesso istante.",
+		"Uno di meno. Gli altri stringono le file senza che serva dirlo.",
+		"Il posto di {other} è vuoto. Lo sguardo continua a tornarci.",
+	},
+	["ally_death.w04.003"] = {
+		"A terra non vuol dire perduto. Non sempre. Non ancora, {other}.",
+		"In questo mondo chi cade a volte si rialza. Ci conto, {other}.",
+		"Resisti, {other}, ovunque tu sia. Ci sono strade per tornare.",
+	},
+	["ally_death.w04.004"] = {
+		"Potevo esserci io. La prossima volta, magari, ci sarò.",
+		"Oggi {other}. Domani chi? Meglio non finire il pensiero.",
+		"Sceglie senza guardare. Stavolta {other}. La prossima, chiunque.",
+	},
+	["ally_death.w04.005"] = {
+		"Dovevo essere più {g:vicino|vicina}. Lo sarò per gli altri.",
+		"Non ho potuto coprire {other}. Posso coprire chi resta.",
+		"Troppo tardi per {other}. Non per gli altri. Muoviti.",
+	},
+	["ally_death.w04.006"] = {
+		"Quello che ha fatto questo a {other} è roba mia.",
+		"Quello era {other}. Qualcuno ne risponderà.",
+		"Questa la sistemo io per te, {other}. Subito.",
+	},
+	["pet_call.w04.001"] = {
+		"{pet} si scuote di dosso il sonno e mi raggiunge.",
+		"Ecco {pet}, che mi squadra come se fossi io a tornare da chissà dove.",
+		"{pet} arriva con quell'aria: allora, dove si va?",
+	},
+	["pet_call.w04.002"] = {
+		"Di nuovo {pet}. Fingiamo tutti e due che sia una collaborazione.",
+		"{pet} squadra il mondo con l'aria di chi aspetta delle scuse. Non ha tutti i torti.",
+		"{pet} risponde alla chiamata come un esattore: puntuale e sgradito.",
+	},
+	["pet_call.w04.003"] = {
+		"{pet} è di ottimo umore. Difficile non farsene contagiare.",
+		"Di buon umore, {pet}? Almeno uno di noi due lo è.",
+		"{pet} arriva con l'aria di chi è soddisfatto di tutto. Avrei da imparare.",
+	},
+	["pet_dismiss.w04.001"] = {
+		"Via, {pet}. Ti chiamo quando mi servi.",
+		"Basta così, {pet}. Il prossimo tratto lo faccio da me.",
+		"Puoi andare, {pet}. Non allontanarti troppo, ovunque tu vada.",
+	},
 }, "base_relations")

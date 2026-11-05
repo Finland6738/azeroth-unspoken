@@ -8,6 +8,71 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W04: the endgame zones, the raids and battlegrounds, and the end of the soft need (issue #138)
+
+The fourth content wave of [docs/content/WAVES.md](docs/content/WAVES.md) (its pools were the first row of the table
+after W03: the rest of the soft need of [ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md),
+then the strict need of the generic lines and of Orgrimmar and Stormwind City, with the tiers mixed by share of
+[ADR 0051](docs/adr/0051-tiers-mixed-by-share.md)): **1,223 intentions, 3,033 texts per language** (6,066 in both),
+written by twelve parallel writer subagents (authors `ai-w04-<unit>`) and passed through the archive (drafts,
+`cli dups --state draft` with no exact and no near duplicate, submit, owner sample, approve, export; the round trip is
+an empty diff). No literary piece and no `tier` field. The addon goes from 5,165 to **6,388 intentions** and from
+12,369 to **15,402 texts per language**.
+
+- **Added: five regional packs, one per area**, every zone contested, so every line writes `zone` and `faction`:
+  `eastern_westernplaguelands` (`wpl.`), `kalimdor_felwood` (`fel.`), `kalimdor_ungorocrater` (`ung.`),
+  `kalimdor_silithus` (`sil.`) and `kalimdor_winterspring` (`wsp.`), Alliance and Horde pools: **377 intentions,
+  900 texts per language**; and the Horde pool of the Eastern Plaguelands in its W03 pack (`epl.h.`, 37 intentions, 90
+  texts). Every zone of Kalimdor now has an area pack of its own.
+- **Added: the first lines of the raids and battlegrounds**, 51 intentions and 122 texts per language: Molten Core,
+  Blackwing Lair, Zul'Gurub and Naxxramas, Arathi Basin and Alterac Valley in `eastern_dungeons`; Onyxia's Lair, the
+  Ruins of Ahn'Qiraj, Ahn'Qiraj and Warsong Gulch in `kalimdor_dungeons` (`zone = "<instance>"`, no faction: a
+  battleground line never assumes the character's side, a raid line never says "we").
+- **Added: Orgrimmar and Stormwind City**, 445 intentions and 1,145 texts per language in their packs: the muse of
+  the cities, quests, flights, rest, weather, greetings, reputation, and the first city lines of the NPC dialogues
+  (`npcd_innkeeper_*`, `npcd_merchant_*`, `npcd_guard_*`, `npcd_trainer_*`, `npcd_flightmaster_*`).
+- **Added: generic lines**, 313 intentions and 776 texts per language with no layer condition (true for any
+  character, anywhere): 383 texts of `muse` in `base_monologues` and `base_exploration`, quests, subzones, flights,
+  weather changes and landmarks in `base_world`, fights in `base_combat`, `base_spells`, `base_relations` and
+  `base_context`.
+- **Added: 17 landmarks** in `Data/Landmarks.lua` for these zones (Chillwind Camp, the Bulwark, Andorhal, Caer
+  Darrow, Talonbranch Glade, Bloodvenom Post, the Emerald Sanctuary, Jaedenar, Marshal's Refuge, Fire Plume Ridge, the
+  Lakkari Tar Pits, Cenarion Hold, the Scarab Wall, Southwind Village, Everlook, Starfall Village, Lake Kel'Theril).
+- **Fixed at integration** (the combined check of every writer's files, and the sample read of each writer): one near
+  pair across writers (the merchants' farewells of the two capitals); the Italian name of Stormwind and Ironforge kept
+  in English ("Roccavento", "Forgiardente") in the Stormwind lines, as the brief asks and the other writers did; a
+  Horde line of the Eastern Plaguelands that said the Horde had no farms in Lordaeron (untrue for the Forsaken); one
+  Italian variant that added a "somewhere" the English did not say; the generic `pet_dismiss` line written with no
+  condition now carries `combat = false` (every line of `base_relations` declares one).
+- **The gap after W04** (per language): soft need 8,893, gap **0** (was 1,110): the soft need is met; strict need
+  28,938, gap **16,478** (was 19,480); random need 270,686, gap **256,682** (was 259,715). **89 waves** left (the next
+  is the first row of WAVES.md: the strict need of the other capitals and of the first classes).
+- **Measured.** `Tests/bench_scale.py --sizes 0`: memory 17.1 → 19.5 MB, pick 24.1 → 34.4 thousand Lua instructions
+  (p95 62.1 → 167.0). `Tests/bench_trial.py --long 20` (seed 1; the wave adds lines to Orgrimmar and
+  Stormwind City): first exact repetition orc warrior 4.42 → 8.60 h, troll mage 5.88 → 7.86 h, human paladin 5.76 →
+  6.59 h; repeated share 11.3 → 7.9%, 9.3 → 7.6%, 14.2 → 10.1%. The wall-clock pick of the simulated sessions is
+  slower (see the engine finding): the M2 check of `run_tests` (mean pick under 2 ms) passed at 1.75 ms in one run and
+  failed at 2.47 ms in another on a busy machine, where main itself measures 2.1-2.5 ms.
+- **Tests:** the counts (the combat, context and companion lines too); the C0b test of the sources visits all
+  thirty-nine areas with lines (98 sources); the frames test still travels to Silithus, which now has a pack of its
+  own, so it first lets the drop of that area run over its frames before it looks at the half-built Durotar; the need
+  report test accepts a first wave of the strict need once the soft need is met, and expects the lines of Molten Core.
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W04.md](docs/content/reviews/W04.md) (24
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** subzone, landmark and target names are those of the English Classic client, not yet confirmed in
+  Forever (#36). The raid and battleground lines are in the dungeon packs of their continent: inside an instance the
+  continent is read from the map's parents, not verified in the client, and if it reads as none the packs built before
+  entering stay. A battleground is often joined from the other continent (Warsong Gulch from the Eastern Kingdoms),
+  and then its lines are silent until the continent is read. The Horde has no flight master in the Western
+  Plaguelands in Classic: its journey lines are arrivals by road.
+- **Engine finding (not fixed in the wave).** The pick cost of the scale bench grew by 43% on average and 2.7 times at
+  p95 with this wave, much more than W03 (no change with 1,081 intentions): the new lines are generic (the `muse` pool
+  went from 65 to 448 texts) and in Orgrimmar, whose pack is built with Durotar, the area the bench plays, so the
+  generic level of every pick and the rules of the built area hold many more candidates. The pick seems to grow with the size of the pools of the event it scores; with the
+  waves left (most of them generic, capital and class pools of hundreds or thousands of texts) it should be measured
+  against the R1 targets before the pools grow much further.
+
 ### Content wave W03: fifteen contested zones, the other side of Stranglethorn, and the first lines of the dungeons (issue #138)
 
 The third content wave of [docs/content/WAVES.md](docs/content/WAVES.md) (its pools were the first row of the table

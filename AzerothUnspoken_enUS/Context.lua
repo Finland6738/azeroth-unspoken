@@ -683,4 +683,12 @@ NS:AddTexts("enUS", {
 		"A duel? Ha! Come on, then. I'll go easy on you. Maybe.",
 		"You want to dance with a troll? Okay. Don't blame the spirits when you lose.",
 	},
+	["encounter_end.w04.001"] = {
+		"{encounter}, done. Somebody check the floor for anything shiny.",
+		"That's {encounter} dealt with. Nobody touch anything until we've caught our breath.",
+	},
+	["encounter_end.w04.002"] = {
+		"Everyone down, and everything quiet again. Get up. Count heads. Think.",
+		"Down, all of us. The pride hurts worse than the rest. We go again.",
+	},
 }, "base_context")

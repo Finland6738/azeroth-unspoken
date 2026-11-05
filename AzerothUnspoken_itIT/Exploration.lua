@@ -1441,4 +1441,193 @@ NS:AddTexts("itIT", {
 		"{subzone}, in piena luce. Mi prendo il tempo di guardare bene: la luce non sarà sempre così generosa.",
 		"{subzone}. Giorno pieno e nessuna fretta. Per una volta le ore sembrano stare dalla mia parte.",
 	},
+	["muse.w04.001"] = {
+		"Piede sinistro, piede destro. Le grandi imprese che ho sentito raccontare erano solo questo, con più tamburi.",
+		"Togli le canzoni a una marcia eroica e resta qualcuno che mette uno stivale davanti all'altro.",
+		"Ogni strada finita in una canzone è stata percorsa con passi qualunque, uno dietro l'altro.",
+	},
+	["muse.w04.002"] = {
+		"La strada non mi chiede mai dove vado. È l'unica a non farlo.",
+		"La strada non domanda il perché. Corre avanti per conto suo e mi lascia andarle dietro.",
+	},
+	["muse.w04.003"] = {
+		"Le scorciatoie. Tutte quelle che ho preso erano giri lunghi con un nome migliore.",
+		"Basta scorciatoie. Sono deviazioni che mentono sulla propria lunghezza.",
+		"Una scorciatoia è una promessa fatta da qualcuno che non l'ha mai percorsa.",
+	},
+	["muse.w04.004"] = {
+		"Certe strade di questo mondo sono più vecchie di qualsiasi regno che le rivendica. Sopravvivranno anche ai prossimi.",
+		"I regni mettono il proprio nome sulle strade come i bambini incidono un tavolo. La strada nemmeno se ne accorge.",
+		"Sotto ogni strada ce n'è una più vecchia, e sotto quella le prime orme di qualcuno.",
+	},
+	["muse.w04.005"] = {
+		"Non mi serve sapere dove finisce. Mi basta il prossimo miglio, e quello di solito lo conosco.",
+		"La meta può restare un mistero. Il tratto che ho davanti è tutto quello che ho mai dovuto gestire.",
+	},
+	["muse.w04.006"] = {
+		"Camminare è facile. Fa male fermarsi, quando le gambe si ricordano cosa hanno fatto finora.",
+		"Le gambe non protestano finché vanno. Si tengono tutto per quando mi fermo.",
+		"Finché vai avanti il corpo si dimentica. Fermati e ti presenta il conto intero.",
+	},
+	["muse.w04.007"] = {
+		"si volta a guardare il cammino fatto, come per misurarlo.",
+		"lancia un'occhiata lunga alle proprie spalle, a soppesare la distanza percorsa.",
+	},
+	["muse.w04.008"] = {
+		"Metà delle facce che incrocio per strada non le rivedrò mai più. Ho smesso di trovarlo triste. Quasi.",
+		"La gente incontrata in viaggio è come le pagine di un libro altrui. Ne leggo una riga e lo restituisco.",
+		"Tanti sconosciuti, ognuno diretto in un posto che non saprò mai. Ci si sfiora come barche senza lanterna.",
+	},
+	["muse.w04.009"] = {
+		"Bene. Avanti, allora. Le strade non si percorrono da sole.",
+		"Su. Niente si è mai avvicinato a forza di guardarlo.",
+		"In piedi e via. La distanza non si accorcia per buona educazione.",
+	},
+	["muse.w04.010"] = {
+		"Ogni mappa che ho avuto l'ha disegnata qualcuno che non ha mai dovuto percorrerla.",
+		"Le mappe sono bellissime. Piatte, asciutte, e lì sopra niente ti morde.",
+	},
+	["muse.w04.011"] = {
+		"Dopo l'ultima collina ce n'è sempre un'altra. Spero che resti vero per sempre.",
+		"Il mondo tiene un orizzonte di riserva dietro ogni orizzonte. Meglio così: odierei finirli.",
+	},
+	["muse.w04.012"] = {
+		"Trova un passo che potresti tenere tutto il giorno, e tienilo. È quasi tutto quello che so sul viaggiare.",
+		"Mai il passo più svelto. Quello che reggi fino all'arrivo. Il resto sono dettagli.",
+	},
+	["muse.w04.017"] = {
+		"si tira lo zaino più in alto sulla schiena e ascolta che cosa tintinna.",
+		"sposta il peso dello zaino da una spalla all'altra, aggrottando la fronte per l'equilibrio.",
+		"si tasta le tasche una dopo l'altra, come fa chi sa benissimo cosa c'è dentro.",
+	},
+	["muse.w04.022"] = {
+		"Niente di quello che cucino in viaggio sa di altro che fumo e fretta.",
+		"Il cibo di strada ha un solo sapore, qualunque cosa finisca in pentola: fumo, con un retrogusto di stanchezza.",
+	},
+	["muse.w04.025"] = {
+		"Mangia quando puoi, bevi quando puoi, siediti quando puoi. Il resto conta meno di quanto si dica.",
+		"Prima regola del viaggio: mai rinunciare all'acqua pulita. Seconda regola: vedi la prima.",
+	},
+	["muse.w04.026"] = {
+		"spezza una crosta in due, valuta le metà e comincia dalla più grande.",
+		"ripesca un tozzo di pane da una tasca, lo esamina a lungo e lo mangia lo stesso.",
+		"mastica qualcosa di coriaceo con cupa ostinazione, la mascella che lavora come una macina.",
+	},
+	["muse.w04.030"] = {
+		"soppesa la borsa in una mano, sospira e la rimette al suo posto.",
+		"si versa qualche moneta nel palmo, le guarda come si guarda chi ha tradito la fiducia, e le rimette via.",
+	},
+	["muse.w04.044"] = {
+		"si ferma a metà passo e ascolta, la testa piegata di lato, finché il momento non passa.",
+		"si immobilizza per un respiro, gli occhi che frugano intorno, poi lascia andare piano il fiato.",
+		"si ferma, ascolta qualcosa che sembra sentire solo {g:lui|lei}, e lascia perdere.",
+	},
+	["muse.w04.047"] = {
+		"si sfiora il petto con due dita, un piccolo gesto privato che ha un senso solo per {g:lui|lei}.",
+		"traccia un segno rapido e minuto all'altezza del cuore, troppo piccolo perché altri lo capiscano.",
+	},
+	["muse.w04.054"] = {
+		"fa ruotare le spalle finché qualcosa dentro non scrocchia con soddisfazione.",
+		"si stira con una smorfia, saggiando ogni articolazione come per contare cosa funziona ancora.",
+		"fa girare piano un polso indolenzito, la mascella serrata.",
+	},
+	["muse.w04.057"] = {
+		"Ogni sconosciuto porta una storia più pesante del suo zaino. Posso solo provare a indovinarla.",
+		"Tutti quelli che incrocio hanno un posto dove andare e qualcuno a cui pensare. Fa sentire piccoli, a lasciarlo fare.",
+	},
+	["muse.w04.058"] = {
+		"Per strada, un cenno a tutti. Metà ricambiano, e l'altra metà te la ricordi.",
+		"Un cenno del capo non costa niente. Ne regalo a chiunque, e qualcuno me lo ricambia.",
+	},
+	["muse.w04.081"] = {
+		"Non mi sono {g:perso|persa}. Sto esplorando a fondo la direzione sbagliata.",
+		"Smarrimento? No. Sto facendo un rilievo accuratissimo del posto dove non dovrei essere.",
+		"So benissimo dove sono. È tutto il resto che è sparito.",
+	},
+	["muse.w04.119"] = {
+		"La buona compagnia vale una deviazione. La cattiva ne vale due.",
+		"Per una buona compagnia allungo la strada di un miglio. Per evitarne una cattiva, di due.",
+	},
+	["muse.w04.126"] = {
+		"tamburella le dita sulla cintura, tenendo il tempo di una musica che sente solo {g:lui|lei}.",
+		"batte un ritmo sulla coscia, dietro a una canzone che non arriva mai fino alle labbra.",
+	},
+	["muse.w04.127"] = {
+		"rigira tra le dita qualcosa di piccolo, senza guardarlo.",
+		"fissa il vuoto per un po', il pollice che scorre piano lungo una cinghia.",
+		"tormenta distrattamente un filo scucito, con lo sguardo lontanissimo.",
+	},
+	["muse.w04.128"] = {
+		"inspira a lungo dal naso ed espira piano, come chi posa qualcosa a terra.",
+		"butta fuori il fiato con forza, e le spalle scendono di un dito.",
+		"prende un respiro profondo e lo trattiene un attimo prima di lasciarlo andare.",
+	},
+	["muse.w04.129"] = {
+		"mormora un elenco a mezza voce, spuntando le voci sulle dita.",
+		"conta qualcosa sulle dita, aggrotta la fronte e ricomincia da capo.",
+	},
+	["muse.w04.130"] = {
+		"si raschia qualcosa di sgradevole dalla suola di uno stivale, senza guardare troppo da vicino cosa sia.",
+		"esamina la suola di uno stivale, ci trova un buco nuovo e lo guarda con aria tradita.",
+		"solleva uno stivale, ne valuta le condizioni e lo rimette giù con un grugnito rassegnato.",
+	},
+	["muse.w04.131"] = {
+		"resta in silenzio a lungo, come se ascoltasse qualcosa di molto lontano.",
+		"tace, e il silenzio sembra fatto apposta per {g:lui|lei}.",
+		"lascia che le voci nella testa si spengano, e si tiene la quiete che resta.",
+	},
+	["muse.w04.132"] = {
+		"borbotta qualcosa di irripetibile all'indirizzo di nessuno in particolare, e sembra stare meglio.",
+		"rivolge al mondo intero una parolaccia breve, e pare dirla con affetto.",
+	},
+	["muse.w04.133"] = {
+		"sfiora l'arma senza guardarla, solo per accertarsi che sia dove deve stare.",
+		"posa un attimo la mano sull'arma, come certi toccano lo stipite di una porta per buona sorte.",
+		"controlla a tentoni che tutto ciò che deve essere a portata di mano lo sia davvero.",
+	},
+	["muse.w04.134"] = {
+		"tace a lungo, con l'aria di chi rilegge una vecchia lettera che vede solo {g:lui|lei}.",
+		"si raccoglie in sé per un po', come se ripercorresse una strada che ricorda solo {g:lui|lei}.",
+	},
+	["muse.w04.135"] = {
+		"si annusa una manica, fa una smorfia e abbassa visibilmente le proprie pretese.",
+		"sente il proprio odore, trasale e mantiene un contegno di grande dignità.",
+	},
+	["muse.w04.136"] = {
+		"si siede un momento, con il sospiro profondo di chi se l'è guadagnato.",
+		"si cala giù per un breve riposo, con le articolazioni che protestano fino in fondo.",
+		"si concede un po' di riposo, le gambe allungate e gli stivali incrociati alle caviglie.",
+	},
+	["muse.w04.137"] = {
+		"armeggia con una fibbia testarda, canticchiando stonato, finché quella non si arrende.",
+		"ingaggia una breve lotta con una cinghia attorcigliata, e la vince di misura.",
+		"tira un nodo che non vuole saperne di sciogliersi, lo rimprovera e ci prova con i denti.",
+	},
+	["muse.w04.138"] = {
+		"piega le dita una per una, come per verificare che rispondano ancora tutte.",
+		"apre e chiude piano le mani, guardandole come fossero quelle di un amico.",
+	},
+	["muse.w04.139"] = {
+		"gira lentamente su se {g:stesso|stessa}, prendendo le misure a tutto quello che ha intorno.",
+		"si guarda attorno con l'attenzione senza fretta di chi è abituato ai posti sconosciuti.",
+		"fa l'inventario di ciò che ha intorno con un'unica occhiata lunga e paziente.",
+	},
+	["muse.w04.144"] = {
+		"si concede un momento senza alcuna fretta, come se il mondo avesse accettato di aspettare.",
+		"lascia cadere le spalle e respira, e basta, senza nessuna urgenza di essere altrove.",
+	},
+	["muse.w04.148"] = {
+		"Di strada ce n'è ancora tanta. Anche di me. Vediamo chi finisce prima.",
+		"Ancora molta strada. Bene. Nemmeno io ho finito.",
+		"La strada non ha chiuso i conti con me, e io non li ho chiusi con lei.",
+	},
+	["muse.w04.150"] = {
+		"Buona fortuna a chiunque stia andando dove non vorrebbe. Conosco la sensazione.",
+		"A tutti quelli che sono in viaggio in questo momento: stivali sani e borsa ben stretta.",
+	},
+	["muse.w04.151"] = {
+		"Alla strada che mi aspetta, e a tutti quelli che l'hanno consumata prima di me.",
+		"I miei omaggi alle miglia che ho alle spalle. Sono state oneste, se non gentili.",
+		"A chi ha camminato per primo su questo mondo, lasciando il sentiero a tutti gli altri.",
+	},
 }, "base_exploration")

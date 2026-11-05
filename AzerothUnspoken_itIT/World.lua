@@ -839,4 +839,399 @@ NS:AddTexts("itIT", {
 		"alza gli occhi mentre il cielo cambia umore, poi stringe una cinghia e riprende a camminare senza commenti.",
 		"guarda il cielo che cambia, si sistema lo zaino più in alto sulle spalle e prosegue.",
 	},
+	["journey.w04.001"] = {
+		"Non resta che stare {g:seduto|seduta} e lasciarsi portare. Avevo dimenticato quanto sia raro.",
+		"Per una volta la strada è un problema di qualcun altro. Io mi tengo forte e guardo.",
+		"Niente redini in mano, nessun sentiero da scegliere. Strano quanto riposi non avere voce in capitolo.",
+	},
+	["journey.w04.002"] = {
+		"Piano, piano. Dicono che il trucco sia non guardare giù. Dicono tante cose.",
+		"Ali, cinghie e sotto niente. Ho accettato cose più strane, anche se adesso non me ne viene in mente nessuna.",
+	},
+	["journey.w04.003"] = {
+		"si sistema in sella mentre le ali trovano il loro ritmo, e il suolo laggiù comincia a sembrare affare di qualcun altro.",
+		"stringe l'imbracatura mentre il battito di grandi ali {g:lo|la} solleva lontano dal posatoio.",
+		"sale su colpi d'ala regolari, e tutto ciò che un momento fa era grande diventa qualcosa da coprire con un pollice.",
+	},
+	["journey.w04.004"] = {
+		"Quassù nessuno può chiedermi niente. Il soffio dell'aria si porta via ogni voce.",
+		"Da quassù ogni guaio là sotto sembra della stessa misura. Piccolo, e di qualcun altro.",
+		"Per un po' nessuno può raggiungermi. È quanto di più vicino al silenzio mi sarà concesso.",
+	},
+	["journey.w04.005"] = {
+		"Si parte! Chi ha caricato il mio stomaco controlli che sia ancora a bordo.",
+		"E su! Se urlo, è entusiasmo. Più o meno.",
+	},
+	["journey.w04.006"] = {
+		"Le mie gambe se lo sono guadagnato. Che per un po' siano le ali a camminare.",
+		"Bene. Ogni lega fatta quassù è una lega con cui i piedi non devono discutere.",
+	},
+	["journey.w04.007"] = {
+		"Da terra il mondo non sembra mai così semplice. So che è un inganno. Me lo godo lo stesso.",
+		"Quassù tutto quello che c'è sotto combacia, come se qualcuno l'avesse progettato. Non è così, ma è bello far finta.",
+	},
+	["journey.w04.008"] = {
+		"si piega nella prima ampia virata senza volerlo, e poi finge di averlo fatto apposta.",
+		"tiene una mano sulla cinghia e l'altra libera, come per salutare qualcosa laggiù, e non lo fa.",
+	},
+	["journey.w04.009"] = {
+		"Il terreno mi torna incontro, come fa sempre. Grazie, terreno.",
+		"Giù. Le ginocchia non ne sono ancora convinte, ma il resto di me è contento.",
+		"Prima i piedi, poi il resto di me li raggiunge. {g:Atterrato|Atterrata}.",
+	},
+	["journey.w04.010"] = {
+		"scivola giù dalla sella e resta un momento immobile, lasciando che il ronzio delle ali si spenga nelle orecchie.",
+		"scende con le gambe rigide, e si scioglie il crampo da una gamba prima di fidarsi a caricarci il peso.",
+		"atterra, si slaccia le cinghie e lancia al cielo un'ultima occhiata da sopra la spalla, come per accertarsi che resti lassù.",
+	},
+	["journey.w04.011"] = {
+		"Dita, piedi, zaino. Tutto presente. Lo chiamerei un buon volo.",
+		"A terra tutto d'un pezzo: è l'unico giudizio che serve a un volo.",
+		"Ecco. A terra, con tutto attaccato e solo un po' in disordine.",
+	},
+	["journey.w04.012"] = {
+		"Si torna al passo di chi va a piedi. Le cose hanno di nuovo la loro misura, e io pure.",
+		"Da lassù sembrava tutto così in ordine. Quaggiù si torna agli stivali e al giro lungo.",
+	},
+	["journey.w04.013"] = {
+		"Bene, allora. Dov'è il posto più vicino che non si muova sotto i piedi?",
+		"Giù. Adesso indicatemi quello che mi ha portato fin qui.",
+	},
+	["journey.w04.014"] = {
+		"scende al termine del lungo volo con il dolore della sella in ogni giuntura, e si stira finché qualcosa non scricchiola.",
+		"torna a terra dopo la lunga traversata con le giunture rigide, e cammina un po' in piccoli cerchi per ricordarsi come funzionano le gambe.",
+	},
+	["journey.w04.015"] = {
+		"È durato abbastanza perché le gambe presentassero un reclamo. Lo stanno presentando adesso.",
+		"Così tanto cielo alle spalle che la terra sembra una novità.",
+	},
+	["journey.w04.016"] = {
+		"Aria diversa, voci diverse. Niente cambia il quadro intero in fretta come un volo.",
+		"Sono {g:arrivato|arrivata} più in fretta di quanto le mie preoccupazioni potessero seguirmi. Godiamoci il vantaggio finché dura.",
+	},
+	["journey.w04.017"] = {
+		"Le ali tornano da dove sono venute, e restano a me la terra e i miei due piedi. È giusto così.",
+		"Giù, e si torna al vecchio sodalizio: io e la strada.",
+	},
+	["landmark.w04.001"] = {
+		"{landmark}. Un nome che qualcuno ha ritenuto valesse la pena di dare. Il minimo è dedicargli un momento d'attenzione.",
+		"{landmark}. Qualcuno ci teneva abbastanza a questo posto da dargli un nome. Merita sempre un'occhiata.",
+		"Dunque è qui {landmark}. Il posto è più piccolo del suo nome, o più grande. Non ha mai proprio la stessa misura del nome.",
+	},
+	["landmark.w04.002"] = {
+		"osserva {landmark} con uno sguardo lento, come si studia un volto per riconoscerlo in seguito.",
+		"imprime nella memoria l'aspetto di {landmark}, un dettaglio alla volta, nel caso la strada riporti mai fin qui.",
+		"si ferma e si volta piano tutt'intorno, per fissare dove si trova {landmark} rispetto al resto.",
+	},
+	["landmark.w04.003"] = {
+		"{landmark}. Bene, allora esiste: un po' sospettavo che le mappe si inventassero le cose.",
+		"Ah, {landmark}. Esattamente come promesso, più o meno.",
+		"{landmark}. Valeva la strada? Chiedimelo di nuovo quando avrò dato un'occhiata in giro.",
+	},
+	["landmark.w04.004"] = {
+		"{landmark}. Fa piacere avere sulla mappa qualcosa su cui posso mettere il dito.",
+		"{landmark}. Un punto fermo, almeno. Il resto della giornata può sistemarsi attorno.",
+		"{landmark}. Adesso so dove mi trovo, il che è più di quanto potessi dire poco fa.",
+	},
+	["landmark.w04.005"] = {
+		"squadra {landmark} con interesse franco e senza fretta, come si fa con una conoscenza appena fatta.",
+		"giunge a {landmark} e, prima di ogni altra cosa, concede al luogo la cortesia di uno sguardo come si deve.",
+	},
+	["quest_complete.w04.001"] = {
+		"Di nuovo a mani vuote. Strano quanto siano più leggere di quando erano piene degli affari di un altro.",
+		"Non ho più in mano niente che appartenga ad altri. È un buon modo di stare al mondo.",
+		"Le mani sono di nuovo mie. Avevo dimenticato che effetto fa.",
+	},
+	["quest_complete.w04.002"] = {
+		"Fatto. Vorrei che lo si scrivesse da qualche parte, possibilmente a lettere grandi.",
+		"Finito, e nessuno ha dovuto riportarmi a casa in spalla. Segnatevi la data.",
+		"Sistemato. Se si scuce di nuovo, preferirei non saperlo.",
+	},
+	["quest_complete.w04.003"] = {
+		"lascia andare quel che resta dell'incarico in un lungo respiro, e fa ruotare una spalla indolenzita.",
+		"si raddrizza dopo la consegna e per un momento resta lì, senza dovere niente a nessuno.",
+	},
+	["quest_complete.w04.004"] = {
+		"I dettagli se ne vanno già. Fra un mese ricorderò di averlo fatto, e poco del come.",
+		"Strano quanto in fretta un lavoro finito si sfuma ai bordi. Presto sarà una delle tante cose fatte un tempo.",
+		"Presto dimenticherò com'era fatto questo incarico. Il dolore alle gambe me lo ricorderà un giorno o due in più.",
+	},
+	["quest_complete.w04.005"] = {
+		"Avevo dato la mia parola, e ora è mantenuta. Una parola serve solo a questo.",
+		"Avevo detto che l'avrei portato a termine. Così è stato. Non c'è altro da aggiungere.",
+		"Promesso, e consegnato. Che la mia fama si riduca a questo, e mi basta.",
+	},
+	["quest_complete.w04.006"] = {
+		"Ogni volta che ne finisco uno mi dico che era l'ultimo favore. E ogni volta mi racconto una bugia.",
+		"Continuo a dire che smetterò di fare commissioni per gli sconosciuti. Gli sconosciuti continuano ad averne.",
+		"Un altro favore a un altro sconosciuto. Di questo passo conoscerò mezzo mondo dai suoi guai.",
+	},
+	["quest_complete.w04.007"] = {
+		"cerca di avere l'aria modesta, e non ci riesce del tutto.",
+		"indossa per l'occasione un'espressione modesta, che {g:gli|le} sta come un paio di stivali presi in prestito.",
+	},
+	["quest_complete.w04.008"] = {
+		"Un lavoro piccolo, forse. Ma il mondo è fatto soprattutto di lavori piccoli, e qualcuno deve farli bene.",
+		"Nessuno ci comporrà una canzone. Meglio così: le cose che valgono di rado hanno canzoni.",
+		"Non cambierà il mondo. Ne ha cambiato un angolo, per un po', e lì c'ero io.",
+	},
+	["quest_complete.w04.009"] = {
+		"Bene. Questo è depennato. Il resto della lista può aspettare che smettano di farmi male i piedi.",
+		"Bene. Fatto. Che nessuno mi chieda niente per un po'.",
+		"Finito. Chi ha un altro lavoro per me può mettersi in fila.",
+	},
+	["quest_complete.w04.010"] = {
+		"Un incarico è una strada di cui si vede la fine. Questa l'ho percorsa fino in fondo. Le altre curvano ancora fuori vista.",
+		"Ogni cosa che porto a termine è una pietra miliare, e comincio ad averne una lunga fila alle spalle.",
+	},
+	["quest_complete.w04.011"] = {
+		"si passa i palmi sul davanti dell'equipaggiamento, come se l'incarico vi avesse lasciato qualcosa, e va avanti.",
+		"piega piano le dita di una mano, come fa un artigiano alla fine di un lavoro.",
+	},
+	["quest_complete.w04.012"] = {
+		"Sembrano sempre così sorpresi quando la cosa è fatta davvero. Cerco di non prenderla sul personale.",
+		"Quella faccia che fa la gente quando torni a lavoro finito: metà sollievo, metà incredulità. Le colleziono.",
+		"Ogni volta la stessa occhiata: come se un po' si aspettassero di non rivedermi più.",
+	},
+	["quest_complete.w04.013"] = {
+		"Un'altra. Aggiungetela al conto, se qualcuno lo tiene.",
+		"Ecco come si fa. Ricordatevi chi l'ha fatto.",
+		"Scrivetelo. Questa voglio che la si ricordi.",
+	},
+	["quest_complete.w04.014"] = {
+		"Fatto, e nessuno a cui raccontarlo che capirebbe quanto è costato. Va bene così. Lo so io.",
+		"È il silenzio dopo un lavoro finito, quello a cui non mi abituo. Ognuno torna alla sua giornata, e devo farlo anch'io.",
+		"La fine di un incarico è un piccolo momento di solitudine. Passa. Passano sempre.",
+	},
+	["quest_complete.w04.015"] = {
+		"fa un breve cenno formale, di quelli che chiudono un conto fra due parti.",
+		"china il capo una volta, e la faccenda si chiude con la stessa poca cerimonia con cui si era aperta.",
+	},
+	["quest_complete.w04.016"] = {
+		"Bene. Adesso posso tornare a pensare al cibo, cosa che lo stomaco mi suggerisce da un pezzo.",
+		"Un incarico in meno. Lo stomaco ha avuto molta pazienza, e adesso reclama la sua parte.",
+		"Prima l'incarico, poi il resto di me. E il resto di me vorrebbe mangiare.",
+	},
+	["quest_complete.w04.017"] = {
+		"Qualcosa in me è un po' più saldo di quando ho accettato questo incarico. Tengo quello, e lascio il resto.",
+		"Qualunque cosa fossi quando l'ho accettato, adesso sono un po' di più. Non molto. Abbastanza.",
+	},
+	["quest_complete.w04.018"] = {
+		"Niente discorsi. Basterebbero un semplice 'ben fatto' e una sedia.",
+		"Non ringraziatemi tutti insieme. Anzi, non ringraziatemi affatto. Indicatemi solo dove sedermi.",
+		"Per favore, niente cerimonie. Mi accontento di un cenno e di un posto tranquillo.",
+	},
+	["quest_complete.w04.019"] = {
+		"Uno chiuso. Sento già il prossimo che mi tira per la manica.",
+		"Finito, e già la prossima faccenda si schiarisce la voce alle mie spalle.",
+		"È fatta? È fatta. Bene. E adesso, qual era la cosa dopo...",
+	},
+	["quest_complete.w04.020"] = {
+		"batte due colpetti sul fianco dello zaino, piccola abitudine da viandante quando una cosa finisce e l'altra non è ancora cominciata.",
+		"lancia un'ultima occhiata alla strada che l'incarico ha preso, come per fissarla in mente, poi si volta dall'altra parte.",
+	},
+	["quest_complete.w04.021"] = {
+		"So un po' di più di quest'angolo di mondo rispetto a prima. Quella parte nessuno me l'ha pagata, ed è quella che terrò.",
+		"Qualunque altra cosa fosse, è stata una lezione su come vanno le cose da queste parti. La ricorderò più a lungo della ricompensa.",
+	},
+	["quest_complete.w04.022"] = {
+		"E con questo è fatta. Avanti con quel che viene.",
+		"Finito. Non fingerò che sia stato difficile, né che sia stato niente.",
+		"È fatta. Lo rifarei, ma preferirei non doverlo fare.",
+	},
+	["quest_complete.w04.023"] = {
+		"Quando consegno queste cose non so mai se ho chiuso i guai di qualcuno o se li ho solo spostati più in là.",
+		"Concluso. Se servirà ad aggiustare qualcosa, ormai non dipende più da me. Spero di sì.",
+	},
+	["quest_complete.w04.024"] = {
+		"conta un momento sulle dita, perde il filo, e decide che è stata comunque una buona giornata di lavoro.",
+		"si guarda attorno come aspettando una fanfara, non ne trova, e ne sembra {g:sollevato|sollevata}.",
+		"fa un cenno del capo a nessuno in particolare, come capita quando ci si stupisce un poco di sé.",
+	},
+	["quest_complete.w04.025"] = {
+		"C'è sempre un punto in cui un incarico si può lasciar cadere. Questo non l'ho lasciato cadere. Vale qualcosa.",
+		"Sarebbe stato facile andarsene a metà. Lo sarebbe quasi sempre. Non l'ho fatto.",
+	},
+	["quest_complete.w04.026"] = {
+		"Mi fa piacere aver dato una mano. Davvero. Capita abbastanza di rado da meritare di dirlo ad alta voce.",
+		"Mi fa piacere che abbiate chiesto proprio a me. Non è poco.",
+	},
+	["quest_complete.w04.027"] = {
+		"Metà è stata camminare, un quarto aspettare, e del resto preferisco non parlare. Comunque, fatto.",
+		"Se mettessi per iscritto com'è andata davvero, nessuno mi assumerebbe più. Per fortuna nessuno lo chiede.",
+		"È andata più o meno secondo i piani, se i piani erano soprattutto improvvisare. Fatto è fatto.",
+	},
+	["quest_complete.w04.028"] = {
+		"resta un momento fra un incarico e l'altro, in quel breve spazio libero che non appartiene a nessun altro.",
+		"indugia un respiro più del necessario, come se la fine di un incarico fosse una soglia su cui valga la pena di fermarsi.",
+	},
+	["quest_complete.w04.029"] = {
+		"È una bella sensazione, una cosa finita. Dovrei collezionarne di più.",
+		"Niente di grandioso. Solo una cosa che era rotta e adesso no, o che mancava e adesso c'è. Me la prendo.",
+	},
+	["quest_complete.w04.030"] = {
+		"La prossima volta che qualcuno mi dice 'ci vorrà solo un attimo', mi porto un testimone.",
+		"Ogni incarico comincia come 'un piccolo favore'. Sto imparando a tradurre.",
+	},
+	["quest_complete.w04.031"] = {
+		"Un nodo in meno nel groviglio del mondo. Non dirò che il groviglio se ne sia accorto.",
+		"Ogni incarico finito è un nodo sciolto. Il mondo ne ha ancora tanti, ma questo adesso pende libero.",
+	},
+	["quest_complete.w04.032"] = {
+		"sposta il peso da un piede dolente all'altro, a incarico concluso, e non ha nessuna fretta di andarsene.",
+		"lascia scendere le spalle di un buon dito, come se qualcuno avesse appena tagliato una cinghia.",
+	},
+	["quest_complete.w04.033"] = {
+		"Di nuovo {g:libero|libera}, per un momento. In tasca nessuna commissione altrui. La mappa è tutta mia finché non accetto qualcos'altro.",
+		"È il momento migliore: quel breve tratto in cui non appartengo a nessun incarico.",
+	},
+	["quest_progress.w04.001"] = {
+		"Almeno una parte. Il resto è là fuori, e non ha nessuna fretta di venirmi incontro.",
+		"Questo pezzo è fatto. Gli altri pezzi stanno facendo i capricci.",
+		"Si avanza. Non tutto, ma il tutto non arriva mai in una volta sola.",
+	},
+	["quest_progress.w04.002"] = {
+		"spunta l'ultima voce dell'elenco e si gira, già col pensiero al ritorno.",
+		"conclude l'ultima parte dell'incarico: del lavoro resta soltanto la via del ritorno.",
+	},
+	["quest_progress.w04.003"] = {
+		"Questa parte è fatta. Non fermarti adesso, è solo mezzo lavoro.",
+		"Bene. C'è ancora qualcosa in sospeso, ma bene.",
+		"Ci siamo quasi? No. Ma ci si avvicina.",
+	},
+	["subzone_enter.w04.001"] = {
+		"oltrepassa un confine senza segni ed entra a {subzone}, e ricomincia da capo a notare le cose.",
+		"entra a {subzone} con lo sguardo attento e senza fretta di chi fa il punto della situazione.",
+		"entra a {subzone} e rallenta appena, come fa chiunque quando un posto cambia nome.",
+	},
+	["subzone_enter.w04.002"] = {
+		"{subzone}. Stesso mondo, nome diverso. Vediamo se il nome se lo merita.",
+		"Qui comincia {subzone}, se c'è da credere alla mappa. Sui nomi, le mappe di solito hanno ragione.",
+		"{subzone}. Un altro titolo sulla pagina della giornata.",
+	},
+	["subzone_enter.w04.003"] = {
+		"{subzone}. Bel nome. Speriamo che il posto ne sia all'altezza, o almeno che non morda.",
+		"Ah, {subzone}. Se si comporta bene, mi comporto bene anch'io.",
+		"{subzone}! Qualcuno si è preso la briga di battezzare questo posto. Scopriamo perché.",
+	},
+	["subzone_enter.w04.004"] = {
+		"Ogni nome sulla mappa è stato, un tempo, il mondo intero di qualcuno. Anche {subzone}, immagino.",
+		"{subzone}. Chissà quanta gente è entrata qui pensando a tutt'altro, come me.",
+		"{subzone}. La casa di qualcuno, la scorciatoia di qualcun altro, il brutto ricordo di un terzo. Oggi sono i miei prossimi passi.",
+	},
+	["subzone_enter.w04.005"] = {
+		"prende nota del nome {subzone} con la vaga soddisfazione di chi spunta un elenco.",
+		"registra {subzone} con un piccolo cenno, come un saluto di passaggio.",
+	},
+	["subzone_enter.w04.006"] = {
+		"{subzone}. Prendo nota del nome, delle vie d'entrata e di quelle d'uscita. Il resto può aspettare.",
+		"{subzone}. Prima cosa, in qualunque posto: dove sono le uscite. Seconda: chi altro c'è.",
+		"{subzone}. Prima com'è fatto il posto, le opinioni dopo.",
+	},
+	["subzone_enter.w04.007"] = {
+		"{subzone}. D'accordo. Occhi aperti e mani vicine a qualcosa da afferrare.",
+		"{subzone}, eh? Non cambia il motivo per cui sono qui.",
+		"{subzone}. Attenzione a dove si mettono i piedi, e a chi c'è intorno.",
+	},
+	["subzone_enter.w04.008"] = {
+		"{subzone}. Un altro nome che mi porterò via da qui, che lo voglia o no.",
+		"I nomi si accumulano alle mie spalle. {subzone} va sul mucchio, e io continuo a camminare.",
+	},
+	["subzone_enter.w04.009"] = {
+		"si ferma al margine di {subzone} come si aspetta alla porta di uno sconosciuto, poi entra.",
+		"prima ascolta {subzone}, e solo dopo guarda: il suono di un posto dice parecchio.",
+	},
+	["subzone_enter.w04.010"] = {
+		"{subzone}. Chi ha scelto questo nome aveva un'anima da poeta, o aveva finito le idee. Difficile dire quale delle due.",
+		"{subzone}. Bel nome. Conosco gente che ne ha di peggiori.",
+		"{subzone}. Qualcuno un giorno si è fermato qui e ha pensato: sì, come nome può andare.",
+	},
+	["subzone_enter.w04.011"] = {
+		"{subzone}. Qualunque cosa aspetti qui dentro, mi troverà {g:pronto|pronta}.",
+		"Dentro {subzone}. Calma, e niente sorprese.",
+		"{subzone}. Sono {g:entrato|entrata} in posti peggiori. Probabilmente.",
+	},
+	["subzone_enter.w04.012"] = {
+		"abbraccia {subzone} con occhiate rapide: com'è fatto, la gente, se ce n'è, e le vie più probabili per passarci attraverso.",
+		"legge {subzone} come un battitore legge il terreno, in fretta e senza darlo a vedere.",
+		"misura {subzone} con un'unica occhiata circolare, e mette via l'impressione.",
+	},
+	["subzone_enter.w04.013"] = {
+		"{subzone}. Speriamo che sia gentile. I posti di solito lo sono, se non gli si chiede troppo.",
+		"{subzone}. Sarò cortese con questo posto, e vediamo se ricambia.",
+	},
+	["subzone_enter.w04.014"] = {
+		"{subzone}. Mi fido sulla parola, come per quasi tutti i nomi.",
+		"{subzone}, dice la mappa. La mappa ha sbagliato altre volte, ma non su questo genere di cose.",
+		"{subzone}. Sospendo il giudizio finché qualcosa non prova a mangiarmi.",
+	},
+	["subzone_enter.w04.015"] = {
+		"Ogni luogo tiene qualcosa per sé, con chi è solo di passaggio. Mi chiedo che cosa tenga {subzone}.",
+		"{subzone}. C'è sempre di più in un posto di quanto mostri a chi lo attraversa una volta. A me toccherà solo la superficie.",
+	},
+	["subzone_enter.w04.016"] = {
+		"raddrizza le spalle all'inizio di {subzone}, più per abitudine che per bisogno.",
+		"si sistema lo zaino ed entra a {subzone} come chi arriva al lavoro.",
+	},
+	["subzone_enter.w04.017"] = {
+		"{subzone}. Bene. Mi piacciono i posti che si presentano subito col loro nome.",
+		"{subzone}. Almeno questo posto si presenta. Più di quanto sappia fare certa gente.",
+	},
+	["subzone_enter.w04.018"] = {
+		"{subzone}. Annotato. Avanti.",
+		"{subzone}. Un nome in più per la strada. Avanti, senza fermarsi.",
+	},
+	["subzone_enter.w04.019"] = {
+		"pronuncia il nome {subzone} sottovoce, una volta, come per sentire che effetto fa sulla lingua.",
+		"muove le labbra sul nome {subzone}, senza voce, come si fa quando lo si vuole ricordare.",
+	},
+	["subzone_enter.w04.020"] = {
+		"{subzone}. Il mondo continua a dividersi in pezzi con un nome. È una cosa che mi piace.",
+		"{subzone}. Un nome è la promessa che qui qualcosa contava per qualcuno. Terrò gli occhi aperti per scoprirlo.",
+	},
+	["subzone_enter.w04.021"] = {
+		"entra a {subzone} senza cerimonie, con la mano mai troppo lontana da dove potrebbe servire.",
+		"si addentra in {subzone} con la semplice cautela di chi è entrato in abbastanza posti da sapere come vanno.",
+	},
+	["subzone_enter.w04.022"] = {
+		"{subzone}. Un nome diverso, e sempre io che ci entro.",
+		"{subzone}. I posti cambiano più in fretta di me. Forse è questo il senso del camminare.",
+	},
+	["subzone_enter.w04.023"] = {
+		"Salve, {subzone}. Vediamo di andare d'accordo.",
+		"Ciao, {subzone}. Cercherò di non combinare disastri.",
+	},
+	["weather_change.w04.001"] = {
+		"si ferma ad annusare l'aria come un contadino al limite del campo, poi annuisce, come se avesse avuto una risposta.",
+		"alza il viso verso l'aria cambiata per un momento, e la legge come certa gente legge una lettera.",
+		"socchiude gli occhi verso l'alto, poi torna a badare al terreno sotto i piedi.",
+	},
+	["weather_change.w04.002"] = {
+		"Il cielo ha voltato pagina. Non avevo letto abbastanza bene la precedente per capire che cosa sia cambiato.",
+		"Lassù qualcosa ha deciso senza di me. Col cielo di solito va così.",
+		"L'aria sulla pelle non è più quella di un momento fa. Il mondo tiene per sé le sue ragioni, e cambia lo stesso.",
+	},
+	["weather_change.w04.003"] = {
+		"Ecco, ci siamo. Qualunque cosa abbia in mente, io sono {g:vestito|vestita} per tutt'altro.",
+		"Il cielo ha cambiato programma. Nessuno mi ha avvisato, come al solito.",
+		"Beh, questo è diverso. Quello di prima mi andava benissimo, ma nessuno me l'ha chiesto.",
+	},
+	["weather_change.w04.004"] = {
+		"Il cielo fa quel che vuole. La strada è lunga uguale in ogni caso.",
+		"È cambiato, eh? Ai miei stivali non importa, e ho deciso di dar ragione ai miei stivali.",
+		"Qualunque cosa arrivi, a lamentarsi la strada non si accorcia.",
+	},
+	["weather_change.w04.005"] = {
+		"si stringe un po' l'equipaggiamento, o lo allenta un po', come chiede l'aria cambiata.",
+		"si ferma mentre l'aria cambia tutt'intorno, come aspettando di essere {g:sicuro|sicura} che il cambiamento resti.",
+	},
+	["weather_change.w04.006"] = {
+		"Lassù tutto si sta risistemando, in silenzio. Invidio quanto poco chiasso faccia.",
+		"Un cambiamento nell'aria, e qualcosa in me cambia con lui, un poco. Non so mai in quale direzione.",
+		"Il cielo passa ad altro, e mi accorgo che non gli stavo prestando alcuna attenzione.",
+	},
+	["weather_change.w04.007"] = {
+		"Cielo diverso, stessi stivali, stessa strada. Avanti.",
+		"L'aria è girata. Non c'è altro da fare che prenderne nota e andare avanti.",
+	},
 }, "base_world")

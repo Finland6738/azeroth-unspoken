@@ -1441,4 +1441,193 @@ NS:AddTexts("enUS", {
 		"{subzone}, in good daylight. I take a long look; the light won't always be this generous.",
 		"{subzone}. Daylight, and no hurry. For once the hours seem to be on my side.",
 	},
+	["muse.w04.001"] = {
+		"Left foot, right foot. Most of the great journeys I've heard of were only that, told with more drums.",
+		"Strip any heroic march of its songs and what's left is somebody putting one boot in front of the other.",
+		"Every road anyone ever sang about was walked one ordinary step after another.",
+	},
+	["muse.w04.002"] = {
+		"The road never asks where I'm going. It's the only one that doesn't.",
+		"Nobody on the road wants to know why. It just runs on ahead and lets me follow.",
+	},
+	["muse.w04.003"] = {
+		"Shortcuts. Every one I've taken was a long way round with a better name.",
+		"No more shortcuts. They're just detours that lie about their length.",
+		"A shortcut is a promise made by somebody who never walked it.",
+	},
+	["muse.w04.004"] = {
+		"Some roads in this world are older than any kingdom that claims them. They'll outlast the next few, too.",
+		"Kingdoms put their names on roads the way children carve a table. The road never notices.",
+		"Under every road there's an older road, and under that, someone's first footprints.",
+	},
+	["muse.w04.005"] = {
+		"I don't need to know where it ends. I need to know the next mile, and I usually do.",
+		"The far end can stay a mystery. The next stretch is all I've ever really had to manage.",
+	},
+	["muse.w04.006"] = {
+		"Walking is easy. It's the stopping that hurts, when the legs remember what they've been doing.",
+		"The legs never complain while they're moving. They save it all for the moment I stop.",
+		"Keep going and the body forgets. Stand still and it hands over the whole bill.",
+	},
+	["muse.w04.007"] = {
+		"looks back over {g:his|her} shoulder at the way behind, as if to measure it.",
+		"casts a long look back the way {g:he|she} came, weighing the distance.",
+	},
+	["muse.w04.008"] = {
+		"Half the faces I pass on the road I'll never see again. I've stopped finding that sad. Mostly.",
+		"People met on the road are like pages of someone else's book. I read a line and hand it back.",
+		"So many strangers, each going somewhere I'll never know. We pass like boats with no lanterns.",
+	},
+	["muse.w04.009"] = {
+		"Right. Onward, then. The world won't walk itself.",
+		"Come on. Nothing ever got any closer by being stared at.",
+		"Up and moving. Distance doesn't shrink out of politeness.",
+	},
+	["muse.w04.010"] = {
+		"Every map I've owned was drawn by someone who never had to walk it.",
+		"Maps are lovely things. Flat, dry, and nothing on them ever bites.",
+	},
+	["muse.w04.011"] = {
+		"There's always one more hill past the last one. I hope that never stops being true.",
+		"The world keeps a spare horizon behind every horizon. Good. I'd hate to run out.",
+	},
+	["muse.w04.012"] = {
+		"Find a pace you could keep all day, then keep it. That's most of what I know about travel.",
+		"Never the fastest pace. The one you can hold till you arrive. The rest is detail.",
+	},
+	["muse.w04.017"] = {
+		"hitches {g:his|her} pack higher on {g:his|her} back and listens to what rattles.",
+		"shifts the weight of {g:his|her} pack from one shoulder to the other, frowning at the balance.",
+		"pats down every pocket in turn, the way people do when they know exactly what's in them.",
+	},
+	["muse.w04.022"] = {
+		"Nothing I cook on the road tastes of anything but smoke and hurry.",
+		"Road food has one flavor, whatever goes in the pot: smoke, with a hint of being tired.",
+	},
+	["muse.w04.025"] = {
+		"Eat when you can, drink when you can, sit when you can. The rest matters less than people say.",
+		"First rule of the road: never pass up clean water. Second rule: see the first rule.",
+	},
+	["muse.w04.026"] = {
+		"breaks a crust in two, considers both halves, and starts on the bigger one.",
+		"fishes a heel of bread out of a pocket, inspects it for a long moment, and eats it anyway.",
+		"chews on something tough with grim determination, jaw working like a millstone.",
+	},
+	["muse.w04.030"] = {
+		"weighs {g:his|her} purse in one hand, sighs, and tucks it away again.",
+		"tips a few coins into {g:his|her} palm, looks at them as if they had personally let {g:him|her} down, and puts them back.",
+	},
+	["muse.w04.044"] = {
+		"pauses mid-step and listens, head tilted, until the moment passes.",
+		"goes still for a breath, eyes moving, then slowly lets the air out.",
+		"stops, listens to something only {g:he|she} seems to hear, and lets it go.",
+	},
+	["muse.w04.047"] = {
+		"touches two fingers to {g:his|her} chest, a small private gesture that means something only to {g:him|her}.",
+		"makes a small, quick sign over {g:his|her} heart, too small for anyone else to read.",
+	},
+	["muse.w04.054"] = {
+		"rolls {g:his|her} shoulders until something in them gives a satisfying crack.",
+		"stretches with a wince, testing each joint as if counting what's still in working order.",
+		"works a stiff wrist in slow circles, jaw set.",
+	},
+	["muse.w04.057"] = {
+		"Every stranger is carrying a story heavier than their pack. I can only ever guess at it.",
+		"The people I pass all have somewhere to be and someone on their mind. It's humbling, if I let it be.",
+	},
+	["muse.w04.058"] = {
+		"Nod to everyone on the road. Half will nod back, and you'll remember the other half.",
+		"A nod costs nothing. I hand them out freely and a few come back.",
+	},
+	["muse.w04.081"] = {
+		"I'm not lost. I'm thoroughly exploring the wrong direction.",
+		"Lost? No. I'm conducting a very detailed survey of where I'm not supposed to be.",
+		"I know exactly where I am. It's everywhere else that's gone missing.",
+	},
+	["muse.w04.119"] = {
+		"Good company is worth a detour. Bad company is worth two.",
+		"I'll walk an extra mile for good company, and two to avoid bad.",
+	},
+	["muse.w04.126"] = {
+		"drums {g:his|her} fingers on {g:his|her} belt, keeping time to some tune nobody else can hear.",
+		"taps out a rhythm against {g:his|her} thigh, lost in a song that never quite reaches {g:his|her} lips.",
+	},
+	["muse.w04.127"] = {
+		"turns something small over and over in {g:his|her} fingers, not looking at it.",
+		"stares at nothing for a while, thumb rubbing slowly along a strap.",
+		"picks absently at a loose thread, eyes somewhere very far off.",
+	},
+	["muse.w04.128"] = {
+		"takes a long breath in through the nose and lets it out slowly, as if setting something down.",
+		"breathes out hard, and {g:his|her} shoulders drop an inch.",
+		"draws a deep breath and holds it a moment before letting it go.",
+	},
+	["muse.w04.129"] = {
+		"murmurs a list under {g:his|her} breath, ticking the items off on {g:his|her} fingers.",
+		"counts something off on {g:his|her} fingers, frowns, and starts the count over.",
+	},
+	["muse.w04.130"] = {
+		"scrapes something unpleasant off the sole of a boot, without looking too closely at what it is.",
+		"inspects the sole of one boot, finds a new hole in it, and gives it a look of deep betrayal.",
+		"lifts one boot, regards the state of it, and sets it down again with a weary grunt.",
+	},
+	["muse.w04.131"] = {
+		"stays quiet for a long moment, as if listening to something very far away.",
+		"falls silent, and the silence seems to suit {g:him|her}.",
+		"lets the talk in {g:his|her} head run down, and keeps the quiet that is left.",
+	},
+	["muse.w04.132"] = {
+		"mutters something unrepeatable at nothing in particular, and looks the better for it.",
+		"says one short, rude word to the world in general, and seems to mean it fondly.",
+	},
+	["muse.w04.133"] = {
+		"touches {g:his|her} weapon without looking, just to make sure it is where it should be.",
+		"rests a hand on {g:his|her} weapon for a moment, the way some people touch a doorframe for luck.",
+		"checks by feel that everything that should be within reach is within reach.",
+	},
+	["muse.w04.134"] = {
+		"goes quiet, with the look of someone rereading an old letter only {g:he|she} can see.",
+		"turns inward for a time, as though walking back down some road only {g:he|she} remembers.",
+	},
+	["muse.w04.135"] = {
+		"sniffs at {g:his|her} own sleeve, grimaces, and visibly lowers {g:his|her} standards.",
+		"catches {g:his|her} own scent, winces, and keeps a straight face with great dignity.",
+	},
+	["muse.w04.136"] = {
+		"sits down for a moment with the deep sigh of someone who has earned it.",
+		"lowers {g:himself|herself} down for a short rest, joints protesting all the way.",
+		"eases down to rest a while, legs stretched out, boots crossed at the ankle.",
+	},
+	["muse.w04.137"] = {
+		"fiddles with a stubborn buckle, humming tunelessly, until it finally gives in.",
+		"wrestles briefly with a twisted strap and wins, by a narrow margin.",
+		"tugs at a knot that won't come loose, mutters at it, and tries {g:his|her} teeth.",
+	},
+	["muse.w04.138"] = {
+		"flexes {g:his|her} fingers one by one, as if checking that they all still answer.",
+		"opens and closes {g:his|her} hands slowly, looking at them as if they belonged to a friend.",
+	},
+	["muse.w04.139"] = {
+		"turns slowly in place, taking the measure of everything around {g:him|her}.",
+		"looks this way and that with the unhurried attention of someone used to strange places.",
+		"takes stock of the surroundings with one long, patient look.",
+	},
+	["muse.w04.144"] = {
+		"takes a moment with no hurry in it at all, as though the world had agreed to wait.",
+		"lets {g:his|her} shoulders fall and simply breathes, in no rush to be anywhere.",
+	},
+	["muse.w04.148"] = {
+		"Plenty of road left. Plenty of me, too. Let's see which runs out first.",
+		"A long way still to go. Good. I'm not finished either.",
+		"The road isn't done with me, and I'm not done with it.",
+	},
+	["muse.w04.150"] = {
+		"Good luck to everybody out there walking somewhere they'd rather not. I know the feeling.",
+		"To everyone else on the road right now: keep your boots sound and your purse close.",
+	},
+	["muse.w04.151"] = {
+		"To the road ahead, and to everyone who wore it smooth before me.",
+		"My respects to the miles behind me. They were honest, if not kind.",
+		"Here's to the ones who walked this world first and left the path for the rest of us.",
+	},
 }, "base_exploration")

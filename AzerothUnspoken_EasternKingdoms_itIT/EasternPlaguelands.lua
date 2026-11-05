@@ -162,4 +162,168 @@ AU:RegisterRegionalTexts("easternplaguelands", "itIT", "eastern_easternplaguelan
 		"Pioggia sulle Plaguelands. Non lava via niente; trasforma solo il grigio in un grigio più scuro, e le strade in fanghiglia.",
 		"Comincia a piovere, e la pioggia è grigia come tutto il resto, qui. Ha un odore vagamente dolciastro, ed è questo il peggio.",
 	},
+	["epl.h.attack.01"] = {
+		"Ecco la risposta dell'Orda a tutto questo paese marcio!",
+		"Tieni, assaggia qualcosa di più pulito della peste!",
+		"Fuori dalla mia strada! Light's Hope è da quella parte e sono in ritardo!",
+	},
+	["epl.h.battle.01"] = {
+		"Resta dove sei o scappa. In ogni caso, io passo.",
+		"Fuori dalla foschia e a portata di braccio. Bene.",
+		"Questo paese è pieno di cose che non vogliono restare a terra. Vediamo un po' te.",
+	},
+	["epl.h.battle.02"] = {
+		"Bocca chiusa e respiro corto. Qualunque cosa galleggi in quest'aria, ingoiane meno che puoi.",
+		"Respiri brevi. Occhi su quello davanti, non su quelli che strisciano ancora fuori dalla foschia.",
+	},
+	["epl.h.battle.03"] = {
+		"pianta gli stivali fra i funghi pallidi del suolo appestato e alza l'arma contro l'attacco.",
+		"si volta incontro alla carica, sollevando uno sbuffo di spore grigie dalla terra morta.",
+		"affronta l'attacco a viso aperto, mentre la terra acida delle Plaguelands si attacca agli stivali.",
+	},
+	["epl.h.battle.04"] = {
+		"Ah, finalmente uno del posto che ha voglia di fare conversazione.",
+		"Ma certo. Una passeggiata nelle Plaguelands non poteva restare una passeggiata.",
+	},
+	["epl.h.battle.05"] = {
+		"Il tuo padrone se ne sta nascosto in quella tomba volante a nord. Dovrai bastare tu.",
+		"Kel'Thuzad manda i suoi fattorini marci. Bene: glieli rimando indietro a pezzi.",
+	},
+	["epl.h.journey.01"] = {
+		"si alza dalla cappella su ali scure, mentre le valli soffocate dai funghi e i laghi morti restano indietro.",
+		"si lascia alle spalle le Plaguelands su ali prese in prestito; i campi avvelenati là sotto si riducono a una macchia grigia, e poi a niente.",
+	},
+	["epl.h.journey.02"] = {
+		"A terra, a Light's Hope, dove l'Orda e l'Alleanza dividono lo stesso fuoco e tengono le lame nel fodero. Ci sono voluti i morti per riuscirci.",
+		"Piedi a terra. Light's Hope, l'unico posto a oriente dove nessuno chiede sotto quale stendardo combatto.",
+	},
+	["epl.h.landmark.01"] = {
+		"arriva sotto le mura di {landmark}, dove la Scarlet Crusade fa ancora le sue esercitazioni nei cortili come se Lordaeron avesse un re.",
+		"raggiunge le pietre di Tyr's Hand, l'ultima grande fortezza della Crusade, con le strade pattugliate in buon ordine come se la peste non fosse mai arrivata.",
+		"si avvicina a {landmark}; tabarri rossi sulle mura, sentinelle che si chiamano a vicenda, e nessuna accoglienza per nessuno, né vivo né morto.",
+	},
+	["epl.h.lowhp.01"] = {
+		"Tutto qui? L'Orda è stata dissanguata da gente migliore di te.",
+		"Continua pure. Ho ancora più grinta in corpo di quanta pietà abbia questa terra.",
+		"Non ancora. Light's Hope è lontana, e ci voglio arrivare sui miei piedi.",
+	},
+	["epl.h.lowhp.02"] = {
+		"Respira. In quest'aria le ferite vanno a male in fretta. Prima finisci, poi fascia.",
+		"La peste adora i tagli aperti. Chiudi in fretta questa storia, e dopo pulisci la ferita.",
+	},
+	["epl.h.muse.01"] = {
+		"Qui certi funghi sono più alti di un tauren. Di cosa si nutrano, preferisco non chiederlo.",
+		"Funghi grandi come capanne, pallidi e gonfi, chini sulla strada. Questa terra fa crescere soltanto ciò che cresce sulla morte.",
+		"Qui non spunta niente di verde, ma i funghi prosperano. A chi viaggia basta questo per capire tutto.",
+	},
+	["epl.h.muse.02"] = {
+		"Un tempo Lordaeron teneva gli orchi chiusi nei campi di internamento. Adesso i suoi stessi contadini vagano morti per le sue terre. Neanche i vecchi grunt la chiamano giustizia.",
+		"I signori di Lordaeron rinchiusero gli orchi nei campi e lo chiamarono pace. La peste non ha mai domandato a nessuno da che parte fosse stato.",
+		"A Orgrimmar ci sono orchi che ricordano ancora i campi di Lordaeron. A guardare questo posto, dubito che uno solo di loro glielo augurerebbe.",
+	},
+	["epl.h.muse.03"] = {
+		"Ecco da cosa si sono liberati i Forsaken. A vederlo da vicino, nessuno dovrebbe mai chiamarla una cosa da poco.",
+		"Ogni Forsaken dell'Orda un tempo si trascinava come questi. Ognuno di loro si è fermato. Qui si vede quanto sia stato difficile.",
+	},
+	["epl.h.muse.04"] = {
+		"Ho sentito l'odore di concerie, paludi e motori goblin. Questo posto li batte tutti, e non è un complimento.",
+		"Sulla mappa si chiama Eastern Plaguelands. Chi l'ha battezzato non era tipo da pubblicità ingannevole.",
+		"Paese perfetto per una vacanza, se la tua idea di riposo è non sederti mai.",
+	},
+	["epl.h.muse.05"] = {
+		"si ferma accanto a un albero morto dalla corteccia diventata bianca e molle, e si guarda bene dall'appoggiarcisi.",
+		"osserva uno sbuffo pallido di spore che si alza dal suolo a ogni passo e attraversa lento la strada.",
+		"guarda una casa colonica con la porta spalancata; da lì non esce niente da molto tempo, e niente ci entra.",
+	},
+	["epl.h.muse.06"] = {
+		"A nord c'è Stratholme, la città che il suo stesso principe diede alle fiamme. L'Argent Dawn racconta questa storia a bassa voce, e mai con orgoglio.",
+		"Un principe bruciò Stratholme per fermare la peste, e poi della peste diventò il campione. Difficile ricavarne una lezione che non sia amara.",
+	},
+	["epl.h.muse.07"] = {
+		"Non siamo qui per riprenderci terre umane. Siamo qui perché i morti non si fermano ai confini degli umani.",
+		"Qui fuori l'Orda non ha campi da riprendersi. Combatte lo stesso su queste strade, perché i morti non leggono le mappe.",
+		"A Orgrimmar qualcuno chiede perché mai prendersi il disturbo delle Plaguelands. Perché il Flagello il mare l'ha già attraversato una volta, fino a Hyjal.",
+	},
+	["epl.h.muse.08"] = {
+		"I troll della foresta innalzarono Zul'Mashar quassù molto prima che Lordaeron avesse un nome. Adesso anche i loro gradini li salgono i morti. Pietre vecchie, padroni nuovi.",
+		"Zul'Mashar: pietra troll a nord-est, più vecchia di qualunque muro umano di questa terra. La peste se l'è presa lo stesso.",
+	},
+	["epl.h.muse.09"] = {
+		"Peste o non peste, qui c'è del lavoro da fare. La foschia può aspettare il suo turno.",
+		"Nelle Plaguelands non ci si arriva per caso. Sono {g:venuto|venuta} a lavorare, quindi lavoriamo.",
+	},
+	["epl.h.muse.10"] = {
+		"L'Argent Dawn accoglie chiunque combatta il Flagello, Orda o Alleanza, senza fare domande. Strano come i morti rendano ragionevole la gente.",
+		"Ci è voluto un intero regno di morti per mettere l'Orda e l'Alleanza sotto un solo stendardo, e soltanto in una cappella. Meglio di niente.",
+		"A Light's Hope, Orda e Alleanza stanno fra le stesse mura senza una parola storta. Chi l'avrebbe mai detto.",
+	},
+	["epl.h.muse.11"] = {
+		"si ferma accanto a un carro rovesciato sul ciglio della strada, col carico ridotto da tempo a una poltiglia nera, e ci gira largo intorno.",
+		"si ferma a guardare uno stormo di pipistrelli gonfi che volteggia in alto e piega verso nord, poi riprende il cammino tenendosi sulla strada aperta.",
+	},
+	["epl.h.npc_meet.01"] = {
+		"Un pipistrello per portarmi via di qui? Ho cavalcato di peggio, anche se non di molto.",
+		"Ovunque l'aria non sappia di peste, grazie. Undercity conta, più o meno.",
+		"Fammi salire e portami via. Le Plaguelands possono tenersi la terra.",
+	},
+	["epl.h.npc_meet.02"] = {
+		"Qualcuno che commercia in mezzo alle Plaguelands. Ci vuole molto coraggio o una paga molto buona. Probabilmente tutte e due le cose.",
+		"Provviste, qui fuori? Qualunque sia il prezzo, è onesto. Nessun altro si porta il pane attraverso questo paese.",
+	},
+	["epl.h.quest_complete.01"] = {
+		"Fatto. Qui fuori nessuno chiede da che parte sto, solo se il lavoro è stato fatto.",
+		"Finito. In questo paese, Orda o Alleanza, il lavoro è sempre lo stesso.",
+		"Sistemato. Chiunque paghi, questa terra morta mi deve un favore.",
+	},
+	["epl.h.quest_complete.02"] = {
+		"È fatta. Qui non fiorirà niente per questo, ma qualcuno dormirà un po' più tranquillo.",
+		"Le Plaguelands non se ne accorgeranno. Chi me l'ha chiesto sì, ed è per loro che l'ho fatto.",
+		"Tengo una breve lista delle cose buone fatte in questa terra. Si è appena allungata un po'.",
+	},
+	["epl.h.quest_complete.03"] = {
+		"intasca la ricompensa, stringe le cinghie dello zaino e torna a guardare le colline grigie.",
+		"prende il compenso, lo conta una volta senza molto interesse e lo mette via; la terra là fuori aspetta ancora.",
+	},
+	["epl.h.quest_complete.04"] = {
+		"Pagato in monete, un'altra volta. Qui fuori avrei preferito un bagno pulito.",
+		"Fatto. Se il prossimo lavoro ha a che fare con qualcosa di verde che ribolle, chiedetelo a qualcun altro.",
+	},
+	["epl.h.quest_progress.01"] = {
+		"Ecco l'ultimo pezzo. Adesso bisogna riportarlo indietro senza raccogliere niente che strisci.",
+		"Qui ho finito. La strada per tornare è la stessa, e ci camminano le stesse cose.",
+		"Basta così. Chi mi ha {g:mandato|mandata} se lo prenda, e io mi prendo un bagno.",
+	},
+	["epl.h.subzone_enter.01"] = {
+		"passa in un altro tratto della terra appestata, dove funghi pallidi si affollano ai bordi della strada e il suolo cede come marcio.",
+		"supera una bassa altura ed entra nella valle successiva, malata quanto la precedente, con alberi morti in fila come un frutteto che nessuno raccoglierà mai.",
+	},
+	["epl.h.subzone_enter.02"] = {
+		"{subzone}. Nathanos Blightcaller vive in questa vecchia fattoria. Un tempo era la terra della sua famiglia, prima che la peste lo trasformasse in qualcos'altro.",
+		"The Marris Stead. Il campione della Banshee Queen fa la guardia alla fattoria che portava il suo nome. I Forsaken hanno strane idee di casa.",
+	},
+	["epl.h.victory.01"] = {
+		"E giù. Le mosche di questo paese non restano mai a digiuno.",
+		"Ecco fatto. Lascerei un fiore, se qui ne crescesse ancora uno.",
+		"Fatto. La peste può presentare reclamo all'Orda.",
+	},
+	["epl.h.victory.02"] = {
+		"si allontana dal corpo prima che la foschia gli si posi intorno, e non si volta indietro.",
+		"sputa per togliersi di bocca il sapore della lotta, poi scruta gli alberi morti in cerca di chi può aver sentito il rumore.",
+	},
+	["epl.h.victory.03"] = {
+		"I Forsaken si sono strappati via da tutto questo. A quello non è mai stata data l'occasione.",
+		"Alcuni morti di qui si sono svegliati e hanno voltato le spalle al Lich King. Questo no. Adesso non gli serve più.",
+	},
+	["epl.h.victory.04"] = {
+		"Torna il silenzio. Qui fuori il silenzio vuol dire soltanto che il prossimo non mi ha ancora {g:trovato|trovata}.",
+		"Fatto, e nessuno intorno a vederlo. In questa terra di solito va così.",
+	},
+	["epl.h.victory.05"] = {
+		"Lok'tar. Dite all'Argent Dawn di aggiungerne uno al conto.",
+		"Ecco. L'Orda è passata di qui, e questo pezzo di Lordaeron se ne ricorderà.",
+	},
+	["epl.h.weather_change.01"] = {
+		"Piove, e la pioggia scende tiepida e un po' densa, come un brodo andato a male. Ai funghi sembra piacere.",
+		"Arriva la pioggia, e le pozzanghere che lascia hanno un riflesso verdastro. Quelle le giro alla larga.",
+	},
 ]==])
