@@ -238,4 +238,189 @@ AU:RegisterRegionalTexts("stranglethornvale", "itIT", "eastern_stranglethorn", [
 		"Ecco la pioggia, dritta e tiepida come l'acqua di un bagno. La giungla la beve e ne chiede ancora.",
 		"La pioggia arriva tutta insieme, rumorosa sulle chiome, e l'intera giungla comincia a fumare.",
 	},
+	["stv.a.attack.01"] = {
+		"Prendi questo, e di' alla giungla chi te l'ha mandato!",
+		"Per l'Alleanza, e per un paio di stivali asciutti, un giorno!",
+		"Eccoti qualcosa che punge più di una spina!",
+	},
+	["stv.a.battle.01"] = {
+		"Fermati e affrontami. Non ho fatto tutta questa strada per finire in un'imboscata.",
+		"D'accordo. Il terreno l'hai scelto tu. Adesso tienilo, se ci riesci.",
+		"Avanti, allora. La giungla ci farà da pubblico.",
+	},
+	["stv.a.battle.02"] = {
+		"alza l'arma proprio mentre l'aggressore sbuca da un paravento di foglie larghe, abbastanza vicino da poterlo toccare.",
+		"allontana con un calcio un tronco marcio per farsi spazio sotto i piedi, e si volta incontro alla carica.",
+		"si appoggia di schiena al tronco di un grande albero, così che qualunque cosa arrivi, arrivi da davanti.",
+	},
+	["stv.a.battle.03"] = {
+		"Respira. Guarda i piedi, non le foglie. Le foglie si muovono sempre.",
+		"Lascia perdere il chiasso della giungla. Adesso conta un rumore solo, e mi sta venendo addosso.",
+	},
+	["stv.a.battle.04"] = {
+		"Splendido. Proprio pensavo che a questa passeggiata mancassero un po' di denti.",
+		"Possibile che in questa giungla niente sappia limitarsi a salutare?",
+	},
+	["stv.a.battle.05"] = {
+		"Tanti saluti da Booty Bay, pirata.",
+		"Fila alle tue barche, Bloodsail. Questa spiaggia non è tua.",
+	},
+	["stv.a.battle.06"] = {
+		"Calma. Guarda le spalle, non i denti. Sono le spalle a dirti quando salta.",
+		"Va bene, bestia. Tu hai fame e io sono di mezzo. Chiudiamola qui.",
+	},
+	["stv.a.journey.01"] = {
+		"si leva dal posatoio di Booty Bay in groppa al grifone, e il porto si restringe a un anello di alberi maestri e tetti nella mano verde della scogliera.",
+		"si alza sopra la baia, col grifone che batte forte le ali contro l'aria pesante, finché la giungla non sprofonda là sotto.",
+	},
+	["stv.a.journey.02"] = {
+		"A terra a Booty Bay. Il grifone si scrolla le ali e mi lancia un'occhiata che dice: il viaggio è stata un'idea tua, non mia.",
+		"I piedi su assi ben piantate, sale, pesce e goblin che strillano tutt'intorno. Booty Bay: rumorosa, allegra e carissima.",
+	},
+	["stv.a.landmark.01"] = {
+		"{landmark}. Non è nostra, non è dell'Orda: è solo dei goblin. Per l'Alleanza, quaggiù, più al sicuro di così non si sta.",
+		"Lanterne, navi, buttafuori su ogni scala e un prezzo su ogni respiro. I goblin tengono la loro città in perfetto ordine.",
+		"Terreno neutrale, lo chiamano. Vuol dire che i buttafuori prendono a randellate chiunque attacchi briga, e poi fanno pagare le bende a tutte e due le parti.",
+	},
+	["stv.a.lowhp.01"] = {
+		"Non qui. Non ho intenzione di diventare un mucchietto sotto le felci entro la settimana prossima.",
+		"In piedi. Se cado in mezzo a questo verde, nessuno troverà nemmeno le ossa.",
+		"Continua a muoverti. La giungla sa aspettare, ma io non sono {g:pronto|pronta} a sfamarla.",
+	},
+	["stv.a.lowhp.02"] = {
+		"Mi rattopperò dopo. Non adesso.",
+		"Un po' di sangue. Ne ho ancora parecchio, qui dentro.",
+	},
+	["stv.a.muse.01"] = {
+		"Il Rebel Camp è qualche tenda, un fuoco da campo e uomini che a Kurzen hanno detto di no. Quaggiù, più vicino di così a Stormwind non si arriva.",
+		"Soldati che hanno voltato le spalle al loro colonnello e sono rimasti lo stesso nella giungla. Il Rebel Camp è testardo, e mi piace proprio per questo.",
+		"Quattro tende ai margini della giungla, con Duskwood alle spalle. I ribelli tengono il loro angolo e non chiedono un grazie.",
+	},
+	["stv.a.muse.02"] = {
+		"L'Alleanza ha un campo di ribelli a un capo di questa giungla e una città di goblin all'altro. Tutto quello che sta in mezzo è di chi morde per primo.",
+		"A nord i ribelli. A sud Booty Bay, che non è di nessuno se non dei goblin. In mezzo, una lunga camminata nel verde, piena di denti.",
+	},
+	["stv.a.muse.03"] = {
+		"Grom'gol se ne sta sulla costa occidentale, con la sua torre dello zeppelin. Ogni volta che un'aeronave ronza sopra le chiome, controllo l'arma.",
+		"L'Orda ha un campo su questa costa, e i suoi zeppelin passano bassi sopra gli alberi. Quando ne passa uno, resto all'ombra e non mi muovo.",
+	},
+	["stv.a.muse.04"] = {
+		"A Booty Bay io e un orco beviamo allo stesso bancone e facciamo finta di non vederci. I goblin la chiamano pace.",
+		"A Booty Bay la pace la tengono i buttafuori, a randellate. Nessuno ama l'Orda, laggiù, ma nessuno colpisce per primo.",
+	},
+	["stv.a.muse.05"] = {
+		"Le seghe della Venture Co. che stridono sotto le chiome. Questa giungla è sopravvissuta a troll, tigri e guerre. Ai goblin con un contratto in mano, chissà.",
+		"La Venture Co. si è piantata qui, e taglia e scava come se la giungla fosse arrivata con tanto di ricevuta.",
+	},
+	["stv.a.muse.06"] = {
+		"Gli ogre stanno a est, nel loro tumulo. I Mosh'Ogg li senti dall'odore molto prima di vederli, ed è l'unica cortesia che ti fanno.",
+		"Se il vento gira e ti lacrimano gli occhi, non è la giungla. Sono gli ogre.",
+	},
+	["stv.a.muse.07"] = {
+		"Basilischi sulle rocce, coi cristalli che spuntano dal dorso come vetri rotti. Qualunque cosa succeda, non lasciare che uno ti tenga lo sguardo addosso troppo a lungo.",
+		"Basilischi stesi sulle pietre calde, come lucertole che si sono mangiate una cava. Il peggio di loro è lo sguardo.",
+		"Cristalli sul dorso, pietra nella pelle e occhi che ti trattengono un istante di troppo. Ai basilischi lascio tutto lo spazio che vogliono.",
+	},
+	["stv.a.muse.08"] = {
+		"Al largo di questa costa ci sono sempre vele rosse. I Bloodsail razziano le spiagge come se fossero loro, e Booty Bay paga caro per dire il contrario.",
+		"Pirati accampati sulle spiagge, navi pirata in mare. I Bloodsail Buccaneers vogliono questa costa, e non lo nascondono di certo.",
+	},
+	["stv.a.muse.09"] = {
+		"si inginocchia a stringere una fibbia dello stivale e trova una fila di formiche già in marcia sul cuoio, come se la giungla avesse mandato qualcuno a prendere le misure.",
+		"si scrolla una foglia dalla spalla e scopre che non era una foglia. Se ne va senza fretta, tra le felci.",
+	},
+	["stv.a.muse.10"] = {
+		"Metà dei nomi sulla mappa di questa giungla contengono la parola 'Ruins'. Un tempo i troll dovevano essere dappertutto.",
+		"Rovine qui, rovine là, e dietro quelle rovine altre rovine. L'impero dei troll non ha lasciato molto in piedi, ma per terra ne ha lasciato tanto.",
+	},
+	["stv.a.muse.11"] = {
+		"I Bloodscalp a nord, gli Skullsplitter più all'interno. Un tempo erano un solo impero. Adesso ogni tribù odia l'altra quasi quanto odia gli stranieri.",
+		"I Gurubashi si sono spezzati in tribù tanto tempo fa, e le tribù non hanno mai smesso di contendersi i cocci. Alla giungla non importa chi vince.",
+	},
+	["stv.a.muse.12"] = {
+		"Scommetto che a Stormwind c'è ancora uno scrivano che segna la spedizione di Kurzen come in servizio. Nessuno vuole essere quello che mette per iscritto cosa le ha fatto la giungla.",
+		"Stormwind ha mandato soldati quaggiù per sistemare i troll. Alcuni seguono ancora Kurzen, gli altri vivono in tenda al Rebel Camp. I rapporti spediti a casa devono essere una lettura cupa.",
+	},
+	["stv.a.muse.13"] = {
+		"Duskwood è subito a nord, tutta silenzio e penombra. Quaggiù invece niente sta mai zitto. Non so decidere cosa preferirei.",
+		"Poco più a nord gli alberi si fanno neri e immobili, e Duskwood si inghiotte ogni suono. Qui la giungla urla dalla mattina alla sera. Nessuna delle due ti lascia riposare.",
+	},
+	["stv.a.muse.14"] = {
+		"Da Booty Bay parte una nave per Ratchet. Fa piacere sapere che questa giungla ha una porta sul retro.",
+		"I goblin salpano da Booty Bay e arrivano dritti fino a Kalimdor. Ogni trappola dovrebbe avere un'uscita.",
+	},
+	["stv.a.muse.15"] = {
+		"Quella vecchia arena dei Gurubashi attira ancora gente. I troll ci combattevano per la gloria; adesso ci entra chiunque abbia un'arma e un occhio su un forziere di monete.",
+		"Un'arena nel cuore della giungla, costruita dai troll e mandata avanti dall'avidità. C'è ancora chi ci si infila per ammazzarsi in cambio di un forziere. Certe usanze sopravvivono agli imperi.",
+	},
+	["stv.a.npc_meet.01"] = {
+		"Un grifone appollaiato sopra un porto di goblin. Qualcuno, chissà dove, deve aver perso una scommessa.",
+		"I grifoni qui stanno con la schiena rivolta alla giungla. Il volo verso nord è lungo, ma batte ogni singolo passo della camminata.",
+	},
+	["stv.a.npc_meet.02"] = {
+		"Un letto con un tetto sopra e il mare subito fuori. Dopo la giungla, una locanda di goblin sembra una reggia, prezzi compresi.",
+		"Un oste, uno sgabello, una bevanda quasi fresca. Booty Bay ha i suoi difetti, ma questo non è tra quelli.",
+		"Una stanza, un letto e un tetto, e niente che ti cammini sul cuscino. Per questo pagherei prezzi da goblin. Anzi, sto per farlo.",
+	},
+	["stv.a.quest_complete.01"] = {
+		"consegna quanto richiesto e sgranchisce le dita, rigide per la lunga marcia.",
+		"prende la ricompensa, la conta una volta e la mette al riparo dall'umido.",
+		"accenna appena col capo ai ringraziamenti e si toglie una spina dalla manica.",
+	},
+	["stv.a.quest_complete.02"] = {
+		"Fatto, e pagato. Le mie gambe hanno delle opinioni su questa giungla che terrò per me.",
+		"Un'altra commissione chiusa. La giungla si è presa il suo pedaggio in sudore e graffi, e io l'ho pagato.",
+	},
+	["stv.a.quest_complete.03"] = {
+		"Ecco fatto. La prossima volta trovati qualcuno a cui piacciono le giungle.",
+		"Fatto. Se c'è un altro lavoro, spero che preveda un po' d'ombra.",
+	},
+	["stv.a.quest_complete.04"] = {
+		"La giungla non si accorgerà di quello che ho fatto oggi. Qualcuno che ci vive, sì.",
+		"Una piccola cosa fatta bene in un posto grande e indifferente. Qualcosa vale.",
+	},
+	["stv.a.quest_complete.05"] = {
+		"Così a sud l'Alleanza ha pochi amici. Ogni lavoro portato a termine qui gliene procura uno in più.",
+		"Quaggiù l'Alleanza possiede un campo di tende e un po' di buona volontà. Oggi ho fatto crescere la buona volontà.",
+	},
+	["stv.a.quest_progress.01"] = {
+		"Un passo avanti. Non ho finito, ma la giungla ha ceduto un po' di quello che nasconde.",
+		"Si va avanti. Piano e sudando, ma si va avanti.",
+		"C'è ancora da trovare. Occhi a terra, e un orecchio alle felci.",
+	},
+	["stv.a.subzone_enter.01"] = {
+		"si china sotto un ramo basso, carico di muschio, e si ritrova in {subzone}; il nome cambia, il chiasso della giungla no.",
+		"scende con cautela lungo un pendio di radici aggrovigliate, fino a {subzone}.",
+		"scavalca un tronco caduto ricoperto di funghi, e il sentiero prosegue dentro {subzone}.",
+	},
+	["stv.a.subzone_enter.02"] = {
+		"Rebel Camp. Qualche tenda, un fuoco da campo e soldati che sembrano contenti, per una volta, di vedere qualcuno dalla loro parte.",
+		"Finalmente facce dell'Alleanza, e una sentinella che fa un cenno invece di mettere mano all'acciaio. Per questa giungla, è un'accoglienza calorosa.",
+	},
+	["stv.a.victory.01"] = {
+		"Giù. Mi appoggio alle ginocchia e lascio che il cuore rallenti fino a qualcosa di simile a un passo.",
+		"Finita. Adesso controllo i tagli, prima che li trovi la giungla.",
+		"Finito. Ogni muscolo vuole sedersi, e sotto ogni tronco qui intorno c'è qualcosa di vivo.",
+	},
+	["stv.a.victory.02"] = {
+		"Bene. Questo chiarisce chi resta a pancia vuota.",
+		"Resta lì a riflettere sulle tue scelte.",
+		"Ecco perché nella giungla non si salta addosso agli sconosciuti.",
+	},
+	["stv.a.victory.03"] = {
+		"fa un passo indietro e si pulisce le mani su una foglia larga, l'unica cosa che in questa giungla non manca mai.",
+		"tira un lungo respiro e guarda due uccelli dai colori accesi posarsi su un ramo lì accanto, per nulla turbati.",
+	},
+	["stv.a.victory.04"] = {
+		"Sotto il marciume della giungla, quello un tempo era un soldato di Stormwind. Spero che chi l'ha mandato quaggiù non venga mai a sapere come è finito.",
+		"Uno degli uomini di Kurzen. È arrivato in questa giungla con i nostri colori addosso. La giungla, o il colonnello, ne ha fatto un'altra cosa.",
+	},
+	["stv.a.victory.05"] = {
+		"Di' al tuo caposquadra che il contratto è annullato.",
+		"La Venture Co. può mandarmi il conto per questo.",
+	},
+	["stv.a.weather_change.01"] = {
+		"solleva il viso verso la pioggia che scroscia giù dalle foglie più alte, tiepida come una minestra e del tutto inutile contro il caldo.",
+		"si ripara sotto una foglia larga mentre la pioggia si rovescia attraverso le chiome, e tutta la giungla sibila come un bollitore.",
+	},
 ]==])

@@ -8,6 +8,55 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W03: fifteen contested zones, the other side of Stranglethorn, and the first lines of the dungeons (issue #138)
+
+The third content wave of [docs/content/WAVES.md](docs/content/WAVES.md) (its pools were the first row of the table
+after W02, the soft need of [ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md) with the tiers
+mixed by share of [ADR 0051](docs/adr/0051-tiers-mixed-by-share.md)): **1,081 intentions, 2,545 texts per language**
+(5,090 in both), written by twelve parallel writer subagents (authors `ai-w03-<unit>`) and passed through the archive
+(drafts, `cli dups --state draft` with no exact and no near duplicate, submit, owner sample, approve, export; the round
+trip is an empty diff). No literary piece and no `tier` field. The addon goes from 4,084 to **5,165 intentions** and
+from 9,824 to **12,369 texts per language**.
+
+- **Added: fifteen regional packs, one per area**, every zone contested, so every line writes `zone` and `faction`:
+  `kalimdor_desolace` (`des.`), `kalimdor_dustwallowmarsh` (`dwm.`), `kalimdor_moonglade` (`mgl.`, Alliance),
+  `kalimdor_azshara` (`azs.`), `kalimdor_tanaris` (`tan.`), `kalimdor_feralas` (`fer.`), `eastern_arathi` (`ara.`),
+  `eastern_alterac` (`alt.`), `eastern_badlands` (`bad.`), `eastern_searinggorge` (`sgg.`), `eastern_hinterlands`
+  (`hin.`), `eastern_swampofsorrows` (`sos.`), `eastern_blastedlands` (`bla.`), `eastern_burningsteppes` (`bst.`),
+  `eastern_easternplaguelands` (`epl.`, Alliance): **902 intentions, 2,147 texts per language** (ids
+  `<prefix>.<a|h>.<event>.NN`), and the Alliance pool of Stranglethorn Vale in its W02 pack (`stv.a.`, 43 intentions,
+  99 texts).
+- **Added: the first lines of the five-player dungeons**, 136 intentions and 299 texts per language for all nineteen
+  (Ragefire Chasm to Scholomance), with `zone = "<instance>"` and no faction. They go to one pack per continent,
+  `kalimdor_dungeons` and `eastern_dungeons`, built with the continent: an instance has no area of its own
+  (ADR 0048), so the continent's packs are the ones kept while the character is inside.
+- **Added: 33 landmarks** in `Data/Landmarks.lua` for these zones (Nijel's Point, Shadowprey Village, the Kodo
+  Graveyard, Theramore Isle, Brackenwall Village, Nighthaven, Talrendis Point, Valormok, the Ruins of Eldarath,
+  Gadgetzan, Steamwheedle Port, Feathermoon Stronghold, Camp Mojache, Refuge Pointe, Hammerfall, Stromgarde Keep,
+  Strahnbrad, Dalaran, Kargath, Angor Fortress, Thorium Point, the Cauldron, Aerie Peak, Revantusk Village,
+  Jintha'Alor, Stonard, the Pool of Tears, Nethergarde Keep, the Dark Portal, Morgan's Vigil, Flame Crest, Light's Hope
+  Chapel, Tyr's Hand).
+- **Fixed at integration** (the combined check of every writer's files, and the sample read of each writer): one exact
+  and six near pairs across writers, a new over-used Italian opening ("Ancora in piedi" again: six variants reworded),
+  two battle lines with `ctype = "dragonkin"` (the engine reduces the client's "Dragonkin" to `dragon`, so they could
+  never fire), Alliance cries "For the Wildhammer!" that assumed a Wildhammer character, the Italian name of the
+  Explorers' League kept in English as the brief asks, and one Italian tense.
+- **The gap after W03** (per language): soft need 8,893, gap **1,110** (was 3,643); strict need 28,938, gap **19,480**
+  (was 22,021); random need 270,686, gap **259,715** (was 262,260). **90 waves** left (the next is the first row of
+  WAVES.md: the endgame zones, the raids and the rest of the soft need).
+- **Measured.** `Tests/bench_scale.py --sizes 0`: memory 14.1 → 17.1 MB, pick 24.2 → 24.1 thousand Lua
+  instructions. `bench_trial` is not rerun: the wave adds no line to the areas of the trial slice.
+- **Tests:** the counts; the C0b test of the sources visits all thirty-four areas with lines and reads the two
+  dungeon files (88 sources).
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W03.md](docs/content/reviews/W03.md) (22
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** subzone, landmark and target names are those of the English Classic client, not yet confirmed in
+  Forever (#36). Inside an instance the continent is read from the map's parents, not verified in the client: if the
+  region reads as none, the packs built before entering stay (the dungeon lines of that continent included). The need
+  model asks for journey lines in pools whose side has no flight master in Classic (Alterac Mountains, the Alliance in
+  the Badlands and the Swamp of Sorrows, the Horde in the Blasted Lands): those lines are arrivals by road.
+
 ### Content wave W02: thirteen zones, the level bands, and the rest of the soft need of the homes and layers (issue #138)
 
 The second content wave of [docs/content/WAVES.md](docs/content/WAVES.md), on the soft need of

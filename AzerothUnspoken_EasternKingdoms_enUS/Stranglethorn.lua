@@ -238,4 +238,189 @@ AU:RegisterRegionalTexts("stranglethornvale", "enUS", "eastern_stranglethorn", [
 		"Here comes the rain, straight down and warm as bathwater. The jungle drinks it and asks for more.",
 		"The rain arrives all at once, loud on the canopy, and the whole jungle starts to steam.",
 	},
+	["stv.a.attack.01"] = {
+		"Take that, and tell the jungle who sent it!",
+		"For the Alliance, and for dry boots someday!",
+		"Here's something that stings worse than a thorn!",
+	},
+	["stv.a.battle.01"] = {
+		"Stand and face me. I didn't walk this far to be ambushed.",
+		"Right. You picked the ground. Now hold it, if you can.",
+		"Come on, then. The jungle can watch.",
+	},
+	["stv.a.battle.02"] = {
+		"brings the weapon up just as the attacker breaks from a screen of broad leaves, close enough to touch.",
+		"kicks a rotten log aside to clear some footing and turns to meet the charge.",
+		"backs against the trunk of a great tree, so that whatever comes, comes from the front.",
+	},
+	["stv.a.battle.03"] = {
+		"Breathe. Watch the feet, not the leaves. The leaves always move.",
+		"Ignore the racket of the jungle. Only one sound in it matters now, and it's coming straight at me.",
+	},
+	["stv.a.battle.04"] = {
+		"Wonderful. I was just thinking this walk needed more teeth.",
+		"Can't anything in this jungle simply say hello?",
+	},
+	["stv.a.battle.05"] = {
+		"Booty Bay sends its compliments, pirate.",
+		"Back to your boats, Bloodsail. This beach isn't yours.",
+	},
+	["stv.a.battle.06"] = {
+		"Easy. Watch the shoulders, not the teeth. The shoulders tell you when it jumps.",
+		"All right, beast. You're hungry and I'm in the way. Let's settle it.",
+	},
+	["stv.a.journey.01"] = {
+		"rises from the Booty Bay roost on gryphon wings, and the harbor shrinks to a ring of masts and roofs in the cliff's green hand.",
+		"lifts off over the bay, the gryphon beating hard against the heavy air until the jungle drops away below.",
+	},
+	["stv.a.journey.02"] = {
+		"Down in Booty Bay. The gryphon shakes out its wings and gives me a look that says the trip was my idea, not its.",
+		"Feet on solid planks, salt and fish and goblin shouting all around. Booty Bay: loud, cheerful and dear.",
+	},
+	["stv.a.landmark.01"] = {
+		"{landmark}. Not ours, not the Horde's, only the goblins'. For the Alliance down here, that's as safe as it gets.",
+		"Lanterns, ships, bruisers on every stair, and a price on every breath. The goblins keep a tidy town.",
+		"Neutral ground, they call it. That means the bruisers club anyone who starts trouble, then charge both sides for the bandages.",
+	},
+	["stv.a.lowhp.01"] = {
+		"Not here. I won't be a lump under the ferns by next week.",
+		"Stay up. If I go down in this green, nobody will even find the bones.",
+		"Keep moving. The jungle is patient, but I'm not ready to feed it.",
+	},
+	["stv.a.lowhp.02"] = {
+		"Patch me up later. Not now.",
+		"A little blood. I have more where that came from.",
+	},
+	["stv.a.muse.01"] = {
+		"The Rebel Camp is a few tents, a cookfire and men who said no to Kurzen. Out here that's as close to Stormwind as it gets.",
+		"Soldiers who walked away from their own colonel and stayed in the jungle anyway. The Rebel Camp is stubborn, and I like it for that.",
+		"A handful of tents on the edge of the jungle, Duskwood at their backs. The rebels hold their corner and don't ask for thanks.",
+	},
+	["stv.a.muse.02"] = {
+		"The Alliance has a camp of rebels at one end of this jungle and a goblin town at the other. Everything in between belongs to whoever bites first.",
+		"North, the rebels. South, Booty Bay, which belongs to nobody but the goblins. Between them, a long green walk full of teeth.",
+	},
+	["stv.a.muse.03"] = {
+		"Grom'gol sits on the western shore with its zeppelin tower. Whenever an airship drones over the canopy, I check my weapon.",
+		"The Horde keeps a camp on this coast, and its zeppelins pass low over the trees. When one goes by, I stay in the shade and keep still.",
+	},
+	["stv.a.muse.04"] = {
+		"In Booty Bay an orc and I drink at the same bar and pretend not to see each other. The goblins call that peace.",
+		"Booty Bay's bruisers keep the peace with clubs. Nobody loves the Horde there, but nobody swings first either.",
+	},
+	["stv.a.muse.05"] = {
+		"Venture Co. saws, whining away under the canopy. This jungle has outlasted trolls, tigers and wars. Goblins with a contract might be another matter.",
+		"The Venture Co. has dug in here, felling and digging as if the jungle had come with a receipt.",
+	},
+	["stv.a.muse.06"] = {
+		"Ogres to the east, in their mound. You smell the Mosh'Ogg long before you see them, which is the only kind thing about them.",
+		"If the wind turns and your eyes start watering, that's not the jungle. That's the ogres.",
+	},
+	["stv.a.muse.07"] = {
+		"Basilisks on the rocks, crystals jutting from their backs like broken glass. Whatever happens, don't let one hold your gaze for long.",
+		"Basilisks sprawled on the warm stones, like lizards that swallowed a quarry. The worst of them is the stare.",
+		"Crystals on the back, stone in the skin, and eyes that hold you a moment too long. I give the basilisks all the room they want.",
+	},
+	["stv.a.muse.08"] = {
+		"Off this coast there are always red sails. The Bloodsail raid the beaches as if they owned them, and Booty Bay pays dearly for saying otherwise.",
+		"Pirates camped on the beaches, pirate ships on the water. The Bloodsail Buccaneers want this coast, and they make no secret of it.",
+	},
+	["stv.a.muse.09"] = {
+		"kneels to tighten a boot strap and finds a file of ants already marching across the leather, as if the jungle had sent someone to take measurements.",
+		"brushes a leaf from one shoulder and discovers it was not a leaf. It walks off, unhurried, into the ferns.",
+	},
+	["stv.a.muse.10"] = {
+		"Half the names on the map of this jungle have 'Ruins' in them. The trolls must have been everywhere once.",
+		"Ruins here, ruins there, a ruin behind that ruin. The troll empire didn't leave much standing, but it left plenty.",
+	},
+	["stv.a.muse.11"] = {
+		"Bloodscalp in the north, Skullsplitter further in. Once they were one empire. Now each tribe hates the other nearly as much as it hates outsiders.",
+		"The Gurubashi broke into tribes long ago, and the tribes never stopped fighting over the pieces. The jungle doesn't care which of them wins.",
+	},
+	["stv.a.muse.12"] = {
+		"I'd wager a clerk in Stormwind still lists Kurzen's expedition as on active duty. Nobody wants to be the one who writes down what the jungle did to it.",
+		"Stormwind sent soldiers here to deal with the trolls. Some still follow Kurzen, the rest live in tents at the Rebel Camp. The reports home must make grim reading.",
+	},
+	["stv.a.muse.13"] = {
+		"Duskwood lies just north, all hush and gloom. Down here nothing is ever quiet. I can't decide which I'd rather have.",
+		"Not far north the trees turn black and still, and Duskwood swallows every sound. Here the jungle shouts from morning to evening. Neither one lets you rest.",
+	},
+	["stv.a.muse.14"] = {
+		"There's a boat from Booty Bay to Ratchet. Good to know this jungle has a back door.",
+		"The goblins sail from Booty Bay clear across to Kalimdor. Every trap should have a way out.",
+	},
+	["stv.a.muse.15"] = {
+		"That old Gurubashi arena still draws a crowd. The trolls fought there for glory; now it's anyone with a weapon and an eye on a chest of coin.",
+		"An arena in the heart of the jungle, built by trolls, kept going by greed. People still climb in to kill each other for a chest. Some customs outlive empires.",
+	},
+	["stv.a.npc_meet.01"] = {
+		"A gryphon perched over a goblin harbor. Somebody, somewhere, must have lost a bet.",
+		"The gryphons here sit with their backs to the jungle. A long flight north, but it beats every step of the walk.",
+	},
+	["stv.a.npc_meet.02"] = {
+		"A bed with a roof over it and the sea right outside. After the jungle, a goblin inn feels like a palace, prices included.",
+		"An innkeeper, a stool, a drink that's almost cool. Booty Bay has its faults, but this isn't one of them.",
+		"A room, a bed and a roof, and nothing crawling across the pillow. I'd pay goblin prices for that. In fact I'm about to.",
+	},
+	["stv.a.quest_complete.01"] = {
+		"hands over what was asked and flexes fingers gone stiff from the long trek.",
+		"takes the reward, counts it once, and tucks it away from the damp.",
+		"nods once at the thanks and picks a thorn out of one sleeve.",
+	},
+	["stv.a.quest_complete.02"] = {
+		"Done, and paid. My legs have opinions about this jungle that I'll keep to myself.",
+		"Another errand closed. The jungle took its toll in sweat and scratches, and I paid it.",
+	},
+	["stv.a.quest_complete.03"] = {
+		"There. Next time, find someone who likes jungles.",
+		"Done. If there's another job, I hope it comes with shade.",
+	},
+	["stv.a.quest_complete.04"] = {
+		"The jungle won't notice what I did today. Someone living in it will.",
+		"A small thing done right in a big, careless place. That counts for something.",
+	},
+	["stv.a.quest_complete.05"] = {
+		"The Alliance has few friends this far south. Every job finished here makes it one more.",
+		"Down here the Alliance owns a camp of tents and a little goodwill. Today I added to the goodwill.",
+	},
+	["stv.a.quest_progress.01"] = {
+		"A step forward. Not done, but the jungle has given up a little of what it's hiding.",
+		"Progress. Slow, sweaty progress, but progress.",
+		"More to find yet. Eyes on the ground, and one ear on the ferns.",
+	},
+	["stv.a.subzone_enter.01"] = {
+		"ducks under a low bough heavy with moss and comes up in {subzone}, the jungle no quieter for the change of name.",
+		"picks a careful way down a slope of tangled roots into {subzone}.",
+		"steps over a fallen trunk furred with fungus, and the trail carries on into {subzone}.",
+	},
+	["stv.a.subzone_enter.02"] = {
+		"Rebel Camp. A few tents, a cookfire, and soldiers who look glad, for a change, to see someone on their side.",
+		"Alliance faces at last, and a sentry who nods instead of reaching for steel. For this jungle, that's a warm welcome.",
+	},
+	["stv.a.victory.01"] = {
+		"Down. I lean on my knees and let my heart slow to something like a walk.",
+		"Finished. Now to check for cuts before the jungle finds them first.",
+		"Over. Every muscle wants to sit, and every log around here has something living under it.",
+	},
+	["stv.a.victory.02"] = {
+		"Well. That settles who goes home hungry.",
+		"Lie there and think about your choices.",
+		"And that's why you don't jump on strangers in the jungle.",
+	},
+	["stv.a.victory.03"] = {
+		"steps back and wipes both hands on a broad leaf, the one thing this jungle never runs short of.",
+		"lets out a long breath and watches a pair of bright birds settle on a branch nearby, quite unconcerned.",
+	},
+	["stv.a.victory.04"] = {
+		"Under the jungle rot, that was a Stormwind soldier once. I hope whoever sent him here never learns how he ended.",
+		"One of Kurzen's men. He came to this jungle wearing our colors. The jungle, or the colonel, made him into something else.",
+	},
+	["stv.a.victory.05"] = {
+		"Tell your foreman the contract's cancelled.",
+		"The Venture Co. can send me the bill for that one.",
+	},
+	["stv.a.weather_change.01"] = {
+		"turns {g:his|her} face up to the rain sheeting off the high leaves, warm as soup and no help at all against the heat.",
+		"stands under a broad leaf as the rain comes pouring through the canopy, and the whole jungle hisses like a kettle.",
+	},
 ]==])

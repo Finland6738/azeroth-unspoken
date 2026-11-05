@@ -531,16 +531,22 @@ local function ReadRepo(path)
 end
 
 T.run("C0b: the regional sources are kept as compact pieces that decode exactly", function()
-	-- every area with lines of its own: the trial slice, the starting areas of W01 and the zones of W02
+	-- every area with lines of its own: the trial slice, the starting areas of W01, the zones of W02 and of W03 (the
+	-- dungeon packs of W03 belong to the continents, built with them)
 	for _, z in ipairs({ "Elwynn Forest", "Dun Morogh", "Tirisfal Glades", "Mulgore", "Teldrassil", "Loch Modan", "Westfall",
 		"Redridge Mountains", "Duskwood", "Silverpine Forest", "Wetlands", "Hillsbrad Foothills", "Stranglethorn Vale",
-		"The Barrens", "Darkshore", "Ashenvale", "Stonetalon Mountains", "Thousand Needles", "Durotar" }) do Travel(z) end
+		"Arathi Highlands", "Alterac Mountains", "Badlands", "Searing Gorge", "The Hinterlands", "Swamp of Sorrows",
+		"Blasted Lands", "Burning Steppes", "Eastern Plaguelands", "The Barrens", "Darkshore", "Ashenvale",
+		"Stonetalon Mountains", "Thousand Needles", "Desolace", "Dustwallow Marsh", "Moonglade", "Azshara", "Tanaris",
+		"Feralas", "Durotar" }) do Travel(z) end
 	local files = {}
 	for _, d in ipairs({ "Kalimdor", "Kalimdor_enUS", "EasternKingdoms", "EasternKingdoms_enUS" }) do
 		for _, f in ipairs({ "Durotar", "Orgrimmar", "Elwynn", "Stormwind", "Exploration", "DunMorogh", "Ironforge", "Tirisfal",
 			"Undercity", "Mulgore", "ThunderBluff", "Teldrassil", "Darnassus", "Barrens", "Darkshore", "Ashenvale", "Stonetalon",
 			"ThousandNeedles", "LochModan", "Westfall", "Redridge", "Duskwood", "Silverpine", "Wetlands", "Hillsbrad",
-			"Stranglethorn" }) do
+			"Stranglethorn", "Desolace", "DustwallowMarsh", "Moonglade", "Azshara", "Tanaris", "Feralas", "Arathi", "Alterac",
+			"Badlands", "SearingGorge", "Hinterlands", "SwampOfSorrows", "BlastedLands", "BurningSteppes",
+			"EasternPlaguelands", "Dungeons" }) do
 			table.insert(files, ReadRepo("AzerothUnspoken_" .. d .. "/" .. f .. ".lua"))
 		end
 	end
@@ -568,7 +574,7 @@ T.run("C0b: the regional sources are kept as compact pieces that decode exactly"
 			if all:find("[==[\n" .. text .. "]==]", 1, true) then found = found + 1 end
 		end
 	end
-	T.eq(sources, 54, "the twenty-seven rules files and the twenty-seven English texts files of the download are sources")
+	T.eq(sources, 88, "the forty-four rules files and the forty-four English texts files of the download are sources")
 	T.eq(found, sources, "each source decodes to the exact text of its file")
 	T.ok(kept < whole * 0.6, ("the pieces are far smaller than the source (%d of %d bytes)"):format(kept, whole))
 	-- a source with no dictionary, or holding a code byte, is kept as written
