@@ -24,3 +24,13 @@ Silverpine.lua
 Wetlands.lua
 Hillsbrad.lua
 Stranglethorn.lua
+Arathi.lua
+Alterac.lua
+Badlands.lua
+SearingGorge.lua
+Hinterlands.lua
+SwampOfSorrows.lua
+BlastedLands.lua
+BurningSteppes.lua
+EasternPlaguelands.lua
+Dungeons.lua

@@ -21,3 +21,10 @@ Darkshore.lua
 Ashenvale.lua
 Stonetalon.lua
 ThousandNeedles.lua
+Desolace.lua
+DustwallowMarsh.lua
+Moonglade.lua
+Azshara.lua
+Tanaris.lua
+Feralas.lua
+Dungeons.lua
