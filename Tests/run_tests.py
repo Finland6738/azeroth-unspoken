@@ -330,7 +330,10 @@ for i in range(100):
     setP(combat=False)
     G.FIRE("PLAYER_REGEN_ENABLED")
     G.ADVANCE(1)   # il Narrative Director risolve i candidati dopo la finestra di arbitraggio
-    if i >= 6 and NS.Gateway.GetPending(NS.Gateway) is not None:
+    # a spoken line (/say) waiting: an emote the Gateway's spacing kept back can also wait as a proposal (the order of the
+    # picks differs between platforms, W02), and a newer proposal replaces it
+    pend_ = NS.Gateway.GetPending(NS.Gateway)
+    if i >= 6 and pend_ is not None and pend_.channel == "SAY":
         break
 print("\nFLUSSO EVENTI")
 flow = list(G.SENT.values())

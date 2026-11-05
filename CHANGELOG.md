@@ -56,7 +56,11 @@ empty diff). No literary piece and no `tier` field. The addon goes from 2,974 to
   mage (5.41 → 5.23 h), within the spread of the seeds (3.5-7.0 h): W02 added only a few lines to Durotar and Orgrimmar.
 - **Tests:** the counts; the C0b test of the sources visits all nineteen areas with lines (54 sources); the test of a
   change of area spread over frames goes through Silithus (The Barrens has an area of its own now); `/au packs` may list
-  other released areas between Durotar and Kalimdor.
+  other released areas between Durotar and Kalimdor. Two tests that the order of the picks on Linux made fail in CI are
+  made robust (no change to the engine): the share of the "says" and "murmurs" frames in TestSelection was about 9-10%
+  in its mix of events since R3a (7.7-10.4% by seed, on `main` too), so it now pools five seeds and keeps a margin
+  (under 12%; the R3 target of 10% stays on M2, 6.3%); the speak-key flow of `run_tests.py` waits for a `/say`
+  proposal, since an emote kept back by the Gateway's spacing can also wait as one.
 - **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W02.md](docs/content/reviews/W02.md) (22
   intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
   README counts, wiki Phrase Packs.
