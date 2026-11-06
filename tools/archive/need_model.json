@@ -303,6 +303,24 @@
    "MAGE": 0.0
   }
  },
+ "_cast_on_self": "C0h (ADR 0055): the share of a class's casts of an event that go to itself (a class not listed: 1, always on itself). heal and buff split into <event>:self and <event>:other by these shares, and the lines that speak to someone else write castOnSelf = false. A potion, a healthstone and a bandage are always on oneself; the warrior, the rogue, the hunter and the mage heal only so. A healer levels mostly alone and heals itself more than others, then heals its group in instances: a little over half on itself, the priest half. The warlock's Health Funnel goes to its demon. A buff goes to oneself alone and to the group in company; the hunter's aspects, the warrior's Battle Shout and the rogue's poisons are its own. Every share is a hypothesis to tune.",
+ "cast_on_self": {
+  "heal": {
+   "PRIEST": 0.5,
+   "PALADIN": 0.6,
+   "SHAMAN": 0.6,
+   "DRUID": 0.6,
+   "WARLOCK": 0.5
+  },
+  "buff": {
+   "PRIEST": 0.5,
+   "PALADIN": 0.6,
+   "MAGE": 0.6,
+   "DRUID": 0.6,
+   "SHAMAN": 0.7,
+   "WARLOCK": 0.5
+  }
+ },
  "_instance": "An instance (dungeon, raid, battleground) speaks like the open world without these events.",
  "instance_drop": [
   "weather_change",

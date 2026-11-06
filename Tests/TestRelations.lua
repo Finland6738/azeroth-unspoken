@@ -791,7 +791,7 @@ T.run("le frasi del narratore seguono il rapporto", function()
 	T.ok(not ids["rel.greet.unknown"] and not ids["rel.greet.rival"] and not ids["rel.greet.enemy"], "e nessun saluto formale o ostile")
 	ids = Seen("farewell"); T.ok(ids["rel.bye.friend"] and not ids["rel.bye.unknown"], "congedo di un amico")
 	ids = Seen("thanks"); T.ok(ids["rel.thanks.friend"] and not ids["rel.thanks.unknown"], "ringraziamento a un amico")
-	ids = Seen("heal"); T.ok(ids["rel.heal.friend"] and not ids["rel.heal.enemy"], "una cura a un amico")
+	ids = Seen("heal", { castOnSelf = false }); T.ok(ids["rel.heal.friend"] and not ids["rel.heal.enemy"], "una cura a un amico")
 	-- un rivale rispettato e un nemico
 	R:SetAxis("player", "Aldric-Stormrage", "trust", -20); R:SetAxis("player", "Aldric-Stormrage", "affection", 0)
 	R:SetAxis("player", "Aldric-Stormrage", "respect", 70)

@@ -8,6 +8,38 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0h: a cast on oneself and a cast on someone else (issue #138, ADR 0055)
+
+Found by content wave W06 (PR #255): the heal lines that speak to the one being healed relied on a friend being
+targeted (`hasTarget`, `friendly`), so a healing potion or a healthstone drunk with a friend targeted could say "Hold
+still, {target}..." to the friend, and so could a heal the character cast on itself. Nothing told a cast on oneself from
+a cast on someone else.
+
+- **Added: the condition `castOnSelf`** (`true` / `false`). `Triggers.CastOnSelf` reads the target
+  `UNIT_SPELLCAST_SENT` gave for the cast, as `NS.SELF_CASTS` already did for the bandage: no target (a potion, a
+  healthstone) or the character's own name is a cast on oneself, any other name a cast on someone else. Every cast event
+  carries it; the rule engine reads it as a special condition, and an unknown value (any other event) matches neither
+  `true` nor `false`. `/au cast` sends the test cast to a friendly target if there is one. The validator knows it.
+- **Changed: 78 lines get `castOnSelf = false`, no text changed.** The 48 `heal` and 20 `buff` lines that write
+  `hasTarget` and `friendly` (among them the eleven W06 listed: `heal.05`, `heal.w04.001`, `rel.heal.unknown`, the
+  dwarf, gnome, human and night elf `heal.001`, `cls.priest.heal.001`, the paladin's, druid's and shaman's `heal.003`),
+  and the 10 relation heal lines (`rel.heal.*`), which speak to the target.
+- **Changed: the need splits heal and buff by self and other** (`need_model.json`: `cast_on_self`, the share of each
+  class's casts on itself, every one a hypothesis; `tools/archive/need.py`). A pool of `heal` or `buff` has a half on
+  oneself (`heal:self`) and a half on someone else (`heal:other`); a line with `castOnSelf` counts in its half, one
+  without it in both, shared by their firings. A pool never cast on someone else (a warrior's heal, a hunter's aspects)
+  keeps the plain event. `cli need --wave` prints the condition of each half, and WAVES.md shows `castOnSelf` among the
+  conditions of a wave.
+- **The need** (per language): soft gap 0 → **25**, strict gap 11,191 → **11,311**, random gap 255,815 → **256,256**;
+  **89 waves** as before. The lines to someone else no longer count for the casts on oneself. The first row of WAVES.md
+  is still the next wave: the shaman, the paladin and the druid, their heal pools now in two halves.
+- **Tests:** a potion or a healthstone with a friend targeted (priest, paladin, warrior, mage) and a heal or buff cast on
+  oneself with a friend targeted never match or pick a line with `castOnSelf = false`; a heal or buff cast on the friend
+  still matches them and says one; `/au cast` with and without a friendly target; the split of the need model (the
+  shares, the halves, a line counted in both halves).
+- **Docs:** ADR 0055, ARCHITECTURE.md, PACK_FORMAT.md (`castOnSelf`), the writing rules of WAVES.md, G1 checklist
+  section C0h, wiki Settings, NEED.md, need.json and the WAVES.md table regenerated, ROADMAP.
+
 ### Content wave W06: the priest, the hunter, the warlock and the mage, and the heal lines of every gesture (issue #138)
 
 The sixth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table

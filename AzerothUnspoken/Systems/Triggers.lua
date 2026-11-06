@@ -64,6 +64,18 @@ local function OwnName()
 	return NS.Compat.SafeCall(UnitName, "player")
 end
 
+---C0h (ADR 0055): whether a cast of the character went to the character itself, from the target UNIT_SPELLCAST_SENT
+---gave. No target (nil or "": a potion, a healthstone, a spell with no target) is a cast on oneself; the character's
+---own name too (a self-cast heal or buff, with or without a friend targeted). nil = unknown (own name unreadable).
+---@param target string|nil
+---@return boolean|nil
+function Triggers.CastOnSelf(target)
+	if target == nil or target == "" then return true end
+	local own = OwnName()
+	if own == nil then return nil end
+	return target == own
+end
+
 ---L'evento di un gesto di NS.SELF_CASTS, o nil se per questa classe, in questo momento o su questo bersaglio non ne ha.
 ---@param kind string|nil il tipo dell'incantesimo
 ---@param inCombat boolean
@@ -74,7 +86,7 @@ function Triggers:SelfCastEvent(kind, inCombat, target)
 	if not def then return nil end
 	if def.outOfCombat and inCombat then return nil end
 	if def.classes and not def.classes[select(2, NS.Compat.SafeCall(UnitClass, "player")) or ""] then return nil end
-	if def.self and target and target ~= OwnName() then return nil end
+	if def.self and not Triggers.CastOnSelf(target) then return nil end
 	return def.event
 end
 
@@ -137,8 +149,8 @@ function handlers.SPELL_CAST(env)
 
 	local kind = NS:ClassifySpell(name)
 	local inCombat = InCombat()
-	local extra = { spell = name }
-	if target then extra.target = target end
+	local extra = { spell = name, castOnSelf = Triggers.CastOnSelf(target) }
+	if target and target ~= "" then extra.target = target end
 	local event
 	if kind == "rez" then
 		event = "rezother"

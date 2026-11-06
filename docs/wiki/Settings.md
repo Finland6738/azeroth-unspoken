@@ -50,8 +50,8 @@ These are the chances before intensity is applied. Intensity 50 keeps them as th
 | `rez` | you come back to life | 70% |
 | `levelup` | you gain a level | 100% |
 | `attack` | you cast an attack spell | 8% |
-| `heal` | you cast a heal, or (warrior, rogue, hunter, mage) put a bandage on yourself | 15% |
-| `buff` | you cast a buff; out of combat also a warrior's Battle Shout, a rogue's poison or sharpening stone, a hunter's aspect | 25% |
+| `heal` | you cast a heal, or (warrior, rogue, hunter, mage) put a bandage on yourself; a line that speaks to the one you heal is said only when the heal goes to someone else, never on a potion or a heal on yourself | 15% |
+| `buff` | you cast a buff; out of combat also a warrior's Battle Shout, a rogue's poison or sharpening stone, a hunter's aspect; a line that speaks to the one you buff is said only when the buff goes to someone else | 25% |
 | `travel` | you cast a travel spell | 60% |
 | `rezother` | you resurrect someone | 80% |
 | `weather_change` | the weather changes and stays changed | 60% |

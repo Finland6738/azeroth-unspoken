@@ -287,6 +287,8 @@ end
 
 local function Cast(rest)
 	local ctx = NS:BuildContext({ spell = rest ~= "" and rest or nil })
+	-- C0h (ADR 0055): the test cast goes where the game would send it, to a friendly target or else to oneself
+	ctx.castOnSelf = not (ctx.hasTarget and ctx.friendly == true)
 	local kind = ctx.spellKind
 	local ev = (kind == "heal" and "heal") or (kind == "rez" and "rezother") or (kind == "travel" and "travel")
 		or (kind == "buff" and not ctx.combat and "buff") or "attack"

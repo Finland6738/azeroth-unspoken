@@ -32,6 +32,13 @@ pool is its need minus the usable texts it holds today (variants at the default 
 An event a class changes (`class_rates` of the model, C0g, ADR 0054: heal, buff and rezother fire only on the
 character's own casts; the companions' `classes`) fires at the factor of the class: a class pool at its class's,
 every other pool of a character at the largest among the classes of its race; 0 = the class cannot fire it.
+
+A cast on oneself and a cast on someone else (`cast_on_self` of the model, C0h, ADR 0055: the `castOnSelf` condition)
+split the pools of heal and buff: the share of a class's casts that go to itself fires `<event>:self` (the lines with
+`castOnSelf = true`, and those without the condition), the rest fires `<event>:other` (`castOnSelf = false`, and those
+without it). A line without the condition counts in both halves of its pool, in proportion to their firings. A pool with
+no cast on someone else (a warrior's heal: a bandage or a potion, always on itself) keeps the plain event, and the lines
+with `castOnSelf = false` never count in it.
 """
 import collections
 import json
@@ -132,6 +139,55 @@ def rates(model):
 def class_factor(factors, event, cls):
     """The factor of a class on the rate of an event (1 when the class does not change it)."""
     return factors.get(event, {}).get(cls, 1.0)
+
+
+CAST_PARTS = ("self", "other")
+
+
+def cast_shares(model):
+    """{event: {CLASS: share of its casts on itself}} of the events split by castOnSelf (C0h, ADR 0055); a class not
+    listed casts only on itself (1)."""
+    known = all_classes(model)
+    out = {}
+    for e, by_class in (model.get("cast_on_self") or {}).items():
+        if e.startswith("_"):
+            continue
+        unknown = sorted(set(by_class) - set(known))
+        if unknown:
+            raise ValueError("cast_on_self.%s: classes not in the model: %s" % (e, ", ".join(unknown)))
+        for c, x in by_class.items():
+            if not 0 <= x <= 1:
+                raise ValueError("cast_on_self.%s.%s: a share is between 0 and 1" % (e, c))
+        out[e] = {c: float(by_class.get(c, 1.0)) for c in known}
+    return out
+
+
+def class_parts(factors, selfs, event, cls):
+    """[(pool event, factor)] of a class on an event: the event itself, or its halves on oneself and on someone else
+    (`<event>:self`, `<event>:other`) for an event split by castOnSelf."""
+    x = class_factor(factors, event, cls)
+    if event not in selfs:
+        return [(event, x)]
+    s = selfs[event].get(cls, 1.0)
+    return [(event + ":self", x * s), (event + ":other", x * (1 - s))]
+
+
+def cast_condition(event):
+    """The castOnSelf condition the lines of a pool event write ("" for an event not split)."""
+    part = event.partition(":")[2]
+    return "castOnSelf = %s" % ("true" if part == "self" else "false") if part in CAST_PARTS else ""
+
+
+def cast_flag(cond):
+    """What an intention says of castOnSelf: "self", "other" or "both" (no condition)."""
+    cond = cond if isinstance(cond, dict) else {}
+    v = cond.get("castOnSelf")
+    if isinstance(v, bool):
+        return "self" if v else "other"
+    n = cond.get("not")
+    if isinstance(n, dict) and isinstance(n.get("castOnSelf"), bool):
+        return "other" if n["castOnSelf"] else "self"
+    return "both"
 
 
 def level(layer):
@@ -363,6 +419,7 @@ def need(model, places):
         # the mean firings per hour of play over every character: how often a player meets the pool
         p["per_hour"] += per_hour / model["life_hours"]
 
+    selfs = cast_shares(model)
     for ch in chars:
         prof = profile(model, ch, timeline(model, ch, places), places)
         fired, classes = pool_firings(model, ch, prof, rate, factors)
@@ -370,17 +427,40 @@ def need(model, places):
         for k, (strict, soft) in fired.items():
             ev = k[0]
             if ev not in scale:
-                fs = [class_factor(factors, ev, c) for c in ch["classes"]]
-                scale[ev] = (max(fs), sum(fs) / len(fs))
-            top, mean = scale[ev]
-            note(k, strict * top, soft * top, strict * mean / len(chars))
+                # the factor of each class, on each half of an event split by castOnSelf (C0h, ADR 0055)
+                parts = collections.OrderedDict()
+                for c in ch["classes"]:
+                    for name, x in class_parts(factors, selfs, ev, c):
+                        parts.setdefault(name, []).append(x)
+                scale[ev] = [(name, max(fs), sum(fs) / len(fs)) for name, fs in parts.items()]
+            for name, top, mean in scale[ev]:
+                if top > 0 or name == ev:
+                    note((name,) + k[1:], strict * top, soft * top, strict * mean / len(chars))
         # the class changes its own pools by its factor: a class that cannot fire the event has no pool of it
         for ev, (strict, soft) in classes.items():
             for cls in ch["classes"]:
-                x = class_factor(factors, ev, cls)
-                if x > 0:
-                    note((ev, "class", cls.lower()), strict * x, soft * x, strict * x / combos)
+                for name, x in class_parts(factors, selfs, ev, cls):
+                    if x > 0:
+                        note((name, "class", cls.lower()), strict * x, soft * x, strict * x / combos)
     floor = model.get("min_firings", 1)
+    # a pool that is (almost) never cast on someone else keeps the plain event: its lines are all on oneself
+    for k in [k for k in pools if k[0].endswith(":self")]:
+        ev = k[0].partition(":")[0]
+        mine, other = pools[k], pools.get((ev + ":other",) + k[1:])
+        share = mine["strict"] / (mine["strict"] + other["strict"]) if other and mine["strict"] + other["strict"] else 1.0
+        mine["self_share"] = share
+        if other is not None:
+            other["self_share"] = share
+        if other is None or other["strict"] < floor:
+            p = pools.pop(k)
+            if other is not None:
+                pools.pop((ev + ":other",) + k[1:])
+                for f in ("strict", "soft", "per_hour"):
+                    p[f] += other[f]
+            p["event"], p["self_share"] = ev, 1.0
+            pools[(ev,) + k[1:]] = p
+    for k in [k for k in pools if k[0].endswith(":other") and (k[0][:-6] + ":self",) + k[1:] not in pools]:
+        pools[k].setdefault("self_share", 0.0)
     factor = random_factor(model.get("random_repeats", 0.05))
     for p in pools.values():
         p["need_strict"] = int(math.ceil(p["strict"] - 1e-9)) if p["strict"] >= floor else 0
@@ -447,15 +527,47 @@ def current(con, model, places, state="approved"):
                          " WHERE i.state = ?", (state,)):
         var[r[0]][r[1]].append({"depth": r[2]})
     out = collections.defaultdict(collections.Counter)
+    selfs = cast_shares(model)
     for r in con.execute("SELECT id, events, conditions, area, chainable, kind FROM intention WHERE state = ?", (state,)):
         if store.jload(r["chainable"]) == "only":
             continue
-        cells = classify(store.jload(r["conditions"]), r["area"], places, model)
+        cond = store.jload(r["conditions"])
+        cells = classify(cond, r["area"], places, model)
         for ev in json.loads(r["events"]):
+            # an event split by castOnSelf (C0h): the line is kept apart by what it says of it, `resolve` shares it out
+            ev = ev + ":" + cast_flag(cond) if ev in selfs else ev
             for layer, value in cells:
                 for lang in langs:
                     out[(ev, layer, value)][lang] += usable(var[r["id"]][lang], model["default_depth"]) if var[r["id"]][lang] else 0
     return out, langs
+
+
+def resolve(pools, have, langs):
+    """The texts of `current` counted in the pools of `need` (C0h, ADR 0055). For an event split by castOnSelf, a line
+    with the condition counts in its half; a line without it in both halves, shared by their firings (`self_share`);
+    in a pool kept whole (only on oneself) the lines on oneself and without the condition count, and those with
+    `castOnSelf = false` stay apart in an `<event>:other` row with no need."""
+    out = collections.defaultdict(collections.Counter)
+    for (ev, layer, value), counts in have.items():
+        base, _, flag = ev.partition(":")
+        if flag not in ("self", "other", "both"):
+            out[(ev, layer, value)].update(counts)
+            continue
+        mine, other = (base + ":self", layer, value), (base + ":other", layer, value)
+        if mine not in pools and other not in pools:
+            out[other if flag == "other" else (base, layer, value)].update(counts)
+        elif flag != "both":
+            out[(base + ":" + flag, layer, value)].update(counts)
+        else:
+            share = (pools.get(mine) or pools[other])["self_share"]
+            for lang in langs:
+                n = counts.get(lang, 0)
+                a = int(round(n * share))
+                if mine in pools:
+                    out[mine][lang] += a
+                if other in pools:
+                    out[other][lang] += n - a
+    return out
 
 
 # ---- the report -------------------------------------------------------------------------------------------------------
@@ -549,6 +661,7 @@ def compute(con, root=store.ROOT, model=None, state="approved"):
     places = world(root)
     pools, chars = need(model, places)
     have, langs = current(con, model, places, state)
+    have = resolve(pools, have, langs)
     rows = []
     for k in sorted(set(pools) | set(have)):
         p = pools.get(k) or {"event": k[0], "layer": k[1], "value": k[2], "strict": 0.0, "soft": 0.0, "per_hour": 0.0,
@@ -624,7 +737,7 @@ def _unit(row):
     if layer == "place":
         return (row["kind"], row["label"])
     if layer == "generic":
-        ev = row["event"]
+        ev = row["event"].partition(":")[0]   # both halves of a heal or a buff (C0h) are one unit
         return ("generic", "_".join(ev.split("_")[:2]) if ev.startswith("npcd_") else ev)
     return (layer, row["label"])
 
@@ -772,6 +885,11 @@ def to_markdown(res, top=30):
         "and-the-gestures-a-class-makes-for-itself.md)): they fire only on the character's own casts, so a class pool "
         "fires at its class's factor (`class_rates` of the model), a pool the class cannot fire has no need, and every "
         "other pool fires for the class of the race that fires it most.",
+        "- A heal or a buff cast on oneself and one cast on someone else are two halves of a pool ([ADR 0055](../adr/"
+        "0055-a-cast-on-oneself-and-a-cast-on-someone-else.md)): `<event>:self` and `<event>:other`, by the share of "
+        "each class's casts on itself (`cast_on_self` of the model). Their lines write `castOnSelf = true` or `false`; "
+        "a line without the condition counts in both halves by their firings. A pool never cast on someone else keeps "
+        "the plain event.",
         "- The need grows in proportion to the pace: at intensity 100 the spontaneous budgets double.",
         "- Texts beyond the strict need of their pool (they still widen the choice): " +
         ", ".join("%s %s" % (l, _fmt(n)) for l, n in t["surplus"].items()) + ".",
@@ -822,6 +940,8 @@ def waves_markdown(res):
         kinds = []
         for u in w["units"]:
             c = "(none)" if u["kind"] == "generic" else ", ".join(re.findall(r"(\w+) =", u["condition"]))
+            if any(cast_condition(p[0]) for p in u["pools"]):
+                c = "castOnSelf" if c == "(none)" else c + ", castOnSelf"
             if c not in kinds:
                 kinds.append(c)
         return "; ".join("`%s`" % c for c in kinds)
