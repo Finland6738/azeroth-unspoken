@@ -210,12 +210,43 @@ local function SituationWeather(p)
 	return false
 end
 
+-- W08 (#259): proper names that hold a weather or time word ("night elf", "Thunder Bluff", "Argent Dawn"). The
+-- weather and time checks read the text with these names blanked out, so a line that names a people, a city or an
+-- order does not claim the night or a storm. Lower case; client names stay English in Italian lines too.
+local SHARED_NAMES = { "thunder bluff", "thunder ridge", "thunder axe", "thunderbrew", "argent dawn",
+	"twilight's hammer", "twilight grove", "twilight vale", "snowfall graveyard", "night watch" }
+Validator.PROPER_NAMES = {
+	en = { "night elves", "night elf", "night-elves", "night-elf" },
+	it = { "elfi della notte", "elfo della notte", "elfe della notte", "elfa della notte", "alba d'argento" },
+}
+for _, list in pairs(Validator.PROPER_NAMES) do
+	for _, name in ipairs(SHARED_NAMES) do table.insert(list, name) end
+end
+
+---The text in lower case with the known proper names of a language blanked out (same length).
+---@param text string
+---@param lang string short code (en, it)
+---@return string
+function Validator.MaskNames(text, lang)
+	local lower = NS.Lower(text)
+	for _, name in ipairs(Validator.PROPER_NAMES[lang] or {}) do
+		local from = 1
+		while true do
+			local a, b = lower:find(name, from, true)
+			if not a then break end
+			lower = lower:sub(1, a - 1) .. string.rep(" ", b - a + 1) .. lower:sub(b + 1)
+			from = b + 1
+		end
+	end
+	return lower
+end
+
 ---La prima parola del meteo che il testo nomina, o nil.
 ---@param text string
 ---@param lang string codice breve (en, it)
 ---@return string?
 function Validator.WeatherWord(text, lang)
-	return Validator.FindWord(text, Validator.WEATHER_WORDS[lang])
+	return Validator.FindWord(Validator.MaskNames(text, lang), Validator.WEATHER_WORDS[lang])
 end
 
 ---The first of the words (whole words or phrases, lower case) that the text contains, or nil.
@@ -269,7 +300,7 @@ function Validator.TimeWord(text, lang)
 	if not list then return nil end
 	local words = {}
 	for _, e in ipairs(list) do table.insert(words, e[1]) end
-	local w = Validator.FindWord(text, words)
+	local w = Validator.FindWord(Validator.MaskNames(text, lang), words)
 	if not w then return nil end
 	for _, e in ipairs(list) do
 		if e[1] == w then return w, e[2], e[3] == true end

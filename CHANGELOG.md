@@ -8,6 +8,19 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Validator: a word inside a proper name is not a weather or time claim (W08 engine finding)
+
+- **Fixed:** the weather and time-of-day warnings (#92, #162) matched a word inside a proper name. "Night" matched in
+  "night elf" and "elfo della notte", "thunder" in "Thunder Bluff", and "dawn" in "Argent Dawn". A night elf or tauren
+  line in an event that describes the surroundings got a warning as if it claimed the night or a storm, and the W08
+  writers worked around it ("kaldorei", "the bluff").
+  - `Validator.PROPER_NAMES` lists these names per language. The client names stay English in Italian lines too.
+  - `Validator.MaskNames` blanks them out before `WeatherWord` and `TimeWord` read the text.
+  - A real word next to a name is still found: "Thunder rolls over Thunder Bluff".
+- **Fixed:** the American spelling test of the content read "grey" inside "Greymane", so a line naming the Greymane
+  Wall failed. The name is now skipped.
+- **Tests:** `TestValidator` covers the names in English and Italian, and a real time or weather word next to one.
+
 ### Content wave W08: the dwarf, the tauren, the night elf and the human (issue #138)
 
 The eighth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table

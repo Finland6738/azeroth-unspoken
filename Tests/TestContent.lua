@@ -377,7 +377,8 @@ T.run("#61: {og:} ha sempre una variante neutra; #66: l'inglese usa l'ortografia
 	for id, p in pairs(BASE) do
 		for _, v in ipairs(p.text.en or {}) do
 			v = Engine.VariantView(v)
-			local low = v.t:lower()
+			-- W08 (#259): proper names that hold a British spelling ("the Greymane Wall") are not spelling
+			local low = v.t:lower():gsub("greymane", "")
 			for _, word in ipairs(BRITISH) do
 				T.ok(not low:find(word, 1, true), id .. ": ortografia britannica (" .. word .. "): " .. v.t)
 			end
