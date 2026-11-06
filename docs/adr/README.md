@@ -62,7 +62,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0052](0052-a-bounded-pick.md) | A bounded pick: large events sampled by tier, and the cost of a pick gated in instructions | accepted (offline tests and projections) |
 | [0053](0053-lines-of-the-character-only.md) | The lines of the character only: class and race lines of other characters are never registered | accepted (offline; reading the class and race at load untested in game) |
 | [0054](0054-event-rates-per-class-and-the-gestures-a-class-makes-for-itself.md) | Event rates per class, and the gestures a class makes for itself | accepted (offline; the factors are hypotheses, the spell names untested in game) |
-| [0055](0055-a-cast-on-oneself-and-a-cast-on-someone-else.md) | A cast on oneself and a cast on someone else (`castOnSelf`) | accepted (offline; the shares are hypotheses, the target of a potion untested in game) |
+| [0055](0055-a-cast-on-oneself-and-a-cast-on-someone-else.md) | A cast on oneself and a cast on someone else | accepted (offline; the shares are hypotheses, the target of a potion untested in game) |
 
 ## Pending decisions
 
