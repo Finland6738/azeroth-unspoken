@@ -1156,4 +1156,360 @@ NS:AddTexts("itIT", {
 		"Di forza ne hai in abbondanza. Io ti insegnerò dove metterla.",
 		"Un tauren. Il peso c'è già; il mio lavoro è dargli una direzione. Cominciamo.",
 	},
+	["race.gnome.npcd_flightmaster_bye.w09.001"] = {
+		"Allaccia le cinghie due volte: con quel peso piuma basta una folata a portarti via. Ecco. Si parte.",
+		"Tieniti al pomo, non alle piume. L'ultimo gnomo che ho mandato su ha passato tutto il viaggio a studiare le giunture delle ali.",
+	},
+	["race.gnome.npcd_flightmaster_open.w09.001"] = {
+		"Su, ti do una spinta. C'è più sella che gnomo, quindi siediti al centro.",
+		"In sella. La bestia quasi non si accorge del peso di uno gnomo, e per te vuol dire un viaggio liscio.",
+	},
+	["race.gnome.npcd_flightmaster_route.w09.001"] = {
+		"Non lungo. Abbastanza per contare i rivetti delle briglie, cosa che a quanto pare fanno tutti gli gnomi.",
+		"Abbastanza tranquillo. Gli gnomi di solito lo passano a capire come renderlo più veloce. Dimmelo, se ci riesci.",
+	},
+	["race.gnome.npcd_guard_bye.w09.001"] = {
+		"Va' con prudenza. Là fuori la gente piccola passa inosservata: a volte è una fortuna, a volte no.",
+		"Vai pure. Se qualcosa di grosso ti viene addosso, mi dicono che gli gnomi sono bravissimi a non trovarsi dove atterra.",
+	},
+	["race.gnome.npcd_guard_danger.w09.001"] = {
+		"I trogg. Dove c'è una grotta c'è il rischio di trovarli, e alla tua gente hanno già fatto abbastanza male.",
+		"Là fuori, essere piccoli vuol dire che certe bestie ti prendono per uno spuntino. Fagli capire subito che non è così.",
+	},
+	["race.gnome.npcd_guard_directions.w09.001"] = {
+		"Tieniti al bordo della strada, che la gente grossa non ti calpesti, e segui la via principale. Se la perdi, chiedi ancora.",
+		"Ti farei una mappa, ma finiresti per migliorarla. Strada principale, poi segui il fiuto: voi gnomi fate sempre così.",
+		"Te la caveresti in un labirinto a ingranaggi: qualche strada non ti darà problemi. Punta all'angolo più affollato e chiedi lì.",
+	},
+	["race.gnome.npcd_guard_open.w09.001"] = {
+		"Eh? Ah, {g:uno gnomo|una gnoma}. Scusa, guardavo sopra la tua testa. Che c'è?",
+		"La perdita di Gnomeregan è una brutta storia. Se posso fare qualcosa per qualcuno della sua gente, dimmelo.",
+		"Gli gnomi: svelti, piccoli, educati. Se tutti i visitatori fossero come voi non avrei niente da fare. Parla pure.",
+	},
+	["race.gnome.npcd_innkeeper_bye.w09.001"] = {
+		"Vai pure. Attenzione agli stivaloni per strada: non tutti guardano dove mettono i piedi.",
+		"Buona strada. E quando Gnomeregan tornerà vostra, tienimi una stanza laggiù.",
+		"Arrivederci! Torna con un'altra idea: l'ultimo gnomo me ne ha lasciate tre, e non ne ho ancora capita una.",
+	},
+	["race.gnome.npcd_innkeeper_news.w09.001"] = {
+		"Da Dun Morogh dicono che i trogg continuano a sciamare dalle parti di Gnomeregan. Mi dispiace: so che preferiresti sentire qualcosa di allegro.",
+		"Si dice che Mekkatorque non abbia smesso un solo giorno di progettare la riconquista della vostra città. Voi gnomi non vi arrendete mai, eh?",
+		"A Ironforge si torna a parlare di Thermaplugg, ancora rintanato laggiù con le sue macchine. Un traditore in un palazzo di latta, lo chiamano.",
+	},
+	["race.gnome.npcd_innkeeper_open.w09.001"] = {
+		"Chi è? Ah, laggiù! Entra. Tengo una cassetta accanto al bancone per gli gnomi: sali e parliamo guardandoci negli occhi.",
+		"Avanti, avanti. C'è uno sgabello col gradino, fatto per la tua gente. Non lasciarlo prendere agli altri.",
+	},
+	["race.gnome.npcd_innkeeper_open.w09.002"] = {
+		"{g:Uno gnomo|Una gnoma}! Siediti vicino al fuoco e chiacchiera: la tua gente porta sempre la conversazione migliore oltre quella porta.",
+		"Entra pure. Ti taglio il pane piccolo: ho imparato che gli gnomi mangiano come passerotti e cinguettano come uno stormo intero.",
+	},
+	["race.gnome.npcd_innkeeper_rest.w09.001"] = {
+		"Ti do la stanzetta sotto le scale. Non ridere: per uno gnomo è praticamente un salone.",
+		"I letti sono tutti fatti per gente più grossa. Avrai tanto spazio da poter dormire di traverso senza arrivare al bordo.",
+	},
+	["race.gnome.npcd_innkeeper_sit.w09.001"] = {
+		"Siediti, siediti. I piedi non arriveranno a terra, ma non importa a nessuno: metà degli gnomi che conosco li fanno dondolare apposta.",
+		"Fa' come a casa tua. Gli gnomi trovano sempre l'angolo più accogliente della sala: vediamo quale sceglierai tu.",
+	},
+	["race.gnome.npcd_innkeeper_thanks.w09.001"] = {
+		"Figurati! La tua gente dice grazie più di tutti i miei clienti, e due volte più in fretta.",
+		"Nessun disturbo. Il grazie di uno gnomo arriva sempre con un consiglio sul camino. Ci penserò.",
+	},
+	["race.gnome.npcd_merchant_bye.w09.001"] = {
+		"Buoni affari. Se lo migliori, riportamelo: magari te lo ricompro io.",
+		"Arrivederci. Occhio al gradino: per qualcuno è più alto di quanto sembra.",
+		"Stammi bene. Gli gnomi escono sempre dalla mia bottega con più domande che pacchi. Ci ho preso gusto.",
+	},
+	["race.gnome.npcd_merchant_news.w09.001"] = {
+		"Rame e stagno costano cari di questi tempi: a Tinker Town gli gnomi comprano tutto quello che arriva. La tua gente fa lavorare le fonderie.",
+		"Dicono che il Deeprun Tram viaggi sempre pieno. Metà dei passeggeri sono gnomi diretti a Stormwind per una commissione o l'altra.",
+	},
+	["race.gnome.npcd_merchant_open.w09.001"] = {
+		"Vedo spuntare la cima di una testa dal banco: dev'essere uno gnomo. Cosa ti do?",
+		"Monta pure sulla cassa, se vuoi. Il mio banco l'hanno fatto per gente più alta, ma i tuoi soldi valgono uguale.",
+	},
+	["race.gnome.npcd_merchant_open.w09.002"] = {
+		"Ah, {g:uno gnomo|una gnoma}. Chiederai come funziona ogni cosa prima di chiedere quanto costa. Fai pure, le domande mi piacciono.",
+		"Agli gnomi piace vedere cosa c'è dentro le cose, lo so. Guarda quanto vuoi: se lo smonti, l'hai comprato.",
+	},
+	["race.gnome.npcd_merchant_thanks.w09.001"] = {
+		"Grazie a te! Gli gnomi sono i clienti più educati che servo, e la concorrenza è agguerrita.",
+		"Prego. Torna a dirmi come ha retto: la tua gente fa sempre rapporto, e nei dettagli.",
+	},
+	["race.gnome.npcd_merchant_wares.w09.001"] = {
+		"Le taglie piccole sono in quell'angolo: guanti e stivali su misura per gli gnomi. Li tengo perché nessun altro si prende il disturbo.",
+		"Fil di ferro, molle, minuterie d'ottone e mantelli caldi per le strade di montagna. Quasi tutto lo comprano gli gnomi.",
+	},
+	["race.gnome.npcd_trainer_open.w09.001"] = {
+		"{g:Uno gnomo|Una gnoma}. Capirai l'idea prima che io abbia finito di spiegarla: il difficile sarà la pratica.",
+		"Statura piccola, mente svelta e una testa piena di domande. Bene: falle tutte, ma tra un esercizio e l'altro.",
+	},
+	["race.orc.npcd_flightmaster_bye.w09.001"] = {
+		"Via che si va. Non è un lupo, ma corre sull'aria, e non ti morde se ti aggrappi.",
+		"Tieniti e lascia lavorare la bestia. Gli orchi vogliono sempre guidare; questa si guida da sé.",
+	},
+	["race.orc.npcd_flightmaster_open.w09.001"] = {
+		"Monta. La bestia porta volentieri gli orchi: riconosce una presa salda quando la sente.",
+		"Su. E rilassa la mascella: sento digrignare quelle zanne fin da qui.",
+	},
+	["race.orc.npcd_flightmaster_route.w09.001"] = {
+		"Lungo, ma diritto. Vedrai la terra stesa come una mappa di guerra: mi dicono che agli orchi quella parte piace.",
+		"Non breve. Gli orchi ne passano gran parte a fissare la terra come se dovesse loro qualcosa. Non deve niente, ho controllato.",
+	},
+	["race.orc.npcd_guard_bye.w09.001"] = {
+		"Vai. Se devi combattere, combatti pulito, e riportati indietro l'onore intatto.",
+		"Forza al tuo braccio. Ti augurerei anche prudenza, ma gli orchi non se la portano mai dietro.",
+	},
+	["race.orc.npcd_guard_danger.w09.001"] = {
+		"Per un orco il pericolo non è la battaglia, è quella da cui l'orgoglio non ti lascia andare via. Sceglile.",
+		"Guardati da chiunque porti il segno della Burning Blade. Ti sorrideranno come fratelli, finché smettono.",
+	},
+	["race.orc.npcd_guard_directions.w09.001"] = {
+		"Lo so, preferiresti camminare finché lo trovi piuttosto che chiedere due volte. Allora ascolta una volta sola: sempre dritto, e cerca la folla.",
+		"Segui l'odore della forgia. Ogni orco che ho mandato da quella parte ci ha trovato quel che cercava.",
+		"Indicazioni semplici per gente schietta: la strada principale, poi la prima porta con gente davanti. Ce la farai.",
+	},
+	["race.orc.npcd_guard_open.w09.001"] = {
+		"{g:Un orco|Un'orchessa}. Bene: dirai cosa ti serve senza incartarlo in belle parole. Avanti.",
+		"Hai l'aria di chi il Capoguerra metterebbe di guardia senza pensarci. Qual è il problema?",
+		"Zanne, schiena dritta e sguardo fermo. Quando mi si avvicina un orco non mi preoccupo granché. Che c'è?",
+	},
+	["race.orc.npcd_innkeeper_bye.w09.001"] = {
+		"Va' con onore, come dice la tua gente. E torna con la fame.",
+		"Buona strada. Lascia un po' di battaglie anche agli altri: gli orchi non lo fanno mai.",
+		"Vai, allora. Ti tengo calda la carne: gli orchi non stanno mai lontani a lungo da un buono spiedo.",
+	},
+	["race.orc.npcd_innkeeper_news.w09.001"] = {
+		"Si torna a parlare della Burning Blade: cultisti nelle grotte che evocano cose da lasciare sepolte. Brutta notizia per ogni orco che si è lasciato alle spalle la vecchia maledizione.",
+		"Notizie dalle montagne: quelli di Rend Blackhand a Blackrock Spire continuano a chiamarsi la vera Orda. Ai miei tavoli non ci crede nessuno.",
+		"Chi arriva dall'Alterac racconta che i Frostwolf difendono ancora la loro valle contro i nani Stormpike. Gente dura, i Frostwolf.",
+	},
+	["race.orc.npcd_innkeeper_open.w09.001"] = {
+		"Bevanda forte e risposta diretta, immagino. Gli orchi non chiedono mai altro. Siediti.",
+		"Entra e scrollati di dosso la polvere della strada. C'è carne allo spiedo e uno sgabello che ha già retto degli orchi.",
+	},
+	["race.orc.npcd_innkeeper_open.w09.002"] = {
+		"Occhio alle zanne col gancio della lanterna. Ogni orco che ho servito l'ha suonato come un gong almeno una volta.",
+		"{g:Un orco|Un'orchessa} che entra senza prendere a calci la porta: mi piaci già. Siediti.",
+	},
+	["race.orc.npcd_innkeeper_rest.w09.001"] = {
+		"Prendi la stanza col pavimento duro e la coperta pesante. Gli orchi non dormono mai bene sul morbido.",
+		"C'è un giaciglio contro il muro in fondo, vicino al caldo. Tieni l'arma accanto, se ti serve: con gli orchi ci ho fatto l'abitudine.",
+	},
+	["race.orc.npcd_innkeeper_sit.w09.001"] = {
+		"Siediti e riposa le spalle. Gli orchi ci portano sopra tutto, anche quando non c'è niente da portare.",
+		"Bene. Un orco seduto vicino al focolare vuol dire una sala tranquilla: nessuno cerca guai mentre guardi tu.",
+	},
+	["race.orc.npcd_innkeeper_thanks.w09.001"] = {
+		"Un grazie da orco: breve, ruvido, e sincero. Lo preferisco a qualsiasi discorso.",
+		"Non serve. Hai pagato e non hai rotto niente: dalla tua gente è un ringraziamento più che sufficiente.",
+	},
+	["race.orc.npcd_merchant_bye.w09.001"] = {
+		"Buoni affari. Niente trattative, niente lamentele, soldi sul banco: con gli orchi la giornata è corta e piacevole.",
+		"Arrivederci. Quella roba incassa colpi e ne chiede ancora, proprio come chi se la porta dietro.",
+		"Stammi bene. E se si rompe, dimmelo in faccia: so che gli orchi preferiscono così.",
+	},
+	["race.orc.npcd_merchant_news.w09.001"] = {
+		"Ai Crossroads i commerci vanno forte, dicono i carrettieri. Ogni carovana vuole uno o due orchi di scorta.",
+		"Le pelli di lupo si vendono bene. Non che un orco ne venderebbe mai una, lo so; dico e basta.",
+	},
+	["race.orc.npcd_merchant_open.w09.001"] = {
+		"Gli orchi mi dicono cosa vogliono e pagano quel che costa. Magari facessero tutti così. Cosa ti serve?",
+		"Dritti al punto, allora: la tua gente non sta a curiosare. Dimmi cosa e te lo porto.",
+	},
+	["race.orc.npcd_merchant_open.w09.002"] = {
+		"Piano col banco, è vecchio. La tua gente si appoggia alle cose come se volesse tenersele.",
+		"Guarda pure. Gli orchi vogliono sempre sentire quanto pesa una cosa: basta che la facciate roteare fuori, non tra i miei scaffali.",
+	},
+	["race.orc.npcd_merchant_thanks.w09.001"] = {
+		"Un grazie da un orco. Più raro dell'acciaio buono, e vale quasi altrettanto.",
+		"Prego. La tua gente lo dice una volta e ci crede: non ti chiederò di ripeterlo.",
+	},
+	["race.orc.npcd_merchant_wares.w09.001"] = {
+		"Cinghie pesanti, cuoio spesso, grasso per qualunque cosa tu faccia roteare. Roba fatta per spalle da orco, soprattutto.",
+		"Roba semplice che dura: cuoio robusto, corda, otri che non si crepano col caldo. A un orco non ho mai venduto niente con le nappe.",
+	},
+	["race.orc.npcd_trainer_open.w09.001"] = {
+		"{g:Un orco|Un'orchessa}. Non dovrò insegnarti a non cedere terreno. Dovrò insegnarti quando cederne un po'.",
+		"La tua gente impara facendo e prendendo colpi. Bene. Ne avremo parecchio, di tutti e due.",
+	},
+	["race.scourge.npcd_flightmaster_bye.w09.001"] = {
+		"Tieniti forte. Almeno il freddo lassù non ti darà fastidio: i vivi arrivano che battono i denti.",
+		"Si parte. E tieni ben stretta quella mascella: in quota tira aria.",
+	},
+	["race.scourge.npcd_flightmaster_open.w09.001"] = {
+		"Sali. All'inizio le bestie non sopportavano l'odore dei Reietti. Hanno imparato. Anch'io.",
+		"Su, in sella. Con te non serve calmare la bestia: tu non tremi, e lei lo sente.",
+	},
+	["race.scourge.npcd_flightmaster_route.w09.001"] = {
+		"Lungo e freddo. Non che il freddo ti dica granché. Goditi il silenzio.",
+		"Lassù è tranquillo. Quasi tutti parlano per farsi coraggio; la tua gente sta seduta a guardare la terra che scorre.",
+	},
+	["race.scourge.npcd_guard_bye.w09.001"] = {
+		"Vai pure. E se uno della Scarlet Crusade ti chiede chi sei, non fermarti a rispondere.",
+		"Circola. Cerca di tornare in un pezzo solo, là fuori: mi dicono che rifare i punti sia una seccatura.",
+	},
+	["race.scourge.npcd_guard_danger.w09.001"] = {
+		"Certi sacerdoti della Luce non chiedono da che parte stai prima di bruciarti. Sta' alla larga dai più fanatici.",
+		"Là fuori, tanta gente vede un Reietto e pensa al Flagello. Lasciagli il tempo di ripensarci prima di mettere mano alle armi.",
+	},
+	["race.scourge.npcd_guard_directions.w09.001"] = {
+		"Tu puoi camminare quanto vuoi senza stancarti, quindi prendi il giro lungo. È quello con meno domande.",
+		"Strada principale, e più avanti chiedi di nuovo. Non badare a chi ti fissa: pochi hanno incontrato un Reietto che chiede la strada con educazione.",
+		"La troverai. I morti hanno pazienza per girare in tondo, così dicono; noi altri ci rimettiamo solo i piedi.",
+	},
+	["race.scourge.npcd_guard_open.w09.001"] = {
+		"Reietti, eh. Di' cosa ti serve, e non prendertela per la lancia: la tengo così con tutti.",
+		"Voi avete orari strani e compagnie ancora più strane. Però fastidi non me ne avete mai dati. Che c'è?",
+		"Calma. Il Flagello l'ho visto, e tu non ne fai parte: lo capisco da come stai lì ad aspettare che parli io.",
+	},
+	["race.scourge.npcd_innkeeper_bye.w09.001"] = {
+		"Vai, vai. Dopo arieggio la stanza: niente di personale.",
+		"Abbi cura di te. Qualunque cosa ti tenga insieme, tienila all'asciutto.",
+		"Arrivederci. In un mese non ho avuto un ospite più silenzioso: da te neanche un russare.",
+	},
+	["race.scourge.npcd_innkeeper_news.w09.001"] = {
+		"Per strada raccontano che la Scarlet Crusade si fa più audace a Tirisfal. Al posto tuo eviterei le loro strade: loro non fanno domande prima.",
+		"Chi torna dalle Plaguelands dice che il Flagello non ha ceduto di un passo. Immagino non ti sorprenda.",
+		"Si parla della Royal Apothecary Society che torna a comprare roba strana: ossa, radici, casse intere di tutte e due. Nessuno chiede a cosa servano.",
+	},
+	["race.scourge.npcd_innkeeper_open.w09.001"] = {
+		"Entra. Il fuoco non ti servirà, immagino, ma siediti lì vicino lo stesso: gli altri si agitano meno.",
+		"Ah, i Reietti. A me vanno bene: la tua gente non rimanda mai indietro lo stufato, e non chiede mai il bis.",
+	},
+	["race.scourge.npcd_innkeeper_open.w09.002"] = {
+		"Non badare alle occhiate dall'angolo. Si abitueranno a te. Io ci ho messo appena una settimana.",
+		"Entra pure. C'è un tavolo vicino alla finestra, dove circola l'aria. Non per te: lo preferiscono gli altri clienti.",
+	},
+	["race.scourge.npcd_innkeeper_rest.w09.001"] = {
+		"Una stanza? Te la do, anche se ho sentito che la tua gente più che dormire passa il tempo seduta. La sedia accanto al letto è comoda.",
+		"Il letto è tuo, anche solo per restarci immobile un po'. Nessuno busserà, ci penso io.",
+	},
+	["race.scourge.npcd_innkeeper_sit.w09.001"] = {
+		"Siediti, allora. Non ti porto da bere solo per vedertelo fissare: dimmelo tu, se lo vuoi.",
+		"Mettiti a tuo agio. Lo so che puoi restare lì per ore senza muoverti: gli altri lo trovano inquietante, io riposante.",
+	},
+	["race.scourge.npcd_innkeeper_thanks.w09.001"] = {
+		"Prego. Non capita spesso un grazie con una voce che sembra ghiaia: resta in testa.",
+		"Nessun disturbo. Hai più educazione di metà dei miei clienti vivi, e odori solo un po' peggio.",
+	},
+	["race.scourge.npcd_merchant_bye.w09.001"] = {
+		"Arrivederci. Torna prima del prossimo rattoppo: ho del filo che tiene.",
+		"Buoni affari. Niente storie, niente chiacchiere, niente dita sul pane. Voi Reietti siete i clienti che preferisco.",
+		"Stammi bene. E se qualcuno sulla porta si scansa quando passi, una volta si è scansato anche davanti a me.",
+	},
+	["race.scourge.npcd_merchant_news.w09.001"] = {
+		"I sali da imbalsamazione scarseggiano, dicono: qualcuno li compra a carrettate. Forse conviene farne scorta finché si trovano.",
+		"I commerci lungo le vecchie strade di Lordaeron sono pochi. Da un lato la Scarlet Crusade, dall'altro il Flagello, e la tua gente cammina nel mezzo.",
+	},
+	["race.scourge.npcd_merchant_open.w09.001"] = {
+		"I soldi sono soldi, e i tuoi non puzzano. Non troppo. Che cerchi?",
+		"Vendere ai Reietti è semplice: non discutete sul pane, e sapete esattamente cosa siete venuti a prendere.",
+	},
+	["race.scourge.npcd_merchant_open.w09.002"] = {
+		"Attenzione ai punti su quella mano quando prendi qualcosa: non vorrei che un pezzo di te restasse sul mio scaffale.",
+		"Fa' con calma. La tua gente guarda la merce come uno speziale guarda un campione: lentamente, e senza battere ciglio.",
+	},
+	["race.scourge.npcd_merchant_thanks.w09.001"] = {
+		"Grazie a te. Detto da chi il peggio l'ha già passato, un grazie pesa di più.",
+		"Prego. Con quella voce roca, un grazie sembra un segreto. Lo custodirò.",
+	},
+	["race.scourge.npcd_merchant_wares.w09.001"] = {
+		"Filo, aghi, bende spesse e qualche tonico che funziona anche se non ne senti il sapore. La tua gente compra tutto quanto.",
+		"Bende robuste e unguenti che fermano il marcio. Li tengo per i Reietti: quegli unguenti non li compra nessun altro.",
+	},
+	["race.scourge.npcd_trainer_open.w09.001"] = {
+		"Bene: non ti stanchi e non batti ciglio per un livido. Possiamo andare avanti più a lungo di quanto oserei con i vivi.",
+		"Dicono che ora la volontà dei Reietti sia di nuovo loro. Bene: è la prima cosa che serve a un maestro.",
+	},
+	["race.troll.npcd_flightmaster_bye.w09.001"] = {
+		"Piega quelle ginocchia e tieniti. All'arrivo potrai sgranchirti, te lo prometto.",
+		"Stringi i gomiti. La bestia ha già portato dei troll: si lamenta solo delle gambe.",
+	},
+	["race.troll.npcd_flightmaster_open.w09.001"] = {
+		"La tua gente cavalca i raptor senza pensarci due volte. Questo è solo un raptor con le ali e modi migliori. Sali.",
+		"Su, in sella. Occhio alle zanne con le briglie: l'ultimo troll che ho legato ci ha agganciato una fibbia.",
+	},
+	["race.troll.npcd_flightmaster_route.w09.001"] = {
+		"Abbastanza lungo da annoiarsi, a meno di essere un troll: la tua gente trova sempre qualcosa da ridere, là sotto.",
+		"Liscio come l'olio, se tieni ferme le gambe. Tutti i troll le lasciano penzolare comunque.",
+	},
+	["race.troll.npcd_guard_bye.w09.001"] = {
+		"Vai pure. Qualunque cosa ti colpisca là fuori, dicono che la tua gente si rimargini prima ancora che si veda il livido.",
+		"Buona strada. E tieniti quel ghigno: un troll che smette di sorridere mi preoccupa più di una lancia affilata.",
+	},
+	["race.troll.npcd_guard_danger.w09.001"] = {
+		"I troll si fidano della loro pelle, che si rimargina da sola. D'accordo, ma al veleno non importa quanto guarisci in fretta. Porta qualcosa contro.",
+		"Non tutti i troll che incontri per strada sono Darkspear. Certe tribù ti sbudellerebbero piuttosto che salutarti: guarda bene chi hai davanti.",
+	},
+	["race.troll.npcd_guard_directions.w09.001"] = {
+		"Da lassù ti sfugge ben poco, no? Guarda sopra la folla, cerca l'insegna più alta e vai da quella parte.",
+		"La tua gente trova la riva dall'odore del sale. Usa il naso allo stesso modo: la forgia sa di ferro, la locanda di stufato.",
+		"Con gambe così lunghe arrivi prima che io finisca di spiegare. Sempre dritto, e alla prima svolta chiedi di nuovo.",
+	},
+	["race.troll.npcd_guard_open.w09.001"] = {
+		"Darkspear, eh? La gente di Vol'jin mantiene la parola, da quel che ho visto. Che posso fare per te?",
+		"Ho visto troll di altre tribù dalla parte sbagliata di una lancia. Tu non sei di quelli, si capisce. Parla.",
+		"Te ne stai lì come se dovessi scattare da un momento all'altro. Calma, nessuno vuole litigare con un troll. Che ti serve?",
+	},
+	["race.troll.npcd_innkeeper_bye.w09.001"] = {
+		"Vai pure. Dicono che i troll guariscano in fretta, ma non metterlo alla prova per farmi un piacere.",
+		"Buona strada. E riporta qui quella tua risata: senza un troll questa sala è troppo silenziosa.",
+		"Occhio allo stipite, uscendo. Ha già due ammaccature a forma di troll.",
+	},
+	["race.troll.npcd_innkeeper_news.w09.001"] = {
+		"Le carovane da Tanaris raccontano che i Sandfury di Zul'Farrak tornano a razziare le dune. Non è la tua tribù, lo so, ma la gente te lo chiederà lo stesso.",
+		"I marinai ai miei tavoli non fanno che parlare di Stranglethorn: vecchie pietre dei Gurubashi, e qualcosa che si muove a Zul'Gurub. I tuoi anziani quel nome lo conoscono meglio di me.",
+		"Dalla costa arriva voce che le Echo Isles sono ancora sotto la maledizione di quello stregone pazzo. Mi dispiace: so che era terra dei Darkspear.",
+	},
+	["race.troll.npcd_innkeeper_open.w09.001"] = {
+		"Occhio alla testa con quella trave: l'ho messa all'altezza dei nani, non dei troll. Entra e ripiegati su una panca come puoi.",
+		"Abbassati, abbassati. Ogni troll che passa da quella porta dà una lezione all'architrave. Siediti dove ti entrano le ginocchia.",
+	},
+	["race.troll.npcd_innkeeper_open.w09.002"] = {
+		"Un troll! Ho del pesce sul fuoco, se alla tua gente piace ancora bruciacchiato ai bordi. Siedi, siedi.",
+		"Entra pure. Tengo una pentola di roba piccante apposta per i troll: gli altri clienti piangono appena l'assaggiano.",
+	},
+	["race.troll.npcd_innkeeper_rest.w09.001"] = {
+		"Prendi il letto lungo in fondo. L'ho fatto fare dopo che un troll aveva dormito coi piedi fuori dalla finestra.",
+		"Nel retro c'è un'amaca, se preferisci. La tua gente sembra dormire meglio quando qualcosa dondola.",
+	},
+	["race.troll.npcd_innkeeper_sit.w09.001"] = {
+		"Allunga pure le gambe verso il fuoco, fin dove arrivano. Avviso io gli altri di scavalcarle.",
+		"Bene, accomodati. La sala si fa sempre più rumorosa quando si siede un troll: le risate si attaccano.",
+	},
+	["race.troll.npcd_innkeeper_thanks.w09.001"] = {
+		"Figurati. Ti stringerei la mano, ma per farlo come si deve me ne servirebbero tutte e due.",
+		"Non serve. Il sorriso di un troll basta e avanza, e il tuo illuminerebbe la sala intera.",
+	},
+	["race.troll.npcd_merchant_bye.w09.001"] = {
+		"Buoni affari. Di' a quelli di Sen'jin che non imbroglio: qualche cliente in più mi farebbe comodo.",
+		"Arrivederci. Se quella cinghia cede su braccia così lunghe, riportala e te ne cucio una più lunga.",
+		"Stammi bene. E continua con le battute quando tratti: un troll è l'unico cliente che mi fa ridere mentre mi spenna.",
+	},
+	["race.troll.npcd_merchant_news.w09.001"] = {
+		"Il pesce costa poco lungo la costa, dicono i barcaioli. Me lo poteva dire la tua gente: sapete sempre cosa combina il mare.",
+		"La pelle di raptor si vende bene, mi dicono. Se un troll volesse mai scambiarne qualcuna, sai a chi rivolgerti.",
+	},
+	["race.troll.npcd_merchant_open.w09.001"] = {
+		"Prendi pure da te sullo scaffale in alto: con braccia come le tue, mi risparmi la scala.",
+		"Avanti, guarda pure. La tua gente vede oltre tutto il banco: a un troll non si riesce a nascondere un'occasione.",
+	},
+	["race.troll.npcd_merchant_open.w09.002"] = {
+		"Con i Darkspear ho sempre fatto buoni affari: ridete dei miei prezzi, e poi li pagate lo stesso. Dai un'occhiata.",
+		"Un troll al banco, e già col sorriso. Qualunque cosa cerchi, scommetto che la trattativa comincia con una battuta.",
+	},
+	["race.troll.npcd_merchant_thanks.w09.001"] = {
+		"Grazie a te. E raccontami di nuovo quella barzelletta mentre esci: non ho sentito la fine.",
+		"Prego. I troll di solito mi ringraziano più con una risata che a parole, quindi mi tengo tutte e due.",
+	},
+	["race.troll.npcd_merchant_wares.w09.001"] = {
+		"Roba col manico lungo, cinghie robuste e stivali di misure che nessun altro chiede. Ai troll ci penso sempre.",
+		"Corda, sale, ami da pesca, un paio di buoni coltelli. Qualunque cosa un troll si porti in riva al mare, probabilmente ce l'ho.",
+	},
+	["race.troll.npcd_trainer_open.w09.001"] = {
+		"La tua gente guarisce in fretta, quindi non ci andrò piano. Oggi lividi, e quando spariscono ti resta l'abilità.",
+		"Un troll. Braccia lunghe, mani svelte e una risata quando le cose vanno storte. Bene: quest'ultima conta più di tutto.",
+	},
 }, "base_dialogues")

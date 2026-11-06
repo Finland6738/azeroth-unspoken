@@ -647,7 +647,9 @@ T.run("relation_player is a memory-priority Director candidate with a guard", fu
 	Person("Aldric-Stormrage", { trust = 50 })
 	P.target = ALDRIC
 	local rec = NS.Gateway:PickRecord("relation_player", NS:BuildContext())
-	T.ok(rec ~= nil and rec.id:find("^rel%.player%."), "a listed player: a recognition line (" .. tostring(rec and rec.id) .. ")")
+	-- a recognition line: a generic one, or one of the character's own race (the test character is an orc, W09)
+	T.ok(rec ~= nil and (rec.id:find("^rel%.player%.") or rec.id:find("^race%.orc%.relation_player%.")),
+		"a listed player: a recognition line (" .. tostring(rec and rec.id) .. ")")
 	-- an NPC is not a player
 	Fresh()
 	NS.db.relations.npcAuto = true
@@ -900,6 +902,25 @@ local SCENARIOS = {
 			["rel.player.shared.combat"] = true, ["rel.player.shared.duel"] = true }, must = "rel.player.resentment" },
 }
 
+-- a line of the character's own race (ADR 0053; W09 wrote the orc's, and the test character is an orc) is coherent
+-- with a feeling when its conditions name that feeling, a relation that goes with it, or no feeling at all (a plain
+-- recognition line, like rel.player.known)
+local FEELING_RELATIONS = { trust = { friend = true, comrade = true, ally = true }, wariness = { wary = true },
+	resentment = { enemy = true, disliked = true } }
+local function RaceLineFits(id, feeling)
+	local p = Engine.byId[id]
+	local w = p and p.when
+	if not (w and id:find("^race%.") and w.race == P.race) then return false end
+	if w.feeling then return w.feeling == feeling end
+	if w.relation then
+		for _, r in ipairs(type(w.relation) == "table" and w.relation or { w.relation }) do
+			if FEELING_RELATIONS[feeling][r] then return true end
+		end
+		return false
+	end
+	return true
+end
+
 local function SecondEncounter(feeling, locale)
 	Fresh()
 	NS.db.locale = locale or "it"
@@ -935,7 +956,7 @@ for _, feeling in ipairs({ "trust", "wariness", "resentment" }) do
 		end
 		T.ok(seen[sc.must], "the line for the feeling can be chosen: " .. sc.must)
 		for id in pairs(seen) do
-			T.ok(sc.ok[id], feeling .. ": the line is coherent with it: " .. id)
+			T.ok(sc.ok[id] or RaceLineFits(id, feeling), feeling .. ": the line is coherent with it: " .. id)
 			local p = Engine.byId[id]
 			if feeling ~= "trust" then
 				T.ok(not (p.tags and p.tags.warm and not p.tags.ironic), feeling .. ": not a warm line: " .. id)

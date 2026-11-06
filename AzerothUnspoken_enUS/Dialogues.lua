@@ -1156,4 +1156,360 @@ NS:AddTexts("enUS", {
 		"Strength you have plenty of. What I'll teach you is where to put it.",
 		"A tauren. The weight's already there; my work is to give it a direction. Let's begin.",
 	},
+	["race.gnome.npcd_flightmaster_bye.w09.001"] = {
+		"Strap in twice; you're so light a gust could carry you off. There. Off you go.",
+		"Hold the pommel, not the feathers. The last gnome I sent up spent the whole trip studying the wing joints.",
+	},
+	["race.gnome.npcd_flightmaster_open.w09.001"] = {
+		"Climb up; I'll give you a boost. There's more saddle than gnome, so sit in the middle.",
+		"Up you go. The beast hardly notices a gnome's weight, which means a smooth ride for you.",
+	},
+	["race.gnome.npcd_flightmaster_route.w09.001"] = {
+		"Not long. Long enough to count the rivets on the harness, which I'm told every gnome does.",
+		"Smooth enough. Gnomes usually spend it working out how to make it faster. Tell me if you solve it.",
+	},
+	["race.gnome.npcd_guard_bye.w09.001"] = {
+		"Go carefully. Small folk get overlooked out there; sometimes that's a mercy, sometimes not.",
+		"On your way. If anything big comes at you, I hear gnomes are very good at not being where it lands.",
+	},
+	["race.gnome.npcd_guard_danger.w09.001"] = {
+		"Troggs. Wherever there's a cave there's a chance of them, and they've done your people harm enough already.",
+		"Out there, being small means some beasts take you for a snack. Show them early that you're not.",
+	},
+	["race.gnome.npcd_guard_directions.w09.001"] = {
+		"Keep to the edge of the street so the big folk don't tread on you, and follow the main road. Ask again if you lose it.",
+		"I'd draw you a map, but you'd only improve it. Main road, then follow your nose; gnomes always do.",
+		"You could work your way out of a clockwork maze; a few streets won't trouble you. Head for the busiest corner and ask there.",
+	},
+	["race.gnome.npcd_guard_open.w09.001"] = {
+		"Hm? Ah, a gnome. Sorry, I was looking over your head. What is it?",
+		"Gnomeregan's loss is a sorry business. If there's anything I can do for one of its people, say so.",
+		"Gnomes: quick, small and polite. If every visitor were one of you I'd have nothing to do. Speak up.",
+	},
+	["race.gnome.npcd_innkeeper_bye.w09.001"] = {
+		"Off you go. Mind the big boots on the road; not everybody looks where they step.",
+		"Safe road. And when Gnomeregan is yours again, save me a room down there.",
+		"Farewell! Come back with another idea; the last gnome left me three, and I haven't understood one of them yet.",
+	},
+	["race.gnome.npcd_innkeeper_news.w09.001"] = {
+		"Word from Dun Morogh is that the troggs are still pouring out around Gnomeregan. I'm sorry; I know you'd rather hear something cheerful.",
+		"People say Mekkatorque hasn't stopped planning to take your city back, not for a single day. Your people never give up, do they?",
+		"The talk in Ironforge is of Thermaplugg again, still holed up below with his machines. A traitor in a tin palace, folk call him.",
+	},
+	["race.gnome.npcd_innkeeper_open.w09.001"] = {
+		"Hello? Oh, down there! Come in. I keep a box by the bar for gnomes; climb up and we'll talk eye to eye.",
+		"In, in. There's a stool with a step on it, built for your people. Don't let the others take it.",
+	},
+	["race.gnome.npcd_innkeeper_open.w09.002"] = {
+		"A gnome! Sit by the fire and talk; your people always bring the best conversation through that door.",
+		"Come in. I'll cut the bread small; I've learned gnomes eat like sparrows and chatter like a whole flock of them.",
+	},
+	["race.gnome.npcd_innkeeper_rest.w09.001"] = {
+		"I'll give you the little room under the stairs. Don't laugh; for a gnome it's practically a hall.",
+		"The beds are all built for bigger folk. You'll have so much room you could sleep sideways and never reach the edge.",
+	},
+	["race.gnome.npcd_innkeeper_sit.w09.001"] = {
+		"Sit, sit. Your feet won't reach the floor, but nobody minds; half the gnomes I know swing them on purpose.",
+		"Make yourself at home. Gnomes always find the coziest corner in a room; let's see which one you pick.",
+	},
+	["race.gnome.npcd_innkeeper_thanks.w09.001"] = {
+		"You're welcome! Your people say thank you more than anyone I serve, and twice as fast.",
+		"No trouble. A gnome's thanks always comes with a suggestion for the chimney. I'll think about it.",
+	},
+	["race.gnome.npcd_merchant_bye.w09.001"] = {
+		"Good trading. If you improve that, bring it back and show me; I might buy it off you.",
+		"Farewell. Mind the step; it's taller than it looks, for some of us.",
+		"Go well. Gnomes always leave my shop with more questions than parcels. I've grown fond of that.",
+	},
+	["race.gnome.npcd_merchant_news.w09.001"] = {
+		"Copper and tin are dear these days; the gnomes of Tinker Town buy up everything that comes in. Your folk keep the smelters busy.",
+		"Word is the Deeprun Tram is running full. Half the passengers are gnomes off to Stormwind on some errand or other.",
+	},
+	["race.gnome.npcd_merchant_open.w09.001"] = {
+		"I can see the top of a head over the counter, so it must be a gnome. What can I get you?",
+		"Hop up on the crate, if you like. My counter was built for taller folk, but your coin is just as good.",
+	},
+	["race.gnome.npcd_merchant_open.w09.002"] = {
+		"Ah, a gnome. You'll ask how everything works before you ask what it costs. Go ahead, I like the questions.",
+		"Gnomes love to see what's inside a thing, I know. Look all you like; open it up and you've bought it.",
+	},
+	["race.gnome.npcd_merchant_thanks.w09.001"] = {
+		"Thank you! Gnomes are the politest customers I have, and the competition is fierce.",
+		"You're welcome. Come back and tell me how it held up; your people always report back, and in detail.",
+	},
+	["race.gnome.npcd_merchant_wares.w09.001"] = {
+		"Small sizes in the corner: gloves and boots to fit a gnome. I keep them because nobody else bothers to.",
+		"Wire, springs, little brass odds and ends, and warm cloaks for the mountain roads. Most of it goes to gnomes.",
+	},
+	["race.gnome.npcd_trainer_open.w09.001"] = {
+		"A gnome. You'll grasp the idea before I've finished explaining it; the hard part will be the practice.",
+		"Small stature, quick mind, and a head full of questions. Good; ask them all, but ask them between drills.",
+	},
+	["race.orc.npcd_flightmaster_bye.w09.001"] = {
+		"Away you go. It's no wolf, but it runs on air, and it won't bite you for holding on.",
+		"Hold on and let the beast do the work. Orcs always want to steer; this one steers itself.",
+	},
+	["race.orc.npcd_flightmaster_open.w09.001"] = {
+		"Climb on. The beast takes orcs well; it knows a firm grip when it feels one.",
+		"Up. And unclench your jaw; I can hear those tusks grinding from here.",
+	},
+	["race.orc.npcd_flightmaster_route.w09.001"] = {
+		"Long, but straight. You'll see the land laid out like a war map; I'm told orcs enjoy that part.",
+		"Not short. Orcs spend most of it glaring at the ground as if it owed them something. It doesn't, I checked.",
+	},
+	["race.orc.npcd_guard_bye.w09.001"] = {
+		"Go. If you have to fight, fight clean, and bring your honor back with you whole.",
+		"Strength to your arm. I'd wish you caution too, but orcs never pack any.",
+	},
+	["race.orc.npcd_guard_danger.w09.001"] = {
+		"The danger for an orc isn't the fight; it's the fight pride won't let you walk away from. Pick them.",
+		"Watch for anyone wearing the Burning Blade's mark. They'll smile at you like kin, right up until they don't.",
+	},
+	["race.orc.npcd_guard_directions.w09.001"] = {
+		"You'd rather walk until you find it than ask twice, I know. So listen once: straight ahead, and look for the crowd.",
+		"Follow the smell of the forge. Every orc I've pointed that way found what they were after along it.",
+		"Plain directions for plain folk: the main road, then the first door with people outside it. You'll manage.",
+	},
+	["race.orc.npcd_guard_open.w09.001"] = {
+		"An orc. Good; you'll say what you need without wrapping it in pretty words. Go on.",
+		"You've the look of someone the Warchief would trust with a watch of their own. What's the trouble?",
+		"Tusks, a straight back and a steady eye. I don't worry much when an orc walks up to me. What is it?",
+	},
+	["race.orc.npcd_innkeeper_bye.w09.001"] = {
+		"Go with honor, as your people say. And come back hungry.",
+		"Safe road. Leave some of the fighting for the others out there; orcs never seem to.",
+		"Off with you, then. I'll keep the meat warm; orcs never stay away long from a good spit.",
+	},
+	["race.orc.npcd_innkeeper_news.w09.001"] = {
+		"The talk is of the Burning Blade again, cultists in caves calling up things best left below. Bad news for every orc who put the old curse behind them.",
+		"Word from the mountains: Rend Blackhand's lot in Blackrock Spire still call themselves the true Horde. Nobody at my tables believes it.",
+		"Travelers from Alterac say the Frostwolves are still holding their valley against the Stormpike dwarves. Hard folk, the Frostwolves.",
+	},
+	["race.orc.npcd_innkeeper_open.w09.001"] = {
+		"Strong drink and a straight answer, I'd guess. Orcs never ask for anything else. Sit down.",
+		"Come in and knock the road dust off. There's meat on the spit and a stool that's held orcs before.",
+	},
+	["race.orc.npcd_innkeeper_open.w09.002"] = {
+		"Mind the tusks on the lamp hook. Every orc I've served has rung it like a gong at least once.",
+		"An orc who walks in without kicking the door. I like you already. Sit.",
+	},
+	["race.orc.npcd_innkeeper_rest.w09.001"] = {
+		"Take the room with the hard floor and the heavy blanket. Orcs never sleep well on anything soft.",
+		"There's a pallet against the back wall, near the warmth. Sleep with your weapon beside you if you must; orcs often do.",
+	},
+	["race.orc.npcd_innkeeper_sit.w09.001"] = {
+		"Sit, and rest those shoulders. Orcs carry everything on them, even when there's nothing to carry.",
+		"Good. An orc sitting by the hearth means a quiet room; nobody starts trouble with you watching.",
+	},
+	["race.orc.npcd_innkeeper_thanks.w09.001"] = {
+		"Thanks from an orc: short, gruff, and meant. I'll take that over a speech any time.",
+		"No need. You paid and you broke nothing; from your people, that's thanks enough.",
+	},
+	["race.orc.npcd_merchant_bye.w09.001"] = {
+		"Good trading. No haggling, no complaints, coin on the counter: orcs keep my day short and pleasant.",
+		"Farewell. That'll take a beating and come back for more, much like the one carrying it.",
+		"Go well. And if it breaks, tell me to my face; I know orcs prefer it that way.",
+	},
+	["race.orc.npcd_merchant_news.w09.001"] = {
+		"The Crossroads trade is heavy, the carters say. Every caravan wants an orc or two riding along with it.",
+		"Wolf pelts are fetching a good price. Not that an orc would sell one, I know; I'm only saying.",
+	},
+	["race.orc.npcd_merchant_open.w09.001"] = {
+		"Orcs tell me what they want and pay what it costs. I wish every customer did. What'll it be?",
+		"Straight to it, then; your people don't browse. Name the thing and I'll fetch it.",
+	},
+	["race.orc.npcd_merchant_open.w09.002"] = {
+		"Easy on the counter, it's old. Your people lean on things as if they mean to keep them.",
+		"Look around. Orcs always want to feel the heft of a thing; just do your swinging outside, not between my shelves.",
+	},
+	["race.orc.npcd_merchant_thanks.w09.001"] = {
+		"A thank-you from an orc. Rarer than good steel, and worth about as much.",
+		"You're welcome. Your people say it once and mean it; I'll not ask you to say it twice.",
+	},
+	["race.orc.npcd_merchant_wares.w09.001"] = {
+		"Heavy straps, thick hides, grease for whatever you swing. Things built for orc shoulders, mostly.",
+		"Plain things that last: tough leather, rope, waterskins that won't crack in the heat. I've never sold an orc anything with tassels.",
+	},
+	["race.orc.npcd_trainer_open.w09.001"] = {
+		"An orc. I won't have to teach you to stand your ground. I'll have to teach you when to give some of it up.",
+		"Your people learn by doing and by getting hit. Good. We'll have plenty of both.",
+	},
+	["race.scourge.npcd_flightmaster_bye.w09.001"] = {
+		"Hold tight. At least the cold up there won't bother you; the living land with their teeth chattering.",
+		"Off you go. And keep that jaw well fastened; it's breezy at the top.",
+	},
+	["race.scourge.npcd_flightmaster_open.w09.001"] = {
+		"Climb up. The beasts didn't care for the smell of the Forsaken at first. They've learned. So have I.",
+		"Up you go. No need to calm the beast for you; you don't tremble, and it can tell.",
+	},
+	["race.scourge.npcd_flightmaster_route.w09.001"] = {
+		"Long and cold. Not that cold means much to you. Enjoy the quiet.",
+		"Quiet up there. Most riders talk to keep their nerve; your people just sit and watch the ground slide by.",
+	},
+	["race.scourge.npcd_guard_bye.w09.001"] = {
+		"On your way. And if a Scarlet asks who you are, don't stop to answer.",
+		"Move along. Try to come back in one piece out there; I'm told stitches are a nuisance to redo.",
+	},
+	["race.scourge.npcd_guard_danger.w09.001"] = {
+		"Some priests of the Light don't ask whose side you're on before they burn you. Keep clear of the zealous ones.",
+		"Out there, plenty of folk see a Forsaken and think Scourge. Give them a moment to think again before you reach for steel.",
+	},
+	["race.scourge.npcd_guard_directions.w09.001"] = {
+		"You can walk as long as you like without tiring, so take the long way round. It's the one with fewer questions.",
+		"Main road, and ask again further on. Pay the stares no mind; few folk have met a Forsaken who asks the way politely.",
+		"You'll find it. The dead have patience for walking in circles, I'm told; the rest of us only get sore feet.",
+	},
+	["race.scourge.npcd_guard_open.w09.001"] = {
+		"Forsaken. State your business, and don't take the spear personally; I hold it like this for everyone.",
+		"You lot keep strange hours and stranger company. Still, you've never given me trouble. What is it?",
+		"Easy. I've seen the Scourge, and you're not it; I can tell by the way you stand there waiting for me to speak.",
+	},
+	["race.scourge.npcd_innkeeper_bye.w09.001"] = {
+		"Off with you. I'll air the room after; nothing personal.",
+		"Take care of yourself. Whatever's holding you together, keep it dry.",
+		"Farewell. Quietest guest I've had in a month; not one snore out of you.",
+	},
+	["race.scourge.npcd_innkeeper_news.w09.001"] = {
+		"Folk on the road say the Scarlet Crusade is growing bolder in Tirisfal. I'd keep off their roads, in your place; they don't ask questions first.",
+		"Travelers out of the Plaguelands say the Scourge hasn't given an inch. I suppose that's no surprise to you.",
+		"There's talk the Royal Apothecary Society is buying odd things again: bones, roots, whole crates of both. Nobody asks what for.",
+	},
+	["race.scourge.npcd_innkeeper_open.w09.001"] = {
+		"Come in. You won't need the fire, I suppose, but sit near it anyway; it makes the others less nervous.",
+		"Ah, the Forsaken. Fine by me: your people never send the stew back, and never ask for seconds.",
+	},
+	["race.scourge.npcd_innkeeper_open.w09.002"] = {
+		"Don't mind the looks from the corner. They'll get used to you. I did, and it only took me a week.",
+		"In you come. There's a table by the window, where the air moves. Not for your sake; my other guests prefer it.",
+	},
+	["race.scourge.npcd_innkeeper_rest.w09.001"] = {
+		"A room? It's yours, though I hear your people sit up more than they sleep. The chair by the bed is a good one.",
+		"The bed's yours, for lying still in, if nothing else. Nobody will knock; I'll see to that.",
+	},
+	["race.scourge.npcd_innkeeper_sit.w09.001"] = {
+		"Sit, then. I won't bring you a drink you'll only stare at; just say if you want one.",
+		"Make yourself at ease. I know you can sit there for hours without moving; the others find it unsettling, I find it restful.",
+	},
+	["race.scourge.npcd_innkeeper_thanks.w09.001"] = {
+		"You're welcome. It isn't often a thank-you comes out sounding like gravel; it sticks with a person.",
+		"No trouble at all. You've better manners than half my living guests, and you smell only a little worse.",
+	},
+	["race.scourge.npcd_merchant_bye.w09.001"] = {
+		"Farewell. Come back before your next patch job; I've thread that holds.",
+		"Good trading. No fuss, no small talk, no fingers on the bread. You Forsaken are my favorite kind of customer.",
+		"Go well. And if anyone at the door flinches as you pass, they flinched at me too, once.",
+	},
+	["race.scourge.npcd_merchant_news.w09.001"] = {
+		"Embalming salts are scarce, I hear; somebody's buying them by the cartload. Might be worth stocking up while you can.",
+		"Trade along Lordaeron's old roads is thin. The Scarlets block one end, the Scourge the other, and your people walk in between.",
+	},
+	["race.scourge.npcd_merchant_open.w09.001"] = {
+		"Coin is coin, and yours doesn't smell. Much. What are you after?",
+		"Selling to the Forsaken is simple: you don't argue over the bread, and you know exactly what you came for.",
+	},
+	["race.scourge.npcd_merchant_open.w09.002"] = {
+		"Mind the stitches on that hand when you pick things up; I'd hate for any part of you to stay behind on my shelf.",
+		"Take your time. Your people look at goods the way an apothecary looks at a sample: slowly, and without blinking.",
+	},
+	["race.scourge.npcd_merchant_thanks.w09.001"] = {
+		"Thanks yourself. Coming from someone who's already been through the worst of it, a thank-you carries weight.",
+		"You're welcome. That rasp of yours makes a thank-you sound like a secret. I'll keep it.",
+	},
+	["race.scourge.npcd_merchant_wares.w09.001"] = {
+		"Thread, needles, thick wraps, and a few tonics that work whether or not you can taste them. Your people buy the lot.",
+		"Sturdy bandages and salves that keep the rot at bay. I stock them for the Forsaken; nobody else buys those salves.",
+	},
+	["race.scourge.npcd_trainer_open.w09.001"] = {
+		"Good: you don't tire, and you don't flinch at a bruise. We can go longer than I'd dare with the living.",
+		"Your people's will is your own again, they say. Good; that's the first thing any teacher needs.",
+	},
+	["race.troll.npcd_flightmaster_bye.w09.001"] = {
+		"Fold those knees and hold on. You can unfold them again at the other end, I promise.",
+		"Tuck your elbows in. The beast has carried trolls before; it only grumbles about the legs.",
+	},
+	["race.troll.npcd_flightmaster_open.w09.001"] = {
+		"Your people ride raptors without a second thought. This is only a raptor with wings and better manners. Climb up.",
+		"Up you go. Mind your tusks on the harness; the last troll I strapped in snagged a buckle with one.",
+	},
+	["race.troll.npcd_flightmaster_route.w09.001"] = {
+		"Long enough to get bored, unless you're a troll; your people always find something down below to laugh at.",
+		"Smooth as oil, if you keep your legs from dangling. Every troll lets them dangle anyway.",
+	},
+	["race.troll.npcd_guard_bye.w09.001"] = {
+		"Go on. Whatever hits you out there, I hear your people knit back together before the bruise even shows.",
+		"Walk well. And keep that grin; a troll who stops smiling worries me more than a sharpened spear.",
+	},
+	["race.troll.npcd_guard_danger.w09.001"] = {
+		"Trolls trust their own skin to mend. Fine, but poison doesn't care how fast you heal. Carry something for it.",
+		"Not every troll you meet on the road is Darkspear. Some tribes would sooner gut you than greet you; look hard at who's in front of you.",
+	},
+	["race.troll.npcd_guard_directions.w09.001"] = {
+		"Can't miss much from up there, can you? Look over the crowd for the tallest sign and walk toward it.",
+		"Your people find the shore by the smell of salt. Use your nose the same way: the forge smells of iron, the inn of stew.",
+		"With legs that long you'll be there before I've finished explaining. Straight on, then ask again at the first corner.",
+	},
+	["race.troll.npcd_guard_open.w09.001"] = {
+		"Darkspear, eh? Vol'jin's people keep their word, from what I've seen. What can I do for you?",
+		"I've seen trolls of other tribes on the wrong end of a spear. You're not one of those; that much is plain. Speak.",
+		"You stand like you're about to spring. Easy, nobody wants a quarrel with a troll. What do you need?",
+	},
+	["race.troll.npcd_innkeeper_bye.w09.001"] = {
+		"Off you go. Trolls heal quick, they tell me, but don't go testing it on my account.",
+		"Safe road. And bring that laugh of yours back with you; this room is too quiet without a troll in it.",
+		"Watch the doorframe on the way out. It already has two troll-shaped dents.",
+	},
+	["race.troll.npcd_innkeeper_news.w09.001"] = {
+		"The caravans out of Tanaris say the Sandfury of Zul'Farrak are raiding the dunes again. Not your tribe, I know, but folk will ask you anyway.",
+		"Sailors at my tables keep on about Stranglethorn: old Gurubashi stones, and something stirring at Zul'Gurub. Your elders would know that name better than I.",
+		"Word from the coast is that the Echo Isles are still under that mad witch doctor's hex. I'm sorry; I know it was Darkspear ground.",
+	},
+	["race.troll.npcd_innkeeper_open.w09.001"] = {
+		"Mind your head on that beam; I hung it at dwarf height, not troll height. Come in and fold yourself onto a bench.",
+		"Duck, duck. Every troll who comes through that door teaches the lintel something new. Sit where your knees fit.",
+	},
+	["race.troll.npcd_innkeeper_open.w09.002"] = {
+		"A troll! There's fish on the fire, if your people still like it charred at the edges. Sit, sit.",
+		"Come in. I keep a pot of something fiery for trolls; the rest of my guests weep when they taste it.",
+	},
+	["race.troll.npcd_innkeeper_rest.w09.001"] = {
+		"Take the long bed at the end. I had it built after a troll slept with both feet out the window.",
+		"There's a hammock in the back room, if you'd rather. Your people seem to sleep best when something sways.",
+	},
+	["race.troll.npcd_innkeeper_sit.w09.001"] = {
+		"Stretch those legs out toward the fire, as far as they go. I'll warn the others to step over them.",
+		"Good, settle in. A room always gets louder once a troll sits down; the laughing spreads.",
+	},
+	["race.troll.npcd_innkeeper_thanks.w09.001"] = {
+		"You're welcome. I'd shake your hand, but I'd need both of mine to do it properly.",
+		"No need. A troll's grin is thanks enough, and yours could light the whole room.",
+	},
+	["race.troll.npcd_merchant_bye.w09.001"] = {
+		"Good trading. Tell the folk of Sen'jin I don't cheat; I could use the custom.",
+		"Farewell. If that strap gives out on those long arms, bring it back and I'll stitch you a longer one.",
+		"Go well. And keep the jokes coming when you haggle; a troll's the only customer who makes me laugh while fleecing me.",
+	},
+	["race.troll.npcd_merchant_news.w09.001"] = {
+		"Fish is cheap along the coast, the boatmen say. Your people could have told me that; you always know what the sea is up to.",
+		"Raptor hide is selling well, I hear. If a troll ever wants to trade a few, you know where to find me.",
+	},
+	["race.troll.npcd_merchant_open.w09.001"] = {
+		"Reach for the top shelf yourself, if you like; with arms like yours, you'd save me the ladder.",
+		"Go on, have a look. Your people can see over the whole counter, so there's no hiding the bargains from a troll.",
+	},
+	["race.troll.npcd_merchant_open.w09.002"] = {
+		"I've done good trade with Darkspear folk. You laugh at my prices, then pay them anyway. Look around.",
+		"A troll at my counter, grinning already. Whatever you're after, I'd guess the haggling starts with a joke.",
+	},
+	["race.troll.npcd_merchant_thanks.w09.001"] = {
+		"Thanks yourself. And tell me that joke again on your way out; I missed the end of it.",
+		"You're welcome. Trolls thank me with a laugh more often than with words, so I'll take both.",
+	},
+	["race.troll.npcd_merchant_wares.w09.001"] = {
+		"Long-handled things, sturdy straps, and boots in sizes nobody else asks for. I keep a troll's needs in mind.",
+		"Rope, salt, fishhooks, a good knife or two. Whatever a troll takes down to the shore, I've likely got.",
+	},
+	["race.troll.npcd_trainer_open.w09.001"] = {
+		"Your people mend fast, so I won't go easy. Bruises today, and the skill stays after they've faded.",
+		"A troll. Long reach, quick hands, and a laugh when things go wrong. Good; that last one matters most.",
+	},
 }, "base_dialogues")

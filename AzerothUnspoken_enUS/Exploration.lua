@@ -3241,4 +3241,1588 @@ NS:AddTexts("enUS", {
 		"{subzone}. Wide enough to turn around without knocking anything over? That is my whole measure of a place.",
 		"{subzone}. I count how many things I could break here by turning too fast. Fewer than the last place, I hope.",
 	},
+	["race.gnome.landmark.w09.001"] = {
+		"stops before {landmark} and tilts {g:his|her} head back to take it all in, then further, then a little further still.",
+		"circles {landmark} slowly, as if looking for the maker's mark.",
+		"gives {landmark} a long, appraising look, fingers twitching as though itching to take something apart to see how it was done.",
+	},
+	["race.gnome.landmark.w09.002"] = {
+		"{landmark}. A name worth keeping. I write it down twice, in case one page catches fire.",
+		"{landmark}. Every landmark is somebody's proof that they were here. Gnomeregan was ours. I hope this one fares better.",
+		"{landmark}. I'd love to know who planned it, and whether they kept the drawings.",
+	},
+	["race.gnome.muse.w09.001"] = {
+		"Under the mountains west of Kharanos there are workshops with gnomish names still painted on the doors. Troggs sleep on the benches now.",
+		"Sometimes I walk Gnomeregan's corridors in my head, left, right, down the lift, and stop just short of the part where it all went wrong.",
+		"Ask any gnome the way to some corner of Gnomeregan and you'll get it, down to the last stair. Ask why they don't live there anymore and the conversation ends.",
+	},
+	["race.gnome.muse.w09.002"] = {
+		"I've done the math. With enough stools, I can reach anything in Azeroth.",
+		"Doorknobs at eye level for a dwarf, counters at chin level for a human. I've learned to climb with dignity.",
+		"Tall folk see farther. Small folk see what's underfoot, and that's where the dropped coins are.",
+	},
+	["race.gnome.muse.w09.003"] = {
+		"A dwarven mug holds roughly my own volume. I've been told this is not a reason to give up halfway.",
+		"The dwarves pour ale for gnomes exactly as they pour it for themselves. It's pure generosity, and it's how a gnome learns to walk sideways.",
+		"In Kharanos they brew a stout that could fuel a steam engine. I asked, quite seriously, whether anyone had tried.",
+	},
+	["race.gnome.muse.w09.004"] = {
+		"The Deeprun Tram runs under the sea between Ironforge and Stormwind, dug by gnomes and dwarves together. Anyone who rides it should press their nose to the glass and count the fish.",
+		"Under the sea, in a tube of stone and glass, a tram goes back and forth all day. Gnomish thinking, dwarven digging. Not a bad marriage.",
+		"The best proof that gnomes and dwarves can work together is the Deeprun Tram. The second-best proof is that they're still on speaking terms afterwards.",
+	},
+	["race.gnome.muse.w09.005"] = {
+		"The ones who stayed behind in Gnomeregan aren't quite gnomes anymore, people say. The sickness ate at them, and they no longer know who we were to them.",
+		"'Leper gnomes,' folk call them, as if it were a breed. They were tinkers and clerks and cooks once, and the poison we let loose took the rest.",
+		"Deep in the old city, gnomes wander who no longer know their own names. In Tinker Town nobody says that aloud.",
+	},
+	["race.gnome.muse.w09.006"] = {
+		"Goblins and gnomes both love machines. The difference is that ours are supposed to work, and theirs are supposed to sell.",
+		"A goblin builds it fast and cheap. A gnome builds it right and late. Both explode, but ours explode on schedule.",
+		"Never lend a goblin a wrench. You'll get it back with an invoice.",
+	},
+	["race.gnome.muse.w09.007"] = {
+		"We call ourselves the Gnomeregan Exiles, not 'the gnomes of Ironforge.' The name is a promise we keep making to the city.",
+		"An exile is someone who still knows exactly where home is. That's why we chose the word.",
+		"Ask a gnome where they're from and the answer is always Gnomeregan, never Tinker Town. We're stubborn about our addresses.",
+	},
+	["race.gnome.muse.w09.008"] = {
+		"taps a nearby surface twice with a knuckle, listening hard, as though expecting it to report its alloy.",
+		"stands on tiptoe to see past something, gives up, and starts working out the angles instead.",
+		"mutters a string of numbers under {g:his|her} breath, nods with deep satisfaction, and never explains what they were for.",
+	},
+	["race.gnome.muse.w09.009"] = {
+		"The humans of Stormwind say gnomes take to the arcane like fish to water. I think it's simpler: magic is just engineering that refuses to show its gears.",
+		"Arcane power follows rules. Strange rules, badly documented, but rules. That's why so many of us find it irresistible.",
+		"Some gnomes tinker with brass, some with the arcane, a few with darker things. Underneath it's the same itch: to see how the world is wired.",
+	},
+	["race.gnome.muse.w09.010"] = {
+		"Thermaplugg still sits in Gnomeregan, they say, giving orders to troggs and to what's left of our own. A traitor with a throne in a poisoned city. He's welcome to it, for now.",
+		"Every people has a traitor in its story. Ours has a name, a title and, the rumor goes, a throne built out of our own city.",
+		"The trouble with a clever traitor is that the plan sounded so reasonable at the time. Thermaplugg knew exactly how we think.",
+	},
+	["race.gnome.muse.w09.011"] = {
+		"Probability of something going wrong today: high. Probability I'll learn something from it: higher. I call that a good day.",
+		"Every failure is just data with bad manners. I've collected quite a lot of data.",
+		"A gnome doesn't fail. A gnome completes a test that reveals room for improvement.",
+	},
+	["race.gnome.muse.w09.012"] = {
+		"There are fewer gnomes in the world than there were. You notice it in small ways: a Tinker Town bench with room to spare, a name nobody answers to.",
+		"We were never many to begin with, and Gnomeregan cost us far too many. Every gnome you meet on the road is someone who made it out.",
+		"When I spot another gnome far from Ironforge, I wave like a fool. There aren't enough of us left to be cool about it.",
+	},
+	["race.gnome.muse.w09.013"] = {
+		"In a crowd of humans I navigate by belt buckles. It works surprisingly well.",
+		"Crowds are an obstacle course for a gnome. By now I'm an expert in knees.",
+		"Being trodden on is a hazard of my size. I've started wearing brighter colors in self-defense.",
+	},
+	["race.gnome.muse.w09.014"] = {
+		"Tinker Town smells of oil, hot metal and somebody's overdone toast. It isn't home. It's the best impression of home we could build in a hurry.",
+		"In Tinker Town something is always ticking, hissing or being argued about. For a borrowed corner, it sounds remarkably like us.",
+		"Our quarter of Ironforge is small, cluttered and loud. If you squint, and the steam is just right, it could almost be a street of the old city.",
+	},
+	["race.gnome.muse.w09.015"] = {
+		"The troggs came up from below, more of them than we had numbers for. That's a rare sentence for a gnome to say: more than we had numbers for.",
+		"We built a city that could withstand anything from above. Nobody thought to ask what was underneath. I keep that as a lesson in where to look.",
+		"Troggs aren't clever. They didn't need to be. There were simply more of them than there were of us, and they didn't stop.",
+	},
+	["race.gnome.muse.w09.016"] = {
+		"Ropes, roots, nets, sticky webs: I've yet to meet a knot a gnome can't wriggle out of with some patience and a bit of contortion.",
+		"Tie a gnome up and you've handed a gnome a puzzle. We don't stay puzzled long.",
+		"Small joints, quick fingers, a deep dislike of being stuck. Escaping is practically a gnomish hobby.",
+	},
+	["race.gnome.muse.w09.017"] = {
+		"Every map of Azeroth I've seen is wrong somewhere. That isn't a complaint. It's an invitation.",
+		"Someone ought to measure this whole world properly, coast to coast, in consistent units. I nominate a gnome. I nominate several.",
+		"Humans draw maps with sea monsters in the empty bits. Gnomes leave the empty bits empty and label them 'pending.'",
+	},
+	["race.gnome.muse.w09.018"] = {
+		"goes still for a moment, eyes fixed on nothing, with the look gnomes get when someone mentions the old city.",
+		"stops fiddling with whatever is in reach, and for once the busy hands simply rest.",
+		"hums a few notes of something cheerful, falters, and lets the tune go without finishing it.",
+	},
+	["race.gnome.muse.w09.019"] = {
+		"Humans think a gnome's height means a child's judgment. Then they watch us do sums. It's a short, satisfying conversation.",
+		"The humans of Stormwind are lovely. They also lean down and speak slowly to me. I answer in very long words until they stop.",
+		"Humans build tall, think fast and live short. We get along; we just keep different clocks.",
+	},
+	["race.gnome.muse.w09.020"] = {
+		"The night elves make things grow instead of building them. There isn't a single bolt in all of Darnassus. It unsettles me and impresses me in about equal measure.",
+		"Ask a kaldorei for the load-bearing calculations of their great tree and you get a long, patient silence. I'd still love to see the numbers.",
+		"Night elves are very tall, very old and very calm. Next to one of them, a gnome feels like a pocket watch beside a tower clock.",
+	},
+	["race.gnome.muse.w09.021"] = {
+		"Gnomish safety rules fit on a single card. The card is fireproof. That tells you most of what you need to know.",
+		"Somebody in Tinker Town keeps a tally of small fires, I'm told. The number goes up every week, and everyone is oddly proud of it.",
+		"Smoke from a gnomish workshop comes in three colors: normal, interesting and run.",
+	},
+	["race.gnome.muse.w09.022"] = {
+		"When the Alliance needed wings and boats that swam under the sea, gnomes built them, the old tinkers say. We pay our debts in brass and cleverness.",
+		"Our flying machines fought in the Second War, the old tinkers like to say. They also like to say how many of them landed on purpose.",
+		"The Alliance kept a place for us after Gnomeregan, when we had nothing to give. A gnome repays that kind of thing, with interest.",
+	},
+	["race.gnome.muse.w09.023"] = {
+		"Idea! No, wait. Better idea. Hold on, I'm having several.",
+		"There's a solution to this. There's always a solution. Sometimes it's just very, very well hidden.",
+		"Give me a minute and a scrap of paper and I'll have improved something. Possibly not the right thing.",
+	},
+	["race.gnome.muse.w09.024"] = {
+		"We flooded our own halls with poison to stop the troggs. It worked, in the way a fire works on a house full of rats.",
+		"The radiation was meant to kill the invaders and spare everyone else. Gnomes are good at plans. We are less good at the part where plans meet the world.",
+		"The troggs bore the radiation better than we did. Nobody in Tinker Town finds that funny, and gnomes find most things funny.",
+	},
+	["race.gnome.muse.w09.025"] = {
+		"Dwarves are the tall friends in my life. I tell them so. They never know whether to be flattered.",
+		"To a gnome, a dwarf is a pleasantly tall neighbor with a beard you could hide in. I haven't tried. Yet.",
+		"Dwarves complain that humans tower over them. I nod sympathetically, from somewhere around their belt.",
+	},
+	["race.gnome.muse.w09.026"] = {
+		"A bird is a marvelous design: hollow bones, efficient wings, very poor documentation.",
+		"Watch a cat walk along a fence and tell me nature doesn't understand balance. I'd love to see its gyroscope.",
+		"Beasts are machines nobody built. I don't mean that coldly. It's the highest compliment a gnome has.",
+	},
+	["race.gnome.muse.w09.027"] = {
+		"People think gnomes are cheerful because we don't understand what we've lost. We understand perfectly. We're cheerful anyway, on purpose.",
+		"Cheer is an instrument. Gnomes learned that when we had nothing else left. I keep mine well polished.",
+		"Grief sits underneath everything we do, like a foundation. You can build something bright on a foundation. We do.",
+	},
+	["race.gnome.muse.w09.028"] = {
+		"Goggles are not a fashion choice. They are a lifestyle, and a precaution.",
+		"Every gnome should carry three things: a pencil, a spare pencil and an excuse.",
+		"If it's stuck, think. If it's still stuck, think harder. If it's still stuck, kick it gently. Gnomish method.",
+	},
+	["race.gnome.muse.w09.029"] = {
+		"Dun Morogh taught a whole people of indoor tinkerers what cold is. We adapted. Mostly with scarves.",
+		"Gnomeregan was a city of tunnels and lamps. To a lot of us, the open sky over Dun Morogh still looks like a ceiling someone forgot to finish.",
+		"On the slopes of Dun Morogh the wind finds every seam in a coat. Small bodies chill quickly; we make up for it with enormous scarves.",
+	},
+	["race.gnome.muse.w09.030"] = {
+		"High Tinker Mekkatorque lost a city and kept a people together. I wonder whether the second wasn't the harder trick.",
+		"Mekkatorque could have spent his days blaming himself. Instead he counts survivors, draws up plans and listens. That's leadership, gnome-sized and full-sized at once.",
+		"A High Tinker with no city to tinker in still keeps the title. I think he keeps it for us.",
+	},
+	["race.gnome.muse.w09.031"] = {
+		"A gnome who stops asking questions is a gnome who has been badly hit on the head. I check myself regularly.",
+		"Curiosity weighs nothing in a pack. It's the one load a gnome is glad to haul everywhere.",
+		"Every question answered leaves two new ones behind. Some find that exhausting. A gnome calls it job security.",
+	},
+	["race.gnome.muse.w09.032"] = {
+		"As Tinker Town tells it, when Gnomeregan fell, Magni Bronzebeard didn't ask what we could pay. He asked how many beds we needed. A gnome doesn't forget a question like that.",
+		"Dwarves argue about everything except whether a neighbor in trouble gets help. On that point, Ironforge never even held a vote.",
+		"We came to the dwarves' gate with burns, sick lungs and nothing to trade. They opened it anyway. That's the whole story, and it's enough.",
+	},
+	["race.gnome.muse.w09.033"] = {
+		"Gnome-sized portions don't exist outside Tinker Town. Everywhere else I'm handed a meal and a challenge.",
+		"Dwarven bread is dense enough to build with. I've stopped joking about that, because someone in Tinker Town is probably trying.",
+		"A full dwarven breakfast would keep me going for three days. Apparently that's not how breakfast works.",
+	},
+	["race.gnome.muse.w09.034"] = {
+		"Retaking Gnomeregan won't be a single heroic charge. It'll be a thousand small fixes: one corridor cleaned, one pump restarted, one door that opens again. Gnomes are good at small fixes.",
+		"When we take the city back, somebody will have to scrub the poison out of every pipe. In my head, I've already volunteered.",
+		"Once the city under the mountain is ours again, it will need everything: hands, ideas, patience. I'm practicing all three.",
+	},
+	["race.gnome.muse.w09.035"] = {
+		"picks a scrap of wire off the ground, twists it into a tiny spiral without looking, and seems pleased with the result.",
+		"squints at the nearest hinge, door or buckle, clearly composing a list of improvements nobody asked for.",
+		"sketches a quick contraption in the air with one finger, frowns, and erases it with a wave.",
+	},
+	["race.gnome.muse.w09.036"] = {
+		"I take notes on everything: distances, prices, which bridges creak. Nobody will ever read them. That isn't why I write them.",
+		"My pockets fill up with scraps of paper covered in numbers. Every so often I sort them, and every time I find a better idea I'd forgotten.",
+		"Writing a thing down is how a gnome makes it hold still long enough to be understood.",
+	},
+	["race.gnome.muse.w09.037"] = {
+		"Out in the Shimmering Flats, gnomes and goblins race machines across a dry salt lake for the honor of their engineers. It's the most sensible war I've ever heard of.",
+		"At the Mirage Raceway, gnomes and goblins settle their rivalry with speed and spectacular crashes. Nobody wins for long, and everybody learns something.",
+		"If every quarrel in Azeroth were settled like the race in Thousand Needles, there'd be more wrecks and far fewer graves.",
+	},
+	["race.gnome.muse.w09.038"] = {
+		"Gnomes don't talk much about dying. We talk about maintenance. It amounts to the same thing, with better odds.",
+		"Everything wears out: gears, boots, cities, gnomes. The trick is to be useful while the parts still turn.",
+		"I'd like my end to be a tidy one, with my notes in order. It won't be. Gnomes rarely manage tidy.",
+	},
+	["race.gnome.muse.w09.039"] = {
+		"Bigger foes keep aiming where they'd expect a head to be. A gnome's head is somewhere else entirely. It's the one advantage I'll never complain about.",
+		"Being small is not the same as being little. Ask anyone who underestimated a gnome. If you can find them.",
+		"Courage isn't measured in height. Good thing too, or gnomes would be cowards by definition.",
+	},
+	["race.gnome.muse.w09.040"] = {
+		"Somebody in Tinker Town is fixing something right now. I find that very comforting.",
+		"Gnomeregan may be lost, but gnomes aren't. There's a difference, and I intend to keep it that way.",
+		"Cheer up, everyone. Statistically, things are bound to improve eventually.",
+	},
+	["race.gnome.muse.w09.041"] = {
+		"Nobody truly knows where the troggs came from, only that they came up from the deep and kept coming. A gnome hates an unanswered question nearly as much as a trogg.",
+		"The troggs welled up out of the earth beneath Gnomeregan like water from a cracked pipe. I'd give a lot to know what cracked.",
+		"Below the old city lies whatever place the troggs lived in before they found us. I'd like to see it, from a long way off, with a lot of friends.",
+	},
+	["race.gnome.muse.w09.042"] = {
+		"Roads are wonderful inventions. Whoever designed the hills around them should be spoken to.",
+		"A gnome's stride is short, so the world is bigger for us than for anyone. I've decided to count that as a bonus.",
+		"Every mile is longer on short legs. Every view is just as wide, though. I call it even.",
+	},
+	["race.gnome.muse.w09.043"] = {
+		"In Tinker Town the gray-bearded tinkers still argue about how Gnomeregan's lifts were balanced. Arguing about it is a way of keeping them running.",
+		"Listen to old tinkers talk shop and every second sentence begins 'back in Gnomeregan.' Nobody points out how their voices change on those words.",
+		"We remember the city through its machines: the great lifts, the pumps, the lamps that never went out. It's easier than remembering the faces.",
+	},
+	["race.gnome.muse.w09.044"] = {
+		"No, I'm not a dwarf's apprentice. Yes, I'm sure. No, I won't fetch anything.",
+		"I'm perfectly grown, thank you. Gnomes simply come in the efficient size.",
+		"Compact. The word you're looking for is compact.",
+	},
+	["race.gnome.muse.w09.045"] = {
+		"Every gnome out on the roads of Azeroth is doing two jobs: whatever the day asks, and showing the world we're not finished.",
+		"Each gnome who makes a name out here makes it easier for the next. I'd like to make it a little easier still.",
+		"We lost a city, not our usefulness. Out here I get to prove that a little every day.",
+	},
+	["race.gnome.muse.w09.046"] = {
+		"The dwarves have a hundred jokes about gnomes. We have a hundred and one about dwarves. We just tell ours faster.",
+		"Dwarves laugh at our inventions until one of them works. Then they ask to borrow it. Then they laugh again when it breaks. It's a good friendship.",
+		"A dwarf and a gnome walk into a tavern. One of them can see over the counter. That's the whole joke, and the dwarf never stops finding it funny.",
+	},
+	["race.gnome.muse.w09.047"] = {
+		"Ironforge is built on a scale that makes a gnome feel like a bolt in a bridge: small, but holding something up.",
+		"The halls of Ironforge echo. A gnome's footsteps hardly count in there, but my thoughts get very loud.",
+		"Everything in Ironforge is big, warm and made to last forever. Gnomes build for cleverness; dwarves build for eternity. Living in their house is an education.",
+	},
+	["race.gnome.muse.w09.048"] = {
+		"When I see something broken by the road, a cart, a fence, a pump, my fingers itch. It takes real discipline to walk past.",
+		"A broken cart by the roadside is a little tragedy and a little invitation. I usually stop to look at the axle, at least.",
+		"Other folk see wreckage. A gnome sees spare parts.",
+	},
+	["race.gnome.muse.w09.049"] = {
+		"I'm not built for hatred; gnomes rarely are. But when I see a trogg, something cold and precise wakes up in me and starts taking measurements.",
+		"Troggs in our workshops, troggs in our homes, troggs sleeping where the great engines stood. I can stay cheerful about most things. Not that.",
+		"Gnomes forgive easily. We just keep very good records.",
+	},
+	["race.gnome.muse.w09.050"] = {
+		"Wherever dwarves set up a forge, a gnome seems to turn up within the week, offering to improve the bellows.",
+		"Humans have the farms, dwarves the mines, kaldorei the forests. Gnomes have the questions. Every alliance needs someone asking them.",
+		"The Alliance is a grand machine with very mismatched parts. That's exactly why it interests me.",
+	},
+	["race.gnome.muse.w09.051"] = {
+		"Home is a city I can't walk into and a quarter that isn't mine. In between, the road has become something of a home too.",
+		"Gnomes in exile get good at making a home out of a corner: a lamp, a bench, a stack of papers. Give me those and I'll manage anywhere.",
+		"I don't have a home so much as an address under dispute. The troggs are squatting. We'll settle it eventually.",
+	},
+	["race.gnome.muse.w09.052"] = {
+		"peers up at a tall passerby with polite patience, the way gnomes learn to look at most of the world.",
+		"climbs onto the nearest crate or step for a better view, as though it were the most natural thing in the world.",
+		"pats down several pockets in turn, finds what {g:he|she} was after in the very last one, and looks as though that was the plan all along.",
+	},
+	["race.gnome.muse.w09.053"] = {
+		"Magic is like steam: it does marvelous work and has no sense of humor about carelessness.",
+		"Some of the cleverest gnomes I've heard of were undone by one experiment too many. Curiosity is a fine engine with no brakes.",
+		"The arcane rewards a careful mind and punishes a careless one immediately. Gnomes approve of feedback that clear.",
+	},
+	["race.gnome.muse.w09.054"] = {
+		"Our city was young, as cities go. The mountains and the earth itself were far older. Sooner or later a gnome learns humility from the rock.",
+		"Gnomeregan stood a long time in gnome terms and hardly any in the mountain's. Somewhere in that difference is a lesson I haven't finished working out.",
+		"The mountains of Dun Morogh have outlasted kings and cities. They'll outlast Thermaplugg too. I take comfort in a patient mountain.",
+	},
+	["race.gnome.muse.w09.055"] = {
+		"Gnomeregan will see its lamps lit again. Mark my words, and my measurements.",
+		"One day we'll open Gnomeregan's front gate from the inside. I'd bet my last copper on it.",
+		"Lost isn't gone. Gnomeregan is just waiting for the right repair crew.",
+	},
+	["race.gnome.muse.w09.056"] = {
+		"My legs have done a dwarf's work today and been paid at gnome rates. I'll file a complaint with myself later.",
+		"Tired is just a gauge reading. It tells me how far I've gone, not whether I can go farther.",
+		"Even optimism needs a rest now and then. Mine is idling, not stopped.",
+	},
+	["race.gnome.muse.w09.057"] = {
+		"A gnome travels best in company, if only because someone has to hand things down from the high shelves.",
+		"Friends are the one machine nobody can build alone. I'm always glad to add a part.",
+		"I like people who ask 'how does it work?' instead of 'what's it for?' The second question comes later and usually answers itself.",
+	},
+	["race.gnome.muse.w09.058"] = {
+		"Out under the night sky, the stars are scattered like workshop lamps seen from far off. I know which city they remind me of.",
+		"The night sky is the one ceiling no gnome has tried to repair. Give us time.",
+	},
+	["race.gnome.muse.w09.059"] = {
+		"Snow. Exile in Dun Morogh made every gnome an expert in it, and not one of us a fan.",
+		"Snowflakes settle on my sleeve, each one a perfect little lattice. I'd admire them more if they weren't melting down my collar.",
+	},
+	["race.gnome.muse.w09.060"] = {
+		"Rain. Water falling without pipes, everywhere, all at once. A gnome can admire the system and still want to file a complaint.",
+		"Every drop of this rain is going somewhere with no plan at all. Somebody ought to fit the sky with gutters.",
+	},
+	["race.gnome.muse.w09.061"] = {
+		"Some gnome children have only ever known Tinker Town. They draw Gnomeregan from their elders' stories and always put in too many lamps. Nobody corrects them.",
+		"There are little gnomes in Ironforge who think a city is something you borrow from dwarves. One day I'd like them to see the real thing.",
+		"Ask a gnome child what a gnome city looks like and you'll hear about lifts, lamps and a great deal of hope. The details are borrowed. The hope isn't.",
+	},
+	["race.gnome.muse.w09.062"] = {
+		"Every gnome secretly believes the world runs a little slow and needs adjusting. I just admit it.",
+		"Patience is a virtue, they say. Gnomes prefer efficiency, which is patience with a schedule.",
+		"I'd get more done if days were longer. I've looked into it. Apparently the sun isn't adjustable.",
+	},
+	["race.gnome.muse.w09.063"] = {
+		"A gryphon gives a gnome a long, thoughtful look before takeoff. I prefer not to know what it's thinking.",
+		"Gryphons and gnomes have an understanding: I make no sudden movements, and it doesn't wonder whether I'm a snack.",
+		"Gryphons were not designed with gnomes in mind. Neither were saddles, stirrups or the people who make them.",
+	},
+	["race.gnome.subzone_enter.w09.001"] = {
+		"steps into {subzone} and starts pacing out distances at once, lips moving as {g:he|she} counts.",
+		"enters {subzone} with quick, light steps, glancing at every hinge, pulley and post in passing.",
+		"pauses on the edge of {subzone} to tug a pencil stub from a pocket, as if the place needs writing down immediately.",
+	},
+	["race.gnome.subzone_enter.w09.002"] = {
+		"{subzone}. First impression: built by someone tall, for someone tall. Second impression: interesting anyway.",
+		"{subzone}. I make a quick estimate of how many gnomes would fit. The answer is always more than people think.",
+		"{subzone}. Everything here is a little out of reach. Noted, and forgiven.",
+	},
+	["race.gnome.subzone_enter.w09.003"] = {
+		"{subzone}. Every place I enter gets compared, without my meaning to, with a city under the mountains. It's not a fair contest. Nothing here is poisoned, for one.",
+		"{subzone}. Somebody calls this home. I wish them better luck keeping it than we had.",
+		"{subzone}. A name on a map, and people who'd fight to keep it. Gnomes understand that better than most.",
+	},
+	["race.gnome.subzone_enter.w09.004"] = {
+		"{subzone}! Lovely. Who's in charge of maintenance?",
+		"{subzone}. Right, let's see what makes this place tick.",
+		"Ooh, {subzone}. I have questions already.",
+	},
+	["race.gnome.subzone_enter.w09.005"] = {
+		"{subzone}. I count the exits first. Gnomes who lost a city in a hurry never quite lose the habit.",
+		"{subzone}. Where does the water go, where does the smoke go, where would I go if things went wrong? A gnome's first three questions anywhere.",
+		"{subzone}. Pretty place. Where's the back door? Old habit of a people who had to run.",
+	},
+	["race.gnome.subzone_enter.w09.006"] = {
+		"walks into {subzone} chin up and shoulders back, making the most of every inch.",
+		"strides into {subzone} at a brisk gnomish clip, two steps for every one of the taller folk.",
+		"arrives in {subzone} slightly out of breath from keeping pace with the world, and plainly delighted to be there.",
+	},
+	["race.gnome.subzone_enter.w09.007"] = {
+		"{subzone}. With a week here I'd map every path and name every rock. I have a few minutes. I'll name the important rocks.",
+		"{subzone}. A clean page in the notebook. Gnomes never tire of a clean page.",
+		"{subzone}. I like it already, and I haven't even found out how anything here works.",
+	},
+	["race.gnome.subzone_enter.w09.008"] = {
+		"{subzone}. Whoever put this place together had a hammer and a dream. A gnome would have added a spirit level.",
+		"{subzone}. Nothing here is quite square. I'm choosing to find that charming.",
+		"{subzone}. I resist the urge to fix things that aren't mine. It's a daily struggle.",
+	},
+	["race.gnome.subzone_enter.w09.009"] = {
+		"{subzone}. Small gnome, big place. That's every place, really. In I go.",
+		"{subzone}. The world doesn't shrink to fit me. So I walk in as though it had.",
+		"{subzone}. Whatever waits here is probably taller than me. Most things are. It hasn't stopped a gnome yet.",
+	},
+	["race.gnome.subzone_enter.w09.010"] = {
+		"{subzone}. Someone remind me to measure this properly later.",
+		"{subzone}, is it? I'll want a proper look at how this place is put together before I go.",
+	},
+	["race.orc.landmark.w09.001"] = {
+		"{landmark}. Other peoples raise stones to be remembered. Orcs prefer stories. Stones are quieter about it.",
+		"{landmark}. A name on a map. An orc remembers a place by what happened there, and I have not yet decided what that will be.",
+		"{landmark}. I look around and give it a name of my own, in my head. Orcs were never good at keeping other people's names.",
+	},
+	["race.orc.landmark.w09.002"] = {
+		"stops at {landmark} and plants {g:his|her} feet wide, looking the place over the way a wolf looks over an unfamiliar den.",
+		"halts on reaching {landmark}, takes it in with a slow turn of the head, and gives a short grunt that may be approval.",
+		"pauses at {landmark}, one hand resting on {g:his|her} belt, sizing the place up with the frank stare of {g:his|her} people.",
+	},
+	["race.orc.muse.w09.001"] = {
+		"Red dust in the seams of everything I own. Wash it out and Durotar finds a way back in. I have stopped trying.",
+		"No matter how far I go, at the end of the day I shake red dust out of my boots. Durotar does not let go of its own.",
+		"In some corner of my pack there is always a pinch of Durotar. I never put it there. It comes along anyway.",
+	},
+	["race.orc.muse.w09.002"] = {
+		"Orcs who lived it remember the camps less for the bars than for the dullness: whole clans who forgot why they should stand up. I stand up a lot. Maybe that is why.",
+		"The elders speak of the lethargy in the camps like a sickness of the spirit. Thrall's war cured it, they say. I think it only sleeps, and every orc keeps it sleeping in their own way.",
+		"In the camps, the old ones say, the worst chain was the one nobody could see. I never sit idle for long. It is the only key I know.",
+	},
+	["race.orc.muse.w09.003"] = {
+		"When an orc laughs, people look around for the fight. It's only a laugh. Usually.",
+		"Orc laughter clears a tavern faster than a brawl. We're working on it. Slowly.",
+	},
+	["race.orc.muse.w09.004"] = {
+		"The elements are not gentle, the shamans say, only honest. Fire burns whoever touches it. In a way I find that restful.",
+		"Earth holds, water flows, fire takes, air carries: that is how an old shaman names them. Simple enough for an orc to remember, and hard enough to live by.",
+		"The spirits do not care how strong I am. They notice how I stand. It took me a while to tell the difference.",
+	},
+	["race.orc.muse.w09.005"] = {
+		"The Warsong still cut timber in Ashenvale with night elf arrows whistling past. Hellscream's clan never learned to do anything the easy way.",
+		"In Ashenvale Hellscream ended the curse, and his own life with it. The Warsong are still there, felling trees in his name. Stubbornness runs in that clan like sap.",
+		"Every log out of Ashenvale is paid for twice, the Warsong say: once in sweat, once in arrows. They pay it anyway.",
+	},
+	["race.orc.muse.w09.006"] = {
+		"wipes the sweat from {g:his|her} brow with the back of a green fist, then studies the fist as if it had done something clever.",
+		"runs a thumb slowly along the edge of one tusk, the way some people stroke a beard while thinking.",
+		"settles {g:his|her} weight on both feet like a post driven into the ground, and goes still to think.",
+	},
+	["race.orc.muse.w09.007"] = {
+		"A wolf will tell you plainly what it thinks of you. No wonder orcs and wolves get along: neither of us has the patience for hints.",
+		"The Frostwolves rode wolves before they rode anything else, the old ones say. A wolf is a friend who never pretends. I could use more of those.",
+		"Give a wolf meat and respect, in that order, and it will follow you anywhere. Some orcs are not so different.",
+	},
+	["race.orc.muse.w09.008"] = {
+		"The Darkspear trolls laugh at things I would not laugh at, and they fight beside us without being asked twice. I have stopped trying to understand the first part.",
+		"Vol'jin's people keep their word and their own counsel. Odd allies, trolls. Good ones.",
+		"Trolls in the Valley of Trials, trolls at Sen'jin, trolls at our backs in every fight. The Horde would be a smaller thing without those long arms and that laughter.",
+	},
+	["race.orc.muse.w09.009"] = {
+		"The tauren helped us when they had little reason to. Cairne Bloodhoof does not forget a friend, and an orc should not forget a tauren.",
+		"A tauren listens all the way to the end before answering. I am trying to learn that. It is going slowly.",
+		"When orcs first came to Kalimdor, the elders say, it was the tauren who showed us where the water was. A debt like that has no end, and I do not want it to.",
+	},
+	["race.orc.muse.w09.010"] = {
+		"The Forsaken stand in the Horde because Thrall allowed it. I give them what the Warchief gives: a chance, and a careful eye.",
+		"Dead things that talk and trade and keep a bargain. I do not have to like them. I only have to watch whether they keep it.",
+		"The Forsaken smell of the grave and of their apothecaries' bottles. I would rather stand upwind. But they hate the Scourge as much as anyone, and that counts.",
+	},
+	["race.orc.muse.w09.011"] = {
+		"The Burning Blade wear our faces and whisper the old hunger back into orc ears. An enemy outside the walls I understand. This one I hate.",
+		"In the caves beneath Orgrimmar itself the Burning Blade met in secret. The demons lost their hold on us. They did not stop reaching.",
+		"Every orc who joins the Burning Blade is a door left open from the inside. I keep an eye on doors.",
+	},
+	["race.orc.muse.w09.012"] = {
+		"Scorpid tail, roasted. Tastes like boot leather with a grudge. I'll have seconds.",
+		"Durotar cooking: catch it, cook it, argue about it. In that order.",
+	},
+	["race.orc.muse.w09.013"] = {
+		"Thrall gave us the hardest corner of Kalimdor, and I think he chose well. Few covet a land of rock and thorn, so few come to take it.",
+		"Rock, thorn and red earth: Durotar gives nothing for free. That is exactly why every orc in it knows what a thing is worth.",
+		"Other peoples settle where the living is easy. Orcs settled where the living is hard and made it ours. There is a pride in that I could never explain to a human.",
+	},
+	["race.orc.muse.w09.014"] = {
+		"Draenor is a word the elders say slowly, as if it might break. Whatever they saw there, it is still in their faces.",
+		"Green plains and wide rivers, the old ones say, before the fel burned the world we came from. They tell it the way you touch an old scar.",
+		"Ask an elder about Draenor and wait. The answer comes slowly, and it is never about the land. It is about who was standing on it.",
+	},
+	["race.orc.muse.w09.015"] = {
+		"Say what you mean. I'll do the same. We'll both get home sooner.",
+		"Speak plainly or don't speak. Orcs have no ear for riddles.",
+		"If it takes three sentences to say, it only needs one.",
+	},
+	["race.orc.muse.w09.016"] = {
+		"The ancestors watch, the shamans say. I do not imagine them stern. I imagine them curious, waiting to see what an orc does with a free life.",
+		"I would like the ancestors to see me do one thing well each day. Not great things. Things done well.",
+		"Whatever the ancestors think of us, they knew the curse and they know it is broken. They must watch this generation with a kind of wonder.",
+	},
+	["race.orc.muse.w09.017"] = {
+		"Orgrimmar carries Doomhammer's name, and Thrall carries his hammer. Our city and our Warchief both keep a dead orc's trust. A heavy thing to build on, and a strong one.",
+		"Every time I say Orgrimmar I say Doomhammer's name too. A city that remembers its dead in every greeting. I like that.",
+		"A city named for a fallen chieftain, ruled by the one he trusted. Orcs build on memory more than on stone.",
+	},
+	["race.orc.muse.w09.018"] = {
+		"Humans flinch when I smile. I'm told the tusks make it look like a threat. I've decided to smile more.",
+		"An orc smiling makes humans nervous. That's not my problem, but it is my entertainment.",
+	},
+	["race.orc.muse.w09.019"] = {
+		"Strength is easy to show and hard to aim. Anyone learns the first part fast. The second takes a lifetime.",
+		"A strong arm is a gift of the body. Knowing when to keep it still is a gift of the spirit, the shamans say. I am still working on that one.",
+		"Hitting hard is the first lesson of strength. The last one is choosing what not to hit.",
+	},
+	["race.orc.muse.w09.020"] = {
+		"The elders tell of the crossing: ships taken from the humans, a sea nobody knew, and a prophet's word that a land waited beyond it. It did. It was mostly rock, but it waited.",
+		"Orcs are no sailors. Yet the old ones crossed a whole sea to come here, because Thrall said so. When I doubt the Warchief, I remember that.",
+		"Every orc in Kalimdor stands at the far end of a sea voyage. Some made it, the elders say; some the sea kept. We do not talk about it much.",
+	},
+	["race.orc.muse.w09.021"] = {
+		"taps out a heavy, steady beat with two fingers, the pulse of Orgrimmar's war drums, without seeming to notice.",
+		"beats a slow rhythm on {g:his|her} chest with a closed fist, once, twice, as if keeping time for a march only {g:he|she} can hear.",
+	},
+	["race.orc.muse.w09.022"] = {
+		"Orcs, trolls, tauren, the Forsaken: the Horde is made of peoples nobody else wanted. That is not a weakness. It is the mortar.",
+		"Nobody chose the Horde because life was easy. We chose it because the other choice was being alone. That makes for loyal company.",
+		"The Horde is a strange household. Everyone has scars, and nobody asks about them first.",
+	},
+	["race.orc.muse.w09.023"] = {
+		"Orcs are loud, everyone says. Nobody sees us in the quiet moments, sitting with our own thoughts like a stone held in the hand.",
+		"There is a silence orcs keep only for themselves. Most people never hear it. That is the point.",
+		"I like the noise of the Horde. Sometimes I like this quiet better. Not that I would admit it out loud.",
+	},
+	["race.orc.muse.w09.024"] = {
+		"The humans built the camps and called it mercy. The old ones have not forgiven it, and I will not be the one to tell them they should.",
+		"Some say the Alliance and the Horde could make peace. Maybe. Ask the old ones who sat behind the camp walls first, and listen to how long they take to answer.",
+		"I do not hate humans. I only remember, on behalf of those who cannot forget, what they did with us when we were weak.",
+	},
+	["race.orc.muse.w09.025"] = {
+		"Every bench in a goblin town creaks when an orc sits down. I take it as applause.",
+		"Goblins build everything for goblin-sized customers and charge orc-sized prices. Only half of that suits me.",
+	},
+	["race.orc.muse.w09.026"] = {
+		"The Barrens: yellow grass, sudden thorns, and nothing at all to stop the eye. I never feel watched there. Only small.",
+		"In the Barrens the land just keeps going, flat and dry, until the eye gives up before the road does. A good place to empty the head.",
+		"Durotar is narrow and red. The Barrens are wide and yellow and do not end. Going from one to the other feels like taking a deep breath.",
+	},
+	["race.orc.muse.w09.027"] = {
+		"The Crossroads sits in the middle of the Barrens like a fist planted on a table. Whoever holds it holds the roads. We hold it.",
+		"Every caravan in the Barrens passes the Crossroads sooner or later. A little fort with a big job. I respect that kind of thing.",
+	},
+	["race.orc.muse.w09.028"] = {
+		"Some orcs still call on demons, and the Horde lets them, with one eye open. After what the fel did to us, I understand both the fear and the hunger to master it.",
+		"Warlocks walk in Orgrimmar again. The old ones go quiet when they pass. A people once owned by demons now tries to own them. I hope it works.",
+		"The fel once held every orc on a leash. Now a few of us hold the leash instead. The elders do not like it, and they are not wrong to watch.",
+	},
+	["race.orc.muse.w09.029"] = {
+		"Face me and I'll respect you, whatever happens. Stab me in the back and I'll make an exception.",
+		"Fight me honestly and I'll fight you the same way. Lie to me, and you'll meet an orc's other side.",
+	},
+	["race.orc.muse.w09.030"] = {
+		"Razor Hill is all spikes and smoke and shouting. If someone asked me to draw the Horde, I would draw that.",
+		"Nobody built Razor Hill for beauty. It is a hill with walls, spikes and a forge, and every orc who passes through stands a little straighter in it.",
+	},
+	["race.orc.muse.w09.031"] = {
+		"They call it the Valley of Trials, as if one valley could hold all of them. The real trials come after. The valley only teaches you to expect them.",
+		"The Valley of Trials is a gentle name for a hard place, and the hard place is a gentle start to an orc's life.",
+	},
+	["race.orc.muse.w09.032"] = {
+		"Orcs do not fear death so much as a useless one. A death that buys nothing is the only kind I would refuse.",
+		"When my time comes, I want it to be for something. The old warriors say that is all an orc can ask, and more than most get.",
+		"Dying is not the shame. Dying for nothing is. It is one of the few things every orc I know agrees on.",
+	},
+	["race.orc.muse.w09.033"] = {
+		"Durotar boars are lean, mean, and offended by everything. I respect them. I also eat them.",
+		"A Durotar boar charges first and thinks never. Some orcs are the same. Those orcs make good stories, and short ones.",
+	},
+	["race.orc.muse.w09.034"] = {
+		"Rend Blackhand keeps the Blackrock in their mountain, still bowing to whatever master will have them. They wear our green skin and our clan names. That is what makes it worse.",
+		"Rend's Blackrock chose the old way: masters and chains, only with a dragon instead of a demon. Every orc of the Horde is an answer to them.",
+		"Some orcs never left the old Horde behind. Rend's Blackrock sit in their mountain serving a dragon. Free orcs and chained ones, and they chose the chains.",
+	},
+	["race.orc.muse.w09.035"] = {
+		"Far off in the cold of Alterac the Frostwolves keep their valley and their wolves. Thrall was born of that clan. Every orc is a little proud of them for it.",
+		"The Frostwolves held out in the mountains while the rest of us were in chains, the old ones say. Exiles who never forgot what an orc was. We owe them more than we say.",
+		"Of all the clans, the Frostwolves kept the old ways best, far off in Alterac. When I want to know what an orc ought to be, I think of them.",
+	},
+	["race.orc.muse.w09.036"] = {
+		"Goblins sell to the Horde and the Alliance both. At least they're honest about being dishonest.",
+		"A goblin will sell you a rope and then sell the other end to your enemy. Still, the rope is usually good.",
+	},
+	["race.orc.muse.w09.037"] = {
+		"My people went from slaves of demons to prisoners of humans to builders of a city in a single lifetime. Whatever comes next, I would not bet against us.",
+		"Not long ago orcs had no home of their own. Now there is Orgrimmar, Razor Hill, the Crossroads. Ask an orc whether things can change. We are the proof.",
+		"From chains to a city of our own, faster than anyone thought possible. Some days I look at Orgrimmar and think: we did that.",
+	},
+	["race.orc.muse.w09.038"] = {
+		"flexes one green hand into a fist and opens it again, slowly, as if testing that it still answers.",
+		"stretches until {g:his|her} shoulders crack, then grunts, satisfied, at nothing in particular.",
+		"squints at the horizon with a hunter's patience, though there is nothing on it worth hunting.",
+	},
+	["race.orc.muse.w09.039"] = {
+		"Sometimes, in a hard fight, I feel the rage rise and wonder if it is mine. The shamans say it is. The curse is gone; the temper is our own, and so is the reining in.",
+		"The demon's taint is gone from us; Hellscream saw to that. What is left is plain orc anger. That one I am allowed to keep, and to master.",
+		"When my temper flares I ask myself whose it is. Mine, every time, ever since Hellscream. That makes holding it my job.",
+	},
+	["race.orc.muse.w09.040"] = {
+		"The farther I walk from Durotar, the more of an orc I feel. Strange how a people grows clearer from a distance.",
+		"Out here nobody knows Razor Hill or the Valley of Trials. I carry them in the way I stand, and that much they see well enough.",
+		"Every road away from Orgrimmar is also a road back to it. I never forget which way that is.",
+	},
+	["race.orc.muse.w09.041"] = {
+		"The forges of Orgrimmar ring at all hours. If the city has a heartbeat, that is it: hammer on iron, patient and loud.",
+		"Orc steel is ugly and honest. Nobody ever bought it for its looks, and nobody ever brought it back broken.",
+		"Orc craft is not pretty. It is heavy, it is plain, and it does not break. The elders say the same of the people.",
+	},
+	["race.orc.muse.w09.042"] = {
+		"Kalimdor was old long before we came. Every ruin in the Barrens belonged to someone who also thought they would stay forever.",
+		"This land had owners before us: centaur, quilboar, night elves, others with no name left. We will have to be better at keeping it.",
+	},
+	["race.orc.muse.w09.043"] = {
+		"Lok'tar. I don't shout it for show. I say it so I remember what I'm standing for.",
+		"Lok'tar. Two syllables, and a whole people behind them.",
+	},
+	["race.orc.muse.w09.044"] = {
+		"My shoulders ache, my boots are full of grit, and I'm hungry enough to eat a kodo whole. A good orc day, then.",
+		"Sore everywhere, dust in my teeth, belly empty. Nothing an orc can't fix with meat and a short sleep.",
+	},
+	["race.orc.muse.w09.045"] = {
+		"Thrall keeps an uneasy peace with the humans of Theramore. Some orcs grumble about it. I think it takes more strength to hold back a war than to start one.",
+		"Peace with Theramore is a thin thread. The Warchief holds one end and a human woman holds the other. I hope both of them have strong hands.",
+		"Half the Horde wants to march on Theramore, and the Warchief says no. A chieftain who can say no to his own people's anger is rare.",
+	},
+	["race.orc.muse.w09.046"] = {
+		"Orcs feel fear like anyone. We just don't let it make the decisions. It can come along and carry the bags.",
+		"Fear is a fine scout and a terrible chieftain. I let it report, then I decide.",
+	},
+	["race.orc.muse.w09.047"] = {
+		"Orgrimmar smells of smoke, leather and roasting meat. Other cities smell of perfume and drains. I know which I'd rather come home to.",
+		"Orgrimmar is loud, cramped and hot, and every corner of it is ours. That last part makes up for the rest.",
+		"Some cities are built to impress visitors. Orgrimmar is built to be defended, lived in and argued in, and it does all three very well.",
+	},
+	["race.orc.muse.w09.048"] = {
+		"The best thing an orc elder owns is a story, and the second best is someone to hear it. I try to be the second when I can.",
+		"Old orcs tell the same tales many times. Listen closely and each time a different detail comes out, as if the story were still deciding how it went.",
+	},
+	["race.orc.muse.w09.049"] = {
+		"Every orc thinks they whisper. No orc has ever whispered. The trolls find this hilarious.",
+		"An orc whispering can be heard across a courtyard. We know. We have stopped apologizing.",
+	},
+	["race.orc.muse.w09.050"] = {
+		"Durotar meets the sea in hard red cliffs. Even the waves seem to lose their temper against them.",
+		"The sea along Durotar's coast is the one gentle thing in the land, and even it throws itself at the rocks as if it meant it.",
+	},
+	["race.orc.muse.w09.051"] = {
+		"Kul Tiran soldiers still sit in Tiragarde Keep on our own coast. Their admiral came to finish us and died for it. His men did not take the hint.",
+		"Tiragarde Keep: human stones on Durotar's shore. Every orc who walks past it remembers that the war never truly ended. It only changed address.",
+	},
+	["race.orc.muse.w09.052"] = {
+		"Our Warchief is a shaman before he is a warrior. An orc who speaks to the elements before he lifts the hammer: that is the Horde I want to belong to.",
+		"Thrall listens to the spirits before he gives orders. The old Horde tried every worse way to lead.",
+	},
+	["race.orc.muse.w09.053"] = {
+		"I learn something from every people of the Horde. The trolls teach patience with strange things, the tauren patience with slow ones. The Forsaken teach patience, full stop.",
+		"An orc alone learns only how to be an orc. The Horde gave us teachers we never asked for, and most of them were worth it.",
+	},
+	["race.orc.muse.w09.054"] = {
+		"Orcs wear scars the way others wear jewelry: without shame, and with a story for each. The story is often exaggerated.",
+		"Ask an orc about a scar and you will hear a tale twice as long as the wound. That is tradition, not lying.",
+	},
+	["race.orc.muse.w09.055"] = {
+		"Cactus apples: spines outside, sweet inside, and they leave your fingers sore for a day. Durotar in a single fruit.",
+		"Peel a cactus apple with care and it rewards you. Peel it like an orc and you spend the rest of the day picking spines out of your thumb.",
+	},
+	["race.orc.muse.w09.056"] = {
+		"Once, the Horde followed orders into the fel. The new one follows a Warchief who explains himself. I prefer the second, and I follow it harder for that.",
+		"I would follow Thrall a long way. Not because I must, which is how the old Horde followed. Because he gave me the choice.",
+	},
+	["race.orc.muse.w09.057"] = {
+		"looks up and turns slowly, as if taking a bearing on Orgrimmar from wherever this is, then nods to {g:himself|herself}.",
+		"pauses and gazes off into the distance, toward home by the look of it, then sets {g:his|her} jaw and gets on with things.",
+	},
+	["race.orc.muse.w09.058"] = {
+		"The shamans say the ancestors speak in dreams. Mine mostly show me food. Perhaps that is advice too.",
+		"If the ancestors visit orcs in their sleep, as the shamans claim, mine must be patient spirits. I have kept them waiting a long time.",
+	},
+	["race.orc.muse.w09.059"] = {
+		"When Thrall broke open the camps, the elders say, some orcs did not want to leave. They had forgotten how. He waited for them. That patience is why we have a Horde.",
+		"Thrall freed the camps one by one, the old ones say, and the hardest part was never the guards. It was teaching orcs to want something again.",
+	},
+	["race.orc.muse.w09.060"] = {
+		"Brute, they say. Then the cart sticks in the mud and suddenly everyone wants a brute.",
+		"Everyone looks down on orc muscle until something heavy needs moving.",
+	},
+	["race.orc.muse.w09.061"] = {
+		"Whole clans were lost to the fel and to the wars it started. When I count the Horde, I also count the gaps.",
+		"The elders sometimes stop in the middle of a story and say nothing for a while. Someone who should be in the tale is not. I have learned to wait with them.",
+		"There are fewer of us than there should be. The demons took their share, then the humans, then the long years in the camps. Every orc child is a small victory.",
+	},
+	["race.orc.muse.w09.062"] = {
+		"Honor does not pay for a meal. But a merchant who knows you keep your word gives credit, and that is close enough.",
+		"My word is worth more than my purse. On a lean day that is not much of a boast, but it is still true.",
+	},
+	["race.orc.muse.w09.063"] = {
+		"The skin is green, the tusks are real, and the temper is mostly under control. Any other questions?",
+		"Green skin, real tusks, decent manners. Two out of three surprise people.",
+	},
+	["race.orc.muse.w09.064"] = {
+		"In a dry land, the elders say, every spring is a gift of the water spirits. The orcs of Durotar waste no drop of it. I catch myself doing the same anywhere.",
+		"Water is the first spirit an orc of Durotar learns to thank. Everything else can wait; thirst cannot.",
+		"I never pass clean water without a word of thanks. The shamans of Durotar teach the habit to anyone who will listen. It is a habit that sticks.",
+	},
+	["race.orc.muse.w09.065"] = {
+		"If you need help, ask. If you need a fight, ask politely. I'm good for either.",
+		"Need a strong back or a hard head? I have both, and I lend them cheap.",
+	},
+	["race.orc.muse.w09.066"] = {
+		"Orcs age hard, the elders say: in the end the body pays for every fight. They say it laughing, with half their teeth gone.",
+		"Veteran warriors creak when they stand, and boast about every creak. Each one is a fight, they say. I mean to creak loudly when my turn comes.",
+	},
+	["race.orc.muse.w09.067"] = {
+		"Gul'dan's name is spat, not spoken. One orc's hunger for power, the elders say, and a whole people paid the price.",
+		"The elders say the old Horde was sold by its own: a council of orcs who loved power more than their people. Every chieftain since has had to prove they are not that.",
+	},
+	["race.orc.muse.w09.068"] = {
+		"Durotar's heat sits on your shoulders like a yoke. Orcs carry it without complaining, mostly, and end up missing it anywhere cooler.",
+		"Anywhere cooler than Durotar feels like a holiday to an orc, for about a day. Then something in us starts to miss the weight of the heat.",
+	},
+	["race.orc.muse.w09.069"] = {
+		"The grunts at the gates of Orgrimmar stand in the heat all day so the rest of us can complain about the heat indoors. Somebody should thank them. I usually nod.",
+		"Every grunt on a wall is an orc who chose boredom so others could have peace. That deserves more respect than it gets.",
+	},
+	["race.orc.muse.w09.070"] = {
+		"Songs are fine. But an orc's name is made in the small deeds nobody sings about: a promise kept, a load carried, a friend not left behind.",
+		"Glory is loud and leaves quickly. Respect is quiet and stays. I'll take the quiet one, and the loud one too if it happens to pass by.",
+		"The elders say a name is built like a wall: one stone a day, and nobody notices until it holds.",
+	},
+	["race.orc.muse.w09.071"] = {
+		"picks a bit of dried meat from {g:his|her} pouch and chews it slowly, with the gravity of someone attending to serious business.",
+		"chews on a strip of jerky with great concentration, as if the meal had insulted {g:him|her} personally.",
+	},
+	["race.orc.muse.w09.072"] = {
+		"Orc children grow up now without ever seeing a camp wall. The elders watch them play with a look I cannot quite name. Envy, maybe, or relief.",
+		"In some village of Durotar an orc child is growing up who has never heard a jailer's voice. Everything the old ones suffered was for that.",
+	},
+	["race.orc.muse.w09.073"] = {
+		"Strength for those who stand with me, and a hard head for those who don't. That's my whole philosophy.",
+		"My philosophy fits on a tusk: stand firm, speak plain, eat well.",
+	},
+	["race.orc.muse.w09.074"] = {
+		"The demons are gone from our blood, but not from the world. The shamans say they are patient. So are we, now.",
+		"The Burning Legion remembers us, somewhere. Let it. This time it will find orcs who know what its offer costs.",
+	},
+	["race.orc.muse.w09.075"] = {
+		"Orcs write down little and remember a great deal. The elders carry whole histories in their heads, and correct each other at the top of their voices.",
+		"Our history lives in voices more than in books. That makes it louder than most, and harder to burn.",
+	},
+	["race.orc.muse.w09.076"] = {
+		"Stonard, Kargath, Hammerfall: little orc forts scattered across the Eastern Kingdoms like stubborn thorns. The humans wanted us gone from their lands. Some of us stayed out of spite.",
+		"Our elders fought across the Eastern Kingdoms, and Horde banners still fly there: Hammerfall, Kargath, Stonard. Small places, held by orcs too proud to leave.",
+	},
+	["race.orc.subzone_enter.w09.001"] = {
+		"{subzone}. I check the ground first: hard enough to stand on, soft enough to dig into if it comes to that.",
+		"The ground of {subzone} under my boots. An orc judges a place by its footing before its looks.",
+		"Into {subzone}, testing the earth with each step, the way the old warriors teach the young.",
+	},
+	["race.orc.subzone_enter.w09.002"] = {
+		"enters {subzone} with {g:his|her} shoulders squared, the walk of someone who expects to be challenged and has no objection.",
+		"strides into {subzone} chin up, as if daring the place to make an issue of it.",
+		"comes into {subzone} at an even, heavy pace, neither hurrying nor hiding, the way orcs go anywhere.",
+	},
+	["race.orc.subzone_enter.w09.003"] = {
+		"{subzone}. Not as red as Durotar, but nothing is. It will do.",
+		"{subzone}. I compare it to home without meaning to. Home wins, but politely.",
+		"So this is {subzone}. Durotar would call it soft. I keep that opinion to myself, mostly.",
+	},
+	["race.orc.subzone_enter.w09.004"] = {
+		"{subzone}. I look for Horde colors first. Then for anything worth eating.",
+		"{subzone}. Banners first: whose are they? Then the cooking smoke: whose is that?",
+	},
+	["race.orc.subzone_enter.w09.005"] = {
+		"{subzone}. If it is quiet, I trust it less. Orcs distrust quiet; it usually means someone is holding their breath.",
+		"{subzone}. Noise I understand. Silence I check twice.",
+		"{subzone}. The old warriors say a place too calm is an ambush that has not stood up yet. I keep my eyes moving.",
+	},
+	["race.orc.subzone_enter.w09.006"] = {
+		"{subzone}. Nice place. Who do I thank, and who do I fight?",
+		"{subzone}, is it? I'll learn the name properly once I know whether it bites.",
+	},
+	["race.orc.subzone_enter.w09.007"] = {
+		"{subzone}. Nose first. Smoke, water, beast or blood: an orc learns what a place holds before seeing it.",
+		"Into {subzone}, sniffing. Every land has its smell. Durotar's is hot stone; this one I will learn.",
+		"{subzone}. I breathe it in and sort it out: what can be eaten, what can bite, what is burning.",
+	},
+	["race.orc.subzone_enter.w09.008"] = {
+		"{subzone}. Many places remember orcs as raiders. I would like this one to remember me differently.",
+		"{subzone}. The old Horde left its mark on half the world. I try to leave a lighter one.",
+		"{subzone}. Whatever orcs did here before, if anything, I walk in as one of Thrall's. That should mean something.",
+	},
+	["race.orc.subzone_enter.w09.009"] = {
+		"stamps the dust of the road from {g:his|her} boots at the edge of {subzone}, a small ceremony of arrival.",
+		"reaches {subzone} and knocks the grit off {g:his|her} boots against a stone, one and then the other, like a guest wiping {g:his|her} feet.",
+	},
+	["race.orc.subzone_enter.w09.010"] = {
+		"{subzone}. The shamans say every place has spirits that were here first. I nod to them, quietly. Manners cost nothing.",
+		"Every patch of earth has its own spirits, the shamans say, {subzone} too. I let them know an orc is passing, and means no harm unless harmed.",
+		"{subzone}. A short word to whatever spirits keep this ground. The shamans would want it, and it does no harm.",
+	},
+	["race.orc.subzone_enter.w09.011"] = {
+		"{subzone}. My legs tell me how far I came to get here. My pride tells them to be quiet.",
+		"{subzone} at last. The road was long; an orc complains about that only after sitting down.",
+		"{subzone}. Sore feet, steady breath. An orc arrives on time, or arrives angry.",
+	},
+	["race.scourge.landmark.w09.001"] = {
+		"{landmark}. Every named place had its living once, people who stood where I stand and never imagined someone like me. Yet here I am.",
+		"{landmark}. I wonder who built it and whether they lie somewhere near. If so, I hope they're resting better than I did.",
+		"{landmark}. Stone and timber age; I don't, much. Between the two of us, I wonder which will stand longer.",
+	},
+	["race.scourge.landmark.w09.002"] = {
+		"stops before {landmark} and studies it with the long, unblinking regard of someone in no hurry at all.",
+		"pauses at {landmark}, head tilted, as if listening for something under the noise of the living.",
+	},
+	["race.scourge.landmark.w09.003"] = {
+		"{landmark}. Lovely. Does anyone here keep torches handy? Just so I know where not to stand.",
+		"{landmark}. I'll be on my best behavior. Ask anyone; I didn't make a sound for years.",
+	},
+	["race.scourge.muse.w09.001"] = {
+		"Wrap these hands around a hot mug and the mug goes cold before my fingers notice. I've stopped apologizing to the tea.",
+		"The living warm their hands at a fire. I hold mine out of habit and watch the flames do nothing at all to them.",
+		"Cold hands, warm heart, people used to say. I have the first half of the saying down perfectly.",
+	},
+	["race.scourge.muse.w09.002"] = {
+		"The living lie down and leave the world for a few hours. I stay. Somebody has to keep an eye on it, and nobody asked me to.",
+		"Sleep was a door I went through every day without thinking. Now it's a door painted on a wall. I sit near it sometimes, out of courtesy.",
+		"While the others sleep I mend straps, count coins, listen to the walls. The hours are long when you can't spend them unconscious.",
+	},
+	["race.scourge.muse.w09.003"] = {
+		"I still eat. Don't ask what for. The habit outlived the stomach, and I'm in no hurry to break the news to the habit.",
+		"Food tastes of almost nothing now, so I'm very easy to cook for. Ask any innkeeper.",
+		"Bread, cheese, a bit of meat: I chew, I swallow, and I wait for the pleasure that used to follow. It never comes, but the chewing passes the time.",
+	},
+	["race.scourge.muse.w09.004"] = {
+		"pulls a needle through a loose seam at {g:his|her} wrist, neat and unhurried, the way one darns a sock.",
+		"checks the stitches along {g:his|her} forearm one by one and tightens the one that has started to give.",
+		"bites off a length of thread and goes back to mending {g:himself|herself}, without the slightest wince.",
+	},
+	["race.scourge.muse.w09.005"] = {
+		"If my jaw clicks while I talk, ignore it. It has opinions of its own.",
+		"Forgive the rasp. The voice still works; it's only had the shine taken off it.",
+		"Speak up? I'd love to. This throat gives what it gives, and today it's mostly gravel.",
+	},
+	["race.scourge.muse.w09.006"] = {
+		"Flies find me before anyone else does. I've decided to take it as a compliment to my standing in the world of flies.",
+		"Crows look at me with professional interest. I look back with the same. Neither of us is in a hurry.",
+	},
+	["race.scourge.muse.w09.007"] = {
+		"A cut can sit on my arm for an hour before I notice it. Pain finds me late now, like a letter sent to an old address.",
+		"Pain still comes, but faint and slow, a knock on a door three rooms away. I answer it when I get there.",
+		"I'm not brave about wounds, only numb. People confuse the two, and I let them.",
+	},
+	["race.scourge.muse.w09.008"] = {
+		"Whenever something reaches into my head to bend me, a door slams shut somewhere inside. I didn't build that door. I earned it.",
+		"Fear, charm, a whisper to make me kneel: I feel them try, and I feel them slide off. A mind that was owned once doesn't let itself be owned twice.",
+		"Let any voice try to steer me. I have heard the worst one there is, and I walked out of it.",
+	},
+	["race.scourge.muse.w09.009"] = {
+		"A lake is only a road with a lid on it. I can walk the bottom as long as I please; the fish keep staring as if I'd broken a rule.",
+		"The living hold their breath and kick for the surface. I have no breath to hold, so I take the scenic route along the mud.",
+	},
+	["race.scourge.muse.w09.010"] = {
+		"There's a thing we can do with the fallen, a way of taking strength back from flesh. The orcs look away when they see it. So, some days, do I.",
+		"The living find our way of mending on the battlefield hard to watch. I don't blame them. I only wish they'd look at the Scourge with the same disgust.",
+	},
+	["race.scourge.muse.w09.011"] = {
+		"The Banshee Queen does not explain herself, and we do not ask. When you have taken orders from the Lich King, a ruler who keeps silent feels like a mercy.",
+		"Lady Sylvanas was a ranger of Quel'Thalas once, and she still watches the world like the edge of a forest. I find I trust a queen who never stops watching.",
+		"Whatever the Dark Lady plans, she planned it awake and free. That alone sets her above the master we had before.",
+	},
+	["race.scourge.muse.w09.012"] = {
+		"Undercity is no one's idea of a pretty city. It is ours, though, every damp step of it, and nobody else wanted it enough to take it from us.",
+		"A home under a ruin. The living would find that grim. To me it sounds exactly right: the earth held us once already, and we chose to stay down.",
+	},
+	["race.scourge.muse.w09.013"] = {
+		"The graves around Deathknell are full of turned earth and fresh confusion. Everyone who climbs out needs a few days to learn the shape of the new life. Some of us are still learning.",
+		"Deathknell: a chapel, a graveyard, and a steady trickle of the newly risen asking what year it is. Nobody laughs at them. Every one of us asked something like it once.",
+		"In Deathknell, right now, someone newly risen is learning to stand again. Someone will be patient with them, as someone once was with each of us.",
+	},
+	["race.scourge.muse.w09.014"] = {
+		"The Royal Apothecary Society answers every question with a polite smile and a closed door. I've learned to admire the door.",
+		"The apothecaries work in quiet, and the quiet has a smell: vinegar, bitter root, something underneath that I decline to name. Whatever they're making, I'd rather be on its good side.",
+		"Ask an apothecary what's in the vat and you'll get a lecture on everything except the vat. They are very good at that.",
+	},
+	["race.scourge.muse.w09.015"] = {
+		"The Scarlet Crusade would burn me and sing while they did it. They call that purity. I call it a bonfire with a choir.",
+		"In Hearthglen and in the Monastery they pray for the strength to destroy things like me. Fair enough. I pray to no one, and practice instead.",
+		"The Crusaders don't hate the Scourge more than they hate us. They hate us more, I think: we're the dead who got away.",
+	},
+	["race.scourge.muse.w09.016"] = {
+		"The Lich King sits on his ice at the top of the world, far from here. Some of us mean to visit him one day. Not to kneel.",
+		"The Lich King is a long way off. That suits me for now. A debt that large deserves to be collected in person, and I'm not ready yet.",
+	},
+	["race.scourge.muse.w09.017"] = {
+		"The orcs judge us by whether we hold the line. Fair. It's the first test I've had in years that has nothing to do with my smell.",
+		"Tolerated is a fine word. I've been called worse by better armies.",
+		"An orc once told me the Forsaken fight like people with nothing to lose. He meant it as a warning. I took it as a review.",
+	},
+	["race.scourge.muse.w09.018"] = {
+		"The trolls keep a little distance and a lot of charms between themselves and me. Their witch doctors know more about the dead than most. Maybe that's the trouble.",
+		"A troll made a sign with two fingers as I passed. I don't know what it means. I suspect it isn't 'welcome'.",
+	},
+	["race.scourge.muse.w09.019"] = {
+		"Sometimes a tune surfaces, three notes and no words, from the life before. I hum it through a throat that rasps it into something else. It's still mine.",
+		"I was alive once. That much is certain. The rest arrives in scraps: a smell of wet wool, a stair that creaked, a laugh I can't put a face to.",
+		"Memory works like a cellar after a flood. Most of it is ruined; now and then I pull out something whole and have no idea whose it was.",
+	},
+	["race.scourge.muse.w09.020"] = {
+		"The Scourge never asked me to be kind, or cruel. It asked nothing; it simply moved me. Now each choice is mine, and I make the gentle ones more often than people expect.",
+		"Not every Forsaken is cruel. Some of us are only tired, and some are kinder than we ever were alive, as if we'd been given a second try at it.",
+	},
+	["race.scourge.muse.w09.021"] = {
+		"The Light was everywhere when Lordaeron fell, in every chapel and every prayer, and it did not stop the plague. I don't curse it. I just stopped expecting it to come when called.",
+		"There was a chapel in every village of the old kingdom. Most of them are rubble now. I pass them without anger and without kneeling, which is as close to peace as I've come.",
+	},
+	["race.scourge.muse.w09.022"] = {
+		"Dying was the worst thing that ever happened to me, and I've made a full recovery. Mostly.",
+		"Death? Overrated. I tried it once; the second act is better.",
+		"I'd tell you to enjoy life while it lasts, but coming from me it sounds odd.",
+	},
+	["race.scourge.muse.w09.023"] = {
+		"The living rush because the clock is chasing them. Mine stopped. I can wait out a grudge, a siege or a slow merchant with the same calm.",
+		"Patience comes easily to the dead. We're in no danger of running out of time; only of running out of reasons.",
+		"Hurry me if you like. I've already reached the end once; nothing else is urgent.",
+	},
+	["race.scourge.muse.w09.024"] = {
+		"Hold on, something's come loose. No, not that. Not that either. Ah. Fine, carry on.",
+		"If you see a finger on the road, it isn't mine. Probably. Let me count.",
+	},
+	["race.scourge.muse.w09.025"] = {
+		"Fire frightens me more than it used to. Dry old flesh catches easily, and I've seen what a torch does to the dead. I keep a respectful distance from every hearth.",
+		"The living go toward a fire to get warm. I go around it. It has no warmth to offer me, only a very quick ending.",
+		"I've seen Forsaken step back from a campfire without thinking, the way the living step back from a cliff edge. The body knows what burns.",
+	},
+	["race.scourge.muse.w09.026"] = {
+		"Of all the beasts that carry the Horde, ours are the bats. They don't flinch at us. They may be the only creatures that never have.",
+		"The bats of Tirisfal are leathery, squealing and entirely without judgment. I'm fond of them for the last part.",
+	},
+	["race.scourge.muse.w09.027"] = {
+		"Prince Arthas came home to cheering and killed his father on the throne. The throne is still up there under the open sky. None of us sits on it. It isn't that kind of kingdom anymore.",
+		"The ruins above Undercity were the heart of Lordaeron once. Now they're a lid. I like knowing exactly what lies between me and the sky: broken stone and a bad memory.",
+	},
+	["race.scourge.muse.w09.028"] = {
+		"Silverpine: pines, wolves, and the Sepulcher's crypts dug into a hill. The wall of Gilneas stands at its southern end. They shut themselves in to stay alive. We were already past that worry.",
+		"The Sepulcher is a few crypts and a lot of tired Deathguards holding a forest for the Dark Lady. Every Forsaken outpost looks like that: not much, held hard.",
+	},
+	["race.scourge.muse.w09.029"] = {
+		"In Southshore they'd ring the alarm bell at the sight of me. I was alive somewhere in the old kingdom, likely not far, and now I'm what the bell is for.",
+		"To the people of Southshore I'm the enemy at the gate. To me they're the neighbors I can't remember. Neither of us is wrong, which is the worst of it.",
+	},
+	["race.scourge.muse.w09.030"] = {
+		"The Deathguard don't doze at their posts. They can't. Best sentries in the Horde, and they never once ask for a day off.",
+		"A Deathguard on a wall doesn't yawn, doesn't shiver, doesn't drift off. The living call that eerie. I call it a well-kept gate.",
+	},
+	["race.scourge.muse.w09.031"] = {
+		"Under the sun of Durotar the orcs sweat, the trolls grin, and I simply dry out a little more, like a herb on a windowsill.",
+		"Durotar's heat does nothing for a body like mine except hurry the embalming along. The orcs think I'm brave to wear this cloak. I'm keeping the pieces together.",
+	},
+	["race.scourge.muse.w09.032"] = {
+		"When a living hand takes mine, I feel it flinch at the cold. Most of them hold on anyway, out of politeness. I count those.",
+		"A handshake with the living is a small test. They feel the chill, I feel them decide whether to let go. The ones who don't, I remember.",
+		"I offer my hand less than I used to. Not out of pride: out of mercy for the hand that has to take it.",
+	},
+	["race.scourge.muse.w09.033"] = {
+		"Don't worry, I don't bleed much. Seep, perhaps. It's less dramatic.",
+		"That? A scratch. On me, scratches stay scratches. There's nothing much left to pour out of them.",
+	},
+	["race.scourge.muse.w09.034"] = {
+		"straightens up with a sound of joints settling into place, like a door on an old hinge.",
+		"rolls {g:his|her} neck slowly; something in it pops, and {g:he|she} seems faintly satisfied with the result.",
+	},
+	["race.scourge.muse.w09.035"] = {
+		"The Forsaken keep grudges the way the living keep heirlooms: carefully, and for a very long time. I have a few. I polish them.",
+		"Forgiveness takes energy, and the dead must budget. I forgive small things. The large ones I file away.",
+	},
+	["race.scourge.muse.w09.036"] = {
+		"Dying once taught me nothing about dying twice. Perhaps there's nothing after this. Perhaps that's what the first death was trying to tell me before the Scourge interrupted.",
+		"The living fear the end. I saw it from close up, and then I was dragged back. What frightens me is not the dark: it's someone else's hand on the lever again.",
+		"I fear the second death less than a second master. Dust I can accept. Strings, never again.",
+	},
+	["race.scourge.muse.w09.037"] = {
+		"The goblins who run the zeppelins treat me like any other passenger: a fare, a weight, a thing that mustn't be sick over the rail. I could hug them.",
+		"Goblins don't care if you're a corpse so long as your coin is alive. Honest people, in their way.",
+	},
+	["race.scourge.muse.w09.038"] = {
+		"I read more now than I ever did, I suspect. Books don't mind how long you take, or what's left of the hands turning the pages.",
+		"A long book and a quiet corner: the dead have time for both. Some of us have become terribly well read.",
+		"The dead make good readers: we never fall asleep halfway through a chapter.",
+	},
+	["race.scourge.muse.w09.039"] = {
+		"Tirisfal still grows pumpkins, fat and orange in fields the plague walked through. There's something stubborn in that soil. I recognize it.",
+		"The fields of Tirisfal keep growing whatever is put in them, as if nobody had told the earth the kingdom ended.",
+	},
+	["race.scourge.muse.w09.040"] = {
+		"Brill keeps a tavern for the living travelers and a graveyard so the rest of us feel at home. Thoughtful town.",
+		"In Brill the innkeeper serves the living, the undertaker serves the dead, and they've never once quarreled over a customer.",
+	},
+	["race.scourge.muse.w09.041"] = {
+		"I've a good few years left in me. Not in all of me, granted. The left knee is negotiating.",
+		"Growing old worries me less these days. Rotting is more of a project.",
+	},
+	["race.scourge.muse.w09.042"] = {
+		"The Plaguelands are the house we escaped. Some of us go back in, armed, to see the rooms where we were kept. I understand the urge. I don't share it every day.",
+		"East of Tirisfal the land is still sick, the trees bent, the rivers foul. The Scourge never cleans up after itself. We, at least, sweep.",
+	},
+	["race.scourge.muse.w09.043"] = {
+		"I lost a few years somewhere between the grave and the Dark Lady's halls. Nobody gives them back. I've stopped asking for a receipt.",
+		"How long did I serve the Scourge? Months, a year? The time is there and empty, like a page someone tore out and kept.",
+	},
+	["race.scourge.muse.w09.044"] = {
+		"I don't remember much of what my hands did while they belonged to the Scourge. I've decided that's a mercy, and I don't look under it.",
+		"Some Forsaken remember everything they did as the Lich King's puppets. My memory of it is mostly holes. I can't decide which of us is luckier.",
+	},
+	["race.scourge.muse.w09.045"] = {
+		"Call me an abomination if you like. Abominations are taller and have more stitches. I'm only a little untidy.",
+		"The living have a whole list of names for us. I've heard most of them. 'Corpse' is honest, at least; I'll answer to that one.",
+	},
+	["race.scourge.muse.w09.046"] = {
+		"The Dark Lady was the first to ask us what we wanted. Most of us had to think about it for a long time. Some still are.",
+		"I follow Sylvanas because she broke the chain first and asked questions after. Most rulers do it the other way round.",
+	},
+	["race.scourge.muse.w09.047"] = {
+		"A dreadlord stands at the Dark Lady's side in the Royal Quarter. She says he serves. I've seen enough masters to know how that word can turn.",
+		"Varimathras smiles too much for something that answers to anyone. I keep my distance and my opinion, both carefully.",
+	},
+	["race.scourge.muse.w09.048"] = {
+		"Dogs know. Every dog in every village barks itself hoarse when I come up the road. The cats only stare, which is worse.",
+		"Horses shy, dogs howl, hens scatter. The animals of the living have never once been polite about me.",
+	},
+	["race.scourge.muse.w09.049"] = {
+		"Our horses are like us: bones, a bit of leather and a stubbornness that outlasted the flesh. They don't want hay. They don't want anything. We understand each other.",
+		"A skeletal horse never tires and never spooks. The living find it horrible. I find it restful company.",
+	},
+	["race.scourge.muse.w09.050"] = {
+		"The living smell of bread, sweat and smoke, all at once, all the time. I'd forgotten how loud a living body is to the nose.",
+		"Sometimes, in a crowd, I catch the warm smell of someone alive and something in me turns toward it, like a plant toward a window. I don't let it go further.",
+		"Fresh bread, a sweaty horse, smoke in someone's hair: the living carry their whole day on them. I carry herbs and earth, and nobody asks about my day.",
+	},
+	["race.scourge.muse.w09.051"] = {
+		"laughs, a dry sound like gravel shaken in a box, and doesn't seem to mind how it lands.",
+		"lets out a short, rasping laugh that turns a few heads, and keeps walking.",
+	},
+	["race.scourge.muse.w09.052"] = {
+		"stands so still for so long that a spider starts measuring {g:his|her} boot for a web.",
+		"waits without shifting {g:his|her} weight even once, with the patience of something that no longer tires of standing.",
+	},
+	["race.scourge.muse.w09.053"] = {
+		"rubs a pinch of bitter herbs into a seam at {g:his|her} collar, and the smell of the grave retreats a little.",
+		"dabs a little oil from a small flask along a stiff joint, working it in with slow, practiced fingers.",
+	},
+	["race.scourge.muse.w09.054"] = {
+		"tilts {g:his|her} head back and regards the open sky with mild suspicion, as if it might drop something.",
+		"glances up at the wide sky with the faint unease of someone more used to a ceiling.",
+	},
+	["race.scourge.muse.w09.055"] = {
+		"We were Arthas's people once, the ones he was meant to protect. He came back with a plague instead. I hope someone reminds him of that someday, with a blade.",
+		"Every Forsaken was a subject of the crown Arthas threw away. We have a long list of complaints, and only one address.",
+	},
+	["race.scourge.muse.w09.056"] = {
+		"Nothing in this body begs me to stop: no breath running short, no heart hammering. Whatever keeps me going now is will, plain and stubborn, and I keep it sharp.",
+		"The living have their bodies to drive them: hunger, fear, the blood in their veins. I have only the decision to go on. I make it again every morning.",
+	},
+	["race.scourge.muse.w09.057"] = {
+		"People ask whether the apothecaries will find a cure. For what, exactly? I'm not ill. I'm just finished, and carrying on regardless.",
+		"A cure would mean going back to what I was. I don't remember enough of that person to want them back.",
+	},
+	["race.scourge.muse.w09.058"] = {
+		"shakes out {g:his|her} cloak, and a small cloud of dust and one bewildered moth come out of it.",
+		"brushes grave dirt from {g:his|her} sleeve with the air of someone who has given up expecting it to stay off.",
+	},
+	["race.scourge.muse.w09.059"] = {
+		"Relax. If I wanted to eat you, I'd have been much quieter about it.",
+		"No, I don't bite. I've kept my manners. Most of them, anyway; a few fell off with the rest.",
+	},
+	["race.scourge.muse.w09.060"] = {
+		"The kingdom I lived in fought the orcs for years. Now I stand in their Horde, and orcs ask me the way to Undercity. History has a black sense of humor.",
+		"Lordaeron built the camps where the orcs were kept. Now the orcs share their bread with Lordaeron's dead. I don't know what to call that, but it isn't nothing.",
+	},
+	["race.scourge.muse.w09.061"] = {
+		"The channels of Undercity run thick and green, and the living hold their noses on the bridges. I lean on the rail and watch the sludge go by. Water was never this interesting.",
+		"Green sludge in the canals, bats in the rafters, apothecaries in the corners. Undercity has a smell for every quarter, and I can no longer tell which ones are bad.",
+	},
+	["race.scourge.muse.w09.062"] = {
+		"Stratholme burned on the prince's order before the plague could take it. Some say a few of its people walk with us now. If so, they died twice in the same week.",
+		"Stratholme is still burning, in a way, all ruin and Scourge. I'd like to see it cleaned out. Not rebuilt: cleaned out.",
+	},
+	["race.scourge.muse.w09.063"] = {
+		"Some of us do terrible things with the freedom we were given. Some of us were terrible alive, too. Death doesn't change a person as much as the living hope.",
+		"The Forsaken are not one thing. There are apothecaries who would poison a river and Deathguards who would carry a child across one. I try to be the second sort.",
+	},
+	["race.scourge.muse.w09.064"] = {
+		"I can't weep anymore. Sometimes I sit with something sad until it passes, the way you'd sit with a friend.",
+		"Tears were the body's way of letting grief out. Mine stays in now, with nowhere to go. I take it for long walks.",
+		"Something sad happens and my eyes stay dry. It isn't coldness. The well has simply been filled in.",
+	},
+	["race.scourge.muse.w09.065"] = {
+		"I go to the tavern for the noise, not the ale. Ale tastes like wet straw to me now. The noise still tastes like being among people.",
+		"One mug, nursed for hours. Innkeepers think I'm thrifty. In truth I only want to sit near warm voices.",
+	},
+	["race.scourge.muse.w09.066"] = {
+		"Some days I come out of my rest certain I've just heard an order. It's always only a door, or the wind.",
+		"A shout on a parade ground still sets my feet moving before I've decided anything. Then I decide, and stand still, just to prove I can.",
+	},
+	["race.scourge.muse.w09.067"] = {
+		"'Here lies', the stones say, as if the matter were settled. Some of us didn't stay where we were put.",
+		"Everyone wishes the dead a quiet sleep. Nobody asked us whether we were tired.",
+	},
+	["race.scourge.muse.w09.068"] = {
+		"We are not what Lordaeron was, and we are not what the Scourge made us. We're something with no name yet, building as we go. That's frightening. It's also the first new thing in a long time.",
+		"A people made entirely of survivors of the worst. We should be broken. Instead we keep ledgers, mend roofs and argue about taxes. I find that magnificent.",
+		"Nobody planned the Forsaken. We happened, and then we decided to keep happening. Not a bad founding story, as such stories go.",
+	},
+	["race.scourge.muse.w09.069"] = {
+		"takes a piece of bread from {g:his|her} pack, turns it over, and puts it back, as if it were a letter in a language once known.",
+		"sniffs the air, head tilted, as though trying to place an old smell that has gone before it could be named.",
+	},
+	["race.scourge.muse.w09.070"] = {
+		"tugs a sleeve down over the bare bone of {g:his|her} wrist, out of a courtesy the living rarely return.",
+		"settles {g:his|her} hood so the worst of the face stays in shadow, a small kindness to anyone passing.",
+	},
+	["race.scourge.muse.w09.071"] = {
+		"The Deathguard have a saying: a grave is only a room you haven't left yet. Most of them say it without smiling, which is how you know they mean it.",
+		"An old Deathguard once told me: you've already lost the worst fight, so stop flinching at the small ones. I think of it more than I'd admit.",
+	},
+	["race.scourge.muse.w09.072"] = {
+		"Yes, I'm dead. No, it isn't catching. Not anymore.",
+		"Don't mind me. I'm a corpse, not a boor.",
+	},
+	["race.scourge.muse.w09.073"] = {
+		"The living I meet will grow old and die while I stay as I am, give or take a few pieces. Making friends has become a strange arithmetic.",
+		"Every living friend is a friend on loan. I know how the loan ends; I've been on the other side of it.",
+		"I'll outlast most of the living people I'm fond of. I try not to say it aloud. They have enough on their minds.",
+	},
+	["race.scourge.muse.w09.074"] = {
+		"I caught my reflection in a shop window and, for a moment, felt sorry for whoever that was. Then I recognized the cloak.",
+		"Nobody will ever call me a beauty again. On the other hand, nobody will ever tell me I look a bit pale. I've gone well past that.",
+	},
+	["race.scourge.muse.w09.075"] = {
+		"Tirisfal's light is thin and greenish, the trees bare and crooked. The living call it bleak. To me it looks like a place that has stopped pretending.",
+		"Crooked trees, low hills, a sky that never quite commits to blue. Tirisfal suits us. It, too, looks like it survived something.",
+	},
+	["race.scourge.muse.w09.076"] = {
+		"Frost, desert heat, swamp damp: weather is mostly a matter for the living. I notice it only when it gets into the hinges.",
+		"I don't shiver and I don't sweat. A cloak, for me, is only modesty and somewhere to keep things.",
+	},
+	["race.scourge.muse.w09.077"] = {
+		"Undercity is the finest city ever built in a cellar. Name a better one. Go on.",
+		"Underground, damp, and ours. You won't find a prouder cellar anywhere in the world.",
+	},
+	["race.scourge.muse.w09.078"] = {
+		"The Alliance would call it justice to put me back in the grave. I went there once without anybody's justice. I'm not going back for theirs.",
+		"Lordaeron's old allies would rather see us burned than free. They had their chance to save us, and they came too late. We saved ourselves.",
+	},
+	["race.scourge.muse.w09.079"] = {
+		"runs a thumb along the stitched seam at {g:his|her} jaw, a small absent gesture, the way the living touch an old scar.",
+		"presses a loose flap of skin back into place with two fingers and smooths it down, as calmly as straightening a collar.",
+	},
+	["race.scourge.muse.w09.080"] = {
+		"The orcs talk of Kalimdor's open plains as if they were a gift. I find all that sky a little indecent. Give me a ceiling and a few crypts.",
+		"Thunder Bluff, Orgrimmar, the Crossroads: Horde places built in sun and wind. I visit, and coming back, the cellars feel like a blessing.",
+	},
+	["race.scourge.muse.w09.081"] = {
+		"If anything waits past the second death, it already turned me away once. I'm not sure I'd knock again.",
+		"The priests of the living promise a reward after death. I went there. If it exists, someone forgot to tell the Scourge to wait.",
+	},
+	["race.scourge.muse.w09.082"] = {
+		"Whatever I owned in life went to someone else, or to the fire. Everything I carry now I earned after the grave. It's a smaller purse, and an honest one.",
+		"No inheritance, no debts, no land. Death settled all my accounts at once. I've rarely had so little paperwork.",
+	},
+	["race.scourge.subzone_enter.w09.001"] = {
+		"{subzone}. Whatever lives here will notice me before I notice it. The living always smell the dead first.",
+		"{subzone}. I walk in as quietly as I can, which is quiet indeed. Nothing in me breathes loud enough to give me away.",
+	},
+	["race.scourge.subzone_enter.w09.002"] = {
+		"{subzone}. Let's see who runs first.",
+		"{subzone}. Mind the smell, everyone; I'm coming through.",
+		"{subzone}. Nobody panic. I'm only passing.",
+	},
+	["race.scourge.subzone_enter.w09.003"] = {
+		"enters {subzone} with a stiff, even stride, cloak drawn close, eyes moving over everything and blinking at nothing.",
+		"walks into {subzone} without hurry, at the slow, unbothered pace of someone the road can no longer tire.",
+	},
+	["race.scourge.subzone_enter.w09.004"] = {
+		"{subzone}. Did I know this place when I was alive? The name stirs nothing. That's an answer too.",
+		"{subzone}. I listen to the name for an echo from before. Silence. I walk on with one thing less, or one weight less; I can't tell which.",
+	},
+	["race.scourge.subzone_enter.w09.005"] = {
+		"{subzone}. First I look for torches and anyone with a grudge. Then I can admire the view.",
+		"{subzone}. Exits, cover, and any sign of Crusader red. After that, the scenery.",
+	},
+	["race.scourge.subzone_enter.w09.006"] = {
+		"{subzone}. I came here because I chose to. Nobody pointed. I'll never get used to how good that is.",
+		"{subzone}. My own feet brought me, on my own errand. A small thing, for most people.",
+	},
+	["race.scourge.subzone_enter.w09.007"] = {
+		"{subzone}. Quiet as a crypt. I'll fit right in.",
+		"{subzone}. Smells of damp earth. Homely.",
+	},
+	["race.scourge.subzone_enter.w09.008"] = {
+		"{subzone}. I have all the time in the world to look around, so I do, corner by corner.",
+		"{subzone}. No hurry. The dead are never late for anything that matters anymore.",
+	},
+	["race.scourge.subzone_enter.w09.009"] = {
+		"pauses at the edge of {subzone} and tilts {g:his|her} head, listening for footsteps with the unmoving patience of the dead.",
+		"steps into {subzone} and goes still for a moment, so still that nothing nearby seems to notice the new arrival.",
+	},
+	["race.scourge.subzone_enter.w09.010"] = {
+		"{subzone}. Somebody lived here, loved here, buried someone here. Every name has a graveyard in it somewhere.",
+		"{subzone}. Every place is built on someone's grave, if you dig far enough. I've stopped finding that sad.",
+	},
+	["race.scourge.subzone_enter.w09.011"] = {
+		"{subzone}. The Dark Lady's reach is long. Let's see if it reaches this far.",
+		"{subzone}. One more name to report back to Undercity.",
+	},
+	["race.scourge.subzone_enter.w09.012"] = {
+		"{subzone}. If anyone here makes a sign against evil at me, I'll wave back.",
+		"{subzone}. I'll try to look harmless. It never works, but I like to keep in practice.",
+		"{subzone}. In here, somewhere, a dog is about to start barking at me. Any moment now.",
+	},
+	["race.scourge.subzone_enter.w09.013"] = {
+		"enters {subzone} with {g:his|her} hood drawn low, the way one enters a house where one may not be welcome.",
+		"comes into {subzone} with a faint creak of old joints and nothing else to announce {g:him|her}.",
+	},
+	["race.scourge.subzone_enter.w09.014"] = {
+		"{subzone}. The ground here holds its dead the usual way, quietly. I nod to them as I pass. Professional courtesy.",
+		"{subzone}. Under my feet lie those who stayed put. I envy them a little, and pity them a little more.",
+	},
+	["race.troll.landmark.w09.001"] = {
+		"{landmark}. I look for where the people of this place keep their fire and their trouble. Usually it's the same spot.",
+		"{landmark}. Every named place has someone who runs it and someone who resents that. A troll finds both before unpacking.",
+		"{landmark}. The name is on every tongue around here. I'll learn what it means by the smell of the place, as trolls do.",
+	},
+	["race.troll.landmark.w09.002"] = {
+		"lifts {g:his|her} chin at {landmark}, nostrils flaring, reading the place by scent before by sight.",
+		"stops short of {landmark} and leans on nothing at all, in that hunched troll ease, studying it from under heavy brows.",
+		"comes up to {landmark} with a slow, rolling stride, tusks tilted, taking the measure of the place without a word.",
+	},
+	["race.troll.muse.w09.001"] = {
+		"In Sen'jin the surf never stops talking. Anywhere else, I catch myself filling the quiet with it from memory.",
+		"Sen'jin Village sits right on the water, and the waves keep up their chatter against the huts all day. Inland, the world sounds unfinished.",
+		"A Darkspear grows up with the sea in one ear. Far from the coast, that ear keeps listening for it anyway.",
+	},
+	["race.troll.muse.w09.002"] = {
+		"The elders say the Darkspear were pushed out of Stranglethorn by the Gurubashi long ago. Every troll ruin I pass there, I wonder which side built it.",
+		"Stranglethorn was ours before it was anyone's, the elders tell it, until other tribes drove us to the sea. Quarrels grow long roots in the jungle.",
+		"Our tribe left the jungle with nothing but spears and a grudge, so the elders say. The spears we still carry. The grudge we keep somewhere safe.",
+	},
+	["race.troll.muse.w09.003"] = {
+		"Mind the tusks when you lean in, friend. They don't know they're rude.",
+		"Tusks are mostly for show. Mostly. Keep a little distance and we'll never find out.",
+		"I brush past a curtain and it comes away with a hole in it. Tusks have no manners at all.",
+	},
+	["race.troll.muse.w09.004"] = {
+		"Troll flesh is impatient. It closes a cut before I've finished being annoyed at it.",
+		"Other people nurse a scratch for days. On a troll it is a thin pale line before the day is out, and then nothing at all.",
+		"Healers of other races look at troll skin with plain envy. It mends itself while they are still threading the needle.",
+	},
+	["race.troll.muse.w09.005"] = {
+		"The loa are not kind and not cruel. They are proud and they are hungry, and they remember who showed them respect.",
+		"No troll I know asks the loa for love. You ask for a hearing, and you count yourself lucky to get one.",
+		"The spirits my people honor are no gentle shepherds. They are more like great beasts in the deep jungle: treat them right and they let you pass, or even walk beside you.",
+	},
+	["race.troll.muse.w09.006"] = {
+		"rubs a thumb along the curve of one tusk, frowning at a nick in the ivory.",
+		"flexes {g:his|her} long fingers one after another, cracking each knuckle with lazy care.",
+		"rolls {g:his|her} shoulders, then lets them settle back into the easy troll slouch.",
+	},
+	["race.troll.muse.w09.007"] = {
+		"Fish on a fire, a pinch of salt, a little smoke. Every troll knows that is the best meal in the world, whatever the city cooks pretend.",
+		"Give me a fish fresh out of the water and a stick to roast it on. Cities have kitchens and sauces; I have never seen the point of either.",
+		"Durotar feeds you scorpid and hard bread. Down on the coast at Sen'jin they feed you fish, and a troll can taste which land is fond of us.",
+	},
+	["race.troll.muse.w09.008"] = {
+		"The orcs did not have to take us in. They had their own troubles and a new land to win. They made room anyway, and a Darkspear does not forget room made.",
+		"Thrall's people are grim, loud and stubborn. They also keep their word. A troll can forgive a great deal for that.",
+		"An orc laughs about once a season; a troll laughs about once a breath. Somewhere between the two, the Horde gets its business done.",
+	},
+	["race.troll.muse.w09.009"] = {
+		"Orgrimmar gave the trolls a corner of its own, the Valley of Spirits. Smoke, drums, and witch doctors haggling over bones: the most homelike place in the whole city.",
+		"When the orcs' city gets too loud and too square for me, I go down to the Valley of Spirits. The smell of our own smoke fixes most things.",
+		"In the Valley of Spirits the trolls of Orgrimmar keep their fires and their charms. Walking in there is like stepping back into my own tongue.",
+	},
+	["race.troll.muse.w09.010"] = {
+		"Easy, mon. Nobody ever died of slowing down a little.",
+		"Da world be in a hurry. I don't have to be.",
+		"Breathe, mon. Whatever it is, it'll still be there after.",
+	},
+	["race.troll.muse.w09.011"] = {
+		"In Zul'Gurub the Gurubashi bleed for Hakkar the Soulflayer. Some troll gods should have stayed buried, and every Darkspear knows it.",
+		"The name Hakkar sours the air when it is spoken. My people do not say it near the fire, and I do not say it twice.",
+		"Hakkar drinks lives and calls it worship. Whatever the Gurubashi think they are buying in Zul'Gurub, the Soulflayer will take more than they offered.",
+	},
+	["race.troll.muse.w09.012"] = {
+		"The Amani up in the Hinterlands hate the elves with a hate older than any human kingdom. I understand a grudge. I would not want to live inside one.",
+		"Amani trolls carve their anger into every post and every mask. A Darkspear can admire the work and still keep well clear of the carver.",
+		"The Amani have spent ages at war with the elves and have little else left. Watching them, I learn what a tribe turns into when it only remembers its wounds.",
+	},
+	["race.troll.muse.w09.013"] = {
+		"The Sandfury hold Zul'Farrak out in the dunes of Tanaris. Trolls who chose to love sand: I have never understood them, and I do not plan to try.",
+		"Out in Tanaris the Sandfury keep a city of baked stone and old bones. Same tusks as mine. Very different ideas about guests.",
+	},
+	["race.troll.muse.w09.014"] = {
+		"The witch doctors of Sen'jin say mojo pools where it is needed, like water in a hollow. Grab at it and it runs out between your fingers.",
+		"Mojo is not a thing you own, the witch doctors say. It is a thing you borrow, and the lender keeps a careful count.",
+		"According to the witch doctors, mojo is like the tide: it comes to whoever waits on the shore, and drowns whoever wades out to fetch it.",
+	},
+	["race.troll.muse.w09.015"] = {
+		"A shadow hunter walks with one foot among the spirits and one in the mud with the rest of us. I would not want to carry that balance. I am glad someone does.",
+		"The shadow hunters of our tribe see the spirit side of things as plainly as I see a road. It must make supper conversation very strange.",
+		"Some trolls are called to stand between the living and the spirits, and they become shadow hunters. The tribe respects them, and gives them plenty of room at the fire.",
+	},
+	["race.troll.muse.w09.016"] = {
+		"Vol'jin speaks little and means all of it. When the Darkspear argue, his silence ends it sooner than any shout.",
+		"Our chief carries the tribe the way someone carries water across slick rocks: carefully, steadily, never spilling a drop he can help.",
+		"Vol'jin stands at Thrall's side and never forgets whose people he speaks for. That is a hard trick. He makes it look easy.",
+	},
+	["race.troll.muse.w09.017"] = {
+		"Raptors are like cousins. They bite, they steal your food, and you'd still fight anyone who touched one.",
+		"Never trust a raptor that's being quiet. It's thinking, and you won't like what it thinks.",
+		"A good raptor is worth three horses and all their manners. Horses don't know how to grin.",
+	},
+	["race.troll.muse.w09.018"] = {
+		"Somewhere on the Echo Isles, trolls who once shared our fires now walk wherever a madman points them. I keep a little anger set aside for that, the way others keep coin.",
+		"The scouts say the hexed ones on the Echo Isles still wear the faces of our cousins. I would rather meet a hundred raptors than one of them.",
+	},
+	["race.troll.muse.w09.019"] = {
+		"Durotar is all red dust and thorns. Good for orcs, I suppose. A troll wants green, and wet, and things that grow while you watch.",
+		"The orcs love their red country. I love it too, the way you love a friend with a hard handshake. My skin still asks where the water went.",
+		"Out here the ground cracks like stale bread. In the jungle the ground sweats and steams and grows something new every hour. I know which one my bones prefer.",
+	},
+	["race.troll.muse.w09.020"] = {
+		"The Forsaken walk with the Horde now. I nod to them, I trade with them, and I never once turn my back. The witch doctors know too much about the dead to trust them easily.",
+		"Dead things that talk and bargain: my people have stories about those, and none of the stories end well. Still, the Dark Lady's folk keep their side of the pact. So far.",
+		"A troll knows the dead belong with the spirits. The Forsaken disagree, and they don't seem to want advice about it. I keep my charms close and my opinions closer.",
+	},
+	["race.troll.muse.w09.021"] = {
+		"The tauren are slow to speak and slow to anger. Around them I lower my voice without meaning to, the way you do near a sleeping beast twice your size.",
+		"Tauren carry a calm about them like a cloak. Standing beside one, I feel like a monkey next to a mountain, and somehow it is a pleasant feeling.",
+		"I like the tauren. They laugh at my jokes late, but when they get there they laugh properly, from the belly.",
+	},
+	["race.troll.muse.w09.022"] = {
+		"Goblins sell the same thing to both sides and call it business. A troll can respect a good trick, but I always count my fingers after a handshake.",
+		"The goblins of Booty Bay would sell the sea back to the fish if the fish had coin. I laugh, I pay, and I check the change twice.",
+	},
+	["race.troll.muse.w09.023"] = {
+		"hums a low tune under {g:his|her} breath, the kind sung on the coast while mending nets.",
+		"taps a slow rhythm against {g:his|her} thigh with two fingers, as if keeping time with a drum nobody else can hear.",
+		"lets out a short, bright laugh at nothing in particular, then goes quiet again, still smiling.",
+	},
+	["race.troll.muse.w09.024"] = {
+		"My people laugh at hard things. Outsiders think it means we don't feel them. It means we have felt them so long that laughing became the cheaper choice.",
+		"Trolls laugh in bad times, and the other races decide we are mad or heartless. Neither. Laughter is how my people carry a weight that would snap a straighter back.",
+		"When a troll laughs at trouble, look closer: the laugh is doing the work of a shield. It is the oldest one my people own.",
+	},
+	["race.troll.muse.w09.025"] = {
+		"The sea gives fish and takes boats. A fair bargain, if you happen to be the sea.",
+		"Never argue with the tide. It was here before you and it doesn't listen.",
+		"Learn to swim before you learn to boast. The sea checks the first one sooner.",
+	},
+	["race.troll.muse.w09.026"] = {
+		"Some days I feel a loa look at me the way a cat watches a beetle. Not angry. Just curious what I'll do next.",
+		"There are days the spirits seem close enough to tap my shoulder. On those days I walk carefully and keep my promises small.",
+		"A troll learns to feel when something unseen has taken an interest. The back of the neck learns it first; the head catches up later.",
+	},
+	["race.troll.muse.w09.027"] = {
+		"A voodoo mask is not a disguise, the witch doctors say. It is a face lent to whatever wants to come through. I keep my own face, thank you, and my own guest list.",
+		"The witch doctors carve masks so the spirits know who is speaking to them, or so they tell it. A face made for listening rather than for being looked at. I like that.",
+		"Put on a witch doctor's mask, the elders warn, and something else may decide to wear it too. I admire the carving from a polite distance.",
+	},
+	["race.troll.muse.w09.028"] = {
+		"Cold country makes a troll feel every bone in those long legs. I wrap up, keep moving, and think about warm water.",
+		"The north of the world was made by someone who never met a troll. Wind like teeth, and nothing ripe on the trees.",
+		"Troll skin is made for steam and heat. In the cold it simply gives up and turns a color I would rather not discuss.",
+	},
+	["race.troll.muse.w09.029"] = {
+		"The Frostmane trolls made a home in the ice of Dun Morogh. Trolls in the cold on purpose. I still can't decide whether that is courage or a very long mistake.",
+		"Somewhere up in Dun Morogh, troll cousins wrap themselves in furs and hunt among the dwarves' mountains. Every time I picture it, my toes curl up.",
+	},
+	["race.troll.muse.w09.030"] = {
+		"The Alliance looks at a troll and sees a savage from the old wars. Let them look. The Darkspear were never part of those wars, and we are not going anywhere.",
+		"Humans remember the Amani who burned their villages, and they paint every troll with the same brush. I won't waste breath correcting them. My deeds can argue for me.",
+		"To an Alliance soldier, every tusk is a threat out of the history books. I can't fix that. I can only make sure I am a different chapter.",
+	},
+	["race.troll.muse.w09.031"] = {
+		"Trolls carry a heat low down, like coals banked in the belly. In a fight it climbs and the world goes fast and bright. Afterward I am always a little surprised at myself.",
+		"When the berserk heat rises in a troll, the arms forget they were ever tired. The elders say: enjoy it, but never ask it for advice.",
+		"My people burn hot when it counts. The trick is to let the fire out on purpose, and to remember where you put the lid.",
+	},
+	["race.troll.muse.w09.032"] = {
+		"Darkspear children learn to stalk before they learn to count, the elders like to say: still as a root, quick as a snake. That patience never quite leaves a troll.",
+		"My people prize stillness. A troll who can wait in the brush without twitching will eat; the one who fidgets will be eaten. The jungle teaches it, and it sticks.",
+		"Wait like a root, strike like a snake. Every troll hears it young, and every troll finds out, sooner or later, that it holds for far more than hunting.",
+	},
+	["race.troll.muse.w09.033"] = {
+		"Long legs, long arms, long patience. Two out of three on a good day.",
+		"Built for reaching high branches. Also for knocking things off high shelves. Mostly that one.",
+		"Trolls aren't clumsy. The world is just built too small for our elbows.",
+	},
+	["race.troll.muse.w09.034"] = {
+		"Jungle again. The air is thick enough to drink and every leaf drips. Something in me unclenches that I didn't know was tight.",
+		"Green on green on green, and the smell of rot and flowers at once. This is how the world is meant to smell to a troll.",
+		"Vines, heat, birds shouting over each other. The jungle feels like a crowded house where everyone already knows my name.",
+	},
+	["race.troll.muse.w09.035"] = {
+		"Salt on the wind. My shoulders drop an inch and my step goes loose. Whatever this coast is called, it speaks my language.",
+		"The waves come in and pull back, come in and pull back. A troll could sit and listen to that until the fire burned down.",
+		"Wet sand underfoot, gulls bickering overhead. Any shore is a little bit Darkspear, if you squint.",
+	},
+	["race.troll.muse.w09.036"] = {
+		"Sand and more sand. My people came out of the water; this place is the sea's dry skeleton.",
+		"Dry as an old bone out here. I ration my water and my temper, and the heat takes a little of both.",
+		"A troll in a desert is a fish on a hot stone. I keep moving and I keep complaining, and both of them help.",
+	},
+	["race.troll.muse.w09.037"] = {
+		"Swamp water, warm and stinking and full of things that bite. Not home, but it remembers home a little.",
+		"Mud to the knee, insects singing, a smell like the bottom of a fish barrel. Close enough to the jungle that I almost feel welcome.",
+	},
+	["race.troll.muse.w09.038"] = {
+		"Night, and the bats are out. The elders say bats carry whispers between the loa. I listen anyway, in case some of it is meant for me.",
+		"Under the stars the world goes quiet enough to hear the spirits clearing their throats. A troll stays up for that.",
+		"Dark, warm, and full of small sounds. My people belong to the night hours as much as the day; I feel awake in a way the daylight never quite manages.",
+	},
+	["race.troll.muse.w09.039"] = {
+		"Rain at last. Let the others run for a roof. A troll stands in it and lets it wash off the dust.",
+		"Warm rain or cold, it smells of the islands to me. I tip my head back and drink a little, like a child.",
+		"The rain drums on the leaves and the ground drinks. My skin drinks with it. This is a troll's weather.",
+	},
+	["race.troll.muse.w09.040"] = {
+		"Cities are full of straight lines and straight faces. I walk a little looser just to keep things balanced.",
+		"All these walls, all these people in a hurry. A troll in a city is a parrot in a smithy: loud, colorful, and slightly in the way.",
+	},
+	["race.troll.muse.w09.041"] = {
+		"Spirits be watching, mon. Best behave, or at least be entertaining.",
+		"The loa love a good show. Let's give them one.",
+		"If the spirits laugh at me today, at least somebody's having fun.",
+	},
+	["race.troll.muse.w09.042"] = {
+		"This land is sick to the roots. The witch doctors would burn every bone here and smoke the ground for a year before letting anyone sleep on it.",
+		"Everything here is dead and walking, or dead and waiting to. My charms feel heavy around my neck, as if they know exactly where we are.",
+	},
+	["race.troll.muse.w09.043"] = {
+		"Fallen stones. Whoever built this, my people once built bigger, and watched it come down the same way. Ruins are where every race finally stands equal.",
+		"Broken walls always make me think of the troll empires: huge, proud, and now mostly vines and lizards on the steps.",
+	},
+	["race.troll.muse.w09.044"] = {
+		"Orc jerky, tauren flatbread, goblin anything: I eat it all, and every one of them could use some pepper and a fish.",
+		"The orcs cook meat until it gives up. The tauren cook grain until it agrees with them. A troll tosses a fish on the fire and is eating while they are still arguing.",
+		"Every race in the Horde has its own idea of supper. Mine involves fewer pots, more smoke, and a lot less waiting.",
+	},
+	["race.troll.muse.w09.045"] = {
+		"The elders of Sen'jin say our old chief saw the orcs coming in a vision, long before their ships reached us. He trusted it with his life, and lost the life. The tribe kept the trust.",
+		"They tell it in Sen'jin Village that the old chief dreamed of a great warrior who would lead us out. Thrall came. The chief did not live to follow him, so we followed for him.",
+		"A vision, a shipwreck, a sacrifice: the elders of Sen'jin tell our freedom in those three words, and they always slow down on the last one.",
+	},
+	["race.troll.muse.w09.046"] = {
+		"The Darkspear crossed to Kalimdor with the orcs, crowded onto ships never built for so many. Every troll in Durotar has an ancestor who stood at a rail and looked back.",
+		"My tribe came to this land by sea, on orc ships, with only what we could carry. Maybe that is why trolls pack light and laugh loud.",
+	},
+	["race.troll.muse.w09.047"] = {
+		"A bead, a tooth on a string, a knot of feathers. Not because I am sure such things work. Because I am not sure they don't.",
+		"Outsiders call troll charms superstition. I call them good manners toward forces nobody fully understands.",
+		"Charms cost nothing to carry and a great deal to be without, my people say. A troll wears a few and does not explain them.",
+	},
+	["race.troll.muse.w09.048"] = {
+		"glances off toward where the sea ought to be, as if checking it is still there.",
+		"sniffs the air for salt, finds none, and shrugs it off with a lopsided grin.",
+		"stretches both long arms overhead until the joints pop, tusks tipped up toward the sky.",
+	},
+	["race.troll.muse.w09.049"] = {
+		"The night elves look at a troll the way a cat looks at a wet dog. The feeling is mutual, but at least I admit it.",
+		"Any elf, from Darnassus or from Quel'Thalas, wears the same expression around trolls, as if we had tracked mud across their history.",
+	},
+	["race.troll.muse.w09.050"] = {
+		"Everybody's in a hurry. The spirits aren't, the sea isn't, and neither am I.",
+		"You can rush a troll. Once.",
+		"Push me and I'll go slower. That's not stubbornness, that's balance.",
+	},
+	["race.troll.muse.w09.051"] = {
+		"The Darkspear have been pushed off one land after another. Durotar is dry and hard, but no one is pushing us off it. That is worth more than green.",
+		"For once my people stand on ground nobody can take from us by shouting. Red dust and all, it is ours to keep, beside the orcs who share it.",
+		"A tribe that ran from the jungle and ran from the sea can finally stand still somewhere. I don't take that lightly, even when I complain about the heat.",
+	},
+	["race.troll.muse.w09.052"] = {
+		"Bats like the dark, the damp and a good piece of fruit. Trolls and bats understand each other better than most people suspect.",
+		"A bat hanging upside down in a cave is the most relaxed creature in the world. I respect that deeply.",
+	},
+	["race.troll.muse.w09.053"] = {
+		"A hex can sit in a bead or a feather for years, waiting for the wrong hand. I don't pick up charms I find lying on the road. Ever.",
+		"Strange bundle of feathers on the path? Walk around it. A troll who picks up somebody else's mojo takes whatever comes with it.",
+		"Mojo found by chance is like food found in a witch doctor's hut: probably meant for someone else, and probably not meant kindly.",
+	},
+	["race.troll.muse.w09.054"] = {
+		"Up in the Hinterlands the Revantusk hold their village by the sea against the Amani and the Vilebranch. Trolls standing with the Horde, far from Durotar: it warms me to know they are there.",
+		"Not every troll tribe is an enemy. The Revantusk keep a village on the Hinterlands coast and share their fire with the Horde. Good people. Loud, like us.",
+	},
+	["race.troll.muse.w09.055"] = {
+		"Darkspear. A good name for a tribe: something sharp, something hard to see coming, something you hold on to.",
+		"Some tribes are named for skulls or blood. Ours is named for a weapon held steady in a strong hand. I like that we picked the useful one.",
+	},
+	["race.troll.muse.w09.056"] = {
+		"Durotar dust gets everywhere: in the ears, in the food, between the teeth and the tusks. I'll be finding red grit on me long after I've left it.",
+		"The orcs say red dust is good for the spirit. I say it's bad for the teeth. Possibly we are both right.",
+	},
+	["race.troll.muse.w09.057"] = {
+		"Trolls and orcs learn their first hard lessons side by side in the Valley of Trials. The scorpids there don't care about tusks or green skin, which makes allies of people quickly.",
+		"The Valley of Trials is where young Darkspear and young orcs first learn that the Horde fights shoulder to shoulder. The quilboar and the scorpids teach it, very patiently.",
+	},
+	["race.troll.muse.w09.058"] = {
+		"High rock and thin wind. My legs are long enough for the climbing, but the rest of me was made at sea level.",
+		"Mountains are the jungle's opposite: no green, no wet, no noise. Only stone and sky and a troll muttering under the breath.",
+	},
+	["race.troll.muse.w09.059"] = {
+		"These trees are taller and quieter than jungle trees, like elders at a council. I keep my voice down out of respect.",
+		"A forest without vines feels unfinished to me. Where is the heat? Where are the birds that never shut up?",
+	},
+	["race.troll.muse.w09.060"] = {
+		"The Darkspear stand with the Horde. Loudly, and with excellent timing.",
+		"Darkspear first, Horde always. Both are true, every single day.",
+		"Thrall has our spears and Vol'jin has our hearts. That's a fair split.",
+	},
+	["race.troll.muse.w09.061"] = {
+		"Alone for long enough, I start talking to the spirits out loud. They never answer and they never interrupt. Better than some company.",
+		"Out on my own, I chat with whatever spirit might be listening. If none is, at least the conversation stays honest.",
+	},
+	["race.troll.muse.w09.062"] = {
+		"crouches, presses one long hand flat against the ground for a moment, then straightens as if something has been settled.",
+		"pauses to flick a pinch of whatever is in reach over one shoulder, a quick troll courtesy to anything watching.",
+		"touches two fingers to a tusk, then to the earth, in a small gesture older than any road here.",
+	},
+	["race.troll.muse.w09.063"] = {
+		"The other races write things down. My people say them aloud, again and again, until they live in the voice. Both ways lose something. Ours loses less on a long road.",
+		"Trolls keep their knowledge in songs and sayings and the heads of the elders. No library to burn. Only people to keep alive.",
+	},
+	["race.troll.muse.w09.064"] = {
+		"Fruit tastes better picked by hand from high up, where nobody else can reach. That is one of the quiet joys of a troll's arms.",
+		"A tree heavy with fruit and long arms to reach it with: some days the world is very simple and very kind.",
+	},
+	["race.troll.muse.w09.065"] = {
+		"When a troll dies, my people say, the spirits come to argue over who gets to keep the company. I hope mine is worth a good argument.",
+		"Death is a long walk to a loud fire, the elders tell it, full of everyone who went first. I'm in no hurry, but I don't fear the walk.",
+	},
+	["race.troll.muse.w09.066"] = {
+		"Humans stare at trolls like we are about to eat them. We are not. Mostly they are too salty.",
+		"Every Alliance traveler I pass checks my tusks, then my hands, then my tusks again. I smile. It never helps.",
+	},
+	["race.troll.muse.w09.067"] = {
+		"Once the troll empires ruled half the world, before the elves and the humans had even learned to stack stones. Now the empires are rubble and we are here, still laughing. I know which I'd rather be.",
+		"Empires fall; tribes go on. The Gurubashi and the Amani built higher than anyone, and look what's left. The Darkspear built nothing to fall, and we are still out here in the open, laughing.",
+	},
+	["race.troll.muse.w09.068"] = {
+		"A troll's word is a knot: easy to tie, hard to undo. My people don't promise often, but when we do, we promise long.",
+		"Trolls are loose about most things: posture, hours, manners. Not about a promise. That we tie tight and carry a long way.",
+		"Laugh with a troll all you like, but take the troll's word seriously. Among my people a broken promise outlives the one who broke it.",
+	},
+	["race.troll.muse.w09.069"] = {
+		"The hair? It does that on its own. I just negotiate with it.",
+		"Nobody styles troll hair. You make an agreement with it and hope it keeps its side.",
+		"Yes, it stands up like that. No, I don't know how. It was like this when I found it.",
+	},
+	["race.troll.muse.w09.070"] = {
+		"When the drums start up at Sen'jin, nobody needs to be told twice. Trolls drift toward the sound like moths to a lamp, and by the third beat everyone is talking at once.",
+		"A Darkspear gathering begins with drums and ends with too much laughter. In between, things actually get decided, which surprises the orcs every time.",
+	},
+	["race.troll.muse.w09.071"] = {
+		"draws a small mark in the dust with one finger, studies it a moment, then scuffs it out with a heel.",
+		"picks up a pebble, turns it over twice as if reading something on the underside, and sets it down exactly where it was.",
+	},
+	["race.troll.subzone_enter.w09.001"] = {
+		"{subzone}. I sniff the air before anything else. A troll trusts a nose ahead of a map.",
+		"{subzone}. Smoke, dung, water, or blood: the air tells me who lives here before anyone comes out to say so.",
+		"{subzone}. First the smell, then the sounds, then the faces. That order has kept trolls alive for a long time.",
+	},
+	["race.troll.subzone_enter.w09.002"] = {
+		"slows at the edge of {subzone}, head tilted, tusks lifted to test the air.",
+		"pads into {subzone} on long, quiet feet, shoulders loose and eyes everywhere at once.",
+		"pauses as {subzone} opens up ahead, rocking back on {g:his|her} heels to take the whole of it in.",
+	},
+	["race.troll.subzone_enter.w09.003"] = {
+		"{subzone}. Let's see who lives here, and whether they share their fish.",
+		"{subzone}, eh? Looks like a place with stories. And hopefully a cook.",
+		"{subzone}. Nobody's thrown anything at me yet. Promising start, mon.",
+	},
+	["race.troll.subzone_enter.w09.004"] = {
+		"{subzone}. Somewhere in here there is a fruit tree, and I intend to find it.",
+		"{subzone}. My long ears swing forward on their own. They like to catch the gossip early.",
+		"{subzone}. I look up before I look ahead. Trolls always check the branches; half the trouble in the world lives up there.",
+	},
+	["race.troll.subzone_enter.w09.005"] = {
+		"{subzone}. I look for bones on posts first. Trolls of other tribes like to decorate their borders.",
+		"{subzone}. Feathers tied to a branch, a scratched mark on a stone: I read the signs before I trust the quiet.",
+		"{subzone}. If another tribe claims this ground, it will have said so somewhere, in bone or paint. I keep my eyes open for the message.",
+	},
+	["race.troll.subzone_enter.w09.006"] = {
+		"{subzone}. The canopy closes over me like a roof I already know.",
+		"{subzone}. Wet leaves slap my shoulders in welcome. The jungle never learned to whisper.",
+		"{subzone}. Heat, green and the hum of a thousand small lives. My step goes easy without asking me.",
+	},
+	["race.troll.subzone_enter.w09.007"] = {
+		"{subzone}. Salt and wet wood. The sea is close enough to hear, and my shoulders know it first.",
+		"{subzone}. Waves somewhere just out of sight. A troll can find water with eyes shut.",
+		"{subzone}. The wind tastes of the sea here. I would walk a long way for that taste.",
+	},
+	["race.troll.subzone_enter.w09.008"] = {
+		"{subzone}. Dust again. I lick my lips and promise them water later.",
+		"{subzone}. Dry enough to crack a troll's skin like old leather. I keep to the shade and keep my opinions to myself.",
+		"{subzone}. Not a drop of water in sight. My tusks feel thirsty, and I didn't know tusks could.",
+	},
+	["race.troll.subzone_enter.w09.009"] = {
+		"{subzone}. Greetings to whatever lives here, seen or unseen. I'm only passing.",
+		"{subzone}. Easy, spirits. One troll, friendly, just walking through.",
+		"{subzone}. Mind if a Darkspear passes? I'll keep it quick and quiet.",
+	},
+	["race.troll.subzone_enter.w09.010"] = {
+		"ducks under a low branch on the way into {subzone}, long arms brushing it aside like a curtain.",
+		"rolls into {subzone} with that loose, swinging troll gait, as if the ground were a deck at sea.",
+		"takes the first steps into {subzone} slowly, one long hand trailing along whatever is nearest.",
+	},
 }, "base_exploration")

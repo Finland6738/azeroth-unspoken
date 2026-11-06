@@ -324,4 +324,34 @@ NS:AddTexts("enUS", {
 		"Even bigger, somehow. Doorways of the world, I apologize in advance.",
 		"Stronger again. Somebody warn the low ceilings.",
 	},
+	["race.gnome.levelup.w09.001"] = {
+		"Upgrade complete! Still the same height, regrettably.",
+		"Improved in every way but one. Some specifications are fixed at the factory.",
+	},
+	["race.gnome.levelup.w09.002"] = {
+		"A little stronger. Gnomeregan will need every gnome at their best when the time comes to take it back.",
+		"Better than before. When my people go home to Gnomeregan, I mean to be worth bringing.",
+	},
+	["race.orc.levelup.w09.001"] = {
+		"Stronger than yesterday. Orcs don't count years; we count what our arms can lift.",
+		"More in me than there was. The elders measure an orc by the weight carried, and mine just grew.",
+	},
+	["race.scourge.levelup.w09.001"] = {
+		"Stronger. The body doesn't grow anymore, so the will has to do the growing for both of us.",
+		"More than I was. Not the flesh, which is past improving. Something underneath it, sharper now.",
+		"A step up. The dead aren't supposed to grow. I've never been one for supposed to.",
+	},
+	["race.scourge.levelup.w09.002"] = {
+		"Look at that: improving, at my age, in my condition.",
+		"Getting better! Not bad for a corpse. The apothecaries will want notes.",
+	},
+	["race.troll.levelup.w09.001"] = {
+		"Stronger. Like a reef growing: you never see it happen, and then it's there.",
+		"A little more troll than yesterday. The witch doctors say we keep growing as long as we keep learning.",
+	},
+	["race.troll.levelup.w09.002"] = {
+		"Ha! Feel that? The loa just beat the drums a little harder.",
+		"More strength, more speed, and the tusks are looking good too.",
+		"Look out, world. This troll just grew taller on the inside.",
+	},
 }, "base_life")

@@ -2081,4 +2081,813 @@ NS:AddTexts("enUS", {
 		"Hooves, horns and a bad temper. You met all three.",
 		"That's what happens when you wake a tauren's temper. It takes a long time to wake, and longer to sleep.",
 	},
+	["race.gnome.battle.w09.001"] = {
+		"For Tinker Town, and every gnome who walked out of the dark!",
+		"Gnomeregan's exiles fight too! Come and find out how!",
+		"For the High Tinker! Mind your shins!",
+	},
+	["race.gnome.battle.w09.002"] = {
+		"You're very large. That just means more of you to hit.",
+		"Big, slow and in my way. Two of those I can fix.",
+		"My, you're tall. Tall things fall farther, you know.",
+	},
+	["race.gnome.battle.w09.003"] = {
+		"Breathe, measure, move. Panic is only a calculation done too fast.",
+		"Slow the thinking down, speed the feet up. That's the whole trick.",
+		"Measure first. Fear can have whatever's left over.",
+	},
+	["race.gnome.battle.w09.004"] = {
+		"ducks under the first swing with an inch to spare, which for a gnome is a generous margin.",
+		"scampers into a gap no taller fighter would ever fit through.",
+	},
+	["race.gnome.battle.w09.005"] = {
+		"Excellent! A practical test! I do love a practical test!",
+		"Field trial number one, commencing now!",
+	},
+	["race.gnome.battle.w09.006"] = {
+		"The survivors say the troggs came up from below without warning. This one at least had the manners to show itself.",
+		"Gnomeregan fell to things that crawled up out of the deep. Whatever this is, it's standing in plain sight. Good.",
+	},
+	["race.gnome.battle.w09.007"] = {
+		"Go on, underestimate me. Everybody does, once.",
+		"Look down here. Yes, here. That's the last mistake you get to make.",
+	},
+	["race.gnome.battle.w09.008"] = {
+		"plants {g:his|her} small boots wide and grins up at the foe, which is the only direction available.",
+		"sets {g:his|her} feet, tilts {g:his|her} head all the way back to meet the foe's eyes, and refuses to look impressed.",
+	},
+	["race.gnome.battle.w09.009"] = {
+		"Exits noted: left, right, and straight between its legs. Now let's not need them.",
+		"Three ways out, counting the one under it. Gnomes always count the one under it.",
+	},
+	["race.gnome.battle.w09.010"] = {
+		"Mekkatorque's people don't run! We relocate tactically, and today we're not even doing that!",
+		"Gnomes don't retreat! We reposition! And right now we're not repositioning!",
+	},
+	["race.gnome.battle.w09.011"] = {
+		"The odds look dreadful. Good. Dreadful odds are where the interesting results live.",
+		"Bad numbers on paper. The paper never accounts for a stubborn gnome.",
+	},
+	["race.gnome.battle.w09.012"] = {
+		"I had plans for the next hour. Detailed plans. You weren't in them.",
+		"This wasn't on my schedule, and I keep a very thorough schedule.",
+	},
+	["race.gnome.battle.w09.013"] = {
+		"shifts {g:his|her} stance by a careful inch, as if calibrating something delicate.",
+		"flexes small fingers once, quick and precise, the way one tests a spring before setting it.",
+	},
+	["race.gnome.battle.w09.014"] = {
+		"Let's be quick about this. I left a perfectly good thought half-finished.",
+		"Make it brief, please. I was in the middle of an idea.",
+	},
+	["race.gnome.battle.w09.015"] = {
+		"Fight as if the city were still down there, waiting for us. In a way, it is.",
+		"Somewhere beneath the mountains Gnomeregan is still waiting. I'd like to be alive when we go back for it.",
+	},
+	["race.gnome.battle.w09.016"] = {
+		"Ironforge didn't open its doors to us so I could lose to something like this. Focus.",
+		"The dwarves gave my people a roof. The least I can do is not get flattened under the open sky.",
+	},
+	["race.gnome.battle.w09.017"] = {
+		"Short, quick and very cross! Your move!",
+		"Come on, then! Small and fast beats big and slow!",
+		"I'm half your height and twice your nerve! Let's see!",
+	},
+	["race.gnome.battle.w09.018"] = {
+		"Right! Elbows out, head down, brain on!",
+		"Here we go! Wits first, everything else second!",
+		"All hands to the problem! Well, both of mine!",
+	},
+	["race.gnome.battle.w09.019"] = {
+		"Heart hammering like a loose piston. Fine. Loose pistons still drive the wheel.",
+		"Scared. Good. Scared gnomes notice everything, and noticing is half of winning.",
+	},
+	["race.gnome.battle.w09.020"] = {
+		"looks the foe up and down, which takes rather a while, and narrows {g:his|her} eyes at what {g:he|she} finds.",
+		"studies the oncoming foe with bright, quick eyes, like a puzzle that has foolishly decided to fight back.",
+	},
+	["race.gnome.battle.w09.021"] = {
+		"Oh, wonderful. Another enormous thing with no sense of personal space.",
+		"Must everything out here be twice my size and in a bad mood?",
+	},
+	["race.gnome.lowhp.w09.001"] = {
+		"Damage report: everywhere. Morale: somehow still online.",
+		"Every gauge in the red. Well. Red is a cheerful color, at least.",
+		"Too many leaks to count. Patch the big one and argue with the rest later.",
+	},
+	["race.gnome.lowhp.w09.002"] = {
+		"Not now! I haven't tried half the things I meant to try!",
+		"Absolutely not! I've got a list, and I'm nowhere near the end of it!",
+	},
+	["race.gnome.lowhp.w09.003"] = {
+		"Not here. Gnomeregan has lost enough gnomes already.",
+		"No. My people can't spare another one. Get up, think, get out.",
+		"We left too many behind under the mountain. I'm not adding myself to that count.",
+	},
+	["race.gnome.lowhp.w09.004"] = {
+		"wobbles, catches {g:himself|herself}, and blinks hard, like a lamp deciding whether to stay lit.",
+		"sways on small feet and gives {g:his|her} head a quick shake, as if to knock something loose back into place.",
+	},
+	["race.gnome.lowhp.w09.005"] = {
+		"Small target, getting smaller! Somebody tell me that's a good thing!",
+		"I'm a hard target and getting harder! Mostly because there's less of me!",
+	},
+	["race.gnome.lowhp.w09.006"] = {
+		"Think. A slip, a twist, a gap to squeeze through. Gnomes get out of tight places; it's what we do.",
+		"There's always a way out for someone small enough to find it. Find it.",
+	},
+	["race.gnome.lowhp.w09.007"] = {
+		"Not yet! I'm seeing Gnomeregan again first!",
+		"I'm not done! There's a city under the mountains waiting for me!",
+		"You don't get me! Somebody has to take Gnomeregan back, and I've volunteered!",
+	},
+	["race.gnome.threat.w09.001"] = {
+		"Walk away. I'm small, I'm clever, and I have nothing better to do than ruin your day.",
+		"Leave now. I'm short on height, not on ideas.",
+		"Think carefully. Everything I lack in reach I make up for in spite.",
+	},
+	["race.gnome.threat.w09.002"] = {
+		"The troggs took a whole city from us. You won't take one inch from me.",
+		"My people lost Gnomeregan. We've grown very stubborn about losing anything else.",
+	},
+	["race.gnome.victory.w09.001"] = {
+		"And down it goes. Physics remains undefeated.",
+		"Gravity did most of that. I'll take the credit anyway.",
+	},
+	["race.gnome.victory.w09.002"] = {
+		"There's the tremble, right on schedule and a full minute late. Nerves were never a gnome's best-calibrated part.",
+		"Now the hands shake, once it's safe. Whoever designed nerves never tested them under load.",
+	},
+	["race.gnome.victory.w09.003"] = {
+		"brushes off {g:his|her} sleeves and draws up to {g:his|her} full height, which takes no time at all.",
+		"straightens {g:his|her} collar with great dignity, all of it concentrated in a very small person.",
+	},
+	["race.gnome.victory.w09.004"] = {
+		"If only the troggs had gone down this easily. A whole city might still have its lamps lit.",
+		"Easy enough, this one. The troggs weren't, and that's why I'm fighting up here instead of living down there.",
+	},
+	["race.gnome.victory.w09.005"] = {
+		"Did you see that? Tell someone tall; they'll be believed.",
+		"Somebody saw that, I hope. Tell it to a tall listener; it carries further.",
+	},
+	["race.gnome.victory.w09.006"] = {
+		"Noted: it favored one side and dropped its guard on the turn. The next one goes quicker.",
+		"Useful data. It telegraphed every big swing. I'll remember that pattern.",
+	},
+	["race.gnome.victory.w09.007"] = {
+		"Next time, pick on someone your own size. Oh, wait. There isn't anyone my size. Lucky me.",
+		"That's what comes of looking down on people. Literally, in this case.",
+	},
+	["race.gnome.victory.w09.008"] = {
+		"peers at the fallen foe with frank scientific interest, then remembers {g:his|her} manners and looks away.",
+		"crouches to study how the foe fell, purely for research, and straightens again before anyone can comment.",
+	},
+	["race.gnome.victory.w09.009"] = {
+		"One more fight won. Gnomes are good at small victories; losing a city teaches you to collect them.",
+		"A small win. My people have learned to stack those up carefully, like bricks for later.",
+	},
+	["race.gnome.victory.w09.010"] = {
+		"Was that all? I'd prepared at least four more ideas.",
+		"Oh. Over already? I had a whole second plan ready.",
+	},
+	["race.gnome.victory.w09.011"] = {
+		"Quiet again. A moment to check what aches, and the rest gets logged for later.",
+		"Over. Inventory: everything attached, a few new dents, nothing that won't buff out.",
+	},
+	["race.gnome.victory.w09.012"] = {
+		"Another one for the exiles' tally! Tinker Town will want the number.",
+		"Mark that one down for Gnomeregan! We're keeping count.",
+	},
+	["race.gnome.victory.w09.013"] = {
+		"lets out a short, giddy laugh, half relief and half pure delight that the plan actually worked.",
+		"gives a tiny hop of triumph, then pretends very hard that it didn't happen.",
+	},
+	["race.gnome.victory.w09.014"] = {
+		"Small bodies break easily. That's why small people learn to think fast. This time the thinking won.",
+		"Not much of me to spare in a fight. So I spend wits instead, and there's still plenty left.",
+	},
+	["race.gnome.victory.w09.015"] = {
+		"For the record: outweighed, outreached, and not outwitted.",
+		"Let the record show: smaller, lighter, and still the one standing.",
+	},
+	["race.gnome.victory.w09.016"] = {
+		"The dwarves say a gnome in a fight is all elbows. Today the elbows did fine.",
+		"Ironforge jokes that gnomes fight like startled clockwork. Startled clockwork just won.",
+	},
+	["race.gnome.victory.w09.017"] = {
+		"Splendid! I'd do a lap of honor, but my legs would like a word first.",
+		"Ha! Somebody fetch a crate; this deserves a speech from a proper height.",
+	},
+	["race.gnome.victory.w09.018"] = {
+		"Won. In Tinker Town they'll be fiddling with some machine right now, never knowing. I like that, somehow.",
+		"Over. Far off in Ironforge, the exiles go on tinkering and hoping. Fights like this keep the roads open for them.",
+	},
+	["race.gnome.victory.w09.019"] = {
+		"lets {g:his|her} shoulders drop, takes three quick breaths, and checks small hands, arms and knees in a brisk inspection.",
+		"pauses to catch {g:his|her} breath, then pats {g:himself|herself} down with care, like a mechanic counting the bolts after a test run.",
+		"wipes {g:his|her} brow with the back of a sleeve and gives the fallen foe a short, businesslike nod.",
+	},
+	["race.orc.battle.w09.001"] = {
+		"For Durotar, and for every orc who walks free!",
+		"A gift from Durotar, hot and heavy!",
+		"For Razor Hill and the red earth!",
+	},
+	["race.orc.battle.w09.002"] = {
+		"Face me with honor, or don't face me at all.",
+		"Stand and fight like you mean it. I'll do you the same honor.",
+		"Fight me fair. I'll give you that and nothing else.",
+	},
+	["race.orc.battle.w09.003"] = {
+		"throws back {g:his|her} head and lets loose a bellow that would carry across the Barrens.",
+		"sets {g:his|her} tusks forward and stalks in, slow and certain as a wolf closing on prey.",
+	},
+	["race.orc.battle.w09.004"] = {
+		"Calm first. Then strength. The rage can come later, if it's needed, and only if I call it.",
+		"Breathe. Choose the first step. Orcs who charge blind belong to the tales of the bad years.",
+	},
+	["race.orc.battle.w09.005"] = {
+		"Hah, a proper fight. My arms were starting to fall asleep.",
+		"At last, something that isn't a crate to carry.",
+		"Ah, there's my exercise for the day.",
+	},
+	["race.orc.battle.w09.006"] = {
+		"Come on! Orgrimmar loves a fight story; earn your part in mine!",
+		"Show me what you've got, and I'll show you what an orc has.",
+	},
+	["race.orc.battle.w09.007"] = {
+		"The elders say the demon's blood once made every fight feel like hunger. This one feels like work. I'll take work.",
+		"No demon fire behind my eyes, only my own anger, and I know where to point it. The curse is broken; the choosing is mine.",
+	},
+	["race.orc.battle.w09.008"] = {
+		"Demon! Hellscream settled our debt with your kind in Ashenvale. I'm here for the interest!",
+		"Your kind fed us poison and called it strength. Here's real strength, freely made!",
+	},
+	["race.orc.battle.w09.009"] = {
+		"Right. Let's get this done before my food goes cold.",
+		"Quick, then. I have places to be and you're in the way.",
+		"Let's be quick about it. I've a long road and a short temper.",
+	},
+	["race.orc.battle.w09.010"] = {
+		"grunts, plants {g:his|her} feet wide, and waits with heavy patience.",
+		"lowers {g:his|her} head, tusks forward, and the broad frame goes still.",
+		"spits to one side, rolls {g:his|her} thick neck, and comes on.",
+	},
+	["race.orc.battle.w09.011"] = {
+		"Ancestors, watch this one. I won't shame you.",
+		"Spirits of my people, I'll give you something worth watching.",
+	},
+	["race.orc.battle.w09.012"] = {
+		"Orcs are made for this: the doing, not the thinking. Well, a little thinking.",
+		"Some folk dread a fight. My shoulders cheer up the moment one starts.",
+	},
+	["race.orc.battle.w09.013"] = {
+		"Green skin, red earth, and no fear. Come on!",
+		"You picked a fight with an orc. Bold. Wrong, but bold.",
+		"Tusks out, head down. Here I come!",
+	},
+	["race.orc.battle.w09.014"] = {
+		"The Frostwolves fight for their valley, the Warsong for their name. I fight for whatever's behind me right now.",
+		"Every clan has its reason to fight. Mine, today, is simple: whatever stands at my back.",
+	},
+	["race.orc.battle.w09.015"] = {
+		"You look tough. I look tough too. One of us is lying.",
+		"Hah! Another one who thinks orcs are all muscle. We are. Lucky you.",
+	},
+	["race.orc.battle.w09.016"] = {
+		"grins around {g:his|her} tusks, an ugly, honest grin, and steps in.",
+		"lets out a short, harsh cry, the kind wolves answer from far hills.",
+	},
+	["race.orc.battle.w09.017"] = {
+		"I fight with a clear head and a clean heart. You'll find that's worse for you.",
+		"No demon's fury in me. Only mine, and it's enough.",
+		"Clear eyes, steady hands. That's what freedom fights like.",
+	},
+	["race.orc.battle.w09.018"] = {
+		"If this is the fight that ends me, let whoever finds me say I faced it.",
+		"No orc lives forever. The good ones are remembered for how they met days like this.",
+	},
+	["race.orc.battle.w09.019"] = {
+		"I didn't come looking for trouble. But I won't walk around it either.",
+		"You want this? Fine. Orcs never learned how to back down politely.",
+	},
+	["race.orc.battle.w09.020"] = {
+		"Back in the ground! Orcs don't scare at a few bones.",
+		"Rot and rattle all you like. I've seen fiercer things in a scorpid's nest.",
+	},
+	["race.orc.lowhp.w09.001"] = {
+		"That's my blood on the ground. Now come and see what an orc does with the rest of it.",
+		"You've drawn blood. Good. Orcs fight best with a debt to repay.",
+		"Blood for blood, then. I still have plenty to trade.",
+	},
+	["race.orc.lowhp.w09.002"] = {
+		"Breathe through it. Pain is just the body talking, and I've stopped listening.",
+		"Hurts. Fine. Hurting means I'm still here to be hurt.",
+		"Every breath is a small fight now. I've won plenty of those.",
+	},
+	["race.orc.lowhp.w09.003"] = {
+		"sways, spits red, and plants {g:his|her} feet wider.",
+		"staggers, tusks clenched, and refuses the ground its satisfaction.",
+		"drops to one knee, then forces {g:himself|herself} up again with a growl.",
+	},
+	["race.orc.lowhp.w09.004"] = {
+		"Is that all? I've had worse from a Razor Hill grog barrel.",
+		"You hit like a Durotar sunburn: annoying, and not enough.",
+		"Durotar's heat in high summer hurts more than you do.",
+	},
+	["race.orc.lowhp.w09.005"] = {
+		"If the songs have it right, Hellscream went down on his feet. I can at least stay on mine a little longer.",
+		"Grom Hellscream paid everything to free us, the warriors of Orgrimmar say. I won't spend that freedom face down in the dirt.",
+	},
+	["race.orc.lowhp.w09.006"] = {
+		"Lok'tar! Not yet, not here, not to you!",
+		"Not here. Not by your hand. An orc chooses where to fall, and it isn't here!",
+	},
+	["race.orc.lowhp.w09.007"] = {
+		"Everything's going thin and far away. Stay. Stay in the fight, orc.",
+		"Ears ringing, legs heavy. Plant your feet. Orcs are hard to move once they decide not to be.",
+	},
+	["race.orc.threat.w09.001"] = {
+		"Walk away. An orc warns once, and only because honor asks it.",
+		"Here's your one warning. Honor makes me give it. Nothing makes me give two.",
+		"Turn around. I'll give you that much courtesy, and not one breath more.",
+	},
+	["race.orc.threat.w09.002"] = {
+		"See these tusks? They're not for smiling.",
+		"I'm showing you my tusks. Among orcs, that isn't a grin.",
+	},
+	["race.orc.victory.w09.001"] = {
+		"Go to your ancestors, if you have any. Tell them an orc sent you, and fairly.",
+		"That was a fair fight, and it's over. Lie easy.",
+	},
+	["race.orc.victory.w09.002"] = {
+		"Over. I check my hands, my feet, my tusks. All there. That's a good day by anyone's count.",
+		"A quick count: arms, legs, tusks. Nothing missing. I'll call that winning twice.",
+	},
+	["race.orc.victory.w09.003"] = {
+		"Who's next? Line up, orderly, I'm not picky.",
+		"Anyone else waiting? No? Pity.",
+		"Who else wants a turn? Don't be shy.",
+	},
+	["race.orc.victory.w09.004"] = {
+		"raises a fist and lets out a short, rough cry, the sound of an orc pleased with the day's work.",
+		"wipes {g:his|her} brow with the back of a green wrist and grins around {g:his|her} tusks.",
+	},
+	["race.orc.victory.w09.005"] = {
+		"It fought for its life, as I would. No gloating. Just the quiet after.",
+		"Something died so I could keep walking. Orcs don't pretend that's nothing.",
+	},
+	["race.orc.victory.w09.006"] = {
+		"Ha! Strength and honor, both intact!",
+		"Victory, and not a drop of shame in it!",
+		"Won, and won clean! Lok'tar!",
+	},
+	["race.orc.victory.w09.007"] = {
+		"That's worked up an appetite. Somewhere in this world there's a boar with my name on it.",
+		"Fighting makes an orc hungry. Winning makes an orc hungrier.",
+		"A fight before eating is the best sauce, my belly says.",
+	},
+	["race.orc.victory.w09.008"] = {
+		"Ancestors, that one was for you.",
+		"Spirits, take note. That was done properly.",
+	},
+	["race.orc.victory.w09.009"] = {
+		"Orgrimmar's heralds say the Warchief wants a Horde that fights to protect, not to conquer. I can stand behind this one.",
+		"Not for conquest, just for the road ahead. That's the Horde the Warchief asks for, and the one I'll fight in.",
+	},
+	["race.orc.victory.w09.010"] = {
+		"You'll want a bigger friend next time. Two, maybe.",
+		"Tell your friends. Actually, don't. I like surprises.",
+		"Pick someone smaller next time. There are plenty of them about.",
+	},
+	["race.orc.victory.w09.011"] = {
+		"spits, wipes {g:his|her} mouth, and looks around for the next thing, unhurried.",
+		"shakes the sting out of {g:his|her} arms and gives the fallen foe a curt nod of respect.",
+	},
+	["race.orc.victory.w09.012"] = {
+		"Sweat stinging my eyes, arms heavy as stone. An orc's honest wages.",
+		"Aching and alive. On the red earth they'd call that a good day.",
+		"Bruised, scraped, and winning. Orcs are built for days like this.",
+	},
+	["race.orc.victory.w09.013"] = {
+		"Back to the Nether with you. The orcs are done being your hounds.",
+		"One less demon. Hellscream would have laughed, they say in Orgrimmar.",
+	},
+	["race.orc.victory.w09.014"] = {
+		"If anyone saw that, I'd like it known I made it look easy. If not, I'll describe it generously.",
+		"If nobody saw that, a shame. I'll tell it bigger later; that's allowed.",
+	},
+	["race.orc.victory.w09.015"] = {
+		"Settled. Where was I going?",
+		"Right. That's that. On to the road.",
+		"Good. Now, where's the road gone?",
+	},
+	["race.orc.victory.w09.016"] = {
+		"Orgrimmar's elders say the old Horde won battles and lost itself. I won this one and kept hold of who I am. That's the better trade.",
+		"A win that leaves me still myself. The elders admit the Horde of their youth couldn't always say that.",
+	},
+	["race.orc.victory.w09.017"] = {
+		"That's how an orc settles things: plainly, and for good.",
+		"Plain, and finished. No other way is worth the name.",
+	},
+	["race.scourge.battle.w09.001"] = {
+		"Come on, then! Better foes than you have killed me, and I got up!",
+		"Try your luck! The last thing that killed me is still waiting for me to stay down!",
+		"You want to kill me? Join the queue. It's a long queue, and none of them managed it properly.",
+	},
+	["race.scourge.battle.w09.002"] = {
+		"Careful. Anything you break, I'll have to sew back on myself.",
+		"Mind the stitches. I've only just had them done.",
+		"Go on, aim for the heart. Let me know if you find it doing anything.",
+	},
+	["race.scourge.battle.w09.003"] = {
+		"rolls {g:his|her} shoulders with a dry crackle of old joints and turns to face the fight without hurry.",
+		"tilts {g:his|her} head, the loose jaw settling into a crooked line, and steps in.",
+	},
+	["race.scourge.battle.w09.004"] = {
+		"Stay a moment and learn something: I've done the dying already, and you haven't.",
+		"Dying is the easy part. It's the getting up afterward that takes practice.",
+		"Afraid? Of you? I've seen the other side, and it was mostly quiet.",
+	},
+	["race.scourge.battle.w09.005"] = {
+		"I spent too long as someone's weapon. Today I fight on no one's orders but my own!",
+		"Nobody pulls my strings anymore. Every blow I strike is my own choice, and I choose you.",
+		"My hands move because I tell them to. That alone should frighten you.",
+	},
+	["race.scourge.battle.w09.006"] = {
+		"Fear used to arrive before the enemy did. Now it doesn't arrive at all. Just the work.",
+		"The living get a rush of terror first. I get a clear head and cold hands. I'll take the trade.",
+	},
+	["race.scourge.battle.w09.007"] = {
+		"For the Dark Lady, and for my own sour mood!",
+		"This one's for Undercity. The rest is just for me.",
+		"For Sylvanas! She bought us our freedom; let's spend some of it here!",
+	},
+	["race.scourge.battle.w09.008"] = {
+		"Look at you, still on the leash. I chewed through mine.",
+		"We came out of the same grave. Only one of us walked away with a will of its own.",
+	},
+	["race.scourge.battle.w09.009"] = {
+		"There's a person in me who would have run. I keep them at the back, where they can't get in the way.",
+		"The one I used to be would be shaking now. I remember the shaking better than I remember the face.",
+	},
+	["race.scourge.battle.w09.010"] = {
+		"Stand back, this may get unpleasant. Unpleasant is my specialty.",
+		"Brace yourself. I'm about to be the worst thing that's happened to you this week.",
+		"Oh, good. I was hoping something would try me today.",
+	},
+	["race.scourge.battle.w09.011"] = {
+		"fixes the foe with a flat, unblinking stare, a gaze that stopped flinching a long time ago.",
+		"goes very still, with a stillness that has nothing living in it, and then moves all at once.",
+	},
+	["race.scourge.battle.w09.012"] = {
+		"Lordaeron's dead have a long memory. Let's see if you're worth remembering!",
+		"Come on! The dead of Lordaeron don't scare easily, and they don't quit at all!",
+	},
+	["race.scourge.battle.w09.013"] = {
+		"Fair warning: I have odd appetites, and you're looking awfully fresh.",
+		"Don't squirm. The dead aren't fussy eaters, but we do appreciate manners.",
+	},
+	["race.scourge.battle.w09.014"] = {
+		"Pain comes to me muffled, like a voice through a closed door. Good. Let it knock.",
+		"Whatever hurts, it hurts at a distance. I'll be through this before it finds the way in.",
+	},
+	["race.scourge.battle.w09.015"] = {
+		"I crawled out of a grave for this second try. You'll not cut it short.",
+		"This second existence was hard won. It won't end at your hands.",
+	},
+	["race.scourge.battle.w09.016"] = {
+		"Fine. Let's get this over with; I've places to rot.",
+		"Again? Very well. The dead have nothing but time, and I'll spend some on you.",
+	},
+	["race.scourge.battle.w09.017"] = {
+		"For the Forsaken! Free, and furious about it!",
+		"For the Forsaken! We answer to no master, and certainly not to you!",
+	},
+	["race.scourge.battle.w09.018"] = {
+		"Fight first, check for missing pieces later. It's the Forsaken way.",
+		"If I lose a finger here, I'll file it under the cost of doing business.",
+		"Try not to lose anything you can't find again. Good rule, for something built like me.",
+	},
+	["race.scourge.battle.w09.019"] = {
+		"lets out a harsh, rattling cry that sounds dragged up from a grave, and charges.",
+		"gives a hollow rasp of a laugh, the kind that makes the living step back, and closes in.",
+	},
+	["race.scourge.battle.w09.020"] = {
+		"I'm sorry for this, truly. Well, partly.",
+		"Nothing personal. The dead don't hold grudges for long; we forget.",
+	},
+	["race.scourge.lowhp.w09.001"] = {
+		"Ah. That bit was load-bearing.",
+		"Something important just came loose. I'll find out what later.",
+		"Hold on, I think that was the good arm.",
+	},
+	["race.scourge.lowhp.w09.002"] = {
+		"Not like this. I didn't claw my way out of the Lich King's grip to come apart in a ditch.",
+		"I fought a king inside my own skull and won. This is smaller. Hold.",
+	},
+	["race.scourge.lowhp.w09.003"] = {
+		"staggers, something in {g:his|her} frame cracking audibly, and keeps coming anyway.",
+		"lurches, half the stitching torn loose, and simply refuses to notice.",
+	},
+	["race.scourge.lowhp.w09.004"] = {
+		"You'll need to do better than that. I've been deader than this!",
+		"Is that all? I've been dead for years; you're barely an inconvenience.",
+	},
+	["race.scourge.lowhp.w09.005"] = {
+		"The pain is far away, but the pieces are close. Too close to the ground. Up.",
+		"Dying again would be such a waste of the first time. Move.",
+	},
+	["race.scourge.lowhp.w09.006"] = {
+		"Fine! Take the arm! I'm keeping the rest!",
+		"Somebody remember where that piece landed!",
+	},
+	["race.scourge.lowhp.w09.007"] = {
+		"My will is all that holds me together. Good thing it's a stubborn one.",
+		"Hold, will. You beat a Lich King once. Beat this.",
+	},
+	["race.scourge.lowhp.w09.008"] = {
+		"sways like a scarecrow in a hard wind, held up by nothing visible, and does not fall.",
+		"sags at the knees, then straightens with the jerky stubbornness of something that has already been dead once.",
+	},
+	["race.scourge.threat.w09.001"] = {
+		"Walk away. I've no fear of dying, and you have every reason to.",
+		"Leave now. The dead are patient, and I'd wait as long as it takes.",
+		"Go. Your threats need someone who's afraid of graves.",
+	},
+	["race.scourge.threat.w09.002"] = {
+		"Look at me closely. Do I seem like someone with much left to lose?",
+		"Threaten a corpse? Bold. Pointless, but bold.",
+		"Try frightening me. Others have; I'm told my face just stares back.",
+	},
+	["race.scourge.victory.w09.001"] = {
+		"Lie still. I envy you a little, which is a strange thing to feel about a corpse.",
+		"There goes the last of it. You'll rest now. I never quite managed that.",
+	},
+	["race.scourge.victory.w09.002"] = {
+		"And that's why you don't pick fights with the already dead.",
+		"Next time, pick on someone with a pulse. Better odds.",
+		"Lesson learned, I hope: we don't stay down, and you do.",
+	},
+	["race.scourge.victory.w09.003"] = {
+		"glances down at the fallen with an expression that says nothing at all, then straightens a sagging shoulder.",
+		"brushes off {g:his|her} tattered sleeves, unhurried, as if the fight had been a minor delay on the way somewhere.",
+	},
+	["race.scourge.victory.w09.004"] = {
+		"Another one for the Forsaken. Count it, Undercity.",
+		"That's for the Dark Lady's people. We keep what we win.",
+		"Count that one for Sylvanas. She likes a tidy tally.",
+	},
+	["race.scourge.victory.w09.005"] = {
+		"The fight is over, and my body doesn't tell me so. I have to look around and decide it for myself.",
+		"Afterward, nothing in me trembles or slows. I have to tell myself it's over, like reading a notice on a wall.",
+	},
+	["race.scourge.victory.w09.006"] = {
+		"Was that it? I've had worse from a draft in Undercity.",
+		"That's all? The damp in the sewers does more damage.",
+		"That was the fight? I've had more trouble from a stiff knee.",
+	},
+	["race.scourge.victory.w09.007"] = {
+		"Welcome to the quiet. I'll not be joining you just yet.",
+		"Go on ahead. I've been, and I didn't care for it.",
+	},
+	["race.scourge.victory.w09.008"] = {
+		"Over. I'll admit the thought of a snack crossed my mind. The thought can keep walking.",
+		"Finished. Some of us would eat now. I'm considering it. I'm considering it less than I used to.",
+	},
+	["race.scourge.victory.w09.009"] = {
+		"stands over the fallen for a long moment, as if trying to remember what one is supposed to feel at a moment like this.",
+		"lingers by the body, head tilted, with the faint unease of someone who knows exactly how it feels to be on the ground.",
+	},
+	["race.scourge.victory.w09.010"] = {
+		"Won by my own hand, at my own choosing. That's a victory twice over.",
+		"My will, my fight, my win. Write that on my headstone, if I ever get one.",
+		"I fought because I chose to and won because I'm stubborn. A Forsaken needs both.",
+	},
+	["race.scourge.victory.w09.011"] = {
+		"Now to see what's useful. The dead don't waste; we've been wasted enough.",
+		"Search the field, mend what's torn, move on. Death has made me tidy.",
+	},
+	["race.scourge.victory.w09.012"] = {
+		"Ha! Even dead, I've still got it. Whatever it is.",
+		"Not bad for someone who's been in the ground.",
+	},
+	["race.scourge.victory.w09.013"] = {
+		"Each fight I win is a fight the Lich King doesn't get to win through me. I keep score.",
+		"One more proof that I belong to myself. I collect them.",
+	},
+	["race.scourge.victory.w09.014"] = {
+		"Done. Someone hand me a needle and thread; I've sprung a seam.",
+		"Over. Nobody look at my left arm until I've had a moment with it.",
+		"Finished. If anyone finds a fingernail, it's mine, and I want it back.",
+	},
+	["race.scourge.victory.w09.015"] = {
+		"Rest. You've been given what I never was: a proper end.",
+		"There. No master will wake you now. Consider it a kindness from one of your own kind.",
+	},
+	["race.scourge.victory.w09.016"] = {
+		"picks a stray scrap of something off {g:his|her} shoulder, studies it, decides it isn't {g:his|hers}, and flicks it away.",
+		"notices a loose thread hanging from a seam in {g:his|her} own arm and tucks it back in with mild annoyance.",
+	},
+	["race.scourge.victory.w09.017"] = {
+		"Funny. The living fight to stay alive. I'm not sure what I fight for. To stay myself, perhaps. That will do.",
+		"Won again. The living would call this survival. For me it's simpler: the will is still mine.",
+	},
+	["race.scourge.victory.w09.018"] = {
+		"The grave sends its regards. It's expecting you.",
+		"Off you go. Tell the dark I said hello; we're old acquaintances.",
+	},
+	["race.troll.battle.w09.001"] = {
+		"For the Darkspear! Come find out what long arms are good for!",
+		"You stepped into a troll's reach. Bad step.",
+		"Sen'jin's people don't back away. Come on, then!",
+	},
+	["race.troll.battle.w09.002"] = {
+		"Ha! Finally, something to do with my hands.",
+		"Good, good. I was getting bored, and a bored troll is worse company than an angry one.",
+		"Come, dance with me. I lead.",
+	},
+	["race.troll.battle.w09.003"] = {
+		"Breathe slow. Let the other one make the first move; in the jungle, the one who hunts always waits.",
+		"Calm. Anger is loud, and loud things get eaten in the jungle.",
+	},
+	["race.troll.battle.w09.004"] = {
+		"bares {g:his|her} tusks and lets out a high, rattling war whoop that carries a long way.",
+		"unfolds to full fighting height, long limbs loose and ready, eyes narrowed to slits.",
+		"rolls {g:his|her} shoulders once and grins, the way a troll grins when the waiting is finally over.",
+	},
+	["race.troll.battle.w09.005"] = {
+		"Darkspear! Heads high, tusks out!",
+		"For Sen'jin, and for Vol'jin after him!",
+		"Darkspear! Show them how the tribe of Vol'jin fights!",
+	},
+	["race.troll.battle.w09.006"] = {
+		"You picked a fight with a troll. Somebody should have warned you.",
+		"Lot of limbs on a troll. You won't see all of them coming.",
+		"Arms this long, and you thought you were out of reach? Think again.",
+	},
+	["race.troll.battle.w09.007"] = {
+		"Loa, I'm not asking for help. Just watch, and remember who it was.",
+		"Spirits of my people, keep an eye on me. If I fall, at least let it be worth a story.",
+		"A quick word to the loa before the first blow. They like to be asked first.",
+	},
+	["race.troll.battle.w09.008"] = {
+		"Alright, mon, let's get this over with. The fish won't cook itself.",
+		"Easy now. No need to rush. I've got all day and a great deal of reach.",
+	},
+	["race.troll.battle.w09.009"] = {
+		"mutters a quick warding word under {g:his|her} breath, more habit than mojo, and steps in.",
+		"spits once to the side, as if telling bad luck to wait its turn, and moves in.",
+	},
+	["race.troll.battle.w09.010"] = {
+		"Pick a spot to fall. I'll help you get there.",
+		"The jungle trolls of Stranglethorn are scarier than you, and they don't scare me either.",
+		"Come closer. I promise it'll be quick.",
+	},
+	["race.troll.battle.w09.011"] = {
+		"There it is, that heat under the skin. Trolls were made for this, the witch doctors say. Let it rise, but keep the reins.",
+		"The blood runs fast and hot. Good. Fast and hot, but not stupid.",
+	},
+	["race.troll.battle.w09.012"] = {
+		"I'll be honest, I was hoping you'd start it.",
+		"Oh, you want trouble? Trouble is my favorite meal.",
+		"Finally! I thought the whole day would go by without any fun.",
+	},
+	["race.troll.battle.w09.013"] = {
+		"The Darkspear stand with the Horde. That means I stand right here.",
+		"Thrall's orcs gave my people a way out. Every fight I take, I take for that.",
+		"For the Horde that took us in! Come on!",
+	},
+	["race.troll.battle.w09.014"] = {
+		"leans forward on long legs, loose as a reed in the wind, then goes very still.",
+		"flexes long fingers one by one, never taking {g:his|her} eyes off the danger.",
+	},
+	["race.troll.battle.w09.015"] = {
+		"Laugh. My people laugh going into a fight; it unsettles the other side, and it keeps the fear out of mine.",
+		"A grin before the first blow. The witch doctors say the spirits favor the ones who laugh.",
+		"Smile, then strike. That's how the Darkspear like it, and it confuses everybody.",
+	},
+	["race.troll.battle.w09.016"] = {
+		"Fine. You wanted this, not me.",
+		"Should've kept walking. Too late now.",
+		"Right. I'll make this short; I have places to be.",
+	},
+	["race.troll.battle.w09.017"] = {
+		"Any fight could be the one. The loa know which. I'd rather not.",
+		"A drum somewhere is counting my fights. This isn't the last beat.",
+	},
+	["race.troll.battle.w09.018"] = {
+		"The sea at Sen'jin hits harder than you, and we still go fishing every day.",
+		"Waves have been trying to knock trolls over since before you were born. Go on, try.",
+	},
+	["race.troll.lowhp.w09.001"] = {
+		"Ow. Alright, that one I felt.",
+		"Ha... that's a lot of me on the ground. It'll grow back. Probably.",
+		"Not finished yet, mon. Close, but trolls are bad at giving up.",
+	},
+	["race.troll.lowhp.w09.002"] = {
+		"The loa are close. I can feel them leaning in. Not yet. Not yet.",
+		"Cold at the edges. The spirits wait at the end of a long beach, and I'm not walking it today.",
+	},
+	["race.troll.lowhp.w09.003"] = {
+		"Hold on. Give the flesh a moment and it will do what troll flesh does. Just hold on.",
+		"Every breath buys a little more mending. Keep breathing. Keep buying.",
+	},
+	["race.troll.lowhp.w09.004"] = {
+		"staggers, one long hand pressed to the wound, and somehow still grins.",
+		"sinks to one knee, then pushes back up on long legs, tusks bared against the pain.",
+		"sways badly, bleeding freely, and plants both feet as if the ground owed {g:him|her} something.",
+	},
+	["race.troll.lowhp.w09.005"] = {
+		"Now you've done it. A wounded troll is the worst kind of troll!",
+		"You think I'm finished? This is where trolls get dangerous!",
+		"Bleed me, sure. Then watch what the blood does to my temper!",
+	},
+	["race.troll.lowhp.w09.006"] = {
+		"Sen'jin didn't run from his end, the elders say. But he didn't go looking for it either. Get clear.",
+		"Spirits, if you're counting, count slowly.",
+		"Not on this ground, loa. Ask me again somewhere nicer.",
+	},
+	["race.troll.lowhp.w09.007"] = {
+		"That hurt. Do it again and see what happens.",
+		"Fine, you got some blood out of me. Want a bowl for it?",
+	},
+	["race.troll.threat.w09.001"] = {
+		"Careful. Trolls laugh right up until they stop laughing.",
+		"Walk away now, while I'm still smiling.",
+		"I know a witch doctor who'd love a fresh shrunken head. Keep going.",
+	},
+	["race.troll.threat.w09.002"] = {
+		"The Darkspear have survived worse than you. Back off.",
+		"Look at these tusks. Now think again.",
+		"One more step and you meet the troll the elders frighten children with.",
+	},
+	["race.troll.victory.w09.001"] = {
+		"And that's how it's done. Anyone taking notes?",
+		"Ha! Didn't even need my second wind.",
+		"Next! Oh. There's no next. Shame.",
+	},
+	["race.troll.victory.w09.002"] = {
+		"The loa can have that one. I hope they treat it more gently than I did.",
+		"Done. I say nothing over it. The spirits don't need my words to find the way.",
+		"Rest now. Whatever spirit you had, the fight doesn't hold it anymore.",
+	},
+	["race.troll.victory.w09.003"] = {
+		"spins once on a heel, long arms flung wide, and lets out a whooping laugh.",
+		"wipes {g:his|her} hands clean and gives the fallen a jaunty little bow.",
+		"throws back {g:his|her} head and laughs, tusks gleaming.",
+	},
+	["race.troll.victory.w09.004"] = {
+		"Darkspear victory! Somebody write it down!",
+		"Another one for the tribe. Vol'jin would grin at that.",
+		"For Sen'jin's people! That's how we settle things.",
+	},
+	["race.troll.victory.w09.005"] = {
+		"Over. Whatever it took out of me is already creeping back.",
+		"Done. The body hums a little, the way it does when it's busy mending itself.",
+	},
+	["race.troll.victory.w09.006"] = {
+		"You should have picked on someone shorter.",
+		"Lesson learned, I hope. Pity you won't get to use it.",
+		"Should have stayed home. Wherever home is for something like you.",
+	},
+	["race.troll.victory.w09.007"] = {
+		"A good fight. Jungle hunters thank the prey. I don't know if this counts as prey, but thank you anyway.",
+		"The hunters of my people thank what they kill. A habit worth keeping, wherever the fight is.",
+	},
+	["race.troll.victory.w09.008"] = {
+		"Fighting makes a troll hungry. Winning makes a troll hungrier.",
+		"That's that. Anyone got a fish? I'll trade a story for it.",
+		"Good work. Now, where does a troll find a fire and something to put on it?",
+	},
+	["race.troll.victory.w09.009"] = {
+		"The blood's still singing. It takes a moment to learn there's nobody left to fight.",
+		"Calm down, calm down. It's over. The wild part of me always takes longer to hear it.",
+	},
+	["race.troll.victory.w09.010"] = {
+		"crouches by the fallen for a moment and murmurs a word too low to catch, then rises.",
+		"draws a small sign on the ground with one finger, then rubs it out with a heel.",
+	},
+	["race.troll.victory.w09.011"] = {
+		"The Darkspear keep their promises to the Horde. This was one of them.",
+		"Thrall can rest easy. Well. A bit easier.",
+		"Another debt to Thrall's Horde paid in full.",
+	},
+	["race.troll.victory.w09.012"] = {
+		"The Gurubashi empire fought for blood and for Hakkar. I fight so I can go home and eat. I like my reasons better.",
+		"My ancestors would have taken a trophy. I take a breath and walk on. Times change, even for trolls.",
+	},
+	["race.troll.victory.w09.013"] = {
+		"Should've moved faster, mon.",
+		"You fought well. Not well enough, but well.",
+		"Nice try. Really. I mean it.",
+	},
+	["race.troll.victory.w09.014"] = {
+		"Learned something there. Mostly about where not to stand.",
+		"Each fight sharpens the next. A troll who stops learning ends up a trophy on somebody's wall.",
+		"That one taught me something. I'll do it the honor of remembering.",
+	},
+	["race.troll.victory.w09.015"] = {
+		"A scratch. Look closely: gone already.",
+		"You left a mark. Give it a minute and you won't have left even that.",
+	},
 }, "base_combat")
