@@ -537,7 +537,7 @@ Phrases with more conditions are more specific and receive a higher weight.
 | `targetStronger`, `targetWeaker` | the target is at least 3 levels above, or 5 below |
 | `targetName` | part of the target's name |
 | `spell` | part of the spell's name (e.g. `{ "hearthstone", "pietra del ritorno" }`) |
-| `spellKind` | `heal`, `buff`, `rez`, `travel`, `taunt`, `shout`, `stealth`, `summon` or an added kind |
+| `spellKind` | `heal`, `buff`, `rez`, `travel`, `taunt`, `shout`, `stealth`, `summon`, `bandage` (First Aid), `weapon` (poisons, sharpening stones, weightstones), `aspect` (a hunter's aspects) or an added kind. A bandage on oneself fires `heal` for a warrior, rogue, hunter or mage; out of combat a shout, a rogue's `weapon` and an `aspect` fire `buff` (`NS.SELF_CASTS`, ADR 0054): a `buff` or `heal` line whose wording does not fit them writes `["not"] = { spellKind = ... }` |
 | `element` | `fire`, `frost`, `shadow`, `holy`, `nature`, `arcane`, `physical` |
 | `depth` | the depth chosen by the user: `natural`, `literary`, `elevated` |
 | `intensityMin`, `intensityMax` | intensity chosen by the user (0–100) |

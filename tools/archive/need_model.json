@@ -267,6 +267,42 @@
    ]
   }
  },
+ "_class_rates": "C0g (ADR 0054): the factor of each class on the rate of an event it changes, measured or assumed (a class not listed: 1). heal, buff and rezother fire only on the character's own casts that Data/Vocabulary.lua classifies (Systems/Triggers.lua), so a class fires them only as often as it casts those spells; 0 = the class cannot fire the event, and its class pool needs nothing. The heal rate of the trial mix is one paladin healing in 40% of its fights among three characters, so a healer heals at 3 times it; the classes without a healing spell heal on potions and healthstones and, since C0g, on a bandage put on themselves (warrior, rogue, hunter, mage). The buff rate (assumed) is that of a class that buffs its companions; the warrior is heard on Battle Shout outside combat, the rogue on its poisons, sharpening and weightstones, the hunter on its aspects (C0g). rezother: only the priest, the paladin and the shaman raise the dead out of combat; the druid has Rebirth, the warlock its soulstone, the hunter Revive Pet. Every factor but the measured paladin is a hypothesis to tune.",
+ "class_rates": {
+  "heal": {
+   "PALADIN": 3.0,
+   "PRIEST": 3.0,
+   "SHAMAN": 2.5,
+   "DRUID": 2.5,
+   "WARLOCK": 0.6,
+   "WARRIOR": 0.5,
+   "ROGUE": 0.5,
+   "HUNTER": 0.4,
+   "MAGE": 0.4
+  },
+  "buff": {
+   "PALADIN": 1.2,
+   "PRIEST": 1.0,
+   "MAGE": 1.0,
+   "DRUID": 1.0,
+   "HUNTER": 0.8,
+   "WARRIOR": 0.6,
+   "ROGUE": 0.3,
+   "SHAMAN": 0.15,
+   "WARLOCK": 0.1
+  },
+  "rezother": {
+   "PRIEST": 2.0,
+   "PALADIN": 2.0,
+   "SHAMAN": 2.0,
+   "DRUID": 0.5,
+   "HUNTER": 0.5,
+   "WARLOCK": 0.3,
+   "WARRIOR": 0.0,
+   "ROGUE": 0.0,
+   "MAGE": 0.0
+  }
+ },
  "_instance": "An instance (dungeon, raid, battleground) speaks like the open world without these events.",
  "instance_drop": [
   "weather_change",

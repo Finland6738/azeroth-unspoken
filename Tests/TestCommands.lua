@@ -220,6 +220,118 @@ T.run("/au incanta: il tipo dell'incantesimo sceglie l'evento", function()
 	Unspy()
 end)
 
+---------------------------------------------------------------------------
+-- C0g (ADR 0054): the gestures a class makes for itself become heal and buff for the classes whose lines fit them
+---------------------------------------------------------------------------
+local castN = 0
+-- one cast of the player through the client's events; the event the Narrative Director was offered, if any
+local function CastEvent(name, target)
+	castN = castN + 1
+	local id, guid = 9000 + castN, "c0g-" .. castN
+	SPELLS[id] = name
+	Director.queue, Director.log = {}, {}
+	FIRE("UNIT_SPELLCAST_SENT", "player", target or "", guid, id)
+	FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", guid, id)
+	local q = Director.queue[#Director.queue]
+	return q and q.event or "none"
+end
+
+T.run("C0g: the vocabulary names the bandage, the weapon preparations and the aspects", function()
+	for _, case in ipairs({
+		{ "First Aid", "bandage" }, { "Primo Soccorso", "bandage" },
+		{ "Instant Poison II", "weapon" }, { "Deadly Poison V", "weapon" }, { "Crippling Poison", "weapon" },
+		{ "Mind-numbing Poison III", "weapon" }, { "Wound Poison IV", "weapon" }, { "Veleno Istantaneo", "weapon" },
+		{ "Sharpen Blade V", "weapon" }, { "Sharpen Weapon - Critical", "weapon" }, { "Enhance Blunt Weapon III", "weapon" },
+		{ "Aspect of the Hawk", "aspect" }, { "Aspect of the Cheetah", "aspect" }, { "Aspetto del Falco", "aspect" },
+		{ "Battle Shout", "shout" }, { "Healing Potion", "heal" }, { "Power Word: Fortitude", "buff" },
+	}) do
+		T.eq(NS:ClassifySpell(case[1]), case[2], case[1] .. " -> " .. case[2])
+	end
+	-- a cure is not a preparation of the weapon
+	T.eq(NS:ClassifySpell("Cure Poison"), nil, "Cure Poison is not a weapon preparation")
+	T.eq(NS:ClassifySpell("Abolish Poison"), nil, "Abolish Poison is not a weapon preparation")
+	-- a bandage is not magic: a paladin who bandages does not use the Light
+	local cls = P.class
+	P.class = "PALADIN"
+	T.eq(NS:BuildContext({ spell = "First Aid" }).element, "physical", "a paladin's bandage is physical")
+	T.eq(NS:BuildContext({ spell = "Holy Light" }).element, "holy", "a paladin's Holy Light is holy")
+	P.class = cls
+end)
+
+T.run("C0g: Triggers fire heal and buff on the gestures, only for the classes and moments that fit", function()
+	Fresh()
+	local cls = P.class
+	P.combat = false
+	-- the warrior: Battle Shout out of combat is a buff; in combat it stays an attack, with its shout lines
+	P.class = "WARRIOR"
+	T.eq(CastEvent("Battle Shout"), "buff", "warrior: Battle Shout out of combat -> buff")
+	P.combat = true
+	T.eq(CastEvent("Battle Shout"), "attack", "warrior: Battle Shout in combat -> attack, as before")
+	P.combat = false
+	-- a bandage on oneself is a heal; on someone else it says nothing
+	T.eq(CastEvent("First Aid", P.name), "heal", "warrior: First Aid on oneself -> heal")
+	T.eq(CastEvent("First Aid"), "heal", "warrior: First Aid with no target given -> heal")
+	T.eq(CastEvent("First Aid", "Thrall"), "none", "warrior: First Aid on someone else -> nothing")
+	-- the warrior's buff lines are about the body: a sharpening stone stays silent for it
+	T.eq(CastEvent("Sharpen Blade III"), "none", "warrior: a sharpening stone -> nothing")
+	-- the warrior still never buffs with a spell it cannot cast: nothing else of its turns into a buff
+	T.eq(CastEvent("Heroic Strike"), "none", "warrior: Heroic Strike out of combat -> nothing")
+	-- the rogue: poisons and stones out of combat are a buff, not in combat
+	P.class = "ROGUE"
+	T.eq(CastEvent("Instant Poison II"), "buff", "rogue: Instant Poison out of combat -> buff")
+	T.eq(CastEvent("Sharpen Blade V"), "buff", "rogue: a sharpening stone out of combat -> buff")
+	T.eq(CastEvent("First Aid", P.name), "heal", "rogue: First Aid on oneself -> heal")
+	P.combat = true
+	T.eq(CastEvent("Deadly Poison"), "attack", "rogue: a poison in combat -> attack, as before")
+	P.combat = false
+	-- the hunter: its aspects out of combat
+	P.class = "HUNTER"
+	T.eq(CastEvent("Aspect of the Hawk"), "buff", "hunter: an aspect out of combat -> buff")
+	T.eq(CastEvent("First Aid"), "heal", "hunter: First Aid on oneself -> heal")
+	-- the healers and the warlock: a bandage stays silent (their heal lines speak of the Light, nature or the pact)
+	for _, c in ipairs({ "PRIEST", "PALADIN", "DRUID", "SHAMAN", "WARLOCK" }) do
+		P.class = c
+		T.eq(CastEvent("First Aid", P.name), "none", c:lower() .. ": First Aid -> nothing")
+	end
+	P.class = "MAGE"
+	T.eq(CastEvent("First Aid", P.name), "heal", "mage: First Aid on oneself -> heal")
+	T.eq(CastEvent("Instant Poison"), "none", "mage: a poison -> nothing")
+	-- the spells of the lists are unchanged
+	P.class = "PRIEST"
+	T.eq(CastEvent("Power Word: Fortitude", "Thrall"), "buff", "priest: Power Word: Fortitude -> buff")
+	T.eq(CastEvent("Flash Heal", "Thrall"), "heal", "priest: Flash Heal -> heal")
+	P.class = cls
+end)
+
+T.run("C0g: a line that speaks of a spell or of someone else is never said on a bandage or a shout", function()
+	Fresh()
+	local function Picks(event, spell, n)
+		local seen = {}
+		for _ = 1, n do
+			NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+			local ctx = NS:BuildContext({ spell = spell, target = P.name })
+			local rec = Engine:PickEntry(event, ctx, "say") or Engine:PickEntry(event, ctx, "emote")
+			if rec then seen[rec.id] = true end
+		end
+		return seen
+	end
+	local gatedHeal = { "heal.01", "heal.03", "heal.04", "heal.e.01", "heal.e.02", "heal.self.01", "heal.holy.01",
+		"rel.heal.friend" }
+	local seen = Picks("heal", "First Aid", 200)
+	T.ok(next(seen) ~= nil, "a bandage has heal lines to say")
+	for _, id in ipairs(gatedHeal) do T.ok(not seen[id], "never on a bandage: " .. id) end
+	T.ok(seen["heal.02"] or seen["heal.w04.002"], "the plain mending lines remain")
+	local shout = Picks("buff", "Battle Shout", 200)
+	T.ok(next(shout) ~= nil, "Battle Shout has buff lines to say")
+	for _, id in ipairs({ "buff.01", "buff.03", "buff.e.01", "race.orc.buff.001", "cls.warrior.buff.001",
+		"cls.warrior.buff.w05.002" }) do
+		T.ok(not shout[id], "never on Battle Shout: " .. id)
+	end
+	-- the same lines still speak on the spells they were written for
+	local fort = Picks("buff", "Power Word: Fortitude", 300)
+	T.ok(fort["buff.01"] or fort["buff.02"] or fort["buff.03"], "the generic buff lines still speak on a buff spell")
+end)
+
 T.run("/au pacchetto <id> off: le frasi di quel pacchetto non si scelgono più", function()
 	Fresh()
 	local function Packs(event)

@@ -10,7 +10,7 @@ While you play, the addon listens for a few moments in your character's life:
 - a fight starting and ending, a hard fight, low health;
 - death and coming back to life;
 - gaining a level;
-- casting spells (heals, buffs, travel, attacks, resurrections);
+- casting spells (heals, buffs, travel, attacks, resurrections), and what a class does for itself: a bandage, a warrior's Battle Shout, a rogue's poisons and stones, a hunter's aspects;
 - greetings, meetings, the person in front of you, the place you are in.
 
 For each moment it decides whether to speak. Most of the time it stays silent: silence is a normal, intended outcome. When it speaks, it picks one whole, hand-written line that fits the moment, your character, the place and the people around you, and shows it in the box. There is at most **one line per moment**, never a cascade of messages.

@@ -42,6 +42,42 @@ local SKIP = {
 	["attacco"] = true, ["tiro"] = true,
 }
 
+-- C0g (ADR 0054): i gesti con cui una classe si cura o si prepara da sé senza un incantesimo delle liste (tipi di
+-- Data/Vocabulary.lua). Diventano l'evento indicato solo per le classi le cui frasi li dicono bene (classes, nil =
+-- tutte), solo fuori combattimento se outOfCombat, solo su di sé se self. In combattimento un tipo outOfCombat resta
+-- quello di prima (un attacco): il grido di battaglia tiene le sue frasi di attacco (spellKind = "shout").
+-- - bandage (Primo Soccorso): le classi senza un incantesimo di cura proprio; le frasi delle altre parlano della
+--   Luce, della natura o del patto;
+-- - shout (Grido di Battaglia, l'unico grido che si lancia fuori combattimento): solo il guerriero grida;
+-- - weapon (veleni, pietre per affilare e appesantire): il ladro; le frasi di "buff" del guerriero parlano del corpo
+--   che si rafforza, non dell'arma;
+-- - aspect (gli aspetti): solo il cacciatore.
+NS.SELF_CASTS = {
+	bandage = { event = "heal", self = true, classes = { WARRIOR = true, ROGUE = true, HUNTER = true, MAGE = true } },
+	shout = { event = "buff", outOfCombat = true },
+	weapon = { event = "buff", outOfCombat = true, classes = { ROGUE = true } },
+	aspect = { event = "buff", outOfCombat = true },
+}
+
+-- il nome del personaggio come lo scrive UNIT_SPELLCAST_SENT (non quello di Total RP 3)
+local function OwnName()
+	return NS.Compat.SafeCall(UnitName, "player")
+end
+
+---L'evento di un gesto di NS.SELF_CASTS, o nil se per questa classe, in questo momento o su questo bersaglio non ne ha.
+---@param kind string|nil il tipo dell'incantesimo
+---@param inCombat boolean
+---@param target string|nil il bersaglio dato da UNIT_SPELLCAST_SENT (nil = nessuno: su di sé)
+---@return string|nil
+function Triggers:SelfCastEvent(kind, inCombat, target)
+	local def = kind and NS.SELF_CASTS[kind]
+	if not def then return nil end
+	if def.outOfCombat and inCombat then return nil end
+	if def.classes and not def.classes[select(2, NS.Compat.SafeCall(UnitClass, "player")) or ""] then return nil end
+	if def.self and target and target ~= OwnName() then return nil end
+	return def.event
+end
+
 -- Ogni evento narrativo spontaneo è un candidato del Narrative Director: gate, priorità, pacing e dado sono suoi.
 local function Fire(event, extra)
 	NS.Director:Offer(event, extra)
@@ -112,6 +148,10 @@ function handlers.SPELL_CAST(env)
 		event = "heal"
 	elseif kind == "buff" and not inCombat then
 		event = "buff"
+	elseif Triggers:SelfCastEvent(kind, inCombat, target) then
+		-- un gesto per sé (C0g); quando non vale (un'altra classe, in combattimento, una benda su un altro) tutto
+		-- resta come prima: un attacco in combattimento, il silenzio fuori
+		event = Triggers:SelfCastEvent(kind, inCombat, target)
 	elseif kind and NS.Engine.byEvent[kind] then
 		-- tipo di incantesimo definito da un pacchetto, con frasi proprie (es. "fishing")
 		event = kind
