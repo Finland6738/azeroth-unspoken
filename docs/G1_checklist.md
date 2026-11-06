@@ -1458,6 +1458,21 @@ la classe e la razza del personaggio; le legge mentre si carica. (I punti 15 e 1
     (`/au speak`): le frasi di classe sono quelle del personaggio in gioco. **Da riportare:** la memoria di `/au prof`
     con tutti e due, e una frase della classe o della razza sbagliata, se mai si sente.
 
+**C0g (ADR 0054): i gesti che una classe fa per sé.** Mai provato nel client. Una benda su di sé è ora una cura per un
+guerriero, un ladro, un cacciatore o un mago; fuori combattimento, l'Urlo di Battaglia, il veleno o la pietra del ladro
+e l'aspetto del cacciatore sono un potenziamento. Per la prova `/au chance heal 100` e `/au chance buff 100`, poi di
+nuovo `/au chance heal 15` e `/au chance buff 25`.
+
+19. **Una benda su di sé.** Con un guerriero, un ladro, un cacciatore o un mago, fuori combattimento, usa una benda
+    senza bersaglio (o con te stesso come bersaglio). **Atteso:** una frase di cura che parla del rimettersi in sesto,
+    mai una che parla a qualcun altro o della Luce. Poi prendi come bersaglio un altro giocatore e bendalo: niente.
+    **Da riportare:** `/au debug` per tutti e due (l'evento `heal`, o niente) e se l'incantesimo nel client si chiama
+    "First Aid".
+20. **Urlo di Battaglia, veleni, aspetti.** Fuori combattimento: l'Urlo di Battaglia di un guerriero, un veleno o una
+    pietra per affilare di un ladro, un aspetto di un cacciatore. **Atteso:** ogni volta una frase di potenziamento
+    (nessuna che fa un dono a qualcun altro). In combattimento l'Urlo di Battaglia resta una frase d'attacco sul grido.
+    **Da riportare:** i nomi degli incantesimi che dà il client (`/au debug`) se un gesto resta muto.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1619,6 +1634,7 @@ L2 frequenza ............ pezzi in un'ora (rare) ______  (normali) ______  mai: 
 C0 aree ................ area in /au packs ______  ms di un cambio ______  scatto? ___  KB accesso/dopo/ritorno ______
 C0b fotogrammi ......... ms in tutto ______  fotogrammi ______  fotogramma più lungo ______  scatto? ___  errori? ___
 C0b memoria ............ sorgenti conservate (KB) ______  aree rilasciate ______
+C0g gesti per sé ....... benda su di sé cura? ___  su un altro muta? ___  urlo/veleno/aspetto potenziamento? ___  nomi ______
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

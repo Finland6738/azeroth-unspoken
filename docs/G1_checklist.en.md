@@ -582,6 +582,20 @@ lines written for the character's own class and race; it reads them while it loa
     are those of the character playing. **Report:** the memory of `/au prof` on both, and a line of the wrong class or
     race if one is ever heard.
 
+**C0g (ADR 0054): the gestures a class makes for itself.** Never run in the client either. A bandage on yourself is now
+a heal for a warrior, a rogue, a hunter or a mage; outside a fight, Battle Shout, a rogue's poison or stone and a
+hunter's aspect are a buff. Set `/au chance heal 100` and `/au chance buff 100` for the test, then back (`/au chance heal 15`,
+`/au chance buff 25`).
+
+19. **A bandage on yourself.** With a warrior, rogue, hunter or mage, out of combat, use a bandage with no target (or
+    yourself targeted). **Expect:** a heal line about mending, never one that speaks to someone else or of the Light.
+    Then target another player and bandage them: nothing. **Report:** `/au debug` for both (the event `heal`, or
+    nothing), and whether the spell is called "First Aid" in the client.
+20. **Battle Shout, poisons, aspects.** Out of combat: a warrior's Battle Shout, a rogue's poison or sharpening stone,
+    a hunter's aspect. **Expect:** a buff line each time (none that gives a gift to someone else). In combat, Battle
+    Shout is still an attack line about the shout. **Report:** the spell names the client gives (`/au debug`) if a
+    gesture stays silent.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -663,4 +677,5 @@ C0b frames ............. ms in all ______  frames ______  longest frame ______  
 C0b memory ............. sources kept (KB) ______  areas released ______
 C0e picks .............. PickEntry mean/p95 (ms) ______  stutter? ___  place/class/general all heard? ___  repeats ______
 C0f own lines .......... /au packs class/race ______  rules/texts left out ______  other character ok? ___  KB (1st/2nd) ______
+C0g own gestures ....... bandage on self heal? ___  on another silent? ___  Battle Shout/poison/aspect buff? ___  names ______
 ```

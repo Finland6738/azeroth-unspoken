@@ -35,7 +35,7 @@ end
 -- prima parola chiave trovata nel nome dell'incantesimo; l'ordine conta
 -- ("moonfire" è natura prima che fuoco, "holy fire" è sacro)
 local ORDER = {
-	kind = { "rez", "travel", "summon", "heal", "buff", "stealth", "taunt", "shout" },
+	kind = { "rez", "travel", "summon", "heal", "buff", "stealth", "taunt", "shout", "bandage", "weapon", "aspect" },
 	element = { "nature", "holy", "frost", "shadow", "arcane", "fire", "physical" },
 }
 local function Classify(group, name)
@@ -57,6 +57,9 @@ end
 function NS:ClassifySpell(name)
 	return Classify("kind", name), Classify("element", name)
 end
+
+-- i tipi di gesto senza magia: il loro elemento non è quello della classe (un paladino che si benda non usa la Luce)
+local MUNDANE = { bandage = true, weapon = true }
 
 -- tipo di creatura in forma neutra, dal nome nella lingua del client
 local CREATURE = {
@@ -229,7 +232,9 @@ function NS:BuildContext(extra)
 	if ctx.spell then
 		local kind, element = self:ClassifySpell(ctx.spell)
 		ctx.spellKind = ctx.spellKind or kind
-		ctx.element = ctx.element or element or self.classElement[class] or "physical"
+		-- una benda o un veleno non sono magia: l'elemento è fisico, non quello della classe (C0g, ADR 0054)
+		ctx.element = ctx.element or element or (MUNDANE[ctx.spellKind] and "physical") or self.classElement[class]
+			or "physical"
 	end
 	return ctx
 end

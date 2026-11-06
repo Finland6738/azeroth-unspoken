@@ -8,6 +8,44 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0g: event rates per class, and the gestures a class makes for itself (issue #138, ADR 0054)
+
+Found by content wave W05 (PR #253): the need model gave every class the event rates of a three-character mix, but
+`heal`, `buff` and `rezother` fire only on the character's own casts of the spells `Data/Vocabulary.lua` classifies, so
+the warrior and the rogue could hardly be heard on the `buff` and `heal` lines W05 wrote for them, and the warrior, the
+rogue and the mage had `rezother` pools they can never fire.
+
+- **Added: three spell kinds** in `Data/Vocabulary.lua` (English and Italian names): `bandage` (First Aid), `weapon`
+  (the five poisons by their full name, sharpening stones, weightstones) and `aspect` (a hunter's aspects).
+- **Added: `NS.SELF_CASTS`** in `Systems/Triggers.lua` (`Triggers:SelfCastEvent`): a bandage on oneself fires `heal`
+  for a warrior, rogue, hunter or mage (on someone else it stays silent). Out of combat, Battle Shout fires `buff` for
+  the warrior, a poison or a stone fires it for the rogue, and an aspect for the hunter. When a gesture does not apply,
+  nothing changes: Battle Shout in combat keeps its shout attack lines.
+- **Changed:** the element of a bandage or a weapon preparation is `physical`, not the class's: a paladin's bandage
+  never picks a line of the Light.
+- **Changed: 71 lines get a condition, no text changed.** 26 `heal` lines get `["not"] = { spellKind = "bandage" }`:
+  those that speak to someone else, of light or of a spell. 20 generic and race `buff` lines get the condition on the
+  new gestures: those about a gift to someone else or a sign in the air. 6 warrior and 19 rogue `buff` lines that read
+  as a buff received from someone else get it on Battle Shout or on a weapon preparation. Those 25 lines wait for a
+  trigger on buffs cast by others (a follow-up).
+- **Changed: the need model is per class** (`need_model.json`: `class_rates`; `tools/archive/need.py`): the factor of
+  each class on `heal`, `buff` and `rezother`; 0 = the class cannot fire the event, so it has no pool. A class pool
+  fires at its factor, and every other pool at the largest factor of the race's classes. The healers heal at 3 times
+  the old mix rate (the measured paladin); the warrior and rogue at 0.5. No warrior, rogue or mage raises the dead.
+- **Fixed:** the last wave of the plan joined the one before it even past the maximum of 3,000 texts.
+- **The need** (per language): strict 28,938 → **29,482**, gap 13,476 → **14,195**; soft 8,893 → 8,950, gap 0 →
+  **96** (the healers' heal pools); random 270,686 → **275,957**, gap 253,580 → **258,873**; waves 88 → **90**. The
+  total grows because the old mix gave a healer a third of the heals it fires. Strict need per event: `heal` 1,000 →
+  1,707, `buff` 667 → 506, `rezother` 167 → 165. The class waves: Hunter, Warlock and Mage need less, Priest, Paladin,
+  Druid and Shaman more (ADR 0054 has the table).
+- **Tests:** the new kinds and their Italian names (`Cure Poison` is no weapon preparation), the events every class
+  fires on each gesture, in and out of combat, on itself and on someone else; that a conditioned line is never picked
+  on a bandage or on Battle Shout, and still is on a buff spell; the class factors of the model, the priest's heal
+  pool at six times the warrior's, no `rezother` pool for the warrior, rogue and mage, no `buff` need for a warrior
+  that cannot buff, the generic heal pool at the healers' rate.
+- **Docs:** ADR 0054, ARCHITECTURE.md, PACK_FORMAT.md (`spellKind`), G1 checklist section C0g, wiki The Narrator and
+  Settings, NEED.md, need.json and the WAVES.md table regenerated, ROADMAP.
+
 ### Content wave W05: Ironforge, Darnassus, Thunder Bluff and Undercity, the warrior and the rogue (issue #138)
 
 The fifth content wave of [docs/content/WAVES.md](docs/content/WAVES.md) (its pools were the first row of the table

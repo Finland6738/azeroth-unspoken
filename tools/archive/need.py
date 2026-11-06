@@ -28,6 +28,10 @@ see ADR 0050), so:
 
 and the need of the archive is the sum over the pools: texts are shared between characters, lives are not. The gap of a
 pool is its need minus the usable texts it holds today (variants at the default depth), per language.
+
+An event a class changes (`class_rates` of the model, C0g, ADR 0054: heal, buff and rezother fire only on the
+character's own casts; the companions' `classes`) fires at the factor of the class: a class pool at its class's,
+every other pool of a character at the largest among the classes of its race; 0 = the class cannot fire it.
 """
 import collections
 import json
@@ -86,25 +90,48 @@ def world(root=store.ROOT):
 
 # ---- rates ----------------------------------------------------------------------------------------------------------
 
+def all_classes(model):
+    """The classes of the era: every class some race of the model can be."""
+    return sorted({c for r in model["races"].values() for c in r["classes"]})
+
+
 def rates(model):
-    """Interventions per hour of every event in every setting, scaled to the default pace; and the events only some
-    classes have (their companions)."""
+    """Interventions per hour of every event in every setting, scaled to the default pace; and the factor of each class
+    on the events a class changes (C0g, ADR 0054): {event: {CLASS: factor}}, from `class_rates` and from the `classes`
+    of an assumed event (the companions: 0 for every other class). An event without an entry is the same for all."""
     measured = (model.get("measured") or {}).get("rates") or {}
     out = {s: dict(measured.get(s) or {}) for s in ("open", "city")}
     out["instance"] = {e: r for e, r in out["open"].items() if e not in model["instance_drop"]}
-    only = {}
+    known = all_classes(model)
+    factors = {}
     for e, a in model["assumed"].items():
         for s in SETTINGS:
             if a.get(s) and e not in out[s]:   # a measured rate wins over an assumed one
                 out[s][e] = a[s]
         if a.get("classes"):
-            only[e] = set(a["classes"])
+            factors[e] = {c: (1.0 if c in a["classes"] else 0.0) for c in known}
+    for e, by_class in (model.get("class_rates") or {}).items():
+        if e.startswith("_"):
+            continue
+        unknown = sorted(set(by_class) - set(known))
+        if unknown:
+            raise ValueError("class_rates.%s: classes not in the model: %s" % (e, ", ".join(unknown)))
+        f = factors.setdefault(e, {c: 1.0 for c in known})
+        for c, x in by_class.items():
+            if x < 0:
+                raise ValueError("class_rates.%s.%s: a factor is never negative" % (e, c))
+            f[c] = float(x)
     for s, r in out.items():
         total = sum(r.values())
         if total > 0:
             k = model["interventions_per_hour"] / total
             out[s] = {e: v * k for e, v in r.items()}
-    return out, only
+    return out, factors
+
+
+def class_factor(factors, event, cls):
+    """The factor of a class on the rate of an event (1 when the class does not change it)."""
+    return factors.get(event, {}).get(cls, 1.0)
 
 
 def level(layer):
@@ -280,13 +307,14 @@ def _fire(coef, group):
     return (sum(c * t for c, t in zip(coef, total)), max(sum(c * t for c, t in zip(coef, x)) for x in windows))
 
 
-def pool_firings(model, ch, prof, rate, only):
+def pool_firings(model, ch, prof, rate, factors=None):
     """{(event, layer, value): (firings in the life, most firings in soft_hours)} of one character for every layer but
-    the class, and {event: firings of its class pool} (the same for each class the character can be)."""
+    the class, and {event: firings of its class pool}, at the rate of the event for a class with factor 1 (`need`
+    scales them by the factor of each class; an event no class of the character fires is left out)."""
     step = model["slot_hours"]
     out, classes = {}, {}
     for ev in sorted({e for r in rate.values() for e in r}):
-        if ev in only and not only[ev] & set(ch["classes"]):
+        if factors and not any(class_factor(factors, ev, c) for c in ch["classes"]):
             continue
         f = tuple(rate[s].get(ev, 0.0) * step for s in SETTINGS)
         if not any(f):
@@ -317,30 +345,41 @@ def pool_firings(model, ch, prof, rate, only):
 
 
 def need(model, places):
-    """{(event, layer, value): pool} with the strict and soft need (the most any character fires) and the mean rate."""
-    rate, only = rates(model)
+    """{(event, layer, value): pool} with the strict and soft need (the most any character fires) and the mean rate.
+
+    The firings of an event scale with the factor of the class on it (C0g, ADR 0054): a class pool fires at the factor
+    of its class, and every other pool of a character (generic, race, place...) at the largest factor among the classes
+    the race can be, since the need is the most any character fires; a factor of 0 leaves the pool out."""
+    rate, factors = rates(model)
     pools = {}
     chars = characters(model)
     combos = sum(len(ch["classes"]) for ch in chars)
 
-    def note(k, strict, soft, weight):
+    def note(k, strict, soft, per_hour):
         p = pools.get(k)
         if p is None:
             p = pools[k] = {"event": k[0], "layer": k[1], "value": k[2], "strict": 0.0, "soft": 0.0, "per_hour": 0.0}
         p["strict"], p["soft"] = max(p["strict"], strict), max(p["soft"], soft)
         # the mean firings per hour of play over every character: how often a player meets the pool
-        p["per_hour"] += strict / weight / model["life_hours"]
+        p["per_hour"] += per_hour / model["life_hours"]
 
     for ch in chars:
         prof = profile(model, ch, timeline(model, ch, places), places)
-        fired, classes = pool_firings(model, ch, prof, rate, only)
+        fired, classes = pool_firings(model, ch, prof, rate, factors)
+        scale = {}
         for k, (strict, soft) in fired.items():
-            note(k, strict, soft, len(chars))
-        # the class changes only its own pools and the companions
+            ev = k[0]
+            if ev not in scale:
+                fs = [class_factor(factors, ev, c) for c in ch["classes"]]
+                scale[ev] = (max(fs), sum(fs) / len(fs))
+            top, mean = scale[ev]
+            note(k, strict * top, soft * top, strict * mean / len(chars))
+        # the class changes its own pools by its factor: a class that cannot fire the event has no pool of it
         for ev, (strict, soft) in classes.items():
             for cls in ch["classes"]:
-                if ev not in only or cls in only[ev]:
-                    note((ev, "class", cls.lower()), strict, soft, combos)
+                x = class_factor(factors, ev, cls)
+                if x > 0:
+                    note((ev, "class", cls.lower()), strict * x, soft * x, strict * x / combos)
     floor = model.get("min_firings", 1)
     factor = random_factor(model.get("random_repeats", 0.05))
     for p in pools.values():
@@ -648,8 +687,8 @@ def waves(rows, model, langs):
             w[u["target"]] += part
             w["units"].append({"kind": u["kind"], "name": u["name"], "target": u["target"], "condition": u["condition"],
                                "texts": part, "pools": take})
-    # a last wave far under the minimum joins the one before it
-    if len(plan) > 1 and plan[-1]["texts"] < cfg["min"] / 2:
+    # a last wave far under the minimum joins the one before it, if both fit under the maximum
+    if len(plan) > 1 and plan[-1]["texts"] < cfg["min"] / 2 and plan[-2]["texts"] + plan[-1]["texts"] <= cfg["max"]:
         last = plan.pop()
         for k in ("texts",) + TARGETS:
             plan[-1][k] += last[k]
@@ -729,6 +768,10 @@ def to_markdown(res, top=30):
         "of 2026-11-04, [ADR 0051](../adr/0051-tiers-mixed-by-share.md)): place %d%%, situation %d%%, generic %d%%, "
         "renormalised over the levels the event plans; the situation layers share theirs by the weights of the model." % (
             100 * m["tier_shares"]["place"], 100 * m["tier_shares"]["situation"], 100 * m["tier_shares"]["generic"]),
+        "- The rates of `heal`, `buff` and `rezother` change with the class ([ADR 0054](../adr/0054-event-rates-per-class-"
+        "and-the-gestures-a-class-makes-for-itself.md)): they fire only on the character's own casts, so a class pool "
+        "fires at its class's factor (`class_rates` of the model), a pool the class cannot fire has no need, and every "
+        "other pool fires for the class of the race that fires it most.",
         "- The need grows in proportion to the pace: at intensity 100 the spontaneous budgets double.",
         "- Texts beyond the strict need of their pool (they still widen the choice): " +
         ", ".join("%s %s" % (l, _fmt(n)) for l, n in t["surplus"].items()) + ".",

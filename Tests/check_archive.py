@@ -904,12 +904,30 @@ def need_report():
     check(places["Orgrimmar"]["setting"] == "city" and places["Molten Core"]["kind"] == "raid" and
           places["Durotar"]["mood"] == "desert" and places["Stranglethorn Vale"]["faction"] is None,
           "the places of the era come from Data/Places.lua with their moods (%d places)" % len(places))
-    rate, only = need.rates(model)
+    rate, factors = need.rates(model)
     check(all(abs(sum(r.values()) - model["interventions_per_hour"]) < 1e-6 for r in rate.values()),
           "every setting speaks at the default pace (%g interventions per hour)" % model["interventions_per_hour"])
     check(rate["open"]["muse"] > rate["open"]["battle"] > 0 and "weather_change" not in rate["instance"] and
-          rate["instance"].get("encounter_end", 0) > 0 and only["pet_bond"] == {"HUNTER"},
+          rate["instance"].get("encounter_end", 0) > 0 and
+          {c for c, x in factors["pet_bond"].items() if x} == {"HUNTER"},
           "measured and assumed rates: the speak key and fights in the open, no weather inside, companions by class")
+    # C0g (ADR 0054): the events a class changes come with its factor, and what it cannot fire with none
+    cf = lambda ev, c: need.class_factor(factors, ev, c)   # noqa: E731
+    check(set(need.all_classes(model)) == {"WARRIOR", "PALADIN", "HUNTER", "ROGUE", "PRIEST", "SHAMAN", "MAGE", "WARLOCK",
+                                           "DRUID"} and
+          all(set(factors[e]) == set(need.all_classes(model)) for e in ("heal", "buff", "rezother")),
+          "every class of the era has a factor on heal, buff and rezother")
+    check(cf("heal", "PRIEST") > cf("heal", "WARRIOR") > 0 and cf("buff", "PRIEST") > cf("buff", "WARRIOR") > 0 and
+          cf("rezother", "WARRIOR") == cf("rezother", "ROGUE") == cf("rezother", "MAGE") == 0 and
+          cf("muse", "WARRIOR") == cf("battle", "MAGE") == 1,
+          "a healer heals more than a warrior, who heals on bandages and buffs on Battle Shout; no warrior, rogue or mage "
+          "raises the dead; the other events are the same for every class")
+    try:
+        need.rates(dict(model, class_rates={"buff": {"DEATHKNIGHT": 1}}))
+        bad = False
+    except ValueError:
+        bad = True
+    check(bad, "a factor for a class the model does not know is refused")
     sh = need.shares(model, "npcd_guard_open")
     check(sh["place"] == 0.5 and abs(sum(sh.values()) - 1) < 1e-9 and need.shares(model, "nemesis_song") == {"generic": 1.0},
           "the shares of a layer group (with a wildcard) add up to one with the generic share")
@@ -951,6 +969,23 @@ def need_report():
           and ("muse", "place", "durotar@horde") not in pools, "a contested zone has a pool per faction, a faction zone one")
     check(("pet_bond", "class", "hunter") in pools and ("pet_bond", "class", "mage") not in pools,
           "the companions speak only for their classes")
+    # C0g (ADR 0054): a class pool fires at the factor of its class; a class that cannot fire an event has no pool of it
+    hp, hw = pools[("heal", "class", "priest")]["strict"], pools[("heal", "class", "warrior")]["strict"]
+    check(abs(hp / hw - cf("heal", "PRIEST") / cf("heal", "WARRIOR")) < 1e-6,
+          "the heal pool of the priest fires %.0f times that of the warrior, as their factors" % (hp / hw))
+    check(all(("rezother", "class", c) not in pools for c in ("warrior", "rogue", "mage")) and
+          ("rezother", "class", "priest") in pools, "no rezother pool for the classes that cannot raise the dead")
+    no_buff = dict(model, class_rates=dict(model["class_rates"], buff=dict(model["class_rates"]["buff"], WARRIOR=0)))
+    pnb, _ = need.need(no_buff, places)
+    check(("buff", "class", "warrior") in pools and ("buff", "class", "warrior") not in pnb and
+          pnb[("buff", "class", "rogue")]["strict"] == pools[("buff", "class", "rogue")]["strict"],
+          "a warrior that cannot buff gets no buff need; the other classes keep theirs")
+    gen = pools[("heal", "generic", "")]["strict"]
+    flat = dict(model, class_rates={})
+    pflat, _ = need.need(flat, places)
+    top = max(model["class_rates"]["heal"].values())
+    check(0.8 * top < gen / pflat[("heal", "generic", "")]["strict"] < top + 1e-6,
+          "a pool shared by every class (generic heal) fires for the character that fires it most: the healers")
     fast = dict(model, interventions_per_hour=2 * model["interventions_per_hour"])
     p2, _ = need.need(fast, places)
     total = sum(p["need_strict"] for p in pools.values())

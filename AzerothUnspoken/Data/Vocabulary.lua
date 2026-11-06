@@ -54,6 +54,16 @@ NS:RegisterSpellKeywords({
 		stealth = { "stealth", "prowl", "vanish", "furtività", "sparizione" },
 		taunt = { "taunt", "growl", "provocazione", "ringhio" },
 		shout = { "shout", "battle cry", "grido", "urlo" },
+		-- C0g (ADR 0054): gesti che non sono incantesimi delle liste sopra, ma che una classe fa per sé. Il Primo
+		-- Soccorso (le bende), i veleni e le pietre sull'arma, gli aspetti del cacciatore: Systems/Triggers.lua
+		-- (NS.SELF_CASTS) dice per quali classi diventano "heal" o "buff"; i nomi completi dei veleni, perché
+		-- "Cure Poison" e "Abolish Poison" non sono una preparazione dell'arma
+		bandage = { "first aid", "primo soccorso" },
+		weapon = { "instant poison", "deadly poison", "crippling poison", "mind-numbing poison", "wound poison",
+			"sharpen blade", "sharpen weapon", "enhance blunt weapon",
+			"veleno istantaneo", "veleno mortale", "veleno paralizzante", "veleno intorpidente", "veleno ferente",
+			"affila", "arma contundente" },
+		aspect = { "aspect of the", "aspetto d" },
 	},
 	element = {
 		nature = { "moonfire", "starfire", "wrath", "lightning", "thunder", "earth", "insect", "entangl",
