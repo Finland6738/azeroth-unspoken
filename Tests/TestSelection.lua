@@ -249,6 +249,212 @@ T.run("#138: the shares hold over many picks, renormalised over the levels that 
 	Engine:DropPack("t_r3_mix")
 end)
 
+---------------------------------------------------------------------------
+-- C0e (ADR 0052): a bounded pick
+---------------------------------------------------------------------------
+-- An event as the content waves will fill it: hundreds of lines per level. `scale` lines of each kind: generic, class
+-- (situation), zone (place), and generic lines that never hold for a warrior (`not class`); five subzone lines.
+local function BigPack(id, event, scale)
+	local reg, tx = {}, {}
+	local function Put(rid, cond)
+		reg[rid] = { event = event, speaker = "character", styles = { "epic" }, conditions = cond }
+		tx[rid] = { rid .. " uno", rid .. " due" }
+	end
+	for i = 1, scale do
+		Put(("%s.gen%04d"):format(id, i), nil)
+		Put(("%s.class%04d"):format(id, i), { class = "WARRIOR" })
+		Put(("%s.zone%04d"):format(id, i), { zone = "Elwynn Forest" })
+		Put(("%s.never%04d"):format(id, i), { ["not"] = { class = "WARRIOR" } })
+	end
+	for i = 1, 5 do Put(("%s.sub%d"):format(id, i), { subzone = "Goldshire" }) end
+	NS:RegisterPack({ id = id, name = "C0e tests", languages = { "itIT" },
+		events = { [event] = { category = "reflection" } }, registry = reg, texts = { itIT = tx } })
+end
+
+-- thousands of Lua instructions of a pick (a C function counts as one)
+local function Kinstr(event, ctx)
+	local n = 0
+	debug.sethook(function() n = n + 1 end, "", 100)
+	local rec = Engine:PickEntry(event, ctx, "say")
+	debug.sethook()
+	return n / 10, rec
+end
+
+T.run("C0e: a pick of a large event is bounded, and the shares and the conditions hold", function()
+	BigPack("t_c0e_s", "c0esmall", 100)
+	BigPack("t_c0e_b", "c0ebig", 1000)
+	P.zone, P.subzone, P.class = "Elwynn Forest", "", "WARRIOR"
+	local ctx = NS:BuildContext()
+	-- the cost does not grow with the lines of the event: ten times the lines, about the same instructions
+	math.randomseed(3)
+	Fresh()
+	local small, big = 0, 0
+	for _ = 1, 60 do
+		small = small + Kinstr("c0esmall", ctx)
+		big = big + Kinstr("c0ebig", ctx)
+	end
+	local saved = Engine.SAMPLE
+	Engine.SAMPLE = false
+	Fresh()
+	local whole = 0
+	for _ = 1, 10 do whole = whole + Kinstr("c0ebig", ctx) end
+	Engine.SAMPLE = saved
+	T.ok(big < small * 1.3, ("4,005 lines cost about what 405 cost: %.1f against %.1f thousand instructions per pick")
+		:format(big / 60, small / 60))
+	T.ok(whole / 10 > 5 * big / 60, ("checking every line costs much more: %.1f thousand instructions per pick")
+		:format(whole / 10))
+
+	-- the shares of the levels hold statistically (place 50, situation 35, generic 15), with no window and in a session
+	local function Shares(fresh, n)
+		local seen, never = { [0] = 0, 0, 0 }, 0
+		Fresh()
+		for _ = 1, n do
+			if fresh then Fresh() end
+			local rec = Engine:PickEntry("c0ebig", ctx, "say")
+			if rec.id:find("never", 1, true) then never = never + 1 end
+			local l = Level(rec.id)
+			seen[l] = seen[l] + 1
+		end
+		T.eq(never, 0, "a line whose conditions fail is never said")
+		return seen
+	end
+	math.randomseed(11)
+	for _, fresh in ipairs({ true, false }) do
+		local s, n = Shares(fresh, 3000), 3000
+		local what = fresh and "single picks" or "a session"
+		for l, want in pairs({ [2] = 0.50, [1] = 0.35, [0] = 0.15 }) do
+			-- three standard deviations of 3,000 draws are under 2.8 points
+			T.ok(math.abs(s[l] / n - want) < 0.03, ("%s, level %d: %.1f%% (share %.0f%%)"):format(what, l,
+				100 * s[l] / n, 100 * want))
+		end
+	end
+
+	-- the pick stays random over every line that holds: a session reaches most of the 1,000 generic lines
+	math.randomseed(12)
+	Fresh()
+	local said, generic = {}, 0
+	for _ = 1, 4000 do
+		local id = Engine:PickEntry("c0ebig", ctx, "say").id
+		if Level(id) == 0 then
+			generic = generic + 1
+			said[id] = true
+		end
+	end
+	local distinct = 0
+	for _ in pairs(said) do distinct = distinct + 1 end
+	-- ~600 generic picks over 1,000 lines: a uniform draw reaches about 1,000 x (1 - e^-0.6) = 450 of them
+	T.ok(distinct > 0.6 * generic * 0.75 and distinct > 300, ("%d generic picks said %d different lines")
+		:format(generic, distinct))
+
+	-- the most specific tier is seen beside thousands of lines: in Goldshire the five subzone lines join the place
+	-- level (zone and subzone) and speak
+	P.subzone = "Goldshire"
+	local gctx = NS:BuildContext()
+	math.randomseed(13)
+	local sub = 0
+	for _ = 1, 400 do
+		Fresh()
+		if Engine:PickEntry("c0ebig", gctx, "say").id:find(".sub", 1, true) then sub = sub + 1 end
+	end
+	-- the subzone tier (5 fresh, >= TIER_MIN) is the place level alone: half of the picks
+	T.ok(sub > 400 * 0.4 and sub < 400 * 0.6, "the five subzone lines take the place share: " .. sub .. "/400")
+	P.subzone = ""
+
+	-- the window keeps its size from the lines that hold (estimated): no line twice within 30 picks
+	math.randomseed(14)
+	Fresh()
+	local last, ok = {}, true
+	for i = 1, 400 do
+		local id = Engine:PickEntry("c0ebig", ctx, "say").id
+		if last[id] and i - last[id] <= 30 then ok = false end
+		last[id] = i
+	end
+	T.ok(ok, "no line comes back inside the window of 30 picks")
+	T.eq(#NS.cdb.memory.recent.c0ebig, 30, "the window of the large event holds 30 lines")
+	Engine:DropPack("t_c0e_s")
+	Engine:DropPack("t_c0e_b")
+end)
+
+T.run("C0e: a line that holds is found also when the sample misses it, and dropped rules leave the tiers", function()
+	-- 1,000 generic lines that never hold for a warrior, and one that does: the sample rarely draws it, the check of
+	-- every candidate then finds it
+	local reg, tx = {}, {}
+	for i = 1, 1000 do
+		reg[("c0e.rare.never%04d"):format(i)] = { event = "c0erare", speaker = "character", styles = { "epic" },
+			conditions = { ["not"] = { class = "WARRIOR" } } }
+	end
+	reg["c0e.rare.one"] = { event = "c0erare", speaker = "character", styles = { "epic" } }
+	for id in pairs(reg) do tx[id] = { id .. " uno" } end
+	NS:RegisterPack({ id = "t_c0e_rare", name = "C0e rare", languages = { "itIT" },
+		events = { c0erare = { category = "reflection" } }, registry = reg, texts = { itIT = tx } })
+	P.zone, P.subzone, P.class = "Elwynn Forest", "", "WARRIOR"
+	local ctx = NS:BuildContext()
+	math.randomseed(21)
+	local found = 0
+	for _ = 1, 50 do
+		Fresh()
+		local rec = Engine:PickEntry("c0erare", ctx, "say")
+		if rec and rec.id == "c0e.rare.one" then found = found + 1 end
+	end
+	T.eq(found, 50, "the one line that holds is said every time")
+	-- the tiers of a group are made again when the group changes: the dropped rules are no longer candidates
+	BigPack("t_c0e_drop", "c0erare", 40)
+	local seen = false
+	for _ = 1, 30 do
+		Fresh()
+		if Engine:PickEntry("c0erare", ctx, "say").id:find("t_c0e_drop", 1, true) then seen = true end
+	end
+	T.ok(seen, "the rules of a new pack join the tiers of the event")
+	Engine:DropPack("t_c0e_drop")
+	local stale = false
+	for _ = 1, 30 do
+		Fresh()
+		local rec = Engine:PickEntry("c0erare", ctx, "say")
+		if not rec or rec.id ~= "c0e.rare.one" then stale = true end
+	end
+	T.ok(not stale, "after the drop only the line that holds is said again")
+	-- a view that changes the tier of a rule moves it to its new tier in the splits (tests and tools do this)
+	local group = Engine.index.c0erare.say["*"]
+	local one = Engine.OrdOf("c0e.rare.one")
+	local function InTier(t)
+		for _, r in ipairs(Engine.Split(group)[t]) do
+			if r == one then return true end
+		end
+		return false
+	end
+	T.ok(InTier(0), "a generic line is in tier 0 of its group")
+	local view = Engine.byId["c0e.rare.one"]
+	view.tier = Engine.MAX_TIER
+	T.ok(InTier(Engine.MAX_TIER) and not InTier(0), "its new tier is read")
+	view.tier = nil
+	T.ok(InTier(0), "and back")
+	Engine:DropPack("t_c0e_rare")
+end)
+
+T.run("C0e: the composite pick reads the situational lines of the split groups", function()
+	local mismatches, compared, nonEmpty = 0, 0, 0
+	for _, zone in ipairs({ "Durotar", "Elwynn Forest", "Orgrimmar", "Stormwind City" }) do
+		P.zone, P.subzone = zone, ""
+		local ctx = NS:BuildContext()
+		for ev in pairs(Engine.index) do
+			for _, form in ipairs({ "say", "emote", false }) do
+				local f = form or nil
+				local want = {}
+				for _, r in ipairs(Engine:Candidates(ev, ctx, f)) do
+					if Engine.R.shape[r].situational then want[#want + 1] = r end
+				end
+				local got = Engine:SituationalCandidates(ev, ctx, f)
+				compared = compared + 1
+				if #got > 0 then nonEmpty = nonEmpty + 1 end
+				if table.concat(got, ",") ~= table.concat(want, ",") then mismatches = mismatches + 1 end
+			end
+		end
+	end
+	T.eq(mismatches, 0, "the same situational lines, in the same order (" .. compared .. " cases)")
+	T.ok(nonEmpty > 0, "some events have situational lines (" .. nonEmpty .. ")")
+	P.zone, P.subzone = "Elwynn Forest", "Goldshire"
+end)
+
 T.run("#89: related-event fallback, declared in data and validated", function()
 	Fresh()
 	local rec = Engine:PickEntry("r3fb_a", NS:BuildContext(), "say")

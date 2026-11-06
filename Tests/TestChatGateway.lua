@@ -1298,7 +1298,9 @@ T.run("#185: a proposal waits for the end of the fight; the speak key adds no ba
 	T.ok(T.sentContains("/au battlecry"), "with nothing held: how to ask for one")
 	T.eq(#Narrator.history, lines, "still no line")
 	SlashCmdList.AZEROTHUNSPOKEN("battlecry")
-	T.ok(Gateway:GetPending() ~= nil, "asked for: a battle line")
+	-- a spoken line waits as a proposal; a thought (inner voice, about a third of the battle lines) is shown in the
+	-- narrator at once (C0e: the test no longer depends on which of the two the dice give)
+	T.ok(Gateway:GetPending() ~= nil or #Narrator.history > lines, "asked for: a battle line")
 	Gateway:Discard()
 	-- the fight ends: the held proposal comes back
 	Gateway.combatHeld = held

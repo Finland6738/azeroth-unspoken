@@ -515,6 +515,13 @@ local function NewShape(from)
 	return s
 end
 
+-- C0e (ADR 0052): the tiers of a group of the index, made when a pick first needs them (Engine.Split). A group only
+-- grows at its end (AddToIndex, EndStaging), so a split extends itself with the new rules; a pack hidden (HidePack)
+-- takes rules out of a group, and its split is made again; a view that changes the tier or `situational` of a rule
+-- (tests, tools) makes every split again. Weak keys: a group no longer in the index takes its tiers with it.
+local splits = setmetatable({}, { __mode = "k" })
+local SPLIT_FIELDS = { tier = true, situational = true }
+
 -- __newindex of every shape: the key is not in the rule table. A view of a rule (#138) writes the new shape to the
 -- column too, so the selection sees it
 ShapeWrite = function(p, k, v)
@@ -525,6 +532,7 @@ ShapeWrite = function(p, k, v)
 		setmetatable(p, own)
 		local r = rawget(p, "ord")
 		if r and Engine.R.shape[r] == old then Engine.R.shape[r] = own end
+		if r and SPLIT_FIELDS[k] then splits = setmetatable({}, { __mode = "k" }) end
 	else
 		rawset(p, k, v)
 	end
@@ -1144,6 +1152,53 @@ function Engine:CandidateGroups(event, ctx, form)
 		if byKey[k] then table.insert(lists, byKey[k]) end
 	end
 	return lists
+end
+
+---The rules of a group of the index split by specificity tier (C0e, ADR 0052): [t] the ords of tier t (0 to MAX_TIER)
+---and `sit` those written for a composite situation (#100), each in the order of the group; `n` the rules of the group
+---it holds. Made once and kept: rules appended to the group since are added to it, so a pick reads a tier of a group
+---without walking the group, also after a change of area.
+---@param list integer[] a group of the index (Engine:CandidateGroups)
+---@return { [integer]: integer[], sit: integer[], n: integer }
+function Engine.Split(list)
+	local s, n = splits[list], #list
+	if s and s.n == n then return s end
+	if not s or s.n > n then
+		s = { sit = {}, n = 0 }
+		for t = 0, Engine.MAX_TIER do s[t] = {} end
+		splits[list] = s
+	end
+	local sit, Tier = s.sit, Engine.Tier
+	for i = s.n + 1, n do
+		local r = list[i]
+		local into = s[Tier(r)]
+		into[#into + 1] = r
+		if SHAPE[r].situational then sit[#sit + 1] = r end
+	end
+	s.n = n
+	return s
+end
+
+---The rules of the event written for a composite situation (#100) that can hold in the context, in order of
+---registration: the same list as the rules of Engine:Candidates with `situational`, from the split groups (C0e), so
+---a composite pick no longer merges and walks every candidate of the event.
+---@param event string
+---@param ctx table
+---@param form? "say"|"emote" nil = every form
+---@return integer[] ords
+function Engine:SituationalCandidates(event, ctx, form)
+	local byForm = self.index[event]
+	if not byForm then return EMPTY_LIST end
+	local lists = {}
+	for f in pairs(byForm) do
+		if form == nil or f == form then
+			for _, list in ipairs(self:CandidateGroups(event, ctx, f)) do
+				local sit = Engine.Split(list).sit
+				if #sit > 0 then table.insert(lists, sit) end
+			end
+		end
+	end
+	return Engine.MergeByOrd(lists)
 end
 
 ---Le regole dell'evento che possono valere nel contesto, in ordine di registrazione: una parte di byEvent[event] che
@@ -1768,7 +1823,7 @@ local function HideOrds(byEvent, index, events, packId, gone, from)
 		end
 		for _, byKey in pairs(index[ev] or EMPTY_LIST) do
 			for k, list in pairs(byKey) do
-				Without(list, packId, gone, from)
+				if Without(list, packId, gone, from) then splits[list] = nil end
 				if #list == 0 then byKey[k] = nil end
 			end
 		end

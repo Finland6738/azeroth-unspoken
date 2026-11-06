@@ -708,13 +708,33 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 		for i, r in ipairs(out) do out[i] = Engine.Rule(r) end
 		return out
 	end
+	local Check = self:RuleCheck(lang, ctx, form, now, memo, closed, literary, muted)
+	for _, r in ipairs(list) do
+		if Check(r) then out[#out + 1] = r end
+	end
+	return out
+end
+
+---The check of Eligible for one rule, given by its ord (C0e, ADR 0052: the bounded pick checks the rules it samples
+---one at a time). Made once per pick: what the check reads that does not change during the pick is read here.
+---@param lang string
+---@param ctx table
+---@param form? "say"|"emote"
+---@param now number
+---@param memo? table answers of pure conditions tables during one pick (see Eligible)
+---@param closed? table categories closed in this pick (computed from ctx when nil and ctx has them)
+---@param literary? string the literary category when it cannot speak
+---@param muted? table muted ids
+---@return fun(r: integer): any check truthy when the rule holds now
+function Engine:RuleCheck(lang, ctx, form, now, memo, closed, literary, muted)
+	local engine = self
 	local last = Mem().last
 	local disabled = NS.db.disabledPacks
-	local RuleUsable = Engine.RuleUsable
-	local WHEN, SHAPE, ID, IMPURE = WHEN, SHAPE, ID, IMPURE   -- locals: the loop reads them for every candidate
+	local RuleUsable, SafeMatch = Engine.RuleUsable, Engine.SafeMatch
+	local WHEN, SHAPE, ID, IMPURE = WHEN, SHAPE, ID, IMPURE   -- locals: the check reads them for every candidate
 	local store = TX[lang]
 	local tv, tat = store and store.v, store and store.at
-	for _, r in ipairs(list) do
+	return function(r)
 		local when, p = WHEN[r], SHAPE[r]
 		-- #138: conditions already false in this pick end the check at once. Only pure conditions are in the memo, and
 		-- purity belongs to the conditions table, so no rule that shares it could have drawn a random number here
@@ -726,38 +746,35 @@ function Engine:Eligible(list, lang, ctx, form, now, memo)
 				and (closed == nil or not closed[p.category]) and (literary == nil or p.category ~= literary) then
 				-- regole con condizioni senza effetti collaterali: prima le condizioni, che escludono di più. Le altre
 				-- (chance, func; e le cornici, sopra) solo dopo i testi, come sempre: la sequenza casuale non cambia
-				local ok
 				if p.kind == "monologue" then
 					-- #99: its conditions, then every part (a whole phrase with its own conditions and texts); off in R1_COMPAT
-					ok = not self.R1_COMPAT and Engine.SafeMatch(when, ctx) and self:MonologueUsable(r, lang, ctx, now)
+					return not engine.R1_COMPAT and SafeMatch(when, ctx) and engine:MonologueUsable(r, lang, ctx, now)
 				elseif IMPURE[r] then
-					ok = RuleUsable(r, lang, ctx) and Engine.SafeMatch(when, ctx)
-				else
-					local m
-					if when == nil then
-						m = true
-					elseif memo then
-						m = memo[when]
-						if m == nil then
-							m = Engine.SafeMatch(when, ctx)
-							memo[when] = m
-						end
-					else
-						m = Engine.SafeMatch(when, ctx)
-					end
-					if m then
-						-- #138: the common case of RuleUsable, a first variant with no placeholder (its pack, the
-						-- rule's, is on); a = count * TEXT_SPAN + first slot, and a count of 0 has no first variant
-						local a = tat and tat[r]
-						local first = a and a >= TEXT_SPAN and tv[a % TEXT_SPAN]
-						ok = (type(first) == "string" and not find(first, "{", 1, true)) or RuleUsable(r, lang, ctx)
-					end
+					return RuleUsable(r, lang, ctx) and SafeMatch(when, ctx)
 				end
-				if ok then out[#out + 1] = r end
+				local m
+				if when == nil then
+					m = true
+				elseif memo then
+					m = memo[when]
+					if m == nil then
+						m = SafeMatch(when, ctx)
+						memo[when] = m
+					end
+				else
+					m = SafeMatch(when, ctx)
+				end
+				if m then
+					-- #138: the common case of RuleUsable, a first variant with no placeholder (its pack, the
+					-- rule's, is on); a = count * TEXT_SPAN + first slot, and a count of 0 has no first variant
+					local a = tat and tat[r]
+					local first = a and a >= TEXT_SPAN and tv[a % TEXT_SPAN]
+					return (type(first) == "string" and not find(first, "{", 1, true)) or RuleUsable(r, lang, ctx)
+				end
 			end
 		end
+		return false
 	end
-	return out
 end
 
 ---The eligible rules of an event, as Eligible(Candidates(event, ctx, form)) gives them: the same rules, in the same
@@ -788,6 +805,128 @@ function Engine:EligibleFor(event, ctx, form, lang, now, memo)
 	end
 	if #outs == 0 then return {} end
 	return Engine.MergeByOrd(outs)
+end
+
+---------------------------------------------------------------------------
+-- C0e (ADR 0052): a bounded pick
+---------------------------------------------------------------------------
+-- Checking and weighing every candidate of an event costs in proportion to the lines written for it, and the content
+-- waves (ADR 0050) add lines to the same events for a long time: the generic, situation and capital pools of `muse`
+-- would hold thousands. Above SAMPLE_FROM candidates a pick therefore reads each specificity tier apart (the groups of
+-- the index split by tier, Engine.Split): a tier of at most SAMPLE_SCAN candidates is checked whole, as before; a
+-- larger one is sampled, rules drawn at random without repetition and checked one at a time until SAMPLE_KEEP of them
+-- hold, or SAMPLE_CHECKS were checked. A rule in the anti-repetition window is passed over before its check (it could
+-- not be picked while fresher ones are there). The weights, the tiers mixed by share, the window and the variants then
+-- work on what was kept exactly as on every candidate before. So the cost of a pick has a bound that does not depend
+-- on how many lines an event has: at most SAMPLE_CHECKS checks and SAMPLE_KEEP weights per tier.
+--   - Every rule that holds has the same chance to be kept, so the pick stays random over all of them; inside the
+--     kept ones the weights choose as before.
+--   - The tiers are sampled apart, so a few landmark or zone lines beside thousands of generic ones are always seen,
+--     and the levels keep their shares (TestSelection checks 50/35/15 statistically).
+--   - The anti-repetition window keeps its size from the candidates that hold, estimated in a sampled tier.
+--   - When the sample finds nothing (a large event of which almost nothing holds now, or only lines in the window)
+--     the pick checks every candidate, as before: no line that could speak goes silent because of the sample.
+-- Engine.SAMPLE = false (or R1_COMPAT) checks every candidate always: the reference of the tests.
+Engine.SAMPLE = true
+Engine.SAMPLE_FROM = 64     -- an event (one form) with at most this many candidates is checked whole
+Engine.SAMPLE_SCAN = 24     -- a tier with at most this many candidates is checked whole
+Engine.SAMPLE_KEEP = 16     -- rules that hold kept from a larger tier
+Engine.SAMPLE_CHECKS = 48   -- rules of a larger tier checked at most
+Engine.SAMPLE_DRAWS = 4     -- random draws per check at most (draws of a rule already drawn, or of another speaker)
+
+---The rules that hold of a large event, read by tier with a bounded sample (C0e, see above), or nil when the event has
+---at most SAMPLE_FROM candidates, when no tier has more than SAMPLE_SCAN, when sampling is off, or when the sample
+---found nothing: then the caller checks every candidate (Engine:EligibleFor).
+---@param event string
+---@param ctx table
+---@param form "say"|"emote"
+---@param lang string
+---@param now number
+---@param memo? table answers of pure conditions tables during one pick (see Eligible)
+---@param recent table<string, boolean> the ids in the anti-repetition window of the event
+---@param speaker? string only rules of this speaker (the spoken lines told in a frame: "character")
+---@return integer[]? ords the rules kept, by tier
+---@return number? count the rules that hold, estimated where a tier was sampled (for the window, KeepFor)
+function Engine:SampledEligible(event, ctx, form, lang, now, memo, recent, speaker)
+	if not self.SAMPLE or self.R1_COMPAT or form == nil then return nil end
+	local groups = self:CandidateGroups(event, ctx, form)
+	local n = 0
+	for _, list in ipairs(groups) do n = n + #list end
+	if n <= self.SAMPLE_FROM then return nil end
+	-- the lists of each tier, and whether one is large enough to be sampled; if none is, every candidate is checked
+	-- in order of registration, as before (the same pick)
+	local scan = self.SAMPLE_SCAN
+	local tiers, large = {}, false
+	for t = 0, Engine.MAX_TIER do
+		local lists, size = {}, 0
+		for _, list in ipairs(groups) do
+			local part = Engine.Split(list)[t]
+			if #part > 0 then
+				lists[#lists + 1] = part
+				size = size + #part
+			end
+		end
+		if size > 0 then
+			tiers[#tiers + 1] = { lists = lists, size = size }
+			if size > scan then large = true end
+		end
+	end
+	if not large then return nil end
+	local closed = ctx and ctx.closed
+	local literary = NS.Pacing:LiteraryClosed(ctx) and self.LITERARY_CATEGORY or nil
+	local Check = self:RuleCheck(lang, ctx, form, now, memo, closed, literary, self.muted)
+	local keep, checks = self.SAMPLE_KEEP, self.SAMPLE_CHECKS
+	local draws = checks * self.SAMPLE_DRAWS
+	local random = math.random
+	local out, count = {}, 0
+	for _, tier in ipairs(tiers) do
+		local lists, size = tier.lists, tier.size
+		if size <= scan then
+			-- a small tier: every rule, in order of registration (a rule in two groups once)
+			for _, r in ipairs(Engine.MergeByOrd(lists)) do
+				if (not speaker or SHAPE[r].speaker == speaker) and Check(r) then
+					out[#out + 1] = r
+					count = count + 1
+				end
+			end
+		else
+			-- tried: the rules drawn (a rule in two groups of the tier has two positions)
+			local tried, ntried, kept, checked, inWindow, drawn = {}, 0, 0, 0, 0, 0
+			while kept < keep and checked < checks and drawn < draws and ntried < size do
+				drawn = drawn + 1
+				-- a position among the lists of the tier
+				local j, list = random(size), nil
+				for k = 1, #lists do
+					list = lists[k]
+					if j <= #list then break end
+					j = j - #list
+				end
+				local r = list[j]
+				if not tried[r] then
+					tried[r] = true
+					ntried = ntried + 1
+					if not speaker or SHAPE[r].speaker == speaker then
+						if recent[ID[r]] then
+							inWindow = inWindow + 1
+						else
+							checked = checked + 1
+							if Check(r) then
+								out[#out + 1] = r
+								kept = kept + 1
+							end
+						end
+					end
+				end
+			end
+			-- the rules of the tier that hold, estimated from the share of the drawn ones that held (those in the
+			-- window held when they were said)
+			if ntried > 0 then count = count + (kept + inWindow) * size / ntried end
+		end
+	end
+	-- nothing found (a large event of which almost nothing holds now, or only lines in the window): every candidate is
+	-- checked, as before, so that no line that could speak goes silent because of the sample
+	if #out == 0 then return nil end
+	return out, count
 end
 
 ---The spaces of a composed text (#117): runs of spaces and tabs become one space and line breaks are kept: a verse per
@@ -1143,15 +1282,6 @@ function Engine:PickEntry(event, ctx, form, composite)
 end
 
 ---Sceglie e compone una frase dell'evento, senza ripieghi.
--- only the lines written for a composite situation (#100)
-local function Situational(list)
-	local out = {}
-	for _, r in ipairs(list or EMPTY) do
-		if SHAPE[r].situational then table.insert(out, r) end
-	end
-	return out
-end
-
 ---@param event string
 ---@param ctx table
 ---@param form "say"|"emote"
@@ -1181,14 +1311,33 @@ function Engine:PickOwn(event, ctx, form, composite)
 	local memo = self.MEMO and Engine.NewPickMemo() or nil
 	local match = memo and memo.match
 	-- solo i gruppi dell'indice che il contesto apre (#83): stesse regole e stesso ordine di tutto byEvent[event].
-	-- #153: a composite pick keeps only the lines of its situation, from the merged candidates
-	local function EligibleOf(f)
-		if composite then return self:Eligible(Situational(self:Candidates(event, ctx, f)), lang, ctx, f, now, match) end
-		return self:EligibleFor(event, ctx, f, lang, now, match)
+	-- #153: a composite pick keeps only the lines of its situation (C0e: from the split groups)
+	-- C0e: the ids in the window of the event, for the bounded pick of a large event
+	local recent = {}
+	for _, id in ipairs(mem.recent[event] or EMPTY) do recent[id] = true end
+	-- the rules that hold, and how many hold (estimated when a large event was sampled, Engine:SampledEligible)
+	local function EligibleOf(f, speaker)
+		local out, count
+		if composite then
+			-- C0e: the situational lines of the split groups, not a walk of every candidate
+			out = self:Eligible(self:SituationalCandidates(event, ctx, f), lang, ctx, f, now, match)
+		else
+			out, count = self:SampledEligible(event, ctx, f, lang, now, match, recent, speaker)
+			if out then return out, count end
+			out = self:EligibleFor(event, ctx, f, lang, now, match)
+		end
+		if speaker then
+			local only = {}
+			for _, r in ipairs(out) do
+				if SHAPE[r].speaker == speaker then only[#only + 1] = r end
+			end
+			out = only
+		end
+		return out, #out
 	end
 
 	local items = {}
-	local own = EligibleOf(form)
+	local own, held = EligibleOf(form)
 	local weights = memo and #own >= self.MEMO_MIN and memo
 	-- #138: the candidates are ords; a rule becomes a view only once chosen
 	for _, r in ipairs(own) do
@@ -1205,10 +1354,8 @@ function Engine:PickOwn(event, ctx, form, composite)
 		if #frames > 0 then
 			-- solo la voce pubblica del personaggio si può raccontare in una cornice:
 			-- un pensiero (inner) non diventa un'emote
-			local says = {}
-			for _, r in ipairs(EligibleOf("say")) do
-				if SHAPE[r].speaker == "character" then table.insert(says, r) end
-			end
+			local says, saysHeld = EligibleOf("say", "character")
+			held = held + saysHeld
 			local voice = r3 and "narrator" or nil
 			weights = memo and #says >= self.MEMO_MIN and memo
 			for _, r in ipairs(says) do
@@ -1219,8 +1366,9 @@ function Engine:PickOwn(event, ctx, form, composite)
 		end
 	end
 
-	-- the anti-repetition window keeps its size from every candidate, also when the tiers narrow the pool (#89)
-	local keep = KeepFor(#items)
+	-- the anti-repetition window keeps its size from every candidate, also when the tiers narrow the pool (#89), and
+	-- from every rule that holds when a large event was sampled (C0e: `held` counts them, estimated)
+	local keep = KeepFor(math.floor(held + 0.5))
 	-- #153: a composite pick weighs only the lines written for its situation (usually two); its line joins the window
 	-- of the lead event without cutting what the ordinary picks of that event put there
 	if composite then keep = math.max(keep, #(mem.recent[event] or EMPTY)) end

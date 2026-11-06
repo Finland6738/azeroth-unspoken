@@ -13,7 +13,11 @@ so the trace itself stays comparable.
 
 Since #138 the levels are mixed by share (ADR 0051): a trace differs from one of an engine before it wherever an event
 has lines in two levels, on purpose; with --r1 (the tiers off) it does not, and with --one-level (every tier in one
-level: the pick of ADR 0029 before #138) it must be the same as the trace of an engine before #138.
+level: the pick of ADR 0029 before #138) it must be the same as the trace of an engine before #138 (with --exact too).
+
+Since C0e (ADR 0052) a large event is sampled by tier: a trace differs from one of an engine before it wherever an event
+has more than Engine.SAMPLE_FROM candidates, on purpose; with --exact (Engine.SAMPLE = false: every candidate checked)
+it must be the same as the trace of an engine before C0e.
 """
 import argparse, os, sys
 
@@ -41,6 +45,8 @@ def main(argv):
     ap.add_argument("--soul", help="archetype of the character's personality (R4), e.g. veteran; default neutral")
     ap.add_argument("--one-level", action="store_true", help="Engine.TIER_SHARES = { [0] = 1 }: the tiers in one level, "
                     "the pick of ADR 0029 before #138 (only the most specific tier with TIER_MIN fresh lines)")
+    ap.add_argument("--exact", action="store_true", help="Engine.SAMPLE = false (C0e, ADR 0052): every candidate "
+                    "checked, the pick of an engine before C0e")
     ap.add_argument("--levels", action="store_true", help="print the share of the picks of each level of specificity "
                     "(generic, situation, place) at the end, on stderr")
     ap.add_argument("--emotion", help="emotional state at the start (R4), e.g. worried=0.6,tense=0.3; it fades as the "
@@ -49,6 +55,8 @@ def main(argv):
     lua, ns, _ = B.load_addon(os.path.abspath(a.addon))
     if a.r1:
         ns.Engine.R1_COMPAT = True
+    if a.exact:
+        ns.Engine.SAMPLE = False
     if a.one_level:
         ns.Engine.TIER_SHARES = lua.eval("{ [0] = 1 }")
     if a.soul:

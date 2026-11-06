@@ -35,6 +35,12 @@ the thread here: wall time on a busy machine counts other programs),
 apart for the frames that load a folder (the client reads its files in one call: once per area and session). The same
 script measures the engine before C0b (it has no Packs:Step: a change is one frame).
 
+C0e (ADR 0052): --texts asks the projection by area in texts per language, the unit of the need model
+(docs/content/NEED.md), for one or more totals: each becomes entries at the mean texts per entry of the synthetic clones,
+and --resident-share of them stay resident (the need model plans about 40% of the texts in place pools, which the
+area packs hold, and 60% in the generic, situation, class and race pools, which stay in memory). Both modes also
+report the memory after the picks (the tiers of the groups of the index are made when a pick first reads them).
+
 The numbers are a projection from lupa on the machine that runs the script, not a measurement in the client: the
 working targets of R1 (PickEntry under 5 ms and memory under 40 MB at 50,000 entries) stay hypotheses until the
 in-game measurements of /au prof (D3 in #130). The test suite runs a reduced size (see run_tests.py); the full sizes
@@ -192,6 +198,7 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
         info.update({"compile_s": 0, "register_s": 0, "load_s": 0, "memory_kb": mem0, "per_entry_b": 0})
 
     found, times, kinstr = pick_stats(lua, ns, zones, picks, seed)
+    info["after_picks_kb"] = memory_kb(lua)
     info.update({"picks": picks, "found": found, "pick_mean_ms": statistics.mean(times),
                  "pick_p95_ms": times[int(len(times) * 0.95) - 1], "pick_max_ms": times[-1],
                  "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]})
@@ -344,11 +351,18 @@ def measure_areas(addon, total, resident, layout, picks, seed, form="source", bu
         rows.append({"zone": zone, "before_kb": before, "peak_kb": peak, "after_kb": after, "s": sum(frames) / 1000,
                      "frames": frames, "loads": loads, "load_calls": calls, "kept_kb": kept / 1024})
     found, times, kinstr = pick_stats(lua, ns, [journey[-1]], picks, seed)
-    return {"total": total, "resident": resident, "per_area": per_area, "areas": len(zones), "layout": layout,
+    after_picks = memory_kb(lua)
+    return {"after_picks_kb": after_picks, "total": total, "resident": resident, "per_area": per_area, "areas": len(zones), "layout": layout,
             "form": form, "budget": budget, "folders": folders, "setup_s": setup_s, "base_load_s": base_load, "resident_kb": resident_kb, "rows": rows,
             "picks": picks,
             "found": found, "pick_mean_ms": statistics.mean(times), "pick_p95_ms": times[int(len(times) * 0.95) - 1],
             "pick_kinstr": statistics.mean(kinstr), "pick_p95_kinstr": kinstr[int(len(kinstr) * 0.95) - 1]}
+
+
+def texts_per_entry(addon):
+    """C0e: the mean texts per entry of the synthetic clones in English (SYNTH_TEXTS_PER_ENTRY)."""
+    lua, ns, _ = load_addon(addon, "all")
+    return lua.eval("function(ns) return SYNTH_TEXTS_PER_ENTRY(ns, 'enUS') end")(ns)
 
 
 def pct(xs, q):
@@ -381,7 +395,8 @@ def print_areas(r):
           + (f"; the {len(loading)} frames that load folders (first visit): mean {statistics.mean(loading):.1f} ms, "
              f"max {max(loading):.1f} ms" if loading else ""))
     print(f"  picks in the last area: mean {r['pick_mean_ms']:.2f} ms, p95 {r['pick_p95_ms']:.2f} ms; "
-          f"{r['pick_kinstr']:.1f} thousand instructions (p95 {r['pick_p95_kinstr']:.1f}), {r['found']} of {r['picks']} found")
+          f"{r['pick_kinstr']:.1f} thousand instructions (p95 {r['pick_p95_kinstr']:.1f}), {r['found']} of {r['picks']} found; "
+          f"memory after the picks {mb(r['after_picks_kb']):.1f} MB")
     sys.stdout.flush()
 
 
@@ -400,6 +415,10 @@ def main(argv):
     ap.add_argument("--areas", action="store_true", help="C0 (ADR 0048): the projection by area (see above)")
     ap.add_argument("--total", type=int, default=300000, help="with --areas: entries in all (one language)")
     ap.add_argument("--resident", type=int, default=30000, help="with --areas: entries always in memory")
+    ap.add_argument("--texts", help="with --areas (C0e): totals in texts per language, comma separated (e.g. "
+                    "100000,270000), instead of --total and --resident")
+    ap.add_argument("--resident-share", type=float, default=0.6,
+                    help="with --texts: the share of the texts that stays resident (the rest is split over the areas)")
     ap.add_argument("--layout", default="continent,area", help="with --areas: continent, area or both")
     ap.add_argument("--form", default="source", choices=("source", "builder"),
                     help="with --areas: the regional entries as a source (C0b, ADR 0049) or as builder functions (before)")
@@ -414,10 +433,23 @@ def main(argv):
     if a.areas:
         print(f"addon {os.path.basename(addon)} at commit {commit(addon)}")
         rows = []
-        for layout in [l for l in a.layout.split(",") if l]:
-            r = measure_areas(addon, a.total, a.resident, layout, a.picks, a.seed, a.form, a.budget, a.keep)
-            print_areas(r)
-            rows.append(r)
+        totals = [(a.total, a.resident, None)]
+        if a.texts:
+            tpe = texts_per_entry(addon)
+            totals = []
+            for t in [int(x) for x in a.texts.split(",") if x.strip()]:
+                entries = round(t / tpe)
+                totals.append((entries, round(entries * a.resident_share), t))
+            print(f"{tpe:.2f} texts per entry (enUS): " + ", ".join(f"{t} texts = {e} entries, {r} resident"
+                                                                  for e, r, t in totals))
+        for total, resident, texts in totals:
+            for layout in [l for l in a.layout.split(",") if l]:
+                r = measure_areas(addon, total, resident, layout, a.picks, a.seed, a.form, a.budget, a.keep)
+                r["texts"] = texts
+                if texts:
+                    print(f"{texts} texts per language:")
+                print_areas(r)
+                rows.append(r)
         if a.json:
             with open(a.json, "w", encoding="utf-8", newline="\n") as f:
                 json.dump(rows, f, indent=1)
@@ -426,13 +458,13 @@ def main(argv):
     langs = tuple(l for l in a.langs.split(",") if l)
     print(f"addon {os.path.basename(addon)} at commit {commit(addon)}")
     print(f"{'entries':>8} {'addon s':>8} {'load s':>8} {'memory MB':>10} {'B/entry':>8} {'pick ms':>8} {'p95 ms':>8} {'max ms':>8} "
-          f"{'kinstr':>8} {'p95 ki':>8} {'found':>6}")
+          f"{'kinstr':>8} {'p95 ki':>8} {'found':>6} {'after MB':>9}")
     for size in [int(s) for s in a.sizes.split(",") if s.strip()]:
         r = measure(addon, size, a.picks, a.seed, a.place_share, langs, a.packs, a.archive_dir)
         rows.append(r)
         print(f"{size:>8} {r['base_load_s']:>8.2f} {r['load_s']:>8.2f} {r['memory_kb'] / 1024:>10.1f} {r['per_entry_b']:>8.0f} "
               f"{r['pick_mean_ms']:>8.3f} {r['pick_p95_ms']:>8.3f} {r['pick_max_ms']:>8.3f} "
-              f"{r['pick_kinstr']:>8.1f} {r['pick_p95_kinstr']:>8.1f} {r['found']:>6}")
+              f"{r['pick_kinstr']:>8.1f} {r['pick_p95_kinstr']:>8.1f} {r['found']:>6} {r['after_picks_kb'] / 1024:>9.1f}")
         sys.stdout.flush()
     if a.json:
         with open(a.json, "w", encoding="utf-8", newline="\n") as f:

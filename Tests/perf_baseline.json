@@ -1,5 +1,14 @@
 {
- "about": "Lua instructions per Engine:PickEntry, in thousands, of the scale projection of run_tests.py (2,000 synthetic rules, two languages, 150 picks, seed 1). run_tests.py warns above warn_ratio times this value (#157). Update it in the PR that changes it on purpose.",
- "pick_kinstr_2000": 20.2,
- "warn_ratio": 1.25
+ "about": "Lua instructions per Engine:PickEntry, in thousands. pick_kinstr_2000: the scale projection of run_tests.py (2,000 synthetic rules, two languages, 150 picks, seed 1); run_tests.py warns above warn_ratio times it (#157). m2_pick_kinstr: the picks of the simulated M2 session (Tests/bench_m2.py, one pick in five counted); run_tests.py fails above m2_fail_ratio times it (C0e, ADR 0052). Update them in the PR that changes them on purpose, and say why in `history`.",
+ "pick_kinstr_2000": 24.0,
+ "warn_ratio": 1.25,
+ "m2_pick_kinstr": 42.7,
+ "m2_fail_ratio": 1.5,
+ "history": [
+  "#204 (U-perf, #157): pick_kinstr_2000 21.0, the first reference.",
+  "#239 (#138): 16.4, the groups of the index checked apart.",
+  "#243 (C0a, ADR 0048): 20.2, the column store (and the content then).",
+  "W01-W04 (#246-#250): the content grew to 34.1 (p95 174.1) without a reset; W04 warned at 169%, which led to C0e.",
+  "2026-11-06 C0e (ADR 0052): the bounded pick, on the same content: pick_kinstr_2000 34.1 -> 24.0 (p95 174.1 -> 47.2); m2_pick_kinstr added as a gate, 84.1 -> 42.7 (p95 193.8 -> 70.6)."
+ ]
 }
