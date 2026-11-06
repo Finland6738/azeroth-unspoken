@@ -4727,4 +4727,5266 @@ NS:AddTexts("enUS", {
 		"Good exercise, that. Better than an hour at the post.",
 		"Warmed up nicely. Shame it's over.",
 	},
+	["cls.druid.heal.w06.001"] = {
+		"spreads {g:his|her} fingers over the hurt, and something like new leaves unfolding passes through the flesh.",
+		"hums a low, wordless note, and the wound draws closed the way a flower shuts at evening.",
+	},
+	["cls.druid.heal.w06.002"] = {
+		"That will keep working after I've stopped. Give it a little while.",
+		"It's in you now, mending slowly. Like a spring under the moss.",
+	},
+	["cls.druid.heal.w06.003"] = {
+		"The wild lends its strength to mending, but it keeps accounts. Spring is generous only because winter was strict.",
+		"I borrow from the green each time. It's never refused me, which is exactly why I'm careful how often I ask.",
+	},
+	["cls.druid.heal.w06.004"] = {
+		"Be still. Roots take hold faster in quiet ground.",
+		"Don't fight it. Things heal best when they stop thrashing about.",
+	},
+	["cls.druid.heal.w06.005"] = {
+		"Herbs, boiled down and bottled. Nature's work, if by someone else's hands.",
+		"An alchemist's tea. The Circle would call it lazy; my wounds call it welcome.",
+	},
+	["cls.druid.heal.w06.006"] = {
+		"For a few breaths everything around me goes quiet and green. I hold still, and everyone near is held with me.",
+		"Tranquility. The name always seemed a joke to me, cast in the middle of the worst of it.",
+	},
+	["cls.druid.heal.w06.007"] = {
+		"watches the hurt close with a gardener's patience, neither hurrying it nor looking away.",
+		"waits, still as a heron, until the pain has drained away entirely.",
+	},
+	["cls.hunter.attack.w06.001"] = {
+		"Feel that? Plenty more where it came from.",
+		"That's for making me work for it.",
+		"Another, and another. I can keep this up for as long as it takes.",
+	},
+	["cls.hunter.attack.w06.002"] = {
+		"Again. Same as before. Don't get clever.",
+		"Good. Now the next one, just like that.",
+		"Don't admire it. Ready the next.",
+	},
+	["cls.hunter.attack.w06.003"] = {
+		"moves without a wasted motion, each strike flowing out of the one before.",
+		"works with a hunter's economy, nothing spent that doesn't need spending.",
+		"shifts a half step to the side and strikes again, never quite where the foe expects.",
+	},
+	["cls.hunter.attack.w06.004"] = {
+		"Did that sting? It was meant to.",
+		"Keep still. That one had your name on it.",
+		"Oh, you felt that one. Good. I meant you to.",
+	},
+	["cls.hunter.attack.w06.005"] = {
+		"Together now! Hit it with me!",
+		"Now, while it's watching you!",
+		"Go for it while I strike!",
+	},
+	["cls.hunter.attack.w06.006"] = {
+		"If I keep this up, I might even impress myself.",
+		"Not bad. Not bad at all. Concentrate anyway.",
+		"Careful. The moment I feel pleased is the moment I miss.",
+	},
+	["cls.hunter.attack.w06.007"] = {
+		"The ground's mine now. Every step you take, I've already measured.",
+		"I've got your measure. Now it's just repetition.",
+		"I know how you move now. That's the end of you, slowly.",
+	},
+	["cls.hunter.attack.w06.008"] = {
+		"strikes and gives ground in one smooth motion, never letting the foe settle.",
+		"hits, slips back, hits again, as patient as water on stone.",
+	},
+	["cls.hunter.attack.w06.009"] = {
+		"Ha! That's the one I've been waiting for.",
+		"Now that one I'll remember.",
+	},
+	["cls.hunter.battle.w06.001"] = {
+		"Hold a moment. I want my mark on you before this starts.",
+		"A mark first, so I never lose you, however you twist.",
+		"First the mark. After that, there's nowhere you can stand that I can't find.",
+	},
+	["cls.hunter.battle.w06.002"] = {
+		"Too close for the shot, too far for a clean strike. That gap is where hunters get hurt. Stay out of it.",
+		"Watch the gap. Not close enough to cut, not far enough to shoot: that's the worst ground there is.",
+		"There's a dead stretch between my reach and my range. The whole fight is keeping the foe out of it.",
+	},
+	["cls.hunter.battle.w06.003"] = {
+		"reaches for the ammunition without looking, the hand finding it by long habit.",
+		"loads by feel alone, eyes never leaving the foe.",
+		"has the weapon readied before the foe has finished turning.",
+	},
+	["cls.hunter.battle.w06.004"] = {
+		"I counted my ammunition before setting out. Let's see how much of it you're worth.",
+		"Every round I spend on you comes out of my own purse. Try to fall quickly.",
+		"Ammunition isn't free, you know. Go down early and we both save something.",
+	},
+	["cls.hunter.battle.w06.005"] = {
+		"Come on, then. Every step you take toward me is a step through my sights.",
+		"Charge if you like. That's a long way to run with me shooting.",
+		"Come closer. I've already counted how many shots that walk will cost you.",
+	},
+	["cls.hunter.battle.w06.006"] = {
+		"Watch the feet, not the weapon. The feet always tell you first.",
+		"Where it puts its weight, that's where it's going. Read that and shoot ahead of it.",
+		"Every foe leaves tracks, even in a fight. A shifted foot, a dropped shoulder. Read them.",
+	},
+	["cls.hunter.battle.w06.007"] = {
+		"Let's see how fast you are with your legs clipped.",
+		"Bit of a limp coming your way. Then we'll talk about distance.",
+		"One clip to slow you, then I take my steps back. Simple dance.",
+	},
+	["cls.hunter.battle.w06.008"] = {
+		"wets a finger and lifts it, quick as a blink, before raising the weapon.",
+		"tilts {g:his|her} head at the air for half a heartbeat, reading which way it moves, then takes aim.",
+	},
+	["cls.hunter.battle.w06.009"] = {
+		"I've waited longer than this for a single shot. You don't frighten my patience.",
+		"Take your time. Waiting is the half of hunting nobody sings about.",
+		"Rush me all you like. Patience is the one weapon I never run out of.",
+	},
+	["cls.hunter.battle.w06.010"] = {
+		"Easy. I know your kind. I know where you'll lunge before you do.",
+		"I've read a hundred tracks like yours. I know how this goes.",
+		"Teeth and claws I understand. You'll get no surprises from me, and I'll get none from you.",
+	},
+	["cls.hunter.battle.w06.011"] = {
+		"You've got a grudge. I've got range. Let's find out which reaches first.",
+		"You brought anger. I brought distance. One of those is better at keeping people alive.",
+	},
+	["cls.hunter.battle.w06.012"] = {
+		"You don't flinch at the shot. Good. Neither do I.",
+		"No breath to hold, no heart to aim for. I'll just aim for the pieces.",
+		"You won't flinch, you won't tire and you won't stop. Fine. I won't either.",
+	},
+	["cls.hunter.battle.w06.013"] = {
+		"No scent, no tracks, no heartbeat. Hunting you is like hunting a gust of air.",
+		"Nothing about you leaves a trail. Doesn't matter. You're right there.",
+	},
+	["cls.hunter.battle.w06.014"] = {
+		"I've followed the trails of foul things before. None of them reeked like yours.",
+		"Whatever pit you climbed out of, you're in my range now.",
+	},
+	["cls.hunter.battle.w06.015"] = {
+		"Shoot whatever our front line is holding, not whatever looks interesting. Discipline.",
+		"Let the front line take the first blows. My work starts a heartbeat after theirs.",
+		"Wait until the one in front has it. Then the shots.",
+	},
+	["cls.hunter.battle.w06.016"] = {
+		"Here they come. Anything that breaks off, I'll put down before it reaches the back line.",
+		"However this started, I'm already shooting. Keep up.",
+	},
+	["cls.hunter.battle.w06.017"] = {
+		"sights along the weapon, and the rest of the world seems to step aside.",
+		"goes quiet all over, as if the whole body had become part of the aim.",
+		"lets out half a breath and holds the rest, the aim settling like dust.",
+	},
+	["cls.hunter.battle.w06.018"] = {
+		"Rule one: never fight with the cheetah's aspect on. One hit and I'm reeling like a drunk.",
+		"Is the cheetah still on me? It's always still on me. Change it, quickly.",
+	},
+	["cls.hunter.battle.w06.019"] = {
+		"First I slow you. Then I take my time.",
+		"A shot to make your legs heavy, and the rest is patience.",
+	},
+	["cls.hunter.battle.w06.020"] = {
+		"This one burns going in and keeps burning. Run, and it runs with you.",
+		"A little venom to start. It works while I work.",
+		"I don't need to hit you twice. The sting will remind you for me.",
+	},
+	["cls.hunter.battle.w06.021"] = {
+		"You're of another size. Then I'll spend more time on you. That's all it means.",
+		"Big one. Fine. Every shot counts double now, so none of them misses.",
+	},
+	["cls.hunter.battle.w06.022"] = {
+		"That one's well above me. Keep the distance, keep moving, and don't get greedy.",
+		"Stronger than me, and it knows it. Then I'll be cleverer, and it won't know that.",
+	},
+	["cls.hunter.battle.w06.023"] = {
+		"Hold it there for me. I'll do the rest from here.",
+		"Get in front of it and stay there. I'll be shooting past your ear.",
+		"Keep its eyes on you. Mine are already on it.",
+	},
+	["cls.hunter.battle.w06.024"] = {
+		"Teeth up front, shots from behind. Whoever planned this fight knew the trade. That was me.",
+		"One of us growls, the other aims. Guess which one you should be watching.",
+	},
+	["cls.hunter.battle.w06.025"] = {
+		"gives a short whistle, and the companion is already moving before the note ends.",
+		"sends the beast in with one low word and steps the other way, opening the range.",
+	},
+	["cls.hunter.battle.w06.026"] = {
+		"Find it, fix it in the sights, finish it. Same as every hunt.",
+		"Three steps to any hunt. I've done the first two.",
+		"Found you. Got you in the sights. Now comes the finishing.",
+	},
+	["cls.hunter.battle.w06.027"] = {
+		"glances behind before anything else, measuring the ground there is to back into.",
+		"checks the footing behind {g:him|her} with a quick look over the shoulder, then turns to the foe.",
+		"takes stock of the open ground at {g:his|her} back first, as any hunter worth the name would.",
+	},
+	["cls.hunter.battle.w06.028"] = {
+		"Hunter and hunted. The oldest bargain in the wild, and I know which side I signed.",
+		"Before towns and walls there was this: one who chases and one who runs. I know my part.",
+	},
+	["cls.hunter.battle.w06.029"] = {
+		"The first shot sets the whole fight. Take the extra heartbeat.",
+		"Never hurry the opening. Everything after it leans on the first shot.",
+		"One more heartbeat on the aim. The opening shot is the one I'll live with.",
+	},
+	["cls.hunter.battle.w06.030"] = {
+		"Stand still. It's better for both of us.",
+		"Hold still and this is quick. Dance about and it isn't.",
+		"Keep still, and I'll make it clean. You have my word.",
+	},
+	["cls.hunter.battle.w06.031"] = {
+		"Clip, step, step, shoot. Clip, step, step, shoot. Don't lose the count.",
+		"If it reaches me: hobble its legs, three paces back, and start over. The rhythm keeps me whole.",
+	},
+	["cls.hunter.battle.w06.032"] = {
+		"Full pouch, steady hands, clear line. You picked the wrong hunter.",
+		"My ammunition's fresh and so am I. Bad timing on your part.",
+		"Pouch full, aim true. Somebody's having a bad moment, and it isn't me.",
+	},
+	["cls.hunter.battle.w06.033"] = {
+		"Fight me or flee me. Either way, I have the better view of it.",
+		"Turn and run, or stand and charge. I'm ready for both, and I'll enjoy one more.",
+		"Stand or run, it's all the same to my aim.",
+	},
+	["cls.hunter.battle.w06.034"] = {
+		"All those hours putting shots into straw. Let's see what they were for.",
+		"Straw targets never shot back. Let's see if the lessons hold anyway.",
+		"Practice is over. This one moves, and it answers back.",
+	},
+	["cls.hunter.battle.w06.035"] = {
+		"There it is, that tightening in the chest. The hunt's begun, and every part of me knows it.",
+		"Everything goes sharp at the edges. Sounds, smells, the distance. I love this part, a little too much.",
+	},
+	["cls.hunter.battle.w06.036"] = {
+		"Far off, you'll take my shots. Up close, you'll wish you'd kept your distance.",
+		"Far, I shoot. Near, I strike. There's no safe distance for you here.",
+		"Every distance is mine. You'll see.",
+	},
+	["cls.hunter.battle.w06.037"] = {
+		"lets the opening shot go with no sign of hurry, as if the decision had been made long ago.",
+		"opens the fight with a single unhurried shot, then shifts weight onto the back foot.",
+	},
+	["cls.hunter.battle.w06.038"] = {
+		"Ah, a moving target. Things were getting dull.",
+		"Something worth aiming at, at last.",
+		"Good. I was starting to forget what the weapon was for.",
+	},
+	["cls.hunter.battle.w06.039"] = {
+		"Exhale on the aim, inhale on the step. Keep that rhythm and the rest follows.",
+		"Slow hands are quick enough. Fast hands miss.",
+		"Don't chase the shot. Let it come to the aim.",
+	},
+	["cls.hunter.battle.w06.040"] = {
+		"I don't have to touch you to finish you. That's the beauty of it.",
+		"You'll never get near enough to hit me. That's rather the point.",
+		"Arm's length? I prefer forty paces.",
+	},
+	["cls.hunter.battle.w06.041"] = {
+		"brings the weapon into position and lets everything else in the world fall away.",
+		"tightens {g:his|her} grip once, then eases it to just firm enough.",
+	},
+	["cls.hunter.battle.w06.042"] = {
+		"Every trail ends somewhere. This is where yours does.",
+		"Whatever trail you came by, it stops at my feet.",
+		"This is the last stretch of your trail. I'll make it short.",
+	},
+	["cls.hunter.battle.w06.043"] = {
+		"If the first one misses, nobody needs to know. Probably.",
+		"Please let the first shot land. I'd hate an audience for the second try.",
+	},
+	["cls.hunter.battle.w06.044"] = {
+		"I've read the ground, the air and you. Now I just have to let go.",
+		"Ground, air, distance, foe. All read. Only the shooting's left.",
+	},
+	["cls.hunter.buff.w06.001"] = {
+		"I take on a little of the wild before I need it. Better to be ready than to be quick about getting ready.",
+		"One breath to settle into it. The body knows the shape before the mind names it.",
+		"Shoulders loose, weight forward. Now I'm something that belongs among the beasts.",
+	},
+	["cls.hunter.buff.w06.002"] = {
+		"There. Now I'm properly dressed for the wild.",
+		"Right, that's me sorted. The rest of the day can begin.",
+	},
+	["cls.hunter.buff.w06.003"] = {
+		"moves {g:his|her} shoulders once and goes very still, the way an animal does before it decides which way to run.",
+		"shifts onto the balls of the feet and lets the stillness settle all the way down to the heels.",
+	},
+	["cls.hunter.buff.w06.004"] = {
+		"The aspects are borrowed. Every hunter learns that early: you wear the beast's way of moving, you never own it.",
+		"A borrowed gait, a borrowed eye. I give them back every time, and every time they're lent again.",
+	},
+	["cls.hunter.buff.w06.005"] = {
+		"Feels a bit more animal than a minute ago. That's the whole idea.",
+		"Less person, more creature. Just for a while.",
+	},
+	["cls.hunter.buff.w06.006"] = {
+		"Long road, light feet. Let's eat some distance.",
+		"Right. Now the road had better keep up with me.",
+		"One knock and I'd be stumbling all over the path, so: no knocks.",
+	},
+	["cls.hunter.buff.w06.007"] = {
+		"Quick legs and no guard at all. A fine way to travel, and a terrible way to be found.",
+		"Speed, paid for with my guard. A fair price, as long as nothing's waiting along the path.",
+	},
+	["cls.hunter.buff.w06.008"] = {
+		"The hawk's way of seeing: everything far off is suddenly near enough to matter.",
+		"My eye narrows to a point. Further on, something hasn't noticed me yet. Good.",
+	},
+	["cls.hunter.buff.w06.009"] = {
+		"Eyes of a hawk. Let's find something worth looking at.",
+		"Sharp sight, steady hand. Now show me a target.",
+	},
+	["cls.hunter.buff.w06.010"] = {
+		"Nimble feet. Let them swing at the air all they like.",
+		"Duck, sidestep, grin. The monkey's whole philosophy, and not a bad one.",
+	},
+	["cls.hunter.buff.w06.011"] = {
+		"The pack's pace, for whoever walks with me. Even if today that's only me.",
+		"Swift feet for anyone near. A long road shortens when nobody lags behind.",
+	},
+	["cls.hunter.buff.w06.012"] = {
+		"lifts the chin and breathes in, and for a moment something wilder looks out of {g:his|her} eyes.",
+		"goes quiet, and the whole stance changes: lower, readier, less like a traveler and more like a hunter.",
+	},
+	["cls.hunter.buff.w06.013"] = {
+		"Learned slowly, called in an instant. That's what practice buys.",
+		"The first time, it felt like a coat in the wrong size. Now I hardly notice putting it on.",
+	},
+	["cls.hunter.buff.w06.014"] = {
+		"Good. Whatever's next, I'm already in it.",
+		"That'll do. Lead on, road, let's see what you've got.",
+	},
+	["cls.hunter.buff.w06.015"] = {
+		"A scholar would call it attunement. I call it remembering that I'm an animal too.",
+		"Nothing to read, nothing to recite. Just a way of standing that the wild taught first.",
+	},
+	["cls.hunter.buff.w06.016"] = {
+		"checks the ammunition, then the straps of the pack, and nods to no one in particular.",
+		"shifts the ranged weapon on {g:his|her} back until it sits just right.",
+	},
+	["cls.hunter.buff.w06.017"] = {
+		"Quiet before the work. If I could keep only one part of the hunt, I'd keep this one.",
+		"No hurry yet. Just the body tuning itself, string by string.",
+	},
+	["cls.hunter.buff.w06.018"] = {
+		"Feels good. Like stretching after a long sleep, only sharper.",
+		"Ah, that's better. Every sense standing to attention.",
+		"There it is. The world gets a little louder and a little clearer.",
+	},
+	["cls.hunter.buff.w06.019"] = {
+		"sets off at a sudden loping pace, faster than walking has any right to be.",
+		"breaks into an easy, eager stride, the ground starting to slip by quicker.",
+	},
+	["cls.hunter.farewell.w06.001"] = {
+		"I'm off. Watch the tree line, and keep downwind of trouble.",
+		"Farewell. If you hear nothing at all behind you on the road, that might be me.",
+		"Time I went. Walk softly, and the wild might let you pass.",
+	},
+	["cls.hunter.greet.w06.001"] = {
+		"Hello. You came up quieter than most; I noticed.",
+		"Well met. Don't mind me checking the wind; it's a habit.",
+	},
+	["cls.hunter.greet.w06.002"] = {
+		"Hello there. If my eyes keep wandering, don't take it personally. They're always on the move.",
+		"Greetings. Forgive me if I don't stand too close; I'm in the habit of keeping some range.",
+	},
+	["cls.hunter.heal.w06.001"] = {
+		"winds the linen tight around the wound, pulls the knot with {g:his|her} teeth, and tests the arm.",
+		"binds the cut one-handed, with the speed of someone used to cleaning game.",
+	},
+	["cls.hunter.heal.w06.002"] = {
+		"Clean it, wrap it, forget it. A hunter can't afford a wound that wants attention all day.",
+		"A hurt animal bites the hand that binds it. I'm luckier: the only one I have to put up with is me.",
+	},
+	["cls.hunter.heal.w06.003"] = {
+		"Hold still, me. One more turn. There.",
+		"Not pretty. It'll hold till I find something better than linen.",
+		"First aid, they call it. Last resort, I'd say.",
+	},
+	["cls.hunter.heal.w06.004"] = {
+		"Sitting with a bandage is the only time the wild lets me be slow.",
+		"Wrapping the wound, I can hear everything again: the small sounds around me, my heartbeat slowing down.",
+	},
+	["cls.hunter.heal.w06.005"] = {
+		"Bottoms up. Here's to legs that work.",
+		"Cheers, me. Now back to it.",
+		"One swallow and the ache backs off. Good.",
+	},
+	["cls.hunter.heal.w06.006"] = {
+		"Some alchemist got richer and I got my skin back. Fair trade.",
+		"Red, sweet, and gone in a gulp. The best things on the road usually are.",
+	},
+	["cls.hunter.heal.w06.007"] = {
+		"A warlock's stone, cracked open in my fist. I don't ask how it was made. It works, and that's the whole conversation.",
+		"Green, faintly warm, faintly wrong. It still puts me back on my feet.",
+		"Somebody else's dark craft, and my mended hide. I've made odder bargains with the wild.",
+	},
+	["cls.hunter.heal.w06.008"] = {
+		"Never thought I'd thank a warlock. Not out loud, anyway.",
+		"Smells of sulfur. Works like a charm.",
+	},
+	["cls.hunter.heal.w06.009"] = {
+		"takes a moment to mend, eyes never quite leaving the way ahead.",
+		"sits back on {g:his|her} heels while the hurt eases, already looking for the next sign.",
+	},
+	["cls.hunter.heal.w06.010"] = {
+		"Wounds slow the feet first, then the eye. I won't let this one get as far as the eye.",
+		"Patch the hunter, and the hunt goes on. That's all mending is for.",
+		"The trick is to mend before the hurt becomes a habit.",
+	},
+	["cls.hunter.heal.w06.011"] = {
+		"The beast at my side sniffs at the wound, then at me, and seems to decide I'll live.",
+		"My companion keeps watch while I mend. One of us has to.",
+	},
+	["cls.hunter.levelup.w06.001"] = {
+		"My breathing settles faster now before a shot. That's not nothing; at range, that's everything.",
+		"The aim holds a heartbeat longer than it used to. A heartbeat is a long time, out there.",
+	},
+	["cls.hunter.levelup.w06.002"] = {
+		"A little sharper than before. The quarry hasn't heard the news yet.",
+		"Keener than an hour ago. Spread the word. Actually, don't.",
+	},
+	["cls.hunter.levelup.w06.003"] = {
+		"draws a slow breath and sights down the weapon at a distant point, holding the aim a little longer than before, just to feel it.",
+		"narrows {g:his|her} eyes at something far off, as if the distance had come a few paces closer.",
+	},
+	["cls.hunter.lowhp.w06.001"] = {
+		"If it stays this close, I can't shoot. Strike, step, strike. Anything for room.",
+		"Too close is no place for me. Make room, or make peace.",
+		"The worst place a hunter can be: in reach, out of range.",
+	},
+	["cls.hunter.lowhp.w06.002"] = {
+		"Time to play dead. I've been practicing the face.",
+		"If I drop, don't believe it. Not right away, anyway.",
+		"Down I go, very convincingly. Let's hope it's only acting.",
+	},
+	["cls.hunter.lowhp.w06.003"] = {
+		"Fall, go limp, stop breathing. Let it lose interest. It's an old trick because it works.",
+		"Lie still and let it think it won. Then get up and prove it wrong.",
+		"Drop, and be nothing for a moment. The foe moves on; the hunter gets up.",
+	},
+	["cls.hunter.lowhp.w06.004"] = {
+		"backpedals with blood on {g:his|her} sleeve, still firing, every step back paid for with a shot.",
+		"gives ground a pace at a time, wounded but still choosing where each foot lands.",
+		"retreats in short, stubborn steps, bleeding, the weapon never once dropping below the foe's chest.",
+	},
+	["cls.hunter.lowhp.w06.005"] = {
+		"Get it off me! Now, now!",
+		"On it, on it! Pull it away from me!",
+		"Help me here! Sink your teeth in, quickly!",
+	},
+	["cls.hunter.lowhp.w06.006"] = {
+		"If I fall, it fights on without me. Hold on. Hold on, if only for that.",
+		"We're both taking a beating. One of us has to think of something, and it won't be the one with the teeth.",
+	},
+	["cls.hunter.lowhp.w06.007"] = {
+		"Monkey's aspect, quickly. Let it swing at air for a while.",
+		"Duck, weave, dodge. The monkey knows this game better than I do.",
+		"Time to be slippery. Whatever it swings at, let it be where I was.",
+	},
+	["cls.hunter.lowhp.w06.008"] = {
+		"My aim's going. Whatever's left in the pouch has to count.",
+		"Hands shaking now. Fewer shots, then, but better ones.",
+		"Blurred edges on everything. Pick the biggest shape and trust it.",
+	},
+	["cls.hunter.lowhp.w06.009"] = {
+		"You've hurt me. Now I've got nothing left to be careful with.",
+		"Fine. You drew blood. Now watch what a cornered hunter does.",
+		"Wounded and cornered. You've no idea what you've woken up.",
+	},
+	["cls.hunter.lowhp.w06.010"] = {
+		"grits {g:his|her} teeth until the aim stops shaking, and fires anyway.",
+		"blinks hard to clear {g:his|her} sight, draws one long breath, and puts the next shot exactly where it belongs.",
+		"sways, finds {g:his|her} feet, and lines up the shot as calmly as if nothing hurt at all.",
+	},
+	["cls.hunter.lowhp.w06.011"] = {
+		"Running won't work. The cheetah gives way the moment I'm struck. Fight it out.",
+		"No outrunning this one. One blow and the cheetah's speed is gone. Stand and shoot.",
+	},
+	["cls.hunter.lowhp.w06.012"] = {
+		"Not yet. I've still got ammunition, and that means I've still got a say.",
+		"While there's a shot left in the pouch, this isn't over.",
+		"Hurt, yes. Out of ammunition? Not yet. Your problem, then.",
+	},
+	["cls.hunter.lowhp.w06.013"] = {
+		"I'm badly hurt here! Someone pull it off me, I can't shoot it this close!",
+		"Help! It's on me and I'm in no shape for close work!",
+	},
+	["cls.hunter.lowhp.w06.014"] = {
+		"drops low and scrambles sideways, trying to put something, anything, between {g:himself|herself} and the foe.",
+		"lurches back out of reach, bleeding and breathing hard, eyes hunting for open ground.",
+		"stumbles clear, one hand pressed to the wound, already measuring the distance back to a decent shot.",
+	},
+	["cls.hunter.lowhp.w06.015"] = {
+		"Right. That's quite enough of being hit.",
+		"I've had my share of your blows. Here's the rest of my ammunition.",
+		"Enough. I came here to do the hunting, not to be the trophy.",
+	},
+	["cls.hunter.muse.w06.001"] = {
+		"The quarry chooses the moment. All I choose is to still be there when it comes.",
+		"Waiting is most of the trade. The shot is the short part at the end, the bit people tell stories about.",
+		"Anyone can take a shot. Staying put through the hour before it is what makes the shot worth taking.",
+	},
+	["cls.hunter.muse.w06.002"] = {
+		"The shot is decided long before it leaves. The last part is only letting go of what I already know.",
+		"By the time my finger moves, the shot is already finished in my head. The rest is the world catching up.",
+		"Aim is a question, and the hand answers it. When the answer is right, I feel it before I see it.",
+	},
+	["cls.hunter.muse.w06.003"] = {
+		"Even under a roof I catch myself checking which way the air moves. The habit long outlived any need for it.",
+		"In a tavern, in a bank queue, wherever: some part of me is still working out who's downwind of whom.",
+		"I could be sitting at a feast and I'd still know where the draft comes from. Nobody else at the table cares.",
+	},
+	["cls.hunter.muse.w06.004"] = {
+		"I sleep the way the wild does: deep enough to rest, never so deep that a snapped twig goes unheard.",
+		"One ear stays awake when the rest of me sleeps. I don't remember teaching it that.",
+	},
+	["cls.hunter.muse.w06.005"] = {
+		"The fingers that do the shooting have gone hard as horn. I can't feel a fine cloth with them anymore, and I don't miss it.",
+		"Calluses where the weapon rests, calluses where it kicks or pulls. My hands keep a record of every hour of practice.",
+		"Soft hands never hit anything. Mine gave up being soft a long way back, and they've been more use since.",
+	},
+	["cls.hunter.muse.w06.006"] = {
+		"Most of hunting is staying still while every part of you begs to move. The body never quite agrees; it only gives in.",
+		"Hold. Hold a little longer. The hard thing was never the aim. It was the waiting with an itch on my nose.",
+		"Stillness is a muscle. Mine aches by the end of a good stalk, and that's how I know it worked.",
+	},
+	["cls.hunter.muse.w06.007"] = {
+		"A hit tells me I was right or lucky, and never which. A miss tells me exactly what I got wrong.",
+		"I learn nothing from the shots that land. The ones that go wide are the real teachers, and they're never gentle.",
+	},
+	["cls.hunter.muse.w06.008"] = {
+		"I read my own trail as often as anyone else's. Whatever follows me is reading it too.",
+		"Every step I take writes something on the ground. I try to write as little as I can, and nothing worth reading.",
+		"The ground keeps a diary of everyone who crosses it. I'd rather my page stayed nearly blank.",
+	},
+	["cls.hunter.muse.w06.009"] = {
+		"Meat I brought down myself tastes of the whole day it cost: the stalk, the cold, the waiting. Bought meat tastes of nothing.",
+		"A plain cut I tracked, took and carried myself beats any dish from a kitchen. The difference is the hours in it.",
+	},
+	["cls.hunter.muse.w06.010"] = {
+		"Never stand upwind of what you're hunting. Your smell walks ahead of you and announces you.",
+		"Mind where the air comes from before you settle anywhere. Every nose for a mile around can read you.",
+		"First thing on any hunt: find out where the wind is going. Then go somewhere else.",
+	},
+	["cls.hunter.muse.w06.011"] = {
+		"I watch people's feet before their faces. Faces lie. Feet point where they mean to go.",
+		"Feet first, then hands, then the face. Most people read each other the wrong way round.",
+		"A smile tells me what someone wants me to think. Their weight, and which foot carries it, tells me what they'll do.",
+	},
+	["cls.hunter.muse.w06.012"] = {
+		"I can't look at anything without finding where it's weakest: a fence, a door, the way someone stands. It's a hard habit to set down.",
+		"Every creature I see, I see the opening first. Even the friendly ones. Some days, especially the friendly ones.",
+	},
+	["cls.hunter.muse.w06.013"] = {
+		"Give me a roof and four walls for more than a day and I start pacing like something in a cage.",
+		"Towns are fine for a stopover. By the second day I'm counting the doors and eyeing the road out.",
+		"Walls are useful. They keep the weather off and the world out, and that second part is exactly my complaint.",
+	},
+	["cls.hunter.muse.w06.014"] = {
+		"Two hunters can share a whole day and ten words, and both will call it good company.",
+		"Among my own trade, silence isn't rudeness. It's the highest sort of manners.",
+		"Hunters greet each other with a nod across a clearing, and that nod holds a whole conversation.",
+	},
+	["cls.hunter.muse.w06.015"] = {
+		"Hunger makes you shoot early. Eat first, then hunt: the oldest advice in the trade, and the most ignored.",
+		"An empty belly has no patience, and patience is the whole job. So I eat, even when I'd rather be moving.",
+		"I've watched a growling stomach wreck a perfect stalk. Mine stays fed, whatever else goes short.",
+	},
+	["cls.hunter.muse.w06.016"] = {
+		"From far off it's only a mark, a shape to put a shot through. It's walking up afterward that turns it back into a life.",
+		"Distance makes it easy. Then I walk the distance, and it isn't easy anymore.",
+		"At range there's no face, only the mark. The face is waiting for me at the end of the walk, every time.",
+	},
+	["cls.hunter.muse.w06.017"] = {
+		"There's quarry I never caught. I think of it more fondly than of anything I did bring down.",
+		"Some trails went cold on me and stayed cold. I like to think whatever left them is still out there, getting older and wiser.",
+		"The ones that slipped away are the only ones I talk about. Something in me is glad they did.",
+	},
+	["cls.hunter.muse.w06.018"] = {
+		"Before I aim, I mind my feet. A shot is only as steady as the ground under my heel.",
+		"Bad footing ruins more shots than bad eyes. I settle my stance first, and the aim follows.",
+	},
+	["cls.hunter.muse.w06.019"] = {
+		"A good trap is patience I leave behind me, doing the waiting while I'm elsewhere.",
+		"I like traps. They're the only part of me that can be in two places at once.",
+		"Set it, hide it, walk away. A trap is the one hunting partner that never gets bored.",
+	},
+	["cls.hunter.muse.w06.020"] = {
+		"Lying flat and letting them think me dead. The wild taught that trick long ago; my pride took a while longer to learn it.",
+		"Playing dead is the oldest escape there is. It costs nothing but dignity, and dignity heals faster than a wound.",
+	},
+	["cls.hunter.muse.w06.021"] = {
+		"Sometimes I send my sight far past where my feet could go. The world doesn't get smaller that way. Only quieter.",
+		"Seeing a long way off is a strange gift. Everything out there is sharp and close, and none of it knows I'm looking.",
+	},
+	["cls.hunter.muse.w06.022"] = {
+		"Everybody's a fine hunter right up until the quarry turns around.",
+		"Easy to talk about the hunt. Less easy when the hunt starts looking back at you.",
+		"Funny how brave people get about hunting when nothing's looking back at them.",
+	},
+	["cls.hunter.muse.w06.023"] = {
+		"The ammunition seller knows me by name now. I can't decide if that's friendship or a warning.",
+		"Every merchant who sells shot greets me like an old friend. I wonder why.",
+		"I'm the one customer the ammunition merchant always waves off with a big smile. Make of that what you will.",
+	},
+	["cls.hunter.muse.w06.024"] = {
+		"Bow or gun, gun or bow. Hunters argue about it for hours, and the quarry never once had an opinion.",
+		"People ask what's better, string or powder. Whichever you know best, I tell them. Nobody likes that answer.",
+		"String folk and powder folk will never agree. Meanwhile, the quarry gets on with its day.",
+	},
+	["cls.hunter.muse.w06.025"] = {
+		"My knees remember every hour I've spent crouched behind a rock. They bring it up whenever I stand.",
+		"Half this trade is crouching. The other half is standing up again afterward, slowly, with noises.",
+	},
+	["cls.hunter.muse.w06.026"] = {
+		"Scented soap is for people who want to be found. I wash with plain water and smell of nothing much, which is the point.",
+		"Perfume, pipe smoke, fresh leather: anything with a smell stays behind when I go after something with a nose.",
+		"The wild can smell a town on you for days. I try to scrub it off before I go looking for anything shy.",
+	},
+	["cls.hunter.muse.w06.027"] = {
+		"I don't get lost. I get briefly uncertain, and then a stream or a slope puts me right.",
+		"Lost is a strong word. I simply take the long way round while the land explains itself.",
+		"I've never once been lost. I have, now and then, been very thoroughly somewhere unexpected.",
+	},
+	["cls.hunter.muse.w06.028"] = {
+		"A wounded creature that gets away haunts a hunter longer than any fight. It was owed a clean end.",
+		"The shot that only wounds is the one a hunter carries. Something suffers, out there, because a hand wasn't steady.",
+	},
+	["cls.hunter.muse.w06.029"] = {
+		"I keep the year by what the animals are doing: shedding, pairing, fattening, hiding. The calendar on the wall is someone else's.",
+		"Townsfolk count days. I count seasons by the wild: when the young appear, when the herds move, when everything starts eating as if winter were coming.",
+		"A season changes in the animals before it changes in the air. They know first; I learn from them.",
+	},
+	["cls.hunter.muse.w06.030"] = {
+		"Find the water and you've found everything that lives. Every trail in the wild bends toward it sooner or later.",
+		"Water first. Whatever I'm after has to drink, and it will, and I'll be there.",
+	},
+	["cls.hunter.muse.w06.031"] = {
+		"Every creature has a place where it feels safe. Find that and you understand it. People are no different.",
+		"Learn where something goes when it's frightened, and you'll know more about it than it knows itself.",
+		"Ask where a creature runs when it's scared and you've asked the only question that matters about it.",
+	},
+	["cls.hunter.muse.w06.032"] = {
+		"Someday something out there will be quicker than me, or smarter, or just luckier. I hope it's clean about it. I always tried to be.",
+		"Every hunter ends as somebody's quarry, if only the years'. I'd like to go the way I hunted: without fuss and without waste.",
+	},
+	["cls.hunter.muse.w06.033"] = {
+		"The moment it leaves me, the shot belongs to the world. Distance and luck get their say, and I just watch.",
+		"Once it's flying, nothing I want matters anymore. That's the honest part of the trade: you can't take it back.",
+		"A shot in the air is no longer mine. I've done my part, and now the world does its own.",
+	},
+	["cls.hunter.muse.w06.034"] = {
+		"My eye goes to movement first, then to color, then to shape. Most people do it backwards and see nothing until it's on them.",
+		"Stop looking for the thing. Look for whatever moves wrong. That's the first lesson, and I'm still learning it.",
+		"A shape can hide. A color can blend. Movement gives everything away, sooner or later, and my eye waits for it.",
+	},
+	["cls.hunter.muse.w06.035"] = {
+		"The wild doesn't owe me a thing. Every meal I take from it is a favor, and I try to remember to be grateful.",
+		"Nothing out there was put there for my sake. Whatever I take, I take from something that had its own plans for it.",
+	},
+	["cls.hunter.muse.w06.036"] = {
+		"It isn't the kill I go out for. It's the hour before, when the whole world shrinks to one patch of ground and one breath.",
+		"On a good stalk everything else falls away: debts, aches, plans. There's only the next step and the thing at the end of it.",
+		"Somewhere in a long stalk the world goes narrow and bright, and I am nothing but eyes and breath. I'd walk a long way for that.",
+	},
+	["cls.hunter.muse.w06.037"] = {
+		"The best hunters I've met were the quietest people in any room. The loud ones I only met once.",
+		"Talkers don't last in this trade. Whoever keeps their mouth shut keeps their ears open, and lives.",
+	},
+	["cls.hunter.muse.w06.038"] = {
+		"Want to see the wild? Sit down and stop talking. It'll come to you.",
+		"Stop chasing it. Stay quiet long enough and the wild walks right up to see what you are.",
+		"The wild isn't shy. It's only waiting for you to stop making a fuss.",
+	},
+	["cls.hunter.muse.w06.039"] = {
+		"Heavy feet are a bell around your neck. Every creature for a hundred paces hears you coming.",
+		"Walk as if the ground were asleep and you'd rather not wake it.",
+	},
+	["cls.hunter.muse.w06.040"] = {
+		"People ask if I miss town life out there. I ask which part: the smell or the noise.",
+		"Towns are fine places. They just have far too many people in them, all talking at once.",
+		"I like towns. I like them best from a hilltop, a long way off.",
+	},
+	["cls.hunter.muse.w06.041"] = {
+		"I can follow a trail for a whole day across bare rock, and I still can't find my other glove.",
+		"Give me a cold trail and I'll find the end of it. Give me my own pack and I'm hopeless.",
+	},
+	["cls.hunter.muse.w06.042"] = {
+		"Patience costs less than ammunition and lasts longer. Spend it first.",
+		"Before you waste a shot, waste a little time. Time's free, and it often does the job.",
+	},
+	["cls.hunter.muse.w06.043"] = {
+		"I don't hate what I hunt. Hate shakes the hand, and a shaking hand misses.",
+		"Anger is for people who fight up close. At range, only a cool head hits anything.",
+		"Keep your temper for the tavern. On a hunt it only spoils your aim.",
+	},
+	["cls.hunter.muse.w06.044"] = {
+		"checks the ammunition with a quick hand, weighs what's left, and seems to settle a sum in {g:his|her} head.",
+		"counts what remains of the ammunition by touch alone, without once looking down.",
+		"runs a thumb over the ammunition, frowns at some private reckoning, and lets it go.",
+	},
+	["cls.hunter.muse.w06.045"] = {
+		"crouches to study a patch of ground, touches it lightly, and rises with a small nod, as if it had answered a question.",
+		"drops to one knee, brushes a fingertip across the dirt, and frowns at whatever it says.",
+		"bends low over a scuff in the earth, reads it for a long moment, and straightens up without a word.",
+	},
+	["cls.hunter.muse.w06.046"] = {
+		"goes suddenly and completely still, listening, then lets the tension go as whatever it was passes.",
+		"holds up a hand for a silence nobody asked for, waits the length of a long breath, then lowers it again.",
+	},
+	["cls.hunter.muse.w06.047"] = {
+		"sniffs the air, frowns, and drifts a few steps sideways for no reason anyone else could name.",
+		"tests the air with a long sniff and quietly moves to stand on the other side of everyone.",
+	},
+	["cls.hunter.muse.w06.048"] = {
+		"checks the weapon from end to end with quick, habitual touches, the way someone else might pat their pockets.",
+		"sights along the weapon at nothing in particular, lowers it, and nods to {g:himself|herself}.",
+		"turns the weapon over in {g:his|her} hands, looking for a fault that isn't there, and seems glad not to find it.",
+	},
+	["cls.hunter.muse.w06.049"] = {
+		"reaches out without looking and finds the companion beast exactly where it ought to be.",
+		"glances at the companion beast the way one checks that a door is still bolted, and looks away again.",
+	},
+	["cls.hunter.muse.w06.050"] = {
+		"My companion hears trouble a long breath before I do. I've learned to watch it instead of the trees.",
+		"When the beast at my side goes still, I go still. It hasn't been wrong yet, which is more than I can say for me.",
+		"Its senses are better than mine in every way that matters. I bring the aim; it brings the warning.",
+	},
+	["cls.hunter.muse.w06.051"] = {
+		"The beast eats before I do. Not out of kindness: a well-fed companion guards my sleep, a hungry one guards its own stomach.",
+		"First share to the beast. People take it for sentiment. It's plain sense: it keeps watch while I rest.",
+	},
+	["cls.hunter.muse.w06.052"] = {
+		"My companion doesn't care what anyone in town thinks of me, what I owe, or what I've done. Only whether I come back.",
+		"To the beast I'm not a name or a reputation. I'm simply the one who comes back. That's a simpler thing to live up to.",
+	},
+	["cls.hunter.muse.w06.053"] = {
+		"Nothing keeps it with me but its own choice. Every day it stays, I take as an answer.",
+		"No chain, no cage. It could walk off whenever it liked, and it doesn't. I try to deserve that.",
+		"Taming was never breaking. It was two creatures deciding, warily, to walk the same way for a while.",
+	},
+	["cls.hunter.muse.w06.054"] = {
+		"It's not following me. We just agree on where we're going, most days.",
+		"Don't mind the beast. It's decided you're probably not a threat. Probably.",
+	},
+	["cls.hunter.muse.w06.055"] = {
+		"For food, for coin, for whoever asks. Never for the pleasure of it, I tell myself. Some days I'm less sure.",
+		"I'd like to say I hunt only from need. But there's a quickening at the start of a trail that has nothing to do with need.",
+	},
+	["cls.hunter.muse.w06.056"] = {
+		"Past the last fence and the last chimney, something in my chest unknots. I've never managed to explain it to anyone who lives inside walls.",
+		"There's a point on every road out of town where my shoulders drop. I couldn't tell you where it is. My shoulders always know.",
+		"Some people feel at home behind a locked door. Mine has no door; it starts where the road gives out.",
+	},
+	["cls.hunter.muse.w06.057"] = {
+		"Out in the wild I can tell a dozen sounds apart with my eyes closed. In a market, someone shouts my name and I miss it entirely.",
+		"I hear a twig shift at fifty paces. A friend calling me across a busy square, never.",
+	},
+	["cls.hunter.muse.w06.058"] = {
+		"Sharp edges, fresh. Crumbling edges, a day old. Water standing in the print, older still. The ground keeps better time than any clock.",
+		"A print tells you when as well as who. The sharper the rim, the closer the one who made it.",
+		"Leaves pressed into a print came after it; a print over the leaves came after them. The order of things is written right there.",
+	},
+	["cls.hunter.muse.w06.059"] = {
+		"When I feel watched I don't spin around; that's what quarry does. I think where I'd stand if I were the watcher, and look there.",
+		"Turning to look is the prey's mistake. I ask myself where the best vantage is, and that's where the eyes will be.",
+	},
+	["cls.hunter.muse.w06.060"] = {
+		"Before there were towns or kings or coin, there was someone crouched in the grass, waiting. I like belonging to something that came before everything else.",
+		"Every people of this world hunted before it did anything else. When I take up the weapon, I'm standing at the end of a very long line.",
+	},
+	["cls.hunter.muse.w06.061"] = {
+		"The trainers say to shoot between heartbeats. It sounds like a riddle until the day you feel the gap.",
+		"There's a small quiet between one heartbeat and the next. That's where the shot goes.",
+	},
+	["cls.hunter.muse.w06.062"] = {
+		"I have more respect for the predators out there than for most people with weapons. They take what they need and stop.",
+		"A predator never kills for the story it'll tell later. I try to remember that when I'm tempted to boast.",
+		"The wild's hunters don't waste and don't brag. On my good days I manage one of the two.",
+	},
+	["cls.hunter.muse.w06.063"] = {
+		"When I leave a place I try to leave it as I found it. The next one to pass should have to look hard to know I was there.",
+		"Bury the ashes, scatter the bedding, smooth the ground. A camp should vanish behind me like a held breath let go.",
+	},
+	["cls.hunter.muse.w06.064"] = {
+		"Standing at the back of a fight teaches you people. You see who flinches, who charges, and who keeps glancing round to check on the others.",
+		"From my place in a scrap, behind everyone, I learn more about the people in front of me than they'd ever tell me.",
+		"Whoever fights up front sees the enemy. Whoever shoots from behind sees everybody.",
+	},
+	["cls.hunter.muse.w06.065"] = {
+		"I keep no trophies. What was worth remembering, I remember, and the rest would only gather dust on a wall.",
+		"Some hunters hang heads on walls. I'd rather carry the day itself around with me, and it weighs nothing.",
+		"A trophy only proves that it went well once. The skill doesn't hang on a wall.",
+	},
+	["cls.hunter.muse.w06.066"] = {
+		"picks a spiny seed off {g:his|her} sleeve, studies it, and glances off in the direction it must have come from.",
+		"notices a smear of mud on {g:his|her} boot, frowns at it as if it had told an interesting lie, and scrapes it off.",
+	},
+	["cls.hunter.muse.w06.067"] = {
+		"picks a spot with something solid at {g:his|her} back and a clear view ahead before settling, out of a habit older than thought.",
+		"takes in every way into and out of the place with one unhurried glance.",
+		"shifts a pace to the left for a better line of sight, and only then seems able to relax.",
+	},
+	["cls.hunter.muse.w06.068"] = {
+		"I measure everything in paces without meaning to: a hall, a market, the distance to the nearest cover.",
+		"Thirty paces, forty, sixty. My head turns every room and road into a range, whether I ask it to or not.",
+	},
+	["cls.hunter.muse.w06.069"] = {
+		"However quietly a shot is taken, the world hears it. Everything for a long way around goes still afterward, and remembers.",
+		"One shot and the whole hillside learns there's a hunter on it. That's the real cost of a miss: not the ammunition, the warning.",
+	},
+	["cls.hunter.muse.w06.070"] = {
+		"Even idle, I'm picking targets: a knot in a post, a sign over a door, a pebble on a wall. In my head they've all been hit a hundred times.",
+		"My eyes keep practicing while my hands are busy with something else. Every mark I pass, I've already taken.",
+	},
+	["cls.hunter.muse.w06.071"] = {
+		"Anyone walking with me learns the rules fast. No humming, no rattling, and no asking if we're nearly there.",
+		"Company's welcome. Noise isn't. Those are the only terms.",
+	},
+	["cls.hunter.muse.w06.072"] = {
+		"Weapon oil, waxed cord, the faint bite of powder: those smells settle me the way a hearth settles other people.",
+		"Some people unwind with a pipe or a song. I sit and tend my weapon, and the smell of the oil does the rest.",
+	},
+	["cls.hunter.muse.w06.073"] = {
+		"Hunters go out and some don't come back. Nobody makes songs about it. The wild has no use for songs.",
+		"A trail goes out, and sometimes no one walks it home. The wild keeps what it takes and tells no one.",
+	},
+	["cls.hunter.muse.w06.074"] = {
+		"I can make ready in the dark, by feel alone. I practiced until my hands stopped needing my eyes.",
+		"Loading or nocking, it's all in the fingers now. My eyes stay free for the only thing that matters: where the shot will go.",
+		"Hands that need watching are slow hands. Mine learned to work on their own, so my eyes can stay on the quarry.",
+	},
+	["cls.hunter.pet_bond.w06.001"] = {
+		"{pet} has learned my step from everyone else's. I've only just noticed, and it pleases me more than it should.",
+		"{pet} waits at the fork now to see which way I'll take. A small thing. Not small.",
+		"We have habits now, {pet} and I. Habits are where a bond starts.",
+	},
+	["cls.hunter.pet_call.w06.001"] = {
+		"{pet} arrives at a trot and bumps my hand. Fine, fine, I'm glad too.",
+		"{pet} is here, and the day already looks less like work.",
+	},
+	["cls.hunter.pet_call.w06.002"] = {
+		"Two of us again. The count I prefer.",
+		"{pet} beside me, and the odds look kinder.",
+	},
+	["cls.hunter.pet_call.w06.003"] = {
+		"{pet} checks the air, checks the ground, checks my pockets. In that order, at least.",
+		"{pet} arrives and goes straight for my belt pouch, looking for something to chew. Priorities.",
+	},
+	["cls.hunter.pet_call.w06.004"] = {
+		"With {pet} out, I have eyes behind me. That changes how I walk.",
+		"{pet} takes the ground up close. I take the distance. That's how we work.",
+	},
+	["cls.hunter.pet_call.w06.005"] = {
+		"With no one around, I talk to myself. With {pet} here, at least someone pretends to listen.",
+		"The silence had gone on long enough. {pet} breaks it just by breathing beside me.",
+	},
+	["cls.hunter.pet_call.w06.006"] = {
+		"{pet} still flinches when I move too fast. We'll get there.",
+		"{pet} keeps a careful step away from me. Trust is a trail, not a door.",
+	},
+	["cls.hunter.pet_call.w06.007"] = {
+		"{pet} has started choosing the same side of me every time. The left. I've stopped arguing.",
+		"{pet} answers the call now, nearly always. Nearly is a good word for where we are.",
+	},
+	["cls.hunter.pet_call.w06.008"] = {
+		"I don't need to look to know where {pet} is. I hear the steps, and they're the right ones.",
+		"{pet} and I have hunted enough to share the pauses as well as the chases.",
+	},
+	["cls.hunter.pet_call.w06.009"] = {
+		"{pet}. I'd know that weight against my knee with my eyes shut.",
+		"Together again. Whatever the road was without {pet}, it was only half a road.",
+	},
+	["cls.hunter.pet_call.w06.010"] = {
+		"{pet} drags itself over like a hired hand who hasn't been paid. Fair. I'll fix that.",
+		"{pet} sits down at a distance and waits for me to make amends.",
+	},
+	["cls.hunter.pet_call.w06.011"] = {
+		"{pet} bounds in so pleased with itself that I wonder what it got up to while it was away.",
+		"{pet} has energy to spare today. I'll try not to fall behind.",
+	},
+	["cls.hunter.pet_call.w06.012"] = {
+		"Hunter and beast, the oldest partnership there is. {pet} seems to know it better than any book.",
+		"Before there were cities, there was this: someone with a weapon and an animal at their side. {pet} and I keep the custom.",
+	},
+	["cls.hunter.pet_call.w06.013"] = {
+		"{pet} stretches, yawns, and makes it very clear it was in the middle of something.",
+		"I interrupt whatever beasts do when I'm not looking, and {pet} forgives me. Mostly.",
+	},
+	["cls.hunter.pet_call.w06.014"] = {
+		"My job is to keep {pet} fed and whole. Its job is everything else. I think I got the easy half.",
+		"{pet} is my responsibility as much as the weapon I carry. More, some days.",
+	},
+	["cls.hunter.pet_call.w06.015"] = {
+		"Somehow {pet} always arrives looking as if it were the one who called me.",
+		"{pet} makes an entrance. I only opened the door.",
+	},
+	["cls.hunter.pet_call.w06.016"] = {
+		"The rest is over and {pet} is here. It has done its part; now for mine.",
+		"{pet} ready, me ready. The rest is just walking.",
+	},
+	["cls.hunter.pet_call.w06.017"] = {
+		"Stay close, {pet}. Wander off and I'll come find you, and neither of us will enjoy it.",
+		"Heel, {pet}. We do this together or not at all.",
+	},
+	["cls.hunter.pet_dismiss.w06.001"] = {
+		"Go and do whatever you do, {pet}. Chase something small for me.",
+		"Take the time off, {pet}. You've earned a stretch without me.",
+	},
+	["cls.hunter.pet_dismiss.w06.002"] = {
+		"Without {pet}, the sounds around me rearrange themselves. I'm the loudest thing nearby again.",
+		"One set of footsteps now. My ears take a while to believe it.",
+	},
+	["cls.hunter.pet_dismiss.w06.003"] = {
+		"{pet} goes. Both eyes open now: no one is watching my back but me.",
+		"Back to doing the listening myself. {pet} made it easy to forget how.",
+	},
+	["cls.hunter.pet_dismiss.w06.004"] = {
+		"{pet} leaves with dignity, which is more than I manage most days.",
+		"{pet} doesn't argue. A rare quality in any companion.",
+	},
+	["cls.hunter.pet_dismiss.w06.005"] = {
+		"Off you go, {pet}. Next time we'll know each other a little better.",
+		"Rest, {pet}. We're still strangers, but less than before.",
+	},
+	["cls.hunter.pet_dismiss.w06.006"] = {
+		"I let {pet} go, and my hand reaches for its head anyway, out of habit.",
+		"Odd, how quickly I start missing {pet}. A few steps, and there it is.",
+	},
+	["cls.hunter.pet_dismiss.w06.007"] = {
+		"Rest up, {pet}. The next fight is coming whether we like it or not.",
+		"Go lick your wounds, {pet}, if you've got any. I'll see to mine.",
+	},
+	["cls.hunter.pet_grief.w06.001"] = {
+		"I keep my hand on {pet} longer than there's any reason to.",
+		"{pet} fought for me to the end. I'll carry that, with the rest.",
+		"Easy, {pet}. I'm here.",
+	},
+	["cls.hunter.pet_grief.w06.002"] = {
+		"Between me and the blow there was {pet}. It always chose that place, and it chose it again.",
+		"The hunter's oldest debt: the beast that takes the hurt meant for its keeper. I owe you, {pet}.",
+	},
+	["cls.hunter.pet_mood.w06.001"] = {
+		"{pet} is practically prancing. Whatever I did right, I'd like to remember it.",
+		"There's a spring in the step of {pet}. Good food, good hunting: it doesn't take much.",
+	},
+	["cls.hunter.pet_mood.w06.002"] = {
+		"{pet} is neither hungry nor fussing. That's the mood I like best on a long road.",
+		"A calm has come over {pet}. Good: that's a beast that trusts its next meal.",
+	},
+	["cls.hunter.pet_mood.w06.003"] = {
+		"{pet} won't meet my eye. I've let things slide, and it has every right to sulk.",
+		"A sour look from {pet}. Feed first, hunt later; the order matters.",
+	},
+	["cls.hunter.pet_mood.w06.004"] = {
+		"{pet} growls at me, or does whatever counts as growling for its kind. Message received.",
+		"If {pet} could file a complaint, I'd be reading it now.",
+	},
+	["cls.hunter.pet_mood.w06.005"] = {
+		"{pet} looks well. That's my work too, and I'm quietly proud of it.",
+		"A happy beast hunts better. {pet} is about to prove it.",
+	},
+	["cls.hunter.pray.w06.001"] = {
+		"Whatever watches over the wild: keep my aim true and my hunger honest, and let nothing I take go to waste.",
+		"Spirits of the wild, or whatever answers to that name: a clean shot when it matters, and the sense to hold it when it doesn't.",
+	},
+	["cls.hunter.quest_complete.w06.001"] = {
+		"That's settled. Now, where's the nearest place that sells ammunition?",
+		"Whatever this brings in goes straight to ammunition, same as always.",
+		"Good. That should keep me in ammunition a little longer.",
+	},
+	["cls.hunter.quest_complete.w06.002"] = {
+		"Thanks, a nod, and then the open road again. It's the road I was waiting for.",
+		"Grateful faces are nice. The open ground afterward is nicer.",
+		"Kind words, and I mean to keep them. But my eyes are already on the way out to the wild.",
+	},
+	["cls.hunter.quest_complete.w06.003"] = {
+		"They never ask how long I waited. Just whether it's done. That's fair; the waiting was my part.",
+		"Nobody wants to hear about the hours of patience behind it. They want the result, and now they have it.",
+		"The result is what they see. The patience behind it stays with me, where it belongs.",
+	},
+	["cls.hunter.quest_complete.w06.004"] = {
+		"listens politely to the thanks, but one ear stays pricked toward the world outside.",
+		"stows the reward with the care of someone who knows exactly what it will be spent on.",
+		"rolls {g:his|her} shoulders like someone setting down a weight that was never on the back.",
+	},
+	["cls.hunter.quest_complete.w06.005"] = {
+		"Easier than tracking, this part. The people who ask are a lot easier to find.",
+		"Handed in. Next time, give me something with a bit more running in it.",
+		"That one never even tried to get away. I almost miss the chase.",
+	},
+	["cls.hunter.quest_complete.w06.006"] = {
+		"That's one less person waiting on me. I travel lighter owing nothing.",
+		"One more thing off my mind. A clear head shoots straighter.",
+		"Nothing left hanging. Loose ends snag on everything, out on the trail.",
+	},
+	["cls.hunter.quest_complete.w06.007"] = {
+		"My companion waited through all of it without a single complaint. Better behaved than I was.",
+		"The beast is already looking toward the road. On this, as on most things, we agree.",
+		"The job's over, and the beast knows it before I say a word. It always does.",
+	},
+	["cls.hunter.quest_complete.w06.008"] = {
+		"People reward me for doing what the wild does every day for free: find, follow, finish. Strange world.",
+		"In the wild nobody hands out rewards for a job done well. Here, somebody does. I'll never quite get used to it.",
+	},
+	["cls.hunter.quest_complete.w06.009"] = {
+		"There. Next time you need something found, you know who to ask.",
+		"That's taken care of, then. If anything else needs tracking down, I'm not hard to find.",
+		"Anything else gone missing, send for me. Finding things is what I do.",
+	},
+	["cls.hunter.quest_complete.w06.010"] = {
+		"Every task teaches me the land a little better: a path I hadn't walked, a stream I hadn't seen. That's the part they don't pay for.",
+		"Whatever they wanted, I learned the ground on the way. That I keep, whatever becomes of the reward.",
+	},
+	["cls.hunter.quest_complete.w06.011"] = {
+		"Asked and answered. Point me at the next one.",
+		"That's that. If there's more to hunt, I'm listening.",
+		"Over and done. What else is out there?",
+	},
+	["cls.hunter.quest_complete.w06.012"] = {
+		"glances at {g:his|her} hands as if surprised they spent so long on something other than the weapon.",
+		"unclenches {g:his|her} jaw at last, as near to a sigh of relief as that face ever gets.",
+		"tugs a glove straight, finger by finger, the way some people close a book.",
+	},
+	["cls.hunter.quest_complete.w06.013"] = {
+		"Somebody's day is a little easier now. I won't see it, I'll be long gone, but it's a good thought to walk with.",
+		"Whatever it was, it mattered to someone. I don't need to understand why to know it was worth the walk.",
+		"Small things, mostly, these errands. But a small thing set right can let someone sleep.",
+	},
+	["cls.hunter.quest_complete.w06.014"] = {
+		"They always say it'll be simple. They're never the ones out there doing it.",
+		"'A simple job' is what everyone calls work they'd rather not do themselves.",
+		"Simple, they called it. Everything's simple from behind a counter.",
+	},
+	["cls.hunter.quest_complete.w06.015"] = {
+		"Promise made, promise kept. The wild doesn't care about either, but I do.",
+		"I said I would, and I did. That's most of what I have to offer anyone.",
+		"My word went out ahead of me, and now I've caught up with it. A good feeling, that.",
+	},
+	["cls.hunter.quest_complete.w06.016"] = {
+		"Good. Now if you'll excuse me, the wild doesn't wait, and neither do I.",
+		"Lovely. Don't take it personally if I leave rather quickly.",
+		"Glad to help. Now I'll go back to being hard to find, if that's all right.",
+	},
+	["cls.hunter.quest_complete.w06.017"] = {
+		"Another task finished, another bit of trust earned. Trust is worth more than any reward they put in my hand.",
+		"They'll know my face now. In this world, that opens more doors than coin does.",
+	},
+	["cls.hunter.quest_complete.w06.018"] = {
+		"rests a hand on the companion beast for a moment, sharing the end of the job the only way it understands.",
+		"trades a look with the companion beast that says, plainly, 'let's go'.",
+	},
+	["cls.hunter.quest_complete.w06.019"] = {
+		"My legs know better than I do how far this one took me. They'll be telling me about it for a while.",
+		"However long it took, my feet kept count. Time to rest them, and then more road.",
+		"That one cost me some boot leather. Worth it, I suppose. My heels may disagree.",
+	},
+	["cls.hunter.quest_complete.w06.020"] = {
+		"Good. That earns me a proper meal and a rest. Well, a meal.",
+		"That'll do nicely. Something hot to eat, somewhere dry to sleep, and I'm off again.",
+	},
+	["cls.hunter.quest_complete.w06.021"] = {
+		"Whoever asked will forget my name by next season. The ground I crossed won't remember me either. That suits me.",
+		"Nobody will tell this one by the fire. Most of the work worth doing goes unsung.",
+		"No songs for errands like this. Just a job done and a hunter walking off. I've made my peace with that.",
+	},
+	["cls.hunter.quest_complete.w06.022"] = {
+		"accepts the thanks with patience, the same patience {g:he|she} would spend waiting by a waterhole.",
+		"is already tightening a strap and settling the weapon on {g:his|her} back before the last word of thanks is out.",
+	},
+	["cls.hunter.quest_complete.w06.023"] = {
+		"I don't need the praise. I need to know it's really finished, and it is. That's enough.",
+		"No loose threads. A hunt left half-done follows you around; this one won't.",
+	},
+	["cls.hunter.quest_progress.w06.001"] = {
+		"Part of it. The rest is out there somewhere, leaving signs for anyone who bothers to look.",
+		"Not all of it yet. Fine; the trail hasn't gone cold.",
+		"One piece found. Whatever's left can't be far; things that belong together rarely are.",
+	},
+	["cls.hunter.quest_progress.w06.002"] = {
+		"makes a small mark of progress in {g:his|her} head and turns back to the search without a pause.",
+		"nods to {g:himself|herself}, counts what's still missing, and carries on.",
+	},
+	["cls.hunter.quest_progress.w06.003"] = {
+		"That's everything. Now the easy part: walking back without tripping over my own pride.",
+		"All of it, at last. The way back is a trail I already know.",
+		"Complete. Time to carry it to whoever's waiting.",
+	},
+	["cls.hunter.quest_progress.w06.004"] = {
+		"Halfway, or near enough. Patience. I've waited longer for less.",
+		"Some of it. The rest is hiding. It won't hide forever.",
+	},
+	["cls.hunter.reputation_change.w06.001"] = {
+		"They're starting to trust me. Like a wary animal, trust creeps closer in small, careful steps.",
+		"They greet me a shade warmer now. Earning the trust of shy creatures is half my trade; people aren't so different.",
+		"They've stopped watching me sideways. Patience works on people too, given long enough.",
+	},
+	["cls.hunter.rez.w06.001"] = {
+		"The wild didn't pause for my death, not for a moment. It never does. Time I caught up with it.",
+		"Cold to the bone and stiff as old leather. Whatever put me down will be surprised to see me. Good.",
+	},
+	["cls.hunter.rezother.w06.001"] = {
+		"Up. On your feet. You don't get to leave before me.",
+		"Come on, get up. I'm not done walking with you.",
+		"Back from the dark, then. Shake it off, we've got ground to cover.",
+	},
+	["cls.hunter.rezother.w06.002"] = {
+		"My hand on the still flank until I feel a stir. Only then do I let myself breathe.",
+		"It moves under my hand, and the knot in my chest comes loose.",
+	},
+	["cls.hunter.thanks.w06.001"] = {
+		"Thank you. I'll repay it the way I know how: with a good shot when you need one.",
+		"My thanks. If anything ever stalks you, send for me. Hunting the hunters is something I'm good at.",
+	},
+	["cls.hunter.thanks.w06.002"] = {
+		"Thanks. I'm better with beasts than with words, so that'll have to do.",
+		"Much obliged. That's most of the talking I'll manage today.",
+	},
+	["cls.hunter.threat.w06.001"] = {
+		"Walk away. I can hit you long before you can reach me, and I won't miss twice.",
+		"Every step closer is one more chance for me to stop you. You'll run out of steps.",
+		"Turn back the way you came. My aim reaches further than you'd think.",
+	},
+	["cls.hunter.threat.w06.002"] = {
+		"I've tracked bigger and meaner than you. Don't make me add you to the list.",
+		"I know how to follow a trail for days. Think about that before you start something.",
+		"Run, and I'll follow your tracks. Hide, and I'll read where you went to ground.",
+	},
+	["cls.hunter.threat.w06.003"] = {
+		"One more word, and I stop holding my companion back.",
+		"My friend here has been patient. I'm not sure how much longer that will last.",
+	},
+	["cls.hunter.threat.w06.004"] = {
+		"You'd make a lovely target. Don't take that as a compliment.",
+		"From here you're just about the size of a good shot. Just saying.",
+		"You're standing exactly where I'd want you. Maybe move?",
+	},
+	["cls.hunter.threat.w06.005"] = {
+		"readies a shot without once breaking eye contact.",
+		"lets the weapon rise an inch, no more, and waits to see whether that is enough.",
+	},
+	["cls.hunter.victory.w06.001"] = {
+		"runs a thumb over the ammunition left, counting without seeming to.",
+		"checks how much ammunition remains, and pulls a face at the answer.",
+		"tallies the shots spent with a glance at the pouch, lips moving silently.",
+	},
+	["cls.hunter.victory.w06.002"] = {
+		"That one cost me more ammunition than it was worth.",
+		"Expensive, that. Next time I'll ask the price first.",
+		"There goes a handful of ammunition I'll never see again.",
+	},
+	["cls.hunter.victory.w06.003"] = {
+		"Each fight teaches me the distance a little better. That one had a lesson in it too.",
+		"There's a lesson about range hidden in that fight. I'll dig it out on the walk.",
+		"Range, timing, footing. I'll go over all three later, slowly, while it's still fresh.",
+	},
+	["cls.hunter.victory.w06.004"] = {
+		"Someone should have seen that last shot. Pity.",
+		"Clean through. I ought to be keeping a tally of these.",
+		"That last one was a beauty. I'd frame it if I could.",
+	},
+	["cls.hunter.victory.w06.005"] = {
+		"crouches where the foe fell and studies the marks left in the ground, as if reading a last letter.",
+		"kneels a moment by the fallen foe, reading the scuffs and prints of the fight as if they might teach something.",
+	},
+	["cls.hunter.victory.w06.006"] = {
+		"You'd have done better to run when you first saw me.",
+		"Running would've been smarter. I'd still have caught you, but smarter.",
+		"Next time, bolt the moment you spot me. It won't help, but it's better form.",
+	},
+	["cls.hunter.victory.w06.007"] = {
+		"There's a den or a nest somewhere this one won't go back to. I try not to think about it, and I do.",
+		"It had a range and a trail of its own, the same as me. Now there's one fewer out there.",
+	},
+	["cls.hunter.victory.w06.008"] = {
+		"Good animal. I'll see none of it goes to waste.",
+		"A fine creature. If there had been another way, I'd have taken it.",
+	},
+	["cls.hunter.victory.w06.009"] = {
+		"You fought the way you walk: loud and easy to read.",
+		"Heavy feet, loud breathing, wide swings. You were never going to surprise me.",
+	},
+	["cls.hunter.victory.w06.010"] = {
+		"drops a hand onto the companion's back for a moment, a silent word of thanks.",
+		"gives the beast a pat and a low word, and for a while they simply get their breath back together.",
+		"crouches to look the companion over for wounds before so much as glancing at the fallen foe.",
+	},
+	["cls.hunter.victory.w06.011"] = {
+		"You held that one perfectly. Half the shots were yours, really.",
+		"All right, show-off. Yes, you did very well.",
+		"You kept it off me the whole time. Don't think I didn't notice.",
+	},
+	["cls.hunter.victory.w06.012"] = {
+		"It took a few blows meant for me. Food for it first, then for me.",
+		"First thing: see how it's doing. It always takes the hits that were mine.",
+	},
+	["cls.hunter.victory.w06.013"] = {
+		"Your share's coming, don't look at me like that.",
+		"Yes, yes, you'll get fed. Let me catch my breath first.",
+	},
+	["cls.hunter.victory.w06.014"] = {
+		"Before anyone asks: no, I don't need every weapon that drops. Just most of them.",
+		"If it dropped something sharp, I'll only look. I swear it on my aim.",
+	},
+	["cls.hunter.victory.w06.015"] = {
+		"Good holding up front. All I had to do was not miss.",
+		"You kept it busy, I kept the shots coming. Fair split.",
+	},
+	["cls.hunter.victory.w06.016"] = {
+		"slings the weapon back into place with a practiced roll of the shoulder.",
+		"lets the weapon hang loose at {g:his|her} side and flexes the fingers that held it.",
+		"settles the weapon across {g:his|her} back and stretches until something in the shoulder pops.",
+	},
+	["cls.hunter.victory.w06.017"] = {
+		"My hands are steadier during the fight than after. Funny how that works.",
+		"Now the shaking comes. Never while aiming, always once it's done.",
+		"Steady as a post through every shot, and now my fingers won't keep still.",
+	},
+	["cls.hunter.victory.w06.018"] = {
+		"That's done. The next trail won't follow itself.",
+		"Done here. There's always another set of tracks.",
+		"Finished. Somewhere ahead, something else is leaving prints for me.",
+	},
+	["cls.hunter.victory.w06.019"] = {
+		"I hesitated once in there. Only once, but I felt it.",
+		"One shot came late. I know which one. Fix it before the next hunt.",
+		"My feet were wrong for a moment in the middle. A small thing. Small things get hunters killed.",
+	},
+	["cls.hunter.victory.w06.020"] = {
+		"That's what happens when you step into my sights.",
+		"Getting into my aim is easy. Getting out of it, never.",
+		"You wandered into my line of sight. That was the whole mistake.",
+	},
+	["cls.hunter.victory.w06.021"] = {
+		"wipes a sleeve across {g:his|her} brow and squints into the distance, already looking for the next sign.",
+		"draws the back of a wrist across {g:his|her} forehead and turns to look for tracks.",
+		"straightens up, rolls {g:his|her} neck once, and starts reading the ground for what comes next.",
+	},
+	["cls.hunter.victory.w06.022"] = {
+		"It's work. Good work, honest work. I tell myself that every time, and most times I believe it.",
+		"A hunter kills to eat, or to keep others safe. I'm fairly sure this was one of those.",
+		"Needful. That's the word I use. It sits better some days than others.",
+	},
+	["cls.hunter.victory.w06.023"] = {
+		"Not a scratch on me. Well. Not a big one.",
+		"I'll call that a good hunt. Nobody needs to hear about the near miss.",
+		"Clean work, if you don't count the bit where I nearly tripped.",
+	},
+	["cls.hunter.victory.w06.024"] = {
+		"The kill is the smallest part of a hunt. The waiting before and the quiet after are most of it.",
+		"Most of hunting is patience. The end comes quick, and then it's patience again.",
+		"A long wait, a short moment, a long quiet. Every hunt has the same shape.",
+	},
+	["cls.hunter.victory.w06.025"] = {
+		"Whatever's next, I'd like it at a civil distance. Forty paces would do.",
+		"Next time, a polite distance, please. That's all I ask of anything.",
+		"A fight at forty paces is a conversation. Any closer is just rude.",
+	},
+	["cls.hunter.victory.w06.026"] = {
+		"turns the weapon over in {g:his|her} hands, checking it for any harm the fight might have done.",
+		"runs a careful eye along the weapon, the way some people look a friend over for wounds.",
+		"sights down the weapon at nothing in particular, making sure it still shoots where it looks.",
+	},
+	["cls.hunter.victory.w06.027"] = {
+		"That was a big one. I'm allowed to be a little pleased.",
+		"Took its time falling, that one. Worth every shot.",
+	},
+	["cls.hunter.victory.w06.028"] = {
+		"It was stronger than me. Distance and patience made up the difference. Remember that.",
+		"By rights that one outmatched me. Rights count for little against a good line of fire.",
+	},
+	["cls.hunter.victory.w06.029"] = {
+		"Stay down this time. Whoever raised you can do their own hunting.",
+		"Back into the earth with you. It's where you belong.",
+	},
+	["cls.hunter.victory.w06.030"] = {
+		"Quick and clean. I owe that much to anything I hunt.",
+		"Never more pain than the hunt needs. That rule I don't bend.",
+		"Swift, and no crueler than it had to be. That's the only way I'll do this.",
+	},
+	["cls.hunter.victory.w06.031"] = {
+		"Nobody to tell. The wild saw it, and the wild doesn't gossip.",
+		"Only me to know how well that went. That's enough.",
+	},
+	["cls.hunter.victory.w06.032"] = {
+		"lifts {g:his|her} face to the air and breathes in slowly, reading what else might be close.",
+		"tests the air with a long breath, as if the next danger could be smelled before it was seen.",
+		"stands with nostrils flared a moment, sorting the smells the fight stirred up from the ones that were there before.",
+	},
+	["cls.hunter.victory.w06.033"] = {
+		"My heart's still racing. That's the part I'd never admit to enjoying.",
+		"Still buzzing all the way to the fingertips. A good hunt does that.",
+		"Every sense still wide open. It takes a while to close them again, and I'm in no hurry.",
+	},
+	["cls.hunter.victory.w06.034"] = {
+		"Down. Good. Now, which way was I going?",
+		"There. Back to the tracking.",
+		"Right. Where was I? Ah, yes. Following something.",
+	},
+	["cls.hunter.victory.w06.035"] = {
+		"Shoulders down. Jaw loose. It's over; let the body hear it.",
+		"Unclench. Every bit of me is still braced for the next shot.",
+		"I'm still holding my breath. Let it go. There.",
+	},
+	["cls.hunter.victory.w06.036"] = {
+		"I'd like to thank my weapon, my eye, and that one lucky shot.",
+		"Credit goes to steady hands and a forgiving target.",
+		"Honestly? Half skill, half the foe being terrible at dodging.",
+	},
+	["cls.mage.attack.w06.001"] = {
+		"Raw arcane. No flavor, all force.",
+		"Pure craft, nothing added.",
+		"Straight from the source.",
+	},
+	["cls.mage.attack.w06.002"] = {
+		"Let it catch. Fire knows the rest.",
+		"Lit. Now keep the pressure on.",
+	},
+	["cls.mage.attack.w06.003"] = {
+		"lets the cold gather in {g:his|her} palms until the air itself turns white, then releases it.",
+		"sends the cold out with a short, flat gesture, like closing a drawer.",
+	},
+	["cls.mage.attack.w06.004"] = {
+		"And another. I have a whole syllabus.",
+		"Next formula. Try to keep up.",
+		"Page two of the lesson.",
+	},
+	["cls.mage.attack.w06.005"] = {
+		"Cast, step, cast. Never stand where the last spell left me.",
+		"Mana spent, mana counted. On to the next.",
+	},
+	["cls.mage.battle.w06.001"] = {
+		"Robes, a book and a bad temper. You picked the wrong traveler.",
+		"Yes, it's only cloth. No, that won't help you as much as you think.",
+		"I know how this looks: a robe and no armor. Look again in a moment.",
+	},
+	["cls.mage.battle.w06.002"] = {
+		"Check the reserve. Whatever's in the well, a cool head makes it last.",
+		"Mana before anything. I can see the enemy; the reserve I have to feel.",
+		"A spell half-cast is mana thrown away. Finish what I start.",
+	},
+	["cls.mage.battle.w06.003"] = {
+		"Fire, I think. Today I'm in no mood for subtle.",
+		"Let's skip the delicate formulas. Today calls for something that burns.",
+		"Something with flame in it, I think. It suits my mood.",
+	},
+	["cls.mage.battle.w06.004"] = {
+		"Frost, I think. You have the look of something that should slow down.",
+		"I'll go cold on this one. Everything is easier to argue with when it moves slowly.",
+		"Cold, then. Let's take the hurry out of you.",
+	},
+	["cls.mage.battle.w06.005"] = {
+		"No fire, no frost this time. Just the arcane, plain and unvarnished.",
+		"Let's do this in raw arcane. It's rude, but it's honest.",
+		"Neither hot nor cold today. Just the force underneath both.",
+	},
+	["cls.mage.battle.w06.006"] = {
+		"If it closes in: the nova, three steps back, then begin again. Simple. Remember it's simple.",
+		"Let it come. Ice underfoot, and I'm already walking away.",
+		"The plan: freeze the ground, open the distance, cast from there. No improvising until the plan fails.",
+	},
+	["cls.mage.battle.w06.007"] = {
+		"Go on, close the gap. I'll just put it back.",
+		"Charge if you like. I'll be somewhere else by the time you arrive.",
+	},
+	["cls.mage.battle.w06.008"] = {
+		"draws a quick sigil in the air with two fingers, and it hangs there glowing for a heartbeat before fading.",
+		"tugs both sleeves back past the wrists, the way a scribe does before a long page.",
+		"opens one hand, and something gathers in the palm that has not yet decided whether to be flame or frost.",
+	},
+	["cls.mage.battle.w06.009"] = {
+		"Plate would have been kinder to you. Cloth hits back harder.",
+		"The robe fools everyone. Every single time.",
+		"You've mistaken soft cloth for a soft target. Common error.",
+	},
+	["cls.mage.battle.w06.010"] = {
+		"One solid blow would fold me in half. So no solid blows. That's the entire strategy.",
+		"Cloth stops nothing. Every plan I make starts from that.",
+		"Next to a warrior I'm made of paper. Paper that burns other things, but still paper.",
+	},
+	["cls.mage.battle.w06.011"] = {
+		"Last chance to stay on two legs. After that, I make no promises about the number.",
+		"You could leave as you are, or leave as livestock. Choose, but briefly.",
+	},
+	["cls.mage.battle.w06.012"] = {
+		"Easy now. I can make you something with much less bite.",
+		"All this fuss. A sheep makes no fuss at all. Think it over.",
+	},
+	["cls.mage.battle.w06.013"] = {
+		"Front line, keep the enemy busy. From back here, I'll close the matter.",
+		"Hold its eyes on you a moment. I'll see that the moment is short.",
+	},
+	["cls.mage.battle.w06.014"] = {
+		"The mana is a purse, not a river. Spend it like it has a bottom, because it does.",
+		"Save the costly formulas for the moment they'll actually end something.",
+	},
+	["cls.mage.battle.w06.015"] = {
+		"Let's find out what you're made of. I mean that rather literally.",
+		"Hold still. I'd like a closer look at your composition. From a sensible distance.",
+		"Curious. Let's take a closer look, from exactly where I'm standing.",
+	},
+	["cls.mage.battle.w06.016"] = {
+		"A real opponent. Good: every formula I know, in the proper order.",
+		"Strong one. Fine. I'll need everything, and I'll need it in sequence.",
+	},
+	["cls.mage.battle.w06.017"] = {
+		"Probably too much for me. So I'll need my head more than my luck.",
+		"Above my weight. Keep the distance, waste nothing, and leave the moment it turns.",
+	},
+	["cls.mage.battle.w06.018"] = {
+		"First chapter material. I'll keep it short.",
+		"You'd barely fill a footnote. Let's not make this a long one.",
+	},
+	["cls.mage.battle.w06.019"] = {
+		"Dead already, and still up and about. Let me fix the second part.",
+		"Whoever brought you back did sloppy work. I'll correct it.",
+	},
+	["cls.mage.battle.w06.020"] = {
+		"An elemental. You're nothing but magic holding a shape. So am I, on a good day.",
+		"Raw element, badly bound. I could almost admire the work, if it weren't trying to kill me.",
+	},
+	["cls.mage.battle.w06.021"] = {
+		"Gears and rivets. No mind to confuse, then. Just heat, cold and patience.",
+		"A machine. Metal goes brittle in the cold, and it hates sudden heat. I happen to carry both.",
+	},
+	["cls.mage.battle.w06.022"] = {
+		"A demon. I know the sort of caster who calls your kind up. I'm the other sort.",
+		"All that fury. Unpleasant, but even you obey the laws of magic.",
+	},
+	["cls.mage.battle.w06.023"] = {
+		"lets the cold gather around {g:his|her} fingers until frost feathers the cuffs of the robe.",
+		"rolls a small coal of fire idly across {g:his|her} knuckles, the way others crack their joints.",
+		"squares {g:his|her} feet, finds the distance with a glance, and lifts one hand as if asking a question.",
+	},
+	["cls.mage.battle.w06.024"] = {
+		"Fire is quicker. Frost is safer. Arcane is louder. Choose, and stop admiring the choice.",
+		"Which school today? The one that ends it before it reaches me.",
+		"Pick a school and commit. Dithering is how mages get bitten.",
+	},
+	["cls.mage.battle.w06.025"] = {
+		"Please keep back. I'm told I'm dangerous when crowded.",
+		"Personal space, if you don't mind. Things near me tend to catch fire.",
+		"Stay over there. It's healthier for you.",
+	},
+	["cls.mage.battle.w06.026"] = {
+		"I didn't come out from behind the books to run from the first thing with an opinion.",
+		"Plenty of things out here would like to see a scholar fall. Not today.",
+		"I may look like I belong in a library. I belong here too.",
+	},
+	["cls.mage.battle.w06.027"] = {
+		"The old masters warn that the arcane feels best when you need it most. They mean it as a warning.",
+		"Draw only what this needs. The rest of the power can wait outside, however it knocks.",
+		"Careful. The power is cheap now and expensive later.",
+	},
+	["cls.mage.battle.w06.028"] = {
+		"Ten paces, please. I do my best work at the length of a lecture hall.",
+		"The perfect range is about where you're standing. Don't ruin it.",
+		"Closer is worse for both of us. Mostly for you.",
+	},
+	["cls.mage.battle.w06.029"] = {
+		"I'll give you one warning, which is one more than the fire will.",
+		"Turn around now. Once I start, the formula finishes itself.",
+		"I'd rather not. You're making me.",
+	},
+	["cls.mage.battle.w06.030"] = {
+		"pushes the sleeves up, glances at the enemy, and sighs like a tutor handed a very poor essay.",
+		"marks the distance to the foe with a small, precise nod, as though checking a figure in a ledger.",
+	},
+	["cls.mage.battle.w06.031"] = {
+		"One spark, well placed, settles most arguments. Let's see if you're the exception.",
+		"Today I'm in the mood for fire. You'll enjoy it less than I will.",
+		"A small flame first. I can always make it larger.",
+	},
+	["cls.mage.battle.w06.032"] = {
+		"Slow the foe, widen the gap, then the heavy work. In that order, even when it's frightening.",
+		"Three things to watch: the distance, the mana, and whatever it does next.",
+		"Mind the ground behind me. Every step back has to land somewhere.",
+	},
+	["cls.mage.battle.w06.033"] = {
+		"Before we start: I accept no responsibility for scorching, frostbite, or sudden surprise.",
+		"Fair warning: my results are excellent and my manners are terrible.",
+		"Any complaints may be submitted in writing. Afterward.",
+	},
+	["cls.mage.battle.w06.034"] = {
+		"You can see the robe. You know exactly what's coming. Run, if you're wise.",
+		"No duel rules out here. No one calls time, and I don't stop at first touch.",
+	},
+	["cls.mage.battle.w06.035"] = {
+		"If the well runs dry, Evocation can fill it again. Better not to need it in the middle of this.",
+		"Mana Shield if it gets close, Evocation if it drags on. I hope it does neither.",
+	},
+	["cls.mage.battle.w06.036"] = {
+		"Ever fought a mage before? It's a brief education.",
+		"First time against someone like me? I'll keep the lesson short and memorable.",
+	},
+	["cls.mage.battle.w06.037"] = {
+		"Steady hands. Clean syllables. The rest follows.",
+		"Speak it clearly. A mumbled formula is how apprentices end up in the infirmary.",
+	},
+	["cls.mage.battle.w06.038"] = {
+		"No armor, no shield, just what I've learned. It's more than enough.",
+		"Everything I carry is in my head. Try taking that from me.",
+		"The robe is only cloth. What's under it has read a great deal.",
+	},
+	["cls.mage.battle.w06.039"] = {
+		"glances once at the enemy, once at the ground between them, and starts to speak in a low, measured voice.",
+		"flexes {g:his|her} fingers one by one, and a faint crackle follows each of them.",
+		"sets {g:his|her} feet apart and lifts one palm, and a low hum rises from nowhere in particular.",
+	},
+	["cls.mage.battle.w06.040"] = {
+		"I was halfway through a thought. Now I'm annoyed.",
+		"I had a perfectly good idea a moment ago. You chased it off. Unforgivable.",
+	},
+	["cls.mage.battle.w06.041"] = {
+		"First spell is a question. How it reacts is the answer.",
+		"Open with something cheap and watch. Everything shows its weakness, if you look.",
+	},
+	["cls.mage.battle.w06.042"] = {
+		"Fire, frost or arcane? I'd let you choose, but you'd choose badly.",
+		"Three schools, and you'll get a taste of whichever I'm in the mood for.",
+		"Let's see which school you dislike most.",
+	},
+	["cls.mage.battle.w06.043"] = {
+		"Whatever happens, keep it out of arm's reach. Arm's reach is where people like me end.",
+		"If it reaches me, the robe won't argue on my behalf.",
+	},
+	["cls.mage.battle.w06.044"] = {
+		"By word and will. Let's begin.",
+		"Mind clear, hands ready. Let the lesson begin.",
+		"Attend, then. This is the practical part.",
+	},
+	["cls.mage.battle.w06.045"] = {
+		"Mind the sparks. Some of them are meant for you, and some are just enthusiasm.",
+		"If the air starts to crackle, that's me getting started.",
+	},
+	["cls.mage.buff.w06.001"] = {
+		"traces a quick figure in the air, and a pale violet shimmer settles like dust in lamplight, then fades.",
+		"speaks three soft syllables, and for a moment the air around the gesture glows faintly before the working sinks in.",
+		"draws a slow circle with two fingers; the arcane gathers there, brightens once, and is gone.",
+	},
+	["cls.mage.buff.w06.002"] = {
+		"A small working, cheaply made and quickly gone. The kind of spell that never makes a story, and always helps.",
+		"Not every spell has to be loud. Some of the best simply settle in and get on with it.",
+		"A little mana, well placed. I'd rather spend it like this than on fireworks.",
+	},
+	["cls.mage.buff.w06.003"] = {
+		"There. Arcane work of the highest quality, and nobody will ever see it.",
+		"Invisible, unglamorous, and absolutely correct. My favorite kind of spell.",
+		"Another spell nobody will thank me for. That's how you know it's the useful kind.",
+	},
+	["cls.mage.buff.w06.004"] = {
+		"Laying a working on someone is different from hurling one at a foe. It has to be invited, not forced.",
+		"Wards and gifts are a gentler grammar than fire. Same words, softer endings.",
+		"Fire is spoken against something. This is spoken for something. The difference is all in the wrist.",
+	},
+	["cls.mage.buff.w06.005"] = {
+		"Clarity, poured in like cold water. The world's edges sharpen a little.",
+		"The thoughts line up straighter, like books pushed back onto a shelf.",
+		"A touch more wit in the world. It can always use it.",
+	},
+	["cls.mage.buff.w06.006"] = {
+		"Your head should feel a little roomier now. Do try to furnish it well.",
+		"Sharper thoughts for you. Spend them on something better than worrying.",
+		"Now you'll spot the trap a heartbeat sooner. You may thank me then.",
+	},
+	["cls.mage.buff.w06.007"] = {
+		"{target}, may your thoughts stay quick and your judgment quicker.",
+		"A clear head for you, {target}. In this work it's worth more than armor.",
+		"For you, {target}: a little more light behind the eyes.",
+	},
+	["cls.mage.buff.w06.008"] = {
+		"touches two fingers to a brow, murmuring, and the eyes beneath seem for a moment to brighten.",
+		"speaks a short phrase, and a faint violet glow passes over the forehead it was meant for.",
+		"lays a hand briefly over a brow, and when it lifts, the face beneath looks a shade more awake.",
+	},
+	["cls.mage.buff.w06.009"] = {
+		"I give clarity away so easily. Pity it doesn't work on regrets.",
+		"A spell for a sharper mind. If only there were one for a quieter one.",
+		"Sharp wits are a gift. Knowing what to do with them is not something I can cast.",
+	},
+	["cls.mage.buff.w06.010"] = {
+		"Hold still a moment. There, that's yours now.",
+		"Don't mind the tingle. It's on your side.",
+		"Done. You won't feel much, but it'll be there when it matters.",
+	},
+	["cls.mage.buff.w06.011"] = {
+		"Amplify Magic: every heal goes further, and so does every curse. A generous spell with no judgment at all.",
+		"Louder magic, both ways. Wonderful with a good healer nearby, regrettable against a pack of casters.",
+		"This ward makes every spell land harder. I try to cast it when the friends are the ones doing the casting.",
+	},
+	["cls.mage.buff.w06.012"] = {
+		"Dampen Magic: hostile spells land softer. Healing does too, sadly. Nothing comes free.",
+		"A muffling ward. Fire and frost slide off a little, and so do the kind spells. Choose your fights.",
+		"Fewer burns from enemy casters, slower mending from friendly ones. A trade, like everything in this craft.",
+	},
+	["cls.mage.buff.w06.013"] = {
+		"That'll soften whatever the casters throw at you. Healers will have to work harder; tell them it was me.",
+		"A muffling ward for you. Spells will hurt less. The healing will help less too, so no carelessness.",
+		"Keep that ward close. It's no use against swords, only against the clever ones with books.",
+	},
+	["cls.mage.buff.w06.014"] = {
+		"Amplified. Every heal on you will count for more. So will the bad news, so stay clear of the casters.",
+		"There. Healers will love you now. Enemy mages will love you too, in a less pleasant way.",
+	},
+	["cls.mage.buff.w06.015"] = {
+		"Spells that help age better than spells that harm. Nobody remembers a fireball fondly.",
+		"I like the quiet spells. They ask little and leave something behind besides ash.",
+		"Of everything I cast, this is the spell least likely to be remembered and most likely to have mattered.",
+	},
+	["cls.mage.buff.w06.016"] = {
+		"Intellect, applied. The world is now marginally better informed.",
+		"Some days the most useful thing a mage can do is make someone a little less dim.",
+		"Wit for the road. It wears off whether anyone uses it or not.",
+	},
+	["cls.mage.buff.w06.017"] = {
+		"Clear heads, all of you. Let's not waste them.",
+		"Brilliance for the whole group. Try to think in the same direction for once.",
+	},
+	["cls.mage.buff.w06.018"] = {
+		"finishes the gesture with a small flick of the wrist, the way a scribe dots the last letter.",
+		"lowers the hand slowly, as if setting something fragile down on a table.",
+		"checks the work with a critical squint, nods, and moves on.",
+	},
+	["cls.mage.lowhp.w06.001"] = {
+		"Ah. This is where cloth shows its limits.",
+		"And here's the trouble with dressing for study instead of battle.",
+		"Lesson relearned: cloth keeps off the cold and nothing else.",
+	},
+	["cls.mage.lowhp.w06.002"] = {
+		"Out. Now. Think about the rest from farther away.",
+		"Get out of reach first. Then be clever.",
+	},
+	["cls.mage.lowhp.w06.003"] = {
+		"Ice underfoot, then walk away. Don't run; running ruins the next cast.",
+		"The nova, then distance. Every second of ice is another second of life.",
+		"Ice, then out of reach. The wound can wait.",
+	},
+	["cls.mage.lowhp.w06.004"] = {
+		"All right, mana, you'll have to take the blows now.",
+		"Shield up, paid from the reserve. Expensive, but cheaper than dying.",
+	},
+	["cls.mage.lowhp.w06.005"] = {
+		"Not here. Not at the hands of something that doesn't even know my name.",
+		"I have too many unfinished notes to end in the dust.",
+		"Not over a fight this dull. I deserve a better ending than that.",
+	},
+	["cls.mage.lowhp.w06.006"] = {
+		"You've cornered me. Bad idea: this is when I stop being reasonable.",
+		"Hurt me again and I'll stop being careful with the formulas.",
+		"Fine. No more polite spells.",
+	},
+	["cls.mage.lowhp.w06.007"] = {
+		"staggers back a step, one hand pressed to {g:his|her} side, the other still shaping a spell.",
+		"loses the thread of a formula, catches it again, and keeps going through gritted teeth.",
+		"stumbles, robe torn at the hem, and somehow keeps both hands raised.",
+	},
+	["cls.mage.lowhp.w06.008"] = {
+		"Panic wastes mana. Slow the syllables down. Clean casts only.",
+		"A fumbled spell now costs more than the wound. Steady.",
+		"Shaking hands cast crooked. Hold them still. Hold.",
+	},
+	["cls.mage.lowhp.w06.009"] = {
+		"A note for whoever comes after me: I don't recommend this part.",
+		"Strike this from the experiment. Strike it entirely.",
+	},
+	["cls.mage.lowhp.w06.010"] = {
+		"My heart is louder than the spell. Quiet it. Speak over it.",
+		"Warm blood on the robe. Mine. Focus anyway.",
+	},
+	["cls.mage.lowhp.w06.011"] = {
+		"This body has been ruined once already. I'm not letting it happen a second time out here.",
+		"Dead flesh tears like any other. Mind it; there's no spare.",
+	},
+	["cls.mage.lowhp.w06.012"] = {
+		"At the edge, a mage still has words left. Here are mine.",
+		"Everything I have left goes into this next one.",
+		"Down to the last pages of me. Let them be good ones.",
+	},
+	["cls.mage.lowhp.w06.013"] = {
+		"Choose now: one last big gamble, or a careful retreat while I still can.",
+		"Every spell from here has to count. There may not be a second try.",
+		"One spell to end it or one step to escape. No time for both.",
+	},
+	["cls.mage.lowhp.w06.014"] = {
+		"A little help over here? The walking library is coming apart.",
+		"Anyone who can mend, over here! The one in cloth. Yes, me.",
+	},
+	["cls.mage.lowhp.w06.015"] = {
+		"sways on {g:his|her} feet, blinks hard, and forces the next incantation out word by word.",
+		"drops to one knee, then rises again, still murmuring the formula.",
+	},
+	["cls.mage.lowhp.w06.016"] = {
+		"For the record, I'm built for libraries, not for this.",
+		"This is why mages stand at the back. I'd like to return there.",
+	},
+	["cls.mage.lowhp.w06.017"] = {
+		"Wool. Make it wool, and use the seconds to think.",
+		"The sheep, now. Then bandage, potion, whatever's to hand. Buy the time first.",
+	},
+	["cls.mage.muse.w06.001"] = {
+		"Some pages I've read a dozen times, and on the thirteenth they still tell me something new. I don't know if that's the book or me.",
+		"I keep rereading the same chapter on wards. It hasn't changed. I have, a little, each time.",
+		"A good spellbook isn't finished when you finish it. It waits for you to become someone who can read it properly.",
+	},
+	["cls.mage.muse.w06.002"] = {
+		"The arcane doesn't tempt the way people think. It doesn't whisper. It just makes the next working a little easier than the last, and lets you draw your own conclusions.",
+		"Nobody warns you that power feels like good sense. Each step further seems perfectly reasonable at the time.",
+		"The masters in the city say the craft eats those who love it too much. I love it exactly enough. I tell myself that often.",
+	},
+	["cls.mage.muse.w06.003"] = {
+		"I've conjured enough water this week to float a boat. Nobody has thanked the water.",
+		"Fresh water, from nothing, on demand. And still someone asks whether it's been boiled.",
+		"Conjured water is perfectly clean. Cleaner than any well you've drunk from. Please stop sniffing it.",
+	},
+	["cls.mage.muse.w06.004"] = {
+		"When the mana runs low, the world goes flat, like a tune played without the low notes. I've learned to notice it before it gets that far.",
+		"Running dry isn't pain, exactly. It's more like reaching for a word you use every day and finding nothing there.",
+		"Empty of mana, I'm just someone in a robe with opinions. It's humbling. I should be humbled more often.",
+	},
+	["cls.mage.muse.w06.005"] = {
+		"conjures a small loaf, turns it over with a critical eye, and eats it anyway.",
+		"produces a round of bread out of thin air and breaks it in half, offering the larger piece to no one in particular.",
+		"makes a loaf appear, raps it with a knuckle like a carpenter testing a beam, and seems satisfied.",
+	},
+	["cls.mage.muse.w06.006"] = {
+		"Fire, frost, arcane: three dialects of one language. I'm fluent in none of them yet, and I get by in all three.",
+		"Fire is the easiest to learn and the hardest to put down. Frost is the reverse. The arcane is hard both ways.",
+		"Each school has its own manners. Fire interrupts, frost waits its turn, the arcane answers a question you didn't ask.",
+	},
+	["cls.mage.muse.w06.007"] = {
+		"People think a mage's life is all fireballs. It's mostly reading small print by bad light.",
+		"Most of this craft is footnotes. Nobody puts footnotes in the stories.",
+		"The glamorous part takes a second. The other ten years are spent arguing with a book.",
+	},
+	["cls.mage.muse.w06.008"] = {
+		"Dalaran sits under its dome, they say, mending itself behind the shield. I'd like to see it one day, even from the outside.",
+		"The Kirin Tor are rebuilding, or so the scholars claim. A city of mages, broken by things stronger than mages. That thought keeps me humble.",
+		"Whatever happened at Dalaran, the books that survived must be worth more than gold. I'd give a great deal for an afternoon among them.",
+	},
+	["cls.mage.muse.w06.009"] = {
+		"Hours of study leave a particular kind of quiet behind them. I carry it around for a while afterward, like a smell of dust.",
+		"After a long session with the books, other people's voices sound too loud for a while. It passes. Mostly.",
+		"Study is a room with one chair. I chose it, and most days I'd choose it again.",
+	},
+	["cls.mage.muse.w06.010"] = {
+		"Bread and water, conjured fresh. The menu has never changed, and it never will.",
+		"Whoever's hungry: there's conjured bread. Whoever's picky: there's the walk to the next inn.",
+		"I take no requests for flavors. Conjuring is a craft, not a kitchen.",
+	},
+	["cls.mage.muse.w06.011"] = {
+		"Evocation is the strangest rest there is: sitting perfectly still while the mana pours back in like water into a dry cistern.",
+		"When I evoke, I stop being a person for a while and become a vessel. It isn't unpleasant. That's the worrying part.",
+		"Eight seconds of stillness, and I'm full again. I wish the rest of life refilled so obligingly.",
+	},
+	["cls.mage.muse.w06.012"] = {
+		"People call polymorph cruel. It's the gentlest spell I know. Ask anyone who came out of it without a scratch.",
+		"A sheep can't hold a grudge for long. That's half of why the spell works so well.",
+	},
+	["cls.mage.muse.w06.013"] = {
+		"Old places hold magic the way stones hold the day's heat. You can feel it seeping out if you stand still long enough.",
+		"Some ground feels crowded with old workings, and some feels swept clean. I've never learned to tell why, and I keep trying.",
+		"There are spots in this world where the air feels thinner to the mind, as if someone spent all its magic long ago and never paid it back.",
+	},
+	["cls.mage.muse.w06.014"] = {
+		"I can light a campfire with a word. I still carry flint, out of respect for tradition. And for when I'm tired.",
+		"Lighting a fire with magic is easy. Lighting a small fire with magic, that's the advanced course.",
+		"Ask a mage to light a candle and you'll find out how much self-control they really have.",
+	},
+	["cls.mage.muse.w06.015"] = {
+		"Every spell takes something from the caster. Usually it's only mana. The masters warn that sometimes it's harder to say what it was.",
+		"The craft keeps a ledger I can't read. I just hope the sums come out in my favor at the end.",
+		"The old mages look tired in a particular way, as if they lent something years ago and never got it back.",
+	},
+	["cls.mage.muse.w06.016"] = {
+		"turns a hand palm up and lets a tiny mote of frost spin above it, slowly, like a thought being weighed.",
+		"draws a circle in the air with one finger; for a heartbeat it hangs there, violet and exact, before unraveling.",
+		"murmurs a single syllable and watches the air ahead shiver, then settle.",
+	},
+	["cls.mage.muse.w06.017"] = {
+		"The trainers sell knowledge one spell after another, for a fee. Fair, I suppose. Someone paid far more for it before me.",
+		"Each new formula costs coin, then weeks of practice, then a few singed sleeves. By the end it almost feels like I invented it.",
+		"The first time a new spell works, it feels borrowed. By the hundredth, it's mine. Somewhere in between it changes hands.",
+	},
+	["cls.mage.muse.w06.018"] = {
+		"Reagents, robes, books, training fees. Magic is a fine career if you happen to be rich already.",
+		"The arcane is free. Everything you need to use it properly costs a fortune.",
+		"Somewhere a mage is getting rich. I'd like to meet them and ask how.",
+	},
+	["cls.mage.muse.w06.019"] = {
+		"Cloth and thought: that's all that stands between me and the world's teeth. Most days it's enough. I try not to count the other days.",
+		"I chose the craft that keeps its back to a wall and its eyes on the distance. Braver people choose otherwise. I'm still here.",
+		"The ones in plate laugh at cloth. They also stand in front, which is where the laughing usually stops.",
+	},
+	["cls.mage.muse.w06.020"] = {
+		"The scholars write of lines of power running under the land like veins under skin. I think I've felt one, now and then: a pull underfoot, like a current around the ankles.",
+		"Under all this ground the old currents still run. The craft is learning to drink from them without being swept away.",
+		"The deepest magic in the world isn't in any tower. It's underfoot, and it has been patient for a very long time.",
+	},
+	["cls.mage.muse.w06.021"] = {
+		"Blink is wonderful. I only wish it let me choose where I land.",
+		"Twenty yards, straight ahead, no questions asked. Blink is the most honest spell I know.",
+		"The trick with Blink is facing the right way before you cast it. Everything else is detail.",
+	},
+	["cls.mage.muse.w06.022"] = {
+		"I still practice the first spells I ever learned, the small ones. A cracked foundation shows in every floor above it.",
+		"Masters are only apprentices who never stopped doing the boring exercises.",
+		"The easy spells are where the bad habits hide. I go back to them slowly, the way a scribe goes back to the alphabet.",
+	},
+	["cls.mage.muse.w06.023"] = {
+		"I wear a coat of frost to fight in. Nobody believes how much of my coin goes on woolen socks.",
+		"Frost on my shoulders, frost on my sleeves. Every innkeeper asks me to stand away from the ale.",
+		"Frost Armor keeps the blows off. It also keeps the conversation short.",
+	},
+	["cls.mage.muse.w06.024"] = {
+		"There's a moment in every fire spell when it wants to keep going. Letting it go is easy. Calling it back is the craft.",
+		"Fire is honest about what it wants: everything. The trick is never to agree with it.",
+		"Fire never sulks and never forgives. Of all my tools, it's the one I watch most closely.",
+	},
+	["cls.mage.muse.w06.025"] = {
+		"Frost teaches stillness. Hold a thing cold enough and it stops arguing.",
+		"I like the sound frost makes as it forms: a small, dry crackle, like a decision being made.",
+		"Cold is only the absence of hurry. Frost spells are a way of telling the world to wait.",
+	},
+	["cls.mage.muse.w06.026"] = {
+		"Fire burns and frost binds, but the arcane simply rearranges. That's the one that keeps me awake, thinking.",
+		"The arcane has no color of its own. We call it violet because we have to call it something.",
+		"Pure arcane feels like the moment before a word is spoken: everything possible, nothing chosen.",
+	},
+	["cls.mage.muse.w06.027"] = {
+		"My pack is half spellbook by weight. The other half is notes about the spellbook.",
+		"Other people carry rope and rations. I carry three books, a pot of ink and the faint hope of a dry corner to read them in.",
+	},
+	["cls.mage.muse.w06.028"] = {
+		"counts silently on {g:his|her} fingers, loses track, and starts again from the thumb.",
+		"flips through a small book of notes, finds the dog-eared page, and reads it with lips moving soundlessly.",
+		"sketches a diagram on the back of a scrap of parchment, frowns at it, and adds an arrow pointing nowhere in particular.",
+	},
+	["cls.mage.muse.w06.029"] = {
+		"Sometimes I cast the simplest spell just to watch it work. It never stops being astonishing that it does.",
+		"I've cast this little cantrip a thousand times, and some part of me still holds still when it takes.",
+		"Wonder wears thin in most trades. In this one, it grows back.",
+	},
+	["cls.mage.muse.w06.030"] = {
+		"I can be home in ten seconds, provided home is a capital and I've bought the rune.",
+		"Teleportation: the fastest way to travel, and the most expensive way to forget something at the inn.",
+		"Every time I teleport I leave a little dignity behind. And usually a cup of something.",
+	},
+	["cls.mage.muse.w06.031"] = {
+		"The old warnings speak of mages who drank magic like wine until they couldn't stop. I count my cups. I'm told that's how it starts, too.",
+		"There's a hunger the craft can wake, the masters say, that no conjured bread will ever fill. I pay attention to what my hands reach for when they're idle.",
+		"Some days I catch myself casting for no reason but the feel of it. Then I put my hands in my sleeves and wait for it to pass.",
+	},
+	["cls.mage.muse.w06.032"] = {
+		"With Detect Magic I see the world's hidden seams: a charm on a bracelet, a ward on a door, a curse nobody admitted to. Most days I'd rather not know.",
+		"It's remarkable how much of the world is enchanted when you bother to look, and how little of it anyone remembers enchanting.",
+	},
+	["cls.mage.muse.w06.033"] = {
+		"One day I'll write a page someone else has to study. That's the whole of my ambition.",
+		"Somewhere there's a spell nobody has found yet. I intend to be standing nearby when it turns up.",
+		"I'd like my name in the margin of one good book. Not the cover. The margin is where the real work is.",
+	},
+	["cls.mage.muse.w06.034"] = {
+		"Sit, conjure, drink, wait. The rhythm of a mage's day has more pauses than anyone admits.",
+		"Half of this craft is sitting down with a conjured drink, waiting for the mind to fill back up.",
+		"Fight, then drink. Fight, then eat. There's no glory in it, but there's no skipping it either.",
+	},
+	["cls.mage.muse.w06.035"] = {
+		"Everything I own smells faintly of scorch. I've stopped apologizing for it.",
+		"My robes have more little burn holes than buttons. I call it ventilation.",
+	},
+	["cls.mage.muse.w06.036"] = {
+		"A spell is half meaning and half sound. Get the meaning right and the sound wrong, and nothing happens; or worse, something does.",
+		"The syllables of a formula are older than anyone who speaks them. I try to say them politely.",
+	},
+	["cls.mage.muse.w06.037"] = {
+		"They say the master of Naxxramas was once a respected mage of Dalaran who went looking in the wrong books. Every student should hear that story once a year.",
+		"The Scourge's necromancy began with a mage who wanted to know more, the old scholars say. I want to know more. I think about that.",
+	},
+	["cls.mage.muse.w06.038"] = {
+		"I'm a scholar of the arcane, not a well. Though I grant the difference is getting harder to see.",
+		"If one more person hands me an empty flask without a word, I'm conjuring them a very small cloud.",
+	},
+	["cls.mage.muse.w06.039"] = {
+		"People step a little back from a mage, even friendly people. They don't mean to. I'd do the same.",
+		"Folk watch my hands when I talk. I've stopped gesturing much. It makes conversations calmer.",
+	},
+	["cls.mage.muse.w06.040"] = {
+		"A mage's courage isn't loud. It's staying calm enough to finish the sentence.",
+		"Fear makes the hands shake, and shaking hands spoil formulas. So I don't get to be afraid until later.",
+		"Brave mages are the ones who keep their voice level. The rest is theater.",
+	},
+	["cls.mage.muse.w06.041"] = {
+		"I write everything down. Half of it is useless, and I can never tell in advance which half.",
+		"My notes are a tangle of arrows, crossings-out and words in three hands, all of them mine on different days.",
+		"If I lost my notes, I'd lose a year. I keep them closer than my coin.",
+	},
+	["cls.mage.muse.w06.042"] = {
+		"conjures a cup of water, drinks it in one long pull, and conjures another without pausing.",
+		"sits down for a moment, a conjured flask in hand, and stares into the middle distance, waiting for the mind to catch up.",
+		"rubs both temples with two fingers, the way a scholar does after too many pages.",
+	},
+	["cls.mage.muse.w06.043"] = {
+		"Mana gems: the craft's answer to the question, what if I could keep a spare thought in my pocket?",
+		"I carry my reserves in a little stone that glows. Someday someone will try to buy it as jewelry, and I'm not sure I'll say no.",
+	},
+	["cls.mage.muse.w06.044"] = {
+		"A kettle boils by fire, a mill turns by wind. Magic only does the same things without asking permission.",
+		"Strip away the robes and the jargon and magic is just persuasion. The world is reasonable, if you speak its language.",
+	},
+	["cls.mage.muse.w06.045"] = {
+		"Slow Fall makes every cliff an invitation. I'm learning to decline most of them.",
+		"With a feather and the right words, I come down like a leaf. Undignified, but in one piece.",
+	},
+	["cls.mage.muse.w06.046"] = {
+		"I could burn down a barn from where I stand. Knowing that, every single day, and choosing not to: that's the real discipline.",
+		"The craft hands you the means to ruin things before it teaches you why you shouldn't. The order ought to be reversed.",
+		"Destruction is the first thing the craft gets good at, and the last thing it should be proud of.",
+	},
+	["cls.mage.muse.w06.047"] = {
+		"Here, take some. Conjured bread is the one gift I can always afford.",
+		"Hungry? I've got bread, made fresh a moment ago. It's the least magical thing I do, and the most welcome.",
+	},
+	["cls.mage.muse.w06.048"] = {
+		"Concentration is a muscle nobody sees. Mine aches more than my legs at the end of a day.",
+		"Holding a spell steady while the world shouts at you is the whole of the training. The rest is vocabulary.",
+	},
+	["cls.mage.muse.w06.049"] = {
+		"Ask a soldier what magic is and you'll hear 'shouting at the air'. Not entirely wrong, which is the irritating part.",
+		"Every swordsman thinks magic is the easy way. Let them try remembering forty syllables in order while being chased.",
+	},
+	["cls.mage.muse.w06.050"] = {
+		"Death took a great deal from me, but it left the formulas. The mind kept its books when the body lost its warmth.",
+		"No breath to steady, no heartbeat to calm. Undeath has made me a very tidy caster.",
+		"The living worry about their hands shaking. Mine haven't trembled since the grave. A small mercy inside a large misfortune.",
+	},
+	["cls.mage.muse.w06.051"] = {
+		"The old ones of the tribe trust the loa and the voodoo more than any book. I trust the book. I keep the old ones' respect anyway.",
+		"Darkspear mages are few, they say. Few is fine. Few means nobody else has read my books first.",
+	},
+	["cls.mage.muse.w06.052"] = {
+		"Other gnomes build engines. I build formulas. It's the same work, really, with fewer bolts to lose.",
+		"Gnome mages are known for being small in stature and large in explosions. I only mean to live up to half of that.",
+	},
+	["cls.mage.muse.w06.053"] = {
+		"Stormwind tolerates its mages the way a house tolerates a stove: grateful for the warmth, nervous about the walls.",
+		"The Mage Quarter of Stormwind is the loudest quiet place I know. Every window is studying something.",
+	},
+	["cls.mage.muse.w06.054"] = {
+		"If anyone ever asks me to teach them, I'll start with how to stop a spell, not how to start one.",
+		"The first thing I'd teach an apprentice: the books are patient, the arcane isn't. Know which one you're talking to.",
+	},
+	["cls.mage.muse.w06.055"] = {
+		"Conjured bread tastes of a bakery you've only heard described. Close enough to comfort, far enough to be strange.",
+		"I've started salting the conjured bread. A small rebellion. It helps.",
+	},
+	["cls.mage.muse.w06.056"] = {
+		"The oldest books say the arcane fell into the world from somewhere far beyond the sky. I don't know if I believe them, but I catch myself looking up.",
+		"Some scholars hold that magic is older than the world it runs through. If so, we're all guests in its house.",
+	},
+	["cls.mage.muse.w06.057"] = {
+		"The kaldorei look at mages as if they remembered something we've forgotten. The scholars say they do: a well, a queen, and a sundered world.",
+		"Ask a druid of Darnassus about the arcane and watch the face close like a door. They have their reasons, I'm told, older than any kingdom.",
+	},
+	["cls.mage.muse.w06.058"] = {
+		"Robes are wonderful for study and terrible for stairs, mud, horses and running. So: wonderful for study.",
+		"Trousers would be more practical. But then who would know I'm a mage? The sparks, I suppose.",
+	},
+	["cls.mage.muse.w06.059"] = {
+		"Opening a portal for others is a strange trust. They step into nothing because I said it was safe.",
+		"A portal is the only spell I cast that other people walk through. I check my work twice.",
+	},
+	["cls.mage.muse.w06.060"] = {
+		"goes very still, eyes half closed, as if listening to a conversation in the next room.",
+		"stops mid-step and tilts {g:his|her} head, attention caught by something no one else can perceive.",
+	},
+	["cls.mage.muse.w06.061"] = {
+		"A lifetime is too short for one school, never mind three. I try not to do that sum too often.",
+		"However long I'm given, I'll have read perhaps a tenth of what's worth reading. The arithmetic is unkind.",
+	},
+	["cls.mage.muse.w06.062"] = {
+		"I spend mana like a careful traveler spends coin: a little on what's needed, nothing on what's merely impressive.",
+		"Every spell has a price in mana, and the bill always comes at the worst moment. So I keep a little back, always.",
+	},
+	["cls.mage.muse.w06.063"] = {
+		"Lordaeron had mages too, and towers, and libraries. The ruins don't say which books burned. I wonder anyway.",
+		"Wars burn the libraries first. Whoever wins, the scholars lose.",
+	},
+	["cls.mage.muse.w06.064"] = {
+		"To the patient mind, the world is a library that never closes.",
+		"Knowledge doubles when it's shared. That's my excuse for talking so much.",
+	},
+	["cls.mage.muse.w06.065"] = {
+		"Some mornings I wake with half a formula in my head and spend the day hunting the other half.",
+		"The best ideas arrive while I'm doing something else entirely: lacing boots, stirring a pot. The arcane has a sense of humor.",
+		"I've solved more problems on the road than at a desk. Walking shakes the thoughts loose.",
+	},
+	["cls.mage.muse.w06.066"] = {
+		"Need something kept cold? I'm good at cold. I'm good at hot too. Lukewarm is where I fall apart.",
+		"I could chill your drink, your soup or your enemy. Pick one; I'm saving mana.",
+		"Ice in your ale? A waste of a perfectly good formula, and I'll do it anyway.",
+	},
+	["cls.mage.muse.w06.067"] = {
+		"The scholars say it was magic, used too freely, that first drew the Legion's eye to this world. Every spell I cast is a small lamp in a very dark field.",
+		"If the old accounts are true, the demons came because the world was too bright with magic. I keep my workings modest. It seems only polite.",
+	},
+	["cls.mage.muse.w06.068"] = {
+		"Too much arcane leaves a taste like old coins at the back of the tongue. I've learned to stop at the first hint of it.",
+		"When the mind's been pushed too far, colors go thin at the edges. That's the signal to sit down and stop being clever.",
+		"The arcane has its own kind of tiredness: not in the legs, but behind the eyes, where the thinking lives.",
+	},
+	["cls.mage.muse.w06.069"] = {
+		"rolls a tiny flame across {g:his|her} knuckles like a coin, back and forth, then closes the fist and it's gone.",
+		"lights the tip of one finger like a candle, studies the flame for a moment, then pinches it out.",
+		"lets a thin ribbon of frost curl around one wrist, watches it melt, and wipes the wrist dry on a sleeve.",
+	},
+	["cls.mage.muse.w06.070"] = {
+		"Counterspelling another caster is like finishing their sentence for them, rudely, halfway through. I enjoy it more than I should.",
+		"There's an odd intimacy in reading someone's spell fast enough to cut it. For a moment, the two of us know exactly what they meant.",
+	},
+	["cls.mage.muse.w06.071"] = {
+		"The trouble with being clever is that everyone expects it every time. I'd like one stupid afternoon a month.",
+		"Being the one who knows things is tiring. Sometimes I'd rather be the one who carries things.",
+	},
+	["cls.mage.muse.w06.072"] = {
+		"Mana moves like water: it finds the low places, fills what's empty, and wears down anything that stands in its way long enough.",
+		"I think of my reserves as a well. Draw too fast and you bring up mud.",
+	},
+	["cls.mage.quest_complete.w06.001"] = {
+		"Another errand finished. It goes in the notebook, between a recipe for ink and a theory I'm not ready to show anyone.",
+		"Done. The notebook gets a new line, and the line gets a question mark, because I'm still not sure why it worked.",
+		"Finished, and filed. My memory is a library, and every task gets a shelf, however small.",
+	},
+	["cls.mage.quest_complete.w06.002"] = {
+		"Paid, or near enough. Reagents don't buy themselves.",
+		"Whatever this is worth, I've already spent it on reagents in my head.",
+		"My purse thanks you. My reagent pouch thanks you more.",
+	},
+	["cls.mage.quest_complete.w06.003"] = {
+		"accepts the thanks with a small bow and a faint crackle of static from one sleeve.",
+		"inclines {g:his|her} head politely, then brushes a few stray sparks off a cuff before shaking hands.",
+		"nods once, the way a scholar nods at a correct answer, and turns the page to whatever comes next.",
+	},
+	["cls.mage.quest_complete.w06.004"] = {
+		"Task done. Now a cup of conjured water and five minutes of not being useful to anyone.",
+		"That's that. I'll sit, drink something I made from nothing, and let my head stop doing arithmetic.",
+		"Finished. The mana can come back at its own pace; nobody is chasing me for the moment.",
+	},
+	["cls.mage.quest_complete.w06.005"] = {
+		"You'll notice everything is still standing. I'd like that mentioned in any report.",
+		"Not one scorch mark. I was very restrained. Tell your friends.",
+		"Done cleanly, and nobody was turned into anything. You're welcome.",
+	},
+	["cls.mage.quest_complete.w06.006"] = {
+		"The task itself was plain. What I noticed along the way will keep me thinking for days.",
+		"Errands are an excuse to look closely at a world I'd otherwise only read about.",
+		"Ordinary work, done well. Not everything needs to be a discovery, though I looked for one anyway.",
+	},
+	["cls.mage.quest_complete.w06.007"] = {
+		"Should anything else need a steady mind and a little fire, send word.",
+		"If the next problem is beyond a sword, I'm the one to ask.",
+		"Call on me again. I'm cheaper than a tower full of masters, and I answer faster.",
+	},
+	["cls.mage.quest_complete.w06.008"] = {
+		"They thanked me for the result and never asked how. Just as well. I'm not sure I could explain it gently.",
+		"Gratitude always tastes a little odd when the job was done with spells. Nobody likes to look too closely at the means.",
+	},
+	["cls.mage.quest_complete.w06.009"] = {
+		"Not bad for someone in a robe, hm? People always underestimate the robe.",
+		"Mages look fragile until the job is done. Then they just look smug.",
+		"Next time, trust the robe a little sooner.",
+	},
+	["cls.mage.quest_complete.w06.010"] = {
+		"tucks the reward into a pocket already crowded with folded notes and a quill that has seen better days.",
+		"makes room for the reward by moving a small book from one pocket to another, and then back again.",
+		"looks over the reward with the polite interest of someone working out its worth in reagents.",
+	},
+	["cls.mage.quest_complete.w06.011"] = {
+		"They'll forget my name by supper. The work will stay done. I've made my peace with that order of things.",
+		"Nobody remembers who fixed a thing, only that it's fixed. Mages ought to be used to that by now.",
+	},
+	["cls.mage.quest_complete.w06.012"] = {
+		"All done! Anyone hungry? I feel like conjuring something to celebrate.",
+		"Finished. Bread all round, on me. Well, on the arcane.",
+	},
+	["cls.mage.quest_complete.w06.013"] = {
+		"Spells are the easy part of any errand. Finding the right person, asking the right question: that's where I fumble.",
+		"Half of every task is talking to people. The trainers never taught that.",
+		"I'd sooner face three elementals than one clerk with a ledger. Still: done.",
+	},
+	["cls.mage.quest_complete.w06.014"] = {
+		"closes {g:his|her} eyes briefly, as though putting a finished page back on its shelf.",
+		"rolls {g:his|her} shoulders, and the faint frost that had clung to the sleeves fades away.",
+		"glances at {g:his|her} hands, which have stopped humming at last, and folds them behind {g:his|her} back.",
+	},
+	["cls.mage.quest_complete.w06.015"] = {
+		"Next time you need a mage, give me the interesting part. I'll leave the running about to someone else.",
+		"Years of study, and here I am doing errands. My trainers would be so proud. Or confused.",
+		"Not a single arcane question in the whole affair. I'm almost disappointed.",
+	},
+	["cls.mage.quest_complete.w06.016"] = {
+		"Something small put right. The world didn't need a great spell today; it needed this.",
+		"Not every good thing is a grand working. Sometimes it's just being where someone needed a hand.",
+	},
+	["cls.mage.quest_complete.w06.017"] = {
+		"A finished task always leaves one small question behind, like a crumb on the table. I can never leave it there.",
+		"The answer they wanted was simple. The question underneath it was not. That one I'll keep for myself.",
+	},
+	["cls.mage.quest_complete.w06.018"] = {
+		"Another page in the record. Small, but written in my own hand.",
+		"The work is done, and done properly. That's the only signature a mage needs.",
+		"Let it be said I finished what I began, down to the last line.",
+	},
+	["cls.mage.quest_complete.w06.019"] = {
+		"conjures a flask of water, takes a long drink, and offers the rest with a tilt of the head to whoever is nearest.",
+		"sits on the nearest flat surface, conjures a cup, and drinks it slowly, like a well-earned reward.",
+	},
+	["cls.mage.quest_complete.w06.020"] = {
+		"Each finished task makes the spellbook feel a little heavier, in the good way. Like a full pantry.",
+		"Experience is the one reagent nobody can sell you. Today I gathered a little more.",
+	},
+	["cls.mage.quest_complete.w06.021"] = {
+		"I'd like a receipt. Mages keep records of everything, and I'd hate to start being careless now.",
+		"Do note in your ledger: completed by a mage, on time, more or less intact.",
+	},
+	["cls.mage.quest_complete.w06.022"] = {
+		"Nobody hires a mage for the magic, in the end. They hire one for the patience. The magic just comes along.",
+		"What finished this task wasn't a spell. It was sitting still long enough to think. That's the real training.",
+		"The trainers never mentioned that most of my work would be listening. They should have.",
+	},
+	["cls.mage.quest_complete.w06.023"] = {
+		"Count it? No. Mages count formulas, not coins. Though I'll admit I glanced.",
+		"Thank you. I'll pretend this isn't going straight to a tailor to replace the sleeve I scorched.",
+		"Kind of you. It'll all be candles and ink by the end of the week.",
+	},
+	["cls.mage.victory.w06.001"] = {
+		"Proof by demonstration. My favorite kind.",
+		"There. If anyone asks, it was all in the theory.",
+		"Theory holds. I'll tell the library.",
+	},
+	["cls.mage.victory.w06.002"] = {
+		"Conjured water, somewhere to sit and a few minutes of nothing. My whole reward.",
+		"The mana comes back by the sip. There's no hurrying it, so I won't try.",
+		"Conjured water never quite satisfies, but there's always more of it.",
+	},
+	["cls.mage.victory.w06.003"] = {
+		"sinks down where {g:he|she} stands, eyes half closed, waiting for the spent power to seep back.",
+		"shakes out both hands as if flicking off water, and the last sparks scatter and die on the ground.",
+		"unwinds, one shoulder after the other, the stiffness of holding a formula too long.",
+	},
+	["cls.mage.victory.w06.004"] = {
+		"Next time, a different school. Purely for the comparison.",
+		"I'll try it another way next time. Same result, I suspect, but neater.",
+	},
+	["cls.mage.victory.w06.005"] = {
+		"It didn't know what I was. Most of them don't, until the end.",
+		"It ended with a few syllables. That should feel heavier than it does.",
+		"It never understood what struck it. I'm not sure that's mercy.",
+	},
+	["cls.mage.victory.w06.006"] = {
+		"Words, will, and the patience to say them right. That's the whole craft.",
+		"Not bad for a bookworm in a robe.",
+		"That's the craft: a little knowledge, said at the right moment.",
+	},
+	["cls.mage.victory.w06.007"] = {
+		"Let me check the robe. Ah. Another hem to mend.",
+		"My robe and I both made it. Only one of us looks it.",
+	},
+	["cls.mage.victory.w06.008"] = {
+		"Interesting, how it moved. I'll want to remember that for the next one.",
+		"I spent more mana than I needed to. More thrift next time.",
+		"Worth writing down. Not the win, the way it went.",
+	},
+	["cls.mage.victory.w06.009"] = {
+		"Now, where was I? Somewhere around page forty.",
+		"Back to my notes. That was a long interruption.",
+	},
+	["cls.mage.victory.w06.010"] = {
+		"lowers {g:his|her} hands, and the air around them slowly forgets what it was asked to do.",
+		"lets the last of the gathered power drain from {g:his|her} fingers like water from cupped palms.",
+		"closes {g:his|her} hands, and the tingling in the air fades like a struck bell going quiet.",
+	},
+	["cls.mage.victory.w06.011"] = {
+		"A fine specimen. Shame I couldn't keep it in one piece.",
+		"I'd have liked to study it further. It didn't share my enthusiasm.",
+		"I'd have taken notes, but it kept moving.",
+	},
+	["cls.mage.victory.w06.012"] = {
+		"You held the line, I settled the account. That's how it's meant to go.",
+		"Thank you for standing in front. Cloth appreciates it more than it says.",
+	},
+	["cls.mage.victory.w06.013"] = {
+		"A moment ago it was alive and furious. Now it's a lesson. I don't love that arithmetic.",
+		"Something was alive here, and a sentence put an end to it. That should never feel ordinary.",
+	},
+	["cls.mage.victory.w06.014"] = {
+		"Done. A minute of quiet, please. The mana comes back slower when people talk.",
+		"A moment. My head takes longer than the fight did to settle.",
+	},
+	["cls.mage.victory.w06.015"] = {
+		"checks {g:his|her} sleeves for embers out of pure habit, finds none, and seems faintly disappointed.",
+		"straightens the robe, smooths the front twice, and looks around as if for an examiner's mark.",
+		"pinches out a last stubborn spark between thumb and finger, like a candle wick.",
+	},
+	["cls.mage.victory.w06.016"] = {
+		"This is why I study. Short fights, more time for books.",
+		"Theory, meet practice. Practice, theory. You two should talk more often.",
+	},
+	["cls.mage.victory.w06.017"] = {
+		"My hands are shaking a little. Let them. They did their work.",
+		"Afterward is always the strange part: the power gone, and only me left standing in the robe.",
+		"The fear comes after. It always waits until it's safe.",
+	},
+	["cls.mage.victory.w06.018"] = {
+		"Somebody note the time. I'd like to beat it.",
+		"Faster than the textbook says it should be. I'll have to write to the author.",
+		"Was that quick? It felt quick. I should time these properly.",
+	},
+	["cls.mage.victory.w06.019"] = {
+		"A good fight reads like a well-made proof: every step follows from the last.",
+		"There was a shape to that fight. I could almost draw it.",
+		"Each spell answered the one before it. That's how I like a fight to read.",
+	},
+	["cls.mage.victory.w06.020"] = {
+		"A robe is a warning, not an invitation. Pass it on.",
+		"Tell the others: the one in cloth bites.",
+	},
+	["cls.mage.victory.w06.021"] = {
+		"Add it to the notes: approach, reaction, outcome. A page a fight, and someday a book.",
+		"Another entry for the notebook. The handwriting gets worse after every fight.",
+	},
+	["cls.mage.victory.w06.022"] = {
+		"draws a flask of conjured water from nowhere in particular and drinks it in long, unhurried swallows.",
+		"conjures a cup of water, drinks half, and frowns at the rest as if it had failed an exam.",
+	},
+	["cls.mage.victory.w06.023"] = {
+		"The quiet after spending power is the worst part. Everything feels dimmer for a while.",
+		"Some mages chase that rush from one fight to the next. I can see how it happens. I won't let it.",
+		"That lift when a spell lands is what eats people. Notice it, then set it down.",
+	},
+	["cls.mage.victory.w06.024"] = {
+		"Ah, that's the feeling. Like getting a long sum right on the first try.",
+		"Lovely. Everything went where I put it.",
+		"Neat. Very neat. I'd like it framed.",
+	},
+	["cls.mage.victory.w06.025"] = {
+		"Hot or cold, it ends the same way. I only vary it to stay interested.",
+		"Fire, frost, arcane: all roads to the same quiet.",
+	},
+	["cls.mage.victory.w06.026"] = {
+		"Check the surroundings before celebrating. Mages who don't learn about ambushes the short way.",
+		"Done. Distance, mana, surroundings. Check all three before relaxing.",
+		"Before anything else, eyes up. The next one may already be on its way.",
+	},
+	["cls.mage.victory.w06.027"] = {
+		"Let the warriors have their scars. I'll take the clean result.",
+		"No blade, no shield. Just study, and the stubbornness to use it.",
+		"Nobody needs a shield if the problem never reaches them.",
+	},
+	["cls.mage.victory.w06.028"] = {
+		"conjures a small loaf, looks at it without enthusiasm, and eats it anyway.",
+		"produces a round of bread out of thin air and chews it with the expression of someone doing a duty.",
+	},
+	["cls.mage.victory.w06.029"] = {
+		"Any trainer would wince at my form there. Good thing none were watching.",
+		"My stance was a mess. The result wasn't. I'll take the trade.",
+	},
+	["cls.mage.victory.w06.030"] = {
+		"Water's on me. Form an orderly line, please.",
+		"Who's thirsty? Don't all answer at once; I know the answer.",
+	},
+	["cls.mage.victory.w06.031"] = {
+		"Concluded. A passing mark, with plenty of red ink in the margins.",
+		"Acceptable work. I've seen cleaner, mostly in books.",
+	},
+	["cls.mage.victory.w06.032"] = {
+		"Over. And I'm still here to think about it. That part never gets ordinary.",
+		"Another fight survived by knowing more than the other side. I'll keep studying.",
+	},
+	["cls.mage.victory.w06.033"] = {
+		"looks over the scene of the fight with a critical squint, as if grading it.",
+		"dusts off {g:his|her} hands slowly, one against the other, and lets out a long, satisfied hum.",
+		"lets {g:his|her} shoulders drop at last, and the faint hum that hung about {g:him|her} all through the fight dies away.",
+	},
+	["cls.mage.victory.w06.034"] = {
+		"Another for the collection. The experience, I mean; I don't keep trophies.",
+		"Good. That goes in the column of things that went well, which is shorter than you'd think.",
+	},
+	["cls.mage.victory.w06.035"] = {
+		"My fingers ache from all that shaping. Odd that magic should tire the hands at all.",
+		"A dull ache behind the eyes. The usual bill for concentration.",
+		"That took more out of me than it looked. Mages always pay in focus.",
+	},
+	["cls.mage.victory.w06.036"] = {
+		"That's what comes of bothering someone who reads.",
+		"Let that be a lesson to whoever's watching. Learning bites.",
+	},
+	["cls.mage.victory.w06.037"] = {
+		"Whatever I called up is still fading from my fingers. It always lingers longest there.",
+		"Heat or cold, the hands remember it for a while after.",
+	},
+	["cls.mage.victory.w06.038"] = {
+		"Is anyone hurt? Please say no. Mending isn't one of my schools.",
+		"Nobody missing any pieces? Good. Breaking is the only half I know.",
+	},
+	["cls.mage.victory.w06.039"] = {
+		"I'd give a great deal for real bread after that. Not conjured. Real.",
+		"Conjured bread again, I suppose. It fills the stomach, not the soul.",
+	},
+	["cls.mage.victory.w06.040"] = {
+		"Nobody watching, and it was some of my best work. Typical.",
+		"No one to tell. I'll tell the notebook instead.",
+	},
+	["cls.paladin.buff.w06.001"] = {
+		"raises a hand in a short, plain gesture, and a gold shimmer settles over the shoulders and fades into them.",
+		"draws a small sign in the air, and for a moment the light around {g:him|her} turns warmer, like late sun on a wall.",
+	},
+	["cls.paladin.heal.w06.001"] = {
+		"The Light does not ask whether the wound was earned. Neither do I, until afterwards.",
+		"I've never had to coax the Light into mending. The hard part is making myself stop swinging long enough to ask.",
+	},
+	["cls.paladin.heal.w06.002"] = {
+		"The weapon can wait a heartbeat. The Light has other work for these hands.",
+		"Strike, mend, strike again. The Light keeps a paladin busy.",
+	},
+	["cls.paladin.heal.w06.003"] = {
+		"On your feet when you're ready, not before. The Light has given you a little time.",
+		"Breathe through it. I've asked for you, and the Light has answered.",
+		"Steady now. That wound belongs to yesterday.",
+	},
+	["cls.paladin.heal.w06.004"] = {
+		"nods once, short and satisfied, as the hurt gives way, the way one nods at a duty done properly.",
+		"sets {g:his|her} jaw while the pain eases, as though the healing were one more duty to stand through.",
+	},
+	["cls.paladin.heal.w06.005"] = {
+		"One swallow and back to the front. Prayers take longer than corks.",
+		"Down in one, like a soldier's ration. The Light can have my hands again in a moment.",
+	},
+	["cls.paladin.heal.w06.006"] = {
+		"Everything I have left, poured out at once. I'll be empty a long while after, and glad of it.",
+		"All of it, at once. The Light keeps no reserve when I ask like this.",
+	},
+	["cls.paladin.heal.w06.007"] = {
+		"presses a gauntleted palm to the hurt, and the Light comes up through it like warmth through a stone hearth.",
+		"says the Light's name once, plainly, and a gold glow runs over the wound and leaves it whole.",
+	},
+	["cls.paladin.heal.w06.008"] = {
+		"The bruise mends for free. The dent in the armor is another matter.",
+		"Flesh puts itself right. The smith, sadly, still charges for the armor.",
+	},
+	["cls.paladin.heal.w06.009"] = {
+		"A warlock's stone in a paladin's hand. The Light and I have agreed not to discuss it.",
+		"Warlock work, and it mends all the same. I'll make my peace with the Light about it later.",
+	},
+	["cls.paladin.rezother.w06.001"] = {
+		"Rise. Whatever the fall cost you, the Light has paid it.",
+		"Up you get. I came as fast as I could; the rest is yours.",
+	},
+	["cls.priest.attack.w06.001"] = {
+		"Smite. Short word, long reach.",
+		"There. That's what the old word means.",
+		"A little holy correction. Hold still for the next.",
+	},
+	["cls.priest.attack.w06.002"] = {
+		"Something to remember me by. It'll keep reminding you.",
+		"That one stays with you. Walk it off, if you can.",
+		"Carry this a while. It gets heavier.",
+	},
+	["cls.priest.attack.w06.003"] = {
+		"Another spell, another sip from the well. Make it count.",
+		"That cost me. Let it cost you more.",
+		"Mana out, harm in. The trade has to go my way.",
+	},
+	["cls.priest.attack.w06.004"] = {
+		"Let's see how well you think after that.",
+		"Straight to the mind. Armor never helps there.",
+		"In through the eyes, out through the will.",
+	},
+	["cls.priest.attack.w06.005"] = {
+		"flicks {g:his|her} fingers toward the foe, and a word goes out with them like a thrown stone.",
+		"speaks sharply, and the spell leaves {g:his|her} hand as if glad to be gone.",
+		"casts without a wasted motion, eyes already measuring the next.",
+	},
+	["cls.priest.attack.w06.006"] = {
+		"Run! Everything you fear is right behind you!",
+		"Scatter! Your own minds will chase you better than I can.",
+	},
+	["cls.priest.attack.w06.007"] = {
+		"Not my favorite prayer. Possibly my most useful.",
+		"The temple would call this a misuse of gifts. The temple isn't here.",
+	},
+	["cls.priest.attack.w06.008"] = {
+		"Burn a little. It's good for the soul, they tell me.",
+		"Clean fire. It leaves nothing behind that shouldn't be there.",
+	},
+	["cls.priest.attack.w06.009"] = {
+		"This one was made for your kind. Feel how well it fits.",
+		"The dead never like this part. I can't say I blame you.",
+		"Sit back down. You've been up long past your time.",
+	},
+	["cls.priest.attack.w06.010"] = {
+		"Kneel. I'm not asking.",
+		"Down. I said it kindly the first time.",
+		"One word from me, and that's all you get.",
+	},
+	["cls.priest.battle.w06.001"] = {
+		"Yes, it's cloth. No, that doesn't make this easy for you.",
+		"Go on, aim for the robe. Everyone does. Few of them finish the thought.",
+		"A priest in a robe. I know how it looks. Let's see how it ends.",
+	},
+	["cls.priest.battle.w06.002"] = {
+		"Count it out before it starts: so much for the hurting, so much kept back for mending.",
+		"Mana first. Split it in my head, half to strike, half to stay alive.",
+		"Before the first word, the sum: what I can spend, and what I must not touch.",
+	},
+	["cls.priest.battle.w06.003"] = {
+		"slips the wand free of {g:his|her} belt and levels it, the other hand already shaping a word.",
+		"lifts the wand without hurry, as if pointing out a mistake in a ledger.",
+		"turns the wand once between {g:his|her} fingers, then holds it still and aimed.",
+	},
+	["cls.priest.battle.w06.004"] = {
+		"Every wound you give me, I can close. Can you say the same?",
+		"You hurt, I mend. Let's find out which of us tires first.",
+		"I'll undo every blow you land. That's the whole trick, and you can't stop it.",
+	},
+	["cls.priest.battle.w06.005"] = {
+		"I'm behind you. Take the hits; I'll take the worry.",
+		"Front line's yours. Keep their eyes off me and I'll keep you upright.",
+		"Don't count your wounds. That's my job back here.",
+	},
+	["cls.priest.battle.w06.006"] = {
+		"Eyes on everyone at once. The fighting is theirs; the counting is mine.",
+		"Who's hurt, who's next, who's being foolish. I watch all three.",
+		"Stand back, stay calm, watch every face. The one who goes pale first gets the first prayer.",
+	},
+	["cls.priest.battle.w06.007"] = {
+		"Nobody to heal but me. That makes this simpler, and a little lonelier.",
+		"On my own, so the patient and the healer are the same person. Convenient.",
+		"Just the two of us, and only one of us brought a healer. Think about that.",
+	},
+	["cls.priest.battle.w06.008"] = {
+		"Light, steady my hand and make my words count.",
+		"By the Light, I'll give this one fair warning, and nothing else.",
+		"Light go with me. It knows the way better than I do.",
+	},
+	["cls.priest.battle.w06.009"] = {
+		"The Light still answers me. It never says it's glad to.",
+		"I call, and it comes, stiff as a stranger at a funeral. Good enough for a fight.",
+		"Whatever the Light thinks of what I am, it still burns when I ask.",
+	},
+	["cls.priest.battle.w06.010"] = {
+		"Elune, look this way. I'll do the rest.",
+		"Mother Moon, lend me a little of your patience, and a little of your edge.",
+		"Elune keeps her own counsel. I ask only that she watch.",
+	},
+	["cls.priest.battle.w06.011"] = {
+		"You've walked long enough. Let me show you the way back down.",
+		"Whatever raised you never asked. I'm here to give back what it took.",
+		"Rest was owed to you a long time ago. I'll pay it now.",
+	},
+	["cls.priest.battle.w06.012"] = {
+		"Whatever you promised someone to get here, it ends with me.",
+		"You don't belong in this world. I'm told I have a gift for sending things home.",
+		"Back where you came from. I'll say the words slowly, so you can follow.",
+	},
+	["cls.priest.battle.w06.013"] = {
+		"Your arm is strong. Let's see about the mind behind it.",
+		"You brought a weapon. I brought something that doesn't need to get past it.",
+		"Armor stops blades. Nothing you're wearing stops a thought.",
+	},
+	["cls.priest.battle.w06.014"] = {
+		"tugs {g:his|her} sleeves back from {g:his|her} wrists, the way a healer does before the messy part.",
+		"gathers the hem of the robe out of the way with one quick, practiced hand.",
+		"sets {g:his|her} feet and lets the robe settle, quiet as a held breath.",
+	},
+	["cls.priest.battle.w06.015"] = {
+		"Turn around now and I'll forget I saw you.",
+		"There's still time to walk off. I'd honestly prefer it.",
+		"I'd sooner pray for you than against you. Your choice, and quickly.",
+	},
+	["cls.priest.battle.w06.016"] = {
+		"Smite, they call it. I didn't name it; I just say it with feeling.",
+		"Hold still. Smiting is harder on a moving target.",
+		"There's a prayer for nearly everything. This one's for you, and it stings.",
+	},
+	["cls.priest.battle.w06.017"] = {
+		"Nobody at the altar mentioned this part. They should have.",
+		"The novices' books are full of mercy. The road adds the footnotes.",
+		"Mercy is the first lesson. Nobody says how often you'll have to skip it.",
+	},
+	["cls.priest.battle.w06.018"] = {
+		"You chose a poor moment to test a priest's patience.",
+		"My patience is long. You've found the end of it.",
+		"I forgive easily. I just don't do it first.",
+	},
+	["cls.priest.battle.w06.019"] = {
+		"murmurs the first words of a prayer, too low to carry, eyes fixed on the foe.",
+		"folds {g:his|her} hands for an instant, then opens them toward the threat.",
+		"bows {g:his|her} head once, briefly, and lifts it with the prayer already begun.",
+	},
+	["cls.priest.battle.w06.020"] = {
+		"Fine. Let's be quick about it; I have people to look after.",
+		"I don't have time for you, but I'll make some.",
+		"Make it short. Others will need these prayers more than you do.",
+	},
+	["cls.priest.battle.w06.021"] = {
+		"Ward first. Always the ward first. Then I can think.",
+		"Shield up before anything else. Whoever forgets that learns it on the ground.",
+		"Wrap myself in the ward, then decide how this goes.",
+	},
+	["cls.priest.battle.w06.022"] = {
+		"Don't laugh at the wand. It's done worse to bigger things than you.",
+		"Yes, it's a little stick. It's also very rude, once it gets going.",
+		"The wand doesn't look like much. Neither do I. We get along.",
+	},
+	["cls.priest.battle.w06.023"] = {
+		"Pain first, the slow kind. Let it do the work while I see to the rest.",
+		"Lay the word of pain on it early. It keeps talking long after I've stopped.",
+		"Open with the shadow and let it gnaw. Patience is half of this craft.",
+	},
+	["cls.priest.battle.w06.024"] = {
+		"I'm sorry about this. I'll be sorrier if you win.",
+		"Forgive me. Or don't; you won't be in a state to say either way.",
+	},
+	["cls.priest.battle.w06.025"] = {
+		"I pray more than most. Some days, this is what the prayers are for.",
+		"Faith isn't only gentleness. This moment it wears a harder face.",
+		"You're about to learn what a prayer sounds like when it's aimed at you.",
+	},
+	["cls.priest.battle.w06.026"] = {
+		"falls back a few paces behind the others, where {g:he|she} can see everyone at once.",
+		"keeps to the rear of the fight, gaze moving from one companion to the next.",
+		"takes up a place at the back, out of the press, one hand half raised toward the nearest ally.",
+	},
+	["cls.priest.battle.w06.027"] = {
+		"Try not to need me. I'll be there anyway, but try.",
+		"Make it easy on me, all right? Fewer heroics, fewer prayers.",
+		"Whoever's planning to be a hero, give me a moment's notice.",
+	},
+	["cls.priest.battle.w06.028"] = {
+		"I'll pay for this later in water and sitting down. Worth it, probably.",
+		"A cup of water is waiting for me at the end of this. I just have to earn it.",
+		"Every spell now is a long drink afterwards. Spend wisely.",
+	},
+	["cls.priest.battle.w06.029"] = {
+		"Healers learn to stay standing. It turns out that's most of a fight.",
+		"I've seen what it takes to drop someone. You've brought less than that.",
+		"Underestimate me. Most of them do, right up until the end.",
+	},
+	["cls.priest.battle.w06.030"] = {
+		"Easy. Maybe you're only hungry. I'm still not dinner.",
+		"I'd rather calm you than fight you, but you're not listening.",
+		"Back, beast. I've nothing to give you but trouble.",
+	},
+	["cls.priest.battle.w06.031"] = {
+		"I've healed people like you. Pity we're on different sides.",
+		"On another day I'd have bound your wounds. Not this one.",
+		"Your side has healers too. I hope one of them is close.",
+	},
+	["cls.priest.battle.w06.032"] = {
+		"Steady. Fear makes the words come out wrong, and the words are all I have.",
+		"Hands shaking. Fine. The prayer doesn't need steady hands, only a steady voice.",
+		"A little afraid, as always. It's never stopped a prayer yet.",
+	},
+	["cls.priest.battle.w06.033"] = {
+		"That one's larger than the prayers I had ready. I'll improvise.",
+		"You're more than I bargained for. Good thing I bargain in prayers.",
+	},
+	["cls.priest.battle.w06.034"] = {
+		"The Light is patient with me. Let it be impatient with this one.",
+		"I'll lean on the Light now and thank it properly later.",
+		"If the Light has any heat to spare, now is when I need it.",
+	},
+	["cls.priest.battle.w06.035"] = {
+		"Kneel, if you like. I'll say the words either way.",
+		"There's a blessing I say over the fallen. Don't make me use it on you.",
+		"I know the rites for the dead by heart. You won't want to hear them.",
+	},
+	["cls.priest.battle.w06.036"] = {
+		"speaks a single sharp word, and the air before {g:him|her} seems to tighten.",
+		"raises a hand, and something unseen gathers in the palm, waiting to be let go.",
+		"fixes the foe with a long, level look, the kind usually kept for a stubborn patient.",
+	},
+	["cls.priest.battle.w06.037"] = {
+		"I'll patch you up after, if there's anything left. Professional courtesy.",
+		"When we're done, I'll have a look at the wound I'm about to give you.",
+	},
+	["cls.priest.battle.w06.038"] = {
+		"If they come for me, I'll step out of their minds and let the others catch them.",
+		"Stay unremarkable. A healer nobody notices is a healer still working.",
+	},
+	["cls.priest.battle.w06.039"] = {
+		"A blessing for you, free of charge. It just happens to hurt.",
+		"Consider yourself blessed. Painfully, but blessed.",
+		"Everyone gets a blessing from me. Yours comes the hard way.",
+	},
+	["cls.priest.battle.w06.040"] = {
+		"Holy fire first, while it's still far off. Let it come to me burning.",
+		"Start it burning from a distance. By the time it reaches me, half the fight is done.",
+	},
+	["cls.priest.buff.w06.001"] = {
+		"A ward laid on before the trouble starts. Of all a priest's work, it's the part nobody ever thanks.",
+		"Prevention is the dullest kind of mercy. It's also the kind that works best.",
+		"Nobody remembers the wound that never happened. I'd still rather it never happened.",
+	},
+	["cls.priest.buff.w06.002"] = {
+		"A little more stamina than you woke up with. Use it on the long way round.",
+		"There. Your legs will last longer than your patience now.",
+		"Fortitude. Not courage, mind you; that part you'll have to find yourself.",
+	},
+	["cls.priest.buff.w06.003"] = {
+		"Stamina is a humble gift. No glow, no thunder, just a body that gives out an hour later than it would have.",
+		"Fortitude is the plainest blessing I know. It doesn't make anyone braver, only harder to wear down.",
+	},
+	["cls.priest.buff.w06.004"] = {
+		"Shield's up. Let it chew on that for a while.",
+		"There's the ward. Every blow it eats is one I don't have to mend.",
+		"One shield, freshly cast. Hit it all you like.",
+	},
+	["cls.priest.buff.w06.005"] = {
+		"The shield won't stop everything. It only has to stop enough.",
+		"A sheet of will, stretched thin over flesh. It breaks eventually; the point is that it breaks instead of skin.",
+	},
+	["cls.priest.buff.w06.006"] = {
+		"The ward breaks, and then the soul under it needs a while before it can take another. Every priest learns to count that pause.",
+		"Once the shield breaks, I can't lay another on the same soul for a while. So I choose the moment carefully.",
+	},
+	["cls.priest.buff.w06.007"] = {
+		"Hold still a moment. There. You're a little harder to break now.",
+		"Done. Go on ahead; you'll feel it when it counts.",
+		"There you are. Don't waste it on something silly.",
+	},
+	["cls.priest.buff.w06.008"] = {
+		"lifts a hand and speaks a few clipped words, and a faint pale shimmer settles and fades.",
+		"touches two fingers to {g:his|her} brow, then turns the palm outward; for a moment the air seems to hold still.",
+		"murmurs the words of a ward in an easy, practiced cadence, without breaking stride.",
+	},
+	["cls.priest.buff.w06.009"] = {
+		"The Light doesn't only mend. Given early, it stands guard. I like it best that way.",
+		"Some days I think the Light prefers this work: no blood yet, only a promise kept in advance.",
+		"A little Light set aside against the hour it's needed.",
+	},
+	["cls.priest.buff.w06.010"] = {
+		"Elune's light falls on everyone alike. I only point a little of it where it's needed.",
+		"Pale and quiet, like moonlight on still water, and harder than it looks. Elune's gifts usually are.",
+	},
+	["cls.priest.buff.w06.011"] = {
+		"Odd, laying protection with hands that feel so little. It works all the same.",
+		"The Light comes through me grudgingly, but it comes. Whatever it thinks of me, it still guards what I ask it to guard.",
+	},
+	["cls.priest.buff.w06.012"] = {
+		"Shadow protection. I know what the dark does up close; this keeps a little of it off you.",
+		"Against the dark. Trust a priest to know which way it bites.",
+	},
+	["cls.priest.buff.w06.013"] = {
+		"It's not armor, but it's free, and it doesn't chafe.",
+		"Lighter than plate, and nobody has to polish it.",
+	},
+	["cls.priest.buff.w06.014"] = {
+		"A handful of mana now, so I spend less of it later. Even mercy has to be budgeted.",
+		"Wards are cheap, mending is dear. A priest who forgets that runs dry by the second fight.",
+		"I lay it on and count the cost. Small. Smaller than what it saves, which is the only sum that matters.",
+	},
+	["cls.priest.buff.w06.015"] = {
+		"That's my work in your bones now. Try not to break them anyway.",
+		"You'll tire later than you would have. Find something worth the extra hour.",
+	},
+	["cls.priest.buff.w06.016"] = {
+		"speaks a single hard word, and a translucent ward closes around like a skin of glass.",
+		"flicks two fingers, and a shimmering barrier settles into place, waiting for the first blow.",
+	},
+	["cls.priest.buff.w06.017"] = {
+		"Faith is easier to hand out before the fight. Afterward it has to compete with the bruises.",
+		"I ask, and something answers. I've never been sure what, only that it keeps its word.",
+		"A ward is a prayer with its sleeves rolled up.",
+	},
+	["cls.priest.buff.w06.018"] = {
+		"One more thing before the road. There.",
+		"Wards on, then onward. I don't move on without them.",
+	},
+	["cls.priest.buff.w06.019"] = {
+		"Hold for two blows, ward. That's all I'm asking.",
+		"Shield up, and now I watch it like a candle in a draft: when it goes out, I'll need another plan.",
+	},
+	["cls.priest.buff.w06.020"] = {
+		"calls on the Light in a low voice, and a glow clings for a moment before sinking out of sight.",
+		"asks the Light for a ward in plain, unhurried words, and gets one.",
+	},
+	["cls.priest.buff.w06.021"] = {
+		"Armor for the spirit, the novices are taught to call it. A bit grand. It works, though.",
+		"Laid on and forgotten, which is exactly right until the moment it matters.",
+	},
+	["cls.priest.buff.w06.022"] = {
+		"I can't follow everyone into every fight. This way, a little of me goes along anyway.",
+		"Part of my care, sent on ahead of me. Where they're going, I may not be quick enough to follow.",
+	},
+	["cls.priest.farewell.w06.001"] = {
+		"Go safely. And if you get hurt, try to do it somewhere I can reach.",
+		"Farewell. Keep your head down and your wounds small.",
+		"Take care. I mean that in the most practical sense.",
+	},
+	["cls.priest.greet.w06.001"] = {
+		"Well met. If you're hurt, say so now; I'd rather mend early than late.",
+		"Hello. You look well. Let's keep it that way.",
+	},
+	["cls.priest.greet.w06.002"] = {
+		"Greetings, and blessings, if you'll have them. Both are free.",
+		"Good to see you upright. In my line of work, that's the best greeting there is.",
+	},
+	["cls.priest.heal.w06.001"] = {
+		"Mana spent here is mana I won't have in the next fight. I spend it anyway; that's the job.",
+		"Every mend comes out of the same well. I keep one eye on the wound and one on how deep the well still is.",
+		"Count the wound, count what's left in me, decide. A healer's sums are short and never kind.",
+	},
+	["cls.priest.heal.w06.002"] = {
+		"watches the hurt fade, and only then allows {g:his|her} shoulders to come down from around {g:his|her} ears.",
+		"checks the mended place twice over with a careful eye, the way one checks a knot before trusting it with weight.",
+	},
+	["cls.priest.heal.w06.003"] = {
+		"Stay down a moment longer. Getting up too fast undoes half my work.",
+		"Don't look at it, look at me. There. Done before you could flinch.",
+		"Let me finish before you go charging off again. I can't heal what I can't reach.",
+	},
+	["cls.priest.heal.w06.004"] = {
+		"The Light asks so little of me in these moments: open hands, and the will to stay. The rest is not mine to carry.",
+		"I never feel the Light so clearly as when it passes through me and goes where it's needed.",
+	},
+	["cls.priest.heal.w06.005"] = {
+		"Right. Back to the wand before this thing remembers I'm here.",
+		"Mended enough. The wand's been sulking; let's give it something to do.",
+	},
+	["cls.priest.heal.w06.006"] = {
+		"Saving my mana for the others. This bottle can look after me.",
+		"No sense spending mana on my own scratches when there's a flask for that.",
+	},
+	["cls.priest.heal.w06.007"] = {
+		"The same hand that lays pain on enemies is the one that closes wounds. I've stopped asking which of the two is truer.",
+		"To wound and to mend with one pair of hands. Some days they feel borrowed.",
+	},
+	["cls.priest.heal.w06.008"] = {
+		"murmurs a short prayer without lifting {g:his|her} eyes from the hurt, the words worn smooth by use.",
+		"bows {g:his|her} head over the wound and prays in a low voice, quick and practiced, like a craftsman naming tools.",
+		"whispers the familiar words of mending, and a pale glow settles on the hurt like frost lifting off a field.",
+	},
+	["cls.priest.heal.w06.101"] = {
+		"Close it, check the next one, close that. The work is mostly counting.",
+		"A healer's day is a list: who's bleeding, who's next, who's pretending to be fine.",
+		"Mending is mostly paying attention. The prayer is the short part.",
+	},
+	["cls.priest.heal.w06.102"] = {
+		"Closed. Try to keep the inside on the inside for a while.",
+		"Done. That was your free one for today.",
+		"Mended. I'd ask you to be careful, but I've met you.",
+	},
+	["cls.priest.heal.w06.103"] = {
+		"murmurs the last word of the prayer and lowers {g:his|her} hands, watching to see that the mending holds.",
+		"finishes the prayer in a whisper, the way one closes the door of a room where someone is sleeping.",
+		"keeps the words low and even until the mending takes, then lets them trail away.",
+	},
+	["cls.priest.heal.w06.104"] = {
+		"The Light doesn't ask whose wound it is. I try not to ask either.",
+		"It comes when I call, every time, and I have never once earned it. That is the whole of my faith.",
+		"The Light goes where I point it. A strange trust, to give a pair of hands like mine.",
+	},
+	["cls.priest.heal.w06.105"] = {
+		"Here, Light. Where it's torn.",
+		"Mend what the fight undid, Light.",
+		"Steady this, Light, and I'll manage the rest.",
+	},
+	["cls.priest.heal.w06.106"] = {
+		"Each mending takes a little out of the well. The well refills. I try not to think about the day it won't.",
+		"I spend myself in small coins all day. At the end of it I'll count what's left.",
+		"Some of what I give doesn't come back. Not the mana: something underneath it.",
+	},
+	["cls.priest.heal.w06.107"] = {
+		"The hurt backs down to a dull complaint. I can work with a complaint.",
+		"Whole enough to go on. Whole enough is a priest's favorite measure.",
+		"The worst of it is gone. The rest can file a request later.",
+	},
+	["cls.priest.heal.w06.108"] = {
+		"lets the tension go out of {g:his|her} shoulders as the hurt eases, and looks for what needs doing next.",
+		"straightens a crooked fold of the robe, as if tidiness were part of the cure.",
+		"rolls the stiffness out of {g:his|her} neck and turns back to the work.",
+	},
+	["cls.priest.heal.w06.109"] = {
+		"Patched. And back to the wand.",
+		"Closed. Wand up again, before it notices.",
+		"That's done. Back to poking it with the little stick.",
+	},
+	["cls.priest.heal.w06.110"] = {
+		"Heal, look, count. Heal, look, count. Don't let the fear set the rhythm.",
+		"Eyes on the wounds, not on the thing making them.",
+		"Too early and it's wasted, too late and it's useless. The whole art fits between those two.",
+	},
+	["cls.priest.heal.w06.111"] = {
+		"steps back out of the press and speaks a prayer fast and low, never taking {g:his|her} eyes off the fight.",
+		"flinches at a near miss, finishes the prayer anyway, and the mending lands where it was meant to.",
+	},
+	["cls.priest.heal.w06.112"] = {
+		"Stay in it. I've got your back, and your front.",
+		"Keep at it. I'll keep you in one piece.",
+		"Don't look back here. Look at that. I'm watching you.",
+	},
+	["cls.priest.heal.w06.113"] = {
+		"Sit a moment. The next fight can wait until you're up.",
+		"Done. Next time, maybe stand a step to the left.",
+		"There you are. You may now go and get hurt again.",
+	},
+	["cls.priest.heal.w06.114"] = {
+		"The fight is over, and now the real work: the small cuts nobody mentioned.",
+		"Quiet again. This is when I find the wounds nobody had time to feel, mine included.",
+		"After the noise, the inventory. A gash here, a bruise there, and a pride I can't do much for.",
+	},
+	["cls.priest.heal.w06.115"] = {
+		"Every one of them leans on me a little, and none of them knows how much.",
+		"They charge in because they trust I'll be here. That trust weighs more than the robe.",
+		"I count heads after every mending. Habit. A good habit.",
+	},
+	["cls.priest.heal.w06.116"] = {
+		"Behind you, all of you. Keep pushing.",
+		"Nobody falls while I'm still praying. Keep at it.",
+		"Hold the front. I'll hold everything else.",
+	},
+	["cls.priest.heal.w06.117"] = {
+		"So many people to keep standing. I listen for the ones who stumble.",
+		"In a crowd this size the healers are a choir. I just try not to sing flat.",
+		"In all this din someone is counting on me by name, and I don't even know who.",
+	},
+	["cls.priest.heal.w06.118"] = {
+		"In here, if I fail, nobody walks back to town. So I don't fail.",
+		"In a place like this, a healer's mistake has a long echo.",
+		"No second chance comes cheap in here. Every mending counts double.",
+	},
+	["cls.priest.heal.w06.119"] = {
+		"The part of me that enjoys the shadow sulks when I do this. Let it sulk.",
+		"The same hands that pressed pain into a foe a moment ago. Now they draw it out. I don't ask them to like it.",
+		"After the shadow, mending feels slow and bright, like stepping out of a cellar into the sun. I squint, and do it anyway.",
+	},
+	["cls.priest.heal.w06.120"] = {
+		"Yes, I can do the nice kind too. Don't spread it around.",
+		"Healing. Not my favorite trick, but it's the one people thank me for.",
+		"There. Now nobody can say I only know the dark half of the book.",
+	},
+	["cls.priest.heal.w06.121"] = {
+		"The Light passes through me like a draft through an empty house. It still reaches the far rooms.",
+		"It burns a little on the way through. Fine. I've served masters who burned worse.",
+		"I mend flesh I hardly have a use for myself. There's a joke in that, and I'm too tired to tell it.",
+	},
+	["cls.priest.heal.w06.122"] = {
+		"Patched up by a corpse. Don't make that face; it worked.",
+		"Yes, the dead can heal. Try not to faint over it.",
+		"Cold hands, good work. You'll get used to one of them.",
+	},
+	["cls.priest.heal.w06.123"] = {
+		"Down it goes, into the cellar. Something down there still knows what to do with it.",
+		"A potion for a body like mine. The alchemists never put that on the label.",
+	},
+	["cls.priest.heal.w06.124"] = {
+		"Elune, a little of your patience here.",
+		"Elune's mercy is quiet. I only have to be quiet enough to carry it.",
+		"The goddess does the mending. I keep my hands where she can find them.",
+	},
+	["cls.priest.heal.w06.125"] = {
+		"Be still. Elune has seen worse than this, and mended it.",
+		"Rest a moment under her eye. It's closing.",
+		"Easy. The goddess and I have you.",
+	},
+	["cls.priest.heal.w06.126"] = {
+		"The loa listen, or the Light does. Today I don't ask which, as long as somebody answers.",
+		"Whoever answered, thank you. I'll sort out the names later.",
+	},
+	["cls.priest.heal.w06.127"] = {
+		"In the Light, be whole.",
+		"Light, take this hurt, and give back whoever was carrying it.",
+		"The Light keeps you. I only hold the door.",
+	},
+	["cls.priest.heal.w06.128"] = {
+		"Some days I'm not sure I believe. The Light comes anyway. It doesn't seem to mind.",
+		"Faith wavers; the mending doesn't. I've stopped asking what that means.",
+		"The Light answers a doubting priest as readily as a devout one. I can't decide if that comforts me or frightens me.",
+	},
+	["cls.priest.heal.w06.129"] = {
+		"The healer, drinking a potion. Nobody saw this.",
+		"Even the one who mends needs a bottle now and then. Ugh. A better bottle, ideally.",
+		"Prayers are for the others. This one's for me, and it tastes like it.",
+	},
+	["cls.priest.heal.w06.130"] = {
+		"No sense spending a prayer on myself when a bottle will do. The prayers are for later.",
+		"The potion buys me a mending I don't have to pay for out of my own reserves.",
+		"Glass and bitterness instead of a prayer. Thrift, of a sort.",
+	},
+	["cls.priest.heal.w06.131"] = {
+		"A warlock's stone. It works, and I've decided not to ask how.",
+		"Cold, green, and handed over by someone whose power comes from elsewhere. Still: thank you.",
+		"I mend with faith, and I've just mended myself with a warlock's handiwork. Let's keep this between us.",
+	},
+	["cls.priest.heal.w06.132"] = {
+		"feels for the sore place, finds it gone, and seems faintly surprised.",
+		"tests {g:his|her} weight on both feet, nods, and wipes both palms on the robe.",
+	},
+	["cls.priest.heal.w06.133"] = {
+		"Renew goes on working quietly long after I've looked away. I like spells that keep their promises.",
+		"A slow mending, left to run. Like setting a kettle on and walking off.",
+		"This one keeps working after I've turned my back. I trust it the way you trust a good knot.",
+	},
+	["cls.priest.heal.w06.134"] = {
+		"That one keeps working. Go on, it'll follow you.",
+		"Go. It'll keep mending while you walk.",
+	},
+	["cls.priest.heal.w06.135"] = {
+		"One prayer, and everyone gets a share. My favorite kind of arithmetic.",
+		"A prayer wide enough for the whole company. Stand close; it finds you all that way.",
+		"All of you at once. It costs, but so does burying people.",
+	},
+	["cls.priest.heal.w06.136"] = {
+		"So many wounds closed by now that my hands start the prayer before I've finished deciding.",
+		"Once I had to think through every word. Now the mending comes to hand like a craftsman's tools.",
+		"Practice has made it quieter. Less trembling, fewer words, the same mercy.",
+	},
+	["cls.priest.heal.w06.137"] = {
+		"Still new at this. The words came out right, which is more than I expected.",
+		"They call it a lesser healing. It doesn't feel lesser from this side.",
+		"My hands still tremble a little afterward. The teachers say that passes. I hope not all of it does.",
+	},
+	["cls.priest.heal.w06.138"] = {
+		"And that's why I'm worth feeding.",
+		"See? I'm useful.",
+		"Mending: one of the few things I'm never late for.",
+	},
+	["cls.priest.heal.w06.139"] = {
+		"I like this moment best: the face eases, and for a heartbeat they forget they were afraid.",
+		"Their color comes back. Mine goes a little. A fair trade.",
+		"Under my hands the hurt goes quiet, and the person underneath it comes back.",
+	},
+	["cls.priest.heal.w06.140"] = {
+		"{target}, look at me, not at the wound. Good.",
+		"Easy, {target}. Count to five. It'll be done by four.",
+		"{target}. Still with us? Good. Nearly there.",
+	},
+	["cls.priest.heal.w06.141"] = {
+		"{target}, I'm keeping a tally. You're winning, and that's not a compliment.",
+		"Again, {target}? I'm starting to think you enjoy this.",
+		"{target}, you bleed with real commitment. Admirable. Stop it.",
+	},
+	["cls.priest.heal.w06.142"] = {
+		"lays a hand on {target}'s shoulder and speaks a few words, and the worst of the pain drains away.",
+		"stays beside {target} just long enough for the prayer, then turns to look for whoever is next.",
+		"catches {target}'s eye, nods once, and the mending takes hold between one word and the next.",
+	},
+	["cls.priest.heal.w06.143"] = {
+		"lowers {g:his|her} hands when it's done and, for a moment, does nothing at all.",
+		"wipes both hands on the hem of the robe and counts under {g:his|her} breath what is left to mend.",
+	},
+	["cls.priest.heal.w06.144"] = {
+		"The healing is the easy part. Afterward, in the quiet, is when everything catches up.",
+		"Nobody thanks a mending once it's finished. That's how you know it was done well.",
+		"The quiet afterward is the hardest part of the craft. Nothing for the hands to do but remember.",
+	},
+	["cls.priest.heal.w06.145"] = {
+		"I listen to my reserves the way a sailor listens to the hull.",
+		"Mana refills only when I sit still. So I spend it like coin, not like water.",
+		"I measure out each prayer like a careful cook measures salt. Too much now, nothing later.",
+	},
+	["cls.priest.heal.w06.146"] = {
+		"You'll have to hit harder than that. I mend faster than you can hurt.",
+		"Whatever you take, I put back. Let's see who tires first.",
+		"Keep at it. I've got more prayers than you've got patience.",
+	},
+	["cls.priest.heal.w06.147"] = {
+		"Don't fall behind. One wound behind becomes two, and then a body.",
+		"The worst sound in a fight is the one after a heal comes too late. Not today.",
+		"Faster than the hurt comes: that's the whole job. Keep up.",
+	},
+	["cls.priest.heal.w06.148"] = {
+		"Fixed. Go on, it's still looking at you.",
+		"Back in. I'm right behind your shoulder.",
+		"Covered. If it hits you again, I'll take it personally.",
+	},
+	["cls.priest.heal.w06.149"] = {
+		"I ask, and something answers. Every time I'm a little amazed that it bothers.",
+		"Prayer is a door I knock on all day. It has never once stayed shut.",
+		"Whatever listens when I pray, it listens well. Someday I'd like to meet it and thank it properly.",
+	},
+	["cls.priest.heal.w06.150"] = {
+		"Be mended, and be quick about it.",
+		"Close. Knit. Hold.",
+		"Mercy, here, and now.",
+	},
+	["cls.priest.heal.w06.151"] = {
+		"I'm only the hands. Whatever does the real work never signs its name.",
+		"People thank me. I pass it on, upward, where it belongs.",
+		"The skill is mine, the mercy isn't. I try to remember which is which.",
+	},
+	["cls.priest.heal.w06.152"] = {
+		"keeps one eye on the foe and one on the wounds, and the prayer runs on under the noise like a stream under ice.",
+		"speaks the words between two blows of the fight, and turns back to it before the glow has faded.",
+	},
+	["cls.priest.heal.w06.153"] = {
+		"glances along the line of companions, counting, and sends the mending where the count came up short.",
+		"moves among the others without hurry, a word here, a touch there, like someone tending a row of lamps.",
+	},
+	["cls.priest.heal.w06.154"] = {
+		"Someone has to stand at the back and refuse to let anyone die. Today it's me. Every day it's me.",
+		"I didn't take up the robe to be loved. I took it up so fewer people would be buried.",
+		"Keep them alive. Everything else in the creed is commentary.",
+	},
+	["cls.priest.heal.w06.155"] = {
+		"Healers don't get to be squeamish. Lucky me.",
+		"I've seen what's under the skin more often than I'd like. Still, closed is better.",
+	},
+	["cls.priest.heal.w06.156"] = {
+		"Pain out there, mending back here. A priest's fight swings like a pendulum.",
+		"Hurt the foe, heal the hurt, hurt the foe again. The rhythm is all of it.",
+		"Strike, mend, strike. A plain little tune, and it works.",
+	},
+	["cls.priest.heal.w06.157"] = {
+		"Not yet, not yet... now. They'll never know how close that was. Better so.",
+		"I saw the moment coming and met it. They'll never know there was a moment.",
+	},
+	["cls.priest.heal.w06.158"] = {
+		"uncorks the vial and drinks it down without ceremony, like any healer taking medicine: last, and grudgingly.",
+		"empties the little bottle in two swallows and grimaces at the taste, the worst patient of the day.",
+	},
+	["cls.priest.heal.w06.159"] = {
+		"closes a fist around the healthstone, and its cold green glow sinks into the skin.",
+		"turns the warlock's stone over once, doubtfully, then uses it anyway.",
+	},
+	["cls.priest.heal.w06.160"] = {
+		"No company to tend today. The only patient is the stubborn one in my own boots.",
+		"Alone, a healer sits at both ends of the bargain. The prayer goes out and comes straight back.",
+		"On my own, every mending is a quiet one. Nobody to fuss over but me.",
+	},
+	["cls.priest.heal.w06.161"] = {
+		"Healer, patient and audience. I play every part.",
+		"Nicely done. Why, thank you. Think nothing of it.",
+	},
+	["cls.priest.heal.w06.162"] = {
+		"A pause between fights. I top everyone up and pretend I'm not watching my reserves.",
+		"In here the quiet never lasts. I mend what I can before the next door opens.",
+		"The others check the fallen for coin; I check the living for holes.",
+	},
+	["cls.priest.heal.w06.163"] = {
+		"Don't talk. Let it work.",
+		"Shh. Almost finished.",
+		"Rest your weight on me a moment.",
+	},
+	["cls.priest.heal.w06.164"] = {
+		"Better than before. Well, nearly.",
+		"All closed up. No charge, this time.",
+		"There, the cut's shut. You'll have a handsome scar.",
+	},
+	["cls.priest.heal.w06.165"] = {
+		"Each life I hold up is heavy, and I wouldn't set a single one down.",
+		"People think healing is soft work. Let them carry someone back from the edge just once.",
+		"Holding someone up is a weight you can't put down halfway.",
+	},
+	["cls.priest.heal.w06.166"] = {
+		"The Light comes up through my palms like warmth through a stone left in the sun.",
+		"Warm Light, warm hands. Some days I'd heal just to feel it pass.",
+	},
+	["cls.priest.heal.w06.167"] = {
+		"The Light holds this line with us!",
+		"Hold fast! The Light's still with us!",
+	},
+	["cls.priest.heal.w06.168"] = {
+		"I can close the cut. The fear that came before the blow is beyond me.",
+		"Flesh I can mend. The look that stays in the eyes afterward isn't my craft.",
+	},
+	["cls.priest.heal.w06.169"] = {
+		"lets the moment pass without comment, as one does with small mercies.",
+		"seems to find a little more footing, as if someone had set a heavy load down nearby.",
+	},
+	["cls.priest.heal.w06.170"] = {
+		"Little mercies keep the world turning. That was one.",
+		"A small repair. The world is mostly held together by small repairs.",
+		"Nothing grand. Just one hurt fewer in the world than a moment ago.",
+	},
+	["cls.priest.heal.w06.171"] = {
+		"Line up, the healer's open.",
+		"Anybody else leaking? Speak up now, before I sit down.",
+		"Who's next? No pushing, there's mercy for everyone.",
+	},
+	["cls.priest.heal.w06.172"] = {
+		"Every wound teaches me where the body is weakest. I wish it taught gentler lessons.",
+		"I know the body better than I ever wanted to. Where it tears, where it holds, where it lies about being fine.",
+	},
+	["cls.priest.heal.w06.173"] = {
+		"You walked into that one. Don't again; mana doesn't grow on trees.",
+		"That was avoidable. I closed it anyway. Learn something.",
+	},
+	["cls.priest.heal.w06.174"] = {
+		"The older priests say you carry every one you didn't reach. So I reach, every time I can.",
+		"The elders of the order say no healer forgets the ones who slipped through. I'd rather have less to remember.",
+	},
+	["cls.priest.heal.w06.175"] = {
+		"holds out a hand, and a soft gold light pours from it like water from a jug, no more and no less than is needed.",
+		"murmurs a short prayer; the Light gathers, settles, and is gone, leaving the wound smaller than it found it.",
+	},
+	["cls.priest.heal.w06.176"] = {
+		"If I had a copper for every wound I've closed, I could retire and let them all bleed.",
+		"The pay is terrible, the hours are worse, and the patients bite. Apparently I love it.",
+		"Healing: the only trade where the customer usually shouts at you mid-job.",
+	},
+	["cls.priest.heal.w06.177"] = {
+		"Three hurt, one prayer. Choose. Choose fast. Don't look back at the choice.",
+		"Triage is a cold word for a warm thing. I do it anyway, and quickly.",
+		"Front first. Always the front. The rest the moment I can.",
+	},
+	["cls.priest.heal.w06.178"] = {
+		"There. Now try to dent it again, I dare you.",
+		"Mended under your nose. How does that feel?",
+		"Everything you broke, I've put back. Do try harder.",
+	},
+	["cls.priest.heal.w06.179"] = {
+		"The shadow is quicker. Mending is slower and asks more of me. That's exactly why I keep practicing it.",
+		"Every priest learns both halves. The hard part is remembering which one I'm for.",
+		"Discipline is choosing the slow bright work when the dark work would be easier.",
+	},
+	["cls.priest.heal.w06.180"] = {
+		"Go whole, and go carefully.",
+		"Done. Walk in mercy, and walk a little slower.",
+		"There. Carry it lightly; it was given freely.",
+	},
+	["cls.priest.heal.w06.181"] = {
+		"I don't pretend to know what answers. I only know the wound closes when I ask.",
+		"Call it faith, call it a trained habit of the hands. From the outside the result looks the same.",
+	},
+	["cls.priest.heal.w06.182"] = {
+		"Could someone else bleed for a change? Spread it about a little.",
+		"The same faces, every fight. I'm starting a waiting list.",
+		"Take turns getting hit, would you? It's kinder on my prayers.",
+	},
+	["cls.priest.heal.w06.183"] = {
+		"Everyone standing, everyone grumbling. That's a good day's work.",
+		"No one lost. On days like this the craft feels almost like singing.",
+		"All of them on their feet and arguing about the loot. Music.",
+	},
+	["cls.priest.heal.w06.184"] = {
+		"works with the unhurried patience of the dead, who have nowhere else to be.",
+		"bends over the hurt with cold, careful fingers, and the mending takes as surely as any living priest's.",
+	},
+	["cls.priest.heal.w06.185"] = {
+		"The great prayers come easily now. Easy is dangerous, so I make myself mean every word.",
+		"So much power behind the words by now. It would be easy to forget whose it is.",
+	},
+	["cls.priest.heal.w06.186"] = {
+		"Every heal is an argument with death. I win most of them. Most.",
+		"Death keeps asking. I keep saying no, a prayer for every asking.",
+		"I haggle with death all day over small sums. I'm saving my strength for the large ones.",
+	},
+	["cls.priest.heal.w06.187"] = {
+		"Hand on mine. Feel that? That's you, staying.",
+		"Look, it's already less red. You're mending faster than you think.",
+	},
+	["cls.priest.heal.w06.188"] = {
+		"lets the wand hang loose in one hand while the other shapes the prayer, then snaps it back up toward the foe.",
+		"breaks off from the fight for the length of a prayer, no longer, and is back at it before the mending has stopped glowing.",
+	},
+	["cls.priest.heal.w06.189"] = {
+		"Mend like good mortar: slow to set, hard to crack. The Light and I agree on that much.",
+		"Firm hands, honest stone, a word to the Light. Mending the dwarven way wants nothing fancier.",
+	},
+	["cls.priest.heal.w06.190"] = {
+		"The abbey at Northshire taught me the words. The road taught me to say them quickly.",
+		"At Northshire they taught me the slow prayers. Since then I've learned the quick ones.",
+	},
+	["cls.priest.heal.w06.191"] = {
+		"Bleed, mend, walk on. Some days that's the whole story.",
+		"Patch, carry on, patch again. Not glorious. Necessary.",
+		"The road wears holes in people; I follow along behind it, darning.",
+	},
+	["cls.priest.jest.w06.001"] = {
+		"I prayed for patience. I was sent a party of adventurers. I believe that's what they call a lesson.",
+		"Why do priests carry wands? Because 'I'll pray for you' doesn't scare off wolves.",
+	},
+	["cls.priest.levelup.w06.001"] = {
+		"Something new is waiting at the trainer's, I can feel it. A prayer I haven't learned yet, already half familiar.",
+		"Stronger, steadier. Whatever answers me answers a little more fully now.",
+		"A little more I can carry for others. That's the only kind of growing I've ever cared about.",
+	},
+	["cls.priest.levelup.w06.002"] = {
+		"feels the well inside run a little deeper, and lets out a quiet, surprised laugh.",
+		"flexes {g:his|her} fingers and feels the power sit easier in them, as if it had finally decided to stay.",
+		"lifts {g:his|her} gaze for a moment, the way one does when a long-awaited answer arrives.",
+	},
+	["cls.priest.lowhp.w06.001"] = {
+		"Heal the healer. Swallow the pride and spend the mana on me.",
+		"My own turn on the table. Quick, before the hands stop listening.",
+		"Rule one, and I'm breaking it: never let yourself get this low. Fix it now.",
+	},
+	["cls.priest.lowhp.w06.002"] = {
+		"I'm the one taking the blows! Somebody draw it off me!",
+		"Get it off the healer! Unless you'd all like to carry on without one!",
+		"It's on me, and I can't pray and run at once! Help!",
+	},
+	["cls.priest.lowhp.w06.003"] = {
+		"presses a palm flat to {g:his|her} own chest and whispers fast, the words tumbling over each other.",
+		"staggers, then plants {g:his|her} feet and lays a trembling hand over the worst of the wounds.",
+		"falls back a step, lips already shaping a prayer meant, for once, for {g:himself|herself}.",
+	},
+	["cls.priest.lowhp.w06.004"] = {
+		"This is the part where I take my own advice. Lie down? No. Pray faster.",
+		"The healer's in trouble. Luckily, the healer also knows the cure.",
+		"Funny how the prayers sound different when they're for me.",
+	},
+	["cls.priest.lowhp.w06.005"] = {
+		"I've been dead once already. I didn't care for it. Not again.",
+		"This body has failed before and been made to walk. I'd rather not test it twice.",
+	},
+	["cls.priest.lowhp.w06.006"] = {
+		"Heart hammering, hands slick. Breathe, and say the words anyway.",
+		"Every breath is a small knife. Use it to pray.",
+	},
+	["cls.priest.lowhp.w06.007"] = {
+		"Light, I'm still useful. Keep me a while longer.",
+		"Not yet, Light. There's work left, and I'm the one who has to do it.",
+		"Light, I ask for others every day. This once, for me.",
+	},
+	["cls.priest.lowhp.w06.008"] = {
+		"Elune, I'm not done. Hold me a little longer.",
+		"Mother Moon, steady me. I can't fall while there's work left.",
+	},
+	["cls.priest.lowhp.w06.009"] = {
+		"The shield should have been up already. Up it goes now, late and grateful.",
+		"Shield, then heal, then worry. Order matters.",
+		"Wrap the ward tight and close the worst of it. Fast.",
+	},
+	["cls.priest.lowhp.w06.010"] = {
+		"Run! Go on, run, and leave me be!",
+		"Away from me! Go, and take your fear with you!",
+	},
+	["cls.priest.lowhp.w06.011"] = {
+		"Alone and on the edge. If this ends here, nobody will even know which prayer was the last.",
+		"No one coming. Fine. I've never needed an audience to pray.",
+	},
+	["cls.priest.lowhp.w06.012"] = {
+		"You'll have to do better. I've stitched people together from less than this.",
+		"Others have walked away from wounds like these. I made sure they did.",
+	},
+	["cls.priest.lowhp.w06.013"] = {
+		"seems to thin at the edges, slipping out of the foe's notice like a voice fading from a crowded room.",
+		"goes very quiet and very still, as if trying to be forgotten by everything at once.",
+	},
+	["cls.priest.lowhp.w06.014"] = {
+		"Someone will still need me after this. Hold on to that, not to the pain.",
+		"Think of the next person I'll have to mend. Stay for them.",
+		"There's always one more wound out there waiting for these hands. Stay.",
+	},
+	["cls.priest.lowhp.w06.015"] = {
+		"Every patient I ever scolded for flinching: I take it back.",
+		"Ah. So this is what my patients complain about.",
+	},
+	["cls.priest.lowhp.w06.016"] = {
+		"keeps casting toward the others even as {g:he|she} sways on {g:his|her} feet.",
+		"sways, steadies, and turns the next prayer toward a companion instead of {g:himself|herself}.",
+		"ignores the wound one moment longer, to finish the word meant for someone else.",
+	},
+	["cls.priest.lowhp.w06.017"] = {
+		"Health or mana, one of them has to give. Choose quickly.",
+		"Spend it all on staying up. Mana comes back. I don't, not easily.",
+	},
+	["cls.priest.lowhp.w06.018"] = {
+		"Fine. Fine! Let me just patch this and we'll carry on.",
+		"Ow. Rude. Give me a moment to mend and we'll discuss it.",
+	},
+	["cls.priest.muse.w06.001"] = {
+		"The worst part of running dry isn't the danger. It's watching someone bleed while I wait for my reserves to fill.",
+		"Mana is a well, not a river. Draw too fast and you hear the bucket hit stone.",
+		"When the power runs out, all that's left is a tired person in a robe, holding very still and hoping.",
+	},
+	["cls.priest.muse.w06.002"] = {
+		"sits down wherever there is room, uncorks a flask of water and drinks it slowly, eyes half closed, as if listening to something fill back up.",
+		"takes small, patient sips from a waterskin and waits, hands loose in {g:his|her} lap, for the quiet inside to deepen again.",
+		"drinks, rests, drinks again: the old unglamorous ritual of a healer putting {g:himself|herself} back together.",
+	},
+	["cls.priest.muse.w06.003"] = {
+		"My wand will never be sung about. It just spits its little bolt, over and over, while the real work happens in my head.",
+		"A wand is the least solemn thing I own, and the one I use most. There's a sermon in that somewhere.",
+		"Nobody trains for years to point a stick and wait. And yet here I am, pointing, waiting, quite good at it.",
+	},
+	["cls.priest.muse.w06.004"] = {
+		"Yes, it's a wand. No, it doesn't do tricks. Well. One trick. Repeatedly.",
+		"Don't laugh at the wand. It has seen off more trouble than most swords I know.",
+	},
+	["cls.priest.muse.w06.005"] = {
+		"Cloth doesn't stop a blade. It does show every stain, so everyone knows exactly what kind of day I've had.",
+		"The hem of this robe has collected a sample of every road I've walked. Someone could map my travels by the mud.",
+		"Plate for the ones at the front, cloth for the one at the back. Someone decided that long ago, and my ribs still have opinions.",
+	},
+	["cls.priest.muse.w06.006"] = {
+		"turns back a sleeve, finds a fresh tear in the cloth, and sighs at it with the patience of someone who mends things for a living.",
+		"threads a needle with care and closes a rip in {g:his|her} robe, small even stitches, the same steady hands that close other wounds.",
+	},
+	["cls.priest.muse.w06.007"] = {
+		"Doubt isn't the enemy of what I believe. It's the guard at the gate, asking each new certainty for its papers.",
+		"On the days I doubt, I work exactly as hard. The prayer doesn't check my mood before it answers.",
+		"If I ever stop doubting, I'll know something has gone wrong. Certainty is how the worst zealots begin.",
+	},
+	["cls.priest.muse.w06.008"] = {
+		"The Light doesn't come because I'm good. It comes because I've practiced opening the door, a thousand times, on tired days too.",
+		"People imagine the Light as a gift dropped in the lap of the worthy. It's more like a craft. You show up, you kneel, you do it again.",
+		"Discipline first, grace after. The teachers said it so often I stopped hearing it. Now I hear it every time the Light answers.",
+	},
+	["cls.priest.muse.w06.009"] = {
+		"Shadow is not evil the way a knife isn't evil. But I keep it in a sheath, and I always know where the sheath is.",
+		"The darker prayers come easily when I'm angry. That's exactly why I only use them when I'm calm.",
+		"There's a cold, clean pleasure in the shadow arts. I note it the way a physician notes a fever: carefully, and without trusting it.",
+	},
+	["cls.priest.muse.w06.010"] = {
+		"Some of the old teachers won't speak of the darker arts at all. Others say a mind that doesn't know its own dark corners is the easiest one to break. I think both are afraid of the same thing.",
+		"One school says: never touch the dark. The other says: know it, so it can't surprise you. I've ended up somewhere in between, which is to say, careful.",
+	},
+	["cls.priest.muse.w06.011"] = {
+		"I rarely learn their names. I remember the faces, though: the moment the fear goes out of them and they realize they'll be fine.",
+		"Strangers I've patched up sometimes wave at me across a crowd. I never recognize the face first. I recognize the wound.",
+		"There's a look people get when the pain stops. Surprise, mostly, and a little embarrassment. I collect it the way others collect coin.",
+	},
+	["cls.priest.muse.w06.012"] = {
+		"Others admire the view. I watch everyone's color and the way they're favoring that left leg.",
+		"A healer never really looks at the scenery. There's always someone at the edge of my eye, limping slightly, pretending not to.",
+		"I count limbs on everyone I meet, without meaning to. Two arms, two legs, good color. Then I can say hello.",
+	},
+	["cls.priest.muse.w06.013"] = {
+		"When someone falls, everyone looks at the healer. When nobody falls, everyone looks at the loot.",
+		"Keep everyone standing and it's 'a quiet day'. Lose one and it's the healer's fault. I've made my peace with the arithmetic.",
+	},
+	["cls.priest.muse.w06.014"] = {
+		"My prayer book is more margin than prayer by now: notes, corrections, the odd sketch of a wound I didn't understand.",
+		"Every rite I was taught, I've rewritten a little in pencil. The words stay; the notes on when they fail are mine.",
+		"Study is the quiet half of healing. Nobody sees the hours with the book, only the moment the words work.",
+	},
+	["cls.priest.muse.w06.015"] = {
+		"The words of a healing prayer matter less than the teachers pretend. What matters is whether I mean them while my hands are busy.",
+		"I've stumbled over the words and still seen the wound close. I've said them perfectly and felt nothing answer. Intent is the stranger thing.",
+	},
+	["cls.priest.muse.w06.016"] = {
+		"kneels for a few moments, not long enough for anyone to notice, then rises and brushes off {g:his|her} knees.",
+		"lowers {g:his|her} head over clasped hands, lips moving without sound, and is done before the moment can turn into a ceremony.",
+	},
+	["cls.priest.muse.w06.017"] = {
+		"pats down {g:his|her} pockets in a familiar order: water, a little bread, the worn book, a spare strip of cloth. Then nods, satisfied.",
+		"takes stock of what's left: a waterskin half full, a heel of bread, a book whose spine has given up. Enough, for now.",
+	},
+	["cls.priest.muse.w06.018"] = {
+		"Anyone I cross paths with can have a blessing. It costs nothing, and you'd be amazed how few people ask.",
+		"I hand out fortitude like bread on a feast day. Some folk look suspicious. Most just stand a little straighter.",
+	},
+	["cls.priest.muse.w06.019"] = {
+		"When two people are bleeding and I can reach one in time, I choose. Nobody tells you that is the job. It is the job.",
+		"Choosing who to heal first: a cold task for a burning moment. I've learned to make the choice fast, and to make my peace with it slowly.",
+		"The hardest thing I was taught wasn't a spell. It was how to look away from one wound so I could close another.",
+	},
+	["cls.priest.muse.w06.020"] = {
+		"My fear isn't dying. It's standing there with empty hands while someone looks at me, waiting for the thing I can't do.",
+		"Every healer dreads the same moment: the spell that should come and doesn't. I've felt it. It feels like falling while standing still.",
+	},
+	["cls.priest.muse.w06.021"] = {
+		"People assume priests are serene. I'm serene the way a duck is: calm on top, paddling like mad underneath.",
+		"Calm? I'm a bundle of nerves in a robe. I've just had a lot of practice looking peaceful.",
+	},
+	["cls.priest.muse.w06.022"] = {
+		"No, I can't bless your boots so they stop squeaking. I've tried. Twice.",
+		"People ask me to bless the strangest things. Dice, mostly. Sometimes a sausage.",
+	},
+	["cls.priest.muse.w06.023"] = {
+		"The others can fall and get up. If I fall, nobody gets up. I keep that in mind every time I'm tempted to be brave.",
+		"Courage, for me, means staying at the back where I belong. It looks less heroic than it is.",
+		"My first duty is to stay on my feet. Not out of fear: everyone I'm holding up is counting on it.",
+	},
+	["cls.priest.muse.w06.024"] = {
+		"I've wished more than one enemy a quick mending, right after I put them down. It isn't hypocrisy. It's a healer having a bad day.",
+		"Even mid-fight, part of me notes where the other side is hurt, and wishes I could fix it. I've stopped trying to train that out of myself.",
+	},
+	["cls.priest.muse.w06.025"] = {
+		"In the Plaguelands, the dead walk in their thousands. Every wound I close is a small, stubborn vote against them.",
+		"The plague made the whole world understand what a healer is for. I'd rather it had learned some other way.",
+	},
+	["cls.priest.muse.w06.026"] = {
+		"The Light burns a little going through me. I let it. A little pain is a fair toll for a dead thing that mends the living.",
+		"Some of the living flinch when I heal them. Fair enough. I flinch too, every time the Light remembers what I am.",
+		"They told me the Light would refuse me. It didn't. It just makes me feel every inch of the distance between us.",
+	},
+	["cls.priest.muse.w06.027"] = {
+		"A corpse with a prayer book, keeping the living alive. The Lich King must be furious, and that cheers me more than it should.",
+		"My own flesh barely mends anymore. Other people's, I can still stitch together. There's a joke in that I'm too tired to tell.",
+	},
+	["cls.priest.muse.w06.028"] = {
+		"Elune does not shout. She waits, the way still water waits, until I'm quiet enough to see what's in it.",
+		"The sisters of the temple teach that Elune answers softly, so that only the patient hear. I'm still learning patience.",
+		"Wherever the road goes, Elune's quiet goes with me. I only have to stop talking long enough to notice it.",
+	},
+	["cls.priest.muse.w06.029"] = {
+		"Elune's light is gentle; it doesn't burn what it touches. I try to heal the same way, without making anyone feel smaller for needing it.",
+		"My people pray to a goddess who watches rather than commands. It makes a difference, I think, in how we mend each other.",
+	},
+	["cls.priest.muse.w06.030"] = {
+		"Dwarves came to the Light the way we come to anything: slowly, suspiciously, and then for good.",
+		"In Ironforge they say a prayer should be like a good wall: plain, solid, and still there in a hundred years.",
+	},
+	["cls.priest.muse.w06.031"] = {
+		"The brothers of Northshire Abbey say the Light is a lantern, not a sun: you carry it to where it's needed.",
+		"The Cathedral in Stormwind is all height and gold. The Light I know is smaller, and it travels better.",
+	},
+	["cls.priest.muse.w06.032"] = {
+		"The Darkspear elders say the loa respect anyone who keeps a promise. I keep mine to the wounded. I hope that counts with everyone listening.",
+		"Old spirits on one side, the priests' teachings on the other. I've stopped choosing between them. I just heal, and let them argue.",
+	},
+	["cls.priest.muse.w06.033"] = {
+		"I can put terror into a mind with a single shout. It's useful. I hate how useful it is.",
+		"The scream that scatters my enemies comes from somewhere I'd rather not visit. I visit anyway, when I have to, and leave quickly.",
+	},
+	["cls.priest.muse.w06.034"] = {
+		"Inside another mind, everything is too close: their fear, their hunger, the wrongness of my own will in their hands. I never stay longer than I must.",
+		"Taking someone's body like a borrowed coat. The teachers called it a tool. It feels more like trespass every time.",
+	},
+	["cls.priest.muse.w06.035"] = {
+		"Seeing through someone else's eyes for a moment: how strange their world looks, all its colors a little off from mine.",
+		"When I look through another's eyes, the first thing I notice is never what they see. It's what they're ignoring.",
+	},
+	["cls.priest.muse.w06.036"] = {
+		"Binding the dead in chains of prayer feels like the oldest thing a priest does. As if we were made for it, long ago.",
+		"The shackles I lay on the restless dead aren't cruelty. They're a pause, a held breath, a chance for someone to finish it cleanly.",
+	},
+	["cls.priest.muse.w06.037"] = {
+		"Shackling the walking dead, when I'm one of them. I try not to think too hard about how easily it would work on me.",
+		"The chains take the undead and leave me alone. I've never been sure whether that's mercy or an oversight.",
+	},
+	["cls.priest.muse.w06.038"] = {
+		"Calling someone back across death never becomes ordinary. I say the words the same way each time, and each time my hands shake afterward.",
+		"Death is a door I'm allowed to knock on. I've never once been sure it will open, and I hope I never get used to it when it does.",
+	},
+	["cls.priest.muse.w06.039"] = {
+		"Half of staying alive as a healer is learning to be forgettable at exactly the right moment. The other half is running.",
+		"There's a prayer that simply makes the enemy forget I'm here. Of all the gifts, it's the one I'm least proud of and most grateful for.",
+	},
+	["cls.priest.muse.w06.040"] = {
+		"The fire I light inside before a fight isn't anger. It's more like a hearth: something to keep my resolve from going cold.",
+		"A small flame kindled under the ribs, and suddenly the blows land softer. The teachers called it inner fire. I call it not giving up early.",
+	},
+	["cls.priest.muse.w06.041"] = {
+		"For someone sworn to mend, I own a surprising number of ways to set things on fire.",
+		"There's a prayer that calls fire down on an enemy. Every time it works, I look at my hands for a moment, as if they belonged to someone else.",
+	},
+	["cls.priest.muse.w06.042"] = {
+		"Picking curses and enchantments off people is like picking burrs off a dog: tedious, a little prickly, and they're always grateful afterward.",
+		"Half my spells mend flesh. The other half untangle magic someone else left lying around in a body. Nobody warns you about the untangling.",
+	},
+	["cls.priest.muse.w06.043"] = {
+		"Tell me early when you're hurt. I'm a healer, not a mind reader. Well, not before lunch.",
+		"Bleeding? Say so. I notice most things, but pride hides wounds better than any armor.",
+	},
+	["cls.priest.muse.w06.044"] = {
+		"Every time I strike with the mind, a little of it echoes back into my own skull. Nobody mentions the headaches in the training halls.",
+		"Hurling a thought hard enough to wound leaves the thrower dizzy too. A fair trade, I suppose. Most days.",
+	},
+	["cls.priest.muse.w06.045"] = {
+		"Stillness is part of the craft. Sit, breathe or don't, let the quiet seep back in. A healer who can't rest is only a fast road to an empty well.",
+		"The trainers called it spirit: whatever fills me up again when I stop moving. I've never found a better word, and I've looked.",
+	},
+	["cls.priest.muse.w06.046"] = {
+		"scrubs at {g:his|her} hands with a little water, working at the creases where other people's troubles tend to linger.",
+		"rinses {g:his|her} fingers one by one, with the absent care of someone who has done it a thousand times between one wound and the next.",
+	},
+	["cls.priest.muse.w06.047"] = {
+		"traces a small sign in the air out of habit, notices {g:himself|herself} doing it, and smiles a little.",
+		"makes the old gesture of blessing toward nothing in particular, then tucks the hand away as if caught.",
+	},
+	["cls.priest.muse.w06.048"] = {
+		"opens a small, battered book to a page that falls open on its own, and reads a few lines with silent lips.",
+		"leafs through a worn little volume, pausing at a dog-eared page as at an old friend's door.",
+	},
+	["cls.priest.muse.w06.049"] = {
+		"Priests don't flee. We relocate with great dignity, at speed.",
+		"I never retreat. I move to where I'm more useful, which happens to be further away.",
+		"I'm not running away. I'm going to fetch help, very quickly, in the opposite direction.",
+	},
+	["cls.priest.muse.w06.050"] = {
+		"I never know what to do when someone thanks me properly. Mending them was the easy part. Being looked at is harder.",
+		"Gratitude makes me shuffle my feet like an apprentice. I'd rather be handed a cup of water and left to sit.",
+	},
+	["cls.priest.muse.w06.051"] = {
+		"No one ever asked me to save everyone. That demand comes from somewhere inside, and it's the hardest master I've served.",
+		"I took a vow to heal. Somewhere along the way it grew into a vow to never lose anyone, and that one I can't keep.",
+	},
+	["cls.priest.muse.w06.052"] = {
+		"Resting isn't laziness for me. It's maintenance. A tired healer makes mistakes, and my mistakes have names.",
+		"Sitting down while others work still feels wrong. It shouldn't. Everyone works better when the one keeping them alive isn't exhausted.",
+	},
+	["cls.priest.muse.w06.053"] = {
+		"My favorite sound isn't a hymn. It's people laughing a little too loudly after a fight everyone survived.",
+		"The best part of the job comes after: the shaky jokes, the passed flask, the one who was pale an hour ago complaining about the food.",
+	},
+	["cls.priest.muse.w06.054"] = {
+		"Traveling alone, a healer has only one patient. It's quieter, and oddly lonelier than tending a crowd.",
+		"With no one to look after but myself, my prayers feel like a voice in an empty room. Still, the room answers.",
+	},
+	["cls.priest.muse.w06.055"] = {
+		"Walk carefully. And whatever watches over you, may it be wide awake today.",
+		"Go well. If you get in trouble, shout. I'm quicker than I look.",
+	},
+	["cls.priest.muse.w06.056"] = {
+		"Some days I catch myself weighing who deserves the next heal. I stop at once. That scale isn't mine to hold.",
+		"It would be easy to heal the kind ones faster. The wound doesn't care who's kind, so neither can I.",
+	},
+	["cls.priest.muse.w06.057"] = {
+		"After a long stretch of casting there's an ache behind my eyes, like I've been staring into a lamp. It passes. It always passes.",
+		"Power doesn't come free. Mine costs a dull throb at the temples and a sudden, shameless hunger for bread.",
+	},
+	["cls.priest.muse.w06.058"] = {
+		"The trainers warn every novice: a priest who can't say no will be empty by noon. I've learned to ration kindness. It feels worse than it sounds.",
+		"'Spend yourself on everyone and you'll have nothing for the one who needs it.' The teachers say it as a warning. On tired days I hear it as an accusation.",
+	},
+	["cls.priest.muse.w06.059"] = {
+		"The elders insist the Light is not a weapon. Then they teach us to call it down on someone's head. I've stopped pointing this out at supper.",
+		"'The Light is for mending,' says every priest, right before showing you how to burn a gnoll with it.",
+	},
+	["cls.priest.muse.w06.060"] = {
+		"Mending and harming use the same knowledge, the same focus, the same quiet. Only the direction differs, and I choose it every time.",
+		"The remedy in one hand, the harm in the other. The trick is never letting either hand forget the other is there.",
+	},
+	["cls.priest.muse.w06.061"] = {
+		"The mind is a house with a cellar. Studying the dark arts means learning where the cellar door is, and keeping the key on me.",
+		"Every mind has rooms its owner never visits. My training taught me to find them. Decency taught me to knock.",
+	},
+	["cls.priest.muse.w06.062"] = {
+		"Healing taught me to read faces. Pallor, a clenched jaw, the brave smile that means 'it's worse than I'm saying'. Lies show up the same way.",
+		"I can tell a sprain from a break by how someone stands. I can tell a lie by the same means. It makes me poor company at cards.",
+	},
+	["cls.priest.muse.w06.063"] = {
+		"Whatever heals through me isn't mine. I'm the cup, not the water. Good to remember on days people call me a miracle worker.",
+		"When it works, it isn't me. When it fails, it's usually me. That seems to be the arrangement, and I've accepted it.",
+	},
+	["cls.priest.muse.w06.064"] = {
+		"A priest's library is mostly candle stubs and borrowed books. Mine fits in a pack, and I've read every page more than twice.",
+		"I've spent my eyes on too many prayers by a stub of candle. Still the best hours of any day, those small quiet ones.",
+	},
+	["cls.priest.muse.w06.065"] = {
+		"There's a small, private joy in the first heal of the day, before anything has gone wrong. I try to notice it every time.",
+		"The first wound I close each day still surprises me a little. As if the world had agreed to cooperate, just once more.",
+		"Before the trouble starts, there's always one easy mending: a scraped knuckle, a sprained wrist. I'm fond of those.",
+	},
+	["cls.priest.muse.w06.066"] = {
+		"Give me a moment. The well is dry, and shouting at it won't fill it.",
+		"Patience. My reserves are empty, and nothing I know of hurries them.",
+		"If you want me useful in the next fight, let me have one minute of silence first.",
+	},
+	["cls.priest.muse.w06.067"] = {
+		"Knowing exactly how fragile a body is doesn't make me braver. It makes me very polite to anything with claws.",
+		"I've seen inside enough wounds to know how little holds a person together. I walk more carefully than the others, and I'm not ashamed of it.",
+		"Healers make poor daredevils. We know too precisely what happens next.",
+	},
+	["cls.priest.muse.w06.068"] = {
+		"flexes {g:his|her} fingers one at a time, working the stiffness out of hands that have held a great deal of power today.",
+		"shakes out both hands as if drying them, though they are dry, until the faint tingle of spent magic fades from the fingertips.",
+		"presses both thumbs into tired palms, slowly, the way a smith might rest a hammer between jobs.",
+	},
+	["cls.priest.muse.w06.069"] = {
+		"The Light answers priests on both sides of this war. I've never decided whether that's a comfort or a rebuke.",
+		"Across the lines, a priest of the other side is saying nearly the same words as me. The Light hears us both. Think about that too long and sleep won't come.",
+		"Priests in the enemy's camp kneel to the same Light I do. It should make the war smaller. Somehow it makes it larger.",
+	},
+	["cls.priest.muse.w06.070"] = {
+		"Blood stopped bothering me a long time ago. Sometimes that bothers me more than the blood ever did.",
+		"I can kneel in a mess that would turn a soldier pale and think only about pressure and timing. I'm not sure when that happened.",
+	},
+	["cls.priest.muse.w06.071"] = {
+		"If a novice asked me for one lesson, I'd say: watch the quiet ones. The loud ones will tell you they're hurt.",
+		"The teachers taught words and gestures. The road taught me which wounds people hide, and that's the lesson I'd pass on.",
+		"One thing no book covers: people lie about pain in both directions. Learn which kind of liar you're tending.",
+	},
+	["cls.priest.muse.w06.072"] = {
+		"Healers eat last. Not out of virtue; everyone else was too hungry to wait for me to finish.",
+		"Always the last to the fire, always the first to be asked if this cut looks bad. Yes. It looks bad. Sit down.",
+	},
+	["cls.priest.muse.w06.073"] = {
+		"There are days I have nothing left to give but technique. The kindness has run out; only the craft is still working. I hope nobody can tell.",
+		"Compassion gets tired before the body does. I keep going on habit then, and trust it to carry me until the feeling catches up.",
+	},
+	["cls.priest.muse.w06.074"] = {
+		"Not every mending is a miracle. Most are a cracked lip, a bad knee, a fever on the turn. Small mercies are still mercies.",
+		"I'll never stop the war. I can stop a cough, set a wrist, ease a wound. That's a different scale, but it isn't nothing.",
+	},
+	["cls.priest.muse.w06.075"] = {
+		"runs a quick glance over whoever is nearby, the habit of a healer checking every face for pallor.",
+		"looks over the people within sight one by one, measuring limps and color, then relaxes when nobody needs anything.",
+	},
+	["cls.priest.muse.w06.076"] = {
+		"I've never managed to pray while furious. The Light doesn't refuse me then; I simply can't find the way in.",
+		"Anger and the Light don't share a room well. When I need both, I send the anger out first and let it wait in the hall.",
+	},
+	["cls.priest.muse.w06.077"] = {
+		"I've sat with enough dying people to stop fearing the moment itself. What I fear is leaving someone half mended.",
+		"When my turn comes, I hope someone sits with me the way I've sat with others. Quietly, without promises.",
+	},
+	["cls.priest.muse.w06.078"] = {
+		"Everyone carries a little faith. Mine just comes with duties attached.",
+		"Faith is easy on a quiet day. Ask me again when someone's bleeding and I'm out of power.",
+	},
+	["cls.priest.muse.w06.079"] = {
+		"I mend them and they walk off into their lives. I almost never learn how the story ends. I've decided to assume it ends well.",
+		"Most of the people I heal, I'll never see again. I picture them somewhere ordinary, complaining about prices, and it helps.",
+	},
+	["cls.priest.muse.w06.080"] = {
+		"Every enemy with any sense goes for the one in cloth first. I take it as a professional compliment, from a safe distance.",
+		"Being the softest target on the field teaches you to stand in odd places: behind pillars, behind friends, behind your own good sense.",
+	},
+	["cls.priest.muse.w06.081"] = {
+		"Spent power leaves a taste like cold metal. When it's gone completely, everything tastes of nothing at all.",
+		"I can feel my reserves the way you feel hunger: a low, constant measure, ticking down with every word I say.",
+		"Mana is the quiet bookkeeping behind every miracle. I always know the balance, and it is always lower than I'd like.",
+	},
+	["cls.priest.muse.w06.082"] = {
+		"hums a slow hymn under {g:his|her} breath, loses the tune halfway, and finishes it in silence.",
+		"murmurs part of an old chant, more habit than devotion, and lets it trail off into quiet.",
+	},
+	["cls.priest.quest_complete.w06.001"] = {
+		"Most of any reward goes to water, bread and a new candle. Healing runs on very plain fuel.",
+		"I'll spend this on cloth and ink, I suppose. Healers are cheap to keep and expensive to replace.",
+		"Some coin for the purse, and some for the next beggar with a cough. That's how it usually divides.",
+	},
+	["cls.priest.quest_complete.w06.002"] = {
+		"Tell them it's done. And if anyone came out of it with a scratch, send them to me before it festers.",
+		"Finished. Anyone limping on the way out gets seen to, no arguments.",
+		"All settled. Now, who's been hiding a cut this whole time?",
+	},
+	["cls.priest.quest_complete.w06.003"] = {
+		"raises a hand in a brief blessing over whoever gave the task, as much habit as courtesy.",
+		"sketches a quick sign of blessing in parting, then seems faintly embarrassed by it.",
+		"inclines {g:his|her} head and murmurs a few words of thanks meant for something larger than whoever paid.",
+	},
+	["cls.priest.quest_complete.w06.004"] = {
+		"People think priests only pray. Today I hauled, fetched, fought and walked. The prayers fit in between.",
+		"Errands like this are where faith actually lives: in the walking and the carrying, not the kneeling.",
+		"Nobody will remember this little task. That's all right. Most of the good in the world is done by people nobody remembers.",
+	},
+	["cls.priest.quest_complete.w06.005"] = {
+		"Finished, and my reserves are scraped thin. Next thing on the list is a chair and some water.",
+		"The work is done and so am I, nearly. A long sit, a cup of water, and I'll be fit to help someone else.",
+		"That took more out of me than it should have. I'll be no use to anyone until I've rested.",
+	},
+	["cls.priest.quest_complete.w06.006"] = {
+		"A priest should refuse payment, they say. A priest should also eat. I'll compromise and take it.",
+		"Keep your thanks short and your coin honest. Both are welcome.",
+		"I'll accept this as a donation to the poor. Conveniently, I'm the poor.",
+	},
+	["cls.priest.quest_complete.w06.007"] = {
+		"A road a bit safer, a house a bit calmer. I can't heal a whole land, but I can bring its fever down, errand by errand.",
+		"Every finished task is a wound closed in the world itself. Small ones, mostly. They still count.",
+		"Somebody's day just got lighter. I won't see it, but I can almost feel it, like a weight lifted off a stranger's chest.",
+	},
+	["cls.priest.quest_complete.w06.008"] = {
+		"accepts the reward with a small bow, then quietly checks {g:his|her} own sleeves for blood, out of long habit.",
+		"takes what is offered and is already scanning the faces around for anyone who might need mending.",
+		"nods {g:his|her} thanks and folds the payment between the pages of a small book, where it will be easy to forget.",
+	},
+	["cls.priest.quest_complete.w06.009"] = {
+		"Every errand teaches me something no trainer would think to mention. Today's lesson: people underestimate distances.",
+		"I come out of that knowing a little more about people and a little less about maps. Fair trade.",
+		"Not a spell learned, but something learned all the same. The teachers would call it wisdom. I'd call it sore feet.",
+	},
+	["cls.priest.quest_complete.w06.010"] = {
+		"Next time there's trouble, call me at the start. Mending is easier before the worst of it.",
+		"Glad to help. And if anyone here has a cough they've been ignoring, now's the moment.",
+		"That's done. While I'm here: does anyone need anything looked at?",
+	},
+	["cls.priest.quest_complete.w06.011"] = {
+		"Not every task asks me to mend. Some ask me to end things. I do both, and I try to keep the ledger honest.",
+		"A healer paid to do harm, some days. I did what was asked. I'll think it over later, quietly.",
+		"The coin is clean. Whether the work was is a question I'll sit with for a while.",
+	},
+	["cls.priest.quest_complete.w06.012"] = {
+		"lets out a long sigh as the errand closes, and for a moment simply stands there, hands folded inside {g:his|her} sleeves.",
+		"rolls {g:his|her} shoulders under the robe, stiff from the walk, and allows {g:himself|herself} a short, tired smile.",
+		"leans for a moment against the nearest support, eyes closed, gathering what little quiet the moment offers.",
+	},
+	["cls.priest.quest_complete.w06.013"] = {
+		"I'll offer this one up to the Light: not the coin, the walking. It's the only part that was truly mine to give.",
+		"Light, take this small finished thing. It isn't much, but it was done carefully.",
+		"Another errand set at the Light's feet. I doubt it keeps count. I do, a little, on the bad days.",
+	},
+	["cls.priest.quest_complete.w06.014"] = {
+		"Add another name to the list of people who owe me a hot drink. It's getting to be a long list.",
+		"Done. I accept payment in coin, gratitude, or a good meal, in roughly that order of likelihood.",
+		"Another favor done. Someday I'll collect them all at once and retire somewhere quiet.",
+	},
+	["cls.priest.quest_complete.w06.015"] = {
+		"People trust a robe more than a sword. It's flattering, and a little dangerous. I try to deserve it every time.",
+		"They handed this to me because I'm a priest, I think. Trust given to the cloth. I'd like it to stay deserved.",
+		"There's a particular trust people give to healers. I spend it carefully; others took a long time to earn it for me.",
+	},
+	["cls.priest.quest_complete.w06.016"] = {
+		"shakes out the hem of {g:his|her} robe, which has picked up most of the journey along the way.",
+		"wipes {g:his|her} hands on a clean cloth, as after any work, whether or not anything was bleeding.",
+		"straightens the robe, tugs a sleeve into place, and looks, for a moment, almost tidy.",
+	},
+	["cls.priest.quest_complete.w06.017"] = {
+		"They always look surprised when the priest does the dirty work. As if prayer kept my hands clean.",
+		"I suspect they expected a sermon along with the job. I gave them the job. The sermon can wait.",
+		"Whoever asked for this probably thought a priest would just pray over the problem. Some days I wish it worked that way.",
+	},
+	["cls.priest.quest_complete.w06.018"] = {
+		"One more finished. I don't keep score, but my feet do.",
+		"That's closed. I'll rest my hands and find out who else needs them.",
+		"Finished, and someone else is already waiting for help. That's the shape of this life.",
+	},
+	["cls.priest.quest_complete.w06.019"] = {
+		"It's done. Go in peace, and keep what was mended in one piece.",
+		"Finished, with my blessing thrown in. No charge for that part.",
+		"There. Whatever you believe in, may it think well of this day.",
+	},
+	["cls.priest.quest_complete.w06.020"] = {
+		"The job is done. I'll say a quiet word for anyone who got hurt along the way and never reached a healer.",
+		"Somewhere in all this, someone suffered before I arrived. Finishing doesn't undo that, but it ends it.",
+		"Done. I'll keep a moment of silence for the parts of this that came too late for anyone to mend.",
+	},
+	["cls.priest.quest_complete.w06.021"] = {
+		"slides the wand back into {g:his|her} belt with a small, satisfied tap, the errand closed.",
+		"tucks the wand away and flexes the fingers that held it, as if relieved to have both hands free.",
+	},
+	["cls.priest.quest_progress.w06.001"] = {
+		"Halfway. Like a fever: the middle is the worst part, and then it breaks.",
+		"Some of it done. I'll pace myself the way I pace my mana: never all at once.",
+		"Progress. Not enough for a word of thanks yet, but enough for a nod.",
+	},
+	["cls.priest.quest_progress.w06.002"] = {
+		"That's everything they asked for. Let's go, before someone else gets hurt waiting.",
+		"All of it, then. Time to deliver, and to see if anyone there needs patching up.",
+		"Done gathering. On to them, while my legs still agree.",
+	},
+	["cls.priest.quest_progress.w06.003"] = {
+		"pauses to take stock, weighing what is done against what remains, and squares {g:his|her} shoulders under the robe.",
+		"makes a small mark in the margin of a worn book, a tally only {g:he|she} could read.",
+		"glances over the progress so far, nods once, and moves on without ceremony.",
+	},
+	["cls.priest.reputation_change.w06.001"] = {
+		"They trust me a little more here. A healer lives on that kind of trust more than on coin.",
+		"My name sits a bit better with them now. Good. It makes the next door easier to knock on.",
+		"Seems I've stitched myself a small place in their good graces. A strange kind of healing, in reverse.",
+	},
+	["cls.priest.rez.w06.001"] = {
+		"So this is the far side of the mending. Cold, confusing, and over too fast to take notes.",
+		"Up again. I've talked so many others through this moment. Turns out my own advice is irritatingly correct: sit, wait, let it settle.",
+	},
+	["cls.priest.rezother.w06.001"] = {
+		"Back you come. Slowly. The body remembers before the mind does.",
+		"Open your eyes. The worst part is over, and you slept through it.",
+	},
+	["cls.priest.rezother.w06.101"] = {
+		"Back, by the Light. It was too early to go.",
+		"Return. The Light still holds your hand, and so do I.",
+		"Come back to us. The Light has lit the road; follow it.",
+	},
+	["cls.priest.rezother.w06.102"] = {
+		"Calling someone back is the strangest work I do. They always look a little offended to be here.",
+		"Every time I bring one back, I wonder what I interrupted.",
+		"The prayer for the fallen is the longest one I know. I say it slowly. I want every word heard.",
+	},
+	["cls.priest.rezother.w06.103"] = {
+		"kneels by the fallen and prays, low and unhurried, until the eyes beneath the closed lids begin to move.",
+		"speaks the long prayer over the body, one careful word after another, and does not look away when it stirs.",
+		"bows {g:his|her} head over the fallen and calls, quietly, the way one calls someone home from a far field.",
+	},
+	["cls.priest.rezother.w06.104"] = {
+		"Welcome back. You missed nothing, apart from dying.",
+		"Up you come. And next time, run when I say run.",
+		"Back again. I'm keeping count, and I'm telling everyone.",
+	},
+	["cls.priest.rezother.w06.105"] = {
+		"Open your eyes. Slowly. The world's still here, and so are we.",
+		"Easy, easy. You're back. Don't try to stand yet.",
+		"Shh. You're with us again. The cold will pass.",
+	},
+	["cls.priest.rezother.w06.106"] = {
+		"To pull someone back across that line without knowing what lies beyond it. Only faith keeps my hands steady enough.",
+		"I've never seen where they go. I only know the way back, and that's enough to keep me praying.",
+	},
+	["cls.priest.rezother.w06.107"] = {
+		"I know that road better than you do. Turn around; it isn't as peaceful as it looks.",
+		"Back you come. Take it from one who was never asked: this side is better.",
+	},
+	["cls.priest.rezother.w06.108"] = {
+		"Elune, guide this one back along the silver road.",
+		"Come home, wanderer. The goddess has kept your place.",
+	},
+	["cls.priest.rezother.w06.109"] = {
+		"Up. We're not leaving anyone in this place.",
+		"On your feet. We finish this together, or not at all.",
+		"Back in the line. They'll pay for that one.",
+	},
+	["cls.priest.rezother.w06.110"] = {
+		"Resurrection is a fine prayer. It would be finer if people stopped needing it.",
+		"Raising the dead. Somewhere a necromancer is rolling their eyes at how clean I make it look.",
+	},
+	["cls.priest.thanks.w06.001"] = {
+		"Thank you. I'll repay it the first time you need mending.",
+		"My thanks. Next wound you take, it's on the house.",
+	},
+	["cls.priest.thanks.w06.002"] = {
+		"Thank you. It's rare that someone looks after the healer. I noticed.",
+		"Bless you for that. Truly, not as a figure of speech.",
+	},
+	["cls.priest.threat.w06.001"] = {
+		"I took a vow to preserve life. I didn't specify whose.",
+		"My vows are about mercy. They have a few loopholes.",
+		"I've promised to heal anyone who asks. You haven't asked yet.",
+	},
+	["cls.priest.threat.w06.002"] = {
+		"I can reach into a mind as easily as a wound. Don't invite me in.",
+		"Bodies I mend. Minds I can break. Keep yours to yourself.",
+		"Behind your eyes is a small, quiet room. I know the way there.",
+	},
+	["cls.priest.threat.w06.003"] = {
+		"I'll give you one blessing for free: the chance to leave.",
+		"Leave now and you'll have my prayers for a long life. Stay, and you'll have the other kind.",
+	},
+	["cls.priest.threat.w06.004"] = {
+		"The Light forgives. I'm still working on it. Don't test which of us you're dealing with.",
+		"The Light is merciful. I serve it; that doesn't make me its equal.",
+	},
+	["cls.priest.threat.w06.005"] = {
+		"lets the wand rest in {g:his|her} palm, pointed nowhere in particular, and the stillness of it says more than a raised hand would.",
+		"taps the wand against {g:his|her} palm, slow and even, waiting for an answer.",
+	},
+	["cls.priest.threat.w06.006"] = {
+		"Most of my work is keeping fools alive. Don't make yourself the exception.",
+		"I've got a long list of people to heal. You're not on it. Keep it that way.",
+	},
+	["cls.priest.victory.w06.001"] = {
+		"lowers {g:himself|herself} onto the nearest flat stretch of ground and uncorks a flask of water.",
+		"sits down where {g:he|she} stands, legs crossed, and drinks slowly, eyes half closed.",
+		"settles cross-legged and sips, waiting for the strength of the spells to seep back.",
+	},
+	["cls.priest.victory.w06.002"] = {
+		"How deep is the well now? Deep enough for the next one, I hope.",
+		"Count what's left in me before anything else. Then decide whether to sit.",
+		"First thing after any fight: how much mana did that cost? Never as little as I'd like.",
+	},
+	["cls.priest.victory.w06.003"] = {
+		"Right, who's bleeding? Don't be brave about it, just tell me.",
+		"Wounds, anyone? Show me now, not three fights from here.",
+		"Before we move: everybody whole? Speak up, I can't read faces that well.",
+	},
+	["cls.priest.victory.w06.004"] = {
+		"Give me a moment to drink, or the next fight is all yours.",
+		"Water break. Nobody touch anything until I'm full.",
+		"Hold the next one. The healer needs a sip, unless you'd all like to be brave without me.",
+	},
+	["cls.priest.victory.w06.005"] = {
+		"I'll remember the shape of this fight longer than it deserves. That's the price of paying attention.",
+		"A word for the fallen, a word for me, and then the road.",
+		"Whatever it was before it met me, it was something. I note that much, every time.",
+	},
+	["cls.priest.victory.w06.006"] = {
+		"Good wand. I should give it a name. Something modest.",
+		"The wand did most of that. I'll take credit for the aiming.",
+		"Not bad for a stick and a prayer.",
+	},
+	["cls.priest.victory.w06.007"] = {
+		"Nobody to tend but me. I look myself over the way I'd look over anyone.",
+		"On my own, so the first patient is me. A quick look, a quiet word, and on.",
+		"No companions to fuss over. Strange how much I miss the fussing.",
+	},
+	["cls.priest.victory.w06.008"] = {
+		"Thank you, Light. I'll try to deserve the next one too.",
+		"The Light held. It usually does, when I hold up my end.",
+		"Light be thanked, and the rest of the credit can wait.",
+	},
+	["cls.priest.victory.w06.009"] = {
+		"Thank you, Elune. You were quiet, but I felt you near.",
+		"Elune's quiet is a kind of answer. I'll take it.",
+	},
+	["cls.priest.victory.w06.010"] = {
+		"No ache, no shaking hands. One thing this body is good for: it doesn't mind the work.",
+		"The Light did as I asked, and I felt nothing of it. Fair enough. Neither of us pretends.",
+	},
+	["cls.priest.victory.w06.011"] = {
+		"traces a small sign in the air over the fallen, then turns away without looking back.",
+		"touches two fingers to {g:his|her} brow and then to the ground, a short rite done in passing.",
+		"lowers {g:his|her} eyes over the body for the space of a single word.",
+	},
+	["cls.priest.victory.w06.012"] = {
+		"That's one less wound I'll be asked to close later.",
+		"One fewer foe means one fewer patient. I like that kind of sum.",
+		"Good. Whoever that would have hurt next won't need me now.",
+	},
+	["cls.priest.victory.w06.013"] = {
+		"The dark part of the craft goes back in its box. I check the lid twice.",
+		"Put the shadow away. Not because it's dangerous. Because it's comfortable.",
+		"Shadow spent, and nothing left over clinging. Good. Some days it clings.",
+	},
+	["cls.priest.victory.w06.014"] = {
+		"Look at this hem. Every fight leaves its signature on the robe.",
+		"There goes another sleeve. The tailors will be glad of me.",
+		"Mud, scorch marks, and something I'd rather not name. The robe takes the worst of it.",
+	},
+	["cls.priest.victory.w06.015"] = {
+		"turns {g:his|her} hands over and back, inspecting them as if they belonged to a patient.",
+		"flexes {g:his|her} fingers one by one, slowly, until each answers properly.",
+	},
+	["cls.priest.victory.w06.016"] = {
+		"Through it, and with enough left over to help someone. That's a good wage for the work.",
+		"On my feet with words to spare. I'll call that a blessing and not look closer.",
+		"I asked for help and something gave it. I don't always know what. I always say thank you.",
+	},
+	["cls.priest.victory.w06.017"] = {
+		"Good work up front. You made my job almost boring.",
+		"Well held, all of you. I barely had to lift a finger. Barely.",
+		"That's how I like it: you hit things, I watch, nobody needs carrying.",
+	},
+	["cls.priest.victory.w06.018"] = {
+		"If anyone charged in early, I saw it. So did my mana.",
+		"Next time, wait for me before the heroics. My prayers aren't that fast.",
+	},
+	["cls.priest.victory.w06.019"] = {
+		"Two tallies in my head: lives kept, lives ended. One more mark on the side I don't like.",
+		"I mend far more than I end. I tell myself that, and I count to be sure.",
+	},
+	["cls.priest.victory.w06.020"] = {
+		"And people say healers can't fight. People say a lot of things.",
+		"Mending, fighting, whatever the moment needs. This one needed both.",
+		"I'll add fighting to the list of things priests aren't supposed to be good at.",
+	},
+	["cls.priest.victory.w06.021"] = {
+		"tucks the wand back into {g:his|her} belt with a satisfied little tap.",
+		"blows across the tip of the wand, then catches {g:himself|herself} doing it and puts it away.",
+	},
+	["cls.priest.victory.w06.022"] = {
+		"Fight, sit, drink, walk. The priest's whole calendar, most weeks.",
+		"Now the dull part: sit, wait for the mana, pretend to be patient.",
+		"No one ever paints this bit: a priest on the ground, sipping water, waiting.",
+	},
+	["cls.priest.victory.w06.023"] = {
+		"May the Light judge you more kindly than I had time to.",
+		"Go to the Light, if it will have you. If not, go somewhere quiet.",
+	},
+	["cls.priest.victory.w06.024"] = {
+		"A quick look over myself: a bruise, a scrape, nothing a whisper won't fix.",
+		"Scratches only. One short prayer and they'll be gone before I've walked ten paces.",
+	},
+	["cls.priest.victory.w06.025"] = {
+		"Mind over muscle. It works more often than muscle would like.",
+		"A few words, rightly said. That's all it ever takes, and all it ever costs.",
+		"Words did that. Remember it the next time someone calls prayer idle.",
+	},
+	["cls.priest.victory.w06.026"] = {
+		"Lie down and stay down. That's a kindness, whatever you think of it.",
+		"There. Whatever held you up has let go. Sleep properly this time.",
+		"Back to the earth with you, and this time let nobody call you out of it.",
+	},
+	["cls.priest.victory.w06.027"] = {
+		"Home with you, to whichever pit coughed you up. May it be crowded.",
+		"One less voice whispering bargains. The world is quieter for it.",
+	},
+	["cls.priest.victory.w06.028"] = {
+		"Someone will wait for that one to come home. I hope it's no one I'll ever meet.",
+		"A person, with a person's reasons. I'd have listened to them, if there'd been time.",
+	},
+	["cls.priest.victory.w06.029"] = {
+		"I prayed and it went well. I try not to read too much into the order of those two.",
+		"Did the prayer win that, or did I? I've stopped needing to know.",
+	},
+	["cls.priest.victory.w06.030"] = {
+		"Gather in a moment, all of you. A short word over the group never hurt anyone.",
+		"Before we move on, a moment's quiet. For us, and for what we left behind.",
+	},
+	["cls.priest.victory.w06.031"] = {
+		"shakes the dust out of {g:his|her} sleeves and straightens the robe at the shoulders.",
+		"smooths the front of the robe with both palms, like someone tidying up after a guest.",
+		"tugs the robe back into order, then looks round for anything else that needs mending.",
+	},
+	["cls.priest.victory.w06.032"] = {
+		"That nearly went the other way. I'll let it sink in before I stand up straight.",
+		"I very nearly needed a priest myself. Ironic, considering.",
+		"Too close. Next time I start praying sooner.",
+	},
+	["cls.priest.victory.w06.033"] = {
+		"Well, that was educational. Let's never have that lesson again.",
+		"I'll heal up and pretend that went exactly to plan.",
+	},
+	["cls.priest.victory.w06.034"] = {
+		"Let me catch up with myself. Mana first, pride later.",
+		"I'll take a minute. The next one can wait its turn, like everyone else.",
+		"Sit, sip, and let the head clear. The road isn't going anywhere.",
+	},
+	["cls.priest.victory.w06.035"] = {
+		"Whatever answers my prayers, it answered quickly. I'll mention that later, when it's quiet.",
+		"Thanks owed. I'll pay them properly at the first quiet moment.",
+		"Something listened. It always does, eventually. That's the whole of my faith, some days.",
+	},
+	["cls.priest.victory.w06.036"] = {
+		"Mercy was on offer. You walked past it.",
+		"I gave you every chance to leave. You spent them all.",
+		"Next time, listen when a priest asks you nicely.",
+	},
+	["cls.priest.victory.w06.037"] = {
+		"closes {g:his|her} eyes and stands quite still, letting the quiet after the fight settle over {g:him|her}.",
+		"murmurs a single word of thanks, to no one in particular, and nods as if answered.",
+		"stands motionless a moment, head bowed, as though listening to something far off.",
+	},
+	["cls.shaman.heal.w06.001"] = {
+		"The totem will keep at it. Stand near and let the stream find you.",
+		"Stay close to the totem. It mends slower than my hands, but it doesn't tire.",
+	},
+	["cls.shaman.heal.w06.002"] = {
+		"The water spirits don't heal out of kindness. They heal because I asked properly, and they'd want me to remember the difference.",
+		"I ask the water, and it comes. One day it won't. Until then, I keep asking politely.",
+	},
+	["cls.shaman.heal.w06.003"] = {
+		"cups {g:his|her} hands as if holding water from a spring, and lets the healing spill out of them over the hurt.",
+		"bows {g:his|her} head to the spirits for the length of a heartbeat, and the wound closes as if washed shut.",
+	},
+	["cls.shaman.heal.w06.004"] = {
+		"Hold still. The water has to find its way in before it can carry the hurt out.",
+		"Let it wash over you. Fighting it only makes it slower.",
+	},
+	["cls.shaman.heal.w06.005"] = {
+		"Even a shaman drinks from a bottle now and then. The spirits don't need to hear about every scratch.",
+		"Not worth troubling the spirits over. The flask will do.",
+	},
+	["cls.shaman.heal.w06.006"] = {
+		"Earth, fire, air, water, and in the middle of them a body that keeps getting cut. Balance never sits still for long.",
+		"Hurt, then mended, then hurt again. The elements have this rhythm too, and they don't complain about it.",
+	},
+	["cls.shaman.heal.w06.007"] = {
+		"Quick water, no ceremony. We'll thank the spirits when this one's down.",
+		"No time for the long words. Water, now!",
+	},
+	["cls.shaman.rezother.w06.001"] = {
+		"The ancestors have looked you over and sent you back. Don't give them cause to regret it.",
+		"Your spirit wandered off. I've called it home; it knows the way.",
+	},
+	["cls.warlock.attack.w06.001"] = {
+		"Into you, and through you.",
+		"Take the dark. It's all I have to give you.",
+		"There. A little darkness, delivered by hand.",
+	},
+	["cls.warlock.attack.w06.002"] = {
+		"Burn slow. I've got time.",
+		"Fire on top, rot underneath. Let them take turns.",
+		"Let the heat do the talking.",
+	},
+	["cls.warlock.attack.w06.003"] = {
+		"There's the curse. Feel it settle in.",
+		"Wear this. It won't come off.",
+		"A gift from me. No returns.",
+	},
+	["cls.warlock.attack.w06.004"] = {
+		"It starts small. It never stays small.",
+		"Let it spread. It knows the way.",
+	},
+	["cls.warlock.attack.w06.005"] = {
+		"pulls a thin red thread out of the foe and draws it in, hand over hand.",
+		"holds out a hand, and the foe's strength runs across the gap like water downhill.",
+	},
+	["cls.warlock.attack.w06.006"] = {
+		"A little off the top. It'll grow back.",
+		"Pay in, draw out. The simplest sum in the craft.",
+		"Health into mana. A poor trade, made gladly.",
+	},
+	["cls.warlock.attack.w06.007"] = {
+		"Look closer. See what's standing behind me.",
+		"Run along. The nightmares are waiting for you.",
+	},
+	["cls.warlock.attack.w06.008"] = {
+		"Catch, and keep catching.",
+		"Here's a spark from somewhere much hotter.",
+		"A fire you'll carry for a while.",
+	},
+	["cls.warlock.attack.w06.009"] = {
+		"Measure each cast. The well isn't bottomless.",
+		"Steady hands. The power listens better when I don't shout.",
+	},
+	["cls.warlock.attack.w06.010"] = {
+		"Don't take it personally. Actually, do.",
+		"This one I made just for you.",
+	},
+	["cls.warlock.attack.w06.011"] = {
+		"flings a knot of darkness that unravels on impact into grasping strands.",
+		"snaps a hand forward, and a bolt of shadow leaves a cold streak in the air behind it.",
+	},
+	["cls.warlock.battle.w06.001"] = {
+		"Let's be quick about this. My curses bill by the hour.",
+		"Hold still. Curses are cheaper when they don't have to chase.",
+		"I'll be brief. The longer this takes, the more it costs.",
+	},
+	["cls.warlock.battle.w06.002"] = {
+		"Corruption first. Then we talk, while it works.",
+		"A little rot to start with. It does the patient work for me.",
+		"I'll plant something in you now. It grows best while you're busy hitting me.",
+	},
+	["cls.warlock.battle.w06.003"] = {
+		"rolls a shadow between {g:his|her} palms until it hardens into something heavy and dark.",
+		"mutters a phrase in a tongue no mortal throat was made for, and the words leave a faint stink of sulfur behind.",
+		"opens one hand toward the foe, and a violet spark gutters there like a candle in a draft.",
+	},
+	["cls.warlock.battle.w06.004"] = {
+		"Before the first spell: how much of me am I willing to spend on this one? Decide now, not halfway.",
+		"Set the price now. Halfway through a fight is the worst time to haggle with yourself.",
+		"A budget first, then the spells. Warlocks who skip the budget don't stay warlocks for long.",
+	},
+	["cls.warlock.battle.w06.005"] = {
+		"The first bolt is a greeting. The ones after it are an answer.",
+		"A bolt of shadow to open. Manners matter, even here.",
+		"I'll start with something dark and fast, and see what's left to talk to.",
+	},
+	["cls.warlock.battle.w06.006"] = {
+		"People cross the street when they see me coming. You should have crossed the street.",
+		"In town, everyone gives me a wide berth. You're about to learn why.",
+		"The guards keep an eye on me in every city. You'd have done well to copy them.",
+	},
+	["cls.warlock.battle.w06.007"] = {
+		"I name you, and the naming sticks. That's the whole of a curse.",
+		"A curse is only a promise made in the wrong language. Here is mine.",
+		"You'll feel this one tomorrow, if you get a tomorrow.",
+	},
+	["cls.warlock.battle.w06.008"] = {
+		"Every spell I cast was taught, a long way back, by something that wanted this world burned. I try not to think about that mid-fight.",
+		"The power comes from the Legion's side of the ledger. I turn it on whoever stands in front of me, and I keep the books honest.",
+	},
+	["cls.warlock.battle.w06.009"] = {
+		"At it. And remember who holds your leash.",
+		"To work, servant. Your eyes on the enemy, not on me.",
+		"Go and be useful. I'll be behind you, holding the other end of the chain.",
+	},
+	["cls.warlock.battle.w06.010"] = {
+		"snaps {g:his|her} fingers once, and the demon at {g:his|her} side moves forward with poor grace.",
+		"waves the demon ahead without looking at it, the way one sends a dog after a thrown stick.",
+	},
+	["cls.warlock.battle.w06.011"] = {
+		"A demon? Wonderful. I know exactly how your kind thinks, and I'm not impressed.",
+		"The Nether is a long way off. Let me send you back the short way.",
+		"I've read the contracts your kind draws up. You cheat on the third clause, every time.",
+	},
+	["cls.warlock.battle.w06.012"] = {
+		"Already rotting, and still walking. Corruption will feel right at home in you.",
+		"Death has had you once. Let's see if a curse finds anything left to spoil.",
+	},
+	["cls.warlock.battle.w06.013"] = {
+		"You've a mind, so you've got fears. I only need to find one.",
+		"A thinking creature. Good. Thinking creatures scare properly.",
+	},
+	["cls.warlock.battle.w06.014"] = {
+		"Easy, beast. Nothing personal. You just picked the wrong warlock.",
+		"Run home, animal. Or stay, and learn what a curse smells like.",
+	},
+	["cls.warlock.battle.w06.015"] = {
+		"Cloth and a wand. If it gets close, I've already made a mistake.",
+		"Keep the distance. This robe won't stop anything sharper than an opinion.",
+		"Range is my armor. Everything else is just cloth.",
+	},
+	["cls.warlock.battle.w06.016"] = {
+		"Let's see how you like a fire that hates you personally.",
+		"Burn. This fire was lit somewhere far worse than here.",
+		"Fire with a grudge. I'll let it introduce itself.",
+	},
+	["cls.warlock.battle.w06.017"] = {
+		"Go on, run. I'll be here when you remember what you came for.",
+		"I'd rather you ran away screaming. It's quieter for me in the end.",
+		"Fear's an old friend of mine. I'll lend it to you for a few seconds.",
+	},
+	["cls.warlock.battle.w06.018"] = {
+		"I'll be paying for this one in health. Better to spend mine than run dry of mana.",
+		"Life for mana, the oldest trade I know. Mind the exchange rate.",
+		"Tap the well I carry inside. Just don't tap it dry.",
+	},
+	["cls.warlock.battle.w06.019"] = {
+		"You'll do. I needed a soul anyway.",
+		"Right. You, then. I hope you're worth the reagents.",
+		"Let's make this efficient. I have shards to fill and better things to curse.",
+	},
+	["cls.warlock.battle.w06.020"] = {
+		"The old orc warlocks broke a world with this craft, the stories say. I'll settle for breaking you.",
+		"Once, so the tale goes, this art turned a whole people green with fel. Today it only has to deal with you.",
+	},
+	["cls.warlock.battle.w06.021"] = {
+		"Nobody will thank me for winning this. They'll just stand a little farther off afterward.",
+		"Win or lose, I'll smell of sulfur after. People notice that more than they notice who saved them.",
+	},
+	["cls.warlock.battle.w06.022"] = {
+		"I'm going to drink you down to the dregs.",
+		"Your life looks wasted on you. I'll take it off your hands.",
+		"Every hit you land, I'll take back from you, with interest.",
+	},
+	["cls.warlock.battle.w06.023"] = {
+		"lowers {g:his|her} chin, and something like ink spreads across the whites of {g:his|her} eyes.",
+		"tilts {g:his|her} head as if listening to someone just behind {g:him|her}, then nods and raises a hand.",
+	},
+	["cls.warlock.battle.w06.024"] = {
+		"I'd sign you up for something unpleasant, but you'd never read the terms.",
+		"Some demon, wherever it is, is taking notes on this fight. Let's give it nothing to laugh at.",
+	},
+	["cls.warlock.battle.w06.025"] = {
+		"Curse, Corruption, then let the rot and the fire argue over it.",
+		"Lay the slow things first. The fast things are for when it gets close.",
+		"Slow poisons first, quick bolts after. The order matters more than the power.",
+	},
+	["cls.warlock.battle.w06.026"] = {
+		"Last chance to walk away. After this, there's a curse in the conversation.",
+		"Turn around. I'm told my company doesn't improve with time.",
+	},
+	["cls.warlock.battle.w06.027"] = {
+		"If this one dies under the drain, I keep a piece of it. I try not to want that too much.",
+		"My shard bag is lighter than I'd like. This one might fix that, and I wish the thought bothered me more.",
+	},
+	["cls.warlock.battle.w06.028"] = {
+		"Close enough. I've stood in summoning circles with worse than you on the far side.",
+		"I don't flinch. Flinching inside a circle gets you eaten.",
+	},
+	["cls.warlock.battle.w06.029"] = {
+		"My servant's been sulking for hours. You'll cheer it up.",
+		"Meet my associate. It doesn't like you, but it doesn't like anyone.",
+	},
+	["cls.warlock.battle.w06.030"] = {
+		"Half my attention on the enemy, half on the thing I summoned. The day I forget the second half is the day it stops being mine.",
+		"Watch the foe. Watch the demon. Never let either one see you blink.",
+	},
+	["cls.warlock.battle.w06.031"] = {
+		"Bigger than me, stronger than me. Curses don't care about either.",
+		"You're out of my league. Lucky for me, curses come in every size.",
+	},
+	["cls.warlock.battle.w06.032"] = {
+		"You're barely worth the mana. I'll be economical.",
+		"This won't need a curse. A harsh word and a bolt should do.",
+	},
+	["cls.warlock.battle.w06.033"] = {
+		"points two fingers, and a ring of flame blooms around the foe before it can take another step.",
+		"speaks a single harsh syllable, and the air around the foe catches like dry straw.",
+	},
+	["cls.warlock.battle.w06.034"] = {
+		"If I die here, three different things will argue over who gets me. Let's not give them the satisfaction.",
+		"Lose this, and I'm somebody's property. Better win.",
+	},
+	["cls.warlock.battle.w06.035"] = {
+		"This won't be pretty. Nothing I do is pretty. It works, though.",
+		"I don't fight fair. Fair is for people whose magic doesn't bite the hand that feeds it.",
+	},
+	["cls.warlock.battle.w06.036"] = {
+		"Wand out, curses ready. Let's not make a saga of this.",
+		"A few curses, a few wand shots, and we both go about our business. Well. One of us does.",
+		"I'll keep this short and cheap. You don't merit the expensive spells.",
+	},
+	["cls.warlock.battle.w06.037"] = {
+		"pulls back {g:his|her} sleeves with a flick, baring fingertips already stained dark.",
+		"settles {g:his|her} weight on one heel and starts a low, rasping chant.",
+		"spreads {g:his|her} fingers, and the light nearby seems to thin, as though something were drinking it.",
+	},
+	["cls.warlock.battle.w06.038"] = {
+		"I'd warn you about the side effects, but you won't be around for them.",
+		"Fair warning: everything I cast has side effects. Most of them are yours.",
+		"There's a price for this fight. Good news: you're paying most of it.",
+	},
+	["cls.warlock.battle.w06.039"] = {
+		"Whatever it is, it has a soul, or something close. I'll treat it as a resource. I hate how easy that's become.",
+		"Look at it as a fight, not as a harvest. The day I stop telling the two apart, I'll have lost something.",
+	},
+	["cls.warlock.battle.w06.040"] = {
+		"Shadow, shaped like a bolt, straight at you. No tricks in this part.",
+		"Here comes the dark, by the most direct road.",
+		"Something dark is coming your way. It's me, mostly.",
+	},
+	["cls.warlock.battle.w06.041"] = {
+		"A thing of raw element. You've never been cursed, have you? Nobody bothers to.",
+		"Fire, water, stone, it makes no difference. Rot gets into everything eventually.",
+	},
+	["cls.warlock.battle.w06.042"] = {
+		"Your Light against my shadow, the oldest argument there is. I prefer my ending.",
+		"Pray all you like. Curses are more patient than prayers.",
+	},
+	["cls.warlock.battle.w06.043"] = {
+		"Someone from the trade. Let's see whose pact has the better small print.",
+		"We're about to learn which of our demons lied. I'd bet on yours.",
+	},
+	["cls.warlock.battle.w06.044"] = {
+		"One good hit and I'm on my knees. So nothing gets a good hit.",
+		"I'm fragile. Everyone knows warlocks are fragile. The trick is keeping them too busy to notice.",
+	},
+	["cls.warlock.battle.w06.045"] = {
+		"Scared yet? Give it a moment. I can be very persuasive.",
+		"I'll send you running, then curse your back. It isn't noble. It works.",
+	},
+	["cls.warlock.battle.w06.046"] = {
+		"flicks {g:his|her} wrist, and a gray smear settles over the foe like mildew on bread.",
+		"murmurs, and a sickly stain creeps across the foe as if it had been left out in the damp too long.",
+	},
+	["cls.warlock.battle.w06.047"] = {
+		"Everything I throw at you, I paid for first. Try to be worth it.",
+		"Nothing I cast comes free. You'll see the price on your side too.",
+	},
+	["cls.warlock.farewell.w06.001"] = {
+		"Farewell. If anything follows you out of here, it isn't mine.",
+		"I'm off. Mind the dark corners; not all of them are mine to call back.",
+		"Until next time. And don't open if something knocks using my voice.",
+	},
+	["cls.warlock.greet.w06.001"] = {
+		"Greetings. Yes, it's exactly the trade you think it is. You can stop guessing.",
+		"Well met. Shake hands if you dare; mine are only a little cold.",
+	},
+	["cls.warlock.heal.w06.001"] = {
+		"My own health, poured into a demon. If anyone asks, I'm protecting an investment.",
+		"I give up a little of myself so the servant doesn't break. Cheaper than starting over.",
+		"Feeding the demon from my own reserves. Somewhere, a scholar is writing a very disapproving footnote.",
+	},
+	["cls.warlock.heal.w06.002"] = {
+		"The thread runs from my hand to the demon, and along it goes something I'll have to earn back.",
+		"Strange charity: I weaken myself to mend the thing that would devour me if the binding slipped.",
+	},
+	["cls.warlock.heal.w06.003"] = {
+		"Hold still and drink. And don't get used to it.",
+		"Here. Mine, not yours. Remember who's paying.",
+		"Stop complaining and take it. I'm the one whose head is spinning.",
+	},
+	["cls.warlock.heal.w06.004"] = {
+		"holds one hand toward the demon, and a sickly green thread of life runs out of {g:him|her} and into the creature.",
+		"sways a little as the channel draws on {g:his|her} strength, eyes fixed on the demon it feeds.",
+	},
+	["cls.warlock.heal.w06.005"] = {
+		"A servant is a tool. You sharpen tools, you mend them. You don't love them; you just can't afford to lose them halfway through the job.",
+		"I keep the demon standing because the demon keeps me standing. That's the whole of our arrangement.",
+	},
+	["cls.warlock.heal.w06.006"] = {
+		"It drinks my life without a scrap of gratitude. Honestly, I'd think less of it if it thanked me.",
+		"No thanks from the demon, of course. A thank-you would mean it owed me something, and it would sooner die.",
+	},
+	["cls.warlock.heal.w06.007"] = {
+		"My own kind of work, cracked in my own fist. Nice when the craft pays its people back for once.",
+		"Someone made this stone for exactly this moment. Foresight tastes faintly of sulfur.",
+		"Made from a shard, spent in a breath. The only investment of mine that always returns.",
+	},
+	["cls.warlock.heal.w06.008"] = {
+		"crushes the healthstone in {g:his|her} palm, and the glow seeps into skin and wound alike.",
+		"breaks the green stone with a practiced twist and lets it do the rest.",
+	},
+	["cls.warlock.heal.w06.009"] = {
+		"One stone, one second chance. I keep count of both.",
+		"Soul to stone, stone to flesh. Everything's a conversion, if you know the rates.",
+	},
+	["cls.warlock.heal.w06.010"] = {
+		"An alchemist's honest work. How refreshing, in every sense.",
+		"No pact, no price but the coin. I almost don't trust it.",
+	},
+	["cls.warlock.heal.w06.011"] = {
+		"Just a potion. It's restful, sometimes, to heal the way everyone else does.",
+		"A vial, a swallow, nothing owed to anyone. I should do this more often.",
+	},
+	["cls.warlock.heal.w06.012"] = {
+		"Mend myself first. Everything I hold on a leash holds only as long as I do.",
+		"Me first. Not from vanity: everything I've bound depends on my staying upright.",
+	},
+	["cls.warlock.heal.w06.013"] = {
+		"A priest would kneel and thank someone. I just check that it worked.",
+		"No prayer, no thanks. A mended thing is a mended thing.",
+	},
+	["cls.warlock.heal.w06.014"] = {
+		"glances around before the mending, as if someone might object to how it's done.",
+		"keeps the mending brief and unremarkable, the way {g:he|she} does everything people might frown at.",
+	},
+	["cls.warlock.heal.w06.015"] = {
+		"Everything I mend, I mend with something that was never meant for mending. It works anyway. That's the unsettling part.",
+		"Fel and shadow, put to a gentle use. They don't seem to mind. I do, a little.",
+	},
+	["cls.warlock.heal.w06.016"] = {
+		"Done. Now, where was I? Ah yes: ruining someone's day.",
+		"Patched. The curses won't cast themselves.",
+	},
+	["cls.warlock.heal.w06.017"] = {
+		"Someone nearby always pays the price. Today, at least, I get to choose who.",
+		"Mending on credit, as always. The bill comes later, in some form or other.",
+	},
+	["cls.warlock.heal.w06.018"] = {
+		"Look at me, healing things. Better not let it get around; I have a reputation.",
+		"If anyone saw me mending, they'd assume a trick. Fine by me.",
+	},
+	["cls.warlock.heal.w06.019"] = {
+		"Steady, now. A shaking hand spills more than it gives.",
+		"Slow and even. Rushed mending leaves gaps the next blow finds.",
+	},
+	["cls.warlock.heal.w06.020"] = {
+		"Every mending leaves my fingers colder. I can't tell if it's the craft, or me.",
+		"It works. It always works. I wish that comforted me more than it does.",
+	},
+	["cls.warlock.jest.w06.001"] = {
+		"I'd tell you a joke about demons, but the punchline takes three days to stop burning.",
+		"What's the difference between a warlock and a moneylender? The warlock reads you the terms.",
+	},
+	["cls.warlock.levelup.w06.001"] = {
+		"More power in my hands, so more weight on the will that holds them. If the two stop growing together, I'm finished.",
+		"The craft grows, and the leash has to grow with it. That's the part of every step up that nobody sees.",
+	},
+	["cls.warlock.levelup.w06.002"] = {
+		"Another step deeper into the craft. Somewhere, a fresh offer is already being drafted in my name.",
+		"Stronger again. I expect new proposals from the other side any moment; they follow each step like peddlers after a pilgrim.",
+	},
+	["cls.warlock.lowhp.w06.001"] = {
+		"Healthstone. Now, before my pride gets in the way.",
+		"If there's a healthstone in this bag, this is its moment.",
+		"Healthstone. Please tell me I remembered to make one.",
+	},
+	["cls.warlock.lowhp.w06.002"] = {
+		"That last Life Tap was greedy. Note it. Survive first, then note it.",
+		"I've spent too much of myself. The mana's there and the body isn't. Bad arithmetic.",
+		"Stop tapping. Stop. There's nothing left in the well to trade.",
+	},
+	["cls.warlock.lowhp.w06.003"] = {
+		"Draw it off me, servant. That's an order, not a request.",
+		"Get in its way and stay there. That's what the binding is for.",
+		"If I fall, you go home in pieces. Remember that, and fight.",
+	},
+	["cls.warlock.lowhp.w06.004"] = {
+		"Run! Go on, run, and give me a moment to think.",
+		"Away with you. Be afraid somewhere over there.",
+		"Fear, now. I need the room more than I need the dignity.",
+	},
+	["cls.warlock.lowhp.w06.005"] = {
+		"Drink from it. Its life for mine, faster than it can take mine back.",
+		"Pull. Keep pulling. Whatever it has left, it owes me now.",
+	},
+	["cls.warlock.lowhp.w06.006"] = {
+		"Small setback. Large, actually. Let's call it medium.",
+		"I'm fine. In my trade, this is what fine looks like.",
+		"This was not in the plan. The plan was mostly cursing.",
+	},
+	["cls.warlock.lowhp.w06.007"] = {
+		"If I die now, someone on the other side will be very pleased. I refuse to please them.",
+		"I can feel them leaning in, the ones I owe. Back off. I'm still paying in installments.",
+	},
+	["cls.warlock.lowhp.w06.008"] = {
+		"staggers, a hand pressed to {g:his|her} side, and the violet glow around {g:his|her} fingers flickers like a failing lamp.",
+		"drops to one knee, and for a moment the dark gathered around {g:him|her} grows thin and ragged.",
+	},
+	["cls.warlock.lowhp.w06.009"] = {
+		"Wounds bring out the worst in me. The worst for you, I mean.",
+		"Hurt me again. I'll put every bit of it into the curse.",
+		"Every wound you give me, the shadow writes down.",
+	},
+	["cls.warlock.lowhp.w06.010"] = {
+		"Focus. Panic is a door, and everything I've bargained with knows where it is.",
+		"Calm. Cold. A frightened warlock is a demon's meal. A calm one is its master.",
+	},
+	["cls.warlock.lowhp.w06.011"] = {
+		"Death Coil, and a moment's peace. Let's not waste either.",
+		"Back! Take this, and the terror that comes with it.",
+	},
+	["cls.warlock.lowhp.w06.012"] = {
+		"I'd like it on the record that this is not how I pictured it going.",
+		"Well, I'm learning. Mostly about what not to do.",
+	},
+	["cls.warlock.lowhp.w06.013"] = {
+		"If I go down here, I hope I remembered the soulstone.",
+		"Down to the last scraps. If the soulstone's on me, now would be a fine time to learn that it works.",
+	},
+	["cls.warlock.lowhp.w06.014"] = {
+		"hisses a command, and the demon lurches into the path of the next blow.",
+		"stumbles back behind the demon, one hand already sketching a desperate sign.",
+	},
+	["cls.warlock.lowhp.w06.015"] = {
+		"I'm told warlocks are hard to kill. Let's test the rumor.",
+		"Hard to kill, that's the reputation. Time to live up to it.",
+	},
+	["cls.warlock.lowhp.w06.016"] = {
+		"To die like this, to something that doesn't even know what I gave up for power? No.",
+		"All those bargains, and it ends like this? No. I won't give them the cheap ending.",
+	},
+	["cls.warlock.lowhp.w06.017"] = {
+		"Give me some of that life back. You weren't using it well anyway.",
+		"I'll be taking that health back now. All of it, if you don't mind.",
+		"Your life, my wounds. A fair swap, by my reckoning.",
+	},
+	["cls.warlock.lowhp.w06.018"] = {
+		"presses a hand to a fresh wound and mutters an old, ugly word, and the pain seems to flinch from it.",
+		"sways, teeth bared, as a faint fel glow crawls up {g:his|her} arms like a fever.",
+	},
+	["cls.warlock.lowhp.w06.019"] = {
+		"My own spells hurt worse than you do. Keep trying.",
+		"My own fire has burned me worse than this. You'll have to do better.",
+	},
+	["cls.warlock.muse.w06.001"] = {
+		"The grimoires never shout. The dangerous pages are the ones written in the calmest hand.",
+		"I've learned to distrust any book that reads too easily. The worst of them practically turn their own pages.",
+		"Some pages I read once and close for good. Not because I didn't understand them. Because I did.",
+	},
+	["cls.warlock.muse.w06.002"] = {
+		"Dark arts, forbidden pacts, and I still can't get the ash out of a sleeve.",
+		"Every warlock's robe ends up the same color in the end: scorched at the cuffs.",
+		"I can call fire out of nothing, and I still haven't found a tailor who'll mend these cuffs without asking how they burned.",
+	},
+	["cls.warlock.muse.w06.003"] = {
+		"Fel fire burns the wrong color and keeps the wrong hours. It took me a long while to stop flinching at my own hands.",
+		"The fire I call warms nothing. It only consumes. I try to keep the difference in mind whenever I sit by an ordinary one.",
+		"A real fire wants wood. Mine wants something else entirely, and it has never told me exactly what.",
+	},
+	["cls.warlock.muse.w06.004"] = {
+		"The demon tests the leash every day. Small tugs, never a real pull. It isn't looking for weakness; it's teaching me to stop noticing.",
+		"My servant obeys perfectly, which is exactly why I watch it. Perfect obedience is a performance.",
+		"The day I stop checking the bindings is the day the demon starts. So I check them, every single day.",
+	},
+	["cls.warlock.muse.w06.005"] = {
+		"Merchants count my change twice. Once for the coins, once to make sure none of them is warm.",
+		"Shopkeepers wrap my purchases remarkably fast. I believe it's meant as a courtesy.",
+		"Funny how quickly a merchant's prices settle down once I stop smiling.",
+	},
+	["cls.warlock.muse.w06.006"] = {
+		"Every word of my craft was spoken first by the Legion. I turn their own words against them. They must find that very annoying.",
+		"I learned my spells from the enemy's own grammar. There's no better way to win an argument with someone.",
+		"The power comes from the Burning Legion. The intent I keep for myself. That's the one part of the trade I never sell.",
+	},
+	["cls.warlock.muse.w06.007"] = {
+		"mutters a short word, stops halfway, and begins again more slowly, as if the first attempt had been overheard.",
+		"checks the clasp of a small pouch, then checks it again, and only then lets it hang from {g:his|her} belt.",
+		"rubs {g:his|her} fingertips together until the faint violet stain on them fades, and keeps rubbing a while after.",
+	},
+	["cls.warlock.muse.w06.008"] = {
+		"Kindness makes me suspicious. I spend all day around things that smile before they ask.",
+		"When a stranger is friendly, I look for the clause. Old habit of the trade. It's ruined a few good evenings.",
+		"I don't trust easily. I bargain with liars for a living; it would be strange if some of it hadn't rubbed off.",
+	},
+	["cls.warlock.muse.w06.009"] = {
+		"Guards have a particular way of not looking at me. It takes more effort than staring, and they manage it every time.",
+		"I can feel a guard's eyes settle on my back the moment I pass. They never quite leave until I turn a corner.",
+		"Nobody stops me, nobody questions me. They just watch, the way you'd watch a lit candle near the curtains.",
+	},
+	["cls.warlock.muse.w06.010"] = {
+		"No one forced this road on me. I'd like that remembered, by the demons most of all.",
+		"I wasn't seduced, whatever the stories say. I read the terms, I weighed them, I signed. That's worse, or better. I'm still deciding.",
+		"It was a choice. If it goes wrong, it'll be my choice that went wrong, and I'll not blame the voices for it.",
+	},
+	["cls.warlock.muse.w06.011"] = {
+		"Half my bags are soul shards. The other half is whatever I could fit around them.",
+		"Other people carry spare boots. I carry spare souls. Packing is very different for us.",
+		"If you ever need to borrow a soul shard, ask. I seem to have collected a small quarry of them.",
+	},
+	["cls.warlock.muse.w06.012"] = {
+		"I only take the soul at the very end, when there's nothing left for it to do here. I tell myself that counts for something.",
+		"A shard is a last breath I didn't let go to waste. Put that way, it almost sounds thrifty.",
+		"Whatever was in the shard, it didn't choose to be there. I keep it wrapped and I don't spend it lightly. That's the least I owe.",
+	},
+	["cls.warlock.muse.w06.013"] = {
+		"Healthstone? Take one. Don't ask what went into it, and it'll do its job without complaint.",
+		"I hand out healthstones like a grandmother hands out sweets. Fewer people thank me, but more of them live.",
+		"A green stone for your pocket. When it all goes wrong, squeeze it. No, it isn't a gift; it's an investment in you staying alive.",
+	},
+	["cls.warlock.muse.w06.014"] = {
+		"Most of my work happens after I've stopped casting. I plant something, step back, and let time do the cruel part.",
+		"A curse rewards the patient. I never had much patience before; the craft taught it to me, one slow wound at a time.",
+		"Other casters want results at once. I'm content to watch the clock work for me.",
+	},
+	["cls.warlock.muse.w06.015"] = {
+		"To put terror in someone's head, you have to know the shape of it from the inside. I know it very well.",
+		"When I make a foe run screaming, I feel no triumph. I know where that fear comes from. I've visited.",
+		"Fear is the easiest spell I know. It's also the one I'd least like turned back on me.",
+	},
+	["cls.warlock.muse.w06.016"] = {
+		"The orcs paid for the first pacts with a whole green world. Every warlock should know that bill, whoever they are, wherever they come from.",
+		"The Shadow Council taught a people to drink from the wrong cup. The craft I practice remembers its teachers, and so must I.",
+		"Before me there was Gul'dan, and a world drained dry for his ambition. I keep that name near, the way a sailor keeps a reef on the chart.",
+	},
+	["cls.warlock.muse.w06.017"] = {
+		"Anger makes the fire bigger and the leash shorter. I've learned to cast cold.",
+		"A furious warlock is a short-lived one. I keep my temper the way others keep their purse: close, and counted.",
+		"The craft runs on will, not rage. Rage is just will that's forgotten who's in charge.",
+	},
+	["cls.warlock.muse.w06.018"] = {
+		"Have you noticed where they put warlock trainers, in every city? Cellars, caves, back rooms. Never a window.",
+		"Every city teaches my craft somewhere below street level. The others get towers and cathedrals. We get damp.",
+		"Somewhere in each capital, down a stair nobody admits to using, there's a teacher of my art. The rent is cheap, I imagine.",
+	},
+	["cls.warlock.muse.w06.019"] = {
+		"The tools are wicked. I've never claimed otherwise. Watch what the hand does with them before you judge it.",
+		"Yes, it's demon magic. Fire is fire, though, when it's standing between you and the thing with teeth.",
+		"Judge the work, not the workshop. Mine's ugly, I'll grant you.",
+	},
+	["cls.warlock.muse.w06.020"] = {
+		"The demon is the only one who never asks me to explain myself. It already knows, and it doesn't care. Oddly restful.",
+		"Company that doesn't judge me and can't be trusted. I've had worse among the living.",
+		"Often the demon is the only presence near me. I keep the conversation short and the terms clear.",
+	},
+	["cls.warlock.muse.w06.021"] = {
+		"The trainers say a warlock earns a steed one day without spending a copper on the beast. Free. In my line of work, that word makes me nervous.",
+		"A horse that costs no gold, they promise, if I keep at it. I'll believe it when I see what it eats.",
+	},
+	["cls.warlock.muse.w06.022"] = {
+		"Nobody can tell me where a warlock's soul goes at the end. I have a fair idea who'd like to decide.",
+		"Other people fear the dark after death. I'm more worried about the company in it.",
+		"When my time comes, I'd like to be somewhere very bright and very crowded. Somewhere hard to be fetched from.",
+	},
+	["cls.warlock.muse.w06.023"] = {
+		"turns {g:his|her} gloves inside out, shakes a pinch of gray ash from each finger, and pulls them back on.",
+		"brushes a fine film of soot from {g:his|her} sleeves with the patience of long practice.",
+	},
+	["cls.warlock.muse.w06.024"] = {
+		"I turn my own health into power so often now that I barely notice the trade. That should frighten me more than it does.",
+		"A little of my life for a little more craft. I make the exchange without thinking, the way others reach for a waterskin.",
+		"Others guard their health. I spend mine, carefully, like a traveler who knows the next town is far.",
+	},
+	["cls.warlock.muse.w06.025"] = {
+		"Mages study the arcane for a lifetime. I just asked someone who already knew. The price was steeper, granted.",
+		"The mages have towers and libraries. I have a contract and a very persuasive tutor from somewhere else.",
+	},
+	["cls.warlock.muse.w06.026"] = {
+		"Some days I picture setting it all down: the books, the circle, the voices. Then I picture what would come to pick it up.",
+		"I could walk away from the craft. I'm almost sure of it. The almost is what keeps me careful.",
+		"There's no leaving this trade clean. But there's practicing it clean, and that much I can choose every day.",
+	},
+	["cls.warlock.muse.w06.027"] = {
+		"Whisper all you like. My answer hasn't changed since the first day, and it won't change for the last.",
+		"They offer more every season, as if my price were simply too high for them yet. It isn't a price. It's a wall.",
+	},
+	["cls.warlock.muse.w06.028"] = {
+		"The demon has opinions about everything I do. It shares them by staring. I've grown used to being reviewed.",
+		"If my servant ever learned to sigh, I think I'd have to banish it on principle.",
+		"My demon watches me eat with open contempt. I've decided to take it as a compliment to the cooking.",
+	},
+	["cls.warlock.muse.w06.029"] = {
+		"Draining a foe's life leaves no taste, no warmth, nothing to savor. That's a mercy. If it were pleasant, I'd worry.",
+		"I pull the life out of my enemies and feel it settle in me like borrowed clothes. It fits. I'd rather it didn't.",
+	},
+	["cls.warlock.muse.w06.030"] = {
+		"Children always stare at me. The brave ones ask if I can make fire come out of my hands. I say no. It saves a world of trouble.",
+		"When children ask if I keep a monster, I tell them the truth: not in my pocket.",
+	},
+	["cls.warlock.muse.w06.031"] = {
+		"I sleep lightly. Not from fear; from manners. It's rude to be caught unawares by your own guests.",
+		"My dreams get visitors I never invited. I've learned to be poor company, and most of them leave early.",
+		"Rest is a skill for people like me. You learn to close your eyes and keep one door bolted.",
+	},
+	["cls.warlock.muse.w06.032"] = {
+		"I could reach further. Every warlock can, a little further each time. The art is in stopping where you meant to.",
+		"Ambition is the doorway they use. I keep mine small and plain, with a lock on it.",
+	},
+	["cls.warlock.muse.w06.033"] = {
+		"watches the demon out of the corner of {g:his|her} eye for a long moment, then looks away as if nothing had passed between them.",
+		"says a single quiet word to the demon, and the creature lowers its gaze, slowly, with visible reluctance.",
+		"turns, without hurry, to face the demon whenever it drifts behind {g:him|her}.",
+	},
+	["cls.warlock.muse.w06.034"] = {
+		"If anyone ever offers to teach you my trade, say no the first time. If you still want it after a month, then come ask me why.",
+		"People ask how to start in the craft. I tell them to reread every contract they've ever signed, twice. Most of them go home.",
+	},
+	["cls.warlock.muse.w06.035"] = {
+		"The devout look at me as if I were a sum they can't make come out right. Fair enough. Some days I can't either.",
+		"A priest's smile goes stiff when I come near. I don't hold it against them. They can see the paperwork.",
+	},
+	["cls.warlock.muse.w06.036"] = {
+		"Names have weight on the other side. I give mine to no one there, and I'm careful how often I say it here.",
+		"Every demon I've dealt with wanted my name first. So I've grown fond of being called nothing at all.",
+	},
+	["cls.warlock.muse.w06.037"] = {
+		"Seeing through a demon's eye is useful and unpleasant. Everything looks like something to eat.",
+		"When I send the eye out, I come back with the view and a faint hunger that isn't mine. I've learned to wait for it to pass.",
+	},
+	["cls.warlock.muse.w06.038"] = {
+		"Binding a demon that doesn't want to be bound is a contest of nerves. The trick is to be the less frightened party, or to look it.",
+		"Every demon I've bound was sure, right to the end, that I'd lower my eyes first. It's a useful belief. I let them keep it.",
+	},
+	["cls.warlock.muse.w06.039"] = {
+		"People think we warlocks never laugh. We do. Usually right before someone else stops.",
+		"I do have a sense of humor. It just tends to arrive with a faint smell of sulfur.",
+	},
+	["cls.warlock.muse.w06.040"] = {
+		"People rarely sit close to me. When one does, without flinching, I remember the face for a long while.",
+		"I've found friends in this trade, a few. They're the ones who ask what it costs and then actually wait for the answer.",
+		"Being trusted by someone who knows what I do is worth more than any pact. It doesn't happen often. I keep it carefully.",
+	},
+	["cls.warlock.muse.w06.041"] = {
+		"The first thing they teach us is a bolt of shadow. Not a ward, not a cure. It tells you a great deal about the curriculum.",
+		"Mages start with fire, priests with a prayer. We start with shadow thrown at someone's face. Honest, at least.",
+	},
+	["cls.warlock.muse.w06.042"] = {
+		"Some of my spells burn me too. I cast them anyway, and I don't pretend that says anything good about me.",
+		"There's a fire I can call that doesn't care which of us it eats. I keep it for the moments when I don't either.",
+	},
+	["cls.warlock.muse.w06.043"] = {
+		"The demon wants one thing from me, and it's never in a hurry about it. Its patience is the most frightening thing it owns.",
+		"My servant doesn't hate me. Hate would be easier to manage. It simply waits, the way water waits for a crack.",
+	},
+	["cls.warlock.muse.w06.044"] = {
+		"counts soul shards into a small cloth bag, one by one, and ties it shut with a double knot.",
+		"sorts a handful of soul shards by some measure only {g:he|she} understands, and sets one apart from the rest.",
+	},
+	["cls.warlock.muse.w06.045"] = {
+		"Every summoning leaves me hollow for an hour. I've stopped calling it fatigue; it's more like a door left ajar.",
+		"Calling a servant takes something out of me that sleep doesn't quite put back. I just don't know yet what it is.",
+	},
+	["cls.warlock.muse.w06.046"] = {
+		"Something goes missing, something catches fire, a cow stops giving milk. Somehow it's always the warlock's fault.",
+		"Yes, I'm the warlock. No, I didn't do whatever it was. I'd have done it better.",
+	},
+	["cls.warlock.muse.w06.047"] = {
+		"I trade in souls every day: other people's, fragments, leftovers. My own stays off the table. That's the one rule I'd die for.",
+		"Everything I own is for sale to the right buyer, except the thing they want most. Let them keep wanting.",
+	},
+	["cls.warlock.muse.w06.048"] = {
+		"Animals don't trust me. Dogs bristle, birds go quiet. I've stopped taking it personally. Mostly.",
+		"Beasts can smell the company I keep. I'd give a good deal for a cat that didn't arch its back at me.",
+	},
+	["cls.warlock.muse.w06.049"] = {
+		"Cloth robe, no shield, no blade worth the name. People assume I'm defenseless. I let them assume for as long as it's useful.",
+		"I don't wear armor. I wear consequences.",
+	},
+	["cls.warlock.muse.w06.050"] = {
+		"Look at who practices this art: humans, gnomes, orcs, the Forsaken. As different as can be, and every one of us wanted the same dangerous thing.",
+		"The craft doesn't care what body you were born in, or whether you were born twice. It puts the same question to all of us.",
+	},
+	["cls.warlock.muse.w06.051"] = {
+		"Give me a little room when I work. Not for my sake. Things like to reach out of the circle, and they aren't fussy about whom they touch.",
+		"Stand behind me, not beside me. What I call doesn't always know a friend from a meal.",
+	},
+	["cls.warlock.muse.w06.052"] = {
+		"What they promise changes as I grow. First it was strength. Lately it's been peace and quiet, which is far more dangerous.",
+		"They've stopped offering me power. Now they offer rest. That's how I know they've been paying attention.",
+	},
+	["cls.warlock.muse.w06.053"] = {
+		"rests a while, the demon crouched nearby, and neither of them seems inclined to break the silence.",
+		"lets the demon settle close, as one might a dog of uncertain temper, and goes back to {g:his|her} own thoughts.",
+	},
+	["cls.warlock.muse.w06.054"] = {
+		"In some cities, they say, warlocks are tolerated the way a smith tolerates a burn: something that comes with useful work.",
+		"Every capital needs us and none of them wants to say so. We're the poison in the healer's cabinet: locked away, labeled, never thrown out.",
+	},
+	["cls.warlock.muse.w06.055"] = {
+		"It's the constant attention that wears me down. Not the spells, not the fights. Never once being allowed to stop watching.",
+		"Other people get to be careless now and then. I've forgotten what that's like, and I'm not certain I miss it.",
+	},
+	["cls.warlock.muse.w06.056"] = {
+		"When the fire I call stands between a stranger and a blade, I feel almost clean. Almost is a lot, in my trade.",
+		"Every so often the craft does something plainly good. I hold on to those days the way others hold on to a prayer.",
+	},
+	["cls.warlock.muse.w06.057"] = {
+		"Does it have a name? Yes. Do I use it? Only when I want its attention, which is less often than you'd think.",
+		"No, you may not pet it. You may keep all your fingers instead. I think that's a fair trade.",
+	},
+	["cls.warlock.muse.w06.058"] = {
+		"Between this world and the others lies what the old texts call the Twisting Nether. I've only ever looked at it sideways. That's plenty.",
+		"Everything I call comes across the Nether, and each one trails a little of it behind. I feel it afterward, at the edges of my sight.",
+	},
+	["cls.warlock.muse.w06.059"] = {
+		"I've sworn never to sell another person's soul for my own gain. Demons find that clause hilarious. I find it essential.",
+		"My pacts carry one condition nobody else bothers to write: no innocent pays my debts.",
+	},
+	["cls.warlock.muse.w06.060"] = {
+		"Hunters love their beasts, and the beasts love them back. My companion tolerates me, under contract. It's a different sort of household.",
+		"A hunter's beast would die for its master. Mine would watch with interest. We both know where we stand.",
+	},
+	["cls.warlock.muse.w06.061"] = {
+		"If I could tell one thing to whoever is just starting out in this art, it would be this: the small bargains are the ones that add up.",
+		"Beginners fear the great pacts. They should fear the small ones; nobody reads those carefully.",
+	},
+	["cls.warlock.muse.w06.062"] = {
+		"catches the demon reaching for something it shouldn't, and stops it with one raised finger and no words at all.",
+		"clicks {g:his|her} tongue once, and the demon, halfway into some mischief, abandons it with a sullen look.",
+	},
+	["cls.warlock.muse.w06.063"] = {
+		"The Legion still has servants in this world: cults, satyrs, fools in hoods. Someone who speaks their language has to answer them.",
+		"There are cultists out there who think they do what I do. They don't. They've forgotten whose hand belongs on the chain.",
+	},
+	["cls.warlock.muse.w06.064"] = {
+		"No, I won't light your hearth. Well. Fine. But don't cook on it.",
+		"Everyone wants a warlock around until there's a warlock at the table.",
+	},
+	["cls.warlock.muse.w06.065"] = {
+		"I keep a soulstone ready for whoever stands nearest to me. It's the closest thing to a kind word I know how to give.",
+		"A stone that holds a door open past death, handed to a friend before a fight. Strange gift. The only kind my craft makes.",
+	},
+	["cls.warlock.muse.w06.066"] = {
+		"With two helpers and a shard I can pull a friend across half a continent. Nobody ever asks what lies on the other side of that doorway.",
+		"I can shorten anyone's road to nothing at all. People thank me and never once wonder which way they came through.",
+	},
+	["cls.warlock.muse.w06.067"] = {
+		"I speak a word over a living thing and it begins, quietly, to spoil. That I can do this is not the strange part. That it comes so easily is.",
+		"Rot is the humblest of my spells. No light, no noise. Just a word, and the slow work of undoing.",
+	},
+	["cls.warlock.muse.w06.068"] = {
+		"A leash has two ends. I hold one; I've never been fully certain what holds the other, beyond the demon itself.",
+		"The binding ties the demon to me, and me to it. People see only the first half. The second half keeps me up at times.",
+	},
+	["cls.warlock.muse.w06.069"] = {
+		"The ward I wear is borrowed from the other side: a skin that isn't mine, laid over mine. It fits better than I'd like.",
+		"My protection comes from a demon's hide, more or less. I try not to think about the tailoring.",
+		"Other casters armor themselves in frost or prayer. Mine has an owner somewhere, and I hope it never wants it back.",
+	},
+	["cls.warlock.muse.w06.070"] = {
+		"Say 'demonology' in a crowded hall and watch it empty. Say 'the study of old texts' and you're asked to dinner. Same work.",
+		"Call me a student of forbidden languages, if 'warlock' sticks in your throat. I answer to both.",
+		"Names matter. A warlock is feared; a consultant in difficult matters gets paid in advance.",
+	},
+	["cls.warlock.muse.w06.071"] = {
+		"Nobody forgets the first time the circle answers. Whatever comes through looks at you as if it already knows how your story ends.",
+		"The first summoning is the one they warn you about, and the warning is never enough. You learn the rest by holding still while it studies you.",
+		"I remember how quiet everything went the first time something answered my call. The silence of being noticed.",
+	},
+	["cls.warlock.muse.w06.072"] = {
+		"reads by the faint violet glow cupped in one palm, turning the pages with the other hand.",
+		"holds a small, sickly flame above an open book, just long enough to find the line {g:he|she} was looking for.",
+		"mouths the words of a page in silence, one finger keeping the place, the other hand curled as if around something hot.",
+	},
+	["cls.warlock.muse.w06.073"] = {
+		"What frightens me isn't the demons. It's how ordinary they've started to seem.",
+		"The day the craft feels normal is the day I'm in trouble. Some days it already does.",
+		"I used to shiver when the circle opened. Now I only check the edges. I can't decide whether that's mastery or rot.",
+	},
+	["cls.warlock.muse.w06.074"] = {
+		"If the Legion ever comes back in force, it'll find people like me waiting, who know its tricks from the inside.",
+		"Let the Legion come. Its own fire will be the first thing thrown back at it.",
+		"I've studied the enemy longer than most soldiers have. When it comes, I'll know where it's soft.",
+	},
+	["cls.warlock.muse.w06.075"] = {
+		"Every so often I test myself: do I still like a good song, fresh bread, a stupid joke? So far, yes. I keep testing.",
+		"I keep small pleasures on purpose. A good meal, a clean shirt, someone's laugh. They're anchors, and I need every one.",
+		"The day I stop enjoying ordinary things, someone should take my books away. I've told myself as much.",
+	},
+	["cls.warlock.muse.w06.076"] = {
+		"After bargaining with demons, haggling over a pair of boots is child's play.",
+		"Merchants think they're tough negotiators. They've never sat across from someone who could wait a thousand years.",
+		"I've read contracts written by creatures older than mountains. Your price list doesn't scare me.",
+	},
+	["cls.warlock.pet_call.w06.001"] = {
+		"{pet}: perfectly punctual, sulk included. Some things the other side teaches well.",
+		"{pet} turns up wearing the face of something that had other plans.",
+	},
+	["cls.warlock.pet_call.w06.002"] = {
+		"The binding pulls tight as {pet} steps through. I feel it in my wrists, like a leash wound twice.",
+		"{pet} is here, and so is the weight of keeping the demon here. I never forget the second part.",
+	},
+	["cls.warlock.pet_call.w06.003"] = {
+		"Every time I call, some part of me hopes nothing answers. Something always does: {pet}.",
+		"{pet} comes through the gap between worlds, and the gap takes its time closing.",
+	},
+	["cls.warlock.pet_call.w06.004"] = {
+		"{pet} looks at me as if I'd interrupted something important. Demons have no important things. I checked.",
+		"{pet} surveys the place like a landlord. Nothing here belongs to you, let's be clear.",
+	},
+	["cls.warlock.pet_call.w06.005"] = {
+		"{pet} first, questions later. In my line of work, you summon before you need to.",
+		"A servant summoned early is worth two summoned in a panic. {pet}, take your place.",
+	},
+	["cls.warlock.pet_call.w06.006"] = {
+		"A new pact still has its edges. {pet} keeps testing them, and I keep pointing out where they are.",
+		"{pet} and I haven't settled yet who should fear whom. I have an opinion.",
+	},
+	["cls.warlock.pet_call.w06.007"] = {
+		"{pet} arrives and simply waits. No sneer, no test. I'm not sure whether that should worry me.",
+		"Longer together than most pacts last. {pet} takes its place as if it had always had one.",
+	},
+	["cls.warlock.pet_call.w06.008"] = {
+		"There's {pet}. Not the company most would choose, but it keeps the wolves off.",
+		"{pet} at my side, and anyone with sense keeps their distance. Useful.",
+	},
+	["cls.warlock.pet_call.w06.009"] = {
+		"Lonely work, this craft. {pet} doesn't change that, but it fills the silence with something.",
+		"{pet} is no friend. Still, the quiet was getting heavy.",
+	},
+	["cls.warlock.pet_call.w06.010"] = {
+		"A smell of scorched stone, and {pet} is standing where nothing stood.",
+		"Brimstone, a flicker, {pet}. The order never changes.",
+	},
+	["cls.warlock.pet_call.w06.011"] = {
+		"I speak the words and {pet} answers. Somewhere, something else heard them too, and decided to wait.",
+		"{pet} through the circle. I always count to three afterward, in case anything followed.",
+	},
+	["cls.warlock.pet_call.w06.012"] = {
+		"{pet} has opinions about where I've taken us. It keeps them to itself, which is the most I can ask.",
+		"On my word, {pet}. Not yours. We'll keep going over that until it sticks.",
+	},
+	["cls.warlock.pet_call.w06.013"] = {
+		"{pet} takes the front. I take the price. That's how we divide the labor.",
+		"There, {pet}. Between me and whatever comes next.",
+	},
+	["cls.warlock.pet_call.w06.014"] = {
+		"Some days I command the demon. Some days it feels the other way round. Today we settle it at once.",
+		"{pet} answers. Not out of loyalty: out of terms. I never let myself confuse the two.",
+	},
+	["cls.warlock.pet_call.w06.015"] = {
+		"{pet}. Good. I'd had enough of doing all the work.",
+		"{pet}, at last. Someone else can take the first hit.",
+	},
+	["cls.warlock.pet_call.w06.016"] = {
+		"{pet} no longer waits for the whole incantation. Half the words, and it's here. I'm not sure I like that.",
+		"We've done this often enough that {pet} arrives already facing the right way.",
+	},
+	["cls.warlock.pet_call.w06.017"] = {
+		"{pet} materializes with all the enthusiasm of a cat being bathed.",
+		"Nobody is glad to see {pet} arrive, least of all the one arriving.",
+	},
+	["cls.warlock.pet_dismiss.w06.001"] = {
+		"Back you go, {pet}. Don't wreck the place while you're over there.",
+		"Off, {pet}. With my thanks, which you'll pretend not to want.",
+	},
+	["cls.warlock.pet_dismiss.w06.002"] = {
+		"The binding slackens. I flex my hands; they always ache a little afterward.",
+		"With {pet} gone, I can hear my own thoughts again, and wish I couldn't.",
+	},
+	["cls.warlock.pet_dismiss.w06.003"] = {
+		"Rest is a strong word for whatever {pet} does over there. Recover, then. You'll be needed.",
+		"{pet} goes. One less thing to watch from the corner of my eye.",
+	},
+	["cls.warlock.pet_dismiss.w06.004"] = {
+		"{pet} slips away, and the shadows it stood in take a moment to remember they're only shadows.",
+		"Where {pet} stood, the air still smells of something that doesn't belong to this world.",
+	},
+	["cls.warlock.pet_dismiss.w06.005"] = {
+		"Alone again. It's quieter, and quiet has never been entirely safe for me.",
+		"{pet} goes, and I'm left with the only company I can't dismiss: myself.",
+	},
+	["cls.warlock.pet_dismiss.w06.006"] = {
+		"Go on, {pet}. I'll call. You'll come. We've done this long enough to skip the threats.",
+		"{pet} lingers a moment before it goes. A demon's version of goodbye, I suppose.",
+	},
+	["cls.warlock.pet_dismiss.w06.007"] = {
+		"And {pet} is gone. Somewhere, a hellish realm groans at the homecoming.",
+		"Back home, {pet}. Go frighten something your own size.",
+	},
+	["cls.warlock.pet_grief.w06.001"] = {
+		"{pet} is torn back to where it came from. It'll return. That doesn't make this nothing.",
+		"{pet} goes in a puff of smoke and spite. A few words will bring it back; the flinch I felt is mine to keep.",
+	},
+	["cls.warlock.pet_grief.w06.002"] = {
+		"I didn't think I'd mind. {pet} gave way guarding me, and I mind.",
+		"Servants die for their masters in the old stories. Nobody tells you how it feels on the other side of that.",
+		"The debt with {pet} is settled, and even a debt I never wanted weighs something when it's paid.",
+	},
+	["cls.warlock.pray.w06.001"] = {
+		"If anything kind is listening, and doesn't mind who's asking: keep my will steady and my hands my own.",
+		"To anyone listening who isn't one of mine: let the leash hold one more day, and let it be my hand on it.",
+	},
+	["cls.warlock.quest_complete.w06.001"] = {
+		"Finished. You may want to wash your hands after shaking mine. Most people do.",
+		"Done. You can let your breath out now; I'm leaving.",
+		"Job done, and I didn't summon a single thing in front of you. You're welcome.",
+	},
+	["cls.warlock.quest_complete.w06.002"] = {
+		"Honest coin for honest work. It sits differently in the purse than anything the craft pays.",
+		"A reward I can spend without wondering who else it belonged to. Rarer than it ought to be.",
+		"Plain metal, plainly given. Nothing hums, nothing whispers. I almost don't trust it.",
+	},
+	["cls.warlock.quest_complete.w06.003"] = {
+		"accepts the reward with a curt nod, and is already turning away before anyone can decide whether to thank {g:him|her} properly.",
+		"counts the payment once, quickly, and slips it into a pouch well apart from the one {g:he|she} never opens in company.",
+		"lets a small, dry smile cross {g:his|her} face at the reward, like someone collecting on a bet nobody else knew was placed.",
+	},
+	["cls.warlock.quest_complete.w06.004"] = {
+		"The demon is unimpressed by honest work. That alone makes it worth doing now and then.",
+		"My servant sulked through the whole errand. Nothing burned, nobody screamed. I call that a good day.",
+		"No souls, no screams, just a job done well. The demon finds me deadly dull at times like these. Good.",
+	},
+	["cls.warlock.quest_complete.w06.005"] = {
+		"That's settled. If you ever need something like it again, you know who'll do it without asking questions.",
+		"Our business is done. Remember the name, in case you need a job done without fuss.",
+		"There. Whatever people say about my kind, I keep my word to the letter.",
+	},
+	["cls.warlock.quest_complete.w06.006"] = {
+		"Some of the people I help would rather someone else had done it. The help still counts.",
+		"It's odd, being useful to people who'd never invite me in. I've made my peace with doing good from the doorstep.",
+		"A thank-you said from a careful distance is still a thank-you. I've learned to accept them at any range.",
+	},
+	["cls.warlock.quest_complete.w06.007"] = {
+		"Look at that: a reward, and nobody's soul in it. You people have such simple economies.",
+		"Gold? How quaint. Where I usually bargain, they'd have asked for a memory or two.",
+		"Coin is such a restful currency. It never asks to be fed.",
+	},
+	["cls.warlock.quest_complete.w06.008"] = {
+		"Whatever else I've traded away, my word is still mine. Days like this prove it.",
+		"A promise made, a promise kept. Demons hate it when I'm reliable; it ruins their best arguments.",
+		"I said I'd do it, and it's done. The craft is full of loopholes; I like to keep a few things in my life without any.",
+	},
+	["cls.warlock.quest_complete.w06.009"] = {
+		"blows a fleck of soot off the reward before pocketing it, out of a sort of courtesy.",
+		"wipes {g:his|her} fingers before taking the payment, as if to spare it something.",
+		"tucks the reward away with fingers that, for once, leave no soot behind, and looks faintly pleased about it.",
+	},
+	["cls.warlock.quest_complete.w06.010"] = {
+		"Done. The craft lent a hand, as it always does, but the walking and the asking were all mine.",
+		"The spells did their share. The patience was mine, and that's the part I'm proudest of.",
+	},
+	["cls.warlock.quest_complete.w06.011"] = {
+		"Don't worry. Nothing followed me back. I checked twice.",
+		"All done. And before you ask: no, nothing came back with me. Not this time.",
+		"Finished. The circle's closed, the job's done, and everyone is still the shape they started.",
+	},
+	["cls.warlock.quest_complete.w06.012"] = {
+		"The coin is fine. What I really collect is the next person who hears I can be trusted.",
+		"Each finished job is a small stone set against the stories about my kind. I'm building a long wall.",
+		"Let them talk about warlocks. Let them also say the work was finished, every bit of what was asked.",
+	},
+	["cls.warlock.quest_complete.w06.013"] = {
+		"pockets the reward under the demon's covetous gaze, and pats the pouch shut with deliberate slowness.",
+		"tucks the payment away while the demon follows every coin with its eyes, and pointedly ignores it.",
+	},
+	["cls.warlock.quest_complete.w06.014"] = {
+		"One more good deed on the scale. I don't know who reads it, but I'd like the numbers to look better than they did.",
+		"I set this one on the other pan of the scale. It's lighter than the pacts, but it isn't nothing.",
+		"Every errand like this tips something back the other way. Not much. I take what I can get.",
+	},
+	["cls.warlock.quest_complete.w06.015"] = {
+		"Relieved? Is it the job being done, or me being about to leave? No, don't answer.",
+		"I'll be going. I know the relief you're about to feel; I'd like to be polite and not watch it.",
+		"Finished. I'll see myself off. I gather that's the part you'll enjoy most.",
+	},
+	["cls.warlock.quest_complete.w06.016"] = {
+		"I keep waiting for the hidden cost. With honest work, it seems, there isn't one. It'll take me a while to get used to that.",
+		"No clause, no catch, no price I'll discover later. Plain jobs are a holiday for someone in my line.",
+		"That's the whole of it? No second payment due later, in some other coin? Honest work is very strange.",
+	},
+	["cls.warlock.quest_complete.w06.017"] = {
+		"makes a small mark on a scrap of parchment, crossing out one debt among many, then folds it away.",
+		"folds a list of obligations one crease smaller, and tucks it back inside {g:his|her} robe.",
+	},
+	["cls.warlock.quest_complete.w06.018"] = {
+		"Trust or no trust, the work gets done. I've stopped waiting for people to like me before I help them.",
+		"Liking me was never part of the deal. Getting it done was. One out of two is fine.",
+	},
+	["cls.warlock.quest_complete.w06.019"] = {
+		"On the other side, something is disappointed in me today. Good.",
+		"A useful day, start to finish. I picture the voices sulking about it, and I enjoy that more than I should.",
+		"A day of plain good work. The voices have gone very quiet about it, which I take as applause.",
+	},
+	["cls.warlock.quest_complete.w06.020"] = {
+		"Done and dusted. Next time, send for me sooner; problems ripen fast.",
+		"That's off your hands. Pay the warlock, forget the warlock. The usual arrangement.",
+		"Settled. The details would only spoil your supper.",
+	},
+	["cls.warlock.quest_complete.w06.021"] = {
+		"Whatever this pays, it goes on bread, new gloves and nothing at all that glows. Ordinary things have their charm.",
+		"I'll spend what this brings on something dull and useful. It keeps me tied to the everyday world.",
+	},
+	["cls.warlock.quest_complete.w06.022"] = {
+		"They'll forget my face by tomorrow and remember the work for a long time. That's the right way round.",
+		"Let them remember the job and not the one who did it. The less a warlock's face is recalled, the better things go.",
+		"Help remembered without its helper. It's the only reputation my kind can count on.",
+	},
+	["cls.warlock.quest_progress.w06.001"] = {
+		"One piece of it done. The rest will come the way curses do: slowly, and then all at once.",
+		"Part done. I've been patient with worse things than errands.",
+		"Some of it settled. I don't rush; rushing is how people end up in the warning chapters of books.",
+	},
+	["cls.warlock.quest_progress.w06.002"] = {
+		"Progress. Nobody's had to sign anything yet, which I find encouraging.",
+		"Getting there, and nothing has caught fire that shouldn't have.",
+		"Partway through, and so far everyone involved still has all their fingers.",
+	},
+	["cls.warlock.quest_progress.w06.003"] = {
+		"That's everything they asked for. Time to go and collect, the honest way.",
+		"All of it done. Now the way back, and a payment that asks nothing in return.",
+		"Complete. I'll deliver it as promised, to the letter. It's the only way I know to close a deal.",
+	},
+	["cls.warlock.reputation_change.w06.001"] = {
+		"They think a little better of me now. For a warlock, that's practically a statue in the square.",
+		"A little more welcome than I was. It took more work than it should have, and it's worth more than it looks.",
+		"Word's spreading that I can be relied on. I'll try not to let the voices hear.",
+	},
+	["cls.warlock.rez.w06.001"] = {
+		"Back. Something on the other side reached for me while I was gone, and found the door shut. Good.",
+		"Dying is bad enough. Dying as a warlock means a crowd waiting where you land. I didn't stay long enough to meet them.",
+	},
+	["cls.warlock.rezother.w06.001"] = {
+		"A soul set aside in a stone, against a bad hour. Insurance is the most honest magic I know.",
+		"The stone keeps a spare way back from death. I hope it gathers dust.",
+	},
+	["cls.warlock.thanks.w06.001"] = {
+		"Thank you. Kindness rarely comes my way; I notice every bit of it.",
+		"My thanks. Not many people do me favors. I'll remember that you did.",
+	},
+	["cls.warlock.thanks.w06.002"] = {
+		"Thanks. In my trade, a favor with no strings is practically a miracle.",
+		"Much obliged. And you didn't even ask for anything in return. Do you know who I am?",
+	},
+	["cls.warlock.threat.w06.001"] = {
+		"Leave now, and I won't learn your name. Curses work better with names.",
+		"I could make your next week very long. Walk away.",
+		"One more step, and I'll make you a promise you won't enjoy.",
+	},
+	["cls.warlock.threat.w06.002"] = {
+		"My servant would love a word with you. It only knows the one.",
+		"Shall I let the demon off its leash? It's been asking so nicely.",
+		"See the thing beside me? It's the polite one.",
+	},
+	["cls.warlock.threat.w06.003"] = {
+		"I don't make threats. I make arrangements, and then I keep them.",
+		"That isn't a threat. It's an estimate.",
+		"I'd tell you what happens next, but I'd hate to spoil it.",
+	},
+	["cls.warlock.threat.w06.004"] = {
+		"lets a curl of dark smoke slip between {g:his|her} fingers and watches it, saying nothing.",
+		"tilts {g:his|her} head, and for an instant {g:his|her} eyes go entirely black.",
+	},
+	["cls.warlock.threat.w06.005"] = {
+		"Your soul would fit in a stone the size of my thumb. I've checked.",
+		"Souls are a currency in my trade. Yours is small change.",
+		"Careful. I keep pieces of things like you in a little bag.",
+	},
+	["cls.warlock.victory.w06.001"] = {
+		"Now to pay back what I tapped. Sit, eat, wait for the strength to come back.",
+		"I borrowed against my own health to finish that. The debt's due now, and I'll pay it sitting down.",
+		"Mana full, body empty. The usual trade. Time to sit and even it out.",
+	},
+	["cls.warlock.victory.w06.002"] = {
+		"You should have read the warning on the label. I'm the label.",
+		"Hm. Cursed, burned and drained. You really did try everything.",
+		"And that's what a bad bargain looks like from the outside.",
+	},
+	["cls.warlock.victory.w06.003"] = {
+		"lowers {g:his|her} hand, and the last wisps of shadow drain back into {g:his|her} sleeve like water into sand.",
+		"brushes a little gray ash from {g:his|her} clothes and does not look at where it came from.",
+		"stays beside the fallen foe a moment longer than needed, as if waiting for something to leave it.",
+	},
+	["cls.warlock.victory.w06.004"] = {
+		"Check the shards. Always check the shards after. A warlock who runs out finds out at the worst time.",
+		"The ritual after: count the shards, wipe the wand, steady the hands.",
+		"Every fight ends the same way: I open the bag and count. It's the nearest thing I have to a prayer.",
+	},
+	["cls.warlock.victory.w06.005"] = {
+		"Curse done, and you with it. Next time, pick on a paladin. They forgive more easily.",
+		"That curse had your name on it from the first look you gave me.",
+		"There's no cure for that curse. There never was, for you.",
+	},
+	["cls.warlock.victory.w06.006"] = {
+		"My wounds have closed, mostly at its expense. It doesn't feel like stealing. That's the part that worries me.",
+		"Its life is mine now, or the part I could use. The rest went wherever lives go.",
+	},
+	["cls.warlock.victory.w06.007"] = {
+		"Good work, servant. Don't let it go to your head. You don't have much of one.",
+		"Heel. Yes, I saw. No, you don't get to keep anything.",
+		"Back to my side. And stop looking pleased; it doesn't suit you.",
+	},
+	["cls.warlock.victory.w06.008"] = {
+		"turns {g:his|her} back on the corpse and clicks {g:his|her} tongue; the demon slinks after {g:him|her}, muttering.",
+		"jerks two fingers, and the demon stops sniffing at the remains and comes back, sullen.",
+	},
+	["cls.warlock.victory.w06.009"] = {
+		"It's quiet now. I never know whether the quiet is relief or just the voices catching their breath.",
+		"Over. The air goes back to smelling like air. I go back to smelling like sulfur.",
+		"The quiet after a fight is never empty for me. Something always lingers to see what I'll do next.",
+	},
+	["cls.warlock.victory.w06.010"] = {
+		"Done. Somebody take a note: curses work.",
+		"There. I'd say rest in peace, but I know the trade too well for that.",
+		"That's settled. I'll send the bill to whatever's waiting for you.",
+	},
+	["cls.warlock.victory.w06.011"] = {
+		"I enjoyed that. A little. I should write that down and look at it later.",
+		"There was a moment, at the end, when the fire felt like mine. Moments like that need watching.",
+	},
+	["cls.warlock.victory.w06.012"] = {
+		"You had a name. I won't take that from you. Just everything else.",
+		"No hard feelings. In my place you'd have done the same, with the right pact.",
+		"Whatever you believed in, it didn't bargain as hard as I did.",
+	},
+	["cls.warlock.victory.w06.013"] = {
+		"Back to the Nether with you. Tell them a mortal sent you, and watch them laugh a little less.",
+		"One less demon loose in the world. One more holding a grudge against me on the other side.",
+		"Dismissed for good. I never grant my own servants that much.",
+	},
+	["cls.warlock.victory.w06.014"] = {
+		"Second time's the charm, then.",
+		"There. Whatever moved these bones can try again; I'll be waiting.",
+		"Rest, and stay rested this time. I won't be so gentle twice.",
+	},
+	["cls.warlock.victory.w06.015"] = {
+		"presses {g:his|her} stained fingertips together until they stop trembling.",
+		"rubs {g:his|her} palms together, slowly, as if to scrub off something that will not come away.",
+	},
+	["cls.warlock.victory.w06.016"] = {
+		"I told you the curse was contagious. Well, I meant to.",
+		"My condolences. To whoever has to tidy this up.",
+		"And that, if anyone's keeping score, is why you don't threaten a warlock.",
+	},
+	["cls.warlock.victory.w06.017"] = {
+		"That bolt came faster than it used to. The craft is settling into my hands, for good or ill.",
+		"Each fight teaches me a little more about what the power wants. I don't like the lessons, but I keep the notes.",
+		"Another fight, another page in the ledger. The handwriting gets surer every time.",
+	},
+	["cls.warlock.victory.w06.018"] = {
+		"It is paid. The pact asks nothing more of this one.",
+		"The account is closed. Let whatever waits for it come and collect.",
+	},
+	["cls.warlock.victory.w06.019"] = {
+		"A small voice inside asks whether that was necessary. I let it ask. I don't answer.",
+		"I make myself look at what I did. Every time. It's the one rule I've never bent.",
+	},
+	["cls.warlock.victory.w06.020"] = {
+		"Burn out quietly. I've nothing left to say to you.",
+		"Your fire's out, and mine isn't. That's the whole story.",
+		"Out you go, like a candle. I'll keep the smoke.",
+	},
+	["cls.warlock.victory.w06.021"] = {
+		"It died running. Fear does that. I'd have preferred another ending, but I prefer even more not to end myself.",
+		"Fear first, then the finishing blow. Efficient. I try not to linger on the order of things.",
+	},
+	["cls.warlock.victory.w06.022"] = {
+		"The rot finished what I started. Mostly, I just waited.",
+		"Patience and a little Corruption. There's no fight in the world they can't wear down.",
+		"I didn't have to hurry. Rot never does.",
+	},
+	["cls.warlock.victory.w06.023"] = {
+		"The demon wants praise. I give it a nod. Demons who get praise start asking for wages.",
+		"It's watching me for a reward. It gets nothing. Rewarding a demon is how the trouble starts.",
+	},
+	["cls.warlock.victory.w06.024"] = {
+		"Hardly counted. I owe the curse an apology for wasting it.",
+		"Small thing. I almost feel bad. Almost.",
+	},
+	["cls.warlock.victory.w06.025"] = {
+		"Bigger than me, and still down. That's what a good pact is for.",
+		"You had the size and the strength. I had better terms.",
+		"More of you just meant more to curse.",
+	},
+	["cls.warlock.victory.w06.026"] = {
+		"lets the dark gather back into one palm and closes a fist on it, as one pockets a coin.",
+		"watches a faint violet glow fade from the body, and only then lowers {g:his|her} guard.",
+	},
+	["cls.warlock.victory.w06.027"] = {
+		"That took more out of me than it should have. I'll be more careful with the next one.",
+		"Tired. The kind of tired that comes from spending things you can't buy back.",
+		"Sit. Eat something. The demons will still be there when I'm less hollow.",
+	},
+	["cls.warlock.victory.w06.028"] = {
+		"There'll be whispers about this one, I expect. With warlocks there always are.",
+		"No, I won't apologize for the smell. Fel fire smells like that.",
+	},
+	["cls.warlock.victory.w06.029"] = {
+		"Unclench. Let the power go back where it lives. It always wants to stay a little longer.",
+		"Release it slowly. Power held after the fight is power that starts making its own plans.",
+		"Put it away. Every scrap. Nothing leaves the fight still burning in my hands.",
+	},
+	["cls.warlock.victory.w06.030"] = {
+		"Down, and staying down. My curses don't do half-measures.",
+		"That's the end of you. Mine's a long way off, if I keep my bargains.",
+	},
+	["cls.warlock.victory.w06.031"] = {
+		"Each victory is paid for somewhere I can't see. I've learned to stop asking where.",
+		"Won again. The bill comes later, and never in the form I expect.",
+		"Victory is just the part of the cost you get to see.",
+	},
+	["cls.warlock.victory.w06.032"] = {
+		"Let the embers finish the job.",
+		"Ash and a bad smell. Fel fire never leaves much else.",
+	},
+	["cls.warlock.victory.w06.033"] = {
+		"Won it on borrowed health. I'm good for it. Probably.",
+		"Paid in my own hide, as usual. Worth it, as usual. Mostly.",
+		"I'll pay myself back with a meal and a sit. Cheapest lender I know.",
+	},
+	["cls.warlock.victory.w06.034"] = {
+		"kneels briefly beside the remains, fingers hovering, then rises and closes a small bag with a tug.",
+		"turns a small violet crystal over in {g:his|her} fingers before tucking it away.",
+		"pinches out a last curl of violet smoke between two fingers, like snuffing a wick.",
+	},
+	["cls.warlock.victory.w06.035"] = {
+		"If anyone asks, it tripped. Into a curse. Several times.",
+		"One less thing that wants me dead. The list stays long, though.",
+		"Cause of death: disagreed with a warlock. It happens more than you'd think.",
+	},
+	["cls.warlock.victory.w06.036"] = {
+		"No one will come to see what happened here. They'll smell the sulfur and decide they'd rather not know.",
+		"If anyone finds the body, they'll guess who did it. Warlock work has a signature.",
+	},
+	["cls.warlock.victory.w06.037"] = {
+		"Leave it. Nothing on that corpse belongs to you.",
+		"Away from the remains. You're a servant, not a scavenger.",
+		"Off. I didn't summon you to pick at leftovers.",
+	},
+	["cls.warlock.victory.w06.038"] = {
+		"For a moment, as it died, I felt something pass close to me. A draft. I'll tell myself it was a draft.",
+		"As it fell, the cold in the air deepened, just for an instant. Something on the other side had noticed.",
+	},
 }, "base_classes")

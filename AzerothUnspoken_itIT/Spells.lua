@@ -434,4 +434,252 @@ NS:AddTexts("itIT", {
 		"lavora svelto e senza storie, come chi ricuce una cinghia strappata prima di rimettersi in cammino.",
 		"mormora sottovoce, l'attenzione tutta sulla ferita e su nient'altro.",
 	},
+	["buff.w06.001"] = {
+		"Qualcosa si posa sotto la pelle e ci resta. Bene. La strada è lunga.",
+		"Un margine in più dalla mia parte. Sono i margini a riportare la gente a casa.",
+		"Non è invincibilità. È preparazione, che ne è la versione onesta.",
+	},
+	["buff.w06.002"] = {
+		"Vai, {target}. Adesso porti qualcosa in più: spendilo con giudizio.",
+		"Per un po' è tuo. Non sprecarlo con la prima cosa che ringhia.",
+		"Va' pure, {target}, con qualcosa in più rispetto a prima.",
+	},
+	["heal.w06.001"] = {
+		"La ferita si chiude. Domani farà male, ma domani è lontano.",
+		"Chiusa, più o meno. Il dolore aspetterà la sera: lo fa sempre.",
+	},
+	["heal.w06.002"] = {
+		"si ferma un istante, mentre il peggio del dolore si ritira, poi rialza lo sguardo.",
+		"aspetta, immobile, che il dolore allenti la presa un dito dopo l'altro.",
+	},
+	["heal.w06.003"] = {
+		"Rimettere insieme i pezzi è la parte facile. L'arte è non rompersi di nuovo nei cinque minuti dopo.",
+		"Rattoppare è semplice. Il difficile è che il rattoppo tenga oltre la prossima curva.",
+		"Chiudere una ferita è questione di un attimo. Tenerla chiusa è questione di giudizio.",
+	},
+	["heal.w06.004"] = {
+		"Andrà bene. A furia di guardarlo non tiene di più.",
+		"Basta così. A restare fermi non migliora.",
+		"Fatto. Gambe in movimento, per favore.",
+	},
+	["heal.w06.005"] = {
+		"Ogni cura compra un po' di tempo. Nessuno dice mai a chi lo si compra.",
+		"Tempo ricomprato a manciate. Il venditore, in faccia, non l'ho mai visto.",
+	},
+	["heal.w06.006"] = {
+		"controlla con un'occhiata attenta la ferita richiusa, come si saggia un nodo prima di affidargli un peso.",
+		"guarda a lungo la ferita che si chiude, come un falegname guarda un incastro prima di dirlo finito.",
+	},
+	["heal.w06.007"] = {
+		"Regge abbastanza. Quello che viene dopo non aspetterà che io mi senta {g:pronto|pronta}.",
+		"Quanto basta per andare avanti. Del resto, andare avanti era l'unico piano.",
+	},
+	["heal.w06.008"] = {
+		"Guarda un po'. Quasi presentabile di nuovo.",
+		"Ecco. Quasi da portare in società.",
+		"Meglio. Nessuno se ne accorgerebbe, purché nessuno guardi troppo da vicino.",
+	},
+	["heal.w06.009"] = {
+		"Una ferita è una lezione pagata in anticipo. Tanto vale impararla.",
+		"Qualcuno quella lezione l'ha pagata col sangue. Sprecarla sarebbe l'offesa vera.",
+	},
+	["heal.w06.010"] = {
+		"approfitta del momento tranquillo per lasciar finire la cura, senza fretta e senza voglia di essere {g:disturbato|disturbata}.",
+		"lascia che la quiete faccia la sua parte di lavoro, mentre il dolore svanisce.",
+	},
+	["heal.w06.011"] = {
+		"Non è ancora finita. Nemmeno a metà.",
+		"Dovrai colpire parecchio più forte di così.",
+	},
+	["heal.w06.012"] = {
+		"Ho smesso di contare le ferite. Adesso conto le ore che mancano al riposo.",
+		"I tagli non fanno più notizia. Ormai sono parte della strada.",
+		"Un'altra ferita, un'altra cura. Si danno lavoro a vicenda.",
+	},
+	["heal.w06.013"] = {
+		"Rimettere in sesto ha un suo ritmo: guardare, valutare, chiudere, ripartire. È il ritmo che tiene ferme le mani.",
+		"Guarda, valuta, chiudi, riparti. Ripetilo abbastanza e le mani smettono di tremare.",
+	},
+	["heal.w06.014"] = {
+		"Meglio. Molto meglio. Allora, cosa mi sono {g:perso|persa}?",
+		"Ah, così va meglio. Andiamo?",
+	},
+	["heal.w06.015"] = {
+		"I corpi sono testardi. Gli dai mezza occasione e si ostinano ad andare avanti.",
+		"La carne vuole richiudersi. Il grosso del lavoro è non intralciarla.",
+	},
+	["heal.w06.016"] = {
+		"esamina il risultato col vago sospetto di chi si è già sentito promettere «come nuovo» altre volte.",
+		"osserva la ferita rimessa a posto come si osserva una riparazione alla buona: con gratitudine, ma senza esserne {g:convinto|convinta} del tutto.",
+	},
+	["heal.w06.017"] = {
+		"E allora ancora. Tutte le volte che serve.",
+		"Ogni volta che si rompe, si aggiusta. Questo è il patto.",
+		"Si rompe, si aggiusta, si rompe, si aggiusta. A questo gioco duro più io di loro.",
+	},
+	["heal.w06.018"] = {
+		"Costa meno rimettersi in sesto adesso che farsi portare in spalla dopo.",
+		"Una piccola riparazione adesso risparmia una camminata molto più lunga dopo.",
+	},
+	["heal.w06.019"] = {
+		"stappa la fiala coi denti, la vuota in due sorsi e ripone il vetro vuoto.",
+		"rovescia all'indietro una fialetta, fa una smorfia all'ultima goccia e ritappa il vetro vuoto per abitudine.",
+		"manda giù la pozione senza cerimonie, si pulisce la bocca con la manica e torna alle sue faccende.",
+	},
+	["heal.w06.020"] = {
+		"Rossa, densa, vagamente frizzante. Ho smesso di chiedermi cosa ci mettano gli alchimisti. Vivo meglio senza saperlo.",
+		"Un alchimista, chissà dove, si sta arricchendo con la mia goffaggine. Buon per lui.",
+	},
+	["heal.w06.021"] = {
+		"Alla salute, e speriamo che la seconda non serva.",
+		"Una andata. Facciamo che resti l'unica.",
+		"Al prossimo scontro, e a uscirne sulle mie gambe.",
+	},
+	["heal.w06.022"] = {
+		"Una fiala in meno. Meglio contare quelle rimaste prima che ne serva un'altra.",
+		"La sacca adesso è un po' più leggera. Fare scorta dal prossimo mercante: me ne sarò {g:grato|grata}.",
+	},
+	["heal.w06.023"] = {
+		"Dolce in bocca e amara fino in fondo. Come quasi tutti i buoni consigli.",
+		"Sa di rame e di rimpianto, e la berrei di nuovo.",
+	},
+	["heal.w06.024"] = {
+		"Una pietra verde si sbriciola nel palmo, e la vita che conteneva passa oltre. Era fatta proprio per questo.",
+		"La pietra cede quello che tratteneva e si spegne nella mano. Uno scambio onesto, per una volta.",
+		"Niente sapore, niente odore, solo il dolore che tace. Chi per primo ha chiuso la vita in una pietra ci aveva visto giusto.",
+	},
+	["heal.w06.025"] = {
+		"stringe nel pugno una pietra verde pallido; quando riapre la mano, resta solo un po' di polvere.",
+		"sbriciola in una mano una piccola pietra verde, e si regge più {g:saldo|salda} sulle gambe.",
+	},
+	["heal.w06.026"] = {
+		"Una pietra che guarisce. Meglio che i minatori non lo sappiano.",
+		"Di solito le pietre le ossa le rompono. Questa fa il contrario. Non mi lamento.",
+	},
+	["heal.w06.027"] = {
+		"avvolge stretta una striscia di lino intorno alla ferita, tenendone un capo coi denti per tirare il nodo.",
+		"fascia la ferita con giri rapidi di stoffa, rimbocca il capo libero e saggia la tenuta flettendo l'arto.",
+	},
+	["heal.w06.028"] = {
+		"Sopra, sotto, tira. Il nodo mi viene sempre più facile, e non è un buon segno.",
+		"Stoffa pulita, giri ben stretti, un nodo che non scivola. Le cose semplici ti tengono in vita più di quelle furbe.",
+		"Due giri, una piega, un nodo. Le mani lo sanno fare meglio di quanto vorrei.",
+	},
+	["heal.w06.029"] = {
+		"Lino e testardaggine. La miglior medicina che posso permettermi.",
+		"È una benda, non un miracolo. Sempre meglio che gocciolare.",
+	},
+	["heal.w06.030"] = {
+		"La stoffa si arrossa ai bordi e lì si ferma. Bene. Non le chiedo altro.",
+		"Un'altra fasciatura sopra la cicatrice della precedente. Le mie braccia stanno diventando una mappa di giornate storte.",
+	},
+	["heal.w06.031"] = {
+		"Piano, {target}. Lascia che faccia effetto. Il coraggio lo rimetti in campo fra un minuto.",
+		"Dagli un momento. Il coraggio può aspettare che questa si chiuda.",
+	},
+	["heal.w06.032"] = {
+		"{target}, i buchi li richiudo. La tua passione per collezionarli, quella no.",
+		"Fatto. Adesso smettila di metterti dove arrivano le cose appuntite.",
+		"Ecco. Per un po', cerca di non aprirtene altri.",
+	},
+	["heal.w06.033"] = {
+		"Guardare gli occhi, non la ferita. Sono gli occhi a dirmi se arrivo in tempo.",
+		"Il viso, non la ferita. È il viso a dire se sono abbastanza {g:svelto|svelta}.",
+	},
+	["heal.w06.034"] = {
+		"Cadi quando lo dico io, {target}, e io non l'ho detto.",
+		"Qui non va giù nessuno finché ci sono io in piedi. Nessuno.",
+		"Resta su, {target}. Cadere non è nei programmi.",
+	},
+	["heal.w06.035"] = {
+		"posa una mano ferma sulla spalla di {target} e ce la tiene finché il peggio non è passato.",
+		"si china su chi è ferito senza alcuna fretta, come se il tempo non mancasse affatto.",
+	},
+	["heal.w06.036"] = {
+		"Ecco qua, {target}. Quasi come prima, cicatrice più, cicatrice meno.",
+		"Finito. Mi devi il racconto di come te la sei procurata.",
+		"Ecco, {target}. Fra un'ora non ti ricorderai nemmeno che è successo.",
+	},
+	["heal.w06.037"] = {
+		"La ferita la chiudo. Il gusto del rischio che l'ha aperta, quello non è mai toccato a me ricucirlo.",
+		"Le mani ricuciono la carne. L'imprudenza, nessuna mano al mondo la ricuce.",
+	},
+	["heal.w06.038"] = {
+		"Non guardarla, {target}. Guarda me. Al resto penso io.",
+		"Gli occhi su di me, non lì. Il resto lo sistemo io.",
+	},
+	["heal.w06.039"] = {
+		"Fatto, {target}. Torna dentro, e stavolta tieni alta la guardia.",
+		"Vai. Ne hai per un altro giro.",
+	},
+	["heal.w06.040"] = {
+		"{target}, di questo passo dovrei farmi pagare a ferita.",
+		"Di questo passo mi servirà un registro tenuto apposta.",
+	},
+	["heal.w06.041"] = {
+		"mormora qualche parola semplice di conforto, di quelle che non significano niente e aiutano lo stesso.",
+		"continua a parlare piano e con calma mentre lavora, come si fa con un cavallo ombroso.",
+	},
+	["heal.w06.042"] = {
+		"Riposa un momento, {target}. La strada aspetta: lo fa sempre.",
+		"Siediti. La strada non parte senza di te.",
+	},
+	["race.dwarf.heal.w06.001"] = {
+		"I vecchi minatori dicono che una ferita è come una vena nella roccia: può sembrare chiusa e nascondere ancora una crepa. Meglio controllare due volte.",
+		"Giù nelle profondità si dice che non ci si fida di una cosa riparata finché non ha retto un peso. Giusto.",
+	},
+	["race.dwarf.heal.w06.002"] = {
+		"Peggio della birra più scadente di Ironforge, e fa il doppio del bene.",
+		"Giù in un sorso. Non regge il confronto con una birra scura come si deve, ma ferma il sangue.",
+	},
+	["race.human.heal.w06.001"] = {
+		"Dalle mie parti si dice che una ferita di cui puoi ridere è già mezza guarita. Qualcuno cominci a ridere, allora.",
+		"A Stormwind la gente ama dire che il dolore è solo il conto che il corpo presenta. Saldato, allora.",
+	},
+	["race.human.heal.w06.002"] = {
+		"Coraggio in bottiglia, lo chiamano i vecchi soldati. Sa soprattutto di stagno.",
+		"Tappata, sigillata, e cara quanto una settimana di pane. Almeno funziona.",
+	},
+	["race.nightelf.heal.w06.001"] = {
+		"Le Sentinelle hanno un detto: nessuna ferita è più vecchia della foresta, e la foresta è ancora in piedi.",
+		"Il mio popolo è sopravvissuto a imperi e a un mare spaccato in due. Non sarà una ferita in più a finirci.",
+	},
+	["race.nightelf.heal.w06.002"] = {
+		"Lino, stretto, poi un nodo. Le Sentinelle si fasciano le ferite in silenzio; io almeno posso provarci.",
+		"Fasciatura fatta, nodo stretto. Non è la benedizione delle sacerdotesse, ma terrà.",
+	},
+	["race.orc.heal.w06.001"] = {
+		"Annoda e rimettiti in marcia. I vecchi guerrieri dicono che una ferita per cui ti fermi è una ferita che vince.",
+		"Benda, nodo, fatto. Gli orchi hanno sanguinato su terreni peggiori di questo.",
+		"Stoffa, i denti per stringere il nodo, e di nuovo in piedi. Basta così.",
+	},
+	["race.scourge.heal.w06.001"] = {
+		"osserva la carne lacerata che si ricompone con un interesse distaccato, come chi guarda uno sconosciuto rammendare una giacca.",
+		"guarda la ferita richiudersi senza il minimo sollievo: il dolore ha smesso da tempo di avere molto da dire.",
+	},
+	["race.scourge.heal.w06.002"] = {
+		"Nessun sapore, nessun calore che scende. Funziona lo stesso. Quasi tutto funziona, quando smetti di aspettarti di sentirlo.",
+		"Una pozione curativa per un corpo che, a rigore, è oltre ogni cura. L'ironia non mi sfugge.",
+	},
+	["race.tauren.heal.w06.001"] = {
+		"Riposa un momento. La Madre Terra è paziente con chi è ferito, e io con lei.",
+		"Appoggiati a me, se serve. Queste spalle sono fatte per portare pesi.",
+		"Piano. Anche i kodo si fermano, dopo una lunga marcia.",
+	},
+	["race.troll.heal.w06.001"] = {
+		"Non muoverti, mon. Ai loa non piacciono i pazienti che si dimenano.",
+		"Resta giù un respiro. Tra poco sarai di nuovo in piedi a sorridere.",
+	},
+	["race.troll.heal.w06.002"] = {
+		"Fascialo stretto e non pensarci più. La carne di troll sa cosa fare da lì in poi.",
+		"Un po' di stoffa per tenere fuori lo sporco. Il lavoro vero lo fa la rigenerazione.",
+	},
+	["rezother.w06.001"] = {
+		"Forza. Trova la strada del ritorno. Ho lasciato la porta aperta.",
+		"Torna indietro. Piano. Il mondo è ancora qui, più o meno come l'hai lasciato.",
+	},
+	["rezother.w06.002"] = {
+		"attende accanto a chi è caduto, le mani aperte e pazienti, come si aspetta un viandante in ritardo sulla strada.",
+		"resta immobile sul corpo, {g:attento|attenta} al primo piccolo segno che qualcuno sta tornando.",
+	},
 }, "base_spells")
