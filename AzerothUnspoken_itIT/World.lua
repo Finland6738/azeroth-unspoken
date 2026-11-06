@@ -2011,4 +2011,788 @@ NS:AddTexts("itIT", {
 		"toglie finalmente il peso dagli zoccoli, e tutta la grande mole sembra abbassarsi di un palmo.",
 		"si siede piano, come fanno le cose grandi, e lascia andare un lungo respiro che sembra salire dal suolo.",
 	},
+	["race.gnome.journey.w09.001"] = {
+		"Le ali battono, la terra scende, e ogni istinto gnomesco che ho dice che servirebbero più rivetti.",
+		"Volo a piume e muscoli. Grazioso, davvero. Le nostre macchine volanti delle vecchie guerre avevano almeno un manuale.",
+		"Si sale. Ho calcolato le probabilità di cadere. Scelgo di non ricordarmele.",
+	},
+	["race.gnome.journey.w09.002"] = {
+		"stringe la sella con entrambe le mani, i piedi che penzolano ben lontani dalle staffe, e assume un'espressione coraggiosa e scientifica.",
+		"si sistema su una sella fatta per qualcuno grande il doppio e si aggrappa con una determinazione cupa e allegra.",
+		"sbircia oltre il fianco mentre la terra si allontana, scarabocchia un appunto frettoloso sull'angolo delle ali, poi ci ripensa e si tiene forte.",
+	},
+	["race.gnome.journey.w09.003"] = {
+		"Da quassù il mondo sembra un modellino sul banco da lavoro, ogni strada e ogni fiume disposti in bell'ordine. Mi viene sempre voglia di sistemare qualcosa.",
+		"La terra di sotto diventa una mappa, e le mappe sono un conforto per uno gnomo. Tutto al suo posto, a distanza di sicurezza.",
+		"Sempre più in alto. I paesi si rimpiccioliscono in schemi ordinati. Vorrei che quelli veri lo fossero la metà.",
+	},
+	["race.gnome.journey.w09.004"] = {
+		"Esiste un manuale per questa creatura? No? Ovviamente no.",
+		"Ali, a posto. Cinghie, a posto. {g:Gnomo|Gnoma}, {g:quasi calmo|quasi calma}.",
+		"Vola dritto, per favore. Gli gnomi rimbalzano, ma male.",
+	},
+	["race.gnome.journey.w09.005"] = {
+		"Terra solida. Le ginocchia approvano, lo stomaco sta ancora esaminando la questione.",
+		"A terra, e tutto in un pezzo. Più tardi scriverò il resoconto del volo: velocità eccellente, comodità discutibile, nemmeno un rivetto.",
+		"Di nuovo coi piedi per terra. Volare è meraviglioso, e lo è anche stare in piedi su qualcosa che non sbatte le ali.",
+	},
+	["race.gnome.journey.w09.006"] = {
+		"scivola giù dalla sella, atterra con un saltello, e dà alla bestia una pacca educata e un po' diffidente.",
+		"salta giù dalla sella da un'altezza un po' maggiore del previsto, si sistema il cappotto e prosegue come se fosse tutto calcolato.",
+		"scende con cautela, controlla una tasca dopo l'altra, e ha l'aria di chi è contento che niente sia rimasto lassù in cielo.",
+	},
+	["race.gnome.journey.w09.007"] = {
+		"Eccoci. Terreno nuovo, problemi nuovi, e molto probabilmente cose nuove da smontare. Che bello.",
+		"Finalmente qui. Il volo era la parte facile; ora le gambe si ricordano di essere corte.",
+		"Piedi a terra, appunti alla mano. Qualunque cosa serva a questo posto, preferisco saperlo prima che lo chieda.",
+	},
+	["race.gnome.journey.w09.008"] = {
+		"Grazie, mezzo di trasporto piumato. L'atterraggio però è da rivedere.",
+		"Bel volo. Più o meno. Ho degli appunti, se a qualcuno interessano.",
+	},
+	["race.gnome.quest_complete.w09.001"] = {
+		"Finito, e tutti i pezzi con cui avevo cominciato sono ancora attaccati. Per me è un collaudo perfetto.",
+		"Fatto! Niente fumo, niente scintille, e un solo strillo piccolino, che ho deciso di non contare.",
+	},
+	["race.gnome.quest_complete.w09.002"] = {
+		"Un altro lavoro finito per gente che di uno gnomo non aveva alcun bisogno. Un giorno vorrei finirne uno per Gnomeregan.",
+		"Lavoro fatto bene, paga onesta. Eppure non è quello che vorrei fare più di tutto: riaprire i cancelli di casa.",
+	},
+	["race.gnome.quest_complete.w09.003"] = {
+		"si spolvera le mani piccole con due colpi secchi, come un artigiano che chiude il coperchio di una scatola finita.",
+		"si alza in punta di piedi per consegnare l'ultima parte, poi si dondola sui talloni con l'aria di chi è molto, molto contento.",
+		"fa un cenno rapido e compiaciuto, quello che uno gnomo tiene da parte per un ingranaggio che finalmente ingrana.",
+	},
+	["race.gnome.quest_complete.w09.004"] = {
+		"Problema risolto. Trattenete gli applausi: sono {g:basso|bassa}, e mi passano sopra la testa.",
+		"Ecco, sistemato. Potete ringraziarmi quaggiù, un po' sotto il livello degli occhi.",
+	},
+	["race.gnome.quest_complete.w09.005"] = {
+		"Fatto. Ho già annotato tre cose che farei in un altro modo. Non è rimpianto: è una revisione.",
+		"Finito, e gli appunti sono più lunghi del lavoro. Per uno gnomo è tempo speso benissimo.",
+		"Concluso. Adesso viene il bello: capire perché ha funzionato.",
+	},
+	["race.gnome.quest_complete.w09.006"] = {
+		"Fatto, e fatto per l'Alleanza. Gli esuli di Gnomeregan i debiti li pagano, un incarico dopo l'altro.",
+		"Un'altra commissione chiusa per l'Alleanza. Un popolo in esilio deve rendersi utile il doppio, e a me non pesa affatto.",
+	},
+	["race.gnome.quest_complete.w09.007"] = {
+		"Una ricompensa quasi troppo pesante da portare. Per uno gnomo non esiste problema più bello.",
+		"Grazie! Per questa borsa mi servono tutte e due le braccia, ed è proprio così che mi piacciono le borse.",
+	},
+	["race.gnome.quest_complete.w09.008"] = {
+		"conta la ricompensa moneta per moneta, aggrotta la fronte e la riconta con la cura di chi verifica una misura.",
+		"soppesa il compenso nel palmo minuto, fa un rapido conto a fior di labbra e lo mette via con aria soddisfatta.",
+	},
+	["race.gnome.quest_complete.w09.009"] = {
+		"I sopravvissuti dicono che fu Thermaplugg a consigliare di inondare Gnomeregan di veleno per salvarla. Quello che aggiusto io, lo aggiusto perché il paziente viva.",
+		"Mekkatorque diede ascolto al consigliere sbagliato, raccontano gli esuli, e una città intera ne pagò il prezzo. Le mie soluzioni le controllo due volte.",
+	},
+	["race.gnome.quest_complete.w09.010"] = {
+		"Incarico completato. Archiviatelo sotto: cose finite da qualcuno di piccolo dopo che l'avevano chiesto a qualcuno di grosso.",
+		"Tutto fatto. Buffo quante volte il lavoro finisca a chi sta più vicino al pavimento.",
+	},
+	["race.gnome.quest_complete.w09.011"] = {
+		"Un lavoro finito è la prova che il mondo si può ancora aggiustare. Agli gnomi una prova così serve, ogni tanto.",
+		"Qualcosa era rotto, e adesso non lo è più. Dopo Gnomeregan, quella sensazione non mi stanca mai.",
+		"Una cosa rimessa a posto. Non ripara una città, ma ripara il mio umore, ed è già qualcosa.",
+	},
+	["race.gnome.quest_complete.w09.012"] = {
+		"Fatto! Vorrei una ricevuta, un panino e la prossima cosa impossibile, in quest'ordine.",
+		"Finito! Allora, c'è qualcosa da mangiare e qualcosa di più difficile da fare? Meglio tutte e due.",
+		"Sistemato. Che altro avete che nessuno vuole toccare?",
+	},
+	["race.gnome.quest_complete.w09.013"] = {
+		"si arrampica sulla cassa più vicina per dare la buona notizia da un'altezza più dignitosa.",
+		"si schiarisce la voce, si drizza quanto più può e annuncia il successo alla fibbia della cintura di qualcuno.",
+	},
+	["race.gnome.quest_complete.w09.014"] = {
+		"Sotto Dun Morogh, in qualche galleria, gli gnomi che non sono riusciti a uscire vagano ancora per i corridoi, malati e perduti. Ogni buona azione quassù è una parola che vorrei mandare giù fino a loro.",
+		"Gli gnomi lebbrosi si aggirano ancora in ciò che resta di Gnomeregan. Finisco il mio lavoro quassù e penso a loro, ogni volta.",
+	},
+	["race.gnome.quest_complete.w09.015"] = {
+		"Finito. Cos'altro c'è di rotto?",
+		"Sistemato. Avete qualcosa di più difficile?",
+		"Fatto. Il prossimo problema, prego.",
+	},
+	["race.gnome.quest_complete.w09.016"] = {
+		"Hanno affidato il lavoro alla persona più piccola della stanza. La persona più piccola della stanza l'ha appena finito.",
+		"Da una taglia come la mia nessuno si aspettava granché. Le aspettative, a quanto pare, si possono regolare.",
+	},
+	["race.gnome.quest_complete.w09.017"] = {
+		"Felice di aiutare! Se si rompe qualcos'altro, chiedete dello gnomo. Di solito ce n'è uno nei paraggi, tra i piedi.",
+		"{g:Ben lieto|Ben lieta} di dare una mano. Mani piccole, ma arrivano dove quelle grosse non entrano.",
+	},
+	["race.gnome.quest_complete.w09.018"] = {
+		"Fatto, e le mie gambe hanno camminato il doppio di quelle di chiunque altro. La prossima volta mi faccio prestare un mechanostrider.",
+		"Finito. Passi corti, commissioni lunghe: qualcuno dovrebbe inventare un rimedio, e tanto vale che sia uno gnomo.",
+	},
+	["race.gnome.quest_complete.w09.019"] = {
+		"Problema, tentativo, fallimento, tentativo migliore, soluzione. L'ordine non cambia mai: cambia solo quanti fallimenti ci stanno in mezzo.",
+		"Provare, sbagliare, correggere, riprovare. È il ritmo dei vecchi artigiani gnomi, e ha funzionato anche stavolta.",
+	},
+	["race.gnome.quest_complete.w09.020"] = {
+		"canticchia tre note allegre e stonate di trionfo e intasca la ricompensa.",
+		"si lascia scappare un fischietto contento fra i denti e saluta il lavoro finito con una pacca.",
+		"si illumina di un sorriso largo e improvviso da gnomo, che occupa quasi tutto un viso piccolo.",
+	},
+	["race.gnome.quest_complete.w09.021"] = {
+		"Fatto, e al primo colpo. Be', al primo colpo che contava.",
+		"Riuscito al primo tentativo! Il primo che qualcuno abbia visto, almeno.",
+	},
+	["race.gnome.quest_complete.w09.022"] = {
+		"Un nano alzerebbe le spalle e la chiamerebbe una giornata di lavoro onesto. Uno gnomo ne disegnerebbe un grafico. Io faccio tutte e due le cose.",
+		"I nani di Ironforge finiscono un lavoro e vanno a farsi una birra. Gli gnomi finiscono un lavoro e vanno a prendere la matita. Per stavolta provo la birra.",
+	},
+	["race.gnome.quest_complete.w09.023"] = {
+		"Tinker Town ne sentirà parlare, e probabilmente con molti più dettagli di quanti ne voglia.",
+		"A Tinker Town qualcuno si sentirà raccontare tutta la storia, con tanto di schemi, che l'abbia chiesto o no.",
+	},
+	["race.gnome.quest_complete.w09.024"] = {
+		"Che resti agli atti: l'ha fatto uno gnomo! Mani piccole, risultati grandi!",
+		"Scrivetelo da qualche parte: portato a termine da uno gnomo di Gnomeregan, in esilio e in forma smagliante!",
+		"Mettete il nome del mio popolo su questo. Gli gnomi: quelli bassi che le cose le finiscono!",
+	},
+	["race.gnome.quest_complete.w09.025"] = {
+		"Ogni lavoro finito quaggiù è un'abilità in più che gli gnomi potranno portare a casa, quando ci sarà di nuovo una casa dove portarla.",
+		"Con queste commissioni continuo a imparare. Gnomeregan la ricostruiranno gnomi che, nell'attesa, avranno imparato moltissimo.",
+	},
+	["race.gnome.quest_complete.w09.026"] = {
+		"traccia nell'aria con un dito un rapido schema di quanto è appena successo, poi gli rivolge un cenno soddisfatto.",
+		"si picchietta due volte la tempia, come per archiviare tutta la faccenda in un posto sicuro, da studiare più tardi.",
+	},
+	["race.gnome.quest_complete.w09.027"] = {
+		"Finito come si deve, non soltanto finito. C'è differenza, e uno gnomo se ne accorge sempre.",
+		"Funziona, e continuerà a funzionare. È la seconda parte quella che conta.",
+		"Fatto con una cura sotto cui metterei la firma. L'Alto Inventore non chiederebbe niente di meno.",
+	},
+	["race.gnome.quest_complete.w09.028"] = {
+		"Ecco qua, tutto aggiustato. Se mai dovesse guastarsi di nuovo, farò finta di stupirmi.",
+		"È tutto tuo, in buon ordine. Trattalo con garbo, e lui farà lo stesso con te.",
+	},
+	["race.gnome.quest_progress.w09.001"] = {
+		"Fase uno completata. Fase due: la stessa cosa, solo di più.",
+		"Risultati parziali. E anche promettenti.",
+		"Una parte è fatta. Il resto è questione di ripetere e correggere.",
+	},
+	["race.gnome.quest_progress.w09.002"] = {
+		"Ci sono tutti i pezzi! Si torna da chi l'ha chiesto: voglio vedere che faccia fa.",
+		"Raccolto tutto! È ora del giro di consegna.",
+	},
+	["race.gnome.quest_progress.w09.003"] = {
+		"conta sulle dita minute quello che è fatto, finisce le dita e ricomincia con un sorriso.",
+		"depenna un'altra riga di una lista tenuta tutta a mente, e canticchia.",
+	},
+	["race.gnome.quest_progress.w09.004"] = {
+		"Qui ho finito. Il ritorno a piedi è l'unica parte di tutto questo che non riesco a ottimizzare.",
+		"Fatto. Adesso il lungo viaggio di ritorno su gambe corte, l'unico difetto di un progetto per il resto eccellente.",
+	},
+	["race.gnome.reputation_change.w09.001"] = {
+		"Adesso hanno più stima di me. Un popolo in esilio impara che la benevolenza vale più dell'oro.",
+		"Un po' di fiducia in più, guadagnata. Gli gnomi tengono registri accurati, e questa va nella colonna buona.",
+		"La mia reputazione migliora. Ironforge ha insegnato al mio popolo cosa significa quando degli sconosciuti decidono di fidarsi.",
+	},
+	["race.gnome.rest_enter.w09.001"] = {
+		"Un posto per riposare. Prima trovo una sedia della mia misura, cosa che richiederà un po', poi riposerò il doppio.",
+		"Finalmente riposo. Le mie gambe hanno fatto doppio lavoro tutto il giorno solo per stare al passo col mondo.",
+		"Un posto sicuro dove sedersi. Uno gnomo si ricarica in fretta, con un cuscino e cinque minuti senza esplosioni.",
+	},
+	["race.gnome.rest_enter.w09.002"] = {
+		"si arrampica su una panca pensata per gente più alta, le gambe a penzoloni, e si lascia sfuggire un lungo sospiro soddisfatto.",
+		"avvicina uno sgabello al calore, tira fuori di tasca un taccuino spiegazzato, e si dimentica subito di aprirlo.",
+	},
+	["race.gnome.rest_enter.w09.003"] = {
+		"Riposare in stanze prese in prestito è ormai una specialità gnomesca. Si tira fuori l'essenziale, si prende il posto più caldo, e per un'ora è casa abbastanza.",
+		"Una locanda, un letto, una porta che si chiude. Cose semplici. L'esilio ci ha insegnato a non chiamarle piccole.",
+	},
+	["race.orc.journey.w09.001"] = {
+		"Si sale. Controllo le cinghie, poi le ricontrollo. Un orco si fida della forza, e una cinghia è solo cuoio.",
+		"Il suolo si allontana. Mi tengo più forte del necessario. Nessuno guarda, quindi nessuno lo saprà.",
+		"Su in aria come un sacco di grano. La dignità di un orco non sopravvive intera a un volo, ma il resto di solito sì.",
+	},
+	["race.orc.journey.w09.002"] = {
+		"monta sulla viverna e stringe l'imbracatura con entrambi i pugni verdi, la mascella serrata mentre le ali battono.",
+		"sale in groppa alla viverna con un grugnito, sistema il peso e fa un solo cenno al maestro di volo.",
+		"si curva basso sul collo della viverna mentre questa balza in aria, le zanne scoperte contro la raffica.",
+	},
+	["race.orc.journey.w09.003"] = {
+		"Da quassù il mondo è una mappa di colori. Per abitudine cerco la terra rossa, e se la trovo sento un piccolo strattone.",
+		"Laggiù le strade diventano fili e i forti sassolini. Distinguo quelli dell'Orda dagli altri: anche da quassù un orco tiene il conto.",
+		"L'altezza rende tutto piccolo, perfino la guerra. Per un momento, quassù, vedo la forma del mondo invece delle sue liti.",
+	},
+	["race.orc.journey.w09.004"] = {
+		"Vola dritto, bestia, e ti troverò qualcosa con più carne addosso di me.",
+		"Calma, bestia. Io non mordo, e preferirei che non lo facessi neanche tu.",
+	},
+	["race.orc.journey.w09.005"] = {
+		"A terra. Le gambe si ricordano a cosa servono. Lo stomaco ci mette un po' di più.",
+		"Terreno solido sotto di me. Un orco non è fatto per stare appeso al cielo, e le ginocchia me l'hanno ripetuto per tutto il viaggio.",
+		"Piedi a terra, via l'imbracatura. Volare è veloce, glielo concedo. Dignitoso no.",
+	},
+	["race.orc.journey.w09.006"] = {
+		"si lascia cadere dalla groppa della viverna e atterra pesantemente, facendo ruotare le spalle come per scrollarsi di dosso il cielo.",
+		"scivola giù dalla sella, pesta una volta il suolo per accertarsi che sia vero, e se ne va senza voltarsi.",
+	},
+	["race.orc.journey.w09.007"] = {
+		"Bel volo. Dirò agli altri che mi hai fatto paura solo due volte.",
+		"Hai fatto un buon lavoro, bestia. Una striscia di carne per te, se il maestro di volo lo permette.",
+		"Grazie del passaggio. Lo stomaco forse ti ringrazierà più tardi.",
+	},
+	["race.orc.journey.w09.008"] = {
+		"Si parte. Le viverne servono l'Orda come i lupi: non schiave, compagne. La vecchia Orda non ha mai capito la differenza.",
+		"Una viverna porta un orco perché sceglie di lavorare con noi. Nella vecchia Orda, dicono gli anziani, tutto si mandava avanti a frustate. Così è meglio.",
+	},
+	["race.orc.journey.w09.009"] = {
+		"Atterraggio fatto. Ovunque io sia, è lontano dalla polvere rossa. Riparto a piedi, come si deve per un orco.",
+		"Il volo finisce e comincia il cammino. Un orco preferisce così: l'ultimo tratto sulle proprie gambe.",
+		"Finalmente giù. A piedi ci sarei {g:arrivato|arrivata} lo stesso, con una settimana. Una viverna è solo un modo più veloce di essere testardi.",
+	},
+	["race.orc.quest_complete.w09.001"] = {
+		"Finito. La prossima volta dimmi solo cosa va rotto e fatti da parte.",
+		"Agli orchi non servono discorsi prima del lavoro, serve il lavoro. Ecco, sistemato.",
+		"Sistemato. Tieniti i ringraziamenti e dammi il prossimo incarico.",
+	},
+	["race.orc.quest_complete.w09.002"] = {
+		"Avevo detto che l'avrei fatto, e l'ho fatto. Alla fine l'onore è tutto qui: una parola, e le gambe per portarla.",
+		"L'onore non è uno stendardo. È una promessa mantenuta quando nessuno avrebbe saputo che l'avevi infranta.",
+		"Avevo dato la parola, e ora è saldata per intero. Pesa meno di qualunque moneta.",
+	},
+	["race.orc.quest_complete.w09.003"] = {
+		"si scuote dagli stivali la polvere della strada, e un piccolo grugnito soddisfatto chiude la faccenda.",
+		"fa ruotare le spalle e grugnisce una volta sola: il verso semplice di un orco davanti a un lavoro fatto bene.",
+	},
+	["race.orc.quest_complete.w09.004"] = {
+		"Gli orchi che sono passati per i campi parlano di stagioni intere senza fare nulla che valesse la pena ricordare. Io no. Non oggi.",
+		"Gli anziani sopravvissuti ai campi d'internamento dicono che il peggio era l'inerzia. Meglio i piedi a pezzi, sempre.",
+	},
+	["race.orc.quest_complete.w09.005"] = {
+		"Per questo qualcuno mi deve un pasto, e il pasto di un orco non è cosa da poco.",
+		"Finito, e ho una fame da lupi. Si accettano pagamenti anche in cinghiale arrosto.",
+	},
+	["race.orc.quest_complete.w09.006"] = {
+		"Lavoro semplice, fatto senza fronzoli. Il Capoguerra lo chiede a ogni orco, ed è giusto chiederlo.",
+		"Thrall non ci ha mai chiesto canzoni su noi stessi. Ci ha chiesto lavoro che regga. Questo regge.",
+		"Thrall non ci ha tirati fuori dai campi perché restassimo seduti ad aspettare ordini. L'ha fatto per cose come questa, fatte bene.",
+	},
+	["race.orc.quest_complete.w09.007"] = {
+		"Raccontatelo pure a Orgrimmar: me l'hanno chiesto, e l'ho fatto.",
+		"Portate la notizia nella Valley of Strength, se volete. Non impedirò a nessuno di vantarsi al posto mio.",
+	},
+	["race.orc.quest_complete.w09.008"] = {
+		"Il sudore si asciuga. Il lavoro resta fatto. È questo lo scambio, e mi sta bene.",
+		"Le braccia mi fanno male, e la cosa è chiusa. Un orco ci dorme sopra benissimo.",
+		"Mani indolenzite, schiena rigida, incarico concluso. Conti onesti.",
+	},
+	["race.orc.quest_complete.w09.009"] = {
+		"E fatto come si deve. Controlla pure: gli orchi non lavorano alla buona, ma non mi offendo.",
+		"Guardaci dentro quanto vuoi. Non ho niente da nascondere e ancora meno pazienza.",
+	},
+	["race.orc.quest_complete.w09.010"] = {
+		"Ogni incarico onesto è una pietra nelle mura di Orgrimmar. Una pietra piccola. Ma pur sempre una pietra.",
+		"Durotar non l'hanno costruito gli eroi. L'hanno costruito orchi che facevano la cosa successiva da fare, come questa.",
+	},
+	["race.orc.quest_complete.w09.011"] = {
+		"Pensavi ci volesse di più? Finora hai assunto le razze sbagliate.",
+		"Più svelto del previsto? La prossima volta chiedi subito a un orco.",
+	},
+	["race.orc.quest_complete.w09.012"] = {
+		"si preme un pugno sul petto e lo lascia lì per un istante: promessa mantenuta.",
+		"fa un solo cenno secco, le zanne scoperte in qualcosa di simile a un sorriso.",
+	},
+	["race.orc.quest_complete.w09.013"] = {
+		"Gli anziani dicono che un tempo il nostro sangue bruciava di fuoco demoniaco. Il mio si scalda solo per il lavoro onesto, ed è una febbre migliore.",
+		"A Orgrimmar dicono che la morte di Hellscream ci ha comprato questo: un compito scelto da noi, portato a termine da mani che nessun demone possiede.",
+	},
+	["race.orc.quest_complete.w09.014"] = {
+		"Finito. A un orco non serve chiederlo due volte: basta una, e chiara.",
+		"Chiedi chiaro e avrai in cambio lavoro chiaro. Come questo.",
+		"Di' una volta sola ciò che ti serve: gli orchi ascoltano alla prima. Visto?",
+	},
+	["race.orc.quest_complete.w09.015"] = {
+		"Troll, tauren, perfino i Reietti: chiunque ci sia dall'altra parte di un lavoro così, è con questo che l'Orda sta in piedi.",
+		"L'Orda è un mucchio di popoli strani che si sono messi d'accordo per aiutarsi. Oggi ho fatto la mia parte dell'accordo.",
+	},
+	["race.orc.quest_complete.w09.016"] = {
+		"Con le mie due mani, dall'inizio alla fine. Lok'tar!",
+		"La forza è fatta per essere usata, e io l'ho usata bene!",
+	},
+	["race.orc.quest_complete.w09.017"] = {
+		"Se cominciano a ringraziarmi, faccio un cenno e me ne vado. Gli orchi non sono fatti per tanta gratitudine: prude.",
+		"Si tengano i discorsi. Un grugnito e una stretta di mano, e siamo pari.",
+	},
+	["race.orc.quest_complete.w09.018"] = {
+		"La forza non serve solo nell'arena. Quasi sempre serve a portare le cose dove devono arrivare. Come oggi.",
+		"Gli orchi parlano della forza come se abitasse nel pugno. Metà abita nella pazienza di arrivare in fondo.",
+	},
+	["race.orc.quest_complete.w09.019"] = {
+		"Lavoro chiuso. Prendo la paga e la strada, in quest'ordine.",
+		"Pagami e indicami la prossima cosa. Gli orchi non si attardano.",
+		"Questa era la mia parte. Sistema la tua e sparisco.",
+	},
+	["race.orc.quest_complete.w09.020"] = {
+		"Frostwolf, Warsong, un tempo Blackrock: ogni clan andava fiero di cose diverse. Tutti andavano fieri di un lavoro finito.",
+		"Da qualunque clan venga un orco, su una cosa si è d'accordo: quello che prendi in mano, lo porti a termine.",
+	},
+	["race.orc.quest_complete.w09.021"] = {
+		"si fa scrocchiare le nocche una per una, con l'aria vagamente delusa che non ci sia altro da colpire.",
+		"si guarda intorno come sperando che il lavoro avesse una seconda parte, poi alza le spalle e si accontenta della ricompensa.",
+	},
+	["race.orc.quest_complete.w09.022"] = {
+		"Ogni incarico così lascia un po' meno spazio ai sussurri della Burning Blade. Gli orchi indaffarati non danno retta alle sette.",
+		"La Burning Blade si nutre di orchi senza niente da fare e niente in cui credere. Io, per ora, ho l'una e l'altra cosa.",
+	},
+	["race.orc.quest_complete.w09.023"] = {
+		"Tutto qui? Ho fatto la lotta con lupi che opponevano più resistenza.",
+		"Già concluso? Gli scorpidi di Durotar si battono di più in una giornata fiacca.",
+		"Di già? Non mi ero neanche scaldato le braccia.",
+	},
+	["race.orc.quest_complete.w09.024"] = {
+		"La prossima volta che vedrò le porte di Orgrimmar, ci passerò sotto con la testa un po' più alta.",
+		"Qualcosa da raccontare intorno al fuoco a Razor Hill, se qualcuno chiede. Gli orchi chiedono sempre.",
+	},
+	["race.orc.quest_complete.w09.025"] = {
+		"La parola che ti ho dato è mantenuta. La parola di un orco è l'unica cosa che nessuno potrà toglierci di nuovo.",
+		"Promessa mantenuta. Alla mia gente un tempo hanno tolto molto; la parola, mai.",
+	},
+	["race.orc.quest_complete.w09.026"] = {
+		"Un lupo non si vanta dopo la caccia. Mangia, riposa, e va a caccia ancora. A me basta.",
+		"I lupi non si vantano mai di una preda. Mangiano e vanno avanti. Gli orchi potrebbero imparare da loro, e i migliori l'hanno fatto.",
+	},
+	["race.orc.quest_complete.w09.027"] = {
+		"Il buon lavoro mette sete. Dov'è il grog?",
+		"Questo mi vale un boccale di qualcosa di forte. Chi versa?",
+	},
+	["race.orc.quest_complete.w09.028"] = {
+		"La forza cresce come è stata scolpita la roccia rossa di Durotar: un giorno duro dopo l'altro.",
+		"Nessuno diventa forte in un pomeriggio. Si impilano giornate come questa finché la catasta regge un peso.",
+	},
+	["race.orc.quest_progress.w09.001"] = {
+		"È tutto quello che hanno chiesto. Ora la lunga camminata per dirglielo, e alle gambe di un orco non pesa.",
+		"Tutto raccolto, tutto fatto. La strada fino a chi l'ha chiesto è la parte facile.",
+		"Qui fuori non resta niente da fare. Il resto è portare la notizia, e a portare sono bravo.",
+	},
+	["race.orc.quest_progress.w09.002"] = {
+		"Una parte. Non tutto. Gli orchi non si fermano a una parte.",
+		"Un pezzo è fatto. Il resto mi si nasconde, e non per molto.",
+		"Non è finita. Bene. Tanto la stanchezza non era ancora arrivata.",
+	},
+	["race.orc.quest_progress.w09.003"] = {
+		"Un pezzo di strada è fatto. Un lupo sulla pista non conta i passi alle spalle, solo l'odore davanti.",
+		"Non ci siamo ancora. Naso basso e piedi in movimento, come un lupo che ha fiutato la traccia.",
+	},
+	["race.orc.quest_progress.w09.004"] = {
+		"emette un grugnito soddisfatto: è tutto in pugno, resta solo la strada da fare.",
+		"raddrizza le spalle e si volta verso chi aspetta, senza sprecare un passo.",
+	},
+	["race.orc.reputation_change.w09.001"] = {
+		"Un po' più di rispetto. Gli orchi se lo guadagnano piano, con i fatti, e per questo dura di più.",
+		"Ora hanno un'opinione migliore di me. Bene. Il nome di un orco si costruisce come un muro: pietra pesante su pietra pesante.",
+		"Rispetto guadagnato, non mendicato. È l'unico che un orco dovrebbe portarsi addosso.",
+	},
+	["race.orc.rest_enter.w09.001"] = {
+		"Un posto dove fermarsi. Un orco riposa come un lupo: un orecchio dritto, e nel mezzo un sonno profondo.",
+		"Riposo. Metto le mie cose dove posso prenderle senza guardare. Vecchia abitudine di un popolo che dormiva con una mano vicino all'arma.",
+		"È ora di sedersi. Gli anziani dicono che un orco che riposa senza vergogna combatte senza paura. Ho intenzione di riposare benissimo.",
+	},
+	["race.orc.rest_enter.w09.002"] = {
+		"Un tetto e un fuoco. La panca di qualcun altro, i muri di qualcun altro, ma il calore è lo stesso. Lo prendo volentieri.",
+		"Al chiuso. Gli sgabelli sono sempre troppo piccoli per un orco, ma al fuoco non importa quale popolo l'abbia acceso.",
+		"Quattro mura e un focolare. Gli orchi le costruiscono più spesse, ma per ora queste bastano.",
+	},
+	["race.orc.rest_enter.w09.003"] = {
+		"si lascia andare su un sedile con un lungo grugnito, distende le gambe e lascia finalmente scivolare via il peso della strada.",
+		"posa lo zaino e si siede, pesante e {g:contento|contenta}, come un masso che è finalmente rotolato in fondo alla collina.",
+	},
+	["race.scourge.journey.w09.001"] = {
+		"La terra mi lascia andare. Niente vuoto allo stomaco, solo una vaga curiosità per il panorama.",
+		"In volo. I vivi stringono le cinghie fino a farsi sbiancare le nocche. Le mie sono già di quel colore, perciò mi tengo e basta.",
+		"Su, nel vento. Il freddo quassù non trova niente in me che se ne curi ancora.",
+	},
+	["race.scourge.journey.w09.002"] = {
+		"si sistema in sella mentre la bestia si alza, la schiena dritta e il corpo immobile, come un carico che conosce la sua destinazione.",
+		"sale in aria senza un sussulto, il mantello che schiocca, le mani posate sulle cinghie.",
+	},
+	["race.scourge.journey.w09.003"] = {
+		"Se cado, lasciatemi pure lì. Torno a piedi.",
+		"Calma, bestia. Stai portando un cadavere con degli impegni.",
+	},
+	["race.scourge.journey.w09.004"] = {
+		"Dall'alto la terra sembra intera. I vivi vedono campi e strade. Io continuo a cercare i punti dove qualcosa è andato storto, per abitudine.",
+		"Laggiù le strade sembrano punti di sutura che tengono insieme la terra. Di cuciture me ne intendo un po'.",
+	},
+	["race.scourge.journey.w09.005"] = {
+		"Giù. Le giunture scricchiolano un po' per essere rimaste ferme tanto a lungo. Ecco tutto il mio mal di viaggio.",
+		"Di nuovo a terra. Un cavaliere vivo si stirerebbe gemendo. Io devo solo controllare che non sia caduto niente per strada.",
+		"A terra, e nemmeno un capello fuori posto. Soprattutto perché non ne sono rimasti molti.",
+	},
+	["race.scourge.journey.w09.006"] = {
+		"scende di sella con movimenti rigidi e si tasta le tasche, e poi le cuciture, per assicurarsi che sia arrivato tutto.",
+		"smonta e resta un attimo in piedi, imperturbabile, il vento che tira ancora il mantello e nient'altro.",
+	},
+	["race.scourge.journey.w09.007"] = {
+		"Grazie del passaggio. Hai portato il passeggero con molta calma.",
+		"Bel volo. Nessuno ha urlato, nemmeno io.",
+	},
+	["race.scourge.journey.w09.008"] = {
+		"Di nuovo a terra, tra i vivi e il loro rumore. Il cielo era più silenzioso. Il cielo non fissa.",
+		"A terra. Ora comincia la parte in cui la gente si scansa senza sapere bene perché.",
+	},
+	["race.scourge.journey.w09.009"] = {
+		"In volo ricordo che i vivi, qui, provavano gioia. La cerco in me e trovo qualcosa di più piccolo: una specie di quiete.",
+		"Il vento mi sfreccia accanto e del suo freddo non sento niente. Peccato. Mi sarebbe piaciuto sentirlo, una volta, con una faccia viva.",
+	},
+	["race.scourge.journey.w09.010"] = {
+		"Giù, e di nuovo la terra sotto di me. Ci ho passato abbastanza tempo sotto; sopra mi sta meglio.",
+		"Terra. Bene. L'ho conosciuta da sotto e dall'alto, e camminarci sopra resta il mio modo preferito.",
+	},
+	["race.scourge.journey.w09.011"] = {
+		"Su, bestia. E niente picchiate: certi miei pezzi sono solo legati.",
+		"Volo tranquillo, per favore. Mi tengono insieme filo e buone intenzioni.",
+	},
+	["race.scourge.quest_complete.w09.001"] = {
+		"Ecco, è tutto finito. Se ti tranquillizza, contati pure le dita quando me ne sarò {g:andato|andata}.",
+		"Fatto. Su, controlla pure che non ci sia caduto dentro qualcosa di mio. Un dito, un orecchio. Capita.",
+		"Finito, e durante il lavoro non mi si è staccato niente. Per me è una buona giornata.",
+	},
+	["race.scourge.quest_complete.w09.002"] = {
+		"Ho dato la mia parola e l'ho mantenuta. Per i vivi è poca cosa. Per uno di noi, una parola mantenuta è la prova che dentro c'è ancora qualcuno a mantenerla.",
+		"Promesso, e consegnato. Qualunque altra cosa si sia presa la tomba, mi ha lasciato la capacità di mantenere una promessa.",
+		"La mia parola, data liberamente e liberamente mantenuta. I morti dovrebbero essere infidi. Mi piace deludere le aspettative.",
+	},
+	["race.scourge.quest_complete.w09.003"] = {
+		"chiude la faccenda con un breve cenno, e le giunture secche del collo scricchiolano appena.",
+		"apre e chiude una volta le dita rigide, come per accertarsi che le mani che hanno fatto il lavoro siano ancora al loro posto, e le lascia ricadere.",
+	},
+	["race.scourge.quest_complete.w09.004"] = {
+		"Pagami in monete, non con quello sguardo. Di sguardi così ne ho avuti abbastanza.",
+		"Le monete, prego. La faccia che stai facendo non si spende da nessuna parte.",
+		"Il tuo oro, se non ti dispiace. Il brivido tienilo pure: ne ho già una collezione.",
+	},
+	["race.scourge.quest_complete.w09.005"] = {
+		"Finito. Per un attimo ho quasi sentito la soddisfazione di una volta, quella calda. Poi è passata, ed è rimasta quella semplice. Mi accontento di quella.",
+		"I vivi festeggiano queste cose con una cena e un po' di compagnia. Io resto qui un momento, e questa è la mia festa.",
+	},
+	["race.scourge.quest_complete.w09.006"] = {
+		"Un altro compito per Undercity. I Reietti sono pochi, perciò ognuno di noi deve valere per dieci.",
+		"Ecco un'altra cosa che i Reietti hanno fatto da soli. Nessun altro l'avrebbe fatta per noi.",
+		"Segnatelo a nome dei Reietti. Siamo abituati al fatto che nessun altro tenga il conto.",
+	},
+	["race.scourge.quest_complete.w09.007"] = {
+		"Nessuno è svenuto quando ho consegnato tutto. O sto imparando a stare in piedi con educazione, o si stanno abituando a noi.",
+		"Neanche un urlo alla consegna. Per i Reietti, il progresso si misura in urla risparmiate.",
+		"Mi hanno ringraziato da dieci passi di distanza. Tra i Reietti si impara a sentire la gratitudine da lontano.",
+	},
+	["race.scourge.quest_complete.w09.008"] = {
+		"resta in silenzio un momento, poi emette una risata secca e roca che sembra cogliere di sorpresa perfino chi la fa.",
+		"emette un suono rauco di approvazione, quanto di più simile a un sospiro possa fare un corpo senza fiato.",
+	},
+	["race.scourge.quest_complete.w09.009"] = {
+		"Gli speziali della Royal Apothecary Society vorrebbero un rapporto completo: cosa ho visto, cosa ho toccato, che odore aveva. Aspetteranno. Mi sto godendo la fine del lavoro.",
+		"A Undercity c'è sempre uno speziale pronto a farmi scrivere tutto in un registro, con le misure. Gli darò un'alzata di spalle.",
+	},
+	["race.scourge.quest_complete.w09.010"] = {
+		"Ecco. Fatto da qualcuno senza polso e con tutta la pazienza del mondo. Hai fatto un affare.",
+		"Finito. Niente pasti, niente sonno, niente lamentele. I morti sono ottimi lavoranti.",
+		"Tutto sistemato. Non ho fatto nemmeno una pausa per mangiare. Del resto, la faccio di rado.",
+	},
+	["race.scourge.quest_complete.w09.011"] = {
+		"Il Re dei Lich mi faceva andare e venire senza fine, e niente di tutto quello era mio. Questa commissione non era più grande, ma l'ho scelta io. Tutta la differenza è lì, ed è enorme.",
+		"Sotto il Flagello ogni compito finito portava solo all'ordine successivo. Ora un compito finisce, e il prossimo aspetta finché non decido io.",
+	},
+	["race.scourge.quest_complete.w09.012"] = {
+		"Dite agli orchi che l'ha fatto {g:un Reietto|una Reietta}. Non ci crederanno, e poi dovranno crederci.",
+		"Se qualcuno nell'Orda lo chiede, rispondete: uno dei Reietti di Sylvanas. E che ci riflettano.",
+	},
+	["race.scourge.quest_complete.w09.013"] = {
+		"Una volta finivo le cose perché la vita era breve. Ora non ho nessuna fretta, e le finisco lo stesso. Abitudine, o qualcosa di meglio.",
+		"Da {g:vivo|viva}, un compito così era una corsa contro gli anni. Gli anni hanno smesso di contarmi. L'ho fatto comunque.",
+	},
+	["race.scourge.quest_complete.w09.014"] = {
+		"mette da parte l'ultima cosa e con il palmo rimette a posto la mascella allentata, con aria soddisfatta.",
+		"fa un cenno soddisfatto, poi deve tenersi ferma la mascella, che ha annuito un po' più del resto.",
+	},
+	["race.scourge.quest_complete.w09.015"] = {
+		"La Scarlet Crusade ci chiama abomini. Gli abomini, a quanto pare, mantengono la parola.",
+		"Che la Crusade predichi pure sui morti che camminano. {g:Questo morto|Questa morta} che cammina ha finito il lavoro.",
+	},
+	["race.scourge.quest_complete.w09.016"] = {
+		"Nessuno aspetta di sapere com'è andata. Me lo racconto da me, in breve, e il racconto basta.",
+		"Finito, e nessuno a cui dirlo. Lo dirò più tardi alle pietre di Undercity: ne hanno sentite di peggio.",
+	},
+	["race.scourge.quest_complete.w09.017"] = {
+		"Scusa l'odore. Almeno il lavoro è buono, e il lavoro è quello che hai chiesto.",
+		"È fatta. Sì, quest'odore sono io. No, non va via.",
+		"Finito. Mi avvicinerei per consegnartelo, ma dicono che l'olio da imbalsamazione sia un gusto da acquisire.",
+	},
+	["race.scourge.quest_complete.w09.018"] = {
+		"La sala del trono di Lordaeron giace in rovina sopra Undercity. Ogni piccolo compito come questo è un modo di dire che i morti abitano ancora lì, e intendono restarci.",
+		"Sopra la città, la vecchia capitale si sbriciola. Sotto, noi portiamo a termine le cose. Una di più.",
+	},
+	["race.scourge.quest_complete.w09.019"] = {
+		"Puoi respirare, adesso. Non mi offendo: io ci ho rinunciato da un pezzo.",
+		"Finito. Puoi rilassarti. Non mordo. Quasi mai.",
+	},
+	["race.scourge.quest_complete.w09.020"] = {
+		"Credo che la persona che ero prima ne sarebbe stata fiera. Non posso chiederglielo. Ne sarò {g:fiero|fiera} io, al posto suo.",
+		"La persona che ero a Lordaeron l'avrebbe fatto meglio, o peggio. Non lo saprò mai. Questa versione l'ha fatto.",
+	},
+	["race.scourge.quest_complete.w09.021"] = {
+		"Questo è fatto. Dite al prossimo della lista che i morti hanno voglia di lavorare.",
+		"Portatemi il prossimo. I morti non si stancano, e mi dispiacerebbe sprecarlo.",
+	},
+	["race.scourge.quest_complete.w09.022"] = {
+		"resta immobile per un po' dopo la consegna, senza battere ciglio, come in ascolto di un'emozione che tarda ad arrivare.",
+		"indugia un momento con un'aria vagamente perplessa, quella di chi fruga in tasca cercando qualcosa che un tempo c'era.",
+	},
+	["race.scourge.quest_complete.w09.023"] = {
+		"Con le monete comprerò cibo di cui sento appena il sapore. Lo comprerò comunque: masticare fa passare il tempo, e ricorda alla mascella a cosa serve.",
+		"Per i vivi la ricompensa è un pasto caldo. Per me uno freddo, mangiato per abitudine. Sembra comunque una ricompensa.",
+	},
+	["race.scourge.quest_complete.w09.024"] = {
+		"Finito. Non fare storie: non saprei cosa farmene.",
+		"Ecco. Niente discorsi, per favore. I morti non sanno ricevere complimenti.",
+		"Fatto e consegnato. Qualunque ringraziamento avessi in mente, consideralo ricevuto.",
+	},
+	["race.scourge.quest_complete.w09.025"] = {
+		"Tirisfal ce l'ha insegnato presto: i Reietti ottengono ciò per cui lavorano, e poco più. Ecco un altro poco, guadagnato.",
+		"Brill, Deathknell, il Sepulcher: la nostra gente ha costruito ogni avamposto con commissioni come questa. Il mio mattone l'ho messo.",
+	},
+	["race.scourge.quest_complete.w09.026"] = {
+		"Lo ammetto: a metà ho pensato di mollare. Poi mi è tornato in mente che nessuno può costringermi nemmeno a mollare.",
+		"Finito. Mi ha portato fin qui la mia volontà, la stessa cosa testarda che ha detto di no al Re dei Lich.",
+	},
+	["race.scourge.quest_complete.w09.027"] = {
+		"Fatto, e senza nemmeno morire. Di nuovo.",
+		"Un altro lavoro a cui sono {g:sopravvissuto|sopravvissuta}. Uso il termine in senso lato.",
+		"Concluso, e tutto d'un pezzo. Quasi tutto.",
+	},
+	["race.scourge.quest_complete.w09.028"] = {
+		"si pulisce dalla manica una macchia scura, controlla le cuciture sotto, e passa a quello che viene dopo.",
+		"ritira una cucitura sfilacciata al polso, come i vivi si sistemano il colletto dopo un lavoro ben fatto.",
+	},
+	["race.scourge.quest_progress.w09.001"] = {
+		"Una parte è fatta. Il resto si conserva: quasi tutto si conserva meglio di me.",
+		"A metà strada. Piano e senza sosta, come il marciume, ma in una direzione utile.",
+		"A metà. Non ho fretta: la tomba mi ha {g:guarito|guarita} dalla fretta.",
+	},
+	["race.scourge.quest_progress.w09.002"] = {
+		"conta quel che resta sulle dita rigide, perde un briciolo di pazienza e prosegue.",
+		"spunta qualcosa sulle dita grigie e rigide e riprende a camminare senza fretta.",
+	},
+	["race.scourge.quest_progress.w09.003"] = {
+		"C'è tutto. Torno da chi me l'ha chiesto, e cercherò di non farlo sussultare.",
+		"Raccolto tutto. Ora si riscuote, e si guarda qualcuno fingere di non fissarmi.",
+		"Qui ho finito. Ora la strada del ritorno, che per una volta non mi pesa: le gambe non si stancano mai.",
+	},
+	["race.scourge.quest_progress.w09.004"] = {
+		"Tutto pronto per la consegna. Non è proprio impazienza, ma ricordo com'era, e questa le somiglia.",
+		"Ho raccolto tutto. Si muove una pallida cugina dell'orgoglio. La lascio venire con me.",
+	},
+	["race.scourge.reputation_change.w09.001"] = {
+		"Pensano un po' meglio di un Reietto. Non credevo che contasse. Conta, un poco.",
+		"Una scheggia di fiducia in più, concessa a un morto. La porterò con cura: è fragile, come chi me l'ha data.",
+		"Qualcuno ha deciso che sono meno mostro di quanto pensasse. Piccola vittoria. Me la tengo.",
+	},
+	["race.scourge.rest_enter.w09.001"] = {
+		"Un posto per riposare. Il letto non mi serve come ai vivi, ma prendo il silenzio, e il diritto di sedermi senza che nessuno mi fissi.",
+		"Mura sicure. Non mi stanco, propriamente, ma qualcosa in me si allenta, un pugno che non sapevo di tenere chiuso.",
+		"Finalmente un posto dove smettere di essere {g:osservato|osservata}. I morti non hanno bisogno di dormire; ciò che ci serve, ogni tanto, è essere ignorati.",
+	},
+	["race.scourge.rest_enter.w09.002"] = {
+		"Una sedia, niente letto. I morti sono clienti economici: non dormono, mangiano pochissimo e non si lamentano mai degli spifferi.",
+		"Niente stanza per me, grazie. Mi basta un angolo, e cercherò di non spaventare gli altri ospiti.",
+	},
+	["race.scourge.rest_enter.w09.003"] = {
+		"si siede con la cura rigida delle vecchie giunture, e diventa così immobile che la stanza presto si dimentica di {g:lui|lei}.",
+		"trova un angolo in disparte, tira su il cappuccio e si sistema in un'immobilità paziente, senza respiro.",
+		"si cala su una panca e posa entrambe le mani piatte sul tavolo, come per ancorare un corpo che ha dimenticato come si fa a stancarsi.",
+	},
+	["race.troll.journey.w09.001"] = {
+		"Su, nel vento. Mi tengo con le dita lunghe e spiego allo stomaco che per un troll è la cosa più naturale del mondo. Lo stomaco non ci crede.",
+		"Si stacca da terra. I troll si arrampicano sugli alberi, non sul cielo, e le mie ginocchia ci tengono a farlo sapere.",
+		"La bestia batte le ali e il mondo sprofonda. Sorrido, soprattutto per dare alla faccia qualcosa da fare oltre al panico.",
+	},
+	["race.troll.journey.w09.002"] = {
+		"stringe le lunghe gambe ai fianchi della bestia mentre prende quota, le zanne scoperte all'aria che sferza.",
+		"si rannicchia basso in sella mentre le ali fanno presa, le lunghe braccia strette attorno al collo della bestia.",
+		"asseconda la salita con l'equilibrio disinvolto dei troll, i capelli tirati indietro dal vento e gli occhi socchiusi.",
+	},
+	["race.troll.journey.w09.003"] = {
+		"Vola dritto, bestia mia. Lascio buone mance, in pesce.",
+		"Piano con le curve, bestia. Ho un sacco di gamba da tenere sotto controllo.",
+		"Si sale! Cerca di non farmi cadere, sono l'unico troll che ho.",
+	},
+	["race.troll.journey.w09.004"] = {
+		"Da quassù ogni macchia azzurra potrebbe essere il mare. Lo sguardo ci va sempre per primo, come l'ago di una bussola verso nord.",
+		"Sotto di me la terra si riduce a una mappa. Ne cerco l'acqua ai margini, come la mia gente cerca sempre la casa all'orizzonte.",
+		"Il suolo si allontana e mi sorprendo a cercare un luccichio di risacca. Ovunque voli un troll, una parte di lui sta cercando la costa.",
+	},
+	["race.troll.journey.w09.005"] = {
+		"Terra ferma. Le ginocchia protestano per un attimo, poi si ricordano come si cammina.",
+		"Di nuovo giù. Distendo una gamba lunga alla volta e controllo che siano ancora entrambe mie.",
+		"Piedi a terra, niente più vento nelle orecchie. Un troll è creatura della terra e degli alberi, e sono felice di tornare a esserlo.",
+	},
+	["race.troll.journey.w09.006"] = {
+		"scivola giù dalla sella con un unico movimento lungo e sciolto e si scuote il vento dai capelli.",
+		"salta a terra, si stiracchia finché la schiena non scricchiola, e dà alla bestia una pacca riconoscente sul collo.",
+		"scende, ondeggia una volta sulle gambe lunghe, poi ritrova l'equilibrio con una breve risata.",
+	},
+	["race.troll.journey.w09.007"] = {
+		"Di nuovo giù! Qualcuno mi dia qualcosa che stia fermo.",
+		"Bel volo. Mai più. Fino alla prossima volta.",
+		"Terra! Mi sei mancata, terra. Non cambiare mai.",
+	},
+	["race.troll.journey.w09.008"] = {
+		"Un volo lungo. Per tutto il tragitto ho guardato scorrere le coste e ho dato un nome a quelle che conoscevo. Ora devo ricordare alle gambe che sono mie.",
+		"Quante miglia di terra e d'acqua sotto le ali. La gente di un troll ha attraversato un mare nella paura; io ho attraversato mezzo continente stando {g:seduto|seduta}.",
+	},
+	["race.troll.quest_complete.w09.001"] = {
+		"Tutto fatto. Se la ricompensa profuma di pesce, tanto meglio.",
+		"Eccolo qua. Prima il troll lavora, poi il troll mangia. Così va il mondo.",
+		"Finito. Contalo pure, se vuoi: io intanto vado a cercare qualcosa da mettere sul fuoco.",
+	},
+	["race.troll.quest_complete.w09.002"] = {
+		"Parola mantenuta. Gli stregoni vudù di Sen'jin dicono che una promessa infranta ti segue come un cane randagio. Dietro di me non c'è nessuno.",
+		"Finito come promesso. Gli stregoni vudù dicono che una parola mantenuta è il talismano più economico che ci sia, e il più forte.",
+		"Una promessa è un po' di mojo che ti metti addosso da solo, dicono gli stregoni vudù. Questo, adesso, è sciolto.",
+	},
+	["race.troll.quest_complete.w09.003"] = {
+		"consegna l'ultimo pezzo con uno svolazzo delle lunghe dita, le zanne scoperte in un sorriso compiaciuto.",
+		"tamburella un ritmo veloce su una coscia, come quelli che i bambini Darkspear battono sulle barche capovolte.",
+		"fa ruotare il lungo collo da una parte e dall'altra e si lascia sfuggire una risata breve e contenta.",
+	},
+	["race.troll.quest_complete.w09.004"] = {
+		"Gli anziani di Sen'jin dicono che il nostro vecchio capo ha dato la vita perché la tribù fosse libera. Lavori piccoli come questo sono il modo in cui noialtri saldiamo il debito.",
+		"Sen'jin è morto perché i Darkspear avessero un domani, dicono gli anziani. Io cerco di riempire il mio con qualcosa che ne valga la pena. Oggi, questo.",
+	},
+	["race.troll.quest_complete.w09.005"] = {
+		"Ecco. La prossima volta chiedimi qualcosa di difficile. Ho le braccia troppo lunghe per i lavoretti.",
+		"Fatto. Avevi l'aria in pensiero. Quando un troll dice di sì, non c'è niente da temere.",
+		"Finito. Ci ho messo meno della strada per arrivarci.",
+	},
+	["race.troll.quest_complete.w09.006"] = {
+		"Lavoro finito. Adesso un fuoco, un pesce infilzato su un bastone, e nessuno che mi chieda niente finché non è croccante.",
+		"Finito. La pancia ha fatto i suoi conti per tutto il giorno, e dice che la cena è in ritardo.",
+		"Fatto, e con una fame da mangiarmi un cesto intero di granchi. Magari pure i gusci.",
+	},
+	["race.troll.quest_complete.w09.007"] = {
+		"Uno spirito, chissà dove, mi sta facendo un cenno di approvazione. O ride di me. Con i loa, spesso, fa tutte e due le cose.",
+		"Borbotto un grazie a qualunque spirito stesse guardando. Meglio ringraziarne uno assente che ignorarne uno presente.",
+	},
+	["race.troll.quest_complete.w09.008"] = {
+		"Felice di aiutare. I Darkspear si ricordano di chi è stato gentile con loro, e io mi ricorderò di te.",
+		"Ecco, è sistemato. Che le tue reti tornino su piene e il tuo fuoco non si spenga mai.",
+		"Fatto. Sta' bene, e se i guai ritornano, manda a chiamare un troll.",
+	},
+	["race.troll.quest_complete.w09.009"] = {
+		"si sfiora una zanna con due dita e poi tocca terra, senza fretta, come chi salda un piccolo debito.",
+		"mormora qualche parola nella lingua dei troll sul lavoro finito, mezzo ringraziamento e mezzo scherzo.",
+	},
+	["race.troll.quest_complete.w09.010"] = {
+		"Un'altra cosa rimessa a posto. Come rammendare una rete: nessun nodo conta da solo, e contano tutti.",
+		"Lavoro piccolo, lavoro onesto. Una canoa non è che un mucchio di pioli, eppure attraversa il mare.",
+		"Fatto. Il mare è gocce, la spiaggia è granelli. Mi basta essere un granello che ha fatto la sua parte.",
+	},
+	["race.troll.quest_complete.w09.011"] = {
+		"Ti stupisce? Si stupiscono tutti quando il troll torna con quello che gli hanno chiesto.",
+		"Sì, c'è tutto. Mi sono {g:fermato|fermata} solo due volte per un pisolino.",
+	},
+	["race.troll.quest_complete.w09.012"] = {
+		"Un altro lavoro finito. Le Echo Isles sono ancora in mano a quello stregone pazzo, dicono gli anziani. Ogni incarico è un'asse in più sulla barca che ce le riprenderà.",
+		"Fatto. Un giorno i Darkspear torneranno per mare alle Echo Isles. Fino ad allora tengo le mani occupate e mantengo la parola.",
+	},
+	["race.troll.quest_complete.w09.013"] = {
+		"Questo è lavoro da Darkspear. Pulito, veloce, e chiuso con un ghigno.",
+		"Dillo a chi te lo chiede: l'ha fatto un troll dei Darkspear, e quasi senza sudare.",
+		"Fatto, e fatto bene. I Darkspear non lasciano le cose a metà.",
+	},
+	["race.troll.quest_complete.w09.014"] = {
+		"Gli orchi grugniscono quando un lavoro è finito. I tauren annuiscono. Io preferisco ridere. Stesso significato, più rumore.",
+		"Un orco direbbe 'fatto' e se ne andrebbe. Un troll dice 'fatto' e aspetta che la storia venga raccontata come si deve.",
+		"I Reietti storcerebbero il naso davanti a un lavoro così, gli orchi farebbero un grugnito. Io ci sorrido sopra fino al prossimo.",
+	},
+	["race.troll.quest_complete.w09.015"] = {
+		"Gambe lunghe, braccia lunghe, pazienza lunga. Questo ci voleva, e di questo sono fatti i troll.",
+		"Il lavoro chiedeva pazienza. Ci credono selvaggi, noi troll, ma un cacciatore nella giungla sa aspettare più di chiunque.",
+	},
+	["race.troll.quest_complete.w09.016"] = {
+		"si raddrizza in tutta la sua altezza, cosa che richiede un attimo, e fa un cenno pigro sul lavoro ben fatto.",
+		"canticchia un frammento di cantilena da pescatori, di quelle che si intonano tirando le reti sulla costa di Durotar.",
+	},
+	["race.troll.quest_complete.w09.017"] = {
+		"Fatto come chiedevi. Né più né meno.",
+		"È sistemato. Se c'è altro, dillo adesso: non resto mai a lungo nello stesso posto.",
+		"Finito. Conti saldati, nessun debito da una parte o dall'altra.",
+	},
+	["race.troll.quest_complete.w09.018"] = {
+		"Questo lavoro ha portato buon mojo. Lo sento, come senti cambiare la marea senza guardare.",
+		"Certi lavori ti lasciano addosso del cattivo mojo. Non questo. Da questo le mani escono pulite.",
+		"Agli spiriti è piaciuto. Lo capisco da quanto mi sento leggeri i piedi.",
+	},
+	["race.troll.quest_complete.w09.019"] = {
+		"Finito. La strada chiama, e le lunghe gambe di un troll non hanno mai imparato a dirle di no.",
+		"Qui ho finito. Prossima tappa: dove dicono il vento e il prossimo lavoro.",
+	},
+	["race.troll.quest_complete.w09.020"] = {
+		"Qualche graffio me lo sono preso, facendolo. Non cercarli: sono già spariti.",
+		"Mi è costato un po' di pelle. La pelle di troll ricresce, quindi non la metto in conto.",
+	},
+	["race.troll.quest_complete.w09.021"] = {
+		"I nostri antenati costruivano imperi e scordavano come si mantiene la parola. I Darkspear sono di meno, e la parola la mantengono.",
+		"I Gurubashi avevano oro e templi. Noi abbiamo un villaggio di capanne e un nome di cui la gente si fida. So bene quale dei due preferisco portarmi dietro.",
+		"L'impero Gurubashi è marcito per la sua stessa fame. Lavori piccoli e onesti come questo tengono i Darkspear lontani da quella strada.",
+	},
+	["race.troll.quest_complete.w09.022"] = {
+		"Per l'Orda, per i Darkspear, e un pochino per le monete.",
+		"Thrall ha dato una casa al mio popolo; il minimo che un troll possa fare è renderla migliore. Fatto.",
+		"Qualcuno ha chiesto, un troll ha risposto. L'Orda di Thrall è fatta di piccole risposte come questa.",
+	},
+	["race.troll.quest_complete.w09.023"] = {
+		"Un momento di quiete. Un troll impara a godersi lo spazio tra un lavoro e l'altro, come la pausa tra un'onda e la successiva.",
+		"Fatto. Lascio che il momento si posi. Sulla costa impari che il mare fa più rumore proprio prima di calmarsi.",
+	},
+	["race.troll.quest_complete.w09.024"] = {
+		"Questo era l'ultimo pezzo. Se hai altri guai, io ho altra pazienza. Non molta.",
+		"Tutto fatto. Non ringraziarmi troppo a lungo: i grazie invecchiano, le monete no.",
+	},
+	["race.troll.quest_complete.w09.025"] = {
+		"Finito. Perfino un pipistrello sa quando smettere di cacciare e restare un po' a testa in giù. Tocca a me.",
+		"Lavoro finito. I raptor mangiano e poi sonnecchiano al caldo: c'è della saggezza, nei raptor.",
+	},
+	["race.troll.quest_progress.w09.001"] = {
+		"Una parte è fatta. Il resto mi aspetta come i pesci aspettano la rete. Non che lo sappiano.",
+		"Ci sto arrivando. Piano e senza fermarsi, come una canoa controcorrente.",
+		"Non è finita, ma non sono {g:bloccato|bloccata}. Con questo un troll ci lavora.",
+	},
+	["race.troll.quest_progress.w09.002"] = {
+		"Questo è tutto. È ora di andare a riscuotere, magari mangiando per strada.",
+		"Tutto fatto. Si torna indietro: gambe lunghe, viaggio corto.",
+		"Qui ho finito. Qualcuno aspetta, e ai troll non piace far aspettare la gente troppo a lungo.",
+	},
+	["race.troll.quest_progress.w09.003"] = {
+		"conta sulle lunghe dita quello che resta da fare, e resta senza dita meno spesso di prima.",
+		"guarda il lavoro che resta con la pazienza di chi pesca aspettando una marea lenta.",
+	},
+	["race.troll.quest_progress.w09.004"] = {
+		"Tutto fatto. Agli spiriti piace un compito riportato indietro intero.",
+		"Non resta che consegnare. Strano come la strada del ritorno sembri sempre più corta.",
+	},
+	["race.troll.reputation_change.w09.001"] = {
+		"Adesso hanno più stima di me. Tra i troll, un buon nome corre più veloce di un raptor.",
+		"Un po' più di fiducia guadagnata. I Darkspear un tempo erano esuli: sappiamo quanto vale essere accolti.",
+		"Il mio nome sta un po' più in alto, per loro. Buon mojo, questo.",
+	},
+	["race.troll.rest_enter.w09.001"] = {
+		"È ora di riposare. Trovo l'angolo più fresco, allungo le gambe fin dove arrivano e le lascio penzolare oltre la fine di qualunque cosa ci sia.",
+		"Un posto dove fermarsi. I troll sonnecchiano quasi ovunque, ma ci piacciono un filo d'aria e spazio per i gomiti. Li troverò tutti e due, o mi lamenterò finché non succede.",
+		"Riposo. Le mie ossa lunghe si sistemano una dopo l'altra, come un accampamento che si quieta dopo il fuoco.",
+	},
+	["race.troll.rest_enter.w09.002"] = {
+		"si piega sul sedile più vicino a pezzi, come sa fare solo un troll, e si lascia sfuggire un lungo sospiro soddisfatto.",
+		"si abbassa in un accovacciamento sciolto, poi giù del tutto, le lunghe membra sparpagliate in ogni direzione.",
+	},
+	["race.troll.rest_enter.w09.003"] = {
+		"Un tetto e un fuoco. Il letto è troppo corto e la stanza troppo calda, ma un troll ha dormito in posti peggiori. Sugli alberi, per lo più.",
+		"Al chiuso, con i muri e una porta che si chiude. La lascio socchiusa. Un troll dorme meglio se l'aria si muove.",
+	},
 }, "base_world")

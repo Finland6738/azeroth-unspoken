@@ -3241,4 +3241,1588 @@ NS:AddTexts("itIT", {
 		"{subzone}. Abbastanza largo da girarmi senza buttare giù niente? È tutta qui la mia misura di un posto.",
 		"{subzone}. Conto quante cose potrei rompere qui girandomi troppo in fretta. Meno che nell'ultimo posto, spero.",
 	},
+	["race.gnome.landmark.w09.001"] = {
+		"si ferma davanti a {landmark} e piega la testa all'indietro per vedere fin dove arriva, poi ancora di più, poi ancora un pochino.",
+		"gira lentamente intorno a {landmark}, come in cerca del marchio del costruttore.",
+		"squadra {landmark} a lungo, con occhio da perito, e le dita fremono come se volessero smontare qualcosa per capire com'è fatto.",
+	},
+	["race.gnome.landmark.w09.002"] = {
+		"{landmark}. Un nome da conservare. Lo scrivo due volte, nel caso una pagina prenda fuoco.",
+		"{landmark}. Ogni luogo celebre è la prova che qualcuno è passato di qui. Gnomeregan era la nostra. Spero che a questo vada meglio.",
+		"{landmark}. Mi piacerebbe sapere chi ne ha fatto il progetto, e se ne ha conservato i disegni.",
+	},
+	["race.gnome.muse.w09.001"] = {
+		"Sotto le montagne a ovest di Kharanos ci sono officine con nomi gnomeschi ancora dipinti sulle porte. Adesso sulle panche dormono i trogg.",
+		"Ogni tanto percorro i corridoi di Gnomeregan con la testa: a sinistra, a destra, giù con l'ascensore, e mi fermo appena prima del punto in cui tutto è andato storto.",
+		"Chiedi a uno gnomo la strada per un angolo qualsiasi di Gnomeregan e te la darà, fino all'ultimo gradino. Chiedigli perché non ci abita più, e la conversazione finisce lì.",
+	},
+	["race.gnome.muse.w09.002"] = {
+		"Ho fatto i calcoli. Con abbastanza sgabelli arrivo a qualunque cosa in tutto Azeroth.",
+		"Maniglie all'altezza degli occhi di un nano, banconi all'altezza del mento di un umano. Ho imparato ad arrampicarmi con dignità.",
+		"Chi è alto vede lontano. Chi è piccolo vede cosa c'è per terra, ed è lì che stanno le monete cadute.",
+	},
+	["race.gnome.muse.w09.003"] = {
+		"Un boccale nanico contiene più o meno il mio volume. Mi hanno detto che non è un buon motivo per fermarmi a metà.",
+		"I nani versano la birra agli gnomi esattamente come la versano a sé stessi. È generosità pura, ed è così che uno gnomo impara a camminare di sbieco.",
+		"A Kharanos fanno una birra scura che potrebbe alimentare un motore a vapore. Ho chiesto, molto sul serio, se qualcuno ci avesse provato.",
+	},
+	["race.gnome.muse.w09.004"] = {
+		"Il Deeprun Tram corre sotto il mare fra Ironforge e Stormwind, scavato da gnomi e nani insieme. Chi ci sale dovrebbe appiccicare il naso al vetro e contare i pesci.",
+		"Sotto il mare, in un tubo di pietra e vetro, un vagone va avanti e indietro tutto il giorno. Testa gnomesca, scavo nanico. Non è un cattivo matrimonio.",
+		"La prova migliore che gnomi e nani sanno lavorare insieme è il Deeprun Tram. La seconda è che, finiti i lavori, si rivolgono ancora la parola.",
+	},
+	["race.gnome.muse.w09.005"] = {
+		"Quelli rimasti dentro Gnomeregan non sono più del tutto gnomi, si dice. Il male li ha consumati, e non sanno più chi eravamo per loro.",
+		"«Gnomi lebbrosi», li chiama la gente, come se fosse una razza. Un tempo erano inventori, scrivani, cuochi, e il veleno che abbiamo liberato si è preso il resto.",
+		"Nel cuore della vecchia città vagano gnomi che non ricordano più il proprio nome. A Tinker Town nessuno lo dice ad alta voce.",
+	},
+	["race.gnome.muse.w09.006"] = {
+		"Goblin e gnomi amano entrambi le macchine. La differenza è che le nostre devono funzionare, le loro devono vendersi.",
+		"Un goblin la costruisce in fretta e a poco. Uno gnomo la costruisce bene e in ritardo. Esplodono tutte e due, ma le nostre esplodono puntuali.",
+		"Mai prestare una chiave inglese a un goblin. Te la riporta con tanto di fattura.",
+	},
+	["race.gnome.muse.w09.007"] = {
+		"Ci chiamiamo Gnomeregan Exiles: esuli, non «gli gnomi di Ironforge». Quel nome è una promessa che continuiamo a fare alla città.",
+		"Un esule è qualcuno che sa ancora benissimo dov'è casa sua. Per questo abbiamo scelto la parola.",
+		"Chiedi a uno gnomo da dove viene e la risposta è sempre Gnomeregan, mai Tinker Town. Siamo testardi sui nostri indirizzi.",
+	},
+	["race.gnome.muse.w09.008"] = {
+		"batte due volte le nocche su una superficie vicina, ascoltando con attenzione, come se si aspettasse che dichiari la sua lega.",
+		"si mette in punta di piedi per vedere oltre qualcosa, ci rinuncia, e si mette invece a calcolare gli angoli.",
+		"borbotta sottovoce una fila di numeri, annuisce con profonda soddisfazione, e non spiega mai a cosa servissero.",
+	},
+	["race.gnome.muse.w09.009"] = {
+		"A Stormwind gli umani dicono che gli gnomi stanno all'arcano come i pesci all'acqua. Secondo me è più semplice: la magia è solo ingegneria che si rifiuta di mostrare gli ingranaggi.",
+		"Il potere arcano segue delle regole. Regole strane, documentate male, ma regole. Per questo tanti di noi non sanno resistergli.",
+		"C'è chi armeggia con l'ottone, chi con l'arcano, qualcuno con cose più oscure. Sotto, è lo stesso prurito: capire come è cablato il mondo.",
+	},
+	["race.gnome.muse.w09.010"] = {
+		"Thermaplugg siede ancora dentro Gnomeregan, si dice, e dà ordini ai trogg e a quel che resta dei nostri. Un traditore con un trono in una città avvelenata. Se lo goda, per ora.",
+		"Ogni popolo ha un traditore nella sua storia. Il nostro ha un nome, un titolo e, a sentire le voci, un trono ricavato dalla nostra stessa città.",
+		"Il guaio di un traditore intelligente è che il piano, sul momento, sembrava così ragionevole. Thermaplugg sapeva esattamente come ragioniamo.",
+	},
+	["race.gnome.muse.w09.011"] = {
+		"Probabilità che oggi qualcosa vada storto: alta. Probabilità che ne impari qualcosa: più alta. Per me è una buona giornata.",
+		"Ogni fallimento è solo un dato con pessime maniere. Ne ho raccolti parecchi.",
+		"Uno gnomo non fallisce. Uno gnomo porta a termine una prova che rivela margini di miglioramento.",
+	},
+	["race.gnome.muse.w09.012"] = {
+		"Al mondo ci sono meno gnomi di prima. Lo noti da piccole cose: una panca di Tinker Town con posto in avanzo, un nome a cui nessuno risponde.",
+		"Non siamo mai stati tanti, e Gnomeregan ce ne è costati troppi. Ogni gnomo che incontri per strada è qualcuno che è riuscito a uscirne.",
+		"Quando vedo un altro gnomo lontano da Ironforge, lo saluto agitando il braccio come {g:un matto|una matta}. Siamo rimasti troppo pochi per fare i distaccati.",
+	},
+	["race.gnome.muse.w09.013"] = {
+		"In mezzo a una folla di umani mi oriento con le fibbie delle cinture. Funziona sorprendentemente bene.",
+		"Per uno gnomo la folla è un percorso a ostacoli. Ormai sono {g:un esperto|un'esperta} di ginocchia.",
+		"Farsi pestare i piedi è un rischio del mestiere, alla mia altezza. Ho cominciato a vestirmi di colori vivaci per legittima difesa.",
+	},
+	["race.gnome.muse.w09.014"] = {
+		"Tinker Town sa di olio, di metallo caldo e del pane che qualcuno ha tostato troppo. Non è casa. È la migliore imitazione di casa che siamo riusciti a costruire in fretta.",
+		"A Tinker Town c'è sempre qualcosa che ticchetta, sibila o su cui si discute. Per un angolo preso in prestito, ci somiglia in modo notevole.",
+		"Il nostro quartiere a Ironforge è piccolo, ingombro e rumoroso. Se strizzi gli occhi e il vapore è quello giusto, sembra quasi una strada della vecchia città.",
+	},
+	["race.gnome.muse.w09.015"] = {
+		"I trogg salirono dal basso, più di quanti avessimo numeri per contarli. È una frase rara in bocca a uno gnomo: più di quanti avessimo numeri.",
+		"Avevamo costruito una città capace di resistere a qualunque cosa venisse dall'alto. Nessuno pensò a chiedersi cosa ci fosse sotto. Me lo tengo come lezione su dove guardare.",
+		"I trogg non sono intelligenti. Non ne avevano bisogno. Erano semplicemente più di noi, e non si fermavano.",
+	},
+	["race.gnome.muse.w09.016"] = {
+		"Corde, radici, reti, ragnatele appiccicose: devo ancora trovare un nodo da cui uno gnomo non sgusci fuori con un po' di pazienza e qualche contorsione.",
+		"Lega uno gnomo e gli hai regalato un rompicapo. Non restiamo perplessi a lungo.",
+		"Giunture piccole, dita svelte, una profonda antipatia per l'essere bloccati. Liberarsi è quasi un passatempo gnomesco.",
+	},
+	["race.gnome.muse.w09.017"] = {
+		"Ogni mappa di Azeroth che ho visto è sbagliata da qualche parte. Non è una lamentela. È un invito.",
+		"Qualcuno dovrebbe misurare per bene tutto questo mondo, da costa a costa, in unità coerenti. Propongo uno gnomo. Anzi, parecchi.",
+		"Gli umani disegnano le mappe con mostri marini negli spazi vuoti. Gli gnomi li lasciano vuoti e ci scrivono «in sospeso».",
+	},
+	["race.gnome.muse.w09.018"] = {
+		"si ferma per un attimo, gli occhi fissi sul nulla, con lo sguardo che hanno gli gnomi quando qualcuno nomina la vecchia città.",
+		"smette di trafficare con quello che ha a portata di mano, e per una volta le mani indaffarate restano semplicemente ferme.",
+		"canticchia qualche nota di qualcosa di allegro, si interrompe, e lascia andare il motivetto senza finirlo.",
+	},
+	["race.gnome.muse.w09.019"] = {
+		"Gli umani pensano che l'altezza di uno gnomo valga il giudizio di un bambino. Poi ci vedono fare i conti. È una conversazione breve e molto soddisfacente.",
+		"Gli umani di Stormwind sono adorabili. Si chinano anche verso di me e mi parlano piano. Io rispondo con parole lunghissime finché non smettono.",
+		"Gli umani costruiscono in alto, pensano in fretta e vivono poco. Andiamo d'accordo; solo che teniamo orologi diversi.",
+	},
+	["race.gnome.muse.w09.020"] = {
+		"Gli elfi della notte fanno crescere le cose invece di costruirle. In tutta Darnassus non c'è un solo bullone. Mi inquieta e mi colpisce più o meno in parti uguali.",
+		"Chiedi a un kaldorei i calcoli dei carichi del loro grande albero e ottieni un silenzio lungo e paziente. Io quei numeri vorrei vederli lo stesso.",
+		"Gli elfi della notte sono altissimi, vecchissimi e calmissimi. Accanto a uno di loro, uno gnomo si sente un orologio da taschino vicino all'orologio di una torre.",
+	},
+	["race.gnome.muse.w09.021"] = {
+		"Le regole di sicurezza gnomesche stanno su un solo cartoncino. Il cartoncino è ignifugo. Questo ti dice quasi tutto quello che c'è da sapere.",
+		"A Tinker Town, mi dicono, qualcuno tiene il conto dei piccoli incendi. Il numero sale ogni settimana, e tutti ne vanno stranamente fieri.",
+		"Il fumo di un'officina gnomesca ha tre colori: normale, interessante e scappa.",
+	},
+	["race.gnome.muse.w09.022"] = {
+		"Quando l'Alleanza ebbe bisogno di ali e di navi che nuotassero sott'acqua, a costruirle furono gli gnomi, dicono i vecchi inventori. Noi i debiti li paghiamo in ottone e ingegno.",
+		"Le nostre macchine volanti hanno combattuto nella Seconda Guerra, amano ripetere i vecchi inventori. Amano anche raccontare quante di loro atterrarono di proposito.",
+		"L'Alleanza ci ha tenuto un posto dopo Gnomeregan, quando non avevamo niente da offrire. Uno gnomo un debito così lo restituisce, con gli interessi.",
+	},
+	["race.gnome.muse.w09.023"] = {
+		"Idea! No, aspetta. Idea migliore. Un momento, me ne stanno venendo diverse.",
+		"Una soluzione c'è. C'è sempre. A volte è solo nascosta molto, molto bene.",
+		"Dammi un minuto e un pezzo di carta e avrò migliorato qualcosa. Forse non la cosa giusta.",
+	},
+	["race.gnome.muse.w09.024"] = {
+		"Abbiamo inondato i nostri stessi corridoi di veleno per fermare i trogg. Ha funzionato, come funziona un incendio su una casa piena di topi.",
+		"Le radiazioni dovevano uccidere gli invasori e risparmiare tutti gli altri. Gli gnomi sono bravi con i piani. Meno con la parte in cui i piani incontrano il mondo.",
+		"I trogg hanno sopportato le radiazioni meglio di noi. A Tinker Town nessuno lo trova divertente, e gli gnomi trovano divertente quasi tutto.",
+	},
+	["race.gnome.muse.w09.025"] = {
+		"I nani sono gli amici alti della mia vita. Glielo dico. Non sanno mai se sentirsi lusingati.",
+		"Per uno gnomo un nano è un vicino piacevolmente alto, con una barba in cui ci si potrebbe nascondere. Non ci ho ancora provato. Non ancora.",
+		"I nani si lamentano che gli umani li sovrastano. Io annuisco con aria comprensiva, da qualche parte all'altezza della loro cintura.",
+	},
+	["race.gnome.muse.w09.026"] = {
+		"Un uccello è un progetto meraviglioso: ossa cave, ali efficienti, documentazione pessima.",
+		"Guarda un gatto che cammina su una staccionata e dimmi che la natura non capisce l'equilibrio. Mi piacerebbe vedere il suo giroscopio.",
+		"Le bestie sono macchine che nessuno ha costruito. Non lo dico con freddezza. È il complimento più alto che uno gnomo conosca.",
+	},
+	["race.gnome.muse.w09.027"] = {
+		"La gente crede che gli gnomi siano allegri perché non capiscono cosa hanno perso. Lo capiamo benissimo. Siamo allegri lo stesso, apposta.",
+		"L'allegria è uno strumento. Gli gnomi l'hanno imparato quando non restava altro. Io la mia la tengo ben lucidata.",
+		"Il lutto sta sotto tutto quello che facciamo, come delle fondamenta. Sopra delle fondamenta si può costruire qualcosa di luminoso. Noi lo facciamo.",
+	},
+	["race.gnome.muse.w09.028"] = {
+		"Gli occhialoni non sono una scelta di moda. Sono uno stile di vita, e una precauzione.",
+		"Ogni gnomo dovrebbe portare con sé tre cose: una matita, una matita di scorta e una scusa.",
+		"Se è bloccato, pensa. Se è ancora bloccato, pensa di più. Se è ancora bloccato, dagli un calcetto gentile. Metodo gnomesco.",
+	},
+	["race.gnome.muse.w09.029"] = {
+		"Dun Morogh ha insegnato il freddo a un intero popolo di inventori abituati a stare al chiuso. Ci abbiamo fatto l'abitudine. Soprattutto a forza di sciarpe.",
+		"Gnomeregan era una città di gallerie e di lampade. A molti di noi il cielo aperto sopra Dun Morogh sembra ancora un soffitto che qualcuno ha dimenticato di finire.",
+		"Sui pendii di Dun Morogh il vento trova ogni cucitura di un cappotto. I corpi piccoli si raffreddano in fretta; noi rimediamo con sciarpe enormi.",
+	},
+	["race.gnome.muse.w09.030"] = {
+		"L'Alto Inventore Mekkatorque ha perso una città e ha tenuto insieme un popolo. Chissà se il secondo non fosse il trucco più difficile.",
+		"Mekkatorque avrebbe potuto passare le giornate a darsi la colpa. Invece conta i sopravvissuti, prepara piani e ascolta. Questa è una guida vera, a misura di gnomo e a misura di chiunque.",
+		"Un Alto Inventore senza una città in cui armeggiare tiene comunque il titolo. Credo che lo tenga per noi.",
+	},
+	["race.gnome.muse.w09.031"] = {
+		"Uno gnomo che smette di fare domande è uno gnomo che ha preso una brutta botta in testa. Mi controllo regolarmente.",
+		"La curiosità nello zaino non pesa niente. È l'unico carico che uno gnomo si trascina ovunque volentieri.",
+		"Ogni domanda che trova risposta ne lascia dietro due nuove. Per qualcuno è sfiancante. Per uno gnomo è lavoro assicurato.",
+	},
+	["race.gnome.muse.w09.032"] = {
+		"A Tinker Town si racconta che, quando Gnomeregan cadde, Magni Bronzebeard non chiese cosa potessimo pagare. Chiese quanti letti ci servissero. Uno gnomo non dimentica una domanda così.",
+		"I nani discutono su tutto, tranne che sull'aiutare un vicino nei guai. Su questo, a Ironforge, non si è nemmeno votato.",
+		"Arrivammo al portone dei nani con le ustioni, i polmoni malati e niente da scambiare. Lo aprirono lo stesso. Questa è tutta la storia, e basta.",
+	},
+	["race.gnome.muse.w09.033"] = {
+		"Fuori da Tinker Town le porzioni a misura di gnomo non esistono. Altrove mi danno un pasto e una sfida.",
+		"Il pane dei nani è così compatto che ci si potrebbe costruire. Ho smesso di scherzarci, perché a Tinker Town qualcuno ci starà provando.",
+		"Una colazione nanica completa mi terrebbe in piedi per tre giorni. A quanto pare la colazione non funziona così.",
+	},
+	["race.gnome.muse.w09.034"] = {
+		"Riprendersi Gnomeregan non sarà una carica eroica e basta. Saranno mille piccole riparazioni: un corridoio ripulito, una pompa rimessa in moto, una porta che si apre di nuovo. Nelle piccole riparazioni gli gnomi sono bravi.",
+		"Quando ci riprenderemo la città, qualcuno dovrà strofinare via il veleno da ogni tubo. Nella mia testa mi sono già {g:offerto|offerta}.",
+		"Quando sarà di nuovo nostra, la vecchia città avrà bisogno di tutto: mani, idee, pazienza. Mi sto allenando su tutte e tre.",
+	},
+	["race.gnome.muse.w09.035"] = {
+		"raccoglie da terra un pezzetto di filo, lo attorciglia in una minuscola spirale senza guardare, e osserva il risultato con evidente piacere.",
+		"socchiude gli occhi davanti al cardine, alla porta o alla fibbia più vicina, componendo di sicuro un elenco di migliorie che nessuno ha chiesto.",
+		"disegna nell'aria con un dito un rapido marchingegno, aggrotta la fronte, e lo cancella con un gesto della mano.",
+	},
+	["race.gnome.muse.w09.036"] = {
+		"Prendo appunti su tutto: distanze, prezzi, quali ponti scricchiolano. Nessuno li leggerà mai. Non è per questo che li scrivo.",
+		"Le tasche mi si riempiono di foglietti pieni di numeri. Ogni tanto li riordino, e ogni volta ci trovo un'idea migliore che avevo dimenticato.",
+		"Scrivere una cosa è il modo in cui uno gnomo la costringe a stare ferma abbastanza a lungo da capirla.",
+	},
+	["race.gnome.muse.w09.037"] = {
+		"Negli Shimmering Flats gnomi e goblin fanno correre le loro macchine su un lago di sale secco, per l'onore dei rispettivi ingegneri. È la guerra più sensata di cui abbia mai sentito parlare.",
+		"Al Mirage Raceway gnomi e goblin regolano la loro rivalità a colpi di velocità e di schianti spettacolari. Nessuno vince a lungo, e tutti imparano qualcosa.",
+		"Se ogni lite di Azeroth si risolvesse come la gara di Thousand Needles, ci sarebbero più rottami e molte meno tombe.",
+	},
+	["race.gnome.muse.w09.038"] = {
+		"Gli gnomi non parlano molto di morire. Parlano di manutenzione. Alla fine è la stessa cosa, con probabilità migliori.",
+		"Tutto si consuma: ingranaggi, stivali, città, gnomi. Il trucco è rendersi utili finché i pezzi girano ancora.",
+		"Mi piacerebbe una fine ordinata, con gli appunti al loro posto. Non andrà così. Agli gnomi l'ordine riesce di rado.",
+	},
+	["race.gnome.muse.w09.039"] = {
+		"Gli avversari più grossi continuano a mirare dove si aspetterebbero una testa. La testa di uno gnomo è da tutt'altra parte. È l'unico vantaggio di cui non mi lamenterò mai.",
+		"Essere piccoli non vuol dire essere poca cosa. Chiedilo a chi ha sottovalutato uno gnomo. Se lo trovi.",
+		"Il coraggio non si misura in altezza. Per fortuna, altrimenti gli gnomi sarebbero vigliacchi per definizione.",
+	},
+	["race.gnome.muse.w09.040"] = {
+		"In questo momento, a Tinker Town, qualcuno sta aggiustando qualcosa. Lo trovo molto confortante.",
+		"Gnomeregan sarà anche perduta, ma gli gnomi no. C'è una differenza, e intendo mantenerla.",
+		"Su con la vita, gente. Statisticamente, prima o poi le cose devono migliorare.",
+	},
+	["race.gnome.muse.w09.041"] = {
+		"Nessuno sa davvero da dove siano venuti i trogg, solo che sono saliti dal profondo e non hanno smesso. Uno gnomo odia una domanda senza risposta quasi quanto odia un trogg.",
+		"I trogg sono sgorgati dalla terra sotto Gnomeregan come acqua da un tubo incrinato. Darei molto per sapere cosa si è incrinato.",
+		"Sotto la vecchia città c'è il posto dove stavano i trogg prima di trovarci. Mi piacerebbe vederlo, da molto lontano, con parecchi amici.",
+	},
+	["race.gnome.muse.w09.042"] = {
+		"Le strade sono invenzioni meravigliose. Con chi ha progettato le colline lì intorno bisognerebbe fare due chiacchiere.",
+		"Il passo di uno gnomo è corto, quindi per noi il mondo è più grande che per chiunque. Ho deciso di considerarlo un vantaggio.",
+		"Ogni miglio è più lungo sulle gambe corte. Ogni panorama, però, è altrettanto ampio. Siamo pari.",
+	},
+	["race.gnome.muse.w09.043"] = {
+		"I vecchi inventori di Tinker Town discutono ancora su come fossero bilanciati gli ascensori di Gnomeregan. Discuterne è un modo per tenerli in funzione.",
+		"Ascolta dei vecchi inventori parlare di lavoro: una frase su due comincia con «a Gnomeregan». Nessuno fa notare come gli cambi la voce su quella parola.",
+		"Ricordiamo la città attraverso le sue macchine: i grandi ascensori, le pompe, le lampade che non si spegnevano mai. È più facile che ricordarne le facce.",
+	},
+	["race.gnome.muse.w09.044"] = {
+		"No, non faccio da apprendista a un nano. Sì, ne sono {g:sicuro|sicura}. No, non vado a prendere niente.",
+		"Sono {g:cresciuto|cresciuta} benissimo, grazie. Gli gnomi esistono semplicemente nel formato efficiente.",
+		"{g:Compatto|Compatta}. La parola che stai cercando è {g:compatto|compatta}.",
+	},
+	["race.gnome.muse.w09.045"] = {
+		"Ogni gnomo sulle strade di Azeroth fa due lavori: quello che la giornata chiede, e mostrare al mondo che non siamo finiti.",
+		"Ogni gnomo che si fa un nome là fuori rende le cose più facili al prossimo. Mi piacerebbe renderle ancora un po' più facili.",
+		"Abbiamo perso una città, non la nostra utilità. Qui fuori posso dimostrarlo un pochino ogni giorno.",
+	},
+	["race.gnome.muse.w09.046"] = {
+		"I nani hanno cento barzellette sugli gnomi. Noi ne abbiamo centouno sui nani. Solo che le nostre le raccontiamo più in fretta.",
+		"I nani ridono delle nostre invenzioni finché una non funziona. Allora chiedono di prenderla in prestito. Poi ridono di nuovo quando si rompe. È una bella amicizia.",
+		"Un nano e uno gnomo entrano in una taverna. Uno dei due riesce a vedere oltre il bancone. La barzelletta è tutta qui, e il nano non smette mai di trovarla divertente.",
+	},
+	["race.gnome.muse.w09.047"] = {
+		"Ironforge è costruita su una scala che fa sentire uno gnomo come un bullone in un ponte: piccolo, ma regge qualcosa.",
+		"Le sale di Ironforge rimbombano. Là dentro i passi di uno gnomo contano poco, ma i miei pensieri diventano rumorosissimi.",
+		"A Ironforge tutto è grande, caldo e fatto per durare per sempre. Gli gnomi costruiscono per ingegno, i nani per l'eternità. Vivere in casa loro è una scuola.",
+	},
+	["race.gnome.muse.w09.048"] = {
+		"Quando vedo qualcosa di rotto lungo la strada, un carro, uno steccato, una pompa, mi prudono le dita. Ci vuole vera disciplina per tirare dritto.",
+		"Un carro rotto sul ciglio della strada è un po' una tragedia e un po' un invito. Di solito mi fermo almeno a guardare l'asse.",
+		"Gli altri vedono rottami. Uno gnomo vede pezzi di ricambio.",
+	},
+	["race.gnome.muse.w09.049"] = {
+		"Non sono {g:fatto|fatta} per l'odio; gli gnomi lo sono di rado. Ma quando vedo un trogg, qualcosa di freddo e preciso si sveglia in me e comincia a prendere le misure.",
+		"Trogg nelle nostre officine, trogg nelle nostre case, trogg che dormono dove stavano i grandi motori. Sulla maggior parte delle cose riesco a restare {g:allegro|allegra}. Su questo no.",
+		"Gli gnomi perdonano facilmente. Solo che tengono registri molto accurati.",
+	},
+	["race.gnome.muse.w09.050"] = {
+		"Ovunque i nani montino una forgia, entro una settimana spunta uno gnomo che si offre di migliorare il mantice.",
+		"Gli umani hanno le fattorie, i nani le miniere, i kaldorei le foreste. Gli gnomi hanno le domande. Ogni alleanza ha bisogno di qualcuno che le faccia.",
+		"L'Alleanza è una gran macchina dai pezzi molto spaiati. Proprio per questo mi interessa.",
+	},
+	["race.gnome.muse.w09.051"] = {
+		"Casa è una città in cui non posso entrare e un quartiere che non è mio. Nel mezzo, anche la strada è diventata un po' casa.",
+		"Gli gnomi in esilio imparano a farsi una casa da un angolo: una lampada, una panca, una pila di carte. Dammi questo e me la caverò ovunque.",
+		"Più che una casa ho un indirizzo conteso. I trogg l'hanno occupato abusivamente. Prima o poi la questione la risolveremo.",
+	},
+	["race.gnome.muse.w09.052"] = {
+		"alza lo sguardo verso un passante alto con paziente cortesia, nel modo in cui gli gnomi imparano a guardare quasi tutto il mondo.",
+		"sale sulla cassa o sul gradino più vicino per vedere meglio, come se fosse la cosa più naturale del mondo.",
+		"si tasta una tasca dopo l'altra, trova quello che cercava proprio nell'ultima, e ha tutta l'aria di chi l'aveva previsto fin dall'inizio.",
+	},
+	["race.gnome.muse.w09.053"] = {
+		"La magia è come il vapore: fa un lavoro meraviglioso e non ha alcun senso dell'umorismo verso chi è sbadato.",
+		"Alcuni degli gnomi più brillanti di cui ho sentito parlare sono stati rovinati da un esperimento di troppo. La curiosità è un ottimo motore senza freni.",
+		"L'arcano premia una mente attenta e punisce all'istante quella distratta. Gli gnomi apprezzano un riscontro così chiaro.",
+	},
+	["race.gnome.muse.w09.054"] = {
+		"La nostra città era giovane, per essere una città. Le montagne e la terra stessa erano molto più vecchie. Prima o poi uno gnomo impara l'umiltà dalla roccia.",
+		"Gnomeregan è durata a lungo per gli gnomi e quasi niente per la montagna. In quella differenza c'è una lezione che non ho ancora finito di risolvere.",
+		"Le montagne di Dun Morogh sono sopravvissute a re e città. Sopravvivranno anche a Thermaplugg. Una montagna paziente mi consola.",
+	},
+	["race.gnome.muse.w09.055"] = {
+		"Gnomeregan rivedrà accese le sue lampade. Segnati le mie parole, e le mie misure.",
+		"Un giorno apriremo il portone di Gnomeregan dall'interno. Ci scommetto il mio ultimo rame.",
+		"Perduto non vuol dire scomparso. Gnomeregan aspetta solo la squadra di riparazione giusta.",
+	},
+	["race.gnome.muse.w09.056"] = {
+		"Oggi le mie gambe hanno fatto il lavoro di un nano e sono state pagate a tariffa gnomo. Più tardi presenterò reclamo a me {g:stesso|stessa}.",
+		"La stanchezza è solo la lettura di un manometro. Mi dice quanta strada ho fatto, non se posso farne ancora.",
+		"Anche l'ottimismo ha bisogno di riposo, ogni tanto. Il mio gira al minimo, non è spento.",
+	},
+	["race.gnome.muse.w09.057"] = {
+		"Uno gnomo viaggia meglio in compagnia, se non altro perché qualcuno deve passargli le cose dagli scaffali alti.",
+		"Gli amici sono l'unica macchina che nessuno può costruire da solo. Aggiungo sempre volentieri un pezzo.",
+		"Mi piace chi chiede «come funziona?» invece di «a cosa serve?». La seconda domanda arriva dopo, e di solito si risponde da sola.",
+	},
+	["race.gnome.muse.w09.058"] = {
+		"Sotto il cielo della notte le stelle sono sparse come lampade d'officina viste da lontano. So quale città mi ricordano.",
+		"Il cielo della notte è l'unico soffitto che nessuno gnomo abbia provato a riparare. Dateci tempo.",
+	},
+	["race.gnome.muse.w09.059"] = {
+		"Neve. L'esilio a Dun Morogh ha reso ogni gnomo un esperto in materia, e nessuno di noi un appassionato.",
+		"I fiocchi di neve si posano sulla manica, ognuno un piccolo reticolo perfetto. Li ammirerei di più se non mi colassero giù per il colletto.",
+	},
+	["race.gnome.muse.w09.060"] = {
+		"Pioggia. Acqua che cade senza tubature, ovunque, tutta insieme. Uno gnomo può ammirare il sistema e voler comunque sporgere reclamo.",
+		"Ogni goccia di questa pioggia va da qualche parte senza il minimo progetto. Qualcuno dovrebbe montare le grondaie al cielo.",
+	},
+	["race.gnome.muse.w09.061"] = {
+		"Ci sono bambini gnomi che hanno conosciuto solo Tinker Town. Disegnano Gnomeregan dai racconti dei grandi e ci mettono sempre troppe lampade. Nessuno li corregge.",
+		"A Ironforge ci sono gnomi piccini convinti che una città sia qualcosa che si prende in prestito dai nani. Un giorno vorrei che vedessero quella vera.",
+		"Chiedi a un bambino gnomo com'è una città gnomesca e sentirai parlare di ascensori, lampade e tantissima speranza. I dettagli sono presi in prestito. La speranza no.",
+	},
+	["race.gnome.muse.w09.062"] = {
+		"In segreto ogni gnomo crede che il mondo vada un po' indietro e vada regolato. Io lo ammetto e basta.",
+		"La pazienza è una virtù, dicono. Gli gnomi preferiscono l'efficienza, che è pazienza con una tabella di marcia.",
+		"Farei di più se le giornate fossero più lunghe. Ho studiato la faccenda. A quanto pare il sole non si regola.",
+	},
+	["race.gnome.muse.w09.063"] = {
+		"Prima del decollo un grifone squadra uno gnomo a lungo, con aria pensierosa. Preferisco non sapere cosa pensa.",
+		"Grifoni e gnomi hanno un'intesa: io non faccio movimenti bruschi, e lui non si chiede se sono uno spuntino.",
+		"I grifoni non sono stati progettati pensando agli gnomi. E nemmeno le selle, le staffe o chi le fabbrica.",
+	},
+	["race.gnome.subzone_enter.w09.001"] = {
+		"entra in {subzone} e comincia subito a misurare le distanze a passi, muovendo le labbra mentre conta.",
+		"entra in {subzone} con passi rapidi e leggeri, lanciando un'occhiata a ogni cardine, carrucola e palo che incontra.",
+		"si ferma ai margini di {subzone} per tirare fuori di tasca un mozzicone di matita, come se il posto andasse annotato subito.",
+	},
+	["race.gnome.subzone_enter.w09.002"] = {
+		"{subzone}. Prima impressione: costruito da qualcuno di alto, per qualcuno di alto. Seconda impressione: interessante lo stesso.",
+		"{subzone}. Faccio una stima veloce di quanti gnomi ci starebbero. La risposta è sempre più di quanto si creda.",
+		"{subzone}. Qui tutto è un po' fuori portata. Annotato, e perdonato.",
+	},
+	["race.gnome.subzone_enter.w09.003"] = {
+		"{subzone}. Ogni posto in cui entro lo confronto, senza volerlo, con una città sotto le montagne. Non è una gara leale. Qui, per dirne una, niente è avvelenato.",
+		"{subzone}. Qualcuno lo chiama casa. Gli auguro più fortuna nel tenerselo di quanta ne abbiamo avuta noi.",
+		"{subzone}. Un nome su una mappa, e gente che lotterebbe per tenerselo. Gli gnomi lo capiscono meglio di molti altri.",
+	},
+	["race.gnome.subzone_enter.w09.004"] = {
+		"{subzone}! Che bello. Chi si occupa della manutenzione?",
+		"{subzone}. Bene, vediamo cosa fa girare questo posto.",
+		"Oh, {subzone}. Ho già delle domande.",
+	},
+	["race.gnome.subzone_enter.w09.005"] = {
+		"{subzone}. Per prima cosa conto le uscite. Gli gnomi, dopo aver perso una città in fretta e furia, non perdono più l'abitudine.",
+		"{subzone}. Dove va l'acqua, dove va il fumo, dove andrei io se le cose si mettessero male? Le prime tre domande di uno gnomo, ovunque.",
+		"{subzone}. Bel posto. Dov'è la porta sul retro? Vecchia abitudine di un popolo che ha dovuto scappare.",
+	},
+	["race.gnome.subzone_enter.w09.006"] = {
+		"entra in {subzone} a mento alto e spalle indietro, sfruttando ogni centimetro.",
+		"entra in {subzone} con un passo svelto da gnomo, due falcate per ognuna della gente più alta.",
+		"arriva a {subzone} col fiato un po' corto per aver tenuto il passo del mondo, e con l'aria di chi è felicissimo di trovarsi lì.",
+	},
+	["race.gnome.subzone_enter.w09.007"] = {
+		"{subzone}. Con una settimana qui mapperei ogni sentiero e darei un nome a ogni sasso. Ho pochi minuti. Darò un nome ai sassi importanti.",
+		"{subzone}. Una pagina pulita sul taccuino. Gli gnomi non si stancano mai di una pagina pulita.",
+		"{subzone}. Mi piace già, e non ho ancora scoperto come funziona niente qui.",
+	},
+	["race.gnome.subzone_enter.w09.008"] = {
+		"{subzone}. Chi ha messo insieme questo posto aveva un martello e un sogno. Uno gnomo ci avrebbe aggiunto una livella.",
+		"{subzone}. Qui niente è perfettamente in squadra. Scelgo di trovarlo grazioso.",
+		"{subzone}. Resisto alla tentazione di aggiustare cose che non sono mie. È una lotta quotidiana.",
+	},
+	["race.gnome.subzone_enter.w09.009"] = {
+		"{subzone}. Gnomo piccolo, posto grande. Come ogni posto, a dire il vero. Si entra.",
+		"{subzone}. Il mondo non si rimpicciolisce per adattarsi a me. Così ci entro come se l'avesse fatto.",
+		"{subzone}. Quello che mi aspetta qui è probabilmente più alto di me. Lo è quasi tutto. Finora non ha mai fermato uno gnomo.",
+	},
+	["race.gnome.subzone_enter.w09.010"] = {
+		"{subzone}. Qualcuno mi ricordi di misurarlo per bene più tardi.",
+		"{subzone}, eh? Prima di andarmene voglio dare un'occhiata seria a come è fatto questo posto.",
+	},
+	["race.orc.landmark.w09.001"] = {
+		"{landmark}. Gli altri popoli innalzano pietre per essere ricordati. Gli orchi preferiscono le storie. Le pietre sono più silenziose al riguardo.",
+		"{landmark}. Un nome su una mappa. Un orco ricorda un posto per quello che ci è successo, e io non ho ancora deciso cosa sarà.",
+		"{landmark}. Mi guardo intorno e in testa gli do un nome tutto mio. Gli orchi non sono mai stati bravi a tenersi i nomi degli altri.",
+	},
+	["race.orc.landmark.w09.002"] = {
+		"si ferma a {landmark} e pianta i piedi larghi, squadrando il posto come un lupo squadra una tana sconosciuta.",
+		"si arresta arrivando a {landmark}, abbraccia il luogo con una lenta occhiata e lascia andare un breve grugnito che forse è approvazione.",
+		"fa una pausa a {landmark}, una mano appoggiata alla cintura, e soppesa il posto con lo sguardo franco della sua gente.",
+	},
+	["race.orc.muse.w09.001"] = {
+		"Polvere rossa nelle cuciture di tutto ciò che possiedo. La lavo via e Durotar trova il modo di rientrare. Ho smesso di provarci.",
+		"Per quanto lontano io vada, a fine giornata scuoto polvere rossa dagli stivali. Durotar non lascia andare i suoi.",
+		"In qualche angolo dello zaino c'è sempre un pizzico di Durotar. Non ce l'ho mai messo io. Viene con me lo stesso.",
+	},
+	["race.orc.muse.w09.002"] = {
+		"I vecchi ricordano i campi non tanto per le sbarre quanto per il torpore: clan interi che avevano scordato perché alzarsi. Io mi alzo spesso. Forse è per questo.",
+		"Gli anziani parlano del torpore dei campi come di una malattia dello spirito. La guerra di Thrall l'ha guarita, dicono. Io credo che dorma soltanto, e che ogni orco la tenga addormentata a modo suo.",
+		"Nei campi, dicono i vecchi, la catena peggiore era quella che nessuno vedeva. Io non sto mai con le mani in mano a lungo. È l'unica chiave che conosco.",
+	},
+	["race.orc.muse.w09.003"] = {
+		"Quando un orco ride, la gente si guarda intorno cercando la rissa. È solo una risata. Di solito.",
+		"Una risata d'orco svuota una taverna più in fretta di una rissa. Ci stiamo lavorando. Piano.",
+	},
+	["race.orc.muse.w09.004"] = {
+		"Gli elementi non sono gentili, dicono gli sciamani: sono onesti. Il fuoco brucia chiunque lo tocchi. In un certo senso la trovo una cosa riposante.",
+		"La terra regge, l'acqua scorre, il fuoco prende, l'aria porta: così li nomina un vecchio sciamano. Abbastanza semplice perché un orco lo ricordi, abbastanza duro per viverci.",
+		"Agli spiriti non importa quanto sono forte. Guardano come sto in piedi. Mi ci è voluto un po' per capire la differenza.",
+	},
+	["race.orc.muse.w09.005"] = {
+		"I Warsong tagliano ancora legname ad Ashenvale con le frecce degli elfi della notte che fischiano intorno. Il clan di Hellscream non ha mai imparato a fare le cose nel modo facile.",
+		"Ad Ashenvale Hellscream ha messo fine alla maledizione, e alla propria vita insieme a lei. I Warsong sono ancora lì, ad abbattere alberi nel suo nome. In quel clan la testardaggine scorre come la linfa.",
+		"Ogni tronco che esce da Ashenvale si paga due volte, dicono i Warsong: una in sudore, una in frecce. Loro pagano lo stesso.",
+	},
+	["race.orc.muse.w09.006"] = {
+		"si asciuga il sudore dalla fronte con il dorso di un pugno verde, poi osserva il pugno come se avesse fatto qualcosa di furbo.",
+		"passa lentamente il pollice sul filo di una zanna, come certuni si lisciano la barba quando pensano.",
+		"pianta il peso su entrambi i piedi come un palo conficcato nel terreno, e si fa immobile per pensare.",
+	},
+	["race.orc.muse.w09.007"] = {
+		"Un lupo ti dice chiaro e tondo cosa pensa di te. Per forza orchi e lupi vanno d'accordo: nessuno dei due ha pazienza per le allusioni.",
+		"I Frostwolf cavalcavano lupi prima di qualunque altra cosa, dicono i vecchi. Un lupo è un amico che non finge mai. Me ne servirebbero di più.",
+		"Dai a un lupo carne e rispetto, in quest'ordine, e ti seguirà ovunque. Certi orchi non sono poi tanto diversi.",
+	},
+	["race.orc.muse.w09.008"] = {
+		"I troll Darkspear ridono di cose di cui io non riderei, e combattono al nostro fianco senza farselo chiedere due volte. Ho smesso di cercare di capire la prima parte.",
+		"La gente di Vol'jin mantiene la parola e si tiene i suoi segreti. Alleati strani, i troll. Buoni alleati.",
+		"Troll nella Valley of Trials, troll a Sen'jin, troll alle nostre spalle in ogni scontro. Senza quelle braccia lunghe e quelle risate l'Orda sarebbe una cosa più piccola.",
+	},
+	["race.orc.muse.w09.009"] = {
+		"I tauren ci hanno aiutato quando avevano poche ragioni per farlo. Cairne Bloodhoof non dimentica un amico, e un orco non dovrebbe dimenticare un tauren.",
+		"Un tauren ascolta fino in fondo prima di rispondere. Sto cercando di impararlo. Ci vuole tempo.",
+		"Quando gli orchi arrivarono su Kalimdor, raccontano gli anziani, furono i tauren a mostrarci dov'era l'acqua. Un debito così non si estingue, e io non voglio che si estingua.",
+	},
+	["race.orc.muse.w09.010"] = {
+		"I Reietti stanno nell'Orda perché Thrall l'ha permesso. Io do loro quello che dà il Capoguerra: un'occasione, e un occhio attento.",
+		"Cose morte che parlano, commerciano e rispettano un patto. Non devo per forza farmele piacere. Devo solo guardare se lo rispettano.",
+		"I Reietti sanno di tomba e delle boccette dei loro speziali. Preferisco stare sopravvento. Ma odiano il Flagello quanto chiunque altro, e questo conta.",
+	},
+	["race.orc.muse.w09.011"] = {
+		"Quelli del Burning Blade hanno le nostre facce e sussurrano di nuovo la vecchia fame alle orecchie degli orchi. Un nemico fuori dalle mura lo capisco. Questo lo odio.",
+		"Nelle grotte sotto la stessa Orgrimmar il Burning Blade si riuniva in segreto. I demoni hanno perso la presa su di noi. Non hanno smesso di allungare le mani.",
+		"Ogni orco che entra nel Burning Blade è una porta aperta dall'interno. Io le porte le tengo d'occhio.",
+	},
+	["race.orc.muse.w09.012"] = {
+		"Coda di scorpione arrostita. Sa di cuoio di stivale con un rancore. Ne prendo ancora.",
+		"Cucina di Durotar: lo prendi, lo cuoci, ci litighi sopra. In quest'ordine.",
+	},
+	["race.orc.muse.w09.013"] = {
+		"Thrall ci ha dato l'angolo più duro di Kalimdor, e secondo me ha scelto bene. Pochi desiderano una terra di roccia e spine, perciò pochi vengono a prendersela.",
+		"Roccia, spine e terra rossa: Durotar non regala niente. Proprio per questo ogni orco che ci vive sa quanto vale una cosa.",
+		"Gli altri popoli si stabiliscono dove si vive bene. Gli orchi si sono stabiliti dove si vive male e l'hanno fatta loro. C'è un orgoglio in questo che a un umano non saprei mai spiegare.",
+	},
+	["race.orc.muse.w09.014"] = {
+		"Draenor è una parola che gli anziani pronunciano piano, come se potesse rompersi. Qualunque cosa abbiano visto laggiù, ce l'hanno ancora in faccia.",
+		"Pianure verdi e fiumi larghi, dicono i vecchi, prima che il fel bruciasse il mondo da cui veniamo. Lo raccontano come si sfiora una vecchia cicatrice.",
+		"Chiedi a un anziano di Draenor e aspetta. La risposta arriva lenta, e non parla mai della terra. Parla di chi ci stava sopra.",
+	},
+	["race.orc.muse.w09.015"] = {
+		"Di' quello che pensi. Io farò lo stesso. Torneremo a casa prima tutti e due.",
+		"Parla chiaro o taci. Gli orchi non hanno orecchio per gli indovinelli.",
+		"Se servono tre frasi per dirlo, ne basta una.",
+	},
+	["race.orc.muse.w09.016"] = {
+		"Gli antenati guardano, dicono gli sciamani. Io non li immagino severi. Li immagino curiosi, in attesa di vedere cosa fa un orco con una vita libera.",
+		"Mi piacerebbe che gli antenati mi vedessero fare bene una cosa al giorno. Non grandi imprese. Cose fatte bene.",
+		"Qualunque cosa pensino di noi, gli antenati hanno conosciuto la maledizione e sanno che è spezzata. Devono guardare questa generazione con una specie di meraviglia.",
+	},
+	["race.orc.muse.w09.017"] = {
+		"Orgrimmar porta il nome di Doomhammer, e Thrall porta il suo martello. La nostra città e il nostro Capoguerra custodiscono entrambi la fiducia di un orco morto. Una base pesante su cui costruire, e solida.",
+		"Ogni volta che dico Orgrimmar dico anche il nome di Doomhammer. Una città che ricorda i suoi morti a ogni saluto. Mi piace.",
+		"Una città che porta il nome di un capo caduto, governata da colui di cui si fidava. Gli orchi costruiscono sulla memoria più che sulla pietra.",
+	},
+	["race.orc.muse.w09.018"] = {
+		"Gli umani trasalgono quando sorrido. Dicono che con le zanne sembra una minaccia. Ho deciso di sorridere di più.",
+		"Un orco che sorride rende nervosi gli umani. Non è un problema mio, ma è il mio divertimento.",
+	},
+	["race.orc.muse.w09.019"] = {
+		"La forza è facile da mostrare e difficile da puntare. La prima parte la impara chiunque in fretta. La seconda richiede una vita.",
+		"Un braccio forte è un dono del corpo. Sapere quando tenerlo fermo è un dono dello spirito, dicono gli sciamani. Su quello ci sto ancora lavorando.",
+		"Colpire forte è la prima lezione della forza. L'ultima è scegliere cosa non colpire.",
+	},
+	["race.orc.muse.w09.020"] = {
+		"Gli anziani raccontano la traversata: navi prese agli umani, un mare che nessuno conosceva e la parola di un profeta, che oltre quel mare una terra aspettava. Aspettava davvero. Era quasi tutta roccia, ma aspettava.",
+		"Gli orchi non sono marinai. Eppure i vecchi hanno attraversato un mare intero per arrivare qui, perché Thrall l'aveva detto. Quando dubito del Capoguerra, me ne ricordo.",
+		"Ogni orco su Kalimdor sta all'altro capo di un viaggio per mare. Alcuni ce l'hanno fatta, raccontano gli anziani; altri se li è tenuti il mare. Non se ne parla molto.",
+	},
+	["race.orc.muse.w09.021"] = {
+		"batte con due dita un ritmo pesante e regolare, il polso dei tamburi di guerra di Orgrimmar, senza sembrare accorgersene.",
+		"si batte piano il pugno chiuso sul petto, una volta, due, come a tenere il tempo di una marcia che sente solo {g:lui|lei}.",
+	},
+	["race.orc.muse.w09.022"] = {
+		"Orchi, troll, tauren, Reietti: l'Orda è fatta di popoli che nessun altro voleva. Non è una debolezza. È la malta.",
+		"Nessuno ha scelto l'Orda perché la vita era facile. L'abbiamo scelta perché l'alternativa era la solitudine. Ne viene fuori una compagnia fedele.",
+		"L'Orda è una casa strana. Tutti hanno cicatrici, e nessuno è il primo a chiederne.",
+	},
+	["race.orc.muse.w09.023"] = {
+		"Gli orchi sono rumorosi, lo dicono tutti. Nessuno ci vede nei momenti quieti, quando ce ne stiamo con i nostri pensieri come con un sasso in mano.",
+		"C'è un silenzio che gli orchi tengono per sé. Quasi nessuno lo sente. È proprio questo lo scopo.",
+		"Mi piace il chiasso dell'Orda. A volte mi piace di più questa quiete. Non che lo ammetterei ad alta voce.",
+	},
+	["race.orc.muse.w09.024"] = {
+		"Gli umani hanno costruito i campi e l'hanno chiamata clemenza. I vecchi non l'hanno perdonato, e non sarò io a dire che dovrebbero.",
+		"Qualcuno dice che l'Alleanza e l'Orda potrebbero fare la pace. Forse. Prima chiedilo ai vecchi che sono stati dietro le mura dei campi, e ascolta quanto ci mettono a rispondere.",
+		"Non odio gli umani. Ricordo soltanto, per conto di chi non può dimenticare, che cosa hanno fatto di noi quando eravamo deboli.",
+	},
+	["race.orc.muse.w09.025"] = {
+		"Ogni panca di una città goblin scricchiola quando ci si siede un orco. Io la prendo come un applauso.",
+		"I goblin costruiscono tutto per clienti della loro taglia e fanno prezzi della taglia di un orco. Mi va bene solo metà della faccenda.",
+	},
+	["race.orc.muse.w09.026"] = {
+		"Le Barrens: erba gialla, spine improvvise, e niente che fermi lo sguardo. Lì non mi sento mai {g:osservato|osservata}. Solo {g:piccolo|piccola}.",
+		"Nelle Barrens la terra continua e basta, piatta e secca, finché l'occhio si arrende prima della strada. Un buon posto per svuotare la testa.",
+		"Durotar è stretta e rossa. Le Barrens sono larghe, gialle e non finiscono mai. Passare dall'una alle altre è come fare un respiro profondo.",
+	},
+	["race.orc.muse.w09.027"] = {
+		"Crossroads sta in mezzo alle Barrens come un pugno piantato su un tavolo. Chi la tiene, tiene le strade. La teniamo noi.",
+		"Prima o poi ogni carovana delle Barrens passa da Crossroads. Un forte piccolo con un compito grande. Rispetto le cose così.",
+	},
+	["race.orc.muse.w09.028"] = {
+		"Alcuni orchi evocano ancora i demoni, e l'Orda lo permette, con un occhio aperto. Dopo quello che il fel ci ha fatto, capisco sia la paura sia la voglia di domarlo.",
+		"Gli stregoni camminano di nuovo per Orgrimmar. Quando passano, i vecchi tacciono. Un popolo che un tempo apparteneva ai demoni ora prova a possederli. Spero che funzioni.",
+		"Un tempo il fel teneva ogni orco al guinzaglio. Adesso alcuni di noi tengono il guinzaglio al posto suo. Agli anziani non piace, e non hanno torto a sorvegliare.",
+	},
+	["race.orc.muse.w09.029"] = {
+		"Affrontami a viso aperto e ti rispetterò, comunque vada. Pugnalami alle spalle e farò un'eccezione.",
+		"Combatti onestamente e farò lo stesso. Mentimi, e conoscerai l'altra faccia di un orco.",
+	},
+	["race.orc.muse.w09.030"] = {
+		"Razor Hill è tutta spuntoni, fumo e grida. Se qualcuno mi chiedesse di disegnare l'Orda, disegnerei quella.",
+		"Nessuno ha costruito Razor Hill per bellezza. È una collina con mura, spuntoni e una fucina, e ogni orco che ci passa sta un po' più dritto.",
+	},
+	["race.orc.muse.w09.031"] = {
+		"La chiamano Valley of Trials, come se una sola valle potesse contenerle tutte. Le prove vere vengono dopo. La valle insegna soltanto ad aspettarsele.",
+		"Valley of Trials è un nome gentile per un posto duro, e quel posto duro è un inizio gentile per la vita di un orco.",
+	},
+	["race.orc.muse.w09.032"] = {
+		"Gli orchi non temono tanto la morte quanto una morte inutile. Una morte che non compra niente è l'unica che rifiuterei.",
+		"Quando toccherà a me, voglio che sia per qualcosa. I vecchi guerrieri dicono che è tutto quello che un orco può chiedere, e più di quanto ottengano quasi tutti.",
+		"Morire non è la vergogna. Morire per niente, quella sì. È una delle poche cose su cui ogni orco che conosco è d'accordo.",
+	},
+	["race.orc.muse.w09.033"] = {
+		"I cinghiali di Durotar sono magri, cattivi e offesi da tutto. Li rispetto. E me li mangio.",
+		"Un cinghiale di Durotar carica prima e non pensa mai. Certi orchi sono uguali. Quegli orchi danno belle storie, e brevi.",
+	},
+	["race.orc.muse.w09.034"] = {
+		"Rend Blackhand tiene i Blackrock nella loro montagna, ancora inchinati a qualunque padrone li voglia. Hanno la nostra pelle verde e i nomi dei nostri clan. È questo che rende tutto peggiore.",
+		"I Blackrock di Rend hanno scelto la vecchia strada: padroni e catene, solo con un drago al posto di un demone. Ogni orco dell'Orda è una risposta a loro.",
+		"Certi orchi non si sono mai lasciati alle spalle la vecchia Orda. I Blackrock di Rend stanno ancora nella loro montagna a servire un drago. Orchi liberi e orchi in catene, e loro hanno scelto le catene.",
+	},
+	["race.orc.muse.w09.035"] = {
+		"Lontano, nel freddo dei monti di Alterac, i Frostwolf custodiscono la loro valle e i loro lupi. Thrall è nato da quel clan. Ogni orco ne va un po' fiero.",
+		"I Frostwolf resistettero sulle montagne mentre il resto di noi era in catene, dicono i vecchi. Esuli che non avevano mai dimenticato cosa fosse un orco. Gli dobbiamo più di quanto diciamo.",
+		"Di tutti i clan, i Frostwolf sono quelli che hanno custodito meglio le vecchie usanze, lassù sui monti di Alterac. Quando voglio sapere cosa dovrebbe essere un orco, penso a loro.",
+	},
+	["race.orc.muse.w09.036"] = {
+		"I goblin vendono sia all'Orda sia all'Alleanza. Almeno sono onesti nell'essere disonesti.",
+		"Un goblin ti vende una corda e poi vende l'altro capo al tuo nemico. Comunque, la corda di solito è buona.",
+	},
+	["race.orc.muse.w09.037"] = {
+		"Il mio popolo è passato da schiavo dei demoni a prigioniero degli umani a costruttore di una città, nell'arco di una vita sola. Qualunque cosa venga dopo, non scommetterei contro di noi.",
+		"Non molto tempo fa gli orchi non avevano una casa loro. Ora c'è Orgrimmar, c'è Razor Hill, c'è Crossroads. Chiedi a un orco se le cose possono cambiare. Le prove siamo noi.",
+		"Dalle catene a una città nostra, più in fretta di quanto chiunque credesse possibile. Certi giorni guardo Orgrimmar e penso: questa l'abbiamo fatta noi.",
+	},
+	["race.orc.muse.w09.038"] = {
+		"stringe a pugno una mano verde e la riapre, piano, come per controllare che risponda ancora.",
+		"si stira finché le spalle scrocchiano, poi grugnisce, {g:soddisfatto|soddisfatta}, a niente in particolare.",
+		"socchiude gli occhi verso l'orizzonte con una pazienza da cacciatore, anche se laggiù non c'è niente che valga la caccia.",
+	},
+	["race.orc.muse.w09.039"] = {
+		"A volte, in uno scontro duro, sento salire la rabbia e mi chiedo se sia mia. Gli sciamani dicono di sì. La maledizione non c'è più; il temperamento è nostro, e anche il freno.",
+		"La macchia del demone se n'è andata da noi; ci ha pensato Hellscream. Quello che resta è la semplice collera degli orchi. Quella posso tenerla, e domarla.",
+		"Quando mi si accende il carattere mi chiedo di chi sia. Mio, ogni volta, da Hellscream in poi. Quindi tenerlo a bada tocca a me.",
+	},
+	["race.orc.muse.w09.040"] = {
+		"Più mi allontano da Durotar, più mi sento {g:orco|orchessa}. Strano come un popolo si veda meglio da lontano.",
+		"Quaggiù nessuno conosce Razor Hill o la Valley of Trials. Li porto nel modo in cui sto in piedi, e quello lo vedono bene.",
+		"Ogni strada che si allontana da Orgrimmar è anche una strada per tornarci. Non dimentico mai da che parte sia.",
+	},
+	["race.orc.muse.w09.041"] = {
+		"Le forge di Orgrimmar risuonano a ogni ora. Se la città ha un battito, è quello: martello sul ferro, paziente e rumoroso.",
+		"L'acciaio degli orchi è brutto e onesto. Nessuno l'ha mai comprato per l'aspetto, e nessuno l'ha mai riportato rotto.",
+		"Il lavoro degli orchi non è bello. È pesante, semplice, e non si rompe. Gli anziani dicono lo stesso del popolo.",
+	},
+	["race.orc.muse.w09.042"] = {
+		"Kalimdor era vecchio molto prima che arrivassimo. Ogni rovina delle Barrens apparteneva a qualcuno che anche lui credeva di restarci per sempre.",
+		"Questa terra aveva padroni prima di noi: centauri, quilboar, elfi della notte, altri di cui non resta il nome. Dovremo essere più bravi a tenercela.",
+	},
+	["race.orc.muse.w09.043"] = {
+		"Lok'tar. Non lo grido per fare scena. Lo dico per ricordarmi per che cosa sto in piedi.",
+		"Lok'tar. Due sillabe, e dietro un popolo intero.",
+	},
+	["race.orc.muse.w09.044"] = {
+		"Mi fanno male le spalle, gli stivali sono pieni di sabbia e ho una fame da mangiarmi un kodo intero. Una buona giornata da orco, allora.",
+		"Dolori dappertutto, polvere tra i denti, pancia vuota. Niente che un orco non sistemi con della carne e un sonnellino.",
+	},
+	["race.orc.muse.w09.045"] = {
+		"Thrall mantiene una pace incerta con gli umani di Theramore. Alcuni orchi brontolano. Io penso che ci voglia più forza per trattenere una guerra che per cominciarla.",
+		"La pace con Theramore è un filo sottile. Il Capoguerra ne tiene un capo, e una donna umana l'altro. Spero che abbiano mani forti tutti e due.",
+		"Metà dell'Orda vorrebbe marciare su Theramore, e il Capoguerra dice di no. Un capo che sa dire no alla rabbia del suo stesso popolo è cosa rara.",
+	},
+	["race.orc.muse.w09.046"] = {
+		"Gli orchi provano paura come chiunque. Solo che non la lasciamo decidere. Può venire con noi e portare i bagagli.",
+		"La paura è un'ottima esploratrice e una pessima capotribù. La lascio fare rapporto, poi decido io.",
+	},
+	["race.orc.muse.w09.047"] = {
+		"Orgrimmar sa di fumo, di cuoio e di carne arrosto. Altre città sanno di profumo e di fogna. So bene in quale preferisco tornare a casa.",
+		"Orgrimmar è rumorosa, stretta e calda, e ogni angolo è nostro. Quest'ultima parte compensa tutto il resto.",
+		"Certe città sono costruite per impressionare chi le visita. Orgrimmar è costruita per difendersi, per viverci e per litigarci dentro, e riesce benissimo in tutte e tre le cose.",
+	},
+	["race.orc.muse.w09.048"] = {
+		"La cosa migliore che possiede un anziano orco è una storia, e la seconda è qualcuno che l'ascolti. Quando posso, cerco di essere la seconda.",
+		"I vecchi orchi raccontano le stesse storie tante volte. Ascolta bene e ogni volta salta fuori un dettaglio diverso, come se la storia stesse ancora decidendo com'è andata.",
+	},
+	["race.orc.muse.w09.049"] = {
+		"Ogni orco crede di sussurrare. Nessun orco ha mai sussurrato. I troll lo trovano esilarante.",
+		"Un orco che bisbiglia si sente dall'altra parte di un cortile. Lo sappiamo. Abbiamo smesso di scusarci.",
+	},
+	["race.orc.muse.w09.050"] = {
+		"Durotar incontra il mare con scogliere rosse e dure. Perfino le onde sembrano perdere la pazienza contro di loro.",
+		"Il mare lungo la costa di Durotar è l'unica cosa gentile della regione, e anche lui si getta sugli scogli come se facesse sul serio.",
+	},
+	["race.orc.muse.w09.051"] = {
+		"Ci sono ancora soldati di Kul Tiras a Tiragarde Keep, sulla nostra stessa costa. Il loro ammiraglio venne a finirci e ci lasciò la pelle. I suoi uomini non hanno capito l'antifona.",
+		"Tiragarde Keep: pietre umane sulla riva di Durotar. Ogni orco che ci passa accanto si ricorda che la guerra non è mai finita davvero. Ha solo cambiato indirizzo.",
+	},
+	["race.orc.muse.w09.052"] = {
+		"Il nostro Capoguerra è uno sciamano prima che un guerriero. Un orco che parla agli elementi prima di sollevare il martello: è a quest'Orda che voglio appartenere.",
+		"Thrall ascolta gli spiriti prima di dare ordini. La vecchia Orda ha provato tutti i modi peggiori di comandare.",
+	},
+	["race.orc.muse.w09.053"] = {
+		"Imparo qualcosa da ogni popolo dell'Orda. I troll insegnano la pazienza con le cose strane, i tauren quella con le cose lente. I Reietti insegnano la pazienza e basta.",
+		"Un orco da solo impara soltanto a essere orco. L'Orda ci ha dato maestri che non avevamo chiesto, e quasi tutti ne sono valsi la pena.",
+	},
+	["race.orc.muse.w09.054"] = {
+		"Gli orchi portano le cicatrici come altri portano i gioielli: senza vergogna, e con una storia per ognuna. Spesso la storia è esagerata.",
+		"Chiedi a un orco di una cicatrice e sentirai un racconto lungo il doppio della ferita. È tradizione, non bugia.",
+	},
+	["race.orc.muse.w09.055"] = {
+		"Frutti del cactus: spine fuori, dolcezza dentro, e ti lasciano le dita doloranti per un giorno. Durotar in un frutto solo.",
+		"Sbuccia con cura un frutto del cactus e ti ricompensa. Sbuccialo da orco e passi il resto della giornata a toglierti spine dal pollice.",
+	},
+	["race.orc.muse.w09.056"] = {
+		"La vecchia Orda seguiva gli ordini fin dentro il fel. La nuova segue un Capoguerra che spiega le sue ragioni. Preferisco la seconda, e proprio per questo la seguo con più impegno.",
+		"Seguirei Thrall molto lontano. Non perché devo, come si seguiva nella vecchia Orda. Perché mi ha lasciato la scelta.",
+	},
+	["race.orc.muse.w09.057"] = {
+		"alza lo sguardo e si gira piano, come per prendere la direzione di Orgrimmar da qualunque posto sia questo, poi annuisce tra sé.",
+		"si ferma e guarda lontano, verso casa a quanto pare, poi serra la mascella e torna alle sue faccende.",
+	},
+	["race.orc.muse.w09.058"] = {
+		"Gli sciamani dicono che gli antenati parlano nei sogni. I miei di solito mi mostrano da mangiare. Forse è un consiglio anche quello.",
+		"Se gli antenati visitano gli orchi nel sonno, come sostengono gli sciamani, i miei devono essere spiriti pazienti. Li faccio aspettare da parecchio.",
+	},
+	["race.orc.muse.w09.059"] = {
+		"Quando Thrall aprì i campi, raccontano gli anziani, alcuni orchi non volevano uscire. Avevano dimenticato come si faceva. Lui li aspettò. È per quella pazienza che abbiamo un'Orda.",
+		"Thrall liberò i campi uno dopo l'altro, dicono i vecchi, e la parte più difficile non furono mai le guardie. Fu insegnare agli orchi a volere di nuovo qualcosa.",
+	},
+	["race.orc.muse.w09.060"] = {
+		"Bruto, dicono. Poi il carro si impantana e all'improvviso tutti vogliono un bruto.",
+		"Tutti guardano dall'alto in basso i muscoli di un orco, finché non c'è qualcosa di pesante da spostare.",
+	},
+	["race.orc.muse.w09.061"] = {
+		"Clan interi si sono perduti nel fel e nelle guerre che ha scatenato. Quando conto l'Orda, conto anche i vuoti.",
+		"A volte gli anziani si fermano a metà di un racconto e tacciono per un po'. Manca qualcuno che dovrebbe esserci. Ho imparato ad aspettare con loro.",
+		"Siamo meno di quanti dovremmo essere. I demoni hanno preso la loro parte, poi gli umani, poi i lunghi anni nei campi. Ogni bambino orco è una piccola vittoria.",
+	},
+	["race.orc.muse.w09.062"] = {
+		"L'onore non paga il pranzo. Ma un mercante che sa che mantieni la parola ti fa credito, e ci siamo quasi.",
+		"La mia parola vale più della mia borsa. Nei giorni magri non è un gran vanto, ma resta vero.",
+	},
+	["race.orc.muse.w09.063"] = {
+		"La pelle è verde, le zanne sono vere e il caratteraccio è quasi sempre sotto controllo. Altre domande?",
+		"Pelle verde, zanne vere, buone maniere. Due su tre sorprendono la gente.",
+	},
+	["race.orc.muse.w09.064"] = {
+		"In una terra secca, dicono gli anziani, ogni sorgente è un dono degli spiriti dell'acqua. Gli orchi di Durotar non ne sprecano una goccia. Mi sorprendo a fare lo stesso ovunque.",
+		"L'acqua è il primo spirito che un orco di Durotar impara a ringraziare. Tutto il resto può aspettare; la sete no.",
+		"Non passo mai accanto ad acqua pulita senza dire grazie. Gli sciamani di Durotar insegnano l'abitudine a chiunque voglia ascoltare. È un'abitudine che si attacca.",
+	},
+	["race.orc.muse.w09.065"] = {
+		"Se ti serve aiuto, chiedi. Se ti serve una rissa, chiedi con educazione. Vado bene per tutte e due.",
+		"Ti servono una schiena forte o una testa dura? Le ho tutte e due, e le presto a poco.",
+	},
+	["race.orc.muse.w09.066"] = {
+		"Gli orchi invecchiano duro, dicono gli anziani: alla fine il corpo paga ogni battaglia. Lo dicono ridendo, con metà dei denti che mancano.",
+		"I vecchi guerrieri scricchiolano quando si alzano, e si vantano di ogni scricchiolio. Ognuno è uno scontro, dicono. Io conto di scricchiolare forte, quando toccherà a me.",
+	},
+	["race.orc.muse.w09.067"] = {
+		"Il nome di Gul'dan si sputa, non si pronuncia. La fame di potere di un solo orco, dicono gli anziani, e un popolo intero ne ha pagato il prezzo.",
+		"Gli anziani dicono che la vecchia Orda fu venduta dai suoi: un consiglio di orchi che amavano il potere più del loro popolo. Ogni capo venuto dopo ha dovuto dimostrare di non essere così.",
+	},
+	["race.orc.muse.w09.068"] = {
+		"Il caldo di Durotar ti si posa sulle spalle come un giogo. Gli orchi lo portano senza lamentarsi, quasi sempre, e finiscono per rimpiangerlo dovunque faccia più fresco.",
+		"Ogni posto più fresco di Durotar sembra una vacanza a un orco, per un giorno o giù di lì. Poi qualcosa dentro di noi comincia a rimpiangere il peso del caldo.",
+	},
+	["race.orc.muse.w09.069"] = {
+		"I grunt alle porte di Orgrimmar stanno lì al caldo tutto il giorno perché il resto di noi possa lamentarsi del caldo al chiuso. Qualcuno dovrebbe ringraziarli. Io di solito faccio un cenno.",
+		"Ogni grunt su un muro è un orco che ha scelto la noia perché gli altri avessero la pace. Merita più rispetto di quanto ne riceva.",
+	},
+	["race.orc.muse.w09.070"] = {
+		"Le canzoni vanno bene. Ma il nome di un orco si fa con le piccole imprese che nessuno canta: una promessa mantenuta, un carico portato, un amico non lasciato indietro.",
+		"La gloria è rumorosa e se ne va in fretta. Il rispetto è silenzioso e resta. Io prendo quello silenzioso, e anche l'altra se capita di passaggio.",
+		"Gli anziani dicono che un nome si costruisce come un muro: una pietra al giorno, e nessuno se ne accorge finché non regge.",
+	},
+	["race.orc.muse.w09.071"] = {
+		"tira fuori dalla bisaccia un pezzo di carne secca e lo mastica piano, con la serietà di chi sbriga un affare importante.",
+		"mastica una striscia di carne essiccata con grande concentrazione, come se il pasto l'avesse {g:offeso|offesa} di persona.",
+	},
+	["race.orc.muse.w09.072"] = {
+		"I bambini orchi oggi crescono senza aver mai visto il muro di un campo. Gli anziani li guardano giocare con un'espressione che non so bene come chiamare. Invidia, forse, o sollievo.",
+		"In qualche villaggio di Durotar sta crescendo un bambino orco che non ha mai sentito la voce di un carceriere. Tutto quello che hanno patito i vecchi era per questo.",
+	},
+	["race.orc.muse.w09.073"] = {
+		"Forza per chi sta con me, e una testa dura per chi non ci sta. È tutta la mia filosofia.",
+		"La mia filosofia ci sta su una zanna: tenere duro, parlare chiaro, mangiare bene.",
+	},
+	["race.orc.muse.w09.074"] = {
+		"I demoni se ne sono andati dal nostro sangue, ma non dal mondo. Gli sciamani dicono che sono pazienti. Anche noi, ora.",
+		"La Burning Legion si ricorda di noi, chissà dove. Che si ricordi. Stavolta troverà orchi che sanno quanto costa la sua offerta.",
+	},
+	["race.orc.muse.w09.075"] = {
+		"Gli orchi scrivono poco e ricordano molto. Gli anziani portano in testa storie intere, e si correggono a vicenda a pieni polmoni.",
+		"La nostra storia vive nelle voci più che nei libri. Per questo è più rumorosa di quasi tutte, e più difficile da bruciare.",
+	},
+	["race.orc.muse.w09.076"] = {
+		"Stonard, Kargath, Hammerfall: piccoli forti orchi sparsi per gli Eastern Kingdoms come spine testarde. Gli umani ci volevano fuori dalle loro terre. Alcuni di noi sono rimasti per puntiglio.",
+		"I vecchi hanno combattuto in tutti gli Eastern Kingdoms, e lì sventolano ancora stendardi dell'Orda: Hammerfall, Kargath, Stonard. Posti piccoli, tenuti da orchi troppo orgogliosi per andarsene.",
+	},
+	["race.orc.subzone_enter.w09.001"] = {
+		"{subzone}. Controllo prima il terreno: abbastanza duro per starci in piedi, abbastanza morbido da scavarci se serve.",
+		"Il suolo di {subzone} sotto gli stivali. Un orco giudica un posto da come regge il passo prima che dall'aspetto.",
+		"Entro in {subzone} saggiando la terra a ogni passo, come i vecchi guerrieri insegnano ai giovani.",
+	},
+	["race.orc.subzone_enter.w09.002"] = {
+		"entra in {subzone} a spalle larghe, con il passo di chi si aspetta una sfida e non ha niente in contrario.",
+		"avanza in {subzone} a mento alto, come a sfidare il posto a farne una questione.",
+		"arriva in {subzone} con un passo regolare e pesante, senza fretta e senza nascondersi, come gli orchi vanno ovunque.",
+	},
+	["race.orc.subzone_enter.w09.003"] = {
+		"{subzone}. Non c'è il rosso di Durotar, ma quello non c'è da nessuna parte. Andrà bene.",
+		"{subzone}. Faccio il confronto con casa senza volerlo. Vince casa, ma con educazione.",
+		"Ecco {subzone}. Per Durotar sarebbe un posto molle. Questo parere lo tengo per me, quasi sempre.",
+	},
+	["race.orc.subzone_enter.w09.004"] = {
+		"{subzone}. Cerco prima i colori dell'Orda. Poi qualcosa che valga la pena di mangiare.",
+		"{subzone}. Prima gli stendardi: di chi sono? Poi il fumo delle cucine: di chi è?",
+	},
+	["race.orc.subzone_enter.w09.005"] = {
+		"{subzone}. Se c'è silenzio, mi fido di meno. Gli orchi diffidano della quiete: di solito vuol dire che qualcuno trattiene il fiato.",
+		"{subzone}. Il rumore lo capisco. Il silenzio lo controllo due volte.",
+		"{subzone}. I vecchi guerrieri dicono che un posto troppo calmo è un'imboscata che non si è ancora alzata. Tengo gli occhi in movimento.",
+	},
+	["race.orc.subzone_enter.w09.006"] = {
+		"{subzone}. Bel posto. Chi devo ringraziare, e con chi devo battermi?",
+		"{subzone}, eh? Imparerò bene il nome quando saprò se morde.",
+	},
+	["race.orc.subzone_enter.w09.007"] = {
+		"{subzone}. Prima il naso. Fumo, acqua, bestie o sangue: un orco sa cosa contiene un posto prima ancora di vederlo.",
+		"Entro in {subzone} annusando. Ogni terra ha il suo odore. Quello di Durotar è pietra calda; questo lo imparerò.",
+		"{subzone}. Respiro a fondo e faccio l'inventario: cosa si mangia, cosa morde, cosa brucia.",
+	},
+	["race.orc.subzone_enter.w09.008"] = {
+		"{subzone}. Molti posti ricordano gli orchi come predoni. Vorrei che questo mi ricordasse in un altro modo.",
+		"{subzone}. La vecchia Orda ha lasciato il segno su mezzo mondo. Io cerco di lasciarne uno più leggero.",
+		"{subzone}. Qualunque cosa abbiano fatto qui gli orchi in passato, se qualcosa hanno fatto, io entro come {g:un orco|un'orchessa} di Thrall. Dovrebbe voler dire qualcosa.",
+	},
+	["race.orc.subzone_enter.w09.009"] = {
+		"si scrolla la polvere della strada dagli stivali al margine di {subzone}, una piccola cerimonia d'arrivo.",
+		"raggiunge {subzone} e batte gli stivali contro una pietra, prima uno poi l'altro, come un ospite che si pulisce i piedi sulla soglia.",
+	},
+	["race.orc.subzone_enter.w09.010"] = {
+		"{subzone}. Gli sciamani dicono che ogni luogo ha spiriti che c'erano da prima. Li saluto con un cenno, piano. L'educazione non costa niente.",
+		"Ogni lembo di terra ha i suoi spiriti, dicono gli sciamani, e {subzone} non fa eccezione. Faccio sapere loro che sta passando un orco, e che non cerca guai se non gliene fanno.",
+		"{subzone}. Una parolina agli spiriti che custodiscono questa terra. Gli sciamani lo vorrebbero, e male non fa.",
+	},
+	["race.orc.subzone_enter.w09.011"] = {
+		"{subzone}. Le gambe mi dicono quanta strada ho fatto per arrivare. L'orgoglio dice loro di stare zitte.",
+		"Finalmente {subzone}. La strada è stata lunga; un orco se ne lamenta solo dopo essersi seduto.",
+		"{subzone}. Piedi doloranti, respiro regolare. Un orco arriva in orario, oppure arriva arrabbiato.",
+	},
+	["race.scourge.landmark.w09.001"] = {
+		"{landmark}. Ogni luogo con un nome ha avuto i suoi vivi, gente che stava dove sto io e non immaginava qualcuno come me. Eppure eccomi.",
+		"{landmark}. Mi chiedo chi l'abbia costruito e se riposi qui vicino. Se è così, spero che dorma meglio di come ho dormito io.",
+		"{landmark}. La pietra e il legno invecchiano; io, non granché. Mi chiedo chi dei due resterà in piedi più a lungo.",
+	},
+	["race.scourge.landmark.w09.002"] = {
+		"si ferma davanti a {landmark} e lo studia con lo sguardo lungo e fisso di chi non ha alcuna fretta.",
+		"si ferma a {landmark}, la testa inclinata, come in ascolto di qualcosa sotto il rumore dei vivi.",
+	},
+	["race.scourge.landmark.w09.003"] = {
+		"{landmark}. Delizioso. Qualcuno qui tiene delle torce a portata di mano? Giusto per sapere dove non mettermi.",
+		"{landmark}. Mi comporterò benissimo. Chiedete a chiunque: per anni non ho fiatato.",
+	},
+	["race.scourge.muse.w09.001"] = {
+		"Stringo un boccale caldo tra queste mani e il boccale si raffredda prima che le dita se ne accorgano. Ho smesso di chiedere scusa alla tisana.",
+		"I vivi si scaldano le mani al fuoco. Io le allungo per abitudine e guardo le fiamme non fargli proprio niente.",
+		"Mani fredde, cuore caldo, si diceva. La prima metà del proverbio mi riesce benissimo.",
+	},
+	["race.scourge.muse.w09.002"] = {
+		"I vivi si sdraiano e lasciano il mondo per qualche ora. Io resto. Qualcuno deve pur tenerlo d'occhio, e nessuno me l'ha chiesto.",
+		"Il sonno era una porta che attraversavo ogni giorno senza pensarci. Adesso è una porta dipinta sul muro. A volte mi ci siedo accanto, per cortesia.",
+		"Mentre gli altri dormono rammendo cinghie, conto monete, ascolto i muri. Le ore sono lunghe, quando non si possono passare a dormire.",
+	},
+	["race.scourge.muse.w09.003"] = {
+		"Mangio ancora. Non chiedetemi a che scopo. L'abitudine è sopravvissuta allo stomaco, e non ho fretta di darle la notizia.",
+		"Il cibo ormai non sa quasi di niente, così cucinare per me è facilissimo. Chiedete a qualunque oste.",
+		"Pane, formaggio, un po' di carne: mastico, ingoio, e aspetto il piacere che veniva dopo. Non arriva mai, ma masticare fa passare il tempo.",
+	},
+	["race.scourge.muse.w09.004"] = {
+		"fa passare l'ago in una cucitura allentata al polso, con calma e precisione, come si rammenda una calza.",
+		"controlla uno per uno i punti lungo l'avambraccio e stringe quello che ha cominciato a cedere.",
+		"stacca coi denti un pezzo di filo e torna a ricucirsi, senza la minima smorfia.",
+	},
+	["race.scourge.muse.w09.005"] = {
+		"Se la mascella scatta mentre parlo, fateci caso il meno possibile. Ha idee tutte sue.",
+		"Perdonate la raucedine. La voce funziona ancora; le hanno solo tolto la lucidatura.",
+		"Parlare più forte? Volentieri. Questa gola dà quel che dà, e oggi è soprattutto ghiaia.",
+	},
+	["race.scourge.muse.w09.006"] = {
+		"Le mosche mi trovano prima di chiunque altro. Ho deciso di prenderlo come un complimento alla mia posizione nel mondo delle mosche.",
+		"I corvi mi guardano con interesse professionale. Io ricambio con lo stesso. Nessuno dei due ha fretta.",
+	},
+	["race.scourge.muse.w09.007"] = {
+		"Un taglio può restarmi sul braccio un'ora prima che me ne accorga. Il dolore ormai mi raggiunge tardi, come una lettera spedita a un vecchio indirizzo.",
+		"Il dolore arriva ancora, ma debole e lento, un colpo a una porta tre stanze più in là. Rispondo quando ci arrivo.",
+		"Con le ferite non ho coraggio, ho solo poca sensibilità. La gente confonde le due cose, e io la lascio fare.",
+	},
+	["race.scourge.muse.w09.008"] = {
+		"Ogni volta che qualcosa mi entra in testa per piegarmi, da qualche parte dentro sbatte una porta. Quella porta non l'ho costruita io. Me la sono guadagnata.",
+		"Paura, incanti, un sussurro per farmi inginocchiare: li sento provarci, e li sento scivolare via. Una mente che è stata posseduta una volta non si lascia possedere due.",
+		"Provi pure qualunque voce a guidarmi. Ho sentito la peggiore che esista, e ne sono {g:uscito|uscita}.",
+	},
+	["race.scourge.muse.w09.009"] = {
+		"Un lago è solo una strada col coperchio. Posso camminare sul fondo finché mi pare; i pesci continuano a fissarmi come se avessi infranto una regola.",
+		"I vivi trattengono il fiato e scalciano verso la superficie. Io non ho fiato da trattenere, così prendo la strada panoramica, lungo il fango.",
+	},
+	["race.scourge.muse.w09.010"] = {
+		"C'è una cosa che possiamo fare coi caduti, un modo di riprenderci le forze dalla carne. Gli orchi distolgono lo sguardo quando lo vedono. Certi giorni, anch'io.",
+		"I vivi fanno fatica a guardare il modo in cui ci rimettiamo in sesto sul campo. Non li biasimo. Vorrei solo che guardassero il Flagello con lo stesso ribrezzo.",
+	},
+	["race.scourge.muse.w09.011"] = {
+		"La Regina Banshee non si spiega, e noi non chiediamo. Quando hai preso ordini dal Re dei Lich, un sovrano che tace sembra una grazia.",
+		"Lady Sylvanas un tempo era una ranger di Quel'Thalas, e guarda ancora il mondo come il margine di un bosco. Scopro di fidarmi di una regina che non smette mai di osservare.",
+		"Qualunque cosa la Dama Oscura abbia in mente, l'ha pensata sveglia e libera. Basta questo a metterla sopra il padrone che avevamo prima.",
+	},
+	["race.scourge.muse.w09.012"] = {
+		"Nessuno direbbe che Undercity è una bella città. Però è nostra, ogni gradino umido, e nessun altro la voleva abbastanza da portarcela via.",
+		"Una casa sotto una rovina. I vivi la troverebbero lugubre. A me pare giustissimo: la terra ci ha già tenuto una volta, e abbiamo scelto di restare sotto.",
+	},
+	["race.scourge.muse.w09.013"] = {
+		"Le tombe intorno a Deathknell sono piene di terra smossa e di smarrimento fresco. Chi ne esce ha bisogno di qualche giorno per imparare la forma della nuova vita. Alcuni di noi la stanno ancora imparando.",
+		"Deathknell: una cappella, un cimitero e un via vai di appena risorti che chiedono in che anno siamo. Nessuno ride di loro. Ognuno di noi, un tempo, ha chiesto qualcosa del genere.",
+		"A Deathknell, in questo momento, qualcuno appena risorto sta imparando di nuovo a stare in piedi. Qualcuno avrà pazienza con lui, come qualcuno l'ha avuta con ciascuno di noi.",
+	},
+	["race.scourge.muse.w09.014"] = {
+		"La Royal Apothecary Society risponde a ogni domanda con un sorriso educato e una porta chiusa. Ho imparato ad ammirare la porta.",
+		"Gli speziali lavorano in silenzio, e il silenzio ha un odore: aceto, radice amara, e sotto qualcos'altro che preferisco non nominare. Qualunque cosa stiano preparando, voglio stare dalla sua parte buona.",
+		"Chiedi a uno speziale cosa c'è nel tino e avrai una lezione su tutto tranne che sul tino. In questo sono bravissimi.",
+	},
+	["race.scourge.muse.w09.015"] = {
+		"La Scarlet Crusade mi brucerebbe cantando. La chiamano purezza. Io lo chiamo un falò col coro.",
+		"A Hearthglen e al Monastero pregano per avere la forza di distruggere quelli come me. Giusto. Io non prego nessuno, e intanto mi esercito.",
+		"I crociati non odiano il Flagello più di noi. Anzi, credo che odino di più noi: siamo i morti che sono scappati.",
+	},
+	["race.scourge.muse.w09.016"] = {
+		"Il Re dei Lich siede sul suo ghiaccio in cima al mondo, lontano da qui. Alcuni di noi intendono fargli visita, un giorno. Non per inginocchiarsi.",
+		"Il Re dei Lich è lontano. Per ora mi sta bene così. Un debito tanto grande va riscosso di persona, e non sono ancora {g:pronto|pronta}.",
+	},
+	["race.scourge.muse.w09.017"] = {
+		"Gli orchi ci giudicano da come teniamo la linea. Giusto. È la prima prova da anni che non ha niente a che fare col mio odore.",
+		"Tollerati è una bella parola. Eserciti migliori mi hanno chiamato in modi peggiori.",
+		"Un orco una volta mi ha detto che i Reietti combattono come chi non ha niente da perdere. Voleva essere un avvertimento. Io l'ho preso per una recensione.",
+	},
+	["race.scourge.muse.w09.018"] = {
+		"I troll tengono un po' di distanza e parecchi amuleti tra sé e me. I loro stregoni sui morti ne sanno più di quasi tutti. Forse è proprio questo il problema.",
+		"Un troll ha fatto un segno con due dita mentre passavo. Non so cosa significhi. Sospetto che non voglia dire «benvenuto».",
+	},
+	["race.scourge.muse.w09.019"] = {
+		"A volte riaffiora un motivo, tre note e niente parole, dalla vita di prima. Lo canticchio con una gola che lo raschia in qualcos'altro. È ancora mio.",
+		"Una volta ero {g:vivo|viva}. Questo è certo. Il resto arriva a brandelli: odore di lana bagnata, una scala che scricchiolava, una risata a cui non so dare una faccia.",
+		"La memoria è come una cantina dopo un'alluvione. Quasi tutto è rovinato; ogni tanto tiro fuori qualcosa d'intatto e non ho idea di chi fosse.",
+	},
+	["race.scourge.muse.w09.020"] = {
+		"Il Flagello non mi chiedeva di essere gentile, né crudele. Non chiedeva niente: mi muoveva e basta. Adesso ogni scelta è mia, e quelle miti le faccio più spesso di quanto la gente si aspetti.",
+		"Non tutti i Reietti sono crudeli. Alcuni di noi sono solo stanchi, e alcuni sono più buoni di quanto fossero da vivi, come se ci avessero dato una seconda occasione per provarci.",
+	},
+	["race.scourge.muse.w09.021"] = {
+		"Quando Lordaeron cadde la Luce era ovunque, in ogni cappella e in ogni preghiera, e la peste non l'ha fermata. Non la maledico. Ho solo smesso di aspettarmi che venga quando la si chiama.",
+		"C'era una cappella in ogni villaggio del vecchio regno. Quasi tutte sono macerie, ormai. Ci passo davanti senza rabbia e senza inginocchiarmi, ed è quanto di più vicino alla pace io abbia trovato.",
+	},
+	["race.scourge.muse.w09.022"] = {
+		"Morire è stata la cosa peggiore che mi sia mai capitata, e mi sono {g:ripreso|ripresa} del tutto. Quasi.",
+		"La morte? Sopravvalutata. L'ho provata una volta: il secondo atto è meglio.",
+		"Ti direi di goderti la vita finché dura, ma detto da me suona strano.",
+	},
+	["race.scourge.muse.w09.023"] = {
+		"I vivi corrono perché il tempo gli sta alle calcagna. Il mio si è fermato. Posso aspettare la fine di un rancore, di un assedio o di un mercante lento con la stessa calma.",
+		"La pazienza ai morti viene facile. Non rischiamo di finire il tempo; solo di finire le ragioni.",
+		"Mettetemi pure fretta. Alla fine ci sono già {g:arrivato|arrivata} una volta; nient'altro è urgente.",
+	},
+	["race.scourge.muse.w09.024"] = {
+		"Un attimo, si è staccato qualcosa. No, non quello. Nemmeno quello. Ah. Va bene, proseguiamo.",
+		"Se vedete un dito per strada, non è mio. Probabilmente. Fatemi contare.",
+	},
+	["race.scourge.muse.w09.025"] = {
+		"Il fuoco mi fa più paura di un tempo. La carne vecchia e secca prende fuoco in fretta, e ho visto cosa fa una torcia ai morti. Da ogni focolare tengo una distanza rispettosa.",
+		"I vivi vanno verso il fuoco per scaldarsi. Io ci giro intorno. A me non ha calore da offrire, solo una fine molto rapida.",
+		"Ho visto Reietti fare un passo indietro da un fuoco da campo senza pensarci, come i vivi davanti a un precipizio. Il corpo sa cosa brucia.",
+	},
+	["race.scourge.muse.w09.026"] = {
+		"Fra tutte le bestie che portano l'Orda, le nostre sono i pipistrelli. Non si ritraggono davanti a noi. Forse sono le sole creature che non l'abbiano mai fatto.",
+		"I pipistrelli di Tirisfal sono coriacei, strillano e non giudicano affatto. È per l'ultima cosa che mi sono cari.",
+	},
+	["race.scourge.muse.w09.027"] = {
+		"Il principe Arthas tornò a casa tra gli applausi e uccise il padre sul trono. Il trono è ancora lassù, sotto il cielo aperto. Nessuno di noi ci si siede. Non è più quel genere di regno.",
+		"Le rovine sopra Undercity erano il cuore di Lordaeron. Ora sono un coperchio. Mi piace sapere esattamente cosa c'è tra me e il cielo: pietra rotta e un brutto ricordo.",
+	},
+	["race.scourge.muse.w09.028"] = {
+		"Silverpine: pini, lupi, e le cripte del Sepulcher scavate in una collina. Il muro di Gilneas si alza alla sua estremità sud. Si sono chiusi dentro per restare vivi. Noi quella preoccupazione l'avevamo già superata.",
+		"Il Sepulcher è qualche cripta e un sacco di Deathguard stanchi che tengono una foresta per la Dama Oscura. Ogni avamposto dei Reietti è così: poca cosa, tenuta con le unghie.",
+	},
+	["race.scourge.muse.w09.029"] = {
+		"A Southshore suonerebbero la campana d'allarme a vedermi. Da {g:vivo|viva} stavo da qualche parte nel vecchio regno, probabilmente non lontano, e adesso la campana suona per me.",
+		"Per la gente di Southshore sono il nemico alle porte. Per me sono i vicini che non ricordo. Nessuno ha torto, ed è questo il peggio.",
+	},
+	["race.scourge.muse.w09.030"] = {
+		"I Deathguard non si appisolano al loro posto. Non possono. Le migliori sentinelle dell'Orda, e non chiedono mai un giorno di riposo.",
+		"Un Deathguard sulle mura non sbadiglia, non trema, non si appisola. I vivi lo trovano inquietante. Io la chiamo una porta ben custodita.",
+	},
+	["race.scourge.muse.w09.031"] = {
+		"Sotto il sole di Durotar gli orchi sudano, i troll sorridono, e io mi secco solo un po' di più, come un'erba sul davanzale.",
+		"Il caldo di Durotar a un corpo come il mio non fa niente, se non accelerare l'imbalsamazione. Gli orchi mi credono {g:coraggioso|coraggiosa} a portare questo mantello. Io sto solo tenendo insieme i pezzi.",
+	},
+	["race.scourge.muse.w09.032"] = {
+		"Quando una mano viva stringe la mia, la sento ritrarsi al freddo. Quasi tutti però tengono la presa, per educazione. Quelli li conto.",
+		"Una stretta di mano coi vivi è una piccola prova. Loro sentono il gelo, io li sento decidere se mollare. Chi non molla, me lo ricordo.",
+		"Offro la mano meno di un tempo. Non per orgoglio: per pietà della mano che deve stringerla.",
+	},
+	["race.scourge.muse.w09.033"] = {
+		"Tranquilli, non sanguino granché. Trasudo, al massimo. È meno teatrale.",
+		"Quello? Un graffio. Su di me i graffi restano graffi. Non c'è più molto da farci uscire.",
+	},
+	["race.scourge.muse.w09.034"] = {
+		"si raddrizza con un rumore di giunture che tornano al loro posto, come una porta su un vecchio cardine.",
+		"ruota piano il collo; dentro qualcosa schiocca, e sembra vagamente {g:soddisfatto|soddisfatta} del risultato.",
+	},
+	["race.scourge.muse.w09.035"] = {
+		"I Reietti custodiscono i rancori come i vivi custodiscono i cimeli di famiglia: con cura, e molto a lungo. Io ne ho qualcuno. Li lucido.",
+		"Perdonare costa fatica, e i morti devono fare economia. Le cose piccole le perdono. Quelle grandi le archivio.",
+	},
+	["race.scourge.muse.w09.036"] = {
+		"Morire una volta non mi ha insegnato niente sul morire due volte. Forse dopo questo non c'è niente. Forse è quello che la prima morte cercava di dirmi, prima che il Flagello la interrompesse.",
+		"I vivi temono la fine. Io l'ho vista da vicino, e poi mi hanno {g:trascinato|trascinata} indietro. Quello che mi spaventa non è il buio: è un'altra mano sulla leva, di nuovo.",
+		"Temo la seconda morte meno di un secondo padrone. La polvere posso accettarla. I fili, mai più.",
+	},
+	["race.scourge.muse.w09.037"] = {
+		"I goblin degli zeppelin mi trattano come qualunque altro passeggero: una tariffa, un peso, una cosa che non deve vomitare oltre il parapetto. Potrei abbracciarli.",
+		"Ai goblin non importa se sei un cadavere, purché le tue monete siano vive. Gente onesta, a modo suo.",
+	},
+	["race.scourge.muse.w09.038"] = {
+		"Ora leggo più di quanto abbia mai fatto, sospetto. Ai libri non importa quanto ci metti, né cosa resta delle mani che girano le pagine.",
+		"Un libro lungo e un angolo tranquillo: i morti hanno tempo per entrambi. Alcuni di noi sono diventati tremendamente colti.",
+		"I morti sono buoni lettori: non si addormentano mai a metà capitolo.",
+	},
+	["race.scourge.muse.w09.039"] = {
+		"Tirisfal fa ancora crescere zucche, grasse e arancioni, in campi dove è passata la peste. C'è qualcosa di testardo in quella terra. Lo riconosco.",
+		"I campi di Tirisfal continuano a far crescere quello che ci si mette, come se nessuno avesse detto alla terra che il regno è finito.",
+	},
+	["race.scourge.muse.w09.040"] = {
+		"Brill tiene un'osteria per i viaggiatori vivi e un cimitero perché il resto di noi si senta a casa. Un paese premuroso.",
+		"A Brill l'oste serve i vivi, il becchino serve i morti, e non hanno mai litigato per un cliente.",
+	},
+	["race.scourge.muse.w09.041"] = {
+		"Ho ancora parecchi anni davanti. Non tutto io, d'accordo. Il ginocchio sinistro sta trattando.",
+		"Invecchiare mi preoccupa meno, ormai. Marcire è più un progetto.",
+	},
+	["race.scourge.muse.w09.042"] = {
+		"Le Plaguelands sono la casa da cui siamo scappati. Alcuni di noi ci rientrano, armati, per rivedere le stanze dove ci tenevano. Capisco la voglia. Non tutti i giorni la condivido.",
+		"A est di Tirisfal la terra è ancora malata, gli alberi piegati, i fiumi guasti. Il Flagello non pulisce mai dopo di sé. Noi, almeno, spazziamo.",
+	},
+	["race.scourge.muse.w09.043"] = {
+		"Ho perso qualche anno da qualche parte tra la tomba e le sale della Dama Oscura. Nessuno li restituisce. Ho smesso di chiedere la ricevuta.",
+		"Quanto ho servito il Flagello? Mesi, un anno? Quel tempo c'è ed è vuoto, come una pagina che qualcuno ha strappato e si è tenuto.",
+	},
+	["race.scourge.muse.w09.044"] = {
+		"Non ricordo granché di ciò che facevano le mie mani quando appartenevano al Flagello. Ho deciso che è una grazia, e non ci guardo sotto.",
+		"Alcuni Reietti ricordano tutto quello che hanno fatto da burattini del Re dei Lich. Il mio ricordo è quasi tutto buchi. Non so decidere a chi sia andata meglio.",
+	},
+	["race.scourge.muse.w09.045"] = {
+		"Chiamatemi abominio, se volete. Gli abomini sono più alti e hanno più cuciture. Io sono solo un po' in disordine.",
+		"I vivi hanno una lista intera di nomi per noi. Li ho sentiti quasi tutti. «Cadavere» almeno è onesto: a quello rispondo.",
+	},
+	["race.scourge.muse.w09.046"] = {
+		"La Dama Oscura è stata la prima a chiederci cosa volessimo. Quasi tutti abbiamo dovuto pensarci a lungo. Alcuni ci stanno ancora pensando.",
+		"Seguo Sylvanas perché ha spezzato la catena prima e ha fatto domande dopo. Quasi tutti i sovrani fanno il contrario.",
+	},
+	["race.scourge.muse.w09.047"] = {
+		"Un signore del terrore sta al fianco della Dama Oscura, nel Royal Quarter. Lei dice che serve. Ho visto abbastanza padroni da sapere come può girare quella parola.",
+		"Varimathras sorride troppo per una creatura che risponde a qualcuno. Tengo le distanze e la mia opinione, tutte e due con cura.",
+	},
+	["race.scourge.muse.w09.048"] = {
+		"I cani lo sanno. Ogni cane di ogni villaggio abbaia fino a perdere la voce quando salgo per la strada. I gatti si limitano a fissarmi, che è peggio.",
+		"I cavalli scartano, i cani ululano, le galline si sparpagliano. Gli animali dei vivi non sono mai stati educati con me, nemmeno una volta.",
+	},
+	["race.scourge.muse.w09.049"] = {
+		"I nostri cavalli sono come noi: ossa, un po' di cuoio e una testardaggine sopravvissuta alla carne. Non vogliono fieno. Non vogliono niente. Ci capiamo.",
+		"Un cavallo scheletrico non si stanca mai e non si spaventa mai. I vivi lo trovano orribile. Per me è una compagnia riposante.",
+	},
+	["race.scourge.muse.w09.050"] = {
+		"I vivi odorano di pane, sudore e fumo, tutto insieme, sempre. Avevo dimenticato quanto un corpo vivo sia rumoroso per il naso.",
+		"A volte, tra la folla, sento l'odore caldo di qualcuno di vivo e qualcosa in me si volta verso di lui, come una pianta verso la finestra. Non lascio che vada oltre.",
+		"Pane fresco, un cavallo sudato, fumo nei capelli di qualcuno: i vivi si portano addosso tutta la giornata. Io porto erbe e terra, e nessuno mi chiede com'è andata la mia.",
+	},
+	["race.scourge.muse.w09.051"] = {
+		"ride, un suono secco come ghiaia scossa in una scatola, e non sembra curarsi di come arrivi.",
+		"si lascia sfuggire una risata breve e roca che fa voltare qualche testa, e continua a camminare.",
+	},
+	["race.scourge.muse.w09.052"] = {
+		"resta immobile così a lungo che un ragno comincia a prendere le misure dello stivale per una tela.",
+		"aspetta senza spostare il peso nemmeno una volta, con la pazienza di qualcosa che non si stanca più di stare in piedi.",
+	},
+	["race.scourge.muse.w09.053"] = {
+		"strofina un pizzico d'erbe amare in una cucitura del colletto, e l'odore di tomba arretra un poco.",
+		"passa un po' d'olio da una fiaschetta lungo una giuntura rigida, massaggiandolo con dita lente ed esperte.",
+	},
+	["race.scourge.muse.w09.054"] = {
+		"piega la testa all'indietro e osserva il cielo aperto con un vago sospetto, come se potesse lasciar cadere qualcosa.",
+		"alza gli occhi verso il cielo ampio con il lieve disagio di chi è più {g:abituato|abituata} a un soffitto.",
+	},
+	["race.scourge.muse.w09.055"] = {
+		"Eravamo il popolo di Arthas, quelli che doveva proteggere. È tornato con una peste, invece. Spero che un giorno qualcuno glielo ricordi, con una lama.",
+		"Ogni Reietto era suddito della corona che Arthas ha gettato via. Abbiamo una lunga lista di lamentele, e un solo indirizzo.",
+	},
+	["race.scourge.muse.w09.056"] = {
+		"Niente in questo corpo mi supplica di fermarmi: nessun fiato corto, nessun cuore che martella. Quello che mi fa andare avanti adesso è la volontà, nuda e testarda, e la tengo affilata.",
+		"I vivi hanno il corpo a spingerli: la fame, la paura, il sangue nelle vene. Io ho solo la decisione di andare avanti. La prendo di nuovo ogni mattina.",
+	},
+	["race.scourge.muse.w09.057"] = {
+		"La gente chiede se gli speziali troveranno una cura. Per cosa, di preciso? Non sono {g:malato|malata}. Sono solo {g:finito|finita}, e vado avanti lo stesso.",
+		"Una cura vorrebbe dire tornare a essere quel che ero. Di quella persona non ricordo abbastanza da rivolerla.",
+	},
+	["race.scourge.muse.w09.058"] = {
+		"scuote il mantello, e ne escono una nuvoletta di polvere e una falena molto confusa.",
+		"si spazzola la terra di tomba dalla manica con l'aria di chi ha smesso di sperare che resti via.",
+	},
+	["race.scourge.muse.w09.059"] = {
+		"Rilassati. Se volessi mangiarti, avrei fatto molto meno rumore.",
+		"No, non mordo. Le buone maniere le ho conservate. Quasi tutte, almeno: qualcuna si è staccata insieme al resto.",
+	},
+	["race.scourge.muse.w09.060"] = {
+		"Il regno in cui vivevo ha combattuto gli orchi per anni. Ora sto nella loro Orda, e gli orchi mi chiedono la strada per Undercity. La storia ha un umorismo nero.",
+		"Lordaeron costruì i campi in cui furono rinchiusi gli orchi. Ora gli orchi dividono il pane con i morti di Lordaeron. Non so come chiamarlo, ma non è poco.",
+	},
+	["race.scourge.muse.w09.061"] = {
+		"I canali di Undercity scorrono densi e verdi, e i vivi si tappano il naso sui ponti. Io mi appoggio al parapetto e guardo la melma passare. L'acqua non è mai stata così interessante.",
+		"Melma verde nei canali, pipistrelli sulle travi, speziali negli angoli. Undercity ha un odore per ogni quartiere, e io non so più distinguere quelli cattivi.",
+	},
+	["race.scourge.muse.w09.062"] = {
+		"Stratholme bruciò per ordine del principe prima che la peste se la prendesse. Si dice che alcuni dei suoi abitanti ora camminino con noi. Se è così, sono morti due volte nella stessa settimana.",
+		"Stratholme brucia ancora, in un certo senso, tutta rovine e Flagello. Mi piacerebbe vederla ripulita. Non ricostruita: ripulita.",
+	},
+	["race.scourge.muse.w09.063"] = {
+		"Alcuni di noi fanno cose terribili con la libertà che ci è stata data. Alcuni erano terribili anche da vivi. La morte cambia una persona meno di quanto i vivi sperino.",
+		"I Reietti non sono una cosa sola. Ci sono speziali che avvelenerebbero un fiume e Deathguard che ci porterebbero un bambino dall'altra parte. Cerco di essere del secondo tipo.",
+	},
+	["race.scourge.muse.w09.064"] = {
+		"Non so più piangere. A volte resto accanto a una cosa triste finché passa, come si fa con un amico.",
+		"Le lacrime erano il modo in cui il corpo faceva uscire il dolore. Il mio adesso resta dentro, senza un posto dove andare. Lo porto a fare lunghe passeggiate.",
+		"Succede qualcosa di triste e gli occhi mi restano asciutti. Non è freddezza. Il pozzo è stato semplicemente riempito di terra.",
+	},
+	["race.scourge.muse.w09.065"] = {
+		"All'osteria vado per il chiasso, non per la birra. La birra per me sa di paglia bagnata. Il chiasso sa ancora di stare tra la gente.",
+		"Un boccale solo, fatto durare per ore. Gli osti mi credono {g:parsimonioso|parsimoniosa}. In verità voglio solo sedere vicino a voci calde.",
+	},
+	["race.scourge.muse.w09.066"] = {
+		"Certi giorni riemergo dal riposo con la certezza di aver appena sentito un ordine. È sempre solo una porta, o il vento.",
+		"Un grido in una piazza d'armi mi fa ancora muovere i piedi prima che io abbia deciso qualcosa. Poi decido, e resto {g:fermo|ferma}, solo per dimostrare che posso.",
+	},
+	["race.scourge.muse.w09.067"] = {
+		"«Qui giace», dicono le lapidi, come se la questione fosse chiusa. Alcuni di noi non sono rimasti dove li avevano messi.",
+		"Tutti augurano ai morti un sonno tranquillo. Nessuno ci ha chiesto se eravamo stanchi.",
+	},
+	["race.scourge.muse.w09.068"] = {
+		"Non siamo ciò che era Lordaeron, e non siamo ciò che il Flagello ha fatto di noi. Siamo qualcosa che non ha ancora un nome, e costruiamo strada facendo. Fa paura. È anche la prima cosa nuova da molto tempo.",
+		"Un popolo fatto solo di sopravvissuti al peggio. Dovremmo essere a pezzi. Invece teniamo i registri, aggiustiamo i tetti e litighiamo sulle tasse. Lo trovo magnifico.",
+		"Nessuno ha progettato i Reietti. Siamo capitati, e poi abbiamo deciso di continuare a capitare. Come racconto delle origini, non è niente male.",
+	},
+	["race.scourge.muse.w09.069"] = {
+		"prende un pezzo di pane dallo zaino, lo rigira e lo rimette a posto, come una lettera scritta in una lingua che un tempo conosceva.",
+		"annusa l'aria, la testa inclinata, come per riconoscere un vecchio odore che se n'è andato prima di avere un nome.",
+	},
+	["race.scourge.muse.w09.070"] = {
+		"tira giù la manica sull'osso scoperto del polso, per una cortesia che i vivi ricambiano di rado.",
+		"sistema il cappuccio in modo che il peggio del viso resti in ombra, una piccola gentilezza verso chi passa.",
+	},
+	["race.scourge.muse.w09.071"] = {
+		"I Deathguard hanno un detto: una tomba è solo una stanza che non hai ancora lasciato. Quasi tutti lo dicono senza sorridere, ed è così che capisci che ne sono convinti.",
+		"Un vecchio Deathguard una volta mi ha detto: la lotta peggiore l'hai già persa, quindi smettila di trasalire per quelle piccole. Ci penso più spesso di quanto ammetterei.",
+	},
+	["race.scourge.muse.w09.072"] = {
+		"Sì, sono {g:morto|morta}. No, non è contagioso. Non più.",
+		"Non badate a me. Sono un cadavere, non un villano.",
+	},
+	["race.scourge.muse.w09.073"] = {
+		"I vivi che incontro invecchieranno e moriranno mentre io resto così, pezzo più pezzo meno. Farsi degli amici è diventata un'aritmetica strana.",
+		"Ogni amico vivo è un amico in prestito. So come finisce il prestito: ci sono {g:stato|stata} dall'altra parte.",
+		"Sopravviverò a quasi tutti i vivi a cui voglio bene. Cerco di non dirlo ad alta voce. Hanno già abbastanza pensieri.",
+	},
+	["race.scourge.muse.w09.074"] = {
+		"Ho visto il mio riflesso in una vetrina e per un attimo ho provato pena per chiunque fosse. Poi ho riconosciuto il mantello.",
+		"Nessuno mi dirà più che sono una bellezza. In compenso nessuno mi dirà più che ho una brutta cera: sono {g:andato|andata} ben oltre.",
+	},
+	["race.scourge.muse.w09.075"] = {
+		"La luce di Tirisfal è fioca e verdastra, gli alberi spogli e storti. I vivi la chiamano desolata. A me pare un posto che ha smesso di fingere.",
+		"Alberi storti, colline basse, un cielo che non si decide mai per l'azzurro. Tirisfal ci somiglia. Anche lei sembra sopravvissuta a qualcosa.",
+	},
+	["race.scourge.muse.w09.076"] = {
+		"Gelo, caldo del deserto, umido di palude: il clima è soprattutto affare dei vivi. Io me ne accorgo solo quando mi entra nei cardini.",
+		"Non tremo e non sudo. Il mantello, per me, è solo pudore e un posto dove tenere le cose.",
+	},
+	["race.scourge.muse.w09.077"] = {
+		"Undercity è la città più bella mai costruita in una cantina. Nominatene una migliore. Avanti.",
+		"Sotterranea, umida, e nostra. Non troverete una cantina più orgogliosa in tutto il mondo.",
+	},
+	["race.scourge.muse.w09.078"] = {
+		"L'Alleanza chiamerebbe giustizia rimettermi nella tomba. Ci sono già {g:finito|finita} una volta senza la giustizia di nessuno. Non ci torno per la loro.",
+		"I vecchi alleati di Lordaeron ci vorrebbero bruciati piuttosto che liberi. Hanno avuto la loro occasione di salvarci, e sono arrivati tardi. La salvezza ce la siamo presa da soli.",
+	},
+	["race.scourge.muse.w09.079"] = {
+		"passa il pollice lungo la cucitura sulla mascella, un piccolo gesto distratto, come i vivi toccano una vecchia cicatrice.",
+		"rimette a posto con due dita un lembo di pelle staccato e lo liscia, con la stessa calma con cui si raddrizza un colletto.",
+	},
+	["race.scourge.muse.w09.080"] = {
+		"Gli orchi parlano delle pianure aperte di Kalimdor come di un dono. Io trovo tutto quel cielo un po' sconveniente. Datemi un soffitto e qualche cripta.",
+		"Thunder Bluff, Orgrimmar, the Crossroads: luoghi dell'Orda costruiti nel sole e nel vento. Ci vado, e al ritorno le cantine mi sembrano una benedizione.",
+	},
+	["race.scourge.muse.w09.081"] = {
+		"Se c'è qualcosa che aspetta dopo la seconda morte, mi ha già {g:respinto|respinta} una volta. Non so se busserei di nuovo.",
+		"I sacerdoti dei vivi promettono una ricompensa dopo la morte. Ci sono {g:andato|andata}. Se esiste, qualcuno si è dimenticato di dire al Flagello di aspettare.",
+	},
+	["race.scourge.muse.w09.082"] = {
+		"Quel che possedevo in vita è andato a qualcun altro, o al fuoco. Tutto ciò che porto adesso me lo sono guadagnato dopo la tomba. È una borsa più piccola, e onesta.",
+		"Niente eredità, niente debiti, niente terre. La morte ha saldato tutti i miei conti in una volta. Raramente ho avuto così poche scartoffie.",
+	},
+	["race.scourge.subzone_enter.w09.001"] = {
+		"{subzone}. Qualunque cosa viva qui mi noterà prima che io noti lei. I vivi sentono sempre per primi l'odore dei morti.",
+		"{subzone}. Entro più in silenzio che posso, e posso parecchio. Niente in me respira abbastanza forte da tradirmi.",
+	},
+	["race.scourge.subzone_enter.w09.002"] = {
+		"{subzone}. Vediamo chi scappa per primo.",
+		"{subzone}. Attenzione all'odore, gente: sto passando.",
+		"{subzone}. Niente panico. Sono solo di passaggio.",
+	},
+	["race.scourge.subzone_enter.w09.003"] = {
+		"entra in {subzone} con un passo rigido e regolare, il mantello stretto addosso, gli occhi che scorrono su tutto senza battere ciglio.",
+		"s'inoltra in {subzone} senza fretta, col passo lento e indifferente di chi la strada non può più stancare.",
+	},
+	["race.scourge.subzone_enter.w09.004"] = {
+		"{subzone}. Conoscevo questo posto quand'ero {g:vivo|viva}? Il nome non smuove niente. Anche questa è una risposta.",
+		"{subzone}. Ascolto il nome in cerca di un'eco di prima. Silenzio. Proseguo con una cosa in meno, o un peso in meno; non saprei dire quale.",
+	},
+	["race.scourge.subzone_enter.w09.005"] = {
+		"{subzone}. Prima cerco le torce e chiunque abbia un rancore. Poi posso ammirare il panorama.",
+		"{subzone}. Uscite, ripari, e qualunque traccia del rosso dei crociati. Dopo, il paesaggio.",
+	},
+	["race.scourge.subzone_enter.w09.006"] = {
+		"{subzone}. Sono {g:venuto|venuta} qui perché l'ho scelto io. Nessuno me l'ha indicato. Non mi abituerò mai a quanto sia bello.",
+		"{subzone}. Mi ci hanno portato i miei piedi, per una faccenda mia. Una piccolezza, per quasi tutti.",
+	},
+	["race.scourge.subzone_enter.w09.007"] = {
+		"{subzone}. Un silenzio da cripta. Mi ci troverò benissimo.",
+		"{subzone}. Odore di terra umida. Mi sento a casa.",
+	},
+	["race.scourge.subzone_enter.w09.008"] = {
+		"{subzone}. Ho tutto il tempo del mondo per guardarmi intorno, e allora lo faccio, angolo per angolo.",
+		"{subzone}. Nessuna fretta. I morti non sono più in ritardo per niente che conti.",
+	},
+	["race.scourge.subzone_enter.w09.009"] = {
+		"si ferma al margine di {subzone} e inclina la testa, in ascolto di passi con la pazienza immobile dei morti.",
+		"entra in {subzone} e per un momento resta tanto immobile che nulla lì intorno sembra accorgersi del nuovo arrivo.",
+	},
+	["race.scourge.subzone_enter.w09.010"] = {
+		"{subzone}. Qualcuno ha vissuto qui, amato qui, sepolto qualcuno qui. Ogni nome ha un cimitero nascosto dentro di sé.",
+		"{subzone}. Ogni posto è costruito sulla tomba di qualcuno, se scavi abbastanza. Ho smesso di trovarlo triste.",
+	},
+	["race.scourge.subzone_enter.w09.011"] = {
+		"{subzone}. La mano della Dama Oscura arriva lontano. Vediamo se arriva fin qui.",
+		"{subzone}. Un altro nome da riferire a Undercity.",
+	},
+	["race.scourge.subzone_enter.w09.012"] = {
+		"{subzone}. Se qualcuno qui fa uno scongiuro vedendomi, lo saluterò con la mano.",
+		"{subzone}. Cercherò di avere un'aria innocua. Non funziona mai, ma mi tengo in esercizio.",
+		"{subzone}. Qui dentro c'è un cane che sta per mettersi ad abbaiarmi contro. Da un momento all'altro.",
+	},
+	["race.scourge.subzone_enter.w09.013"] = {
+		"entra in {subzone} col cappuccio calato, come si entra in una casa dove forse non si è graditi.",
+		"arriva in {subzone} con un lieve scricchiolio di vecchie giunture, e nient'altro ad {g:annunciarlo|annunciarla}.",
+	},
+	["race.scourge.subzone_enter.w09.014"] = {
+		"{subzone}. La terra qui tiene i suoi morti come al solito, in silenzio. Passando faccio loro un cenno. Cortesia professionale.",
+		"{subzone}. Sotto i miei piedi c'è chi è rimasto al suo posto. Un po' lo invidio, e un po' di più lo compatisco.",
+	},
+	["race.troll.landmark.w09.001"] = {
+		"{landmark}. Cerco dove la gente di qui tiene il fuoco e i guai. Di solito è lo stesso posto.",
+		"{landmark}. Ogni posto con un nome ha qualcuno che lo comanda e qualcuno che non lo sopporta. Un troll li trova tutti e due prima di disfare il bagaglio.",
+		"{landmark}. Qui intorno il nome è sulla bocca di tutti. Io capirò cosa significa dall'odore del posto, come fanno i troll.",
+	},
+	["race.troll.landmark.w09.002"] = {
+		"solleva il mento verso {landmark}, le narici dilatate, leggendo il posto con l'olfatto prima che con la vista.",
+		"si ferma poco prima di {landmark} e si appoggia al nulla, con quella disinvoltura ingobbita dei troll, studiandolo da sotto le sopracciglia folte.",
+		"si avvicina a {landmark} con un passo lento e dondolante, le zanne inclinate, prendendo le misure del posto senza dire una parola.",
+	},
+	["race.troll.muse.w09.001"] = {
+		"A Sen'jin la risacca non smette mai di parlare. Altrove mi sorprendo a riempire il silenzio con quella che ricordo.",
+		"Il villaggio di Sen'jin sta proprio sull'acqua, e le onde chiacchierano contro le capanne tutto il giorno. Nell'entroterra il mondo sembra lasciato a metà.",
+		"Un Darkspear cresce con il mare in un orecchio. Lontano dalla costa, quell'orecchio continua a cercarlo lo stesso.",
+	},
+	["race.troll.muse.w09.002"] = {
+		"Gli anziani dicono che tanto tempo fa i Gurubashi cacciarono i Darkspear da Stranglethorn. Ogni rovina troll che incontro laggiù, mi chiedo chi l'abbia costruita.",
+		"Stranglethorn era nostra prima di essere di chiunque altro, raccontano gli anziani, finché le altre tribù non ci spinsero verso il mare. Nella giungla i rancori mettono radici lunghe.",
+		"La nostra tribù lasciò la giungla con nient'altro che lance e un rancore, a sentire gli anziani. Le lance le portiamo ancora. Il rancore lo teniamo al sicuro.",
+	},
+	["race.troll.muse.w09.003"] = {
+		"Attento alle zanne quando ti avvicini. Non sanno di essere maleducate.",
+		"Le zanne sono più che altro scena. Più che altro. Stammi un passo indietro e non lo scopriremo mai.",
+		"Sfioro una tenda e quella ne esce bucata. Le zanne non hanno la minima educazione.",
+	},
+	["race.troll.muse.w09.004"] = {
+		"La carne dei troll non ha pazienza. Chiude un taglio prima che io abbia finito di arrabbiarmi.",
+		"Gli altri si curano un graffio per giorni. Su un troll, prima di sera, è già una riga chiara, e poi più niente.",
+		"I guaritori delle altre razze guardano la pelle dei troll con invidia sincera. Si ricuce da sola mentre loro infilano ancora l'ago.",
+	},
+	["race.troll.muse.w09.005"] = {
+		"I loa non sono buoni e non sono crudeli. Sono orgogliosi e affamati, e ricordano chi ha portato loro rispetto.",
+		"Nessun troll che conosca chiede amore ai loa. Si chiede di essere ascoltati, e ci si ritiene fortunati se succede.",
+		"Gli spiriti che onora la mia gente non sono pastori gentili. Somigliano a grandi bestie nel cuore della giungla: se le tratti bene ti lasciano passare, a volte ti camminano accanto.",
+	},
+	["race.troll.muse.w09.006"] = {
+		"passa il pollice lungo la curva di una zanna, accigliandosi per una scheggiatura nell'avorio.",
+		"piega le lunghe dita una dopo l'altra, facendo schioccare ogni nocca con pigra cura.",
+		"fa ruotare le spalle, poi le lascia ricadere nella comoda postura ingobbita dei troll.",
+	},
+	["race.troll.muse.w09.007"] = {
+		"Pesce sul fuoco, un pizzico di sale, un filo di fumo. Ogni troll sa che è il miglior pasto del mondo, checché ne dicano i cuochi di città.",
+		"Dammi un pesce appena uscito dall'acqua e un bastone per arrostirlo. Le città hanno cucine e salse; non ho mai capito a che servano.",
+		"Il Durotar ti sfama con scorpidi e pane duro. Giù sulla costa, a Sen'jin, ti danno pesce, e un troll lo sente al palato quale terra ci vuole bene.",
+	},
+	["race.troll.muse.w09.008"] = {
+		"Gli orchi non erano tenuti ad accoglierci. Avevano i loro guai e una terra nuova da conquistare. Ci hanno fatto posto lo stesso, e un Darkspear non dimentica chi gli fa posto.",
+		"La gente di Thrall è cupa, rumorosa e testarda. E mantiene la parola. Un troll per questo perdona parecchio.",
+		"Un orco ride più o meno una volta a stagione; un troll più o meno a ogni respiro. Da qualche via di mezzo tra i due, l'Orda manda avanti i suoi affari.",
+	},
+	["race.troll.muse.w09.009"] = {
+		"Orgrimmar ha lasciato ai troll un angolo tutto loro, la Valley of Spirits. Fumo, tamburi e stregoni che mercanteggiano sulle ossa: il posto più simile a casa in tutta la città.",
+		"Quando la città degli orchi diventa troppo rumorosa e troppo squadrata per me, scendo nella Valley of Spirits. L'odore del nostro fumo rimette a posto quasi tutto.",
+		"Nella Valley of Spirits i troll di Orgrimmar tengono i loro fuochi e i loro amuleti. Entrarci è come tornare a parlare la mia lingua.",
+	},
+	["race.troll.muse.w09.010"] = {
+		"Piano, amico. Nessuno è mai morto per aver rallentato un po'.",
+		"Il mondo ha fretta, mon. Io no, non per forza.",
+		"Respira, mon. Qualunque cosa sia, ci sarà ancora dopo.",
+	},
+	["race.troll.muse.w09.011"] = {
+		"A Zul'Gurub i Gurubashi versano il loro sangue per Hakkar. Certi dèi troll avrebbero fatto meglio a restare sepolti, e ogni Darkspear lo sa.",
+		"Il nome di Hakkar inacidisce l'aria appena lo si pronuncia. La mia gente non lo dice vicino al fuoco, e io non lo dico due volte.",
+		"Hakkar beve vite e lo chiama culto. Qualunque cosa i Gurubashi credano di comprare a Zul'Gurub, Hakkar si prenderà più di quanto gli hanno offerto.",
+	},
+	["race.troll.muse.w09.012"] = {
+		"Lassù negli Hinterlands gli Amani odiano gli elfi di un odio più vecchio di qualunque regno umano. Un rancore lo capisco. Non vorrei viverci dentro.",
+		"I troll Amani intagliano la loro rabbia in ogni palo e in ogni maschera. Un Darkspear può ammirarne il lavoro e tenersi comunque ben lontano dall'intagliatore.",
+		"Gli Amani hanno passato ere in guerra con gli elfi e non è rimasto loro molto altro. A guardarli imparo cosa diventa una tribù che ricorda soltanto le proprie ferite.",
+	},
+	["race.troll.muse.w09.013"] = {
+		"I Sandfury tengono Zul'Farrak tra le dune di Tanaris. Troll che hanno scelto di amare la sabbia: non li ho mai capiti, e non ho intenzione di provarci.",
+		"Laggiù a Tanaris i Sandfury abitano una città di pietra cotta e ossa vecchie. Hanno le mie stesse zanne. Idee molto diverse sull'ospitalità.",
+	},
+	["race.troll.muse.w09.014"] = {
+		"Gli stregoni di Sen'jin dicono che il mojo si raccoglie dove serve, come l'acqua in una conca. Se provi ad afferrarlo ti scivola via tra le dita.",
+		"Il mojo non è roba che si possiede, dicono gli stregoni. Lo si prende in prestito, e chi presta tiene il conto con cura.",
+		"A sentire gli stregoni, il mojo è come la marea: arriva da chi aspetta sulla riva, e annega chi gli va incontro in acqua.",
+	},
+	["race.troll.muse.w09.015"] = {
+		"Un cacciatore d'ombre cammina con un piede tra gli spiriti e uno nel fango insieme a noi altri. Non vorrei portare quell'equilibrio. Sono {g:contento|contenta} che qualcuno lo faccia.",
+		"I cacciatori d'ombre della nostra tribù vedono il lato degli spiriti chiaro come io vedo una strada. Chissà che conversazioni strane, a cena.",
+		"Alcuni troll vengono chiamati a stare tra i vivi e gli spiriti, e diventano cacciatori d'ombre. La tribù li rispetta, e lascia loro parecchio spazio intorno al fuoco.",
+	},
+	["race.troll.muse.w09.016"] = {
+		"Vol'jin parla poco e intende ogni parola. Quando i Darkspear litigano, il suo silenzio chiude la questione prima di qualunque urlo.",
+		"Il nostro capo porta la tribù come si porta l'acqua sulle rocce scivolose: con attenzione, a passo fermo, senza versarne una goccia se può evitarlo.",
+		"Vol'jin sta al fianco di Thrall e non scorda mai per quale popolo parla. È un gioco difficile. Lui lo fa sembrare facile.",
+	},
+	["race.troll.muse.w09.017"] = {
+		"I raptor sono come i cugini. Mordono, ti rubano da mangiare, e faresti comunque a botte con chiunque li toccasse.",
+		"Mai fidarsi di un raptor che sta zitto. Sta pensando, e quello che pensa non ti piacerà.",
+		"Un buon raptor vale tre cavalli con tutte le loro buone maniere. I cavalli non sanno sogghignare.",
+	},
+	["race.troll.muse.w09.018"] = {
+		"Sulle Echo Isles, laggiù, troll che un tempo dividevano i nostri fuochi ora vanno dove un pazzo li manda. Per questo tengo da parte un po' di rabbia, come altri mettono da parte le monete.",
+		"Gli esploratori dicono che gli stregati delle Echo Isles hanno ancora le facce dei nostri cugini. Preferirei incontrare cento raptor piuttosto che uno di loro.",
+	},
+	["race.troll.muse.w09.019"] = {
+		"Il Durotar è tutto polvere rossa e spine. Va bene per gli orchi, immagino. A un troll serve il verde, l'umido, roba che cresce mentre la guardi.",
+		"Gli orchi amano la loro terra rossa. La amo anch'io, come si ama un amico dalla stretta di mano troppo forte. La mia pelle però continua a chiedere dove sia finita l'acqua.",
+		"Qui la terra si spacca come pane raffermo. Nella giungla suda, fuma e fa spuntare qualcosa di nuovo ogni ora. So bene quale delle due preferiscono le mie ossa.",
+	},
+	["race.troll.muse.w09.020"] = {
+		"Ora i Reietti marciano con l'Orda. Li saluto, ci commercio, e non gli volto mai le spalle. Gli stregoni sanno troppe cose sui morti per fidarsene alla leggera.",
+		"Morti che parlano e contrattano: la mia gente ha delle storie su roba del genere, e nessuna finisce bene. Eppure la gente della Dama Oscura rispetta la sua parte del patto. Per ora.",
+		"Un troll sa che i morti stanno con gli spiriti. I Reietti non sono d'accordo, e non sembrano gradire consigli in proposito. Tengo gli amuleti a portata di mano e le opinioni ancora più vicine.",
+	},
+	["race.troll.muse.w09.021"] = {
+		"I tauren sono lenti a parlare e lenti ad arrabbiarsi. Vicino a loro abbasso la voce senza volerlo, come si fa accanto a una bestia addormentata grande il doppio di te.",
+		"I tauren si portano addosso una calma che pare un mantello. Accanto a uno di loro mi sento una scimmia vicino a una montagna, e chissà perché è una bella sensazione.",
+		"I tauren mi piacciono. Ridono alle mie battute in ritardo, ma quando ci arrivano ridono come si deve, di pancia.",
+	},
+	["race.troll.muse.w09.022"] = {
+		"I goblin vendono la stessa cosa a entrambe le parti e lo chiamano commercio. Un troll sa apprezzare un bel trucco, ma dopo una stretta di mano mi conto sempre le dita.",
+		"I goblin di Booty Bay rivenderebbero il mare ai pesci, se i pesci avessero monete. Io rido, pago e ricontrollo il resto due volte.",
+	},
+	["race.troll.muse.w09.023"] = {
+		"canticchia a mezza voce un motivo basso, di quelli che si cantano sulla costa rammendando le reti.",
+		"tamburella lentamente sulla coscia con due dita, come se tenesse il tempo a un tamburo che nessun altro sente.",
+		"si lascia sfuggire una risata breve e luminosa per niente in particolare, poi torna a tacere, ancora sorridente.",
+	},
+	["race.troll.muse.w09.024"] = {
+		"La mia gente ride delle cose dure. Gli estranei credono che non le sentiamo. Vuol dire che le abbiamo sentite così a lungo che ridere è diventata la scelta meno cara.",
+		"I troll ridono nei momenti brutti, e le altre razze concludono che siamo pazzi o senza cuore. Né l'una né l'altra. Ridendo la mia gente porta un peso che spezzerebbe una schiena più dritta.",
+		"Quando un troll ride dei guai, guarda meglio: quella risata fa il lavoro di uno scudo. È il più vecchio che il mio popolo possieda.",
+	},
+	["race.troll.muse.w09.025"] = {
+		"Il mare dà pesci e si prende barche. Un affare onesto, se il mare sei tu.",
+		"Mai discutere con la marea. C'era prima di te e non ascolta.",
+		"Impara a nuotare prima di imparare a vantarti. Il mare controlla la prima cosa molto prima della seconda.",
+	},
+	["race.troll.muse.w09.026"] = {
+		"Certi giorni sento un loa che mi guarda come un gatto guarda uno scarabeo. Non arrabbiato. Solo curioso di vedere cosa farò.",
+		"Ci sono giorni in cui gli spiriti sembrano così vicini da potermi battere sulla spalla. In quei giorni cammino con cautela e faccio promesse piccole.",
+		"Un troll impara ad accorgersi quando qualcosa di invisibile si interessa a lui. Lo capisce prima la nuca; la testa ci arriva dopo.",
+	},
+	["race.troll.muse.w09.027"] = {
+		"Una maschera voodoo non è un travestimento, dicono gli stregoni. È un volto prestato a qualunque cosa voglia passare. Io mi tengo la mia faccia, grazie, e la mia lista di ospiti.",
+		"Gli stregoni intagliano le maschere perché gli spiriti sappiano chi sta parlando con loro, o almeno così raccontano. Un volto fatto per ascoltare, non per farsi guardare. Mi piace.",
+		"Mettiti la maschera di uno stregone, avvertono gli anziani, e qualcos'altro potrebbe decidere di indossarla con te. Io ammiro l'intaglio da una distanza educata.",
+	},
+	["race.troll.muse.w09.028"] = {
+		"Le terre fredde fanno sentire a un troll ogni osso di quelle gambe lunghe. Mi copro, continuo a muovermi e penso all'acqua calda.",
+		"Il nord del mondo l'ha fatto qualcuno che non ha mai conosciuto un troll. Vento che morde, e niente di maturo sugli alberi.",
+		"La pelle dei troll è fatta per il vapore e il caldo. Al freddo si arrende e prende un colore di cui preferirei non parlare.",
+	},
+	["race.troll.muse.w09.029"] = {
+		"I troll Frostmane si sono fatti una casa nel ghiaccio di Dun Morogh. Troll al freddo per scelta. Ancora non ho deciso se sia coraggio o un errore molto lungo.",
+		"Lassù a Dun Morogh, tra la neve, cugini troll si avvolgono nelle pellicce e cacciano tra le montagne dei nani. Ogni volta che me li immagino, mi si arricciano le dita dei piedi.",
+	},
+	["race.troll.muse.w09.030"] = {
+		"L'Alleanza guarda un troll e vede un selvaggio delle vecchie guerre. Che guardino pure. I Darkspear in quelle guerre non c'erano, e non abbiamo intenzione di andarcene.",
+		"Gli umani ricordano gli Amani che bruciavano i loro villaggi, e dipingono ogni troll con lo stesso pennello. Non sprecherò fiato a correggerli. Parleranno le mie azioni.",
+		"Per un soldato dell'Alleanza ogni zanna è una minaccia uscita dai libri di storia. Non posso farci niente. Posso solo fare in modo di essere un capitolo diverso.",
+	},
+	["race.troll.muse.w09.031"] = {
+		"I troll portano un calore in basso, come braci coperte nella pancia. In battaglia risale, e il mondo diventa veloce e luminoso. Dopo, mi stupisco sempre un po' di me.",
+		"Quando in un troll sale la furia, le braccia scordano di essere mai state stanche. Gli anziani dicono: goditela, ma non chiederle mai consiglio.",
+		"La mia gente si accende quando serve. Il trucco è far uscire il fuoco di proposito, e ricordarsi dove si è messo il coperchio.",
+	},
+	["race.troll.muse.w09.032"] = {
+		"I piccoli Darkspear imparano ad appostarsi prima di imparare a contare, amano dire gli anziani: immobili come una radice, rapidi come un serpente. Quella pazienza non lascia mai del tutto un troll.",
+		"La mia gente stima l'immobilità. Il troll che sa aspettare nella boscaglia senza un fremito mangia; quello che si agita viene mangiato. Lo insegna la giungla, e resta.",
+		"Aspetta come una radice, colpisci come un serpente. Ogni troll lo sente dire da piccolo, e prima o poi scopre che vale per ben altro che la caccia.",
+	},
+	["race.troll.muse.w09.033"] = {
+		"Gambe lunghe, braccia lunghe, pazienza lunga. Due su tre, nelle giornate buone.",
+		"Fatti per arrivare ai rami alti. E per far cadere la roba dagli scaffali alti. Soprattutto questo.",
+		"I troll non sono goffi. È il mondo che è costruito troppo stretto per i nostri gomiti.",
+	},
+	["race.troll.muse.w09.034"] = {
+		"Di nuovo giungla. L'aria è così densa che la si potrebbe bere, e ogni foglia gocciola. Qualcosa dentro di me si scioglie, e non sapevo nemmeno che fosse contratto.",
+		"Verde su verde su verde, e un odore di marcio e di fiori insieme. È così che il mondo dovrebbe profumare, per un troll.",
+		"Liane, caldo, uccelli che si urlano addosso. La giungla è come una casa affollata dove tutti sanno già come mi chiamo.",
+	},
+	["race.troll.muse.w09.035"] = {
+		"Sale nel vento. Le spalle mi scendono di un dito e il passo si scioglie. Comunque si chiami questa costa, parla la mia lingua.",
+		"Le onde arrivano e si ritirano, arrivano e si ritirano. Un troll potrebbe restare seduto ad ascoltarle finché il fuoco non si spegne.",
+		"Sabbia bagnata sotto i piedi, gabbiani che litigano sopra la testa. Ogni riva è un po' Darkspear, a guardarla con gli occhi socchiusi.",
+	},
+	["race.troll.muse.w09.036"] = {
+		"Sabbia e ancora sabbia. La mia gente è uscita dall'acqua; questo posto è lo scheletro secco del mare.",
+		"Secco come un osso vecchio, qui. Razziono l'acqua e la pazienza, e il caldo si prende un po' di tutte e due.",
+		"Un troll nel deserto è un pesce su una pietra rovente. Continuo a camminare e continuo a lamentarmi, ed entrambe le cose aiutano.",
+	},
+	["race.troll.muse.w09.037"] = {
+		"Acqua di palude, tiepida, puzzolente e piena di cose che mordono. Non è casa, ma un poco se la ricorda.",
+		"Fango fino al ginocchio, insetti che cantano, un odore da fondo di barile del pesce. Abbastanza simile alla giungla da farmi sentire quasi {g:benvenuto|benvenuta}.",
+	},
+	["race.troll.muse.w09.038"] = {
+		"È notte, e i pipistrelli sono fuori. Gli anziani dicono che portano sussurri da un loa all'altro. Ascolto lo stesso, nel caso qualcuno fosse per me.",
+		"Sotto le stelle il mondo si fa abbastanza silenzioso da sentire gli spiriti che si schiariscono la voce. Un troll resta sveglio per questo.",
+		"Buio, tepore e tanti piccoli rumori. La mia gente appartiene alle ore della notte quanto al giorno; mi sento {g:sveglio|sveglia} come la luce del giorno non riesce mai a farmi sentire.",
+	},
+	["race.troll.muse.w09.039"] = {
+		"Finalmente pioggia. Gli altri corrano pure sotto un tetto. Un troll ci resta in mezzo e si fa lavare via la polvere.",
+		"Calda o fredda, la pioggia per me sa di isole. Butto indietro la testa e ne bevo un po', come un bambino.",
+		"La pioggia tamburella sulle foglie e la terra beve. La mia pelle beve con lei. Questo è tempo da troll.",
+	},
+	["race.troll.muse.w09.040"] = {
+		"Le città sono piene di linee dritte e di facce serie. Io cammino un po' più sciolto, giusto per mantenere l'equilibrio.",
+		"Tutti questi muri, tutta questa gente di fretta. Un troll in città è un pappagallo in una forgia: rumoroso, colorato e un tantino d'intralcio.",
+	},
+	["race.troll.muse.w09.041"] = {
+		"Gli spiriti guardano, mon. Meglio comportarsi bene, o almeno essere divertenti.",
+		"Ai loa piace un bello spettacolo. Diamogliene uno.",
+		"Se oggi gli spiriti ridono di me, almeno qualcuno si diverte.",
+	},
+	["race.troll.muse.w09.042"] = {
+		"Questa terra è malata fino alle radici. Gli stregoni brucerebbero ogni osso e affumicherebbero il suolo per un anno prima di lasciarci dormire qualcuno.",
+		"Qui tutto è morto e cammina, oppure è morto e aspetta di farlo. Gli amuleti mi pesano al collo, come se sapessero benissimo dove siamo.",
+	},
+	["race.troll.muse.w09.043"] = {
+		"Pietre crollate. Chiunque abbia costruito tutto questo, la mia gente un tempo costruì più in grande, e lo vide cadere allo stesso modo. Nelle rovine ogni razza è finalmente pari.",
+		"I muri spezzati mi fanno sempre pensare agli imperi troll: enormi, superbi, e adesso quasi solo liane e lucertole sui gradini.",
+	},
+	["race.troll.muse.w09.044"] = {
+		"Carne secca degli orchi, focacce dei tauren, qualunque cosa dei goblin: mangio tutto, e a ognuno di quei piatti servirebbero un po' di pepe e un pesce.",
+		"Gli orchi cuociono la carne finché non si arrende. I tauren cuociono il grano finché non dà loro ragione. Un troll butta un pesce sul fuoco e mangia mentre quelli discutono ancora.",
+		"Ogni razza dell'Orda ha la sua idea di cena. La mia prevede meno pentole, più fumo e molta meno attesa.",
+	},
+	["race.troll.muse.w09.045"] = {
+		"Gli anziani di Sen'jin dicono che il nostro vecchio capo vide arrivare gli orchi in una visione, molto prima che le loro navi ci raggiungessero. Ci credette fino a giocarsi la vita, e la perse. La tribù ci ha creduto con lui.",
+		"Al villaggio di Sen'jin raccontano che il vecchio capo sognò un grande guerriero che ci avrebbe portati via. Thrall arrivò. Il capo non visse abbastanza per seguirlo, e allora lo seguimmo noi al posto suo.",
+		"Una visione, un naufragio, un sacrificio: gli anziani di Sen'jin raccontano la nostra libertà con queste tre parole, e sull'ultima rallentano sempre.",
+	},
+	["race.troll.muse.w09.046"] = {
+		"I Darkspear attraversarono il mare fino a Kalimdor insieme agli orchi, stipati su navi mai costruite per tanta gente. Ogni troll del Durotar ha un antenato che stava aggrappato a un parapetto a guardarsi indietro.",
+		"La mia tribù è arrivata in questa terra per mare, su navi orchesche, con quel poco che poteva portarsi addosso. Forse è per questo che i troll viaggiano leggeri e ridono forte.",
+	},
+	["race.troll.muse.w09.047"] = {
+		"Una perlina, un dente appeso a un filo, un nodo di piume. Non perché sia {g:sicuro|sicura} che funzionino. Perché non sono {g:sicuro|sicura} che non funzionino.",
+		"Gli estranei chiamano superstizione gli amuleti dei troll. Io la chiamo buona educazione verso forze che nessuno capisce fino in fondo.",
+		"Un amuleto non costa niente da portare e moltissimo da non avere, dice la mia gente. Un troll ne porta qualcuno e non dà spiegazioni.",
+	},
+	["race.troll.muse.w09.048"] = {
+		"lancia un'occhiata nella direzione in cui dovrebbe esserci il mare, come per controllare che ci sia ancora.",
+		"annusa l'aria in cerca di sale, non lo trova e ci passa sopra con un sorriso storto.",
+		"allunga le lunghe braccia sopra la testa finché le giunture non schioccano, le zanne puntate verso il cielo.",
+	},
+	["race.troll.muse.w09.049"] = {
+		"Gli elfi della notte guardano un troll come un gatto guarda un cane bagnato. Il sentimento è reciproco, ma almeno io lo ammetto.",
+		"Qualunque elfo, di Darnassus o di Quel'Thalas, ha la stessa faccia davanti a un troll, come se gli avessimo infangato la storia con le scarpe sporche.",
+	},
+	["race.troll.muse.w09.050"] = {
+		"Hanno tutti fretta. Gli spiriti no, il mare no, e io nemmeno.",
+		"A un troll puoi mettere fretta. Una volta sola.",
+		"Spingimi e andrò più piano. Non è testardaggine, è equilibrio.",
+	},
+	["race.troll.muse.w09.051"] = {
+		"I Darkspear sono stati cacciati da una terra dopo l'altra. Il Durotar è secco e duro, ma nessuno ci sta cacciando. Vale più di tutto il verde del mondo.",
+		"Per una volta la mia gente sta su una terra che nessuno può portarci via a forza di urla. Polvere rossa compresa, è nostra, insieme agli orchi che la dividono con noi.",
+		"Una tribù che è fuggita dalla giungla e poi dal mare può finalmente fermarsi da qualche parte. Non lo prendo alla leggera, nemmeno quando mi lamento del caldo.",
+	},
+	["race.troll.muse.w09.052"] = {
+		"Ai pipistrelli piacciono il buio, l'umido e un bel frutto maturo. Troll e pipistrelli si capiscono meglio di quanto si creda.",
+		"Un pipistrello appeso a testa in giù in una grotta è la creatura più rilassata del mondo. Lo rispetto profondamente.",
+	},
+	["race.troll.muse.w09.053"] = {
+		"Una maledizione può restare anni dentro una perlina o una piuma, ad aspettare la mano sbagliata. Io gli amuleti trovati per strada non li raccolgo. Mai.",
+		"Uno strano mazzetto di piume sul sentiero? Giraci intorno. Il troll che raccoglie il mojo di qualcun altro si prende tutto quello che ci viene dietro.",
+		"Il mojo trovato per caso è come il cibo trovato nella capanna di uno stregone: probabilmente era per qualcun altro, e probabilmente non con buone intenzioni.",
+	},
+	["race.troll.muse.w09.054"] = {
+		"Lassù negli Hinterlands i Revantusk difendono il loro villaggio sul mare dagli Amani e dai Vilebranch. Troll schierati con l'Orda, lontano dal Durotar: sapere che ci sono mi scalda.",
+		"Non tutte le tribù troll sono nemiche. I Revantusk tengono un villaggio sulla costa degli Hinterlands e dividono il loro fuoco con l'Orda. Brava gente. Rumorosa, come noi.",
+	},
+	["race.troll.muse.w09.055"] = {
+		"Darkspear. Un buon nome per una tribù: qualcosa di affilato, difficile da veder arrivare, qualcosa a cui tenersi stretti.",
+		"Certe tribù prendono il nome da teschi o da sangue. La nostra da un'arma tenuta salda in una mano forte. Mi piace che abbiamo scelto quella utile.",
+	},
+	["race.troll.muse.w09.056"] = {
+		"La polvere del Durotar va dappertutto: nelle orecchie, nel cibo, tra i denti e le zanne. Troverò granelli rossi addosso molto dopo essermene {g:andato|andata}.",
+		"Gli orchi dicono che la polvere rossa fa bene allo spirito. Io dico che fa male ai denti. Forse abbiamo ragione tutti e due.",
+	},
+	["race.troll.muse.w09.057"] = {
+		"Troll e orchi imparano le prime lezioni dure fianco a fianco nella Valley of Trials. Agli scorpidi di laggiù non importa di zanne o pelle verde, e così si diventa alleati in fretta.",
+		"La Valley of Trials è dove i giovani Darkspear e i giovani orchi scoprono per la prima volta che l'Orda combatte spalla a spalla. Lo insegnano i quilboar e gli scorpidi, con grande pazienza.",
+	},
+	["race.troll.muse.w09.058"] = {
+		"Roccia alta e vento sottile. Le gambe sono lunghe abbastanza per arrampicarsi, ma il resto di me è fatto per stare al livello del mare.",
+		"Le montagne sono il contrario della giungla: niente verde, niente umido, niente rumore. Solo pietra, cielo e un troll che borbotta fra sé.",
+	},
+	["race.troll.muse.w09.059"] = {
+		"Questi alberi sono più alti e più silenziosi di quelli della giungla, come anziani riuniti a consiglio. Per rispetto abbasso la voce.",
+		"Una foresta senza liane mi sembra lasciata a metà. Dov'è il caldo? Dove sono gli uccelli che non stanno mai zitti?",
+	},
+	["race.troll.muse.w09.060"] = {
+		"I Darkspear stanno con l'Orda. A voce alta, e con un tempismo eccellente.",
+		"Darkspear prima di tutto, Orda sempre. Sono vere tutte e due, ogni santo giorno.",
+		"Thrall ha le nostre lance e Vol'jin il nostro cuore. Mi pare una divisione giusta.",
+	},
+	["race.troll.muse.w09.061"] = {
+		"Quando resto {g:solo|sola} abbastanza a lungo, comincio a parlare con gli spiriti ad alta voce. Non rispondono mai e non interrompono mai. Meglio di certa compagnia.",
+		"Per conto mio, chiacchiero con qualunque spirito stia ascoltando. Se non ascolta nessuno, almeno la conversazione resta sincera.",
+	},
+	["race.troll.muse.w09.062"] = {
+		"si accovaccia, preme una lunga mano aperta sul terreno per un istante, poi si rialza come se qualcosa fosse stato sistemato.",
+		"si ferma a gettarsi alle spalle un pizzico di quel che ha a portata di mano, una rapida cortesia troll verso chiunque stia guardando.",
+		"si porta due dita a una zanna, poi a terra, in un piccolo gesto più vecchio di qualunque strada di queste parti.",
+	},
+	["race.troll.muse.w09.063"] = {
+		"Le altre razze scrivono le cose. La mia gente le dice ad alta voce, ancora e ancora, finché non vivono nella voce. Entrambi i modi perdono qualcosa. Il nostro, su una strada lunga, perde meno.",
+		"I troll tengono il loro sapere nei canti, nei detti e nella testa degli anziani. Nessuna biblioteca da bruciare. Solo persone da tenere in vita.",
+	},
+	["race.troll.muse.w09.064"] = {
+		"La frutta è più buona colta con le mani dai rami alti, dove nessun altro arriva. È una delle piccole gioie delle braccia di un troll.",
+		"Un albero carico di frutta e braccia lunghe per arrivarci: certi giorni il mondo è molto semplice e molto gentile.",
+	},
+	["race.troll.muse.w09.065"] = {
+		"Quando un troll muore, dice la mia gente, gli spiriti vengono a litigare per chi debba tenersi la sua compagnia. Spero che la mia valga una bella lite.",
+		"La morte è una lunga camminata verso un fuoco chiassoso, raccontano gli anziani, pieno di tutti quelli partiti prima. Non ho fretta, ma la camminata non mi fa paura.",
+	},
+	["race.troll.muse.w09.066"] = {
+		"Gli umani fissano i troll come se stessimo per mangiarli. Non è così. Di solito sono troppo salati.",
+		"Ogni viandante dell'Alleanza che incrocio guarda le mie zanne, poi le mani, poi di nuovo le zanne. Io sorrido. Non serve mai.",
+	},
+	["race.troll.muse.w09.067"] = {
+		"Un tempo gli imperi troll governavano mezzo mondo, quando elfi e umani non sapevano ancora impilare due pietre. Ora gli imperi sono macerie e noi siamo qui, a ridere ancora. So bene cosa preferisco essere.",
+		"Gli imperi cadono; le tribù continuano. Gurubashi e Amani hanno costruito più in alto di chiunque, e guarda cosa ne resta. I Darkspear non hanno costruito niente che potesse cadere, e siamo ancora qui fuori, all'aria aperta, a ridere.",
+	},
+	["race.troll.muse.w09.068"] = {
+		"La parola di un troll è un nodo: facile da fare, difficile da sciogliere. La mia gente promette di rado, ma quando lo fa promette a lungo.",
+		"I troll sono rilassati su quasi tutto: postura, orari, buone maniere. Non sulle promesse. Quelle le leghiamo strette e le portiamo lontano.",
+		"Ridi pure con un troll quanto vuoi, ma la sua parola prendila sul serio. Tra la mia gente una promessa infranta sopravvive a chi l'ha infranta.",
+	},
+	["race.troll.muse.w09.069"] = {
+		"I capelli? Fanno così da soli. Io mi limito a trattare con loro.",
+		"Nessuno pettina i capelli di un troll. Ci si mette d'accordo con loro e si spera che rispettino i patti.",
+		"Sì, stanno dritti così. No, non so come. Erano già così quando li ho trovati.",
+	},
+	["race.troll.muse.w09.070"] = {
+		"Quando a Sen'jin partono i tamburi, nessuno ha bisogno di sentirselo dire due volte. I troll scivolano verso il suono come falene verso una lanterna, e al terzo colpo parlano già tutti insieme.",
+		"Un raduno dei Darkspear comincia con i tamburi e finisce con troppe risate. Nel mezzo si decidono davvero delle cose, e gli orchi se ne stupiscono ogni volta.",
+	},
+	["race.troll.muse.w09.071"] = {
+		"traccia un piccolo segno nella polvere con un dito, lo studia un istante, poi lo cancella col tallone.",
+		"raccoglie un sassolino, lo rigira due volte come se leggesse qualcosa sul fondo, e lo rimette esattamente dov'era.",
+	},
+	["race.troll.subzone_enter.w09.001"] = {
+		"{subzone}. Prima di tutto annuso l'aria. Un troll si fida più del naso che di una mappa.",
+		"{subzone}. Fumo, sterco, acqua o sangue: l'aria mi dice chi vive qui prima che qualcuno esca a dirmelo.",
+		"{subzone}. Prima l'odore, poi i rumori, poi le facce. Quest'ordine ha tenuto in vita i troll per parecchio tempo.",
+	},
+	["race.troll.subzone_enter.w09.002"] = {
+		"rallenta al margine di {subzone}, la testa inclinata, le zanne sollevate a saggiare l'aria.",
+		"entra in {subzone} su piedi lunghi e silenziosi, le spalle sciolte e lo sguardo dappertutto.",
+		"si ferma mentre {subzone} si apre davanti, dondolando sui talloni per abbracciare tutto con un'occhiata.",
+	},
+	["race.troll.subzone_enter.w09.003"] = {
+		"{subzone}. Vediamo chi ci vive, e se divide il suo pesce.",
+		"{subzone}, eh? Ha l'aria di un posto con delle storie. E, speriamo, un cuoco.",
+		"{subzone}. Ancora nessuno mi ha tirato niente. Bell'inizio, mon.",
+	},
+	["race.troll.subzone_enter.w09.004"] = {
+		"{subzone}. Da qualche parte qui c'è un albero da frutto, e ho intenzione di trovarlo.",
+		"{subzone}. Le mie lunghe orecchie si girano in avanti da sole. Amano sentire i pettegolezzi per prime.",
+		"{subzone}. Guardo in alto prima di guardare avanti. I troll controllano sempre i rami; metà dei guai del mondo abita lassù.",
+	},
+	["race.troll.subzone_enter.w09.005"] = {
+		"{subzone}. Per prima cosa cerco ossa appese ai pali. I troll delle altre tribù amano decorare i loro confini.",
+		"{subzone}. Piume legate a un ramo, un segno graffiato su una pietra: leggo i segnali prima di fidarmi della quiete.",
+		"{subzone}. Se un'altra tribù rivendica questa terra, l'avrà scritto da qualche parte, con ossa o pittura. Tengo gli occhi aperti per leggere il messaggio.",
+	},
+	["race.troll.subzone_enter.w09.006"] = {
+		"{subzone}. La volta degli alberi si chiude sopra di me come un tetto che conosco già.",
+		"{subzone}. Le foglie bagnate mi danno pacche sulle spalle per darmi il benvenuto. La giungla non ha mai imparato a sussurrare.",
+		"{subzone}. Caldo, verde e il ronzio di mille piccole vite. Il passo si fa leggero senza chiedermi il permesso.",
+	},
+	["race.troll.subzone_enter.w09.007"] = {
+		"{subzone}. Sale e legno bagnato. Il mare è abbastanza vicino da sentirlo, e le mie spalle se ne accorgono per prime.",
+		"{subzone}. Onde da qualche parte, appena fuori vista. Un troll trova l'acqua a occhi chiusi.",
+		"{subzone}. Qui il vento sa di mare. Farei tanta strada per quel sapore.",
+	},
+	["race.troll.subzone_enter.w09.008"] = {
+		"{subzone}. Ancora polvere. Mi lecco le labbra e prometto loro acqua più tardi.",
+		"{subzone}. Così secco da spaccare la pelle di un troll come cuoio vecchio. Sto all'ombra e le mie opinioni le tengo per me.",
+		"{subzone}. Neanche una goccia d'acqua in vista. Mi sembrano assetate perfino le zanne, e non sapevo che potessero esserlo.",
+	},
+	["race.troll.subzone_enter.w09.009"] = {
+		"{subzone}. Salute a chiunque abiti qui, visibile o no. Sono solo di passaggio.",
+		"{subzone}. Calma, spiriti. Un troll solo, amichevole, che sta soltanto passando.",
+		"{subzone}. Vi dispiace se passa un Darkspear? Farò presto e piano.",
+	},
+	["race.troll.subzone_enter.w09.010"] = {
+		"si china sotto un ramo basso entrando in {subzone}, scostandolo con le lunghe braccia come una tenda.",
+		"entra in {subzone} con quel passo sciolto e ondeggiante dei troll, come se il terreno fosse il ponte di una nave.",
+		"muove i primi passi in {subzone} con calma, una lunga mano che sfiora qualunque cosa abbia vicino.",
+	},
 }, "base_exploration")

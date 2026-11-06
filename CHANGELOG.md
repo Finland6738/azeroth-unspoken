@@ -8,6 +8,53 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W09: the troll, the Forsaken, the orc and the gnome (issue #138)
+
+The ninth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
+after W08: the strict need of the troll, the undead (Forsaken), the orc and the gnome (2,633 texts per language).
+**1,121 intentions, 2,728 texts per language** (5,456 in both), written by eleven parallel writer subagents (authors
+`ai-w09-<unit>`) and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate,
+submit, owner sample, approve, export; the round trip is an empty diff). No literary piece and no `tier` field. The
+addon goes from 11,329 to **12,450 intentions** and from 27,252 to **29,980 texts per language**.
+
+- **Added: four races**, every event of the race's strict need (`race.<race>.<event>.w09.NNN`; the returns are
+  `mem.ret.<race>.w09.001`): the troll 277 intentions, 699 texts per language; the Forsaken 302 and 704; the orc 286
+  and 681; the gnome 256 and 644. The lines go to the base pack of their event family as in W08 (`base_exploration`,
+  `base_world`, `base_combat`, `base_spells`, `base_context`, `base_relations`, `base_social`, `base_life`,
+  `base_memory`, and `base_dialogues` for what an innkeeper, merchant, guard, flight master or trainer says to a
+  character of that race). Every race line writes `race` at the top level (ADR 0053) and holds for every class of the
+  race in Classic, both sexes, any level and any place; no family or past is invented for the character, and the
+  sayings of a people go to a voice (39 intentions are `invented_lore` with an `attribution`).
+- **The Forsaken body.** A Forsaken line never breathes, sweats or has a heartbeat: the lines speak of cold flesh,
+  stitches, a loose jaw, a will that is its own, and say "no breath to hold" where a living race would catch its
+  breath. Every Forsaken was alive once in Lordaeron; no line gives the character a particular past life.
+- **The two halves of a heal and a buff** (ADR 0055). Every troll, Forsaken and gnome heal and buff line writes
+  `castOnSelf`; lines on oneself name no spell except the few that write the gesture (bandage, potion, healthstone).
+  Lines to someone else hold for every healer of the race: a Forsaken's and an orc's write `not` the warlock's Health
+  Funnel, and a few of them speak of the demon itself with `spell = "health funnel"`; a gnome has no healer, so its
+  only lines to someone else are the warlock's funnel into its demon. The orc's `buff` pool is not split: its lines
+  write no `castOnSelf` and hold both for a buff on oneself and on a friend.
+- **The gap after W09** (per language): soft need 8,947, gap **0**; strict need 29,536, gap **3,188** (was 5,821);
+  random need 276,398, gap **247,838** (was 250,566). **86 waves** left (the next is the first row of WAVES.md: the
+  strict need of the factions, the moods and the other layers).
+- **Measured.** `bench_scale` (every line loaded): memory 26.5 → 27.3 MB, pick 29.3 → 30.0 thousand Lua instructions
+  (p95 55.1 → 57.6). `bench_trial --long 20` over seeds 1, 2 and 3: the human paladin unchanged; the orc warrior
+  (its race pools now speak more) repeats 5.8 → 5.2%, 5.0 → 5.8%, 5.4 → 4.1% (first exact repetition 7.17 → 5.52 h,
+  6.33 → 7.35 h, 8.26 → 8.51 h); the troll mage 4.3 → 6.5%, 6.4 → 6.1%, 5.0 → 5.1% (first repetition 7.26 → 7.92 h,
+  9.09 → 7.93 h, 9.43 → 9.18 h): single runs, the noise of the draws moves both ways. `run_tests` M2: pick 50.8
+  thousand Lua instructions (reference 42.7; W08 reported 52.4).
+- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI). Counts: base intentions 12407, lines loaded
+  12414, `base_combat` 668, `base_context` 395, `base_life` 82, `base_dialogues` 361. The test character is an orc
+  warrior, so its new race lines now compete in five tests that listed the expected lines by id; each now also
+  accepts a line of the character's race whose conditions fit (a recognition line for a known player or NPC, a line of
+  the same feeling or relation, an orc line to an innkeeper), and the voices of the gruff and the jovial innkeeper are
+  compared without the lines said to the character's race, which any NPC of the role may say. The boss victory check
+  of `TestOtherPlace` accepts any line written for a won encounter (pick order). A Forsaken line that named Northrend
+  (outside the era of Forever) now names the Lich King, and five orc battle variants were shortened so that
+  battleground fights keep speaking short lines.
+- **Owner sample:** [docs/content/reviews/W09.md](docs/content/reviews/W09.md) (`cli sample --state review --share
+  0.02`: 22 intentions).
+
 ### Validator: a word inside a proper name is not a weather or time claim (W08 engine finding)
 
 - **Fixed:** the weather and time-of-day warnings (#92, #162) matched a word inside a proper name. "Night" matched in

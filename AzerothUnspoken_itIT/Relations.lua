@@ -1407,4 +1407,228 @@ NS:AddTexts("itIT", {
 		"Conosco quell'andatura: {other}. Le pianure insegnano a riconoscere una creatura dal passo, molto prima di vederne il muso.",
 		"Quella sagoma è {other}, mi pare. Gli occhi dei tauren sono fatti per le distanze: i volti mi arrivano dopo i contorni.",
 	},
+	["race.gnome.relation_npc.w09.001"] = {
+		"Un volto che conosco! Tengo un archivio mentale su chiunque abbia incontrato. Questo fascicolo è spesso e piacevole.",
+		"Ancora {other}. I volti familiari sono come gli attrezzi familiari: li cerchi senza pensarci.",
+		"Ah, una conoscenza. Da quando la città è perduta, ogni volto amico in un posto estraneo è un pezzetto di casa.",
+	},
+	["race.gnome.relation_player.w09.001"] = {
+		"{other}. Se questa persona mi dicesse che un ponte regge, lo attraverserei senza controllare i rivetti. È un complimento enorme.",
+		"Ecco {other}. Ho collaudato la mia fiducia in questa persona sotto carico, due volte. Regge.",
+		"{other}. Persona tarata, affidabile, precisa.",
+	},
+	["race.gnome.relation_player.w09.002"] = {
+		"{other}! Mi fremono le orecchie. È la versione gnomesca di una festa.",
+		"Oh, {other}. Certe persone sono come trovare il pezzo mancante in fondo alla scatola: un piccolo, felice clic.",
+	},
+	["race.gnome.relation_player.w09.003"] = {
+		"Sono in debito con {other}. L'ho annotato, e gli gnomi non perdono gli appunti. Li smarriscono, e poi li ritrovano nel momento peggiore.",
+		"{other}. Un favore che non ho ancora ricambiato. Sto lavorando a un ringraziamento adeguato. Richiede una certa progettazione.",
+	},
+	["race.gnome.relation_player.w09.004"] = {
+		"{other}. Sorrisi, cenni, tutte le parole giuste. Come Thermaplugg, dicono i vecchi meccanici.",
+		"Ecco {other}. Sarò cordiale e terrò le tasche abbottonate. Essere piccoli ti insegna dove vanno le mani.",
+		"{other}. Occhi in alto, tasche chiuse.",
+	},
+	["race.gnome.relation_player.w09.005"] = {
+		"{other}. Ho buona memoria per i pezzi difettosi e per chi me li ha venduti.",
+		"Ecco {other}. Gli gnomi sono allegri, dicono. Quasi sempre. C'è un angolino di me, piccolo e preciso, che non lo è, e questa persona ci abita.",
+	},
+	["race.gnome.relation_player.w09.006"] = {
+		"{other}. Ogni rivale è un banco di prova. Intendo superare questa persona di un margine misurabile.",
+		"Ah, {other}. Bene. Qualunque cosa tu abbia, la eguaglio e ci aggiungo una funzione.",
+	},
+	["race.gnome.relation_player.w09.007"] = {
+		"{other}. Abbiamo combattuto fianco a fianco. Questa persona teneva d'occhio il terreno intorno a me, che alla mia altezza è dove cominciano tutti i guai.",
+		"Ecco {other}, che ha affrontato con me la stessa battaglia. Gli gnomi ricordano chi li ha coperti. Ci tocca: è facile pestarci.",
+	},
+	["race.gnome.relation_player.w09.008"] = {
+		"{other}! Un bel po' di tempo. Nel frattempo ho avuto tre idee nuove e ne ho abbandonate due. Lascia che ti racconti la terza.",
+		"Ecco {other}, dopo parecchio. Cominciavo a chiedermelo. Gli gnomi si preoccupano in fretta e in silenzio, come un orologio che ticchetta.",
+	},
+	["race.gnome.relation_player.w09.009"] = {
+		"{other}! Esuli tutti e due, e per giunta in amicizia. Un giorno percorreremo insieme le sale di Gnomeregan. Fino ad allora, Tinker Town andrà bene.",
+		"Ecco {other}. Due gnomi che si ritrovano lontano da casa: comitato immediato.",
+	},
+	["race.gnome.relation_player.w09.010"] = {
+		"{other}. Ho calcolato diciassette modi in cui potrebbe andare. Non me ne piace nessuno, quindi continuo a camminare.",
+		"Ecco {other}. Il mio popolo sa quanto costa un tradimento: ci è costato una città. Non pagherò quel prezzo due volte.",
+		"{other}. Non ne vale la pena.",
+	},
+	["race.gnome.relation_player.w09.011"] = {
+		"{other}. Abbiamo già duellato. Ho preso appunti. Sto ancora rivedendo il mio metodo.",
+		"Ecco {other}. Bel duello, quello. Ho perso in statura e vinto in faccia tosta, secondo i miei conti.",
+	},
+	["race.gnome.relation_player.w09.012"] = {
+		"{other}. Le creature piccole imparano presto quando restare immobili. Le mie ginocchia hanno deciso che è adesso.",
+		"Ecco {other}. Sto calcolando le uscite. Sono due, e tutte e due dietro di me.",
+	},
+	["race.orc.relation_npc.w09.001"] = {
+		"{other}. Una faccia nota. In viaggio, una faccia nota vale mezzo accampamento.",
+		"Ah, {other}. Gli orchi tengono le conoscenze come le armi: poche, e ben curate.",
+		"Conosco {other}. Su una strada lunga, le facce familiari valgono più dell'oro.",
+	},
+	["race.orc.relation_player.w09.001"] = {
+		"A {other} lascerei le mie spalle in una battaglia di cui non vedo la fine. Per un orco, la fiducia è tutta lì.",
+		"Se {other} dicesse che il ponte regge, lo attraverserei di corsa.",
+	},
+	["race.orc.relation_player.w09.002"] = {
+		"{other}! Bene. La giornata si è fatta più rumorosa di un tamburo di guerra.",
+		"Ecco {other}. Certe amicizie si forgiano come l'acciaio: nel caldo, nel duro, e ne escono migliori.",
+		"{other}. Una faccia amica per strada mi scioglie la mascella. Quasi sorrido.",
+	},
+	["race.orc.relation_player.w09.003"] = {
+		"Ecco {other}. Mi sorprendo a sogghignare tra le zanne. Nessuno deve saperlo.",
+		"{other}. La buona compagnia è rara come un po' di riparo a Durotar. Me la prendo.",
+	},
+	["race.orc.relation_player.w09.004"] = {
+		"{other}. Non volto le spalle, e la mano non si allontana mai troppo dalla cintura.",
+		"Conosco {other}. I vecchi dicono che un lupo che sorride resta un lupo. Continuo a guardare.",
+	},
+	["race.orc.relation_player.w09.005"] = {
+		"{other}. Mi sale il sangue. La maledizione è spezzata, dicono gli anziani, ma il caratteraccio era nostro fin dall'inizio.",
+		"Ecco {other}. Un orco perdona lentamente, e io non ho ancora cominciato.",
+	},
+	["race.orc.relation_player.w09.006"] = {
+		"{other}. Qualunque cosa tu riesca a fare oggi, io domani la farò meglio. È così che i rivali si tengono affilati a vicenda.",
+		"Ah, {other}. Un rivale è una cote. Niente affila un orco come qualcuno bravo quasi quanto lui.",
+	},
+	["race.orc.relation_player.w09.007"] = {
+		"Io e {other} abbiamo sanguinato sullo stesso terreno. Tra gli orchi vale più di qualsiasi giuramento.",
+		"Abbiamo combattuto insieme, io e {other}. Le mie mani ne ricordano il ritmo, come un tamburo di guerra sentito una volta e mai più dimenticato.",
+	},
+	["race.orc.relation_player.w09.008"] = {
+		"Io e {other} abbiamo già messo alla prova le nostre forze. Un combattimento onesto lascia rispetto, chiunque ne sia uscito in piedi.",
+		"C'è stato un duello tra me e {other}. Un orco impara più da uno scontro onesto che da dieci discorsi.",
+	},
+	["race.orc.relation_player.w09.009"] = {
+		"{other}, dopo tanto tempo. Le stagioni sono cambiate. Vediamo cosa ne ha fatto la strada.",
+		"Molto tempo senza vedere {other}. Gli orchi non contano i giorni: contano le cicatrici. Vediamo chi ne ha di più.",
+	},
+	["race.orc.relation_player.w09.010"] = {
+		"{other}. Qualcosa di antico in me vuole scappare. Pianto i piedi. Gli orchi non scappano dalla gente: almeno, non dove qualcuno li vede.",
+		"Alla vista di {other} la mano si stringe. La paura non è una vergogna, dicono gli sciamani. Lasciarla comandare sì.",
+	},
+	["race.orc.relation_player.w09.011"] = {
+		"{other}. Il mio sangue se lo ricorda. Per ora terrò la pace, e solo per ora.",
+		"Ecco {other}. Certi debiti si pagano in monete: questo non è mai stato di quel tipo.",
+	},
+	["race.orc.relation_player.w09.012"] = {
+		"{other}. Conosco quel nome. Un orco custodisce i nomi come i clan custodiscono gli stendardi: da vicino, e non alla leggera.",
+		"Ah, {other}. Le facce mi restano più dei nomi. Questa mi è rimasta con tutti e due.",
+	},
+	["race.scourge.relation_npc.w09.001"] = {
+		"Un volto che conosco. I vivi che si abituano a me sono rari: ne tengo il conto con cura.",
+		"Ancora {other}. La prima volta, un passo indietro. Ora, a malapena un'occhiata. L'abitudine: l'unica cura che ho trovato per l'essere morti.",
+		"Ah, questa persona. Mi conosce, e mi parla ancora. Le piccole cose contano più di quando respiravo.",
+	},
+	["race.scourge.relation_player.w09.001"] = {
+		"{other}. Pochi vivi mi lasciano camminare alle loro spalle. Questa persona non si volta nemmeno.",
+		"Ecco {other}. La fiducia è lenta, per i morti: ci ha traditi il nostro stesso principe. Questa persona la mia ce l'ha lo stesso.",
+		"{other}. Qualcuno che non tengo d'occhio nemmeno a metà.",
+	},
+	["race.scourge.relation_player.w09.002"] = {
+		"{other}! Qualcosa in questo petto freddo si solleva un poco. Lo chiamerò gioia: là dentro non si muove nient'altro.",
+		"Ah, {other}. Compagnia che sceglierei. Per essere un cadavere, ho gusti sorprendentemente difficili.",
+	},
+	["race.scourge.relation_player.w09.003"] = {
+		"Devo qualcosa a {other}. I debiti sono tra le poche cose di cui sento ancora tutto il peso.",
+		"{other}. Mi ha aiutato quando aiutare i morti non procura a nessuno un grazie. Tengo una breve lista di persone così. Brevissima.",
+	},
+	["race.scourge.relation_player.w09.004"] = {
+		"{other}. Ho imparato a leggere i vivi: la mano che si sposta, il sorriso che aspetta. Sto leggendo adesso.",
+		"Ecco {other}. Non ho bisogno di dormire, quindi non ho mai bisogno di voltare le spalle. Utile, vicino a certa gente.",
+		"{other}. Osservare, e tacere.",
+	},
+	["race.scourge.relation_player.w09.005"] = {
+		"{other}. La putrefazione mi porta via la carne poco a poco. I rancori, quelli li lascia stare.",
+		"Ecco {other}. Sono {g:morto|morta} una volta e al ritorno non ho perdonato niente. Non vedo perché cominciare adesso.",
+	},
+	["race.scourge.relation_player.w09.006"] = {
+		"{other}. Un rivale tiene sveglia la mente, e la mente è la parte di me ancora mia. Accetto volentieri l'esercizio.",
+		"Ah, {other}. Qualunque cosa tu stia vincendo, posso aspettare. Ormai non ho altro che pazienza.",
+	},
+	["race.scourge.relation_player.w09.007"] = {
+		"{other}. Abbiamo combattuto nella stessa mischia. Ho incassato una ferita che nessun corpo vivo scrollerebbe via, e questa persona non ha battuto ciglio a vederla.",
+		"Ecco {other}, che ha combattuto al mio fianco. Ci vuole stomaco per stare spalla a spalla con un morto. Questa persona ce l'aveva.",
+	},
+	["race.scourge.relation_player.w09.008"] = {
+		"{other}, dopo un bel po'. Per i morti il tempo scorre in modo strano. Questa assenza però l'ho notata.",
+		"Ecco {other}. Più di un mese. Ho smesso di contare quasi tutto, ma questo l'ho contato.",
+	},
+	["race.scourge.relation_player.w09.009"] = {
+		"{other}! Un'altra anima libera della Dama Oscura, e per giunta una persona amica. Possiamo smettere di fingere di stare a nostro agio tra i vivi.",
+		"Ecco {other}. Due Reietti che hanno scelto di farsi compagnia. A Undercity la chiamerebbero una stranezza. Io la chiamo fortuna.",
+	},
+	["race.scourge.relation_player.w09.010"] = {
+		"{other}. Se avessi ancora un battito, starebbe correndo. Invece c'è solo questo freddo, e il freddo sa aspettare.",
+		"Ecco {other}. Sono {g:stato|stata} nella tomba e ne sono {g:tornato|tornata}. Un rancore come questo me lo porterei laggiù due volte.",
+		"{other}. Non qui.",
+	},
+	["race.scourge.relation_player.w09.011"] = {
+		"{other}. Conosco quel volto. Di questi tempi la memoria mi perde parecchie cose, ma questa l'ha tenuta.",
+		"Una figura nota: {other}. I morti a volte dimenticano il proprio nome. Non il suo.",
+	},
+	["race.scourge.relation_player.w09.012"] = {
+		"{other}. La paura senza battito è una cosa strana: niente corsa, niente sudore, solo un freddo che si fa più acuto. Resto immobile.",
+		"Ecco {other}. Una parte di me vorrebbe sparire tra la folla. Vecchia abitudine dei Reietti: prima nascondersi, poi fare domande.",
+	},
+	["race.troll.relation_npc.w09.001"] = {
+		"{other}, una faccia che conosco. Sulla costa saluti gli stessi pescatori a ogni marea: una faccia nota vuol dire acque sicure.",
+		"Ah, {other}. Le facce conosciute sono come gli scogli conosciuti: smetti di sbucciarti le ginocchia.",
+		"{other}. Agli spiriti piace quando un troll si ricorda della gente incontrata per strada.",
+	},
+	["race.troll.relation_player.w09.001"] = {
+		"Con {other} uscirei oltre la scogliera su una barchetta, senza mai controllare chi tiene i remi.",
+		"Con {other} vicino posso riposare con tutti e due gli occhi chiusi. Per un troll in viaggio non è un regalo da poco.",
+	},
+	["race.troll.relation_player.w09.002"] = {
+		"{other}! Adesso la strada ha qualcuno con cui ridere. I troll ridono anche da soli, ma suona più sciocco.",
+		"Ecco {other}. L'amicizia è tenere da parte il pezzo di pesce migliore, anche quando hai fame.",
+		"Ah, {other}! Bene. Gli spiriti le promesse le mantengono, dopotutto.",
+	},
+	["race.troll.relation_player.w09.003"] = {
+		"Ho un debito con {other}. Gli stregoni fanno un nodo in una cordicella per ogni debito del cuore. Quello per {other} è ancora stretto.",
+		"{other} c'era quando contava. Un Darkspear se lo ricorda come la tribù ricorda le navi di Thrall: un debito che non sbiadisce.",
+	},
+	["race.troll.relation_player.w09.004"] = {
+		"Ecco {other}, e le mie zanne sorridono già. Non ci posso fare niente: hanno le loro opinioni.",
+		"Guarda chi c'è: {other}. Mi metto a canticchiare prima di accorgermene. È il mojo della buona compagnia.",
+	},
+	["race.troll.relation_player.w09.005"] = {
+		"{other}. Anche un raptor nell'erba alta sembra amichevole, finché non è abbastanza vicino. Tengo le distanze.",
+		"Conosco {other}. Sarò gentile, ma con un braccio lungo sempre libero.",
+	},
+	["race.troll.relation_player.w09.006"] = {
+		"{other}. Gli stregoni dicono che il rancore è una maledizione che lanci su te stesso. Questo me lo tengo comunque.",
+		"Ecco {other}. La carne di un troll si richiude su ogni ferita. Alcune dell'altro tipo, a quanto pare, restano aperte.",
+	},
+	["race.troll.relation_player.w09.007"] = {
+		"{other}. A Sen'jin, dicono, i giovani fanno a gara a chi sale per primo sulla palma più alta, e chi perde scende carico di noci di cocco. Con {other} la gara la farei su qualsiasi albero.",
+		"Ah, {other}. Due raptor, un solo sentiero. Nessuno dei due cede il passo, e a tutti e due piace così.",
+	},
+	["race.troll.relation_player.w09.008"] = {
+		"Io e {other} abbiamo combattuto nella stessa fila. Il sangue versato sullo stesso terreno lega più di qualsiasi commercio, dicono gli anziani.",
+		"Abbiamo retto la stessa battaglia, io e {other}. Le mie ferite si sono chiuse in fretta, come quelle di ogni troll. Il ricordo no.",
+	},
+	["race.troll.relation_player.w09.009"] = {
+		"Tra me e {other} c'è stata una sfida, una volta. I troll combattono per gioco più di quasi tutti, e quella volta è stato un bel gioco.",
+		"Abbiamo già incrociato le armi, io e {other}. Un troll ricorda un buon avversario più a lungo di un buon pasto. Quasi.",
+	},
+	["race.troll.relation_player.w09.010"] = {
+		"Io e {other} abbiamo già fatto affari. I troll contrattano come ballano: forte, a lungo, e contenti di fare un altro giro.",
+		"Abbiamo già commerciato, io e {other}. Un troll ricorda chi conta ad alta voce e chi conta in silenzio.",
+	},
+	["race.troll.relation_player.w09.011"] = {
+		"{other}, dopo tanto tempo. La marea è scesa e risalita un'infinità di volte dall'ultimo incontro.",
+		"Tanto tempo senza {other}. Sulla costa dicono che chi conosci torna sempre, come il legno portato dal mare: un po' ammaccato, ma intero.",
+	},
+	["race.troll.relation_player.w09.012"] = {
+		"{other}. Mi si secca la bocca. I troll guariscono da quasi tutto, dicono gli anziani: è a quel quasi che sto pensando.",
+		"Davanti a {other} queste gambe lunghe vorrebbero portarmi altrove, molto in fretta. Le lascio pensarci.",
+	},
+	["race.troll.relation_player.w09.013"] = {
+		"{other}. Conosco quel nome come conosco il primo colpo di un tamburo. Il resto torna da sé.",
+		"Ah, {other}. Una faccia che ho messo da qualche parte tra il pesce buono e le giornate storte. Vediamo in quale mucchio.",
+	},
 }, "base_relations")

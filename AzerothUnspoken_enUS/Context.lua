@@ -1186,4 +1186,501 @@ NS:AddTexts("enUS", {
 		"A task given, and taken. My people say a promise is a stake driven into the ground: you can walk away from it, but it stays where you left it.",
 		"Another trouble on my shoulders. Fine. They are broad shoulders, and that is what they are for.",
 	},
+	["race.gnome.npc_meet.w09.001"] = {
+		"A room, please, and a stool for the counter. The tall kind of stool. No, taller.",
+		"Whatever's hot, and a cushion to sit on so I can see over the bowl. Thank you!",
+		"One bed, one meal, one small gnome. You'll hardly notice I'm here, until I start asking how your chimney draws.",
+	},
+	["race.gnome.npc_meet.w09.002"] = {
+		"A warm common room full of noise. The old tinkers say the inns of Gnomeregan hummed with machinery instead of songs. I miss a hum I barely remember. The songs are nice too.",
+		"A bed upstairs, and not a gnome-sized door anywhere. Since we lost the city, every bed I sleep in was built for someone else.",
+	},
+	["race.gnome.npc_meet.w09.003"] = {
+		"Dwarven hospitality! Your folk took us in when the city fell, and I've yet to stand a single round in return. Let me start now.",
+		"Mountain folk at the tap. Then it's a proper pour, and I'll need both hands for the mug.",
+	},
+	["race.gnome.npc_meet.w09.004"] = {
+		"Could you bring that down from the top shelf? Not the price. Well, that too, if you're offering.",
+		"I'll take it. Do you have one about a third the size? No? Then I'll take it and adjust.",
+		"Fair price. I checked it on the way in; I check everything on the way in. Habit of a small person in a big world.",
+	},
+	["race.gnome.npc_meet.w09.005"] = {
+		"Look at the hinge on that chest. Somebody cared about it. Gnomes notice these things, whether or not we tinker ourselves.",
+		"The merchant leans over the counter to find me. I wave. It happens a dozen times a week; I've learned to wave in advance.",
+	},
+	["race.gnome.npc_meet.w09.006"] = {
+		"That price has a spring in it: it jumped the moment I walked up. Clever. I'd admire it more if I weren't the one paying.",
+		"A merchant who loves coin. Fine. I love a good argument, and my head is full of numbers.",
+	},
+	["race.gnome.npc_meet.w09.007"] = {
+		"Hello up there! Yes, down here. All quiet on your watch?",
+		"Nice armor. Good straps. Whoever made those buckles knew what they were doing.",
+		"Keep up the good work. Gnomes rest easier knowing tall people with spears are awake.",
+	},
+	["race.gnome.npc_meet.w09.008"] = {
+		"A Horde guard. I am very small, and very quiet, and very much hoping that's enough.",
+		"Horde steel, and me in plain view. Gnomes have a knack for slipping loose from any grip. I may need it presently.",
+	},
+	["race.gnome.npc_meet.w09.009"] = {
+		"A dwarven guard. When the city fell, it was dwarves on the gates of Ironforge who let us in. I give this one a proper nod.",
+		"Broad shoulders, a hammer like a door knocker, and the patience of the mountain. With that guard at my back I feel safer than behind most walls.",
+	},
+	["race.gnome.npc_meet.w09.010"] = {
+		"The flying beast eyes me like a snack with a saddle. I tell it firmly that I'm a passenger. It does not look convinced.",
+		"Is there a weight limit? No? Then I'll bring the extra pack and not mention it.",
+		"Lovely beast. Strap me in twice, please. I'm light enough that a good gust has opinions about me.",
+	},
+	["race.gnome.npc_meet.w09.011"] = {
+		"Wildhammer or Bronzebeard, mountain folk with a gryphon know the sky. Tell the beast I'm cargo, not lunch.",
+		"Mountain folk at the roost. Good. Strong straps, firm knots, and no Wildhammer acrobatics on my account, please.",
+	},
+	["race.gnome.npc_meet.w09.012"] = {
+		"Teach me everything. Then tell me why it works. Then tell me why the why works. I'll wait.",
+		"Lesson time! I'll take notes. Small ones, in very small handwriting, on the back of my hand if I must.",
+		"Show me once slowly, once at speed, and once upside down, if that's an option.",
+	},
+	["race.gnome.npc_meet.w09.013"] = {
+		"A stern teacher. Fine. Someone in Tinker Town told me the old masters of Gnomeregan shouted at their apprentices too; it meant they cared about the result.",
+		"Short manners, few words, no praise. I'll supply the praise myself: well done, me. Now again.",
+	},
+	["race.gnome.npc_meet.w09.014"] = {
+		"A deposit, please. Mind that box: it's labeled, cross-labeled, and there's a note explaining the labels.",
+		"Keep these safe. Everything our people left in Gnomeregan is down there with the troggs. This lot, I'd like to keep.",
+		"The vault's sturdy? Dwarven work? Then I'll stop fretting. Mostly. I'll fret quietly.",
+	},
+	["race.gnome.npc_meet.w09.015"] = {
+		"A problem! Lovely. Describe it in detail, please, and leave nothing out, especially the parts that sound silly.",
+		"Need a hand? I've got two small ones and a very large head. Pick whichever you'd like.",
+		"Tell me what's broken. People, beasts, bandits, plumbing: it's all just a puzzle with teeth.",
+	},
+	["race.gnome.npc_meet.w09.016"] = {
+		"One of my own people, asking for help. Since the city fell, we've all been asking each other. And all answering.",
+		"A fellow gnome with a problem. The exiles of Tinker Town look after their own; I don't even need to hear the details first.",
+	},
+	["race.gnome.npc_meet.w09.017"] = {
+		"Humans always ask for help as if the sky were falling. Having lost a whole city, I take them seriously.",
+		"A worried human face. Their people lost Lordaeron; mine lost Gnomeregan. Our faces understand each other.",
+	},
+	["race.gnome.npc_meet.w09.018"] = {
+		"High Tinker Mekkatorque. He led our people out when the city was lost, and he still talks of taking it back. I'd follow him down the tunnels tomorrow.",
+		"The High Tinker himself. Small, like all of us, and carrying the weight of a whole people. I stand a little straighter.",
+		"Gelbin Mekkatorque. Our leader in exile, scribbling plans for the day we go home. I hope I'm there to see it.",
+	},
+	["race.gnome.npc_meet.w09.019"] = {
+		"climbs onto the nearest stool without waiting to be asked and waits, patient and smiling, for {other} to notice.",
+		"taps the counter twice from below, then once more, a little louder, until the innkeeper looks down.",
+	},
+	["race.gnome.npc_meet.w09.020"] = {
+		"A gnome's stall! Prices in neat columns, a ledger for the ledger. I feel at home already.",
+		"One of ours selling. We'll haggle like proper gnomes: fast, and with diagrams.",
+	},
+	["race.gnome.npc_meet.w09.021"] = {
+		"One of my people teaching! Then we can skip the slow explanation and go straight to the interesting mistakes.",
+		"One of our own at the lectern. Let's do it the Gnomeregan way: quick, curious, and with a small explosion only if necessary.",
+	},
+	["race.gnome.npc_meet.w09.022"] = {
+		"Oh, you're cheerful too! Excellent. Between the two of us we could power a small lamp.",
+		"A good mood! Catching, isn't it? Gnomes run on it, mostly. That and tea.",
+	},
+	["race.gnome.other_action.w09.001"] = {
+		"A party! Splendid. Put me where I can see everything and nobody will step on me.",
+		"Count me in. Small, quick, and full of suggestions, most of them good.",
+		"Yes! I'll bring my wits, and I'll keep them pointed at whatever's trying to bite us.",
+	},
+	["race.gnome.other_action.w09.002"] = {
+		"A friendly bout! Excellent. Rules: no aiming for the hat.",
+		"You and me? Ha! Fine. Whoever wins buys the tea, whoever loses explains how it happened.",
+		"Gladly! I've a new trick to try, and who better to try it on than a friend?",
+	},
+	["race.gnome.other_action.w09.003"] = {
+		"waves back with both hands, bouncing a little on {g:his|her} toes to be seen.",
+		"returns the gesture with a sweeping bow that very nearly reaches the ground, which for a gnome is not far.",
+		"answers with a bright grin and a quick salute, two fingers to the brow.",
+	},
+	["race.gnome.other_action.w09.004"] = {
+		"A trade? Wonderful. I'll draw up a list. A short list. Medium. Don't worry about the list.",
+		"Let's swap. Everything I'm offering has been inspected, tested, and labeled in very tiny letters.",
+	},
+	["race.gnome.other_action.w09.005"] = {
+		"A new task! Problem received, parameters noted, solution pending. Lovely.",
+		"Another job. Every errand I finish is one step closer to the day we take the city back. That's how I count them, anyway.",
+	},
+	["race.orc.npc_meet.w09.001"] = {
+		"Those who lived through the internment camps would call this luxury. I try to remember that when the stew is thin.",
+		"Road dust in my boots, and someone at the counter waving me to a bench. Simple things. Orcs went without them long enough.",
+	},
+	["race.orc.npc_meet.w09.002"] = {
+		"Meat, bones and all. I'll leave the bones. Most of them.",
+		"Your thickest stew, keeper. Thick enough to stand a spoon in, the way they make it in Razor Hill.",
+		"Fill the bowl and don't be shy with the pepper. Durotar trains the tongue as well as the hide.",
+	},
+	["race.orc.npc_meet.w09.003"] = {
+		"A grunt and a bowl shoved across the counter. Finally, someone who speaks orc.",
+		"No smile, no chatter, a fair measure. Some call bluntness a fault. Some of us call it honesty.",
+	},
+	["race.orc.npc_meet.w09.004"] = {
+		"A warm welcome. Orcs were not always given those. The old ones remember doors that shut when a green face came near.",
+		"Kind words from {other}. I nod and keep my voice low; kindness deserves a quiet answer.",
+	},
+	["race.orc.npc_meet.w09.005"] = {
+		"A troll keeps this hearth. Orc and Darkspear have sat at the same fires since Thrall took the tribe in. Pass the fish.",
+		"Tusks taller than mine behind the counter. The trolls of Sen'jin keep their word to the Horde and, it seems, a good pot.",
+	},
+	["race.orc.npc_meet.w09.006"] = {
+		"I test the edge with my thumb before I look at the price. The old warriors say a price is forgotten long before an edge.",
+		"Orc hands are rough on goods. I pick things up gently, and the merchant still flinches.",
+	},
+	["race.orc.npc_meet.w09.007"] = {
+		"I need water carried and meat kept. Everything else is decoration.",
+		"What lasts? Show me what lasts. That, I'll pay for.",
+		"Straight answer, straight price. That's how orcs trade, and I'm in no mood to learn another way.",
+	},
+	["race.orc.npc_meet.w09.008"] = {
+		"{other} sees green skin and adds a coin for the trouble. I see the coin and add a stare. We'll meet in the middle.",
+		"That smile is sharpening the price. Lucky for me, orcs are better at staring than at counting.",
+	},
+	["race.orc.npc_meet.w09.009"] = {
+		"Goods from the Forsaken. The Warchief let them into the Horde for reasons of his own. I count my change and keep my thoughts behind my tusks.",
+		"Cold fingers, careful prices. The dead of Lordaeron fight for the Horde now. I'll trust the trade; trusting the trader takes longer.",
+	},
+	["race.orc.npc_meet.w09.010"] = {
+		"Horns behind the counter. Cairne's people offered the orcs friendship when the Horde was new to these shores. I pay without haggling.",
+		"Big hands, slow words, honest weight on the scale. Orcs could learn a thing or two from the tauren. I'd never say it to an orc.",
+	},
+	["race.orc.npc_meet.w09.011"] = {
+		"{other} has something to teach. Thrall himself went back to learn from the shamans; there's no shame in being taught.",
+		"I'll learn it properly. The old blademasters say a hasty student pays for every lesson twice.",
+	},
+	["race.orc.npc_meet.w09.012"] = {
+		"Show me once. If I get it wrong, show me harder.",
+		"Teach me like you'd teach a raw recruit. I don't need it gentle; I need it right.",
+	},
+	["race.orc.npc_meet.w09.013"] = {
+		"A Horde flier, all teeth and leather wings. Nothing about it is gentle, and I respect that in a beast.",
+		"{other} straps me in and slaps the beast's flank. Orcs were made to run on red earth, but I've come to like the long view.",
+	},
+	["race.orc.npc_meet.w09.014"] = {
+		"The strongest beast you have. I'm heavier than I look, and I look heavy.",
+		"Straight flight, soft landing, if you can arrange it. My stomach is braver on the ground.",
+	},
+	["race.orc.npc_meet.w09.015"] = {
+		"A vault for coins. Orcs once carried everything they owned on their backs. A lighter back is a strange kind of freedom.",
+		"Gold behind a locked door. I'd rather keep it in a pouch on my belt, where I can feel it. The old ones say walls make orcs soft.",
+	},
+	["race.orc.npc_meet.w09.016"] = {
+		"A request for help. In the Horde, nobody should have to ask twice. I'll hear {other} out.",
+		"Someone needs a strong arm. Strength that serves no one is only noise: the old warriors say so, and they were right about most things.",
+	},
+	["race.orc.npc_meet.w09.017"] = {
+		"Speak plainly. What needs doing, and where is it?",
+		"Tell me who's causing the trouble. I'll have a word with them. A short one.",
+		"Point me at it. I'll ask my questions on the way.",
+	},
+	["race.orc.npc_meet.w09.018"] = {
+		"A guard of the Horde at the post, planted like the ground owes them something. Lok'tar, I think, and walk on.",
+		"Horde colors on the watch. The old ones remember when the only guards orcs knew stood outside the camps, facing in.",
+	},
+	["race.orc.npc_meet.w09.019"] = {
+		"Good watch. The Horde stands because someone always stands at the gate.",
+		"Hold the line. Orcs know what a wall of the Horde is worth.",
+	},
+	["race.orc.npc_meet.w09.020"] = {
+		"An Alliance guard. The old ones would see a jailer. I try to see only a soldier. It takes effort.",
+		"Steel comes half out of the guard's sheath as I approach. I keep my hands in sight. Not fear; I simply have no wish to start anything here.",
+	},
+	["race.orc.npc_meet.w09.021"] = {
+		"walks past the Alliance guard at an even pace, jaw set, tusks forward, giving neither ground nor offense.",
+		"lets {g:his|her} hands hang open and loose, and meets the guard's stare with the flat patience of an orc who has been stared at before.",
+	},
+	["race.orc.npc_meet.w09.022"] = {
+		"Thrall. The Warchief who broke the camps open and gave the orcs back their spirits. Near him every orc stands taller, and I with them.",
+		"The son of Durotan, they call him, though he grew up a slave. I bow my head. The orcs are free because he refused to stay one.",
+	},
+	["race.orc.npc_meet.w09.023"] = {
+		"{other} speaks like the old shamans: half to me, half to something over my shoulder. I don't turn around.",
+		"Riddles. Orcs prefer plain speech, but the spirits never did. I listen twice as hard.",
+	},
+	["race.orc.npc_meet.w09.024"] = {
+		"lets out a short bark of a laugh, almost against {g:his|her} will, and the tusks show in something close to a grin.",
+		"answers the good cheer with a heavy clap on the nearest shoulder, the orcish way of saying the joke landed.",
+	},
+	["race.orc.npc_meet.w09.025"] = {
+		"{other} carries grief like a heavy pack. The old ones in the camps carried theirs for years. I say nothing foolish and stay close.",
+		"Sorrow on that face. Orcs don't talk grief away. You sit beside it, sharpen something, and wait.",
+	},
+	["race.orc.other_action.w09.001"] = {
+		"Joining up? Good. Tell me who we're angry at.",
+		"Good. A pack hunts better than a lone wolf, and eats better too.",
+		"Count me in. I'll walk at the front; I like to see it coming.",
+	},
+	["race.orc.other_action.w09.002"] = {
+		"And to you. A greeting is honored, whoever gives it.",
+		"Ha. I see you. That's how orcs say hello, when they're in a good mood.",
+	},
+	["race.orc.other_action.w09.003"] = {
+		"Let's trade. Name it plain; I'll answer plain.",
+		"An honest swap, then. Orcs remember a fair trader, and a cheat even longer.",
+		"Fine. Let's swap, and keep the talk short.",
+	},
+	["race.orc.other_action.w09.004"] = {
+		"A friendly fight? Good. Hit hard; I'll know you meant it kindly.",
+		"You and me? Ha! Whoever goes down buys the grog.",
+	},
+	["race.orc.other_action.w09.005"] = {
+		"You. Good. I've been waiting for this, and so have my fists.",
+		"A rival's challenge. I accept, and I won't hold back. You'd be insulted if I did.",
+	},
+	["race.orc.other_action.w09.006"] = {
+		"A task taken. A word given to someone in need is a debt, and orcs pay their debts.",
+		"Another trouble to break. Good. Idle hands make an orc restless.",
+	},
+	["race.scourge.npc_meet.w09.001"] = {
+		"Just a chair in the corner, please. I won't be eating, and I promise not to lower the mood any further than I already have.",
+		"Don't trouble with fresh sheets. I lie down out of habit more than need, and I don't toss and turn.",
+		"Something to drink? Pour whatever is cheapest. I can't taste the difference, and you can keep the good cask for the living.",
+	},
+	["race.scourge.npc_meet.w09.002"] = {
+		"The hearth is the first thing I look for in an inn. Not for the warmth; I feel little of it. For the way the living gather around it.",
+		"Mugs, steam off the stew, someone laughing too loud. I was alive once and sat at tables like these. The details won't come back, only the shape.",
+	},
+	["race.scourge.npc_meet.w09.003"] = {
+		"{other} doesn't flinch and doesn't smile. Just sets down the mug and moves on. Honestly, the best welcome I've had all week.",
+		"Few words, short manners, not the least bit impressed. No warding sign, no shriek. I could almost grow fond of this place.",
+	},
+	["race.scourge.npc_meet.w09.004"] = {
+		"Yes, I'm buying. No, I won't be touching the fruit. Let's both be relieved about that.",
+		"My coin spends like anyone's. It's been in a crypt, not a sewer. Mostly.",
+		"You can stop gripping the counter like that. I'm here to shop, not to haunt your stall.",
+	},
+	["race.scourge.npc_meet.w09.005"] = {
+		"Bread, cheese, dried meat. I buy some anyway. Chewing gives the jaw something to do, and the stitches seem to like the exercise.",
+		"Thread, needles, a little embalming salt if the merchant has any. The shopping list of the dead is short and very practical.",
+		"The merchant names a price and adds a little for the smell, I suspect. I let it pass. Arguing tires the living far more than it tires me.",
+	},
+	["race.scourge.npc_meet.w09.006"] = {
+		"{other} is cheerful with me. Genuinely cheerful. Either business is very slow or this one has a stronger stomach than most.",
+		"A smile, across the counter, aimed at a corpse. I don't quite know what to do with my face. It doesn't do much these days anyway.",
+	},
+	["race.scourge.npc_meet.w09.007"] = {
+		"The guard's eyes go to my jaw, then my hands, then back to the jaw. Everyone checks the jaw.",
+		"A guard sizes me up. I know that look well: not hatred, just a quiet tally of what would happen if I suddenly lost my mind.",
+	},
+	["race.scourge.npc_meet.w09.008"] = {
+		"At ease. I'm on your side, whatever my face suggests.",
+		"Same banner, guard. The Horde took us in; you may as well stop gripping that weapon.",
+		"Easy. The Dark Lady struck the same pact your Warchief did. I'm in it too, rot and all.",
+	},
+	["race.scourge.npc_meet.w09.009"] = {
+		"An Alliance guard. Some of us once stood at posts like that under Lordaeron's colors. Now we're what those posts were built against.",
+		"Alliance steel, watching me. Lordaeron's children and its dead, eyeing each other across a road. Neither side likes the view.",
+	},
+	["race.scourge.npc_meet.w09.010"] = {
+		"The flying beast sniffs at me longer than it should. Then it lowers its head. Whatever it smelled, it has decided I'm cargo.",
+		"If I fall off, I'll likely survive the landing. In pieces, perhaps. The dead are very relaxed about heights.",
+		"The flight master looks at me, then at the mount, then at the straps. Yes. Tie them tight. I'd rather not lose an arm over the hills.",
+	},
+	["race.scourge.npc_meet.w09.011"] = {
+		"One of ours minding the roost. Good. Give me a mount that doesn't care what I smell like.",
+		"Ah, someone of our own stitching. Pick me a steady mount, and we'll skip the part where everyone holds their nose.",
+	},
+	["race.scourge.npc_meet.w09.012"] = {
+		"Lessons, again. The mind still learns, even if the flesh no longer grows. That was the first good news I had after I rose.",
+		"Teach me. I've nothing but time and a will of my own, and I mean to spend both on getting better at this.",
+		"Training. Strange, to improve a body that is slowly coming apart. Then again, it was the mind the Lich King wanted, and he won't have it.",
+	},
+	["race.scourge.npc_meet.w09.013"] = {
+		"Shout if you like. I spent long enough with a voice in my head giving orders. Yours, at least, I can argue with.",
+		"A hard teacher? Good. Pain barely reaches me anyway; you'll have to try patience instead.",
+	},
+	["race.scourge.npc_meet.w09.014"] = {
+		"Store it well. I'm in no hurry to come back for it. I'm in no hurry for anything.",
+		"Valuables to deposit. Before you ask: no, none of them came out of a grave. Recently.",
+		"Keep these safe. It's not that I fear losing them. I just find it comforting that something of mine stays in one piece.",
+	},
+	["race.scourge.npc_meet.w09.015"] = {
+		"{other} asks for help, and shudders only a little. Fair enough. I'll take the job; working for the living is how the dead earn a place among them.",
+		"Someone needs a task done and chose the corpse in the room. Desperation, perhaps. Perhaps trust. I'll act as if it's trust.",
+		"A request, freely made, and I'm free to refuse it. That freedom is still new enough to taste sweet. I'll say yes anyway.",
+	},
+	["race.scourge.npc_meet.w09.016"] = {
+		"One of ours. No need for the speech about duty to the Dark Lady; just tell me where.",
+		"We're both Forsaken, so skip the polite distance. What needs doing, and who needs burying?",
+	},
+	["race.scourge.npc_meet.w09.017"] = {
+		"A tauren asking the Forsaken for help, and meaning it. The tauren spoke for us when the Horde might have turned us away. I don't forget that.",
+		"Those big, patient eyes, looking at me without disgust. I'd do the task for that alone.",
+	},
+	["race.scourge.npc_meet.w09.018"] = {
+		"Behind the counter, one green hand pours and the other stays near the cleaver. I'd be insulted, if it weren't such sensible service.",
+		"Orcs keep this house. Honor and plain speech, they say. The plain speech, at least, I can read on that face: don't start anything.",
+	},
+	["race.scourge.npc_meet.w09.019"] = {
+		"Make your sign against the dead if you need to. Then sell me something. Both can happen at once.",
+		"Trolls and Forsaken, trading. Nobody trusts anybody, everybody's polite. The Horde in miniature.",
+	},
+	["race.scourge.npc_meet.w09.020"] = {
+		"The Dark Lady. She broke the chain in our heads and asked only that we keep our wills sharp. I bow, as low as these old joints allow.",
+		"Lady Sylvanas. Freedom has a face, and it is this pale and this cold. No one else would have dragged us out of the Lich King's grip.",
+		"The Banshee Queen herself. Some of us follow her from love, some from fear, some from plain gratitude. I stand here and can't tell which is mine.",
+	},
+	["race.scourge.npc_meet.w09.021"] = {
+		"sets the coins on the counter one at a time, slowly, so the merchant need not touch a dead hand.",
+		"keeps {g:his|her} fingers clear of the merchant's and slides the payment across with the tips of the nails.",
+	},
+	["race.scourge.npc_meet.w09.022"] = {
+		"Sorrow, plain on {other}'s face. The living grieve with their whole body. I remember that much, and envy it a little.",
+		"{other} looks the way the ruins of Lordaeron look to me: something broken, still standing. I keep my voice low.",
+	},
+	["race.scourge.other_action.w09.001"] = {
+		"Count me in. If something has to walk in first, let it be the one who's already dead.",
+		"An invitation. I'll come, and I'll try not to drip on anyone.",
+		"Fine. I fight well and complain little. The complaining stopped about when the breathing did.",
+	},
+	["race.scourge.other_action.w09.002"] = {
+		"A duel? Very well. Don't be alarmed if something comes loose. It isn't a forfeit.",
+		"Accepted. Pain reaches me late and lightly. You'll have to be convincing.",
+		"A bout with the dead. Bold choice. I like bold.",
+	},
+	["race.scourge.other_action.w09.003"] = {
+		"answers the gesture with a slow nod, careful of the jaw.",
+		"lifts a gray hand in reply, the stitches at the wrist creaking faintly.",
+		"returns the greeting with a stiff little bow, the kind that joints like these still allow.",
+	},
+	["race.scourge.other_action.w09.004"] = {
+		"A trade? Fine. Everything I hand over has been cleaned. More or less.",
+		"Let's deal. They say the dead drive hard bargains. We've little else to spend our wanting on.",
+	},
+	["race.scourge.other_action.w09.005"] = {
+		"Another task taken on. My will, my choice, my errand. After the Scourge, even chores feel like freedom.",
+		"A job accepted. Afterward I listen for any other voice that might have said yes for me. Silence. Good.",
+	},
+	["race.troll.npc_meet.w09.001"] = {
+		"Every inn smells of smoke and old ale. I keep sniffing for salt and fish, the way Sen'jin smells. It never quite gets there.",
+		"A keeper, a hearth, a bench too low for these legs. Good enough. A troll folds up small when the food is worth it.",
+		"Inns are all walls and roof beams. A hut in Sen'jin lets the sea wind through, and nobody there calls that a draft.",
+	},
+	["race.troll.npc_meet.w09.002"] = {
+		"Fish, if you have it. If not, whatever swam closest to the kitchen.",
+		"Something with a bite to it, keeper. A troll tongue gets bored with bread alone.",
+		"Feed me well, keeper. Troll flesh mends itself fast, but only if somebody fills the pot first.",
+	},
+	["race.troll.npc_meet.w09.003"] = {
+		"Not one smile out of this keeper. A challenge, then. Trolls are patient about laughter; it always turns up in the end.",
+		"Few words and a heavy hand on the counter. Some witch doctors talk like that too, and they are the ones worth hearing.",
+	},
+	["race.troll.npc_meet.w09.004"] = {
+		"One of Thrall's people behind the counter. Orcs and Darkspear have shared fires since they crossed the sea together; this keeper pours like an old ally.",
+		"Orcish hands on the ale tap. The elders of Sen'jin say the Darkspear owe the orcs a debt and a friendship, and that the two are not the same thing. I tip for both.",
+	},
+	["race.troll.npc_meet.w09.005"] = {
+		"A troll behind the counter. We trade a look and a small tilt of the tusks; nobody here will need to explain why I want fish.",
+		"One of my own people pouring. The bench will still be too low, but at least the cook will know what real pepper is.",
+	},
+	["race.troll.npc_meet.w09.006"] = {
+		"Merchants count the coins twice when a troll pays. Long fingers make people nervous. I let them count.",
+		"Prices climb a little when the customer has tusks. I smile wide, and they climb back down a little when the tusks smile.",
+	},
+	["race.troll.npc_meet.w09.007"] = {
+		"I need what keeps a body moving: bandages, food, thread. Shiny things I find for free, along the road.",
+		"Anything for a long walk and a short temper? No? Then just for the walk.",
+		"Show me the useful stuff, mon. Pretty stuff, the jungle has plenty.",
+	},
+	["race.troll.npc_meet.w09.008"] = {
+		"{other} has the eyes of a raptor watching a slow goat. Pity for {other}: this goat has tusks.",
+		"That merchant's smile is all teeth and no warmth. I know the look. I wear it myself when the fish are running.",
+	},
+	["race.troll.npc_meet.w09.009"] = {
+		"Buying from the Forsaken this time. Our witch doctors talk with the dead now and then, but they rarely haggle with them.",
+		"Cold hands on the coins, a smell of herbs and grave dirt. Trolls know the spirits; this is something else. I buy quickly.",
+	},
+	["race.troll.npc_meet.w09.010"] = {
+		"Long arms, long reach, quick learner. A troll takes a lesson the way it takes a wound: it closes fast and leaves something behind.",
+		"{other} shows, I copy. The witch doctors teach the young the same way: watch the hands, not the mouth.",
+	},
+	["race.troll.npc_meet.w09.011"] = {
+		"Teach me something new. If I get it wrong, don't worry: trolls heal quick and try again.",
+		"Go on, show me. These limbs learn slow at first, and then all at once.",
+	},
+	["race.troll.npc_meet.w09.012"] = {
+		"This teacher barks like a Darkspear headhunter on a bad day. Good. The barking ones never waste a lesson.",
+		"No praise, only corrections. The elders of the tribe teach the same way: it stings, and it sticks.",
+	},
+	["race.troll.npc_meet.w09.013"] = {
+		"Darkspear riders have flown on bats for as long as the tribe can remember. Any beast with wings is a cousin. Mostly.",
+		"{other} points me to a saddle. Trolls were built for climbing trees, not clouds, but these long legs fold well enough.",
+	},
+	["race.troll.npc_meet.w09.014"] = {
+		"Pick me a beast with a lot of patience. These legs need folding, and it takes a while.",
+		"Something steady, please. A troll can climb anything, but falling is a different skill entirely.",
+	},
+	["race.troll.npc_meet.w09.015"] = {
+		"Coin kept for a fee. Along the coast my people keep their wealth in good nets and sharp spears. A locked box feels lazy, but it never needs mending.",
+		"Gold asleep in someone else's vault. The witch doctors would want a little hex on the lock, just in case.",
+	},
+	["race.troll.npc_meet.w09.016"] = {
+		"Somebody needs help and looks up at a troll. Good choice. Long arms reach a lot of trouble.",
+		"A trouble, offered across a table. The Darkspear remember who helped them when the tribe was hunted; I can help this one.",
+	},
+	["race.troll.npc_meet.w09.017"] = {
+		"Tell me what's wrong. If it bites, I bite back. If it's cursed, I know people.",
+		"Go on. Trolls are good at two things: listening, and making trouble go away. Sometimes loudly.",
+	},
+	["race.troll.npc_meet.w09.018"] = {
+		"A guard of the Horde, watching the road. When the tribe had nowhere left to go, the Horde gave it a shore and a banner. I nod as I pass.",
+		"Horde colors on a guard's shoulders. The elders of Sen'jin say an alliance freely given is the only kind worth keeping. This one we keep.",
+	},
+	["race.troll.npc_meet.w09.019"] = {
+		"Good watch. The Darkspear sleep easier with a spear like yours on the road.",
+		"Strong arm, sharp eye. The Horde is lucky in its guards, mon.",
+	},
+	["race.troll.npc_meet.w09.020"] = {
+		"An Alliance guard, hand on steel, eyes on my tusks. In human stories the troll has been the monster for a long time. Slow steps.",
+		"That guard sees a troll and thinks of Zul'Gurub, or of the Amani. Not my tribe. Explaining it here would only get me killed.",
+	},
+	["race.troll.npc_meet.w09.021"] = {
+		"folds {g:his|her} long arms well away from any weapon and lopes past the Alliance guard, easy and unhurried.",
+		"keeps {g:his|her} tusks lowered and both hands in plain sight, every inch of the long body careful not to look like a threat.",
+	},
+	["race.troll.npc_meet.w09.022"] = {
+		"{other} speaks in circles, like a witch doctor reading smoke. I know how to listen to that: wait for the word that comes back.",
+		"Riddles. In Sen'jin the old voodoo folk answer a question with a question and a shake of the rattle. I can be patient with this one.",
+	},
+	["race.troll.npc_meet.w09.023"] = {
+		"answers the cheerful greeting with a wide, tusky grin and a laugh that bubbles up from somewhere deep.",
+		"laughs along, a loose, rolling troll laugh, and sways a little on {g:his|her} long legs as if a drum had started up nearby.",
+	},
+	["race.troll.npc_meet.w09.024"] = {
+		"Sadness on that face. The Darkspear know what it is to lose a home. I keep my voice soft with {other}.",
+		"Some grief in this one. My people mourn loud and then laugh loud after. For {other}, the second part hasn't come yet.",
+	},
+	["race.troll.npc_meet.w09.025"] = {
+		"Thrall. The Warchief who found the Darkspear cornered on a small island and would not sail on without them. Every troll of the tribe owes him that.",
+		"The Warchief of the Horde. Vol'jin follows him, and so does every Darkspear spear. I stand a little straighter, tusks up.",
+	},
+	["race.troll.other_action.w09.001"] = {
+		"A party? Good. Trolls hunt better in packs, like raptors, only with better jokes.",
+		"Yes, yes, I'm coming. Long legs, quick healing, bad singing. You get all three.",
+		"I'm in. The loa like a full camp better than an empty one.",
+	},
+	["race.troll.other_action.w09.002"] = {
+		"And to you! A friendly gesture is good mojo, and I never waste good mojo.",
+		"Ha! Right back at you. Trolls answer every greeting; the spirits are listening.",
+	},
+	["race.troll.other_action.w09.003"] = {
+		"A trade, then. Fair for fair; the witch doctors say a cheat's luck rots like old fish.",
+		"Let's see what you have. I count slow, you count slow, and nobody gets hexed.",
+	},
+	["race.troll.other_action.w09.004"] = {
+		"A friendly fight? Good. The loser cooks the fish, and the winner pretends not to limp.",
+		"You and me, eh? Go easy. Or don't; I heal fast either way.",
+	},
+	["race.troll.other_action.w09.005"] = {
+		"You again? Good. The spirits are watching this time, so lose properly.",
+		"A rematch, eh? Come on, then. My tusks have been itching for it.",
+	},
+	["race.troll.other_action.w09.006"] = {
+		"Another job on my back. Fine. A troll's back is long; there's room.",
+		"Words given, words kept. Thrall kept his to the Darkspear. I can keep mine to whoever asked.",
+		"Tell me where and what. A troll's word goes as far as a troll's legs, and those go a long way.",
+	},
 }, "base_context")

@@ -1404,4 +1404,228 @@ NS:AddTexts("enUS", {
 		"I know that walk: {other}. The plains teach you to name a creature by its gait long before you see its face.",
 		"That shape is {other}, I think. Tauren eyes are made for distance; faces reach me later than outlines.",
 	},
+	["race.gnome.relation_npc.w09.001"] = {
+		"A face I know! I keep a mental file on everyone I've met. This one's file is thick and pleasant.",
+		"{other} again. Familiar faces are like familiar tools: you reach for them without thinking.",
+		"Ah, this one. Since the city was lost, every friendly face in a strange place is a small piece of home.",
+	},
+	["race.gnome.relation_player.w09.001"] = {
+		"{other}. If that one said a bridge would hold, I'd cross without checking the rivets. That is an enormous compliment.",
+		"There's {other}. I've tested my trust in that one under load, twice. It holds.",
+		"{other}. Calibrated, reliable, true.",
+	},
+	["race.gnome.relation_player.w09.002"] = {
+		"{other}! My ears twitch. That's a gnome's version of throwing a party.",
+		"Oh, {other}. Some people are like finding the missing piece at the bottom of the box: a small, happy click.",
+	},
+	["race.gnome.relation_player.w09.003"] = {
+		"I owe {other}. I've written it down, and gnomes don't lose notes. We misplace them, then find them at the worst moment.",
+		"{other}. A favor I haven't repaid yet. I'm working on a suitable thank-you. It's taking some design.",
+	},
+	["race.gnome.relation_player.w09.004"] = {
+		"{other}. Smiles, nods, says all the right things. So did Thermaplugg, the old tinkers say.",
+		"There's {other}. I'll be friendly and keep my pockets buttoned. Being small teaches you where the hands go.",
+		"{other}. Eyes up, pockets shut.",
+	},
+	["race.gnome.relation_player.w09.005"] = {
+		"{other}. I have a long memory for faulty parts and the people who sold them to me.",
+		"There's {other}. Gnomes are cheerful, they say. Mostly. There's a small, precise corner of me that isn't, and that one lives there.",
+	},
+	["race.gnome.relation_player.w09.006"] = {
+		"{other}. Every rival is a benchmark. I intend to exceed this one by a measurable margin.",
+		"Ah, {other}. Fine. Whatever you've got, I'll match it and add a feature.",
+	},
+	["race.gnome.relation_player.w09.007"] = {
+		"{other}. We fought side by side. That one watched the ground around me, which at my height is where all the trouble starts.",
+		"There's {other}, who stood in the same fight. Gnomes remember who covered them. We have to; we're easy to step on.",
+	},
+	["race.gnome.relation_player.w09.008"] = {
+		"{other}! A long gap. I've had three new ideas and abandoned two since then. Let me tell you about the third.",
+		"There's {other}, after a good while. I'd started to wonder. Gnomes worry quickly and quietly, like a ticking clock.",
+	},
+	["race.gnome.relation_player.w09.009"] = {
+		"{other}! A fellow exile and a friend. Some day we'll walk the halls of Gnomeregan together. Until then, Tinker Town will do.",
+		"There's {other}. Two gnomes who've found each other far from home: instant committee.",
+	},
+	["race.gnome.relation_player.w09.010"] = {
+		"{other}. I've worked out seventeen ways this could go. I don't like any of them, so I'll keep walking.",
+		"There's {other}. My people know what betrayal costs; it cost us a city. I won't pay that price twice.",
+		"{other}. Not worth it.",
+	},
+	["race.gnome.relation_player.w09.011"] = {
+		"{other}. We've dueled. I kept notes. I'm still revising my approach.",
+		"There's {other}. A fine duel, that. I lost on height and won on cheek, by my count.",
+	},
+	["race.gnome.relation_player.w09.012"] = {
+		"{other}. Small creatures learn early when to freeze. My knees have decided it's now.",
+		"There's {other}. I'm calculating exits. There are two, and both are behind me.",
+	},
+	["race.orc.relation_npc.w09.001"] = {
+		"{other}. A face I know. On the road, a known face is half a camp.",
+		"Ah, {other}. Orcs keep their acquaintances like their weapons: few, and well looked after.",
+		"I know {other}. On a long road, familiar faces are worth more than gold.",
+	},
+	["race.orc.relation_player.w09.001"] = {
+		"{other} I'd let stand behind me in a fight I couldn't see the end of. That is the whole of trust, for an orc.",
+		"If {other} said the bridge would hold, I'd cross it at a run.",
+	},
+	["race.orc.relation_player.w09.002"] = {
+		"{other}! Good. The day just got a war drum louder.",
+		"There's {other}. Some friendships are forged like steel: hot, hard, and better for it.",
+		"{other}. A friendly face on the road loosens my jaw. I very nearly smile.",
+	},
+	["race.orc.relation_player.w09.003"] = {
+		"There goes {other}. I catch myself grinning around my tusks. Nobody needs to know.",
+		"{other}. Good company is rare as shade in Durotar. I'll take it.",
+	},
+	["race.orc.relation_player.w09.004"] = {
+		"{other}. I don't turn my back, and my hand never drifts far from my belt.",
+		"I know {other}. The old ones say a wolf that smiles is still a wolf. I'll keep watching.",
+	},
+	["race.orc.relation_player.w09.005"] = {
+		"{other}. My blood rises. The curse is broken, the elders say, but the temper was ours all along.",
+		"There goes {other}. An orc forgives slowly, and I haven't started yet.",
+	},
+	["race.orc.relation_player.w09.006"] = {
+		"{other}. Whatever you manage today, I'll manage better tomorrow. That's how rivals keep each other sharp.",
+		"Ah, {other}. A rival is a whetstone. Nothing hones an orc like someone almost as good.",
+	},
+	["race.orc.relation_player.w09.007"] = {
+		"{other} and I have bled on the same ground. Among orcs, that counts for more than any oath.",
+		"We've fought together, {other} and I. My hands remember the rhythm of it, like a war drum heard once and never forgotten.",
+	},
+	["race.orc.relation_player.w09.008"] = {
+		"{other} and I have tested our strength once. An honest fight leaves respect behind, whoever walked away from it.",
+		"There's been a duel between {other} and me. An orc learns more from one honest bout than from ten speeches.",
+	},
+	["race.orc.relation_player.w09.009"] = {
+		"{other}, after so long. The seasons have turned. Let's see what the road made of you.",
+		"A long time without {other}. Orcs don't count days; we count scars. Let's compare.",
+	},
+	["race.orc.relation_player.w09.010"] = {
+		"{other}. Something old in me wants to run. I plant my feet. Orcs don't run from people; at least, not where anyone can see.",
+		"My hand tightens at the sight of {other}. Fear is no shame, the shamans say. Letting it lead is.",
+	},
+	["race.orc.relation_player.w09.011"] = {
+		"{other}. My blood remembers. I'll keep the peace for now, and only for now.",
+		"There is {other}. Some debts are paid in coin; this one was never that kind.",
+	},
+	["race.orc.relation_player.w09.012"] = {
+		"{other}. I know that name. An orc keeps names the way the clans keep their banners: close, and not lightly.",
+		"Ah, {other}. Faces stay with me longer than names. That one stays with both.",
+	},
+	["race.scourge.relation_npc.w09.001"] = {
+		"A face I know. The living who get used to me are rare; I keep a careful count of them.",
+		"{other} again. The first time, a step back. Now, barely a glance. Familiarity: the only cure I've found for being dead.",
+		"Ah, this one. Knows me, and still talks to me. Small things matter more now than they did when I breathed.",
+	},
+	["race.scourge.relation_player.w09.001"] = {
+		"{other}. Few of the living let me walk behind them. That one never even glances back.",
+		"There's {other}. Trust is slow for the dead; our own prince betrayed us. That one has mine anyway.",
+		"{other}. Someone I don't keep even half an eye on.",
+	},
+	["race.scourge.relation_player.w09.002"] = {
+		"{other}! Something in this cold chest lifts a little. I'll call it gladness; nothing else moves in there.",
+		"Ah, {other}. Company I'd choose. For a corpse, I'm surprisingly particular.",
+	},
+	["race.scourge.relation_player.w09.003"] = {
+		"I owe {other}. Debts are one of the few things I still feel the full weight of.",
+		"{other}. Helped me when helping the dead earns nobody any thanks. I keep a short list of such people. It is very short.",
+	},
+	["race.scourge.relation_player.w09.004"] = {
+		"{other}. I've learned to read the living: the hand that strays, the smile that waits. I'm reading now.",
+		"There's {other}. I don't need to sleep, so I never need to turn my back. Useful, around certain people.",
+		"{other}. Watch, and say nothing.",
+	},
+	["race.scourge.relation_player.w09.005"] = {
+		"{other}. The rot takes my flesh slowly. My grudges, it leaves alone.",
+		"There's {other}. I died once and forgave nothing on the way back. No reason to start now.",
+	},
+	["race.scourge.relation_player.w09.006"] = {
+		"{other}. A rival keeps the mind sharp, and the mind is the part of me that's still mine. I'll take the exercise.",
+		"Ah, {other}. Whatever you're winning at, I can be patient about it. Patience is all I have now.",
+	},
+	["race.scourge.relation_player.w09.007"] = {
+		"{other}. We fought in the same knot. I took a wound no living body would shrug off, and that one never flinched at the sight.",
+		"There's {other}, who fought beside me. It takes a stomach to stand shoulder to shoulder with the dead. That one had it.",
+	},
+	["race.scourge.relation_player.w09.008"] = {
+		"{other}, after a long while. Time runs strangely for the dead. I noticed this absence anyway.",
+		"There's {other}. A month and more. I've stopped counting most things, but I counted that.",
+	},
+	["race.scourge.relation_player.w09.009"] = {
+		"{other}! Another of the Dark Lady's free dead, and a friend besides. We can stop pretending to be comfortable around the living.",
+		"There's {other}. Two Forsaken who chose each other's company. In Undercity they'd call it unusual. I call it lucky.",
+	},
+	["race.scourge.relation_player.w09.010"] = {
+		"{other}. If I still had a pulse, it would be racing. Instead there's only this cold, and the cold is patient.",
+		"There's {other}. I've been to the grave and back. A grudge like this I'd carry down there twice.",
+		"{other}. Not here.",
+	},
+	["race.scourge.relation_player.w09.011"] = {
+		"{other}. I know that face. My memory drops a great deal these days, but it held on to this.",
+		"A familiar figure: {other}. The dead forget their own names sometimes. Not that one's.",
+	},
+	["race.scourge.relation_player.w09.012"] = {
+		"{other}. Fear without a heartbeat is a strange thing: no racing, no sweat, only a cold that sharpens. I keep very still.",
+		"There's {other}. Part of me wants to vanish into the crowd. The old Forsaken habit: hide first, ask later.",
+	},
+	["race.troll.relation_npc.w09.001"] = {
+		"{other}, a face I know. On the coast you greet the same fishers every tide; a known face means safe water.",
+		"Ah, {other}. Known faces are like known reefs: you stop scraping your knees on them.",
+		"{other}. The spirits like it when a troll keeps track of the people met along the road.",
+	},
+	["race.troll.relation_player.w09.001"] = {
+		"{other} I would take out past the reef in a little boat, and never once check who was holding the oars.",
+		"With {other} nearby I can rest with both eyes shut. For a troll on the road, that is no small gift.",
+	},
+	["race.troll.relation_player.w09.002"] = {
+		"{other}! Now the road has someone to laugh with. Trolls laugh alone too, but it sounds sillier.",
+		"There is {other}. Friendship is saving the best piece of fish for someone, even when you're hungry.",
+		"Ha, {other}! Good. The spirits keep their promises after all.",
+	},
+	["race.troll.relation_player.w09.003"] = {
+		"I owe {other}. The witch doctors tie a knot in a cord for every debt of the heart. The one for {other} is still tied.",
+		"{other} was there when it mattered. A Darkspear remembers that the way the tribe remembers Thrall's ships: a debt that doesn't fade.",
+	},
+	["race.troll.relation_player.w09.004"] = {
+		"There's {other}, and my tusks are already grinning. Can't help it. They have their own opinions.",
+		"Look who it is: {other}. I start humming before I notice. That's the mojo of good company.",
+	},
+	["race.troll.relation_player.w09.005"] = {
+		"{other}. A raptor in the tall grass looks friendly too, until it's close enough. I keep my distance.",
+		"I know {other}. I'll be polite, and I'll keep one long arm free while I'm at it.",
+	},
+	["race.troll.relation_player.w09.006"] = {
+		"{other}. The witch doctors say a grudge is a curse you cast on yourself. I'm keeping this one anyway.",
+		"There goes {other}. Troll flesh closes over any wound. Some of the other kind, it seems, stay open.",
+	},
+	["race.troll.relation_player.w09.007"] = {
+		"{other}. In Sen'jin, they say, the young ones race up the tallest palm and the loser climbs down carrying the coconuts. I'd race {other} up any tree.",
+		"Ah, {other}. Two raptors, one trail. Neither of us gives way, and both of us enjoy it.",
+	},
+	["race.troll.relation_player.w09.008"] = {
+		"{other} and I have fought in the same line. Blood spilled on one ground binds tighter than any trade, the elders say.",
+		"We've held one fight together, {other} and I. My wounds closed fast, as troll wounds do. The memory hasn't.",
+	},
+	["race.troll.relation_player.w09.009"] = {
+		"{other} and I have dueled once. Trolls fight for fun more than most people, and that one was fun.",
+		"We've measured each other, {other} and I. A troll remembers a good sparring partner longer than a good meal. Almost.",
+	},
+	["race.troll.relation_player.w09.010"] = {
+		"{other} and I have traded before. Trolls bargain like they dance: loud, long, and happy to go another round.",
+		"We've done business once, {other} and I. A troll remembers who counts out loud and who counts quietly.",
+	},
+	["race.troll.relation_player.w09.011"] = {
+		"{other}, after so long. The tide has gone out and come back a great many times since we last crossed paths.",
+		"A long while without {other}. On the coast they say everyone you know comes back like driftwood: battered, but whole.",
+	},
+	["race.troll.relation_player.w09.012"] = {
+		"{other}. My mouth goes dry. Trolls heal from almost anything, the elders say; it is the almost I'm thinking about.",
+		"Seeing {other}, these long legs want to take me somewhere else, very fast. I let them think about it.",
+	},
+	["race.troll.relation_player.w09.013"] = {
+		"{other}. I know that name the way I know the first beat of a drum. The rest comes back on its own.",
+		"Ah, {other}. A face I've filed somewhere between the good fish and the bad days. Let's see which pile.",
+	},
 }, "base_relations")

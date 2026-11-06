@@ -399,4 +399,24 @@ NS:AddTexts("itIT", {
 		"Ho già camminato su questa terra. Un tauren non passa mai da nessuna parte alla leggera; forse per questo qui la terra sembra conoscere il mio passo.",
 		"Terreno conosciuto. Gli zoccoli trovano la strada un poco prima dei pensieri, come un kodo che sa il sentiero per l'acqua.",
 	},
+	["mem.ret.gnome.w09.001"] = {
+		"{zone}, ancora. Confronto i vecchi appunti con quello che vedo: uno steccato spostato, un sentiero allargato. A uno gnomo piace un posto che tiene aggiornati i suoi numeri.",
+		"Rieccomi a {zone}. Un terreno conosciuto è solo un problema risolto che posso godermi una seconda volta.",
+		"Conosco {zone}. Un posto noto è come un cardine ben oliato: niente cigolii e, con un po' di fortuna, niente sorprese.",
+	},
+	["mem.ret.orc.w09.001"] = {
+		"Attraverso {zone} un'altra volta. Ne ricordo la forma, i ripari, la direzione da cui arrivavano i guai. La memoria di un orco è soprattutto una mappa di scontri.",
+		"Conosco {zone}. Un orco non dimentica un terreno che ha già calpestato: dov'era l'acqua, dove aspettava il pericolo.",
+		"{zone}, e ormai il terreno mi conosce. I vecchi guerrieri dicono che un posto percorso due volte è un posto mezzo vinto.",
+	},
+	["mem.ret.scourge.w09.001"] = {
+		"Mi ricordo di {zone}, e mi fa più piacere del dovuto. La mia memoria ha perso tanto, una volta, che ogni posto che trattiene mi sembra una piccola vittoria.",
+		"Sono già {g:stato|stata} a {zone}, e me lo ricordo bene. Dopo tutto il passato che la tomba si è presa, ogni nuovo ricordo che riesco a tenere è mio due volte.",
+		"{zone}. Conosco questo terreno. Noi Reietti collezioniamo i ricordi con cura: la prima raccolta è andata quasi tutta persa.",
+	},
+	["mem.ret.troll.w09.001"] = {
+		"{zone}, ancora una volta. I piedi ricordano i sentieri prima della testa. I troll seguono le tracce per abitudine, anche le proprie.",
+		"Conosco {zone}. Gli odori sono gli stessi, i sentieri anche. Un troll dimentica le facce molto prima dei posti.",
+		"{zone}. Ci ho già camminato, e credo che il posto lo sappia. Gli spiriti di una terra ricordano chi è passato con rispetto.",
+	},
 }, "base_memory")

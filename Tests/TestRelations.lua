@@ -822,7 +822,9 @@ T.run("NPC conosciuti: un richiamo solo con una relazione vera", function()
 	T.eq(Engine:PickEntry("relation_npc", NS:BuildContext(), "say"), nil, "un NPC appena incontrato non è ancora 'conosciuto'")
 	R:SetAxis("npc", 1234, "familiarity", 45); R:SetAxis("npc", 1234, "trust", 50); R:SetAxis("npc", 1234, "affection", 50)
 	local rec = Engine:PickEntry("relation_npc", NS:BuildContext(), "say") or Engine:PickEntry("relation_npc", NS:BuildContext(), "emote")
-	T.ok(rec ~= nil and rec.id:find("^rel%.npc%."), "con l'NPC aperto parla (" .. tostring(rec and rec.id) .. ")")
+	-- un richiamo generico, o uno della razza del personaggio (il personaggio delle prove è un orco, W09)
+	T.ok(rec ~= nil and (rec.id:find("^rel%.npc%.") or rec.id:find("^race%.orc%.relation_npc%.")),
+		"con l'NPC aperto parla (" .. tostring(rec and rec.id) .. ")")
 	-- il richiamo parte da solo all'apertura del dialogo, una volta
 	FIRE("GOSSIP_CLOSED")
 	NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
