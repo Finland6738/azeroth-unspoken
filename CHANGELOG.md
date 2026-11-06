@@ -8,6 +8,41 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0f: only the lines of the character's class and race in memory (issue #138, ADR 0053)
+
+C0e left memory as the limit at the random need: about 59 MB at login and 75 MB after visiting every area, in one
+language, at 270,000 texts per language, about 80% of the resident lines being class and race lines. The addon now
+keeps only those of the character. See [ADR 0053](docs/adr/0053-lines-of-the-character-only.md).
+
+- **Changed: a line of another class or race is never registered.** A rule whose conditions ask, at their top level, a
+  `class` or a `race` of the player (a value or a list of values) that leaves out the character's is not registered,
+  in any pack (built-in, regional, external), and its texts are dropped when they come (`Engine:NotOwn`,
+  `Engine.skipped`, `Engine:AddEntry`, `Engine:AddTexts`). The class and race are read from `UnitClass("player")`
+  and `UnitRace("player")` at the first rule (`Engine:ReadOwn`); if the client does not give them, every line is
+  kept, as before. The lines about another unit's class or race (`other = { class, race }`, `targetClass`,
+  `targetRace`) and those with a class or race inside `not` or `any` stay. Another character is another session (a
+  login reloads the interface) and loads its own lines. No new folder or pack: the condition decides, so the waves,
+  the archive and external packs change nothing (PACK_FORMAT.md says what it means for a pack).
+- **Added:** `/au packs` prints the class and race whose lines are loaded and how many rules and texts of other classes
+  and races were left out (`Engine.ownStats`). `Packs:Settle` (on `WORLD_ENTER`) lets go the ids of the base lines left
+  out once their texts can no longer come.
+- **Memory** (`Tests/bench_scale.py --areas --texts 0,100000,270000 --own both`, one language, folders by area, the
+  resident lines with the class and race pools of the need model, a Warrior Orc): at 270,000 texts per language 59.5 →
+  23.2 MB at login, 61.2 → 24.8 MB with the first area, 74.6 → **38.4 MB** at most after every area (target about
+  40 MB: met); at 100,000, 26.6 → 15.0, 27.5 → 16.1 and 33.5 → 21.2 MB; today 9.9 → 9.3 MB at login (874 rules left
+  out). With today's continent folders at 270,000: 35.2 MB with the first area, 44.8 MB at most (ADR 0049 §4 splits
+  the folders by area at that size). Picks and changes of area cost the same.
+- **Picks unchanged:** `Tests/trace_picks.py --character X` and `--character X --own` print the same 3,000 picks for a
+  Warrior Orc (with `--exact` too), a Mage Human and a Priest Scourge.
+- **Tests:** `run_tests.py` loads nine characters that cover every class and race as the client does and compares their
+  lines with the whole database (no line of another class or race, every line they can say with all its texts, the
+  lines about other units kept, the validator unchanged, less memory); a warrior orc has no mage or human line and
+  greets a dwarf with the dwarf's line; a relog to a mage human and back loads the right lines each time. Development
+  installs keep every line: `Tests/MockWoWAPI.lua` sets `AZEROTHUNSPOKEN_ALL_LINES`; `load_addon(own=(class, race))`,
+  `bench_scale.py --own` and `trace_picks.py --character --own` load one character.
+- Docs: ADR 0053 (and an update of ADR 0052 §4), ARCHITECTURE.md, PACK_FORMAT.md, G1 checklist section C0f, wiki
+  (Installation and Updating, Commands, FAQ).
+
 ### C0e: a bounded pick, whatever the number of lines (issue #138, ADR 0052)
 
 Content wave W04 (PR #250) found the cost of a pick growing with the content: every candidate of an event was checked

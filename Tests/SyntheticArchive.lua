@@ -10,6 +10,10 @@
 --   opts.seed (integer, default 1)         generator seed: the same seed gives the same archive
 --   opts.placeShare (0..1, default 0.6)    share of clones bound to one zone (the rest keep their own conditions)
 --   opts.langs (default { "itIT", "enUS" }) languages written for every clone
+--   opts.own (C0f, ADR 0053) { classes = { { "WARRIOR", weight }, ... }, classShare = 0..1, races = { { "Orc", weight },
+--     ... }, raceShare = 0..1 }: the class and race of the player that a clone asks are drawn again, so that these shares
+--     of the clones are lines of one class or one race (weighted), as the need model plans the resident pools, and the
+--     others ask neither (the lines about another unit, `other` or the target, are kept)
 
 SYNTH_ZONES = {
 	"Elwynn Forest", "Westfall", "Redridge Mountains", "Duskwood", "Stranglethorn Vale", "Dun Morogh", "Loch Modan",
@@ -126,6 +130,19 @@ function SYNTH_SOURCE(NS, n, opts)
 		return state % m + 1
 	end
 
+	-- a weighted pick from { { value, weight }, ... }
+	local function Weighted(list)
+		local total = 0
+		for _, x in ipairs(list) do total = total + x[2] end
+		local at = (Rand(1000000) - 1) / 1000000 * total
+		for _, x in ipairs(list) do
+			at = at - x[2]
+			if at < 0 then return x[1] end
+		end
+		return list[#list][1]
+	end
+	local own = opts.own
+
 	local registry, texts = {}, {}
 	for _, lang in ipairs(langs) do texts[lang] = {} end
 	local events = {}
@@ -133,6 +150,17 @@ function SYNTH_SOURCE(NS, n, opts)
 		local p = base[Rand(#base)]
 		local id = ("syn.%06d"):format(i)
 		local when = Copy(p.when)
+		if own then
+			when = when or {}
+			when.class, when.race = nil, nil
+			local x = (Rand(1000000) - 1) / 1000000
+			if x < own.classShare then
+				when.class = Weighted(own.classes)
+			elseif x < own.classShare + own.raceShare then
+				when.race = Weighted(own.races)
+			end
+			if next(when) == nil then when = nil end
+		end
 		if Rand(1000) <= placeShare * 1000 and not (when and (when.zone or when.subzone or when.place)) then
 			when = when or {}
 			when.zone = SYNTH_ZONES[Rand(#SYNTH_ZONES)]
@@ -187,6 +215,7 @@ end
 -- clone keeps its conditions, with the zone of the area in place of any place it asked.
 --   opts.area, opts.zone (required), opts.seed (default 1), opts.lang (default "enUS"), opts.prefix (default the area)
 --   opts.form "builder" (default: a builder function, as before C0b) or "source" (the entries in a string, ADR 0049)
+--   opts.plain (C0f, ADR 0053): the clones ask no class or race of the player (the place pools of the need model)
 function SYNTH_AREA_SOURCES(NS, n, opts)
 	local Engine = NS.Engine
 	local lang = opts.lang or "enUS"
@@ -204,6 +233,7 @@ function SYNTH_AREA_SOURCES(NS, n, opts)
 		local id = ("syn.%s.%06d"):format(prefix, i)
 		local when = Copy(p.when) or {}
 		when.zone, when.subzone, when.place, when.landmark = opts.zone, nil, nil, nil
+		if opts.plain then when.class, when.race = nil, nil end
 		table.insert(rules, ("[%q] = %s,\n"):format(id, Serialize({
 			event = Copy(p.events), speaker = p.speaker, form = p.form, category = p.category,
 			styles = Copy(p.styles), depth = Keys(p.depth), tags = Keys(p.tags), weight = p.weight,

@@ -570,6 +570,18 @@ sample of each level of specificity instead of every line, so its cost should no
     heard about half the time, the class and race lines often, the general ones now and then? **Report:** a line
     heard twice within a few minutes, or a level (place, class, general) that never speaks.
 
+**C0f (ADR 0053): the lines of the character only.** Never run in the client either. The addon now keeps only the
+lines written for the character's own class and race; it reads them while it loads.
+
+17. **Class and race read at load.** Log in, then `/au packs`. **Expect:** a line "lines of the character only: class
+    warrior, race orc (N rules and M texts of other classes and races not loaded)" with your class and race (undead:
+    `scourge`). **Report:** the line as printed, or that it is missing (the client did not give the class or race while
+    the addon loaded: every line is then kept, as before).
+18. **Another character.** Log out, log in with a character of another class and race (another faction if you can),
+    `/au packs` again: its own class and race, no Lua error. Speak a few times (`/au speak`) on both: the class lines
+    are those of the character playing. **Report:** the memory of `/au prof` on both, and a line of the wrong class or
+    race if one is ever heard.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -650,4 +662,5 @@ C0 areas ............... area in /au packs ______  ms of a change ______  stutte
 C0b frames ............. ms in all ______  frames ______  longest frame ______  stutter? ___  errors? ___
 C0b memory ............. sources kept (KB) ______  areas released ______
 C0e picks .............. PickEntry mean/p95 (ms) ______  stutter? ___  place/class/general all heard? ___  repeats ______
+C0f own lines .......... /au packs class/race ______  rules/texts left out ______  other character ok? ___  KB (1st/2nd) ______
 ```

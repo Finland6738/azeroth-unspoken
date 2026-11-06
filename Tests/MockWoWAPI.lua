@@ -1,5 +1,8 @@
 -- finta API di WoW per provare l'addon fuori dal gioco (WoW Forever, Interface 16001)
 SENT = {}
+-- C0f (ADR 0053): a development install reads the whole database (the lines of every class and race). A test of what
+-- the client loads for one character sets it to nil before the addon's files run (run_tests.load_addon(own=True)).
+AZEROTHUNSPOKEN_ALL_LINES = true
 P = {   -- stato del giocatore, modificabile dai test
 	name = "Garrosh", class = "WARRIOR", race = "Orc", faction = "Horde", sex = 2, level = 30,
 	hp = 100, hpMax = 100, combat = false, zone = "Durotar", subzone = "", hour = 14,

@@ -177,6 +177,7 @@ NS:RegisterLanguage("it", {
 		packs_reload_manual = "scrivi /reload per caricare le frasi della nuova lingua.",
 		packs_state = "cartelle: frasi in %s, regione/area %s (caricamenti %d, costruzioni %d, rilasci %d, attese per il combattimento %d)",
 		packs_change = "ultimo cambio di area: %s, %d regole regionali costruite in %s ms distribuiti su %d fotogrammi (al massimo %s ms in uno)",
+		packs_own = "solo le frasi del personaggio: classe %s, razza %s (%d regole e %d testi di altre classi e razze non caricati)",
 		packs_building = "costruzione delle frasi di %s in corso (%d fotogrammi finora)",
 		packs_sources = "sorgenti regionali conservate: %s KB; aree rilasciate per risparmiare memoria (tornano dopo /reload): %s",
 		packs_loaded = "caricata", packs_not_loaded = "non caricata (ora non serve)", packs_absent = "non installata",

@@ -60,6 +60,7 @@ They exist to remember *why* the project is built a certain way, not only *how*.
 | [0050](0050-need-model-near-duplicates-and-content-waves.md) | A need model for the content, a near-duplicate check, and the content waves | accepted (offline tools; the rates are hypotheses) |
 | [0051](0051-tiers-mixed-by-share.md) | The tiers mixed by share, and data files under Lua's limit of constants | accepted (offline; the shares are hypotheses) |
 | [0052](0052-a-bounded-pick.md) | A bounded pick: large events sampled by tier, and the cost of a pick gated in instructions | accepted (offline tests and projections) |
+| [0053](0053-lines-of-the-character-only.md) | The lines of the character only: class and race lines of other characters are never registered | accepted (offline; reading the class and race at load untested in game) |
 
 ## Pending decisions
 

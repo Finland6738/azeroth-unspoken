@@ -18,6 +18,11 @@ level: the pick of ADR 0029 before #138) it must be the same as the trace of an 
 Since C0e (ADR 0052) a large event is sampled by tier: a trace differs from one of an engine before it wherever an event
 has more than Engine.SAMPLE_FROM candidates, on purpose; with --exact (Engine.SAMPLE = false: every candidate checked)
 it must be the same as the trace of an engine before C0e.
+
+Since C0f (ADR 0053) the client registers only the lines of the character's class and race. --character CLASS/Race
+keeps one character for every pick (instead of cycling through five), and --own loads only its lines, as the client
+does: with --exact the trace of --character X --own must be the same as the trace of --character X (the lines left out
+can never be picked for that character).
 """
 import argparse, os, sys
 
@@ -51,8 +56,12 @@ def main(argv):
                     "(generic, situation, place) at the end, on stderr")
     ap.add_argument("--emotion", help="emotional state at the start (R4), e.g. worried=0.6,tense=0.3; it fades as the "
                     "trace advances the time")
+    ap.add_argument("--character", help="CLASS/Race of every pick (C0f), e.g. WARRIOR/Orc; default five characters in turn")
+    ap.add_argument("--own", action="store_true", help="with --character: register only its lines, as the client does "
+                    "(C0f, ADR 0053)")
     a = ap.parse_args(argv)
-    lua, ns, _ = B.load_addon(os.path.abspath(a.addon))
+    character = tuple(a.character.split("/")) if a.character else None
+    lua, ns, _ = B.load_addon(os.path.abspath(a.addon), own=character if a.own else None)
     if a.r1:
         ns.Engine.R1_COMPAT = True
     if a.exact:
@@ -86,7 +95,7 @@ def main(argv):
     for i in range(a.picks):
         event, form = EVENTS[i % len(EVENTS)]
         zone, subzone = ZONES[(i // 3) % len(ZONES)]
-        cls, race = CLASSES[(i // 7) % len(CLASSES)]
+        cls, race = character or CLASSES[(i // 7) % len(CLASSES)]
         lang = "it" if (i // 11) % 2 else "en"
         res, level = pick(ns, event, form, lang, zone, subzone, (i * 5) % 24, cls, race, i % 4 == 0)
         if level is not None:

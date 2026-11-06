@@ -1,6 +1,6 @@
 # 0052. A bounded pick: large events sampled by tier, and the cost of a pick gated in instructions
 
-- Status: Accepted (offline tests and projections; nothing measured in the client yet)
+- Status: Accepted (offline tests and projections; nothing measured in the client yet); the memory proposal of §4 is done in [ADR 0053](0053-lines-of-the-character-only.md)
 - Date: 2026-11-06 (the engine finding of content wave W04, PR #250; issue #138; amends [ADR 0024](0024-selection-index-compact-registry-and-bounded-memory.md) and [ADR 0051](0051-tiers-mixed-by-share.md) §1.4)
 
 ## Context
@@ -61,6 +61,10 @@ Offline, lupa on one PC, `main` → this change on the same machine and the same
 - Picks: `Tests/trace_picks.py --exact` and `--r1` print the same 3,000 picks as `main`; the default trace differs in 2,821 of them (after the first sampled pick the random sequence diverges) with the same levels: generic 46.2% (`main` 46.0%), situation 45.6% (45.9%), place 8.1% (8.1%). The M2 targets hold: same theme consecutively 2.9% (2.7% on `main`), "says" and "murmurs" 4.8% (5.0%), combat 34.7% (34.8%).
 
 **Memory is the limit at the random need, not the pick.** About 74 MB for one language at 270,000 texts per language is past the 40 MB working target of ADR 0024 for 50,000 entries, and most of it is the resident lines, about 50 MB. In the need model the class and race pools are about 79% of the resident texts (strict need: class 7,805 and race 6,000 of 17,375), and a character needs only its own class (one of nine) and race (one of eight). **Proposal** (not done here): class and race packs loaded for the character only, as the area packs are for its area; the resident lines would fall to about 15 MB and the whole addon to about 40 MB at 270,000 texts per language. The need model and the waves do not change: the lines stay in the same pools.
+
+## Update: the memory proposal (C0f, 2026-11-06)
+
+The proposal above is done in [ADR 0053](0053-lines-of-the-character-only.md), without packs by class and race: a rule whose top-level `class` or `race` leaves out the character's is not registered, in any pack, and its texts are dropped. The same projection (folders by area, one language, the resident clones with the class and race pools of the need model, a Warrior Orc): at 270,000 texts per language 59.5 → 23.2 MB at login and 74.6 → 38.4 MB at most after every area; at 100,000, 26.6 → 15.0 and 33.5 → 21.2 MB. The picks of a character are byte-identical.
 
 ## Alternatives considered
 

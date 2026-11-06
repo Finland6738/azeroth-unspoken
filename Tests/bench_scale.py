@@ -41,6 +41,13 @@ and --resident-share of them stay resident (the need model plans about 40% of th
 area packs hold, and 60% in the generic, situation, class and race pools, which stay in memory). Both modes also
 report the memory after the picks (the tiers of the groups of the index are made when a pick first reads them).
 
+C0f (ADR 0053): the client registers only the lines of the character's class and race. With --areas the resident clones
+take the class and race pools of the need model (need_shares: about 45% class lines and 34% race lines, weighted by class
+and race), the area clones ask no class or race, and --own CLASS/Race (default WARRIOR/Orc) loads them as the client does
+for that character; --own all loads every line (the engine before C0f), --own both measures the two in turn. The sources
+are cloned in a runtime of the whole database either way, so the two see the same archive. The report adds the rules
+left out and the memory right after the resident content is registered with the collector stopped (the compiled chunk).
+
 The numbers are a projection from lupa on the machine that runs the script, not a measurement in the client: the
 working targets of R1 (PickEntry under 5 ms and memory under 40 MB at 50,000 entries) stay hypotheses until the
 in-game measurements of /au prof (D3 in #130). The test suite runs a reduced size (see run_tests.py); the full sizes
@@ -78,11 +85,13 @@ def pack_folders(addon):
     return out
 
 
-def load_addon(addon, packs="all", locale=None, zone=None):
+def load_addon(addon, packs="all", locale=None, zone=None, own=None):
     """A fresh runtime with the addon only (like run_tests.load_addon without the example pack).
     packs: "all" = every language and regional folder in memory and every region built; "lazy" = the folders are
     installed as LoadOnDemand and Core/Packs.lua loads them like in the client (only the chosen language, only the
-    region of the character); "none" = no folder. locale: language saved before the start ("en", "it")."""
+    region of the character); "none" = no folder. locale: language saved before the start ("en", "it"). own: None =
+    every line of every class and race (a development install); (class, race) = the character: only its lines are
+    registered, as in the client (C0f, ADR 0053)."""
     name = os.path.basename(addon)
     lua = lua51.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(open(os.path.join(HERE, "MockWoWAPI.lua"), encoding="utf-8").read())
@@ -90,6 +99,8 @@ def load_addon(addon, packs="all", locale=None, zone=None):
         lua.execute(f'AzerothUnspokenDB = {{ schemaVersion = 7, settings = {{ locale = "{locale}" }} }}')
     if zone:
         lua.execute(f'P.zone = "{zone}"')
+    if own:
+        lua.execute(f'AZEROTHUNSPOKEN_ALL_LINES = nil; P.class, P.race = "{own[0]}", "{own[1]}"')
     ns = lua.table()
     t0 = time.perf_counter()
     for f in toc_files(addon, name):
@@ -251,10 +262,40 @@ def pick_stats(lua, ns, zones, picks, seed):
 EASTERN_AREAS = 22   # the first 22 zones of SYNTH_ZONES are in the Eastern Kingdoms, the other 18 in Kalimdor
 
 
-def measure_areas(addon, total, resident, layout, picks, seed, form="source", budget=4.0, keep_kb=None):
-    """The projection by area (C0, ADR 0048; C0b, ADR 0049): see the module docstring."""
+def need_shares(path=None):
+    """C0f (ADR 0053): the class and race pools of the need model (docs/content/need.json), as shares of the resident
+    texts (every pool but the place pools) and weights of each class and race token: {classes: [(token, w)], classShare,
+    races: [(token, w)], raceShare}."""
+    path = path or os.path.join(HERE, "..", "docs", "content", "need.json")
+    need = json.load(open(path, encoding="utf-8"))
+    cols = need["pool_columns"]
+    by_layer, by_value = {}, {"class": {}, "race": {}}
+    for row in need["pools"]:
+        d = dict(zip(cols, row)) if isinstance(row, list) else row
+        by_layer[d["layer"]] = by_layer.get(d["layer"], 0) + d["need_random"]
+        if d["layer"] in by_value:
+            by_value[d["layer"]][d["value"]] = by_value[d["layer"]].get(d["value"], 0) + d["need_random"]
+    resident = sum(v for k, v in by_layer.items() if k != "place")
+    tokens = {r.lower(): r for r in ("Human", "Dwarf", "Gnome", "NightElf", "Orc", "Scourge", "Tauren", "Troll")}
+    return {"classes": [(v.upper(), w) for v, w in sorted(by_value["class"].items())],
+            "classShare": by_layer["class"] / resident,
+            "races": [(tokens.get(v, v), w) for v, w in sorted(by_value["race"].items())],
+            "raceShare": by_layer["race"] / resident}
+
+
+def measure_areas(addon, total, resident, layout, picks, seed, form="source", budget=4.0, keep_kb=None, own=None,
+                  shares=None):
+    """The projection by area (C0, ADR 0048; C0b, ADR 0049): see the module docstring. C0f (ADR 0053): own = (class,
+    race) loads the lines of that character only, as the client does (None: every line, as before C0f); shares (from
+    need_shares) gives the resident clones the class and race pools of the need model, and the area clones none."""
     t0 = time.perf_counter()
-    lua, ns, base_load = load_addon(addon, "lazy")
+    # the synthetic sources are cloned from every line (a runtime of the whole database), then loaded as the client
+    # loads them: with own, in a runtime that registers the lines of the character only
+    gen_lua, gen_ns, base_load = load_addon(addon, "lazy")
+    if own:
+        lua, ns, base_load = load_addon(addon, "lazy", own=own)
+    else:
+        lua, ns = gen_lua, gen_ns
     ns.db.locale = "en"
     G = lua.globals()
     # C0b: the clock of the client (debugprofilestop) is the CPU time of this thread here (cpu_clock), for the share of
@@ -269,14 +310,14 @@ def measure_areas(addon, total, resident, layout, picks, seed, form="source", bu
     per_area = (total - resident) // len(zones)
     # the sources are made in Lua and kept in Python until LoadAddOn asks for them: Lua then holds only what the folder
     # leaves (the compiled builders), as in the client
-    make = lua.eval("""function(ns, n, area, zone, seed, form)
-        return SYNTH_AREA_SOURCES(ns, n, { area = area, zone = zone, seed = seed, form = form })
+    make = gen_lua.eval("""function(ns, n, area, zone, seed, form, plain)
+        return SYNTH_AREA_SOURCES(ns, n, { area = area, zone = zone, seed = seed, form = form, plain = plain })
     end""")
     areas, src = [], {}
     for j, zone in enumerate(zones):
         cont = "eastern" if j < EASTERN_AREAS else "kalimdor"
         area = ns.Place.AreaKey(zone)
-        rules, texts = make(ns, per_area, area, zone, seed + j, form)
+        rules, texts = make(gen_ns, per_area, area, zone, seed + j, form, shares is not None)
         areas.append((zone, area, cont))
         src[area] = (rules, texts)
     G.FETCH_SOURCE = lambda key, part: src[key][0 if part == "rules" else 1]
@@ -305,10 +346,30 @@ def measure_areas(addon, total, resident, layout, picks, seed, form="source", bu
             folders += 2
     lua.execute("AzerothUnspoken.Packs:Discover()")
     # the resident content, registered at login like the base content
-    gen, _ = lua.eval("""function(ns, n, seed)
-        return SYNTH_SOURCE(ns, n, { seed = seed, placeShare = 0.6, langs = { "enUS" } })
-    end""")(ns, resident, seed)
-    lua.eval("function(src, ns) assert(loadstring(src, '=resident'))(ns) end")(gen, ns)
+    own_opts = None
+    if shares:
+        T = gen_lua.table_from
+        own_opts = T({"classes": T([T(list(x)) for x in shares["classes"]]), "races": T([T(list(x)) for x in shares["races"]]),
+                      "classShare": shares["classShare"], "raceShare": shares["raceShare"]})
+    gen, _ = gen_lua.eval("""function(ns, n, seed, own)
+        return SYNTH_SOURCE(ns, n, { seed = seed, placeShare = 0.6, langs = { "enUS" }, own = own })
+    end""")(gen_ns, resident, seed, own_opts)
+    del own_opts
+    if own:
+        del gen_lua, gen_ns
+    # C0f: the memory right after the resident content is registered, the collector stopped (the compiled chunk, and
+    # the lines of other classes and races, are garbage then), and the rules it gave
+    login_peak_kb, registered = lua.eval("""function(src, ns)
+        collectgarbage("collect"); collectgarbage("collect")
+        local n0 = ns.Engine.nextOrd
+        collectgarbage("stop")
+        assert(loadstring(src, '=resident'))(ns)
+        local peak = collectgarbage("count")
+        collectgarbage("restart")
+        -- what WORLD_ENTER does after the login (C0f): the ids of the lines not registered are let go
+        if ns.Packs.Settle then ns.Packs:Settle() end
+        return peak, ns.Engine.nextOrd - n0
+    end""")(gen, ns)
     del gen
     # the journey starts from nothing regional: the area of the login (the real trial slice) is dropped first
     lua.execute("""local Packs = AzerothUnspoken.Packs
@@ -352,7 +413,10 @@ def measure_areas(addon, total, resident, layout, picks, seed, form="source", bu
                      "frames": frames, "loads": loads, "load_calls": calls, "kept_kb": kept / 1024})
     found, times, kinstr = pick_stats(lua, ns, [journey[-1]], picks, seed)
     after_picks = memory_kb(lua)
+    skipped = lua.eval("function(ns) return ns.Engine.ownStats and ns.Engine.ownStats.rules or 0 end")(ns)
     return {"after_picks_kb": after_picks, "total": total, "resident": resident, "per_area": per_area, "areas": len(zones), "layout": layout,
+            "own": "/".join(own) if own else None, "login_peak_kb": login_peak_kb, "resident_registered": registered,
+            "skipped_rules": skipped,
             "form": form, "budget": budget, "folders": folders, "setup_s": setup_s, "base_load_s": base_load, "resident_kb": resident_kb, "rows": rows,
             "picks": picks,
             "found": found, "pick_mean_ms": statistics.mean(times), "pick_p95_ms": times[int(len(times) * 0.95) - 1],
@@ -377,6 +441,10 @@ def print_areas(r):
     changes = rows[1:]
     print(f"layout {r['layout']}, form {r['form']}, budget {r['budget']} ms: {r['folders']} regional folders, "
           f"{r['areas']} areas of {r['per_area']} entries, {r['resident']} resident entries ({r['total']} in all, English only)")
+    if r.get("login_peak_kb") is not None:
+        print(f"  lines: {'of the character ' + r['own'] + ' only' if r['own'] else 'of every class and race'}; "
+              f"{r['resident_registered']} resident entries registered, {r['skipped_rules']} rules not loaded in all; "
+              f"memory right after the resident content, collector stopped: {mb(r['login_peak_kb']):.1f} MB")
     print(f"  memory of the base and the resident entries: {mb(r['resident_kb']):.1f} MB; with the first area (its folders "
           f"loaded, the area built): {mb(rows[0]['after_kb']):.1f} MB")
     print(f"  after every area of Kalimdor: {mb(rows[n_kal - 1]['after_kb']):.1f} MB; after the Eastern Kingdoms: "
@@ -425,6 +493,10 @@ def main(argv):
     ap.add_argument("--budget", type=float, default=4.0,
                     help="with --areas: milliseconds of a frame a change may take (Packs.BUDGET_MS); 0 = in one go")
     ap.add_argument("--keep", type=float, help="with --areas: the bound in KB on the sources kept (Packs.KEEP_KB)")
+    ap.add_argument("--own", default="WARRIOR/Orc",
+                    help="with --areas (C0f, ADR 0053): the character whose lines are loaded, CLASS/Race, as in the client; "
+                    "'all' loads every line (before C0f); 'both' measures the character and every line. The resident clones "
+                    "then take the class and race pools of the need model (docs/content/need.json), the area clones none")
     ap.add_argument("--json")
     ap.add_argument("--archive-dir", help="write the synthetic archives here, or read them if they are there: two "
                     "versions of the engine then measure the same rules (#157)")
@@ -442,14 +514,19 @@ def main(argv):
                 totals.append((entries, round(entries * a.resident_share), t))
             print(f"{tpe:.2f} texts per entry (enUS): " + ", ".join(f"{t} texts = {e} entries, {r} resident"
                                                                   for e, r, t in totals))
+        shares = need_shares()
+        print(f"need model: class pools {shares['classShare']:.1%} and race pools {shares['raceShare']:.1%} of the resident texts")
+        owns = {"all": [None], "both": [None, "WARRIOR/Orc"]}.get(a.own, [a.own])
         for total, resident, texts in totals:
             for layout in [l for l in a.layout.split(",") if l]:
-                r = measure_areas(addon, total, resident, layout, a.picks, a.seed, a.form, a.budget, a.keep)
-                r["texts"] = texts
-                if texts:
-                    print(f"{texts} texts per language:")
-                print_areas(r)
-                rows.append(r)
+                for o in owns:
+                    r = measure_areas(addon, total, resident, layout, a.picks, a.seed, a.form, a.budget, a.keep,
+                                      tuple(o.split("/")) if o else None, shares)
+                    r["texts"] = texts
+                    if texts:
+                        print(f"{texts} texts per language:")
+                    print_areas(r)
+                    rows.append(r)
         if a.json:
             with open(a.json, "w", encoding="utf-8", newline="\n") as f:
                 json.dump(rows, f, indent=1)

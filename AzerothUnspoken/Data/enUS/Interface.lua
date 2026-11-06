@@ -172,6 +172,7 @@ NS:RegisterLanguage("en", {
 		packs_reload_manual = "type /reload to load the lines of the new language.",
 		packs_state = "folders: lines in %s, region/area %s (loads %d, builds %d, drops %d, waits for combat %d)",
 		packs_change = "last change of area: %s, %d regional rules built in %s ms spread over %d frames (at most %s ms in one)",
+		packs_own = "lines of the character only: class %s, race %s (%d rules and %d texts of other classes and races not loaded)",
 		packs_building = "building the lines of %s (%d frames so far)",
 		packs_sources = "regional sources kept: %s KB; areas released to save memory (back after /reload): %s",
 		packs_loaded = "loaded", packs_not_loaded = "not loaded (not needed now)", packs_absent = "not installed",
