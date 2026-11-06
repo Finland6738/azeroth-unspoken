@@ -549,6 +549,14 @@ T.run("#162: time-of-day words against the conditions", function()
 	T.eq((Validator.TimeWord("Tonight I am.", "en")), "tonight", "a 'now' word")
 	T.eq((Validator.TimeWord("The days get shorter.", "en")), nil, "no word")
 	T.eq((Validator.TimeWord("Nightfall comes.", "en")), "nightfall", "whole words only")
+	-- W08 (#259): a word inside a proper name is not a claim on the time or the weather
+	T.eq((Validator.TimeWord("A night elf keeps her bow strung.", "en")), nil, "night elf is a people")
+	T.eq((Validator.TimeWord("Gli elfi della notte non dimenticano.", "it")), nil, "elfi della notte")
+	T.eq((Validator.TimeWord("The Argent Dawn pays in coin.", "en")), nil, "Argent Dawn is an order")
+	T.eq((Validator.TimeWord("A night elf walks out tonight.", "en")), "tonight", "a real word next to a name")
+	T.eq(Validator.WeatherWord("The road to Thunder Bluff is long.", "en"), nil, "Thunder Bluff is a city")
+	T.eq(Validator.WeatherWord("La strada per Thunder Bluff è lunga.", "it"), nil, "the English name in Italian")
+	T.eq(Validator.WeatherWord("Thunder rolls over Thunder Bluff.", "en"), "thunder", "real thunder still counts")
 	-- rain_dusk_return allowed night while its texts said dusk (Q8, #159); mono.rest.hearth said "Tonight" at any hour
 	NS:RegisterSituation("vtest_dusk_night", { lead = "memory_return", when = { time = { "dusk", "night" } } }, "base_direction")
 	local r = Validate({
