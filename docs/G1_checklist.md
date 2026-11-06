@@ -1446,6 +1446,18 @@ un cambio di area lavora al massimo 4 ms per fotogramma, fuori dal combattimento
 14. **`debugprofilestop`.** Se `/au prof` dice che il client non ha `debugprofilestop`, i ms dei cambi sono quelli di
     `os.clock` (meno precisi): annotalo.
 
+**C0f (ADR 0053): solo le frasi del personaggio.** Mai provato nel client. L'addon tiene ora solo le frasi scritte per
+la classe e la razza del personaggio; le legge mentre si carica. (I punti 15 e 16, C0e, sono nella versione inglese.)
+
+17. **Classe e razza lette al caricamento.** Entra in gioco, poi `/au packs`. **Atteso:** una riga "solo le frasi del
+    personaggio: classe warrior, razza orc (N regole e M testi di altre classi e razze non caricati)" con la tua classe
+    e la tua razza (non morti: `scourge`). **Da riportare:** la riga com'è, o che manca (il client non ha dato classe o
+    razza mentre l'addon si caricava: allora si tengono tutte le frasi, come prima).
+18. **Un altro personaggio.** Esci, entra con un personaggio di un'altra classe e razza (di un'altra fazione, se puoi),
+    di nuovo `/au packs`: la sua classe e la sua razza, nessun errore Lua. Fai parlare entrambi qualche volta
+    (`/au speak`): le frasi di classe sono quelle del personaggio in gioco. **Da riportare:** la memoria di `/au prof`
+    con tutti e due, e una frase della classe o della razza sbagliata, se mai si sente.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```

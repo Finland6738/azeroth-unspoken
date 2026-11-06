@@ -554,6 +554,20 @@ Phrases with more conditions are more specific and receive a higher weight.
 
 An unknown condition, or one with a wrong value, makes the phrase **never chosen** (it does not raise errors) and the validator reports it.
 
+**Only the character's class and race are loaded** (C0f, [ADR 0053](../docs/adr/0053-lines-of-the-character-only.md)). A
+phrase whose `class` or `race` (the player's, at the top level of `conditions`, a value or a list of values) leaves out
+the class or the race of the character can never be said in that session, so the addon does not register it, in any
+pack: built-in, regional or yours. Its texts are dropped when they arrive, and `/au packs` counts them. Nothing changes
+in what you write. What it means for a pack:
+
+- A phrase about **someone else's** class or race uses `other = { class = …, race = … }` (the interlocutor) or
+  `targetClass`, `targetRace` (the target): those are always loaded. So are `class` and `race` inside `["not"]` or
+  `any`, and every phrase when the client does not give the character's class or race at load.
+- A phrase of another class is **not in the registry** for this character: `Engine.byId[id]` is `nil`, a monologue
+  that lists it as a part cannot be said (as before: the part's condition would fail), and texts or `CopyTexts` aimed
+  at it do nothing. Do not look up such ids from code expecting them to exist.
+- Logging in with another character reloads the interface: that character loads its own lines.
+
 ### Memory: first visit, return, memories
 
 The memory conditions (`firstVisit`, `repeatVisit`, `lastVisitBad`, `visitsMin`, `visitsMax`, `daysSinceLastVisit`,

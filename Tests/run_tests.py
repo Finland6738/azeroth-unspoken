@@ -46,19 +46,23 @@ def run_file(lua, path, name, *args):
     return chunk(*args)
 
 
-def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None, zone=None, packs="all"):
+def load_addon(saved_global=None, saved_char=None, with_example=True, epoch=None, zone=None, packs="all", own=None):
     """Runtime nuovo: finta API, file nell'ordine del .toc con (ADDON, NS), ADDON_LOADED.
     saved_global/saved_char: SavedVariables come testo Lua (/reload: vedi SERIALIZE nel mock);
     epoch: ora del client (secondi), zone: zona in cui il personaggio entra nel mondo.
     packs: "all" = every language and regional folder in memory and every region built (a development install: the
     validator and the selection see the whole database); "lazy" = folders installed as LoadOnDemand, loaded by
-    Core/Packs.lua like in the client; "none" = folders not installed."""
+    Core/Packs.lua like in the client; "none" = folders not installed.
+    own: None = every line of every class and race (a development install); (class, race) = the character, e.g.
+    ("MAGE", "Human"): only its lines are registered, as in the client (C0f, ADR 0053)."""
     lua = lua51.LuaRuntime(unpack_returned_tuples=True)
     lua.execute(open(os.path.join(HERE, "MockWoWAPI.lua"), encoding="utf-8").read())
     if epoch is not None:
         lua.execute(f"FAKE_EPOCH = {epoch}")
     if zone is not None:
         lua.execute(f'P.zone = "{zone}"')
+    if own is not None:
+        lua.execute(f'AZEROTHUNSPOKEN_ALL_LINES = nil; P.class, P.race = "{own[0]}", "{own[1]}"')
     if saved_global is not None:
         lua.execute("AzerothUnspokenDB = " + saved_global)
     if saved_char is not None:
@@ -578,6 +582,168 @@ mem_none = pnone.eval(mem_)()
 print(f"  memoria Lua: base senza cartelle {mem_none / 1024:.2f} MB, una lingua e una regione {mem_lazy / 1024:.2f} MB, "
       f"tutto {mem_all / 1024:.2f} MB")
 check(mem_none < mem_lazy < mem_all, "una lingua costa meno di due")
+
+# 9b-bis) C0f (ADR 0053): only the lines of the character's class and race are registered, as in the client. The
+# rules and texts of every character are compared with the whole database (a development install, `own` not given).
+print("\nLE FRASI DEL PERSONAGGIO (C0f: classe e razza, ADR 0053)")
+OWN_SCAN = """function(cls, race)
+    local E = AzerothUnspoken.Engine
+    -- an independent reading of the rule of ADR 0053: plain values of the top-level class or race that leave out the
+    -- character's
+    local function excludes(v, mine)
+        local list = type(v) == "string" and { v } or v
+        if type(list) ~= "table" or list[1] == nil then return false end
+        for _, x in ipairs(list) do
+            if type(x) ~= "string" then return false end
+        end
+        for _, x in ipairs(list) do
+            if x:lower() == mine then return false end
+        end
+        return true
+    end
+    local out = {}
+    for _, p in E:Rules() do
+        local w, pack = p.when, E.packs[p.pack]
+        local excluded = type(w) == "table" and cls ~= nil and (excludes(w.class, cls) or excludes(w.race, race))
+        local about = type(w) == "table" and (w.targetClass ~= nil or w.targetRace ~= nil
+            or (type(w.other) == "table" and (w.other.class ~= nil or w.other.race ~= nil)))
+        out[p.id] = { pack = p.pack, region = pack and pack.region or false, en = p.text.en and #p.text.en or 0,
+            excluded = excluded and true or false, about = about and true or false,
+            class = type(w) == "table" and type(w.class) == "string" and w.class:lower() or false,
+            race = type(w) == "table" and type(w.race) == "string" and w.race:lower() or false }
+    end
+    return out
+end"""
+OWN_CHARS = [("WARRIOR", "Orc", "Durotar"), ("PALADIN", "Human", "Elwynn Forest"), ("HUNTER", "Dwarf", "Dun Morogh"),
+             ("MAGE", "Gnome", "Dun Morogh"), ("DRUID", "NightElf", "Teldrassil"), ("PRIEST", "Scourge", "Tirisfal Glades"),
+             ("SHAMAN", "Tauren", "Mulgore"), ("ROGUE", "Troll", "Durotar"), ("WARLOCK", "Human", "Elwynn Forest")]
+ALLIANCE_ = ("Human", "Dwarf", "Gnome", "NightElf")
+
+
+def own_scan(lua_rt, cls=None, race=None):
+    t = lua_rt.eval(OWN_SCAN)(cls and cls.lower(), race and race.lower())
+    return {k: dict(v.items()) for k, v in t.items()}
+
+
+def own_load(cls, race, zone, saved_global=None, saved_char=None, epoch=None):
+    rt, ns_ = load_addon(saved_global, saved_char, with_example=False, packs="lazy", zone=zone, own=(cls, race),
+                         epoch=epoch)
+    rt.execute(f'P.faction = "{"Alliance" if race in ALLIANCE_ else "Horde"}"')
+    return rt, ns_
+
+
+def own_errors(lua_rt):
+    v = lua_rt.eval("function() return AzerothUnspoken.Validator:Run() end")()
+    return sorted((e.code, str(e.id or e.pack)) for e in v.errors.values())
+
+
+all_rules = own_scan(pa)   # the whole database, every region built (pa: load_addon above)
+classes_all = {r["class"] for r in all_rules.values() if r["class"]}
+races_all = {r["race"] for r in all_rules.values() if r["race"]}
+check(len(classes_all) == 9 and len(races_all) == 8, f"the database has lines of 9 classes and 8 races ({len(classes_all)}, {len(races_all)})")
+mem_own = {}
+for cls_, race_, zone_ in OWN_CHARS:
+    who_ = f"{cls_.lower()} {race_.lower()}"
+    ro, no = own_load(cls_, race_, zone_)
+    rl, _ = load_addon(with_example=False, packs="lazy", zone=zone_)   # the same place, every line
+    rl.execute(f'P.class, P.race = "{cls_}", "{race_}"')
+    own_ = no.Engine.own
+    check(own_ is not None and own_["class"] == cls_.lower() and own_["race"] == race_.lower(), f"{who_}: the character is read at load")
+    mine_ = own_scan(ro)
+    expected_ = own_scan(pa, cls_, race_)
+    packs_ = {r["pack"] for r in mine_.values()} | set(no.Engine.skipped.keys())
+    want_ = {i for i, r in expected_.items() if not r["excluded"] and (not r["region"] or r["pack"] in packs_)}
+    wrong_ = [i for i, r in own_scan(ro, cls_, race_).items() if r["excluded"]]
+    check(not wrong_, f"{who_}: no line of another class or race is resident ({wrong_[:3]})")
+    check(set(mine_) == want_, f"{who_}: every line the character can say is loaded ({len(mine_)} of {len(want_)}; "
+          f"missing {sorted(want_ - set(mine_))[:3]}, extra {sorted(set(mine_) - want_)[:3]})")
+    check(all(mine_[i]["en"] == expected_[i]["en"] for i in mine_), f"{who_}: the loaded lines keep all their texts")
+    check({r["class"] for r in mine_.values() if r["class"]} <= {cls_.lower()} and
+          {r["race"] for r in mine_.values() if r["race"]} <= {race_.lower()}, f"{who_}: only its own class and race")
+    check(any(r["class"] == cls_.lower() for r in mine_.values()) and any(r["race"] == race_.lower() for r in mine_.values()),
+          f"{who_}: the lines of its class and race are there")
+    about_ = {i for i, r in expected_.items() if r["about"] and i in want_}
+    check(about_ and about_ <= set(mine_), f"{who_}: the lines about another unit's class or race stay ({len(about_)})")
+    skipped_ = sum(1 for i, r in expected_.items() if r["excluded"] and (not r["region"] or r["pack"] in packs_))
+    check(no.Engine.ownStats.rules == skipped_ and no.Engine.ownStats.texts > 0,
+          f"{who_}: {no.Engine.ownStats.rules} rules and {no.Engine.ownStats.texts} texts not loaded ({skipped_} expected)")
+    check(ro.eval("function() return next(AzerothUnspoken.Engine.pendingTexts) == nil end")(), f"{who_}: no text left waiting")
+    check(ro.eval("""function() for id in pairs(AzerothUnspoken.Engine.skipped) do
+            local p = AzerothUnspoken.Engine.packs[id]; if not (p and p.region) then return false end end
+            return true end""")(), f"{who_}: the skipped ids of the base content are let go after login")
+    check(own_errors(ro) == own_errors(rl), f"{who_}: the validator finds what it finds with every line")
+    check(not list(no.Diagnostics.errors.values()), f"{who_}: no error at load")
+    check(any("class " + cls_.lower() in l for l in no.Packs.StatusLines(no.Packs).values()), f"{who_}: /au packs says it")
+    mem_own[who_] = (ro.eval(mem_)(), rl.eval(mem_)())
+    check(mem_own[who_][0] < mem_own[who_][1], f"{who_}: less memory than with every line")
+print("  memoria Lua con le sole frasi del personaggio (contro tutte, stessa zona): " + ", ".join(
+    f"{k} {a / 1024:.2f}/{b / 1024:.2f} MB" for k, (a, b) in mem_own.items()))
+
+# a warrior orc: no mage or human line for the player, but the lines about a human or a dwarf met still fire
+ro, no = own_load("WARRIOR", "Orc", "Durotar")
+mine_ = own_scan(ro)
+check(not any(r["class"] == "mage" or r["race"] == "human" for r in mine_.values()), "warrior orc: no mage or human line resident")
+check(sum(1 for r in all_rules.values() if r["class"] == "mage") > 0 and "ctx.greet.human" in all_rules
+      and "ctx.greet.human" not in mine_, "warrior orc: the mage lines and the human's own greeting are in the database, not here")
+greet_ = ro.eval("""function(race, faction)
+    local NS = AzerothUnspoken
+    P.target = { name = "Brenna", realm = "TestRealm", player = true, guid = "Player-1-0000Brenna", sex = 3,
+        class = "PRIEST", race = race, faction = faction, level = 30 }
+    local ctx = NS:BuildContext()
+    local out = {}
+    for _, p in ipairs(NS.Engine:Eligible(NS.Engine:EventRules("greet"), "en", ctx, nil, time())) do out[p.id] = true end
+    P.target = nil
+    return out
+end""")
+g_dwarf = set(greet_("Dwarf", "Alliance").keys())
+g_orc = set(greet_("Orc", "Horde").keys())
+check("ctx.greet.dwarf" in g_dwarf and "ctx.greet.dwarf" not in g_orc, f"warrior orc: the greeting for a dwarf fires before a dwarf ({sorted(g_dwarf)[:6]})")
+check("ctx.greet.orc" in g_orc, "warrior orc: and the greeting for an orc before an orc")
+battle_ = ro.eval("""function()
+    local NS, n = AzerothUnspoken, 0
+    for _ = 1, 40 do
+        local rec = NS.Engine:PickEntry("battle", NS:BuildContext(), "say")
+        if rec and NS.Engine.byId[rec.id] then n = n + 1 end
+    end
+    return n
+end""")()
+check(battle_ == 40, f"warrior orc: battle lines are picked ({battle_} of 40)")
+
+# switching characters: logging in again reloads the interface, and the new character loads its own lines; the
+# saved data of the account (and of the first character, when it comes back) refers to lines that are not resident
+r1, n1 = own_load("WARRIOR", "Orc", "Durotar")
+g1_ = r1.globals()
+for i_ in range(12):
+    g1_.ADVANCE(400)
+    n1.Gateway.Improvise(n1.Gateway)
+said1 = r1.eval("""function()
+    local n = 0
+    for id in pairs(AzerothUnspokenCharacterDB.memory and AzerothUnspokenCharacterDB.memory.last or {}) do n = n + 1 end
+    return n
+end""")()
+sg1 = r1.eval("function() return SERIALIZE(AzerothUnspokenDB) end")()
+sc1 = r1.eval("function() return SERIALIZE(AzerothUnspokenCharacterDB) end")()
+r2, n2 = own_load("MAGE", "Human", "Elwynn Forest", sg1, None, epoch=g1_.FAKE_EPOCH + 600)
+m2_ = own_scan(r2)
+check(n2.Engine.own["class"] == "mage" and n2.Engine.own["race"] == "human", "relog: the second character is read")
+check(any(r["class"] == "mage" for r in m2_.values()) and any(r["race"] == "human" for r in m2_.values())
+      and not any(r["class"] == "warrior" or r["race"] == "orc" for r in m2_.values()), "relog: mage and human lines, no warrior or orc line")
+g2_ = r2.globals()
+for i_ in range(6):
+    g2_.ADVANCE(400)
+    n2.Gateway.Improvise(n2.Gateway)
+check(not list(n2.Diagnostics.errors.values()), "relog: the second character speaks without errors")
+r3, n3 = own_load("WARRIOR", "Orc", "Durotar", r2.eval("function() return SERIALIZE(AzerothUnspokenDB) end")(), sc1,
+                  epoch=g2_.FAKE_EPOCH + 600)
+m3_ = own_scan(r3)
+check(any(r["class"] == "warrior" for r in m3_.values()) and not any(r["class"] == "mage" or r["race"] == "human" for r in m3_.values()),
+      "relog: back on the first character, its lines again")
+check(set(m3_) == set(own_scan(ro)), "relog: the same lines as its first session")
+g3_ = r3.globals()
+for i_ in range(6):
+    g3_.ADVANCE(400)
+    n3.Gateway.Improvise(n3.Gateway)
+check(not list(n3.Diagnostics.errors.values()), f"relog: the first character speaks again without errors ({said1} lines remembered)")
 
 # 9a) proiezione di scala ridotta (R1, #83 #84): un archivio sintetico di 2.000 regole. I tempi si stampano soltanto
 # (dipendono dalla macchina); la memoria per regola è un controllo. Le misure complete (10.000 e 50.000 regole) si

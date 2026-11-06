@@ -991,7 +991,16 @@ function Packs:Resume()
 	if not step or InCombat() then return end
 	self.waiting = nil
 	if step == "language" then self:StartLanguage() end
+	self:Settle()
 	self:Update()
+end
+
+---C0f (ADR 0053): once the texts of the chosen language are in and every addon has loaded (an external pack that adds
+---texts to the base lines loads after this addon), the ids of the base rules not registered for the character are let
+---go: no text for them can come any more. Those of the regional packs go with their pack (Engine:FreePack).
+function Packs:Settle()
+	if self.textLang == nil or self.waiting == "language" then return end
+	NS.Engine:ForgetSkipped()
 end
 
 ---Names of the folders loaded so far (for the memory of /au prof).
@@ -1017,6 +1026,11 @@ function Packs:StatusLines()
 			("%.1f"):format(c.max or c.ms)))
 	end
 	if self.job then table.insert(lines, NS:L("packs_building", self.job.key, #self.job.steps)) end
+	-- C0f (ADR 0053): the lines of other classes and races, never loaded for this character
+	local own, skip = NS.Engine.own, NS.Engine.ownStats
+	if own then
+		table.insert(lines, NS:L("packs_own", tostring(own.class or "-"), tostring(own.race or "-"), skip.rules, skip.texts))
+	end
 	-- C0b: what visited areas keep, and the areas released to keep the bound
 	local kept = self:SourceBytes()
 	local released = NS.Engine.SortedKeys(self.released)
@@ -1048,7 +1062,10 @@ function Packs:OnInit()
 	self:WatchRegistrations()
 	self:Discover()
 	self:StartLanguage()
-	NS.EventBus:Subscribe("WORLD_ENTER", "packs", function() Packs:Update() end)
+	NS.EventBus:Subscribe("WORLD_ENTER", "packs", function()
+		Packs:Settle()
+		Packs:Update()
+	end)
 	NS.EventBus:Subscribe("ZONE_ENTER", "packs", function() Packs:Update() end)
 	NS.EventBus:Subscribe("COMBAT_END", "packs", function() Packs:Resume() end)
 end

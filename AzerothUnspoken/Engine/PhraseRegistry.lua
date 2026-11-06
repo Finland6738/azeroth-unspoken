@@ -1238,6 +1238,93 @@ local function DefaultForm(speaker)
 	return speaker == "narrator" and "emote" or "say"
 end
 
+---------------------------------------------------------------------------
+-- C0f (ADR 0053): the lines of the character only
+---------------------------------------------------------------------------
+-- A rule whose conditions ask, at their top level, for the class or the race of the character (`class`, `race`: the
+-- player, ctx.class and ctx.race, read from UnitClass and UnitRace "player") with values that exclude the character's
+-- can never be said in this session: a character never changes class or race, and another character is another session
+-- (logging in again reloads the interface). Such a rule is not registered, and its texts are dropped when they come.
+-- Only plain values are read (a string or a list of strings, as the index reads them): a class or race inside `not`,
+-- `any`, `other` (the interlocutor), or the target's (`targetClass`, `targetRace`) keeps the rule, as does any rule when
+-- the class or the race cannot be read. A development install (the tests and the tools, which read the whole database)
+-- sets the global AZEROTHUNSPOKEN_ALL_LINES before the addon loads, and every rule is registered.
+Engine.OWN_ONLY = not rawget(_G, "AZEROTHUNSPOKEN_ALL_LINES")
+Engine.own = nil       -- { class = "warrior", race = "orc" } (lower case): read at the first rule, see Engine:ReadOwn
+Engine.ownRead = false
+-- [packId] = { [id] = true }: the rules not registered for the character, until their texts have come (see
+-- Engine:ForgetSkipped). Only the ids, for the base content a few seconds at login.
+Engine.skipped = {}
+Engine.ownStats = { rules = 0, texts = 0 }   -- rules and variants not loaded this session (/au packs)
+
+local function Token(v)
+	if type(v) ~= "string" or v == "" or (NS.Compat and NS.Compat.IsSecret(v)) then return nil end
+	return NS.Lower(v)
+end
+
+---Reads the class and the race of the character (the tokens of UnitClass and UnitRace, lower case) once; nil when the
+---filter is off or neither can be read (then every rule is registered).
+---@param force? boolean read again (the tests: another character in the same runtime)
+---@return { class: string?, race: string? }?
+function Engine:ReadOwn(force)
+	if self.ownRead and not force then return self.own end
+	self.ownRead, self.own = true, nil
+	if not self.OWN_ONLY then return nil end
+	local function Second(fn)
+		if type(fn) ~= "function" then return nil end
+		local ok, _, token = pcall(fn, "player")
+		return ok and Token(token) or nil
+	end
+	local class, race = Second(rawget(_G, "UnitClass")), Second(rawget(_G, "UnitRace"))
+	if class or race then self.own = { class = class, race = race } end
+	return self.own
+end
+
+-- true when the plain values of a condition leave out the character's value
+local function Excludes(v, mine)
+	if not mine then return false end
+	local list = Only(v, "string")
+	if not list then return false end
+	for _, x in ipairs(list) do
+		if NS.Lower(x) == mine then return false end
+	end
+	return true
+end
+
+---Can a rule with these conditions never be said by this character? (C0f: its class or race is another one.)
+---@param when? table
+---@return boolean
+function Engine:NotOwn(when)
+	local own = self.own
+	if not own or type(when) ~= "table" then return false end
+	return Excludes(when.class, own.class) or Excludes(when.race, own.race)
+end
+
+-- a text of a rule that was not registered for the character: dropped (and counted)
+local function SkippedText(id, packId)
+	local skipped = Engine.skipped
+	local set = packId and skipped[packId]
+	if set and set[id] then return true end
+	for _, s in pairs(skipped) do
+		if s[id] then return true end
+	end
+	return false
+end
+
+---Forgets the ids of the rules not registered (their texts have come): of one pack, or with no pack of every pack that
+---is not regional (the base content and the packs always loaded, once the language step ran; Core/Packs.lua).
+---@param packId? string
+function Engine:ForgetSkipped(packId)
+	if packId then
+		self.skipped[packId] = nil
+		return
+	end
+	for id in pairs(self.skipped) do
+		local pack = self.packs[id]
+		if not (pack and pack.region) then self.skipped[id] = nil end
+	end
+end
+
 ---Aggiunge una regola al registro.
 ---@param pack table
 ---@param id string
@@ -1252,6 +1339,15 @@ function Engine:AddEntry(pack, id, e, legacy)
 		Issue(pack, "dupId", id, ("id duplicato (già nel pacchetto '%s')"):format(SHAPE[ordOf[id]].pack))
 		NS:Print(("id duplicato '%s' nel pacchetto '%s'"):format(id, pack.id))
 		return
+	end
+	-- C0f (ADR 0053): a line of another class or race is not registered
+	if not self.ownRead then self:ReadOwn() end
+	if self.own and type(e) == "table" and self:NotOwn(e.conditions or e.when) then
+		local set = self.skipped[pack.id]
+		if not set then set = {}; self.skipped[pack.id] = set end
+		set[id] = true
+		self.ownStats.rules = self.ownStats.rules + 1
+		return nil
 	end
 
 	-- the fields shared with other rules go to the shape (#138); the rule table is made at the end
@@ -1431,6 +1527,9 @@ function Engine:AddTexts(lang, id, list, packId)
 		AppendVariants(target, list, packId, SHAPE[r].pack)
 		-- the common case, a rule with no text yet in the language: the list is the new variants, no copy
 		AppendRuleVariants(r, lang, n0 == 0 and target or { unpack(target, n0 + 1) })
+	elseif next(self.skipped) and SkippedText(id, packId) then
+		-- C0f: the rule is of another class or race (Engine:NotOwn): its texts are not kept
+		self.ownStats.texts = self.ownStats.texts + (type(list) == "table" and #list or 1)
 	else
 		-- in attesa della regola: il proprietario non si conosce ancora, le varianti restano tabelle fino a FlushPending
 		local byLang = self.pendingTexts[id] or {}
@@ -1771,6 +1870,11 @@ function NS:RegisterPack(pack, order)
 		end
 	end
 	Engine:FlushPending()
+	-- C0f: texts that came before their rule, for a rule not registered for the character, wait no more
+	local skipped = Engine.skipped[pack.id]
+	if skipped and next(Engine.pendingTexts) then
+		for id in pairs(skipped) do Engine.pendingTexts[id] = nil end
+	end
 
 	-- #84: le tabelle sorgente non servono più (regole, testi, cornici e vocabolario sono nel registro). Il pacchetto
 	-- resta registrato con id, nome, lingue, dichiarazioni e gli elenchi che legge il validatore.
@@ -1885,6 +1989,7 @@ function Engine:FreePack(packId)
 		if self.loadIssues[i].pack == packId then table.remove(self.loadIssues, i) end
 	end
 	self.packs[packId], pack.gone = nil, nil
+	self.skipped[packId] = nil
 	for i, id in ipairs(self.packOrder) do
 		if id == packId then table.remove(self.packOrder, i); break end
 	end
