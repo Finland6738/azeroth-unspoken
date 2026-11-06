@@ -1630,4 +1630,1615 @@ NS:AddTexts("enUS", {
 		"My respects to the miles behind me. They were honest, if not kind.",
 		"Here's to the ones who walked this world first and left the path for the rest of us.",
 	},
+	["race.dwarf.landmark.w08.001"] = {
+		"{landmark}. Somebody gave this place a name. A dwarf would have carved it over the door, deep enough to outlast the carver.",
+		"{landmark}. Names painted on boards fade. Names cut in stone stay. I wonder which kind this one is.",
+		"{landmark}. Good. A place with a name usually has a roof, and a roof usually has a cellar.",
+	},
+	["race.dwarf.landmark.w08.002"] = {
+		"stops before {landmark} and studies every detail the way a dwarf studies another's work: slowly, thoroughly, and keeping any verdict private.",
+		"takes the measure of {landmark} with a long, unhurried stare, as though counting every stone.",
+		"gives {landmark} a curt, respectful nod, the greeting a dwarf keeps for any place that bears a name.",
+	},
+	["race.dwarf.muse.w08.001"] = {
+		"Every tavern outside Khaz Modan pours something it calls ale. I drink it out of courtesy and judge it out of habit.",
+		"Ale brewed away from the mountain tastes of water that never had to fight its way up through rock. Polite, but thin.",
+		"I've yet to meet a foreign brewer who understood that ale ought to be chewed a little.",
+	},
+	["race.dwarf.muse.w08.002"] = {
+		"I can't walk past a wall without checking the mortar. Most of the world is held together with hope and mud.",
+		"Whoever laid most of the walls in this world never had a dwarf looking over their shoulder. It shows in the joints.",
+		"A crooked doorframe bothers me more than a hungry wolf. The wolf, at least, means what it does.",
+	},
+	["race.dwarf.muse.w08.003"] = {
+		"tugs a loose braid back into order and ties it off with a quick, practiced twist.",
+		"runs a thumb along a braid, finds a knot gone slack, and redoes it without looking.",
+		"unpicks a braid that has worked itself loose and plaits it again, quick and tight, as dwarves have done for longer than anyone remembers.",
+	},
+	["race.dwarf.muse.w08.004"] = {
+		"Put me in a cave with a lamp and a bit of quiet, and I'll be calmer than any king on any throne.",
+		"Rock overhead, rock underfoot, and my own breath coming back off the walls. That's the nearest thing to peace a dwarf knows.",
+		"Give me a low ceiling and thick walls. Others would call it cramped; a dwarf calls it being held.",
+	},
+	["race.dwarf.muse.w08.005"] = {
+		"The Wildhammer cover themselves in tattoos and sleep beside gryphons at Aerie Peak. Kin, certainly. Whether they're sensible is another matter.",
+		"A Wildhammer will tell you the mountain is a cage. A Bronzebeard will tell you the sky is a draft. We've had that argument for centuries.",
+		"The Wildhammer left the deep halls for the cliffs of the Hinterlands. Every time I meet one, I can't decide whether to pity them or envy them.",
+	},
+	["race.dwarf.muse.w08.006"] = {
+		"The Dark Iron are dwarves too. That's the part that sits worst. Same stubbornness, same skill, pointed the wrong way.",
+		"Under Blackrock, dwarves of our own blood keep forges burning for a lord of fire. I'd sooner face a dragon. A dragon, at least, isn't family.",
+		"Every dwarf child hears of the Dark Iron sooner or later and asks the same thing: why. Nobody has a good answer, only old ones.",
+	},
+	["race.dwarf.muse.w08.007"] = {
+		"If a gnome tells me a thing is perfectly safe, I take two steps back. If a gnome says it's dangerous, I take ten.",
+		"Fond as I am of gnomes, I never stand downwind of their workbenches. Fondness has limits, and eyebrows are slow to grow back.",
+		"Gnomes solve a problem by adding a rocket. Dwarves solve it by adding a wall. Each of us thinks the other reckless.",
+	},
+	["race.dwarf.muse.w08.008"] = {
+		"Humans build fast and die young, and somehow their cities still stand. I'll never quite understand the trick.",
+		"A human calls a thing old when it has seen three kings. A dwarf would call it barely broken in.",
+		"Humans are always in a hurry. With lives that short I can't blame them, but they could at least let the mortar set.",
+	},
+	["race.dwarf.muse.w08.009"] = {
+		"Night elves live in trees and call it architecture. I've kept quiet about it. Mostly.",
+		"Ten thousand years, the elves say, and not one proper cellar to show for it.",
+		"An elf will tell you the trees remember. Ask whether they remember the woodcutters, and the conversation ends.",
+	},
+	["race.dwarf.muse.w08.010"] = {
+		"Troggs crawl up from the deep places like rot out of a bad beam. Somebody has to keep knocking them back down, and it's usually a dwarf.",
+		"Every dwarf learns to listen for scratching under the floor. Troggs never knock first.",
+		"Below every mine, likely enough, a trogg is wondering what's above. A dwarf keeps a lamp burning for that reason alone.",
+	},
+	["race.dwarf.muse.w08.011"] = {
+		"The Explorers' League talks of makers, of titans who shaped the world. Maybe so. I'd still want to see the tool marks.",
+		"If the League is right and greater hands shaped us out of stone, then stubbornness was in the recipe. Nobody can fault us for it.",
+		"Titans, the scholars say. I'm a dwarf: I'll believe it once I've held the proof and weighed it.",
+	},
+	["race.dwarf.muse.w08.012"] = {
+		"Show me any mountain in this world and I'll find something to like about it. Show me a marsh and we'll talk.",
+		"Mountains are honest. They don't pretend to be anything but a great deal of rock, and they don't move to suit you.",
+		"Mountains don't flatter anyone. Climb one and you'll learn exactly how strong your legs are. I like that in a thing.",
+	},
+	["race.dwarf.muse.w08.013"] = {
+		"Bad air in a shaft has a taste: flat, like a coin left in water. Every dwarf learns it before it's needed.",
+		"Seasoned miners judge a tunnel by the way a lamp burns. A flame that leans means the tunnel has something to tell you.",
+		"A miner's first lesson: never trust a quiet tunnel. The second: never trust a noisy one either.",
+	},
+	["race.dwarf.muse.w08.014"] = {
+		"The Thandol Span crosses a gorge so deep you could drop a stone and finish a mug before you heard it land. Dwarves built it. Of course we did.",
+		"Folk who cross the Thandol Span look down once and then keep their eyes on the far side. The dwarves who built it looked down every day.",
+	},
+	["race.dwarf.muse.w08.015"] = {
+		"The elders speak of Grim Batol the way you'd speak of a friend who went bad: low voice, short sentences, and a change of subject.",
+		"Grim Batol was a dwarven hold once. The Wildhammer left it, the stories say, because something in the stone had gone wrong. Dwarves don't give up stone lightly.",
+	},
+	["race.dwarf.muse.w08.016"] = {
+		"The Stonewrought Dam holds back a whole loch, and it has held longer than most kingdoms. Whenever I need to trust something, I think of that dam.",
+		"Humans ask why the dam in Loch Modan doesn't break. A dwarf asks why on earth it would.",
+		"Water is patient, but stone is more patient still. The dam is the proof, and every dwarf in Loch Modan knows it.",
+	},
+	["race.dwarf.muse.w08.017"] = {
+		"Short? I'm the right height. Everyone else simply overshot.",
+		"Tall folk hit their heads on every beam. I've never once had that trouble, and I don't plan to start.",
+		"Next to a gnome I'm tall. I make a point of standing next to gnomes.",
+	},
+	["race.dwarf.muse.w08.018"] = {
+		"We dwarves can wait out nearly anything: a siege, a winter, a bad king. We're built the way a cellar is built, for the long dark.",
+		"Hurry is for folk who think the mountain will move if they don't. It won't. Take the time to do it right.",
+		"Dwarves don't hurry the stone. It was here first and will be here after; it deserves the courtesy.",
+	},
+	["race.dwarf.muse.w08.019"] = {
+		"Forgiving, my people can manage. Forgetting is a separate trade, and none of us was ever apprenticed to it.",
+		"I'm keeping a list. Every dwarf keeps one. Mine is shorter than most, which is either a sign of good character or of a poor memory.",
+		"Ask a dwarf whether a grudge is a burden. You'll hear it's more like an heirloom: heavy, and kept polished.",
+	},
+	["race.dwarf.muse.w08.020"] = {
+		"Miners in Khaz Modan say that when one of us dies far from home, a friend should carry a stone back in their place. I've never asked who checks.",
+		"A dwarf who falls far from the mountain should have a stone carried home for them: so the miners of Khaz Modan say. I'd ask for a heavy one.",
+	},
+	["race.dwarf.muse.w08.021"] = {
+		"Not every dwarf kneels to the Light. But every dwarf knows what it is to tend a fire that mustn't go out, and that's halfway to faith already.",
+		"Some of my people pray, some of them swear, and in a tight spot most do both in the same breath.",
+		"My people trust what they can hold. The Light is the one thing many of them trust without holding it, and woe to anyone who smiles about it.",
+	},
+	["race.dwarf.muse.w08.022"] = {
+		"Haggling with goblins is like mining a seam that keeps moving. You get something, but never what you came for.",
+		"A goblin's smile costs nothing. Everything after the smile costs double.",
+		"Goblins and dwarves both love a good bargain. The difference is that a dwarf wants the other side to walk away happy too. Mostly.",
+	},
+	["race.dwarf.muse.w08.023"] = {
+		"Dwarves invented half the ways there are to make a loud noise, and we're proud of every one of them.",
+		"Black powder: the finest thing my people ever poured into a barrel that wasn't ale. The smoke is just a bonus.",
+		"Ask a dwarf how much powder to use and the answer is always 'a bit more'.",
+	},
+	["race.dwarf.muse.w08.024"] = {
+		"goes very still for a moment, head cocked, as if listening for the creak of a beam somewhere deep underground.",
+		"lays a flat palm on the nearest solid surface and waits, like a miner feeling for the tremor of a distant pick.",
+	},
+	["race.dwarf.muse.w08.025"] = {
+		"Kharanos and the Thunderbrew Distillery. If I ever go missing, look there first, and bring a cup.",
+		"In Kharanos, right now, somebody is tapping a fresh cask of Thunderbrew, and I'm not there. The world is unjust.",
+		"Thunderbrew from Kharanos, the dwarves say, is the second-best reason to come home. Nobody agrees on the first.",
+	},
+	["race.dwarf.muse.w08.026"] = {
+		"Dun Morogh teaches you to carry the cold like a pack: you stop noticing it, and only notice when it's gone.",
+		"Anyone raised in Dun Morogh knows the difference between cold and the cold that bites. Most of the world never gets past the first kind.",
+		"Folk from warmer lands shiver at the mere name of Dun Morogh. A dwarf only hears 'home', and feels something warm in the chest.",
+	},
+	["race.dwarf.muse.w08.027"] = {
+		"raises an empty hand as if lifting a mug to someone absent, then lowers it with a grunt.",
+		"wipes {g:his|her} mouth with the back of a hand out of pure habit, though nothing has been drunk.",
+		"taps two fingers on {g:his|her} belt where a tankard might hang, then remembers there is none and sighs.",
+	},
+	["race.dwarf.muse.w08.028"] = {
+		"Any steady sound and my hands start keeping time, as if an anvil were waiting for them somewhere. Footsteps, a drip, a heartbeat.",
+		"There's a forge rhythm in every dwarf, the smiths say: strike, breathe, strike. I catch myself walking to it.",
+	},
+	["race.dwarf.muse.w08.029"] = {
+		"Give a dwarf bread, cheese and something dark to wash it down, and you'll have a friend until the plate's empty. Then you'll need more bread.",
+		"Food on the road is food. Only in Khaz Modan does it stick to your ribs and stay there for the season.",
+		"A dwarf judges an inn by its bread. Soft bread means a baker in a hurry, and a hurried baker is a warning.",
+	},
+	["race.dwarf.muse.w08.030"] = {
+		"I see a crack in the rock and think: iron, maybe, or tin. A dwarf's mind never quite stops prospecting.",
+		"A glint in the rock and my fingers itch. Copper, mica or a rich vein: you never know until you look closer, and a dwarf always looks closer.",
+	},
+	["race.dwarf.muse.w08.031"] = {
+		"If I go quiet for too long, check whether I'm well. Dwarves are many things, and silent is rarely one of them.",
+		"My people talk at the top of their lungs because they learned to talk over a forge. That's our excuse, and we're keeping it.",
+		"Whispering is a skill dwarves have heard of. We just never saw the use of it.",
+	},
+	["race.dwarf.muse.w08.032"] = {
+		"Dwarves and deep water get along the way stone does with it: we sink, and we don't complain.",
+		"Boats. A floor that moves and a roof made of sky. I can't think of a worse house.",
+		"Dwarves crossed seas when they had to, the elders say, and kissed the stone of the far shore on landing.",
+	},
+	["race.dwarf.muse.w08.033"] = {
+		"Ironforge pledged its hammers to the Alliance when the orcs came, and it has never taken them back. A dwarf's word weighs more than most kings' gold.",
+		"We stood with the humans in the Second War because the orcs were in our mountains. We stay with them because a promise doesn't rust.",
+	},
+	["race.dwarf.muse.w08.034"] = {
+		"When the orcs held Khaz Modan, the elders say, they worked our mines and burned our woods for their war. Some debts the mountain hasn't stopped counting.",
+		"The veterans who fought the Horde across Khaz Modan talk about it sparingly, and always with their fists closed.",
+	},
+	["race.dwarf.muse.w08.035"] = {
+		"My legs are short and the world is wide. It evens out: I simply walk longer than anyone else.",
+		"Every road in this world was measured by somebody with longer legs. I've stopped taking it personally.",
+		"Long-legged folk stride; dwarves plod. Plodders get there in the end, and with more breath to spare.",
+	},
+	["race.dwarf.muse.w08.036"] = {
+		"Smoke from the wrong wood reminds me how far I am from a proper coal fire. Pine spits; coal sings.",
+		"Wood fires are pleasant enough, but they don't hold their heat. A dwarf misses coal the way others miss a voice.",
+	},
+	["race.dwarf.muse.w08.037"] = {
+		"If it's worth making, it's worth making so it outlives you. That's the whole of dwarven wisdom; the rest is ale talk.",
+		"Build it once, build it right, and let the grandchildren argue over who built it.",
+		"Anything that wobbles was made by somebody who stopped too soon. A dwarf would sooner skip a meal than stop too soon.",
+	},
+	["race.dwarf.muse.w08.038"] = {
+		"A bed is a bed, but a bedroll on stone is where a dwarf truly sleeps. Soft things make my back suspicious.",
+		"Feather mattresses are a human invention, and the sign of a people with too much time and too few rocks.",
+	},
+	["race.dwarf.muse.w08.039"] = {
+		"The Wildhammer bond with a gryphon for life, the story goes. Anyone who's watched a gryphon chew through a saddle strap knows what a life of patience that must be.",
+		"A Wildhammer and a gryphon: two creatures who'd rather be up in the sky and argue with you from there.",
+	},
+	["race.dwarf.muse.w08.040"] = {
+		"sniffs the air, frowning, as if trying to tell iron from tin by smell alone.",
+		"picks up a pebble, turns it over, and pockets it with the air of someone who has seen promise in worse.",
+		"kicks a loose stone, watches how it rolls, and makes a quiet note of the lay of the land.",
+	},
+	["race.dwarf.muse.w08.041"] = {
+		"rolls {g:his|her} shoulders the way a dwarf does before lifting something heavy, though there is nothing to lift.",
+		"cracks {g:his|her} knuckles one by one, unhurried, like a smith counting rivets.",
+	},
+	["race.dwarf.muse.w08.042"] = {
+		"pats the pouch at {g:his|her} belt to hear the reassuring clink of coin, then nods, satisfied with the music.",
+		"weighs {g:his|her} purse in one palm and counts the coins inside by heft alone, without opening it.",
+	},
+	["race.dwarf.muse.w08.043"] = {
+		"A mug of stout cures nothing. It just makes the cure feel less urgent.",
+		"Dwarven medicine: rest, red meat and a stout. If that fails, a second stout.",
+		"Every injury feels smaller after a stout. The injury disagrees, but it's outvoted.",
+	},
+	["race.dwarf.muse.w08.044"] = {
+		"Dwarves keep their histories the way they keep their halls: carved deep, so nobody can scrub them out. Even the parts we'd like to.",
+		"Most dwarves can recite the deeds of a great-great-grandsire before the names of their neighbors. Priorities.",
+	},
+	["race.dwarf.muse.w08.045"] = {
+		"You can tell a lot about folk by how they treat stone. Those who carve it with care usually treat their friends the same way.",
+		"Granite forgives nothing and remembers every blow. I've known people like that. Good people, mostly, so long as you never hit them.",
+	},
+	["race.dwarf.muse.w08.046"] = {
+		"In Ironforge there's a seat at a long table that stays warm for every dwarf on the road. That's what the mountain is for.",
+		"However far I wander, the gate of Ironforge stands open for a dwarf. Knowing that makes the road lighter.",
+		"Wherever I end up, there's a mountain that counts me as one of its own. Not every traveler can say as much.",
+	},
+	["race.dwarf.muse.w08.047"] = {
+		"Wood. The whole world loves wood. It burns, it rots, it warps in the damp. Give me a lintel of granite and it'll stand ten generations.",
+		"Trees are fine. Trees are lovely. But nobody ever dug anything worth keeping out of a tree.",
+	},
+	["race.dwarf.muse.w08.048"] = {
+		"A dwarf doesn't run from trouble. We back away from it slowly, at a dignified pace, while working out how to hit it.",
+		"Retreat is a word we keep in the language for visitors.",
+		"Dwarves have a saying about running away. It's very short, and nobody would write it down.",
+	},
+	["race.dwarf.muse.w08.049"] = {
+		"The world beyond the mountain is quieter than a dwarf expects. No hammers in the walls, no voices booming down a hall. It takes some getting used to.",
+		"Away from the forges, silence grows thick enough to lean on. A dwarf has to whistle now and then, just to keep it honest.",
+	},
+	["race.dwarf.muse.w08.050"] = {
+		"Gold is pretty, but it's soft. A dwarf respects iron more and admires gold in secret, like a bad habit.",
+		"Folk think dwarves love gold. We love what gold buys: good ale, good steel and a long silence from creditors.",
+	},
+	["race.dwarf.muse.w08.051"] = {
+		"Pound for pound, nothing in the Alliance outlifts a dwarf. Not a horse, not a cart, and certainly not an elf.",
+		"Give a dwarf a keg and a flight of stairs and you'll see two talents at once: hauling, and complaining the whole way up.",
+	},
+	["race.dwarf.muse.w08.052"] = {
+		"Stone carries sound farther than air. Put an ear to the rock and the world tells you what's coming: footsteps, water, sometimes worse.",
+		"Miners say rock talks to those who listen low enough. I've only ever heard creaks, never words. Maybe I'm not listening low enough.",
+	},
+	["race.dwarf.muse.w08.053"] = {
+		"Dwarves go gray slowly and complain about it quickly.",
+		"Among dwarves a gray braid is a medal. Nobody earns one by sitting still.",
+		"My people count age in gray hairs and good stories. The second count matters more.",
+	},
+	["race.dwarf.muse.w08.054"] = {
+		"Whenever I pass a ruin I wonder whether the Explorers' League has been through. If not, I'm half tempted to take the notes myself.",
+		"A tumbled wall, a carved stone half sunk in the dirt: a dwarf can't pass that by without a long look. The League has ruined us all for walking past.",
+	},
+	["race.dwarf.muse.w08.055"] = {
+		"The siege engines of the Second War rolled out of dwarven forges with gnomish gears in their bellies. Neither people will say who did the hard part.",
+		"Dwarven iron and gnomish cleverness: together they built things that made the Horde think twice. Apart, they argue about the bolts.",
+	},
+	["race.dwarf.muse.w08.056"] = {
+		"Dwarves don't weep in public. We go and hit something hard for a while, then come back and buy the next round.",
+		"Grief among my people sounds like a hammer working late. Nobody asks what's being made.",
+	},
+	["race.dwarf.muse.w08.057"] = {
+		"However far I go, there's rock under every road. Dig deep enough anywhere and you reach the same stone that holds up Ironforge. That's a comfort.",
+		"The world is only a thin skin of grass and dirt over a great deal of honest rock. A dwarf never forgets what's underneath.",
+	},
+	["race.dwarf.muse.w08.058"] = {
+		"Dark Iron raiders hold Dun Modr at the north end of the Wetlands, close enough to the Thandol Span to put every honest dwarf on edge.",
+		"Dun Modr belongs to the Dark Iron now. A dwarven hold, held by dwarves, and still a loss. That's our kind of riddle.",
+	},
+	["race.dwarf.muse.w08.059"] = {
+		"Bah. If it can't be fixed with a hammer, it wasn't worth fixing.",
+		"Hmph. The world would run smoother if more of it were built by dwarves and fewer of its plans were drawn by elves.",
+		"Hmph. Elves call it patience when they wait a century. Dwarves call it a slow afternoon.",
+	},
+	["race.dwarf.muse.w08.060"] = {
+		"Measure twice, strike once. It works for stone, for iron, and for most of the trouble I meet.",
+		"Every apprentice in Ironforge hears it first: look at the grain before you swing. I've found it holds for people too.",
+	},
+	["race.dwarf.muse.w08.061"] = {
+		"The mountaineers patrol the passes of Khaz Modan in every season the mountains can throw at them. I raise a mug to them whenever I remember.",
+		"The mountaineers of Ironforge keep the roads clear of troggs and worse, so the rest of us can complain about the roads. Thankless work. Someone ought to thank them.",
+	},
+	["race.dwarf.muse.w08.062"] = {
+		"Humans learned to dig from us and to drink from us. They're better at one of those than the other.",
+		"The masons of Stormwind picked up a trick or two from dwarves. They'll admit it, after the third mug.",
+	},
+	["race.dwarf.muse.w08.063"] = {
+		"A dwarf says 'not bad' and means 'magnificent'. Foreigners never learn the exchange rate.",
+		"If a dwarf calls your work 'sound', frame it. We don't hand out bigger praise.",
+		"Praise from a dwarf comes in grunts. One grunt is politeness. Two is high honor. Three, and somebody's buying you a drink.",
+	},
+	["race.dwarf.muse.w08.064"] = {
+		"Dun Algaz guards the road between Loch Modan and the Wetlands. Every pass in Khaz Modan has a gate, or the ruin of one. We never trusted an open door.",
+		"Khaz Modan is a land of gates: on the passes, on the dams, on the mines. A dwarf likes to know which side of a door the trouble is on.",
+	},
+	["race.dwarf.muse.w08.065"] = {
+		"Stars. Pretty enough. The miners of Dun Morogh say each one is a lantern somebody forgot to put out.",
+		"A whole sky of little lights, and not one of them gives off any heat. The elves can keep them; I'll take a brazier.",
+	},
+	["race.dwarf.muse.w08.066"] = {
+		"Snow. Finally a weather that knows what it's doing.",
+		"Snow underfoot and cold in the lungs. Anywhere in the world, snow makes a dwarf feel the next valley over might be Dun Morogh.",
+	},
+	["race.dwarf.muse.w08.067"] = {
+		"Rain. In a proper hall, water only comes through the ceiling if somebody cut it badly.",
+		"Water falling out of the sky, and no ceiling to stop it. The surface world really hasn't thought things through.",
+	},
+	["race.dwarf.muse.w08.068"] = {
+		"Rock overhead once more. My shoulders drop an inch, the way other folk's do when they see the sky.",
+		"Tunnels and stone. Others peer into the dark; I read the walls.",
+	},
+	["race.dwarf.muse.w08.069"] = {
+		"Forest all around and not a stone in sight worth the name. I feel like a fish on a tabletop.",
+		"Trees, roots, more trees. Lovely for elves. For a dwarf it's like living inside a very large salad.",
+	},
+	["race.dwarf.muse.w08.070"] = {
+		"Steep ground and bare rock. Any range like this is kin to Khaz Modan, and a dwarf greets kin.",
+		"My legs know a slope like this before I do. Mountain air tastes the same wherever it's breathed: of stone and of home.",
+	},
+	["race.dwarf.muse.w08.071"] = {
+		"Sand. Stone that gave up. I can't bring myself to respect it.",
+		"Dust and heat and not a cool cellar for leagues. A dwarf in the desert is a barrel left out in the sun.",
+	},
+	["race.dwarf.muse.w08.072"] = {
+		"Mud to the knees. For a dwarf that's mud to the belt, and I'll thank nobody to mention it.",
+		"Swamp. The ground won't hold a footing, let alone a wall. I've never trusted earth that moves when you stand on it.",
+	},
+	["race.dwarf.muse.w08.073"] = {
+		"Dwarven runes are all straight lines, the scribes of Ironforge say, because they were meant to be cut, not painted. Even our letters are built to last.",
+		"A dwarf's signature is a mark cut into something hard. Ink is for people who expect to change their minds.",
+	},
+	["race.dwarf.muse.w08.074"] = {
+		"Darnassus is a long voyage and a longer climb from any honest stone. They say it's beautiful. They say the same about clouds.",
+		"Elves build their city in a tree on an island at the edge of the world. Dwarves build theirs inside a mountain. Each of us thinks the other is hiding.",
+	},
+	["race.dwarf.muse.w08.075"] = {
+		"When a dwarf goes quiet over a mug, leave them be. They're not sulking. They're working something out, slowly, the way we work stone.",
+		"Some thoughts have to be worked cold, blow after blow, without a fire to make them easy.",
+	},
+	["race.dwarf.muse.w08.076"] = {
+		"Dwarven bootmakers put a double sole on everything. Elsewhere they call that heavy. We call it finished.",
+		"A good pair of boots outlasts three roads and two arguments with the cobbler. Any dwarf will tell you so.",
+	},
+	["race.dwarf.subzone_enter.w08.001"] = {
+		"runs a hand along the nearest beam or stone at the edge of {subzone}, judging the work by touch alone.",
+		"takes in {subzone} with one sweep of the eyes and, before anything else, looks at what it all rests on.",
+		"walks into {subzone} with a craftsman's squint, as if pricing the whole place by the cartload.",
+	},
+	["race.dwarf.subzone_enter.w08.002"] = {
+		"{subzone}. First question: where would I put a door if I had to hold this place. Second question: where's the ale.",
+		"{subzone}. Good stone or bad, I'll know within a dozen steps.",
+		"{subzone}. If anyone here brews, I'll find them. A dwarf's nose for ale is a fine guide.",
+	},
+	["race.dwarf.subzone_enter.w08.003"] = {
+		"{subzone}. Hm. Seen sturdier. Seen worse.",
+		"{subzone}. It'll do, so long as nothing falls on me.",
+		"{subzone}. A dwarf or two could straighten it out.",
+	},
+	["race.dwarf.subzone_enter.w08.004"] = {
+		"{subzone}. Under every name on a map there's rock that never cared what it was called.",
+		"{subzone}. Up top, names come and go. Down in the stone, nothing has changed in an age.",
+		"{subzone}. Every place sits on older places. A dwarf feels the weight of all of them.",
+	},
+	["race.dwarf.subzone_enter.w08.005"] = {
+		"takes a long look around, eyes going first to the ground, then to anything that might serve as cover, then, hopefully, to anything that looks like a tavern.",
+		"sizes the place up in the dwarven order: footing, shelter, something to drink.",
+		"stops, plants both heels and rocks on them once, as if testing a plank before trusting it.",
+	},
+	["race.dwarf.subzone_enter.w08.006"] = {
+		"{subzone}. I check the slope of the ground out of habit. Water runs downhill, and so does trouble.",
+		"{subzone}. Which way would a cave-in fall here? A useless question most places, and I ask it anyway.",
+		"{subzone}. Where's the high ground, where's the dry ground. Then I can start enjoying myself.",
+	},
+	["race.dwarf.subzone_enter.w08.007"] = {
+		"{subzone}. One more name to tell them about, back in Ironforge.",
+		"{subzone}. Somebody in Kharanos will want to hear about this.",
+		"{subzone}. Worth a line in a letter home, if I ever write one.",
+	},
+	["race.dwarf.subzone_enter.w08.008"] = {
+		"{subzone}. If this ground could talk it would tell of floods and quakes and slow ages. Rock is a poor gossip, but an honest one.",
+		"{subzone}. The layers under my boots took longer to settle than any kingdom has lasted.",
+	},
+	["race.dwarf.subzone_enter.w08.009"] = {
+		"glances up at whatever passes for a ceiling in {subzone}, and seems to find it wanting.",
+		"takes in {subzone} with a slow nod, the kind a mason gives to work that is merely acceptable.",
+	},
+	["race.dwarf.subzone_enter.w08.010"] = {
+		"{subzone}. Somebody dug here once, or should have.",
+		"{subzone}. Solid underfoot or not? A dwarf's heels always want to know.",
+		"{subzone}. Fair ground. Fairer still if somebody laid a few flagstones.",
+	},
+	["race.dwarf.subzone_enter.w08.011"] = {
+		"{subzone}. Looks like the sort of place where a sensible dwarf would sink a well, a shaft and a brewery, in no particular order.",
+		"{subzone}. Under here there's a cellar waiting to be dug. I can feel it.",
+	},
+	["race.human.landmark.w08.001"] = {
+		"{landmark}. First question, as always: who looks after it? A place with a name is a place somebody answers for.",
+		"{landmark}. I catch myself checking the state of things: fences, paths, walls. Humans judge a place by how well it's kept.",
+		"{landmark}. Whoever answers for this place, I'd like to meet them. People who keep such places usually know everything worth knowing about the road.",
+	},
+	["race.human.landmark.w08.002"] = {
+		"stops at {landmark} and takes it in with a human's practical eye: who built it, what it cost, and who is paying now.",
+		"looks {landmark} over the way a human sizes up a neighbor's barn: with interest, a little envy and a quick estimate of the cost.",
+		"gives {landmark} a long look, as if adding up the work and the coin it took to make it, and the hands.",
+	},
+	["race.human.muse.w08.001"] = {
+		"Lady Katrana Prestor has the ear of every noble at court, and nobody can quite say where her family's lands are. In Stormwind that counts as a small mystery and a large career.",
+		"At court they say Lady Prestor is wise beyond her years. I've never trusted anyone the whole court agrees about.",
+		"The regent rules, Lady Prestor advises, and the nobles nod along. A farmer would want to know who's really holding the plow.",
+	},
+	["race.human.muse.w08.002"] = {
+		"Stromgarde still holds out in the Arathi Highlands, with ogres and brigands camped in its own streets. Humans don't know when to give up on a city, and I'm glad of it.",
+		"Half of Stromgarde is rubble and the other half is held by soldiers who refuse to call it lost. That's a very human kind of arithmetic.",
+		"Stromgarde's soldiers still walk walls with more holes than stones. Call it folly if you like; I call it keeping a promise to the dead.",
+	},
+	["race.human.muse.w08.003"] = {
+		"Lady Proudmoore led her people across the whole sea and built Theramore in a marsh. Humans will plant a flag anywhere a boat can land.",
+		"Theramore: a human city on the far side of the ocean, in a swamp, next door to the Horde. Somehow it works. Jaina Proudmoore must be very stubborn or very wise.",
+		"When the north fell, some ran south and some ran east. Jaina Proudmoore went west, across an ocean, and took a city's worth of people with her.",
+	},
+	["race.human.muse.w08.004"] = {
+		"Gilneas raised its great wall and shut the gate on the rest of us. Whatever is happening behind it, they decided long ago it was none of our business.",
+		"Past Silverpine there's a whole human kingdom closed behind a wall, and not a word out of it in years. I can't decide whether that's wisdom or fear.",
+		"Gilneas wanted no part of our wars or our refugees, so it built a wall. Humans can be generous to strangers or shut tight against them; Gilneas chose the second.",
+	},
+	["race.human.muse.w08.005"] = {
+		"Westfall fed Stormwind once: wheat to the horizon, barns full by autumn. Now the fields belong to brigands, and the harvest golems work for them.",
+		"A field left unplowed for one season is a pity. Westfall has been left for years, and you can watch the weeds winning from the road.",
+		"The windmills of Westfall still turn, with nobody grinding anything. No farmer can look at that without wincing.",
+	},
+	["race.human.muse.w08.006"] = {
+		"In Westfall the farmers formed their own militia when the crown didn't come. Pitchforks and old swords against the Defias. I'd stand with them sooner than with half the nobles.",
+		"The People's Militia is a farmer's answer to a kingdom that stopped listening: if nobody guards the fields, we guard them ourselves.",
+		"The Militia gathers at Sentinel Hill with whatever weapons it could scrape together. The most honest army in the kingdom.",
+	},
+	["race.human.muse.w08.007"] = {
+		"In Redridge they fish the lake with one eye on the water and one on the hills. Orcs come down from the mountains every few seasons, and Lakeshire mends its roofs and waits.",
+		"Lakeshire is a pretty town with a lake, a bridge and a great deal of trouble in the hills behind it. Most human towns are like that, if you look closely.",
+		"Redridge has red stone, a clear lake and gnolls in the hills. A human would settle there anyway; we always do.",
+	},
+	["race.human.muse.w08.008"] = {
+		"Duskwood was called Brightwood once, people say. Then something darkened it, and now Darkshire keeps a watch of farmers with lanterns and old swords.",
+		"In Darkshire they lock their doors early and keep the lanterns lit, and nobody calls it superstition. Not out loud.",
+		"A human forest gone dark: that's Duskwood. We don't have many places like it, and we don't talk about the ones we have.",
+	},
+	["race.human.muse.w08.009"] = {
+		"Stormwind's canals carry everything: barges, fishing lines, gossip, and whatever somebody dropped off a bridge last week.",
+		"Children fish off the canal walls in Stormwind with bent pins and enormous patience. It's the most hopeful sight in the city.",
+		"A city of canals is a city of bridges, and every bridge in Stormwind has somebody leaning on it, watching the water and putting off work.",
+	},
+	["race.human.muse.w08.010"] = {
+		"In the Trade District a smile costs nothing and everything else costs double. I love the place.",
+		"Haggling is a human art. Dwarves bargain like they're mining, gnomes like they're calculating. We bargain like it's a play and everyone has a part.",
+		"A Stormwind merchant can tell what you'll pay before you've finished saying hello. I admire it, from a distance, with my purse shut.",
+	},
+	["race.human.muse.w08.011"] = {
+		"The cathedral bells of Stormwind ring the hours for half the city. Away from them I keep time by hunger instead.",
+		"Every human town measures out its day with a bell. Far from one, my stomach does the job, and it's less punctual.",
+	},
+	["race.human.muse.w08.012"] = {
+		"In Elwynn they plant pear trees that won't bear for ten years. A short-lived people planting for strangers: I think that's the best thing about us.",
+		"Humans plant trees whose shade they'll never sit in. Elves would call it foolish. Elves have the time to wait for their own.",
+		"Every orchard in Elwynn is a letter to people not yet born. Humans write a lot of those.",
+	},
+	["race.human.muse.w08.013"] = {
+		"Every shopkeeper in Stormwind hands you your change with a 'Light be with you', whether or not they've set foot in the Cathedral this year. It's less a prayer than a habit, and habits hold a people together.",
+		"'Light keep you.' Bakers say it, guards say it, cutpurses say it. Among humans the Light is a word for goodbye as much as for anything holy.",
+		"Even the ones who never pray say 'Light keep you' at a parting. It costs nothing, and it's warmer than a plain farewell.",
+	},
+	["race.human.muse.w08.014"] = {
+		"Not every human kneels when the bells call. Plenty of us keep our heads down, pay what's owed and trust our own two hands.",
+		"The priests promise the Light will provide. As far as I can tell, the Light provides best to people who also carry a purse.",
+		"Some humans find the Light in the Cathedral, some in a bottle, some nowhere at all. Stormwind makes room for all three, more or less.",
+	},
+	["race.human.muse.w08.015"] = {
+		"The night elves joined the Alliance only lately, and they look at us the way we look at a candle: pretty, brief, a little alarming to leave unattended.",
+		"The night elves remember things that happened before there was a single human city. It's hard to win an argument with someone who was there.",
+		"To a night elf, a human friendship must be like a summer: lovely, and over before they've unpacked.",
+	},
+	["race.human.muse.w08.016"] = {
+		"Gnomes built a cart that runs under the sea from Stormwind to Ironforge. I ride it and think very hard about anything but the water overhead.",
+		"The Deeprun Tram is a marvel, everyone says so. Marvels are best enjoyed by people who don't know how deep they go.",
+		"Fish swim somewhere above the tram tunnel. I prefer not to know exactly how far above.",
+	},
+	["race.human.muse.w08.017"] = {
+		"Ironforge is warm, loud and smells of coal. Every human who visits leaves with a cough and a few dwarven friends, and only the cough goes away.",
+		"A dwarf will drink to your health, then to his own, then to the health of the barrel. Humans just aren't built for that kind of loyalty.",
+		"Humans and dwarves have bled side by side in more than one war. It's why a dwarf will still pour for a human stranger.",
+	},
+	["race.human.muse.w08.018"] = {
+		"The veterans still raise a cup to Anduin Lothar, the Lion of Azeroth. When the city burned he led what was left of Stormwind north, and never got to lead it home.",
+		"Old soldiers speak Lothar's name the way priests speak a blessing. A man who saved a kingdom by leaving it.",
+	},
+	["race.human.muse.w08.019"] = {
+		"In the north the plague came in the grain. That's the part a farming people can't get past: the bread itself turned on them.",
+		"They say Stratholme's grain carried the plague, sack by sack, into every kitchen. I can't look at a loaf the same way since I heard it.",
+		"Bread is sacred to a human in the plainest way: you don't waste it, you share it. In Lordaeron the plague made it a weapon, and that wound hasn't closed.",
+	},
+	["race.human.muse.w08.020"] = {
+		"The Scarlet Crusade are humans too: grief with a banner and nobody left to stop it. That's what frightens me about them.",
+		"Hearthglen, Tyr's Hand, the monastery: all held by people who lost everything to the plague and decided to burn the rest. I understand them a little, and that's the worst part.",
+		"Every human who lost someone to the plague has felt the Scarlet temptation for a moment: burn it all, trust no one. Most of us put it down again.",
+	},
+	["race.human.muse.w08.021"] = {
+		"Most of the Forsaken were Lordaeron's own people once: bakers, guards, farmers. I can't decide whether to pity them or fear them, so I do a little of both.",
+		"In Undercity walks someone who once kept a shop in Lordaeron, and maybe sold bread to people whose grandchildren live in Stormwind now.",
+	},
+	["race.human.muse.w08.022"] = {
+		"Give me bread, a wedge of cheese and a mug of something cheap, and I'll follow you into any dungeon you like. Humans are easy to provision.",
+		"Elves eat leaves, dwarves eat biscuits hard as rock, and humans eat whatever's in the pot and ask for seconds. We're simple, and it's served us well.",
+		"A human can march all day on a heel of bread and the promise of a hot supper. Mostly on the promise.",
+	},
+	["race.human.muse.w08.023"] = {
+		"Westfall stew: whatever the field gave, whatever the pot holds, and a long slow simmer. Every human kitchen has a version, and every cook swears theirs is right.",
+		"Ask ten human cooks how to make a proper stew and you'll get eleven answers and one fistfight.",
+	},
+	["race.human.muse.w08.024"] = {
+		"Stormwind built a prison and the prisoners took it over. I'd bet a clerk is still filing the report.",
+		"The Stockade is so full of rioting prisoners that the guards ask passing adventurers to go in and tidy up. That's Stormwind: even the jail is short-staffed.",
+		"The Stockade: Stormwind's proof that you can lock trouble up, but you can't lock it up quietly.",
+	},
+	["race.human.muse.w08.025"] = {
+		"Stormwind's orphanage is never short of children. Two wars and a plague will do that to a kingdom, and the matron never seems to sleep.",
+		"Every war leaves its bill, and in Stormwind a good part of it is paid by the children in the orphanage. A coin left there isn't enough. It isn't nothing, either.",
+	},
+	["race.human.muse.w08.026"] = {
+		"Humans aren't the strongest people in the Alliance, or the oldest, or the cleverest. We're the ones who keep turning up anyway.",
+		"Ask what humans are good at and you'll get a shrug. Then look around: we built half the roads you walked to get here.",
+	},
+	["race.human.muse.w08.027"] = {
+		"Stormwind's historians say every human kingdom began as one: Arathor, raised by Thoradin to hold back the trolls. We've been splitting the inheritance ever since.",
+		"There was a single human empire once, Arathor, and seven kingdoms grew out of it like branches from one trunk. Some branches are dead now. The trunk lies somewhere under the Arathi grass.",
+	},
+	["race.human.muse.w08.028"] = {
+		"The high elves taught a hundred humans to work magic, back when the trolls threatened them both. Every mage in Stormwind descends, in a way, from that one bargain.",
+		"Our first spellcasters learned at elven hands, in a war against the trolls. Humans took to it quickly, the stories say. Too quickly, some elves still think.",
+	},
+	["race.human.muse.w08.029"] = {
+		"Dalaran hides under a violet dome in the hills of Alterac now. The mages inside say they're rebuilding. Everyone else says nothing and walks around it.",
+		"From the road, Dalaran looks like a soap bubble the size of a city. Whether it keeps danger out or in, nobody I trust will say.",
+	},
+	["race.human.muse.w08.030"] = {
+		"In Kul Tiras they think anyone who can't swim is half-dead. They may be right; it's a big world and most of it is wet.",
+		"The sailors at Menethil Harbor drink as if the sea meant to steal their thirst next.",
+		"Kul Tiran sailors walk the docks of Menethil as if the land were rocking under them, and complain that it isn't.",
+	},
+	["race.human.muse.w08.031"] = {
+		"Southshore and Tarren Mill sit a few hills apart: one human village alive, one human village dead and wearing Forsaken colors. The road between them has seen more blood than any road should.",
+		"In Hillsbrad the living and the dead claim the same farms. The apples don't care who picks them.",
+	},
+	["race.human.muse.w08.032"] = {
+		"Every child in Elwynn grows up hearing about the kobolds in the mines. They steal candles. Nobody knows why, and nobody's brave enough to ask.",
+		"Kobolds: small, smelly and deadly serious about candles. Elwynn's oldest nuisance, and somehow still a mystery.",
+	},
+	["race.human.muse.w08.033"] = {
+		"Humans gray fast. A few hard years on the road and the mirror starts telling the truth. I've decided not to argue with it.",
+		"By the time an elf has learned a person's name, that person has gone gray. We're a hurried people, and it shows on our faces first.",
+		"Night elves don't wrinkle, and dwarves just grow more beard. Humans get lines on the face, one for every bad winter.",
+	},
+	["race.human.muse.w08.034"] = {
+		"Humans bury their dead close, behind the chapel, under a stone with a name. We want to be able to visit. In Duskwood, at Raven Hill, the dead have started visiting back.",
+		"We lay our dead in rows near the chapel so the living can find them. It's a gentle custom. Duskwood has made it a good deal less gentle.",
+	},
+	["race.human.muse.w08.035"] = {
+		"The Light asks very little: kindness, courage, a hand where one is needed. Humans keep falling short of it and keep coming back to try. That's faith enough for me.",
+		"I don't know whether the Light listens. I know what people do when they believe it does: they open doors, share bread, stand watch for strangers.",
+	},
+	["race.human.muse.w08.036"] = {
+		"counts the coins in {g:his|her} purse twice, with the care of a people who have always paid for their own bread.",
+		"weighs {g:his|her} purse in one hand and frowns, working through a small human sum of meals, repairs and whatever is left.",
+		"tallies something on {g:his|her} fingers, lips moving: debts, distances, days. Humans are always counting.",
+	},
+	["race.human.muse.w08.037"] = {
+		"hums a few bars of some tavern tune under {g:his|her} breath, then stops, a little embarrassed, and looks around to see who heard.",
+		"whistles the opening of a song every village common room seems to know, and loses the tune halfway through.",
+	},
+	["race.human.muse.w08.038"] = {
+		"brushes the dust off {g:his|her} sleeves and straightens {g:his|her} collar, as if someone important might come around the next corner.",
+		"tugs {g:his|her} clothes straight, out of that very human habit of looking presentable for nobody in particular.",
+	},
+	["race.human.muse.w08.039"] = {
+		"squares {g:his|her} shoulders and sets off at the brisk step of someone whose people never have enough time.",
+		"quickens {g:his|her} pace without meaning to, the hurry of a short-lived people settling into {g:his|her} legs.",
+	},
+	["race.human.muse.w08.040"] = {
+		"leans back and watches the world go by, like an old villager on the bench outside the tavern with nothing pressing to do.",
+		"lets the noise of the world wash past for a moment, with the patience of someone sitting on a village doorstep after the harvest.",
+	},
+	["race.human.muse.w08.041"] = {
+		"stops to tighten a strap and check every buckle twice, with the thoroughness of a people who learned the hard way that small things fail first.",
+		"goes over buckles and laces one by one, a soldier's habit that half of humankind seems to share.",
+	},
+	["race.human.muse.w08.042"] = {
+		"looks back the way {g:he|she} came, then ahead, and gives the small sigh of someone with too many errands and one short life.",
+		"rubs {g:his|her} eyes and mutters the list of things still to do, the oldest human prayer there is.",
+	},
+	["race.human.muse.w08.043"] = {
+		"A human trusts a horse before a gryphon, and a gryphon before a gnome's machine. Call it the wisdom of the stable.",
+		"Give a human a horse and a road, and we'll be in the next kingdom by spring. Give us a mechanostrider and we'll be asking for the horse back.",
+	},
+	["race.human.muse.w08.044"] = {
+		"Humans write everything down: debts, treaties, recipes, grudges. We don't live long enough to remember, so we let the ink do it for us.",
+		"Stormwind runs on paper. In the Keep there's a ledger for every sack of grain since the city was rebuilt.",
+	},
+	["race.human.muse.w08.045"] = {
+		"A human village will throw a feast for anything: a harvest, a wedding, a calf born with two colors. We know how quickly the good days go.",
+		"Humans don't wait for a reason to celebrate. A full barn, a mended roof, a neighbor's child walking: out come the benches and the cheap wine.",
+		"We know how few good days a life holds, so we don't let one pass without a dance.",
+	},
+	["race.human.muse.w08.046"] = {
+		"In a human town news runs faster than any courier, and arrives improved.",
+		"Tell one human a secret and by supper the whole street will have a better version of it.",
+		"In a human village every stranger arrives twice: once on foot, and once, earlier, in the gossip.",
+	},
+	["race.human.muse.w08.047"] = {
+		"The Alliance was a human idea first: Terenas calling the kingdoms together against the Horde. Lordaeron is gone now, and the idea is still standing.",
+		"Kings called it, dwarves and elves answered, and the Alliance held. Every time it frays, someone remembers what it cost to sew it together.",
+	},
+	["race.human.muse.w08.048"] = {
+		"We lost one kingdom to the dead and misplaced a king, and come spring there are still seeds going into the ground. Call it stubbornness; I call it human.",
+		"Hope is a farmer's habit more than a virtue. You plant, you wait, you plant again after the hail.",
+		"Humans have had every reason to give up on tomorrow. We keep setting the table for it anyway.",
+	},
+	["race.human.muse.w08.049"] = {
+		"Ask a Stormwind guard the way and you'll get a salute, a smile and directions to somewhere nearby.",
+		"The city watch of Stormwind would die for you without a second thought. Giving clear directions is another matter.",
+		"Stormwind's guards are polite, well armed and always slightly tired. Like the kingdom, really.",
+	},
+	["race.human.muse.w08.050"] = {
+		"An elf can afford to wait a century for the right moment. I'd rather make a wrong move today than a perfect one when I'm in the ground.",
+		"Patience is a fine thing for those who live a thousand years. The rest of us have to be brave on a schedule.",
+		"A human life is too short for long grudges and long sulks. Mostly.",
+	},
+	["race.human.muse.w08.051"] = {
+		"In Stormwind a noble's son and a mason's daughter can end up in the same regiment. The regiment doesn't care; the nobility does.",
+		"Titles mean a great deal in the Keep and nothing at all in a ditch with a gnoll coming. I find that comforting.",
+	},
+	["race.human.muse.w08.052"] = {
+		"Every human road seems to run through a Goldshire: an inn, a forge, a well, and people arguing over the price of everything.",
+		"Humans can't see a crossroads without putting an inn on it and a smithy beside it. Give us a century and every crossroads in Azeroth will have its Goldshire.",
+	},
+	["race.human.muse.w08.053"] = {
+		"It was one of our own, Medivh, who opened the way for the orcs. Every human with a little power ought to remember it.",
+		"The Guardian of Tirisfal was one of us, and he let the Horde into this world. Humans reach for power faster than any other people, and sometimes we grab the wrong end.",
+	},
+	["race.human.muse.w08.054"] = {
+		"Human children play at soldiers and knights before they can spell either word.",
+		"In every human village there's a child with a stick sword defending a woodpile from imaginary orcs.",
+		"A farm child is knighting a goat with a broom handle right now, I'd wager. Humans start their ambitions early.",
+	},
+	["race.human.muse.w08.055"] = {
+		"Orcs in camps, orcs in armies, and now orcs with a nation of their own across the sea. Humans have needed a new opinion of them every ten years.",
+		"Thrall's Horde holds a land of its own across the sea now. Stormwind hasn't decided whether that's a peace or a pause, and neither have I.",
+	},
+	["race.human.muse.w08.056"] = {
+		"The gnomes lost Gnomeregan and moved in with the dwarves without a word of complaint. Humans would have written a hundred letters to the king.",
+		"The gnomes lost a whole city and still tinker away cheerfully in Ironforge. Humans in their place would still be holding an inquiry.",
+	},
+	["race.human.muse.w08.057"] = {
+		"Elwynn's oaks and birches are kind trees: tall enough to shade a road, not so thick that you lose it.",
+		"Most forests in this world want something from you. Elwynn only wants you to keep to the path and wave at the woodcutters.",
+		"Elwynn has wolves, kobolds and the odd bandit, and it's still the gentlest forest I know of. That says something about the rest of the world.",
+	},
+	["race.human.muse.w08.058"] = {
+		"Humans were never the strongest one by one. Shoulder to shoulder, a shield on every arm, we've held back worse than anything this road can send.",
+		"Alone, a human is a small thing with a short life. In a line of others, holding, a human is a wall.",
+	},
+	["race.human.muse.w08.059"] = {
+		"A human tavern is a parliament with ale: every table has a plan for the kingdom, and no two of them agree.",
+		"Put three humans at a tavern table and you'll have four political parties by the second round.",
+	},
+	["race.human.muse.w08.060"] = {
+		"Stormwind is home: white stone, blue roofs, the smell of bread and canal water. Wherever I am, that's what the word means.",
+		"When I say home, I mean blue roofs over white walls and a crowd that never quite goes quiet. Stormwind, for all its faults.",
+		"Stormwind: the gate, the bridge with its great stone guardians, and then the noise of a crowd that never ends. Home, in other words.",
+	},
+	["race.human.muse.w08.061"] = {
+		"All through the north there are human ruins: a chapel, a farmhouse, a wall around nothing. We built a great deal for people who no longer exist.",
+		"Half the ruins in the Eastern Kingdoms were human once. We build fast, and the world takes us apart just as fast.",
+		"Humans build in a hurry and the world unbuilds us at leisure. Between the two, there's always a mason with work.",
+	},
+	["race.human.muse.w08.062"] = {
+		"Humans live by the seasons: sow, mend, reap, wait. Even far from any field, part of me knows the month by what the farmers would be doing.",
+		"On the road I still count the year in farm work: now they'd be sowing, now mending fences, now praying the harvest holds.",
+	},
+	["race.human.muse.w08.063"] = {
+		"Every human is one good deed away from a title, or thinks so. It's what gets half of us out of bed.",
+		"A farmer's child can become a knight in Stormwind, given courage, luck and great patience with paperwork.",
+	},
+	["race.human.muse.w08.064"] = {
+		"Somewhere in the ruins of Lordaeron's capital is the throne room where King Terenas died at his own son's hand. Humans don't tell that story to children.",
+		"A prince came home victorious, the city threw flowers, and he killed his father in the throne room. Every human knows how Lordaeron ended, and nobody likes to say the prince's name.",
+	},
+	["race.human.muse.w08.065"] = {
+		"Uther died defending what was left of Lordaeron from its own prince. Every human knows the story, and nobody tells it the same way twice.",
+		"The Silver Hand was born in Lordaeron, the pride of the human kingdoms. Its knights are scattered now, and they carry the order with them like a coal in a pot.",
+	},
+	["race.human.muse.w08.066"] = {
+		"Every fisherman between Westfall and Elwynn has a murloc story, and every one of them ends with a lost net.",
+		"Murlocs: the only creatures in Azeroth that can make a human fisherman swear in three dialects.",
+		"A murloc's cry carries a long way over water. Ask anyone from Westfall: they'll do the noise for you, badly.",
+	},
+	["race.human.muse.w08.067"] = {
+		"Humans don't do well alone. Even on the road I catch myself talking to the sky, the path, the nearest tree.",
+		"We're a crowding people: we like a neighbor's smoke on the horizon. Too long without one and I start narrating my own day under my breath.",
+	},
+	["race.human.muse.w08.068"] = {
+		"Menethil Harbor is where humans go when they want to leave the continent: a dock, a tavern and a keep with its feet in the swamp.",
+		"Every ship west leaves from Menethil, a damp little port where the boards smell of tar and every sailor has an opinion about the tide.",
+	},
+	["race.human.muse.w08.069"] = {
+		"Stormwind keeps a cellar full of spies, SI:7, and pretends it doesn't. Every kingdom has its knives; ours just has better manners about them.",
+		"For every paladin in Stormwind's parades there's someone in a dark coat in Old Town keeping the parade safe. Humans like their heroes bright and their protectors quiet.",
+	},
+	["race.human.muse.w08.070"] = {
+		"Under the Slaughtered Lamb, in the Mage Quarter, people study things the Cathedral would rather not hear about. Stormwind keeps both doors open and watches them carefully.",
+		"A cathedral at one end of the city and a cellar full of summoning circles at the other. Humans have always wanted every kind of power within walking distance.",
+	},
+	["race.human.muse.w08.071"] = {
+		"Copper for bread, silver for a bed, gold for a sword worth having. A human learns the whole economy before learning to read.",
+		"Every human carries a rough price list in their head: bread, boots, a room, a healer. It changes in every town, and it's always a little too high.",
+	},
+	["race.human.muse.w08.072"] = {
+		"First the orcs, then the orcs again, then the plague and the dead. Three wars in one lifetime have taught humans to keep the walls patched and a bag by the door.",
+		"Ask any human town where its children would run if the bells rang the alarm. They'll know. Three wars have taught us that much.",
+	},
+	["race.human.muse.w08.073"] = {
+		"A road is a promise between two towns. Humans make a great many promises.",
+		"Wherever humans settle, a road follows within the year: first a footpath, then a cart track, then somebody charging a toll.",
+		"Humans measure distance in inns more than in miles: how many nights between here and there, and how good the stew is at each.",
+	},
+	["race.human.muse.w08.074"] = {
+		"Humans dream small: a roof, a field, a name that outlasts them by a generation or two. It isn't much to ask. The world keeps refusing it anyway.",
+		"A roof that doesn't leak, a field that pays, children who outlive the wars. That's the whole of the human dream, and we keep having to fight for it.",
+	},
+	["race.human.muse.w08.075"] = {
+		"If the Light wanted humans patient, it should have given us longer lives.",
+		"Short lives make for quick tempers and quick forgiveness. I'll take the bargain.",
+	},
+	["race.human.muse.w08.076"] = {
+		"The Argent Dawn holds Light's Hope Chapel in the middle of the Plaguelands. Humans, mostly, refusing to give the north up to the dead.",
+		"In the Plaguelands the Argent Dawn keeps a chapel lit among the ruins. That's the best of us: a light left on in the worst place.",
+	},
+	["race.human.muse.w08.077"] = {
+		"Stormwind taxes everything it can count. I'm only surprised nobody has found a way to tax adventuring yet.",
+		"Humans grumble about taxes the way dwarves grumble about the cold: constantly, and with a certain affection.",
+	},
+	["race.human.subzone_enter.w08.001"] = {
+		"{subzone}. Before anything else I'm judging the soil, the slope and where the water runs. A human can't help wondering what would grow.",
+		"{subzone}. The farmer every human carries inside is already asking: would wheat take here, or only potatoes and patience?",
+		"I take in {subzone} the way my people take in any land: what would grow here, and who would have to be paid for it?",
+	},
+	["race.human.subzone_enter.w08.002"] = {
+		"{subzone}. Whose is it, I wonder? Somebody always owns the land, even when nobody's living on it.",
+		"{subzone}. Who holds this, and who pays them taxes? A human question, but somebody always does.",
+		"{subzone}. There's a deed for this ground in somebody's drawer. I'd bet on it.",
+	},
+	["race.human.subzone_enter.w08.003"] = {
+		"{subzone}. First thing: where's the nearest roof, and would they let a stranger under it?",
+		"{subzone}. My eye goes to anything that could keep the sky off my head for a while. Humans are a sheltering kind.",
+		"{subzone}. Shelter first, opinions later. That's the human order of things.",
+	},
+	["race.human.subzone_enter.w08.004"] = {
+		"{subzone}. Nice enough. I wonder what a room costs, and whether there's a room at all.",
+		"{subzone}. I can already hear some local explaining that bread costs more here because of the road.",
+		"{subzone}. Pretty. A human always wants to know the price of pretty.",
+	},
+	["race.human.subzone_enter.w08.005"] = {
+		"{subzone}. I look for the way out before I've finished coming in. Humans like to know which direction home is.",
+		"{subzone}. Where do the tracks go? Follow the cart ruts and you find the people; it's the oldest human map there is.",
+		"{subzone}. A road worn by carts means trade; a path worn by feet means somebody lives near. I read them both.",
+	},
+	["race.human.subzone_enter.w08.006"] = {
+		"takes in {subzone} with the quick, practical look of someone pricing a farm on market day.",
+		"slows in {subzone} and listens, half expecting a bell, a dog, a voice: the sounds humans call company.",
+		"squints around {subzone} as if working out how many families it could feed.",
+	},
+	["race.human.subzone_enter.w08.007"] = {
+		"{subzone}. Could you raise children here? I ask it of every place. Most places answer 'not yet'.",
+		"{subzone}. I measure every place by one human question: could a family live here without a sword beside the door?",
+		"{subzone}. Safe enough for a farm? Safe enough for a market? Humans grade every place on that scale.",
+	},
+	["race.human.subzone_enter.w08.008"] = {
+		"{subzone}. If humans ever lived here there'll be a chapel or a well to show for it. If not, I'll soon learn who did.",
+		"{subzone}. I look for a human mark: a cut stone, a fence post, a shrine to the Light. Sometimes there is one. Often there isn't, and that tells me something too.",
+		"{subzone}. I look for our marks the way a traveler looks for a familiar face in a crowd.",
+	},
+	["race.human.subzone_enter.w08.009"] = {
+		"{subzone}! Somebody ought to put an inn here. Sooner or later somebody always does.",
+		"{subzone}. Leave it to humans for ten years and there'd be a market here on the first of every month.",
+		"{subzone}. Somebody find me the tavern. If there isn't one, somebody will have to build it.",
+	},
+	["race.human.subzone_enter.w08.010"] = {
+		"{subzone}. Somebody will tell me how it was before the wars. In this world there's always a before.",
+		"{subzone}. I wonder how it looked when there was nothing here to fear. Humans ask that of everywhere.",
+		"{subzone}. Most places have a story that starts 'before the war'. I listen for it.",
+	},
+	["race.nightelf.landmark.w08.001"] = {
+		"{landmark}. Whoever built it, I count how many trees it cost, and whether anyone planted any back.",
+		"{landmark}. A place with a name and a purpose. My people would ask one thing more of it: what was growing here before.",
+		"{landmark}. Young walls, most likely. Still, someone chose this spot and stayed. The kaldorei respect staying.",
+	},
+	["race.nightelf.landmark.w08.002"] = {
+		"regards {landmark} with the unhurried attention of {g:his|her} people, as if guessing how many centuries it might last.",
+		"takes in {landmark} quietly, eyes lingering on what is old in it and passing lightly over what is new.",
+	},
+	["race.nightelf.landmark.w08.003"] = {
+		"{landmark}. Sturdy. For now.",
+		"{landmark}. Built to last, they will tell you. My people have heard that before.",
+	},
+	["race.nightelf.muse.w08.001"] = {
+		"The humans call a forest old when it has stood two hundred years. I have not the heart to correct them.",
+		"A hundred-year oak, someone told me proudly. I nodded. Among my people that is a sapling with ambitions.",
+		"Old, to the young races, means a grandmother's lifetime. To mine it once meant something very close to always.",
+	},
+	["race.nightelf.muse.w08.002"] = {
+		"Since Hyjal, some of our elders have found the first gray in their hair. They touch it the way one touches a fresh scar.",
+		"Gray at the temples: a human thing, we used to think. Now the oldest of us are learning it too, strand by strand.",
+		"Our elders never had to count years. Now a few of them count gray hairs instead, and pretend they are not counting.",
+	},
+	["race.nightelf.muse.w08.003"] = {
+		"Dwarves show friendship with a roast the size of a small wolf. I take the bread and thank them warmly for the rest.",
+		"The forest feeds my people without much fuss: fruit, nuts, a fish when the river allows. Dwarven cooking is another kind of argument.",
+		"Bread, fruit, cold water from a clear spring. My people feast quietly, and nobody has to be carried home.",
+	},
+	["race.nightelf.muse.w08.004"] = {
+		"The orcs killed Cenarius in Ashenvale. A demigod of the forest, felled by hands that had never planted anything. I tell myself this Horde is not that Horde. I rarely believe it.",
+		"Cenarius walked the forests of Kalimdor before any of us were born, and an orc's axe ended him. Some debts are too large for anyone to collect.",
+		"The Horde talks of honor now. Cenarius is still dead.",
+	},
+	["race.nightelf.muse.w08.005"] = {
+		"goes still against the nearest patch of shade and, for a breath, is simply not there.",
+		"lets {g:his|her} outline soften into the dimness, an old trick of {g:his|her} people, and waits.",
+		"stops moving entirely and becomes, for a heartbeat, one more shadow among the others.",
+	},
+	["race.nightelf.muse.w08.006"] = {
+		"When one of us falls, the spirit rises as a wisp and drifts back toward the living. I find that more comforting than any grave.",
+		"My people do not linger as gray ghosts. We go as small lights, quick and quiet, looking for the way back.",
+		"Even our spirits keep the old manners: a little light, no noise, and a long patience.",
+	},
+	["race.nightelf.muse.w08.007"] = {
+		"For centuries our druids slept in the Dream while the Sentinels kept the forest awake. When people ask why the Sentinels are so hard to impress, I tell them that.",
+		"The druids slept and dreamed; the Sentinels stayed awake for them, year upon year. Every watch kept today owes them something.",
+	},
+	["race.nightelf.muse.w08.008"] = {
+		"Archdruid Staghelm is very sure of himself. Certainty suits a leader. I only wish I knew where he finds so much of it.",
+		"Fandral Staghelm leads the druids while Malfurion sleeps, and he does it with a firm hand. Some of my people find that reassuring; some keep very quiet.",
+		"The archdruid speaks for the forest with great confidence. The forest, as far as I can tell, has not been asked.",
+	},
+	["race.nightelf.muse.w08.009"] = {
+		"Tyrande Whisperwind has led the Sisters of Elune since before the world broke. In her quiet, ten thousand years stand in one person.",
+		"The High Priestess never looks tired. More than any miracle, that is what I would ask Elune for.",
+		"Ten thousand years at the head of her people, and Tyrande still crosses the temple as if every step of it were new to her.",
+	},
+	["race.nightelf.muse.w08.010"] = {
+		"The high elves are the grandchildren of the Highborne my people sent across the sea. Now Quel'Thalas has fallen. I do not know what we owe them, if anything. I think about it more than I would admit.",
+		"Cousins, in a way: the high elves kept the magic we gave up and carried it east over the sea. Now their kingdom burns, and we hear of it the way one hears of a far relative's illness.",
+	},
+	["race.nightelf.muse.w08.011"] = {
+		"Human mages juggle fire in the street and call it study. My people once called that the beginning of the end.",
+		"Gnomes show off their spells the way children show off a frog. I smile politely and step back two paces.",
+		"My people banished arcane magic and still lost half the world to it. Forgive me if I flinch near a human spellbook.",
+	},
+	["race.nightelf.muse.w08.012"] = {
+		"Dwarves laugh with their whole body, as if the joke might escape otherwise. I have grown fond of the noise, against every instinct of my people.",
+		"A dwarf will tell you exactly what he thinks of you, then buy you a drink. My people need a century to manage either.",
+		"Dwarven friendship arrives like a rockslide: all at once, very loud, and impossible to refuse. Kaldorei friendship grows like moss. Both hold.",
+	},
+	["race.nightelf.muse.w08.013"] = {
+		"The gnomes lost their city and kept their cheer. My people lost their forests and kept their silence. I am not sure which of us chose better.",
+		"Ask a gnome when Gnomeregan will be retaken and you get a season. Ask my people anything and you get 'in time'. The same hope, measured differently.",
+		"Gnomes talk faster than my people think. I have learned to nod and catch up later.",
+	},
+	["race.nightelf.muse.w08.014"] = {
+		"Befriend a human and you have agreed, sooner or later, to grieve. My people used to avoid it. Lately I find I do not want to.",
+		"Humans burn bright and brief, like dry twigs. You learn to sit close to the fire anyway.",
+		"Human friends age while you are still learning their names properly. It is a lesson in paying attention sooner.",
+	},
+	["race.nightelf.muse.w08.015"] = {
+		"Owls keep the same hours as my people and ask the same few questions. I have always liked them.",
+		"An owl turns its head and looks at you as if you owed it an answer. Among my people that counts as good manners.",
+		"Owls hunt without a sound and watch without blinking. My people have been accused of the same, and taken it as a compliment.",
+	},
+	["race.nightelf.muse.w08.016"] = {
+		"A nightsaber's purr is a sound you feel in your ribs before you hear it. Nothing in the world is more reassuring.",
+		"Horses are fine animals. They simply lack the dignity of a great cat that has decided you may stay.",
+		"Give me a great cat over any horse. A horse carries you; a nightsaber decides to.",
+	},
+	["race.nightelf.muse.w08.017"] = {
+		"Ask an old sentinel about the War of the Ancients and she will talk about the smell of the camps, the color of the sky that year, anything but the battles.",
+		"Ten thousand years since the War of the Ancients, and the veterans among us still do not tell it in order. Grief keeps its own calendar.",
+		"The War of the Ancients is history to the young races and a family matter to mine. Some of our elders were there, and they lower their eyes when it comes up.",
+	},
+	["race.nightelf.muse.w08.018"] = {
+		"Darkshore was not always a coast. My people remember when the sea was somewhere else entirely, and they walk its beaches politely, as guests.",
+		"Auberdine knows exactly what it is: a dock, a few lanterns, and the sea that swallowed the old shore. I like a town that does not pretend.",
+		"Darkshore is gray and damp and beautiful, the way an old grief grows beautiful if you live beside it long enough.",
+	},
+	["race.nightelf.muse.w08.019"] = {
+		"Bows, to my people, are less a weapon than a way of paying attention. You cannot hit what you have not watched for a long time.",
+		"My people say a good shot is mostly waiting. The arrow is only the short part at the end.",
+		"Watch the leaf before you watch the mark, my people say: the wind tells you more than the eye does.",
+	},
+	["race.nightelf.muse.w08.020"] = {
+		"When my people say nothing for an hour, humans ask whether we are angry. We are listening. It is different.",
+		"Silence is not sulking. Among the kaldorei it is half of every conversation.",
+		"I am not ignoring you. I am giving your words time to land.",
+	},
+	["race.nightelf.muse.w08.021"] = {
+		"Nordrassil still stands on Hyjal, I am told, scarred but standing. I would like to see it once, and I am afraid to.",
+		"Our first World Tree is still on its mountain, they say, with the burns of the battle in its bark. Some pilgrimages are better kept as an intention.",
+	},
+	["race.nightelf.muse.w08.022"] = {
+		"Felwood was once part of the same green as Ashenvale. Now the leaves rot on the branch and the furbolgs go mad. A forest can be poisoned like a well.",
+		"I have heard what Felwood has become. Corruption does not cut a tree down; it teaches it to grow wrong. That is worse.",
+		"Some of my people go to Felwood to heal it, one sick grove after another. I admire them. I am not sure I could bear to watch.",
+	},
+	["race.nightelf.muse.w08.023"] = {
+		"The satyrs were Highborne once. Whatever bargain gave them horns and hooves, I hope they at least read the terms.",
+		"Every satyr is a Highborne who said yes to the wrong voice. When strangers offer me power, I keep my answers short.",
+		"Horns, hooves and a Highborne's manners gone sour. Every satyr is a warning dressed up as a joke.",
+	},
+	["race.nightelf.muse.w08.024"] = {
+		"Some months I feel Elune close, some months far. The moon does the same, and nobody calls it faithless.",
+		"The priestesses teach that even a dark moon is still there, only turned away. I hold on to that on the bad days.",
+		"The moon thins to a thread and comes back whole every time. I try to remember that when I feel thin myself.",
+	},
+	["race.nightelf.muse.w08.025"] = {
+		"Elune-adore. May she find you on the dark roads, whoever you are.",
+		"Elune-adore. It costs nothing to wish someone her light.",
+		"Elune-adore. Walk softly, and may she walk with you.",
+	},
+	["race.nightelf.muse.w08.026"] = {
+		"My people forgive, eventually. Our 'eventually' has been known to outlast a human dynasty.",
+		"Never insult a night elf's grandmother. She may still be alive, and she remembers faces.",
+		"A kaldorei grudge is not angry. It is simply very, very patient.",
+	},
+	["race.nightelf.muse.w08.027"] = {
+		"Every season the Warsong lumber camps push a little deeper into Ashenvale. The Sentinels answer with arrows; the forest answers more slowly, but it answers.",
+		"Ashenvale is a border now. My people never wanted borders in a forest, and yet here we are, guarding it trunk by trunk.",
+		"The Warsong cut for their fires and their war engines. Each stump in Ashenvale is a small grave, and my people tend them as such.",
+	},
+	["race.nightelf.muse.w08.028"] = {
+		"Under the Great Sea lies the land my people walked before the Well tore itself apart. I never look at deep water without thinking of the streets beneath it.",
+		"The Maelstrom still turns where the Well of Eternity was. Ten thousand years, and the wound has not stopped spinning.",
+		"Sailors fear the Maelstrom as a hazard of the sea. My people know it as the place where our capital used to stand.",
+	},
+	["race.nightelf.muse.w08.029"] = {
+		"From the docks of Rut'theran the tree fills half the sky. From Auberdine it is a shape on the water. Any farther, and you carry it inside.",
+		"Teldrassil to Auberdine, Auberdine to Menethil. So many journeys of my people begin with a boat and a long look back at the tree.",
+		"Whenever the boat pulls away from Rut'theran, someone on deck goes quiet and watches the tree until it is gone.",
+	},
+	["race.nightelf.muse.w08.030"] = {
+		"Stormwind is a marvel of stone, and the whole city seems to stand on guard against the grass.",
+		"Humans pave everything. Then the moss arrives, slow and polite, to correct them.",
+		"Human cities are built to outlast their builders. To my people, that is the saddest thing about them.",
+	},
+	["race.nightelf.muse.w08.031"] = {
+		"Ironforge is warm and loud and kind, and there is no sky in it. After a day or two, my people catch themselves looking up for something that is not there.",
+		"Stone over my head, stone under my feet. The dwarves call it shelter. To a night elf it feels like holding one's breath.",
+		"In Ironforge the forge never sleeps and nobody can tell you what hour it is. My people find that harder than any battle.",
+	},
+	["race.nightelf.muse.w08.032"] = {
+		"hums a few notes of something very old under {g:his|her} breath, then lets the tune trail off unfinished.",
+		"murmurs part of an ancient melody, so softly it is almost breathing, and stops well before the end.",
+	},
+	["race.nightelf.muse.w08.033"] = {
+		"lifts {g:his|her} eyes upward for a moment, the way {g:his|her} people do, as if to make sure the sky has not wandered off.",
+		"tips {g:his|her} head back and looks up briefly, an old kaldorei habit, checking on something only {g:he|she} could name.",
+	},
+	["race.nightelf.muse.w08.034"] = {
+		"Kaldorei: children of the stars. A grand name for a people who mostly want to be left alone with a good tree.",
+		"We named ourselves after the stars and then spent ten thousand years among the leaves. Perhaps that is the whole of my people in one sentence.",
+		"Children of the stars, we call ourselves. Nobody, I suspect, ever asked the stars.",
+	},
+	["race.nightelf.muse.w08.035"] = {
+		"My people's patience was built for centuries. This war asks for days. I am learning to hurry without growing careless.",
+		"Patience served us for millennia. Now the world moves at a human pace, and a night elf who waits too long finds the door already shut.",
+		"A thousand years to decide used to be prudence. Now it is simply too late.",
+	},
+	["race.nightelf.muse.w08.036"] = {
+		"Night elves are hard to hit, people complain. We grew up in forests full of things with claws.",
+		"Dodging is not a trick. It is ten thousand years of sharing the woods with things that bite.",
+		"If you mean to hit a night elf, aim where we will be in a moment. Most people aim where we were.",
+	},
+	["race.nightelf.muse.w08.037"] = {
+		"Hippogryphs are proud, vain and very particular about their feathers. Perhaps that is why my people get on with them so well.",
+		"Half owl, half stag, and wholly convinced of its own beauty. The hippogryph is a very kaldorei creature.",
+		"A hippogryph will carry you anywhere, and afterwards it will make sure you know it did you a favor.",
+	},
+	["race.nightelf.muse.w08.038"] = {
+		"My people used to plant a tree and wait to sit in its shade. Now we plant for whoever comes after. It is the human way, and it is harder than it looks.",
+		"Once a night elf could bury an acorn and expect to rest under the oak. Since Hyjal, we plant for others. I am still getting used to the generosity of it.",
+	},
+	["race.nightelf.muse.w08.039"] = {
+		"The young races sleep when it is dark and wake when it is bright. My people keep a more interesting schedule, and we are very tired of explaining it.",
+		"In a human inn, everyone starts yawning just as a night elf is properly awake. We have learned to read quietly by the hearth.",
+	},
+	["race.nightelf.muse.w08.040"] = {
+		"Half the ruins of Kalimdor were ours once. The other races explore them with lanterns and picks. I try not to read the carvings over their shoulders.",
+		"Explorers call our old cities ruins and sell the pieces in Ironforge. I suppose they are ruins. They were also somebody's kitchen.",
+		"Every broken column in Ashenvale was carved by someone who expected to see it standing forever. For a long while, they were right.",
+	},
+	["race.nightelf.muse.w08.041"] = {
+		"Elune is gentle, and her priestesses ride to war. My people have never found that a contradiction. Mercy needs someone standing in front of it.",
+		"My people worship a goddess of the moon and of mercy, and her temple trains archers. A soft heart and a steady hand were never enemies among the kaldorei.",
+	},
+	["race.nightelf.muse.w08.042"] = {
+		"The Legion came through our own front door once. Every warlock I see in an Alliance city, I mark and remember.",
+		"Humans let warlocks walk their streets with demons on a leash. My people once had a queen who thought she could keep demons on a leash too.",
+		"My people do not trust a power that comes when called and then stays for supper.",
+	},
+	["race.nightelf.muse.w08.043"] = {
+		"There she is. Whatever the day cost, the moon rises over it all the same, and I feel less alone in it.",
+		"Elune's lamp is lit. I lift my face to it the way one turns toward a friend coming into the room.",
+		"The moon is high, and with her the oldest part of me wakes.",
+	},
+	["race.nightelf.muse.w08.044"] = {
+		"The stars are out. My people were named for them; it would be rude not to look up.",
+		"Stars overhead. Among my people, looking up is a kind of greeting.",
+		"Look up while you can. The stars wait for no one, not even for us.",
+	},
+	["race.nightelf.muse.w08.045"] = {
+		"Dawn. The hour when my people used to draw the curtains of the forest and go to sleep. I keep going, out of a habit borrowed from the humans.",
+		"Daybreak, and the forest my people knew would be settling down to sleep about now. The world I live in has other ideas.",
+	},
+	["race.nightelf.muse.w08.046"] = {
+		"In Moonglade, they say, a tauren and a night elf can share a path and a silence. I find that more hopeful than any treaty.",
+		"Moonglade answers to the Cenarion Circle and to no banner. Some days I think the rest of the world should be run by a forest.",
+	},
+	["race.nightelf.muse.w08.047"] = {
+		"The tauren honor the Earth Mother and walk lightly on the land. If they did not keep company with the orcs, my people might have called them friends.",
+		"Tauren druids, I hear, learned at the feet of the same demigod as ours. Strange cousins: one teacher, two sides of a war.",
+		"Tauren and kaldorei both listen to the land. We only disagree about who should be listening beside us.",
+	},
+	["race.nightelf.muse.w08.048"] = {
+		"The Forsaken walk without breath and without end. My people gave up forever to save the world; they had it forced on them. Neither of us got what we would have chosen.",
+		"Undying is not the same as immortal. Watching the Forsaken, I understand a little better what my people lost, and what we were spared.",
+	},
+	["race.nightelf.muse.w08.049"] = {
+		"My people and the trolls were enemies before either had written anything down. Some feuds are older than the alphabets that record them.",
+		"Trolls remember us. That is the trouble with long memories: they run in both directions.",
+		"The trolls had empires when my people were young, and so did we. Only the grudges have outlived both.",
+	},
+	["race.nightelf.muse.w08.050"] = {
+		"Rain. My people never hurried in from it. It was here first, and it has things to say.",
+		"A little rain never kept a kaldorei under a roof. Everything green is drinking; it would be rude to complain.",
+		"Rain on my shoulders and on the road. My people would call this a conversation, not bad weather.",
+	},
+	["race.nightelf.muse.w08.051"] = {
+		"Snow is a long sleep for the land. My people respect sleep; we have done a great deal of it.",
+		"Snow, and everything beneath it resting. The druids of my people would call it a dream the land is having.",
+	},
+	["race.nightelf.muse.w08.052"] = {
+		"Your language is efficient. In mine it takes a full breath to say good morning, and we consider that the point.",
+		"In Darnassian a greeting takes a whole breath. In Common it takes a nod. I am still deciding which is ruder.",
+	},
+	["race.nightelf.muse.w08.053"] = {
+		"Every wolf, bear and stag of Kalimdor was here before my people learned to walk quietly. We were the students; they were the forest's first teachers.",
+		"My people learned stillness from the deer and watchfulness from the owl. The rest we had to work out ourselves, and it shows.",
+	},
+	["race.nightelf.muse.w08.054"] = {
+		"Not every night elf talks to trees. Some of us simply prefer them to people, which is a different thing.",
+		"People assume my kind all commune with the forest. Most of us just know where the good shade is.",
+		"No, I cannot ask the oak what it thinks. I can guess, though: it thinks you are standing on its roots.",
+	},
+	["race.nightelf.muse.w08.055"] = {
+		"Shandris Feathermoon holds a fortress off the coast of Feralas, far from any tree of ours. My people go where they are needed, and they bring their quiet along.",
+		"Feathermoon Stronghold, out on the water by Feralas: kaldorei on an island, watching the old forests across the waves. That sounds like us.",
+	},
+	["race.nightelf.muse.w08.056"] = {
+		"Yes, I heard that. Long ears are not decoration.",
+		"Whisper all you like. My people's ears were made for forests where a whisper is the loudest thing for a mile.",
+		"My ears hear everything. My manners pretend otherwise. Please do not test either.",
+	},
+	["race.nightelf.muse.w08.057"] = {
+		"In Darnassus the houses are built around living trees, never through them. A small courtesy, repeated a thousand times, becomes a city.",
+		"My people do not cut a branch to make room for a door. We move the door. It takes longer, and the house is happier for it.",
+		"Other races build first and plant a garden after. We find a tree and ask it, more or less, where the rooms should go.",
+	},
+	["race.nightelf.muse.w08.058"] = {
+		"The priestesses say Elune gathers her children when they fall. I hope she is patient with the latecomers. We are new at dying.",
+		"My people used to think of death as something that happened to others. Now we must trust Elune with it too, and trust is a slow craft.",
+		"We are a people learning to mourn properly, ten thousand years late. Elune, I hope, gives lessons.",
+	},
+	["race.nightelf.muse.w08.059"] = {
+		"looks around for something green, the way {g:his|her} people do in every place, and makes do with whatever there is.",
+		"searches the surroundings for anything alive and rooted, shoulders easing a little if {g:he|she} finds it, tensing a little if not.",
+	},
+	["race.nightelf.muse.w08.060"] = {
+		"draws a long, slow breath, the kind {g:his|her} people take before saying anything that matters, and then says nothing at all.",
+		"seems about to speak, weighs the words for a long moment in the kaldorei way, and lets them go unsaid.",
+		"opens {g:his|her} mouth to speak, thinks better of it, and lets a long kaldorei silence answer instead.",
+	},
+	["race.nightelf.muse.w08.061"] = {
+		"Magic is a thirst. My people drank deep from the Well once and nearly drowned the world. I keep my cup small.",
+		"The Highborne could not stop reaching for more. Whenever I want something too much, I hear the old warning about them.",
+		"Each of my people learns, sooner or later, the story of a queen who wanted more. It is the first lesson, and the last.",
+	},
+	["race.nightelf.muse.w08.062"] = {
+		"The Light of the humans is bright and loud and everywhere at once. Elune prefers to be found.",
+		"Human priests speak of the Light as if it were always noon. My people's goddess keeps the gentler hours.",
+		"The Light shouts its comfort from the bell towers. Elune leaves hers on the windowsill and waits.",
+	},
+	["race.nightelf.muse.w08.063"] = {
+		"The Ancients who guard our groves were trees before they were warriors. Ask one for advice, then come back next season for the answer.",
+		"Among my people, the slowest voice in any council belongs to the one with bark. Nobody interrupts it.",
+		"The Ancients are the most patient soldiers in the world. They have to be; they cannot run.",
+	},
+	["race.nightelf.muse.w08.064"] = {
+		"We lost our immortality, not our purpose. The forests still need keepers, and a keeper does not need forever, only tomorrow.",
+		"Forever is gone. So be it. A single day is still long enough to plant something, mend something, guard something.",
+		"Mortal now. Very well: then today counts.",
+	},
+	["race.nightelf.muse.w08.065"] = {
+		"Across the sea, every hill seems counted and claimed. Kalimdor still keeps a few secrets from its own maps.",
+		"Over the water the humans have fenced their land into fields. My people would find that sad, if the fields were not so carefully loved.",
+	},
+	["race.nightelf.muse.w08.066"] = {
+		"Have patience. I do not mean wait; I mean watch.",
+		"Hurry if you must. I will catch up by not making your mistakes.",
+		"Slowly. Most mistakes are made at a run.",
+	},
+	["race.nightelf.muse.w08.067"] = {
+		"Before there were roads, my people found their way by the stars and the slope of the land. I still trust both more than a signpost.",
+		"A signpost can lie, or be turned around by a prankster. Nobody has ever played that joke on the stars.",
+	},
+	["race.nightelf.muse.w08.068"] = {
+		"Dolanaar is the kind of village my people build when no one is watching: a few houses in the trees, a moonwell, and no hurry at all.",
+		"An inn, a moonwell, a few Sentinels and many trees: Dolanaar needs nothing else, and does not pretend to.",
+	},
+	["race.nightelf.muse.w08.069"] = {
+		"Ishnu-alah. Yes, it means hello. No, I will not teach you the rest.",
+		"Ishnu-alah. It is a greeting, not a spell; you may stop backing away.",
+	},
+	["race.nightelf.muse.w08.070"] = {
+		"The Barrens look empty to my eyes and full to a tauren's. I suspect we are both right.",
+		"A land without trees is not empty, my people are slowly learning. It only speaks a language we never studied.",
+	},
+	["race.nightelf.subzone_enter.w08.001"] = {
+		"{subzone}. First I count the trees, or notice that there are none to count. Either way, it tells me who has been here.",
+		"{subzone}. I look for something rooted and older than the name. Sometimes it is a tree; sometimes only the stones remember.",
+		"{subzone}. Whatever grows here, or fails to, is the most honest sign on the road.",
+	},
+	["race.nightelf.subzone_enter.w08.002"] = {
+		"{subzone}. The name sounds young. Most do, to a kaldorei ear.",
+		"{subzone}. To the young races a name is a claim. To my people it is a guess the land has not yet confirmed.",
+	},
+	["race.nightelf.subzone_enter.w08.003"] = {
+		"steps into {subzone} without a sound, eyes going first to the ground, then to whatever grows, then to whatever was built.",
+		"crosses into {subzone} the kaldorei way: unhurried, silent, reading the place from the roots up.",
+	},
+	["race.nightelf.subzone_enter.w08.004"] = {
+		"{subzone}. I wonder what stood here ten thousand years ago. Perhaps something of ours, and of that something, most likely, nothing is left.",
+		"{subzone}. Before the world broke, this ground may have belonged to my people's empire. The land does not say, and I do not ask it to.",
+		"{subzone}. My people have lived long enough to see places named, renamed and forgotten. I wonder which of those this one is waiting for.",
+	},
+	["race.nightelf.subzone_enter.w08.005"] = {
+		"{subzone}. Let us see what lives here, and whether it minds company.",
+		"{subzone}. Mind where you step. Whatever lives here had the place first.",
+	},
+	["race.nightelf.subzone_enter.w08.006"] = {
+		"{subzone}. If the young races have settled here, the paths will run straight. Forests never draw a straight line; people in a hurry always do.",
+		"{subzone}. I look for the marks of hurried hands: cut stumps, straight fences, stone laid in rows. Where they are missing, it feels like a welcome.",
+		"{subzone}. Stone laid by short-lived hands always looks a little anxious to me, as if it knew it had to be finished quickly.",
+	},
+	["race.nightelf.subzone_enter.w08.007"] = {
+		"{subzone}. Elune's sky reaches here as it reaches everywhere. That alone makes no place entirely foreign.",
+		"{subzone}. However strange the ground, the same goddess watches over it. I walk in with that small courage.",
+		"{subzone}. A stranger's ground, perhaps, but not a stranger's goddess.",
+	},
+	["race.nightelf.subzone_enter.w08.008"] = {
+		"{subzone}. My ears find the place before my eyes do: water or none, wind or none, voices or none.",
+		"{subzone}. I stand still long enough to hear it breathe. Every place does, given patience.",
+		"{subzone}. Before trusting a place, I let my ears walk it once.",
+	},
+	["race.nightelf.subzone_enter.w08.009"] = {
+		"{subzone}. If a forest ever stood here, I will feel its absence before I see the stumps.",
+		"{subzone}. Some places still carry the shape of the trees they lost, the way a pillow keeps the shape of a sleeper. I look for that.",
+	},
+	["race.nightelf.subzone_enter.w08.010"] = {
+		"{subzone}. Nice enough. Give it a few thousand years.",
+		"{subzone}. Promising. Check again in a millennium.",
+		"{subzone}. Young, by the look of it. Most things are.",
+	},
+	["race.nightelf.subzone_enter.w08.011"] = {
+		"{subzone}. Wherever I go, the same moon will rise over it in its season. Under her, my people have never wholly lost their way.",
+		"{subzone}. One more name for the map. The moon has no use for maps, and on some days neither do I.",
+	},
+	["race.nightelf.subzone_enter.w08.012"] = {
+		"pauses at the edge of {subzone}, head tilted, sorting its sounds one by one before taking another step.",
+		"eases into {subzone}, measuring it with the long, patient look {g:his|her} people give anything they mean to remember.",
+	},
+	["race.tauren.landmark.w08.001"] = {
+		"{landmark}. Every name on the land was given by someone, and most of them stood a head shorter than me.",
+		"{landmark}. Named by smaller folk, like most places. The land under it, I suspect, keeps an older name to itself.",
+		"{landmark}. My people would have asked the land what it wished to be called. Others simply choose, and the land puts up with it.",
+	},
+	["race.tauren.landmark.w08.002"] = {
+		"stops at the edge of {landmark} and takes it in slowly, the way a herd leader looks over fresh grazing before leading anyone in.",
+		"slows on reaching {landmark} and looks it over carefully, judging how much room it has for someone of {g:his|her} size.",
+		"comes into {landmark} with the patient, measuring gaze of the plains people, missing nothing and hurrying nowhere.",
+	},
+	["race.tauren.muse.w08.001"] = {
+		"Every doorway in the world is a small lesson in humility. I bow to most of them, and the rest I pay for with a bruise.",
+		"Doorframes have taught me more courtesy than any elder. You learn to bow quickly when the lintel offers to do it for you.",
+	},
+	["race.tauren.muse.w08.002"] = {
+		"Other people's cups vanish in my hand. I drink from them the way one holds a bird's egg: two fingers, and no sudden thoughts.",
+		"A goblin's mug holds about one swallow for a tauren. I make it last three, out of politeness, and nobody is fooled.",
+		"Teacups. Delicate little things with a handle my finger will not go through. I hold them in my palm like water I am carrying to someone.",
+	},
+	["race.tauren.muse.w08.003"] = {
+		"Yes, it's a tail. No, it does not want to be held. It has firm opinions about flies, and that is all.",
+		"The tail is for flies, not for comment. Thank you.",
+		"Every tauren has one. It swats flies and keeps its own counsel. I'd ask you to do the same.",
+	},
+	["race.tauren.muse.w08.004"] = {
+		"Our dead rest at the Red Rocks, high and in the open, where the wind can visit them. No graveyard elsewhere has pleased me half as well.",
+		"Other peoples put their dead behind walls and gates. Ours lie at the Red Rocks with the sky for a roof. I know which I would choose.",
+		"When I think of endings, I think of the Red Rocks: bare stone, open air, and the grass of Mulgore stretching away below. A good place to be finished.",
+	},
+	["race.tauren.muse.w08.005"] = {
+		"A kodo forgets nothing that matters to a kodo: water, grass, the way home. As lists to live by go, it is not a bad one.",
+		"Kodo are slow, everyone says. Nobody adds that a kodo never gets lost. I would make that trade.",
+		"Watch an old kodo cross the plains and you will see no wasted step. It knows where the water is. Most of us are still guessing.",
+	},
+	["race.tauren.muse.w08.006"] = {
+		"The elders count our history in roads: generation after generation of walking, with the centaur at our heels. Every step I take for my own reasons would have looked like a luxury to them.",
+		"My people wandered so long that wandering became a kind of house. Now we have a real one on the bluffs, and some of us still cannot stay in it.",
+	},
+	["race.tauren.muse.w08.007"] = {
+		"Plainstriders. All legs and opinions. If one has never chased you, you have not really seen Mulgore.",
+		"Never turn your back on a plainstrider. It won't hurt you much, but it will make sure you never forget it.",
+		"Plainstriders run as if their legs were borrowed and already overdue.",
+	},
+	["race.tauren.muse.w08.008"] = {
+		"Before I eat, I give the Earth Mother a word. Not a long one. She has a great many mouths to listen to.",
+		"A word of thanks to the Earth Mother before food. She made the grass, the grass made the beast, the beast made supper. It seems only fair to start at the top.",
+		"My people do not eat in silence. One short word for the Earth Mother first, then the meal, then the talking.",
+	},
+	["race.tauren.muse.w08.009"] = {
+		"In thick forest I miss the horizon the way one misses a friend. Trees are fine. I just like to see what is coming while it is still a day's walk off.",
+		"Among close trees my eyes keep reaching for distance and finding bark. Someone raised on the plains never quite stops looking for the edge of the world.",
+	},
+	["race.tauren.muse.w08.010"] = {
+		"Hot country is hard on a body made for the winds of the plains. I carry a whole hide on my back and cannot take it off.",
+		"Fur is a fine thing until the sun leans on it. Then a tauren learns to love shade the way others love gold.",
+		"Every dry land I cross, I envy the bald races a little. Only a little, and only until the wind turns cold.",
+	},
+	["race.tauren.muse.w08.011"] = {
+		"Through my hooves I can feel a cart coming before I hear it. The ground is always talking. Most folk simply wear too much leather on their feet to hear it.",
+		"Hooves are not only for walking. Stay still long enough and they tell you who else is moving across the land.",
+		"The earth carries news faster than any runner. Something heavy shifts a mile off, and a tauren standing quietly feels it come up through the bone.",
+	},
+	["race.tauren.muse.w08.012"] = {
+		"The goblins of the Venture Company drill into Mulgore as if the earth were a barrel to be tapped. Some wounds the land forgives slowly. I am slower.",
+		"I know what the Venture Company leaves behind: stumps, slag, and holes where water used to rise. I have a long memory for such things.",
+		"Every Venture Company rig in Mulgore is a nail driven into a living thing. My people pull the nails out; the goblins drive more. It is a long argument.",
+	},
+	["race.tauren.muse.w08.013"] = {
+		"The Darkspear laugh at things I would mourn, and mourn things I would laugh at. We get on better than that sounds.",
+		"Trolls talk fast, move loose and always have a joke ready. Next to them I feel like a hill that has been invited to a dance.",
+		"A troll will joke on the edge of a cliff; a tauren checks the edge first. Together the climb down usually goes well, and the argument goes on.",
+	},
+	["race.tauren.muse.w08.014"] = {
+		"Orcs carry their anger close to the skin, like a coal kept in the hand. My people bury ours deep and let it cool. Between us we make a decent fire.",
+		"An orc decides in a breath; a tauren decides in a season. Thrall seems to know when to ask which of us.",
+		"The orcs run hot and the tauren run long. Put us on the same road and we both arrive, just not at the same hour.",
+	},
+	["race.tauren.muse.w08.015"] = {
+		"The Forsaken smell of grave earth and bitter herbs, and my nose objects every time. Our elders hope the dead can be healed. I try to hope it with them, from a little upwind.",
+		"It was tauren voices that spoke for the Forsaken before the Horde, people say, believing that what is broken might be mended. Some days, walking beside one of them, I believe it too.",
+	},
+	["race.tauren.muse.w08.016"] = {
+		"People ask whether a tauren is hard to feed. Only for whoever's cooking.",
+		"Feeding a tauren is easy. You just need a second pot, and a third for later.",
+		"A tauren at your table is an honor. A tauren in your larder is a siege.",
+	},
+	["race.tauren.muse.w08.017"] = {
+		"runs a thumb along one horn, feeling for nicks, the way others check the edge of a blade.",
+		"rubs a smudge of dust from one horn with the heel of a hand, unhurried, like someone tidying a small shrine.",
+		"turns {g:his|her} head to catch the light on one horn and studies a fresh scratch with mild disapproval.",
+	},
+	["race.tauren.muse.w08.018"] = {
+		"The leatherworkers of Thunder Bluff say a good drum is the beast still speaking to the camp it fed. I think of that whenever the drums start up.",
+		"A hide stretched over a frame, and the animal that fed a camp has a voice again. That is how the leatherworkers on the bluffs explain their drums, and I have never heard it explained better.",
+	},
+	["race.tauren.muse.w08.019"] = {
+		"When a gust comes from nowhere on open ground, the elders say an ancestor has stopped to look us over. I stand a little straighter, just in case.",
+		"A sudden wind across the grass is an ancestor passing, or so the elders tell it. I have never sworn to it. I still mind my manners when it blows.",
+	},
+	["race.tauren.muse.w08.020"] = {
+		"Anything worth deciding is worth sleeping on. Twice, if it has horns.",
+		"Give a hard choice two sleeps. If it still looks the same afterward, it was the right one.",
+		"A tauren never decides on an empty stomach or a short sleep. Most regrets start with one or the other.",
+	},
+	["race.tauren.muse.w08.021"] = {
+		"The Barrens are Mulgore with the kindness boiled out. Same sky, same distances, but the grass has stopped arguing with the sun.",
+		"Cross out of Mulgore and the land changes its mind: gold where there was green, dust where there was water. My hooves feel the difference before my eyes.",
+		"Mulgore is the Earth Mother smiling. The Barrens are the same face, squinting into the sun.",
+	},
+	["race.tauren.muse.w08.022"] = {
+		"The lifts of Thunder Bluff creak like old knees and have carried every tauren I know. I trust them more than most bridges built by smaller hands.",
+		"Riding a lift up the bluff, you feel the whole city lean on its ropes. Strange that the creaking is what makes me feel at home.",
+		"Smaller folk eye the lifts of Thunder Bluff as if they might drop. They might. In all the time my people have used them, they simply have not.",
+	},
+	["race.tauren.muse.w08.023"] = {
+		"Cairne has seen more winters than anyone has bothered to count, and still he stands straighter than the totems. When I am weary I think of that, and stand up too.",
+		"Cairne carries his years the way a kodo carries its pack: without complaint, and without pretending they weigh nothing.",
+		"Old as the bluffs, some say of Cairne, and about as easy to move. My people could do worse than to lean on him. We have done worse, long ago.",
+	},
+	["race.tauren.muse.w08.024"] = {
+		"Not every tauren walks with Cairne. The Grimtotem keep their own counsel, and keep it sharp. It is hard to watch the horizon with one eye and your own people with the other.",
+		"Magatha Grimtotem sits on Elder Rise and smiles at Cairne. I have seen warmer smiles on a prairie wolf over a fallen calf.",
+	},
+	["race.tauren.muse.w08.025"] = {
+		"The elders do not speak of the centaur with heat. They speak of them as one speaks of a drought: something that came, and took, and will come again if we forget.",
+		"In Mulgore the oldest warriors speak of the centaur flatly, without curses. That calm frightens me more than any war cry would.",
+	},
+	["race.tauren.muse.w08.026"] = {
+		"The quilboar build their homes from thorns and dare the world to touch them. I understand the impulse. I just think a fence of briars keeps out friends as well.",
+		"Quilboar burrow into briars and bristle at everything that passes. My people chose the opposite: high open ground where anyone can see us coming, and we can see them.",
+	},
+	["race.tauren.muse.w08.027"] = {
+		"Hooves were made for grass. On a stone floor every step I take sounds like a small parade arriving.",
+		"Stone floors turn my walk into a drumroll. I would tiptoe, if hooves knew how it was done.",
+	},
+	["race.tauren.muse.w08.028"] = {
+		"To most travelers grass is just grass. In Mulgore even the young can tell you which blades the kodo want, which they leave, and which mean water is close.",
+		"I cannot cross a meadow without reading it: grazed here, untouched there, greener in the hollow where the water sits. It is like reading a letter nobody else can see.",
+		"Show a tauren a field and we see a ledger: how many beasts it could feed, for how long, and where it is thirsty.",
+	},
+	["race.tauren.muse.w08.029"] = {
+		"A tauren's legs are the oldest road there is. Kodo, wind riders, zeppelins: all very well, but my people crossed Kalimdor on foot, and part of me still thinks that is the honest way.",
+		"There is a way of knowing a land that only walking gives. My hooves have it. A saddle never will.",
+	},
+	["race.tauren.muse.w08.030"] = {
+		"A goblin zeppelin is a wonder, built by someone who has never had to think about horns. I spend every crossing bent like an old tree.",
+		"Zeppelins: built by goblins, measured for goblins, sold to everyone. I spend each crossing folded up like a tent.",
+	},
+	["race.tauren.muse.w08.031"] = {
+		"Beneath Spirit Rise lie the Pools of Vision. I have heard the water there shows what is hidden. I have never been in a hurry to look.",
+		"The water under Spirit Rise is said to show what eyes cannot. Some things, I think, are best left to the water.",
+		"Some of my people go down to the Pools of Vision for answers. I have always thought a question should be ready for its answer first.",
+	},
+	["race.tauren.muse.w08.032"] = {
+		"Roofs are a kindness, but I sleep best where the first thing I see on waking is the sky. My people slept under it so long that it still feels like the proper blanket.",
+		"Give me a hide on the ground and the open sky above it, and I will sleep like a stone. Under a roof I dream about the roof.",
+	},
+	["race.tauren.muse.w08.033"] = {
+		"Never argue with a kodo about the road. It will win, and it will take its time doing it.",
+		"You can lead a kodo almost anywhere. Hurrying one is another matter entirely.",
+		"A kodo has two speeds: slow, and slower out of spite. Plan accordingly.",
+	},
+	["race.tauren.muse.w08.034"] = {
+		"Every young tauren passes through Camp Narache and its rites: strength, vision, wisdom. Strength was the easy one to understand. I am still working on the other two.",
+		"Narache sends its young out to prove strength, then vision, then wisdom, in that order. I sometimes suspect the order was a joke the elders played on us.",
+	},
+	["race.tauren.muse.w08.035"] = {
+		"Mulgore is never silent; the wind sees to that. In still places I keep lifting my head, as if someone had stopped speaking mid-word.",
+		"Where I come from the wind talks all day across the grass. A windless place makes me uneasy, like a room where everyone has just gone quiet.",
+	},
+	["race.tauren.muse.w08.036"] = {
+		"Goblin children stare at my horns as if I might lend them out. One day I may bend down and let one of them try. One day.",
+		"Small folk look up at a tauren the way they look at a cliff: will it move, and which way?",
+		"Most people speak to my chest. It is where their eyes land first, and climbing the rest of the way seems to tire them.",
+	},
+	["race.tauren.muse.w08.037"] = {
+		"There are lands where the earth is sick, Felwood and the plagued north across the sea among them. Standing on them is like holding the hand of someone with a fever.",
+		"Walk on poisoned ground and the hooves know first: a wrongness that comes up through the bone. I would rather not learn more of it than I must.",
+	},
+	["race.tauren.muse.w08.038"] = {
+		"rolls {g:his|her} great shoulders and stretches until the joints crack like dry branches.",
+		"shifts {g:his|her} weight from hoof to hoof, slow as a herd beast settling in for a long wait.",
+		"lets {g:his|her} head hang for a moment, then lifts it again, the way a kodo shakes off a mile.",
+	},
+	["race.tauren.muse.w08.039"] = {
+		"lets out a long huff through broad nostrils, the sound a kodo makes when it has decided not to be impressed.",
+		"snorts softly, a low rumble from somewhere deep in the chest, and goes back to waiting.",
+	},
+	["race.tauren.muse.w08.040"] = {
+		"The carvers on the bluffs say every great totem holds a story, one face stacked above another. I wonder sometimes whose faces will be stacked up there in a hundred years.",
+		"Each face on a totem is someone's story, if the carvers of Thunder Bluff are to be believed. I would settle for a small face near the bottom, holding the rest up.",
+	},
+	["race.tauren.muse.w08.041"] = {
+		"My people are slow to anger and slower still to forget the reason. I have both habits, and only one of them is a virtue.",
+		"A tauren can be pushed a long way. It is the stopping, afterward, that takes us a while.",
+		"We do not flare up. We warm, like a stone in the sun, and we keep the heat long after the sun has gone.",
+	},
+	["race.tauren.muse.w08.042"] = {
+		"Shouting won't move the ground. It barely moves me.",
+		"Say it slower. Tauren hear better when the words aren't in a hurry.",
+		"No need to raise your voice. I'm tall, not far away.",
+	},
+	["race.tauren.muse.w08.043"] = {
+		"Freewind Post stands on a needle of rock with nothing around it but air. Only tauren would build a village where the wind has to climb to visit.",
+		"Some of my people live at Freewind Post, up on the needles, among lifts and rope bridges. We do like our high places. Perhaps it comes from wanting to see the centaur from very far away.",
+	},
+	["race.tauren.muse.w08.044"] = {
+		"Mulgore spice bread travels badly and tastes of home anyway. I eat the crumbs at the bottom of the pack last, on purpose.",
+		"Nothing sold in any market beats Mulgore spice bread, warm, with the crust still crackling. Perhaps I am alone in thinking so. My tongue has never lied to me yet.",
+	},
+	["race.tauren.muse.w08.045"] = {
+		"On the plains you learn to greet water like a guest of honor. Even a muddy pool gets a word from me before I drink.",
+		"Every stream I cross, I thank. My people spent too long searching for water to ever take it as owed.",
+		"A spring is a gift the Earth Mother leaves out for anyone who passes. I never drink from one without saying so.",
+	},
+	["race.tauren.muse.w08.046"] = {
+		"Some in the Alliance call my people cattle. I hope I meet one of them someday. I want to see the face when the cattle answer back.",
+		"Cattle, some Alliance soldiers call us. Cattle do not usually remember the name of everyone who said it.",
+	},
+	["race.tauren.muse.w08.047"] = {
+		"Half of being a tauren among other peoples is remembering how strong you are. A friendly slap on a goblin's back is not friendly at all if you forget.",
+		"I measure my strength all day long: a handshake, a door, a cup. The one time I forget is the time someone gets hurt.",
+		"Gentleness is the first thing a tauren learns in a crowded place. The world is full of things built to break under us.",
+	},
+	["race.tauren.muse.w08.048"] = {
+		"The Earth Mother is not only under Mulgore. She is under this ground too, wherever this is. That is the first thing I remind myself of in a strange place.",
+		"No land is foreign to the Earth Mother. Only to me, and that I can fix by walking it.",
+		"However far I go, I never step off her. Distance is a thing for maps, not for the Earth Mother.",
+	},
+	["race.tauren.muse.w08.049"] = {
+		"In Desolace there is a place where the old kodo go to die, and their bones lie in hills. My people do not fear it. It is what an honest ending looks like when there are a great many of them.",
+		"The Kodo Graveyard in Desolace is mostly bones and silence. I find it less sad than a battlefield. The kodo, at least, went there of their own will.",
+	},
+	["race.tauren.muse.w08.050"] = {
+		"My mane collects every burr and seed between here and the horizon. Somewhere behind me I am planting a small meadow without meaning to.",
+		"At every halt I comb half a field out of my fur. The plains go everywhere with a tauren, whether we like it or not.",
+	},
+	["race.tauren.muse.w08.051"] = {
+		"The orcs fell the trees of Ashenvale because the Horde needs timber, and the night elves make them pay for every trunk. I understand the need. I also hear the trees, and I wish the two could be squared.",
+		"Between the Warsong axes and the Sentinels' arrows, Ashenvale is a hard place for a tauren to stand. My friends need the wood. The forest, I think, needs it more.",
+	},
+	["race.tauren.muse.w08.052"] = {
+		"Two tauren can share a fire for hours without a word, and part as better friends.",
+		"Among my people a silence is not an empty thing. You can say a good deal inside one, if the other has the patience to listen.",
+	},
+	["race.tauren.muse.w08.053"] = {
+		"An'she looks hard at the dry lands. I respect the attention, but I walk in the shade of anything taller than me, which is not much.",
+		"Under An'she's gaze in dry country, I find the shadow of every rock and carry myself into it. Even devotion likes a little shade.",
+	},
+	["race.tauren.muse.w08.054"] = {
+		"My people's tents fold into a bundle a kodo can carry. For generations that was the shape of our lives: everything you love, ready to move by morning.",
+		"Look at a tauren tent and you see the whole long road of my people: hides and poles, light enough to strike in an hour, strong enough to hold off the wind.",
+	},
+	["race.tauren.muse.w08.055"] = {
+		"If you need something lifted, ask a tauren. If you need it lifted gently, ask nicely.",
+		"Heavy things are a tauren's specialty. Fragile things, less so. Give me the heavy ones.",
+	},
+	["race.tauren.muse.w08.056"] = {
+		"The plains burn sometimes, and the elders do not weep for it. A season later the grass comes back greener, as if the fire had only been clearing its throat.",
+		"After a grass fire the land looks finished. It never is. I keep that picture for the days when I feel finished myself.",
+		"Black ground after a burn, and a month later the first green spears coming through the ash. My people learned their patience from sights like that.",
+	},
+	["race.tauren.muse.w08.057"] = {
+		"A boat is the worst place in the world for a tauren: nothing to read through the hooves, and nothing to stand on that isn't moving.",
+		"On a ship's deck my hooves keep asking the ground where it went. The sea does not answer, and the planks only creak.",
+		"Ships were built by people who weigh half what I do. The gangplank reminds me every time.",
+	},
+	["race.tauren.muse.w08.058"] = {
+		"Bloodhoof Village is not much: tents, fires, a well, and the herds beyond. That is exactly as much as a tauren needs, and exactly why I think of it so often.",
+		"Bloodhoof Village smells of smoke, tanned hide and baking bread. If anyone ever asks me what home smells like, that is my answer.",
+		"Bloodhoof Village keeps no walls, only fires and good eyes. Wherever I go, I judge a town by how badly it needs the walls.",
+	},
+	["race.tauren.muse.w08.059"] = {
+		"When a tauren decides to stand somewhere, the ground itself seems to agree. Enemies notice it, usually too late.",
+		"We are slow to start and very hard to stop. Most of our enemies learn only the second half.",
+		"There is a moment, before a tauren charges, when the earth goes quiet underfoot, as if it were holding its breath with us.",
+	},
+	["race.tauren.muse.w08.060"] = {
+		"hums low in the chest, a wordless tune of the kind herders use to keep kodo calm on a long walk.",
+		"makes a deep, slow hum, hardly a song, more the sound of a herd settling down.",
+	},
+	["race.tauren.muse.w08.061"] = {
+		"Low tunnels are a tauren's private punishment. I walk them bent double, horns scraping, and promise the sky I will see it again soon.",
+		"Underground, everything is too close: the ceiling, the walls, the air. My people were not made for burrows. We leave those to the quilboar.",
+	},
+	["race.tauren.muse.w08.062"] = {
+		"Elders in Mulgore answer a question with a story, and the story with another question. The trick, I think, is that this is the answer.",
+		"Ask a tauren elder something simple and you will get a long tale about a kodo, a river and a stubborn hunter. Somewhere inside it, if you are patient, is your answer.",
+	},
+	["race.tauren.muse.w08.063"] = {
+		"Our shamans talk to the spirits of earth and wind the way one talks to neighbors over a fence. Gift or no gift, I try to be a decent neighbor.",
+		"The shamans say the elements are not servants but kin, and kin with tempers. Living among my people, I can believe it of the kin and the tempers both.",
+		"Our shamans thank the wind after it answers them, the way a hunter thanks the beast. Good manners hold for spirits too.",
+	},
+	["race.tauren.muse.w08.064"] = {
+		"My people never turn a guest from the fire, not even one we dislike. We simply give that one the seat in the smoke.",
+		"A tauren camp feeds whoever arrives hungry. The questions wait until after the meal, and some of them are never asked at all.",
+	},
+	["race.tauren.muse.w08.065"] = {
+		"Big doesn't mean slow. It means that when I arrive, everyone knows about it.",
+		"We tauren aren't slow. We simply refuse to be rushed, which looks the same from outside.",
+	},
+	["race.tauren.muse.w08.066"] = {
+		"From the plains below, Thunder Bluff looks like a fist of rock raised against the sky, with fires on its knuckles. I have never looked up at it without slowing my step.",
+		"Walking across Mulgore toward the bluffs, the city rises a little more with every hour, as if it were getting to its feet to greet you.",
+	},
+	["race.tauren.muse.w08.067"] = {
+		"Armorers measure my head, then my horns, then sigh. Every helmet in the world was designed by someone who never had to think about horns.",
+		"Show a smith a tauren head and watch the arithmetic start. Horns are a problem no anvil was ready for.",
+	},
+	["race.tauren.muse.w08.068"] = {
+		"There is one smell I would carry across the world if I could: dry plains in the first moment the rain touches them. Everything that ever grew there seems to breathe at once.",
+		"When the first drops hit the dust of Mulgore after a dry spell, the whole land smells as if it were waking. I have found nothing finer in any city.",
+	},
+	["race.tauren.muse.w08.069"] = {
+		"My people move like a herd when danger comes: the strong to the outside, the young and the old within. I do it without thinking, even among strangers.",
+		"Put a tauren in a crowd under threat and watch: we drift to the edge, between the trouble and the smallest ones. It is older than any oath.",
+	},
+	["race.tauren.muse.w08.070"] = {
+		"The prairie dogs of Mulgore stand up to watch every traveler pass, like little sentries. I have always given them a nod. It costs nothing.",
+		"Every hole on the plains has a prairie dog in it, and every prairie dog has a view on you. It is good to be watched by something that cannot hurt you.",
+	},
+	["race.tauren.muse.w08.071"] = {
+		"May the ground be firm under all of you, and the grass high where you sleep.",
+		"Earth Mother keep your steps steady on her back, hooves or boots, whichever you have.",
+	},
+	["race.tauren.muse.w08.072"] = {
+		"Some of the oldest among us remember the years of wandering, before Mulgore was ours. When they speak of it, even the loudest young brave goes quiet.",
+		"The long walk is no legend to my people. There are grandmothers in Bloodhoof who can still tell you how heavy the tent poles were.",
+	},
+	["race.tauren.muse.w08.073"] = {
+		"If I fall far from Mulgore, the earth will take me just the same. It is all one earth. Still, I would like someone to carry word home.",
+		"Whatever ground I end on, the Earth Mother is under it. That has always seemed a better promise to me than any grave.",
+	},
+	["race.tauren.muse.w08.074"] = {
+		"The Kolkar still raid across the Barrens as if the old wars never ended. For them, perhaps, they never did. I am in no hurry to forget either.",
+		"The centaur clans still roam: Kolkar in the Barrens, Galak among the needles, Magram and Gelkis in Desolace. My people learned those names the hard way.",
+	},
+	["race.tauren.muse.w08.075"] = {
+		"Orc grog is fierce stuff for an orc. For a tauren it is a warm start. The orcs take this personally.",
+		"There is more of a tauren for a drink to get lost in. The orcs at the next table never quite forgive it.",
+	},
+	["race.tauren.muse.w08.076"] = {
+		"A storm on open grass teaches one thing quickly: a tauren is the tallest thing for a mile, and the sky has noticed.",
+		"On the plains, when the thunder rolls in, the young are taught to get low and stay low. Being tall has its costs.",
+		"The elders have a short rule for thunder on the plains: be lower than the grass, if you can manage it. A tauren rarely can.",
+	},
+	["race.tauren.muse.w08.077"] = {
+		"Orcs, trolls, Forsaken, tauren: a strange herd, with horns and tusks and bones showing. Still, a herd moves together or the predators pick it apart, and every one of us knows it.",
+		"The Horde is a mixed herd. We do not graze the same grass, but we all know which way the wolves come from.",
+	},
+	["race.tauren.muse.w08.078"] = {
+		"scratches slowly at the base of one horn, the way some folk rub their chin when a thought will not come out.",
+		"taps a broad finger against one horn, once, twice, while some thought finishes walking around.",
+	},
+	["race.tauren.muse.w08.079"] = {
+		"I call everyone 'little one' without meaning to. Orcs mind it. Trolls find it funny. Goblins, for some reason, agree.",
+		"To a tauren nearly everyone is small. I try not to say it aloud. I do not always manage.",
+	},
+	["race.tauren.subzone_enter.w08.001"] = {
+		"{subzone}. A new name for the same earth. The Earth Mother does not read maps.",
+		"{subzone}, the map says. The ground under my hooves never asked to be called anything.",
+		"{subzone}. Names change every few hundred paces; the earth beneath them is one piece.",
+	},
+	["race.tauren.subzone_enter.w08.002"] = {
+		"lowers {g:his|her} horns a little on entering {subzone}, from habit, whether or not there is anything to hit.",
+		"comes into {subzone} with {g:his|her} head slightly tilted, the habitual caution of someone always taller than the doorways.",
+		"enters {subzone} with one eye on what lies ahead and the other on whatever might hang low enough to catch a horn.",
+	},
+	["race.tauren.subzone_enter.w08.003"] = {
+		"{subzone}. Softer ground or harder? My hooves tell me before my eyes do.",
+		"{subzone}. The ground changes its voice under my hooves. A tauren hears a place before seeing it.",
+		"{subzone}. Stone, dirt, planks or moss: my hooves file it away without asking me.",
+	},
+	["race.tauren.subzone_enter.w08.004"] = {
+		"{subzone}. I look up first. The sky comes with me everywhere, and I like to see how it sits over each place.",
+		"{subzone}. More sky here or less than the last place? Anyone raised in Mulgore checks.",
+		"{subzone}. Before the ground, the sky: how much of it there is tells me how freely I will breathe here.",
+	},
+	["race.tauren.subzone_enter.w08.005"] = {
+		"{subzone}. Would a kodo graze here? It is the first question my people ask of any ground, and still a good one.",
+		"{subzone}. I weigh it the way a herder would: grass enough, water enough, room enough to turn a herd. Most places fail on the last.",
+		"{subzone}. Fat herds or hungry ones? My eyes decide which this place would raise before I have taken ten steps.",
+	},
+	["race.tauren.subzone_enter.w08.006"] = {
+		"{subzone}. Mind your heads. Well, mind mine.",
+		"{subzone}. Room enough for a tauren? We'll see.",
+		"{subzone}. Let's hope it's roomy.",
+	},
+	["race.tauren.subzone_enter.w08.007"] = {
+		"{subzone}. Earth Mother, here too I walk on you. Bear with my weight a little longer.",
+		"{subzone}. I set my hooves down gently. Wherever I go, I am a guest on the Earth Mother's back.",
+		"{subzone}. A word to the ground before I walk it: forgive the hooves, I am heavier than most.",
+	},
+	["race.tauren.subzone_enter.w08.008"] = {
+		"pauses as {subzone} opens around {g:him|her}, ears turning toward each new sound like a herd beast on watch.",
+		"enters {subzone} at an unhurried pace, broad head turning slowly from one side to the other.",
+		"lifts {g:his|her} head on entering {subzone} and stands a moment, taking in the place with the slow patience of the plains.",
+	},
+	["race.tauren.subzone_enter.w08.009"] = {
+		"{subzone}. If there is a low branch, a low beam or a low ceiling here, my horns will find it. It is a gift.",
+		"{subzone}. My horns will map this place long before I do, mostly by bumping into it.",
+	},
+	["race.tauren.subzone_enter.w08.010"] = {
+		"{subzone}. Are there herds here, or were there ever? A land tells you a great deal by what it can feed.",
+		"{subzone}. I look for droppings, hoofprints, cropped grass: any sign that something large has lived well here.",
+		"{subzone}. A herd would not ask much of it: a little grass, a little water, a little peace. Let's see what it offers.",
+	},
+	["race.tauren.subzone_enter.w08.011"] = {
+		"{subzone}. Wide enough to turn around without knocking anything over? That is my whole measure of a place.",
+		"{subzone}. I count how many things I could break here by turning too fast. Fewer than the last place, I hope.",
+	},
 }, "base_exploration")

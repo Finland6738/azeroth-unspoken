@@ -802,4 +802,624 @@ NS:AddTexts("itIT", {
 		"Gli stregoni di Sen'jin dicono che una ferita è un ospite: non dargli niente da mangiare e se ne va presto.",
 		"Vecchia saggezza dei Darkspear, mon: non dare retta a una ferita, e quella si annoia e se ne va.",
 	},
+	["race.dwarf.attack.w08.001"] = {
+		"Eccoti un pezzetto di Dun Morogh!",
+		"Prendi questa, dritta da Ironforge!",
+		"E un'altra, per fortuna e per Loch Modan!",
+	},
+	["race.dwarf.attack.w08.002"] = {
+		"Colpisci, e rimetti a posto i piedi. Colpisci, e i piedi. Come il martello sull'incudine, sempre a tempo.",
+		"Tieni il ritmo. Ogni fabbro lo sa: il lavoro sta nel ritmo, non nella forza.",
+		"Vince il lavoro costante. Chiedilo a qualunque nano abbia mai scavato attraverso una montagna.",
+	},
+	["race.dwarf.attack.w08.003"] = {
+		"Aspetta, ce n'è ancora, e un nano non resta mai a corto!",
+		"Consegna nanica, senza spese! Occhio al gradino!",
+		"Ecco il conto dei nani per il disturbo, da saldare subito!",
+	},
+	["race.dwarf.attack.w08.004"] = {
+		"grugnisce per lo sforzo, con tutto il peso di un corpo tarchiato dietro.",
+		"ci mette dentro tutto il suo peso tozzo, come un minatore che attacca una parete ostinata.",
+	},
+	["race.dwarf.buff.w08.001"] = {
+		"Ci siamo. Come una forgia rimasta coperta per ore: dalle aria e ruggisce.",
+		"Tutto a punto, come una carica infilata nella roccia prima che il caposquadra gridi.",
+		"Preparativi fatti. La pietra è misurata; ora è solo questione di martello.",
+	},
+	["race.dwarf.buff.w08.002"] = {
+		"Ecco. Abito da guai indossato, come si dice a Dun Morogh.",
+		"Così va meglio. Un nano non dovrebbe uscire di casa mezzo pronto, e tanto meno dalla montagna.",
+		"Tutto a posto. Che i guai bussino pure: dietro la porta troveranno un nano, e per i guai non è mai una buona notizia.",
+	},
+	["race.dwarf.buff.w08.003"] = {
+		"Qualcosa ha fatto presa, salda come una chiave di volta. La strada che viene può fare del suo peggio.",
+		"Tutto allacciato e pronto. Qualunque cosa ci sia là fuori, un nano la affronta preparato o non la affronta affatto.",
+		"Si parte. Gambe corte, ma porteranno tutto quello che serve.",
+	},
+	["race.dwarf.buff.w08.004"] = {
+		"Ecco, {target}. Adesso è più difficile buttarti giù che rovesciare un barile di Kharanos.",
+		"Vai pure. Adesso incasserai uno spintone come lo incassa un masso di Dun Morogh: senza accorgertene.",
+	},
+	["race.dwarf.buff.w08.005"] = {
+		"Mandare qualcuno in giro ben armato è una cortesia dei nani. Con la Luce dietro, tanto meglio.",
+		"Nessuno si allontana da un nano senza i preparativi giusti, se il nano può evitarlo.",
+	},
+	["race.dwarf.heal.w08.001"] = {
+		"Toppa messa. Non è bella, ma nemmeno un puntello di miniera lo è, e quelli reggono le montagne.",
+		"Reggerà. Lavoro grezzo, ma anche un puntello è grezzo, eppure ti tiene il tetto lontano dalla testa.",
+	},
+	["race.dwarf.heal.w08.002"] = {
+		"Meglio. Dunque, a che punto ero? Ah, già: alla testardaggine dei nani.",
+		"Ecco qua. Si torna a fare resistenza come qualunque sasso di Dun Morogh.",
+	},
+	["race.dwarf.heal.w08.003"] = {
+		"Avrei dovuto tenere la guardia alta. La pietra non perdona niente, e nemmeno un corpo trattato con leggerezza.",
+		"La distrazione si paga, dicono i minatori di Dun Morogh, e io ho appena saldato il conto. A buon prezzo, per come vanno queste cose.",
+	},
+	["race.dwarf.heal.w08.004"] = {
+		"flette la mano, saggiando la carne rimarginata come un fabbro saggia una saldatura raffreddata.",
+		"ruota una spalla rigida, grugnisce a quello che sente, e sembra trovare la risposta accettabile.",
+	},
+	["race.dwarf.heal.w08.005"] = {
+		"I nani sono fatti per durare, amano dire gli anziani di Ironforge. Ho intenzione di dargli ragione ancora per un bel pezzo.",
+		"Fatto per durare, si dice del lavoro dei nani. Vale anche per i nani, se uno se ne prende cura.",
+	},
+	["race.dwarf.heal.w08.006"] = {
+		"Tutto a posto. Be', quasi: diciamo roba usata con cura. La roba dei nani invecchia bene.",
+		"La ferita è chiusa. Ancora qualche cicatrice e avrò l'aria di una vecchia guardia di montagna.",
+	},
+	["race.dwarf.heal.w08.007"] = {
+		"Abbastanza per stare in piedi. A un nano non serve altro.",
+		"Chiusa quanto basta per andare avanti. Quel che fa ancora male potrà lamentarsi con me più tardi, davanti a una birra.",
+		"Reggerà. Il resto della riparazione può aspettare una panca e un boccale.",
+	},
+	["race.dwarf.heal.w08.008"] = {
+		"Il dolore defluisce piano, come l'acqua che filtra fuori da una galleria allagata. Pazienza. Alla fine se ne va sempre.",
+		"Adesso cala. Come una miniera dopo che le pompe hanno lavorato: ancora umida, ma ci si può rimettere al lavoro.",
+	},
+	["race.dwarf.heal.w08.009"] = {
+		"Giù. Se un birraio di Kharanos facesse una cosa simile, lo caccerebbero dal villaggio prima di cena.",
+		"Preparata da qualcuno che non ha mai visto un luppolo in vita sua. Però funziona.",
+		"Bleah. Medicina, la chiamano. Dalle mie parti sarebbe un buon motivo per cominciare una faida.",
+	},
+	["race.dwarf.heal.w08.010"] = {
+		"Fascia stretta, come si lega un manico incrinato: aderente, senza gioco, e per ora non ci si appoggia con tutto il peso.",
+		"Lino e un nodo ben stretto. Non elegante come il lavoro di un guaritore, ma un nano riconosce un buon nodo quando lo vede.",
+	},
+	["race.dwarf.heal.w08.011"] = {
+		"La pietra di uno stregone. Non posso dire che mi piaccia da dove viene, ma una pietra è una pietra, e questa coi nani è gentile.",
+		"Una pietra che guarisce. Tutti i minatori di Dun Morogh vorrebbero sapere dove corre il filone.",
+	},
+	["race.dwarf.heal.w08.012"] = {
+		"Mh. Chiusa. Il prossimo che ci prova la paga.",
+		"Sigillata. Chi me l'ha fatta mi deve una birra e delle scuse, in quest'ordine.",
+	},
+	["race.dwarf.heal.w08.013"] = {
+		"Un calore che si allarga nel petto, come entrare dal freddo nel bagliore del camino di una taverna di Kharanos.",
+		"Ecco che torna il calore. Come rientrare dai valichi di Dun Morogh davanti a un fuoco e a un boccale pieno.",
+	},
+	["race.dwarf.heal.w08.014"] = {
+		"Il dolore è il martello e il corpo è il ferro. Se ti lasci forgiare bene, ne esci più {g:duro|dura}.",
+		"Ogni colpo preso e riparato rende il metallo un po' più tenace. Così credono i fabbri di Ironforge, e io non sono nella posizione di discutere.",
+	},
+	["race.dwarf.heal.w08.015"] = {
+		"Smettila di agitarti, {target}. Gli arieti di Dun Morogh si lasciano curare meglio di te.",
+		"Non muoverti, adesso. Sembra che nessuno ti abbia mai fatto rimettere in sesto da un nano.",
+	},
+	["race.dwarf.heal.w08.016"] = {
+		"La Luce è solida come qualsiasi pietra, {target}. Appoggiati a lei.",
+		"Ecco. Ora ti regge la Luce, e la Luce non si piega.",
+	},
+	["race.dwarf.heal.w08.017"] = {
+		"Curare gli altri è come puntellare una galleria: non lo fai per un grazie, lo fai perché nessuno resti sepolto.",
+		"Tieni in piedi la gente e il lavoro va avanti. Sottoterra vale la stessa regola che dappertutto.",
+	},
+	["race.dwarf.heal.w08.018"] = {
+		"posa una mano larga sulla spalla di chi è ferito, salda come quella di un muratore che controlla una chiave di volta.",
+		"squadra la ferita con disapprovazione da professionista, come se fosse stata costruita male, e si mette a sistemarla.",
+	},
+	["race.dwarf.heal.w08.019"] = {
+		"Ecco fatto, {target}. La ferita è chiusa e c'è tempo per un altro giro. Il primo lo offri tu.",
+		"In piedi. Ti ha rimesso in sesto {g:un nano|una nana}, quindi dopo da bere offri tu.",
+	},
+	["race.dwarf.heal.w08.020"] = {
+		"I nani hanno abbracciato la Luce come abbracciamo tutto ciò che vale la pena tenere: piano, e poi per sempre. Ora non mi delude.",
+		"La Luce ha un bagliore costante come le forge di Ironforge. Costante anche adesso.",
+	},
+	["race.dwarf.heal.w08.021"] = {
+		"Resta dietro di me e resta in piedi, {target}. Ti tengo insieme io.",
+		"Su, in piedi. Finché ci sono io a guardare non cade nessuno: per un nano è questione d'orgoglio.",
+	},
+	["race.dwarf.heal.w08.022"] = {
+		"Guarire è un mestiere come un altro. Trova la crepa, puliscila, riempila, e non avere fretta.",
+		"Tratta una ferita come una fusione difettosa: trova dove è debole, riparala come si deve, e non risparmiare.",
+	},
+	["race.dwarf.heal.w08.023"] = {
+		"Luce, rendi le forze a chi ne ha bisogno. Se le è guadagnate.",
+		"Per la Luce e per la testardaggine di un nano, ti rimetterai.",
+	},
+	["race.dwarf.heal.w08.024"] = {
+		"Non muoverti. Ho la mano ferma di un minatore; è la pazienza che scarseggia.",
+		"Fatto, {target}. Cerca di non averne di nuovo bisogno prima che io abbia bevuto qualcosa.",
+	},
+	["race.dwarf.heal.w08.025"] = {
+		"borbotta una parola brusca alla Luce, come un nano parlerebbe a un vecchio amico in ritardo, e la ferita comincia a chiudersi.",
+		"appoggia due dita tozze sulla ferita e aggrotta la fronte finché il bagliore non fa presa.",
+	},
+	["race.dwarf.heal.w08.026"] = {
+		"È più facile curare qualcun altro che restare fermi mentre ti curano. I nani sono pessimi pazienti e guaritori decenti.",
+		"Buffo: un nano si prende una martellata sul pollice senza fiatare, ma veder sanguinare qualcun altro è un'altra faccenda.",
+		"Meglio vederli in piedi che piangerli. È tutto qui.",
+	},
+	["race.dwarf.rezother.w08.001"] = {
+		"Torna su. La montagna può tenersi i suoi morti ancora un po'; qui c'è ancora bisogno di te.",
+		"Su dal buio, come un minatore tirato fuori da un crollo. Respira. Sei fuori.",
+		"Ecco. Qualunque cosa ci fosse laggiù, ti ha lasciato andare. Non voltarti a guardarla.",
+	},
+	["race.dwarf.rezother.w08.002"] = {
+		"Su. La Luce non ha finito con te, e a dirla tutta nemmeno io.",
+		"In piedi. I nani non lasciano nessuno sottoterra prima del tempo.",
+		"Eccoti tra noi. Il prossimo giro lo offri tu, per il disturbo.",
+	},
+	["race.dwarf.travel.w08.001"] = {
+		"Una pietra che sa sempre la strada del ritorno. Naturale che sia una pietra.",
+		"I nani si fidano più della pietra che delle strade, ed eccone la prova nel palmo della mano.",
+		"Giro la pietra e la strada si ripiega alle mie spalle. Chi l'ha inventata doveva essere mezzo nano.",
+	},
+	["race.human.attack.w08.001"] = {
+		"Omaggio di Stormwind!",
+		"Con i saluti del regno!",
+		"Tanti cari saluti da Elwynn!",
+	},
+	["race.human.attack.w08.002"] = {
+		"Questo è per Lordaeron!",
+		"Per il nord, e per tutti quelli che ha perduto!",
+	},
+	["race.human.attack.w08.003"] = {
+		"Niente svolazzi. Noi umani non abbiamo anni da sprecare in svolazzi.",
+		"Semplice e svelto. Le finezze le lascio a chi vive mille anni.",
+	},
+	["race.human.attack.w08.004"] = {
+		"incalza con l'economia sbrigativa di chi ha posti migliori dove stare.",
+		"attacca senza cerimonie, tutta fretta umana e mira ostinata.",
+	},
+	["race.human.attack.w08.005"] = {
+		"Per le fattorie vuote di Westfall!",
+		"Questo è per ogni fienile bruciato a Redridge!",
+	},
+	["race.human.buff.w08.001"] = {
+		"{g:Pronto|Pronta}, come un miliziano di Goldshire che si allaccia la cintura al primo rintocco della campana d'allarme.",
+		"Fatto. La milizia di Elwynn è vestita e fuori dalla porta prima che smetta la campana d'allarme; io non sono da meno.",
+	},
+	["race.human.buff.w08.002"] = {
+		"Bene. A posto. Quel che viene dopo sulla strada, venga pure.",
+		"Sono {g:pronto|pronta}. Adesso la strada può fare del suo peggio.",
+		"Preparativi fatti. Gli umani non aspettano che i guai bussino.",
+	},
+	["race.human.buff.w08.003"] = {
+		"assesta le spalle come se qualcosa fosse appena andato al suo posto.",
+		"prende un respiro lento e si raddrizza un poco, come chi ha controllato ogni fibbia due volte.",
+	},
+	["race.human.buff.w08.004"] = {
+		"I sergenti istruttori di Stormwind dicono che un minuto di preparazione fa risparmiare un'ora a un guaritore. I guaritori sarebbero d'accordo.",
+		"Un po' di prontezza adesso, meno bende dopo. Lo dice ogni sergente del regno, e per una volta hanno ragione.",
+	},
+	["race.human.buff.w08.005"] = {
+		"Ecco, {target}. Questo ti accompagnerà per un bel tratto di strada.",
+		"Va' pure. Adesso hai qualcosa in più per la strada.",
+	},
+	["race.human.buff.w08.006"] = {
+		"Ogni mano resa un po' più forte è una possibilità in più che qualcuno torni a casa. Così è stata costruita l'Alleanza.",
+		"Un po' di forza in più a chi sta dalla nostra parte. Si sono difesi regni con meno di questo.",
+	},
+	["race.human.heal.w08.001"] = {
+		"{g:Rimesso|Rimessa} insieme, più o meno. Un umano non ha anni da passare a curarsi una ferita, quindi guarirà strada facendo.",
+		"Chiusa quanto basta. Non c'è tempo per starsene sdraiati: abbiamo una corsa sola, e breve, e io la sto usando.",
+	},
+	["race.human.heal.w08.002"] = {
+		"Basta così. La milizia di Goldshire direbbe che sono {g:pronto|pronta} per il servizio.",
+		"Ecco. Qualunque sergente di Elwynn mi giudicherebbe abile alla marcia.",
+	},
+	["race.human.heal.w08.003"] = {
+		"prova la ferita richiusa con un movimento prudente, come un contadino che saggia il manico dell'aratro appena aggiustato.",
+		"si piega con cautela dove c'era la ferita, guardandola {g:accigliato|accigliata} come un carrettiere guarda una ruota appena riparata.",
+	},
+	["race.human.heal.w08.004"] = {
+		"Le vite brevi guariscono in fretta, o non guariscono affatto. Questa sta guarendo.",
+		"Gli umani guariscono in fretta perché devono. Nessuno ci ha dato il tempo di farlo con calma.",
+	},
+	["race.human.heal.w08.005"] = {
+		"Meglio. Non ditelo ai guaritori della Cattedrale che ho fatto da me: vorranno il loro compenso lo stesso.",
+		"{g:Rattoppato|Rattoppata}, e senza dare un soldo alla Cattedrale. Non spargete la voce.",
+	},
+	["race.human.heal.w08.006"] = {
+		"I contadini di Westfall lavorano con di peggio addosso, durante il raccolto. In piedi, allora.",
+		"A Westfall legherebbero uno straccio intorno a qualcosa di peggio e tornerebbero alla trebbiatura. Su.",
+	},
+	["race.human.heal.w08.007"] = {
+		"Un graffio così, a Elwynn, ti vale una tazza calda accanto al focolare e una predica. Mi accontenterei della tazza.",
+		"A casa, una ferita così ti vale uno sgabello accanto al fuoco e una sgridata. Prenderei lo sgabello e salterei la sgridata.",
+	},
+	["race.human.heal.w08.008"] = {
+		"Chiusa. Torno al lavoro prima che i guai si accorgano che mi sono {g:fermato|fermata}.",
+		"Terrà. Inutile dare al mondo il tempo di raggiungermi.",
+	},
+	["race.human.heal.w08.009"] = {
+		"Lezione presa. La cicatrice me lo ricorderà, se dimentico.",
+		"Gli umani imparano a forza di lividi. Questa adesso è scritta, sulla pelle.",
+	},
+	["race.human.heal.w08.010"] = {
+		"butta fuori il fiato piano mentre il dolore molla la presa, e le spalle si abbassano finalmente.",
+		"lascia che il male si ritiri con un respiro lungo e attento, e un po' di rigidità sparisce dal suo viso.",
+	},
+	["race.human.heal.w08.011"] = {
+		"Gli elfi lascerebbero guarire una cosa così nel giro di un secolo. Io la vorrei a posto per cena.",
+		"Un nano lo chiamerebbe un graffio, un elfo una lezione. Io lo chiamo sistemato, e in fretta.",
+	},
+	["race.human.heal.w08.012"] = {
+		"I soldati tornati dal nord dicono che chi guariva più in fretta viveva più a lungo. Gli credo.",
+		"I veterani degli ultimi giorni di Lordaeron dicono che o guarisci in piedi o non guarisci. In piedi, allora.",
+	},
+	["race.human.heal.w08.013"] = {
+		"Ogni casetta di Elwynn tiene della tela pulita in una cassapanca per giorni come questo. Io la tengo nello zaino.",
+		"Giri stretti, un nodo saldo. Metà delle nonne di Elwynn lo farebbero meglio, e me lo direbbero pure.",
+	},
+	["race.human.heal.w08.014"] = {
+		"Sa di uno scherzo di qualche alchimista di Stormwind. Però funziona.",
+		"Roba distillata nel Mage Quarter: puzza di cavolo, funziona a meraviglia.",
+	},
+	["race.human.heal.w08.015"] = {
+		"La brava gente di Stormwind cambia marciapiede per non incrociare chi fabbrica queste pietre. E io eccomi qui, a ringraziarne una.",
+		"La Cattedrale arriccia il naso davanti a quel che c'è dentro una pietra così. La mia ferita non sembra farci caso.",
+	},
+	["race.human.heal.w08.016"] = {
+		"Non muoverti un attimo, {target}. La Luce non fa aspettare a lungo, e io nemmeno.",
+		"Piano, adesso. Lascia lavorare la Luce: non ha fretta, e nemmeno io.",
+	},
+	["race.human.heal.w08.017"] = {
+		"A Lordaeron sono finiti i guaritori prima che finissero i feriti. Non stavolta.",
+		"Il nord ha perso prima i suoi guaritori, e poi tutti gli altri. Non lascerò che cominci qui.",
+	},
+	["race.human.heal.w08.018"] = {
+		"posa il palmo sulla ferita, saldo come un contadino di Elwynn che calma un vitello spaventato.",
+		"tiene una mano tranquilla su chi è ferito, come la gente di campagna calma un cavallo impigliato nel filo.",
+	},
+	["race.human.heal.w08.019"] = {
+		"Su, {target}. Il regno non può fare a meno di te, e io non posso portarti in braccio.",
+		"In piedi. Oggi nessuno riporta nessuno a Stormwind in spalla.",
+	},
+	["race.human.heal.w08.020"] = {
+		"Chiunque sia, da qualunque posto venga, sta dalla nostra parte. Questa è l'Alleanza, in un piccolo gesto.",
+		"Umani, nani, gnomi, elfi: la ferita è la stessa per tutti, e anche la cura.",
+	},
+	["race.human.heal.w08.021"] = {
+		"Per la Luce, {target}, guarisci.",
+		"Luce, ripara ciò che qui è stato spezzato.",
+		"Che ogni ferita si chiuda, per grazia della Luce.",
+	},
+	["race.human.heal.w08.022"] = {
+		"Mi stai sanguinando sugli stivali, {target}. Non ti muovere e lascia che ci metta fine.",
+		"Smettila di gocciolarmi addosso e non muoverti. Ecco. Meglio così, per noi due.",
+	},
+	["race.human.heal.w08.023"] = {
+		"Ognuno ha una vita sola, e breve. Non lascerò che {target} finisca qui quel che ne resta.",
+		"Una vita a testa, e pure corta. Questa non finisce mentre ci sono io.",
+	},
+	["race.human.heal.w08.024"] = {
+		"Ecco, {target}. Adesso mi devi una birra, e vengo a riscuoterla.",
+		"Ecco fatto. Il prezzo è una birra alla prossima locanda, e io i debiti non li dimentico.",
+	},
+	["race.human.heal.w08.025"] = {
+		"china il capo su chi è ferito, e un bagliore caldo, come le vetrate della Cattedrale, si posa sulla ferita.",
+		"mormora poche parole alla vecchia maniera di Northshire, e la ferita sotto le sue mani comincia a chiudersi.",
+	},
+	["race.human.heal.w08.026"] = {
+		"Torna dentro, {target}! A Stormwind non s'insegna a sedersi a metà!",
+		"In piedi e addosso! Nessuno molla a metà, non finché ci sono io!",
+	},
+	["race.human.heal.w08.027"] = {
+		"Tieni insieme le parti abbastanza a lungo e il corpo si ricorda come si fa. È la prima cosa che impara ogni novizio di Northshire.",
+		"Prima si chiude la ferita peggiore, poi il resto. I guaritori della Cattedrale insegnano così, e di pratica ne hanno fatta.",
+	},
+	["race.human.rezother.w08.001"] = {
+		"In piedi. La vita è troppo breve per passarla lì per terra.",
+		"Su, torna. La vita è già abbastanza corta senza sprecarne un pezzo da morti.",
+	},
+	["race.human.rezother.w08.002"] = {
+		"Le campane di Stormwind suonano per i morti. Non per questa persona. Non ancora.",
+		"Nessuna campana a morto per questa persona. Non lo permetto.",
+		"Una campana avrebbe suonato, chissà dove. Può restare muta: non abbiamo finito.",
+	},
+	["race.human.rezother.w08.003"] = {
+		"si inginocchia e lavora senza fretta, come la gente di Elwynn cura un agnello appena nato che non si muove, finché il respiro non torna.",
+		"resta {g:chino|china} su chi è caduto con la pazienza ostinata di un contadino, aspettando il primo respiro come il primo verde di primavera.",
+	},
+	["race.human.travel.w08.001"] = {
+		"La pietra si scalda nella mano e la locanda comincia a tirare. Gli umani hanno sempre saputo la strada per l'osteria più vicina; ora ne abbiamo fatto un incanto.",
+		"Ogni umano si porta in tasca un pezzetto di qualche locanda. Il mio mi chiama verso un letto e una scodella di qualcosa di caldo.",
+		"La pietra del ritorno in mano. Un oste sta per vedere una faccia nota e allungare la mano verso il registro.",
+	},
+	["race.nightelf.attack.w08.001"] = {
+		"La collera di Ashenvale, in un colpo solo!",
+		"Dal buio fra gli alberi!",
+		"Dalle ombre di Teldrassil!",
+	},
+	["race.nightelf.attack.w08.002"] = {
+		"In fretta, in silenzio, a colpo sicuro.",
+		"Adesso, mentre sbatti le palpebre.",
+	},
+	["race.nightelf.attack.w08.003"] = {
+		"Elune, reggimi la mano!",
+		"Per la grazia della luna!",
+	},
+	["race.nightelf.attack.w08.004"] = {
+		"Diecimila anni di pratica. Eccone un assaggio.",
+		"Basta pazienza. Ecco l'altra faccia dei kaldorei.",
+	},
+	["race.nightelf.attack.w08.005"] = {
+		"si muove in un lampo, con la rapidità silenziosa dell'ala di un gufo.",
+		"colpisce dall'immobilità, come un nightsaber: niente, e poi tutto.",
+	},
+	["race.nightelf.buff.w08.001"] = {
+		"Fatto. Come il manto di un nightsaber prima del freddo: non lo vedi, ma c'è.",
+		"Qualcosa si posa addosso, quieto e vicino, come il silenzio di Ashenvale prima che arrivi il vento.",
+		"Ecco. Preparativi fatti, senza fretta. Un kaldorei si prepara come la foresta per l'inverno: presto e senza storie.",
+	},
+	["race.nightelf.buff.w08.002"] = {
+		"Così va bene. I kaldorei non partono mai impreparati, e io nemmeno.",
+		"Tutto pronto. Teldrassil non è diventato così alto aspettando di sentirsi pronto.",
+		"Ci siamo. Anche un gufo arruffa le piume prima di volare.",
+	},
+	["race.nightelf.buff.w08.003"] = {
+		"fa ruotare le spalle e resta immobile un istante, come una Sentinella che controlla il limite degli alberi prima di una ronda.",
+		"prende un respiro lento, gli occhi socchiusi, e lascia che qualcosa {g:gli|le} si posi addosso, leggero come una foglia sull'acqua ferma.",
+	},
+	["race.nightelf.buff.w08.004"] = {
+		"Porta questo con te, {target}. I figli di Elune si prendono cura gli uni degli altri.",
+		"Ecco, {target}. Un po' della pazienza della foresta viene con te.",
+	},
+	["race.nightelf.buff.w08.005"] = {
+		"Questo dovrebbe reggere, {target}. Portalo come una Sentinella porta il mantello: senza pensarci.",
+		"Fatto. Ora sei più difficile da ferire, {target}, e questo mi semplifica il lavoro.",
+	},
+	["race.nightelf.heal.w08.001"] = {
+		"Ricorderò questa ferita molto dopo che sarà sparita. Un kaldorei non dimentica nulla, nemmeno i piccoli dolori.",
+		"La cicatrice sbiadirà; il ricordo no. È così che il mio popolo porta le sue ferite.",
+	},
+	["race.nightelf.heal.w08.002"] = {
+		"Meglio. Il dolore scivola via come la rugiada alle prime luci.",
+		"Ecco, il dolore molla la presa, piano, come una radice che lascia andare una pietra.",
+	},
+	["race.nightelf.heal.w08.003"] = {
+		"Meglio. Detesterei dover spiegare un buco in più alle sacerdotesse.",
+		"Ecco. Non serve disturbare il Tempio della Luna per così poco.",
+	},
+	["race.nightelf.heal.w08.004"] = {
+		"Prima di Hyjal, dicono, una ferita così per noi era niente. Ora la guardo chiudersi e provo gratitudine.",
+		"Le sacerdotesse dicono che gli immortali non hanno mai imparato a curarsi le ferite. Ora stiamo imparando.",
+	},
+	["race.nightelf.heal.w08.005"] = {
+		"Basta così. Una Sentinella sarebbe già in movimento; lo sarò anch'io.",
+		"Abbastanza per andare avanti. Il mio popolo ha imparato la pazienza, ma non quella di starsene distesi.",
+	},
+	["race.nightelf.heal.w08.006"] = {
+		"preme una mano sulla ferita e chiude gli occhi, immobile come un airone sulla riva, finché il peggio non è passato.",
+		"respira piano mentre il dolore si allenta, le orecchie abbassate, il bagliore degli occhi che si affievolisce un attimo e poi ritorna.",
+	},
+	["race.nightelf.heal.w08.007"] = {
+		"Lino e pazienza. Il Tempio della Luna farebbe di meglio, ma ho solo il lino.",
+		"Annodato per bene. Le mani di un kaldorei sono svelte con i nodi, anche quando tremano.",
+	},
+	["race.nightelf.heal.w08.008"] = {
+		"Amara come le alghe di Darkshore. Però funziona.",
+		"Ha il sapore di qualcosa preparato da un goblin che non ha mai visto un pozzo lunare. Però fa effetto.",
+	},
+	["race.nightelf.heal.w08.009"] = {
+		"Il dolore si ritira come la marea richiamata dalla luna. Elune, sospetto, ha una mano in entrambe le cose.",
+		"Si allevia, piano, come la luce della luna riempie una radura: non te ne accorgi finché non c'è.",
+	},
+	["race.nightelf.heal.w08.010"] = {
+		"Distrazione. Un kaldorei dovrebbe sentir arrivare un colpo. Lezione annotata, ferita chiusa.",
+		"Quella avrei dovuto accorgermene. Orecchie lunghe, e non l'ho sentita lo stesso. Mai più.",
+	},
+	["race.nightelf.heal.w08.011"] = {
+		"Una pietra da stregone. Il mio popolo ha opinioni molto antiche su quel genere di magia, ma le avrò più tardi.",
+		"Fatta da uno stregone o no, ripara. Le sacerdotesse aggrotterebbero la fronte; ma non sono loro a sanguinare.",
+	},
+	["race.nightelf.heal.w08.012"] = {
+		"Tieni duro. Teldrassil non è cresciuto in un giorno, e io non crollerò in uno.",
+		"Si chiude. Bene. Ho una lunga strada davanti, e meno anni dei miei antenati per percorrerla.",
+	},
+	["race.nightelf.heal.w08.013"] = {
+		"Piano, {target}. Elune ha rimesso in sesto di peggio, e anch'io.",
+		"Non muoverti. La misericordia della luna funziona meglio quando la smetti di agitarti.",
+	},
+	["race.nightelf.heal.w08.014"] = {
+		"Ecco fatto, {target}. Nemmeno il Tempio della Luna avrebbe fatto più in fretta.",
+		"Meglio? Bene. Persino i fuochi fatui ne sarebbero colpiti, e ne hanno viste tante.",
+	},
+	["race.nightelf.heal.w08.015"] = {
+		"Ogni vita che curo è un piccolo debito saldato alla foresta che ha protetto il mio popolo.",
+		"I guaritori kaldorei hanno imparato la loro arte in diecimila anni. Mi fa piacere spenderne un momento per chi ne ha bisogno.",
+	},
+	["race.nightelf.heal.w08.016"] = {
+		"posa una mano leggera su chi è ferito, e per un respiro gli occhi {g:gli|le} brillano di più, d'argento come la luna sull'acqua ferma.",
+		"si china sulla ferita con la cura quieta di una sacerdotessa al pozzo lunare, e non ha fretta.",
+	},
+	["race.nightelf.heal.w08.017"] = {
+		"La luce di Elune su di te, {target}. Lascia che faccia il suo lavoro.",
+		"Riposa un momento sotto lo sguardo di Elune. Il peggio è passato.",
+		"Che la luna vegli sulla tua guarigione, {target}.",
+	},
+	["race.nightelf.heal.w08.018"] = {
+		"Meno storie. Il mio popolo è sopravvissuto alla fine di un mondo; tu sopravvivrai a questo.",
+		"Smettila di fare smorfie. Le Sentinelle di Ashenvale ricuciono di peggio ogni settimana.",
+	},
+	["race.nightelf.heal.w08.019"] = {
+		"Dopo Hyjal sappiamo tutti quanto è sottile il filo. Terrò stretto questo ancora un po'.",
+		"La mortalità è nuova per il mio popolo; prendersi cura dei mortali no. Le sacerdotesse l'hanno sempre fatto.",
+	},
+	["race.nightelf.heal.w08.020"] = {
+		"Respira piano, {target}. Più piano. Come fa la foresta.",
+		"Lascia uscire il dolore con il fiato. Dentro, e fuori. Ecco.",
+	},
+	["race.nightelf.heal.w08.021"] = {
+		"mormora qualche parola sommessa in darnassiano sulla ferita, più simile a una ninnananna che a qualcosa di solenne.",
+		"si inginocchia accanto a chi è ferito, le lunghe dita ferme, e parla piano, come si parla a un cerbiatto spaventato.",
+	},
+	["race.nightelf.heal.w08.022"] = {
+		"{target}, ti va bene che i guaritori kaldorei siano pazienti. Altrimenti a quest'ora mi sarei {g:arrabbiato|arrabbiata}.",
+		"Ancora tu, {target}? Ho secoli di pazienza. Cerca di non consumarli tutti.",
+	},
+	["race.nightelf.heal.w08.023"] = {
+		"Che possa ripartire. Il mondo è migliore con una persona in più che non sanguina.",
+		"Un'altra persona rimessa in piedi. La foresta approverebbe: favorisce sempre ciò che cresce.",
+	},
+	["race.nightelf.heal.w08.024"] = {
+		"Ecco, {target}. Vai, e che Elune ti tenga alla larga dai guai. Con me ci riesce di rado.",
+		"Meglio. Vai pure, {target}, e cerca di tornare senza buchi nuovi.",
+	},
+	["race.nightelf.rezother.w08.001"] = {
+		"Torna. Elune non ha ancora finito con te.",
+		"Svegliati. La luna ha ancora una strada per te.",
+		"Torna. Anche dopo Hyjal, non tutte le fini devono essere per sempre.",
+	},
+	["race.nightelf.rezother.w08.002"] = {
+		"si inginocchia e mormora una lunga frase in darnassiano su chi è caduto, paziente come la luna che aspetta la marea.",
+		"si china sul corpo, una luce d'argento che si raccoglie negli occhi, e richiama indietro chi è caduto nella lingua antica dei kaldorei.",
+		"si siede sui talloni accanto al corpo e parla piano a chi giace lì, come le sacerdotesse parlano ai molto vecchi e ai molto piccoli.",
+	},
+	["race.nightelf.travel.w08.001"] = {
+		"La pietra del ritorno si scalda. La mia gente diffida di quasi ogni magia, ma è difficile non voler bene a una pietra che vuole solo tornare a casa.",
+		"Un sassolino che ricorda un solo posto e ci tira verso. La mia gente, più di chiunque, questo lo capisce.",
+		"A casa per mezzo di una pietra. I nostri anziani storcerebbero il naso davanti alla scorciatoia; i miei piedi la ringraziano.",
+	},
+	["race.tauren.attack.w08.001"] = {
+		"Eccoti un saluto da Mulgore!",
+		"Riporta questo a chi ti ha mandato, coi complimenti di un tauren!",
+		"Un altro, e più pesante!",
+	},
+	["race.tauren.attack.w08.002"] = {
+		"mette tutto il suo considerevole peso dietro al colpo.",
+		"si spinge avanti con uno sbuffo, e tutta la mole del tauren segue il colpo.",
+		"colpisce con la calma certezza di un albero che cade.",
+	},
+	["race.tauren.attack.w08.003"] = {
+		"Ancora. Paziente come la mandria, pesante come la mandria.",
+		"Colpire, respirare, colpire. Come zoccoli sul terreno duro, regolari e senza fine.",
+		"Un colpo, poi il successivo. Una mandria in corsa non è che tanti piccoli passi nella stessa direzione.",
+	},
+	["race.tauren.attack.w08.004"] = {
+		"Lenti, i tauren? Riprova a dirlo.",
+		"Sono {g:grosso|grossa}. Non vuol dire che sbaglio mira.",
+	},
+	["race.tauren.buff.w08.001"] = {
+		"Qualcosa si assesta, profondo come radici. Bene. Adesso la strada.",
+		"{g:Pronto|Pronta}. Le pianure mi hanno insegnato a prepararmi prima della mandria in fuga, non durante.",
+		"Ci siamo. Un tauren si prepara come la mandria si prepara alla stagione secca: presto, e senza lamentarsi.",
+	},
+	["race.tauren.buff.w08.002"] = {
+		"{g:Pronto|Pronta}. Qualunque cosa la strada mi lanci, dovrà lanciarla contro un tauren.",
+		"Ecco. Tutta questa stazza, pronta in un colpo solo. È un bel po' di prontezza.",
+	},
+	["race.tauren.buff.w08.003"] = {
+		"fa ruotare il collo finché non scrocchia, poi aspetta ancora un momento, lasciando che la prontezza {g:gli|le} scenda nelle ossa.",
+		"batte una volta ogni zoccolo, prima il sinistro poi il destro, saggiando il terreno come si fa prima di una lunga camminata.",
+	},
+	["race.tauren.buff.w08.004"] = {
+		"Va' con un po' di selvatico dentro, {target}. Ti custodirà.",
+		"Ecco. Portalo con te: è un dono che la terra ti fa attraverso me.",
+	},
+	["race.tauren.buff.w08.005"] = {
+		"Un'altra persona pronta per la strada. A un tauren piace una mandria ben preparata.",
+		"Dovrebbe reggere per un po'. Come una buona pelle tesa su un palo di tenda: te ne dimentichi finché non si alza il vento.",
+	},
+	["race.tauren.heal.w08.001"] = {
+		"Si rimargina. Il cuoio del mio popolo ricresce spesso: siamo fatti per le spine e le strade lunghe.",
+		"La pelle dei tauren è spessa e le ossa ancora di più. Questo si salderà.",
+		"Il corpo di un tauren è una cosa testarda. Guarisce per dispetto, credo.",
+	},
+	["race.tauren.heal.w08.002"] = {
+		"Meglio. C'era parecchio tauren da rattoppare.",
+		"Ecco. Per rimettere in sesto qualcosa della mia stazza ci vuole pazienza, e io ne sono {g:fatto|fatta}.",
+		"Bene. Corpi grandi, riparazioni grandi: per fortuna il mio sta fermo mentre lo aggiusto.",
+	},
+	["race.tauren.heal.w08.003"] = {
+		"Grazie, Madre Terra, per un corpo che guarisce. Cercherò di dargli meno motivi per farlo.",
+		"La Madre Terra ci ha fatti per guarire. Le sono {g:grato|grata}, anche quando la faccio lavorare sodo.",
+		"Madre Terra, hai dato al mio popolo un cuoio spesso per un motivo. Continuo a scoprire quale.",
+	},
+	["race.tauren.heal.w08.004"] = {
+		"Che sbadataggine. Il plainstrider che finisce in un rovo impara; dovrei avere almeno il cervello di un plainstrider.",
+		"Un cacciatore delle pianure riderebbe di questa ferita. Non della ferita: di come me la sono fatta.",
+	},
+	["race.tauren.heal.w08.005"] = {
+		"Basta così. La mandria va avanti, e io con lei.",
+		"Di nuovo sui miei zoccoli. C'è ancora terreno da coprire.",
+		"Bene. Adesso il resto di me può raggiungere la parte che è ancora arrabbiata.",
+	},
+	["race.tauren.heal.w08.006"] = {
+		"lascia andare un lungo respiro brontolante e fa ruotare le grandi spalle, per sentire se tutto gira ancora come deve.",
+		"flette una mano enorme, poi l'altra, e approva con un grugnito sommesso.",
+		"sposta il peso da uno zoccolo all'altro, piano, mentre il dolore defluisce dal grande corpo.",
+	},
+	["race.tauren.heal.w08.007"] = {
+		"Tanta stoffa da farci una vela, solo per fasciare un braccio di tauren. I mercanti di stoffa ci devono adorare.",
+		"Una benda fatta per un umano mi fa a malapena il giro del polso. Ne annodo due e la chiamo arte.",
+	},
+	["race.tauren.heal.w08.008"] = {
+		"Per un tauren è a malapena un sorso. Dovrebbero venderle a secchi.",
+		"Bottiglietta minuscola, tauren enorme. I conti non tornano, ma la pozione funziona.",
+	},
+	["race.tauren.heal.w08.009"] = {
+		"Chiusa. Gli anziani dicono che ogni cicatrice è una storia che il corpo custodisce per te. Il mio comincia a diventare chiacchierone.",
+		"Un altro segno da portare. In Mulgore i cacciatori più vecchi portano i loro senza farne un dramma; ci proverò anch'io.",
+	},
+	["race.tauren.heal.w08.010"] = {
+		"Il dolore passa come un vento secco su Mulgore. Piega l'erba; le radici non le porta mai via.",
+		"Passerà. Le pianure vedono cento venti caldi in un'estate e sotto restano verdi.",
+	},
+	["race.tauren.heal.w08.011"] = {
+		"Non muoverti, {target}. La Madre Terra è lenta, ma non le sfugge niente.",
+		"Piano. Lascia lavorare la terra: ripara le cose da molto prima di tutti noi.",
+		"Ecco. Ti farà male come a un plainstrider che ha perso una corsa, ma camminerai.",
+	},
+	["race.tauren.heal.w08.012"] = {
+		"Dammi il braccio. No, non ho intenzione di sederci sopra.",
+		"Sei a posto. La prossima volta mettiti dietro di me: lì dietro c'è spazio in abbondanza.",
+		"Tutto rattoppato. Cerca di farti colpire meno: non posso tirarlo fuori dal nulla all'infinito.",
+	},
+	["race.tauren.heal.w08.013"] = {
+		"china la grande testa verso chi è ferito e mormora alla Madre Terra nella lingua bassa delle pianure.",
+		"posa una mano enorme e attenta accanto alla ferita e canticchia nel profondo del petto, un suono come di zoccoli lontani.",
+		"parla piano alla terra, poi a chi è ferito, con la stessa voce paziente.",
+	},
+	["race.tauren.heal.w08.014"] = {
+		"In Mulgore si dice che un guaritore è solo qualcuno che smette di camminare per un altro. Io mi sono {g:fermato|fermata}.",
+		"Curare qualcuno è come dividere l'acqua su una strada arida. Nessuno tiene il conto, e tutti se lo ricordano.",
+	},
+	["race.tauren.heal.w08.015"] = {
+		"Di nuovo in forze. La mandria è più forte con te dentro.",
+		"Forza, {target}. Nelle pianure nessuno resta indietro.",
+		"Vai. La Madre Terra non ti ha rimesso in sesto perché te ne restassi lì a guardare.",
+	},
+	["race.tauren.heal.w08.016"] = {
+		"Gli spiriti sono stati gentili, poco fa. Li ringrazierò quando ci sarà tempo, e il tempo non c'è mai.",
+		"Un'altra ferita chiusa. La Madre Terra presta, non regala mai. Un giorno avrò un debito enorme.",
+	},
+	["race.tauren.rezother.w08.001"] = {
+		"La Madre Terra ti restituisce, per questa volta. Alzati piano.",
+		"Non ancora. La terra ha detto non ancora, e io sono d'accordo con lei.",
+		"Respira. L'erba può aspettarti ancora un po'.",
+	},
+	["race.tauren.rezother.w08.002"] = {
+		"Credo che lo spirito avesse già voltato il viso. Ho chiamato, e si è girato a guardare.",
+		"Il mio popolo dice che i morti percorrono la lunga strada verso gli antenati. Questo spirito l'ho chiamato dai suoi primi passi.",
+		"La vita è rientrata come acqua nella terra secca: piano, e poi tutta insieme. La Madre Terra l'ha permesso.",
+	},
+	["race.tauren.travel.w08.001"] = {
+		"Il mio popolo ha camminato per generazioni per arrivare da qualche parte. Io chiudo la mano su una pietra e salto il cammino. Gli antenati avrebbero qualche domanda.",
+		"Una strada intera ripiegata in un sassolino. Da qualche parte un anziano di Mulgore sta scuotendo la testa cornuta.",
+		"La pietra si scalda, e una settimana di cammino semplicemente non succede. I tauren che attraversarono Kalimdor a piedi lo chiamerebbero imbrogliare, e avrebbero ragione.",
+	},
 }, "base_spells")

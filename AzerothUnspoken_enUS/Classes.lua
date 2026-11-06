@@ -14762,4 +14762,434 @@ NS:AddTexts("enUS", {
 		"The lightning made its case. You held out to the very end. Admirable, in its way.",
 		"The spirits made a strong argument. You lost it.",
 	},
+	["cls.mage.attack.w08.001"] = {
+		"There. Much less dangerous, and frankly an improvement.",
+		"Bleat all you like. It's still my turn.",
+		"Wool suits you. Stay like that a while.",
+	},
+	["cls.mage.attack.w08.002"] = {
+		"Stay right there. Your feet already agreed.",
+		"Rooted in ice. Now we can keep a polite distance.",
+	},
+	["cls.mage.attack.w08.003"] = {
+		"Catch. No, on second thought, don't.",
+		"Here it comes, round and bright. Try to look surprised.",
+	},
+	["cls.mage.attack.w08.004"] = {
+		"sends a stream of violet bolts across the gap, one after another, like beads slipping off a snapped string.",
+		"holds out a steady hand, and pale missiles stitch the air between {g:him|her} and the foe.",
+	},
+	["cls.mage.attack.w08.005"] = {
+		"Keep the range. A mage within arm's reach is a mage making mistakes.",
+		"Distance is my armor. Mind the gap; spend it slowly.",
+	},
+	["cls.mage.attack.w08.006"] = {
+		"You're not taking notes, are you? Pity. This bit's on the exam.",
+		"Pay attention. I won't demonstrate this twice.",
+	},
+	["cls.mage.buff.w08.001"] = {
+		"Arcane Intellect on myself. Vanity, perhaps, but a sharp mind is the only armor I really trust.",
+		"A little more clarity for me. The books don't get shorter, so the reader has to get quicker.",
+		"Clearer thoughts, self-administered. I'd prescribe it to half the world if they'd hold still.",
+	},
+	["cls.mage.buff.w08.002"] = {
+		"Dampened. Their spells will land softer on me, and so would any healing, so I'd better not need any.",
+		"A muffling ward on myself. Against casters it's worth the cost; against anything with a club, it's decoration.",
+		"Other people's spells reach me muffled now. A fair trade, in a place crowded with casters.",
+	},
+	["cls.mage.buff.w08.003"] = {
+		"Amplified, on myself. Every mending will count double now. Every curse too, but I'm an optimist today.",
+		"Louder magic, aimed at me. If a healer is nearby, splendid. If not, I've made a small mistake.",
+	},
+	["cls.mage.farewell.w08.001"] = {
+		"Farewell. Mind the road, and anything that glows when it shouldn't.",
+		"I'm off. Try not to touch anything arcane while I'm gone.",
+		"Go well. If something hums at you, don't hum back.",
+	},
+	["cls.mage.greet.w08.001"] = {
+		"Greetings. Don't mind the smell of smoke; it's professional.",
+		"Well met. Read anything good lately? No? Ah well.",
+	},
+	["cls.mage.greet.w08.002"] = {
+		"Good day to you. May your thoughts stay clear and your road short.",
+		"Greetings. Sharp wits and safe roads to you.",
+	},
+	["cls.mage.heal.w08.001"] = {
+		"Alchemy: magic too shy to say its own name. It works, though, and I'm in no position to sneer.",
+		"Somebody else's craft, corked in a bottle. I'll study the taste later, when I'm not bleeding.",
+		"Herbs, heat and patience, and none of it mine. Humbling, how well it works.",
+	},
+	["cls.mage.heal.w08.002"] = {
+		"Ugh. I can bend fire to my will, and nobody can make these taste decent.",
+		"Down it goes. Note for the alchemists: flavor is also a discipline.",
+	},
+	["cls.mage.heal.w08.003"] = {
+		"A warlock's stone. I won't ask what went into it, and it has the manners not to tell me.",
+		"Warm stone, borrowed life. I've stopped asking where these come from; the answer never helped.",
+	},
+	["cls.mage.heal.w08.004"] = {
+		"Linen and a good knot. Every mage should learn this before the first fireball.",
+		"No formula, only cloth pulled tight. The oldest magic of all, and the least glamorous.",
+		"Over, under, tie it off. The academy never taught me this; the road did.",
+	},
+	["cls.mage.heal.w08.005"] = {
+		"winds the bandage with the same care {g:he|she} gives a spell diagram: neat, even, and checked twice.",
+		"ties off the bandage with a precise little tug, as if closing a parenthesis.",
+	},
+	["cls.mage.heal.w08.006"] = {
+		"So much power at my fingertips, and none of it points inward. Strange craft, that can unmake a wall and not mend a wrist.",
+		"I can call fire out of nothing, and still I mend like anyone else. The arcane is a poor nurse.",
+	},
+	["cls.mage.heal.w08.007"] = {
+		"Better. Now, where was I? Ah yes. Setting things alight.",
+		"There. Back to the interesting part of the day.",
+		"Mended enough. Let's resume the lecture.",
+	},
+	["cls.mage.heal.w08.008"] = {
+		"The pain recedes on schedule. I'd keep a record, if anyone would ever want the figures.",
+		"Hurt, then less hurt, then a dull ache. Predictable, like a good experiment. I'd rather have been the observer.",
+	},
+	["cls.mage.heal.w08.009"] = {
+		"straightens {g:his|her} collar and resumes an air of complete composure, as if nothing had ever touched {g:him|her}.",
+		"clears {g:his|her} throat, tidies a sleeve, and looks about with the dignity of someone who was never hurt at all.",
+	},
+	["cls.mage.heal.w08.010"] = {
+		"Breath coming easy again. Good: no one ever cast a decent spell while gasping.",
+		"My breathing settles. Without a steady breath, every incantation comes out crooked.",
+	},
+	["cls.mage.heal.w08.011"] = {
+		"Patched for now. The rest of the argument I'll settle with fire.",
+		"Enough to stay in it. Now back to the casting, and quickly.",
+		"That buys a few more spells. Spend them well.",
+	},
+	["cls.mage.levelup.w08.001"] = {
+		"Another page of the craft turns over. The trainers will have something new for me, and something new to warn me about.",
+		"My grasp reaches a little further. The arcane is endless; that is the whole charm of it.",
+		"A little more of the pattern makes sense. The more I see, the larger the part I don't.",
+	},
+	["cls.mage.levelup.w08.002"] = {
+		"Stronger. Let's celebrate by not setting anything on fire. For an hour.",
+		"Better at this. Someone stand well back; I'm feeling experimental.",
+		"Improved. The next spell will be bigger, and the scorch marks proportionally so.",
+	},
+	["cls.mage.pray.w08.001"] = {
+		"Whatever orders the patterns I study: keep my mind clear, my hands steady, and my hunger for knowing in its place.",
+		"If anything stands behind the arcane and listens, let me learn without being devoured by the learning.",
+	},
+	["cls.mage.quest_progress.w08.001"] = {
+		"Partway done. Like a long proof: the middle steps are dull, and that's where people slip.",
+		"Progress. The variables are falling into place one by one.",
+		"Some of it settled. I'd draw a diagram if anyone would look at it.",
+	},
+	["cls.mage.quest_progress.w08.002"] = {
+		"That's everything. Let's go and report before I find something more interesting to do.",
+		"All done. Time to collect, and perhaps borrow a book on the way.",
+		"Finished. Back to whoever asked, and then to my reading.",
+	},
+	["cls.mage.quest_progress.w08.003"] = {
+		"makes a quick tally in the air with one finger, frowns at the result, and carries on.",
+		"mutters a count under {g:his|her} breath, the way one recites a formula, and moves on.",
+		"pauses to reckon the remainder, lips moving silently, then sets off again.",
+	},
+	["cls.mage.reputation_change.w08.001"] = {
+		"They think better of me now. Good: people lend you their books once they stop expecting you to set them alight.",
+		"A little more trust from them. The arcane makes people nervous; patience and plain manners are the counterspell.",
+		"My name sits easier with them now. Funny how a mage is only frightening until someone has shared a meal with one.",
+	},
+	["cls.mage.rez.w08.001"] = {
+		"Back. Death is the one subject nobody lets you take notes on, and I tried.",
+		"Alive again. A shame, in a way: I had questions, and the other side had no time for them.",
+	},
+	["cls.mage.thanks.w08.001"] = {
+		"Thank you. If you ever need a fire lit, or a long word explained, I'm your mage.",
+		"Much obliged. I'd repay you in gold, but scholars are paid in footnotes.",
+	},
+	["cls.mage.thanks.w08.002"] = {
+		"Thank you. Kindness isn't in any of my books; I'm glad to see it in practice.",
+		"My thanks. I'll remember it, and my memory is trained.",
+	},
+	["cls.mage.threat.w08.001"] = {
+		"Most of you is water, you know. And water freezes. I've checked.",
+		"One more step and we'll find out how much of you can turn to ice.",
+		"Do you know what you're mostly made of? Something I can freeze.",
+	},
+	["cls.mage.threat.w08.002"] = {
+		"Leave now and you get to keep your eyebrows.",
+		"Walk away and you'll stay the same shape. That's my best offer.",
+		"Go, and take your eyebrows with you while they're still attached.",
+	},
+	["cls.mage.threat.w08.003"] = {
+		"I've read about things like you. The books all end the same way.",
+		"I could explain what's about to happen to you, but you wouldn't follow the arithmetic.",
+	},
+	["cls.mage.threat.w08.004"] = {
+		"Mind your tone. I'm the one with fire in my hands.",
+		"Careful. I've been patient all day, and patience is the first thing to burn.",
+		"Raise that weapon and I'll raise the temperature.",
+	},
+	["cls.mage.threat.w08.005"] = {
+		"I know a word that turns a body into ash. I'm deciding whether you've earned it.",
+		"There's a spell I keep for special occasions. Don't become one.",
+	},
+	["cls.priest.buff.w08.001"] = {
+		"Fortitude on my own bones for once. The long day ahead won't care who usually does the mending.",
+		"A little more endurance laid on myself. Healers have to outlast everyone, or nobody lasts.",
+	},
+	["cls.priest.buff.w08.002"] = {
+		"touches {g:his|her} own breastbone and speaks a short word of warding; for a moment {g:his|her} outline holds a faint pale edge.",
+		"turns the ward inward with a small gesture toward {g:his|her} own chest, the way one buttons a coat before going out.",
+	},
+	["cls.priest.buff.w08.003"] = {
+		"Shield on myself. Not generous, but a healer who can't be interrupted is worth two who can.",
+		"A ward for me this time. Let them hammer on it while I get on with the real work.",
+	},
+	["cls.priest.heal.w08.001"] = {
+		"My own turn for once. I always leave myself for last, and today last came early.",
+		"Look at me, needing my own services. I'd send myself the bill, but I couldn't pay it.",
+		"I tell everyone the same thing: don't get hit. Perhaps I should listen to me.",
+	},
+	["cls.priest.heal.w08.002"] = {
+		"Mending my own hurt feels stranger than mending anyone else's, like overhearing my own name in a crowd.",
+		"My hands know other people's wounds by heart. My own they handle like a stranger's parcel.",
+	},
+	["cls.priest.heal.w08.003"] = {
+		"Hold on. Seeing to myself. One moment.",
+		"Excuse me. Patching my own leak.",
+		"A moment. The healer needs healing; it happens.",
+	},
+	["cls.priest.heal.w08.004"] = {
+		"lays a palm flat against {g:his|her} own ribs and murmurs the words, eyes on the fight rather than the wound.",
+		"presses a hand over {g:his|her} own hurt and says the words briskly, as one scolds someone who should know better.",
+		"touches the wound once, quick and businesslike, and turns away before the glow has even faded.",
+	},
+	["cls.priest.heal.w08.005"] = {
+		"If I fall, nobody gets mended. So: me first, this once, and no guilt about it.",
+		"A dead healer heals no one. Selfish, maybe. Necessary, certainly.",
+		"The others need me standing. Mending myself is only mending them a little in advance.",
+	},
+	["cls.priest.heal.w08.006"] = {
+		"Light, it's me again. Same request, smaller patient.",
+		"I ask the Light for others all day. Asking for myself, I almost whisper, and it answers just the same.",
+		"For once the hands I mend are my own. The Light doesn't seem to mind whose they are.",
+	},
+	["cls.priest.heal.w08.007"] = {
+		"Mended. You'll need more than that to stop a priest.",
+		"Closed up already. Go on, try again.",
+		"All that effort, and I undid it with a sentence.",
+	},
+	["cls.priest.heal.w08.008"] = {
+		"Breath back in my chest. Now I can say the words properly again.",
+		"Air all the way down at last. A prayer gasped is a prayer half lost.",
+	},
+	["cls.priest.heal.w08.009"] = {
+		"It's easier to mend a stranger. My own hurt argues with me the whole way.",
+		"Other people's pain is a task. Mine is a conversation, and it never lets me finish a sentence.",
+		"Strange: I'm gentler with anyone's wound than with my own.",
+	},
+	["cls.priest.heal.w08.010"] = {
+		"speaks the familiar words under {g:his|her} breath, and a faint glow gathers at the wound and sinks in.",
+		"bows {g:his|her} head for a heartbeat over {g:his|her} own hurt, and the mending takes without fuss.",
+	},
+	["cls.priest.heal.w08.011"] = {
+		"Mana spent on myself is mana I can't give someone else. Next time I'll stand further back.",
+		"I paid for that with my own reserves. Lesson: the healer's best place is out of reach.",
+	},
+	["cls.rogue.attack.w08.001"] = {
+		"Behind you. Always behind you.",
+		"You should have watched your back. Everyone should.",
+		"From the back. Terribly rude, I know.",
+	},
+	["cls.rogue.attack.w08.002"] = {
+		"That's one. They add up.",
+		"Another nick. I'm a patient sort.",
+		"Small cut. Then another. You'll see where this goes.",
+	},
+	["cls.rogue.attack.w08.003"] = {
+		"All those little cuts were me saving up. Here's the bill.",
+		"Saved up, now spent. All of it at once.",
+		"Every opening I found, cashed in together.",
+	},
+	["cls.rogue.attack.w08.004"] = {
+		"Can't see? That's the idea.",
+		"Eyes watering? Take a moment. I'll use it.",
+	},
+	["cls.rogue.attack.w08.005"] = {
+		"Hush. Nobody wanted to hear that one.",
+		"No speeches. Not today.",
+		"Whatever you were about to say, keep it.",
+	},
+	["cls.rogue.attack.w08.006"] = {
+		"Just there, under the ribs. Your legs will be along shortly.",
+		"Stay put a moment. I won't be long.",
+	},
+	["cls.rogue.attack.w08.007"] = {
+		"Feet first. The blade only goes where the feet have already been.",
+		"Small cuts, many of them. Patience is the sharpest thing I carry.",
+		"Watch the shoulder, not the weapon. The shoulder always tells first.",
+	},
+	["cls.rogue.attack.w08.008"] = {
+		"Stings, does it? That was rather the point.",
+		"You felt that one, I see. Splendid.",
+		"Sorry, was that a vital bit? Hard to tell with you.",
+	},
+	["cls.rogue.attack.w08.009"] = {
+		"slips half a step to the side, and the steel goes in where the guard used to be.",
+		"turns a stumble into a lunge, the blade flashing low and gone again.",
+		"feints high with one hand and strikes low with the other, too quick to follow.",
+	},
+	["cls.rogue.attack.w08.010"] = {
+		"Faster now. The rhythm belongs to me.",
+		"Quicker hands. Now the dance is mine to lead.",
+	},
+	["cls.rogue.farewell.w08.001"] = {
+		"I'm off. You won't see me leave, so let's say it now.",
+		"Farewell. If anyone asks, you never saw me.",
+		"Goodbye. Keep your purse close; not on my account, of course.",
+	},
+	["cls.rogue.greet.w08.001"] = {
+		"Hello. Relax, your pockets are safe. With me, anyway.",
+		"Well met. Don't mind me; I'm only passing through, the quiet way.",
+	},
+	["cls.rogue.levelup.w08.001"] = {
+		"A little quicker than yesterday. Quick is the only kind of strong I care about.",
+		"Steadier hands, a softer step. Somewhere a lock just got easier, and doesn't know it yet.",
+		"Better. Not louder, not bigger. Better at not being where the blow lands.",
+	},
+	["cls.rogue.levelup.w08.002"] = {
+		"Better at this every day. Lock your doors.",
+		"Sharper, quieter, nimbler. Tell the guards. Actually, don't.",
+		"Coming along nicely. Someone's strongbox should be getting nervous.",
+	},
+	["cls.rogue.lowhp.w08.001"] = {
+		"Somebody here is cheating, and for once it isn't me.",
+		"Unfair. That's supposed to be my side of the bargain.",
+		"I hate a fair fight. This one's getting fair, and I hate it more.",
+	},
+	["cls.rogue.lowhp.w08.002"] = {
+		"Exits: none. Blades: one. Breaths left: don't count those.",
+		"Take stock. One knife, no door, and a body that's about done arguing.",
+		"Inventory: a blade, a wall at my back, and very little else. Make it enough.",
+	},
+	["cls.rogue.lowhp.w08.003"] = {
+		"drops low and circles just out of reach, buying heartbeats one at a time.",
+		"goes quiet and small, the way a cornered animal does just before it bites.",
+		"spits to one side and shifts {g:his|her} grip, eyes narrowed to two cold slits.",
+	},
+	["cls.rogue.lowhp.w08.004"] = {
+		"You've cut me. Now you have my full attention.",
+		"First blood was yours. The last of it will be mine.",
+		"Good hit. Enjoy it; it was your only one.",
+	},
+	["cls.rogue.lowhp.w08.005"] = {
+		"Run or finish it. Decide now, before my legs decide for me.",
+		"One heartbeat to choose: cut or flee. Choose well, choose fast.",
+		"Too slow to run, too hurt to dance. Then end it quickly.",
+	},
+	["cls.rogue.lowhp.w08.006"] = {
+		"If I go down here, it'll be quietly. That's how I've done everything else.",
+		"No one will hear me fall. I spent years learning that, and now it's the part I like least.",
+		"A quiet end, if it comes. Fitting, I suppose. I never cared for an audience.",
+	},
+	["cls.rogue.lowhp.w08.007"] = {
+		"Could we talk about this? Split the take, maybe? No? Worth asking.",
+		"Is this a bad moment to offer you a share?",
+		"I'm open to negotiation. Very open. Bleeding, in fact.",
+	},
+	["cls.rogue.lowhp.w08.008"] = {
+		"Breathe through the teeth. Keep the steel low. Don't let them see it.",
+		"Pain later. Right now, eyes on the hands, not the face.",
+		"Bleeding is just a clock. Beat the clock.",
+	},
+	["cls.rogue.lowhp.w08.009"] = {
+		"wobbles, catches {g:himself|herself} on nothing at all, and somehow turns the stumble into a feint.",
+		"staggers sideways, and even {g:he|she} could not say how much of it is an act.",
+	},
+	["cls.rogue.lowhp.w08.010"] = {
+		"Right. No more playing nice.",
+		"Enough. Now I'm properly cross.",
+		"That's my blood on my good boots. You'll pay for both.",
+	},
+	["cls.rogue.lowhp.w08.011"] = {
+		"Grip's going slick. Wipe it, hold it, keep holding it.",
+		"Fingers going numb. Of everything I could lose, not those.",
+		"The hilt keeps sliding. Two hands if I have to. Don't drop it.",
+	},
+	["cls.rogue.lowhp.w08.012"] = {
+		"I misjudged that one. If I live, I'll study it. If not, someone else can.",
+		"Lesson noted: never take a fight just because the purse looked fat.",
+		"Greed, this is what you cost. I'll want a word with you later.",
+	},
+	["cls.rogue.lowhp.w08.013"] = {
+		"Come and finish it, then. Closer. A little closer.",
+		"Want the last of me? Step in and take it. Mind the knife.",
+		"You'll have to work for the rest. I don't come cheap.",
+	},
+	["cls.rogue.lowhp.w08.014"] = {
+		"lets {g:his|her} guard sag a hair, as if spent, and waits for the foe to believe it.",
+		"keeps the blade flat along the forearm, swaying, patient as a sprung trap waiting to close.",
+	},
+	["cls.rogue.lowhp.w08.015"] = {
+		"Whoever loots my body gets my purse. Over my dead... ah. Right. Stay up, then.",
+		"I am not letting some stranger go through my pockets. Get up. Stay up.",
+		"Somebody would rifle my pockets afterward. The insult alone is keeping me on my feet.",
+	},
+	["cls.rogue.pray.w08.001"] = {
+		"If anything up there listens to my sort: quiet floors, loose locks, and one more morning.",
+		"Whatever keeps watch over those who work unseen: keep my step soft and my luck long, and I'll ask for nothing else. Today.",
+	},
+	["cls.rogue.quest_progress.w08.001"] = {
+		"Partway there. A job's like a lock: the first pins are easy, the last one decides everything.",
+		"Some of it done. Every job has an easy middle that lies to you about the end.",
+		"Getting there. The careless ones get caught on the last stretch, never the first.",
+	},
+	["cls.rogue.quest_progress.w08.002"] = {
+		"That's the lot. Now to get paid before anyone changes their mind.",
+		"Done. Let's collect, and count it twice.",
+		"All of it. Time to go and look trustworthy at someone.",
+	},
+	["cls.rogue.quest_progress.w08.003"] = {
+		"ticks off a tally under {g:his|her} breath, lips barely moving, and slips onward.",
+		"pauses in a patch of shade to reckon what's left, then moves off without a sound.",
+		"counts something on {g:his|her} fingers, hides the hand again, and goes on.",
+	},
+	["cls.rogue.reputation_change.w08.001"] = {
+		"They trust me a little more now. In my trade, that's either an honor or an opportunity. I'm choosing honor. Mostly.",
+		"A warmer welcome than before. Funny how much easier honest work gets when people stop counting the spoons.",
+		"More doors open to me now, and I didn't have to pick a single one.",
+	},
+	["cls.rogue.rez.w08.001"] = {
+		"Back. Death was the one door I couldn't pick, and it opened anyway, from the other side.",
+		"Alive again. Even death couldn't keep hold of me; I slip out of everything sooner or later.",
+	},
+	["cls.rogue.thanks.w08.001"] = {
+		"Thanks. I owe you one, and I always pay. Eventually.",
+		"Much obliged. Don't worry, I'm not keeping count. I am, actually.",
+	},
+	["cls.rogue.thanks.w08.002"] = {
+		"Thank you. Help with no price on it; I'll need a while to work out what that's like.",
+		"My thanks. I keep looking for the catch, and there isn't one. Strange.",
+	},
+	["cls.rogue.threat.w08.001"] = {
+		"You won't hear me coming. You'll only feel it.",
+		"Next time something creaks behind you, it won't be the floor.",
+		"Get used to looking over your shoulder. It won't help, but it'll pass the time.",
+	},
+	["cls.rogue.threat.w08.002"] = {
+		"Keep talking. I'm learning where you're soft.",
+		"I've a knife for every bad idea you're about to have.",
+		"Go on, make your move. I've already made three of mine.",
+	},
+	["cls.rogue.threat.w08.003"] = {
+		"Nothing personal. It never is. That's what should worry you.",
+		"I don't hate you. I don't need to. Think about that.",
+	},
+	["cls.rogue.threat.w08.004"] = {
+		"Walk away while your legs still listen to you.",
+		"Touch my things again and count your fingers after.",
+		"Leave now. I won't say it a second time; I'll just do the other thing.",
+	},
+	["cls.rogue.threat.w08.005"] = {
+		"I'd smile back, but you'd only worry what I was smiling at.",
+		"Relax. If I wanted you dead, you'd be wondering why your back felt cold.",
+	},
 }, "base_classes")

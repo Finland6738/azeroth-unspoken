@@ -8,6 +8,58 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W08: the dwarf, the tauren, the night elf and the human (issue #138)
+
+The eighth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
+after W07: the strict need of the rogue, the priest and the mage leftovers and of the dwarf, the tauren, the night elf
+and the human (2,926 texts per language). **1,259 intentions, 3,039 texts per language** (6,078 in both), written by
+twelve parallel writer subagents (authors `ai-w08-<unit>`) and passed through the archive (drafts, `cli dups --state
+draft` with no exact and no near duplicate, submit, owner sample, approve, export; the round trip is an empty diff). No
+literary piece and no `tier` field. The addon goes from 10,070 to **11,329 intentions** and from 24,213 to **27,252
+texts per language**.
+
+- **Added: four races**, every event of the race's strict need (`race.<race>.<event>.w08.NNN`): the dwarf 291
+  intentions, 701 texts per language; the tauren 281 and 688; the night elf 288 and 699; the human 305 and 709. The
+  lines go to the base pack of their event family: muse, subzone and landmark in `base_exploration`; quests, flights,
+  rest and reputation in `base_world`; the fight in `base_combat`; heal, buff, attack, resurrection of a companion and
+  the hearthstone in `base_spells`; NPC meetings and other players' actions in `base_context`; relations in
+  `base_relations`; the manual commands in `base_social`; level-up in `base_life`; a return in `base_memory`; and
+  what an innkeeper, merchant, guard, flight master or trainer says to a character of that race in `base_dialogues`
+  (speaker `npc`, any NPC of the role, anywhere). Every race line writes `race` at the top level (ADR 0053) and holds
+  for every class of the race in Classic, both sexes, any level and any place: no named weapon kind or spell in a
+  fight line (a tauren or night elf druid may be in bear form), no family or past invented for the character, sayings
+  of a people attributed to a voice (49 intentions are `invented_lore` with an `attribution`).
+- **The two halves of a heal and a buff** (ADR 0055): every race heal and buff line writes `castOnSelf`. Lines on
+  oneself name no spell, no Light and no prayer (a race heals itself with potions, bandages and healthstones as well),
+  except the few that write the gesture (`spellKind = "bandage"`, `spell = "potion"` or `"healthstone"`). Lines to
+  the one healed name only what every healer of the race shares: the Light for a dwarf and a human, Elune or plain
+  care for a night elf, the Earth Mother for a tauren. Every human line to someone else writes `not` the warlock's
+  Health Funnel, which goes to its demon.
+- **Added: the rogue, priest and mage leftovers**, in `base_classes` (`cls.<class>.<event>.w08.NNN`): the rogue 42
+  intentions, 114 texts per language (low health, abilities, threats, quests, social commands); the priest 14 and 35
+  (heal and buff on oneself); the mage 38 and 93 (potions, bandages and healthstones, Arcane Intellect on oneself,
+  abilities, threats, quests, social commands).
+- **The gap after W08** (per language): soft need 8,947, gap **0**; strict need 29,536, gap **5,821** (was 8,747);
+  random need 276,398, gap **250,566** (was 253,605). **87 waves** left (the next is the first row of WAVES.md: the
+  strict need of the troll, the undead, the orc and the gnome).
+- **Measured.** `bench_scale --sizes 0` (every line loaded): memory 25.4 → 26.4 MB, pick 29.3 → 29.3 thousand Lua
+  instructions (p95 55.1 → 55.1). `bench_trial --long 20` over seeds 1, 2 and 3: the orc warrior unchanged; the human
+  paladin repeats less (repeats 6.0 → 4.7%, 6.8 → 6.3%, 4.0 → 3.8%; first exact repetition 6.34 → 8.34 h, 7.00 →
+  7.34 h, 9.85 → 5.90 h, the noise of single runs); the troll mage (its mage pools) 6.5 → 4.3%, 4.2 → 6.4%, 6.7 →
+  5.0% (first repetition 7.26 → 7.26 h, 11.84 → 9.09 h, 7.59 → 9.43 h). `run_tests` M2: pick 52.4 thousand Lua
+  instructions (reference 42.7; W07 reported 50.2), CPU 0.67 ms.
+- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI); counts only: base intentions 11286, lines loaded
+  11293, `base_classes` 3430, `base_combat` 483, `base_context` 279, `base_life` 75, `base_dialogues` 277 in the archive.
+  The four race return lines are named `mem.ret.<race>.w08.001`, as the memory test asks of every `memory_return` line.
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W08.md](docs/content/reviews/W08.md) (25
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** the validator's warning words match inside two proper names: "night" in "night elf" / "elfo della
+  notte" (a time word) and "thunder" in "Thunder Bluff" (a weather word). In the events that describe the
+  surroundings, a line not bound to a place that names them is warned, so the writers said "kaldorei", "my people"
+  and "the bluff" there instead. The Italian names of some `spell` conditions of the rogue's and the mage's abilities
+  are the writer's best guess; on the English client of WoW Forever only the English name matters.
+
 ### Content wave W07: the shaman, the paladin and the druid, and a heal on oneself or on someone else (issue #138)
 
 The seventh content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table

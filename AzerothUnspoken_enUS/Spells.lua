@@ -802,4 +802,624 @@ NS:AddTexts("enUS", {
 		"The witch doctors of Sen'jin say a wound is a guest: feed it nothing and it leaves early.",
 		"Old Darkspear wisdom, mon: pay a hurt no mind and it gets bored and goes.",
 	},
+	["race.dwarf.attack.w08.001"] = {
+		"Here's a bit of Dun Morogh for you!",
+		"Have that, straight from Ironforge!",
+		"And another, for luck and for Loch Modan!",
+	},
+	["race.dwarf.attack.w08.002"] = {
+		"Strike, and set the feet again. Strike, and the feet. Like a hammer at the anvil, never off the beat.",
+		"Keep the rhythm. Any smith knows the work's in the rhythm, not the force.",
+		"Steady work wins. Ask any dwarf who's ever cut through a mountain.",
+	},
+	["race.dwarf.attack.w08.003"] = {
+		"Hold on, there's more where that came from, and a dwarf never runs short!",
+		"Dwarven delivery, no charge! Mind the step!",
+		"Here's the dwarven bill for your trouble, payable at once!",
+	},
+	["race.dwarf.attack.w08.004"] = {
+		"grunts with the effort, every ounce of a stocky frame behind it.",
+		"throws {g:his|her} whole squat weight into it, like a miner going at a stubborn rock face.",
+	},
+	["race.dwarf.buff.w08.001"] = {
+		"Ready. Like a forge that's been banked for hours: give it air and it roars.",
+		"Set and ready, like a charge packed into the rock before the foreman shouts.",
+		"Prepared. The stone's been measured; now it's only a matter of the hammer.",
+	},
+	["race.dwarf.buff.w08.002"] = {
+		"There. Dressed for trouble, as they say in Dun Morogh.",
+		"That's better. A dwarf shouldn't leave the house half ready, and certainly not the mountain.",
+		"All set. Let trouble knock; it'll find a dwarf behind the door, and that's never good news for trouble.",
+	},
+	["race.dwarf.buff.w08.003"] = {
+		"Something's settled in, firm as a keystone. The road ahead can do its worst.",
+		"Girded and ready. Whatever's out there, a dwarf meets it prepared or not at all.",
+		"Ready for the road. Short legs, but they'll carry everything that's needed.",
+	},
+	["race.dwarf.buff.w08.004"] = {
+		"There, {target}. Now you're harder to knock over than a Kharanos keg.",
+		"Go on. You'll take a shove now the way a boulder of Dun Morogh takes one: without noticing.",
+	},
+	["race.dwarf.buff.w08.005"] = {
+		"Sending someone out well armed is a dwarven courtesy. With the Light behind it, all the better.",
+		"Nobody leaves a dwarf's side unready, if the dwarf can help it.",
+	},
+	["race.dwarf.heal.w08.001"] = {
+		"Patched. Not pretty, but neither is a mine prop, and those hold up mountains.",
+		"That'll hold. Rough work, but a pit prop is rough too, and it keeps the roof off your head.",
+	},
+	["race.dwarf.heal.w08.002"] = {
+		"Better. Now, where was I? Ah, yes: being a dwarf about it.",
+		"There we are. Back to being as hard to shift as anything in Dun Morogh.",
+	},
+	["race.dwarf.heal.w08.003"] = {
+		"Should've kept my guard up. Stone forgives nothing, and neither does a body that's been handled carelessly.",
+		"Carelessness costs, the miners of Dun Morogh say, and I've just paid the fee. Cheap, as these things go.",
+	},
+	["race.dwarf.heal.w08.004"] = {
+		"flexes {g:his|her} hand, testing the mended flesh the way a smith tests a cooled weld.",
+		"rolls a stiff shoulder, grunts at what it says, and seems to find the answer acceptable.",
+	},
+	["race.dwarf.heal.w08.005"] = {
+		"Dwarves are made to last, the elders of Ironforge like to say. I mean to prove them right a good while longer.",
+		"Built to last, folk say of dwarven work. That goes for the dwarves as well, if they're looked after.",
+	},
+	["race.dwarf.heal.w08.006"] = {
+		"Good as new. Well, good as gently used. Dwarven goods age well.",
+		"Mended. A few more scars and I'll look like a proper old mountain guard.",
+	},
+	["race.dwarf.heal.w08.007"] = {
+		"Good enough to stand on. A dwarf doesn't need more than that.",
+		"Closed up enough to keep going. Whatever's still sore can complain to me later, over an ale.",
+		"It'll hold. The rest of the mending can wait until there's a bench and a mug.",
+	},
+	["race.dwarf.heal.w08.008"] = {
+		"The ache drains off slowly, like water seeping out of a flooded gallery. Patience. It always goes in the end.",
+		"Easing now. Like a mine after the pumps have run: still damp, but you can get back to work.",
+	},
+	["race.dwarf.heal.w08.009"] = {
+		"Down it goes. If a brewer in Kharanos made this, they'd be run out of the village by supper.",
+		"Brewed by someone who's never met a hop in their life. Still, it works.",
+		"Gah. Medicine, they call it. Back home we'd call it grounds for a feud.",
+	},
+	["race.dwarf.heal.w08.010"] = {
+		"Wrap it tight, the way you'd bind a cracked haft: snug, no slack, and don't trust your full weight to it yet.",
+		"Linen and a firm knot. Not as handsome as a healer's work, but a dwarf knows a good knot when one's tied.",
+	},
+	["race.dwarf.heal.w08.011"] = {
+		"A warlock's stone. Can't say I care where it comes from, but stone's stone, and this one's kind to a dwarf.",
+		"A stone that heals. Every miner in Dun Morogh would want to know where the seam runs.",
+	},
+	["race.dwarf.heal.w08.012"] = {
+		"Hmph. Closed. Next one that tries that pays for it.",
+		"Sealed up. Whoever did this owes me a drink and an apology, in that order.",
+	},
+	["race.dwarf.heal.w08.013"] = {
+		"Warmth spreading through the chest, like stepping in from the cold to the glow of a tavern hearth in Kharanos.",
+		"There's the warmth back. Like coming in from the passes of Dun Morogh to a fire and a full mug.",
+	},
+	["race.dwarf.heal.w08.014"] = {
+		"Hurt is the hammer and the body is the iron. Take the shaping well, and you come out harder.",
+		"Each blow taken and mended makes the metal a shade tougher. So the smiths of Ironforge believe, and I'm in no position to argue.",
+	},
+	["race.dwarf.heal.w08.015"] = {
+		"Stop squirming, {target}. The rams of Dun Morogh take mending better than you.",
+		"Still, now. You'd think nobody had ever been mended by a dwarf before.",
+	},
+	["race.dwarf.heal.w08.016"] = {
+		"The Light's as solid as any stone, {target}. Lean on it.",
+		"There. The Light holds you up now, and the Light doesn't buckle.",
+	},
+	["race.dwarf.heal.w08.017"] = {
+		"Mending others is like shoring a tunnel: you don't do it for thanks, you do it so nobody's buried.",
+		"Keep the people standing and the work goes on. The same rule holds underground as anywhere.",
+	},
+	["race.dwarf.heal.w08.018"] = {
+		"lays a broad hand on the wounded one's shoulder, firm as a mason checking a keystone.",
+		"squints at the wound with professional disapproval, as if it had been badly built, and sets about fixing it.",
+	},
+	["race.dwarf.heal.w08.019"] = {
+		"There you go, {target}. Mended and good for another round. The first one's on you.",
+		"On your feet. A dwarf just patched you up, so the drinks are your treat later.",
+	},
+	["race.dwarf.heal.w08.020"] = {
+		"Dwarves took to the Light the way we take to anything worth keeping: slowly, then for good. It doesn't fail me now.",
+		"The Light keeps as steady a glow as the forges of Ironforge. Steady now, too.",
+	},
+	["race.dwarf.heal.w08.021"] = {
+		"Stay behind me and stay upright, {target}. I'll keep you in one piece.",
+		"Up you get. Nobody falls while I'm watching; with dwarves it's a point of pride.",
+	},
+	["race.dwarf.heal.w08.022"] = {
+		"Healing's a craft like any other. Find the crack, clean it, fill it, and don't rush the work.",
+		"Treat a wound like a flawed casting: find where it's weak, mend it properly, and don't skimp.",
+	},
+	["race.dwarf.heal.w08.023"] = {
+		"Light, give this one back their strength. They've earned it.",
+		"By the Light and a dwarf's stubbornness, you'll be fine.",
+	},
+	["race.dwarf.heal.w08.024"] = {
+		"Hold still. I've a miner's steady hand; it's my patience that runs short.",
+		"Done, {target}. Try not to need that again before I've had a drink.",
+	},
+	["race.dwarf.heal.w08.025"] = {
+		"mutters a gruff word to the Light, the way a dwarf might speak to an old friend who's running late, and the wound begins to close.",
+		"rests two thick fingers on the hurt and frowns hard until the glow takes hold.",
+	},
+	["race.dwarf.heal.w08.026"] = {
+		"Easier to mend someone else than to sit still while you're mended. Dwarves make terrible patients and decent healers.",
+		"Funny: a dwarf will take a hammer on the thumb without a word, but watching someone else bleed is another matter.",
+		"Better them standing than me grieving. That's the whole of it.",
+	},
+	["race.dwarf.rezother.w08.001"] = {
+		"Back you come. The mountain can keep its dead a while longer; this one's still needed.",
+		"Up from the dark, like a miner hauled out of a collapse. Breathe. You're out.",
+		"There. Whatever was down there, it's let you go. Don't look back at it.",
+	},
+	["race.dwarf.rezother.w08.002"] = {
+		"Up. The Light's not done with you, and frankly, neither am I.",
+		"On your feet. Dwarves don't leave anyone in the ground before their time.",
+		"Welcome back. The next round's on you, for the trouble.",
+	},
+	["race.dwarf.travel.w08.001"] = {
+		"A stone that always knows the way back. Of course it's a stone.",
+		"Dwarves trust stone more than roads, and here's the proof sitting in my palm.",
+		"Turn the stone and the road folds up behind me. Whoever thought of it must have been half dwarf.",
+	},
+	["race.human.attack.w08.001"] = {
+		"Compliments of Stormwind!",
+		"With the realm's regards!",
+		"Elwynn sends its best!",
+	},
+	["race.human.attack.w08.002"] = {
+		"That's for Lordaeron!",
+		"For the north, and everyone it lost!",
+	},
+	["race.human.attack.w08.003"] = {
+		"No flourish. Humans haven't the years to waste on flourish.",
+		"Plain and quick. Fancy is for those who live a thousand years.",
+	},
+	["race.human.attack.w08.004"] = {
+		"presses the attack with the brisk economy of someone who has better places to be.",
+		"goes at it without ceremony, all plain human hurry and stubborn aim.",
+	},
+	["race.human.attack.w08.005"] = {
+		"For Westfall's empty farms!",
+		"That one's for every barn burned in Redridge!",
+	},
+	["race.human.buff.w08.001"] = {
+		"Ready, like a Goldshire militiaman buckling up at the first clang of the alarm bell.",
+		"Set. The militia in Elwynn can be dressed and out the door before the alarm bell stops; I'm no slower.",
+	},
+	["race.human.buff.w08.002"] = {
+		"Right. Set. Whatever's next on the road can come.",
+		"That's me ready. The road can do its worst now.",
+		"Prepared. Humans don't wait for trouble to knock.",
+	},
+	["race.human.buff.w08.003"] = {
+		"settles {g:his|her} shoulders as if something has just fitted into place.",
+		"draws a slow breath, and stands a little straighter, like someone who has checked every buckle twice.",
+	},
+	["race.human.buff.w08.004"] = {
+		"The drill sergeants in Stormwind say a minute of preparing saves a healer an hour. The healers would agree.",
+		"A little readiness now, fewer bandages later. Every sergeant in the kingdom says so, and for once they're right.",
+	},
+	["race.human.buff.w08.005"] = {
+		"There, {target}. That'll see you a good way down the road.",
+		"Go on, then. You're better set for the road than you were.",
+	},
+	["race.human.buff.w08.006"] = {
+		"Every hand made a little stronger is one more chance someone gets home. That's how the Alliance was built.",
+		"A little more strength for someone on our side. Kingdoms have been kept with less.",
+	},
+	["race.human.heal.w08.001"] = {
+		"Back together, more or less. A human hasn't the years to spend nursing a wound, so it'll have to mend on the move.",
+		"Closed enough. No time to lie about; we only get the one short run, and I'm using mine.",
+	},
+	["race.human.heal.w08.002"] = {
+		"Good enough. The Goldshire militia would call that fit for duty.",
+		"There. Any sergeant in Elwynn would pass me fit to march.",
+	},
+	["race.human.heal.w08.003"] = {
+		"tests the mended hurt with a cautious flex, like a farmer trying a repaired plow handle.",
+		"flexes carefully where the wound was, frowning at it the way a carter frowns at a newly fixed wheel.",
+	},
+	["race.human.heal.w08.004"] = {
+		"Short lives mend quickly or not at all. This one's mending.",
+		"Humans heal fast because we have to. Nobody gave us the time to do it slowly.",
+	},
+	["race.human.heal.w08.005"] = {
+		"Better. Don't tell the Cathedral healers I saw to it myself; they'll want their fee anyway.",
+		"Patched up, and not a copper to the Cathedral. Don't spread it around.",
+	},
+	["race.human.heal.w08.006"] = {
+		"Westfall farmers work through worse than this at harvest. Up, then.",
+		"In Westfall they'd tie a rag round worse and go back to the threshing. Up.",
+	},
+	["race.human.heal.w08.007"] = {
+		"A scrape like this in Elwynn would earn a warm cup by the hearth and a lecture. I'd settle for just the cup.",
+		"Back home a hurt like this gets you a stool by the fire and a scolding. I'd take the stool and skip the scolding.",
+	},
+	["race.human.heal.w08.008"] = {
+		"Closed. Back to it before trouble notices I stopped.",
+		"That'll hold. No sense giving the world time to catch up.",
+	},
+	["race.human.heal.w08.009"] = {
+		"Lesson noted. The scar will remind me if I forget.",
+		"Humans learn by bruises. This one's written down now, in the skin.",
+	},
+	["race.human.heal.w08.010"] = {
+		"breathes out slowly as the pain loosens its grip, shoulders coming down from around {g:his|her} ears.",
+		"lets the hurt ebb with a long, careful breath, and some of the stiffness leaves {g:his|her} face.",
+	},
+	["race.human.heal.w08.011"] = {
+		"The elves would let this heal over a century. I'd like it done by supper.",
+		"A dwarf would call this a scratch, an elf would call it a lesson. I call it sorted, and quickly.",
+	},
+	["race.human.heal.w08.012"] = {
+		"The soldiers who came back from the north say the ones who mended fastest lived longest. I believe them.",
+		"Veterans of Lordaeron's last days say you heal on your feet or you don't heal. On my feet, then.",
+	},
+	["race.human.heal.w08.013"] = {
+		"Every Elwynn cottage keeps clean linen in a chest for days like this. I keep mine in the pack.",
+		"Tight turns, a firm knot. Half the grandmothers in Elwynn could do it better, and they'd tell me so.",
+	},
+	["race.human.heal.w08.014"] = {
+		"Tastes like a Stormwind alchemist's idea of a joke. Works, though.",
+		"Mage Quarter brewing: smells of cabbage, works like a charm.",
+	},
+	["race.human.heal.w08.015"] = {
+		"Good Stormwind folk cross the street to avoid the people who make these stones. And here I am, grateful for one.",
+		"The Cathedral frowns on whatever goes into a stone like this. My wound doesn't seem to mind.",
+	},
+	["race.human.heal.w08.016"] = {
+		"Hold still, {target}. The Light keeps no one waiting long, and I won't either.",
+		"Easy now. Let the Light do its work; it's in no hurry, and neither am I.",
+	},
+	["race.human.heal.w08.017"] = {
+		"In Lordaeron they ran out of healers before they ran out of wounded. Not this time.",
+		"The north lost its healers first, and then everyone else. I won't let it start here.",
+	},
+	["race.human.heal.w08.018"] = {
+		"lays a palm flat over the hurt, steady as an Elwynn farmer gentling a frightened calf.",
+		"keeps a calm hand on the wounded one, the way country folk calm a horse caught in wire.",
+	},
+	["race.human.heal.w08.019"] = {
+		"Up you get, {target}. The realm can't spare you, and I can't carry you.",
+		"On your feet. Nobody's carrying anybody back to Stormwind today.",
+	},
+	["race.human.heal.w08.020"] = {
+		"Whoever they are, wherever they come from, they're one of ours. That's the Alliance, in one small act.",
+		"Human, dwarf, gnome, elf: the wound looks the same on all of them, and so does the mending.",
+	},
+	["race.human.heal.w08.021"] = {
+		"By the Light, {target}, be whole.",
+		"Light, mend what was broken here.",
+		"Be whole again, by the grace of the Light.",
+	},
+	["race.human.heal.w08.022"] = {
+		"You're bleeding on my boots, {target}. Hold still and let me put a stop to it.",
+		"Stop dripping on me and keep still. There. Better for both of us.",
+	},
+	["race.human.heal.w08.023"] = {
+		"Everyone gets one short life. I'm not letting {target} spend the rest of it here.",
+		"One life each, and short ones at that. This one isn't ending on my watch.",
+	},
+	["race.human.heal.w08.024"] = {
+		"There, {target}. Now you owe me an ale, and I'll collect.",
+		"Mended. The price is one ale at the next inn, and I never forget a debt.",
+	},
+	["race.human.heal.w08.025"] = {
+		"bows {g:his|her} head over the wounded one, and a warm glow, like the windows of the Cathedral, settles on the hurt.",
+		"murmurs a few words in the old manner of Northshire, and the hurt beneath {g:his|her} hands begins to close.",
+	},
+	["race.human.heal.w08.026"] = {
+		"Back in, {target}! Stormwind teaches nobody to sit down halfway!",
+		"Up and at them! Nobody quits halfway, not while I'm here!",
+	},
+	["race.human.heal.w08.027"] = {
+		"Hold it together long enough and the body remembers how. Every novice at Northshire learns that first.",
+		"Close the worst first, then the rest. The healers of the Cathedral teach it that way, and they've had practice.",
+	},
+	["race.human.rezother.w08.001"] = {
+		"Back on your feet. Life's too short to spend it lying there.",
+		"Up you come. A life is short enough without wasting any of it dead.",
+	},
+	["race.human.rezother.w08.002"] = {
+		"The bells of Stormwind ring for the dead. Not for this one. Not yet.",
+		"No bell tolls for this one. I won't have it.",
+		"Somewhere a bell would have rung. It can stay silent; we're not finished.",
+	},
+	["race.human.rezother.w08.003"] = {
+		"kneels and works without hurry, as Elwynn folk tend a newborn lamb that will not stir, until breath comes again.",
+		"stays bent over the fallen with a farmer's stubborn patience, waiting for the first breath like the first green of spring.",
+	},
+	["race.human.travel.w08.001"] = {
+		"The stone warms in my hand and the inn starts to pull. Humans always knew the way to the nearest tavern; now we've made a charm of it.",
+		"Every human carries a little piece of some inn in a pocket. Mine is calling me toward a bed and a bowl of something hot.",
+		"Hearthstone in hand. An innkeeper is about to see a familiar face and reach for the ledger.",
+	},
+	["race.nightelf.attack.w08.001"] = {
+		"Ashenvale's anger, in one blow!",
+		"From the dark between the trees!",
+		"From the shadows of Teldrassil!",
+	},
+	["race.nightelf.attack.w08.002"] = {
+		"Swift, silent, sure.",
+		"Now, while you blink.",
+	},
+	["race.nightelf.attack.w08.003"] = {
+		"Elune, steady my hand!",
+		"By the moon's grace!",
+	},
+	["race.nightelf.attack.w08.004"] = {
+		"Ten thousand years of practice. Here's a sample.",
+		"Patience is over. Meet the other side of the kaldorei.",
+	},
+	["race.nightelf.attack.w08.005"] = {
+		"moves in a blur, with the soundless speed of an owl's wing.",
+		"strikes out of stillness, the way a nightsaber does: nothing, and then everything.",
+	},
+	["race.nightelf.buff.w08.001"] = {
+		"Settled. Like a nightsaber's coat before the cold: you don't see it, but it's there.",
+		"Something settles in, quiet and close, like the hush in Ashenvale before the wind arrives.",
+		"There. Prepared, and without hurry. A kaldorei readies as the forest readies for winter: early, and without fuss.",
+	},
+	["race.nightelf.buff.w08.002"] = {
+		"That will do. The kaldorei never set out unready, and neither will I.",
+		"All set. Teldrassil didn't grow so tall by waiting to feel ready.",
+		"Ready enough. Even an owl ruffles its feathers before it flies.",
+	},
+	["race.nightelf.buff.w08.003"] = {
+		"rolls {g:his|her} shoulders and goes very still for a moment, like a Sentinel checking the line of the trees before a patrol.",
+		"draws a slow breath, eyes half-closed, and lets something settle over {g:him|her} as softly as a leaf on still water.",
+	},
+	["race.nightelf.buff.w08.004"] = {
+		"Take this with you, {target}. Elune's children look after one another.",
+		"There, {target}. A little of the forest's patience goes with you.",
+	},
+	["race.nightelf.buff.w08.005"] = {
+		"That should hold, {target}. Wear it the way a Sentinel wears her cloak: without thinking about it.",
+		"Done. Now you're harder to hurt, {target}, and that makes my work easier.",
+	},
+	["race.nightelf.heal.w08.001"] = {
+		"I'll remember this wound long after it's gone. A kaldorei forgets nothing, not even the small hurts.",
+		"The scar will fade; the memory won't. That is how my people carry their wounds.",
+	},
+	["race.nightelf.heal.w08.002"] = {
+		"Better. The ache drains off like dew at first light.",
+		"There, the ache lets go, slowly, like a root releasing a stone.",
+	},
+	["race.nightelf.heal.w08.003"] = {
+		"Better. I'd hate to have to explain a new hole to the priestesses.",
+		"There. No need to trouble the Temple of the Moon over this one.",
+	},
+	["race.nightelf.heal.w08.004"] = {
+		"Before Hyjal, they say, a wound like this was nothing to us. Now I watch it close and feel grateful.",
+		"The priestesses say the immortal never learned to tend their hurts. We are learning now.",
+	},
+	["race.nightelf.heal.w08.005"] = {
+		"Enough. A Sentinel would already be moving again; so will I.",
+		"Good enough to go on. My people learned patience, but not the lying-about kind.",
+	},
+	["race.nightelf.heal.w08.006"] = {
+		"presses a hand to the wound and closes {g:his|her} eyes, as still as a heron at the water's edge, until the worst has passed.",
+		"breathes slowly while the hurt eases, ears lowered, the glow of {g:his|her} eyes dimming for a moment and then returning.",
+	},
+	["race.nightelf.heal.w08.007"] = {
+		"Linen and patience. The Temple of the Moon would do better, but linen is what I have.",
+		"Tied off neatly. Kaldorei hands are quick with a knot, even shaking ones.",
+	},
+	["race.nightelf.heal.w08.008"] = {
+		"Bitter as Darkshore seaweed. Still, it's working.",
+		"Tastes like something brewed by a goblin who has never seen a moonwell. It works, though.",
+	},
+	["race.nightelf.heal.w08.009"] = {
+		"The pain recedes like the tide under the moon's pull. Elune, I suspect, has a hand in both.",
+		"Easing, slowly, the way moonlight fills a glade: you don't notice it until it's there.",
+	},
+	["race.nightelf.heal.w08.010"] = {
+		"Careless. A kaldorei should hear a blow coming. Lesson noted, wound closed.",
+		"That one I should have caught. Long ears, and still I didn't hear it. Never again.",
+	},
+	["race.nightelf.heal.w08.011"] = {
+		"A warlock's stone. My people have very old opinions about that sort of magic, but I'll have them later.",
+		"Warlock-made or not, it mends. The priestesses would frown; the priestesses aren't bleeding.",
+	},
+	["race.nightelf.heal.w08.012"] = {
+		"Hold together. Teldrassil wasn't grown in a day, and I won't fall in one.",
+		"Closing up. Good. I have a long road, and fewer years to walk it than my ancestors had.",
+	},
+	["race.nightelf.heal.w08.013"] = {
+		"Easy, {target}. Elune has mended worse than you, and so have I.",
+		"Keep still. The moon's mercy works best once you stop squirming.",
+	},
+	["race.nightelf.heal.w08.014"] = {
+		"There you are, {target}. Even the Temple of the Moon couldn't have done it faster.",
+		"Better? Good. Even the wisps would be impressed, and they've seen a great deal.",
+	},
+	["race.nightelf.heal.w08.015"] = {
+		"Every life I mend is a small debt paid to the forest that sheltered my people.",
+		"Kaldorei healers learned their art over ten thousand years. I'm glad to spend a moment of it on someone in need.",
+	},
+	["race.nightelf.heal.w08.016"] = {
+		"lays a hand lightly on the wounded one, and for a breath {g:his|her} eyes shine brighter, silver as moonlight on still water.",
+		"bends over the hurt with the quiet care of a priestess at a moonwell, and does not hurry.",
+	},
+	["race.nightelf.heal.w08.017"] = {
+		"Elune's light on you, {target}. Let it do its work.",
+		"Rest under Elune's gaze a moment. The worst is past.",
+		"May the moon keep watch over your mending, {target}.",
+	},
+	["race.nightelf.heal.w08.018"] = {
+		"Less fuss. My people survived the end of a world; you can survive this.",
+		"Stop grimacing. The Sentinels in Ashenvale patch up worse every week.",
+	},
+	["race.nightelf.heal.w08.019"] = {
+		"Since Hyjal we all know how thin the thread is. I'll hold this one's thread a while longer.",
+		"Mortality is new to my people; caring for the mortal is not. The priestesses have always done it.",
+	},
+	["race.nightelf.heal.w08.020"] = {
+		"Breathe slowly, {target}. Slower. Like the forest does.",
+		"Let the pain go out with your breath. In, and out. There.",
+	},
+	["race.nightelf.heal.w08.021"] = {
+		"murmurs a few soft words in Darnassian over the wound, closer to a lullaby than to anything grand.",
+		"kneels beside the hurt one, long fingers steady, and speaks low, as one speaks to a startled fawn.",
+	},
+	["race.nightelf.heal.w08.022"] = {
+		"{target}, lucky for you the kaldorei are patient healers. Otherwise I'd be cross by now.",
+		"Again, {target}? I have centuries of patience. Try not to use them all up.",
+	},
+	["race.nightelf.heal.w08.023"] = {
+		"Let them walk on. The world is better with one more person in it who isn't bleeding.",
+		"One more set back on their feet. The forest would approve; it always favors what grows.",
+	},
+	["race.nightelf.heal.w08.024"] = {
+		"There, {target}. Go on, and may Elune keep you out of trouble. She rarely manages it with me.",
+		"Better. Off you go, {target}, and try to come back without any new holes.",
+	},
+	["race.nightelf.rezother.w08.001"] = {
+		"Come back. Elune has not finished with you.",
+		"Wake. The moon still has a road for you to walk.",
+		"Return. Even after Hyjal, not every ending has to be the last.",
+	},
+	["race.nightelf.rezother.w08.002"] = {
+		"kneels and murmurs a long Darnassian phrase over the fallen, patient as the moon waiting on the tide.",
+		"bows low over the fallen, silver light gathering in {g:his|her} eyes, and calls them back in the old tongue of the kaldorei.",
+		"sits back on {g:his|her} heels beside the body and speaks to it softly, the way the priestesses speak to the very old and the very young.",
+	},
+	["race.nightelf.travel.w08.001"] = {
+		"The hearthstone grows warm. My people distrust most magic, but a stone that only wants to go home is hard to dislike.",
+		"A little stone that remembers one place and pulls toward it. My people, of all people, understand that.",
+		"Home by way of a stone. Our elders would frown at the shortcut; my feet are grateful for it.",
+	},
+	["race.tauren.attack.w08.001"] = {
+		"Here's a greeting from Mulgore!",
+		"Take that back to whoever sent you, with a tauren's compliments!",
+		"One more, and heavier!",
+	},
+	["race.tauren.attack.w08.002"] = {
+		"puts the whole of {g:his|her} considerable weight behind the blow.",
+		"drives forward with a snort, every bit of tauren bulk following through.",
+		"strikes with the unhurried certainty of a falling tree.",
+	},
+	["race.tauren.attack.w08.003"] = {
+		"Again. Patient as the herd, heavy as the herd.",
+		"Strike, breathe, strike. Like hooves on hard ground, steady and without end.",
+		"One blow, then the next. A stampede is only many small steps, all in the same direction.",
+	},
+	["race.tauren.attack.w08.004"] = {
+		"Tauren are slow, you thought? Say that again.",
+		"I'm big. That doesn't mean I miss.",
+	},
+	["race.tauren.buff.w08.001"] = {
+		"Something settles in, deep as roots. Good. Now the road.",
+		"Ready. The plains taught me to make ready before the stampede, not during it.",
+		"There. A tauren prepares the way a herd prepares for the dry season: early, and without complaint.",
+	},
+	["race.tauren.buff.w08.002"] = {
+		"Set. Whatever the road throws, it'll have to throw it at a tauren.",
+		"There. All of this, ready at once. That's a lot of ready.",
+	},
+	["race.tauren.buff.w08.003"] = {
+		"rolls {g:his|her} neck until it cracks, then waits a moment longer, letting the readiness settle into the bones.",
+		"stamps each hoof once, left then right, testing the ground the way one does before a long walk.",
+	},
+	["race.tauren.buff.w08.004"] = {
+		"Go with something of the wild in you, {target}. It'll keep you.",
+		"There. Carry that with you; it's a gift the land makes through me.",
+	},
+	["race.tauren.buff.w08.005"] = {
+		"One more ready for the road. A tauren likes a herd that's well prepared.",
+		"That should hold a while. Like a good hide over a lodge pole: you forget it's there until the wind picks up.",
+	},
+	["race.tauren.heal.w08.001"] = {
+		"Mending. Hide grows back thick on my people; we were made for thorns and long roads.",
+		"Tauren skin is thick and tauren bones are thicker. This will knit.",
+		"The body of a tauren is a stubborn thing. It mends out of spite, I think.",
+	},
+	["race.tauren.heal.w08.002"] = {
+		"Better. That was a lot of tauren to patch up.",
+		"There. Mending something my size takes patience, and I'm made of the stuff.",
+		"Good. Big bodies need big repairs; luckily mine sits still for them.",
+	},
+	["race.tauren.heal.w08.003"] = {
+		"Thank you, Earth Mother, for a body that heals. I'll try to give it fewer reasons.",
+		"The Earth Mother made us to mend. I'm grateful, even when I make her work hard at it.",
+		"Earth Mother, you gave my people thick hides for a reason. I keep finding out which.",
+	},
+	["race.tauren.heal.w08.004"] = {
+		"Careless. A plainstrider that walks into a thorn bush learns; I should manage at least as much as a plainstrider.",
+		"A hunter of the plains would laugh at that wound. Not at the wound: at how I got it.",
+	},
+	["race.tauren.heal.w08.005"] = {
+		"That will do. The herd moves on, and so do I.",
+		"Back on my hooves. There's still ground to cover.",
+		"Good. Now the rest of me can catch up with the part that's still angry.",
+	},
+	["race.tauren.heal.w08.006"] = {
+		"lets out a long, rumbling breath and rolls {g:his|her} great shoulders, testing that everything still turns the way it should.",
+		"flexes one enormous hand, then the other, and grunts in quiet approval.",
+		"shifts weight from hoof to hoof, slowly, as the hurt drains out of the big frame.",
+	},
+	["race.tauren.heal.w08.007"] = {
+		"Linen enough for a sail, just to wrap one tauren arm. The cloth merchants must love us.",
+		"A bandage made for a human barely goes round my wrist. I tie two together and call it craft.",
+	},
+	["race.tauren.heal.w08.008"] = {
+		"Barely a mouthful for a tauren. They should sell these by the bucket.",
+		"Tiny bottle, big tauren. The sums don't work, but the potion does.",
+	},
+	["race.tauren.heal.w08.009"] = {
+		"Closed. The elders say every scar is a story the body keeps for you. Mine is getting talkative.",
+		"Another mark to carry. In Mulgore the grizzled hunters wear theirs without fuss; I'll try to do the same.",
+	},
+	["race.tauren.heal.w08.010"] = {
+		"Pain passes like a dry wind over Mulgore. It bends the grass; it never takes the roots.",
+		"This will pass. The plains see a hundred hot winds a summer and stay green underneath.",
+	},
+	["race.tauren.heal.w08.011"] = {
+		"Don't move, {target}. The Earth Mother is slow, but she misses nothing.",
+		"Easy. Let the earth do its work; it has been mending things longer than any of us.",
+		"There. You'll ache like a plainstrider that lost a race, but you'll walk.",
+	},
+	["race.tauren.heal.w08.012"] = {
+		"Hold out your arm. No, I'm not going to sit on it.",
+		"You're mended. Next time stand behind me; there's plenty of room back there.",
+		"All patched. Try to get hit less; I can't make this out of nothing forever.",
+	},
+	["race.tauren.heal.w08.013"] = {
+		"bows {g:his|her} great head toward the wounded one and murmurs to the Earth Mother in the low tongue of the plains.",
+		"lays a huge, careful hand near the hurt and hums deep in the chest, a sound like hooves far off.",
+		"speaks softly to the earth, then to the wounded, in the same patient voice.",
+	},
+	["race.tauren.heal.w08.014"] = {
+		"In Mulgore, they say a healer is only someone who stops walking for another. I stopped.",
+		"Mending someone is like sharing water on a dry road. Nobody keeps count, and everybody remembers.",
+	},
+	["race.tauren.heal.w08.015"] = {
+		"Strong again. The herd is stronger with you in it.",
+		"Go on, {target}. On the plains nobody gets left behind.",
+		"Go. The Earth Mother didn't mend you so you could stand there watching.",
+	},
+	["race.tauren.heal.w08.016"] = {
+		"The spirits were kind just now. I'll thank them when there's time, and there's never time.",
+		"Another one mended. The Earth Mother lends; she never gives outright. Someday I'll owe a great deal.",
+	},
+	["race.tauren.rezother.w08.001"] = {
+		"The Earth Mother gives you back, this once. Get up slowly.",
+		"Not yet. The earth said not yet, and I agree with it.",
+		"Breathe. The grass can wait for you a while longer.",
+	},
+	["race.tauren.rezother.w08.002"] = {
+		"I think the spirit had already turned its face away. I called, and it looked back.",
+		"My people say the dead walk the long road to the ancestors. This spirit I called from its first few steps.",
+		"Life went back in like water into dry ground: slowly, then all at once. The Earth Mother allowed it.",
+	},
+	["race.tauren.travel.w08.001"] = {
+		"My people walked for generations to get anywhere. I close my hand on a stone and skip the walking. The ancestors would have questions.",
+		"A whole road folded into a pebble. Somewhere an elder of Mulgore is shaking a horned head at me.",
+		"The stone warms, and a week of walking simply does not happen. The tauren who crossed Kalimdor on foot would call it cheating, and they would be right.",
+	},
 }, "base_spells")

@@ -82,8 +82,8 @@ def roundtrip():
     check(con.report["skipped"] == [], "no file is left out: no rules are computed by code any more (%s)" %
           sorted(str(s["pack_id"]) for s in con.report["skipped"]))
     check(con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_arcs'").fetchone()[0] == 52 and
-          con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_dialogues'").fetchone()[0] == 193,
-          "the 52 lines of the Story Arcs and the 193 of NPC Alive are archived (#143; 33 + 11 of the nemesis, N7 #219, + 8, N9 #221; 169 + 5 nickname openers, N5 #217, + 13 + 6 openers, N9 #221)")
+          con.execute("SELECT COUNT(*) FROM intention WHERE pack_id = 'base_dialogues'").fetchone()[0] == 277,
+          "the 52 lines of the Story Arcs and the 277 of NPC Alive are archived (#143; 33 + 11 of the nemesis, N7 #219, + 8, N9 #221; 169 + 5 nickname openers, N5 #217, + 13 + 6 openers, N9 #221, + 84 said to the four races of W08)")
     ids = {r["id"] for r in con.execute("SELECT id FROM intention")}
     check(all(i in ids for i in ("zone.gen.01", "victory.long.01", "zone.durotar.01", "ctx.act.duel")),
           "rules with code (func), mixed tables and regional rules are all there")

@@ -800,4 +800,360 @@ NS:AddTexts("itIT", {
 		"Ti insegnerò, perché ho giurato di insegnare a chiunque venga. Non perché tu lo meriti.",
 		"La lezione resta. Quello che hai fatto con l'ultima, non l'ho dimenticato.",
 	},
+	["race.dwarf.npcd_flightmaster_bye.w08.001"] = {
+		"Su e via, allora. Tornerai con i piedi sulla terra prima di accorgertene: lo so che ci conti.",
+		"Tieniti forte e pensa alla pietra. Presto ne avrai di nuovo sotto i piedi.",
+	},
+	["race.dwarf.npcd_flightmaster_open.w08.001"] = {
+		"Monta su. I Wildhammer volano per piacere, così mi dicono; gli altri nani che conosco volano per lo più a occhi chiusi.",
+		"Su, in sella. Ho portato in volo un sacco di nani, e ognuno ha baciato la terra all'arrivo. Fai pure anche tu.",
+	},
+	["race.dwarf.npcd_flightmaster_route.w08.001"] = {
+		"Abbastanza lungo da farti rimpiangere la terra, troppo breve per fartene venire paura. Tieni il peso basso in sella: hai il fisico giusto.",
+		"Ventoso, alto, e finito prima di quanto ti piacerebbe ammettere. I nani stanno bene in sella; è guardare giù che non sopportano.",
+	},
+	["race.dwarf.npcd_guard_bye.w08.001"] = {
+		"Mi raccomando: se in taverna nasce una discussione, per una volta lascia che la finisca qualcun altro.",
+		"Là fuori sta' alla larga dalle liti da taverna: un nano che ne vince una paga comunque le panche.",
+	},
+	["race.dwarf.npcd_guard_danger.w08.001"] = {
+		"Voi nani entrate nelle grotte che noi altri giriamo alla larga. Là fuori, in certe grotte c'è roba che esce a cercarti. Tienilo a mente.",
+		"Un nano vuole sempre vedere cosa c'è sotto la collina. D'accordo, ma porta una luce e qualcuno con te, e torna su.",
+	},
+	["race.dwarf.npcd_guard_directions.w08.001"] = {
+		"Tu troveresti l'uscita da una miniera con la lanterna spenta. Conta le svolte allo stesso modo e te la caverai.",
+		"Fa' come i nani sottoterra: una mano sulla parete e ogni svolta a memoria. Le strade sono solo gallerie senza soffitto.",
+		"Mi dicono che i nani non si perdono mai: fanno solo il giro lungo apposta. Fallo anche tu, e chiedi strada facendo.",
+	},
+	["race.dwarf.npcd_guard_open.w08.001"] = {
+		"{g:Un nano|Una nana}. Bene. Voi non cominciate mai la rissa, anche se ve ne ho viste finire parecchie.",
+		"Piedi saldi e lenti a sguainare: della tua gente non ho da lamentarmi. Che ti serve?",
+		"Ah, gente di montagna. Parla pure: gli affari dei nani li ascolto più volentieri di tanti altri.",
+	},
+	["race.dwarf.npcd_innkeeper_bye.w08.001"] = {
+		"Bada a te. Se per strada finisce la birra, sai dove stanno i barili.",
+		"Torna con una storia che valga un giro: i nani ne hanno sempre una.",
+		"Torna con calma: la panca si terrà l'ammaccatura che le hai lasciato.",
+	},
+	["race.dwarf.npcd_innkeeper_news.w08.001"] = {
+		"Da chi scava arriva voce che la Explorers' League ha squadre in ogni angolo del mondo. Per la tua gente non c'è mai una settimana noiosa.",
+		"I viaggiatori continuano a chiedere della Explorers' League: pare che non ci sia buca al mondo senza un nano sul fondo.",
+		"Ai miei tavoli si torna a parlare della Explorers' League, che dissotterra rovine che nessun altro toccherebbe. A voi nani piace proprio una domanda sotto un sasso.",
+	},
+	["race.dwarf.npcd_innkeeper_open.w08.001"] = {
+		"Prima la birra, immagino, e le domande dopo. Voi nani non sbagliate mai l'ordine.",
+		"Siedi, siedi. Ti spillo la scura prima che tu la chieda: far chiedere un nano vuol dire farlo aspettare.",
+	},
+	["race.dwarf.npcd_innkeeper_open.w08.002"] = {
+		"Occhio allo sgabello: l'ultimo che ho prestato a un nano mi è tornato con le gambe un dito più corte. Che ti porto?",
+		"Entra e scrollati di dosso la strada. I nani se ne portano sempre dietro mezza, attaccata agli stivali.",
+	},
+	["race.dwarf.npcd_innkeeper_rest.w08.001"] = {
+		"In fondo c'è una stanza col soffitto basso e i muri spessi. I nani ci dormono benissimo; gli altri la chiamano ripostiglio.",
+		"Prendi la stanzetta col muro di pietra. Tiene il caldo e non scricchiola, e alla tua gente piace un muro che sta fermo.",
+	},
+	["race.dwarf.npcd_innkeeper_sit.w08.001"] = {
+		"Bene, siediti. {g:Un nano|Una nana} che si riposa è una cosa che calma tutta la sala.",
+		"Ecco, così va meglio. Niente zittisce una sala come qualcuno della tua gente che ha deciso di piantarsi lì.",
+	},
+	["race.dwarf.npcd_innkeeper_thanks.w08.001"] = {
+		"Un grazie da {g:un nano|una nana}. Me lo incido sul muro: non capita spesso.",
+		"Ah! Un nano non ringrazia alla leggera. Lo prendo e lo tengo vicino alla cassa.",
+	},
+	["race.dwarf.npcd_merchant_bye.w08.001"] = {
+		"Buoni affari. La moneta dei nani suona sempre giusta sul banco.",
+		"Arrivederci. Se quella fibbia cede, riportala e mi mangio il grembiule; ma non cederà, e lo sai.",
+		"Attenzione al gradino. E se qualcuno chiede, di' che {g:un nano|una nana} non ha trovato niente da brontolare: vale più di un'insegna.",
+	},
+	["race.dwarf.npcd_merchant_news.w08.001"] = {
+		"Il minerale è rincarato, a sentire i carrettieri. Tu lo saprai meglio di me: metà esce comunque dalle miniere dei nani.",
+		"I prezzi del metallo salgono, mi dicono. Chiedi il perché a un nano e ti becchi un'ora di pozzi e gallerie, quindi non lo chiedo.",
+	},
+	["race.dwarf.npcd_merchant_open.w08.001"] = {
+		"{g:Un nano|Una nana} al mio banco. Bene: guarderai le cuciture prima del prezzo, e a me un compratore così piace.",
+		"Avanti, battilo, soppesalo, strizzaci gli occhi sopra. Lo so che un nano non compra niente prima di aver provato a romperlo.",
+	},
+	["race.dwarf.npcd_merchant_open.w08.002"] = {
+		"Ah, stivali robusti e occhio fino! Entra: su questi scaffali non c'è niente che mi vergogni di mostrare {g:a un nano|a una nana}.",
+		"Avanti, avanti. Quelli della montagna pagano il giusto e trattano duro, e a me va benissimo così.",
+	},
+	["race.dwarf.npcd_merchant_thanks.w08.001"] = {
+		"Gentile da parte tua. Il grazie di un nano di solito arriva con una lamentela attaccata: oggi mi è andata bene.",
+		"Senza brontolare? Allora quel grazie me lo prendo volentieri, e lo racconto in giro.",
+	},
+	["race.dwarf.npcd_merchant_wares.w08.001"] = {
+		"Cuoio buono, acciaio onesto e borracce che non perdono. Niente che faccia storcere il naso a un nano, te lo prometto.",
+		"Qui è tutto fatto per durare, che è l'unica cosa che un nano chiede. Il resto è solo colore.",
+	},
+	["race.dwarf.npcd_trainer_open.w08.001"] = {
+		"Gente di montagna, eh? Bene: la testardaggine impara meglio dell'ingegno.",
+		"Quando un nano comincia una cosa, non la molla più. Tienitelo stretto e andremo d'accordo.",
+	},
+	["race.human.npcd_flightmaster_bye.w08.001"] = {
+		"Goditi il volo. Ti risparmia giorni di cammino, e gli umani non hanno mai giorni da buttare.",
+		"Stringi la sella. Gli umani hanno sempre l'aria di chi conta le ore che ha appena risparmiato.",
+	},
+	["race.human.npcd_flightmaster_open.w08.001"] = {
+		"Di fretta, immagino? Ogni umano che sale fin qui lo è. Monta: la bestia è più veloce di qualunque cavallo.",
+		"Un posto dove andare, e presto, scommetto. Voi umani ce l'avete sempre. Su, in sella.",
+	},
+	["race.human.npcd_flightmaster_route.w08.001"] = {
+		"Veloce, ventoso, e finito prima che tu abbia smesso di preoccupartene. Quasi tutti gli umani chiacchierano per tutto il viaggio; alla bestia non importa.",
+		"Rapido, anche se un po' rumoroso. Gli umani di solito parlano dal decollo all'atterraggio: parla pure, lassù non ti sente nessuno.",
+	},
+	["race.human.npcd_guard_bye.w08.001"] = {
+		"Vai pure. E dormi un po', da qualche parte: voi umani vi consumate.",
+		"Buona strada. Riposati quando puoi: voi umani aspettate sempre di crollare.",
+	},
+	["race.human.npcd_guard_danger.w08.001"] = {
+		"Il pericolo che vedo di più con la tua gente è la fretta. Rallenta, prima che sia la strada a fermarti per sempre.",
+		"Gli umani si fanno male là fuori soprattutto per la fretta. Prenditi un'ora in più: costa meno di una tomba.",
+	},
+	["race.human.npcd_guard_directions.w08.001"] = {
+		"Fa' come in qualunque paese umano: trova il tetto più alto e la porta più affollata, e il resto si sistema in mezzo.",
+		"Cerca quel che sta più in alto e quel che profuma di pane fresco. La tua gente costruisce attorno a entrambi, e anche quasi tutti gli altri.",
+		"Segna il tetto più alto che vedi, poi segui il naso fino alla cucina più vicina. Ogni strada mai tracciata dalla tua gente corre tra quei due punti.",
+	},
+	["race.human.npcd_guard_open.w08.001"] = {
+		"Avanti, dimmi. Gli umani non fanno perdere tempo a una guardia con i convenevoli, e la cosa mi fa piacere.",
+		"Parla chiaro, come fanno gli umani. Ho un turno lungo e poca pazienza, e mi sembri il tipo che capisce.",
+		"Prego. Mi piace avere a che fare con gli umani: dritti al punto, e poi via.",
+	},
+	["race.human.npcd_innkeeper_bye.w08.001"] = {
+		"Su, allora. E non spendere tutti i tuoi anni per strada: la tua gente non ne ha molti da buttare.",
+		"Torna finché c'è tempo per sedersi: gli umani pensano sempre che ce ne sarà dell'altro più avanti.",
+		"Vai, allora. Ma fermati ogni tanto: una vita umana passa in fretta, e la strada non ringrazia nessuno.",
+	},
+	["race.human.npcd_innkeeper_news.w08.001"] = {
+		"Del re ancora nessuna notizia, a sentire i viaggiatori. Il reggente gli tiene caldo il trono, e ai miei tavoli si discute su chi comandi davvero.",
+		"Si parla delle solite cose: il re è ancora disperso, e metà della tua gente si fida della corte mentre l'altra metà non si fida di nessuno.",
+		"Chiunque passi ha un'opinione sul trono vuoto di Stormwind. Chiederei la tua, ma ne ho sentite abbastanza da riempirci un barile.",
+	},
+	["race.human.npcd_innkeeper_open.w08.001"] = {
+		"Entra e siediti prima di crollare. Voi umani avete sempre l'aria di chi ha tre commissioni da fare e mezza giornata per farle.",
+		"Siediti, mangia, poi riparti di corsa. Conosco la tua gente: non vi fermate mai a lungo, quindi facciamolo valere.",
+	},
+	["race.human.npcd_innkeeper_open.w08.002"] = {
+		"{g:Un umano|Un'umana}. Pane e stufato, scommetto, e qualcosa da bere che non ti stenda.",
+		"Fammi indovinare: qualcosa di caldo, una crosta di pane e un boccale di quella semplice. Voi umani non chiedete mai niente di più strano.",
+	},
+	["race.human.npcd_innkeeper_rest.w08.001"] = {
+		"Un letto vero, lenzuola pulite, una porta col chiavistello. Dormi quanto ti serve, per una volta: gli umani si alzano sempre troppo presto.",
+		"Prendi la stanza di sopra e non svegliarti alla prima campana. La tua gente non riposa mai quanto le servirebbe.",
+	},
+	["race.human.npcd_innkeeper_sit.w08.001"] = {
+		"Siediti, ma siediti davvero, non stare in punta di sedia come se stessi per andartene. Gli umani lo fanno sempre.",
+		"Bene. Appoggiati allo schienale, allunga le gambe. Voi umani vi sedete come se la sedia potessero richiamarla da un momento all'altro.",
+	},
+	["race.human.npcd_innkeeper_thanks.w08.001"] = {
+		"Prego. Voi umani ringraziate tutti per tutto; ormai ci ho preso gusto.",
+		"Non serve, ma lo accetto. La tua gente dice grazie come gli altri respirano.",
+	},
+	["race.human.npcd_merchant_bye.w08.001"] = {
+		"Buoni affari. Parlane in giro: la tua gente chiacchiera più di chiunque conosca, ed è l'insegna migliore che potrei appendere.",
+		"Arrivederci. Se qualcuno ti chiede dove l'hai presa, fai il mio nome a voce alta: gli umani spargono le voci più in fretta di un banditore.",
+		"{g:Un umano contento|Un'umana contenta} lo racconta a dieci persone prima di cena, e io ci conto. Arrivederci!",
+	},
+	["race.human.npcd_merchant_news.w08.001"] = {
+		"I carrettieri dicono che le strade di Westfall non sono mai state così piene di briganti. Brutte notizie per la tua gente, e per chi le vende qualcosa.",
+		"La merce delle campagne umane è rincarata di nuovo: ladri mascherati sulle strade di Westfall, mi dicono. Nessuno ne è contento.",
+	},
+	["race.human.npcd_merchant_open.w08.001"] = {
+		"Cerchi un affare, immagino. La tua gente sente l'odore di uno sconto attraverso un muro di pietra.",
+		"Ah, {g:un umano|un'umana}: vorrai trattare. Avanti, ma ti avverto, con i tuoi ho fatto parecchia pratica.",
+	},
+	["race.human.npcd_merchant_open.w08.002"] = {
+		"Hai fretta, eh? Come quasi tutti gli umani. Dimmi cosa ti serve e te lo incarto prima che cambi idea.",
+		"Vai di corsa, si vede. Gli umani ci vanno sempre. Dimmi cosa vuoi e non ti trattengo.",
+	},
+	["race.human.npcd_merchant_thanks.w08.001"] = {
+		"Grazie a te. Gli umani sono buoni clienti: decidono in fretta e tornano ancora più in fretta.",
+		"E grazie a te. Il tuo popolo compra svelto, paga il giusto e ritorna: non potrei chiedere di meglio.",
+	},
+	["race.human.npcd_merchant_wares.w08.001"] = {
+		"Un po' di tutto, che è quel che vuole la tua gente: qualcosa per la strada, qualcosa per la pentola, qualcosa per dopo.",
+		"Corda, pane, filo, un coltello decente. Gli umani comprano un po' di tutto e mai proprio quel che cercavano entrando.",
+	},
+	["race.human.npcd_trainer_open.w08.001"] = {
+		"Gli umani imparano in fretta; il difficile è non dimenticare. Facciamo in modo che questa resti.",
+		"Imparerai presto, gli umani imparano sempre presto. Il mio compito è fare in modo che tu non lo perda altrettanto presto.",
+	},
+	["race.nightelf.npcd_flightmaster_bye.w08.001"] = {
+		"Buon volo. La bestia sta tranquilla con i kaldorei: dev'essere la quiete che vi portate dietro.",
+		"Via, allora. Non ho mai visto una cavalcatura agitarsi sotto un elfo della notte. Qualunque cosa facciate, continuate.",
+	},
+	["race.nightelf.npcd_flightmaster_open.w08.001"] = {
+		"Su, nel cielo aperto. La tua gente non sembra mai così felice come quando non ha niente sopra la testa.",
+		"Si sale? Ho notato che la tua gente respira meglio quando la terra si allontana.",
+	},
+	["race.nightelf.npcd_flightmaster_route.w08.001"] = {
+		"Tranquillo, e abbastanza lungo per pensare. Gli elfi della notte di solito lo passano con gli occhi sulla terra di sotto, come se la ricordassero.",
+		"Calmo, quasi sempre. Gli elfi della notte guardano il suolo scorrere per tutto il viaggio, come si rilegge una vecchia lettera.",
+	},
+	["race.nightelf.npcd_guard_bye.w08.001"] = {
+		"Va' in pace. Che Elune vegli sulla tua strada: l'ho sentito dire dalla tua gente, e mi è sembrato un buon augurio.",
+		"Lo sguardo di Elune sul tuo cammino: è l'augurio che si fa la tua gente, mi dicono. Te lo faccio anch'io.",
+	},
+	["race.nightelf.npcd_guard_danger.w08.001"] = {
+		"Il tuo popolo è paziente, e il pericolo conta sull'impazienza. Aspetta prima di infilarti in qualcosa, e ne uscirai sulle tue gambe.",
+		"I guai là fuori amano la fretta. Gli elfi della notte raramente gliela concedono, ed è già mezza battaglia: continua così.",
+	},
+	["race.nightelf.npcd_guard_directions.w08.001"] = {
+		"Voi elfi della notte vi orientate con cose che noi altri non notiamo nemmeno. Fidati di quelle: funzioneranno meglio di qualunque svolta io possa indicarti.",
+		"Potrei elencarti ogni angolo, ma ne dimenticheresti metà. Gli elfi della notte ricordano una strada percorsa una volta: percorrila, ed è tua.",
+		"Fa' come la tua gente nei boschi: guarda in alto, scegli qualcosa di alto e non perderlo di vista. Tornerai al posto giusto.",
+	},
+	["race.nightelf.npcd_guard_open.w08.001"] = {
+		"Calma, non ti ho sentito arrivare. Voi elfi dovreste portare dei campanelli, per pietà di noi di guardia. Che c'è?",
+		"Mi hai quasi fatto mettere mano all'arma, da quanto poco rumore fai. Di cosa hai bisogno?",
+		"Non fai un fruscio, quando cammini. Buon per te, meno per i nervi di chi sta di guardia. Parla.",
+	},
+	["race.nightelf.npcd_innkeeper_bye.w08.001"] = {
+		"Arrivederci. Mi accorgerò che sei {g:andato|andata} via solo alzando gli occhi e trovando la sedia vuota, come sempre con gli elfi della notte.",
+		"Buoni sentieri. Gli elfi della notte non se ne vanno da una stanza: ne svaniscono. Mi mancherà la quiete.",
+		"Va', piano come sei {g:arrivato|arrivata}. Torna quando la strada ti peserà, e l'angolo sarà pronto.",
+	},
+	["race.nightelf.npcd_innkeeper_news.w08.001"] = {
+		"Si dice che le Sentinelle combattano ancora i taglialegna dell'Orda ad Ashenvale. Mi spiace essere io a dirlo a {g:un elfo|un'elfa} della notte.",
+		"Notizie dalla strada: ad Ashenvale ancora niente pace, scuri dell'Orda sugli alberi e Sentinelle ad aspettarle. Una notizia amara per la tua gente.",
+		"Si torna a parlare di Ashenvale: boscaioli dell'Orda, frecce delle Sentinelle, e nessuno che cede. Immagino tu l'abbia già sentito.",
+	},
+	["race.nightelf.npcd_innkeeper_open.w08.001"] = {
+		"Sei {g:entrato|entrata} così piano che per poco non versavo da bere alla sedia vuota. Siediti dove è tranquillo.",
+		"Eccoti. Voi elfi della notte entrate senza un rumore e ogni volta mi fa prendere un colpo. Prendi l'angolo tranquillo.",
+	},
+	["race.nightelf.npcd_innkeeper_open.w08.002"] = {
+		"Ti metto vicino alla finestra? Gli elfi della notte vogliono sempre vedere il cielo, ovunque siedano.",
+		"Posto alla finestra, immagino. Non ho mai visto un elfo della notte sedersi con le spalle all'aria aperta.",
+	},
+	["race.nightelf.npcd_innkeeper_rest.w08.001"] = {
+		"La stanza sotto il tetto ha una finestra che si apre tutta. Voi elfi non dormite mai bene al chiuso.",
+		"Ti do la stanza con la finestra grande. Ho imparato che gli elfi della notte riposano meglio con un po' d'aria aperta.",
+	},
+	["race.nightelf.npcd_innkeeper_sit.w08.001"] = {
+		"Resta quanto vuoi. Sarai l'ospite più immobile che ho: non ho mai visto un elfo della notte agitarsi.",
+		"Bene, resta. Un elfo della notte sa star seduto per ore senza muovere un dito; gli altri ospiti avrebbero da imparare.",
+	},
+	["race.nightelf.npcd_innkeeper_thanks.w08.001"] = {
+		"Di niente. Voi elfi ringraziate come se volesse ricordarselo per un secolo. E magari lo farai davvero.",
+		"Nessun disturbo. Con un elfo della notte ho sempre l'impressione che un grazie venga scritto da qualche parte e conservato.",
+	},
+	["race.nightelf.npcd_merchant_bye.w08.001"] = {
+		"Arrivederci. Ti durerà un bel pezzo, anche se immagino che per te un bel pezzo voglia dire un'altra cosa.",
+		"È fatto per durare anni; per la tua gente, immagino, è un attimo. Buon cammino.",
+		"Buoni sentieri. Ti prometterei che dura una vita, ma con un elfo della notte, la vita di chi?",
+	},
+	["race.nightelf.npcd_merchant_news.w08.001"] = {
+		"Chi arriva dall'isola dice che le barche per il continente sono piene. La tua gente si muove, a giudicare dal mio banco.",
+		"Mai visti tanti elfi della notte per le strade. Qualcosa sta tirando la tua gente fuori dalla foresta, e agli affari fa bene.",
+	},
+	["race.nightelf.npcd_merchant_open.w08.001"] = {
+		"Fai con calma. Il tuo popolo di tempo ne ha più di tanti altri, e preferisco che guardi per bene.",
+		"Nessuna fretta. So che gli elfi della notte guardano a lungo prima di decidere; i miei scaffali sanno aspettare.",
+	},
+	["race.nightelf.npcd_merchant_open.w08.002"] = {
+		"Qualcosa di fatto bene, immagino. La tua gente guarda il lavoro scadente come se le facesse male.",
+		"Ti faccio vedere prima i pezzi buoni. Un elfo della notte riconosce una cucitura fatta male dall'altra parte della stanza, e ci risparmiamo un sospiro.",
+	},
+	["race.nightelf.npcd_merchant_thanks.w08.001"] = {
+		"Prego. Il tuo popolo è sempre così cortese che comincio a badare alle mie maniere.",
+		"No, grazie a te. Ogni volta che un elfo della notte mi ringrazia mi raddrizzo un po', non ci posso fare niente.",
+	},
+	["race.nightelf.npcd_merchant_wares.w08.001"] = {
+		"Roba leggera, roba silenziosa. Ho imparato che gli elfi della notte non comprano niente che tintinni.",
+		"Cuoio morbido, stoffa buona, niente che sbatacchi. Gli elfi della notte girano al largo da tutto ciò che fa rumore, e quella roba la tengo dietro.",
+	},
+	["race.nightelf.npcd_trainer_open.w08.001"] = {
+		"Gli elfi della notte imparano piano e non dimenticano niente. Lo preferisco al veloce e distratto.",
+		"Con un elfo della notte non ho mai fretta. Una lezione entra piano, come l'acqua nelle vecchie radici, ma poi resta.",
+	},
+	["race.tauren.npcd_flightmaster_bye.w08.001"] = {
+		"Ecco fatto. La bestia ha brontolato per il peso, ma ti porterà: ha portato di peggio.",
+		"Tieniti forte e non badare ai lamenti. Sotto un tauren sbuffa sempre, poi vola dritta e sicura.",
+	},
+	["race.tauren.npcd_flightmaster_open.w08.001"] = {
+		"Zoccoli nelle cinghie, corna basse, e piegati con la bestia. È tutto quello che serve sapere a un tauren.",
+		"Sali su, piano. Tieni le corna basse al decollo: le ali non amano compagnia.",
+	},
+	["race.tauren.npcd_flightmaster_route.w08.001"] = {
+		"Lungo e tranquillo. Di solito i tauren non dicono niente per tutto il viaggio, e scendono con l'aria di chi s'è riposato.",
+		"Silenzioso, per lo più. Voi tauren guardate la terra scorrere senza una parola, e scendete più calmi di quando siete saliti.",
+	},
+	["race.tauren.npcd_guard_bye.w08.001"] = {
+		"Cammina in pace. Se sulla tua strada ci sono guai, mi fanno pena loro.",
+		"Chi cerca rissa con un tauren per strada si merita quello che trova. Buon viaggio.",
+	},
+	["race.tauren.npcd_guard_danger.w08.001"] = {
+		"Niente di piccolo darà fastidio a chi ha la tua stazza. Le cose grosse ti noteranno per prime: tieni gli occhi alti.",
+		"Le bestiole ti lasceranno passare. Quelle che non si spostano sono quelle di cui preoccuparsi: tienile d'occhio.",
+	},
+	["race.tauren.npcd_guard_directions.w08.001"] = {
+		"Il tuo popolo ha attraversato le pianure senza strade. Leggi queste vie allo stesso modo: il terreno è consumato dove passa la gente.",
+		"Seguine le tracce come faresti con una mandria. Dove la terra è battuta, la gente cammina; dove è più dura, la gente si raduna.",
+		"Cerca il fumo e ascolta le voci, come quando si cerca un accampamento. Meglio indicarti questo che darti svolte che dimenticheresti.",
+	},
+	["race.tauren.npcd_guard_open.w08.001"] = {
+		"Pace a te. Non capita spesso di dover alzare gli occhi per guardare chi interrogo.",
+		"Ah, un tauren. Siete i più facili da vedere e i meno faticosi da sorvegliare. Che c'è?",
+		"Salute. Con i tauren raramente devo alzare la voce. Parla, ti ascolto.",
+	},
+	["race.tauren.npcd_innkeeper_bye.w08.001"] = {
+		"Torna quando vuoi. La panca grande ti aspetterà: tanto nessun altro ci sta.",
+		"Va' piano, e torna. Pochi ospiti lasciano una stanza tranquilla come la lascia un tauren.",
+		"Abbassa la testa uscendo: occhio alle corna sulla porta, e alla strada dopo.",
+	},
+	["race.tauren.npcd_innkeeper_news.w08.001"] = {
+		"Quelli delle carovane dicono che i centauri razziano ancora le pianure. So che il tuo popolo combatte quella guerra da tanto tempo.",
+		"Voci dalla strada: i centauri non hanno ancora imparato a lasciare in pace i tauren. Certe cose non cambiano, eh?",
+		"Ogni mandriano che passa ha una storia di razzie dei centauri. Immagino che la tua gente le abbia sentite tutte, e qualcuna l'abbia vissuta.",
+	},
+	["race.tauren.npcd_innkeeper_open.w08.001"] = {
+		"Entra, entra. In fondo c'è una panca fatta per la tua stazza: la tengo libera per i tauren.",
+		"Accomodati. Prendi la panca grande vicino al muro: è l'unica di cui mi fiderei sotto un tauren.",
+	},
+	["race.tauren.npcd_innkeeper_open.w08.002"] = {
+		"Un tauren alla mia porta. Tutta la sala si calma un po' quando entra qualcuno della tua gente. Siediti, e dimmi cosa ti serve.",
+		"Vieni a sederti. La gente abbassa la voce quando entra un tauren; non ho mai capito perché, ma mi fa comodo.",
+	},
+	["race.tauren.npcd_innkeeper_rest.w08.001"] = {
+		"Ti accosto due pagliericci: per un tauren uno non è mai bastato.",
+		"Nella stanza grande c'è una stuoia per terra, larga quanto vuoi, e nessun letto che ti si spezzi sotto.",
+	},
+	["race.tauren.npcd_innkeeper_sit.w08.001"] = {
+		"Siediti quanto vuoi. I tauren non hanno mai fretta, e la sala ci guadagna.",
+		"Bene, sistemati. Quando un tauren si siede, gli altri ospiti si ricordano che non c'è fretta.",
+	},
+	["race.tauren.npcd_innkeeper_thanks.w08.001"] = {
+		"Un grazie da un tauren, con quella voce. Sembra una benedizione anche quando non lo è.",
+		"Il tuo grazie esce così profondo e lento che mi viene quasi voglia di inchinarmi. Su, non è niente.",
+	},
+	["race.tauren.npcd_merchant_bye.w08.001"] = {
+		"Usalo finché non si rompe: i tauren non sprecano niente, e a me piace vendere a chi non spreca.",
+		"Arrivederci. So che lo consumerai fino all'ultimo filo prima di pensare a comprarne un altro.",
+		"Un tauren compra una volta e tiene la roba per anni: male per gli affari, bene per la merce. Arrivederci.",
+	},
+	["race.tauren.npcd_merchant_news.w08.001"] = {
+		"Tutti vogliono cuoio di kodo, e nessuno ha il coraggio di chiedere a un tauren dove trovarlo. Buffo, no?",
+		"Il prezzo delle pelli? In salita, come sempre. Metà dei clienti cerca cuoio di kodo, e ammutoliscono tutti appena entra un tauren.",
+	},
+	["race.tauren.npcd_merchant_open.w08.001"] = {
+		"I tauren commerciano come cacciano: con pazienza, prendendo solo quel che serve. Lo rispetto. Guarda pure.",
+		"Prenditi il tuo tempo. Ho già venduto ai tauren: guardate una cosa a lungo, poi la comprate una volta sola, e bene.",
+	},
+	["race.tauren.npcd_merchant_open.w08.002"] = {
+		"Occhio agli scaffali quando ti giri! L'ultimo tauren entrato qui s'è dovuto pagare tutto quello che le corna avevano buttato giù.",
+		"Attenzione con le corna vicino alle lanterne appese! Chi rompe paga, e a prezzo pieno.",
+	},
+	["race.tauren.npcd_merchant_thanks.w08.001"] = {
+		"Che la Madre Terra sorrida anche a te, come direbbe la tua gente. L'ho detto bene?",
+		"Grazie a te. Ti risponderei alla maniera dei tauren, se la sapessi; la Madre Terra protegga la tua strada, può andare?",
+	},
+	["race.tauren.npcd_merchant_wares.w08.001"] = {
+		"Borse buone con cinghie larghe, corde che tengono, otri grandi abbastanza per la tua stazza. Guarda pure.",
+		"Zaini robusti, corde lunghe, un otre che non si svuota prima di te. Roba fatta per la strada di un tauren, per lo più.",
+	},
+	["race.tauren.npcd_trainer_open.w08.001"] = {
+		"Di forza ne hai in abbondanza. Io ti insegnerò dove metterla.",
+		"Un tauren. Il peso c'è già; il mio lavoro è dargli una direzione. Cominciamo.",
+	},
 }, "base_dialogues")

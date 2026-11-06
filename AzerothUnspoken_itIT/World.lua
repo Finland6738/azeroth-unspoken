@@ -1234,4 +1234,781 @@ NS:AddTexts("itIT", {
 		"Cielo diverso, stessi stivali, stessa strada. Avanti.",
 		"L'aria è girata. Non c'è altro da fare che prenderne nota e andare avanti.",
 	},
+	["race.dwarf.journey.w08.001"] = {
+		"La terra lascia andare i miei stivali. Fra un nano e la terra c'è un patto, e questo lo rompe.",
+		"Su. Ogni istinto che ho grida che la roccia deve stare proprio sotto di me, non tanto più in basso.",
+		"Ancora una volta senza terra sotto. Conto le cinghie, poi le riconto, poi fingo di non contarle.",
+	},
+	["race.dwarf.journey.w08.002"] = {
+		"stringe la sella con entrambe le mani e tiene gli occhi fissi davanti a sé, la mascella serrata come un portone chiuso.",
+		"si sistema in sella con la cupa pazienza di un nano che ha deciso di non guardare giù.",
+		"si tiene forte mentre la terra si allontana, borbottando qualcosa che potrebbe essere una preghiera o un elenco di lamentele.",
+	},
+	["race.dwarf.journey.w08.003"] = {
+		"Calma, bestia. Nessuno dei due vuole scoprire quanto pesa un nano da quassù.",
+		"Si parte. Se scendo prima del tempo, dite che è stata colpa del volo, non mia.",
+		"Vola dritto, e all'osteria dirò solo cose belle di te.",
+	},
+	["race.dwarf.journey.w08.004"] = {
+		"Da quassù la terra sembra intatta, ogni collina intera e mai scavata. Un nano non può fare a meno di contare cosa c'è sotto.",
+		"Il mondo visto dall'alto è tutto superficie e niente profondità. Io la so più lunga: so cosa tengono le colline là sotto.",
+	},
+	["race.dwarf.journey.w08.005"] = {
+		"Chi per primo ha legato un nano a una bestia volante doveva aver perso una scommessa. Vorrei scambiarci due parole.",
+		"Lascio volare la bestia. Il mio compito è tenermi forte e pensare alle cantine.",
+	},
+	["race.dwarf.journey.w08.006"] = {
+		"Di nuovo terra sotto gli stivali. Le ginocchia stanno dicendo al resto di me che non lo rifaremo mai più. Mentono, ma è un pensiero gentile.",
+		"Giù. La terra si riprende il mio peso senza una parola, come se non l'avessi mai lasciata.",
+		"Su terreno solido. Ogni osso di un nano tira un sospiro nello stesso istante, quando torna la terra.",
+	},
+	["race.dwarf.journey.w08.007"] = {
+		"scivola giù dalla sella e batte forte i piedi, due volte, come per assicurarsi che il terreno non si sia ammorbidito nel frattempo.",
+		"scende, fa ruotare le spalle e dà una pacca alla cosa solida più vicina, con un sollievo che non nasconde.",
+		"tocca terra, controlla ogni fibbia e ogni cinghia con il sospetto dell'artigiano, e solo allora molla la presa.",
+	},
+	["race.dwarf.journey.w08.008"] = {
+		"Grazie, bestia. Voli bene, e spero di non rivederti mai più, fino alla prossima volta.",
+		"Giù. Qualcuno mi trovi uno sgabello e un boccale, in quest'ordine o nell'altro.",
+		"Finalmente giù. La prossima volta prendo la strada lunga, vesciche comprese.",
+	},
+	["race.dwarf.journey.w08.009"] = {
+		"I Wildhammer la chiamerebbero un piacevole saltello. I Wildhammer hanno qualcosa di allentato fra le orecchie.",
+		"I Wildhammer vivono così ogni giorno, aria nelle trecce e niente sotto i piedi. Parenti o no, non li capisco.",
+	},
+	["race.dwarf.quest_complete.w08.001"] = {
+		"Fatto, e fatto come si deve. Segnate un giro sul mio conto alla Thunderbrew: la sete me la sono guadagnata.",
+		"Ecco il tuo lavoro, finito. Adesso indicami il barile più vicino, prima che la gola mi diventi ghiaia.",
+		"Finito. La mia sete ha aspettato buona buona per tutto il tempo, e adesso vuole la sua paga anche lei.",
+	},
+	["race.dwarf.quest_complete.w08.002"] = {
+		"I muratori di Ironforge danno un colpetto alla pietra prima di posarla, per sentire se suona giusta. Questa l'ho battuta. Suonava.",
+		"A Ironforge nessuno posa un blocco prima di averci bussato sopra e aver ascoltato. Ho bussato, ho ascoltato, ed è al suo posto.",
+	},
+	["race.dwarf.quest_complete.w08.003"] = {
+		"fa un cenno deciso e si batte il pugno sul petto, come chi bussa su un muro solido per sentire che regge.",
+		"infila i pollici nella cintura e dondola sui talloni, con l'aria di un birraio che assaggia una cotta venuta bene.",
+	},
+	["race.dwarf.quest_complete.w08.004"] = {
+		"Tutto finito, e senza che esplodesse un solo aggeggio gnomesco. Qualcuno si segni la data.",
+		"Finito, e niente ha preso fuoco. Un ingegnere gnomo la chiamerebbe una giornata deludente.",
+	},
+	["race.dwarf.quest_complete.w08.005"] = {
+		"Ironforge ha aperto le porte a un popolo intero quando Gnomeregan è andata perduta. In confronto un incarico così è niente, ma l'abitudine è la stessa.",
+		"Quando gli gnomi hanno perso la loro città, Ironforge ha fatto posto a tutti. Dare una mano col guaio di qualcuno è la stessa cosa, solo più piccola.",
+	},
+	["race.dwarf.quest_complete.w08.006"] = {
+		"Un'altra pietra nel muro del nome dei nani! Piccola, d'accordo, ma regge!",
+		"Che si racconti in giro: {g:un nano|una nana} l'ha portato a termine, fino all'ultimo chiodo!",
+		"Khaz Modan alleva gente che le cose le finisce. Eccone la prova, firmata e sigillata!",
+	},
+	["race.dwarf.quest_complete.w08.007"] = {
+		"Fatto, e le gambe mi riferiscono ogni collina, una per una. I nani sono fatti per le gallerie, non per tutto questo saliscendi.",
+		"Finito. Gambe corte e strade lunghe: chiunque abbia dato forma ai nani non aveva previsto tanto camminare.",
+	},
+	["race.dwarf.quest_complete.w08.008"] = {
+		"Non ringraziarmi, pagami. Poi ringrazia pure, se ti va ancora.",
+		"Prima le monete, poi le belle parole, e la birra per ultima. È l'ordine giusto.",
+		"Il discorso tienilo per la taverna. Ascolto meglio con un boccale in pugno.",
+	},
+	["race.dwarf.quest_complete.w08.009"] = {
+		"I cronisti di Ironforge raccontano che un tempo tre clan dilaniarono la montagna per un trono. {g:Un nano|Una nana} che finisce un lavoro onesto per altra gente è una storia migliore.",
+		"La Guerra dei Tre Martelli, la chiamano le cronache: nani contro nani per decidere chi dovesse regnare. Preferirei essere {g:ricordato|ricordata} per lavori come questo.",
+	},
+	["race.dwarf.quest_complete.w08.010"] = {
+		"dà una pacca al borsello alla cintura dove ora sta la ricompensa, come un minatore che batte la mano su un carrello pieno di minerale buono.",
+		"soppesa la ricompensa in una mano larga, emette un grugnito che potrebbe essere approvazione, e la mette via.",
+		"ripone la ricompensa con la cura di un gioielliere che impacchetta pietre grezze.",
+	},
+	["race.dwarf.quest_complete.w08.011"] = {
+		"Finito! Qualcuno a Kharanos mi deve una scura, solo che ancora non lo sa.",
+		"Tutto fatto. I birrai di Dun Morogh non c'entrano niente, ma i miei soldi se li prenderanno comunque loro.",
+	},
+	["race.dwarf.quest_complete.w08.012"] = {
+		"Minerale grezzo dentro, ferro buono fuori. Un incarico è come una fusione: quasi tutto è calore e pazienza, il resto è sapere quando smettere.",
+		"Come una colata alla forgia: per un bel pezzo sembrava solo scoria, e poi è venuta fuori pulita.",
+		"Il buon lavoro è come il buon minerale: non lo riconosci finché non è passato dal fuoco. Questo ne è uscito.",
+	},
+	["race.dwarf.quest_complete.w08.013"] = {
+		"Felice di dare una mano. Se mai passi da Ironforge, chiedi di un nano con la polvere sugli stivali. Così restringi il campo a tutti quanti.",
+		"Un piacere darti una mano. Cercami a Ironforge, prima o poi, e ti mostro dove si nasconde la birra buona.",
+	},
+	["race.dwarf.quest_complete.w08.014"] = {
+		"Ovunque si faccia il lavoro, conta per la montagna. È quello che mi ripeto, almeno.",
+		"Vicina o lontana che sia Ironforge, qualcuno sotto tutta quella pietra annuirebbe davanti a questo. Mi basta.",
+		"La montagna non lo vede, ma approverebbe. È così che misuro le cose.",
+	},
+	["race.dwarf.quest_complete.w08.015"] = {
+		"Finito. Ci è voluto più del dovuto, ma meno di quanto ci avrebbe messo un elfo.",
+		"Sistemato. Un umano ci vorrebbe una canzone sopra. Uno gnomo, un diagramma. A me basta la cena.",
+	},
+	["race.dwarf.quest_complete.w08.016"] = {
+		"Una promessa mantenuta è una pietra che non si sposta. Mettine insieme abbastanza e hai qualcosa a cui la gente può appoggiarsi.",
+		"Parola data, parola mantenuta. Per la gente semplice di Dun Morogh, è tutta qui la legge dei nani.",
+		"Avevo detto che l'avrei fatto, ed è fatto. La pietra non mercanteggia, e nemmeno dovrebbe farlo la parola di un nano.",
+	},
+	["race.dwarf.quest_complete.w08.017"] = {
+		"lascia andare un lungo respiro dal naso, di quelli che un nano tiene da parte per la fine di una lunga fatica.",
+		"si stira finché la schiena non dà uno schiocco sonoro, e la cosa sembra dare una gran soddisfazione.",
+		"pianta i pugni sui fianchi e squadra la faccenda conclusa come un caposquadra a fine turno.",
+	},
+	["race.dwarf.quest_complete.w08.018"] = {
+		"Sistemato. Se si allenta di nuovo, mandate a chiamare un nano.",
+		"Questo regge. L'ho fatto alla maniera di Ironforge: semplice, pesante, e fatto per durare.",
+	},
+	["race.dwarf.quest_complete.w08.019"] = {
+		"L'Explorers' League scava mezzo mondo per chiedersi da dove vengono i nani. Io una risposta non ce l'ho, ma so cosa fanno i nani: finiscono il lavoro.",
+		"Forse i Titani ci hanno plasmati nella pietra, come sospetta l'Explorers' League. Se è così, l'hanno fatto perché portassimo a termine le cose.",
+	},
+	["race.dwarf.quest_complete.w08.020"] = {
+		"Un piacere lavorare con te. Se ti serve ancora un paio di mani testarde, sai che tipo cercare.",
+		"È stato un piacere. La prossima volta che hai un problema troppo pesante da spostare, cerca qualcuno basso e irragionevole.",
+		"Bene che sia sistemato. Se il guaio torna a farsi vivo, sai dove trovare un nano: di solito vicino alla birra.",
+	},
+	["race.dwarf.quest_complete.w08.021"] = {
+		"Finalmente fatto. La pietra è onesta: ti dice chiaro dove si spaccherà. Certe commissioni avrebbero da imparare.",
+		"Finito. Sottoterra è tutto più semplice; in mezzo agli altri anche una commissione ha curve e gallerie laterali.",
+	},
+	["race.dwarf.quest_complete.w08.022"] = {
+		"Se re Magni chiede di me, ditegli che mi tengo {g:occupato|occupata} e che il nome lo tengo pulito.",
+		"Un'altra buona parola per Ironforge. Magni non lo saprà mai, ma è guadagnata lo stesso.",
+	},
+	["race.dwarf.quest_complete.w08.023"] = {
+		"I nani hanno gettato il Thandol Span su una gola in cui la maggior parte della gente non osa nemmeno guardare. In confronto questo era un ponticello, ma l'ho attraversato.",
+		"Chi ha innalzato il Thandol Span non si è fermato a metà perché il salto era profondo. Nemmeno io.",
+	},
+	["race.dwarf.quest_complete.w08.024"] = {
+		"Fatto! Nemmeno un ariete di Dun Morogh ci sarebbe passato attraverso più in fretta, a testate.",
+		"Finito, e quasi senza abbassare la testa. Gli arieti di Dun Morogh sarebbero fieri.",
+	},
+	["race.dwarf.quest_complete.w08.025"] = {
+		"I Wildhammer l'avrebbero fatto in groppa a un grifone, e dopo ci avrebbero cantato sopra. La gente di Ironforge cammina, brontola, e arriva lo stesso.",
+		"Un Wildhammer sarebbe arrivato in volo, avrebbe finito con un urlo e sarebbe ripartito. Ironforge le cose le fa a piedi, e per bene.",
+	},
+	["race.dwarf.quest_complete.w08.026"] = {
+		"Per il martello e l'incudine, è fatta.",
+		"Battuto, sagomato e temprato. Avanti il prossimo!",
+		"Forgiato e rifinito. Qual è il prossimo pezzo sul banco?",
+	},
+	["race.dwarf.quest_complete.w08.027"] = {
+		"socchiude un occhio e squadra il lavoro finito come un muratore che traguarda un muro in cerca della minima pendenza, e pare non trovarne.",
+		"fa una breve risata dal naso e si scuote la polvere {g:dalla barba|dalle trecce}.",
+	},
+	["race.dwarf.quest_progress.w08.001"] = {
+		"Una parte è fatta. Il resto è ancora sepolto da qualche parte, e i nani sanno scavare.",
+		"A metà del filone. Avanti a picconare.",
+		"Si va avanti. Non abbastanza per fermarsi a bere, ma abbastanza per pensarci.",
+	},
+	["race.dwarf.quest_progress.w08.002"] = {
+		"Ecco tutto! Si torna indietro, e qualcuno farebbe bene a mettere su il bollitore. O a spillare il barile.",
+		"Tutto quanto, raccolto e contato due volte. È ora di riscuotere.",
+		"Qui ho finito. Ora la strada del ritorno, che per le gambe corte è sempre più lunga.",
+	},
+	["race.dwarf.quest_progress.w08.003"] = {
+		"si ferma a contare sulle dita grosse quel che è fatto e quel che no, e grugnisce davanti al secondo numero.",
+		"guarda il lavoro che resta come un minatore squadra la roccia ancora da sgomberare, poi rotea le spalle.",
+		"borbotta un conto a mezza voce, nel modo asciutto di un nano che fa l'inventario.",
+	},
+	["race.dwarf.reputation_change.w08.001"] = {
+		"Mi stimano un po' di più, adesso. Un buon nome è come una buona muratura: lento da tirare su, e ancora più lento a crollare, se è costruito bene.",
+		"Un po' più di fiducia guadagnata. I nani si tengono un rancore per secoli; mi piace pensare che tengano un'amicizia altrettanto a lungo.",
+		"Il mio nome suona meglio alle loro orecchie, adesso. A Ironforge direbbero che il metallo è stato saggiato e suona sano.",
+	},
+	["race.dwarf.rest_enter.w08.001"] = {
+		"Un posto per riposare. Prima scopro chi versa da bere, poi se versa onestamente.",
+		"Finalmente riposo. Gli stivali possono uscire, e le opinioni pure.",
+		"Un posto dove sedersi e niente da combattere. Un nano chiede poco: una panca, un boccale, un muro alle spalle.",
+	},
+	["race.dwarf.rest_enter.w08.002"] = {
+		"appoggia la schiena a un muro solido, lo saggia con una spalla, e solo allora si concede di sedersi.",
+		"si lascia cadere su una panca vicino al focolare, batte una volta sul tavolo per buona fortuna, e lascia andare la strada.",
+		"slaccia lo zaino, lo posa dove un piede può raggiungerlo, e si sistema con un lungo sospiro roco.",
+	},
+	["race.dwarf.rest_enter.w08.003"] = {
+		"Mura sicure e il chiasso degli altri. Un nano riposa meglio con un po' di baccano intorno, come una forgia che lavora oltre il muro.",
+		"Finalmente un posto dove posare le ossa. I nani hanno dormito sulla nuda roccia chiamandola comoda: questo andrà benissimo.",
+	},
+	["race.human.journey.w08.001"] = {
+		"Si sale. La mia gente ha imparato ad arare, a costruire, a navigare. Nessuno ci ha mai insegnato a stare tranquilli in groppa a un animale che vola.",
+		"Via da terra. Gli umani ci hanno messo secoli a imparare a stare a cavallo, e pochi istanti su questa sella mi riportano alle prime armi.",
+		"Su. Stringo le cinghie come un aratore stringe le stegole in un terreno sassoso, e cerco di non guardare i campi che rimpiccioliscono.",
+	},
+	["race.human.journey.w08.002"] = {
+		"Da quassù i campi non hanno steccati. Ogni lite per una pietra di confine sembra piccolissima vista dalla sella.",
+		"La terra si allontana e si porta via i confini delle proprietà. Quassù un umano potrebbe farsi venire pensieri filosofici, se il vuoto sotto non distraesse tanto.",
+	},
+	["race.human.journey.w08.003"] = {
+		"Si parte! Un giorno di cammino risparmiato per una manciata d'argento. Il miglior affare che una vita breve possa comprare.",
+		"Su e via. Qualunque cosa sia costato, costa meno degli stivali che avrei consumato.",
+	},
+	["race.human.journey.w08.004"] = {
+		"si sistema in sella con entrambe le mani ben salde sulle cinghie, e con il sorriso cortese e fisso di chi preferirebbe stare a cavallo.",
+		"stringe le cinghie mentre la terra si allontana, e guarda con grande decisione l'orizzonte invece dei propri piedi.",
+		"si curva contro la corrente d'aria, le nocche pallide sulle cinghie, e finge di ammirare il panorama.",
+	},
+	["race.human.journey.w08.005"] = {
+		"Da quassù i villaggi sembrano giocattoli lasciati in giro: qualche tetto, un pozzo, un sentiero. Ognuno è il mondo intero di qualcuno.",
+		"Sotto scorrono le fattorie, una dopo l'altra. Non riesco a non indovinare: terra buona, terra magra, una casa che se la cava, una che no.",
+		"Laggiù probabilmente qualcuno mi sta guardando col naso all'insù e si chiede quanto costi un volo. Tieniti l'argento, amico: i piedi costano meno.",
+	},
+	["race.human.journey.w08.006"] = {
+		"Giù, e ancora in un pezzo solo. Qualcuno mi indichi la locanda più vicina: le mie gambe hanno delle opinioni.",
+		"Atterraggio fatto. Prima un bicchiere, poi una panca, poi penserò al coraggio.",
+		"Terra. Allora, dove si trova un piatto caldo da queste parti, per un viandante stanco?",
+	},
+	["race.human.journey.w08.007"] = {
+		"scivola giù dalla sella e batte entrambi i piedi a terra, come i marinai salutano il molo.",
+		"scende con le gambe rigide, si massaggia le reni e dà alla bestia una pacca riconoscente, come si ringrazia un buon cavallo dopo una lunga strada.",
+	},
+	["race.human.journey.w08.008"] = {
+		"Giù. Un giorno di strada fatto in un'ora. Gli umani non hanno mai abbastanza tempo; per una volta ne ho rubato un po'.",
+		"Il volo è finito, e il tempo risparmiato posso spenderlo come voglio. Cercherò di spenderlo meglio del solito.",
+	},
+	["race.human.journey.w08.009"] = {
+		"La terra. Meravigliosa, noiosa, immobile terra. Prometto di smettere di lamentarmi del fango. Almeno per un giorno.",
+		"Una terra che non ondeggia. Gli umani non la apprezzano finché non ci hanno passato un'ora senza.",
+	},
+	["race.human.journey.w08.010"] = {
+		"Giù. Chi per primo ha messo una sella su una bestia alata era molto coraggioso, o molto umano: impaziente, cioè.",
+		"Solo un popolo dalla vita breve poteva salire su un animale volante per risparmiare mezza giornata. Ed eccomi qui a dimostrarlo.",
+	},
+	["race.human.quest_complete.w08.001"] = {
+		"Una giornata di lavoro, come la chiamerebbero i contadini di Elwynn, e nessuno ringrazia l'aratro. Pazienza: il grazie me lo darà la cena.",
+		"Lavoro finito, come finisce in qualunque aia di Elwynn: niente canzoni, niente discorsi, solo pane guadagnato.",
+		"Lavoro semplice, fatto senza storie. A Elwynn vale una pagnotta e un cenno del capo, e sono due cose che contano.",
+	},
+	["race.human.quest_complete.w08.002"] = {
+		"Qualcuno suoni una campana. No? Pazienza, canticchio io.",
+		"A Goldshire suonerebbero la campana per molto meno. Su, qualcuno suoni qualcosa.",
+		"Niente campane? A noi umani piace sentirne una, a lavoro finito. Vorrà dire che fischietto.",
+	},
+	["race.human.quest_complete.w08.003"] = {
+		"fa ruotare le spalle come uno scalpellino che ha appena posato l'ultimo blocco di un lungo muro.",
+		"si massaggia la nuca e annuisce, con la soddisfazione semplice di un volto umano qualunque.",
+	},
+	["race.human.quest_complete.w08.004"] = {
+		"Noi non abbiamo i secoli degli elfi. Per questo una cosa finita adesso vale di più. È l'aritmetica dell'essere umani.",
+		"Gli elfi possono rimandare un compito di cent'anni. Un umano lo porta a termine, perché il poi potrebbe non arrivare.",
+	},
+	["race.human.quest_complete.w08.005"] = {
+		"Un'altra storia per il Lion's Pride. Alla terza volta che la racconto sarò {g:alto|alta} il doppio.",
+		"Fatto! Al Lion's Pride qualcuno vorrà sentirla, e io vorrò un posto accanto al fuoco per raccontarla.",
+	},
+	["race.human.quest_complete.w08.006"] = {
+		"Stormwind è stata rasa al suolo una volta, e rifatta. Ogni lavoro come questo rimette un'altra pietra al suo posto.",
+		"Gli orchi avevano lasciato Stormwind in rovina, e noi l'abbiamo rialzata. È quel che ci riesce meglio, e questo era lo stesso mestiere.",
+		"Grazie a questo, una porta resterà senza sbarre un po' più a lungo. Ricostruire è il mestiere che ogni umano conosce.",
+	},
+	["race.human.quest_complete.w08.007"] = {
+		"Per il regno, allora. Il reggente non ne saprà mai niente, e il regno ci guadagna lo stesso.",
+		"Bolvar Fordragon non ne sentirà parlare. Eppure il regno, per questo, sta un po' meglio.",
+	},
+	["race.human.quest_complete.w08.008"] = {
+		"Fatto, e ben prima di cena. Noi umani abbiamo sempre fretta; ogni tanto ripaga.",
+		"Lavoro svelto. Un nano ci avrebbe messo una settimana e poi ci avrebbe inciso sopra una targa. Noi tiriamo dritto.",
+	},
+	["race.human.quest_complete.w08.009"] = {
+		"A Elwynn la gente ringrazia la Luce per un granaio pieno. Chiunque meriti il grazie per questo, ha il mio.",
+		"I contadini di Elwynn rendono grazie alla Luce a ogni raccolto. Anch'io ne mando su uno piccolo, a chiunque stia ascoltando.",
+	},
+	["race.human.quest_complete.w08.010"] = {
+		"Ditegli che è sistemato. E ditegli che l'ha fatto {g:un umano|un'umana}, se qualcuno tiene il conto.",
+		"È tutto a posto. Se qualcuno tiene il conteggio per popolo, segnate un punto agli umani.",
+	},
+	["race.human.quest_complete.w08.011"] = {
+		"Un tempo Lordaeron era piena di gente che faceva lavori come questo. Poi è arrivata la pestilenza. Qualcuno di noi continua a farli, un po' anche per loro.",
+		"Lassù a Lordaeron c'era gente che l'avrebbe sbrigato prima di colazione. Ora li ha il Flagello. Qualcuno deve pur continuare il lavoro.",
+		"Ogni compito portato a termine è uno che i morti di Lordaeron non possono finire. Cerco di farli bene, come se mi guardassero.",
+	},
+	["race.human.quest_complete.w08.012"] = {
+		"archivia la faccenda con un cenno svelto, come un impiegato di Stormwind che chiude un registro.",
+		"si spolvera le mani, {g:ordinato|ordinata} nel chiudere una faccenda come un mercante del Trade District che abbassa la saracinesca.",
+	},
+	["race.human.quest_complete.w08.013"] = {
+		"A Northshire dicono a ogni recluta di finire quel che ha cominciato. Fra tutte le loro lezioni, è quella che nessuno dimentica.",
+		"Finisci quel che cominci: all'abbazia di Northshire lo ripetono a ogni nuovo arrivato. Questa volta approverebbero.",
+	},
+	["race.human.quest_complete.w08.014"] = {
+		"Sistemato, e onestamente da entrambe le parti. Gli scalpellini di Westfall direbbero che è più raro dell'oro.",
+		"Un patto rispettato da tutti quanti. Chiedete agli scalpellini che hanno ricostruito Stormwind quanto spesso succede.",
+	},
+	["race.human.quest_complete.w08.015"] = {
+		"C'è una lampada accesa in una fattoria, chissà dove, che forse sarebbe rimasta spenta. Mi piace pensarlo, almeno.",
+		"Un bollitore sul focolare, della gente a tavola, un po' più al sicuro di prima. È questa l'immagine che mi tengo.",
+		"C'è un focolare, chissà dove, con qualcuno seduto accanto un po' più sereno adesso. A noi umani serve poco più di questo.",
+	},
+	["race.human.quest_complete.w08.016"] = {
+		"Prendi nota, Stormwind. Un nome in più su cui il regno può contare.",
+		"Che gli araldi aggiungano una riga al lungo elenco del regno. La mia.",
+	},
+	["race.human.quest_complete.w08.017"] = {
+		"Mi fanno male i piedi, mi fa male la schiena, il lavoro è fatto. Il corpo umano è fatto per una vita breve e dura, e ci tiene a ricordarmelo.",
+		"Finito, e ogni giuntura presenta il suo reclamo. Non siamo di pietra come i nani, purtroppo.",
+	},
+	["race.human.quest_complete.w08.018"] = {
+		"si ferma un istante, come se si figurasse la fattoria o la gente per cui è stato fatto, poi lascia andare il pensiero.",
+		"si volta verso la strada percorsa, con lo sguardo quieto di chi conta quante persone riposeranno più tranquille.",
+	},
+	["race.human.quest_complete.w08.019"] = {
+		"Fatto. Il primo giro lo offro io, basta che nessuno ordini la roba dei nani.",
+		"Finito! Offro da bere. Un giro a misura d'umano, sia chiaro.",
+		"Tutto sistemato. Da bere offro io, nei limiti del ragionevole, e il ragionevole è poco.",
+	},
+	["race.human.quest_complete.w08.020"] = {
+		"Le guerre hanno insegnato al genere umano a riparare quel che si può e a resistere su quel che non si può. Questo era riparare.",
+		"Chi ha ricostruito dopo la Prima Guerra l'ha fatto così: con piccoli lavori come questo, uno dopo l'altro, finché non c'è stata di nuovo una città.",
+	},
+	["race.human.quest_complete.w08.021"] = {
+		"Fatto. A corte nessuno ne saprà mai niente, e a me va benissimo.",
+		"Ecco. Non è il genere di impresa di cui si parla alla corte di Stormwind, e meglio così.",
+	},
+	["race.human.quest_complete.w08.022"] = {
+		"Redridge, Westfall, Duskwood: ovunque la stessa storia, gente che ha bisogno d'aiuto e braccia sempre troppo poche. Stavolta le mie sono bastate.",
+		"Il regno ha pochi soldati e molti guai. Un guaio in meno, allora.",
+		"Troppe poche guardie, troppe strade. Ogni umano che finisce un lavoro così è una guardia in più, in un certo senso.",
+	},
+	["race.human.quest_complete.w08.023"] = {
+		"accenna qualche nota di una canzone da taverna di Elwynn, stonando, e sembra non importargli di chi ascolta.",
+		"fischietta qualcosa ricordato a metà da una mescita di Goldshire, stonato e del tutto soddisfatto.",
+	},
+	["race.human.quest_complete.w08.024"] = {
+		"Una vita umana è abbastanza breve perché nessuno ricordi le piccole imprese. Questo non le rende piccole per chi ne ha avuto bisogno.",
+		"Fra cinquant'anni nessuno se ne ricorderà. Ma chi ne ha avuto bisogno avrà avuto cinquant'anni migliori. Mi pare uno scambio onesto.",
+	},
+	["race.human.quest_complete.w08.025"] = {
+		"Avanti il prossimo! Il regno non resta mai senza faccende.",
+		"Bene, uno è andato. Noi umani abbiamo tanto regno e poco tempo: che altro c'è?",
+	},
+	["race.human.quest_complete.w08.026"] = {
+		"Stromgarde resiste sugli altipiani, Theramore oltre il mare, Stormwind dietro le sue mura. Sparsi come siamo, le cose le portiamo a termine.",
+		"I regni degli uomini ormai sono sparpagliati: Stromgarde, Theramore, Stormwind, e il nord perduto. Sparpagliati o no, questa è fatta.",
+	},
+	["race.human.quest_complete.w08.027"] = {
+		"Lavoro fatto. La parola di un umano vale qualcosa, e io intendo farla valere.",
+		"Avevo detto che l'avrei fatto, e l'ho fatto. È tutta la reputazione che serve a un umano.",
+	},
+	["race.human.quest_complete.w08.028"] = {
+		"ripiega la faccenda come una lettera che finalmente si può spedire, e cerca già la prossima.",
+		"annuisce una volta, con il cenno soddisfatto di un contadino davanti a un solco dritto.",
+		"strizza gli occhi verso l'orizzonte come i contadini scrutano il cielo, già a soppesare il prossimo lavoro.",
+	},
+	["race.human.quest_progress.w08.001"] = {
+		"A metà. I contadini di Elwynn dicono che la seconda metà del campo è sempre la più lunga.",
+		"Una parte è fatta. Qualunque aratore ti dirà che il fondo del solco è la parte dura.",
+	},
+	["race.human.quest_progress.w08.002"] = {
+		"È tutto. Si torna da chi aspetta: agli umani non piace aspettare, a me {g:compreso|compresa}.",
+		"Tutto quanto, fatto. Non facciamo aspettare nessuno: la vita è troppo breve per questo.",
+		"Qui ho finito. È ora di andare a dare una buona notizia a qualcuno.",
+	},
+	["race.human.quest_progress.w08.003"] = {
+		"Un pezzo dopo l'altro, come hanno ricostruito Stormwind. Un'altra pietra posata.",
+		"Un pezzo al suo posto. La città è risorta pietra su pietra, e così questa faccenda.",
+		"Non è finita, ma è più avanti. Gli umani hanno costruito un'intera capitale a forza di 'più avanti'.",
+	},
+	["race.human.quest_progress.w08.004"] = {
+		"spunta l'ultima voce con un grugnito soddisfatto, come un carrettiere che conta l'ultimo sacco sul carro.",
+		"porta a termine l'ultima parte della commissione e si volta per tornare indietro, {g:svelto|svelta} come un corriere di Stormwind.",
+	},
+	["race.human.reputation_change.w08.001"] = {
+		"Gli umani tengono il conto di tutto, benevolenza compresa. La mia è appena salita di una riga.",
+		"Un po' più di fiducia nel registro. A Stormwind un buon nome si spende quasi come l'oro.",
+		"L'opinione che qualcuno ha di me è appena migliorata. Al Trade District lo chiamerebbero capitale.",
+	},
+	["race.human.rest_enter.w08.001"] = {
+		"Riposo. Un posto con le guardie e il pane, dove il pericolo peggiore è il conto. Gli umani hanno costruito intere città per momenti così.",
+		"Un posto dove per un'ora o due nessuno ha bisogno che io sia {g:coraggioso|coraggiosa}. Gli umani hanno inventato i paesi esattamente per questo.",
+		"Mura sicure e una pancia piena a portata di mano. A un umano non serve molto di più per dire che un posto è buono.",
+	},
+	["race.human.rest_enter.w08.002"] = {
+		"Una panca, un fuoco e l'odore della cucina di qualcun altro. La cosa più bella mai costruita dagli umani è una sala comune.",
+		"Finalmente dentro. Appendere il mantello, trovare uno sgabello vicino al fuoco e lasciarsi scorrere addosso i pettegolezzi della sala.",
+	},
+	["race.human.rest_enter.w08.003"] = {
+		"allenta una fibbia o due e lascia cadere le spalle, col sollievo semplice di un umano che ha trovato mura e vicini.",
+		"rallenta, finalmente, e lascia che il rumore tranquillo degli affari altrui {g:gli|le} si posi intorno.",
+		"fa ruotare le spalle e sbuffa, come un bracciante quando l'ultimo carro è al coperto.",
+	},
+	["race.nightelf.journey.w08.001"] = {
+		"La terra si allontana e si fa piccola. Da quassù diecimila anni di storia della mia gente starebbero nel cavo di una mano.",
+		"Su, e il mondo si appiattisce in una mappa. Strano come la vista lunga faccia sentire breve perfino un elfo.",
+		"Si parte. Ogni volo mi ricorda quanto mondo la mia gente non abbia ancora visto, con tutti i nostri anni.",
+	},
+	["race.nightelf.journey.w08.002"] = {
+		"Grifone o ippogrifo, per me fa lo stesso: di qualunque cosa abbia le piume mi fido, che sappia la strada.",
+		"Si va. Chiunque mi stia portando, lo ringrazierò come si deve all'atterraggio.",
+	},
+	["race.nightelf.journey.w08.003"] = {
+		"Dall'alto, dove le foreste sono state tagliate si vede chiaro, come morsi strappati a una foglia. Cerco di non tenere il conto.",
+		"L'altezza è sincera. Qualunque bosco sia stato abbattuto, qualunque collina bruciata, da quassù si vede tutto, e nessuno può far finta di niente.",
+	},
+	["race.nightelf.journey.w08.004"] = {
+		"si accuccia contro il collo piumato mentre la bestia sale, {g:tranquillo|tranquilla} in sella come su un sentiero di bosco.",
+		"asseconda la salita con la disinvoltura della sua gente, che non ha mai avuto paura di un ramo alto.",
+	},
+	["race.nightelf.journey.w08.005"] = {
+		"Su tra le nuvole, più {g:vicino|vicina} al cielo da cui la mia gente ha preso il nome. Più che volare, sembra di fare una visita.",
+		"Kaldorei, figli delle stelle, ed eccomi un po' più {g:vicino|vicina} a loro. Non dirò a nessuno che mi ha fatto sorridere.",
+	},
+	["race.nightelf.journey.w08.006"] = {
+		"Vento nei capelli e la terra che scorre sotto. Un gufo lo troverebbe normale; io cerco di fare la stessa faccia.",
+		"Si vola. La mia gente osserva gli uccelli da diecimila anni, e a quanto pare faceva bene a invidiarli.",
+		"Il vento quassù è pulito e freddo e non chiede niente. Per un po' lascio che pensi lui al posto mio.",
+	},
+	["race.nightelf.journey.w08.007"] = {
+		"Giù. La terra è più lenta del cielo, e più gentile col modo di pensare della mia gente.",
+		"A terra. Un volo fa risparmiare giorni; il primo momento sul suolo ne restituisco qualcuno, restando {g:fermo|ferma}.",
+		"Piedi sulla terra solida. Aspetto che il mondo smetta di muoversi e ricominci a crescere.",
+	},
+	["race.nightelf.journey.w08.008"] = {
+		"Grazie, amico piumato. Voli meglio di come cammina la maggior parte della gente.",
+		"Un bel volo. Se la mia gente darà mai medaglie agli uccelli, il primo posto in fila è tuo.",
+	},
+	["race.nightelf.journey.w08.009"] = {
+		"scivola giù di sella e resta un momento con una mano sulle piume calde, senza fretta, prima di riprendere il cammino.",
+		"atterra con leggerezza e rivolge alla bestia un lungo sguardo grato, come fa la sua gente con ogni creatura che l'ha portata.",
+	},
+	["race.nightelf.journey.w08.010"] = {
+		"Arrivo. Qualunque cosa dica la mia gente sulla pazienza, sono {g:contento|contenta} che sia stato rapido.",
+		"Un viaggio che un tempo la mia gente avrebbe fatto a piedi in una stagione, finito prima che arrivassi in fondo a un pensiero.",
+	},
+	["race.nightelf.journey.w08.011"] = {
+		"Di nuovo a terra. La mia gente cammina leggera, e dopo un volo cammino ancora più piano, finché le gambe non ci credono.",
+		"Il cielo mi lascia andare. Gli faccio un cenno: ci rivedremo.",
+	},
+	["race.nightelf.quest_complete.w08.001"] = {
+		"Finito. Misurato su diecimila anni è poca cosa, ma gli anni sono fatti di cose piccole.",
+		"Sistemato. Non un capitolo di qualche cronaca, solo una riga nella mia, e i kaldorei le tengono lunghe.",
+		"Chiuso. Il mio popolo conta in secoli, eppure ogni secolo è fatto di pomeriggi come questo.",
+	},
+	["race.nightelf.quest_complete.w08.002"] = {
+		"Ecco. Fatto prima che un gufo finisse di girare la testa.",
+		"Finito, e più in fretta di un nightsaber che trova l'unico sasso tiepido della radura.",
+		"Già concluso. Persino i fuochi fatui dovrebbero sbrigarsi per starmi dietro.",
+	},
+	["race.nightelf.quest_complete.w08.003"] = {
+		"Le sacerdotesse dicono che un tempo un kaldorei poteva lasciare un compito così in sospeso per un secolo. Dopo Hyjal gli anni contano anche per noi, e allora l'ho chiuso oggi.",
+		"C'è stata un'epoca, raccontano gli anziani, in cui nessun kaldorei doveva affrettarsi. È finita sul monte Hyjal. Questo compito non l'ho fatto aspettare.",
+	},
+	["race.nightelf.quest_complete.w08.004"] = {
+		"lascia andare il compito finito come un albero lascia cadere una foglia: senza cerimonie e senza voltarsi.",
+		"espira piano, un lungo respiro quieto come un bosco, e rivolge l'attenzione a quel che verrà.",
+		"ripone la faccenda con l'ordine paziente di chi si aspetta di ricordarla molto, molto a lungo.",
+	},
+	["race.nightelf.quest_complete.w08.005"] = {
+		"È fatta. Anche Teldrassil, un tempo, era un seme.",
+		"Finito. Ogni grande albero comincia come qualcosa di piccolo che qualcuno teneva in una mano.",
+		"Completato. Le grandi foreste sono solo piccole semine che nessuno ha abbandonato.",
+	},
+	["race.nightelf.quest_complete.w08.006"] = {
+		"Le sacerdotesse insegnano che Elune vede le piccole fatiche chiare quanto le grandi. Spero che abbia guardato da questa parte.",
+		"Finito, e offerto in silenzio a Elune, come le sacerdotesse dicono si possa fare con ogni lavoro onesto.",
+	},
+	["race.nightelf.quest_complete.w08.007"] = {
+		"Per chi vive poco sarebbe stata una commissione lunga. Per me è stata una bella passeggiata con un finale.",
+		"Certi popoli la chiamerebbero una lunga fatica. Il mio la chiamerebbe un pomeriggio, e chiederebbe cosa c'è per cena.",
+		"Un compito lungo, direbbe un umano. Non ho fatto nemmeno in tempo ad annoiarmi.",
+	},
+	["race.nightelf.quest_complete.w08.008"] = {
+		"Fatto, e fatto in silenzio. La foresta finisce il suo lavoro senza pubblico; posso farlo anch'io.",
+		"Ecco. Niente corni, niente stendardi. Ashenvale cresce senza araldi, e così il buon lavoro.",
+		"Nessuno ne canterà, e non serve. Le radici di Teldrassil lavorano senza farsi vedere.",
+	},
+	["race.nightelf.quest_complete.w08.009"] = {
+		"Probabilmente ricorderò questa commissione molto dopo che tutti quelli coinvolti se ne saranno andati. La memoria di un kaldorei tiene tutto, che lo si voglia o no.",
+		"Anche questo entra nella lunga memoria, con tutto il resto. Il mio popolo non dimentica nulla; non sempre è una gentilezza.",
+	},
+	["race.nightelf.quest_complete.w08.010"] = {
+		"Ecco una spina tolta al mondo. Solo ad Ashenvale ne restano parecchie.",
+		"Finito. Una spina in meno nella zampa del mondo.",
+		"Finito. Da qualche parte nei boschi, qualcosa potrà riposare più tranquillo.",
+	},
+	["race.nightelf.quest_complete.w08.011"] = {
+		"Fatto. Da qualche parte un fuoco fatuo torna a casa tra i rami, e io mi sento un po' come lui.",
+		"Finito. Potrei arrivare a piedi fino a Darnassus con questa sola sensazione.",
+	},
+	["race.nightelf.quest_complete.w08.012"] = {
+		"accoglie la fine del compito con un cenno piccolo e sicuro come il battito di ciglia di un nightsaber.",
+		"lascia sciogliere le spalle, con la cura lenta di un gufo che ripiega le ali dopo la caccia.",
+	},
+	["race.nightelf.quest_complete.w08.013"] = {
+		"Le Sentinelle non possono essere dappertutto. Oggi, in un piccolo angolo del mondo, non ce n'è stato bisogno.",
+		"Un compito chiuso. Le Sentinelle sono poche e sparpagliate tra Auberdine e Ashenvale; le cose piccole tocca a noi altri raccoglierle.",
+	},
+	["race.nightelf.quest_complete.w08.014"] = {
+		"Finito. Non fate quella faccia sorpresa: noi elfi diamo solo l'impressione di prendercela comoda.",
+		"Fatto. Lento non vuol dire in ritardo, checché ne pensi chi vive poco.",
+		"Ecco. Il mio popolo non è lento: semplicemente si rifiuta di correre.",
+	},
+	["race.nightelf.quest_complete.w08.015"] = {
+		"Finito sotto la luce stessa di Elune. Sembra una benedizione, anche se era solo una commissione.",
+		"Fatto, con la luna che guarda. Le sacerdotesse direbbero che approva; io dirò solo che è andata bene.",
+	},
+	["race.nightelf.quest_complete.w08.016"] = {
+		"Anche con la lunga memoria del mio popolo, il mondo trova sempre qualcosa da insegnare. Questa era una di quelle.",
+		"Stavolta ho imparato qualcosa. Diecimila anni di sapere kaldorei, e il mondo ha ancora lezioni da dare.",
+	},
+	["race.nightelf.quest_complete.w08.017"] = {
+		"Finito. Al prossimo che chiede, dite che è passato un kaldorei e ha sistemato tutto.",
+		"Ecco, fatto. Se qualcuno si chiede chi è stato, dite che era gente di Teldrassil, e basta così.",
+	},
+	["race.nightelf.quest_complete.w08.018"] = {
+		"L'Albero del Mondo ha dato la sua forza sull'Hyjal, dicono le sacerdotesse, e da allora ogni giorno conta di più. Questo, almeno, non l'ho sprecato.",
+		"Da quando il dono di Nordrassil si è esaurito, i nostri giorni sono contati come quelli di chiunque. Mi fa piacere averne speso uno così.",
+	},
+	["race.nightelf.quest_complete.w08.019"] = {
+		"si sistema dietro un lungo orecchio una ciocca ribelle e per un attimo sembra molto {g:soddisfatto|soddisfatta}.",
+		"fa fremere un lungo orecchio, in silenziosa soddisfazione, e prosegue.",
+	},
+	["race.nightelf.quest_complete.w08.020"] = {
+		"Completato. Il popolo di Tyrande non lascia le cose a metà.",
+		"Finito. Darnassus non si aspetterebbe di meno, e io nemmeno.",
+	},
+	["race.nightelf.quest_complete.w08.021"] = {
+		"Finito. Come le stagioni ad Ashenvale, si è preso il suo tempo e poi è arrivato tutto insieme.",
+		"Questo è fatto. Nella foresta le cose succedono piano, poi di colpo; questo era il di colpo.",
+		"Fatto, finalmente. Le querce più vecchie lo chiamerebbero sbrigativo.",
+	},
+	["race.nightelf.quest_complete.w08.022"] = {
+		"Fatto. Se continuo così, i gufi di Teldrassil cominceranno a chiedermi favori.",
+		"Finito. Tra le fronde le voci corrono in fretta: aspettatevi che vengano anche gli scoiattoli con le loro richieste.",
+		"Sistemato. Darnassus prima o poi lo verrà a sapere, anche se gli ippogrifi spettegolano meno di quanto si creda.",
+	},
+	["race.nightelf.quest_complete.w08.023"] = {
+		"Niente folla, niente araldi, una parola sommessa ed è finita. Mi piace il lavoro come la foresta ama le sue creature: invisibile finché non serve.",
+		"Chiuso senza clamore. C'è un piacere molto kaldorei in questo: fare bene una cosa e tornare a confondersi tra gli alberi.",
+	},
+	["race.nightelf.quest_complete.w08.024"] = {
+		"Fatto. Le vecchie sentinelle dicono che gli Highborne si credevano troppo grandi per i lavori piccoli. Noi abbiamo imparato il contrario.",
+		"Finito, e volentieri. Il mio popolo ha imparato nella Guerra degli Antichi dove porta l'orgoglio che non lavora.",
+	},
+	["race.nightelf.quest_complete.w08.025"] = {
+		"Finito. Lungo la strada penserò ai rami di Darnassus, e la strada sembrerà più corta.",
+		"Sistemato. Qualunque cosa faccia la strada da qui in avanti, in fondo c'è sempre Darnassus.",
+	},
+	["race.nightelf.quest_complete.w08.026"] = {
+		"alza per un momento lo sguardo, come a cercare la luna oltre il cielo, e offre in silenzio il lavoro compiuto.",
+		"mormora qualche parola a Elune a fior di labbra, troppo piano perché altri la colgano.",
+		"china il capo per un attimo: un ringraziamento a nessuno in particolare, e a Elune più di tutti.",
+	},
+	["race.nightelf.quest_progress.w08.001"] = {
+		"Una parte è fatta. Il resto arriverà: la pazienza è l'unica cosa che al mio popolo non manca.",
+		"A metà strada. Il mio popolo ha fatto crescere un Albero del Mondo; io posso finire una commissione.",
+		"Un po' fatto, un po' no. Nemmeno la luna sorge tutta in una volta.",
+	},
+	["race.nightelf.quest_progress.w08.002"] = {
+		"Tutto fatto. Ora si torna, in silenzio come sono {g:arrivato|arrivata}.",
+		"Tutto ciò che mi è stato chiesto è fatto. Ora la strada del ritorno, senza fretta, come piace al mio popolo.",
+		"Finito, ogni parte. Riporterò la notizia con la cura di una Sentinella che porta un messaggio dal confine.",
+	},
+	["race.nightelf.quest_progress.w08.003"] = {
+		"si ferma a guardare quanto è fatto, le orecchie inclinate, poi va avanti verso il resto senza fretta.",
+		"prende atto dei progressi con un lieve cenno, paziente come un giardiniere tra alberi lenti a crescere.",
+		"fa il punto in silenzio, come un gufo che passa in rassegna una radura, e riprende il cammino.",
+	},
+	["race.nightelf.reputation_change.w08.001"] = {
+		"La loro stima è cresciuta. Il mio popolo misura la fiducia in secoli; prenderò questo come un buon primo decennio.",
+		"Un'accoglienza più calda di prima. La fiducia cresce come una quercia: piano, e poi per moltissimo tempo.",
+		"Ora hanno un'opinione migliore di me. Il mio popolo lo chiamerebbe un germoglio; ho intenzione di vederlo crescere.",
+	},
+	["race.nightelf.rest_enter.w08.001"] = {
+		"Un posto per riposare. La mia gente dorme di un sonno leggero ovunque: conta il permesso, non il letto.",
+		"Terreno sicuro, finalmente. Uno della mia gente all'occorrenza sonnecchia anche in piedi, ma così è meglio.",
+		"Riposo. A quanto pare serve anche a chi vive a lungo. Nessuno ce l'aveva detto.",
+	},
+	["race.nightelf.rest_enter.w08.002"] = {
+		"lascia che la vigilanza scivoli piano via dalle spalle, come fa la sua gente quando ha deciso che un posto è sicuro.",
+		"trova un angolo in disparte e vi si sistema con la lunga pazienza della sua stirpe.",
+		"si concede una pausa, con ogni senso ancora mezzo sveglio, come la sua gente riposa da diecimila anni.",
+	},
+	["race.nightelf.rest_enter.w08.003"] = {
+		"Un posto sicuro, per ora. Ne ringrazio Elune sottovoce, come si ringrazia un ospite che non vuole cerimonie.",
+		"Riposo. Per un po' la guardia la fa Elune, e io la lascio fare.",
+	},
+	["race.tauren.journey.w08.001"] = {
+		"Da quassù le mandrie sembrerebbero semi sparsi. Le cerco lo stesso, per pura abitudine.",
+		"La terra si allontana e la scruto in cerca di mandrie, come il mio popolo ha sempre fatto. Da quest'altezza un kodo sarebbe una briciola.",
+		"Sotto di me il mondo diventa una pelle stesa ad asciugare, con i fiumi per cuciture. Ci cerco le mandrie lo stesso.",
+	},
+	["race.tauren.journey.w08.002"] = {
+		"si sistema in sella con cura, le corna basse contro il vento, mentre le ali prendono l'aria.",
+		"si sporge sul collo della viverna mentre il suolo si allontana, le corna basse e la criniera al vento.",
+		"stringe le redini mentre la viverna si dà la spinta, il grande corpo curvo in avanti per farsi, per un attimo, un po' più piccolo.",
+	},
+	["race.tauren.journey.w08.003"] = {
+		"Ogni colpo d'ala mette più aria tra me e la Madre Terra. Lei è paziente. Mi riavrà presto.",
+		"Su, nel vento. La terra non lascia andare facilmente un tauren, e nemmeno io la lascio andare del tutto.",
+		"Staccarsi dalla terra è la cosa più strana che un tauren possa fare. Tengo una mano sulla sella e un pensiero sul suolo là sotto.",
+	},
+	["race.tauren.journey.w08.004"] = {
+		"Calma, bestia mia. Lo so che peso. Consideralo un allenamento.",
+		"Piano, piano. Sì, tutto quanto. Vola lenta, e all'arrivo potrai lamentarti.",
+	},
+	["race.tauren.journey.w08.005"] = {
+		"Il vento mi prende le corna come un paio di vele. Abbasso la testa e cerco di avere una forma più piccola di quella che ho.",
+		"Quassù l'aria mi tira le corna e la criniera come se volesse tenersele. Tengo la testa bassa e la lascio provare.",
+	},
+	["race.tauren.journey.w08.006"] = {
+		"Terra. Batto uno zoccolo, per essere {g:sicuro|sicura} che sia quella vera e non altro cielo che finge.",
+		"Giù. Le ginocchia riprendono la terra come vecchi amici che si ritrovano. La prossima volta, magari, vado a piedi.",
+		"Le ali si chiudono e la terra torna sotto di me, solida e indifferente. La bacerei, se le corna lo permettessero.",
+	},
+	["race.tauren.journey.w08.007"] = {
+		"scivola giù dalla viverna e resta un attimo a zoccoli ben piantati, come se il terreno potesse provare a inclinarsi.",
+		"scende di sella, batte uno zoccolo per svegliare le gambe e dà alla bestia una pacca riconoscente sul collo.",
+	},
+	["race.tauren.journey.w08.008"] = {
+		"Un lungo tratto nell'aria. Il mio popolo copriva distanze così in una stagione di cammino; io l'ho fatto tra due pensieri, e non so se esserne {g:grato|grata}.",
+		"Tanta terra mi è passata sotto, e nemmeno un filo d'erba toccato. Un viaggio senza il camminare è come un pasto senza la fame.",
+		"Tanto tempo sopra il mondo, e adesso torna tutto sotto gli zoccoli in un colpo solo. Le gambe hanno bisogno di un momento per credere di nuovo alla distanza.",
+	},
+	["race.tauren.journey.w08.009"] = {
+		"La viverna si scrolla, contenta di essersi liberata di me. Io provo più o meno lo stesso per il cielo.",
+		"Ci lasciamo in buoni rapporti, la viverna e io. Siamo sollevati tutti e due, e tutti e due abbastanza educati da non dirlo.",
+		"La bestia non si volta nemmeno andando via. Ha portato un tauren: si è guadagnata il riposo.",
+	},
+	["race.tauren.quest_complete.w08.001"] = {
+		"Fatto. Un compito finito è un tratto di strada percorso fino in fondo; gli anziani dicono che la si ringrazia prima di lasciarla.",
+		"Ecco. Gli anziani del mio popolo dicono che ogni strada percorsa fino in fondo merita un ringraziamento. Grazie, strada.",
+		"Finito. Prima di prendere il sentiero successivo, un tauren dovrebbe ringraziare quello appena percorso. Quindi grazie, e avanti.",
+	},
+	["race.tauren.quest_complete.w08.002"] = {
+		"Ecco a te. Occhio alle corna quando ti sporgi a prenderlo: tutti si dimenticano delle corna.",
+		"È tuo. Fa' piano a sporgerti oltre di me: c'è parecchio tauren da scavalcare.",
+		"Eccolo. Farei un inchino, ma con corna di questa misura servono spazio e un preavviso.",
+	},
+	["race.tauren.quest_complete.w08.003"] = {
+		"si china e posa un attimo il palmo largo sul terreno, un ringraziamento silenzioso alla Madre Terra per un compito portato a termine.",
+		"si piega a sfiorare il suolo con due dita, poi la fronte, senza fretta, come per saldare un piccolo debito con la terra.",
+		"preme una mano aperta a terra e ve la tiene un battito più a lungo di quanto un estraneo riterrebbe necessario.",
+	},
+	["race.tauren.quest_complete.w08.004"] = {
+		"Come semi d'erba gettati al vento: tu li getti, e il resto lo decidono le pianure. A loro la parola, dunque.",
+		"Lavoro consegnato. Se darà frutto è affare di un'altra stagione: le pianure mi hanno insegnato a lasciar fare alle stagioni.",
+	},
+	["race.tauren.quest_complete.w08.005"] = {
+		"Che la tua acqua resti dolce e le tue mandrie numerose. In Mulgore ci si saluta così.",
+		"Cammina col vento alle spalle. È ciò che il mio popolo augura a chiunque abbia aiutato.",
+		"Che la Madre Terra tenga saldo il terreno sotto i tuoi passi. Buon lavoro, e fatto volentieri.",
+	},
+	["race.tauren.quest_complete.w08.006"] = {
+		"Quasi tutti ringraziano un tauren come ringrazierebbero una rupe: testa all'indietro, e da una distanza prudente.",
+		"Altra gratitudine dal basso. Ho imparato a chinarmi un po', così la gente non si storce il collo per essere gentile.",
+		"Un altro grazie detto col collo piegato all'indietro. Un giorno qualcuno ringrazierà un tauren senza fare prima un passo indietro.",
+	},
+	["race.tauren.quest_complete.w08.007"] = {
+		"Gli anziani raccontano dei lunghi anni di vagabondaggio, quando niente restava in piedi a lungo. Forse per questo una cosa finita piace tanto a un tauren.",
+		"Per secoli, dicono i narratori, il lavoro del mio popolo veniva caricato sui kodo ogni pochi giorni e portato via. Un lavoro che resta dove lo lasci sembra quasi un lusso.",
+		"Per un nomade niente è mai finito: il campo è sempre in cammino. Da quando la rupe è diventata casa, dicono i narratori, il mio popolo ha imparato il sapore delle cose concluse. Mi piace.",
+	},
+	["race.tauren.quest_complete.w08.008"] = {
+		"È fatto, e fatto con tutte e due le mani. Un tauren non fa niente a metà.",
+		"Finito come si deve, senza scorciatoie. Il mio popolo non è mai stato bravo con gli sforzi piccoli.",
+		"Portato a termine da cima a fondo. Noi tauren siamo troppo grossi per le mezze misure.",
+	},
+	["race.tauren.quest_complete.w08.009"] = {
+		"Se qualcosa è morto per questo compito, spero di essermi {g:fermato|fermata} a ringraziarlo. Un cacciatore del mio popolo me lo chiederebbe prima ancora della ricompensa.",
+		"Prima delle monete, la vecchia domanda delle pianure: ho reso grazie per ciò che ho preso? Credo di sì. Spero di sì.",
+	},
+	["race.tauren.quest_complete.w08.010"] = {
+		"Fatto. Se c'è una ricompensa, che sia cibo. Sfamare un tauren è un'impresa a parte.",
+		"Le monete vanno bene. Il pane andrebbe meglio. A un tauren viene fame anche solo ad attraversare una stanza.",
+		"Finito. Per caso hai qualcosa da mangiare? Lo chiedo per conto di uno stomaco molto grande.",
+	},
+	["race.tauren.quest_complete.w08.011"] = {
+		"deve chinarsi parecchio per prendere la ricompensa, e si raddrizza con la prudenza di chi conosce bene le travi basse.",
+		"si piega quasi in due per accettare la ricompensa, poi si rispiega in tutta la sua altezza, un'articolazione dopo l'altra.",
+		"prende la ricompensa fra due dita enormi, con la delicatezza di un kodo che scavalca un nido.",
+	},
+	["race.tauren.quest_complete.w08.012"] = {
+		"An'she vede le imprese del giorno e Mu'sha quelle del buio, così insegnano gli anziani. In un caso o nell'altro, questa è stata vista.",
+		"Qualunque dei due occhi della Madre Terra fosse aperto, ha visto questo lavoro finito. Per un tauren basta come testimone.",
+		"Niente folla, niente araldi. La Madre Terra ha due occhi, il sole e la luna, e uno dei due vede sempre il lavoro.",
+	},
+	["race.tauren.quest_complete.w08.013"] = {
+		"Un'altra piccola rata di un vecchio debito. Gli orchi sono stati al fianco del mio popolo contro i centauri, dicono gli anziani, e un tauren ricorda chi gli è stato accanto.",
+		"Cairne insegna che l'aiuto dell'Orda nelle guerre contro i centauri è un debito che vale la pena pagare piano e volentieri. Ogni compito finito ne paga un po'.",
+	},
+	["race.tauren.quest_complete.w08.014"] = {
+		"Fatto. Lasciami stare qui un momento, che il cuore rallenti al passo di un kodo.",
+		"Finito. Prendo un respiro grande quanto un tauren prima di prendermi un'altra commissione.",
+		"Concluso e consegnato. Adesso resto un po' immobile, come un kodo dopo aver guadato un fiume.",
+	},
+	["race.tauren.quest_complete.w08.015"] = {
+		"Se mai sali sulla rupe, trova un fuoco e siediti. In Mulgore si dice che l'ospite si sfama prima di fargli una sola domanda.",
+		"Se mai la strada ti porta in Mulgore, cerca un qualsiasi fuoco tauren. L'usanza vuole prima il cibo, poi le domande.",
+		"Passa da Bloodhoof Village, un giorno. Dicono che ci sia sempre una pentola sul fuoco, e nessuno ti chiederà il motivo della visita prima che tu abbia mangiato.",
+	},
+	["race.tauren.quest_complete.w08.016"] = {
+		"Niente paroloni. Le lodi stanno addosso a un tauren più o meno come una sella a un toro selvatico.",
+		"Ringraziami di meno, per favore. Le lodi mi fanno fremere le orecchie, e poi tutti fissano le orecchie.",
+	},
+	["race.tauren.quest_complete.w08.017"] = {
+		"L'erba non chiede di essere ringraziata perché cresce. Cerco di finire il mio lavoro allo stesso modo, e di solito non ci riesco: mi piace essere {g:ringraziato|ringraziata}.",
+		"Nelle pianure niente annuncia di aver finito. L'erba cresce e basta, il fiume arriva e basta. Potrei imparare, e magari domani lo farò.",
+	},
+	["race.tauren.quest_complete.w08.018"] = {
+		"emette un brontolio basso di approvazione, così profondo che lo si sente più nel petto che nelle orecchie.",
+		"fa un solo cenno del capo, senza fretta, di quelli che sembrano salire fin dagli zoccoli.",
+		"si sfiora un corno con due dita, un piccolo gesto tutto suo, e si volta con aria soddisfatta.",
+	},
+	["race.tauren.quest_complete.w08.019"] = {
+		"Di' pure che è stato un tauren. Non per me: perché il prossimo tauren che passa di qui sia accolto bene.",
+		"Se qualcuno chiede chi ha aiutato, ricorda le corna. Il nome del mio popolo è fatto di imprese come questa.",
+	},
+	["race.tauren.quest_complete.w08.020"] = {
+		"Lassù sulla rupe c'è un fuoco che arde senza di me. Un giorno gli racconterò anche questa.",
+		"La prossima volta che prenderò l'ascensore per le alture, questa sarà una storia in più da raccontare attorno al fuoco.",
+	},
+	["race.tauren.quest_complete.w08.021"] = {
+		"Madre Terra, era una cosa piccola, ed è stata fatta bene. Spero che ti piacciano le cose piccole fatte bene: ne ho parecchie.",
+		"La offro alla Madre Terra, come un cacciatore restituisce una parte della preda. Piccola, ma offerta.",
+	},
+	["race.tauren.quest_complete.w08.022"] = {
+		"Fatto, e senza calpestare niente che non andasse calpestato. Per un tauren è un lavoro di fino.",
+		"Finito, e ho pestato solo ciò che se lo meritava. Dalle mie parti questa si chiama grazia.",
+		"Tutto fatto. Neanche uno steccato abbattuto. Scrivetelo da qualche parte.",
+	},
+	["race.tauren.quest_complete.w08.023"] = {
+		"Un cucciolo di kodo impara a camminare in una mattina e a portare carichi in un anno. Io sto a metà strada, e questo mi ha aiutato.",
+		"Ogni compito finito è un po' di peso in più che so portare. Così si addestrano i kodo, dicono i mandriani: una pietra in più ogni stagione.",
+		"La forza cresce come cresce una mandria: piano, e poi tutta insieme in una primavera. Oggi è stato un giorno lento, e conta lo stesso.",
+	},
+	["race.tauren.quest_complete.w08.024"] = {
+		"Che ciò che si è rotto qui ricresca come l'erba dopo un incendio. Nelle pianure succede sempre.",
+		"Ecco. Dagli una stagione: le pianure mi hanno insegnato che quasi tutte le ferite della terra si chiudono, se le si lascia in pace.",
+	},
+	["race.tauren.quest_progress.w08.001"] = {
+		"Tutto fatto. Adesso la camminata, al passo del kodo: senza fretta, senza fermarsi.",
+		"Questo è tutto. Un tauren porta le notizie come le pianure portano il vento: con costanza, fino in fondo.",
+		"Fatto tutto quel che era stato chiesto. Ora si puntano le corna verso chi aspetta.",
+	},
+	["race.tauren.quest_progress.w08.002"] = {
+		"Una parte è fatta. Il resto è là fuori; le pianure mi hanno insegnato che una mandria si raduna una bestia smarrita dopo l'altra.",
+		"Una parte. Un cacciatore del mio popolo direbbe che adesso la pista è calda. Continua a seguirla.",
+		"Un pezzo di strada. Pazienza: nemmeno un kodo attraversa Mulgore in un passo solo.",
+	},
+	["race.tauren.quest_progress.w08.003"] = {
+		"spunta una parte del compito su un dito largo e si guarda intorno in cerca del resto.",
+		"grugnisce: mezzo lavoro fatto, e nessuna fretta di ammettere che è solo mezzo.",
+		"muove un orecchio, confronta ciò che è fatto con ciò che resta, e riparte con un passo regolare e instancabile.",
+	},
+	["race.tauren.reputation_change.w08.001"] = {
+		"Un po' più di fiducia, guadagnata alla maniera dei tauren: piano, come crescono le corna a un vitello.",
+		"Qualcuno ha un'opinione migliore di me, adesso. Il mio popolo dice che un buon nome è come un pozzo profondo: lo si scava piano, e non si secca mai.",
+		"La benevolenza cresce come l'erba di Mulgore dopo gli incendi: in silenzio, e poi ovunque.",
+	},
+	["race.tauren.rest_enter.w08.001"] = {
+		"Finalmente riposo. Il mio popolo ha imparato a riposare dovunque si fermasse la mandria, e io non ne ho mai perso l'abitudine.",
+		"Un posto dove fermarsi. Un tauren dorme quasi ovunque; è svegliarsi con un corno impigliato da qualche parte che farei volentieri a meno.",
+		"È ora di posare il carico. Da qualche parte dentro di me un vecchio mandriano conta i capi, li trova tutti, e mi lascia dormire.",
+	},
+	["race.tauren.rest_enter.w08.002"] = {
+		"Un tetto, un fuoco e un letto che finisce alle mie ginocchia. Prenderò il pavimento e un mucchio di pelli, come al solito, e mi troverò meglio.",
+		"Le locande sono fatte per chi dorme più corto. Stendo una coperta accanto al focolare e dico al locandiere che è un'usanza tauren. Adesso lo è.",
+	},
+	["race.tauren.rest_enter.w08.003"] = {
+		"toglie finalmente il peso dagli zoccoli, e tutta la grande mole sembra abbassarsi di un palmo.",
+		"si siede piano, come fanno le cose grandi, e lascia andare un lungo respiro che sembra salire dal suolo.",
+	},
 }, "base_world")

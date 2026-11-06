@@ -1255,4 +1255,830 @@ NS:AddTexts("enUS", {
 		"The body keeps the bill and sends it later. Tomorrow, most likely.",
 		"It'll all hurt later. Later can wait its turn.",
 	},
+	["race.dwarf.battle.w08.001"] = {
+		"Ironforge stands! Come and dent it if you can!",
+		"For the halls under the mountain! Have at you!",
+		"Dun Morogh stubbornness, coming straight at you!",
+	},
+	["race.dwarf.battle.w08.002"] = {
+		"Right, let's get this over with. There's an ale going warm somewhere with my name on it.",
+		"Quick now. Somewhere a perfectly good mug is waiting on me.",
+		"Make it snappy. The tap room won't hold a seat forever, not even for a dwarf.",
+	},
+	["race.dwarf.battle.w08.003"] = {
+		"Low and heavy. Let them come down to my height and see how they like it.",
+		"Short folk fight from under the swing. Stay low, stay planted.",
+	},
+	["race.dwarf.battle.w08.004"] = {
+		"plants {g:his|her} boots, rolls {g:his|her} shoulders once, and meets what comes with the patience of bedrock.",
+		"hunches forward, all shoulders and weight, like a boulder that has decided it won't be moved.",
+	},
+	["race.dwarf.battle.w08.005"] = {
+		"Fighting a dwarf? That's a mistake folk only make once.",
+		"Wrong mountain to climb, friend. Wrong mountain entirely.",
+		"Of all the folk to tangle with, you chose the one built like a keg. Bad choice.",
+	},
+	["race.dwarf.battle.w08.006"] = {
+		"Breathe deep and low, as the mountain guards teach. The rest follows.",
+		"The guards of Dun Morogh say a fight is won in the feet before it's won anywhere else. Feet, then.",
+	},
+	["race.dwarf.battle.w08.007"] = {
+		"Go on, take a swing at the short one. Everybody does. Everybody regrets it.",
+		"Aim low, if you can manage it. Most can't.",
+		"Short? Aye. Light? Try lifting me.",
+	},
+	["race.dwarf.battle.w08.008"] = {
+		"I've got the hold of the Stonewrought Dam! Come and push!",
+		"Loch Modan's dam holds back a whole lake. I can hold you back for a minute or two.",
+	},
+	["race.dwarf.battle.w08.009"] = {
+		"Whatever you are, you've the manners of a Dark Iron. Let's fix that.",
+		"Dark Iron manners and twice the ugliness. Come on, then.",
+	},
+	["race.dwarf.battle.w08.010"] = {
+		"tugs once at {g:his beard|her braids} and squares up to the fight.",
+		"spits to one side, sets {g:his|her} jaw and gets to it, like a dwarf going into cold water: quickly, before thinking better of it.",
+	},
+	["race.dwarf.battle.w08.011"] = {
+		"I've had worse from a Thunderbrew hangover. Come on!",
+		"Bring it. I've survived dwarven cooking; you're nothing.",
+	},
+	["race.dwarf.battle.w08.012"] = {
+		"The mountain was here before the first blow of any war and it'll be here after this one. Be a little like the mountain.",
+		"Stone doesn't hurry and doesn't flinch. Neither, for the next minute, do I.",
+		"Be slow the way stone is slow: not lazy, only certain.",
+	},
+	["race.dwarf.battle.w08.013"] = {
+		"You'll be telling your kin you met a dwarf. If you're lucky enough to tell anyone.",
+		"Time to learn what the mountain folk are made of!",
+	},
+	["race.dwarf.battle.w08.014"] = {
+		"lets out a short, deep bark of a laugh, the kind that echoes off cavern walls, and steps in.",
+		"grins and goes to meet the fight head-down, all shoulders and stubbornness.",
+	},
+	["race.dwarf.battle.w08.015"] = {
+		"Fine. I was getting bored, and a bored dwarf ends up in trouble anyway.",
+		"Good. Idle hands make a dwarf grumpy, and this'll keep them busy.",
+	},
+	["race.dwarf.battle.w08.016"] = {
+		"Magni keeps the throne; the rest of us keep the roads. Here's my stretch of it.",
+		"There's peace under the mountain because someone earns it elsewhere. My turn.",
+	},
+	["race.dwarf.battle.w08.017"] = {
+		"Up the hill or down the hole, a dwarf fights the same: forward!",
+		"Head down, shoulders in, and through! That's how dwarves go!",
+	},
+	["race.dwarf.battle.w08.018"] = {
+		"Dwarven hands were made for heavy work. This is just heavy work that hits back.",
+		"Like tunneling: one step, then the next, and never mind how much rock is left.",
+	},
+	["race.dwarf.battle.w08.019"] = {
+		"growls something in the old dwarven tongue that no one nearby would care to have translated.",
+		"mutters a dwarven oath through clenched teeth, low and rumbling as a rockslide far below.",
+	},
+	["race.dwarf.battle.w08.020"] = {
+		"Don't move, I want to see if the Explorers' League has you catalogued.",
+		"You'd make a fine exhibit in the Hall of Explorers. Stuffed, of course.",
+	},
+	["race.dwarf.battle.w08.021"] = {
+		"I've got the patience of granite and the temper of a forge. You'll meet both.",
+		"Granite patience, forge temper. Pick which one you'd like to meet first.",
+	},
+	["race.dwarf.lowhp.w08.001"] = {
+		"Timbers groaning, roof still up. A miner knows the difference between bad and done for.",
+		"A shored tunnel creaks a long while before it comes down. Creaking now. Not down.",
+	},
+	["race.dwarf.lowhp.w08.002"] = {
+		"Is that the best you've got? I'm still on my feet, and that's a dwarf's whole argument!",
+		"Bloody, aye, but upright! Ironforge stock doesn't topple that easy!",
+	},
+	["race.dwarf.lowhp.w08.003"] = {
+		"sways, catches {g:himself|herself} on a stubborn heel, and stays upright out of sheer dwarven contrariness.",
+		"staggers half a step back, then digs in, giving up not one inch more.",
+	},
+	["race.dwarf.lowhp.w08.004"] = {
+		"Not here, not like this. The ale in Kharanos isn't going to drink itself.",
+		"I am not dying before I've tasted the next Thunderbrew batch. Out of the question.",
+		"Dying now would mean missing the next round in Ironforge. Unacceptable.",
+	},
+	["race.dwarf.lowhp.w08.005"] = {
+		"Ow! That went through the stone and hit the dwarf underneath.",
+		"That one got past the granite. Now you've made me cross.",
+	},
+	["race.dwarf.lowhp.w08.006"] = {
+		"If the mountain wants me back, so be it. But it'll have to come and fetch me; I'm not walking in.",
+		"Stone to stone, the old miners say. Not yet. Not this time.",
+	},
+	["race.dwarf.lowhp.w08.007"] = {
+		"Dun Morogh's in me deeper than that! Try again!",
+		"You'll have to dig a good deal deeper to find the bottom of a dwarf!",
+	},
+	["race.dwarf.lowhp.w08.008"] = {
+		"spits red and bares {g:his|her} teeth, with the look of a dwarf whose patience has been sorely tried.",
+		"presses a thick hand to the wound and growls, low and long, like stone grinding on stone.",
+	},
+	["race.dwarf.threat.w08.001"] = {
+		"Walk on. I've got a short temper and a long memory, and you won't enjoy either.",
+		"Clear off, before I decide you'd look better as a doorstop in Ironforge.",
+		"Dwarves forget nothing and forgive slowly. Leave now and we'll call it forgotten.",
+	},
+	["race.dwarf.threat.w08.002"] = {
+		"I'm short, I'm grumpy, and I haven't had a drink in hours. Think hard about what happens next.",
+		"Look at me. Built low, built thick, and built to keep hitting. Still keen?",
+	},
+	["race.dwarf.victory.w08.001"] = {
+		"Done. Let the dust settle before trusting the ground again.",
+		"Over. Wait a breath, the way you would after a blast in the mine, and only then look around.",
+	},
+	["race.dwarf.victory.w08.002"] = {
+		"Ha! Put that on the tally. I'm keeping count, even if nobody else is.",
+		"One more for my tally. I'll round it up when I tell it, naturally.",
+	},
+	["race.dwarf.victory.w08.003"] = {
+		"And that's what you get for testing dwarven stone!",
+		"Tell the rest of your lot: the dwarves are out and about, and in a mood.",
+	},
+	["race.dwarf.victory.w08.004"] = {
+		"wipes {g:his|her} brow with the back of a forearm and gives a grunt, the whole verdict on the matter.",
+		"blows out {g:his|her} cheeks, checks that everything is still attached, and nods.",
+	},
+	["race.dwarf.victory.w08.005"] = {
+		"That's worked up an appetite. A dwarf fights on an empty belly only once, and never by choice.",
+		"Right. Now where's the nearest thing resembling a meal? Fighting's hungry work for short folk.",
+	},
+	["race.dwarf.victory.w08.006"] = {
+		"Another one learns what Ironforge is made of.",
+		"That's the mountain's answer. It's always the same one.",
+		"Should've picked on a gnome. We're the sturdy ones.",
+	},
+	["race.dwarf.victory.w08.007"] = {
+		"Down. No joy in it, really, only the plain satisfaction of a job that won't need doing twice.",
+		"Finished. Some dwarves cheer. Others just check their gear and move on. I'm the second kind today.",
+	},
+	["race.dwarf.victory.w08.008"] = {
+		"Hah! A locked keg puts up more of a fight than that.",
+		"That's it? A gnome's clockwork toy would've given me more trouble.",
+	},
+	["race.dwarf.victory.w08.009"] = {
+		"lets out a booming laugh that would carry clear across the forges of Ironforge.",
+		"raises a fist with a hearty shout, the sort usually saved for a fresh cask being tapped.",
+	},
+	["race.dwarf.victory.w08.010"] = {
+		"Every fight walked away from is a lesson hammered in. Let's hope this one took.",
+		"The forge teaches with heat; the road teaches with fights like that. I'll take the lesson.",
+	},
+	["race.dwarf.victory.w08.011"] = {
+		"Rest easy, whoever's watching. The dwarf has it in hand.",
+		"There. Nobody tell the mountain guards I needed both hands for that.",
+	},
+	["race.dwarf.victory.w08.012"] = {
+		"Knuckles throbbing, back complaining, and the ground still under me. A good outcome, as these go.",
+		"Sore everywhere a dwarf can be sore, which is more places than you'd think.",
+	},
+	["race.dwarf.victory.w08.013"] = {
+		"Raise one for Magni when I'm back home! He'd have liked that one.",
+		"Hah! King Magni's beard would bristle with pride at that.",
+	},
+	["race.dwarf.victory.w08.014"] = {
+		"Quiet comes back. In the deep places it always does, after; the world above takes a moment to remember how.",
+		"Silence after a fight, like the hush in a tunnel once the last echo dies. I'll stand in it a moment.",
+	},
+	["race.dwarf.victory.w08.015"] = {
+		"Hmph. Barely worth knocking the dust off my boots for.",
+		"That'll do. Not a scratch worth bragging about at the bar.",
+	},
+	["race.dwarf.victory.w08.016"] = {
+		"straightens a few disordered {g:beard braids|braids} with thick fingers, as though tidiness were the last step of any fight.",
+		"brushes grit from {g:his|her} sleeves with slow, deliberate strokes, the way a mason dusts a fresh-cut block.",
+	},
+	["race.dwarf.victory.w08.017"] = {
+		"If the Explorers' League ever digs up the bones of this fight, they'll find it was a dwarf who won it.",
+		"Something for the Explorers' League to puzzle over in a thousand years: who won here. A dwarf did.",
+	},
+	["race.dwarf.victory.w08.018"] = {
+		"Down, and staying down. Good.",
+		"That one won't be getting up. Right, on we go.",
+		"Settled. Stone over the top, as the miners say, and on to the next.",
+	},
+	["race.dwarf.victory.w08.019"] = {
+		"When I'm back in Ironforge I'll say nothing of this, and drink twice. That's how a dwarf tells a story.",
+		"No need to boast. In Ironforge they'll read it on my face, and in how fast I empty the first mug.",
+	},
+	["race.human.battle.w08.001"] = {
+		"Stormwind steel and Elwynn stubbornness! Come on!",
+		"Elwynn grit! Let's see what you're worth!",
+	},
+	["race.human.battle.w08.002"] = {
+		"glances once over {g:his|her} shoulder, as the people of the realm learned to do after Lordaeron, then faces the fight.",
+		"takes the measure of the foe with a quick, wary look, the habit of a people who lost one kingdom and mean to lose no more.",
+	},
+	["race.human.battle.w08.003"] = {
+		"Of course. The one time I'm not looking for trouble, trouble comes looking. Very human of it.",
+		"Trouble, again. Somebody in the kingdom must keep a list with my name at the top.",
+	},
+	["race.human.battle.w08.004"] = {
+		"For Elwynn's fields and Stormwind's bells!",
+		"For the plowed fields and the ringing bells! Come on!",
+		"Bells of Stormwind, this one's for you!",
+	},
+	["race.human.battle.w08.005"] = {
+		"Come on, then! Humans haven't got the time to be afraid!",
+		"Short lives, short tempers. Let's have it!",
+		"We don't live long enough to dither. Here I come!",
+	},
+	["race.human.battle.w08.006"] = {
+		"Count the breaths. In for two, out for two, the way the Goldshire militia drills it.",
+		"Steady breathing first. Every militia sergeant in Elwynn says the same, and they're right.",
+	},
+	["race.human.battle.w08.007"] = {
+		"plants {g:his|her} feet as though the ground beneath were a Westfall field worth keeping.",
+		"sets {g:himself|herself} square across the way like a farmer between a wolf and the fold.",
+	},
+	["race.human.battle.w08.008"] = {
+		"I had other plans, you know. Better plans. With chairs.",
+		"Oh, wonderful. And I'd almost found somewhere to sit.",
+	},
+	["race.human.battle.w08.009"] = {
+		"You've picked a fight with the most stubborn folk south of Lordaeron!",
+		"Wrong human, wrong moment! Stormwind breeds us mulish!",
+	},
+	["race.human.battle.w08.010"] = {
+		"Hands are shaking. Fine. The veterans of the Second War say theirs shook too, and they held.",
+		"A tremor in the fingers. The old soldiers in Stormwind swear every hand shakes before the first blow. Let it.",
+	},
+	["race.human.battle.w08.011"] = {
+		"Lordaeron fell because too few stood up! I'm standing!",
+		"The north was lost for want of people willing to stand. Here's one!",
+	},
+	["race.human.battle.w08.012"] = {
+		"squares up with the plain, unshowy nerve of a people who raised their city out of its own ashes.",
+		"meets the threat without a flourish, the way humans have met most things: stubbornly, and on foot.",
+	},
+	["race.human.battle.w08.013"] = {
+		"Let's be quick. Humans don't live long enough for slow fights.",
+		"Make it brisk, would you? Some of us have only the one lifetime.",
+	},
+	["race.human.battle.w08.014"] = {
+		"Stromgarde still holds in the highlands against everything that comes, the soldiers say. I can hold against this.",
+		"If Stromgarde can keep its gates shut against trolls and ogres and worse, I can keep my feet against this.",
+	},
+	["race.human.battle.w08.015"] = {
+		"Off the road! The realm's taxes pay for these roads, and you're not on the list!",
+		"Out of the way! Good honest folk use this road!",
+	},
+	["race.human.battle.w08.016"] = {
+		"takes a breath and steps in, as practical about the fight as a farmer about a fox in the henhouse.",
+		"rolls up to the fight with the brisk, unhappy efficiency of someone clearing a blocked drain.",
+	},
+	["race.human.battle.w08.017"] = {
+		"Light's mercy, here we go!",
+		"Light keep the rest of me in one piece! Come on!",
+	},
+	["race.human.battle.w08.018"] = {
+		"Watch the feet, not the eyes. Any brawler from the Trade District knows that much.",
+		"Eyes on the shoulders; the shoulders move first. Stormwind's tavern brawlers learn that before their letters.",
+	},
+	["race.human.battle.w08.019"] = {
+		"The orcs burned Stormwind once. We built it back taller. Do your worst!",
+		"Humankind has been knocked flat before and always got up. Your turn to learn it!",
+	},
+	["race.human.battle.w08.020"] = {
+		"One short life, and here I am spending a piece of it on this. Well. Make it count.",
+		"A human heart only has so many beats in it. A few more for this, then.",
+	},
+	["race.human.battle.w08.021"] = {
+		"sighs like a Westfall farmer finding the fence down again, and gets on with it.",
+		"mutters something unrepeatable about the state of the roads these days, and turns to face the trouble.",
+	},
+	["race.human.battle.w08.022"] = {
+		"Redridge held, Westfall's holding, and so will I!",
+		"Ask Redridge how humans give ground. They don't!",
+	},
+	["race.human.battle.w08.023"] = {
+		"Somewhere people are going about their lives without a thought for fights like this one. Good. That's the point of them.",
+		"Bread baking, children squabbling, some clerk in Stormwind yawning. All of it carries on while I do this. That's why I do it.",
+	},
+	["race.human.lowhp.w08.001"] = {
+		"wipes the blood from {g:his|her} eyes with a sleeve and keeps going, too human to know when to quit.",
+		"spits, steadies, and stays upright on nothing but stubbornness and the thought of home.",
+	},
+	["race.human.lowhp.w08.002"] = {
+		"Not yet. The bells haven't been rung for me, and I'd like to keep it that way.",
+		"No. Nobody's tolling a bell for me. Not here, not like this.",
+	},
+	["race.human.lowhp.w08.003"] = {
+		"I'll have you know I'm a taxpayer of Stormwind!",
+		"This is no way to treat a subject of the realm!",
+		"Somebody write to the regent about this!",
+	},
+	["race.human.lowhp.w08.004"] = {
+		"Breathe. A human body is stubborn if it's asked properly. I'm asking.",
+		"In and out. This body has carried me this far; it can carry me through one more bad minute.",
+	},
+	["race.human.lowhp.w08.005"] = {
+		"staggers, catches {g:himself|herself}, and keeps on with the bloody-minded patience of farm folk at the end of a bad season.",
+		"sways, sets {g:his|her} jaw, and refuses to fall, like an Elwynn fencepost after a storm that took the barn.",
+	},
+	["race.human.lowhp.w08.006"] = {
+		"Light's sake, not now!",
+		"Light, give me another minute! Just one!",
+	},
+	["race.human.lowhp.w08.007"] = {
+		"Elwynn is green and far away. I'd like to see it again. So, up.",
+		"Goldshire's inn, the Stormwind canals, the bells. I'm not done with any of them. Hold on.",
+	},
+	["race.human.lowhp.w08.008"] = {
+		"Bleeding, yes. Beaten, no. Ask Redridge how stubborn we are.",
+		"Bloodied's not beaten! Humans are too pigheaded to know the difference!",
+	},
+	["race.human.lowhp.w08.009"] = {
+		"Too short. A human life is too short to end in a ditch over this. Move.",
+		"Seventy years, if you're lucky, and I'm not giving them up for this. Get up.",
+	},
+	["race.human.threat.w08.001"] = {
+		"Walk away. Humans have short lives and shorter tempers.",
+		"My life is short, and my patience is shorter. Go.",
+		"We humans haven't the years to waste on fools. Off with you.",
+	},
+	["race.human.threat.w08.002"] = {
+		"The orcs burned Stormwind to the ground, and we built it back. You think you frighten me?",
+		"Our city has been ashes before. Whatever you are, you're a smaller fire than that.",
+	},
+	["race.human.victory.w08.001"] = {
+		"Ha! Wait till they hear about that in Goldshire.",
+		"That one's going in the Lion's Pride story pile.",
+		"Somebody remind me to tell that one properly, with the boring parts left out.",
+	},
+	["race.human.victory.w08.002"] = {
+		"Another fight behind me. A human life is a short row of them, and I mean to see the end of the row.",
+		"Done. We only get so many years; I'd rather not spend the rest of mine in the ground.",
+	},
+	["race.human.victory.w08.003"] = {
+		"straightens slowly, one hand pressed to the small of {g:his|her} back, as weary as any farmhand after the long field.",
+		"lets out a breath and shakes the sting from {g:his|her} hands, plainly glad and plainly tired.",
+	},
+	["race.human.victory.w08.004"] = {
+		"One more for the realm. Stormwind can sleep a little easier.",
+		"That's the realm's road kept clear a while longer.",
+	},
+	["race.human.victory.w08.005"] = {
+		"Won. If the clerks of Stormwind ever paid by the foe, I'd be rich and they'd be ruined.",
+		"There. Someone ought to pay a bounty for that. Someone never does.",
+	},
+	["race.human.victory.w08.006"] = {
+		"Right. Back to being a law-abiding citizen of the kingdom.",
+		"And that's the end of that. Now, where was I?",
+	},
+	["race.human.victory.w08.007"] = {
+		"Winning feels thinner since Lordaeron. A whole kingdom of people won fights like this, and the plague took them anyway.",
+		"The north won a thousand small fights and lost the war. I'll take this one, and try not to read too much into it.",
+	},
+	["race.human.victory.w08.008"] = {
+		"stands over the field a moment, the stubborn shape of a people that has been beaten before and never for good.",
+		"holds still while the quiet comes back, upright the way humans stand after a near thing: a little shaky, entirely unbowed.",
+	},
+	["race.human.victory.w08.009"] = {
+		"Not bad for a creature with a mere seventy years in it!",
+		"Not bad, eh? And the elves think we're in too much of a hurry.",
+	},
+	["race.human.victory.w08.010"] = {
+		"Thank the Light, or luck, or the drillmaster. One of them deserves it.",
+		"Somebody up there was on my side. The Cathedral would say the Light; I'll just say thank you.",
+	},
+	["race.human.victory.w08.011"] = {
+		"Next time, less charging, more thinking. Humans learn by doing things wrong first; it's tradition.",
+		"That could have gone neater. Humans are a people of second tries; I'll get the next one right.",
+	},
+	["race.human.victory.w08.012"] = {
+		"Down, and staying down! That's how it's done in the kingdom!",
+		"Ha! Elwynn-bred and stubborn with it!",
+	},
+	["race.human.victory.w08.013"] = {
+		"glances around for anyone else who might need a hand, a reflex as human as breathing.",
+		"looks about to see whether anyone nearby was hurt, before giving a thought to {g:his|her} own scrapes.",
+	},
+	["race.human.victory.w08.014"] = {
+		"Elwynn's woods are a long way off, but every fight like this keeps the road to them open.",
+		"A little more of the world is quiet again. Stormwind's walls are only the start of what needs keeping.",
+	},
+	["race.human.victory.w08.015"] = {
+		"All clear! Well, this bit's clear. The rest of the kingdom is somebody else's turn.",
+		"That's this patch sorted. Somebody tell the rest of the realm I'm on my way.",
+	},
+	["race.human.victory.w08.016"] = {
+		"My arms feel like I've been hauling stone for the walls of Stormwind. Worth it.",
+		"Every muscle aches like after a week of haymaking. Small price.",
+	},
+	["race.human.victory.w08.017"] = {
+		"Look at that. The regent couldn't have managed it better. Probably couldn't have managed it at all.",
+		"Somebody tell the court. No, don't; they'd only find a way to tax it.",
+	},
+	["race.human.victory.w08.018"] = {
+		"touches two fingers to {g:his|her} brow, the quick, half-thoughtless gesture of thanks common in the villages of Elwynn.",
+		"lowers {g:his|her} head for a heartbeat, in the brief way humans give thanks after a near thing.",
+	},
+	["race.human.victory.w08.019"] = {
+		"The ones who lost Stormwind to the orcs fought every bit as hard as this. Sometimes winning is only luck in a better coat.",
+		"Better fighters than me fell at the gates of Stormwind, once. I won't pretend this was all skill.",
+	},
+	["race.human.victory.w08.020"] = {
+		"That's how the kingdom keeps its roads open: one stubborn human after another.",
+		"The realm stands on folk who refuse to fall over. This time I refused.",
+	},
+	["race.nightelf.battle.w08.001"] = {
+		"Ten thousand years my people have guarded the forests. Come and test the guard.",
+		"Ashenvale remembers every trespasser. So will I.",
+		"A greeting from Darnassus, delivered by hand.",
+	},
+	["race.nightelf.battle.w08.002"] = {
+		"Silence, then. A kaldorei fights with the mouth closed.",
+		"No war cry. My people learned long ago that the loud die first.",
+		"Hush. Let the blows do the talking; mine speak better.",
+	},
+	["race.nightelf.battle.w08.003"] = {
+		"The Sentinels say every war since the Sundering has been the same war wearing a new face. Let's see this one's.",
+		"My people have been at war in one form or another since before the sea swallowed the Well. Here is one more form.",
+	},
+	["race.nightelf.battle.w08.004"] = {
+		"melts into a low crouch, quiet and ready as a held breath.",
+		"narrows {g:his|her} glowing eyes, and {g:his|her} face goes as still as a forest pool.",
+	},
+	["race.nightelf.battle.w08.005"] = {
+		"For the Sentinels who never came home!",
+		"Teldrassil's roots run deep, and so do mine!",
+		"For every grove you've ever trampled!",
+	},
+	["race.nightelf.battle.w08.006"] = {
+		"Breathe as the forest breathes: slow, deep, unafraid. Then move.",
+		"Feet light, breath low, eyes on the shoulders. The rest follows.",
+		"Low and light, like the leaf before it falls. Now.",
+	},
+	["race.nightelf.battle.w08.007"] = {
+		"You chose a quarrel with a people who've practiced for ten thousand years. Bold of you.",
+		"Of all the folk to cross, you chose one with a very long memory. I'll remember you, too.",
+		"A short life should teach caution. Yours didn't.",
+	},
+	["race.nightelf.battle.w08.008"] = {
+		"Stand aside or stand against me. The forest gives no third choice.",
+		"I'll give you the same answer the forest gives every intruder, sooner or later.",
+	},
+	["race.nightelf.battle.w08.009"] = {
+		"rolls {g:his|her} shoulders once, long ears laid back like a nightsaber's.",
+		"draws {g:himself|herself} up to full kaldorei height and lets the foe take a good look.",
+	},
+	["race.nightelf.battle.w08.010"] = {
+		"Whatever you are, you are not the first thing to threaten my people, and you will not be the worst.",
+		"Demons, dragons, the Scourge on Hyjal... you are a short chapter. Let's close it.",
+	},
+	["race.nightelf.battle.w08.011"] = {
+		"Demon. My people have been killing your kind since the Well of Eternity was lost.",
+		"The Legion again. Ten thousand years, and you still haven't learned to stay away from us.",
+	},
+	["race.nightelf.battle.w08.012"] = {
+		"The Scourge came to Hyjal too. It did not leave the way it came.",
+		"Dead thing. The forests of my people have no place for you; let me show you out.",
+	},
+	["race.nightelf.battle.w08.013"] = {
+		"Ah, company. It was getting almost too quiet.",
+		"Finally, something that isn't a tree. Not that I mind trees.",
+		"Oh good, a visitor. I'd nearly started talking to the moss.",
+	},
+	["race.nightelf.battle.w08.014"] = {
+		"Elune, I won't ask you for victory. Only clear eyes, and a steady heart.",
+		"Mother Moon, keep my sight sharp. I'll see to the rest.",
+	},
+	["race.nightelf.battle.w08.015"] = {
+		"Moonlight on my side and the dark at my back. You should have waited for day.",
+		"This is our hour, the hour of the kaldorei. You chose the wrong time.",
+	},
+	["race.nightelf.battle.w08.016"] = {
+		"Fine. Quickly, then. I'd rather spend my years on almost anything else.",
+		"Not what I'd planned for the hour, but the forest teaches you to take what comes.",
+		"If this must happen, let it happen cleanly. My people have little patience left for mess.",
+	},
+	["race.nightelf.battle.w08.017"] = {
+		"lets out a low hiss through {g:his|her} teeth, the sound of a Darkshore thicket with something hunting in it.",
+		"steps lightly to one side, the way a Sentinel moves along a moonlit trail, and waits for the first mistake.",
+	},
+	["race.nightelf.battle.w08.018"] = {
+		"For Nordrassil, and for all it cost us!",
+		"For the Moon and the trees!",
+	},
+	["race.nightelf.battle.w08.019"] = {
+		"Since Hyjal a wound can end me like anyone. Strange how much better that makes me fight.",
+		"Mortal now, all of us. The priestesses call it a burden; in a fight it feels more like a spur.",
+	},
+	["race.nightelf.battle.w08.020"] = {
+		"Ashenvale has lost enough to axe and fire. You'll take nothing more from anyone today.",
+		"The kaldorei have watched over the wild places since before your kind had names. Leave them be.",
+	},
+	["race.nightelf.lowhp.w08.001"] = {
+		"The priestesses said it plainly after Hyjal: we can die now. I'd rather not test how easily.",
+		"Since the World Tree's gift was spent, I can bleed out like anyone. I'd rather not prove it here.",
+	},
+	["race.nightelf.lowhp.w08.002"] = {
+		"Breathe. Go still. Kaldorei have survived worse by vanishing for a moment.",
+		"A wounded nightsaber goes quiet, not wild. Quiet, then.",
+	},
+	["race.nightelf.lowhp.w08.003"] = {
+		"Is that all? Teldrassil's bark has given me worse splinters.",
+		"Bloodied, not beaten. Kaldorei don't fall that easily.",
+		"Ha. The roots of Teldrassil have tripped me harder than that.",
+	},
+	["race.nightelf.lowhp.w08.004"] = {
+		"staggers, one hand pressed to the wound, the light in {g:his|her} eyes flickering like a candle near its end.",
+		"sinks to one knee, breathing hard, then forces {g:himself|herself} up with the stubbornness of an old tree that refuses to fall.",
+	},
+	["race.nightelf.lowhp.w08.005"] = {
+		"A kaldorei expects centuries. This fight seems to have other plans.",
+		"Odd, how small the world gets with blood in your eyes. Ten thousand years of history, and all I can see is the next breath.",
+		"Too soon. A short life is something my people are still learning; I refuse to learn all of it today.",
+	},
+	["race.nightelf.lowhp.w08.006"] = {
+		"The moon is up. Elune, if you are looking, now would be a good time.",
+		"Under the moon, at least. If I fall, I fall where she can see me.",
+	},
+	["race.nightelf.lowhp.w08.007"] = {
+		"That one I'll remember. And I remember for a very long time.",
+		"You've drawn kaldorei blood. My people do not forget a debt like that.",
+		"Mark this: the kaldorei keep long accounts.",
+	},
+	["race.nightelf.threat.w08.001"] = {
+		"A Sentinel would have loosed already. Be grateful it's only me, and leave.",
+		"My people held Ashenvale for ten thousand years against worse than you. Turn around.",
+		"I have a kaldorei's patience, which lasts for ages, and a kaldorei's anger, which takes a heartbeat. Choose which you meet.",
+	},
+	["race.nightelf.threat.w08.002"] = {
+		"You won't see me coming. You never see us coming. That is the only warning you get.",
+		"Remember my face. Next time, you won't get the chance to see it.",
+		"The kaldorei vanish into the night when they choose. Hope I don't choose.",
+	},
+	["race.nightelf.victory.w08.001"] = {
+		"That's over. My people have outlasted empires; you were hardly going to be the exception.",
+		"Fallen. We outlived the Highborne's pride and the Legion's fire. You never stood a chance.",
+		"There. My people have seen kings and dragons fall. Forgive me if I don't stay to marvel.",
+	},
+	["race.nightelf.victory.w08.002"] = {
+		"Another life ended. Since Hyjal I understand better what that costs, even for the one lying here.",
+		"Before the World Tree's gift was lost, my people could pretend death was for others. Not anymore. Not even for this one.",
+	},
+	["race.nightelf.victory.w08.003"] = {
+		"tilts {g:his|her} head, listening past the fight for anything else that moves, and only then lowers {g:his|her} guard.",
+		"straightens slowly, the glow still bright in {g:his|her} eyes, and lets the silence settle.",
+	},
+	["race.nightelf.victory.w08.004"] = {
+		"Elune, my thanks. Let me earn the next one as well.",
+		"Elune kept her eye on me. I hope I gave her no reason to look away.",
+		"Elune, you were near. I felt it, or wanted to, and in a fight that is nearly the same.",
+	},
+	["race.nightelf.victory.w08.005"] = {
+		"Hah! Tell the owls. They love gossip.",
+		"Not bad for someone who'd rather be sitting under a tree.",
+		"Done! Someone tell the hippogryphs; they never believe me.",
+	},
+	["race.nightelf.victory.w08.006"] = {
+		"The forest will take it back, as it takes everything. That is not cruelty; it is housekeeping.",
+		"Fallen leaves feed the next spring, the druids of Darnassus teach. Even this will feed something.",
+		"Leaf to soil, soil to root. The old cycle, given a small push.",
+	},
+	["race.nightelf.victory.w08.007"] = {
+		"One less threat to the groves. The Sentinels can sleep a little easier.",
+		"Done. Tell Darnassus the world is a little safer than it was.",
+		"Over. The groves are a little quieter for it, as they should be.",
+	},
+	["race.nightelf.victory.w08.008"] = {
+		"shakes the fight out of {g:his|her} long hair and lets out a slow breath.",
+		"flexes {g:his|her} long fingers one by one, as if counting them, and seems satisfied with the total.",
+	},
+	["race.nightelf.victory.w08.009"] = {
+		"Humans would have a song about that by tomorrow. My people will simply remember it, which is worse.",
+		"The short-lived boast after every fight. I'll just remember this one for a very long time, which is worse.",
+		"Some races would carve this in stone. Mine will just never forget it.",
+	},
+	["race.nightelf.victory.w08.010"] = {
+		"Rest. The fight is over, and I have no quarrel with what you leave behind.",
+		"Ishnu-alah. Whatever you were, be at peace now.",
+		"Go gently. I take no joy in this part, only in its being over.",
+	},
+	["race.nightelf.victory.w08.011"] = {
+		"Back where you came from. Ten thousand years, and the kaldorei still finish what the Legion starts.",
+		"Another demon unmade. The War of the Ancients never truly ended, the old sentinels say; it only grew smaller.",
+	},
+	["race.nightelf.victory.w08.012"] = {
+		"lifts {g:his|her} face to the moon for a long moment, as if reporting to someone.",
+		"turns toward the moon and inclines {g:his|her} head, a small thanks given without words.",
+	},
+	["race.nightelf.victory.w08.013"] = {
+		"My heart is still racing. A kaldorei is supposed to be calm. A kaldorei is also allowed to breathe.",
+		"Hands steady, heart loud. The Sentinels say the heart never quite learns to keep quiet.",
+	},
+	["race.nightelf.victory.w08.014"] = {
+		"Next? Kaldorei don't tire quickly, and I've barely begun.",
+		"That's one. My people count in thousands; there's room on the tally.",
+		"Again, if you like. My people have ten thousand years of practice at starting over.",
+	},
+	["race.nightelf.victory.w08.015"] = {
+		"The Sentinels speak of their fallen as if the forest still held them. No one will speak of this one at all.",
+		"So many dead in my people's long story. I add one more to the margin, without a name.",
+	},
+	["race.nightelf.victory.w08.016"] = {
+		"Lie still. The Scourge once climbed Mount Hyjal and found the kaldorei waiting, as you did.",
+		"Back to rest. Whatever raised you will find nothing left of you to use.",
+	},
+	["race.tauren.battle.w08.001"] = {
+		"For Mulgore, and for every tauren who walks far from it!",
+		"By the plains that raised me, you picked the wrong road!",
+	},
+	["race.tauren.battle.w08.002"] = {
+		"Size isn't everything. In my case, though, it's a fair start.",
+		"Big, yes. Slow, no. Most learn the second part too late.",
+		"Don't let the bulk fool you. Then again, everyone does.",
+	},
+	["race.tauren.battle.w08.003"] = {
+		"stamps once, hard, and the ground answers with a dull thud that carries through the soles of everyone nearby.",
+		"lets out a deep roar from the bottom of the chest, a challenge as old as the plains, and throws {g:his|her} weight forward.",
+		"rolls {g:his|her} massive shoulders and comes on with the steady, unstoppable gait of a stampede that has made up its mind.",
+	},
+	["race.tauren.battle.w08.004"] = {
+		"Breathe the way the elders of Mulgore teach: slow in through the nose, slow out. The fight comes no faster for hurrying.",
+		"Easy. A stampede starts with one hoof. Choose where it lands.",
+		"Patience first. The plains reward the one who waits for the charge, not the one who starts it.",
+	},
+	["race.tauren.battle.w08.005"] = {
+		"Earth Mother, whoever falls here, take them gently. I'd rather it wasn't me.",
+		"Earth Mother, watch this. I'd like to give you something to be proud of.",
+		"Earth Mother, this ground is yours. Let me not shame it.",
+	},
+	["race.tauren.battle.w08.006"] = {
+		"My people walked Mulgore end to end for generations. I can walk through you.",
+		"The kodo don't stop for small things. Neither do I.",
+		"Out of my path. A tauren on the move is a slow avalanche.",
+	},
+	["race.tauren.battle.w08.007"] = {
+		"Ah, company. My hooves were starting to fall asleep.",
+		"Good. My hooves were getting restless.",
+		"Hunting season, then. Except I'm the one doing the choosing.",
+	},
+	["race.tauren.battle.w08.008"] = {
+		"breathes out through flared nostrils, long and low, and goes very still before the first blow.",
+		"snorts a short blast of breath, ears flat, the whole great body gathered like a bull at the gate.",
+		"lowers {g:his|her} head and blows a long breath over the ground, like a bull deciding how the day will end.",
+	},
+	["race.tauren.battle.w08.009"] = {
+		"My people outlasted the centaur for generations. I can outlast you for a minute.",
+		"Quilboar, centaur, Grimtotem: they've all tried. Join the list.",
+	},
+	["race.tauren.battle.w08.010"] = {
+		"Make myself a wall. Everything that wants to get past has to go through a tauren first.",
+		"All this weight was made for something. Let it be for standing here.",
+		"Big enough to block a doorway, big enough to block this. Plant and hold.",
+	},
+	["race.tauren.battle.w08.011"] = {
+		"Hear that? That's my heart drumming. It drums louder than yours.",
+		"My people have drums for this. I'll make do with my heartbeat.",
+	},
+	["race.tauren.battle.w08.012"] = {
+		"tosses {g:his|her} head once, horns cutting the air, and every bit of the plains' patience goes out of {g:his|her} eyes.",
+		"draws breath until the chest swells like a drumskin, then lets it out as a roar that rolls along the ground.",
+	},
+	["race.tauren.battle.w08.013"] = {
+		"If this is my last hunt, the earth already knows where to find me.",
+		"I don't fear the grass over me. I just don't want it yet.",
+		"Every hunt might be the last. The elders say that's why you walk into each one with your eyes open.",
+	},
+	["race.tauren.battle.w08.014"] = {
+		"Another one who thinks a tauren is a slow target. I'll let them enjoy that thought for a moment.",
+		"They always aim for the middle. With a tauren, the middle is very large. Fair enough.",
+	},
+	["race.tauren.battle.w08.015"] = {
+		"Thunder Bluff stands on high rock for a reason. So do I.",
+		"You won't move me. I come from a city built on cliffs.",
+		"Cliffs don't step aside. Neither do the people who live on them.",
+	},
+	["race.tauren.battle.w08.016"] = {
+		"Something will die here. The hunt teaches you to thank it, whichever of us it turns out to be.",
+		"Whatever falls, I'll give thanks for it afterward. That's the bargain my people keep with the hunt.",
+	},
+	["race.tauren.battle.w08.017"] = {
+		"Hm. You're not a plainstrider, but you'll do.",
+		"Not what I was hunting, but I'm not fussy.",
+	},
+	["race.tauren.battle.w08.018"] = {
+		"settles into the ground as if putting down roots there, hooves wide, head low, waiting.",
+		"sinks a little lower, weight spread over both hooves, solid as a standing stone of the plains.",
+	},
+	["race.tauren.lowhp.w08.001"] = {
+		"A tauren falls like an old tree: slowly, and not today.",
+		"It takes a lot to bring down something this size. You're not there yet.",
+		"Wounded, yes. But there's a great deal of me left to get through.",
+	},
+	["race.tauren.lowhp.w08.002"] = {
+		"The ground looks very soft from here. Don't lie down. Don't you dare lie down.",
+		"My legs are asking to kneel. Tell them no. Kneeling comes afterward, with thanks, not now.",
+	},
+	["race.tauren.lowhp.w08.003"] = {
+		"You've made me angry and dizzy at once. Only one of those will pass.",
+		"Fine. I'm bleeding. Now you've made a tauren bleed, and that rarely ends well for anyone.",
+		"This is the part where people expect a tauren to topple. I've never had much use for expectations.",
+	},
+	["race.tauren.lowhp.w08.004"] = {
+		"sways like a great tree in a high wind, then sets {g:his|her} hooves and refuses to go down.",
+		"breathes in ragged gusts, blood darkening the fur, but the head comes up again, horns and all.",
+		"staggers half a step, catches the ground with all {g:his|her} weight, and stays upright out of sheer stubbornness.",
+	},
+	["race.tauren.lowhp.w08.005"] = {
+		"Earth Mother, I'm not ready to lie down in you. Wait for me a while longer.",
+		"Mother of us all, I hear you. Not now. I'll walk to you on my own hooves someday, not like this.",
+	},
+	["race.tauren.lowhp.w08.006"] = {
+		"Bleed a tauren and you only teach it to charge harder!",
+		"There's the blood. Now we're both serious.",
+	},
+	["race.tauren.lowhp.w08.007"] = {
+		"Slow down inside. Panic is a stampede; it tramples the one who started it.",
+		"The plains teach this much: when you bleed, don't run blind. Breathe. Look. Choose.",
+	},
+	["race.tauren.threat.w08.001"] = {
+		"Stampedes part around a tauren who stands still. You are a great deal less than a stampede.",
+		"Go. I'd rather leave you to the grass than put you under it.",
+		"Walk away. A tauren gives one warning; the second is given by the hooves.",
+	},
+	["race.tauren.threat.w08.002"] = {
+		"The Earth Mother takes everything back in the end. Don't ask me to hurry her.",
+		"Turn around, and the earth won't have to make room for you today.",
+	},
+	["race.tauren.victory.w08.001"] = {
+		"Thank you for the fight. That's how my people end a hunt, and I won't be the one to break the habit.",
+		"A word of thanks for what fell. The hunt asks it of every tauren, even after a fight nobody wanted.",
+	},
+	["race.tauren.victory.w08.002"] = {
+		"stands over the fallen a moment with one hand raised, palm open, in the quiet thanks of the plains.",
+		"lowers {g:his|her} head over the stillness for the space of one breath, then turns away.",
+	},
+	["race.tauren.victory.w08.003"] = {
+		"Hah. You fought like a quilboar with a grudge. I respect that.",
+		"Good fight. I'll remember you when I'm old and boring.",
+		"Phew. More work than chasing down a runaway kodo.",
+	},
+	["race.tauren.victory.w08.004"] = {
+		"The heart slows the way a herd slows: the leaders first, then the rest. Give it time.",
+		"Breath coming back to me in big slow pulls, like water filling a hoofprint.",
+		"Slow breaths. In through the nose, out like a kodo at the top of the climb to the bluff.",
+	},
+	["race.tauren.victory.w08.005"] = {
+		"Tell the others a tauren stands here. Let them think twice.",
+		"Next one should bring friends. Lots of friends.",
+		"Down, and staying down. The plains breed us tough.",
+	},
+	["race.tauren.victory.w08.006"] = {
+		"It's over. On the plains you don't gloat; you check the wind, and you move on.",
+		"Over. The elders would say: don't stand over it too long, or you start to think you're the reason the world turns.",
+	},
+	["race.tauren.victory.w08.007"] = {
+		"And that's why you don't startle a tauren.",
+		"Lesson for the next one: never get between a tauren and the road.",
+		"Should have walked around me. Most things do.",
+	},
+	["race.tauren.victory.w08.008"] = {
+		"shakes out {g:his|her} mane and lets the heat of the fight steam off {g:him|her} slowly.",
+		"plants both hooves and stands there breathing like a bellows, enormous and unhurried.",
+	},
+	["race.tauren.victory.w08.009"] = {
+		"Even a needed death sits heavy. My people don't pretend otherwise, and neither will I.",
+		"Every life the earth takes back leaves a little weight on the one who sent it there. Fine. I can carry weight.",
+		"Finished. I'll carry the weight of it a little while, the way the elders say a hunter should, and then set it down.",
+	},
+	["race.tauren.victory.w08.010"] = {
+		"Cairne keeps the peace of his people. Here, I kept a little of it too.",
+		"Another tale for the tellers at Thunder Bluff, if they want it. I'd rather they told it short.",
+	},
+	["race.tauren.victory.w08.011"] = {
+		"That went well. I only tripped over my own hooves once, and nobody saw.",
+		"Not bad. A little more grace and I'd be mistaken for a night elf. A very large night elf.",
+	},
+	["race.tauren.victory.w08.012"] = {
+		"Earth Mother, it's done. Turn your eyes elsewhere; there's nothing more to see here.",
+		"It's finished. May An'she and Mu'sha look kindly on whatever's left of this place.",
+	},
+	["race.tauren.victory.w08.013"] = {
+		"Each fight leaves the hooves a little surer. That's how a calf learns the herd's pace, the herders say.",
+		"One fight more, a little strength more. The plains are patient teachers, and they never let you skip a lesson.",
+	},
+	["race.tauren.victory.w08.014"] = {
+		"Over. The herd doesn't stop because one wolf fell; neither do I.",
+		"Good. Back to walking. A tauren is happiest with miles under the hooves.",
+		"That's settled. Now, which way was I going? Ah. Forward.",
+	},
+	["race.tauren.victory.w08.015"] = {
+		"flicks an ear, as if at a fly, and looks around for anything else that might want trouble.",
+		"tilts {g:his|her} head at the fallen foe with mild curiosity, the way a kodo regards a fence it has just walked through.",
+	},
+	["race.tauren.victory.w08.016"] = {
+		"The wind will move over this spot as if nothing happened. On the plains I learned to find that comforting.",
+		"Soon there'll be no sign of this. The land forgets quarrels faster than any of us. My people call that mercy.",
+	},
+	["race.tauren.victory.w08.017"] = {
+		"Hooves, horns and a bad temper. You met all three.",
+		"That's what happens when you wake a tauren's temper. It takes a long time to wake, and longer to sleep.",
+	},
 }, "base_combat")
