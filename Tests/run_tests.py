@@ -521,7 +521,23 @@ check(m2["same_theme_pct"] < 15, f"M2: same theme consecutively under 15% ({m2['
 check(m2["says_murmurs_pct"] < 10, f"M2: 'says' and 'murmurs' under 10% of the frames ({m2['says_murmurs_pct']:.1f}%)")
 check(m2["category_pct"].get("combat", 0) < 45, f"M2: combat under its quota ({m2['category_pct'].get('combat', 0)}%)")
 check(m2["category_pct"].get("exploration", 0) > 0, "M2: exploration speaks")
-check(m2["pick_mean_ms"] < 2, f"M2: PickEntry stays fast ({m2['pick_mean_ms']:.2f} ms)")
+# C0e (ADR 0052): the cost of a pick is gated on its Lua instructions, which do not depend on the machine; the time is
+# the CPU time of the thread, and its median over the six runs (one run slowed by the machine moves the mean, not the
+# median). Over 2 ms, the time is measured again on a shorter session before failing: a busy machine measured 2.47 ms
+# for a pick of 1.75 ms (W04, PR #250), while a real regression stays slow the second time too
+with open(os.path.join(HERE, "perf_baseline.json"), encoding="utf-8") as f:
+    perf_base = json.load(f)
+m2_ki, m2_ki_base = m2["pick_kinstr"], perf_base["m2_pick_kinstr"]
+print(f"  M2 pick: {m2_ki:.1f} thousand Lua instructions (p95 {m2['pick_p95_kinstr']:.1f}); reference {m2_ki_base:.1f} "
+      f"(Tests/perf_baseline.json); CPU time {m2['pick_mean_ms_median']:.2f} ms (median of the runs)")
+check(m2_ki < m2_ki_base * perf_base["m2_fail_ratio"],
+      f"M2: a pick stays under {perf_base['m2_fail_ratio']:.0%} of its reference in Lua instructions ({m2_ki:.1f} thousand)")
+m2_ms = m2["pick_mean_ms_median"]
+if m2_ms >= 2:
+    again = bench_m2.session_metrics(ADDON, hours=1, seeds=(1, 2))
+    print(f"  M2: {m2_ms:.2f} ms, measured again: {again['pick_mean_ms_median']:.2f} ms")
+    m2_ms = min(m2_ms, again["pick_mean_ms_median"])
+check(m2_ms < 2, f"M2: PickEntry stays fast ({m2_ms:.2f} ms of CPU time, median of the runs)")
 
 # 9a-bis) scenario M6 of the analysis A1 (R4: #97, #98, Tests/scenario_return.py): enter Elwynn, die, come back. No
 # cheerful or ironic return line for a neutral or a cheerful character; gallows humour only for an ironic one
@@ -577,8 +593,6 @@ check(proj["found"] == proj["picks"], "proiezione: ogni scelta trova una frase")
 check(proj["per_entry_b"] < 2500, f"proiezione: memoria per regola sotto 2.500 B ({proj['per_entry_b']:.0f})")
 # #157: the Lua instructions per pick do not depend on the machine, so a regression shows in the PR that causes it. A
 # warning, not a failure: new content changes the number too. After a deliberate change, update the baseline.
-with open(os.path.join(HERE, "perf_baseline.json"), encoding="utf-8") as f:
-    perf_base = json.load(f)
 ki, ki_base = proj["pick_kinstr"], perf_base["pick_kinstr_2000"]
 print(f"  istruzioni Lua per scelta: {ki:.1f} mila (p95 {proj['pick_p95_kinstr']:.1f}); riferimento {ki_base:.1f} mila "
       "(Tests/perf_baseline.json)")

@@ -17,7 +17,14 @@ Reported, averaged over the seeds and the two characters:
   - a content word (4 letters or more, not a stop word) of an intervention already used in the 4 before it;
   - same voice three times in a row; share of each category; how many zone, victory and reflection lines spoke;
   - how many interventions were monologues (#99) and lines of a composite situation (#100), and which situations;
-  - time of Engine:PickEntry (mean, p95), which must stay close to the R1 numbers.
+  - time of Engine:PickEntry (mean, p95), which must stay close to the R1 numbers, and the median over the runs of
+    the mean time of a run (pick_mean_ms_median);
+  - Lua instructions of Engine:PickEntry (thousands, mean and p95; C0e, ADR 0052), counted on one pick in COUNT_EVERY:
+    unlike the times they do not depend on the machine, so run_tests.py gates on them.
+
+The times are the CPU time of the thread (bench_scale.cpu_clock), not the wall clock: Lua's os.clock is the wall clock
+on Windows (with a resolution of one millisecond), so a busy machine made a pick of 1.75 ms measure 2.47 ms (W04,
+PR #250). A counted pick is not timed (the count hook slows it down), and a timed one is not counted.
 
 --r1 switches off what R3 added to the selection and the direction (tiers, fallback, thematic novelty, voice
 alternation, frames by theme, quotas, hunger: Engine.R1_COMPAT), so the same data can be measured before and after.
@@ -25,6 +32,7 @@ alternation, frames by theme, quotas, hunger: Engine.R1_COMPAT), so the same dat
 import argparse, json, os, re, statistics, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+COUNT_EVERY = 5   # C0e: one pick in this many is counted in Lua instructions instead of timed
 sys.path.insert(0, HERE)
 import bench_scale as B  # noqa: E402
 
@@ -59,7 +67,7 @@ local Engine = ns.Engine
 Engine.R1_COMPAT = r1 or nil
 ns.db.locale = "en"
 ns.db.output = ns.db.output or {}
-SIM = { out = {}, times = {}, frame = nil }
+SIM = { out = {}, times = {}, kinstr = {}, frame = nil, n = 0 }
 -- the frame a framed phrase was told in: the last RenderEntry with a line
 local render = Engine.RenderEntry
 Engine.RenderEntry = function(self, entry, lang, ctx, line, nested)
@@ -67,11 +75,23 @@ Engine.RenderEntry = function(self, entry, lang, ctx, line, nested)
 	return render(self, entry, lang, ctx, line, nested)
 end
 local pick = Engine.PickEntry
+local clock, every = SIM_CLOCK, SIM_COUNT_EVERY
 Engine.PickEntry = function(self, event, ctx, form, composite)
 	SIM.frame = nil
-	local t0 = os.clock()
-	local rec = pick(self, event, ctx, form, composite)
-	table.insert(SIM.times, (os.clock() - t0) * 1000)
+	SIM.n = SIM.n + 1
+	local rec
+	if SIM.n % every == 0 then
+		-- C0e: the Lua instructions of the pick (a C function counts as one), every 100
+		local n = 0
+		debug.sethook(function() n = n + 1 end, "", 100)
+		rec = pick(self, event, ctx, form, composite)
+		debug.sethook()
+		table.insert(SIM.kinstr, n / 10)
+	else
+		local t0 = clock()
+		rec = pick(self, event, ctx, form, composite)
+		table.insert(SIM.times, clock() - t0)
+	end
 	if rec then rec.simFrame = SIM.frame end
 	return rec
 end
@@ -133,8 +153,17 @@ end
 """
 
 
+CLOCK = [None]   # C0e: the clock is calibrated once per process
+
+
 def run(addon, ch, hours, seed, r1):
     lua, ns, _ = B.load_addon(addon)
+    G = lua.globals()
+    # C0e: the CPU time of the thread in milliseconds (bench_scale.cpu_clock), not os.clock (the wall clock on Windows)
+    if CLOCK[0] is None:
+        CLOCK[0] = B.cpu_clock()
+    G.SIM_CLOCK = CLOCK[0]
+    G.SIM_COUNT_EVERY = COUNT_EVERY
     lua.execute("function __drv(...) " + DRIVER + " end")
     lua.globals().__drv(ns, r1)
     lua.execute("function __sess(...) " + SESSION + " end")
@@ -145,10 +174,10 @@ def run(addon, ch, hours, seed, r1):
     lua.globals().__sess(ns, t, hours, seed)
     sim = lua.globals().SIM
     out = [dict(r.items()) for r in sim.out.values()]
-    return out, list(sim.times.values())
+    return out, list(sim.times.values()), list(sim.kinstr.values())
 
 
-def metrics(out, times):
+def metrics(out, times, kinstr=()):
     n = len(out)
     m = {"interventions": n}
     if n < 2:
@@ -181,6 +210,10 @@ def metrics(out, times):
     times = sorted(times)
     m["pick_mean_ms"] = statistics.mean(times)
     m["pick_p95_ms"] = times[int(len(times) * 0.95) - 1]
+    if kinstr:
+        kinstr = sorted(kinstr)
+        m["pick_kinstr"] = statistics.mean(kinstr)
+        m["pick_p95_kinstr"] = kinstr[int(len(kinstr) * 0.95) - 1]
     return m
 
 
@@ -188,8 +221,8 @@ def session_metrics(addon, hours=3, seeds=(1, 2, 3), r1=False):
     rows = []
     for seed in seeds:
         for ch in CHARACTERS:
-            out, times = run(addon, ch, hours, seed, r1)
-            rows.append(metrics(out, times))
+            out, times, kinstr = run(addon, ch, hours, seed, r1)
+            rows.append(metrics(out, times, kinstr))
     keys = [k for k in rows[0] if isinstance(rows[0][k], (int, float))]
     avg = {k: statistics.mean(r[k] for r in rows) for k in keys}
     cats = {}
@@ -202,6 +235,8 @@ def session_metrics(addon, hours=3, seeds=(1, 2, 3), r1=False):
         for c, v in r.get("situations", {}).items():
             sits[c] = sits.get(c, 0) + v / len(rows)
     avg["situations"] = {c: round(v, 2) for c, v in sorted(sits.items())}
+    # C0e: one run slowed by the machine moves the mean of the runs, not their median
+    avg["pick_mean_ms_median"] = statistics.median(r["pick_mean_ms"] for r in rows if "pick_mean_ms" in r)
     return avg
 
 

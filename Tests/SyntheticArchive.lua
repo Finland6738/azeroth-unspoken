@@ -97,6 +97,19 @@ local function BaseRules(Engine, langs)
 	return base
 end
 
+-- C0e (ADR 0052): the mean number of texts (variants) of an entry of the archive in one language, so a projection can
+-- be asked in texts per language, the unit of the need model (docs/content/NEED.md)
+function SYNTH_TEXTS_PER_ENTRY(NS, lang)
+	local base = BaseRules(NS.Engine, { lang or "enUS" })
+	local texts = 0
+	for _, p in ipairs(base) do
+		for _, v in ipairs(p.text[NS.Engine.LangCode(lang or "enUS")]) do
+			if VariantText(v) then texts = texts + 1 end
+		end
+	end
+	return texts / #base
+end
+
 function SYNTH_SOURCE(NS, n, opts)
 	opts = opts or {}
 	local Engine = NS.Engine

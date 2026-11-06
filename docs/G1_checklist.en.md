@@ -560,6 +560,16 @@ at most 4 ms per frame, outside combat.
 14. **`debugprofilestop`.** If `/au prof` says the client has no `debugprofilestop`, the ms of the changes come from
     `os.clock` (less precise): note it.
 
+**C0e (ADR 0052): a bounded pick.** Never run in the client either. A pick of an event with many lines now reads a
+sample of each level of specificity instead of every line, so its cost should not grow with the content waves.
+
+15. **The cost of a pick.** Play an hour in a capital (Orgrimmar or Stormwind City: the events with the most lines)
+    with `/au speak` now and then, then `/au prof`. **Expect:** the p95 of `PickEntry` under 5 ms, as before W04, and
+    no stutter when a line is said. **Report:** the p95 and the mean of `PickEntry`, and the memory.
+16. **Variety and place.** In the same hour: are the lines of the capital (and of a subzone, if you stand in one) still
+    heard about half the time, the class and race lines often, the general ones now and then? **Report:** a line
+    heard twice within a few minutes, or a level (place, class, general) that never speaks.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -639,4 +649,5 @@ L2 frequency ............ pieces in an hour (rare) ______  (normal) ______  neve
 C0 areas ............... area in /au packs ______  ms of a change ______  stutter? ___  KB login/after/back ______
 C0b frames ............. ms in all ______  frames ______  longest frame ______  stutter? ___  errors? ___
 C0b memory ............. sources kept (KB) ______  areas released ______
+C0e picks .............. PickEntry mean/p95 (ms) ______  stutter? ___  place/class/general all heard? ___  repeats ______
 ```

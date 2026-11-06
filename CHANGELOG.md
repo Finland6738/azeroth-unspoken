@@ -8,6 +8,65 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### C0e: a bounded pick, whatever the number of lines (issue #138, ADR 0052)
+
+Content wave W04 (PR #250) found the cost of a pick growing with the content: every candidate of an event was checked
+and weighed, and the waves keep adding lines to the same events. A pick now costs about the same with today's lines
+and with the 270,000 texts per language of the random need. See
+[ADR 0052](docs/adr/0052-a-bounded-pick.md).
+
+- **Changed: a large event is read tier by tier, and a large tier is sampled.** An event (one form) whose open groups
+  of the index hold more than 64 candidates, with a tier of more than 24, is read from the groups split by specificity
+  tier (`Engine.Split`, made when a pick first reads a group and extended as rules are appended): a small tier is
+  checked whole; a large one is sampled, rules drawn at random without repetition and checked one at a time until 16
+  hold or 48 were checked (a line in the anti-repetition window is passed over before its check). The kept rules are
+  weighed, mixed by tier (place 50, situation 35, generic 15) and picked exactly as every candidate was before; the
+  window keeps its size from the rules that hold, estimated. When the sample keeps nothing, every candidate is checked
+  as before, so no line that could speak goes silent. Smaller events pick exactly as before:
+  `Tests/trace_picks.py --exact` (`Engine.SAMPLE = false`) and `--r1` print the same 3,000 picks as `main`; the
+  default trace differs by design (2,821 of 3,000, the random sequence diverges after the first sampled pick) with the
+  same levels (generic 46.2% / 46.0% on `main`, situation 45.6 / 45.9, place 8.1 / 8.1).
+- **Changed: the composite pick** (#100, asked first whenever the context has a situation) reads the situational lines
+  of the split groups (`Engine:SituationalCandidates`) instead of merging every candidate of the event: the same lines,
+  in the same order.
+- **Changed: the cost of a pick is gated in Lua instructions.** The simulated M2 session of `run_tests.py`
+  (`Tests/bench_m2.py`) counts the instructions of one pick in five and fails above 150% of
+  `m2_pick_kinstr` in `Tests/perf_baseline.json`, on any machine. Its time is now the CPU time of the thread (not
+  `os.clock`, the wall clock on Windows), as the median over the six runs; above 2 ms it is measured again before the
+  check fails. The baselines were reset on purpose and `perf_baseline.json` records why (`history`).
+- **Added: `Tests/bench_scale.py --areas --texts 100000,270000`**, the projection by area in texts per language
+  (2.42 texts per synthetic entry; `--resident-share` 0.6 of them resident, as the need model plans), and the memory
+  after the picks in both modes. `Tests/trace_picks.py --exact`.
+- **Measured** (same machine and data, `main` → this change; thousands of Lua instructions per pick, mean / p95):
+  - `bench_scale --sizes 0` (today's 15,402 texts per language): 34.4 / 167.0 → 24.9 / 43.7;
+  - every line resident, one language (`--sizes 41285,111469`, about 100,000 and 270,000 texts): 48.6 / 273.3 →
+    23.3 / 43.8 and 74.6 / 449.4 → 24.3 / 43.4; memory 46.2 → 46.4 MB and 88.8 → 89.2 MB after the picks;
+  - by area (`--areas --texts`, 60% resident, the rest over 40 areas): 100,000 texts 81.9 / 340.5 → 37.6 / 81.8
+    (1.41 → 0.58 ms, p95 5.05 → 1.18), 270,000 texts 131.8 / 560.7 → 45.1 / 77.0 (2.03 → 0.95 ms, p95 8.15 → 1.96);
+    the mean rises 20% from 100,000 to 270,000 while events and tiers cross the sampling thresholds, the p95 does not;
+    a change of area is unchanged (64 and 153 ms, spread over frames of about 3.7 ms);
+  - the M2 session: 84.1 / 193.8 → 42.7 / 70.6, CPU time 1.24 → 0.71 ms; the suite's projection 34.1 / 174.1 → 24.0 /
+    47.2.
+- **Memory is the limit at the random need, not the pick.** With every area loaded only while the character is in it,
+  270,000 texts per language take about 59 MB at login, 71 MB with an area and at most 74 MB after every area, in one
+  language (100,000 texts: 27, 32 and 33 MB), most of it the resident lines (generic, situation, class, race). The class
+  and race pools are about 79% of the resident texts in the need model; ADR 0052 proposes, without doing it here, to
+  load only the character's class and race lines (packs by class and race, like the area packs): about 40 MB in all at
+  270,000 texts per language.
+- **Tests:** `Tests/TestSelection.lua`: a pick of an event with 4,005 lines costs about what one of 405 costs (and
+  far less than checking every line), the shares of the levels hold within 3 points over 3,000 picks (single picks and
+  a session), a session reaches most of 1,000 generic lines, five subzone lines beside thousands are still preferred,
+  the window holds 30 lines, a line that holds is found when the sample misses it, rules of a new pack join the tiers
+  and those of a dropped one leave them, a tier changed through a view is read, and the composite candidates are those
+  of `Engine:Candidates`. Three tests that passed by the luck of the dice (the random numbers of the Lua runtimes of
+  the suite are one sequence of the process, so a change anywhere moves them) no longer depend on it: `/au battlecry`
+  in a fight may give a thought shown at once instead of a proposal (TestChatGateway, about 30% of the seeds on `main`
+  too); a `muse` monologue comes about once in 300 picks, so the search waits 3,000 picks instead of 400; the
+  monologue that must win a `rez` pick is taken out of the window of the event and the tiers are one level there, as a
+  lone landmark line still gives the generic level about one draw in seven (TestDynamism).
+- **Docs:** [ADR 0052](docs/adr/0052-a-bounded-pick.md), [ARCHITECTURE.md](docs/ARCHITECTURE.md) (the selection),
+  the in-game checklist (C0e), ROADMAP (C0), the FAQ of the wiki (the cost of a pick).
+
 ### Content wave W04: the endgame zones, the raids and battlegrounds, and the end of the soft need (issue #138)
 
 The fourth content wave of [docs/content/WAVES.md](docs/content/WAVES.md) (its pools were the first row of the table

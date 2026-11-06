@@ -41,7 +41,7 @@ local function Offer(ev, extra) Director:Offer(ev, extra); ADVANCE(0.2) end
 -- the class, race, faction and zone lines of the speak key are more than the window of 30 picks, and the generic level
 -- still keeps its share of the picks (#138, ADR 0051)
 local function FindMonologue(event, form, tries)
-	for _ = 1, tries or 400 do
+	for _ = 1, tries or 3000 do
 		local rec = Engine:PickEntry(event, NS:BuildContext(), form)
 		if rec and rec.kind == "monologue" then return rec end
 		ADVANCE(600)
@@ -127,10 +127,15 @@ end)
 
 T.run("a monologue is one intervention for the Director", function()
 	Reset()
-	-- the most specific tier and a huge weight: the monologue wins the pick
+	-- the most specific tier and a huge weight: the monologue wins the pick. One level of tiers (ADR 0029): with the
+	-- shares of ADR 0051 a lone landmark line competes in the situation level, and the generic level would still be
+	-- drawn about one time in seven
 	local mono = Engine.byId["mono.rez.breath"]
-	local weight = mono.weight
+	local weight, shares = mono.weight, Engine.TIER_SHARES
 	mono.weight, mono.tier = 1e6, Engine.MAX_TIER
+	Engine.TIER_SHARES = { [0] = 1 }
+	-- and not in the window of the event: an earlier test may have said it
+	NS.cdb.memory.recent.rez = nil
 	NS.db.chance.rez = 100
 	NS.Profiler:Reset()
 	shown = {}
@@ -142,6 +147,7 @@ T.run("a monologue is one intervention for the Director", function()
 	ADVANCE(1)
 	Gateway.PickRecord = pickRecord
 	mono.weight, mono.tier = weight, nil
+	Engine.TIER_SHARES = shares
 	T.eq(#Narrator.history - before, 1, "one entry in the narrator")
 	T.eq(#Pacing.history - hist, 1, "one intervention for the pacing and the quotas")
 	T.eq(shown[#shown] and shown[#shown].id, "mono.rez.breath", "the monologue spoke")
