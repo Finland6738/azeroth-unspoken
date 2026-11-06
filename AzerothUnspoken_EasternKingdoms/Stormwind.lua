@@ -1382,4 +1382,12 @@ AU:RegisterRegionalPack("elwynnforest", {
 		tags = { "temperament:melancholic", "calm" }, depth = { "literary" },
 		theme = "solitude", motifs = { "rain", "night" },
 		conditions = { zone = "Stormwind City", weather = "rain", time = "night" } },
+	["sw.jest.w05.001"] = { event = "jest", speaker = "character", styles = { "ironic" },
+		tags = { "irony:high" }, depth = { "natural" },
+		theme = "humour", motifs = { "water" },
+		conditions = { zone = "Stormwind City" } },
+	["sw.pray.w05.001"] = { event = "pray", speaker = "character", styles = { "ceremonial", "intimate" },
+		tags = {}, depth = { "literary", "elevated" },
+		theme = "faith", motifs = { "bell", "road" },
+		conditions = { zone = "Stormwind City" } },
 ]==])

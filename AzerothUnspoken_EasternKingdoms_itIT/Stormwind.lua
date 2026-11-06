@@ -1636,4 +1636,12 @@ AU:RegisterRegionalTexts("elwynnforest", "itIT", "eastern_stormwind", [==[
 		"Pioggia nel buio: ogni lanterna ha un alone, e i ciottoli luccicano come il canale stesso.",
 		"Si prepara una notte bagnata. Le taverne saranno piene e i ponti vuoti.",
 	},
+	["sw.jest.w05.001"] = {
+		"I canali di Stormwind sono una gran comodità. Qualunque cosa ti cada da un ponte, te la custodiscono per sempre.",
+		"A Stormwind i canali li trovi sempre. Di solito mettendoci un piede dentro.",
+	},
+	["sw.pray.w05.001"] = {
+		"Chiunque ascolti sopra le campane: riporta a casa ogni soldato partito dalla Valley of Heroes per la stessa strada, sulle sue gambe.",
+		"Che tutti quelli usciti passando sotto le statue del portone rientrino sotto di loro, interi.",
+	},
 ]==])
