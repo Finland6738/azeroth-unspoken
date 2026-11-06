@@ -8,6 +8,66 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W05: Ironforge, Darnassus, Thunder Bluff and Undercity, the warrior and the rogue (issue #138)
+
+The fifth content wave of [docs/content/WAVES.md](docs/content/WAVES.md) (its pools were the first row of the table
+after W04: the strict need of [ADR 0050](docs/adr/0050-need-model-near-duplicates-and-content-waves.md) for the four
+capitals with the fewest lines, two texts of Stormwind City, and the first two classes, with the tiers mixed by share
+of [ADR 0051](docs/adr/0051-tiers-mixed-by-share.md)): **1,335 intentions, 3,102 texts per language** (6,204 in both),
+written by twelve parallel writer subagents (authors `ai-w05-<unit>`) and passed through the archive (drafts,
+`cli dups --state draft` with no exact and no near duplicate, submit, owner sample, approve, export; the round trip is
+an empty diff). No literary piece and no `tier` field. The addon goes from 6,388 to **7,723 intentions** and from
+15,402 to **18,504 texts per language**.
+
+- **Added: four capitals**, in their W01 packs, every event of the city (muse, quests, flights, rest, weather, the
+  districts, greetings, prayers and toasts, reputation, the hours, and the first city lines of the NPC dialogues:
+  `npcd_innkeeper_*`, `npcd_merchant_*`, `npcd_guard_*`, `npcd_trainer_*`, `npcd_flightmaster_*`): Ironforge
+  (`eastern_ironforge`, `ifo.<event>.w05.NNN`, 188 intentions, 436 texts per language), Undercity (`eastern_undercity`,
+  `und.`, 195 and 441), Darnassus (`kalimdor_darnassus`, `dar.`, 177 and 431) and Thunder Bluff
+  (`kalimdor_thunderbluff`, `thb.`, 190 and 448); and two intentions of Stormwind City (`jest`, `pray`). A capital line
+  never assumes a race (a gnome in Ironforge, a tauren in Undercity are as common as the city's own people): the few
+  lines of "home" write `race`, the few of a visitor `not = { race }`.
+- **Added: the warrior and the rogue**, in `base_classes` (`cls.warrior.<event>.w05.NNN`, `cls.rogue.<event>.w05.NNN`):
+  the warrior 319 intentions, 743 texts per language (muse, battle, victory, attack, threat, heal, buff, low health,
+  quests, a companion brought back, level, greetings, prayer, reputation); the rogue 264 intentions, 599 texts (muse,
+  battle, victory, heal, buff, quests). Every class line writes `class` at the top level, as
+  [ADR 0053](docs/adr/0053-lines-of-the-character-only.md) expects (only the character's own class is kept in
+  memory); a line that names an ability learned after level 10 writes `levelMin`, no line names a talent, and a foe
+  kind is named only with `ctype`.
+- **Fixed at integration** (the combined check of every writer's files, and the sample read of each writer): two near
+  pairs across writers (a rogue victory and a warrior quest line, a rogue and a warrior heal line), rewritten; the
+  Italian "Forsaken" of the Thunder Bluff lines is "Reietti", as in the rest of the archive; sixteen class lines whose
+  text claims a body that breathes, sweats or has a racing heart now carry `not = { race = "Scourge" }`.
+- **The gap after W05** (per language): soft need 8,893, gap 0; strict need 28,938, gap **13,476** (was 16,478);
+  random need 270,686, gap **253,580** (was 256,682). **88 waves** left (the next is the first row of WAVES.md: the
+  strict need of the next classes).
+- **Measured.** `Tests/bench_scale.py --sizes 0` (every line loaded): memory 19.5 → 22.1 MB, pick 24.9 → 29.0
+  thousand Lua instructions (p95 43.8 → 53.3); the client keeps only the lines of the character's class (ADR 0053),
+  so a character of another class does not carry the 583 new class lines. `Tests/bench_trial.py --long 20` (seed 1;
+  the wave adds lines to the orc warrior's class): first exact repetition orc warrior 5.92 → 7.17 h, repeated share
+  7.7 → 5.8%; troll mage and human paladin unchanged (6.50 h, 6.4%; 6.18 h, 8.1%). `run_tests` M2 pick 47.8 thousand
+  instructions (reference 42.7), CPU time 0.68 ms.
+- **Tests:** the counts of the base intentions, of the phrases of the validator, of the lines loaded and of
+  `base_classes`; the relationship test of the narrator in battle beside a friend draws 600 picks instead of 120 (the
+  mock character is a warrior, whose own battle and victory pools are much larger now), checked over four seeds.
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W05.md](docs/content/reviews/W05.md) (27
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** subzone names are those of the English Classic client, not yet confirmed in Forever (#36); some
+  lines name districts with both spellings (`"Temple of the Moon"`, `"The Temple of the Moon"`). The hippogryph master
+  of Darnassus and the bat handler of Undercity stand outside the city's zone (Rut'theran Village in Teldrassil, the
+  ruins in Tirisfal Glades), so the journey lines of these two cities are arrivals on foot after a flight, and their
+  `npcd_flightmaster_open` lines can hardly fire.
+- **Model finding (not fixed in the wave).** The need model gives every class pool the event rates measured over a
+  mix of all classes (`need.json` `rates`: `buff` 0.22 and `heal` 0.44 firings per hour in the open), but `heal` and
+  `buff` fire only on the character's own cast of a spell the vocabulary classifies (`Systems/Triggers.lua`,
+  `Data/Vocabulary.lua` `kind.heal`/`kind.buff`), and `buff` only out of combat. A warrior or a rogue casts no spell of
+  the `buff` list (Battle Shout is a `shout`, poisons match nothing), and its `heal` fires only on a healing potion or a
+  healthstone (a bandage is "First Aid"). So the 60 + 60 texts the model asks for the `buff` pools of the warrior and
+  the rogue (W05 wrote 55 and 51) can hardly be heard, and their `heal` pools (90 each) fire far less often than the
+  model assumes. Worth a per-class rate in the model (or zero for the events a class cannot fire) before the random
+  need asks for ten times as many.
+
 ### C0f: only the lines of the character's class and race in memory (issue #138, ADR 0053)
 
 C0e left memory as the limit at the random need: about 59 MB at login and 75 MB after visiting every area, in one

@@ -1636,4 +1636,12 @@ AU:RegisterRegionalTexts("elwynnforest", "enUS", "eastern_stormwind", [==[
 		"Rain in the dark: every lamp wears a halo, and the cobbles shine like the canal itself.",
 		"A wet night setting in. The taverns will be full and the bridges empty.",
 	},
+	["sw.jest.w05.001"] = {
+		"Stormwind's canals are a great convenience. Anything you drop off a bridge, they keep for you forever.",
+		"You can always find the canals in Stormwind. Usually by stepping into one.",
+	},
+	["sw.pray.w05.001"] = {
+		"Whoever listens above the bells: bring every soldier who marched out through the Valley of Heroes home the same way, on their own feet.",
+		"May all who walked out past the statues at the gate walk back in beneath them, whole.",
+	},
 ]==])

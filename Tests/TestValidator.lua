@@ -360,7 +360,7 @@ T.run("il database di base non ha né errori né avvisi", function()
 	local r = Validator:Run({ packs = packs })
 	Clean(r, "database di base")
 	-- the 8 monologues (#99) have no texts of their own: their 23 parts have two variants each
-	T.eq(r.stats.phrases, 6345, "6345 frasi (+ 11 della nemesi, N7; + 23 del compagno animale e del lutto, N8; + 53 della seconda parte di N9; + 583 della fetta di prova, #102; + 1006 della W01; + 1110 della W02; + 1081 della W03; + 1223 della W04)"); T.ok(r.stats.variants >= 4 * (1266 - 8), "almeno due varianti IT e due EN per frase")
+	T.eq(r.stats.phrases, 7680, "7680 frasi (+ 11 della nemesi, N7; + 23 del compagno animale e del lutto, N8; + 53 della seconda parte di N9; + 583 della fetta di prova, #102; + 1006 della W01; + 1110 della W02; + 1081 della W03; + 1223 della W04; + 1335 della W05)"); T.ok(r.stats.variants >= 4 * (1266 - 8), "almeno due varianti IT e due EN per frase")
 end)
 
 T.run("/au validate", function()

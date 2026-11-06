@@ -2219,4 +2219,2512 @@ NS:AddTexts("itIT", {
 		"Toppa messa. La cicatrice nuova si unirà alle altre: hanno parecchio da raccontarsi.",
 		"Bene. Adesso posso andare a guadagnarmi la prossima.",
 	},
+	["cls.rogue.battle.w05.001"] = {
+		"Una per mano, e tutte e due portano il tuo nome.",
+		"Mano sinistra, mano destra. Passerai il tempo a chiederti quale.",
+		"Due mani, due fili, e non sto a guardare quale arriva prima.",
+	},
+	["cls.rogue.battle.w05.002"] = {
+		"Tieni quel pensiero. Tra un attimo sono al tuo gomito.",
+		"Resta lì dove sei. Vengo io da te.",
+		"Non serve che ti avvicini. Quello è compito mio.",
+	},
+	["cls.rogue.battle.w05.003"] = {
+		"Trova il lato che preferisce e vivi sull'altro.",
+		"Da che parte si volta per prima? Lì, di sicuro, io non ci sarò.",
+	},
+	["cls.rogue.battle.w05.004"] = {
+		"fa girare l'impugnatura tra le dita una volta, come un giocatore che pareggia il mazzo.",
+		"aggiusta la presa senza guardare, come se la mano sapesse la strada da sola.",
+	},
+	["cls.rogue.battle.w05.005"] = {
+		"Lo scontro leale si paga a parte. E io oggi risparmio.",
+		"Combatterei pulito, ma nessuno mi paga abbastanza per farlo.",
+		"Le regole valgono nei duelli. Questo non lo è.",
+	},
+	["cls.rogue.battle.w05.006"] = {
+		"Tu colpisci, io sono altrove. Tutta la lezione è qui, ed è gratis.",
+		"Mena pure quanto vuoi. Io ho un appuntamento col tuo lato cieco.",
+		"Mira con cura. Non servirà, ma è educato.",
+	},
+	["cls.rogue.battle.w05.007"] = {
+		"Passi piccoli. Quelli lunghi sono promesse che i piedi non mantengono.",
+		"Leggerezza. Sono i piedi pesanti che fanno prendere quelli come me.",
+	},
+	["cls.rogue.battle.w05.008"] = {
+		"E va bene. Rapido e brutto, allora.",
+		"Niente tempo per le finezze. Andrà bene anche il brutto.",
+		"Oggi niente stile. Solo risultati.",
+	},
+	["cls.rogue.battle.w05.009"] = {
+		"Tutto quello che ho pagato all'istruttore, tutto insieme, nei prossimi dieci battiti.",
+		"Tutte quelle monete lasciate all'istruttore. Vediamo cosa mi hanno comprato.",
+	},
+	["cls.rogue.battle.w05.010"] = {
+		"smette di fissare la minaccia evidente e comincia a guardare tutto il resto.",
+		"legge il peso del nemico, non il suo volto, e aspetta che si sbilanci.",
+	},
+	["cls.rogue.battle.w05.011"] = {
+		"Balliamo. Tu conduci, io baro.",
+		"Prego. Tu fai il primo passo, io mi prendo le libertà.",
+		"Mi concedi questo scontro? Prometto di pestarti i piedi.",
+	},
+	["cls.rogue.battle.w05.012"] = {
+		"Più vicino. Do il meglio di me da vicino.",
+		"Avvicinati per bene. La distanza non mi ha mai fatto favori.",
+		"A un braccio di distanza è troppo lontano. Rimediamo.",
+	},
+	["cls.rogue.battle.w05.013"] = {
+		"Nessuno lo scriverà da nessuna parte. Meglio così, lo preferisco.",
+		"Non finirà nei racconti di nessuna locanda. Tanto meglio.",
+	},
+	["cls.rogue.battle.w05.014"] = {
+		"Più forte di me? Allora dovrò stare ovunque tu non sia.",
+		"Tu picchi più duro. Io farò in modo che tu non colpisca niente.",
+	},
+	["cls.rogue.battle.w05.015"] = {
+		"Davvero? Ho avuto discussioni più dure con un cassetto chiuso a chiave.",
+		"Fila via. No? Va bene, sarà una cosa breve.",
+	},
+	["cls.rogue.battle.w05.016"] = {
+		"inclina la testa come chi valuta il prezzo di un mantello su una bancarella.",
+		"squadra il nemico con l'interesse schietto di un perito.",
+	},
+	["cls.rogue.battle.w05.017"] = {
+		"Il cuore dice scappa, le mani dicono resta. Le mani ragionano meglio.",
+		"Un pezzo di me è già a metà strada verso l'uscita. Il resto ha da fare.",
+	},
+	["cls.rogue.battle.w05.018"] = {
+		"Avanti. Sarò la cosa più difficile che tu abbia mai cercato di colpire.",
+		"Prova a mettermene a segno uno. Su. Io intanto aspetto da un'altra parte.",
+		"Hanno provato a prendermi in tanti, e più bravi di te. Ci stanno ancora provando.",
+	},
+	["cls.rogue.battle.w05.019"] = {
+		"Ovunque tu tenga i reni, li troverò.",
+		"Non so dove tieni i reni. Controllerò dappertutto.",
+	},
+	["cls.rogue.battle.w05.020"] = {
+		"Una via d'uscita c'è sempre. È sapere questo che mi permette di restare.",
+		"L'uscita ce l'ho in tasca. Buffo come renda più facile restare.",
+	},
+	["cls.rogue.battle.w05.021"] = {
+		"comincia a contare sottovoce: uno, due, tre, e cosa succede al cinque non è affar del nemico.",
+		"muove le labbra contando a ogni taglio, e tiene l'ultimo numero per la fine.",
+	},
+	["cls.rogue.battle.w05.022"] = {
+		"Tutto istinto e nessun trucco. Almeno uno di noi due.",
+		"Tu combatti con quello che hai di nascita. Io con quello che ho imparato.",
+	},
+	["cls.rogue.battle.w05.023"] = {
+		"Una morte non ti è bastata, e sei ancora qui a dare fastidio. Ammiro la costanza.",
+		"Fuori dalla tomba solo per incontrare me? Sono {g:lusingato|lusingata}, davvero.",
+	},
+	["cls.rogue.battle.w05.024"] = {
+		"Dov'è la schiena di una cosa che è tutta davanti? Scelgo un lato e lo chiamo così.",
+		"Niente schiena, niente fianchi, niente tasche. Mi tocca improvvisare.",
+	},
+	["cls.rogue.battle.w05.025"] = {
+		"Ogni macchina ha uno sportello che si allenta. Fammi trovare il tuo.",
+		"Ingranaggi e rivetti. Lì dentro c'è una giuntura più debole delle altre.",
+	},
+	["cls.rogue.battle.w05.026"] = {
+		"Due braccia, due gambe, una schiena. Conosco bene questa forma.",
+		"Ah, qualcuno con la spina dorsale. So esattamente dov'è.",
+	},
+	["cls.rogue.battle.w05.027"] = {
+		"Odore di zolfo e di pessime decisioni. Soprattutto le tue.",
+		"Un demone, e io ho solo quello che tengo in mano. Mi pare equo.",
+	},
+	["cls.rogue.battle.w05.028"] = {
+		"dà una lunga occhiata al nemico e, in silenzio, studia l'uscita oltre all'attacco.",
+		"misura il nemico, poi il terreno intorno, poi la via d'uscita più vicina, in quest'ordine.",
+	},
+	["cls.rogue.battle.w05.029"] = {
+		"Non aspettatemi. Tanto non mi vedrete arrivare.",
+		"Andate avanti. Ci sarò, solo che non vi accorgerete di quando.",
+	},
+	["cls.rogue.battle.w05.030"] = {
+		"Che vadano avanti i rumorosi. Arrivo io mentre è occupato a odiare loro.",
+		"La sua attenzione la prende qualcun altro. A me tocca tutto quello che dimentica.",
+	},
+	["cls.rogue.battle.w05.031"] = {
+		"Se viene da me, vuol dire che ho picchiato troppo. Qualcuno sia più fastidioso di me, per favore.",
+		"Se si gira verso di me, la colpa è mia. Qualcuno gli dia un motivo per guardare altrove.",
+	},
+	["cls.rogue.battle.w05.032"] = {
+		"Silenzio, adesso. Va meglio senza discorsi.",
+		"Niente discorsi. Facciamolo e basta.",
+		"Risparmia il fiato. Tra poco ti servirà.",
+	},
+	["cls.rogue.battle.w05.033"] = {
+		"Armatura di cuoio. Ottima per correre, meno per questo.",
+		"La mia armatura è fatta per lo più di ottimismo e pelle cucita.",
+	},
+	["cls.rogue.battle.w05.034"] = {
+		"allenta una cinghia al polso e ne stringe un'altra: piccole manie che rendono ferme le mani.",
+		"dà uno strattone a ogni fibbia, sempre nello stesso ordine, e le mani smettono di tremare.",
+	},
+	["cls.rogue.battle.w05.035"] = {
+		"Dimmi dove fa male. Anzi, lascia stare, lo scopro da me.",
+		"Indicami il tuo punto debole. No? Allora vado a cercarlo.",
+		"Tutti hanno un varco da qualche parte. Andiamo a cercare il tuo.",
+	},
+	["cls.rogue.battle.w05.036"] = {
+		"Non inseguire. Lascia che venga lui sulla lama.",
+		"Niente affondi. Il varco arriva a chi sa aspettarlo.",
+	},
+	["cls.rogue.battle.w05.037"] = {
+		"Sono a corto di pazienza e pieno di trucchi. Scegli tu cosa preferisci incontrare.",
+		"Poca pazienza, tanti trucchi sporchi. Li conoscerai entrambi.",
+	},
+	["cls.rogue.battle.w05.038"] = {
+		"Oh, che bello. Tutta quella prudenza cominciava a pesarmi.",
+		"Finalmente. Stare attenti tutto il giorno sfinisce.",
+	},
+	["cls.rogue.battle.w05.039"] = {
+		"In ogni scontro scommetto la vita sull'essere più svelto. Un giorno la perderò, quella scommessa.",
+		"La velocità è tutto quello che ho. Che basti anche stavolta.",
+	},
+	["cls.rogue.battle.w05.040"] = {
+		"sorride, e per chi riceve quel sorriso non è mai buon segno.",
+		"fa un breve ghigno, come davanti a una serratura che sa già come aprire.",
+		"si illumina in volto, ed è la cosa peggiore che possa capitare al nemico.",
+	},
+	["cls.rogue.battle.w05.041"] = {
+		"Per ogni passo che fai verso di me, io ne faccio uno di lato. Stammi dietro.",
+		"Seguimi, se ci riesci. Quasi nessuno ci riesce.",
+	},
+	["cls.rogue.battle.w05.042"] = {
+		"Prima o poi mi colpirai. Vediamo quanto ci mette il tuo prima o poi.",
+		"Prima o poi ne metterai a segno uno. Io scommetto sul poi.",
+	},
+	["cls.rogue.battle.w05.043"] = {
+		"Conta i colpi. Ogni cosa ha un ritmo, e il varco sta tra un battito e l'altro.",
+		"Due colpi, un respiro, due colpi. Ecco. Quel respiro è mio.",
+		"Tra un attacco e l'altro fa una pausa. Tutto la fa. Quella pausa è la mia porta.",
+	},
+	["cls.rogue.battle.w05.044"] = {
+		"Non muoverti. Sto lavorando.",
+		"Calma. È un lavoro di precisione.",
+	},
+	["cls.rogue.battle.w05.045"] = {
+		"Cose affilate, mani svelte, pessime maniere. Piacere di conoscerti.",
+		"Presentazioni: queste sono le mie lame, e sono molto maleducate.",
+		"Ciao. Addio. Dirli tutti e due subito fa risparmiare tempo.",
+	},
+	["cls.rogue.battle.w05.046"] = {
+		"gira a sinistra, poi torna a destra, senza mai fermarsi dove un colpo potrebbe arrivare.",
+		"continua a scivolare fuori dalla linea d'attacco, e il nemico deve voltarsi ancora e ancora per non perderne le tracce.",
+	},
+	["cls.rogue.battle.w05.047"] = {
+		"Oh, il tipo eroico. Cercherò di non rovinarti troppo la storia.",
+		"Bella postura, mento alto. Si vede che non hai mai incontrato qualcuno come me.",
+	},
+	["cls.rogue.battle.w05.048"] = {
+		"Spazi stretti, muri da ogni parte. Per me, una meraviglia.",
+		"Angoli e corridoi. Questo è il mio genere di stanza.",
+	},
+	["cls.rogue.battle.w05.049"] = {
+		"Teniamolo tra noi.",
+		"Resta un nostro piccolo segreto, d'accordo?",
+		"Non serve gridare. Nessun altro è invitato.",
+	},
+	["cls.rogue.battle.w05.050"] = {
+		"Quel guizzo. Sta difendendo il lato sbagliato.",
+		"Si copre in alto. Allora il basso è mio.",
+	},
+	["cls.rogue.buff.w05.001"] = {
+		"Un formicolio sotto la pelle, come un respiro trattenuto che non si lascia andare. Di queste cose non mi fiderò mai del tutto, ma le prendo in prestito.",
+		"Qualcosa mi ronza lungo le braccia per un attimo, poi si assesta. Non lo capisco. Non mi serve capirlo.",
+	},
+	["cls.rogue.buff.w05.002"] = {
+		"Mi sento a meraviglia. Qualcuno metta al sicuro gli oggetti di valore.",
+		"Oh, che bello. Adesso sono {g:pericoloso|pericolosa} e di buon umore. Combinazione rara.",
+		"Una sensazione di solidità. Insolita, per me. Cercherò di non approfittarne in modo sconsiderato.",
+	},
+	["cls.rogue.buff.w05.003"] = {
+		"flette le dita mentre l'effetto prende piede, come per provare un paio di guanti nuovi.",
+		"sposta il peso da un piede all'altro, misurando la differenza con interesse professionale.",
+		"fa scrocchiare le nocche una alla volta, come per svegliarle al cambiamento.",
+	},
+	["cls.rogue.buff.w05.004"] = {
+		"Non durerà. Niente di ciò che è preso in prestito dura. Meglio spenderlo prima che svanisca.",
+		"Un prestito, non un regalo. Lo faccio fruttare finché è ancora sul conto.",
+		"Tempo in prestito, vigore in prestito. Prendere in prestito non mi è mai dispiaciuto.",
+	},
+	["cls.rogue.buff.w05.005"] = {
+		"Bene. Mi terrà in piedi nel peggio.",
+		"Bene così. {g:Pronto|Pronta} per quel che c'è dietro il prossimo angolo.",
+		"Ecco. Nervi a posto. Avanti.",
+	},
+	["cls.rogue.buff.w05.006"] = {
+		"Lo sento posarsi nelle giunture come olio caldo in un cardine. Tutto si muove come deve.",
+		"Penetra come il calore nel cuoio freddo, e ogni cosa si piega come dovrebbe.",
+	},
+	["cls.rogue.buff.w05.007"] = {
+		"si guarda le mani per un attimo, come se sospettasse che gliele abbiano sostituite con un paio migliore.",
+		"prende un respiro lento e sembra crescere di un dito.",
+	},
+	["cls.rogue.buff.w05.008"] = {
+		"Il cuore batte più regolare. Per me la regolarità vale più della forza.",
+		"Più {g:saldo|salda} dentro. Un battito calmo è metà di ogni buon colpo.",
+		"Polso più lento, mano più sicura. Non chiederei altro a nessun dono.",
+	},
+	["cls.rogue.buff.w05.009"] = {
+		"Ah. Adesso i coltelli sembrano più leggeri. O mi si sono rinforzate le braccia. Una delle due.",
+		"Che bello. E finirò per sprecarlo in qualche meschinità, me lo sento.",
+	},
+	["cls.rogue.buff.w05.010"] = {
+		"Meglio, per un po'. Vorrei che il mondo avesse qualcosa del genere anche per quello che fa male dentro.",
+		"Un sostegno, per ora. Le parti di me che fanno male davvero questo genere d'aiuto non lo accettano.",
+	},
+	["cls.rogue.buff.w05.011"] = {
+		"Questa sì che è una bella sensazione. Andiamo a rovinare la giornata a qualcuno.",
+		"Mi ha messo le molle nei piedi. Chiunque sia il prossimo, quasi mi fa pena.",
+		"Ah. Mi sento in grado di scalare le mura di una città a mani nude. Non lo farò. Ma potrei.",
+	},
+	["cls.rogue.buff.w05.012"] = {
+		"inspira piano mentre l'effetto attecchisce, poi lascia uscire il fiato senza un suono.",
+		"resta immobile per un battito, come se ascoltasse qualcosa che accade sotto la pelle.",
+		"socchiude gli occhi finché il cambiamento non si è assestato, poi torna alle sue faccende.",
+	},
+	["cls.rogue.buff.w05.013"] = {
+		"Accetto qualunque aiuto che non arrivi con un discorso allegato.",
+		"Un aiuto senza ramanzina in allegato. Abbastanza raro da gustarselo.",
+	},
+	["cls.rogue.buff.w05.014"] = {
+		"Gli occhi mi sembrano più acuti, o così credo. In questo mestiere, credersi più svegli è già metà dell'esserlo.",
+		"Tutto sembra un filo più nitido. Sarà l'effetto. Sarà l'umore. Li sfrutto tutti e due.",
+	},
+	["cls.rogue.buff.w05.015"] = {
+		"Ottimo. Adesso, se qualcosa va storto, è di sicuro colpa di qualcun altro.",
+		"Rinforzi addosso, preparativi fatti, e il piano resta comunque evitare di combattere davvero. Il meglio dei due mondi.",
+	},
+	["cls.rogue.buff.w05.016"] = {
+		"prova di nuovo l'estrazione di ogni lama, come se il cambiamento potesse raggiungere anche loro.",
+		"stringe una fibbia mentre l'effetto si assesta: un momento di calma non va mai sprecato.",
+	},
+	["cls.rogue.buff.w05.017"] = {
+		"Adesso vengano pure. Continuerò a preferire che non mi vedano mai, ma vengano pure.",
+		"Che arrivino pure i guai. Non che li cerchi, sia chiaro: li aspetto e basta.",
+	},
+	["cls.rogue.buff.w05.018"] = {
+		"Un tepore piacevole nelle membra, come un focolare acceso dopo una lunga strada.",
+		"Qualcosa di buono si deposita nelle ossa. Non chiederò cosa: me lo godo e basta.",
+	},
+	["cls.rogue.buff.w05.019"] = {
+		"Ogni briciola aiuta. Ci sono scontri persi per una differenza più piccola di questa.",
+		"Sono le piccole cose a vincere gli scontri. Questa è una piccola cosa. Approvo.",
+	},
+	["cls.rogue.buff.w05.020"] = {
+		"si raddrizza, e qualcosa nel portamento passa dalla cautela a una calma pericolosa.",
+		"solleva appena il mento, con l'aria di chi ha appena ricevuto carte migliori.",
+	},
+	["cls.rogue.buff.w05.021"] = {
+		"Forza che non mi sono {g:guadagnato|guadagnata}. La userò comunque: gli scrupoli pesano, in viaggio.",
+		"Non è merito mio, questo vigore in più. Lo spenderò senza sensi di colpa. Quasi senza.",
+	},
+	["cls.rogue.buff.w05.022"] = {
+		"Se mi metto a brillare, ditemelo. Brillare fa malissimo agli affari.",
+		"Si vede? Spero che non si veda. Nessuno si fida di un ladro che luccica.",
+	},
+	["cls.rogue.heal.w05.001"] = {
+		"La morsa nel petto si allenta una tacca alla volta. La lascio fare, senza dire niente.",
+		"Respiro meglio, adesso. Non mi ero {g:accorto|accorta} di quanto tenessi corto il fiato.",
+		"L'aria arriva di nuovo fino in fondo. Strano come ci si dimentichi di sentirne la mancanza.",
+	},
+	["cls.rogue.heal.w05.002"] = {
+		"Rimesso in sesto. Non nuovo, intendiamoci: usato, ma tenuto con cura.",
+		"Ecco fatto. Di nuovo in grado di farmi sottovalutare.",
+		"Ricucito tutto. Che resti agli atti: nemmeno un lamento.",
+	},
+	["cls.rogue.heal.w05.003"] = {
+		"flette le dita una per una, come se le richiamasse in servizio contandole.",
+		"scioglie le spalle con una rotazione lenta, e la rigidità abbandona la sua postura.",
+		"muove la mascella da un lato all'altro, poi la serra: la faccenda del dolore è chiusa.",
+	},
+	["cls.rogue.heal.w05.004"] = {
+		"Di nuovo {g:rattoppato|rattoppata}. Il corpo tiene il conto di queste cose, anche quando io non lo faccio.",
+		"Ogni rammendo lascia una cucitura appena visibile. Ormai sono più cuciture che stoffa.",
+	},
+	["cls.rogue.heal.w05.005"] = {
+		"Così va meglio. Allora, dove eravamo rimasti?",
+		"Bene. Secondo round, e stavolta niente riguardi.",
+		"Rattoppo fatto, e si riparte. Quel che viene dopo, che ne valga la pena.",
+	},
+	["cls.rogue.heal.w05.006"] = {
+		"Qualche respiro in più, comprato. Spendili bene: un secondo lotto a buon prezzo non ci sarà.",
+		"Questo mi compra tempo, non la vittoria. Non confondere le due cose.",
+		"Bene. Ogni battito che recupero è un'occasione in più per chiudere la faccenda come si deve.",
+	},
+	["cls.rogue.heal.w05.007"] = {
+		"si raddrizza in mezzo allo scontro, il colore che torna in viso, e rientra senza una parola.",
+		"ritrova fiato, e il passo successivo è decisamente più svelto dell'ultimo.",
+	},
+	["cls.rogue.heal.w05.008"] = {
+		"Adesso è tutto calmo, e mi rimetto in sesto. Buon momento per controllare l'equipaggiamento e contare cosa manca.",
+		"Niente che m'insegua, e il dolore che sbiadisce. Mi prendo questo momento e ci resto un po'.",
+		"Nessuna fretta, adesso, e il male che cala. È l'ora della parte noiosa: rimettere in ordine e ripartire.",
+	},
+	["cls.rogue.heal.w05.009"] = {
+		"Sa di stivale passato per una palude. Però funziona.",
+		"Vorrei scambiare due parole con chi ha deciso che le pozioni devono sapere di castigo.",
+		"Stappata, ingoiata, rimpianta. In quest'ordine.",
+	},
+	["cls.rogue.heal.w05.010"] = {
+		"La fiala vuota torna nella sacca. Il vetro vale qualcosa, e io non lascio tracce.",
+		"Le fiale vuote me le tengo. Una bottiglia abbandonata dice a chiunque guardi che qui qualcuno era ferito.",
+	},
+	["cls.rogue.heal.w05.011"] = {
+		"Quello che si era strappato si sta ricucendo, un prurito caldo da un capo all'altro. Affascinante, e un po' disgustoso.",
+		"Il male si richiude come un borsello quando tiri i lacci. Lo ammirerei di più se non fosse il mio.",
+	},
+	["cls.rogue.heal.w05.012"] = {
+		"Meglio. Niente storie. Muoviamoci.",
+		"Tutto a posto. Sto bene. Nessuno faccia drammi.",
+		"Tiene. Risparmiamoci i discorsi.",
+	},
+	["cls.rogue.heal.w05.013"] = {
+		"Ancora un po' di vita in prestito. Cerco di non chiedermi a che scopo: la risposta cambia troppo spesso.",
+		"Mi rimetto in sesto per poter tornare a rifare tutto. C'è una barzelletta, in questo, e il protagonista sono io.",
+	},
+	["cls.rogue.heal.w05.014"] = {
+		"prova qualche passo sul posto, con un nuovo molleggio, e sembra in silenzio {g:soddisfatto|soddisfatta}.",
+		"fa ruotare il collo finché qualcosa scrocchia, poi annuisce come se avesse chiuso un affare.",
+	},
+	["cls.rogue.heal.w05.015"] = {
+		"Le mani di nuovo ferme. Conta più di tutto il resto: con le mani che tremano, quelli come me si fanno prendere.",
+		"Il tremito è sparito dalle dita. Il resto può guarire con comodo.",
+		"Dita di nuovo sciolte e sicure. Chi fa il mio mestiere con le mani intorpidite è solo qualcuno vestito di scuro.",
+	},
+	["cls.rogue.heal.w05.016"] = {
+		"Ah, così sì. Acqua in bocca con chi mi crede invincibile.",
+		"Molto meglio. La mia fama di chi non si fa mai male resta intatta, purché nessuno parli.",
+	},
+	["cls.rogue.heal.w05.017"] = {
+		"Il dolore parla. Adesso che è ridotto a un borbottio, capisco cosa diceva: sul fianco sinistro ho abbassato la guardia.",
+		"Col dolore attutito posso ripensarci con calma. Troppa lentezza nella girata. Preso nota.",
+	},
+	["cls.rogue.heal.w05.018"] = {
+		"chiude gli occhi per la durata di un lungo respiro, e li riapre più attenti.",
+		"torna a poggiare il peso su entrambi i piedi, dimenticata la cautela con cui risparmiava un fianco.",
+	},
+	["cls.rogue.heal.w05.019"] = {
+		"Mi sento quasi di nuovo una persona civile.",
+		"Guarda un po'. Il colore torna sulle guance, i coltelli tornano in mano.",
+		"Meglio. Per un paio di minuti potrei perfino essere di compagnia.",
+	},
+	["cls.rogue.heal.w05.020"] = {
+		"Quanto basta. Ed è l'unica misura di cui mi fido davvero.",
+		"Non al meglio, ma abbastanza per finire quel che ho cominciato.",
+	},
+	["cls.rogue.heal.w05.021"] = {
+		"Il mio corpo mi ha perdonato. È più generoso della maggior parte della gente che conosco.",
+		"Il dolore se n'è andato, la dignità è ancora in attesa.",
+		"I dolori fanno i bagagli e se ne vanno. Zoppica solo l'orgoglio.",
+	},
+	["cls.rogue.heal.w05.022"] = {
+		"approfitta della tregua per risistemare una lama nel fodero, gli occhi già sulla prossima faccenda.",
+		"si spazzola la polvere da una manica con dita svelte, il dolore a quanto pare già archiviato.",
+	},
+	["cls.rogue.heal.w05.023"] = {
+		"Un minuto. Poi si riparte, più in silenzio stavolta.",
+		"Sistemato. La prossima volta il terreno lo scelgo io.",
+	},
+	["cls.rogue.heal.w05.024"] = {
+		"Il cuore correva verso una porta che non ho intenzione di varcare, per ora. Adesso rallenta.",
+		"Il limite era più vicino di quanto la mia faccia abbia lasciato vedere. Il cuore lo sa: si sta calmando solo adesso.",
+	},
+	["cls.rogue.heal.w05.025"] = {
+		"Un calore che si allarga dal centro, come il primo sorso di qualcosa di forte, senza il mal di testa del giorno dopo.",
+		"Un bel tepore che sale da dentro. Magari tutto ciò che fa bene fosse così piacevole.",
+	},
+	["cls.rogue.heal.w05.026"] = {
+		"Un sorso e torno in gioco. Ti servirà un piano migliore.",
+		"Barare? Si chiama prevedere. Informati.",
+	},
+	["cls.rogue.heal.w05.027"] = {
+		"Quando mi rimetto in sesto mi volto sempre un po'. Le ferite dicono alla gente dove sei debole.",
+		"Guarire è una faccenda privata. Un dolore mostrato è un dolore che qualcuno si ricorda.",
+	},
+	["cls.rogue.heal.w05.028"] = {
+		"fa un piccolo cenno soddisfatto a nessuno in particolare, come chi approva un lavoro ben fatto su di sé.",
+		"si dà due colpetti sul petto, come si ringrazia un cavallo affidabile.",
+	},
+	["cls.rogue.heal.w05.029"] = {
+		"Mi faccio ancora male più spesso di quanto vorrei. I più svelti imparano a sanguinare meno; io sto ancora imparando.",
+		"Ogni graffio insegna la stessa lezione, e piano piano comincio ad ascoltarla: andarsene prima del colpo, non dopo.",
+	},
+	["cls.rogue.heal.w05.030"] = {
+		"Tutto questo tempo nel mestiere, e il guarire mi sorprende ancora. Il corpo vuole andare avanti con più ostinazione di me.",
+		"Tante ferite e tante guarigioni che ormai conosco l'ordine in cui le cose tornano: il fiato, poi le mani, poi il coraggio.",
+	},
+	["cls.rogue.heal.w05.031"] = {
+		"Ti toccherà rifare tutto da capo. Spero che tu abbia fiato.",
+		"Tutto annullato, fino all'ultimo graffio. Ricomincia.",
+	},
+	["cls.rogue.heal.w05.032"] = {
+		"Forse lascerà un segno. Non mi dispiacciono i segni: sono l'unico registro che tengo.",
+		"Un'altra linea sottile per la collezione. Non le conto: mi assicuro solo che ci sia posto.",
+	},
+	["cls.rogue.heal.w05.033"] = {
+		"si siede sui talloni per un momento, in ascolto dei dintorni mentre il dolore defluisce.",
+		"resta immobile mentre il dolore svanisce: si muovono solo gli occhi, il resto del corpo finge di non esserci.",
+	},
+	["cls.rogue.heal.w05.034"] = {
+		"Mh. Questo ha smussato il peggio.",
+		"Basta così. Il dolore è una condizione di lavoro, non una scusa.",
+	},
+	["cls.rogue.heal.w05.035"] = {
+		"Amaro, poi caldo, poi più niente. Mi piacerebbe sapere cosa c'è dentro, e sospetto che sia meglio di no.",
+		"Erbe, qualcosa di minerale e un retrogusto che preferisco non nominare. Gli alchimisti tengono i segreti meglio di me.",
+	},
+	["cls.rogue.muse.w05.001"] = {
+		"Prima gli stivali. Una suola morbida, consumata sulla forma del mio piede, lavora più di qualunque lama io possieda.",
+		"Un mantello lo rattoppo senza nemmeno guardare, ma per domare un paio di stivali nuovi ci vuole una settimana. Fino ad allora cammino come un carretto.",
+		"Le spade si prendono le canzoni, gli stivali si prendono il lavoro. So bene quali salverei per primi da un incendio.",
+	},
+	["cls.rogue.muse.w05.002"] = {
+		"Prima il bordo esterno del piede, poi ci fai rotolare sopra il peso. Migliaia di passi imparati così, e adesso non so più camminare normalmente nemmeno se ci provo.",
+		"Il tallone a terra è roba per chi non ha niente da nascondere. Io appoggio il taglio del piede senza pensarci, anche quando attraverso una stanza vuota.",
+	},
+	["cls.rogue.muse.w05.003"] = {
+		"Le mie monete viaggiano avvolte in un ritaglio di stoffa. Un borsello che tintinna è un borsello che fa la spia.",
+		"So fino all'ultimo rame quanto porto addosso, e non per avidità. Le monete sciolte sbatacchiano, e sbatacchiare è una forma di pettegolezzo.",
+		"Ogni fibbia imbottita, ogni fermaglio legato stretto. Il metallo che porto addosso non ha il permesso di parlare, se non glielo do io.",
+	},
+	["cls.rogue.muse.w05.004"] = {
+		"Tutti pensano che il mestiere vesta di nero. Il nero risalta su quasi tutto. Grigio, marrone, il colore del fango vecchio: è quello che passa inosservato.",
+		"Il nero pieno è per chi vuole sembrare pericoloso. Io preferisco somigliare a un muro, a un ceppo, a un mucchio di sacchi.",
+	},
+	["cls.rogue.muse.w05.005"] = {
+		"Il cuoio secco scricchiola. Il mio lo ungo come altri strigliano un cavallo: spesso, con calma, e con un po' d'affetto.",
+		"Uno scricchiolio alla spalla, così lieve che nessun altro lo sentirebbe. Più tardi il cuoio avrà il suo olio, e io la mia pace.",
+	},
+	["cls.rogue.muse.w05.006"] = {
+		"Ho lavorato sodo su una faccia che nessuno ricorda: gradevole, comune, vagamente annoiata. È il miglior travestimento che ho, e non mi è costato niente.",
+		"Niente cicatrici in vista, niente colori accesi, niente da descrivere dopo. Se un testimone dice 'qualcuno, mi pare', ho lavorato bene.",
+		"Il trucco non è nascondersi. È essere talmente ordinari che lo sguardo ti scivola addosso come l'acqua sulla tela cerata.",
+	},
+	["cls.rogue.muse.w05.007"] = {
+		"Una lanterna è una cosa onesta. Ti dice esattamente dove non metterti.",
+		"Ogni luce fa una promessa su dove cadrà il buio. Su quelle promesse ci ho costruito una vita intera.",
+		"Dove finisce la luce della lanterna c'è una linea tracciata apposta per me. Non la oltrepasso mai per caso.",
+	},
+	["cls.rogue.muse.w05.008"] = {
+		"La folla è il miglior riparo che esista. Muoviti alla sua velocità, guarda dove guarda lei, e sei solo un'altra foglia sul fiume.",
+		"La gente crede che per nascondersi servano angoli bui. Dammi piuttosto un mercato affollato: cento facce, e nessuna che guarda la mia.",
+	},
+	["cls.rogue.muse.w05.009"] = {
+		"Conosco una dozzina di modi per uscire da una stanza senza che nessuno se ne accorga. A restarci, invece, non ho mai imparato davvero.",
+		"Sgattaiolare via è facile, potrei farlo nel sonno. Restare, sedermi, lasciare che qualcuno mi guardi per un po': quella sì che è una serratura difficile.",
+		"In qualunque stanza trovo l'uscita prima ancora di trovare una sedia. Dovrebbe preoccuparmi più di quanto mi preoccupi.",
+	},
+	["cls.rogue.muse.w05.010"] = {
+		"La rabbia fa rumore. La mia la lascio sulla porta come gli stivali infangati, e la riprendo all'uscita se ne ho ancora voglia.",
+		"Testa calda, passo pesante. Più sono {g:arrabbiato|arrabbiata}, più mi costringo a muovermi piano e in silenzio.",
+	},
+	["cls.rogue.muse.w05.011"] = {
+		"La paura non se ne va mai davvero. Le ho solo insegnato a sussurrare, e a sussurrare cose utili.",
+		"Un po' di timore tiene leggeri i passi. Il giorno che smetto di avere paura divento {g:distratto|distratta}, e chi si distrae dura poco.",
+		"Paura? Sempre, un po'. È il filo teso sotto ogni passo silenzioso, e se si spezzasse mi mancherebbe.",
+	},
+	["cls.rogue.muse.w05.012"] = {
+		"Dicono che un colpo alle spalle sia disonorevole. Anche perdere lo è, e dura molto più a lungo.",
+		"Gli scontri leali sono per chi può permettersi di perderli. Io prendo l'angolazione che mi capita e i bei discorsi li lascio agli altri.",
+	},
+	["cls.rogue.muse.w05.013"] = {
+		"La gente pensa che muoversi di soppiatto sia da vigliacchi. Provino loro a stare a due passi da qualcosa che li ucciderebbe, senza respirare e senza scappare.",
+		"C'è un coraggio che nessuno mette in musica: restare immobili mentre il pericolo ti passa accanto, tanto vicino da poterlo toccare.",
+	},
+	["cls.rogue.muse.w05.014"] = {
+		"Essere {g:sottovalutato|sottovalutata} è un regalo. Lo scarto con calma, e non dico mai grazie.",
+		"Che mi credano pure {g:innocuo|innocua}, {g:noioso|noiosa}, nemmeno da tenere d'occhio. Li correggerò più avanti, e in fretta.",
+		"Nessuno ha paura di chi se ne sta zitto in fondo. È il mio posto preferito.",
+	},
+	["cls.rogue.muse.w05.015"] = {
+		"Fortuna? La fortuna è solo preparazione che nessuno ha visto.",
+		"Mi chiamano {g:fortunato|fortunata}. Io lo chiamo controllare due volte le assi del pavimento.",
+	},
+	["cls.rogue.muse.w05.016"] = {
+		"Mai correre quando basta camminare. Correre è una confessione.",
+		"Rallenta. Nessuno guarda due volte chi ha l'aria annoiata.",
+	},
+	["cls.rogue.muse.w05.017"] = {
+		"Non sto sgattaiolando. Sto camminando con riguardo.",
+		"Non è strisciare. È buona educazione, con le suole morbide.",
+		"Di soppiatto? Ma no. Faccio solo pochissimo chiasso quando arrivo.",
+	},
+	["cls.rogue.muse.w05.018"] = {
+		"La gente rumorosa ti racconta tutto di sé. Quella silenziosa ti avverte soltanto di fare attenzione.",
+		"Tieni d'occhio chi non parla. Chi chiacchiera è occupato; chi tace sta contando.",
+	},
+	["cls.rogue.muse.w05.019"] = {
+		"Prima di cena posso essere tre persone diverse. Il difficile è ricordarsi quale delle tre ha dei debiti.",
+		"Un'altra andatura, un'altra voce, un altro modo di reggere la tazza, ed eccomi diventare qualcun altro. Di solito qualcuno più educato.",
+	},
+	["cls.rogue.muse.w05.020"] = {
+		"Calma. Se volessi il tuo borsello, ti staresti già chiedendo dove l'hai lasciato.",
+		"Smettila di stringerti le tasche. Così mi fai solo vedere quale conta.",
+	},
+	["cls.rogue.muse.w05.021"] = {
+		"Oggi avrei potuto essere più crudele, e non l'ho fatto. Tengo il conto, in silenzio, di quelle volte. È l'unico conto di cui vado {g:fiero|fiera}.",
+		"La via rapida è quella gentile, quasi sempre. Quando ce n'è una che non chiede nessuna lama, mi piace prenderla, e non lo racconto a nessuno.",
+	},
+	["cls.rogue.muse.w05.022"] = {
+		"Piedi silenziosi e mani svelte: questo è il mestiere. Cosa ci faccio è affar mio, e certi giorni è perfino onesto.",
+		"Un buon fabbro di serrature e un buon scassinatore hanno imparato esattamente le stesse lezioni. La differenza sta soprattutto in chi paga, e quando.",
+	},
+	["cls.rogue.muse.w05.023"] = {
+		"Saper cadere è metà del mestiere. Ti sciogli, rotoli, e non litighi mai col terreno: vince sempre lui.",
+		"Mento dentro, offri la spalla, continua a rotolare. Una buona caduta costa un livido. Una caduta rigida costa una settimana.",
+	},
+	["cls.rogue.muse.w05.024"] = {
+		"Il buio è sopravvalutato. Una strada affollata, tutta commissioni e gomitate, nasconde più gente di qualunque vicolo.",
+		"Tutti tengono d'occhio gli angoli bui. Nessuno guarda chi passa in piena vista con una cassa in spalla.",
+	},
+	["cls.rogue.muse.w05.025"] = {
+		"Le guardie sono facili: credono ai loro occhi. Il problema sono le bestie. Un lupo crede al suo naso, e contro un naso non ho difese.",
+		"Prima di tutto guardo da che parte va l'aria. Gli occhi si possono ingannare. I nasi portano rancore.",
+		"Con l'aria in faccia sono un fantasma. Con l'aria alle spalle, ogni cane nel raggio di un miglio sa cos'ho mangiato a cena.",
+	},
+	["cls.rogue.muse.w05.026"] = {
+		"La prima cosa che imparo in qualunque casa è quale asse del pavimento canta. Tutto il resto può aspettare.",
+		"Le scale scricchiolano al centro e tacciono ai bordi. Non me l'ha insegnato nessuno: ho solo ascoltato un'infinità di scale.",
+	},
+	["cls.rogue.muse.w05.027"] = {
+		"Gli altri vedono un muro. Io vedo un tubo di scolo, due pietre smosse e un davanzale. Una scala, in fondo, solo messa male.",
+		"I muri non esistono. Esistono solo scale che non mi sono ancora state presentate.",
+		"Un cancello chiuso a chiave è solo un invito a guardare più da vicino i cardini.",
+	},
+	["cls.rogue.muse.w05.028"] = {
+		"Non riesco a smettere di notare. Un bottone che manca, fango fresco su uno stivale, un anello al dito sbagliato. Certi giorni darei molto per guardare una cosa e non vederci niente.",
+		"I miei occhi non riposano. Contano uscite, tasche, occhiate. Anche quando li supplico di darmi un po' di pace, continuano a tenere il conto.",
+	},
+	["cls.rogue.muse.w05.029"] = {
+		"Un sassolino nello stivale. Adesso. Fra tutti i momenti che poteva scegliere.",
+		"Qualcosa mi sta risalendo la manica, e io non posso muovermi. Questo mestiere ha i suoi giorni gloriosi, e oggi non è uno di quelli.",
+	},
+	["cls.rogue.muse.w05.030"] = {
+		"Non è invisibilità. Chiunque mi guardasse dritto, abbastanza da vicino, mi vedrebbe. Tutta l'arte sta nel non dargliene motivo.",
+		"Essere nascosti vuol dire solo non essere notati. Avvicinati troppo, muoviti troppo in fretta, e il trucco si sfalda come carta bagnata.",
+	},
+	["cls.rogue.muse.w05.031"] = {
+		"La lentezza è il prezzo per non essere visti. Mi muovo come miele freddo, e il resto del mondo non mi aspetta.",
+		"Ogni muscolo teso a metà, ogni passo una piccola decisione. Un'ora così mi stanca più di una corsa da un capo all'altro di una valle.",
+		"Nascosti vuol dire lenti, e lenti vuol dire indolenziti. Nessuno racconta quanto bruci, dopo un po', camminare {g:chinato|chinata} e con prudenza.",
+	},
+	["cls.rogue.muse.w05.032"] = {
+		"Da qui vedo tutti e nessuno vede me. Sembra potere. Il più delle volte somiglia a stare fuori da una finestra.",
+		"La gente è diversa quando si crede sola. Più tenera, più sciocca, più triste. Mi sento sempre un po' {g:ladro|ladra} anche di questo.",
+	},
+	["cls.rogue.muse.w05.033"] = {
+		"Ogni passo scelto a mano. Non la ghiaia, non l'asse smossa, non il rametto. Qualcosa di morbido, qualcosa di solido, poi il successivo.",
+		"Punta, prova, peso. Punta, prova, peso. Contare tiene onesti i piedi.",
+	},
+	["cls.rogue.muse.w05.034"] = {
+		"Un attimo prima che qualcuno sappia che sono qui, il mondo intero sembra trattenersi insieme a me. Per quell'attimo darei molto.",
+		"Senza essere {g:visto|vista}, sono una domanda che nessuno ha ancora pensato di fare. Mi piace essere quella domanda.",
+		"Nessuno sa che sono qui. Per un po', tutto quello che succederà dopo spetta a me deciderlo.",
+	},
+	["cls.rogue.muse.w05.035"] = {
+		"si immobilizza del tutto, in ascolto, e riprende a muoversi solo quando è {g:certo|certa} che niente stia ascoltando a sua volta.",
+		"si appiattisce contro il riparo più vicino e aspetta senza muovere un muscolo, paziente come un sasso.",
+	},
+	["cls.rogue.muse.w05.036"] = {
+		"si muove lungo i margini delle cose, {g:inosservato|inosservata}, e il mondo continua a badare ai fatti suoi come se non fosse passato nessuno.",
+		"avanza basso e senza fretta, un'increspatura silenziosa all'angolo dell'occhio di nessuno.",
+	},
+	["cls.rogue.muse.w05.037"] = {
+		"saggia il terreno davanti con la punta dello stivale prima di affidargli il proprio peso.",
+		"si ferma a metà passo, il piede sollevato, in ascolto, poi lo appoggia in un punto appena diverso.",
+	},
+	["cls.rogue.muse.w05.038"] = {
+		"abbraccia i dintorni con un'unica occhiata senza fretta: il riparo più vicino, la via d'uscita più vicina, il paio d'occhi più vicino.",
+		"si guarda intorno con un'aria svagata che non si lascia sfuggire assolutamente niente.",
+	},
+	["cls.rogue.muse.w05.039"] = {
+		"stringe una cinghia che non era allentata, poi la ricontrolla, per scrupolo.",
+		"sposta il fodero sul fianco della larghezza di un dito, e finalmente ha l'aria {g:soddisfatto|soddisfatta}.",
+	},
+	["cls.rogue.muse.w05.040"] = {
+		"resta così a lungo senza muoversi che chiunque passasse dovrebbe guardare due volte per accertarsi che lì ci sia qualcuno.",
+		"si cala in un'immobilità così completa da sembrare non tanto un'attesa quanto un appartenere al luogo.",
+		"si confonde con l'ambiente al punto che una falena potrebbe posarsi sulla sua manica senza scomporsi.",
+	},
+	["cls.rogue.muse.w05.041"] = {
+		"tiene un coltellino in equilibrio sulla punta di un dito per un lungo istante, poi lo rinfodera senza il minimo fruscio d'acciaio.",
+		"fa girare un coltello attorno a un dito, lo riprende per l'impugnatura e lo ripone come se niente fosse.",
+	},
+	["cls.rogue.muse.w05.042"] = {
+		"si tasta una tasca, poi un'altra, poi una terza, e pare rassicurarsi per quello che ci trova ancora.",
+		"conta qualcosa al tatto dentro un sacchetto, le labbra che si muovono senza suono, e a quanto pare il totale torna.",
+	},
+	["cls.rogue.muse.w05.043"] = {
+		"Mi fido senza riserve di tre cose: un cardine ben oliato, una serratura fatta bene e le mie due mani. Con le persone ci metto di più.",
+		"Cardini, serrature e coltelli non mi hanno mai mentito. Le persone hanno precedenti peggiori, e io sono una di loro.",
+	},
+	["cls.rogue.muse.w05.044"] = {
+		"Ogni serratura è la piccola speranza di qualcuno di tenere al sicuro qualcosa. Anche quando ne apro una, cerco di ricordarmelo.",
+		"Dietro ogni serratura c'era una persona in pensiero. Mi piace credere di sentire quella pena da quanto l'ha voluta dura.",
+	},
+	["cls.rogue.muse.w05.045"] = {
+		"Gente mai vista mi consegna le sue scatole chiuse a chiave e si fida che gliele restituisca. Aperte, per giunta. È stranamente commovente.",
+		"Si sparge la voce che so aprire le cose. D'un tratto tutti hanno una scatoletta col coperchio bloccato e una faccia piena di speranza.",
+	},
+	["cls.rogue.muse.w05.046"] = {
+		"Attrezzi da scasso, li chiamano. Io preferisco 'kit di persuasione'.",
+		"Li vendono come arnesi da ladro. Che maleducazione. Io li uso soprattutto su forzieri di cui nessuno trova più la chiave.",
+	},
+	["cls.rogue.muse.w05.047"] = {
+		"Le cose che la gente si porta dietro. Un cucchiaio storto, mezzo biscotto, un bottone spaiato. Ogni tasca è un piccolo museo malinconico.",
+		"Ho smesso di aspettarmi tesori dalle tasche. Pelucchi, un rame, un dente avvolto in uno straccio. Qualcuno voleva bene a quel dente.",
+	},
+	["cls.rogue.muse.w05.048"] = {
+		"Per sfilare qualcosa da una tasca smetti per un attimo di essere una persona. Diventi uno spiffero, uno sfioramento di stoffa, una cosa per cui nessuno si volta.",
+		"La mano entra mentre l'altro espira. Mai mentre inspira: quando si prende fiato, si nota tutto.",
+	},
+	["cls.rogue.muse.w05.049"] = {
+		"Un colpetto dietro l'orecchio e un bel sonnellino. È la cosa più gentile che faccio, e nessuno mi ringrazia mai.",
+		"Tramortire qualcuno è una gentilezza sottovalutata. Nessuno si fa male, e qualcuno si gode un riposo di cui aveva gran bisogno.",
+	},
+	["cls.rogue.muse.w05.050"] = {
+		"Schivare a quel modo non è magia. È il corpo che si rifiuta, in gran fretta, di stare dove sta per abbattersi il guaio.",
+		"Se serve, per un po' riesco a rendermi impossibile da toccare. Poi l'effetto svanisce, e conviene che io sia altrove.",
+	},
+	["cls.rogue.muse.w05.051"] = {
+		"Lo scatto è l'unico momento in cui mi concedo di essere {g:rumoroso|rumorosa} e {g:sgraziato|sgraziata}. Gomiti, polvere, nessuna dignità. Funziona.",
+		"Tutto questo esercizio per muovermi in silenzio, e a volte la risposta è correre come una lepre spaventata.",
+	},
+	["cls.rogue.muse.w05.052"] = {
+		"Sparire costa un pizzico di polvere lampo e un po' d'orgoglio. La polvere la compro a sacchetti. All'orgoglio ho imparato a rinunciare.",
+		"Uno sbuffo di polvere e non ci sono più, in pieno scontro, come se il pavimento mi avesse {g:inghiottito|inghiottita}. Non ho mai smesso di trovarlo un po' buffo.",
+	},
+	["cls.rogue.muse.w05.053"] = {
+		"Polvere accecante, piegata nella carta, tenuta all'asciutto. La controllo più spesso del borsello.",
+		"Un pizzico negli occhi mi compra lo spazio che mi serve. Crudele, forse, ma più gentile di quasi tutte le alternative.",
+	},
+	["cls.rogue.muse.w05.054"] = {
+		"Quasi tutti i problemi sono solo teste girate dalla parte sbagliata. Un sassolino lanciato nel punto giusto le fa voltare, e il problema se ne va a controllare.",
+		"Un rumorino laggiù, e tutti gli occhi vanno laggiù. La gente obbedisce a un tonfo con una docilità meravigliosa.",
+	},
+	["cls.rogue.muse.w05.055"] = {
+		"Chi lancia incantesimi mi detesta. Sarà che non ama essere interrotto a metà parola da uno stivale.",
+		"Niente zittisce un incantesimo come un calcio ben assestato. Maleducato, lo so. Efficace, so anche questo.",
+	},
+	["cls.rogue.muse.w05.056"] = {
+		"Dopo le fiale mi lavo le mani due volte, e poi una terza per scaramanzia. Il mestiere perdona tanti errori, ma non quello.",
+		"Tappi ben premuti, fiale avvolte negli stracci, mai nella stessa tasca del cibo. Il veleno è un mestiere di piccole abitudini prudenti.",
+	},
+	["cls.rogue.muse.w05.057"] = {
+		"Un pugnale ti chiede di avvicinarti e di fare sul serio. Una spada ti concede un po' di distanza. In ogni caso il lavoro è lo stesso: trovare lo spiraglio.",
+		"Lama corta o lunga, non è mai davvero questione di filo. È questione di dove va, di quando, e se l'hanno vista partire.",
+	},
+	["cls.rogue.muse.w05.058"] = {
+		"Affilo le lame poco e spesso, come altri canticchiano. Tiene occupate le mani e quieta la testa.",
+		"Qualche passata sulla cote ogni volta che mi siedo. Non perché ne abbia bisogno la lama. Perché ne ho bisogno io.",
+		"Il sibilo della cote lungo il filo è l'unica ninna nanna di cui mi fido.",
+	},
+	["cls.rogue.muse.w05.059"] = {
+		"Sento un nome una volta e mi resta, insieme alla voce che l'ha pronunciato e a dove guardava, in quel momento, chi parlava.",
+		"Nomi, facce, l'ordine in cui la gente entra in una stanza. La mia memoria trattiene tutto, che io glielo chieda o no.",
+	},
+	["cls.rogue.muse.w05.060"] = {
+		"Non ci crederesti, quante cose vanno zittite quando ti nascondi: ginocchia che schioccano, una cintura che scricchiola, una risata che vuole uscire nel momento peggiore.",
+		"La cosa più rumorosa di me non sono mai i piedi. È la tosse che tengo da parte, o la battuta che mi è appena venuta in mente.",
+	},
+	["cls.rogue.muse.w05.061"] = {
+		"Sono una compagnia splendida. Chiedetelo a chiunque si sia accorto che c'ero.",
+		"Dicono che sia un piacere avermi intorno. Quei pochi che saprebbero dire dove stavo.",
+	},
+	["cls.rogue.muse.w05.062"] = {
+		"Prendere le cose è facile. Rimetterle a posto senza che nessuno se ne accorga: quello sì che è un numero da esibire, e non posso esibirlo a nessuno.",
+		"A volte restituisco quel che ho sfilato, giusto per tenere oneste le mani. Nemmeno di questo si accorge mai nessuno.",
+	},
+	["cls.rogue.muse.w05.063"] = {
+		"Il silenzio non è vuoto. Ha una venatura, come il legno, e se ti muovi seguendola nessuno ti sente.",
+		"Esistono cento tipi di silenzio. Il trucco è intonarsi a quello in cui ti trovi.",
+		"Il rumore è una stoffa piena di buchi. Passa attraverso i buchi e nessuno sente niente.",
+	},
+	["cls.rogue.muse.w05.064"] = {
+		"In questo mestiere non c'è un'ultima lezione. Ogni serratura, ogni guardia, ogni folla mi insegna qualcosa, di solito dopo avermi messo in imbarazzo.",
+		"Il giorno che mi crederò abbastanza {g:bravo|brava} sarà il giorno che qualcuno mi acchiappa. Così continuo a credere di non esserlo.",
+	},
+	["cls.rogue.muse.w05.065"] = {
+		"Prima di qualunque lavoro delicato mi sgranchisco le dita, una per una, come un musicista prima di suonare. Mani rigide sono mani rumorose.",
+		"Le mie mani sono la cosa più preziosa che ho. Unghie corte, nocche sciolte, e mai, per nessuna ragione, un pugno contro un muro.",
+	},
+	["cls.rogue.muse.w05.066"] = {
+		"Un pezzo di cordino sottile, un po' di cera, un ritaglio di stoffa scura, qualche rame per il pane o per la fortuna. Lo zaino è piccolo, ma ogni suo angolo ha una ragione.",
+		"Viaggiare abbastanza leggeri da arrampicarsi, abbastanza carichi da cavarsela. Riordino lo zaino più spesso di quanto la gente riordini le proprie idee.",
+	},
+	["cls.rogue.muse.w05.067"] = {
+		"Una buona giornata, secondo il mio metro: nessuno mi ha guardato due volte, e io ho guardato tutto.",
+		"Piaceri semplici. Una porta che si apre senza un suono. Una folla che si scosta senza accorgersene. Uno sgabello in un angolo, con la vista sull'ingresso.",
+	},
+	["cls.rogue.muse.w05.068"] = {
+		"Nessuno ti avverte di quanto sia noioso questo mestiere. Per ogni attimo di sangue freddo ci sono ore passate {g:accucciato|accucciata} a pensare al pranzo.",
+		"Le canzoni non parlano dell'attesa. E nemmeno del crampo al polpaccio, che è quasi tutto quello che mi resta in mente.",
+	},
+	["cls.rogue.muse.w05.069"] = {
+		"Certe cose che ho fatto preferirei non spiegarle. Altre sono state gentili, e nemmeno quelle le ha viste nessuno. Spero che pesino più o meno uguale.",
+		"Le mie buone azioni sono silenziose quanto quelle cattive. Se qualcuno, chissà dove, tiene i conti, spero che abbia la vista acuta.",
+	},
+	["cls.rogue.muse.w05.070"] = {
+		"Sì, porto dei coltelli. Più d'uno. No, non puoi vederli. È proprio questo il senso di portarli così.",
+		"Tutti vogliono sapere quante lame ho addosso. La risposta onesta è: una in più di quelle che hai trovato.",
+	},
+	["cls.rogue.muse.w05.071"] = {
+		"Parla meno, ascolta di più, vattene prima di quanto chiunque si aspetti. Tutto il metodo è qui.",
+		"Non spiegare, non vantarti, non indugiare. Quel che avanza è fortuna.",
+	},
+	["cls.rogue.muse.w05.072"] = {
+		"Ovunque io sia, una parte di me sta già scegliendo dove nascondermi se servisse. Non credo che si spenga mai.",
+		"Ho il sonno leggero e dormo con la faccia verso la porta. Il riposo, per me, è una cosa da fare con un orecchio aperto.",
+	},
+	["cls.rogue.muse.w05.073"] = {
+		"Ho passato così tanto tempo a guardare vivere gli altri che a volte dimentico di avere il permesso di farlo anch'io.",
+		"Ogni vita che osservo da un angolo sembra un po' più calda di come la mia si sente da dentro. Probabilmente è solo questione di prospettiva.",
+		"Conosco le abitudini di cento sconosciuti e il nome di pochissimi amici. Bel baratto, davvero.",
+	},
+	["cls.rogue.muse.w05.074"] = {
+		"Non sono gentile. Sono {g:silenzioso|silenziosa}. La gente confonde le due cose una volta sola.",
+		"Parlare piano non vuol dire essere {g:tenero|tenera}. Chiedetelo a chi ha voluto verificare la differenza.",
+	},
+	["cls.rogue.muse.w05.075"] = {
+		"Le mani ferme si allenano, non nascono così. Le mie un tempo tremavano. Adesso tremano solo dopo, dove nessuno guarda.",
+		"Il segreto coi nervi è lasciarli parlare più tardi. Durante, sono di pietra. Dopo, ho il diritto di sedermi.",
+	},
+	["cls.rogue.muse.w05.076"] = {
+		"fa ruotare le spalle e piega le dita una alla volta, come chi si prepara ad aprire qualcosa di molto delicato.",
+		"non fa schioccare le nocche, non si schiarisce la voce, eppure in qualche modo dà l'impressione di prepararsi.",
+	},
+	["cls.rogue.muse.w05.077"] = {
+		"Mi chiamano {g:ladro|ladra}, come se fosse una vita spericolata. Quasi tutte le mie giornate le passo a essere {g:prudentissimo|prudentissima}.",
+		"Non c'è niente di brigantesco nel contare le assi del pavimento. Semmai sono la persona più ordinata che conosca.",
+	},
+	["cls.rogue.muse.w05.078"] = {
+		"Un'armatura di piastre completa fa il rumore di una cucina che rotola giù per le scale. Ogni volta che la sento faccio una smorfia per chi ci sta dentro.",
+		"Chi lancia incantesimi ronza, i guerrieri sferragliano. Io sono quella presenza che nessuno sente, e mi va benissimo così.",
+	},
+	["cls.rogue.muse.w05.079"] = {
+		"Se faccio bene questo lavoro, nessuno racconterà mai una storia su di me. Certi giorni è una consolazione, certi altri no.",
+		"Il lavoro migliore non lascia racconti. Ho fatto pace con l'essere una nota a margine che nessuno ha scritto.",
+		"Le canzoni si scrivono su chi si è fatto vedere. Io ho scelto l'altro genere di vita, e quasi sempre lo sceglierei di nuovo.",
+	},
+	["cls.rogue.muse.w05.080"] = {
+		"Mani rapide, decisioni lente. Se le inverti, non avrai l'occasione di rimetterle a posto.",
+		"Affretta la lama, mai la scelta. È nella scelta che quasi tutti sbagliamo.",
+	},
+	["cls.rogue.muse.w05.081"] = {
+		"Ogni tanto pesto un po' i piedi apposta, solo per sentirmi arrivare come una persona qualunque.",
+		"Di quando in quando è riposante fischiettare, strascicare gli stivali e far sapere a tutto il mondo che sto arrivando.",
+	},
+	["cls.rogue.muse.w05.082"] = {
+		"Da qui potrei legare insieme i lacci degli stivali di qualcuno, e non se ne accorgerebbe mai. Non lo farò. Probabilmente.",
+		"Nessuno mi vede, e ho tutto questo tempo a disposizione. È difficilissimo non combinare qualche sciocchezza.",
+		"Nessuno mi nota, e mi prudono le mani dalla voglia di spostare qualcosa. Un cappello, magari. Una sedia, qualche dito più a sinistra.",
+	},
+	["cls.rogue.muse.w05.083"] = {
+		"Al riparo dagli sguardi. Ora le domande, in ordine: cosa guarda, cosa ascolta, e cosa c'è fra me e dove sto andando.",
+		"Non essere {g:visto|vista} è solo l'inizio. Poi viene il percorso, poi il momento giusto, poi la pazienza di aspettare che combacino.",
+	},
+	["cls.rogue.muse.w05.084"] = {
+		"La fiducia è l'unica cosa che non riesco a sfilare a nessuno. Quando me la danno spontaneamente, la porto come vetro sottile.",
+		"Potrei prendere quasi tutto a quasi chiunque. Non la fiducia. Quella va data, ed è per questo che la custodisco con tanta cura.",
+	},
+	["cls.rogue.muse.w05.085"] = {
+		"aggira un punto che avrebbe scricchiolato, senza aver mai abbassato lo sguardo per trovarlo.",
+		"ferma con due dita una fibbia allentata prima che tintinni, senza rompere il passo.",
+	},
+	["cls.rogue.muse.w05.086"] = {
+		"Conta le persone in una stanza prima di contare qualunque altra cosa.",
+		"Prima gli occhi, poi le porte, poi gli oggetti di valore. Sbaglia l'ordine una volta e non ci sarà una seconda lezione.",
+	},
+	["cls.rogue.quest_complete.w05.001"] = {
+		"Un piacere fare affari. Soprattutto la parte degli affari.",
+		"Fatto. Se dovesse sparire qualcosa, io qui non ci sono mai {g:stato|stata}.",
+		"Ecco, tutto sistemato. Inutile che ti controlli le tasche: oggi sono in servizio.",
+	},
+	["cls.rogue.quest_complete.w05.002"] = {
+		"In quella commissione ho imparato più di quanto mi fosse richiesto. Succede sempre. Me lo metto da parte, come uno scoiattolo con le noci.",
+		"Il lavoro è fatto, ma la parte utile è quello che ho notato per strada. Quella non finisce mai nel rapporto.",
+	},
+	["cls.rogue.quest_complete.w05.003"] = {
+		"accetta ciò che viene offerto senza guardarlo, come si ricambia il cenno di un vecchio conoscente.",
+		"soppesa per un attimo sul palmo quanto ha ricevuto, come se il vero valore si leggesse dal peso.",
+		"lancia un'occhiata alle spalle prima di prendere ciò che viene porto, per pura abitudine.",
+	},
+	["cls.rogue.quest_complete.w05.004"] = {
+		"Un'altra cancellata dalla lista. Potrei abituarmi a rendermi utile.",
+		"Fatto, e nessuno si è preso una coltellata senza meritarla. Be'. Probabilmente.",
+		"Finito. Farei un inchino, ma gli inchini attirano l'attenzione.",
+	},
+	["cls.rogue.quest_complete.w05.005"] = {
+		"Nel mio mestiere, di solito, l'unica ricompensa è non farsi prendere. Questo è un piacevole cambiamento.",
+		"Una ricompensa per un lavoro onesto. Cercherò di non montarmi la testa.",
+		"Lavoro onesto, paga onesta. Mi sento vagamente male.",
+	},
+	["cls.rogue.quest_complete.w05.006"] = {
+		"Lavoro finito, e la strada aspetta. Nessuno mi chiede mai dove vado dopo, e mi va bene così.",
+		"Il grazie dura un attimo. La strada che viene dopo dura molto di più, e la strada mi piace di più.",
+	},
+	["cls.rogue.quest_complete.w05.007"] = {
+		"La prossima volta, qualcosa di difficile. Con le commissioni sono {g:sprecato|sprecata}.",
+		"Tutto qui? Mi ero {g:preparato|preparata} a qualcosa di più duro.",
+		"Facile. Sospettosamente facile. All'uscita mi guarderò le spalle.",
+	},
+	["cls.rogue.quest_complete.w05.008"] = {
+		"Ogni incarico così è allenamento. Muoversi senza farsi notare, scegliere il momento, andarsene senza lasciare tracce. L'incarico in sé conta poco.",
+		"Qualunque cosa credano di aver pagato, io ci ho guadagnato una prova generale. Pazienza, tempismo, un'uscita discreta.",
+	},
+	["cls.rogue.quest_complete.w05.009"] = {
+		"trattiene un ghigno e riesce, a malapena, a sembrare {g:modesto|modesta}.",
+		"si dipinge in faccia un'aria di umile cortesia che non ingannerebbe proprio nessuno.",
+	},
+	["cls.rogue.quest_complete.w05.010"] = {
+		"Avevo detto che l'avrei fatto. Fatto.",
+		"Ci avevo messo la parola. Adesso è mantenuta.",
+		"Promesso, consegnato. Non c'è altro da dire.",
+	},
+	["cls.rogue.quest_complete.w05.011"] = {
+		"Ho fatto quel che mi è stato chiesto. Se fosse giusto è una domanda che metto nella sacca insieme alle altre, e me la porto dietro.",
+		"Fatto. Non chiedo da che parte stia un lavoro; spero soltanto, ogni tanto, che fosse quella giusta.",
+	},
+	["cls.rogue.quest_complete.w05.012"] = {
+		"Uno scambio onesto. Abbastanza raro nel mio giro da gustarmelo.",
+		"Patti chiari. Mi ricorderò chi paga puntuale.",
+	},
+	["cls.rogue.quest_complete.w05.013"] = {
+		"È andata bene. Continuo ad aspettare la fregatura, e per una volta non c'è.",
+		"Una cosa fatta bene, dall'inizio alla fine. Me la godo finché non va storta la prossima.",
+	},
+	["cls.rogue.quest_complete.w05.014"] = {
+		"fa scorrere lo sguardo sui dintorni, una volta sola e senza fretta, prima di tornare alla faccenda.",
+		"controlla, per lunga abitudine, chi potrebbe star guardando lo scambio.",
+	},
+	["cls.rogue.quest_complete.w05.015"] = {
+		"Firmato, sigillato, finito. Be', non firmato: il mio nome sulle cose non lo lascio.",
+		"Fatto. Se qualcuno chiede chi se n'è occupato, di' che è stato uno sconosciuto alto. O basso. Resta sul vago.",
+	},
+	["cls.rogue.quest_complete.w05.016"] = {
+		"Certi lavori chiedono una serratura da forzare, altri una lunga camminata. Preferisco i primi, ma li prendo entrambi.",
+		"Grimaldelli o gambe, il lavoro si fa comunque. So solo quale dei due piace di più alle mie dita.",
+	},
+	["cls.rogue.quest_complete.w05.017"] = {
+		"E questa è fatta. La prossima.",
+		"Sistemato. Che altro c'è?",
+		"Finito. Non facciamone una cerimonia.",
+	},
+	["cls.rogue.quest_complete.w05.018"] = {
+		"Mi misuro da quanto poco rumore ha fatto il lavoro. Questo ne ha fatto pochissimo.",
+		"Un buon lavoro è uno su cui poi nessuno deve raccontare storie. Credo che questo lo fosse.",
+	},
+	["cls.rogue.quest_complete.w05.019"] = {
+		"si tasta le tasche con un po' di teatro, come a dimostrare che tutto quel che c'è dentro ci è arrivato onestamente.",
+		"mostra i palmi vuoti con un gesto plateale, una piccola recita d'innocenza che nessuno ha chiesto.",
+	},
+	["cls.rogue.quest_complete.w05.020"] = {
+		"Un altro piccolo guaio del mondo messo in ordine, come si raddrizza un quadro storto passando.",
+		"Il mondo è una stanza in disordine. Ho rimesso al suo posto un'altra cosa.",
+	},
+	["cls.rogue.quest_complete.w05.021"] = {
+		"Ben fatto, tutti quanti. Farò finta di aver fatto io la parte difficile.",
+		"Buon lavoro a tutti. Io per lo più stavo dove non potevate vedermi, e vale lo stesso.",
+	},
+	["cls.rogue.quest_complete.w05.022"] = {
+		"Ditelo ai bardi. Anzi, no. Dite che è stato qualcun altro.",
+		"Se qualcuno ci scrive una canzone, lasciate fuori il mio nome. Metteteci qualcuno con un mantello più bello.",
+	},
+	["cls.rogue.quest_complete.w05.023"] = {
+		"Quasi tutto, in un lavoro, è aspettare e camminare. La parte che varrebbe la pena di raccontare dura pochi battiti, e io non la racconto mai.",
+		"Ore di pazienza, un attimo di lavoro, e poi questo: un cenno e qualcosa per il disturbo. È un ritmo onesto.",
+	},
+	["cls.rogue.quest_complete.w05.024"] = {
+		"dondola una volta sui talloni, con una soddisfazione che cerca di non far vedere.",
+		"sbuffa piano dal naso: è quanto di più vicino a una risata l'occasione consenta.",
+	},
+	["cls.rogue.quest_complete.w05.025"] = {
+		"Serve qualcos'altro fatto con discrezione? Non cercarmi. Spunterò io.",
+		"Se salta fuori altro lavoro, lascia detto dove vuoi. Prima o poi vengo a sapere quasi tutto.",
+	},
+	["cls.rogue.quest_complete.w05.026"] = {
+		"Lavoretti, paghe piccole, piccole lezioni. Ogni maestro del mestiere ha cominciato con commissioni come questa, mi ripeto.",
+		"Niente di glorioso. Ma ogni commissione insegna ai piedi una strada e agli occhi una faccia. Alla fine si somma.",
+	},
+	["cls.rogue.quest_complete.w05.027"] = {
+		"Ormai ne ho portati a termine moltissimi. Il mondo ha ancora più guai di quanta pazienza io abbia, ma siamo vicini.",
+		"A questo punto potrei chiudere quasi ogni lavoro a occhi socchiusi. Non lo faccio: è con la troppa sicurezza che quelli come me finiscono in un fosso.",
+	},
+	["cls.rogue.quest_complete.w05.028"] = {
+		"Che generosità. L'avrei fatto anche per meno. Non dirlo a nessuno.",
+		"Hai pagato un po' troppo. Io non lo dico, se non lo dici tu.",
+	},
+	["cls.rogue.victory.w05.001"] = {
+		"rinfodera l'arma senza guardare, come altri si infilano in tasca una chiave.",
+		"ripone le armi con un solo gesto che sembra provato davanti a uno specchio.",
+	},
+	["cls.rogue.victory.w05.002"] = {
+		"E nessuno ha nemmeno dovuto sapere come mi chiamo.",
+		"Niente male. Mi lascerei la mancia, se avessi monete da buttare.",
+		"Splendido. Canticchierò per il resto della strada.",
+	},
+	["cls.rogue.victory.w05.003"] = {
+		"Ho annunciato il colpo finale con troppo anticipo. La prossima volta, nascondilo meglio.",
+		"Il colpo finale l'ha visto arrivare. Per fortuna non ha potuto farci niente.",
+	},
+	["cls.rogue.victory.w05.004"] = {
+		"Questa era la versione breve. Quella lunga non ti sarebbe piaciuta.",
+		"Potevo farla durare di più. Non c'è di che.",
+		"Se vuoi la rivincita, non sono facile da trovare.",
+	},
+	["cls.rogue.victory.w05.005"] = {
+		"Nessuno da ringraziare, nessuno da incolpare. Solo io, e la polvere che si posa.",
+		"Di nuovo {g:solo|sola}, che è come combatto meglio e come mi piace di meno.",
+	},
+	["cls.rogue.victory.w05.006"] = {
+		"controlla una per una le proprie tasche, come se a derubare fosse stato lo scontro.",
+		"si tasta cintura e borse, contando, per essere {g:sicuro|sicura} che nulla sia sparito nella mischia.",
+		"passa il pollice su ogni fibbia e cinghia, piccolo rito per accertarsi che lo scontro non si sia preso niente.",
+	},
+	["cls.rogue.victory.w05.007"] = {
+		"E per il prossimo numero: me ne vado.",
+		"Grazie, grazie. Niente applausi, sono al lavoro.",
+		"E la folla va in delirio. Be', la folla che sono io.",
+	},
+	["cls.rogue.victory.w05.008"] = {
+		"La presa mi si è irrigidita come un filo di ferro. Apri, chiudi. Apri. Ecco.",
+		"Le dita mi fanno male a forza di stringere. Entro domani mi perdoneranno.",
+	},
+	["cls.rogue.victory.w05.009"] = {
+		"Con più velocità, più forza e moltissima più fortuna, mi avresti {g:preso|presa}.",
+		"C'è mancato poco. Anzi no. Non c'è mancato per niente.",
+		"Bello sforzo. Avversario sbagliato.",
+	},
+	["cls.rogue.victory.w05.010"] = {
+		"resta {g:accovacciato|accovacciata} un istante più del necessario, a capo chino, prima di rialzarsi.",
+		"indugia un respiro sul nemico caduto, poi si volta senza una parola.",
+	},
+	["cls.rogue.victory.w05.011"] = {
+		"Ecco la sensazione. Quel mezzo battito in cui capisce, ed è già finita.",
+		"Adoro l'istante in cui se ne rende conto. Arriva sempre un istante troppo tardi.",
+	},
+	["cls.rogue.victory.w05.012"] = {
+		"Ordinato. Odio lasciare in disordine.",
+		"Pulito. Nessuno saprà mai quanto ci è mancato poco. Tranne me.",
+		"Nemmeno un movimento sprecato. Be', forse uno.",
+	},
+	["cls.rogue.victory.w05.013"] = {
+		"Cinque passi di preparazione e uno per chiudere. Oggi i conti sono tornati.",
+		"Accumulato, speso tutto, e la somma è tornata giusta.",
+	},
+	["cls.rogue.victory.w05.014"] = {
+		"fa ruotare i polsi da un lato e dall'altro, finché non smettono di formicolare.",
+		"scuote le mani come per scrollarsi via dell'acqua.",
+	},
+	["cls.rogue.victory.w05.015"] = {
+		"Tu hai esitato. Io no.",
+		"Un battito sprecato da parte tua. Non è servito altro.",
+		"Mi hai concesso un dito. A me basta sempre il dito.",
+	},
+	["cls.rogue.victory.w05.016"] = {
+		"Sono {g:bravo|brava} in questo. Certi giorni è un conforto, altri un peso.",
+		"Un talento come il mio è una strana cosa di cui andare fieri. Io lo sono lo stesso.",
+	},
+	["cls.rogue.victory.w05.017"] = {
+		"Qualcuno ha visto? No? Tipico. Il mio lavoro migliore, sempre senza testimoni.",
+		"Il mio momento migliore, e nemmeno un'anima a guardare. È la storia del mio mestiere.",
+	},
+	["cls.rogue.victory.w05.018"] = {
+		"Bel lavoro là davanti. Il merito per le retrovie me lo prendo io.",
+		"Qualcuno ha preso le botte, io ho preso i varchi. Divisione onesta, direi.",
+	},
+	["cls.rogue.victory.w05.019"] = {
+		"Nessuno mi ha {g:notato|notata}, là in mezzo. In gruppo, è un complimento.",
+		"Non ho mai avuto addosso la sua attenzione. Chi stava davanti si è guadagnato la cena.",
+	},
+	["cls.rogue.victory.w05.020"] = {
+		"E nemmeno una tasca. Sinceramente, a che scopo?",
+		"Uno scontro intero e nemmeno una moneta da mostrare. Le bestie.",
+	},
+	["cls.rogue.victory.w05.021"] = {
+		"Aveva un volto, e una ragione, e ora soltanto uno di noi due ha l'uno e l'altra.",
+		"Forse qualcuno aspetta che torni a casa. Cerco di non pensarci.",
+	},
+	["cls.rogue.victory.w05.022"] = {
+		"Stavolta resta giù. La seconda morte dovrebbe essere quella definitiva.",
+		"Torna sotto terra, e cerca di restarci.",
+		"Una volta è una tragedia. Due è solo sbadataggine.",
+	},
+	["cls.rogue.victory.w05.023"] = {
+		"Basta togliere un perno e si ferma tutto. Adoro le macchine.",
+		"Ecco. Adesso è solo ferraglia, e la ferraglia non porta rancore.",
+	},
+	["cls.rogue.victory.w05.024"] = {
+		"Come si finisce una cosa senza gola, senza cuore, senza schiena? A quanto pare, così.",
+		"Non so bene cosa ho colpito. Qualcosa lì dentro si è arreso.",
+	},
+	["cls.rogue.victory.w05.025"] = {
+		"Quello non aveva nessun motivo di perdere contro di me. Eppure.",
+		"Questa me la racconterò per settimane. Sottovoce, da me a me.",
+		"Sulla carta, quello lo perdevo. Non mi sono mai {g:fidato|fidata} della carta.",
+	},
+	["cls.rogue.victory.w05.026"] = {
+		"Troppo vicino. Tutto il mio mestiere è non farsi colpire, e io ne ho prese parecchie.",
+		"Altro che difficile da colpire. Questa la sentirò per un pezzo.",
+	},
+	["cls.rogue.victory.w05.027"] = {
+		"è già a tre passi di distanza prima che il nemico abbia finito di cadere.",
+		"volta le spalle allo scontro mentre il nemico ancora cade, con la certezza di come finisce.",
+	},
+	["cls.rogue.victory.w05.028"] = {
+		"Fatto. Allora, dove stavo andando?",
+		"Bene. Torniamo a quello che facevo prima di te.",
+	},
+	["cls.rogue.victory.w05.029"] = {
+		"Da qualche parte, un istruttore la chiamerebbe sciatteria. Quell'istruttore non è qui.",
+		"Non è una mossa da mostrare a un maestro. Però ha funzionato, e i maestri qui non ci sono.",
+	},
+	["cls.rogue.victory.w05.030"] = {
+		"si allontana di un passo dal nemico caduto, come se non c'entrasse per niente.",
+		"scavalca il nemico caduto con la cortese attenzione di chi esce da una sala affollata.",
+	},
+	["cls.rogue.victory.w05.031"] = {
+		"Ecco il guaio dello scontro leale. Tu ci hai provato.",
+		"Hai rispettato le regole. Scelta coraggiosa.",
+		"Lealtà fino in fondo. Quasi la ammiro.",
+	},
+	["cls.rogue.victory.w05.032"] = {
+		"Ascolta. Non arriva niente. Va bene, adesso posso respirare.",
+		"Prima ascolto, poi respiro. Al contrario, c'è chi ci lascia la pelle.",
+	},
+	["cls.rogue.victory.w05.033"] = {
+		"Un altro cliente soddisfatto. Be', un altro cliente.",
+		"Niente rimborsi, mi spiace.",
+		"Grazie per la preferenza.",
+	},
+	["cls.rogue.victory.w05.034"] = {
+		"si sistema colletto e polsini, come chi sta per tornare in società.",
+		"si spazzola via una macchia di terra dalla manica, vagamente {g:offeso|offesa}.",
+	},
+	["cls.rogue.victory.w05.035"] = {
+		"Ce l'ho fatta in tempo. Oggi la velocità è bastata.",
+		"Ogni scontro è una gara di velocità. E a me piace vincerle.",
+		"Ho battuto sul tempo lui e anche il dubbio. Bene.",
+	},
+	["cls.rogue.victory.w05.036"] = {
+		"Peccato che non avesse un forziere. I miei grimaldelli si annoiano.",
+		"Niente di chiuso a chiave, da nessuna parte. Le mie dita si sentono tradite.",
+	},
+	["cls.rogue.victory.w05.037"] = {
+		"Avrei dovuto controllare quelle tasche prima di salutare.",
+		"Ho scordato di alleggerire quelle tasche prima. Sciatto, e costoso.",
+	},
+	["cls.rogue.victory.w05.038"] = {
+		"Dovevi lasciarmi passare. Era più facile per tutti e due.",
+		"Ti avevo offerto una giornata tranquilla. Be', avevo intenzione di farlo.",
+	},
+	["cls.rogue.victory.w05.039"] = {
+		"Respiro, sono quasi {g:intero|intera}, e non devo niente a nessuno. Direi una giornata onesta.",
+		"Più o meno tutto d'un pezzo, e senza debiti con nessuno. Un buon conto.",
+	},
+	["cls.rogue.victory.w05.040"] = {
+		"Non disturbarti, conosco l'uscita.",
+		"Non alzarti. La strada la trovo da me.",
+		"Non serve accompagnarmi alla porta.",
+	},
+	["cls.rogue.victory.w05.041"] = {
+		"Il silenzio dopo è l'unica parte di tutto questo che sento mia.",
+		"È dopo che mi sento più {g:solo|sola}, e ho imparato a farmelo piacere.",
+		"Dopo uno scontro tutti parlano. Io preferisco ascoltare il niente.",
+	},
+	["cls.rogue.victory.w05.042"] = {
+		"conta sulle dita i trucchi che restano, poi annuisce: bastano per il prossimo.",
+		"fa un rapido inventario di borse, lame e fiato, e li trova tutti e tre accettabili.",
+	},
+	["cls.rogue.victory.w05.043"] = {
+		"La prossima volta porta degli amici. Perderai lo stesso, ma in compagnia.",
+		"La prossima volta portati rinforzi. Non cambierà molto, ma starai meglio.",
+	},
+	["cls.warrior.attack.w05.001"] = {
+		"Ecco! Lo senti nelle ginocchia?",
+		"Questo lo sentirai domani. Se ce l'hai, un domani.",
+		"L'hai sentito fino ai piedi, vero?",
+	},
+	["cls.warrior.attack.w05.002"] = {
+		"Occhio alla parte pesante. No, davvero, occhio.",
+		"Quella, per la cronaca, è la parte pesante. L'hai trovata.",
+	},
+	["cls.warrior.attack.w05.003"] = {
+		"ruota sul piede arretrato e fa girare l'arma in un arco corto e brutale.",
+		"avanza di mezzo passo e colpisce da vicino, senza spazio per caricare.",
+		"trasforma lo slancio dell'ultimo colpo direttamente nel successivo, senza mai fermarsi del tutto.",
+	},
+	["cls.warrior.attack.w05.004"] = {
+		"Non ammirarlo. Rientra, guardia, il prossimo.",
+		"Colpisci e torna in guardia. Chi resta a guardare il proprio colpo andare a segno viene colpito mentre guarda.",
+		"A segno. Dimenticalo subito. Guardia.",
+	},
+	["cls.warrior.attack.w05.005"] = {
+		"Senti? È il rumore di questa lotta che gira dalla mia parte!",
+		"Abbastanza forte? Bene. L'hanno sentito tutti, anche tu.",
+	},
+	["cls.warrior.attack.w05.006"] = {
+		"riempie i polmoni e lascia andare il grido, un suono con un filo tagliente come quello dell'arma.",
+		"getta indietro la testa e grida, e l'urlo arriva più lontano di quanto sembri possibile.",
+	},
+	["cls.warrior.attack.w05.007"] = {
+		"No, no. Me. Ce l'hai con me.",
+		"Gli occhi qui. Qualunque cosa abbiano fatto loro, io ho fatto di peggio.",
+	},
+	["cls.warrior.attack.w05.008"] = {
+		"Smettila di dimenarti e prenditelo!",
+		"Non muoverti! Funziona meglio se non ti muovi!",
+	},
+	["cls.warrior.attack.w05.009"] = {
+		"Ogni colpo che va a segno nutre il successivo. Non spezzare la catena.",
+		"Colpisci, e il calore sale. Colpisci ancora, e sale di più. Non lasciarlo raffreddare.",
+		"Ogni colpo attizza il fuoco. Non dargli il tempo di calmarsi.",
+	},
+	["cls.warrior.attack.w05.010"] = {
+		"Questa è la mia risposta a quasi tutte le domande.",
+		"Te lo spiegherei, ma così si fa prima.",
+	},
+	["cls.warrior.attack.w05.011"] = {
+		"grugnisce per lo sforzo e mette il colpo successivo esattamente dove era arrivato l'ultimo.",
+		"martella lo stesso punto più e più volte, come per scavare un solco nella guardia del nemico.",
+	},
+	["cls.warrior.battle.w05.001"] = {
+		"Ogni fibbia è chiusa. Dovrai trovare un'altra via per entrare.",
+		"Cinghie, lacci e fibbie: tutto a posto. Bussa quanto vuoi.",
+		"Ho stretto ogni cinghia due volte. Avanti, cerca quella che mi è sfuggita.",
+	},
+	["cls.warrior.battle.w05.002"] = {
+		"Niente trucchi da parte mia. Vedrai arrivare ogni colpo, e non ti servirà a niente.",
+		"Io non fingo. Non ne ho bisogno. Lo vedrai arrivare e non lo fermerai lo stesso.",
+		"Qui non c'è niente di nascosto. Dritto su di te, nel modo più semplice che conosco.",
+	},
+	["cls.warrior.battle.w05.003"] = {
+		"I fianchi, non le mani. Quello che muove i fianchi è quello che sta per colpirmi.",
+		"Bada alle spalle. Una spalla si abbassa un attimo prima di qualunque fendente.",
+	},
+	["cls.warrior.battle.w05.004"] = {
+		"Ah, perfetto. Avevo appena finito di oliare tutto.",
+		"Splendido. Cinghie nuove, filo pulito, e arrivi tu a rovinarmi entrambi.",
+		"Naturale. Proprio il giorno che avevo lucidato ogni cosa.",
+	},
+	["cls.warrior.battle.w05.005"] = {
+		"scarica il peso sui talloni, e l'armatura si assesta con un unico tintinnio sordo.",
+		"si abbassa di un palmo, e ogni piastra e cinghia che porta addosso tace all'improvviso.",
+	},
+	["cls.warrior.battle.w05.006"] = {
+		"stringe un guanto coi denti e riprende l'arma a piena presa.",
+		"si sputa nel palmo, lo strofina sull'impugnatura e avanza.",
+	},
+	["cls.warrior.battle.w05.007"] = {
+		"Qui la porta sono io. Le porte non si aprono perché lo chiedi.",
+		"Considerami una porta. Pesante, sprangata e di pessimo umore.",
+		"Vuoi passare? La porta sono io, e sono chiusa a chiave.",
+	},
+	["cls.warrior.battle.w05.008"] = {
+		"Ho il sangue in subbuglio e non ho ancora menato un colpo. Dovrebbe preoccuparti.",
+		"Mi sto già scaldando. Al terzo colpo rimpiangerai di non avermi {g:lasciato|lasciata} in pace.",
+	},
+	["cls.warrior.battle.w05.009"] = {
+		"Freddo nella pancia prima del primo colpo. Non arriva mai vivo al secondo.",
+		"Un brivido sotto le costole, ogni volta. Il primo colpo serio lo caccia sempre via.",
+	},
+	["cls.warrior.battle.w05.010"] = {
+		"Porto mezza fucina sulla schiena. Il minimo che puoi fare è valerne il peso.",
+		"Tutto questo ferro addosso, e mi tocchi tu? Vedi almeno di valere la fatica di portarlo.",
+	},
+	["cls.warrior.battle.w05.011"] = {
+		"Buon terreno. Solido, piano, mio. A te resta quel che avanza.",
+		"Questo terreno mi piace. Me lo tengo. Prova a prendertelo.",
+		"Sotto i piedi tiene. È tutto quello che chiedo a un posto.",
+	},
+	["cls.warrior.battle.w05.012"] = {
+		"Gomito dentro, mento giù, la guardia non si abbassa dopo il colpo. Gomito dentro. Mento giù.",
+		"Tutto quello che ha detto l'istruttore, in una volta, nell'ordine sbagliato. Tieni su la guardia, e basta.",
+		"Piedi larghi. No, di più. La voce dell'istruttore mi rimbomba in testa più forte della lotta.",
+	},
+	["cls.warrior.battle.w05.013"] = {
+		"Queste braccia l'hanno fatto mille volte. Non serve che sia io a spiegargli come.",
+		"Il mio corpo conosce questa lotta meglio di me. Io cerco solo di stargli dietro.",
+	},
+	["cls.warrior.battle.w05.014"] = {
+		"Lasciate che guardino me. Voi pensate alla parte dolorosa.",
+		"Tengo io i loro occhi. Voi colpite dove non guardano.",
+		"Tutti gli sguardi su di me, ci penso io. Gli altri, che ogni colpo conti.",
+	},
+	["cls.warrior.battle.w05.015"] = {
+		"Restate dietro di me, a un passo. Se riuscite a vederli in faccia, siete troppo avanti.",
+		"Nessuno oltrepassa la mia spalla. Dietro c'è riparo; davanti, diventate un problema mio.",
+	},
+	["cls.warrior.battle.w05.016"] = {
+		"Ti hanno già ucciso una volta. Io sono qui solo per renderlo definitivo.",
+		"Sottoterra e di nuovo in piedi. C'è chi proprio non sa quando smettere.",
+	},
+	["cls.warrior.battle.w05.017"] = {
+		"Denti contro ferro. So bene quale cede per primo.",
+		"Mordi pure l'armatura, se vuoi. Sa d'olio e di sudore vecchio.",
+	},
+	["cls.warrior.battle.w05.018"] = {
+		"Qualcuno ti ha messo quell'arma in mano e ti ha insegnato a usarla. Ti ha insegnato anche a non perderla?",
+		"Si vede che ti hanno addestrato. Anche me. Solo che il mio addestramento era più cattivo.",
+	},
+	["cls.warrior.battle.w05.019"] = {
+		"Là dentro non c'è niente che sanguini o si stanchi. Allora continuo a colpire finché là dentro non resta niente.",
+		"Non sussulta e non si stanca. Nemmeno io, se posso evitarlo.",
+	},
+	["cls.warrior.battle.w05.020"] = {
+		"Piastre e ribattini, come me. Vediamo di chi saltano per primi.",
+		"Ferro contro ferro. Almeno capirai cosa ti sto facendo.",
+	},
+	["cls.warrior.battle.w05.021"] = {
+		"Un colpo così grosso lascia un buco altrettanto grosso. Io starò lì dentro.",
+		"Braccia enormi, ritorno lento. Io abito nello spazio tra un tuo colpo e l'altro.",
+	},
+	["cls.warrior.battle.w05.022"] = {
+		"Le scaglie sono un'armatura, e di armature me ne intendo più di chiunque.",
+		"Anche tu porti la corazza addosso, eh. Cerchiamone le giunture.",
+	},
+	["cls.warrior.battle.w05.023"] = {
+		"Qualunque fuoco ti abbia fatto, il ferro semplice lo taglia ancora.",
+		"Non conosco il tuo nome né il tuo padrone. Mi basta sapere dove colpire.",
+	},
+	["cls.warrior.battle.w05.024"] = {
+		"Allora, siamo onesti: sarà una faccenda rumorosa.",
+		"Meglio avvisarti: lavoro in modo tutt'altro che silenzioso.",
+		"Preparati. Non al colpo: al baccano.",
+	},
+	["cls.warrior.battle.w05.025"] = {
+		"Ecco. Il rumore dentro tace e tutto diventa semplice. Mi era mancato.",
+		"È l'unico posto in cui non c'è niente da spiegare. Avvicinati e lavora.",
+	},
+	["cls.warrior.battle.w05.026"] = {
+		"Presa salda e testa sgombra. È così che dev'essere.",
+		"Tutto il peso dietro e niente fronzoli. Arriva.",
+		"Mano stretta, mente lucida, niente di elaborato. Cominciamo.",
+	},
+	["cls.warrior.battle.w05.027"] = {
+		"volge verso il nemico la spalla corazzata, come fa chi si aspetta un colpo e ha smesso di farci caso.",
+		"inclina il corpo perché la parte più spessa dell'armatura sia rivolta al nemico, poi fa il primo passo.",
+	},
+	["cls.warrior.battle.w05.028"] = {
+		"batte due volte l'arma contro la propria armatura, un rintocco secco come chi bussa a una porta.",
+		"sbatte l'arma contro l'armatura, una volta, forte, e accenna un sorriso a quel suono.",
+	},
+	["cls.warrior.battle.w05.029"] = {
+		"Mi avevano detto che questo mestiere tempra il carattere. Andiamo a temprarne un po'.",
+		"Qualcuno mi aveva giurato che il mestiere era soprattutto marciare. Mentiva.",
+	},
+	["cls.warrior.battle.w05.030"] = {
+		"Qualunque cosa tu sia, non era nei tuoi piani. Nemmeno nei miei.",
+		"Nessuno di noi due ha scelto questa strada. Uno solo arriverà in fondo.",
+	},
+	["cls.warrior.battle.w05.031"] = {
+		"Dammi qualcosa da ricordare. Sono {g:stanco|stanca} di lotte che finiscono prima di cominciare.",
+		"Spero che tu sappia il fatto tuo. Quelli facili non mi insegnano niente.",
+	},
+	["cls.warrior.battle.w05.032"] = {
+		"Fuori portata sono solo qualcuno in armatura. A portata, sono tutto il problema. Entra a portata.",
+		"Lo spazio tra noi non è di nessuno. Prendilo prima che lo faccia l'altro.",
+	},
+	["cls.warrior.battle.w05.033"] = {
+		"Se siete in tanti, stringetevi pure. Ho imparato cosa fare con la ressa.",
+		"Altri là dietro? Fatevi sotto tutti. Giro su me stesso più in fretta di quanto sembri.",
+	},
+	["cls.warrior.battle.w05.034"] = {
+		"Prima logoralo. Il colpo di grazia funziona solo quando l'altro non ne può più.",
+		"Pazienza. Togligli le forze, poi chiudila con un solo colpo quando vacilla.",
+	},
+	["cls.warrior.battle.w05.035"] = {
+		"Ho fatto parecchia pratica. Stai per scoprire quanta.",
+		"Tante strade alle spalle, e parecchie sono finite con una lotta come questa.",
+	},
+	["cls.warrior.battle.w05.036"] = {
+		"Questo non è uno qualunque. Guardia alta, piedi onesti, niente sbruffonate.",
+		"Ecco un avversario come si deve. Qui nessuno si distrae, io per {g:primo|prima}.",
+	},
+	["cls.warrior.battle.w05.037"] = {
+		"Te la stai prendendo con qualcuno troppo grosso per te, e io peso parecchio. Ultima occasione per scappare.",
+		"Girati e vattene. Non sarà una lotta alla pari, e non sarò io a farne le spese.",
+	},
+	["cls.warrior.battle.w05.038"] = {
+		"{target}. Non muoverti e sarà più rapido per entrambi.",
+		"{target}, eh? Cercherò di ricordarmelo, per quando lo racconterò.",
+	},
+	["cls.warrior.battle.w05.039"] = {
+		"Ah, ecco il lavoro. Cominciavo a pensare di averla affilata per niente.",
+		"Bene. Mi seccherebbe che tutto quell'allenamento andasse sprecato.",
+	},
+	["cls.warrior.battle.w05.040"] = {
+		"scopre i denti in qualcosa che non è proprio un sorriso e passa l'arma nella mano più forte.",
+		"sorride, un sorriso breve e duro, e si mette in guardia come davanti a un vecchio rivale.",
+	},
+	["cls.warrior.battle.w05.041"] = {
+		"Piedi pesanti, mani leggere. L'armatura si porta da sola, se la lascio fare.",
+		"Il peso va nelle gambe, non nelle spalle. Le spalle servono a menare colpi.",
+	},
+	["cls.warrior.battle.w05.042"] = {
+		"Uno di noi deve cedere terreno. Io, a cedere, non ho mai imparato.",
+		"Qualcuno dovrà fare un passo indietro. Posso già dirti che non sarò io.",
+		"Il terreno qualcuno dovrà pur cederlo. Cercalo altrove.",
+	},
+	["cls.warrior.battle.w05.043"] = {
+		"Sbrighiamoci. Comunque vada, dopo l'equipaggiamento va oliato.",
+		"Alla svelta, se non ti spiace. Comunque vada, dopo avrò cinghie da ricucire.",
+	},
+	["cls.warrior.battle.w05.044"] = {
+		"Parla pure quanto vuoi. Io rispondo con questa.",
+		"Qualunque cosa tu stia urlando, non la capisco. Io parlo questa lingua qui.",
+	},
+	["cls.warrior.battle.w05.045"] = {
+		"controlla la posizione dei piedi, ne arretra uno di un soffio, e solo allora alza l'arma.",
+		"assesta la posizione con la cura di chi getta le fondamenta di una casa.",
+	},
+	["cls.warrior.battle.w05.046"] = {
+		"Ricordate tutti il piano? Bene. Entro io davanti, e il piano è quello.",
+		"Il piano è questo: le prendo io, voi no. Domande? Non c'è tempo.",
+	},
+	["cls.warrior.battle.w05.047"] = {
+		"Spalle sciolte, presa salda, pazienza corta. Si comincia.",
+		"Braccio sciolto, presa stretta, miccia corta. Hai scelto il momento sbagliato.",
+	},
+	["cls.warrior.battle.w05.048"] = {
+		"Ogni esercizio nel cortile era per questo momento. Non sprecarne nemmeno uno.",
+		"Tutte quelle ore a menar colpi contro un palo. Il palo non rispondeva. Questo sì.",
+	},
+	["cls.warrior.battle.w05.049"] = {
+		"Ci metto un po' a partire, e di più a fermarmi. Vedrai.",
+		"Difficile da smuovere, ancora più difficile da deviare. Stai per scoprire entrambe le cose.",
+	},
+	["cls.warrior.battle.w05.050"] = {
+		"Un istruttore, se mi vedesse impugnare così, farebbe una smorfia. Ormai è tardi.",
+		"Il mio istruttore avrebbe da ridire su questo appoggio. Per fortuna non è qui.",
+	},
+	["cls.warrior.battle.w05.051"] = {
+		"Tieni pure la posizione, se vuoi. Tra poco te la porto via.",
+		"Mettiti bene in guardia. Non servirà, ma almeno farai bella figura.",
+	},
+	["cls.warrior.battle.w05.052"] = {
+		"Questo è il lavoro. Niente discorsi. Facciamolo come si deve.",
+		"Lavoro semplice, allora. Lo farò come mi hanno insegnato: per bene.",
+	},
+	["cls.warrior.battle.w05.053"] = {
+		"lancia un grido di guerra breve come un latrato, più segnale che minaccia, e gli va dietro.",
+		"grida una volta, una sola sillaba secca, ed è già in movimento prima che il suono si spenga.",
+	},
+	["cls.warrior.battle.w05.054"] = {
+		"Il calore parte dalle mani e sale. Quando arriverà alla testa avrò smesso di pensare. Bene.",
+		"Caldo nelle dita, poi nelle braccia. Tra poco in me non resterà spazio per i dubbi.",
+	},
+	["cls.warrior.battle.w05.055"] = {
+		"Questo sì che è lavoro onesto. Niente registri, niente chiacchiere, solo io e te.",
+		"Questa parte mi piace. Tutto è semplice: tu, io, e chi resta in piedi alla fine.",
+	},
+	["cls.warrior.buff.w05.001"] = {
+		"Qualcosa di caldo scende lungo le braccia e si posa nelle mani. Lo restituirò con gli interessi.",
+		"Un calore nuovo sotto la pelle. So benissimo dove spenderlo.",
+		"Il calore sale dal petto alle spalle. Le braccia sapranno che farne.",
+	},
+	["cls.warrior.buff.w05.002"] = {
+		"Oh. Formicola. Un bel formicolio.",
+		"Questo ha una bella spinta. Mi piace.",
+		"Ah, che bella sensazione. Chi vuole metterla alla prova?",
+	},
+	["cls.warrior.buff.w05.003"] = {
+		"inspira a fondo e sembra crescere di una taglia, come uno stendardo quando lo prende il vento.",
+		"alza il mento, una saldezza nuova nella linea della mascella.",
+	},
+	["cls.warrior.buff.w05.004"] = {
+		"Non so quanto dura. Faccio conto che duri poco, e mi sbrigo.",
+		"La forza che arriva così facile se ne va altrettanto facile. Va usata, non ammirata.",
+	},
+	["cls.warrior.buff.w05.005"] = {
+		"Adesso sì che è uno scontro equo. Per me.",
+		"Ecco fatto. Adesso sono guai tuoi.",
+		"Questo cambia le cose. Non per te.",
+	},
+	["cls.warrior.buff.w05.006"] = {
+		"L'armatura sembra più leggera, anche se so che non lo è. Con la sensazione non discuto.",
+		"Stesso metallo, stesse cinghie. Solo che adesso mi sta meglio addosso, come se avesse deciso che siamo dalla stessa parte.",
+	},
+	["cls.warrior.buff.w05.007"] = {
+		"scopre i denti in qualcosa che non è proprio un sorriso, mentre la forza nuova fa presa.",
+		"stringe l'arma fino a sbiancarsi le nocche, impaziente di spendere la forza fresca.",
+	},
+	["cls.warrior.buff.w05.008"] = {
+		"Fa bene. Non aspettarti che lo ripeta.",
+		"Va bene. Sì. Utile. Andiamo avanti.",
+		"Niente male. Proprio niente male. Bene, basta così.",
+	},
+	["cls.warrior.buff.w05.009"] = {
+		"I maestri lo ripetevano sempre: ogni vantaggio che ti offrono prendilo, e ringrazialo solo dopo.",
+		"Il vecchio esercizio: sentila, fidati, dimenticala. Il corpo se la ricorda da solo.",
+	},
+	["cls.warrior.buff.w05.010"] = {
+		"Bene. Vediamo a cosa serve.",
+		"Bene. Non sprechiamolo qui impalati.",
+		"Può bastare. Andiamo a usarlo.",
+	},
+	["cls.warrior.buff.w05.011"] = {
+		"Svanirà, come tutto ciò che arriva di fretta. Meglio essere più {g:rapido|rapida} di lei.",
+		"Per un po' sono più di quello che sono. Poi tornerò me {g:stesso|stessa}, e dovrà bastare.",
+	},
+	["cls.warrior.buff.w05.012"] = {
+		"fa un saltello sulle punte, per saggiare la molla nuova nelle gambe.",
+		"fa compiere all'arma un arco pigro nell'aria, solo per sentire quanto è diventata più facile.",
+		"si alza sulle punte e torna giù, sogghignando per la poca fatica che ci vuole.",
+	},
+	["cls.warrior.buff.w05.013"] = {
+		"Ho ritrovato il fiato. Tutti dietro di me.",
+		"Gambe fresche, braccia fresche. Io sto davanti, voi badate ai lati.",
+	},
+	["cls.warrior.buff.w05.014"] = {
+		"La rabbia si sveglia prima, adesso. Bene: stava tenendo il broncio.",
+		"Ecco la scintilla nel sangue. La rabbia ha di che accendersi.",
+		"Il sangue scorre più caldo. La rabbia adesso ha dove andare.",
+	},
+	["cls.warrior.buff.w05.015"] = {
+		"Se durasse, non mi toglierei mai l'armatura.",
+		"Posso tenerlo? No? Valeva la pena chiedere.",
+		"Potrei abituarmici. Ed è proprio per questo che non lo farò.",
+	},
+	["cls.warrior.buff.w05.016"] = {
+		"fa scrocchiare il collo da un lato, poi dall'altro, ogni giuntura di colpo sicura del proprio compito.",
+		"fa un respiro lento, poi un altro, e lascia che la forza nuova scenda fino alle gambe.",
+	},
+	["cls.warrior.buff.w05.017"] = {
+		"Una spinta così accorcia la strada. Non la rende corta: più corta.",
+		"Da sola è poca cosa. In una lunga marcia è la differenza tra camminare e trascinarsi.",
+		"Una piccola spinta. Di quelle che trasformano un «quasi» in un «basta».",
+	},
+	["cls.warrior.buff.w05.018"] = {
+		"Oh, così va meglio. Non muoverti, ho qualcosa per te.",
+		"Ah! Lo senti? No, tu no. Io sì.",
+	},
+	["cls.warrior.buff.w05.019"] = {
+		"I muscoli che un attimo fa si lamentavano adesso stanno zitti e attenti.",
+		"La presa si stringe senza che glielo chieda. Le mani lo sanno sempre per prime.",
+		"Tutto si tende e si affila, come una cinghia stretta di un buco.",
+	},
+	["cls.warrior.buff.w05.020"] = {
+		"Bene. Qualunque cosa arrivi, deve passare prima da me.",
+		"{g:Pronto|Pronta}. I piedi ben piantati e le braccia disposte.",
+	},
+	["cls.warrior.buff.w05.021"] = {
+		"grugnisce in segno d'approvazione, come si fa davanti a uno stivale ben fatto.",
+		"fa un breve cenno soddisfatto, come se un attrezzo fosse stato affilato a dovere.",
+		"flette i polsi, {g:soddisfatto|soddisfatta}, come chi prova un guanto che finalmente calza.",
+	},
+	["cls.warrior.buff.w05.022"] = {
+		"Sangue in movimento e testa lucida. Coppia rara: ne approfitto.",
+		"Caldo nelle braccia, freddo nella testa. Proprio come lo volevano i maestri.",
+	},
+	["cls.warrior.farewell.w05.001"] = {
+		"Io vado. Tieni alta la guardia.",
+		"Addio. Se si arriva alle mani, mettiti dietro qualcuno in armatura.",
+		"Parto. Guarda bene dove cammini.",
+	},
+	["cls.warrior.greet.w05.001"] = {
+		"Salute. Occhio ai gomiti: quest'armatura occupa spazio.",
+		"Salve. Non badare alle ammaccature: me le sono guadagnate.",
+	},
+	["cls.warrior.greet.w05.002"] = {
+		"Ciao. Se ti serve un braccio forte, sai dov'è.",
+		"Buongiorno a te. L'arma è abbassata, per ora.",
+	},
+	["cls.warrior.heal.w05.001"] = {
+		"Il dolore passa da acuto a sordo. Quello sordo lo posso portare per ore.",
+		"Il peggio si ritira. Resta un male con cui si può ancora camminare.",
+		"La fitta diventa un dolore qualunque. Con quelli qualunque so lavorare.",
+	},
+	["cls.warrior.heal.w05.002"] = {
+		"Come {g:nuovo|nuova}. Be', come la settimana scorsa.",
+		"Non proprio {g:nuovo|nuova}, ma si usa ancora. Come il resto della mia attrezzatura.",
+		"Torno utile. È l'unico voto che mi interessa.",
+	},
+	["cls.warrior.heal.w05.003"] = {
+		"apre e chiude le dita sull'impugnatura finché non rispondono di nuovo come si deve.",
+		"sposta il peso da un piede all'altro, saggiando, e non trova niente che ceda.",
+		"fa compiere un giro intero alla spalla rigida, poi un altro, e annuisce al risultato.",
+	},
+	["cls.warrior.heal.w05.004"] = {
+		"Di nuovo in sesto. Il corpo continua a perdonarmi. Prima o poi smetterà, e non avrò di che lamentarmi.",
+		"Ogni volta che si richiude penso: il corpo è un creditore paziente. Non infinito.",
+	},
+	["cls.warrior.heal.w05.005"] = {
+		"Così va meglio. Allora, dov'eravamo?",
+		"Rifornimento fatto. Forza: secondo round.",
+	},
+	["cls.warrior.heal.w05.006"] = {
+		"Ora che lo scontro è finito, ogni livido vuole dire la sua. Questo ne zittisce quasi tutti.",
+		"Il male arriva dopo, sempre. Ed è dopo che si guarisce, se lo lascio fare.",
+		"Lo scontro si è preso il suo. Questo ne restituisce un po'.",
+	},
+	["cls.warrior.heal.w05.007"] = {
+		"Ah. Mi tornano a rispondere le dita dei piedi.",
+		"Splendido. Riesco ad alzare il braccio sopra la spalla. Piccole gioie.",
+		"Respiro di nuovo col naso. Una vita da gran signori.",
+	},
+	["cls.warrior.heal.w05.008"] = {
+		"Sotto l'armatura qualcosa si ricuce. L'armatura ha retto i colpi: ora tocca a me raggiungerla.",
+		"Il metallo ha tenuto, la carne no. Adesso la carne recupera.",
+	},
+	["cls.warrior.heal.w05.009"] = {
+		"fa ruotare il collo finché qualcosa scrocchia, e ha molto meno l'aria di chi va portato via in barella.",
+		"soffia fuori l'aria fra i denti mentre il dolore allenta la presa.",
+		"espira piano, e la smorfia sul viso si scioglie in qualcosa di più simile a un cipiglio.",
+	},
+	["cls.warrior.heal.w05.010"] = {
+		"Accetto volentieri. Cominciavo ad affezionarmi a quella zoppia, ma accetto.",
+		"Va bene, va bene. Smetto di appoggiarmi a tutto quello che trovo.",
+	},
+	["cls.warrior.heal.w05.011"] = {
+		"Il fiato torna giù in fondo al petto. Avevo scordato che abitasse lì.",
+		"Le costole smettono di protestare a ogni respiro. Bene: l'aria mi serve per menare colpi.",
+		"Ogni respiro adesso arriva fino in fondo, senza intoppi.",
+	},
+	["cls.warrior.heal.w05.012"] = {
+		"Bene. Le braccia funzionano, le gambe pure. Il resto sono dettagli.",
+		"Braccia, gambe, occhi. Tutti presenti. Andiamo avanti.",
+		"Ginocchia salde, mani ferme, occhi a fuoco. Si può tornare a lavorare.",
+	},
+	["cls.warrior.heal.w05.013"] = {
+		"Un po' più lontano dal bordo. Un momento fa lo vedevo bene. Avrei preferito di no.",
+		"C'è mancato più di quanto mi piaccia ammettere. Il calore che torna ha il sapore di una grazia.",
+	},
+	["cls.warrior.heal.w05.014"] = {
+		"Basta rattoppi. La strada non si fa da sola.",
+		"Va bene così. Andiamo, prima che mi irrigidisca.",
+	},
+	["cls.warrior.heal.w05.015"] = {
+		"si raddrizza sotto la forza nuova e torna avanti, come se gli ultimi colpi fossero stati un problema di qualcun altro.",
+		"scaccia la nebbia dagli occhi con un battito di palpebre e torna a fronteggiare lo scontro.",
+	},
+	["cls.warrior.heal.w05.016"] = {
+		"I maestri lo dicono: capisci cosa ti dice ogni ferita, poi lasciala andare. Questa diceva: spostati prima.",
+		"Ogni ferita è una lezione con la risposta già scritta. Questa dice: guarda il lato sinistro.",
+	},
+	["cls.warrior.heal.w05.017"] = {
+		"Odora di fosso e va giù come ghiaia. Alla salute lo stesso.",
+		"Ogni fiala di questa roba è peggio della precedente. Vuol dire che funziona.",
+		"Chi le distilla odia chi le beve. Ci sta.",
+	},
+	["cls.warrior.heal.w05.018"] = {
+		"Il cuore passa dal galoppo al passo di marcia. È l'andatura con cui combatto meglio.",
+		"Il battito smette di martellarmi nelle orecchie. Torno a sentire quello che ho intorno, e a pensare.",
+	},
+	["cls.warrior.heal.w05.019"] = {
+		"Ti tocca ricominciare da capo. Peccato, tutta quella fatica.",
+		"Tutto quel lavoro, cancellato. Impegnati di più.",
+		"Di nuovo al punto di partenza. Te ne servirà molto di più.",
+	},
+	["cls.warrior.heal.w05.020"] = {
+		"allenta una cinghia, controlla l'ammaccatura sotto, e la richiude con un grugnito soddisfatto.",
+		"passa una mano sui lividi peggiori sotto l'armatura e li trova già meno vivi.",
+	},
+	["cls.warrior.heal.w05.021"] = {
+		"Strano come il mondo sembri più gentile appena si smette di sanguinare.",
+		"Buffo. Attorno non è cambiato niente, ma tutto sembra più ragionevole senza un buco addosso.",
+		"L'aria ha un altro sapore con le ferite chiuse. Non l'avrei mai detto.",
+	},
+	["cls.warrior.heal.w05.022"] = {
+		"Bene. Torno davanti: tutti dietro di me.",
+		"Ecco, sono di nuovo in forma. Guardate me, non loro.",
+	},
+	["cls.warrior.heal.w05.023"] = {
+		"Il corpo è l'unico attrezzo che nessun fabbro può sostituirmi. Ogni tanto vale la pena curarlo.",
+		"Una lama si riforgia, uno scudo si ricompra. Questo corpo è l'unico pezzo dell'equipaggiamento che ho una volta sola.",
+		"L'armaiolo aggiusta il metallo. Per la carne bisogna aspettare, come tutti.",
+	},
+	["cls.warrior.heal.w05.024"] = {
+		"Non dite a nessuno quanto c'è mancato. Ho la fama di chi non si ammacca facilmente.",
+		"Facciamo finta che non sia mai successo.",
+		"Se qualcuno chiede, non sono mai {g:stato|stata} in difficoltà.",
+	},
+	["cls.warrior.heal.w05.025"] = {
+		"solleva l'arma un po' più in alto di prima, senza più il tremito nel braccio.",
+		"torna a reggere il peso dell'arma senza una smorfia.",
+		"si appoggia l'arma alla spalla, poi la abbassa in guardia, ferma ormai.",
+	},
+	["cls.warrior.heal.w05.026"] = {
+		"Se ne va il fischio nelle orecchie. Non mi mancherà.",
+		"La testa si schiarisce, il mondo smette di pendere. Piccole grazie, e oggi una grande.",
+		"La nebbia si alza dagli occhi. Bene: mi piace vedere cosa sta per colpirmi.",
+	},
+	["cls.warrior.heal.w05.027"] = {
+		"Un po' di fiato, un po' di rattoppo, e si riparte.",
+		"Questo regge. Torniamo al lavoro.",
+		"Bene. Basta stare con le mani in mano.",
+	},
+	["cls.warrior.heal.w05.028"] = {
+		"Di nuovo abbastanza {g:intero|intera}. A volte mi chiedo quanto di me vorrà indietro il prossimo scontro.",
+		"Guariscono sempre, queste ferite. È la stanchezza sotto che resta.",
+	},
+	["cls.warrior.heal.w05.029"] = {
+		"Aria nei polmoni, peso sui piedi. Bene.",
+		"{g:Saldo|Salda}. Allora, di nuovo in prima fila.",
+		"Piedi ben piantati, mani ferme. Avanti.",
+	},
+	["cls.warrior.heal.w05.030"] = {
+		"Questa lascerà il segno. Ne imparerò la forma come le altre, come la lingua impara un dente che manca.",
+		"Chiusa, ma tirerà per un po'. Un promemoria sulla pelle, più economico di tante lezioni.",
+		"La pelle tira sul punto nuovo. Immagino che farà male quando cambia il tempo.",
+	},
+	["cls.warrior.heal.w05.031"] = {
+		"si dà due colpetti sul petto, come chi controlla la borsa dopo una calca, e il conto pare tornare.",
+		"controlla le braccia, le gambe, e annuisce fra sé: tutto al suo posto.",
+	},
+	["cls.warrior.levelup.w05.001"] = {
+		"Il corpo ha imparato qualcosa che la testa non ha ancora capito. Di solito va in quest'ordine.",
+		"Un gradino più su. Immagino che il maestro avrà qualcosa di nuovo da farmi entrare in testa a forza.",
+	},
+	["cls.warrior.levelup.w05.002"] = {
+		"Sto migliorando. Non ditelo al nemico.",
+		"Più difficile da colpire, più difficile da fermare. Ci sto arrivando.",
+	},
+	["cls.warrior.levelup.w05.003"] = {
+		"fa ruotare le spalle e prova un colpo a vuoto che è, senza dubbio, un po' più pulito dell'ultimo.",
+		"resta un momento con l'arma tenuta orizzontale, sentendo la nuova fermezza fino al gomito.",
+	},
+	["cls.warrior.lowhp.w05.001"] = {
+		"Ho ancora troppe cose da fare per cadere qui.",
+		"Ti servirà ben altro. La testardaggine è tutto il mio mestiere.",
+		"Vicino. Non abbastanza.",
+	},
+	["cls.warrior.lowhp.w05.002"] = {
+		"Allora è questo il bordo. Strano quanta calma ci sia, qui.",
+		"Il mondo si stringe al prossimo colpo. Tutto il resto è diventato molto silenzioso.",
+		"Tutto rallenta. Bene: adesso lo vedo arrivare.",
+	},
+	["cls.warrior.lowhp.w05.003"] = {
+		"oscilla come un albero nella burrasca, ma le radici tengono.",
+		"si passa un avambraccio sugli occhi per schiarirli e ritrova l'appoggio dei piedi.",
+	},
+	["cls.warrior.lowhp.w05.004"] = {
+		"Ahi. D'accordo. Ricevuto.",
+		"Questo lo sentirò domani. Sempre che.",
+		"Mh. Questo andrà fatto vedere a qualcuno.",
+	},
+	["cls.warrior.lowhp.w05.005"] = {
+		"Ogni colpo che prendo è combustibile. In questo momento ne ho in abbondanza.",
+		"Questo scontro mi ha dato parecchio materiale. È ora di restituirlo.",
+		"Dentro il dolore, fuori la rabbia. Scambio semplice.",
+	},
+	["cls.warrior.lowhp.w05.006"] = {
+		"Avvicinati. Il braccio funziona ancora, ed è molto arrabbiato.",
+		"Tutto il tuo meglio è questo? Io intanto continuo a colpire.",
+	},
+	["cls.warrior.lowhp.w05.007"] = {
+		"Adesso l'armatura lavora più di me. Teniamo duro, tutti e due.",
+		"Ogni cinghia pesa di più. La porterò lo stesso: lei ha portato me.",
+		"Ogni pezzo dell'armatura pesa come piombo. Portalo. Portalo e basta.",
+	},
+	["cls.warrior.lowhp.w05.008"] = {
+		"ruggisce a denti stretti, e sembra che sia il suono da solo a {g:tenerlo|tenerla} in piedi.",
+		"lancia un ringhio roco e si ributta nella mischia come se le ferite fossero di un altro.",
+	},
+	["cls.warrior.lowhp.w05.009"] = {
+		"Sono {g:messo|messa} male! Non sparpagliatevi, li tengo ancora.",
+		"Sono {g:conciato|conciata} male. Restate dietro di me lo stesso.",
+	},
+	["cls.warrior.lowhp.w05.010"] = {
+		"Se finisce qui, che mi trovino almeno con la faccia rivolta dalla parte giusta.",
+		"Se cado, voglio cadere in avanti. È l'ultima cosa che posso scegliere.",
+	},
+	["cls.warrior.lowhp.w05.011"] = {
+		"Ho avuto giornate migliori. Anche peggiori, ma adesso non me le ricordo.",
+		"Ah, bene. La parte interessante.",
+		"Va tutto bene. È una quantità di sangue normalissima.",
+	},
+	["cls.warrior.lowhp.w05.012"] = {
+		"Mani, non azzardatevi ad aprirvi. Non ancora.",
+		"La presa. Basta tenere la presa. Il resto viene dietro.",
+		"Dita, restate chiuse. È tutto quello che vi chiedo.",
+	},
+	["cls.warrior.lowhp.w05.013"] = {
+		"sanguina da più punti di quanti ne sappia contare, e continua a battersi come se contare non fosse affar suo.",
+		"si scuote il sangue dagli occhi e ritrova il nemico d'istinto.",
+		"continua a battersi con la guardia a pezzi e il viso duro come la pietra.",
+	},
+	["cls.warrior.lowhp.w05.014"] = {
+		"Respira. Colpisci. Respira. Colpisci.",
+		"Ancora uno. E poi un altro ancora.",
+	},
+	["cls.warrior.lowhp.w05.015"] = {
+		"Ecco a cosa servivano tutti quegli esercizi: a combattere quando ogni parte di me vuole fermarsi.",
+		"È esattamente a questo che servivano gli esercizi. Le braccia ricordano, anche quando la testa si annebbia.",
+	},
+	["cls.warrior.lowhp.w05.016"] = {
+		"Andate! Tengo qui finché posso.",
+		"Se si mette male, allontanatevi. Il tempo ve lo compro io.",
+	},
+	["cls.warrior.lowhp.w05.017"] = {
+		"si getta incontro al colpo successivo invece di schivarlo, come se rifiutasse di cedere anche un solo palmo.",
+		"trae un respiro spezzato e chissà come trova la forza per un altro colpo, e poi un altro ancora.",
+	},
+	["cls.warrior.lowhp.w05.018"] = {
+		"La morte ha aspettato fin qui. Può aspettare che io finisca.",
+		"La morte aspetti il suo turno. Ho da fare.",
+	},
+	["cls.warrior.muse.w05.001"] = {
+		"Mangio per due e le prendo per quattro. Eppure, chissà come, i conti tornano a mio favore.",
+		"Nessuno ti dice quanta fame metta questo mestiere. Metà delle monete se ne va in pane, l'altra metà in riparazioni.",
+		"Razioni per uno, appetito per tre. I cuochi di ogni locanda imparano presto la mia faccia.",
+	},
+	["cls.warrior.muse.w05.002"] = {
+		"I palmi hanno preso la forma dell'impugnatura. Anche quando tengo una tazza, le dita si chiudono come se qualcuno potesse strapparmela.",
+		"I calli stanno proprio dove poggia il manico. Il lavoro mi ha riscritto le mani, e loro non chiedono di tornare indietro.",
+	},
+	["cls.warrior.muse.w05.003"] = {
+		"Il mio maestro non ha mai detto «bene». Solo «ancora». Certi giorni me lo sento ripetere tra un colpo e l'altro.",
+		"Ancora. Ancora. Ancora. Tutto l'insegnamento dei maestri stava lì, e alla fine è bastato.",
+		"La parola preferita del maestro era «ancora», e per mesi l'ho odiata. Adesso sono io a ripetermela.",
+	},
+	["cls.warrior.muse.w05.004"] = {
+		"Tra uno scontro e l'altro la furia scola via, e quel che resta è più lento, più silenzioso, e non sempre sa che fare delle mani.",
+		"Senza la rabbia sono una cosa più pesante e più spenta. Sto ancora imparando a voler bene anche a quella.",
+	},
+	["cls.warrior.muse.w05.005"] = {
+		"C'è chi si porta dietro libri di incantesimi. Io un pezzo di ferro affilato e un caratteraccio, e dormo benissimo.",
+		"Niente pergamene, niente formule, niente reagenti. Solo una cosa pesante e la voglia di menarla. Si viaggia leggeri.",
+	},
+	["cls.warrior.muse.w05.006"] = {
+		"Uno scudo è una porta che ti porti dietro. Niente passa senza bussare prima, e chi apre lo decido io.",
+		"Pensa a uno scudo come a una porta con qualcuno dietro. Alle porte si bussa. Servono a questo.",
+		"Con lo scudo alzato sono una casa con la porta sbarrata. Che bussino pure tutto il giorno.",
+	},
+	["cls.warrior.muse.w05.007"] = {
+		"Ascia, spada, mazza, le armi in asta: fanno tutte lo stesso discorso, solo con accenti diversi.",
+		"Alla fine ogni arma della rastrelliera dice la stessa cosa: un peso, mosso in fretta, nella direzione giusta.",
+	},
+	["cls.warrior.muse.w05.008"] = {
+		"Un giorno le mie ginocchia si riuniranno in assemblea e voteranno contro tutto questo. Ma non oggi.",
+		"Le articolazioni già brontolano per il lavoro. Ho detto loro che andranno in pensione quando ci andrò io.",
+	},
+	["cls.warrior.muse.w05.009"] = {
+		"La paura non se n'è mai andata. Ho solo imparato a camminarle davanti, dove non può vedermi in faccia.",
+		"La paura viene ancora con me su ogni strada. Ho solo smesso di lasciarle scegliere la direzione.",
+		"Io e la paura abbiamo un accordo: può gridare quanto vuole, ma l'arma la tengo io.",
+	},
+	["cls.warrior.muse.w05.010"] = {
+		"La gente ringrazia il guaritore. Il muro non lo ringrazia nessuno. Il muro capisce: è un muro.",
+		"Dopo una giornata dura il guaritore si prende la gratitudine e il guerriero i lividi. Giusto così. Più o meno.",
+	},
+	["cls.warrior.muse.w05.011"] = {
+		"Si inspira dal naso in guardia, si espira tra i denti sul colpo. Il primo esercizio che ho imparato, e l'ultimo che dimenticherei.",
+		"Respira insieme al colpo, non contro. Un consiglio semplice che ci sono voluti cento lividi per far entrare in testa.",
+		"Ogni colpo ha il suo respiro. Perdi il respiro e il colpo dopo esce fiacco.",
+	},
+	["cls.warrior.muse.w05.012"] = {
+		"Ovunque cammini, controllo il terreno senza volerlo. Sassi smossi, radici bagnate, un pendio dove sarebbe brutto dover tenere la posizione.",
+		"Ormai non riesco a guardare un pezzo di terra senza chiedermi dove pianterei i piedi se qualcosa mi venisse addosso.",
+	},
+	["cls.warrior.muse.w05.013"] = {
+		"Dormire con la cotta addosso: ti svegli {g:rigido|rigida}, {g:infreddolito|infreddolita} e di cattivo umore. Ma ti svegli.",
+		"Non esiste un modo comodo di sdraiarsi in armatura. Ho smesso di cercarlo e ho cominciato a ringraziare per qualunque sonno.",
+	},
+	["cls.warrior.muse.w05.014"] = {
+		"Nel mio mestiere non ci sono trucchi. Mi vedi arrivare, sai benissimo cosa succederà, e funziona lo stesso.",
+		"Il mio lavoro non nasconde niente. Arrivo e colpisco. Saperlo in anticipo aiuta meno di quanto pensi.",
+		"Niente di astuto. In piedi, un passo avanti, colpire forte, ripetere. La gente astuta continua a perderci contro.",
+	},
+	["cls.warrior.muse.w05.015"] = {
+		"Un grido di battaglia mi costa solo fiato, e ogni braccio lì vicino colpisce un po' più forte. Il regalo più economico che faccio.",
+		"Riempio i polmoni e lascio andare, e chi mi sta intorno si raddrizza. Strano che una voce possa fare da armatura.",
+		"A quanto pare, gridare è metà del mestiere. Nessuno me l'aveva detto quando ho preso in mano un'arma per la prima volta.",
+	},
+	["cls.warrior.muse.w05.016"] = {
+		"Colpisci il terreno abbastanza forte e tutti quelli intorno rallentano per pensarci su. Questo, più o meno, è il colpo di tuono.",
+		"Il maestro lo chiamava colpo di tuono. In realtà è solo picchiare così forte che l'aria si fa densa e il nemico perde il ritmo.",
+	},
+	["cls.warrior.muse.w05.017"] = {
+		"Mirare alle gambe non è elegante. Ma nemmeno un nemico che scappa a chiamare tre amici.",
+		"Un colpo basso alla gamba per rallentarli. Niente di nobile. Però detesto inseguire qualcuno due volte.",
+	},
+	["cls.warrior.muse.w05.018"] = {
+		"Quando un nemico è allo stremo, lo finisco con un colpo solo. C'è chi lo chiama brutale. Io lo chiamo non tirarla per le lunghe.",
+		"Il colpo di grazia è l'ultimo che i maestri insegnano, e quello di cui parlano meno. Credo di capire perché.",
+	},
+	["cls.warrior.muse.w05.019"] = {
+		"Coprire la distanza è facile. Fermarsi proprio dove volevo: quello mi è costato qualche tentativo imbarazzante.",
+		"La prima volta che ho caricato sono {g:andato|andata} lungo e ho dovuto girarmi. Nessuno ha visto. Sono quasi {g:sicuro|sicura} che nessuno abbia visto.",
+	},
+	["cls.warrior.muse.w05.020"] = {
+		"Smontare l'armatura di qualcuno colpo dopo colpo, una piastra debole dopo l'altra. Niente gloria. Molta efficacia.",
+		"Ogni difesa ha una giuntura. Colpisci lo stesso punto abbastanza volte e impara l'umiltà.",
+	},
+	["cls.warrior.muse.w05.021"] = {
+		"In posizione difensiva il mondo si riduce alla guardia e al colpo successivo. È la cosa più simile alla calma che conosca.",
+		"Peso indietro, guardia alta, tutto trattenuto. Strano quanta pace ci sia nel rifiutarsi semplicemente di cadere.",
+		"Scudo avanti, mento basso, ginocchia piegate. Piantato così, potrei tenere un passo stretto per una settimana.",
+	},
+	["cls.warrior.muse.w05.022"] = {
+		"Nella postura del berserker prendo di più e restituisco di più. Un patto onesto, anche se non sicuro.",
+		"Quella postura mi toglie la prudenza di dosso come un mantello. La assumo solo quando so cosa sto barattando.",
+	},
+	["cls.warrior.muse.w05.023"] = {
+		"Giro su {g:me stesso|me stessa} con l'arma tesa, e tutto ciò che è a portata si pente di trovarsi lì. Gli amici imparano a lasciarmi spazio.",
+		"Un cerchio intero di lama, e io nel mezzo. Dopo mi gira la testa, e nessuno lì vicino si lamenta. Nessuno può.",
+	},
+	["cls.warrior.muse.w05.024"] = {
+		"Dietro lo scudo, piantato come un portone: per qualche respiro niente al mondo può smuovermi. Di solito qualche respiro basta.",
+		"C'è un modo di puntellare lo scudo che trasforma un corpo in un muro, finché dura il fiato. Lo tengo per i momenti peggiori.",
+	},
+	["cls.warrior.muse.w05.025"] = {
+		"Mi faccio male da {g:solo|sola} per arrabbiarmi prima. Detto ad alta voce sembra una follia. Fatto bene, salva delle vite.",
+		"C'è chi conta fino a dieci per calmarsi. Io faccio il contrario, e mi costa un po' di sangue.",
+	},
+	["cls.warrior.muse.w05.026"] = {
+		"La mia dote più utile è un'occhiata molto maleducata. Funziona perfino su cose che gli occhi non li hanno.",
+		"Riesco a far arrabbiare con me quasi qualunque cosa con uno sguardo. Il maestro lo chiamava talento. Chi mi conosce lo chiama vizio.",
+	},
+	["cls.warrior.muse.w05.027"] = {
+		"Certe cose non le combatti. Ci urli contro finché non si ricordano di avere un impegno altrove.",
+		"Non tutti i nemici vanno battuti. Ad alcuni basta un ruggito abbastanza forte da farli scappare.",
+	},
+	["cls.warrior.muse.w05.028"] = {
+		"Abbasso ancora la guardia dopo ogni colpo. Il maestro dice che il vizio morirà il giorno in cui mi costerà abbastanza.",
+		"Dopo ogni colpo il braccio mi scende troppo, ogni volta. Lo so. Saperlo, per ora, non è servito.",
+		"Quando entro troppo in fretta i piedi mi si incrociano ancora. Il maestro si limita a indicarli, in silenzio, ogni volta.",
+	},
+	["cls.warrior.muse.w05.029"] = {
+		"Pesa ancora tutto troppo: la cotta, l'arma, le lunghe giornate di strada. I maestri giurano che diventa più leggero. Sospetto che sia tu a crescere.",
+		"Per ora l'equipaggiamento vince quasi tutte le discussioni con le mie spalle. Un giorno gliene vincerò una io.",
+	},
+	["cls.warrior.muse.w05.030"] = {
+		"Ai maestri resta ben poco da mostrarmi. Il resto lo insegnano solo gli scontri, e si fanno pagare di più.",
+		"Le lezioni del cortile d'addestramento sono finite da un pezzo. Ora la lezione è ogni scontro duro, e la retta si paga in sangue.",
+	},
+	["cls.warrior.muse.w05.031"] = {
+		"Armatura a piastre. Sferraglio come una cucina che rotola giù per le scale, e non mi sono mai {g:sentito|sentita} così al sicuro.",
+		"L'armatura a piastre è rumorosa, calda e pesante, e se me lo chiedesse la sposerei.",
+		"La maglia era un cappotto. Le piastre sono una casa con cui vado in giro.",
+	},
+	["cls.warrior.muse.w05.032"] = {
+		"Il corpo si lamenta per la prima ora di marcia, poi smette. Ha capito che non lo ascolto.",
+		"Prima protestano le gambe, poi la schiena, poi più niente. Su ogni strada lunga, a un certo punto, il corpo smette di presentare reclami.",
+	},
+	["cls.warrior.muse.w05.033"] = {
+		"Il dolore è un messaggero. Lo ascolto fino in fondo, annuisco, e lo rimando da dove è venuto.",
+		"Il dolore lo tratto come un araldo alla porta: lo lascio parlare, lo ringrazio, e la porta resta chiusa.",
+		"Il dolore dice sempre le stesse tre cose: qui, adesso, attenzione. L'ho sentito. Può andare.",
+	},
+	["cls.warrior.muse.w05.034"] = {
+		"Chi resta a combattere me lo ricordo. Chi scappa, prima di sera l'ho già dimenticato.",
+		"Tengo a mente i volti di chi ha tenuto la posizione. Gli altri si confondono in un'unica, lunga ritirata.",
+	},
+	["cls.warrior.muse.w05.035"] = {
+		"Sapere esattamente quanto forte colpire vuol dire anche sapere come non farlo. È la seconda metà quella di cui vado più {g:fiero|fiera}.",
+		"Qualunque sciocco sa colpire con tutta la forza. L'abilità sta nei colpi che trattieni, e nel perché.",
+	},
+	["cls.warrior.muse.w05.036"] = {
+		"C'è chi combatte da una distanza di sicurezza. Io preferisco stare abbastanza vicino da sentire cosa pensa l'altro. Di solito pensa «oh no».",
+		"Da vicino è onesto. Vedi gli occhi, vedi il dubbio, e vedi il momento in cui ha la meglio.",
+	},
+	["cls.warrior.muse.w05.037"] = {
+		"Ripiegare non è una vergogna. Ripiegare senza sapere dove, sì.",
+		"Una ritirata con un piano è solo un modo più lungo di avanzare. Scappare senza piano è il modo in cui si spezzano le file.",
+	},
+	["cls.warrior.muse.w05.038"] = {
+		"C'è una stanchezza che viene solo da una giornata passata a colpire cose. Pulita, onesta, e dorme come un sasso.",
+		"Una giornata di colpi menati lascia una stanchezza tutta sua: niente più pensieri, solo braccia pesanti e una testa tranquilla.",
+	},
+	["cls.warrior.muse.w05.039"] = {
+		"Ogni tanto mi accorgo di avere ancora la mascella serrata un'ora dopo lo scontro. La sciolgo di proposito, come si posa un carico.",
+		"A volte la rabbia resta dopo lo scontro, come il fumo in una stanza. Apro una finestra nella testa e aspetto.",
+	},
+	["cls.warrior.muse.w05.040"] = {
+		"La forza non è crudeltà. Certi giorni devo dirmelo ad alta voce, solo per sentirlo con la mia voce.",
+		"Quello che ho è forza. Che diventi crudeltà dipende da me, ogni santo giorno.",
+	},
+	["cls.warrior.muse.w05.041"] = {
+		"srotola il cuoio consumato dall'impugnatura dell'arma e ne avvolge una striscia nuova, stretta e regolare, giro dopo giro.",
+		"tormenta una legatura sfilacciata sull'impugnatura dell'arma, poi la stringe di nuovo coi denti.",
+		"massaggia un po' d'olio nel cuoio della cintura e delle cinghie, piano, come si striglierebbe un cavallo.",
+	},
+	["cls.warrior.muse.w05.042"] = {
+		"sposta il peso da un piede all'altro, saggiando il terreno come per uno scontro che non è ancora arrivato.",
+		"si dondola una volta sui talloni e si assesta, ginocchia morbide, {g:pronto|pronta} a niente di preciso.",
+	},
+	["cls.warrior.muse.w05.043"] = {
+		"apre e chiude piano le mani, un dito alla volta, contando i vecchi dolori come monete.",
+		"piega le dita finché le nocche non schioccano, una dopo l'altra, e sembra {g:soddisfatto|soddisfatta} del conto.",
+	},
+	["cls.warrior.muse.w05.044"] = {
+		"esegue una guardia lenta nell'aria vuota, ogni movimento calmo e preciso, come se un maestro stesse guardando.",
+		"accenna qualche colpo d'esercizio a mezza velocità, le labbra che si muovono appena, contando i tempi di una vecchia sequenza.",
+		"accenna una parata nell'aria a mano vuota, poi un'altra, più svelta, poi lascia ricadere il braccio con un piccolo cenno del capo.",
+	},
+	["cls.warrior.muse.w05.045"] = {
+		"guarda avanti e misura la distanza in passi, per pura abitudine, anche se nessuno gliel'ha mai chiesto.",
+		"squadra con un'occhiata lo spazio intorno, come certa gente conta le uscite di una stanza.",
+	},
+	["cls.warrior.muse.w05.046"] = {
+		"si accovaccia un momento, gli avambracci sulle ginocchia, e lascia che il peso dell'equipaggiamento si appoggi a terra.",
+		"si siede sui talloni e resta lì per un po', l'armatura che scricchiola piano a ogni respiro.",
+	},
+	["cls.warrior.muse.w05.047"] = {
+		"trova una fibbia storta sull'armatura e la raddrizza con dita pazienti, borbottandole contro.",
+		"gratta con l'unghia una crosta di sporco vecchio da una giuntura dell'armatura, poi esamina il risultato con profondo sospetto.",
+	},
+	["cls.warrior.muse.w05.048"] = {
+		"Non sono {g:arrabbiato|arrabbiata}. È solo la mia faccia.",
+		"No, non c'è niente che non va. Ho sempre questa faccia. Si risparmia tempo quando poi qualcosa va storto davvero.",
+		"Calma. Quando sono {g:arrabbiato|arrabbiata} sul serio, te ne accorgi. Le cose cadono.",
+	},
+	["cls.warrior.muse.w05.049"] = {
+		"Se c'è qualcosa da sollevare, da portare o da buttare giù, chiamate me.",
+		"Cose pesanti spostate, cose testarde convinte, cose pericolose abbattute. Basta chiedere. Non faccio pagare molto.",
+		"Porte che non si aprono, casse che non si spostano, banditi che non se ne vanno. Con tutti e tre me la cavo bene.",
+	},
+	["cls.warrior.muse.w05.050"] = {
+		"Mai fidarsi di uno scontro che comincia troppo facile. La parte difficile è solo in ritardo.",
+		"Quando il primo colpo va a segno troppo facilmente, guardati intorno. Sta arrivando qualcos'altro.",
+	},
+	["cls.warrior.muse.w05.051"] = {
+		"Olio, sudore, cuoio vecchio e ferro. L'odore di questo mestiere non va mai via del tutto, e ho smesso di volerlo.",
+		"Per quanto mi lavi, resta sempre una traccia d'olio da cote e di cuoio scurito dal sudore. Il profumo del mestiere.",
+	},
+	["cls.warrior.muse.w05.052"] = {
+		"A volte mi chiedo se saprei vivere senza uno scontro a cui prepararmi. Poi smetto di chiedermelo, perché sto di nuovo pulendo l'arma.",
+		"Se un giorno le battaglie finissero, cosa farei con queste mani? Me lo chiedo di rado, e non rispondo mai.",
+	},
+	["cls.warrior.muse.w05.053"] = {
+		"Uno scontro andato male insegna più di dieci andati bene. Vorrei solo che le lezioni costassero meno.",
+		"Le vittorie pulite non mi insegnano niente. Sono quelle brutte, quelle al limite, che poi smonto pezzo per pezzo.",
+	},
+	["cls.warrior.muse.w05.054"] = {
+		"C'è una gioia in questo per cui non chiederò scusa: un colpo pulito, una linea tenuta, una bella sudata onesta.",
+		"Lascio ai poeti i pensieri cupi. Un colpo che va a segno come si deve fa star bene, e non mi vergogno a dirlo.",
+		"Certi giorni il lavoro è semplicemente bello: duro, pulito, fatto bene. Quelli me li godo.",
+	},
+	["cls.warrior.muse.w05.055"] = {
+		"Contadini, carrettieri, pescatori: non hanno bisogno di eroi. Hanno bisogno di qualcuno al bordo del campo quando i guai escono dal bosco.",
+		"Le persone che più vorrei proteggere non sapranno mai il mio nome. Mi va bene così. I nomi sono per le canzoni; io sono per i recinti.",
+	},
+	["cls.warrior.muse.w05.056"] = {
+		"Non colpisco alle spalle. Non per virtù: faccio semplicemente troppo rumore.",
+		"Muovermi di soppiatto non è mai stato possibile. Mi sentono arrivare da tre colline di distanza, tanto vale arrivare come si deve.",
+		"Furtività? Con tutto questo ferro addosso? Mi sentirebbero prima ancora che decida di muovermi.",
+	},
+	["cls.warrior.muse.w05.057"] = {
+		"Le parole non sono mai state il mio forte. Una guardia alzata dice quasi tutto quello che intendo.",
+		"Coi discorsi me la cavo male. Meglio stare dove ho detto che sarei {g:stato|stata} e lasciare che parli quello.",
+	},
+	["cls.warrior.muse.w05.058"] = {
+		"Le canzoni ricordano chi ha dato l'ultimo colpo. Chi ha tenuto per un'ora riceve un cenno del capo, quando va bene. Mi prendo il cenno.",
+		"I bardi non canteranno mai di chi resta fermo sotto un colpo dopo l'altro. Meglio così. Sarebbe una canzone noiosissima.",
+	},
+	["cls.warrior.muse.w05.059"] = {
+		"Acqua, pane, un po' di sonno e una cote. Dammi questo e vado ovunque tu indichi.",
+		"Mi serve poco: qualcosa da mangiare, un posto dove sdraiarmi, qualcosa da colpire. Due su tre fanno una giornata decente.",
+		"Viaggia leggero, dicono. Io lo faccio. È l'armatura che non ci riesce.",
+	},
+	["cls.warrior.muse.w05.060"] = {
+		"Non vince chi colpisce più forte. Vince chi è ancora lì quando all'altro sono finite le idee.",
+		"Non decide il braccio più forte. Decide chi resta in piedi per ultimo.",
+		"Chi picchia forte vince gli scambi. Chi dura vince gli scontri.",
+	},
+	["cls.warrior.muse.w05.061"] = {
+		"Al cuore di uno scontro c'è una quiete di cui nessuno ti parla. La vado a cercare ogni volta, e certi giorni la trovo.",
+		"In mezzo al frastuono peggiore, a volte c'è un posto quieto dove ogni colpo è ovvio. È lì che vorrei abitare.",
+	},
+	["cls.warrior.muse.w05.062"] = {
+		"Un'arma nuova sembra sbagliata per una settimana. Poi è la vecchia a sembrarlo.",
+		"Ogni arma nuova comincia come un'estranea nella mano. Bastano pochi scontri, ed è la vecchia a sembrare forestiera.",
+		"Ho smesso di dare un nome alle armi. Cambiano troppo spesso, e io mi affeziono.",
+	},
+	["cls.warrior.muse.w05.063"] = {
+		"Nessuno ti avverte di quanta parte di questo mestiere consista nel pagare un fabbro perché disfi il giorno prima.",
+		"Il fabbro mi vede arrivare e sorride. Con le sole ammaccature gli ho pagato mezza forgia.",
+	},
+	["cls.warrior.muse.w05.064"] = {
+		"Un taglio sul palmo mi ricorda ogni presa per una settimana intera. Le ferite piccole sono le migliori maestre di pazienza.",
+		"Una nocca spaccata non ferma niente. Si limita a commentare tutto quello che stringo, per giorni.",
+	},
+	["cls.warrior.muse.w05.065"] = {
+		"Se cado, intendo cadere in avanti. Il terreno guadagnato resta guadagnato, anche alla fine.",
+		"Quando toccherà a me, che mi trovino {g:rivolto|rivolta} dalla parte giusta. Su questo, è l'unico desiderio che abbia mai espresso.",
+	},
+	["cls.warrior.muse.w05.066"] = {
+		"Prima regola: non lasciare l'arma. Seconda regola: se la lasci, tira pugni. Una terza regola non c'è: a quel punto la questione è chiusa.",
+		"Perdi l'arma, non perdere lo scontro. I pugni sono state le prime armi, e non hanno mai bisogno di essere affilati.",
+	},
+	["cls.warrior.muse.w05.067"] = {
+		"Ogni mago che incontro mi chiede perché non imparo almeno un incantesimo. Io gli chiedo perché non impara a incassare un pugno.",
+		"Mi dicono di studiare. Io dico loro di provare a rialzarsi dopo un bel manrovescio. Nessuno convince nessuno.",
+	},
+	["cls.warrior.muse.w05.068"] = {
+		"In qualunque folla riconosco gli altri combattenti dall'andatura: spalle squadrate, peso basso, occhi sulla via d'uscita.",
+		"Chi ha tenuto una linea lo riconosci da come si ferma su una soglia. Mai proprio nel mezzo.",
+	},
+	["cls.warrior.muse.w05.069"] = {
+		"La cotta fredda sulla pelle quando la giornata non è ancora cominciata davvero: il momento meno eroico che ci sia, e arriva ogni giorno.",
+		"Nessuno canta di quando ti infili un'armatura rimasta fredda per ore. Dovrebbero. Ci vuole vero coraggio.",
+	},
+	["cls.warrior.muse.w05.070"] = {
+		"Mettiti pure dietro di me quando vuoi. È il posto più sicuro nel giro di un miglio, e il panorama è quasi tutto la mia schiena.",
+		"Se le cose si mettono male, dietro di me. Niente ringraziamenti. Solo, non allontanarti.",
+		"Resta vicino. Da vicino posso farci qualcosa.",
+	},
+	["cls.warrior.muse.w05.071"] = {
+		"Chiunque combatta abbastanza a lungo perde qualcuno al suo fianco. Cerco di non pensare a chi toccherà. Quasi sempre non ci riesco.",
+		"La linea tiene solo se ogni posto è occupato. Penso al giorno in cui uno di quei posti resterà vuoto, e poi smetto di pensarci.",
+	},
+	["cls.warrior.muse.w05.072"] = {
+		"resta immobile a lungo, l'arma abbassata, come una sentinella che ha dimenticato a cosa servisse il turno di guardia.",
+		"resta perfettamente {g:fermo|ferma}, l'arma a riposo, come stanno i vecchi soldati quando non c'è ancora niente contro cui stare.",
+	},
+	["cls.warrior.muse.w05.073"] = {
+		"canticchia sottovoce un ritmo di marcia, battendolo con un dito sull'armatura.",
+		"batte un breve tempo di marcia sul proprio pettorale, poi ha l'aria vagamente imbarazzata.",
+	},
+	["cls.warrior.muse.w05.074"] = {
+		"Non ho giurato niente a nessuno di importante. Solo a me: finché sto in piedi, chi è dietro di me non si fa male.",
+		"Il mio unico voto è breve: finché resto in piedi, chi sta dietro di me resta intero.",
+	},
+	["cls.warrior.muse.w05.075"] = {
+		"Il sudore si asciuga, i lividi sbiadiscono, il filo si smussa e si riaffila. Mi piace una vita che si aggiusta.",
+		"In questo mestiere tutto si consuma e si ripara: le lame, le cinghie, io. C'è conforto in questo.",
+	},
+	["cls.warrior.muse.w05.076"] = {
+		"La testardaggine la chiamano coraggio quando funziona e stupidità quando no. Io cerco di farla funzionare.",
+		"Metà del coraggio è semplicemente non sapere quando smettere. L'altra metà è saperlo, e restare lo stesso.",
+	},
+	["cls.warrior.muse.w05.077"] = {
+		"Datemi qualcosa da fare. Stare con le mani in mano mi fa prudere le spalle.",
+		"Aspettare non fa per me. Le braccia continuano a chiedermi qual è il piano.",
+	},
+	["cls.warrior.muse.w05.078"] = {
+		"La mia rabbia è un cane da caccia che ho addestrato a venire quando chiamo e a sdraiarsi quando lo dico. Quasi sempre obbedisce.",
+		"La furia non è selvaggia. Ho passato tanto tempo a insegnarle le buone maniere, e ne ha imparate quasi tutte.",
+		"Tra uno scontro e l'altro la rabbia non la sciolgo dal guinzaglio. Conosce il suo momento e lo aspetta.",
+	},
+	["cls.warrior.muse.w05.079"] = {
+		"Non ho scelto questo mestiere per le comodità. È lui che ha scelto me per la testa dura, e ha scelto bene.",
+		"Certi mestieri vogliono una mente svelta. Il mio voleva una testa dura e una lunga pazienza, e io ne avevo d'avanzo.",
+	},
+	["cls.warrior.muse.w05.080"] = {
+		"Parare, poi rispondere. Il momento migliore per colpire è subito dopo che non sono riusciti a farmi male.",
+		"C'è un mezzo battito dolcissimo dopo che un colpo scivola via dalla mia guardia. È lì che rispondo più forte.",
+	},
+	["cls.warrior.muse.w05.081"] = {
+		"Quando un nemico schiva, non impreco. Mi prendo il varco che lascia e ci passo dritto in mezzo.",
+		"Una schivata è la promessa di essere sbilanciati un attimo dopo. Io quelle promesse le riscuoto.",
+	},
+	["cls.warrior.muse.w05.082"] = {
+		"Ogni tanto, molto di rado, butto via tutta la prudenza in un colpo solo. Niente fa più male dopo, e niente colpisce più forte durante.",
+		"Pura incoscienza, tenuta per qualche respiro: colpisco come un albero che crolla e incasso come una finestra aperta.",
+	},
+	["cls.warrior.muse.w05.083"] = {
+		"Lungo la strada, a un certo punto, l'arma ha smesso di essere qualcosa che porto ed è diventata qualcosa che sono.",
+		"Non c'è stato un giorno preciso in cui sono {g:diventato un guerriero|diventata una guerriera}. Solo una lenta catasta di giorni, finché non me ne sono {g:accorto|accorta}.",
+	},
+	["cls.warrior.muse.w05.084"] = {
+		"Togliere l'arma a un nemico è la cosa più educata che io sappia fare in uno scontro.",
+		"Un nemico disarmato deve ripensarci. Quasi sempre quello che pensa non gli piace.",
+	},
+	["cls.warrior.muse.w05.085"] = {
+		"Il bordo di uno scudo in faccia interrompe quasi tutto. Incantesimi, discorsi, cattive idee.",
+		"Qualcuno comincia a salmodiare, io porto avanti il bordo dello scudo. Fine della conversazione.",
+	},
+	["cls.warrior.pray.w05.001"] = {
+		"Chiunque vegli su chi combatte: rendi saldo il mio braccio e tieni in piedi chi mi sta alle spalle.",
+		"Se qualcosa ascolta, non chiedo di essere {g:risparmiato|risparmiata}. Solo di cadere per {g:ultimo|ultima}, quando gli altri sono al sicuro.",
+	},
+	["cls.warrior.quest_complete.w05.001"] = {
+		"Un lavoro finito è un peso posato. Ce n'è sempre un altro, ma questo non l'ho più sulle spalle.",
+		"Una cosa in meno da dovere al mondo. Lo zaino si fa più leggero.",
+		"Posato, allora. Il prossimo carico aspetta che mi raddrizzi la schiena.",
+	},
+	["cls.warrior.quest_complete.w05.002"] = {
+		"Fatto e sistemato. Il prossimo?",
+		"Consideralo risolto. C'è altro da fare?",
+		"Ecco, a posto. Se hai dell'altro, sono qui.",
+	},
+	["cls.warrior.quest_complete.w05.003"] = {
+		"accetta quel che viene offerto con un breve grugnito e un cenno, lo sguardo già all'uscita.",
+		"prende la ricompensa senza cerimonie, come un soldato prende il rancio.",
+		"intasca quel che riceve senza contarlo, che è un orgoglio anche quello.",
+	},
+	["cls.warrior.quest_complete.w05.004"] = {
+		"Nessuno scrive mai canzoni sul viaggio di ritorno. Peccato: è quasi tutto il mestiere.",
+		"Il lavoro vero dura poco. Il resto è camminare, aspettare e farsi ringraziare con un certo imbarazzo.",
+	},
+	["cls.warrior.quest_complete.w05.005"] = {
+		"Se c'è altro da sollevare, portare o colpire, sai dove trovarmi.",
+		"Il lavoro pesante è la mia specialità. Anche quello leggero: non ho pretese.",
+		"Serve una porta tenuta, una cassa spostata, una seccatura tolta di mezzo? Stesse condizioni di oggi.",
+	},
+	["cls.warrior.quest_complete.w05.006"] = {
+		"Ogni compito portato a termine rende più facile cominciare il prossimo. Credo servissero a questo, gli esercizi.",
+		"I maestri mi facevano ripetere lo stesso colpo cento volte. Insegnavano la pazienza per giornate come questa.",
+	},
+	["cls.warrior.quest_complete.w05.007"] = {
+		"sposta il peso dell'armatura e lascia andare un respiro trattenuto dall'inizio del lavoro.",
+		"si spazzola via dall'armatura la polvere della commissione con il palmo della mano.",
+	},
+	["cls.warrior.quest_complete.w05.008"] = {
+		"La mia parola vale. Dillo a chiunque chieda.",
+		"Quando prendo un incarico, lo porto a termine. Tutta la mia fama sta lì.",
+		"Puoi contare sul metallo e sulla mia parola. Hanno tenuto tutti e due.",
+	},
+	["cls.warrior.quest_complete.w05.009"] = {
+		"Qualunque cosa ne venga, una parte finirà all'armaiolo. Finisce sempre così.",
+		"Metà di ogni ricompensa se ne va a riparare quello che il lavoro ha rotto. Il metallo costa.",
+		"Un po' va alla cote, un po' al pane. Il resto sparisce, come sempre.",
+	},
+	["cls.warrior.quest_complete.w05.010"] = {
+		"Felice di aiutare. Cerca di non avere bisogno di me troppo presto.",
+		"Fatto. Se il problema torna, torno anch'io.",
+	},
+	["cls.warrior.quest_complete.w05.011"] = {
+		"Mi ringraziano e tornano alle loro vite. Io torno alla strada. Un accordo onesto, quasi sempre.",
+		"Una stretta di mano, due parole, e sono già voltati verso il prossimo pensiero. Anch'io.",
+	},
+	["cls.warrior.quest_complete.w05.012"] = {
+		"si raddrizza un poco ora che la faccenda è chiusa, come una sentinella a fine turno.",
+		"raddrizza le spalle a cosa fatta, come chi fa rapporto al proprio comandante.",
+		"si erge in tutta la sua statura, la chiusura del conto scritta chiara sul viso.",
+	},
+	["cls.warrior.quest_complete.w05.013"] = {
+		"Bel lavoro, modestamente. E lo dico io.",
+		"Niente male. Mi riassumerei.",
+		"Lavoro pulito. Quasi mi impressiono da {g:solo|sola}.",
+	},
+	["cls.warrior.quest_complete.w05.014"] = {
+		"Le gambe sanno benissimo quanta strada mi è costato. L'orgoglio se ne infischia.",
+		"Piedi doloranti, cuore leggero. Ho fatto scambi peggiori.",
+		"Gli stivali mi hanno portato fino in fondo. La ricompensa la meriterebbero più loro.",
+	},
+	["cls.warrior.quest_complete.w05.015"] = {
+		"Certi lavori finiscono con un grazie, altri col silenzio. In ogni caso pulisco l'arma e vado avanti.",
+		"Alla fine non so sempre chi ho aiutato. So che la mia parte l'ho fatta.",
+	},
+	["cls.warrior.quest_complete.w05.016"] = {
+		"Un altro fatto. Continuate a mandarmene: non mi stanco facilmente.",
+		"Tutto qui? Mi ero {g:scaldato|scaldata} per qualcosa di più duro.",
+		"Fatto e finito. Serve a qualcun altro un braccio forte?",
+	},
+	["cls.warrior.quest_complete.w05.017"] = {
+		"si concede un piccolo sorriso storto, poi si guarda intorno in fretta, caso mai qualcuno l'avesse notato.",
+		"fa scrocchiare le nocche una a una: il rumore di un lavoro finito bene.",
+		"si stira finché l'armatura scricchiola, poi si lascia sfuggire un sospiro contento.",
+	},
+	["cls.warrior.quest_complete.w05.018"] = {
+		"Ogni incarico insegna qualcosa alle braccia e qualcos'altro alla testa. Oggi ha imparato di più la testa.",
+		"Non tutti i compiti richiedono la lama. Sto imparando a distinguere quali sì.",
+	},
+	["cls.warrior.quest_complete.w05.019"] = {
+		"Fatto. Risparmiami le cerimonie.",
+		"Ecco qua. I ringraziamenti tienili per chi ne ha bisogno.",
+		"Finito. Non facciamone un dramma.",
+	},
+	["cls.warrior.quest_complete.w05.020"] = {
+		"Qualcosa, in qualche angolo del mondo, va un po' meglio di prima. Basta per dormirci sopra.",
+		"Il mondo intero con un'arma non lo aggiusto. Il pezzo che ho davanti, invece, sì.",
+	},
+	["cls.warrior.quest_complete.w05.021"] = {
+		"Dillo in giro: gente affidabile, solida e abbastanza educata.",
+		"Se scrivi referenze, il mio nome scrivilo giusto.",
+	},
+	["cls.warrior.quest_complete.w05.022"] = {
+		"si asciuga i palmi sulle cosce e per una volta lascia le mani penzolare libere.",
+		"posa una mano sull'impugnatura dell'arma, a riposo per lo spazio di un respiro.",
+	},
+	["cls.warrior.quest_complete.w05.023"] = {
+		"Finito. Le facce me le ricorderò più a lungo della ricompensa.",
+		"La ricompensa la spenderò. Lo sguardo di chi mi ha visto tornare, quello me lo tengo.",
+	},
+	["cls.warrior.quest_complete.w05.024"] = {
+		"Fatto e saldato. Le due parole più belle che conosca.",
+		"Saldato. Mi piace come suona.",
+		"Fatto. La parola più dolce in qualunque lingua.",
+	},
+	["cls.warrior.quest_complete.w05.025"] = {
+		"fa un breve cenno da soldato, di quelli che vogliono dire conti pari.",
+		"si volta col passo senza fretta di chi non ha più debiti in sospeso.",
+	},
+	["cls.warrior.quest_progress.w05.001"] = {
+		"Una parte di strada è fatta. Stesso passo, stessa presa.",
+		"Non è finita, ma è più vicina. Più vicino è una direzione che mi piace.",
+		"Una parte fatta. Il resto non si sistema da solo.",
+	},
+	["cls.warrior.quest_progress.w05.002"] = {
+		"C'è tutto. È ora di fare rapporto.",
+		"Tutto quello che chiedevano. Andiamo a riscuotere.",
+		"Questo chiude la faccenda. Torniamo da chi aspetta.",
+	},
+	["cls.warrior.quest_progress.w05.003"] = {
+		"fa un conto a mente, lo trova ancora corto, e torna al lavoro senza lamentarsi.",
+		"conta sulle dita, aggrotta la fronte davanti al numero e si prepara al resto.",
+	},
+	["cls.warrior.quest_progress.w05.004"] = {
+		"Era l'ultimo pezzo. La strada del ritorno sembra sempre più corta, anche se non lo è mai.",
+		"Qui ho finito. Il ritorno è l'unico tratto che non mi pesa.",
+	},
+	["cls.warrior.reputation_change.w05.001"] = {
+		"Adesso mi guardano in un altro modo. Meno come un braccio a pagamento, più come qualcuno su cui contare.",
+		"Un po' più {g:benvenuto|benvenuta} di prima. Il lavoro ha parlato per me, come fa di solito.",
+		"Se continui a farti vedere, la voce gira. Stavolta è una bella voce.",
+	},
+	["cls.warrior.rez.w05.001"] = {
+		"Al ritorno l'armatura pesa più che all'andata. O forse sono io ad aver lasciato qualcosa per strada.",
+		"In piedi. L'equipaggiamento c'è tutto, solo un po' più malconcio. Anche la morte si fa pagare, a quanto pare.",
+	},
+	["cls.warrior.rezother.w05.001"] = {
+		"Eccoti. Mentre non c'eri non è successo niente di bello.",
+		"Di nuovo qui. Da laggiù il panorama non doveva essere granché.",
+		"Ah, sei di nuovo con noi. Bene: in prima fila cominciavo a sentirmi {g:solo|sola}.",
+	},
+	["cls.warrior.rezother.w05.002"] = {
+		"Prendi fiato e stammi vicino. Non succederà due volte.",
+		"Stammi dietro finché le gambe non tornano. Al resto penso io.",
+		"Piano. Orientati. Finché ci sono io, non ti arriva niente.",
+	},
+	["cls.warrior.rezother.w05.003"] = {
+		"Avrei dovuto esserci io fra quel colpo e chi è caduto. La prossima volta starò più vicino.",
+		"Quel colpo è arrivato mentre ero lì a due passi. Per un po' non me lo perdonerò.",
+	},
+	["cls.warrior.rezother.w05.004"] = {
+		"tende la mano a chi si è appena rialzato e l'aiuta a tirarsi su senza una parola.",
+		"si piazza accanto a chi è appena tornato, l'arma pronta, finché quel viso non riprende colore.",
+	},
+	["cls.warrior.rezother.w05.005"] = {
+		"La prossima volta quel colpo lascialo a me. Io {g:brutto|brutta} lo sono già.",
+		"Cerca di restare in piedi un po' di più. I miei nervi non sono di ferro.",
+		"Che bello riaverti qui. Ora smettila di farlo.",
+	},
+	["cls.warrior.thanks.w05.001"] = {
+		"Grazie. Una volta o l'altra mi metterò davanti a te e saremo pari.",
+		"Ti sono {g:obbligato|obbligata}. Al prossimo scontro il primo colpo lo prendo io per te.",
+	},
+	["cls.warrior.thanks.w05.002"] = {
+		"Grazie. Non farne un'abitudine, o divento {g:tenero|tenera}.",
+		"Grazie. Ai maestri non dire niente.",
+	},
+	["cls.warrior.threat.w05.001"] = {
+		"Porto addosso abbastanza ferro da affondare una barca. Davvero credi di attraversarlo prima che io attraversi te?",
+		"Dovresti tagliare tutto questo ferro per arrivare a me. A me basta arrivare a te una volta.",
+	},
+	["cls.warrior.threat.w05.002"] = {
+		"È stata una lunga giornata a prendere colpi. Per una volta mi piacerebbe darli io.",
+		"Prendere colpi è il mio mestiere. Restituirli è il mio piacere. Scegli quale vuoi vedere.",
+		"Incassare è il lavoro. Restituire è la parte che mi diverte. Non farmi divertire.",
+	},
+	["cls.warrior.threat.w05.003"] = {
+		"Non mi serve essere {g:arrabbiato|arrabbiata} per farlo. Ma non farmi arrabbiare lo stesso.",
+		"Sono {g:calmo|calma}. In questo momento è la cosa più pericolosa di me.",
+	},
+	["cls.warrior.threat.w05.004"] = {
+		"Guarda la mia posizione. Ora chiediti se hai mai smosso qualcuno che stava così.",
+		"Vedi come sto in piedi? Chi sta così non si fa spostare. Sposta gli altri.",
+		"Peso basso, piedi saldi. Faresti prima a spostare un pilastro del cancello.",
+	},
+	["cls.warrior.threat.w05.005"] = {
+		"La mia cote si annoia da una settimana. Non darle un motivo per tirarsi su.",
+		"Tutto quello che porto è appena affilato e oggi non l'ho ancora usato. Non farti avanti.",
+	},
+	["cls.warrior.threat.w05.006"] = {
+		"Ultimo avvertimento, e io con gli avvertimenti non sono {g:bravo|brava}. Sono molto meglio nell'altra cosa.",
+		"Le parole non sono il mio mestiere. Sto per passare a quello che lo è.",
+	},
+	["cls.warrior.victory.w05.001"] = {
+		"La rabbia lascia andare la mascella per ultima. Succede sempre.",
+		"Tutto il resto si scioglie prima. I denti se la prendono comoda.",
+		"Braccia giù, spalle giù, e la mascella è ancora serrata come una tagliola. Le passerà.",
+	},
+	["cls.warrior.victory.w05.002"] = {
+		"stacca le dita dall'impugnatura una alla volta, come se appartenessero a qualcun altro.",
+		"apre e chiude la mano rattrappita finché le dita non si decidono a muoversi di nuovo.",
+	},
+	["cls.warrior.victory.w05.003"] = {
+		"Vorrei scambiare due parole con chi ha progettato queste fibbie. Anzi, parecchie.",
+		"Se un'altra fibbia si allenta a metà colpo, la prossima volta combatto in un sacco.",
+		"Tutte le mie cinghie hanno scelto proprio quel momento per scivolare. Dovremo fare un discorsetto.",
+	},
+	["cls.warrior.victory.w05.004"] = {
+		"Strano. L'armatura non pesa nulla finché serve, e il doppio non appena smette di servire.",
+		"Nella lotta il ferro non lo sento mai. Dopo, si fa ricordare grammo per grammo.",
+	},
+	["cls.warrior.victory.w05.005"] = {
+		"risistema le spalle sotto l'armatura, come si aggiusta un carico ben noto prima di rimettersi in strada.",
+		"tira su l'armatura sulle spalle, ritrova l'equilibrio di sempre, e si regge meglio.",
+	},
+	["cls.warrior.victory.w05.006"] = {
+		"Non è passato niente. È l'unica cosa di cui mi vanterò.",
+		"Qualunque cosa volesse, attraverso me non l'ha avuta. Bene.",
+		"Voleva passarmi oltre. Non ci è riuscito. Il rapporto finisce qui.",
+	},
+	["cls.warrior.victory.w05.007"] = {
+		"Il cortile mi ha insegnato le mosse. Lotte come questa mi insegnano quali contano.",
+		"Pali e spade da allenamento arrivano fin lì. Quella era la lezione vera, e stavolta l'ho superata.",
+	},
+	["cls.warrior.victory.w05.008"] = {
+		"Fuori dalla posizione. Le ginocchia hanno delle opinioni in merito, e tutte ad alta voce.",
+		"Guardia giù. Le ginocchia stanno presentando le loro lamentele.",
+	},
+	["cls.warrior.victory.w05.009"] = {
+		"trova una cinghia che si è allentata nella lotta e la affibbia un buco più stretta di prima.",
+		"rimette a posto con uno strattone una fibbia scivolata, e la tira forte per assicurarsi che resti.",
+	},
+	["cls.warrior.victory.w05.010"] = {
+		"Sistemato. Lo prendo così com'è, come s'è combattuto: senza giri.",
+		"Fatto a viso aperto, niente trucchi da nessuna parte. Ci dormirò sopra benissimo.",
+	},
+	["cls.warrior.victory.w05.011"] = {
+		"L'ha fatto il mio braccio. Gliel'ho insegnato io, non posso certo dargli la colpa.",
+		"Tutte quelle ore a insegnare al corpo a fare questo, e lo fa così bene. Non sempre mi piace quanto bene.",
+	},
+	["cls.warrior.victory.w05.012"] = {
+		"Ecco a cosa servivano tutti gli esercizi. Ognuno, fino all'ultimo.",
+		"Eccolo. Ogni mattina dolorante nel cortile, ripagata in una sola lotta.",
+		"Ha! Il palo d'allenamento non mi ha mai dato una sensazione così.",
+	},
+	["cls.warrior.victory.w05.013"] = {
+		"abbassa lo sguardo su un graffio nuovo nell'armatura e grugnisce, come chi annota un debito da riscuotere.",
+		"passa il pollice su un segno fresco dell'armatura, e la sua faccia dice che non verrà dimenticato.",
+	},
+	["cls.warrior.victory.w05.014"] = {
+		"E nemmeno una delle cinghie buone rotta. Oggi è festa.",
+		"È ancora tutto attaccato. Armatura, dita, buonumore. Il buonumore un po' meno.",
+	},
+	["cls.warrior.victory.w05.015"] = {
+		"Ogni colpo sull'armatura mi ronza ancora nelle ossa. Svanisce più piano di quanto sia durata la lotta.",
+		"I colpi che ho parato mi vibrano ancora su per il braccio. Di questa parte non ti avverte nessuno.",
+	},
+	["cls.warrior.victory.w05.016"] = {
+		"solleva l'arma e ne traguarda la lunghezza, accigliandosi per qualcosa che vede solo {g:lui|lei}.",
+		"scruta l'arma per il lungo con un occhio chiuso, poi grugnisce {g:soddisfatto|soddisfatta}.",
+	},
+	["cls.warrior.victory.w05.017"] = {
+		"Qualcuno ha preso un colpo che spettava a me? Guarda bene prima di chiamarla vittoria.",
+		"Il compito era prendermi io i colpi. Guarda chi altro si è fatto male: quello è il mio vero punteggio.",
+	},
+	["cls.warrior.victory.w05.018"] = {
+		"Tutti ancora in piedi? Bene. Allora, chi ha una mano libera per questa fibbia?",
+		"Ben tenuto, tutti quanti. Vi stringerei la mano, ma la mia non si apre ancora.",
+	},
+	["cls.warrior.victory.w05.019"] = {
+		"Bene. La prossima volta datemi un attimo in più per attirare la loro attenzione prima di cominciare.",
+		"Buon lavoro. Solo una cosa: lasciate il primo colpo a me. Così i loro occhi restano dove devono.",
+	},
+	["cls.warrior.victory.w05.020"] = {
+		"Fanno due volte che muori. Speriamo che la seconda tenga.",
+		"Chiunque ti abbia rialzato può venire a rifarlo. Io resto qui.",
+	},
+	["cls.warrior.victory.w05.021"] = {
+		"Aveva solo denti e fame. Io ferro e addestramento. A pensarci, non era una gran gara.",
+		"Zanne da una parte, armatura dall'altra. Non ha mai avuto una vera possibilità, e non ne vado {g:fiero|fiera}.",
+	},
+	["cls.warrior.victory.w05.022"] = {
+		"Aveva addestramento, un'arma, e si trovava dalla parte sbagliata. Avrei voluto sapere dove aveva imparato quella parata.",
+		"Buon gioco di gambe, per un po'. Qualche sergente, chissà dove, ne sarebbe andato fiero.",
+	},
+	["cls.warrior.victory.w05.023"] = {
+		"Torna a essere quello che era prima che qualcosa lo facesse arrabbiare. Conosco la sensazione.",
+		"Di nuovo solo materia. Pietra, acqua, quel che era. Difficile vantarsi di aver battuto una pozzanghera.",
+	},
+	["cls.warrior.victory.w05.024"] = {
+		"Rottame. A qualcuno serviranno gli ingranaggi; a me basta riavere l'udito.",
+		"Ecco l'ultima delle sue molle. Qualcuno porti una scopa, o un meccanico.",
+	},
+	["cls.warrior.victory.w05.025"] = {
+		"Tornato da dove veniva, o da nessuna parte. Mi vanno bene entrambe.",
+		"Qualunque abisso l'abbia sputato fuori, può riprenderselo. Dei pezzi non so che farmene.",
+	},
+	["cls.warrior.victory.w05.026"] = {
+		"Vinto. Non chiedermi un inchino: non so se riuscirei a tirarmi su.",
+		"Mi prendo la vittoria e una lunga seduta, nell'ordine che sceglieranno le gambe.",
+	},
+	["cls.warrior.victory.w05.027"] = {
+		"Neanche un segno addosso. Il lavoro l'ha fatto l'armatura; il merito me lo prendo io.",
+		"Pulito. Il ferro si è preso tutto quello che avevi e ne chiedeva ancora.",
+	},
+	["cls.warrior.victory.w05.028"] = {
+		"Ce l'ho fatta! Cioè, ovvio che ce l'ho fatta. Era del tutto previsto.",
+		"Ha! Proprio come me l'hanno fatto entrare in testa al cortile. Be', quasi.",
+	},
+	["cls.warrior.victory.w05.029"] = {
+		"Un tempo mi avrebbe chiesto tutto quello che avevo. Ora solo quasi tutto. Il progresso lento è pur sempre progresso.",
+		"Le lotte non diventano più facili. Sono io che divento più difficile da abbattere.",
+	},
+	["cls.warrior.victory.w05.030"] = {
+		"Qualunque cosa fosse, ci vorrà qualche punto. A me, intendo, non a quello.",
+		"Domani qualcuno avrà un braccio dolorante, e non è chi sta lì per terra.",
+		"La mia spalla mi scriverà lettere di protesta per giorni.",
+	},
+	["cls.warrior.victory.w05.031"] = {
+		"La furia non vuole andarsene. La faccio girare un po' in tondo, come un cavallo dopo una corsa dura.",
+		"È ancora lassù, il calore, che cerca qualcos'altro da colpire. Piano. Piano. Non è rimasto niente.",
+	},
+	["cls.warrior.victory.w05.032"] = {
+		"fa un passo indietro deliberato, poi un altro, prima di lasciar scendere la guardia dell'ultimo dito.",
+		"tiene l'arma alzata per un conto fino a tre dopo la fine, per un'abitudine piantata troppo a fondo per perderla.",
+	},
+	["cls.warrior.victory.w05.033"] = {
+		"Lavoro duro, fatto come si deve. Non mi serve altra gloria.",
+		"Niente di elegante, ma solido. Come un buon muro.",
+		"Una lotta costruita per durare. Niente di ricercato, niente di sprecato.",
+	},
+	["cls.warrior.victory.w05.034"] = {
+		"A un certo punto ho fatto un verso che preferirei nessuno avesse sentito. Scelgo di credere che nessuno l'abbia sentito.",
+		"Sono quasi {g:sicuro|sicura} di aver urlato qualcosa a metà lotta. E quasi {g:sicuro|sicura} che non fossero parole.",
+	},
+	["cls.warrior.victory.w05.035"] = {
+		"si accovaccia per un momento sui talloni, l'arma di traverso sulle ginocchia, e lascia che il cuore rallenti.",
+		"si siede proprio lì dove la lotta è finita, l'arma in grembo, e lascia al cuore il tempo di rallentare.",
+	},
+	["cls.warrior.victory.w05.036"] = {
+		"E l'armatura vince ancora. Imbattuta, quell'armatura.",
+		"Ricordami di ringraziare il fabbro. Chiunque sia, oggi se l'è meritato.",
+		"Offrirei da bere all'armatura, se solo sapesse tenere un boccale.",
+	},
+	["cls.warrior.victory.w05.037"] = {
+		"Piedi piantati, colpo, e non fermarsi. La lezione più semplice del mondo, e funziona sempre.",
+		"Ha! Dritto attraverso. L'unica strada che conosco.",
+	},
+	["cls.warrior.victory.w05.038"] = {
+		"alza l'arma in un breve saluto rigido verso chi è caduto, poi si volta senza cerimonie.",
+		"si porta l'arma alla fronte, una piccola cortesia da soldato, e la riabbassa.",
+	},
+	["cls.warrior.victory.w05.039"] = {
+		"Paura all'inizio, calma alla fine. Mi accontento di questa proporzione.",
+		"Comincia sempre con lo stomaco annodato e finisce con le mani ferme. Alla prima metà ho smesso di badare.",
+	},
+	["cls.warrior.victory.w05.040"] = {
+		"Bene. Adesso la parte noiosa: olio, straccio, e niente smorfie dove qualcuno può vedermi.",
+		"Adesso la parte silenziosa: scoprire cosa fa male senza darlo a vedere.",
+	},
+	["cls.warrior.victory.w05.041"] = {
+		"A questo serve l'armatura, e a questo servo io. Abbiamo fatto il nostro lavoro, lei e io.",
+		"Il ferro ha tenuto, e io pure. Nessuno dei due è fatto per fare altrimenti.",
+	},
+	["cls.warrior.victory.w05.042"] = {
+		"Adesso i piccoli dolori escono allo scoperto per farsi contare. Un polso, uno stinco, qualcosa nella schiena. Va bene. Va bene.",
+		"I piccoli acciacchi aspettano educatamente la fine, poi parlano tutti insieme.",
+		"Niente di rotto. Parecchie cose con un reclamo da presentare.",
+	},
+	["cls.warrior.victory.w05.043"] = {
+		"controlla la fasciatura dell'impugnatura, la trova scivolosa e la asciuga contro la coscia.",
+		"riavvolge il legaccio allentato dell'impugnatura, stretto e ordinato, prima di qualsiasi altra cosa.",
+	},
+	["cls.warrior.victory.w05.044"] = {
+		"Non la mia forma migliore. Conta lo stesso.",
+		"Brutto da vedere, ma conta. Nessuno paga di più per lo stile.",
+		"Se qualcuno teneva il punteggio dell'eleganza, ho perso. Per fortuna nessuno lo teneva.",
+	},
+	["cls.warrior.victory.w05.045"] = {
+		"Per un momento non ero altro che il colpo successivo. Potrei abituarmici. Probabilmente l'ho già fatto.",
+		"Niente passato, niente piani, solo il prossimo colpo. È il momento in cui mi sento più {g:pulito|pulita}.",
+	},
+	["cls.warrior.victory.w05.046"] = {
+		"Be', mi ha sciolto i muscoli. Mi sento quasi agile.",
+		"Bell'esercizio. Meglio di un'ora contro il palo.",
+		"Mi ero {g:scaldato|scaldata} per bene. Peccato che sia finita.",
+	},
 }, "base_classes")

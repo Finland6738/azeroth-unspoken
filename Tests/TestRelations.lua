@@ -804,8 +804,9 @@ T.run("le frasi del narratore seguono il rapporto", function()
 	R:SetAxis("player", "Aldric-Stormrage", "affection", 50); R:SetAxis("player", "Aldric-Stormrage", "trust", 60)
 	P.party = { { name = "Aldric", realm = "Stormrage" } }; P.group = true
 	FIRE("GROUP_ROSTER_UPDATE")
-	ids = Seen("battle"); T.ok(ids["rel.battle.friend"] or ids["rel.battle.known"], "in battaglia accanto a un amico")
-	ids = Seen("victory"); T.ok(ids["rel.victory.friend"], "vittoria accanto a un amico")
+	-- the character of the mock is a warrior: since W05 its own battle and victory pools are large, so more draws
+	ids = Seen("battle", nil, 600); T.ok(ids["rel.battle.friend"] or ids["rel.battle.known"], "in battaglia accanto a un amico")
+	ids = Seen("victory", nil, 600); T.ok(ids["rel.victory.friend"], "vittoria accanto a un amico")
 	P.party, P.group = nil, false
 	FIRE("GROUP_ROSTER_UPDATE")
 	ids = Seen("battle")
