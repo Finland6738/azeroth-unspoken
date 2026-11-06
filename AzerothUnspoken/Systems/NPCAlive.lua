@@ -790,6 +790,49 @@ function N.RegisterDialogueEvent(event)
 	Engine:SetEventGuard(event, "npcalive", function(ctx) return ctx.npcDialogue == true end)
 end
 
+-- C0i (#138, ADR 0056): the voice of the NPC keeps its share. In a dialogue the lines that ask who the NPC is or how
+-- it is (`other` with npcID, name, temperament, morality, goals or speech, also inside any/all) keep VOICE_SHARE of
+-- the picks, however many lines of its role, of the character's race, class or faction, of the zone the archive adds:
+-- Gryshka speaks gruff, Farley jovial. The role alone (every innkeeper) is not a voice.
+N.VOICE_SHARE = 0.6
+N.VOICE_KEYS = { npcID = true, name = true, temperament = true, morality = true, goals = true, speech = true }
+
+local function AsksPerson(o, depth)
+	if type(o) ~= "table" or depth > 4 then return false end
+	for k, v in pairs(o) do
+		if N.VOICE_KEYS[k] then return true end
+		if (k == "any" or k == "all") and type(v) == "table" then
+			for _, sub in ipairs(v) do
+				if AsksPerson(sub, depth + 1) then return true end
+			end
+		end
+	end
+	return false
+end
+
+-- by conditions table (many rules share one, ADR 0024): computed once, freed with the table
+local voiceCache = setmetatable({}, { __mode = "k" })
+
+---La regola è la voce dell'NPC (chiede chi è o com'è l'interlocutore)? Per un ord o una vista.
+---@param e integer|AUPhrase
+---@return boolean
+function N.IsVoice(e)
+	local when
+	if type(e) == "number" then when = Engine.R.when[e] elseif type(e) == "table" then when = e.when end
+	if type(when) ~= "table" then return false end
+	local v = voiceCache[when]
+	if v == nil then
+		v = AsksPerson(when.other, 0)
+		voiceCache[when] = v
+	end
+	return v
+end
+
+Engine:SetPoolShare("npcalive.voice", function(ctx)
+	if ctx.npcDialogue == true and type(ctx.other) == "table" then return N.VOICE_SHARE end
+	return nil
+end, function(e) return N.IsVoice(e) end)
+
 ---------------------------------------------------------------------------
 -- Stato per /au debug e comando
 ---------------------------------------------------------------------------

@@ -607,6 +607,16 @@ and `/au chance buff 100` for the test.
     (self-cast key, or the friend out of range), then heal the friend. **Expect:** on yourself no line to the friend; on
     the friend the lines to them can be said. **Report:** whether a self-cast heal ever speaks to the friend.
 
+**C0i (ADR 0056): the NPC's voice and the short lines in battle.** Never run in the client either. An NPC's own lines
+(its name, its temperament, its manner of speaking) now keep about 60% of a dialogue, and in a battleground, an arena or
+a boss fight the short lines keep about 85% of the picks and say their short variant.
+
+23. **A gruff innkeeper.** Open about ten dialogues with Innkeeper Gryshka in Orgrimmar (or another innkeeper with a
+    temperament) with `/au talk`. **Expect:** most openings sound like her (gruff, short), never the same line twice
+    in a row; a few are the lines every innkeeper says. **Report:** whether her own lines come back too often.
+24. **Short lines in a battleground.** In a battleground, with `/au chance battle 100`, fight for a few minutes.
+    **Expect:** the battle lines are short (one breath). **Report:** any long line, with `/au debug`.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -690,4 +700,5 @@ C0e picks .............. PickEntry mean/p95 (ms) ______  stutter? ___  place/cla
 C0f own lines .......... /au packs class/race ______  rules/texts left out ______  other character ok? ___  KB (1st/2nd) ______
 C0g own gestures ....... bandage on self heal? ___  on another silent? ___  Battle Shout/poison/aspect buff? ___  names ______
 C0h cast on self ....... potion + friend: line to the friend? ___  self heal + friend: to the friend? ___  heal on friend ok? ___
+C0i voice and battle ... innkeeper sounds like herself? ___  too repetitive? ___  battleground lines short? ___
 ```
