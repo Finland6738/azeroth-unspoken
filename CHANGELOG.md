@@ -8,6 +8,54 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W07: the shaman, the paladin and the druid, and a heal on oneself or on someone else (issue #138)
+
+The seventh content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
+after C0h ([ADR 0055](docs/adr/0055-a-cast-on-oneself-and-a-cast-on-someone-else.md)): the soft need of the healers'
+and the races' heal and buff pools on oneself, the strict need of the generic `heal:self` and `buff:self` pools, and
+the strict need of the shaman, the paladin and the druid: **1,121 intentions, 2,651 texts per language** (5,302 in
+both), written by eleven parallel writer subagents (authors `ai-w07-<unit>`) and passed through the archive (drafts,
+`cli dups --state draft` with no exact and no near duplicate, submit, owner sample, approve, export; the round trip is
+an empty diff). No literary piece and no `tier` field. The addon goes from 8,949 to **10,070 intentions** and from
+21,562 to **24,213 texts per language**.
+
+- **Added: three classes**, in `base_classes` (`cls.<class>.<event>.w07.NNN`): the shaman 338 intentions, 814 texts per
+  language (muse, quests, the fight, Healing Wave, Chain Heal and the Healing Stream Totem, Water Breathing, Ancestral
+  Spirit); the paladin 399 and 936 (muse, quests, the fight, Holy Light, Flash of Light and Lay on Hands, the
+  Blessings, Redemption); the druid 356 and 837 (muse, quests, the fight in every shape, Healing Touch, Rejuvenation,
+  Regrowth and Tranquility, Mark of the Wild and Thorns, Rebirth). Every class line writes `class` at the top level
+  ([ADR 0053](docs/adr/0053-lines-of-the-character-only.md)) and holds for every race the class can be in Classic: a
+  shaman line may name the Horde but no race, a paladin line the Light and the Alliance but no race, a druid line
+  neither faction nor race (no Elune, no Earth Mother); a druid's fight line holds in caster, bear and cat form; a line
+  that names an ability or a totem element writes the level it is learned at (`levelMin`).
+- **The two halves of a heal and a buff** (ADR 0055). Every heal and buff line of the wave writes `castOnSelf`: the
+  lines to the one healed or blessed write `castOnSelf = false` (with `hasTarget` and `friendly` when they address
+  them), the lines about one's own wound or one's own preparation `castOnSelf = true`; a self line that names the Light,
+  the water, the spirits, nature or a spell also writes `not` a potion or a healthstone, and the few lines about a
+  potion or a healthstone write that `spell`. No line of the wave counts in both halves.
+- **Added: the generic and race lines on oneself**, in `base_spells`: 19 generic intentions (`heal.w07.NNN` 34 texts,
+  `buff.w07.NNN` 12) and 9 race intentions (dwarf, tauren, night elf, troll and human, `race.<race>.heal|buff.w07.NNN`,
+  18 texts), all `castOnSelf = true` and neutral about the gesture.
+- **The gap after W07** (per language): soft need 8,947, gap **0** (was 25); strict need 29,536, gap **8,747** (was
+  11,311); random need 276,398, gap **253,605** (was 256,256). **88 waves** left (the next is the first row of
+  WAVES.md: the strict need of the rogue, the priest and the mage, and of the dwarf, tauren, night elf and human).
+- **Measured.** `bench_scale --sizes 0` (every line loaded): memory 24.5 → 25.4 MB, pick 29.5 → 29.3 thousand Lua
+  instructions (p95 54.7 → 55.1). `bench_trial --long 20`: the orc warrior and the troll mage unchanged; the human
+  paladin, whose class pools now speak more, repeats less: over seeds 1, 2 and 3 its first exact repetition comes at
+  6.34, 7.00 and 9.85 h (was 6.84, 6.59 and 4.82) and 6.0, 6.8 and 4.0% of its interventions are repeats (was 8.2, 9.7
+  and 8.8). `run_tests` M2: pick 50.2 thousand Lua instructions (reference 42.7), CPU 0.65 ms.
+- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI); counts only: base intentions 10027, lines loaded
+  10034, `base_classes` 3336.
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W07.md](docs/content/reviews/W07.md) (22
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** the Italian names in some `spell` conditions (the paladin's and the shaman's spells, the druid's
+  Moonfire, Starfire and Hurricane) are the writers' best guess; on the English client of WoW Forever only the English
+  name matters. The paladin's Divine Shield is "Scudo Divino" on an Italian client, and "scudo" is on the Italian list
+  of buff words: there it would fire `buff`, and the paladin's buff lines speak of blessings. What `UNIT_SPELLCAST_SENT`
+  gives as the target of a warlock's Health Funnel is untested: if it is empty, the warlock's funnel counts as a cast
+  on oneself and could pick a generic `heal:self` line (G1 checklist, section C0h).
+
 ### C0h: a cast on oneself and a cast on someone else (issue #138, ADR 0055)
 
 Found by content wave W06 (PR #255): the heal lines that speak to the one being healed relied on a friend being

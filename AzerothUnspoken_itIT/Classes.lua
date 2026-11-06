@@ -9989,4 +9989,4777 @@ NS:AddTexts("itIT", {
 		"Per un istante, mentre moriva, ho sentito qualcosa passarmi accanto. Uno spiffero. Mi dirò che era uno spiffero.",
 		"Mentre cadeva, il freddo nell'aria si è fatto più fondo, solo per un istante. Qualcosa dall'altra parte se n'era accorto.",
 	},
+	["cls.druid.attack.w07.001"] = {
+		"Ancora. Come il picchio: prima o poi l'albero cede.",
+		"Un'altra. La pazienza passa attraverso tutto, se ci provi abbastanza volte.",
+		"E ancora. La via lenta arriva sempre.",
+	},
+	["cls.druid.attack.w07.002"] = {
+		"Spendi solo quello che lo scontro chiede. La natura non paga mai più del prezzo.",
+		"Piano. Non sprecare forze per fare scena.",
+		"Con misura. In natura nessuno colpisce più forte del necessario.",
+	},
+	["cls.druid.attack.w07.003"] = {
+		"incalza il nemico senza fretta, ogni mossa che nasce dalla precedente come gli anelli di un tronco.",
+		"non dà tregua al nemico, con la parsimonia instancabile di una creatura selvatica: niente di sprecato fra una mossa e l'altra.",
+	},
+	["cls.druid.attack.w07.004"] = {
+		"Portalo addosso per un po'. Luce di luna che brucia, e continua a bruciare.",
+		"Un marchio d'argento. Non verrà via tanto presto.",
+	},
+	["cls.druid.attack.w07.005"] = {
+		"Vai da qualche parte? Il terreno non è d'accordo.",
+		"Radici ai piedi. Adesso possiamo parlarne con calma.",
+		"Non muoverti. Ora il terreno ti tiene per le caviglie.",
+	},
+	["cls.druid.attack.w07.006"] = {
+		"Niente incantesimi in questa forma. Solo peso e filo.",
+		"Questa forma non tratta. Morde e basta.",
+		"Peso più di quanto sembri. Molto di più.",
+	},
+	["cls.druid.attack.w07.007"] = {
+		"Lento da invocare, difficile da dimenticare. Valeva l'attesa.",
+		"Tutto quel raccogliere, per una sola caduta luminosa. Che conti qualcosa.",
+	},
+	["cls.druid.attack.w07.008"] = {
+		"Questo era il modo della natura di dire di no.",
+		"Mi dispiace. Be'. Più o meno.",
+		"Prendilo come un educato invito ad andartene.",
+	},
+	["cls.druid.attack.w07.009"] = {
+		"Lascia che sia il vento a sistemarti. Ha esperienza.",
+		"Ecco la burrasca. Tieniti a qualcosa.",
+	},
+	["cls.druid.attack.w07.010"] = {
+		"Ecco. Adesso brilli. Prova a nasconderti, ora.",
+		"Brilli come una lanterna. Non c'è più modo di nasconderti.",
+	},
+	["cls.druid.battle.w07.001"] = {
+		"A una quercia servono cento inverni per crescere. A te posso dedicare un minuto.",
+		"Gli alberi sopravvivono alle tempeste per mestiere. E tu sei una tempesta piccolina.",
+		"Ho imparato la pazienza da cose che restano ferme nello stesso posto per secoli. Corri pure, se ti va.",
+	},
+	["cls.druid.battle.w07.002"] = {
+		"Niente di personale. Il ciclo ha solo deciso che uno di noi torna alla terra.",
+		"Nessuno dei due è malvagio. Solo che uno di noi sta per diventare cibo per l'erba, tutto qui.",
+		"Nessun rancore. Solo la vecchia somma: uno resta in piedi, l'altro va a nutrire la terra.",
+	},
+	["cls.druid.battle.w07.003"] = {
+		"Respira. Senti il terreno. Poi rispondi.",
+		"Prima rallenta il cuore. In natura nessuno ha fretta per il colpo che conta.",
+		"Prima le radici. Tutto il resto cresce da lì, da dove sto.",
+	},
+	["cls.druid.battle.w07.004"] = {
+		"si zittisce del tutto, ma non per paura: è l'immobilità di chi ha già deciso.",
+		"abbassa il baricentro e lascia che il rumore del mondo defluisca, finché non resta che il nemico.",
+		"guarda il nemico avanzare con uno sguardo senza fretta, la calma di chi è sopravvissuto a parecchie tempeste.",
+	},
+	["cls.druid.battle.w07.005"] = {
+		"Stavo contando funghi. Mi hai rovinato una passeggiata tranquillissima.",
+		"Stavo ascoltando uno scarabeo. Era più interessante di te, e più educato.",
+		"Proprio adesso? Io e il muschio ci godevamo un silenzio delizioso.",
+	},
+	["cls.druid.battle.w07.006"] = {
+		"Hai fatto pendere la bilancia troppo da una parte. Sono qui per riportarla in pari.",
+		"Qualcuno deve rimettere in equilibrio le cose. A quanto pare tocca a me.",
+		"L'equilibrio non si mantiene da solo. Qualcuno deve appoggiarsi dall'altra parte.",
+	},
+	["cls.druid.battle.w07.007"] = {
+		"Ogni stagione finisce. La tua sta finendo adesso.",
+		"L'inverno arriva per tutte le cose. Per te sono solo un po' in anticipo.",
+		"Primavera, estate, il lungo autunno. Per te siamo all'ultima stagione.",
+	},
+	["cls.druid.battle.w07.008"] = {
+		"Il giardiniere pota senza rabbia. Non prenderla sul personale, è solo una potatura.",
+		"Certi rami vanno tagliati perché il resto respiri. Oggi il ramo sei tu.",
+		"Il giardiniere non ce l'ha col rovo. Ma lo estirpa comunque.",
+	},
+	["cls.druid.battle.w07.009"] = {
+		"Non c'è odio in me. L'odio sbaglia mira.",
+		"La rabbia si consuma. Io ho la pazienza, e quella non si consuma mai.",
+	},
+	["cls.druid.battle.w07.010"] = {
+		"Ricorda: le cure sono per dopo. E per durante. Soprattutto per durante, conoscendomi.",
+		"Prima si combatte, poi si cura. O il contrario. Più probabilmente tutt'e due insieme.",
+		"Stavolta cerca di non aver bisogno di cure. Ah. Come se avesse mai funzionato.",
+	},
+	["cls.druid.battle.w07.011"] = {
+		"Gli anziani dicono che fu Cenarius a insegnare ai primi druidi a difendere il verde. La lezione mi è arrivata intatta.",
+		"Fu Cenarius a dare al nostro ordine le prime lezioni, così raccontano gli anziani. Questa è una di quelle.",
+	},
+	["cls.druid.battle.w07.012"] = {
+		"Mantengo la promessa di ogni druido: proteggere ciò che cresce. E tu ci stai in mezzo.",
+		"Proteggere ciò che cresce. Ogni druido lo giura, in un modo o nell'altro. E tu ci hai messo i piedi sopra.",
+		"Ognuno di noi porta la stessa vecchia promessa: custodire il verde. Tu lo stai calpestando.",
+	},
+	["cls.druid.battle.w07.013"] = {
+		"Il muschio batte la pietra. Ci mette un po', ma vince sempre.",
+		"L'acqua consuma la roccia senza mai alzare la voce. Posso essere altrettanto paziente.",
+		"Le radici spaccano i massi un dito dopo l'altro. Di dita ne ho in abbondanza.",
+	},
+	["cls.druid.battle.w07.014"] = {
+		"Il Sogno, laggiù sotto ogni cosa, tiene il mondo come dovrebbe essere. Scommetto che lì non c'è niente di simile a te.",
+		"Il Sogno conserva la forma più vera di ogni essere vivente, insegnano i vecchi druidi. Dubito che riconosceresti la tua.",
+	},
+	["cls.druid.battle.w07.015"] = {
+		"Ogni creatura riconosce il momento in cui è messa all'angolo. Guardati intorno: è questo.",
+		"Le creature selvatiche sanno quando non hanno più dove scappare. L'hai già capito?",
+		"Guardati intorno. Non c'è più un posto dove scappare in cui io non possa seguirti.",
+	},
+	["cls.druid.battle.w07.016"] = {
+		"Un incendio nel bosco sgombra il legno vecchio perché cresca il nuovo. Pensami come un incendio piccolo ed educato.",
+		"L'incendio è crudele, ma poi il prato torna più verde. Cercherò di essere crudele come piace al prato.",
+	},
+	["cls.druid.battle.w07.017"] = {
+		"L'airone resta immobile un'ora e colpisce una volta sola. E io aspetto già da un po'.",
+		"Il gufo non insegue. Aspetta, e poi non sbaglia.",
+		"La serpe aspetta sotto il sasso per ore. Poi è velocissima.",
+	},
+	["cls.druid.battle.w07.018"] = {
+		"Avanti, attirate la sua attenzione. Io faccio in modo che respiriate tutti.",
+		"Colpite duro. Qualunque cosa vi renda indietro, la posso ricucire.",
+		"Dateci dentro. Se qualcuno comincia a sanguinare, gridi, e il verde risponderà.",
+	},
+	["cls.druid.battle.w07.019"] = {
+		"Ditemi di cosa ha bisogno questo scontro, cure o muscoli. Posso essere l'una o l'altra cosa.",
+		"Cure o botte, decidete voi. Prendo la forma che serve allo scontro.",
+	},
+	["cls.druid.battle.w07.020"] = {
+		"Qualunque forma io abbia addosso, dentro c'è la stessa volontà. Non perderla.",
+		"Pelliccia o pelle, chi tiene le redini non cambia. Ricordati chi le tiene.",
+	},
+	["cls.druid.battle.w07.021"] = {
+		"Piano. Fai solo quello che fa la tua specie. Anch'io.",
+		"So cosa ti fa infuriare così. Anche questo terreno è tuo. Mi dispiace, ma non posso tirarmi indietro.",
+		"Non c'è malvagità in te, solo fame. Vorrei che questo cambiasse qualcosa.",
+	},
+	["cls.druid.battle.w07.022"] = {
+		"Dovevi tornare alla terra. Qualcosa te l'ha impedito. Finirò io il lavoro.",
+		"Un ciclo spezzato a metà. Lascia che lo chiuda io.",
+		"Ciò che è morto appartiene alla terra, a nutrire ciò che viene dopo. Tu hai sbagliato strada.",
+	},
+	["cls.druid.battle.w07.023"] = {
+		"Dove passa la tua razza non cresce più niente. Farò in modo che tu non faccia un altro passo.",
+		"Avveleni il terreno solo a starci sopra. Facciamo in fretta.",
+	},
+	["cls.druid.battle.w07.024"] = {
+		"Fuoco, pietra o vento, poco importa: un pezzo di mondo che se ne va in giro da solo. È ora di fermarsi.",
+		"Sei un pezzo del mondo fuori posto. Lascia che ti rimetta dove stavi.",
+	},
+	["cls.druid.battle.w07.025"] = {
+		"Ingranaggi e fumo. Dai qualche anno al bosco e ti avrà arrugginito fino all'ultimo bullone. Gli risparmio l'attesa.",
+		"Non respiri, non cresci e perdi olio sul muschio. Abbiamo finito di parlare.",
+		"Ferro e vapore. Il muschio verrà a prenderti comunque; io arrivo solo prima.",
+	},
+	["cls.druid.battle.w07.026"] = {
+		"Ha più forza di me. Come ogni quercia, eppure l'edera le abbatte lo stesso.",
+		"Troppa forza per uno scontro frontale. Allora sarò il rampicante: lento, e dappertutto.",
+	},
+	["cls.druid.battle.w07.027"] = {
+		"Hai avuto il tempo di diventare forte. La natura lo rispetta. E ti abbatterà lo stesso.",
+		"Tanta mole e tanto orgoglio. Gli alberi più alti sono quelli che cadono col tonfo più forte.",
+		"Una forza antica resta solo forza. La pazienza è più antica ancora.",
+	},
+	["cls.druid.battle.w07.028"] = {
+		"inspira piano, come se assaporasse il nemico nell'aria, e lo restituisce in un suono basso.",
+		"aspira l'odore del nemico una volta, a fondo, e qualcosa di selvatico si posa dietro i suoi occhi.",
+	},
+	["cls.druid.battle.w07.029"] = {
+		"sposta l'appoggio una volta sola e poi non si muove più, con la pazienza e la tenacia di una radice nella roccia.",
+		"affronta il nemico senza una parola e senza fretta, come la marea che sale.",
+	},
+	["cls.druid.battle.w07.030"] = {
+		"Ogni scontro costa qualcosa alla natura, chiunque vinca. Teniamo basso il conto.",
+		"Chiunque cada qui, la terra ci perde un poco. Facciamo in fretta, e non peggioriamo le cose.",
+	},
+	["cls.druid.battle.w07.031"] = {
+		"Non tiriamola per le lunghe. La natura odia gli sprechi, e anch'io.",
+		"Una cosa rapida e pulita. Da uno scontro lungo non ci guadagna nessuno.",
+		"Dentro e fuori, nessuno spreco. La natura fa così.",
+	},
+	["cls.druid.battle.w07.032"] = {
+		"Ho scelto questa strada per prendermi cura dei viventi. Certi giorni prendersene cura vuol dire questo.",
+		"I druidi curano. E i druidi difendono. Vorrei più giornate del primo tipo.",
+	},
+	["cls.druid.battle.w07.033"] = {
+		"Radice e ramo, bestia e fiore: di tutto ciò che vive qui, rispondo io.",
+		"Foglia, pelle e pietra stanno con me. Vieni a metterle alla prova tutte quante.",
+	},
+	["cls.druid.battle.w07.034"] = {
+		"Dosa le forze. Uno scontro è una stagione, non una raffica sola.",
+		"Non bruciare tutto al primo respiro. La natura non lo fa mai.",
+		"Tieni qualcosa da parte. La forza spesa subito è forza che poi mi mancherà.",
+	},
+	["cls.druid.battle.w07.035"] = {
+		"Hai preso da questa terra senza chiedere. Oggi è la terra a chiederti il conto.",
+		"Tutto ciò che hai preso alla natura, lei lo rivuole indietro. Sono qui a riscuotere.",
+	},
+	["cls.druid.battle.w07.036"] = {
+		"Ti offrirei la pace, ma hai già quella faccia lì.",
+		"Ho pensato di ragionare con te. Ci ho pensato, almeno. Per un attimo.",
+		"Potremmo andarcene ognuno per la sua strada. No? Allora diamoci da fare.",
+	},
+	["cls.druid.battle.w07.037"] = {
+		"rivolge al terreno un rapido sguardo, quasi una scusa, poi si volta verso lo scontro.",
+		"per un battito di cuore sembra ascoltare il terreno, prima che lo scontro cominci.",
+	},
+	["cls.druid.battle.w07.038"] = {
+		"Ho camminato nella quiete di Moonglade. Il tuo baccano non mi spaventa.",
+		"Dopo la calma di Moonglade, tutto questo trambusto sembra davvero poca cosa.",
+	},
+	["cls.druid.battle.w07.039"] = {
+		"Gli anziani facevano sembrare tutto questo elegante. Io mi accontento che funzioni.",
+		"L'eleganza la lascio ai vecchi druidi. A me bastano disordine e pelle salva.",
+		"Mi piacerebbe avere la grazia serena dei vecchi druidi. Non oggi, a quanto pare.",
+	},
+	["cls.druid.battle.w07.040"] = {
+		"Hai ancora tanto da crescere. Voltati e vivi qualche stagione in più.",
+		"Ancora un germoglio. Hai tempo per scappare e invecchiare un po'.",
+	},
+	["cls.druid.battle.w07.041"] = {
+		"Per qualunque stendardo tu combatta, la terra ci accoglie tutti allo stesso modo. Vediamo di non anticipare il mio turno.",
+		"La tua parte, la mia parte. Le radici sotto di noi non tengono il conto di nessuna delle due.",
+	},
+	["cls.druid.battle.w07.042"] = {
+		"Fame, paura, territorio. Ogni scontro in natura si riduce a uno di questi. Questo quale sarà?",
+		"Che cosa vuole? Cibo, terreno, o soltanto vivere. Sapere quale delle tre mi dice come combatterà.",
+	},
+	["cls.druid.battle.w07.043"] = {
+		"Come vuoi. La natura ti ha dato ogni possibilità di andartene.",
+		"Hai avuto tutti gli avvertimenti che dà la natura: il silenzio, l'odore, me. Ormai è tardi.",
+	},
+	["cls.druid.battle.w07.044"] = {
+		"emette un suono basso, dal fondo del petto, più avvertimento che grido di guerra.",
+		"scopre i denti, per un attimo e senza alcuna allegria.",
+	},
+	["cls.druid.battle.w07.045"] = {
+		"La paura è solo la natura che mi dice di fare attenzione. La sto facendo.",
+		"Un po' di paura. Bene. Ogni creatura che vive a lungo ne ha.",
+	},
+	["cls.druid.buff.w07.001"] = {
+		"Il Marchio sulla mia pelle. Un po' più spessa, un po' più salda, un po' di più in tutto.",
+		"Il Marchio si posa come uno strato di corteccia in più, invisibile e testardo.",
+	},
+	["cls.druid.buff.w07.002"] = {
+		"Spine sulla mia pelle. Chi vuole un morso di me, lo paghi.",
+		"{g:Spinoso|Spinosa} per scelta. Che imparino la lezione dei rovi.",
+		"Ecco. Adesso sono la siepe che nessuno dovrebbe provare ad attraversare.",
+	},
+	["cls.druid.buff.w07.003"] = {
+		"si sfiora il petto con due dita, e per un battito la pelle assume il tenue lucore della corteccia giovane.",
+		"mormora una breve frase e si passa una mano lungo il braccio; un luccichio verde segue il palmo e svanisce.",
+		"pronuncia una parola rivolta a nessuno in particolare, e qualcosa di verde e quieto si posa sulle sue spalle come un mantello.",
+	},
+	["cls.druid.buff.w07.004"] = {
+		"Prima della strada, il mantello della natura. Non vado da nessuna parte senza, come un orso non va in giro senza pelliccia.",
+		"Un druido si veste due volte: una di cuoio, una di verde.",
+		"Stivali allacciati, il dono della natura posato. Adesso la strada può fare del suo peggio.",
+	},
+	["cls.druid.buff.w07.005"] = {
+		"Benedizione fatta in casa. Niente di elegante, ma alla natura l'eleganza non interessa.",
+		"La natura non bada a chi sbriga le formalità: mi segno da {g:solo|sola}.",
+	},
+	["cls.druid.buff.w07.006"] = {
+		"Una rosa non chiede scusa per le sue spine. Nemmeno io.",
+		"Le spine sono solo una pianta che dice di no in una lingua che capiscono tutti.",
+		"Il cardo non è mai stato mangiato di sorpresa. Seguo il suo consiglio.",
+	},
+	["cls.druid.buff.w07.007"] = {
+		"Qualcosa di saldo si posa sotto la pelle, come radici che trovano l'acqua.",
+		"Lo sento attecchire: una fermezza lenta e verde, la pazienza degli alberi antichi prestata per un po'.",
+		"Penetra e tiene, quieto come un seme che decide di restare.",
+	},
+	["cls.druid.buff.w07.008"] = {
+		"Natura, avvolgimi.",
+		"Corteccia e rovo, custoditemi.",
+		"Verde, fammi da cerchio.",
+	},
+	["cls.druid.buff.w07.009"] = {
+		"Di nuovo posato il segno. L'ho fatto così tante volte che le mani si muovono prima del pensiero.",
+		"Svanito di nuovo. Questi doni non durano mai quanto vorrei, ma costano poco e sono miei.",
+	},
+	["cls.druid.buff.w07.010"] = {
+		"Spine alzate nel bel mezzo dello scontro. Adesso ogni colpo che mi danno costa loro qualcosa.",
+		"Che continui pure a colpirmi. Ogni colpo gli torna indietro con qualche spina attaccata.",
+		"Avanti, colpisci. Il conto lo tengono i rovi.",
+	},
+	["cls.druid.buff.w07.011"] = {
+		"traccia un rapido segno sul proprio cuore, e per un attimo sulla pelle brilla la sagoma di un'impronta di zampa, poi svanisce.",
+		"posa il palmo sulla propria fronte, e un luccichio simile alla luce tra le foglie {g:gli|le} scorre addosso.",
+	},
+	["cls.druid.buff.w07.012"] = {
+		"Nei racconti antichi il Marchio fu il primo dono di Cenarius a chi custodiva i suoi boschi. Lo porto come una promessa che non ho ancora finito di mantenere.",
+		"Un dono del Signore della Foresta ai suoi custodi, così narra la storia. Cerco di meritarmelo nei giorni in cui lo rinnovo.",
+	},
+	["cls.druid.buff.w07.013"] = {
+		"Ecco il Marchio. Un po' più di tutto: forza, fiato, pelle dura.",
+		"Il Marchio della Natura. Non sentirai granché, ma durerai di più.",
+		"Fatto, il Marchio. Ti scrollerai di dosso un paio di cose che altrimenti avresti sentito.",
+	},
+	["cls.druid.buff.w07.014"] = {
+		"Ti ho messo le spine. Chiunque ti colpisca si pentirà della scelta.",
+		"Adesso sei un roveto. Che provino ad afferrarti.",
+		"Pungente, ma dalla nostra parte. Vai pure.",
+	},
+	["cls.druid.buff.w07.015"] = {
+		"Un po' di natura adesso viaggia con quella persona. Mi piace saperlo, ovunque vada.",
+		"Segno posato, e via. Un pezzo di verde cammina al suo fianco anche dove io non posso.",
+	},
+	["cls.druid.buff.w07.016"] = {
+		"allunga una mano e sfiora la spalla di {target}, lasciando un tenue luccichio verde che affonda nella pelle.",
+		"solleva una mano verso {target} e pronuncia una sola parola sommessa; un luccichio come luce tra le foglie si posa e svanisce.",
+	},
+	["cls.druid.buff.w07.017"] = {
+		"Non grattarti. Non è quel genere di segno.",
+		"Non si vedrà, promesso. La natura è discreta.",
+		"No, non ti spunteranno le foglie. Probabilmente.",
+	},
+	["cls.druid.buff.w07.018"] = {
+		"Per la strada che ti aspetta. La natura veglia sui suoi.",
+		"Portalo con te. Le strade sono lunghe e il verde è buona compagnia.",
+		"Qualcosa per il viaggio. Non pesa niente e dura a lungo.",
+	},
+	["cls.druid.buff.w07.019"] = {
+		"Spine sulla pelle di qualcun altro. Chi la morde si ricorderà di me, o almeno dei miei rovi.",
+		"Regalo le spine più volentieri di quanto le porti. Vederle lavorare su qualcun altro è un piacere silenzioso.",
+	},
+	["cls.druid.buff.w07.020"] = {
+		"Porta la natura con te.",
+		"Adesso la natura cammina con te.",
+		"Va' con il verde al tuo fianco.",
+	},
+	["cls.druid.farewell.w07.001"] = {
+		"Buon cammino. Sta' all'ombra quando puoi, e lascia stare gli alberi giovani.",
+		"Addio. Che la strada che prendi sia una che la terra porta volentieri.",
+		"Strade sicure. E se un bosco ti sembra vigile, sii cortese: probabilmente lo è.",
+	},
+	["cls.druid.greet.w07.001"] = {
+		"Salute. Che il terreno ti sia gentile sotto i piedi.",
+		"Salve. Cammina con passo leggero, e da me troverai sempre accoglienza.",
+	},
+	["cls.druid.greet.w07.002"] = {
+		"Ciao. Perdona le foglie nei capelli: ho avuto una conversazione con una siepe.",
+		"Salve. Sì, quello sui miei stivali è muschio. No, non mi scuserò.",
+	},
+	["cls.druid.heal.w07.001"] = {
+		"Rimettere in sesto le mie ferite è un lavoro curioso: sono io le mani e sono io la ferita, e la ferita ha di gran lunga il carattere peggiore.",
+		"Curarmi è il genere di guarigione più strano. Sono io a dare, e sono sempre io a lamentarmi.",
+		"Metà di me ricuce, l'altra metà fa smorfie. Sul ritmo non si sono mai trovate d'accordo.",
+	},
+	["cls.druid.heal.w07.002"] = {
+		"Nessun altro l'avrebbe fatto. Chiuditi, tu.",
+		"Nessun guaritore a portata di mano, a parte me. Che fortuna, allora.",
+		"Fai da te, come al solito. Chiuditi.",
+	},
+	["cls.druid.heal.w07.003"] = {
+		"preme il palmo contro le proprie costole, e il livido sotto sfuma dal viola al verde al nulla, come una stagione che passa in un respiro.",
+		"posa una mano sulla propria ferita e aspetta; i lembi lacerati si riavvicinano piano, come radici che si chiudono attorno a un sasso.",
+	},
+	["cls.druid.heal.w07.004"] = {
+		"Che sbadataggine. Ci sono {g:finito|finita} dentro a occhi chiusi. Il corpo perdona prima di me.",
+		"Colpa mia, quel taglio. La carne lo dimenticherà presto; io lo ricorderò più a lungo, ed è proprio questo il punto.",
+	},
+	["cls.druid.heal.w07.005"] = {
+		"I vecchi druidi dicono che il corpo è solo terra presa in prestito. Guarirlo vuol dire chiedere a chi l'ha prestata ancora un po' di tempo.",
+		"La carne è terra in prestito, insegnano gli anziani del Circolo. Io chiedo solo di rinnovare il prestito ancora un poco.",
+		"Terra prestata, terra dovuta, come dicevano i vecchi druidi. Oggi chiedo una proroga, con garbo.",
+	},
+	["cls.druid.heal.w07.006"] = {
+		"Una toppa da vecchia quercia. Reggerà.",
+		"Corteccia sopra il taglio. Per ora basta così.",
+		"La linfa sigilla il tronco, e io sigillo il taglio. Avanti.",
+	},
+	["cls.druid.heal.w07.007"] = {
+		"Ogni colpo mi fa perdere il filo dell'incantesimo. Pazienza. È più lento di qualunque cosa mi stia colpendo, ma arriva.",
+		"Difficile finire un incantesimo lungo con qualcosa che mi martella addosso. Riprendo le parole, e poi ancora, come un seme che spinge nella terra calpestata.",
+	},
+	["cls.druid.heal.w07.008"] = {
+		"Il Ringiovanimento sulla mia pelle è come la linfa che risale a primavera, da dentro. Continuo a camminare e lo lascio lavorare.",
+		"Lo avvio e me ne dimentico. Quando mi viene in mente di controllare, il taglio è già mezzo chiuso.",
+	},
+	["cls.druid.heal.w07.009"] = {
+		"La Ricrescita lavora due volte: una ricucitura svelta adesso, poi una più lenta, sotto. La prima per lo scontro, la seconda per il dopo.",
+		"La cura rapida e quella lenta in un solo incantesimo. Anche la natura si tiene una carta di riserva.",
+	},
+	["cls.druid.heal.w07.010"] = {
+		"mormora sulla propria ferita una lunga fila di parole morbide e senza fretta, e una luce verde si raccoglie nel palmo a coppa prima di affondare.",
+		"trae un respiro lento e lascia che le parole della guarigione vengano col loro passo, mentre un tenue bagliore verde si posa sulla ferita.",
+	},
+	["cls.druid.heal.w07.011"] = {
+		"Il mana è poco, la fiaschetta è piena. Scelta facile.",
+		"Potrei spendere il mana per questo, oppure lasciar fare alla boccetta. Alla boccetta non dispiace.",
+		"Un sorso, e il mana resta lì per quando servirà davvero.",
+	},
+	["cls.druid.heal.w07.012"] = {
+		"Amara, densa, sa di radice e di ferro. Chi l'ha fatta conosceva le erbe. Il calore va dritto alla ferita.",
+		"Chi l'ha distillata ha colto le foglie giovani: lo sento in bocca. Il dolore già si allenta.",
+	},
+	["cls.druid.heal.w07.013"] = {
+		"stappa una fiaschetta coi denti, l'annusa con la smorfia di chi conosce le erbe, e la beve lo stesso.",
+		"manda giù una pozione rossa in un sorso solo e si pulisce la bocca, già in cerca della prossima cosa da fare.",
+	},
+	["cls.druid.heal.w07.014"] = {
+		"Una pietra di stregone, tiepida nella mano. Non chiedo cosa ci sia dentro. Funziona, e la ferita si chiude.",
+		"Preferisco non sapere come si fa una pietra della salute. Le sono {g:grato|grata} lo stesso.",
+	},
+	["cls.druid.heal.w07.015"] = {
+		"Una pietra che guarisce. Al bosco non era mai venuto in mente. La prendo.",
+		"Non coltivata, non distillata: fabbricata, da qualcuno con abitudini più strane delle mie. Me la tengo.",
+	},
+	["cls.druid.heal.w07.016"] = {
+		"Non c'è tempo per parole e luce verde. Stappa, bevi, continua a combattere.",
+		"Con questa cosa addosso l'incantesimo ci metterebbe troppo. La fiaschetta è più svelta.",
+		"Il mana per dopo, la pozione per adesso. Bevi e torna sotto.",
+	},
+	["cls.druid.heal.w07.017"] = {
+		"Il mana che verso sulla mia pelle adesso è mana che non avrò per il prossimo scontro. Ne vale la pena. Probabilmente.",
+		"Misuro quel che mi resta contro quel che ancora mi aspetta. Oggi la ferita vince la discussione.",
+		"Il mana di un druido è un pozzo solo, e io ci attingo per i miei graffi. Con parsimonia, allora.",
+	},
+	["cls.druid.heal.w07.018"] = {
+		"Lascio andare l'orso per curarmi. Se ne va sempre controvoglia, e il dolore che nascondeva arriva tutto in una volta.",
+		"Fuori dalla pelliccia, dentro le mani. Il dolore che l'orso scrollava di dosso adesso è mio, e anche la guarigione.",
+	},
+	["cls.druid.heal.w07.019"] = {
+		"Verde, torna da me.",
+		"Radice e foglia, chiudete questa ferita.",
+		"Ricopriti, ferita. Come il muschio su un tronco caduto.",
+	},
+	["cls.druid.heal.w07.020"] = {
+		"Uccido e curo con le stesse mani, a volte nella stessa ora. Il Circolo la chiama equilibrio. Certi giorni mi sembra solo lavoro.",
+		"Dente ed erba, ferita e cura. Un druido le tiene nella stessa tasca, e impara a non confonderle.",
+	},
+	["cls.druid.heal.w07.021"] = {
+		"piega piano il braccio guarito, mettendolo alla prova come si saggia un ramo prima di caricarlo di peso.",
+		"ruota la spalla due volte e l'ascolta come un boscaiolo ascolta un ramo che scricchiola.",
+	},
+	["cls.druid.heal.w07.022"] = {
+		"Se il Sogno custodisce davvero la prima forma di ogni essere vivente, come insegna il Circolo, allora da qualche parte c'è una versione di me senza questo taglio. Prendo in prestito solo il suo contorno.",
+		"Il Circolo insegna che il Sogno ricorda ogni creatura intera. Quando mi curo, mi piace pensare di copiare da quel ricordo.",
+	},
+	["cls.druid.heal.w07.023"] = {
+		"Le spine mi hanno fatto di peggio. Non molte, ma qualcuna.",
+		"Da un roveto ho preso di peggio. Be'. Quasi.",
+		"Un rovo si vergognerebbe di un graffio così superficiale. O quasi.",
+	},
+	["cls.druid.heal.w07.024"] = {
+		"Tranquillità, lanciata solo per me. È come apparecchiare un banchetto per una persona sola, ma la ferita non si lamenta.",
+		"Tutto quel verde quieto riversato su di me e sulla mia povera ferita. Uno spreco, forse. Funziona.",
+	},
+	["cls.druid.heal.w07.025"] = {
+		"La Tranquillità mi chiede di non muovermi e di continuare le parole, qualunque cosa arrivi. La parte più difficile è non sussultare.",
+		"Un respiro dopo l'altro con i piedi radicati, mentre il verde mi esce dalle mani. Neanche un albero scappa.",
+	},
+	["cls.druid.heal.w07.026"] = {
+		"resta {g:radicato|radicata} a cantilenare, e una morbida quiete verde si allarga su tutti quelli che ha vicino.",
+		"pianta i piedi e solleva le mani, e per qualche respiro l'aria attorno a tutto il gruppo sembra mettere foglie.",
+	},
+	["cls.druid.heal.w07.027"] = {
+		"Lo scontro è finito. Adesso la parte lenta: sedersi, respirare, lasciare che il verde faccia il suo lavoro paziente.",
+		"Niente mi insegue, adesso. Posso usare l'incantesimo lungo, quello accurato, e fare le cose per bene.",
+	},
+	["cls.druid.heal.w07.028"] = {
+		"Un lupo si lecca le ferite e va avanti. Io ho strumenti migliori, eppure invidio quanto poco ci faccia caso.",
+		"Gli animali feriti si nascondono, guariscono, e non ne parlano. Sto cercando di imparare la parte del non parlarne.",
+		"Nessuna bestia selvatica ha mai fatto un discorso su un taglio. Me lo tengo a mente, e taccio.",
+	},
+	["cls.druid.heal.w07.029"] = {
+		"Anche chi coltiva un giardino si punge. Il segreto è prendersi cura di sé prima di appassire.",
+		"Prima o poi ogni giardiniere si graffia. Prima si curano le mani, poi la siepe.",
+	},
+	["cls.druid.heal.w07.030"] = {
+		"Chi sa curare e muore dissanguato è solo un cadavere ben informato. Non oggi.",
+		"Morire con una cura ancora in tasca sarebbe imbarazzante. La spendo adesso.",
+	},
+	["cls.druid.heal.w07.031"] = {
+		"La prima guarigione che ogni druido impara è anche la più lenta. Mi sono {g:affezionato|affezionata} a quella lentezza: mi costringe a restare immobile e a fare attenzione.",
+		"L'incantesimo più vecchio che conosco, e ancora quello di cui mi fido di più. Parole lunghe, una cura grande, nessuna scorciatoia.",
+	},
+	["cls.druid.heal.w07.032"] = {
+		"Piccole misericordie, una dopo l'altra. Il Ringiovanimento non ha mai fretta, e nemmeno una foresta.",
+		"Non una grande cura sola ma una manciata di piccole, ognuna puntuale. Mi piacciono gli incantesimi educati.",
+	},
+	["cls.druid.heal.w07.033"] = {
+		"arretra giusto il tempo di mormorare qualche parola sulla propria ferita, poi torna avanti.",
+		"si interrompe per un battito di cuore, una mano premuta sul fianco e una luce verde che filtra tra le dita, prima di tornare allo scontro.",
+	},
+	["cls.druid.heal.w07.034"] = {
+		"Troppo vicino. Le radici stavano già allungandosi verso di me.",
+		"Più vicino di quanto mi piaccia. Sentivo la terra prepararsi.",
+	},
+	["cls.druid.heal.w07.035"] = {
+		"La prima cosa che un vecchio druido mi disse sulla guarigione: le mani che curano gli altri non servono a nulla se tremano. Prima cura le tue.",
+		"Prima si cura chi cura, dicono i vecchi druidi, altrimenti presto non resta nessuno a curare nessuno.",
+	},
+	["cls.druid.heal.w07.036"] = {
+		"La pelle si richiude come l'erba su un sentiero calpestato: non tutta insieme, ma senza mai dubitare che succederà.",
+		"L'erba dimentica un'impronta in pochi giorni. La mia pelle fa prima, con un piccolo aiuto.",
+		"Un prato calpestato si rialza filo dopo filo. Anche questa, solo più in fretta.",
+	},
+	["cls.druid.heal.w07.037"] = {
+		"Mana ben speso, soprattutto per rimediare alla mia goffaggine.",
+		"Ed ecco quanto mi costa l'orgoglio, in cure.",
+		"Ecco andata una cura che speravo di tenere per qualcun altro.",
+	},
+	["cls.druid.heal.w07.038"] = {
+		"Chiusa. Qualcosa di selvatico in me tira già il guinzaglio, impaziente di tornare dentro.",
+		"La ferita è chiusa, e la parte inquieta di me vuole tornare nella mischia prima ancora che abbia finito di pensarlo.",
+	},
+	["cls.druid.heal.w07.039"] = {
+		"Fu Cenarius il primo a insegnare la guarigione ai druidi, o almeno così racconta il Circolo. Chissà se a lui è mai toccato farlo così di fretta.",
+		"Il Circolo dice che i primi druidi lo impararono da Cenarius in persona. Spero che fosse più paziente con i suoi allievi di quanto io lo sia con le mie ferite.",
+	},
+	["cls.druid.heal.w07.040"] = {
+		"si toglie il sangue con la manica e osserva la pelle nuova e rosata sotto, {g:soddisfatto|soddisfatta}.",
+		"strofina via il sangue secco col palmo della mano e annuisce alla pelle pulita che c'è sotto.",
+	},
+	["cls.druid.heal.w07.041"] = {
+		"Una quercia ci mette anni a coprire di corteccia la cicatrice di un fulmine. A me bastano pochi respiri. Cerco di non darlo per scontato.",
+		"Gli alberi guariscono così piano che la gente crede che non lo facciano. Io posso farlo in pochi istanti, e mi sembra ancora un dono in prestito.",
+	},
+	["cls.druid.heal.w07.042"] = {
+		"Ricuciti, come un nido intrecciato rametto dopo rametto.",
+		"Di nuovo insieme, come un nido dopo il vento.",
+	},
+	["cls.druid.heal.w07.043"] = {
+		"Non sono io a fare la guarigione. Tengo solo la porta aperta e la lascio passare, cercando di non mettermi in mezzo.",
+		"Il lavoro lo fa il verde. La mia parte è chiedere con garbo e tenere ferme le mani.",
+		"Ciò che mi guarisce non è mio. Conosco soltanto il modo di chiederlo.",
+	},
+	["cls.druid.heal.w07.044"] = {
+		"Il dolore è il corpo che parla chiaro. L'ho ascoltato. Adesso può smettere di gridare.",
+		"La ferita aveva fatto il suo discorso. Ho imparato la lezione e ho mandato via il dolore.",
+		"Messaggio ricevuto, ferita. Adesso puoi andare.",
+	},
+	["cls.druid.heal.w07.045"] = {
+		"si cura con poche parole sommesse, e per un istante l'aria attorno sa di terra smossa e di foglie nuove.",
+		"chiude la ferita con un mormorio, lasciandosi dietro un breve odore di erba schiacciata e corteccia umida.",
+	},
+	["cls.druid.heal.w07.046"] = {
+		"La Ricrescita costa più di quanto sembri valere, finché la parte lenta continua a ricucire quando ormai non ci penso più.",
+		"Costosa, la Ricrescita. Ma continua a rendere quando ho già dimenticato di averla lanciata.",
+	},
+	["cls.druid.heal.w07.047"] = {
+		"Un gatto si nasconderebbe sotto un cespuglio a leccarsela per un giorno intero. Io ho un incantesimo e nessun cespuglio. Scambio onesto.",
+		"Qualunque bestia dei campi zoppicherebbe via sperando nel meglio. Io posso aggiustarla. Il piccolo vantaggio di avere le mani.",
+	},
+	["cls.druid.heal.w07.048"] = {
+		"Pensare prima alla mia ferita non è egoismo. Se cado io, qui non viene curato più nessuno.",
+		"Agli altri servo in piedi più che {g:coraggioso|coraggiosa}. Quindi prima io, per questa volta.",
+	},
+	["cls.druid.heal.w07.049"] = {
+		"Pelle nuova. Be', nuova come la primavera scorsa.",
+		"Di nuovo verde. Più o meno.",
+		"Pelle fresca come una foglia appena spuntata, e robusta più o meno uguale. Basterà.",
+	},
+	["cls.druid.heal.w07.050"] = {
+		"I vecchi druidi dicono che Malfurion insegnava a sentire fino in fondo una ferita prima di chiuderla. Questa l'ho sentita. Basta così.",
+		"Senti la ferita prima di chiuderla, dice l'antico insegnamento, così non va sprecata. L'ho sentita. Abbondantemente.",
+	},
+	["cls.druid.heal.w07.051"] = {
+		"esamina il taglio appena richiuso, aggrotta la fronte davanti alla sottile cicatrice rimasta e decide di considerarla carattere.",
+		"osserva la nuova cicatrice sottile e scrolla le spalle, archiviandola a quanto pare tra le lezioni imparate.",
+	},
+	["cls.druid.heal.w07.052"] = {
+		"La vita vuole andare avanti. Lo ha sempre voluto. Tutto ciò che un druido fa davvero è sgombrarle la strada.",
+		"Sotto ogni cosa, ciò che vive vuole vivere. Io mi limito a smettere di contraddirlo.",
+		"A nessun essere vivente si deve insegnare a guarire. Basta permetterglielo. Questo è tutto il segreto, e non è un segreto.",
+	},
+	["cls.druid.heal.w07.053"] = {
+		"La parte di me che corre su quattro zampe dice di ignorarla e andare avanti. La parte che ha le mani ne sa di più.",
+		"L'istinto dice di stringere i denti e andare avanti. Il buon senso dice di fermarsi e curarsi. Vince il buon senso, per un soffio.",
+	},
+	["cls.druid.heal.w07.054"] = {
+		"Primavera, qui. Solo un poco di te.",
+		"Vieni, verde. Solo quanto mi serve.",
+	},
+	["cls.druid.heal.w07.055"] = {
+		"Presto, prima che qualcos'altro mi trovi in questo stato.",
+		"Guarire in fretta. Le creature ferite attirano l'attenzione, e preferirei non essere il cervo più lento del prato.",
+	},
+	["cls.druid.heal.w07.056"] = {
+		"Respira con me. Piano. Il verde segue il respiro.",
+		"Dentro, e fuori. Lascia che si posi dove serve.",
+		"Respiri tranquilli. La cura viaggia su di loro.",
+	},
+	["cls.druid.heal.w07.057"] = {
+		"Ecco fatto, {target}. Una toppa verde, e regge.",
+		"{target}, questo dovrebbe reggere. Non metterlo troppo alla prova.",
+		"Fatto, {target}. Cerca di non disfarlo per almeno un'ora.",
+	},
+	["cls.druid.heal.w07.058"] = {
+		"Sanguini come una betulla abbattuta. Smettila.",
+		"Tutto quel rosso per una persona sola. Il resto teniamolo dentro.",
+		"La linfa sta negli alberi e il sangue sta dentro di te. Non muoverti.",
+	},
+	["cls.druid.heal.w07.059"] = {
+		"Guardare una ferita altrui che si chiude è meglio che guardare la mia. Posso vedere la sorpresa sul suo viso.",
+		"Non mi stanco mai dell'istante in cui il dolore lascia gli occhi di qualcuno. È la cosa più simile alla primavera che possa portare tra le mani.",
+	},
+	["cls.druid.heal.w07.060"] = {
+		"tende una mano verso {target}, e un tenue bagliore verde attraversa la distanza come polline nella brezza.",
+		"si volta verso {target} e pronuncia poche parole sommesse, e la ferita comincia a chiudersi come una foglia che si arriccia.",
+		"manda verso {target} un filo di luce verde, costante e senza fretta, come un ruscello che trova il suo letto.",
+	},
+	["cls.druid.heal.w07.061"] = {
+		"Hai addosso il Ringiovanimento. Piccole cure, una dopo l'altra, ancora per un po'.",
+		"È una cura lenta, {target}. La sentirai arrivare a ondate.",
+	},
+	["cls.druid.heal.w07.062"] = {
+		"Ricrescita. La parte svelta è fatta; il resto ricresce da sé.",
+		"Un po' adesso, il resto dopo. La Ricrescita funziona così, {target}.",
+	},
+	["cls.druid.heal.w07.063"] = {
+		"Continua così. Ti copro le spalle, e anche le ferite.",
+		"Non voltarti, combatti. Ti curo alla stessa velocità con cui sanguini.",
+		"Occhi avanti. Della parte che fa male mi occupo io.",
+	},
+	["cls.druid.heal.w07.064"] = {
+		"Guarda loro, non il nemico. Il nemico è un problema di qualcun altro finché qualcuno non cade.",
+		"I miei occhi restano sugli altri. La parte selvatica di me può tenere il broncio perché si perde lo scontro.",
+	},
+	["cls.druid.heal.w07.065"] = {
+		"Piano, adesso. Il dolore fa rumore, ma non ha l'ultima parola.",
+		"Shh. Lascia che si faccia silenzio. Guarire non è altro.",
+		"Lascia che il dolore si sfoghi. Poi se ne va.",
+	},
+	["cls.druid.heal.w07.066"] = {
+		"Dalla radice al ramo, risana questa ferita.",
+		"Terra sotto, foglia sopra, chiudi questa ferita.",
+		"Dalle radici profonde in su: guarisci.",
+	},
+	["cls.druid.heal.w07.067"] = {
+		"La prossima volta prova ad abbassarti. Gli alberi non possono, e guarda cosa gli succede.",
+		"La prossima volta abbassati. Anche gli alberelli si piegano quando arriva il vento.",
+		"Il salice si piega e si tiene i rami. Pensaci, la prossima volta.",
+	},
+	["cls.druid.heal.w07.068"] = {
+		"Non so come si chiami, e il verde non lo chiede. Non lo fa mai.",
+		"Conosciuto o no, la cura è la stessa. La natura non ha mai imparato a fare preferenze.",
+	},
+	["cls.druid.heal.w07.069"] = {
+		"tiene un occhio sullo scontro e uno su {target}, e la cura arriva appena prima del colpo successivo.",
+		"si distoglie dal nemico giusto il tempo di mandare una cura rapida verso {target}, poi torna a guardarlo.",
+	},
+	["cls.druid.heal.w07.070"] = {
+		"Smettila di dimenarti. Non sei un pesce e io non ho finito.",
+		"Ti dispiace non muoverti? Curare un bersaglio che si sposta costa il doppio della fatica.",
+		"Agitati pure quanto vuoi, ma l'incantesimo arriva dove arriva.",
+	},
+	["cls.druid.heal.w07.071"] = {
+		"Siediti un momento. La carne a riposo accoglie meglio la cura.",
+		"Prendi fiato prima di ripartire. Voglio che questa si saldi per bene.",
+		"Adesso non c'è fretta. Se si chiude piano, si chiude per sempre.",
+	},
+	["cls.druid.heal.w07.072"] = {
+		"Il mana versato nella ferita di un altro non mi sembra mai sprecato, anche quando è l'ultimo che ho.",
+		"Potrei tenerlo per me. Non lo farò. È tutto qui il patto di chi cura.",
+	},
+	["cls.druid.heal.w07.073"] = {
+		"Cenarius insegnò ai primi druidi a ricucire ciò che la natura strappa, dicono al Circolo. Oggi tocca a te.",
+		"È il dono più antico del Circolo, dicono. Fortuna tua: ti arriva gratis.",
+	},
+	["cls.druid.heal.w07.074"] = {
+		"osserva {target} con attenzione mentre la luce verde penetra, come si guarda una piantina appena trapiantata.",
+		"studia {target} con gli occhi socchiusi di chi cura, finché il dolore non si è chiaramente attenuato.",
+	},
+	["cls.druid.heal.w07.075"] = {
+		"Meglio? Bene. Il bosco ti manda i suoi saluti.",
+		"Ecco. Omaggio di tutte le querce sotto cui mi sono {g:seduto|seduta}.",
+		"Tutto a posto. Ringrazia un albero, quando ne incroci uno.",
+	},
+	["cls.druid.heal.w07.076"] = {
+		"Resisti. La cura grande ha bisogno di qualche respiro per raccogliersi.",
+		"Dammi un momento. L'incantesimo lento è quello forte.",
+	},
+	["cls.druid.heal.w07.077"] = {
+		"Chiuderò questa ferita, e via di nuovo dentro il prossimo scontro. È il mio lavoro. Ci ho fatto pace, più o meno.",
+		"Curare, guardare chi riparte alla carica, curare di nuovo. Un druido impara la pazienza dagli alberi e da gente così.",
+	},
+	["cls.druid.heal.w07.078"] = {
+		"Piano. Il peggio se ne sta andando.",
+		"Lo senti? È il dolore che fa i bagagli.",
+		"Eccolo che se ne va. Il dolore sta uscendo dalla porta.",
+	},
+	["cls.druid.heal.w07.079"] = {
+		"solleva le mani verso {target} come per offrire dell'acqua, e la luce verde trabocca.",
+		"unisce le mani a coppa e le apre verso {target}, e qualcosa di simile a un'aria tiepida di primavera passa tra loro.",
+	},
+	["cls.druid.heal.w07.080"] = {
+		"Non serve ringraziarmi. Prima o poi pianta qualcosa.",
+		"Ringrazia la natura, non me. Meglio ancora, non calpestare i funghi lungo la strada.",
+		"Se vuoi sdebitarti, lascia in piedi un alberello da qualche parte.",
+	},
+	["cls.druid.heal.w07.081"] = {
+		"Sì, un attimo fa ero un orso. Per questo servono le mani. Non muoverti.",
+		"Via la pelliccia, fuori le mani. Fammi vedere quella ferita.",
+	},
+	["cls.druid.heal.w07.082"] = {
+		"Vai. Hai le spalle coperte, e dietro di me c'è tutto il bosco.",
+		"Torna dentro. Adesso ogni radice della terra sta dalla tua parte.",
+	},
+	["cls.druid.heal.w07.083"] = {
+		"mormora le antiche parole della guarigione, senza staccare gli occhi da chi è ferito, la voce costante come acqua che cade.",
+		"parla piano e senza sosta finché la ferita di chi ha davanti non si è chiusa.",
+	},
+	["cls.druid.heal.w07.084"] = {
+		"Ti resterà una cicatrice. Portala come la corteccia: la prova che hai resistito a qualcosa.",
+		"Lascerà il segno. Gli alberi portano i loro per secoli e nessuno li trova brutti.",
+	},
+	["cls.druid.heal.w07.085"] = {
+		"Un Ringiovanimento posato e lasciato a lavorare. Ora posso guardare altrove per qualche respiro.",
+		"Avviarlo su chi ne ha bisogno e voltarsi. Le cure lente sono quelle che lasciano pensare chi cura.",
+	},
+	["cls.druid.heal.w07.086"] = {
+		"Appoggia il tuo peso alla terra per un momento, {target}. Ha portato cose ben più pesanti di te.",
+		"Affidati al terreno, {target}. Non ha mai lasciato cadere niente.",
+	},
+	["cls.druid.heal.w07.087"] = {
+		"Fammi vedere. Mh. Ho visto di peggio su un tasso, e il tasso si lamentava meno.",
+		"I cinghiali ne prendono di peggiori e non fanno neanche metà del chiasso.",
+	},
+	["cls.druid.heal.w07.088"] = {
+		"si inginocchia accanto a {target} e lavora senza fretta, come si cura un'aiuola di piantine.",
+		"si sistema accanto a {target} e si prende il suo tempo, senza fretta, come il muschio.",
+	},
+	["cls.druid.jest.w07.001"] = {
+		"Quanti druidi servono per piantare un albero? Uno, più tre stagioni di pazienza per vedere se ha funzionato.",
+		"Perché i druidi non giocano a nascondino? Gli alberi fanno sempre la spia.",
+	},
+	["cls.druid.levelup.w07.001"] = {
+		"Il verde in me scorre un po' più a fondo. Incantesimi che prima mi prendevano tutto il fiato ora me ne chiedono metà.",
+		"Le mie radici sono arrivate un po' più in profondità. Lo sento da come mi reggo saldamente in piedi.",
+	},
+	["cls.druid.levelup.w07.002"] = {
+		"prende un respiro profondo, e per un attimo l'aria intorno sembra profumare appena di foglie nuove.",
+		"resta immobile, le dita aperte, come se sentisse la linfa salire lungo le braccia.",
+	},
+	["cls.druid.levelup.w07.003"] = {
+		"Più forte. La natura è stata paziente con me: sembra che stia dando frutto.",
+		"Adesso, quando chiamo, risponde un po' più di natura. Bene. È stato un lungo apprendistato.",
+	},
+	["cls.druid.lowhp.w07.001"] = {
+		"Il tronco è spaccato. Le radici non se ne sono accorte. E nemmeno io.",
+		"Il tronco si è aperto in due, ma le radici tengono. È così che fanno gli alberi vecchi.",
+	},
+	["cls.druid.lowhp.w07.002"] = {
+		"Se ho addosso una forma, lasciala. Se no, comincia a curarti. Subito.",
+		"Orso, gatto o pelle nuda: qualunque sia, è ora di curarsi.",
+	},
+	["cls.druid.lowhp.w07.003"] = {
+		"Avevo sempre messo in conto di tornare alla terra, prima o poi. Intendevo molto, molto poi.",
+		"I vermi possono aspettare. Sono famosi per la loro pazienza.",
+		"Se questo è il mio ultimo scontro, la terra riceverà un regalo molto arrabbiato.",
+	},
+	["cls.druid.lowhp.w07.004"] = {
+		"barcolla, si riprende e torna a piantarsi a terra con un respiro spezzato, come un albero che non cede al vento.",
+		"arretra barcollando di mezzo passo, si riprende, e il respiro esce duro e aspro.",
+	},
+	["cls.druid.lowhp.w07.005"] = {
+		"Ecco come si sente il cervo verso la fine. Il resto non ho bisogno di impararlo.",
+		"All'angolo e sanguinante. Conosco questa scena dall'altra parte. Questa parte non mi piace.",
+		"I lupi scelgono chi inciampa. Smetti di inciampare.",
+	},
+	["cls.druid.lowhp.w07.006"] = {
+		"Un animale ferito è il più pericoloso. Spero per te che lo sapessi.",
+		"Mi hai fatto male, eh? Adesso vedrai perché i cacciatori temono le prede ferite.",
+		"Con le spalle al muro e sanguinante, ma ancora qui. È la versione di me peggiore da affrontare.",
+	},
+	["cls.druid.lowhp.w07.007"] = {
+		"Il compito di ricucire sarebbe mio. Qualcuno ricucia me.",
+		"Io rimetto in sesto tutti voi. E me chi mi rimette in sesto? Qualcuno? In fretta?",
+	},
+	["cls.druid.lowhp.w07.008"] = {
+		"Il dolore è solo il corpo che parla. Lascialo parlare. Io ascolto lo scontro.",
+		"Fa male. Ne prendo atto. Adesso torniamo a ciò che conta.",
+		"Più tardi sentirò tutto. Non adesso.",
+	},
+	["cls.druid.lowhp.w07.009"] = {
+		"Verde sotto di me, reggimi ancora un poco.",
+		"Inspira il verde, espira il dolore. Ancora.",
+		"Linfa e radice, prestatemi un altro respiro.",
+	},
+	["cls.druid.lowhp.w07.010"] = {
+		"Moonglade può fare a meno di un altro nome da piangere. Non oggi.",
+		"Il Circolo ne perde già abbastanza, di noi. Qui non perderà me.",
+	},
+	["cls.druid.lowhp.w07.011"] = {
+		"La terra è stata paziente con me per tutta la vita. Può esserlo ancora un po'.",
+		"Non ancora. Non ho finito di essere una creatura viva.",
+		"Un'altra stagione. Chiedo solo un'altra stagione.",
+	},
+	["cls.druid.lowhp.w07.012"] = {
+		"sanguina e non cede terreno, gli occhi fissi e lucidi come quelli di una creatura all'angolo.",
+		"si raccoglie in sé: come ogni cosa selvatica, ferita diventa più pericolosa.",
+	},
+	["cls.druid.lowhp.w07.013"] = {
+		"Un graffietto. Be', parecchi. D'accordo, davvero tanti.",
+		"Un rovo mi ha fatto di peggio. Non è vero, ma suonava coraggioso.",
+		"Niente di serio. Quasi tutto di me è ancora al suo posto.",
+	},
+	["cls.druid.lowhp.w07.014"] = {
+		"Tu sei più forte. Io sono più {g:testardo|testarda}. Vediamo chi cede per primo.",
+		"Forte, eh. Alla pazienza non importa.",
+		"Più forza di me, d'accordo. Ma dovrai finire il lavoro, e non te lo renderò facile.",
+	},
+	["cls.druid.lowhp.w07.015"] = {
+		"Non arriverà nessuno. Qualunque cura ci sia, me la faccio da {g:solo|sola}.",
+		"Da {g:solo|sola} con questa. Va bene. La natura cresce i suoi piccoli perché se la cavino.",
+	},
+	["cls.druid.lowhp.w07.016"] = {
+		"L'inverno si prende le foglie, mai la radice. Riprova.",
+		"Mi hai tolto le foglie. Il resto di me sta svernando, non morendo.",
+		"Rami spogli. Non legno morto. C'è differenza.",
+	},
+	["cls.druid.lowhp.w07.017"] = {
+		"Resta in piedi. Troppe cose crescono ancora e hanno bisogno di cure.",
+		"Non qui. C'è ancora troppo di cui occuparsi.",
+	},
+	["cls.druid.muse.w07.001"] = {
+		"Una quercia impiega cent'anni a diventare ciò che la ghianda aveva già in mente. Cerco di non mettere fretta a niente che non me l'abbia chiesto.",
+		"Gli alberi non hanno mai fretta nella parte che conta. Qualunque cosa io stia diventando, sospetto che funzioni allo stesso modo.",
+		"Le cose più lente del bosco sono quelle che restano in piedi quando tutto ciò che era veloce se n'è andato.",
+	},
+	["cls.druid.muse.w07.002"] = {
+		"Un tronco caduto nutre più vita da sdraiato di quanta ne abbia mai nutrita in piedi. Mi consola, nei giorni in cui penso alla mia fine.",
+		"Muschio, coleotteri, funghi: un albero morto continua a nutrire il bosco per anni. Finire non vuol dire smettere.",
+	},
+	["cls.druid.muse.w07.003"] = {
+		"Mi chiedono dove finiscano gli stivali quando divento un orso. Ho smesso di rispondere, soprattutto perché non lo so nemmeno io.",
+		"Ogni forma mi restituisce con lo zaino in spalla e gli stivali allacciati. Ho deciso di non chiedermi come. La natura non ama le domande sulla sua sartoria.",
+	},
+	["cls.druid.muse.w07.004"] = {
+		"L'equilibrio non è stare fermi. È un trampoliere su una zampa nella corrente: cento piccole correzioni che nessuno vede.",
+		"La gente immagina l'equilibrio come calma. Somiglia di più ad attraversare l'acqua rapida su un tronco caduto: non si finisce mai di aggiustarsi.",
+		"In natura niente resta in equilibrio a lungo. Pende, si riprende, pende dall'altra parte. Tutta l'arte sta in quel riprendersi.",
+	},
+	["cls.druid.muse.w07.005"] = {
+		"Ovunque mi trovi, Moonglade è a un incantesimo di distanza. Nessuna strada è davvero lunga, con una porta così in tasca.",
+		"Potrei essere a Moonglade prima di finire questo pensiero. Quasi sempre mi basta saperlo, e resto dove c'è bisogno di me.",
+		"Ogni druido porta con sé la stessa via d'uscita, piegata in piccolo. La uso di rado. Sapere che c'è rende più leggere le strade lunghe.",
+	},
+	["cls.druid.muse.w07.006"] = {
+		"A Moonglade nessuno ti chiede da dove vieni. Ti chiedono che cosa hai ascoltato.",
+		"A Moonglade la prima domanda non è mai il tuo nome. È che cosa ti ha raccontato la terra di recente, e aspettano una risposta vera.",
+	},
+	["cls.druid.muse.w07.007"] = {
+		"Il Cenarion Circle non ha mura né trono. È una promessa fatta da molta gente testarda: continuare a presentarsi.",
+		"Ciò che tiene insieme il Cenarion Circle non è il rango. È l'abitudine comune di inginocchiarsi a guardare le cose da vicino.",
+		"Niente stendardo, niente capitale, niente re. Il Cenarion Circle sta insieme grazie a druidi che si rifiutano, semplicemente, di smettere di tenerci.",
+	},
+	["cls.druid.muse.w07.008"] = {
+		"I vecchi druidi dicono che alcuni dei nostri più anziani dormono per anni di fila, camminando nel Sogno. Non so decidere se sia la devozione più grande o il pisolino più lungo.",
+		"Certi druidi, dicono gli anziani, restano addormentati per anni interi mentre vagano nel Sogno. Spero che qualcuno ogni tanto apra loro una finestra.",
+	},
+	["cls.druid.muse.w07.009"] = {
+		"Ultimamente gli anziani parlano del Sogno a voce più bassa. Qualcosa vi si è insinuato, dicono, e non lo nominano ad alta voce.",
+		"Nel Cenarion Circle si mormora che il Sogno non sia più verde come un tempo. Nessuno aggiunge altro, ed è così che capisco che è vero.",
+	},
+	["cls.druid.muse.w07.010"] = {
+		"I vecchi druidi dicono che chi ci ha fondati è ancora là fuori, addormentato e in ascolto. Cerco di fare il lavoro come se potesse controllarlo.",
+		"Malfurion ci ha fondati, dicono gli anziani, e poi è andato dove non possiamo seguirlo. I maestri che spariscono lasciano gli allievi più scrupolosi.",
+	},
+	["cls.druid.muse.w07.011"] = {
+		"I primi di noi impararono da Cenarius in persona, così narrano le storie. Ogni druido da allora ha imparato da qualcuno che aveva imparato da lui.",
+		"Di maestro in maestro, fino al signore della foresta. La lezione è passata per tante mani, e sta ancora in un respiro: prima ascolta.",
+	},
+	["cls.druid.muse.w07.012"] = {
+		"La fame dell'orso mi resta addosso per un po' dopo averlo lasciato. Ho imparato a non andare al mercato subito dopo uno scontro.",
+		"Uscendo dall'orso ho sempre voglia di miele e di un lungo sonno. Me ne concedo una delle due.",
+		"L'orso se ne va, ma il suo appetito si trattiene come un ospite che non coglie l'allusione. Così sono sparite pagnotte intere.",
+	},
+	["cls.druid.muse.w07.013"] = {
+		"Sott'acqua, nella forma della foca, i suoni arrivano da ogni parte insieme. Poi, sulla terraferma, il mondo sembra stranamente sbilenco.",
+		"La foca non si preoccupa mai del respiro. Ogni volta che la lascio andare, i polmoni si ricordano tutti insieme di avere un lavoro.",
+	},
+	["cls.druid.muse.w07.014"] = {
+		"Il gatto nota tutto e non gli importa quasi di niente. Un maestro utile, anche se maleducato.",
+		"Nella forma del gatto vedo tre cose insieme: ciò che si muove, ciò che si nasconde e ciò che sta per sbagliare.",
+		"Il gatto mi ha insegnato a stare in mezzo a un trambusto senza battere ciglio, e poi agire sull'unico dettaglio che contava.",
+	},
+	["cls.druid.muse.w07.015"] = {
+		"Muovermi di soppiatto mi insegna quanto rumore faccio il resto del tempo. Due gambe sono cose goffe.",
+		"Su zampe morbide il sottobosco diventa una mappa di ciò che non va calpestato. Con gli stivali, calpesto l'intera pagina.",
+	},
+	["cls.druid.muse.w07.016"] = {
+		"In corsa, su quattro zampe, smetto di essere di passaggio nella terra e divento qualcosa che è abituata a vedere.",
+		"Correndo nella forma veloce non attraverso la terra: per un po' ne faccio parte.",
+	},
+	["cls.druid.muse.w07.017"] = {
+		"Certi semi si aprono solo dopo un incendio. Me lo ricordo quando una stagione va male.",
+		"Le pigne che hanno bisogno delle fiamme per aprirsi l'hanno capita: a volte il caldo peggiore è l'unica chiave.",
+		"Un pendio bruciato torna verde prima di quanto chiunque si aspetti. La natura non ha mai chiesto il permesso di ricominciare.",
+	},
+	["cls.druid.muse.w07.018"] = {
+		"La decomposizione è la generosità del bosco. Tutto ciò che ha avuto, reso alla terra, senza trattenere niente.",
+		"La gente arriccia il naso davanti a un mucchio di foglie marce. Io ci vedo un banchetto apparecchiato per la prossima primavera.",
+	},
+	["cls.druid.muse.w07.019"] = {
+		"Quando verrà il mio momento, vorrei essere {g:deposto|deposta} dove un albero possa trovarmi. Mi sembra il minimo, dopo tutte le volte che mi ci sono {g:appoggiato|appoggiata}.",
+		"Seppellitemi senza cassa. Ho preso in prestito dalla terra per tutta la vita: è giusto che possa riscuotere.",
+	},
+	["cls.druid.muse.w07.020"] = {
+		"Il bosco andrebbe avanti benissimo anche senza di me. Prendermene cura non è un favore che gli faccio: è un privilegio che mi concede.",
+		"Non sono io a fare la guardia al bosco. Sono tra i suoi ospiti, e per caso spazzo anche il pavimento.",
+		"La natura non ha bisogno di me. Mi lascia aiutare, che è un'altra cosa, e più gentile.",
+	},
+	["cls.druid.muse.w07.021"] = {
+		"Ogni erba che conosco l'ho imparata due volte: una per ciò che cura, una per ciò che fa se sbagli la dose.",
+		"Le erbacce più umili lungo una strada hanno tenuto in vita più gente di qualsiasi lama. Nessuno le canta.",
+	},
+	["cls.druid.muse.w07.022"] = {
+		"Metà del lavoro di un druido è decidere di non intervenire. L'altra metà è convivere con le volte in cui era la scelta sbagliata.",
+		"A volte l'equilibrio mi chiede di lasciar mangiare il lupo. Lo faccio. Non devo per forza farmelo piacere.",
+		"La cosa più difficile che ho imparato è restare in disparte mentre qualcosa soffre, perché intervenire costerebbe di più alla natura.",
+	},
+	["cls.druid.muse.w07.023"] = {
+		"Sento il cambio di stagione nelle giunture prima di vederlo nelle foglie. La natura si è scritta dentro di me.",
+		"Molto prima che ingiallisca la prima foglia, qualcosa in me comincia a rallentare, a prepararsi. Ho smesso di discuterci.",
+	},
+	["cls.druid.muse.w07.024"] = {
+		"Un gufo può restare un'ora sullo stesso ramo senza perdersi niente. Ci ho provato. Mi perdo un sacco di cose, e mi si addormenta una gamba.",
+		"I falchi restano sospesi nell'aria per tutto il tempo che serve. Io resisto finché lo stomaco non comincia a trattare.",
+	},
+	["cls.druid.muse.w07.025"] = {
+		"Cuoio e legno, niente che sferragli. La natura sente il metallo arrivare da un miglio e decide di avere altro da fare.",
+		"Cuoio morbido, un bastone semplice. Tutto quello che porto potrebbe un giorno marcire nella terra, e la cosa mi piace.",
+	},
+	["cls.druid.muse.w07.026"] = {
+		"Le città sono foreste anche loro, solo che lì tutto ha fretta e niente può marcire in pace.",
+		"In città conto gli alberi come un marinaio conta le stelle: per sapere di non essere {g:andato|andata} troppo alla deriva.",
+	},
+	["cls.druid.muse.w07.027"] = {
+		"Far uscire le radici dalla terra è un prestito. Tornano giù stanche, e io devo loro una stagione tranquilla.",
+		"Le radici stringono qualunque cosa io chieda. Proprio per questo sto {g:attento|attenta} a cosa chiedo.",
+	},
+	["cls.druid.muse.w07.028"] = {
+		"Addormentare una bestia è insieme una pietà e un inganno. Non so mai quale dei due ricordi, al risveglio.",
+		"Una bestia addormentata sogna qualcosa. Spero sia l'erba, e non io.",
+	},
+	["cls.druid.muse.w07.029"] = {
+		"Per calmare un animale spaventato serve la stessa voce che per calmare una persona spaventata. Le persone ci mettono solo di più ad ammettere che ha funzionato.",
+		"Ammansire una bestia vuol dire soprattutto fare meno paura di ciò che l'ha spaventata. Quasi sempre ci riesco.",
+	},
+	["cls.druid.muse.w07.030"] = {
+		"La forza accumulata ristagna come acqua ferma. Passare la mia a chi ha finito le forze è la cosa più naturale che conosca.",
+		"La natura non ha mai voluto che la sua forza ristagnasse in un posto solo. Quando passo la mia a qualcun altro, è solo l'acqua che trova la strada verso valle.",
+	},
+	["cls.druid.muse.w07.031"] = {
+		"Sotto le Barrens, dicono gli anziani, alcuni druidi cercarono di sognare verde una terra arida e si risvegliarono come qualcos'altro. Ogni mia ambizione la misuro contro di loro.",
+		"Gli anziani raccontano di druidi che volevano guarire troppo in una volta, e furono inghiottiti dal loro stesso sognare. Le mie speranze le tengo grandi quanto un orto.",
+	},
+	["cls.druid.muse.w07.032"] = {
+		"Gli anziani parlano di Felwood come i guaritori parlano della peste: a bassa voce, e con le mani occupate.",
+		"Felwood, dicono, una volta era verde fino alle radici. Ci penso ogni volta che sono {g:tentato|tentata} di dire che una ferita è troppo profonda per curarla.",
+	},
+	["cls.druid.muse.w07.033"] = {
+		"I draghi verdi custodiscono il Sogno, dicono le storie. Mi piace pensare che saprebbero riconoscere un druido in mezzo alla folla. Più probabilmente, per loro odoriamo tutti di muschio.",
+		"Sopra tutti noi, dicono le storie, i draghi verdi vegliano sul Sogno. Spero siano più gentili con chi dorme di quanto le storie lascino intendere.",
+	},
+	["cls.druid.muse.w07.034"] = {
+		"Da quando ho preso questa strada, i miei sogni si sono fatti più verdi e più silenziosi. Non so se sia il Sogno o solo una stanchezza onesta.",
+		"Certe mattine mi sveglio con l'odore di una foresta in cui non ho mai camminato. Gli anziani sorridono e basta, quando lo racconto.",
+	},
+	["cls.druid.muse.w07.035"] = {
+		"Ogni forma che imparo si porta via un pezzetto della mia vecchia certezza su dove finisco io. Mi manca meno di quanto pensassi.",
+		"A ogni nuova forma, il confine fra me e la bestia si fa un po' più sfumato. Eppure mi sento più me, non meno.",
+	},
+	["cls.druid.muse.w07.036"] = {
+		"L'orso non è arrabbiato, qualunque cosa pensi la gente. Ha semplicemente finito la pazienza.",
+		"La gente crede che l'orso sia furia. Non lo è. È peso, messo esattamente dove serve.",
+		"Nell'orso non c'è furia, solo certezza. Ha deciso tanto tempo fa cosa sopportare e cosa no.",
+	},
+	["cls.druid.muse.w07.037"] = {
+		"I funghi sono il patto silenzioso del bosco: mangiano ciò che è morto, nutrono ciò che vive e chiedono soltanto ombra.",
+		"In ogni bosco i funghi smontano in silenzio le foglie dell'anno scorso, senza aspettarsi un grazie. I lavoratori migliori della natura non hanno volto.",
+	},
+	["cls.druid.muse.w07.038"] = {
+		"Il Cenarion Circle tiene un avamposto ai margini di Silithus, dicono gli anziani, dove la sabbia cerca di divorare tutto ciò che è verde. Qualcuno deve sedersi su quel confine e dire di no.",
+		"Laggiù a Silithus, mi dicono, i druidi del Cenarion Circle tengono una linea contro il deserto stesso. Sembra un'impresa disperata. Ed è esattamente ciò per cui esistiamo.",
+	},
+	["cls.druid.muse.w07.039"] = {
+		"Qui fuori la solitudine mi pesa di rado. Stare in mezzo a cose che non parlano è tutt'altra faccenda.",
+		"La gente la chiama solitudine quando passo una settimana senza parlare. Il bosco ha chiacchierato tutto il tempo: io semplicemente non avevo niente da aggiungere.",
+	},
+	["cls.druid.muse.w07.040"] = {
+		"Quando trovo un boschetto tagliato senza motivo, l'orso dentro di me si sveglia prima che io abbia deciso qualcosa. Lo lascio camminare avanti e indietro. Non sempre lo lascio uscire.",
+		"Le asce sconsiderate mi fanno prudere le mani, come se volessero artigli. Quasi sempre ho imparato a respirare finché il prurito passa.",
+	},
+	["cls.druid.muse.w07.041"] = {
+		"L'acqua non combatte mai contro la pietra. Continua a scorrere, e in qualche migliaio di anni la pietra ha cambiato idea.",
+		"Prima o poi un ruscello vince ogni discussione con una roccia. Semplicemente non smette mai di ribadire il suo punto.",
+	},
+	["cls.druid.muse.w07.042"] = {
+		"Due popoli hanno imparato quest'arte dallo stesso maestro, raccontano le storie, e nessuno dei due ha capito male la lezione. Dovrebbe contare più di quanto conta.",
+		"Zoccolo o piede nudo, lo stesso maestro ci ha mostrato la via, dicono gli anziani. Al bosco non è mai importato chi di noi stesse ascoltando.",
+	},
+	["cls.druid.muse.w07.043"] = {
+		"Dicono che Remulos non abbia mai avuto fretta, nemmeno una volta. E a Moonglade non sembra appassire niente. Dubito che sia un caso.",
+		"Remulos cura Moonglade senza fretta, dicono i druidi, e tutto fiorisce. Continuo a provare quel trucco in posti che non sono Moonglade.",
+	},
+	["cls.druid.muse.w07.044"] = {
+		"Da quando conosco l'orso mi fido più del naso che degli occhi. Gli occhi li inganna un'ombra; un odore è una confessione.",
+		"Gli occhi vedono ciò che c'è. Il naso mi dice cosa è successo. Le forme mi hanno insegnato a chiedere prima al naso.",
+	},
+	["cls.druid.muse.w07.045"] = {
+		"L'inverno non è morte. È la terra che trattiene il fiato e conta quello che le resta.",
+		"I rami spogli sembrano morti solo a chi ha fretta. Guarda meglio, e ognuno sta mantenendo una promessa fatta alla primavera.",
+	},
+	["cls.druid.muse.w07.046"] = {
+		"Il potere che uso non è mio. Mi attraversa come l'acqua attraversa una radice, e cerco di non intasarlo con l'orgoglio.",
+		"Non sono io a far crescere qualcosa. Mi tolgo soltanto di mezzo davanti a ciò che voleva crescere.",
+		"Qualunque cosa risponda quando chiamo, io ne sono solo il canale. Un canale ostruito non aiuta nessuno, perciò tengo pulito il mio.",
+	},
+	["cls.druid.muse.w07.047"] = {
+		"Certi giorni la bestia sta più vicina alla superficie di quanto vorrei. In quei giorni porto il mio volto con prudenza.",
+		"Ci sono mattine in cui mi sveglio con la voglia di ringhiare alla luce. Mi lavo la faccia, aspetto e ritrovo le buone maniere.",
+	},
+	["cls.druid.muse.w07.048"] = {
+		"Il lutto, insegna la natura, è breve e pratico. La cerva piange, poi mangia.",
+		"Gli animali soffrono per chi perdono, qualunque cosa pensi la gente. Solo che non smettono di vivere per farlo.",
+	},
+	["cls.druid.muse.w07.049"] = {
+		"Non ho mai capito chi ha paura del buio di una foresta. È il posto più affollato del mondo, se conti tutto ciò che vi è sveglio.",
+		"Un bosco buio è pieno, non vuoto. La paura viene dal credere di esserci soltanto tu.",
+	},
+	["cls.druid.muse.w07.050"] = {
+		"Ogni volta che invoco la natura sento la terra sporgersi un poco, curiosa. Cerco di meritare la sua attenzione.",
+		"La forza della natura non arriva se la comando. Arriva quando ho detto con sincerità di che cosa ho bisogno.",
+	},
+	["cls.druid.muse.w07.051"] = {
+		"Le strade sono la via più breve fra due città e la più lunga per capire la terra che sta in mezzo.",
+		"Lascio la strada ogni volta che posso. È nella terra fra una pietra miliare e l'altra che vive davvero tutto.",
+	},
+	["cls.druid.muse.w07.052"] = {
+		"Un druido che non sopporta di veder morire niente dovrebbe cercarsi un'altra vocazione. La natura è una lunga, paziente discussione fra mangiare ed essere mangiati.",
+		"Curare la natura vuol dire curare anche le sue morti. Nessuno te lo dice, all'inizio.",
+	},
+	["cls.druid.muse.w07.053"] = {
+		"Quando indurisco la pelle come corteccia, viene con lei anche un po' dell'indole dell'albero: lenta, imperturbabile, difficilissima da affrettare.",
+		"Con la corteccia al posto della pelle, anche un colpo sembra maltempo: qualcosa da sopportare restando in piedi.",
+	},
+	["cls.druid.muse.w07.054"] = {
+		"La forma del grande orso mi calza meglio ogni anno. Non so se sono io a crescerci dentro o lei dentro di me.",
+		"Più è grande l'orso che divento, più delicatezza mi serve con gli stipiti delle porte, e con tutti.",
+	},
+	["cls.druid.muse.w07.055"] = {
+		"Scatenare una tempesta sui nemici è la cosa meno gentile che faccio, e la più sincera. Anche la natura ha i suoi scatti d'ira.",
+		"Quando trascino il vento in una burrasca, lo sento sempre tirare dall'altra parte, a saggiare se merito di tenerlo.",
+	},
+	["cls.druid.muse.w07.056"] = {
+		"Estrarre il veleno da una ferita è come strappare un'erbaccia: prendi tutta la radice, o ricresce più cattiva.",
+		"Una maledizione si aggrappa come il convolvolo. La srotolo piano, dal capo da cui è partita, altrimenti stringe e basta.",
+	},
+	["cls.druid.muse.w07.057"] = {
+		"I druidi non possiedono la terra. Siamo piuttosto i suoi vecchi amici che continuano a presentarsi con la minestra.",
+		"Nessuno possiede un bosco. Al massimo gli fai da vicino di casa tollerato: quello che ripara gli steccati e chiede poco.",
+	},
+	["cls.druid.muse.w07.058"] = {
+		"Ho smesso di pensare agli anni come a una linea. Sono una ruota, e a ogni giro ne conosco un po' meglio i raggi.",
+		"Primavera, raccolto, il freddo, di nuovo primavera. A ogni giro della ruota incontro le stesse stagioni da persona un po' diversa.",
+	},
+	["cls.druid.muse.w07.059"] = {
+		"La fame la perdono a chiunque. Una preda uccisa per un trofeo e lasciata a marcire è un'altra faccenda, e la natura se ne ricorda più a lungo di me.",
+		"Uccidi per mangiare, e la natura alza le spalle. Uccidi per vantarti e lascia il resto a marcire, e qualcosa nella terra si raffredda nei tuoi confronti.",
+	},
+	["cls.druid.muse.w07.060"] = {
+		"Mi fido di chiunque piaccia a un cane e dubito di chiunque faccia scartare un cavallo. Le bestie leggono le persone da molto più tempo di me.",
+		"Quando gli animali intorno a qualcuno si fanno silenziosi e guardinghi, mi faccio così anch'io. Raramente si sono sbagliati.",
+	},
+	["cls.druid.muse.w07.061"] = {
+		"Una forma non è un travestimento. Ognuna ha le sue opinioni, e devo ascoltarle per tutto il tempo che la porto.",
+		"La gente crede che io indossi l'orso come un mantello. È più come invitare un ospite con idee molto precise su come ci si siede.",
+	},
+	["cls.druid.muse.w07.062"] = {
+		"Preferisco curare che combattere. Ma un giardiniere che non strappa mai un'erbaccia non tiene a lungo un giardino.",
+		"Curare e combattere sono lo stesso lavoro dai due capi opposti. In entrambi si decide che cosa può continuare a crescere.",
+	},
+	["cls.druid.muse.w07.063"] = {
+		"Ogni sorgente che trovo la ripulisco un poco. Una manciata di foglie, un ramo caduto. È la forma più piccola di devozione che conosca.",
+		"Non riesco a passare accanto a un ruscello intasato senza liberarlo un po'. Non è dovere. È come togliere una foglia dai capelli di un amico.",
+	},
+	["cls.druid.muse.w07.064"] = {
+		"No, non ti trasformo in uno scoiattolo. Neanche per un minuto. Chiedi a qualcuno con meno principi.",
+		"Non posso farti diventare un orso. Certe mattine ci riesco a fatica perfino io, prima di colazione.",
+	},
+	["cls.druid.muse.w07.065"] = {
+		"Sì, parlo alle piante. No, non rispondono. Però ascoltano meglio della maggior parte della gente.",
+		"Parlare agli alberi non è follia. Pretendere che si sbrighino, quella è follia.",
+	},
+	["cls.druid.muse.w07.066"] = {
+		"Prendi solo quello che userai. La natura tiene il conto, anche se il conto non te lo manda mai.",
+		"Uccidi quello che mangerai, raccogli quello che ti serve. Prendi di più, e la terra comincia a tenere una lista in silenzio.",
+	},
+	["cls.druid.muse.w07.067"] = {
+		"Il mio bastone è solo un ramo che ha accettato di venire con me.",
+		"Questo bastone una volta era un ramo. Ancora adesso fa un po' il broncio se mi ci appoggio troppo.",
+	},
+	["cls.druid.muse.w07.068"] = {
+		"Ogni creatura che incontri qui fuori è la cena di qualcuno o la madre di qualcuno. Di solito tutte e due.",
+		"In natura niente è soltanto un mostro. È una bocca da sfamare e una tana da difendere, come tutto.",
+	},
+	["cls.druid.muse.w07.069"] = {
+		"Vuoi sapere se un posto è sano? Ascolta. Un bosco malato è un bosco silenzioso.",
+		"Conta i canti degli uccelli prima di contare gli alberi. Dove il canto si ferma, c'è qualcosa che non va.",
+	},
+	["cls.druid.muse.w07.070"] = {
+		"La pazienza non è aspettare. È lavorare alla velocità di ciò su cui stai lavorando.",
+		"Non puoi mettere fretta a un albero, a una ferita o a un druido. Tutti e tre ascoltano qualcosa di più lento di te.",
+	},
+	["cls.druid.muse.w07.071"] = {
+		"La parte peggiore della forma d'orso? Ogni cacciatore nel raggio di un miglio che si chiede quanto varrei al mercato.",
+		"Prendi la forma dell'orso vicino a un accampamento di cacciatori anche una volta sola, e imparerai a salutare prima di cambiare.",
+	},
+	["cls.druid.muse.w07.072"] = {
+		"Prendi qualcosa dalla terra, restituisci qualcosa: un seme, una sorgente ripulita, un sasso tolto da un germoglio. I vecchi druidi lo chiamavano tenere i conti.",
+		"Qualunque cosa prendi alla natura, ripagane un poco prima di dormire. I vecchi druidi lo chiamavano tenere i conti, e non sono mai andati in rosso.",
+	},
+	["cls.druid.muse.w07.073"] = {
+		"La gente si aspetta che i druidi profumino di fiori. Perlopiù sappiamo di cane bagnato e resina.",
+		"Mi dicono che profumo di muschio. Ho deciso di prenderlo come un complimento.",
+	},
+	["cls.druid.muse.w07.074"] = {
+		"Quando puoi, gira intorno al muschio. Cresce un dito all'anno e non si lamenta mai.",
+		"Occhio al muschio. Ci ha messo anni ad arrivare fin lì, e tu lo attraversi in due passi.",
+	},
+	["cls.druid.muse.w07.075"] = {
+		"si accovaccia, prende un pizzico di terra fra due dita e lo annusa, come un mercante che saggia una moneta.",
+		"sfrega un po' di terra fra i polpastrelli e la osserva con aria pensosa, come se avesse risposto a una domanda.",
+	},
+	["cls.druid.muse.w07.076"] = {
+		"si toglie una foglia dai capelli, la studia e la ripone in una borsa invece di gettarla.",
+		"trova un rametto impigliato nel colletto e, invece di buttarlo via, lo pianta dritto nel primo lembo di terra.",
+	},
+	["cls.druid.muse.w07.077"] = {
+		"mugola piano in gola, un suono più vicino a un animale assopito che a un motivo.",
+		"lascia uscire dal naso un respiro lento che finisce, appena accennato, in qualcosa di simile a un ringhio, e poi sembra vagamente in imbarazzo.",
+	},
+	["cls.druid.muse.w07.078"] = {
+		"si rigira un seme nel palmo a lungo, prima di riporlo con cura.",
+		"spinge un seme nella terra con il pollice, lo ricopre e prosegue senza voltarsi.",
+	},
+	["cls.druid.muse.w07.079"] = {
+		"scuote braccia e collo, come chi si scrolla di dosso un cappotto più pesante di quello che indossa.",
+		"rotea le spalle e inarca la schiena in un lungo stiramento quasi animale.",
+	},
+	["cls.druid.muse.w07.080"] = {
+		"osserva un coleottero attraversare il sentiero e lo scavalca con cura, senza rompere il passo.",
+		"si ferma a lasciar passare una fila di formiche, con la pazienza di chi aspetta un corteo reale.",
+	},
+	["cls.druid.muse.w07.081"] = {
+		"si appoggia al bastone e chiude gli occhi per qualche respiro, come se ascoltasse la terra attraverso il legno.",
+		"pianta il piede del bastone nel terreno e vi posa sopra entrambe le mani, in attesa di niente in particolare.",
+	},
+	["cls.druid.muse.w07.082"] = {
+		"sfiora con la mano tutto ciò che cresce lungo il sentiero, camminando, come chi lascia scorrere le dita nell'acqua.",
+		"cammina per un tratto con una mano aperta lungo il fianco, la punta delle dita che sfiora foglie e steli come per salutarli di passaggio.",
+	},
+	["cls.druid.muse.w07.083"] = {
+		"si gratta distrattamente dietro un orecchio con un dito piegato, poi si accorge di cosa sta facendo e smette.",
+		"sbadiglia vistosamente, mostrando più denti di quanto sembri educato, poi si guarda intorno per vedere se qualcuno se n'è accorto.",
+	},
+	["cls.druid.muse.w07.084"] = {
+		"resta {g:seduto|seduta} a gambe incrociate per un po', i palmi appoggiati a terra, respirando piano finché il respiro e la terra sembrano trovare lo stesso passo.",
+		"si inginocchia e posa entrambi i palmi sulla terra, a occhi chiusi, come in ascolto di un battito molto più in basso.",
+	},
+	["cls.druid.muse.w07.085"] = {
+		"L'incantesimo per Moonglade mi lascia sempre un po' {g:stordito|stordita}, come se il mondo fosse stato piegato e io fossi {g:rimasto|rimasta} nella piega.",
+		"Arrivando a Moonglade per incantesimo faccio sempre un passo per controllare che il terreno sia vero. Lo è sempre, e sembra sempre un dono.",
+	},
+	["cls.druid.muse.w07.086"] = {
+		"I druidi sono pessimi giardinieri. Continuiamo a lasciar crescere le cose dove vogliono.",
+		"Chiedi a un druido di mettere in ordine un giardino e te lo restituirà più selvatico, più sano e molto più difficile da attraversare.",
+	},
+	["cls.druid.muse.w07.087"] = {
+		"Sotto un tetto dormo leggero e mi sveglio tutto {g:indolenzito|indolenzita}. Con la terra sotto la schiena dormo come una radice.",
+		"Dammi un letto morbido e resterò {g:sveglio|sveglia} a contare i muri. Dammi del muschio e mi addormento prima di finire il pensiero.",
+	},
+	["cls.druid.pray.w07.001"] = {
+		"Cenarius, Signore della Foresta: dammi la pazienza della quercia, e il giudizio per capire quando invece essere il lupo.",
+		"Signore della Foresta, se ascolti le voci piccole: custodisci l'equilibrio dentro di me, e fa' che io curi più di quanto strappi.",
+	},
+	["cls.druid.quest_complete.w07.001"] = {
+		"Sistemato. La ricompensa va bene, ma la vera paga è un angolo di mondo che sta un po' più dritto.",
+		"Pagato, e il giusto. Eppure la parte che terrò è la sensazione di una cosa rimessa a posto.",
+		"La borsa è gradita. Il silenzio dopo, quando qualcosa è stato rimesso a posto, vale di più.",
+	},
+	["cls.druid.quest_complete.w07.002"] = {
+		"Ecco. Se qualcos'altro da queste parti ha bisogno di cure, mandami a chiamare.",
+		"Tutto fatto. Chiamami di nuovo, se la natura da queste parti ha bisogno di una mano.",
+		"Finito. Un albero vicino a me c'è sempre, se avrai ancora bisogno.",
+	},
+	["cls.druid.quest_complete.w07.003"] = {
+		"accetta la ricompensa con un breve cenno e la ripone senza contarla, lo sguardo già all'orizzonte.",
+		"intasca il compenso senza guardarlo e passa più tempo a spazzolarsi via dalle maniche la polvere della strada.",
+	},
+	["cls.druid.quest_complete.w07.004"] = {
+		"Qualunque cosa mi abbiano dato, l'avrei scambiata con la promessa di lasciare in piedi un vecchio albero.",
+		"Le monete sono utili. La promessa che qualcuno lascerà stare le siepi lo sarebbe di più, ma non è mai tra le offerte.",
+	},
+	["cls.druid.quest_complete.w07.005"] = {
+		"Un altro compito tolto dalle spalle. Camminerò un po' fuori strada prima di prendere il prossimo, e lascerò che la terra mi rimetta in ordine.",
+		"Finito, e mi sento più {g:leggero|leggera}. Prima di qualunque altra cosa, un'ora tranquilla in un posto verde.",
+		"Questo non mi pesa più. Mi siederò un po' lontano dalla strada e lascerò che il respiro rallenti al passo della terra.",
+	},
+	["cls.druid.quest_complete.w07.006"] = {
+		"Ho fatto ciò che mi era stato chiesto. Se la terra ne avesse bisogno è una domanda che continuerò a rigirarmi per un po'.",
+		"È finito, e loro sono contenti. La natura potrebbe avere un'opinione diversa: di solito ci mette una stagione a esprimerla.",
+		"Mi hanno {g:ringraziato|ringraziata} di cuore. Aspetterò il grazie della terra, che arriva più lento e mai a parole.",
+	},
+	["cls.druid.quest_complete.w07.007"] = {
+		"È stato un piacere. Tieni d'occhio la terra intorno a te: ti dirà che qualcosa non va prima di chiunque altro.",
+		"Con piacere. La prossima volta guarda gli animali: ti avvisano prima che arrivino i guai.",
+	},
+	["cls.druid.quest_complete.w07.008"] = {
+		"si attarda dopo lo scambio, accovacciandosi a strappare un'erbaccia al bordo del sentiero prima di ripartire.",
+		"chiude la faccenda in poche parole e si pulisce le mani su un ciuffo d'erba, come se il compito vi avesse lasciato qualcosa.",
+	},
+	["cls.druid.quest_complete.w07.009"] = {
+		"Molti di questi incarichi si pagano in vite, in un modo o nell'altro. Spero che questo abbia comprato più di quanto è costato.",
+		"Se per finirlo è stato versato del sangue, voglio che ne sia valsa la pena. È l'unica contabilità di cui mi fido.",
+	},
+	["cls.druid.quest_complete.w07.010"] = {
+		"Finito, e nessuno è stato trasformato in niente. La chiamo una buona giornata di lavoro.",
+		"Tutto sistemato, e non mi sono dovuti spuntare gli artigli neanche una volta. Notevole.",
+		"Concluso, e nemmeno una forma cambiata per rabbia. L'orso ne resterà deluso.",
+	},
+	["cls.druid.quest_complete.w07.011"] = {
+		"Un compito piccolo per un piccolo guaio. La natura è fatta quasi tutta di cose piccole, e si sommano.",
+		"Niente di grandioso. Ma un bosco è solo diecimila piccole cose che stanno in piedi insieme.",
+	},
+	["cls.druid.quest_complete.w07.012"] = {
+		"Per quanto ci sia voluto, ci è voluto il tempo necessario. Chiedi a una quercia cosa pensa delle scadenze.",
+		"Finito al suo ritmo, l'unico che abbia mai tenuto qualunque cosa valga la pena di fare.",
+		"Veloce o lento, è finito come si deve. È l'unica velocità che conta.",
+	},
+	["cls.druid.quest_complete.w07.013"] = {
+		"Vuoi ringraziarmi? Pianta qualcosa, qualsiasi cosa, e lasciala crescere. È paga sufficiente.",
+		"Non servono discorsi. Metti un seme nella terra prima che cambi la stagione, e siamo pari.",
+	},
+	["cls.druid.quest_complete.w07.014"] = {
+		"annusa il compenso con curiosità prima di riporlo, una vecchia abitudine che {g:gli|le} vale uno sguardo perplesso.",
+		"accetta la ricompensa, poi la saggia distrattamente con i denti, come una creatura saggia qualsiasi cosa nuova.",
+	},
+	["cls.druid.quest_complete.w07.015"] = {
+		"I cervi non sanno niente di tutto questo. È la misura migliore che ho: la natura che va avanti, indisturbata.",
+		"Là fuori una volpe sbriga la sua giornata senza sapere cosa si è sistemato qui. Ed è bene che sia così.",
+	},
+	["cls.druid.quest_complete.w07.016"] = {
+		"Un'altra promessa mantenuta. La parola di un druido dovrebbe essere lenta a spezzarsi come una radice.",
+		"Avevo detto che l'avrei portato a termine, e l'ho fatto. Nemmeno le radici mollano a metà.",
+		"Avevo dato la mia parola, e ora è mantenuta. Mi importa più di qualunque cosa ci fosse nella borsa.",
+	},
+	["cls.druid.quest_complete.w07.017"] = {
+		"Bene! Una preoccupazione in meno per questa gente, e un motivo in più per riprendere la strada col sorriso.",
+		"Ecco qua. Tutti un po' più contenti, persino i corvi, probabilmente.",
+		"Splendido. Adoro i finali in cui non c'è niente da seppellire.",
+	},
+	["cls.druid.quest_complete.w07.018"] = {
+		"Se mi hanno pagato per sfoltire le bestie, dopo dovrò controllare di non averle sfoltite troppo. L'equilibrio non giudica le intenzioni.",
+		"Pagato per abbattere, forse, o per recuperare, o per combattere. Qualunque cosa fosse, terrò d'occhio ciò che ricresce al suo posto.",
+	},
+	["cls.druid.quest_complete.w07.019"] = {
+		"china il capo davanti a chi aveva chiesto, con la lenta cortesia di chi è abituato al ritmo degli alberi.",
+		"fa un piccolo inchino solenne, più adatto a una radura che a un banco di bottega, e prende congedo.",
+	},
+	["cls.druid.quest_complete.w07.020"] = {
+		"La gente chiede aiuto per i guai che vede. Per il male più silenzioso della terra, nessuno appende mai un avviso.",
+		"Fatto, e volentieri. Ma i guai che più hanno bisogno di un druido non arrivano mai con una ricompensa.",
+	},
+	["cls.druid.quest_complete.w07.021"] = {
+		"Sistemato. Concedi alla terra qui intorno qualche giorno di quiete, e il resto lo aggiusterà da sola.",
+		"Questa era la mia parte. Il resto spetta al tempo e al terreno, e loro sono più bravi di me.",
+		"Dalla mia parte è fatto. Radici e pazienza penseranno al resto.",
+	},
+	["cls.druid.quest_complete.w07.022"] = {
+		"Chissà perché, un compito non mi sembra mai concluso finché, dopo, non passo un po' di tempo fra le cose vive.",
+		"Il grazie di chi l'ha chiesto chiude l'accordo. Qualche minuto con i palmi sulla terra chiude il compito.",
+	},
+	["cls.druid.quest_complete.w07.023"] = {
+		"lascia uscire dal naso un lungo respiro, e la tensione del compito scivola via come acqua nella sabbia.",
+		"si stiracchia lentamente, dalla punta delle dita ai talloni, come un animale dopo una lunga attesa.",
+		"ruota il collo lentamente finché qualcosa cede con uno scricchiolio sommesso, e con esso se ne va un po' della rigidità del compito.",
+	},
+	["cls.druid.quest_complete.w07.024"] = {
+		"Un'altra ricompensa che probabilmente spenderò in semi. I mercanti penseranno che io coltivi i campi vestendo in modo assai strano.",
+		"Lo spenderò in qualcosa di sensato, come i semi, e in qualcosa di sciocco, come un pasto caldo che avrei potuto raccogliere da me.",
+	},
+	["cls.druid.quest_complete.w07.025"] = {
+		"Il Cenarion Circle la chiamerebbe una piccola gentilezza e se ne aspetterebbe altre dodici entro la fine della stagione. E avrebbe ragione.",
+		"Un'altra cosa che potrei raccontare agli anziani di Moonglade, se mai me lo chiedessero. Non lo faranno. Annuirebbero e basta, aspettandosi la prossima.",
+	},
+	["cls.druid.quest_complete.w07.026"] = {
+		"Lo chiamano un prezzo giusto. Lo deciderà la terra, fra qualche stagione.",
+		"Paga onesta, dicono. Giudicherò da come sarà la collina la prossima primavera.",
+	},
+	["cls.druid.quest_complete.w07.027"] = {
+		"È fatto. Tratta bene la terra qui, e lei tratterà bene te.",
+		"Finito. Sii gentile con ciò che cresce intorno a te: se ne ricorda.",
+	},
+	["cls.druid.quest_progress.w07.001"] = {
+		"Non è finito, ma si muove. Come la linfa a inizio primavera: non la vedi, ma sale.",
+		"Una parte di strada è fatta. Il resto lo farò al passo della terra, non di chi me l'ha chiesto.",
+		"Un po' più avanti. Gli alberi crescono un dito alla volta, e nessuno li chiama lenti.",
+	},
+	["cls.druid.quest_progress.w07.002"] = {
+		"si ferma, fa il conto di ciò che resta e riparte con l'andatura tranquilla e costante di un animale in cammino.",
+		"ripone quanto raccolto finora, annusa l'aria come per orientarsi e riprende il cammino.",
+		"dà un'occhiata al terreno già percorso, poi si volge al resto senza una parola.",
+	},
+	["cls.druid.quest_progress.w07.003"] = {
+		"C'è tutto. Pronto da consegnare, come un cesto pieno alla fine della raccolta.",
+		"Tutto quello che volevano, raccolto. Andrò da loro passando fra gli alberi, se ce ne sono.",
+		"Raccolto completo. È ora di posarlo alla porta giusta.",
+	},
+	["cls.druid.reputation_change.w07.001"] = {
+		"Si stanno affezionando a me, piano, come un albero che si scalda in primavera. Le cose buone crescono a quel ritmo, o non crescono affatto.",
+		"Un po' più di fiducia da parte loro. La curerò come curerei un germoglio: con attenzione, e senza fissarlo troppo.",
+		"Il mio nome qui sta mettendo radici. Le radici non fanno rumore, ma tengono.",
+	},
+	["cls.druid.rez.w07.001"] = {
+		"Il ciclo mi ha {g:preso|presa} per un momento e poi mi ha {g:restituito|restituita}. A quanto pare non sono ancora {g:pronto|pronta} a nutrire il prato.",
+		"Prima la morte, poi di nuovo la vita. Ogni druido predica il ciclo; pochi possono lamentarsene da entrambe le parti.",
+	},
+	["cls.druid.rezother.w07.001"] = {
+		"In piedi! Lo scontro non è finito, e nemmeno tu.",
+		"Respira. Alzati. Qui non abbiamo finito.",
+	},
+	["cls.druid.rezother.w07.002"] = {
+		"In mezzo a tutto questo, una vita strappata alla terra. Un giorno la natura vorrà qualcosa in cambio.",
+		"La morte aveva già cominciato il suo lavoro. Le ho chiesto di restituire questa vita, e per una volta l'ha fatto.",
+	},
+	["cls.druid.thanks.w07.001"] = {
+		"Grazie. La gentilezza penetra come l'acqua nella terra secca: non la dimenticherò presto.",
+		"Ti ringrazio. La passerò a qualcosa che cresce, come farebbe la natura.",
+	},
+	["cls.druid.thanks.w07.002"] = {
+		"Grazie. Se mai ti servisse un orso, sai dove trovarne uno.",
+		"Grazie davvero. Se mai qualcosa avesse bisogno di essere curato, o sbranato, chiamami.",
+	},
+	["cls.druid.threat.w07.001"] = {
+		"Arretra piano. È quello che fanno gli animali saggi.",
+		"I cervi sanno quando andarsene. Abbi la saggezza di un cervo.",
+		"Ogni creatura qui sa quando voltarsi e andare. Fai come loro.",
+	},
+	["cls.druid.threat.w07.002"] = {
+		"Faccio prosperare i rovi nella sabbia. Tu saresti un lavoro molto più facile.",
+		"Passo le giornate a convincere le piante a crescere. Immagina cosa potrei convincere te a fare.",
+		"Il mio mestiere è far crescere le cose. Farle smettere è l'altra metà.",
+	},
+	["cls.druid.threat.w07.003"] = {
+		"Ti restituirei alla terra senza rancore. Dovrebbe spaventarti più della rabbia.",
+		"Non ti odierò per questo. Lascerò semplicemente che la terra ti prenda. Pensaci.",
+		"Niente rabbia, niente rancore. Solo la terra che aspetta. Vattene.",
+	},
+	["cls.druid.threat.w07.004"] = {
+		"si immobilizza e regge lo sguardo dell'altro senza battere ciglio, come fa una creatura selvatica prima di decidere.",
+		"lascia che il silenzio si allunghi finché non ha detto tutto ciò che c'era da dire.",
+		"osserva l'altro senza una parola, paziente come una pietra, e altrettanto difficile da smuovere.",
+	},
+	["cls.druid.threat.w07.005"] = {
+		"Posso aspettare qui finché il muschio non ricopre tutti e due. E tu?",
+		"Gli alberi mi hanno insegnato ad aspettare. Vuoi vedere quanto?",
+	},
+	["cls.druid.victory.w07.001"] = {
+		"Al resto penseranno scarafaggi e vermi. Niente va sprecato.",
+		"Torna alla terra. Qualcosa di piccolo e verde te ne sarà grato.",
+		"Resta lì. Per la prossima primavera farai parte di qualcosa di meglio.",
+	},
+	["cls.druid.victory.w07.002"] = {
+		"Lascia rallentare il cuore. Non deve più cacciare.",
+		"Butta fuori il fiato. Lo scontro è finito, il corpo non l'ha ancora saputo.",
+		"Piano, adesso. Di' al sangue che può smettere di correre.",
+	},
+	["cls.druid.victory.w07.003"] = {
+		"Hai lottato per la tua vita. Non c'è vergogna in questo, né nel perderla.",
+		"Hai tenuto la posizione finché hai potuto. La natura non chiede altro a nessuno.",
+		"Hai lottato per ogni respiro. È tutto ciò che può fare un essere vivente.",
+	},
+	["cls.druid.victory.w07.004"] = {
+		"Più tardi chiederò scusa ai cespugli. Hanno visto tutto.",
+		"Mi spiace per i fiori. Erano in mezzo, soprattutto in mezzo a me.",
+		"In tutto questo qualche felce è finita calpestata. Qualcuno me lo rinfaccerà.",
+	},
+	["cls.druid.victory.w07.005"] = {
+		"lascia andare un lungo respiro, e la furia selvatica defluisce dalla sua postura come l'acqua dalla sabbia.",
+		"resta un momento nel silenzio improvviso, finché il respiro non si accorda al passo più lento del mondo.",
+		"scrolla le spalle una volta, e l'ultima traccia dello scontro scivola via.",
+	},
+	["cls.druid.victory.w07.006"] = {
+		"Tagli, graffi, un livido degno di nota. I rovi hanno fatto di peggio.",
+		"Niente che un po' di cure non possa sistemare. Vediamo il danno.",
+	},
+	["cls.druid.victory.w07.007"] = {
+		"La bilancia torna indietro di un capello. È tutto quello che può fare un solo scontro.",
+		"Un po' più in pari di prima. La bilancia non sta mai del tutto ferma: oscilla solo di meno.",
+		"Di nuovo in pari, o quasi. La natura non pretende la perfezione.",
+	},
+	["cls.druid.victory.w07.008"] = {
+		"Riposa, ora. Difendevi solo il tuo territorio, come avrei fatto io.",
+		"Dormi. Era fame, non crudeltà. Conosco la differenza.",
+		"Entra piano nel buio. Non hai fatto niente che la tua specie non faccia.",
+	},
+	["cls.druid.victory.w07.009"] = {
+		"Di nuovo sotto terra, e stavolta per sempre. Ci penseranno le radici.",
+		"Ecco. Riposa come avresti dovuto fare la prima volta.",
+		"La terra ti aveva già preso una volta. Stavolta lascia che ti tenga.",
+	},
+	["cls.druid.victory.w07.010"] = {
+		"Perfino i vermi ci penseranno due volte, con te. La terra se la caverà, col tempo.",
+		"Fatto. Ci vorrà un po' per togliere questo fetore dall'aria.",
+	},
+	["cls.druid.victory.w07.011"] = {
+		"Torna pietra, acqua e vento. Silenzio, adesso. Sei dove devi stare.",
+		"Il mondo da cui ti avevano strappato ti riprende. Per te non c'è fine più gentile.",
+	},
+	["cls.druid.victory.w07.012"] = {
+		"Entro un anno ti avrà coperto il muschio, la ruggine in due. Il bosco non ha fretta, ma finisce sempre il lavoro.",
+		"Ripensaci un po', lì per terra. L'edera arriverà a momenti.",
+	},
+	["cls.druid.victory.w07.013"] = {
+		"Questa l'hai scelta tu. Almeno il cinghiale non sceglie mai.",
+		"Una bestia combatte perché deve. Tu potevi scegliere. Per questo ti piangerò di meno.",
+		"Il lupo non ha scelta. Tu l'avevi, e hai scelto male.",
+	},
+	["cls.druid.victory.w07.014"] = {
+		"Siete a posto? Fatemi vedere i tagli, ci penso io.",
+		"In fila, prima chi è ferito. Nessuno se ne va sanguinando.",
+		"Bel lavoro. Ora fatemi vedere chi zoppica.",
+	},
+	["cls.druid.victory.w07.015"] = {
+		"Niente male. La natura sarebbe stata fiera di un branco così.",
+		"Abbiamo cacciato come un branco. Potrei abituarmici.",
+	},
+	["cls.druid.victory.w07.016"] = {
+		"Nessuno l'ha visto tranne la terra, e la terra non fa pettegolezzi.",
+		"Da {g:solo|sola}, e ancora in piedi. Alla natura, in fondo, piace così.",
+		"Di nuovo io e il silenzio. Mi sta bene.",
+	},
+	["cls.druid.victory.w07.017"] = {
+		"Dovrei smettere di fare quel brontolio basso dopo gli scontri. La gente mi guarda strano.",
+		"Dopo uno scontro dimentico sempre in che forma sono. I locandieri sono sempre felici di ricordarmelo.",
+	},
+	["cls.druid.victory.w07.018"] = {
+		"Qualunque cosa cresca qui intorno ora è un po' più al sicuro. Per uno scontro basta e avanza.",
+		"Un pericolo in meno per ciò che è giovane e verde. Come ricompensa mi basta.",
+	},
+	["cls.druid.victory.w07.019"] = {
+		"resta accanto al nemico sconfitto un po' più del necessario, a capo chino, poi riparte.",
+		"guarda il caduto per un lungo respiro, senza trionfo, e poi distoglie lo sguardo.",
+	},
+	["cls.druid.victory.w07.020"] = {
+		"Qualcosa, nella natura, se n'è accorto. Spero che il suo giudizio sia stato equo.",
+		"Il bosco tiene un suo registro. Chissà in quale colonna è finito questo.",
+		"Ho spostato l'equilibrio o l'ho rimesso a posto? Non lo saprò mai con certezza.",
+	},
+	["cls.druid.victory.w07.021"] = {
+		"Ah! Le vecchie querce avrebbero annuito, a questa.",
+		"Così la natura chiude una discussione. In fretta, e senza appello.",
+	},
+	["cls.druid.victory.w07.022"] = {
+		"Prima mossa troppo lenta. La prossima volta, meno attesa e più decisione.",
+		"C'era una lezione, lì dentro. La natura insegna a buon mercato, se presti attenzione.",
+		"Da ricordare: lascia che sia il nemico a venire da me. Il terreno favorisce chi sa aspettare.",
+	},
+	["cls.druid.victory.w07.023"] = {
+		"Torna al ciclo. Non gli dovevi altro che questo, e io nemmeno.",
+		"Dentro il lungo ciclo. Gira lento, ma gira per tutti.",
+	},
+	["cls.druid.victory.w07.024"] = {
+		"Oggi la natura era dalla mia parte. Domani cercherò di meritarmelo.",
+		"Oggi il verde ha combattuto con me. Non lo darò per scontato.",
+		"Il verde mi ha prestato di nuovo la sua forza. Gli devo una giornata tranquilla.",
+	},
+	["cls.druid.victory.w07.025"] = {
+		"osserva il terreno calpestato, come se contasse quanto è costato lo scontro alla terra.",
+		"guarda la terra smossa attorno al luogo dello scontro e aggrotta la fronte, come davanti a un orto dopo il passaggio di una mandria.",
+	},
+	["cls.druid.victory.w07.026"] = {
+		"Un giorno sarò io a giacere immobile, e qualcosa si nutrirà di me. Giusto così. Solo, non ancora.",
+		"Lo stesso ciclo verrà a prendermi, alla fine. Non ce l'ho con lui. Vorrei solo qualche stagione in più, prima.",
+		"Un giorno anch'io farò da concime all'erba. Preferirei solo che fosse lontano.",
+	},
+	["cls.druid.victory.w07.027"] = {
+		"Gli scoiattoli ne parleranno per settimane.",
+		"C'è un corvo lassù che lo sta già raccontando ai suoi amici.",
+	},
+	["cls.druid.victory.w07.028"] = {
+		"Bene. Qualcun altro? No? Perfetto. Vorrei sedermi.",
+		"Fatto. Una macchia di muschio e un minuto per sedermi, non chiedo altro.",
+		"Finita. Qualcuno mi trovi un ceppo su cui sedermi.",
+	},
+	["cls.druid.victory.w07.029"] = {
+		"I vecchi druidi dicono che ogni morte manda un'increspatura nel Sogno. Chissà fin dove è arrivata questa.",
+		"Un'increspatura nel Sogno, direbbero gli anziani. Piccola, e già svanita.",
+	},
+	["cls.druid.victory.w07.030"] = {
+		"C'è mancato poco. La terra stava per prendersi tutti e due.",
+		"Troppo vicino alle radici per stare tranquilli. La prossima volta, cure prima.",
+	},
+	["cls.druid.victory.w07.031"] = {
+		"Fatto. Non mi è piaciuto, e lo rifarei.",
+		"Necessario, non piacevole. Gran parte di quel che fa un druido è così.",
+		"Nessun orgoglio. Nemmeno rimpianti. La natura non chiede mai scusa, e io ho smesso di pretenderlo.",
+	},
+	["cls.druid.victory.w07.032"] = {
+		"Ascolta. Gli uccelli ricominciano a cantare. È così che capisci che è davvero finita.",
+		"Tornano i piccoli rumori: gli insetti, un uccello, le foglie. La natura ha deciso che è tutto a posto.",
+	},
+	["cls.druid.victory.w07.033"] = {
+		"Adesso c'è un seme che non verrà calpestato. Anche le piccole vittorie sono vittorie.",
+		"Forse ho salvato una ghianda. Mi basta.",
+	},
+	["cls.druid.victory.w07.034"] = {
+		"Qualunque forma abbia preso quello scontro, sono sempre io a uscirne. Bene.",
+		"Pelliccia o pelle nuda, chi se ne va sono sempre io. Controlla le ferite e via.",
+	},
+	["cls.druid.victory.w07.035"] = {
+		"Era molto più forte di me, ed è a terra. La pazienza batte la forza più spesso di quanto alla forza piacerebbe.",
+		"Più forte di me, eppure giace lì. La via lenta funziona.",
+	},
+	["cls.druid.victory.w07.036"] = {
+		"La natura ha visto tutto e non ha detto nulla. Non lo fa mai. Ci ricresce sopra e basta.",
+		"Gli alberi non esultano e non piangono. Continuano a crescere. Ci proverò anch'io.",
+		"Le radici lo assorbiranno e ne faranno qualcosa, senza commenti.",
+	},
+	["cls.druid.victory.w07.037"] = {
+		"Dicono che la natura sia crudele. La natura è rimasta a guardare mentre io facevo tutto.",
+		"Il merito se lo prende la natura, naturalmente. Come sempre.",
+	},
+	["cls.druid.victory.w07.038"] = {
+		"volge il viso all'aria aperta e per un po' respira e basta, lasciando che il mondo torni.",
+		"resta in ascolto del silenzio che viene dopo, come si ascolta un fiume che si calma dopo la piena.",
+	},
+	["cls.druid.victory.w07.039"] = {
+		"Un'altra cosa restituita al verde. Tengo un conto che nessun altro tiene.",
+		"Anche questo torna al verde. Cerco di ricordarli tutti, almeno per un po'.",
+	},
+	["cls.druid.victory.w07.040"] = {
+		"In piedi, una spolverata, e si riparte. Questa è tutta la danza della vittoria di un druido.",
+		"Niente urla di gioia. Solo un cenno alla terra, e avanti.",
+	},
+	["cls.paladin.attack.w07.001"] = {
+		"Giudizio! Pesato, e colpito.",
+		"Ecco il tuo verdetto. Consegnato di persona.",
+		"Giudizio emesso. Processo breve.",
+	},
+	["cls.paladin.attack.w07.002"] = {
+		"Resta lì dove sei. È un ordine della Luce.",
+		"Non muoverti. La giustizia pesa più di quanto sembri.",
+		"Ti gira la testa? Bene. Pensa alle tue scelte.",
+	},
+	["cls.paladin.attack.w07.003"] = {
+		"Lascia andare questo mondo. La Luce ti sta aprendo le dita a forza.",
+		"Qualunque cosa ti tenga in piedi, ne taglio i fili.",
+	},
+	["cls.paladin.attack.w07.004"] = {
+		"Brucia in un fuoco più pulito del tuo.",
+		"Ecco come la Luce dice di no a quelli come te.",
+	},
+	["cls.paladin.attack.w07.005"] = {
+		"Sei quasi alla fine. Lascia che concluda io la frase.",
+		"L'ultima parola spetta al martello.",
+	},
+	["cls.paladin.attack.w07.006"] = {
+		"Conta il mana, guarda il colpo. Il resto lo fa la Luce.",
+		"Spendilo dove conta. Ogni incantesimo è calore preso in prestito.",
+		"Un respiro per incantesimo. Né più né meno.",
+	},
+	["cls.paladin.attack.w07.007"] = {
+		"pronuncia un'unica parola secca, e la luce balza dalla mano come una scintilla dall'acciarino.",
+		"protende il pugno guantato, e un lampo dorato gli risponde.",
+	},
+	["cls.paladin.attack.w07.008"] = {
+		"Altra Luce per te. È gratis, e la odierai fino all'ultima goccia.",
+		"Il bis? La Luce è molto generosa con quelli come te.",
+	},
+	["cls.paladin.attack.w07.009"] = {
+		"fa girare l'arma in un arco breve e pesante, e il bagliore che la percorre divampa nell'istante del colpo.",
+		"accompagna il colpo con tutto il peso del corpo, e l'armatura risuona.",
+	},
+	["cls.paladin.attack.w07.010"] = {
+		"Sigillo posto. Adesso ogni colpo parla per la Luce.",
+		"Sigillato. Vediamo se te lo scrolli di dosso.",
+	},
+	["cls.paladin.attack.w07.011"] = {
+		"Prenditelo. È la cosa più pulita che ti tocchi da anni.",
+		"Senti questo calore? Non è dalla tua parte.",
+		"Questa è la Luce, e non è in vena.",
+	},
+	["cls.paladin.battle.w07.001"] = {
+		"Dovrai passare prima da me, e mi dicono che sono un bel pezzo di strada.",
+		"Qui sono la prima cosa che incontri. Fattene una ragione.",
+		"Qualunque cosa tu cerchi, ci sono io di mezzo.",
+	},
+	["cls.paladin.battle.w07.002"] = {
+		"Peso sul piede dietro. Che venga lui: sono {g:fatto|fatta} per ricevere.",
+		"Non inseguire. Un paladino che insegue ha già ceduto il terreno.",
+		"Lascia che colpisca per primo. L'armatura serve proprio a questo.",
+	},
+	["cls.paladin.battle.w07.003"] = {
+		"si tocca la fronte con due dita, poi il petto, e un oro tenue si insinua lungo il filo dell'arma.",
+		"mormora poche parole semplici, e l'aria attorno a {g:lui|lei} si scalda come se si fosse aperta una porta su una stanza illuminata.",
+	},
+	["cls.paladin.battle.w07.004"] = {
+		"Fra tutti, hai scelto chi porta l'armatura lucida. Audace. Poco saggio, ma audace.",
+		"Con tutta la gente che passa di qui, hai scelto chi brilla. Scelta curiosa.",
+		"Avanti. Tutti vogliono ammaccare un paladino, almeno una volta.",
+	},
+	["cls.paladin.battle.w07.005"] = {
+		"Ho giurato di oppormi a cose come questa. I miei giuramenti li mantengo.",
+		"In me c'è un giuramento più vecchio di questo scontro. Dice: resta.",
+		"Il mio giuramento ha una clausola breve per momenti come questo. Dice: tieni duro.",
+	},
+	["cls.paladin.battle.w07.006"] = {
+		"Torna sottoterra. Ci penserà la Luce a rimboccarti le coperte.",
+		"Ti hanno già seppellito una volta. Farò in modo che la seconda sia quella buona.",
+		"Chi ti ha svegliato non ti ha fatto un favore. Rimedio io.",
+	},
+	["cls.paladin.battle.w07.007"] = {
+		"Da qualunque fuoco tu sia strisciato fuori, può riprenderti.",
+		"Puzzi di zolfo e di patti sbagliati. Facciamola finita.",
+		"Un demone. Bene. Con te non devo mai chiedermi se te lo meriti.",
+	},
+	["cls.paladin.battle.w07.008"] = {
+		"I vecchi paladini dicono che la Luce non prova gioia in battaglia. E allora perché arriva così in fretta quando ne comincia una?",
+		"Ci insegnano che la Luce è mite. Nessuno spiega perché risponda più in fretta quando ho un'arma in mano.",
+	},
+	["cls.paladin.battle.w07.009"] = {
+		"Bene. Vediamo se il fabbro si è guadagnato la paga con quest'armatura.",
+		"Bene. Non lucido quest'armatura per niente.",
+	},
+	["cls.paladin.battle.w07.010"] = {
+		"assesta il peso dell'armatura con un'alzata di spalle e si piazza in pieno sul cammino del nemico.",
+		"allarga i piedi, l'armatura che scricchiola, e alza il mento come per farsi vedere bene.",
+	},
+	["cls.paladin.battle.w07.011"] = {
+		"Guardate me. Se fissa me, non fissa voi.",
+		"È mio. Che venga da me; voi colpitelo di fianco.",
+		"Mi prendo la sua attenzione. Voi fategliela rimpiangere.",
+	},
+	["cls.paladin.battle.w07.012"] = {
+		"Contali: chi è già ferito, chi è avventato, chi avrà bisogno per primo della Luce. Poi combatti.",
+		"Metà dello sguardo sul nemico, metà sugli altri. Un paladino non può mai guardare una cosa sola.",
+	},
+	["cls.paladin.battle.w07.013"] = {
+		"Luce, a colpire penso io. Tu pensa a giudicare.",
+		"Luce, decidi tu cosa merita chi ho davanti. Io mi limito a consegnarlo.",
+	},
+	["cls.paladin.battle.w07.014"] = {
+		"Ho marciato per ore con quest'armatura addosso. Hai scelto il momento sbagliato per darmi fastidio.",
+		"Ore di cammino in armatura completa, e adesso tu. Hai un pessimo tempismo.",
+	},
+	["cls.paladin.battle.w07.015"] = {
+		"L'Alleanza mi chiede di tenere al sicuro la sua gente. Tu sei uno dei motivi per cui deve chiederlo.",
+		"Servo l'Alleanza e la Luce, e nessuna delle due mi ha detto di lasciarti passare.",
+		"Niente di personale. Porti i colori sbagliati nel posto sbagliato.",
+	},
+	["cls.paladin.battle.w07.016"] = {
+		"Più grosso, più vecchio, più forte di me. La Luce non ha mai dato troppo peso a questi numeri.",
+		"Troppo per me, a contare onestamente. Per fortuna la Luce non è mai stata brava con i conti.",
+	},
+	["cls.paladin.battle.w07.017"] = {
+		"Non sei alla mia altezza, e lo sai. Scappa, e non ti seguirò.",
+		"Lasciamo perdere. Non puoi vincere, e non voglio essere io a insegnartelo.",
+	},
+	["cls.paladin.battle.w07.018"] = {
+		"prende un respiro lento, e un pallido cerchio di luce si allarga da {g:lui|lei} sul terreno, fermo come una nota tenuta.",
+		"lascia che l'aura si posi attorno a {g:lui|lei}, un tremolio leggero ai margini della vista che non vacilla.",
+	},
+	["cls.paladin.battle.w07.019"] = {
+		"Uno grosso. Bene. Mi seccherebbe essermi {g:vestito|vestita} a festa per niente.",
+		"Ecco, questo vale la lucidata all'armatura.",
+		"Se ne parlerà, comunque vada. Diamo a chi racconta un bel finale.",
+	},
+	["cls.paladin.battle.w07.020"] = {
+		"Ormai piastre dalla testa ai piedi. Al primo colpo trasalisco ancora, e spero di farlo sempre.",
+		"Tutta questa corazza, e il primo colpo trova ancora sotto la stessa vecchia paura. Bene. La paura mi tiene {g:onesto|onesta}.",
+	},
+	["cls.paladin.battle.w07.021"] = {
+		"I vecchi paladini dicono che la Mano d'Argento l'avete spezzata voi. Allora sono un pezzo che non ha mai ricevuto la notizia.",
+		"Le vecchie storie dicono che la Mano d'Argento cadde per mano del Flagello. Qualcosa del suo giuramento cammina ancora, e cammina verso di te.",
+	},
+	["cls.paladin.battle.w07.022"] = {
+		"Non ho niente contro di te, bestia. Purtroppo tu qualcosa contro di me ce l'hai.",
+		"Ti benedirei e ti lascerei andare, ma non mi sembri il tipo che sta fermo per riceverla.",
+		"Buono... buono. No? D'accordo, allora.",
+	},
+	["cls.paladin.battle.w07.023"] = {
+		"Prima il sigillo, poi il giudizio, e dopo una parola con te, se mi stai ancora ascoltando.",
+		"Il sigillo si posa, il giudizio cala. Se vuoi protestare, fallo in fretta.",
+	},
+	["cls.paladin.battle.w07.024"] = {
+		"Mana per due cure, da tenere da parte comunque vada. Tutto il resto posso spenderlo qui.",
+		"Tenere abbastanza riserva per curarmi due volte. Il resto va nello scontro.",
+	},
+	["cls.paladin.battle.w07.025"] = {
+		"Fatti avanti e lasciati pesare. La Luce ha bilance oneste.",
+		"Sali sulla bilancia. Leggerò io cosa dice.",
+	},
+	["cls.paladin.battle.w07.026"] = {
+		"piega le dita dentro il guanto d'arme, una alla volta, poi le chiude attorno all'impugnatura.",
+		"rotea le spalle una volta sotto l'armatura e lascia uscire un lungo respiro dal naso.",
+	},
+	["cls.paladin.battle.w07.027"] = {
+		"Preferirei essere da qualche parte a riparare steccati. Ma eccoti qui, ed eccomi qui.",
+		"Ci sono cento cose che preferirei fare. Nessuna ti lascerebbe passare.",
+	},
+	["cls.paladin.battle.w07.028"] = {
+		"Sapevo che stavi arrivando, cosa fredda. La Luce ha fiuto per quelli come te.",
+		"Un paladino non lo si coglie di sorpresa. I morti si tradiscono con quel gelo.",
+	},
+	["cls.paladin.battle.w07.029"] = {
+		"Ogni volta che chiedo, mi aspetto un po' il silenzio. Ogni volta, il calore arriva lo stesso.",
+		"Non mi fido mai del tutto che la Luce risponda, finché non lo fa. Finora non mi ha mai {g:deluso|delusa}; io continuo a controllare.",
+	},
+	["cls.paladin.battle.w07.030"] = {
+		"Hai attaccato briga con un giuramento. I giuramenti non si stancano.",
+		"Ho promesso di fermare cose come te. Le promesse non si stancano, e io nemmeno.",
+	},
+	["cls.paladin.battle.w07.031"] = {
+		"Niente predica oggi. Ti becchi la versione breve.",
+		"Ti farei prima una predica, ma non mi sembri il tipo che ascolta.",
+	},
+	["cls.paladin.battle.w07.032"] = {
+		"affronta la cosa morta a viso aperto, e la luce che {g:lo|la} avvolge si fa più netta, bianca e dura come una selce percossa.",
+		"avanza verso il non morto senza esitare, e un bagliore duro si raccoglie lungo le braccia.",
+	},
+	["cls.paladin.battle.w07.033"] = {
+		"La Luce c'era prima di te, demone, e ci sarà dopo.",
+		"Ogni patto che ti ha portato fin qui finisce in questo punto.",
+	},
+	["cls.paladin.battle.w07.034"] = {
+		"Non la rabbia. Mai la rabbia. Solo la prossima cosa giusta, fatta fino in fondo.",
+		"Pulito. Un paladino che combatte con rabbia è solo un soldato che luccica.",
+	},
+	["cls.paladin.battle.w07.035"] = {
+		"Colpite forte e non preoccupatevi dei lividi. Rimettervi in sesto è compito mio.",
+		"Menate pure. Qualunque cosa vi faccia, io la disfo.",
+	},
+	["cls.paladin.battle.w07.036"] = {
+		"Corazza completa, un sigillo e la Luce alle spalle. E tu hai portato... quello. Che coraggio.",
+		"Io ho la corazza, un sigillo e un'aura. Tu hai l'entusiasmo. È un inizio.",
+	},
+	["cls.paladin.battle.w07.037"] = {
+		"Diamo alla Luce qualcosa che valga la pena di guardare.",
+		"Ecco uno scontro di cui la Luce potrà andare fiera. Facciamo in modo che sia così.",
+	},
+	["cls.paladin.battle.w07.038"] = {
+		"Un respiro per la Luce, uno per il giuramento, e il terzo per lo scontro.",
+		"Inspira ciò in cui credo. Espira ciò che temo. Poi via.",
+	},
+	["cls.paladin.battle.w07.039"] = {
+		"Questa parte del giuramento nessuno la dipinge sugli stendardi. Ma ne fa parte lo stesso.",
+		"La gloria è roba da canzoni. Questo è solo il giuramento che fa il suo lavoro.",
+	},
+	["cls.paladin.battle.w07.040"] = {
+		"Che finisca in fretta, per tutti e due. È l'unica preghiera che ho per questo momento.",
+		"Rapido e pulito, se ci riesco. Questo lo devo perfino a un nemico.",
+	},
+	["cls.paladin.battle.w07.041"] = {
+		"Sono solo una lanterna. Vedrai cosa pensa di te la Luce che ho alle spalle.",
+		"Non guardare me. Guarda cosa brilla attraverso.",
+	},
+	["cls.paladin.battle.w07.042"] = {
+		"inchioda il nemico con uno sguardo fermo, di quelli che hanno già emesso il verdetto.",
+		"socchiude gli occhi sul nemico come chi legge un atto d'accusa, e lo trova vero riga per riga.",
+	},
+	["cls.paladin.battle.w07.043"] = {
+		"Bene, uno scontro. Cominciavo a pensare di essermi {g:armato|armata} per niente.",
+		"Ah, finalmente. Tutta quest'armatura cominciava a sentirsi sola.",
+	},
+	["cls.paladin.battle.w07.044"] = {
+		"Spingi pure. Mi hanno {g:addestrato|addestrata} a essere la cosa che non si sposta.",
+		"Un passo indietro puoi farmelo fare. Il secondo ti costerà caro.",
+	},
+	["cls.paladin.battle.w07.045"] = {
+		"Aspetta il primo colpo. Rispondi al secondo.",
+		"Non buttare tutto all'inizio. Un paladino resiste più a lungo: è tutto qui il mestiere.",
+	},
+	["cls.paladin.battle.w07.046"] = {
+		"Nel nome della Luce, e con le mie due mani.",
+		"La forza la presta la Luce. Le mani sono mie, e sono pronte.",
+	},
+	["cls.paladin.battle.w07.047"] = {
+		"Ho affrontato di peggio, e me ne sono sempre {g:andato|andata} sulle mie gambe.",
+		"Qualunque cosa tu sia, ho visto di più brutto, e gli sono {g:sopravvissuto|sopravvissuta}.",
+	},
+	["cls.paladin.battle.w07.048"] = {
+		"posa il palmo sul proprio petto per un battito, come se vi imprimesse un sigillo prima dello scontro.",
+		"abbassa il capo per il tempo di un respiro, poi lo rialza con lo sguardo di chi ha ricevuto risposta.",
+	},
+	["cls.paladin.battle.w07.049"] = {
+		"Avanti. Non mi sono {g:messo|messa} addosso tutto questo metallo per restare a guardare.",
+		"Allora? Non ho trascinato fin qui tutto quest'acciaio per ammirare il panorama.",
+	},
+	["cls.paladin.battle.w07.050"] = {
+		"Ogni scontro potrebbe chiudere la partita. Ho imparato a mettere in ordine i miei conti nello spazio di un respiro.",
+		"Se è questo lo scontro che mi porterà via, che mi trovi a fronte alta.",
+	},
+	["cls.paladin.battle.w07.051"] = {
+		"Da qualche parte c'è chi dorme più tranquillo perché io sono qui fuori. Mi basta come motivo.",
+		"Ogni nemico fermato qui è uno che non arriverà mai a un villaggio. Per me basta.",
+	},
+	["cls.paladin.battle.w07.052"] = {
+		"Se va male, ho un trucco. Se va malissimo, ho uno scudo che nessuno può toccare.",
+		"Fai del tuo peggio. Posso fare una cosa che pochi sanno fare: smettere di farmi colpire, per un po'.",
+	},
+	["cls.paladin.buff.w07.001"] = {
+		"Prima una benedizione sulle mie spalle. Chiedere aiuto fa parte del giuramento, anche quando a rispondere sono io.",
+		"Mi benedico come controllerei le cinghie: non per vanità, solo perché sono io a doverla portare.",
+		"Prima di chiunque altro, benedico chi so che ci sarà di sicuro. Cioè io, guarda caso.",
+	},
+	["cls.paladin.buff.w07.002"] = {
+		"posa la mano aperta sul proprio cuore e pronuncia una parola breve, e un oro tenue affonda sotto il palmo.",
+		"si benedice con la sobria praticità di chi si allaccia gli stivali, e il bagliore svanisce quasi prima di vedersi.",
+	},
+	["cls.paladin.buff.w07.003"] = {
+		"La Potenza, sul mio braccio. L'arma sembra più leggera, e quindi il prossimo colpo cadrà più pesante.",
+		"Un po' più di peso dietro ogni colpo. La Luce non si fa pregare quando c'è da prestare muscoli.",
+		"Prima la Potenza. Come spenderla, lo scoprirò strada facendo.",
+	},
+	["cls.paladin.buff.w07.004"] = {
+		"La Saggezza per me, che in pratica vuol dire mana che si riempie più in fretta. Quella vera devo ancora cercarla a piedi.",
+		"La chiamano Saggezza. Fa riempire il mio pozzo più in fretta. Se poi mi renda più {g:saggio|saggia}, è tutto da vedere.",
+	},
+	["cls.paladin.buff.w07.005"] = {
+		"Intoccabile per qualche battito, e senza poter menare un colpo. Non è coraggio, ma è il modo di averne ancora dopo.",
+		"Nessuna lama mi raggiunge, e ho le mani legate. Uno strano dono, e in questo momento ben accetto.",
+	},
+	["cls.paladin.buff.w07.006"] = {
+		"Che provino a inchiodarmi adesso. Per un po' i miei piedi rispondono solo a me.",
+		"Niente lacci, niente prese, niente rallentamenti. Per qualche respiro il terreno non può trattenermi.",
+	},
+	["cls.paladin.buff.w07.007"] = {
+		"La Salvezza, su di me. Non per l'anima: solo perché il bruto là davanti guardi qualcun altro.",
+		"Il nome più solenne di tutti, e serve solo a rendermi meno interessante per chi è arrabbiato.",
+	},
+	["cls.paladin.buff.w07.008"] = {
+		"Una benedizione che rende più forte la Luce quando cade su di me. Strana cosa da chiedere, a meno di sapere quanto spesso me ne servirà.",
+		"Luce sulla Luce. La prossima guarigione che mi raggiunge andrà più a fondo.",
+	},
+	["cls.paladin.buff.w07.009"] = {
+		"Mi sono {g:benedetto|benedetta} da {g:solo|sola}. Qualcuno doveva farlo, ed ero proprio qui.",
+		"La prima benedizione va a chi benedice. Il grado ha i suoi privilegi.",
+		"Benedizione fai-da-te. Finora il destinatario non si lamenta.",
+	},
+	["cls.paladin.buff.w07.010"] = {
+		"Benedire me {g:stesso|stessa} ha un che di vanitoso. Poi ricordo chi deve stare in prima fila, e la sensazione passa.",
+		"È superbia, puntare la Luce su di me? Ho deciso che è manutenzione. La Luce non ha obiettato.",
+		"C'è un po' di superbia, nel posare la Luce sul mio capo. Lascio andare la superbia e tengo la benedizione.",
+	},
+	["cls.paladin.buff.w07.011"] = {
+		"si ferma un attimo a benedirsi, veloce come chi stringe una cintura, poi riparte.",
+		"mormora una benedizione sul proprio capo e se la sistema addosso come un vecchio mantello.",
+	},
+	["cls.paladin.buff.w07.012"] = {
+		"Benedizione fatta. Vediamo cosa mi riserva la strada.",
+		"Ecco. La Luce è sulle mie spalle; il resto spetta al mio braccio.",
+		"La benedizione è addosso. Qualunque cosa ci sia davanti, ci troverà in due.",
+	},
+	["cls.paladin.buff.w07.013"] = {
+		"Una benedizione data a se stessi è più silenziosa di una donata. Nessuno che alzi lo sguardo, nessuno che annuisca. Solo il calore che si posa.",
+		"Mi piace l'istante in cui la benedizione si posa: nessun bagliore, solo un piccolo calore che resta, come un sasso che ha trattenuto il sole.",
+		"Posata su di me, la benedizione non fa scena. Si sistema e basta, come un inquilino che paga puntuale.",
+	},
+	["cls.paladin.buff.w07.014"] = {
+		"Su ogni schiena può stare una sola mia benedizione, compresa la mia. Scegliere quale è un piccolo rompicapo onesto.",
+		"Pochi minuti di benedizione, poi svanisce e la rinnovo. Anche la fede va rinnovata.",
+	},
+	["cls.paladin.buff.w07.015"] = {
+		"Chiederei a un sacerdote, ma il più vicino non è mai dove sono io. Quindi.",
+		"Benedirsi da sé: la versione della Luce del tagliarsi i capelli da soli. Funziona, se nessuno guarda troppo da vicino.",
+	},
+	["cls.paladin.buff.w07.016"] = {
+		"Luce, accompagnami fin dove arrivo, e un passo oltre.",
+		"Luce sul mio capo e sulle mie mani. Basterà come fodera per l'armatura.",
+	},
+	["cls.paladin.buff.w07.017"] = {
+		"La prima benedizione la do a me, per una ragione egoista: un paladino che cade presto non protegge nessuno.",
+		"Restare in piedi fa parte del tenere in piedi gli altri. La benedizione va dove serve di più, e a volte è qui.",
+	},
+	["cls.paladin.buff.w07.101"] = {
+		"Una benedizione per te. Non pesa niente e porterà comunque un po' del tuo carico.",
+		"Ecco. La Luce è sulle tue spalle adesso, oltre che sulle mie.",
+		"Portala con te. La Luce è generosa, ma le piace essere usata.",
+	},
+	["cls.paladin.buff.w07.102"] = {
+		"Benedizione fatta. No, non serve inginocchiarsi. Anche se non guasterebbe.",
+		"Hai la benedizione. Cerca di non montarti la testa: era destinata alle braccia.",
+	},
+	["cls.paladin.buff.w07.103"] = {
+		"Non mi serve sapere un nome per augurare del bene a qualcuno. Nemmeno la benedizione lo chiede.",
+		"Qualunque cosa stia per fare, la farà con un po' più di forza. Spero sia qualcosa di buono.",
+		"La benedizione arriva e nessuno si volta. Bene. Una benedizione non dovrebbe aver bisogno di pubblico.",
+	},
+	["cls.paladin.buff.w07.104"] = {
+		"alza la mano aperta verso l'altra persona, e un oro tenue le si posa addosso come polline, e sparisce.",
+		"traccia un breve segno verso chi ha di fronte, semplice e sicuro come una stretta di mano.",
+	},
+	["cls.paladin.buff.w07.105"] = {
+		"Adesso niente può toccarti, e tu non puoi toccare niente. Fatti indietro e respira.",
+		"Per qualche battito sei intoccabile. Usali per metterti al sicuro, non per strafare.",
+	},
+	["cls.paladin.buff.w07.106"] = {
+		"Le gambe sono di nuovo tue. Corri o carica, come preferisci.",
+		"Qualunque cosa ti tenesse i piedi ha appena perso la presa. Muoviti.",
+		"Libertà di movimento. Non sprecarla restando lì.",
+	},
+	["cls.paladin.buff.w07.107"] = {
+		"La Potenza, per te. Colpisci un po' più forte di quanto volevi.",
+		"Il tuo braccio pesa di più, adesso, nel senso buono. Mettilo all'opera.",
+		"Ora nel tuo colpo c'è un po' della forza della Luce. Mira bene.",
+	},
+	["cls.paladin.buff.w07.108"] = {
+		"La Salvezza, a chi ne ha bisogno. L'anima resta affar suo; questa serve solo a far guardare altrove le cose arrabbiate.",
+		"Un nome solenne per un favore discreto: chi la porta diventa semplicemente meno interessante da inseguire.",
+	},
+	["cls.paladin.buff.w07.109"] = {
+		"A qualcuno serve un braccio più forte, a qualcun altro un pozzo di mana più pieno. Un'occhiata, e decido.",
+		"Scegliere una benedizione per qualcuno è una lettura rapida: come si regge, cosa porta, cosa sta per fare.",
+	},
+	["cls.paladin.buff.w07.110"] = {
+		"Una buona benedizione è come una buona cinghia: nessuno ci pensa finché non regge al momento giusto.",
+		"Entro un minuto si dimenticherà di averla. Va bene così: la benedizione, invece, non si dimentica di chi la porta.",
+	},
+	["cls.paladin.buff.w07.111"] = {
+		"Va' nella Luce, ed esci dall'altra parte di qualunque cosa ti aspetti.",
+		"Che regga quando ne avrai più bisogno, e passi inosservata il resto del tempo.",
+		"Che la Luce ti tenga in piedi, e me abbastanza {g:vicino|vicina} da aiutarti.",
+	},
+	["cls.paladin.farewell.w07.001"] = {
+		"Addio. Cammina a testa alta, e tieni qualcuno alle spalle.",
+		"Buona strada. Se i guai ti trovano, trova un paladino.",
+		"Alla prossima. Occhio ai posti bui, e che l'orgoglio non ti impedisca di chiedere aiuto.",
+	},
+	["cls.paladin.greet.w07.001"] = {
+		"Salute. Se c'è qualche guaio sulla tua strada, mi piacerebbe saperlo.",
+		"Salve. Ti serve una mano, una benedizione o solo qualcuno che cammini accanto? Ho tutte e tre le cose.",
+	},
+	["cls.paladin.greet.w07.002"] = {
+		"Salve. Sì, l'armatura pesa. No, non mi dà fastidio. Sì, lo chiedono tutti.",
+		"Salute. Non badare al bagliore: è quasi del tutto innocuo.",
+	},
+	["cls.paladin.heal.w07.001"] = {
+		"La Luce lavora sotto l'armatura, dove io non arrivo, e scalda i lividi a uno a uno.",
+		"Nessuna fibbia la ferma. La Luce scivola sotto l'armatura e trova ogni livido che non avevo contato.",
+		"Per questo non devo slacciare nemmeno una cinghia. La Luce entra sotto l'armatura come se conoscesse la strada.",
+	},
+	["cls.paladin.heal.w07.002"] = {
+		"Chiedere la Luce per me sembra ancora come prendersi il posto migliore a tavola. Lo prendo lo stesso: una guardia a terra non protegge nessuno.",
+		"C'è una piccola vergogna nel rivolgere la Luce sulla mia pelle. Più piccola di quella di cadere dove altri avevano bisogno di me.",
+	},
+	["cls.paladin.heal.w07.003"] = {
+		"Luce, un poco per me. Poi di nuovo agli altri.",
+		"Rimettimi in sesto in fretta, Luce. C'è ancora del lavoro in piedi.",
+		"Luce, rimettimi in piedi. Al resto penso io.",
+	},
+	["cls.paladin.heal.w07.004"] = {
+		"posa la mano guantata ben aperta sulle proprie costole, e un tepore dorato si allarga dal palmo.",
+		"si preme il palmo sul fianco e mormora poche parole semplici; la luce che risponde è quieta e scrupolosa.",
+		"chiude gli occhi per la durata di un respiro, e un chiarore pallido {g:gli|le} scorre addosso dalle spalle in giù.",
+	},
+	["cls.paladin.heal.w07.005"] = {
+		"Luce Sacra è una parola lenta da pronunciare con qualcosa che ti colpisce. Ogni colpo ne allontana un po' la fine.",
+		"La Luce Sacra vuole tutto il respiro, dall'inizio alla fine. Chi mi sta menando colpi non sembra mai capirlo.",
+		"A metà della Luce Sacra, un altro colpo, e le parole inciampano. Riprendi la frase dove è caduta e finiscila.",
+	},
+	["cls.paladin.heal.w07.006"] = {
+		"Fuori dalla mischia c'è tempo per la guarigione lunga. Luce Sacra, lenta e completa, e nessuno a interromperla.",
+		"La Luce Sacra è una cura per i momenti di quiete: lunga da pronunciare, completa quando arriva. Questo è uno di quei momenti.",
+	},
+	["cls.paladin.heal.w07.007"] = {
+		"Lampo di Luce. Non è molto, ma è rapido, e rapido è tutto quello che posso permettermi con questo addosso.",
+		"Un lampo, non un incendio. Mi tiene in piedi tra un colpo e l'altro, ed è tutto ciò che gli chiedo.",
+		"Piccolo e veloce, come un punto di cucito dato di corsa. Il Lampo di Luce è fatto per momenti così.",
+	},
+	["cls.paladin.heal.w07.008"] = {
+		"Una veloce. Non ho tempo per la versione lunga.",
+		"Preghiera corta, guarigione corta. Neanche lo scontro ha finito.",
+	},
+	["cls.paladin.heal.w07.009"] = {
+		"Il Lampo di Luce costa poco e dà poco. Tre lampi costano comunque meno di una caduta.",
+		"Preferisco tre piccole cure a una grande che si fa aspettare. Alla Luce non dispiace sentirsi chiedere spesso.",
+	},
+	["cls.paladin.heal.w07.010"] = {
+		"Ho sempre pensato di spenderla per qualcun altro. Oggi quel qualcun altro sono io, e alla Luce non sembra importare.",
+		"L'ultima misericordia, versata nelle mie stesse ferite. Non è come la immaginavo, ma un paladino a terra non spende più niente.",
+	},
+	["cls.paladin.heal.w07.011"] = {
+		"si posa entrambe le mani sul petto, e la luce si riversa tutta in una volta: il volto resta pallido, il corpo intero.",
+		"si preme una mano sul cuore; un bagliore bianco e oro {g:lo|la} attraversa da capo a piedi, e con esso se ne va ogni stilla di magia.",
+	},
+	["cls.paladin.heal.w07.012"] = {
+		"Ferite chiuse, e non una goccia di mana nemmeno per un sigillo. Il resto dello scontro lo fa il braccio.",
+		"Il corpo è pieno e il pozzo asciutto fino al fondo. Da qui in poi combatto come un soldato qualunque, e spero che basti.",
+		"Ferite chiuse in un colpo solo, mana sparito nello stesso istante. Adesso restiamo io e l'arma.",
+	},
+	["cls.paladin.heal.w07.013"] = {
+		"Certi giorni mi chiedo se la Luce risponda a me o solo all'abitudine di chiedere. Il taglio si chiude comunque.",
+		"Se sia grazia o solo esercizio, non sempre lo capisco. Il sangue si ferma, e ho smesso di aver bisogno di saperlo.",
+	},
+	["cls.paladin.heal.w07.014"] = {
+		"Il giuramento dice di proteggere chi non si regge in piedi. In questo momento sono io, e il giuramento non fa eccezioni.",
+		"Proteggi chi è caduto, dice il giuramento. Non aggiunge «tranne te». Ho controllato.",
+	},
+	["cls.paladin.heal.w07.015"] = {
+		"Tutta quella fatica, e la Luce la cancella in un respiro. Riprova.",
+		"Ferite chiuse. Temo che dovrai ricominciare da capo.",
+		"Ogni graffio che mi hai fatto, sparito. Ricominciamo?",
+	},
+	["cls.paladin.heal.w07.016"] = {
+		"Sembra sempre di avvicinarsi troppo a una forgia: prima il calore sul viso, poi dentro tutte le ossa.",
+		"Prima un tepore sulla pelle, poi più a fondo, finché anche i vecchi dolori si ricordano di essere stati giovani.",
+	},
+	["cls.paladin.heal.w07.017"] = {
+		"Il mana speso sulla mia pelle è un giudizio che non scaglierò dopo. Ne vale la pena, finché a scagliare resto io.",
+		"Ogni cura che tengo per me è un sigillo che poi non potrò permettermi. Il braccio dovrà lavorare di più per compensare.",
+	},
+	["cls.paladin.heal.w07.018"] = {
+		"ruota piano la spalla mentre il dolore svanisce, saggiando l'articolazione come si prova il cardine di una porta.",
+		"piega due volte la mano risanata, poi una terza, come se non se ne fidasse ancora del tutto.",
+		"butta fuori l'aria dal naso in un lungo respiro e si raddrizza, il dolore sparito dalla postura.",
+	},
+	["cls.paladin.heal.w07.019"] = {
+		"Ecco. Le costole smettono di protestare a ogni respiro.",
+		"Respirare non fa più male. Avevo dimenticato quanto spazio ci sia in una boccata d'aria.",
+		"La fitta al fianco molla la presa, e di colpo riesco di nuovo a stare {g:dritto|dritta}.",
+	},
+	["cls.paladin.heal.w07.020"] = {
+		"Basta così. Non c'è tempo per essere {g:integro|integra}, solo per restare in piedi.",
+		"Non del tutto a posto, solo abbastanza. Per ora dovrà bastare.",
+		"Meglio a metà della guarigione che a metà strada dalla tomba.",
+	},
+	["cls.paladin.heal.w07.021"] = {
+		"In quella ci sono {g:entrato|entrata} a occhi aperti. La cura è gratis; la lezione la pago in orgoglio.",
+		"Darei la colpa al nemico, ma l'ho visto arrivare e non ho fatto un passo.",
+		"Guarire la ferita è facile. Guarire dalla figuraccia che l'ha causata richiederà più tempo.",
+	},
+	["cls.paladin.heal.w07.022"] = {
+		"Una boccetta per me, il mana per quel che verrà. La Luce non se la prenderà per un po' di parsimonia.",
+		"Perché sprecare una preghiera su di me, quando basta una fiaschetta? La Luce la tengo per i sigilli.",
+	},
+	["cls.paladin.heal.w07.023"] = {
+		"Sa di pentola di rame. Funziona a meraviglia.",
+		"Amara come l'umore di un sergente. Bene, sta facendo effetto.",
+		"Bleah. Chi le prepara non ne ha mai dovuta bere una.",
+	},
+	["cls.paladin.heal.w07.024"] = {
+		"stappa la fiala coi denti, sputa via il tappo e la vuota senza abbassare la guardia.",
+		"manda giù una pozione rossa tutta d'un fiato e getta via la fiala vuota.",
+	},
+	["cls.paladin.heal.w07.025"] = {
+		"Un paladino che tracanna da una fiala come un mercenario qualunque. L'umiltà ha tante forme; questa ha un sapore orribile.",
+		"Niente bagliore, niente mani calde, solo una bottiglia. Mi fa bene ricordare che la Luce non è l'unica misericordia al mondo.",
+	},
+	["cls.paladin.heal.w07.026"] = {
+		"Quando il mana è finito, la bottiglia risponde ancora. Benedetto l'alchimista che l'ha riempita.",
+		"Il mana finisce; alle fiale non importa. È tutto il loro fascino.",
+	},
+	["cls.paladin.heal.w07.027"] = {
+		"Chiunque abbia fatto questa pietra, preferisco non chiedere come. È calda nella mano, e la ferita si chiude lo stesso.",
+		"Una pietra verde che crepita appena, e sono di nuovo {g:intero|intera}. Ringrazierò chi l'ha fatta e non farò altre domande.",
+	},
+	["cls.paladin.heal.w07.028"] = {
+		"Una pietra in meno in tasca, una ferita in meno addosso. Buon cambio.",
+		"Addio pietra. A chi l'ha fatta devo un grazie.",
+	},
+	["cls.paladin.heal.w07.029"] = {
+		"stringe nel pugno una piccola pietra verde finché non si sbriciola, e il colore riaffiora sul suo viso.",
+		"riduce in polvere la pietra verde con una mano sola e butta fuori il fiato mentre il chiarore pallido {g:lo|la} pervade.",
+	},
+	["cls.paladin.heal.w07.030"] = {
+		"I vecchi paladini hanno un detto: un cavaliere troppo orgoglioso per curarsi è solo un caduto che ha preso la strada lunga.",
+		"«Prima curati, poi pensa alla linea», dicono i vecchi paladini. Sembra egoismo, finché non hai visto una linea spezzarsi.",
+	},
+	["cls.paladin.heal.w07.031"] = {
+		"La Luce mi cura esattamente come curerebbe uno sconosciuto. Niente di più perché la servo. Lo trovo stranamente consolante.",
+		"Nessun favore per i devoti. La Luce chiude i miei tagli con la stessa cura semplice che darebbe a chiunque.",
+	},
+	["cls.paladin.heal.w07.032"] = {
+		"Per la Luce, non ancora.",
+		"Luce, tienimi insieme ancora un po'.",
+		"Non qui, non adesso. Risanami, Luce.",
+	},
+	["cls.paladin.heal.w07.033"] = {
+		"fa un passo indietro dalla mischia, il capo chino per un solo respiro, e si rifà avanti mentre il bagliore svanisce ancora dall'armatura.",
+		"si gira sotto un colpo, mormora una parola rapida, e un lampo dorato sigilla lo squarcio prima che arrivi il successivo.",
+	},
+	["cls.paladin.heal.w07.034"] = {
+		"La Luce mi risponde in fretta, ogni volta. È proprio il genere di cosa di cui un paladino non deve mai cominciare a vantarsi.",
+		"Chiedo, e la ferita si chiude. Sarebbe facile credermi speciale. Mi sforzo molto di non farlo.",
+	},
+	["cls.paladin.heal.w07.035"] = {
+		"La Luce non lascia cicatrici. Certi giorni ne vorrei una, solo per ricordare quanto è costato.",
+		"Neanche un segno sulla pelle. Il corpo dimentica così in fretta. Cerco di ricordare io al posto suo.",
+	},
+	["cls.paladin.heal.w07.036"] = {
+		"si abbassa su un ginocchio mentre la cura fa effetto, e resta così un momento più del necessario.",
+		"allenta una cinghia al collo e aspetta, gli occhi socchiusi, che se ne vada l'ultimo dolore.",
+	},
+	["cls.paladin.heal.w07.037"] = {
+		"Meglio. Molto meglio. Buffo come il dolore lo noti solo quando se ne va.",
+		"Così va bene. Tutte le giunture si sciolgono insieme, come un pugno che si apre.",
+		"Eccolo che se ne va. Il dolore fa i bagagli e sparisce senza nemmeno protestare.",
+	},
+	["cls.paladin.heal.w07.038"] = {
+		"Giudizio scagliato, un respiro per curarmi, e di nuovo a menare. Un istruttore lo chiamerebbe lavoro pulito.",
+		"Scaglio il giudizio, chiudo la mia ferita mentre colpisce, e riprendo a menare. Anche curarsi è un passo dell'esercizio.",
+	},
+	["cls.paladin.heal.w07.039"] = {
+		"Un guaritore in armatura pesante. I sacerdoti non sanno mai bene cosa pensare di noi, e nemmeno i guerrieri.",
+		"Troppa armatura per un guaritore, troppa misericordia per un soldato. Adesso, essere entrambe le cose mi tiene in vita.",
+	},
+	["cls.paladin.heal.w07.040"] = {
+		"In piedi, muro. Chi mi sta dietro ne ha ancora bisogno.",
+		"Uno scudo bucato non protegge nessuno. Tappa i buchi, poi fatti di nuovo avanti.",
+		"Contano sul fatto che la prima linea tenga. La prima linea sono io, quindi si cura per prima.",
+	},
+	["cls.paladin.heal.w07.041"] = {
+		"Non c'è nessun altro da chiamare. Solo la Luce e io: una compagnia più piccola di quanto sembri, e migliore.",
+		"Senza nessuno intorno, mi curo da me. Alla Luce non sembra pesare una lista di pazienti così corta.",
+	},
+	["cls.paladin.heal.w07.042"] = {
+		"Ecco fatto. Allora, a che punto eravamo?",
+		"Meglio. Ora, io e te avevamo un conto in sospeso.",
+		"Bene. Tutto sistemato, e la pazienza non è aumentata.",
+	},
+	["cls.paladin.heal.w07.043"] = {
+		"Io sono solo la lampada; la Luce è la fiamma. Anche una lampada va riparata ogni tanto, perché la fiamma abbia dove stare.",
+		"Ciò che la Luce mi restituisce, me lo restituisce perché il lavoro continui. Non per me. Per il lavoro.",
+	},
+	["cls.paladin.heal.w07.044"] = {
+		"La carne si rimargina più in fretta della stanchezza. Sulla stanchezza la Luce non ha mai avuto granché da dire.",
+		"Il taglio è sparito; la fatica resta. Nessun incantesimo che conosco arriva così in fondo.",
+	},
+	["cls.paladin.heal.w07.045"] = {
+		"si asciuga il sangue dalla fronte col dorso del polso, mentre la ferita sotto si richiude.",
+		"sputa una volta, fa una smorfia, e scrolla le spalle mentre il dolore allenta la presa.",
+	},
+	["cls.paladin.heal.w07.046"] = {
+		"Le mie cure le tengo brevi. La Luce è spesa meglio per chi non ha un'armatura come la mia.",
+		"Quanto basta per me, non di più. Presto qualcuno di più fragile avrà bisogno del resto.",
+	},
+	["cls.paladin.heal.w07.047"] = {
+		"Ogni volta che la Luce chiude una mia ferita, sembra dire la stessa cosa breve: non ancora, c'è altro da fare.",
+		"La risposta della Luce alle mie ferite è sempre la stessa: servi ancora per un po'. Non mi stanco mai di sentirla.",
+	},
+	["cls.paladin.heal.w07.048"] = {
+		"Tutto a posto. Se qualcuno chiede, qui non è successo niente.",
+		"E di quel livido non resta niente. Non ne parleremo mai più.",
+	},
+	["cls.paladin.heal.w07.049"] = {
+		"Mi hanno insegnato a chiedere alla Luce in modo semplice, senza fronzoli. Risanami. Basta una parola, se è sentita.",
+		"Niente paroloni per le mie ferite. Una richiesta semplice, fatta con onestà, e la Luce fa il resto.",
+	},
+	["cls.paladin.heal.w07.050"] = {
+		"Tutto quello che ho. Prendilo, Luce, e rimettilo dentro di me.",
+		"Fino all'ultima goccia, Luce, in questo solo corpo.",
+	},
+	["cls.paladin.heal.w07.051"] = {
+		"fa scorrere un rapido guizzo di luce sulla propria ferita, quasi senza fermarsi tra un colpo e l'altro.",
+		"pronuncia secca una parola breve, e un lampo dorato sfiora l'armatura e svanisce.",
+	},
+	["cls.paladin.heal.w07.052"] = {
+		"Un giorno chiederò e non basterà. Non oggi. Oggi la ferita si chiude, e mi prendo l'oggi.",
+		"Prima o poi ci sarà una ferita che nessuna Luce potrà chiudere. Non la temo molto. Solo, non voglio che sia questa.",
+	},
+	["cls.paladin.heal.w07.053"] = {
+		"I tagli sono chiusi, ma sotto tutta quest'armatura sudo ancora. Certe miserie la Luce le lascia a me.",
+		"Ferite chiuse, eppure ho ancora caldo, mi prude ancora tutto e sono ancora {g:chiuso|chiusa} in questo ferro. La Luce si occupa delle ferite, non della comodità.",
+	},
+	["cls.paladin.heal.w07.054"] = {
+		"s'inginocchia un momento in silenzio, una mano sulla ferita, finché la luce dorata sotto il palmo non si spegne.",
+		"china il capo e resta immobile, e il dolore si placa mentre un bagliore lieve si ritira sotto le dita.",
+	},
+	["cls.paladin.heal.w07.055"] = {
+		"Che mi guardi pure mentre mi curo. Che capisca quanto ci vorrà.",
+		"Ogni ferita che chiudo è una che dovrà riaprire. Posso andare avanti più a lungo del mio avversario.",
+	},
+	["cls.paladin.heal.w07.056"] = {
+		"Non pretendo di capire la Luce. So che risponde quando sanguino, e per un soldato è fede sufficiente.",
+		"I sacerdoti possono discutere su cosa sia la Luce. In mezzo a uno scontro, è ciò che chiude il taglio.",
+	},
+	["cls.paladin.heal.w07.057"] = {
+		"Le ferite si chiudono, la collera no. Chi me le ha fatte sta per sentire la differenza.",
+		"Il dolore se n'è andato; il rancore resta. Lo spenderò con giudizio.",
+	},
+	["cls.paladin.heal.w07.058"] = {
+		"esamina con occhio critico l'avambraccio appena risanato, come se il lavoro andasse rimandato indietro.",
+		"si dà due pacche sul fianco, con aria soddisfatta, come chi controlla di avere ancora la borsa.",
+	},
+	["cls.paladin.heal.w07.059"] = {
+		"La mano mi trema sopra la ferita. La Luce che vi passa attraverso, mai.",
+		"Sono {g:stanco|stanca}, e si vede dalle mani. Strano quanto sia ferma la Luce che le attraversa.",
+	},
+	["cls.paladin.heal.w07.060"] = {
+		"La Luce Sacra è stata la prima cura che mi abbiano insegnato, ed è ancora quella a cui le mani arrivano senza pensarci.",
+		"La più semplice delle preghiere che conosco. Luce Sacra, detta sulla mia ferita, regolare come un battito.",
+	},
+	["cls.paladin.heal.w07.061"] = {
+		"Una lezione per dopo: prima la guardia, poi il colpo. La Luce non dovrebbe dover rimediare due volte allo stesso errore.",
+		"Quella è colpa del mio gioco di gambe. Ora curo la ferita, domani sistemo i piedi.",
+	},
+	["cls.paladin.heal.w07.062"] = {
+		"Tenete duro un momento! Mi curo e arrivo!",
+		"Due respiri e ci sono. Tenete la linea!",
+	},
+	["cls.paladin.heal.w07.063"] = {
+		"Un attimo fa mi colava il sangue nello stivale. Adesso resta solo lo sciacquio a ricordarmelo.",
+		"Il sangue ha smesso di scorrere. Lo stivale, purtroppo, ne è ancora pieno.",
+	},
+	["cls.paladin.heal.w07.064"] = {
+		"muove la mascella da una parte all'altra, saggiando un livido che non c'è più.",
+		"inspira a fondo, trattiene il fiato e lo lascia andare piano, come per controllare che ogni costola sia al suo posto.",
+	},
+	["cls.paladin.heal.w07.065"] = {
+		"La Luce perdona le mie ferite più in fretta di quanto io perdoni gli errori che me le hanno procurate.",
+		"Mi risana senza una parola di rimprovero. Farei bene a imparare quel tipo di misericordia verso {g:me stesso|me stessa}.",
+	},
+	["cls.paladin.heal.w07.066"] = {
+		"Un lampo veloce per sistemare quel che resta. Inutile rimettersi in cammino con graffi che posso cancellare.",
+		"Solo la cura piccola, per finire il lavoro. I graffi non valgono una cura lunga.",
+	},
+	["cls.paladin.heal.w07.067"] = {
+		"Mani ferme. Dillo giusto la prima volta; non ce ne sarà una seconda.",
+		"Non correre con le parole. Una cura pasticciata è peggio di niente.",
+		"Respira, poi chiedi. La paura fa uscire le parole storte.",
+	},
+	["cls.paladin.heal.w07.068"] = {
+		"arretra barcollando di un passo, e quando il piede tocca terra il peggio della ferita si sta già chiudendo.",
+		"vacilla sotto il colpo, pianta i piedi, e lascia che la cura faccia presa prima di rispondere a tono.",
+	},
+	["cls.paladin.heal.w07.069"] = {
+		"Grazie. Non solo per la guarigione, ma perché ci sei ancora, anche quando non meritavo di chiedere.",
+		"Grazie, Luce. Non lo dico mai abbastanza, e non me ne sono mai {g:pentito|pentita}.",
+	},
+	["cls.paladin.heal.w07.401"] = {
+		"Non discutere, lascia che faccia effetto. Discuterai dopo.",
+		"Guarda me. Alla ferita ci pensa la mia mano.",
+		"Butta fuori l'aria piano. Ho quasi finito, e tu stai quasi bene.",
+	},
+	["cls.paladin.heal.w07.402"] = {
+		"La Luce non ha preferiti. È venuta per te perché eri qui, e io l'ho chiesto.",
+		"Prendila, e i ringraziamenti tienili per la Luce. Io l'ho solo indirizzata verso di te.",
+		"Non è mai stata mia da dare. So soltanto a chi chiederla.",
+	},
+	["cls.paladin.heal.w07.403"] = {
+		"Il respiro si fa regolare prima che il colore riaffiori sulle guance. Ho imparato ad ascoltare quello, per primo.",
+		"Un viso risanato sembra sempre più giovane per un istante, come se il dolore l'avesse invecchiato.",
+		"Guardo il pugno stretto che torna a schiudersi. È lì che capisco che il lavoro ha attecchito.",
+	},
+	["cls.paladin.heal.w07.404"] = {
+		"si volta di lato per un solo respiro, tende il palmo verso chi soffre e manda la Luce a colmare la distanza.",
+		"pronuncia una parola breve su chi soffre, e un oro caldo scorre nella ferita come l'acqua che trova una crepa.",
+	},
+	["cls.paladin.heal.w07.405"] = {
+		"Sei di nuovo a posto. Cerca di restarci almeno finché non ho bevuto un sorso d'acqua.",
+		"Fatto. Adesso, per cortesia, smetti di piazzarti dove mena quello grosso.",
+		"Ho un'intera predica su come si schiva. Ricordami di fartela, dopo.",
+	},
+	["cls.paladin.heal.w07.406"] = {
+		"In piedi e a combattere. Finché posso alzare una mano, qui non cadi.",
+		"Vai pure, prenditi il prossimo colpo se proprio devi. Lo disfo io.",
+		"Le tue ferite adesso sono affar mio. Le loro lame sono affar tuo.",
+	},
+	["cls.paladin.heal.w07.407"] = {
+		"La Luce risponde per chiunque io le indichi. Non ho mai dovuto giustificarle la scelta, e questo un poco mi spaventa.",
+		"Sono io a decidere a chi va la Luce prima degli altri. Nessun giuramento ha mai reso più facile quella scelta.",
+	},
+	["cls.paladin.heal.w07.408"] = {
+		"Farà male per un giorno. Un dolore sordo è onesto: lascialo fare.",
+		"La ferita è chiusa. Alla stanchezza non arrivo: quella se ne va solo col sonno.",
+	},
+	["cls.paladin.heal.w07.409"] = {
+		"dà al punto risanato un'occhiata severa, come un muratore guarda un muro, e sembra {g:soddisfatto|soddisfatta}.",
+		"si pulisce l'ultimo bagliore dalle dita sulla manica, come fosse farina, e passa oltre.",
+		"flette le dita quando la luce le ha lasciate, come per controllare che siano ancora le sue.",
+	},
+	["cls.paladin.heal.w07.410"] = {
+		"Una veloce. Non aggiusta tutto, ma ti tiene in piedi a menare colpi.",
+		"Solo un lampo. La cura vera arriva quando smettono di picchiarti.",
+		"Piccola e rapida, come un colpo corto. Avanti.",
+	},
+	["cls.paladin.heal.w07.411"] = {
+		"Un lampo compra secondi, non salvezza. In uno scontro, di solito sono i secondi a essere in vendita.",
+		"La luce rapida costa poco ed è sottile. Tre di fila costano più di una fatta come si deve, e a volte il tempo per farla come si deve non c'è.",
+	},
+	["cls.paladin.heal.w07.412"] = {
+		"Resisti finché durano le parole. Questa se la prende comoda perché vuole finire il lavoro.",
+		"Quella lenta, quella profonda. Non muoverti: vale l'attesa.",
+	},
+	["cls.paladin.heal.w07.413"] = {
+		"{g:Svuotato|Svuotata} in un solo respiro, e chi ne aveva bisogno sta in piedi. È un patto che rifarei ogni volta.",
+		"La mia forza adesso è in quel corpo, tutta quanta. Per un po' andrò piano. Ne vale la pena.",
+	},
+	["cls.paladin.heal.w07.414"] = {
+		"Quello era tutto ciò che avevo. Fa' che non mi penta di dove l'ho speso.",
+		"Non ne avrò un'altra per parecchio tempo. Dovrai restare in vita senza.",
+	},
+	["cls.paladin.heal.w07.415"] = {
+		"preme entrambi i palmi sulla persona ferita e si china, e la Luce esce da {g:lui|lei} tutta in una volta, come un fiato trattenuto e poi lasciato andare.",
+		"impallidisce mentre il bagliore abbandona le sue mani, come se avesse ceduto anche un po' del proprio colore.",
+	},
+	["cls.paladin.heal.w07.416"] = {
+		"Ecco fatto. Non sarà un lavoro da maestro, ma per la strada basta.",
+		"Tutto a posto, e appena un po' di malumore. Mi accontento.",
+	},
+	["cls.paladin.heal.w07.417"] = {
+		"Per la Luce, che questo male finisca qui e non vada oltre.",
+		"Luce, tu conosci questa persona meglio di me. Ripara ciò che io non vedo.",
+		"Luce, questa persona oggi ha portato abbastanza. Prenditi un po' del peso.",
+	},
+	["cls.paladin.heal.w07.418"] = {
+		"Mana per un'altra di queste, forse due. Poi mi tocca curare con una benda e un pessimo carattere.",
+		"Ogni cura è un conto: quanto serve all'altro, quanto ne ho io, quanto me ne servirà per la prossima. I conti la Luce li lascia fare a me.",
+	},
+	["cls.paladin.heal.w07.419"] = {
+		"Respira con me. Dentro... e fuori. Ecco, il peggio è passato.",
+		"Segui il mio respiro, lento e regolare. Così il dolore se ne va prima.",
+	},
+	["cls.paladin.heal.w07.420"] = {
+		"Nessuno si dissangua a portata della mia mano. Così dice il giuramento, e io lo mantengo.",
+		"Ho giurato di mettermi tra il male e chiunque ne avesse bisogno. Oggi tocca a te.",
+		"Il mio giuramento ha una clausola breve, su questo: non cadi dove posso arrivare.",
+	},
+	["cls.paladin.heal.w07.421"] = {
+		"lascia la mano guantata sulla spalla ferita un istante più del necessario.",
+		"si inginocchia all'altezza della ferita e pronuncia le parole piano, da vicino, senza alcuna fretta.",
+	},
+	["cls.paladin.heal.w07.422"] = {
+		"Non ho giurato alla Luce per passare il tempo a ricucirti. Eppure eccoci qui.",
+		"Avanti, allora. Fatti colpire di nuovo. Tanto non avevo altri programmi.",
+	},
+	["cls.paladin.heal.w07.423"] = {
+		"Non toccarla ancora. La pelle nuova è sottile: dalle un'ora.",
+		"Lascia stare le bende. La Luce ha fatto un lavoro più pulito di qualsiasi stoffa.",
+	},
+	["cls.paladin.heal.w07.424"] = {
+		"Quando mando la Luce in qualcun altro, per un attimo ne sento la forma: stanchezza, paura, ostinazione. Poi svanisce.",
+		"Strana intimità, questa. Non so come si chiami, e la Luce sa già esattamente dove fa male.",
+	},
+	["cls.paladin.heal.w07.425"] = {
+		"Sistemata la ferita. Adesso vai e faglielo rimpiangere.",
+		"Fatto. Va' a dare a chi te l'ha fatto qualcosa su cui riflettere.",
+	},
+	["cls.paladin.heal.w07.426"] = {
+		"Posso chiudere ogni ferita che raggiungo in tempo. Quelle che non raggiungerò mi resteranno dentro più a lungo di tutte queste.",
+		"Quando funziona, cerco di non pensare al giorno in cui non arriverà in tempo. Quel giorno arriva per chiunque curi.",
+	},
+	["cls.paladin.heal.w07.427"] = {
+		"Riprendi fiato. La Luce non tiene i conti, e nemmeno io.",
+		"Non mi devi niente. La Luce dà senza chiedere, e io cerco di fare lo stesso.",
+		"Nessun debito. Passalo a chi ne avrà bisogno dopo di te.",
+	},
+	["cls.paladin.heal.w07.428"] = {
+		"Siediti. No, siediti davvero. Il coraggio può aspettare che smetta di sanguinare.",
+		"Smettila di contorcerti. La Luce lavora più in fretta su un corpo che sta immobile.",
+	},
+	["cls.paladin.heal.w07.429"] = {
+		"mormora le parole della guarigione, e per un istante i due volti si illuminano dal basso, come per una lanterna tenuta in mezzo.",
+		"unisce le mani per un istante, poi le apre verso chi soffre, e la Luce va dove le mani indicano.",
+	},
+	["cls.paladin.heal.w07.430"] = {
+		"Pensa a qualcosa di piacevole mentre lavoro. La birra va per la maggiore.",
+		"Questo non fa male. Faceva male prima: questa è la parte bella.",
+	},
+	["cls.paladin.heal.w07.431"] = {
+		"Le mie mani conoscono questo lavoro meglio della mia testa. Sono già a metà delle parole prima che io abbia deciso.",
+		"Sigillo sull'arma, Luce nell'altra mano. Un paladino fa due mestieri insieme, e nessuno dei due aspetta.",
+	},
+	["cls.paladin.heal.w07.432"] = {
+		"Non oggi. La Luce ha posato gli occhi su di te e ha deciso: non oggi.",
+		"Qualunque cosa ti stesse venendo a cercare, dovrà mettersi in fila dietro di me.",
+	},
+	["cls.paladin.heal.w07.433"] = {
+		"si porta mezzo passo davanti alla persona ferita e cura senza abbassare la guardia.",
+		"tiene un occhio sul nemico e uno sulla ferita, e manda la Luce senza voltare la testa.",
+	},
+	["cls.paladin.heal.w07.434"] = {
+		"Non sei un peso. È per chi è nei guai che ho imparato a farlo.",
+		"Non scusarti se sanguini. È la cosa meno interessante che farai oggi.",
+		"Non serve che tu dica niente. Continua a respirare: come ringraziamento mi basta.",
+	},
+	["cls.paladin.heal.w07.435"] = {
+		"Ringraziano sempre la Luce. Mai chi è {g:arrivato|arrivata} di corsa, armatura e tutto, per portargliela.",
+		"Una parola, un bagliore, e qualcuno smette di morire. Eppure non riesco a darmi troppa importanza.",
+	},
+	["cls.paladin.heal.w07.436"] = {
+		"Abbastanza per camminare. Al resto penseremo al prossimo bivacco.",
+		"Questo ti porta fino alla prossima pietra miliare, e probabilmente ben oltre.",
+	},
+	["cls.paladin.heal.w07.437"] = {
+		"Guarisci. È la cosa più semplice che la Luce sappia dire.",
+		"Guarisci, e alzati. È tutto ciò che la Luce chiede a chi soffre.",
+		"Guarisci. La parola è breve perché alla Luce non ne serve una lunga.",
+	},
+	["cls.paladin.heal.w07.438"] = {
+		"Prima chi tiene la linea, poi chi grida più forte. Quell'ordine non è mai giusto, ed è comunque quello corretto.",
+		"Scegliere chi prima è un calcolo freddo per un dono caldo. Lo detesto, e lo faccio lo stesso.",
+	},
+	["cls.paladin.heal.w07.439"] = {
+		"dà un colpetto leggero sul braccio della persona appena curata mentre il bagliore svanisce, come si chiude il coperchio di una scatola ben fatta.",
+		"sorride, breve e storto, mentre il viso dell'altra persona ritrova colore.",
+	},
+	["cls.paladin.heal.w07.440"] = {
+		"Luce veloce, rimedio veloce. Se vuoi quella elaborata, smetti di farti colpire così in fretta.",
+		"Questa è quella economica. Quella buona te la guadagni con una pausa.",
+	},
+	["cls.paladin.heal.w07.441"] = {
+		"La Luce Sacra si prende il suo tempo, e per tutto quel tempo resto lì con la guardia abbassata. È il prezzo del lavoro fatto bene.",
+		"Le parole lunghe della Luce Sacra. Le dico tutte, una per una, sperando che niente mi interrompa.",
+	},
+	["cls.paladin.jest.w07.001"] = {
+		"Quanti paladini servono per accendere una lampada? Uno solo, ma prima ci sarà una breve predica sulla lampada.",
+		"Perché i paladini non giocano a carte? Ogni volta che hanno una buona mano, quella si mette a brillare.",
+	},
+	["cls.paladin.levelup.w07.001"] = {
+		"I maestri avranno qualcosa di nuovo da insegnarmi. Più da imparare, più da portare e più di cui rispondere.",
+		"Un po' più di forza. La forza è la parte facile da guadagnare; meritarla è la parte lenta.",
+		"A ogni gradino il giuramento si fa un po' più pesante e un po' più chiaro. Non so quale delle due cose mi sorprenda di più.",
+	},
+	["cls.paladin.levelup.w07.002"] = {
+		"prende un respiro profondo e lo lascia andare piano, e per un istante una tenue luce dorata sembra correre lungo le giunture dell'armatura.",
+		"si raddrizza in tutta la sua statura, flettendo una mano che d'un tratto sembra più sicura della presa.",
+		"china il capo per un attimo, più in segno di riconoscimento che di preghiera, poi lo rialza con una fermezza nuova.",
+	},
+	["cls.paladin.lowhp.w07.001"] = {
+		"Non ancora. Il giuramento non prevede una clausola per questo.",
+		"A terra? Non finché esiste un giuramento col mio nome sopra.",
+		"Il giuramento diceva fino alla fine. Questa non lo è.",
+	},
+	["cls.paladin.lowhp.w07.002"] = {
+		"Troppo in basso. Prima la protezione, poi la cura, poi di nuovo dentro. In fretta.",
+		"Ragiona. Prima la difesa, poi la cura, poi il colpo. Il panico non è nella lista.",
+	},
+	["cls.paladin.lowhp.w07.003"] = {
+		"vacilla, il sangue alle giunture dell'armatura, e il chiarore che {g:lo|la} avvolge trema come una candela nella corrente, poi si fa saldo.",
+		"allarga i piedi mentre i colpi arrivano, e oscilla come un albero maestro nel vento forte, senza cadere.",
+	},
+	["cls.paladin.lowhp.w07.004"] = {
+		"Ahi. D'accordo. Io e la Luce ne riparleremo.",
+		"Questa ha fatto male. Presenterò un reclamo alla Luce.",
+		"D'accordo. Quello è andato a segno.",
+	},
+	["cls.paladin.lowhp.w07.005"] = {
+		"C'è lo scudo, quello che niente attraversa. Usarlo adesso non è viltà, è buon senso.",
+		"Il momento intoccabile è lì, a disposizione. Nessuna vergogna. È l'orgoglio che fa seppellire i paladini.",
+	},
+	["cls.paladin.lowhp.w07.006"] = {
+		"Luce, non ho finito. E nemmeno tu.",
+		"Tienimi, Luce. Io tengo te.",
+		"Luce, un po' di calore, se puoi. Io non ne ho più molto da dare.",
+	},
+	["cls.paladin.lowhp.w07.007"] = {
+		"Il cuore mi batte nelle orecchie e in bocca sento il ferro. Va bene. Il corpo si lamenta, il giuramento no.",
+		"Sangue in bocca, un fischio nelle orecchie. Ormai a tenermi su è più l'armatura che io.",
+	},
+	["cls.paladin.lowhp.w07.008"] = {
+		"Sono {g:ferito|ferita}, non {g:finito|finita}. Occhi sullo scontro, non su di me.",
+		"Non fermatevi per me! Una cura mi è rimasta, ed è mia.",
+		"Continuate! A curarmi ci penso io; voi badate al nemico.",
+	},
+	["cls.paladin.lowhp.w07.009"] = {
+		"preme una mano tremante sulla propria ferita e pronuncia il nome della Luce a denti stretti.",
+		"si stringe l'armatura all'altezza del cuore, e un calore sottile risponde, debole ma presente.",
+	},
+	["cls.paladin.lowhp.w07.010"] = {
+		"L'armatura sta facendo del suo meglio. Qualcuno le dica di impegnarsi di più.",
+		"Se quest'armatura avesse dei sentimenti, in questo momento si vergognerebbe moltissimo.",
+		"Promemoria: l'armatura, a quanto pare, non è invincibile.",
+	},
+	["cls.paladin.lowhp.w07.011"] = {
+		"Silenzio, là dentro. Troppo. Luce? Luce. Eccoti.",
+		"Per un battito non lo trovo, quel calore. Poi c'è, come una mano che trova il corrimano al buio.",
+	},
+	["cls.paladin.lowhp.w07.012"] = {
+		"Hai fatto sanguinare un paladino. Adesso vedrai quanto costa.",
+		"{g:Ferito|Ferita}, eh? Bene. Adesso ho un motivo per smetterla con le buone maniere.",
+		"Adesso sono {g:arrabbiato|arrabbiata}, e la Luce mi lascia fare.",
+	},
+	["cls.paladin.lowhp.w07.013"] = {
+		"Se cado qui, che l'ultima cosa che ho fatto sia stata utile. Quasi lo è.",
+		"Non ho paura di ciò che c'è oltre la porta della Luce. Solo, non sono {g:pronto|pronta} ad attraversarla.",
+	},
+	["cls.paladin.lowhp.w07.014"] = {
+		"Le ginocchia servono per pregare, non per te.",
+		"Inginocchiarmi non mi è nuovo: lo faccio ogni giorno. Ma mai per quelli come te.",
+	},
+	["cls.paladin.lowhp.w07.015"] = {
+		"sputa rosso a terra e solleva di nuovo l'arma, più lentamente, ma ancora dritta.",
+		"sbatte forte le palpebre contro il buio che s'insinua ai margini della vista e ritrova il nemico.",
+	},
+	["cls.paladin.lowhp.w07.016"] = {
+		"Non mi aggiungerai alle tue file. Per le mie ossa ho altri progetti.",
+		"Non oggi. Le mie ossa sono già promesse, e non a te.",
+	},
+	["cls.paladin.lowhp.w07.017"] = {
+		"Se cado io, chi li tiene in piedi? Allora non cado. Semplice.",
+		"Contano sulle mie cure. Non posso spenderle tutte per me. Qualcuna sì, però. Qualcuna.",
+	},
+	["cls.paladin.lowhp.w07.018"] = {
+		"Corazza ammaccata e cuore testardo. Impegnati di più.",
+		"Questa corazza ha visto giorni peggiori, e anch'io. Avanti, allora.",
+	},
+	["cls.paladin.lowhp.w07.019"] = {
+		"Il mana scarseggia, il sangue ancora di più. Spendi l'uno per salvare l'altro.",
+		"Prima la cura, l'orgoglio dopo. Un paladino morto non protegge nessuno.",
+	},
+	["cls.paladin.muse.w07.001"] = {
+		"Le miglia in armatura insegnano una pazienza tutta particolare. Alla strada non importa cosa hai giurato.",
+		"Più o meno al decimo miglio, ogni giuramento diventa una questione di piedi.",
+		"La strada è la parte lunga del giuramento. Nessuno ti avverte di quanto sia lunga.",
+	},
+	["cls.paladin.muse.w07.002"] = {
+		"Certi giorni cerco la Luce come si cerca il corrimano su una scala buia. C'è sempre stata. Allungo comunque la mano con cautela.",
+		"Non ho mai trovato la Luce assente, neanche una volta. Eppure, ogni volta, c'è quel piccolo respiro prima di chiedere.",
+		"Per me la fede è soprattutto l'abitudine di allungare la mano lo stesso.",
+	},
+	["cls.paladin.muse.w07.003"] = {
+		"Quando un contadino mi chiama eroe, qualcosa dentro di me si raddrizza e si pavoneggia. Ho imparato a dirgli di tornare a cuccia.",
+		"La lode è l'unico colpo che l'armatura non ferma. La incasso in piedi, e poi vado a smaltirla in preghiera.",
+		"L'orgoglio non carica mai. Aspetta che qualcuno mi ringrazi, e poi s'infila dalla visiera.",
+	},
+	["cls.paladin.muse.w07.004"] = {
+		"Perché un martello? Non vuole la cote, e chiude le discussioni in una sillaba.",
+		"Una spada pretende la cote dopo ogni scontro. A un martello basta un braccio testardo.",
+		"Le spade sono per i duellanti. Il martello è per porte, muri e qualsiasi cosa non voglia sentire ragioni.",
+	},
+	["cls.paladin.muse.w07.005"] = {
+		"si inginocchia lì dove si trova, il capo chino per il tempo di tre respiri, poi si rialza senza una parola.",
+		"si ferma, sfiora con due dita il centro del pettorale e riparte, come se avesse saldato un piccolo conto.",
+	},
+	["cls.paladin.muse.w07.006"] = {
+		"La Luce non spinge mai. Aspetta come una forgia coperta di cenere, calda ogni volta che ci torno, senza mai trascinarmici.",
+		"Nella Luce non c'è niente che mi forzi la mano. Resta solo accesa, e il cammino lo lascia a me.",
+	},
+	["cls.paladin.muse.w07.007"] = {
+		"Ovunque io cammini, una parte del giuramento resta voltata verso le Plaguelands, come chi dorme col viso rivolto alla porta.",
+		"Qualunque commissione io stia sbrigando, il Flagello aspetta in fondo alla strada di ogni paladino. Non lo dimentico; semplicemente non ho fretta di arrivarci.",
+		"Anche nella commissione più tranquilla, un angolo della mia mente resta di guardia verso Lordaeron.",
+	},
+	["cls.paladin.muse.w07.008"] = {
+		"Cambiare sigillo nel mezzo di uno scontro è come cambiare lingua a metà frase. Mi ci è voluto parecchio per smettere di balbettare.",
+		"Due sigilli, due caratteri. Capire quando passare dall'uno all'altro è stata la prima vera lezione dopo le basi.",
+	},
+	["cls.paladin.muse.w07.009"] = {
+		"C'è un'aura che punge chiunque colpisca chi mi sta vicino. Non devo nemmeno guardare. Sembra quasi scorretto, e ho deciso che non mi dispiace.",
+		"Chi mette la lama addosso a qualcuno della mia cerchia ne paga un poco, senza mai capire bene perché. È un'aura che si addice a un certo carattere.",
+	},
+	["cls.paladin.muse.w07.010"] = {
+		"Certi giorni la cosa migliore che porto in uno scontro è un'aura di calma per chi lancia incantesimi alle mie spalle.",
+		"L'aura che spiego più malvolentieri è quella che tiene saldo chi incanta quando qualcuno lo colpisce a metà parola. Nessuno la vede all'opera. È proprio questo il punto.",
+	},
+	["cls.paladin.muse.w07.011"] = {
+		"Posso alzare uno scudo che niente riesce a passare. Lo uso di rado: un paladino che non può essere toccato dimentica quanto costa il tocco agli altri.",
+		"Per qualche istante, niente al mondo può ferirmi. La tentazione lì dentro non è la viltà. È l'orgoglio.",
+		"Intoccabile, per un istante. Sono sempre {g:sollevato|sollevata} quando l'istante finisce: non è un buon posto in cui un paladino possa abitare.",
+	},
+	["cls.paladin.muse.w07.012"] = {
+		"C'è una preghiera che dà la mia vita perché un altro si salvi, per intero. L'ho imparata. Continuo a sperare che resti una cosa che so, e non una cosa che ho fatto.",
+		"Conosco una preghiera che mi consuma del tutto perché qualcun altro ne esca vivo. Saperla è facile. Essere {g:pronto|pronta} è un'altra faccenda.",
+	},
+	["cls.paladin.muse.w07.013"] = {
+		"Non prego su ogni pasto. Certi stufati da locanda, però, meritano una benedizione: per chi li mangia.",
+		"Mi hanno insegnato che la Luce non è per le piccole cose. Chi me l'ha insegnato non aveva mai mangiato il pane di chi viaggia.",
+	},
+	["cls.paladin.muse.w07.014"] = {
+		"Il giuramento è scritto in parole semplici. Il mondo in cui lo porto, no. Ogni giorno traduco, e non sono mai {g:sicuro|sicura} di averlo fatto bene.",
+		"Proteggi i deboli, dice. Non dice chi sia debole oggi, né contro cosa. Quella parte devo capirla da {g:solo|sola}.",
+		"I voti stanno in una pagina. Le domande che sollevano riempirebbero una biblioteca.",
+	},
+	["cls.paladin.muse.w07.015"] = {
+		"L'Alleanza è una promessa fra popoli che non sempre si stanno simpatici. Il giuramento di un paladino è una promessa più piccola, della stessa forma.",
+		"Umani e nani, gnomi ed elfi, sotto un'unica bandiera. Regge perché la gente continua a scegliere di farla reggere. Un po' come un giuramento.",
+		"L'Alleanza non si giura una volta per sempre. Si giura di nuovo ogni giorno, in piccoli modi, da gente che potrebbe andarsene.",
+	},
+	["cls.paladin.muse.w07.016"] = {
+		"Dove c'è un cancello, qualcuno deve starci in mezzo. Non mi è mai dispiaciuto essere quel qualcuno.",
+		"Dammi un varco e un motivo. Lo tengo tutto il giorno, senza muovermi.",
+	},
+	["cls.paladin.muse.w07.017"] = {
+		"passa uno straccio sulla testa dell'arma finché il metallo non restituisce un bagliore opaco e onesto.",
+		"soppesa l'arma prima in una mano poi nell'altra, come se valutasse una domanda più che un attrezzo.",
+	},
+	["cls.paladin.muse.w07.018"] = {
+		"Ogni maestro che ho avuto pronunciava il nome di Uther più piano di qualsiasi altro. Credo sia l'unico nome che non dicono mai di fretta.",
+		"Chiedi a un vecchio paladino di Uther e guarda come si abbassa la voce. Non è proprio dolore. È più come passare accanto a un posto dove è crollato qualcosa.",
+		"Uther è il nome che ogni maestro pronuncia per ultimo, e più adagio.",
+	},
+	["cls.paladin.muse.w07.019"] = {
+		"Un principe di Lordaeron un tempo portava la Luce e poi l'ha gettata via. I maestri lo raccontano come un monito, e non dicono mai quale parte li spaventi di più.",
+		"Ogni novizio sente parlare di Arthas, che era uno di noi, e di ciò che è diventato. La lezione non è che fosse malvagio. È che era certo di sé.",
+		"Arthas è la storia che raccontano ai novizi troppo sicuri di sé. Io l'ho sentita più di una volta.",
+	},
+	["cls.paladin.muse.w07.020"] = {
+		"L'Argent Dawn e la Scarlet Crusade alzano entrambe la mano contro il Flagello. La differenza, mi ha detto un vecchio paladino, è cosa fanno quando quella mano si abbatte sui vivi.",
+		"Due eredi dell'antico ordine, dicono: uno custodisce il giuramento, l'altro solo la rabbia. La rabbia è più facile da custodire. È questo che mi preoccupa.",
+	},
+	["cls.paladin.muse.w07.021"] = {
+		"Verso la fine di una giornata lunga l'armatura smette di sembrare una protezione e comincia a sembrare un bagaglio. La tengo addosso lo stesso. Sono abitudini così che tengono in vita la gente.",
+		"In ogni lunga marcia c'è un'ora in cui l'armatura pesa esattamente quanto pesa. È in quell'ora che il giuramento si guadagna il pane.",
+		"Le giornate lunghe fanno di ogni paladino un cavallo da tiro. L'armatura resta addosso comunque: è il mestiere.",
+	},
+	["cls.paladin.muse.w07.022"] = {
+		"Andare avanti, aiutare dove serve, chiedere scusa dove si è sbagliato. È quasi tutto l'addestramento, a dirla tutta.",
+		"Prima aiuti, poi spieghi, e se serve chiedi scusa. I maestri la mettevano giù con parole più lunghe.",
+	},
+	["cls.paladin.muse.w07.023"] = {
+		"I morti che camminano si ritraggono dalla Luce come un livido sotto il pollice. Non è un modo nobile di dirlo, ma non ne ho mai trovato uno più vero.",
+		"Qualunque cosa muova il Flagello, la Luce ci preme sopra come un dito su una piaga. Li ho visti ritrarsi. Non è bello, e non mi dispiace.",
+		"La Luce non odia il Flagello. Semplicemente non può stare nello stesso posto, e a cedere dev'essere il Flagello.",
+	},
+	["cls.paladin.muse.w07.024"] = {
+		"Da quando ho imparato ad avvertire i morti che camminano, in certi posti sento un lieve prurito in fondo alla mente. Ho smesso di pretendere che i luoghi siano innocenti.",
+		"C'è un senso che prima non avevo: un formicolio freddo quando qualcosa di morto si muove lì vicino. Certi giorni lo restituirei volentieri.",
+	},
+	["cls.paladin.muse.w07.025"] = {
+		"Esorcismo. Suona più solenne di quanto sia. Il più delle volte è come aprire una finestra in una stanza chiusa da troppo tempo.",
+		"I maestri facevano sembrare l'Esorcismo un tuono. Nelle mie mani è più una porta spalancata a calci su qualcosa che avrebbe dovuto andarsene da un pezzo.",
+	},
+	["cls.paladin.muse.w07.026"] = {
+		"Martello della Giustizia. Il nome non l'ho scelto io, ma ammetto che dice quello che fa.",
+		"Ho un martello di luce da scagliare che inchioda un nemico sul posto. Giustizia, la chiamano i maestri. Una pausa, direi io, abbastanza lunga perché la giustizia arrivi.",
+	},
+	["cls.paladin.muse.w07.027"] = {
+		"Cerco di pronunciare un giudizio come lo pronuncerebbe un giudice onesto: una volta, chiaramente, e senza goderne.",
+		"Ogni Giudizio che scaglio, cerco di scagliarlo senza piacere. La rabbia fa sentenze storte.",
+	},
+	["cls.paladin.muse.w07.028"] = {
+		"La Luce agisce attraverso gente che perde i guanti e discute con gli osti. Gente come me, insomma. Lo trovo molto consolante.",
+		"Qualunque cosa la Luce veda in me, non è la perfezione. È umiliante oppure è un sollievo. Quasi sempre tutte e due.",
+	},
+	["cls.paladin.muse.w07.029"] = {
+		"Lo scudo è la cosa più generosa che un soldato si porti dietro. Metà è sempre per qualcun altro.",
+		"Non ho mai pensato allo scudo come a una cosa solo mia. Metà appartiene a chi mi sta dietro.",
+		"Alza uno scudo e hai fatto un tetto per due. È un conto che mi è sempre piaciuto.",
+	},
+	["cls.paladin.muse.w07.030"] = {
+		"si guarda alle spalle di tanto in tanto, vecchia abitudine di chi è avvezzo ad avere qualcuno da proteggere.",
+		"tiene mezzo passo di vantaggio su nessuno in particolare, per abitudine, nel posto di chi porta lo scudo.",
+	},
+	["cls.paladin.muse.w07.031"] = {
+		"Non credo che la Luce mi ami. Credo che si fidi di me, un poco, con riserva. È più difficile esserne all'altezza.",
+		"L'amore sarebbe facile. Quello che sento dalla Luce somiglia più alla fiducia, e la fiducia si può perdere.",
+		"La fiducia della Luce è come quella di un vecchio cavallo: lenta a concedersi, e preziosissima quando c'è.",
+	},
+	["cls.paladin.muse.w07.032"] = {
+		"La preghiera più difficile è quella di fine giornata. Non per i dubbi. Per la stanchezza: comincio, e mi sveglio con le parole a metà.",
+		"L'ultima preghiera della giornata di solito si spegne a metà. Mi piace pensare che la frase la finisca la Luce.",
+	},
+	["cls.paladin.muse.w07.033"] = {
+		"La stessa mano risana e spezza. Una volta mi sembrava strano. Ora credo sia l'unico accordo onesto.",
+		"Queste mani chiudono ferite e aprono crani, a volte nello stesso respiro. Un paladino che non sa tenere insieme le due cose dovrebbe cambiare mestiere.",
+		"Risanare e spezzare escono dalla stessa mano, e non è la mano a scegliere. Scelgo io.",
+	},
+	["cls.paladin.muse.w07.034"] = {
+		"Potrei dimenticare il mio nome in preda alla febbre e recitare lo stesso il giuramento. I maestri ci hanno pensato bene.",
+		"Le parole del giuramento stanno più in fondo della memoria. Mi è capitato di sorprendermi a mormorarle nel dormiveglia.",
+	},
+	["cls.paladin.muse.w07.035"] = {
+		"E se mi sbaglio su qualcuno, e la Luce mi lascia sbagliare? È il pensiero che mi tiene {g:sveglio|sveglia}.",
+		"La Luce non fermerà la mia mano se colpisco la persona sbagliata. Si fida che io sappia. Certi giorni quella fiducia è un peso sul petto.",
+		"La Luce mi presterebbe la forza per colpire la persona sbagliata con la stessa prontezza di quella giusta. Distinguerle è la parte di lavoro che tocca a me.",
+	},
+	["cls.paladin.muse.w07.036"] = {
+		"Pane, olio per le cinghie, mozziconi di candela, pazienza. In ordine di quanto in fretta li finisco.",
+		"Cose che mi mancano sempre: olio per le cinghie, pane e pazienza. La Luce non è mai il problema.",
+		"Il mio zaino, a peso: olio per l'armatura, pane, mozziconi di candela e una buona dose di speranza.",
+	},
+	["cls.paladin.muse.w07.037"] = {
+		"La grande cattedrale di Stormwind è stata costruita per preghiere molto più grandi delle mie. Confido che anche le mie trovino posto, lassù tra le volte.",
+		"La cattedrale di Stormwind ascolta un'infinità di preghiere. Mi piace pensare che quelle dette per strada arrivino lo stesso, solo un po' più infangate.",
+	},
+	["cls.paladin.muse.w07.038"] = {
+		"I paladini di Ironforge, ho notato, parlano della Luce come i minatori di un filone: una cosa da seguire con pazienza e da non sprecare mai.",
+		"Chi si addestra nella Hall of Mysteries di Ironforge parla della Luce come i minatori parlano di una buona vena: va lavorata, seguita con pazienza, mai sperperata.",
+	},
+	["cls.paladin.muse.w07.039"] = {
+		"Un nano con un martello non fa notizia. Un nano con un martello e la Luce alle spalle è un altro discorso.",
+		"Il martello la mia gente ce l'ha nel sangue. La Luce mi ha solo detto dove puntare il mio.",
+	},
+	["cls.paladin.muse.w07.040"] = {
+		"La chiamano Light's Hope, la cappella dell'Argent Dawn nelle Plaguelands. Un nome così è molto coraggioso o molto testardo. Probabilmente tutte e due le cose.",
+		"Nelle Plaguelands, mi dicono, c'è una cappella che il Flagello non è mai riuscito a prendere. La tengo a mente come i marinai tengono a mente un fuoco sulla costa.",
+	},
+	["cls.paladin.muse.w07.041"] = {
+		"La Luce appartiene a sacerdoti e paladini allo stesso modo, ma la usiamo in modo diverso. Un sacerdote s'inginocchia accanto alla ferita; io mi metto davanti a ciò che l'ha causata.",
+		"I sacerdoti portano la Luce al capezzale. Io la porto sulla soglia, fra il capezzale e quello che sta arrivando.",
+	},
+	["cls.paladin.muse.w07.042"] = {
+		"mormora qualche parola sottovoce, e il tenue riverbero dell'aura che {g:lo|la} circonda cambia sfumatura.",
+		"lascia cadere un'aura e ne prende un'altra: il cambio si vede solo come una breve increspatura nell'aria attorno a {g:lui|lei}.",
+	},
+	["cls.paladin.muse.w07.043"] = {
+		"Metà del mestiere di paladino è aspettare: accanto a un letto, a un cancello, fuori da una porta mentre qualcuno decide. I maestri non ci hanno mai insegnato ad aspettare. Avrebbero dovuto.",
+		"Mi hanno insegnato a colpire, a curare, a benedire. Nessuno mi ha insegnato ad aspettare, ed è questo che il giuramento mi chiede più spesso.",
+	},
+	["cls.paladin.muse.w07.044"] = {
+		"La Luce è di buon umore. Si capisce: le ginocchia hanno smesso di lamentarsi.",
+		"Sembra una buona giornata per la Luce. O forse ho solo dormito su qualcosa di più morbido di un sasso.",
+		"Le spalle non mi fanno male e nessuno ha bisogno di cure. La Luce dev'essere in vena di strafare.",
+	},
+	["cls.paladin.muse.w07.045"] = {
+		"Ognuno dei morti risorti un tempo era qualcuno. Cerco di ricordarlo fino al momento in cui non posso più permettermelo.",
+		"Il Flagello è fatto di contadini, di soldati, dei vicini di casa di qualcuno. La cosa più gentile che posso dar loro è una fine. Vorrei che sembrasse più gentile.",
+		"Ai morti cerco di dare una fine e niente di più crudele. Un tempo erano di qualcuno: vale la pena di avere riguardo.",
+	},
+	["cls.paladin.muse.w07.046"] = {
+		"I demoni sono più semplici dei morti, sotto un certo aspetto. Dentro di loro non c'è mai stato nessuno da piangere.",
+		"Con i morti esito, pensando a chi erano. Con i demoni no. In loro non c'è mai stato nessuno.",
+	},
+	["cls.paladin.muse.w07.047"] = {
+		"Il giuramento mi chiede di proteggere, non di odiare. Lo tengo a mente ogni volta che in una taverna qualcuno attacca a parlare dell'Orda.",
+		"Nei voti non si parla dell'Orda. Proteggi gli innocenti, dicono. Gli innocenti hanno più forme di quanto la gente creda.",
+	},
+	["cls.paladin.muse.w07.048"] = {
+		"Che vengano pure. Ho un martello, una preghiera e nessun posto migliore dove stare.",
+		"Una buona arma, una preghiera salda e nessun impegno urgente. Che i guai mi trovino.",
+		"Martello pronto, preghiere dette, agenda libera. I guai sono liberi di provarci.",
+	},
+	["cls.paladin.muse.w07.049"] = {
+		"Ogni villaggio che accende ancora le sue lampade è un piccolo argomento a favore della Luce. Li colleziono.",
+		"Una finestra illuminata, una staccionata riparata, un bambino che gioca in strada. Li conto come altri contano le monete.",
+		"Il fumo da un camino, i panni stesi ad asciugare. Piccole prove che il buio non ha vinto, e le conservo tutte.",
+	},
+	["cls.paladin.muse.w07.050"] = {
+		"fa ruotare una spalla indolenzita sotto il peso dell'armatura, con la smorfia paziente di chi è abituato a portare più della propria parte.",
+		"sfila un guanto d'arme, piega le dita intorpidite una per una e lo rimette con un sospiro rassegnato.",
+	},
+	["cls.paladin.muse.w07.051"] = {
+		"Le tenebre più difficili da affrontare sono quelle che parlano con la mia voce e mi dicono che sarebbe più facile smettere di preoccuparmi.",
+		"Non tutti i nemici portano marciume o corna. Quello che tengo d'occhio di più parla con la mia voce e mi dice che ho fatto abbastanza.",
+		"Il nemico che temo di più non attacca mai. Si limita a suggerirmi, con gentilezza, di mettere da parte il giuramento per un po'.",
+	},
+	["cls.paladin.muse.w07.052"] = {
+		"Misericordia e mollezza non sono la stessa cosa. A volte l'atto misericordioso è quello duro, fatto in fretta.",
+		"Ho imparato presto che la misericordia può portare il guanto d'arme. Una gentilezza che non agisce non è gentilezza: è solo stare a guardare.",
+		"Mani morbide non vuol dire mani misericordiose. A volte la misericordia dev'essere rapida e pesante.",
+	},
+	["cls.paladin.muse.w07.053"] = {
+		"Ogni nuova preghiera che i maestri mi insegnano arriva con lo stesso avvertimento: è un prestito, non un dono. Ho cominciato a sentirlo come una gentilezza.",
+		"Niente di quello che la Luce mi dà è mio fino in fondo. È tutto in prestito, e gli interessi si pagano in fatica.",
+	},
+	["cls.paladin.muse.w07.054"] = {
+		"Mi hanno chiesto se la Luce dice mai di no. Lo dice. Di solito quando le chiedo una strada più facile.",
+		"Se la Luce mi rifiuta mai qualcosa? Solo quando le chiedo una scorciatoia.",
+		"La Luce mi concede quasi tutto ciò che chiedo. Mai le scorciatoie. Ho smesso di chiederle.",
+	},
+	["cls.paladin.muse.w07.055"] = {
+		"Il giuramento pesa uguale, che qualcuno guardi o no. Sono le ore senza testimoni a metterlo alla prova.",
+		"Quando nessuno guarda, il giuramento resta l'unico testimone. Un pubblico molto esigente.",
+	},
+	["cls.paladin.muse.w07.056"] = {
+		"controlla una per una le fibbie dell'armatura, dal collo in giù, con la cura senza fretta di un'abitudine di lunga data.",
+		"alza un braccio e poi l'altro per ascoltare l'armatura, come un fabbro ascolta una campana, e sembra {g:soddisfatto|soddisfatta} di ciò che sente.",
+	},
+	["cls.paladin.muse.w07.057"] = {
+		"Il trono di Stormwind è vuoto, e un reggente tiene calda la sedia. Il giuramento non dipende da chi porta la corona. Me lo ripeto più spesso di quanto vorrei.",
+		"Un re scomparso, un reggente, voci in ogni locanda. Un giuramento fatto alla Luce, almeno, non dipende dalla politica.",
+		"I re scompaiono, i reggenti firmano carte, le voci volano. La Luce tiene per sé i suoi pensieri, e il giuramento va avanti comunque.",
+	},
+	["cls.paladin.muse.w07.058"] = {
+		"La gente guarda un paladino e ne prende in prestito un po' di fermezza. Ho imparato a tenere le preoccupazioni dietro la visiera, dove non possono traboccare.",
+		"Qualunque cosa provi, finché la gente guarda il mio viso resta calmo. Ne prendono in prestito il coraggio. I miei conti li regolo dopo, da {g:solo|sola}.",
+		"Quando la gente ha paura, guarda il paladino. Così il paladino ha l'aria calma, qualunque cosa succeda sotto.",
+	},
+	["cls.paladin.muse.w07.059"] = {
+		"Se proprio devi pregare, prega in piedi. La Luce non si commuove per le ginocchia ammaccate.",
+		"Inginocchiati, se vuoi, ma rialzati presto. Alla Luce servi più in piedi.",
+		"La Luce ti sente benissimo anche in piedi. Forse meglio: così il lavoro è più a portata di mano.",
+	},
+	["cls.paladin.muse.w07.060"] = {
+		"C'è una furia della Luce che a una folla di nemici dice soltanto «guardate me». Sottile, non lo è.",
+		"C'è una preghiera il cui unico scopo è far arrabbiare ogni nemico con me invece che con i miei compagni. I maestri la chiamavano nobile. I miei lividi la chiamano in un altro modo.",
+	},
+	["cls.paladin.muse.w07.061"] = {
+		"So tirare fuori il veleno da una ferita e la malattia dal sangue. È la cosa meno gloriosa che conosca, e rinuncerei a metà del resto prima che a questa.",
+		"Purificare una febbre non fa nascere canzoni. È comunque la preghiera che terrei, se dovessi sceglierne una sola.",
+	},
+	["cls.paladin.muse.w07.062"] = {
+		"Il cavallo da guerra mi è venuto dalla Luce e da una lunga prova, eppure mi guarda come ogni cavallo guarda chi lo monta: quand'è che si mangia?",
+		"Un destriero evocato con la preghiera, e mastica il morso e tiene il broncio come qualunque altro. Santo, a quanto pare, non vuol dire dignitoso.",
+	},
+	["cls.paladin.muse.w07.063"] = {
+		"Le prime settimane nell'armatura a piastre mi muovevo come un armadio con delle opinioni. Ora mi dimentico di averla addosso: è un progresso, oppure un pericolo.",
+		"La maglia mi ha insegnato a portare il peso. Le piastre mi hanno insegnato a portarlo con grazia, o almeno a smettere di cadere.",
+	},
+	["cls.paladin.muse.w07.064"] = {
+		"Nelle cripte e nelle miniere la Luce sembra ardere più vicino alla pelle, come se anche lei preferisse andare dove serve.",
+		"Più il posto è buio, più la Luce mi sta vicina. Ho smesso di trovarlo strano.",
+		"Giù nel buio profondo, la Luce sembra meno una lampada e più una mano sulla spalla.",
+	},
+	["cls.paladin.muse.w07.065"] = {
+		"Lo strumento migliore di un paladino? Un panno pulito. Per le ferite, per le armi, per le facce di chi ha paura.",
+		"Porta sempre un panno pulito. Fascia un taglio, pulisce una lama e asciuga le lacrime, e nessuna di queste cose può aspettare una preghiera.",
+	},
+	["cls.paladin.muse.w07.066"] = {
+		"Pregare, quasi sempre, non è chiedere. È accordarsi: come un fabbro che batte una lama per sentire se suona giusta.",
+		"Quando prego non elenco desideri. Controllo, come si saggia una corda, di essere ancora {g:legato|legata} a qualcosa di solido.",
+		"Non prego per essere {g:ascoltato|ascoltata}. Prego per sentire se poggio ancora su qualcosa di vero.",
+	},
+	["cls.paladin.muse.w07.067"] = {
+		"C'è una solitudine particolare nel fare da appoggio agli altri. Nessuno pensa a chiederti su chi ti appoggi tu.",
+		"Tutti si appoggiano al paladino. Il paladino si appoggia alla Luce e, nei giorni in cui la Luce tace, alla semplice testardaggine.",
+		"Fare da appoggio a tutti è un onore e una solitudine, spesso nella stessa ora.",
+	},
+	["cls.paladin.muse.w07.068"] = {
+		"Non ti sto giudicando. Sono solo {g:un paladino|una paladina} qui vicino con la faccia delusa. È diverso.",
+		"La gente dà sempre per scontato che la stia giudicando. Il più delle volte mi sto chiedendo dove ho lasciato l'altro guanto.",
+		"Quello sguardo non è un giudizio. È la mia faccia. È fatta così.",
+	},
+	["cls.paladin.muse.w07.069"] = {
+		"La Luce c'era prima della Mano d'Argento, prima del primo re, prima che qualcuno pensasse di darle un nome. Il mio giuramento è un solo punto di cucitura in una stoffa antichissima.",
+		"Gli ordini sorgono e si spezzano; la Luce sopravvive a tutti. Io sono una frase breve in un libro lungo, e mi sta bene così.",
+		"L'ordine è giovane. La Luce no. Cerco di tenere le due cose nella giusta proporzione.",
+	},
+	["cls.paladin.muse.w07.070"] = {
+		"solleva il viso per un istante, gli occhi chiusi, come in ascolto di qualcosa che sente solo {g:lui|lei}, poi annuisce.",
+		"si ferma tra un passo e l'altro, la testa inclinata, poi espira e accenna un sorriso, come se una risposta fosse arrivata.",
+	},
+	["cls.paladin.muse.w07.071"] = {
+		"C'è una preghiera che mette in fuga i morti. Vederli scappare è lo spettacolo più strano: la paura su un volto che non dovrebbe più saperla mostrare.",
+		"A quanto pare i morti ricordano la paura anche quando hanno dimenticato tutto il resto. Quella preghiera lo dimostra.",
+	},
+	["cls.paladin.muse.w07.072"] = {
+		"Certi sigilli colpiscono, altri curano mentre colpiscono. Con il Sigillo della Luce ogni colpo è una piccola preghiera per i miei lividi. Pratica, la Luce, quando vuole.",
+		"Con il sigillo giusto, ogni fendente restituisce qualcosa. Mi piace che la Luce abbia pensato anche al braccio che colpisce.",
+	},
+	["cls.paladin.muse.w07.073"] = {
+		"Non giuro di vincere. Giuro di restare. Quello lo so mantenere.",
+		"Non prometto mai la vittoria. Prometto di esserci alla fine, in un modo o nell'altro.",
+		"Vincere non posso prometterlo. Restare fino alla fine, invece, dipende tutto da me.",
+	},
+	["cls.paladin.muse.w07.074"] = {
+		"Fra un villaggio e l'altro c'è sempre qualcuno che ha bisogno di una mano: un carro nel fosso, una capra smarrita. Credo che la Luce ce li metta apposta.",
+		"Per un paladino nessuna strada è mai vuota. C'è sempre una ruota impantanata lungo il percorso, e chissà come tocca sempre a me spingerla.",
+		"Sospetto che la Luce metta carri nei fossi lungo la mia strada solo per tenermi in esercizio le braccia.",
+	},
+	["cls.paladin.muse.w07.075"] = {
+		"Il giuramento sta appena sotto lo sterno. Nei giorni brutti è una pietra; in quelli buoni, una brace.",
+		"Porto il giuramento da qualche parte sotto il pettorale. Certi giorni preme come un sasso, altri scalda come un tizzone.",
+	},
+	["cls.paladin.muse.w07.076"] = {
+		"Ogni villaggio crede che un paladino possa aggiustare tutto. Un pozzo, una mucca, un matrimonio: tutti bisognosi di una benedizione, tutti lo stesso giorno.",
+		"La gente chiede a un paladino di benedire le cose più strane. I pozzi, li capisco. Gli stivali, un po' meno. L'ho fatto lo stesso.",
+		"A un paladino si può chiedere di benedire qualsiasi cosa. Pozzi, capre, uno sposo agitato. A quanto pare non pongo limiti.",
+	},
+	["cls.paladin.muse.w07.077"] = {
+		"I soldati di guardia si raddrizzano quando passa un paladino. Cerco di raddrizzarmi anch'io per loro: sono lì da più tempo.",
+		"Le guardie salutano la mia armatura come una vecchia amica. Io saluto i loro occhi stanchi. Sappiamo tutti e due chi fa davvero la guardia.",
+		"Ogni guardia a ogni posto conosce il peso di un lungo turno. Le saluto per {g:primo|prima}: se lo sono guadagnato.",
+	},
+	["cls.paladin.muse.w07.078"] = {
+		"C'è un martello che posso invocare solo quando il nemico è quasi finito. Alla Luce, pare, non piacciono gli addii lunghi.",
+		"Quel martello arriva solo alla fine, quando un nemico sta già cedendo. Misericordia e ira in un solo lancio.",
+	},
+	["cls.paladin.muse.w07.079"] = {
+		"E se la Luce fosse solo ciò che prova la brava gente quando trova il coraggio, e niente di più? Gliel'ho chiesto. Non ha obiettato. O è una risposta, o è la mancanza di una.",
+		"Certi giorni sospetto che la Luce sia soltanto coraggio con un bel nome. Poi chiude una ferita sotto la mia mano, e il sospetto tace per un po'.",
+		"La Luce è reale, o è solo ciò che prova chi ha coraggio? Ho deciso che conta poco, nei giorni in cui la ferita si chiude lo stesso.",
+	},
+	["cls.paladin.muse.w07.080"] = {
+		"posa una mano sull'arma al fianco e ce la lascia per un po', come si tiene la mano sulla testa di un vecchio cane.",
+		"batte due volte sull'impugnatura dell'arma, distrattamente, come si dà una pacca a un cavallo prima di un lungo viaggio.",
+	},
+	["cls.paladin.muse.w07.081"] = {
+		"Un vecchio paladino una volta mi ha detto di fidarmi dei giuramenti pronunciati con la voce tremante, e di tenere d'occhio quelli troppo saldi.",
+		"Diffida di chi giura senza un tremito, dicono i vecchi paladini. Un giuramento che non costa niente dirlo, costa poco romperlo.",
+	},
+	["cls.paladin.muse.w07.082"] = {
+		"La Luce può chiudere una ferita. Non può chiudere una tomba. Ho imparato la differenza come la impara chiunque.",
+		"C'è un limite a ciò che si può risanare, e finisce sul bordo di una tomba. Sapere esattamente dov'è quel bordo è la cosa più dura che la Luce mi abbia insegnato.",
+	},
+	["cls.paladin.muse.w07.083"] = {
+		"Che si dica che è {g:passato|passata} di qui {g:un paladino|una paladina}, e che dopo le cose andavano un po' meglio.",
+		"Quando me ne andrò da qui, vorrei che il posto fosse un po' più sicuro di come l'ho trovato. È tutta l'eredità che voglio.",
+		"Lascia le cose meglio di come le hai trovate. Se la Luce mi chiede qualcosa di più semplice, non l'ho ancora sentito.",
+	},
+	["cls.paladin.pray.w07.001"] = {
+		"Luce, dammi umiltà quando vinco e onestà quando perdo. Al resto penso io.",
+		"Luce, fa' che lo scudo sia la prima cosa che alzo e il martello l'ultima.",
+	},
+	["cls.paladin.quest_complete.w07.001"] = {
+		"Il giuramento non pesa un incarico in base alla sua grandezza. Chiede solo se l'ho portato a termine.",
+		"Piccolo lavoro o grande impresa, i voti li giudicano allo stesso modo: fatto, o non fatto.",
+		"Nessuna commissione è indegna del giuramento. Ho smesso di aspettarmi che mi dica quali contano.",
+	},
+	["cls.paladin.quest_complete.w07.002"] = {
+		"Fatto. Se arrivano altri guai, mandate a chiamare il paladino più vicino. Probabilmente sarò io.",
+		"Finito. Se qualcos'altro dovesse strisciare fuori dai muri, sapete dove trovare un martello.",
+		"Sistemato. Sprangate comunque la porta: le buone abitudini durano più della buona sorte.",
+	},
+	["cls.paladin.quest_complete.w07.003"] = {
+		"lascia uscire un lungo respiro e slaccia i guanti d'arme, come se deponesse il compito insieme a loro.",
+		"allenta la cinghia al collo con un piccolo sospiro: la commissione è finita, e l'armatura d'un tratto pesa di più.",
+		"batte una volta le nocche sul pettorale, un piccolo segnale privato che la faccenda è chiusa.",
+	},
+	["cls.paladin.quest_complete.w07.004"] = {
+		"Mi hanno ringraziato come se avessi fatto qualcosa di straordinario. Ho fatto qualcosa di necessario. La differenza, per me, conta.",
+		"La gratitudine è gentile, ma preferirei che dimenticassero me e ricordassero che l'aiuto è arrivato.",
+		"Se ricordano l'aiuto e dimenticano chi l'ha portato, ho fatto bene.",
+	},
+	["cls.paladin.quest_complete.w07.005"] = {
+		"Fatto. Direi che non è stato niente, ma i miei piedi mi darebbero del bugiardo.",
+		"Ecco. Mi è costato solo una giornata e quasi tutta la pazienza.",
+		"Finito. La prossima volta magari un incarico con un po' meno salita.",
+	},
+	["cls.paladin.quest_complete.w07.006"] = {
+		"Non offro questo alla Luce come un dono: alla Luce non servono le mie commissioni. Le faccio perché servono a qualcun altro.",
+		"Alla Luce non serviva che lo facessi. Serviva alla gente di qui. È per questo che alla Luce importa.",
+		"Qualunque cosa la Luce voglia da me, sospetto che somigli molto a questo: un piccolo guaio risolto per qualcuno che da solo non ce l'avrebbe fatta.",
+	},
+	["cls.paladin.quest_complete.w07.007"] = {
+		"stringe la mano a chi aveva affidato l'incarico, con fermezza, come si suggella un patto.",
+		"incrocia lo sguardo di chi aveva chiesto e lo regge per un momento, come per accertarsi che la faccenda sia davvero chiusa.",
+		"fa un breve cenno del capo, di quelli che chiudono un registro, e rivolge già l'attenzione a ciò che viene dopo.",
+	},
+	["cls.paladin.quest_complete.w07.008"] = {
+		"Ho fatto quello che mi è stato chiesto. Vorrei credere che quello che mi è stato chiesto fosse giusto. Di solito lo era. Di solito.",
+		"Certe volte accetto un incarico sulla fiducia e solo dopo mi chiedo a chi abbia giovato. Il giuramento chiede di meglio.",
+		"Fatto. Ora viene la parte che nessuno paga: capire se era giusto.",
+	},
+	["cls.paladin.quest_complete.w07.009"] = {
+		"Ecco. La prossima volta chiedete prima che arrivi a questo punto. Chiedere non è una debolezza.",
+		"Fatto. E la prossima volta non aspettate tanto a chiedere aiuto: l'orgoglio è una pessima sentinella.",
+		"Finito. Avete fatto bene a chiedere. Molti non lo fanno, e la pagano.",
+	},
+	["cls.paladin.quest_complete.w07.010"] = {
+		"Dopo un lavoro ben fatto resta un piccolo calore. Un tempo credevo fosse orgoglio. Ora credo sia la Luce che, senza dire nulla, annuisce.",
+		"Una buona azione portata a termine lascia un calore dietro le costole. L'orgoglio scotta di più; questo è più mite, e dura di più.",
+		"Quel piccolo bagliore dopo una cosa fatta bene non è vanità, ho deciso. La vanità vuole un pubblico. Questo si accontenta di nessuno.",
+	},
+	["cls.paladin.quest_complete.w07.011"] = {
+		"Un altro filo annodato. Il resto lo srotola la strada.",
+		"Un capo sciolto del mondo annodato. Ce ne sono tanti altri; le dita non mi mancano.",
+		"Annodato e chiuso. Più avanti, il prossimo capo sciolto mi sta già aspettando.",
+	},
+	["cls.paladin.quest_complete.w07.012"] = {
+		"conta la ricompensa una volta, con attenzione, e ne mette da parte una quota in un borsello separato, come fa chi dona senza mai dirlo.",
+		"soppesa il borsello sul palmo, poi lo divide con la precisione silenziosa di chi sa già dove andrà ogni moneta.",
+	},
+	["cls.paladin.quest_complete.w07.013"] = {
+		"Bene, è sistemato. Mi mangerei una pagnotta intera, crosta compresa.",
+		"Ecco fatto. Tutta questa rettitudine mi ha messo appetito.",
+		"Fatto. Il lavoro giusto fa venire una fame giusta.",
+	},
+	["cls.paladin.quest_complete.w07.014"] = {
+		"Qualcuno passerà di qui un po' più al sicuro, e non saprà mai perché. Preferisco così.",
+		"La guardia migliore è quella che nessuno nota: semplicemente, il pericolo non c'è più.",
+		"Nessuno saprà mai che questo guaio è esistito. È così che capisco che è stato risolto bene.",
+	},
+	["cls.paladin.quest_complete.w07.015"] = {
+		"Ogni incarico finito si chiude allo stesso modo: un cenno, una moneta e la strada successiva. Certi giorni vorrei che qualcuno mi chiedesse di restare.",
+		"Aiuto dato, grazie ricevuto, e via di nuovo. Nella vita di un paladino gli addii lunghi sono pochi.",
+	},
+	["cls.paladin.quest_complete.w07.016"] = {
+		"È compiuto. Che il resto dei tuoi giorni sia più tranquillo di questo.",
+		"La faccenda è chiusa. Spero che tu non abbia mai più bisogno di un paladino: lo dico con affetto.",
+		"Finito. Che la tua prossima preoccupazione sia piccola.",
+	},
+	["cls.paladin.quest_complete.w07.017"] = {
+		"Ho cominciato questo incarico pensando di sapere la risposta. Ne esco con meno certezze e domande migliori. I maestri approverebbero.",
+		"Ogni commissione corregge qualcosa che credevo di sapere. Questa ha corretto la mia pazienza.",
+		"Nessun maestro avrebbe potuto insegnarmi quello che mi ha insegnato questa: quanto spesso la mia prima impressione è sbagliata.",
+	},
+	["cls.paladin.quest_complete.w07.018"] = {
+		"sfiora l'impugnatura dell'arma e china il capo per un respiro, il ringraziamento di un soldato a qualcosa che non si vede.",
+		"mormora una sola parola, troppo piano per essere colta, e il tenue bagliore sulle spalle si ravviva per poi svanire.",
+		"si raddrizza per un momento, come se un debito fosse stato segnato come saldato in un registro che vede solo {g:lui|lei}.",
+	},
+	["cls.paladin.quest_complete.w07.019"] = {
+		"L'incarico è finito e le mie spalle lo sanno. L'armatura si fa pesante alla fine delle cose, mai all'inizio.",
+		"Strano come l'armatura non pesi niente all'andata e una tonnellata al ritorno.",
+		"Ogni commissione finisce con la stessa scoperta: ho portato quest'armatura per tutto il tempo.",
+	},
+	["cls.paladin.quest_complete.w07.020"] = {
+		"I vecchi paladini della Mano d'Argento, mi dicono, erano noti per questo: non le grandi battaglie, ma l'aiuto che arrivava quando lo si chiedeva. Vorrei essere {g:noto|nota} anch'io per questo.",
+		"Prima che l'ordine si spezzasse, dice la gente, un contadino poteva chiedere aiuto a un paladino e contarci. Cerco di far sì che sia ancora vero, un incarico dopo l'altro.",
+	},
+	["cls.paladin.quest_complete.w07.021"] = {
+		"Un altro torto raddrizzato. La Luce e io facciamo una bella squadra.",
+		"Un'altra cosa rimessa in sesto. Meglio di una medaglia, sempre.",
+		"Sistemato. Quella sensazione non stanca mai.",
+	},
+	["cls.paladin.quest_complete.w07.022"] = {
+		"A volte mi chiedo se la Luce tenga il conto. Se lo fa, spero che arrotondi per eccesso.",
+		"Se la Luce conta le buone azioni, mi piace pensare che sia generosa con le frazioni.",
+	},
+	["cls.paladin.quest_progress.w07.001"] = {
+		"Un pezzo è fatto. Un voto non si mantiene tutto in una volta: si mantiene a pezzi come questo.",
+		"A metà strada, più o meno. Lo finirò: l'ho detto.",
+		"Un passo avanti. Il resto sono solo altri passi, e ne ho ancora tanti nelle gambe.",
+	},
+	["cls.paladin.quest_progress.w07.002"] = {
+		"Tutto ciò che mi è stato chiesto è fatto. Ora qualcuno merita di saperlo.",
+		"Tutto completato. Meglio andare a dirglielo prima che comincino a preoccuparsi.",
+		"Con questo è completo. Il ritorno è la parte che mi piace.",
+	},
+	["cls.paladin.quest_progress.w07.003"] = {
+		"si ferma a valutare a che punto è il compito, annuisce tra sé e riprende.",
+		"fa il punto su ciò che è già fatto, poi raddrizza le spalle per il resto.",
+		"batte il pollice sul pettorale, un piccolo segno di soddisfazione, poi guarda a ciò che resta.",
+	},
+	["cls.paladin.reputation_change.w07.001"] = {
+		"Ora mi guardano con un po' più di favore. Anche la reputazione di un paladino è uno scudo; intendo tenerla lucida.",
+		"Adesso hanno un'opinione migliore di me. Dovrò stare {g:attento|attenta}: la stima altrui è facile da usare come appoggio e difficile da meritare.",
+		"Un po' più di fiducia guadagnata. La porterò con la stessa cura del giuramento, visto che ne fa parte.",
+	},
+	["cls.paladin.rez.w07.001"] = {
+		"Di nuovo in piedi, armatura compresa. Il giuramento non è decaduto mentre ero via: ha solo aspettato, come fanno i giuramenti.",
+		"La morte ha mollato la presa. La prendo come il modo della Luce di dirmi che il lavoro non è finito, e mi rimetto all'opera.",
+	},
+	["cls.paladin.rezother.w07.001"] = {
+		"Svegliati piano. La Luce ha scambiato due parole con la morte, e la morte si è fatta da parte.",
+		"Apri gli occhi. La morte ha mollato la presa prima di quanto volesse.",
+		"Per un momento non c'eri, e adesso ci sei. È tutto ciò che conta.",
+	},
+	["cls.paladin.rezother.w07.002"] = {
+		"Le lunghe parole della Redenzione, e per tutto il tempo resto in ascolto del primo respiro. Arriva sempre più tardi di quanto vorrei.",
+		"La Redenzione è lenta. Dieci battiti di parole su qualcuno che non può sentirle, e poi le sente.",
+	},
+	["cls.paladin.rezother.w07.003"] = {
+		"si inginocchia accanto al corpo e tiene una mano sopra il petto immobile, pronunciando le parole lunghe finché un respiro non si muove sotto il palmo.",
+		"si china sul corpo e invoca la Luce con voce bassa e ininterrotta, salda come una mano su una fune.",
+	},
+	["cls.paladin.rezother.w07.004"] = {
+		"Su. Morire non ti esonera dal resto del cammino.",
+		"Eccoti qua. La morte è una pessima compagnia comunque: dicono che non parli mai.",
+	},
+	["cls.paladin.rezother.w07.005"] = {
+		"Non chiedo mai dove fossero. Non sono {g:sicuro|sicura} che la Luce vorrebbe farmelo sapere.",
+		"Il primo sguardo nei loro occhi è sempre lontano. Aspetto che ritrovi questa sponda prima di parlare.",
+	},
+	["cls.paladin.rezother.w07.006"] = {
+		"In piedi. Non ti lascio qui per terra.",
+		"Alzati. Il giuramento non finisce sull'orlo di una tomba, né il mio né il tuo.",
+		"Alzati e mettiti al mio fianco. Nessuno resta a terra finché ho forza nelle braccia.",
+	},
+	["cls.paladin.rezother.w07.007"] = {
+		"Piano. Il primo respiro farà male. Il secondo meno.",
+		"Resta giù un momento. Il tuo corpo deve ancora ricevere la notizia.",
+		"Non provare ancora a parlare. Prima respira: le parole possono aspettare.",
+	},
+	["cls.paladin.rezother.w07.008"] = {
+		"La Luce restituisce la vita, non la forza. Quella arriva col cibo e con una lunga sosta.",
+		"Un corpo appena rialzato resta debole per un po'. Starò a portata finché non sarà in grado di tenere il passo.",
+	},
+	["cls.paladin.rezother.w07.009"] = {
+		"Per la Luce, alzati. Non tutto ciò che cade deve restare a terra.",
+		"Alzati. La Luce ha già detto di sì; manca solo che il tuo corpo sia d'accordo.",
+		"Nel nome della Luce: respira.",
+	},
+	["cls.paladin.rezother.w07.010"] = {
+		"resta in ginocchio un momento dopo che gli occhi si sono aperti, come per accertarsi che il respiro abbia intenzione di restare.",
+		"lascia andare un lungo respiro solo quando l'altro corpo si muove, e soltanto allora si rialza da terra.",
+	},
+	["cls.paladin.thanks.w07.001"] = {
+		"Grazie. Me ne ricorderò la prossima volta che a te servirà uno scudo.",
+		"Ti ringrazio. Consideralo un debito: i paladini pagano i loro.",
+	},
+	["cls.paladin.thanks.w07.002"] = {
+		"Ti ringrazio di cuore. Farei un inchino, ma con quest'armatura diventa uno spettacolo.",
+		"Grazie davvero. Ti benedirei per questo, ma sospetto che preferiresti qualcosa da bere.",
+	},
+	["cls.paladin.threat.w07.001"] = {
+		"Ho giurato di proteggere gli innocenti. Tu non mi sembri sulla lista.",
+		"Il mio giuramento copre tutti quelli che sono qui, tranne te. Fatti da parte.",
+	},
+	["cls.paladin.threat.w07.002"] = {
+		"In questo momento porto addosso parecchia Luce. Non darmi un motivo per condividerla.",
+		"C'è un sigillo che ti aspetta. Vattene, e potrà restare inutilizzato.",
+	},
+	["cls.paladin.threat.w07.003"] = {
+		"Noterai che porto parecchia armatura. Noterai che tu no. Pensaci.",
+		"Io porto addosso mezza fucina, tu soltanto un'aria strafottente. Solo una delle due ferma le lame.",
+		"Sono molto difficile da ferire e molto facile da irritare. Tu stai lavorando sulla seconda.",
+	},
+	["cls.paladin.threat.w07.004"] = {
+		"lascia che un bagliore lento si raccolga lungo l'arma e non dice nulla, il che è quasi peggio.",
+		"posa una mano sull'arma e regge lo sguardo, mentre un lieve calore sale dall'armatura come da una forgia.",
+	},
+	["cls.paladin.threat.w07.005"] = {
+		"So cosa sei. E so esattamente cosa farne.",
+		"Cosa morta, ho un intero giuramento dedicato a quelli come te.",
+		"Torna a sdraiarti finché puoi. Non lo chiederò due volte.",
+	},
+	["cls.paladin.threat.w07.006"] = {
+		"Un altro passo e quell'idea te la tolgo dalla testa a martellate.",
+		"Prova. Posso fermarti a metà passo, e non capirai nemmeno come.",
+	},
+	["cls.paladin.victory.w07.001"] = {
+		"Prima il fiato. La preghiera di ringraziamento può aspettare che i polmoni siano d'accordo.",
+		"Lascia che il cuore rallenti, prima di ringraziare. La Luce non si offenderà per l'attesa.",
+	},
+	["cls.paladin.victory.w07.002"] = {
+		"È fatta. La Luce è rimasta salda quando io non lo ero.",
+		"Finito. Ogni volta che il braccio vacillava, la Luce no.",
+		"Fatto. Io ho colpito, la Luce ha diretto.",
+	},
+	["cls.paladin.victory.w07.003"] = {
+		"s'inginocchia per un istante accanto al nemico caduto e si porta una mano al cuore, come si fa davanti a una tomba.",
+		"traccia un piccolo segno sul caduto, lo stesso gesto breve che fosse una bestia o un brigante.",
+	},
+	["cls.paladin.victory.w07.004"] = {
+		"Il lavoro pesante l'ha fatto la Luce. Il merito del gioco di gambe me lo prendo io.",
+		"Bel lavoro di squadra. La Luce si è occupata dei miracoli, io dei lividi.",
+	},
+	["cls.paladin.victory.w07.005"] = {
+		"Ho chiesto forza, ed è arrivata. Non ho mai chiesto se il nemico si meritasse quello che ha portato.",
+		"La Luce ha risposto. Lo fa sempre. Quello che mi chiedo è se le capiti mai di sussultare.",
+	},
+	["cls.paladin.victory.w07.006"] = {
+		"Un pericolo in meno per il prossimo viandante. Non mi serve altra ricompensa.",
+		"Domani qualcuno passerà di qui senza rischi, e non saprà mai perché. Bene.",
+	},
+	["cls.paladin.victory.w07.007"] = {
+		"allenta con un dito il colletto dell'armatura e lascia entrare piano l'aria più fresca.",
+		"solleva il viso per un momento, gli occhi chiusi, mentre il tenue bagliore che {g:lo|la} avvolge si ritira.",
+	},
+	["cls.paladin.victory.w07.008"] = {
+		"Luce, accogli quel che c'era di buono, se mai ce n'era.",
+		"Luce, giudica con gentilezza ciò che resta. Io non potevo permettermelo.",
+	},
+	["cls.paladin.victory.w07.009"] = {
+		"Il giudizio, ancora una volta troppo presto. La prossima volta lascia mordere prima il sigillo.",
+		"Troppo mana speso troppo presto. La Luce è generosa, le mie riserve no.",
+	},
+	["cls.paladin.victory.w07.010"] = {
+		"Tutti ancora in piedi? Bene. Fatemi vedere chi sanguina.",
+		"Fatevi sentire. Chi è ferito venga qui prima di sedersi.",
+		"In fila, prima i feriti. La Luce non ha ancora finito di lavorare.",
+	},
+	["cls.paladin.victory.w07.011"] = {
+		"Ha combattuto come se avesse qualcosa per cui vivere. Forse ce l'aveva.",
+		"C'è sempre un momento, dopo, in cui mi chiedo cosa stesse difendendo.",
+	},
+	["cls.paladin.victory.w07.012"] = {
+		"Caso chiuso. Presiedeva la Luce, io ho solo letto la sentenza.",
+		"Sentenza eseguita. L'udienza è tolta.",
+		"Pena scontata. Oggi niente ricorsi.",
+	},
+	["cls.paladin.victory.w07.013"] = {
+		"alza una mano aperta, e l'ultimo chiarore si stacca dal palmo come polvere calda in un raggio di sole.",
+		"si porta le nocche del guanto alle labbra, un ringraziamento breve e privato.",
+	},
+	["cls.paladin.victory.w07.014"] = {
+		"Un altro nella lista delle cose che non hanno dato retta a un paladino.",
+		"Ecco cosa succede a ignorare chi porta un'armatura lucente. Qualcuno dovrebbe scriverlo su un cartello.",
+	},
+	["cls.paladin.victory.w07.015"] = {
+		"Mi tremano le mani. Lasciale fare. Se lo sono guadagnato.",
+		"Il tremito arriva sempre dopo, mai durante. La Luce ha queste delicatezze.",
+		"Calma, mani. La vostra parte l'avete fatta.",
+	},
+	["cls.paladin.victory.w07.016"] = {
+		"Ecco. Adesso troviamo un posto per sederci che non sia coperto di... qualunque cosa fosse quella.",
+		"Fatto. Speriamo ci sia dell'acqua qui vicino: in quest'armatura ho sudato mezzo fiume.",
+	},
+	["cls.paladin.victory.w07.017"] = {
+		"Riposa, adesso. Come si deve, stavolta.",
+		"Dormi. Nessuno ha il diritto di svegliarti ancora.",
+		"Ecco. Chiunque tu fossi, adesso sei in pace.",
+	},
+	["cls.paladin.victory.w07.018"] = {
+		"Quello, un tempo, aveva un volto. Forse un nome che qualcuno pronuncia ancora. Spero che la Luce li trovi entrambi.",
+		"I morti non scelgono di camminare. Per questo è così difficile sentirsi in pace dopo averli fermati.",
+	},
+	["cls.paladin.victory.w07.019"] = {
+		"Vattene nell'abisso che ti ha fatto, e digli che ti ci ha mandato un paladino.",
+		"Un demone in meno al mondo. Il mondo quasi non se ne accorgerà, ed è giusto così.",
+	},
+	["cls.paladin.victory.w07.020"] = {
+		"si guarda attorno lentamente, come fa una sentinella, prima di lasciar ricadere l'arma lungo il fianco.",
+		"compie un giro completo su se {g:stesso|stessa}, vigile, e solo allora lascia ricadere le spalle.",
+	},
+	["cls.paladin.victory.w07.021"] = {
+		"Il calore se ne sta andando. Se ne va sempre un po' prima di quanto vorrei.",
+		"Quel chiarore nel petto si spegne piano dopo uno scontro, come un focolare quando gli ospiti sono andati via.",
+	},
+	["cls.paladin.victory.w07.022"] = {
+		"La Luce ti ringrazia per la partecipazione.",
+		"A nome della Luce, grazie della visita. Per favore, non ripeterla.",
+		"La Luce ti augura miglior fortuna, in qualunque cosa venga dopo.",
+	},
+	["cls.paladin.victory.w07.023"] = {
+		"Qualcuno deve ricordare che questa era una vita. Tanto vale che sia chi l'ha spenta.",
+		"È facile dimenticare che il nemico era vivo un attimo fa. Cerco di non renderlo facile.",
+	},
+	["cls.paladin.victory.w07.024"] = {
+		"In piedi, giuramento intatto. Una buona giornata di lavoro.",
+		"Giuramento mantenuto, nemico a terra, e niente di rotto che non si possa aggiustare.",
+	},
+	["cls.paladin.victory.w07.025"] = {
+		"mormora una breve preghiera sul caduto, parole troppo basse perché altri le colgano.",
+		"si porta l'impugnatura dell'arma alla fronte in un piccolo saluto formale al caduto.",
+	},
+	["cls.paladin.victory.w07.026"] = {
+		"Costole ammaccate, un polso indolenzito, un'ammaccatura da qualche parte nell'armatura. Spiccioli. Li pago.",
+		"Il corpo tiene un registro: un livido qui, una storta là. Salderò i conti al prossimo fuoco.",
+	},
+	["cls.paladin.victory.w07.027"] = {
+		"Ben combattuto, tutti quanti. Vi benedirei uno per uno, se mi fosse rimasto del mana.",
+		"Ottimo lavoro. Ricordatemi di accendere una candela per questo gruppo.",
+	},
+	["cls.paladin.victory.w07.028"] = {
+		"Mi è piaciuto. Troppo. Attenzione: anche l'orgoglio porta l'armatura.",
+		"Un piccolo bagliore di soddisfazione. Lo lascio andare prima che diventi qualcosa di peggio.",
+	},
+	["cls.paladin.victory.w07.029"] = {
+		"Non è una vittoria mia. L'ho solo portata fin qui.",
+		"Ha vinto la Luce. Io ho solo tenuto aperta la porta.",
+		"Io mi prendo i lividi, la Luce il merito. Scambio onesto.",
+	},
+	["cls.paladin.victory.w07.030"] = {
+		"Le piastre salvano la vita, ma non risparmiano le spalle. Le mie si lamenteranno per ore.",
+		"La corazza ha preso tutti i colpi che doveva. La mia schiena ha preso la corazza.",
+	},
+	["cls.paladin.victory.w07.031"] = {
+		"lascia ricadere l'arma al fianco, e per un momento l'aria attorno a {g:lui|lei} vibra di un chiarore che svanisce.",
+		"si raddrizza piano, e l'ultimo filo di luce scivola via dall'armatura come acqua sull'ardesia.",
+	},
+	["cls.paladin.victory.w07.032"] = {
+		"Questo mi vale un pasto caldo. Su questo la Luce e io siamo d'accordo.",
+		"La virtù è premio a se stessa, mi dicono. Un pezzo di pane però lo gradirei.",
+	},
+	["cls.paladin.victory.w07.033"] = {
+		"Dopo non mi sento mai {g:santo|santa}. Solo {g:stanco|stanca}, {g:grato|grata}, e un po' a disagio per quanto mi è piaciuto quel colpo.",
+		"Nessuno ti avverte che la rettitudine e il sollievo, nel corpo, si somigliano tanto.",
+	},
+	["cls.paladin.victory.w07.034"] = {
+		"Questo diventerà un racconto. Cercherò di raccontarlo con umiltà.",
+		"Uno tosto, ed è a terra. Qualcuno se lo ricordi per me: io sarò troppo {g:modesto|modesta} per raccontarlo bene.",
+	},
+	["cls.paladin.victory.w07.035"] = {
+		"Finita. La Luce si fa silenziosa, e torno a essere solo me, che è già tanto.",
+		"Il giuramento può mettersi a riposo per un momento. E anch'io.",
+		"Riposo, cuore. Qui abbiamo finito.",
+	},
+	["cls.paladin.victory.w07.036"] = {
+		"Questa è fatta. Avanti con la prossima cosa a cui opporsi.",
+		"Uno in meno. Il giuramento non dice quanti: dice solo di andare avanti.",
+	},
+	["cls.paladin.victory.w07.037"] = {
+		"si lascia cadere su un ginocchio, l'armatura che sferraglia, e si concede esattamente un gemito.",
+		"si sfila un guanto coi denti e piega le dita intorpidite, con una smorfia.",
+	},
+	["cls.paladin.victory.w07.038"] = {
+		"Perdonami, bestia. Volevi solo vivere, come chiunque.",
+		"Riposa, creatura. Facevi solo ciò che fa la tua specie.",
+	},
+	["cls.paladin.victory.w07.039"] = {
+		"Qualcuno così, un tempo, aveva delle scelte. Spero che la Luce le pesi con più dolcezza di quanto potessi fare io.",
+		"Una creatura che pensava, e ha scelto questo. Non lo capirò mai, e non smetterò mai di provarci.",
+	},
+	["cls.paladin.victory.w07.040"] = {
+		"Prima: chi ha il fiato corto, chi sanguina, chi finge di non sanguinare. Poi il resto.",
+		"Cerco i feriti prima di guardare il nemico. Un'abitudine che vale la pena tenere.",
+	},
+	["cls.paladin.victory.w07.041"] = {
+		"Il giudizio non arriva sempre in fretta. Oggi sì.",
+		"Certi debiti la Luce li riscuote con calma. Questo l'ho riscosso io, seduta stante.",
+		"Ecco cosa si paga quando la Luce smette di essere paziente.",
+	},
+	["cls.paladin.victory.w07.042"] = {
+		"{g:Vivo|Viva}, {g:intero|intera}, e la Luce ancora con me. Certi giorni è tutta la benedizione che serve.",
+		"Niente di rotto, solo sudore. Grazie, Luce, per i favori piccoli e per quelli grandi.",
+	},
+	["cls.paladin.victory.w07.043"] = {
+		"Un morto che cammina in meno. Da qualche parte una tomba ha di nuovo il suo inquilino.",
+		"A terra, e stavolta ci resti. La Luce fa la guardia meglio di chi ti ha rialzato.",
+	},
+	["cls.paladin.victory.w07.044"] = {
+		"espira piano tra i denti stretti e scioglie la rigidità del braccio armato.",
+		"scuote il braccio armato e saggia la spalla con un cerchio prudente.",
+	},
+	["cls.shaman.attack.w07.001"] = {
+		"Dal cielo alla terra, e tu nel mezzo.",
+		"C'è una linea dritta tra il cielo e il terreno. Tu ci stai sopra.",
+		"Da lassù a quaggiù, passando per te.",
+	},
+	["cls.shaman.attack.w07.002"] = {
+		"Breve e secca, come uno schiaffo degli elementi.",
+		"Una scossa per farti ballare i denti.",
+		"Rapida e cattiva, come piace agli spiriti per cominciare.",
+	},
+	["cls.shaman.attack.w07.003"] = {
+		"Svegliare l'arma. Che uno spirito viaggi con ogni colpo.",
+		"Ora l'arma vibra. Ogni colpo porta con sé un po' degli elementi.",
+		"Che l'arma porti uno spirito per un po'. Colpisce più dritta.",
+	},
+	["cls.shaman.attack.w07.004"] = {
+		"pianta un totem a terra in pieno scontro, senza perdere il passo.",
+		"lascia cadere un totem ai propri piedi, quasi con noncuranza, e continua a muoversi.",
+	},
+	["cls.shaman.attack.w07.005"] = {
+		"Ecco. Qualcosa per scaldarti.",
+		"Hai freddo? Ci penso io.",
+		"Un po' di calore per te, offre la casa.",
+	},
+	["cls.shaman.attack.w07.006"] = {
+		"E un'altra. Gli spiriti oggi sono generosi.",
+		"Ancora. Di richieste me ne restano parecchie.",
+		"Continuo a chiedere, e continuano a rispondere. Che fortuna.",
+	},
+	["cls.shaman.attack.w07.007"] = {
+		"Ogni incantesimo è un favore chiesto. Tieni il conto.",
+		"Chiedi, spendi, chiedi ancora. Conta i favori.",
+	},
+	["cls.shaman.attack.w07.008"] = {
+		"Salta, fulmine. Trova chiunque altro ne voglia.",
+		"Lascialo saltare. Uno solo non gli basta mai.",
+	},
+	["cls.shaman.attack.w07.009"] = {
+		"slancia una mano in avanti, e l'aria si spacca con uno schiocco bianco.",
+		"scatta col braccio, e una linea di luce frastagliata salta via dalle dita.",
+	},
+	["cls.shaman.attack.w07.010"] = {
+		"Un altro favore degli elementi, consegnato a mano.",
+		"Omaggio degli spiriti.",
+		"Con i saluti degli spiriti.",
+	},
+	["cls.shaman.battle.w07.001"] = {
+		"Il cielo mi deve un favore. Lo riscuoto su di te.",
+		"Ho una tempesta ripiegata tra le mani. Vediamo fin dove si apre.",
+		"Se non ti muovi, incontrerai il cielo. Se scappi, lo incontrerai lo stesso.",
+	},
+	["cls.shaman.battle.w07.002"] = {
+		"Chiedere, non comandare. Anche adesso, con quella cosa che mi viene addosso. Chiedere.",
+		"Calma. Gli spiriti aiutano chi chiede a voce piana, non chi strilla.",
+		"Tieni la voce bassa e uguale. Il panico è un pessimo modo di parlare agli elementi.",
+	},
+	["cls.shaman.battle.w07.003"] = {
+		"inclina il capo come per cogliere una voce lontana, poi si volta verso il nemico.",
+		"fa ruotare le spalle una volta e mormora qualche parola al terreno, come si saluta un vecchio alleato prima di una giornata di lavoro.",
+	},
+	["cls.shaman.battle.w07.004"] = {
+		"L'acqua dice di perdonarti. Il fuoco non è d'accordo. Oggi il fuoco parla più forte.",
+		"Gli spiriti dell'acqua proponevano di parlarne con calma. Quelli del fuoco no.",
+		"Quattro elementi, quattro pareri su cosa fare di te. Uno solo è gentile.",
+	},
+	["cls.shaman.battle.w07.005"] = {
+		"Questo totem resta piantato. E io con lui.",
+		"Dove sta il totem, sto io. Vieni a spostarci tutti e due.",
+		"Un totem nel terreno, {g:uno sciamano|una sciamana} lì accanto. Nessuno dei due si muove di qui.",
+	},
+	["cls.shaman.battle.w07.006"] = {
+		"Qualunque cosa sia, ha anch'essa uno spirito. Se devo, la ucciderò, e ricorderò di averlo fatto.",
+		"Ogni nemico porta una scintilla che gli hanno dato gli elementi. Riprendersela non è mai poca cosa.",
+	},
+	["cls.shaman.battle.w07.007"] = {
+		"Il fuoco mi gira dentro da tutto il giorno. Tu andrai benissimo.",
+		"Ho una scintilla che mi prude sotto la pelle da quando mi sono {g:svegliato|svegliata}. Grazie della scusa.",
+		"Il fuoco chiedeva qualcosa da fare. Eccoti qua.",
+	},
+	["cls.shaman.battle.w07.008"] = {
+		"tocca uno dopo l'altro i totem alla cintura, rapido come chi conta monete, e si fa avanti.",
+		"passa il pollice sui totem appesi alla cintura, poi si mette ben saldo sulle gambe.",
+	},
+	["cls.shaman.battle.w07.009"] = {
+		"Spirito della terra, se ti va, rendi incerto il terreno sotto questo nemico.",
+		"Aria, se mi ascolti, prestami un po' della tua prontezza.",
+		"Acqua, restami vicina. Potrei aver bisogno di te prima che finisca.",
+	},
+	["cls.shaman.battle.w07.010"] = {
+		"Tieni da parte abbastanza per una buona cura. Tutto il resto va nello scontro.",
+		"Regola della borsa di uno sciamano: una cura sempre di riserva, il resto si spende senza pensarci.",
+	},
+	["cls.shaman.battle.w07.011"] = {
+		"Se ti consola, il fulmine punge anche me. Un po'. Meno che te.",
+		"Non muoverti. Al fulmine piacciono i bersagli pazienti, e anche a me.",
+	},
+	["cls.shaman.battle.w07.012"] = {
+		"Il Capoguerra parla agli stessi spiriti a cui parlo io. Non facciamo sfigurare nessuno dei due.",
+		"Anche Thrall percorre questa via. Preferisco non disonorarla qui.",
+	},
+	["cls.shaman.battle.w07.013"] = {
+		"Le mani non vogliono stare ferme. Pazienza: gli spiriti ascoltano le parole, non le mani.",
+		"Il cuore corre troppo. Rallenta il respiro, e gli elementi seguiranno il respiro.",
+	},
+	["cls.shaman.battle.w07.014"] = {
+		"Bene. Speravo proprio di piantare qualcosa, oggi.",
+		"Fra un attimo i totem saranno su e io di buon umore. La peggior combinazione possibile, per te.",
+		"Dammi il tempo di un respiro per piantare i totem. Poi vorrai aver scelto qualcun altro.",
+	},
+	["cls.shaman.battle.w07.015"] = {
+		"apre una mano, e un filo di luce azzurra guizza tra le dita.",
+		"flette le dita; una debole scintilla azzurra salta da una nocca all'altra.",
+		"scioglie i polsi con uno scatto, e un bagliore sottile e freddo risale fino ai gomiti.",
+	},
+	["cls.shaman.battle.w07.016"] = {
+		"Il tuo spirito doveva raggiungere gli antenati da tempo. Gli mostrerò la strada.",
+		"Qualcosa tiene il tuo spirito inchiodato a quel corpo. Intendo togliere il chiodo.",
+		"I morti stanno sotto terra, non ci camminano sopra. Lascia che rimetta le cose a posto.",
+	},
+	["cls.shaman.battle.w07.017"] = {
+		"Te lo chiedo una volta sola, spirito: va' a casa. Poi smetto di chiedere.",
+		"Sei lontano dal tuo elemento, e qualcuno ti ha piegato a questo. Vattene, o ti ci mando io.",
+	},
+	["cls.shaman.battle.w07.018"] = {
+		"Niente degli elementi ti ha fatto. Gli elementi non hanno motivo di risparmiarti.",
+		"Non appartieni a questo mondo, e la terra lo sa.",
+	},
+	["cls.shaman.battle.w07.019"] = {
+		"Sentilo attraverso il terreno. I piedi capiscono prima degli occhi.",
+		"Ascolta con le piante dei piedi. Il terreno porta il peso di ogni passo verso di me.",
+	},
+	["cls.shaman.battle.w07.020"] = {
+		"Occhio al terreno. Sta dalla mia parte, e serba rancore.",
+		"Guarda dove metti i piedi. Con la terra di qui ho già scambiato due parole.",
+	},
+	["cls.shaman.battle.w07.021"] = {
+		"si fa immobile, gli occhi socchiusi, come a chiedere licenza a qualcosa sotto i piedi prima del primo colpo.",
+		"abbassa lo sguardo per un respiro, muovendo le labbra, prima di rialzarlo sul nemico.",
+	},
+	["cls.shaman.battle.w07.022"] = {
+		"Fra tutti quelli che potevi infastidire, hai scelto chi parla con i fulmini.",
+		"Pessima scelta. Io e il tuono ci parliamo.",
+	},
+	["cls.shaman.battle.w07.023"] = {
+		"Il fuoco spinge per partire per primo. Non ancora. Che gli altri prendano posto.",
+		"Il fuoco vuole la prima parola, come sempre. Trattienilo un respiro, e morderà più forte.",
+	},
+	["cls.shaman.battle.w07.024"] = {
+		"Spiriti, svegliatevi! Abbiamo un ospite, e non è educato.",
+		"In piedi, spiriti! Visite, e di quelle maleducate.",
+		"Su, spiriti! È arrivato qualcuno che non sa bussare.",
+	},
+	["cls.shaman.battle.w07.025"] = {
+		"Combatterò, e più tardi chiederò agli spiriti se era proprio necessario. A quella domanda rispondono di rado.",
+		"Prima combattere, poi interrogarsi. Gli spiriti avranno comunque la loro opinione.",
+	},
+	["cls.shaman.battle.w07.026"] = {
+		"Prima il totem del fuoco. Che dia lui il primo morso.",
+		"Il totem del fuoco va piantato vicino. Il calore non gli ha mai dato fastidio.",
+		"Un po' di fuoco ai miei piedi prima di cominciare. Ci finirai dentro da te.",
+	},
+	["cls.shaman.battle.w07.027"] = {
+		"pianta un totem nel terreno col palmo della mano, e la terra sembra afferrarlo.",
+		"infila un totem nel suolo con una rapida torsione, come chi pianta il picchetto di una tenda.",
+	},
+	["cls.shaman.battle.w07.028"] = {
+		"Lasciami avvolgere in un po' di fulmine, prima. Poi accomodati pure.",
+		"Un attimo, che mi metto addosso qualcosa che fa scintille. Ecco. Prego.",
+	},
+	["cls.shaman.battle.w07.029"] = {
+		"Prima rallentarlo con la terra, poi decidere. Si ragiona meglio quando l'altro arranca.",
+		"Legare il terreno attorno e lasciarlo arrancare. Poi io e il fulmine ne discutiamo con calma.",
+	},
+	["cls.shaman.battle.w07.030"] = {
+		"Lo senti? Ogni spirito a un tiro di sasso si è appena voltato a guardarti.",
+		"L'aria, il terreno, ogni goccia d'acqua qui intorno: adesso ascoltano tutti me.",
+	},
+	["cls.shaman.battle.w07.031"] = {
+		"L'equilibrio non vuol dire non colpire mai. A volte la bilancia ha bisogno di una spinta.",
+		"Gli anziani parlano di equilibrio a voce calma. Nel mezzo di uno scontro non suona mai calmo.",
+	},
+	["cls.shaman.battle.w07.032"] = {
+		"Facciamola breve. Ogni fulmine lo pago di tasca mia.",
+		"Sbrighiamoci, d'accordo? Il fulmine costa più a me che a te. Be', quasi.",
+	},
+	["cls.shaman.battle.w07.033"] = {
+		"inspira, e per un attimo l'aria vicina sa di pioggia su pietra calda.",
+		"prende fiato, e l'aria tutt'intorno assume l'odore pungente che viene prima del fulmine.",
+	},
+	["cls.shaman.battle.w07.034"] = {
+		"Il tuo spirito correrà libero, dopo. Mi spiace che debba essere io.",
+		"Dopo parlerò di te agli spiriti. Adesso, vieni.",
+		"Non ce l'ho con te, creatura. Solo con il posto in cui ti trovi.",
+	},
+	["cls.shaman.battle.w07.035"] = {
+		"I miei vecchi maestri avrebbero da ridire su come poggio i piedi. Loro non sono qui, questo sì.",
+		"Ogni anziano da cui ho imparato storcerebbe il naso davanti a questa guardia. Per fortuna nessuno di loro sta guardando.",
+	},
+	["cls.shaman.battle.w07.036"] = {
+		"Combattete vicino ai totem! Sono per tutti noi.",
+		"Tutti vicino ai totem! Non li pianto mica per me.",
+	},
+	["cls.shaman.battle.w07.037"] = {
+		"avanza col baricentro basso, una mano già stretta intorno a un incantesimo.",
+		"si fa avanti senza fretta, una parola per gli elementi già sulle labbra.",
+	},
+	["cls.shaman.battle.w07.038"] = {
+		"Gli spiriti continuano a dirmi di avere pazienza con gli sciocchi. Ne ho avuta parecchia.",
+		"Gli anziani dicono che uno sciamano dev'essere lento all'ira. Ci sto mettendo tutta la lentezza possibile.",
+	},
+	["cls.shaman.battle.w07.039"] = {
+		"La forma del lupo, se si mette male. Non prima.",
+		"C'è sempre il lupo, se la cosa si guasta. Tenerlo a mente, tenerlo di riserva.",
+	},
+	["cls.shaman.battle.w07.040"] = {
+		"Totem dell'aria nel terreno. Vediamo se ora mi stai dietro.",
+		"Lo spirito dell'aria è piantato accanto a me. Tieni il passo, se ci riesci.",
+	},
+	["cls.shaman.battle.w07.041"] = {
+		"Maglia sulle spalle, elementi al mio fianco. Fatti avanti.",
+		"Maglia di ferro e tempesta: oggi le porto entrambe. Scegli da dove cominciare.",
+	},
+	["cls.shaman.battle.w07.042"] = {
+		"abbassa gli occhi, come se il terreno avesse detto qualcosa che valeva la pena ascoltare, e annuisce una volta.",
+		"piega il capo verso terra, ascolta, e annuisce come chi accetta un patto.",
+	},
+	["cls.shaman.battle.w07.043"] = {
+		"Gli antenati un tempo respiravano come me: sciamani, guerrieri, gente qualunque. Non ho nessuna fretta di unirmi a loro.",
+		"Ogni spirito che invoco è stato qualcuno, dicono i vecchi sciamani. Vorrei restare da questa parte della richiesta ancora un po'.",
+	},
+	["cls.shaman.battle.w07.044"] = {
+		"Terra sotto, fuoco a portata di mano, acqua poco dietro. Chiedo, e dopo ve ne sarò {g:debitore|debitrice}.",
+		"Spiriti, chiedo, non ordino. Prestatemi ciò che volete, e ve lo renderò in gratitudine.",
+	},
+	["cls.shaman.battle.w07.045"] = {
+		"Hai attaccato briga con qualcuno che ha il cielo a libro paga.",
+		"Dovrei dirti che io e il cielo abbiamo un accordo. Stai per vederne le clausole.",
+	},
+	["cls.shaman.battle.w07.046"] = {
+		"Un respiro per la terra, uno per il fuoco. Poi non ne restano da sprecare.",
+		"Dentro dal naso, fuori piano. Gli spiriti arrivano prima a una voce calma.",
+	},
+	["cls.shaman.battle.w07.047"] = {
+		"alza una mano, e una breve folata venuta dal nulla solleva la polvere tra {g:lui|lei} e il nemico.",
+		"solleva il mento, e un piccolo mulinello di sabbia si alza ai suoi piedi, poi si disperde.",
+	},
+	["cls.shaman.battle.w07.048"] = {
+		"Che stazza, eh? Anche il cielo ne ha, e sta dalla mia parte.",
+		"Pesi più di me. La terra pesa più di te. Vediamo con chi si schiera.",
+	},
+	["cls.shaman.battle.w07.049"] = {
+		"Davvero? Per te agli spiriti basterà un cenno.",
+		"Per te gli spiriti non si alzano nemmeno dal letto. Faccio da me.",
+	},
+	["cls.shaman.battle.w07.050"] = {
+		"Spiriti di questo luogo, non l'ho cominciata io. Ma vorrei il vostro aiuto per finirla.",
+		"Spiriti che abitate qui, scusate il baccano. Non durerà molto.",
+		"Spiriti di questa terra, perdonate il disturbo. Farò più in fretta che posso.",
+	},
+	["cls.shaman.battle.w07.051"] = {
+		"Fulmine o arma? Tutti e due. Agli spiriti piace chi non tentenna.",
+		"Colpire da vicino o da lontano: agli spiriti non importa, purché chieda come si deve.",
+	},
+	["cls.shaman.battle.w07.052"] = {
+		"batte un piede a terra, forte, come chi bussa a una porta molto più in basso.",
+		"pianta il tallone con un tonfo e aspetta, un battito appena, che qualcosa là sotto risponda.",
+	},
+	["cls.shaman.battle.w07.053"] = {
+		"Speravo in una strada tranquilla. Gli spiriti avevano altri piani, e a quanto pare anche tu.",
+		"Addio passeggiata tranquilla. Va bene. Spiriti, si lavora.",
+	},
+	["cls.shaman.battle.w07.054"] = {
+		"Eccolo, quel ronzio sotto la pelle. Gli elementi sono svegli, e anch'io.",
+		"Di nuovo il pizzicore sulla punta delle dita. Bene. Gli spiriti si sono presentati al lavoro.",
+	},
+	["cls.shaman.buff.w07.001"] = {
+		"Un sorso della pazienza degli spiriti dell'acqua. Giù, allora: mi lasceranno respirare finché non mi trattengo troppo.",
+		"Polmoni che per un po' si credono branchie. Gli spiriti hanno il senso dell'umorismo.",
+	},
+	["cls.shaman.buff.w07.002"] = {
+		"Vai, tuffati. Gli spiriti dell'acqua hanno promesso di non affogarti, almeno per un po'.",
+		"Ora puoi respirare sott'acqua. Non tirare la corda oltre la pazienza degli spiriti.",
+	},
+	["cls.shaman.farewell.w07.001"] = {
+		"Va' in pace. Fa' attenzione a dove il terreno è molle e a dove il fuoco ha fame.",
+		"Addio. Che gli spiriti siano di buon umore ovunque tu vada.",
+		"Strade sicure. E se senti tuonare senza una nuvola sopra la testa, sarò io, alle prese con qualcosa.",
+	},
+	["cls.shaman.greet.w07.001"] = {
+		"Salute. Gli spiriti sembrano tranquilli intorno a te. È un buon segno.",
+		"Salve. Scusa se lancio un'occhiata a terra: mi piace sapere chi altro sta ascoltando.",
+	},
+	["cls.shaman.greet.w07.002"] = {
+		"Salute, viandante. Terra salda e vento favorevole, come si dice da noi.",
+		"Salve. Che la tua strada sia salda e la tua acqua pulita.",
+	},
+	["cls.shaman.heal.w07.001"] = {
+		"Stavolta l'acqua è per il mio taglio. Quando la ferita è mia, la sento più fredda.",
+		"Strano chiedere l'acqua per me. Arriva lo stesso, solo che sembra sospirare.",
+		"Quando mi curo da {g:solo|sola} la sorgente scorre più rigida, come se il paziente non le andasse a genio.",
+	},
+	["cls.shaman.heal.w07.002"] = {
+		"Di nuovo {g:guarito|guarita} con le mie mani. Gli spiriti ormai saranno stufi della mia faccia.",
+		"Un'altra toppa sulla solita pelle. Se l'acqua tenesse i conti, avrei debiti fino al collo.",
+		"Curo gli altri tutto il giorno, poi mi prendo proprio il colpo che avrei dovuto vedere. Gli spiriti sono troppo educati per ridere. Quasi sempre.",
+	},
+	["cls.shaman.heal.w07.003"] = {
+		"preme il palmo bagnato sulla propria ferita; l'acqua vi resta in goccioline per un istante, poi penetra, e la pelle si richiude.",
+		"passa due dita lungo il taglio come a lisciare la sponda di un ruscello, e la carne si ricuce dietro di loro.",
+	},
+	["cls.shaman.heal.w07.004"] = {
+		"Chiusa. La pelle dimentica in fretta; il resto di me ci mette di più.",
+		"Il taglio non c'è più. Dove è entrato lo sento ancora, come una parola che non riesco a ricordare.",
+		"Il dolore se ne va, e lascia un po' di rigidità come ricevuta.",
+	},
+	["cls.shaman.heal.w07.005"] = {
+		"Acqua, questa è per me. Te ne sarò {g:debitore|debitrice}.",
+		"Spiriti dell'acqua, ancora una per chi non smette mai di chiedere.",
+		"Per una volta tocca a me, acqua. Fai in fretta.",
+	},
+	["cls.shaman.heal.w07.006"] = {
+		"Un corpo è fatto per lo più d'acqua, dicono i vecchi sciamani. Guarire è solo ricordargli che forma tenere.",
+		"I vecchi sciamani insegnavano che la carne è acqua che ha imparato a stare in piedi. Le chiedo, piano, di ricordarsi la forma.",
+	},
+	["cls.shaman.heal.w07.007"] = {
+		"piega un ginocchio e posa una mano aperta sul terreno; una frescura sale da sotto fin dentro la ferita, e il sangue rallenta.",
+		"si sorregge con un palmo sul terreno mentre la guarigione risale in {g:lui|lei} come l'acqua nelle radici.",
+	},
+	["cls.shaman.heal.w07.008"] = {
+		"Chi cura e sta lungo per terra non guarisce nessuno. Quindi prima io, e senza sensi di colpa.",
+		"Prima regola della guarigione, per quanto mi riguarda: tenere in piedi chi guarisce.",
+	},
+	["cls.shaman.heal.w07.009"] = {
+		"Dentro il respiro, fuori il dolore. Al resto pensa l'acqua, purché io non le metta fretta.",
+		"Respira piano. L'acqua va al passo di chi la chiama, e uno sciamano in preda al panico ottiene una sorgente in preda al panico.",
+		"Respiro lento, acqua lenta. Da sempre vanno di pari passo.",
+	},
+	["cls.shaman.heal.w07.010"] = {
+		"Lo spirito del fuoco trova che le ferite siano una bella cosa. Quello dell'acqua non è d'accordo. Oggi, per una volta, sto con l'acqua.",
+		"Il fuoco l'avrebbe cauterizzata, e con gusto. Ho chiesto all'acqua. Più gentile, e nessuno sa di bruciato.",
+		"Chiedi al fuoco di chiudere una ferita e lo farà, con gran svolazzo e una cicatrice. Al capezzale l'acqua è un ospite migliore.",
+	},
+	["cls.shaman.heal.w07.011"] = {
+		"Niente di grave. Chiedo solo agli spiriti di rimettermi come mi hanno {g:trovato|trovata}.",
+		"Un attimo. L'acqua mi sta ricucendo, e odia che le si metta fretta.",
+	},
+	["cls.shaman.heal.w07.012"] = {
+		"Ogni acqua prima o poi trova il mare. A quella che ho dentro ho chiesto di fare il giro lungo.",
+		"I fiumi finiscono, i corpi pure. Fino ad allora, l'acqua continua a chiudere quello che la strada apre.",
+		"Alla fine ogni ruscello scende a valle. Al mio, oggi, ho chiesto di attardarsi nelle pozze di montagna.",
+	},
+	["cls.shaman.heal.w07.013"] = {
+		"lascia uscire il fiato tra i denti mentre il dolore defluisce, e scuote le mani.",
+		"si raddrizza piano, una mano premuta dove c'era il dolore, in attesa di essere {g:sicuro|sicura} che se ne sia andato davvero.",
+		"gonfia le guance e sbuffa mentre il bruciore si spegne, poi piega le dita una per una.",
+	},
+	["cls.shaman.heal.w07.014"] = {
+		"Anche per i miei tagli chiedo come si deve. Gli spiriti si accorgono quando uno sciamano comincia a darli per scontati, e non lo dimenticano in fretta.",
+		"Con gli spiriti niente scorciatoie, nemmeno quando la ferita è mia. Chiedere, aspettare, ringraziare. Poi sanguinare meno.",
+	},
+	["cls.shaman.heal.w07.015"] = {
+		"Chiudila, acqua! Qui non ho finito!",
+		"Ricucila in fretta. Questo mi deve ancora una caduta.",
+		"Acqua, sigillala. Ho ancora fulmini da spendere.",
+	},
+	["cls.shaman.heal.w07.016"] = {
+		"Un'onda su di me, poi si torna dentro. Che la cura non diventi un nascondiglio.",
+		"Prima la toppa, poi il colpo. Uno sciamano che in battaglia sa solo curarsi è solo un modo più lento di perdere.",
+		"Prima l'acqua, finché resta abbastanza di me per trattenerla. Poi di nuovo il fulmine.",
+	},
+	["cls.shaman.heal.w07.017"] = {
+		"arretra di mezzo passo, rivolge all'acqua una parola veloce tra un respiro e l'altro, e il peggio della ferita si chiude mentre la lotta incalza.",
+		"tiene un occhio sul nemico e riserva l'altro alla propria ferita, chiamando l'acqua con una voce troppo bassa per arrivare lontano.",
+	},
+	["cls.shaman.heal.w07.018"] = {
+		"Adesso niente fretta. Posso lasciar lavorare l'acqua piano, come piace a lei, e non come pretende uno scontro.",
+		"Niente di urgente. L'acqua può prendersi il suo tempo con me: senza fretta lavora sempre meglio.",
+		"Lontano da ogni scontro, lascio che la guarigione arrivi al suo ritmo. L'acqua frettolosa lascia segni; quella lenta, quasi niente.",
+	},
+	["cls.shaman.heal.w07.019"] = {
+		"Qui non c'è nessuno a cui chiedere, se non l'acqua. Per fortuna l'acqua non mi ha mai detto di no.",
+		"Da {g:solo|sola} per strada, chi cura e chi è curato sono la stessa persona. E quella persona si lamenta parecchio.",
+	},
+	["cls.shaman.heal.w07.020"] = {
+		"si sfiora la fronte con due dita, poi la ferita, un piccolo segno di richiesta, e il dolore comincia a svanire.",
+		"pronuncia sulla propria ferita le stesse parole sommesse che direbbe su quella di chiunque, non una di meno e non più in fretta.",
+	},
+	["cls.shaman.heal.w07.021"] = {
+		"Altri si portano dietro le bende. Io porto una promessa dell'acqua, rinnovata ogni volta che chiedo con garbo.",
+		"Una striscia di lino farebbe lo stesso lavoro, più lenta e più brutta. L'acqua non mi deve niente, eppure viene.",
+		"Niente ago, niente filo, niente puzza di unguento. Solo acqua che accetta di ricordare dove la mia pelle combaciava.",
+	},
+	["cls.shaman.heal.w07.022"] = {
+		"Abbastanza {g:rimesso|rimessa} in sesto da portare i totem per un altro miglio. È l'unica misura che uso.",
+		"Bene. I totem non si sarebbero portati da soli, e cominciavano a pesare.",
+	},
+	["cls.shaman.heal.w07.023"] = {
+		"Gli antenati mi guardano ricucire di nuovo la solita ferita da {g:sbadato|sbadata}, immagino. Mi piace pensare che scuotano la testa sorridendo.",
+		"Se gli antenati tengono il conto di quante volte mi curo da {g:solo|sola}, preferisco non vederlo.",
+	},
+	["cls.shaman.heal.w07.024"] = {
+		"Il dolore è un piccolo fuoco. L'acqua gli risponde, e per un momento litigano dentro di me. Di solito vince l'acqua, se la lascio fare.",
+		"La ferita brucia; la guarigione rinfresca. Io voglio stare a metà strada fra le due.",
+	},
+	["cls.shaman.heal.w07.025"] = {
+		"trae dall'aria un luccichio d'acqua e lo lascia scorrere sulla ferita, freddo e rapido come una sorgente di montagna.",
+		"mormora, e un filo sottile d'acqua sembra uscire dal nulla e avvolgere la ferita come una benda che affonda nella pelle.",
+	},
+	["cls.shaman.heal.w07.026"] = {
+		"Il modo migliore di curare una ferita tua: non guardarla finché non è sparita.",
+		"Non guardo mai i miei tagli richiudersi. È come guardare la pappa che si addensa, e in qualche modo più imbarazzante.",
+		"Guardarsi guarire è come aspettare che l'acqua bolla. Io preferisco fissare l'orizzonte.",
+	},
+	["cls.shaman.heal.w07.027"] = {
+		"Chiedere aiuto è difficile anche quando lo si chiede a una sorgente. L'orgoglio è l'ultima cosa che l'acqua lava via.",
+		"L'acqua chiude il taglio in fretta. L'orgoglio ci mette di più. In quel colpo ci sono {g:entrato|entrata} a occhi aperti.",
+	},
+	["cls.shaman.heal.w07.028"] = {
+		"Sorgente della terra profonda, sali per me.",
+		"Acqua che scorri sotto le pietre, trovami.",
+		"Acqua fresca, da sotto. Qui.",
+	},
+	["cls.shaman.heal.w07.029"] = {
+		"Il cuore smette di correre un battito o due dopo il dolore. Lo aspetto. Inutile alzarsi prima che sia pronto.",
+		"Il polso rallenta, il fiato ritorna. Il corpo è sempre l'ultimo a ricevere le buone notizie.",
+		"Il dolore se ne va molto prima che le mani smettano di tremare. Lascio che se la prendano comoda.",
+	},
+	["cls.shaman.heal.w07.030"] = {
+		"esamina il punto dov'era la ferita con la fronte aggrottata, come se potesse riaprirsi per dispetto.",
+		"tasta la pelle appena guarita con un dito sospettoso.",
+	},
+	["cls.shaman.heal.w07.031"] = {
+		"C'è l'acqua lenta, profonda e accurata, e quella svelta per quando non c'è tempo. Oggi mi serviva quella svelta.",
+		"Onda lunga o breve, l'acqua è la stessa. La breve salta soltanto i convenevoli.",
+	},
+	["cls.shaman.heal.w07.032"] = {
+		"Quando se ne va, l'acqua si porta via anche il sangue. Le sono {g:grato|grata} di risparmiarmi quella vista.",
+		"Ferita chiusa, e l'acqua ha perfino sciacquato via il sangue. Spiriti scrupolosi.",
+	},
+	["cls.shaman.heal.w07.033"] = {
+		"Aspetta. Fammi mettere un po' d'acqua qui sopra, prima che si faccia strane idee.",
+		"Un respiro. Devo convincere l'acqua a chiudermi questa.",
+	},
+	["cls.shaman.heal.w07.034"] = {
+		"La ferita non c'è più. La stanchezza sotto, sì. Nessun incantesimo è mai arrivato così in fondo.",
+		"Chiusa, e la stanchezza resta. L'acqua ricuce la carne; nessuno le ha mai chiesto di ricucire una giornata lunga.",
+	},
+	["cls.shaman.heal.w07.035"] = {
+		"Questo corpo è un prestito degli antenati, dicono gli anziani, e se lo aspettano indietro in condizioni decenti. Ci provo.",
+		"Gli anziani dicono che i corpi li prendiamo in prestito da chi è venuto prima. Io continuo a rattoppare il mio. Un giorno lo restituirò, ammaccato.",
+	},
+	["cls.shaman.heal.w07.036"] = {
+		"chiude gli occhi mentre la guarigione attecchisce, le labbra che si muovono in silenzio, come chi conta sottovoce.",
+		"si fa immobile mentre l'acqua lavora, come in ascolto di qualcosa sotto il rumore.",
+	},
+	["cls.shaman.heal.w07.037"] = {
+		"Gli spiriti dell'acqua sono gentili con me, ma sospetto che sparlino di me alle mie spalle.",
+		"{g:Guarito|Guarita} un'altra volta. Immagino gli spiriti dell'acqua sospirare come si sospira davanti a stivali infangati lasciati sulla soglia.",
+		"Gli spiriti mi rimettono in sesto senza lamentarsi. Le lamentele, scommetto, arrivano dopo, tra di loro.",
+	},
+	["cls.shaman.heal.w07.038"] = {
+		"Chiusa. Ora chi l'ha aperta conoscerà il fulmine.",
+		"{g:Guarito|Guarita}, e più {g:arrabbiato|arrabbiata} di prima. La forza me l'hanno resa gli spiriti; il caratteraccio è tutto mio.",
+	},
+	["cls.shaman.heal.w07.039"] = {
+		"L'acqua che guarisce lascia sempre un sapore in bocca, come un sasso succhiato fino a pulirlo. Ho finito per trovarlo confortante.",
+		"Quando l'onda è passata, per un attimo resta un punto freddo nel petto, come se avessi inghiottito un torrente di montagna.",
+		"La guarigione lascia sempre un brivido leggero lungo le ossa, come una cantina che tiene il fresco anche quando fuori la giornata si è scaldata.",
+	},
+	["cls.shaman.heal.w07.040"] = {
+		"borbotta all'acqua col tono che si usa con un vicino a cui si sono già chiesti troppi favori.",
+		"chiede la guarigione agli spiriti con l'aria un po' imbarazzata di un cliente abituale.",
+	},
+	["cls.shaman.heal.w07.041"] = {
+		"La maggior parte l'ha presa l'armatura. Il resto è affare dell'acqua.",
+		"Quello che passa l'armatura tocca all'acqua. Ultimamente lavora parecchio.",
+	},
+	["cls.shaman.heal.w07.042"] = {
+		"Ogni giorno do il mio peso alla terra, camminandoci sopra. Ogni tanto lei mi restituisce qualcosa.",
+		"Quando guarisco, il terreno sotto di me vibra. Non forte. Quel tanto che basta per farmi sapere che a tenermi in piedi non ci sono solo io.",
+		"Quando mi curo, sento la terra appoggiarsi a me, come chi ti accosta una spalla senza dire niente.",
+	},
+	["cls.shaman.heal.w07.043"] = {
+		"Sto bene. Ormai dentro ho quasi solo acqua, ed è di buon umore.",
+		"Non agitarti. Ci hanno già pensato gli spiriti.",
+		"Smettila di fissarmi. Ho avuto di peggio, e l'acqua ha lavorato su di peggio.",
+	},
+	["cls.shaman.heal.w07.051"] = {
+		"Il totem ronza ai miei piedi e mi ricuce a piccoli sorsi. I piccoli sorsi si sommano.",
+		"Piantarlo, restarci vicino, andare avanti. Il flusso raggiunge il dolore quando è il suo momento.",
+	},
+	["cls.shaman.heal.w07.052"] = {
+		"pianta il totem dell'acqua nel terreno e resta alla sua portata, lasciando che il suo battito lento passi sulle ferite.",
+		"pianta un totem ai propri piedi; ne parte un'increspatura leggera, e i lividi peggiori cominciano a sbiadire.",
+	},
+	["cls.shaman.heal.w07.053"] = {
+		"Non inciampare nel totem. È l'unica cosa che mi tiene in piedi.",
+		"Quel totem è per me, ma se resti lì vicino lo divido volentieri.",
+	},
+	["cls.shaman.heal.w07.054"] = {
+		"Un totem è una promessa piantata nel terreno. Questa promette acqua, poca e spesso, finché non mi allontano.",
+		"Fra tutti i totem, quello dell'acqua è il più paziente. Non guarisce in fretta. Guarisce sempre.",
+	},
+	["cls.shaman.heal.w07.061"] = {
+		"Sa di palude bollita in una pentola di rame. Gli spiriti dell'acqua non mi servirebbero mai una roba così schifosa.",
+		"Un intruglio rosso da alchimista, e funziona. Più tardi chiederò scusa all'acqua per averla tradita.",
+		"L'acqua la tengo per dopo. Questa la lascio alla boccetta.",
+	},
+	["cls.shaman.heal.w07.062"] = {
+		"Più svelto che chiedere. Giù tutto d'un fiato.",
+		"Mi manca il fiato per le parole lunghe. Vada per la bottiglia.",
+		"Stavolta l'acqua si riposa. Alla salute.",
+	},
+	["cls.shaman.heal.w07.063"] = {
+		"stappa una pozione con i denti, beve, e borbotta qualcosa che somiglia a delle scuse rivolte all'acqua.",
+		"vuota una piccola fiala rossa e poi, per abitudine, ringrazia comunque gli spiriti.",
+	},
+	["cls.shaman.heal.w07.064"] = {
+		"Una pietra da stregone, tiepida nella mano. Gli spiriti stanno alla larga da qualunque cosa l'abbia fatta, e lo farei anch'io, se non funzionasse.",
+		"Pietra della salute. Cerco di non pensare a come è stata fatta. Guarisce, e gli spiriti possono accigliarsi più tardi.",
+	},
+	["cls.shaman.heal.w07.065"] = {
+		"Questa pietra non l'ha fatta la terra. Però fa il suo lavoro.",
+		"Pietra strana. La terra non la riconoscerebbe come sua, ma le mie ferite non fanno tante storie.",
+	},
+	["cls.shaman.heal.w07.066"] = {
+		"Tutti gli sciamani che conosco giurano sull'acqua e si portano dietro tre pozioni. Io non faccio eccezione.",
+		"L'acqua è per quando ho il tempo di chiedere. Questa è per quando non ce l'ho.",
+	},
+	["cls.shaman.heal.w07.201"] = {
+		"Piano. Prima il freddo, poi va meglio.",
+		"Sarà come una sorgente di montagna giù per il colletto. Poi non farà più male.",
+		"Preparati al brivido. Il bello viene subito dopo.",
+	},
+	["cls.shaman.heal.w07.202"] = {
+		"{target}, stai perdendo pezzi. Permetti.",
+		"Calma, {target}. Gli spiriti hanno visto di peggio.",
+		"Resta lì, {target}. Mezzo respiro ed è chiusa.",
+	},
+	["cls.shaman.heal.w07.203"] = {
+		"Strano come l'acqua sembri più tiepida quando va a qualcun altro.",
+		"Preferisco curare dieci altri che me una volta sola. Chiedere per loro è facile.",
+		"L'acqua mi lascia le mani più volentieri quando la ferita non è mia. E io con lei.",
+	},
+	["cls.shaman.heal.w07.204"] = {
+		"volge il palmo verso la ferita altrui e pronuncia una parola sommessa, e un'increspatura d'acqua limpida passa dalla mano al dolore.",
+		"scuote le dita come per liberarle dalle gocce, e l'acqua cade dove serve, qualche passo più in là.",
+	},
+	["cls.shaman.heal.w07.205"] = {
+		"L'acqua comincia a riconoscerti. Non è un complimento.",
+		"Chiusa. Gli spiriti ti chiedono di smettere di farne collezione.",
+		"Ecco. La prossima volta fatti colpire da un'altra parte: l'acqua si annoia di quel punto.",
+	},
+	["cls.shaman.heal.w07.206"] = {
+		"Continua così. L'acqua ce l'hai addosso.",
+		"Non fermarti! L'acqua ti segue là dentro.",
+		"Avanti, sono qui dietro con la sorgente.",
+	},
+	["cls.shaman.heal.w07.207"] = {
+		"Guardo chi ho davanti, non il nemico. La mia battaglia è che resti in piedi.",
+		"Il suo sangue, la mia acqua. Lo scambio è sempre lo stesso, e lo faccio volentieri.",
+		"I nemici li contino gli altri. Io conto le ferite dalla mia parte.",
+	},
+	["cls.shaman.heal.w07.208"] = {
+		"Siediti un momento. Fammi vedere bene.",
+		"Ora niente fretta. Lascia che l'acqua lavori con calma: viene meglio.",
+		"Non ci insegue nessuno. Non muoverti e lascia che la chiuda per bene.",
+	},
+	["cls.shaman.heal.w07.209"] = {
+		"Acqua dei luoghi profondi, per questa persona vale la pena scomodarti.",
+		"Spiriti, guardate con favore chi ho davanti. Garantisco io.",
+		"Sorgente sotto di noi, sali per chi mi sta accanto.",
+	},
+	["cls.shaman.heal.w07.210"] = {
+		"La ferita la posso chiudere. Il momento in cui ha capito di poter morire, no. Quello resta.",
+		"L'acqua ricuce il taglio. Lo spavento nei suoi occhi devo lasciarlo dov'è.",
+		"La carne la ricucio in un respiro. Lo sguardo di chi ha appena visto arrivare la fine ci mette molto di più.",
+	},
+	["cls.shaman.heal.w07.211"] = {
+		"manda verso {target} un filo d'acqua fresca, rapido e sicuro come un pesce nella corrente.",
+		"lancia un'occhiata a {target}, valuta la ferita con l'occhio di chi cura, e chiama l'acqua oltre la distanza.",
+	},
+	["cls.shaman.heal.w07.212"] = {
+		"Prego. Ora torna là fuori prima che ci ripensi.",
+		"Ecco. Ringrazia l'acqua, non me: io ho solo chiesto.",
+		"In piedi. La ferita è chiusa, e la scusa pure.",
+	},
+	["cls.shaman.heal.w07.213"] = {
+		"C'è chi serve l'Orda con l'ascia. Io la servo rimandando indietro interi quelli che la portano.",
+		"La mia parte di guerra è piccola e bagnata: chiudere quello che la battaglia apre.",
+		"L'Orda vince le sue battaglie in piedi. Qualcuno deve rimetterla in piedi ogni volta che cade.",
+	},
+	["cls.shaman.heal.w07.214"] = {
+		"Non muoverti, a meno che tu non voglia un orecchio in più. L'acqua non va per il sottile con le forme.",
+		"Non dimenarti. L'acqua è brava, ma non è un sarto.",
+	},
+	["cls.shaman.heal.w07.215"] = {
+		"Quando curo qualcun altro, sento l'acqua uscire da me e andare dall'altra parte, come un fiume che trova un campo più in basso. Conosce solo la discesa.",
+		"L'acqua corre sempre verso chi ne ha più bisogno. Io apro soltanto la chiusa.",
+		"L'acqua cerca il punto più basso. Una ferita è un punto basso. Io sto in cima e lascio andare.",
+	},
+	["cls.shaman.heal.w07.216"] = {
+		"Dimmi dove ti fa male. Anzi, non serve: ce l'hai scritto addosso.",
+		"Fammi vedere. No, lascia perdere, la vedo da qui.",
+	},
+	["cls.shaman.heal.w07.217"] = {
+		"In gruppo l'acqua va divisa come le razioni. Chi sanguina di più mangia per primo.",
+		"Tenere in piedi un gruppo intero è come badare a tanti fuocherelli che vogliono legna tutti insieme. Prima questo, poi il prossimo.",
+	},
+	["cls.shaman.heal.w07.218"] = {
+		"Un'onda sola, e salta da una ferita all'altra come un sasso lanciato a rimbalzare su uno stagno.",
+		"L'acqua incatenata passa da chi sta male a chi sta peggio. Sembra sapere sempre chi ne ha più bisogno.",
+	},
+	["cls.shaman.heal.w07.219"] = {
+		"Va tutto bene. Gli spiriti ti tengono: puoi lasciar andare il fiato.",
+		"Abbassa le spalle. Con tutta quella tensione l'acqua non riesce a entrare.",
+		"Apri il pugno. Il dolore se ne va prima da una mano aperta.",
+	},
+	["cls.shaman.heal.w07.220"] = {
+		"guarda la ferita chiudersi da qualche passo di distanza, con l'occhio critico di un vasaio che giudica una ciotola appena cotta.",
+		"annuisce una volta, {g:soddisfatto|soddisfatta}, mentre la ferita altrui si richiude.",
+	},
+	["cls.shaman.heal.w07.221"] = {
+		"In piedi. All'Orda servi più che alla terra.",
+		"Su. La terra può aspettarti, l'Orda no.",
+	},
+	["cls.shaman.heal.w07.222"] = {
+		"Non ringraziano mai l'acqua. Ringraziano me. Io lo riferisco quando nessuno ascolta.",
+		"La gente ringrazia lo sciamano. Lo sciamano ringrazia l'acqua. L'acqua, per quel che ne so, non ringrazia nessuno.",
+		"La gratitudine va alle mani che si vedono. Io mi assicuro che la sorgente abbia la sua parte, in privato.",
+	},
+	["cls.shaman.heal.w07.223"] = {
+		"Non ringraziarmi ancora. Ringraziami quando ce ne andremo da qui con le nostre gambe.",
+		"Tieniti i ringraziamenti. La giornata non è finita.",
+	},
+	["cls.shaman.heal.w07.224"] = {
+		"Gli spiriti mi prestano la loro acqua più volentieri per gli altri che per me. Non ho mai chiesto perché. Credo di saperlo.",
+		"Quando chiedo per qualcun altro, gli spiriti rispondono prima che io finisca di parlare.",
+		"Chiedi per te, e gli spiriti ti pesano. Chiedi per un altro, e vengono e basta.",
+	},
+	["cls.shaman.heal.w07.225"] = {
+		"La prossima volta spostati. L'acqua è gratis, la mia pazienza no.",
+		"Fatto. E di questa ferita non parliamo più.",
+	},
+	["cls.shaman.heal.w07.226"] = {
+		"concede alla lotta un attimo di distrazione e un mormorio veloce, e l'acqua balza verso chi ne ha bisogno.",
+		"tiene il fulmine in una mano e la guarigione nell'altra, e in questo momento a partire per prima è la guarigione.",
+	},
+	["cls.shaman.heal.w07.227"] = {
+		"Resta vicino a me. L'acqua arriva più lontano di quanto pensi, ma non all'infinito.",
+		"Non allontanarti mentre ti curo. L'acqua non rincorre nessuno.",
+	},
+	["cls.shaman.heal.w07.228"] = {
+		"Se cade, sarà colpa mia. Quindi non cade.",
+		"Ogni persona che curo è una promessa che ho fatto senza dirla ad alta voce.",
+		"Non faccio molti giuramenti. Tenere vivo chi mi sta accanto è quello che mantengo senza che nessuno me lo chieda.",
+	},
+	["cls.shaman.heal.w07.229"] = {
+		"Non ancora. Gli antenati oggi hanno la tavola piena.",
+		"Il tuo posto tra gli antenati non scappa. Resta qui ancora un po'.",
+	},
+	["cls.shaman.heal.w07.230"] = {
+		"Il taglio lo posso curare. Quello che c'è dietro tanta foga, no.",
+		"Curare è la metà facile. Quella difficile è veder ripartire di corsa verso la mischia chi ho appena curato.",
+		"Chiudo la ferita, e chi la portava va subito a cercarsene un'altra. Le mie giornate hanno tutte questa forma.",
+	},
+	["cls.shaman.heal.w07.231"] = {
+		"Un'altra ferita ricucita. L'acqua non si stanca mai: la invidio.",
+		"Fatto. Se gli spiriti si facessero pagare a ferita, sarei {g:rovinato|rovinata}.",
+		"Ecco. Un rammendo che regge, e nemmeno brutto.",
+	},
+	["cls.shaman.jest.w07.001"] = {
+		"Quanti sciamani servono per accendere un fuoco da campo? Uno, più quattro spiriti che vogliono tutti il merito.",
+		"Mi chiedono perché gli sciamani siano così calmi. Prova a discutere ogni giorno con quattro elementi: smetti di sprecare energie con le persone.",
+	},
+	["cls.shaman.levelup.w07.001"] = {
+		"Gli spiriti rispondono un respiro prima di prima. O si fidano di più, o ho finalmente capito dove mettermi.",
+		"Qualcosa si è assestato fra me e gli elementi. Un po' più di scioltezza, un po' meno bisogno di chiedere due volte.",
+	},
+	["cls.shaman.levelup.w07.002"] = {
+		"piega le dita e un debole crepitio corre fra l'una e l'altra, sparito prima che qualcuno possa giurarci.",
+		"pianta bene i piedi e inspira lentamente; per un istante il suolo sembra chinarsi a {g:incontrarlo|incontrarla}.",
+	},
+	["cls.shaman.levelup.w07.003"] = {
+		"Un po' più di tuono nelle mani. Cerca di non starmi troppo addosso finché non ci faccio l'abitudine.",
+		"Gli spiriti hanno deciso che valgo un po' più di fatica. Non sarò io a contraddirli.",
+	},
+	["cls.shaman.lowhp.w07.001"] = {
+		"Spiriti, non ho finito! Ancora una spinta!",
+		"Non ancora! Terra, fuoco, chiunque: ancora una spinta!",
+		"Spiriti, spingete con me! Non è finita!",
+	},
+	["cls.shaman.lowhp.w07.002"] = {
+		"Lascia perdere l'attacco. Un'onda di cura, subito, o il resto non ha senso.",
+		"Il fulmine dopo. Prima l'acqua, o non resterà nessuno a scagliarlo.",
+		"Il fulmine può aspettare, l'acqua no. Quando sanguini, la sequenza conta.",
+	},
+	["cls.shaman.lowhp.w07.003"] = {
+		"barcolla all'indietro, e per un battito il debole bagliore attorno alle mani trema come una candela nella corrente.",
+		"inciampa; il crepitio intorno a {g:lui|lei} sfrigola e quasi si spegne.",
+	},
+	["cls.shaman.lowhp.w07.004"] = {
+		"Se finisce qui, spero di essermi {g:ricordato|ricordata} di mettere un ankh nella borsa.",
+		"La reincarnazione è un bel trucco. Preferirei non averne bisogno oggi.",
+	},
+	["cls.shaman.lowhp.w07.005"] = {
+		"Questo ha fatto male. Adesso sono {g:arrabbiato|arrabbiata}, e gli spiriti peggio.",
+		"Ahi. Hai irritato me e gli elementi in un colpo solo. Notevole.",
+		"Splendido. Adesso il fuoco è di pessimo umore, e francamente anch'io.",
+	},
+	["cls.shaman.lowhp.w07.006"] = {
+		"Spiriti, tenetemi in piedi ancora un poco. Ve ne sarò {g:debitore|debitrice}.",
+		"Acqua, terra, chiunque stia ascoltando: l'aiuto mi serve adesso, non dopo.",
+		"Ascoltatemi, spiriti. Non chiedo molto. Solo i prossimi respiri.",
+	},
+	["cls.shaman.lowhp.w07.007"] = {
+		"si passa il dorso della mano sulla bocca, guarda il rosso che ci è rimasto e si volta di nuovo verso il nemico.",
+		"ondeggia, ritrova l'equilibrio e lascia uscire una risata breve e dura, senza allegria.",
+		"si piega in due per un respiro, poi si raddrizza con un ringhio che sembra salire dagli stivali.",
+	},
+	["cls.shaman.lowhp.w07.008"] = {
+		"Gli elementi suonano ovattati, come sentiti da sott'acqua. Non è un buon segno.",
+		"Gli spiriti si stanno zittendo. O sono le mie orecchie. In ogni caso, muoviti.",
+	},
+	["cls.shaman.lowhp.w07.009"] = {
+		"Gli anziani mi hanno insegnato tante cose. «Evita questo» doveva essere una di quelle.",
+		"Un mio vecchio maestro, ovunque sia, sta sospirando molto forte.",
+	},
+	["cls.shaman.lowhp.w07.010"] = {
+		"Un altro colpo e prendo la forma del lupo e scappo. L'orgoglio guarisce prima delle ossa.",
+		"La forma del lupo è pronta. Se la cosa gira male, quattro zampe battono due.",
+		"Nessuna vergogna nel lupo. Meglio uno sciamano vivo su quattro zampe che uno morto su due.",
+	},
+	["cls.shaman.lowhp.w07.011"] = {
+		"Il totem dell'acqua, subito. Che arrivi lui dove le mie mani non ce la fanno.",
+		"Pianta il flusso curativo e mettiti dentro. Niente orgoglio.",
+	},
+	["cls.shaman.lowhp.w07.012"] = {
+		"L'Orda non si spezza così facilmente, e nemmeno io.",
+		"Ho la testardaggine dell'Orda e la pazienza della terra. Ti stancherai prima tu.",
+		"Sanguino, sì. Spezzarmi, no. Chiedi a un orco quanto conta la differenza.",
+	},
+	["cls.shaman.lowhp.w07.013"] = {
+		"Sangue mio sulle mani. È al contrario di come dovrebbe. Rimedia.",
+		"Sanguino troppo in fretta per pensare. Allora non pensare. Ricuciti.",
+		"È più sangue mio di quanto mi piaccia vederne fuori.",
+	},
+	["cls.shaman.lowhp.w07.014"] = {
+		"sussurra qualcosa di brusco al terreno, quasi un rimprovero, e torna a piantare i piedi.",
+		"borbotta una parola secca agli elementi, col tono di chi riscuote un vecchio debito.",
+		"ringhia una sola parola alla terra, e la terra, a quanto pare, la sente.",
+	},
+	["cls.shaman.lowhp.w07.015"] = {
+		"Toglietemelo di dosso! L'acqua da sola non arriva abbastanza in fretta!",
+		"I miei totem da soli non bastano! Qualcuno me lo levi di torno!",
+	},
+	["cls.shaman.lowhp.w07.016"] = {
+		"Prima avvolgermi nel fulmine, poi la cura. Non confondere l'ordine.",
+		"Su lo scudo di fulmini, poi curarmi. Il panico salta i passaggi; io no.",
+	},
+	["cls.shaman.lowhp.w07.017"] = {
+		"Le radici affondano per un motivo. Aggrappati, e non mollare il terreno.",
+		"Tieniti al terreno come una vecchia radice tiene un pendio. Il resto di me può pure tremare.",
+	},
+	["cls.shaman.muse.w07.001"] = {
+		"La terra è la più lenta dei quattro ad arrabbiarsi e la più lenta a perdonare. Cerco di restarle amica: in fondo, ci dormo sopra.",
+		"Il fuoco dimentica un torto appena ha bruciato qualcosa. La terra se lo ricorda per cent'anni. Sto {g:attento|attenta} a dove scavo.",
+		"La terra si sveglia piano e si calma ancora più piano. Quando le chiedo qualcosa, chiedo esattamente quello, e non un sassolino di più.",
+	},
+	["cls.shaman.muse.w07.002"] = {
+		"L'acqua guarisce perché ricorda la forma che una cosa aveva prima di rompersi. Io mi limito a ricordarglielo.",
+		"Una ferita è un fiume che ha dimenticato gli argini. Gli spiriti dell'acqua sanno dov'erano.",
+		"Non sono io a far guarire l'acqua. Le indico il punto dove serve e mi faccio da parte.",
+	},
+	["cls.shaman.muse.w07.003"] = {
+		"Tutti vogliono che uno sciamano dica cosa farà il cielo domani. Sono {g:uno sciamano|una sciamana}, non un indovino col dito bagnato.",
+		"La gente mi chiede che cosa abbia in mente il cielo. Rispondo che il cielo non ha piani: cambia idea, e lo fa a gran voce.",
+	},
+	["cls.shaman.muse.w07.004"] = {
+		"raccoglie un sassolino dal sentiero, lo soppesa nel palmo e lo rimette esattamente dov'era.",
+		"si china su un ciottolo, lo rigira due volte come se leggesse qualcosa sul fondo, poi lo rimette al suo posto.",
+	},
+	["cls.shaman.muse.w07.005"] = {
+		"Una pretesa vuole una risposta subito. Una richiesta sa aspettare. Gli spiriti capiscono sempre quale delle due ho portato.",
+		"Un paio di volte ho provato a mettere fretta agli elementi. Hanno sentito la fretta, e nient'altro.",
+		"Chiedere bene vuol dire essere disposti a sentirsi dire di no. Gli spiriti lo fiutano, quando non lo sono.",
+	},
+	["cls.shaman.muse.w07.006"] = {
+		"Il nostro Capoguerra è uno sciamano. Ci penso quando l'Orda mi chiede cose difficili: lui le chiede agli spiriti, e aspetta la risposta come tutti noi.",
+		"Thrall ascolta gli elementi prima di parlare per l'Orda. Non tutti i capi se ne prenderebbero la briga. È uno dei motivi per cui lo seguo volentieri.",
+		"A capo dell'Orda c'è uno sciamano. Ogni volta che ho la tentazione di dare ordini agli spiriti, ricordo che perfino lui chiede.",
+	},
+	["cls.shaman.muse.w07.007"] = {
+		"Gli anziani degli orchi raccontano di quando i loro sciamani barattarono gli spiriti con un potere più oscuro, e si accorsero che gli elementi avevano smesso di ascoltarli. Quella storia la tengo stretta.",
+		"Ci fu un tempo, dicono gli orchi, in cui gli elementi voltarono le spalle a un popolo intero. Si riavvicinarono piano, e solo perché qualcuno li pregò con umiltà. Non lo dimentico mai.",
+	},
+	["cls.shaman.muse.w07.008"] = {
+		"Adesso nello zaino ci sono quattro totem: terra, fuoco, acqua, aria. Ognuno è costato una prova, e ognuno pesa più o meno quanto la prova.",
+		"Ormai porto sulla schiena tutti e quattro gli elementi, intagliati e legati. Le mie spalle lo sanno meglio del mio orgoglio.",
+	},
+	["cls.shaman.muse.w07.009"] = {
+		"Il totem del fuoco è l'unico che pianto con un po' di timore. La terra resta dov'è. Il fuoco vuole sapere fin dove gli è permesso arrivare.",
+		"Piantare il fuoco non è come piantare la terra. La terra si assesta. Il fuoco si guarda intorno per vedere cosa può raggiungere.",
+	},
+	["cls.shaman.muse.w07.010"] = {
+		"Il totem dell'acqua non chiede altro che un pezzo di terra e un po' di pazienza. Dei quattro, è quello che terrei se potessi tenerne uno solo.",
+		"Cure che continuano a scorrere quando le mie mani sono occupate altrove: ecco cosa dà il totem dell'acqua. Lo ringrazio ancora come se fosse una persona.",
+	},
+	["cls.shaman.muse.w07.011"] = {
+		"L'aria è stata l'ultima a fidarsi di me. Ci sono volute una lunga salita e un'attesa ancora più lunga prima che il vento accettasse di stare in un totem per me.",
+		"Il totem dell'aria sembra quasi non esserci, anche quando è piantato. È fatto così, il vento: presente, utile, e mai preso del tutto.",
+	},
+	["cls.shaman.muse.w07.012"] = {
+		"Se inciampi nel totem, chiedigli scusa. Dico sul serio. Porta rancore.",
+		"Occhio al totem. Giraci intorno, non scavalcarlo. Gli spiriti badano alle buone maniere.",
+	},
+	["cls.shaman.muse.w07.013"] = {
+		"Il lupo che divento non è mio. È uno spirito che mi presta la sua corsa per un po'. Cerco di restituirgliela com'era.",
+		"Ogni volta che lascio la forma del lupo, rivolgo un piccolo cenno a chi me l'ha prestata. La strada è andata più in fretta su quattro zampe che non erano mie.",
+	},
+	["cls.shaman.muse.w07.014"] = {
+		"volta appena il viso, come per offrire un orecchio a qualcosa che l'aria sta dicendo.",
+		"smette di camminare all'improvviso, il capo piegato, tutto orecchi per qualcosa che agli altri sfugge.",
+	},
+	["cls.shaman.muse.w07.015"] = {
+		"Un ankh nello zaino, non si sa mai. È uno strano conforto, sapere che gli antenati potrebbero rimandarmi indietro ancora una volta, se lo chiedo con garbo nel momento peggiore.",
+		"Compro gli ankh come altri comprano la corda: senza sperare di doverli usare, senza mai farne a meno.",
+	},
+	["cls.shaman.muse.w07.016"] = {
+		"Quando gli spiriti mi prestano i loro occhi, vedo oltre la collina successiva. Il guaio viene dopo: di nuovo nella mia testa, tutto mi sembra vicino e piccolo.",
+		"Posso mandare lo sguardo avanti lungo la strada e vedere cosa aspetta laggiù. Rientrare nei miei occhi è come infilare stivali gelati.",
+	},
+	["cls.shaman.muse.w07.017"] = {
+		"Camminare sull'acqua mi fa ancora un po' ridere, ogni volta. Gli spiriti dell'acqua devono trovarmi {g:buffo|buffa}, e mi reggono lo stesso.",
+		"Un lago che regge il mio peso come fosse una strada: non mi ci abituerò mai. E spero proprio di non abituarmici.",
+	},
+	["cls.shaman.muse.w07.018"] = {
+		"Ogni fulmine che chiamo era già lassù, in attesa. Io gli indico soltanto la strada. È una lezione di umiltà, quanto poco di tutto questo sia mio.",
+		"La gente vede il fulmine partire dalle mie mani e pensa che sia mio. Non lo è. Io sono solo il varco che sceglie di attraversare.",
+		"Il fulmine non lo creo io. Io traccio un sentiero, e il cielo decide se gli piace.",
+	},
+	["cls.shaman.muse.w07.019"] = {
+		"Quasi sempre i miei vestiti sanno d'aria bruciata. Alla locanda nessuno mi si siede accanto, e ho smesso di chiedermi perché.",
+		"Dopo uno scontro a colpi di fulmine, i peli delle braccia mi restano dritti per un'ora. È difficile sembrare dignitosi mentre si sfrigola un po'.",
+		"Il fulmine lascia un odore su tutto ciò che possiedo: aria bruciata e pietra bagnata. Io ci sono {g:affezionato|affezionata}. Gli altri no.",
+	},
+	["cls.shaman.muse.w07.020"] = {
+		"Troppo di un solo spirito è una malattia. Il lavoro di uno sciamano è accorgersene presto.",
+		"Dove un elemento diventa troppo forte, la terra si ammala. Siamo qui per questo: per vederlo, e chiedere agli altri di fare da contrappeso.",
+		"Quando una terra è malata, quasi sempre è uno spirito che si prende più della sua parte. Ci insegnano a cercare prima di tutto quello.",
+	},
+	["cls.shaman.muse.w07.021"] = {
+		"I viaggiatori dicono che la terra, al nord, è malata di peste fino alle radici. Temo il giorno in cui mi inginocchierò lì ad ascoltare.",
+		"Si parla di terre dove i morti camminano e il suolo stesso è marcito. Uno sciamano sente una cosa del genere e la sente nello stomaco. Anche la terra può soffrire, come chiunque.",
+	},
+	["cls.shaman.muse.w07.022"] = {
+		"Quando combatto un elementale, combatto un pezzo del mondo piegato male. Non lo odio. Vorrei rimetterlo a posto.",
+		"Gli elementali impazziti non sono mostri. Sono spiriti a cui nessuno chiede più niente. Certi giorni penso che sia questo a renderli furiosi.",
+		"Un elementale furioso è uno spirito che qualcuno ha strappato via e poi abbandonato. Chiudo lo scontro perché devo, e non ne vado mai {g:fiero|fiera}.",
+	},
+	["cls.shaman.muse.w07.023"] = {
+		"Quando mi serve coraggio immagino gli antenati in fila dietro di me, troppi da contare. Quasi tutti hanno l'aria paziente. Uno o due sembrano spazientiti con me.",
+		"Dietro ogni sciamano c'è una lunga fila di morti che hanno fatto questo lavoro prima. Non li vedo. Cerco di camminare come se loro vedessero me.",
+	},
+	["cls.shaman.muse.w07.024"] = {
+		"Lascia il ruscello pulito come l'hai trovato. L'acqua si ricorda di chi è passato.",
+		"Non tirare sassi nel fiume per divertimento. Lì dentro, in un certo senso, ci abita qualcuno.",
+		"Prima di bere da una sorgente, chiedi il permesso. Anche ad alta voce va bene. A ridere sei solo tu.",
+	},
+	["cls.shaman.muse.w07.025"] = {
+		"Quando le forze mi si prosciugano, bevo acqua e resto immobile. C'è qualcosa di giusto: gli spiriti prima mi riempiono nel modo più semplice.",
+		"Non c'è un incantesimo per recuperare le riserve. Acqua, un posto a sedere, e silenzio. Il rimedio più antico vale anche per gli sciamani.",
+		"Di nuovo a secco. Uno sciamano va avanti con ciò che gli spiriti prestano e con acqua semplice, e oggi me ne servirà parecchia.",
+	},
+	["cls.shaman.muse.w07.026"] = {
+		"stappa un otre e, prima di bere, lascia cadere qualche goccia a terra, come se pagasse un piccolo pedaggio.",
+		"versa uno spruzzo d'acqua sulla terra prima di bere a lungo, un gesto fatto senza nemmeno guardare.",
+	},
+	["cls.shaman.muse.w07.027"] = {
+		"La gente si aspetta che uno sciamano stia in ginocchio a salmodiare. Alcuni di noi salmodiano con uno scudo su un braccio e una mazza nell'altra mano.",
+		"Bastone, ascia o mazza, poco importa. Gli spiriti viaggiano lungo l'arma in ogni caso. Il braccio, però, deve fare la sua parte.",
+	},
+	["cls.shaman.muse.w07.028"] = {
+		"Quando sveglio la terra nella mia arma, diventa pesante nel modo giusto, come la stretta di mano di qualcuno forte.",
+		"Con la terra desta dentro l'arma, ogni colpo arriva come se l'avesse scagliato il suolo stesso.",
+	},
+	["cls.shaman.muse.w07.029"] = {
+		"Un giorno il fuoco sull'arma, quello dopo il gelo, il vento quando mi serve velocità. L'arma deve credere di avere quattro padroni. In un certo senso li ha.",
+		"Cambio ciò che dorme nella mia arma come altri cambiano gli stivali. Fuoco, gelo, vento: ognuno vuole essere usato in un modo diverso.",
+	},
+	["cls.shaman.muse.w07.030"] = {
+		"Con il fulmine che mi gira intorno come uno sciame di api arrabbiate, mi sento più al sicuro e sembro molto più {g:strano|strana}.",
+		"Le piccole sfere di fulmine intorno alle spalle ronzano mentre cammino. Quando si spengono, ormai, quel suono mi manca.",
+	},
+	["cls.shaman.muse.w07.031"] = {
+		"Purgare la magia di un nemico vuol dire chiedere agli elementi di spazzarla via. Lo fanno con cura. Certi giorni vorrei che spazzassero anche la mia testa.",
+		"C'è un'onestà soddisfacente nello strappare a un nemico uno scudo preso in prestito. Agli elementi non piacciono le cose che fingono di essere ciò che non sono.",
+	},
+	["cls.shaman.muse.w07.032"] = {
+		"Se lo chiedo, gli spiriti possono portarmi a casa sul vento. Certi giorni lo chiedo. Altri voglio sentire ogni miglio del cammino.",
+		"Casa è a una richiesta di distanza, quando ho la forza di farla. È bello avere una porta così, anche quando resta chiusa.",
+	},
+	["cls.shaman.muse.w07.033"] = {
+		"Fra tutti i miei totem, quello che lega i piedi alla terra è il più educato. Non fa male a nessuno. Chiede solo al suolo di trattenere le caviglie altrui per un po'.",
+		"Adoro quel totem che trattiene a terra per le sue maniere. Niente fuoco, niente tuono. Solo il suolo che si allunga e dice: piano, piano.",
+	},
+	["cls.shaman.muse.w07.034"] = {
+		"Il piccolo totem del fuoco sputa contro tutto ciò che si avvicina, come un bollitore di cattivo umore. Lo pianto e lo lascio brontolare.",
+		"Un totem del fuoco è quanto di più simile a un cane da guardia io abbia: piccolo, testa calda, fedele finché non si consuma.",
+	},
+	["cls.shaman.muse.w07.035"] = {
+		"C'è un totem che prende l'incantesimo destinato a me e lo inghiotte intero. Sento sempre di doverlo ringraziare come si deve, dopo, e non c'è mai tempo.",
+		"Il mio totem dell'aria se ne sta lì e si mangia una maledizione puntata alla mia testa, senza una parola di lamento. Ho conosciuto gente con meno coraggio.",
+	},
+	["cls.shaman.muse.w07.036"] = {
+		"Il totem di pietra attira i colpi su di sé e si incrina perché non debba incrinarmi io. Ogni volta ne raccolgo i pezzi, almeno col pensiero.",
+		"Pianto la pietra e lascio che la bestia mastichi quella invece di me. Non è coraggio. Non è nemmeno viltà. È il mestiere, e basta.",
+	},
+	["cls.shaman.muse.w07.037"] = {
+		"Se mi senti borbottare, non sto parlando con te. E nemmeno da {g:solo|sola}, se è per questo.",
+		"Non badare a me. Sto solo portando avanti una conversazione che tu non senti.",
+		"Quando sto {g:zitto|zitta} e fisso un sasso, sto lavorando. Davvero.",
+	},
+	["cls.shaman.muse.w07.038"] = {
+		"Agli elementi non importa niente né dell'Orda né dell'Alleanza. Il fuoco brucia gli uni e gli altri. Io servo l'Orda, e cerco di non fingere che lo facciano anche gli spiriti.",
+		"Combatto per l'Orda, ma la terra sotto i piedi di un soldato dell'Alleanza è la stessa terra. Mi ci è voluto parecchio per farci pace.",
+		"Il fuoco non giura fedeltà a nessuna bandiera. Io ho giurato la mia all'Orda, e cerco di non confondere le due cose.",
+	},
+	["cls.shaman.muse.w07.039"] = {
+		"Orgrimmar è sorta dalla roccia e dalla polvere in una manciata di anni. Chi pensa che la terra non sappia essere generosa non ha mai camminato per le sue strade.",
+		"Una città dell'Orda fatta di pietra rossa, con uno sciamano a capo. Gli elementi devono aver guardato la cosa con un certo interesse.",
+	},
+	["cls.shaman.muse.w07.040"] = {
+		"si siede a gambe incrociate con i palmi aperti sulle ginocchia, respirando piano, come se aspettasse che qualcuno li riempia.",
+		"si accomoda, chiude gli occhi e resta immobile, come si aspetta davanti a una porta dopo aver bussato.",
+	},
+	["cls.shaman.muse.w07.041"] = {
+		"Una sola parola secca della terra, e l'incantesimo di un nemico gli muore in gola. È una scortesia. La faccio spesso.",
+		"Chiedo al suolo un solo scossone, forte, e la cantilena di qualcuno si ferma a metà. Agli spiriti, a quanto pare, piace interrompere.",
+	},
+	["cls.shaman.muse.w07.042"] = {
+		"L'acqua guarisce e l'acqua gela. È lo stesso spirito con due umori, e ho imparato a chiedere quello giusto.",
+		"L'elemento più gentile ha un filo gelido. Una volta lo dimenticavo. Adesso lo tengo a portata per tutto ciò che scappa.",
+	},
+	["cls.shaman.muse.w07.043"] = {
+		"Un fulmine che salta da un nemico all'altro, scegliendo strada facendo. Io lo libero, e poi decide da sé. Dovrebbe preoccuparmi più di quanto mi preoccupi.",
+		"Il fulmine a catena non va mai proprio dove me lo aspetto. Salta, sceglie, trova il terzo che non avevo visto. L'aria è più furba di me.",
+	},
+	["cls.shaman.muse.w07.044"] = {
+		"Finalmente la maglia di ferro. È pesante e tintinna, e agli spiriti il rumore non sembra dar fastidio. Alle mie ginocchia un po' sì.",
+		"I maestri dicevano che il diritto alla maglia me lo sarei {g:guadagnato|guadagnata}. Adesso porto anelli di ferro e chiedo ancora alla terra di rendermi più difficile da spezzare.",
+	},
+	["cls.shaman.muse.w07.045"] = {
+		"Orchi, troll e tauren sono arrivati agli spiriti ciascuno per la propria strada. Nell'Orda ci scambiamo gli appunti. Agli elementi sembra piacere.",
+		"Nell'Orda tre popoli parlano con gli elementi, ognuno col suo accento. Quando ci incontriamo c'è sempre qualcuno che lo fa in un altro modo, e vale sempre la pena di guardare.",
+	},
+	["cls.shaman.muse.w07.046"] = {
+		"La gente mi porta i suoi guai come se potessi chiedere al cielo di aggiustarli. Quasi sempre ascolto. Sembra aiutarli più di quanto farebbe il cielo.",
+		"La gente immagina che io tenga gli elementi al guinzaglio. Quello che tengo davvero accanto a me è la pazienza, e prendono in prestito anche quella.",
+	},
+	["cls.shaman.muse.w07.047"] = {
+		"Gli elementi hanno un loro calendario. Il fuoco non dorme mai del tutto e l'acqua non è mai del tutto sveglia. Io cerco solo di imparare i loro orari.",
+		"Ogni spirito ha il suo passo. Il fuoco corre, la terra striscia, l'acqua vaga, l'aria non si ferma mai. Passo le giornate a cercare di camminare accanto a tutti e quattro.",
+		"La terra ragiona in secoli, il fuoco in battiti di cuore. Io, nel mezzo, provo a ragionare e basta.",
+	},
+	["cls.shaman.muse.w07.048"] = {
+		"Su una strada lunga e vuota gli elementi sono l'unica compagnia che non si stanca mai di me. Ci parlo più di quanto ammetterei.",
+		"Quando cammino da {g:solo|sola}, non lo sono mai del tutto. I sassi sotto i piedi, l'aria, il ruscello che attraverso: li saluto tutti, e mi aiuta a non perdere la testa.",
+	},
+	["cls.shaman.muse.w07.049"] = {
+		"Le montagne c'erano prima del primo sciamano e ci saranno dopo l'ultimo. Mi fa bene ricordare quanto sia piccola la mia parte.",
+		"Qualunque cosa chieda alla terra, era già vecchia quando il mio popolo imparò a chiedere. Cerco di parlarle come {g:il nuovo arrivato|la nuova arrivata} che sono.",
+		"La pietra su cui siedo è sopravvissuta a dei re e sopravvivrà a me. Accanto a lei abbasso la voce.",
+	},
+	["cls.shaman.muse.w07.050"] = {
+		"No, i totem non hanno un nome. E va bene, ce l'hanno. No, non te li dico.",
+		"Ai miei totem non do nomi. So solo quale tiene il broncio.",
+	},
+	["cls.shaman.muse.w07.051"] = {
+		"A volte gli antenati attraversano il mio sonno senza una parola, limitandosi a guardare. Mi sveglio con la sensazione di essere {g:stato ispezionato|stata ispezionata}, e la voglia di fare meglio.",
+		"Ogni tanto i vecchi mi fanno visita in sogno. Non spiegano mai niente. Restano lì finché non capisco di essere {g:stato distratto|stata distratta}.",
+	},
+	["cls.shaman.muse.w07.052"] = {
+		"traccia lentamente un cerchio nella polvere con un dito, lo divide in quattro e lo studia come fosse una mappa.",
+		"incide quattro brevi segni nel terreno intorno a sé, uno per ogni direzione, e sembra rilassarsi una volta finito.",
+	},
+	["cls.shaman.muse.w07.053"] = {
+		"Un totem non tiene mai il suo dono solo per me. Chi cammina con me ne riceve la stessa parte. Questo, dei totem, mi piace.",
+		"Il totem della terra si divide tra i miei compagni, parti uguali, nessun favorito. Una bella lezione per quasi tutta la gente che conosco.",
+	},
+	["cls.shaman.muse.w07.054"] = {
+		"Nei posti alti l'aria si fa loquace. Salgo per il panorama e resto perché lassù qualcosa continua a farmi domande.",
+		"In cima a un crinale gli spiriti dell'aria si fanno vicini, curiosi di chi ha fatto la salita. Mi sento sempre un po' {g:interrogato|interrogata}.",
+	},
+	["cls.shaman.muse.w07.055"] = {
+		"Un fuoco da campo è il volto più amichevole che il fuoco mostri. Mi ci siedo accanto e ricordo che lo stesso spirito, chissà dove, oggi ha bruciato un bosco.",
+		"Ogni fuoco per cucinare è un piccolo spirito che accetta di rendersi utile. Io lo nutro, lui nutre me. Un accordo onesto, finché dura.",
+	},
+	["cls.shaman.muse.w07.056"] = {
+		"I maestri la fanno sembrare semplice: chiedi, ascolta, ringrazia. Saltano la parte in cui lo spirito ti dice di no davanti a tutti.",
+		"Ogni nuova lezione dal maestro sembra facile, e poi ci vuole un mese di figuracce per farla bene.",
+	},
+	["cls.shaman.muse.w07.057"] = {
+		"Il respiro è aria, il sangue è acqua, le ossa sono terra, e il calore nel petto è fuoco. Uno sciamano non è che un piccolo equilibrio dei quattro che va in giro.",
+		"Gli elementi li porto dentro: aria nei polmoni, acqua nelle vene, terra nelle ossa, fuoco nella pancia. Tenerli in equilibrio è la prima lezione, e la più difficile.",
+	},
+	["cls.shaman.muse.w07.058"] = {
+		"I veterani della Terza Guerra raccontano di come l'Orda si schierò accanto ai vecchi nemici per respingere i demoni. Ci penso ogni volta che qualcuno dice che un nemico lo è per sempre.",
+		"Perfino l'Orda, dicono i vecchi soldati, ha combattuto spalla a spalla con l'Alleanza, una volta, quando arrivarono i demoni. L'equilibrio, a volte, si accompagna a gente strana.",
+	},
+	["cls.shaman.muse.w07.059"] = {
+		"L'acqua ferma ascolta meglio di quella che corre. Quando ho qualcosa di difficile da chiedere, cerco un lago.",
+		"Un fiume veloce non sente niente sopra la propria voce. Uno stagno sente tutto. Le mie domande le porto all'acqua quieta.",
+	},
+	["cls.shaman.muse.w07.060"] = {
+		"Ci sono giorni in cui chiamo e non arriva niente, solo l'eco della mia voce. Ormai non me la prendo. Gli spiriti hanno altro da fare.",
+		"Il silenzio degli elementi è il suono peggiore che conosca. Passa sempre. Non passa mai in fretta.",
+		"Quando gli spiriti non vengono, non alzo la voce. Mi siedo e aspetto che si ricordino di me.",
+	},
+	["cls.shaman.muse.w07.061"] = {
+		"Cammina un po' più piano. La terra ti sente arrivare da lontano.",
+		"Pesti i piedi come se ce l'avessi con la terra. A te non ha fatto niente.",
+	},
+	["cls.shaman.muse.w07.062"] = {
+		"Quando morirò, vorrei entrare nella terra piano e senza storie, come fanno le foglie. Fino ad allora intendo darle meno motivi possibili per avere fretta.",
+		"Prima o poi sarò terriccio. Non è una minaccia: è un vecchio accordo fra me e il suolo. Solo che non ho fretta di onorarlo.",
+		"Un giorno mi stenderò nella terra per sempre. Ci ho fatto pace, purché quel giorno sia lontano.",
+	},
+	["cls.shaman.muse.w07.063"] = {
+		"passa il pollice lungo le venature intagliate di un totem, lisciando una scheggiatura con gesti lenti e pazienti.",
+		"tira fuori un totem e lo lucida sulla manica, come un fabbro che ripulisce il martello preferito.",
+	},
+	["cls.shaman.muse.w07.064"] = {
+		"I guerrieri vogliono che lo scontro finisca in fretta. I maghi lo vogliono astuto. Uno sciamano lo vuole in equilibrio, e così nessuno mi ringrazia mai per la parte che non ha notato.",
+		"In ogni scontro faccio tre cose insieme: colpisco, curo, e tengo i totem dove devono stare. La terza non la vede nessuno.",
+	},
+	["cls.shaman.muse.w07.065"] = {
+		"La prima cosa che impara uno sciamano è stare in silenzio. Tutto il resto viene dopo, e viene piano.",
+		"Prima del fulmine, prima delle cure, c'era l'ascolto. È ancora la parte più difficile del mestiere, e quella in cui sbaglio più spesso.",
+		"I miei maestri parlavano pochissimo e ascoltavano moltissimo. Credevo fosse l'età. Era il mestiere.",
+	},
+	["cls.shaman.muse.w07.066"] = {
+		"Per l'Orda, e per l'equilibrio. Non sempre vanno d'accordo. Cerco di restare fedele a entrambi.",
+		"Il mio braccio all'Orda, la mia pazienza agli spiriti. Certi giorni è una spartizione facile. Altri no.",
+	},
+	["cls.shaman.muse.w07.067"] = {
+		"Di nuovo un sasso nello stivale. La terra ha il senso dell'umorismo, e non è per niente sottile.",
+		"Ogni sassolino che mi finisce nello stivale sembra un piccolo promemoria dal basso: non montarti la testa.",
+		"Scuoto lo stivale e un sassolino ricade a terra, soddisfatto. Messaggio consegnato, immagino.",
+	},
+	["cls.shaman.muse.w07.068"] = {
+		"Quando sono {g:arrabbiato|arrabbiata}, il fuoco arriva fin troppo facilmente. È proprio allora che dovrei chiederlo di meno.",
+		"Il mio caratteraccio e gli spiriti del fuoco vanno fin troppo d'accordo. Ho imparato a raffreddare l'uno prima di chiamare gli altri.",
+		"Il fuoco risponde più in fretta quando sono {g:furioso|furiosa}. Uno sciamano che se ne accorge dovrebbe preoccuparsi, non compiacersene.",
+	},
+	["cls.shaman.muse.w07.069"] = {
+		"Dopo ogni incantesimo dico grazie, a mezza voce. Nessuno lo sente. Non è per loro.",
+		"Una parola di ringraziamento per ogni fulmine, ogni cura, ogni totem. Non costa niente, e tiene gli spiriti ben disposti.",
+		"Certi sciamani pensano che la gratitudine sia una formalità. Io sospetto che gli spiriti si facciano lenti con chi la dimentica.",
+	},
+	["cls.shaman.muse.w07.070"] = {
+		"Se il terreno comincia a ronzare, fai un passo indietro. O sono io, o è qualcosa che ti piacerebbe ancora meno.",
+		"Uno strano crepitio nell'aria? Probabilmente sono io. Se non sono io, scappa.",
+		"Quando a me si rizzano i capelli, dovrebbero rizzarsi anche a te. Ti ho avvisato.",
+	},
+	["cls.shaman.muse.w07.071"] = {
+		"Ogni creatura che uccido ha uno spirito che va da qualche parte. Non so dove. Spero sia un posto più gentile della punta della mia arma.",
+		"Uccido, perché la strada lo pretende. Poi dedico un pensiero allo spirito che se n'è appena andato. È il minimo che uno sciamano debba.",
+		"I cacciatori ringraziano la bestia. Gli sciamani ringraziano lo spirito che la lascia. Non so chi dei due abbia ragione, così faccio entrambe le cose.",
+	},
+	["cls.shaman.muse.w07.072"] = {
+		"conta piano sulle dita, uno, due, tre, quattro, poi ricomincia, come per controllare che non manchi niente.",
+		"tocca col pollice la punta di ogni dito, una dopo l'altra, muovendo le labbra: un piccolo conto privato che si ferma sempre a quattro.",
+		"mormora a fior di labbra quattro brevi parole, una per ogni elemento, e prosegue come se niente fosse.",
+	},
+	["cls.shaman.muse.w07.073"] = {
+		"Il giorno in cui comincerò a considerare gli elementi come attrezzi, meriterò di perderli. Me lo ripeto più spesso di quanto vorrei.",
+		"Una spada è un attrezzo. Uno spirito no. La differenza è che una spada non decide mai di smettere di lavorare per te.",
+		"Tratta uno spirito come un martello, e un giorno ti risponderà come tale: duro, e nel momento sbagliato.",
+	},
+	["cls.shaman.muse.w07.074"] = {
+		"Gli stivali smorzano la voce del suolo. Se avessi i piedi più duri camminerei {g:scalzo|scalza} e sentirei tutto.",
+		"Ogni paio di stivali è un muro fra me e la terra. Un muro sottile, ma la differenza la sento.",
+		"Alla fine di una lunga camminata mi sfilo gli stivali e resto un momento sulla nuda terra. Il suolo ha cose da dire che il cuoio tiene fuori.",
+	},
+	["cls.shaman.muse.w07.075"] = {
+		"Mangiare, dormire, combattere, ridere. Saltane uno e il resto va storto. L'equilibrio non riguarda solo gli spiriti.",
+		"Combatti tutto il giorno senza mangiare, e perfino gli elementi ti diranno che pendi da una parte.",
+		"Riposati un po'. Un corpo tirato troppo da una parte si spezza come qualunque altra cosa.",
+	},
+	["cls.shaman.muse.w07.076"] = {
+		"C'è sempre un istante, mentre chiamo il fulmine, in cui mi chiedo se si ricorderà da quale parte di me uscire.",
+		"Il potere mi attraversa per uscire. Un giorno chiederò troppo, e si porterà via un pezzo di me. Cerco di chiedere con giudizio.",
+		"Rispetto il fulmine come si rispetta l'orlo di un dirupo: da vicino, e senza mai voltargli le spalle.",
+	},
+	["cls.shaman.muse.w07.077"] = {
+		"L'Orda è fatta di popoli che il mondo aveva spinto ai margini. Uno sciamano sa cosa sono i margini: è lì che gli elementi si incontrano.",
+		"Nessuno ha costruito l'Orda perché fosse comoda. È stata costruita per sopravvivere, con chi era rimasto. Uno sciamano capisce quel genere di equilibrio.",
+		"L'Orda sta insieme come gli elementi: tirandosi l'un l'altro quanto basta, e non di più.",
+	},
+	["cls.shaman.muse.w07.078"] = {
+		"L'acqua che non può muoversi inacidisce. Con la gente è lo stesso. Quando resto troppo in un posto, sento che comincio a sapere di palude.",
+		"L'acqua ferma è saggia, quella che corre è sana, e quella intrappolata marcisce. Cerco di essere del secondo tipo, quasi sempre.",
+	},
+	["cls.shaman.quest_complete.w07.001"] = {
+		"Monete nella borsa. Quasi tutte se ne andranno in acqua e in una cinghia migliore per lo scudo. Gli spiriti non si fanno pagare, i mercanti sì.",
+		"Una giusta ricompensa. Gli elementi lavorano per un grazie; la mia armatura no, e ha di nuovo bisogno di riparazioni.",
+		"Pagato. Ne metterò un po' da parte per il maestro. Le nuove lezioni non costano mai poco, anche quando a insegnarle gratis sono gli spiriti.",
+	},
+	["cls.shaman.quest_complete.w07.002"] = {
+		"Questo è sistemato. Se c'è altro che turba questo posto, preferisco saperlo adesso che più tardi.",
+		"Fatto. E già che sono qui: qualcuno ha sentito la terra strana, ultimamente? Lo chiedo per conto degli spiriti.",
+		"Finito. Chiamatemi di nuovo se le cose vanno storte. Raddrizzarle è più o meno il mio mestiere.",
+	},
+	["cls.shaman.quest_complete.w07.003"] = {
+		"accetta la ricompensa con un cenno, poi si accovaccia un istante a toccare il suolo, come per far sapere anche a qualcun altro che il lavoro è fatto.",
+		"intasca il compenso e lancia una breve occhiata al suolo sotto i piedi, come un operaio che si consulta col caposquadra.",
+		"prende ciò che {g:gli|le} viene offerto e, prima di voltarsi, mormora una sola parola rivolta alla terra.",
+	},
+	["cls.shaman.quest_complete.w07.004"] = {
+		"I guai di qualcuno ora pesano un po' meno. Gli elementi non se ne accorgerebbero. Io sì, e dovrà bastare.",
+		"Un lavoro piccolo, fatto onestamente. Il mondo è troppo grande per aggiustarlo tutto in una volta, ma toppa dopo toppa sta insieme.",
+		"Non cambia molto. Cambia qualcosa. È l'unica differenza che un singolo sciamano possa fare.",
+	},
+	["cls.shaman.quest_complete.w07.005"] = {
+		"Sembravano un po' delusi che non ci abbia salmodiato sopra. La prossima volta canticchierò qualcosa, per far contenti loro.",
+		"La gente si aspetta che uno sciamano chiuda un lavoro tra fumo e tamburi. Io l'ho chiuso con un sacco e una lunga camminata.",
+		"Niente rito, niente fulmini, solo un compito portato a termine. Credo che a chi me l'ha chiesto sia mancato lo spettacolo.",
+	},
+	["cls.shaman.quest_complete.w07.006"] = {
+		"Il compito è fatto e io vado avanti con gli avanzi. Prima l'acqua, poi un'ora di quiete, poi chiederò di nuovo qualcosa agli spiriti.",
+		"Mi fanno male i piedi e lo spirito è ridotto a un filo. Oggi gli elementi mi hanno prestato parecchio: adesso tocca al corpo.",
+		"Tutto quel camminare e chiamare, e solo ora che il lavoro è finito mi accorgo di quanta stanchezza ho addosso. Gli spiriti riposano quando vogliono. Io devo ritagliarmi il tempo.",
+	},
+	["cls.shaman.quest_complete.w07.007"] = {
+		"Metà del lavoro l'hanno fatta gli spiriti, quindi a rigore spetta loro metà della ricompensa. La loro parte la tengo io, per sicurezza.",
+		"La dividerei con gli elementi, ma non passano mai a riscuotere.",
+		"Grazie. La terra dice prego. Più o meno.",
+	},
+	["cls.shaman.quest_complete.w07.008"] = {
+		"Sono compiti come questo a tenere insieme l'Orda: fatti come si deve, da qualcuno che avrebbe potuto tirare dritto. Nessuno ne canta.",
+		"L'Orda è fatta di commissioni come questa, portate a termine da gente stanca che avrebbe potuto dire di no. Sono {g:contento|contenta} di non averlo fatto.",
+		"Il Capoguerra non saprà mai niente di un compito come questo. Credo che approverebbe lo stesso: anche lui è uno sciamano, e sa come si sommano le piccole cose.",
+	},
+	["cls.shaman.quest_complete.w07.009"] = {
+		"si rimette lo zaino in spalla, e i totem all'interno battono l'uno contro l'altro con un suono cavo, di legno.",
+		"si sistema meglio lo zaino sulla schiena e ascolta per un momento i totem che si assestano lì dentro.",
+		"tira su lo zaino pesante, e qualcosa di intagliato nel legno, all'interno, risponde con uno schiocco.",
+	},
+	["cls.shaman.quest_complete.w07.010"] = {
+		"Metà dei guai che mi pagano per sistemare, la terra aveva provato ad annunciarli. Nessuno ascolta la terra. Per questo esistono gli sciamani.",
+		"Se la gente badasse di più al suolo e all'acqua, avrei molte meno commissioni. E sarei anche più {g:povero|povera}. Credo che agli spiriti la cosa faccia ridere.",
+		"Quasi tutti chiedono aiuto solo quando il guaio fa già rumore. La terra ne bisbigliava da settimane.",
+	},
+	["cls.shaman.quest_complete.w07.011"] = {
+		"Che il suolo ti resti saldo sotto i piedi. È la cosa migliore che sappia augurare a qualcuno.",
+		"Va' in pace. Acqua quando hai sete, fuoco quando hai freddo, e terra salda per tutta la strada.",
+		"Il compito è fatto. Che gli elementi siano gentili con questo posto per un bel pezzo.",
+	},
+	["cls.shaman.quest_complete.w07.012"] = {
+		"Quando un compito chiede di uccidere, lo faccio, e dico una parola per ogni spirito che mando via. Non pareggia i conti, ma li tiene onesti.",
+		"Certe ricompense si pagano col sangue, più o meno. Gli spiriti non me ne fanno una colpa. Degli antenati sono meno {g:sicuro|sicura}.",
+		"Non tutti i compiti lasciano il mondo più in equilibrio. Questo forse sì. Lo chiederò alla terra più tardi, quando sarà tutto quieto.",
+	},
+	["cls.shaman.quest_complete.w07.013"] = {
+		"china il capo verso chi ha fatto la richiesta e poi, più in fretta, verso il suolo ai suoi piedi.",
+		"fa un cenno breve e rispettoso, di quelli che si scambiano persone che sanno entrambe quanto costa una strada difficile.",
+		"si porta due dita alla fronte in segno di ringraziamento, e lascia che il gesto finisca indicando la terra.",
+	},
+	["cls.shaman.quest_complete.w07.014"] = {
+		"Per ogni compito che porto a termine, gli spiriti sembrano arrivare un po' più in fretta quando li chiamo. Forse tengono il conto. Forse cammino solo più {g:dritto|dritta}.",
+		"Un lavoro fatto bene guadagna fiducia: da chi l'ha chiesto e, credo, dagli elementi che guardano.",
+		"Strano come finire una commissione faccia sentire più saldo il suolo sotto di me. O forse sono le mie gambe a essersi fatte più salde.",
+	},
+	["cls.shaman.quest_complete.w07.015"] = {
+		"La prossima volta mandate a chiamare uno sciamano finché il guaio è ancora piccolo. Così costiamo meno.",
+		"Se le cose ricominciano ad andare storte, mandate a dire presto. Gli spiriti preferiscono prevenire. Anche i miei piedi.",
+		"Fatto. Fatemi un favore: non lasciate che le cose si storcano così un'altra volta.",
+	},
+	["cls.shaman.quest_complete.w07.016"] = {
+		"Qui ho finito. La strada aspetta, e con me non è mai stata paziente.",
+		"Un compito in meno sulle spalle. Ce ne sarà un altro prima del prossimo fuoco da campo, e in fondo non lo vorrei diverso.",
+		"Finito. Zaino, stivali, arma, e via. Uno sciamano che sta fermo troppo a lungo comincia a mettere radici.",
+	},
+	["cls.shaman.quest_complete.w07.017"] = {
+		"Agli elementi le monete non servono. È uno dei motivi per cui mi fido di loro più che di chi mi paga.",
+		"Il denaro è roba da gente. Gli spiriti non me ne hanno mai chiesto, e la cosa mi riposa.",
+		"L'oro passa di mano in mano, e la terra sotto non se ne accorge. Certi giorni vorrei somigliarle di più.",
+	},
+	["cls.shaman.quest_complete.w07.018"] = {
+		"Ringraziate gli spiriti, non me. Io ho solo portato il messaggio.",
+		"Non ringraziatemi troppo. Il grosso l'hanno fatto gli elementi; io li ho solo indirizzati.",
+		"La gratitudine è ben accetta. Mandatene un po' anche alla terra: ha tenuto per tutto il tempo.",
+	},
+	["cls.shaman.quest_complete.w07.019"] = {
+		"Mi piace pensare che gli antenati abbiano guardato e annuito. Di rado dicono qualcosa. Un cenno basterebbe.",
+		"Alle mie spalle, da qualche parte, un vecchio sciamano morto da tempo sta approvando oppure sospirando. Mi va bene in tutti e due i casi: vuol dire che guarda.",
+		"Agli antenati le ricompense non interessano. Interessa che il lavoro sia fatto bene. Questo, credo, lo era.",
+	},
+	["cls.shaman.quest_complete.w07.020"] = {
+		"si scuote dalle mani la polvere della strada e la lascia ricadere a terra, dove deve stare.",
+		"batte le mani per togliersi la terra dai palmi, poi si ferma, come per scusarsi del trattamento brusco.",
+	},
+	["cls.shaman.quest_complete.w07.021"] = {
+		"Fatto, e gli spiriti sono rimasti tranquilli per tutto il tempo. Una bella giornata di lavoro.",
+		"Finito. Non si è rotto niente che non dovesse rompersi. Lo chiamo un successo.",
+	},
+	["cls.shaman.quest_progress.w07.001"] = {
+		"A metà strada, più o meno. La terra è paziente; per un altro po' posso esserlo anch'io.",
+		"Non è finita, ma manca meno. Mettere fretta a un compito è come mettere fretta a un totem: funziona solo quando si è assestato.",
+		"Una parte è fatta. Il resto è là fuori, e gli spiriti non me lo andranno a prendere.",
+	},
+	["cls.shaman.quest_progress.w07.002"] = {
+		"si ferma a fare il punto sul lavoro fatto finora, annuisce una volta e guarda verso ciò che resta.",
+		"controlla il conto sulle dita, lo trova scarso, e riprende a camminare senza lamentarsi.",
+		"preme un piede sul terreno per un momento, come per chiedergli da che parte stia il resto del lavoro.",
+	},
+	["cls.shaman.quest_progress.w07.003"] = {
+		"Ecco, è tutto. È ora di portare la notizia a chi l'ha chiesta, e di far sapere agli spiriti che possono smettere di trattenere il fiato.",
+		"È fatto tutto quello che c'era da fare. Adesso la lunga camminata per dirlo.",
+		"Il lavoro è completo. Resta solo da riferirlo, e vorrei riuscirci prima che i miei piedi cambino idea.",
+	},
+	["cls.shaman.reputation_change.w07.001"] = {
+		"La fiducia della gente, la fiducia degli spiriti: la stessa moneta lenta, guadagnata allo stesso modo.",
+		"Adesso pensano un po' meglio di me. Gli spiriti mi hanno insegnato che la benevolenza si costruisce come un argine: pietra su pietra, e mai di fretta.",
+		"Un nome pronunciato con un po' più di gentilezza. Cercherò di tenerlo così: la buona reputazione, come l'equilibrio, si sbilancia facilmente.",
+	},
+	["cls.shaman.rez.w07.001"] = {
+		"Gli spiriti mi hanno lasciato fare un tratto della strada di là, poi mi hanno {g:richiamato|richiamata} per il gomito. Non so se fossi {g:pronto|pronta} a voltarmi.",
+		"La morte era silenziosa e piena di voci che quasi conoscevo. Di nuovo la terra sotto i piedi: più rumorosa, più ruvida, mia.",
+	},
+	["cls.shaman.rezother.w07.001"] = {
+		"Torna. La strada non ha finito con te.",
+		"Il tuo spirito è ancora vicino, lo sento indugiare. Da questa parte.",
+		"Su, torna indietro. È troppo presto per andartene in giro con i morti.",
+	},
+	["cls.shaman.rezother.w07.002"] = {
+		"Richiamare uno spirito è come chiamare qualcuno dall'altra riva di un fiume largo. Chiami, aspetti, e speri che la voce che risponde sia quella giusta.",
+		"C'è sempre un momento, dopo che ho chiamato, in cui niente risponde. Dura un respiro. Sembra una stagione.",
+		"Chiamo nel silenzio e ascolto. La risposta, quando arriva, non è mai più forte di un sospiro.",
+	},
+	["cls.shaman.rezother.w07.003"] = {
+		"abbassa la voce e chiama verso la sagoma immobile, come si richiama alla mano un animale diffidente.",
+		"solleva entrambe le mani sopra il corpo immobile e ve le tiene, i palmi in giù, finché da sotto non risponde un respiro.",
+	},
+	["cls.shaman.rezother.w07.004"] = {
+		"Su, in piedi. Altrimenti ti aspettava una bella camminata.",
+		"Ti ho risparmiato la lunga camminata di ritorno. Per ringraziarmi puoi portarmi lo zaino per un po'.",
+		"Rieccoti. Non è successo niente di che, a parte la tua morte.",
+	},
+	["cls.shaman.rezother.w07.005"] = {
+		"Ogni spirito che richiamo torna un po' più freddo. Ci mette un po' a dimenticare dov'è stato.",
+		"Chi torna dalla morte non è subito lo stesso. Dagli un momento: il calore arriva dopo.",
+	},
+	["cls.shaman.rezother.w07.006"] = {
+		"Spiriti di chi è venuto prima, rimandate indietro chi è caduto qui.",
+		"Spiriti ancestrali, aprite la via. Qui c'è un corpo che aspetta ancora chi lo abita.",
+	},
+	["cls.shaman.rezother.w07.007"] = {
+		"Fatto. Per un po' gambe molli e un gran malumore, ma il cuore batte. Mi va bene tutto.",
+		"Di nuovo tra i vivi. Con le ossa doloranti, immagino, e nessuna voglia di scherzi. I miei li tengo per dopo.",
+	},
+	["cls.shaman.rezother.w07.008"] = {
+		"preme un palmo contro la terra e mormora; poco lontano, un respiro si blocca e poi ricomincia.",
+		"parla all'aria vuota sopra il corpo come se qualcuno vi stesse in piedi, e aspetta.",
+	},
+	["cls.shaman.rezother.w07.009"] = {
+		"Respira. Bene. Ora non farlo mai più.",
+		"Eccoti. Non costringermi a venirti a riprendere due volte nello stesso giorno.",
+		"Piano, piano. Morire stanca; tornare, ancora di più.",
+	},
+	["cls.shaman.rezother.w07.010"] = {
+		"Lo spirito si era già voltato verso gli antenati. Gli ho chiesto di girarsi. Non era tenuto ad ascoltarmi. L'ha fatto.",
+		"I morti non li trascino indietro. Chiedo. Se tornano, è una loro scelta, e ogni volta ne sono {g:grato|grata}.",
+	},
+	["cls.shaman.thanks.w07.001"] = {
+		"Grazie. Parlerò di te agli spiriti: a loro piace sapere chi è stato gentile.",
+		"Ti ringrazio. Gli antenati hanno la memoria lunga per le buone azioni, e io pure.",
+	},
+	["cls.shaman.thanks.w07.002"] = {
+		"Grazie. Se mai la terra ti tremerà sotto i piedi, non sarà per colpa mia.",
+		"Molto gentile. Ti offrirei in cambio una scintilla di fulmine, ma mi dicono che è un regalo scomodo.",
+	},
+	["cls.shaman.threat.w07.001"] = {
+		"Vattene, e la terra dimenticherà le tue impronte. Resta, e si ricorderà di te a lungo.",
+		"Vattene ora, e chiederò agli spiriti di lasciar correre. Non lo chiederò due volte.",
+		"Sparisci finché il terreno ti vuole ancora bene. Può cambiare idea in fretta.",
+	},
+	["cls.shaman.threat.w07.002"] = {
+		"Parlo col fulmine quasi ogni giorno. Non darmi argomenti nuovi da raccontargli.",
+		"Io e il tuono parliamo spesso. Vuoi che ti nomini?",
+		"Gli spiriti mi chiedono della gente che incontro. Finora, su di te, ho usato parole gentili.",
+	},
+	["cls.shaman.threat.w07.003"] = {
+		"lascia correre un sottile crepitio di luce lungo le nocche, senza dire una parola.",
+		"abbassa lo sguardo sul terreno sotto i piedi dell'altro, poi lo rialza, senza fretta.",
+	},
+	["cls.shaman.threat.w07.004"] = {
+		"Gli antenati sono pazienti con gli sciocchi. Io lo sono un po' meno di loro.",
+		"Gli spiriti mi chiedono calma. Io chiedo a te di andartene prima che smetta di ascoltarli.",
+		"Mi hanno insegnato a chiedere prima di colpire. Considera questa la richiesta.",
+	},
+	["cls.shaman.threat.w07.005"] = {
+		"Nella borsa c'è un totem del fuoco che scalpita per uscire. Non dargli un motivo.",
+		"Ho un totem del fuoco che non tocca terra da tutto il giorno. Non candidarti.",
+	},
+	["cls.shaman.victory.w07.001"] = {
+		"Il pozzo per ora è a secco. Gli spiriti lo riempiono coi loro tempi, mai coi miei.",
+		"Non mi resta una scintilla. Sedersi, bere, aspettare che gli elementi mi riempiano di nuovo.",
+		"Fondo del barile. Gli spiriti mi riempiranno di nuovo, ma con calma.",
+	},
+	["cls.shaman.victory.w07.002"] = {
+		"Grazie, spiriti. Stessa ora domani?",
+		"Bel lavoro, tutti quanti. E per tutti quanti intendo gli elementi.",
+		"Ottimo lavoro, terra. Anche tu, fuoco. Acqua, puoi metterti comoda.",
+	},
+	["cls.shaman.victory.w07.003"] = {
+		"guarda i totem svanire uno dopo l'altro, e china il capo davanti a ciascuno mentre se ne va.",
+		"aspetta che l'ultimo totem sia svanito, e solo allora lascia cadere le spalle.",
+	},
+	["cls.shaman.victory.w07.004"] = {
+		"Gli spiriti hanno dato; io dico grazie. Uno sciamano che salta questo passo li ritrova presto sordi.",
+		"Prima un grazie, rapido e semplice, prima di ogni altra cosa. Gli elementi tengono un registro, dicono i vecchi sciamani.",
+	},
+	["cls.shaman.victory.w07.005"] = {
+		"Ecco cosa succede quando il cielo si interessa a te.",
+		"Hai sfidato gli elementi. La maggior parte di loro non se n'è nemmeno accorta.",
+		"Il cielo non si schiera spesso. Oggi si è schierato con me.",
+	},
+	["cls.shaman.victory.w07.006"] = {
+		"È finita. Gli anziani dicono che ogni spirito alla fine trova il suo elemento. Spero che questo ne trovi uno gentile.",
+		"Qualunque scintilla avesse, ora è libera. Spero che vada a posarsi in un luogo meno duro di questo.",
+		"Lo spirito è andato oltre. Dirò una parola per lui, anche se lui non l'avrebbe mai detta per me.",
+	},
+	["cls.shaman.victory.w07.007"] = {
+		"Io ti avevo avvisato. Be', il fulmine sì. E ad alta voce.",
+		"A mia discolpa, prima c'è stato un gran crepitio. Valeva come avviso.",
+		"Non puoi dire che il cielo non ti abbia dato il preavviso.",
+	},
+	["cls.shaman.victory.w07.008"] = {
+		"Contare cosa resta: mana, salute, totem. Poi muoversi.",
+		"Meno mana, qualche livido nuovo, i totem tutti al loro posto. Uno scambio onesto.",
+	},
+	["cls.shaman.victory.w07.009"] = {
+		"si accovaccia accanto al nemico abbattuto e posa due dita sul terreno lì vicino, una breve cortesia alla terra che lo accoglierà.",
+		"sfiora la terra accanto al corpo, appena un attimo, come per presentarlo al suo nuovo custode.",
+	},
+	["cls.shaman.victory.w07.010"] = {
+		"La prossima volta attacca briga con qualcuno che non abbia il cielo dalla sua.",
+		"Lezione per il prossimo: mai litigare con uno sciamano che ha sotto i piedi un buon terreno.",
+		"Avviso per chi guarda: l'ultima parola è sempre dello sciamano. Di solito è un tuono.",
+	},
+	["cls.shaman.victory.w07.011"] = {
+		"Quattro elementi e ne ho usati due. Gli anziani lo chiamerebbero pigrizia, e avrebbero ragione.",
+		"Mi sono {g:ricordato|ricordata} dell'acqua solo alla fine. Uno sciamano con quattro spiriti che ne chiama due spreca il dono.",
+	},
+	["cls.shaman.victory.w07.012"] = {
+		"Ecco. Gli spiriti possono riprendere le loro faccende, e io le mie.",
+		"Finito. Spiriti, siete liberi di andare. Grazie, davvero.",
+		"È tutto, spiriti. Andate pure, e grazie.",
+	},
+	["cls.shaman.victory.w07.013"] = {
+		"Sotto i piedi il terreno ha smesso di tremare. Non gli piacciono più di quanto piacciano a me.",
+		"Il terreno si quieta. Sente il peso di ogni scontro combattuto sopra di lui, e di ogni caduta.",
+		"La terra torna quieta sotto di me, come un cane che si riaccuccia a dormire.",
+	},
+	["cls.shaman.victory.w07.014"] = {
+		"si scuote dalle dita qualche scintilla rimasta, come si fa con l'acqua.",
+		"scuote le mani; le ultime scintille cadono a terra e si spengono.",
+	},
+	["cls.shaman.victory.w07.015"] = {
+		"La terra a reggere, il fuoco a picchiare, io a gridare. Gioco di squadra.",
+		"Un bel lavoro di gruppo. Soprattutto degli elementi, ma c'ero anch'io.",
+	},
+	["cls.shaman.victory.w07.016"] = {
+		"Mi formicolano ancora le dita. Gli elementi lasciano sempre un po' di sé.",
+		"Formicolio fino al gomito. Chiamare gli spiriti non è mai gratis.",
+	},
+	["cls.shaman.victory.w07.017"] = {
+		"Riposate, spiriti. Ve lo siete meritato, e presto avrò di nuovo bisogno di voi.",
+		"State tranquilli, spiriti. Non passerà molto prima che vi chieda ancora.",
+		"Piano, spiriti. È stato un buon lavoro, e non lo dimenticherò.",
+	},
+	["cls.shaman.victory.w07.018"] = {
+		"Qualcuno, chissà dove, metterà in tavola una scodella di troppo. Questa parte gli spiriti non la spiegano.",
+		"Forse aveva qualcuno. Quasi tutti ce l'hanno. Gli elementi si riprendono il corpo e lasciano il resto ai vivi.",
+	},
+	["cls.shaman.victory.w07.019"] = {
+		"Ecco. Stenditi nella terra e restaci. Ti era dovuto da tempo.",
+		"Giù nella terra, e stavolta resta dove sei. Al resto penseranno gli antenati.",
+	},
+	["cls.shaman.victory.w07.020"] = {
+		"Va' a casa, spirito. Chi ti ha distorto non può raggiungerti là.",
+		"Sciolto, finalmente. Ritrova il tuo elemento e dimentica questo posto.",
+	},
+	["cls.shaman.victory.w07.021"] = {
+		"I totem ne sono usciti senza un graffio. Li invidio un po'.",
+		"Totem tutti a posto. Io, un po' meno. Loro i colpi non li prendono mai: ecco il segreto.",
+	},
+	["cls.shaman.victory.w07.022"] = {
+		"raddrizza piano la schiena, sciogliendo la rigidità delle spalle, e la carica leggera nell'aria si disperde.",
+		"abbassa le mani, e l'odore pungente del fulmine svanisce dall'aria intorno.",
+	},
+	["cls.shaman.victory.w07.023"] = {
+		"Chi si è fatto male? Ditelo. Mi resta acqua per chi ne ha bisogno.",
+		"Fatemi vedere i tagli. Gli spiriti dell'acqua mi devono un favore o due.",
+	},
+	["cls.shaman.victory.w07.024"] = {
+		"L'hanno visto solo gli spiriti. Non applaudono, ma nemmeno dimenticano.",
+		"Nessuno ha visto, a parte gli spiriti. Come pubblico basta.",
+	},
+	["cls.shaman.victory.w07.025"] = {
+		"Una in più per l'Orda. Agli spiriti la loro parte di merito.",
+		"L'Orda è un po' più forte, ora. Dirò agli spiriti che hanno dato una mano.",
+	},
+	["cls.shaman.victory.w07.026"] = {
+		"Come una tempesta che ha detto la sua, passa. Resta l'aria pulita e un braccio indolenzito.",
+		"Finisce come finisce una burrasca: d'un tratto, lasciando tutto lavato.",
+	},
+	["cls.shaman.victory.w07.027"] = {
+		"Resta giù. Alla terra piaci di più così.",
+		"Riposa lì. Il terreno ti voleva fin dall'inizio.",
+		"Resta lì. La terra è stata paziente: lasciati prendere.",
+	},
+	["cls.shaman.victory.w07.028"] = {
+		"raccoglie un pizzico di polvere, lo lascia scorrere tra le dita e borbotta un grazie.",
+		"preme un istante il palmo a terra, come si dà una pacca a un cavallo che ha portato bene.",
+	},
+	["cls.shaman.victory.w07.029"] = {
+		"La forma del lupo e via, prima che qualcos'altro venga a vedere cos'era il fracasso.",
+		"Niente indugi. Quattro zampe, strada svelta, e via.",
+	},
+	["cls.shaman.victory.w07.030"] = {
+		"Vai, allora. Corri con gli spiriti della tua specie. Nessun rancore da parte mia.",
+		"Il tuo spirito è di nuovo libero di vagare. Spero che dove va la caccia sia buona.",
+	},
+	["cls.shaman.victory.w07.031"] = {
+		"Nessun ankh speso oggi. La mia borsa ringrazia gli spiriti.",
+		"L'ankh resta nella borsa un altro giorno. Parsimonia e vita: un'ottima accoppiata.",
+	},
+	["cls.shaman.victory.w07.032"] = {
+		"L'equilibrio tiene, per il momento. Non sprechiamolo a guardarci intorno.",
+		"La bilancia è di nuovo in pari. Dove si va adesso?",
+		"Equilibrio salvo. Ora, prima che passi qualcos'altro, avanti.",
+	},
+	["cls.shaman.victory.w07.033"] = {
+		"resta un momento accanto al corpo, muovendo le labbra, come a spedire qualcosa dietro allo spirito che se ne va.",
+		"indugia presso il nemico abbattuto, mormorando qualche parola per lo spirito che l'ha appena lasciato.",
+	},
+	["cls.shaman.victory.w07.034"] = {
+		"Ah! Gli spiriti hanno visto. Per giorni sarò insopportabile.",
+		"Di questa mi vanterò con gli spiriti per una settimana. Faranno finta di ascoltare.",
+	},
+	["cls.shaman.victory.w07.035"] = {
+		"Gli antenati approvano, credo. Con loro è difficile distinguere l'approvazione dal sonno.",
+		"Se i vecchi hanno guardato, ora annuiscono. O sonnecchiano. Con gli antenati la differenza è poca.",
+	},
+	["cls.shaman.victory.w07.036"] = {
+		"La maglia ha preso quello che gli spiriti non hanno deviato. Fra tutti e due, nemmeno un graffio degno di nota.",
+		"Maglia e spiriti hanno tenuto entrambi. Mi accontento.",
+	},
+	["cls.shaman.victory.w07.037"] = {
+		"Mi hanno risposto ancora. Cerco di non darlo mai per scontato: gli spiriti se ne accorgono, quando lo fai.",
+		"Sono venuti quando ho chiesto. Ogni volta che succede, mi impongo di stupirmene.",
+	},
+	["cls.shaman.victory.w07.038"] = {
+		"Fatto. Ora, dov'è finita quella scintilla? Mi sa che mi sono {g:bruciacchiato|bruciacchiata} la manica.",
+		"Finito, e mi sono di nuovo {g:strinato|strinata} la manica. Lo spirito del fuoco lo trova divertente.",
+		"Vinto, e un solo buco bruciato nel mantello. Una buona giornata, per i conti di uno sciamano.",
+	},
+	["cls.shaman.victory.w07.039"] = {
+		"Dopo, ascolto gli spiriti. Non per essere {g:ringraziato|ringraziata}: per sentire se sono contenti.",
+		"Un momento di ascolto, dopo. Se gli spiriti sono inquieti, lo scontro non è davvero finito.",
+	},
+	["cls.shaman.victory.w07.040"] = {
+		"spinge col piede un po' di terra su una chiazza bruciata lasciata dallo scontro.",
+		"strofina con lo stivale un segno annerito sul terreno finché quasi scompare, mettendo in ordine dopo gli elementi.",
+	},
+	["cls.shaman.victory.w07.041"] = {
+		"Le vie antiche funzionano ancora. Chiedere, ascoltare, colpire. Poi ringraziare.",
+		"Chiesto, risposto, fatto. La via più antica che ci sia, e regge ancora.",
+	},
+	["cls.shaman.victory.w07.042"] = {
+		"Il silenzio di dopo è il momento in cui gli spiriti si fanno più vicini. Non so mai cosa dirgli.",
+		"Nella quiete che segue, li sento quasi respirare. Poi passa.",
+	},
+	["cls.shaman.victory.w07.043"] = {
+		"Il fulmine ha esposto le sue ragioni. Tu hai resistito fino alla fine. Ammirevole, a modo suo.",
+		"Gli spiriti hanno portato un argomento convincente. Tu l'hai perso.",
+	},
 }, "base_classes")

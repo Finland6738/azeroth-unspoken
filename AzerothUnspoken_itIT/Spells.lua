@@ -682,4 +682,124 @@ NS:AddTexts("itIT", {
 		"attende accanto a chi è caduto, le mani aperte e pazienti, come si aspetta un viandante in ritardo sulla strada.",
 		"resta immobile sul corpo, {g:attento|attenta} al primo piccolo segno che qualcuno sta tornando.",
 	},
+	["buff.w07.001"] = {
+		"Del tutto pronti non lo si è mai. Abbastanza, sì.",
+		"Preparazione fatta. Non per tutto, ché a tutto non si prepara nessuno. Per la prossima cosa, almeno.",
+		"Abbastanza {g:pronto|pronta}. Il resto si decide strada facendo.",
+	},
+	["buff.w07.002"] = {
+		"Bene. Adesso la strada faccia pure come le pare.",
+		"Io sono a posto. Quello che c'è più avanti farà meglio a valerne la pena.",
+		"Tutto a posto. Vediamo cosa ci aspetta più in là lungo la strada.",
+	},
+	["buff.w07.003"] = {
+		"aspetta che faccia presa, poi fa ruotare il collo una volta, come un fabbro prima del primo colpo.",
+		"resta {g:fermo|ferma} un momento, lascia che la preparazione prenda effetto, poi annuisce a nessuno in particolare.",
+	},
+	["buff.w07.004"] = {
+		"Niente di quello che ha cercato di uccidermi ha mai combattuto lealmente. Non vedo perché dovrei cominciare io.",
+		"Chiamalo barare, se vuoi. Dove vado io lo chiamano sopravvivere.",
+	},
+	["buff.w07.005"] = {
+		"Qualunque cosa arrivi adesso, mi troverà ad aspettarla, e {g:pronto|pronta}.",
+		"Venga pure, qualunque cosa sia. Non mi coglierà {g:impreparato|impreparata}.",
+	},
+	["heal.w07.001"] = {
+		"Il fiato si fa più facile. Non mi ero {g:accorto|accorta} di quanto fosse diventato corto.",
+		"L'aria arriva di nuovo fino in fondo. Buffo: ti manca solo quando scarseggia.",
+		"Un respiro pieno, poi un altro. Il petto smette di litigare con me.",
+	},
+	["heal.w07.002"] = {
+		"Promemoria per me: la parte appuntita è quella pericolosa.",
+		"Lezione imparata: mai mettersi davanti alla cosa coi denti.",
+	},
+	["heal.w07.003"] = {
+		"Ogni ferita è un debito che il corpo annota. Questo è cancellato. La pagina resta lunga.",
+		"Un debito depennato. Gli altri il corpo non li scorda: smette solo di nominarli per un po'.",
+	},
+	["heal.w07.004"] = {
+		"Regge. Finiamo quello che hai cominciato tu.",
+		"Chiuso il buco. Il tuo turno è finito.",
+		"Rattoppo fatto. Adesso a picchiare tocca a me.",
+	},
+	["heal.w07.005"] = {
+		"fa ruotare le spalle, saggia il punto che faceva male e lo trova di nuovo disposto a lavorare.",
+		"preme il palmo sul punto dolente, aspetta, e lascia ricadere la mano quando nulla protesta.",
+	},
+	["heal.w07.006"] = {
+		"Il cuore rallenta e riprende il suo passo di sempre. Un attimo fa non sentivo altro.",
+		"Il polso smette di martellarmi nelle orecchie, e il mondo si riprende i suoi rumori.",
+	},
+	["heal.w07.007"] = {
+		"Questa è arrivata più vicino di quanto mi concedo di ammettere. Ora è sistemata; ammetterlo può aspettare.",
+		"Sistemata. A quanto ci sono {g:andato|andata} vicino non ci penso. Non ancora, almeno.",
+		"Un po' troppo vicino al bordo, per i miei gusti. Adesso il bordo è più lontano, e lì deve restare.",
+	},
+	["heal.w07.008"] = {
+		"Ah. Ci voleva proprio.",
+		"Ahh. Come un piatto caldo in fondo a una marcia lunga e fredda.",
+	},
+	["heal.w07.009"] = {
+		"Ci sono {g:entrato|entrata} con la guardia abbassata. La cura costa poco; l'abitudine costerebbe cara.",
+		"Una distrazione. Rimediare ha richiesto un attimo; disimparare l'errore richiederà di più.",
+		"Guardia abbassata per mezzo respiro, e pagata per intero. Annotato.",
+	},
+	["heal.w07.010"] = {
+		"guarda il punto rimesso a posto con aperto risentimento, come se la rissa l'avesse cercata lui.",
+		"lancia alla ferita richiusa un'occhiata acida, come a un cane che ha appena rubato la cena.",
+	},
+	["heal.w07.011"] = {
+		"Il dolore defluisce piano, come l'acqua di una piena che lascia i campi.",
+		"Si ritira, il dolore, come la marea: non tutto in una volta, ma se ne va.",
+	},
+	["heal.w07.012"] = {
+		"Bene. Sto bene. Nessuno si agiti.",
+		"Non è niente. Un graffio che si dava delle arie.",
+		"Niente da guardare. Era appena un'ammaccatura.",
+	},
+	["heal.w07.013"] = {
+		"muove qualche passo lento, come a chiedere al corpo il permesso di proseguire.",
+		"fa un piccolo giro, adagio, finché il corpo non si convince di poter proseguire.",
+	},
+	["heal.w07.014"] = {
+		"Di nuovo in grado di fare danni.",
+		"La giornata non ha ancora chiuso i conti con me, e io nemmeno con lei.",
+		"Ricucito il buco. Il prossimo, si accomodi pure a tentare la sorte.",
+	},
+	["race.dwarf.buff.w07.001"] = {
+		"Si è assestato e ha fatto presa, come una buona malta. I vecchi costruttori di Ironforge non hanno mai avuto fretta con la presa.",
+		"Ecco, ha fatto presa, come la malta fra due pietre buone. Adesso provino a smuovermi.",
+	},
+	["race.dwarf.heal.w07.001"] = {
+		"Una scheggiatura, non una crepa. I vecchi scalpellini dicono che c'è un mondo di differenza.",
+		"Una scheggia sul bordo, il cuore intatto. Qualsiasi muratore di Ironforge lo direbbe solido.",
+	},
+	["race.human.heal.w07.001"] = {
+		"I contadini di Elwynn dicono che lo steccato si ripara il giorno che si rompe, non il giorno che le mucche trovano il varco. Riparato, allora.",
+		"Si ripara lo steccato prima che la mandria trovi il buco: lo sa ogni bracciante di Elwynn. Fatto.",
+	},
+	["race.nightelf.buff.w07.001"] = {
+		"Le Sentinelle insegnano che la prontezza è un'immobilità in attesa di muoversi. Stare immobile, questo lo so fare.",
+		"La pazienza della civetta sul ramo, e la sua rapidità quando serve. Così lo insegnano le Sentinelle.",
+	},
+	["race.nightelf.heal.w07.001"] = {
+		"Elune veglia sui feriti, dicono le sacerdotesse. Preferirei non aver bisogno troppo spesso del suo sguardo.",
+		"Le sacerdotesse di Darnassus dicono che Elune tiene il conto di ogni ferita. Mi piacerebbe che il mio restasse breve.",
+	},
+	["race.tauren.buff.w07.001"] = {
+		"Zoccoli ben piantati. Venga pure quel che deve venire.",
+		"Ho i piedi piantati come i grandi totem di Thunder Bluff. Spingete pure.",
+	},
+	["race.tauren.heal.w07.001"] = {
+		"Gli anziani di Mulgore dicono che una ferita è solo la terra che ti chiede di camminare più piano per un po'.",
+		"A Mulgore gli anziani insegnano che il dolore è il modo in cui la Madre Terra frena un passo troppo frettoloso. Più piano, allora.",
+	},
+	["race.troll.buff.w07.001"] = {
+		"Ai loa piacciono i troll che si fanno trovare preparati. Non deludiamoli, mon.",
+		"Tutto a posto, e col sorriso. Oggi i loa non avranno niente da ridire, mon.",
+	},
+	["race.troll.heal.w07.001"] = {
+		"Gli stregoni di Sen'jin dicono che una ferita è un ospite: non dargli niente da mangiare e se ne va presto.",
+		"Vecchia saggezza dei Darkspear, mon: non dare retta a una ferita, e quella si annoia e se ne va.",
+	},
 }, "base_spells")
