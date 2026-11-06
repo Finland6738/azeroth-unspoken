@@ -21,6 +21,40 @@ No version has been released yet: there are no distribution packages. The versio
   Wall failed. The name is now skipped.
 - **Tests:** `TestValidator` covers the names in English and Italian, and a real time or weather word next to one.
 
+### C0i: pool shares, the NPC's voice and the short lines in battle (issue #138, W09 engine finding)
+
+Content wave W09 (#261) made two statistical tests fail on Linux. Both shares were falling as the archive grows, so the
+engine now holds them as shares. Details in [ADR 0056](docs/adr/0056-pool-shares-the-npc-voice-and-short-lines-in-battle.md).
+
+- **Added: pool shares** (`Engine:SetPoolShare`). A system says that some candidates keep a share of the picks in a
+  context.
+  - Before the tiers, `Engine.SharePool` keeps only those candidates with that probability, when there is one of them
+    outside the anti-repetition window and another candidate.
+  - The narrowed pool has a window of its own size, so three lines among forty can still reach their share.
+  - The bounded pick (ADR 0052) samples the preferred rules of each tier apart (`Engine.SplitShare`, kept per group
+    like the tiers), so a few of them beside thousands of others are always seen.
+- **Fixed: the NPC's voice.** A gruff innkeeper spoke as herself in 43% of her openings on `main` and 37% with W09's
+  orc lines; with sixty more innkeeper lines, 9%.
+  - In a dialogue the lines whose `other` asks the NPC's `npcID`, `name`, `temperament`, `morality`, `goals` or `speech`
+    now keep `NPCAlive.VOICE_SHARE` (0.6) of the picks.
+  - The lines of the role, of the character's race, class and faction and of the zone share the rest.
+  - Gryshka: 0.67 on `main`, 0.66 with W09, never the same line twice in a row.
+- **Fixed: short lines in battle.** In a battleground, an arena or a boss fight a rule with a short and a long variant
+  was weighed as short and could then say the long one: 14% of the picks in Arathi Basin.
+  - The lines with a variant of at most 80 bytes now keep `Place.SHORT_SHARE` (0.85) of the picks there.
+  - Such a line says a short variant (`Engine:SetVariantPreference`).
+  - The short share is 0.99 on `main` and with W09 (it was 0.83 and 0.81).
+  - A rule with no texts of its own (a monologue, stanzas) no longer counts as short.
+- **Tests:** `TestOtherPlace` and `TestNPCAlive` keep their floors (45 of 60, 0.4).
+  - New tests add three hundred long battle lines and sixty innkeeper lines of the role and of the orc race. The shares
+    hold, a mixed rule says only its short variant in a battleground, and no voice line comes twice in a row.
+  - Checked on W09's content under 12 random seeds: every run passes.
+- **Tools:** `Tests/bench_scale.py --battle` makes every pick of the projection in a battleground, where the share of
+  the short lines works.
+- **Cost:** in a battleground the two parts of a tier share the sample's budget by their share
+  (`Engine.SAMPLE_PART_MIN`). A pick there costs 47.2 thousand Lua instructions at 270,000 texts by area (45.5 on
+  `main`), 42.4 at 50,000 entries (41.1). The open world costs +1.6%. Memory after the picks is +0.3 MB.
+
 ### Content wave W08: the dwarf, the tauren, the night elf and the human (issue #138)
 
 The eighth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
