@@ -800,4 +800,360 @@ NS:AddTexts("enUS", {
 		"I'll teach you, because I swore to teach whoever comes. Not because you deserve it.",
 		"The lesson stands. What you did with the last one, I haven't forgotten.",
 	},
+	["race.dwarf.npcd_flightmaster_bye.w08.001"] = {
+		"Up and away, then. Feet back on solid ground before you know it; I know that's what you're counting on.",
+		"Hold on tight and think of stone. You'll be standing on some again soon enough.",
+	},
+	["race.dwarf.npcd_flightmaster_open.w08.001"] = {
+		"Climb on. The Wildhammers ride these for pleasure, I'm told; the other dwarves I've met mostly ride them with their eyes shut.",
+		"Up you get. Plenty of dwarves have flown with me, and every one of them kissed the ground after. You're welcome to.",
+	},
+	["race.dwarf.npcd_flightmaster_route.w08.001"] = {
+		"Long enough to miss the ground, too short to grow a fear of it. Keep your weight low in the saddle; you're built for it.",
+		"Windy, high, and over sooner than you'd care to admit. Dwarves sit a saddle well; it's the looking down they mind.",
+	},
+	["race.dwarf.npcd_guard_bye.w08.001"] = {
+		"Go on. And if a tavern argument starts, let somebody else finish it for once.",
+		"Mind the tavern quarrels out there; a dwarf who wins one still pays for the benches.",
+	},
+	["race.dwarf.npcd_guard_danger.w08.001"] = {
+		"Dwarves go into caves the rest of us walk around. Out there, some caves have things in them that walk out. Mind that.",
+		"A dwarf will always want to see what's under the hill. Fine, but take a light and a friend, and come back up.",
+	},
+	["race.dwarf.npcd_guard_directions.w08.001"] = {
+		"You'd find your way out of a mine with the lamp gone out. Count the turnings here the same way and you'll do fine.",
+		"Do what your kin do underground: one hand on the wall and every turn kept in your head. Streets are only tunnels with the roof off.",
+		"Dwarves never get lost, I'm told; they only take the long way on purpose. Take it, then, and ask as you go.",
+	},
+	["race.dwarf.npcd_guard_open.w08.001"] = {
+		"A dwarf. Good. Your lot never start the brawl, though I've seen you finish a few.",
+		"Steady on your feet and slow to draw: I've no complaints about your people. What do you need?",
+		"Ah, mountain folk. Speak up; I'd sooner hear a dwarf's business than most.",
+	},
+	["race.dwarf.npcd_innkeeper_bye.w08.001"] = {
+		"Mind how you go. If the road runs dry of ale, you know where the barrels are.",
+		"Come back with a story worth a round; dwarves always have one.",
+		"Take your time coming back. The bench will keep the dent you left in it.",
+	},
+	["race.dwarf.npcd_innkeeper_news.w08.001"] = {
+		"Word from the diggers is the Explorers' League has crews out in every corner of the world. Never a dull week for your people.",
+		"Travelers keep asking after the Explorers' League; it seems there's no hole in the world without a dwarf at the bottom of it.",
+		"The talk at my tables is the Explorers' League again, digging up ruins nobody else would touch. Your people do love a question under a stone.",
+	},
+	["race.dwarf.npcd_innkeeper_open.w08.001"] = {
+		"Ale first, I take it, and the questions after. Your folk never get that order wrong.",
+		"Sit, sit. I'll pull the dark ale before you ask; a dwarf who has to ask is a dwarf kept waiting.",
+	},
+	["race.dwarf.npcd_innkeeper_open.w08.002"] = {
+		"Mind the stool; the last one I lent a dwarf came back with its legs a finger shorter. What'll it be?",
+		"Come in and shake the road off. Dwarves always carry half of it in on their boots.",
+	},
+	["race.dwarf.npcd_innkeeper_rest.w08.001"] = {
+		"There's a room at the back with a low ceiling and thick walls. Dwarves sleep best in it; the others call it a cupboard.",
+		"Take the little room with the stone wall. It holds the warmth and never creaks, and your people like a wall that keeps still.",
+	},
+	["race.dwarf.npcd_innkeeper_sit.w08.001"] = {
+		"Good, sit. A dwarf at rest is a sight that settles a whole room.",
+		"There, that's better. Nothing quiets a common room like one of your people deciding to stay put.",
+	},
+	["race.dwarf.npcd_innkeeper_thanks.w08.001"] = {
+		"Thanks from a dwarf. I'll carve that on the wall; it doesn't come cheap.",
+		"Ha! Your people don't thank lightly. I'll take it and keep it by the till.",
+	},
+	["race.dwarf.npcd_merchant_bye.w08.001"] = {
+		"Good trading with you. Dwarven coin always rings true on the counter.",
+		"Farewell. If that buckle gives out, bring it back and I'll eat my apron; but it won't, and you know it.",
+		"Mind the step. And if anyone asks, say a dwarf found nothing to grumble at; that's worth more than a sign over the door.",
+	},
+	["race.dwarf.npcd_merchant_news.w08.001"] = {
+		"Ore's gone dear, from what the carters tell me. You'll know better than I do; half of it comes out of dwarven mines anyway.",
+		"Metal prices are climbing, I hear. Ask a dwarf why and you get an hour on mine shafts, so I won't.",
+	},
+	["race.dwarf.npcd_merchant_open.w08.001"] = {
+		"A dwarf at my counter. Good: you'll look at the seams before the price, and I like that in a buyer.",
+		"Go on, tap it, weigh it, squint at it. I know dwarves don't buy a thing until they've tried to break it.",
+	},
+	["race.dwarf.npcd_merchant_open.w08.002"] = {
+		"Ah, sturdy boots and a sharp eye! Come in; there's nothing on these shelves I'm ashamed to show a dwarf.",
+		"In you come. Mountain folk pay fair and haggle hard, and I wouldn't have it any other way.",
+	},
+	["race.dwarf.npcd_merchant_thanks.w08.001"] = {
+		"Kind of you. A dwarf's thanks usually come with a complaint attached; I'll count myself lucky.",
+		"No grumbling with it? Then I'll take that thanks gladly, and tell the others.",
+	},
+	["race.dwarf.npcd_merchant_wares.w08.001"] = {
+		"Good leather, honest steel, and flasks that don't leak. Nothing that would make a dwarf sniff, I promise.",
+		"Everything here's made to last, which is the only thing a dwarf ever asks. The rest is just color.",
+	},
+	["race.dwarf.npcd_trainer_open.w08.001"] = {
+		"A dwarf. Good: you'll be stubborn, and stubborn learns better than clever.",
+		"Once a dwarf starts a thing, there's no letting go of it. Hold on to that and we'll get along.",
+	},
+	["race.human.npcd_flightmaster_bye.w08.001"] = {
+		"Enjoy the ride. It saves you days of walking, and humans never have days to waste.",
+		"Grip the saddle. Humans always look like they're adding up the hours they've just saved.",
+	},
+	["race.human.npcd_flightmaster_open.w08.001"] = {
+		"In a hurry, I take it? Every human who climbs up to me is. On you get; the beast is quicker than any horse.",
+		"Somewhere to be, and soon, I'd guess. Your people always have. Up you get.",
+	},
+	["race.human.npcd_flightmaster_route.w08.001"] = {
+		"Fast, windy, and over before you've finished worrying. Most humans talk the whole way; the beast doesn't mind.",
+		"Quick, if a little loud. Your people usually chatter from takeoff to landing; talk away, nobody up there will hear.",
+	},
+	["race.human.npcd_guard_bye.w08.001"] = {
+		"On your way. And get some sleep somewhere; you humans run yourselves ragged.",
+		"Safe road. Rest when you can; you humans always leave it till you drop.",
+	},
+	["race.human.npcd_guard_danger.w08.001"] = {
+		"The danger I see most with your people is the rush. Slow down, before the road slows you down for good.",
+		"Humans get hurt out there mostly by hurrying. Take the extra hour; it's cheaper than a grave.",
+	},
+	["race.human.npcd_guard_directions.w08.001"] = {
+		"Do as you'd do in any human town: find the tallest roof and the busiest door, and the rest falls into place between them.",
+		"Look for whatever stands highest and whatever smells of fresh bread. Your people build around both, and most others do too.",
+		"Mark the tallest roof you can see, then follow your nose to the nearest kitchen. Every road your people ever laid runs between those two.",
+	},
+	["race.human.npcd_guard_open.w08.001"] = {
+		"Out with it. Your people never waste a guard's time with pleasantries, and I'm grateful for it.",
+		"Speak plainly, as humans do. I've a long watch and short patience, and you seem the sort to understand.",
+		"Go ahead. I like dealing with humans: straight to the point, and gone again.",
+	},
+	["race.human.npcd_innkeeper_bye.w08.001"] = {
+		"Be off, then, and don't spend every year you've got on the road; your people haven't many to spare.",
+		"Come back while there's still time to sit; humans always think there'll be more of it later.",
+		"Go on, then. But stop somewhere now and again; a human life goes by quick, and the road never thanks anyone.",
+	},
+	["race.human.npcd_innkeeper_news.w08.001"] = {
+		"Still no word of the king, from what travelers say. The regent keeps the throne warm, and folk at my tables argue over who really gives the orders.",
+		"The talk is the same as ever: the king's still missing, and half your people trust the court while the other half trust nobody.",
+		"Everybody who passes has an opinion on Stormwind's empty throne. I'd ask for yours, but I've heard enough to fill a barrel.",
+	},
+	["race.human.npcd_innkeeper_open.w08.001"] = {
+		"Come in and sit before you fall down. Your lot always look like you've three errands left and half a day to do them.",
+		"Sit, eat, then run off again. I know your people; you never stop long, so let's make it count.",
+	},
+	["race.human.npcd_innkeeper_open.w08.002"] = {
+		"A human. Bread and stew, I'd wager, and something to drink that won't take your head off.",
+		"Let me guess: something hot, a heel of bread, and a mug of the plain stuff. Your folk never ask for anything stranger.",
+	},
+	["race.human.npcd_innkeeper_rest.w08.001"] = {
+		"A proper bed, clean sheets, a door with a bolt. Sleep your fill for once; humans always get up too early.",
+		"Take the room upstairs and don't wake at the first bell. Your people never rest as long as they need.",
+	},
+	["race.human.npcd_innkeeper_sit.w08.001"] = {
+		"Sit, and really sit; don't perch on the edge as if you're about to leave. Humans always do.",
+		"Good. Lean back, stretch your legs. Your people sit as if the chair might be called away any moment.",
+	},
+	["race.human.npcd_innkeeper_thanks.w08.001"] = {
+		"You're welcome. You humans thank everyone for everything; I've grown fond of it.",
+		"No need, but I'll take it. Your people say thank you the way other folk breathe.",
+	},
+	["race.human.npcd_merchant_bye.w08.001"] = {
+		"Good trading. Tell your friends; your people talk more than any I know, and that's the best sign I could hang.",
+		"Farewell. If anyone asks where you found it, say my name loud; humans spread word faster than a town crier.",
+		"A pleased human tells ten others before supper, and I'm counting on you. Farewell!",
+	},
+	["race.human.npcd_merchant_news.w08.001"] = {
+		"Carters say the roads through Westfall are worse than ever for bandits. Bad news for your people, and for anyone who sells to them.",
+		"Goods from the human farmlands are dearer again; masked thieves on the Westfall roads, I hear. Nobody's happy about it.",
+	},
+	["race.human.npcd_merchant_open.w08.001"] = {
+		"Looking for a bargain, I'd guess. Your people can smell a discount through a stone wall.",
+		"Ah, a human; you'll want to haggle. Go on, then, but I warn you, I've had plenty of practice with your sort.",
+	},
+	["race.human.npcd_merchant_open.w08.002"] = {
+		"Quick, are you? Most humans are. Tell me what you need and I'll have it wrapped before you change your mind.",
+		"In a hurry, I can tell. Humans always are. Name it, and I won't keep you.",
+	},
+	["race.human.npcd_merchant_thanks.w08.001"] = {
+		"Thank you, too. Humans make good customers: quick to decide and quicker to come back.",
+		"And thanks to you. Your people buy fast, pay fair and return; I couldn't ask for better.",
+	},
+	["race.human.npcd_merchant_wares.w08.001"] = {
+		"A bit of everything, which is what your people want: something for the road, something for the pot, something for later.",
+		"Rope, bread, thread, a decent knife. Humans buy a little of everything and never quite what they came in for.",
+	},
+	["race.human.npcd_trainer_open.w08.001"] = {
+		"Humans learn fast; it's the keeping that's hard. Let's make this one stick.",
+		"You'll pick this up quickly; humans always do. My job is to see you don't drop it just as quickly.",
+	},
+	["race.nightelf.npcd_flightmaster_bye.w08.001"] = {
+		"Fly well. The beast is calm with the kaldorei; it must be the quiet you carry.",
+		"Away with you, then. I've never had a mount fuss under a night elf. Whatever it is you do, keep doing it.",
+	},
+	["race.nightelf.npcd_flightmaster_open.w08.001"] = {
+		"Up into the open sky, then. Your people never look happier than when there's nothing above them.",
+		"Ready for the high air? I've noticed your people breathe easier once the ground drops away.",
+	},
+	["race.nightelf.npcd_flightmaster_route.w08.001"] = {
+		"Quiet, and long enough to think. Night elves usually spend it with their eyes on the land below, as if remembering it.",
+		"Calm, mostly. Your people watch the ground pass the whole way, the way one rereads an old letter.",
+	},
+	["race.nightelf.npcd_guard_bye.w08.001"] = {
+		"Go in peace. May Elune watch your road; I've heard your people say it, and it seemed a good wish.",
+		"Elune's eye on your path: that's what your people wish each other, I'm told. I'll wish you the same.",
+	},
+	["race.nightelf.npcd_guard_danger.w08.001"] = {
+		"Patience is your people's gift, and danger counts on impatience. Wait before you step into anything, and you'll walk out again.",
+		"Trouble out there likes a hurry. Night elves rarely give it one, which is half the battle; keep it that way.",
+	},
+	["race.nightelf.npcd_guard_directions.w08.001"] = {
+		"Your people find their way by things the rest of us never notice. Trust those; they'll serve you better than any turning I could give.",
+		"I could list every corner, but you'd forget half. Night elves remember a road once walked; walk it once, and it's yours.",
+		"Do as your people do in the woods: look up, mark something tall, and keep it in sight. You'll come back to the right place.",
+	},
+	["race.nightelf.npcd_guard_open.w08.001"] = {
+		"Easy, I didn't hear you coming. Your people ought to wear bells, for the sake of us on watch. What is it?",
+		"A night elf. You came up so quietly I nearly reached for my weapon. What do you need?",
+		"You don't make a sound when you walk. Good for you, hard on a guard's nerves. Speak.",
+	},
+	["race.nightelf.npcd_innkeeper_bye.w08.001"] = {
+		"Farewell. I'll only notice you've left when I look up and the chair's empty, as usual with night elves.",
+		"Safe paths. Night elves never seem to leave a room so much as fade from it; I'll miss the quiet.",
+		"Off you go, softly as you came. Come back when the road weighs on you, and the corner will be ready.",
+	},
+	["race.nightelf.npcd_innkeeper_news.w08.001"] = {
+		"Word is the Sentinels are still fighting the Horde's woodcutters in Ashenvale. I'm sorry to be the one telling a night elf.",
+		"From the road: still no peace in Ashenvale, Horde axes at the trees and Sentinels waiting for them. Bitter news for your people.",
+		"The talk is Ashenvale again: loggers from the Horde, arrows from the Sentinels, and nobody backing down. I'd guess you've heard.",
+	},
+	["race.nightelf.npcd_innkeeper_open.w08.001"] = {
+		"You came in so quietly I nearly poured for the empty chair. Sit where it's calm.",
+		"There you are. Your people walk in without a sound and give me a fright every time. Take the quiet corner.",
+	},
+	["race.nightelf.npcd_innkeeper_open.w08.002"] = {
+		"Shall I seat you by the window? Night elves always want to see the sky from wherever they sit.",
+		"Window seat, I'd guess. I've never met a night elf who'd sit with their back to the open air.",
+	},
+	["race.nightelf.npcd_innkeeper_rest.w08.001"] = {
+		"The room under the eaves has a window that opens all the way. Your people never sleep well shut in.",
+		"I'll give you the room with the wide window. I've learned night elves rest better with a little open air.",
+	},
+	["race.nightelf.npcd_innkeeper_sit.w08.001"] = {
+		"Stay as long as you like. You'll be the stillest guest I have; I've never seen a night elf fidget.",
+		"Good, stay. A night elf can sit for hours without moving a finger; the rest of my guests could learn.",
+	},
+	["race.nightelf.npcd_innkeeper_thanks.w08.001"] = {
+		"You're welcome. Your people thank as if they mean to remember it for a century. I suppose you might.",
+		"No trouble. With a night elf, I always feel a thank-you gets written down somewhere and kept.",
+	},
+	["race.nightelf.npcd_merchant_bye.w08.001"] = {
+		"Farewell. That'll last you a good while, though I suppose a good while means something else to you.",
+		"It's made to last years; to your people, I expect that's no time at all. Go well.",
+		"Safe paths. I'd promise it lasts a lifetime, but with a night elf, whose lifetime?",
+	},
+	["race.nightelf.npcd_merchant_news.w08.001"] = {
+		"Travelers from the island say the boats to the mainland are full. Your people are on the move, from what I see at my counter.",
+		"More night elves on the roads than I've ever seen. Something's drawing your people out of the forest, and it's good for trade.",
+	},
+	["race.nightelf.npcd_merchant_open.w08.001"] = {
+		"Take your time. Your people have more of it than most, and I'd rather you looked properly.",
+		"No hurry. I know night elves like to look a long while before deciding; my shelves don't mind waiting.",
+	},
+	["race.nightelf.npcd_merchant_open.w08.002"] = {
+		"Something well made, I suppose. Your people look at cheap work as if it hurt them.",
+		"I'll show you the good pieces first. A night elf can spot shoddy stitching from across the room, and it saves us both a sigh.",
+	},
+	["race.nightelf.npcd_merchant_thanks.w08.001"] = {
+		"You're welcome. Your people are always so polite I start minding my own manners.",
+		"No, thank you. Every time a night elf thanks me I stand a little straighter; I can't help it.",
+	},
+	["race.nightelf.npcd_merchant_wares.w08.001"] = {
+		"Light things, quiet things. I've learned night elves don't buy anything that clanks.",
+		"Soft leather, good cloth, nothing that rattles. Night elves walk away from anything noisy, so I keep that at the back.",
+	},
+	["race.nightelf.npcd_trainer_open.w08.001"] = {
+		"Night elves learn slowly and forget nothing. I'll take that over quick and careless.",
+		"With a night elf I never rush. A lesson soaks in like water into old roots, but then it stays.",
+	},
+	["race.tauren.npcd_flightmaster_bye.w08.001"] = {
+		"There, settled. The beast grumbled at the weight, but it'll carry you; it's carried worse.",
+		"Hold on, and pay no mind to the complaining. It always groans under a tauren, then flies straight and true.",
+	},
+	["race.tauren.npcd_flightmaster_open.w08.001"] = {
+		"Hooves in the straps, horns down low, and lean with the beast. That's all a tauren needs to know.",
+		"Climb up, slowly. Keep those horns tucked when it takes off; the wings don't like company.",
+	},
+	["race.tauren.npcd_flightmaster_route.w08.001"] = {
+		"Long and quiet. Tauren usually say nothing the whole way and come down looking rested.",
+		"Quiet, mostly. Your people watch the land roll by without a word, and step down calmer than they climbed up.",
+	},
+	["race.tauren.npcd_guard_bye.w08.001"] = {
+		"Walk in peace. If there's trouble on your road, I pity the trouble.",
+		"Anything that picks a fight with a tauren on the road deserves what it gets. Walk well.",
+	},
+	["race.tauren.npcd_guard_danger.w08.001"] = {
+		"Nothing small will bother someone your size. It's the big things that will notice you first, so keep your eyes up.",
+		"Little beasts will step aside for you. The ones that don't are the ones to worry about; watch for those.",
+	},
+	["race.tauren.npcd_guard_directions.w08.001"] = {
+		"Your people found their way across the plains without roads. Read these streets the same: the ground is worn where folk go.",
+		"Track it as you would a herd. Where the earth is beaten flat, people walk; where it's packed hardest, they gather.",
+		"Look for the smoke and listen for the voices, as when you're finding a camp. Better I point you that way than give you turnings you'll forget.",
+	},
+	["race.tauren.npcd_guard_open.w08.001"] = {
+		"Peace to you. It isn't often I have to look up at the folk I question.",
+		"Ah, a tauren. Your people are the easiest to spot and the least trouble to keep. What is it?",
+		"Greetings. With tauren I rarely need to raise my voice. Speak, I'm listening.",
+	},
+	["race.tauren.npcd_innkeeper_bye.w08.001"] = {
+		"Come back whenever. The big bench will be waiting; nobody else ever fits it anyway.",
+		"Go gently, and come back. Few guests leave a room as calm as a tauren does.",
+		"Duck on your way out: mind the doorway with those horns, and the road after it.",
+	},
+	["race.tauren.npcd_innkeeper_news.w08.001"] = {
+		"Caravan folk say the centaur are still raiding the plains. Your people have been at that fight a long time, I know.",
+		"Word from the road: the centaur still haven't learned to leave the tauren alone. Some things don't change, eh?",
+		"Every drover who comes through has a tale of centaur raids. I suppose your people have heard them all, and lived a few.",
+	},
+	["race.tauren.npcd_innkeeper_open.w08.001"] = {
+		"Come in, come in. There's a bench at the back built for someone your size; I keep it free for tauren.",
+		"Make yourself comfortable. Take the big bench by the wall; it's the only one I'd trust under a tauren.",
+	},
+	["race.tauren.npcd_innkeeper_open.w08.002"] = {
+		"A tauren at my door. The whole room settles a little when your people come in. Sit, and say what you need.",
+		"Come and sit. Folk lower their voices when a tauren walks in; I've never known why, but it suits me.",
+	},
+	["race.tauren.npcd_innkeeper_rest.w08.001"] = {
+		"I'll push two pallets together; one has never been enough for a tauren.",
+		"There's a mat on the floor in the big room, wide as you like, and no bed frame to snap under you.",
+	},
+	["race.tauren.npcd_innkeeper_sit.w08.001"] = {
+		"Sit as long as you like. Tauren never seem to hurry, and the room is better for it.",
+		"Good. Settle in. When a tauren sits down, the rest of my guests remember there's no rush.",
+	},
+	["race.tauren.npcd_innkeeper_thanks.w08.001"] = {
+		"Thanks from a tauren, and in that voice. It sounds like a blessing even when it isn't one.",
+		"Your thanks come out so deep and slow I half think I should bow. Go on, it was nothing.",
+	},
+	["race.tauren.npcd_merchant_bye.w08.001"] = {
+		"Use it until it breaks; tauren waste nothing, and I like selling to folk who don't.",
+		"Farewell. I know that'll be worn to the last thread before you think of buying another.",
+		"A tauren buys once and keeps it for years: bad for trade, good for the goods. Farewell.",
+	},
+	["race.tauren.npcd_merchant_news.w08.001"] = {
+		"Everybody wants kodo leather, and nobody has the nerve to ask a tauren where to find it. Funny, that.",
+		"Hide prices? Up, as ever. Half my buyers want kodo leather, and they all go quiet when a tauren walks in.",
+	},
+	["race.tauren.npcd_merchant_open.w08.001"] = {
+		"Tauren trade the way they hunt: patiently, taking only what's needed. I respect that. Look around.",
+		"Take your time. I've sold to tauren before; you look at a thing for a long while, then buy it once, and well.",
+	},
+	["race.tauren.npcd_merchant_open.w08.002"] = {
+		"Mind the shelves when you turn around! The last tauren in here paid for everything those horns knocked down.",
+		"Careful with the horns near the hanging lamps! Break one and it's yours, at full price.",
+	},
+	["race.tauren.npcd_merchant_thanks.w08.001"] = {
+		"May the Earth Mother smile on you too, as your people would say. Did I say it right?",
+		"And thanks to you. I'd answer the tauren way if I knew it; the Earth Mother keep your road, will that do?",
+	},
+	["race.tauren.npcd_merchant_wares.w08.001"] = {
+		"Good bags with wide straps, rope that holds, waterskins big enough for someone your size. Look around.",
+		"Strong packs, long rope, a waterskin that won't run dry before you do. Things made for a tauren's road, mostly.",
+	},
+	["race.tauren.npcd_trainer_open.w08.001"] = {
+		"Strength you have plenty of. What I'll teach you is where to put it.",
+		"A tauren. The weight's already there; my work is to give it a direction. Let's begin.",
+	},
 }, "base_dialogues")

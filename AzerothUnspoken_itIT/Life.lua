@@ -292,4 +292,36 @@ NS:AddTexts("itIT", {
 		"Più forte, ancora. Non restano molti gradini, e ognuno è ripido.",
 		"Un altro passo. Quasi vedo dove finisce tutto questo, e ciò che viene dopo non mi spaventa.",
 	},
+	["race.dwarf.levelup.w08.001"] = {
+		"Più {g:duro|dura}, come il ferro dopo un'altra tempra. La forgia non ha ancora finito con me.",
+		"Un altro strato di pietra si è depositato. Anche una montagna cresce così: piano, e per sempre.",
+	},
+	["race.dwarf.levelup.w08.002"] = {
+		"Più forte! Qualcuno avvisi i birrai: mi serviranno boccali più grandi.",
+		"Un gradino più {g:robusto|robusta}. A Ironforge farebbero bene ad allargare le porte.",
+	},
+	["race.human.levelup.w08.001"] = {
+		"Più forte. Gli umani non hanno secoli per diventare quel che sono: devono farlo di corsa.",
+		"Un passo più in là. Gli elfi crescono nel corso delle ere; un umano deve crescere fra uno scontro e l'altro.",
+	},
+	["race.human.levelup.w08.002"] = {
+		"Un'altra tacca! Una vita umana è breve: tanto vale riempirla.",
+		"Meglio di prima! Niente male per una creatura con settant'anni, più o meno.",
+	},
+	["race.nightelf.levelup.w08.001"] = {
+		"Più forte. Un tempo il mio popolo aveva l'eternità per crescere; ora ogni passo avanti conta.",
+		"Un po' più di quel che ero. Dopo Hyjal, il mio popolo non può più dare per scontato di crescere.",
+	},
+	["race.nightelf.levelup.w08.002"] = {
+		"resta immobile mentre qualcosa di nuovo mette radici dentro di {g:lui|lei}, lento e sicuro come un germoglio di Teldrassil.",
+		"solleva il mento, e per un istante il bagliore negli occhi si fa un poco più intenso.",
+	},
+	["race.tauren.levelup.w08.001"] = {
+		"Più forte. Come un vitello che cresce dentro la mandria: non lo vedi succedere, e poi un giorno tieni il passo di quelli in testa.",
+		"Un po' più di me rispetto a ieri. Gli anziani dicono che un tauren non smette mai di crescere, rallenta soltanto. Oggi ci credo.",
+	},
+	["race.tauren.levelup.w08.002"] = {
+		"Ancora più {g:grosso|grossa}, in qualche modo. Porte del mondo, vi chiedo scusa in anticipo.",
+		"Di nuovo più forte. Qualcuno avverta i soffitti bassi.",
+	},
 }, "base_life")

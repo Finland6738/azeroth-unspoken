@@ -1234,4 +1234,781 @@ NS:AddTexts("enUS", {
 		"Different sky, same boots, same road. Onward.",
 		"The air's turned. Nothing to do about it but notice and carry on.",
 	},
+	["race.dwarf.journey.w08.001"] = {
+		"The ground lets go of my boots. A dwarf and the earth have an understanding, and this breaks it.",
+		"Up. Every instinct I own is shouting that rock belongs right beneath me, not a long way below.",
+		"Off the ground once more. I'll count the straps, then count them again, then pretend I'm not counting.",
+	},
+	["race.dwarf.journey.w08.002"] = {
+		"grips the saddle with both hands and keeps {g:his|her} eyes fixed straight ahead, jaw set like a closed gate.",
+		"settles into the saddle with the grim patience of a dwarf who has decided not to look down.",
+		"holds on as the ground drops away, muttering something that might be a prayer and might be a list of complaints.",
+	},
+	["race.dwarf.journey.w08.003"] = {
+		"Steady, beast. Neither of us wants to find out what a dwarf weighs from this high.",
+		"Up we go. If I come down early, tell them it was the flight's fault, not mine.",
+		"Fly straight, and I'll say only kind things about you at the inn.",
+	},
+	["race.dwarf.journey.w08.004"] = {
+		"From up here the land looks untouched, every hill whole and unmined. A dwarf can't help counting what lies under them.",
+		"The world from above is all surface and no depth. I know better; I know what the hills keep underneath.",
+	},
+	["race.dwarf.journey.w08.005"] = {
+		"Whoever first strapped a dwarf to a flying beast must have lost a wager. I'd like a word with them.",
+		"Let the beast do the flying. My job is to hold on and think about cellars.",
+	},
+	["race.dwarf.journey.w08.006"] = {
+		"Ground under my boots once more. My knees are telling the rest of me we're never doing that again. They're lying, but it's sweet of them.",
+		"Down. The earth takes my weight back without a word, as if I'd never left it.",
+		"On solid ground. Every bone in a dwarf's body sighs at once when the earth comes back.",
+	},
+	["race.dwarf.journey.w08.007"] = {
+		"slides from the saddle and stamps hard, twice, as if to make sure the ground hasn't gone soft in the meantime.",
+		"steps down, rolls {g:his|her} shoulders and pats the nearest solid thing with open relief.",
+		"touches down, checks every buckle and strap with a craftsman's suspicion, and only then lets go.",
+	},
+	["race.dwarf.journey.w08.008"] = {
+		"Thank you, beast. You're a fine flier, and I hope never to see you again until the next time.",
+		"Down. Somebody find me a stool and a mug, in that order or the other.",
+		"Off at last. Next time I'm taking the long road, blisters and all.",
+	},
+	["race.dwarf.journey.w08.009"] = {
+		"The Wildhammer would call that a pleasant little hop. The Wildhammer have something loose between the ears.",
+		"The Wildhammer live like that every day, air in their braids and nothing under their feet. Kin or not, I don't understand them.",
+	},
+	["race.dwarf.quest_complete.w08.001"] = {
+		"Done, and done properly. Put a round on my tab at the Thunderbrew; I've earned the thirst.",
+		"There's your job, finished. Now point me at the nearest keg before my throat turns to gravel.",
+		"Finished. My thirst waited patiently the whole time, and it expects to be paid as well.",
+	},
+	["race.dwarf.quest_complete.w08.002"] = {
+		"The masons of Ironforge tap a stone before they set it, to hear whether it rings true. I tapped this one. It rang.",
+		"In Ironforge nobody sets a block until they've knocked on it and listened. I knocked, I listened, and it's in place.",
+	},
+	["race.dwarf.quest_complete.w08.003"] = {
+		"gives the matter a firm nod and raps a fist against {g:his|her} chest, as if knocking on a sound wall to hear it hold.",
+		"hooks {g:his|her} thumbs into {g:his|her} belt and rocks back on {g:his|her} heels with the look of a brewer tasting a batch that came out right.",
+	},
+	["race.dwarf.quest_complete.w08.004"] = {
+		"All finished, and not one gnome contraption blew up. Somebody mark the date.",
+		"Finished, and nothing caught fire. A gnome engineer would call that a disappointing day's work.",
+	},
+	["race.dwarf.quest_complete.w08.005"] = {
+		"Ironforge opened its gates to a whole people when Gnomeregan was lost. Next to that, an errand like this is nothing, but it's the same habit.",
+		"When the gnomes lost their city, Ironforge made room for all of them. Lending a hand with someone's trouble is the same thing, only smaller.",
+	},
+	["race.dwarf.quest_complete.w08.006"] = {
+		"Another stone in the wall of the dwarven name! A small one, mind, but it'll hold!",
+		"Let it be told a dwarf saw this through, down to the last nail!",
+		"Khaz Modan breeds folk who finish things. Here's the proof, signed and sealed!",
+	},
+	["race.dwarf.quest_complete.w08.007"] = {
+		"That's done, and my legs are reporting every hill of it. Dwarves were made for tunnels, not for all this up and down.",
+		"Finished. Short legs, long roads: whoever shaped the dwarves never planned on this much walking.",
+	},
+	["race.dwarf.quest_complete.w08.008"] = {
+		"Don't thank me, pay me. Then thank me after, if you still feel like it.",
+		"Coin first, kind words second, ale last of all. That's the proper order.",
+		"Save the speech for the tavern. I listen better with a mug in my fist.",
+	},
+	["race.dwarf.quest_complete.w08.009"] = {
+		"The chroniclers of Ironforge say three clans once tore the mountain apart over a throne. A dwarf finishing honest work for other folk makes the better story.",
+		"War of the Three Hammers, the histories call it: dwarf against dwarf over who would rule. I'd rather be remembered for jobs like this one.",
+	},
+	["race.dwarf.quest_complete.w08.010"] = {
+		"pats the pouch at {g:his|her} belt where the reward now sits, the way a miner pats a cart full of good ore.",
+		"weighs the reward in one broad hand, gives a grunt that might be approval, and stows it away.",
+		"tucks the reward away with the care of a jeweler packing uncut stones.",
+	},
+	["race.dwarf.quest_complete.w08.011"] = {
+		"Finished! Somebody in Kharanos owes me a stout, they just don't know it yet.",
+		"All done. The brewers of Dun Morogh had nothing to do with it, but they'll be getting my coin all the same.",
+	},
+	["race.dwarf.quest_complete.w08.012"] = {
+		"Rough ore in, good iron out. A task is like smelting: most of the work is heat and patience, and the rest is knowing when to stop.",
+		"Like a pour at the forge: it looked like slag for a long while, and then it came out clean.",
+		"Good work is like good ore: you don't know it until it's been through the fire. This one came through.",
+	},
+	["race.dwarf.quest_complete.w08.013"] = {
+		"Glad to help. If you're ever in Ironforge, ask for a dwarf with dust on the boots. That narrows it down to everyone.",
+		"Happy to lend a hand. Find me in Ironforge some time and I'll show you where the good ale hides.",
+	},
+	["race.dwarf.quest_complete.w08.014"] = {
+		"Wherever the work's done, it counts for the mountain. That's what I tell myself, anyway.",
+		"However near or far Ironforge is, someone under all that stone would nod at this. That's enough.",
+		"The mountain doesn't see it, but the mountain would approve. That's how I measure things.",
+	},
+	["race.dwarf.quest_complete.w08.015"] = {
+		"Finished. Took longer than a proper job should, but less long than an elf would have.",
+		"Sorted. A human would want a song about it. A gnome, a diagram. I'll settle for supper.",
+	},
+	["race.dwarf.quest_complete.w08.016"] = {
+		"A promise kept is a stone that doesn't shift. Build enough of those and you've got something folk can lean on.",
+		"Word given, word kept. That's the whole of dwarven law, as far as the plain folk of Dun Morogh are concerned.",
+		"Said I'd do it, and it's done. Stone doesn't bargain, and neither should a dwarf's word.",
+	},
+	["race.dwarf.quest_complete.w08.017"] = {
+		"lets out a long breath through {g:his|her} nose, the sort a dwarf saves for the end of a long haul.",
+		"stretches until {g:his|her} back gives a loud crack, then looks quite pleased about it.",
+		"sets both fists on {g:his|her} hips and surveys the finished business like a foreman at the end of a shift.",
+	},
+	["race.dwarf.quest_complete.w08.018"] = {
+		"Sorted. If it comes loose again, send for a dwarf.",
+		"That'll hold. Did it the Ironforge way: plain, heavy and meant to last.",
+	},
+	["race.dwarf.quest_complete.w08.019"] = {
+		"The Explorers' League digs the world over asking where dwarves come from. I've no answer for them, but I know what dwarves do: they finish the job.",
+		"Maybe the Titans shaped us out of stone, as the Explorers' League suspects. If so, they did it so we'd see things through.",
+	},
+	["race.dwarf.quest_complete.w08.020"] = {
+		"Good doing business with you. If you ever need a stubborn pair of hands again, you know the type to ask for.",
+		"Pleasure. Next time you've a problem too heavy to shift, look for someone short and unreasonable.",
+		"Glad it's sorted. Should trouble dig its way back, you know where to find a dwarf: usually near the ale.",
+	},
+	["race.dwarf.quest_complete.w08.021"] = {
+		"Done at last. Stone's honest: it tells you plainly where it'll split. Errands could learn a thing from it.",
+		"Finished. Everything's simpler underground; among other folk even an errand has twists and side tunnels.",
+	},
+	["race.dwarf.quest_complete.w08.022"] = {
+		"If King Magni asks after me, tell him I'm keeping busy and keeping the name clean.",
+		"One more good word for Ironforge. Magni won't hear of it, but it's been earned all the same.",
+	},
+	["race.dwarf.quest_complete.w08.023"] = {
+		"Dwarves threw the Thandol Span across a gorge most folk won't even look down into. Next to that, this was a small bridge, but I crossed it.",
+		"Whoever raised the Thandol Span didn't stop halfway because the drop was deep. Neither did I.",
+	},
+	["race.dwarf.quest_complete.w08.024"] = {
+		"Done! Even a Dun Morogh ram couldn't have butted through that any faster.",
+		"Finished, and I barely had to put my head down. The rams of Dun Morogh would be proud.",
+	},
+	["race.dwarf.quest_complete.w08.025"] = {
+		"The Wildhammer would have done it from gryphon-back and sung about it after. Ironforge folk walk, and grumble, and get there just the same.",
+		"A Wildhammer would have flown in, finished it with a whoop, and flown off again. Ironforge does things on foot, and thoroughly.",
+	},
+	["race.dwarf.quest_complete.w08.026"] = {
+		"By hammer and anvil, it's done.",
+		"Struck, shaped and quenched. Next!",
+		"Forged and finished. What's the next piece on the bench?",
+	},
+	["race.dwarf.quest_complete.w08.027"] = {
+		"squints at the finished task with one eye shut, the way a mason sights down a wall for the slightest lean, and seems satisfied.",
+		"gives a short laugh through {g:his|her} nose and shakes the dust out of {g:his beard|her braids}.",
+	},
+	["race.dwarf.quest_progress.w08.001"] = {
+		"Some of it done. The rest is still buried somewhere, and dwarves are good at digging.",
+		"Halfway down the vein. Keep swinging.",
+		"Progress. Not enough to stop for an ale, but enough to think about one.",
+	},
+	["race.dwarf.quest_progress.w08.002"] = {
+		"That's the lot! Back we go, and somebody had better have the kettle on. Or the keg.",
+		"All of it, gathered and counted twice. Time to collect.",
+		"Done here. Now for the walk back, which is always longer on short legs.",
+	},
+	["race.dwarf.quest_progress.w08.003"] = {
+		"pauses to count on thick fingers what's been done and what hasn't, and grunts at the second number.",
+		"eyes the task still ahead the way a miner eyes the rock left to clear, then rolls {g:his|her} shoulders.",
+		"mutters a running tally under {g:his|her} breath, in the clipped way of a dwarf keeping stock.",
+	},
+	["race.dwarf.reputation_change.w08.001"] = {
+		"They think a bit better of me now. A good name's like good masonry: slow to raise, slower to come down, if it's built right.",
+		"A little more trust earned. Dwarves keep a grudge for ages; I like to think we keep a friendship just as long.",
+		"My name sits easier with them now. In Ironforge they'd say the metal's been tested and rings sound.",
+	},
+	["race.dwarf.rest_enter.w08.001"] = {
+		"A place to rest. First I'll find out who pours here, then whether they pour honestly.",
+		"Rest at last. The boots can come off, and the opinions can come out.",
+		"Somewhere to sit and nothing to fight. A dwarf asks little: a seat, a mug, a wall at the back.",
+	},
+	["race.dwarf.rest_enter.w08.002"] = {
+		"sets {g:his|her} back against a solid wall, tests it with a shoulder, and only then allows {g:himself|herself} to sit.",
+		"drops onto a bench near the hearth, raps the table once for luck, and lets the road go.",
+		"unbuckles {g:his|her} pack, sets it down where a foot can reach it, and settles in with a long, gravelly sigh.",
+	},
+	["race.dwarf.rest_enter.w08.003"] = {
+		"Safe walls and other people's noise. A dwarf rests best with a bit of clatter about, like a forge working through the wall.",
+		"Somewhere to lay my bones at last. Dwarves have slept on bare rock and called it comfortable; this will do nicely.",
+	},
+	["race.human.journey.w08.001"] = {
+		"Up we go. My people learned to plow, to build, to sail. Nobody ever taught us to sit calmly on a flying animal.",
+		"Off the ground. Humans took centuries to learn to stay on a horse, and a few moments in this saddle make a beginner of me.",
+		"Up. I grip the harness the way a plowman grips the handles in stony soil, and try not to watch the fields shrink.",
+	},
+	["race.human.journey.w08.002"] = {
+		"From up here the fields have no fences. Every quarrel over a boundary stone looks very small from the saddle.",
+		"The ground falls away and takes the property lines with it. A human could turn philosophical up here, if the drop below were less distracting.",
+	},
+	["race.human.journey.w08.003"] = {
+		"Off we go! A day's walk saved for a handful of silver. Best bargain a short life can buy.",
+		"Up and away. Whatever this cost, it's cheaper than the boots I'd have worn through.",
+	},
+	["race.human.journey.w08.004"] = {
+		"settles into the saddle with both hands firmly on the harness, wearing the polite, fixed smile of someone who would rather be on a horse.",
+		"grips the harness as the ground drops away, and looks very deliberately at the horizon instead of at {g:his|her} own feet.",
+		"hunches against the rush of air, knuckles pale on the straps, and pretends to admire the view.",
+	},
+	["race.human.journey.w08.005"] = {
+		"Villages from up here look like toys someone left out: a few roofs, a well, a path. Every one of them is somebody's whole world.",
+		"Farms slide past below, one after another. I can't help guessing at each: good soil, poor soil, a household doing fine, a household that isn't.",
+		"Someone down there is probably staring up at me and wondering what a ride costs. Keep your silver, friend; your feet are cheaper.",
+	},
+	["race.human.journey.w08.006"] = {
+		"Down, and still in one piece. Somebody point me to the nearest inn; my legs have opinions.",
+		"Landed. First a drink, then a bench, then I'll think about courage.",
+		"Ground. Now, where does a weary traveler find a hot meal around here?",
+	},
+	["race.human.journey.w08.007"] = {
+		"slides from the saddle and stamps both feet on the ground, the way sailors greet a dock.",
+		"climbs down stiffly, rubs the small of {g:his|her} back and gives the beast a grateful pat, the way one thanks a good horse after a long road.",
+	},
+	["race.human.journey.w08.008"] = {
+		"Down. A day's road done in an hour. Humans never have enough time; for once I've stolen some of it back.",
+		"The flight's over, and the time it saved is mine to spend. I'll try to spend it better than usual.",
+	},
+	["race.human.journey.w08.009"] = {
+		"The ground. Wonderful, dull, unmoving ground. I promise to stop complaining about mud. For a day, at least.",
+		"Earth that doesn't sway. Humans never value it until they've spent an hour without it.",
+	},
+	["race.human.journey.w08.010"] = {
+		"Down. Whoever first saddled a winged beast was either very brave or very human, which is to say impatient.",
+		"Only a short-lived people would climb onto a flying animal to save half a day. And here I am, proving it.",
+	},
+	["race.human.quest_complete.w08.001"] = {
+		"A day's work, as the Elwynn farmers would call it, and nobody thanks the plow. Fine. Supper will be my thanks.",
+		"Work finished, the way it finishes in any farmyard in Elwynn: no songs, no speeches, just bread earned.",
+		"Plain work, plainly done. In Elwynn that buys you a loaf and a nod, and both are worth having.",
+	},
+	["race.human.quest_complete.w08.002"] = {
+		"Somebody ring a bell. No? Fine, I'll hum.",
+		"In Goldshire they'd ring the bell for less. Go on, somebody ring something.",
+		"No bells? A human likes a bell when a job's done. I'll whistle instead.",
+	},
+	["race.human.quest_complete.w08.003"] = {
+		"rolls {g:his|her} shoulders like a stonemason who has just set the last block of a long wall.",
+		"rubs the back of {g:his|her} neck and nods, plain satisfaction on a plain human face.",
+	},
+	["race.human.quest_complete.w08.004"] = {
+		"We don't get the centuries the elves get. So a thing finished now is worth more to us. That's the arithmetic of being human.",
+		"Elves can afford to put a task off for a hundred years. A human finishes it, because there may be no later.",
+	},
+	["race.human.quest_complete.w08.005"] = {
+		"That's one more tale for the Lion's Pride. By the third telling I'll be twice as tall.",
+		"Done! Somebody at the Lion's Pride will want to hear this one, and I'll want a seat by the fire to tell it.",
+	},
+	["race.human.quest_complete.w08.006"] = {
+		"Stormwind was burned to the ground once and built again. Every job like this puts another stone back in its place.",
+		"The orcs left Stormwind a ruin, and we raised it again. That's what humans are best at, and this was more of the same.",
+		"Because of this, some door stays unbarred a little longer. Rebuilding is the one craft every human knows.",
+	},
+	["race.human.quest_complete.w08.007"] = {
+		"For the realm, then. The regent will never hear of it, and the realm is better for it all the same.",
+		"Bolvar Fordragon won't hear about this one. The kingdom's a little sounder for it anyway.",
+	},
+	["race.human.quest_complete.w08.008"] = {
+		"Done, and well before supper. Humans are always in a hurry; now and then it pays.",
+		"Quick work. A dwarf would have taken a week and carved a plaque about it. We just get on with things.",
+	},
+	["race.human.quest_complete.w08.009"] = {
+		"In Elwynn, folk thank the Light for a full barn. Whoever deserves the thanks for this one, they have mine.",
+		"Elwynn's farmers give thanks to the Light at every harvest. I'll send a little thanks up as well, to whoever is listening.",
+	},
+	["race.human.quest_complete.w08.010"] = {
+		"Tell them it's sorted. And tell them a human did it, in case anyone's keeping score.",
+		"It's handled. If anybody's keeping a tally by race, put one down for the humans.",
+	},
+	["race.human.quest_complete.w08.011"] = {
+		"Lordaeron was full of people who did jobs like this, once. Then the plague came. Some of us still do them, partly for them.",
+		"Up in Lordaeron there were folk who'd have seen to this before breakfast. The Scourge has them now. Somebody has to keep doing the work.",
+		"Every task finished is one the dead of Lordaeron can't finish. I try to do them properly, as if they were watching.",
+	},
+	["race.human.quest_complete.w08.012"] = {
+		"tucks the matter away with a brisk nod, the way a Stormwind clerk closes a ledger.",
+		"dusts off {g:his|her} hands, as tidy about an ending as a Trade District merchant shutting up shop.",
+	},
+	["race.human.quest_complete.w08.013"] = {
+		"At Northshire they tell every recruit to finish what was started. Of all their lessons, it's the one nobody forgets.",
+		"Finish what you start: the brothers of Northshire Abbey drill it into every new arrival. They'd nod at this one.",
+	},
+	["race.human.quest_complete.w08.014"] = {
+		"Settled, fair and square, on both sides. The stonemasons of Westfall would say that's rarer than gold.",
+		"A bargain kept by everyone involved. Ask the masons who rebuilt Stormwind how often that happens.",
+	},
+	["race.human.quest_complete.w08.015"] = {
+		"Somewhere a farmhouse lamp is lit that might not have been. I like to think so, anyway.",
+		"A kettle on a hearth, people at a table, a little safer than before. That's the picture I keep.",
+		"There's a hearth out there with someone sitting beside it a bit easier now. Humans need very little more than that.",
+	},
+	["race.human.quest_complete.w08.016"] = {
+		"Mark it down, Stormwind. One more name the realm can count on.",
+		"Let the heralds add a line to the realm's long list. Mine.",
+	},
+	["race.human.quest_complete.w08.017"] = {
+		"Feet ache, back aches, job's done. A human body is built for a short hard life, and it likes to remind me.",
+		"Finished, and every joint is filing a complaint. We're not made of stone like the dwarves, more's the pity.",
+	},
+	["race.human.quest_complete.w08.018"] = {
+		"lingers a moment, as if picturing the farm or the family this was for, then lets the thought go.",
+		"glances back the way {g:he|she} came, with the quiet look of someone counting who will rest easier now.",
+	},
+	["race.human.quest_complete.w08.019"] = {
+		"That's done. First round's on me, as long as nobody orders the dwarven stuff.",
+		"Finished! I'll stand a round. A human-sized round, mind you.",
+		"All wrapped up. Drinks are on me, within reason, and reason is short.",
+	},
+	["race.human.quest_complete.w08.020"] = {
+		"The wars taught humankind to mend what it can and hold what it can't. This was mending.",
+		"The people who rebuilt after the First War did it with small jobs like this one, one after another, until there was a city again.",
+	},
+	["race.human.quest_complete.w08.021"] = {
+		"Done. Nobody at court will ever hear of it, which suits me fine.",
+		"There. Not the sort of deed anyone discusses at court in Stormwind, and I'm glad of it.",
+	},
+	["race.human.quest_complete.w08.022"] = {
+		"Redridge, Westfall, Duskwood: everywhere the same story, folk who need a hand and the hands spread thin. This time mine were enough.",
+		"The realm is short of soldiers and long on trouble. One more piece of trouble put away, then.",
+		"Too few guards, too many roads. Every human who finishes a job like this is one more guard, in a way.",
+	},
+	["race.human.quest_complete.w08.023"] = {
+		"hums a few bars of some tavern tune from Elwynn, badly, and seems not to care who hears.",
+		"whistles something half remembered from a Goldshire taproom, off key and entirely pleased.",
+	},
+	["race.human.quest_complete.w08.024"] = {
+		"A human life is short enough that nobody remembers the small deeds. That doesn't make them small to the people they were for.",
+		"No one will recall this in fifty years. The people it helped will have had fifty better years, though. Fair trade.",
+	},
+	["race.human.quest_complete.w08.025"] = {
+		"Next! The kingdom never runs out of chores.",
+		"Right, that's one. Humans have a lot of kingdom and not much time; what's next?",
+	},
+	["race.human.quest_complete.w08.026"] = {
+		"Stromgarde holds out in the highlands, Theramore across the sea, Stormwind behind its walls. Scattered as we are, we get things done.",
+		"The human kingdoms are scattered now: Stromgarde, Theramore, Stormwind, and the north lost. Scattered or not, this got done.",
+	},
+	["race.human.quest_complete.w08.027"] = {
+		"Job done. A human's word is worth something, and I mean to keep mine worth it.",
+		"Said I would, and I did. That's all the reputation a human needs.",
+	},
+	["race.human.quest_complete.w08.028"] = {
+		"folds the matter away like a letter that can finally be sent, and is already looking for the next one.",
+		"nods once, the satisfied nod of a farmer looking down a straight furrow.",
+		"squints toward the horizon the way farmers squint at the sky, already weighing the next job.",
+	},
+	["race.human.quest_progress.w08.001"] = {
+		"Halfway. Elwynn farmers say the second half of the field is always the longer one.",
+		"Part done. Any plowman will tell you the far end of the furrow is the hard end.",
+	},
+	["race.human.quest_progress.w08.002"] = {
+		"That's the lot. Back to whoever's waiting; humans hate to be kept waiting, me included.",
+		"All of it, done. Let's not keep anyone waiting; life's too short for that.",
+		"Finished out here. Time to go and give somebody good news.",
+	},
+	["race.human.quest_progress.w08.003"] = {
+		"Bit by bit, the way Stormwind was rebuilt. One more stone set.",
+		"A piece in place. The city went back up stone on stone, and so does this.",
+		"Not done, but further. Humans built a whole capital out of 'further'.",
+	},
+	["race.human.quest_progress.w08.004"] = {
+		"ticks off the last of it with a satisfied grunt, like a carter counting the final sack onto the wagon.",
+		"finishes the last of the errand and turns for the walk back, brisk as a Stormwind courier.",
+	},
+	["race.human.reputation_change.w08.001"] = {
+		"Humans keep accounts of everything, goodwill included. Mine just went up a line.",
+		"A little more trust in the ledger. In Stormwind a good name spends almost as well as gold.",
+		"Somebody's opinion of me just improved. Back in the Trade District they'd call that capital.",
+	},
+	["race.human.rest_enter.w08.001"] = {
+		"Rest. Somewhere with guards and bread, where the worst danger is the bill. Humans built whole cities for moments like this.",
+		"A place where nobody needs me to be brave for an hour or two. Humans invented towns for exactly this.",
+		"Safe walls and a full belly within reach. A human doesn't need much more than that to call a place good.",
+	},
+	["race.human.rest_enter.w08.002"] = {
+		"A bench, a fire and the smell of somebody else's cooking. The finest thing humans ever built is a common room.",
+		"Inside at last. Hang up the cloak, find a stool near the fire, and let the gossip of the room wash over me.",
+	},
+	["race.human.rest_enter.w08.003"] = {
+		"loosens a buckle or two and lets {g:his|her} shoulders drop, with the plain relief of a human who has found walls and neighbors.",
+		"slows down at last, and lets the safe noise of other people's business settle around {g:him|her}.",
+		"rolls {g:his|her} shoulders and breathes out, the way a farmhand does when the last cart is under cover.",
+	},
+	["race.nightelf.journey.w08.001"] = {
+		"The land falls away and turns small. From up here, ten thousand years of my people's history would fit in a cupped hand.",
+		"Up, and the world flattens into a map. Strange how the long view makes even an elf feel brief.",
+		"Lifting off. Every flight reminds me how much of the world my people have not yet seen, for all our years.",
+	},
+	["race.nightelf.journey.w08.002"] = {
+		"Gryphon or hippogryph, it is all one to me: anything with feathers, I trust to know the way.",
+		"Off we go. Whatever is carrying me, I will thank it properly when we land.",
+	},
+	["race.nightelf.journey.w08.003"] = {
+		"From above, wherever forests have been cut, it shows plainly, like bites taken out of a leaf. I try not to keep count.",
+		"Height is honest. Whatever woods were felled, whatever hills were scorched, from up here it all shows, and nobody can pretend otherwise.",
+	},
+	["race.nightelf.journey.w08.004"] = {
+		"settles low against the feathered neck as the beast climbs, as calm in the saddle as on a forest path.",
+		"leans into the climb with the ease of {g:his|her} people, who have never feared a high branch.",
+	},
+	["race.nightelf.journey.w08.005"] = {
+		"Up among the clouds, closer to the sky my people took their name from. It feels less like flying than paying a visit.",
+		"Kaldorei, children of the stars, and here I am a little nearer to them. I will tell no one that it made me smile.",
+	},
+	["race.nightelf.journey.w08.006"] = {
+		"Wind in my hair and the land sliding by beneath. An owl would find this ordinary; I am trying to look as if I do too.",
+		"Flying. My people have watched birds for ten thousand years, and it turns out we were right to envy them.",
+		"The wind up here is clean and cold and asks for nothing. For a little while I let it do my thinking.",
+	},
+	["race.nightelf.journey.w08.007"] = {
+		"Down. The ground is slower than the sky, and kinder to my people's way of thinking.",
+		"Landed. A flight saves days; I spend my first moment on the ground giving a few of them back, standing still.",
+		"Feet on solid earth. I wait for the world to stop moving and start growing again.",
+	},
+	["race.nightelf.journey.w08.008"] = {
+		"My thanks, feathered one. You fly better than most people walk.",
+		"A fine flight. If my people ever give medals to birds, you are first in line.",
+	},
+	["race.nightelf.journey.w08.009"] = {
+		"slides down from the saddle and stands a moment with a hand on the warm feathers, unhurried, before walking on.",
+		"lands lightly and gives the beast a long, grateful look, as {g:his|her} people do with any creature that has carried them.",
+	},
+	["race.nightelf.journey.w08.010"] = {
+		"Arrived. Whatever my people say about patience, I am glad that one was quick.",
+		"A journey my people would once have walked over a season, finished before I had come to the end of a thought.",
+	},
+	["race.nightelf.journey.w08.011"] = {
+		"On the ground once more. My people walk softly, and after a flight I walk more softly still, until my legs believe it.",
+		"The sky lets me go. I give it a nod; we will meet again.",
+	},
+	["race.nightelf.quest_complete.w08.001"] = {
+		"Finished. Measured against ten thousand years it is a small thing, but the years are made of small things.",
+		"That is settled. Not a chapter in any chronicle, only a line in my own, and kaldorei keep long ones.",
+		"Closed. My people count in centuries, and still every century was built out of afternoons like this.",
+	},
+	["race.nightelf.quest_complete.w08.002"] = {
+		"There. Done before an owl could finish turning its head.",
+		"Finished, and quicker than a nightsaber finds the one warm stone in the glade.",
+		"Over already. Even the wisps would have to hurry to keep up with me.",
+	},
+	["race.nightelf.quest_complete.w08.003"] = {
+		"The priestesses say that once a kaldorei could leave a task like this for a century. Since Hyjal the years count for us too, so I finished it today.",
+		"There was an age, the elders tell, when no kaldorei ever had to hurry. That age ended on Mount Hyjal. This task I did not leave waiting.",
+	},
+	["race.nightelf.quest_complete.w08.004"] = {
+		"lets the finished task go as a tree lets go of a leaf: without ceremony, and without looking back.",
+		"breathes out slowly, a long forest-quiet breath, and turns {g:his|her} attention to whatever comes next.",
+		"folds the matter away with the unhurried neatness of someone who expects to remember it for a very long time.",
+	},
+	["race.nightelf.quest_complete.w08.005"] = {
+		"It is done. Teldrassil was a seed once, too.",
+		"Finished. Every great tree begins as something small that someone carried in one hand.",
+		"Complete. The great forests are only small plantings that nobody gave up on.",
+	},
+	["race.nightelf.quest_complete.w08.006"] = {
+		"The priestesses teach that Elune sees small labors as clearly as great ones. I hope she glanced this way.",
+		"Finished, and offered quietly to Elune, as the priestesses say any honest work may be.",
+	},
+	["race.nightelf.quest_complete.w08.007"] = {
+		"To the short-lived this would have been a long errand. To me it was a pleasant walk with an ending.",
+		"Some races would count that a long labor. My people would call it an afternoon and ask what's for supper.",
+		"A long task, a human would say. I hardly had time to grow bored.",
+	},
+	["race.nightelf.quest_complete.w08.008"] = {
+		"Done, and done quietly. The forest finishes its work without an audience; so can I.",
+		"There. No horns, no banners. Ashenvale grows without heralds, and so does good work.",
+		"No one will sing of it, and no one needs to. The roots of Teldrassil do their work unseen.",
+	},
+	["race.nightelf.quest_complete.w08.009"] = {
+		"I will likely remember this errand long after everyone involved in it is gone. A kaldorei memory keeps everything, wanted or not.",
+		"This goes into the long memory with all the rest. My people forget nothing; it is not always a kindness.",
+	},
+	["race.nightelf.quest_complete.w08.010"] = {
+		"That is one thorn drawn from the world. Ashenvale alone has plenty more.",
+		"Finished. One less thorn in the paw of the world.",
+		"Finished. Somewhere in the woods, something can rest easier for it.",
+	},
+	["race.nightelf.quest_complete.w08.011"] = {
+		"Done. Somewhere a wisp is drifting home through the boughs, and I feel a little like it.",
+		"Finished. I could walk all the way to Darnassus on this feeling alone.",
+	},
+	["race.nightelf.quest_complete.w08.012"] = {
+		"accepts the end of the task with a nod as small and certain as a nightsaber's blink.",
+		"lets {g:his|her} shoulders ease, with the slow care of an owl folding its wings after the hunt.",
+	},
+	["race.nightelf.quest_complete.w08.013"] = {
+		"The Sentinels cannot be everywhere. Today, in one small corner of the world, they did not have to be.",
+		"One task closed. The Sentinels are few and spread from Auberdine to Ashenvale; the small things fall to the rest of us.",
+	},
+	["race.nightelf.quest_complete.w08.014"] = {
+		"Finished. Don't look so surprised; we elves only look like we're dawdling.",
+		"Done. Slow is not the same as late, whatever the short-lived think.",
+		"There. My people are not slow; we simply refuse to rush.",
+	},
+	["race.nightelf.quest_complete.w08.015"] = {
+		"Finished under Elune's own light. It feels like a blessing, even if it was only an errand.",
+		"Done, with the moon looking on. The priestesses would say she approves; I will simply say it went well.",
+	},
+	["race.nightelf.quest_complete.w08.016"] = {
+		"Even with the long memory of my people, the world still finds things to teach. This was one of them.",
+		"I learned something this time. Ten thousand years of kaldorei lore, and the world has lessons left over.",
+	},
+	["race.nightelf.quest_complete.w08.017"] = {
+		"Finished. Tell the next one who asks that a kaldorei came by and set it right.",
+		"There, done. If anyone wonders who did it, say it was someone of Teldrassil, and leave it at that.",
+	},
+	["race.nightelf.quest_complete.w08.018"] = {
+		"The World Tree gave its strength at Hyjal, the priestesses say, and since then every day matters more. This one, at least, I did not waste.",
+		"Since Nordrassil's gift was spent, our days are numbered like anyone's. I am glad to have spent one of mine on this.",
+	},
+	["race.nightelf.quest_complete.w08.019"] = {
+		"tucks a stray strand of hair behind one long ear and looks, briefly, very pleased.",
+		"flicks one long ear in quiet satisfaction and moves on.",
+	},
+	["race.nightelf.quest_complete.w08.020"] = {
+		"Complete. Tyrande's people do not leave things half-finished.",
+		"Finished. Darnassus would expect nothing less, and neither do I.",
+	},
+	["race.nightelf.quest_complete.w08.021"] = {
+		"Finished. Like the seasons in Ashenvale, it took its time and then came all at once.",
+		"That is done. Things in the forest happen slowly, then suddenly; this was the suddenly.",
+		"Done at last. The oldest oaks would call that brisk.",
+	},
+	["race.nightelf.quest_complete.w08.022"] = {
+		"Done. If I keep this up, the owls of Teldrassil will start asking me for favors.",
+		"Finished. Word travels fast in the canopy; expect the squirrels to come with requests.",
+		"Settled. Darnassus will hear of it eventually, though the hippogryphs gossip less than you'd think.",
+	},
+	["race.nightelf.quest_complete.w08.023"] = {
+		"No crowd, no herald, a quiet word and it's over. I like my work the way the forest likes its creatures: unseen until needed.",
+		"Over without fuss. There is a very kaldorei pleasure in that, in doing a thing well and slipping back among the trees.",
+	},
+	["race.nightelf.quest_complete.w08.024"] = {
+		"Done. The old sentinels say the Highborne thought themselves too great for small work. We learned otherwise.",
+		"Finished, and gladly. My people learned in the War of the Ancients where pride without labor leads.",
+	},
+	["race.nightelf.quest_complete.w08.025"] = {
+		"Finished. I'll think of the boughs of Darnassus on the way, and the way will feel shorter.",
+		"That's settled. Whatever the road does next, Darnassus is still at the end of it.",
+	},
+	["race.nightelf.quest_complete.w08.026"] = {
+		"lifts {g:his|her} gaze upward for a moment, as if seeking the moon beyond the sky, and offers the finished work in silence.",
+		"murmurs a few words to Elune under {g:his|her} breath, too low for anyone else to catch.",
+		"bows {g:his|her} head briefly: a thanks to no one in particular, and to Elune most of all.",
+	},
+	["race.nightelf.quest_progress.w08.001"] = {
+		"A part of it done. The rest will come; patience is the one thing my people never lack.",
+		"Halfway. My people grew a World Tree; I can finish an errand.",
+		"Some done, some not. The moon doesn't rise all at once either.",
+	},
+	["race.nightelf.quest_progress.w08.002"] = {
+		"All of it done. Now back, as quietly as I came.",
+		"Everything asked is done. Now the walk back, unhurried, the way my people prefer it.",
+		"Finished, every part. I'll carry the news back as carefully as a Sentinel carries word from the border.",
+	},
+	["race.nightelf.quest_progress.w08.003"] = {
+		"pauses to look over what is done, ears tilted, then moves on toward the rest without hurry.",
+		"notes the progress with a slight nod, as patient as a gardener among slow-growing trees.",
+		"takes stock in silence, as an owl surveys a clearing, and walks on.",
+	},
+	["race.nightelf.reputation_change.w08.001"] = {
+		"Their regard has grown. My people measure trust in centuries; I'll take this as a good first decade.",
+		"A warmer welcome than before. Trust grows like an oak: slowly, and then for a very long time.",
+		"They think better of me now. My people would call it a seedling; I mean to see it grow.",
+	},
+	["race.nightelf.rest_enter.w08.001"] = {
+		"A place to rest. My people sleep lightly anywhere; what matters is the permission, not the bed.",
+		"Safe ground at last. One of my people can doze standing up if need be, but this is better.",
+		"Rest. Even the long-lived need it, it turns out. Nobody warned us.",
+	},
+	["race.nightelf.rest_enter.w08.002"] = {
+		"lets the watchfulness drain slowly from {g:his|her} shoulders, the way {g:his|her} people do once they have decided a place is safe.",
+		"finds a corner out of the way and settles into it with the long patience of {g:his|her} kind.",
+		"eases down, every sense still half awake, as {g:his|her} people have rested for ten thousand years.",
+	},
+	["race.nightelf.rest_enter.w08.003"] = {
+		"A safe place, for now. I thank Elune for it quietly, the way one thanks a host who wants no fuss.",
+		"Rest. For a while Elune keeps the watch, and I let her.",
+	},
+	["race.tauren.journey.w08.001"] = {
+		"From up here the herds would look like scattered seeds. I search for them anyway, out of plain habit.",
+		"The land drops away and I scan it for herds the way my people always have. From this height a kodo would be a crumb.",
+		"Below, the world becomes a hide stretched out to dry, with rivers for its seams. I look for herds on it all the same.",
+	},
+	["race.tauren.journey.w08.002"] = {
+		"settles into the saddle with care, horns tucked low against the wind, as the wings take hold of the air.",
+		"leans over the wind rider's neck as the ground falls away, horns low and mane streaming.",
+		"grips the reins as the wind rider kicks off, great body hunched forward to make itself, briefly, a little smaller.",
+	},
+	["race.tauren.journey.w08.003"] = {
+		"Every wingbeat puts more air between me and the Earth Mother. She is patient. She will have me back soon enough.",
+		"Up into the wind. The ground does not let go of a tauren easily, and I do not entirely let go of it either.",
+		"Leaving the earth is the strangest thing a tauren can do. I keep one hand on the saddle and one thought on the ground below.",
+	},
+	["race.tauren.journey.w08.004"] = {
+		"Steady, friend. I know I'm heavy. Think of it as training.",
+		"Easy, easy. Yes, all of me. Fly slow, and you can complain at the other end.",
+	},
+	["race.tauren.journey.w08.005"] = {
+		"The wind catches my horns like a pair of sails. I tuck my head down and try to be a smaller shape than I am.",
+		"Up here the air pulls at my horns and mane as if it meant to keep them. I hold my head low and let it try.",
+	},
+	["race.tauren.journey.w08.006"] = {
+		"Ground. I stamp once, to be sure it is the real thing and not more sky pretending.",
+		"Down. My knees take the earth back like old friends meeting. Next time, perhaps I will walk.",
+		"The wings fold and the land comes back under me, solid and indifferent. I would kiss it, if horns allowed.",
+	},
+	["race.tauren.journey.w08.007"] = {
+		"slides down from the wind rider and stands a moment with hooves planted wide, as if the ground might try to tilt.",
+		"climbs down from the saddle, stamps once to wake {g:his|her} legs, and gives the beast a grateful slap on the neck.",
+	},
+	["race.tauren.journey.w08.008"] = {
+		"A long way through the air. My people once crossed such distances in a season of walking; I did it between two thoughts, and I am not sure I am grateful.",
+		"So much land passed under me, and not one blade of it touched. A journey without the walking feels like a meal without the hunger.",
+		"A long while above the world, and now it all comes back underfoot at once. My legs need a moment to believe in distance again.",
+	},
+	["race.tauren.journey.w08.009"] = {
+		"The wind rider shakes itself, glad to be rid of me. I feel much the same about the sky.",
+		"We part on good terms, the wind rider and I. Each of us is relieved, and each of us is polite about it.",
+		"The beast does not look back as it leaves. It has carried a tauren; it has earned its rest.",
+	},
+	["race.tauren.quest_complete.w08.001"] = {
+		"Done. A finished task is a stretch of road walked to its end; the elders say you thank the road before you leave it.",
+		"There. The elders of my people say every road walked to its end deserves a word of thanks. Thank you, road.",
+		"Finished. Before taking the next path, a tauren is meant to thank the last one. So: thank you, and on to the next.",
+	},
+	["race.tauren.quest_complete.w08.002"] = {
+		"Here you go. Mind the horns when you lean in to take it; everyone forgets the horns.",
+		"All yours. Careful reaching past me; there is a lot of me to reach past.",
+		"There it is. I'd bow, but bowing with horns this size needs room and a warning.",
+	},
+	["race.tauren.quest_complete.w08.003"] = {
+		"stoops and lays a broad palm flat on the ground for a moment, a quiet thanks to the Earth Mother for a task carried to its end.",
+		"bends to touch the ground with two fingers, then {g:his|her} brow, unhurried, as if settling a small debt with the earth.",
+		"presses a hand flat to the ground and holds it there a heartbeat longer than a stranger would think necessary.",
+	},
+	["race.tauren.quest_complete.w08.004"] = {
+		"Like grass seed thrown on the wind: you do the throwing and let the plains decide the rest. Over to the plains, then.",
+		"Work handed over. Whether it bears fruit is another season's business. The plains taught me to let seasons be.",
+	},
+	["race.tauren.quest_complete.w08.005"] = {
+		"May your water stay sweet and your herds stay many. That's how we part in Mulgore.",
+		"Walk with the wind at your back. It's what my people wish anyone they've helped.",
+		"May the Earth Mother keep the ground firm under your feet. Good work, this, and gladly done.",
+	},
+	["race.tauren.quest_complete.w08.006"] = {
+		"Most people thank a tauren the way they'd thank a cliff: head tipped back, and from a careful distance.",
+		"Gratitude from below again. I've learned to bend a little so people don't strain their necks being kind.",
+		"Another thank-you said with a craned neck. One day someone will thank a tauren without stepping back first.",
+	},
+	["race.tauren.quest_complete.w08.007"] = {
+		"The elders tell of the long wandering years, when nothing stayed built. Maybe that's why a finished thing pleases a tauren so much.",
+		"For ages, the tellers say, my people's work was loaded onto kodo every few days and carried off. Work that stays where you leave it feels like a luxury.",
+		"For a nomad nothing is ever finished: the camp is always moving. Since the bluff was settled, the tellers say, my people have learned the taste of done. I like it.",
+	},
+	["race.tauren.quest_complete.w08.008"] = {
+		"It's done, and it was done with both hands. A tauren doesn't do half of anything.",
+		"Finished properly, no corners cut. My people have never been good at small efforts.",
+		"Seen through from end to end. We tauren are too big for halfway.",
+	},
+	["race.tauren.quest_complete.w08.009"] = {
+		"If anything died for this task, I hope I paused to thank it. A hunter of my people would ask me that before asking about the reward.",
+		"Before the coin, the old question of the plains: did I give thanks for what was taken? I think I did. I hope I did.",
+	},
+	["race.tauren.quest_complete.w08.010"] = {
+		"Done. If there's a reward, make it food. Feeding a tauren is a task of its own.",
+		"Coin is fine. Bread would be finer. A tauren gets hungry just walking across a room.",
+		"Finished. You wouldn't happen to have anything to eat? Asking for a very large stomach.",
+	},
+	["race.tauren.quest_complete.w08.011"] = {
+		"has to stoop low to take the reward, and straightens again with the care of someone well acquainted with low beams.",
+		"bends nearly double to accept the reward, then unfolds back to full height, one joint after another.",
+		"takes the reward between two enormous fingers, with all the delicacy of a kodo stepping around a nest.",
+	},
+	["race.tauren.quest_complete.w08.012"] = {
+		"An'she sees the deeds of the day and Mu'sha those of the dark, so the elders teach. Either way, this one was seen.",
+		"Whichever of the Earth Mother's eyes was open, it saw this done. That's enough witness for a tauren.",
+		"No crowd, no herald. The Earth Mother has two eyes, the sun and the moon; one of them always sees the work.",
+	},
+	["race.tauren.quest_complete.w08.013"] = {
+		"Another small payment on an old debt. The orcs stood with my people against the centaurs, the elders say, and a tauren remembers who stood beside them.",
+		"Cairne teaches that the Horde's help in the centaur wars is a debt worth paying slowly and gladly. Every finished task pays a little of it.",
+	},
+	["race.tauren.quest_complete.w08.014"] = {
+		"That's it. Let me stand here a moment and let my heart slow to a kodo's walk.",
+		"Finished. I'll take a breath the size of a tauren before I take another errand.",
+		"Over and handed in. Now I'm going to stand still for a while, like a kodo after a river crossing.",
+	},
+	["race.tauren.quest_complete.w08.015"] = {
+		"If you're ever up on the bluff, find a fire and sit down. In Mulgore, folk say a guest is fed before being asked a single question.",
+		"Should the road ever take you to Mulgore, find any tauren fire. The custom is food first, questions later.",
+		"Come by Bloodhoof Village one day. There's always a pot on, so they say, and nobody will ask your business before you've eaten.",
+	},
+	["race.tauren.quest_complete.w08.016"] = {
+		"No need for fine words. Praise sits on a tauren about as well as a saddle on a wild bull.",
+		"Thank me less, please. Praise makes my ears twitch, and then everyone stares at the ears.",
+	},
+	["race.tauren.quest_complete.w08.017"] = {
+		"The grass doesn't ask to be thanked for growing. I try to finish my work the same way, and mostly fail; I do like being thanked.",
+		"On the plains nothing announces it's done. The grass simply grows, the river simply arrives. I could learn from that, and maybe tomorrow I will.",
+	},
+	["race.tauren.quest_complete.w08.018"] = {
+		"rumbles a low sound of approval, deep enough to be felt in the chest more than heard.",
+		"gives a single, unhurried nod, the kind that seems to come all the way up from the hooves.",
+		"taps two fingers against one horn, a small private gesture, and turns away looking satisfied.",
+	},
+	["race.tauren.quest_complete.w08.019"] = {
+		"Tell them a tauren did this. Not for my sake: so the next tauren who passes this way is welcomed.",
+		"Remember the horns, if anyone asks who helped. My people's name is built out of deeds like this one.",
+	},
+	["race.tauren.quest_complete.w08.020"] = {
+		"Up on the bluff a fire burns without me. One day I'll tell it about this.",
+		"When I next ride the lift up to the rises, this will be one more story for the fire.",
+	},
+	["race.tauren.quest_complete.w08.021"] = {
+		"Earth Mother, this was small, and it was done well. I hope you like small things done well; I've a lot of them.",
+		"I give it to the Earth Mother, the way a hunter gives back a share of the kill. Small, but given.",
+	},
+	["race.tauren.quest_complete.w08.022"] = {
+		"Done, and nothing trampled that wasn't meant to be. For a tauren, that's careful work.",
+		"Finished, and I only stepped on what deserved it. Where I come from, that counts as grace.",
+		"All done. Not one fence knocked over. Write that down somewhere.",
+	},
+	["race.tauren.quest_complete.w08.023"] = {
+		"A kodo calf learns to walk in a morning and to carry loads in a year. I'm somewhere in between, and this helped.",
+		"Every finished task is a little weight added to what I can carry. That's how kodo are trained, the herders say: one stone more each season.",
+		"Strength grows the way a herd grows: slowly, then all at once one spring. Today was a slow day, and it counts.",
+	},
+	["race.tauren.quest_complete.w08.024"] = {
+		"May what was broken here grow back like grass after a burn. It always does, on the plains.",
+		"There. Give it a season; the plains taught me that most wounds in the land close if you leave them be.",
+	},
+	["race.tauren.quest_progress.w08.001"] = {
+		"Finished out here. The rest is walking, kodo-steady: no hurry and no stops.",
+		"That's the whole of it. A tauren carries news the way the plains carry wind: steadily, all the way.",
+		"Everything asked is done. Time to point the horns toward whoever's waiting.",
+	},
+	["race.tauren.quest_progress.w08.002"] = {
+		"One part done. The rest is out there; the plains taught me that a herd is gathered stray by stray.",
+		"Some of it. A hunter of my people would say the trail is warm now. Keep following.",
+		"Part of the way. Patience; even a kodo doesn't cross Mulgore in one step.",
+	},
+	["race.tauren.quest_progress.w08.003"] = {
+		"ticks off one part of the task on a broad finger and looks around for the rest.",
+		"grunts: half the job done, and no hurry at all to admit it's only half.",
+		"flicks an ear, weighs what's done against what's left, and sets off at an even, tireless walk.",
+	},
+	["race.tauren.reputation_change.w08.001"] = {
+		"A little more trust, earned the tauren way: slowly, the way a calf grows horns.",
+		"Someone thinks better of me now. My people say a good name is like a deep well: dug slowly, and it never runs dry.",
+		"Goodwill grows like the grass of Mulgore after the fires: quietly, and then everywhere.",
+	},
+	["race.tauren.rest_enter.w08.001"] = {
+		"Rest at last. My people learned to rest wherever the herd stopped, and I have never lost the knack.",
+		"A place to stop. A tauren can sleep almost anywhere; it is waking with a horn caught in something that I could do without.",
+		"Time to set the load down. Somewhere in me an old herder counts heads, finds them all, and lets me sleep.",
+	},
+	["race.tauren.rest_enter.w08.002"] = {
+		"A roof, a fire, and a bed that ends at my knees. I'll take the floor and a pile of hides, as usual, and be happier for it.",
+		"Inns are built for shorter sleepers. I spread a blanket by the hearth and tell the innkeeper it is a tauren custom. It is now.",
+	},
+	["race.tauren.rest_enter.w08.003"] = {
+		"lets the weight come off {g:his|her} hooves at last, and the whole great frame seems to settle a hand's breadth lower.",
+		"eases down slowly, as large things do, and lets out a long breath that seems to come up from the ground.",
+	},
 }, "base_world")

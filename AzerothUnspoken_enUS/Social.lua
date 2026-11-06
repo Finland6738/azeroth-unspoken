@@ -295,4 +295,180 @@ NS:AddTexts("enUS", {
 		"bows {g:his|her} head and stays silent for a few breaths.",
 		"laces {g:his|her} fingers together, lips moving without a sound.",
 	},
+	["race.dwarf.farewell.w08.001"] = {
+		"Go well, and may every road you take have solid rock beneath the mud.",
+		"Safe travels. If you're ever in Ironforge, ask for me in any tavern; one of them will know.",
+	},
+	["race.dwarf.farewell.w08.002"] = {
+		"Off with you, then. And don't go getting killed; I'll not drink to your memory alone.",
+		"Right, that's me away. Mind your footing, and mind your purse in human towns.",
+	},
+	["race.dwarf.greet.w08.001"] = {
+		"Hail, and well met. You look like you could use a sit and a drink, and I'm the dwarf to arrange both.",
+		"Hail! Hands where I can shake them. That's how we greet under the mountain.",
+		"Well met, well met. Khaz Modan says hello, loudly, as always.",
+	},
+	["race.dwarf.greet.w08.002"] = {
+		"There you are! Good. Come stand by me as if we were at the Great Forge, and tell me the news.",
+		"Ah, a friendly face! My day was dull as a slag heap until now.",
+		"Hail! Sit, sit. Talk goes better with your boots off the road.",
+	},
+	["race.dwarf.jest.w08.001"] = {
+		"A dwarf walks into a tavern. Then out, then in again: that's how we check the ale's still there.",
+		"Somebody asked a dwarf how deep the mine went. 'Till the ale runs out,' says he, 'then a bit further, to find more.'",
+	},
+	["race.dwarf.jest.w08.002"] = {
+		"Gnomes build things that explode. Dwarves build things that don't. Somehow we're the dull ones.",
+		"A dwarf's idea of a light snack is anything you can lift with one hand.",
+	},
+	["race.dwarf.pray.w08.001"] = {
+		"Light keep us, and the stone hold over us, and the deep places stay quiet a while longer.",
+		"To the earth that bore us and the Light that finds us even down there: watch over the halls, and the folk in them.",
+		"The old miners raise a cup to the rock before a long dig. No cup to hand, so take the words: hold, and let us pass.",
+	},
+	["race.dwarf.thanks.w08.001"] = {
+		"My thanks. Give me your hand; where I come from, a debt is sealed with a grip, and mine's a strong one.",
+		"Thank you kindly. That's a favor I'll repay in stone, not in words.",
+		"Much obliged. I don't say it often, so mind you hear it properly.",
+	},
+	["race.dwarf.thanks.w08.002"] = {
+		"Thanks. There, I said it. Don't make me say it twice; it's bad for a dwarf's reputation.",
+		"Aye, thanks. Now let's both pretend I'd have managed alone.",
+	},
+	["race.human.farewell.w08.001"] = {
+		"Take care of yourself. Lives are short enough without the road shortening them.",
+		"Go safely, and come back. Every human has someone who didn't; don't be mine.",
+		"Until our roads cross again. May it come sooner than these times usually allow.",
+	},
+	["race.human.farewell.w08.002"] = {
+		"Off you go. If you pass the Lion's Pride, tell them I've paid my tab. They won't believe it, but tell them.",
+		"Farewell! Mind the wolves in the forest and the nobles in the city, in that order. Or the other.",
+		"Until next time. I'd say 'Light keep you', but you look like you can keep yourself.",
+	},
+	["race.human.greet.w08.001"] = {
+		"Hello there! Any news from the road? Humans can't help asking; we've had too much of it lately.",
+		"Hello! Where are you off to? Wherever it is, I've probably lost something on the way there.",
+	},
+	["race.human.greet.w08.002"] = {
+		"Peace on you. Come, sit a while; the world can spare us for the length of a cup.",
+		"Well met. Any friend of the road is a friend at my fire.",
+	},
+	["race.human.jest.w08.001"] = {
+		"Stormwind has a regent, a lady at court, a missing king and a council. Somewhere in there is a person who decides things.",
+		"Ask three nobles in Stormwind who's in charge and you'll get four answers and a bill.",
+	},
+	["race.human.jest.w08.002"] = {
+		"Westfall farmers swear they grow the best bread in the kingdom. They say the same of turnips, so weigh it accordingly.",
+		"Dwarves get two hundred years, elves ten thousand, and humans spend most of ours queuing in Stormwind.",
+	},
+	["race.human.pray.w08.001"] = {
+		"Light, keep the fields green and the roads open, and bring the lost of Lordaeron somewhere warm.",
+		"To whatever hears a human's prayer: we're not here long. Let what we build last a little longer than we do.",
+		"Light above, let the bells ring for weddings this year and not for alarms.",
+	},
+	["race.human.thanks.w08.001"] = {
+		"Thank you. Kindness like that is how villages get through bad winters, and people through bad years.",
+		"Thanks. I owe you a hot meal at the first inn we both stumble into.",
+		"Thank you, truly. My people haven't had many easy decades; we remember every hand held out.",
+	},
+	["race.human.thanks.w08.002"] = {
+		"Thanks! If Stormwind ever pays its debts, I'll pay mine to you first.",
+		"Much obliged. I'd knight you, but I'm told that's the king's job, and he isn't around.",
+	},
+	["race.human.toast.w08.001"] = {
+		"To short lives and long friendships! We humans have to drink faster to fit it all in.",
+		"Raise a cup: to the king's return, the regent's patience, and whoever's paying for this round!",
+	},
+	["race.nightelf.farewell.w08.001"] = {
+		"Go in peace, and may the shadows hide you from whatever hunts.",
+		"Elune keep watch over your road.",
+	},
+	["race.nightelf.farewell.w08.002"] = {
+		"Farewell. We will meet again; my people are patient, and the roads are long.",
+		"Until the next glade. I will keep an ear turned your way.",
+	},
+	["race.nightelf.greet.w08.001"] = {
+		"Be well, traveler. May the forest step aside for you, and the moon find you when you need it.",
+		"Greetings. Walk softly, and the woods will always welcome you.",
+		"Well met. May the old trees remember you kindly.",
+	},
+	["race.nightelf.greet.w08.002"] = {
+		"Hello. Forgive the stare; my people take a long look at new faces.",
+		"Hello there. Did you hear me coming? No? Good. Hello, then.",
+	},
+	["race.nightelf.greet.w08.003"] = {
+		"Greetings. Yes, the ears hear everything. Yes, including that.",
+		"Hello, hello. Never mind the glow in my eyes; it is only my good mood.",
+	},
+	["race.nightelf.jest.w08.001"] = {
+		"Night elves never sneak up on anyone. We simply arrive before you notice.",
+		"Why are night elves so calm? You would be too, after ten thousand years of other people's problems.",
+	},
+	["race.nightelf.jest.w08.002"] = {
+		"My ears are not long. Everyone else's are just very short.",
+		"Never ask a night elf's age. Not because it is rude; because you will need a chair.",
+	},
+	["race.nightelf.pray.w08.001"] = {
+		"Elune, keep the Sentinels on their watch and Malfurion in his long dream, and teach me the patience of your turning.",
+		"Lady of the moon, I ask little: a quiet step, a clear eye, and the strength to stand where I am needed.",
+	},
+	["race.nightelf.thanks.w08.001"] = {
+		"Thank you. Kindness is rarer than moonwells these days; I will not forget where I found this one.",
+		"You have my gratitude. Elune saw it, and so did I.",
+		"My thanks. If ever you walk in Ashenvale, the trees will know a friend is passing.",
+	},
+	["race.nightelf.thanks.w08.002"] = {
+		"Thank you. Among my people this would earn you a very long, very slow bow. I will spare you the wait.",
+		"Much obliged. I will owe you this for years, and for once I mean that literally.",
+	},
+	["race.nightelf.toast.w08.001"] = {
+		"To the forests that still stand, and to those of us who keep them standing!",
+		"Raise your cups to the moon, who drinks with us whether we invite her or not.",
+	},
+	["race.tauren.farewell.w08.001"] = {
+		"Walk in balance, and let the Earth Mother set your pace.",
+		"Go well. May the herds be fat wherever your road bends.",
+	},
+	["race.tauren.farewell.w08.002"] = {
+		"Until the next fire. I will be the large shape on the horizon, if you need me.",
+		"Safe roads. If you get lost, look for hoofprints the size of serving platters.",
+	},
+	["race.tauren.greet.w08.001"] = {
+		"Well met. Mind my horns; they turn faster than I do.",
+		"Greetings, fellow traveler. The grass is wide enough for both of us.",
+	},
+	["race.tauren.greet.w08.002"] = {
+		"May An'she warm your road, and Mu'sha keep watch while you sleep.",
+		"Peace to you, in the name of the Earth Mother and her two bright eyes.",
+		"The Earth Mother walk beside you, traveler, and keep your hooves, or your boots, on firm ground.",
+	},
+	["race.tauren.greet.w08.003"] = {
+		"Hello down there! No offense meant; from where I stand, everything is down there.",
+		"Greetings. Yes, the horns are real. No, you may not hang your cloak on them.",
+	},
+	["race.tauren.jest.w08.001"] = {
+		"Why do tauren never play hide and seek? The only place big enough to hide one is Mulgore, and everyone looks there first.",
+		"People ask if the horns get in the way. Only of doorways, lanterns, low branches and everyone's patience.",
+	},
+	["race.tauren.jest.w08.002"] = {
+		"A tauren in a rowboat is not a passenger. A tauren in a rowboat is the cargo.",
+		"Sneaking is not a tauren art. The ground tells on us with every step.",
+	},
+	["race.tauren.pray.w08.001"] = {
+		"Earth Mother, I walk on you every day and thank you too rarely. Hear me now, and keep the road beneath me honest.",
+		"An'she, Mu'sha, eyes of the Mother: see me as I am, and guide me where I am needed.",
+	},
+	["race.tauren.thanks.w08.001"] = {
+		"Thank you. My people say a gift given freely makes the grass grow greener wherever the giver walks.",
+		"You have my thanks. I will remember it as long as a tauren remembers a good watering hole: always.",
+		"Truly, thank you. That was a kindness worth a long, slow nod.",
+	},
+	["race.tauren.thanks.w08.002"] = {
+		"Thank you. I would hug you, but I am told tauren hugs need a warning first.",
+		"Much obliged. If you ever need something carried, lifted or sat on, ask for me.",
+	},
+	["race.tauren.toast.w08.001"] = {
+		"To the Earth Mother, who feeds us, and to the cook, who does the hard part!",
+		"To the herds, the hunt and the hands that cook it! May the Earth Mother take her share first.",
+	},
 }, "base_social")

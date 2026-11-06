@@ -292,4 +292,36 @@ NS:AddTexts("enUS", {
 		"Stronger again. There aren't many steps left, and every one of them is steep.",
 		"Another step. I can almost see where this ends, and what comes after doesn't scare me.",
 	},
+	["race.dwarf.levelup.w08.001"] = {
+		"Harder, like iron after another quench. The forge isn't finished with me yet.",
+		"Another layer of stone settled. A mountain grows like that too: slowly, and for good.",
+	},
+	["race.dwarf.levelup.w08.002"] = {
+		"Stronger! Somebody tell the brewers; I'll be needing bigger mugs.",
+		"A notch tougher. Ironforge had better start building its doorways wider.",
+	},
+	["race.human.levelup.w08.001"] = {
+		"Stronger. Humans don't get centuries to grow into themselves; we have to do it at a run.",
+		"A step further. Elves grow over ages; a human has to grow up between one fight and the next.",
+	},
+	["race.human.levelup.w08.002"] = {
+		"Another notch! A human life is short; might as well make it a full one.",
+		"Better than I was! Not bad for a creature with seventy years, give or take.",
+	},
+	["race.nightelf.levelup.w08.001"] = {
+		"Stronger. My people once had forever to grow; now every step forward counts.",
+		"A little more than I was. Since Hyjal, my people can't take growing for granted.",
+	},
+	["race.nightelf.levelup.w08.002"] = {
+		"stands very still as something new takes root within {g:him|her}, slow and certain as a seedling of Teldrassil.",
+		"lifts {g:his|her} chin, and for a moment the glow in {g:his|her} eyes burns a shade brighter.",
+	},
+	["race.tauren.levelup.w08.001"] = {
+		"Stronger. Like a calf growing into the herd: you never see it happen, and then one day you're keeping pace with the leaders.",
+		"A little more to me than yesterday. The elders say a tauren never stops growing, only slows down. Today I believe them.",
+	},
+	["race.tauren.levelup.w08.002"] = {
+		"Even bigger, somehow. Doorways of the world, I apologize in advance.",
+		"Stronger again. Somebody warn the low ceilings.",
+	},
 }, "base_life")

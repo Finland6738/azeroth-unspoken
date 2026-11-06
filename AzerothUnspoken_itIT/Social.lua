@@ -295,4 +295,180 @@ NS:AddTexts("itIT", {
 		"china il capo e resta in silenzio per qualche respiro.",
 		"intreccia le dita e muove appena le labbra, senza un suono.",
 	},
+	["race.dwarf.farewell.w08.001"] = {
+		"Va' in pace, e che ogni strada che prendi abbia roccia salda sotto il fango.",
+		"Buon viaggio. Se passi da Ironforge, chiedi di me in una taverna qualsiasi: in una di esse sapranno dirti.",
+	},
+	["race.dwarf.farewell.w08.002"] = {
+		"Vai, allora. E non farti ammazzare: non ho intenzione di bere alla tua memoria da {g:solo|sola}.",
+		"Bene, io me ne vado. Occhio a dove metti i piedi, e alla borsa nelle città degli umani.",
+	},
+	["race.dwarf.greet.w08.001"] = {
+		"Salute a te. Hai l'aria di chi ha bisogno di sedersi e bere qualcosa, e io sono {g:il nano giusto|la nana giusta} per tutte e due le cose.",
+		"Salute! Fuori le mani, che le stringo. Sotto la montagna si saluta così.",
+		"Salute, salute! Khaz Modan ti saluta, a voce alta, come sempre.",
+	},
+	["race.dwarf.greet.w08.002"] = {
+		"Eccoti! Bene. Vieni qui accanto come se fossimo alla Grande Forgia, e raccontami le novità.",
+		"Ah, una faccia amica! Fino a questo momento la mia giornata era grigia come un mucchio di scorie.",
+		"Salute a te! Siediti, siediti. Si chiacchiera meglio con gli stivali fuori dalla strada.",
+	},
+	["race.dwarf.jest.w08.001"] = {
+		"Un nano entra in una taverna. Poi esce, poi rientra: è così che controlliamo che la birra ci sia ancora.",
+		"Qualcuno chiese a un nano quanto fosse profonda la miniera. «Fin dove finisce la birra», rispose, «e poi un po' più giù, per trovarne altra.»",
+	},
+	["race.dwarf.jest.w08.002"] = {
+		"Gli gnomi costruiscono cose che esplodono. I nani costruiscono cose che non esplodono. Chissà perché, i noiosi siamo noi.",
+		"Per un nano, uno spuntino leggero è qualunque cosa si possa sollevare con una mano sola.",
+	},
+	["race.dwarf.pray.w08.001"] = {
+		"Che la Luce ci protegga, che la pietra regga sopra di noi, e che i luoghi profondi restino tranquilli ancora un po'.",
+		"Alla terra che ci ha generati e alla Luce che ci trova anche laggiù: veglia sulle sale, e sulla gente che le abita.",
+		"I vecchi minatori alzano il boccale alla roccia prima di un lungo scavo. Boccale non ne ho, quindi prendi le parole: reggi, e lasciaci passare.",
+	},
+	["race.dwarf.thanks.w08.001"] = {
+		"Grazie. Dammi la mano: da dove vengo io un debito si sigilla con una stretta, e la mia è forte.",
+		"Grazie davvero. È un favore che ripagherò in pietra, non in parole.",
+		"Ti sono {g:grato|grata}. Non lo dico spesso, quindi ascoltalo bene.",
+	},
+	["race.dwarf.thanks.w08.002"] = {
+		"Grazie. Ecco, l'ho detto. Non farmelo ripetere: fa male alla reputazione di un nano.",
+		"Sì, grazie. Adesso facciamo tutti e due finta che ce l'avrei fatta da {g:solo|sola}.",
+	},
+	["race.human.farewell.w08.001"] = {
+		"Abbi cura di te. Le vite sono già abbastanza brevi senza che la strada le accorci.",
+		"Va' con prudenza, e torna. Ogni umano ha qualcuno che non è tornato: non diventare il mio.",
+		"Alla prossima volta che le nostre strade si incrociano. Che arrivi prima di quanto questi tempi di solito concedano.",
+	},
+	["race.human.farewell.w08.002"] = {
+		"Vai pure. Se passi dal Lion's Pride, di' che ho saldato il conto. Non ci crederanno, ma diglielo.",
+		"Addio! Attenzione ai lupi nella foresta e ai nobili in città, in quest'ordine. O nell'altro.",
+		"Alla prossima. Direi «la Luce ti protegga», ma mi sembri capace di cavartela anche senza.",
+	},
+	["race.human.greet.w08.001"] = {
+		"Salve! Notizie dalla strada? Noi umani non possiamo fare a meno di chiederlo: ultimamente ne abbiamo avute fin troppe.",
+		"Salve! Dove vai di bello? Ovunque sia, probabilmente lungo la strada ci ho perso qualcosa.",
+	},
+	["race.human.greet.w08.002"] = {
+		"Pace a te. Vieni, siediti un poco: il mondo può fare a meno di noi per il tempo di una tazza.",
+		"Salute a te. Chi è amico della strada è amico del mio fuoco.",
+	},
+	["race.human.jest.w08.001"] = {
+		"Stormwind ha un reggente, una dama a corte, un re scomparso e un consiglio. Lì in mezzo, chissà dove, c'è qualcuno che decide.",
+		"Chiedi a tre nobili di Stormwind chi comanda e avrai quattro risposte e un conto da pagare.",
+	},
+	["race.human.jest.w08.002"] = {
+		"I contadini di Westfall giurano di avere il pane migliore del regno. Dicono lo stesso delle rape, quindi regolati.",
+		"I nani vivono duecento anni, gli elfi diecimila, e noi umani i nostri li passiamo quasi tutti in fila a Stormwind.",
+	},
+	["race.human.pray.w08.001"] = {
+		"Luce, mantieni verdi i campi e aperte le strade, e porta i dispersi di Lordaeron in un posto caldo.",
+		"A chiunque ascolti la preghiera di un umano: non restiamo a lungo. Fa' che ciò che costruiamo duri un po' più di noi.",
+		"Luce lassù, fa' che quest'anno le campane suonino per i matrimoni e non per gli allarmi.",
+	},
+	["race.human.thanks.w08.001"] = {
+		"Grazie. È con gentilezze così che i villaggi superano gli inverni cattivi, e la gente gli anni cattivi.",
+		"Grazie. Ti devo un pasto caldo alla prima locanda in cui capitiamo tutti e due.",
+		"Grazie davvero. La mia gente non ha avuto molti decenni facili: ci ricordiamo di ogni mano tesa.",
+	},
+	["race.human.thanks.w08.002"] = {
+		"Grazie! Se Stormwind un giorno salderà i suoi debiti, io salderò per {g:primo|prima} il mio con te.",
+		"Ti sono {g:obbligato|obbligata}. Ti farei cavaliere, ma pare sia compito del re, e il re non c'è.",
+	},
+	["race.human.toast.w08.001"] = {
+		"Alle vite brevi e alle amicizie lunghe! Noi umani dobbiamo bere più in fretta per farci stare tutto.",
+		"Alzate i boccali: al ritorno del re, alla pazienza del reggente, e a chi paga questo giro!",
+	},
+	["race.nightelf.farewell.w08.001"] = {
+		"Va' in pace, e che le ombre ti nascondano da qualunque cosa vada a caccia.",
+		"Che Elune vegli sulla tua strada.",
+	},
+	["race.nightelf.farewell.w08.002"] = {
+		"Arrivederci. Ci rivedremo: il mio popolo è paziente, e le strade sono lunghe.",
+		"Alla prossima radura. Terrò un orecchio rivolto dalla tua parte.",
+	},
+	["race.nightelf.greet.w08.001"] = {
+		"Stammi bene, viandante. Che la foresta si scosti al tuo passaggio, e la luna ti trovi quando ne avrai bisogno.",
+		"Salute. Cammina con passo lieve, e i boschi ti accoglieranno sempre.",
+		"Salve. Che gli alberi antichi si ricordino di te con gentilezza.",
+	},
+	["race.nightelf.greet.w08.002"] = {
+		"Salve. Perdona lo sguardo: il mio popolo osserva a lungo i volti nuovi.",
+		"Ehilà. Mi hai sentito arrivare? No? Bene. Salve, allora.",
+	},
+	["race.nightelf.greet.w08.003"] = {
+		"Salve. Sì, le orecchie sentono tutto. Sì, anche quello.",
+		"Salve, salve. Non badare al bagliore dei miei occhi: è solo il mio buonumore.",
+	},
+	["race.nightelf.jest.w08.001"] = {
+		"Gli elfi della notte non arrivano mai di soppiatto. Arriviamo e basta, prima che tu te ne accorga.",
+		"Perché gli elfi della notte sono così calmi? Lo saresti anche tu, dopo diecimila anni di problemi altrui.",
+	},
+	["race.nightelf.jest.w08.002"] = {
+		"Le mie orecchie non sono lunghe. Sono quelle di tutti gli altri a essere cortissime.",
+		"Mai chiedere l'età a un elfo della notte. Non perché sia scortese: perché ti servirà una sedia.",
+	},
+	["race.nightelf.pray.w08.001"] = {
+		"Elune, custodisci le Sentinelle nella loro veglia e Malfurion nel suo lungo sogno, e insegnami la pazienza del tuo ruotare.",
+		"Signora della luna, chiedo poco: un passo silenzioso, uno sguardo limpido, e la forza di restare dove c'è bisogno di me.",
+	},
+	["race.nightelf.thanks.w08.001"] = {
+		"Grazie. La gentilezza oggi è più rara dei pozzi lunari; non dimenticherò dove ho trovato questa.",
+		"Hai la mia gratitudine. Elune l'ha visto, e anch'io.",
+		"Grazie. Se mai passerai per Ashenvale, gli alberi sapranno che sta passando un amico.",
+	},
+	["race.nightelf.thanks.w08.002"] = {
+		"Grazie. Tra la mia gente questo ti varrebbe un inchino lunghissimo e lentissimo. Ti risparmio l'attesa.",
+		"Ti sono {g:obbligato|obbligata}. Te lo dovrò per anni, e per una volta lo dico alla lettera.",
+	},
+	["race.nightelf.toast.w08.001"] = {
+		"Alle foreste ancora in piedi, e a chi di noi le tiene in piedi!",
+		"Alzate le coppe alla luna, che beve con noi che la invitiamo o no.",
+	},
+	["race.tauren.farewell.w08.001"] = {
+		"Cammina in equilibrio, e lascia che sia la Madre Terra a darti il passo.",
+		"Va' in pace. Che le mandrie siano grasse dovunque pieghi la tua strada.",
+	},
+	["race.tauren.farewell.w08.002"] = {
+		"Alla prossima. Se ti servo, sarò la grossa sagoma all'orizzonte.",
+		"Buona strada. Se ti perdi, cerca impronte di zoccoli grandi come piatti da portata.",
+	},
+	["race.tauren.greet.w08.001"] = {
+		"Salve. Occhio alle corna: girano più in fretta di me.",
+		"Salute a te, che sei in viaggio. L'erba è larga abbastanza per tutti e due.",
+	},
+	["race.tauren.greet.w08.002"] = {
+		"Che An'she ti scaldi la strada, e Mu'sha vegli mentre dormi.",
+		"Pace a te, nel nome della Madre Terra e dei suoi due occhi luminosi.",
+		"Che la Madre Terra cammini con te, viandante, e tenga i tuoi zoccoli, o i tuoi stivali, su un terreno saldo.",
+	},
+	["race.tauren.greet.w08.003"] = {
+		"Salve, laggiù! Senza offesa: da dove sto io, è tutto laggiù.",
+		"Salve. Sì, le corna sono vere. No, non puoi appenderci il mantello.",
+	},
+	["race.tauren.jest.w08.001"] = {
+		"Perché i tauren non giocano mai a nascondino? L'unico posto abbastanza grande per nasconderne uno è Mulgore, e tutti cercano lì per primo.",
+		"Mi chiedono se le corna danno fastidio. Solo a porte, lanterne, rami bassi e alla pazienza di tutti.",
+	},
+	["race.tauren.jest.w08.002"] = {
+		"Un tauren su una barchetta non è un passeggero. Un tauren su una barchetta è il carico.",
+		"Muoversi di soppiatto non è un'arte da tauren. Il terreno fa la spia a ogni nostro passo.",
+	},
+	["race.tauren.pray.w08.001"] = {
+		"Madre Terra, ti calpesto ogni giorno e ti ringrazio troppo di rado. Ascoltami adesso, e fa' che la strada sotto di me resti onesta.",
+		"An'she, Mu'sha, occhi della Madre: guardatemi per quello che sono, e guidatemi dove c'è bisogno di me.",
+	},
+	["race.tauren.thanks.w08.001"] = {
+		"Grazie. Il mio popolo dice che un dono fatto di cuore rende l'erba più verde dovunque passi chi l'ha dato.",
+		"Hai la mia gratitudine. Me ne ricorderò quanto un tauren si ricorda di un buon abbeveratoio: per sempre.",
+		"Grazie davvero. Una gentilezza che merita un cenno lungo e lento.",
+	},
+	["race.tauren.thanks.w08.002"] = {
+		"Grazie. Ti abbraccerei, ma mi dicono che gli abbracci dei tauren vanno annunciati.",
+		"Ti sono {g:obbligato|obbligata}. Se mai ti servisse qualcosa da portare, da sollevare o da schiacciare sedendoci sopra, chiedi di me.",
+	},
+	["race.tauren.toast.w08.001"] = {
+		"Alla Madre Terra, che ci nutre, e a chi cucina, che fa la parte faticosa!",
+		"Alle mandrie, alla caccia e alle mani che la cucinano! Che la Madre Terra ne prenda per prima la sua parte.",
+	},
 }, "base_social")

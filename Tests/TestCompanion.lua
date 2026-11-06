@@ -497,7 +497,28 @@ T.run("ally_death (#125): a verified loss in the group, one lament per loss, gua
 	ADVANCE(2)
 	T.eq(Offered("ally_death"), 1, "Eve fell: a lament")
 	T.eq(Spoken("ally_death"), 1, "spoken")
-	T.ok(Said("Eve") ~= nil, "the line names her (in the session only)")
+	-- the lament names her when its variant has a place for the name (in the session only); some variants name no
+	-- one, and which one is picked depends on the order of the random draws (W08: robust to pick order)
+	local unnamed = {}
+	for _, p in ipairs(NS.Engine:EventRules("ally_death")) do
+		for _, list in pairs(p.text or {}) do
+			for _, t in ipairs(type(list) == "table" and list or {}) do
+				if type(t) == "string" and not t:find("{other}", 1, true) then
+					unnamed[(t:gsub("{g:([^|}]*)|([^}]*)}", "%1"))] = true
+					unnamed[(t:gsub("{g:([^|}]*)|([^}]*)}", "%2"))] = true
+				end
+			end
+		end
+	end
+	T.ok(next(unnamed) ~= nil, "the variants that name no one are read")
+	local said
+	for i = #Narrator.history, 1, -1 do
+		if not Narrator.history[i].notice then said = Narrator.history[i].text break end
+	end
+	T.ok(said ~= nil and not said:find("{other}", 1, true) and not said:find("Bran", 1, true), "the lament names no one else: " .. tostring(said))
+	local plain = false
+	for t in pairs(unnamed) do if said and said:find(t, 1, true) then plain = true end end
+	T.ok(Said("Eve") ~= nil or plain, "the line names her, or its variant names no one (in the session only): " .. tostring(said))
 	local e = Entries("grief_ally")
 	T.eq(#e, 1, "a journal page")
 	T.eq(#e[1].tags, 1, "one token")

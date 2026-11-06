@@ -379,4 +379,24 @@ NS:AddTexts("enUS", {
 		"Underground again. The dark is the same; the fear a little less.",
 		"Back down here. I remember how many steps lead back to the light, and I repeat them to myself.",
 	},
+	["mem.ret.dwarf.w08.001"] = {
+		"{zone} once more. I know its ground now, the way you know a tunnel walked in the dark: by how it answers underfoot.",
+		"Back on ground I've walked before. A dwarf remembers a place by its footing, and this footing remembers me.",
+		"I know {zone} already. The stones haven't moved. Stones rarely do; that's why I trust them.",
+	},
+	["mem.ret.human.w08.001"] = {
+		"{zone}, once more. I catch myself noticing what's changed: a fence mended, a roof gone. Humans keep the ledger of a place without meaning to.",
+		"Back in {zone}. My eye goes straight to the small things: who fixed what, what fell down, who's still here. A short-lived people keeps close accounts.",
+		"I know {zone}, and now I'm checking it over like a village left long ago: the same well, the same faces? Humans always want to know who's still around.",
+	},
+	["mem.ret.nightelf.w08.001"] = {
+		"{zone} again. To my people, a return is a short talk with an old friend: what has grown, what has fallen, who is gone.",
+		"Back. I look first at what has grown since, as my people always do. The land keeps its own diary.",
+		"{zone}. Coming back, I notice the small changes first: perhaps a sapling a little taller, a path worn a little deeper. A kaldorei eye is made for slow news.",
+	},
+	["mem.ret.tauren.w08.001"] = {
+		"{zone} again. My old tracks are long gone, but the ground seems to remember the weight of me.",
+		"I have walked this land before. A tauren passes nowhere lightly; perhaps that is why the earth here seems to know my step.",
+		"Familiar ground. My hooves find their way a little ahead of my thoughts, like a kodo that knows the path to water.",
+	},
 }, "base_memory")

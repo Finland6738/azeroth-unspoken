@@ -1193,4 +1193,218 @@ NS:AddTexts("itIT", {
 		"Basta così, {pet}. Il prossimo tratto lo faccio da me.",
 		"Puoi andare, {pet}. Non allontanarti troppo, ovunque tu vada.",
 	},
+	["race.dwarf.relation_npc.w08.001"] = {
+		"Un mercante che conosco. Un nano ricorda i pesi onesti più a lungo dei nomi, e questi me li ricordo.",
+		"Ah, chi si rivede. Tengo il conto di ogni mercante che mi abbia mai rubato sul peso. Questo nome non c'è.",
+		"Un banco conosciuto. Bene. Morderò comunque le monete, ma solo per abitudine.",
+	},
+	["race.dwarf.relation_player.w08.001"] = {
+		"{other}. Scenderei in un pozzo buio con questa persona a reggere la corda, senza alzare lo sguardo nemmeno una volta.",
+		"Ecco {other}. Certa gente la saggi come la volta di una galleria, bussando a ogni passo. Con questa persona ho smesso di bussare da un pezzo.",
+		"{other}. Solida come la roccia viva.",
+	},
+	["race.dwarf.relation_player.w08.002"] = {
+		"{other}! Ecco qualcuno a cui lascerei scegliere il prossimo giro. Detto da {g:un nano|una nana}, è un gran complimento.",
+		"Ah, {other}. Certa compagnia va giù come una buona birra scura: liscia, e te ne viene voglia di un'altra.",
+		"{other}! Ecco, la giornata è aggiustata.",
+	},
+	["race.dwarf.relation_player.w08.003"] = {
+		"{other}. I nani perdonano piano, se mai perdonano. Io sono ancora dalle parti del «se mai».",
+		"Ecco {other}. Prima o poi anche la montagna si consuma, dicono. Il mio rancore è fatto di una pietra migliore.",
+		"{other}. Mph.",
+	},
+	["race.dwarf.relation_player.w08.004"] = {
+		"{other}. Sarò cortese, e terrò una mano sullo zaino come i minatori tengono un orecchio sulle travi.",
+		"Ecco {other}. Un nano fiuta l'aria cattiva in una galleria. E qualcosa lo sto fiutando adesso.",
+	},
+	["race.dwarf.relation_player.w08.005"] = {
+		"{other}. Qualunque cosa faccia questa persona, io la farò più pesante, più a lungo e lamentandomi di meno.",
+		"Ecco {other}. Un rivale è una cote: duro con te, ma buono per il filo.",
+		"{other}. Bene. Maniche su.",
+	},
+	["race.dwarf.relation_player.w08.006"] = {
+		"{other}. Abbiamo tenuto la stessa fila con i guai che ci venivano addosso. Tra i nani, questo ti rende quasi parente.",
+		"Ecco {other}, che ha combattuto al mio fianco. Dopo una cosa così, a un nano non serve una seconda presentazione.",
+	},
+	["race.dwarf.relation_player.w08.007"] = {
+		"{other}! Ne è passato di tempo. Abbastanza per esaurire una vena e trovarne un'altra.",
+		"Ecco {other}, dopo tanto tempo. I nani sono pazienti con le assenze. Quasi sempre.",
+	},
+	["race.dwarf.relation_player.w08.008"] = {
+		"{other}! Sangue della montagna, e per giunta una persona amica. Ci servirà un tavolo: c'è da recuperare.",
+		"Ecco {other}. Due nani che si incontrano lontano da Ironforge: è un ritorno a casa, qualunque sia la distanza.",
+		"{other}. Stessa montagna, stessa testardaggine. Fa piacere.",
+	},
+	["race.dwarf.relation_player.w08.009"] = {
+		"{other}. Abbiamo già fatto scambi. Mi ricordo il peso di ogni moneta, come qualunque nano.",
+		"Ecco {other}. Commercio onesto, se ricordo bene. Da allora ho ricontrollato quei conti, e tornano ancora.",
+	},
+	["race.dwarf.relation_player.w08.010"] = {
+		"{other}. Certe liti fanno presa come la malta. Questa ha fatto presa da un pezzo, e solo un martello la smuoverebbe.",
+		"Ecco {other}. La Guerra dei Tre Martelli è finita, dicono i vecchi. Non tutte le faide ne hanno avuto notizia.",
+		"{other}. Calma, adesso.",
+	},
+	["race.human.relation_npc.w08.001"] = {
+		"Una persona amica, qui. Gli umani hanno così pochi anni: quelli passati tra amici sono quelli che contano.",
+		"Quel volto fa sembrare qualunque città un villaggio dove la campana suona anche per te.",
+		"Una persona amica. La mia gente vive poco e ricorda a lungo la gentilezza. Questa me la ricorderò.",
+	},
+	["race.human.relation_player.w08.001"] = {
+		"{other}. Nei villaggi, a una persona così si lasciava la porta accostata. Io lo farei ancora.",
+		"Ecco {other}. Lascerei in quelle mani la borsa, lo zaino e la schiena, in quest'ordine di preoccupazione.",
+		"{other}. Bene. Posso smettere di contare le uscite.",
+	},
+	["race.human.relation_player.w08.002"] = {
+		"{other}! Se fossimo a Goldshire avrei già due boccali in mano. Consideriamoli versati.",
+		"Ecco {other}. La vita è breve, dice la mia gente, e le persone buone si tengono vicine. Questa la tengo vicina.",
+	},
+	["race.human.relation_player.w08.003"] = {
+		"{other}. I sacerdoti dicono che il perdono è una strada da percorrere un po' ogni giorno. Io sono appena fuori dal cancello.",
+		"Ecco {other}. Gli umani non vivono abbastanza a lungo per covare un rancore come si deve. Io ci provo lo stesso.",
+		"{other}. Il perdono può aspettare.",
+	},
+	["race.human.relation_player.w08.004"] = {
+		"{other}. Affabile, il sorriso sempre pronto. Come metà dei Defias prima di tirare fuori le maschere.",
+		"Ecco {other}. Stormwind ti insegna a tenere una mano sulla borsa e l'altra pronta a salutare. Sto facendo tutte e due le cose.",
+		"{other}. Occhi aperti.",
+	},
+	["race.human.relation_player.w08.005"] = {
+		"{other}. Non ho i secoli che un elfo dedicherebbe a una rivalità, quindi questa dovrò vincerla in fretta.",
+		"Ecco {other}. Niente affila un umano come qualcuno un passo avanti. Non per molto, però.",
+	},
+	["race.human.relation_player.w08.006"] = {
+		"{other}. Abbiamo combattuto nella stessa mischia, schiena contro schiena. I vecchi soldati di Lordaeron dicono che così si diventa parenti. Ci credo.",
+		"Ecco {other}. Basta una battaglia insieme e un umano ti ricorda per tutta la vita. Non è una vita lunga, ma è una memoria salda.",
+	},
+	["race.human.relation_player.w08.007"] = {
+		"{other}! Qualche settimana, vero? Per un umano è una stagione intera di notizie. Da dove cominciamo?",
+		"Ecco {other}, dopo qualche settimana. Quanto basta per perdersi un matrimonio, un funerale e una guerra, di questi tempi.",
+	},
+	["race.human.relation_player.w08.008"] = {
+		"{other}, dopo tanto tempo. Ogni volta che noi umani ci separiamo, mi chiedo un po' se sia l'ultima. Non stavolta. Bene.",
+		"Ecco {other}. Più di un mese senza notizie. Abbastanza per cominciare a provare il peggio; sono {g:contento|contenta} di scordarmi la parte.",
+	},
+	["race.human.relation_player.w08.009"] = {
+		"{other}. C'è già stato un duello tra noi. Io lo racconto ancora come un pareggio, e continuerò a raccontarlo così.",
+		"Ecco {other}. Il duello fu leale, i lividi pure. Un umano si ricorda di chi combatte pulito.",
+	},
+	["race.human.relation_player.w08.010"] = {
+		"{other}. La vita è troppo breve per odiare qualcuno, dice la mia gente. Ma non avevano conosciuto questa persona.",
+		"Ecco {other}. Passerò in silenzio. Gli umani hanno versato abbastanza sangue per vecchie liti; non sarò {g:il primo|la prima} a versarne qui.",
+		"{other}. Non oggi.",
+	},
+	["race.human.relation_player.w08.011"] = {
+		"{other}, l'alleanza che ho scelto io. I regni fanno alleanze su una pergamena e le rompono sulla successiva. La nostra è tenuta meglio.",
+		"Ecco {other}. Un'alleanza scelta da me. L'Alleanza potrebbe imparare qualcosa da come ci siamo stretti la mano.",
+	},
+	["race.nightelf.relation_npc.w08.001"] = {
+		"Un volto che conosco. La mia memoria custodisce volti così come il muschio conserva un'impronta: con delicatezza, ma a lungo.",
+		"{other}. Ho incontrato tanta gente in così pochi anni, per come contano il tempo i miei; questa persona mi è rimasta.",
+		"Conosco questa persona. Gli elfi della notte non dimenticano un volto: fingono di farlo, quando è più gentile.",
+	},
+	["race.nightelf.relation_player.w08.001"] = {
+		"Tra la mia gente certa fiducia impiega un secolo a crescere. Con {other} ne è servito molto meno, e arriva altrettanto in profondità.",
+		"Se {other} mi dicesse che un sentiero è sicuro, lo percorrerei senza scivolare nell'ombra nemmeno una volta. Per me, è moltissimo.",
+		"Arriva {other}. Volterei le spalle a questa persona nel buio di qualunque foresta, e io le spalle non le volto facilmente.",
+	},
+	["race.nightelf.relation_player.w08.002"] = {
+		"{other}! Ora gli anni scorrono più in fretta per il mio popolo di quanto facessero un tempo. Ragione in più per spenderne qualcuno così.",
+		"Il cuore mi si solleva alla vista di {other}, come un gufo che si stacca da un ramo: in silenzio, all'improvviso, senza dubbi.",
+		"Ecco {other}. Un tempo, tra la mia gente, le amicizie duravano quanto le foreste. Questa intendo metterla alla prova.",
+	},
+	["race.nightelf.relation_player.w08.003"] = {
+		"Tra la mia gente un debito non si conta in monete né in giorni, ma in quanto a lungo lo si ricorda. Quello che devo a {other} lo si ricorderà molto a lungo.",
+		"Devo qualcosa a {other}. Elune vede debiti come questo, dicono le sacerdotesse, e tiene accesa su di essi la sua luce finché non vengono saldati.",
+	},
+	["race.nightelf.relation_player.w08.004"] = {
+		"Ah, {other}. Le orecchie mi tradiscono: si alzano sempre un poco quando arriva qualcuno che mi è caro.",
+		"Certe persone rendono più leggeri i lunghi anni, e {other} è una di queste.",
+	},
+	["race.nightelf.relation_player.w08.005"] = {
+		"Un nightsaber non ringhia a ciò di cui diffida: semplicemente, non gli volta mai le spalle. Con {other}, nemmeno io.",
+		"Conosco {other}, e le mie orecchie si sono già girate ad ascoltare. La diffidenza di un elfo della notte non fa alcun rumore.",
+	},
+	["race.nightelf.relation_player.w08.006"] = {
+		"Il mio popolo ricorda ancora il tradimento degli Highborne dopo diecimila anni. Io posso ricordare per qualche anno quello che ha fatto {other}.",
+		"Ecco {other}. Tra la mia gente il perdono cresce lento, come una quercia. Per ora non è spuntato niente.",
+	},
+	["race.nightelf.relation_player.w08.007"] = {
+		"{other}. Un rivale degno è una cote, dicono le Sentinelle. Mi ha già affilato abbastanza da accorgermene.",
+		"Ah, {other}. Spero che ci restino anni a sufficienza per questa rivalità. Ho intenzione di godermeli tutti.",
+	},
+	["race.nightelf.relation_player.w08.008"] = {
+		"{other} e io abbiamo combattuto fianco a fianco. Il mio popolo incide cose così nella memoria, come vecchie radici che stringono la pietra.",
+		"Abbiamo affrontato la stessa battaglia, {other} e io. Molto dopo che tutti gli altri l'avranno dimenticata, ne ricorderò ancora la forma.",
+	},
+	["race.nightelf.relation_player.w08.009"] = {
+		"Una volta, {other} e io abbiamo incrociato le forze in duello. Il mio popolo ricorda una sfida leale come una specie di parentela.",
+		"{other}. Abbiamo già misurato le nostre forze. Le Sentinelle dicono che si conosce davvero qualcuno solo dopo una sfida.",
+	},
+	["race.nightelf.relation_player.w08.010"] = {
+		"{other}, dopo una lunga assenza. Un tempo il mio popolo misurava il tempo in secoli, eppure questa mi è sembrata lunga.",
+		"Quanto tempo dall'ultima volta che ho visto {other}. Strano: un elfo della notte non dovrebbe contare i giorni. Io li ho contati.",
+	},
+	["race.nightelf.relation_player.w08.011"] = {
+		"Alla vista di {other} il respiro mi si fa corto e silenzioso, come nella foresta profonda quando si muove qualcosa di più grosso. Non lo lascio vedere.",
+		"{other} mi risveglia l'istinto antico: fermarsi, sparire nell'ombra, aspettare. Resto sulla strada, il volto calmo.",
+	},
+	["race.nightelf.relation_player.w08.012"] = {
+		"{other}. Conosco quel passo: un elfo della notte impara i passi prima dei volti.",
+		"Una figura nota: {other}. Ho una memoria lunga, e custodisce le persone con più cura dei luoghi.",
+	},
+	["race.tauren.relation_npc.w08.001"] = {
+		"Un volto che conosco. Lungo le strade del mio popolo, un volto noto in un accampamento voleva dire acqua vicina e terreno sicuro.",
+		"{other}, ancora una volta. I tauren sono sempre tornati agli stessi abbeveratoi: a quanto pare faccio lo stesso con le persone.",
+		"Conosco questa persona. Un tauren impara un volto lentamente, e poi lo tiene per sempre.",
+	},
+	["race.tauren.relation_player.w08.001"] = {
+		"In una caccia lascerei a {other} il lato lontano della mandria, senza mai voltarmi a controllare.",
+		"Se {other} dicesse che il terreno davanti è saldo, ci metterei sopra tutto il mio peso. E di peso ne ho parecchio.",
+		"Certa gente la guardo con un occhio aperto. Con {other} li chiudo tutti e due, come un kodo che sonnecchia accanto alla mandria.",
+	},
+	["race.tauren.relation_player.w08.002"] = {
+		"Il cuore mi si alza come il fumo da un buon fuoco: c'è {other}. La Madre Terra manda gli amici come manda la primavera, mai proprio nel giorno che ti aspetti.",
+		"Gli amici sono l'unica mandria che si porta dietro chi vaga, e con {other} in vista la mia si è appena stretta un po' di più.",
+		"Ah! Siediti accanto a me al prossimo fuoco, {other}: dal lato di un tauren, nel cerchio, c'è sempre posto.",
+	},
+	["race.tauren.relation_player.w08.003"] = {
+		"Il mio popolo dice che un debito di gentilezza si porta come l'acqua attraverso una terra arida: con cura, e fino a casa. Il mio verso {other} lo tengo ancora tra le mani.",
+		"Devo qualcosa a {other}, e tra i tauren un debito così non si ripaga in monete. Si ripaga con una lunga strada fatta insieme, quando verrà il momento.",
+	},
+	["race.tauren.relation_player.w08.004"] = {
+		"Guarda chi c'è: {other}. Mi scappa uno sbuffo, che per un tauren è quasi una canzone.",
+		"Vedere {other} mi fa muovere la coda, credo. Per fortuna nessuno sa più leggere le code dei tauren.",
+	},
+	["race.tauren.relation_player.w08.005"] = {
+		"Un plainstrider non scappa da ogni ombra, ma non smette mai di guardare l'erba. Con {other} nei paraggi, neanch'io.",
+		"Conosco {other}, e tengo il peso sugli zoccoli di dietro: abbastanza per restare, abbastanza per farmi da parte.",
+	},
+	["race.tauren.relation_player.w08.006"] = {
+		"Nei tauren la collera si alza lentamente, avvertono gli anziani, e ancora più lentamente torna a sdraiarsi. Davanti a {other}, sento che la mia è ancora in piedi.",
+		"Ecco {other}. Ricordo, come la terra ricorda un'impronta profonda molto dopo che la mandria è passata.",
+	},
+	["race.tauren.relation_player.w08.007"] = {
+		"Due kodo sullo stesso crinale, {other} e io. Nessuno deve caricare: staremo solo un po' più dritti, tutti e due.",
+		"Ah, {other}. A Mulgore i rivali corrono fino alla pietra lontana e ritorno, e chi perde cucina. Quella corsa mi piacerebbe ancora farla.",
+	},
+	["race.tauren.relation_player.w08.008"] = {
+		"{other} e io abbiamo combattuto nella stessa mischia. Nelle pianure, chi caccia insieme divide la pelle e il racconto. Devo ancora la mia metà del racconto.",
+		"Abbiamo combattuto nella stessa fila, {other} e io. I tamburini del mio popolo hanno un ritmo per questo: due cuori, una caccia.",
+	},
+	["race.tauren.relation_player.w08.009"] = {
+		"{other} e io abbiamo già misurato le forze una volta. La spalla se lo ricorda ancora: i tauren fanno la lotta per gioco, e quella sembrava una lotta vera.",
+		"Abbiamo fatto un duello, {other} e io. Tra la mia gente vale come una specie di stretta di mano, solo più rumorosa.",
+	},
+	["race.tauren.relation_player.w08.010"] = {
+		"{other}, dopo tanto tempo. L'erba ricresce su ogni sentiero, ma un tauren sa dove cercare quello vecchio.",
+		"Molto tempo dall'ultima volta che ho visto {other}. Nel frattempo le mandrie si sarebbero già spostate verso erba nuova.",
+	},
+	["race.tauren.relation_player.w08.011"] = {
+		"Anche un tauren può sentirsi piccolo. Alla vista di {other} gli zoccoli vorrebbero arretrare; li tengo piantati e respiro piano, dal naso.",
+		"Le orecchie mi si appiattiscono quando {other} si avvicina. Ho una bella stazza, e aiuta meno di quanto si creda.",
+	},
+	["race.tauren.relation_player.w08.012"] = {
+		"Conosco quell'andatura: {other}. Le pianure insegnano a riconoscere una creatura dal passo, molto prima di vederne il muso.",
+		"Quella sagoma è {other}, mi pare. Gli occhi dei tauren sono fatti per le distanze: i volti mi arrivano dopo i contorni.",
+	},
 }, "base_relations")

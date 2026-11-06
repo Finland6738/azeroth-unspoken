@@ -14762,4 +14762,434 @@ NS:AddTexts("itIT", {
 		"Il fulmine ha esposto le sue ragioni. Tu hai resistito fino alla fine. Ammirevole, a modo suo.",
 		"Gli spiriti hanno portato un argomento convincente. Tu l'hai perso.",
 	},
+	["cls.mage.attack.w08.001"] = {
+		"Ecco. Adesso fai molta meno paura, e onestamente ci hai guadagnato.",
+		"Bela quanto vuoi. Tocca ancora a me.",
+		"La lana ti dona. Resta così per un po'.",
+	},
+	["cls.mage.attack.w08.002"] = {
+		"Resta lì. I tuoi piedi sono già d'accordo.",
+		"Piedi inchiodati nel ghiaccio. Adesso possiamo tenere una distanza educata.",
+	},
+	["cls.mage.attack.w08.003"] = {
+		"Prendi. Anzi, ripensandoci, meglio di no.",
+		"Eccola che arriva, tonda e luminosa. Cerca di fare una faccia sorpresa.",
+	},
+	["cls.mage.attack.w08.004"] = {
+		"lancia una scia di dardi violetti oltre lo spazio che li separa, uno dopo l'altro, come perle che scivolano da un filo spezzato.",
+		"tende una mano ferma, e pallidi proiettili cuciono l'aria fra {g:lui|lei} e il nemico.",
+	},
+	["cls.mage.attack.w08.005"] = {
+		"Mantieni la distanza. Un mago a portata di braccio è un mago che sta sbagliando.",
+		"La distanza è la mia armatura. Tienila d'occhio, e spendila piano.",
+	},
+	["cls.mage.attack.w08.006"] = {
+		"Non stai prendendo appunti, vero? Peccato. Questa parte è all'esame.",
+		"Fa' attenzione. Non lo mostrerò due volte.",
+	},
+	["cls.mage.buff.w08.001"] = {
+		"Intelletto Arcano su di me. Vanità, forse, ma una mente acuta è l'unica armatura di cui mi fidi davvero.",
+		"Un po' più di chiarezza per me. I libri non si accorciano, quindi è il lettore che deve diventare più svelto.",
+		"Pensieri più limpidi, prescritti a me. Li prescriverei a mezzo mondo, se stesse fermo.",
+	},
+	["cls.mage.buff.w08.002"] = {
+		"Fatto: magia smorzata. I loro incantesimi mi colpiranno più piano, e così le cure, quindi farò meglio a non averne bisogno.",
+		"Un velo smorzante su di me. Contro chi lancia incantesimi vale il prezzo; contro chi brandisce una clava, è un soprammobile.",
+		"Gli incantesimi altrui adesso mi arrivano attutiti. Uno scambio onesto, dove abbondano quelli che li lanciano.",
+	},
+	["cls.mage.buff.w08.003"] = {
+		"Magia amplificata, su di me. Ogni guarigione varrà il doppio, adesso. Anche ogni maledizione, ma oggi sono ottimista.",
+		"Magia più forte, puntata su di me. Se c'è un guaritore nei paraggi, splendido. Se no, ho fatto un piccolo errore.",
+	},
+	["cls.mage.farewell.w08.001"] = {
+		"Addio. Occhio alla strada, e a qualunque cosa brilli quando non dovrebbe.",
+		"Io vado. Cerca di non toccare niente di arcano mentre non ci sono.",
+		"Buon cammino. Se qualcosa ti ronza contro, non ronzare in risposta.",
+	},
+	["cls.mage.greet.w08.001"] = {
+		"Salute. Non badare all'odore di fumo: è un rischio del mestiere.",
+		"Salve. Letto qualcosa di buono, ultimamente? No? Pazienza.",
+	},
+	["cls.mage.greet.w08.002"] = {
+		"Buona giornata a te. Che i tuoi pensieri restino limpidi e la tua strada breve.",
+		"Salute. Mente acuta e strade sicure, a te.",
+	},
+	["cls.mage.heal.w08.001"] = {
+		"L'alchimia: magia troppo timida per dire il proprio nome. Però funziona, e non sono nella posizione di storcere il naso.",
+		"Il mestiere di qualcun altro, chiuso in una bottiglia. Ne studierò il sapore dopo, quando non sanguinerò più.",
+		"Erbe, calore e pazienza, e niente di tutto questo è mio. Umiliante, quanto funzioni bene.",
+	},
+	["cls.mage.heal.w08.002"] = {
+		"Bleah. So piegare il fuoco al mio volere, e nessuno riesce a dare a queste un sapore decente.",
+		"Giù tutto. Nota per gli alchimisti: anche il sapore è una disciplina.",
+	},
+	["cls.mage.heal.w08.003"] = {
+		"Una pietra da stregone. Non chiederò cosa ci sia dentro, e lei ha il buon gusto di non dirmelo.",
+		"Pietra tiepida, vita in prestito. Ho smesso di chiedere da dove vengano: la risposta non è mai servita.",
+	},
+	["cls.mage.heal.w08.004"] = {
+		"Lino e un buon nodo. Ogni mago dovrebbe impararlo prima della prima palla di fuoco.",
+		"Nessuna formula, solo stoffa tirata stretta. La magia più antica di tutte, e la meno elegante.",
+		"Sopra, sotto, e si chiude il nodo. Questo non me l'ha insegnato nessun maestro: me l'ha insegnato la strada.",
+	},
+	["cls.mage.heal.w08.005"] = {
+		"avvolge la benda con la stessa cura che riserva a uno schema di incantesimo: ordinata, regolare, controllata due volte.",
+		"chiude la benda con uno strattone piccolo e preciso, come si chiude una parentesi.",
+	},
+	["cls.mage.heal.w08.006"] = {
+		"Tanto potere sulla punta delle dita, e nulla che sia rivolto verso di me. Strano mestiere, che sa abbattere un muro e non sa aggiustare un polso.",
+		"So far nascere il fuoco dal nulla, eppure guarisco come chiunque altro. L'arcano è un pessimo infermiere.",
+	},
+	["cls.mage.heal.w08.007"] = {
+		"Meglio. Dunque, dov'ero {g:rimasto|rimasta}? Ah, sì. A dare fuoco alle cose.",
+		"Ecco. Torniamo alla parte interessante della giornata.",
+		"Abbastanza in sesto. Riprendiamo la lezione.",
+	},
+	["cls.mage.heal.w08.008"] = {
+		"Il dolore si ritira nei tempi previsti. Terrei un registro, se a qualcuno interessassero mai i numeri.",
+		"Dolore, poi meno dolore, poi un fastidio sordo. Prevedibile, come un buon esperimento. Avrei preferito osservarlo da fuori.",
+	},
+	["cls.mage.heal.w08.009"] = {
+		"si raddrizza il colletto e riprende un'aria di perfetta compostezza, come se nulla l'avesse mai {g:sfiorato|sfiorata}.",
+		"si schiarisce la gola, sistema una manica e si guarda intorno con la dignità di chi non si è mai fatto un graffio.",
+	},
+	["cls.mage.heal.w08.010"] = {
+		"Il respiro torna facile. Bene: nessuno ha mai lanciato un incantesimo decente ansimando.",
+		"Il fiato si calma. Senza un respiro regolare, ogni formula esce storta.",
+	},
+	["cls.mage.heal.w08.011"] = {
+		"{g:Rattoppato|Rattoppata} per ora. Il resto della discussione lo chiuderò col fuoco.",
+		"Abbastanza per restare in gioco. Adesso si torna a lanciare, e in fretta.",
+		"Questo vale qualche incantesimo in più. Spendili bene.",
+	},
+	["cls.mage.levelup.w08.001"] = {
+		"Un'altra pagina del mestiere si volta. I maestri avranno qualcosa di nuovo da insegnarmi, e qualcosa di nuovo da cui mettermi in guardia.",
+		"La mia presa arriva un po' più lontano. L'arcano non ha fine: è tutto lì il suo fascino.",
+		"Un po' più del disegno ha senso. Più ne vedo, più grande si fa la parte che non vedo.",
+	},
+	["cls.mage.levelup.w08.002"] = {
+		"Più forte. Festeggiamo non dando fuoco a niente. Per un'ora.",
+		"Più capace. Qualcuno si metta bene indietro: mi sento in vena di esperimenti.",
+		"{g:Migliorato|Migliorata}. Il prossimo incantesimo sarà più grande, e le bruciature in proporzione.",
+	},
+	["cls.mage.pray.w08.001"] = {
+		"Qualunque cosa dia ordine ai disegni che studio: tieni limpida la mia mente, ferme le mie mani, e al suo posto la mia fame di sapere.",
+		"Se dietro l'arcano c'è qualcosa che ascolta, fa' che io impari senza essere {g:divorato|divorata} da ciò che imparo.",
+	},
+	["cls.mage.quest_progress.w08.001"] = {
+		"A buon punto. Come una lunga dimostrazione: i passaggi di mezzo sono noiosi, ed è lì che si sbaglia.",
+		"Progressi. Le variabili vanno a posto una alla volta.",
+		"Una parte è sistemata. Farei uno schema, se qualcuno lo guardasse.",
+	},
+	["cls.mage.quest_progress.w08.002"] = {
+		"È tutto. Andiamo a fare rapporto prima che trovi qualcosa di più interessante da fare.",
+		"Tutto fatto. È ora di riscuotere, e magari di prendere in prestito un libro lungo la strada.",
+		"Finito. Si torna da chi l'ha chiesto, e poi alle mie letture.",
+	},
+	["cls.mage.quest_progress.w08.003"] = {
+		"fa un rapido conto nell'aria con un dito, aggrotta la fronte davanti al risultato e prosegue.",
+		"borbotta un conteggio sottovoce, come si recita una formula, e va avanti.",
+		"si ferma a calcolare quanto manca, muovendo le labbra in silenzio, poi riparte.",
+	},
+	["cls.mage.reputation_change.w08.001"] = {
+		"Adesso hanno di me un'opinione migliore. Bene: la gente ti presta i suoi libri quando smette di aspettarsi che tu li incendi.",
+		"Un po' più di fiducia da parte loro. L'arcano mette in agitazione la gente; pazienza e buone maniere sono il controincantesimo.",
+		"Il mio nome suona meglio alle loro orecchie. Buffo come un mago faccia paura solo finché qualcuno non ci ha diviso un pasto.",
+	},
+	["cls.mage.rez.w08.001"] = {
+		"Rieccomi. La morte è l'unica materia su cui non ti lasciano prendere appunti, e ci ho provato.",
+		"Di nuovo {g:vivo|viva}. Peccato, in un certo senso: avevo delle domande, e l'aldilà non aveva tempo per loro.",
+	},
+	["cls.mage.thanks.w08.001"] = {
+		"Grazie. Se mai ti servisse accendere un fuoco, o farti spiegare una parola difficile, chiedi pure a me.",
+		"Ti sono {g:obbligato|obbligata}. Ti ripagherei in oro, ma gli studiosi vengono pagati in note a piè di pagina.",
+	},
+	["cls.mage.thanks.w08.002"] = {
+		"Grazie. La gentilezza non sta in nessuno dei miei libri: sono {g:contento|contenta} di vederla in pratica.",
+		"Ti ringrazio. Me ne ricorderò, e la mia memoria è allenata.",
+	},
+	["cls.mage.threat.w08.001"] = {
+		"Sai, il tuo corpo è quasi tutto acqua. E l'acqua gela. Ho controllato.",
+		"Un altro passo e scopriremo quanta parte di te può diventare ghiaccio.",
+		"Sai di cosa sei fatto, per lo più? Di qualcosa che so far gelare.",
+	},
+	["cls.mage.threat.w08.002"] = {
+		"Vattene adesso e potrai tenerti le sopracciglia.",
+		"Vattene, e manterrai la tua forma attuale. È la mia offerta migliore.",
+		"Vai, e porta via le sopracciglia finché sono ancora attaccate.",
+	},
+	["cls.mage.threat.w08.003"] = {
+		"Ho letto di cose come te. I libri finiscono tutti allo stesso modo.",
+		"Potrei spiegarti cosa sta per succederti, ma non riusciresti a seguire i calcoli.",
+	},
+	["cls.mage.threat.w08.004"] = {
+		"Bada al tono. Il fuoco in mano ce l'ho io.",
+		"Attenzione. Sono {g:stato|stata} paziente tutto il giorno, e la pazienza è la prima cosa che brucia.",
+		"Alza quell'arma e io alzo la temperatura.",
+	},
+	["cls.mage.threat.w08.005"] = {
+		"Conosco una parola che trasforma un corpo in cenere. Sto decidendo se te la sei guadagnata.",
+		"C'è un incantesimo che tengo per le grandi occasioni. Non diventarlo tu.",
+	},
+	["cls.priest.buff.w08.001"] = {
+		"Per una volta la tempra sulle mie ossa. La lunga giornata che mi aspetta non bada a chi di solito cura.",
+		"Un po' più di resistenza, stesa su di me. Chi cura deve durare più di tutti, o non dura nessuno.",
+	},
+	["cls.priest.buff.w08.002"] = {
+		"si tocca lo sterno e pronuncia una breve parola di protezione; per un istante la sua sagoma conserva un tenue orlo pallido.",
+		"rivolge la protezione verso di sé con un piccolo gesto al petto, come chi si abbottona il mantello prima di uscire.",
+	},
+	["cls.priest.buff.w08.003"] = {
+		"Lo scudo su di me. Non è generoso, ma un guaritore che non si può interrompere ne vale due che si lasciano fermare.",
+		"Stavolta la protezione è per me. Che ci picchino sopra, mentre io mi occupo del lavoro vero.",
+	},
+	["cls.priest.heal.w08.001"] = {
+		"Per una volta tocca a me. Mi lascio sempre per {g:ultimo|ultima}, e oggi il mio turno è arrivato presto.",
+		"Guardami, ho bisogno dei miei stessi servigi. Mi presenterei il conto, ma non potrei pagarlo.",
+		"Dico a tutti la stessa cosa: non farti colpire. Forse dovrei ascoltarmi.",
+	},
+	["cls.priest.heal.w08.002"] = {
+		"Curare la mia ferita è più strano che curare quella di chiunque altro, come sentire il proprio nome in mezzo alla folla.",
+		"Le mie mani conoscono a memoria le ferite degli altri. La mia la maneggiano come il pacco di uno sconosciuto.",
+	},
+	["cls.priest.heal.w08.003"] = {
+		"Aspetta. Mi sto sistemando. Un momento.",
+		"Scusate. Tappo la mia falla.",
+		"Un attimo. Anche chi cura ha bisogno di cure; capita.",
+	},
+	["cls.priest.heal.w08.004"] = {
+		"posa il palmo sulle proprie costole e mormora le parole, gli occhi sullo scontro più che sulla ferita.",
+		"preme una mano sulla propria ferita e pronuncia le parole in fretta, come si rimprovera qualcuno che dovrebbe saperne di più.",
+		"sfiora la ferita una volta sola, rapida e pratica, e si volta prima ancora che il bagliore svanisca.",
+	},
+	["cls.priest.heal.w08.005"] = {
+		"Se cado io, non cura più nessuno. Quindi prima io, per una volta, e senza sensi di colpa.",
+		"Un guaritore morto non guarisce nessuno. Egoista, forse. Necessario, di sicuro.",
+		"Gli altri hanno bisogno che io resti in piedi. Curarmi è solo curare loro un po' in anticipo.",
+	},
+	["cls.priest.heal.w08.006"] = {
+		"Luce, sono di nuovo io. Stessa richiesta, paziente più piccolo.",
+		"Tutto il giorno chiedo alla Luce per gli altri. Quando chiedo per me quasi bisbiglio, e risponde lo stesso.",
+		"Per una volta le mani che curo sono le mie. Alla Luce non sembra importare di chi siano.",
+	},
+	["cls.priest.heal.w08.007"] = {
+		"{g:Rimesso|Rimessa} in sesto. Ti servirà di più per fermare un sacerdote.",
+		"Ferita già chiusa. Avanti, riprova.",
+		"Tutta quella fatica, e io l'ho disfatta con una frase.",
+	},
+	["cls.priest.heal.w08.008"] = {
+		"Il fiato torna nel petto. Adesso posso di nuovo pronunciare le parole come si deve.",
+		"Finalmente aria fino in fondo. Una preghiera ansimata è mezza preghiera persa.",
+	},
+	["cls.priest.heal.w08.009"] = {
+		"È più facile curare uno sconosciuto. La mia ferita discute con me per tutto il tempo.",
+		"Il dolore degli altri è un compito. Il mio è una conversazione, e non mi lascia mai finire una frase.",
+		"Strano: sono più {g:delicato|delicata} con la ferita di chiunque che con la mia.",
+	},
+	["cls.priest.heal.w08.010"] = {
+		"pronuncia sottovoce le parole consuete, e un debole bagliore si raccoglie sulla ferita e vi affonda.",
+		"china il capo per un battito sulla propria ferita, e la guarigione attecchisce senza clamore.",
+	},
+	["cls.priest.heal.w08.011"] = {
+		"Il mana speso per me è mana che non posso dare a nessun altro. La prossima volta starò più indietro.",
+		"L'ho pagata con le mie riserve. Lezione: il posto migliore per chi cura è fuori portata.",
+	},
+	["cls.rogue.attack.w08.001"] = {
+		"Dietro di te. Sempre dietro di te.",
+		"Avresti dovuto guardarti le spalle. Tutti dovrebbero.",
+		"Alle spalle. Molto maleducato, lo so.",
+	},
+	["cls.rogue.attack.w08.002"] = {
+		"E una. Si sommano.",
+		"Un altro graffio. Sono un tipo paziente.",
+		"Un taglietto. Poi un altro. Vedrai dove si va a finire.",
+	},
+	["cls.rogue.attack.w08.003"] = {
+		"Tutti quei taglietti erano risparmi. Ecco il conto.",
+		"Messo da parte, ora speso. Tutto in una volta.",
+		"Ogni varco che ho trovato, riscosso tutto insieme.",
+	},
+	["cls.rogue.attack.w08.004"] = {
+		"Non ci vedi? È proprio quello lo scopo.",
+		"Ti lacrimano gli occhi? Prenditi un momento. Lo userò io.",
+	},
+	["cls.rogue.attack.w08.005"] = {
+		"Zitto. Quella non la voleva sentire nessuno.",
+		"Niente discorsi. Non oggi.",
+		"Qualunque cosa stessi per dire, tienitela.",
+	},
+	["cls.rogue.attack.w08.006"] = {
+		"Proprio lì, sotto le costole. Le gambe ti seguiranno a breve.",
+		"Resta lì un momento. Non ci metterò molto.",
+	},
+	["cls.rogue.attack.w08.007"] = {
+		"Prima i piedi. La lama va solo dove i piedi sono già arrivati.",
+		"Tagli piccoli, tanti. La pazienza è la cosa più affilata che porto con me.",
+		"Guarda la spalla, non l'arma. La spalla parla sempre per prima.",
+	},
+	["cls.rogue.attack.w08.008"] = {
+		"Brucia, eh? Era proprio quello il punto.",
+		"Questa l'hai sentita, vedo. Splendido.",
+		"Scusa, era un pezzo importante? Con te è difficile capirlo.",
+	},
+	["cls.rogue.attack.w08.009"] = {
+		"scivola di mezzo passo di lato, e l'acciaio entra dove prima c'era la guardia.",
+		"trasforma un inciampo in un affondo, la lama che balena bassa e sparisce di nuovo.",
+		"finta in alto con una mano e colpisce in basso con l'altra, troppo veloce da seguire.",
+	},
+	["cls.rogue.attack.w08.010"] = {
+		"Più veloce, adesso. Il ritmo è mio.",
+		"Mani più svelte. Adesso la danza la conduco io.",
+	},
+	["cls.rogue.farewell.w08.001"] = {
+		"Io vado. Non mi vedrai andare via, quindi diciamocelo adesso.",
+		"Addio. Se qualcuno chiede, non mi hai mai visto.",
+		"Arrivederci. Tieni stretta la borsa: non per colpa mia, s'intende.",
+	},
+	["cls.rogue.greet.w08.001"] = {
+		"Salve. Tranquillità, le tue tasche sono al sicuro. Con me, almeno.",
+		"Salute. Non badare a me: sono solo di passaggio, in silenzio come sempre.",
+	},
+	["cls.rogue.levelup.w08.001"] = {
+		"Un po' più {g:svelto|svelta} di ieri. La sveltezza è l'unico tipo di forte che m'interessa.",
+		"Mani più ferme, passo più leggero. Da qualche parte una serratura è appena diventata più facile, e non lo sa ancora.",
+		"Meglio. Non più rumoroso, non più grosso. Più abile a non stare dove arriva il colpo.",
+	},
+	["cls.rogue.levelup.w08.002"] = {
+		"Ogni giorno più {g:bravo|brava}. Chiudete a chiave le porte.",
+		"Lama più affilata, passo più leggero, mani più agili. Ditelo alle guardie. Anzi, no.",
+		"Sto venendo su bene. Qualche forziere dovrebbe cominciare a preoccuparsi.",
+	},
+	["cls.rogue.lowhp.w08.001"] = {
+		"Qui qualcuno sta barando, e per una volta non sono io.",
+		"Scorretto. Quella dovrebbe essere la mia parte dell'accordo.",
+		"Odio gli scontri leali. Questo lo sta diventando, e lo odio ancora di più.",
+	},
+	["cls.rogue.lowhp.w08.002"] = {
+		"Uscite: nessuna. Lame: una. Respiri rimasti: quelli non contarli.",
+		"Fai il punto. Un coltello, nessuna porta, e un corpo che ha quasi smesso di discutere.",
+		"Inventario: una lama, un muro alle spalle, e poco altro. Fattelo bastare.",
+	},
+	["cls.rogue.lowhp.w08.003"] = {
+		"si abbassa e gira appena fuori portata, comprando un battito alla volta.",
+		"si raccoglie in silenzio, come un animale messo all'angolo un attimo prima di mordere.",
+		"sputa di lato e cambia presa, gli occhi ridotti a due fessure fredde.",
+	},
+	["cls.rogue.lowhp.w08.004"] = {
+		"Mi hai ferito. Adesso hai tutta la mia attenzione.",
+		"Il primo sangue è stato tuo. L'ultimo sarà mio.",
+		"Bel colpo. Goditelo: era l'unico che avevi.",
+	},
+	["cls.rogue.lowhp.w08.005"] = {
+		"Scappare o chiuderla. Decidi adesso, prima che decidano le gambe al posto mio.",
+		"Un battito per scegliere: colpire o fuggire. Scegli bene, scegli in fretta.",
+		"Troppo lenti i piedi per scappare, troppe ferite per danzare. Allora chiudila in fretta.",
+	},
+	["cls.rogue.lowhp.w08.006"] = {
+		"Se cado qui, sarà in silenzio. È così che ho fatto tutto il resto.",
+		"Nessuno mi sentirà cadere. Ho passato anni a impararlo, e adesso è la parte che mi piace meno.",
+		"Una fine silenziosa, se arriva. Adatta, immagino. Il pubblico non mi è mai piaciuto.",
+	},
+	["cls.rogue.lowhp.w08.007"] = {
+		"Possiamo parlarne? Spartirci il bottino, magari? No? Valeva la pena chiedere.",
+		"È il momento sbagliato per offrirti una parte?",
+		"Sono disponibile a trattare. Molto disponibile. Sto perfino sanguinando.",
+	},
+	["cls.rogue.lowhp.w08.008"] = {
+		"Respira tra i denti. Tieni bassa la lama. Non farglielo vedere.",
+		"Il dolore dopo. Adesso guarda le mani, non la faccia.",
+		"Sanguinare è solo una clessidra. Batti la clessidra sul tempo.",
+	},
+	["cls.rogue.lowhp.w08.009"] = {
+		"barcolla, si aggrappa al nulla e in qualche modo trasforma l'inciampo in una finta.",
+		"sbanda di lato, e nemmeno {g:lui|lei} saprebbe dire quanto ci sia di recitato.",
+	},
+	["cls.rogue.lowhp.w08.010"] = {
+		"Bene. Basta fare i gentili.",
+		"Basta. Adesso mi sono {g:arrabbiato|arrabbiata} sul serio.",
+		"Questo è il mio sangue sui miei stivali buoni. Me li pagherai, tutti e due.",
+	},
+	["cls.rogue.lowhp.w08.011"] = {
+		"La presa si fa scivolosa. Asciugala, stringi, continua a stringere.",
+		"Le dita si intorpidiscono. Di tutto quello che potrei perdere, non quelle.",
+		"L'elsa continua a scivolare. Con due mani, se serve. Non lasciarla cadere.",
+	},
+	["cls.rogue.lowhp.w08.012"] = {
+		"Ho valutato male questo scontro. Se sopravvivo, ci studierò sopra. Se no, ci studierà qualcun altro.",
+		"Lezione presa: mai accettare uno scontro solo perché la borsa sembrava grassa.",
+		"Avidità, ecco quanto costi. Dopo io e te facciamo due chiacchiere.",
+	},
+	["cls.rogue.lowhp.w08.013"] = {
+		"Vieni a finirla, allora. Più vicino. Ancora un po'.",
+		"Vuoi quel che resta di me? Fatti avanti e prenditelo. Occhio al coltello.",
+		"Per il resto dovrai sudare. Non mi vendo a buon mercato.",
+	},
+	["cls.rogue.lowhp.w08.014"] = {
+		"lascia calare di un soffio la guardia, come allo stremo, e aspetta che il nemico ci creda.",
+		"tiene la lama piatta lungo l'avambraccio, ondeggiando, paziente come una tagliola pronta a scattare.",
+	},
+	["cls.rogue.lowhp.w08.015"] = {
+		"Chi mi depreda si prende la mia borsa. Solo sul mio cadavere... ah. Già. Allora resta in piedi.",
+		"Non lascerò che uno sconosciuto mi frughi nelle tasche. Alzati. Resta su.",
+		"Dopo qualcuno mi frugherebbe le tasche. Solo l'offesa mi tiene in piedi.",
+	},
+	["cls.rogue.pray.w08.001"] = {
+		"Se lassù qualcosa ascolta quelli come me: pavimenti silenziosi, serrature lente, e un'altra mattina.",
+		"Chiunque vegli su chi lavora senza farsi vedere: tienimi leggero il passo e lunga la fortuna, e non chiederò altro. Per oggi.",
+	},
+	["cls.rogue.quest_progress.w08.001"] = {
+		"A buon punto. Un lavoro è come una serratura: i primi perni sono facili, l'ultimo decide tutto.",
+		"Una parte è fatta. Ogni lavoro ha una metà facile che ti mente sulla fine.",
+		"Ci sto arrivando. Gli sbadati si fanno prendere nell'ultimo tratto, mai nel primo.",
+	},
+	["cls.rogue.quest_progress.w08.002"] = {
+		"C'è tutto. Ora facciamoci pagare prima che qualcuno cambi idea.",
+		"Fatto. Andiamo a riscuotere, e contiamo due volte.",
+		"Tutto quanto. È ora di andare a sembrare una persona affidabile davanti a qualcuno.",
+	},
+	["cls.rogue.quest_progress.w08.003"] = {
+		"fa un conto sottovoce, le labbra che si muovono appena, e scivola avanti.",
+		"si ferma in un angolo d'ombra a fare il conto di ciò che resta, poi riparte senza un rumore.",
+		"conta qualcosa sulle dita, nasconde di nuovo la mano e prosegue.",
+	},
+	["cls.rogue.reputation_change.w08.001"] = {
+		"Adesso si fidano di me un po' di più. Nel mio mestiere è un onore o un'occasione. Scelgo l'onore. Per lo più.",
+		"Un'accoglienza più calda di prima. Buffo quanto diventi facile il lavoro onesto quando la gente smette di contare le posate.",
+		"Adesso mi si aprono più porte, e non ho dovuto scassinarne nemmeno una.",
+	},
+	["cls.rogue.rez.w08.001"] = {
+		"Rieccomi. La morte era l'unica porta che non sapevo scassinare, e si è aperta lo stesso, dall'altra parte.",
+		"Di nuovo {g:vivo|viva}. Nemmeno la morte è riuscita a tenermi: prima o poi sguscio via da tutto.",
+	},
+	["cls.rogue.thanks.w08.001"] = {
+		"Grazie. Te ne devo una, e pago sempre. Prima o poi.",
+		"Ti sono {g:obbligato|obbligata}. Non preoccuparti, non tengo il conto. Anzi sì, lo tengo.",
+	},
+	["cls.rogue.thanks.w08.002"] = {
+		"Grazie. Un aiuto senza prezzo: mi ci vorrà un po' per capire che effetto fa.",
+		"Ti ringrazio. Continuo a cercare il trucco, e non c'è. Strano.",
+	},
+	["cls.rogue.threat.w08.001"] = {
+		"Non mi sentirai arrivare. Mi sentirai e basta.",
+		"La prossima volta che qualcosa scricchiola alle tue spalle, non sarà il pavimento.",
+		"Abituati a guardarti alle spalle. Non servirà, ma almeno ti farà passare il tempo.",
+	},
+	["cls.rogue.threat.w08.002"] = {
+		"Continua a parlare. Intanto imparo dove sei molle.",
+		"Ho un coltello per ogni cattiva idea che stai per avere.",
+		"Avanti, fai la tua mossa. Io ne ho già fatte tre.",
+	},
+	["cls.rogue.threat.w08.003"] = {
+		"Niente di personale. Non lo è mai. È questo che dovrebbe preoccuparti.",
+		"Non ti odio. Non mi serve. Pensaci.",
+	},
+	["cls.rogue.threat.w08.004"] = {
+		"Vattene finché le gambe ti danno ancora retta.",
+		"Tocca di nuovo la mia roba e poi contati le dita.",
+		"Vattene adesso. Non lo ripeterò: farò direttamente l'altra cosa.",
+	},
+	["cls.rogue.threat.w08.005"] = {
+		"Ricambierei il sorriso, ma poi ti chiederesti perché sto sorridendo.",
+		"Rilassati. Se ti volessi far fuori, ti staresti chiedendo perché senti freddo alla schiena.",
+	},
 }, "base_classes")

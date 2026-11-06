@@ -691,4 +691,499 @@ NS:AddTexts("enUS", {
 		"Everyone down, and everything quiet again. Get up. Count heads. Think.",
 		"Down, all of us. The pride hurts worse than the rest. We go again.",
 	},
+	["race.dwarf.npc_meet.w08.001"] = {
+		"Whatever's on tap, and none of the thin stuff. I can tell, you know. A dwarf always can.",
+		"Pour me the darkest you've got. If I can see the bottom of the mug, it isn't ale, it's a rumor.",
+		"Something dark and heavy, in the biggest mug on the shelf. Road water has been thin as gossip.",
+	},
+	["race.dwarf.npc_meet.w08.002"] = {
+		"Low beams, thick walls, a fire somebody has fed all day. Some inns are nearly a cave, and I mean that as praise.",
+		"A bench by the hearth and my back to good stone. Away from Ironforge, that's as near home as the world gets.",
+		"Warm, close and a little smoky. Put a forge in the corner and I'd never leave.",
+	},
+	["race.dwarf.npc_meet.w08.003"] = {
+		"Three words and a mug set down hard. This keeper would fit right in at Kharanos.",
+		"No smile, no chatter, honest measure. Half the innkeepers under the mountain talk exactly like this, and I like them all.",
+	},
+	["race.dwarf.npc_meet.w08.004"] = {
+		"One of ours behind the bar! Then I needn't explain what I mean by a proper head on the ale.",
+		"A dwarf keeping the house. Good. Pour as you'd pour at home, and I'll pay as I'd pay at home.",
+		"Ah, a keeper from the mountain. Is there a cask from Dun Morogh hiding back there, by any chance?",
+	},
+	["race.dwarf.npc_meet.w08.005"] = {
+		"First I tap it, then I weigh it in my hand, then I listen. Only after that do I ask the price.",
+		"Rivets, seams, the temper of the metal. A merchant can talk all day; it's the goods that have to talk to me.",
+		"Let me turn it over. My people can tell a bad weld by the sound it makes when you knock on it.",
+	},
+	["race.dwarf.npc_meet.w08.006"] = {
+		"That might pass for a fair price among humans. Among dwarves it's where the haggling starts.",
+		"I'll give you half, and a story about the mines. Trust me, the story's worth the other half.",
+	},
+	["race.dwarf.npc_meet.w08.007"] = {
+		"A gnome's stall. Since Gnomeregan fell, they sell the way they build: fast, clever, and a touch too eager.",
+		"Gnomish goods. Half of Ironforge runs on their tinkering these days, and the other half pretends it doesn't.",
+		"The gnomes lost their city and kept their wits. I'll buy something, if only to keep a good stall standing.",
+	},
+	["race.dwarf.npc_meet.w08.008"] = {
+		"Lesson time. The old masons say you learn a craft the way you cut stone: slowly, along the grain, never against it.",
+		"Lessons. A dwarf learns stubbornly, which is to say once, and for good.",
+		"Teach me well and I'll not need telling twice. Slow to learn and slower to forget: that's my people.",
+	},
+	["race.dwarf.npc_meet.w08.009"] = {
+		"Bark away. Dwarves talk over anvils all day long; a loud teacher only sounds like home.",
+		"Few words, plenty of hammer. That's how it's taught under the mountain, and it suits me fine.",
+	},
+	["race.dwarf.npc_meet.w08.010"] = {
+		"Up there with nothing under my boots but wind. A dwarf belongs under the mountain, not above it. Still, it's quicker.",
+		"Flying. My stomach and I have a pact: it keeps quiet until we land, and I feed it something heavy afterward.",
+		"The Wildhammer take to the sky as if it were a hall they owned. The rest of us grip the saddle and count the peaks.",
+	},
+	["race.dwarf.npc_meet.w08.011"] = {
+		"A gryphon, and a dwarf to handle it. Good. Tell the beast I'm heavier than I look and twice as stubborn.",
+		"Mountain folk at the roost. Pick me a gryphon with a strong back and a short memory.",
+	},
+	["race.dwarf.npc_meet.w08.012"] = {
+		"I'll be wanting to see the lock. Not open it, mind, just look at it. A dwarf likes to know who did the ironwork.",
+		"Keep my things dry, and keep my ore apart from my gold. Those two don't get along.",
+	},
+	["race.dwarf.npc_meet.w08.013"] = {
+		"Speak plainly and I'll answer plainly. A dwarf's word is short, but it carries weight.",
+		"Out with it. If it wants strong arms and a thick skull, you've found the right folk.",
+		"Trouble, is it? Lay it on the table. We'll look it over the way a miner looks over a crack.",
+	},
+	["race.dwarf.npc_meet.w08.014"] = {
+		"One of ours, asking for help. You don't say no to that. Not if you mean to drink in Ironforge with your head up.",
+		"When a dwarf asks for a hand, it's because both of theirs are already full. I'll listen.",
+	},
+	["race.dwarf.npc_meet.w08.015"] = {
+		"Humans and their troubles, always in a hurry. I suppose that's what seventy-odd years does to a people.",
+		"Humans ask for help as if the world might end by suppertime. To be fair, now and then it nearly has.",
+	},
+	["race.dwarf.npc_meet.w08.016"] = {
+		"Cheerful, aren't we? Careful, laughter's catching, and I haggle better when I'm grumpy.",
+		"Smile all you like. A dwarf can grin and count at the same time; we practice at weddings.",
+	},
+	["race.dwarf.npc_meet.w08.017"] = {
+		"An elven inn. The rooms will be airy and the ale will be... well. Let's be polite about the ale.",
+		"Night elf hospitality: soft voices, open windows, and not one decent keg in sight. I'll manage.",
+		"Elves are gracious hosts. I only wish they'd build a ceiling a dwarf can't see the sky through.",
+	},
+	["race.dwarf.npc_meet.w08.018"] = {
+		"laughs along with {other} and brings a broad fist down on the counter, hard enough to rattle the mugs.",
+		"answers the grin behind the counter with a deep dwarven laugh that fills the room up to the rafters.",
+	},
+	["race.dwarf.npc_meet.w08.019"] = {
+		"This one loves coin nearly as much as a dwarf does. Nearly. We'll see who blinks first.",
+		"A merchant with a miser's eyes. Back under the mountain we'd call that a respectable trade.",
+		"Sharp prices and a sharper smile. Fine by me: I can squint at a coin as long as any goblin.",
+	},
+	["race.dwarf.npc_meet.w08.020"] = {
+		"No need for all the bowing. I'm a dwarf, not a duke. Tell me what's wrong.",
+		"Fine words. I'd sooner have a plain map and a plain answer, if it's all the same to you.",
+	},
+	["race.dwarf.npc_meet.w08.021"] = {
+		"Mountain folk at the vault. Good. Gold sleeps better when someone who understands stone is minding it.",
+		"One of ours keeping the strongboxes. That's one less thing to lie awake over.",
+	},
+	["race.dwarf.npc_meet.w08.022"] = {
+		"A teacher from the mountain. Show me how it's done in Ironforge, and I'll not shame it.",
+		"Teach me the way they teach at home: hard, plain, and twice over if I'm thick about it.",
+	},
+	["race.dwarf.other_action.w08.001"] = {
+		"A trade, is it? Let me see it in good light. I don't buy ore on its reputation.",
+		"Aye, let's deal. Fair weight on both sides, and no sulking after.",
+		"Trade? Gladly. Mind, a dwarf weighs coin with the eyes first and the scales second.",
+	},
+	["race.dwarf.other_action.w08.002"] = {
+		"Taken on, then. Once a dwarf shoulders a load, setting it down halfway is a shame there's no living down.",
+		"Another job. Good. Idle hands were never welcome under the mountain.",
+		"Fine, it's mine now. I'll follow it like a seam of iron: to the end, or until the rock says otherwise.",
+	},
+	["race.dwarf.other_action.w08.003"] = {
+		"answers the gesture by raising an imaginary mug, then drains it to the bottom with great ceremony.",
+		"returns the gesture with a broad nod and a thumbs-up that could crack walnuts.",
+		"lifts a broad hand in reply, palm out, like a miner signaling all clear down the tunnel.",
+	},
+	["race.dwarf.other_action.w08.004"] = {
+		"A bout between friends! Swing hard, I'll take it as a compliment. Dwarves bruise; they don't crack.",
+		"Ha! Done. And when it's over, I'll tell the whole tavern how close it was.",
+		"Friends make the best sparring. Mind the knees; I'm built low for a reason.",
+	},
+	["race.dwarf.other_action.w08.005"] = {
+		"Gnomes call, dwarves come. As it should be. You do the thinking, I'll stand in front of it.",
+		"Aye, I'll come. Gnomes and dwarves: same mountain, same tram. Lead on.",
+	},
+	["race.human.npc_meet.w08.001"] = {
+		"Stew, bread and a seat near the fire. If the bread's from a proper oven, I'll put in a good word for you in Goldshire.",
+		"Whatever's hot, and plenty of it. And if there's a pie hiding in the kitchen, I won't tell a soul.",
+		"A bowl of something, a heel of bread, a corner to sit in. Just like any village inn in Elwynn, and that's a compliment.",
+	},
+	["race.human.npc_meet.w08.002"] = {
+		"Every inn I walk into, I listen for the bell of a village square. There's never one, and I listen anyway.",
+		"Someone else's hearth, someone else's soup. Humans are good at turning strangers into neighbors; it's how we've lasted.",
+	},
+	["race.human.npc_meet.w08.003"] = {
+		"A dwarf behind the bar. Ask for anything lighter than stout and watch the eyebrows climb.",
+		"A dwarven house, dwarven pours. One mug of this and I'll be walking home along both sides of the street.",
+		"When the dwarves run the inn, the ale is honest and the beds are short. A fair trade.",
+	},
+	["race.human.npc_meet.w08.004"] = {
+		"Humans haggle in their sleep, you know. Start with the real price and we'll both get home sooner.",
+		"Every market day in the kingdom starts with a shout and ends with a handshake. Let's skip to the handshake.",
+	},
+	["race.human.npc_meet.w08.005"] = {
+		"Goods from everywhere, and nothing from Lordaeron. Nobody trades with a kingdom of the dead.",
+		"I always look for northern wares on a merchant's table. Lordaeron cloth, Stromgarde steel. There's less of it every year.",
+	},
+	["race.human.npc_meet.w08.006"] = {
+		"Dwarven work? Then I won't argue the price. I'll just weep quietly while I pay it.",
+		"If a dwarf made it, it'll outlive me. Given how long humans last, that's a low bar for them and a steep price for me.",
+	},
+	["race.human.npc_meet.w08.007"] = {
+		"Lesson time. Humans haven't got centuries to learn things; we have to learn them now and hold on hard.",
+		"Another lesson. My people never had elven patience or dwarven years, only stubbornness and short lives. It's been enough so far.",
+		"Learn it today, use it tomorrow. That's the human way, and the world hasn't left us much choice.",
+	},
+	["race.human.npc_meet.w08.008"] = {
+		"Barked orders and no praise, like every drill yard in Stormwind. I'm listening.",
+		"Go on. Westfall farmers shout worse at their mules, and the mules turn out fine.",
+	},
+	["race.human.npc_meet.w08.009"] = {
+		"Most humans who ever lived never saw their own land from above. I get to, for a few coins. Strange times.",
+		"Fields, roads, rooftops, all of it small enough to hide behind a thumb. From up there the kingdom looks like something you could mend.",
+		"A flight costs less than a week on foot and gives that week back. For a human, that's a bargain worth every copper.",
+	},
+	["race.human.npc_meet.w08.010"] = {
+		"You dwarves trust these gryphons with your lives. I'll trust you, and keep my eyes shut.",
+		"Gryphon folk from Ironforge way? Then tell me honestly: does the beast like humans, or just put up with us?",
+	},
+	["race.human.npc_meet.w08.011"] = {
+		"The masons who rebuilt Stormwind never saw their wages, people say. I count my deposit twice and keep the receipt.",
+		"A bank. Somewhere a noble is borrowing against my savings. That's how kingdoms work, I'm told.",
+		"Coin in the vault, coin in the purse. Humans spread their luck around; we've learned not to keep it all in one city.",
+	},
+	["race.human.npc_meet.w08.012"] = {
+		"Trouble? Tell me. There's always a farm that needs mending before the harvest, and it may as well be me who mends it.",
+		"Humans don't walk past a neighbor stuck in the mud. Tell me where the mud is.",
+		"Say what you need. We're a short-lived lot, my people; we'd rather spend the time helping than wondering whether to.",
+	},
+	["race.human.npc_meet.w08.013"] = {
+		"One of ours, with the tired look I know from every village with too few hands. Of course I'll listen.",
+		"A human face asking for help. It could be any farmer, any widow, any reeve back home. That's why I always stop.",
+	},
+	["race.human.npc_meet.w08.014"] = {
+		"Even the elves ask humans for help. They've lived ten of my lifetimes and still need someone to fetch things. Oddly comforting.",
+		"Elves measure their troubles in centuries. Mine get measured in weeks. Let's see which kind this is.",
+	},
+	["race.human.npc_meet.w08.015"] = {
+		"A sour face behind the counter. Every human town has one, and every human town would riot if it ever retired.",
+		"A scowl, a grunt, a key slid across the counter. Funny how that tastes of home.",
+	},
+	["race.human.npc_meet.w08.016"] = {
+		"You sound like every fair day in Goldshire rolled into one. All right, show me what you've got.",
+		"That much cheer usually means a high price. I'm human; I know the trick. I've used it.",
+	},
+	["race.human.npc_meet.w08.017"] = {
+		"A teacher from home. Good. Teach me the way they do in Stormwind: briskly, with a sermon at the end.",
+		"One of our own teaching. Then you'll understand when I say I haven't the years to learn this slowly.",
+	},
+	["race.human.npc_meet.w08.018"] = {
+		"rubs {g:his|her} hands at the hearth and asks after the stew, as if every inn on the road were a farmhouse kitchen.",
+		"sets a few coins on the counter and asks for the news first and the room second, the way human travelers do.",
+	},
+	["race.human.npc_meet.w08.019"] = {
+		"All this ceremony. They talk like a courtier at Bolvar's table, and I'd wager the job is still a sack of wolf pelts.",
+		"Such careful words. In Stormwind, people only talk like that when they want something they can't pay for.",
+	},
+	["race.human.npc_meet.w08.020"] = {
+		"Dwarves minding the vaults. My coin has never been safer, or more thoroughly judged.",
+		"Dwarven bankers count the way they mine: down to the last flake. I almost feel rich.",
+	},
+	["race.human.npc_meet.w08.021"] = {
+		"You've the look of someone holding a line with nobody beside them. Humans hold lines; it's what we do. Let me take a share.",
+		"Duty weighs more when nobody's watching. I know the weight. Tell me what needs doing.",
+		"Stormwind was rebuilt, they say, by people who kept working after the pay stopped. I can manage one errand for someone like you.",
+	},
+	["race.human.npc_meet.w08.022"] = {
+		"Kindness at an inn always catches me off guard. Humans have had a hard few decades; we forget how it sounds.",
+		"A warm word, freely given. Lordaeron's refugees would have wept for less. I nearly do.",
+	},
+	["race.human.npc_meet.w08.023"] = {
+		"Put it somewhere safe. Safer than Westfall, anyway, which isn't asking much these days.",
+		"Mind it well. A human saves for a farm, a roof and a quiet old age. Mostly the roof.",
+	},
+	["race.human.other_action.w08.001"] = {
+		"A company? I'm in. Humans built a kingdom by saying yes to strangers on the road.",
+		"Count me in. I've only the one life; may as well spend some of it in good company.",
+		"Gladly. Nobody should turn down a spare pair of hands, or the chance to be one.",
+	},
+	["race.human.other_action.w08.002"] = {
+		"A small gesture from a passerby. Like a nod across the square on market day: it costs nothing and settles something.",
+		"Somebody spared me a gesture. After years of refugees and bad news, the kingdom's people learned to treasure small courtesies.",
+		"A greeting out of nowhere. Humans need these more than we let on.",
+	},
+	["race.human.other_action.w08.003"] = {
+		"Another promise made. A human life is mostly made of these, kept or broken. I'd like mine kept.",
+		"One more task. Behind it there's a farm, a family, a frightened village. There usually is.",
+		"Taken. My people don't get long; I'd rather be remembered for the errands I finished than the ones I meant to.",
+	},
+	["race.human.other_action.w08.004"] = {
+		"Finally. Let's settle it properly, the way they did at the old tourneys of Lordaeron.",
+		"Accepted. I've been looking forward to this for longer than I'd ever tell you.",
+		"At last. No hard feelings, and no mercy either.",
+	},
+	["race.human.other_action.w08.005"] = {
+		"A dwarf wants me along? Then I'm in, and afterward I'll try to keep up with the drinking. Try.",
+		"Gladly. With a dwarf in front, I'll finally know what it's like to have a wall that talks back.",
+	},
+	["race.nightelf.npc_meet.w08.001"] = {
+		"An inn. The Sentinels taught my people to rest lightly and wake at the first wrong sound. I will rest here the same way, and thank the walls.",
+		"A room with a door that locks. A strange comfort. In the forests of my people, the trees were the only walls anyone needed.",
+		"Ale and a stew pot. My people once ate what the forest gave, by the light of the moon; I am used to plates by now, if not to the noise around them.",
+	},
+	["race.nightelf.npc_meet.w08.002"] = {
+		"A quiet room, far from the stairs, if you have one. Ears like mine hear every boot on every step.",
+		"Something with herbs in it, please, and water rather than ale. My people have a long habit of clear heads.",
+	},
+	["race.nightelf.npc_meet.w08.003"] = {
+		"Few words from {other}, and none of them wasted. The Sentinels would approve. I find that I do, too.",
+		"A curt keeper. After the endless courtesies of Darnassus, it is almost restful.",
+	},
+	["race.nightelf.npc_meet.w08.004"] = {
+		"One of my own keeps this inn. We exchange the hushed greeting of Teldrassil, and all at once the room is less loud.",
+		"{other} is one of my people, and pours without asking. We share the same thirst for quiet.",
+	},
+	["race.nightelf.npc_meet.w08.005"] = {
+		"My people had ten thousand years to learn patience, and not once did they learn to haggle.",
+		"Coins changing hands so quickly. Among my people a trade was a slow courtesy, full of long silences; here it is over before I have finished my bow.",
+		"I take my time over the goods. The merchant shifts from foot to foot; to a night elf, this is barely a glance.",
+	},
+	["race.nightelf.npc_meet.w08.006"] = {
+		"Show me what was made with care. I can wait for the good things; waiting is what my people do best.",
+		"Thread, oil, a good knife. And nothing that rattles or shines; night elves prefer to pass unseen.",
+		"Herbs from the deep forest, if you have any. If not, I will take your plainest bread and miss the trees a little.",
+	},
+	["race.nightelf.npc_meet.w08.007"] = {
+		"A smile quick and polished as a coin. My people have learned to mistrust anything that ripens that fast.",
+		"{other} quotes a price meant for someone who will forget it within the year. I will remember it for a very long time, so I offer less.",
+	},
+	["race.nightelf.npc_meet.w08.008"] = {
+		"A dwarf merchant, loud and honest. When the Alliance brought us together my people found the dwarves strange; the more I know them, the more restful I find them.",
+		"{other} pounds the counter to make a point. Dwarves treat silence as a hole to be filled; I treat it as a guest. We manage.",
+	},
+	["race.nightelf.npc_meet.w08.009"] = {
+		"A human merchant, talking fast because life is short. I try to listen fast too; it is only courteous.",
+		"{other} has already sold me something, thanked me and is looking past me to the next customer. Humans live their whole lives at this speed.",
+	},
+	["race.nightelf.npc_meet.w08.010"] = {
+		"Among my people even the eldest priestesses still take lessons. There is no age at which one stops being a student.",
+		"Learning from {other}. The Sentinels say the arrow that thinks it knows the way is the one that misses.",
+	},
+	["race.nightelf.npc_meet.w08.011"] = {
+		"I am listening. Speak as slowly as you like; my people have never once complained of that.",
+		"Show me again, please. I would rather learn it well than soon; my people once had all the years in the world, and the habit has stayed.",
+	},
+	["race.nightelf.npc_meet.w08.012"] = {
+		"A flight master, and winged mounts that smell of the high wind. My people have always asked the beasts first and their keepers second; old manners, but they serve.",
+		"Winged mounts once more. I prefer the slow roads of the forest, but Kalimdor is wide and the Eastern Kingdoms wider still.",
+	},
+	["race.nightelf.npc_meet.w08.013"] = {
+		"As long as there is a forest at the other end, any forest, I will find my way from there.",
+		"Fly me low over the trees, if the beast allows. I like to watch the canopy breathe.",
+	},
+	["race.nightelf.npc_meet.w08.014"] = {
+		"A banker and a vault. Night elves never trusted coin much: gold does not grow, and it remembers nothing.",
+		"A banker. Strange, to hand what I own into a stranger's keeping. Then again, my people have trusted whole forests to the Sentinels, and the forests are still there.",
+	},
+	["race.nightelf.npc_meet.w08.015"] = {
+		"Someone in trouble. My people kept to their forests for ten thousand years and left the world's troubles to others. I would rather not turn away again.",
+		"{other} has a task and hopeful eyes. The priestesses teach that Elune's light falls on whoever stops to help. I will stop.",
+		"A request, plainly made. The forests of my people were always kept by those who answered such things. I will answer.",
+	},
+	["race.nightelf.npc_meet.w08.016"] = {
+		"Tell me what troubles you, and leave nothing out. A night elf has never been short of time for a whole story.",
+		"Speak. I will listen the way the forest listens: to all of it, and without interrupting.",
+	},
+	["race.nightelf.npc_meet.w08.017"] = {
+		"A guard of the Alliance. Whoever they are, they have the stillness of a Sentinel on a long watch. I give them the nod we give at the forest's edge.",
+		"Alliance colors at the post. Once the world was wide and empty for my people. Now it has friends on its roads, and some of them carry spears for us.",
+		"A guard of our side, spear upright. I feel my own shoulders straighten to match: an old habit of my people.",
+	},
+	["race.nightelf.npc_meet.w08.018"] = {
+		"A guard of the Horde. Ashenvale bleeds under their axes, the Sentinels say. I keep my face still and my hands in plain sight.",
+		"A Horde guard has marked my ears from afar. My people were made to vanish into shadow; today I will have to make do with walking calmly.",
+		"The guard of the Horde marks me and does not look away. Fine. In ten thousand years my people have been watched by worse things.",
+	},
+	["race.nightelf.npc_meet.w08.019"] = {
+		"goes still as a nightsaber in tall grass under the Horde guard's stare, ears tipped back, and lets the moment pass.",
+		"keeps to the edge of the hostile guard's sight, moving with the soundless patience of {g:his|her} people.",
+	},
+	["race.nightelf.npc_meet.w08.020"] = {
+		"{other} talks in riddles. The priestesses of Elune answer like this too, when they would rather the moon spoke for them.",
+		"Riddles. My people grew up among dreams and omens; one more veiled answer does not trouble me.",
+	},
+	["race.nightelf.npc_meet.w08.021"] = {
+		"Grief, there behind the eyes of {other}. My people have worn that look since the World Tree gave up its blessing at Hyjal. I know better than to hurry it.",
+		"A heavy heart. Elune's light does not argue with the dark; it simply stays. For a while, I can do the same.",
+	},
+	["race.nightelf.npc_meet.w08.022"] = {
+		"answers the cheerful greeting with the faint, slow smile of {g:his|her} people, the kind that lasts longer than it first appears.",
+		"inclines {g:his|her} head, long ears lifting a little at the warmth in that voice.",
+	},
+	["race.nightelf.npc_meet.w08.023"] = {
+		"Tyrande Whisperwind. The High Priestess has stood between my people and the dark for longer than most kingdoms have stood at all. I bow, and mean it.",
+		"The High Priestess. Some say Elune smiles a little brighter near her. Standing here, I would not argue.",
+		"Tyrande herself. My people have long memories, and every one of mine seems to have gathered here at once.",
+	},
+	["race.nightelf.other_action.w08.001"] = {
+		"Company? I will walk with you. I make no noise, and I see well where others do not.",
+		"Gladly. My people were never meant to wander alone; we only grew used to it.",
+		"Count me in. Tell me where to stand, and I will be there before you notice.",
+	},
+	["race.nightelf.other_action.w08.002"] = {
+		"A duel? Very well. Do not take it personally if you lose sight of me.",
+		"Accepted. The Sentinels say one fair contest teaches more than a year of drills.",
+		"A practice bout? I accept. Watch my feet; my people taught them how to lie.",
+	},
+	["race.nightelf.other_action.w08.003"] = {
+		"Elune-adore, traveler. Walk softly.",
+		"And to you. May your road be quiet and the shade kind.",
+	},
+	["race.nightelf.other_action.w08.004"] = {
+		"A trade, then. Fairly, and slowly; my people dislike a bargain that is over before it is understood.",
+		"Let us exchange. I will check everything twice; it is not mistrust, only the habit of a long-lived people.",
+	},
+	["race.nightelf.other_action.w08.005"] = {
+		"A task accepted. The priestesses say every promise is made under the moon, whether or not anyone looks up.",
+		"Another promise to keep. My people once had all the time in the world for keeping them. Now I would rather not waste any.",
+	},
+	["race.nightelf.other_action.w08.006"] = {
+		"You and I? Good. My people fight best unseen; I will try to play fair.",
+		"A friendly bout, then. The loser carries the packs to the next camp.",
+	},
+	["race.tauren.npc_meet.w08.001"] = {
+		"A roof, and someone who keeps it. My people once folded their homes onto a kodo's back every season; a house that stays put still feels like a guest that never leaves.",
+		"Walls that do not move. Among the plains clans, home went wherever the herd went. I will try to sleep in one that has stopped walking.",
+		"Four walls and a door. In Mulgore I would know which way the wind was coming from; in here I will have to trust the keeper.",
+	},
+	["race.tauren.npc_meet.w08.002"] = {
+		"Whatever is in the big pot, I will have a bowl. A big bowl. You will see why when I sit down.",
+		"Feed me as you would feed two travelers. I promise to pay as one and a half.",
+	},
+	["race.tauren.npc_meet.w08.003"] = {
+		"A keeper of few words. Good. On the plains they say the kodo that bellows least pulls longest.",
+		"Short words and a nod toward the stairs. The kind of welcome a tauren understands; we were never ones for long speeches at the door.",
+	},
+	["race.tauren.npc_meet.w08.004"] = {
+		"Thank you for the welcome. On the plains a guest is offered water first; I would gladly take that here too.",
+		"A warm word at the door. My people would answer it with a gift, but all I carry is dust from the road.",
+	},
+	["race.tauren.npc_meet.w08.005"] = {
+		"One of my own people keeps this hearth. We trade the long, slow nod of the plains, and something in my shoulders lets go.",
+		"A tauren behind the counter, far from the grass or near it, it hardly matters. I will eat well, and no one will look twice at my horns.",
+	},
+	["race.tauren.npc_meet.w08.006"] = {
+		"Small wares on a small counter. My hands were made for hides and heavy loads; I pick each trinket up as if it were a bird's egg.",
+		"Everything on this counter fits in one of my palms, three at a time. I count my coin slowly, so as not to sweep the stock onto the floor.",
+		"A merchant's shelf is a dangerous place for horns. I keep my head still and point with one careful finger.",
+	},
+	["race.tauren.npc_meet.w08.007"] = {
+		"Hides, leather, a good waterskin. Show me what a long walk needs, and leave the shiny things for lighter folk.",
+		"I need what keeps a traveler fed and dry. If it is only pretty, it can stay with you.",
+		"Good rope, strong thread, salt for meat. The plains taught my people to buy what mends and what keeps.",
+	},
+	["race.tauren.npc_meet.w08.008"] = {
+		"That smile measures my size and doubles the price. I will smile back, and halve it.",
+		"{other} looks at me the way a hunter looks at a kodo: a great deal of hide to work with.",
+	},
+	["race.tauren.npc_meet.w08.009"] = {
+		"One of the Forsaken behind the counter. My people spoke for them before the Horde, hoping a cure might be found. Looking at {other}, I still hope it.",
+		"A merchant of the Forsaken. The Earth Mother turns no one out of her circle, the elders teach. Easy to say; harder to say to a face like that, and mean it.",
+	},
+	["race.tauren.npc_meet.w08.010"] = {
+		"The elders of my people teach by walking beside you, not by talking at you. I will ask {other} to show me first and explain after.",
+		"Some knowledge only comes to those who sit still long enough. I can stay still as a standing stone; ask any plainstrider that ever wandered past me.",
+	},
+	["race.tauren.npc_meet.w08.011"] = {
+		"Teach me as you would teach anyone. Only leave a little more room around me when we practice.",
+		"I am eager to learn. If anything breaks while I try, it was not on purpose; we tauren are simply wide.",
+	},
+	["race.tauren.npc_meet.w08.012"] = {
+		"A wind rider, and a keeper who knows its moods. Tauren were never meant for the sky, but the sky does not seem to mind the extra weight.",
+		"{other} sizes me up, then the wyvern, then me again. The beast sighs. I pretend not to hear it.",
+		"The wyvern shifts its wings as I come near, as if weighing me. We have an understanding, that beast and I: neither of us enjoys the first leap.",
+	},
+	["race.tauren.npc_meet.w08.013"] = {
+		"My hooves prefer the grass, but the road is long. Give me your strongest flier, and feed it well first.",
+		"Hooves were made for the ground. Pick the sturdiest beast you have; it will be carrying a whole tauren's worth of trust.",
+	},
+	["race.tauren.npc_meet.w08.014"] = {
+		"A banker. The plains clans kept their wealth on four legs and counted it at the watering hole. Coins in a locked box are a stranger kind of herd.",
+		"My people once measured a family's wealth in kodo. I wonder how many coins make one good kodo. More than I have, most likely.",
+	},
+	["race.tauren.npc_meet.w08.015"] = {
+		"Someone with a trouble, looking up at me. Being large means people bring you their heavy things. So be it; I was made to carry.",
+		"On the plains a stranger asking for help was given water before a word was spoken. Let us hear what {other} needs.",
+		"A tauren does not turn from a call for help; we only take our time to understand it. Go on, {other}.",
+	},
+	["race.tauren.npc_meet.w08.016"] = {
+		"Speak, and take your time. A tauren listens to the end before deciding anything.",
+		"Tell me the whole of it. My people follow a trouble the way they follow a track: all the way to where the beast lies down.",
+	},
+	["race.tauren.npc_meet.w08.017"] = {
+		"The elders tell how the Horde's blades helped drive the centaur out of Mulgore. I nod to every guard of the Horde for that, whoever they are.",
+		"Horde colors on a watchful post. Before them my people walked the plains without walls. Now there are walls, and it is strange how much safer they feel.",
+		"A guard of the Horde, wearing the colors my people chose to stand beside. Chose: that is the word the elders always use.",
+	},
+	["race.tauren.npc_meet.w08.018"] = {
+		"A guard of the Alliance, and I am the largest thing on this road. Hiding is not among my people's gifts. Slow steps, then, and open hands.",
+		"Their guard reaches for steel the moment my horns come into sight. I do not blame them. At a distance, a tauren is hard to mistake for a friend.",
+	},
+	["race.tauren.npc_meet.w08.019"] = {
+		"keeps both hands open and low, horns tipped aside, while the guard of the Alliance takes {g:his|her} measure.",
+		"slows to a steady walk, hooves loud on the road, and gives the hostile guard no reason to worry but sheer size.",
+	},
+	["race.tauren.npc_meet.w08.020"] = {
+		"Every word from {other} has a second meaning folded inside it. The seers of my people speak like this. I listen for the wind under the words.",
+		"Riddles. The seers of Mulgore answer questions the same way, with a question and a long look. Patience, then.",
+	},
+	["race.tauren.npc_meet.w08.021"] = {
+		"answers the cheerful welcome with a rumbling laugh that seems to start somewhere near {g:his|her} hooves.",
+		"lets out a long, warm snort of amusement, the plains way of laughing along.",
+	},
+	["race.tauren.npc_meet.w08.022"] = {
+		"A heavy heart behind that face. My people sit beside grief rather than talk at it. I will be quiet a while with {other}.",
+		"Some sadness in this one. The elders would offer a pipe and silence. I have only the silence, but it is a good one.",
+	},
+	["race.tauren.npc_meet.w08.023"] = {
+		"Cairne Bloodhoof. Every tauren knows the stories; none of them prepares you for the size of the silence around him.",
+		"The High Chieftain. My people walked the plains under his word, and stopped wandering under it too. I lower my horns, slowly.",
+		"Before the High Chieftain, even a tauren feels small. It is a good feeling, for once.",
+	},
+	["race.tauren.other_action.w08.001"] = {
+		"A hunting party? Good. Point me at the trail and I will keep pace.",
+		"I will join you. A herd moves safer together, and so do travelers.",
+		"Count a tauren in. I eat a lot, but I carry more.",
+	},
+	["race.tauren.other_action.w08.002"] = {
+		"And to you, traveler. May your waterskins stay full.",
+		"Peace to you as well. May the Earth Mother keep an eye on your road.",
+	},
+	["race.tauren.other_action.w08.003"] = {
+		"A trade, then. On the plains we sealed these with a shared bite of food. I will spare you the meal.",
+		"Let us trade fairly. A tauren who cheats at a trade is talked about at every fire from Mulgore to the sea.",
+	},
+	["race.tauren.other_action.w08.004"] = {
+		"A bout? Gladly. Keep your feet planted; I push like a kodo leaning on a fence.",
+		"Very well. The calves of my people learn this before they learn to run. Ready when you are.",
+		"Wrestle a tauren? You are braver than you look. Come on, then.",
+	},
+	["race.tauren.other_action.w08.005"] = {
+		"A friendly bout? Ha! Whoever ends up in the dust cooks the next meal.",
+		"You and me? Good. You mind the horns, and I will mind your pride.",
+	},
+	["race.tauren.other_action.w08.006"] = {
+		"A task given, and taken. My people say a promise is a stake driven into the ground: you can walk away from it, but it stays where you left it.",
+		"Another trouble on my shoulders. Fine. They are broad shoulders, and that is what they are for.",
+	},
 }, "base_context")

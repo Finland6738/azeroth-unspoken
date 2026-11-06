@@ -379,4 +379,24 @@ NS:AddTexts("itIT", {
 		"Di nuovo sottoterra. Il buio è sempre lo stesso; la paura un po' meno.",
 		"Torno quaggiù. Ricordo quanti passi servono per tornare alla luce, e me li ripeto.",
 	},
+	["mem.ret.dwarf.w08.001"] = {
+		"{zone}, ancora. Ormai ne conosco il terreno come si conosce una galleria percorsa al buio: da come risponde sotto i piedi.",
+		"Torno su un terreno che ho già percorso. Un nano ricorda i posti da come reggono il passo, e questo il mio passo se lo ricorda.",
+		"Conosco già {zone}. Le pietre non si sono spostate. Le pietre si spostano di rado: per questo mi fido di loro.",
+	},
+	["mem.ret.human.w08.001"] = {
+		"{zone}, ancora una volta. Mi sorprendo a notare cosa è cambiato: uno steccato riparato, un tetto crollato. Gli umani tengono il registro di un posto senza volerlo.",
+		"Di ritorno a {zone}. L'occhio va dritto alle piccole cose: chi ha aggiustato cosa, cosa è crollato, chi c'è ancora. Un popolo dalla vita breve tiene i conti stretti.",
+		"Conosco {zone}, e ora mi guardo intorno come in un villaggio lasciato tempo fa: lo stesso pozzo, le stesse facce? Gli umani vogliono sempre sapere chi è rimasto.",
+	},
+	["mem.ret.nightelf.w08.001"] = {
+		"{zone}, ancora una volta. Per la mia gente un ritorno è una breve chiacchierata con un vecchio amico: cosa è cresciuto, cosa è caduto, chi non c'è più.",
+		"Rieccomi. Guardo prima ciò che è cresciuto nel frattempo, come fa sempre la mia gente. La terra tiene un suo diario.",
+		"{zone}. Tornando, noto prima i piccoli cambiamenti: forse un alberello un po' più alto, un sentiero un po' più consumato. L'occhio di un kaldorei è fatto per le notizie lente.",
+	},
+	["mem.ret.tauren.w08.001"] = {
+		"Di nuovo {zone}. Le mie vecchie tracce sono sparite da un pezzo, ma il terreno sembra ricordare il mio peso.",
+		"Ho già camminato su questa terra. Un tauren non passa mai da nessuna parte alla leggera; forse per questo qui la terra sembra conoscere il mio passo.",
+		"Terreno conosciuto. Gli zoccoli trovano la strada un poco prima dei pensieri, come un kodo che sa il sentiero per l'acqua.",
+	},
 }, "base_memory")

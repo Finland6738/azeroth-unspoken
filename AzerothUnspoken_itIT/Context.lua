@@ -691,4 +691,499 @@ NS:AddTexts("itIT", {
 		"Tutti a terra, e di nuovo silenzio. In piedi. Contiamoci. Ragioniamo.",
 		"A terra, tutti quanti. L'orgoglio fa più male del resto. Si riprova.",
 	},
+	["race.dwarf.npc_meet.w08.001"] = {
+		"Quello che c'è alla spina, ma niente roba annacquata. Me ne accorgo, sai. Un nano se ne accorge sempre.",
+		"Versami la più scura che hai. Se vedo il fondo del boccale, non è birra: è una diceria.",
+		"Qualcosa di scuro e corposo, nel boccale più grande dello scaffale. L'acqua della strada era leggera come un pettegolezzo.",
+	},
+	["race.dwarf.npc_meet.w08.002"] = {
+		"Travi basse, muri spessi, un fuoco che qualcuno ha alimentato tutto il giorno. Certe locande sono quasi una grotta, e per me è un complimento.",
+		"Una panca accanto al focolare e la schiena contro una buona pietra. Lontano da Ironforge, più vicino a casa di così non si arriva.",
+		"Caldo, raccolto, un po' fumoso. Mettici una forgia in un angolo e non me ne andrei più.",
+	},
+	["race.dwarf.npc_meet.w08.003"] = {
+		"Tre parole e un boccale posato di botto. Chi sta al banco qui, a Kharanos sarebbe di casa.",
+		"Niente sorrisi, niente chiacchiere, misura onesta. Metà degli osti sotto la montagna parlano proprio così, e mi piacciono tutti.",
+	},
+	["race.dwarf.npc_meet.w08.004"] = {
+		"Gente nostra dietro il banco! Allora non devo spiegare che cosa intendo per una schiuma come si deve.",
+		"Qualcuno della mia gente a mandare avanti la casa. Bene. Versa come verseresti a casa, e io pagherò come si paga a casa.",
+		"Ah, gente della montagna dietro il banco. Non è che lì dietro si nasconde un barile di Dun Morogh, per caso?",
+	},
+	["race.dwarf.npc_meet.w08.005"] = {
+		"Prima lo picchietto, poi lo soppeso, poi ascolto. Solo dopo chiedo il prezzo.",
+		"Ribattini, cuciture, la tempra del metallo. Il mercante può parlare tutto il giorno; è la merce che deve parlare a me.",
+		"Fammelo girare tra le mani. La mia gente riconosce una saldatura fatta male dal suono che fa quando ci bussi sopra.",
+	},
+	["race.dwarf.npc_meet.w08.006"] = {
+		"Tra gli umani sarà anche un prezzo giusto. Tra i nani è appena l'inizio della trattativa.",
+		"Ti do la metà, più una storia sulle miniere. Credimi, la storia vale l'altra metà.",
+	},
+	["race.dwarf.npc_meet.w08.007"] = {
+		"Una bottega gnomesca. Da quando Gnomeregan è caduta, vendono come costruiscono: in fretta, con ingegno, e con un filo di entusiasmo di troppo.",
+		"Merce gnomesca. Ormai mezza Ironforge va avanti grazie ai loro marchingegni, e l'altra metà finge di no.",
+		"Gli gnomi hanno perso la loro città ma non il loro ingegno. Qualcosa comprerò, non fosse che per tenere in piedi una buona bottega.",
+	},
+	["race.dwarf.npc_meet.w08.008"] = {
+		"Si va a lezione. I vecchi scalpellini dicono che un mestiere si impara come si taglia la pietra: piano, seguendo la vena, mai contro.",
+		"Lezioni. Un nano impara con testardaggine, cioè una volta sola, e per sempre.",
+		"Insegnami bene e non ci sarà bisogno di ripetermelo. Lenti a imparare, più lenti ancora a dimenticare: così è la mia gente.",
+	},
+	["race.dwarf.npc_meet.w08.009"] = {
+		"Abbaia pure. I nani parlano sopra le incudini tutto il giorno: un maestro che urla mi sembra solo casa.",
+		"Poche parole, molto martello. Sotto la montagna si insegna così, e mi va benissimo.",
+	},
+	["race.dwarf.npc_meet.w08.010"] = {
+		"Lassù, con niente sotto gli stivali se non il vento. Un nano sta sotto la montagna, non sopra. Però si fa prima.",
+		"Volare. Io e il mio stomaco abbiamo un patto: lui sta zitto fino all'atterraggio, e io dopo gli offro qualcosa di sostanzioso.",
+		"I Wildhammer il cielo lo trattano come una sala di casa loro. Noialtri ci aggrappiamo alla sella e contiamo le cime.",
+	},
+	["race.dwarf.npc_meet.w08.011"] = {
+		"Un grifone, e gente della montagna a badarci. Bene. Di' alla bestia che peso più di quanto sembri, e che la mia testardaggine pesa il doppio.",
+		"Gente della montagna al posatoio. Scegli per me un grifone con la schiena forte e la memoria corta.",
+	},
+	["race.dwarf.npc_meet.w08.012"] = {
+		"Vorrei vedere la serratura. Non aprirla, bada, solo guardarla. A un nano piace sapere chi ha fatto il lavoro in ferro.",
+		"Tienimi la roba all'asciutto, e il minerale separato dall'oro. Quei due non vanno d'accordo.",
+	},
+	["race.dwarf.npc_meet.w08.013"] = {
+		"Parla chiaro e ti risponderò chiaro. La parola di un nano è corta, ma regge il peso.",
+		"Avanti, sputa il rospo. Se servono braccia forti e una testa dura, hai trovato la gente giusta.",
+		"Guai, eh? Mettili sul tavolo. Li esamineremo come un minatore esamina una crepa.",
+	},
+	["race.dwarf.npc_meet.w08.014"] = {
+		"Gente nostra che chiede aiuto. A questo non si dice di no. Non se vuoi bere a Ironforge a testa alta.",
+		"Quando un nano chiede una mano, è perché le sue due sono già piene. Ascolto.",
+	},
+	["race.dwarf.npc_meet.w08.015"] = {
+		"Gli umani e i loro guai, sempre di corsa. Sarà quel che succede a un popolo con settant'anni scarsi a disposizione.",
+		"Gli umani chiedono aiuto come se il mondo dovesse finire prima di cena. A dire il vero, ogni tanto c'è andato vicino.",
+	},
+	["race.dwarf.npc_meet.w08.016"] = {
+		"Che allegria! Attenzione, il buonumore è contagioso, e io contratto meglio quando sono di cattivo umore.",
+		"Sorridi pure. Un nano sa sorridere e contare nello stesso momento: ci alleniamo ai matrimoni.",
+	},
+	["race.dwarf.npc_meet.w08.017"] = {
+		"Una locanda elfica. Le stanze saranno ariose e la birra sarà... be'. Restiamo educati sulla birra.",
+		"Ospitalità degli elfi della notte: voci sommesse, finestre aperte, e nemmeno un barile decente in vista. Me la caverò.",
+		"Gli elfi sono ospiti gentili. Vorrei solo che imparassero a fare un soffitto da cui un nano non veda il cielo.",
+	},
+	["race.dwarf.npc_meet.w08.018"] = {
+		"ride insieme a {other} e cala un pugno largo sul banco, abbastanza forte da far tintinnare i boccali.",
+		"risponde al sorriso dietro il banco con una risata nanica profonda, che riempie la sala fino alle travi.",
+	},
+	["race.dwarf.npc_meet.w08.019"] = {
+		"Qui si ama il denaro quasi quanto lo ama un nano. Quasi. Vediamo chi cede per primo.",
+		"Un mercante con gli occhi da avaro. Sotto la montagna lo chiameremmo un commercio rispettabile.",
+		"Prezzi affilati e un sorriso ancora più affilato. Mi sta bene: so fissare una moneta a occhi stretti quanto qualsiasi goblin.",
+	},
+	["race.dwarf.npc_meet.w08.020"] = {
+		"Non c'è bisogno di tutti questi inchini. Sono {g:un nano|una nana}, non {g:un duca|una duchessa}. Dimmi cosa non va.",
+		"Belle parole. Preferirei una mappa semplice e una risposta semplice, se per te è lo stesso.",
+	},
+	["race.dwarf.npc_meet.w08.021"] = {
+		"Gente della montagna alla cassaforte. Bene. L'oro dorme meglio se lo custodisce qualcuno che capisce la pietra.",
+		"Uno dei nostri a custodire i forzieri. Un pensiero in meno per cui restare {g:sveglio|sveglia}.",
+	},
+	["race.dwarf.npc_meet.w08.022"] = {
+		"Chi insegna viene dalla montagna. Mostrami come si fa a Ironforge, e non ti farò fare brutta figura.",
+		"Insegnami come si insegna a casa: duro, semplice, e due volte se sono {g:duro|dura} di comprendonio.",
+	},
+	["race.dwarf.other_action.w08.001"] = {
+		"Uno scambio, eh? Fammelo vedere alla luce buona. Il minerale non lo compro sulla parola.",
+		"Sì, trattiamo. Peso onesto da tutte e due le parti, e niente musi dopo.",
+		"Uno scambio? Volentieri. Bada però che un nano pesa le monete prima con gli occhi e poi con la bilancia.",
+	},
+	["race.dwarf.other_action.w08.002"] = {
+		"Preso in carico, dunque. Quando un nano si carica un peso, mollarlo a metà strada è una vergogna da cui non ci si riprende.",
+		"Un altro lavoro. Bene. Sotto la montagna le mani in mano non sono mai state ben viste.",
+		"D'accordo, ora è affar mio. Lo seguirò come una vena di ferro: fino in fondo, o finché la roccia non dice altrimenti.",
+	},
+	["race.dwarf.other_action.w08.003"] = {
+		"risponde al gesto alzando un boccale immaginario, e lo vuota fino in fondo con grande cerimonia.",
+		"ricambia il gesto con un cenno largo e un pollice alzato capace di spaccare una noce.",
+		"alza in risposta una mano larga, col palmo in fuori, come un minatore che segnala via libera lungo la galleria.",
+	},
+	["race.dwarf.other_action.w08.004"] = {
+		"Uno scontro tra amici! Colpisci forte, lo prenderò come un complimento. I nani si ammaccano, non si crepano.",
+		"Ah! Andata. E quando sarà finita, racconterò a tutta la taverna che c'è mancato poco.",
+		"Tra amici ci si allena meglio. Occhio alle ginocchia: sono {g:basso|bassa} per un motivo.",
+	},
+	["race.dwarf.other_action.w08.005"] = {
+		"Gli gnomi chiamano, i nani rispondono. Com'è giusto. Tu pensi, io mi metto davanti.",
+		"Sì, vengo. Gnomi e nani: stessa montagna, stesso tram. Fai strada.",
+	},
+	["race.human.npc_meet.w08.001"] = {
+		"Stufato, pane e un posto vicino al fuoco. Se il pane viene da un forno come si deve, a Goldshire metterò una buona parola per te.",
+		"Qualunque cosa sia calda, e che sia tanta. E se in cucina si nasconde una torta, non lo dirò a nessuno.",
+		"Una scodella di qualcosa, un tozzo di pane, un angolo dove sedermi. Proprio come in ogni locanda di paese dell'Elwynn, ed è un complimento.",
+	},
+	["race.human.npc_meet.w08.002"] = {
+		"In ogni locanda in cui entro tendo l'orecchio alla campana di una piazza di paese. Non c'è mai, e ascolto lo stesso.",
+		"Il focolare di altri, la zuppa di altri. Noi umani siamo bravi a trasformare gli sconosciuti in vicini di casa: è così che abbiamo resistito.",
+	},
+	["race.human.npc_meet.w08.003"] = {
+		"Gente nanica dietro il banco. Chiedi qualcosa di più leggero di una scura e guarda come si alzano le sopracciglia.",
+		"Locanda nanica, misure naniche. Un boccale di questa e tornerò a casa camminando su tutti e due i lati della strada.",
+		"Quando la locanda la tengono i nani, la birra è onesta e i letti sono corti. Uno scambio equo.",
+	},
+	["race.human.npc_meet.w08.004"] = {
+		"Noi umani contrattiamo anche nel sonno, sai. Parti dal prezzo vero e torneremo a casa prima tutti e due.",
+		"In tutto il regno ogni giorno di mercato comincia con un grido e finisce con una stretta di mano. Saltiamo alla stretta di mano.",
+	},
+	["race.human.npc_meet.w08.005"] = {
+		"Merci da ogni parte, e niente da Lordaeron. Nessuno commercia con un regno di morti.",
+		"Sul banco di un mercante cerco sempre roba del nord. Stoffe di Lordaeron, acciaio di Stromgarde. Ogni anno ce n'è meno.",
+	},
+	["race.human.npc_meet.w08.006"] = {
+		"Lavoro nanico? Allora sul prezzo non discuto. Piangerò in silenzio mentre pago.",
+		"Se l'ha fatto un nano, mi sopravvivrà. Visto quanto durano gli umani, per loro è poca cosa e per me un prezzo salato.",
+	},
+	["race.human.npc_meet.w08.007"] = {
+		"Si va a lezione. Noi umani non abbiamo secoli per imparare: dobbiamo farlo subito, e tenercelo stretto.",
+		"Un'altra lezione. Il mio popolo non ha mai avuto la pazienza degli elfi né gli anni dei nani, solo testardaggine e vite brevi. Finora è bastato.",
+		"Imparalo oggi, usalo domani. È il modo degli umani, e il mondo non ci ha lasciato molta scelta.",
+	},
+	["race.human.npc_meet.w08.008"] = {
+		"Ordini abbaiati e niente lodi, come in ogni piazza d'armi di Stormwind. Ascolto.",
+		"Avanti. I contadini di Westfall urlano di peggio ai loro muli, e i muli vengono su benissimo.",
+	},
+	["race.human.npc_meet.w08.009"] = {
+		"La maggior parte degli umani mai vissuti non ha mai visto la propria terra dall'alto. A me bastano poche monete. Strani tempi.",
+		"Campi, strade, tetti, tutto così piccolo da nasconderlo dietro un pollice. Da lassù il regno sembra una cosa che si potrebbe aggiustare.",
+		"Un volo costa meno di una settimana a piedi e quella settimana te la restituisce. Per un umano è un affare che vale ogni moneta.",
+	},
+	["race.human.npc_meet.w08.010"] = {
+		"Voi nani affidate la vita a questi grifoni. Io mi affiderò a voi, e terrò gli occhi chiusi.",
+		"Gente dei grifoni, dalle parti di Ironforge? Allora dimmi la verità: alla bestia gli umani piacciono, o ci sopporta e basta?",
+	},
+	["race.human.npc_meet.w08.011"] = {
+		"Si dice che gli scalpellini che ricostruirono Stormwind non abbiano mai visto la paga. Io conto il deposito due volte e tengo la ricevuta.",
+		"Una banca. Chissà quale nobile sta prendendo in prestito sui miei risparmi. Così funzionano i regni, mi dicono.",
+		"Monete nel forziere, monete nella borsa. Noi umani la fortuna la sparpagliamo: abbiamo imparato a non tenerla tutta in una città sola.",
+	},
+	["race.human.npc_meet.w08.012"] = {
+		"Guai? Raccontami. C'è sempre una fattoria da sistemare prima del raccolto, e tanto vale che sia io a sistemarla.",
+		"Noi umani non tiriamo dritto davanti a un vicino impantanato. Dimmi dov'è il fango.",
+		"Di' pure cosa ti serve. Siamo gente dalla vita breve, noi umani: il tempo preferiamo spenderlo ad aiutare che a chiederci se farlo.",
+	},
+	["race.human.npc_meet.w08.013"] = {
+		"Una faccia della nostra gente, con quella stanchezza che conosco da ogni villaggio con troppe poche braccia. Certo che ascolto.",
+		"Un volto umano che chiede aiuto. Potrebbe essere un contadino qualunque, una vedova, un fattore di casa nostra. Per questo mi fermo sempre.",
+	},
+	["race.human.npc_meet.w08.014"] = {
+		"Perfino gli elfi chiedono aiuto a noi umani. Hanno vissuto dieci delle mie vite e serve ancora qualcuno che vada a prendere le cose. Stranamente, mi consola.",
+		"Gli elfi misurano i loro guai in secoli. I miei si misurano in settimane. Vediamo di che tipo è questo.",
+	},
+	["race.human.npc_meet.w08.015"] = {
+		"Un muso lungo dietro il banco. Ogni paese umano ne ha uno, e ogni paese umano insorgerebbe se andasse in pensione.",
+		"Una smorfia, un grugnito, una chiave fatta scivolare sul banco. Buffo come sappia di casa.",
+	},
+	["race.human.npc_meet.w08.016"] = {
+		"Sembri tutte le fiere di Goldshire messe insieme. D'accordo, fammi vedere cos'hai.",
+		"Tanta allegria di solito vuol dire un prezzo alto. Sono {g:umano|umana}: il trucco lo conosco. L'ho usato anch'io.",
+	},
+	["race.human.npc_meet.w08.017"] = {
+		"Qualcuno di casa a insegnarmi. Bene. Insegnami come si fa a Stormwind: alla svelta, e con una predica alla fine.",
+		"Chi insegna è della nostra gente. Allora capirai se ti dico che non ho gli anni per impararlo piano.",
+	},
+	["race.human.npc_meet.w08.018"] = {
+		"si strofina le mani al focolare e chiede dello stufato, come se ogni locanda della strada fosse la cucina di una fattoria.",
+		"posa qualche moneta sul banco e chiede prima le notizie e poi la stanza, come fanno i viaggiatori umani.",
+	},
+	["race.human.npc_meet.w08.019"] = {
+		"Quanta cerimonia. Parla come un cortigiano alla tavola di Bolvar, e scommetto che il lavoro resta un sacco di pelli di lupo.",
+		"Parole così misurate. A Stormwind si parla così solo quando si vuole qualcosa che non si può pagare.",
+	},
+	["race.human.npc_meet.w08.020"] = {
+		"Nani a custodire i forzieri. Le mie monete non sono mai state così al sicuro, né giudicate con tanta severità.",
+		"I banchieri nanici contano come scavano: fino all'ultima scaglia. Quasi mi sento {g:ricco|ricca}.",
+	},
+	["race.human.npc_meet.w08.021"] = {
+		"Hai l'aria di chi tiene una linea senza nessuno accanto. Noi umani le linee le teniamo: è quello che facciamo. Lascia che ne prenda un pezzo.",
+		"Il dovere pesa di più quando nessuno guarda. Conosco quel peso. Dimmi cosa c'è da fare.",
+		"Stormwind, si dice, l'ha ricostruita gente che ha continuato a lavorare anche quando la paga era finita. Una commissione per qualcuno come te posso farla.",
+	},
+	["race.human.npc_meet.w08.022"] = {
+		"La gentilezza in una locanda mi coglie sempre alla sprovvista. Gli umani hanno avuto qualche decennio duro: ci dimentichiamo che suono abbia.",
+		"Una parola calda, data senza chiedere niente. I profughi di Lordaeron avrebbero pianto per molto meno. Quasi piango io.",
+	},
+	["race.human.npc_meet.w08.023"] = {
+		"Metti tutto in un posto sicuro. Più sicuro di Westfall, almeno, il che di questi tempi non è chiedere molto.",
+		"Abbine cura. Un umano mette da parte per una fattoria, un tetto e una vecchiaia tranquilla. Soprattutto per il tetto.",
+	},
+	["race.human.other_action.w08.001"] = {
+		"Una compagnia? Ci sto. Noi umani abbiamo costruito un regno dicendo di sì agli sconosciuti per strada.",
+		"Contami. Ho una vita sola: tanto vale spenderne un po' in buona compagnia.",
+		"Volentieri. Un paio di mani in più non si rifiuta mai, e nemmeno l'occasione di esserlo.",
+	},
+	["race.human.other_action.w08.002"] = {
+		"Un piccolo gesto da chi passa. Come un cenno attraverso la piazza in un giorno di mercato: non costa niente e mette a posto qualcosa.",
+		"Qualcuno mi ha dedicato un gesto. Dopo anni di profughi e brutte notizie, la gente del regno ha imparato a tenersi care le piccole cortesie.",
+		"Un saluto dal nulla. Noi umani ne abbiamo bisogno più di quanto lasciamo vedere.",
+	},
+	["race.human.other_action.w08.003"] = {
+		"Un'altra promessa fatta. Una vita umana è fatta soprattutto di queste, mantenute o tradite. La mia vorrei mantenerla.",
+		"Un altro incarico. Dietro c'è una fattoria, una famiglia, un villaggio spaventato. Di solito è così.",
+		"Accettato. La mia gente non ha molto tempo: preferisco essere {g:ricordato|ricordata} per le commissioni finite che per quelle che volevo fare.",
+	},
+	["race.human.other_action.w08.004"] = {
+		"Finalmente. Risolviamola come si deve, come si faceva nei vecchi tornei di Lordaeron.",
+		"Accetto. Aspettavo questo momento da più tempo di quanto ti confesserei mai.",
+		"Era ora. Nessun rancore, e nessuna pietà.",
+	},
+	["race.human.other_action.w08.005"] = {
+		"Mi invita qualcuno della montagna? Allora ci sto, e dopo cercherò di stare al passo con le bevute. Cercherò.",
+		"Volentieri. Con qualcuno della montagna davanti, saprò finalmente cosa vuol dire avere un muro che risponde.",
+	},
+	["race.nightelf.npc_meet.w08.001"] = {
+		"Una locanda. Le Sentinelle hanno insegnato al mio popolo a riposare leggero e a svegliarsi al primo suono sbagliato. Riposerò anche qui così, e ringrazierò le pareti.",
+		"Una stanza con una porta che si chiude a chiave. Uno strano conforto. Nelle foreste del mio popolo, gli alberi erano le sole mura che servissero.",
+		"Birra e una pentola di stufato. Un tempo il mio popolo mangiava ciò che dava la foresta, alla luce della luna; ai piatti mi sono {g:abituato|abituata}, al chiasso intorno ancora no.",
+	},
+	["race.nightelf.npc_meet.w08.002"] = {
+		"Una stanza tranquilla, lontana dalle scale, se ce l'hai. Orecchie come le mie sentono ogni stivale su ogni gradino.",
+		"Qualcosa con le erbe, per favore, e acqua invece della birra. Il mio popolo ha una lunga abitudine alla mente lucida.",
+	},
+	["race.nightelf.npc_meet.w08.003"] = {
+		"Poche parole da {other}, e nessuna sprecata. Le Sentinelle approverebbero. Scopro che approvo anch'io.",
+		"Un oste sbrigativo. Dopo le infinite cortesie di Darnassus, è quasi riposante.",
+	},
+	["race.nightelf.npc_meet.w08.004"] = {
+		"Una persona del mio popolo tiene questa locanda. Ci scambiamo il saluto sommesso di Teldrassil, e d'un tratto la sala sembra meno rumorosa.",
+		"{other} è della mia gente, e versa senza chiedere. Abbiamo la stessa sete di quiete.",
+	},
+	["race.nightelf.npc_meet.w08.005"] = {
+		"Il mio popolo ha avuto diecimila anni per imparare la pazienza, e neanche una volta ha imparato a mercanteggiare.",
+		"Monete che passano di mano così in fretta. Tra la mia gente uno scambio era una cortesia lenta, fatta di lunghi silenzi; qui finisce prima che io abbia finito l'inchino.",
+		"Mi prendo il mio tempo sulla merce. Il mercante si dondola da un piede all'altro; per un elfo della notte, questa è appena un'occhiata.",
+	},
+	["race.nightelf.npc_meet.w08.006"] = {
+		"Fammi vedere ciò che è stato fatto con cura. Le cose buone so aspettarle: aspettare è ciò che il mio popolo sa fare meglio.",
+		"Filo, olio, un buon coltello. E niente che tintinni o che luccichi: gli elfi della notte preferiscono passare inosservati.",
+		"Erbe della foresta profonda, se ne hai. Altrimenti prenderò il tuo pane più semplice, e sentirò un po' la mancanza degli alberi.",
+	},
+	["race.nightelf.npc_meet.w08.007"] = {
+		"Un sorriso svelto e lucido come una moneta. Il mio popolo ha imparato a diffidare di tutto ciò che matura così in fretta.",
+		"{other} mi propone un prezzo pensato per chi se lo dimenticherà entro l'anno. Io me lo ricorderò molto a lungo, perciò offro meno.",
+	},
+	["race.nightelf.npc_meet.w08.008"] = {
+		"Un mercante nano, rumoroso e onesto. Quando l'Alleanza ci ha messi insieme, il mio popolo trovava i nani strani; io, più li conosco, più li trovo riposanti.",
+		"{other} batte il pugno sul banco per sottolineare qualcosa. I nani trattano il silenzio come un buco da riempire; io lo tratto come un ospite. Ci arrangiamo.",
+	},
+	["race.nightelf.npc_meet.w08.009"] = {
+		"Un mercante umano, che parla in fretta perché la vita è breve. Cerco di ascoltare in fretta anch'io: è solo cortesia.",
+		"{other} mi ha già venduto qualcosa, mi ha ringraziato e guarda già il cliente successivo. Gli umani vivono tutta la vita a questa velocità.",
+	},
+	["race.nightelf.npc_meet.w08.010"] = {
+		"Tra la mia gente anche le sacerdotesse più anziane prendono ancora lezioni. Non c'è un'età in cui si smette di essere allievi.",
+		"Imparare da {other}. Le Sentinelle dicono che la freccia convinta di conoscere la strada è quella che manca il bersaglio.",
+	},
+	["race.nightelf.npc_meet.w08.011"] = {
+		"Ti ascolto. Parla piano quanto vuoi: il mio popolo non se n'è mai lamentato.",
+		"Mostramelo ancora, per favore. Preferisco impararlo bene che presto: un tempo il mio popolo aveva tutti gli anni del mondo, e l'abitudine è rimasta.",
+	},
+	["race.nightelf.npc_meet.w08.012"] = {
+		"Chi governa i voli, e cavalcature alate che sanno di vento d'alta quota. Il mio popolo ha sempre chiesto prima alle bestie e poi ai loro custodi: vecchie maniere, ma funzionano.",
+		"Cavalcature alate, ancora una volta. Preferisco le strade lente della foresta, ma Kalimdor è vasto e i Regni Orientali ancora di più.",
+	},
+	["race.nightelf.npc_meet.w08.013"] = {
+		"Mi basta che dall'altra parte ci sia una foresta. Una qualunque: da lì troverò la strada.",
+		"Fammi volare basso sopra gli alberi, se la bestia lo consente. Mi piace guardare le chiome che respirano.",
+	},
+	["race.nightelf.npc_meet.w08.014"] = {
+		"Un banchiere e una camera blindata. Gli elfi della notte non si sono mai fidati molto delle monete: l'oro non cresce, e non si ricorda di niente.",
+		"Un banchiere. Strano, affidare ciò che possiedo alla custodia di un estraneo. D'altra parte il mio popolo ha affidato foreste intere alle Sentinelle, e le foreste sono ancora lì.",
+	},
+	["race.nightelf.npc_meet.w08.015"] = {
+		"Qualcuno nei guai. Il mio popolo è rimasto chiuso nelle sue foreste per diecimila anni, lasciando ad altri i guai del mondo. Preferirei non voltarmi più dall'altra parte.",
+		"{other} ha un incarico e uno sguardo pieno di speranza. Le sacerdotesse insegnano che la luce di Elune cade su chi si ferma ad aiutare. Mi fermo.",
+		"Una richiesta, fatta senza giri di parole. Le foreste del mio popolo sono sempre state custodite da chi rispondeva a cose così. Risponderò.",
+	},
+	["race.nightelf.npc_meet.w08.016"] = {
+		"Dimmi cosa ti turba, e non tralasciare nulla. A un elfo della notte non è mai mancato il tempo per una storia intera.",
+		"Parla. Ascolterò come ascolta la foresta: tutto, e senza interrompere.",
+	},
+	["race.nightelf.npc_meet.w08.017"] = {
+		"Una guardia dell'Alleanza. Chiunque sia, ha l'immobilità di una Sentinella durante un lungo turno. Le rivolgo il cenno che facciamo al limitare della foresta.",
+		"I colori dell'Alleanza al posto di guardia. Un tempo il mondo era vasto e vuoto, per il mio popolo. Ora ha amici sulle sue strade, e alcuni portano lance anche per noi.",
+		"Una guardia della nostra parte, la lancia dritta. Sento le spalle raddrizzarsi da sole, per accordarsi: vecchia abitudine del mio popolo.",
+	},
+	["race.nightelf.npc_meet.w08.018"] = {
+		"Una guardia dell'Orda. Ashenvale sanguina sotto le loro asce, dicono le Sentinelle. Tengo il volto fermo e le mani bene in vista.",
+		"Una guardia dell'Orda ha notato le mie orecchie da lontano. Il mio popolo è fatto per svanire nell'ombra; oggi dovrò accontentarmi di camminare con calma.",
+		"La guardia dell'Orda mi nota e non distoglie lo sguardo. Va bene. In diecimila anni il mio popolo è stato osservato da cose peggiori.",
+	},
+	["race.nightelf.npc_meet.w08.019"] = {
+		"si fa immobile come un nightsaber nell'erba alta sotto lo sguardo della guardia dell'Orda, le orecchie tirate indietro, e lascia passare il momento.",
+		"resta al margine dello sguardo della guardia nemica, muovendosi con la pazienza silenziosa della sua gente.",
+	},
+	["race.nightelf.npc_meet.w08.020"] = {
+		"{other} parla per enigmi. Anche le sacerdotesse di Elune rispondono così, quando preferiscono che sia la luna a parlare per loro.",
+		"Enigmi. Il mio popolo è cresciuto tra sogni e presagi: una risposta velata in più non mi turba.",
+	},
+	["race.nightelf.npc_meet.w08.021"] = {
+		"Dolore, lì, dietro gli occhi di {other}. Il mio popolo porta quello sguardo da quando l'Albero del Mondo rinunciò alla sua benedizione, a Hyjal. So che non bisogna mettergli fretta.",
+		"Un cuore pesante. La luce di Elune non discute con il buio: resta, e basta. Per un po' posso fare lo stesso.",
+	},
+	["race.nightelf.npc_meet.w08.022"] = {
+		"risponde al saluto allegro con il sorriso lieve e lento della sua gente, di quelli che durano più di quanto sembri.",
+		"china il capo, le lunghe orecchie che si sollevano appena al calore di quella voce.",
+	},
+	["race.nightelf.npc_meet.w08.023"] = {
+		"Tyrande Whisperwind. L'Alta Sacerdotessa sta tra il mio popolo e il buio da più tempo di quanto la maggior parte dei regni sia rimasta in piedi. Mi inchino, e lo intendo davvero.",
+		"L'Alta Sacerdotessa. C'è chi dice che Elune sorrida un po' più luminosa vicino a lei. Da qui, non avrei niente da obiettare.",
+		"Tyrande in persona. Il mio popolo ha una memoria lunga, e ora sembra che tutta la mia si sia radunata qui in una volta.",
+	},
+	["race.nightelf.other_action.w08.001"] = {
+		"Una compagnia? Cammino con voi. Non faccio rumore, e vedo bene dove altri non vedono.",
+		"Volentieri. Il mio popolo non è nato per vagare da solo; ci si è soltanto abituato.",
+		"Ci sto. Dimmi dove mettermi, e ci sarò prima che tu te ne accorga.",
+	},
+	["race.nightelf.other_action.w08.002"] = {
+		"Un duello? Va bene. Non prenderla sul personale se mi perdi di vista.",
+		"Accetto. Le Sentinelle dicono che una sfida leale insegna più di un anno di esercitazioni.",
+		"Un incontro d'allenamento? Accetto. Guarda i miei piedi: il mio popolo ha insegnato loro a mentire.",
+	},
+	["race.nightelf.other_action.w08.003"] = {
+		"Elune-adore, viandante. Cammina in silenzio.",
+		"Anche a te. Che la tua strada sia quieta e l'ombra gentile.",
+	},
+	["race.nightelf.other_action.w08.004"] = {
+		"Uno scambio, allora. Con onestà, e con calma: il mio popolo non ama un affare che si chiude prima di essere capito.",
+		"Facciamo lo scambio. Controllerò tutto due volte: non è sfiducia, è solo l'abitudine di un popolo longevo.",
+	},
+	["race.nightelf.other_action.w08.005"] = {
+		"Un compito accettato. Le sacerdotesse dicono che ogni promessa si fa sotto la luna, che qualcuno alzi lo sguardo o no.",
+		"Un'altra promessa da mantenere. Un tempo il mio popolo aveva tutto il tempo del mondo per mantenerle. Ora preferisco non sprecarne.",
+	},
+	["race.nightelf.other_action.w08.006"] = {
+		"Io e te? Bene. Il mio popolo combatte meglio quando non si fa vedere: cercherò di giocare pulito.",
+		"Un incontro tra amici, allora. Chi perde porta i bagagli fino al prossimo accampamento.",
+	},
+	["race.tauren.npc_meet.w08.001"] = {
+		"Un tetto, e qualcuno che lo custodisce. Un tempo il mio popolo caricava la casa sul dorso di un kodo a ogni stagione: una casa che resta ferma mi sembra ancora un ospite che non se ne va mai.",
+		"Pareti che non si spostano. Tra i clan delle pianure, la casa andava dove andava la mandria. Proverò a dormire in una che ha smesso di camminare.",
+		"Quattro mura e una porta. A Mulgore saprei da che parte arriva il vento; qui dentro dovrò fidarmi di chi tiene la locanda.",
+	},
+	["race.tauren.npc_meet.w08.002"] = {
+		"Qualunque cosa ci sia nel pentolone, ne prendo una ciotola. Una ciotola grande: capirai perché quando mi siedo.",
+		"Dammi da mangiare come a due viandanti. Prometto di pagare per uno e mezzo.",
+	},
+	["race.tauren.npc_meet.w08.003"] = {
+		"Un oste di poche parole. Bene. Nelle pianure si dice che il kodo che muggisce meno è quello che tira più a lungo.",
+		"Parole brevi e un cenno verso le scale. Un'accoglienza che un tauren capisce: non siamo mai stati tipi da lunghi discorsi sulla soglia.",
+	},
+	["race.tauren.npc_meet.w08.004"] = {
+		"Grazie dell'accoglienza. Nelle pianure all'ospite si offre prima l'acqua: la prenderei volentieri anche qui.",
+		"Una parola calda sulla soglia. Il mio popolo risponderebbe con un dono, ma io porto solo la polvere della strada.",
+	},
+	["race.tauren.npc_meet.w08.005"] = {
+		"Una persona del mio popolo custodisce questo focolare. Ci scambiamo il cenno lungo e lento delle pianure, e qualcosa nelle mie spalle si scioglie.",
+		"Un tauren dietro il banco, lontano dall'erba o vicino che sia, poco importa. Mangerò bene, e nessuno guarderà due volte le mie corna.",
+	},
+	["race.tauren.npc_meet.w08.006"] = {
+		"Merce piccola su un banco piccolo. Le mie mani sono fatte per le pelli e i carichi pesanti: prendo ogni ninnolo come se fosse un uovo d'uccello.",
+		"Tutto quello che c'è su questo banco mi sta nel palmo, tre pezzi alla volta. Conto le monete piano, per non spazzare la merce sul pavimento.",
+		"Lo scaffale di un mercante è un posto pericoloso per un paio di corna. Tengo la testa ferma e indico con un dito, piano.",
+	},
+	["race.tauren.npc_meet.w08.007"] = {
+		"Pelli, cuoio, un buon otre. Fammi vedere quello che serve a una lunga camminata, e lascia le cose luccicanti a gente più leggera.",
+		"Mi serve quello che tiene un viandante sfamato e all'asciutto. Se è solo grazioso, può restare a te.",
+		"Corda buona, filo robusto, sale per la carne. Le pianure hanno insegnato al mio popolo a comprare ciò che ripara e ciò che conserva.",
+	},
+	["race.tauren.npc_meet.w08.008"] = {
+		"Quel sorriso misura la mia stazza e raddoppia il prezzo. Sorriderò anch'io, e lo dimezzerò.",
+		"{other} mi guarda come un cacciatore guarda un kodo: un sacco di pelle da lavorare.",
+	},
+	["race.tauren.npc_meet.w08.009"] = {
+		"Uno dei Reietti dietro il banco. Il mio popolo ha parlato in loro favore davanti all'Orda, sperando che si trovasse una cura. Guardando {other}, lo spero ancora.",
+		"Un mercante dei Reietti. La Madre Terra non esclude nessuno dal suo cerchio, insegnano gli anziani. Facile a dirsi; più difficile dirlo a un volto come quello, e crederci.",
+	},
+	["race.tauren.npc_meet.w08.010"] = {
+		"Gli anziani del mio popolo insegnano camminandoti accanto, non parlandoti addosso. Chiederò a {other} di mostrarmi prima e di spiegare poi.",
+		"Certe conoscenze arrivano solo a chi sa stare fermo abbastanza a lungo. Io so restare immobile come una pietra eretta: chiedetelo a qualunque plainstrider mi sia passato accanto.",
+	},
+	["race.tauren.npc_meet.w08.011"] = {
+		"Insegnami come insegneresti a chiunque. Lasciami solo un po' più di spazio intorno quando ci esercitiamo.",
+		"Ho voglia di imparare. Se qualcosa si rompe mentre ci provo, non sarà apposta: noi tauren siamo semplicemente larghi.",
+	},
+	["race.tauren.npc_meet.w08.012"] = {
+		"Una viverna, e chi ne conosce gli umori. I tauren non sono mai stati fatti per il cielo, ma il cielo non sembra badare al peso in più.",
+		"{other} mi squadra, poi guarda la viverna, poi di nuovo me. La bestia sospira. Faccio finta di non sentire.",
+		"La viverna sposta le ali quando mi avvicino, come se mi pesasse. Tra noi c'è un'intesa: a nessuno dei due piace il primo balzo.",
+	},
+	["race.tauren.npc_meet.w08.013"] = {
+		"I miei zoccoli preferiscono l'erba, ma la strada è lunga. Dammi la bestia alata più forte che hai, e prima nutrila bene.",
+		"Gli zoccoli sono fatti per la terra. Scegli la bestia più robusta che hai: dovrà portare la fiducia di un tauren intero.",
+	},
+	["race.tauren.npc_meet.w08.014"] = {
+		"Un banchiere. I clan delle pianure tenevano la ricchezza su quattro zampe e la contavano all'abbeveratoio. Le monete in una cassa chiusa sono una mandria ben più strana.",
+		"Un tempo il mio popolo misurava la ricchezza di una famiglia in kodo. Chissà quante monete fanno un buon kodo. Più di quante ne abbia io, probabilmente.",
+	},
+	["race.tauren.npc_meet.w08.015"] = {
+		"Qualcuno con un problema, che alza lo sguardo verso di me. Essere grandi vuol dire che la gente ti porta le cose pesanti. E sia: sono {g:fatto|fatta} per portare.",
+		"Nelle pianure, a uno straniero che chiedeva aiuto si dava l'acqua prima ancora di parlare. Sentiamo di cosa ha bisogno {other}.",
+		"Un tauren non volta le spalle a chi chiede aiuto: si prende solo il tempo di capire. Avanti, {other}.",
+	},
+	["race.tauren.npc_meet.w08.016"] = {
+		"Parla, e prenditi il tuo tempo. Un tauren ascolta fino in fondo prima di decidere qualcosa.",
+		"Raccontami tutto. Il mio popolo segue un guaio come segue una pista: fino al posto dove la bestia si corica.",
+	},
+	["race.tauren.npc_meet.w08.017"] = {
+		"Gli anziani raccontano di come le lame dell'Orda aiutarono a scacciare i centauri da Mulgore. Per questo saluto con un cenno ogni guardia dell'Orda, chiunque sia.",
+		"I colori dell'Orda su un posto di guardia attento. Prima, il mio popolo percorreva le pianure senza mura. Ora le mura ci sono, ed è strano quanto facciano sentire al sicuro.",
+		"Una guardia dell'Orda, con i colori accanto ai quali il mio popolo ha scelto di stare. Scelto: è la parola che usano sempre gli anziani.",
+	},
+	["race.tauren.npc_meet.w08.018"] = {
+		"Una guardia dell'Alleanza, e io sono la cosa più grossa su questa strada. Nascondersi non è tra i doni del mio popolo. Passi lenti, allora, e mani aperte.",
+		"La loro guardia cerca l'acciaio appena le mie corna entrano in vista. Non ne faccio una colpa: da lontano, un tauren è difficile da scambiare per un amico.",
+	},
+	["race.tauren.npc_meet.w08.019"] = {
+		"tiene entrambe le mani aperte e basse, le corna inclinate di lato, mentre la guardia dell'Alleanza ne prende le misure.",
+		"rallenta il passo, gli zoccoli che risuonano sulla strada, e alla guardia nemica non dà altro motivo di allarme che la propria stazza.",
+	},
+	["race.tauren.npc_meet.w08.020"] = {
+		"Ogni parola di {other} ne nasconde un'altra ripiegata dentro. I veggenti del mio popolo parlano così. Ascolto il vento sotto le parole.",
+		"Indovinelli. I veggenti di Mulgore rispondono allo stesso modo, con una domanda e un lungo sguardo. Pazienza, allora.",
+	},
+	["race.tauren.npc_meet.w08.021"] = {
+		"risponde al benvenuto allegro con una risata profonda che sembra partire dagli zoccoli.",
+		"sbuffa a lungo, con calore divertito: il modo delle pianure di ridere insieme agli altri.",
+	},
+	["race.tauren.npc_meet.w08.022"] = {
+		"Un cuore pesante dietro quel volto. Il mio popolo siede accanto al dolore invece di parlargli sopra. Starò in silenzio un po', con {other}.",
+		"C'è tristezza in questa persona. Gli anziani offrirebbero una pipa e del silenzio. Io ho solo il silenzio, ma è di quello buono.",
+	},
+	["race.tauren.npc_meet.w08.023"] = {
+		"Cairne Bloodhoof. Ogni tauren conosce i racconti; nessuno ti prepara alla vastità del silenzio che gli sta intorno.",
+		"L'Alto Capo. Il mio popolo ha percorso le pianure sotto la sua parola, e sotto la sua parola ha smesso di vagare. Abbasso le corna, piano.",
+		"Davanti all'Alto Capo, anche un tauren si sente piccolo. Per una volta, è una bella sensazione.",
+	},
+	["race.tauren.other_action.w08.001"] = {
+		"Una battuta di caccia? Bene. Indicami la pista e terrò il passo.",
+		"Mi unisco a voi. Una mandria si muove più sicura unita, e così i viandanti.",
+		"Contate anche su un tauren. Mangio tanto, ma porto di più.",
+	},
+	["race.tauren.other_action.w08.002"] = {
+		"Anche a te, viandante. Che i tuoi otri restino pieni.",
+		"Pace anche a te. Che la Madre Terra tenga d'occhio la tua strada.",
+	},
+	["race.tauren.other_action.w08.003"] = {
+		"Uno scambio, allora. Nelle pianure lo si suggellava dividendo un boccone. Ti risparmio il pasto.",
+		"Scambiamo onestamente. Di un tauren che imbroglia negli scambi si parla a ogni fuoco, da Mulgore fino al mare.",
+	},
+	["race.tauren.other_action.w08.004"] = {
+		"Un incontro? Volentieri. Tieni i piedi ben piantati: spingo come un kodo appoggiato a uno steccato.",
+		"Va bene. I vitelli del mio popolo lo imparano prima ancora di correre. Quando vuoi.",
+		"Lottare con un tauren? Hai più coraggio di quanto sembri. Avanti, allora.",
+	},
+	["race.tauren.other_action.w08.005"] = {
+		"Un incontro tra amici? Ah! Chi finisce nella polvere cucina il prossimo pasto.",
+		"Io e te? Bene. Tu bada alle corna, io baderò al tuo orgoglio.",
+	},
+	["race.tauren.other_action.w08.006"] = {
+		"Un compito affidato, e accettato. Il mio popolo dice che una promessa è un paletto piantato nel terreno: puoi andartene, ma resta dove l'hai lasciato.",
+		"Un altro guaio sulle spalle. Va bene: sono spalle larghe, ed è a questo che servono.",
+	},
 }, "base_context")
