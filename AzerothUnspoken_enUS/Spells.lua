@@ -434,4 +434,252 @@ NS:AddTexts("enUS", {
 		"works quickly and without fuss, the way one mends a torn strap before setting off again.",
 		"murmurs under {g:his|her} breath, attention fixed on the hurt and nothing else.",
 	},
+	["buff.w06.001"] = {
+		"Something settles in under the skin and stays. Good. The road's long.",
+		"One more margin in my favor. Margins are what bring people home.",
+		"Not invincibility. Preparation, which is the honest version of it.",
+	},
+	["buff.w06.002"] = {
+		"Go on, {target}. You're carrying a little extra now; spend it wisely.",
+		"That's yours for a while. Don't waste it on the first thing that growls.",
+		"Off you go, {target}, with a little more than you came with.",
+	},
+	["heal.w06.001"] = {
+		"The wound closes. It will ache tomorrow, but tomorrow is a long way off.",
+		"Closed, more or less. The ache can wait for the evening; it always does.",
+	},
+	["heal.w06.002"] = {
+		"pauses for a moment while the worst of the hurt draws back, then looks up again.",
+		"waits, quite still, as the hurt loosens its grip one finger after another.",
+	},
+	["heal.w06.003"] = {
+		"Mending is the easy part. Not getting hurt again in the next five minutes, that's the art.",
+		"Patching up is simple. The hard trick is staying patched past the next corner.",
+		"Closing a wound takes a moment. Keeping it closed takes judgment.",
+	},
+	["heal.w06.004"] = {
+		"It'll do. Admiring it won't make it hold any better.",
+		"Good enough. Standing around won't make it any better.",
+		"Done. Feet moving, please.",
+	},
+	["heal.w06.005"] = {
+		"Every mending buys a little more time. Nobody ever says from whom.",
+		"Time bought back in handfuls. I've never once seen the seller's face.",
+	},
+	["heal.w06.006"] = {
+		"checks the mended hurt with a careful glance, as one checks a knot before trusting weight to it.",
+		"gives the closing wound a long look, the kind a carpenter gives a joint before calling it done.",
+	},
+	["heal.w06.007"] = {
+		"Whole enough. Whatever comes next won't wait for me to feel ready.",
+		"Mended enough to go on. Going on was always the only plan.",
+	},
+	["heal.w06.008"] = {
+		"Look at that. Almost presentable again.",
+		"There. Nearly fit to be seen in company.",
+		"Better. Nobody would guess, provided nobody looks too closely.",
+	},
+	["heal.w06.009"] = {
+		"A wound is a lesson paid for in advance. I'd better learn this one, then.",
+		"Somebody paid for that lesson in blood. Wasting it would be the real insult.",
+	},
+	["heal.w06.010"] = {
+		"takes the quiet moment to let the mending finish, unhurried, in no mood to be interrupted.",
+		"lets the stillness do its share of the work while the hurt fades.",
+	},
+	["heal.w06.011"] = {
+		"Not done yet. Not even halfway.",
+		"You'll have to hit a good deal harder than that.",
+	},
+	["heal.w06.012"] = {
+		"I've stopped counting the wounds. Now I count the hours left before rest.",
+		"The cuts have stopped being news. They're just part of the road now.",
+		"Another hurt, another mending. The two of them keep each other in work.",
+	},
+	["heal.w06.013"] = {
+		"There's a rhythm to mending: look, judge, close, move on. The rhythm is what keeps the hands steady.",
+		"Look, judge, close, move on. Say it often enough and the hands stop shaking.",
+	},
+	["heal.w06.014"] = {
+		"Better. Much better. Right, what did I miss?",
+		"Ah, that's an improvement. Shall we?",
+	},
+	["heal.w06.015"] = {
+		"Bodies are stubborn things. Give them half a chance and they'll insist on carrying on.",
+		"Flesh wants to close. Most of the work is just not getting in its way.",
+	},
+	["heal.w06.016"] = {
+		"inspects the result with the faint suspicion of someone who has been promised good as new before.",
+		"regards the mended hurt the way one regards a cheap repair: grateful, and not entirely convinced.",
+	},
+	["heal.w06.017"] = {
+		"Again, then. As many times as it takes.",
+		"As often as it breaks, it gets mended. That's the bargain.",
+		"Break, mend, break, mend. I can keep this up longer than they can.",
+	},
+	["heal.w06.018"] = {
+		"Cheaper to mend now than to be carried later.",
+		"A small fix now saves a much longer walk later.",
+	},
+	["heal.w06.019"] = {
+		"pulls the cork with {g:his|her} teeth, drinks the vial down in two swallows and tucks the empty glass away.",
+		"tips back a small vial, grimaces at the last drop, and stoppers the empty glass out of habit.",
+		"drinks the potion off without ceremony, wipes {g:his|her} mouth on a sleeve, and gets on with things.",
+	},
+	["heal.w06.020"] = {
+		"Red, thick, faintly fizzy. I've stopped asking what alchemists put in these. I'm happier not knowing.",
+		"An alchemist out there is getting rich on my clumsiness. Good luck to them.",
+	},
+	["heal.w06.021"] = {
+		"Here's to not needing the second one.",
+		"One down. Let's keep it to one.",
+		"To the next fight, and to walking away from it.",
+	},
+	["heal.w06.022"] = {
+		"One vial lighter. I should count what's left before I need another.",
+		"The pack is a little lighter now. Restock at the next merchant; future me will be grateful.",
+	},
+	["heal.w06.023"] = {
+		"Sweet on the tongue and bitter all the way down. Like most good advice.",
+		"Tastes of copper and regret, and I'd drink it again.",
+	},
+	["heal.w06.024"] = {
+		"A green stone crumbles in the palm, and the life it held passes over. It was made for exactly this.",
+		"The stone gives up what it was holding and goes dull in the hand. A fair trade, for once.",
+		"No taste, no smell, just the hurt going quiet. Whoever first put life in a stone was onto something.",
+	},
+	["heal.w06.025"] = {
+		"closes {g:his|her} fist around a pale green stone; when the hand opens again, there is nothing left but grit.",
+		"crushes a small green stone in one hand, and stands a little steadier for it.",
+	},
+	["heal.w06.026"] = {
+		"A stone that heals. Best not tell the miners.",
+		"Most stones break your bones. This one does the opposite. No complaints here.",
+	},
+	["heal.w06.027"] = {
+		"winds a strip of linen tight around the wound, holding one end in {g:his|her} teeth to pull the knot.",
+		"binds the hurt with quick turns of cloth, tucks the loose end under, and tests the hold with a flex.",
+	},
+	["heal.w06.028"] = {
+		"Over, under, pull. The knot comes easier every time I need it, which is not a good sign.",
+		"Clean cloth, firm turns, a knot that won't slip. Simple things keep you alive longer than clever ones.",
+		"Two turns, a tuck, a knot. The hands know this better than I'd like them to.",
+	},
+	["heal.w06.029"] = {
+		"Linen and spite. Best medicine I can afford.",
+		"It's a bandage, not a miracle. Still beats leaking.",
+	},
+	["heal.w06.030"] = {
+		"The cloth goes red at the edges and stops there. Good. That's all I ask of it.",
+		"Another wrapping over the last one's scar. My arms are turning into a map of bad days.",
+	},
+	["heal.w06.031"] = {
+		"Easy, {target}. Let it work. You can be brave again in a minute.",
+		"Give it a moment. Brave can wait until this closes.",
+	},
+	["heal.w06.032"] = {
+		"{target}, I can fix holes. I can't fix your habit of collecting them.",
+		"Mended. Now please stop standing where the sharp things go.",
+		"There. For a while, try not to open any new ones.",
+	},
+	["heal.w06.033"] = {
+		"Look at the eyes, not the wound. The eyes tell me if I'm in time.",
+		"Watch the face, not the hurt. The face says whether I'm fast enough.",
+	},
+	["heal.w06.034"] = {
+		"You fall when I say so, {target}, and I haven't said so.",
+		"Nobody goes down while I'm still standing here. Nobody.",
+		"Stay up, {target}. Falling isn't in the plan.",
+	},
+	["heal.w06.035"] = {
+		"lays a steady hand on {target}'s shoulder and keeps it there until the worst has passed.",
+		"bends over the one who is hurt without any hurry, as if there were all the time in the world.",
+	},
+	["heal.w06.036"] = {
+		"There you are, {target}. Nearly as before, give or take a scar.",
+		"All done. You owe me the story of how that happened.",
+		"There, {target}. In an hour you'll hardly know it happened.",
+	},
+	["heal.w06.037"] = {
+		"I can close the wound. The taste for risk that opened it was never mine to mend.",
+		"Hands can mend flesh. No hands anywhere mend recklessness.",
+	},
+	["heal.w06.038"] = {
+		"Don't look at it, {target}. Look at me. I'll do the rest.",
+		"Eyes on me, not on that. I've got the rest.",
+	},
+	["heal.w06.039"] = {
+		"Done, {target}. Back in, and keep your guard up this time.",
+		"Go on. You're good for another round.",
+	},
+	["heal.w06.040"] = {
+		"{target}, at this rate I should start charging by the wound.",
+		"At this rate I'll need a ledger kept just for this one.",
+	},
+	["heal.w06.041"] = {
+		"murmurs a few plain words of comfort, the sort that mean nothing and help anyway.",
+		"keeps up a low, easy patter while working, as one does with a skittish horse.",
+	},
+	["heal.w06.042"] = {
+		"Rest a moment, {target}. The road will keep. It always does.",
+		"Sit. The road isn't leaving without you.",
+	},
+	["race.dwarf.heal.w06.001"] = {
+		"The old miners say a wound is like a seam in the rock: it can look closed and still hide a crack. Best check twice.",
+		"Down in the deeps they say you don't trust a mended thing until it's carried weight. Fair enough.",
+	},
+	["race.dwarf.heal.w06.002"] = {
+		"Tastes worse than the cheapest ale in Ironforge, and does twice the good.",
+		"Down the hatch. Not a patch on a proper stout, but it stops the bleeding.",
+	},
+	["race.human.heal.w06.001"] = {
+		"Back home they say a wound you can laugh at is half healed already. Someone start laughing.",
+		"Folk in Stormwind like to say pain is just the body sending a bill. Paid, then.",
+	},
+	["race.human.heal.w06.002"] = {
+		"Bottled courage, the old soldiers call it. Mostly it tastes of tin.",
+		"Stoppered, sealed, and priced like a week of bread. At least it works.",
+	},
+	["race.nightelf.heal.w06.001"] = {
+		"The Sentinels have a saying: no hurt is older than the forest, and the forest is still standing.",
+		"My people have outlived empires and a sundered sea. One more wound will not be the thing that ends us.",
+	},
+	["race.nightelf.heal.w06.002"] = {
+		"Linen, tight, then a knot. The Sentinels bind their wounds in silence; I can at least try.",
+		"Wrapped and tied off. Not the priestesses' blessing, but it will hold.",
+	},
+	["race.orc.heal.w06.001"] = {
+		"Tie it off and keep moving. The old warriors say a wound you stop for is a wound that wins.",
+		"Bandage, knot, done. Orcs have bled on worse ground than this.",
+		"Cloth, teeth to pull the knot tight, and back on my feet. Good enough.",
+	},
+	["race.scourge.heal.w06.001"] = {
+		"watches the torn flesh pull together with detached interest, as one might watch a stranger mend a coat.",
+		"regards the mending without a flicker of relief; pain stopped having much to say a long while ago.",
+	},
+	["race.scourge.heal.w06.002"] = {
+		"No taste, no warmth going down. It works anyway. Most things do, once you stop expecting to feel them.",
+		"A healing draught, for a body that's technically past healing. The irony isn't lost on me.",
+	},
+	["race.tauren.heal.w06.001"] = {
+		"Rest a moment. The Earth Mother is patient with the wounded, and so am I.",
+		"Lean on me if you need to. These shoulders were made for carrying.",
+		"Slowly. Even the kodo stop to rest after a long march.",
+	},
+	["race.troll.heal.w06.001"] = {
+		"Hold still, mon. The loa don't like a fidgeting patient.",
+		"Stay down a breath. You'll be up and grinnin' soon enough.",
+	},
+	["race.troll.heal.w06.002"] = {
+		"Wrap it tight and forget about it. Troll flesh knows what to do from there.",
+		"A bit of cloth to keep the dirt out. The regeneration does the real work.",
+	},
+	["rezother.w06.001"] = {
+		"Come on. Find the way back. I've left the door open.",
+		"Back you come. Slowly. The world's still here, more or less as you left it.",
+	},
+	["rezother.w06.002"] = {
+		"waits beside the fallen, hands open and patient, as one waits for a traveler late on the road.",
+		"keeps very still over the body, watching for the first small sign that someone is coming back.",
+	},
 }, "base_spells")

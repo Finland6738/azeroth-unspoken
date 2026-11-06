@@ -8,6 +8,55 @@ No version has been released yet: there are no distribution packages. The versio
 
 ## [Unreleased]
 
+### Content wave W06: the priest, the hunter, the warlock and the mage, and the heal lines of every gesture (issue #138)
+
+The sixth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
+after C0g ([ADR 0054](docs/adr/0054-event-rates-per-class-and-the-gestures-a-class-makes-for-itself.md)): the soft need
+of the healers' and the races' heal pools, the strict need of the generic `heal`, `buff` and `rezother` pools, and the
+strict need of the priest, the hunter, the warlock and the mage (the mage up to the 3,000 texts of the wave):
+**1,226 intentions, 3,058 texts per language** (6,116 in both), written by twelve parallel writer subagents (authors
+`ai-w06-<unit>`) and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate,
+submit, owner sample, approve, export; the round trip is an empty diff). No literary piece and no `tier` field. The
+addon goes from 7,723 to **8,949 intentions** and from 18,504 to **21,562 texts per language**.
+
+- **Added: four classes**, in `base_classes` (`cls.<class>.<event>.w06.NNN`): the priest 359 intentions, 923 texts per
+  language (heal, buff, resurrection, muse, quests, the fight); the hunter 285 and 711 (muse, quests, the fight, the
+  aspects, bandages and potions, Revive Pet, the companion's call, dismissal, mood, bond and loss); the warlock 278 and
+  676 (muse, quests, the fight, Health Funnel, healthstones, the soulstone, the demon's call, dismissal and loss); the
+  mage 220 and 563 (muse, quests, Arcane Intellect, Amplify and Dampen Magic, the fight). Every class line writes
+  `class` at the top level ([ADR 0053](docs/adr/0053-lines-of-the-character-only.md)) and holds for every race the class
+  can be in Classic: a priest line that names the Light writes `not = { race = "NightElf" }`, a line about a body that
+  breathes or bleeds warm writes `not = { race = "Scourge" }`, a line about the companion writes `petKind`, and a line
+  that names an ability writes the level it is learned at (`levelMin`).
+- **Added: the healers' soft need and the heal lines of every gesture.** The paladin, the shaman and the druid get 26
+  intentions (53 texts) of heal, buff and resurrection; the seven races with a soft gap 12 intentions (26 texts) of
+  heal, in `base_spells` (`race.<race>.heal.w06.NNN`); the generic pools 46 intentions (`heal.w06.NNN` 96 texts,
+  `buff.w06.NNN` 6, `rezother.w06.NNN` 4). Since ADR 0054 a heal fires on a healer's spell on anyone, on a potion or a
+  healthstone, on a bandage on oneself and on a warlock's Health Funnel, so every line fits all of them or narrows
+  itself: a line about one's own wound writes the gesture (`spell = { "potion", "pozione" }`, `spell = "healthstone"`,
+  `spellKind = "bandage"`, `spell = "health funnel"`); a line to the one being healed writes `hasTarget`, `friendly`
+  and `not` the self-only gestures; a healer's line that names a prayer or a spell writes `not` a potion or a
+  healthstone; a generic resurrection line writes `not` Revive Pet and the soulstone; the rest are neutral.
+- **Fixed at integration** (the combined check of every writer's files, and the sample read of each writer): one
+  Italian warlock line that said "visits I never made" for "guests I never invited".
+- **The gap after W06** (per language): soft need 8,950, gap **0** (was 96); strict need 29,482, gap **11,191** (was
+  14,195); random need 275,957, gap **255,815** (was 258,873). **89 waves** left (the next is the first row of
+  WAVES.md: the strict need of the shaman, the paladin, the druid and the rogue).
+- **Measured.** `bench_scale --sizes 0` (every line loaded): memory 22.1 -> 24.4 MB, pick 29.1 -> 29.5 thousand Lua
+  instructions (p95 53.3 -> 54.7); in the client only the character's own class lines are kept (ADR 0053).
+  `bench_trial --long 20` (seed 1): the troll mage's first exact repetition 6.50 -> 7.26 h (repeated 6.4 -> 6.5%, with
+  498 -> 522 interventions), the human paladin's 6.18 -> 6.84 h (7.9 -> 8.2%, 567 -> 583 interventions: its heals now
+  speak more often), the orc warrior's unchanged.
+- **Tests:** the counts of the base intentions, of the phrases of the validator, of the lines loaded, of `base_classes`
+  and of the companion's lines (63 -> 121).
+- **Docs:** the owner's review sheet of the wave, [docs/content/reviews/W06.md](docs/content/reviews/W06.md) (25
+  intentions, 2%); NEED.md, need.json and the WAVES.md table regenerated; the codec dictionaries rebuilt; ROADMAP,
+  README counts, wiki Phrase Packs.
+- **Known limits:** the Italian names in some `spell` conditions (aspects, Amplify and Dampen Magic, Shadow
+  Protection, Holy Fire, the warlock's spells) are the writers' best guess; on the English client of WoW Forever only
+  the English name matters. A heal line to the one being healed (`hasTarget`, `friendly`) can still speak when a healer
+  heals itself while a friend is targeted: no condition tells a cast on oneself from a cast on another.
+
 ### C0g: event rates per class, and the gestures a class makes for itself (issue #138, ADR 0054)
 
 Found by content wave W05 (PR #253): the need model gave every class the event rates of a three-character mix, but
