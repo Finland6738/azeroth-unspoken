@@ -375,7 +375,8 @@ def cmd_need(a):
         for u in w["units"]:
             print("  %s %s, %s need (%d texts)  conditions: %s" % (u["kind"], u["name"], u["target"], u["texts"], u["condition"]))
             for ev, _, _, n, has, needs, _ in u["pools"]:
-                print("    %-26s %5d more  (has %d, needs %d)" % (ev, n, has, needs))
+                cast = need.cast_condition(ev)   # the half of a heal or a buff split by castOnSelf (C0h, ADR 0055)
+                print("    %-26s %5d more  (has %d, needs %d)%s" % (ev, n, has, needs, "  " + cast if cast else ""))
         return 0
     md = need.to_markdown(res, a.top)
     if a.write:

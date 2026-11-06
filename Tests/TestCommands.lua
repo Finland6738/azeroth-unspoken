@@ -332,6 +332,138 @@ T.run("C0g: a line that speaks of a spell or of someone else is never said on a 
 	T.ok(fort["buff.01"] or fort["buff.02"] or fort["buff.03"], "the generic buff lines still speak on a buff spell")
 end)
 
+---------------------------------------------------------------------------
+-- C0h (ADR 0055): a cast on oneself and a cast on someone else (castOnSelf)
+---------------------------------------------------------------------------
+-- one cast of the player through the client's events; the context its line is chosen in (nil if nothing was offered)
+local function CastContext(name, target)
+	castN = castN + 1
+	local id, guid = 9000 + castN, "c0h-" .. castN
+	SPELLS[id] = name
+	Director.queue, Director.log = {}, {}
+	FIRE("UNIT_SPELLCAST_SENT", "player", target or "", guid, id)
+	FIRE("UNIT_SPELLCAST_SUCCEEDED", "player", guid, id)
+	local q = Director.queue[#Director.queue]
+	return q and q.event, q and NS:BuildContext(q.extra)
+end
+
+-- the lines that speak to the one healed or buffed: castOnSelf = false
+local function ToYouLines()
+	local ids, n = {}, 0
+	for id, p in Engine:Rules() do
+		if p.when and p.when.castOnSelf == false then ids[id], n = p, n + 1 end
+	end
+	return ids, n
+end
+
+-- the ids picked for an event in a context, over n picks with a fresh memory each time
+local function PickIds(event, ctx, n)
+	local seen = {}
+	for _ = 1, n do
+		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+		local rec = Engine:PickEntry(event, ctx, "say") or Engine:PickEntry(event, ctx, "emote")
+		if rec then seen[rec.id] = true end
+	end
+	return seen
+end
+
+T.run("C0h: castOnSelf is a known condition, and the lines to someone else write it", function()
+	T.eq(Engine.CONDITIONS.castOnSelf, "bool", "the validator knows castOnSelf")
+	local lines, n = ToYouLines()
+	T.ok(n >= 78, "the heal and buff lines to someone else say castOnSelf = false (" .. n .. ")")
+	for _, id in ipairs({ "heal.05", "heal.w04.001", "rel.heal.unknown", "race.dwarf.heal.001", "race.gnome.heal.001",
+		"race.human.heal.001", "race.nightelf.heal.001", "cls.priest.heal.001", "cls.paladin.heal.003",
+		"cls.druid.heal.003", "cls.shaman.heal.003", "rel.heal.friend", "buff.04", "cls.mage.buff.w06.007" }) do
+		T.ok(lines[id] ~= nil, "to someone else: " .. id)
+	end
+	-- unknown (no cast of the character): neither true nor false
+	T.ok(not Engine.SafeMatch({ castOnSelf = false }, {}) and not Engine.SafeMatch({ castOnSelf = true }, {}),
+		"an unknown castOnSelf matches neither value")
+	T.ok(Engine.SafeMatch({ ["not"] = { castOnSelf = true } }, { castOnSelf = false }), "`not` reads it too")
+end)
+
+T.run("C0h: a potion or a healthstone with a friend targeted never speaks to the friend", function()
+	Fresh()
+	local cls = P.class
+	local lines = ToYouLines()
+	P.target = { name = "Thrall", player = true, realm = "TestRealm" }
+	for _, c in ipairs({ "PRIEST", "PALADIN", "WARRIOR", "MAGE" }) do
+		P.class = c
+		for _, spell in ipairs({ "Major Healing Potion", "Major Healthstone" }) do
+			local event, ctx = CastContext(spell)
+			T.eq(event, "heal", c .. ": " .. spell .. " -> heal")
+			T.ok(ctx and ctx.castOnSelf == true and ctx.hasTarget and ctx.friendly, c .. ": " .. spell .. " is on oneself, the friend still targeted")
+			local wrong = {}
+			for id, p in pairs(lines) do
+				if Engine.SafeMatch(p.when, ctx) then wrong[#wrong + 1] = id end
+			end
+			T.eq(#wrong, 0, c .. ": " .. spell .. ": no line to someone else can be chosen " .. table.concat(wrong, ", "))
+			local seen = PickIds("heal", ctx, 60)
+			for id in pairs(seen) do T.ok(not lines[id], c .. ": " .. spell .. ": never picked " .. id) end
+		end
+	end
+	P.class = cls
+end)
+
+T.run("C0h: a heal or a buff cast on oneself with a friend targeted never speaks to the friend", function()
+	Fresh()
+	local cls = P.class
+	local lines = ToYouLines()
+	P.target = { name = "Thrall", player = true, realm = "TestRealm" }
+	for _, case in ipairs({ { "PRIEST", "Flash Heal", "heal" }, { "PALADIN", "Holy Light", "heal" },
+		{ "DRUID", "Rejuvenation", "heal" }, { "SHAMAN", "Healing Wave", "heal" },
+		{ "PRIEST", "Power Word: Fortitude", "buff" }, { "MAGE", "Arcane Intellect", "buff" } }) do
+		P.class = case[1]
+		local event, ctx = CastContext(case[2], P.name)
+		T.eq(event, case[3], case[1] .. ": " .. case[2] .. " on oneself -> " .. case[3])
+		T.ok(ctx and ctx.castOnSelf == true, case[1] .. ": " .. case[2] .. " on oneself is castOnSelf")
+		local wrong = {}
+		for id, p in pairs(lines) do
+			if Engine.SafeMatch(p.when, ctx) then wrong[#wrong + 1] = id end
+		end
+		T.eq(#wrong, 0, case[1] .. ": " .. case[2] .. " on oneself: no line to someone else " .. table.concat(wrong, ", "))
+		for id in pairs(PickIds(event, ctx, 60)) do T.ok(not lines[id], case[1] .. ": never picked " .. id) end
+	end
+	P.class = cls
+end)
+
+T.run("C0h: a heal or a buff cast on a friend still speaks to the friend", function()
+	Fresh()
+	local cls = P.class
+	local lines = ToYouLines()
+	P.target = { name = "Thrall", player = true, realm = "TestRealm" }
+	for _, case in ipairs({ { "PRIEST", "Flash Heal", "heal", "cls.priest.heal.001" },
+		{ "PALADIN", "Holy Light", "heal", "cls.paladin.heal.003" }, { "MAGE", "Arcane Intellect", "buff", "buff.04" } }) do
+		P.class = case[1]
+		local event, ctx = CastContext(case[2], "Thrall")
+		T.eq(event, case[3], case[1] .. ": " .. case[2] .. " on a friend -> " .. case[3])
+		T.ok(ctx and ctx.castOnSelf == false and ctx.target == "Thrall", case[1] .. ": " .. case[2] .. " on Thrall is not on oneself")
+		local ok = {}
+		for id, p in pairs(lines) do
+			if Engine.SafeMatch(p.when, ctx) then ok[id] = true end
+		end
+		T.ok(ok[case[4]], case[1] .. ": the lines to the friend can be chosen (" .. case[4] .. ")")
+		-- among many picks one of them is said: robust to the order of the picks, whatever the platform
+		local said = false
+		for id in pairs(PickIds(event, ctx, 400)) do if lines[id] then said = true end end
+		T.ok(said, case[1] .. ": " .. case[2] .. " on a friend: a line to the friend is said")
+	end
+	-- the test command sends the cast where the game would: to the friendly target
+	P.class = "PRIEST"
+	local spoken
+	local orig = Gateway.Narrate
+	Gateway.Narrate = function(_, ev, ctx) spoken = ctx; return true end
+	Cmd("cast Flash Heal")
+	Gateway.Narrate = orig
+	T.ok(spoken and spoken.castOnSelf == false, "/au cast with a friend targeted is a cast on the friend")
+	P.target = nil
+	Gateway.Narrate = function(_, ev, ctx) spoken = ctx; return true end
+	Cmd("cast Flash Heal")
+	Gateway.Narrate = orig
+	T.ok(spoken and spoken.castOnSelf == true, "/au cast with no target is a cast on oneself")
+	P.class = cls
+end)
+
 T.run("/au pacchetto <id> off: le frasi di quel pacchetto non si scelgono più", function()
 	Fresh()
 	local function Packs(event)

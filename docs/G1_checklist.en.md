@@ -596,6 +596,17 @@ hunter's aspect are a buff. Set `/au chance heal 100` and `/au chance buff 100` 
     Shout is still an attack line about the shout. **Report:** the spell names the client gives (`/au debug`) if a
     gesture stays silent.
 
+**C0h (ADR 0055): a cast on yourself and a cast on someone else.** Never run in the client either. A heal or buff line
+that speaks to the one healed or buffed is said only when the spell went to someone else. Keep `/au chance heal 100`
+and `/au chance buff 100` for the test.
+
+21. **A potion with a friend targeted.** Target a friendly player and drink a healing potion (or use a healthstone).
+    **Expect:** a heal line about yourself, never one that speaks to the friend by name or says "hold still".
+    **Report:** `/au debug` (the event `heal`) and the line, if one ever speaks to the friend.
+22. **A healer on itself and on a friend.** With a priest, paladin, druid or shaman, target a friend and heal yourself
+    (self-cast key, or the friend out of range), then heal the friend. **Expect:** on yourself no line to the friend; on
+    the friend the lines to them can be said. **Report:** whether a self-cast heal ever speaks to the friend.
+
 ## Summary form (copy and fill in)
 
 ```
@@ -678,4 +689,5 @@ C0b memory ............. sources kept (KB) ______  areas released ______
 C0e picks .............. PickEntry mean/p95 (ms) ______  stutter? ___  place/class/general all heard? ___  repeats ______
 C0f own lines .......... /au packs class/race ______  rules/texts left out ______  other character ok? ___  KB (1st/2nd) ______
 C0g own gestures ....... bandage on self heal? ___  on another silent? ___  Battle Shout/poison/aspect buff? ___  names ______
+C0h cast on self ....... potion + friend: line to the friend? ___  self heal + friend: to the friend? ___  heal on friend ok? ___
 ```

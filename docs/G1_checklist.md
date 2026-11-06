@@ -1473,6 +1473,18 @@ nuovo `/au chance heal 15` e `/au chance buff 25`.
     (nessuna che fa un dono a qualcun altro). In combattimento l'Urlo di Battaglia resta una frase d'attacco sul grido.
     **Da riportare:** i nomi degli incantesimi che dà il client (`/au debug`) se un gesto resta muto.
 
+**C0h (ADR 0055): un incantesimo su di sé e uno su un altro.** Mai provato nel client. Una frase di cura o di
+potenziamento che parla a chi viene curato o potenziato si dice solo quando l'incantesimo è andato a un altro. Per la
+prova tieni `/au chance heal 100` e `/au chance buff 100`.
+
+21. **Una pozione con un amico come bersaglio.** Prendi come bersaglio un giocatore amico e bevi una pozione di cura (o
+    usa una pietra della salute). **Atteso:** una frase di cura su di te, mai una che parla all'amico per nome o gli
+    dice "stai fermo". **Da riportare:** `/au debug` (l'evento `heal`) e la frase, se mai parla all'amico.
+22. **Un guaritore su di sé e su un amico.** Con un sacerdote, un paladino, un druido o uno sciamano, prendi un amico
+    come bersaglio e cura te stesso (tasto per lanciare su di sé, o l'amico fuori portata), poi cura l'amico.
+    **Atteso:** su di te nessuna frase all'amico; sull'amico le frasi a lui si possono dire. **Da riportare:** se una
+    cura su di sé parla mai all'amico.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1635,6 +1647,7 @@ C0 aree ................ area in /au packs ______  ms di un cambio ______  scatt
 C0b fotogrammi ......... ms in tutto ______  fotogrammi ______  fotogramma più lungo ______  scatto? ___  errori? ___
 C0b memoria ............ sorgenti conservate (KB) ______  aree rilasciate ______
 C0g gesti per sé ....... benda su di sé cura? ___  su un altro muta? ___  urlo/veleno/aspetto potenziamento? ___  nomi ______
+C0h su di sé ........... pozione + amico: frase all'amico? ___  cura su di sé + amico: all'amico? ___  cura all'amico ok? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

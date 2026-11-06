@@ -169,6 +169,9 @@ local SPECIAL = {
 	zone     = function(v, ctx) return MatchValue(v, ctx.zone) or MatchValue(v, ctx.subzone) end,
 	spell    = function(v, ctx) return ContainsAny(v, ctx.spell) end,
 	targetName = function(v, ctx) return ContainsAny(v, ctx.target) end,
+	-- C0h (ADR 0055): the cast went to the character itself (true) or to someone else (false). Only a cast of the
+	-- character knows it (Systems/Triggers.lua); anywhere else it is unknown, and then neither true nor false matches
+	castOnSelf = function(v, ctx) return ctx.castOnSelf ~= nil and ctx.castOnSelf == v end,
 	hour     = function(v, ctx)
 		local h = ctx.hour or 12
 		if v[1] <= v[2] then return h >= v[1] and h < v[2] end
@@ -455,7 +458,7 @@ Engine.CONDITIONS = {
 	targetStronger = "bool", targetWeaker = "bool", targetName = "str",
 	targetClass = "str", targetRace = "str", targetFaction = "str",
 	-- incantesimi
-	spell = "str", spellKind = "str", element = "str",
+	spell = "str", spellKind = "str", element = "str", castOnSelf = "bool",
 	-- impostazioni dell'utente
 	depth = "str", intensityMin = "num", intensityMax = "num",
 	-- memoria (Systems/LivingMemory.lua)

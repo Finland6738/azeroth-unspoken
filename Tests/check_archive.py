@@ -7,6 +7,7 @@ is never written.
 
 Usage: python -I -X utf8 Tests/check_archive.py   (exit code 1 if a check fails)
 """
+import collections
 import contextlib
 import io
 import json
@@ -970,7 +971,8 @@ def need_report():
     check(("pet_bond", "class", "hunter") in pools and ("pet_bond", "class", "mage") not in pools,
           "the companions speak only for their classes")
     # C0g (ADR 0054): a class pool fires at the factor of its class; a class that cannot fire an event has no pool of it
-    hp, hw = pools[("heal", "class", "priest")]["strict"], pools[("heal", "class", "warrior")]["strict"]
+    hp = pools[("heal:self", "class", "priest")]["strict"] + pools[("heal:other", "class", "priest")]["strict"]
+    hw = pools[("heal", "class", "warrior")]["strict"]
     check(abs(hp / hw - cf("heal", "PRIEST") / cf("heal", "WARRIOR")) < 1e-6,
           "the heal pool of the priest fires %.0f times that of the warrior, as their factors" % (hp / hw))
     check(all(("rezother", "class", c) not in pools for c in ("warrior", "rogue", "mage")) and
@@ -980,12 +982,46 @@ def need_report():
     check(("buff", "class", "warrior") in pools and ("buff", "class", "warrior") not in pnb and
           pnb[("buff", "class", "rogue")]["strict"] == pools[("buff", "class", "rogue")]["strict"],
           "a warrior that cannot buff gets no buff need; the other classes keep theirs")
-    gen = pools[("heal", "generic", "")]["strict"]
-    flat = dict(model, class_rates={})
+    gen = pools[("heal:self", "generic", "")]["strict"]
+    flat = dict(model, class_rates={}, cast_on_self={})
     pflat, _ = need.need(flat, places)
-    top = max(model["class_rates"]["heal"].values())
+    selfs = need.cast_shares(model)
+    top = max(x * selfs["heal"][c] for c, x in model["class_rates"]["heal"].items())
     check(0.8 * top < gen / pflat[("heal", "generic", "")]["strict"] < top + 1e-6,
-          "a pool shared by every class (generic heal) fires for the character that fires it most: the healers")
+          "a pool shared by every class (generic heal, its half on oneself) fires for the character that fires it most: "
+          "the healers")
+    # C0h (ADR 0055): heal and buff split into a cast on oneself and a cast on someone else
+    check(need.cast_flag({"castOnSelf": False}) == "other" and need.cast_flag({"castOnSelf": True}) == "self" and
+          need.cast_flag({"not": {"castOnSelf": True}}) == "other" and need.cast_flag({"hasTarget": True}) == "both" and
+          need.cast_flag(None) == "both", "a line says castOnSelf true, false (also through `not`) or nothing")
+    check(need.class_parts(factors, selfs, "heal", "PRIEST") == [("heal:self", 1.5), ("heal:other", 1.5)] and
+          need.class_parts(factors, selfs, "heal", "WARRIOR") == [("heal:self", 0.5), ("heal:other", 0.0)] and
+          need.class_parts(factors, selfs, "muse", "PRIEST") == [("muse", 1.0)],
+          "a class's factor on heal is shared between its casts on itself and on someone else; other events stay whole")
+    check(need.cast_condition("heal:other") == "castOnSelf = false" and need.cast_condition("buff:self") == "castOnSelf = true"
+          and need.cast_condition("heal") == "", "the half of a pool says the condition its lines write")
+    pr, po = pools[("heal:self", "class", "priest")], pools[("heal:other", "class", "priest")]
+    check(abs(pr["strict"] - po["strict"]) < 1e-6 and pr["self_share"] == po["self_share"] == 0.5,
+          "the priest's heal pool: half on itself, half on someone else")
+    check(("heal", "class", "warrior") in pools and ("heal:other", "class", "warrior") not in pools and
+          ("heal:self", "class", "warrior") not in pools and ("buff", "class", "hunter") in pools and
+          ("heal:other", "generic", "") in pools and ("heal", "generic", "") not in pools,
+          "a pool never cast on someone else (the warrior's heal, the hunter's aspects) keeps the plain event")
+    try:
+        need.cast_shares(dict(model, cast_on_self={"heal": {"PRIEST": 1.5}}))
+        bad = False
+    except ValueError:
+        bad = True
+    check(bad, "a share of casts on oneself above 1 is refused")
+    raw = {("heal:both", "class", "priest"): collections.Counter(enUS=10), ("heal:other", "class", "priest"): collections.Counter(enUS=4),
+           ("heal:self", "class", "priest"): collections.Counter(enUS=1), ("heal:both", "class", "warrior"): collections.Counter(enUS=6),
+           ("heal:other", "class", "warrior"): collections.Counter(enUS=3), ("muse", "generic", ""): collections.Counter(enUS=7)}
+    got = need.resolve(pools, raw, ["enUS"])
+    check(got[("heal:self", "class", "priest")]["enUS"] == 6 and got[("heal:other", "class", "priest")]["enUS"] == 9 and
+          got[("heal", "class", "warrior")]["enUS"] == 6 and got[("heal:other", "class", "warrior")]["enUS"] == 3 and
+          got[("muse", "generic", "")]["enUS"] == 7,
+          "a line without castOnSelf counts in both halves by their firings, one with it in its half; in a pool kept "
+          "whole the lines to someone else stay apart")
     fast = dict(model, interventions_per_hour=2 * model["interventions_per_hour"])
     p2, _ = need.need(fast, places)
     total = sum(p["need_strict"] for p in pools.values())
