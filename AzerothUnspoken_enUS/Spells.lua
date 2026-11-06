@@ -682,4 +682,124 @@ NS:AddTexts("enUS", {
 		"waits beside the fallen, hands open and patient, as one waits for a traveler late on the road.",
 		"keeps very still over the body, watching for the first small sign that someone is coming back.",
 	},
+	["buff.w07.001"] = {
+		"As ready as anyone ever is, which is to say: enough.",
+		"Prepared. Not for everything; nobody is. For the next thing, at least.",
+		"Ready enough. The rest gets settled along the way.",
+	},
+	["buff.w07.002"] = {
+		"Right. Now the road can do as it pleases.",
+		"That's me sorted. Whatever's waiting ahead had better be worth it.",
+		"Sorted. Let's see what's waiting further down the road.",
+	},
+	["buff.w07.003"] = {
+		"waits for it to take hold, then rolls {g:his|her} neck once, like a smith before the first stroke.",
+		"stands still a moment, letting the preparation take hold, then nods to no one in particular.",
+	},
+	["buff.w07.004"] = {
+		"Nothing that's ever tried to kill me fought fair. No reason I should start.",
+		"Call it cheating if you like. Where I'm going, they call it surviving.",
+	},
+	["buff.w07.005"] = {
+		"Whatever comes next, it will find me waiting, and ready.",
+		"Let it come, whatever it is. It won't catch me half-dressed for it.",
+	},
+	["heal.w07.001"] = {
+		"The breath comes easier. I hadn't noticed how short it had gone.",
+		"Air all the way down again. Funny how you only miss it once it runs short.",
+		"One full breath, then another. My chest stops arguing with me.",
+	},
+	["heal.w07.002"] = {
+		"Note to self: the pointy end is the dangerous one.",
+		"Lesson learned: never stand in front of the thing with teeth.",
+	},
+	["heal.w07.003"] = {
+		"Every hurt is a debt the body writes down. This one's crossed out. The page is still long.",
+		"One debt struck off. The body never forgets the others; it just stops mentioning them for a while.",
+	},
+	["heal.w07.004"] = {
+		"That'll hold. Let's finish what you started.",
+		"Closed up. Your turn's over.",
+		"Patched. Now I'm the one doing the hitting.",
+	},
+	["heal.w07.005"] = {
+		"rolls {g:his|her} shoulders, tests the spot that hurt, and finds it willing to work again.",
+		"presses a palm to the place that hurt, waits, and lets the hand fall when nothing protests.",
+	},
+	["heal.w07.006"] = {
+		"The heart slows to its ordinary pace. A moment ago it was all I could hear.",
+		"The pulse stops pounding in my ears, and the world gets its sound back.",
+	},
+	["heal.w07.007"] = {
+		"That one came closer than I let myself admit. Mended now; admitting it can wait.",
+		"Mended. I won't think about how near it was. Not yet, anyway.",
+		"A little nearer the edge than I care for. The edge is farther off now, and there it stays.",
+	},
+	["heal.w07.008"] = {
+		"Ah. That's the stuff.",
+		"Ahh. Like a hot meal at the end of a long, cold march.",
+	},
+	["heal.w07.009"] = {
+		"I walked into that with my guard down. The mending is cheap; the habit would be expensive.",
+		"Careless, that. Mending it took a moment; unlearning the mistake will take longer.",
+		"Dropped my guard for half a breath and paid for it in full. Noted.",
+	},
+	["heal.w07.010"] = {
+		"eyes the mended spot with open resentment, as if it had picked the fight on its own.",
+		"gives the closed wound a sour look, the way one looks at a dog that has just stolen supper.",
+	},
+	["heal.w07.011"] = {
+		"The pain drains off slowly, like floodwater sinking out of a field.",
+		"It ebbs, the hurt, the way a tide goes out: not all at once, but it goes.",
+	},
+	["heal.w07.012"] = {
+		"Fine. I'm fine. Nobody fuss.",
+		"It's nothing. A scratch with ambitions.",
+		"No need to stare. It was barely a dent.",
+	},
+	["heal.w07.013"] = {
+		"takes a few slow steps, as if asking the body's permission before going on.",
+		"walks a small, slow circle until the body agrees it can carry on.",
+	},
+	["heal.w07.014"] = {
+		"Good enough to be dangerous again.",
+		"The day isn't done with me yet, and I'm not done with the day.",
+		"Mended. Let the next one try its luck.",
+	},
+	["race.dwarf.buff.w07.001"] = {
+		"Settled in and set, like good mortar. The old builders of Ironforge never hurried the setting.",
+		"There, it's taken hold, like mortar between two good stones. Now let them try to shift me.",
+	},
+	["race.dwarf.heal.w07.001"] = {
+		"Chipped, not cracked. The old stonecutters say there's a world of difference.",
+		"A nick off the edge, nothing through the core. Any mason in Ironforge would call that sound.",
+	},
+	["race.human.heal.w07.001"] = {
+		"Farmers in Elwynn say you mend a fence the day it breaks, not the day the cows find the gap. Mended, then.",
+		"Mend the fence before the herd finds the gap: every Elwynn farmhand knows that much. Done.",
+	},
+	["race.nightelf.buff.w07.001"] = {
+		"The Sentinels teach that readiness is a stillness waiting to move. Stillness I can do.",
+		"The patience of an owl on its branch, and its quickness when it counts. So the Sentinels teach it.",
+	},
+	["race.nightelf.heal.w07.001"] = {
+		"Elune watches over the wounded, the priestesses say. I'd rather not need her watching too often.",
+		"The priestesses of Darnassus say Elune keeps count of every hurt. I'd like my count kept short.",
+	},
+	["race.tauren.buff.w07.001"] = {
+		"Hooves planted. Whatever comes can come.",
+		"Set like the great totems of Thunder Bluff. Push if you like.",
+	},
+	["race.tauren.heal.w07.001"] = {
+		"The elders of Mulgore say a wound is only the land asking you to walk more slowly for a while.",
+		"In Mulgore the elders teach that a hurt is the Earth Mother's way of slowing a hurried step. Slower, then.",
+	},
+	["race.troll.buff.w07.001"] = {
+		"The loa like a troll who's ready. No sense disappointing them, mon.",
+		"Set, sharp and smilin'. The loa won't find me wanting today, mon.",
+	},
+	["race.troll.heal.w07.001"] = {
+		"The witch doctors of Sen'jin say a wound is a guest: feed it nothing and it leaves early.",
+		"Old Darkspear wisdom, mon: pay a hurt no mind and it gets bored and goes.",
+	},
 }, "base_spells")

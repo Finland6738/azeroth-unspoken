@@ -9989,4 +9989,4777 @@ NS:AddTexts("enUS", {
 		"For a moment, as it died, I felt something pass close to me. A draft. I'll tell myself it was a draft.",
 		"As it fell, the cold in the air deepened, just for an instant. Something on the other side had noticed.",
 	},
+	["cls.druid.attack.w07.001"] = {
+		"Again. Like the woodpecker: the tree gives in eventually.",
+		"One more. Patience gets through anything, given enough tries.",
+		"And again. The slow way always gets there.",
+	},
+	["cls.druid.attack.w07.002"] = {
+		"Spend only what the fight asks. The wild never pays more than the price.",
+		"Easy. Don't waste strength showing off.",
+		"Measured. Nothing in nature strikes harder than it has to.",
+	},
+	["cls.druid.attack.w07.003"] = {
+		"presses the attack without hurry, each move growing out of the last like rings in a trunk.",
+		"keeps at the foe with a wild creature's tireless thrift, nothing wasted between one move and the next.",
+	},
+	["cls.druid.attack.w07.004"] = {
+		"Wear this a while. Moonlight that burns, and keeps on burning.",
+		"A mark of silver. It won't wash off soon.",
+	},
+	["cls.druid.attack.w07.005"] = {
+		"Going somewhere? The ground says otherwise.",
+		"Roots round your feet. Now we can discuss this calmly.",
+		"Don't move. The ground has you by the ankles now.",
+	},
+	["cls.druid.attack.w07.006"] = {
+		"No spells in this shape. Only weight and edge.",
+		"This shape doesn't bargain. It bites.",
+		"Heavier than I look. Much heavier.",
+	},
+	["cls.druid.attack.w07.007"] = {
+		"Slow to call down, hard to forget. Worth the wait.",
+		"All that gathering, for one bright fall. Make it count.",
+	},
+	["cls.druid.attack.w07.008"] = {
+		"That was nature's way of saying no.",
+		"Sorry. Well. Mostly sorry.",
+		"Consider that a polite request to leave.",
+	},
+	["cls.druid.attack.w07.009"] = {
+		"Let the wind sort you out. It's had practice.",
+		"Here comes the gale. Hold on to something.",
+	},
+	["cls.druid.attack.w07.010"] = {
+		"There. Now you glow. Try hiding from that.",
+		"Lit up like a lantern. Nowhere to hide now.",
+	},
+	["cls.druid.battle.w07.001"] = {
+		"An oak needs a hundred winters to grow. I can spare you a minute.",
+		"Trees outlast storms for a living. You're a very small storm.",
+		"I learned patience from things that stand in one place for centuries. Rush me if you like.",
+	},
+	["cls.druid.battle.w07.002"] = {
+		"Nothing personal. The cycle has simply decided one of us goes back to the soil.",
+		"Neither of us is wicked. One of us is about to become food for the grass, that's all.",
+		"No malice in this. Just the old sum: one stays standing, one goes to feed the soil.",
+	},
+	["cls.druid.battle.w07.003"] = {
+		"Breathe. Feel for the ground. Then answer.",
+		"Slow the heart first. Nothing in the wild hurries the strike that matters.",
+		"Roots first. Everything else grows out of where I stand.",
+	},
+	["cls.druid.battle.w07.004"] = {
+		"goes quiet in a way that has nothing to do with fear: the stillness of something that has already decided.",
+		"lowers {g:his|her} weight and lets the noise of the world drain away until only the foe is left in it.",
+		"watches the foe come on with an unhurried gaze, the calm of a thing that has outlived a good many storms.",
+	},
+	["cls.druid.battle.w07.005"] = {
+		"I was counting mushrooms. You've ruined a perfectly quiet walk.",
+		"I was listening to a beetle. It was more interesting than you, and better mannered.",
+		"Must we? The moss and I were enjoying a lovely silence.",
+	},
+	["cls.druid.battle.w07.006"] = {
+		"You've tipped the scale too far. I'm here to tip it back.",
+		"Something has to restore the balance here. It seems to be me.",
+		"Balance doesn't keep itself. Someone has to lean on the other side.",
+	},
+	["cls.druid.battle.w07.007"] = {
+		"Every season ends. Yours is ending now.",
+		"Winter comes for all things. I'm only a little early for you.",
+		"Spring, summer, the long fall. You've reached the last of them.",
+	},
+	["cls.druid.battle.w07.008"] = {
+		"A gardener cuts back without anger. Don't take it personally, this is pruning.",
+		"Some branches have to go so the rest can breathe. Today the branch is you.",
+		"The gardener doesn't hate the bramble. Out it comes all the same.",
+	},
+	["cls.druid.battle.w07.009"] = {
+		"There's no hate in me. Hate fumbles.",
+		"Rage burns out. What I have is patience, and that doesn't.",
+	},
+	["cls.druid.battle.w07.010"] = {
+		"Remember: the mending is for after. And during. Mostly during, knowing me.",
+		"Fight first, heal later. Or the other way round. Probably both at once.",
+		"Try not to need healing this time. Ha. As if that has ever worked.",
+	},
+	["cls.druid.battle.w07.011"] = {
+		"The elders say Cenarius taught the first druids to guard the green. The lesson reached me whole.",
+		"Cenarius gave our order its first lessons, so the elders tell it. This is one of them.",
+	},
+	["cls.druid.battle.w07.012"] = {
+		"I keep the promise every druid keeps: guard what grows. You're standing in the way of it.",
+		"Guard what grows. Every druid swears it, one way or another. You've put your feet right on it.",
+		"Each of us carries the same old promise: keep the green. You're trampling it.",
+	},
+	["cls.druid.battle.w07.013"] = {
+		"Moss beats stone. It takes a while, but it always wins.",
+		"Water wears through rock without ever raising its voice. I can be that patient.",
+		"Roots split boulders one slow inch after another. I have inches to spare.",
+	},
+	["cls.druid.battle.w07.014"] = {
+		"Under everything, the Dream holds the world the way it should be. I'd wager there's nothing like you in it.",
+		"The Dream keeps a truer shape of every living thing, the old druids teach. I doubt you'd recognize yours.",
+	},
+	["cls.druid.battle.w07.015"] = {
+		"Every creature knows the moment it's been cornered. Look around. This is that moment.",
+		"Wild things know when they've run out of places to run. Have you noticed yet?",
+		"Look around you. Nowhere left to run that I can't follow.",
+	},
+	["cls.druid.battle.w07.016"] = {
+		"A forest fire clears the old wood so the new can grow. Think of me as a small, polite fire.",
+		"Wildfire's cruel, but the meadow comes back greener. I'll try to be the meadow's sort of cruel.",
+	},
+	["cls.druid.battle.w07.017"] = {
+		"The heron stands for an hour and strikes once. I've been standing a while.",
+		"An owl doesn't chase. It waits, and then it doesn't miss.",
+		"The snake lies under its stone for hours. Then it is very, very fast.",
+	},
+	["cls.druid.battle.w07.018"] = {
+		"Go on, take its attention. I'll keep the rest of you breathing.",
+		"Hit it hard. Whatever it hits back with, I can mend.",
+		"Get stuck in. If anyone starts bleeding, shout, and the green will answer.",
+	},
+	["cls.druid.battle.w07.019"] = {
+		"Tell me what this fight needs, mending or muscle. I can be either.",
+		"Healing or hitting, you call it. I'll wear whichever shape the fight wants.",
+	},
+	["cls.druid.battle.w07.020"] = {
+		"Whatever shape I'm wearing, it's the same will inside it. Keep hold of that.",
+		"Fur or skin, the one steering doesn't change. Remember who's steering.",
+	},
+	["cls.druid.battle.w07.021"] = {
+		"Easy. You're only doing what your kind does. So am I.",
+		"I know what's making you so angry. This ground is yours too. I'm sorry, but I can't step back.",
+		"There's no wickedness in you, only hunger. I wish that changed anything.",
+	},
+	["cls.druid.battle.w07.022"] = {
+		"You were meant to go back to the soil. Something stopped you. I'll finish the job.",
+		"A cycle broken halfway. Let me close it.",
+		"Dead things belong in the earth, feeding what comes next. You've wandered off.",
+	},
+	["cls.druid.battle.w07.023"] = {
+		"Nothing grows where your kind has walked. I'll see to it you walk no further.",
+		"You poison the soil just by standing on it. Let's be quick.",
+	},
+	["cls.druid.battle.w07.024"] = {
+		"Fire, stone or wind, it hardly matters: a piece of the world walking about on its own. Time to settle.",
+		"You're a piece of the world out of place. Let me put you back.",
+	},
+	["cls.druid.battle.w07.025"] = {
+		"Gears and smoke. Give the forest a few years and it'll have you rusted shut. I'll save it the wait.",
+		"You don't breathe, you don't grow, and you leak oil on the moss. We're done talking.",
+		"Iron and steam. The moss will come for you anyway; I'm only quicker.",
+	},
+	["cls.druid.battle.w07.026"] = {
+		"Stronger than me. So is every oak, and ivy still brings them down.",
+		"Too much strength to meet head on. Be the vine, then: slow, and everywhere.",
+	},
+	["cls.druid.battle.w07.027"] = {
+		"You've had time to grow strong. The wild respects that. It'll still bring you down.",
+		"All that bulk and all that pride. The tallest trees make the loudest fall.",
+		"Old strength is still only strength. Patience is older.",
+	},
+	["cls.druid.battle.w07.028"] = {
+		"draws the air in slowly, as if tasting the foe on it, and lets it out as a low sound.",
+		"breathes in the foe's scent once, deep, and something wild settles behind {g:his|her} eyes.",
+	},
+	["cls.druid.battle.w07.029"] = {
+		"shifts {g:his|her} footing once and goes perfectly still, as patient and as sure as a root in rock.",
+		"squares up to the foe without a word and without hurry, like a tide coming in.",
+	},
+	["cls.druid.battle.w07.030"] = {
+		"Every fight costs the wild something, whoever wins. Let's keep the bill small.",
+		"Whoever falls here, the land loses a little. Let's be quick and not make it more.",
+	},
+	["cls.druid.battle.w07.031"] = {
+		"Let's not drag this out. The wild hates waste, and so do I.",
+		"Quick and clean. Nobody gains anything from a long fight.",
+		"In and out, nothing wasted. That's how the wild does it.",
+	},
+	["cls.druid.battle.w07.032"] = {
+		"I took up this path to tend living things. Some days tending means this.",
+		"Druids heal. Druids defend. I'd like more days of the first kind.",
+	},
+	["cls.druid.battle.w07.033"] = {
+		"Root and branch, beast and bloom: whatever lives here, I answer for it.",
+		"Leaf, hide and stone stand with me. Come and test the whole of them.",
+	},
+	["cls.druid.battle.w07.034"] = {
+		"Pace yourself. A fight is a season, not a single gust.",
+		"Don't spend everything in the first breath. The wild never does.",
+		"Hold something back. Strength spent early is strength I'll miss later.",
+	},
+	["cls.druid.battle.w07.035"] = {
+		"You've been taking from this land without asking. Today the land asks for it back.",
+		"Everything you've taken from the wild, it wants repaid. I'm here to collect.",
+	},
+	["cls.druid.battle.w07.036"] = {
+		"I'd offer you peace, but you've already got that look.",
+		"I considered reasoning with you. Briefly. Very briefly.",
+		"We could each go our own way. No? Then let's get on with it.",
+	},
+	["cls.druid.battle.w07.037"] = {
+		"gives the ground underfoot a brief glance, almost an apology, then turns to the fight.",
+		"seems, for a heartbeat, to listen to the ground before the fight begins.",
+	},
+	["cls.druid.battle.w07.038"] = {
+		"I've walked in Moonglade's quiet. Your noise doesn't frighten me.",
+		"After the stillness of Moonglade, all this fuss sounds very small.",
+	},
+	["cls.druid.battle.w07.039"] = {
+		"The elders made all of this look graceful. I'll settle for effective.",
+		"Grace is for the old druids. Messy and alive will do for me.",
+		"I'd love to have the serene poise of the old druids. Not today, apparently.",
+	},
+	["cls.druid.battle.w07.040"] = {
+		"You're barely grown. Turn around and live a few more seasons.",
+		"Still a sapling. There's time yet to run and grow old.",
+	},
+	["cls.druid.battle.w07.041"] = {
+		"Whatever banner you fight under, the soil takes us all the same. Let's not hurry my turn.",
+		"Your side, my side. The roots under us keep count of neither.",
+	},
+	["cls.druid.battle.w07.042"] = {
+		"Hunger, fear, territory. Every fight in the wild comes down to one of those. Which one is this?",
+		"What does it want? Food, ground or simply to live. Knowing which tells me how it fights.",
+	},
+	["cls.druid.battle.w07.043"] = {
+		"Have it your way. The wild gave you every chance to leave.",
+		"You had all the warning the wild gives: the hush, the scent, me. Too late now.",
+	},
+	["cls.druid.battle.w07.044"] = {
+		"lets out a sound low in the chest, more warning than war cry.",
+		"bares {g:his|her} teeth, briefly and without humor.",
+	},
+	["cls.druid.battle.w07.045"] = {
+		"Fear is only the wild telling me to pay attention. I'm paying attention.",
+		"A little afraid. Good. Every creature that lives long is.",
+	},
+	["cls.druid.buff.w07.001"] = {
+		"The Mark on my own skin. A little thicker, a little steadier, a little more of everything.",
+		"The Mark settles in like an extra layer of bark, invisible and stubborn.",
+	},
+	["cls.druid.buff.w07.002"] = {
+		"Thorns on my own hide. Whatever wants a bite of me can pay for it.",
+		"Prickly by choice. Let them learn the lesson the bramble teaches.",
+		"There. Now I'm the hedge nobody should try to push through.",
+	},
+	["cls.druid.buff.w07.003"] = {
+		"touches {g:his|her} own chest with two fingers, and for a heartbeat {g:his|her} skin takes on the faint sheen of new bark.",
+		"murmurs a short phrase and draws a hand down one arm; a green shimmer follows the palm and fades.",
+		"speaks a word to no one in particular, and something green and quiet settles over {g:his|her} shoulders like a cloak.",
+	},
+	["cls.druid.buff.w07.004"] = {
+		"Before the road, the wild's own coat. I go nowhere without it, any more than a bear goes without fur.",
+		"A druid dresses twice: once in leather, once in the green.",
+		"Boots laced, the wild's gift laid on. Now the road can do its worst.",
+	},
+	["cls.druid.buff.w07.005"] = {
+		"Blessed at home, so to speak. Not glamorous, but the wild doesn't care about glamour.",
+		"Marked by my own hand. The wild doesn't mind who does the paperwork.",
+	},
+	["cls.druid.buff.w07.006"] = {
+		"A rose doesn't apologize for its thorns. Neither will I.",
+		"Thorns are just a plant saying no in a language everyone understands.",
+		"The thistle has never once been eaten by surprise. I take its advice.",
+	},
+	["cls.druid.buff.w07.007"] = {
+		"Something steady settles under my skin, like roots finding water.",
+		"I feel it take: a slow, green firmness, the patience of old trees lent for a while.",
+		"It sinks in and holds, quiet as a seed deciding to stay.",
+	},
+	["cls.druid.buff.w07.008"] = {
+		"Wild, wrap me.",
+		"Bark and briar, keep me.",
+		"Green, stand around me.",
+	},
+	["cls.druid.buff.w07.009"] = {
+		"Laid on again. I've done it so often my hands move before I think.",
+		"Worn off again. These gifts never last as long as I'd like, but they cost little and they're mine.",
+	},
+	["cls.druid.buff.w07.010"] = {
+		"Thorns up in the middle of it. Every blow they land on me now costs them something.",
+		"Let it keep hitting me. Each strike comes back to it with a few thorns attached.",
+		"Go on, swing. The brambles keep the tally.",
+	},
+	["cls.druid.buff.w07.011"] = {
+		"traces a quick sign over {g:his|her} own heart, and for a moment the faint shape of a paw print glows on the skin and fades.",
+		"lays a palm on {g:his|her} own brow, and a shimmer like light through leaves runs over {g:him|her}.",
+	},
+	["cls.druid.buff.w07.012"] = {
+		"In the old tellings, the Mark was Cenarius's first gift to those who kept his groves. I wear it like a promise I haven't finished keeping.",
+		"A gift from the Forest Lord to his keepers, the story goes. I try to deserve it on the days I renew it.",
+	},
+	["cls.druid.buff.w07.013"] = {
+		"There's the Mark. A little more of everything: strength, wind, tough skin.",
+		"The Mark of the Wild. You won't feel much, but you'll last longer.",
+		"Marked. You'll shrug off a few things you'd otherwise have felt.",
+	},
+	["cls.druid.buff.w07.014"] = {
+		"Thorns on you. Anything that hits you will regret the choice.",
+		"Now you're a bramble. Let them try to grab you.",
+		"Prickly, but on our side. Off you go.",
+	},
+	["cls.druid.buff.w07.015"] = {
+		"A little of the wild goes with them now. I like knowing that, wherever they wander.",
+		"Marked and sent off. A piece of the green walks beside them, even where I can't.",
+	},
+	["cls.druid.buff.w07.016"] = {
+		"reaches out and brushes {target}'s shoulder, leaving a faint green shimmer that sinks into the skin.",
+		"raises a hand toward {target} and speaks a single soft word; a shimmer like light through leaves settles and fades.",
+	},
+	["cls.druid.buff.w07.017"] = {
+		"Don't scratch it. It's not that kind of mark.",
+		"It won't show, I promise. The wild is discreet.",
+		"No, it won't sprout leaves on you. Probably.",
+	},
+	["cls.druid.buff.w07.018"] = {
+		"For the road ahead. The wild keeps an eye on its own.",
+		"Take this along. Roads are long and the green is good company.",
+		"Something for the journey. It weighs nothing and keeps a long while.",
+	},
+	["cls.druid.buff.w07.019"] = {
+		"Thorns on someone else's skin. Whatever bites them will remember me, or at least my brambles.",
+		"I give thorns away more gladly than I wear them. Watching them work on someone else is a quiet pleasure.",
+	},
+	["cls.druid.buff.w07.020"] = {
+		"Carry the wild with you.",
+		"The wild walks with you now.",
+		"Go with the green at your side.",
+	},
+	["cls.druid.farewell.w07.001"] = {
+		"Go well. Keep to the shade when you can, and leave the young trees be.",
+		"Farewell. May whatever path you take be one the land is glad to carry.",
+		"Safe roads. And if a forest ever feels watchful, be polite; it probably is.",
+	},
+	["cls.druid.greet.w07.001"] = {
+		"Greetings. May the ground be kind under your feet.",
+		"Well met. Walk softly, and you'll always find a welcome where I am.",
+	},
+	["cls.druid.greet.w07.002"] = {
+		"Hello there. Forgive the leaves in my hair; I've been in conversation with a hedge.",
+		"Greetings. Yes, that's moss on my boots. No, I won't apologize for it.",
+	},
+	["cls.druid.heal.w07.001"] = {
+		"Mending my own hurt is odd work: I am both the hands and the wound, and the wound has the worse temper.",
+		"Healing myself is the strangest kind of healing. I'm the one giving and the one complaining about it.",
+		"Half of me does the mending, half of me does the wincing. They have never once agreed on the pace.",
+	},
+	["cls.druid.heal.w07.002"] = {
+		"Nobody else was going to do it. Close up, you.",
+		"No healer on hand but me. Lucky me, then.",
+		"Self-service, as usual. Close up.",
+	},
+	["cls.druid.heal.w07.003"] = {
+		"presses a palm flat against {g:his|her} own ribs, and the bruise beneath fades from purple to green to nothing, like a season passing in a breath.",
+		"rests a hand over {g:his|her} own wound and waits; the torn edges creep together slowly, the way roots close around a stone.",
+	},
+	["cls.druid.heal.w07.004"] = {
+		"Careless. I walked straight into that one. The body forgives faster than I do.",
+		"My own fault, that cut. The flesh will forget it soon; I'll remember it longer, which is the point.",
+	},
+	["cls.druid.heal.w07.005"] = {
+		"The old druids say a body is only borrowed soil. Mending it is asking the lender for a little more time.",
+		"Flesh is soil on loan, the elders of the Circle teach. I'm only asking for the loan to run a while longer.",
+		"Earth lent, earth owed, as the old druids put it. Today I ask for an extension, politely.",
+	},
+	["cls.druid.heal.w07.006"] = {
+		"Patched like an old oak. It'll hold.",
+		"Bark over the cut. That'll do for now.",
+		"Sap seals the trunk; I seal the cut. Onward.",
+	},
+	["cls.druid.heal.w07.007"] = {
+		"Every blow knocks the casting back a step. Patience. The spell is slower than whatever is hitting me, but it gets there.",
+		"Hard to finish a long spell with something hammering at me. I start the words again, and again, like a seed pushing up through trodden earth.",
+	},
+	["cls.druid.heal.w07.008"] = {
+		"Rejuvenation on my own skin feels like sap rising in spring, from the inside out. I keep walking and let it work.",
+		"I set it going and forget it. By the time I think to check, the cut has already half closed.",
+	},
+	["cls.druid.heal.w07.009"] = {
+		"Regrowth does it twice: a quick knit now, then a slower one underneath. The first for the fight, the second for afterward.",
+		"The fast mend and the slow one in a single spell. Even the wild hedges its bets.",
+	},
+	["cls.druid.heal.w07.010"] = {
+		"murmurs a long string of soft, unhurried words over {g:his|her} own wound, and green light gathers in the cupped palm before sinking in.",
+		"draws a slow breath and lets the words of mending come at their own pace, a faint green glow settling over the hurt.",
+	},
+	["cls.druid.heal.w07.011"] = {
+		"Mana's low, the bottle's full. Easy choice.",
+		"I could spend my mana on this, or let the bottle do it. The bottle doesn't mind.",
+		"One swallow, and the mana stays put for when it's really needed.",
+	},
+	["cls.druid.heal.w07.012"] = {
+		"Bitter, thick, tastes of root and iron. Someone knew their herbs. The warmth goes straight to the wound.",
+		"Whoever brewed this picked the leaves young; I can taste it. The ache is already loosening.",
+	},
+	["cls.druid.heal.w07.013"] = {
+		"uncorks a small flask with {g:his|her} teeth, sniffs it with a herbalist's frown, and drinks it down anyway.",
+		"knocks back a red potion in one swallow and wipes {g:his|her} mouth, already looking for the next thing to do.",
+	},
+	["cls.druid.heal.w07.014"] = {
+		"A warlock's stone, warm in the hand. I don't ask what went into it. It works, and the wound closes.",
+		"I'd rather not know how a healthstone is made. I'm grateful for it all the same.",
+	},
+	["cls.druid.heal.w07.015"] = {
+		"A stone that heals. The forest never thought of that one. I'll take it.",
+		"Not grown, not brewed. Made, by someone with stranger habits than mine. I'll keep it.",
+	},
+	["cls.druid.heal.w07.016"] = {
+		"No time for words and green light. Uncork, drink, keep fighting.",
+		"The spell would take too long with this thing on me. The flask is quicker.",
+		"Mana for later, potion for now. Drink and get back to it.",
+	},
+	["cls.druid.heal.w07.017"] = {
+		"Mana poured into my own hide now is mana I won't have for the next fight. Worth it. Probably.",
+		"I measure what's left in me against what's still ahead. Today the wound wins the argument.",
+		"A druid's mana is a single well, and I'm drawing from it for my own scrapes. Sparingly, then.",
+	},
+	["cls.druid.heal.w07.018"] = {
+		"I let the bear go to mend. It always leaves reluctantly, and the hurt it was hiding arrives all at once.",
+		"Out of the fur, into the hands. The pain the bear shrugged off is mine now, and so is the healing.",
+	},
+	["cls.druid.heal.w07.019"] = {
+		"Green, come back to me.",
+		"Root and leaf, close this.",
+		"Grow over, wound. Like moss on a fallen log.",
+	},
+	["cls.druid.heal.w07.020"] = {
+		"I kill and I mend with the same hands, sometimes in the same hour. The Circle calls it balance. Some days it just feels like work.",
+		"Tooth and herb, wound and mending. A druid keeps both in the same pocket, and learns not to mix them up.",
+	},
+	["cls.druid.heal.w07.021"] = {
+		"flexes the mended arm slowly, testing it the way one tests a branch before putting any weight on it.",
+		"rolls {g:his|her} shoulder twice, listening to it the way a woodsman listens to a creaking bough.",
+	},
+	["cls.druid.heal.w07.022"] = {
+		"If the Dream truly holds the first shape of every living thing, as the Circle teaches, then somewhere there's a version of me without this cut. I'm only borrowing its outline.",
+		"The Circle teaches that the Dream remembers every creature whole. When I mend myself, I like to think I'm copying from that memory.",
+	},
+	["cls.druid.heal.w07.023"] = {
+		"Thorns have done worse to me. Not many, but some.",
+		"I've had worse from a bramble patch. Well. Nearly.",
+		"A briar would be ashamed of a scratch this shallow. Almost.",
+	},
+	["cls.druid.heal.w07.024"] = {
+		"Tranquility, cast for no one but me. It feels like setting a feast for one, but the wound doesn't complain.",
+		"All that quiet green, poured out over me and my one sorry wound. Wasteful, perhaps. It works.",
+	},
+	["cls.druid.heal.w07.025"] = {
+		"Tranquility asks me to stand still and keep the words going, whatever comes. The hardest part is not flinching.",
+		"Breath after breath with my feet rooted, while the green pours out of me. A tree doesn't run either.",
+	},
+	["cls.druid.heal.w07.026"] = {
+		"stands rooted and chanting, and a soft green stillness spreads outward over everyone close by.",
+		"plants {g:his|her} feet and lifts {g:his|her} hands, and for a few breaths the air around the whole group seems to put out leaves.",
+	},
+	["cls.druid.heal.w07.027"] = {
+		"Fight's over. Now the slow part: sit, breathe, let the green do its patient work.",
+		"Nothing chasing me now. I can take the long spell, the thorough one, and do this properly.",
+	},
+	["cls.druid.heal.w07.028"] = {
+		"A wolf licks its wounds and moves on. I have better tools, and I still envy how little fuss it makes.",
+		"Wounded animals hide, heal and say nothing about it. I'm trying to learn the saying-nothing part.",
+		"No beast in the wild ever made a speech about a cut. I keep that in mind, and keep quiet.",
+	},
+	["cls.druid.heal.w07.029"] = {
+		"Even a gardener gets pricked. The trick is tending yourself before you wilt.",
+		"Every gardener gets scratched eventually. First tend the hands, then the hedge.",
+	},
+	["cls.druid.heal.w07.030"] = {
+		"A healer who bleeds out is just a well-informed corpse. Not today.",
+		"Dying with a heal unspent would be embarrassing. Spending it now.",
+	},
+	["cls.druid.heal.w07.031"] = {
+		"The first mending every druid learns is also the slowest. I've grown fond of the slowness; it makes me hold still and pay attention.",
+		"The oldest spell I know, and still the one I trust most. Long words, a big mend, no shortcuts.",
+	},
+	["cls.druid.heal.w07.032"] = {
+		"Small mercies, one after another. Rejuvenation never hurries, and neither does a forest.",
+		"Not one great mend but a handful of little ones, each arriving on time. I like spells with manners.",
+	},
+	["cls.druid.heal.w07.033"] = {
+		"steps back just long enough to murmur a few words over {g:his|her} own wound, then steps in again.",
+		"breaks off for a heartbeat, a hand pressed to {g:his|her} side and green light leaking between the fingers, before turning back to the fight.",
+	},
+	["cls.druid.heal.w07.034"] = {
+		"Too close. The roots were already reaching up for me.",
+		"Closer than I like. I could feel the soil getting ready.",
+	},
+	["cls.druid.heal.w07.035"] = {
+		"The first thing an old druid ever told me about healing: the hands that mend others are no use if they're shaking. Mend your own first.",
+		"Mend the healer first, say the old druids, or soon there's no one left to mend anyone.",
+	},
+	["cls.druid.heal.w07.036"] = {
+		"The skin closes the way grass closes over a trodden path: not all at once, but without ever doubting it will.",
+		"Grass forgets a footprint in a few days. My skin is faster, with a little help.",
+		"A trampled meadow stands up blade by blade. So does this, only quicker.",
+	},
+	["cls.druid.heal.w07.037"] = {
+		"Mana well spent, mostly on my own clumsiness.",
+		"And that's what my pride costs, in healing.",
+		"There goes a mend I'd hoped to save for someone else.",
+	},
+	["cls.druid.heal.w07.038"] = {
+		"Closed. Something wild in me is already pulling at the leash, eager to get back in.",
+		"The wound's shut, and the restless part of me wants back into the fray before I've finished the thought.",
+	},
+	["cls.druid.heal.w07.039"] = {
+		"It was Cenarius who first taught mending to the druids, or so the Circle tells it. I wonder if he ever had to do it in such a hurry.",
+		"The Circle says the first druids learned this from Cenarius himself. I hope he was more patient with his pupils than I am with my own wounds.",
+	},
+	["cls.druid.heal.w07.040"] = {
+		"wipes the blood away with a sleeve and looks over the fresh, pink skin beneath, satisfied.",
+		"scrubs the dried blood off with the heel of {g:his|her} hand and nods at the clean skin underneath.",
+	},
+	["cls.druid.heal.w07.041"] = {
+		"An oak takes years to grow bark over a lightning scar. I get a few breaths. I try not to take it for granted.",
+		"Trees heal so slowly that people think they don't. I get to do it in moments, and it still feels like a borrowed gift.",
+	},
+	["cls.druid.heal.w07.042"] = {
+		"Knit, like a nest woven twig by twig.",
+		"Back together, like a nest after the wind.",
+	},
+	["cls.druid.heal.w07.043"] = {
+		"I don't make the healing. I just hold the door open and let it through, and try not to stand in its way.",
+		"The green does the work. My part is to ask nicely and keep my hands steady.",
+		"Whatever mends me isn't mine. I only know the way to ask for it.",
+	},
+	["cls.druid.heal.w07.044"] = {
+		"Pain is the body speaking plainly. I listened. Now it can stop shouting.",
+		"The hurt had made its point. I took the lesson and sent the pain away.",
+		"Message received, wound. You can go now.",
+	},
+	["cls.druid.heal.w07.045"] = {
+		"heals {g:himself|herself} with a few soft words, and for a moment the air around {g:him|her} smells of turned earth and new leaves.",
+		"closes the wound with a murmur, leaving behind a brief scent of crushed grass and damp bark.",
+	},
+	["cls.druid.heal.w07.046"] = {
+		"Regrowth costs more than it seems worth, until the slow part keeps knitting long after I've stopped thinking about it.",
+		"Pricey, Regrowth. But it keeps paying out after I've forgotten I cast it.",
+	},
+	["cls.druid.heal.w07.047"] = {
+		"A cat would hide under a bush and lick this for a day. I have a spell and no bush. Fair trade.",
+		"Any beast of the field would just limp off and hope. I get to fix it. The small advantage of having hands.",
+	},
+	["cls.druid.heal.w07.048"] = {
+		"Healing myself first isn't selfishness. If I fall, nobody here gets mended at all.",
+		"The others need me upright more than they need me brave. So: me first, this once.",
+	},
+	["cls.druid.heal.w07.049"] = {
+		"New skin. Well, as new as last spring.",
+		"Back to green. Mostly.",
+		"Fresh as a new leaf, and about as tough. It'll do.",
+	},
+	["cls.druid.heal.w07.050"] = {
+		"The old druids say Malfurion taught that a healer should feel a wound fully before closing it. I felt this one. That's enough.",
+		"Feel the wound before you close it, the old teaching goes, so it isn't wasted. I've felt it. Plenty.",
+	},
+	["cls.druid.heal.w07.051"] = {
+		"inspects the newly closed cut, frowns at the faint scar left behind, and decides to call it character.",
+		"eyes the thin new scar and shrugs, apparently filing it under lessons learned.",
+	},
+	["cls.druid.heal.w07.052"] = {
+		"Life wants to go on. It always has. All a druid really does is clear the path for it.",
+		"Underneath everything, the living thing wants to live. I just stop arguing with it.",
+		"Nothing alive needs to be taught to mend. It needs to be allowed. That's the whole secret, and it isn't one.",
+	},
+	["cls.druid.heal.w07.053"] = {
+		"The part of me that runs on four legs says ignore it and keep going. The part with hands knows better.",
+		"Instinct says bite through the pain. Sense says stop and mend. Sense wins, barely.",
+	},
+	["cls.druid.heal.w07.054"] = {
+		"Spring, here. Just a little of you.",
+		"Come, green. Only as much as I need.",
+	},
+	["cls.druid.heal.w07.055"] = {
+		"Quick, before anything else finds me like this.",
+		"Mend fast. Wounded creatures draw attention, and I'd rather not be the slowest deer in the meadow.",
+	},
+	["cls.druid.heal.w07.056"] = {
+		"Breathe with me. Slow. The green follows the breath.",
+		"In, and out. Let it settle where it's needed.",
+		"Easy breaths. The mending rides on them.",
+	},
+	["cls.druid.heal.w07.057"] = {
+		"There you are, {target}. Patched and green.",
+		"{target}, that should hold. Don't test it too hard.",
+		"Mended, {target}. Try to keep it that way for an hour.",
+	},
+	["cls.druid.heal.w07.058"] = {
+		"You bleed like a felled birch. Stop that.",
+		"That's a lot of red for one person. Let's keep the rest inside.",
+		"Sap belongs in trees and blood belongs in you. Hold still.",
+	},
+	["cls.druid.heal.w07.059"] = {
+		"Watching someone else's wound close is better than watching my own. I get to see the surprise on their face.",
+		"I never tire of the moment the pain leaves someone's eyes. It's the closest thing to spring I can carry in my hands.",
+	},
+	["cls.druid.heal.w07.060"] = {
+		"stretches a hand toward {target}, and a soft green glow drifts across the gap like pollen on a breeze.",
+		"turns toward {target} and speaks a few low words, and the hurt there begins to close like a leaf curling shut.",
+		"sends a thread of green light toward {target}, steady and unhurried, the way a stream finds its bed.",
+	},
+	["cls.druid.heal.w07.061"] = {
+		"Rejuvenation's on you. Little mends, one after another, for a while yet.",
+		"That's a slow mend, {target}. You'll feel it come in waves.",
+	},
+	["cls.druid.heal.w07.062"] = {
+		"Regrowth. The quick part's done; the rest grows in on its own.",
+		"Some now, more later. That's how Regrowth works, {target}.",
+	},
+	["cls.druid.heal.w07.063"] = {
+		"Keep at it. I've got your back, and your wounds.",
+		"Don't look back, just fight. I'm mending as fast as you're bleeding.",
+		"Eyes front. Leave the hurting part to me.",
+	},
+	["cls.druid.heal.w07.064"] = {
+		"Watch them, not the enemy. The enemy is someone else's problem until somebody drops.",
+		"My eyes stay on the others. The wild part of me can sulk about missing the fight.",
+	},
+	["cls.druid.heal.w07.065"] = {
+		"Easy now. Pain is loud, but it doesn't get the last word.",
+		"Shh. Let it go quiet. That's all mending is.",
+		"Let the hurt talk itself out. Then it leaves.",
+	},
+	["cls.druid.heal.w07.066"] = {
+		"Root to branch, mend this one.",
+		"Earth beneath, leaf above, close this wound.",
+		"From the deep roots up: heal.",
+	},
+	["cls.druid.heal.w07.067"] = {
+		"Next time, try ducking. Trees can't, and look what happens to them.",
+		"Duck next time. Even saplings bend when the wind comes.",
+		"A willow bends and keeps its branches. Worth considering, next time.",
+	},
+	["cls.druid.heal.w07.068"] = {
+		"I don't know this one's name, and the green doesn't ask. It never does.",
+		"Known or unknown, the mending is the same. The wild never learned to play favorites.",
+	},
+	["cls.druid.heal.w07.069"] = {
+		"keeps one eye on the fight and one on {target}, and the healing arrives just before the next blow does.",
+		"turns from the foe long enough to send a quick mend toward {target}, then back again.",
+	},
+	["cls.druid.heal.w07.070"] = {
+		"Stop wriggling. You're not a fish and I'm not done.",
+		"Would you mind not moving? Mending a moving target is twice the work.",
+		"Squirm all you like, but the spell lands where it lands.",
+	},
+	["cls.druid.heal.w07.071"] = {
+		"Sit a moment. Rested flesh takes mending better.",
+		"Take a breath before we move on. I want this one to set properly.",
+		"No hurry now. Let it close slowly and it'll close for good.",
+	},
+	["cls.druid.heal.w07.072"] = {
+		"Mana poured into someone else's wound never feels wasted, even when it's the last of it.",
+		"I could keep this for myself. I won't. That's the whole bargain of being the one who mends.",
+	},
+	["cls.druid.heal.w07.073"] = {
+		"Cenarius taught the first druids to mend what the wild had torn, or so the Circle says. Today that's you.",
+		"The oldest gift of the Circle, they say. Lucky you, getting it for free.",
+	},
+	["cls.druid.heal.w07.074"] = {
+		"watches {target} closely as the green light sinks in, the way one watches a seedling just planted out.",
+		"studies {target} with a healer's narrowed eyes until the hurt has plainly eased.",
+	},
+	["cls.druid.heal.w07.075"] = {
+		"Better? Good. The forest sends its regards.",
+		"There. Compliments of every oak I've ever sat under.",
+		"All better. Thank a tree when you pass one.",
+	},
+	["cls.druid.heal.w07.076"] = {
+		"Hold on. The big mend takes a few breaths to gather.",
+		"Give me a moment. The slow spell is the strong one.",
+	},
+	["cls.druid.heal.w07.077"] = {
+		"I'll close this, and back they'll go into the next fight. That's the job. I've made peace with it, mostly.",
+		"Mend, watch them charge off, mend again. A druid learns patience from trees and from people like this one.",
+	},
+	["cls.druid.heal.w07.078"] = {
+		"Easy. The worst of it is leaving.",
+		"Feel that? The pain packing its bags.",
+		"There it goes. The hurt's on its way out.",
+	},
+	["cls.druid.heal.w07.079"] = {
+		"lifts both hands toward {target} as if offering water, and the green light spills over.",
+		"cups {g:his|her} hands and opens them toward {target}, and something like warm spring air passes between them.",
+	},
+	["cls.druid.heal.w07.080"] = {
+		"No need to thank me. Plant something sometime.",
+		"Thank the wild, not me. Better yet, don't tread on any mushrooms along the way.",
+		"If you want to pay me back, leave a sapling standing somewhere.",
+	},
+	["cls.druid.heal.w07.081"] = {
+		"Yes, I was a bear a moment ago. Hands are better for this. Hold still.",
+		"Fur off, hands out. Let me see that wound.",
+	},
+	["cls.druid.heal.w07.082"] = {
+		"Go. Your back is covered, and the whole forest is behind me.",
+		"Back in there. Every root in the land is on your side now.",
+	},
+	["cls.druid.heal.w07.083"] = {
+		"murmurs the old words of mending, eyes never leaving the wounded one, voice as steady as falling water.",
+		"speaks quietly and without pause until the wound across from {g:him|her} has closed.",
+	},
+	["cls.druid.heal.w07.084"] = {
+		"You'll have a scar. Wear it like bark: proof you outlasted something.",
+		"That'll leave a mark. Trees carry theirs for centuries and nobody calls them ugly.",
+	},
+	["cls.druid.heal.w07.085"] = {
+		"One Rejuvenation laid on and left to tick. Now I can look elsewhere for a few breaths.",
+		"Set it going on them and turn away. The slow mends are the ones that let a healer think.",
+	},
+	["cls.druid.heal.w07.086"] = {
+		"Rest your weight on the earth a moment, {target}. It has carried heavier things than you.",
+		"Lean on the ground, {target}. It has never once dropped anything.",
+	},
+	["cls.druid.heal.w07.087"] = {
+		"Let me see. Hm. I've seen worse on a badger, and the badger complained less.",
+		"Boars take worse than this and don't make half the noise.",
+	},
+	["cls.druid.heal.w07.088"] = {
+		"kneels beside {target} and works without hurry, the way one tends a bed of seedlings.",
+		"settles beside {target} and takes {g:his|her} time, unhurried as moss.",
+	},
+	["cls.druid.jest.w07.001"] = {
+		"How many druids does it take to plant a tree? One, and three seasons of patience to see whether it worked.",
+		"Why don't druids play hide and seek? The trees always tell.",
+	},
+	["cls.druid.levelup.w07.001"] = {
+		"The green in me runs a little deeper now. Spells that used to take my whole breath now ask for half of it.",
+		"My roots have reached a little further down. I can feel it in how steadily I stand.",
+	},
+	["cls.druid.levelup.w07.002"] = {
+		"draws a deep breath, and for a moment the air around {g:him|her} seems to smell faintly of new leaves.",
+		"stands very still, fingers spread, as if feeling sap rise along {g:his|her} arms.",
+	},
+	["cls.druid.levelup.w07.003"] = {
+		"Stronger. The wild has been patient with me; it seems to be paying off.",
+		"A little more of the wild answers when I call now. Good. It's been a long apprenticeship.",
+	},
+	["cls.druid.lowhp.w07.001"] = {
+		"The trunk's split. The roots haven't noticed. Neither will I.",
+		"Split down the middle and the roots still hold. That's how the old trees do it.",
+	},
+	["cls.druid.lowhp.w07.002"] = {
+		"If I'm in a shape, shed it. If I'm not, start mending. Now.",
+		"Bear, cat or bare skin: whichever it is, it's time to mend.",
+	},
+	["cls.druid.lowhp.w07.003"] = {
+		"I always meant to return to the soil eventually. I meant much, much later.",
+		"The worms can wait. They're famously patient.",
+		"If this is my last fight, the soil is getting a very cross gift.",
+	},
+	["cls.druid.lowhp.w07.004"] = {
+		"sways, steadies, and plants {g:himself|herself} again with a ragged breath, like a tree refusing the wind.",
+		"staggers half a step, catches {g:himself|herself}, and the breath comes hard and harsh.",
+	},
+	["cls.druid.lowhp.w07.005"] = {
+		"So this is how the deer feels near the end. I don't need to learn the rest.",
+		"Cornered and bleeding. I know this from the other side. I don't like this side.",
+		"Wolves pick off the ones that stumble. Stop stumbling.",
+	},
+	["cls.druid.lowhp.w07.006"] = {
+		"A wounded animal is the most dangerous kind. You'd better hope you knew that.",
+		"Hurt me, have you? Now you'll see why hunters fear the wounded ones.",
+		"Cornered, bleeding and still here. That's the worst version of me to fight.",
+	},
+	["cls.druid.lowhp.w07.007"] = {
+		"I'm the one who's meant to do the mending. Somebody mend me.",
+		"I patch up the rest of you. Who patches me? Anyone? Quickly?",
+	},
+	["cls.druid.lowhp.w07.008"] = {
+		"Pain is only the body talking. Let it talk. I'm listening to the fight.",
+		"It hurts. Noted. Now back to the part that matters.",
+		"Later I'll feel all of this. Not now.",
+	},
+	["cls.druid.lowhp.w07.009"] = {
+		"Green beneath me, hold me up a little longer.",
+		"Breathe in the green, breathe out the hurt. Again.",
+		"Sap and root, lend me one more breath.",
+	},
+	["cls.druid.lowhp.w07.010"] = {
+		"Moonglade can do without one more name to mourn. Not today.",
+		"The Circle loses enough of us. It won't be losing me here.",
+	},
+	["cls.druid.lowhp.w07.011"] = {
+		"The soil's been patient with me all my life. It can be patient a little longer.",
+		"Not yet. I'm not done being a living thing.",
+		"One more season. I'm only asking for one more season.",
+	},
+	["cls.druid.lowhp.w07.012"] = {
+		"bleeds and does not give ground, eyes gone flat and bright as a cornered creature's.",
+		"draws in on {g:himself|herself}, hurt and all the more dangerous for it, as wild things are.",
+	},
+	["cls.druid.lowhp.w07.013"] = {
+		"Bit of a scratch. Well, several. All right, rather a lot.",
+		"Brambles have done worse to me. They haven't, actually, but it sounded brave.",
+		"Nothing serious. Most of me is still attached.",
+	},
+	["cls.druid.lowhp.w07.014"] = {
+		"You're stronger. I'm more stubborn. We'll see which runs out first.",
+		"Strong, aren't you. Patience doesn't care.",
+		"More strength than me, granted. You'll still have to finish it, and I won't make that easy.",
+	},
+	["cls.druid.lowhp.w07.015"] = {
+		"No one's coming. Whatever mending happens, I do it.",
+		"Alone with this. Fine. The wild raises its young to cope.",
+	},
+	["cls.druid.lowhp.w07.016"] = {
+		"Winter takes the leaves, never the root. Try again.",
+		"You've stripped the leaves. The rest of me is wintering, not dying.",
+		"Bare branches. Not dead wood. There's a difference.",
+	},
+	["cls.druid.lowhp.w07.017"] = {
+		"Stay up. Too many things still growing that need tending.",
+		"Not here. There's still too much left to look after.",
+	},
+	["cls.druid.muse.w07.001"] = {
+		"An oak spends a hundred years becoming what the acorn already meant. I try not to hurry anything that hasn't asked me to.",
+		"Trees never rush the part that matters. Whatever I'm growing into, I suspect it works the same way.",
+		"The slowest things in the forest are the ones still standing after everything fast has gone.",
+	},
+	["cls.druid.muse.w07.002"] = {
+		"A fallen trunk feeds more life lying down than it ever did standing. I find that a comfort, on the days I think about my own end.",
+		"Moss, beetles, mushrooms: a dead tree goes on feeding the wood for years. Ending is not the same as stopping.",
+	},
+	["cls.druid.muse.w07.003"] = {
+		"People ask where my boots go when I become a bear. I've stopped answering, mostly because I don't know either.",
+		"Every shape gives me back with my pack still on and my boots still laced. I've decided not to ask how. The wild dislikes questions about its tailoring.",
+	},
+	["cls.druid.muse.w07.004"] = {
+		"Balance isn't standing still. It's a wading bird on one leg in a current: a hundred small corrections no one sees.",
+		"People picture balance as calm. It's more like crossing fast water on a fallen log: you're never done adjusting.",
+		"Nothing in the wild is ever balanced for long. It tips, and catches itself, and tips the other way. That catching is the whole art.",
+	},
+	["cls.druid.muse.w07.005"] = {
+		"Wherever I stand, Moonglade is one spell away. No road is quite so long with a door like that in my pocket.",
+		"I could be in Moonglade before this thought finishes. Most days it's enough to know it, and I stay where I'm needed.",
+		"Every druid carries the same way out, folded small. I rarely use it. Knowing it's there makes the long roads lighter.",
+	},
+	["cls.druid.muse.w07.006"] = {
+		"In Moonglade nobody asks where you've come from. They ask what you've been listening to.",
+		"The first question in Moonglade is never your name. It's what the land has been telling you lately, and they wait for a real answer.",
+	},
+	["cls.druid.muse.w07.007"] = {
+		"The Cenarion Circle has no walls and no throne. It's a promise made by a great many stubborn people to keep showing up.",
+		"What holds the Cenarion Circle together isn't rank. It's the shared habit of kneeling down to look at things closely.",
+		"No banner, no capital, no king. The Cenarion Circle is held together by druids who simply refuse to stop caring.",
+	},
+	["cls.druid.muse.w07.008"] = {
+		"The old druids say some of our eldest sleep for years at a stretch, walking the Dream. I can't decide whether that's the greatest devotion or the longest nap.",
+		"Some druids, the elders say, lie asleep for whole years while they wander the Dream. I hope someone opens a window for them now and then.",
+	},
+	["cls.druid.muse.w07.009"] = {
+		"Lately the elders speak of the Dream in lower voices. Something has crept into it, they say, and they won't name it aloud.",
+		"There's talk in the Cenarion Circle that the Dream is not as green as it was. Nobody says more, which is how I know it's true.",
+	},
+	["cls.druid.muse.w07.010"] = {
+		"The old druids say the one who founded us is still out there, asleep and listening. I try to do the work as if he might check it.",
+		"Malfurion founded us, the elders say, and then went where we can't follow. Teachers who vanish leave the most careful students.",
+	},
+	["cls.druid.muse.w07.011"] = {
+		"The first of us learned from Cenarius himself, so the stories go. Every druid since has been learning from someone who learned from him.",
+		"Teacher to teacher to teacher, back to the forest lord. The lesson has passed through so many hands, and it still fits in one breath: listen first.",
+	},
+	["cls.druid.muse.w07.012"] = {
+		"The bear's hunger stays with me a while after I shed it. I've learned not to go to market straight after a fight.",
+		"Coming out of the bear, I always want honey and a long sleep. I allow myself one of the two.",
+		"The bear leaves, but its appetite lingers like a guest who missed the hint. Whole loaves have vanished that way.",
+	},
+	["cls.druid.muse.w07.013"] = {
+		"Under water, in the seal's shape, sound comes from everywhere at once. On land afterward, the world feels oddly lopsided.",
+		"The seal never worries about breath. Every time I let it go, my lungs remember all at once that they have a job.",
+	},
+	["cls.druid.muse.w07.014"] = {
+		"The cat notices everything and cares about almost none of it. A useful teacher, if a rude one.",
+		"In the cat's shape I see three things at once: what moves, what hides, and what's about to make a mistake.",
+		"The cat taught me to sit through a whole commotion without blinking, then act on the one detail that mattered.",
+	},
+	["cls.druid.muse.w07.015"] = {
+		"Prowling teaches me how much noise I make the rest of the time. Two legs are clumsy things.",
+		"On soft pads, the forest floor turns into a map of what not to step on. In boots, I trample the whole page.",
+	},
+	["cls.druid.muse.w07.016"] = {
+		"At full speed, on four legs, I stop being a visitor in the land and become something it's used to seeing.",
+		"Running in the swift shape, I don't cross the land so much as join it for a while.",
+	},
+	["cls.druid.muse.w07.017"] = {
+		"Some seeds only open after a fire. I remind myself of that when a season goes badly.",
+		"The cones that need flames before they'll open have it right: sometimes the worst heat is the only key.",
+		"A burned slope is green again before anyone expects it. The wild never once asked permission to begin over.",
+	},
+	["cls.druid.muse.w07.018"] = {
+		"Rot is the forest's generosity. Everything it ever had, given to the soil, nothing held back.",
+		"People wrinkle their noses at a heap of dead leaves. I see a feast laid out for next spring.",
+	},
+	["cls.druid.muse.w07.019"] = {
+		"When my time comes, I'd like to be laid somewhere a tree can find me. It seems the least I can do, after all the leaning on them.",
+		"Bury me without a box. I've borrowed from the soil all my life; it should get the chance to collect.",
+	},
+	["cls.druid.muse.w07.020"] = {
+		"The forest would carry on perfectly well without me. Tending it isn't a favor I do it; it's a privilege it allows.",
+		"I'm not the forest's guardian. I'm one of its guests, who happens to sweep the floor.",
+		"The wild doesn't need me. It lets me help, which is a different thing, and a kinder one.",
+	},
+	["cls.druid.muse.w07.021"] = {
+		"Every herb I know, I learned twice: once for what it heals, once for what it does if you get the dose wrong.",
+		"The humblest weeds by a road have kept more people alive than any blade. Nobody sings about them.",
+	},
+	["cls.druid.muse.w07.022"] = {
+		"Half a druid's work is deciding not to act. The other half is living with the times that was the wrong choice.",
+		"Sometimes the balance asks me to let the wolf eat. I do. I don't have to like it.",
+		"The hardest thing I've learned is to stand back while something suffers, because stepping in would cost the wild more.",
+	},
+	["cls.druid.muse.w07.023"] = {
+		"I feel the turn of a season in my joints before I see it in the leaves. The wild has written itself into me.",
+		"Long before the first leaf yellows, something in me starts slowing down, getting ready. I've stopped arguing with it.",
+	},
+	["cls.druid.muse.w07.024"] = {
+		"An owl can sit an hour on one branch and miss nothing. I've tried. I miss a great deal, and my leg falls asleep.",
+		"Hawks hang on the air for as long as it takes. I last until my stomach starts negotiating.",
+	},
+	["cls.druid.muse.w07.025"] = {
+		"Leather and wood, nothing that clanks. The wild hears metal coming a mile off and decides it has somewhere else to be.",
+		"Soft leather, a plain staff. Everything I carry could rot into the ground one day, and that pleases me.",
+	},
+	["cls.druid.muse.w07.026"] = {
+		"Cities are forests of a kind, only everything in them is in a hurry, and nothing is allowed to rot in peace.",
+		"In a city I count the trees the way a sailor counts stars: to know I haven't drifted too far.",
+	},
+	["cls.druid.muse.w07.027"] = {
+		"Calling roots out of the ground is borrowing. They go back down tired, and I owe them a quiet season.",
+		"Roots will grip whatever I ask them to. That's exactly why I'm careful what I ask.",
+	},
+	["cls.druid.muse.w07.028"] = {
+		"Putting a beast to sleep is a mercy and a trick at once. I'm never sure which one it remembers when it wakes.",
+		"A beast lulled to sleep dreams of something. I hope it's grass, and not me.",
+	},
+	["cls.druid.muse.w07.029"] = {
+		"Calming a frightened animal takes the same voice as calming a frightened person. People just take longer to admit it worked.",
+		"Soothing a beast is mostly being less frightening than whatever frightened it. Most days I manage.",
+	},
+	["cls.druid.muse.w07.030"] = {
+		"Strength hoarded goes stale like still water. Passing mine to someone who has run dry is the most natural thing I know.",
+		"The wild never meant its strength to pool in one place. When I pass mine to someone else, it's only water finding its way downhill.",
+	},
+	["cls.druid.muse.w07.031"] = {
+		"Under the Barrens, the elders say, druids once tried to dream a dry land green and woke as something else. I measure every ambition of mine against them.",
+		"The elders tell of druids who wanted to mend too much at once, and were swallowed by their own dreaming. I keep my hopes the size of a garden.",
+	},
+	["cls.druid.muse.w07.032"] = {
+		"The elders speak of Felwood the way healers speak of plague: quietly, and with their hands busy.",
+		"Felwood, they say, was green once, all the way down to the roots. I think of it whenever I'm tempted to call a wound too deep to tend.",
+	},
+	["cls.druid.muse.w07.033"] = {
+		"The green dragons guard the Dream, the stories say. I like to think they'd know a druid in a crowd. More likely we all just smell of moss to them.",
+		"Somewhere above all of us, the stories say, green dragons keep watch over the Dream. I hope they're kinder to sleepers than the stories make them sound.",
+	},
+	["cls.druid.muse.w07.034"] = {
+		"Since I took this path, my dreams have grown greener and quieter. I can't tell whether that's the Dream or just honest tiredness.",
+		"Some mornings I wake with the smell of a forest I've never walked in. The elders only smile when I mention it.",
+	},
+	["cls.druid.muse.w07.035"] = {
+		"Each shape I learn takes a small piece of my old certainty about where I end. I miss it less than I expected.",
+		"With every new shape, the line between me and the beast gets a little blurrier. Somehow I feel more like myself, not less.",
+	},
+	["cls.druid.muse.w07.036"] = {
+		"The bear isn't angry, whatever people think. It has simply run out of patience.",
+		"People think the bear is rage. It isn't. It's weight, put exactly where it's needed.",
+		"There's no fury in the bear, only certainty. It decided long ago what it would and wouldn't put up with.",
+	},
+	["cls.druid.muse.w07.037"] = {
+		"Mushrooms are the forest's quiet bargain: they eat what died, feed what lives, and ask for nothing but shade.",
+		"In every wood, mushrooms are quietly taking apart last year's leaves and expecting no thanks. The best workers in the wild have no faces.",
+	},
+	["cls.druid.muse.w07.038"] = {
+		"The Cenarion Circle keeps a hold at the edge of Silithus, the elders say, where the sand is trying to eat everything green. Someone has to sit at that edge and say no.",
+		"Out in Silithus, I'm told, druids of the Cenarion Circle hold a line against the desert itself. It sounds hopeless. It's also exactly what we're for.",
+	},
+	["cls.druid.muse.w07.039"] = {
+		"I'm rarely lonely out here. Being among things that don't talk is a different matter entirely.",
+		"People call it solitude when I go a week without speaking. The forest was chattering the whole time; I simply had nothing to add.",
+	},
+	["cls.druid.muse.w07.040"] = {
+		"When I find a grove cut for no reason, the bear in me wakes before I've decided anything. I let it pace. I don't always let it out.",
+		"Careless axes make my hands itch for claws. Most days I've learned to breathe until the itch passes.",
+	},
+	["cls.druid.muse.w07.041"] = {
+		"Water never fights a stone. It just keeps going, and in a few thousand years the stone has changed its mind.",
+		"A stream wins every argument with a rock eventually. It simply never stops making its point.",
+	},
+	["cls.druid.muse.w07.042"] = {
+		"Two peoples learned this craft from the same teacher, the stories say, and neither of them got the lesson wrong. That ought to mean more than it does.",
+		"Hoof or bare foot, the same teacher showed us the way, so the elders say. The forest never cared which of us was listening.",
+	},
+	["cls.druid.muse.w07.043"] = {
+		"They say Remulos has never once hurried. Nothing in Moonglade seems to wilt, either. I doubt that's a coincidence.",
+		"Remulos tends Moonglade without haste, the druids say, and it flourishes. I keep trying to learn that trick in places that aren't Moonglade.",
+	},
+	["cls.druid.muse.w07.044"] = {
+		"Since the bear, I trust my nose more than my eyes. Eyes can be fooled by a shadow; a smell is a confession.",
+		"My eyes see what's there. My nose tells me what happened. The shapes taught me to ask the nose first.",
+	},
+	["cls.druid.muse.w07.045"] = {
+		"Winter isn't death. It's the land holding its breath and counting what it still has.",
+		"Bare branches only look dead to people in a hurry. Look closer, and every one of them is keeping a promise to spring.",
+	},
+	["cls.druid.muse.w07.046"] = {
+		"The power I use isn't mine. It passes through me the way water passes through a root, and I try not to clog it with pride.",
+		"I don't make anything grow. I only get out of the way of what wanted to.",
+		"Whatever answers when I call, I'm only its channel. A blocked channel helps no one, so I keep mine clear.",
+	},
+	["cls.druid.muse.w07.047"] = {
+		"Some days the beast sits closer to the surface than I'd like. I wear my own face carefully on those days.",
+		"There are mornings I wake wanting to growl at the light. I wash my face, wait, and find my manners again.",
+	},
+	["cls.druid.muse.w07.048"] = {
+		"Grief, the wild teaches, is short and practical. A doe mourns, and then she eats.",
+		"Animals grieve, whatever people think. They just don't stop living to do it.",
+	},
+	["cls.druid.muse.w07.049"] = {
+		"I've never understood people who fear the dark of a forest. It's the most crowded place in the world, if you count everything awake in it.",
+		"A dark wood is full, not empty. Fear comes from thinking you're the only one there.",
+	},
+	["cls.druid.muse.w07.050"] = {
+		"Every time I call on the wild, I feel the land lean in a little, curious. I try to be worth its attention.",
+		"The wild's power doesn't come when I order it. It comes when I've been honest about what I need.",
+	},
+	["cls.druid.muse.w07.051"] = {
+		"Roads are the shortest way between two towns and the longest way to understand the land between them.",
+		"I leave the road whenever I can. The land between the milestones is where everything actually lives.",
+	},
+	["cls.druid.muse.w07.052"] = {
+		"A druid who can't bear to see anything die should find another calling. The wild is a long, patient argument between eating and being eaten.",
+		"Tending the wild means tending its deaths too. Nobody warns you about that part at the start.",
+	},
+	["cls.druid.muse.w07.053"] = {
+		"When I harden my skin to bark, something of the tree's temper comes with it: slow, unbothered, very hard to hurry.",
+		"With bark for skin, even a blow feels like bad weather: something to stand through.",
+	},
+	["cls.druid.muse.w07.054"] = {
+		"The great bear's shape fits me better each year. I'm not sure whether I'm growing into it or it into me.",
+		"The bigger the bear I become, the gentler I have to be with doorframes, and with everyone.",
+	},
+	["cls.druid.muse.w07.055"] = {
+		"Calling a storm down on my enemies is the least gentle thing I do, and the most honest. The wild has tempers too.",
+		"When I pull the wind into a gale, I always feel it pulling back, testing whether I deserve to hold it.",
+	},
+	["cls.druid.muse.w07.056"] = {
+		"Drawing poison out of a wound is like pulling a weed: get the whole root, or it grows back meaner.",
+		"A curse clings like bindweed. I unwind it slowly, from the end where it started, or it only tightens.",
+	},
+	["cls.druid.muse.w07.057"] = {
+		"Druids don't own land. We're more like the land's old friends who keep turning up with soup.",
+		"Nobody owns a forest. At best you're the neighbor it tolerates, the one who mends the fences and asks for little.",
+	},
+	["cls.druid.muse.w07.058"] = {
+		"I've stopped thinking of years as a line. They're a wheel, and every time it comes round I know the spokes a little better.",
+		"Spring, harvest, the cold, spring again. Every turn of the wheel I meet the same seasons as a slightly different person.",
+	},
+	["cls.druid.muse.w07.059"] = {
+		"Hunger I can forgive in anyone. A kill taken for a trophy and left to spoil is something else, and the wild remembers it longer than I do.",
+		"Kill to eat, and the wild shrugs. Kill to boast and leave the rest to rot, and something in the land goes cold toward you.",
+	},
+	["cls.druid.muse.w07.060"] = {
+		"I trust anyone a dog trusts, and doubt anyone a horse shies from. Beasts have been reading people far longer than I have.",
+		"When the animals around someone go quiet and watchful, I go quiet and watchful too. They've rarely been wrong.",
+	},
+	["cls.druid.muse.w07.061"] = {
+		"A shape isn't a costume. Each one has its own opinions, and I have to listen to them for as long as I wear it.",
+		"People think I put the bear on like a coat. It's more like inviting a guest with strong views on how to sit.",
+	},
+	["cls.druid.muse.w07.062"] = {
+		"I'd rather tend than fight. But a gardener who never pulls a weed doesn't keep a garden for long.",
+		"Mending and fighting are the same work from opposite ends. Both decide what gets to keep growing.",
+	},
+	["cls.druid.muse.w07.063"] = {
+		"Every spring of water I find, I clear a little. A handful of leaves, a fallen stick. It's the smallest kind of devotion I know.",
+		"I can't pass a choked stream without freeing it a little. It isn't duty. It's like brushing a leaf from a friend's hair.",
+	},
+	["cls.druid.muse.w07.064"] = {
+		"No, I won't turn you into a squirrel. Not even for a minute. Ask someone with fewer principles.",
+		"I can't make you a bear. Some mornings I can barely manage it myself before breakfast.",
+	},
+	["cls.druid.muse.w07.065"] = {
+		"Yes, I talk to plants. No, they don't answer. They do listen better than most people, though.",
+		"Talking to trees isn't madness. Expecting them to hurry, that's madness.",
+	},
+	["cls.druid.muse.w07.066"] = {
+		"Take only what you'll use. The wild keeps count, even if it never sends the bill.",
+		"Kill what you'll eat, pick what you'll need. Take more, and the land starts quietly keeping a list.",
+	},
+	["cls.druid.muse.w07.067"] = {
+		"My staff is only a branch that agreed to come along.",
+		"This staff was a branch once. It still sulks a little when I lean on it too hard.",
+	},
+	["cls.druid.muse.w07.068"] = {
+		"Every creature you meet out here is somebody's dinner or somebody's mother. Usually both.",
+		"Nothing in the wild is only a monster. It's a mouth to feed and a den to guard, same as anything.",
+	},
+	["cls.druid.muse.w07.069"] = {
+		"Want to know if a place is healthy? Listen. A sick wood is a quiet wood.",
+		"Count the birdsong before you count the trees. Where the singing stops, something's wrong.",
+	},
+	["cls.druid.muse.w07.070"] = {
+		"Patience isn't waiting. It's working at the speed of whatever you're working with.",
+		"You can't hurry a tree, a wound or a druid. All three are listening to something slower than you.",
+	},
+	["cls.druid.muse.w07.071"] = {
+		"The worst part of bear shape? Every hunter for a mile wondering what I'd fetch at market.",
+		"Take a bear's shape near a hunting camp just once, and you'll learn to wave before you change.",
+	},
+	["cls.druid.muse.w07.072"] = {
+		"Take something from the land, give something back: a seed, a cleared spring, a stone moved off a sprout. The old druids called it keeping the accounts.",
+		"Whatever you take from the wild, pay a little back before you sleep. The old druids called that keeping the accounts, and they never ran short.",
+	},
+	["cls.druid.muse.w07.073"] = {
+		"People expect druids to smell of flowers. Mostly we smell of wet dog and pine sap.",
+		"I'm told I smell of moss. I've decided to take it as a compliment.",
+	},
+	["cls.druid.muse.w07.074"] = {
+		"Step around the moss when you can. It grows a finger's width in a year and never complains.",
+		"Mind the moss. It took years to get that far, and you'll cross it in two steps.",
+	},
+	["cls.druid.muse.w07.075"] = {
+		"crouches, takes a pinch of earth between two fingers and smells it, the way a merchant tests a coin.",
+		"rubs a little soil between {g:his|her} fingertips and studies it thoughtfully, as though it had answered a question.",
+	},
+	["cls.druid.muse.w07.076"] = {
+		"picks a leaf out of {g:his|her} hair, studies it, and tucks it into a pouch instead of throwing it away.",
+		"finds a twig caught in {g:his|her} collar and, rather than flick it off, plants it upright in the nearest patch of soil.",
+	},
+	["cls.druid.muse.w07.077"] = {
+		"hums low in the throat, a sound closer to a drowsing animal than to a tune.",
+		"lets a slow breath out through the nose that ends, faintly, in something like a growl, and then looks mildly embarrassed.",
+	},
+	["cls.druid.muse.w07.078"] = {
+		"turns a seed over in {g:his|her} palm for a long moment before putting it carefully away.",
+		"presses a seed into the earth with one thumb, covers it, and walks on without looking back.",
+	},
+	["cls.druid.muse.w07.079"] = {
+		"shakes out {g:his|her} arms and neck, like someone shrugging off a heavier coat than the one {g:he|she} is wearing.",
+		"rolls {g:his|her} shoulders and stretches {g:his|her} back in a long, almost animal arch.",
+	},
+	["cls.druid.muse.w07.080"] = {
+		"watches a beetle cross the path and steps carefully over it, without breaking stride.",
+		"pauses to let a column of ants go by, with the patience of someone waiting on a royal procession.",
+	},
+	["cls.druid.muse.w07.081"] = {
+		"leans on {g:his|her} staff and closes {g:his|her} eyes for a few breaths, as though listening to the ground through the wood.",
+		"plants the foot of {g:his|her} staff in the ground and rests both hands on it, waiting for nothing in particular.",
+	},
+	["cls.druid.muse.w07.082"] = {
+		"brushes a hand along whatever grows beside the path while walking, the way one might trail fingers in water.",
+		"walks a while with one hand open at {g:his|her} side, fingertips grazing leaf and stem as if greeting them in passing.",
+	},
+	["cls.druid.muse.w07.083"] = {
+		"absently scratches behind one ear with a crooked finger, then catches {g:himself|herself} at it.",
+		"yawns hugely, showing rather more teeth than seems polite, then glances around to see if anyone noticed.",
+	},
+	["cls.druid.muse.w07.084"] = {
+		"sits cross-legged for a while, palms resting on the ground, breathing slowly until breath and land seem to find the same pace.",
+		"kneels and lays both palms on the earth, eyes closed, as though listening for a heartbeat far below.",
+	},
+	["cls.druid.muse.w07.085"] = {
+		"The spell to Moonglade always leaves me a little dizzy, as if the world had been folded and I'd been caught in the crease.",
+		"Arriving in Moonglade by spell, I always take one step to check the ground is real. It always is, and it always feels like a gift.",
+	},
+	["cls.druid.muse.w07.086"] = {
+		"Druids make terrible gardeners. We keep letting things grow wherever they like.",
+		"Ask a druid to tidy a garden and you'll get it back wilder, healthier, and much harder to walk through.",
+	},
+	["cls.druid.muse.w07.087"] = {
+		"Under a roof I sleep lightly and wake stiff. With soil under my back I sleep like a root.",
+		"Give me a soft bed and I'll lie awake counting the walls. Give me moss and I'm gone before I finish the thought.",
+	},
+	["cls.druid.pray.w07.001"] = {
+		"Cenarius, Lord of the Forest: give me the patience of the oak, and the sense to know when to be the wolf instead.",
+		"Forest Lord, if you hear the small voices: keep the balance in me, and let me tend more than I tear.",
+	},
+	["cls.druid.quest_complete.w07.001"] = {
+		"That's settled. The reward is fine, but the real pay is a corner of the world sitting a little straighter.",
+		"Paid, and fairly. Still, the part I'll keep is the feeling of one thing put right.",
+		"The purse is welcome. The quiet afterward, when something's been set right, is worth more.",
+	},
+	["cls.druid.quest_complete.w07.002"] = {
+		"There. If anything else in these parts needs tending, send word.",
+		"All done. Call on me again, if the wild around here needs a hand.",
+		"Finished. There's always a tree near me, if you need me again.",
+	},
+	["cls.druid.quest_complete.w07.003"] = {
+		"accepts the reward with a short nod and puts it away uncounted, eyes already on the horizon.",
+		"pockets the payment without a glance and spends longer brushing the dust of the road from {g:his|her} sleeves.",
+	},
+	["cls.druid.quest_complete.w07.004"] = {
+		"Whatever they gave me, I'd have traded it for a promise to leave one old tree standing.",
+		"Coin is useful. A promise that someone will leave the hedgerows alone would be more useful, but it's never on offer.",
+	},
+	["cls.druid.quest_complete.w07.005"] = {
+		"Another task off my shoulders. I'll walk a while off the road before taking on the next, and let the ground settle me.",
+		"Finished, and lighter for it. Before anything else, a quiet hour somewhere green.",
+		"That's off my back. I'll sit a while away from the road and let my breathing slow to the land's pace.",
+	},
+	["cls.druid.quest_complete.w07.006"] = {
+		"I did what was asked. Whether the land needed it done is a question I'll keep turning over for a while.",
+		"It's finished, and they're pleased. The wild may have its own opinion; it usually takes a season to give it.",
+		"They thanked me warmly. I'll wait for the land's thanks, which come slower and never in words.",
+	},
+	["cls.druid.quest_complete.w07.007"] = {
+		"My pleasure. Keep an eye on the land around you; it'll tell you something's wrong before anyone else does.",
+		"Glad to. Next time, watch the animals: they'll warn you before trouble arrives.",
+	},
+	["cls.druid.quest_complete.w07.008"] = {
+		"lingers after the exchange, crouching to pull a stray weed from the edge of the path before moving on.",
+		"finishes the business in few words and wipes {g:his|her} hands on a tuft of grass, as though the task had left something on them.",
+	},
+	["cls.druid.quest_complete.w07.009"] = {
+		"Plenty of these tasks are paid in lives, one way or another. I hope this one bought more than it cost.",
+		"If blood went into finishing it, I want it to have been worth it. That's the only kind of accounting I trust.",
+	},
+	["cls.druid.quest_complete.w07.010"] = {
+		"Finished, and nobody got turned into anything. I call that a good day's work.",
+		"All squared away, and I never once had to sprout claws. Remarkable.",
+		"Wrapped up, and not one shape changed in anger. The bear will be disappointed.",
+	},
+	["cls.druid.quest_complete.w07.011"] = {
+		"A small task for a small trouble. The wild is made almost entirely of small things, and they add up.",
+		"Nothing grand. But a forest is only ten thousand small things standing together.",
+	},
+	["cls.druid.quest_complete.w07.012"] = {
+		"However long that took, it took the time it needed. Ask any oak what it thinks of deadlines.",
+		"Finished at its own pace, the only pace anything worth doing has ever kept.",
+		"Quick or slow, it's finished properly. That's the only speed that counts.",
+	},
+	["cls.druid.quest_complete.w07.013"] = {
+		"Want to thank me? Plant something, anything, and let it grow. That's payment enough.",
+		"No need for speeches. Put a seed in the ground before the season turns, and we're even.",
+	},
+	["cls.druid.quest_complete.w07.014"] = {
+		"sniffs the payment curiously before putting it away, an old habit that earns {g:him|her} a puzzled look.",
+		"accepts the reward, then absent-mindedly tests it with {g:his|her} teeth, the way a creature tests anything new.",
+	},
+	["cls.druid.quest_complete.w07.015"] = {
+		"The deer don't know any of this happened. That's the best measure I have: the wild carrying on, undisturbed.",
+		"Out there a fox is going about its day, never knowing what was settled here. And so it should be.",
+	},
+	["cls.druid.quest_complete.w07.016"] = {
+		"Another promise kept. A druid's word should be as slow to break as a root.",
+		"Said I'd see it through, and I did. Roots don't let go halfway either.",
+		"I gave my word, and now it's kept. That matters more to me than whatever was in the purse.",
+	},
+	["cls.druid.quest_complete.w07.017"] = {
+		"Good! One less worry for these folk, and one more reason to walk on smiling.",
+		"There we are. Everyone's a little happier, even the crows, probably.",
+		"Wonderful. I do love an ending where nothing needs burying.",
+	},
+	["cls.druid.quest_complete.w07.018"] = {
+		"If they paid me to thin the beasts, I'll have to check later that I didn't thin them too far. The balance doesn't grade on intention.",
+		"Paid to cull, perhaps, or to fetch, or to fight. Whatever it was, I'll keep an eye on what grows back in its place.",
+	},
+	["cls.druid.quest_complete.w07.019"] = {
+		"inclines {g:his|her} head to the one who asked, with the slow courtesy of someone used to the pace of trees.",
+		"gives a grave little bow, better suited to a glade than a counter, and takes {g:his|her} leave.",
+	},
+	["cls.druid.quest_complete.w07.020"] = {
+		"People ask for help with the troubles they can see. For the quieter sickness in the land, nobody ever posts a notice.",
+		"Done, and gladly. But the troubles that most need a druid never come with a reward attached.",
+	},
+	["cls.druid.quest_complete.w07.021"] = {
+		"Settled. Give the land around here a few quiet days, and it'll mend the rest itself.",
+		"That's my part. The rest belongs to time and the soil, and they're better at it than I am.",
+		"Done on my side. Roots and patience will handle the rest.",
+	},
+	["cls.druid.quest_complete.w07.022"] = {
+		"Somehow a task never feels finished until I've stood among living things for a while afterward.",
+		"The thanks of whoever asked close the bargain. A few minutes with my palms on the earth close the task.",
+	},
+	["cls.druid.quest_complete.w07.023"] = {
+		"lets a long breath out through the nose, and the strain of the task drains away like water into sand.",
+		"stretches slowly, from fingertips to heels, the way an animal stretches after a long wait.",
+		"rolls {g:his|her} neck slowly until something gives with a soft crack, and some of the stiffness of the task goes with it.",
+	},
+	["cls.druid.quest_complete.w07.024"] = {
+		"Another reward I'll probably spend on seeds. The merchants must think I farm in very strange clothes.",
+		"I'll spend this on something sensible, like seeds, and something foolish, like a hot meal I could have foraged.",
+	},
+	["cls.druid.quest_complete.w07.025"] = {
+		"The Cenarion Circle would call this a small kindness and expect a dozen more by the season's end. They'd be right to.",
+		"One more thing I could tell the elders in Moonglade, if they ever asked. They won't. They'd only nod, and expect the next.",
+	},
+	["cls.druid.quest_complete.w07.026"] = {
+		"They call it a fair price. The soil will decide that, a few seasons from now.",
+		"Fair pay, they say. I'll judge by how the hillside looks next spring.",
+	},
+	["cls.druid.quest_complete.w07.027"] = {
+		"It's done. Go easy on the land here, and it'll go easy on you.",
+		"Finished. Be gentle with what grows around you; it remembers.",
+	},
+	["cls.druid.quest_progress.w07.001"] = {
+		"Not finished, but moving. Like sap early in spring: you can't see it, but it's climbing.",
+		"Some of the way there. I'll take the rest at the land's pace, not the giver's.",
+		"A little further along. Trees grow by inches, and nobody calls them slow.",
+	},
+	["cls.druid.quest_progress.w07.002"] = {
+		"pauses, takes stock of what remains, and sets off again at the unhurried, steady pace of a traveling animal.",
+		"tucks away what has been gathered so far, sniffs the air as if for direction, and moves on.",
+		"glances back over the ground already covered, then turns to the rest of it without a word.",
+	},
+	["cls.druid.quest_progress.w07.003"] = {
+		"That's all of it. Ready to hand over, like a basket full at the end of foraging.",
+		"Everything they wanted, gathered. I'll go to them by way of the trees, if there are any.",
+		"Full harvest. Time to set it down at the right door.",
+	},
+	["cls.druid.reputation_change.w07.001"] = {
+		"They're warming to me, slowly, the way a tree warms in spring. Good things grow at that pace or not at all.",
+		"A little more trust from them. I'll tend it the way I'd tend a seedling: carefully, and without staring at it.",
+		"My name is taking root here. Roots make no noise, but they hold.",
+	},
+	["cls.druid.rez.w07.001"] = {
+		"The cycle had me for a moment and handed me back. Apparently I'm not ready to feed the meadow yet.",
+		"Dead, and then not. Every druid preaches the cycle; few get to complain about it from both sides.",
+	},
+	["cls.druid.rezother.w07.001"] = {
+		"Up! The fight's not finished, and neither are you.",
+		"Breathe. Get up. We're not done here.",
+	},
+	["cls.druid.rezother.w07.002"] = {
+		"In the middle of all this, a life pulled back from the soil. The wild will want something for that, someday.",
+		"Death had already started its work. I asked it to give this one back, and for once it did.",
+	},
+	["cls.druid.thanks.w07.001"] = {
+		"Thank you. Kindness sinks in like water into dry soil; I won't forget it soon.",
+		"My thanks. I'll pass it on to something that grows, as the wild would.",
+	},
+	["cls.druid.thanks.w07.002"] = {
+		"Thanks. If you ever need a bear, you know where to find one.",
+		"Much obliged. Should anything ever need mending, or mauling, call on me.",
+	},
+	["cls.druid.threat.w07.001"] = {
+		"Back away slowly. That's what the wise animals do.",
+		"The deer know when to leave. Be as wise as a deer.",
+		"Every creature here knows when to turn around. Join them.",
+	},
+	["cls.druid.threat.w07.002"] = {
+		"I make thornbushes thrive in sand. You'd be a much easier project.",
+		"I spend my days persuading plants to grow. Imagine what I could persuade you to do.",
+		"Making things grow is my trade. Making them stop is the other half of it.",
+	},
+	["cls.druid.threat.w07.003"] = {
+		"I'd return you to the soil without a grudge. That should frighten you more than anger.",
+		"I won't hate you for it. I'll simply let the soil have you. Think about that.",
+		"No anger, no grudge. Just the soil, waiting. Walk away.",
+	},
+	["cls.druid.threat.w07.004"] = {
+		"goes still and holds the other's gaze without blinking, the way a wild thing does before it decides.",
+		"lets the silence stretch until it has said everything that needs saying.",
+		"watches the other without a word, patient as a stone, and just as hard to move.",
+	},
+	["cls.druid.threat.w07.005"] = {
+		"I can wait here until moss grows over us both. Can you?",
+		"Trees taught me how to wait. Shall I show you how long?",
+	},
+	["cls.druid.victory.w07.001"] = {
+		"The beetles and the worms will see to the rest. Nothing goes to waste.",
+		"Back to the soil with you. Something small and green will thank you for it.",
+		"Lie there. By next spring you'll be part of something better.",
+	},
+	["cls.druid.victory.w07.002"] = {
+		"Let the heart slow down. It doesn't have to hunt anymore.",
+		"Breathe it out. The fight is over; the body hasn't heard yet.",
+		"Easy now. Tell the blood it can stop racing.",
+	},
+	["cls.druid.victory.w07.003"] = {
+		"You fought for your life. There's no shame in that, and no shame in losing it.",
+		"You held your ground as long as you could. The wild asks nothing more of anyone.",
+		"You fought hard for every breath. That's all any living thing can do.",
+	},
+	["cls.druid.victory.w07.004"] = {
+		"I'll apologize to the shrubbery later. It saw everything.",
+		"Sorry about the flowers. They were in the way, mostly of me.",
+		"A few ferns got trampled in that. I'll hear about it from someone.",
+	},
+	["cls.druid.victory.w07.005"] = {
+		"lets out a long breath, and the wildness ebbs from {g:his|her} stance like water leaving sand.",
+		"stands a moment in the sudden quiet, until {g:his|her} breathing matches the slower pace of the world.",
+		"rolls {g:his|her} shoulders once, and the last of the fight drains away.",
+	},
+	["cls.druid.victory.w07.006"] = {
+		"Cuts, scrapes, one bruise worth mentioning. Brambles have done worse.",
+		"Nothing a little mending won't fix. Let's look at the damage.",
+	},
+	["cls.druid.victory.w07.007"] = {
+		"The balance tips back, a hair's breadth. That's all a single fight can do.",
+		"A little more even than before. The scale never sits perfectly still; it only sways less.",
+		"Even again, or near enough. The wild never asks for perfect.",
+	},
+	["cls.druid.victory.w07.008"] = {
+		"Rest now. You were only defending your ground, same as I'd have done.",
+		"Sleep. That was hunger, not cruelty. I know the difference.",
+		"Go easy into the dark. You did nothing your kind doesn't do.",
+	},
+	["cls.druid.victory.w07.009"] = {
+		"Back in the ground with you, and stay this time. The roots will see to it.",
+		"There. Rest the way you should have the first time.",
+		"The earth took you once. Let it keep you this time.",
+	},
+	["cls.druid.victory.w07.010"] = {
+		"Even the worms will think twice about you. The soil will manage, given time.",
+		"Done. It'll take a while to get that stink out of the air.",
+	},
+	["cls.druid.victory.w07.011"] = {
+		"Back to stone and water and wind. Quiet now. You're where you belong.",
+		"The world you were torn from takes you back. There's no kinder end for you.",
+	},
+	["cls.druid.victory.w07.012"] = {
+		"Moss will have you inside a year. Rust in two. The forest doesn't hurry, but it finishes.",
+		"Lie there and reconsider. The ivy will be along shortly.",
+	},
+	["cls.druid.victory.w07.013"] = {
+		"You chose this. The boar never gets to choose, at least.",
+		"A beast fights because it must. You had a choice. I'll mourn you less for it.",
+		"The wolf has no choice in it. You did, and you chose badly.",
+	},
+	["cls.druid.victory.w07.014"] = {
+		"Everyone in one piece? Show me the cuts, I'll see to them.",
+		"Line up, wounded first. Nobody walks off bleeding.",
+		"Good work. Now let me look at whoever's limping.",
+	},
+	["cls.druid.victory.w07.015"] = {
+		"Not bad at all. The wild would have been proud of a pack like this.",
+		"We hunted like a pack. I could get used to this.",
+	},
+	["cls.druid.victory.w07.016"] = {
+		"No one saw that but the ground, and the ground keeps no gossip.",
+		"Alone, and on my feet. The wild likes it that way, mostly.",
+		"Just me and the quiet again. Suits me.",
+	},
+	["cls.druid.victory.w07.017"] = {
+		"I should stop making that low rumbling noise after fights. People stare.",
+		"After a fight I keep forgetting which shape I'm in. Innkeepers are always happy to remind me.",
+	},
+	["cls.druid.victory.w07.018"] = {
+		"Whatever grows near here is a little safer now. That's enough for one fight.",
+		"One less danger for the young and green. That's reward enough.",
+	},
+	["cls.druid.victory.w07.019"] = {
+		"stays beside the defeated foe a little longer than needed, head bowed, before moving on.",
+		"looks down at the fallen for a long breath, without triumph, and then away.",
+	},
+	["cls.druid.victory.w07.020"] = {
+		"Something in the wild noticed that. I hope its judgment was fair.",
+		"The forest keeps its own ledger. I wonder which column that one went in.",
+		"Did I tip the balance or set it right? I'll never know for certain.",
+	},
+	["cls.druid.victory.w07.021"] = {
+		"Ha! The old oaks would have nodded at that one.",
+		"That's how the wild settles an argument. Short, and nobody appeals.",
+	},
+	["cls.druid.victory.w07.022"] = {
+		"First move too slow. Next time, less waiting and more deciding.",
+		"There was a lesson in that. The wild teaches cheaply, if you pay attention.",
+		"Note for next time: let the foe come to me. The ground favors the patient.",
+	},
+	["cls.druid.victory.w07.023"] = {
+		"Return to the cycle. You owed it nothing more than this, and neither do I.",
+		"Into the long cycle with you. It turns slowly, but it turns for everyone.",
+	},
+	["cls.druid.victory.w07.024"] = {
+		"The wild was on my side today. I'll try to deserve it tomorrow.",
+		"Today the green fought with me. I won't take that for granted.",
+		"The green lent me its strength again. I owe it a quiet day.",
+	},
+	["cls.druid.victory.w07.025"] = {
+		"takes stock of the trampled ground, as if counting what the fight cost the land.",
+		"glances over the torn earth around the fight and frowns, as at a garden after a stampede.",
+	},
+	["cls.druid.victory.w07.026"] = {
+		"One day it'll be me lying still, and something will feed on it. Fair enough. Just not yet.",
+		"The same cycle will come for me in the end. I don't resent it. I'd only like a few more seasons first.",
+		"I'll be fodder for the grass too, one day. I'd just rather it were a long way off.",
+	},
+	["cls.druid.victory.w07.027"] = {
+		"The squirrels will be talking about this for weeks.",
+		"There's a crow up there already telling its friends.",
+	},
+	["cls.druid.victory.w07.028"] = {
+		"Right. Anyone else? No? Good. I'd like to sit down.",
+		"Done. A patch of moss and a minute's sit, that's all I ask.",
+		"Over. Somebody find me a stump to sit on.",
+	},
+	["cls.druid.victory.w07.029"] = {
+		"The old druids say every death sends a ripple through the Dream. I wonder how far that one went.",
+		"A ripple in the Dream, the elders would say. Small, and gone already.",
+	},
+	["cls.druid.victory.w07.030"] = {
+		"That was close. The soil very nearly had both of us.",
+		"Too near the roots for comfort. Next time, mend sooner.",
+	},
+	["cls.druid.victory.w07.031"] = {
+		"Done. I didn't enjoy it, and I'd do it again.",
+		"Necessary, not pleasant. Most of what a druid does is like that.",
+		"No pride in it. No regret, either. The wild never apologizes, and I've stopped asking it to.",
+	},
+	["cls.druid.victory.w07.032"] = {
+		"Listen. The birds are starting up again. That's how you know it's truly over.",
+		"The small sounds are coming back: insects, a bird, the leaves. The wild has decided it's safe.",
+	},
+	["cls.druid.victory.w07.033"] = {
+		"There's a seed that won't get trampled now. Small victories are still victories.",
+		"One acorn saved, perhaps. I'll take it.",
+	},
+	["cls.druid.victory.w07.034"] = {
+		"Whatever shape that fight took, it's me coming out the other side. Good.",
+		"Hide or bare skin, it's still me who walks away. Check the wounds and go.",
+	},
+	["cls.druid.victory.w07.035"] = {
+		"That one was far above me, and it's down. Patience beats strength more often than strength would like.",
+		"Stronger than me, and lying there anyway. The slow way works.",
+	},
+	["cls.druid.victory.w07.036"] = {
+		"The wild saw it all and said nothing. It never does. It only grows over.",
+		"Trees don't cheer and they don't mourn. They just keep growing. I'll try that.",
+		"The roots will take this up and make something of it, without comment.",
+	},
+	["cls.druid.victory.w07.037"] = {
+		"Nature is cruel, they say. Nature just watched me do all the work.",
+		"The wild takes the credit, of course. It always does.",
+	},
+	["cls.druid.victory.w07.038"] = {
+		"turns {g:his|her} face to the open air and simply breathes for a while, letting the world come back.",
+		"stands listening to the quiet that comes after, as one listens to a river settling after a flood.",
+	},
+	["cls.druid.victory.w07.039"] = {
+		"One more thing returned to the green. I keep a count no one else keeps.",
+		"This one goes back to the green too. I try to remember each of them, for a little while.",
+	},
+	["cls.druid.victory.w07.040"] = {
+		"Up, dust off, keep walking. That's the whole of a druid's victory dance.",
+		"No cheering. Just a nod to the land, and on.",
+	},
+	["cls.paladin.attack.w07.001"] = {
+		"Judgement! Weighed, and struck.",
+		"There's your verdict. Delivered in person.",
+		"Judged. Short trial.",
+	},
+	["cls.paladin.attack.w07.002"] = {
+		"Stay right there. That's an order from the Light.",
+		"Hold still. Justice is heavier than it looks.",
+		"Head spinning? Good. Think about your choices.",
+	},
+	["cls.paladin.attack.w07.003"] = {
+		"Let go of this world. The Light is prying your fingers loose.",
+		"Whatever keeps you walking, I'm cutting the strings.",
+	},
+	["cls.paladin.attack.w07.004"] = {
+		"Burn in something cleaner than your own fire.",
+		"This is how the Light says no to your kind.",
+	},
+	["cls.paladin.attack.w07.005"] = {
+		"You're almost done. Let me finish the sentence.",
+		"The last word goes to the hammer.",
+	},
+	["cls.paladin.attack.w07.006"] = {
+		"Count the mana, watch the swing. The Light does the rest.",
+		"Spend it where it counts. Every spell is borrowed warmth.",
+		"One breath per cast. No more, no less.",
+	},
+	["cls.paladin.attack.w07.007"] = {
+		"speaks a single hard word, and light leaps from {g:his|her} hand like a spark from struck steel.",
+		"thrusts out a gauntleted fist, and a flare of gold answers it.",
+	},
+	["cls.paladin.attack.w07.008"] = {
+		"More Light for you. It's free, and you'll hate every bit of it.",
+		"Seconds? The Light is very generous with your sort.",
+	},
+	["cls.paladin.attack.w07.009"] = {
+		"brings the weapon around in a short, heavy arc, the glow along it flaring at the moment of the blow.",
+		"steps into the strike with {g:his|her} whole weight, armor ringing with it.",
+	},
+	["cls.paladin.attack.w07.010"] = {
+		"Seal on. Now every swing speaks for the Light.",
+		"Sealed. Let's see you shrug that off.",
+	},
+	["cls.paladin.attack.w07.011"] = {
+		"Take it. It's the cleanest thing that's touched you in years.",
+		"Feel that warmth? It isn't on your side.",
+		"That's the Light, and it's in no mood.",
+	},
+	["cls.paladin.battle.w07.001"] = {
+		"You'll have to go through me first, and I'm told I'm a long way through.",
+		"I'm the first thing you meet here. Make your peace with that.",
+		"Whatever you came looking for, I'm standing in the way of it.",
+	},
+	["cls.paladin.battle.w07.002"] = {
+		"Weight on the back foot. Let it come to me; I'm built for receiving.",
+		"Don't chase. A paladin who chases has already given up the ground.",
+		"Let it swing first. Armor is for exactly this.",
+	},
+	["cls.paladin.battle.w07.003"] = {
+		"touches two fingers to the brow, then to the chest, and a faint gold seeps along the edge of {g:his|her} weapon.",
+		"murmurs a few plain words, and the air close about {g:him|her} warms as if a door had opened on a lit room.",
+	},
+	["cls.paladin.battle.w07.004"] = {
+		"You picked the one in the shiny armor. Bold. Not wise, but bold.",
+		"Of everyone on this road, you chose the one who glows. Interesting choice.",
+		"Go on. Everyone wants to dent a paladin once.",
+	},
+	["cls.paladin.battle.w07.005"] = {
+		"I swore an oath to stand against things like this. I keep my oaths.",
+		"There's an oath in me older than this fight. It says: stand.",
+		"My oath has a short clause for moments like this one. It reads: hold.",
+	},
+	["cls.paladin.battle.w07.006"] = {
+		"Back to the ground with you. The Light will tuck you in.",
+		"You were buried once already. I'll make the second time stick.",
+		"Whoever woke you did you no kindness. I'll undo it.",
+	},
+	["cls.paladin.battle.w07.007"] = {
+		"Whatever fire you crawled out of, it can have you back.",
+		"You smell of sulfur and bad bargains. Let's be done with you.",
+		"A demon. Good. With you I never have to wonder whether it's deserved.",
+	},
+	["cls.paladin.battle.w07.008"] = {
+		"The old paladins say the Light takes no joy in a fight. Then why does it come so quickly when one starts?",
+		"We're taught the Light is gentle. Nobody explains why it answers fastest with a weapon in my hand.",
+	},
+	["cls.paladin.battle.w07.009"] = {
+		"Right. Let's see whether the smith earned his fee on this armor.",
+		"Good. I haven't been polishing this armor for nothing.",
+	},
+	["cls.paladin.battle.w07.010"] = {
+		"settles the weight of {g:his|her} armor with one shrug and steps squarely into the foe's path.",
+		"plants {g:his|her} feet wide, armor creaking, and lifts {g:his|her} chin as if to be seen clearly.",
+	},
+	["cls.paladin.battle.w07.011"] = {
+		"Keep your eyes on me. If it's looking at me, it isn't looking at you.",
+		"Mine. Let it come for me; you hit it from the side.",
+		"I'll hold its attention. You make it regret that.",
+	},
+	["cls.paladin.battle.w07.012"] = {
+		"Count them: who's hurt already, who's reckless, who'll need the Light first. Then fight.",
+		"Half my eye on the foe, half on the others. A paladin never gets to watch only one thing.",
+	},
+	["cls.paladin.battle.w07.013"] = {
+		"Light, I'll do the striking. You do the judging.",
+		"Light, you decide what this one deserves. I'll only deliver it.",
+	},
+	["cls.paladin.battle.w07.014"] = {
+		"I've marched for hours in this armor. You picked a poor moment to annoy me.",
+		"Hours of road in full armor, and now you. Your timing is terrible.",
+	},
+	["cls.paladin.battle.w07.015"] = {
+		"The Alliance asks me to keep its people safe. You're one of the reasons it has to ask.",
+		"I serve the Alliance and the Light, and neither of them told me to let you pass.",
+		"Nothing personal. You wear the wrong colors in the wrong place.",
+	},
+	["cls.paladin.battle.w07.016"] = {
+		"Bigger than me, older than me, stronger than me. The Light has never cared much for those numbers.",
+		"Too much for me, by any honest count. Good thing the Light was never much good at sums.",
+	},
+	["cls.paladin.battle.w07.017"] = {
+		"You're outmatched, and you know it. Run, and I won't follow.",
+		"Let's not do this. You can't win, and I'd rather not be the one to teach you that.",
+	},
+	["cls.paladin.battle.w07.018"] = {
+		"draws a slow breath, and a pale ring of light spreads out from {g:him|her} across the ground, steady as a held note.",
+		"lets the aura settle about {g:him|her}, a faint shimmer at the edge of sight that does not waver.",
+	},
+	["cls.paladin.battle.w07.019"] = {
+		"A big one. Good. I'd hate to have dressed up for nothing.",
+		"Now this is worth the polish on my armor.",
+		"They'll tell of this one, whichever way it goes. Let's give them a good ending.",
+	},
+	["cls.paladin.battle.w07.020"] = {
+		"Plate now, head to heel. I still flinch at the first blow, and I hope I always will.",
+		"All this plate, and the first strike still finds the same old fear underneath. Good. Fear keeps me honest.",
+	},
+	["cls.paladin.battle.w07.021"] = {
+		"The old paladins say your kind broke the Silver Hand. Then I'm a piece of it that never got the message.",
+		"The old stories say the Silver Hand fell to the Scourge. Some of its oath still walks, and it's walking at you.",
+	},
+	["cls.paladin.battle.w07.022"] = {
+		"I've no quarrel with you, beast. Sadly, you've got one with me.",
+		"I'd bless you and send you on your way, but you don't look the type to hold still for it.",
+		"Easy... easy. No? All right, then.",
+	},
+	["cls.paladin.battle.w07.023"] = {
+		"Seal first, judgement second, and a word with you after that, if you're still listening.",
+		"The seal goes on, the judgement comes down. Object quickly, if you mean to.",
+	},
+	["cls.paladin.battle.w07.024"] = {
+		"Mana for two heals, kept back no matter what. Everything else I can spend on this.",
+		"Keep enough in reserve to mend myself twice. The rest goes into the fight.",
+	},
+	["cls.paladin.battle.w07.025"] = {
+		"Come forward and be weighed. The Light keeps honest scales.",
+		"Step up to the scales. I'll read out what they say.",
+	},
+	["cls.paladin.battle.w07.026"] = {
+		"flexes {g:his|her} fingers inside the gauntlet, one by one, then closes them around the grip.",
+		"rolls {g:his|her} shoulders once under the armor and lets out a long breath through the nose.",
+	},
+	["cls.paladin.battle.w07.027"] = {
+		"I'd rather be mending fences somewhere. But here you are, and here I am.",
+		"There are a hundred things I'd rather be doing. None of them would let you pass.",
+	},
+	["cls.paladin.battle.w07.028"] = {
+		"I knew you were coming, cold thing. The Light has a nose for your kind.",
+		"You can't creep up on a paladin. The dead give themselves away with that chill.",
+	},
+	["cls.paladin.battle.w07.029"] = {
+		"Each time I ask, I half expect silence. Each time, the warmth comes anyway.",
+		"I never quite trust the Light to answer until it does. It hasn't failed me yet; I keep checking.",
+	},
+	["cls.paladin.battle.w07.030"] = {
+		"You picked a fight with an oath. Oaths don't get tired.",
+		"I promised to stop things like you. Promises don't tire, and neither will I.",
+	},
+	["cls.paladin.battle.w07.031"] = {
+		"No sermon today. You'll get the short version.",
+		"I'd preach at you first, but you don't strike me as the listening sort.",
+	},
+	["cls.paladin.battle.w07.032"] = {
+		"faces the dead thing squarely, and the light about {g:him|her} sharpens, white and hard as struck flint.",
+		"steps toward the undead without hesitation, and a hard glow gathers along {g:his|her} arms.",
+	},
+	["cls.paladin.battle.w07.033"] = {
+		"The Light was here before you, demon, and it will be here after.",
+		"Every bargain that brought you here ends at this spot.",
+	},
+	["cls.paladin.battle.w07.034"] = {
+		"Not anger. Never anger. Just the next right thing, done all the way.",
+		"Keep it clean. A paladin who fights angry is only a soldier with a glow.",
+	},
+	["cls.paladin.battle.w07.035"] = {
+		"Hit hard and don't worry about the bruises. Mending is my end of this.",
+		"Swing freely. Anything it does to you, I'll undo.",
+	},
+	["cls.paladin.battle.w07.036"] = {
+		"Full plate, a seal, and the Light at my back. And you brought... that. Brave.",
+		"I've got plate, a seal and an aura. You've got enthusiasm. It's a start.",
+	},
+	["cls.paladin.battle.w07.037"] = {
+		"Let's give the Light something worth watching.",
+		"Here's a fight the Light can be proud of. Let's make it so.",
+	},
+	["cls.paladin.battle.w07.038"] = {
+		"One breath for the Light, one for the oath, and the third for the fight.",
+		"Breathe in what I believe. Breathe out what I fear. Then go.",
+	},
+	["cls.paladin.battle.w07.039"] = {
+		"Nobody paints this part of the oath on a banner. Still part of it.",
+		"Glory's for the songs. This is just the oath, doing its work.",
+	},
+	["cls.paladin.battle.w07.040"] = {
+		"Let it end quickly, for both our sakes. That's the only prayer I have for this.",
+		"Quick and clean, if I can manage it. That much I owe even an enemy.",
+	},
+	["cls.paladin.battle.w07.041"] = {
+		"I'm only a lantern. You'll see what the Light behind me thinks of you.",
+		"Don't look at me. Look at what's shining through.",
+	},
+	["cls.paladin.battle.w07.042"] = {
+		"fixes the foe with a level stare, the kind that has already reached a verdict.",
+		"narrows {g:his|her} eyes at the enemy as if reading a charge sheet, and finding every line of it true.",
+	},
+	["cls.paladin.battle.w07.043"] = {
+		"Good, a fight. I was starting to feel overdressed.",
+		"Ah, finally. All this armor was getting lonely.",
+	},
+	["cls.paladin.battle.w07.044"] = {
+		"Push, then. I was trained to be the thing that doesn't move.",
+		"You can push me back a step. Getting a second one will cost you.",
+	},
+	["cls.paladin.battle.w07.045"] = {
+		"Wait for the first swing. Answer the second.",
+		"Don't open with everything. A paladin outlasts; that's the whole craft.",
+	},
+	["cls.paladin.battle.w07.046"] = {
+		"In the Light's name, and with my own two hands.",
+		"The Light lends the strength. The hands are mine, and they're ready.",
+	},
+	["cls.paladin.battle.w07.047"] = {
+		"I've stood against worse than you, and I've always walked away on my own feet.",
+		"Whatever you are, I've faced uglier and outlasted it.",
+	},
+	["cls.paladin.battle.w07.048"] = {
+		"lays a palm flat against {g:his|her} own chest for a heartbeat, as though setting a seal there before the fight.",
+		"lowers {g:his|her} head for the space of a breath, then lifts it with the look of someone who has been answered.",
+	},
+	["cls.paladin.battle.w07.049"] = {
+		"Come on. I didn't put on all this metal to stand around.",
+		"Well? I didn't haul this much steel out here to admire the view.",
+	},
+	["cls.paladin.battle.w07.050"] = {
+		"Every fight might be my last. I've learned to set my affairs in order in the space of one breath.",
+		"If this is the one that ends me, let it find me facing forward.",
+	},
+	["cls.paladin.battle.w07.051"] = {
+		"Somewhere, someone sleeps safer because I'm out here. That's reason enough.",
+		"Every foe stopped here is one that never reaches a village. Good enough for me.",
+	},
+	["cls.paladin.battle.w07.052"] = {
+		"If this goes poorly, I have a trick. If it goes very poorly, I have a shield nobody can touch.",
+		"Do your worst. I can do something few others can: simply stop being hittable for a while.",
+	},
+	["cls.paladin.buff.w07.001"] = {
+		"A blessing on my own shoulders first. Asking for help is part of the oath, even when I'm the one answering.",
+		"I bless myself the way I'd check my straps: not from vanity, only because I'm the one who'll be wearing it.",
+		"Before anyone else, I bless the one I'm sure will be there. Myself, as it happens.",
+	},
+	["cls.paladin.buff.w07.002"] = {
+		"lays a flat hand over {g:his|her} own heart and speaks a short word, and a faint gold sinks in under the palm.",
+		"blesses {g:himself|herself} with the plain economy of someone lacing boots, and the glow fades almost before it shows.",
+	},
+	["cls.paladin.buff.w07.003"] = {
+		"Might, on my own arm. The weapon feels lighter, which means the next blow lands heavier.",
+		"A little more weight behind every swing. The Light isn't shy about lending muscle.",
+		"Might first. How I spend it, I'll find out along the way.",
+	},
+	["cls.paladin.buff.w07.004"] = {
+		"Wisdom for myself, which mostly means the mana refills quicker. The real kind I still have to find on foot.",
+		"They call it Wisdom. It fills my well faster. Whether it makes me any wiser is another question.",
+	},
+	["cls.paladin.buff.w07.005"] = {
+		"Untouchable for a few heartbeats, and unable to swing. It isn't courage, but it's how I live to have some later.",
+		"No blade can reach me, and my own hands are tied. A strange gift, and right now a welcome one.",
+	},
+	["cls.paladin.buff.w07.006"] = {
+		"Let them try to pin me down now. For a while my feet answer only to me.",
+		"No snare, no grip, no slowing. For a few breaths the ground can't hold me.",
+	},
+	["cls.paladin.buff.w07.007"] = {
+		"Salvation, on myself. Not for my soul; only so the brute up front looks at someone else.",
+		"The grandest name of the lot, and all it does is make me less interesting to whatever's angry.",
+	},
+	["cls.paladin.buff.w07.008"] = {
+		"A blessing that makes the Light land harder on me. Odd thing to ask for, unless you know how often I'll need it.",
+		"Light upon Light. The next mending that reaches me will reach deeper.",
+	},
+	["cls.paladin.buff.w07.009"] = {
+		"Blessed myself. Someone had to, and I was standing right here.",
+		"The first blessing goes to the one doing the blessing. Rank has its privileges.",
+		"Self-service blessing. The recipient has no complaints so far.",
+	},
+	["cls.paladin.buff.w07.010"] = {
+		"Blessing myself has a whiff of vanity about it. Then I remember who has to stand at the front, and the feeling passes.",
+		"Is it pride, to point the Light at myself? I've decided it's maintenance. The Light hasn't objected.",
+		"There's a little pride in it, laying the Light on my own head. I let the pride go and keep the blessing.",
+	},
+	["cls.paladin.buff.w07.011"] = {
+		"pauses a moment to lay a blessing on {g:himself|herself}, quick as tightening a belt, then moves on.",
+		"mutters a blessing over {g:his|her} own head and shrugs it on like an old, familiar cloak.",
+	},
+	["cls.paladin.buff.w07.012"] = {
+		"Blessing done. Let's see what the road has in store.",
+		"There. The Light's on my shoulders; the rest is up to my arm.",
+		"Blessing's on. Whatever lies ahead will meet the two of us.",
+	},
+	["cls.paladin.buff.w07.013"] = {
+		"A blessing given to oneself is quieter than one given away. No one to look up, no one to nod. Just the warmth, settling.",
+		"I like the moment the blessing settles: no flare, only a small warmth that stays, like a stone that has kept the sun.",
+		"Laid on myself, the blessing makes no show. It simply moves in, like a tenant who pays on time.",
+	},
+	["cls.paladin.buff.w07.014"] = {
+		"Only one blessing of mine can sit on any back, mine included. Choosing which is a small, honest puzzle.",
+		"A few minutes of blessing, then it fades and I lay it on again. Faith needs renewing too.",
+	},
+	["cls.paladin.buff.w07.015"] = {
+		"I'd ask a priest, but the nearest one is never where I am. So.",
+		"Blessing yourself: the Light's version of cutting your own hair. Works fine if nobody looks too closely.",
+	},
+	["cls.paladin.buff.w07.016"] = {
+		"Light, go with me as far as I go, and a step past it.",
+		"Light upon my head and my hands. That will do for the lining of my armor.",
+	},
+	["cls.paladin.buff.w07.017"] = {
+		"The first blessing goes on me for a selfish reason: a paladin who falls early protects no one.",
+		"Keeping myself standing is part of keeping others standing. The blessing goes where it does most good, and sometimes that's here.",
+	},
+	["cls.paladin.buff.w07.101"] = {
+		"A blessing for you. It weighs nothing and it'll still carry some of your load.",
+		"There. The Light's on your shoulders now, as well as mine.",
+		"Take this with you. The Light is generous, but it likes to be used.",
+	},
+	["cls.paladin.buff.w07.102"] = {
+		"Blessed. No, you don't have to kneel. Though it wouldn't hurt.",
+		"You're blessed. Try not to let it go to your head; it was meant for your arms.",
+	},
+	["cls.paladin.buff.w07.103"] = {
+		"I don't need to know a name to wish someone well. The blessing doesn't ask either.",
+		"Whatever they're about to do, they'll do it a little stronger. I hope it's something good.",
+		"The blessing lands and nobody even turns round. Good. A blessing shouldn't need an audience.",
+	},
+	["cls.paladin.buff.w07.104"] = {
+		"raises an open hand toward the other, and a soft gold settles over them like pollen and is gone.",
+		"sketches a brief sign toward the one before {g:him|her}, as plain and certain as a handshake.",
+	},
+	["cls.paladin.buff.w07.105"] = {
+		"Nothing can touch you now, and you can't touch anything. Step back and breathe.",
+		"You're untouchable for a few heartbeats. Use them to get clear, not to show off.",
+	},
+	["cls.paladin.buff.w07.106"] = {
+		"Your legs are your own again. Run or charge, whichever you prefer.",
+		"Whatever had hold of your feet just lost its grip. Move.",
+		"Free to move. Don't waste it standing still.",
+	},
+	["cls.paladin.buff.w07.107"] = {
+		"Might, for you. Hit things a little harder than you meant to.",
+		"Your arm's heavier now, in the good way. Put it to use.",
+		"There's some of the Light's strength in your swing now. Aim it well.",
+	},
+	["cls.paladin.buff.w07.108"] = {
+		"Salvation, for them. Their soul is their own affair; this only makes the angry things look elsewhere.",
+		"A grand name for a quiet favor: whoever wears it simply becomes less worth chasing.",
+	},
+	["cls.paladin.buff.w07.109"] = {
+		"Some need a stronger arm, some a fuller well of mana. A moment's look, and I decide.",
+		"Choosing a blessing for someone is a quick reading: how they stand, what they carry, what they're about to do.",
+	},
+	["cls.paladin.buff.w07.110"] = {
+		"A good blessing is like a good strap: nobody thinks of it until the moment it holds.",
+		"They'll forget it's there within a minute. That's fine; it won't forget them.",
+	},
+	["cls.paladin.buff.w07.111"] = {
+		"Go in the Light, and come out the far side of whatever's waiting.",
+		"May it hold when you need it most, and go unnoticed the rest of the time.",
+		"The Light keep you on your feet, and me close enough to help.",
+	},
+	["cls.paladin.farewell.w07.001"] = {
+		"Farewell. Walk upright, and keep someone at your back.",
+		"Safe roads to you. If trouble finds you, find a paladin.",
+		"Until next time. Mind the dark places, and don't let pride stop you calling for help.",
+	},
+	["cls.paladin.greet.w07.001"] = {
+		"Greetings. If there's trouble on your road, I'd like to hear of it.",
+		"Well met. Need a hand, a blessing, or just someone to walk beside? I carry all three.",
+	},
+	["cls.paladin.greet.w07.002"] = {
+		"Hello there. Yes, the armor's heavy. No, I don't mind. Yes, everyone asks.",
+		"Greetings. Don't mind the glow; it's mostly harmless.",
+	},
+	["cls.paladin.heal.w07.001"] = {
+		"The Light works under the armor where I can't reach, warming the bruises one by one.",
+		"No buckle stops it. The Light slips under the armor and finds every bruise I hadn't counted.",
+		"I never have to undo a strap for this. The Light goes in under the armor as if it knew the way.",
+	},
+	["cls.paladin.heal.w07.002"] = {
+		"Asking the Light for myself still feels like taking the best seat at the table. I take it anyway; a fallen guard guards nothing.",
+		"There's a small shame in turning the Light on my own hide. Smaller than the shame of falling where others needed me.",
+	},
+	["cls.paladin.heal.w07.003"] = {
+		"Light, a little for me. Then back to the others.",
+		"Mend me quickly, Light. There's work still standing.",
+		"Light, put me back on my feet. I'll do the rest.",
+	},
+	["cls.paladin.heal.w07.004"] = {
+		"lays a gauntleted hand flat over {g:his|her} own ribs, and a soft gold warmth spreads outward from the palm.",
+		"presses a palm to {g:his|her} own side and murmurs a few plain words; the light that answers is quiet and thorough.",
+		"closes {g:his|her} eyes for the length of a breath, and a pale glow passes over {g:him|her} from the shoulders down.",
+	},
+	["cls.paladin.heal.w07.005"] = {
+		"Holy Light is a slow word to say with something hitting you. Every blow pushes the end of it a little further off.",
+		"Holy Light wants the whole breath, start to finish. Whatever is swinging at me never seems to understand that.",
+		"Halfway through the Holy Light, another knock, and the words stumble. Pick the sentence up where it fell and finish it.",
+	},
+	["cls.paladin.heal.w07.006"] = {
+		"Out of the fight there's time for the long mending. Holy Light, slow and whole, and no one to interrupt it.",
+		"Holy Light is a heal for quiet moments: long to say, thorough when it lands. This is such a moment.",
+	},
+	["cls.paladin.heal.w07.007"] = {
+		"Flash of Light. Not much, but quick, and quick is all I can afford with this thing on top of me.",
+		"A flash, not a fire. It keeps me up between blows, which is all I'm asking of it.",
+		"Small and fast, like a stitch put in while running. Flash of Light was made for moments like this.",
+	},
+	["cls.paladin.heal.w07.008"] = {
+		"A quick one. I've no time for the long version.",
+		"Short prayer, short mending. The fight hasn't finished either.",
+	},
+	["cls.paladin.heal.w07.009"] = {
+		"Flash of Light costs little and gives little. Three of them still cost less than a fall.",
+		"I'd rather lay three small mendings than wait on one big one. The Light doesn't mind being asked often.",
+	},
+	["cls.paladin.heal.w07.010"] = {
+		"I always pictured spending this on someone else. Today the someone else is me, and the Light doesn't seem to mind.",
+		"The last mercy, poured into my own wounds. Not how I imagined it, but a paladin dead on the ground spends nothing at all.",
+	},
+	["cls.paladin.heal.w07.011"] = {
+		"sets both hands flat against {g:his|her} own chest, and the light pours through {g:him|her} all at once, leaving {g:him|her} pale and whole.",
+		"presses a hand over {g:his|her} heart; a blaze of white and gold runs through {g:him|her}, and every ounce of magic goes with it.",
+	},
+	["cls.paladin.heal.w07.012"] = {
+		"Whole again, and not a drop of mana left for so much as a seal. The rest of this fight belongs to the arm.",
+		"My body's full and the well is bone dry. From here on I fight like any soldier, and hope that's enough.",
+		"Wounds closed in one stroke, mana gone in the same one. Now it's only me and the weapon.",
+	},
+	["cls.paladin.heal.w07.013"] = {
+		"Some days I wonder if the Light answers me or just the habit of asking. The cut closes either way.",
+		"Grace or only practice, I can't always tell. The bleeding stops, and I've stopped needing to know.",
+	},
+	["cls.paladin.heal.w07.014"] = {
+		"The oath says to protect those who can't stand. Right now that's me, and the oath makes no exceptions.",
+		"Protect the fallen, the oath says. It doesn't add 'unless it's you.' I checked.",
+	},
+	["cls.paladin.heal.w07.015"] = {
+		"All that effort, and the Light undoes it in a breath. Try again.",
+		"Mended. You'll have to start over, I'm afraid.",
+		"Every scratch you gave me, gone. Shall we begin again?",
+	},
+	["cls.paladin.heal.w07.016"] = {
+		"It always feels like stepping too close to a forge: a heat on the face first, then all through the bones.",
+		"First a warmth at the skin, then deeper, until even the old aches remember they were once young.",
+	},
+	["cls.paladin.heal.w07.017"] = {
+		"Mana spent on my own hide is a judgement I won't throw later. Worth it, as long as I'm the one still throwing.",
+		"Every mending I keep for myself is a seal I can't afford afterward. The arm will have to work harder to cover it.",
+	},
+	["cls.paladin.heal.w07.018"] = {
+		"rolls {g:his|her} shoulder slowly as the hurt fades, testing the joint the way one tests a door hinge.",
+		"flexes the mended hand twice, then a third time, as if not quite trusting it yet.",
+		"lets out a long breath through the nose and straightens, the pain gone out of {g:his|her} stance.",
+	},
+	["cls.paladin.heal.w07.019"] = {
+		"There. The ribs stop arguing with every breath.",
+		"Breathing doesn't hurt anymore. I'd forgotten how much room there is in a lungful of air.",
+		"The stitch in my side lets go, and all at once I can stand straight again.",
+	},
+	["cls.paladin.heal.w07.020"] = {
+		"Good enough. No time to be whole, only to be standing.",
+		"Not mended, just mended enough. That will have to do for now.",
+		"Half healed is plenty when the alternative is half dead.",
+	},
+	["cls.paladin.heal.w07.021"] = {
+		"That one I walked into with my eyes open. The mending is free; the lesson I'll pay for in pride.",
+		"I'd blame the enemy, but I saw it coming and didn't move a step.",
+		"Healing the wound is easy. Healing the embarrassment of how I got it will take longer.",
+	},
+	["cls.paladin.heal.w07.022"] = {
+		"A bottle for me, the mana for whatever comes next. The Light won't take offense at a little thrift.",
+		"Why spend a prayer on myself when a flask does the job? I'll keep the Light for the seals.",
+	},
+	["cls.paladin.heal.w07.023"] = {
+		"Tastes like a copper pot. Works like a charm.",
+		"Bitter as a sergeant's temper. Good, it's working.",
+		"Ugh. Whoever brews these has never had to drink one.",
+	},
+	["cls.paladin.heal.w07.024"] = {
+		"pulls the cork with {g:his|her} teeth, spits it aside and drains the vial without lowering {g:his|her} guard.",
+		"knocks back a red draught in one long swallow and tosses the empty vial away.",
+	},
+	["cls.paladin.heal.w07.025"] = {
+		"A paladin swigging from a vial like any sellsword. Humility comes in many shapes; this one tastes awful.",
+		"No glow, no warm hands, just a bottle. It's good for me to remember the Light isn't the only mercy in the world.",
+	},
+	["cls.paladin.heal.w07.026"] = {
+		"When the mana's spent, the bottle still answers. Bless whatever alchemist filled it.",
+		"Mana runs out; vials don't care. That's the whole of their charm.",
+	},
+	["cls.paladin.heal.w07.027"] = {
+		"Whoever made this stone, I'd rather not ask how. It's warm in my hand, and the wound closes all the same.",
+		"A green stone, crackling faintly, and I'm whole again. I'll thank its maker and not inquire further.",
+	},
+	["cls.paladin.heal.w07.028"] = {
+		"One stone less in the pocket, one wound less on me. A fair trade.",
+		"There goes the stone. I owe its maker a thank-you.",
+	},
+	["cls.paladin.heal.w07.029"] = {
+		"closes {g:his|her} fist around a small green stone until it crumbles, and the color creeps back into {g:his|her} face.",
+		"grinds the green stone to grit in one hand and breathes out as its pale glow sinks into {g:him|her}.",
+	},
+	["cls.paladin.heal.w07.030"] = {
+		"The old paladins have a saying: a knight too proud to mend himself is only a casualty taking the long way.",
+		"'Mend yourself first, then the line,' the old paladins say. It sounds selfish until you've watched a line break.",
+	},
+	["cls.paladin.heal.w07.031"] = {
+		"The Light mends me exactly as it would mend a stranger. No more for being its servant. I find that oddly comforting.",
+		"No favors for the faithful. The Light closes my cuts with the same plain care it would give anyone's.",
+	},
+	["cls.paladin.heal.w07.032"] = {
+		"By the Light, not yet.",
+		"Light, hold me together a little longer.",
+		"Not here, not now. Mend me, Light.",
+	},
+	["cls.paladin.heal.w07.033"] = {
+		"takes a step back from the fight, head bowed for a single breath, and comes on again with the glow still fading from {g:his|her} armor.",
+		"turns aside under a blow, murmurs a quick word, and a flare of gold seals the gash before the next one lands.",
+	},
+	["cls.paladin.heal.w07.034"] = {
+		"The Light answers me quickly, every time. That is exactly the kind of thing a paladin must never start to feel proud of.",
+		"Ask, and the wound closes. It would be easy to think myself special. I try very hard not to.",
+	},
+	["cls.paladin.heal.w07.035"] = {
+		"The Light leaves no scar behind. Some days I'd like one, just to remember what it cost.",
+		"Not a mark left on the skin. The body forgets so quickly. I try to keep the memory for it.",
+	},
+	["cls.paladin.heal.w07.036"] = {
+		"lowers {g:himself|herself} to one knee while the mending takes, and stays there a moment longer than strictly needed.",
+		"loosens a strap at the collar and waits, eyes half closed, for the last of the ache to go.",
+	},
+	["cls.paladin.heal.w07.037"] = {
+		"Better. Much better. Funny how you only notice an ache once it's gone.",
+		"That's the stuff. Every joint unclenching at once, like a fist letting go.",
+		"There it goes. The ache packs up and leaves without even arguing.",
+	},
+	["cls.paladin.heal.w07.038"] = {
+		"Judgement thrown, a breath to mend myself, and back to the swing. A trainer would call it tidy work.",
+		"Throw the judgement, close my own wound while it lands, swing again. Healing's just another step of the drill.",
+	},
+	["cls.paladin.heal.w07.039"] = {
+		"A healer in heavy armor. The priests never quite know what to make of us, and neither do the warriors.",
+		"Too much armor for a healer, too much mercy for a soldier. Right now, being both is what keeps me alive.",
+	},
+	["cls.paladin.heal.w07.040"] = {
+		"Up, wall. The ones behind me haven't stopped needing one.",
+		"A shield with holes in it protects nobody. Patch the holes, then step forward again.",
+		"They're counting on the front holding. The front is me, so the front gets mended first.",
+	},
+	["cls.paladin.heal.w07.041"] = {
+		"No one else to call on. Just the Light and me, which is a smaller company than it sounds, and a better one.",
+		"With no one else around, I'm my own healer. The Light doesn't seem to mind such a short list of patients.",
+	},
+	["cls.paladin.heal.w07.042"] = {
+		"That's mended. Now, where were we?",
+		"Better. Now, you and I had something unfinished.",
+		"Right. All mended, and no more patient than before.",
+	},
+	["cls.paladin.heal.w07.043"] = {
+		"I'm only the lamp; the Light is the flame. Even a lamp needs mending now and then, so the flame has something to stand in.",
+		"What the Light gives me back, it gives so the work can go on. Not for my sake. For the work's.",
+	},
+	["cls.paladin.heal.w07.044"] = {
+		"Flesh mends faster than the tiredness does. The Light has never had much to say about tiredness.",
+		"The cut is gone; the weariness stays. No spell I know reaches that far down.",
+	},
+	["cls.paladin.heal.w07.045"] = {
+		"wipes the blood from {g:his|her} brow with the back of a wrist as the wound beneath it closes.",
+		"spits once, grimaces, and rolls {g:his|her} shoulders as the pain loosens its grip.",
+	},
+	["cls.paladin.heal.w07.046"] = {
+		"I keep my own mending brief. The Light is better spent on those without armor like mine.",
+		"Just enough for me, no more. Somebody softer will need the rest before long.",
+	},
+	["cls.paladin.heal.w07.047"] = {
+		"Each time the Light closes a wound of mine, it seems to say the same short thing: not yet, there's more to do.",
+		"The Light's answer to my wounds is always the same: you're needed a while longer. I never tire of hearing it.",
+	},
+	["cls.paladin.heal.w07.048"] = {
+		"Healed. If anyone asks, nothing happened here.",
+		"And that's the last of that bruise. We will never speak of it.",
+	},
+	["cls.paladin.heal.w07.049"] = {
+		"I was taught to ask the Light plainly, without flourish. Mend me. That's enough, when it's meant.",
+		"No grand words for my own hurts. A plain request, meant honestly, and the Light does the rest.",
+	},
+	["cls.paladin.heal.w07.050"] = {
+		"Everything I have. Take it, Light, and put it back in me.",
+		"Every last drop, Light, into this one body.",
+	},
+	["cls.paladin.heal.w07.051"] = {
+		"lets a quick flicker of light pass over {g:his|her} own wound, barely pausing between blows.",
+		"snaps out a short word, and a brief flash of gold skims across {g:his|her} armor and is gone.",
+	},
+	["cls.paladin.heal.w07.052"] = {
+		"One day I'll ask and it won't be enough. Not today. Today the wound closes, and I'll take today.",
+		"There'll be a wound someday that no Light can close. I don't fear it much. I just don't want it to be this one.",
+	},
+	["cls.paladin.heal.w07.053"] = {
+		"The cuts are closed, but I'm still sweating inside all this armor. Some miseries the Light leaves to me.",
+		"Mended, and still hot, still itching, still buckled into all this iron. The Light does wounds, not comfort.",
+	},
+	["cls.paladin.heal.w07.054"] = {
+		"kneels a moment in quiet, one hand over the wound, until the gold light under the palm fades.",
+		"bows {g:his|her} head and holds still, and the hurt eases as a soft glow ebbs away beneath {g:his|her} fingers.",
+	},
+	["cls.paladin.heal.w07.055"] = {
+		"Let it watch me mend. Let it understand how long this is going to take.",
+		"Every wound I close is one more it has to open again. I can keep this up longer than it can.",
+	},
+	["cls.paladin.heal.w07.056"] = {
+		"I don't claim to understand the Light. I know it answers when I bleed, and for a soldier that's faith enough.",
+		"Priests can argue over what the Light is. In the middle of a fight, it's what closes the cut.",
+	},
+	["cls.paladin.heal.w07.057"] = {
+		"The wounds close; the temper doesn't. Whatever did this is about to feel the difference.",
+		"The pain's gone; the grudge stays. I'll spend it wisely.",
+	},
+	["cls.paladin.heal.w07.058"] = {
+		"inspects a freshly mended forearm with a critical eye, as if the work might need sending back.",
+		"pats {g:his|her} own side twice, satisfied, like someone checking that a purse is still there.",
+	},
+	["cls.paladin.heal.w07.059"] = {
+		"My hand shakes over the wound. The Light that comes through it never does.",
+		"I'm tired, and it shows in my hands. Strange how steady the Light is, passing through them.",
+	},
+	["cls.paladin.heal.w07.060"] = {
+		"Holy Light was the first mending they ever taught me, and it's still the one my hands reach for without thinking.",
+		"The plainest of the prayers I know. Holy Light, said over my own hurt, steady as a heartbeat.",
+	},
+	["cls.paladin.heal.w07.061"] = {
+		"A lesson for later: guard first, swing second. The Light shouldn't have to mend the same mistake twice.",
+		"That one was my footwork's fault. I'll heal it now and fix the footwork tomorrow.",
+	},
+	["cls.paladin.heal.w07.062"] = {
+		"Hold on a moment! Mending myself, then I'm back with you!",
+		"Two breaths, that's all. Hold the line!",
+	},
+	["cls.paladin.heal.w07.063"] = {
+		"There was blood running into my boot a moment ago. Now there's only the squelch to remind me.",
+		"The bleeding's stopped. The boot, unfortunately, is still full of it.",
+	},
+	["cls.paladin.heal.w07.064"] = {
+		"works {g:his|her} jaw side to side, testing a bruise that is no longer there.",
+		"breathes in deep, holds it, and lets it go slowly, as if checking that every rib is where it belongs.",
+	},
+	["cls.paladin.heal.w07.065"] = {
+		"The Light forgives my wounds faster than I forgive the mistakes that earned them.",
+		"It mends me without a word of reproach. I could stand to learn that kind of mercy toward myself.",
+	},
+	["cls.paladin.heal.w07.066"] = {
+		"A quick flash to tidy up the last of it. No point walking on with scratches I can wipe away.",
+		"Just the little mending, to finish the job. The scratches aren't worth a long one.",
+	},
+	["cls.paladin.heal.w07.067"] = {
+		"Hands steady. Say it right the first time; there won't be a second.",
+		"Don't rush the words. A botched mending is worse than none.",
+		"Breathe, then ask. Fear makes the words come out crooked.",
+	},
+	["cls.paladin.heal.w07.068"] = {
+		"staggers back a step, and by the time {g:his|her} foot lands again the worst of the wound is already closing.",
+		"rocks under the blow, plants {g:his|her} feet, and lets the mending take hold before answering in kind.",
+	},
+	["cls.paladin.heal.w07.069"] = {
+		"Thank you. Not for the mending only, but for still being there when I didn't deserve the asking.",
+		"Thanks, Light. I never say it enough, and I've never once regretted saying it.",
+	},
+	["cls.paladin.heal.w07.401"] = {
+		"Don't argue with me, just let it work. You can argue after.",
+		"Keep your eyes on me. The wound can sort itself out under my hand.",
+		"Breathe out slowly. I'm nearly finished, and you're nearly fine.",
+	},
+	["cls.paladin.heal.w07.402"] = {
+		"The Light has no favorites. It came for you because you were here, and I asked.",
+		"Take it, and keep your thanks for the Light. I only pointed it your way.",
+		"It was never mine to give. I just know where to ask.",
+	},
+	["cls.paladin.heal.w07.403"] = {
+		"Their breathing evens out before the cheeks find their color. I've learned to listen for that first.",
+		"A mended face always looks younger for a moment, as if the hurt had been aging it.",
+		"I watch the clenched hand open again. That's when I know the work took.",
+	},
+	["cls.paladin.heal.w07.404"] = {
+		"turns aside for a single breath, holds a palm toward the wounded one, and sends the Light across the gap.",
+		"speaks a short word over the one in pain, and a warm gold runs into the wound the way water finds a crack.",
+	},
+	["cls.paladin.heal.w07.405"] = {
+		"You're whole again. Try to stay that way until I've had a drink of water.",
+		"Done. Now kindly stop standing where the big one swings.",
+		"I have a whole lecture about ducking. Remind me to give it to you later.",
+	},
+	["cls.paladin.heal.w07.406"] = {
+		"Up and fighting. While I can lift a hand, you don't fall here.",
+		"Go on, take the next blow if you must. I'll undo it.",
+		"Your wounds are my business now. Their blades are yours.",
+	},
+	["cls.paladin.heal.w07.407"] = {
+		"The Light answers for anyone I point it toward. I've never had to justify the choice to it, and that frightens me a little.",
+		"I decide who gets the Light first. No oath ever made that choice any easier.",
+	},
+	["cls.paladin.heal.w07.408"] = {
+		"It'll ache for a day. An ache is honest; let it be.",
+		"The wound's closed. The tiredness I can't touch; only sleep will shift that.",
+	},
+	["cls.paladin.heal.w07.409"] = {
+		"gives the mended place one hard look, the way a mason looks at a wall, and seems satisfied.",
+		"wipes the last of the glow from {g:his|her} fingers against a sleeve as though it were flour, and moves on.",
+		"flexes {g:his|her} fingers once the light has left them, as if checking they still belong to {g:him|her}.",
+	},
+	["cls.paladin.heal.w07.410"] = {
+		"Quick one. It won't fix everything, but it'll keep you swinging.",
+		"Just a flash. The real mending comes when they stop hitting you.",
+		"Small and fast, like a short jab. Keep going.",
+	},
+	["cls.paladin.heal.w07.411"] = {
+		"A flash buys seconds, not safety. In a fight, seconds are usually what's for sale.",
+		"The quick light is cheap and thin. Three in a row cost more than one done properly, and sometimes there's no time for properly.",
+	},
+	["cls.paladin.heal.w07.412"] = {
+		"Bear with the long words. This one takes its time because it means to finish the job.",
+		"The slow one, the deep one. Stay put; it's worth the wait.",
+	},
+	["cls.paladin.heal.w07.413"] = {
+		"Emptied out in a single breath, and the one who needed it is standing. That's a bargain I'd make every time.",
+		"My strength is in their body now, all of it. I'll be slow for a while. Worth it.",
+	},
+	["cls.paladin.heal.w07.414"] = {
+		"That was everything I had. Don't make me sorry about where I spent it.",
+		"I won't have that again for a long while. You'll have to stay alive without it.",
+	},
+	["cls.paladin.heal.w07.415"] = {
+		"presses both palms to the wounded one and leans in, and the Light leaves {g:him|her} all at once, like a held breath let go.",
+		"goes pale as the glow pours out of {g:his|her} hands, as if {g:he|she} had given away a little of {g:his|her} own color too.",
+	},
+	["cls.paladin.heal.w07.416"] = {
+		"There we are. Not a master's work, but it'll do for the road.",
+		"Mended, and only a little grumpy about it. I'll take that.",
+	},
+	["cls.paladin.heal.w07.417"] = {
+		"By the Light, let this hurt end here and go no further.",
+		"Light, you know this one better than I do. Mend what I can't see.",
+		"Light, this one has carried enough today. Take some of the weight.",
+	},
+	["cls.paladin.heal.w07.418"] = {
+		"Mana for one more of these, maybe two. After that I'm mending with a bandage and a bad temper.",
+		"Every heal is a sum: how much they need, how much I have, how much I'll want for the next one. The Light leaves the arithmetic to me.",
+	},
+	["cls.paladin.heal.w07.419"] = {
+		"Breathe with me. In... and out. There, the worst has passed.",
+		"Follow my breathing, slow and even. The pain leaves faster that way.",
+	},
+	["cls.paladin.heal.w07.420"] = {
+		"No one bleeds out within reach of my hand. That's the oath, and I keep it.",
+		"I swore to stand between harm and whoever needed it. Today that's you.",
+		"My oath has a short clause about this: you don't fall where I can reach you.",
+	},
+	["cls.paladin.heal.w07.421"] = {
+		"leaves a gauntleted hand on the hurt shoulder a moment longer than the spell needs.",
+		"kneels level with the wound and speaks the words softly, close, without any hurry.",
+	},
+	["cls.paladin.heal.w07.422"] = {
+		"I didn't swear an oath to the Light so I could keep stitching you up. And yet here we are.",
+		"Go on, then. Get hit again. It's not as if I had other plans.",
+	},
+	["cls.paladin.heal.w07.423"] = {
+		"Don't touch it yet. New skin is thin; give it the hour.",
+		"Leave the bandage off. The Light did a cleaner job than any cloth could.",
+	},
+	["cls.paladin.heal.w07.424"] = {
+		"When I send the Light into someone else, for a moment I can feel the shape of them: tired, frightened, stubborn. Then it's gone.",
+		"A strange closeness, this. I don't know their name, and the Light already knows exactly where it hurts.",
+	},
+	["cls.paladin.heal.w07.425"] = {
+		"Sorted. Now go and make them regret that.",
+		"Mended. Go and give whoever did that something to think about.",
+	},
+	["cls.paladin.heal.w07.426"] = {
+		"I can close any wound I reach in time. The ones I won't reach will stay with me longer than any of these.",
+		"When it works, I try not to think of the day it won't arrive in time. That day comes for every healer.",
+	},
+	["cls.paladin.heal.w07.427"] = {
+		"Get your breath back. The Light isn't keeping score, and neither am I.",
+		"Nothing owed. The Light gives without asking, and I try to do the same.",
+		"No debt. Pass it on to whoever needs it after you.",
+	},
+	["cls.paladin.heal.w07.428"] = {
+		"Sit. No, actually sit. Courage can wait until the bleeding stops.",
+		"Stop wriggling. The Light works faster on a body that keeps still.",
+	},
+	["cls.paladin.heal.w07.429"] = {
+		"murmurs the words of mending, and for a moment both faces are lit from below, as by a lantern held between them.",
+		"joins {g:his|her} hands briefly, then opens them toward the one in pain, and the Light goes where the hands point.",
+	},
+	["cls.paladin.heal.w07.430"] = {
+		"Think of something pleasant while I work. Ale is a popular choice.",
+		"This part doesn't hurt. The part before it hurt; this is the nice part.",
+	},
+	["cls.paladin.heal.w07.431"] = {
+		"My hands know this work better than my head does. They're halfway into the words before I've decided.",
+		"Seal on the weapon, Light in the other hand. A paladin works two trades at once, and neither of them waits.",
+	},
+	["cls.paladin.heal.w07.432"] = {
+		"Not today. The Light has looked you over and decided: not today.",
+		"Whatever was coming for you will have to wait in line behind me.",
+	},
+	["cls.paladin.heal.w07.433"] = {
+		"steps half a pace in front of the wounded one and heals without lowering {g:his|her} guard.",
+		"keeps one eye on the foe and one on the hurt, and sends the Light across without turning {g:his|her} head.",
+	},
+	["cls.paladin.heal.w07.434"] = {
+		"You're no burden. People in trouble are the reason I learned this.",
+		"Don't apologize for bleeding. It's the least interesting thing you'll do today.",
+		"No need to say anything. Keep breathing; that's thanks enough.",
+	},
+	["cls.paladin.heal.w07.435"] = {
+		"They always thank the Light. Never the one who ran over, armor and all, to deliver it.",
+		"A word, a glow, and someone stops dying. You'd think I'd be more impressed with myself.",
+	},
+	["cls.paladin.heal.w07.436"] = {
+		"Good enough to walk on. We'll see to the rest at the next campfire.",
+		"That'll carry you as far as the next milestone, and probably well past it.",
+	},
+	["cls.paladin.heal.w07.437"] = {
+		"Be whole. It's the simplest thing the Light knows how to say.",
+		"Mend, and stand. That's all the Light ever asks of the wounded.",
+		"Heal. The word is short because the Light has no need of a long one.",
+	},
+	["cls.paladin.heal.w07.438"] = {
+		"First whoever holds the line, then whoever shouts loudest. That order is never fair, and it's still right.",
+		"Choosing who first is a cold sum for a warm gift. I hate it, and I do it anyway.",
+	},
+	["cls.paladin.heal.w07.439"] = {
+		"gives the mended arm a light pat as the glow fades, like closing the lid on a well-made box.",
+		"smiles, briefly and crookedly, as the other face finds its color again.",
+	},
+	["cls.paladin.heal.w07.440"] = {
+		"Quick light, quick fix. If you want the fancy one, stop getting hit so fast.",
+		"That's the cheap one. The good one you earn with a pause.",
+	},
+	["cls.paladin.heal.w07.441"] = {
+		"Holy Light takes its time, and the whole while I stand there with my guard down. The price of doing it properly.",
+		"The long words of Holy Light. I say every one of them, and hope nothing interrupts.",
+	},
+	["cls.paladin.jest.w07.001"] = {
+		"How many paladins does it take to light a lamp? Just one, but there'll be a short sermon about the lamp first.",
+		"Why don't paladins play cards? Every time we hold a good hand, it starts to glow.",
+	},
+	["cls.paladin.levelup.w07.001"] = {
+		"The trainers will have something new to teach me. More to learn, more to carry, more to answer for.",
+		"A little stronger. Strength is the easy part to gain; deserving it is the slow part.",
+		"With each step up, the oath grows a little heavier and a little clearer. I'm not sure which surprises me more.",
+	},
+	["cls.paladin.levelup.w07.002"] = {
+		"draws a deep breath and lets it out slowly, and for an instant a faint golden light seems to run along the seams of {g:his|her} armor.",
+		"straightens to {g:his|her} full height, flexing a hand that suddenly seems surer of its grip.",
+		"bows {g:his|her} head briefly, more in acknowledgment than in prayer, then lifts it with a new steadiness.",
+	},
+	["cls.paladin.lowhp.w07.001"] = {
+		"Not yet. The oath doesn't have a clause for this.",
+		"Down? Not while there's an oath with my name on it.",
+		"The oath said until the end. This isn't it.",
+	},
+	["cls.paladin.lowhp.w07.002"] = {
+		"Too low. Protection first, then mend, then back in. Quickly.",
+		"Think. Ward up, mend second, swing third. Panic is not on the list.",
+	},
+	["cls.paladin.lowhp.w07.003"] = {
+		"sways, blood at the seams of {g:his|her} armor, and the glow about {g:him|her} gutters like a candle in a draft, then steadies.",
+		"sets {g:his|her} feet wider as the blows land, swaying like a mast in a hard wind but not going over.",
+	},
+	["cls.paladin.lowhp.w07.004"] = {
+		"Ow. All right. The Light and I will be having words about this.",
+		"That hurt. I'll be filing a complaint with the Light.",
+		"Fine. That one counted.",
+	},
+	["cls.paladin.lowhp.w07.005"] = {
+		"There's the shield, the one nothing gets through. Using it now isn't cowardice, only sense.",
+		"The untouchable moment is there for the taking. No shame in it. Pride is what gets paladins buried.",
+	},
+	["cls.paladin.lowhp.w07.006"] = {
+		"Light, I'm not finished. Neither are you.",
+		"Hold on to me, Light. I'm holding on to you.",
+		"Light, a little warmth, if you can spare it. I can't spare much more.",
+	},
+	["cls.paladin.lowhp.w07.007"] = {
+		"My heartbeat's in my ears and my mouth tastes of iron. Fine. The body complains; the oath doesn't.",
+		"Blood in my mouth, ringing in my ears. The armor's holding more of me up than I am.",
+	},
+	["cls.paladin.lowhp.w07.008"] = {
+		"I'm hurt, not done. Keep your eyes on the fight, not on me.",
+		"Don't stop for me! I've still got a heal in me, and it's mine.",
+		"Keep at it! I'll mend myself; you mind the foe.",
+	},
+	["cls.paladin.lowhp.w07.009"] = {
+		"presses a shaking hand against {g:his|her} own wound and says the Light's name through gritted teeth.",
+		"clutches at the armor over {g:his|her} heart, and a thin warmth answers, faint but there.",
+	},
+	["cls.paladin.lowhp.w07.010"] = {
+		"The armor's doing its best. Somebody should tell it to try harder.",
+		"If this armor had feelings, it would be very ashamed of itself right now.",
+		"Note to self: the armor is not, in fact, invincible.",
+	},
+	["cls.paladin.lowhp.w07.011"] = {
+		"Quiet in there. Too quiet. Light? Light. There you are.",
+		"For a heartbeat I can't find it, the warmth. Then it's there, the way a hand finds a railing in the dark.",
+	},
+	["cls.paladin.lowhp.w07.012"] = {
+		"You've drawn blood from a paladin. Now you get to see what that costs.",
+		"Wounded, am I? Good. Now I've a reason to drop the good manners.",
+		"Now I'm angry, and the Light is letting me be.",
+	},
+	["cls.paladin.lowhp.w07.013"] = {
+		"If I go down here, let the last thing I did be useful. It nearly is.",
+		"Not afraid of the Light's side of the door. Just not ready to walk through it yet.",
+	},
+	["cls.paladin.lowhp.w07.014"] = {
+		"Knees are for prayer, not for you.",
+		"Kneeling's nothing new to me; I do it every day. Just never for the likes of you.",
+	},
+	["cls.paladin.lowhp.w07.015"] = {
+		"spits red onto the ground and lifts {g:his|her} weapon again, slower now, but still level.",
+		"blinks hard against the dark creeping in at the edge of sight and finds the foe again.",
+	},
+	["cls.paladin.lowhp.w07.016"] = {
+		"You won't be adding me to your ranks. I've other plans for my bones.",
+		"Not today. My bones are spoken for, and not by you.",
+	},
+	["cls.paladin.lowhp.w07.017"] = {
+		"If I drop, who keeps them standing? Then I don't drop. Simple.",
+		"They're counting on my heals. I can't spend them all on myself. Some, though. Some.",
+	},
+	["cls.paladin.lowhp.w07.018"] = {
+		"Dented plate and a stubborn heart. Try harder.",
+		"This plate's seen worse days, and so have I. Come on, then.",
+	},
+	["cls.paladin.lowhp.w07.019"] = {
+		"Mana's thin, blood's thinner. Spend the one to save the other.",
+		"Heal now, pride later. A dead paladin protects nobody.",
+	},
+	["cls.paladin.muse.w07.001"] = {
+		"Miles in armor teach a particular kind of patience. The road doesn't care what you swore.",
+		"Somewhere around the tenth mile, every oath turns into a matter of feet.",
+		"The road is the long part of the oath. Nobody warns you how long.",
+	},
+	["cls.paladin.muse.w07.002"] = {
+		"Some days I reach for the Light the way one reaches for a railing on a dark stair. It has always been there. I still reach carefully.",
+		"I have never once found the Light missing. And still, each time, there is that small breath before I ask.",
+		"Faith, for me, is mostly the habit of reaching anyway.",
+	},
+	["cls.paladin.muse.w07.003"] = {
+		"When a farmer calls me a hero, something in me sits up and preens. I have learned to tell it to lie back down.",
+		"Praise is the one blow my armor doesn't stop. I take it standing, and then I go and pray it off.",
+		"Pride never charges. It waits until someone thanks me, then slips in through the visor.",
+	},
+	["cls.paladin.muse.w07.004"] = {
+		"Why a hammer? It needs no whetstone, and it settles arguments in one syllable.",
+		"A sword wants the whetstone after every fight. A hammer only wants a stubborn arm.",
+		"Swords are for duelists. A hammer is for doors, walls and anything else that won't listen.",
+	},
+	["cls.paladin.muse.w07.005"] = {
+		"goes down on one knee where {g:he|she} stands, head bowed for the space of three breaths, then rises without a word.",
+		"stops, touches two fingers to the center of {g:his|her} breastplate, and moves on as if a small account had been settled.",
+	},
+	["cls.paladin.muse.w07.006"] = {
+		"The Light never pushes. It waits like a banked forge, warm whenever I come back to it, and never once dragging me there.",
+		"Nothing in the Light ever forces my hand. It only stays lit, and leaves the walking to me.",
+	},
+	["cls.paladin.muse.w07.007"] = {
+		"Wherever I walk, some part of the oath keeps facing the Plaguelands, like a sleeper turned toward a door.",
+		"Whatever errand I'm on, the Scourge waits at the far end of every paladin's road. I don't forget it; I just don't hurry it.",
+		"Even on the quietest errand, a corner of my mind keeps watch toward Lordaeron.",
+	},
+	["cls.paladin.muse.w07.008"] = {
+		"Swapping one seal for another in the middle of a fight is like changing languages mid-sentence. It took me a long while to stop stammering.",
+		"Two seals, two tempers. Learning when to trade one for the other was the first real lesson after the basics.",
+	},
+	["cls.paladin.muse.w07.009"] = {
+		"There's an aura that stings whoever strikes those near me. I don't even have to look. It feels almost unfair, and I've decided I don't mind.",
+		"Whoever lays a blade on someone in my circle pays a little for it, and never knows quite why. That aura suits a certain kind of temper.",
+	},
+	["cls.paladin.muse.w07.010"] = {
+		"Some days the best thing I bring to a fight is an aura of calm for whoever is casting behind me.",
+		"The aura I like least to explain is the one that keeps a caster steady when someone hits them mid-word. Nobody sees it working. That's the point.",
+	},
+	["cls.paladin.muse.w07.011"] = {
+		"There's a shield I can raise that nothing gets through. I use it rarely; a paladin who can't be touched forgets what the touch costs others.",
+		"For a few seconds, nothing in the world can harm me. The temptation in that isn't cowardice. It's pride.",
+		"Untouchable for a moment. I'm always relieved when the moment ends; it's not a good place for a paladin to live.",
+	},
+	["cls.paladin.muse.w07.012"] = {
+		"There is a prayer that gives my life so that another's is spared, whole. I've learned it. I keep hoping it stays something I know rather than something I've done.",
+		"I know a prayer that spends me entirely so that someone else walks out. Knowing it is easy. Being ready is another matter.",
+	},
+	["cls.paladin.muse.w07.013"] = {
+		"I don't pray over every meal. Some inn stews, though, deserve a blessing for the eater's sake.",
+		"The Light isn't for small things, I was taught. Whoever taught me never ate travelers' bread.",
+	},
+	["cls.paladin.muse.w07.014"] = {
+		"The oath is written in plain words. The world it meets is not. Every day I translate, and I'm never certain I got it right.",
+		"Protect the weak, it says. It doesn't say who is weak today, or from what. That part I have to work out alone.",
+		"The vows fit on one page. The questions they raise could fill a library.",
+	},
+	["cls.paladin.muse.w07.015"] = {
+		"The Alliance is a promise between peoples who don't always like each other. A paladin's oath is a smaller one of the same shape.",
+		"Humans and dwarves, gnomes and elves, under one banner. It holds because people keep choosing to hold it. Rather like an oath.",
+		"Nobody swears the Alliance into being once. It's sworn again every day, in small ways, by people who could walk away.",
+	},
+	["cls.paladin.muse.w07.016"] = {
+		"Wherever there's a gate, someone has to stand in it. I've never minded being that someone.",
+		"Give me a doorway and a reason. I'll hold it all day.",
+	},
+	["cls.paladin.muse.w07.017"] = {
+		"works a cloth over the head of {g:his|her} weapon until the metal gives back a dull, honest gleam.",
+		"tests the weight of {g:his|her} weapon in one hand, then the other, as though weighing a question rather than a tool.",
+	},
+	["cls.paladin.muse.w07.018"] = {
+		"Every trainer I've had spoke Uther's name more quietly than any other. I think it's the only name they never say in a hurry.",
+		"Ask any old paladin about Uther and watch the voice drop. Not grief exactly. More like walking past a place where something fell.",
+		"Uther is the name every trainer says last, and slowest.",
+	},
+	["cls.paladin.muse.w07.019"] = {
+		"A prince of Lordaeron once carried the Light and then threw it away. The trainers tell it as a warning, and they never say which part frightens them most.",
+		"Every novice hears of Arthas, who was one of us, and what he became. The lesson isn't that he was wicked. It's that he was certain.",
+		"Arthas is the story they tell to novices who are too sure of themselves. I've heard it more than once.",
+	},
+	["cls.paladin.muse.w07.020"] = {
+		"The Argent Dawn and the Scarlet Crusade both raise their hands against the Scourge. The difference, an old paladin told me, is what they do when the hand comes down on the living.",
+		"Two heirs of the old order, they say: one keeps the oath, one keeps only the anger. Anger is easier to keep. That's what worries me.",
+	},
+	["cls.paladin.muse.w07.021"] = {
+		"Late in a long day, the armor stops feeling like protection and starts feeling like luggage. I keep it on anyway. Habits like that are what keep people alive.",
+		"There's an hour in every long march when the armor weighs exactly as much as it is. That's the hour the oath earns its keep.",
+		"Long days make a cart horse of every paladin. The armor stays on regardless; that's the job.",
+	},
+	["cls.paladin.muse.w07.022"] = {
+		"Walk forward, help where it's needed, apologize where you got it wrong. Most of the training, honestly.",
+		"Help first, explain later, apologize if needed. The trainers dressed it up in longer words.",
+	},
+	["cls.paladin.muse.w07.023"] = {
+		"The walking dead flinch from the Light like a bruise from a thumb. Not a lofty way to put it, but I've never found a truer one.",
+		"Whatever animates the Scourge, the Light presses on it like a finger on a sore. I've seen them shrink back. It is not pretty, and I'm not sorry.",
+		"The Light doesn't hate the Scourge. It simply cannot share a space with it, and the Scourge is the one that has to give.",
+	},
+	["cls.paladin.muse.w07.024"] = {
+		"Since I learned to sense the dead that walk, there's a faint itch at the back of my mind in certain places. I've stopped asking places to be innocent.",
+		"There's a sense I didn't have before: a cold prickle when something dead is moving nearby. Some days I'd give it back.",
+	},
+	["cls.paladin.muse.w07.025"] = {
+		"Exorcism. It sounds grander than it feels. Mostly it feels like opening a window in a room that's been shut too long.",
+		"The trainers made Exorcism sound like thunder. In my hands it's more like a door kicked open on something that should have left long ago.",
+	},
+	["cls.paladin.muse.w07.026"] = {
+		"Hammer of Justice. I didn't pick the name, but I'll admit it says what it does.",
+		"There's a hammer of light I can throw that stops a foe cold. Justice, the trainers call it. A pause, I'd say, long enough for justice to arrive.",
+	},
+	["cls.paladin.muse.w07.027"] = {
+		"I try to deliver a judgement the way a fair judge speaks: once, clearly, and without enjoying it.",
+		"Every judgement I throw, I try to throw without pleasure. Anger makes for crooked verdicts.",
+	},
+	["cls.paladin.muse.w07.028"] = {
+		"The Light works through people who lose their gloves and argue with innkeepers. People like me, then. I find that a great comfort.",
+		"Whatever the Light sees in me, it isn't perfection. That's either humbling or a relief. Most days it's both.",
+	},
+	["cls.paladin.muse.w07.029"] = {
+		"A shield is the most generous thing a soldier carries. Half of it is always for someone else.",
+		"I've never thought of a shield as mine alone. Half of it belongs to whoever is standing behind me.",
+		"Raise a shield and you've made a roof for two. The arithmetic of it has always pleased me.",
+	},
+	["cls.paladin.muse.w07.030"] = {
+		"looks over {g:his|her} shoulder now and then, the old habit of someone used to having people to guard.",
+		"keeps half a step ahead of nobody in particular, out of habit, in the place a shield-bearer walks.",
+	},
+	["cls.paladin.muse.w07.031"] = {
+		"I don't think the Light loves me. I think it trusts me, a little, provisionally. That's harder to live up to.",
+		"Love would be easy. What I feel from the Light is closer to trust, and trust can be lost.",
+		"The Light's trust is like an old horse's: slow to give, and worth everything once it's there.",
+	},
+	["cls.paladin.muse.w07.032"] = {
+		"The hardest prayer is the one at the end of the day. Not for doubt. For sheer weariness: I start, and wake with the words half said.",
+		"My last prayer of the day tends to trail off halfway. I like to think the Light finishes the sentence.",
+	},
+	["cls.paladin.muse.w07.033"] = {
+		"The same hand mends and breaks. I used to find that strange. Now I think it's the only honest arrangement.",
+		"These hands close wounds and open skulls, sometimes within the same breath. A paladin who can't hold both should take up another trade.",
+		"Mending and breaking come out of the same hand, and the hand doesn't get to pick. I do.",
+	},
+	["cls.paladin.muse.w07.034"] = {
+		"I could forget my own name in a fever and still say the oath. The trainers made sure of that.",
+		"The words of the oath sit deeper than memory. I've caught myself mouthing them half asleep.",
+	},
+	["cls.paladin.muse.w07.035"] = {
+		"What if I'm wrong about someone, and the Light lets me be wrong? That's the thought that keeps me awake.",
+		"The Light will not stop my hand if I strike the wrong person. It trusts me to know. Some days that trust is a weight on the chest.",
+		"The Light would lend me strength to strike the wrong person as readily as the right one. Telling them apart is my share of the work.",
+	},
+	["cls.paladin.muse.w07.036"] = {
+		"Bread, oil for the straps, candle stubs, patience. In order of how quickly I run out.",
+		"Things I'm always short of: strap oil, bread and patience. The Light is never the problem.",
+		"My pack, by weight: armor oil, bread, candle ends, and a good deal of hope.",
+	},
+	["cls.paladin.muse.w07.037"] = {
+		"Stormwind's great cathedral was built for prayers far larger than mine. I trust there's still room for mine somewhere up in the vaulting.",
+		"The cathedral in Stormwind hears a great many prayers. I like to think the ones said on the road arrive just as well, if a little muddier.",
+	},
+	["cls.paladin.muse.w07.038"] = {
+		"Ironforge's paladins, I've noticed, talk about the Light like miners about a seam: something you follow patiently and never waste.",
+		"Those who train in Ironforge's Hall of Mysteries speak of the Light the way miners speak of a good vein of ore: worked for, followed with patience, never squandered.",
+	},
+	["cls.paladin.muse.w07.039"] = {
+		"A dwarf with a hammer is no news. A dwarf with a hammer and the Light behind it is a different conversation.",
+		"Hammers run in the blood of my people. The Light only told me where to aim mine.",
+	},
+	["cls.paladin.muse.w07.040"] = {
+		"They call it Light's Hope, the Argent Dawn's chapel in the Plaguelands. A name like that is either very brave or very stubborn. Probably both.",
+		"In the Plaguelands, I'm told, there's a chapel the Scourge has never managed to take. I keep it in mind the way sailors keep a beacon on the shore.",
+	},
+	["cls.paladin.muse.w07.041"] = {
+		"The Light belongs to priests and paladins alike, but we use it differently. A priest kneels beside the wound; I stand in front of whatever made it.",
+		"Priests carry the Light to the sickbed. I carry it to the doorway, between the sickbed and whatever is coming.",
+	},
+	["cls.paladin.muse.w07.042"] = {
+		"murmurs a few words under {g:his|her} breath, and the faint shimmer of the aura about {g:him|her} shifts to another hue.",
+		"lets one aura fall away and takes up another, the change visible only as a brief ripple in the air around {g:him|her}.",
+	},
+	["cls.paladin.muse.w07.043"] = {
+		"Half of being a paladin is waiting: by a sickbed, at a gate, outside a door while someone decides. The trainers never taught us to wait. They should have.",
+		"I was taught to strike, to mend, to bless. Nobody taught me to wait, and that's what the oath asks of me most.",
+	},
+	["cls.paladin.muse.w07.044"] = {
+		"The Light's in a good humor. I can tell; my knees have stopped complaining.",
+		"Feels like a good day for the Light. Or maybe I just slept on something softer than a rock.",
+		"My shoulders don't ache and nobody needs mending. The Light must be showing off.",
+	},
+	["cls.paladin.muse.w07.045"] = {
+		"Every one of the risen dead was someone once. I try to remember that right up to the moment I can't afford to.",
+		"The Scourge is made of farmers and soldiers and somebody's neighbors. The kindest thing I can give them is an end. I wish it felt kinder.",
+		"I try to give the dead an end and nothing crueler. They belonged to someone once; that's worth the care.",
+	},
+	["cls.paladin.muse.w07.046"] = {
+		"Demons are simpler than the dead, in one respect. There was never anyone inside them to grieve.",
+		"With the dead I hesitate, remembering who they were. With demons I don't. Nothing in them ever was anyone.",
+	},
+	["cls.paladin.muse.w07.047"] = {
+		"The oath asks me to protect, not to hate. I keep that in mind whenever someone in a tavern starts in on the Horde.",
+		"Nothing in the vows mentions the Horde. Protect the innocent, they say. The innocent come in more shapes than people expect.",
+	},
+	["cls.paladin.muse.w07.048"] = {
+		"Let them come. I've got a hammer, a prayer, and nowhere better to be.",
+		"A good weapon, a sound prayer and no pressing engagements. Let trouble find me.",
+		"Hammer ready, prayers said, schedule wide open. Trouble's welcome to try.",
+	},
+	["cls.paladin.muse.w07.049"] = {
+		"Every village that still lights its lamps is a small argument for the Light. I collect them.",
+		"A lit window, a fence mended, a child playing in the road. I count those the way others count coin.",
+		"Smoke from a chimney, washing hung out to dry. Small proofs the dark hasn't won, and I keep every one.",
+	},
+	["cls.paladin.muse.w07.050"] = {
+		"rolls a stiff shoulder under the weight of the armor, with the patient grimace of someone used to carrying more than {g:his|her} share.",
+		"eases a gauntlet off, flexes the cramped fingers one by one, and pulls it back on with a resigned sigh.",
+	},
+	["cls.paladin.muse.w07.051"] = {
+		"The hardest darkness to stand against is the one that speaks in my own voice and tells me it would be easier to stop caring.",
+		"Not every enemy wears rot or horns. The one I watch most closely talks in my own voice and tells me I've done enough.",
+		"The enemy I fear most never attacks. It only suggests, kindly, that I set the oath down for a while.",
+	},
+	["cls.paladin.muse.w07.052"] = {
+		"Mercy and softness aren't the same thing. Sometimes the merciful act is the hard one, done quickly.",
+		"I learned early that mercy can wear a gauntlet. Kindness that won't act isn't kindness; it's only watching.",
+		"Soft hands are not the same as merciful ones. Mercy sometimes has to be quick and heavy.",
+	},
+	["cls.paladin.muse.w07.053"] = {
+		"Every new prayer the trainers teach me comes with the same warning: it's lent, not given. I've started to hear it as a kindness.",
+		"Nothing the Light gives me is mine outright. It's all on loan, and the interest is paid in work.",
+	},
+	["cls.paladin.muse.w07.054"] = {
+		"I've been asked whether the Light ever says no. It does. Usually when I ask it for an easier road.",
+		"Does the Light ever refuse me? Only when I ask for a shortcut.",
+		"The Light grants most of what I ask. Never shortcuts. I've stopped asking for those.",
+	},
+	["cls.paladin.muse.w07.055"] = {
+		"The oath weighs the same whether anyone is watching or not. It's the unwatched hours that prove it.",
+		"When nobody's looking, the oath is the only witness left. It makes for a strict audience.",
+	},
+	["cls.paladin.muse.w07.056"] = {
+		"checks each buckle of {g:his|her} armor in turn, from the collar down, with the unhurried care of a long-kept habit.",
+		"lifts each arm in turn to listen to the armor, the way a smith listens to a bell, and seems satisfied with what {g:he|she} hears.",
+	},
+	["cls.paladin.muse.w07.057"] = {
+		"Stormwind's throne sits empty while a regent keeps the chair warm. The oath doesn't depend on who wears the crown. I remind myself of that more than I'd like.",
+		"A missing king, a regent, rumors at every inn. An oath sworn to the Light, at least, isn't subject to politics.",
+		"Kings go missing, regents sign papers, rumors fly. The Light keeps its own counsel, and the oath goes on regardless.",
+	},
+	["cls.paladin.muse.w07.058"] = {
+		"People look at a paladin and borrow some steadiness. I've learned to keep my worries behind the visor, where they can't spill.",
+		"Whatever I feel, my face stays calm while people are watching. They borrow courage from it. I settle my own accounts later, alone.",
+		"When people are frightened, they look at the paladin. So the paladin looks calm, whatever is happening underneath.",
+	},
+	["cls.paladin.muse.w07.059"] = {
+		"If you're going to pray, pray standing. The Light isn't impressed by bruised knees.",
+		"Kneel if you like, but get up quickly. The Light has more use for you upright.",
+		"The Light hears you just as well on your feet. Better, maybe; you're closer to the work.",
+	},
+	["cls.paladin.muse.w07.060"] = {
+		"There's a fury of the Light whose whole message to a crowd of enemies is 'look at me'. Subtle, it is not.",
+		"There's a prayer whose only purpose is to make every enemy angry at me instead of at my friends. The trainers called it noble. My bruises call it something else.",
+	},
+	["cls.paladin.muse.w07.061"] = {
+		"I can draw poison out of a wound and sickness out of the blood. It's the least glamorous thing I know, and I'd give up half the rest before it.",
+		"Purifying a fever earns no songs. It's still the prayer I'd keep if I had to choose just one.",
+	},
+	["cls.paladin.muse.w07.062"] = {
+		"The warhorse came from the Light and from a long trial, and still it looks at me the way any horse looks at its rider: when's supper?",
+		"A charger called up by prayer, and it still chews the bit and sulks like any other. Holy, apparently, does not mean dignified.",
+	},
+	["cls.paladin.muse.w07.063"] = {
+		"The first weeks in plate I moved like a cupboard with opinions. Now I forget it's there, which is either progress or a danger.",
+		"Mail taught me to carry weight. Plate taught me to carry it gracefully, or at least to stop falling over.",
+	},
+	["cls.paladin.muse.w07.064"] = {
+		"In crypts and mines the Light seems to burn closer to the skin, as if it, too, prefers to go where it's needed.",
+		"The darker the place, the nearer the Light sits. I've stopped finding that strange.",
+		"Down in the deep dark, the Light feels less like a lamp and more like a hand on my shoulder.",
+	},
+	["cls.paladin.muse.w07.065"] = {
+		"A paladin's best tool? A clean cloth. For wounds, for weapons, for the faces of the frightened.",
+		"Carry a clean cloth. It binds a cut, wipes a blade and dries tears, and none of those can wait for a prayer.",
+	},
+	["cls.paladin.muse.w07.066"] = {
+		"Prayer isn't asking, mostly. It's tuning: like a smith tapping a blade to hear whether it rings true.",
+		"When I pray I'm not listing wishes. I'm checking, the way one tests a rope, that I'm still tied to something solid.",
+		"I don't pray to be heard. I pray to hear whether I'm still standing on something true.",
+	},
+	["cls.paladin.muse.w07.067"] = {
+		"There's a loneliness in being the one others lean on. Nobody thinks to ask who you lean on.",
+		"Everyone leans on the paladin. The paladin leans on the Light, and on the days the Light is quiet, on plain stubbornness.",
+		"Being everyone's support is an honor and a loneliness, often in the same hour.",
+	},
+	["cls.paladin.muse.w07.068"] = {
+		"I'm not judging you. I'm just a paladin standing nearby with a disappointed face. It's different.",
+		"People always assume I'm judging them. Mostly I'm wondering where I left my other glove.",
+		"That look isn't judgment. It's my face. It came this way.",
+	},
+	["cls.paladin.muse.w07.069"] = {
+		"The Light was here before the Silver Hand, before the first king, before anyone thought to give it a name. My oath is a single stitch in a very old cloth.",
+		"Orders rise and break; the Light outlasts them all. I'm a short sentence in a long book, and content to be one.",
+		"The order is young. The Light is not. I try to keep the two in proportion.",
+	},
+	["cls.paladin.muse.w07.070"] = {
+		"lifts {g:his|her} face for a moment, eyes closed, as though listening for something only {g:he|she} can hear, then nods.",
+		"goes still between one step and the next, head tilted, then breathes out and smiles faintly, as if an answer had come.",
+	},
+	["cls.paladin.muse.w07.071"] = {
+		"There's a prayer that sends the dead running. Watching them flee is the strangest sight: fear on a face that shouldn't be able to show it.",
+		"The dead remember fear, it seems, even when they've forgotten everything else. That one prayer proves it.",
+	},
+	["cls.paladin.muse.w07.072"] = {
+		"Some seals strike, some mend as they strike. With the Seal of Light every blow is a small prayer for my own bruises. Practical, the Light, when it wants to be.",
+		"With the right seal, every swing gives a little back. I like that the Light thought of the arm doing the swinging.",
+	},
+	["cls.paladin.muse.w07.073"] = {
+		"I won't swear to win. I'll swear to stay. That one I can keep.",
+		"I never promise victory. I promise to be here at the end, one way or another.",
+		"I can't promise to win. Staying until the end, though, is fully within my power.",
+	},
+	["cls.paladin.muse.w07.074"] = {
+		"Between one town and the next there's always someone in need of a hand: a cart in a ditch, a lost goat. I think the Light leaves them there on purpose.",
+		"No road is ever empty for a paladin. There's always a wheel stuck in the mud along it, and somehow it's always mine to push.",
+		"The Light, I suspect, puts carts in ditches along my path just to keep my arms in practice.",
+	},
+	["cls.paladin.muse.w07.075"] = {
+		"The oath sits just under the breastbone. On bad days it's a stone; on good days a coal.",
+		"I carry the oath somewhere beneath the breastplate. Some days it presses like a stone, some days it warms like an ember.",
+	},
+	["cls.paladin.muse.w07.076"] = {
+		"Every village thinks a paladin can fix anything. A well, a cow, a marriage: all of them in want of a blessing, all on the same day.",
+		"People ask a paladin to bless the strangest things. Wells, I understand. Boots, I'm less sure about. I did it anyway.",
+		"A paladin can be asked to bless anything. Wells, goats, a nervous groom. I draw the line at nothing, apparently.",
+	},
+	["cls.paladin.muse.w07.077"] = {
+		"The soldiers at the watchposts straighten up when a paladin passes. I try to straighten up for them in turn; they've stood there longer.",
+		"Guards nod at my armor like an old friend. I nod back at their tired eyes. We both know who's really keeping watch.",
+		"Every guard at every post knows the weight of a long watch. I salute them first; they've earned it.",
+	},
+	["cls.paladin.muse.w07.078"] = {
+		"There's a hammer I can call only when the foe is nearly finished. The Light, it seems, dislikes long goodbyes.",
+		"That hammer comes only at the end, when a foe is already failing. Mercy and wrath in a single throw.",
+	},
+	["cls.paladin.muse.w07.079"] = {
+		"What if the Light is simply what good people feel when they're brave, and nothing more? I've asked it. It hasn't argued. Either that's an answer, or the lack of one.",
+		"Some days I suspect the Light is only courage given a beautiful name. Then it closes a wound under my hand, and the suspicion goes quiet for a while.",
+		"Is the Light real, or only what brave people feel? I've decided it matters little on a day when the wound still closes.",
+	},
+	["cls.paladin.muse.w07.080"] = {
+		"lays a hand on the weapon at {g:his|her} side and leaves it there a while, as one rests a hand on the head of an old dog.",
+		"taps the grip of {g:his|her} weapon twice, absently, the way one pats a horse before a long road.",
+	},
+	["cls.paladin.muse.w07.081"] = {
+		"An old paladin once told me to trust the oaths sworn in a shaking voice, and to watch the steady ones.",
+		"Watch the ones who swear without a tremor, the old paladins say. An oath that costs nothing to say costs little to break.",
+	},
+	["cls.paladin.muse.w07.082"] = {
+		"The Light can close a wound. It can't close a grave. I learned the difference the way everyone does.",
+		"There's a limit to mending, and it ends at the edge of a grave. Knowing exactly where that edge lies is the hardest thing the Light ever taught me.",
+	},
+	["cls.paladin.muse.w07.083"] = {
+		"Let it be said a paladin came through, and things were a little better after.",
+		"When I'm gone from here, I'd like the place to be a touch safer than I found it. That's all the legacy I want.",
+		"Leave things better than you found them. If the Light asks anything simpler of me, I haven't heard it.",
+	},
+	["cls.paladin.pray.w07.001"] = {
+		"Light, keep me humble when I win and honest when I lose. The rest I'll manage.",
+		"Light, let the shield be the first thing I raise and the hammer the last.",
+	},
+	["cls.paladin.quest_complete.w07.001"] = {
+		"The oath doesn't weigh a task by its size. It only asks whether I finished it.",
+		"Small job or great one, the vows judge them alike: done, or not done.",
+		"No errand is beneath the oath. I've stopped expecting it to tell me which ones matter.",
+	},
+	["cls.paladin.quest_complete.w07.002"] = {
+		"Done. If more trouble comes, send for the nearest paladin. It'll probably be me.",
+		"Finished. Should anything else crawl out of the woodwork, you know where to find a hammer.",
+		"That's handled. Bolt your door anyway; good habits outlast good luck.",
+	},
+	["cls.paladin.quest_complete.w07.003"] = {
+		"lets out a slow breath and unbuckles {g:his|her} gauntlets, as if setting the task down along with them.",
+		"loosens the strap at {g:his|her} collar with a small sigh, the errand finished and the armor suddenly heavier for it.",
+		"taps the breastplate once with a knuckle, a small private signal that the matter is closed.",
+	},
+	["cls.paladin.quest_complete.w07.004"] = {
+		"They thanked me as if I'd done something remarkable. I did something necessary. The difference matters to me.",
+		"Gratitude is kind, but I'd rather they forgot me and remembered that help came.",
+		"If they remember the help and forget the helper, I've done it right.",
+	},
+	["cls.paladin.quest_complete.w07.005"] = {
+		"Done. I'd say it was nothing, but my feet would call me a liar.",
+		"There. All it cost was a day and most of my patience.",
+		"Finished. Next time, perhaps a task with a little less walking uphill.",
+	},
+	["cls.paladin.quest_complete.w07.006"] = {
+		"I don't hand this to the Light as a gift; the Light has no need of my errands. I do them because someone else does.",
+		"The Light didn't need this done. The people here did. That's why it matters to the Light.",
+		"Whatever the Light wants of me, I suspect it looks a lot like this: a small trouble ended for someone who couldn't end it alone.",
+	},
+	["cls.paladin.quest_complete.w07.007"] = {
+		"clasps the hand of the one who gave the task, firmly, the way a pact is sealed.",
+		"meets the gaze of whoever asked and holds it a moment, as if to make sure the matter is truly settled.",
+		"gives a short nod, the kind that closes a ledger, and turns {g:his|her} attention to whatever comes next.",
+	},
+	["cls.paladin.quest_complete.w07.008"] = {
+		"I did what was asked. I'd like to believe what was asked was just. Usually it was. Usually.",
+		"Sometimes I take a task on trust and only wonder afterward whose side it served. The oath asks for better than that.",
+		"Done. Now comes the part no one pays for: deciding whether it was right.",
+	},
+	["cls.paladin.quest_complete.w07.009"] = {
+		"There. Next time, ask before it gets this bad. Asking is not a weakness.",
+		"Done. And don't wait so long to call for help again; pride makes a poor sentry.",
+		"Finished. You did right to ask. Plenty don't, and pay for it.",
+	},
+	["cls.paladin.quest_complete.w07.010"] = {
+		"There's a small warmth after a task well done. I used to think it was pride. Now I think it's the Light, saying nothing, nodding.",
+		"A good deed finished leaves a warmth behind the ribs. Pride burns hotter; this is gentler, and it lasts longer.",
+		"That small glow after a thing well done isn't vanity, I've decided. Vanity wants an audience. This is content with none.",
+	},
+	["cls.paladin.quest_complete.w07.011"] = {
+		"One more thread tied off. The road unspools the rest.",
+		"One loose end of the world tied off. There are plenty more; I've got the fingers for it.",
+		"Tied off and finished. Somewhere ahead, the next loose end is already waiting.",
+	},
+	["cls.paladin.quest_complete.w07.012"] = {
+		"counts the reward once, carefully, and sets a share aside in a separate pouch, the way some people give without ever saying so.",
+		"weighs the purse in {g:his|her} palm, then divides it with the quiet precision of someone who knows exactly where each coin will go.",
+	},
+	["cls.paladin.quest_complete.w07.013"] = {
+		"Glad that's sorted. I could eat a whole loaf, crust and all.",
+		"Well, that's settled. All this righteousness has given me an appetite.",
+		"Done. Righteous work makes for a hungry paladin.",
+	},
+	["cls.paladin.quest_complete.w07.014"] = {
+		"Someone will pass this way a little safer now and never learn why. I prefer it like that.",
+		"The best guard is the one no one notices: the danger simply isn't there anymore.",
+		"No one will ever know this trouble existed. That's how I know it was handled well.",
+	},
+	["cls.paladin.quest_complete.w07.015"] = {
+		"Every finished task ends the same way: a nod, a coin, and the next road. Some days I wish one of them asked me to stay.",
+		"Help given, thanks received, and off again. A paladin's life has few long goodbyes.",
+	},
+	["cls.paladin.quest_complete.w07.016"] = {
+		"It is done. May the rest of your days be quieter than this one.",
+		"The matter is closed. I hope you never need a paladin again; I mean that kindly.",
+		"Finished. May your next worry be a small one.",
+	},
+	["cls.paladin.quest_complete.w07.017"] = {
+		"I began this task thinking I knew the answer. I leave with fewer certainties and better questions. The trainers would approve.",
+		"Every errand corrects something I thought I knew. This one corrected my patience.",
+		"No trainer could have taught me what this one did: how often my first guess is wrong.",
+	},
+	["cls.paladin.quest_complete.w07.018"] = {
+		"touches the grip of {g:his|her} weapon and bows {g:his|her} head for a breath, a soldier's thanks given to something unseen.",
+		"murmurs a single word under {g:his|her} breath, too low to catch, and the faint glow at {g:his|her} shoulders brightens and fades.",
+		"stands straighter for a moment, as though a debt had been marked paid in a ledger only {g:he|she} can see.",
+	},
+	["cls.paladin.quest_complete.w07.019"] = {
+		"The task is done and my shoulders know it. Armor gets heavier at the end of things, never at the start.",
+		"Funny how the armor weighs nothing on the way out and a ton on the way back.",
+		"Every errand ends with the same discovery: I've been carrying this armor the whole time.",
+	},
+	["cls.paladin.quest_complete.w07.020"] = {
+		"The old paladins of the Silver Hand were known for this, I'm told: not the great battles, but the help that came when asked. I'd like to be known for it too.",
+		"Before the order broke, people say, a farmer could ask a paladin for help and count on it. I try to keep that true, one task after another.",
+	},
+	["cls.paladin.quest_complete.w07.021"] = {
+		"Another wrong put right. The Light and I make a fair team.",
+		"One more thing set straight. I'll take that over a medal any day.",
+		"Righted. That feeling never gets old.",
+	},
+	["cls.paladin.quest_complete.w07.022"] = {
+		"I wonder sometimes whether the Light keeps a tally. If it does, I hope it rounds up.",
+		"If the Light is counting good deeds, I'd like to think it's generous with fractions.",
+	},
+	["cls.paladin.quest_progress.w07.001"] = {
+		"One piece of it done. A vow isn't kept all at once; it's kept in pieces like this.",
+		"Halfway there, give or take. I'll finish it; I said I would.",
+		"A step along. The rest is only more steps, and I have plenty of those left in me.",
+	},
+	["cls.paladin.quest_progress.w07.002"] = {
+		"Everything that was asked is done. Now someone deserves to hear it.",
+		"All of it finished. Better go and tell them before they start to worry.",
+		"That completes it. The walk back is the part I enjoy.",
+	},
+	["cls.paladin.quest_progress.w07.003"] = {
+		"pauses to weigh how far the task has come, nods to {g:himself|herself}, and presses on.",
+		"takes stock of what's done so far, then squares {g:his|her} shoulders for the rest.",
+		"taps a thumb against the breastplate, a small mark of satisfaction, then looks to what remains.",
+	},
+	["cls.paladin.reputation_change.w07.001"] = {
+		"They look on me a bit more kindly now. A paladin's good name is a shield of sorts; I mean to keep it bright.",
+		"They think better of me now. I'll have to be careful: good opinion is easy to lean on and hard to deserve.",
+		"A little more trust earned. I'll carry it as carefully as the oath, since it is part of it.",
+	},
+	["cls.paladin.rez.w07.001"] = {
+		"Up again, armor and all. The oath didn't lapse while I was gone; it simply waited, as oaths do.",
+		"Death let go of me. I'll take it as the Light's way of saying the work isn't finished, and get on with it.",
+	},
+	["cls.paladin.rezother.w07.001"] = {
+		"Wake slowly. The Light has had a word with death, and death has stepped aside.",
+		"Open your eyes. Death let go sooner than it wanted to.",
+		"For a moment you were gone, and now you're here. That's all that counts.",
+	},
+	["cls.paladin.rezother.w07.002"] = {
+		"The long words of Redemption, and the whole time I'm listening for the first breath. It always comes later than I'd like.",
+		"Redemption is slow. Ten heartbeats of words over someone who can't hear them, and then they can.",
+	},
+	["cls.paladin.rezother.w07.003"] = {
+		"kneels beside the body and holds a hand above the still chest, speaking the long words until a breath stirs beneath the palm.",
+		"bows over the body and calls on the Light in a low, unbroken voice, as steady as a hand on a rope.",
+	},
+	["cls.paladin.rezother.w07.004"] = {
+		"Up. Dying doesn't excuse you from the rest of the walk.",
+		"There you are. Death's poor company anyway; I hear it never talks.",
+	},
+	["cls.paladin.rezother.w07.005"] = {
+		"I never ask where they were. I'm not sure the Light would want me to know.",
+		"The first look in their eyes is always far away. I wait for it to find this shore again before I speak.",
+	},
+	["cls.paladin.rezother.w07.006"] = {
+		"On your feet. I'm not leaving you lying here.",
+		"Get up. The oath doesn't end at the edge of a grave, mine or yours.",
+		"Rise and stand by me. No one stays on the ground while there's strength in my arms.",
+	},
+	["cls.paladin.rezother.w07.007"] = {
+		"Slowly. Your first breath will hurt. The second one less.",
+		"Lie still a moment. Your body is still catching up with the news.",
+		"Don't try to talk yet. Breathe first; the words can wait.",
+	},
+	["cls.paladin.rezother.w07.008"] = {
+		"The Light gives back the life, not the strength. That part comes with food and a long sit.",
+		"A raised body is a weak body for a while. I'll stay within reach until it can keep pace.",
+	},
+	["cls.paladin.rezother.w07.009"] = {
+		"By the Light, rise. Not everything that falls has to stay down.",
+		"Rise. The Light has already said yes; your body only has to agree.",
+		"In the Light's name: breathe.",
+	},
+	["cls.paladin.rezother.w07.010"] = {
+		"stays kneeling a moment after the eyes open, as if making sure the breath intends to stay.",
+		"lets out a long breath of {g:his|her} own once the other body stirs, and only then gets up from the ground.",
+	},
+	["cls.paladin.thanks.w07.001"] = {
+		"Thank you. I'll remember it the next time you're the one in need of a shield.",
+		"My thanks. Consider it a debt; paladins pay theirs.",
+	},
+	["cls.paladin.thanks.w07.002"] = {
+		"Much obliged. I'd bow, but in this armor it becomes a whole production.",
+		"Thank you kindly. I'd bless you for it, but I suspect you'd rather have a drink.",
+	},
+	["cls.paladin.threat.w07.001"] = {
+		"I've sworn to protect the innocent. You don't look like you're on that list.",
+		"My oath covers everyone here but you. Step aside.",
+	},
+	["cls.paladin.threat.w07.002"] = {
+		"I'm carrying a great deal of Light just now. Don't give me a reason to share it.",
+		"There's a seal waiting for you. Walk away and it can stay unspent.",
+	},
+	["cls.paladin.threat.w07.003"] = {
+		"You'll notice I'm wearing a great deal of armor. You'll notice you're not. Think about it.",
+		"I'm wearing half a smithy and you're wearing an attitude. Only one of those stops blades.",
+		"I'm very hard to hurt and very easy to annoy. You're working on the second.",
+	},
+	["cls.paladin.threat.w07.004"] = {
+		"lets a slow glow gather along {g:his|her} weapon and says nothing at all, which is somehow worse.",
+		"rests a hand on the weapon and holds the stare, a faint warmth rising off the armor like heat from a forge.",
+	},
+	["cls.paladin.threat.w07.005"] = {
+		"I know what you are. And I know exactly what to do about it.",
+		"Dead thing, I've a whole oath devoted to the likes of you.",
+		"Lie back down while you still can. I won't ask twice.",
+	},
+	["cls.paladin.threat.w07.006"] = {
+		"One more step and I'll knock that idea right out of your head.",
+		"Try it. I can stop you mid-stride, and you'll never work out how.",
+	},
+	["cls.paladin.victory.w07.001"] = {
+		"Breath first. The prayer of thanks can wait until my lungs agree to it.",
+		"Let the heart slow down before the thanks. The Light won't mind the wait.",
+	},
+	["cls.paladin.victory.w07.002"] = {
+		"It's done. The Light was steady when I wasn't.",
+		"Over. Every time my arm faltered, the Light didn't.",
+		"Done. I swung; the Light steered.",
+	},
+	["cls.paladin.victory.w07.003"] = {
+		"kneels briefly by the fallen foe and closes a hand over {g:his|her} own heart, as one does at a graveside.",
+		"makes a small sign over the fallen, the same short gesture whether it was a beast or a brigand.",
+	},
+	["cls.paladin.victory.w07.004"] = {
+		"The Light did the heavy lifting. I'll take credit for the footwork.",
+		"Fine teamwork. The Light handled the miracles; I handled the bruises.",
+	},
+	["cls.paladin.victory.w07.005"] = {
+		"I asked for strength, and it came. I never asked whether the foe deserved what it brought.",
+		"The Light answered. It always does. What I wonder is whether it ever winces.",
+	},
+	["cls.paladin.victory.w07.006"] = {
+		"One less danger for the next traveler. That's all the reward I need.",
+		"Someone will pass here safely tomorrow and never know why. Good.",
+	},
+	["cls.paladin.victory.w07.007"] = {
+		"loosens the collar of {g:his|her} armor with one finger and lets the cooler air in, slowly.",
+		"lifts {g:his|her} face for a moment, eyes closed, as the faint glow about {g:him|her} drains away.",
+	},
+	["cls.paladin.victory.w07.008"] = {
+		"Light, take what was good in it, if there was any.",
+		"Light, judge kindly what's left. I couldn't afford to.",
+	},
+	["cls.paladin.victory.w07.009"] = {
+		"Judged too early again. Next time, let the seal bite first.",
+		"Too much mana spent too soon. The Light is generous; my reserves aren't.",
+	},
+	["cls.paladin.victory.w07.010"] = {
+		"Everyone still on their feet? Good. Show me who's bleeding.",
+		"Sound off. Anyone hurt, come here before you sit down.",
+		"Line up, wounded first. The Light's not done working yet.",
+	},
+	["cls.paladin.victory.w07.011"] = {
+		"It fought like it had something to live for. Maybe it did.",
+		"There's always a moment, after, when I wonder what it was defending.",
+	},
+	["cls.paladin.victory.w07.012"] = {
+		"Case closed. The Light presided; I only read out the sentence.",
+		"Sentence carried out. Court is adjourned.",
+		"Sentence served. No appeals today.",
+	},
+	["cls.paladin.victory.w07.013"] = {
+		"raises an open hand, and the last of the light drifts from the palm like warm dust in a sunbeam.",
+		"presses the knuckles of one gauntlet to {g:his|her} lips, a brief and private thanks.",
+	},
+	["cls.paladin.victory.w07.014"] = {
+		"Another one for the list of things that didn't listen to a paladin.",
+		"That's what comes of ignoring a person in shining armor. Someone should put it on a sign.",
+	},
+	["cls.paladin.victory.w07.015"] = {
+		"My hands are shaking. Let them. They've earned it.",
+		"The tremor always comes after, never during. The Light is considerate that way.",
+		"Steady, hands. You did your part.",
+	},
+	["cls.paladin.victory.w07.016"] = {
+		"There. Now to find somewhere to sit that isn't covered in whatever that was.",
+		"Done. Please let there be water nearby; I've sweated half a river in this armor.",
+	},
+	["cls.paladin.victory.w07.017"] = {
+		"Rest now. Properly, this time.",
+		"Sleep. Nobody has the right to wake you again.",
+		"There. Whoever you were, you're at peace now.",
+	},
+	["cls.paladin.victory.w07.018"] = {
+		"That one had a face once. Perhaps a name someone still says. I hope the Light finds them both.",
+		"The dead don't choose to walk. That's what makes ending them so hard to feel good about.",
+	},
+	["cls.paladin.victory.w07.019"] = {
+		"Go home to whatever pit made you, and tell it a paladin sent you.",
+		"One fewer demon in the world. The world will hardly notice, and that's how it should be.",
+	},
+	["cls.paladin.victory.w07.020"] = {
+		"looks slowly around, as a sentry does, before letting {g:his|her} weapon drop to {g:his|her} side.",
+		"turns a full circle where {g:he|she} stands, watchful, and only then lets {g:his|her} shoulders fall.",
+	},
+	["cls.paladin.victory.w07.021"] = {
+		"The warmth is leaving now. It always goes a little sooner than I'd like.",
+		"That glow in my chest fades slowly after a fight, like a hearth after the guests have gone.",
+	},
+	["cls.paladin.victory.w07.022"] = {
+		"The Light thanks you for your participation.",
+		"On behalf of the Light, thank you for the visit. Please don't repeat it.",
+		"The Light wishes you better luck in whatever comes next.",
+	},
+	["cls.paladin.victory.w07.023"] = {
+		"Someone has to remember that this was a life. Might as well be the one who ended it.",
+		"It's easy to forget the foe was alive a moment ago. I try not to make it easy.",
+	},
+	["cls.paladin.victory.w07.024"] = {
+		"On my feet, oath intact. That's a good day's work.",
+		"Oath kept, foe down, and nothing broken that won't mend.",
+	},
+	["cls.paladin.victory.w07.025"] = {
+		"murmurs a short prayer over the fallen, the words too low for anyone else to catch.",
+		"touches the grip of {g:his|her} weapon to {g:his|her} brow in a small, formal salute to the fallen.",
+	},
+	["cls.paladin.victory.w07.026"] = {
+		"Bruised ribs, a sore wrist, a dent somewhere in the armor. Small change. I'll pay it.",
+		"The body keeps a ledger: a bruise here, a wrench there. I'll settle up at the next fire.",
+	},
+	["cls.paladin.victory.w07.027"] = {
+		"Well fought, all of you. I'd bless the lot of you if I had the mana left.",
+		"Fine work. Remind me to light a candle for this group.",
+	},
+	["cls.paladin.victory.w07.028"] = {
+		"That felt good. Too good. Careful; pride wears armor too.",
+		"A little glow of satisfaction. I'll let it go before it turns into something worse.",
+	},
+	["cls.paladin.victory.w07.029"] = {
+		"Not my victory. I only carried it here.",
+		"The Light won this. I merely held the door.",
+		"I take the bruises; the Light takes the credit. A fair trade.",
+	},
+	["cls.paladin.victory.w07.030"] = {
+		"Plate saves lives, but it doesn't spare the shoulders. Mine will be complaining for hours.",
+		"The plate took every blow it was meant to. My back took the plate.",
+	},
+	["cls.paladin.victory.w07.031"] = {
+		"lets the weapon fall to {g:his|her} side, and for a moment the air around {g:him|her} hums with a fading brightness.",
+		"straightens slowly, and the last thread of light slides off {g:his|her} armor like water off slate.",
+	},
+	["cls.paladin.victory.w07.032"] = {
+		"That's earned me a hot meal. The Light and I are agreed on that much.",
+		"Virtue is its own reward, I'm told. I'd still like some bread.",
+	},
+	["cls.paladin.victory.w07.033"] = {
+		"I never feel holy after. Only tired, and grateful, and a little uneasy at how good the swing felt.",
+		"Nobody warns you how alike righteousness and relief feel in the body.",
+	},
+	["cls.paladin.victory.w07.034"] = {
+		"That one will make a story. I'll try to tell it humbly.",
+		"A hard one, and it's down. Somebody remember this for me; I'll be too modest to tell it right.",
+	},
+	["cls.paladin.victory.w07.035"] = {
+		"Over. The Light goes quiet, and I'm only myself again, which is plenty.",
+		"The oath can stand at ease for a moment. So can I.",
+		"Stand easy, heart. We're finished here.",
+	},
+	["cls.paladin.victory.w07.036"] = {
+		"That's done. On to the next thing that needs standing against.",
+		"One down. The oath doesn't say how many; it only says keep going.",
+	},
+	["cls.paladin.victory.w07.037"] = {
+		"lowers {g:himself|herself} to one knee, armor clanking, and allows {g:himself|herself} exactly one groan.",
+		"pulls off one gauntlet with {g:his|her} teeth and flexes the stiff fingers, wincing.",
+	},
+	["cls.paladin.victory.w07.038"] = {
+		"Forgive me, beast. You only wanted to live, same as anyone.",
+		"Rest, creature. You were only doing what your kind does.",
+	},
+	["cls.paladin.victory.w07.039"] = {
+		"Someone like that had choices, once. I hope the Light weighs them more gently than I could.",
+		"A thinking creature, and it chose this. I'll never understand it, and I'll never stop trying.",
+	},
+	["cls.paladin.victory.w07.040"] = {
+		"First: who's breathing hard, who's bleeding, who's pretending not to be. Then the rest.",
+		"I look for the wounded before I look at the foe. A habit worth keeping.",
+	},
+	["cls.paladin.victory.w07.041"] = {
+		"Judgement doesn't always come quickly. Today it did.",
+		"Some debts the Light collects slowly. That one, I collected on the spot.",
+		"That's what comes due when the Light stops being patient.",
+	},
+	["cls.paladin.victory.w07.042"] = {
+		"Alive, whole, and the Light still with me. Some days that's the entire blessing.",
+		"Nothing broken but a sweat. Thank you, Light, for small favors and large ones.",
+	},
+	["cls.paladin.victory.w07.043"] = {
+		"One fewer of the walking dead. Somewhere a grave has its tenant back.",
+		"Down, and staying down this time. The Light keeps better watch than whoever raised you.",
+	},
+	["cls.paladin.victory.w07.044"] = {
+		"breathes out slowly through clenched teeth and rolls the stiffness out of {g:his|her} weapon arm.",
+		"shakes out {g:his|her} weapon arm, testing the shoulder with a careful circle.",
+	},
+	["cls.shaman.attack.w07.001"] = {
+		"Sky to ground, and you in between.",
+		"There's a straight line from the sky to the ground. You're standing on it.",
+		"From up there to down here, by way of you.",
+	},
+	["cls.shaman.attack.w07.002"] = {
+		"Short and sharp, like a slap from the elements.",
+		"A jolt to rattle your teeth.",
+		"Quick and nasty, the way the spirits like to begin.",
+	},
+	["cls.shaman.attack.w07.003"] = {
+		"Wake the weapon. Let a spirit ride along on every swing.",
+		"The weapon hums now. Every blow carries a little of the elements with it.",
+		"Let the weapon carry a spirit for a while. It swings truer.",
+	},
+	["cls.shaman.attack.w07.004"] = {
+		"jams a totem into the ground mid-fight without breaking stride.",
+		"drops a totem at {g:his|her} feet, almost carelessly, and keeps moving.",
+	},
+	["cls.shaman.attack.w07.005"] = {
+		"Here. Something to warm you.",
+		"Feeling cold? Let me help with that.",
+		"A little heat for you, no charge.",
+	},
+	["cls.shaman.attack.w07.006"] = {
+		"And another. The spirits are feeling generous.",
+		"Again. I've plenty of asking left in me.",
+		"Still asking, still being answered. Lucky me.",
+	},
+	["cls.shaman.attack.w07.007"] = {
+		"Each spell is a favor asked. Keep track of how many.",
+		"Ask, spend, ask again. Count the favors.",
+	},
+	["cls.shaman.attack.w07.008"] = {
+		"Leap, lightning. Find whoever else wants some.",
+		"Let it jump. One is never enough for it.",
+	},
+	["cls.shaman.attack.w07.009"] = {
+		"flings a hand forward, and the air splits with a white crack.",
+		"snaps an arm out, and a jagged line of light leaps from {g:his|her} fingers.",
+	},
+	["cls.shaman.attack.w07.010"] = {
+		"Another favor from the elements, delivered by hand.",
+		"Compliments of the spirits.",
+		"With the spirits' regards.",
+	},
+	["cls.shaman.battle.w07.001"] = {
+		"The sky owes me a favor. I'm calling it in on you.",
+		"There's a storm folded up in my hands. Let's see how far it opens.",
+		"Stay where you are and you'll meet the sky. Run and you'll meet it anyway.",
+	},
+	["cls.shaman.battle.w07.002"] = {
+		"Ask, don't command. Even now, with it coming straight at me. Ask.",
+		"Steady. The spirits help the shaman who asks in a level voice, not the one who shrieks.",
+		"Keep the voice low and even. Panic is a poor way to speak to the elements.",
+	},
+	["cls.shaman.battle.w07.003"] = {
+		"tilts {g:his|her} head as if catching a far-off voice, then turns to face the foe.",
+		"rolls {g:his|her} shoulders once and murmurs a few words to the ground, the way one greets an old ally before a day's work.",
+	},
+	["cls.shaman.battle.w07.004"] = {
+		"Water says I should forgive you. Fire disagrees. Fire is louder today.",
+		"The water spirits suggested we talk this through. The fire spirits did not.",
+		"Four elements, four opinions on what to do with you. Only one of them is gentle.",
+	},
+	["cls.shaman.battle.w07.005"] = {
+		"This totem stays planted. So do I.",
+		"Where the totem stands, I stand. Come and move us both.",
+		"One totem in the ground, one shaman beside it. Neither of us is going anywhere.",
+	},
+	["cls.shaman.battle.w07.006"] = {
+		"Whatever this is, it has a spirit as well. I'll kill it if I must, and remember that I did.",
+		"Every foe carries a spark the elements gave it. Taking it back is never a small thing.",
+	},
+	["cls.shaman.battle.w07.007"] = {
+		"The fire's been pacing in me all day. You'll do nicely.",
+		"I've had a spark itching under my skin since I woke. Thanks for the excuse.",
+		"Fire's been asking for something to do. Here you are.",
+	},
+	["cls.shaman.battle.w07.008"] = {
+		"touches the totems at {g:his|her} belt one after another, quick as counting coins, and steps forward.",
+		"runs a thumb over the totems at {g:his|her} belt, then sets {g:his|her} feet.",
+	},
+	["cls.shaman.battle.w07.009"] = {
+		"Spirit of the earth, if it suits you, make the ground uncertain under this one.",
+		"Air, if you're listening, lend me a little of your quickness.",
+		"Water, stay near. I may need you before this is done.",
+	},
+	["cls.shaman.battle.w07.010"] = {
+		"Keep enough back for one good heal. Everything else goes into the fight.",
+		"The rule of a shaman's purse: one heal always in reserve, the rest spent freely.",
+	},
+	["cls.shaman.battle.w07.011"] = {
+		"If it's any comfort, the lightning stings me too. A little. Less than you.",
+		"Hold still. Lightning likes a patient target, and so do I.",
+	},
+	["cls.shaman.battle.w07.012"] = {
+		"The Warchief speaks to the same spirits I do. Let's not embarrass either of us.",
+		"Thrall walks this path too. I'd rather not shame it here.",
+	},
+	["cls.shaman.battle.w07.013"] = {
+		"My hands won't stay steady. Fine. The spirits listen to the words, not the hands.",
+		"Heart going too fast. Slow the breath, and the elements will follow the breath.",
+	},
+	["cls.shaman.battle.w07.014"] = {
+		"Good. I was hoping to plant something today.",
+		"In a moment the totems will be up and I'll be in a cheerful mood. Worst possible combination for you.",
+		"Give me one breath to set the totems. Then you'll wish you'd picked someone else.",
+	},
+	["cls.shaman.battle.w07.015"] = {
+		"opens one hand, and a thread of blue light skitters between the fingers.",
+		"flexes {g:his|her} fingers; a faint blue spark jumps from knuckle to knuckle.",
+		"shakes out {g:his|her} wrists, and a thin, cold glow crawls up to the elbows.",
+	},
+	["cls.shaman.battle.w07.016"] = {
+		"Your spirit should have gone to the ancestors long ago. I'll show it the way.",
+		"Something keeps your spirit nailed to that body. I mean to pull the nail.",
+		"The dead belong under the ground, not walking on it. Let me set that right.",
+	},
+	["cls.shaman.battle.w07.017"] = {
+		"I'll ask you once, spirit: go home. Then I stop asking.",
+		"You're far from your element, and someone bent you to this. Leave, or be sent.",
+	},
+	["cls.shaman.battle.w07.018"] = {
+		"Nothing of the elements made you. The elements have no reason to spare you.",
+		"You don't belong to this world, and the earth knows it.",
+	},
+	["cls.shaman.battle.w07.019"] = {
+		"Feel for it through the ground. The feet understand before the eyes.",
+		"Listen with the soles. The ground carries the weight of every step toward me.",
+	},
+	["cls.shaman.battle.w07.020"] = {
+		"Mind the ground. It's on my side, and it holds grudges.",
+		"Careful where you step. I've already had a word with the dirt around here.",
+	},
+	["cls.shaman.battle.w07.021"] = {
+		"goes very still, eyes half closed, as though asking leave of something underfoot before the first blow.",
+		"lowers {g:his|her} gaze for a breath, lips moving, before lifting it to the foe.",
+	},
+	["cls.shaman.battle.w07.022"] = {
+		"Of everyone you could have bothered, you picked the one who talks to lightning.",
+		"Bad choice. The thunder and I are on speaking terms.",
+	},
+	["cls.shaman.battle.w07.023"] = {
+		"Fire is pushing to go first. Not yet. Let the others take their places.",
+		"Fire wants the first word, as always. Hold it back one breath, and it bites harder.",
+	},
+	["cls.shaman.battle.w07.024"] = {
+		"Spirits, wake! We have a guest, and it isn't polite.",
+		"Up, spirits! Company, and the rude kind.",
+		"On your feet, spirits! Someone's come knocking without manners.",
+	},
+	["cls.shaman.battle.w07.025"] = {
+		"I'll fight, and later I'll ask the spirits whether I had to. They rarely answer that one.",
+		"Fight first, question after. The spirits will have an opinion either way.",
+	},
+	["cls.shaman.battle.w07.026"] = {
+		"Fire totem first. Let it have the first bite.",
+		"The fire totem goes in close. Heat never bothered it.",
+		"A little fire at my feet before we start. You'll walk right into it.",
+	},
+	["cls.shaman.battle.w07.027"] = {
+		"drives a totem into the ground with the heel of {g:his|her} hand, and the earth seems to take hold of it.",
+		"sets a totem down with one quick twist, the way one plants a tent stake.",
+	},
+	["cls.shaman.battle.w07.028"] = {
+		"Let me wrap myself in a little lightning first. Then you're welcome to try.",
+		"One moment while I put on something with sparks. There. Go ahead.",
+	},
+	["cls.shaman.battle.w07.029"] = {
+		"Slow it with the earth, then decide. Thinking is easier when the other side is wading.",
+		"Bind the ground around it and let it wade. Then the lightning and I can talk it over.",
+	},
+	["cls.shaman.battle.w07.030"] = {
+		"Feel that? Every spirit within a stone's throw just turned to look at you.",
+		"The air, the ground, every drop of water nearby: all of it is listening to me now.",
+	},
+	["cls.shaman.battle.w07.031"] = {
+		"Balance doesn't mean never striking. Sometimes the scale needs a push.",
+		"The elders speak of balance in calm voices. In the middle of a fight it never sounds calm.",
+	},
+	["cls.shaman.battle.w07.032"] = {
+		"Let's be quick about it. Every bolt comes out of my own reserves.",
+		"Make this brief, would you? Lightning costs me more than it costs you. Well. Almost.",
+	},
+	["cls.shaman.battle.w07.033"] = {
+		"breathes in, and for a moment the air nearby smells of rain on hot stone.",
+		"draws a breath, and the air close around takes on the sharp smell that comes before lightning.",
+	},
+	["cls.shaman.battle.w07.034"] = {
+		"Your spirit will run free after this. I'm sorry it has to be me.",
+		"I'll speak for you to the spirits afterward. Now, come.",
+		"No quarrel with you, creature. Only with where you're standing.",
+	},
+	["cls.shaman.battle.w07.035"] = {
+		"My old teachers would fault my footing. They aren't here, and this thing is.",
+		"Every elder I ever learned from would frown at this stance. Luckily, none of them are watching.",
+	},
+	["cls.shaman.battle.w07.036"] = {
+		"Fight close to the totems! They're for all of us.",
+		"Everyone near the totems! I'm not planting them for my own sake.",
+	},
+	["cls.shaman.battle.w07.037"] = {
+		"moves forward with {g:his|her} weight low, one hand already curling around a spell.",
+		"advances without hurry, a word for the elements already on {g:his|her} lips.",
+	},
+	["cls.shaman.battle.w07.038"] = {
+		"The spirits keep telling me to be patient with fools. I've been very patient.",
+		"The elders say a shaman should be slow to anger. I'm being as slow as I can manage.",
+	},
+	["cls.shaman.battle.w07.039"] = {
+		"Wolf's shape if it turns bad. Not before.",
+		"There's always the wolf if this sours. Keep it in mind, keep it in reserve.",
+	},
+	["cls.shaman.battle.w07.040"] = {
+		"Air totem in the ground. Let's see you keep up now.",
+		"The air spirit's planted beside me. Keep pace, if you can.",
+	},
+	["cls.shaman.battle.w07.041"] = {
+		"Mail on my back, the elements at my side. Come on, then.",
+		"Mail and storm, I'm wearing both today. Pick where to start.",
+	},
+	["cls.shaman.battle.w07.042"] = {
+		"glances down, as though the ground had said something worth hearing, and nods once.",
+		"tips {g:his|her} head toward the earth, listens, and nods like someone agreeing to terms.",
+	},
+	["cls.shaman.battle.w07.043"] = {
+		"The ancestors were living, breathing folk once, shamans and warriors and nobodies alike. I'm in no hurry to join their ranks.",
+		"Every spirit I call on was someone once, the old shamans say. I'd like to stay on this side of the asking a while yet.",
+	},
+	["cls.shaman.battle.w07.044"] = {
+		"Earth beneath, fire within reach, water close behind. I ask, and I'll owe you after.",
+		"Spirits, I'm asking, not ordering. Lend what you will, and I'll pay it back in thanks.",
+	},
+	["cls.shaman.battle.w07.045"] = {
+		"You've picked a fight with someone who has the sky on retainer.",
+		"I should mention the sky and I have an arrangement. You're about to see the terms.",
+	},
+	["cls.shaman.battle.w07.046"] = {
+		"One breath for the earth, one for the fire. Then no more breaths to spare.",
+		"In through the nose, out slow. The spirits come faster to a calm voice.",
+	},
+	["cls.shaman.battle.w07.047"] = {
+		"raises a hand, and a short gust that comes from nowhere tugs at the dust between {g:him|her} and the foe.",
+		"lifts {g:his|her} chin, and a small whirl of grit spins up at {g:his|her} feet, then scatters.",
+	},
+	["cls.shaman.battle.w07.048"] = {
+		"Big, are you? So is the sky, and it's on my side.",
+		"You outweigh me. The earth outweighs you. Let's see who it backs.",
+	},
+	["cls.shaman.battle.w07.049"] = {
+		"Really? I'll barely have to ask the spirits for this one.",
+		"The spirits won't even get out of bed for you. I'll manage.",
+	},
+	["cls.shaman.battle.w07.050"] = {
+		"Spirits of this place, I didn't start this. I'd still like your help finishing it.",
+		"Whatever spirits live here: sorry for the noise. It won't last long.",
+		"Spirits of this ground, forgive the trouble. I'll be as quick as I can.",
+	},
+	["cls.shaman.battle.w07.051"] = {
+		"Lightning or the weapon? Both. The spirits like a shaman who doesn't dither.",
+		"Strike close or strike far: the spirits don't mind which, so long as I ask properly.",
+	},
+	["cls.shaman.battle.w07.052"] = {
+		"stamps once on the ground, hard, like someone knocking on a door far below.",
+		"brings {g:his|her} heel down with a thud and waits, a heartbeat only, for something underneath to answer.",
+	},
+	["cls.shaman.battle.w07.053"] = {
+		"I'd hoped for a quiet road. The spirits had other plans, and so, it seems, do you.",
+		"So much for a peaceful walk. Fine. Spirits, we're working.",
+	},
+	["cls.shaman.battle.w07.054"] = {
+		"There it is, that hum under the skin. The elements are awake, and so am I.",
+		"The prickle in the fingertips again. Good. The spirits have turned up for work.",
+	},
+	["cls.shaman.buff.w07.001"] = {
+		"A mouthful of the water spirits' patience. Down I go; they'll let me breathe as long as I don't overstay.",
+		"Lungs that think they're gills for a while. The spirits have a sense of humor.",
+	},
+	["cls.shaman.buff.w07.002"] = {
+		"Go on, dive. The water spirits have promised not to drown you, for a while at least.",
+		"You can breathe below the surface now. Don't push your luck past the spirits' patience.",
+	},
+	["cls.shaman.farewell.w07.001"] = {
+		"Go well. Watch where the ground is soft and where the fire is hungry.",
+		"Farewell. May the spirits be in a good mood wherever you're headed.",
+		"Safe roads. And if you hear thunder with no cloud above you, that'll be me, busy.",
+	},
+	["cls.shaman.greet.w07.001"] = {
+		"Well met. The spirits seem easy around you. That's a good sign.",
+		"Greetings. Forgive me if I glance at the ground; I like to know who else is listening.",
+	},
+	["cls.shaman.greet.w07.002"] = {
+		"Hello, traveler. Steady ground to you, and a fair wind, as we say.",
+		"Greetings. May your road be firm and your water clean.",
+	},
+	["cls.shaman.heal.w07.001"] = {
+		"Water for my own cut this time. It feels colder when the wound is mine.",
+		"Strange, asking the water for myself. It comes just the same, only it seems to sigh about it.",
+		"When I heal myself the spring runs a little stiffer, as if it disapproves of the patient.",
+	},
+	["cls.shaman.heal.w07.002"] = {
+		"Healed by my own hand again. The spirits must be tired of my face by now.",
+		"Another patch on the same old skin. If the water kept accounts, I'd be deep in debt.",
+		"I mend others all day and then walk into the one blow I should have seen. The spirits are too polite to laugh. Mostly.",
+	},
+	["cls.shaman.heal.w07.003"] = {
+		"presses a wet palm to {g:his|her} own wound, and the water beads there a moment before it sinks in and the skin draws closed.",
+		"runs two fingers along the cut as if smoothing the bank of a stream, and the flesh knits closed behind them.",
+	},
+	["cls.shaman.heal.w07.004"] = {
+		"Closed. The skin forgets fast; the rest of me takes longer.",
+		"The cut is gone. Where it went in, I can still feel it, like a word I can't quite recall.",
+		"The hurt leaves, and leaves a little stiffness behind as a receipt.",
+	},
+	["cls.shaman.heal.w07.005"] = {
+		"Water, this one's for me. I'll owe you.",
+		"Spirits of the water, one more for the one who keeps asking.",
+		"My turn for once, water. Be quick about it.",
+	},
+	["cls.shaman.heal.w07.006"] = {
+		"Most of a body is water anyway, the old shamans say. Healing is only reminding it what shape to hold.",
+		"The old shamans taught that flesh is water that has learned to stand. I ask it, gently, to remember the shape.",
+	},
+	["cls.shaman.heal.w07.007"] = {
+		"drops to one knee and rests a hand flat on the ground; a coolness climbs from below into the wound, and the bleeding slows.",
+		"steadies {g:himself|herself} with a palm on the ground while the healing rises through {g:him|her} like water through roots.",
+	},
+	["cls.shaman.heal.w07.008"] = {
+		"A healer flat on the ground mends nobody. So: me first, and no guilt about it.",
+		"First rule of mending, as far as I'm concerned: keep the mender standing.",
+	},
+	["cls.shaman.heal.w07.009"] = {
+		"In with the breath, out with the hurt. The water does the rest, as long as I don't rush it.",
+		"Breathe slow. The water moves at the pace of whoever calls it, and a panicked shaman gets a panicked spring.",
+		"Slow breath, slow water. The two have always kept step.",
+	},
+	["cls.shaman.heal.w07.010"] = {
+		"The fire spirit thinks wounds are a fine thing. The water spirit disagrees. Today, for once, I side with the water.",
+		"Fire would have sealed it shut, and enjoyed doing it. I asked the water. Gentler, and nobody smells burnt.",
+		"Ask fire to close a wound and it will, with a flourish and a scar. Water is the better guest at a sickbed.",
+	},
+	["cls.shaman.heal.w07.011"] = {
+		"Nothing serious. Just asking the spirits to put me back the way they found me.",
+		"One moment. The water's sewing me up, and it hates being rushed.",
+	},
+	["cls.shaman.heal.w07.012"] = {
+		"All water finds the sea sooner or later. The water in me has been told to take the long way round.",
+		"Rivers end, bodies end. Until then, the water keeps closing what the road cuts open.",
+		"Every stream runs downhill in the end. Mine, today, has been asked to linger in the high pools.",
+	},
+	["cls.shaman.heal.w07.013"] = {
+		"lets out a breath through the teeth as the pain drains away, and shakes out {g:his|her} hands.",
+		"straightens slowly, one hand pressed where the hurt was, waiting to be sure it has really gone.",
+		"blows out {g:his|her} cheeks as the sting fades, then flexes {g:his|her} fingers one by one.",
+	},
+	["cls.shaman.heal.w07.014"] = {
+		"Even for my own cuts I ask properly. The spirits notice when a shaman starts taking them for granted, and they're slow to forget it.",
+		"No shortcuts with the spirits, not even when the wound is mine. Ask, wait, thank. Then bleed less.",
+	},
+	["cls.shaman.heal.w07.015"] = {
+		"Close, water! I'm not done here!",
+		"Mend it fast. This one still owes me a fall.",
+		"Water, seal it. I've got lightning left to spend.",
+	},
+	["cls.shaman.heal.w07.016"] = {
+		"One wave on myself, then back to it. Don't let the healing turn into hiding.",
+		"Patch, then strike. A shaman who only heals in a fight is just a slower way to lose.",
+		"Water first, while there's still enough of me to hold it. Then the lightning again.",
+	},
+	["cls.shaman.heal.w07.017"] = {
+		"steps back half a pace, mutters a quick word to the water between two breaths, and the worst of the wound closes even as the fight presses in.",
+		"keeps one eye on the foe and spares the other for {g:his|her} own hurt, calling the water in a voice too low to carry.",
+	},
+	["cls.shaman.heal.w07.018"] = {
+		"No hurry now. I can let the water work slowly, the way it likes to, instead of the way a fight demands.",
+		"Nothing pressing. The water can take its time on me; unhurried, it always does better work.",
+		"Away from any fight, I let the healing come at its own pace. Rushed water leaves marks; slow water leaves almost nothing.",
+	},
+	["cls.shaman.heal.w07.019"] = {
+		"No one here to ask but the water. Luckily the water has never once said no to me.",
+		"Alone on the road, a shaman is healer and patient both. The patient complains a great deal.",
+	},
+	["cls.shaman.heal.w07.020"] = {
+		"touches two fingers to {g:his|her} brow, then to the wound, a small sign of asking, and the hurt begins to fade.",
+		"speaks the same quiet words over {g:his|her} own wound that {g:he|she} would speak over anyone's, no fewer and no faster.",
+	},
+	["cls.shaman.heal.w07.021"] = {
+		"Others carry bandages. I carry a promise from the water, renewed every time I ask nicely.",
+		"A strip of linen would do the job, slower and uglier. The water owes me nothing, and still it comes.",
+		"No needle, no thread, no stink of salve. Just water that agrees to remember where my skin used to meet.",
+	},
+	["cls.shaman.heal.w07.022"] = {
+		"Mended enough to carry the totems another mile. That's the only measure I use.",
+		"Good. The totems weren't going to carry themselves, and they were starting to feel heavy.",
+	},
+	["cls.shaman.heal.w07.023"] = {
+		"The ancestors are watching me mend the same careless wound again, I suppose. I like to think they shake their heads and smile.",
+		"If the ancestors keep a tally of how often I heal myself, I'd rather not see it.",
+	},
+	["cls.shaman.heal.w07.024"] = {
+		"Pain is a small fire. Water answers it, and for a moment the two of them argue inside me. Water usually wins, if I let it.",
+		"A wound runs hot; healing runs cool. Somewhere between the two is where I mean to stand.",
+	},
+	["cls.shaman.heal.w07.025"] = {
+		"draws a glimmer of water out of the air and lets it run down over the hurt, cold and quick as a mountain spring.",
+		"murmurs, and a thin thread of water seems to wind out of nowhere and wrap the wound like a bandage that sinks into the skin.",
+	},
+	["cls.shaman.heal.w07.026"] = {
+		"Best way to heal a wound of your own: don't look at it until it's already gone.",
+		"I never watch my own cuts close. It's like watching porridge thicken, and somehow more embarrassing.",
+		"Watching yourself mend is like waiting for a pot to boil. I look at the horizon instead.",
+	},
+	["cls.shaman.heal.w07.027"] = {
+		"Asking for help is hard even when the one I'm asking is a spring. Pride is the last thing the water washes out.",
+		"The water closes the cut quickly. The pride takes longer. I walked into that one with my eyes open.",
+	},
+	["cls.shaman.heal.w07.028"] = {
+		"Spring of the deep earth, rise for me.",
+		"Water that runs beneath the stones, find me.",
+		"Cool water, from below. Here.",
+	},
+	["cls.shaman.heal.w07.029"] = {
+		"The heart stops racing a beat or two after the pain stops. I wait for it. No point standing up before it's ready.",
+		"Pulse coming down, breath coming back. The body always arrives last at good news.",
+		"The hurt is gone well before my hands stop shaking. I let them take their time.",
+	},
+	["cls.shaman.heal.w07.030"] = {
+		"inspects the place where the wound was with a frown, as if it might reopen out of spite.",
+		"prods the newly healed skin with a suspicious finger.",
+	},
+	["cls.shaman.heal.w07.031"] = {
+		"There's the slow water, deep and thorough, and the quick water for when there's no time. Today I needed the quick one.",
+		"Long wave or short, it's the same water. The short one just skips the courtesies.",
+	},
+	["cls.shaman.heal.w07.032"] = {
+		"The water takes the blood with it when it goes. I'm grateful not to have to look at that part.",
+		"Wound shut, and the water even rinsed the blood away. Thorough spirits.",
+	},
+	["cls.shaman.heal.w07.033"] = {
+		"Wait. Let me get some water on this before it gets ideas.",
+		"One breath. I need to talk the water into shutting this.",
+	},
+	["cls.shaman.heal.w07.034"] = {
+		"The wound's gone. The tiredness under it isn't. No spell has ever reached that far down.",
+		"Closed, and still weary. Water mends flesh; nobody ever asked it to mend a long day.",
+	},
+	["cls.shaman.heal.w07.035"] = {
+		"This body is on loan from the ancestors, the elders say, and they expect it back in decent shape. I'm doing my best.",
+		"The elders say we borrow our bodies from those who came before. I keep patching mine. One day I'll hand it back, dented.",
+	},
+	["cls.shaman.heal.w07.036"] = {
+		"closes {g:his|her} eyes while the healing takes, lips moving silently, like someone counting under {g:his|her} breath.",
+		"goes very still while the water works, as if listening for something underneath the noise.",
+	},
+	["cls.shaman.heal.w07.037"] = {
+		"The water spirits are kind to me, but I suspect they talk about me behind my back.",
+		"Healed again. I imagine the water spirits sighing the way one sighs at muddy boots left by the door.",
+		"The spirits mend me without complaint. The complaints, I'm sure, come later, among themselves.",
+	},
+	["cls.shaman.heal.w07.038"] = {
+		"Closed. Now whatever opened it gets to meet the lightning.",
+		"Healed and angrier for it. The spirits gave me back the strength; the temper is my own.",
+	},
+	["cls.shaman.heal.w07.039"] = {
+		"Healing water always leaves a taste behind, like a stone sucked clean. I've come to find it comforting.",
+		"After the wave passes there's a cold spot in my chest for a moment, as if I'd swallowed a mountain stream.",
+		"The mending always leaves a faint chill along the bone, the way a cellar holds the cold long after the day has warmed.",
+	},
+	["cls.shaman.heal.w07.040"] = {
+		"mutters to the water in the tone one uses with a neighbor who has already lent too many favors.",
+		"asks the spirits for healing with the slightly sheepish air of a regular customer.",
+	},
+	["cls.shaman.heal.w07.041"] = {
+		"The armor took most of it. The water can have the rest.",
+		"What gets through the armor is the water's job. Lately it's been working hard.",
+	},
+	["cls.shaman.heal.w07.042"] = {
+		"I give the earth my weight every day, walking on it. Now and then it gives me something back.",
+		"The ground under me hums when I heal. Not loud. Just enough to let me know I'm not the only one holding me up.",
+		"Healing myself, I feel the earth lean in, the way a friend leans a shoulder against yours without a word.",
+	},
+	["cls.shaman.heal.w07.043"] = {
+		"I'm fine. Mostly water now, and the water is in a good mood.",
+		"Don't fuss. The spirits already did.",
+		"Stop staring. I've had worse, and the water's had worse to work with.",
+	},
+	["cls.shaman.heal.w07.051"] = {
+		"The totem hums at my feet and mends me in small sips. Small sips add up.",
+		"Plant it, stay near, get on with things. The stream catches up with the hurt in its own time.",
+	},
+	["cls.shaman.heal.w07.052"] = {
+		"sets the water totem into the ground and stays within its reach, letting its slow pulse wash over the hurt.",
+		"plants a totem at {g:his|her} feet; a faint ripple spreads from it, and the worst of the bruises begin to fade.",
+	},
+	["cls.shaman.heal.w07.053"] = {
+		"Don't trip on the totem. It's the only thing keeping me upright.",
+		"That totem's for me, but I'll share if you stay close.",
+	},
+	["cls.shaman.heal.w07.054"] = {
+		"A totem is a promise planted in the ground. This one promises water, a little and often, for as long as I stay near.",
+		"Of all the totems, the water one is the most patient. It doesn't heal fast. It heals the whole time.",
+	},
+	["cls.shaman.heal.w07.061"] = {
+		"Tastes like a swamp boiled in a copper pot. The water spirits would never serve me something this foul.",
+		"An alchemist's red mess, and it works. I'll apologize to the water later for going behind its back.",
+		"Saving the water for later. The bottle can have this one.",
+	},
+	["cls.shaman.heal.w07.062"] = {
+		"Quicker than asking. Down it goes.",
+		"Out of breath for the long words. Bottle it is.",
+		"The water can rest this time. Cheers.",
+	},
+	["cls.shaman.heal.w07.063"] = {
+		"uncorks a potion with {g:his|her} teeth, drinks, and mutters something that sounds like an apology to the water.",
+		"drains a small red vial and then, out of habit, thanks the spirits for it anyway.",
+	},
+	["cls.shaman.heal.w07.064"] = {
+		"A warlock's stone, warm in the hand. The spirits keep their distance from whatever made it, and so would I, if it didn't work.",
+		"Healthstone. I try not to think about how it was made. It mends, and the spirits can frown at me later.",
+	},
+	["cls.shaman.heal.w07.065"] = {
+		"Nothing the earth made, this stone. Still, it does the job.",
+		"Strange stone. The earth wouldn't claim it, but my wounds aren't fussy.",
+	},
+	["cls.shaman.heal.w07.066"] = {
+		"Every shaman I know swears by the water and carries three potions. I'm no different.",
+		"The water is for when I have time to ask. This is for when I don't.",
+	},
+	["cls.shaman.heal.w07.201"] = {
+		"Easy now. Cold first, then better.",
+		"This'll feel like a mountain spring down your collar. Then it won't hurt.",
+		"Brace for the chill. The good part comes right after.",
+	},
+	["cls.shaman.heal.w07.202"] = {
+		"{target}, you're leaking. Allow me.",
+		"Easy, {target}. The spirits have seen worse than this.",
+		"Stay put, {target}. Half a breath and it's closed.",
+	},
+	["cls.shaman.heal.w07.203"] = {
+		"Funny how the water feels warmer when it goes to someone else.",
+		"I'd rather heal ten others than myself once. Asking for them is easy.",
+		"The water leaves my hands more willingly when the wound isn't mine. So do I.",
+	},
+	["cls.shaman.heal.w07.204"] = {
+		"turns a palm toward the wounded one and speaks a low word, and a ripple of clear water passes from {g:his|her} hand to the hurt.",
+		"flicks {g:his|her} fingers as if shaking off droplets, and the water lands where it is needed, a few steps away.",
+	},
+	["cls.shaman.heal.w07.205"] = {
+		"The water's starting to recognize you. That's not a compliment.",
+		"Closed. The spirits ask that you stop collecting these.",
+		"There. Try to get hit somewhere new next time; the water's bored of that spot.",
+	},
+	["cls.shaman.heal.w07.206"] = {
+		"Keep at it. The water's on you.",
+		"Don't stop! The water will follow you in.",
+		"Fight on, I'm right behind you with the spring.",
+	},
+	["cls.shaman.heal.w07.207"] = {
+		"Watch the one in front, not the foe. My fight is keeping them standing.",
+		"Their blood, my water. The trade is always the same, and I make it gladly.",
+		"Let the others count the enemy. I count the wounds on my side.",
+	},
+	["cls.shaman.heal.w07.208"] = {
+		"Sit down a moment. Let me look at that properly.",
+		"No rush now. Let the water work on you slowly; it does a better job.",
+		"Nothing's chasing us. Hold still and let me close it right.",
+	},
+	["cls.shaman.heal.w07.209"] = {
+		"Water of the deep places, this one is worth your trouble.",
+		"Spirits, look kindly on this one. I'll vouch for them.",
+		"Spring beneath us, rise for the one beside me.",
+	},
+	["cls.shaman.heal.w07.210"] = {
+		"I can close the wound. I can't close the moment they understood they could die. That stays.",
+		"The water mends the cut. The fright in their eyes I have to leave where it is.",
+		"Flesh I can mend in a breath. The look of someone who just saw the end coming takes far longer.",
+	},
+	["cls.shaman.heal.w07.211"] = {
+		"sends a thread of cool water curling toward {target}, quick and sure as a fish through a current.",
+		"glances at {target}, judges the wound with a healer's eye, and calls the water across the gap.",
+	},
+	["cls.shaman.heal.w07.212"] = {
+		"You're welcome. Now get back out there before I change my mind.",
+		"There. Thank the water, not me; I only asked.",
+		"Up. Mended, not excused.",
+	},
+	["cls.shaman.heal.w07.213"] = {
+		"Some serve the Horde with an axe. I serve it by sending the axe-bearers back in whole.",
+		"My share of the war is small and wet: closing what the fighting opens.",
+		"The Horde wins its battles on its feet. Somebody has to keep putting it back on them.",
+	},
+	["cls.shaman.heal.w07.214"] = {
+		"Hold still, unless you'd like an extra ear. The water isn't fussy about shapes.",
+		"Don't wriggle. The water's good, but it's no tailor.",
+	},
+	["cls.shaman.heal.w07.215"] = {
+		"Healing someone else, I feel the water leave me and go to them, like a river finding a lower field. Downhill is the only way it knows.",
+		"The water always runs toward whoever needs it most. I only open the sluice.",
+		"Water seeks the low place. A wound is a low place. I just stand at the top and let go.",
+	},
+	["cls.shaman.heal.w07.216"] = {
+		"Tell me where it hurts. Actually, don't bother: it's written all over you.",
+		"Show me. No, never mind, I can see it from here.",
+	},
+	["cls.shaman.heal.w07.217"] = {
+		"In a group the water has to be shared out like rations. Whoever bleeds the most eats first.",
+		"Keeping a whole party upright is like tending several small fires that all want feeding at once. This one, then the next.",
+	},
+	["cls.shaman.heal.w07.218"] = {
+		"One wave, and it leaps from one wound to the next like a stone skipping across a pond.",
+		"The chained water jumps from one of them to another. It always seems to know who is worst off.",
+	},
+	["cls.shaman.heal.w07.219"] = {
+		"It's all right. The spirits have you; you can let go of that breath.",
+		"Let your shoulders down. The water can't get in past all that tension.",
+		"Unclench. The hurt leaves faster through an open hand.",
+	},
+	["cls.shaman.heal.w07.220"] = {
+		"watches the wound close from a few paces off, with the critical squint of a potter judging a fired bowl.",
+		"nods once, satisfied, as the other's wound seals over.",
+	},
+	["cls.shaman.heal.w07.221"] = {
+		"On your feet. The Horde needs you more than the ground does.",
+		"Up. The ground can wait for you; the Horde can't.",
+	},
+	["cls.shaman.heal.w07.222"] = {
+		"They never thank the water. They thank me. I pass it along when no one's listening.",
+		"People thank the shaman. The shaman thanks the water. The water, as far as I know, thanks nobody.",
+		"Gratitude goes to the hands it can see. I make sure the spring gets its share in private.",
+	},
+	["cls.shaman.heal.w07.223"] = {
+		"Don't thank me yet. Thank me when we're both walking out of here.",
+		"Save the thanks. The day isn't over.",
+	},
+	["cls.shaman.heal.w07.224"] = {
+		"The spirits lend me their water for others more readily than for myself. I've never asked them why. I think I know.",
+		"When I ask for someone else, the spirits answer before I've finished the words.",
+		"Ask for yourself and the spirits weigh you. Ask for another and they simply come.",
+	},
+	["cls.shaman.heal.w07.225"] = {
+		"Next time, step out of the way. The water's free, but my patience isn't.",
+		"Mended. And we won't speak of this one again.",
+	},
+	["cls.shaman.heal.w07.226"] = {
+		"spares a glance from the fight and a quick murmur, and the water leaps to the one who needs it.",
+		"keeps the lightning in one hand and the healing in the other, and right now the healing goes out first.",
+	},
+	["cls.shaman.heal.w07.227"] = {
+		"Stay near me. The water reaches farther than you'd think, but not forever.",
+		"Don't wander off while I'm mending you. The water doesn't chase.",
+	},
+	["cls.shaman.heal.w07.228"] = {
+		"If they fall, it will be on me. So they don't fall.",
+		"Everyone I mend is a promise I made without saying it out loud.",
+		"I don't keep many vows. Keeping the people near me breathing is the one I keep without being asked.",
+	},
+	["cls.shaman.heal.w07.229"] = {
+		"Not yet. The ancestors have a full table today.",
+		"Your place among the ancestors will keep. Stay here a while.",
+	},
+	["cls.shaman.heal.w07.230"] = {
+		"The cut I can mend. Whatever drives someone to throw themselves at danger like that, I can't.",
+		"Healing is the easy half. The hard half is watching the one I just mended run straight back into it.",
+		"I close the wound, and the wound's owner goes looking for the next one. That is the whole shape of my days.",
+	},
+	["cls.shaman.heal.w07.231"] = {
+		"One more mended. The water never tires of this; I envy it.",
+		"Done. If the spirits charged by the wound, I'd be broke.",
+		"There. A neat darn, if I say so myself.",
+	},
+	["cls.shaman.jest.w07.001"] = {
+		"How many shamans does it take to light a campfire? One, and four spirits who all want the credit.",
+		"People ask why shamans are so calm. Try arguing with four elements every day; you stop wasting energy on people.",
+	},
+	["cls.shaman.levelup.w07.001"] = {
+		"The spirits answer a breath sooner than they did. Either they trust me more, or I finally know where to stand.",
+		"Something has settled between me and the elements. A little more ease, a little less asking twice.",
+	},
+	["cls.shaman.levelup.w07.002"] = {
+		"flexes {g:his|her} fingers, and a faint crackle runs between them, gone before anyone could be sure of it.",
+		"plants both feet and breathes in slowly; for an instant the ground seems to lean in to meet {g:him|her}.",
+	},
+	["cls.shaman.levelup.w07.003"] = {
+		"A little more thunder in the hands. Try not to stand too close while I get used to it.",
+		"The spirits have decided I'm worth a bit more effort. I won't argue with them.",
+	},
+	["cls.shaman.lowhp.w07.001"] = {
+		"Spirits, I'm not finished! One more push!",
+		"Not yet! Earth, fire, anyone: one more push!",
+		"Spirits, lean in with me! This isn't over!",
+	},
+	["cls.shaman.lowhp.w07.002"] = {
+		"Drop the attack. A healing wave, now, or the rest is pointless.",
+		"Forget the bolt. Water first, or there won't be anyone left to throw it.",
+		"Lightning later. Water now. Sequence counts when you're bleeding.",
+	},
+	["cls.shaman.lowhp.w07.003"] = {
+		"reels back, and for a heartbeat the faint glow around {g:his|her} hands gutters like a candle in a draft.",
+		"stumbles; the crackle around {g:him|her} sputters and nearly dies.",
+	},
+	["cls.shaman.lowhp.w07.004"] = {
+		"If it ends here, I hope I remembered to pack an ankh.",
+		"Reincarnation is a fine trick. I'd rather not need it today.",
+	},
+	["cls.shaman.lowhp.w07.005"] = {
+		"That hurt. Now I'm cross, and the spirits are worse.",
+		"Ow. You've managed to annoy me and the elements in one go. Impressive.",
+		"Lovely. Now the fire's in a temper, and frankly, so am I.",
+	},
+	["cls.shaman.lowhp.w07.006"] = {
+		"Spirits, keep me upright a little longer. I'll owe you.",
+		"Water, earth, whoever is listening: I could use the help now, not later.",
+		"Hear me, spirits. Not a grand request. Just the next few breaths.",
+	},
+	["cls.shaman.lowhp.w07.007"] = {
+		"drags the back of a hand across {g:his|her} mouth, glances at the red left on it, and turns to the foe again.",
+		"sways, catches {g:his|her} balance, and lets out a short, hard laugh with no humor in it.",
+		"doubles over for a breath, then straightens with a growl that seems to come up through {g:his|her} boots.",
+	},
+	["cls.shaman.lowhp.w07.008"] = {
+		"The elements sound muffled, as if heard through deep water. That's not a good sign.",
+		"The spirits are getting quieter. Or my ears are. Either way, move.",
+	},
+	["cls.shaman.lowhp.w07.009"] = {
+		"The elders taught me a great many things. 'Avoid this' must have been one of them.",
+		"One of my old teachers, wherever they are, is sighing very loudly.",
+	},
+	["cls.shaman.lowhp.w07.010"] = {
+		"One more hit and I take the wolf's shape and run. Pride mends faster than bone.",
+		"Wolf's shape, ready. If this turns, four legs beat two.",
+		"No shame in the wolf. A live shaman on four legs beats a dead one on two.",
+	},
+	["cls.shaman.lowhp.w07.011"] = {
+		"Water totem, now. Let it keep up where my hands can't.",
+		"Plant the healing stream and stand in it. No pride about it.",
+	},
+	["cls.shaman.lowhp.w07.012"] = {
+		"The Horde doesn't break this easily, and neither do I.",
+		"I've the Horde's stubbornness and the earth's patience. You'll tire first.",
+		"Bleeding, yes. Broken, no. Ask any orc how much that matters.",
+	},
+	["cls.shaman.lowhp.w07.013"] = {
+		"My own blood on the hands. That's the wrong way round. Fix it.",
+		"Bleeding too fast to think. Don't think, then. Mend.",
+		"This is more of my blood than I like to see outside me.",
+	},
+	["cls.shaman.lowhp.w07.014"] = {
+		"whispers something sharp to the ground beneath, almost a reproach, and sets {g:his|her} feet again.",
+		"mutters a curt word to the elements, in the tone of someone calling in an old debt.",
+		"snarls a single word at the earth, and the earth, it seems, hears it.",
+	},
+	["cls.shaman.lowhp.w07.015"] = {
+		"Get it off me! The water won't come fast enough on its own!",
+		"My totems can't hold this alone! Someone pull it away from me!",
+	},
+	["cls.shaman.lowhp.w07.016"] = {
+		"Lightning wrapped close first, then the mending. Don't scramble the order.",
+		"Get the lightning shield up, then heal. Panic skips steps; I won't.",
+	},
+	["cls.shaman.lowhp.w07.017"] = {
+		"Roots go deep for a reason. Dig in, and don't let go of the ground.",
+		"Hold on to the ground like an old root holds a hillside. Let the rest of me shake.",
+	},
+	["cls.shaman.muse.w07.001"] = {
+		"The earth is the slowest of the four to anger and the slowest to forgive. I try to stay on its good side; I sleep on it, after all.",
+		"Fire forgets a slight as soon as it has burned something. Earth remembers it for a hundred years. I am careful where I dig.",
+		"Earth is slow to wake and slower to calm. When I ask it for anything, I ask for exactly that and not a pebble more.",
+	},
+	["cls.shaman.muse.w07.002"] = {
+		"Water heals because it remembers the shape a thing had before it broke. All I do is remind it.",
+		"A wound is a river that has forgotten its banks. The water spirits know where the banks were.",
+		"I don't make the water heal. I show it the place where it's needed and step aside.",
+	},
+	["cls.shaman.muse.w07.003"] = {
+		"Everyone wants a shaman to tell them what the sky will do tomorrow. I'm a shaman, not a fortune-teller with a wet finger.",
+		"People ask me what the sky has planned. I tell them the sky doesn't plan; it changes its mind, loudly.",
+	},
+	["cls.shaman.muse.w07.004"] = {
+		"picks up a small stone from the path, weighs it in {g:his|her} palm, and sets it back exactly where it lay.",
+		"stoops for a pebble, turns it over twice as if reading something on its underside, then returns it to its place.",
+	},
+	["cls.shaman.muse.w07.005"] = {
+		"A demand wants an answer now. A request can wait. The spirits can always tell which one I brought.",
+		"I have tried, once or twice, to hurry the elements. They heard the hurry and nothing else.",
+		"Asking well means being ready to hear no. The spirits can smell it on me when I'm not.",
+	},
+	["cls.shaman.muse.w07.006"] = {
+		"Our Warchief is a shaman. I think of that when the Horde asks hard things of me: he asks hard things of the spirits, and waits for the answer like the rest of us.",
+		"Thrall listens to the elements before he speaks for the Horde. Not every leader would bother. It is one reason I follow him gladly.",
+		"A shaman leads the Horde. Whenever I'm tempted to give the spirits orders, I remember that even he asks.",
+	},
+	["cls.shaman.muse.w07.007"] = {
+		"The orc elders tell how their shamans once traded the spirits for a darker power, and woke to find the elements had stopped listening. I keep that story close.",
+		"There was a time, the orcs say, when the elements turned their backs on a whole people. They came back slowly, and only because they were asked humbly. I never forget it.",
+	},
+	["cls.shaman.muse.w07.008"] = {
+		"Four totems in the pack now: earth, fire, water, air. Each one was a trial to earn, and each one weighs about what the trial did.",
+		"I carry all four elements on my back these days, carved and bound. My shoulders know it better than my pride does.",
+	},
+	["cls.shaman.muse.w07.009"] = {
+		"The fire totem is the only one I plant with a little fear. Earth stays put. Fire wants to know how far it is allowed to go.",
+		"Planting fire is not like planting earth. Earth settles in. Fire looks around for what it might reach.",
+	},
+	["cls.shaman.muse.w07.010"] = {
+		"The water totem asks for nothing but a patch of ground and a little patience. Of the four, it's the one I'd keep if I could keep only one.",
+		"Healing that goes on flowing after my hands are busy elsewhere: that is what the water totem gives. I still thank it as if it were a person.",
+	},
+	["cls.shaman.muse.w07.011"] = {
+		"Air was the last to trust me. It took a long climb and a longer wait before the wind agreed to stand in a totem for me.",
+		"The air totem hardly seems to be there at all, even planted. That's the wind for you: present, useful, and never quite caught.",
+	},
+	["cls.shaman.muse.w07.012"] = {
+		"If you trip over the totem, apologize to it. I'm serious. It holds grudges.",
+		"Mind the totem. Step around it, not over it. The spirits notice manners.",
+	},
+	["cls.shaman.muse.w07.013"] = {
+		"The wolf I become is not mine. It is a spirit that lets me wear its running for a while. I try to leave it as I found it.",
+		"Every time I let go of the wolf's shape, I give a small nod to whatever lent it. The road went faster on four legs that were never mine.",
+	},
+	["cls.shaman.muse.w07.014"] = {
+		"turns {g:his|her} face slightly, as if to let one ear catch something the air is saying.",
+		"stops walking all at once, head cocked, all ears for something that escapes everyone else.",
+	},
+	["cls.shaman.muse.w07.015"] = {
+		"An ankh in the pack, just in case. It's a strange comfort, knowing the ancestors might send me back once more if I ask nicely at the worst possible moment.",
+		"I buy ankhs the way others buy rope: never hoping to need one, never willing to go without.",
+	},
+	["cls.shaman.muse.w07.016"] = {
+		"When the spirits lend me their eyes, I can see past the next hill. The trouble comes after: back in my own skull, everything feels close and small.",
+		"I can send my sight ahead along the road and look at what waits there. Coming back to my own eyes is like stepping into cold boots.",
+	},
+	["cls.shaman.muse.w07.017"] = {
+		"Walking on water still makes me laugh a little, every time. The water spirits must think I look ridiculous, and they hold me up anyway.",
+		"A lake that carries my weight like a road: I will never get used to it. I hope I never do.",
+	},
+	["cls.shaman.muse.w07.018"] = {
+		"Every bolt I call down was somewhere up there first, waiting. I only show it the way. It is humbling, how little of it is me.",
+		"People see the lightning leave my hands and think it's mine. It isn't. I'm the gap it chooses to jump across.",
+		"I don't make lightning. I make a path, and the sky decides whether it likes the look of it.",
+	},
+	["cls.shaman.muse.w07.019"] = {
+		"My clothes smell of scorched air most days. Nobody sits next to me at the inn, and I've stopped wondering why.",
+		"The hair on my arms stands up for an hour after a fight with lightning. It is hard to look dignified while slightly fizzing.",
+		"Lightning leaves a smell on everything I own: burnt air and wet stone. I've grown fond of it. No one else has.",
+	},
+	["cls.shaman.muse.w07.020"] = {
+		"Too much of any one spirit is a sickness. A shaman's work is to notice it early.",
+		"Where one element grows too strong, the land falls ill. That is what we are for: to see it, and to ask the others to push back.",
+		"Sickness in the land is nearly always one spirit taking more than its share. We are taught to look for that first.",
+	},
+	["cls.shaman.muse.w07.021"] = {
+		"Travelers say the land up north is sick with plague, down to the roots. I dread the day I kneel there and listen.",
+		"They talk of lands where the dead walk and the soil itself has gone rotten. A shaman hears that and feels it in the stomach. The earth can suffer like anyone.",
+	},
+	["cls.shaman.muse.w07.022"] = {
+		"When I fight an elemental, I am fighting a piece of the world that has been bent wrong. I don't hate it. I would like to put it back.",
+		"Rogue elementals are not monsters. They are spirits nobody asks anything of anymore. Some days I think that's what makes them rage.",
+		"An angry elemental is a spirit somebody tore loose and abandoned. I end the fight because I must, and I'm never proud of it.",
+	},
+	["cls.shaman.muse.w07.023"] = {
+		"When I need courage I imagine the ancestors standing behind me in rows, too many to count. Most of them look patient. One or two look impatient with me.",
+		"Behind every shaman stands a long line of the dead who did this before. I can't see them. I try to walk as if they could see me.",
+	},
+	["cls.shaman.muse.w07.024"] = {
+		"Leave the stream as clean as you found it. The water remembers who passed.",
+		"Don't throw stones in the river for fun. Someone lives in there, in a manner of speaking.",
+		"Ask before you drink from a spring. Out loud is fine. Nobody's laughing but you.",
+	},
+	["cls.shaman.muse.w07.025"] = {
+		"When my strength runs dry I drink water and sit still. There is something right in that: the spirits refill me the plain way first.",
+		"No spell for getting my reserves back. Water, a seat, and silence. The oldest remedy works for shamans too.",
+		"Empty again. A shaman runs on what the spirits lend and on plain water, and today I'll need a lot of water.",
+	},
+	["cls.shaman.muse.w07.026"] = {
+		"uncorks a waterskin and, before drinking, lets a few drops fall to the ground, as if paying a small toll.",
+		"tips a splash of water onto the earth before taking a long drink, a habit done without a glance.",
+	},
+	["cls.shaman.muse.w07.027"] = {
+		"People expect a shaman to kneel and chant. Some of us chant with a shield on one arm and a mace in the other hand.",
+		"Staff, axe or mace, it hardly matters. The spirits ride along the weapon either way. The arm still has to do its share.",
+	},
+	["cls.shaman.muse.w07.028"] = {
+		"When I wake the earth in my weapon, it grows heavy in a good way, like a handshake from someone strong.",
+		"With the earth awake inside my weapon, every swing lands as if the ground itself had thrown it.",
+	},
+	["cls.shaman.muse.w07.029"] = {
+		"Fire on the weapon one day, frost the next, wind when I need speed. The weapon must think it has four masters. In a way it does.",
+		"I change what sleeps in my weapon the way others change their boots. Fire, frost, wind: each one asks to be used a different way.",
+	},
+	["cls.shaman.muse.w07.030"] = {
+		"With lightning circling me like a ring of angry bees, I feel safer and look a good deal stranger.",
+		"The little spheres of lightning around my shoulders hum when I walk. When they fade, I've started to miss the sound.",
+	},
+	["cls.shaman.muse.w07.031"] = {
+		"To purge an enemy's magic is to ask the elements to sweep it clean. They're thorough about it. Some days I wish they'd sweep my head too.",
+		"There's a satisfying honesty in tearing a borrowed shield off a foe. The elements dislike things that pretend to be what they aren't.",
+	},
+	["cls.shaman.muse.w07.032"] = {
+		"The spirits can carry me home on the wind if I ask. Some days I ask. Some days I want to feel every mile of the way.",
+		"Home is one request away, when I have the strength to make it. It's good to have a door like that, even one I leave shut.",
+	},
+	["cls.shaman.muse.w07.033"] = {
+		"Of all my totems, the one that binds feet to the earth is the politest. It doesn't hurt anyone. It just asks the ground to hold their ankles a while.",
+		"I love that binding totem for its manners. No fire, no thunder. Only the ground reaching up and saying: not so fast.",
+	},
+	["cls.shaman.muse.w07.034"] = {
+		"The little fire totem spits at anything that comes close, like a kettle with a temper. I plant it and let it do its grumbling.",
+		"A fire totem is the closest thing I have to a guard dog: small, hot-headed, loyal until it burns out.",
+	},
+	["cls.shaman.muse.w07.035"] = {
+		"There is a totem that takes the spell meant for me and swallows it whole. I always feel I ought to thank it properly afterward, and there's never time.",
+		"My air totem stands there and eats a curse aimed at my head, without a word of complaint. I've known people with less courage.",
+	},
+	["cls.shaman.muse.w07.036"] = {
+		"The stone totem draws the blows onto itself and cracks so that I don't have to. In my mind I pick up the pieces, every time.",
+		"I plant stone and let the beast chew on that instead of me. It isn't brave. It isn't cowardly either. It is simply the craft.",
+	},
+	["cls.shaman.muse.w07.037"] = {
+		"If you hear me muttering, I'm not talking to you. Or to myself, for that matter.",
+		"Don't mind me. I'm just keeping up a conversation you can't hear.",
+		"When I go quiet and stare at a rock, I'm working. Truly.",
+	},
+	["cls.shaman.muse.w07.038"] = {
+		"The elements care nothing for the Horde or the Alliance. Fire burns both alike. I serve the Horde, and I try not to pretend the spirits do.",
+		"I fight for the Horde, but the earth under an Alliance soldier is the same earth. It took me a long time to sit easy with that.",
+		"Fire swears no oath to any banner. I've sworn mine to the Horde, and I try not to mistake the one for the other.",
+	},
+	["cls.shaman.muse.w07.039"] = {
+		"Orgrimmar rose out of rock and dust in a handful of years. Whoever thinks the earth can't be generous has never walked its streets.",
+		"A city of the Horde built of red stone, with a shaman at its head. The elements must have watched that with some interest.",
+	},
+	["cls.shaman.muse.w07.040"] = {
+		"sits with legs crossed and both palms open on {g:his|her} knees, breathing slowly, as if waiting for someone to fill them.",
+		"settles down, closes {g:his|her} eyes and stays very still, the way one waits outside a door after knocking.",
+	},
+	["cls.shaman.muse.w07.041"] = {
+		"One sharp word from the earth and a caster's spell dies in the throat. It's a rude thing to do. I do it often.",
+		"I ask the ground to jolt once, hard, and someone's chant stops halfway. The spirits seem to enjoy interrupting.",
+	},
+	["cls.shaman.muse.w07.042"] = {
+		"Water heals and water freezes. It is the same spirit in two moods, and I've learned to ask for the right one.",
+		"The gentlest element has a cold edge. I used to forget that. Now I keep it close for anything that runs.",
+	},
+	["cls.shaman.muse.w07.043"] = {
+		"Lightning that jumps from one foe to the next, choosing as it goes. I set it loose and then it makes its own decisions. That should worry me more than it does.",
+		"Chain lightning never goes quite where I expect. It hops, it chooses, it finds the third one I hadn't seen. The air is cleverer than I am.",
+	},
+	["cls.shaman.muse.w07.044"] = {
+		"Mail at last. It's heavy and it rings, and the spirits don't seem to mind the noise. My knees mind it a little.",
+		"The trainers said I'd earn the right to wear mail. Now I wear rings of iron and still ask the earth to make me harder to break.",
+	},
+	["cls.shaman.muse.w07.045"] = {
+		"Orcs, trolls and tauren each came to the spirits by their own road. In the Horde we compare notes. The elements seem to approve.",
+		"Three peoples of the Horde speak with the elements, each in its own accent. When we meet there's always someone who does it differently, and it's always worth watching.",
+	},
+	["cls.shaman.muse.w07.046"] = {
+		"People bring me their troubles as if I could ask the sky to fix them. Mostly I listen. That seems to help them more than the sky would.",
+		"Folk imagine the elements on a leash at my side. What I really keep at my side is patience, and they borrow that as well.",
+	},
+	["cls.shaman.muse.w07.047"] = {
+		"The elements keep their own calendar. Fire is never quite asleep and water is never quite awake. I just try to learn their hours.",
+		"Each spirit has its own pace. Fire runs, earth crawls, water wanders, air never stops. I spend my days trying to walk beside all four.",
+		"Earth thinks in centuries, fire in heartbeats. Somewhere between the two, I'm trying to think at all.",
+	},
+	["cls.shaman.muse.w07.048"] = {
+		"On a long empty road the elements are the only company that never tires of me. I talk to them more than I'd admit.",
+		"When I walk alone, I'm never quite alone. The stones underfoot, the air, the stream I cross: I greet them all, and it keeps me sane.",
+	},
+	["cls.shaman.muse.w07.049"] = {
+		"The mountains were here before the first shaman and will be here after the last. It does me good to remember how small my part is.",
+		"Whatever I ask of the earth, it was already old when my people learned to ask. I try to speak to it like the newcomer I am.",
+		"The stone I'm sitting on has outlived kings and will outlive me. Around it, I keep my voice low.",
+	},
+	["cls.shaman.muse.w07.050"] = {
+		"No, the totems don't have names. All right, they do. No, I'm not telling you.",
+		"I don't name my totems. I just know which one sulks.",
+	},
+	["cls.shaman.muse.w07.051"] = {
+		"Sometimes the ancestors pass through my sleep without a word, only looking. I wake feeling inspected, and resolved to do better.",
+		"The old ones visit my dreams now and then. They never explain anything. They just stand there until I understand I've been careless.",
+	},
+	["cls.shaman.muse.w07.052"] = {
+		"draws a slow circle in the dust with one finger, divides it into four, and studies it as though it were a map.",
+		"scratches four short marks into the ground around {g:him|her}, one for each direction, and seems to relax once they are done.",
+	},
+	["cls.shaman.muse.w07.053"] = {
+		"A totem never keeps its gift for me alone. Whoever walks with me gets the same share. I like that about them.",
+		"The earth totem shares itself out among my companions, equal portions, no favorites. A fine lesson for most people I know.",
+	},
+	["cls.shaman.muse.w07.054"] = {
+		"High places make the air talkative. I climb for the view and stay because something up there keeps asking me questions.",
+		"Up on a ridge the air spirits crowd close, curious about whoever made the climb. I always feel a little interviewed.",
+	},
+	["cls.shaman.muse.w07.055"] = {
+		"A campfire is the friendliest face fire ever shows. I sit by one and remember that the same spirit has burned a forest down somewhere today.",
+		"Every cooking fire is a small spirit agreeing to be useful. I feed it, it feeds me. A fair arrangement, while it lasts.",
+	},
+	["cls.shaman.muse.w07.056"] = {
+		"The trainers make it sound simple: ask, listen, give thanks. They leave out the part where the spirit says no in front of everyone.",
+		"Every new lesson at the trainer's sounds easy and then takes a month of embarrassment to get right.",
+	},
+	["cls.shaman.muse.w07.057"] = {
+		"Breath is air, blood is water, bone is earth, and the heat in the chest is fire. A shaman is only a small walking balance of the four.",
+		"I carry the elements inside me: air in the lungs, water in the veins, earth in the bones, fire in the belly. Keeping those in balance is the first lesson, and the hardest.",
+	},
+	["cls.shaman.muse.w07.058"] = {
+		"The veterans of the Third War tell how the Horde stood beside old enemies to hold back the demons. I think of that whenever someone says an enemy is forever.",
+		"Even the Horde fought shoulder to shoulder with the Alliance once, the old soldiers say, when the demons came. Balance sometimes keeps strange company.",
+	},
+	["cls.shaman.muse.w07.059"] = {
+		"Still water listens better than running water. When I have something hard to ask, I look for a lake.",
+		"A fast river hears nothing over its own voice. A pond hears everything. I bring my questions to the quiet ones.",
+	},
+	["cls.shaman.muse.w07.060"] = {
+		"Some days I call and nothing comes but the echo of my own voice. I don't take it personally anymore. The spirits have other business.",
+		"The silence of the elements is the worst sound I know. It always passes. It never passes quickly.",
+		"When the spirits won't come, I don't shout louder. I sit down and wait for them to remember me.",
+	},
+	["cls.shaman.muse.w07.061"] = {
+		"Walk a little softer. The ground can hear you coming from a long way off.",
+		"You stamp as if you were angry with the earth. It hasn't done anything to you.",
+	},
+	["cls.shaman.muse.w07.062"] = {
+		"When I die, I'd like to go into the ground slowly and without fuss, the way leaves do. Until then I mean to give the earth as little reason to hurry as possible.",
+		"Sooner or later I'll be soil. It's no threat; it's an old agreement between me and the ground. I'm simply in no hurry to honor it.",
+		"One day I'll lie down in the earth for good. I've made my peace with that, provided the day is a long way off.",
+	},
+	["cls.shaman.muse.w07.063"] = {
+		"runs a thumb along the carved grain of a totem, smoothing a nick in the wood with slow, patient strokes.",
+		"takes out a totem and polishes it on a sleeve, the way a smith wipes down a favorite hammer.",
+	},
+	["cls.shaman.muse.w07.064"] = {
+		"Warriors want a fight over quickly. Mages want it clever. A shaman wants it balanced, which means nobody ever thanks me for the part they didn't notice.",
+		"In any fight I'm doing three things at once: hitting, mending, and keeping the totems where they belong. Nobody sees the third.",
+	},
+	["cls.shaman.muse.w07.065"] = {
+		"The first thing a shaman learns is to keep quiet. Everything else comes after, and comes slowly.",
+		"Before the lightning, before the healing, there was the listening. It's still the hardest part of the craft, and the one I fail most often.",
+		"My teachers spoke very little and listened a great deal. I thought it was their age. It was the craft.",
+	},
+	["cls.shaman.muse.w07.066"] = {
+		"For the Horde, and for the balance. The two don't always agree. I try to keep faith with both.",
+		"My arm for the Horde, my patience for the spirits. Some days that's an easy split. Some days it isn't.",
+	},
+	["cls.shaman.muse.w07.067"] = {
+		"A stone in my boot again. The earth has a sense of humor, and it is not a subtle one.",
+		"Every pebble that finds its way into my boot feels like a small reminder from below: don't get above yourself.",
+		"I shake out my boot and a little stone drops back to the ground, satisfied. Message delivered, I suppose.",
+	},
+	["cls.shaman.muse.w07.068"] = {
+		"When I'm angry, fire comes far too easily. That's exactly when I should ask for it least.",
+		"My temper and the fire spirits get along much too well. I've learned to cool the one before I call the other.",
+		"Fire answers faster when I'm furious. A shaman who notices that should be worried, not pleased.",
+	},
+	["cls.shaman.muse.w07.069"] = {
+		"I say thank you after every spell, under my breath. Nobody hears it. That isn't who it's for.",
+		"A word of thanks for every bolt, every healing, every totem. It costs nothing, and it keeps the spirits willing.",
+		"Some shamans think gratitude is a formality. I suspect the spirits grow slow for those who forget it.",
+	},
+	["cls.shaman.muse.w07.070"] = {
+		"If the ground starts humming, take a step back. It's either me, or something you'd like even less.",
+		"Odd crackle in the air? Probably me. If it isn't me, run.",
+		"When my hair stands on end, yours ought to as well. Consider yourself warned.",
+	},
+	["cls.shaman.muse.w07.071"] = {
+		"Every creature I kill has a spirit that goes somewhere. I don't know where. I hope it's a kinder place than the end of my weapon.",
+		"I kill, because the road demands it. Then I spare a thought for whatever spirit just left. It's the least a shaman owes.",
+		"Hunters thank the beast. Shamans thank the spirit that leaves it. I'm not sure which of us has it right, so I do both.",
+	},
+	["cls.shaman.muse.w07.072"] = {
+		"counts quietly on {g:his|her} fingers, one, two, three, four, then starts again, as if checking that nothing has gone missing.",
+		"touches each fingertip to the thumb in turn, lips moving, a small private reckoning that always stops at four.",
+		"murmurs four short words under {g:his|her} breath, one for each element, and goes on as if nothing had happened.",
+	},
+	["cls.shaman.muse.w07.073"] = {
+		"The day I start thinking of the elements as tools, I'll deserve to lose them. I say that to myself more often than I'd like.",
+		"A sword is a tool. A spirit is not. The difference is that a sword never decides to stop working for you.",
+		"Treat a spirit like a hammer and one day it will answer like one: hard, and at the wrong moment.",
+	},
+	["cls.shaman.muse.w07.074"] = {
+		"Boots muffle the ground. If my feet were tougher I'd walk barefoot and hear all of it.",
+		"Every pair of boots is a wall between me and the earth. A thin wall, but I can feel the difference.",
+		"At the end of a long walk I pull my boots off and stand on the bare ground a moment. The earth has things to say that leather keeps out.",
+	},
+	["cls.shaman.muse.w07.075"] = {
+		"Eat, sleep, fight, laugh. Skip one and the rest go crooked. Balance isn't only for the spirits.",
+		"Fight all day and eat nothing, and even the elements will call you lopsided.",
+		"Rest a little. A body pulled too hard one way snaps like anything else.",
+	},
+	["cls.shaman.muse.w07.076"] = {
+		"There's always a moment, calling lightning, when I wonder whether it will remember which end of me to leave from.",
+		"The power passes through me on its way out. One day I'll ask for too much and it will take a piece of me along. I try to ask sensibly.",
+		"I respect lightning the way one respects a cliff edge: closely, and never with my back to it.",
+	},
+	["cls.shaman.muse.w07.077"] = {
+		"The Horde was made of peoples the world had pushed to its edges. A shaman knows about edges: that's where the elements meet.",
+		"Nobody built the Horde to be comfortable. It was built to survive, out of whoever was left. A shaman understands that kind of balance.",
+		"The Horde holds together the way the elements do: by pulling against each other just enough, and no further.",
+	},
+	["cls.shaman.muse.w07.078"] = {
+		"Water that can't move goes sour. People are the same. When I stay too long in one place, I can feel myself starting to smell of the swamp.",
+		"Still water is wise, running water is healthy, and trapped water rots. I try to be the second kind, mostly.",
+	},
+	["cls.shaman.quest_complete.w07.001"] = {
+		"Coin in the purse. Most of it will go on water and a better shield strap. The spirits don't take payment, but the vendors do.",
+		"A fair reward. The elements work for thanks; my armor doesn't, and it needs mending again.",
+		"Paid. I'll put some aside for the trainer. New lessons never come cheap, even when the spirits teach them for free.",
+	},
+	["cls.shaman.quest_complete.w07.002"] = {
+		"That's settled. If anything else is troubling this place, I'd rather hear it now than later.",
+		"Done. And while I'm here: has the ground felt strange to anyone lately? I'm asking for the spirits.",
+		"Finished. Call on me again if things go crooked. Putting them straight is more or less my trade.",
+	},
+	["cls.shaman.quest_complete.w07.003"] = {
+		"accepts the reward with a nod, then crouches briefly to touch the ground, as if letting someone else know the work is done.",
+		"pockets the payment and spares a brief glance for the ground underfoot, like a worker checking in with the foreman.",
+		"takes what is offered and, before turning away, murmurs a single word toward the earth.",
+	},
+	["cls.shaman.quest_complete.w07.004"] = {
+		"Somebody's trouble is a little lighter now. The elements wouldn't notice. I do, and that will have to be enough.",
+		"Small work, honestly done. The world is too big to mend all at once, but patch by patch it holds together.",
+		"It doesn't change much. It changes something. That's the only kind of difference a single shaman can make.",
+	},
+	["cls.shaman.quest_complete.w07.005"] = {
+		"They looked a little disappointed that I didn't chant over it. Next time I'll hum something, for their sake.",
+		"Folk expect a shaman to finish a job with smoke and drums. I finished it with a sack and a long walk.",
+		"No ritual, no lightning, just a task done. I think whoever asked was hoping for more of a show.",
+	},
+	["cls.shaman.quest_complete.w07.006"] = {
+		"The task's done and I'm running on dregs. Water first, then a quiet hour, then I'll ask the spirits for anything else.",
+		"My feet ache and my spirit's worn thin. The elements lent me a great deal today; time to give my body its turn.",
+		"All that walking and calling, and only now the work's done do I notice how tired I am. The spirits rest when they please. I have to make the time.",
+	},
+	["cls.shaman.quest_complete.w07.007"] = {
+		"The spirits did half of it, so by rights they get half the reward. I'll hold their share for them.",
+		"I'd split this with the elements, but they never come round to collect.",
+		"Thank you. The earth says you're welcome. Roughly.",
+	},
+	["cls.shaman.quest_complete.w07.008"] = {
+		"Tasks like this are what hold the Horde together: done properly, by someone who could have walked past. Nobody sings about them.",
+		"The Horde is built out of errands like this one, carried out by tired people who could have said no. I'm glad I didn't.",
+		"The Warchief will never hear of a task like this. He'd approve anyway, I think: he's a shaman too, and knows how small things add up.",
+	},
+	["cls.shaman.quest_complete.w07.009"] = {
+		"shoulders {g:his|her} pack again, the totems inside knocking together with a hollow, wooden sound.",
+		"settles the pack more comfortably on {g:his|her} back and listens a moment to the totems shifting inside it.",
+		"hitches up the heavy pack, and something carved and wooden inside it clacks in reply.",
+	},
+	["cls.shaman.quest_complete.w07.010"] = {
+		"Half the troubles I'm paid to fix, the land tried to warn people about first. Nobody listens to the land. That's why there are shamans.",
+		"If folk paid more heed to the ground and the water, I'd have far fewer errands. I'd also be poorer. The spirits find that funny, I think.",
+		"Most people only call for help when the trouble is already loud. The earth had been whispering about it for weeks.",
+	},
+	["cls.shaman.quest_complete.w07.011"] = {
+		"May the ground stay firm under your feet. That's the best thing I know how to wish anyone.",
+		"Go well. Water when you're thirsty, fire when you're cold, and steady earth all the way.",
+		"The task is done. May the elements be kind to this place for a good while.",
+	},
+	["cls.shaman.quest_complete.w07.012"] = {
+		"When a task asks for killing, I do it, and I say a word for every spirit I send off. It doesn't balance the account, but it keeps it honest.",
+		"Some rewards are paid for in blood, more or less. The spirits don't hold it against me. I'm less sure about the ancestors.",
+		"Not every task leaves the world in better balance. This one might have. I'll ask the earth later, when things are quiet.",
+	},
+	["cls.shaman.quest_complete.w07.013"] = {
+		"inclines {g:his|her} head to the one who asked, then, more briefly, to the ground at their feet.",
+		"gives a short, respectful nod, the kind traded between people who both know what a hard road costs.",
+		"touches two fingers to {g:his|her} brow in thanks, and lets the gesture finish pointing at the earth.",
+	},
+	["cls.shaman.quest_complete.w07.014"] = {
+		"With each task I see through, the spirits seem to come a little quicker when I call. Maybe they keep count. Maybe I just walk taller.",
+		"Work done well earns trust: from the people who asked and, I think, from the elements watching.",
+		"Strange, how finishing an errand makes the earth under me feel steadier. Or perhaps it's my legs that have steadied.",
+	},
+	["cls.shaman.quest_complete.w07.015"] = {
+		"Next time, send for a shaman while the trouble is still small. We come cheaper that way.",
+		"If it starts to go wrong again, send word early. The spirits prefer prevention. So do my feet.",
+		"Done. Do me a favor and don't let it get this crooked again.",
+	},
+	["cls.shaman.quest_complete.w07.016"] = {
+		"Done here. The road is waiting, and the road has never once been patient with me.",
+		"One task off my back. There'll be another before the next campfire, and I wouldn't really want it otherwise.",
+		"Finished. Pack, boots, weapon, and on. A shaman who sits still too long starts to put down roots.",
+	},
+	["cls.shaman.quest_complete.w07.017"] = {
+		"The elements have no use for coin. That's one of the reasons I trust them more than the people who pay me.",
+		"Money is a thing of people. The spirits have never once asked me for any, and I find that restful.",
+		"Gold changes hands, and the earth underneath doesn't notice. Some days I wish I were more like the earth.",
+	},
+	["cls.shaman.quest_complete.w07.018"] = {
+		"Thank the spirits, not me. I only carried the message.",
+		"Don't thank me too hard. The elements did the heavy lifting; I just pointed them the right way.",
+		"Gratitude's welcome. Send some of it to the earth as well. It held the whole time.",
+	},
+	["cls.shaman.quest_complete.w07.019"] = {
+		"I like to think the ancestors watched that one and nodded. They rarely say anything. A nod would do.",
+		"Behind me somewhere, an old shaman long dead is either approving or sighing. I'll take either; both mean they're paying attention.",
+		"The ancestors don't care about rewards. They care whether it was done well. This one, I think, was.",
+	},
+	["cls.shaman.quest_complete.w07.020"] = {
+		"brushes the road's dust from {g:his|her} hands and lets it fall back to the ground where it belongs.",
+		"claps the dirt from {g:his|her} palms, then pauses, as if apologizing to it for the rough treatment.",
+	},
+	["cls.shaman.quest_complete.w07.021"] = {
+		"Done, and the spirits kept calm the whole way. A good day's work.",
+		"That's finished. Nothing broke that shouldn't have. I'll call that a success.",
+	},
+	["cls.shaman.quest_progress.w07.001"] = {
+		"Part of the way there. The earth is patient; I can manage to be, a little longer.",
+		"Not finished, but closer. Rushing a task is like rushing a totem: it only works once it's settled.",
+		"Some of it done. The rest is out there, and the spirits aren't going to fetch it for me.",
+	},
+	["cls.shaman.quest_progress.w07.002"] = {
+		"pauses to take stock of the work so far, nods once, and looks toward what remains.",
+		"checks the tally on {g:his|her} fingers, finds it short, and walks on without complaint.",
+		"presses a foot to the ground for a moment, as if asking it which way the rest of the work lies.",
+	},
+	["cls.shaman.quest_progress.w07.003"] = {
+		"That's all of it. Time to carry the news to whoever asked, and let the spirits know they can stop holding their breath.",
+		"Everything that needed doing is done. Now the long walk to say so.",
+		"The work is complete. Only the telling remains, and I'd like to manage it before my feet change their minds.",
+	},
+	["cls.shaman.reputation_change.w07.001"] = {
+		"Trust from people, trust from the spirits: the same slow currency, earned the same way.",
+		"They think a little better of me now. The spirits taught me that goodwill is built like a riverbank: stone by stone, and never in a hurry.",
+		"A name spoken a little more kindly. I'll try to keep it that way; good standing, like balance, is easy to tip.",
+	},
+	["cls.shaman.rez.w07.001"] = {
+		"The spirits let me go a little way down the far road, then called me back by the elbow. I'm not sure I was ready to turn round.",
+		"Death was quiet and full of voices I almost knew. The earth under my feet again: louder, rougher, mine.",
+	},
+	["cls.shaman.rezother.w07.001"] = {
+		"Come back. The road isn't finished with you.",
+		"Your spirit is still close; I can feel it lingering. This way.",
+		"Back you come. It's too early to go wandering with the dead.",
+	},
+	["cls.shaman.rezother.w07.002"] = {
+		"Calling a spirit back is like calling to someone on the far side of a wide river. You call, you wait, you hope the voice that answers is the right one.",
+		"There's always a moment, after I call, when nothing answers. It lasts a breath. It feels like a season.",
+		"I call into the quiet and listen. The answer, when it comes, is never louder than a sigh.",
+	},
+	["cls.shaman.rezother.w07.003"] = {
+		"lowers {g:his|her} voice and calls toward the still form, the way one coaxes a wary animal back to the hand.",
+		"raises both hands over the still body and holds them there, palms down, until a breath answers from below.",
+	},
+	["cls.shaman.rezother.w07.004"] = {
+		"Up you get. You'd have had a long walk otherwise.",
+		"Saved you the long walk back. You can carry my pack for a while to say thanks.",
+		"Welcome back. You missed nothing, except dying.",
+	},
+	["cls.shaman.rezother.w07.005"] = {
+		"Every spirit I call back comes back a little colder. It takes a while to forget where it has been.",
+		"The dead don't come back the same right away. Give them a moment; the warmth catches up.",
+	},
+	["cls.shaman.rezother.w07.006"] = {
+		"Spirits of those who came before, send back the one who fell here.",
+		"Ancestral spirits, open the way. There's a body here still waiting for its owner.",
+	},
+	["cls.shaman.rezother.w07.007"] = {
+		"It's done. Weak legs for a while, and a foul temper, and a heartbeat. All three are fine by me.",
+		"Back among the living. Sore, I expect, and in no mood for jokes. I'll save mine for later.",
+	},
+	["cls.shaman.rezother.w07.008"] = {
+		"presses a palm to the earth and murmurs; close by, a breath catches and begins again.",
+		"speaks to the empty air above the body as if someone were standing there, and waits.",
+	},
+	["cls.shaman.rezother.w07.009"] = {
+		"Breathe. Good. Now never do that again.",
+		"There you are. Don't make me come fetching you twice in one day.",
+		"Easy, easy. Dying is tiring; coming back more so.",
+	},
+	["cls.shaman.rezother.w07.010"] = {
+		"The spirit had already turned toward the ancestors. I asked it to turn around. It didn't have to listen to me. It did.",
+		"I don't drag the dead back. I ask. If they come, it's their choice, and I'm grateful every time.",
+	},
+	["cls.shaman.thanks.w07.001"] = {
+		"Thank you. I'll mention you to the spirits; they like to know who's been kind.",
+		"My thanks. The ancestors keep a long memory for good turns, and so do I.",
+	},
+	["cls.shaman.thanks.w07.002"] = {
+		"Thank you. If the earth ever shakes under you, it won't be on my account.",
+		"Much obliged. I'd offer you a spark of lightning in return, but I'm told it's an awkward gift.",
+	},
+	["cls.shaman.threat.w07.001"] = {
+		"Walk away, and the earth forgets your footprints. Stay, and it remembers you for a long time.",
+		"Go now, and I'll ask the spirits to let it pass. I won't ask twice.",
+		"Leave while the ground still likes you. That can change quickly.",
+	},
+	["cls.shaman.threat.w07.002"] = {
+		"I speak to lightning most days. Don't give me something new to tell it.",
+		"The thunder and I talk often. Shall I bring you up?",
+		"The spirits ask me about the people I meet. So far I've been kind about you.",
+	},
+	["cls.shaman.threat.w07.003"] = {
+		"lets a thin crackle of light run along {g:his|her} knuckles, saying nothing at all.",
+		"glances at the ground under the other's feet, then back up, unhurried.",
+	},
+	["cls.shaman.threat.w07.004"] = {
+		"The ancestors are patient with fools. I'm a little less patient than the ancestors.",
+		"The spirits ask me for calm. I'm asking you to leave before I stop listening to them.",
+		"I was taught to ask before I strike. Consider this the asking.",
+	},
+	["cls.shaman.threat.w07.005"] = {
+		"There's a fire totem in my pack itching to come out. Don't give it a reason.",
+		"I've a fire totem that hasn't touched the ground all day. Don't volunteer.",
+	},
+	["cls.shaman.victory.w07.001"] = {
+		"The well's run dry for now. The spirits refill it at their own pace, never mine.",
+		"Not a spark left in me. Sit, drink, wait for the elements to fill me up again.",
+		"Bottom of the barrel. The spirits will fill me again, but slowly.",
+	},
+	["cls.shaman.victory.w07.002"] = {
+		"Thank you, spirits. Same time tomorrow?",
+		"Good work, everyone. And by everyone I mean the elements.",
+		"Lovely work, earth. You too, fire. Water, you can put your feet up.",
+	},
+	["cls.shaman.victory.w07.003"] = {
+		"watches the totems fade one by one, and dips {g:his|her} head to each as it goes.",
+		"waits until the last totem has faded, and only then lets {g:his|her} shoulders drop.",
+	},
+	["cls.shaman.victory.w07.004"] = {
+		"The spirits gave; I say thank you. A shaman who skips that step soon finds them deaf.",
+		"Thanks first, quickly and plainly, before anything else. The elements keep a ledger, the old shamans say.",
+	},
+	["cls.shaman.victory.w07.005"] = {
+		"That's what happens when the sky takes an interest in you.",
+		"You stood against the elements. Most of them never even noticed.",
+		"The sky doesn't often take sides. Today it took mine.",
+	},
+	["cls.shaman.victory.w07.006"] = {
+		"Over. The elders say every spirit finds its element in the end. I hope this one finds a kind one.",
+		"Whatever spark it had is loose now. I hope it settles somewhere gentler than this.",
+		"The spirit has gone on. I'll say a word for it, though it would never have said one for me.",
+	},
+	["cls.shaman.victory.w07.007"] = {
+		"I did warn you. Well, the lightning did. Loudly.",
+		"In my defense, there was a great deal of crackling first. That counts as a warning.",
+		"You can't say the sky didn't give you notice.",
+	},
+	["cls.shaman.victory.w07.008"] = {
+		"Count what's left: mana, health, totems. Then move.",
+		"Less mana, a few new bruises, every totem accounted for. A fair trade.",
+	},
+	["cls.shaman.victory.w07.009"] = {
+		"crouches beside the fallen and lays two fingers on the ground next to it, a brief courtesy to the earth that will take it in.",
+		"brushes the earth beside the fallen, only for a moment, as if introducing it to its new keeper.",
+	},
+	["cls.shaman.victory.w07.010"] = {
+		"Next time, pick a quarrel with someone who doesn't have the sky on their side.",
+		"Lesson for the next one: never argue with a shaman standing on good ground.",
+		"Note for anyone watching: the shaman always gets the last word. Usually it's thunder.",
+	},
+	["cls.shaman.victory.w07.011"] = {
+		"Four elements and I used two. The elders would call that lazy, and they'd be right.",
+		"Remembered the water only at the end. A shaman with four spirits who calls on two is wasting the gift.",
+	},
+	["cls.shaman.victory.w07.012"] = {
+		"There. The spirits can go about their business, and I about mine.",
+		"Finished. Spirits, you're free to go. Thank you, truly.",
+		"That's all, spirits. Off you go, with my thanks.",
+	},
+	["cls.shaman.victory.w07.013"] = {
+		"Under my feet the ground has stopped trembling. It never enjoys these any more than I do.",
+		"The ground settles. It feels the weight of every fight fought on it, and of every fall.",
+		"The earth lies easy under me again, like a dog curling back up to sleep.",
+	},
+	["cls.shaman.victory.w07.014"] = {
+		"flicks a few stray sparks from {g:his|her} fingertips, the way one shakes off water.",
+		"shakes out {g:his|her} hands; a last few sparks drop to the ground and wink out.",
+	},
+	["cls.shaman.victory.w07.015"] = {
+		"Earth on the holding, fire on the hitting, me on the shouting. Teamwork.",
+		"A fine group effort. Mostly the elements' effort, but I was there.",
+	},
+	["cls.shaman.victory.w07.016"] = {
+		"Fingers still tingling. The elements always leave a little of themselves behind.",
+		"Pins and needles up to the elbow. Calling the spirits never comes free.",
+	},
+	["cls.shaman.victory.w07.017"] = {
+		"Rest, spirits. You've earned it, and I'll need you again soon.",
+		"Easy now, spirits. I'll be asking again before long.",
+		"Go gently, spirits. That was good work, and I won't forget it.",
+	},
+	["cls.shaman.victory.w07.018"] = {
+		"Someone, somewhere, will set out one bowl too many. The spirits don't explain that part.",
+		"It had people, maybe. Most do. The elements take back the body and leave the rest to the living.",
+	},
+	["cls.shaman.victory.w07.019"] = {
+		"There. Lie down in the earth and stay there. You were owed that long ago.",
+		"Into the ground, and this time stay put. The ancestors will see to the rest.",
+	},
+	["cls.shaman.victory.w07.020"] = {
+		"Go home, spirit. Whoever twisted you can't reach you there.",
+		"Loose at last. Find your element and forget this place.",
+	},
+	["cls.shaman.victory.w07.021"] = {
+		"The totems came through without a mark. I'm a little jealous.",
+		"Every totem fine. Me, slightly less fine. They never take the hits; that's their secret.",
+	},
+	["cls.shaman.victory.w07.022"] = {
+		"straightens slowly, working the stiffness out of {g:his|her} shoulders, and the faint charge in the air bleeds away.",
+		"lowers {g:his|her} hands, and the sharp smell of lightning fades from around {g:him|her}.",
+	},
+	["cls.shaman.victory.w07.023"] = {
+		"Anyone hurt? Speak up. I've water left for whoever needs it.",
+		"Show me the cuts. The water spirits owe me a favor or two.",
+	},
+	["cls.shaman.victory.w07.024"] = {
+		"Only the spirits saw. They don't applaud, but they don't forget either.",
+		"No one watched but the spirits. As audiences go, that's enough.",
+	},
+	["cls.shaman.victory.w07.025"] = {
+		"One more for the Horde. The spirits can have their share of the credit.",
+		"The Horde stands a little stronger. I'll tell the spirits they helped.",
+	},
+	["cls.shaman.victory.w07.026"] = {
+		"Like a storm that's had its say, it passes. What's left is clean air and a sore arm.",
+		"It ends the way a squall ends: all at once, leaving everything rinsed.",
+	},
+	["cls.shaman.victory.w07.027"] = {
+		"Stay down. The earth seems to like you better that way.",
+		"Rest there. The ground's been wanting you since this started.",
+		"Lie there. The earth has been patient; let it have you.",
+	},
+	["cls.shaman.victory.w07.028"] = {
+		"picks up a pinch of dust, lets it run through {g:his|her} fingers and mutters a word of thanks.",
+		"presses a palm briefly to the ground, the way one pats a horse that has carried well.",
+	},
+	["cls.shaman.victory.w07.029"] = {
+		"Wolf's shape and off, before something else comes to see what the noise was.",
+		"No lingering. Four legs, quick road, gone.",
+	},
+	["cls.shaman.victory.w07.030"] = {
+		"Go on, then. Run with the spirits of your kind. No grudge from me.",
+		"Your spirit's free to roam again. I hope the hunting's good where it goes.",
+	},
+	["cls.shaman.victory.w07.031"] = {
+		"No ankh spent today. My purse thanks the spirits.",
+		"The ankh stays in the pack another day. Thrifty and alive: a fine pairing.",
+	},
+	["cls.shaman.victory.w07.032"] = {
+		"Balance holds, for the moment. Let's not waste it standing about.",
+		"The scale sits level again. Where to next?",
+		"Balance kept. Now, before anything else wanders by, onward.",
+	},
+	["cls.shaman.victory.w07.033"] = {
+		"stands a moment over the fallen, lips moving, sending something after the departing spirit.",
+		"lingers by the fallen, murmuring a few words meant for whatever spirit just left it.",
+	},
+	["cls.shaman.victory.w07.034"] = {
+		"Hah! The spirits saw that. I'll be insufferable about it for days.",
+		"That one I'll brag about to the spirits for a week. They'll pretend to listen.",
+	},
+	["cls.shaman.victory.w07.035"] = {
+		"The ancestors approve, I think. With them it's hard to tell approval from sleep.",
+		"If the old ones watched that, they're nodding. Or dozing. With the ancestors there's little difference.",
+	},
+	["cls.shaman.victory.w07.036"] = {
+		"The mail took what the spirits didn't turn aside. Between them, not a scratch worth mentioning.",
+		"Mail and spirits, both held. I'll take that.",
+	},
+	["cls.shaman.victory.w07.037"] = {
+		"Answered again. I try never to take that for granted; the spirits notice when you do.",
+		"They came when I asked. Every time they do, I make a point of being surprised.",
+	},
+	["cls.shaman.victory.w07.038"] = {
+		"Done. Now, where did that spark go? I think I've singed my own sleeve.",
+		"Finished, and I've scorched my sleeve again. The fire spirit thinks that's funny.",
+		"Won, and only one hole burned in my cloak. A good day, by a shaman's reckoning.",
+	},
+	["cls.shaman.victory.w07.039"] = {
+		"I listen for the spirits afterward. Not to be thanked; to hear whether they're content.",
+		"A moment of listening, after. If the spirits are uneasy, the fight isn't really over.",
+	},
+	["cls.shaman.victory.w07.040"] = {
+		"pushes a little earth with {g:his|her} boot over a scorched patch left by the fight.",
+		"scuffs at a blackened mark on the ground until it's hardly there, tidying up after the elements.",
+	},
+	["cls.shaman.victory.w07.041"] = {
+		"The old ways still work. Ask, listen, strike. Then give thanks.",
+		"Asked, answered, and done. The oldest way there is, and it still holds.",
+	},
+	["cls.shaman.victory.w07.042"] = {
+		"The quiet afterward is when the spirits come closest. I never know what to say to them.",
+		"In the stillness after, I can almost hear them breathing. Then it passes.",
+	},
+	["cls.shaman.victory.w07.043"] = {
+		"The lightning made its case. You held out to the very end. Admirable, in its way.",
+		"The spirits made a strong argument. You lost it.",
+	},
 }, "base_classes")
