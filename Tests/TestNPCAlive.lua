@@ -1452,3 +1452,40 @@ T.run("#71: {og:} nelle battute degli NPC accorda con l'NPC, {g:} con il giocato
 		T.ok(not Validator.UnmarkedAgreement(Engine.VariantView(v, rule.pack).t, "it"), "guardia, variante " .. i .. ": nessun accordo senza segnaposto")
 	end
 end)
+
+-- C0i (#138, ADR 0056): the voice of the NPC keeps its share as the archive grows. The waves add lines of the role and
+-- of the character's race, class and faction for every dialogue node; without a share (and a window of its own) the
+-- three lines of Gryshka's voice sank under them (0.43 on main, 0.37 with the orc lines of W09).
+T.run("C0i: la voce dell'NPC tiene la sua quota anche con molte battute del ruolo e della razza", function()
+	T.ok(N.IsVoice(Engine.byId["npcd.innkeeper.open.gryshka1"]) and N.IsVoice(Engine.byId["npcd.innkeeper.open.gruff1"]),
+		"npcID e temperamento (anche dentro any) sono la voce dell'NPC")
+	T.ok(not N.IsVoice(Engine.byId["npcd.innkeeper.open.n1"]) and not N.IsVoice(Engine.byId["npcd.innkeeper.open.stranger1"]),
+		"il solo ruolo non è una voce")
+	-- sixty lines of the role and of the race of the character, as later waves will write them
+	local reg, texts = {}, {}
+	for i = 1, 60 do
+		local id = ("t.c0i.innkeeper.open.%02d"):format(i)
+		reg[id] = { event = "npcd_innkeeper_open", speaker = "npc", styles = { "everyday" },
+			conditions = i % 2 == 0 and { race = "Orc", other = { role = "innkeeper" } } or { other = { role = "innkeeper" } } }
+		texts[id] = { ("Benvenuto alla locanda, viandante numero %d."):format(i) }
+	end
+	NS:RegisterPack({ id = "t_c0i_voice", name = "C0i voice", languages = { "itIT" }, registry = reg, texts = { itIT = texts } })
+	Fresh()
+	math.randomseed(138)
+	P.zone = "Ashenvale"
+	local gruff = Opening(function() Talk(6929, "Innkeeper Gryshka", "GOSSIP_SHOW"); N:End("closed"); P.target = nil end, 600)
+	local share = Share(gruff, "%.gruff") + Share(gruff, "%.gryshka")
+	T.ok(AnyMatch(gruff, "^t%.c0i%."), "le battute del ruolo e della razza escono ancora")
+	-- the floor is the share (0.6): outside it the voice is in the window of the whole pool and adds little
+	T.ok(share >= N.VOICE_SHARE - 0.1, ("il burbero parla ancora da burbero: %.3f"):format(share))
+	-- the voice has a window of its own size: never the same line of it twice in a row
+	local order = select(2, Opening(function() Talk(6929, "Innkeeper Gryshka", "GOSSIP_SHOW"); N:End("closed"); P.target = nil end, 100))
+	local twice = 0
+	for i = 2, #order do
+		if order[i] == order[i - 1] then twice = twice + 1 end
+	end
+	T.eq(twice, 0, "nessuna battuta due volte di fila")
+	Engine:DropPack("t_c0i_voice")
+	T.ok(Engine.byId["t.c0i.innkeeper.open.01"] == nil, "il pacchetto di prova è tolto")
+	N:SetState("idle")
+end)

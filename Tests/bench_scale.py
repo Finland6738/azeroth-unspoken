@@ -48,6 +48,9 @@ for that character; --own all loads every line (the engine before C0f), --own bo
 are cloned in a runtime of the whole database either way, so the two see the same archive. The report adds the rules
 left out and the memory right after the resident content is registered with the collector stopped (the compiled chunk).
 
+C0i (ADR 0056): --battle makes every pick of the sequence in a battleground (Arathi Basin), where the short lines keep
+a pool share and say a short variant: the cost of the shares, which the picks in the open world do not pay.
+
 The numbers are a projection from lupa on the machine that runs the script, not a measurement in the client: the
 working targets of R1 (PickEntry under 5 ms and memory under 40 MB at 50,000 entries) stay hypotheses until the
 in-game measurements of /au prof (D3 in #130). The test suite runs a reduced size (see run_tests.py); the full sizes
@@ -181,7 +184,8 @@ def synthetic_source(lua, ns, size, seed, place_share, langs, archive_dir):
     return src, list(meta.zones.values())
 
 
-def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs="all", archive_dir=None):
+def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs="all", archive_dir=None,
+            battle=False):
     lua, ns, base_load = load_addon(addon, packs)
     ns.db.locale = "en"
     G = lua.globals()
@@ -208,7 +212,7 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
     else:
         info.update({"compile_s": 0, "register_s": 0, "load_s": 0, "memory_kb": mem0, "per_entry_b": 0})
 
-    found, times, kinstr = pick_stats(lua, ns, zones, picks, seed)
+    found, times, kinstr = pick_stats(lua, ns, zones, picks, seed, battle)
     info["after_picks_kb"] = memory_kb(lua)
     info.update({"picks": picks, "found": found, "pick_mean_ms": statistics.mean(times),
                  "pick_p95_ms": times[int(len(times) * 0.95) - 1], "pick_max_ms": times[-1],
@@ -216,12 +220,14 @@ def measure(addon, size, picks, seed, place_share, langs=("itIT", "enUS"), packs
     return info
 
 
-def pick_stats(lua, ns, zones, picks, seed):
+def pick_stats(lua, ns, zones, picks, seed, battle=False):
     """The picks of the projection: a fixed sequence of events, forms and zones; the memory of the selection grows as
-    in a session. Returns (picks that found a line, sorted times in ms, sorted thousands of instructions)."""
+    in a session. battle (C0i): every pick in a battleground. Returns (picks that found a line, sorted times in ms,
+    sorted thousands of instructions)."""
     G = lua.globals()
-    pick = lua.eval("""function(ns, event, form, zone, hour)
+    pick = lua.eval("""function(ns, event, form, zone, hour, battle)
         P.zone = zone; P.hour = hour
+        if battle then P.instance, P.instanceType, P.instanceName = true, "pvp", "Arathi Basin" end
         local ctx = ns:BuildContext()
         return ctx, event, form
     end""")
@@ -245,7 +251,7 @@ def pick_stats(lua, ns, zones, picks, seed):
         G.math.randomseed(seed)
         for i in range(picks):
             event, form = EVENTS[i % len(EVENTS)]
-            ctx, _, _ = pick(ns, event, form, zones[(i * 7) % len(zones)], (i * 5) % 24)
+            ctx, _, _ = pick(ns, event, form, zones[(i * 7) % len(zones)], (i * 5) % 24, battle)
             if counting:
                 kinstr.append(count_pick(ns, event, ctx, form))
                 continue
@@ -284,7 +290,7 @@ def need_shares(path=None):
 
 
 def measure_areas(addon, total, resident, layout, picks, seed, form="source", budget=4.0, keep_kb=None, own=None,
-                  shares=None):
+                  shares=None, battle=False):
     """The projection by area (C0, ADR 0048; C0b, ADR 0049): see the module docstring. C0f (ADR 0053): own = (class,
     race) loads the lines of that character only, as the client does (None: every line, as before C0f); shares (from
     need_shares) gives the resident clones the class and race pools of the need model, and the area clones none."""
@@ -411,7 +417,7 @@ def measure_areas(addon, total, resident, layout, picks, seed, form="source", bu
         frames, loads = list(frames.values()), list(loads.values())
         rows.append({"zone": zone, "before_kb": before, "peak_kb": peak, "after_kb": after, "s": sum(frames) / 1000,
                      "frames": frames, "loads": loads, "load_calls": calls, "kept_kb": kept / 1024})
-    found, times, kinstr = pick_stats(lua, ns, [journey[-1]], picks, seed)
+    found, times, kinstr = pick_stats(lua, ns, [journey[-1]], picks, seed, battle)
     after_picks = memory_kb(lua)
     skipped = lua.eval("function(ns) return ns.Engine.ownStats and ns.Engine.ownStats.rules or 0 end")(ns)
     return {"after_picks_kb": after_picks, "total": total, "resident": resident, "per_area": per_area, "areas": len(zones), "layout": layout,
@@ -497,6 +503,8 @@ def main(argv):
                     help="with --areas (C0f, ADR 0053): the character whose lines are loaded, CLASS/Race, as in the client; "
                     "'all' loads every line (before C0f); 'both' measures the character and every line. The resident clones "
                     "then take the class and race pools of the need model (docs/content/need.json), the area clones none")
+    ap.add_argument("--battle", action="store_true",
+                    help="C0i (ADR 0056): every pick in a battleground (the pool share of the short lines)")
     ap.add_argument("--json")
     ap.add_argument("--archive-dir", help="write the synthetic archives here, or read them if they are there: two "
                     "versions of the engine then measure the same rules (#157)")
@@ -521,7 +529,7 @@ def main(argv):
             for layout in [l for l in a.layout.split(",") if l]:
                 for o in owns:
                     r = measure_areas(addon, total, resident, layout, a.picks, a.seed, a.form, a.budget, a.keep,
-                                      tuple(o.split("/")) if o else None, shares)
+                                      tuple(o.split("/")) if o else None, shares, a.battle)
                     r["texts"] = texts
                     if texts:
                         print(f"{texts} texts per language:")
@@ -537,7 +545,7 @@ def main(argv):
     print(f"{'entries':>8} {'addon s':>8} {'load s':>8} {'memory MB':>10} {'B/entry':>8} {'pick ms':>8} {'p95 ms':>8} {'max ms':>8} "
           f"{'kinstr':>8} {'p95 ki':>8} {'found':>6} {'after MB':>9}")
     for size in [int(s) for s in a.sizes.split(",") if s.strip()]:
-        r = measure(addon, size, a.picks, a.seed, a.place_share, langs, a.packs, a.archive_dir)
+        r = measure(addon, size, a.picks, a.seed, a.place_share, langs, a.packs, a.archive_dir, a.battle)
         rows.append(r)
         print(f"{size:>8} {r['base_load_s']:>8.2f} {r['load_s']:>8.2f} {r['memory_kb'] / 1024:>10.1f} {r['per_entry_b']:>8.0f} "
               f"{r['pick_mean_ms']:>8.3f} {r['pick_p95_ms']:>8.3f} {r['pick_max_ms']:>8.3f} "

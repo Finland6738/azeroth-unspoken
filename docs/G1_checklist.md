@@ -1485,6 +1485,18 @@ prova tieni `/au chance heal 100` e `/au chance buff 100`.
     **Atteso:** su di te nessuna frase all'amico; sull'amico le frasi a lui si possono dire. **Da riportare:** se una
     cura su di sé parla mai all'amico.
 
+**C0i (ADR 0056): la voce dell'NPC e le frasi brevi in battaglia.** Mai provato nel client. Le battute proprie di un NPC
+(il suo nome, il suo temperamento, il suo modo di parlare) tengono ora circa il 60% di un dialogo, e in un campo di
+battaglia, in un'arena o contro un boss le frasi brevi tengono circa l'85% delle scelte e dicono la loro variante breve.
+
+23. **Una locandiera burbera.** Apri una decina di dialoghi con Innkeeper Gryshka a Orgrimmar (o un altro locandiere con
+    un temperamento) con `/au talk`. **Atteso:** quasi tutte le aperture suonano come lei (burbera, breve), mai la
+    stessa battuta due volte di fila; qualcuna è una delle battute di ogni locandiere. **Da riportare:** se le sue
+    battute tornano troppo spesso.
+24. **Frasi brevi in un campo di battaglia.** In un campo di battaglia, con `/au chance battle 100`, combatti per qualche
+    minuto. **Atteso:** le frasi di battaglia sono brevi (un respiro). **Da riportare:** ogni frase lunga, con
+    `/au debug`.
+
 ## Modulo riassuntivo (copia e compila)
 
 ```
@@ -1648,6 +1660,7 @@ C0b fotogrammi ......... ms in tutto ______  fotogrammi ______  fotogramma più 
 C0b memoria ............ sorgenti conservate (KB) ______  aree rilasciate ______
 C0g gesti per sé ....... benda su di sé cura? ___  su un altro muta? ___  urlo/veleno/aspetto potenziamento? ___  nomi ______
 C0h su di sé ........... pozione + amico: frase all'amico? ___  cura su di sé + amico: all'amico? ___  cura all'amico ok? ___
+C0i voce e battaglia ... la locandiera suona come lei? ___  troppo ripetitiva? ___  frasi di battaglia brevi? ___
 Altro (strano, brutto, fastidioso): ______________________
 ```
 

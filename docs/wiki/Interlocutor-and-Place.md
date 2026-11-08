@@ -61,7 +61,7 @@ The narrator adapts to the place:
 | **Inn or city, in the open world** | a little more talkative: a good place for quiet, social lines |
 | **Dungeon** | a little calmer |
 | **Scenario** | a little calmer |
-| **Battleground** | calmer, with short lines fit for a fast pace |
+| **Battleground** | calmer, with short lines fit for a fast pace (about 85 lines in 100 are short, and a line that also has a long form says the short one) |
 | **Raid** | about half as talkative; during demanding fights only important moments speak |
 | **Arena** | much calmer, with short lines (arenas may not exist in your game version) |
 | **Boss encounter** | almost silent until the fight is over |
