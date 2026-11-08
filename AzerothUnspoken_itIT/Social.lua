@@ -633,4 +633,78 @@ NS:AddTexts("itIT", {
 		"Alle reti piene, alle lance affilate, e agli spiriti che non ce le fanno mai mancare!",
 		"In alto i boccali: ai Darkspear, e a chiunque abbia mai diviso un fuoco con noi!",
 	},
+	["faction.alliance.farewell.w10.001"] = {
+		"Buona strada. Qualunque bandiera tu incontri, spero sia la nostra.",
+		"Addio, e quando puoi tieni le spalle contro un muro dell'Alleanza.",
+		"Al prossimo accampamento. L'Alleanza è grande, ma le sue strade continuano a incrociarsi.",
+	},
+	["faction.alliance.greet.w10.001"] = {
+		"Salute a te! Che notizie dal tuo angolo di Alleanza?",
+		"Ehilà! Qualunque capitale tu chiami casa, qui sei tra amici.",
+	},
+	["faction.alliance.greet.w10.002"] = {
+		"Salute a te. Un'unica bandiera su tutti e due, qualunque sia la strada.",
+		"Per la Luce, per la luna o per la montagna, scegli tu: salute a te.",
+	},
+	["faction.alliance.jest.w10.001"] = {
+		"Quanti capi dell'Alleanza servono per accendere una lanterna? Quattro: uno la comanda, uno la forgia, uno la benedice e uno gnomo la fa esplodere.",
+		"L'Alleanza ha un nano per la forza, un elfo per la pazienza, uno gnomo per l'ingegno e un umano per le scartoffie. Indovina chi arriva sempre in ritardo.",
+	},
+	["faction.alliance.pray.w10.001"] = {
+		"Luce, Elune, artefici della pietra, chiunque vegli sull'Alleanza: tenete aperte le nostre strade e chiusi i nostri cancelli davanti ai morti.",
+		"A chi veglia su tutti noi, con qualunque nome: fa' che i popoli dell'Alleanza durino più delle loro liti.",
+	},
+	["faction.alliance.thanks.w10.001"] = {
+		"Grazie! Mettilo sul conto dell'Alleanza: è lunghissimo, ma onesto.",
+		"Grazie. Tra alleati non è mai un debito, solo un turno. Il prossimo tocca a me.",
+	},
+	["faction.alliance.thanks.w10.002"] = {
+		"Ti ringrazio. È l'Alleanza al suo meglio: un aiuto dato prima che qualcuno chiedesse da quale popolo vieni.",
+		"Grazie. La gentilezza di un alleato arriva sempre un po' più morbida di quella di uno sconosciuto.",
+	},
+	["faction.horde.farewell.w10.001"] = {
+		"Buon cammino. Che le strade dell'Orda ti siano gentili, e i suoi nemici lenti.",
+		"Forza e onore, finché le nostre strade non si incroceranno di nuovo.",
+		"Buon viaggio. Riporta indietro tutta la pelle: all'Orda servono tutte le braccia.",
+	},
+	["faction.horde.greet.w10.001"] = {
+		"Throm-ka. Forza a te, e una strada facile.",
+		"Salute. Notizie dall'altro capo dell'Orda?",
+	},
+	["faction.horde.greet.w10.002"] = {
+		"Che piacere vedere una faccia amica dell'Orda. Vieni, fermati un po'.",
+		"Eccoti. L'Orda è vasta, e fa sempre piacere quando ci fa capitare nello stesso posto.",
+	},
+	["faction.horde.jest.w10.001"] = {
+		"Quanti soldati dell'Orda servono per piantare una tenda? Un orco che batte la mazza, un tauren che tiene il palo, un troll che ride, e un Reietto che fa notare che è al rovescio.",
+		"Perché l'Orda non perde mai al tiro alla fune? I tauren tirano, gli orchi urlano, i troll barano, e i Reietti semplicemente non mollano mai.",
+	},
+	["faction.horde.pray.w10.001"] = {
+		"Spiriti, Madre Terra, loa, o chiunque ascolti: vegliate sugli accampamenti sparsi dell'Orda, e riportate a casa la sua gente.",
+		"A chiunque vegli sull'Orda, in qualunque lingua preferisca: tienici interi ancora un po'.",
+	},
+	["faction.horde.thanks.w10.001"] = {
+		"Grazie. Nell'Orda l'aiuto è un debito, e i miei li pago.",
+		"Grazie. Te lo restituirò alla maniera dell'Orda: quando ti servirà, senza che tu debba chiederlo.",
+	},
+	["faction.horde.thanks.w10.002"] = {
+		"Grazie. Canterei le tue lodi, ma l'Orda fa già abbastanza rumore.",
+		"Ti devo un favore. Non dirlo a nessuno: ho una fama da {g:brontolone|brontolona} da difendere.",
+	},
+	["time.day.farewell.w10.001"] = {
+		"Va' in pace, e sfrutta bene la luce finché dura.",
+		"Arrivederci. In una giornata così c'è tanta strada da fare: non sprecarla con me.",
+	},
+	["time.day.greet.w10.001"] = {
+		"Buongiorno! E per ora, almeno, il giorno è buono davvero.",
+		"Salve! Bell'ora per incontrarsi per strada, con tutta questa luce per guardarsi in faccia.",
+	},
+	["time.day.thanks.w10.001"] = {
+		"Grazie. Mi hai fatto risparmiare un'ora buona di luce, e quelle non crescono sugli alberi.",
+		"Ti ringrazio. Il lavoro della giornata adesso pesa meno, e la giornata è già lunga di suo.",
+	},
+	["time.night.thanks.w10.001"] = {
+		"Grazie. La gentilezza al buio vale doppio: è più difficile da trovare.",
+		"Ti ringrazio. A quest'ora avevo smesso di aspettarmi qualsiasi aiuto.",
+	},
 }, "base_social")

@@ -271,4 +271,124 @@ AU:RegisterRegionalTexts("kalimdor", "itIT", "kalimdor_dungeons", [==[
 		"Uno in meno, almeno per un po'. Conta i secondi, poi cerca chi porta la bandiera.",
 		"Bene. Un paio di mani in meno fra la bandiera e casa.",
 	},
+	["drm.attack.w10.001"] = {
+		"Fuori dalle rovine, e giù!",
+		"Torna fra l'edera!",
+	},
+	["drm.attack.w10.002"] = {
+		"Eccoti un tributo!",
+		"Paga, e fino all'ultimo!",
+	},
+	["drm.battle.w10.001"] = {
+		"Queste sale sono sopravvissute a un impero. Sopravvivranno anche a te.",
+		"Togliti di mezzo. Non ho attraversato Feralas per fermarmi davanti a te.",
+		"Pietra elfica, puzza d'ogre, e tu. Avanti.",
+	},
+	["drm.battle.w10.002"] = {
+		"Torna nel buco da cui ti hanno tirato fuori gli Highborne!",
+		"Evocazione vecchia, tomba nuova. Vieni qui.",
+	},
+	["drm.battle.w10.003"] = {
+		"Belle rovine. Peccato per l'accoglienza.",
+		"Qualcuno chiami il maggiordomo: ho un reclamo.",
+	},
+	["drm.battle.w10.004"] = {
+		"pianta i piedi sulle piastrelle elfiche crepate e regge l'urto.",
+		"si apre un varco fra i rampicanti e finisce dritto nello scontro.",
+	},
+	["drm.battle.w10.005"] = {
+		"Magia antica in questi muri. Che non sia l'ultima cosa che sento.",
+		"Ogni pietra qui ha visto uno scontro. Che questo duri poco.",
+	},
+	["drm.encounter_end.w10.001"] = {
+		"Con {encounter} è finita. Eldre'Thalas ha sepolto cose più grandi, e seppellirà anche questa.",
+		"Fatta, con {encounter}. Le sale accolgono anche questo come tutto il resto: in silenzio.",
+		"Finita. Anche {encounter} è solo una nota a margine, in una città così vecchia.",
+	},
+	["drm.encounter_end.w10.002"] = {
+		"Va bene. Di nuovo fra i rampicanti, e riproviamo con la testa a posto.",
+		"Giù tutti quanti. Ci raduniamo, ci ragioniamo sopra, e si riparte.",
+	},
+	["drm.lowhp.w10.001"] = {
+		"Non fra le rovine. Non diventerò un'altra statua, qui.",
+		"Indietro. Queste pietre sono sopravvissute a tutti; non devo dimostrare niente a loro.",
+	},
+	["drm.lowhp.w10.002"] = {
+		"Non a Feralas, non così!",
+		"Tiratemi fuori da questi rampicanti!",
+	},
+	["drm.muse.w10.001"] = {
+		"Il principe Tortheldrin governa quel che resta degli Highborne, qui, e lo governa come chi sorveglia una camera blindata. Ogni pergamena è contata due volte.",
+		"Nell'ala ovest gli ultimi Highborne custodiscono i loro libri e i loro segreti. Vedrebbero bruciare Feralas piuttosto che spartire gli uni o gli altri.",
+		"Gli Shen'dralar non sono sopravvissuti al loro impero per fortuna. Ci sono riusciti aggrappandosi a ogni briciolo di potere, senza mai mollarlo.",
+	},
+	["drm.muse.w10.002"] = {
+		"si china sotto una radice grossa come una colonna, che ha attraversato un muro elfico da parte a parte e ha continuato a crescere.",
+		"attraversa un cortile dove un albero ha spaccato in due il lastricato, i rami impigliati negli archi scolpiti lassù.",
+		"passa accanto a una fontana soffocata dai rampicanti, la vasca crepata, il bordo scolpito ancora liscio al tatto.",
+	},
+	["drm.muse.w10.003"] = {
+		"I Gordok incoronano chi uccide il loro re. Politica da ogre: semplice, onesta, e parecchio dura per i re.",
+		"In Feralas si dice che se batti il re dei Gordok, gli ogre ti consegnano il suo tributo e ti chiamano capo. Ho sentito di governi peggiori.",
+		"Gli ogre dell'ala nord hanno un re, un trono, e la tradizione di perderli entrambi contro chi picchia più forte. Come tradizione, non manca di coraggio.",
+	},
+	["drm.muse.w10.004"] = {
+		"Immol'thar è prigioniero qui da più tempo di quanto esista la maggior parte delle nazioni. Chissà se ricorda ancora cos'era prima della gabbia.",
+		"Piloni e guardiani tengono il demone in gabbia, e gli Highborne bevono quel che filtra dalle sbarre. Qui nessuno è innocente in quel patto.",
+		"Un demone in una cella, un principe che ci campa sopra. Difficile dire quale dei due sia più prigioniero.",
+	},
+	["drm.muse.w10.005"] = {
+		"Satiri nei giardini orientali, ancora a saltellare fra le rovine del popolo che hanno tradito. Non hanno mai avuto il buon gusto di andarsene.",
+		"Si dice che i satiri fossero elfi, prima di vendersi alla Legione. Hanno tenuto le corna e perso tutto il resto.",
+		"Marciume vile nell'ala est, satiri fra l'edera, imp sotto le scale. Qualunque cosa gli Highborne abbiano evocato qui, non è mai tornata davvero a casa.",
+	},
+	["drm.muse.w10.006"] = {
+		"fa scorrere un dito su uno scaffale di libri elfici ammorbiditi dall'umido, i titoli in una scrittura più vecchia di qualunque regno vivente.",
+		"si ferma mentre una figura pallida in vesti di corte attraversa la sala e passa dentro un muro, ancora intenta a qualche commissione del vecchio impero.",
+		"nota che le lampade di questa sala ardono ancora, anche se da moltissimo tempo nessun vivente ne pareggia lo stoppino.",
+	},
+	["drm.muse.w10.007"] = {
+		"Tutta Feralas attraversata per una rovina piena di ogre. Spero almeno che il panorama ne valga la pena.",
+		"Eldre'Thalas. Ne avevo sentito parlare nelle storie. Le storie non dicevano niente degli ogre.",
+		"Attenti agli scalini. Li hanno fatti per gli elfi, che avevano gambe più lunghe e più pazienza.",
+	},
+	["drm.muse.w10.008"] = {
+		"Questa era un gioiello dell'impero di Azshara, una città di studiosi lontana dalla capitale. La distanza l'ha salvata quando il resto è finito sotto il mare.",
+		"Eldre'Thalas fu costruita per custodire il sapere. Ci è riuscita, a modo suo. Solo che non ha mai deciso per chi custodirlo.",
+		"Sotto questi rampicanti ci sono gli archivi di un impero annegato. Ogni ogre qui dentro dorme sopra un libro di storia.",
+	},
+	["drm.subzone_enter.w10.001"] = {
+		"entra in {subzone}, dove colonne elfiche scolpite si alzano da un groviglio di radici e foglie cadute.",
+		"arriva in {subzone} sotto un arco spezzato, la vecchia pietra che ronza appena di qualcosa che non se n'è andato del tutto.",
+		"entra in {subzone}; l'aria sa di foglie schiacciate e di qualcosa di più antico, come incenso lasciato bruciare per un'era.",
+	},
+	["drm.subzone_enter.w10.002"] = {
+		"{subzone}. Ogni sala era pensata per l'ammirazione degli studiosi di un impero. Il pubblico, da allora, è cambiato parecchio.",
+		"{subzone}. Qui persino gli stipiti hanno più intagli di tanti templi. Gli elfi non facevano mai le cose a metà.",
+	},
+	["drm.threat.w10.001"] = {
+		"Girati. In queste sale c'è posto per un'altra rovina.",
+		"Vattene. Sono qui per quel che c'è dentro, non per te.",
+	},
+	["drm.threat.w10.002"] = {
+		"Va' ad avvisare chi comanda. Io aspetto.",
+		"Sparisci. Trovati qualcosa di più antico dietro cui nasconderti: qui ce n'è in abbondanza.",
+	},
+	["drm.victory.w10.001"] = {
+		"Giù, fra le vecchie piastrelle. I rampicanti se lo prenderanno presto.",
+		"Un altro caduto in una città che ne ha visti a migliaia.",
+		"Fatto. Feralas ci crescerà sopra prima che qualcuno lo racconti.",
+	},
+	["drm.victory.w10.002"] = {
+		"torna su un mosaico elfico, ora con una crepa in più, e guarda in fondo alla sala in cerca della prossima sagoma.",
+		"riprende fiato sotto un arco spezzato, ascoltando cadere le foglie.",
+	},
+	["drm.victory.w10.003"] = {
+		"Il prossimo! A Eldre'Thalas gli ospiti non finiscono mai.",
+		"Un altro capitolo che gli Shen'dralar non metteranno per iscritto.",
+	},
+	["drm.victory.w10.004"] = {
+		"Torna nel vuoto, o dovunque finiscano i demoni. Non è affar mio.",
+		"Una cosa in meno di cui gli Highborne devono rispondere.",
+	},
 ]==])

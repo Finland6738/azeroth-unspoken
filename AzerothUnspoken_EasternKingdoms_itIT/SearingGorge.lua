@@ -222,4 +222,88 @@ AU:RegisterRegionalTexts("searinggorge", "itIT", "eastern_searinggorge", [==[
 		"Il vento gira, e la foschia della lava viene verso di me invece di allontanarsi. Delizioso.",
 		"Il cielo cambia sopra di me, un po' più scuro o un po' più chiaro. Sotto tutto questo fumo è difficile dirlo.",
 	},
+	["sgg.a.attack.w10.001"] = {
+		"Datti una rinfrescata!",
+		"Tieni, qualcosa che scotta più della gola!",
+	},
+	["sgg.a.battle.w10.001"] = {
+		"Avanti. Il terreno scotta, ma io sono peggio.",
+		"Fuori dal fumo, allora. Fatti vedere.",
+	},
+	["sgg.a.battle.w10.002"] = {
+		"Non pestare i pezzi che brillano. Non pestare i pezzi che brillano.",
+		"Prima l'appoggio. Un passo sbagliato qui e il terreno combatte per loro.",
+	},
+	["sgg.a.battle.w10.003"] = {
+		"Torna nella roccia, fiamma!",
+		"Un fuoco con le gambe e un caratteraccio. Va bene. Vieni qui.",
+	},
+	["sgg.a.journey.w10.001"] = {
+		"A terra sulle impalcature. Il grifone vuole già ripartire, e a dirla tutta anch'io.",
+		"Atterraggio. Il grifone nasconde la testa sotto un'ala per ripararsi dalla fuliggine, e mi pare saggio.",
+	},
+	["sgg.a.landmark.w10.001"] = {
+		"{landmark}. Il terreno sprofonda in una conca di fumo e roccia fusa, e sulle cenge figure minuscole spingono carrelli. È qui che scavano i Dark Iron.",
+		"The Cauldron. Un cratere pieno di fuoco e di macchinari, con la lava per pavimento. Dall'orlo sembra la forgia del mondo intero.",
+	},
+	["sgg.a.lowhp.w10.001"] = {
+		"Il sangue sfrigola dove tocca la roccia. È il mio. Muoviti.",
+		"Il mio sangue sfrigola sulle pietre. È ora di smettere di sanguinare.",
+	},
+	["sgg.a.muse.w10.001"] = {
+		"Ironforge e i Dark Iron sono in guerra da quando i tre clan si divisero. Qui si vede l'altra faccia di quella lite, ed è in fiamme.",
+		"La gente di Magni e quella di Thaurissan si odiano da secoli. Questa gola è quello che la parte sconfitta di quella vecchia guerra ha fatto della propria rabbia.",
+		"La Guerra dei Tre Martelli non è mai finita davvero. Si è solo spostata quaggiù, tra le scorie e il fumo.",
+	},
+	["sgg.a.muse.w10.002"] = {
+		"Quel fuoco si è appena mosso. I fuochi non dovrebbero avere opinioni.",
+		"Qui certe fiamme vanno a spasso. Preferirei che stessero ferme, come fiamme per bene.",
+	},
+	["sgg.a.muse.w10.003"] = {
+		"La strada a sud finisce alla bocca di Blackrock Mountain. Tutti a Thorium Point sanno fare il nome di qualcuno che ci è entrato.",
+		"A sud la montagna apre il suo cancello. I Dark Iron sotto, la Dark Horde sopra, i draghi su tutto. Eppure il sentiero per arrivarci è ben battuto.",
+		"Prima o poi chiunque lavori in questa gola finisce per guardare verso il cancello di Blackrock. Io lo sto guardando adesso.",
+	},
+	["sgg.a.muse.w10.004"] = {
+		"A Thorium Point puoi fare la fila dietro a un orco per comprare lo stesso minerale. La Thorium Brotherhood prende i soldi di tutti con la stessa faccia.",
+		"La Thorium Brotherhood vende ad Alleanza e Orda senza distinzioni, e non sorride a nessuna delle due.",
+	},
+	["sgg.a.muse.w10.005"] = {
+		"attraversa una crosta di roccia raffreddata saggiando ogni passo, mentre nelle crepe brilla una luce arancione.",
+		"si fa strada piano sulla pietra nera ancora calda da sotto, {g:attento|attenta} alle fessure che brillano.",
+	},
+	["sgg.a.muse.w10.006"] = {
+		"I golem dei Dark Iron sferragliano lungo le creste. Anche le cose che costruiscono qui servono a un solo scopo.",
+		"Giganti di ferro di pattuglia, fatti da mani che sembrano non fabbricare mai niente di gentile.",
+	},
+	["sgg.a.npc_meet.w10.001"] = {
+		"Qualcosa per le bruciature? E qualcosa da bere che non sia caldo, se alla Thorium Brotherhood hanno mai sentito parlare di una cosa simile.",
+		"Un unguento per le mani scottate, per favore, e acqua. Tanta acqua.",
+	},
+	["sgg.a.quest_complete.w10.001"] = {
+		"consegna il lavoro con le dita nere di fuliggine e lascia impronte su tutto.",
+		"prende la ricompensa e se la passa da una mano all'altra per un momento: scotta.",
+		"soffia via un velo di cenere dalla ricompensa prima di metterla via.",
+	},
+	["sgg.a.quest_complete.w10.002"] = {
+		"Fatto. Ogni lavoro finito nella gola è una cosa in più che i Dark Iron dovranno spiegare al loro imperatore.",
+		"Finito. Giù nella montagna, la gente di Thaurissan avrà un rapporto in più che non le piacerà.",
+	},
+	["sgg.a.quest_progress.w10.001"] = {
+		"Non ho finito. Il resto è là fuori tra le ceneri, e si scalda sempre di più.",
+		"Fatto in parte. Quello che manca è da qualche parte sotto tutta questa cenere.",
+	},
+	["sgg.a.subzone_enter.w10.001"] = {
+		"{subzone}. Più caldo del tratto di prima, o comincio a immaginarmelo. Probabilmente tutte e due le cose.",
+		"{subzone}. Qualcuno gli ha dato un nome. La cenere non se n'è accorta.",
+	},
+	["sgg.a.victory.w10.001"] = {
+		"Thorium Point mi deve da bere. Qualcosa di fresco, se esiste.",
+		"Questo va sul conto della Thorium Brotherhood.",
+		"Fatto. A Thorium Point vorranno sentirla.",
+	},
+	["sgg.a.victory.w10.002"] = {
+		"Se quello sorvegliava le fosse, qualche schiavo ha appena un po' più d'aria per respirare.",
+		"Una frusta in meno sopra il Cauldron. Non basta, ma conta.",
+	},
 ]==])

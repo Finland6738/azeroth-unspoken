@@ -4825,4 +4825,1148 @@ NS:AddTexts("enUS", {
 		"rolls into {subzone} with that loose, swinging troll gait, as if the ground were a deck at sea.",
 		"takes the first steps into {subzone} slowly, one long hand trailing along whatever is nearest.",
 	},
+	["band.b60.muse.w10.001"] = {
+		"Every road out of a first village looks short to me now. It isn't the road that shrank.",
+		"There was a time a single hill felt like a day's march. The hills haven't changed. The legs have.",
+		"The first roads of my life seemed endless. Looking back, they were barely the length of a good argument.",
+	},
+	["band.b60.muse.w10.002"] = {
+		"walks without hurry, gear worn smooth at every edge, with the look of someone the road has finished testing.",
+		"adjusts a strap that has been adjusted a thousand times before, without needing to look.",
+		"checks each buckle and seam in turn, the slow inventory of someone who has learned what a loose one costs.",
+	},
+	["band.b60.muse.w10.003"] = {
+		"Sooner or later every road at this height leads to the Plaguelands. The ones who walk them don't talk about it much afterward.",
+		"The Plaguelands are where strength finds out what it's worth. The Scourge never stops asking.",
+		"Up north the land itself is sick, and the Argent Dawn holds a chapel against it with stubbornness and little else. I understand stubbornness.",
+	},
+	["band.b60.muse.w10.004"] = {
+		"Half my coin goes to repairs now. Being strong is mostly an expensive way to get hit by bigger things.",
+		"There's a pair of gloves in Blackrock with my name on them. I only have to persuade their current owner.",
+		"Repairmen everywhere seem glad to see me. That isn't fame. That's a regular customer.",
+	},
+	["band.b60.muse.w10.005"] = {
+		"Strength is a debt. The world lent me hard years to build it, and it expects to be paid in kind.",
+		"There's no point being this strong for my own sake. A shield nobody stands behind is just a heavy plate.",
+		"Whatever I've become, it should stand between something terrible and someone who can't.",
+	},
+	["band.b60.muse.w10.006"] = {
+		"Some days the body lists every road it has walked, one ache after another, and expects me to listen.",
+		"Beginners get tired. This is something else: the weariness of knowing exactly how much is left to do.",
+		"I could rest. Nobody would blame me. That's precisely why it's so hard to.",
+	},
+	["band.b60.muse.w10.007"] = {
+		"If you're new to this: buy bandages before you buy anything shiny. You'll thank me inside a week.",
+		"First lesson, free of charge: the thing that looks harmless is usually the one that bites.",
+		"A word to anyone starting out: run sooner than feels proud. Pride heals slower than bruises.",
+	},
+	["band.b60.muse.w10.008"] = {
+		"People I've never met know my face now. I'm not sure I like being a story they tell without me.",
+		"Strangers nod at me as if we'd shared a campfire. Word travels farther than I ever have.",
+		"My name walks into every town ahead of me these days. I spend half my time catching up with it.",
+	},
+	["band.b60.muse.w10.009"] = {
+		"The dragonflights are stirring. Black in the mountain, green at the edges of the great trees, blue over the ruins of Azshara. Whatever they're waiting for, it isn't us.",
+		"Dragons were a story for children once. At this point in the road they're an entry on the list of things to prepare for.",
+		"Every dragonflight seems to have its own business in this world, and none of them has asked our opinion.",
+	},
+	["band.b60.muse.w10.010"] = {
+		"Everyone talks about Molten Core like it's a tavern down the road. It's a volcano. Full of fire. On purpose.",
+		"They want forty people to walk into a mountain of fire and fight its master. Forty. I can't get four to agree on lunch.",
+		"Onyxia's lair, Molten Core, the troll city in Stranglethorn... Every tavern table has a plan. Few of them have a date.",
+	},
+	["band.b60.muse.w10.011"] = {
+		"I remember being afraid of the first thing that ever growled at me. Not the fear itself, which is gone, but how real it was.",
+		"The early fears were small and honest. The ones I carry now are bigger and much better dressed.",
+		"What frightened me at the start would barely make me turn my head today. I'm not sure that's only good news.",
+	},
+	["band.b60.muse.w10.012"] = {
+		"Blackrock Mountain holds three wars in one: Dark Iron below, the Dark Horde above, dragons over both. Nobody sensible goes in alone, which says a lot about who goes in.",
+		"That mountain in the Burning Steppes is the kind of place that makes people write their letters first.",
+		"Inside Blackrock the heat comes from the stone, the hate comes from everyone, and the loot comes, if it comes, last.",
+	},
+	["band.b60.muse.w10.013"] = {
+		"Silithus is sand, insects the size of carts, and a wall the night elves and the dragons sealed a thousand years ago. People keep walking up to that wall anyway.",
+		"Cenarion Hold keeps watch over a desert that hums. Something under the sand is counting, and it isn't counting in our favor.",
+		"The Twilight's Hammer camps in Silithus, the hives dig beneath it, and the gates of Ahn'Qiraj stay shut. For now, which is the least comforting phrase I know.",
+	},
+	["band.b60.muse.w10.014"] = {
+		"People ask me for real things now. Not 'fetch ten pelts' but 'can you stop it'. I'm still learning to say yes without flinching.",
+		"When someone asks for help these days, they look at me as if the asking were the hard part. For them, it was.",
+		"Being asked isn't the same as being hired. Hired, you owe the job. Asked, you owe the person.",
+	},
+	["band.b60.muse.w10.015"] = {
+		"Let the Scourge send what it likes. Someone has to meet it, and I've run out of reasons that someone shouldn't be me.",
+		"There are worse things than me in this world. I mean to find them before they find anyone else.",
+		"The world is full of things that only stop when they're made to. Fine. That's the work.",
+	},
+	["band.b60.muse.w10.016"] = {
+		"glances down at a pack full of things no beginner would recognize, and a few no beginner should touch.",
+		"counts the coins in {g:his|her} purse, works out the repair bill in {g:his|her} head, frowns, and counts again.",
+		"stretches until something in one shoulder answers with a pop, the sound of long service.",
+	},
+	["band.b60.muse.w10.017"] = {
+		"In Caer Darrow they teach necromancy like a trade, with lessons and masters. That's the part I can't shake: how orderly it is.",
+		"Stratholme is a city nobody let finish dying. The Scourge holds one half, the Scarlet Crusade the other, and neither will let it rest.",
+		"Scholomance, Stratholme: names young adventurers whisper to sound brave. I say them plainly now, which is worse.",
+	},
+	["band.b60.muse.w10.018"] = {
+		"Glory is a loud word for something that mostly looks like patience and repair bills.",
+		"The songs make it sound like one great day. It's ten thousand ordinary ones, most of them muddy.",
+		"Nobody writes ballads about the hundredth walk into the same dungeon. That's where the real work lives, though.",
+	},
+	["band.b60.muse.w10.019"] = {
+		"Anyone heading for Blackrock? I'm good company, and better company once the dragons show up.",
+		"If anyone needs one more for Blackrock Spire, I've got time, supplies and a terrible sense of self-preservation.",
+		"Looking for a few steady people for the Plaguelands. Nerves required, heroics optional.",
+	},
+	["band.b60.muse.w10.020"] = {
+		"Fewer people walk beside me at this height. Not lonelier, exactly. Quieter.",
+		"Most of the faces from the early roads went their own ways long ago. I wish them well, wherever the road set them down.",
+		"Strength thins out the company you keep. Not on purpose; the roads just get narrower.",
+	},
+	["band.b60.muse.w10.021"] = {
+		"Any quiet place looks like a beginner's country to me now. Peaceful fields, small trouble, and someone just starting out who thinks it's the whole world.",
+		"I like the gentle lands more than I did when they were all I could handle. You have to have seen the Plaguelands to love a plain meadow properly.",
+		"The softest corners of the world are where everyone begins. I'm glad they exist, and glad someone keeps them soft.",
+	},
+	["band.b60.muse.w10.022"] = {
+		"Rend Blackhand sits in the Spire playing warchief with a dragon's leash around his neck. Someone should tell him how that looks.",
+		"Thaurissan's dwarves keep digging under the mountain, toward a master made of fire. Some people never learn which way is up.",
+		"Every horror in the world has a court of people who chose to serve it. Those are the ones I can't forgive.",
+	},
+	["band.b60.muse.w10.023"] = {
+		"The best thing the long road taught me is when not to fight. It took the longest to learn and gets used the most.",
+		"Experience is mostly a list of mistakes I no longer have time to make.",
+		"What I know now would fit in a short letter. Writing it took the whole road.",
+	},
+	["band.b60.muse.w10.024"] = {
+		"There's talk of a necropolis hanging over the Plaguelands, a fortress of the dead that floats. I'd laugh, if the Argent Dawn weren't so quiet about it.",
+		"The Lich King is far away, they say, across the sea in the frozen north. Far away has a strange way of reaching all the way here.",
+		"The Scourge's masters never set foot on the field themselves. That's what frightens me: whoever moves the pieces can afford to wait.",
+	},
+	["band.b60.muse.w10.025"] = {
+		"When the children ask if I've fought a dragon, I tell them 'not before breakfast'. It keeps them guessing.",
+		"The young ones think I know everything. I let them, right up until they ask me for directions.",
+		"Apparently I'm someone to look up to now. I'll try not to trip while they're looking.",
+	},
+	["band.b60.muse.w10.026"] = {
+		"Every road up to this height is lined with people who didn't make it. I didn't know most of them. I think of them anyway.",
+		"Strength is partly luck that never got a name. I try to remember that when I pass the cairns along the way.",
+		"Plenty who were braver than me stopped somewhere on the way. Being here isn't a verdict on them.",
+	},
+	["band.b60.muse.w10.027"] = {
+		"Everlook's goblins sell hot drinks at prices that should be a crime, and in Winterspring nobody argues. That's how you know a place is truly at the edge.",
+		"The edges of the map are where the interesting trouble lives: Winterspring, Silithus, the Plaguelands. The middle of the world has been tidied.",
+		"At this point the far corners feel closer than the capitals. I know the way to Everlook better than the way to a decent tailor.",
+	},
+	["band.b60.muse.w10.028"] = {
+		"The Argent Dawn wants scourgestones, the Timbermaw want beads, the Thorium Brotherhood wants ore. Being trusted turns out to be a full-time errand.",
+		"Standing is built the way walls are: one dull stone after another, and nobody notices until it holds.",
+		"Every faction that matters wants proof, and proof comes in sacks. I've carried a lot of sacks.",
+	},
+	["band.b60.muse.w10.029"] = {
+		"stands with the quiet of a blade tempered long ago, nothing left to prove and everything left to do.",
+		"lifts {g:his|her} gaze without hurry, as if measuring the whole world for a job that still needs doing.",
+		"breathes out slowly, and the whole long road seems to settle onto {g:his|her} shoulders and stay there, carried well.",
+	},
+	["band.b60.muse.w10.030"] = {
+		"If all this strength ends up in an inn, telling stories over a mug, I'll have wasted it. There's still work.",
+		"Purpose is easy when you're weak: get stronger. Now I have to choose one, and nobody hands it over.",
+		"The world doesn't need another hero. It needs people who keep showing up after the songs stop. That much I can do.",
+	},
+	["band.b60.muse.w10.031"] = {
+		"Everything I'm wearing was pried from something that didn't want to give it up. Fashion is hard work.",
+		"People ask where I got these boots. The honest answer is 'from someone who no longer needed them', and that ends the conversation.",
+		"Nothing I wear matches, but every piece of it has survived something. That's a style too.",
+	},
+	["band.b60.muse.w10.032"] = {
+		"Being at the top only means the dangers left are the ones that were waiting for someone like me.",
+		"I'm strong enough now to be noticed by the things that matter. I'm not sure that's the compliment it sounds like.",
+		"Nothing in the ordinary world can hurt me much anymore. The world beyond the ordinary is where I'm headed anyway.",
+	},
+	["faction.alliance.muse.w10.001"] = {
+		"Common is the tongue we trade, march and bicker in. Half the Alliance still counts, curses and dreams in something else.",
+		"Ask a dwarf, a gnome and an elf for directions in Common and you'll get three accents and one road. That's the Alliance working as intended.",
+		"Common for the orders, the mother tongue for the swearing. In any Alliance camp you can tell who stubbed a toe by the language that follows.",
+	},
+	["faction.alliance.muse.w10.002"] = {
+		"The masons who rebuilt Stormwind sent their bill to the nobles and got silence back. Now the Westfall road collects from the whole Alliance, in red masks.",
+		"Every ally bound for Stormwind crosses Westfall first, and sees what an unpaid debt looks like once it learns to carry a knife.",
+		"A dwarf would call a mason's wage sacred. Stormwind's nobles called it negotiable, and the Defias have been negotiating ever since.",
+	},
+	["faction.alliance.muse.w10.003"] = {
+		"A sailor in Menethil swore King Varian's ship never reached Theramore. A guard in Stormwind swore he never reached the ship. Everyone agrees he's gone; nobody agrees where.",
+		"A peddler blames pirates, a priest blames the Horde, a drunk in Lakeshire blames the nobles. Every story of the missing king says more about the teller than about the king.",
+		"Each tavern of the Alliance keeps its own version of where the king went. I've stopped collecting them: none of them has a happy last page.",
+	},
+	["faction.alliance.muse.w10.004"] = {
+		"In Stormwind Keep a boy sits under a crown too large for him, and soldiers of four peoples take orders in his name. Bolvar Fordragon carries the weight; the boy carries the name.",
+		"On paper the Alliance answers to a child king and a tired regent. I hope Bolvar Fordragon gets one unbroken sleep a year, and that the boy gets to be a boy now and then.",
+	},
+	["faction.alliance.muse.w10.005"] = {
+		"The great forge of Ironforge hasn't gone cold in living memory, and dwarven memory is long. Whatever else the Alliance loses, that fire still burns under the mountain.",
+		"Half the steel carried under our banners was poured beneath one mountain. Whoever we are, a dwarf has had a hand in keeping us whole.",
+	},
+	["faction.alliance.muse.w10.006"] = {
+		"In Ironforge they lower their voices about the king's daughter. Taken by the Dark Irons, some say; gone to them of her own will, say others. Magni Bronzebeard says nothing at all.",
+		"A king who digs up the past of the whole world, and can't get his own daughter out from under Blackrock. Even Ironforge's thick walls can't stop that from echoing.",
+	},
+	["faction.alliance.muse.w10.007"] = {
+		"Magni had two brothers at his side once. One wanders the world for the Explorers' League; the other went north with a prince of Lordaeron, and the north kept him.",
+		"Ironforge's royal house is short of brothers: Brann off digging somewhere, Muradin lost in the ice with the prince he went to help. The Alliance's oldest friend has paid its share.",
+	},
+	["faction.alliance.muse.w10.008"] = {
+		"Darnassus sits in a tree across the sea, as far from the rest of the Alliance as a capital can be and still send soldiers. Some days that distance looks like wisdom.",
+		"Ask a human how far Darnassus is and you'll hear 'a crossing'. Ask a night elf and you'll hear 'just far enough'.",
+		"The night elves joined us late and keep their city over the water, up a tree. You can be a good ally and still prefer your own quiet.",
+	},
+	["faction.alliance.muse.w10.009"] = {
+		"The Sentinels hold Ashenvale against the Warsong nearly alone. When the Alliance talks about its war with the Horde, the elves could teach it a thing or two about the price of timber.",
+		"Every Warsong axe in Ashenvale bites a tree some Sentinel swore to keep. The rest of the Alliance reads about it in reports; the elves hear it in the wood.",
+	},
+	["faction.alliance.muse.w10.010"] = {
+		"Some druids whisper that Teldrassil was planted without the blessing of the old powers. The Alliance's youngest capital, and even its own people argue over the roots.",
+		"A great tree raised in a hurry, after a great tree was lost. The elves call it hope. Now and then a druid looks at the roots and says nothing, and the nothing is louder.",
+	},
+	["faction.alliance.muse.w10.011"] = {
+		"Ask a gnome what the Alliance did when Gnomeregan fell and you get a bright smile and a new subject. The smile says enough.",
+		"The gnomes lost a whole city and still fix everyone else's gadgets. If the Alliance ever marches on Gnomeregan, it owes them the front rank.",
+	},
+	["faction.alliance.muse.w10.012"] = {
+		"Lady Proudmoore keeps a truce with the Warchief across the water. Some in the Alliance call it statecraft, some call it a betrayal waiting for a date. Theramore just keeps its gates open.",
+		"Theramore talks to Orgrimmar; Stormwind doesn't. The Alliance has more than one idea of peace, and each comes with its own walls.",
+	},
+	["faction.alliance.muse.w10.013"] = {
+		"We say 'the war with the Horde' as if it were one war. In Ashenvale it's timber, in Hillsbrad it's farmland, in Arathi it's a mine and a smithy. Everywhere it's somebody's brother.",
+		"The war with the Horde has no front, only fences: a ridge in Hillsbrad, a lumber camp in Ashenvale, a crossroads in Stranglethorn. You learn where the fences run by where the graves are.",
+	},
+	["faction.alliance.muse.w10.014"] = {
+		"The Alliance argues over Westfall and Ashenvale while the dead keep the whole north. Some days I think the Scourge is the only one of us not distracted.",
+		"Every council of the Alliance keeps a chair for the Horde question, one for the Defias, one for the gnomes' city. The Scourge never needed a chair. It has the north.",
+	},
+	["faction.alliance.muse.w10.015"] = {
+		"Seven human kingdoms stood behind the first Alliance, with dwarves and elves besides. Count the banners from that list still flying and you'll have fingers to spare.",
+		"Lordaeron fallen, Alterac sold, Gilneas walled, Stromgarde in ruins, Dalaran under its dome. The first Alliance didn't lose a war; it lost its members one by one.",
+	},
+	["faction.alliance.muse.w10.016"] = {
+		"At Light's Hope the Argent Dawn takes anyone who'll stand against the dead, Alliance and Horde alike. The Scourge has managed what no king could, and made both sides share a chapel.",
+		"In the Plaguelands an Alliance soldier and a Horde one may keep watch on the same wall, under the Argent Dawn. Nobody calls it peace. Nobody calls it war, either.",
+	},
+	["faction.alliance.muse.w10.017"] = {
+		"In Alterac the Stormpike dwarves dig after their claims and the Frostwolves defend the only home they have. Both sides have a point, which is exactly why the valley never stays quiet.",
+		"The Stormpike Guard calls for volunteers, and the Alliance sends them up into the Alterac mountains. The Frostwolves were there first; the dwarves came with a charter. Nobody up there reads charters.",
+	},
+	["faction.alliance.muse.w10.018"] = {
+		"The Silverwing Sentinels hold a gulch where the Warsong cut the forest down. A flag goes one way, a flag goes the other, and the trees never get their say.",
+		"Warsong Gulch: the Alliance carries their flag out, the Horde carries ours. It sounds like a game until you've seen the stumps.",
+	},
+	["faction.alliance.muse.w10.019"] = {
+		"The League of Arathor fights the Defilers for a farm, a mine, a mill, a stable and a smithy. Kingdoms were founded on less, in those same hills. Kingdoms were lost on less, too.",
+		"The Arathi hills were the cradle of the first human empire. Now the Alliance and the Horde race each other for a basin's stables and mill, and the weathered stones watch.",
+	},
+	["faction.alliance.muse.w10.020"] = {
+		"Back in the cities they call the battlegrounds glory. Up close they're an argument with the Horde that nobody has the authority to end.",
+		"Medals, marks of honor, a nod from a general. All for holding a field the Horde will hold again by next week.",
+	},
+	["faction.alliance.muse.w10.021"] = {
+		"The boat between Menethil and Auberdine is where the Alliance truly meets: dwarves gripping the rail, gnomes timing the waves, elves pretending they aren't seasick.",
+		"Kul Tiran sailors ferry the Alliance from coast to coast and nobody thanks them until the boat is late. Then everybody knows their names.",
+	},
+	["faction.alliance.muse.w10.022"] = {
+		"Gryphons in the east, hippogryphs in the west. The Alliance can't even agree on what to fly, and both of them get you there.",
+		"Feathers and a beak either way. Dwarves and elves will argue for an hour over which beast is better, and the beasts couldn't care less.",
+	},
+	["faction.alliance.muse.w10.023"] = {
+		"The Wildhammer belong to the Alliance the way a gale belongs to a ship: they arrive when they please, from Aerie Peak, on gryphons, shouting. To be fair, they usually arrive.",
+		"Not every dwarf answers to Ironforge. The Wildhammer keep their own counsel in the Hinterlands and lend the Alliance their gryphons, their tempers and, when it counts, their hammers.",
+	},
+	["faction.alliance.muse.w10.024"] = {
+		"Not every dwarf stands with the Alliance. The Dark Irons crowned their own emperor under Blackrock, and the wound between the clans has never closed.",
+		"The Dark Irons broke Thandol Span, so the road between Ironforge and the south has a hole in it. The Alliance has been laying planks over holes like that for years.",
+	},
+	["faction.alliance.muse.w10.025"] = {
+		"Gilneas shut its gate, Quel'Thalas walked out, Stromgarde went its own way. The Alliance has lost more members to sulking than to the Horde.",
+		"Every few years some kingdom slams the door on the Alliance and swears it's for good. The door's still on its hinges; the Alliance is mostly made of doors like that.",
+	},
+	["faction.alliance.muse.w10.026"] = {
+		"Once the Alliance was human crowns, with dwarves and elves along for the war. This one is stranger: a boy king, a dwarf king, a high priestess and an exiled tinker, and a great deal of correspondence.",
+		"The Horde has one Warchief. We have Stormwind's regent, Ironforge's king, Darnassus's priestess and Gnomeregan's tinker, and a courier who has never once had a day off.",
+	},
+	["faction.alliance.muse.w10.027"] = {
+		"Every people of the Alliance keeps a ledger: who came when the gates fell, who sent a letter instead. None of the ledgers balance, and we march together anyway.",
+		"Old debts hold the Alliance together better than new oaths. The dwarves remember who fought for Ironforge, the humans who fought for Stormwind, and everyone remembers who didn't.",
+	},
+	["faction.alliance.muse.w10.028"] = {
+		"At Hyjal, the veterans say, orc, human and night elf stood shoulder to shoulder against the Legion. Then the fires went out, and everyone went home to their old quarrels.",
+		"Once, beneath a burning mountain, the Alliance and the Horde fought on the same side. People tell it now as if it were a fable, and in a way it has become one.",
+	},
+	["faction.alliance.muse.w10.029"] = {
+		"Nethergarde Keep stands in the Blasted Lands watching a Dark Portal that has been dead for years. The Alliance pays good mages to stare at a ruin, just in case. I find it oddly comforting.",
+		"In the red waste a keep full of Alliance mages keeps an eye on a gate nobody uses anymore. That's how you can tell a people who've been surprised before.",
+	},
+	["faction.alliance.muse.w10.030"] = {
+		"Somewhere in Stormwind a quartermaster is counting arrows for Ashenvale, boots for Arathi and bandages for the Plaguelands, and wondering who pays. The Alliance runs on that one tired clerk.",
+		"Wars are won by heroes in the songs and by clerks in the ledgers. The Alliance has more songs than clerks, and it shows.",
+	},
+	["faction.alliance.muse.w10.031"] = {
+		"Humans ask the Light, elves ask Elune, dwarves dig after their makers and gnomes check the sums. At an Alliance burial we all bow our heads at the same moment.",
+		"The Alliance has no single creed and needs none. A paladin, a priestess of the moon and a dwarf with a lantern can stand at one grave and mean the same thing.",
+	},
+	["faction.alliance.muse.w10.032"] = {
+		"The Explorers' League digs up the world's oldest secrets and hands them to the Alliance like souvenirs. Some of the souvenirs bite.",
+		"Dwarves with shovels have taught the Alliance more about the making of the world than any library. Mostly by opening things that were sealed for a reason.",
+	},
+	["faction.alliance.muse.w10.033"] = {
+		"The Alliance posts its people far from where they were born: dwarves in elven forests, elves on human roads, gnomes anywhere with a workbench. Homesickness is the one thing all of us share.",
+		"In every Alliance garrison someone misses a different home: a mountain, a forest, a city of gears, a field of wheat. Put them together and you have the whole Alliance, aching.",
+	},
+	["faction.alliance.muse.w10.034"] = {
+		"An Alliance supper: human bread, dwarven cheese, elven fruit, and a gnomish gadget that heats it all slightly too much.",
+		"Four peoples, one pot. Nobody likes the stew, everybody eats it, and that's the Alliance in a bowl.",
+	},
+	["faction.alliance.muse.w10.035"] = {
+		"Stormwind lines its gate with stone heroes who went through the Dark Portal and stayed on the other side. The Alliance carves statues for the people it cannot fetch home.",
+		"Walk under the statues at Stormwind's gate and you feel watched, kindly, by people who expected more of us. I try to walk with my head a little higher there.",
+	},
+	["faction.alliance.muse.w10.036"] = {
+		"Alterac sold the first Alliance to the Horde, and now its ruins belong to the Syndicate. Treason never really ends; it just changes owners.",
+		"Every ally has a name to spit. For the first Alliance it was Perenolde, the lord who opened the passes to the Horde. Alterac has never been forgiven, and its hills have stopped asking.",
+	},
+	["faction.alliance.muse.w10.037"] = {
+		"Westfall burns because a city wouldn't pay; the north rots because a prince wouldn't stop. The Alliance's worst wounds were struck by its own hand.",
+		"Look closely at the Alliance's enemies and you'll find familiar faces: unpaid masons, a lost prince, nobles who sold a pass. The Horde is the only foe we didn't raise at home.",
+	},
+	["faction.alliance.muse.w10.038"] = {
+		"counts the capitals of the Alliance on {g:his|her} fingers, hesitates over Gnomeregan, and counts it anyway.",
+		"ticks off Stormwind, Ironforge and Darnassus on three fingers, holds up a fourth for Gnomeregan, and leaves it there a moment longer than the others.",
+	},
+	["faction.alliance.muse.w10.039"] = {
+		"mutters a thought in Common, frowns, and tries it again under {g:his|her} breath in another tongue, as if to see which one fits.",
+		"practices a few courteous words in the language of some other Alliance people, mangles the last one, and decides it was close enough.",
+	},
+	["faction.alliance.muse.w10.040"] = {
+		"Say what you like about the Alliance's councils. When the dead came south, most of our gates opened for the people running ahead of them.",
+		"For all our quarrels, the Alliance took in the ones fleeing the Scourge. Remember that the next time the nobles bore you.",
+	},
+	["faction.alliance.muse.w10.041"] = {
+		"In Booty Bay the goblins pour for the Alliance and the Horde from the same barrel and smile at both. There's a lesson in that; I'm just not sure I like it.",
+		"Goblin towns sell rope to us and rope to them, and the noose doesn't care which side bought it. The Alliance needs the goblins and hates needing them.",
+	},
+	["faction.alliance.muse.w10.042"] = {
+		"Plenty of soldiers in the Alliance were born after the Dark Portal was broken. To them the old Horde is a story, and the new one is simply the people on the other ridge.",
+		"Veterans fight the Horde they remember. Recruits fight the Horde in front of them. They don't always agree on which one is worse.",
+	},
+	["faction.alliance.muse.w10.043"] = {
+		"In Darnassus an elf child is learning Common from a human trader and getting the rude words first. The Alliance will be fine.",
+		"A gnome apprentice is teaching a dwarf child to count gears, and being taught to swear in return. That's how alliances outlive treaties.",
+	},
+	["faction.alliance.muse.w10.044"] = {
+		"Stormwind thinks it leads the Alliance. Ironforge thinks it pays for it. Darnassus thinks neither of them is paying attention.",
+		"Every capital of the Alliance is quietly sure it's the one holding the rest up. They're all a little right, which is the problem.",
+	},
+	["faction.alliance.muse.w10.045"] = {
+		"The Knights of the Silver Hand were the first Alliance's pride. Now the order is scattered: some to the Argent Dawn, some to the Scarlet madness, a few still kneeling in Stormwind's cathedral.",
+		"Paladins of the Alliance still swear by the Light, but the order that trained them broke along with Lordaeron. Each of them carries a piece of it now, and none of them the whole.",
+	},
+	["faction.alliance.muse.w10.046"] = {
+		"Different peoples, different gods, one line. Hold it.",
+		"The Alliance was never one people. It's a promise to stand together, and I mean to keep my end of it.",
+	},
+	["faction.horde.muse.w10.001"] = {
+		"Four peoples, four ways of praying, one tongue for giving orders. Orcish is the only thing the whole Horde shares, and even that each people pronounces its own way.",
+		"Tauren rumble it, trolls drawl it, the Forsaken rasp it, orcs bark it. Somehow everyone in the Horde understands the orders.",
+		"In the Horde, Orcish is the common tongue and nobody's mother tongue but the orcs'. The others learned it the way you learn a road: by walking it in company.",
+	},
+	["faction.horde.muse.w10.002"] = {
+		"Thrall could have asked for greener land. He took Durotar: red dust, scorpions, and nobody else wanting it. A people that wants peace starts where no one will fight it for the ground.",
+		"Durotar is hard ground, chosen on purpose. Land nobody envies is land nobody comes to take.",
+		"Orgrimmar was raised where the earth is red and water is scarce. The Warchief understood that the safest home is the one nobody covets.",
+	},
+	["faction.horde.muse.w10.003"] = {
+		"Cairne Bloodhoof speaks slowly, and the Horde has learned to wait for the end of his sentences. A people in a hurry needs someone who isn't.",
+		"When the Warchief's council grows loud, Cairne lets it, the story goes, and then says three words. Usually they are the right three.",
+	},
+	["faction.horde.muse.w10.004"] = {
+		"The Darkspear swore to the Horde when Thrall would not sail away and leave them to their enemies. Vol'jin has kept that oath through every hard season since. Debts like that hold a pact together better than any treaty.",
+		"Sen'jin died so his tribe could follow the Warchief. Vol'jin never lets the Horde forget it, and never lets the Darkspear forget the promise either.",
+	},
+	["faction.horde.muse.w10.005"] = {
+		"The Forsaken stand in the Horde the way a guest stands near the door: inside, welcome on paper, and watched. Cairne spoke for them. Not everyone listened.",
+		"Some in the Horde still count their fingers after shaking a Forsaken hand. The Forsaken notice. They have long memories and very little left to lose.",
+		"The Forsaken were let into the Horde with one hand and held off with the other. Trust is coming, slowly, the way feeling comes back to a numb limb.",
+	},
+	["faction.horde.muse.w10.006"] = {
+		"Nobody outside Undercity knows quite what the Royal Apothecary Society brews in its vats. Sylvanas swears it is all meant for the Scourge. The Horde has chosen to believe her, for now.",
+		"An ally who keeps her cellars locked. The Horde fights beside the Dark Lady and asks no questions about the green glass. Some day someone will have to.",
+	},
+	["faction.horde.muse.w10.007"] = {
+		"The demon's blood was burned out of the orcs only when Grom Hellscream fell killing Mannoroth. Every people of the Horde walks on that price now, orc or not.",
+		"Every free step the Horde takes was bought at Demon Fall Canyon, with the life of the one who had first drunk the demon's gift.",
+	},
+	["faction.horde.muse.w10.008"] = {
+		"Half the Horde's unity hangs from goblin zeppelins that creak like old barrels. If the goblins ever raise their fares, the Warchief will have a war on his hands with no enemy in sight.",
+		"Orgrimmar, Undercity, Grom'gol: the Horde is held together by gasbags and goblin rope. Best not think about it on the next crossing.",
+		"A goblin pilot, a balloon patched in four colors, and the Horde's whole link between two continents. Admirable, in its way. Terrifying, in every other.",
+	},
+	["faction.horde.muse.w10.009"] = {
+		"Orgrimmar needs timber and Durotar grows none. So the axes go to Ashenvale, and the Sentinels come out of the trees. Need on one side, grief on the other, and both of them right.",
+		"Every beam in Orgrimmar carries a piece of Ashenvale, and the price of an arrow. I can't tell whether that makes the city less ours or the war more honest.",
+		"The Warsong camps cut, the forest bleeds, the night elves answer. Nobody in that war is a villain in their own eyes.",
+	},
+	["faction.horde.muse.w10.010"] = {
+		"Ashenvale's trees are too tall for their own good. The Sentinels disagree, at length, with arrows.",
+		"The night elves call it a sacred forest. Splintertree Post calls it next month's firewood. Somebody will have to give.",
+	},
+	["faction.horde.muse.w10.011"] = {
+		"Honor in the old Horde meant killing well. In this one it means knowing when not to. The second is harder to teach, and nobody is fully sure of it yet.",
+		"The new Horde keeps the old word, honor, and tries to pour something better into it. Some days the word still tastes of what it held before.",
+		"Honor, the Warchief's way, means a beaten foe can walk away. Some in the Horde call that weakness. They never saw what the other way cost.",
+	},
+	["faction.horde.muse.w10.012"] = {
+		"The Horde remembers the internment camps, even the peoples who were never inside one. A pact is partly that: carrying an ally's scars as if they were your own.",
+		"Some Forsaken, in life, may have stood guard at the internment camps. Now they march under one banner with the ones they guarded. The Horde doesn't talk about it much.",
+	},
+	["faction.horde.muse.w10.013"] = {
+		"Lok'tar ogar. Victory or death, the orcs say, and the rest of the Horde has learned to say it with them.",
+		"Victory or death. Every people of the Horde says it in Orcish now, and means it in its own tongue.",
+	},
+	["faction.horde.muse.w10.014"] = {
+		"The Horde is a scatter of outposts held by stubbornness: Kargath, Stonard, Grom'gol, Hammerfall, Tarren Mill. On a map it looks thin. On the ground it looks like people refusing to leave.",
+		"Mark the Horde's camps on a map of the Eastern Kingdoms and you get a handful of dots in hostile country. Each dot is somebody's watch fire, and none of them goes out.",
+		"Every Horde outpost in the Eastern Kingdoms is a long way from Orgrimmar and behaves as if it weren't. That stubbornness is half of what holds it up.",
+	},
+	["faction.horde.muse.w10.015"] = {
+		"Troll food burns, tauren food fills, orc food fights back, and Forsaken food is best left unasked about. A Horde feast is an act of diplomacy.",
+		"Sharing a meal in the Horde takes courage. Somebody's dish is always going to set somebody else's tongue on fire.",
+	},
+	["faction.horde.muse.w10.016"] = {
+		"The Scourge holds the north of Lordaeron, and the Lich King's will moves every corpse in it. The Horde has a hundred quarrels with the Alliance, and one with the dead that it cannot lose.",
+		"When the Plaguelands come up at a Horde fire, the voices drop. Orc, troll, tauren or Forsaken, nobody wants to end up in that army.",
+		"The Alliance is a rival. The Scourge is an ending. The Horde knows the difference, even when its loudest voices forget it.",
+	},
+	["faction.horde.muse.w10.017"] = {
+		"The Horde fights the walking dead with the help of the walking dead. Nobody planned it that way. War makes stranger allies than any council would dare.",
+		"An army of the dead in the north, an ally of the dead in Undercity. The difference is a will of one's own, and the Horde has wagered a great deal on it.",
+	},
+	["faction.horde.muse.w10.018"] = {
+		"In Warsong Gulch the Outriders fight so the axes can keep working in Ashenvale. A flag carried home there is a tree felled somewhere else. War is rarely as simple as a banner.",
+		"The Warsong Outriders and the Silverwing Sentinels have turned a gulch into a quarrel with rules. Two flags, two bases, and a whole forest behind the score.",
+	},
+	["faction.horde.muse.w10.019"] = {
+		"The Defilers fight over Arathi Basin's mine, mill and stables. Glory goes into the songs, ore and lumber go into the reports, and the Horde needs the reports more.",
+		"In Arathi Basin the Defilers face the League of Arathor: the old kingdom's dead against its living, over fields some of them plowed in life.",
+	},
+	["faction.horde.muse.w10.020"] = {
+		"The Frostwolf clan kept the old ways in Alterac's high valley while the rest of the orcs sat in camps. Now the Stormpike dig into that valley, and the whole Horde is invited to answer.",
+		"Alterac Valley belongs to the Frostwolves by the oldest right there is: they survived there when nobody meant them to. The Stormpike dwarves claim the same hills for their mines.",
+	},
+	["faction.horde.muse.w10.021"] = {
+		"In Theramore a human woman keeps a truce with the Warchief that half her own people would call treason. Jaina Proudmoore and Thrall have bet on the same thin rope.",
+		"Peace with the Alliance has one door, and it opens from Theramore. Jaina Proudmoore stood against her own father to keep it ajar. The Horde remembers that, grudgingly.",
+		"Thrall and Jaina Proudmoore write to each other, it's said, and both keep the letters away from their councils. It's the quietest front of the war, and maybe the one that matters most.",
+	},
+	["faction.horde.muse.w10.022"] = {
+		"The Alliance tells its children the Horde eats them. The Horde tells its young the Alliance bathes too often. Only one of those is slander.",
+		"In Alliance stories we are monsters at the edge of the map. In ours they are the ones who build walls and call it civilization. Both stories could use an editor.",
+		"The Alliance has kings, councils and great halls of stone. The Horde has a Warchief, a few chieftains and a great deal of shouting. Both get things done; ours is louder about it.",
+	},
+	["faction.horde.muse.w10.023"] = {
+		"There are young warriors in the Horde now who never saw a camp, a chain or a demon. They fight for something they were simply born into. That's what the old ones bled for.",
+		"A whole generation is growing up thinking the Horde was always like this: drums, councils, allies. Let them think it. It's the best thing anyone could leave them.",
+	},
+	["faction.horde.muse.w10.024"] = {
+		"The Horde has no single faith. Spirits for the orcs, the Earth Mother for the tauren, the loa for the trolls, and for the Forsaken mostly questions. It marches anyway. Maybe that is a kind of faith too.",
+		"Ask four Horde soldiers what watches over them and you get four answers and one shrug. Nobody tries to win anybody over. It may be the Horde's best rule.",
+	},
+	["faction.horde.muse.w10.025"] = {
+		"The Horde fights over water, wood and ore more than over glory. Kalimdor's good land was taken long before the orcs arrived, and need makes a poor diplomat.",
+		"Hunger has started more of the Horde's fights than pride ever did. Pride just takes the credit afterward.",
+	},
+	["faction.horde.muse.w10.026"] = {
+		"adjusts the fit of {g:his|her} gear with the brisk care of a soldier whose kit has worn down many Horde roads.",
+		"squares {g:his|her} shoulders as if a Horde officer had just walked past, though no one has.",
+	},
+	["faction.horde.muse.w10.027"] = {
+		"mutters a few words of Orcish under {g:his|her} breath, the way travelers keep a shared tongue from going rusty.",
+		"hums a few bars of a marching tune from some Horde camp, then stops short, as if caught at it.",
+	},
+	["faction.horde.muse.w10.028"] = {
+		"Orc, troll, tauren, Forsaken. Sounds like the start of a joke. It's the start of an army.",
+		"Four peoples who'd never have shared a road, and now they argue over whose turn it is to cook. That's the Horde.",
+		"One banner, four peoples, and no two of them agree on the right marching pace. Somehow the army still arrives.",
+	},
+	["faction.horde.muse.w10.029"] = {
+		"The Horde asks a lot. Then again, it gave a lot first: a home, a name, a place in the line.",
+		"Strength is easy to find. Strength that keeps its word is what the Horde is short of. I mean to be some of it.",
+	},
+	["faction.horde.muse.w10.030"] = {
+		"Thrall is young, as Warchiefs go. Still, I sometimes wonder who would hold all these peoples together without him. Then I stop wondering; there is no good answer.",
+		"The Horde rests on a few pairs of shoulders: Thrall's, Cairne's, Vol'jin's, the Dark Lady's. Strong shoulders. Still only a few.",
+	},
+	["faction.horde.muse.w10.031"] = {
+		"Rend Blackhand's Dark Horde still flies the old colors in Blackrock Spire. The Horde doesn't call them enemies, exactly. More a bad memory with axes.",
+		"The Burning Blade still whispers to orcs in caves that the demons' gifts were real. Every Horde camp keeps one ear turned toward that whisper.",
+	},
+	["faction.horde.muse.w10.032"] = {
+		"Wind riders in Kalimdor, bats in Lordaeron. The Horde travels on whatever beasts its peoples have tamed, and nobody asks the beasts for their opinion.",
+		"Every people brought something of its own to the pact. The orcs brought wolves, the trolls raptors, the tauren kodo, the Forsaken bony horses and a long patience.",
+	},
+	["faction.horde.muse.w10.033"] = {
+		"Every people in the Horde was hunted, enslaved or cursed by somebody. Maybe that's what binds it: everyone here knows what it is to be cornered.",
+		"Orcs out of the camps, tauren hounded by the centaur, Darkspear chased off their islands, the Forsaken torn out of the Lich King's grip. The Horde is a gathering of escapes.",
+		"Nobody joined the Horde from a position of comfort. Every people in it came in out of some disaster of its own.",
+	},
+	["faction.horde.muse.w10.034"] = {
+		"Grunts in Orgrimmar, watchers on the bluffs, deathguards in Undercity, spears at Sen'jin. Different names for the same job: standing where trouble arrives first.",
+		"Every capital of the Horde dresses its guards its own way and drills them the same: watch, hold, call for help early. The old Horde never learned the last part.",
+	},
+	["faction.horde.muse.w10.035"] = {
+		"At the bank in Orgrimmar a tauren waits behind a troll, who waits behind a Forsaken, who waits behind an orc. Nobody pushes. It's a small miracle, and nobody notices it.",
+		"Undercity's bats carry tauren riders; Thunder Bluff's lifts creak under Forsaken passengers. The pact shows best in the dull places.",
+	},
+	["faction.horde.muse.w10.036"] = {
+		"When the Horde loses someone, each people mourns its own way: orc pyres, tauren earth, troll chants, Forsaken silence. One war, and four kinds of farewell.",
+		"Horde funerals are crowded affairs. Everyone brings a custom of their own and stands politely through everyone else's.",
+	},
+	["faction.horde.muse.w10.037"] = {
+		"The goblins sell to the Horde and the Alliance from the same crate, with the same smile. Neutral, they call it. I call it the only side that never loses.",
+		"Booty Bay, Gadgetzan, Ratchet: goblin towns where a Horde blade and an Alliance blade drink at the same counter. The bruisers see to it that both stay sheathed.",
+		"Goblin neutrality is the one treaty the Horde and the Alliance both respect. It's written in coin and enforced by bruisers.",
+	},
+	["faction.horde.muse.w10.038"] = {
+		"Tarren Mill and Southshore sit a short walk apart and hate each other across every step of it. The Forsaken remember those hills from when they still breathed. The Alliance remembers them as its own.",
+		"Hillsbrad is where the Horde and the Alliance stopped pretending. The road between Tarren Mill and Southshore is short, and nobody walks it unarmed.",
+	},
+	["faction.horde.muse.w10.039"] = {
+		"No song will name the errands I run for some outpost quartermaster. The Horde is made of those errands far more than of songs.",
+		"Wars are remembered for their battles. The Horde survives on its supply lines, its water carriers, and whoever answers the notice on the post.",
+	},
+	["mood.city.muse.w10.001"] = {
+		"Every city has the same three people: one selling, one watching the seller, and a guard pretending not to watch either.",
+		"In a city everybody has an opinion about the war and nobody has been near it. I listen and nod; it's cheaper than arguing.",
+		"In one of these streets a merchant is getting rich off things I bled to find. Good for him, I suppose.",
+	},
+	["mood.city.muse.w10.002"] = {
+		"All these doorways, and behind each one a life that has nothing to do with mine. I find that oddly comforting.",
+		"Thousands of people live within a short walk of here. Not one of them knows my name, and not one of them needs to.",
+		"A crowd is the best place to be alone. Nobody asks where you've been when everyone is busy getting somewhere.",
+	},
+	["mood.city.muse.w10.003"] = {
+		"stops to watch a haggle over a single coin that goes on far longer than the coin deserves.",
+		"steps around a knot of apprentices sprawled in the way, arguing about whose master is the harshest.",
+		"lingers by a stall just long enough to have a price shouted at {g:him|her}, and moves on before a second one follows.",
+	},
+	["mood.city.muse.w10.004"] = {
+		"Too many people, too little room, and every single one of them walks slower than me.",
+		"Out there I can take on a pack of anything. In here I can't cross one street without apologizing four times.",
+		"Guards everywhere, rules everywhere. I liked it better when the only rule was don't get eaten.",
+	},
+	["mood.city.muse.w10.005"] = {
+		"Out in the wild I forget what the guards on these streets are for. Then I watch a stallkeeper count the takings without once looking over a shoulder, and I remember.",
+		"Here nobody has to rest with a hand on a weapon. Somebody out there paid for that, and keeps paying.",
+	},
+	["mood.city.muse.w10.006"] = {
+		"After the wild, a city is too much all at once: a hundred sounds, and my ears want to check every one of them for danger.",
+		"Every shout and my hand drifts toward my weapon. In a city that's a bad habit; out there it kept me alive.",
+		"I come to cities to make peace with tables and beds again. The truce never lasts more than a few days.",
+	},
+	["mood.city.muse.w10.007"] = {
+		"Look at them all. Every one of them with somewhere to be and somebody waiting. Must be nice.",
+		"Listen to it: forges, hawkers, gossip, footsteps. A city sounds like a lot of people deciding to keep going.",
+	},
+	["mood.city.subzone_enter.w10.001"] = {
+		"turns into {subzone} and matches {g:his|her} pace to the crowd, neither the fastest in it nor the slowest.",
+		"comes into {subzone} and steps neatly around a porter bent double under a crate.",
+		"walks into {subzone} with one hand near {g:his|her} purse, out of an old habit.",
+	},
+	["mood.city.subzone_enter.w10.002"] = {
+		"{subzone}. Different stalls, same prices: too high.",
+		"{subzone}. If I stand still for one moment, someone will try to sell me something. I keep walking.",
+		"{subzone}. A city is just a lot of little towns sharing one captain of the guard.",
+	},
+	["mood.city.subzone_enter.w10.003"] = {
+		"{subzone}. Right, and where's the smith from here?",
+		"{subzone}. Left or right? Every corner in this place looks like the one before it.",
+		"{subzone}. I know where I am. Roughly. Mostly.",
+	},
+	["mood.city.subzone_enter.w10.004"] = {
+		"{subzone}. Strangers' faces, strangers' business. In a city you can walk a long way without being anyone at all.",
+		"{subzone}. The folk who live here pass me without a glance. To them this corner is home; to me it's a name on a sign.",
+		"{subzone}. Somebody is laughing in a doorway. I don't know the joke, but I'm glad somebody is telling it.",
+	},
+	["mood.city.subzone_enter.w10.005"] = {
+		"passes into {subzone} and reads it the way a scout reads a valley: the exits, the crowd, the guards and where they stand.",
+		"enters {subzone} and notes, without meaning to, every guard and every way out.",
+		"drifts into {subzone} and lets the bustle carry {g:him|her} along for a while, eyes moving from face to face.",
+	},
+	["mood.dark.landmark.w10.001"] = {
+		"reaches {landmark}, and the gloom seems to lift by a hand's breadth, no more.",
+		"stops at {landmark} and studies it a long while, as one studies a stranger met on a lonely road.",
+	},
+	["mood.dark.muse.w10.001"] = {
+		"Light comes in here thin and tired, as if it had walked a long way and lost its nerve at the border.",
+		"Even my own outline seems reluctant to follow me through this place.",
+		"Something here makes every sound too loud: a footstep, a cough, my own breathing.",
+	},
+	["mood.dark.muse.w10.002"] = {
+		"Whatever's watching, it can keep watching. I'm not stopping to introduce myself.",
+		"Eyes front, feet moving. This is no place to linger, and I've no intention of becoming part of it.",
+	},
+	["mood.dark.subzone_enter.w10.001"] = {
+		"slows at the edge of {subzone}, letting {g:his|her} eyes get used to the gloom before going on.",
+		"enters {subzone} and finds {g:himself|herself} walking more quietly without having decided to.",
+	},
+	["mood.dark.subzone_enter.w10.002"] = {
+		"{subzone}. The gloom here has a smell: damp, old and patient.",
+		"{subzone}. I note the name and the nearest way out, in that order. Here, perhaps the other order.",
+	},
+	["mood.deep.muse.w10.001"] = {
+		"Down here my ears do the work my eyes can't. Every drip, every scrape gets weighed and put away.",
+		"I keep one hand on the rock wall, the way a child keeps hold of a sleeve. Nobody has to know.",
+	},
+	["mood.deep.subzone_enter.w10.001"] = {
+		"{subzone}. Deeper in, and the way back grows longer with every name.",
+		"{subzone}. The air is close and stale; every sound comes back off the rock a heartbeat late.",
+	},
+	["mood.desert.landmark.w10.001"] = {
+		"{landmark}. A name on dry ground. When people name a place out here, they've usually found water or lost someone looking for it.",
+		"{landmark}. Even the stones here look thirsty, and I know exactly how they feel.",
+	},
+	["mood.desert.muse.w10.001"] = {
+		"Dry country has a voice of its own: grit hissing over stone, and under it a silence so wide it rings.",
+		"The land here has been worn down to its bones. Every ridge looks like something that used to stand taller.",
+		"Dry places keep things. Bones, coins, old walls: the sand hides them for an age and hands them back on a whim.",
+	},
+	["mood.desert.muse.w10.002"] = {
+		"Every boot, every seam, every fold of the pack: the grit has moved in and means to stay.",
+		"If anybody finds a scrap of shade, call me over. I'll pay.",
+	},
+	["mood.desert.muse.w10.003"] = {
+		"runs a tongue over cracked lips and decides, for the moment, not to drink.",
+		"tips a little water onto a cloth and presses it to the back of {g:his|her} neck, as if handling something precious.",
+	},
+	["mood.desert.subzone_enter.w10.001"] = {
+		"enters {subzone} picking a line from one patch of shade to the next, wherever there is any.",
+		"crunches into {subzone} over ground baked as hard as pottery.",
+		"reaches {subzone} and weighs the waterskin in one hand before going any farther.",
+	},
+	["mood.fire.landmark.w10.001"] = {
+		"{landmark}. People holding ground in all this heat: either very brave or out of other choices. Usually both.",
+		"{landmark}. Whoever keeps a place going in this furnace has a hide like boot leather, and probably a temper to match.",
+	},
+	["mood.fire.muse.w10.001"] = {
+		"There's no soil here, only cinders that remember being soil. Nothing will put down roots in it for a long age.",
+		"I keep looking for something green out of habit. This ground was cooked hard long ago and has nothing left to give.",
+		"The rock is still warm under my palm, like the flank of something asleep. I take my hand back quickly.",
+	},
+	["mood.fire.muse.w10.002"] = {
+		"My waterskin's warm enough to brew tea in. That isn't a compliment.",
+		"Anyone who settles in this heat on purpose has a grudge against comfort.",
+		"Sweat in my eyes, soot in my teeth. Remind me what's in this place worth the trouble.",
+	},
+	["mood.fire.muse.w10.003"] = {
+		"draws a sleeve across {g:his|her} brow and finds it gritty with soot.",
+		"breathes shallowly through the nose, as if the hot air were being rationed.",
+		"stamps once on a dark slab to hear whether it rings hollow, and only then shifts {g:his|her} weight onto it.",
+	},
+	["mood.fire.muse.w10.004"] = {
+		"Fire here isn't something you light. It's the ground's own temper, and it has never fully cooled.",
+		"Whatever burned this land isn't finished with it. The heat comes up through my boots like a grudge kept warm.",
+		"Ash on everything: in my food, in the creases of my hands. This land is a hearth nobody ever swept.",
+	},
+	["mood.fire.muse.w10.005"] = {
+		"Buckles, rings, anything metal I carry has turned hot to the touch. I've learned which ones to stop fiddling with.",
+		"After a while I stop noticing the burnt smell in the air, which worries me more than the smell ever did.",
+	},
+	["mood.fire.subzone_enter.w10.001"] = {
+		"{subzone}. Nobody told the heat that I'd moved on.",
+		"{subzone}. New name, same oven.",
+		"{subzone}. Somebody bothered to name a patch of scorched rock. I admire the optimism.",
+	},
+	["mood.fire.subzone_enter.w10.002"] = {
+		"enters {subzone} through a drift of warm cinders that stirs at every step.",
+		"wipes the soot from {g:his|her} lips on reaching {subzone}, the taste of smoke heavy in {g:his|her} mouth.",
+		"steps into {subzone} and takes a long look at the cracked ground before choosing where to set {g:his|her} feet.",
+	},
+	["mood.fire.subzone_enter.w10.003"] = {
+		"{subzone}. Watch where you step. Some of this rock is still deciding whether to be solid.",
+		"{subzone}. Keep moving. The ground here is hot enough to punish anyone who stands still.",
+	},
+	["mood.forest.landmark.w10.001"] = {
+		"{landmark}. Someone's cleared a little room among the trees. Polite of the trees to allow it.",
+		"{landmark}. A place with a name, and the forest pressing close on every side, as if curious.",
+	},
+	["mood.forest.muse.w10.001"] = {
+		"Something always moves among the branches: a bird, a squirrel, a bough settling. The forest is never still, only quiet.",
+		"Trees make slow neighbors. They'll outlive every quarrel held beneath them, and they never take sides.",
+	},
+	["mood.forest.muse.w10.002"] = {
+		"picks a burr out of {g:his|her} sleeve, then another, then gives up on the rest.",
+		"stops to let a beetle cross the path, which takes rather longer than expected.",
+	},
+	["mood.forest.subzone_enter.w10.001"] = {
+		"{subzone}. Ferns to the knee and a smell of moss and old leaves. Good walking, as long as nothing in the ferns objects.",
+		"{subzone}. Deeper among the trunks, where the path thins to a suggestion. I could get lost here happily, which is the dangerous kind of lost.",
+	},
+	["mood.jungle.muse.w10.001"] = {
+		"Nothing in the jungle stays dead for long. A fallen tree is a feast by the next rain, and a garden by the one after.",
+		"My clothes haven't been dry since I got here. I've given up hoping; now I wring them out and listen for teeth.",
+	},
+	["mood.jungle.subzone_enter.w10.001"] = {
+		"ducks beneath a hanging tangle into {subzone}, clothes clinging, every leaf around {g:him|her} dripping.",
+		"pushes into {subzone} through a wall of steam and greenery, and something unseen goes crashing away ahead.",
+		"freezes on entering {subzone} as a long shape slides off a nearby branch and is gone into the green.",
+	},
+	["mood.plague.landmark.w10.001"] = {
+		"{landmark}. I mark it on my map with a careful hand. In a land this sick, knowing exactly where you are is a kind of protection.",
+		"{landmark}. A name to steer by. Out here I'd rather count names than graves.",
+	},
+	["mood.plague.muse.w10.001"] = {
+		"The sickness didn't stop at the people. It went into the soil, the water, the very wood. Nothing here was spared, not even the ground.",
+		"Everything here smells faintly sweet and wrong, like fruit left far too long in a shut room.",
+	},
+	["mood.plague.muse.w10.002"] = {
+		"If it moves and it shouldn't, hit it. If it doesn't move and it should, walk faster.",
+		"Wash your hands after this. Wash them twice. Then burn the gloves.",
+	},
+	["mood.plague.subzone_enter.w10.001"] = {
+		"enters {subzone} with a cloth pressed over nose and mouth, eyes moving over every heap and hollow.",
+		"slows on reaching {subzone}, where the air hangs heavy and sour, and turns to make sure nothing has started following.",
+	},
+	["mood.plains.subzone_enter.w10.001"] = {
+		"{subzone}. Wind in my face and a road in no hurry. Suits me.",
+		"{subzone}. Long grass, long views, long walk. I'll take all three.",
+	},
+	["mood.ruin.landmark.w10.001"] = {
+		"{landmark}. A name stuck to old stone. Whoever first called it that probably didn't build it.",
+		"{landmark}. Someone made a place here out of whatever was left. Ruins are good at being somebody's second chance.",
+	},
+	["mood.ruin.muse.w10.001"] = {
+		"Whoever lived here thought in bigger numbers than I do: wider halls, taller stairs, longer ages. And still it all came down.",
+		"Ruins are honest in a way cities never are. Nothing here pretends it will last.",
+		"I keep finding carvings worn smooth. Someone wanted to be remembered, and time kept only the outline.",
+	},
+	["mood.ruin.muse.w10.002"] = {
+		"That's a lot of broken stone for one place. Somebody had a very bad century.",
+		"Mind the masonry. It's been waiting a long while to fall on someone.",
+	},
+	["mood.ruin.subzone_enter.w10.001"] = {
+		"enters {subzone} by way of a toppled archway, ducking beneath a stone that has been about to fall for centuries.",
+		"picks a path into {subzone} across broken paving, testing each slab before trusting it.",
+		"comes into {subzone} and rests a hand on a cracked pillar, as though checking that it still stands.",
+	},
+	["mood.snow.landmark.w10.001"] = {
+		"{landmark}. Tell me there's a fire somewhere inside. Lie if you have to.",
+		"{landmark}. A chimney with smoke coming out of it would be the finest sight in the world right now.",
+	},
+	["mood.snow.muse.w10.001"] = {
+		"The cold makes everything simple. Keep moving, keep fed, keep your hands out of the wind. Little else matters.",
+		"Snow swallows sound. Between steps I can hear my own heart, and I'd rather not.",
+		"Snow keeps every track: mine, a wolf's, something bigger. Out here you always know who has passed, and never quite when.",
+	},
+	["mood.snow.subzone_enter.w10.001"] = {
+		"plows into {subzone} through snow that squeaks underfoot, shoulders hunched against the cold.",
+		"reaches {subzone} and knocks the packed snow from {g:his|her} boots against a rock.",
+	},
+	["mood.swamp.landmark.w10.001"] = {
+		"reaches {landmark} and stamps gratefully onto ground that doesn't give way underfoot.",
+		"comes squelching into {landmark}, a muddy trail stretching out behind {g:him|her}.",
+	},
+	["mood.swamp.muse.w10.001"] = {
+		"In a marsh you learn to read the color of the water. Brown is mud, green is rot, black is deep, and clear is a lie.",
+		"Every log might be a log. I treat each one as if it isn't, and so far I've kept all my toes.",
+	},
+	["mood.swamp.subzone_enter.w10.001"] = {
+		"{subzone}. If I sink, at least I'll know where the deep part is.",
+		"{subzone}. Wet, wetter, and whatever this is.",
+	},
+	["time.dawn.muse.w10.001"] = {
+		"Dawn. The dark gives up the ground a little at a time, like an army that knows it has lost.",
+		"First light, gray and thin, and already it's winning. Every day starts with a small victory nobody cheers.",
+		"The edges of things come back first at dawn: a roofline, a tree, a hand held up in front of me.",
+	},
+	["time.dawn.muse.w10.002"] = {
+		"Up with the light, which is too early for anyone who isn't a rooster or a soldier.",
+		"Dawn. My body has opinions about it, and none of them are polite.",
+		"The early hour has a cold all of its own. It gets into the joints and sits there, smug.",
+	},
+	["time.dawn.muse.w10.003"] = {
+		"watches the first light creep over the land, breathing slowly, as if not to disturb it.",
+		"stands quite still as the dawn comes up, letting the gray turn to color all around.",
+		"stretches in the early light, one joint at a time, and squints at the day that is beginning.",
+	},
+	["time.dawn.muse.w10.004"] = {
+		"Light's coming. Time to be gone before the day gets ideas.",
+		"Early start. The road's never emptier than this.",
+		"Dawn. Good. Everything's possible for about an hour.",
+	},
+	["time.dawn.subzone_enter.w10.001"] = {
+		"{subzone}, just waking. The first light finds it before anyone else is about.",
+		"{subzone} at dawn. Whatever the day holds for this place, it hasn't started yet.",
+		"{subzone}. Gray light, cold air, everything still deciding what to be today.",
+	},
+	["time.dawn.subzone_enter.w10.002"] = {
+		"enters {subzone} with the first light, footsteps loud in the early quiet.",
+		"reaches {subzone} as the dawn comes up, and pauses to let the place wake around {g:him|her}.",
+	},
+	["time.day.landmark.w10.001"] = {
+		"{landmark}, plainly seen in the light of day. A place looks most like itself at this hour.",
+		"{landmark}. Daylight lets me judge it on its merits, without the dark adding anything.",
+	},
+	["time.day.landmark.w10.002"] = {
+		"stops before {landmark} and looks it over in the daylight, unhurried, the way one checks a horse before buying.",
+		"takes in {landmark} by the plain light of day, noting what has been mended and what has not.",
+	},
+	["time.day.muse.w10.001"] = {
+		"In daylight a road is only a road: so many steps, so many hills, no tricks. I'll take it at its word.",
+		"Distances are honest by day. The ridge over there is exactly as far as it looks, which is too far, but at least it isn't lying.",
+		"The hours of light are for covering ground. Thinking can wait for the dark; it usually insists on it anyway.",
+	},
+	["time.day.muse.w10.002"] = {
+		"Middle of the working day. A baker, wherever there's a town, is done already and feeling smug about it.",
+		"Half the day gone and nothing a bard would sing about. Good. Bards make everything sound tiring.",
+		"Plenty of light left. That's what people say right before they get lost.",
+	},
+	["time.day.muse.w10.003"] = {
+		"Daytime belongs to everyone else: their errands, their trades, their arguments over the price of rope. I just pass through the middle of it.",
+		"By day the world is too busy to notice one more traveler. There's a kind of rest in that.",
+		"The hours of light ask nothing personal of me. It's the dark that wants to talk.",
+	},
+	["time.day.muse.w10.004"] = {
+		"Long day, and it isn't done with me. The light will last longer than my patience, as usual.",
+		"There's a stretch in the middle of every day when the work stops feeling like a choice and starts feeling like weather. You just get through it.",
+		"Half the day behind me. My hands know it before the rest of me admits it.",
+	},
+	["time.day.muse.w10.005"] = {
+		"In this light I can see every fold of the land: where the path dips, where a stream must run, where something might be lying in wait.",
+		"Good visibility. I take the time to read the ground properly, the way trackers do, while the light's still willing.",
+		"Everything out here has edges by day. Even the far trees look like I could count them.",
+	},
+	["time.day.muse.w10.006"] = {
+		"stops to scan the land ahead while the light is good, marking the paths worth taking.",
+		"makes use of the daylight to check every strap and buckle, one by one, without hurry.",
+		"pauses in the open, turning slowly, as though fixing the lay of the land in memory before the light changes.",
+	},
+	["time.day.muse.w10.007"] = {
+		"Daylight shows everything, including how much mud I've collected since breakfast. Some things are better in the dark.",
+		"In good light every bit of travel wear shows. No hiding it until the lamps come on.",
+		"By daylight a traveler's every stain and patch is on display. The dark is kinder to the wardrobe.",
+	},
+	["time.day.muse.w10.008"] = {
+		"Whatever watches over the world, the Light or the spirits or something with no name, it seems more patient by day.",
+		"I've heard a dozen peoples give thanks for the day in a dozen tongues. Not one of them thanks the dark the same way.",
+		"The day doesn't promise anything. It just keeps turning up, which is better than most promises I've heard.",
+	},
+	["time.day.muse.w10.009"] = {
+		"Light's good. No reason to sit about. Let's get on.",
+		"Plenty of day left, and plenty to do with it. Move.",
+		"Daylight's for work. Complaining can wait for the fire.",
+	},
+	["time.day.muse.w10.010"] = {
+		"People treat the day as safe. It isn't. It's just that by day you see the danger coming, and the danger sees you.",
+		"Daylight doesn't make the wilds any kinder. It only takes away the excuse of not having seen.",
+		"Nothing hides better than something that doesn't need to. Plenty of hunters work by day.",
+	},
+	["time.day.muse.w10.011"] = {
+		"Somewhere around now a sensible person would stop and eat. I'll find out whether I'm one.",
+		"My stomach keeps the hours of the day better than any bell tower, and it says it's time.",
+		"The day's at its busiest and so is my stomach. One of us will have to give in first.",
+	},
+	["time.day.muse.w10.012"] = {
+		"glances around at the plain light of day, as if checking that the world is still where it was left.",
+		"squints into the daylight and rolls {g:his|her} shoulders, ready for whatever the hours bring.",
+	},
+	["time.day.muse.w10.013"] = {
+		"The days run together on the road. I only notice one has gone when the light starts to go with it.",
+		"Every day of light is one more than the dead get. I try to spend it as if that mattered.",
+		"How many days like this one are left to anyone? Nobody counts until the count is short.",
+	},
+	["time.day.muse.w10.014"] = {
+		"Fine hour for travel. Not that I'd know a bad one; I travel through those too.",
+		"Daytime, wide awake, nowhere urgent to be. Something must be wrong.",
+	},
+	["time.day.muse.w10.015"] = {
+		"In daylight the old walls and roadside stones look merely old. It takes the dark to make them look like they remember.",
+		"By day the ruins along the road are just stones in the grass. Their stories keep different hours.",
+	},
+	["time.day.subzone_enter.w10.001"] = {
+		"{subzone}. I get a proper look at it in the light: who lives here, what they keep, where the paths go.",
+		"{subzone}, plain as a map by day. Good. I like a place that shows its hand.",
+		"{subzone}. Daylight, and every corner of it on display. I'll remember the corners.",
+	},
+	["time.day.subzone_enter.w10.002"] = {
+		"enters {subzone} in the full light of day, eyes moving over it from one end to the other.",
+		"walks into {subzone} without hurry, letting the daylight show {g:him|her} the lay of the place.",
+		"comes into {subzone} with the day still high, and takes in the place at a glance.",
+	},
+	["time.day.subzone_enter.w10.003"] = {
+		"{subzone}, by daylight. Let's see what it looks like before anyone tells me what it's like.",
+		"{subzone}. Good hour to arrive anywhere: shops open, people awake, everyone a bit less suspicious.",
+		"Ah, {subzone}. In good light, too. Small mercies.",
+	},
+	["time.day.subzone_enter.w10.004"] = {
+		"{subzone}. Daylight is generous to places. It shows the work people put into them, and hides what they lost.",
+		"{subzone} in the light of day. Whatever happened here, the day has decided not to mention it.",
+	},
+	["time.day.subzone_enter.w10.005"] = {
+		"{subzone}. Still light enough to get through and beyond before I need a roof. Let's not dawdle.",
+		"{subzone}. Plenty of day left; I can look around properly and still be on my way in good time.",
+	},
+	["time.dusk.muse.w10.001"] = {
+		"Dusk. The light doesn't fall so much as thin out, until I notice I've been squinting for a while.",
+		"The day is going, and taking its time, like a guest who isn't sure anyone wants them to stay.",
+		"The hour between: too dark to read, too light for lamps. I always feel I should be somewhere else by now.",
+	},
+	["time.dusk.muse.w10.002"] = {
+		"Light's going. Time to think about where I'll be when it's gone.",
+		"Dusk is a question: how far to the next roof? I'd like an answer before the dark gives me one.",
+		"The day's spent. Whatever I didn't do, I can do tomorrow, if the night allows.",
+	},
+	["time.dusk.muse.w10.003"] = {
+		"pauses as the light drains out of the land, and watches the far places go dim first.",
+		"stands a while in the failing light, until the edges of the world begin to blur.",
+		"glances back the way {g:he|she} came, where the dusk has already swallowed the road.",
+	},
+	["time.dusk.muse.w10.004"] = {
+		"That's the day done. Someone, somewhere, is lighting a fire, and I'd like to be near it.",
+		"Getting dark. The hour when sensible folk go in and the rest of us keep walking.",
+		"Evening coming on. Good hour for a hot meal and a bad story.",
+	},
+	["time.dusk.subzone_enter.w10.001"] = {
+		"{subzone}, in the last of the light. I'll get a good look now; soon there'll be nothing to look at.",
+		"{subzone} at dusk. The place is folding up its day, and here I am arriving late.",
+		"{subzone}. Lamps or no lamps, I'll be here when the dark comes.",
+	},
+	["time.dusk.subzone_enter.w10.002"] = {
+		"enters {subzone} as the dusk thickens, eyes already searching for a light.",
+		"reaches {subzone} with the day nearly gone, the shapes around {g:him|her} going soft and gray.",
+	},
+	["time.night.landmark.w10.001"] = {
+		"{landmark}, or the dark shape of it. Tomorrow it will be a place again; for now it's an outline with opinions.",
+		"{landmark}. At night even a known place feels borrowed, as if its owners might come back at any moment.",
+		"{landmark} at this hour. If there's a light anywhere about it, that's where I'm going.",
+	},
+	["time.night.muse.w10.001"] = {
+		"At night I trust my ears over my eyes. They've earned it; my eyes keep inventing things.",
+		"The dark doesn't hide much, really. It just makes me do the work of guessing.",
+		"Night, and every sound arrives without a face. I fill them in, mostly wrong.",
+	},
+	["time.night.muse.w10.002"] = {
+		"Sleep keeps asking, and I keep telling it later. One of these nights it will stop asking.",
+		"Any sensible creature is asleep by now. I've never claimed to be sensible.",
+		"My body voted for bed hours ago. The rest of me is still counting the ballots.",
+	},
+	["time.night.muse.w10.003"] = {
+		"In every town a few windows stay lit all night. Behind each one, someone is waiting, or can't stop thinking.",
+		"The night is long for anyone with someone missing. I've heard that said at every hearth from the mountains to the coast.",
+		"Night is when the absent come and sit beside you. They never say much. They don't have to.",
+	},
+	["time.night.muse.w10.004"] = {
+		"Dark as the inside of a boot. Mind your step, and mine.",
+		"Can't see a thing. Excellent. Neither can anything else, I hope.",
+		"Quiet out here. Too quiet, as the bad storytellers say. They're usually right, the bad ones.",
+	},
+	["time.night.muse.w10.005"] = {
+		"stands still in the dark for a while, letting {g:his|her} eyes find what little the night will give them.",
+		"slows {g:his|her} pace in the dark, placing each foot with care, as if the ground itself were asleep.",
+		"turns {g:his|her} collar up against the night chill and goes on without a sound, quiet as the hour.",
+	},
+	["time.night.muse.w10.006"] = {
+		"Someone is always keeping watch at this hour: on a wall, at a gate, beside a fire. I think of them, and the dark feels less empty.",
+		"The night watch is the loneliest work there is. Every guard I've met says the same, and none of them would trade it.",
+		"At night, whoever stays awake is answerable for everyone else. That's a heavy thing to carry quietly.",
+	},
+	["time.night.muse.w10.007"] = {
+		"The cold comes up out of the ground at this hour. It finds the knees first, then the patience.",
+		"Night air, sharp enough to wake me better than any brew. I may be grateful for it later.",
+		"At night the warmth goes out of things: stones, water, the iron of a buckle. Only the living hold on to theirs.",
+	},
+	["time.night.muse.w10.008"] = {
+		"The night is older than any kingdom. Every people that ever lived had to make its peace with it, one way or another.",
+		"Everything the world forgot during the day comes back at night to see if anyone is still listening.",
+		"Night belongs to things that were here before us. We only borrow it, and badly.",
+	},
+	["time.night.muse.w10.009"] = {
+		"Easy now. Nothing out there but the dark, and the dark never hurt anyone. It's what's in it.",
+		"Quiet hours. Best kind for thinking, worst kind for walking.",
+		"Not much to see. Plenty to hear. I'll make do.",
+	},
+	["time.night.muse.w10.010"] = {
+		"A clear sky and more stars than anyone could count. I try anyway, lose my place, and start again.",
+		"The stars are all out tonight. Whatever else goes wrong, they keep their appointments.",
+		"Under this many stars my worries look like what they are: small, and mostly mine.",
+	},
+	["time.night.subzone_enter.w10.001"] = {
+		"{subzone}, at the hour when every shape could be something. I take it slowly.",
+		"{subzone} in the dark. I'll learn what it looks like tomorrow; tonight I'll learn what it sounds like.",
+		"{subzone}. At night I meet a place through my feet and ears first, and trust neither.",
+	},
+	["time.night.subzone_enter.w10.002"] = {
+		"enters {subzone} quietly, a figure the night barely acknowledges.",
+		"slips into {subzone} under cover of the dark, each step placed with care.",
+		"comes into {subzone} at the dead of night, and lets the stillness close behind {g:him|her}.",
+	},
+	["time.night.subzone_enter.w10.003"] = {
+		"{subzone}. Lovely, I assume. I'll know when it's light.",
+		"{subzone}, at this hour. Whoever lives here is asleep, and wisely so.",
+	},
+	["time.night.subzone_enter.w10.004"] = {
+		"{subzone} at night. Places are more honest in the dark; they stop pretending to be busy.",
+		"{subzone}. Without daylight to dress it up, a place shows its bones. This one has interesting bones.",
+	},
+	["weather.clear.landmark.w10.001"] = {
+		"{landmark}, standing plain under an open sky. Nothing about it is hidden; I can read it like a notice nailed to a door.",
+		"{landmark}. In air this clear I can make out every detail from the path.",
+	},
+	["weather.clear.landmark.w10.002"] = {
+		"stops to take in {landmark}, every edge of it sharp in the clean air.",
+		"looks {landmark} over with nothing in the air to soften it, and nods as if it had passed some private inspection.",
+	},
+	["weather.clear.muse.w10.001"] = {
+		"Air this clean carries sound a long way. A hammer on an anvil, a dog, two people haggling over a price: I can hear half the countryside's business.",
+		"With nothing in the sky, sounds travel. Somebody far off is splitting wood, and I could count the strokes.",
+		"Clear air brings distance closer to the ear. A shout, a bell, a cartwheel squealing: none of it near, all of it plain.",
+	},
+	["weather.clear.muse.w10.002"] = {
+		"Not a cloud anywhere. If I get lost now, I've only my own feet to blame.",
+		"Dry boots, dry pack, dry everything. I hardly know what to complain about.",
+		"Fine weather. Which means every bandit on the roads is out enjoying it too.",
+	},
+	["weather.clear.muse.w10.003"] = {
+		"takes advantage of the dry weather to spread a damp blanket over a rock and let the air have at it.",
+		"checks every strap and buckle while the weather is kind, the way careful travelers do when nothing is dripping.",
+		"stops to shake a pebble out of a boot, and lingers a little longer than needed, since the ground is dry enough to sit on.",
+	},
+	["weather.clear.muse.w10.004"] = {
+		"Not a cloud to blame for my mood. Rain I could have blamed. An empty sky leaves me alone with it.",
+		"Bad weather lends a gloomy heart an alibi. Under a sky this clean, the gloom is plainly my own.",
+	},
+	["weather.clear.muse.w10.005"] = {
+		"No rain to soften the ground, so the road keeps every mark: boot prints, hoof prints, the long scrape of a cart.",
+		"Nothing falling from the sky to wipe a trail away. The road remembers who passed lately better than any gate guard.",
+		"Weather this dry keeps tracks. Anyone following me could read my way like a signpost; I'd better not be followed.",
+	},
+	["weather.clear.muse.w10.006"] = {
+		"In weather like this, anyone on high ground can see me a league off. A clear sky works both ways.",
+		"Clean air and long views. Good for spotting trouble, and just as good for trouble spotting me.",
+		"Nothing in the air to hide behind. I keep to the low ground and the edges of things, out of habit.",
+	},
+	["weather.clear.muse.w10.007"] = {
+		"Empty sky, dry road. Somebody enjoy it for me; I'm working.",
+		"Lovely weather. I'll admire it properly once the work's done.",
+	},
+	["weather.clear.muse.w10.008"] = {
+		"No rain to hide from, so everything is out: birds up high, beasts on the open ground. Fine weather empties every burrow.",
+		"Without weather to shelter from, the wild comes out to be seen. Even the carrion birds circle higher.",
+		"Dry air, and the creatures of the place move freely, unhurried. They know a kind stretch of weather better than any almanac.",
+	},
+	["weather.clear.muse.w10.009"] = {
+		"Nothing falling on me, nothing to fight but the road itself. Somehow my legs still find it a long one.",
+		"Perfect weather for walking, they'd tell you. My feet would like a word with whoever 'they' are.",
+		"Good weather takes away every excuse to stop, and my body keeps inventing new ones.",
+	},
+	["weather.clear.muse.w10.010"] = {
+		"In clear weather the land shows its whole plan: where water runs, where paths meet, where you'd camp if you had to. I read it like a freshly inked map.",
+		"Clear air turns the country into a lesson. Here the stream bends, there the trail climbs, over there the ground goes soft. I learn more in an hour of this than in a week of fog.",
+		"Nothing blurs the land in air like this. I mark the passes and the water in my head, in case the weather turns and I need them blind.",
+	},
+	["weather.clear.muse.w10.011"] = {
+		"pauses on a rise to look out over country laid open in every direction, and takes a moment to choose the next stretch of road.",
+		"turns slowly in place, taking in the open country on every side before settling on a direction.",
+		"walks on with a long, easy stride, under an open sky that asks nothing at all.",
+	},
+	["weather.clear.subzone_enter.w10.001"] = {
+		"{subzone}. Dry ground underfoot and nothing overhead. I'll take that as a good start.",
+		"{subzone}, and the air clean enough to taste. Whatever the place is like, I'll meet it with dry boots.",
+		"Into {subzone} under an empty sky. Nowhere to hide here, for anyone, me included.",
+	},
+	["weather.clear.subzone_enter.w10.002"] = {
+		"enters {subzone} with the wide-awake look of someone who can see every path and hollow ahead.",
+		"comes into {subzone} dry-footed and clear-eyed, and takes stock of the place at an easy pace.",
+		"walks into {subzone} with a glance at the open sky, as if to make sure it means to stay that way.",
+	},
+	["weather.clear.subzone_enter.w10.003"] = {
+		"{subzone}. Fine weather for a look around.",
+		"{subzone}. Clear air. Let's see what you're made of.",
+		"{subzone}. Dry and clear. Good; I'd hate to turn up soaked.",
+	},
+	["weather.fog.muse.w10.001"] = {
+		"In fog, sounds come from the wrong places. A bird on my left turns out to be on my right, and close.",
+		"The fog bends every noise. A step behind me, a voice ahead; I stop, and both of them stop too.",
+		"Fog makes a liar of the ear. Water I'd swear is running beside me turns out to be a stone's throw off.",
+	},
+	["weather.fog.muse.w10.002"] = {
+		"I can see my hand. Most of it. That'll have to do.",
+		"Fog. Walk slow, talk loud, and hope everything out there does the same.",
+	},
+	["weather.fog.subzone_enter.w10.001"] = {
+		"{subzone}. Or so I'm told; I can see about ten paces of it.",
+		"{subzone}, a name in the fog. The rest of the place is keeping to itself.",
+		"{subzone}. The fog holds the place close and lends me only the next few steps.",
+	},
+	["weather.rain.landmark.w10.001"] = {
+		"reaches {landmark} with rain dripping off {g:his|her} nose, and looks first for its driest corner.",
+		"stops before {landmark} in the rain, the whole place glistening as though it had just been washed.",
+	},
+	["weather.rain.muse.w10.001"] = {
+		"Rain gets into the pack first. Then the bread, then the bandages, then whatever I most wanted to keep dry.",
+		"Everything I carry is learning to be wet. The straps have gone dark and stiff, and the oilcloth gave up a while ago.",
+		"Rain finds the seams. Every stitch in my gear is a little door, and it knocks on all of them.",
+	},
+	["weather.rain.muse.w10.002"] = {
+		"Has anyone ever lit a fire in this? Asking for a friend. The friend is me.",
+		"The good news: no dust. The bad news: everything else.",
+		"I've stopped trying to stay dry. Now I'm only trying to stay cheerful, and that's going worse.",
+	},
+	["weather.rain.muse.w10.003"] = {
+		"Rain covers every sound. Good for anything that wants to creep up on me; good for me too, if I'm quicker.",
+		"In this rain I can't hear my own steps. Neither can anything else out there. A blade with two edges, and both of them wet.",
+		"The hiss of the rain swallows the small noises: a twig, a breath, a sword leaving its sheath. I look twice as hard to make up for it.",
+	},
+	["weather.rain.muse.w10.004"] = {
+		"steps around one puddle and straight into another hidden under the mud, and gives up on dry boots with a sigh.",
+		"plods along a road gone to brown soup, each step coming loose with a wet, sucking sound.",
+		"stops to tip the water out of a boot, considers the road ahead, and puts the boot back on with no enthusiasm at all.",
+	},
+	["weather.rain.muse.w10.005"] = {
+		"Rain wakes the smell of everything: wet earth, crushed leaves, old wood, my own cloak. The world gets louder to the nose.",
+		"Under the rain the ground gives off a smell like something fresh from the oven. Mud, yes, but honest mud.",
+		"Wet stone, wet bark, wet wool. Rain reminds me the world has a smell under all its dust.",
+	},
+	["weather.rain.subzone_enter.w10.001"] = {
+		"{subzone}, through a veil of rain. I'll find out what it looks like dry some other time.",
+		"{subzone}. Water running off every edge. Any place looks a little sorry for itself in the rain.",
+		"{subzone}. The rain got here before me and has already made itself at home.",
+	},
+	["weather.rain.subzone_enter.w10.002"] = {
+		"squelches into {subzone} with water running from {g:his|her} hood, eyes searching for anything that might pass for shelter.",
+		"comes into {subzone} head down, reading the ground for puddles rather than the place for sights.",
+		"enters {subzone} at a heavy, sodden trudge, the rain blurring every edge of the place.",
+	},
+	["weather.sand.muse.w10.001"] = {
+		"Sand gets into everything: the seams, the waterskin, the creases of my eyelids. Even blinking grinds.",
+		"The sand hisses across the ground like a whisper with teeth. I walk with my eyes half shut and my mouth fully shut.",
+	},
+	["weather.snow.muse.w10.001"] = {
+		"Fresh snow keeps every track. I can read who passed before me, and anyone behind me can read me just as easily.",
+		"Snow to the ankles and rising. Each step is a small negotiation, and the snow wins most of them.",
+	},
+	["weather.storm.muse.w10.001"] = {
+		"Lightning shows the land all at once, every stone and branch, then takes it back. I walk by those glimpses.",
+		"On open ground in a storm, everyone is the tallest thing around. I keep my head down and keep moving.",
+		"Flash, then the count, then the thunder. The count is getting shorter, and so is my patience.",
+	},
+	["weather.storm.muse.w10.002"] = {
+		"Loud up there, isn't it? Somebody's losing an argument with the sky.",
+		"Stay off the ridges. The sky is picking targets.",
+	},
+	["weather.storm.muse.w10.003"] = {
+		"flinches at a crack of thunder, then pretends very hard that it was only a stretch.",
+		"hunches into the wind as the storm pounds the land, cloak snapping like a flag.",
+	},
+	["weather.storm.subzone_enter.w10.001"] = {
+		"{subzone}, seen in flashes. Not the place at its best, nor me at mine.",
+		"{subzone}, between one thunderclap and the next. I'll look properly once the sky stops shouting.",
+	},
 }, "base_exploration")

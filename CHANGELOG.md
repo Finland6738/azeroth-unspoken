@@ -8,6 +8,43 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W10: the factions, the moods, the hours, the weather and the endgame places (issue #138)
+
+The tenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
+after W09: the strict need of the factions, the zone moods, the times of day, the weather, the creature types, level 60
+and the contested, dungeon and endgame zones still short (2,504 texts per language). **1,093 intentions, 2,571 texts
+per language** (5,142 in both), written by twelve parallel writer subagents (authors `ai-w10-<unit>`) and passed through
+the archive (drafts, `cli dups --state draft` with no exact and no near duplicate, submit, owner sample, approve,
+export; the round trip is an empty diff). No literary piece and no `tier` field. The addon goes from 12,450 to
+**13,543 intentions** and from 29,980 to **32,551 texts per language**.
+
+- **Added: the layers between the place and the character.** The Alliance and the Horde (`faction.<faction>.<event>.w10.NNN`,
+  112 and 109 intentions: thoughts, meetings, relations, greetings and prayers that hold for every people of the side,
+  anywhere, and what innkeepers, merchants, guards, flight masters and trainers say to a member of it); the twelve zone
+  moods (77, `mood.<mood>.*`); the four times of day (68, `time.<time>.*`); the six kinds of weather (61,
+  `weather.<weather>.*`, with no time claim: a clear sky may be noon or midnight); the eight creature types fought (87,
+  `ctype.<type>.*`); level 60 (68, `band.b60.*`). They go to the base pack of their event family; the two returns are
+  `mem.ret.weather.clear.w10.*`.
+- **Added: places.** The Horde and Alliance pools of Stranglethorn Vale and Dustwallow Marsh and the Alliance pools of
+  Azshara and Searing Gorge (126 intentions); Uldaman, Blackrock Spire and Blackrock Depths (79) and Stratholme,
+  Scholomance and Dire Maul (89), with won and wiped encounters; the endgame zones Burning Steppes and Eastern
+  Plaguelands for both factions (117), Winterspring for both and the Alliance side of Silithus (100). They go to the
+  regional pack of their area.
+- **Every combat rule has a short variant** (80 bytes or less), so it keeps its share in battlegrounds, arenas and boss
+  fights (ADR 0056). No boss dialogue is quoted; the culling of Stratholme, Balnazzar behind the Grand Crusader and the
+  black dragons at Stormwind's court stay rumors told by a voice.
+- **The gap after W10** (per language): soft need 8,947, gap **0**; strict need 29,536, gap **684** (was 3,188);
+  random need 276,398, gap **245,267** (was 247,838). **85 waves** left (the next is the first row of WAVES.md: the
+  last strict pools of the endgame zones, then the raids and the battlegrounds).
+- **Measured.** `bench_scale` (every line loaded): memory 27.4 → 28.6 MB, pick 30.4 → 30.7 thousand Lua instructions
+  (p95 58.2 → 58.6). `run_tests` M2: pick 47.8 thousand Lua instructions (reference 42.7; W09 reported 50.8).
+- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI). Counts: base intentions 13500, lines loaded
+  13507, `base_combat` 765, `base_context` 452, `base_life` 84, `base_dialogues` 403. `TestNPCAlive` compares the gruff
+  and the jovial innkeeper's voices without the lines said to the character's faction, as it already did for the lines
+  said to the character's race: any NPC of the role may say them.
+- **Owner sample:** [docs/content/reviews/W10.md](docs/content/reviews/W10.md) (`cli sample --state review --share
+  0.02`: 22 intentions).
+
 ### Interface mockups for every case
 
 - **Added:** the `assets/` folder: one illustrative mockup PNG for every case of the interface (98 images), with an index, [assets/README.md](assets/README.md), that shows a thumbnail and a one-line caption for each. Beyond the windows of the wiki mockups, it draws the narrator box in each prose depth, the narrator, character and NPC voices and every first-run step in Italian, each of the five settings sections, and the chat output of `/au place`, `/au who`, `/au packs`, `/au stats` with `/au validate`, and the setting commands (captured from the addon itself). They are mockups built from the addon code, not in-game screenshots, on original backgrounds.

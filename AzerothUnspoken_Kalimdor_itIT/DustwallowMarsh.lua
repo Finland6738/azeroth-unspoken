@@ -256,4 +256,148 @@ AU:RegisterRegionalTexts("dustwallowmarsh", "itIT", "kalimdor_dustwallowmarsh", 
 		"Pioggia sulla palude. Come se le mancasse l'acqua.",
 		"La pioggia fa tamburellare tutto l'acquitrino, pozze, canne e foglie insieme. Da qualche parte una rana è felicissima.",
 	},
+	["dwm.a.attack.w10.001"] = {
+		"Ecco qualcosa che la palude non riesce ad assorbire!",
+		"Prova a schivare col fango alle ginocchia!",
+	},
+	["dwm.a.battle.w10.001"] = {
+		"La strada per Theramore resta aperta. Spostati.",
+		"Questa strada porta a Theramore, e tu ci stai in mezzo.",
+	},
+	["dwm.a.battle.w10.002"] = {
+		"strappa uno stivale al fango, appena in tempo per l'attacco.",
+		"trova un ciuffo di terra più solida e ci si gira sopra, con le canne che sferzano tutto intorno.",
+		"esce guadando da una pozza nera, l'acqua che {g:gli|le} cola dalle gambe, e si mette in guardia.",
+	},
+	["dwm.a.journey.w10.001"] = {
+		"A terra sulle pietre di Theramore. Aria di sale, gabbiani e suolo solido. Bacerei il selciato.",
+		"Atterraggio sull'isola. La puzza di palude lascia il posto al mare, e la terra smette di muoversi sotto i piedi.",
+	},
+	["dwm.a.landmark.w10.001"] = {
+		"{landmark}. La torre al centro dell'isola è di Lady Proudmoore, e ogni nave nel porto sembra puntare verso di lei.",
+		"Theramore. Mura di pietra, la torre di una maga sopra i tetti, e il mare da ogni lato tranne uno. Il posto più sicuro di una palude per niente sicura.",
+	},
+	["dwm.a.lowhp.w10.001"] = {
+		"Su. Nessuno annega stando in piedi.",
+		"Tieni la testa fuori dall'acqua. Alla lettera, stavolta.",
+	},
+	["dwm.a.muse.w10.001"] = {
+		"A Theramore si sussurra che i draghi neri abbiano occhi dentro le mura. È il genere di voce che fa guardare due volte ogni guardia quella accanto.",
+		"Al porto si dice che i servi di Onyxia vestano i colori di Theramore. Nessuno sa fare un nome. Tutti sorvegliano tutti.",
+		"Se le chiacchiere dicono il vero, i draghi neri non fanno il nido solo a sud. Alcuni, dicono, camminano per le strade di Theramore su due gambe.",
+	},
+	["dwm.a.muse.w10.002"] = {
+		"I pescatori di Theramore non si avvicinano a Witch Hill, e non dicono perché. Cambiano discorso e sputano per terra.",
+		"Witch Hill, chiamano quell'altura a nord. Chiedine a Theramore e la gente si ricorda all'improvviso di avere commissioni da sbrigare.",
+	},
+	["dwm.a.muse.w10.003"] = {
+		"Da Theramore partono navi per Menethil Harbor. Metà della forza dell'Alleanza da questa parte del mare è appesa a quell'unica rotta, e io la vorrei più solida.",
+		"Una nave verso nord, fino alle Wetlands. È il filo che lega Theramore ai regni dell'est. Sottile, vero?",
+	},
+	["dwm.a.muse.w10.004"] = {
+		"si ferma davanti a un cartello mezzo sommerso che indica dritto verso l'acqua aperta, e rinuncia alla strada che prometteva.",
+		"legge un cartello storto mezzo affondato nella palude, ne segue il braccio con lo sguardo fino a uno stagno, e sospira.",
+	},
+	["dwm.a.npc_meet.w10.001"] = {
+		"Una stanza asciutta, per favore, e un posto dove mettere questi stivali vicino al fuoco.",
+		"Un letto che non faccia ciac. Qualunque prezzo tu chieda, è giusto.",
+	},
+	["dwm.a.quest_complete.w10.001"] = {
+		"accetta il pagamento con una mano infangata e ci lascia sopra un'impronta, cosa che qui fuori ormai nessuno fa più notare.",
+		"prende la ricompensa e la pulisce sulla manica, che però la rende solo più fangosa.",
+	},
+	["dwm.a.quest_complete.w10.002"] = {
+		"Fatto. Dite alla guarnigione che può depennare anche questa.",
+		"Finito. Se il furiere ha un paio di calze asciutte, prendo anche quelle.",
+	},
+	["dwm.a.quest_progress.w10.001"] = {
+		"Una parte è fatta. Il resto sarà in fondo a qualche pozza, immagino.",
+		"A metà strada, palude più palude meno.",
+	},
+	["dwm.a.subzone_enter.w10.001"] = {
+		"Witch Hill. Le case sono vuote, e non lo sembrano affatto.",
+		"Ecco Witch Hill. Ogni finestra della vecchia casa pare rivolta verso di me.",
+	},
+	["dwm.a.victory.w10.001"] = {
+		"Una cosa in meno tra la strada e il cancello di Theramore.",
+		"La strada di Theramore, un po' più sicura. Avanti il prossimo.",
+	},
+	["dwm.a.victory.w10.002"] = {
+		"Finito. Gli stivali sono pieni di palude, e scelgo di non guardare.",
+		"È finita. Non mi sento più i piedi dentro gli stivali, e forse è meglio così.",
+	},
+	["dwm.h.attack.w10.001"] = {
+		"Affoga nell'acqua di palude!",
+		"Resta giù tra le canne!",
+	},
+	["dwm.h.battle.w10.001"] = {
+		"Fango o non fango, colpisco forte uguale.",
+		"La palude mi rallenta i piedi. Il resto no.",
+	},
+	["dwm.h.battle.w10.002"] = {
+		"Occhio all'acqua lì dietro. In questa palude le cose arrivano in coppia.",
+		"Gli occhi su questo, le orecchie sulla pozza alle mie spalle. Alla palude piace mandare compagnia.",
+		"Uno davanti. Solo uno? Controlla le canne. Controllale di nuovo.",
+	},
+	["dwm.h.journey.w10.001"] = {
+		"A terra, e la terra cede sotto di me come una spugna bagnata. Brackenwall, dunque.",
+		"Atterraggio. Terreno solido, dice il maestro delle viverne. Solido è una parola generosa, a Dustwallow.",
+	},
+	["dwm.h.landmark.w10.001"] = {
+		"{landmark}. Mura di pietra e bandiere dell'Alleanza. La pace è di Thrall e di Lady Proudmoore; le guardie non l'hanno mai firmata.",
+		"Theramore. Ogni arciere sulle mura guarda una cosa sola, e sono io. Continua a camminare.",
+	},
+	["dwm.h.lowhp.w10.001"] = {
+		"Sangue nell'acqua. Tutto quello che vive in questa palude adesso è interessato.",
+		"Sto sanguinando nella palude. Ogni crocolisco nel raggio di un miglio lo saprà.",
+	},
+	["dwm.h.muse.w10.001"] = {
+		"Qualcuno dei vecchi grunt di Brackenwall si ricorda ancora delle navi dell'ammiraglio Proudmoore davanti a Durotar. La pace della figlia, per loro, non cancella quel ricordo.",
+		"La signora di Theramore vuole la pace. Suo padre arrivò a Durotar con una flotta. A Brackenwall in molti fanno fatica a sentire la prima cosa sopra il rumore della seconda.",
+		"I veterani qui misurano Theramore coi cannoni dell'ammiraglio, non con la parola di sua figlia. Li capisco. Spero che si sbaglino.",
+	},
+	["dwm.h.muse.w10.002"] = {
+		"Avvicinati troppo alle mura di Theramore e la pace finisce sulla punta della lancia di una guardia. Molto educatamente, s'intende.",
+		"La pace con Theramore è vera. Solo che si ferma parecchio prima del loro cancello.",
+	},
+	["dwm.h.muse.w10.003"] = {
+		"Gli sciamani di Brackenwall dicono che i draghi neri indossano volti presi in prestito, quando vogliono qualcosa dai mortali. Ho cominciato a guardare due volte gli sconosciuti.",
+		"Draghi capaci di camminare tra noi con la faccia di chiunque. Gli sciamani giurano che è vero. Qui, con il Wyrmbog così vicino, ci credo.",
+	},
+	["dwm.h.muse.w10.004"] = {
+		"Persino i troll stanno alla larga da Witch Hill, e i troll non si spaventano facilmente degli spiriti. Mi basta questo.",
+		"I troll di Brackenwall parlerebbero con qualunque spirito, ma non con quelli di Witch Hill. E nessuno di loro dice perché.",
+	},
+	["dwm.h.muse.w10.005"] = {
+		"Lo stufato di Brackenwall: quello che la palude ha lasciato andare quel giorno, e nessuno chiede quale parte.",
+		"I cuochi di Brackenwall non danno un nome allo stufato. Saggi.",
+	},
+	["dwm.h.npc_meet.w10.001"] = {
+		"C'è un posto dove appendere questi stivali ad asciugare? Dormo anche per terra, purché sia asciutta.",
+		"Un angolo asciutto, una scodella calda e un fuoco. In questa palude è un banchetto.",
+	},
+	["dwm.h.quest_complete.w10.001"] = {
+		"Fatto. Brackenwall resiste perché c'è sempre qualcuno che fa lavori come questo nel fango. Oggi toccava a me.",
+		"Finito. Il villaggio sta in piedi sul fango e su lavori come questo.",
+	},
+	["dwm.h.quest_complete.w10.002"] = {
+		"Ecco. Quasi tutto è quello che hai chiesto. Il resto è palude.",
+		"Consegnato. Se gocciola, è colpa della palude, non mia.",
+	},
+	["dwm.h.quest_progress.w10.001"] = {
+		"Non ho finito. Il resto è tra le canne, e là c'è anche tutto quello che morde.",
+		"Più o meno a metà. La palude restituisce le cose piano, un risucchio dopo l'altro.",
+	},
+	["dwm.h.subzone_enter.w10.001"] = {
+		"The Quagmire. Il nome almeno è onesto. Qui non ci si può fidare di un solo passo.",
+		"The Quagmire. Chi l'ha battezzata non ha sprecato parole, e il fango non spreca passi: ognuno affonda.",
+	},
+	["dwm.h.victory.w10.001"] = {
+		"Si torna a Brackenwall con una storia, allora.",
+		"Fatto. Al villaggio vorranno sentirla.",
+	},
+	["dwm.h.victory.w10.002"] = {
+		"batte i piedi per scrollarsi di dosso il peggio della palude e sputa una sorsata d'acqua stagnante.",
+		"si toglie un filo d'alga dal colletto e si alza barcollando.",
+	},
 ]==])

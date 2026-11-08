@@ -2795,4 +2795,359 @@ NS:AddTexts("enUS", {
 		"A roof and a fire. The bed is too short and the room too warm, but a troll has slept in worse. Up trees, mostly.",
 		"Indoors, with walls and a door that shuts. I prop it open a crack. A troll sleeps better with the air moving.",
 	},
+	["band.b60.quest_complete.w10.001"] = {
+		"Done. Next time, send word sooner. Trouble is cheaper while it's small.",
+		"Taken care of. Call on me earlier next time; I'd rather prevent than repair.",
+		"Finished. And please, the moment something like this starts, find me.",
+	},
+	["band.b60.quest_complete.w10.002"] = {
+		"The reward is something I'd sell without looking at it. I'll take it anyway; refusing would insult them.",
+		"Another pouch of coin and a trinket I'll never wear. The thanks in their voice was worth more.",
+		"The prize means little to me now. Their relief means a great deal, which is a strange way round to have ended up.",
+	},
+	["band.b60.quest_complete.w10.003"] = {
+		"tucks the reward away without a glance, already looking past it toward whatever comes next.",
+		"accepts the thanks with a short nod, the kind that says this was work, not a favor to be paid back.",
+		"lets the reward sit in {g:his|her} palm a moment, weighs it out of old habit, and puts it away.",
+	},
+	["band.b60.quest_complete.w10.004"] = {
+		"That's done. If anyone asks, it was terribly difficult and I was magnificent.",
+		"Finished. Feel free to embellish the story; I won't correct you.",
+		"Done. Tell it however you like. Put a dragon in it, if that helps.",
+	},
+	["band.b60.quest_complete.w10.005"] = {
+		"One more thing the world's horrors don't get to keep. Small, but the whole war is made of small things.",
+		"A little ground taken from the dark. It won't be in any chronicle, and it still counts.",
+		"Someone sleeps easier for this. That's the whole ledger, and it balances.",
+	},
+	["band.b60.quest_complete.w10.006"] = {
+		"Next time, give the small jobs to the new faces. They need them more than I do.",
+		"Leave the easy errands for the young ones. Save the ugly ones for me.",
+		"If you've got simpler work, hand it to someone starting out. They have to learn somewhere.",
+	},
+	["band.b60.quest_complete.w10.007"] = {
+		"Done, and I feel it in my shoulders. Strength doesn't mean it stops costing; it means I can afford it.",
+		"Another one finished. The body keeps a tally of these even when I don't.",
+		"That's one off the list. The list, I notice, has never once got shorter on its own.",
+	},
+	["band.b60.quest_complete.w10.008"] = {
+		"Far back on the road there's a first errand: a few pelts, a lost satchel. I'd like to tell that beginner it all adds up to this.",
+		"The first jobs I ever took paid in copper and pride. This one paid better, and I'm less proud of the pay.",
+		"It's odd. The work hasn't changed so much since the start: someone asks, I go, it gets done. Only the monsters grew.",
+	},
+	["band.b60.quest_complete.w10.009"] = {
+		"Done. Now tell me what you were too afraid to ask for.",
+		"That's finished. Whatever you're saving for someone braver, I'm listening.",
+		"The easy part's over. What's the job you didn't think anyone would take?",
+	},
+	["band.b60.quest_complete.w10.010"] = {
+		"Another mark in someone's ledger of who can be trusted. Those ledgers open more doors than any key.",
+		"It's slow, this business of being trusted by people who've been let down before. One task, then another.",
+		"No hero's welcome, just a nod that's a little warmer than the last one. That's how standing is built.",
+	},
+	["band.b60.quest_complete.w10.011"] = {
+		"There. Was that the whole problem? I brought supplies for something much worse.",
+		"That's it? I'd braced for a disaster. Pleasantly disappointed.",
+		"All done, and nothing caught fire. By my standards these days, that's a holiday.",
+	},
+	["band.b60.quest_complete.w10.012"] = {
+		"This job is done. Whatever made it necessary is still out there, bigger than any one task.",
+		"I can finish a hundred errands like this and the root of it all will still be out there, patient.",
+		"Solved, for here. Far off, whatever caused it is already busy causing the next one.",
+	},
+	["band.b60.quest_progress.w10.001"] = {
+		"Part of it done. I'm past rushing; it'll be finished when it's finished, and finished properly.",
+		"Not there yet. At this stage I trust the pace more than the impatience.",
+	},
+	["band.b60.quest_progress.w10.002"] = {
+		"That's all of it. Someone's waited long enough; let's not make it longer.",
+		"Everything they needed. Now the walk to tell them, which is the part they'll remember.",
+	},
+	["band.b60.reputation_change.w10.001"] = {
+		"A little more standing with them. At this point in the road I collect trust the way others collect trophies, and it's the better collection.",
+		"They think better of me now. Funny how the hardest fights matter less to people than whether you kept showing up.",
+	},
+	["mood.city.journey.w10.001"] = {
+		"Solid ground and other people's elbows. After hours of wind in my ears, a crowd's chatter sounds almost like music.",
+		"The flight ends and the city starts at once: a merchant calling prices, a guard yawning, someone arguing about a cart.",
+		"Feet down. Within ten paces I've been offered a sword, a hot pie and directions I never asked for.",
+	},
+	["mood.city.journey.w10.002"] = {
+		"slides down from the mount, shakes the stiffness out of {g:his|her} legs and steps into the flow of the crowd as if {g:he|she} had never left it.",
+		"comes down from the flight with the wind still roaring in {g:his|her} ears, and straightens {g:his|her} gear before anyone has a chance to stare.",
+		"lands, gives the handler a nod, and within a dozen steps is swallowed by the traffic of the city.",
+	},
+	["mood.city.journey.w10.003"] = {
+		"Down from the sky and straight into a queue. Cities never change.",
+		"All that open air, and now I'll spend half an hour getting past one cart.",
+		"Ah, the city. Somebody's already shouting, and I haven't even found my legs.",
+	},
+	["mood.city.journey.w10.004"] = {
+		"Up there it was me and the wind. Down here it's me and a thousand people, which is a different kind of alone and a good deal louder.",
+		"The city takes me back without noticing I was gone. Flights end like that: one moment the whole world lies below you, the next you're one more face in a street.",
+	},
+	["mood.city.journey.w10.005"] = {
+		"A city at the end of a flight means a bath, a hot meal and a bed somebody else made. I'll take them in whatever order they come.",
+		"Smiths, cooks and a bank, all within shouting distance. For a while the world's troubles can queue up somewhere else.",
+		"Every city looks like safety from the air. On the ground it looks like errands. Still, errands beat ambushes.",
+	},
+	["mood.city.journey.w10.006"] = {
+		"Behind me the smells of the city come apart one by one: smoke, bread, the tannery, the stables. Then only wind.",
+		"I leave my errands down there, half of them unfinished. They'll keep; cities are good at keeping things waiting.",
+		"The guards, the hawkers, the beggar who knew my face: all of it falls behind in a few wingbeats. The city won't miss me, and that's as it should be.",
+	},
+	["mood.city.journey.w10.007"] = {
+		"settles into the saddle as the mount pulls away, and watches the city's stone fall behind, turn into a pattern, then a smudge.",
+		"rides out the first lurch of the flight with one hand tight on the harness, the din of the streets fading under the beat of wings.",
+		"glances back once at the city slipping away, the way one glances at a busy table just left, then turns {g:his|her} face to the road ahead.",
+	},
+	["mood.city.journey.w10.008"] = {
+		"Goodbye, crowds. Goodbye, prices. I'll miss the pies.",
+		"Off we go. If anyone down there was looking for me, they'll have to shout louder.",
+		"Up and out. Nobody up here is going to try to sell me anything.",
+	},
+	["mood.city.journey.w10.009"] = {
+		"A city is the last door with a lock on it for a long while. I feel it close behind me, and I don't look back.",
+		"Guards and bolted doors give way to open country. The city was the easy part; it always is.",
+		"Down there, people rest behind locked doors and grumble about the price of bread. I fly toward the places that make those locks necessary.",
+	},
+	["mood.city.journey.w10.010"] = {
+		"There was a face in that crowd I meant to remember. Gone now, with the rest of it.",
+		"Every time I leave a city I take one small thing along: a tune from a doorway, a smell, a stranger's laugh. Today it's a vendor's curse I didn't quite catch.",
+		"So many people passed, and I'll never see one of them again. A city is a river of strangers; I've just stepped out of it.",
+	},
+	["mood.city.rest_enter.w10.001"] = {
+		"Somewhere safe. I can let my guard drop a notch, and my pack drop all the way.",
+		"Safe streets. Whatever I sleep on next, nothing is going to wake me with teeth.",
+		"The city's peace settles over me. My shoulders notice it a moment before I do.",
+	},
+	["mood.city.rest_enter.w10.002"] = {
+		"lets {g:his|her} shoulders sink as the guarded streets close around {g:him|her}, and unbuckles one strap, then another.",
+		"slows to an easy walk, the wariness of the road draining out of {g:his|her} step a little at a time.",
+		"rolls the stiffness out of {g:his|her} neck, judging the city safe enough to stop listening for every footstep.",
+	},
+	["mood.city.rest_enter.w10.003"] = {
+		"Guards, merchants and somewhere to sit. I'm officially off duty.",
+		"Right. Nobody's going to try to kill me for a while. Somebody may try to overcharge me, but I'll survive that.",
+		"Safe at last. Now the only thing that can ambush me is the price of a meal.",
+	},
+	["mood.city.weather_change.w10.001"] = {
+		"Rain over the city: the stalls throw covers over their goods, and every doorway fills with people pretending they meant to stop there.",
+		"The rain comes, and the crowd changes shape at once: faster, closer to the walls, hoods up.",
+	},
+	["mood.city.weather_change.w10.002"] = {
+		"watches the crowd spill back out of the doorways as the weather clears, the stalls uncovering their goods one after another.",
+		"steps out into the cleared air along with everyone else, as if the whole street had taken a breath at the same moment.",
+	},
+	["mood.desert.journey.w10.001"] = {
+		"My knees creak as I climb down, and the first breath tastes of grit. Dry country greets you with a handful of dust in the face.",
+		"On the ground, and squinting already. Everything here is the color of dust, and soon I will be too.",
+		"Down from the flight. The wind up there was cool; the land down here has never heard of the idea.",
+	},
+	["mood.desert.weather_change.w10.001"] = {
+		"turns {g:his|her} back on the rising sand and pulls a cloth across {g:his|her} face as the air fills with stinging grit.",
+		"hunches into the sandstorm, one arm raised, and keeps walking by memory more than by sight.",
+	},
+	["mood.fire.journey.w10.001"] = {
+		"comes down off the flight into air so hot and dry it stings the eyes, and blinks hard until they water.",
+		"lands on scorched ground and feels the heat climbing through {g:his|her} boot soles before the wings have even folded.",
+	},
+	["mood.forest.journey.w10.001"] = {
+		"The treetops close up below like a green sea, and the forest swallows the spot where I stood without a ripple.",
+		"Up through the leaves and into the open. The woods go on whispering down there, whether I listen or not.",
+	},
+	["mood.jungle.journey.w10.001"] = {
+		"The canopy drops away beneath the wings, and for the first time in ages the air is dry enough that I notice I'm breathing it.",
+		"Up and out of the green. From above, the jungle looks like a single great animal breathing, and I'm glad to be off its back.",
+	},
+	["mood.plague.journey.w10.001"] = {
+		"The wings lift me out of the sick air. I won't breathe deeply until it's well behind me, but I will breathe.",
+		"Below, gray fields and black trees fall away. I keep my eyes ahead; there's nothing down there I want to remember.",
+	},
+	["mood.snow.journey.w10.001"] = {
+		"Down into the cold. The flight was chilly; the ground is worse, and means to stay that way.",
+		"Boots in the snow before I've even pried my hands off the harness. Every breath comes out white.",
+		"Feet down, and within ten steps the cold has found every gap in my clothes. It's had practice.",
+	},
+	["time.dawn.journey.w10.001"] = {
+		"Up into the dawn. The land below is still gray, and the light is coming up to meet me.",
+		"Taking off at first light. Below, the world is still rubbing its eyes.",
+	},
+	["time.dawn.journey.w10.002"] = {
+		"touches down in the early light, stiff from the cold air above, and stamps some warmth back into {g:his|her} feet.",
+		"lands just as the dawn comes up, and stands a moment watching the color return to the land.",
+	},
+	["time.day.journey.w10.001"] = {
+		"Up, with the day wide open around me. Down below, every track and wall and ditch is drawn out in plain sight.",
+		"A flight in good light. I can see the folk on the roads below going about their errands, small as ants and just as busy.",
+		"Climbing into daylight. From up here the land looks like it's been at work for hours and isn't finished yet.",
+	},
+	["time.day.journey.w10.002"] = {
+		"settles into the saddle as the ground falls away, eyes following the roads below while the daylight lasts.",
+		"takes to the air in the middle of the day, and leans a little to watch the land slide past beneath.",
+		"rises into the hours of light with a steady grip, picking out landmarks below one by one.",
+	},
+	["time.day.journey.w10.003"] = {
+		"Down with daylight to spare. Good: time to find my bearings before anything finds me.",
+		"Landed, and the day's still going. That's hours of walking I didn't have to do, and hours of light left to use.",
+	},
+	["time.day.journey.w10.004"] = {
+		"Down in good light. No groping about for the road this time.",
+		"Landed in broad day. If I get lost now, it's entirely my own doing.",
+	},
+	["time.day.rest_enter.w10.001"] = {
+		"A rest in the middle of the day. It feels like stealing hours from someone, and I don't mind at all.",
+		"Stopping while there's still light. The road will have to manage without me for a bit.",
+		"Plenty of day left, and I'm spending some of it sitting down. A small, honest luxury.",
+	},
+	["time.day.weather_change.w10.001"] = {
+		"In daylight I can watch the change come across the land like a slow tide, long before it reaches me.",
+		"The sky is turning, and by day there's no missing it: the whole land takes on another color at once.",
+		"Good that it's day. A change like this is easier to read when you can see the far edge of it.",
+	},
+	["time.dusk.journey.w10.001"] = {
+		"Taking off with the light failing. I'll land in the dark, most likely, and that's the beast's problem.",
+		"Up into the dusk. The land below is losing its colors one by one, and I have the best seat to watch.",
+	},
+	["time.dusk.journey.w10.002"] = {
+		"Down before full dark. Just about. I'll take it.",
+		"Landed with the last light. Now for a roof before the night finds me.",
+	},
+	["time.night.journey.w10.001"] = {
+		"A night flight. The beast knows the way better than I do; all I can do is trust it and hold on.",
+		"Flying through the dark, the land below is nothing but a guess. I'll have to take the world's word that it's still there.",
+		"In the dark there's no up or down worth the name, only the beat of wings and the cold on my face.",
+	},
+	["time.night.journey.w10.002"] = {
+		"climbs down from the saddle in the dark and waits a moment for the ground, and the eyes, to settle.",
+		"lands in the night and stands still, listening, before taking a single step.",
+		"slides to the ground in the darkness, finds {g:his|her} footing by touch, and lets out a long breath.",
+	},
+	["time.night.journey.w10.003"] = {
+		"Down, and it's black as pitch. Somebody point me to a bed. Anybody.",
+		"Landed in the dark. Now, which way is anything?",
+	},
+	["time.night.rest_enter.w10.001"] = {
+		"Somewhere safe, and only half the night gone. That's more sleep than I'd hoped for.",
+		"Rest, at last, at this hour. The dark can carry on without me keeping an eye on it.",
+	},
+	["time.night.weather_change.w10.001"] = {
+		"Something has changed in the dark. I can't see it yet; I feel it on my skin and smell it in the air.",
+		"The sky is shifting up there above the night, out of sight. I'll know what it has decided soon enough.",
+	},
+	["weather.clear.dawn.w10.001"] = {
+		"Dawn under an open sky. The first color reaches every hill at once; there's nothing up there to stop it.",
+		"No cloud to catch the dawn, so it comes plain and pale, and the land wakes all at once instead of by halves.",
+	},
+	["weather.clear.dawn.w10.002"] = {
+		"watches the dawn come up into a cloudless sky, the far ridges taking shape one after another.",
+		"turns toward the paling sky at dawn and finds not a single cloud in it, only a long clean edge of color.",
+	},
+	["weather.clear.dusk.w10.001"] = {
+		"A clear dusk. Nothing in the sky to hold the color, so it drains off clean, and the chill comes in right behind it.",
+		"Dusk with an empty sky: the light goes slowly and evenly, like a lamp being turned down by a careful hand.",
+	},
+	["weather.clear.dusk.w10.002"] = {
+		"watches the clean sky change color at dusk, the far ridges going dark before the near ones.",
+		"pulls {g:his|her} cloak a little closer at dusk; under a sky this clear, the air cools quickly.",
+	},
+	["weather.clear.journey.w10.001"] = {
+		"Not a cloud to fly through. The wings beat steady, and below me the rivers and roads lie open like a map someone forgot to fold.",
+		"Nothing in the sky but us. Every road below shows plain, every river, every roof. Flying in clear air feels like cheating at hide-and-seek.",
+		"A smooth climb and nothing up here to wrestle with. For once the sky and the beast agree.",
+	},
+	["weather.clear.journey.w10.002"] = {
+		"leans over the harness as the mount climbs into an empty sky, watching the roads below thin into threads.",
+		"settles in for the flight with nothing ahead but open air, and lets the wind do all the talking.",
+		"rises through air so still and clean that each wingbeat can be heard on its own.",
+	},
+	["weather.clear.journey.w10.003"] = {
+		"Clean air, no cloud. Even the beast looks pleased with itself.",
+		"Good flying weather. Let's not waste a wingbeat of it.",
+	},
+	["weather.clear.journey.w10.004"] = {
+		"Down out of an empty sky without a single lurch. My stomach would like to thank the weather in person.",
+		"Landed. In air this clear I could see where we'd come down from leagues away, and watched it grow for most of the flight.",
+		"Clear all the way. I saw the land change under me from start to finish; now my feet get to learn it the slow way.",
+	},
+	["weather.clear.journey.w10.005"] = {
+		"climbs down from the saddle without a hair out of place, the flight having been as easy as the sky was empty.",
+		"lands without a single gust to fight, and gives the beast's neck a grateful pat for the quiet trip.",
+	},
+	["weather.clear.rest_enter.w10.001"] = {
+		"A place to rest, and fair weather outside. I'll sleep better hoping the road stays dry.",
+		"Rest, though the sky isn't pushing me toward it. That's the best kind: taken by choice, not chased in by the weather.",
+	},
+	["weather.clear.rest_enter.w10.002"] = {
+		"settles down to rest with dry clothes for once, and nothing to wring out or hang by a fire.",
+		"eases into the rest without a drop of weather on {g:him|her}, which feels almost like cheating.",
+	},
+	["weather.clear.weather_change.w10.001"] = {
+		"watches the sky empty itself of weather, and loosens {g:his|her} hood for the first time in a while.",
+		"shakes out {g:his|her} cloak as the air clears, and whatever it was carrying, rain or grit or snow, goes flying.",
+		"watches the last ragged clouds hurry off, like stragglers late for somewhere else.",
+	},
+	["weather.clear.weather_change.w10.002"] = {
+		"Whatever was falling has stopped. The world goes quiet in stages: one last drip, one last gust, then nothing.",
+		"The weather lifts, and the land comes back piece by piece: the near ground, the far ridge, then the ridge beyond that.",
+		"Clear again. The air feels rinsed, as if the world had been scrubbed and hung out to dry.",
+	},
+	["weather.clear.weather_change.w10.003"] = {
+		"There. The sky's done sulking.",
+		"Clearing up. Now my boots can begin the long, slow business of forgiving me.",
+		"Clear again. I'll stop pretending I didn't mind.",
+	},
+	["weather.clear.weather_change.w10.004"] = {
+		"When weather passes, the stillness it leaves is the best part, like the hush after a crowd has gone home.",
+		"The clouds have gone, and something in my chest comes untied that I hadn't noticed was knotted.",
+		"An open sky again. Nothing has changed down here, and still everything seems easier to carry.",
+	},
+	["weather.clear.weather_change.w10.005"] = {
+		"hears the land stir again as the sky clears: a call here, a rustle there, the wild deciding it is safe to come out.",
+		"straightens up as the weather breaks, rolling shoulders that had been hunched against it for far too long.",
+	},
+	["weather.fog.journey.w10.001"] = {
+		"The world below is gone in the fog. I fly on trust: the beast's, not mine.",
+		"Nothing to see but gray and the beast's ears. It knows the road through the air; I'll leave the worrying to it.",
+		"We climb into fog thick as wool. Down there, somewhere, are roads and rivers; I'll take the beast's word for it.",
+	},
+	["weather.fog.weather_change.w10.001"] = {
+		"watches the fog roll in low across the ground, until {g:his|her} own boots are the only sure thing in sight.",
+		"stops as the fog closes in, and everything near, rock or tree or something else, fades into a pale sketch of itself.",
+	},
+	["weather.rain.dawn.w10.001"] = {
+		"Dawn, if it counts in this rain: the dark just goes gray, and the water keeps falling as if nothing had happened.",
+		"A wet dawn. No color comes up at all, only a slow paling behind the rain, like a lamp lit in the next room.",
+	},
+	["weather.rain.dusk.w10.001"] = {
+		"barely notices dusk come down through the rain; the gray only deepens, and the road ahead fades into one long sound of water.",
+		"pulls {g:his|her} hood tighter as the rain carries on into dusk, the light leaving without any ceremony at all.",
+	},
+	["weather.rain.journey.w10.001"] = {
+		"Taking off in the rain. Every wingbeat throws water back in my face, and the land below is a smear of gray.",
+		"Up into the wet. The harness is slick, the beast is grumbling, and I'm holding on with more than my hands.",
+		"At this speed the raindrops sting like thrown gravel. I tuck my chin down and count the leagues.",
+	},
+	["weather.rain.journey.w10.002"] = {
+		"comes down onto sodden ground, and the mount promptly shakes itself, soaking everyone within reach.",
+		"slides down soaked from the flight, rain running off {g:his|her} chin, and makes for the nearest shelter at a jog.",
+		"climbs down stiff and dripping, and wrings out a sleeve while the beast steams quietly alongside.",
+	},
+	["weather.rain.journey.w10.003"] = {
+		"Down. Wet through. Where's the fire?",
+		"That was less a flight than a long bath with wings.",
+	},
+	["weather.rain.rest_enter.w10.001"] = {
+		"Rest at last. Let the rain fall all it likes; I don't have to walk in it anymore.",
+		"Safe ground, and an end to walking in the wet. The rain can keep on; I'm done arguing with it.",
+	},
+	["weather.rain.weather_change.w10.001"] = {
+		"And there's the rain. Every pocket I own is about to become a cup.",
+		"Rain. I felt the first drop on the back of my neck, right where they always aim.",
+	},
+	["weather.storm.journey.w10.001"] = {
+		"Flying into a storm. The beast fights every gust, and I fight the urge to shout at it to land.",
+		"The wind throws us sideways and the sky flashes white. Whoever charted this route owes me an apology.",
+		"Thunder at this height doesn't roll; it slaps. I hold on and promise the ground I'll visit more often.",
+	},
 }, "base_world")

@@ -394,5 +394,9 @@ NS:RegisterPack({
 			tags = { "temperament:stoic", "faith:spiritual" }, depth = { "natural", "literary" },
 			theme = "memory", motifs = { "road" },
 			conditions = { race = "Troll", repeatVisit = true } },
+		["mem.ret.weather.clear.w10.001"] = { event = "memory_return", speaker = "inner", styles = { "intimate", "everyday" },
+			tags = { "curiosity:mid", "calm" }, depth = { "natural" },
+			theme = "memory", motifs = { "mountain" },
+			conditions = { weather = "clear", repeatVisit = true, lastVisitBad = false } },
 	},
 })

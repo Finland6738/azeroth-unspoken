@@ -1628,4 +1628,107 @@ NS:AddTexts("enUS", {
 		"{other}. I know that name the way I know the first beat of a drum. The rest comes back on its own.",
 		"Ah, {other}. A face I've filed somewhere between the good fish and the bad days. Let's see which pile.",
 	},
+	["faction.alliance.relation_npc.w10.001"] = {
+		"Alliance colors and a familiar face. The banner's huge; it's faces like this that make it feel like ours.",
+		"{other}. Kings and councils are far away. Known people along the way are what the Alliance means from day to day.",
+		"I know this one. Far from home, a known ally is worth a fort.",
+	},
+	["faction.alliance.relation_player.w10.001"] = {
+		"Allies by banner, and by choice besides: {other} is the rarer second kind.",
+		"The Alliance gave {other} and me the same colors. The trust we had to build ourselves.",
+		"{other}. One ally I never need to double-check.",
+	},
+	["faction.alliance.relation_player.w10.002"] = {
+		"Of all the people under our banner, {other} is one of the few who make a long road shorter.",
+		"So many strangers in the Alliance, and then {other}, glad to see me. The day improves.",
+		"{other}! Good company, and our colors. Can't ask for more.",
+	},
+	["faction.alliance.relation_player.w10.003"] = {
+		"I owe {other}, and in the Alliance we settle debts between ourselves, even when the nobles never do.",
+		"Some allies are allies on paper. With {other} I saw the real thing, in the mud, when it counted.",
+	},
+	["faction.alliance.relation_player.w10.004"] = {
+		"{other}! The elves kept apart from everyone for ten thousand years. This one needed only a few good roads to become a friend.",
+		"Darnassus feels a great deal closer with a friend like {other} in it.",
+	},
+	["faction.alliance.relation_player.w10.005"] = {
+		"{other}! A gnome friend is worth three tents: always a spare part, always a plan, always an opinion.",
+		"Gnomeregan lost a city, and the rest of the Alliance gained people like {other}. Not a fair trade for them; a lucky one for us.",
+	},
+	["faction.alliance.relation_player.w10.006"] = {
+		"We've held a line together under Alliance colors, {other} and I. Better than any herald's introduction.",
+		"In the Alliance, having fought beside {other} counts for more than coming from the same people.",
+		"{other}. Near enough to kin, after that fight.",
+	},
+	["faction.alliance.relation_player.w10.007"] = {
+		"Same side, same banner, and I'd still like to finish ahead of {other}. The Horde can wait its turn.",
+		"A rival in our own ranks keeps me sharper than any enemy across the field, and {other} keeps me very sharp.",
+		"{other}. Friendly rivals, mostly.",
+	},
+	["faction.alliance.relation_player.w10.008"] = {
+		"Same colors as mine on {other}, which proves nothing. The Defias were all Stormwind folk once.",
+		"An ally, officially. I'll be polite to {other} and keep my purse on the far side.",
+	},
+	["faction.alliance.relation_player.w10.009"] = {
+		"{other}, of the Horde. We've met before, and neither of us has forgotten how it went.",
+		"Some names on the Horde side I'd know anywhere. {other} is one.",
+		"{other} again. Hands ready.",
+	},
+	["faction.alliance.relation_player.w10.010"] = {
+		"{other}! A month and more. The whole Alliance could have changed its mind three times since.",
+		"A long while without {other}. I wonder what news that corner of the Alliance has been keeping.",
+	},
+	["faction.horde.relation_npc.w10.001"] = {
+		"{other}. A familiar face in Horde colors. The pact is huge; faces like this one make it small enough to live in.",
+		"Ah, {other} again. The Horde is a great many strangers. It helps to know a few of them by name.",
+		"{other}. I know this one. In a Horde of four peoples, being remembered is its own kind of welcome.",
+	},
+	["faction.horde.relation_player.w10.001"] = {
+		"{other}. The Horde makes allies of strangers by decree; this trust I chose myself.",
+		"{other}. The pact says we're allies. Experience says a good deal more.",
+		"{other}. If the Horde were made only of people like this, the Warchief could sleep easy.",
+	},
+	["faction.horde.relation_player.w10.002"] = {
+		"{other}! A bright spot in the Horde's long, loud day.",
+		"There goes {other}. Some faces make the whole Horde feel a little more like home.",
+		"{other}. Good company, under the right colors.",
+	},
+	["faction.horde.relation_player.w10.003"] = {
+		"I owe {other}, and in the Horde a debt between allies is paid in kind when the need comes.",
+		"There's {other}, whom I still owe. The Horde runs on debts like that, honestly kept.",
+	},
+	["faction.horde.relation_player.w10.004"] = {
+		"{other}. Different roads into the Horde, the same fire at the end of them.",
+		"There's {other}. The pact gave us a banner; the road gave us a friendship. The second took longer and counts for more.",
+	},
+	["faction.horde.relation_player.w10.005"] = {
+		"{other}. Same banner. That doesn't mean the same intentions.",
+		"There's {other}. The Horde asks me to stand beside every ally. It doesn't ask me to turn my back.",
+		"{other}. On my side, yes. Watched, also yes.",
+	},
+	["faction.horde.relation_player.w10.006"] = {
+		"{other}. The Horde needs us both, which is the only reason I'm keeping my mouth shut.",
+		"There's {other}. In the old Horde this would have been settled with axes. The new one asks me to swallow it. I'm swallowing.",
+	},
+	["faction.horde.relation_player.w10.007"] = {
+		"{other}. A rival inside the Horde is a gift: someone to outdo, who will still guard my flank.",
+		"There's {other}. We'll contest every honor going, and stand shoulder to shoulder the moment the Alliance turns up.",
+	},
+	["faction.horde.relation_player.w10.008"] = {
+		"{other}. We've bled for the same banner. That's a bond the Horde understands better than words.",
+		"There's {other}, who fought beside me in the same press. The Horde keeps no list of those names. I do.",
+		"{other}. Same fight, same side, the same mud on our boots afterward. The Horde in a single memory.",
+	},
+	["faction.horde.relation_player.w10.009"] = {
+		"{other}! A long while. Wherever the Horde sent you, you found your way back from it.",
+		"There's {other}, after many weeks. The Horde is wide; it's good when it brings the same faces round again.",
+	},
+	["faction.horde.relation_player.w10.010"] = {
+		"{other}. Horde colors on a face I'd rather not see. The banner protects that one from me. Barely.",
+		"There's {other}. Under any other flag, this would end differently.",
+	},
+	["faction.horde.relation_player.w10.011"] = {
+		"{other}. A duel, the Horde way: hard, fair, and no grudges after. Mostly.",
+		"There's {other}. Our duel settled nothing, which is exactly what a duel between allies should settle.",
+	},
 }, "base_relations")

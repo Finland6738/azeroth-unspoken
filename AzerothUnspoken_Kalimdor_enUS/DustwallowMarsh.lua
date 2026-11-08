@@ -256,4 +256,148 @@ AU:RegisterRegionalTexts("dustwallowmarsh", "enUS", "kalimdor_dustwallowmarsh", 
 		"Rain on the marsh. As if it needed more water.",
 		"The rain sets the whole bog drumming, pools and reeds and leaves at once. Some frog out there is delighted.",
 	},
+	["dwm.a.attack.w10.001"] = {
+		"Here's something the marsh can't soak up!",
+		"Try ducking in knee-deep mud!",
+	},
+	["dwm.a.battle.w10.001"] = {
+		"Theramore's road stays open. Move.",
+		"This road leads to Theramore, and you're standing in it.",
+	},
+	["dwm.a.battle.w10.002"] = {
+		"drags a boot free of the sucking mud just in time to meet the attack.",
+		"finds a tussock of firmer ground and turns on it, reeds whipping all around.",
+		"wades clear of a black pool, water streaming from {g:his|her} legs, and squares up.",
+	},
+	["dwm.a.journey.w10.001"] = {
+		"Down on Theramore's stones. Salt air, gulls and solid ground. I could kiss the paving.",
+		"Landing on the isle. The swamp smell gives way to the sea, and the ground stops moving under my feet.",
+	},
+	["dwm.a.landmark.w10.001"] = {
+		"{landmark}. The tower at the heart of the isle belongs to Lady Proudmoore, and every ship in the harbor seems to point toward it.",
+		"Theramore. Stone walls, a mage's tower above the roofs, and the sea on every side but one. The safest place in a very unsafe marsh.",
+	},
+	["dwm.a.lowhp.w10.001"] = {
+		"Up. Nobody drowns standing.",
+		"Keep your head above the water. Literally, now.",
+	},
+	["dwm.a.muse.w10.001"] = {
+		"In Theramore they whisper that the black dragons have eyes inside the walls. It's the sort of rumor that makes every guard look twice at the next one.",
+		"Talk on the docks says Onyxia's servants wear Theramore's colors. Nobody can name one. Everybody watches everybody.",
+		"Black dragons don't only nest in the south, if the gossip is true. Some of them, they say, walk the streets of Theramore on two feet.",
+	},
+	["dwm.a.muse.w10.002"] = {
+		"The fishermen from Theramore won't go near Witch Hill, and they won't say why. They just change the subject and spit.",
+		"Witch Hill, they call that rise to the north. Ask about it in Theramore and people suddenly remember errands.",
+	},
+	["dwm.a.muse.w10.003"] = {
+		"Ships leave Theramore for Menethil Harbor. Half the Alliance's strength on this side of the sea hangs on that one sea lane, and I'd like it sturdier.",
+		"One boat north to the Wetlands. That's the line tying Theramore to the eastern kingdoms. Thin, isn't it?",
+	},
+	["dwm.a.muse.w10.004"] = {
+		"stops at a sunken signpost that points straight into open water, and decides against the road it promised.",
+		"reads a leaning signpost half under the swamp, follows its arm with {g:his|her} eyes to a pond, and sighs.",
+	},
+	["dwm.a.npc_meet.w10.001"] = {
+		"A dry room, please, and somewhere to stand these boots by the fire.",
+		"One bed that doesn't squelch. Whatever you're asking for it is fair.",
+	},
+	["dwm.a.quest_complete.w10.001"] = {
+		"accepts the payment with a muddy hand and leaves a muddy print on it, which nobody out here remarks on anymore.",
+		"takes the reward and wipes it on a sleeve, which only makes it muddier.",
+	},
+	["dwm.a.quest_complete.w10.002"] = {
+		"Done. Tell the garrison they can strike that one off.",
+		"Finished. If the quartermaster has a dry pair of socks, I'll take those as well.",
+	},
+	["dwm.a.quest_progress.w10.001"] = {
+		"Part of it done. The rest is at the bottom of some pool, I expect.",
+		"Halfway there, give or take a bog.",
+	},
+	["dwm.a.subzone_enter.w10.001"] = {
+		"Witch Hill. The houses are empty, and they don't feel it.",
+		"So this is Witch Hill. Every window in the old house seems to be facing my way.",
+	},
+	["dwm.a.victory.w10.001"] = {
+		"That's one less thing between the road and Theramore's gate.",
+		"Theramore's road, a little safer. Next.",
+	},
+	["dwm.a.victory.w10.002"] = {
+		"Finished. My boots are full of marsh, and I'm choosing not to look.",
+		"Over. I can't feel my feet in these boots, which is probably for the best.",
+	},
+	["dwm.h.attack.w10.001"] = {
+		"Choke on swamp water!",
+		"Stay down in the reeds!",
+	},
+	["dwm.h.battle.w10.001"] = {
+		"Mud or no mud, I hit just as hard.",
+		"The bog slows my feet. Not the rest of me.",
+	},
+	["dwm.h.battle.w10.002"] = {
+		"Watch the water behind it. In this marsh, things come in pairs.",
+		"Eyes on this one, ears on the pool behind me. The marsh likes to send company.",
+		"One in front. Only one? Check the reeds. Check them again.",
+	},
+	["dwm.h.journey.w10.001"] = {
+		"On the ground, and the ground gives under me like a wet sponge. Brackenwall, then.",
+		"Down. Solid ground, says the wind rider master. Solid is a generous word in Dustwallow.",
+	},
+	["dwm.h.landmark.w10.001"] = {
+		"{landmark}. Stone walls and Alliance flags. The peace belongs to Thrall and Lady Proudmoore; the guards never signed it.",
+		"Theramore. Every archer on the walls is watching one thing, and it's me. Keep walking.",
+	},
+	["dwm.h.lowhp.w10.001"] = {
+		"Blood in the water. Everything in this marsh just got interested.",
+		"I'm bleeding into the bog. Every crocolisk for a mile will know it.",
+	},
+	["dwm.h.muse.w10.001"] = {
+		"Some of the old grunts at Brackenwall still remember Admiral Proudmoore's ships off Durotar. His daughter's peace doesn't wash that out for them.",
+		"Theramore's lady wants peace. Her father came to Durotar with a fleet. Plenty in Brackenwall find the first hard to hear over the second.",
+		"The veterans here measure Theramore by the admiral's cannon, not by his daughter's word. I understand them. I hope they're wrong.",
+	},
+	["dwm.h.muse.w10.002"] = {
+		"Walk too near Theramore's walls and the peace ends at the tip of a guard's spear. Very civil about it, though.",
+		"The peace with Theramore is real. It just stops a fair way short of their gate.",
+	},
+	["dwm.h.muse.w10.003"] = {
+		"Brackenwall's shamans say the black dragons wear borrowed faces when they want something from mortals. I've started looking twice at strangers.",
+		"Dragons that can walk among us looking like anyone. The shamans swear it's true. Out here, with the Wyrmbog so close, I believe them.",
+	},
+	["dwm.h.muse.w10.004"] = {
+		"Even the trolls give Witch Hill a wide berth, and trolls aren't easily frightened by spirits. That tells me enough.",
+		"The trolls at Brackenwall will talk with any spirit you care to name, but not the ones on Witch Hill. Nobody there will say why.",
+	},
+	["dwm.h.muse.w10.005"] = {
+		"Brackenwall stew: whatever the swamp gave up that day, and nobody asks which part.",
+		"The cooks at Brackenwall don't name the stew. Wise of them.",
+	},
+	["dwm.h.npc_meet.w10.001"] = {
+		"Anywhere I can hang these boots to dry? I'll sleep on the floor if it's a dry floor.",
+		"A dry corner, a hot bowl and a fire. Out in this marsh that's a feast.",
+	},
+	["dwm.h.quest_complete.w10.001"] = {
+		"Done. Brackenwall holds because someone keeps doing jobs like this one in the muck. Today that was me.",
+		"Finished. The village stays standing on mud and on work like this.",
+	},
+	["dwm.h.quest_complete.w10.002"] = {
+		"Here. Most of it's what you asked for. The rest is swamp.",
+		"Delivered. If it drips, that's the marsh, not me.",
+	},
+	["dwm.h.quest_progress.w10.001"] = {
+		"Not done. The rest is somewhere in the reeds, and so is everything that bites.",
+		"Partway. The marsh gives things up slowly, one squelch after another.",
+	},
+	["dwm.h.subzone_enter.w10.001"] = {
+		"The Quagmire. The name is honest, at least. Not one step here can be trusted.",
+		"The Quagmire. Whoever named it didn't waste any words, and the mud doesn't waste any steps: each one sinks.",
+	},
+	["dwm.h.victory.w10.001"] = {
+		"Back to Brackenwall with a story, then.",
+		"Done. The village will want to hear it.",
+	},
+	["dwm.h.victory.w10.002"] = {
+		"stamps the worst of the bog off both boots and spits out a mouthful of marsh water.",
+		"pulls a strand of weed from {g:his|her} collar and stands, swaying.",
+	},
 ]==])

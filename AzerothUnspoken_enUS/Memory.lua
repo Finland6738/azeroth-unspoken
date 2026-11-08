@@ -419,4 +419,8 @@ NS:AddTexts("enUS", {
 		"I know {zone}. The smells are the same, the paths are the same. A troll forgets faces long before places.",
 		"{zone}. I have walked here before, and I think the place knows it. The spirits of a land remember who passed through with respect.",
 	},
+	["mem.ret.weather.clear.w10.001"] = {
+		"{zone} once more. In air this clean I can check my memory of the place against the real thing, ridge by ridge.",
+		"Back in {zone}. Nothing in the sky to blur it, and the land lines up with what I remembered, more or less.",
+	},
 }, "base_memory")

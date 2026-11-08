@@ -1926,4 +1926,50 @@ NS:AddTexts("enUS", {
 		"The stone hums in my palm. Shortcut magic. The loa are probably laughing, watching a troll skip a week of walking.",
 		"Close the fist, think of the hearth, and the world smears like wet paint. My people crossed a sea on crowded boats; I cross a continent in a breath.",
 	},
+	["band.b60.attack.w10.001"] = {
+		"Here's where the long road pays off.",
+		"Everything I learned, aimed at you.",
+	},
+	["band.b60.attack.w10.002"] = {
+		"Right where it's weakest. I know where to look now.",
+		"No wasted effort. Find the gap, strike it.",
+	},
+	["ctype.beast.attack.w10.001"] = {
+		"Here's a bite of my own!",
+		"Teeth aren't the only thing that hurts!",
+		"Down, beast! Down!",
+	},
+	["ctype.beast.attack.w10.002"] = {
+		"Strike when it gathers itself to spring. That's the opening.",
+		"Hit it as it coils. Never after.",
+	},
+	["ctype.beast.attack.w10.003"] = {
+		"times the blow to the beast's lunge and meets it halfway.",
+		"strikes low as the creature rises, as quick as any predator.",
+	},
+	["ctype.elemental.attack.w10.001"] = {
+		"Strike at the center, where it holds itself together.",
+		"Hit where the shape is thickest. That's the knot.",
+	},
+	["ctype.humanoid.attack.w10.001"] = {
+		"Saw that one coming? Didn't think so.",
+		"Guess where the next one lands.",
+	},
+	["ctype.humanoid.attack.w10.002"] = {
+		"Guarding high. Go low.",
+		"The guard drops after every swing. There.",
+	},
+	["ctype.humanoid.attack.w10.003"] = {
+		"feints once, waits for the foe to take the bait, and strikes into the opening.",
+		"strikes the instant the foe commits, and not a moment sooner.",
+		"answers the foe's move before it's finished.",
+	},
+	["mood.city.travel.w10.001"] = {
+		"The stone warms in the middle of the crowd. Nobody here will notice one face fewer, and that makes leaving easy.",
+		"Hearthstone in hand, somewhere between a stall and a guard post. The city goes on haggling while I fade out of it.",
+	},
+	["weather.clear.travel.w10.001"] = {
+		"Fine weather to walk in, and here I am taking the shortcut. The road can keep its good mood without me.",
+		"An empty sky, a dry road, and I'm folding it all away into a stone. Somebody apologize to the weather for me.",
+	},
 }, "base_spells")

@@ -423,4 +423,214 @@ AU:RegisterRegionalTexts("stranglethornvale", "enUS", "eastern_stranglethorn", [
 		"turns {g:his|her} face up to the rain sheeting off the high leaves, warm as soup and no help at all against the heat.",
 		"stands under a broad leaf as the rain comes pouring through the canopy, and the whole jungle hisses like a kettle.",
 	},
+	["stv.a.attack.w10.001"] = {
+		"The Rebel Camp sends its compliments!",
+		"That's from everyone you've ambushed!",
+	},
+	["stv.a.battle.w10.001"] = {
+		"Out of the brush and into the light. Let's see you.",
+		"You've had your ambush. Now try it standing up.",
+	},
+	["stv.a.battle.w10.002"] = {
+		"shoulders through a wall of fronds and comes out already fighting, the jungle still swaying behind.",
+		"brushes sap from {g:his|her} eyes and squares up among crushed ferns.",
+	},
+	["stv.a.battle.w10.003"] = {
+		"Big as a hut and twice as clever. That's not a compliment, ogre.",
+		"Mosh'Ogg! Back to your mound before I send you there.",
+	},
+	["stv.a.battle.w10.004"] = {
+		"Heart's racing. Good. In this jungle, slow hearts get eaten.",
+		"Breathe once, then move. The ones who freeze here end up feeding the ferns.",
+	},
+	["stv.a.journey.w10.001"] = {
+		"The gryphon swings north over the canopy, and the green closes over everything: ruins, camps, ambushes, all hidden alike.",
+		"Up above the leaves, the jungle shows nothing it doesn't want to. Not one trail, not one troll.",
+	},
+	["stv.a.landmark.w10.001"] = {
+		"{landmark}. Horde banners and a zeppelin tower. Keep to the trees and keep walking.",
+		"The Horde's camp, palisade and all. A fine place to admire from a long way off.",
+	},
+	["stv.a.lowhp.w10.001"] = {
+		"On your feet. This jungle doesn't get me cheap.",
+		"Not here, not among these roots.",
+	},
+	["stv.a.lowhp.w10.002"] = {
+		"My hands are shaking. In this heat that could be anything. It isn't anything.",
+		"Blood on the leaves, and most of it mine. Think. Move.",
+	},
+	["stv.a.muse.w10.001"] = {
+		"Nesingwary's camp takes on Alliance and Horde alike. The hides are the only thing anyone there judges you by.",
+		"At the hunters' camp nobody asks your banner. They ask how many panthers, and whether the pelts are whole.",
+	},
+	["stv.a.muse.w10.002"] = {
+		"Stormwind's roads stop at Duskwood. South of there it's a trail the jungle redraws every week.",
+		"The king's highway gives out somewhere past Darkshire. From then on, the road is whatever you cut.",
+		"Paved road, then dirt road, then a gap in the ferns. That's how the Alliance's reach thins out between Stormwind and this jungle.",
+	},
+	["stv.a.muse.w10.003"] = {
+		"The tigers here are striped like shade on leaves. You see one when it has decided you should.",
+		"Stripes, shade, leaves: all the same pattern. A tiger shows itself here only when it has already chosen you.",
+	},
+	["stv.a.muse.w10.004"] = {
+		"Horde at the docks, Horde on the trails, Horde camped on the coast. Down here, we're the ones a long way from home.",
+		"More orcs and trolls in this jungle than Alliance banners. Keep your guard up and your temper down.",
+	},
+	["stv.a.muse.w10.005"] = {
+		"The drums behind Zul'Gurub's walls hardly ever stop. At the Rebel Camp nobody likes to guess what they're keeping time for.",
+		"Drums from the northeast, from behind the troll walls. Steady, patient, never quite the same rhythm twice.",
+		"Zul'Gurub keeps beating its drums, and every tribe in the jungle seems to be walking toward the sound.",
+	},
+	["stv.a.muse.w10.006"] = {
+		"A night elf, a gnome, a dwarf and a human could meet on this trail and greet each other like cousins. The jungle does that.",
+		"Out here, any Alliance face on the trail is a welcome one, whichever city it calls home.",
+	},
+	["stv.a.muse.w10.007"] = {
+		"parts a curtain of hanging moss and finds a troll totem staring back, its paint still wet.",
+		"stops in front of a carved post at the trail's edge, daubed with fresh color, and quietly takes another path.",
+	},
+	["stv.a.muse.w10.008"] = {
+		"No two maps of Stranglethorn agree, and the jungle disagrees with all of them.",
+		"Every map of this place is a guess with a border drawn around it.",
+	},
+	["stv.a.muse.w10.009"] = {
+		"Stormwind sends no more soldiers south. The regent has a kingdom to hold together closer to home, and the jungle is left to volunteers.",
+		"With the king gone and Bolvar keeping the throne for the boy, nobody in Stormwind has troops to spare for Stranglethorn. So it falls to people like me.",
+	},
+	["stv.a.npc_meet.w10.001"] = {
+		"Do you sell anything that makes the jungle shorter?",
+		"Rope, lamp oil, and a map, if you have one that agrees with the others.",
+		"Whatever keeps a traveler going until the next safe roof. And something for the itch.",
+	},
+	["stv.a.quest_complete.w10.001"] = {
+		"Done. The road between the rebels' tents and Booty Bay just got a little safer.",
+		"Finished. One stretch of jungle less to fear, from the Rebel Camp down to the goblins' harbor.",
+	},
+	["stv.a.quest_complete.w10.002"] = {
+		"Here's your proof. I'd wash it before touching it.",
+		"All yours. It came through the jungle, so maybe use gloves.",
+	},
+	["stv.a.quest_complete.w10.003"] = {
+		"counts the coin twice, because in Stranglethorn even the payment can be a trick.",
+		"accepts the reward and holds a coin up to the light, as anyone sensible does in a jungle full of goblins.",
+	},
+	["stv.a.quest_progress.w10.001"] = {
+		"That's all of it. Now back through the green, and with any luck, by the same path.",
+		"Everything's here. The trick now is finding the trail I came in on.",
+	},
+	["stv.a.subzone_enter.w10.001"] = {
+		"{subzone}. Different name, same rule: watch the ground, then the branches, then the ground again.",
+		"{subzone}. New name, old rule: ground, branches, ground.",
+	},
+	["stv.a.victory.w10.001"] = {
+		"Rebel Camp, you're welcome.",
+		"Another one for the Rebel Camp's tally.",
+		"One less worry for the rebels in their tents.",
+	},
+	["stv.a.victory.w10.002"] = {
+		"No malice in it. It was hunting, and I was there. I won't pretend that helps.",
+		"It was just hunting, and I happened to be the meal. I'm not sorry I won. I'm not glad either.",
+	},
+	["stv.a.victory.w10.003"] = {
+		"kneels to pull a thorn from {g:his|her} calf, then rises and scans the leaves for whatever comes next.",
+		"picks a few burrs off {g:his|her} sleeve while the jungle catches its breath.",
+	},
+	["stv.a.weather_change.w10.001"] = {
+		"The rain finds the trail before it finds me, and in a minute the path is a brown stream running downhill.",
+		"Rain again. The trail turns into a stream, and the stream decides it's going my way.",
+	},
+	["stv.h.attack.w10.001"] = {
+		"Here's one from Grom'gol!",
+		"The jungle's slow. I'm not!",
+	},
+	["stv.h.battle.w10.001"] = {
+		"Every hour this jungle sends me another one. Your turn.",
+		"Another gift from the jungle. I'd have preferred fruit.",
+	},
+	["stv.h.battle.w10.002"] = {
+		"ducks a low creeper, finds level ground between two roots, and sets {g:his|her} guard.",
+		"kicks free of the creepers and squares up on trampled earth.",
+	},
+	["stv.h.battle.w10.003"] = {
+		"Put the saw down, Venture Co. This jungle's not for sale.",
+		"Another shredder crew? The trees are glad to see me, at least.",
+	},
+	["stv.h.journey.w10.001"] = {
+		"Down. The smell gets here first: rot, blossom, salt and something dead under a bush. Stranglethorn, then.",
+		"Feet on the ground, and the jungle's stink says hello before anyone else does.",
+	},
+	["stv.h.landmark.w10.001"] = {
+		"{landmark}. Tents, drying racks and hides pegged out like flags. The old hunter takes help from anyone with a steady hand, Horde included.",
+		"Pelts on every line, and hunters who don't care what banner you march under, as long as you come back with stripes.",
+	},
+	["stv.h.lowhp.w10.001"] = {
+		"The carrion birds are already deciding. Let them wait.",
+		"Something up in the branches has started watching me hopefully. Not today.",
+	},
+	["stv.h.muse.w10.001"] = {
+		"When the zeppelin's horn sounds over the canopy, half of Grom'gol looks up. Orgrimmar and Undercity are one goblin balloon away.",
+		"That horn above the trees is the airship leaving for home. The grunts at Grom'gol never say they miss it. They all look up, though.",
+		"A zeppelin groans past above the leaves, bound north. Odd, how a goblin gasbag can sound like home.",
+	},
+	["stv.h.muse.w10.002"] = {
+		"Goblins pour your drink in Booty Bay, and goblins saw down the jungle behind it. Same folk, different contract.",
+		"One kind of goblin rents you a room by the harbor. The other kind fells the trees outside the window. The Venture Co. doesn't take days off.",
+	},
+	["stv.h.muse.w10.003"] = {
+		"Wrecks all along this coast. Half of them were pirates. The other half met pirates.",
+		"Count the broken hulls on the beach. Every one of them is a Bloodsail story, told from one side or the other.",
+	},
+	["stv.h.muse.w10.004"] = {
+		"The Alliance hunts the same tigers in these trees. Most days we both pretend to be looking at the tigers.",
+		"Alliance boots on the same trails, Alliance hunters after the same game. In Stranglethorn you keep one eye on the beast and the other on whoever else is stalking it.",
+	},
+	["stv.h.muse.w10.005"] = {
+		"Every other Gurubashi wall in this jungle is falling down. The walls of Zul'Gurub aren't. Someone in there is still doing repairs.",
+		"The ruins rot everywhere but one place. Zul'Gurub's walls stand straight and mended, and a ruin doesn't mend itself.",
+	},
+	["stv.h.muse.w10.006"] = {
+		"stops at a trunk scored with deep claw marks, well above head height, and walks on a little faster.",
+		"studies a set of fresh gouges in the bark, higher than any arm could reach, then glances at the leaves overhead and moves along.",
+	},
+	["stv.h.muse.w10.007"] = {
+		"In Booty Bay you can end up sharing a table with a dwarf. Nobody's ever written down the manners for that.",
+		"Neutral ground means the Alliance drinks two stools down. You don't nod, they don't nod, and the goblins collect from both.",
+	},
+	["stv.h.npc_meet.w10.001"] = {
+		"A hammock strung well off the ground, where the crawling things have to work for it. Whatever this costs, I'll pay.",
+		"A bed off the ground and a jug of something cool. Keeping an inn is the only good job in Stranglethorn.",
+	},
+	["stv.h.quest_complete.w10.001"] = {
+		"Done. Word will reach Booty Bay before it reaches Orgrimmar, and some goblin will sell it twice.",
+		"Finished. In this jungle, news travels by goblin, and goblins never carry anything for free.",
+		"Over and done. Before long half of Booty Bay will know, and the other half will have paid to hear it.",
+	},
+	["stv.h.quest_complete.w10.002"] = {
+		"hands it over, then checks the empty hand for anything that crawled aboard along the way.",
+		"delivers the goods and waits, arms folded, while they're looked over by someone who never left camp.",
+	},
+	["stv.h.quest_progress.w10.001"] = {
+		"Not finished. What's left is out there among everything that bites, naturally.",
+		"Some of it done. The rest is wherever the jungle hid it, which is everywhere.",
+	},
+	["stv.h.subzone_enter.w10.001"] = {
+		"{subzone}. I'll remember the name. The jungle won't let me remember the way.",
+		"{subzone}. Easy to learn the name. The path back is another matter.",
+	},
+	["stv.h.victory.w10.001"] = {
+		"That's one for the cookfire tales at Grom'gol.",
+		"Grom'gol will hear about this one. Briefly.",
+	},
+	["stv.h.victory.w10.002"] = {
+		"Down. I count my limbs, then the leaves for anything else moving. Both counts come out right.",
+		"Finished. I wait with my back to a trunk until the green stops twitching.",
+	},
+	["stv.h.victory.w10.003"] = {
+		"rests both hands on {g:his|her} knees and lets the breathing slow.",
+		"gives the fallen a long look, the way the Horde's veterans weigh a kill, and moves on without a word.",
+	},
+	["stv.h.weather_change.w10.001"] = {
+		"Clear above the leaves again. Underneath, the jungle keeps dripping as though it hasn't heard.",
+		"The sky opens up, and every leaf goes on shedding water as if nobody had told it.",
+	},
 ]==])

@@ -288,4 +288,87 @@ AU:RegisterRegionalTexts("azshara", "enUS", "kalimdor_azshara", [==[
 		"hunches against the rain as it sweeps in off the sea, pattering on the red leaves and darkening the old white stones.",
 		"watches the rain come down over Azshara, a gray curtain drawn slowly across the cliffs and the drowned coast.",
 	},
+	["azs.a.attack.w10.001"] = {
+		"Sink like the old city!",
+		"Into the leaves with you!",
+	},
+	["azs.a.battle.w10.001"] = {
+		"Old land, new fight. Let's be quick about it.",
+		"This coast has buried an empire. It can wait for me.",
+	},
+	["azs.a.battle.w10.002"] = {
+		"kicks through red leaves for footing and turns to meet the attack.",
+		"steps back against a broken column, the red woods swaying above, and readies for the rush.",
+	},
+	["azs.a.battle.w10.003"] = {
+		"Back to your fel fires, satyr!",
+		"I can smell the brimstone from here. Come on, then.",
+	},
+	["azs.a.journey.w10.001"] = {
+		"Down among the red trees. The hippogryph folds its wings and the quiet of Azshara settles over everything at once.",
+		"Landing. The rush of wind stops and the silence of this land takes its place, deep enough to hear the sea.",
+	},
+	["azs.a.landmark.w10.001"] = {
+		"{landmark}. Highborne steps running down into the water, and naga coming up them as if they'd always lived here.",
+		"Eldarath. Marble going green at the waterline, and scaled things moving among the pillars. The sea gave something back, and not kindly.",
+	},
+	["azs.a.lowhp.w10.001"] = {
+		"Talrendis is a long walk off. Nobody's coming. Stand up.",
+		"Too far from Talrendis to fall here. Nobody would come.",
+	},
+	["azs.a.muse.w10.001"] = {
+		"The Horde keeps a camp at Valormok, over the hills. Two small camps in a huge empty land, and a very careful silence between them.",
+		"Valormok lies across the hills, the Horde in the red woods just like us. Neither side has the numbers to start anything. Both sides know it.",
+		"Over the hills at Valormok, the Horde is doing exactly what we do: holding a scrap of Azshara and watching the trees.",
+	},
+	["azs.a.muse.w10.002"] = {
+		"Satyr camps up in the hills, and on the wind, now and then, a sound like piping that nobody sensible goes to find.",
+		"Every so often the wind brings a thin piping down from the satyr camps. I've decided not to be curious.",
+	},
+	["azs.a.muse.w10.003"] = {
+		"The naga crawl up out of the surf and act as if the beaches were theirs. If the old stories about the drowned court are true, they may have a claim.",
+		"Scales on the shore, voices hissing from the tide pools. The naga came out of the sea where Azshara's city sank, and they don't behave like guests.",
+	},
+	["azs.a.muse.w10.004"] = {
+		"The Sentinels pass the old Highborne columns without slowing or looking. Ten thousand years, and the grudge is still walking.",
+		"Not one Sentinel so much as glances at the Highborne columns. Ten thousand years have gone by, and the old quarrel still walks these roads.",
+	},
+	["azs.a.muse.w10.005"] = {
+		"brushes red leaves from a fallen statue's face, finds a proud, cold mouth beneath, and lets the leaves fall back.",
+		"kneels by a toppled statue of some Highborne lord, studies the carved face a moment, and leaves it to the leaves.",
+	},
+	["azs.a.muse.w10.006"] = {
+		"You can tell the Highborne built this. Every ruin has a sea view.",
+		"Say what you like about the old court, they knew where to put a terrace. Every broken wall here looks at the sea.",
+	},
+	["azs.a.npc_meet.w10.001"] = {
+		"A hippogryph, all feathers and patience. Take me somewhere with more people in it, please.",
+		"Somewhere less empty, if you can. The hippogryph doesn't care which way.",
+	},
+	["azs.a.quest_complete.w10.001"] = {
+		"accepts the reward with a nod and glances back the way {g:he|she} came, toward the long empty coast.",
+		"takes what's owed and shakes a red leaf out of {g:his|her} collar.",
+		"hands over the proof and lets out a long breath, the red woods rustling behind {g:him|her}.",
+	},
+	["azs.a.quest_complete.w10.002"] = {
+		"Done. Talrendis Point gets a little stronger every time somebody comes back alive.",
+		"Finished, and still in one skin. Out here that's half the pay.",
+	},
+	["azs.a.quest_progress.w10.001"] = {
+		"Not done yet. The rest is out there among the ruins, and the ruins aren't saying.",
+		"Part of the way. The rest is somewhere in a very large, very empty land.",
+	},
+	["azs.a.subzone_enter.w10.001"] = {
+		"{subzone}. The name is older than anyone using it. In Azshara, most of them are.",
+		"{subzone}. Somebody named this ground long before the Alliance came walking through it.",
+	},
+	["azs.a.victory.w10.001"] = {
+		"Done. Tell the gulls; they were the only ones watching.",
+		"Over, with only the gulls to see it.",
+	},
+	["azs.a.victory.w10.002"] = {
+		"One more body among the old stones. This land has been collecting them for ten thousand years.",
+		"It falls among the columns, and the ruins take it in as they've taken everything else.",
+		"Down, beside the broken pillars. Azshara adds it to a very long count.",
+	},
 ]==])

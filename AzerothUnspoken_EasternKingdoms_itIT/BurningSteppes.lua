@@ -394,4 +394,227 @@ AU:RegisterRegionalTexts("burningsteppes", "itIT", "eastern_burningsteppes", [==
 		"alza lo sguardo mentre il vento gira e il fumo si dirada, e per un po' Blackrock Mountain si staglia netta e nera contro il cielo rosso.",
 		"guarda il fumo sollevarsi dalla piana, finché anche le fenditure più lontane si vedono brillare, una a una.",
 	},
+	["bst.a.attack.w10.001"] = {
+		"Ecco la risposta di Redridge!",
+		"Per le fattorie lungo il lago, prendi!",
+	},
+	["bst.a.battle.w10.001"] = {
+		"Per arrivare a Redridge dovrai passare sul mio corpo!",
+		"Il passo è chiuso. Torna indietro!",
+		"Non un passo più a sud. Non finché ci sono io.",
+	},
+	["bst.a.battle.w10.002"] = {
+		"Caldo in faccia, cenere sotto i piedi. Combatti il nemico, non la valle.",
+		"Lascia perdere il caldo. Guarda le mani, guarda i piedi.",
+	},
+	["bst.a.battle.w10.003"] = {
+		"pianta i piedi tra due crepe fumanti e aspetta l'assalto.",
+		"alza la guardia, sbattendo le palpebre per scacciare la cenere dagli occhi, mentre il nemico si avvicina.",
+		"si acquatta sulla roccia rovente, {g:pronto|pronta} a qualunque cosa esca dal fumo.",
+	},
+	["bst.a.journey.w10.001"] = {
+		"A terra, a Morgan's Vigil. Il grifone comincia a scrollarsi la cenere dalle piume prima ancora che io abbia slacciato le cinghie.",
+		"Atterraggio fatto. Il primo respiro mi dice esattamente dove sono, molto prima che ci arrivino gli occhi.",
+	},
+	["bst.a.landmark.w10.001"] = {
+		"{landmark}. Un campo dell'Orda sotto la stessa montagna. Qualunque altra cosa siano, non sono qui per il panorama.",
+		"Tende dell'Orda a {landmark}, abbastanza vicine a Blackrock da sentire l'odore delle sue forge. Coraggiosi, questo glielo concedo, e niente di più.",
+	},
+	["bst.a.lowhp.w10.001"] = {
+		"Non qui. Redridge è troppo vicina per perdere.",
+		"In piedi! Lakeshire conta su questo passo.",
+		"Non in questa fornace. Non ancora.",
+	},
+	["bst.a.muse.w10.001"] = {
+		"Giù a Lakeshire guardano le cime a nord come i marinai guardano il cielo. Qualunque fumo si alzi da queste parti, hanno imparato a temerlo.",
+		"A Lakeshire la gente alza ancora gli occhi ogni volta che un fumo sale oltre la cresta. Qui, finalmente, vedo di cosa ha paura.",
+	},
+	["bst.a.muse.w10.002"] = {
+		"Oltre quel passo c'è Redridge, e oltre Redridge il grano di Elwynn. È tutta qui la ragione per cui qualcuno monta la guardia in questa fornace.",
+		"Redridge, poi Elwynn, poi le mura bianche di Stormwind. Tutto in discesa da qui, e tutto da difendere.",
+	},
+	["bst.a.muse.w10.003"] = {
+		"Alcuni soldati di Morgan's Vigil borbottano che i draghi neri abbiano amici alla corte stessa di Stormwind. Nessuno osa fare un nome ad alta voce.",
+		"A Morgan's Vigil si mormora che lo stormo nero arrivi più lontano di questa montagna, fino alla sala del trono. Lo si dice piano, e mai due volte.",
+	},
+	["bst.a.muse.w10.004"] = {
+		"rigira un elmo bruciacchiato mezzo sepolto nella cenere: orchesco, vecchio, troppo grande per quasi tutte le teste. Chi lo portava non ne ha più bisogno da tempo.",
+		"scavalca una lancia spezzata conficcata nella cenere, l'asta bruciata fino a un moncone nero, e la lascia dov'è.",
+	},
+	["bst.a.muse.w10.005"] = {
+		"A Stormwind qualcuno ha questa valle sulla mappa, scritta piccola piccola. Non ne ha la minima idea.",
+		"Alla gente di Lakeshire dirò che è stata una bella passeggiata. Altrimenti non dormirebbero mai più.",
+		"Se Stormwind dovesse mai cuocere il pane per un esercito intero, conosco la valle adatta.",
+	},
+	["bst.a.muse.w10.006"] = {
+		"Quasi tutti gli orchi finirono nei campi, e ne uscirono dietro un nuovo capoguerra. Questi non hanno mai lasciato la loro montagna, e non hanno mai smesso di combattere la vecchia guerra.",
+		"Qualunque pace vogliano gli orchi di Durotar, quassù non è mai arrivata. I Blackrock combattono Stormwind come se la Seconda Guerra non fosse mai finita.",
+	},
+	["bst.a.muse.w10.007"] = {
+		"Un pescatore di Lakeshire mi ha detto che Lake Everstill si copre di una pellicola grigia ogni volta che il vento soffia a sud da qui. Adesso che ci sono in mezzo, gli credo.",
+		"I pescatori di Lakeshire giurano di capire quando il vento arriva da questa valle: il lago si fa opaco di cenere. Qui nessuno ne riderebbe.",
+	},
+	["bst.a.muse.w10.008"] = {
+		"Tieni questa valle e Redridge dorme. Facile a dirsi. Meno a farsi.",
+		"Morgan's Vigil tiene, il passo tiene, il lago resta azzurro. Il lavoro è questo.",
+	},
+	["bst.a.muse.w10.009"] = {
+		"Un elfo della notte qui vedrebbe una foresta morta, un nano una forgia in rovina, uno gnomo una macchina rotta. L'Alleanza li manda tutti lo stesso.",
+		"Umani, nani, gnomi, elfi della notte: ogni popolo dell'Alleanza ha qualcuno in questa valle, lontanissimo da qualunque posto chiamerebbe casa.",
+	},
+	["bst.a.npc_meet.w10.001"] = {
+		"Una sentinella con una sciarpa sul viso e gli occhi fissi a nord. Morgan's Vigil non tiene nessuno che guardi altrove.",
+		"Un saluto stanco dalla guardia, ma arriva subito. Qui nessuno prende alla leggera la montagna.",
+		"La tunica della guardia era sgargiante, una volta. Qui tutto finisce per prendere il colore della cenere.",
+	},
+	["bst.a.quest_complete.w10.001"] = {
+		"Ecco. Qualcuno a Lakeshire dormirà più tranquillo.",
+		"Fatto. Mettetelo per iscritto per Stormwind: le scartoffie le adorano.",
+	},
+	["bst.a.quest_complete.w10.002"] = {
+		"Fatto, e la montagna non si è spostata di un pollice. Non è mai stata quella la misura. La misura è Redridge.",
+		"Finito. La montagna continua a fumare come prima. Ma non è con la montagna che faccio i conti: è con Lakeshire.",
+	},
+	["bst.a.quest_complete.w10.003"] = {
+		"prende il compenso con un cenno e si concede un momento, prima di rituffarsi nel caldo.",
+		"ripone la ricompensa e scioglie le spalle indolenzite, gli occhi sul fumo a nord.",
+	},
+	["bst.a.quest_progress.w10.001"] = {
+		"C'è tutto. Ora la lunga camminata nel caldo fino a chi lo aspetta.",
+		"Tutto quanto. Adesso va portato sopra i carboni ardenti fino a chi l'ha chiesto.",
+	},
+	["bst.a.subzone_enter.w10.001"] = {
+		"{subzone}. Annotato, come annotano gli esploratori: cosa si muove, cosa brucia, dove scappare.",
+		"{subzone}. Un nome in più da riferire a Morgan's Vigil, se c'è qualcosa che valga la pena riferire.",
+		"{subzone}. Scommetto che metà dei nomi sulle mappe di Morgan's Vigil ha un teschietto disegnato accanto.",
+	},
+	["bst.a.victory.w10.001"] = {
+		"Dite a Lakeshire: uno in meno.",
+		"Quello Redridge non la vedrà.",
+		"Un motivo in meno per cui Lakeshire debba sprangare le porte.",
+	},
+	["bst.a.victory.w10.002"] = {
+		"Finita. Il caldo continua come se niente fosse. E qui, in effetti, non è successo granché.",
+		"Fatto, e alla valle non importa niente. Non le importa mai.",
+	},
+	["bst.a.victory.w10.003"] = {
+		"si scrolla la cenere calda dalle maniche e guarda a sud, verso il passo.",
+		"lancia un'occhiata al passo per Redridge, poi al nemico a terra, e lascia andare un lungo respiro.",
+	},
+	["bst.a.weather_change.w10.001"] = {
+		"Il vento gira da sud e porta, per un respiro soltanto, un odore d'acqua da oltre il passo.",
+		"L'aria cambia. Per un attimo scende dal passo di Redridge, fresca e pulita, prima che la valle se la riprenda.",
+	},
+	["bst.h.attack.w10.001"] = {
+		"Orgrimmar è lontana. Ti dovrai accontentare di questo!",
+		"Con i saluti di Thrall, da molto, molto lontano!",
+	},
+	["bst.h.battle.w10.001"] = {
+		"Lontano da Orgrimmar, e l'Orda morde lo stesso!",
+		"Pensavi che l'Orda non arrivasse fin quaggiù?",
+		"Lontano da casa, e non per questo più {g:tenero|tenera}!",
+	},
+	["bst.h.battle.w10.002"] = {
+		"Un occhio al nemico, uno alle crepe accese. Nessuno dei due perdona.",
+		"Attenzione a dove metto i piedi. Le crepe ardono, e al nemico non importa da che parte cado.",
+	},
+	["bst.h.battle.w10.003"] = {
+		"lascia la cenere per la roccia nuda e pianta bene i piedi.",
+		"si scosta da uno sfiatatoio che sibila e lascia che il nemico avanzi sulla cenere.",
+		"si abbassa accanto a una lastra di roccia nera mentre il nemico carica fuori dal tremolio del caldo.",
+	},
+	["bst.h.journey.w10.001"] = {
+		"La viverna si posa sulla roccia rovente e solleva una zampa dopo l'altra, come chi entra in un bagno preparato troppo caldo.",
+		"A terra, a Flame Crest. Atterrare è la parte facile: è il primo respiro dopo che richiede pratica.",
+	},
+	["bst.h.landmark.w10.001"] = {
+		"{landmark}. Un avamposto dell'Alleanza con Redridge alle spalle. Sono qui per la nostra stessa montagna, e questo non ci rende amici.",
+		"Stendardi dell'Alleanza su {landmark}. Due nemici di Blackrock nella stessa valle, e nessuno dei due lo ammetterà mai davanti all'altro.",
+	},
+	["bst.h.lowhp.w10.001"] = {
+		"Non così lontano da casa. Non così.",
+		"Flame Crest non può fare a meno di me. Tieni duro!",
+		"Troppo lontano da Orgrimmar per morire a buon mercato.",
+	},
+	["bst.h.muse.w10.001"] = {
+		"Orgrimmar è dall'altra parte di un mare intero. Qui l'Orda è qualche tenda su una cresta rovente, e ognuna di quelle tende conta.",
+		"Lontano dalla città del Capoguerra, e ancora più lontano da qualunque porto nostro. Flame Crest deve farsi da sé la sua piccola Orgrimmar, e lo sa.",
+		"A Flame Crest nessuno ha casa vicina, qualunque cosa voglia dire casa per ciascuno. Forse è per questo che il campo ne ha l'aria.",
+	},
+	["bst.h.muse.w10.002"] = {
+		"L'Orda di Thrall non ha mai chiuso la porta ai vecchi clan. I Blackrock hanno guardato quella porta dalla loro montagna e non si sono mossi.",
+		"Orgrimmar li avrebbe accolti. I Blackrock hanno preferito la loro montagna, i vecchi capi e il favore di un drago. Di quella scelta rispondono loro.",
+	},
+	["bst.h.muse.w10.003"] = {
+		"Lassù nella guglia gli orchi prendono ordini da un drago nero. Thrall ha spezzato delle catene, e i Blackrock sono andati a cercarsene altre.",
+		"Orchi che si inchinano ai draghi nelle sale alte. La vecchia Orda ha già imparato quanto costa servire un padrone più grande. C'è chi non ascolta mai.",
+	},
+	["bst.h.muse.w10.004"] = {
+		"I Dark Iron odiano Ironforge, e Ironforge li ricambia. Verrebbe da pensare che questo li renda amici dell'Orda. Invece li rende amici di nessuno.",
+		"Nani in guerra con altri nani. A Orgrimmar suonerebbe come una buona notizia. Qui vuol dire solo che i Dark Iron non hanno amici da sprecare, e non ne cercano.",
+	},
+	["bst.h.muse.w10.005"] = {
+		"si volta verso la montagna a un rimbombo cupo e lontano, come un martello grande quanto una casa che batte giù, in fondo alla terra.",
+		"avverte un rintocco sordo che sale dalle suole degli stivali, regolare come un polso: le forge sotto la montagna, che non riposano mai.",
+	},
+	["bst.h.muse.w10.006"] = {
+		"Le provviste arrivano in viverna, e metà sanno già di fumo prima di toccare terra.",
+		"A Orgrimmar qualcuno pensa che un incarico quaggiù sia un premio. Vorrei scambiarci due parole.",
+		"Se qualcuno chiede, ditegli che Flame Crest è incantevole. Un po' di compagnia ci farebbe comodo.",
+	},
+	["bst.h.muse.w10.007"] = {
+		"Il caldo piega ogni cosa. Una roccia sembra a un tiro di sasso, e per raggiungerla ci vuole quasi un'ora.",
+		"Qui le distanze mentono. L'aria trema sopra il terreno rovente, e la montagna non sembra mai avvicinarsi, per quanto io cammini.",
+	},
+	["bst.h.muse.w10.008"] = {
+		"Orchi, troll, tauren, Reietti: così lontano da casa l'Orda smette di contare chi è chi e comincia a contare le teste.",
+		"Un campo così piccolo non può permettersi i vecchi litigi fra i popoli dell'Orda. Tutti reggono una lancia, o un mestolo, o entrambi.",
+	},
+	["bst.h.muse.w10.009"] = {
+		"osserva due cuccioli di drago che si contendono qualcosa di carbonizzato, e gira alla larga da entrambi.",
+		"si ferma mentre un cucciolo di drago non più grosso di un cane soffia da una sporgenza, tutto denti e malumore, poi gli gira attorno con cautela.",
+	},
+	["bst.h.npc_meet.w10.001"] = {
+		"Una sentinella con la fuliggine fino alle sopracciglia, che fa un solo cenno. Qui un cenno vale una conversazione intera.",
+		"La guardia mi degna appena di un'occhiata: gli occhi restano sulla montagna. È il posto giusto per loro.",
+		"Chi monta la guardia qui lo fa sotto gli occhi di Blackrock. Ci vuole un fegato tutto particolare.",
+	},
+	["bst.h.quest_complete.w10.001"] = {
+		"Fatto. Mandate voce a Kargath, se qualcuno vola da quelle parti.",
+		"Finito. Ditelo a chi tiene il conto, al campo.",
+	},
+	["bst.h.quest_complete.w10.002"] = {
+		"Pagamento ricevuto. La moneta è tiepida, a stare in una borsa quaggiù: farò finta che sia orgoglio.",
+		"Una ricompensa e un cenno da qualcuno troppo stanco per sorridere. In questa valle è una parata.",
+	},
+	["bst.h.quest_complete.w10.003"] = {
+		"ascolta i ringraziamenti con mezzo orecchio, lo sguardo già tornato alla montagna che fuma.",
+		"accetta la ricompensa con un'occhiata a nord, verso la montagna, come se fosse rimasta a guardare.",
+	},
+	["bst.h.quest_progress.w10.001"] = {
+		"Una parte è fatta. Il resto sta tra qui e la montagna.",
+		"Non ho ancora finito. E nemmeno il caldo.",
+	},
+	["bst.h.subzone_enter.w10.001"] = {
+		"entra in {subzone} con una mano alzata contro il bagliore delle fenditure.",
+		"raggiunge {subzone}, dove la roccia è nera e l'aria densa come dappertutto.",
+		"arriva in {subzone} e si ferma ad ascoltare: più avanti risuona un martello, o un tamburo.",
+	},
+	["bst.h.victory.w10.001"] = {
+		"Flame Crest resta in piedi. Tu no.",
+		"Questa è per il campo sulla cresta.",
+		"Un altro di cui a Orgrimmar non serve nemmeno sapere.",
+	},
+	["bst.h.victory.w10.002"] = {
+		"Nella cenere, lontano da chiunque verrebbe a cercarlo. Qui vale per tutti noi.",
+		"Un corpo su terra bruciata, e nessuno che venga a cercarlo. Né a cercare me.",
+	},
+	["bst.h.victory.w10.003"] = {
+		"spinge col piede un po' di cenere sul corpo, poi si volta senza una parola.",
+		"pesta una chiazza di terra che fuma accanto al nemico abbattuto e riprende il cammino.",
+	},
+	["bst.h.weather_change.w10.001"] = {
+		"Il vento gira e rimanda il fumo dritto da dove era venuto. Grazie tante, valle.",
+		"Il vento cambia. In questa valle decide solo da che parte cade la cenere.",
+	},
 ]==])

@@ -222,4 +222,88 @@ AU:RegisterRegionalTexts("searinggorge", "enUS", "eastern_searinggorge", [==[
 		"The wind turns, and the haze off the lava rolls toward me instead of away. Lovely.",
 		"The sky shifts overhead, a shade darker or a shade lighter. Under all this smoke it's hard to tell.",
 	},
+	["sgg.a.attack.w10.001"] = {
+		"Here, cool off with this!",
+		"Here, something hotter than the Gorge!",
+	},
+	["sgg.a.battle.w10.001"] = {
+		"Come on. The ground's hot, but I'm worse.",
+		"Out of the smoke, then. Let's see you.",
+	},
+	["sgg.a.battle.w10.002"] = {
+		"Don't step on the glowing bits. Don't step on the glowing bits.",
+		"Footing first. One wrong step here and the ground does the fighting for them.",
+	},
+	["sgg.a.battle.w10.003"] = {
+		"Back into the rock, flame!",
+		"A fire with legs and a temper. Fine. Come here.",
+	},
+	["sgg.a.journey.w10.001"] = {
+		"Down on the scaffolds. The gryphon wants to leave already, and frankly so do I.",
+		"Landed. The gryphon tucks its head under a wing against the soot, which seems wise.",
+	},
+	["sgg.a.landmark.w10.001"] = {
+		"{landmark}. The ground drops away into a bowl of smoke and molten rock, and on the ledges, tiny figures pushing carts. This is where the Dark Irons dig.",
+		"The Cauldron. A crater full of fire and machinery, with lava for a floor. From the rim it looks like the world's own forge.",
+	},
+	["sgg.a.lowhp.w10.001"] = {
+		"Blood hisses where it hits the rock. That's mine. Move.",
+		"My blood is sizzling on the stones. Time to stop bleeding.",
+	},
+	["sgg.a.muse.w10.001"] = {
+		"Ironforge and the Dark Irons have been at war since the three clans split. Here you see the other side of that quarrel, and it is burning.",
+		"Magni's people and Thaurissan's have hated each other for centuries. This gorge is what the losing side of that old war made of its anger.",
+		"The War of the Three Hammers never quite ended. It just moved down here, into the slag and the smoke.",
+	},
+	["sgg.a.muse.w10.002"] = {
+		"That fire just moved. Fires shouldn't have opinions.",
+		"Some of the flames here walk about. I'd rather they sat still, like decent flames.",
+	},
+	["sgg.a.muse.w10.003"] = {
+		"The road south ends at Blackrock Mountain's mouth. Everyone at Thorium Point can name someone who walked in there.",
+		"South, the mountain opens its gate. Dark Irons below, the Dark Horde above, dragons over all. And the path there is well worn.",
+		"Everyone who works this gorge ends up looking toward Blackrock's gate sooner or later. I'm looking now.",
+	},
+	["sgg.a.muse.w10.004"] = {
+		"At Thorium Point you can stand in line behind an orc to buy the same ore. The Brotherhood takes everyone's coin with the same face.",
+		"The Brotherhood sells to Alliance and Horde alike, and doesn't smile at either.",
+	},
+	["sgg.a.muse.w10.005"] = {
+		"crosses a crust of cooled rock, testing each step, while orange light shows in the cracks.",
+		"picks a slow way over black stone still warm from below, careful of the seams that glow.",
+	},
+	["sgg.a.muse.w10.006"] = {
+		"Dark Iron golems clank along the ridges. Even the things they build here are made for one purpose.",
+		"Iron giants on patrol, made by hands that never seem to make anything gentle.",
+	},
+	["sgg.a.npc_meet.w10.001"] = {
+		"Anything for burns? And something to drink that isn't warm, if the Brotherhood has heard of such a thing.",
+		"Salve for scorched hands, please, and water. Lots of water.",
+	},
+	["sgg.a.quest_complete.w10.001"] = {
+		"hands over the work with soot-blackened fingers and leaves prints on everything.",
+		"takes the reward and juggles the coins a moment, too hot to hold.",
+		"blows a film of ash off the reward before tucking it away.",
+	},
+	["sgg.a.quest_complete.w10.002"] = {
+		"Done. Every task finished in the Gorge is one more thing the Dark Irons have to explain to their emperor.",
+		"Finished. Down in the mountain, Thaurissan's people will have one more report they don't like.",
+	},
+	["sgg.a.quest_progress.w10.001"] = {
+		"Not finished. The rest is out among the cinders, getting warmer.",
+		"Partway done. What's left is somewhere under all this ash.",
+	},
+	["sgg.a.subzone_enter.w10.001"] = {
+		"{subzone}. Hotter than the last bit, or I've started imagining it. Probably both.",
+		"{subzone}. Somebody gave it a name. The cinders never noticed.",
+	},
+	["sgg.a.victory.w10.001"] = {
+		"Thorium Point owes me a drink. A cold one, if such a thing exists.",
+		"That's one for the Brotherhood's tally.",
+		"Done. Thorium Point will want to hear this one.",
+	},
+	["sgg.a.victory.w10.002"] = {
+		"If that one was guarding the pits, a few slaves just got a little more room to breathe.",
+		"One fewer whip over the Cauldron. Not enough, but it counts.",
+	},
 ]==])

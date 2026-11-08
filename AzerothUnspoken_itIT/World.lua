@@ -2795,4 +2795,359 @@ NS:AddTexts("itIT", {
 		"Un tetto e un fuoco. Il letto è troppo corto e la stanza troppo calda, ma un troll ha dormito in posti peggiori. Sugli alberi, per lo più.",
 		"Al chiuso, con i muri e una porta che si chiude. La lascio socchiusa. Un troll dorme meglio se l'aria si muove.",
 	},
+	["band.b60.quest_complete.w10.001"] = {
+		"Fatto. La prossima volta mandate a chiamare prima. I guai costano meno finché sono piccoli.",
+		"Sistemato. Un'altra volta chiamatemi prima: preferisco prevenire che riparare.",
+		"Finito. E vi prego, appena qualcosa del genere comincia, cercatemi subito.",
+	},
+	["band.b60.quest_complete.w10.002"] = {
+		"La ricompensa è roba che venderei senza guardarla. La prendo comunque: rifiutarla li offenderebbe.",
+		"Un'altra borsa di monete e un ninnolo che non indosserò mai. Il grazie nella loro voce valeva di più.",
+		"Il premio ormai conta poco. Il loro sollievo conta moltissimo, e che le cose siano andate a finire così è curioso.",
+	},
+	["band.b60.quest_complete.w10.003"] = {
+		"mette via la ricompensa senza degnarla di uno sguardo, già con gli occhi a quello che viene dopo.",
+		"accoglie i ringraziamenti con un breve cenno, di quelli che dicono: era lavoro, non un favore da restituire.",
+		"tiene la ricompensa nel palmo per un momento, la soppesa per vecchia abitudine e la mette via.",
+	},
+	["band.b60.quest_complete.w10.004"] = {
+		"Fatto. Se qualcuno chiede, è stato difficilissimo e io sono {g:stato magnifico|stata magnifica}.",
+		"Finito. La storia potete abbellirla: non vi correggerò.",
+		"Fatto. Raccontatela come vi pare. Metteteci un drago, se aiuta.",
+	},
+	["band.b60.quest_complete.w10.005"] = {
+		"Un'altra cosa che gli orrori del mondo non potranno tenersi. Piccola, ma tutta la guerra è fatta di cose piccole.",
+		"Un po' di terreno strappato al buio. Non finirà in nessuna cronaca, e conta lo stesso.",
+		"Qualcuno dormirà più tranquillo, grazie a questo. È tutto il registro dei conti, e i conti tornano.",
+	},
+	["band.b60.quest_complete.w10.006"] = {
+		"La prossima volta date i lavori piccoli alle facce nuove. A loro servono più che a me.",
+		"Lasciate le commissioni facili ai più giovani. Quelle brutte tenetele per me.",
+		"Se avete lavori più semplici, dateli a chi comincia. In qualche modo devono pur imparare.",
+	},
+	["band.b60.quest_complete.w10.007"] = {
+		"Fatto, e lo sento nelle spalle. La forza non vuol dire che smetta di costare: vuol dire che posso permettermelo.",
+		"Un altro concluso. Il corpo ne tiene il conto anche quando io non lo faccio.",
+		"Uno in meno sulla lista. La lista, noto, non si è mai accorciata da sola.",
+	},
+	["band.b60.quest_complete.w10.008"] = {
+		"Molto indietro, sulla strada, c'è una prima commissione: qualche pelle, una bisaccia perduta. Vorrei dire a quel principiante che tutto porta qui.",
+		"I primi lavori che ho accettato pagavano in rame e orgoglio. Questo ha pagato meglio, e della paga vado meno {g:fiero|fiera}.",
+		"È strano. Il lavoro non è cambiato tanto dall'inizio: qualcuno chiede, io vado, la cosa si fa. Sono cresciuti solo i mostri.",
+	},
+	["band.b60.quest_complete.w10.009"] = {
+		"Fatto. Adesso dimmi cosa avevi paura di chiedere.",
+		"Finito. Se c'è qualcosa che tenevi da parte per qualcuno più coraggioso, ti ascolto.",
+		"La parte facile è finita. Qual è il lavoro che pensavi nessuno avrebbe accettato?",
+	},
+	["band.b60.quest_complete.w10.010"] = {
+		"Un'altra tacca nel registro di qualcuno, alla voce 'di chi fidarsi'. Quei registri aprono più porte di qualunque chiave.",
+		"È lenta, questa faccenda di guadagnarsi la fiducia di chi è già stato deluso. Un incarico, poi un altro.",
+		"Nessuna accoglienza da eroe, solo un cenno un po' più caldo dell'ultimo. È così che si costruisce una reputazione.",
+	},
+	["band.b60.quest_complete.w10.011"] = {
+		"Ecco. Era tutto qui il problema? Avevo portato provviste per qualcosa di molto peggio.",
+		"Tutto qui? Mi aspettavo un disastro. Che piacevole delusione.",
+		"Finito, e non ha preso fuoco niente. Di questi tempi, per me, è quasi una vacanza.",
+	},
+	["band.b60.quest_complete.w10.012"] = {
+		"Questo lavoro è fatto. Quello che l'ha reso necessario è ancora là fuori, più grande di qualunque incarico.",
+		"Posso finire cento commissioni come questa, e la radice di tutto resterà là fuori, paziente.",
+		"Risolto, qui. Lontano, la causa di tutto sta già preparando il prossimo guaio.",
+	},
+	["band.b60.quest_progress.w10.001"] = {
+		"Una parte è fatta. Ho smesso di avere fretta: sarà finita quando sarà finita, e sarà finita bene.",
+		"Non ancora. A questo punto mi fido più del passo che dell'impazienza.",
+	},
+	["band.b60.quest_progress.w10.002"] = {
+		"C'è tutto. Qualcuno ha già aspettato abbastanza: non facciamolo aspettare di più.",
+		"Tutto quello che serviva. Ora il tragitto per dirglielo, che è la parte che ricorderanno.",
+	},
+	["band.b60.reputation_change.w10.001"] = {
+		"Un po' più di considerazione da parte loro. A questo punto della strada colleziono fiducia come altri collezionano trofei, ed è la collezione migliore.",
+		"Ora pensano meglio di me. Curioso come alla gente importino meno le battaglie più dure che il fatto che tu continui a farti vedere.",
+	},
+	["mood.city.journey.w10.001"] = {
+		"Terra ferma e gomiti altrui. Dopo ore di vento nelle orecchie, il chiacchiericcio della folla è quasi musica.",
+		"Il volo finisce e la città comincia subito: un mercante che grida i prezzi, una guardia che sbadiglia, qualcuno che litiga per un carretto.",
+		"A terra. Dieci passi, e mi hanno già offerto una spada, un pasticcio caldo e indicazioni che non avevo chiesto.",
+	},
+	["mood.city.journey.w10.002"] = {
+		"scende dalla cavalcatura, si scuote il torpore dalle gambe ed entra nel fiume della folla come se non ne fosse mai {g:uscito|uscita}.",
+		"torna a terra col vento che rugge ancora nelle orecchie, e si sistema l'equipaggiamento prima che qualcuno ci faccia caso.",
+		"atterra, saluta con un cenno il custode delle cavalcature, e in una dozzina di passi il viavai della città l'ha già {g:inghiottito|inghiottita}.",
+	},
+	["mood.city.journey.w10.003"] = {
+		"Giù dal cielo e dritto in una coda. Le città non cambiano mai.",
+		"Tutta quell'aria aperta, e adesso mi ci vorrà mezz'ora per superare un carretto.",
+		"Eccola, la città. C'è già qualcuno che urla, e io non ho ancora ritrovato l'equilibrio.",
+	},
+	["mood.city.journey.w10.004"] = {
+		"Lassù c'eravamo io e il vento. Quaggiù ci siamo io e mille persone: è un'altra solitudine, e fa molto più rumore.",
+		"La città mi riprende senza accorgersi della mia assenza. I voli finiscono così: un attimo prima hai il mondo intero sotto di te, un attimo dopo sei una faccia in più per strada.",
+	},
+	["mood.city.journey.w10.005"] = {
+		"Una città alla fine di un volo vuol dire un bagno, un pasto caldo e un letto rifatto da qualcun altro. Li prendo nell'ordine in cui arrivano.",
+		"Fabbri, cuochi e una banca, tutti a portata di voce. Per un po' i guai del mondo possono mettersi in fila da un'altra parte.",
+		"Dall'alto ogni città sembra un rifugio. A terra sembra una lista di commissioni. Meglio le commissioni delle imboscate, comunque.",
+	},
+	["mood.city.journey.w10.006"] = {
+		"Alle mie spalle gli odori della città si sciolgono uno a uno: fumo, pane, conceria, stalle. Poi solo vento.",
+		"Laggiù lascio le mie commissioni, metà ancora da sbrigare. Aspetteranno: le città sanno bene come far aspettare le cose.",
+		"Le guardie, i venditori, il mendicante che conosceva la mia faccia: tutto resta indietro in pochi colpi d'ala. La città non sentirà la mia mancanza, ed è giusto così.",
+	},
+	["mood.city.journey.w10.007"] = {
+		"si assesta in sella mentre la cavalcatura si stacca, e guarda la pietra della città restare indietro, farsi disegno, poi macchia.",
+		"affronta il primo sobbalzo del volo con una mano stretta alle redini, mentre il frastuono delle strade si spegne sotto il battito delle ali.",
+		"lancia un'ultima occhiata alla città che si allontana, come si guarda una tavola affollata appena lasciata, poi volge il viso alla strada che l'aspetta.",
+	},
+	["mood.city.journey.w10.008"] = {
+		"Addio folla. Addio prezzi. Mi mancheranno le focacce.",
+		"Si parte. Se laggiù qualcuno mi cercava, dovrà gridare più forte.",
+		"Su e via. Quassù nessuno proverà a vendermi qualcosa.",
+	},
+	["mood.city.journey.w10.009"] = {
+		"Una città è l'ultima porta con la serratura per un bel pezzo. La sento chiudersi alle mie spalle, e non mi volto.",
+		"Guardie e porte sprangate lasciano il posto alla campagna aperta. La città era la parte facile; lo è sempre.",
+		"Laggiù la gente riposa dietro porte chiuse a chiave e brontola per il prezzo del pane. Io volo verso i posti che rendono necessarie quelle chiavi.",
+	},
+	["mood.city.journey.w10.010"] = {
+		"In quella folla c'era un viso che volevo ricordare. Sparito anche quello, con tutto il resto.",
+		"Ogni volta che lascio una città mi porto via una cosa piccola: un motivo sentito da una soglia, un odore, la risata di uno sconosciuto. Oggi è l'imprecazione di un venditore che non ho capito bene.",
+		"Quanta gente incrociata, e non ne rivedrò nessuno. Una città è un fiume di sconosciuti; ne sono appena {g:uscito|uscita}.",
+	},
+	["mood.city.rest_enter.w10.001"] = {
+		"In salvo. Posso abbassare la guardia di una tacca, e lo zaino fino a terra.",
+		"Strade sicure. Dovunque dormirò la prossima volta, niente mi sveglierà a morsi.",
+		"La pace della città mi si posa addosso. Le spalle se ne accorgono un attimo prima di me.",
+	},
+	["mood.city.rest_enter.w10.002"] = {
+		"lascia scendere le spalle mentre le strade sorvegliate si chiudono intorno, e slaccia una cinghia, poi un'altra.",
+		"rallenta fino a un passo tranquillo, e la diffidenza della strada esce dalla sua andatura un poco alla volta.",
+		"scioglie la rigidità del collo, giudicando la città abbastanza sicura da smettere di ascoltare ogni passo.",
+	},
+	["mood.city.rest_enter.w10.003"] = {
+		"Guardie, mercanti e un posto dove sedersi. Ufficialmente fuori servizio.",
+		"Bene. Per un po' nessuno proverà ad ammazzarmi. Qualcuno proverà a farmi pagare troppo, ma a quello sopravvivo.",
+		"Al sicuro, finalmente. Adesso l'unica imboscata possibile è il prezzo di un pasto.",
+	},
+	["mood.city.weather_change.w10.001"] = {
+		"Pioggia sulla città: i banchi coprono la merce in fretta, e ogni portone si riempie di gente che finge di essersi fermata apposta.",
+		"Arriva la pioggia, e la folla cambia forma all'istante: più svelta, più rasente ai muri, cappucci alzati.",
+	},
+	["mood.city.weather_change.w10.002"] = {
+		"guarda la folla riversarsi fuori dai portoni ora che il tempo si rasserena, e i banchi riscoprire la merce uno dopo l'altro.",
+		"esce nell'aria tornata limpida insieme a tutti gli altri, come se l'intera strada riprendesse fiato nello stesso momento.",
+	},
+	["mood.desert.journey.w10.001"] = {
+		"Le ginocchia scricchiolano mentre scendo, e il primo respiro sa di sabbia. La terra arida ti accoglie con una manciata di polvere in faccia.",
+		"A terra, e già con gli occhi socchiusi. Qui tutto ha il colore della polvere, e presto ce l'avrò anch'io.",
+		"Giù dal volo. Lassù il vento era fresco; quaggiù la terra non ha mai sentito parlare di freschezza.",
+	},
+	["mood.desert.weather_change.w10.001"] = {
+		"volta le spalle alla sabbia che si alza e si copre il viso con un panno, mentre l'aria si riempie di granelli pungenti.",
+		"si curva contro la tempesta di sabbia, un braccio alzato, e continua a camminare più a memoria che a vista.",
+	},
+	["mood.fire.journey.w10.001"] = {
+		"scende dal volo in un'aria così calda e secca che brucia gli occhi, e sbatte le palpebre finché non lacrimano.",
+		"atterra sul terreno riarso e sente il calore salire dalle suole prima ancora che le ali si siano chiuse.",
+	},
+	["mood.forest.journey.w10.001"] = {
+		"Le cime degli alberi si richiudono sotto di me come un mare verde, e la foresta inghiotte il punto in cui stavo senza un'increspatura.",
+		"Su tra le foglie, fino all'aria aperta. Laggiù i boschi continuano a sussurrare, che io ascolti o no.",
+	},
+	["mood.jungle.journey.w10.001"] = {
+		"La volta di foglie sprofonda sotto le ali, e per la prima volta da secoli l'aria è abbastanza asciutta da farmi accorgere che la respiro.",
+		"Su, fuori dal verde. Dall'alto la giungla sembra un unico grande animale che respira, e scendergli dalla groppa è un sollievo.",
+	},
+	["mood.plague.journey.w10.001"] = {
+		"Le ali mi tirano fuori dall'aria malata. Non respirerò a fondo finché non l'avrò lasciata ben indietro, ma respirerò.",
+		"Sotto di me si allontanano campi grigi e alberi neri. Tengo gli occhi avanti: laggiù non c'è niente che voglia ricordare.",
+	},
+	["mood.snow.journey.w10.001"] = {
+		"Giù nel freddo. In volo si gelava; a terra è peggio, e non ha intenzione di cambiare.",
+		"Stivali nella neve prima ancora di aver staccato le mani dalle redini. Ogni respiro esce bianco.",
+		"A terra, e in dieci passi il freddo ha già trovato ogni fessura dei vestiti. Ha fatto pratica.",
+	},
+	["time.dawn.journey.w10.001"] = {
+		"Su, nell'alba. La terra sotto è ancora grigia, e la luce mi viene incontro.",
+		"Decollo alla prima luce. Là sotto il mondo si sta ancora stropicciando gli occhi.",
+	},
+	["time.dawn.journey.w10.002"] = {
+		"tocca terra nella luce del primo mattino, con le membra rigide per il freddo lassù, e batte i piedi per ridarsi un po' di calore.",
+		"atterra proprio mentre spunta l'alba, e si ferma un momento a guardare il colore che torna sulla terra.",
+	},
+	["time.day.journey.w10.001"] = {
+		"Su, con il giorno spalancato tutt'intorno. Sotto, ogni pista, ogni muro, ogni fosso è disegnato in piena vista.",
+		"Un volo con la luce buona. Vedo la gente sulle strade là sotto badare alle sue faccende, piccola come formiche e altrettanto indaffarata.",
+		"Salgo nella luce del giorno. Da quassù la terra sembra al lavoro da ore, e ancora lontana da fine turno.",
+	},
+	["time.day.journey.w10.002"] = {
+		"si sistema in sella mentre la terra si allontana, e segue con gli occhi le strade là sotto finché dura la luce.",
+		"prende il volo nel pieno della giornata e si sporge appena a guardare la terra che scorre sotto.",
+		"sale nelle ore di luce con una presa salda, riconoscendo dall'alto un punto di riferimento dopo l'altro.",
+	},
+	["time.day.journey.w10.003"] = {
+		"A terra con ancora luce da spendere. Bene: c'è tempo di orientarmi prima che qualcosa trovi me.",
+		"A terra, e la giornata non è ancora finita. Ore di cammino risparmiate, e ore di luce per farne qualcosa.",
+	},
+	["time.day.journey.w10.004"] = {
+		"Giù con una buona luce. Stavolta niente brancolare in cerca della strada.",
+		"Atterraggio in pieno giorno. Se adesso mi perdo, la colpa è tutta mia.",
+	},
+	["time.day.rest_enter.w10.001"] = {
+		"Una sosta a metà giornata. Sembra di rubare ore a qualcuno, e non mi dispiace affatto.",
+		"Mi fermo che c'è ancora luce. La strada dovrà fare a meno di me per un po'.",
+		"Resta un bel pezzo di giornata, e una parte la passo a sedere. Un piccolo lusso onesto.",
+	},
+	["time.day.weather_change.w10.001"] = {
+		"Di giorno posso vedere il cambiamento attraversare la terra come una marea lenta, molto prima che mi raggiunga.",
+		"Il cielo sta girando, e di giorno non lo si può non notare: tutta la terra prende un altro colore in un colpo solo.",
+		"Meno male che è giorno. Un cambiamento così si legge meglio quando se ne vede il margine lontano.",
+	},
+	["time.dusk.journey.w10.001"] = {
+		"Si parte con la luce che cala. Atterrerò al buio, con ogni probabilità, e sarà un problema della bestia.",
+		"Su, nel crepuscolo. La terra là sotto perde i colori uno dopo l'altro, e io ho il posto migliore per guardarla.",
+	},
+	["time.dusk.journey.w10.002"] = {
+		"A terra prima del buio pieno. Per un pelo. Mi accontento.",
+		"Atterraggio con l'ultima luce. Adesso un tetto, prima che mi trovi la notte.",
+	},
+	["time.night.journey.w10.001"] = {
+		"Un volo di notte. La bestia conosce la strada meglio di me; posso solo fidarmi e tenermi forte.",
+		"In volo nel buio, la terra sotto è solo un'ipotesi. Dovrò credere sulla parola al mondo che c'è ancora.",
+		"Al buio non c'è un sopra né un sotto degni del nome: solo il battito delle ali e il freddo sulla faccia.",
+	},
+	["time.night.journey.w10.002"] = {
+		"scende di sella al buio e aspetta un attimo che la terra, e gli occhi, si assestino.",
+		"atterra nella notte e resta immobile ad ascoltare, prima di muovere un solo passo.",
+		"scivola a terra nell'oscurità, trova l'appoggio a tentoni e lascia andare un lungo respiro.",
+	},
+	["time.night.journey.w10.003"] = {
+		"A terra, e c'è un buio pesto. Qualcuno mi indichi un letto. Chiunque.",
+		"Atterraggio al buio. E adesso, da che parte sta qualsiasi cosa?",
+	},
+	["time.night.rest_enter.w10.001"] = {
+		"Un posto sicuro, e la notte è passata solo a metà. È più sonno di quanto sperassi.",
+		"Finalmente riposo, a quest'ora. Il buio può andare avanti anche senza che lo sorvegli io.",
+	},
+	["time.night.weather_change.w10.001"] = {
+		"Qualcosa è cambiato nel buio. Non lo vedo ancora: lo sento sulla pelle e lo fiuto nell'aria.",
+		"Il cielo si sta muovendo lassù, sopra la notte, dove non arriva lo sguardo. Presto saprò cosa ha deciso.",
+	},
+	["weather.clear.dawn.w10.001"] = {
+		"L'alba sotto un cielo aperto. Il primo colore raggiunge ogni collina insieme; lassù non c'è niente a fermarlo.",
+		"Nessuna nuvola a trattenere l'alba, e così arriva semplice e pallida, e la terra si sveglia tutta in una volta invece che a metà.",
+	},
+	["weather.clear.dawn.w10.002"] = {
+		"guarda l'alba salire in un cielo senza nuvole, mentre le creste lontane prendono forma una dopo l'altra.",
+		"si volta verso il cielo che impallidisce all'alba e non ci trova una sola nuvola, solo un lungo orlo pulito di colore.",
+	},
+	["weather.clear.dusk.w10.001"] = {
+		"Un crepuscolo sereno. In cielo non c'è niente che trattenga il colore, così scivola via pulito, e il freddo gli arriva subito dietro.",
+		"L'imbrunire con il cielo vuoto: la luce se ne va piano e uguale, come una lampada abbassata da una mano attenta.",
+	},
+	["weather.clear.dusk.w10.002"] = {
+		"guarda il cielo pulito cambiare colore al crepuscolo, mentre le creste lontane si scuriscono prima di quelle vicine.",
+		"si stringe un po' il mantello all'imbrunire: sotto un cielo così limpido l'aria si raffredda in fretta.",
+	},
+	["weather.clear.journey.w10.001"] = {
+		"Nemmeno una nuvola da attraversare. Le ali battono regolari, e sotto di me fiumi e strade stanno aperti come una mappa che qualcuno ha dimenticato di ripiegare.",
+		"In cielo ci siamo solo noi. Ogni strada là sotto si vede chiara, ogni fiume, ogni tetto. Volare con l'aria limpida sembra barare a nascondino.",
+		"Una salita liscia e niente quassù con cui lottare. Per una volta il cielo e la bestia vanno d'accordo.",
+	},
+	["weather.clear.journey.w10.002"] = {
+		"si sporge sulle cinghie mentre la cavalcatura sale in un cielo vuoto, e guarda le strade là sotto assottigliarsi in fili.",
+		"si sistema per il volo con davanti solo aria aperta, e lascia che sia il vento a parlare.",
+		"sale in un'aria così ferma e pulita che si sente ogni singolo colpo d'ala.",
+	},
+	["weather.clear.journey.w10.003"] = {
+		"Aria pulita, niente nuvole. Perfino la bestia sembra soddisfatta di sé.",
+		"Bel tempo per volare. Non sprechiamone nemmeno un colpo d'ala.",
+	},
+	["weather.clear.journey.w10.004"] = {
+		"Giù da un cielo vuoto senza un solo scossone. Il mio stomaco vorrebbe ringraziare il tempo di persona.",
+		"A terra. Con un'aria così limpida vedevo il punto d'arrivo da leghe di distanza, e l'ho guardato crescere per quasi tutto il volo.",
+		"Sereno per tutto il viaggio. Ho visto la terra cambiare sotto di me dall'inizio alla fine; adesso tocca ai piedi impararla con calma.",
+	},
+	["weather.clear.journey.w10.005"] = {
+		"scende di sella senza un capello fuori posto: il volo è stato facile quanto il cielo era vuoto.",
+		"atterra senza una raffica da combattere, e dà alla bestia una pacca riconoscente sul collo per il viaggio tranquillo.",
+	},
+	["weather.clear.rest_enter.w10.001"] = {
+		"Un posto dove riposare, e fuori il tempo è buono. Dormirò meglio sperando che la strada resti asciutta.",
+		"Riposo, anche se il cielo non mi ci spinge. È il migliore: scelto, non strappato al maltempo.",
+	},
+	["weather.clear.rest_enter.w10.002"] = {
+		"si mette a riposare con i vestiti asciutti, una volta tanto, e niente da strizzare o appendere vicino al fuoco.",
+		"si concede il riposo senza una goccia di maltempo addosso, cosa che sembra quasi un imbroglio.",
+	},
+	["weather.clear.weather_change.w10.001"] = {
+		"guarda il cielo svuotarsi del suo tempo e, per la prima volta da un pezzo, allenta il cappuccio.",
+		"scuote il mantello mentre l'aria si schiarisce, e quello che si portava addosso, pioggia, sabbia o neve, vola via.",
+		"guarda le ultime nuvole stracciate allontanarsi in fretta, come ritardatari attesi altrove.",
+	},
+	["weather.clear.weather_change.w10.002"] = {
+		"Quello che cadeva ha smesso. Il mondo si quieta a tappe: un'ultima goccia, un'ultima raffica, poi niente.",
+		"Il tempo si alza, e la terra torna un pezzo alla volta: il terreno vicino, la cresta lontana, poi quella ancora oltre.",
+		"Di nuovo sereno. L'aria sa di bucato, come se il mondo fosse stato strofinato e steso ad asciugare.",
+	},
+	["weather.clear.weather_change.w10.003"] = {
+		"Ecco. Il cielo ha smesso di tenere il broncio.",
+		"Si rasserena. Adesso i miei stivali possono cominciare la lunga, lenta opera di perdonarmi.",
+		"Di nuovo sereno. Smetto di far finta che non mi desse fastidio.",
+	},
+	["weather.clear.weather_change.w10.004"] = {
+		"Quando il maltempo passa, la quiete che lascia è la parte migliore, come il silenzio dopo che la folla è tornata a casa.",
+		"Le nuvole se ne sono andate, e qualcosa nel petto mi si scioglie: non mi ero {g:accorto|accorta} che fosse annodato.",
+		"Di nuovo cielo aperto. Quaggiù non è cambiato niente, eppure tutto sembra più leggero da portare.",
+	},
+	["weather.clear.weather_change.w10.005"] = {
+		"sente la terra riprendere vita mentre il cielo si sgombra: un richiamo qui, un fruscio là, la natura che decide che si può uscire.",
+		"si raddrizza mentre il tempo si apre, e scioglie le spalle rimaste troppo a lungo curve contro il maltempo.",
+	},
+	["weather.fog.journey.w10.001"] = {
+		"Il mondo là sotto è sparito nella nebbia. Volo sulla fiducia: quella della bestia, non la mia.",
+		"Niente da vedere se non grigio e le orecchie della bestia. Lei la strada nell'aria la conosce; le preoccupazioni le lascio a lei.",
+		"Saliamo in una nebbia fitta come lana. Laggiù, chissà dove, ci sono strade e fiumi; mi fido della parola della bestia.",
+	},
+	["weather.fog.weather_change.w10.001"] = {
+		"guarda la nebbia avanzare bassa sul terreno, finché i suoi stessi stivali restano l'unica cosa certa in vista.",
+		"si ferma mentre la nebbia si chiude intorno, e tutto ciò che è vicino, roccia, albero o altro, sbiadisce in uno schizzo pallido di se stesso.",
+	},
+	["weather.rain.dawn.w10.001"] = {
+		"L'alba, se con questa pioggia conta: il buio diventa grigio e basta, e l'acqua continua a cadere come se niente fosse.",
+		"Un'alba bagnata. Non sale nessun colore, solo un lento schiarire dietro la pioggia, come una lampada accesa nella stanza accanto.",
+	},
+	["weather.rain.dusk.w10.001"] = {
+		"quasi non si accorge del crepuscolo che scende nella pioggia: il grigio si fa solo più fitto, e la strada davanti svanisce in un unico lungo rumore d'acqua.",
+		"si stringe il cappuccio mentre la pioggia continua nell'imbrunire, e la luce se ne va senza alcuna cerimonia.",
+	},
+	["weather.rain.journey.w10.001"] = {
+		"Si parte sotto la pioggia. Ogni colpo d'ala mi ributta l'acqua in faccia, e la terra là sotto è una macchia grigia.",
+		"Su, nel bagnato. Le cinghie scivolano, la bestia brontola, e io mi tengo con qualcosa di più delle mani.",
+		"A questa velocità le gocce pungono come ghiaia lanciata. Abbasso il mento e conto le leghe.",
+	},
+	["weather.rain.journey.w10.002"] = {
+		"scende su un terreno fradicio, e la cavalcatura si scrolla subito, inzuppando chiunque sia a portata.",
+		"smonta dal volo {g:bagnato|bagnata} fino all'osso, con la pioggia che cola dal mento, e corre verso il riparo più vicino.",
+		"scende {g:rigido|rigida} e gocciolante, e strizza una manica mentre la bestia fuma piano lì accanto.",
+	},
+	["weather.rain.journey.w10.003"] = {
+		"A terra. {g:Fradicio|Fradicia} fino alle ossa. Dov'è il fuoco?",
+		"Più che un volo, è stato un lungo bagno con le ali.",
+	},
+	["weather.rain.rest_enter.w10.001"] = {
+		"Finalmente riposo. Che la pioggia cada quanto vuole; non devo più camminarci sotto.",
+		"Terreno sicuro, e basta camminare nel bagnato. La pioggia continui pure; io ho finito di discuterci.",
+	},
+	["weather.rain.weather_change.w10.001"] = {
+		"Ed ecco la pioggia. Ogni tasca che ho sta per diventare una tazza.",
+		"Pioggia. La prima goccia l'ho sentita sulla nuca, proprio dove mirano sempre.",
+	},
+	["weather.storm.journey.w10.001"] = {
+		"Volare dentro un temporale. La bestia lotta con ogni raffica, e io lotto con la voglia di urlarle di atterrare.",
+		"Il vento ci butta di lato e il cielo lampeggia bianco. Chi ha tracciato questa rotta mi deve delle scuse.",
+		"A quest'altezza il tuono non rotola: schiaffeggia. Mi aggrappo e prometto alla terra che verrò a trovarla più spesso.",
+	},
 }, "base_world")

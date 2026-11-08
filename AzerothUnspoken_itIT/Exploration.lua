@@ -4825,4 +4825,1148 @@ NS:AddTexts("itIT", {
 		"entra in {subzone} con quel passo sciolto e ondeggiante dei troll, come se il terreno fosse il ponte di una nave.",
 		"muove i primi passi in {subzone} con calma, una lunga mano che sfiora qualunque cosa abbia vicino.",
 	},
+	["band.b60.muse.w10.001"] = {
+		"Ogni strada che esce da un primo villaggio ora mi sembra corta. Non è la strada ad essersi accorciata.",
+		"C'è stato un tempo in cui una sola collina valeva una giornata di marcia. Le colline sono rimaste quelle. Le gambe no.",
+		"Le prime strade della mia vita sembravano infinite. A ripensarci, erano lunghe quanto una buona litigata.",
+	},
+	["band.b60.muse.w10.002"] = {
+		"cammina senza fretta, l'equipaggiamento consumato su ogni spigolo, con l'aria di chi la strada ha smesso di mettere alla prova.",
+		"sistema una cinghia già sistemata mille volte, senza bisogno di guardarla.",
+		"controlla una a una fibbie e cuciture, il lento inventario di chi ha imparato quanto costa una sola allentata.",
+	},
+	["band.b60.muse.w10.003"] = {
+		"Prima o poi, a quest'altezza, ogni strada porta alle Plaguelands. Chi le percorre, dopo, ne parla poco.",
+		"Nelle Plaguelands la forza scopre quanto vale. Il Flagello non smette mai di chiederlo.",
+		"Su a nord è la terra stessa a essere malata, e l'Argent Dawn ci tiene una cappella con la testardaggine e poco altro. La testardaggine la capisco.",
+	},
+	["band.b60.muse.w10.004"] = {
+		"Ormai metà delle mie monete va in riparazioni. Essere forti è soprattutto un modo costoso di farsi colpire da cose più grosse.",
+		"In Blackrock c'è un paio di guanti che porta il mio nome. Devo solo convincerne il proprietario attuale.",
+		"I riparatori, ovunque, sembrano felici di vedermi. Non è fama. È un cliente abituale.",
+	},
+	["band.b60.muse.w10.005"] = {
+		"La forza è un debito. Il mondo mi ha prestato anni duri per costruirla, e si aspetta di essere ripagato allo stesso modo.",
+		"Non ha senso essere così forti solo per sé. Uno scudo dietro cui non si ripara nessuno è soltanto una piastra pesante.",
+		"Qualunque cosa io sia {g:diventato|diventata}, dovrebbe stare fra qualcosa di terribile e qualcuno che non può farlo.",
+	},
+	["band.b60.muse.w10.006"] = {
+		"Certi giorni il corpo elenca ogni strada che ha percorso, un dolore dopo l'altro, e pretende che io ascolti.",
+		"I principianti si stancano. Questa è un'altra cosa: la stanchezza di sapere esattamente quanto resta da fare.",
+		"Potrei riposarmi. Nessuno me ne farebbe una colpa. È proprio per questo che è così difficile.",
+	},
+	["band.b60.muse.w10.007"] = {
+		"Se sei all'inizio: compra bende prima di qualunque cosa luccichi. Fra una settimana mi ringrazierai.",
+		"Prima lezione, gratis: la cosa che sembra innocua di solito è quella che morde.",
+		"Un consiglio a chi comincia: scappa prima di quanto l'orgoglio vorrebbe. L'orgoglio guarisce più piano dei lividi.",
+	},
+	["band.b60.muse.w10.008"] = {
+		"Gente che non ho mai visto riconosce la mia faccia. Non so se mi piace essere una storia che raccontano senza di me.",
+		"Gli sconosciuti mi salutano come se avessimo diviso un fuoco da campo. Le voci viaggiano più lontano di quanto abbia mai fatto io.",
+		"Il mio nome entra in ogni città prima di me, ormai. Passo metà del tempo a rincorrerlo.",
+	},
+	["band.b60.muse.w10.009"] = {
+		"Gli stormi dei draghi si stanno muovendo. Il nero dentro la montagna, il verde ai margini dei grandi alberi, il blu sopra le rovine di Azshara. Qualunque cosa aspettino, non siamo noi.",
+		"Un tempo i draghi erano una storia per bambini. A questo punto della strada sono una voce nell'elenco delle cose a cui prepararsi.",
+		"Ogni stormo di draghi pare avere i suoi affari in questo mondo, e nessuno ci ha chiesto un parere.",
+	},
+	["band.b60.muse.w10.010"] = {
+		"Tutti parlano del Molten Core come di una taverna dietro l'angolo. È un vulcano. Pieno di fuoco. Apposta.",
+		"Vogliono quaranta persone che entrino in una montagna di fuoco a combattere il suo padrone. Quaranta. Io non riesco a metterne d'accordo quattro sul pranzo.",
+		"La tana di Onyxia, il Molten Core, la città dei troll a Stranglethorn... Ogni tavolo di taverna ha un piano. Pochi hanno una data.",
+	},
+	["band.b60.muse.w10.011"] = {
+		"Ricordo la paura della prima cosa che mi abbia mai ringhiato contro. Non la paura in sé, che è sparita, ma quanto era vera.",
+		"Le prime paure erano piccole e oneste. Quelle che porto adesso sono più grandi e molto meglio vestite.",
+		"Quello che mi spaventava all'inizio oggi mi farebbe a malapena girare la testa. Non so se sia soltanto una buona notizia.",
+	},
+	["band.b60.muse.w10.012"] = {
+		"Blackrock Mountain contiene tre guerre in una: i Dark Iron sotto, la Dark Horde sopra, i draghi sopra entrambi. Nessuno con un po' di giudizio ci entra da solo, il che la dice lunga su chi ci entra.",
+		"Quella montagna nelle Burning Steppes è il genere di posto in cui la gente scrive le sue lettere prima di entrare.",
+		"Dentro Blackrock il caldo viene dalla pietra, l'odio da tutti quanti e il bottino, se arriva, arriva per ultimo.",
+	},
+	["band.b60.muse.w10.013"] = {
+		"Silithus è sabbia, insetti grandi come carri e un muro che i kaldorei e i draghi sigillarono mille anni fa. La gente continua comunque ad avvicinarsi a quel muro.",
+		"Cenarion Hold sorveglia un deserto che ronza. Sotto la sabbia qualcosa sta contando, e non conta a nostro favore.",
+		"Il Twilight's Hammer si accampa a Silithus, gli alveari scavano lì sotto e le porte di Ahn'Qiraj restano chiuse. Per ora, che è la frase meno rassicurante che conosca.",
+	},
+	["band.b60.muse.w10.014"] = {
+		"Ora la gente mi chiede cose vere. Non 'portami dieci pelli', ma 'riesci a fermarlo?'. Sto ancora imparando a dire di sì senza sussultare.",
+		"Quando qualcuno chiede aiuto, oggi, mi guarda come se chiedere fosse la parte difficile. Per lui lo era.",
+		"Chi ti assolda e chi ti chiede aiuto non sono la stessa cosa. Al primo devi il lavoro, al secondo devi la persona.",
+	},
+	["band.b60.muse.w10.015"] = {
+		"Il Flagello mandi pure quello che vuole. Qualcuno deve affrontarlo, e io ho finito le ragioni per cui quel qualcuno non dovrei essere io.",
+		"In questo mondo ci sono cose peggiori di me. Intendo trovarle prima che trovino qualcun altro.",
+		"Il mondo è pieno di cose che si fermano solo se qualcuno le ferma. Va bene. È questo, il lavoro.",
+	},
+	["band.b60.muse.w10.016"] = {
+		"dà un'occhiata a uno zaino pieno di cose che nessun principiante riconoscerebbe, e di qualcuna che nessun principiante dovrebbe toccare.",
+		"conta le monete nella borsa, fa a mente il conto delle riparazioni, aggrotta la fronte e ricomincia a contare.",
+		"si stiracchia finché qualcosa in una spalla risponde con uno schiocco, il suono di un lungo servizio.",
+	},
+	["band.b60.muse.w10.017"] = {
+		"A Caer Darrow insegnano la negromanzia come un mestiere, con lezioni e maestri. È questo che non riesco a togliermi di dosso: quanto sia tutto ordinato.",
+		"Stratholme è una città a cui nessuno ha lasciato finire di morire. Il Flagello ne tiene una metà, la Scarlet Crusade l'altra, e nessuno dei due la lascia in pace.",
+		"Scholomance, Stratholme: nomi che i giovani avventurieri sussurrano per sembrare coraggiosi. Io ormai li pronuncio ad alta voce, ed è peggio.",
+	},
+	["band.b60.muse.w10.018"] = {
+		"Gloria è una parola rumorosa per qualcosa che somiglia soprattutto alla pazienza e ai conti del fabbro.",
+		"Le canzoni lo fanno sembrare un unico grande giorno. Sono diecimila giorni qualunque, quasi tutti nel fango.",
+		"Nessuno scrive ballate sulla centesima discesa nello stesso dungeon. Eppure il lavoro vero sta proprio lì.",
+	},
+	["band.b60.muse.w10.019"] = {
+		"Qualcuno va verso Blackrock? Sono di buona compagnia, e di compagnia migliore quando arrivano i draghi.",
+		"Se a qualcuno serve un elemento in più per Blackrock Spire, ho tempo, provviste e un pessimo istinto di sopravvivenza.",
+		"Cerco qualche persona salda per le Plaguelands. Nervi obbligatori, eroismi facoltativi.",
+	},
+	["band.b60.muse.w10.020"] = {
+		"A quest'altezza sono meno quelli che mi camminano accanto. Non è solitudine, esattamente. È silenzio.",
+		"Quasi tutte le facce delle prime strade hanno preso la loro via, tempo fa. Auguro loro ogni bene, ovunque la strada li abbia lasciati.",
+		"La forza sfoltisce la compagnia. Non lo fa apposta: è solo che le strade si fanno più strette.",
+	},
+	["band.b60.muse.w10.021"] = {
+		"Ogni luogo tranquillo ormai mi sembra una terra da principianti. Campi in pace, guai piccoli e qualcuno appena partito, convinto che sia il mondo intero.",
+		"Le terre dolci mi piacciono più di quando erano tutto ciò che riuscivo a reggere. Bisogna aver visto le Plaguelands per amare davvero un prato qualunque.",
+		"Gli angoli più morbidi del mondo sono quelli dove tutti cominciano. Mi fa piacere che esistano, e che qualcuno li tenga morbidi.",
+	},
+	["band.b60.muse.w10.022"] = {
+		"Rend Blackhand siede nella Spire a giocare al capoguerra con un guinzaglio di drago al collo. Qualcuno dovrebbe dirgli che figura ci fa.",
+		"I nani di Thaurissan continuano a scavare sotto la montagna, verso un padrone fatto di fuoco. C'è chi non impara mai da che parte sta il cielo.",
+		"Ogni orrore del mondo ha una corte di gente che ha scelto di servirlo. Sono quelli che non riesco a perdonare.",
+	},
+	["band.b60.muse.w10.023"] = {
+		"La cosa migliore che la lunga strada mi ha insegnato è quando non combattere. È stata la più lunga da imparare ed è quella che uso di più.",
+		"L'esperienza è soprattutto un elenco di errori che non ho più tempo di commettere.",
+		"Quello che so adesso starebbe in una lettera breve. Per scriverla mi c'è voluta tutta la strada.",
+	},
+	["band.b60.muse.w10.024"] = {
+		"Si parla di una necropoli sospesa sopra le Plaguelands, una fortezza dei morti che galleggia nell'aria. Riderei, se l'Argent Dawn non fosse così silenziosa al riguardo.",
+		"Il Lich King è lontano, dicono, oltre il mare, nel nord ghiacciato. Quel lontano ha uno strano modo di arrivare fin qui.",
+		"I padroni del Flagello non mettono mai piede sul campo di persona. È questo a spaventarmi: chi muove i pezzi può permettersi di aspettare.",
+	},
+	["band.b60.muse.w10.025"] = {
+		"Quando i bambini mi chiedono se ho mai combattuto un drago, rispondo 'non prima di colazione'. Così restano col dubbio.",
+		"I più giovani pensano che io sappia tutto. Li lascio fare, finché non mi chiedono la strada.",
+		"A quanto pare adesso sono qualcuno da ammirare. Cercherò di non inciampare mentre guardano.",
+	},
+	["band.b60.muse.w10.026"] = {
+		"Ogni strada fino a quest'altezza è costeggiata da chi non ce l'ha fatta. La maggior parte non l'ho conosciuta. Ci penso lo stesso.",
+		"La forza è in parte fortuna rimasta senza nome. Cerco di ricordarlo quando passo accanto ai tumuli lungo la via.",
+		"Tanti più coraggiosi di me si sono fermati lungo la strada. Il fatto che io sia qui non è un giudizio su di loro.",
+	},
+	["band.b60.muse.w10.027"] = {
+		"A Everlook i goblin vendono bevande calde a prezzi che dovrebbero essere un reato, e a Winterspring nessuno protesta. È così che capisci di essere davvero ai margini.",
+		"Ai bordi della mappa abitano i guai interessanti: Winterspring, Silithus, le Plaguelands. Il centro del mondo è già stato messo in ordine.",
+		"A questo punto gli angoli più remoti mi sembrano più vicini delle capitali. Conosco la strada per Everlook meglio di quella per un sarto decente.",
+	},
+	["band.b60.muse.w10.028"] = {
+		"L'Argent Dawn vuole pietre del Flagello, i Timbermaw vogliono perline, la Thorium Brotherhood vuole minerale. Avere la fiducia degli altri, a quanto pare, è una commissione a tempo pieno.",
+		"La reputazione si costruisce come un muro: una pietra noiosa dopo l'altra, e nessuno se ne accorge finché non regge.",
+		"Ogni fazione che conta vuole prove, e le prove arrivano a sacchi. Di sacchi ne ho portati parecchi.",
+	},
+	["band.b60.muse.w10.029"] = {
+		"sta ritto con la calma di una lama temprata da tempo, senza più niente da dimostrare e con tutto ancora da fare.",
+		"alza lo sguardo senza fretta, come se prendesse le misure al mondo intero per un lavoro che resta da fare.",
+		"espira piano, e tutta la lunga strada sembra posarsi sulle sue spalle e restarci, portata bene.",
+	},
+	["band.b60.muse.w10.030"] = {
+		"Se tutta questa forza finisce in una locanda, a raccontare storie davanti a un boccale, l'avrò sprecata. C'è ancora lavoro.",
+		"Quando sei debole, lo scopo è facile: diventare più forte. Adesso devo sceglierne uno, e nessuno te lo consegna.",
+		"Il mondo non ha bisogno di un altro eroe. Ha bisogno di gente che continui a presentarsi quando le canzoni sono finite. Questo lo so fare.",
+	},
+	["band.b60.muse.w10.031"] = {
+		"Tutto quello che indosso l'ho strappato a qualcosa che non voleva cederlo. La moda è un lavoro faticoso.",
+		"Mi chiedono dove ho preso questi stivali. La risposta onesta è 'da qualcuno a cui non servivano più', e di solito la conversazione finisce lì.",
+		"Niente di quello che indosso è coordinato, ma ogni pezzo è sopravvissuto a qualcosa. Anche questo è uno stile.",
+	},
+	["band.b60.muse.w10.032"] = {
+		"Essere in cima significa solo che i pericoli rimasti sono quelli che aspettavano qualcuno come me.",
+		"Ormai sono abbastanza forte da farmi notare dalle cose che contano. Non so se sia il complimento che sembra.",
+		"Nel mondo ordinario non c'è più molto che possa farmi male. Ma è oltre l'ordinario che sto andando, comunque.",
+	},
+	["faction.alliance.muse.w10.001"] = {
+		"La lingua comune è quella in cui commerciamo, marciamo e battibecchiamo. Ma mezza Alleanza conta, impreca e sogna in un'altra.",
+		"Chiedi la strada in lingua comune a un nano, a uno gnomo e a un elfo: tre accenti e una strada sola. È l'Alleanza che funziona come deve.",
+		"La lingua comune per gli ordini, quella di casa per le imprecazioni. In qualunque accampamento dell'Alleanza capisci chi ha sbattuto un piede dalla lingua in cui impreca subito dopo.",
+	},
+	["faction.alliance.muse.w10.002"] = {
+		"I tagliapietre che ricostruirono Stormwind mandarono il conto ai nobili e in cambio ebbero il silenzio. Adesso la strada di Westfall riscuote da tutta l'Alleanza, con le maschere rosse.",
+		"Chiunque dell'Alleanza vada a Stormwind passa prima per Westfall, e vede che faccia ha un debito non pagato quando impara a impugnare un coltello.",
+		"Per un nano la paga di un muratore è sacra. I nobili di Stormwind l'hanno trovata trattabile, e i Defias da allora non hanno più smesso di trattare.",
+	},
+	["faction.alliance.muse.w10.003"] = {
+		"Un marinaio a Menethil giurava che la nave di re Varian non è mai arrivata a Theramore. Una guardia di Stormwind giurava che il re la nave non l'ha mai raggiunta. Tutti d'accordo che è sparito; nessuno su dove.",
+		"Un ambulante dà la colpa ai pirati, un sacerdote all'Orda, un ubriaco di Lakeshire ai nobili. Ogni storia sul re scomparso racconta più di chi la racconta che del re.",
+		"Ogni taverna dell'Alleanza ha la sua versione di dove sia finito il re. Ho smesso di collezionarle: nessuna ha un'ultima pagina felice.",
+	},
+	["faction.alliance.muse.w10.004"] = {
+		"Nella Stormwind Keep un ragazzo siede sotto una corona troppo grande per lui, e soldati di quattro popoli obbediscono in suo nome. Il peso lo porta Bolvar Fordragon; al ragazzo resta il nome.",
+		"Sulla carta l'Alleanza risponde a un re bambino e a un reggente stanco. Spero che Bolvar Fordragon riesca a dormire filato almeno una volta l'anno, e che il ragazzo possa fare il ragazzo, ogni tanto.",
+	},
+	["faction.alliance.muse.w10.005"] = {
+		"La grande forgia di Ironforge non si è mai raffreddata a memoria d'uomo, e la memoria dei nani è lunga. Qualunque cosa perda l'Alleanza, quel fuoco continua ad ardere sotto la montagna.",
+		"Metà dell'acciaio che porta le nostre insegne è stato colato sotto una sola montagna. Chiunque siamo, un nano ha messo mano a tenerci interi.",
+	},
+	["faction.alliance.muse.w10.006"] = {
+		"A Ironforge abbassano la voce quando parlano della figlia del re. Rapita dai Dark Iron, dice qualcuno; andata da loro di sua volontà, dicono altri. Magni Bronzebeard non dice niente.",
+		"Un re che dissotterra il passato del mondo intero, e non riesce a tirar fuori sua figlia da sotto Blackrock. Nemmeno i muri spessi di Ironforge impediscono a questa storia di rimbombare.",
+	},
+	["faction.alliance.muse.w10.007"] = {
+		"Un tempo Magni aveva due fratelli al suo fianco. Uno gira il mondo per la Explorers' League; l'altro partì verso nord con un principe di Lordaeron, e il nord se l'è tenuto.",
+		"Alla casa reale di Ironforge mancano fratelli: Brann a scavare chissà dove, Muradin perso tra i ghiacci con il principe che era andato ad aiutare. Il più vecchio amico dell'Alleanza ha pagato la sua parte.",
+	},
+	["faction.alliance.muse.w10.008"] = {
+		"Darnassus sta su un albero oltre il mare, lontana dal resto dell'Alleanza quanto può esserlo una capitale che manda ancora soldati. Certi giorni quella distanza sembra saggezza.",
+		"Chiedi a un umano quanto dista Darnassus e ti dirà «una traversata». Chiedilo a un elfo della notte e ti dirà «quanto basta».",
+		"Gli elfi della notte si sono uniti a noi tardi, e tengono la loro città oltre l'acqua, in cima a un albero. Si può essere buoni alleati e preferire comunque la propria quiete.",
+	},
+	["faction.alliance.muse.w10.009"] = {
+		"Le Sentinelle difendono Ashenvale dai Warsong quasi da sole. Quando l'Alleanza parla della sua guerra con l'Orda, gli elfi potrebbero spiegarle due cose sul prezzo del legname.",
+		"Ogni ascia dei Warsong ad Ashenvale morde un albero che qualche Sentinella ha giurato di proteggere. Il resto dell'Alleanza lo legge nei rapporti; gli elfi lo sentono nel legno.",
+	},
+	["faction.alliance.muse.w10.010"] = {
+		"Qualche druido mormora che Teldrassil sia stato piantato senza la benedizione dei vecchi poteri. La capitale più giovane dell'Alleanza, e perfino la sua gente discute delle radici.",
+		"Un grande albero cresciuto in fretta, dopo che un altro grande albero era andato perduto. Gli elfi la chiamano speranza. Ogni tanto un druido guarda le radici e tace, e quel silenzio pesa di più.",
+	},
+	["faction.alliance.muse.w10.011"] = {
+		"Chiedi a uno gnomo che cosa fece l'Alleanza quando cadde Gnomeregan: ti risponde con un gran sorriso e cambia discorso. Il sorriso basta.",
+		"Gli gnomi hanno perso una città intera e continuano ad aggiustare i congegni di tutti gli altri. Se l'Alleanza marcerà mai su Gnomeregan, la prima fila gliela deve.",
+	},
+	["faction.alliance.muse.w10.012"] = {
+		"Lady Proudmoore mantiene una tregua con il Capoguerra al di là dell'acqua. C'è chi nell'Alleanza la chiama politica e chi un tradimento in attesa di una data. Theramore intanto tiene aperti i cancelli.",
+		"Theramore parla con Orgrimmar; Stormwind no. L'Alleanza ha più di un'idea di pace, e ognuna viene con le sue mura.",
+	},
+	["faction.alliance.muse.w10.013"] = {
+		"Diciamo «la guerra con l'Orda» come se fosse una sola. Ad Ashenvale è legname, a Hillsbrad sono campi, nell'Arathi una miniera e una fucina. Ovunque, è il fratello di qualcuno.",
+		"La guerra con l'Orda non ha un fronte, solo steccati: un crinale a Hillsbrad, un campo di taglialegna ad Ashenvale, un incrocio a Stranglethorn. Impari dove corrono gli steccati guardando dove stanno le tombe.",
+	},
+	["faction.alliance.muse.w10.014"] = {
+		"L'Alleanza discute di Westfall e di Ashenvale mentre i morti si tengono tutto il nord. Certi giorni penso che il Flagello sia l'unico a non distrarsi.",
+		"In ogni consiglio dell'Alleanza c'è una sedia per la questione dell'Orda, una per i Defias, una per la città degli gnomi. Al Flagello la sedia non è mai servita: ha il nord.",
+	},
+	["faction.alliance.muse.w10.015"] = {
+		"Dietro la prima Alleanza c'erano sette regni umani, più i nani e gli elfi. Conta le bandiere di quell'elenco che sventolano ancora: ti avanzano dita.",
+		"Lordaeron caduta, Alterac venduta, Gilneas murata, Stromgarde in rovina, Dalaran sotto la sua cupola. La prima Alleanza non ha perso una guerra: ha perso i suoi membri uno alla volta.",
+	},
+	["faction.alliance.muse.w10.016"] = {
+		"A Light's Hope l'Argent Dawn accoglie chiunque sia disposto a opporsi ai morti, Alleanza e Orda allo stesso modo. Il Flagello è riuscito dove nessun re ce l'ha fatta: ha fatto dividere una cappella alle due parti.",
+		"Nelle Plaguelands un soldato dell'Alleanza e uno dell'Orda possono fare la guardia sullo stesso muro, sotto l'Argent Dawn. Nessuno la chiama pace. Ma nessuno la chiama nemmeno guerra.",
+	},
+	["faction.alliance.muse.w10.017"] = {
+		"Nell'Alterac i nani Stormpike scavano per i loro diritti e i Frostwolf difendono l'unica casa che hanno. Ciascuno ha le sue ragioni, ed è proprio per questo che la valle non resta mai tranquilla.",
+		"La Stormpike Guard chiama volontari, e l'Alleanza li manda su, tra le montagne dell'Alterac. I Frostwolf c'erano prima; i nani ci sono arrivati con un documento firmato. Lassù i documenti non li legge nessuno.",
+	},
+	["faction.alliance.muse.w10.018"] = {
+		"Le Silverwing Sentinels tengono una gola dove i Warsong hanno abbattuto la foresta. Una bandiera va da una parte, una dall'altra, e gli alberi non hanno mai voce in capitolo.",
+		"Warsong Gulch: l'Alleanza porta via la loro bandiera, l'Orda porta via la nostra. Sembra un gioco finché non hai visto i ceppi.",
+	},
+	["faction.alliance.muse.w10.019"] = {
+		"La League of Arathor combatte i Defilers per una fattoria, una miniera, un mulino, una stalla e una fucina. Su quelle stesse colline sono nati regni per molto meno. E per molto meno si sono persi.",
+		"Le colline dell'Arathi furono la culla del primo impero umano. Adesso l'Alleanza e l'Orda fanno a gara per le stalle e il mulino di una conca, e le pietre consumate stanno a guardare.",
+	},
+	["faction.alliance.muse.w10.020"] = {
+		"Nelle città i campi di battaglia li chiamano gloria. Da vicino sono una lite con l'Orda che nessuno ha l'autorità di chiudere.",
+		"Medaglie, marchi d'onore, un cenno da un generale. Tutto per tenere un campo che l'Orda si riprenderà entro la settimana prossima.",
+	},
+	["faction.alliance.muse.w10.021"] = {
+		"La nave tra Menethil e Auberdine è il posto dove l'Alleanza si incontra davvero: nani aggrappati al parapetto, gnomi che cronometrano le onde, elfi che fingono di non avere il mal di mare.",
+		"I marinai di Kul Tiras traghettano l'Alleanza da una costa all'altra e nessuno li ringrazia finché la nave non è in ritardo. Allora tutti sanno come si chiamano.",
+	},
+	["faction.alliance.muse.w10.022"] = {
+		"Grifoni a est, ippogrifi a ovest. L'Alleanza non riesce a mettersi d'accordo nemmeno su cosa far volare, e tutti e due ti portano a destinazione.",
+		"Piume e becco in ogni caso. Nani ed elfi discutono per un'ora su quale bestia sia migliore, e alle bestie non potrebbe importare di meno.",
+	},
+	["faction.alliance.muse.w10.023"] = {
+		"I Wildhammer stanno nell'Alleanza come una raffica sta in una nave: arrivano quando vogliono, da Aerie Peak, in groppa ai grifoni, urlando. Bisogna dire che di solito arrivano.",
+		"Non tutti i nani rispondono a Ironforge. I Wildhammer decidono per conto loro negli Hinterlands e prestano all'Alleanza i loro grifoni, il loro caratteraccio e, quando conta, i loro martelli.",
+	},
+	["faction.alliance.muse.w10.024"] = {
+		"Non tutti i nani stanno con l'Alleanza. I Dark Iron si sono incoronati un imperatore sotto Blackrock, e la ferita tra i clan non si è mai chiusa.",
+		"I Dark Iron hanno spezzato il Thandol Span, e la strada tra Ironforge e il sud ha un buco nel mezzo. Sono anni che l'Alleanza getta assi sopra buchi come quello.",
+	},
+	["faction.alliance.muse.w10.025"] = {
+		"Gilneas ha chiuso il cancello, Quel'Thalas se n'è andata, Stromgarde ha preso la sua strada. L'Alleanza ha perso più membri per i musi lunghi che per l'Orda.",
+		"Ogni tanto un regno sbatte la porta in faccia all'Alleanza e giura che è per sempre. La porta è ancora sui cardini: l'Alleanza è fatta soprattutto di porte così.",
+	},
+	["faction.alliance.muse.w10.026"] = {
+		"Un tempo l'Alleanza era fatta di corone umane, con nani ed elfi al seguito per la guerra. Questa è più strana: un re bambino, un re nano, un'alta sacerdotessa e un inventore in esilio, e una gran quantità di lettere.",
+		"L'Orda ha un solo Capoguerra. Noi abbiamo il reggente di Stormwind, il re di Ironforge, la sacerdotessa di Darnassus e l'inventore di Gnomeregan, e un corriere che non ha mai avuto un giorno libero.",
+	},
+	["faction.alliance.muse.w10.027"] = {
+		"Ogni popolo dell'Alleanza tiene un registro: chi è venuto quando cadevano i cancelli, chi ha mandato una lettera al suo posto. Nessun registro torna, e marciamo insieme lo stesso.",
+		"I vecchi debiti tengono unita l'Alleanza meglio dei giuramenti nuovi. I nani ricordano chi combatté per Ironforge, gli umani chi combatté per Stormwind, e tutti ricordano chi non venne.",
+	},
+	["faction.alliance.muse.w10.028"] = {
+		"A Hyjal, raccontano i veterani, orchi, umani ed elfi della notte combatterono spalla a spalla contro la Legione. Poi i fuochi si spensero, e ciascuno riprese le sue vecchie liti.",
+		"Una volta, sotto una montagna in fiamme, l'Alleanza e l'Orda combatterono dalla stessa parte. Oggi lo si racconta come una favola, e in un certo senso lo è diventata.",
+	},
+	["faction.alliance.muse.w10.029"] = {
+		"Nethergarde Keep sorveglia, nelle Blasted Lands, un Dark Portal spento da anni. L'Alleanza paga maghi bravi per fissare una rovina, non si sa mai. Lo trovo stranamente rassicurante.",
+		"Nella landa rossa una fortezza piena di maghi dell'Alleanza tiene d'occhio un portale che nessuno usa più. È così che si riconosce un popolo che è già stato preso di sorpresa.",
+	},
+	["faction.alliance.muse.w10.030"] = {
+		"In un ufficio di Stormwind un furiere conta frecce per Ashenvale, stivali per l'Arathi e bende per le Plaguelands, chiedendosi chi pagherà. L'Alleanza va avanti grazie a quell'unico impiegato stanco.",
+		"Nelle canzoni le guerre le vincono gli eroi, nei registri gli scrivani. L'Alleanza ha più canzoni che scrivani, e si vede.",
+	},
+	["faction.alliance.muse.w10.031"] = {
+		"Gli umani si rivolgono alla Luce, gli elfi a Elune, i nani scavano in cerca dei loro creatori e gli gnomi ricontrollano i conti. A una sepoltura dell'Alleanza, però, chiniamo il capo tutti nello stesso istante.",
+		"L'Alleanza non ha un solo credo e non gliene serve uno. Un paladino, una sacerdotessa della luna e un nano con la lanterna possono stare davanti alla stessa tomba e voler dire la stessa cosa.",
+	},
+	["faction.alliance.muse.w10.032"] = {
+		"La Explorers' League dissotterra i segreti più vecchi del mondo e li consegna all'Alleanza come ricordini. Certi ricordini mordono.",
+		"Nani armati di pala hanno insegnato all'Alleanza sulla nascita del mondo più di qualunque biblioteca. Soprattutto aprendo cose sigillate per un buon motivo.",
+	},
+	["faction.alliance.muse.w10.033"] = {
+		"L'Alleanza manda la sua gente lontano da dove è nata: nani nelle foreste degli elfi, elfi sulle strade degli umani, gnomi ovunque ci sia un banco da lavoro. La nostalgia è l'unica cosa che abbiamo tutti in comune.",
+		"In ogni guarnigione dell'Alleanza c'è qualcuno a cui manca una casa diversa: una montagna, una foresta, una città di ingranaggi, un campo di grano. Mettili insieme e hai tutta l'Alleanza, con il suo mal di casa.",
+	},
+	["faction.alliance.muse.w10.034"] = {
+		"Una cena dell'Alleanza: pane umano, formaggio dei nani, frutta degli elfi e un aggeggio gnomesco che scalda tutto un po' troppo.",
+		"Quattro popoli, una sola pentola. Lo stufato non piace a nessuno, tutti lo mangiano: ecco l'Alleanza in una scodella.",
+	},
+	["faction.alliance.muse.w10.035"] = {
+		"Stormwind allinea davanti alla porta eroi di pietra che passarono il Dark Portal e restarono dall'altra parte. L'Alleanza scolpisce statue per chi non può andare a riprendersi.",
+		"Passa sotto le statue alla porta di Stormwind e ti senti {g:osservato|osservata}, con gentilezza, da gente che si aspettava di più da noi. Lì cerco di camminare a testa un po' più alta.",
+	},
+	["faction.alliance.muse.w10.036"] = {
+		"L'Alterac vendette la prima Alleanza all'Orda, e adesso le sue rovine appartengono al Syndicate. Il tradimento non finisce mai davvero: cambia solo padrone.",
+		"Ogni alleato ha un nome da sputare. Per la prima Alleanza era Perenolde, il signore che aprì i passi all'Orda. L'Alterac non è mai stato perdonato, e le sue colline hanno smesso di chiederlo.",
+	},
+	["faction.alliance.muse.w10.037"] = {
+		"Westfall brucia perché una città non volle pagare; il nord marcisce perché un principe non volle fermarsi. Le ferite peggiori dell'Alleanza le ha inferte la sua stessa mano.",
+		"Guarda bene i nemici dell'Alleanza e troverai facce note: muratori non pagati, un principe perduto, nobili che vendettero un passo. L'Orda è l'unico nemico che non è cresciuto in casa nostra.",
+	},
+	["faction.alliance.muse.w10.038"] = {
+		"conta sulle dita le capitali dell'Alleanza, esita su Gnomeregan e la conta lo stesso.",
+		"spunta Stormwind, Ironforge e Darnassus su tre dita, ne alza una quarta per Gnomeregan e la tiene su un attimo più delle altre.",
+	},
+	["faction.alliance.muse.w10.039"] = {
+		"borbotta un pensiero in lingua comune, aggrotta la fronte e lo riprova sottovoce in un'altra lingua, come per vedere quale calzi meglio.",
+		"prova qualche parola cortese nella lingua di un altro popolo dell'Alleanza, storpia l'ultima e decide che andava bene così.",
+	},
+	["faction.alliance.muse.w10.040"] = {
+		"Dite quel che volete dei consigli dell'Alleanza. Quando i morti scesero a sud, quasi tutti i nostri cancelli si aprirono per chi fuggiva davanti a loro.",
+		"Con tutte le nostre liti, l'Alleanza ha accolto chi scappava dal Flagello. Ricordatevelo, la prossima volta che i nobili vi annoiano.",
+	},
+	["faction.alliance.muse.w10.041"] = {
+		"A Booty Bay i goblin versano da bere all'Alleanza e all'Orda dallo stesso barile, e sorridono a tutti e due. C'è una lezione lì dentro; solo non so se mi piaccia.",
+		"Le città dei goblin vendono corda a noi e corda a loro, e al cappio non importa chi l'ha comprata. L'Alleanza ha bisogno dei goblin e detesta averne bisogno.",
+	},
+	["faction.alliance.muse.w10.042"] = {
+		"Tanti soldati dell'Alleanza sono nati dopo la distruzione del Dark Portal. Per loro la vecchia Orda è una storia, e la nuova è semplicemente la gente sull'altro crinale.",
+		"I veterani combattono l'Orda che ricordano. Le reclute combattono quella che hanno davanti. Non sempre sono d'accordo su quale sia peggio.",
+	},
+	["faction.alliance.muse.w10.043"] = {
+		"A Darnassus un piccolo elfo impara la lingua comune da un mercante umano, e le parolacce per prime. L'Alleanza se la caverà.",
+		"Un apprendista gnomo insegna a un bambino nano a contare gli ingranaggi, e in cambio impara a imprecare. È così che le alleanze sopravvivono ai trattati.",
+	},
+	["faction.alliance.muse.w10.044"] = {
+		"Stormwind è convinta di guidare l'Alleanza. Ironforge è convinta di pagarla. Darnassus è convinta che nessuna delle due stia facendo attenzione.",
+		"Ogni capitale dell'Alleanza è segretamente sicura di essere quella che regge le altre. Hanno tutte un po' ragione, ed è questo il guaio.",
+	},
+	["faction.alliance.muse.w10.045"] = {
+		"I cavalieri della Silver Hand erano l'orgoglio della prima Alleanza. Ora l'ordine è disperso: chi con l'Argent Dawn, chi nella follia della Scarlet Crusade, e pochi ancora in ginocchio nella cattedrale di Stormwind.",
+		"I paladini dell'Alleanza giurano ancora sulla Luce, ma l'ordine che li formò si è spezzato insieme a Lordaeron. Ognuno ne porta un frammento, nessuno l'intero.",
+	},
+	["faction.alliance.muse.w10.046"] = {
+		"Popoli diversi, dèi diversi, una sola linea. Tenetela.",
+		"L'Alleanza non è mai stata un solo popolo. È una promessa di restare uniti, e io la mia parte intendo mantenerla.",
+	},
+	["faction.horde.muse.w10.001"] = {
+		"Quattro popoli, quattro modi di pregare, una sola lingua per dare ordini. L'orchesco è l'unica cosa che tutta l'Orda ha in comune, e anche quella ognuno la pronuncia a modo suo.",
+		"I tauren lo brontolano, i troll lo strascicano, i Reietti lo raschiano, gli orchi lo abbaiano. Eppure nell'Orda gli ordini li capiscono tutti.",
+		"Nell'Orda l'orchesco è la lingua comune, e la lingua madre soltanto degli orchi. Gli altri l'hanno imparato come si impara una strada: percorrendola in compagnia.",
+	},
+	["faction.horde.muse.w10.002"] = {
+		"Thrall avrebbe potuto chiedere terre più verdi. Ha preso il Durotar: polvere rossa, scorpioni, e nessun altro che lo volesse. Un popolo che cerca la pace comincia dove nessuno gli contende il terreno.",
+		"Il Durotar è una terra dura, scelta apposta. La terra che nessuno invidia è terra che nessuno viene a prendersi.",
+		"Orgrimmar è sorta dove la terra è rossa e l'acqua scarseggia. Il Capoguerra aveva capito che la casa più sicura è quella che nessuno desidera.",
+	},
+	["faction.horde.muse.w10.003"] = {
+		"Cairne Bloodhoof parla piano, e l'Orda ha imparato ad aspettare la fine delle sue frasi. Un popolo che ha fretta ha bisogno di qualcuno che non ne abbia.",
+		"Quando il consiglio del Capoguerra alza la voce, si racconta che Cairne lo lasci sfogare e poi pronunci tre parole. Di solito sono le tre giuste.",
+	},
+	["faction.horde.muse.w10.004"] = {
+		"I Darkspear hanno giurato fedeltà all'Orda quando Thrall si rifiutò di salpare lasciandoli ai loro nemici. Vol'jin ha tenuto fede a quel giuramento in ogni stagione difficile. Debiti così tengono insieme un patto meglio di qualunque trattato.",
+		"Sen'jin è morto perché la sua tribù potesse seguire il Capoguerra. Vol'jin non lascia che l'Orda lo dimentichi, e non lascia che i Darkspear dimentichino la promessa.",
+	},
+	["faction.horde.muse.w10.005"] = {
+		"I Reietti stanno nell'Orda come un ospite sta vicino alla porta: dentro, benvenuti sulla carta, e sorvegliati. Cairne ha parlato per loro. Non tutti l'hanno ascoltato.",
+		"Nell'Orda c'è ancora chi si conta le dita dopo aver stretto la mano a un Reietto. I Reietti se ne accorgono. Hanno la memoria lunga e ben poco da perdere.",
+		"I Reietti sono stati accolti nell'Orda con una mano e tenuti a distanza con l'altra. La fiducia arriva, piano, come la sensibilità che torna in un arto intorpidito.",
+	},
+	["faction.horde.muse.w10.006"] = {
+		"Fuori da Undercity nessuno sa bene cosa distillino nei loro tini gli speziali della Royal Apothecary Society. Sylvanas giura che è tutto destinato al Flagello. L'Orda ha scelto di crederle, per ora.",
+		"Un'alleata che tiene chiuse a chiave le sue cantine. L'Orda combatte al fianco della Dama Oscura e non fa domande sul vetro verde. Un giorno qualcuno dovrà farle.",
+	},
+	["faction.horde.muse.w10.007"] = {
+		"Il sangue del demone è stato bruciato via dagli orchi solo quando Grom Hellscream è caduto uccidendo Mannoroth. Ogni popolo dell'Orda adesso cammina su quel prezzo, orco o no.",
+		"Ogni passo libero dell'Orda è stato comprato a Demon Fall Canyon, con la vita di chi per primo aveva bevuto il dono del demone.",
+	},
+	["faction.horde.muse.w10.008"] = {
+		"Metà dell'unità dell'Orda è appesa a zeppelin goblin che scricchiolano come botti vecchie. Se i goblin alzano il prezzo del biglietto, il Capoguerra si ritroverà una guerra senza nemmeno un nemico in vista.",
+		"Orgrimmar, Undercity, Grom'gol: l'Orda sta insieme grazie a palloni di stoffa e corde goblin. Meglio non pensarci, alla prossima traversata.",
+		"Un pilota goblin, un pallone rattoppato in quattro colori, e tutto il collegamento dell'Orda fra due continenti. Ammirevole, a modo suo. Terrificante, in tutti gli altri.",
+	},
+	["faction.horde.muse.w10.009"] = {
+		"Orgrimmar ha bisogno di legname e il Durotar non ne fa crescere. Così le asce vanno in Ashenvale, e le Sentinelle escono dagli alberi. Il bisogno da una parte, il lutto dall'altra, e hanno ragione tutti e due.",
+		"Ogni trave di Orgrimmar ha dentro un pezzo d'Ashenvale, e il prezzo di una freccia. Non so dire se questo renda la città meno nostra, o la guerra più onesta.",
+		"Gli accampamenti Warsong tagliano, la foresta sanguina, gli elfi della notte rispondono. In quella guerra nessuno è il cattivo ai propri occhi.",
+	},
+	["faction.horde.muse.w10.010"] = {
+		"Gli alberi di Ashenvale sono troppo alti per il loro bene. Le Sentinelle non sono d'accordo, e lo spiegano a lungo, con le frecce.",
+		"Gli elfi della notte la chiamano foresta sacra. A Splintertree la chiamano la legna del mese prossimo. Qualcuno dovrà pur cedere.",
+	},
+	["faction.horde.muse.w10.011"] = {
+		"Nella vecchia Orda l'onore voleva dire uccidere bene. In questa vuol dire sapere quando non farlo. La seconda cosa è più difficile da insegnare, e nessuno ne è ancora del tutto sicuro.",
+		"La nuova Orda tiene la vecchia parola, onore, e cerca di versarci dentro qualcosa di meglio. Certi giorni la parola sa ancora di quello che conteneva prima.",
+		"L'onore, come lo intende il Capoguerra, vuol dire che un nemico battuto può andarsene. Nell'Orda c'è chi la chiama debolezza. Non ha mai visto quanto è costata l'altra strada.",
+	},
+	["faction.horde.muse.w10.012"] = {
+		"L'Orda ricorda i campi d'internamento, anche i popoli che non ci sono mai finiti dentro. Un patto è anche questo: portare le cicatrici di un alleato come fossero le proprie.",
+		"Qualche Reietto, da vivo, forse ha fatto la guardia ai campi d'internamento. Adesso marcia sotto la stessa bandiera di quelli che sorvegliava. Nell'Orda se ne parla poco.",
+	},
+	["faction.horde.muse.w10.013"] = {
+		"Lok'tar ogar. Vittoria o morte, dicono gli orchi, e il resto dell'Orda ha imparato a dirlo con loro.",
+		"Vittoria o morte. Ogni popolo dell'Orda ormai lo dice in orchesco, e lo intende nella propria lingua.",
+	},
+	["faction.horde.muse.w10.014"] = {
+		"L'Orda è una manciata di avamposti tenuti in piedi dalla testardaggine: Kargath, Stonard, Grom'gol, Hammerfall, Tarren Mill. Sulla mappa sembra poca cosa. Sul terreno sembra gente che si rifiuta di andarsene.",
+		"Segna gli accampamenti dell'Orda su una mappa dei Regni Orientali e ottieni qualche puntino in terra ostile. Ogni puntino è il fuoco di guardia di qualcuno, e nessuno si spegne.",
+		"Ogni avamposto dell'Orda nei Regni Orientali è lontanissimo da Orgrimmar e si comporta come se non lo fosse. Quella testardaggine è metà di ciò che lo tiene in piedi.",
+	},
+	["faction.horde.muse.w10.015"] = {
+		"Il cibo dei troll brucia, quello dei tauren riempie, quello degli orchi si difende, e su quello dei Reietti meglio non fare domande. Un banchetto dell'Orda è un atto di diplomazia.",
+		"Nell'Orda, dividere un pasto richiede coraggio. Il piatto di qualcuno finirà sempre per incendiare la lingua di qualcun altro.",
+	},
+	["faction.horde.muse.w10.016"] = {
+		"Il Flagello tiene il nord di Lordaeron, e la volontà del Re dei Lich muove ogni cadavere che ci si trova. L'Orda ha cento litigi con l'Alleanza, e uno solo con i morti che non può permettersi di perdere.",
+		"Quando attorno a un fuoco dell'Orda si nominano le Plaguelands, le voci si abbassano. Orco, troll, tauren o Reietto, nessuno vuole finire in quell'esercito.",
+		"L'Alleanza è una rivale. Il Flagello è una fine. L'Orda conosce la differenza, anche quando le sue voci più forti se ne dimenticano.",
+	},
+	["faction.horde.muse.w10.017"] = {
+		"L'Orda combatte i morti che camminano con l'aiuto di altri morti che camminano. Nessuno l'aveva previsto. La guerra fa alleati più strani di quanti ne oserebbe qualunque consiglio.",
+		"Un esercito di morti a nord, un'alleata dei morti a Undercity. La differenza è una volontà propria, e l'Orda ci ha scommesso parecchio.",
+	},
+	["faction.horde.muse.w10.018"] = {
+		"Nella Warsong Gulch gli Outriders combattono perché le asce possano continuare a lavorare in Ashenvale. Una bandiera riportata a casa laggiù è un albero abbattuto da un'altra parte. La guerra è di rado semplice come uno stendardo.",
+		"I Warsong Outriders e le Silverwing Sentinels hanno fatto di una gola una lite con le regole. Due bandiere, due basi, e dietro il punteggio un'intera foresta.",
+	},
+	["faction.horde.muse.w10.019"] = {
+		"I Defilers si contendono la miniera, la segheria e le stalle dell'Arathi Basin. La gloria finisce nelle canzoni, il minerale e il legname nei rapporti, e all'Orda servono di più i rapporti.",
+		"Nell'Arathi Basin i Defilers affrontano la League of Arathor: i morti del vecchio regno contro i suoi vivi, per campi che qualcuno di loro arava da vivo.",
+	},
+	["faction.horde.muse.w10.020"] = {
+		"Il clan Frostwolf ha conservato le vecchie usanze nell'alta valle dell'Alterac mentre il resto degli orchi stava nei campi. Ora gli Stormpike scavano in quella valle, e tutta l'Orda è invitata a rispondere.",
+		"L'Alterac Valley è dei Frostwolf per il diritto più antico che ci sia: ci sono sopravvissuti quando nessuno lo voleva. I nani Stormpike reclamano le stesse colline per le loro miniere.",
+	},
+	["faction.horde.muse.w10.021"] = {
+		"A Theramore una donna umana mantiene col Capoguerra una tregua che metà della sua gente chiamerebbe tradimento. Jaina Proudmoore e Thrall hanno scommesso sulla stessa corda sottile.",
+		"La pace con l'Alleanza ha una porta sola, e si apre da Theramore. Jaina Proudmoore si è messa contro suo padre per tenerla socchiusa. L'Orda se lo ricorda, a denti stretti.",
+		"Si dice che Thrall e Jaina Proudmoore si scrivano, e che tutti e due tengano le lettere lontane dai loro consigli. È il fronte più silenzioso della guerra, e forse quello che conta di più.",
+	},
+	["faction.horde.muse.w10.022"] = {
+		"L'Alleanza racconta ai suoi bambini che l'Orda se li mangia. L'Orda racconta ai suoi giovani che l'Alleanza si lava troppo spesso. Solo una delle due è una calunnia.",
+		"Nelle storie dell'Alleanza siamo i mostri ai margini della mappa. Nelle nostre sono loro quelli che alzano muri e lo chiamano civiltà. Tutte e due le storie andrebbero corrette.",
+		"L'Alleanza ha re, consigli e grandi sale di pietra. L'Orda ha un Capoguerra, qualche capotribù e un sacco di urla. Entrambe concludono qualcosa; noi lo facciamo con più rumore.",
+	},
+	["faction.horde.muse.w10.023"] = {
+		"Nell'Orda adesso ci sono giovani guerrieri che non hanno mai visto un campo, una catena o un demone. Combattono per qualcosa in cui sono semplicemente nati. È per questo che i vecchi hanno sanguinato.",
+		"Cresce una generazione intera convinta che l'Orda sia sempre stata così: tamburi, consigli, alleati. Lasciamoglielo credere. È il dono migliore che qualcuno potesse farle.",
+	},
+	["faction.horde.muse.w10.024"] = {
+		"L'Orda non ha una fede sola. Gli spiriti per gli orchi, la Madre Terra per i tauren, i loa per i troll, e per i Reietti più che altro domande. Marcia lo stesso. Forse anche questa è una fede.",
+		"Chiedi a quattro soldati dell'Orda chi veglia su di loro e avrai quattro risposte e un'alzata di spalle. Nessuno cerca di convincere nessuno. Forse è la regola migliore dell'Orda.",
+	},
+	["faction.horde.muse.w10.025"] = {
+		"L'Orda combatte per l'acqua, il legno e il minerale più che per la gloria. Le terre buone di Kalimdor erano già prese molto prima che arrivassero gli orchi, e il bisogno è un pessimo diplomatico.",
+		"La fame ha cominciato più battaglie dell'Orda di quante ne abbia mai cominciate l'orgoglio. L'orgoglio, poi, se ne prende il merito.",
+	},
+	["faction.horde.muse.w10.026"] = {
+		"sistema l'equipaggiamento con la cura sbrigativa di un soldato che ha consumato molte strade dell'Orda.",
+		"raddrizza le spalle come se un ufficiale dell'Orda fosse appena passato, anche se non è passato nessuno.",
+	},
+	["faction.horde.muse.w10.027"] = {
+		"borbotta sottovoce qualche parola d'orchesco, come fanno i viaggiatori per non lasciar arrugginire una lingua comune.",
+		"canticchia qualche battuta di un'aria di marcia sentita in un accampamento dell'Orda, poi smette di colpo, come {g:colto|colta} in fallo.",
+	},
+	["faction.horde.muse.w10.028"] = {
+		"Un orco, un troll, un tauren e un Reietto. Sembra l'inizio di una barzelletta. È l'inizio di un esercito.",
+		"Quattro popoli che non avrebbero mai diviso una strada, e adesso litigano su a chi tocca cucinare. Questa è l'Orda.",
+		"Una bandiera, quattro popoli, e nessuno d'accordo sul passo di marcia. Eppure l'esercito arriva.",
+	},
+	["faction.horde.muse.w10.029"] = {
+		"L'Orda chiede molto. D'altra parte, prima ha dato molto: una casa, un nome, un posto nella fila.",
+		"La forza si trova facilmente. Quella che mantiene la parola è ciò che manca all'Orda. Intendo esserne un pezzo.",
+	},
+	["faction.horde.muse.w10.030"] = {
+		"Thrall è giovane, per essere un Capoguerra. Eppure a volte mi chiedo chi terrebbe insieme tutti questi popoli senza di lui. Poi smetto di chiedermelo: una buona risposta non c'è.",
+		"L'Orda poggia su poche paia di spalle: quelle di Thrall, di Cairne, di Vol'jin, della Dama Oscura. Spalle forti. Ma poche.",
+	},
+	["faction.horde.muse.w10.031"] = {
+		"La Dark Horde di Rend Blackhand sventola ancora i vecchi colori a Blackrock Spire. L'Orda non li chiama proprio nemici. Più che altro un brutto ricordo armato d'ascia.",
+		"La Burning Blade sussurra ancora agli orchi nelle grotte che i doni dei demoni erano veri. Ogni accampamento dell'Orda tiene un orecchio teso verso quel sussurro.",
+	},
+	["faction.horde.muse.w10.032"] = {
+		"Viverne a Kalimdor, pipistrelli a Lordaeron. L'Orda viaggia sulle bestie che i suoi popoli hanno addomesticato, e alle bestie nessuno chiede un parere.",
+		"Ogni popolo ha portato al patto qualcosa di suo. Gli orchi i lupi, i troll i raptor, i tauren i kodo, i Reietti cavalli tutt'ossa e una lunga pazienza.",
+	},
+	["faction.horde.muse.w10.033"] = {
+		"Ogni popolo dell'Orda è stato braccato, ridotto in schiavitù o maledetto da qualcuno. Forse è questo a tenerla unita: qui tutti sanno cosa vuol dire essere messi all'angolo.",
+		"Gli orchi fuori dai campi, i tauren incalzati dai centauri, i Darkspear cacciati dalle loro isole, i Reietti strappati alla presa del Re dei Lich. L'Orda è un raduno di fughe.",
+		"Nessuno è entrato nell'Orda stando comodo. Ogni popolo che ne fa parte ci è arrivato fuggendo da un disastro tutto suo.",
+	},
+	["faction.horde.muse.w10.034"] = {
+		"Grunt a Orgrimmar, sentinelle sulle mese, deathguard a Undercity, lance al Sen'jin Village. Nomi diversi per lo stesso mestiere: stare dove i guai arrivano per primi.",
+		"Ogni capitale dell'Orda veste le sue guardie a modo suo e le addestra allo stesso modo: guardare, tenere, chiamare aiuto presto. La vecchia Orda l'ultima parte non l'ha mai imparata.",
+	},
+	["faction.horde.muse.w10.035"] = {
+		"Alla banca di Orgrimmar un tauren aspetta dietro un troll, che aspetta dietro un Reietto, che aspetta dietro un orco. Nessuno spinge. È un piccolo miracolo, e nessuno se ne accorge.",
+		"I pipistrelli di Undercity portano cavalieri tauren, gli ascensori di Thunder Bluff cigolano sotto il peso dei Reietti. Il patto si vede meglio nei posti noiosi.",
+	},
+	["faction.horde.muse.w10.036"] = {
+		"Quando l'Orda perde qualcuno, ogni popolo piange a modo suo: le pire degli orchi, la terra dei tauren, i canti dei troll, il silenzio dei Reietti. Una sola guerra, e quattro modi di dire addio.",
+		"I funerali dell'Orda sono affollati. Ognuno porta un'usanza sua e assiste con educazione a quelle degli altri.",
+	},
+	["faction.horde.muse.w10.037"] = {
+		"I goblin vendono all'Orda e all'Alleanza dalla stessa cassa, con lo stesso sorriso. Neutrali, si definiscono. Io li chiamo l'unica parte che non perde mai.",
+		"Booty Bay, Gadgetzan, Ratchet: città goblin dove una lama dell'Orda e una dell'Alleanza bevono allo stesso bancone. I bruiser fanno in modo che restino tutte e due nel fodero.",
+		"La neutralità goblin è l'unico trattato che Orda e Alleanza rispettano entrambe. È scritto in monete, e a farlo rispettare ci pensano i bruiser.",
+	},
+	["faction.horde.muse.w10.038"] = {
+		"Tarren Mill e Southshore stanno a due passi l'una dall'altra e si odiano per ognuno di quei passi. I Reietti ricordano quelle colline da quando respiravano ancora. L'Alleanza le ricorda come sue.",
+		"A Hillsbrad l'Orda e l'Alleanza hanno smesso di fingere. La strada fra Tarren Mill e Southshore è corta, e nessuno la percorre disarmato.",
+	},
+	["faction.horde.muse.w10.039"] = {
+		"Nessuna canzone nominerà le commissioni che sbrigo per il furiere di qualche avamposto. L'Orda è fatta di quelle commissioni molto più che di canzoni.",
+		"Le guerre si ricordano per le battaglie. L'Orda sopravvive grazie ai rifornimenti, a chi porta l'acqua e a chi risponde all'avviso appeso al palo.",
+	},
+	["mood.city.muse.w10.001"] = {
+		"Ogni città ha le stesse tre persone: una che vende, una che guarda chi vende, e una guardia che finge di non guardare nessuna delle due.",
+		"In città tutti hanno un'opinione sulla guerra e nessuno ci è mai andato vicino. Ascolto e annuisco: costa meno che discutere.",
+		"In una di queste strade un mercante si sta arricchendo con roba che ho trovato a prezzo di sangue. Buon per lui, immagino.",
+	},
+	["mood.city.muse.w10.002"] = {
+		"Tutte queste porte, e dietro ognuna una vita che non ha niente a che fare con la mia. Lo trovo stranamente consolante.",
+		"Migliaia di persone vivono a pochi passi da qui. Nessuna conosce il mio nome, e a nessuna serve conoscerlo.",
+		"La folla è il posto migliore per stare da soli. Nessuno ti chiede da dove vieni, quando tutti hanno fretta di arrivare altrove.",
+	},
+	["mood.city.muse.w10.003"] = {
+		"si ferma a guardare una trattativa per una sola moneta che dura molto più di quanto la moneta meriti.",
+		"scavalca un gruppetto di apprendisti seduti in mezzo al passaggio, che litigano su quale maestro sia il più severo.",
+		"si attarda davanti a un banco quanto basta per sentirsi gridare un prezzo, e riparte prima che arrivi il secondo.",
+	},
+	["mood.city.muse.w10.004"] = {
+		"Troppa gente, troppo poco spazio, e camminano tutti più piano di me.",
+		"Là fuori affronto un branco di qualunque cosa. Qui dentro non riesco ad attraversare una strada senza chiedere scusa quattro volte.",
+		"Guardie ovunque, regole ovunque. Preferivo quando l'unica regola era non farsi mangiare.",
+	},
+	["mood.city.muse.w10.005"] = {
+		"Là fuori dimentico a cosa servono le guardie di queste strade. Poi vedo un bottegaio contare l'incasso senza guardarsi alle spalle neanche una volta, e me ne ricordo.",
+		"Qui nessuno deve riposare con la mano sull'arma. Qualcuno, là fuori, l'ha pagato, e continua a pagarlo.",
+	},
+	["mood.city.muse.w10.006"] = {
+		"Dopo le terre selvagge, una città è troppo tutta insieme: cento rumori, e le orecchie vogliono controllarli uno per uno.",
+		"A ogni grido la mano mi scivola verso l'arma. In città è una cattiva abitudine; là fuori mi ha tenuto in vita.",
+		"Vengo in città per fare pace con tavole e letti. La tregua non dura mai più di qualche giorno.",
+	},
+	["mood.city.muse.w10.007"] = {
+		"Guardali tutti. Ognuno con un posto dove andare e qualcuno che l'aspetta. Dev'essere bello.",
+		"Senti che rumore: forge, venditori, pettegolezzi, passi. Una città suona come tanta gente che ha deciso di andare avanti.",
+	},
+	["mood.city.subzone_enter.w10.001"] = {
+		"svolta in {subzone} e adatta il passo alla folla, né il più svelto né il più lento.",
+		"entrando in {subzone}, scansa con garbo un facchino piegato in due sotto una cassa.",
+		"prosegue verso {subzone} tenendo una mano vicina alla borsa, per vecchia abitudine.",
+	},
+	["mood.city.subzone_enter.w10.002"] = {
+		"{subzone}. Banchi diversi, prezzi uguali: troppo alti.",
+		"{subzone}. Se mi fermo un attimo, qualcuno cercherà di vendermi qualcosa. Tiro dritto.",
+		"{subzone}. Una città non è che tanti piccoli paesi con un solo capitano delle guardie.",
+	},
+	["mood.city.subzone_enter.w10.003"] = {
+		"{subzone}. Bene, e il fabbro da qui dov'è?",
+		"{subzone}. Destra o sinistra? Ogni angolo qui assomiglia a quello di prima.",
+		"{subzone}. So dove sono. Più o meno. Quasi.",
+	},
+	["mood.city.subzone_enter.w10.004"] = {
+		"{subzone}. Facce sconosciute, faccende altrui. In città puoi camminare a lungo senza essere nessuno.",
+		"{subzone}. Chi abita qui mi passa accanto senza guardarmi. Per loro quest'angolo è casa; per me è un nome su un'insegna.",
+		"{subzone}. Qualcuno ride sulla soglia di una porta. Non conosco la battuta, ma mi fa piacere che qualcuno la racconti.",
+	},
+	["mood.city.subzone_enter.w10.005"] = {
+		"passa in {subzone} e studia il posto come un esploratore studia una valle: le uscite, la folla, le guardie e dove stanno.",
+		"mette piede in {subzone} e prende nota, senza volerlo, di ogni guardia e di ogni via d'uscita.",
+		"arriva in {subzone} e si lascia portare un po' dal viavai, gli occhi che passano da un viso all'altro.",
+	},
+	["mood.dark.landmark.w10.001"] = {
+		"raggiunge {landmark}, e la penombra sembra sollevarsi di un palmo, non di più.",
+		"si ferma presso {landmark} e osserva il posto a lungo, come si osserva uno sconosciuto incontrato su una strada deserta.",
+	},
+	["mood.dark.muse.w10.001"] = {
+		"La luce qui arriva sottile e stanca, come se avesse fatto tanta strada e al confine le fosse mancato il coraggio.",
+		"Perfino la mia sagoma sembra seguirmi controvoglia, in questo posto.",
+		"Qualcosa qui fa sembrare troppo forte ogni rumore: un passo, un colpo di tosse, il mio stesso respiro.",
+	},
+	["mood.dark.muse.w10.002"] = {
+		"Qualunque cosa stia guardando, può continuare a guardare. Non mi fermo a presentarmi.",
+		"Occhi avanti, gambe in movimento. Non è un posto dove trattenersi, e non ho intenzione di diventarne parte.",
+	},
+	["mood.dark.subzone_enter.w10.001"] = {
+		"rallenta al margine di {subzone}, lascia che gli occhi si abituino alla penombra, poi prosegue.",
+		"si addentra in {subzone} e si accorge di camminare più piano senza averlo deciso.",
+	},
+	["mood.dark.subzone_enter.w10.002"] = {
+		"{subzone}. Qui la penombra ha un odore: umido, vecchio, paziente.",
+		"{subzone}. Mi segno il nome e la via d'uscita più vicina, in quest'ordine. Qui, forse, nell'ordine inverso.",
+	},
+	["mood.deep.muse.w10.001"] = {
+		"Quaggiù le orecchie fanno il lavoro che gli occhi non possono fare. Ogni goccia, ogni graffio viene pesato e messo da parte.",
+		"Tengo una mano sulla parete di roccia, come un bambino si tiene a una manica. Nessuno deve saperlo.",
+	},
+	["mood.deep.subzone_enter.w10.001"] = {
+		"{subzone}. Più in fondo, e la strada del ritorno si allunga a ogni nome.",
+		"{subzone}. Qui l'aria è chiusa e stagnante; ogni rumore torna indietro dalla roccia con un attimo di ritardo.",
+	},
+	["mood.desert.landmark.w10.001"] = {
+		"{landmark}. Un nome sulla terra secca. Quando qui si dà un nome a un posto, di solito è perché si è trovata l'acqua, o si è perso qualcuno a cercarla.",
+		"{landmark}. Perfino le pietre qui sembrano assetate, e so benissimo come si sentono.",
+	},
+	["mood.desert.muse.w10.001"] = {
+		"La terra secca ha una voce sua: la sabbia che sibila sulla pietra, e sotto un silenzio così vasto che rimbomba.",
+		"Qui la terra è consumata fino all'osso. Ogni cresta sembra qualcosa che un tempo era più alto.",
+		"I posti secchi conservano. Ossa, monete, vecchi muri: la sabbia li nasconde per un'era e li restituisce quando le gira.",
+	},
+	["mood.desert.muse.w10.002"] = {
+		"Ogni stivale, ogni cucitura, ogni piega dello zaino: la polvere ci ha preso casa e non ha intenzione di sloggiare.",
+		"Se qualcuno trova un briciolo d'ombra, mi chiami. Pago bene.",
+	},
+	["mood.desert.muse.w10.003"] = {
+		"si passa la lingua sulle labbra screpolate e decide, per ora, di non bere.",
+		"versa un filo d'acqua su un panno e se lo preme sulla nuca, come se maneggiasse una cosa preziosa.",
+	},
+	["mood.desert.subzone_enter.w10.001"] = {
+		"avanza in {subzone} da una chiazza d'ombra all'altra, dove ce n'è.",
+		"calca un terreno cotto come terracotta entrando in {subzone}.",
+		"raggiunge {subzone} e soppesa l'otre per capire quanta acqua resta, prima di proseguire.",
+	},
+	["mood.fire.landmark.w10.001"] = {
+		"{landmark}. Gente che tiene duro con tutto questo caldo: o molto coraggiosa, o senza altre scelte. Di solito tutte e due.",
+		"{landmark}. Chi manda avanti un posto in questa fornace ha la pelle come cuoio da stivali, e probabilmente un carattere uguale.",
+	},
+	["mood.fire.muse.w10.001"] = {
+		"Qui non c'è terra, solo cenere che si ricorda di essere stata terra. Passeranno ere prima che qualcosa ci metta radici.",
+		"Per abitudine continuo a cercare qualcosa di verde. Questo suolo è stato cotto tanto tempo fa e non ha più niente da dare.",
+		"La roccia è ancora tiepida sotto il palmo, come il fianco di qualcosa che dorme. Ritiro la mano in fretta.",
+	},
+	["mood.fire.muse.w10.002"] = {
+		"Ho l'otre così calda che ci si potrebbe fare il tè. E non è un complimento.",
+		"Chi si stabilisce di proposito in questo caldo deve avercela con le comodità.",
+		"Sudore negli occhi, fuliggine fra i denti. Ricordatemi cosa c'è da queste parti che valga la pena.",
+	},
+	["mood.fire.muse.w10.003"] = {
+		"si passa una manica sulla fronte e la ritrova ruvida di fuliggine.",
+		"respira piano, col naso, come se l'aria calda andasse razionata.",
+		"batte un colpo di tallone su una lastra scura per sentire se suona vuota, e solo allora ci sposta sopra il proprio peso.",
+	},
+	["mood.fire.muse.w10.004"] = {
+		"Qui il fuoco non è qualcosa che si accende. È il carattere stesso della terra, e non si è mai raffreddato del tutto.",
+		"Quello che ha bruciato questa terra non ha ancora finito. Il calore mi sale dagli stivali come un rancore covato.",
+		"Cenere dappertutto: nel cibo, nelle pieghe delle mani. Questa terra è un focolare che nessuno ha mai spazzato.",
+	},
+	["mood.fire.muse.w10.005"] = {
+		"Fibbie, anelli, qualunque cosa di metallo mi porti addosso è diventata rovente al tatto. Ho imparato quali smettere di toccare.",
+		"Dopo un po' non sento più l'odore di bruciato nell'aria, e questo mi preoccupa più dell'odore stesso.",
+	},
+	["mood.fire.subzone_enter.w10.001"] = {
+		"{subzone}. Il caldo non ha saputo che ho cambiato posto.",
+		"{subzone}. Nome nuovo, stesso forno.",
+		"{subzone}. Qualcuno si è preso la briga di dare un nome a un pezzo di roccia bruciata. Ammiro l'ottimismo.",
+	},
+	["mood.fire.subzone_enter.w10.002"] = {
+		"attraversa un velo di cenere tiepida, che si solleva a ogni passo, per entrare in {subzone}.",
+		"si pulisce la fuliggine dalle labbra arrivando in {subzone}, con il sapore del fumo in bocca.",
+		"mette piede in {subzone} e guarda a lungo il terreno spaccato prima di scegliere dove appoggiare i piedi.",
+	},
+	["mood.fire.subzone_enter.w10.003"] = {
+		"{subzone}. Guardate dove mettete i piedi. Parte di questa roccia non ha ancora deciso se essere solida.",
+		"{subzone}. Avanti. Qui il terreno scotta abbastanza da punire chi sta fermo.",
+	},
+	["mood.forest.landmark.w10.001"] = {
+		"{landmark}. Qualcuno si è fatto un po' di spazio fra gli alberi. Gentili, gli alberi, a permetterlo.",
+		"{landmark}. Un posto con un nome, e la foresta che preme vicina da ogni lato, come per curiosità.",
+	},
+	["mood.forest.muse.w10.001"] = {
+		"Tra le fronde c'è sempre qualcosa che si muove: un uccello, uno scoiattolo, un ramo che si assesta. La foresta non è mai ferma, solo silenziosa.",
+		"Gli alberi sono vicini lenti. Sopravvivranno a ogni lite fatta sotto di loro, e non prendono mai le parti di nessuno.",
+	},
+	["mood.forest.muse.w10.002"] = {
+		"si toglie un riccio di bardana dalla manica, poi un altro, poi rinuncia ai restanti.",
+		"si ferma per lasciar attraversare il sentiero a uno scarabeo, cosa che richiede più tempo del previsto.",
+	},
+	["mood.forest.subzone_enter.w10.001"] = {
+		"{subzone}. Felci fino al ginocchio e un odore di muschio e foglie vecchie. Si cammina bene, finché nelle felci nessuno ha niente da ridire.",
+		"{subzone}. Più dentro, tra i tronchi, dove il sentiero si riduce a un'ipotesi. Qui potrei perdermi volentieri, ed è il modo più pericoloso di perdersi.",
+	},
+	["mood.jungle.muse.w10.001"] = {
+		"Nella giungla niente resta morto a lungo. Un albero caduto è un banchetto alla pioggia successiva, e un giardino a quella dopo.",
+		"Da quando sono qui non ho più avuto un vestito asciutto. Ho smesso di sperarci: adesso li strizzo e intanto ascolto se arriva qualcosa con i denti.",
+	},
+	["mood.jungle.subzone_enter.w10.001"] = {
+		"si china sotto un groviglio pendente ed entra in {subzone}, i vestiti appiccicati addosso e ogni foglia intorno che gocciola.",
+		"si apre la strada in {subzone} attraverso un muro di vapore e di verde, e più avanti qualcosa di invisibile scappa via con fracasso.",
+		"si blocca entrando in {subzone}, mentre una lunga sagoma scivola giù da un ramo vicino e sparisce nel verde.",
+	},
+	["mood.plague.landmark.w10.001"] = {
+		"{landmark}. Lo segno sulla mappa con cura. In una terra così malata, sapere esattamente dove ti trovi è già una forma di difesa.",
+		"{landmark}. Un nome su cui orientarsi. Qui preferisco contare i nomi che le tombe.",
+	},
+	["mood.plague.muse.w10.001"] = {
+		"La malattia non si è fermata alle persone. È entrata nel suolo, nell'acqua, perfino nel legno. Qui non si è salvato niente, nemmeno la terra.",
+		"Qui tutto ha un odore vagamente dolce e sbagliato, come frutta dimenticata troppo a lungo in una stanza chiusa.",
+	},
+	["mood.plague.muse.w10.002"] = {
+		"Se si muove e non dovrebbe, colpiscilo. Se non si muove e dovrebbe, cammina più in fretta.",
+		"Dopo, lavatevi le mani. Due volte. Poi bruciate i guanti.",
+	},
+	["mood.plague.subzone_enter.w10.001"] = {
+		"entra in {subzone} con un panno premuto su naso e bocca, gli occhi che passano in rassegna ogni mucchio e ogni avvallamento.",
+		"rallenta arrivando in {subzone}, dove l'aria ristagna pesante e acida, e si volta a controllare che niente si sia messo a seguire i suoi passi.",
+	},
+	["mood.plains.subzone_enter.w10.001"] = {
+		"{subzone}. Vento in faccia e una strada senza fretta. Mi va bene.",
+		"{subzone}. Erba alta, vista lunga, cammino lungo. Li prendo tutti e tre.",
+	},
+	["mood.ruin.landmark.w10.001"] = {
+		"{landmark}. Un nome attaccato a vecchie pietre. Chi l'ha chiamato così per primo probabilmente non l'ha costruito.",
+		"{landmark}. Qui qualcuno ha fatto un posto con quello che restava. Le rovine sanno essere la seconda occasione di qualcuno.",
+	},
+	["mood.ruin.muse.w10.001"] = {
+		"Chi abitava qui ragionava in numeri più grandi dei miei: sale più larghe, scale più alte, ere più lunghe. Eppure è venuto giù tutto.",
+		"Le rovine sono oneste come le città non sanno essere. Qui niente finge di durare.",
+		"Continuo a trovare intagli consumati fino a sparire. Qualcuno voleva essere ricordato, e il tempo ha tenuto solo il contorno.",
+	},
+	["mood.ruin.muse.w10.002"] = {
+		"Quante pietre rotte per un posto solo. Qualcuno ha passato un secolo molto brutto.",
+		"Occhio ai muri. È da un pezzo che aspettano di cadere addosso a qualcuno.",
+	},
+	["mood.ruin.subzone_enter.w10.001"] = {
+		"entra in {subzone} passando per un arco crollato, chinandosi sotto una pietra che da secoli sta per cadere.",
+		"si apre un varco in {subzone} sul selciato spaccato, saggiando ogni lastra prima di fidarsi.",
+		"arriva in {subzone} e appoggia la mano su una colonna incrinata, come per controllare che stia ancora in piedi.",
+	},
+	["mood.snow.landmark.w10.001"] = {
+		"{landmark}. Ditemi che da qualche parte dentro c'è un fuoco. Mentite, se serve.",
+		"{landmark}. Un comignolo che fuma, adesso, sarebbe la vista più bella del mondo.",
+	},
+	["mood.snow.muse.w10.001"] = {
+		"Il freddo rende tutto semplice. Continua a muoverti, mangia, tieni le mani al riparo dal vento. Il resto conta poco.",
+		"La neve inghiotte i suoni. Tra un passo e l'altro sento il mio stesso cuore, e ne farei volentieri a meno.",
+		"La neve conserva ogni traccia: le mie, quelle di un lupo, quelle di qualcosa di più grosso. Qui sai sempre chi è passato, e mai bene quando.",
+	},
+	["mood.snow.subzone_enter.w10.001"] = {
+		"si apre la strada in {subzone} nella neve che scricchiola sotto i piedi, le spalle incassate contro il freddo.",
+		"raggiunge {subzone} e batte gli stivali contro una roccia per staccarne la neve pressata.",
+	},
+	["mood.swamp.landmark.w10.001"] = {
+		"raggiunge {landmark} e pesta con gratitudine un terreno che non cede sotto i piedi.",
+		"arriva sguazzando a {landmark}, lasciandosi dietro una scia di fango.",
+	},
+	["mood.swamp.muse.w10.001"] = {
+		"In una palude impari a leggere il colore dell'acqua. Marrone è fango, verde è marcio, nero è profondo, e limpido è una bugia.",
+		"Ogni tronco potrebbe essere un tronco. Li tratto tutti come se non lo fossero, e finora ho conservato tutte le dita dei piedi.",
+	},
+	["mood.swamp.subzone_enter.w10.001"] = {
+		"{subzone}. Se affondo, almeno saprò dov'è il punto profondo.",
+		"{subzone}. Bagnato, più bagnato, e questa roba qui, qualunque cosa sia.",
+	},
+	["time.dawn.muse.w10.001"] = {
+		"L'alba. Il buio cede terreno un poco alla volta, come un esercito che sa di aver perso.",
+		"Prima luce, grigia e sottile, e già sta vincendo. Ogni giorno comincia con una piccola vittoria che nessuno festeggia.",
+		"All'alba tornano per primi i contorni delle cose: un tetto, un albero, una mano alzata davanti agli occhi.",
+	},
+	["time.dawn.muse.w10.002"] = {
+		"In piedi con la prima luce, cioè troppo presto per chiunque non sia un gallo o un soldato.",
+		"L'alba. Il mio corpo ha delle opinioni in proposito, e nessuna è educata.",
+		"Le prime ore hanno un freddo tutto loro. Ti entra nelle giunture e ci si accomoda, soddisfatto.",
+	},
+	["time.dawn.muse.w10.003"] = {
+		"guarda la prima luce strisciare sulla terra, respirando piano, come per non disturbarla.",
+		"resta immobile mentre sale l'alba, e lascia che il grigio intorno diventi colore.",
+		"si stira nella luce del primo mattino, una giuntura alla volta, e strizza gli occhi verso il giorno che comincia.",
+	},
+	["time.dawn.muse.w10.004"] = {
+		"Arriva la luce. Meglio partire prima che la giornata si faccia venire delle idee.",
+		"Si parte presto. La strada non è mai così vuota come adesso.",
+		"L'alba. Bene. Per un'oretta, tutto è possibile.",
+	},
+	["time.dawn.subzone_enter.w10.001"] = {
+		"{subzone}, che si sta appena svegliando. La prima luce ci arriva prima di chiunque altro.",
+		"{subzone} all'alba. Qualunque cosa la giornata abbia in serbo per questo posto, non è ancora cominciata.",
+		"{subzone}. Luce grigia, aria fredda, e tutto che deve ancora decidere cosa essere oggi.",
+	},
+	["time.dawn.subzone_enter.w10.002"] = {
+		"entra in {subzone} con la prima luce, e i passi suonano forti nella quiete del primo mattino.",
+		"raggiunge {subzone} mentre spunta l'alba, e si ferma a lasciare che il posto si svegli intorno a sé.",
+	},
+	["time.day.landmark.w10.001"] = {
+		"{landmark}, ben visibile nella luce del giorno. A quest'ora un posto somiglia più che mai a se stesso.",
+		"{landmark}. La luce del giorno mi lascia giudicare il posto per quello che è, senza che il buio ci metta del suo.",
+	},
+	["time.day.landmark.w10.002"] = {
+		"si ferma davanti a {landmark} e se lo studia alla luce del giorno, senza fretta, come chi controlla un cavallo prima di comprarlo.",
+		"osserva {landmark} nella luce piena del giorno, notando cosa è stato riparato e cosa no.",
+	},
+	["time.day.muse.w10.001"] = {
+		"Alla luce del giorno una strada è solo una strada: tanti passi, tante colline, nessun inganno. La prendo in parola.",
+		"Di giorno le distanze sono oneste. Quella cresta è lontana esattamente quanto sembra, cioè troppo, ma almeno non mente.",
+		"Le ore di luce servono a macinare strada. I pensieri possono aspettare il buio: tanto ci tengono, ad aspettarlo.",
+	},
+	["time.day.muse.w10.002"] = {
+		"Pieno orario di lavoro. Un fornaio, in qualunque città, ha già finito e se ne vanta.",
+		"Mezza giornata andata e niente da far cantare a un bardo. Meglio. I bardi fanno sembrare tutto faticoso.",
+		"C'è ancora tanta luce. È quello che si dice un attimo prima di perdersi.",
+	},
+	["time.day.muse.w10.003"] = {
+		"Il giorno è di tutti gli altri: le loro commissioni, i loro mestieri, le loro liti sul prezzo della corda. Io ci passo in mezzo e basta.",
+		"Di giorno il mondo è troppo indaffarato per accorgersi di un viandante in più. C'è una specie di riposo, in questo.",
+		"Le ore di luce non mi chiedono niente di personale. È il buio che vuole parlare.",
+	},
+	["time.day.muse.w10.004"] = {
+		"Giornata lunga, e non ha ancora finito con me. La luce durerà più della mia pazienza, come al solito.",
+		"In mezzo a ogni giornata c'è un tratto in cui il lavoro smette di sembrare una scelta e diventa come il tempo che fa. Lo si attraversa e basta.",
+		"Mezza giornata alle spalle. Le mani lo sanno prima che il resto di me lo ammetta.",
+	},
+	["time.day.muse.w10.005"] = {
+		"Con questa luce vedo ogni piega del terreno: dove il sentiero scende, dove deve correre un ruscello, dove qualcosa potrebbe stare in agguato.",
+		"Si vede bene. Mi prendo il tempo di leggere il terreno come fanno i battitori, finché la luce è disposta a collaborare.",
+		"Di giorno, qui fuori, tutto ha i contorni netti. Perfino gli alberi in lontananza sembrano lì da contare, uno per uno.",
+	},
+	["time.day.muse.w10.006"] = {
+		"si ferma a scrutare la terra davanti finché la luce è buona, e segna con lo sguardo i sentieri che valgono la pena.",
+		"approfitta della luce del giorno per controllare cinghie e fibbie una per una, senza fretta.",
+		"si ferma allo scoperto e si gira piano, come per fissarsi in mente la forma del paese prima che la luce cambi.",
+	},
+	["time.day.muse.w10.007"] = {
+		"La luce del giorno mostra tutto, compreso quanto fango ho raccolto da colazione a ora. Certe cose stanno meglio al buio.",
+		"Con una buona luce si vede tutta la fatica del viaggio che ho addosso. Niente da nascondere, finché non accendono le lanterne.",
+		"Alla luce del giorno ogni macchia e ogni toppa di un viandante è in mostra. Il buio è più clemente con il guardaroba.",
+	},
+	["time.day.muse.w10.008"] = {
+		"Qualunque cosa vegli sul mondo, la Luce, gli spiriti o qualcosa senza nome, di giorno sembra più paziente.",
+		"Ho sentito una dozzina di popoli ringraziare per il giorno in una dozzina di lingue. Nessuno ringrazia il buio allo stesso modo.",
+		"Il giorno non promette niente. Si limita a presentarsi, il che vale più di molte promesse che ho sentito.",
+	},
+	["time.day.muse.w10.009"] = {
+		"La luce è buona. Nessun motivo per starsene seduti. Andiamo.",
+		"C'è ancora un bel pezzo di giornata, e tanto da farci. Muoviamoci.",
+		"La luce del giorno è per lavorare. Le lamentele aspettano il fuoco.",
+	},
+	["time.day.muse.w10.010"] = {
+		"La gente pensa che il giorno sia sicuro. Non lo è. Di giorno vedi arrivare il pericolo, e il pericolo vede te.",
+		"La luce non rende più gentili le terre selvagge. Toglie solo la scusa di non aver visto.",
+		"Nessuno si nasconde meglio di chi non ne ha bisogno. Molti cacciatori lavorano di giorno.",
+	},
+	["time.day.muse.w10.011"] = {
+		"Più o meno a quest'ora una persona sensata si fermerebbe a mangiare. Vediamo se lo sono.",
+		"Il mio stomaco batte le ore del giorno meglio di qualsiasi campanile, e dice che è ora.",
+		"La giornata è nel pieno del da fare, e il mio stomaco pure. Uno dei due dovrà cedere per primo.",
+	},
+	["time.day.muse.w10.012"] = {
+		"si guarda intorno nella luce piena del giorno, come per controllare che il mondo sia ancora dove l'aveva lasciato.",
+		"strizza gli occhi nella luce del giorno e scioglie le spalle, {g:pronto|pronta} a quello che porteranno le ore.",
+	},
+	["time.day.muse.w10.013"] = {
+		"Sulla strada i giorni si confondono. Mi accorgo che uno se n'è andato solo quando la luce comincia ad andarsene con lui.",
+		"Ogni giorno di luce è uno in più di quanti ne abbiano i morti. Cerco di spenderlo come se contasse.",
+		"Quanti giorni come questo restano a ciascuno? Nessuno li conta, finché il conto non si fa corto.",
+	},
+	["time.day.muse.w10.014"] = {
+		"Bell'ora per viaggiare. Non che sappia riconoscerne una brutta: viaggio anche in quelle.",
+		"È giorno, sono {g:sveglio|sveglia} e non ho nessun posto urgente dove andare. Qualcosa non va di sicuro.",
+	},
+	["time.day.muse.w10.015"] = {
+		"Alla luce del giorno i vecchi muri e le pietre lungo la strada sembrano solo vecchi. Serve il buio perché sembrino ricordare.",
+		"Di giorno le rovine lungo la strada sono solo pietre nell'erba. Le loro storie fanno altri orari.",
+	},
+	["time.day.subzone_enter.w10.001"] = {
+		"{subzone}. Con questa luce lo guardo come si deve: chi ci vive, cosa ci tiene, dove portano i sentieri.",
+		"{subzone}: di giorno si legge come una mappa. Bene. Mi piacciono i posti che scoprono le carte.",
+		"{subzone}. È giorno, e ogni angolo è in vista. Gli angoli me li ricorderò.",
+	},
+	["time.day.subzone_enter.w10.002"] = {
+		"entra in {subzone} in piena luce, e lo sguardo corre da un capo all'altro del luogo.",
+		"entra in {subzone} senza fretta, lasciando che la luce del giorno {g:gli|le} mostri com'è fatto il posto.",
+		"raggiunge {subzone} con il giorno ancora alto, e abbraccia il posto con un'occhiata.",
+	},
+	["time.day.subzone_enter.w10.003"] = {
+		"{subzone}, di giorno. Vediamo com'è prima che qualcuno mi racconti com'è.",
+		"{subzone}. Buona ora per arrivare ovunque: botteghe aperte, gente sveglia, tutti un po' meno sospettosi.",
+		"Ah, {subzone}. E pure con una bella luce. Piccole grazie.",
+	},
+	["time.day.subzone_enter.w10.004"] = {
+		"{subzone}. La luce del giorno è generosa con i luoghi: mostra il lavoro che la gente ci ha messo, e nasconde ciò che ha perso.",
+		"{subzone} alla luce del giorno. Qualunque cosa sia successa qui, il giorno ha deciso di non parlarne.",
+	},
+	["time.day.subzone_enter.w10.005"] = {
+		"{subzone}. C'è ancora luce per passare e andare oltre prima di aver bisogno di un tetto. Non perdiamo tempo.",
+		"{subzone}. Resta un bel pezzo di giornata: posso guardarmi intorno per bene e ripartire comunque per tempo.",
+	},
+	["time.dusk.muse.w10.001"] = {
+		"Imbrunire. La luce non cala, si assottiglia, finché mi accorgo che strizzo gli occhi da un pezzo.",
+		"Il giorno se ne va, e con calma, come un ospite che non sa se qualcuno voglia che resti.",
+		"L'ora di mezzo: troppo buio per leggere, troppo chiaro per le lanterne. Ho sempre l'impressione che dovrei già essere altrove.",
+	},
+	["time.dusk.muse.w10.002"] = {
+		"La luce se ne va. È ora di pensare a dove sarò quando sarà sparita.",
+		"Il crepuscolo è una domanda: quanto manca al prossimo tetto? Vorrei una risposta prima che me la dia il buio.",
+		"Giornata finita. Quello che non ho fatto lo farò domani, se la notte lo permette.",
+	},
+	["time.dusk.muse.w10.003"] = {
+		"si ferma mentre la luce defluisce dalla terra, e guarda i luoghi lontani spegnersi per primi.",
+		"resta un poco nella luce che manca, finché i contorni del mondo cominciano a sfumare.",
+		"si volta verso la strada da cui è {g:venuto|venuta}, dove il crepuscolo se l'è già mangiata.",
+	},
+	["time.dusk.muse.w10.004"] = {
+		"Ecco finita la giornata. Qualcuno, chissà dove, sta accendendo un fuoco, e mi piacerebbe starci vicino.",
+		"Si fa buio. L'ora in cui la gente sensata rientra e noialtri continuiamo a camminare.",
+		"Sta venendo sera. Buona ora per un pasto caldo e una storia brutta.",
+	},
+	["time.dusk.subzone_enter.w10.001"] = {
+		"{subzone}, nell'ultima luce. Meglio guardare bene adesso: tra poco non ci sarà più niente da vedere.",
+		"{subzone} al crepuscolo. Il posto sta ripiegando la sua giornata, e io arrivo in ritardo.",
+		"{subzone}. Lanterne o no, quando arriverà il buio sarò qui.",
+	},
+	["time.dusk.subzone_enter.w10.002"] = {
+		"entra in {subzone} mentre il crepuscolo si addensa, gli occhi già in cerca di una luce.",
+		"raggiunge {subzone} quando il giorno è quasi finito, e le forme intorno si fanno morbide e grigie.",
+	},
+	["time.night.landmark.w10.001"] = {
+		"{landmark}, o la sua sagoma scura. Domani tornerà un posto; per ora è un profilo con le sue opinioni.",
+		"{landmark}. Di notte anche un luogo conosciuto sembra preso in prestito, come se i padroni potessero tornare da un momento all'altro.",
+		"{landmark} a quest'ora. Se c'è una luce accesa qui intorno, vado verso quella.",
+	},
+	["time.night.muse.w10.001"] = {
+		"Di notte mi fido più delle orecchie che degli occhi. Se lo sono guadagnato: gli occhi continuano a inventare.",
+		"Il buio in fondo non nasconde granché. Mi costringe solo a fare la fatica di indovinare.",
+		"Notte, e ogni suono arriva senza una faccia. Gliela metto io, quasi sempre sbagliata.",
+	},
+	["time.night.muse.w10.002"] = {
+		"Il sonno continua a chiedere, e io continuo a rispondere più tardi. Una di queste notti smetterà di chiedere.",
+		"A quest'ora ogni creatura sensata dorme. Io non ho mai preteso di esserlo.",
+		"Il mio corpo ha votato per il letto ore fa. Il resto di me sta ancora contando le schede.",
+	},
+	["time.night.muse.w10.003"] = {
+		"In ogni città qualche finestra resta accesa tutta la notte. Dietro ognuna c'è qualcuno che aspetta, o che non riesce a smettere di pensare.",
+		"La notte è lunga per chi ha qualcuno che manca. L'ho sentito dire a ogni focolare, dalle montagne alla costa.",
+		"Di notte gli assenti vengono a sederti accanto. Non dicono granché. Non ne hanno bisogno.",
+	},
+	["time.night.muse.w10.004"] = {
+		"Buio come dentro uno stivale. Occhio a dove metti i piedi, e anche ai miei.",
+		"Non vedo niente. Benissimo. Spero che non ci veda niente nemmeno il resto.",
+		"Che silenzio, qui fuori. Troppo silenzio, come dicono i cattivi narratori. E di solito hanno ragione, proprio i cattivi.",
+	},
+	["time.night.muse.w10.005"] = {
+		"resta immobile al buio per un po', lasciando che gli occhi trovino quel poco che la notte concede.",
+		"rallenta il passo nel buio e posa ogni piede con cura, come se la terra stessa dormisse.",
+		"si alza il bavero contro il freddo della notte e prosegue senza fare rumore, come l'ora stessa.",
+	},
+	["time.night.muse.w10.006"] = {
+		"A quest'ora c'è sempre qualcuno di guardia: su un muro, a un cancello, accanto a un fuoco. Ci penso, e il buio mi sembra meno vuoto.",
+		"Il turno di notte è il lavoro più solitario che esista. Ogni guardia che ho conosciuto dice così, e nessuna lo cambierebbe.",
+		"Di notte, chi resta sveglio risponde di tutti gli altri. È un peso grosso da portare in silenzio.",
+	},
+	["time.night.muse.w10.007"] = {
+		"A quest'ora il freddo sale dalla terra. Trova prima le ginocchia, poi la pazienza.",
+		"Aria di notte, tagliente abbastanza da svegliarmi meglio di qualsiasi intruglio. Forse più tardi ne sarò {g:grato|grata}.",
+		"Di notte il calore se ne va dalle cose: le pietre, l'acqua, il ferro di una fibbia. Solo i vivi si tengono stretto il loro.",
+	},
+	["time.night.muse.w10.008"] = {
+		"La notte è più vecchia di qualsiasi regno. Ogni popolo vissuto ha dovuto farci pace, in un modo o nell'altro.",
+		"Tutto ciò che il mondo ha dimenticato di giorno torna di notte, a vedere se qualcuno ascolta ancora.",
+		"La notte appartiene a cose che c'erano prima di noi. Noi la prendiamo in prestito, e pure male.",
+	},
+	["time.night.muse.w10.009"] = {
+		"Piano. Là fuori c'è solo il buio, e il buio non ha mai fatto male a nessuno. È quello che c'è dentro.",
+		"Ore silenziose. Le migliori per pensare, le peggiori per camminare.",
+		"Poco da vedere. Molto da sentire. Mi accontento.",
+	},
+	["time.night.muse.w10.010"] = {
+		"Cielo limpido e più stelle di quante se ne possano contare. Ci provo lo stesso, perdo il segno e ricomincio.",
+		"Stanotte ci sono tutte, le stelle. Qualunque altra cosa vada storta, loro agli appuntamenti non mancano.",
+		"Sotto tutte queste stelle le mie preoccupazioni sembrano quello che sono: piccole, e quasi tutte mie.",
+	},
+	["time.night.subzone_enter.w10.001"] = {
+		"{subzone}, all'ora in cui ogni sagoma potrebbe essere qualcosa. Vado piano.",
+		"{subzone} al buio. Com'è fatto lo scoprirò domani; stanotte scoprirò che rumori fa.",
+		"{subzone}. Di notte conosco un posto prima con i piedi e con le orecchie, e non mi fido di nessuno dei due.",
+	},
+	["time.night.subzone_enter.w10.002"] = {
+		"entra in {subzone} in silenzio, una figura di cui la notte quasi non si accorge.",
+		"scivola in {subzone} approfittando del buio, posando ogni passo con cura.",
+		"raggiunge {subzone} nel cuore della notte, e lascia che la quiete si richiuda alle sue spalle.",
+	},
+	["time.night.subzone_enter.w10.003"] = {
+		"{subzone}. Un bel posto, immagino. Saprò dire qualcosa quando farà giorno.",
+		"{subzone}, a quest'ora. Chi ci vive dorme, e fa bene.",
+	},
+	["time.night.subzone_enter.w10.004"] = {
+		"{subzone} di notte. I luoghi sono più sinceri al buio: smettono di fingersi indaffarati.",
+		"{subzone}. Senza la luce del giorno addosso, un posto mostra le ossa. Questo ha ossa interessanti.",
+	},
+	["weather.clear.landmark.w10.001"] = {
+		"{landmark}, ben in vista sotto un cielo aperto. Non ha niente di nascosto; lo leggo come un avviso inchiodato a una porta.",
+		"{landmark}. Con un'aria così limpida ne distinguo ogni dettaglio già dal sentiero.",
+	},
+	["weather.clear.landmark.w10.002"] = {
+		"si ferma a osservare {landmark}, ogni suo contorno netto nell'aria pulita.",
+		"esamina {landmark} senza niente nell'aria ad addolcirlo, e annuisce come se avesse superato un'ispezione tutta sua.",
+	},
+	["weather.clear.muse.w10.001"] = {
+		"Un'aria così pulita porta i suoni lontano. Un martello sull'incudine, un cane, due che mercanteggiano sul prezzo: sento gli affari di mezza campagna.",
+		"Con il cielo sgombro i suoni viaggiano. Qualcuno, lontano, sta spaccando legna, e potrei contare i colpi.",
+		"L'aria tersa avvicina la distanza all'orecchio. Un grido, una campana, una ruota di carro che stride: niente è vicino, tutto si sente chiaro.",
+	},
+	["weather.clear.muse.w10.002"] = {
+		"Neanche una nuvola. Se adesso mi perdo, posso prendermela solo con i miei piedi.",
+		"Stivali asciutti, zaino asciutto, tutto asciutto. Quasi non so di cosa lamentarmi.",
+		"Bel tempo. Il che vuol dire che anche tutti i briganti delle strade sono fuori a goderselo.",
+	},
+	["weather.clear.muse.w10.003"] = {
+		"approfitta del tempo asciutto per stendere una coperta umida su una roccia e lasciarla all'aria.",
+		"controlla cinghie e fibbie finché il tempo è clemente, come fanno i viaggiatori accorti quando non gocciola niente.",
+		"si ferma a togliersi un sassolino dallo stivale, e indugia un po' più del necessario, visto che il terreno è abbastanza asciutto da sedercisi.",
+	},
+	["weather.clear.muse.w10.004"] = {
+		"Nemmeno una nuvola a cui dare la colpa del mio umore. Alla pioggia avrei potuto darla. Un cielo vuoto mi lascia {g:solo|sola} con lui.",
+		"Il brutto tempo fa da alibi a un cuore cupo. Sotto un cielo così pulito, la malinconia è soltanto mia.",
+	},
+	["weather.clear.muse.w10.005"] = {
+		"Nessuna pioggia ad ammorbidire il terreno, e così la strada conserva ogni segno: impronte di stivali, di zoccoli, il lungo graffio di un carro.",
+		"Dal cielo non cade niente che cancelli una pista. La strada ricorda chi è passato di recente meglio di qualunque guardia alla porta.",
+		"Con un tempo così asciutto le tracce restano. Chi mi seguisse leggerebbe il mio cammino come un cartello; meglio che nessuno mi segua.",
+	},
+	["weather.clear.muse.w10.006"] = {
+		"Con un tempo così, chiunque stia in alto mi vede arrivare da una lega. Il cielo sereno vale per tutti e due.",
+		"Aria pulita e vista lunga. Buona per scorgere i guai, e altrettanto buona perché i guai scorgano me.",
+		"Nell'aria non c'è niente dietro cui nascondersi. Tengo il terreno basso e i margini delle cose, per abitudine.",
+	},
+	["weather.clear.muse.w10.007"] = {
+		"Cielo vuoto, strada asciutta. Qualcuno se lo goda al posto mio; io lavoro.",
+		"Tempo splendido. Lo ammirerò come si deve quando avrò finito il lavoro.",
+	},
+	["weather.clear.muse.w10.008"] = {
+		"Niente pioggia da cui ripararsi, e allora escono tutti: uccelli in alto, bestie allo scoperto. Il bel tempo svuota ogni tana.",
+		"Senza intemperie da cui ripararsi, la natura selvatica si lascia vedere. Perfino gli avvoltoi volteggiano più in alto.",
+		"Aria asciutta, e le bestie del posto si muovono libere, senza fretta. Riconoscono un tempo clemente meglio di qualunque almanacco.",
+	},
+	["weather.clear.muse.w10.009"] = {
+		"Niente che mi cada addosso, solo la strada da combattere. Eppure le mie gambe la trovano lunga lo stesso.",
+		"Tempo perfetto per camminare, direbbero. I miei piedi vorrebbero scambiare due parole con chi lo dice.",
+		"Il bel tempo toglie ogni scusa per fermarsi, e il mio corpo continua a inventarne di nuove.",
+	},
+	["weather.clear.muse.w10.010"] = {
+		"Col tempo sereno la terra mostra tutto il suo disegno: dove scorre l'acqua, dove si incrociano i sentieri, dove ci si accamperebbe in caso di bisogno. La leggo come una mappa fresca d'inchiostro.",
+		"L'aria limpida fa del paese una lezione. Qui il torrente piega, là il sentiero sale, laggiù il terreno si fa molle. Imparo più in un'ora così che in una settimana di nebbia.",
+		"In un'aria così niente confonde i contorni. Segno a mente i valichi e l'acqua, nel caso il tempo cambi e debba ritrovarli alla cieca.",
+	},
+	["weather.clear.muse.w10.011"] = {
+		"si ferma su un'altura a guardare il paese aperto in ogni direzione, e si prende un momento per scegliere il prossimo tratto di strada.",
+		"si volta piano tutt'intorno, abbracciando con lo sguardo la campagna sgombra da ogni lato prima di scegliere una direzione.",
+		"prosegue con passo lungo e tranquillo, sotto un cielo aperto che non chiede niente.",
+	},
+	["weather.clear.subzone_enter.w10.001"] = {
+		"{subzone}. Terreno asciutto sotto i piedi e niente sopra la testa. Lo prendo come un buon inizio.",
+		"{subzone}, e un'aria così pulita che se ne sente il sapore. Comunque sia il posto, lo incontrerò con gli stivali asciutti.",
+		"Dentro {subzone} sotto un cielo vuoto. Qui non si nasconde nessuno, {g:me compreso|me compresa}.",
+	},
+	["weather.clear.subzone_enter.w10.002"] = {
+		"entra in {subzone} con l'aria ben sveglia di chi vede ogni sentiero e ogni avvallamento davanti a sé.",
+		"arriva in {subzone} con i piedi asciutti e lo sguardo limpido, e prende le misure del posto senza fretta.",
+		"entra in {subzone} lanciando un'occhiata al cielo aperto, come per assicurarsi che abbia intenzione di restare così.",
+	},
+	["weather.clear.subzone_enter.w10.003"] = {
+		"{subzone}. Bel tempo per dare un'occhiata in giro.",
+		"{subzone}. Aria limpida. Vediamo un po' che posto sei.",
+		"{subzone}. Asciutto e sereno. Bene: non mi andava di arrivare {g:fradicio|fradicia}.",
+	},
+	["weather.fog.muse.w10.001"] = {
+		"Nella nebbia i suoni arrivano dai posti sbagliati. Un uccello alla mia sinistra si rivela alla mia destra, e vicino.",
+		"La nebbia piega ogni rumore. Un passo dietro di me, una voce davanti; mi fermo, e si fermano anche loro.",
+		"La nebbia rende bugiardo l'orecchio. L'acqua che giurerei scorrere accanto a me è a un tiro di sasso.",
+	},
+	["weather.fog.muse.w10.002"] = {
+		"La mano la vedo. Quasi tutta. Dovrà bastare.",
+		"Nebbia. Passo lento, voce alta, e speriamo che là fuori facciano tutti lo stesso.",
+	},
+	["weather.fog.subzone_enter.w10.001"] = {
+		"{subzone}. O almeno così dicono; ne vedo una decina di passi.",
+		"{subzone}, un nome nella nebbia. Il resto del posto se ne sta per conto suo.",
+		"{subzone}. La nebbia tiene il posto per sé e mi presta solo i prossimi passi.",
+	},
+	["weather.rain.landmark.w10.001"] = {
+		"raggiunge {landmark} con la pioggia che gocciola dal naso, e cerca prima di tutto l'angolo più asciutto.",
+		"si ferma davanti a {landmark} sotto la pioggia, e tutto il posto luccica come appena lavato.",
+	},
+	["weather.rain.muse.w10.001"] = {
+		"La pioggia entra prima nello zaino. Poi nel pane, poi nelle bende, poi in quella cosa che più volevo tenere asciutta.",
+		"Tutto quello che porto sta imparando a essere bagnato. Le cinghie si sono fatte scure e rigide, e la tela cerata si è arresa da un pezzo.",
+		"La pioggia trova le cuciture. Ogni punto del mio equipaggiamento è una porticina, e lei bussa a tutte.",
+	},
+	["weather.rain.muse.w10.002"] = {
+		"Qualcuno è mai riuscito ad accendere un fuoco con questa pioggia? Chiedo per un amico. L'amico sono io.",
+		"La buona notizia: niente polvere. La cattiva: tutto il resto.",
+		"Ho smesso di cercare di restare {g:asciutto|asciutta}. Adesso cerco solo di restare di buonumore, e va anche peggio.",
+	},
+	["weather.rain.muse.w10.003"] = {
+		"La pioggia copre ogni rumore. Buon per chiunque voglia avvicinarsi di soppiatto; buon per me, se sono {g:più svelto|più svelta}.",
+		"Con questa pioggia non sento i miei passi. E nemmeno chi sta là fuori li sente. È un'arma a doppio taglio, e bagnata su entrambi i lati.",
+		"Il fruscio della pioggia si mangia i rumori piccoli: un ramoscello, un respiro, una spada che esce dal fodero. Guardo il doppio per compensare.",
+	},
+	["weather.rain.muse.w10.004"] = {
+		"aggira una pozzanghera e mette il piede dritto in un'altra nascosta sotto il fango, e rinuncia agli stivali asciutti con un sospiro.",
+		"arranca lungo una strada ridotta a una minestra marrone, e ogni passo si stacca con un risucchio bagnato.",
+		"si ferma a vuotare uno stivale dall'acqua, considera la strada che resta e se lo rimette senza il minimo entusiasmo.",
+	},
+	["weather.rain.muse.w10.005"] = {
+		"La pioggia risveglia l'odore di ogni cosa: terra bagnata, foglie schiacciate, legno vecchio, il mio stesso mantello. Per il naso, il mondo alza la voce.",
+		"Sotto la pioggia il terreno manda un odore come di qualcosa appena sfornato. Fango, d'accordo, ma fango onesto.",
+		"Pietra bagnata, corteccia bagnata, lana bagnata. La pioggia mi ricorda che sotto tutta la sua polvere il mondo ha un odore.",
+	},
+	["weather.rain.subzone_enter.w10.001"] = {
+		"{subzone}, dietro un velo di pioggia. Com'è da asciutto lo scoprirò un'altra volta.",
+		"{subzone}. L'acqua cola da ogni bordo. Sotto la pioggia qualunque posto ha l'aria un po' mogia.",
+		"{subzone}. La pioggia è arrivata prima di me e si è già messa comoda.",
+	},
+	["weather.rain.subzone_enter.w10.002"] = {
+		"entra in {subzone} sguazzando, con l'acqua che cola dal cappuccio, e cerca con gli occhi qualcosa che possa passare per un riparo.",
+		"arriva in {subzone} a testa bassa, leggendo il terreno in cerca di pozzanghere invece che il posto in cerca di cose da vedere.",
+		"entra in {subzone} con passo pesante e inzuppato, mentre la pioggia sfuma ogni contorno.",
+	},
+	["weather.sand.muse.w10.001"] = {
+		"La sabbia entra dappertutto: nelle cuciture, nella borraccia, nelle pieghe delle palpebre. Perfino battere le ciglia scricchiola.",
+		"La sabbia sibila sul terreno come un sussurro con i denti. Cammino con gli occhi socchiusi e la bocca chiusa del tutto.",
+	},
+	["weather.snow.muse.w10.001"] = {
+		"La neve fresca tiene ogni traccia. Leggo chi è passato prima di me, e chi viene dietro legge me con la stessa facilità.",
+		"Neve alla caviglia, e sale. Ogni passo è una piccola trattativa, e la neve ne vince quasi tutte.",
+	},
+	["weather.storm.muse.w10.001"] = {
+		"Il lampo mostra tutta la terra in un colpo, ogni sasso e ogni ramo, e poi se la riprende. Cammino a forza di quegli sprazzi.",
+		"In campo aperto, durante un temporale, chiunque è la cosa più alta nei paraggi. Tengo la testa bassa e continuo a camminare.",
+		"Il lampo, poi la conta, poi il tuono. La conta si accorcia, e la mia pazienza pure.",
+	},
+	["weather.storm.muse.w10.002"] = {
+		"Che baccano lassù, eh? Qualcuno sta perdendo una lite con il cielo.",
+		"Lontano dai crinali. Il cielo sta scegliendo i bersagli.",
+	},
+	["weather.storm.muse.w10.003"] = {
+		"sussulta a uno schianto di tuono, poi finge con grande impegno che fosse solo per sgranchirsi.",
+		"si curva contro il vento mentre la tempesta batte la terra, il mantello che schiocca come una bandiera.",
+	},
+	["weather.storm.subzone_enter.w10.001"] = {
+		"{subzone}, a lampi. Non è il posto al suo meglio, e nemmeno io al mio.",
+		"{subzone}, tra un tuono e l'altro. Guarderò meglio quando il cielo smetterà di urlare.",
+	},
 }, "base_exploration")

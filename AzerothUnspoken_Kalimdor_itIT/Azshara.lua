@@ -288,4 +288,87 @@ AU:RegisterRegionalTexts("azshara", "itIT", "kalimdor_azshara", [==[
 		"si stringe nelle spalle sotto la pioggia che arriva dal mare, tamburellando sulle foglie rosse e scurendo le vecchie pietre bianche.",
 		"guarda la pioggia scendere su Azshara, una tenda grigia tirata piano sulle scogliere e sulla costa sommersa.",
 	},
+	["azs.a.attack.w10.001"] = {
+		"Affonda come la vecchia città!",
+		"Giù tra le foglie!",
+	},
+	["azs.a.battle.w10.001"] = {
+		"Terra vecchia, combattimento nuovo. Sbrighiamoci.",
+		"Questa costa ha seppellito un impero. Per me può aspettare.",
+	},
+	["azs.a.battle.w10.002"] = {
+		"scalcia via le foglie rosse per avere un appoggio e affronta l'attacco.",
+		"arretra contro una colonna spezzata, i boschi rossi che ondeggiano in alto, e si prepara alla carica.",
+	},
+	["azs.a.battle.w10.003"] = {
+		"Torna ai tuoi fuochi demoniaci, satiro!",
+		"Sento puzza di zolfo da qui. Avanti, allora.",
+	},
+	["azs.a.journey.w10.001"] = {
+		"A terra tra gli alberi rossi. L'ippogrifo chiude le ali e il silenzio di Azshara si posa su tutto in un colpo.",
+		"Atterraggio. Il fischio del vento si ferma e al suo posto arriva il silenzio di questa terra, così profondo che si sente il mare.",
+	},
+	["azs.a.landmark.w10.001"] = {
+		"{landmark}. Gradini degli Highborne che scendono nell'acqua, e naga che li risalgono come se ci avessero sempre abitato.",
+		"Eldarath. Marmo che inverdisce sul filo dell'acqua, e creature squamose tra i pilastri. Il mare ha restituito qualcosa, e non per gentilezza.",
+	},
+	["azs.a.lowhp.w10.001"] = {
+		"Talrendis è lontana. Non arriva nessuno. In piedi.",
+		"Troppo lontano da Talrendis per cadere qui. Non verrebbe nessuno.",
+	},
+	["azs.a.muse.w10.001"] = {
+		"L'Orda tiene un campo a Valormok, oltre le colline. Due piccoli accampamenti in una terra enorme e vuota, e un silenzio molto attento in mezzo.",
+		"Valormok è oltre le colline, l'Orda nei boschi rossi proprio come noi. Nessuna delle due parti ha i numeri per cominciare qualcosa. Lo sanno tutte e due.",
+		"Oltre le colline, a Valormok, l'Orda fa esattamente quello che facciamo noi: tiene un pezzetto di Azshara e sorveglia gli alberi.",
+	},
+	["azs.a.muse.w10.002"] = {
+		"Accampamenti di satiri sulle colline, e ogni tanto nel vento un suono come di zufolo che nessuno con un po' di giudizio va a cercare.",
+		"Ogni tanto il vento porta giù dalle colline un fischiettare sottile, dagli accampamenti dei satiri. Ho deciso di non essere {g:curioso|curiosa}.",
+	},
+	["azs.a.muse.w10.003"] = {
+		"I naga strisciano fuori dalla risacca e si comportano come se le spiagge fossero loro. Se le vecchie storie sulla corte annegata sono vere, qualche diritto ce l'hanno.",
+		"Squame sulla riva, voci che sibilano dalle pozze di marea. I naga sono usciti dal mare dove sprofondò la città di Azshara, e non si comportano da ospiti.",
+	},
+	["azs.a.muse.w10.004"] = {
+		"Le Sentinelle passano accanto alle vecchie colonne degli Highborne senza rallentare e senza guardarle. Diecimila anni, e il rancore cammina ancora.",
+		"Nessuna Sentinella degna di un'occhiata le colonne degli Highborne. Sono passati diecimila anni, e la vecchia lite percorre ancora queste strade.",
+	},
+	["azs.a.muse.w10.005"] = {
+		"scosta le foglie rosse dal volto di una statua caduta, trova sotto una bocca fiera e fredda, e lascia ricadere le foglie.",
+		"si inginocchia accanto alla statua rovesciata di qualche signore Highborne, ne studia per un momento il volto scolpito, e lo lascia alle foglie.",
+	},
+	["azs.a.muse.w10.006"] = {
+		"Si vede che l'hanno costruito gli Highborne. Ogni rovina ha la vista sul mare.",
+		"Dite quello che volete della vecchia corte, ma sapevano dove mettere una terrazza. Ogni muro crollato qui guarda il mare.",
+	},
+	["azs.a.npc_meet.w10.001"] = {
+		"Un ippogrifo, tutto piume e pazienza. Portami in un posto dove ci sia più gente, per favore.",
+		"In un posto meno vuoto, se si può. All'ippogrifo la direzione non importa.",
+	},
+	["azs.a.quest_complete.w10.001"] = {
+		"accetta la ricompensa con un cenno e lancia un'occhiata alla strada percorsa, verso la lunga costa vuota.",
+		"prende quel che {g:gli|le} spetta e si scuote una foglia rossa dal colletto.",
+		"consegna la prova e lascia andare un lungo respiro, con i boschi rossi che frusciano alle spalle.",
+	},
+	["azs.a.quest_complete.w10.002"] = {
+		"Fatto. Talrendis Point diventa un po' più forte ogni volta che qualcuno torna vivo.",
+		"Finito, e la pelle è ancora mia. Qui fuori è già metà della paga.",
+	},
+	["azs.a.quest_progress.w10.001"] = {
+		"Non ho ancora finito. Il resto è là fuori tra le rovine, e le rovine non parlano.",
+		"Una parte di strada. Il resto è da qualche parte in una terra molto grande e molto vuota.",
+	},
+	["azs.a.subzone_enter.w10.001"] = {
+		"{subzone}. Il nome è più vecchio di chiunque lo usi. In Azshara, quasi tutti lo sono.",
+		"{subzone}. Qualcuno ha dato un nome a questa terra molto prima che l'Alleanza ci venisse a camminare.",
+	},
+	["azs.a.victory.w10.001"] = {
+		"Fatto. Ditelo ai gabbiani: erano gli unici a guardare.",
+		"Finito, e solo i gabbiani a vederlo.",
+	},
+	["azs.a.victory.w10.002"] = {
+		"Un altro corpo tra le pietre antiche. Questa terra li raccoglie da diecimila anni.",
+		"Cade tra le colonne, e le rovine lo accolgono come hanno accolto tutto il resto.",
+		"A terra, accanto ai pilastri spezzati. Azshara lo aggiunge a un conto molto lungo.",
+	},
 ]==])

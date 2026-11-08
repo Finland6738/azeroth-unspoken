@@ -332,4 +332,294 @@ AU:RegisterRegionalTexts("winterspring", "itIT", "kalimdor_winterspring", [==[
 		"strizza gli occhi mentre le nuvole si aprono su Winterspring e i campi di neve si stendono netti e puliti fino all'orizzonte.",
 		"guarda il cielo rasserenarsi sopra le cime, e il freddo farsi più tagliente insieme a lui, ogni crinale netto e bianco.",
 	},
+	["wsp.a.attack.w10.001"] = {
+		"Ecco, da parte dei Timbermaw!",
+		"Giù per il pendio, e continua a rotolare!",
+		"Fuori dal sentiero, e restaci!",
+	},
+	["wsp.a.battle.w10.001"] = {
+		"Neve sotto i piedi, tu davanti. Non sprechiamo il calore.",
+		"Verso Everlook non fai un altro passo. Non tu.",
+		"Avanti. Non ho attraversato mezza Kalimdor per congelare aspettando te.",
+	},
+	["wsp.a.battle.w10.002"] = {
+		"I Timbermaw ti mandano i loro saluti, Winterfall.",
+		"I tuoi fratelli nei tunnel ti piangono, furbolg. Io la chiudo più pulita di come farebbe l'acquavite.",
+	},
+	["wsp.a.battle.w10.003"] = {
+		"Uno shardtooth, tutto spalle e fame. Tienilo sbilanciato: un orso sul ghiaccio resta un orso.",
+		"Orso. Grosso. Lontano dall'abbraccio.",
+		"Shardtooth. Ha gli artigli più lunghi della mia pazienza.",
+	},
+	["wsp.a.battle.w10.004"] = {
+		"pianta i piedi nella neve battuta e affronta la carica, lo scricchiolio di ogni passo forte nell'aria gelata.",
+		"si acquatta dietro un cumulo per mezzo battito di cuore, poi si rialza combattendo fra spruzzi di neve fine.",
+		"si mette in guardia nella neve, il fiato che fuma.",
+	},
+	["wsp.a.journey.w10.001"] = {
+		"Neanche all'ippogrifo piace il freddo: sale in fretta, come se volesse mettere le nuvole fra noi e Winterspring.",
+		"Su e via, su ali piumate. Sotto, Winterspring si richiude come una lettera bianca.",
+	},
+	["wsp.a.landmark.w10.001"] = {
+		"{landmark}. Gli elfi della notte hanno costruito qui e se ne sono andati, e la neve si è presa ogni stanza che hanno lasciato vuota.",
+		"Starfall Village. Case kaldorei senza nessuno dentro. Cammino piano, come se qualcuno potesse ancora tornare e trovarmi sulla soglia.",
+	},
+	["wsp.a.lowhp.w10.001"] = {
+		"Non qui! I felini mi troverebbero prima di chiunque altro.",
+		"In piedi! Non ho fatto tutta questa strada verso nord per morire in un fosso.",
+	},
+	["wsp.a.lowhp.w10.002"] = {
+		"Le mani non si chiudono bene. Almeno il sangue è caldo, è già qualcosa. Ragiona.",
+		"Troppo freddo, troppa lentezza. Quassù ogni gesto costa doppio.",
+	},
+	["wsp.a.muse.w10.001"] = {
+		"Sotto tutto questo c'è una strada lastricata, ci giurerei. Ogni tanto una pietra piatta e chiara spunta dai cumuli, posata da mani kaldorei molto prima che Everlook avesse un solo tetto.",
+		"Un tempo gli elfi della notte tracciarono strade quassù, dritte e pazienti. I cumuli ora ne nascondono quasi tutto, ma i miei piedi continuano a trovarne i bordi.",
+		"Vecchie pietre di strada kaldorei, inclinate dal gelo, che indicano ancora la via verso luoghi dove non abita più nessuno.",
+	},
+	["wsp.a.muse.w10.002"] = {
+		"A Everlook può capitare di fare la fila dietro a un orco per comprare la stessa pagnotta. Nessuno dei due apre bocca. I buttafuori goblin guardano, e il pane è caldo.",
+		"La legge goblin a Everlook è semplice: chi sguaina dentro le porte se la vede con i buttafuori, di qualunque colore sia il suo stendardo. La città più pacifica di Kalimdor, e la meno ospitale.",
+		"Stivali dell'Orda e stivali dell'Alleanza sulle stesse assi goblin. Lo Steamwheedle Cartel non si schiera: incassa.",
+	},
+	["wsp.a.muse.w10.003"] = {
+		"Gli elfi della notte dicono che un frostsaber non si doma mai: si convince. A vederne uno attraversare i cumuli senza affondare, ci credo.",
+		"Una Sentinella a Everlook dice che i cavalieri dei felini se ne guadagnano uno in stagioni, non in giorni. Quassù il freddo rispetta solo la pazienza.",
+		"I frostsaber passano sui cumuli come se la neve avesse accettato di reggerli. I cavalieri kaldorei hanno imparato quella leggerezza dai felini, a sentir loro.",
+	},
+	["wsp.a.muse.w10.004"] = {
+		"I Timbermaw lasciano passare i viaggiatori nel loro tunnel ringhiando appena un po'. Fra i furbolg, a quanto pare, è un benvenuto caloroso.",
+		"I Timbermaw custodiscono la parola data e il rancore con la stessa cura. Ho intenzione di restare dalla parte giusta di entrambi.",
+	},
+	["wsp.a.muse.w10.005"] = {
+		"Lo stormo azzurro tiene d'occhio Mazthoril, e si dice che i draghi azzurri non amino chi maneggia la magia con leggerezza. Con questo freddo, nessuno maneggia niente con leggerezza.",
+		"Sotto il ghiaccio di Mazthoril i draghi azzurri tengono consiglio fra loro. Non accumulano oro, dicono le storie: accumulano sapere, e lo contano più spesso.",
+	},
+	["wsp.a.muse.w10.006"] = {
+		"A sud, verso Darkwhisper Gorge, i cumuli si tingono di un verde malato e le pietre sotto sono tiepide al tatto. I demoni non c'entrano niente con un paese così pulito. Basta questo come motivo per andarci.",
+		"Fuoco vile fra i campi di neve, giù a Darkwhisper Gorge. Perfino il gelo sembra tenersi alla larga da quel posto.",
+	},
+	["wsp.a.muse.w10.007"] = {
+		"batte gli stivali contro una roccia per staccare il ghiaccio incrostato, prima un tallone, poi l'altro, e ascolta il suono che corre sui pendii deserti.",
+		"si scrolla di dosso una crosta di brina e riparte, lasciando una fila di impronte profonde che il vento comincia subito a riempire.",
+		"stringe una dopo l'altra ogni cinghia e ogni fibbia, come impara a fare chi viaggia quassù prima che il freddo trovi i varchi.",
+	},
+	["wsp.a.muse.w10.008"] = {
+		"L'Alleanza non tiene guarnigioni a Winterspring. Ha solo chi capita quassù: un nano con il fucile, uno gnomo con una teoria, io. Sul sentiero ci salutiamo con un cenno, come vecchi amici.",
+		"Su queste colline non sventola nessuna bandiera dell'Alleanza. Quando incontro uno dei nostri sul sentiero, ci dividiamo le notizie e il fuoco, ed è tutto l'esercito che c'è.",
+	},
+	["wsp.a.muse.w10.009"] = {
+		"Troppo bianco. Mi fanno male gli occhi, e le distanze mentono: quella cresta sembrava a un'ora di cammino due ore fa.",
+		"Tutto questo bianco inganna l'occhio. Ogni cosa sembra più vicina di quanto sia, tranne Everlook, che sembra sempre più lontana.",
+	},
+	["wsp.a.muse.w10.010"] = {
+		"Se qualcuno trova le dita dei miei piedi, sono rimaste da qualche parte lungo il sentiero. Ditegli che me la cavo anche senza.",
+		"Nessuno mi aveva detto che il ghiaccio può entrare in uno stivale passando dai lacci. Qualcuno avrebbe proprio dovuto.",
+		"Tre paia di calze, e i miei piedi pensano ancora che li abbia traditi.",
+	},
+	["wsp.a.muse.w10.011"] = {
+		"I goblin parlano di Frostfire Hot Springs come altri parlerebbero di un banchetto. Acqua calda in mezzo a tutto questo. Tengo il pensiero da parte, per dopo.",
+		"Frostfire Hot Springs. Mi porto quel nome addosso come un tizzone in tasca, per i tratti di sentiero più gelidi.",
+	},
+	["wsp.a.npc_meet.w10.001"] = {
+		"Lana, se ne hai. Pelliccia, se non ne hai. Qualsiasi cosa, insomma, che il vento non riesca ad attraversare.",
+		"Prendo qualunque cosa tenga fuori il freddo, e non tratto. Fa troppo freddo per trattare.",
+	},
+	["wsp.a.npc_meet.w10.002"] = {
+		"Ospitalità goblin: lo stufato è caldo, il conto ancora di più, e nessuno ti chiede da che parte stai.",
+		"L'oste squadra la mia borsa prima della mia faccia. Giusto così. Tanto la faccia è quasi tutta brina.",
+	},
+	["wsp.a.quest_complete.w10.001"] = {
+		"Fatto. I goblin pagano, i furbolg ricordano, e fra le due cose chi viaggia quassù può farsi un nome.",
+		"Finito. A Winterspring un nome si costruisce piano, con le commissioni per cui nessun altro voleva uscire al gelo.",
+	},
+	["wsp.a.quest_complete.w10.002"] = {
+		"Pagato per intero. Lo spendo in qualcosa di caldo prima che mi geli nella borsa.",
+		"Ecco. Se qualcuno mi cerca, sarò in piedi vicinissimo a un fuoco.",
+	},
+	["wsp.a.quest_complete.w10.003"] = {
+		"intasca la ricompensa, si alza il bavero e studia il sentiero che torna verso il tunnel dei Timbermaw.",
+		"nasconde il compenso dove il freddo non può arrivare, e si volta verso il prossimo pendio bianco.",
+	},
+	["wsp.a.quest_complete.w10.004"] = {
+		"Fatto, e fatto bene. Le Sentinelle a Darnassus non ne sapranno mai niente, ma quassù l'Alleanza è un po' più forte.",
+		"Un lavoro piccolo, lontano da ogni capitale. Conta lo stesso. L'Alleanza è fatta soprattutto di lavori piccoli.",
+	},
+	["wsp.a.quest_progress.w10.001"] = {
+		"Tutto quanto, finalmente. Ora il ritorno, che è la stessa strada di prima, solo più fredda.",
+		"Ho tutto. La strada del ritorno passa accanto a un fuoco, se ho fortuna.",
+	},
+	["wsp.a.subzone_enter.w10.001"] = {
+		"si ferma al margine di {subzone} e legge la neve prima di proseguire: segni di artigli qui, larghe impronte di furbolg là, tutte fresche.",
+		"entra in {subzone} piano, con gli occhi sulle creste, dove qualunque cacciatore sceglierebbe di aspettare.",
+		"arriva a {subzone} col vento alle spalle, per una volta, e ne approfitta.",
+	},
+	["wsp.a.victory.w10.001"] = {
+		"Ed ecco perché a Winterspring nessuno cerca rogne. Troppa fatica, troppo poco calore.",
+		"Fatto. Allora, da che parte era Everlook?",
+		"Resta lì a raffreddarti. Non che ti serva una mano, per questo.",
+	},
+	["wsp.a.victory.w10.002"] = {
+		"controlla le dita una per una, come per contarle di nuovo.",
+		"si strofina le mani con una manciata di neve per pulirle, e fa una smorfia per il morso del gelo.",
+	},
+	["wsp.a.victory.w10.003"] = {
+		"Un Winterfall in meno che barcolla verso i Timbermaw. Forse, a modo suo, è una gentilezza.",
+		"Quel furbolg era qualcuno, un tempo. L'acquavite gli ha lasciato solo i pugni.",
+	},
+	["wsp.a.victory.w10.004"] = {
+		"Finita. Mi trema più il fiato che le mani. È il freddo che parla, non la lotta.",
+		"Finito. I lividi li sentirò dopo, quando il freddo li avrà mollati.",
+	},
+	["wsp.a.weather_change.w10.001"] = {
+		"si accorge che ha smesso di nevicare. L'aria si fa immobile e tagliente, e ogni pino lontano spicca come disegnato a china.",
+		"alza lo sguardo mentre gli ultimi fiocchi si diradano e il cielo si apre, ampio e pallido sopra il paese bianco.",
+	},
+	["wsp.h.attack.w10.001"] = {
+		"Fin da Orgrimmar, apposta per te!",
+		"Scongelati con questo!",
+		"Torna fra i cumuli!",
+	},
+	["wsp.h.battle.w10.001"] = {
+		"Lok'tar! I cumuli non ti nasconderanno.",
+		"Vieni qui. Il freddo te lo tolgo io.",
+		"Hai scelto la persona sbagliata da fermare su questa strada.",
+	},
+	["wsp.h.battle.w10.002"] = {
+		"Micio, micio. Qui non ci sono elfi della notte a salvarti.",
+		"Gattone bianco. Vediamo se combatti bene come ti apposti.",
+	},
+	["wsp.h.battle.w10.003"] = {
+		"Due teste, un solo pasto in mente. Continua a muoverti, e non lasciare che mordano tutte e due insieme.",
+		"Chimera. Mai restarle sotto, e occhio a entrambe le teste.",
+		"Ali, artigli, due bocche. Scegli una testa e comincia da lì.",
+	},
+	["wsp.h.battle.w10.004"] = {
+		"si getta avanti nella neve fino al ginocchio, sollevando uno spruzzo bianco a ogni falcata.",
+		"affronta il nemico sull'orlo di un cumulo, gli stivali che cercano presa.",
+		"avanza duro e basso, e ogni respiro diventa una nuvola bianca strappata alle labbra.",
+	},
+	["wsp.h.journey.w10.001"] = {
+		"Si parte. Il wind rider vuole andare a sud quanto me: quasi non devo guidarlo.",
+		"Lascio Winterspring in volo. Da quassù i campi di neve sembrano quasi miti. Non lo sono.",
+	},
+	["wsp.h.landmark.w10.001"] = {
+		"{landmark}. Comignoli goblin, prezzi goblin e nemmeno uno stendardo dell'Orda. Però dentro fa caldo, e questo chiude quasi ogni discussione.",
+		"Everlook. Terreno neutrale, con buttafuori molto robusti. Tengo le mani in vista e la borsa ancora più vicina.",
+	},
+	["wsp.h.lowhp.w10.001"] = {
+		"Non così lontano da casa! In piedi, in piedi!",
+		"Non muoio dove nessuno dell'Orda potrebbe trovarmi!",
+	},
+	["wsp.h.lowhp.w10.002"] = {
+		"Il fiato corto e spezzato. Il terreno si inclina. Resta in piedi.",
+		"Il freddo vuole che mi sdrai. Lo vuole sempre. No.",
+	},
+	["wsp.h.muse.w10.001"] = {
+		"Orgrimmar è molto più a sud, oltre il marciume di Felwood e i tunnel dei Timbermaw. Quassù mi sorprendo a rimpiangere la polvere rossa, figurarsi.",
+		"Le terre dell'Orda sono calde, asciutte e lontane alle mie spalle. Il caldo di Durotar, l'erba di Mulgore, perfino l'umido di Tirisfal: adesso sarebbe tutto benvenuto.",
+		"Ogni passo verso nord mi ha portato più lontano dai fuochi dell'Orda. Winterspring è quanto di più lontano da Orgrimmar si possa raggiungere a piedi senza uscire da Kalimdor.",
+	},
+	["wsp.h.muse.w10.002"] = {
+		"Il freddo non tratta tutta l'Orda allo stesso modo. I Reietti quasi non se ne accorgono, i tauren hanno la loro pelliccia, e i troll delle coste della giungla sembrano offesi di persona.",
+		"Ogni popolo dell'Orda affronta questo gelo a modo suo: gli orchi con la testardaggine, i tauren con la pazienza, i troll con le lamentele, i Reietti con un'alzata di spalle. E tutti continuano a camminare.",
+	},
+	["wsp.h.muse.w10.003"] = {
+		"Terreno neutrale vuol dire che a Everlook dormo di un sonno leggero, con l'Alleanza al di là di una parete.",
+		"I buttafuori di Everlook mantengono la pace con il bastone e la memoria lunga. Io la mantengo facendomi gli affari miei, che quassù è un lavoro a tempo pieno.",
+	},
+	["wsp.h.muse.w10.004"] = {
+		"Gli elfi della notte cavalcano questi felini bianchi. A guardare un frostsaber che avanza furtivo lungo una cresta capisco perché, e sono {g:contento|contenta} che su questo non ci sia nessuno in sella.",
+		"I frostsaber. A Darnassus sono cavalcature; quassù, selvatici, sono i cacciatori migliori della montagna. Alle loro rocce giro molto alla larga.",
+	},
+	["wsp.h.muse.w10.005"] = {
+		"Mazthoril è una montagna svuotata e trasformata in una cripta. Lo stormo azzurro ci ha messo dentro i suoi segreti e ha lasciato il freddo di guardia.",
+		"Qualunque cosa custodiscano i draghi azzurri a Mazthoril, hanno scelto bene. Nessuno ruba niente in un posto dove le dita smettono di funzionare.",
+	},
+	["wsp.h.muse.w10.006"] = {
+		"Demoni a Darkwhisper Gorge. Un tempo l'Orda ha pagato cara la fiducia nella loro razza; io preferirei restituire il favore.",
+		"Vilsegugi e di peggio, annidati nella neve a sud. L'Orda ha vecchi conti in sospeso con la Legione, e nessuno è amichevole.",
+	},
+	["wsp.h.muse.w10.007"] = {
+		"infila per un momento le mani sotto le ascelle e guarda verso nord, dove le cime si fondono in un unico, lungo muro bianco.",
+		"pesta un piccolo cerchio nella neve e ci resta dentro per un po', come a reclamare un pezzetto di montagna per l'Orda.",
+	},
+	["wsp.h.muse.w10.008"] = {
+		"Winterspring: inverno e primavera, dice il nome. L'inverno l'ho trovato. La primavera dev'essere in ritardo.",
+		"Winterspring. Il nome promette due stagioni e ne mantiene una.",
+	},
+	["wsp.h.muse.w10.009"] = {
+		"I Timbermaw non odiano l'Orda e non la amano. Giudicano ogni viaggiatore man mano che arriva, ed è più di quanto sappia fare quasi chiunque.",
+		"I furbolg di Timbermaw Post squadrano a lungo ogni viaggiatore, prima di decidere. Giusto. Io faccio lo stesso con loro.",
+	},
+	["wsp.h.muse.w10.010"] = {
+		"L'Orda ha il vizio di spuntare dove nessuno se l'aspetta. E Winterspring è quanto di più inaspettato ci sia.",
+		"Che l'Alleanza rivendichi pure le vecchie strade elfiche. L'Orda le percorre lo stesso, e lascia impronte più profonde.",
+	},
+	["wsp.h.muse.w10.011"] = {
+		"I giganti Frostmaul percorrono le gole del sud come colline che hanno imparato a camminare. Il terreno ti avverte del loro arrivo prima degli occhi.",
+		"Giganti di ghiaccio e pietra, giù nella Frostwhisper Gorge. I loro passi li senti negli stivali da mezza valle di distanza.",
+	},
+	["wsp.h.muse.w10.012"] = {
+		"Freddo, lontano da casa, e in minoranza contro tutto ciò che ha la pelliccia. Mi sembra proprio l'Orda.",
+		"Gelo, fame, e Orgrimmar lontanissima. L'Orda è nata da molto peggio.",
+	},
+	["wsp.h.muse.w10.013"] = {
+		"Quassù il silenzio è così fondo che sento il cuore battermi nelle orecchie. Nelle città dell'Orda c'è sempre un tamburo che suona da qualche parte. Mi mancano i tamburi.",
+		"Niente tamburi, niente voci, niente fumo di fuochi da campo. Solo vento. Canticchio fra i denti qualcosa di casa, giusto per sentire un suono dell'Orda.",
+	},
+	["wsp.h.npc_meet.w10.001"] = {
+		"Un letto vicino al fuoco, se c'è, e una minestra. Ho fatto tanta strada per quella minestra.",
+		"Quello che c'è di più caldo. Il prezzo non conta. Be', conta, ma non oggi.",
+	},
+	["wsp.h.npc_meet.w10.002"] = {
+		"I wind rider di quassù sembrano più magri di quelli di casa. Voli lunghi, aria fredda. So come si sentono.",
+		"Perfino i wind rider tremano così a nord. Chiederò il più robusto, e gli prometterò un posatoio caldo all'arrivo.",
+	},
+	["wsp.h.quest_complete.w10.001"] = {
+		"Fatto. I goblin pagano le mani dell'Orda come tutte le altre. Quassù è quasi un trattato.",
+		"Finito. A Everlook non importa chi ha fatto il lavoro, solo che sia fatto. C'è una specie di rispetto in questo.",
+	},
+	["wsp.h.quest_complete.w10.002"] = {
+		"Ricordatevi chi l'ha fatto. L'Orda, venuta fin dal sud.",
+		"Scrivetelo: è stata l'Orda, e l'Orda stava congelando.",
+	},
+	["wsp.h.quest_complete.w10.003"] = {
+		"conta le monete due volte, ottiene due totali diversi e decide che la differenza può tenersela il freddo.",
+		"prende il compenso senza una parola e torna a guardare il vento in faccia, come se anche lui avesse un debito da saldare.",
+	},
+	["wsp.h.quest_complete.w10.004"] = {
+		"Fatto. Dormirei una settimana, se trovassi un angolo che non sia gelato.",
+		"Ecco. Da qualche parte c'è un letto che mi aspetta. Spero che abbia tante coperte e nessun padrone goblin.",
+	},
+	["wsp.h.quest_progress.w10.001"] = {
+		"Ecco tutto. Ora indietro, prima che la traccia che ho aperto si richiuda alle mie spalle.",
+		"Raccolta finita. Lo zaino è pesante e le dita non servono più a niente: almeno una delle due è una buona notizia.",
+	},
+	["wsp.h.subzone_enter.w10.001"] = {
+		"{subzone}. Più lontano da Orgrimmar a ogni nome sulla mappa.",
+		"{subzone}. Prima le creste, poi gli alberi, poi la neve ai miei piedi. Quassù i guai possono arrivare da ogni parte.",
+		"{subzone}. Ogni angolo di Winterspring ha il suo nome, e lo stesso freddo.",
+	},
+	["wsp.h.victory.w10.001"] = {
+		"Va' a dire agli yeti chi ha vinto.",
+		"Questo è il segno dell'Orda su Winterspring. Piccolo, ma basta.",
+	},
+	["wsp.h.victory.w10.002"] = {
+		"resta un istante sopra il nemico caduto, poi raccoglie un pugno di neve e se lo preme su un taglio fresco.",
+		"si scuote la neve dal colletto, con una smorfia.",
+	},
+	["wsp.h.victory.w10.003"] = {
+		"Fatto. Un giorno lo racconterò accanto a un fuoco di Orgrimmar, e nessuno crederà a quanto faceva freddo.",
+		"Finita. Una volta fra l'Orda, questa lotta crescerà a ogni racconto. Il freddo no: non ne avrà bisogno.",
+		"Fatto. Orgrimmar ne sentirà parlare, gelo compreso.",
+	},
+	["wsp.h.victory.w10.004"] = {
+		"Un altro Winterfall a terra. I Timbermaw annuiranno quando lo sapranno, e non sorrideranno.",
+		"Riposa, furbolg. Il veleno della tua tribù ora non è più in te.",
+	},
+	["wsp.h.weather_change.w10.001"] = {
+		"si stringe nelle spalle sotto la neve che ricomincia e la guarda riempire una dopo l'altra le proprie impronte, giù lungo il sentiero.",
+		"socchiude gli occhi nella neve che cade, mentre i pini più vicini si confondono e il sentiero davanti comincia a sparire.",
+	},
 ]==])

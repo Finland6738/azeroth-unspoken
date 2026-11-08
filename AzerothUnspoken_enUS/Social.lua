@@ -633,4 +633,78 @@ NS:AddTexts("enUS", {
 		"To full nets, sharp spears, and the spirits who keep both coming!",
 		"Raise it high: to the Darkspear, and to everyone who ever shared a fire with us!",
 	},
+	["faction.alliance.farewell.w10.001"] = {
+		"Go well. Whatever banner you meet on the road, I hope it's ours.",
+		"Farewell, and keep your back to an Alliance wall when you can.",
+		"Until the next camp. The Alliance is big, but its roads keep crossing.",
+	},
+	["faction.alliance.greet.w10.001"] = {
+		"Hello there! What news from your end of the Alliance?",
+		"Hail! Whichever capital you call home, you're among friends.",
+	},
+	["faction.alliance.greet.w10.002"] = {
+		"Greetings. One banner over us both, whatever the road.",
+		"By the Light, by the moon or by the mountain, as you prefer: well met.",
+	},
+	["faction.alliance.jest.w10.001"] = {
+		"How many Alliance leaders does it take to light a lantern? Four: one to command it, one to forge it, one to bless it, and a gnome to make it explode.",
+		"The Alliance has a dwarf for strength, an elf for patience, a gnome for cleverness and a human for paperwork. Guess who's always late.",
+	},
+	["faction.alliance.pray.w10.001"] = {
+		"Light, Elune, makers of stone, whoever keeps watch over the Alliance: hold our roads open and our gates shut against the dead.",
+		"To whatever watches over all of us, by whatever name: let the peoples of the Alliance outlast their quarrels.",
+	},
+	["faction.alliance.thanks.w10.001"] = {
+		"Thank you! Put it on the Alliance's tab; it's very long, but it's honest.",
+		"Thanks. Between allies it's never a debt, only a turn. The next one's mine.",
+	},
+	["faction.alliance.thanks.w10.002"] = {
+		"My thanks. That's the Alliance at its best: help given before anyone asked whose people you are.",
+		"Thank you. Kindness from an ally always lands a little softer than kindness from a stranger.",
+	},
+	["faction.horde.farewell.w10.001"] = {
+		"Go well. May the Horde's roads be kind to you, and its enemies slow.",
+		"Strength and honor, until our roads cross again.",
+		"Safe journey. Bring all your skin back with you; the Horde needs every pair of hands.",
+	},
+	["faction.horde.greet.w10.001"] = {
+		"Throm-ka. Strength to you, and an easy road.",
+		"Well met. Any word from the other end of the Horde?",
+	},
+	["faction.horde.greet.w10.002"] = {
+		"Good to see a friendly face of the Horde. Come, stand a while.",
+		"There you are. The Horde is wide, and it's always a pleasure when it lands us in the same spot.",
+	},
+	["faction.horde.jest.w10.001"] = {
+		"How many Horde soldiers does it take to pitch a tent? An orc to swing the mallet, a tauren to hold the pole, a troll to laugh, and a Forsaken to point out it's upside down.",
+		"Why does the Horde never lose at tug of war? The tauren pull, the orcs shout, the trolls cheat, and the Forsaken simply never let go.",
+	},
+	["faction.horde.pray.w10.001"] = {
+		"Spirits, Earth Mother, loa, or anyone at all who listens: watch over the Horde's scattered camps, and bring its people home.",
+		"To whatever keeps watch over the Horde, in whatever tongue it prefers: keep us whole a little longer.",
+	},
+	["faction.horde.thanks.w10.001"] = {
+		"My thanks. Among the Horde, help is a debt, and I pay mine.",
+		"Thank you. I'll return it the Horde's way: when you need it, without being asked.",
+	},
+	["faction.horde.thanks.w10.002"] = {
+		"Thanks. I'd sing your praises, but the Horde is noisy enough already.",
+		"Much obliged. Tell no one; I have a reputation for grumbling to keep up.",
+	},
+	["time.day.farewell.w10.001"] = {
+		"Go well, and make good use of the light while it lasts.",
+		"Farewell. There's plenty of road in a day like this; don't waste it on me.",
+	},
+	["time.day.greet.w10.001"] = {
+		"Good day to you! And so far it is one.",
+		"Hello! Fine hour to meet on the road, with all this light to see each other by.",
+	},
+	["time.day.thanks.w10.001"] = {
+		"Thank you. You've saved me a good hour of daylight, and those don't grow on trees.",
+		"My thanks. That's the day's work made lighter, and the day's long enough already.",
+	},
+	["time.night.thanks.w10.001"] = {
+		"Thank you. Kindness in the dark counts double; it's harder to find.",
+		"My thanks. At this hour I'd stopped expecting any help at all.",
+	},
 }, "base_social")

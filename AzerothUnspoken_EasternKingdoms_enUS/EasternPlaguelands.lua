@@ -326,4 +326,285 @@ AU:RegisterRegionalTexts("easternplaguelands", "enUS", "eastern_easternplaguelan
 		"Rain, and it comes down warm and a little thick, like broth gone bad. The mushrooms seem to like it.",
 		"Here comes the rain, and the puddles it leaves have a faint green sheen. I'll be walking around those.",
 	},
+	["epl.a.attack.w10.001"] = {
+		"Lordaeron isn't done with you!",
+		"This one's from the living, with interest!",
+		"From Light's Hope, with feeling!",
+	},
+	["epl.a.battle.w10.001"] = {
+		"Lordaeron's not yours to keep!",
+		"This was a kingdom. Get out of it!",
+		"Off these fields!",
+	},
+	["epl.a.battle.w10.002"] = {
+		"Whoever you were, I'm sorry. Now hold still.",
+		"I'll be quick. You've suffered long enough.",
+		"You were someone, once. Let me end it.",
+	},
+	["epl.a.battle.w10.003"] = {
+		"Eyes clear, guard up. Don't let the haze decide this.",
+		"Mind the mud. Half of it is rot, and it grabs.",
+	},
+	["epl.a.battle.w10.004"] = {
+		"raises {g:his|her} guard in the sour haze, boots slipping on the gray mud.",
+		"squares up to the attack with the dead fields of Lordaeron at {g:his|her} back.",
+		"steps over a rotted fence and meets the enemy in what used to be a pasture.",
+	},
+	["epl.a.journey.w10.001"] = {
+		"The chapel falls away and the gryphon climbs. From up here Lordaeron still looks like a kingdom, if I don't look too closely.",
+		"Up and away. Below, the old roads still run from village to village, stubbornly, to places with nobody left in them.",
+	},
+	["epl.a.landmark.w10.001"] = {
+		"{landmark}. Once a proud city on Lordaeron's coast; now the Crusade's, and they'd sooner shoot me than share it.",
+		"The red banners of {landmark}. Lordaeron's last living city, and it has no welcome for the Alliance that once fought beside it.",
+	},
+	["epl.a.lowhp.w10.001"] = {
+		"Not for the dead. Not here.",
+		"Lordaeron won't have me too!",
+	},
+	["epl.a.lowhp.w10.002"] = {
+		"Breathe. Bind it later. Just keep this soil out of the wound.",
+		"Get to the chapel. Live long enough to get to the chapel.",
+	},
+	["epl.a.muse.w10.001"] = {
+		"The Alliance was born in this kingdom, at King Terenas's table. Now its fields belong to the dead, and the Alliance meets in Stormwind instead.",
+		"Lordaeron once gathered the kingdoms against the Horde. It was the strongest of them all. Look at it now, and then tell me anything is safe.",
+	},
+	["epl.a.muse.w10.002"] = {
+		"Lordaeron's survivors scattered south: Southshore, Menethil, the back streets of Stormwind. Most of them will never see these fields again.",
+		"In Stormwind's alleys there are people who farmed this land. I wonder whether they'd even know it now.",
+	},
+	["epl.a.muse.w10.003"] = {
+		"Uther's order once kept this whole kingdom. What's left of the Light here keeps one chapel. Smaller, and somehow just as stubborn.",
+		"The Light hasn't abandoned Lordaeron. It's at Light's Hope, holding a single patch of ground against everything that walks. That isn't nothing.",
+	},
+	["epl.a.muse.w10.004"] = {
+		"The Thondroril cuts Lordaeron's plaguelands in two, west from east. As if a river could ever have stopped this.",
+		"West runs the Thondroril, the line on every map between one dead half of the kingdom and the other. The plague never noticed it.",
+	},
+	["epl.a.muse.w10.005"] = {
+		"Travelers at the chapel say the dead of Darrowshire still fight the same battle, over and over, and lose it every time. I hope that's only a story.",
+		"They tell it quietly at Light's Hope: Darrowshire's ghosts keep reliving their last stand, as if losing it once weren't enough.",
+	},
+	["epl.a.muse.w10.006"] = {
+		"If Lordaeron ever gets resettled, I'm not buying a farm here. Some soil holds a grudge.",
+		"Someone should tell the mapmakers in Stormwind to update this region. 'Everything's dead' fits in very small letters.",
+	},
+	["epl.a.muse.w10.007"] = {
+		"The Scarlet Crusade were Lordaeron's own once, soldiers and priests of this kingdom. Grief made them into something that strikes first and asks nothing.",
+		"The crusaders at Tyr's Hand lost everything here, and decided the whole world was to blame. I almost understand it. Almost.",
+	},
+	["epl.a.muse.w10.008"] = {
+		"stops beside a fallen signpost, rubs the grime off with a thumb, and finds the name of a village nobody lives in anymore.",
+		"passes a roadside well with its bucket still hanging, the rope gone black and stiff, and does not look down into it.",
+	},
+	["epl.a.muse.w10.009"] = {
+		"Wheat will grow on these hills again. Not soon, and maybe not for anyone I know. But someone has to believe it, or nobody will ever plant.",
+		"These fields fed half the north, once. Clean them, give them time, and they will again.",
+	},
+	["epl.a.muse.w10.010"] = {
+		"The plague came in the grain. People did nothing worse than eat their bread, and woke up hungry for something else.",
+		"Lordaeron's own granaries carried the sickness. Families fed it to their children without ever knowing.",
+	},
+	["epl.a.muse.w10.011"] = {
+		"This kingdom isn't finished while anyone still fights for it.",
+		"The dead can have the fields for now. Not the name.",
+	},
+	["epl.a.muse.w10.012"] = {
+		"Not one bell left ringing in all of Lordaeron, and every village had one. I never knew how much noise a kingdom made until I heard one stop.",
+		"No bells, no dogs, no carts on the road. A whole kingdom gone quiet, and the quiet has weight.",
+	},
+	["epl.a.muse.w10.013"] = {
+		"looks north, toward Stratholme somewhere beyond the haze, its walls still whole, as if the city inside might be too.",
+		"turns north for a long moment, toward Stratholme, and then back to the road.",
+	},
+	["epl.a.npc_meet.w10.001"] = {
+		"An inn, out here of all places. A bed on clean ground, and someone mad enough to pour drinks a short walk from the Scourge.",
+		"Someone keeps a hearth burning in the Plaguelands. I could hug them, but I'll settle for a room.",
+	},
+	["epl.a.npc_meet.w10.002"] = {
+		"The sentry checks my eyes before my face. Here, that's how you tell the living.",
+		"A long, careful look from the guard, the kind given to anyone coming in from the fields. Then a nod. I passed.",
+	},
+	["epl.a.quest_complete.w10.001"] = {
+		"Lordaeron gets a little back. A road, a well, a little quiet for somebody.",
+		"Small, but it counts. A field can't be cleaned all at once.",
+		"One piece of the kingdom taken back from the dead. It's a start, and starts are rare here.",
+	},
+	["epl.a.quest_complete.w10.002"] = {
+		"Done. Count it toward Lordaeron.",
+		"Finished. The Argent Dawn can cross that one off.",
+		"There. One less reason for the chapel to worry.",
+	},
+	["epl.a.quest_complete.w10.003"] = {
+		"accepts the payment and, before putting it away, gives the dead hills a long look, as if checking that they noticed.",
+		"takes the reward with a nod and lingers a moment, putting off the road a little longer.",
+	},
+	["epl.a.quest_progress.w10.001"] = {
+		"Not finished. The dead don't hand anything over without a fuss.",
+		"Halfway there. This country turns even an errand into a siege.",
+	},
+	["epl.a.subzone_enter.w10.001"] = {
+		"enters {subzone} quietly, the way one walks into a house where someone has died.",
+		"comes into {subzone} and finds the same gray silence, only with different ruins in it.",
+		"slows on reaching {subzone}, reading the ground for footprints that drag.",
+	},
+	["epl.a.victory.w10.001"] = {
+		"One more stretch of road the Argent Dawn can cross.",
+		"That road's open again. For now.",
+		"Clear. Somebody tell the chapel.",
+	},
+	["epl.a.victory.w10.002"] = {
+		"It had a name once. Someone in Stormwind might still say it.",
+		"Some refugee in Southshore might have known that face. Better they never see it like this.",
+		"Whoever it was, nobody's left to bury it. The land will, eventually.",
+	},
+	["epl.a.victory.w10.003"] = {
+		"stands over the fallen a moment, then looks around the silent fields, counting what else might have heard.",
+		"wipes the weapon on a scrap of old banner caught in the brambles.",
+		"steps back from the fallen and checks the hedgerows on both sides before moving.",
+	},
+	["epl.a.weather_change.w10.001"] = {
+		"The air shifts and the haze slides off a hilltop. For a moment the hills look like a kingdom again, and not a grave.",
+		"A change in the air. The haze lifts a little, enough to see how far the gray goes. Better not to have seen.",
+	},
+	["epl.h.attack.w10.001"] = {
+		"From the Horde, with no love at all!",
+		"The Lich King can collect this one!",
+		"Take that back to your masters!",
+	},
+	["epl.h.battle.w10.001"] = {
+		"Another of the Lich King's! The Horde has words for you.",
+		"Your master's very far away. The Horde is right here.",
+		"Undercity's enemies are the Horde's. Come on!",
+	},
+	["epl.h.battle.w10.002"] = {
+		"Crusaders! You'd burn the Forsaken, and the rest of us with them.",
+		"Red tabards. Same zeal, same blindness.",
+		"Wrong enemy! The Scourge is over there!",
+	},
+	["epl.h.battle.w10.003"] = {
+		"Ignore the smell. Ignore the haze. Hit what moves.",
+		"Stay out of the spores, stay on the road, stay on your feet.",
+	},
+	["epl.h.battle.w10.004"] = {
+		"kicks a rotten branch aside and meets the charge on the cracked road.",
+		"shrugs off the stench of the fields and closes with the enemy.",
+		"steps into the fight with the gray haze curling at {g:his|her} heels.",
+	},
+	["epl.h.journey.w10.001"] = {
+		"Off the ground, and the whole sick country spreads out below. From here it looks like a map of the war, and that's all it is now.",
+		"Climbing out of the haze at last. Seen from above, the Plaguelands are a long gray wound with a few stubborn camps in it.",
+	},
+	["epl.h.landmark.w10.001"] = {
+		"{landmark}. A chapel of the Light that opens its doors to the Horde. Not long ago, that would have been a joke.",
+		"Consecrated ground, and the Argent Dawn lets the Forsaken walk it beside everyone else. That alone says how this war is going.",
+	},
+	["epl.h.lowhp.w10.001"] = {
+		"Not here. The Lich King gets no recruits from me.",
+		"On my feet. Barely. Come on, then.",
+	},
+	["epl.h.lowhp.w10.002"] = {
+		"Think of the chapel, or the road, or anything at all. Just don't go down here.",
+		"Light's Hope is too far. Then win this, and walk there after.",
+	},
+	["epl.h.muse.w10.001"] = {
+		"This is the Forsaken's war before it's anyone else's. Their queen wants it won, and the Horde has decided that's reason enough to fight it.",
+		"The Dark Lady wants the Scourge broken, and her people have more reason than anyone. Out here, the rest of the Horde pays its share of that debt.",
+		"The Forsaken want this land back from the Lich King, inch by inch. The Horde marches with them, because allies who stop at the hard part aren't allies.",
+	},
+	["epl.h.muse.w10.002"] = {
+		"Some in the Horde wonder whether the Forsaken fight the Scourge for the Horde or for themselves. Out here, with the dead coming over the hill, I can't see that it matters.",
+		"Orgrimmar argues about how far to trust Undercity. The Plaguelands settle the question quickly: you trust whoever's facing the same way you are.",
+	},
+	["epl.h.muse.w10.003"] = {
+		"A tauren elder would say this earth is sick, not dead, and sick things can be tended. It would take longer than any of us will live.",
+		"The Earth Mother's people say no land is beyond healing. Looking at this one, I hope they're right, and I hope they're patient.",
+	},
+	["epl.h.muse.w10.004"] = {
+		"The Darkspear say a land remembers what is done on it. This one will be remembering for a very long time.",
+		"Ask a troll witch doctor and you'll hear that every place keeps its dead. This one keeps too many, and they won't keep still.",
+	},
+	["epl.h.muse.w10.005"] = {
+		"Remind me why the Horde wants this place cleaned. Oh, right: nobody else will.",
+		"If we win this, does somebody have to live here afterward? Asking for everyone.",
+	},
+	["epl.h.muse.w10.006"] = {
+		"steps around a greenish puddle in the road, watching a slow bubble rise to its surface and burst.",
+		"pauses as a pale shape staggers out of the trees far off, stands swaying, and wanders away without looking round.",
+	},
+	["epl.h.muse.w10.007"] = {
+		"Baron Rivendare keeps court in Stratholme's ruins: a lord of Lordaeron who handed his land and his life to the Lich King. Among the Forsaken his name is a curse.",
+		"North stand Stratholme's walls, with Rivendare inside them, the baron who sold his own people to the Scourge. The Forsaken would see him ended more than most.",
+	},
+	["epl.h.muse.w10.008"] = {
+		"The Alliance walks these roads like mourners at a burial. The Horde walks them like soldiers on campaign. Both are right, each in its way.",
+		"To the Alliance this is a kingdom lost. To most of the Horde it's a front line. The Forsaken carry both at once, and never say which weighs more.",
+	},
+	["epl.h.muse.w10.009"] = {
+		"Thrall knows the names of his warriors. The Lich King never knew these ones had names at all.",
+		"The dead out there march for a master who'll never look at them. The Horde's Warchief walks among his people. That difference wins wars, in the end.",
+	},
+	["epl.h.muse.w10.010"] = {
+		"The Plaguewood, to the north, is worse than the rest: trees grown together over the road like the bars of a cage.",
+		"North lies the Plaguewood, where the dead trees crowd so close the road runs through them like a tunnel. Nothing good waits at the end of a tunnel like that.",
+	},
+	["epl.h.muse.w10.011"] = {
+		"Corin's Crossing was a market town. The Scourge kept the crossroads and changed the trade: the living go in, and the dead come out.",
+		"Every road in this part of Lordaeron met at Corin's Crossing once. They still do. Now it's the dead who keep the market.",
+	},
+	["epl.h.muse.w10.012"] = {
+		"covers {g:his|her} mouth as a waft of sickly-sweet air rolls off the fields, and waits for it to pass.",
+		"turns {g:his|her} face from a gust that smells of old cellars and spoiled fruit, and walks on through it.",
+	},
+	["epl.h.npc_meet.w10.001"] = {
+		"The sentry takes in the Horde colors and doesn't blink. Here the guards don't ask about banners, only about the Scourge.",
+		"A guard who'd have drawn on me anywhere else in Lordaeron gives me a short nod. The dead have changed a great many rules.",
+	},
+	["epl.h.npc_meet.w10.002"] = {
+		"A room on ground the dead won't cross? I'll pay whatever you're asking.",
+		"Something hot, if you have it, and nothing that grew in the local soil.",
+	},
+	["epl.h.quest_complete.w10.001"] = {
+		"Done. Write it down for the Forsaken; they keep long accounts.",
+		"That's finished. One more thing the Lich King won't get.",
+		"Settled. The Horde was here, and the work is done.",
+	},
+	["epl.h.quest_complete.w10.002"] = {
+		"A reward, and nothing tried to eat me on the way. A good outing, by the standards of the Plaguelands.",
+		"Coin for the purse, spores for the boots. The Plaguelands always pay in both.",
+		"Done, and all my fingers still attached. Out here that counts as a bonus.",
+	},
+	["epl.h.quest_complete.w10.003"] = {
+		"accepts the reward, then picks a gray crust off {g:his|her} fingers before tucking it away.",
+		"nods at the thanks, already squinting out at the haze to see what's coming next.",
+	},
+	["epl.h.quest_progress.w10.001"] = {
+		"A piece of it done. The rest is out there wandering around on its own two legs, most likely.",
+		"Some of it. The Plaguelands give nothing up for free, and very little for a fair price.",
+	},
+	["epl.h.subzone_enter.w10.001"] = {
+		"{subzone}. Eyes on the doorways, the ditches and the tree line.",
+		"{subzone}. One more name on the map that meant something to somebody, once.",
+		"{subzone}. Whatever it was named for, the plague has made it about one thing now.",
+	},
+	["epl.h.victory.w10.001"] = {
+		"One less for the Lich King's ranks.",
+		"That one won't be marching on Undercity.",
+		"Undercity can strike that one off its list.",
+	},
+	["epl.h.victory.w10.002"] = {
+		"Over. I'll be smelling that one for a while.",
+		"Down, finally. Now to get clear before the flies arrive.",
+		"Done. My arms feel it, and the haze is already settling on the body.",
+	},
+	["epl.h.victory.w10.003"] = {
+		"turns from the fallen to scan the tree line, where something pale might have moved, or might not.",
+		"steps back from the body and scrapes {g:his|her} boots clean on a stone at the roadside.",
+		"takes a moment over the fallen, then moves on before the haze closes in.",
+	},
+	["epl.h.weather_change.w10.001"] = {
+		"The wind turns and carries the reek of the Plaguewood south. Wonderful.",
+		"The air shifts. Out here a change only means a new direction for the smell.",
+	},
 ]==])
