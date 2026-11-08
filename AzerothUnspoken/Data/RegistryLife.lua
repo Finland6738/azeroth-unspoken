@@ -294,5 +294,13 @@ NS:RegisterPack({
 			tags = { "temperament:cheerful" }, depth = { "natural" },
 			theme = "humour", motifs = { "drum" },
 			conditions = { race = "Troll" } },
+		["band.b60.levelup.w10.001"] = { event = "levelup", speaker = "inner", styles = { "epic", "intimate" },
+			tags = { "temperament:resolute", "motivation:duty" }, depth = { "literary" },
+			theme = "journey", motifs = { "road" },
+			conditions = { levelMin = 60 } },
+		["band.b60.levelup.w10.002"] = { event = "levelup", speaker = "character", styles = { "ironic" },
+			tags = { "temperament:cheerful", "wry" }, depth = { "natural" },
+			theme = "humour", motifs = {},
+			conditions = { levelMin = 60 } },
 	},
 })

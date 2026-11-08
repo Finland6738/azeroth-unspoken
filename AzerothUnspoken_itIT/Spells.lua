@@ -1926,4 +1926,50 @@ NS:AddTexts("itIT", {
 		"La pietra mi ronza nel palmo. Magia delle scorciatoie. Probabilmente i loa ridono, a vedere un troll che salta una settimana di cammino.",
 		"Chiudi il pugno, pensa al focolare, e il mondo si sbava come pittura fresca. La mia gente ha attraversato un mare su barche stipate; io attraverso un continente in un respiro.",
 	},
+	["band.b60.attack.w10.001"] = {
+		"Ecco dove la lunga strada rende.",
+		"Tutto quello che ho imparato, puntato su di te.",
+	},
+	["band.b60.attack.w10.002"] = {
+		"Proprio dove è più debole. Ormai so dove guardare.",
+		"Niente sforzi sprecati. Trova il varco e colpiscilo.",
+	},
+	["ctype.beast.attack.w10.001"] = {
+		"Eccoti un morso tutto mio!",
+		"Non sono solo i denti a fare male!",
+		"Giù, bestia! Giù!",
+	},
+	["ctype.beast.attack.w10.002"] = {
+		"Colpisci quando si raccoglie per scattare. È quello il varco.",
+		"Colpiscila mentre si carica. Mai dopo.",
+	},
+	["ctype.beast.attack.w10.003"] = {
+		"accorda il colpo al balzo della bestia e le va incontro a metà strada.",
+		"colpisce basso mentre la creatura si solleva, {g:rapido|rapida} come un predatore.",
+	},
+	["ctype.elemental.attack.w10.001"] = {
+		"Colpisci al centro, dove si tiene insieme.",
+		"Colpisci dove la forma è più densa. Lì c'è il nodo.",
+	},
+	["ctype.humanoid.attack.w10.001"] = {
+		"Questa l'avevi vista arrivare? Immaginavo di no.",
+		"Indovina dove arriva la prossima.",
+	},
+	["ctype.humanoid.attack.w10.002"] = {
+		"Si copre in alto. Vai in basso.",
+		"Dopo ogni colpo abbassa la guardia. Ecco.",
+	},
+	["ctype.humanoid.attack.w10.003"] = {
+		"accenna una finta, aspetta che l'avversario abbocchi, e colpisce nel varco.",
+		"colpisce nell'istante in cui l'avversario si sbilancia, e non un attimo prima.",
+		"risponde alla mossa dell'avversario prima che sia finita.",
+	},
+	["mood.city.travel.w10.001"] = {
+		"La pietra si scalda in mezzo alla folla. Qui nessuno noterà una faccia in meno, e andarsene diventa facile.",
+		"Pietra del ritorno in mano, fra un banco e un posto di guardia. La città continua a mercanteggiare mentre io svanisco.",
+	},
+	["weather.clear.travel.w10.001"] = {
+		"Un tempo perfetto per camminare, e io prendo la scorciatoia. La strada si terrà il suo buonumore senza di me.",
+		"Cielo vuoto, strada asciutta, e io ripiego tutto dentro una pietra. Qualcuno chieda scusa al tempo da parte mia.",
+	},
 }, "base_spells")

@@ -423,4 +423,214 @@ AU:RegisterRegionalTexts("stranglethornvale", "itIT", "eastern_stranglethorn", [
 		"solleva il viso verso la pioggia che scroscia giù dalle foglie più alte, tiepida come una minestra e del tutto inutile contro il caldo.",
 		"si ripara sotto una foglia larga mentre la pioggia si rovescia attraverso le chiome, e tutta la giungla sibila come un bollitore.",
 	},
+	["stv.a.attack.w10.001"] = {
+		"I complimenti del Rebel Camp!",
+		"Questo è da parte di tutti quelli che hai assalito!",
+	},
+	["stv.a.battle.w10.001"] = {
+		"Fuori dai cespugli, alla luce. Fatti vedere.",
+		"L'agguato l'hai avuto. Ora prova a stare in piedi.",
+	},
+	["stv.a.battle.w10.002"] = {
+		"si fa largo a spallate in un muro di fronde e ne esce già combattendo, con la giungla che ondeggia ancora alle spalle.",
+		"si toglie la linfa dagli occhi e si mette in guardia tra le felci schiacciate.",
+	},
+	["stv.a.battle.w10.003"] = {
+		"Grosso come una capanna e furbo il doppio. Non è un complimento, ogre.",
+		"Mosh'Ogg! Torna al tuo tumulo prima che ti ci rimandi io.",
+	},
+	["stv.a.battle.w10.004"] = {
+		"Il cuore corre. Bene. In questa giungla i cuori lenti finiscono mangiati.",
+		"Un respiro, poi muoviti. Chi si blocca qui finisce a concimare le felci.",
+	},
+	["stv.a.journey.w10.001"] = {
+		"Il grifone vira a nord sopra la volta, e il verde chiude tutto: rovine, campi, agguati, nascosti allo stesso modo.",
+		"Sopra le foglie la giungla non mostra niente che non voglia. Nemmeno un sentiero, nemmeno un troll.",
+	},
+	["stv.a.landmark.w10.001"] = {
+		"{landmark}. Stendardi dell'Orda e una torre per gli zeppelin. Resta tra gli alberi e continua a camminare.",
+		"Il campo dell'Orda, palizzata compresa. Un bel posto da ammirare da molto lontano.",
+	},
+	["stv.a.lowhp.w10.001"] = {
+		"In piedi. Questa giungla non mi avrà a buon mercato.",
+		"Non qui, non tra queste radici.",
+	},
+	["stv.a.lowhp.w10.002"] = {
+		"Le mani mi tremano. Con questo caldo potrebbe essere qualunque cosa. Non è qualunque cosa.",
+		"Sangue sulle foglie, e quasi tutto mio. Pensa. Muoviti.",
+	},
+	["stv.a.muse.w10.001"] = {
+		"Il campo di Nesingwary accoglie Alleanza e Orda senza distinzioni. Lì ti giudicano solo dalle pelli che porti.",
+		"Al campo dei cacciatori nessuno ti chiede lo stendardo. Ti chiedono quante pantere, e se le pelli sono intere.",
+	},
+	["stv.a.muse.w10.002"] = {
+		"Le strade di Stormwind finiscono a Duskwood. Più a sud c'è un sentiero che la giungla ridisegna ogni settimana.",
+		"La strada maestra del regno si perde oltre Darkshire. Da lì in poi la strada è quella che ti apri.",
+		"Strada lastricata, poi strada sterrata, poi un varco tra le felci. Così si assottiglia la presa dell'Alleanza, da Stormwind fino a questa giungla.",
+	},
+	["stv.a.muse.w10.003"] = {
+		"Le tigri di qui hanno le strisce come l'ombra sulle foglie. Ne vedi una quando ha deciso lei che devi vederla.",
+		"Strisce, ombra, foglie: lo stesso disegno. Qui una tigre si fa vedere solo quando ti ha già scelto.",
+	},
+	["stv.a.muse.w10.004"] = {
+		"Orda sui moli, Orda sui sentieri, Orda accampata sulla costa. Quaggiù siamo noi quelli lontani da casa.",
+		"In questa giungla ci sono più orchi e troll che stendardi dell'Alleanza. Guardia alta e nervi saldi.",
+	},
+	["stv.a.muse.w10.005"] = {
+		"I tamburi dietro le mura di Zul'Gurub non si fermano quasi mai. Al Rebel Camp nessuno vuole indovinare a che cosa diano il tempo.",
+		"Tamburi da nordest, da dietro le mura dei troll. Costanti, pazienti, mai con lo stesso ritmo due volte.",
+		"Zul'Gurub continua a battere i suoi tamburi, e ogni tribù della giungla sembra camminare verso quel suono.",
+	},
+	["stv.a.muse.w10.006"] = {
+		"Un elfo della notte, uno gnomo, un nano e un umano potrebbero incontrarsi su questo sentiero e salutarsi come cugini. È la giungla che fa questo effetto.",
+		"Qui fuori ogni volto dell'Alleanza sul sentiero è il benvenuto, qualunque città chiami casa.",
+	},
+	["stv.a.muse.w10.007"] = {
+		"scosta una tenda di muschio pendente e si trova davanti un totem troll che {g:lo|la} fissa, con la pittura ancora fresca.",
+		"si ferma davanti a un palo intagliato sul bordo del sentiero, imbrattato di colore fresco, e senza fare rumore prende un'altra strada.",
+	},
+	["stv.a.muse.w10.008"] = {
+		"Non esistono due mappe di Stranglethorn che vadano d'accordo, e la giungla le smentisce tutte.",
+		"Ogni mappa di questo posto è un'ipotesi con una cornice intorno.",
+	},
+	["stv.a.muse.w10.009"] = {
+		"Stormwind non manda più soldati a sud. Il reggente ha un regno da tenere insieme più vicino a casa, e la giungla resta ai volontari.",
+		"Con il re scomparso e Bolvar che tiene il trono per il ragazzo, a Stormwind nessuno ha truppe da mandare a Stranglethorn. E così tocca a gente come me.",
+	},
+	["stv.a.npc_meet.w10.001"] = {
+		"Vendi qualcosa che accorci la giungla?",
+		"Corda, olio per la lanterna, e una mappa, se ne hai una che vada d'accordo con le altre.",
+		"Qualunque cosa tenga in piedi un viandante fino al prossimo tetto sicuro. E qualcosa per il prurito.",
+	},
+	["stv.a.quest_complete.w10.001"] = {
+		"Fatto. La strada tra le tende dei ribelli e Booty Bay è appena diventata un po' più sicura.",
+		"Finito. Un tratto di giungla in meno da temere, dal Rebel Camp giù fino al porto dei goblin.",
+	},
+	["stv.a.quest_complete.w10.002"] = {
+		"Ecco la prova. Io la laverei, prima di toccarla.",
+		"Tutto tuo. È passato per la giungla, quindi magari usa i guanti.",
+	},
+	["stv.a.quest_complete.w10.003"] = {
+		"conta le monete due volte, perché a Stranglethorn anche la paga può essere un tranello.",
+		"accetta la ricompensa e alza una moneta controluce, come fa chiunque abbia giudizio in una giungla piena di goblin.",
+	},
+	["stv.a.quest_progress.w10.001"] = {
+		"C'è tutto. Ora indietro attraverso il verde, e con un po' di fortuna per la stessa strada.",
+		"È tutto qui. Il difficile adesso è ritrovare il sentiero da cui sono {g:arrivato|arrivata}.",
+	},
+	["stv.a.subzone_enter.w10.001"] = {
+		"{subzone}. Nome diverso, regola uguale: guarda per terra, poi i rami, poi di nuovo per terra.",
+		"{subzone}. Nome nuovo, regola vecchia: terra, rami, terra.",
+	},
+	["stv.a.victory.w10.001"] = {
+		"Rebel Camp, non c'è di che.",
+		"Un altro da aggiungere al conto del Rebel Camp.",
+		"Una preoccupazione in meno per i ribelli nelle loro tende.",
+	},
+	["stv.a.victory.w10.002"] = {
+		"Non c'era cattiveria. Cacciava, e io ero lì. Non fingerò che mi consoli.",
+		"Stava solo cacciando, e il pasto ero io. Non mi dispiace aver vinto. Ma non ne sono nemmeno {g:contento|contenta}.",
+	},
+	["stv.a.victory.w10.003"] = {
+		"si inginocchia per sfilarsi una spina dal polpaccio, poi si rialza e scruta le foglie in attesa di ciò che verrà.",
+		"si stacca qualche lappola dalla manica mentre la giungla riprende fiato.",
+	},
+	["stv.a.weather_change.w10.001"] = {
+		"La pioggia trova il sentiero prima di me, e in un attimo la pista è un ruscello marrone che scende a valle.",
+		"Di nuovo pioggia. Il sentiero diventa un torrente, e il torrente decide di andare dalla mia parte.",
+	},
+	["stv.h.attack.w10.001"] = {
+		"Un saluto da Grom'gol!",
+		"La giungla è lenta. Io no!",
+	},
+	["stv.h.battle.w10.001"] = {
+		"Questa giungla me ne manda uno ogni ora. Adesso tocca a te.",
+		"Un altro regalo della giungla. Avrei preferito la frutta.",
+	},
+	["stv.h.battle.w10.002"] = {
+		"si abbassa sotto un rampicante, trova un tratto piano tra due radici e si mette in guardia.",
+		"scalcia via i rampicanti e si mette in guardia sulla terra battuta.",
+	},
+	["stv.h.battle.w10.003"] = {
+		"Giù la sega, Venture Co. Questa giungla non è in vendita.",
+		"Un'altra squadra di trituratori? Almeno gli alberi sono contenti di vedermi.",
+	},
+	["stv.h.journey.w10.001"] = {
+		"A terra. L'odore arriva per primo: marcio, fiori, sale e qualcosa di morto sotto un cespuglio. Stranglethorn, dunque.",
+		"Piedi a terra, e il tanfo della giungla mi saluta prima di chiunque altro.",
+	},
+	["stv.h.landmark.w10.001"] = {
+		"{landmark}. Tende, rastrelliere e pelli tese come bandiere. Il vecchio cacciatore accetta l'aiuto di chiunque abbia la mano ferma, Orda compresa.",
+		"Pelli su ogni corda, e cacciatori a cui non importa sotto quale stendardo cammini, purché tu torni con qualche pelle tigrata.",
+	},
+	["stv.h.lowhp.w10.001"] = {
+		"Gli uccelli spazzini stanno già facendo i conti. Che aspettino.",
+		"Qualcosa lassù tra i rami ha cominciato a guardarmi con speranza. Non oggi.",
+	},
+	["stv.h.muse.w10.001"] = {
+		"Quando il corno dello zeppelin suona sopra la volta degli alberi, mezza Grom'gol alza gli occhi. Orgrimmar e Undercity sono a un pallone goblin di distanza.",
+		"Quel corno sopra gli alberi è l'aeronave che parte verso casa. I grunt di Grom'gol non dicono mai che gli manca. Però alzano tutti lo sguardo.",
+		"Uno zeppelin passa cigolando sopra le foglie, diretto a nord. Strano come un pallone goblin possa avere la voce di casa.",
+	},
+	["stv.h.muse.w10.002"] = {
+		"A Booty Bay i goblin ti versano da bere, e dietro il porto altri goblin segano la giungla. Stessa gente, contratto diverso.",
+		"Un tipo di goblin ti affitta una stanza sul porto. L'altro abbatte gli alberi fuori dalla finestra. La Venture Co. non conosce giorni di riposo.",
+	},
+	["stv.h.muse.w10.003"] = {
+		"Relitti lungo tutta la costa. Metà erano pirati. L'altra metà ha incontrato i pirati.",
+		"Conta gli scafi spezzati sulla spiaggia. Ognuno è una storia dei Bloodsail, raccontata da una parte o dall'altra.",
+	},
+	["stv.h.muse.w10.004"] = {
+		"Anche l'Alleanza caccia le stesse tigri, tra questi alberi. Quasi sempre facciamo finta, tutti e due, di guardare le tigri.",
+		"Stivali dell'Alleanza sugli stessi sentieri, cacciatori dell'Alleanza dietro la stessa selvaggina. A Stranglethorn tieni un occhio sulla bestia e l'altro su chiunque altro le stia dando la caccia.",
+	},
+	["stv.h.muse.w10.005"] = {
+		"In questa giungla ogni altro muro dei Gurubashi sta crollando. Quelli di Zul'Gurub no. Là dentro qualcuno fa ancora le riparazioni.",
+		"Le rovine marciscono ovunque, tranne in un posto. Le mura di Zul'Gurub stanno dritte e rattoppate, e una rovina non si rattoppa da sola.",
+	},
+	["stv.h.muse.w10.006"] = {
+		"si ferma davanti a un tronco segnato da artigliate profonde, ben più in alto della testa, e riprende a camminare un po' più in fretta.",
+		"osserva certi solchi freschi nella corteccia, più alti di quanto arrivi un braccio teso, poi lancia un'occhiata alle foglie di sopra e prosegue.",
+	},
+	["stv.h.muse.w10.007"] = {
+		"A Booty Bay può capitarti di dividere il tavolo con un nano. Nessuno ha mai messo per iscritto le buone maniere per una cosa così.",
+		"Terreno neutrale vuol dire che l'Alleanza beve due sgabelli più in là. Tu non saluti, loro non salutano, e i goblin incassano da tutti e due.",
+	},
+	["stv.h.npc_meet.w10.001"] = {
+		"Un'amaca tesa ben sollevata da terra, dove le bestiole striscianti devono faticare per arrivare. Qualunque sia il prezzo, lo pago.",
+		"Un letto sollevato da terra e una brocca di qualcosa di fresco. Tenere una locanda è l'unico lavoro decente di Stranglethorn.",
+	},
+	["stv.h.quest_complete.w10.001"] = {
+		"Fatto. La notizia arriverà a Booty Bay prima che a Orgrimmar, e qualche goblin la venderà due volte.",
+		"Finito. In questa giungla le notizie viaggiano coi goblin, e i goblin non portano niente gratis.",
+		"Fatto e finito. Tra poco mezza Booty Bay lo saprà, e l'altra metà avrà pagato per sentirlo.",
+	},
+	["stv.h.quest_complete.w10.002"] = {
+		"consegna tutto, poi si controlla la mano vuota in cerca di qualunque cosa ci sia salita sopra lungo la strada.",
+		"consegna la merce e aspetta a braccia conserte che la esamini qualcuno che dal campo non si è mai mosso.",
+	},
+	["stv.h.quest_progress.w10.001"] = {
+		"Non ho finito. Quello che manca è là fuori in mezzo a tutto ciò che morde, ovviamente.",
+		"Una parte è fatta. Il resto è dove la giungla l'ha nascosto, cioè ovunque.",
+	},
+	["stv.h.subzone_enter.w10.001"] = {
+		"{subzone}. Il nome me lo ricorderò. La strada, la giungla non me la lascerà ricordare.",
+		"{subzone}. Il nome si impara in fretta. La strada del ritorno è un'altra faccenda.",
+	},
+	["stv.h.victory.w10.001"] = {
+		"Questa la racconterò attorno al fuoco di Grom'gol.",
+		"Grom'gol ne sentirà parlare. In breve.",
+	},
+	["stv.h.victory.w10.002"] = {
+		"A terra. Conto braccia e gambe, poi le foglie, per vedere se si muove altro. Tutti e due i conti tornano.",
+		"Finito. Aspetto con la schiena contro un tronco che il verde smetta di fremere.",
+	},
+	["stv.h.victory.w10.003"] = {
+		"posa le mani sulle ginocchia e lascia che il respiro rallenti.",
+		"dà al caduto una lunga occhiata, come fanno i veterani dell'Orda quando pesano una preda, e si allontana senza una parola.",
+	},
+	["stv.h.weather_change.w10.001"] = {
+		"Sopra le foglie il cielo è di nuovo sgombro. Sotto, la giungla continua a gocciolare come se nessuno l'avesse avvisata.",
+		"Il cielo si apre, e ogni foglia continua a perdere acqua come se non sapesse niente.",
+	},
 ]==])

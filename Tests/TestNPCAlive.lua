@@ -1111,9 +1111,12 @@ T.run("la voce segue il temperamento e il modo di parlare: burbero, gioviale, ne
 		.. (Share(jovial, "%.jovial") + Share(jovial, "%.farley")))
 	-- le due voci si distinguono
 	local overlap = 0
-	-- the lines said to the character's race (race.<race>.npcd_*, W08-W09) hold for any NPC of the role, whatever its
-	-- temperament: they are not one voice's lines, and the test character is an orc
-	for id in pairs(gruff) do if jovial[id] and not id:find("^race%.") then overlap = overlap + 1 end end
+	-- the lines said to the character's race (race.<race>.npcd_*, W08-W09) and faction (faction.<faction>.npcd_*, W10)
+	-- hold for any NPC of the role, whatever its temperament: they are not one voice's lines, and the test character
+	-- is an orc of the Horde
+	for id in pairs(gruff) do
+		if jovial[id] and not id:find("^race%.") and not id:find("^faction%.") then overlap = overlap + 1 end
+	end
 	T.ok(overlap <= 4, "burbero e gioviale non condividono le stesse battute: " .. overlap)
 	N:SetState("idle")
 end)

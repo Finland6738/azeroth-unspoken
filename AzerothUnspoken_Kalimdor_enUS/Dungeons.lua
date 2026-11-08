@@ -271,4 +271,124 @@ AU:RegisterRegionalTexts("kalimdor", "enUS", "kalimdor_dungeons", [==[
 		"Gone from the fight for a while. Count the seconds, then find the carrier.",
 		"Good. One less pair of hands between the flag and home.",
 	},
+	["drm.attack.w10.001"] = {
+		"Out of the ruins and down!",
+		"Back into the ivy with you!",
+	},
+	["drm.attack.w10.002"] = {
+		"Here's a tribute for you!",
+		"Pay up, in full!",
+	},
+	["drm.battle.w10.001"] = {
+		"These halls outlived an empire. They'll outlive you.",
+		"Out of my way. I didn't cross Feralas to stop at you.",
+		"Elven stone, ogre stink, and you. Come on.",
+	},
+	["drm.battle.w10.002"] = {
+		"Back to whatever hole the Highborne dragged you out of!",
+		"Old summons, new grave. Come here.",
+	},
+	["drm.battle.w10.003"] = {
+		"Lovely ruins. Shame about the welcome.",
+		"Somebody ring for the steward; I have a complaint.",
+	},
+	["drm.battle.w10.004"] = {
+		"sets {g:his|her} feet on cracked elven tiles and meets the rush.",
+		"pushes through a curtain of vines and straight into the fight.",
+	},
+	["drm.battle.w10.005"] = {
+		"Old magic in these walls. Don't let it be the last thing I feel.",
+		"Every stone here has seen a fight. Make this one short.",
+	},
+	["drm.encounter_end.w10.001"] = {
+		"{encounter} is done. Eldre'Thalas has buried grander things, and will bury this too.",
+		"That's {encounter}. The halls take it the way they take everything, in silence.",
+		"Finished. Even {encounter} is only a footnote in a city this old.",
+	},
+	["drm.encounter_end.w10.002"] = {
+		"All right. Back through the vines, and we try that again with our heads on straight.",
+		"Down, the lot of us. Gather up, think it through, go again.",
+	},
+	["drm.lowhp.w10.001"] = {
+		"Not among the ruins. I won't be one more statue here.",
+		"Pull back. These stones have outlasted everyone; I don't need to prove anything to them.",
+	},
+	["drm.lowhp.w10.002"] = {
+		"Not in Feralas, not like this!",
+		"Get me out of these vines!",
+	},
+	["drm.muse.w10.001"] = {
+		"Prince Tortheldrin rules what's left of the Highborne here, and rules it like a man guarding a vault. Every scroll is counted twice.",
+		"In the west wing the last of the Highborne keep their books and their secrets. They'd sooner see Feralas burn than share either.",
+		"The Shen'dralar didn't outlive their empire by luck. They did it by holding on to every scrap of power, and never letting go.",
+	},
+	["drm.muse.w10.002"] = {
+		"ducks beneath a root as thick as a pillar, which has pushed straight through an elven wall and kept going.",
+		"crosses a courtyard where a tree has split the paving in two, its branches tangled in the carved arches overhead.",
+		"passes a fountain choked with vines, its basin cracked, the carved rim still smooth to the touch.",
+	},
+	["drm.muse.w10.003"] = {
+		"The Gordok crown whoever kills their king. Ogre politics: simple, honest, and very hard on kings.",
+		"Word in Feralas is that if you best the Gordok king, the ogres hand over his tribute and call you boss. I've heard of worse governments.",
+		"The ogres in the north wing have a king, a throne, and a tradition of losing both to whoever hits hardest. Bold, as traditions go.",
+	},
+	["drm.muse.w10.004"] = {
+		"Immol'thar has been a prisoner here longer than most nations have existed. I wonder if he still remembers what he was before the cage.",
+		"Pylons and wardens keep the demon caged, and the Highborne drink what leaks through the bars. Nobody here is innocent of that bargain.",
+		"A demon in a cell, a prince who lives off it. Hard to say which of the two is more of a prisoner.",
+	},
+	["drm.muse.w10.005"] = {
+		"Satyrs in the eastern gardens, still capering among the ruins of the people they betrayed. They never had the decency to leave.",
+		"The satyrs were elves once, it's said, before they sold themselves to the Legion. They kept the horns and lost everything else.",
+		"Fel rot in the east wing, satyrs in the ivy, imps under the stairs. Whatever the Highborne summoned here never quite went home.",
+	},
+	["drm.muse.w10.006"] = {
+		"runs a finger along a shelf of elven books gone soft with damp, their titles in a script older than any living kingdom.",
+		"stops as a pale figure in court robes drifts across the hall and through a wall, still about some errand of the old empire.",
+		"notices that the lamps in this hall still burn, though nobody living has trimmed them in a very long time.",
+	},
+	["drm.muse.w10.007"] = {
+		"All the way through Feralas for a ruin full of ogres. The view had better be worth it.",
+		"Eldre'Thalas. I'd heard of it in stories. The stories left out the ogres.",
+		"Mind the steps. They were built for elves, and the elves had longer legs and more patience.",
+	},
+	["drm.muse.w10.008"] = {
+		"This was a jewel of Azshara's empire, a city of scholars far from the capital. Distance saved it when the rest went under the sea.",
+		"Eldre'Thalas was built to keep knowledge safe. It did, in its way. It just never decided whom to keep it safe for.",
+		"Under these vines lie the archives of an empire that drowned. Every ogre in here is sleeping on a history book.",
+	},
+	["drm.subzone_enter.w10.001"] = {
+		"enters {subzone}, where carved elven pillars rise out of a tangle of roots and fallen leaves.",
+		"comes into {subzone} under a broken archway, the old stone humming faintly with something not quite gone.",
+		"steps into {subzone}; the air smells of crushed leaves and something older, like incense left burning for an age.",
+	},
+	["drm.subzone_enter.w10.002"] = {
+		"{subzone}. Built to be admired by an empire's scholars. The audience has changed a good deal since.",
+		"{subzone}. Even the doorframes here carry more carving than most temples. The elves never did anything by half.",
+	},
+	["drm.threat.w10.001"] = {
+		"Turn around. These halls have room for one more ruin.",
+		"Walk away. I came for what's inside, not for you.",
+	},
+	["drm.threat.w10.002"] = {
+		"Go and warn whoever's in charge. I'll wait.",
+		"Run along. Find something older to hide behind; there's plenty here.",
+	},
+	["drm.victory.w10.001"] = {
+		"Down among the old tiles. The vines will have it soon enough.",
+		"One more fallen in a city that has seen thousands.",
+		"Done. Feralas will grow over this before anyone tells the story.",
+	},
+	["drm.victory.w10.002"] = {
+		"steps back onto an elven mosaic, now one crack worse, and looks down the hall for the next shape.",
+		"catches {g:his|her} breath under a broken arch, listening to leaves fall.",
+	},
+	["drm.victory.w10.003"] = {
+		"Next! Eldre'Thalas never runs out of guests.",
+		"Another chapter the Shen'dralar won't be writing down.",
+	},
+	["drm.victory.w10.004"] = {
+		"Back to the void, or wherever demons go. Not my concern.",
+		"One less thing the Highborne have to answer for.",
+	},
 ]==])

@@ -2890,4 +2890,415 @@ NS:AddTexts("enUS", {
 		"A scratch. Look closely: gone already.",
 		"You left a mark. Give it a minute and you won't have left even that.",
 	},
+	["band.b60.battle.w10.001"] = {
+		"Go on. I've had a long road to get ready for you.",
+		"Take your time. I've got years of practice to spend on this.",
+		"Let's begin. I'd rather not give you the whole road.",
+	},
+	["band.b60.battle.w10.002"] = {
+		"Alright, then. Show me you were worth the repair bill.",
+		"Fine. Try not to scuff anything; repairs are dear these days.",
+		"You and me, then. One of us is about to regret it, and I've done my homework.",
+	},
+	["band.b60.battle.w10.003"] = {
+		"Breathe. Read it. Every fight tells you how it ends if you listen early.",
+		"Count its habits. Everything that fights has a few.",
+		"Slow. Let the years do the work.",
+	},
+	["band.b60.battle.w10.004"] = {
+		"settles into the fight with the economy of long practice, wasting nothing.",
+		"meets the foe without a word, every motion pared down to what works.",
+		"moves first, and moves well, like someone who stopped guessing long ago.",
+	},
+	["band.b60.battle.w10.005"] = {
+		"Come on! I didn't climb this high to be stopped here!",
+		"Bring everything. I'll know if you hold back.",
+		"Hit as hard as you like. Better things than you have tried.",
+	},
+	["band.b60.battle.w10.006"] = {
+		"Another one. There's always another one, and that's exactly why someone strong has to be here.",
+		"Not for glory. Just so this thing never reaches anyone weaker.",
+		"Better me than someone just starting out.",
+	},
+	["band.b60.battle.w10.007"] = {
+		"Fine. But I'm charging you for the boots.",
+		"Very well. Quickly, please; I have a list.",
+		"Can we do this efficiently? The day is long and so is my list.",
+	},
+	["band.b60.lowhp.w10.001"] = {
+		"Ha! Finally something that knows what it's doing!",
+		"Good. I was starting to forget what this felt like.",
+		"There you are. I wondered when the real fight would start.",
+	},
+	["band.b60.lowhp.w10.002"] = {
+		"Bad. Not the worst. I've learned the difference, and right now it's everything.",
+		"Steady. Panic is for people who've never been this deep in it.",
+		"Hard hit. Fine. Think, don't flail.",
+	},
+	["band.b60.lowhp.w10.003"] = {
+		"staggers, then plants {g:his|her} feet with the stubbornness of someone who has come too far to fall here.",
+		"bleeds, breathes, and does not give an inch.",
+	},
+	["band.b60.threat.w10.001"] = {
+		"Think about who you're picking a fight with. Then pick a smaller one.",
+		"Look at the wear on this gear and ask yourself how it got there.",
+		"You don't want this. I'm telling you as a courtesy.",
+	},
+	["band.b60.victory.w10.001"] = {
+		"Settled. The long road isn't getting any shorter.",
+		"That's that. On to the long list.",
+		"Over. I'll mend the scratch and keep going.",
+	},
+	["band.b60.victory.w10.002"] = {
+		"Clean. Years ago that would have taken everything I had.",
+		"No contest. I remember when there would have been one.",
+		"Easy, and I won't pretend it always was.",
+	},
+	["band.b60.victory.w10.003"] = {
+		"lowers {g:his|her} guard only after a long look at the fallen, the caution of someone who has seen the dead get up.",
+		"checks the body, the surroundings and {g:his|her} own gear, in that order, by long habit.",
+		"steps away from the fallen foe and is already thinking about the next one.",
+	},
+	["band.b60.victory.w10.004"] = {
+		"I'd ask for a real challenge, but in this world a dragon usually answers.",
+		"Lovely. Can someone write down that it went well? It doesn't always.",
+		"Done, and not a single new scratch. Mark the calendar.",
+	},
+	["band.b60.victory.w10.005"] = {
+		"Another foe ended by these hands. The count stopped meaning anything long ago, and that worries me more than the count.",
+		"It's over. I still try to notice each one; the day I don't, something in me will have died first.",
+		"Over. Each one still gets a moment's silence from me.",
+	},
+	["band.b60.victory.w10.006"] = {
+		"Next time, send something that's heard of me.",
+		"Let that be told wherever your kind gathers.",
+	},
+	["ctype.beast.battle.w10.001"] = {
+		"All teeth and no manners. Fine, I'm in the same mood.",
+		"I'm not food. Let's get that cleared up early.",
+		"Wrong meal. Very wrong meal.",
+	},
+	["ctype.beast.battle.w10.002"] = {
+		"Your ground, I know. I'm crossing it anyway.",
+		"Mark it, guard it, lose it. That's how the wild keeps its borders.",
+	},
+	["ctype.beast.battle.w10.003"] = {
+		"It doesn't hate me. It just decided, quicker than any person could, that I'm a danger.",
+		"No grudge in those eyes. Only the plain arithmetic of hunger.",
+	},
+	["ctype.beast.battle.w10.004"] = {
+		"lowers {g:his|her} stance to the creature's height, eye to eye, waiting for the first lunge.",
+		"keeps still a heartbeat longer than the beast does, and lets it come.",
+	},
+	["ctype.beast.battle.w10.005"] = {
+		"Yes, yes, very big teeth. I've seen teeth before.",
+		"Snarl, hiss, whatever it is you do. I've heard worse at a tavern door.",
+	},
+	["ctype.beast.battle.w10.006"] = {
+		"Beasts don't bluff. When it comes, it comes straight and all at once. Be ready for all at once.",
+		"No feints from this one. Watch how it shifts its weight.",
+	},
+	["ctype.beast.battle.w10.007"] = {
+		"Come on, then! Show me what the wild built you for!",
+		"Teeth out? Good. Let's not pretend this is a conversation.",
+	},
+	["ctype.beast.battle.w10.008"] = {
+		"I'd have gone around you, if you'd let me.",
+		"No hard feelings. There's no room for them in you anyway.",
+	},
+	["ctype.beast.battle.w10.009"] = {
+		"Older than any road, this quarrel: something with teeth, something with a will, and one patch of ground.",
+		"Tooth against wit. The oldest fight there is.",
+	},
+	["ctype.beast.battle.w10.010"] = {
+		"You sniff at me, I sniff at you. Neither of us comes out of it well.",
+		"Smell that? That's me, not lunch.",
+	},
+	["ctype.beast.battle.w10.011"] = {
+		"You've got the speed, I've got the head. Let's see which one counts.",
+		"Quick, are you? Quick isn't the same as clever.",
+	},
+	["ctype.beast.battle.w10.012"] = {
+		"reads the beast's crouch, the coil before the spring, and steps away from where it means to land.",
+		"meets the creature's flat, unblinking stare and does not look away.",
+	},
+	["ctype.beast.battle.w10.013"] = {
+		"Every creature thinks the ground under its paws belongs to it. This one may even be right.",
+		"It thinks this patch is its own. It may well be.",
+	},
+	["ctype.beast.lowhp.w10.001"] = {
+		"That's my blood on your teeth. Rude.",
+		"I'm not dinner yet! Stop setting the table!",
+		"Chewed on, yes. Swallowed, no.",
+	},
+	["ctype.beast.lowhp.w10.002"] = {
+		"It smells the blood now. It'll press harder. Don't give it your back.",
+		"Never turn and run from a beast. That's when it truly starts.",
+	},
+	["ctype.beast.lowhp.w10.003"] = {
+		"Bleeding isn't the same as beaten. Come and learn the difference!",
+		"Torn up, not torn down!",
+	},
+	["ctype.beast.lowhp.w10.004"] = {
+		"presses a hand to the bite and keeps {g:his|her} gaze level with the beast's.",
+		"bleeds from more than one place, and still won't show the beast {g:his|her} back.",
+	},
+	["ctype.beast.threat.w10.001"] = {
+		"Off with you, {target}. I'm more trouble than I'm worth to eat.",
+		"Shoo. I'm tough to chew and in a foul temper.",
+	},
+	["ctype.beast.threat.w10.002"] = {
+		"Look at me. Today I'm the bigger animal.",
+		"Back down. Your instinct already knows I'm not prey.",
+	},
+	["ctype.beast.victory.w10.001"] = {
+		"As quick as I could make it. That was all I had to offer.",
+		"It's done. No more hunting for you.",
+	},
+	["ctype.beast.victory.w10.002"] = {
+		"The wild won't mourn it. Something else will claim its ground before long.",
+		"Its place won't stay empty. Nothing in the wild ever does.",
+	},
+	["ctype.beast.victory.w10.003"] = {
+		"wipes {g:his|her} hands and steps back from the carcass, still breathing hard.",
+		"checks for bites and scratches, finds a few, and decides they can wait.",
+	},
+	["ctype.beast.victory.w10.004"] = {
+		"And who's the predator now? Don't answer, that was rhetorical.",
+		"Not today, wild thing. Try someone slower.",
+	},
+	["ctype.beast.victory.w10.005"] = {
+		"Beasts always open with the same move. The next one won't have learned from this one.",
+		"Same lunge every time. Instinct is honest, and honest is easy to read.",
+	},
+	["ctype.beast.victory.w10.006"] = {
+		"Look at this. Teeth marks. Wonderful.",
+		"Something of mine got chewed. I'll find out what later.",
+	},
+	["ctype.beast.victory.w10.007"] = {
+		"It fought as if there were nothing after this. For that beast, there wasn't.",
+		"All that fury, and now just quiet. The wild spends its lives cheaply.",
+	},
+	["ctype.beast.victory.w10.008"] = {
+		"Tooth against will, and I'm the one walking off.",
+		"The wild sent its best. Its best wasn't enough.",
+	},
+	["ctype.beast.victory.w10.009"] = {
+		"bows {g:his|her} head briefly over the beast, the way one acknowledges a rival who never lied.",
+		"lets the beast's last breath pass in silence before moving on.",
+	},
+	["ctype.beast.victory.w10.010"] = {
+		"My heart still runs as if something were chasing it. Strange, what a beast leaves behind in you.",
+		"Still jumpy. For a while every rustle sounds like teeth.",
+	},
+	["ctype.beast.victory.w10.011"] = {
+		"Hunger gave you courage. It took your caution in exchange.",
+		"Should have kept your distance. Your instinct told you so.",
+	},
+	["ctype.demon.battle.w10.001"] = {
+		"You feed on fear. You'll go hungry here.",
+		"Hungry for fear, are you? You'll get none from me.",
+	},
+	["ctype.demon.lowhp.w10.001"] = {
+		"You want my soul? Come and earn it.",
+		"You get nothing from me. Not even this.",
+	},
+	["ctype.demon.victory.w10.001"] = {
+		"Go home, demon. Nobody here wanted you.",
+		"Whatever pact brought you here, it's void now.",
+	},
+	["ctype.demon.victory.w10.002"] = {
+		"The smell will cling for hours. They always leave something behind.",
+		"Gone, but the stench stays. Demons never leave clean.",
+	},
+	["ctype.dragon.victory.w10.001"] = {
+		"Wings folded for good. The stories can stay stories.",
+		"Dragonkin, and down. Someone ought to write that somewhere.",
+		"Not so terrible from down here, are you?",
+	},
+	["ctype.elemental.battle.w10.001"] = {
+		"No eyes to read, no face to fool. Just raw matter, and angry.",
+		"All fury and no mind. Come on, then.",
+		"Whatever binds you here, I'm here to cut it.",
+	},
+	["ctype.elemental.lowhp.w10.001"] = {
+		"It doesn't tire and it doesn't bleed. I do both. End this fast.",
+		"It won't tire. I will. Hurry.",
+	},
+	["ctype.elemental.victory.w10.001"] = {
+		"Back to plain matter with you.",
+		"There. Nothing left but what you were made of.",
+		"Unmade. The world can have its pieces back.",
+	},
+	["ctype.elemental.victory.w10.002"] = {
+		"watches the elemental's shape come apart into something plain and harmless again.",
+		"waits until nothing of the creature moves at all, then lets out a breath.",
+	},
+	["ctype.giant.battle.w10.001"] = {
+		"Right. Mind the feet, mind the hands, mind everything.",
+		"Every step of yours is ten of mine. Good thing I'm quick.",
+	},
+	["ctype.giant.victory.w10.001"] = {
+		"That's a lot of ground to fall on. Took its time, too.",
+		"Down. Even the earth felt that one.",
+		"Mind your heads! Sorry, I couldn't resist.",
+	},
+	["ctype.humanoid.battle.w10.001"] = {
+		"You picked this road. You can still pick another.",
+		"Last chance to put it down and walk away.",
+	},
+	["ctype.humanoid.battle.w10.002"] = {
+		"You look like you've thought this through. You haven't.",
+		"Bold plan. Let's see if it survives meeting me.",
+	},
+	["ctype.humanoid.battle.w10.003"] = {
+		"A beast fights to eat. This one fights because someone, at some point, decided it should.",
+		"Whatever brought them here, it's too late to ask now.",
+	},
+	["ctype.humanoid.battle.w10.004"] = {
+		"notes how the foe holds the weapon, high and nervous, and drifts toward the open side.",
+		"circles slowly, letting the foe be the one who decides too soon.",
+	},
+	["ctype.humanoid.battle.w10.005"] = {
+		"You brought a plan. I brought a worse temper.",
+		"Plan all you like. I'm already moving.",
+	},
+	["ctype.humanoid.battle.w10.006"] = {
+		"Watch the hands, not the shouting. A thinking foe lies with everything but the hands.",
+		"Feint coming. They nearly always feint first.",
+	},
+	["ctype.humanoid.battle.w10.007"] = {
+		"Somebody won't be going home. Let's settle who.",
+		"Only one of us walks away from this. I'd rather it were me.",
+	},
+	["ctype.humanoid.battle.w10.008"] = {
+		"Oh good, a thinker. Beasts are so repetitive.",
+		"At last, somebody who might surprise me.",
+	},
+	["ctype.humanoid.battle.w10.009"] = {
+		"{target}. You knew what you were walking into.",
+		"You knew what this road would cost. So did I.",
+	},
+	["ctype.humanoid.battle.w10.010"] = {
+		"Worse than any beast: this one can hate me, and remember why.",
+		"Beasts forget. People keep score. Careful.",
+	},
+	["ctype.humanoid.battle.w10.011"] = {
+		"catches a flicker of doubt in the foe's face and gives it no time to grow.",
+		"sets {g:his|her} jaw as the foe advances: no words are left that would change anything.",
+	},
+	["ctype.humanoid.battle.w10.012"] = {
+		"Could we not? No? Fine.",
+		"A nod in passing would have done. Your call.",
+	},
+	["ctype.humanoid.battle.w10.013"] = {
+		"Guard up, then. Let's not waste each other's time.",
+		"Enough staring. Come on.",
+	},
+	["ctype.humanoid.lowhp.w10.001"] = {
+		"So you do know what you're doing. Annoying.",
+		"Someone trained you properly. Shame.",
+	},
+	["ctype.humanoid.lowhp.w10.002"] = {
+		"They saw that. They'll press now, the way I would. Don't be where they expect.",
+		"They smell weakness as well as any beast. Hide it.",
+	},
+	["ctype.humanoid.lowhp.w10.003"] = {
+		"Bleeding, yes. Yielding, no.",
+		"You'll need a good deal more than that to put me down.",
+		"Not yet. Not by your hand.",
+	},
+	["ctype.humanoid.lowhp.w10.004"] = {
+		"spits blood and squares up to the foe again, eyes hard.",
+		"backs off one careful step, buys a breath, and watches what the foe chooses next.",
+	},
+	["ctype.humanoid.threat.w10.001"] = {
+		"You can still turn around. That door closes soon.",
+		"Walk away. You've got the choice a beast never gets.",
+	},
+	["ctype.humanoid.threat.w10.002"] = {
+		"Think it over, {target}. You're the kind that can.",
+		"Use that head of yours. That's what it's for.",
+	},
+	["ctype.humanoid.victory.w10.001"] = {
+		"Someone taught them to fight like that. Years of it, gone in a moment.",
+		"Somebody taught them that. Wasted now.",
+	},
+	["ctype.humanoid.victory.w10.002"] = {
+		"That's settled. I'd have preferred talking.",
+		"Over. You could have walked away.",
+	},
+	["ctype.humanoid.victory.w10.003"] = {
+		"lowers {g:his|her} guard slowly, as if the fallen foe might still change its mind.",
+		"stands over the fallen foe a moment, breathing, saying nothing.",
+	},
+	["ctype.humanoid.victory.w10.004"] = {
+		"Good tactics, poor timing. I'll keep the first part.",
+		"A clever opening. I'm stealing it.",
+	},
+	["ctype.humanoid.victory.w10.005"] = {
+		"Should've stayed home. Wherever that was.",
+		"Next time, pick a quieter trade.",
+	},
+	["ctype.humanoid.victory.w10.006"] = {
+		"No pleasure in it. Just the next step of the road, and a weight to carry for a while.",
+		"No joy in that one. Just less noise.",
+	},
+	["ctype.humanoid.victory.w10.007"] = {
+		"That was a real fight. Fair is fair: you knew your business.",
+		"Credit where it's due. You made me work for it.",
+	},
+	["ctype.humanoid.victory.w10.008"] = {
+		"kicks the fallen weapon out of reach before anything else, the habit of a careful fighter.",
+		"nudges the foe's weapon away with a foot, just in case.",
+	},
+	["ctype.humanoid.victory.w10.009"] = {
+		"A beast is forgotten by supper. People stay with me a little longer, whether I want them to or not.",
+		"Beasts fade by supper. People don't.",
+	},
+	["ctype.humanoid.victory.w10.010"] = {
+		"Well, that's one argument I won.",
+		"I'll take that as a concession.",
+	},
+	["ctype.humanoid.victory.w10.011"] = {
+		"If more of your kind are watching: that's how it goes.",
+		"The next one can take note.",
+	},
+	["ctype.humanoid.victory.w10.012"] = {
+		"Hands steady, at least. A thinking enemy wears you down more than claws ever do.",
+		"Wits against wits. Draining.",
+	},
+	["ctype.mechanical.battle.w10.001"] = {
+		"Somebody built you. Let's see how well.",
+		"Gears and bad intentions. Let's find the loose bolt.",
+	},
+	["ctype.mechanical.victory.w10.001"] = {
+		"Scrap. Somewhere an engineer is weeping.",
+		"Stopped ticking. Good.",
+		"All those parts, and not one of them for thinking.",
+	},
+	["ctype.undead.lowhp.w10.001"] = {
+		"I'm not joining you. Not today, and not like this.",
+		"I'm not one of yours yet!",
+	},
+	["ctype.undead.lowhp.w10.002"] = {
+		"It has nothing left to lose. I do. Remember that, and move.",
+		"Nothing to lose on its side. Everything on mine.",
+	},
+	["ctype.undead.threat.w10.001"] = {
+		"Go back to your grave while there's still room in it.",
+		"Lie down and stay there. Last offer.",
+	},
+	["ctype.undead.victory.w10.001"] = {
+		"Back under, and no more walking this time.",
+		"The earth wants you back. Go.",
+	},
+	["ctype.undead.victory.w10.002"] = {
+		"Whoever raised it never asked. Nobody asks the dead.",
+		"It never chose to walk. That's the worst of it.",
+	},
+	["ctype.undead.victory.w10.003"] = {
+		"steps back from the remains and waits a moment, to be sure they stay still.",
+		"watches the remains a breath longer than needed. With the dead, one learns to.",
+	},
 }, "base_combat")

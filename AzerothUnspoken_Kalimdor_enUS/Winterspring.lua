@@ -332,4 +332,294 @@ AU:RegisterRegionalTexts("winterspring", "enUS", "kalimdor_winterspring", [==[
 		"squints as the clouds pull apart over Winterspring and the snowfields stretch out sharp and clean to the horizon.",
 		"watches the sky clear above the peaks, and the cold sharpen with it, every ridge standing out hard and white.",
 	},
+	["wsp.a.attack.w10.001"] = {
+		"That one's for the Timbermaw!",
+		"Down the slope, and keep rolling!",
+		"Off the trail, and stay off!",
+	},
+	["wsp.a.battle.w10.001"] = {
+		"Snow underfoot, you in front. Let's not waste the warmth.",
+		"Not another step toward Everlook. Not from you.",
+		"Come on. I didn't cross half of Kalimdor to freeze waiting on you.",
+	},
+	["wsp.a.battle.w10.002"] = {
+		"The Timbermaw send their regards, Winterfall.",
+		"Your kin in the tunnels grieve for you, furbolg. I'll end it cleaner than the drink would.",
+	},
+	["wsp.a.battle.w10.003"] = {
+		"A shardtooth, all shoulders and hunger. Keep it off balance; a bear on ice is still a bear.",
+		"Bear. Big one. Stay out of the hug.",
+		"Shardtooth. Its claws are longer than my patience.",
+	},
+	["wsp.a.battle.w10.004"] = {
+		"plants {g:his|her} feet in the packed snow and meets the charge, the crunch of every step loud in the frozen air.",
+		"drops behind a drift for half a heartbeat, then comes up fighting in a burst of powder.",
+		"squares up in the snow, breath steaming.",
+	},
+	["wsp.a.journey.w10.001"] = {
+		"The hippogryph doesn't like the cold either. It climbs fast, as if it wants the clouds between us and Winterspring.",
+		"Up and away on feathered wings. Below, Winterspring folds itself shut like a white letter.",
+	},
+	["wsp.a.landmark.w10.001"] = {
+		"{landmark}. The night elves built here and left, and the snow moved into every room they emptied.",
+		"Starfall Village. Kaldorei houses with nobody at home. I walk softly, as if someone might still come back and find me in their doorway.",
+	},
+	["wsp.a.lowhp.w10.001"] = {
+		"Not here! The cats would find me before anyone else did.",
+		"Up! I didn't come this far north to die in a ditch.",
+	},
+	["wsp.a.lowhp.w10.002"] = {
+		"Hands won't close properly. The blood's warm, at least; that's something. Think.",
+		"Too slow, too cold. Every move costs twice up here. Spend it well.",
+	},
+	["wsp.a.muse.w10.001"] = {
+		"There's a paved road under all this, I'd swear to it. Every so often a flat pale stone breaks the drifts, set there by kaldorei hands long before Everlook had a single roof.",
+		"The night elves laid roads up here once, straight and patient. The drifts hide most of them now, but my feet keep finding the edges.",
+		"Old kaldorei road stones, tilted by frost, still pointing the way to places where nobody lives anymore.",
+	},
+	["wsp.a.muse.w10.002"] = {
+		"In Everlook you can stand in line behind an orc to buy the same loaf. Neither of you says a word. The goblin bruisers are watching, and the bread is hot.",
+		"Goblin law in Everlook is simple: draw steel inside the gates and the bruisers settle it, whoever's colors you wear. The most peaceful town in Kalimdor, and the least friendly.",
+		"Horde boots and Alliance boots on the same goblin floorboards. The Steamwheedle Cartel doesn't take sides; it takes payment.",
+	},
+	["wsp.a.muse.w10.003"] = {
+		"The night elves say a frostsaber is never broken, only persuaded. Watching one cross the drifts without sinking, I believe them.",
+		"A Sentinel in Everlook says the saber riders earn a cat over seasons, not days. Up here, patience is the only thing the cold respects.",
+		"Frostsabers walk over the drifts as if the snow had agreed to hold them. The kaldorei riders learned that lightness from the cats, the way they tell it.",
+	},
+	["wsp.a.muse.w10.004"] = {
+		"The Timbermaw let travelers through their tunnel with only a little growling. Among furbolgs, I'm told, that counts as a warm welcome.",
+		"The Timbermaw keep their word and their grudges with the same care. I mean to stay on the right side of both.",
+	},
+	["wsp.a.muse.w10.005"] = {
+		"The blue dragonflight keeps a watch over Mazthoril, and the blues are said to frown on anyone who handles magic carelessly. In this cold, nobody handles anything carelessly.",
+		"Under the ice of Mazthoril the blue dragons keep their own counsel. They don't hoard gold, the stories go. They hoard knowledge, and they count it more often.",
+	},
+	["wsp.a.muse.w10.006"] = {
+		"South, toward Darkwhisper Gorge, the drifts take on a sickly green and the stones under them are warm to the touch. Demons don't belong in a country this clean. That's reason enough to go.",
+		"Fel fire among the snowfields, down in Darkwhisper Gorge. Even the frost seems to keep its distance from that place.",
+	},
+	["wsp.a.muse.w10.007"] = {
+		"knocks the packed ice from {g:his|her} boots against a rock, one heel, then the other, and listens to the sound carry across the empty slopes.",
+		"brushes a crust of frost from {g:his|her} shoulders and sets off again, leaving a line of deep prints that the wind starts filling at once.",
+		"tightens every strap and buckle in turn, the way travelers learn to do here before the cold finds the gaps.",
+	},
+	["wsp.a.muse.w10.008"] = {
+		"The Alliance keeps no garrison in Winterspring. What it has is whoever happens to be up here: a dwarf with a rifle, a gnome with a theory, me. We nod to each other on the trail like old friends.",
+		"No Alliance flag flies over these hills. When I meet another of ours on the trail, we share the news and the fire, and that's the whole army.",
+	},
+	["wsp.a.muse.w10.009"] = {
+		"Too much white. My eyes ache from it, and the distances lie: that ridge looked an hour away two hours ago.",
+		"All this white plays tricks on the eye. Everything looks closer than it is, except Everlook, which always looks farther.",
+	},
+	["wsp.a.muse.w10.010"] = {
+		"If anyone finds my toes, they're somewhere back down the trail. Tell them I'm managing without.",
+		"Nobody warned me that ice could get into a boot through the laces. Somebody really should have.",
+		"Three pairs of socks, and my feet still think I've betrayed them.",
+	},
+	["wsp.a.muse.w10.011"] = {
+		"The goblins talk about Frostfire Hot Springs the way other people talk about a feast. Warm water in the middle of all this. I'm saving the thought for later.",
+		"Frostfire Hot Springs. I carry the name around like a coal in a pocket, for the bitterest stretches of the trail.",
+	},
+	["wsp.a.npc_meet.w10.001"] = {
+		"Wool, if you have it. Fur, if you don't. Anything, really, that the wind can't get through.",
+		"I'll take whatever keeps the cold out, and I won't haggle. Too cold to haggle.",
+	},
+	["wsp.a.npc_meet.w10.002"] = {
+		"Goblin hospitality: the stew is hot, the bill is hotter, and nobody asks which side you're on.",
+		"The innkeeper sizes up my purse before my face. Fair enough. The face is mostly frost anyway.",
+	},
+	["wsp.a.quest_complete.w10.001"] = {
+		"That's done. The goblins pay, the furbolgs remember, and between the two a traveler can make a name up here.",
+		"Finished. In Winterspring a name is built slowly, out of errands nobody else wanted to walk out into the cold for.",
+	},
+	["wsp.a.quest_complete.w10.002"] = {
+		"Paid in full. I'm spending it on something hot before it freezes in my purse.",
+		"There. If anybody needs me, I'll be standing very close to a fire.",
+	},
+	["wsp.a.quest_complete.w10.003"] = {
+		"pockets the reward, turns up {g:his|her} collar and studies the trail back toward the Timbermaw tunnel.",
+		"tucks the payment away where the cold can't reach it, and turns to face the next white slope.",
+	},
+	["wsp.a.quest_complete.w10.004"] = {
+		"Done, and done well. The Sentinels in Darnassus will never hear of it, but the Alliance is a little stronger up here for it.",
+		"Small work, far from any capital. It still counts. The Alliance is made of small work, mostly.",
+	},
+	["wsp.a.quest_progress.w10.001"] = {
+		"All of it, at last. Now the walk back, which is the same walk as before, only colder.",
+		"Got everything. The road back leads past a fire, if I'm lucky.",
+	},
+	["wsp.a.subzone_enter.w10.001"] = {
+		"stops at the edge of {subzone} and reads the snow before going on: claw marks here, a furbolg's broad prints there, all of them fresh.",
+		"comes into {subzone} slowly, eyes on the ridgelines, where anything that hunts would choose to wait.",
+		"enters {subzone} with the wind at {g:his|her} back for once, and makes the most of it.",
+	},
+	["wsp.a.victory.w10.001"] = {
+		"And that's why nobody picks fights in Winterspring. Too much effort, too little warmth.",
+		"Done. Now, which way was Everlook again?",
+		"Lie there and cool off. Not that you need any help with that.",
+	},
+	["wsp.a.victory.w10.002"] = {
+		"checks each finger in turn, as if counting them back.",
+		"scrubs a handful of snow over {g:his|her} hands to clean them, and winces at the bite of it.",
+	},
+	["wsp.a.victory.w10.003"] = {
+		"One less Winterfall staggering down on the Timbermaw. Maybe that's a kindness, in its way.",
+		"That furbolg was somebody once. The firewater kept only the fists.",
+	},
+	["wsp.a.victory.w10.004"] = {
+		"Done. My breath is shaking more than my hands. That's the cold talking, not the fight.",
+		"Over. I'll feel the bruises later, once the cold lets go of them.",
+	},
+	["wsp.a.weather_change.w10.001"] = {
+		"notices the snow has stopped. The air goes still and sharp, and every distant pine stands out as if drawn in ink.",
+		"looks up as the last flakes thin out and the sky opens, wide and pale over the white country.",
+	},
+	["wsp.h.attack.w10.001"] = {
+		"All the way from Orgrimmar, just for you!",
+		"Thaw out on that!",
+		"Back into the drifts!",
+	},
+	["wsp.h.battle.w10.001"] = {
+		"Lok'tar! The drifts won't hide you from me.",
+		"Come here. I'll take the chill off you.",
+		"You picked the wrong traveler to stop on this road.",
+	},
+	["wsp.h.battle.w10.002"] = {
+		"Here, kitty. No night elves around to save you.",
+		"Big white cat. Let's see if you fight as well as you sneak.",
+	},
+	["wsp.h.battle.w10.003"] = {
+		"Two heads, one meal in mind. Keep moving, and don't let both get a bite at once.",
+		"Chimaera. Stay out from under it, and watch both heads.",
+		"Wings, claws, two mouths. Pick a head and start there.",
+	},
+	["wsp.h.battle.w10.004"] = {
+		"drives forward through the knee-deep powder, kicking up a white spray with every stride.",
+		"meets the enemy at the edge of a drift, boots sliding, then finding purchase.",
+		"comes on hard and low, every breath tearing white from {g:his|her} lips.",
+	},
+	["wsp.h.journey.w10.001"] = {
+		"Off we go. The wind rider wants to be south as badly as I do; I barely have to steer.",
+		"Leaving Winterspring by air. From up here the snowfields look almost gentle. They aren't.",
+	},
+	["wsp.h.landmark.w10.001"] = {
+		"{landmark}. Goblin chimneys, goblin prices, and not one Horde banner. Still, it's warm inside, and that settles most arguments.",
+		"Everlook. Neutral ground with very sturdy bruisers. I keep my hands where they can see them and my purse closer still.",
+	},
+	["wsp.h.lowhp.w10.001"] = {
+		"Not this far from home! Get up, get up!",
+		"I'm not dying where no one from the Horde can find me!",
+	},
+	["wsp.h.lowhp.w10.002"] = {
+		"Breath coming short and ragged. The ground's tilting. Stay on your feet.",
+		"The cold wants me to lie down. It always wants that. No.",
+	},
+	["wsp.h.muse.w10.001"] = {
+		"Orgrimmar is a long way south, past Felwood's rot and the Timbermaw's tunnels. Up here I catch myself missing the red dust, of all things.",
+		"The Horde's lands are warm, dry and far behind me. The heat of Durotar, the grass of Mulgore, even the damp of Tirisfal would all be welcome now.",
+		"Every step north took me farther from the Horde's fires. Winterspring is about as far as you can walk from Orgrimmar and still be in Kalimdor.",
+	},
+	["wsp.h.muse.w10.002"] = {
+		"The cold treats the Horde unevenly. The Forsaken barely notice it, the tauren have their fur, and trolls from the jungle coasts look personally offended.",
+		"Every people of the Horde meets this cold its own way: orcs with stubbornness, tauren with patience, trolls with complaints, the Forsaken with a shrug. All of them keep walking.",
+	},
+	["wsp.h.muse.w10.003"] = {
+		"Neutral ground means I sleep lightly in Everlook, with the Alliance one wall away.",
+		"Everlook's bruisers keep the peace with clubs and long memories. I keep it by minding my own business, which up here is a full-time job.",
+	},
+	["wsp.h.muse.w10.004"] = {
+		"The night elves ride these white cats. Watching a frostsaber stalk along a ridge, I understand why, and I'm glad nobody is riding this one.",
+		"Frostsabers. In Darnassus they're mounts; up here, wild, they're the best hunters on the mountain. I give their rocks a wide berth.",
+	},
+	["wsp.h.muse.w10.005"] = {
+		"Mazthoril is a mountain hollowed out into a vault. The blue dragonflight put its secrets in there and left the cold on guard.",
+		"Whatever the blue dragons keep in Mazthoril, they chose well. Nobody steals anything in a place where fingers stop working.",
+	},
+	["wsp.h.muse.w10.006"] = {
+		"Demons in Darkwhisper Gorge. The Horde once paid dearly for trusting their kind; I'd sooner pay them back.",
+		"Felhounds and worse, nesting in the snow to the south. The Horde has old debts with the Legion, and none of them are friendly.",
+	},
+	["wsp.h.muse.w10.007"] = {
+		"tucks {g:his|her} hands under {g:his|her} arms for a moment and stares north, where the peaks run together into one long white wall.",
+		"stamps a small circle flat in the snow and stands in it a while, as if claiming a scrap of the mountain for the Horde.",
+	},
+	["wsp.h.muse.w10.008"] = {
+		"Whoever named this place Winterspring had a sense of humor. I've found the winter. Still waiting on the spring.",
+		"Winterspring. The name promises two seasons and delivers one.",
+	},
+	["wsp.h.muse.w10.009"] = {
+		"The Timbermaw don't hate the Horde and don't love it. They judge each traveler as they come, which is more than most people manage.",
+		"The furbolgs at Timbermaw Post look every traveler over a long while before deciding. Fair enough. I'm doing the same with them.",
+	},
+	["wsp.h.muse.w10.010"] = {
+		"The Horde has a habit of turning up where it's least expected. Winterspring is about as unexpected as it gets.",
+		"Let the Alliance claim the old elven roads. The Horde walks them anyway, and leaves deeper prints.",
+	},
+	["wsp.h.muse.w10.011"] = {
+		"The Frostmaul giants stride the southern gorges like hills that learned to walk. The ground tells you they're coming before your eyes do.",
+		"Giants of ice and stone, down in Frostwhisper Gorge. You feel their steps through your boots from half a valley away.",
+	},
+	["wsp.h.muse.w10.012"] = {
+		"Cold, far from home, and outnumbered by everything with fur. Sounds like the Horde to me.",
+		"Freezing, hungry, and a long way from Orgrimmar. The Horde was built on worse.",
+	},
+	["wsp.h.muse.w10.013"] = {
+		"Up here the quiet is so deep I can hear my own heartbeat. In the Horde's cities there's always a drum going somewhere. I miss the drums.",
+		"No drums, no voices, no smoke from cookfires. Only wind. I hum something from home under my breath, just to hear a Horde sound.",
+	},
+	["wsp.h.npc_meet.w10.001"] = {
+		"A bed by the fire, if there is one, and soup. I came a very long way for that soup.",
+		"Whatever's warmest. Price doesn't matter. Well, it matters, but not today.",
+	},
+	["wsp.h.npc_meet.w10.002"] = {
+		"The wind riders up here look thinner than the ones at home. Long flights, cold air. I know how they feel.",
+		"Even the wind riders shiver this far north. I'll ask for the sturdiest one, and promise it a warm roost at the other end.",
+	},
+	["wsp.h.quest_complete.w10.001"] = {
+		"Done. The goblins pay Horde hands the same as any others. Up here, that's practically a treaty.",
+		"Finished. Everlook doesn't care who did the job, only that it's done. There's a kind of respect in that.",
+	},
+	["wsp.h.quest_complete.w10.002"] = {
+		"Remember who did it. The Horde, all the way from the south.",
+		"Write it down: the Horde did this, and the Horde was freezing.",
+	},
+	["wsp.h.quest_complete.w10.003"] = {
+		"counts the coins twice, gets a different total each time, and decides the cold can keep the difference.",
+		"takes the payment without a word and turns to face the wind again, as if it owed {g:him|her} something too.",
+	},
+	["wsp.h.quest_complete.w10.004"] = {
+		"Done. I could sleep for a week, if I could find a spot that wasn't frozen.",
+		"That's it. A bed is waiting for me somewhere. I hope it has plenty of blankets and no goblin landlord.",
+	},
+	["wsp.h.quest_progress.w10.001"] = {
+		"That's all of it. Now back, before the trail I broke fills in behind me.",
+		"Done gathering. My pack is heavy and my fingers are useless; at least one of those is good news.",
+	},
+	["wsp.h.subzone_enter.w10.001"] = {
+		"{subzone}. Farther from Orgrimmar with every name on the map.",
+		"{subzone}. Ridges first, then the trees, then the snow at my feet. Up here, trouble can come from anywhere.",
+		"{subzone}. Every corner of Winterspring has its own name and the same cold.",
+	},
+	["wsp.h.victory.w10.001"] = {
+		"Go tell the yetis who won.",
+		"That's the Horde's mark on Winterspring. Small, but it'll do.",
+	},
+	["wsp.h.victory.w10.002"] = {
+		"stands over the fallen foe a moment, then scoops up a fistful of snow and presses it to a fresh cut.",
+		"shakes the snow from {g:his|her} collar, grimacing.",
+	},
+	["wsp.h.victory.w10.003"] = {
+		"Done. Some day I'll tell this one by a fire in Orgrimmar, and nobody will believe how cold it was.",
+		"Over. Back among the Horde, this fight will grow with every telling. The cold won't need to.",
+		"Done. Orgrimmar will hear about this one, frost and all.",
+	},
+	["wsp.h.victory.w10.004"] = {
+		"Another Winterfall down. The Timbermaw will nod when they hear, and they won't smile.",
+		"Rest, furbolg. Whatever poisoned your tribe, it isn't in you anymore.",
+	},
+	["wsp.h.weather_change.w10.001"] = {
+		"hunches against the fresh snowfall and watches it fill {g:his|her} own footprints one by one, back down the trail.",
+		"squints through the falling snow as the nearest pines blur and the trail ahead begins to vanish.",
+	},
 ]==])

@@ -196,4 +196,141 @@ AU:RegisterRegionalTexts("silithus", "itIT", "kalimdor_silithus", [==[
 		"si passa l'avambraccio sulla fronte, spalmando sudore e sabbia, e si guarda intorno in cerca della prossima minaccia.",
 		"si inginocchia un momento nella sabbia calda per riprendere fiato, poi si rialza con un grugnito.",
 	},
+	["sil.a.attack.w10.001"] = {
+		"Rintanati sotto la sabbia!",
+		"Mastica questo!",
+	},
+	["sil.a.battle.w10.001"] = {
+		"Fuori dalla sabbia e dritto sulla mia strada. Pessima scelta.",
+		"Sabbia negli occhi e tu davanti alla faccia. A una delle due posso rimediare.",
+		"Cenarion Hold è alle mie spalle. Di qui non passi.",
+	},
+	["sil.a.battle.w10.002"] = {
+		"Un settario. Occhio alle mani: borbottano prima di colpire.",
+		"Twilight's Hammer. Spezza il canto prima che finisca, e il resto è facile.",
+		"Settario! La tua fine del mondo comincia da te.",
+	},
+	["sil.a.battle.w10.003"] = {
+		"si libera con un calcio dalla sabbia mentre l'insetto ne erompe fuori, mandibole spalancate.",
+		"si pianta contro la carica di chitina e zampe, sulla sabbia che cede.",
+	},
+	["sil.a.battle.w10.004"] = {
+		"Sabbia e vento con un rancore. Ti ha chiamato la setta; io ti rimando indietro.",
+		"Un altro animaletto della setta. Torna nella fossa da cui ti hanno tirato fuori!",
+	},
+	["sil.a.journey.w10.001"] = {
+		"A terra a Cenarion Hold. Il caldo sale dalla sabbia come dallo sportello aperto di un forno, e l'ippogrifo non sembra più contento di me.",
+		"Con i piedi a Silithus. Primo respiro: polvere. Secondo: altra polvere. Al terzo smetto di contare.",
+		"Stivali nella sabbia, alla Hold. L'ippogrifo si scrolla, e dalle penne gli cade una piccola duna.",
+	},
+	["sil.a.landmark.w10.001"] = {
+		"{landmark}. Elfi della notte e draghi l'hanno innalzato insieme, mille anni fa. Ai suoi piedi mi sento molto giovane e molto {g:piccolo|piccola}.",
+		"Lo Scarab Wall. Ogni sua pietra è stata posata contro ciò che c'è dietro. Ne tocco una, una volta sola, per fortuna.",
+	},
+	["sil.a.lowhp.w10.001"] = {
+		"Torno alla Hold, dovessi strisciare per tutta la strada!",
+		"Acqua, fiato, un po' di fortuna. Mi va bene una qualsiasi!",
+	},
+	["sil.a.lowhp.w10.002"] = {
+		"Caldo in testa, sangue negli occhi. Rallenta. Ragiona.",
+		"Le dune ondeggiano. No, non loro. Sono io. Calma.",
+	},
+	["sil.a.muse.w10.001"] = {
+		"A Cenarion Hold un druido tauren e un druido elfo della notte dividono un tavolo pieno di mappe e discutono a bassa voce. Il Circle è più antico della lite fra le nostre fazioni.",
+		"Il Cenarion Circle accoglie druidi di entrambe le parti. Quaggiù curano la stessa terra ferita, e si scambiano le erbe senza badare ai colori dell'altro.",
+		"Druidi dell'Orda dentro Cenarion Hold. All'inizio fa un effetto strano. Poi i silithid arrivano oltre le dune, e a nessuno importa più chi abbia giurato a chi.",
+	},
+	["sil.a.muse.w10.002"] = {
+		"Mille anni fa gli elfi della notte combatterono qui contro i Qiraji e vinsero a stento. I druidi ne parlano con cautela, come di un debito mai saldato.",
+		"La Guerra delle Sabbie Mobili finì con un muro e un sigillo, non con una vittoria. I kaldorei lo sanno. Lo senti da come pronunciano piano il nome di Ahn'Qiraj.",
+	},
+	["sil.a.muse.w10.003"] = {
+		"Da Ironforge dicono che l'Alleanza sta facendo scorte: bende, lingotti, casse di viveri. Nessuno dice a cosa servano, ma tutti guardano a sud mentre non lo dicono.",
+		"A Cenarion Hold si parla di porte, di gong e di un esercito che si raduna nelle nostre terre. Voci, per lo più. Ma a Silithus le voci hanno il vizio di avverarsi.",
+		"Se le porte di Ahn'Qiraj dovessero riaprirsi, l'Alleanza intende farsi trovare pronta. Così dicono i quartiermastri, almeno, mentre contano i lingotti di rame.",
+	},
+	["sil.a.muse.w10.004"] = {
+		"Il Twilight's Hammer lascia i suoi accampamenti pieni di tavolette e pagine scarabocchiate. Quasi tutto è delirio sul mondo che si spacca. Una parte sembra un piano, ed è peggio.",
+		"Negli accampamenti della setta ci sono pietre erette che vibrano quando ci passi accanto. Qualunque cosa il Twilight's Hammer voglia evocare attraverso di esse, preferirei che restasse dov'è.",
+	},
+	["sil.a.muse.w10.005"] = {
+		"Guarda uno sciame di silithid abbastanza a lungo e smetti di vedere insetti. Vedi un'unica creatura con mille zampe, e sta pensando.",
+		"I silithid non combattono come bestie. Arrivano a ondate, si ritirano e tornano, come se qualcosa nel profondo dell'alveare tenesse il conto delle perdite.",
+	},
+	["sil.a.muse.w10.006"] = {
+		"I forni dei fornai sono più freschi di così. E comunque il pane verrebbe fuori mezzo di sabbia.",
+		"Qualcuno dica al deserto che può smettere. Sono {g:cotto|cotta} a puntino.",
+	},
+	["sil.a.muse.w10.007"] = {
+		"I nani di Bronzebeard Encampment scavano in mezzo a tutto questo, tranquilli come se gli alveari fossero una diceria. Nani e pietre antiche: niente riesce a separarli.",
+		"Perfino qui ci sono nani con le pale nella sabbia. Per un nano ogni rovina è una biblioteca, e Silithus è piena di libri vecchissimi.",
+	},
+	["sil.a.muse.w10.008"] = {
+		"rovescia uno stivale e guarda uscirne un rivolo di sabbia, poi se lo rimette con aria rassegnata.",
+		"si lega una striscia di stoffa su naso e bocca contro la polvere e riprende a camminare, gli occhi ridotti a fessure.",
+	},
+	["sil.a.muse.w10.009"] = {
+		"Quaggiù Stormwind sembra una storia della vita di qualcun altro. Campi verdi, strade di pietra, pioggia. Mi accontenterei di una qualunque delle tre.",
+		"Il cuore dell'Alleanza è molto più a nord. Qui siamo una manciata, a Cenarion Hold, a dividere mura e acqua con chiunque altro sia venuto a tenere la linea.",
+	},
+	["sil.a.muse.w10.010"] = {
+		"Perché il Twilight's Hammer si accampa così vicino agli alveari senza farsi divorare? O hanno una gran fortuna, o laggiù qualcosa li conosce.",
+		"I settari e i silithid si lasciano in pace a vicenda. In un deserto dove tutto mangia tutto, questa pace è la cosa più spaventosa che ci sia.",
+	},
+	["sil.a.muse.w10.011"] = {
+		"Qualcuno deve stare fra gli alveari e il resto di Kalimdor. Per ora tocca a chi difende Cenarion Hold.",
+		"Che gli alveari ronzino pure. La Hold è ancora in piedi, e noi con lei.",
+	},
+	["sil.a.npc_meet.w10.001"] = {
+		"A nord, per favore, da qualche parte dove ci sia del verde. L'ippogrifo sembra impaziente quanto me.",
+		"Portami sopra le dune. Gli alveari voglio vederli da molto in alto, e molto in fretta.",
+	},
+	["sil.a.npc_meet.w10.002"] = {
+		"Otri d'acqua, e tanti. Tutto il resto che vende questo mercante, a Silithus, è un lusso.",
+		"Questo mercante ha visto entrare barcollando dalle dune ogni genere di viaggiatore. Niente di quello che compro sorprenderà nessuno.",
+	},
+	["sil.a.quest_complete.w10.001"] = {
+		"Fatto. Quaggiù non si spreca niente, tantomeno l'aiuto.",
+		"Finito. Un cenno, una riga in un registro, e di nuovo fuori nel caldo. A Silithus questo è un grazie.",
+		"Sistemato. Silithus non è più gentile per questo, ma è un po' meno affollata.",
+	},
+	["sil.a.quest_complete.w10.002"] = {
+		"Ditelo a Ironforge e a Stormwind: l'Alleanza ha fatto la sua parte nel deserto.",
+		"Fatto. Un motivo in più perché Cenarion Hold sia contenta che l'Alleanza sia venuta.",
+	},
+	["sil.a.quest_complete.w10.003"] = {
+		"scuote la sabbia dal sacchetto della ricompensa prima di metterlo via: è già un'abitudine.",
+		"accetta il compenso, poi se ne sta immobile per un po', lasciando passare il vento caldo.",
+	},
+	["sil.a.quest_progress.w10.001"] = {
+		"Ecco tutto. Ora di nuovo attraverso le dune, e che la sabbia resti tranquilla sotto i piedi.",
+		"Tutto raccolto. Silithus mi è costata un mucchio d'acqua per questo: che almeno serva.",
+	},
+	["sil.a.subzone_enter.w10.001"] = {
+		"{subzone}. Mi fermo ad ascoltare prima di proseguire. A Silithus le orecchie vedono più lontano degli occhi.",
+		"{subzone}. Qui la sabbia è uguale a quella di ogni altro posto, ed è proprio questo che mi preoccupa.",
+		"{subzone}. Prima un sorso d'acqua, poi un'occhiata in giro. A Silithus l'ordine conta.",
+	},
+	["sil.a.victory.w10.001"] = {
+		"Torna nella sabbia. Prima o poi ti avrebbe preso comunque.",
+		"E uno. Il conto lo tiene il deserto, non io.",
+		"Stavolta resta sotto. Fra le dune c'è posto.",
+	},
+	["sil.a.victory.w10.002"] = {
+		"Una cosa in meno fra Cenarion Hold e un po' di pace.",
+		"Un po' di sabbia ripulita intorno alla Hold. I druidi potranno respirare ancora un momento.",
+	},
+	["sil.a.victory.w10.003"] = {
+		"si accovaccia a bere, e l'acqua sa della polvere della lotta.",
+		"si ripara gli occhi dalla polvere e ascolta. Sotto la sabbia, qualcosa continua a ticchettare.",
+	},
+	["sil.a.victory.w10.004"] = {
+		"Morto, ma all'alveare non importa. Ne manderà un altro, e un altro ancora, e di questo non sentirà la mancanza.",
+		"A terra. Per ogni silithid che cade, l'alveare depone cento uova.",
+	},
+	["sil.a.weather_change.w10.001"] = {
+		"si copre il viso con un panno mentre arriva la tempesta di sabbia, un muro bruno che inghiotte le dune una dopo l'altra.",
+		"volta le spalle al vento che si alza, mentre l'aria si riempie di sabbia pungente e gli alveari svaniscono nella foschia.",
+		"socchiude gli occhi contro la polvere sferzante, e ogni lembo di pelle scoperta viene raschiato a vivo.",
+	},
 ]==])

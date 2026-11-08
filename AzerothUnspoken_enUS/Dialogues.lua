@@ -1512,4 +1512,182 @@ NS:AddTexts("enUS", {
 		"Your people mend fast, so I won't go easy. Bruises today, and the skill stays after they've faded.",
 		"A troll. Long reach, quick hands, and a laugh when things go wrong. Good; that last one matters most.",
 	},
+	["faction.alliance.npcd_flightmaster_bye.w10.001"] = {
+		"Up you go. Wave at the Horde if you fly over them; it confuses them terribly.",
+		"Safe flight. The beast knows every Alliance roost by heart; trust it more than the map.",
+	},
+	["faction.alliance.npcd_flightmaster_open.w10.001"] = {
+		"Where to? Every roost of the Alliance is a friend, and the gaps in between are not my problem.",
+		"Climb on. These beasts have carried every people of the Alliance and complained about none. Can't say the same for the riders.",
+	},
+	["faction.alliance.npcd_flightmaster_route.w10.001"] = {
+		"Quick enough. Keep low in the saddle over Horde ground; their archers are bored and hopeful.",
+		"Not long. Mostly sky, a bit of Horde country underneath, and a friendly roost at the end.",
+	},
+	["faction.alliance.npcd_guard_bye.w10.001"] = {
+		"Go on, then. Keep the Alliance's name clean out there; we've trouble enough with the Defias.",
+		"Safe roads. And if you see red banners, shout.",
+	},
+	["faction.alliance.npcd_guard_danger.w10.001"] = {
+		"Horde raiders on the roads, the dead in the north, bandits everywhere in between. Pick your fights, and pick them near friends.",
+		"Danger? The Alliance has more fronts than soldiers. Wherever you're headed, expect someone with a blade got there first.",
+	},
+	["faction.alliance.npcd_guard_directions.w10.001"] = {
+		"Follow the blue banners and you'll not go far wrong. Where the colors turn red, turn round.",
+		"Ask anyone in Alliance colors; they all know the way to the inn, the bank and the trouble.",
+		"Mind the signposts. Every people of the Alliance has argued over the spelling, but they all point true.",
+	},
+	["faction.alliance.npcd_guard_open.w10.001"] = {
+		"Alliance colors. Fine by me. What do you need? Keep it short; the watch doesn't wait.",
+		"An honest face under Alliance colors. Speak your business.",
+		"Whatever people you hail from, you'll get a straight answer from me. Ask.",
+	},
+	["faction.alliance.npcd_innkeeper_bye.w10.001"] = {
+		"Safe roads. Tell them in the next Alliance town that the beds were clean; it does wonders for trade.",
+		"Off you go. If you see a blue banner on the horizon, that's a friend; if it's red, keep walking.",
+		"Mind yourself out there. The Alliance has fewer good people than it thinks.",
+	},
+	["faction.alliance.npcd_innkeeper_news.w10.001"] = {
+		"Talk at my tables is all Alterac lately: the Stormpike want volunteers and the Frostwolves want them gone.",
+		"A courier swore the Sentinels in Ashenvale are short of arrows again. The Warsong axes never seem short of anything.",
+		"Nobody's heard a thing about the king. Every evening someone in Alliance colors raises a mug to him, as if that might fetch him home.",
+	},
+	["faction.alliance.npcd_innkeeper_open.w10.001"] = {
+		"Come in, come in. Whatever capital you hail from, the stew's the same and so is the price.",
+		"Sit anywhere. The Alliance keeps passing through my door, and not one of them has ever wiped their boots.",
+	},
+	["faction.alliance.npcd_innkeeper_open.w10.002"] = {
+		"Another soul walking the Alliance's roads. A bowl, a bench and the latest rumors: pick two, or all three.",
+		"Come in. You've the look of someone carrying the Alliance's errands on their back. Set them down a while.",
+	},
+	["faction.alliance.npcd_innkeeper_rest.w10.001"] = {
+		"Room's at the top of the stairs. Sleep sound; there's a bolt on the door and allies in every room around you.",
+		"Take the corner bed. Soldiers of every Alliance people have slept in it, and none complained of the mattress. Of the snoring, yes.",
+	},
+	["faction.alliance.npcd_innkeeper_sit.w10.001"] = {
+		"There. Sit like you mean it; the war can do without you for one bowl.",
+		"Good, rest your legs. The Alliance won't fall while you finish your drink, and if it does, I'll wake you.",
+	},
+	["faction.alliance.npcd_innkeeper_thanks.w10.001"] = {
+		"No need. Feeding the folk who keep the roads open is the best trade I make.",
+		"You're welcome. Keep the Horde off my supply carts and we'll call it square.",
+	},
+	["faction.alliance.npcd_merchant_bye.w10.001"] = {
+		"Good trading. May it keep you alive long enough to come and buy more.",
+		"Farewell. Spend the rest on the Alliance's enemies, not its taverns.",
+		"Off with you, and luck at the front. Bring me news; I'll trade it for a discount.",
+	},
+	["faction.alliance.npcd_merchant_news.w10.001"] = {
+		"Arrows are dear again; the Sentinels in Ashenvale are buying every shaft they can find.",
+		"Ore's moving south from Ironforge by the cartload. Someone in the Alliance is expecting a long war.",
+	},
+	["faction.alliance.npcd_merchant_open.w10.001"] = {
+		"Ah, Alliance coin! Spend it here, before the war spends it for you.",
+		"Have a look. Supplies for every front the Alliance has, and a few for fronts it hasn't opened yet.",
+	},
+	["faction.alliance.npcd_merchant_open.w10.002"] = {
+		"Coming from the front, or heading to it? Either way you'll want bandages, and I've got bandages.",
+		"Folk who fight for the Alliance buy the same three things: food, rope and something to mend what broke. Which is it today?",
+	},
+	["faction.alliance.npcd_merchant_thanks.w10.001"] = {
+		"Thank you. Alliance coin spends the same in every city, and so do good manners.",
+		"My pleasure. The whole Alliance passes my counter sooner or later; glad to see you early.",
+	},
+	["faction.alliance.npcd_merchant_wares.w10.001"] = {
+		"Field rations, bandages, rope, oil for the lamps. Everything an Alliance soldier forgets until the moment it's needed.",
+		"Something from every corner of the Alliance: flasks from the mountain, thread from elven looms, a gnome's patent tinderbox. Take your pick.",
+	},
+	["faction.alliance.npcd_trainer_open.w10.001"] = {
+		"Good. The Alliance needs people who keep learning; the Horde certainly does.",
+		"Step in. Whatever people you come from, the lesson's the same: practice until the Horde regrets it.",
+	},
+	["faction.horde.npcd_flightmaster_bye.w10.001"] = {
+		"Hold tight and trust the beast. It has carried messages for the Warchief himself.",
+		"Safe flight. Land soft, and give the flight master at the other end my regards.",
+	},
+	["faction.horde.npcd_flightmaster_open.w10.001"] = {
+		"Climb on. The beast knows every Horde roost by heart.",
+		"Up you get. Courier, soldier or wanderer, the Horde's skies carry them all the same.",
+	},
+	["faction.horde.npcd_flightmaster_route.w10.001"] = {
+		"Quiet route, mostly over Horde ground. If you see Alliance colors below, wave; they hate that.",
+		"Long enough to doze. The beast won't set down anywhere that doesn't fly our banner.",
+	},
+	["faction.horde.npcd_guard_bye.w10.001"] = {
+		"Off you go. The Horde has eyes on every road; you're never as alone as it feels.",
+		"Walk well. And if the Alliance asks your business, your business is none of theirs.",
+	},
+	["faction.horde.npcd_guard_danger.w10.001"] = {
+		"Alliance scouts travel the roads in twos and threes. If you spot one, look for the others before you draw.",
+		"The Scourge doesn't care what banner you fly. If you head north, go in company, and burn what falls.",
+	},
+	["faction.horde.npcd_guard_directions.w10.001"] = {
+		"Follow the Horde's banners; they line every road worth walking, and the roads without them are best avoided.",
+		"Ask any guard along the way. We all know the roads; most of us have patrolled them.",
+		"Straight on, and if you get lost, find the nearest Horde fire and ask. Someone always knows.",
+	},
+	["faction.horde.npcd_guard_open.w10.001"] = {
+		"Horde colors. Good. What do you need, soldier?",
+		"Speak. If it's trouble, I'd rather hear it from one of ours.",
+		"Stand easy. You're among the Horde; ask what you like.",
+	},
+	["faction.horde.npcd_innkeeper_bye.w10.001"] = {
+		"Safe road. Come back with all your parts; the Horde can't spare them.",
+		"Off you go. If you meet the Alliance, give them my regards: the pointed kind.",
+		"Go well. There'll be a bowl waiting, whatever corner of the Horde you wander back from.",
+	},
+	["faction.horde.npcd_innkeeper_news.w10.001"] = {
+		"Word from Ashenvale: the Sentinels hit the lumber camps again. Orgrimmar wants the timber regardless.",
+		"Travelers say the Plaguelands are crawling worse than last season. The Dark Lady's people went north with grim faces.",
+		"Couriers from Alterac say the Frostwolves are digging in. If you're headed that way, take a warm cloak and a short temper.",
+	},
+	["faction.horde.npcd_innkeeper_open.w10.001"] = {
+		"Come in, come in. Horde colors get the warm bench and the first ladle; the rest wait their turn.",
+		"In you come. Whatever road you walked for the Horde, it ends at my door for a while.",
+	},
+	["faction.horde.npcd_innkeeper_open.w10.002"] = {
+		"Sit anywhere. I've had orcs, trolls, tauren and Forsaken at the same table; you'll fit somewhere.",
+		"Mind the drum by the door. Some grunt left it last week and nobody dares move it.",
+	},
+	["faction.horde.npcd_innkeeper_rest.w10.001"] = {
+		"Room's yours. The walls are thin, but nobody under this roof flies the wrong banner.",
+		"Get some rest. If anything stirs out on the road, the Horde's guards will hear it long before you do.",
+	},
+	["faction.horde.npcd_innkeeper_sit.w10.001"] = {
+		"Take a stool. Every soldier of the Horde earns a sit-down now and then, whatever the officers say.",
+		"Sit, sit. Put your feet up; the war can wait the length of a cup.",
+	},
+	["faction.horde.npcd_innkeeper_thanks.w10.001"] = {
+		"No thanks needed. Keeping the Horde fed is my part of the war.",
+		"Bah, it's nothing. Pay me back by coming home with your bones where they belong.",
+	},
+	["faction.horde.npcd_merchant_bye.w10.001"] = {
+		"Good trading. Spend the rest on something that keeps the Horde standing.",
+		"Farewell. If that strap breaks in a scrap with the Alliance, I want to hear the story.",
+		"Go well. Come back richer; I'll gladly help you fix that.",
+	},
+	["faction.horde.npcd_merchant_news.w10.001"] = {
+		"Timber's dear again. Every time the Sentinels raid the Warsong camps, Orgrimmar's carpenters weep.",
+		"Caravans through the Barrens keep losing crates to the centaur. Somebody in the Horde ought to do something. Ideally someone with your shoulders.",
+	},
+	["faction.horde.npcd_merchant_open.w10.001"] = {
+		"Horde coin, Horde goods. Look around; nothing on these shelves came from Stormwind, I promise.",
+		"Ah, the right colors. Take your time; the Alliance doesn't shop at my stall.",
+	},
+	["faction.horde.npcd_merchant_open.w10.002"] = {
+		"Come in. Rope, bandages, waterskins: the things the Horde's songs leave out and every soldier needs.",
+		"Come, look. If it'll keep you alive between one outpost and the next, I probably stock it.",
+	},
+	["faction.horde.npcd_merchant_thanks.w10.001"] = {
+		"My thanks. Horde coin spent among the Horde: the best kind of trade there is.",
+		"Pleasure's mine. Tell your war band where you got it.",
+	},
+	["faction.horde.npcd_merchant_wares.w10.001"] = {
+		"Rations that keep, bandages that hold, and a whetstone or two. The Horde marches on plain things.",
+		"Waterskins from Mulgore, rope from Durotar, salt from the coast. Goods from every corner of the Horde, all on one shelf.",
+	},
+	["faction.horde.npcd_trainer_open.w10.001"] = {
+		"Ready to learn? Good. The Horde needs its fighters sharper every season, and you're one of them.",
+		"Stand there and show me. Whatever people you come from, the Horde trains you the same: hard, and honestly.",
+	},
 }, "base_dialogues")

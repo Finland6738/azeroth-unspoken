@@ -2890,4 +2890,415 @@ NS:AddTexts("itIT", {
 		"Un graffio. Guarda bene: già sparito.",
 		"Mi hai lasciato un segno. Dagli un minuto e non avrai lasciato nemmeno quello.",
 	},
+	["band.b60.battle.w10.001"] = {
+		"Avanti. Ho avuto una lunga strada per prepararmi a te.",
+		"Prenditi il tuo tempo. Ho anni di pratica da spendere qui.",
+		"Cominciamo. Preferirei non dedicarti tutta la strada.",
+	},
+	["band.b60.battle.w10.002"] = {
+		"E va bene. Dimostrami che valevi il conto del fabbro.",
+		"D'accordo. Cerca di non rovinarmi niente: le riparazioni costano care, di questi tempi.",
+		"Tu e io, dunque. Uno dei due sta per pentirsene, e io ho fatto i compiti.",
+	},
+	["band.b60.battle.w10.003"] = {
+		"Respira. Leggilo. Ogni scontro ti dice come finirà, se ascolti presto.",
+		"Contagli le abitudini. Tutto ciò che combatte ne ha qualcuna.",
+		"Piano. Lascia lavorare gli anni.",
+	},
+	["band.b60.battle.w10.004"] = {
+		"entra nello scontro con l'economia di una lunga pratica, senza sprechi.",
+		"affronta il nemico senza una parola, ogni gesto ridotto a ciò che funziona.",
+		"si muove per {g:primo|prima}, e si muove bene, come chi ha smesso da tempo di tirare a indovinare.",
+	},
+	["band.b60.battle.w10.005"] = {
+		"Fatti sotto! Non sono {g:salito|salita} fin quassù per fermarmi qui!",
+		"Dammi tutto. Me ne accorgo, se ti trattieni.",
+		"Colpisci forte quanto vuoi. Ci hanno provato cose migliori di te.",
+	},
+	["band.b60.battle.w10.006"] = {
+		"Un altro. Ce n'è sempre un altro, ed è proprio per questo che qui deve esserci qualcuno di forte.",
+		"Non per la gloria. Solo perché questa cosa non arrivi mai a qualcuno più debole.",
+		"Meglio io che qualcuno appena partito.",
+	},
+	["band.b60.battle.w10.007"] = {
+		"E va bene. Ma gli stivali te li metto in conto.",
+		"E sia. In fretta, per favore: ho una lista.",
+		"Possiamo farlo in modo efficiente? La giornata è lunga, e la mia lista pure.",
+	},
+	["band.b60.lowhp.w10.001"] = {
+		"Ah! Finalmente qualcosa che sa quello che fa!",
+		"Bene. Cominciavo a dimenticare che effetto facesse.",
+		"Eccoti. Mi chiedevo quando sarebbe cominciato lo scontro vero.",
+	},
+	["band.b60.lowhp.w10.002"] = {
+		"Male. Non il peggio. Ho imparato la differenza, e adesso è tutto.",
+		"Calma. Il panico è per chi non c'è mai finito così dentro.",
+		"Colpo duro. Va bene. Ragiona, non agitarti.",
+	},
+	["band.b60.lowhp.w10.003"] = {
+		"barcolla, poi pianta i piedi con l'ostinazione di chi ha fatto troppa strada per cadere proprio qui.",
+		"sanguina, respira e non cede di un passo.",
+	},
+	["band.b60.threat.w10.001"] = {
+		"Pensa bene con chi stai attaccando briga. Poi scegline uno più piccolo.",
+		"Guarda quanto è consumato questo equipaggiamento e chiediti come ci è arrivato.",
+		"Non ti conviene. Te lo dico per cortesia.",
+	},
+	["band.b60.victory.w10.001"] = {
+		"Sistemato. La lunga strada non si accorcia da sola.",
+		"Ecco fatto. Avanti con la lunga lista.",
+		"Finita. Rattoppo il graffio e vado avanti.",
+	},
+	["band.b60.victory.w10.002"] = {
+		"Pulito. Anni fa mi sarebbe costato tutto quello che avevo.",
+		"Non c'è stata partita. Ricordo un tempo in cui ci sarebbe stata.",
+		"Facile, e non fingerò che lo sia sempre stato.",
+	},
+	["band.b60.victory.w10.003"] = {
+		"abbassa la guardia solo dopo una lunga occhiata al caduto, con la prudenza di chi ha visto i morti rialzarsi.",
+		"controlla il corpo, i dintorni e il proprio equipaggiamento, in quest'ordine, per lunga abitudine.",
+		"si allontana dal nemico abbattuto ed è già con la testa al prossimo.",
+	},
+	["band.b60.victory.w10.004"] = {
+		"Chiederei una vera sfida, ma in questo mondo di solito risponde un drago.",
+		"Benissimo. Qualcuno può segnarsi che è andata bene? Non succede sempre.",
+		"Finita, e neanche un graffio nuovo. Segnatelo sul calendario.",
+	},
+	["band.b60.victory.w10.005"] = {
+		"Un altro nemico finito per mano mia. Il conto ha smesso da tempo di significare qualcosa, e questo mi preoccupa più del conto.",
+		"È finita. Cerco ancora di accorgermi di ognuno; il giorno in cui non lo farò, qualcosa in me sarà morto prima.",
+		"Finita. Ognuno riceve ancora da me un attimo di silenzio.",
+	},
+	["band.b60.victory.w10.006"] = {
+		"La prossima volta mandate qualcosa che abbia sentito parlare di me.",
+		"Che lo si racconti ovunque si radunino quelli come te.",
+	},
+	["ctype.beast.battle.w10.001"] = {
+		"Tutto denti e niente buone maniere. Va bene, oggi sono dello stesso umore.",
+		"Non sono cibo. Chiariamolo subito.",
+		"Pasto sbagliato. Molto sbagliato.",
+	},
+	["ctype.beast.battle.w10.002"] = {
+		"È il tuo territorio, lo so. Lo attraverso lo stesso.",
+		"Lo segni, lo difendi, lo perdi. Così il selvatico tiene i suoi confini.",
+	},
+	["ctype.beast.battle.w10.003"] = {
+		"Non mi odia. Ha solo deciso, più in fretta di qualunque persona, che sono un pericolo.",
+		"Niente rancore in quegli occhi. Solo i conti semplici della fame.",
+	},
+	["ctype.beast.battle.w10.004"] = {
+		"si abbassa all'altezza della bestia, occhi negli occhi, in attesa del primo balzo.",
+		"resta immobile un battito più a lungo della bestia, e la lascia venire.",
+	},
+	["ctype.beast.battle.w10.005"] = {
+		"Sì, sì, denti grandissimi. Ne ho già visti, di denti.",
+		"Ringhia, soffia, fai quel che sai fare. Ho sentito di peggio davanti a una taverna.",
+	},
+	["ctype.beast.battle.w10.006"] = {
+		"Le bestie non bluffano. Quando arriva, arriva dritta e tutta insieme. Preparati al tutto insieme.",
+		"Questa non fa finte. Guarda come sposta il peso.",
+	},
+	["ctype.beast.battle.w10.007"] = {
+		"Avanti, allora! Fammi vedere per cosa ti ha fatto il selvatico!",
+		"Denti in fuori? Bene. Non facciamo finta che sia una chiacchierata.",
+	},
+	["ctype.beast.battle.w10.008"] = {
+		"Ti avrei girato intorno, se me l'avessi lasciato fare.",
+		"Niente rancore. Tanto in te non c'è posto per queste cose.",
+	},
+	["ctype.beast.battle.w10.009"] = {
+		"Più vecchia di ogni strada, questa lite: qualcosa con i denti, qualcosa con una volontà, e un solo pezzo di terra.",
+		"Denti contro ingegno. La lotta più vecchia che ci sia.",
+	},
+	["ctype.beast.battle.w10.010"] = {
+		"Tu annusi me, io annuso te. Nessuno dei due ci fa una gran figura.",
+		"Senti quest'odore? Sono io, non il pranzo.",
+	},
+	["ctype.beast.battle.w10.011"] = {
+		"Tu hai la velocità, io ho la testa. Vediamo quale delle due conta.",
+		"Veloce, eh? Veloce non vuol dire furbo.",
+	},
+	["ctype.beast.battle.w10.012"] = {
+		"legge l'acquattarsi della bestia, la molla che si carica, e si toglie da dove intende atterrare.",
+		"regge lo sguardo fisso della bestia senza distogliere gli occhi.",
+	},
+	["ctype.beast.battle.w10.013"] = {
+		"Ogni bestia crede che la terra sotto le zampe sia sua. Questa, magari, ha pure ragione.",
+		"Crede che questo pezzo di terra sia suo. Forse lo è davvero.",
+	},
+	["ctype.beast.lowhp.w10.001"] = {
+		"Quello sui tuoi denti è il mio sangue. Che maleducazione.",
+		"Non sono ancora la cena! Smetti di apparecchiare!",
+		"{g:Masticato|Masticata} sì, {g:inghiottito|inghiottita} no.",
+	},
+	["ctype.beast.lowhp.w10.002"] = {
+		"Adesso sente l'odore del sangue. Spingerà di più. Non mostrarle la schiena.",
+		"Mai voltarsi e scappare davanti a una bestia. È lì che comincia davvero.",
+	},
+	["ctype.beast.lowhp.w10.003"] = {
+		"Sanguinare non vuol dire essere vinti. Vieni a imparare la differenza!",
+		"A brandelli sì, a terra no!",
+	},
+	["ctype.beast.lowhp.w10.004"] = {
+		"preme una mano sul morso e tiene lo sguardo all'altezza di quello della bestia.",
+		"sanguina da più di un punto, e ancora non mostra la schiena alla bestia.",
+	},
+	["ctype.beast.threat.w10.001"] = {
+		"Sparisci, {target}. Da mangiare valgo meno dei guai che ti do.",
+		"Sciò. Sono duro da masticare e di pessimo umore.",
+	},
+	["ctype.beast.threat.w10.002"] = {
+		"Guardami. Oggi l'animale più grosso sono io.",
+		"Fatti indietro. Il tuo istinto lo sa già che non sono una preda.",
+	},
+	["ctype.beast.victory.w10.001"] = {
+		"Più in fretta che ho potuto. Non avevo altro da offrirti.",
+		"È finita. Niente più caccia, per te.",
+	},
+	["ctype.beast.victory.w10.002"] = {
+		"Il selvatico non la piangerà. Presto qualcos'altro si prenderà il suo pezzo di terra.",
+		"Il suo posto non resterà vuoto. Nel selvatico non succede mai.",
+	},
+	["ctype.beast.victory.w10.003"] = {
+		"si pulisce le mani e si allontana dalla carcassa, il fiato ancora corto.",
+		"cerca morsi e graffi, ne trova qualcuno, e decide che possono aspettare.",
+	},
+	["ctype.beast.victory.w10.004"] = {
+		"E adesso chi è il predatore? Non rispondere, era una domanda retorica.",
+		"Non oggi, creatura. Prova con qualcuno più lento.",
+	},
+	["ctype.beast.victory.w10.005"] = {
+		"Le bestie aprono sempre con la stessa mossa. La prossima non avrà imparato niente da questa.",
+		"Sempre lo stesso balzo. L'istinto è onesto, e l'onestà si legge facile.",
+	},
+	["ctype.beast.victory.w10.006"] = {
+		"Guarda qui. Segni di denti. Splendido.",
+		"Qualcosa di mio è stato masticato. Scoprirò poi cosa.",
+	},
+	["ctype.beast.victory.w10.007"] = {
+		"Ha lottato come se dopo non ci fosse niente. Per quella bestia, infatti, non c'era.",
+		"Tutta quella furia, e adesso solo silenzio. Il selvatico spreca le sue vite.",
+	},
+	["ctype.beast.victory.w10.008"] = {
+		"Denti contro volontà, e sono io ad andarmene sulle mie gambe.",
+		"Il selvatico ha mandato il meglio che aveva. Non è bastato.",
+	},
+	["ctype.beast.victory.w10.009"] = {
+		"china il capo un istante sulla bestia, come si saluta un rivale che non ha mai mentito.",
+		"lascia passare in silenzio l'ultimo respiro della bestia, poi riparte.",
+	},
+	["ctype.beast.victory.w10.010"] = {
+		"Il cuore corre ancora come se qualcosa lo inseguisse. Strano, cosa ti lascia addosso una bestia.",
+		"Ancora sui nervi. Per un po' ogni fruscio sembra fatto di denti.",
+	},
+	["ctype.beast.victory.w10.011"] = {
+		"La fame ti ha dato coraggio. In cambio ti ha tolto la prudenza.",
+		"Dovevi tenerti alla larga. L'istinto te l'aveva detto.",
+	},
+	["ctype.demon.battle.w10.001"] = {
+		"Ti nutri di paura. Qui resterai a digiuno.",
+		"Hai fame di paura? Da me non ne avrai.",
+	},
+	["ctype.demon.lowhp.w10.001"] = {
+		"Vuoi la mia anima? Vieni a guadagnartela.",
+		"Da me non avrai niente. Nemmeno questo.",
+	},
+	["ctype.demon.victory.w10.001"] = {
+		"Torna a casa, demone. Qui nessuno ti voleva.",
+		"Qualunque patto ti abbia portato qui, ora non vale più.",
+	},
+	["ctype.demon.victory.w10.002"] = {
+		"L'odore resterà addosso per ore. Si lasciano sempre dietro qualcosa.",
+		"Sparito, ma il fetore resta. I demoni non se ne vanno mai puliti.",
+	},
+	["ctype.dragon.victory.w10.001"] = {
+		"Ali chiuse per sempre. Le leggende restino leggende.",
+		"Stirpe di drago, e a terra. Qualcuno dovrebbe scriverlo da qualche parte.",
+		"Da quaggiù non fai poi tanta paura, eh?",
+	},
+	["ctype.elemental.battle.w10.001"] = {
+		"Niente occhi da leggere, niente faccia da ingannare. Solo materia, e arrabbiata.",
+		"Tutta furia e niente testa. Avanti, allora.",
+		"Qualunque cosa ti tenga legato qui, io la sciolgo.",
+	},
+	["ctype.elemental.lowhp.w10.001"] = {
+		"Non si stanca e non sanguina. Io faccio tutte e due le cose. Chiudila in fretta.",
+		"Lui non si stanca. Io sì. Sbrigati.",
+	},
+	["ctype.elemental.victory.w10.001"] = {
+		"Torna a essere materia e basta.",
+		"Ecco. Resta solo ciò di cui eri fatto.",
+		"Disfatto. Il mondo può riprendersi i suoi pezzi.",
+	},
+	["ctype.elemental.victory.w10.002"] = {
+		"guarda la forma dell'elementale disfarsi e tornare qualcosa di semplice e innocuo.",
+		"aspetta che della creatura non si muova più nulla, poi lascia andare il fiato.",
+	},
+	["ctype.giant.battle.w10.001"] = {
+		"Bene. Attenti ai piedi, attenti alle mani, attenti a tutto.",
+		"Ogni tuo passo vale dieci dei miei. Per fortuna sono {g:svelto|svelta}.",
+	},
+	["ctype.giant.victory.w10.001"] = {
+		"È caduto su un bel pezzo di terra. E se l'è presa comoda.",
+		"A terra. L'ha sentito perfino il suolo.",
+		"Attenti, cade! Scusate, non ho resistito.",
+	},
+	["ctype.humanoid.battle.w10.001"] = {
+		"Questa strada l'hai scelta tu. Puoi ancora sceglierne un'altra.",
+		"Ultima occasione: posa tutto e vattene.",
+	},
+	["ctype.humanoid.battle.w10.002"] = {
+		"Hai l'aria di chi ci ha pensato bene. Non è così.",
+		"Piano audace. Vediamo se sopravvive all'incontro con me.",
+	},
+	["ctype.humanoid.battle.w10.003"] = {
+		"Una bestia lotta per mangiare. Questo lotta perché qualcuno, a un certo punto, ha deciso così.",
+		"Qualunque cosa li abbia portati qui, ormai è tardi per chiederlo.",
+	},
+	["ctype.humanoid.battle.w10.004"] = {
+		"nota come l'avversario tiene l'arma, alta e nervosa, e scivola verso il lato scoperto.",
+		"gira lentamente, lasciando che sia l'avversario a decidere troppo presto.",
+	},
+	["ctype.humanoid.battle.w10.005"] = {
+		"Tu hai portato un piano. Io un caratteraccio peggiore.",
+		"Fai pure i tuoi piani. Io mi sto già muovendo.",
+	},
+	["ctype.humanoid.battle.w10.006"] = {
+		"Guarda le mani, non le urla. Chi ragiona mente con tutto tranne che con le mani.",
+		"Arriva una finta. Quasi sempre fanno una finta, prima.",
+	},
+	["ctype.humanoid.battle.w10.007"] = {
+		"Qualcuno non tornerà a casa. Vediamo chi.",
+		"Da qui se ne va uno solo. Preferirei essere io.",
+	},
+	["ctype.humanoid.battle.w10.008"] = {
+		"Oh, bene, uno che ragiona. Le bestie sono così ripetitive.",
+		"Finalmente qualcuno che potrebbe sorprendermi.",
+	},
+	["ctype.humanoid.battle.w10.009"] = {
+		"{target}. Sapevi dove stavi andando a cacciarti.",
+		"Sapevi quanto costava questa strada. Lo sapevo anch'io.",
+	},
+	["ctype.humanoid.battle.w10.010"] = {
+		"Peggio di qualunque bestia: questo può odiarmi, e ricordarsi il perché.",
+		"Le bestie dimenticano. Le persone tengono il conto. Attenzione.",
+	},
+	["ctype.humanoid.battle.w10.011"] = {
+		"coglie un lampo di dubbio nel nemico e non gli dà il tempo di crescere.",
+		"serra la mascella mentre l'avversario avanza: non restano parole che cambierebbero qualcosa.",
+	},
+	["ctype.humanoid.battle.w10.012"] = {
+		"Possiamo evitare? No? Va bene.",
+		"Mi bastava un cenno di saluto. Decidi tu.",
+	},
+	["ctype.humanoid.battle.w10.013"] = {
+		"In guardia, allora. Non facciamoci perdere tempo a vicenda.",
+		"Basta fissarci. Fatti sotto.",
+	},
+	["ctype.humanoid.lowhp.w10.001"] = {
+		"Allora sai quello che fai. Che seccatura.",
+		"Qualcuno ti ha addestrato bene. Peccato.",
+	},
+	["ctype.humanoid.lowhp.w10.002"] = {
+		"L'hanno visto. Adesso incalzeranno, come farei io. Non farti trovare dove se lo aspettano.",
+		"Sentono la debolezza come qualsiasi bestia. Nascondila.",
+	},
+	["ctype.humanoid.lowhp.w10.003"] = {
+		"Sanguino, sì. Mi arrendo, no.",
+		"Ti serve ben altro per mettermi a terra.",
+		"Non ancora. Non per mano tua.",
+	},
+	["ctype.humanoid.lowhp.w10.004"] = {
+		"sputa sangue e torna a fronteggiare l'avversario, lo sguardo duro.",
+		"arretra di un passo cauto, si guadagna un respiro, e osserva la prossima scelta dell'avversario.",
+	},
+	["ctype.humanoid.threat.w10.001"] = {
+		"Puoi ancora voltarti. Quella porta si chiude presto.",
+		"Vattene. Hai la scelta che a una bestia non tocca mai.",
+	},
+	["ctype.humanoid.threat.w10.002"] = {
+		"Pensaci bene, {target}. Tu sei di quelli che possono.",
+		"Usa la testa. Serve a questo.",
+	},
+	["ctype.humanoid.victory.w10.001"] = {
+		"Qualcuno gli aveva insegnato a combattere così. Anni di lavoro, spariti in un attimo.",
+		"Qualcuno gliel'aveva insegnato. Sprecato, adesso.",
+	},
+	["ctype.humanoid.victory.w10.002"] = {
+		"Questa è chiusa. Avrei preferito parlarne.",
+		"Finita. Potevi andartene.",
+	},
+	["ctype.humanoid.victory.w10.003"] = {
+		"abbassa la guardia piano, come se l'avversario a terra potesse ancora cambiare idea.",
+		"resta un momento accanto al nemico caduto, riprende fiato, non dice nulla.",
+	},
+	["ctype.humanoid.victory.w10.004"] = {
+		"Buona tattica, pessimo tempismo. La prima parte me la tengo.",
+		"Un'apertura furba. Me la prendo io.",
+	},
+	["ctype.humanoid.victory.w10.005"] = {
+		"Ti conveniva startene a casa tua, ovunque fosse.",
+		"La prossima volta, scegliti un mestiere più tranquillo.",
+	},
+	["ctype.humanoid.victory.w10.006"] = {
+		"Nessun piacere. Solo il passo successivo della strada, e un peso da portare per un po'.",
+		"Nessuna gioia, stavolta. Solo meno rumore.",
+	},
+	["ctype.humanoid.victory.w10.007"] = {
+		"Questo sì che è stato uno scontro. Va riconosciuto: sapevi il fatto tuo.",
+		"Onore al merito. Mi hai fatto sudare.",
+	},
+	["ctype.humanoid.victory.w10.008"] = {
+		"allontana con un calcio l'arma caduta prima di ogni altra cosa, abitudine di chi combatte con prudenza.",
+		"scosta col piede l'arma dell'avversario, per sicurezza.",
+	},
+	["ctype.humanoid.victory.w10.009"] = {
+		"Una bestia la dimentico prima di cena. Le persone mi restano addosso un po' di più, che lo voglia o no.",
+		"Le bestie svaniscono entro cena. Le persone no.",
+	},
+	["ctype.humanoid.victory.w10.010"] = {
+		"Be', questa discussione l'ho vinta io.",
+		"La prendo come una resa.",
+	},
+	["ctype.humanoid.victory.w10.011"] = {
+		"Se altri come te stanno guardando: ecco come va a finire.",
+		"Il prossimo prenda nota.",
+	},
+	["ctype.humanoid.victory.w10.012"] = {
+		"Le mani almeno sono ferme. Un nemico che ragiona ti svuota più di qualunque artiglio.",
+		"Ingegno contro ingegno. Sfinisce.",
+	},
+	["ctype.mechanical.battle.w10.001"] = {
+		"Qualcuno ti ha costruito. Vediamo quanto bene.",
+		"Ingranaggi e cattive intenzioni. Cerchiamo il bullone allentato.",
+	},
+	["ctype.mechanical.victory.w10.001"] = {
+		"Rottame. Chissà dove, un ingegnere sta piangendo.",
+		"Ha smesso di ticchettare. Bene.",
+		"Tutti quei pezzi, e nessuno che servisse a pensare.",
+	},
+	["ctype.undead.lowhp.w10.001"] = {
+		"Non mi unisco a voi. Non oggi, e non così.",
+		"Non sono ancora dei vostri!",
+	},
+	["ctype.undead.lowhp.w10.002"] = {
+		"Non ha più niente da perdere. Io sì. Ricordatelo, e muoviti.",
+		"Dalla sua parte niente da perdere. Dalla mia, tutto.",
+	},
+	["ctype.undead.threat.w10.001"] = {
+		"Torna nella tua fossa, finché c'è ancora posto.",
+		"Sdraiati e resta lì. Ultima offerta.",
+	},
+	["ctype.undead.victory.w10.001"] = {
+		"Giù nella terra, e stavolta niente passeggiate.",
+		"La terra ti rivuole. Va'.",
+	},
+	["ctype.undead.victory.w10.002"] = {
+		"Chi l'ha rialzato non gliel'ha mai chiesto. Ai morti nessuno chiede niente.",
+		"Non ha mai scelto di camminare. È questo il peggio.",
+	},
+	["ctype.undead.victory.w10.003"] = {
+		"si scosta dai resti e aspetta un momento, per essere {g:sicuro|sicura} che restino fermi.",
+		"osserva i resti un respiro più del necessario. Con i morti, si impara.",
+	},
 }, "base_combat")

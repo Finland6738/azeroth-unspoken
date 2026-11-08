@@ -528,4 +528,623 @@ AU:RegisterRegionalTexts("eastern", "enUS", "eastern_dungeons", [==[
 		"listens as the noise of the fight fades into the jungle, while the drums higher up beat on without missing a stroke.",
 		"steps back onto the old stone path, brushing vines from {g:his|her} shoulders, and looks up toward the temples.",
 	},
+	["brd.attack.w10.001"] = {
+		"Here's one for the Ring of Law!",
+		"Put that on the emperor's tab!",
+	},
+	["brd.battle.w10.001"] = {
+		"For the emperor? He won't even notice you're gone.",
+		"Come on, then. Thaurissan can spare one more guard.",
+	},
+	["brd.battle.w10.002"] = {
+		"Can't anyone cross this city without a brawl?",
+		"Fight first, drinks after. The local custom, I hear.",
+		"Easy! I'm only here for the ale!",
+	},
+	["brd.battle.w10.003"] = {
+		"braces on the warm flagstones and takes the attack in a glow of red from below.",
+		"meets the charge while the ring of the city's hammers carries on behind every blow.",
+	},
+	["brd.battle.w10.004"] = {
+		"I didn't come all this way to end up in your cells.",
+		"Chains? Not today. Not tomorrow either.",
+		"Lock me up? You'll need more than you've got.",
+	},
+	["brd.battle.w10.005"] = {
+		"Away from the edges. Down here a stumble ends in lava.",
+		"Watch their hands. In this city, fire comes out of every one of them.",
+	},
+	["brd.encounter_end.w10.001"] = {
+		"{encounter} is down. Somebody tell the emperor his court just shrank.",
+		"The city's still hammering away, but {encounter} won't hear it again.",
+	},
+	["brd.encounter_end.w10.002"] = {
+		"All down. The forges didn't even pause. Up, and again.",
+		"Beaten, with the Dark Iron watching. Work out what went wrong, then come back.",
+	},
+	["brd.lowhp.w10.001"] = {
+		"Not like this. I won't end up in their prison block.",
+		"Get me out of the fire before I join it!",
+	},
+	["brd.lowhp.w10.002"] = {
+		"Too hot to think. Back away, now.",
+		"If I drop here, the Dark Iron will melt my gear down by supper.",
+		"Breathe. Slowly. The heat wants me to panic.",
+	},
+	["brd.muse.w10.001"] = {
+		"Three dwarven clans went to war over Ironforge, and the losers dug this deep to win it back. They found something worse than losing.",
+		"Bronzebeard, Wildhammer, Dark Iron. The first two still argue over ale. The third has fire for a landlord.",
+		"Each Dark Iron down here carries the old defeat like a coal in the chest. It has kept them warm for a very long time.",
+	},
+	["brd.muse.w10.002"] = {
+		"Dark Iron ale. Brewed over lava, served by people who'd happily kill you. It had better be good.",
+		"In the middle of a war, in this city, some dwarf is pulling pints. That's either madness or the most dwarven thing I've ever seen.",
+	},
+	["brd.muse.w10.003"] = {
+		"There's a prison block in this city, and not everyone in those cells is a criminal. Some just took the wrong road through the Searing Gorge.",
+		"The Dark Iron keep prisoners the way they keep everything else: chained, counted and far from the door.",
+		"Whoever is locked in those cells has heard nothing but hammers for who knows how long. I'd want someone to come for me.",
+	},
+	["brd.muse.w10.004"] = {
+		"listens to the city: hammers, bellows, the hiss of quenched iron, all of it rising and falling like breathing.",
+		"notices that every surface here is warm, the rail, the stone, the very air, and that nothing ever cools.",
+	},
+	["brd.muse.w10.005"] = {
+		"They hold trials in an arena here and call it law. The verdict is whoever walks out.",
+		"The Ring of Law: a crowd, a judge, and a gate that opens on whatever beast they've picked for you. Justice, Dark Iron style.",
+		"An arena with a judge in the stands. Here a trial is a fight with an audience, and the audience has already decided.",
+	},
+	["brd.muse.w10.006"] = {
+		"The Lyceum keeps its braziers lit for its masters, and every flame burns for the fire below. Nothing in this city just gives light.",
+		"Dark Iron sorcerers study fire here the way scholars elsewhere study the stars. Only their teacher answers back.",
+		"A school of sorts under a volcano. I wonder what the Dark Iron learn first: to read, or to burn.",
+	},
+	["brd.muse.w10.007"] = {
+		"Creatures of fire walk these halls beside the dwarves like foremen. The Dark Iron don't rule here alone, whatever the emperor thinks.",
+		"The fire's servants down here don't look at the dwarves as allies. They look at them as fuel that talks.",
+	},
+	["brd.muse.w10.008"] = {
+		"Golems, forges, vaults full of gold. The Dark Iron may be cursed, but they're not poor.",
+		"A whole city of dwarves who never stop working. Ironforge should be worried, or jealous.",
+		"Even their guards' armor is a work of art. Shame about who's wearing it.",
+	},
+	["brd.muse.w10.009"] = {
+		"Magni Bronzebeard's daughter is down here at the emperor's side. Rescued or wed, depending on who tells it.",
+		"A Bronzebeard princess beside a Dark Iron throne. Ironforge calls it a kidnapping. I wonder what she calls it.",
+		"Thaurissan wears the crown of a beaten people, and wears it proudly. That pride may be all the fire left him.",
+	},
+	["brd.muse.w10.010"] = {
+		"runs a hand over the carved face of some Dark Iron lord of long ago, its features half melted by the heat of centuries.",
+		"stops before a statue of a dwarf king, so blackened by soot that only the crown still catches the light.",
+	},
+	["brd.muse.w10.011"] = {
+		"Long road down, longer road back. At least the company's better than the locals.",
+		"Keep together down here. In a city this size, getting lost means getting found by the wrong people.",
+	},
+	["brd.muse.w10.012"] = {
+		"There's a tomb in this city where seven Dark Iron sorcerers are said to linger. They opened the door to the fire, and it never let them go.",
+		"Under the city the mountain opens onto something even the Dark Iron fear. The heat comes from there, and so does the obedience.",
+		"Deeper than this city burns a fire with a lord of its own. I hope I never have reason to go and look.",
+	},
+	["brd.subzone_enter.w10.001"] = {
+		"enters {subzone}; the stone is cut with the square, heavy care of the Dark Iron, and blackened by everything since.",
+		"passes into {subzone}, and the heat follows like a dog at the heels.",
+	},
+	["brd.subzone_enter.w10.002"] = {
+		"{subzone}. The Dark Iron name everything grandly. Mostly it means more guards.",
+		"{subzone}. Another hall of a city that should never have been built under a volcano.",
+	},
+	["brd.threat.w10.001"] = {
+		"Back off. The emperor doesn't pay you enough for this.",
+		"Stand aside, or join the slag heap.",
+		"I've crossed half this city. You're not the one who stops me.",
+	},
+	["brd.victory.w10.001"] = {
+		"One less customer for the Grim Guzzler.",
+		"Someone pour one out for that one. Dark Iron ale, preferably.",
+	},
+	["brd.victory.w10.002"] = {
+		"lowers {g:his|her} guard as the fallen begins to smoke faintly on the hot stone.",
+		"steps back from the fallen; somewhere behind the walls, the forges never missed a beat.",
+	},
+	["brd.victory.w10.003"] = {
+		"My throat's as dry as a forge bellows.",
+		"This city has guards the way the mountain has heat: no end to them.",
+	},
+	["brd.victory.w10.004"] = {
+		"Tell your emperor we're coming for the throne.",
+		"Thaurissan is running out of soldiers.",
+	},
+	["brd.victory.w10.005"] = {
+		"Whatever it was, it served the fire. The fire won't mourn it.",
+		"One more servant of the mountain gone quiet. The mountain won't even notice.",
+		"It fell for an emperor who never learned its name.",
+	},
+	["brs.attack.w10.001"] = {
+		"Off the stair!",
+		"Make room, I'm climbing!",
+	},
+	["brs.attack.w10.002"] = {
+		"With the spire's compliments!",
+		"Here's something for Rend to watch!",
+	},
+	["brs.battle.w10.001"] = {
+		"Rend can watch this one from his seat.",
+		"Another of Blackhand's leftovers. Come here.",
+	},
+	["brs.battle.w10.002"] = {
+		"Does anyone in this spire ever knock?",
+		"Oh good, more company. The spire never runs short.",
+		"Orc, ogre, troll, spider... I've stopped asking which.",
+	},
+	["brs.battle.w10.003"] = {
+		"Eyes up. Here things drop on you from the ledges.",
+		"One fight at the foot of the stair, and the next already coming down it.",
+	},
+	["brs.battle.w10.004"] = {
+		"plants {g:his|her} feet on the scorched stone and meets them head on.",
+		"turns to meet the rush, black dust lifting around {g:his|her} boots at every step.",
+	},
+	["brs.battle.w10.005"] = {
+		"No dragon's errand-runner stops me here.",
+		"Drakkisath won't thank you for this. Nobody up here thanks anyone.",
+	},
+	["brs.battle.w10.006"] = {
+		"The Dark Horde's war ended years ago. Want to know how?",
+		"The old Horde is long gone. You just never got the news.",
+	},
+	["brs.battle.w10.007"] = {
+		"Hot enough without you. Let's make this quick.",
+		"Nothing like a brawl inside a furnace to wake you up properly.",
+	},
+	["brs.battle.w10.008"] = {
+		"Breathe through it. Smoke hurts more than any blade here.",
+		"The climb takes more out of me than the fighting. Keep going.",
+		"Arms heavy, air thin and hot. Fight anyway.",
+	},
+	["brs.encounter_end.w10.001"] = {
+		"{encounter} is down. One more floor of this mountain is ours.",
+		"Water, a breath, and up we go. {encounter} won't be following.",
+	},
+	["brs.encounter_end.w10.002"] = {
+		"{encounter} lies in the smoke. My ears are still ringing.",
+		"Over. The spire goes quiet, as if deciding what to send next.",
+	},
+	["brs.encounter_end.w10.003"] = {
+		"Back to the stairs, then. The spire isn't going anywhere.",
+		"All down. Next time slower, and nobody chases anything up the stairs.",
+	},
+	["brs.lowhp.w10.001"] = {
+		"Not on these stairs. Not for Rend.",
+		"I won't be one more body for the dragons to step over.",
+	},
+	["brs.lowhp.w10.002"] = {
+		"Too much smoke, too little breath. Back off, now.",
+		"The heat and the wounds together. If I go down here, nobody carries me down all those stairs.",
+	},
+	["brs.lowhp.w10.003"] = {
+		"Patch me up before I become part of the decor!",
+		"Help! I'm not ending up as a trophy on Rend's wall.",
+	},
+	["brs.muse.w10.001"] = {
+		"Rend kept his father's name and his father's war. He calls that loyalty. The rest of the Horde moved on without him.",
+		"Blackhand's son, sitting on a mountain full of his father's banners, waiting for a war that ended years ago.",
+		"The Dark Horde still paints the old clan sign on every shield. Some can't bear to be anything but what they were.",
+	},
+	["brs.muse.w10.002"] = {
+		"Some of these orcs are too young to remember the old Horde. They fight for it anyway, because it's the story they were handed.",
+		"Every Dark Horde soldier up here fights like a cornered animal. I wonder if any of them ever had a choice.",
+		"Elsewhere, orcs farm and trade now. Up here they still sleep in their armor, waiting for the old war to call them back.",
+	},
+	["brs.muse.w10.003"] = {
+		"Ogres guarding doors for orcs who answer to a dragon. Somebody's paying very well, or lying very well.",
+		"The ogres up here even have a lord of their own. I wonder if he knows who's really in charge.",
+		"One club, no doubts, and the firm belief that a door is a thing you go through. The ogres here have a simple life.",
+	},
+	["brs.muse.w10.004"] = {
+		"The orcs gave the lower tunnels to the spiders and pretend it was their idea. Nobody argues with a nest that size.",
+		"Every web I've seen in this place has something wrapped in it. I've stopped trying to guess what.",
+		"A spider the size of a cart, mothering a brood under an orc fortress. Even the Dark Horde keeps its distance.",
+	},
+	["brs.muse.w10.005"] = {
+		"There's a rookery up there somewhere, rows of black eggs kept warm by the mountain itself. A whole generation, waiting.",
+		"The black dragonflight doesn't just guard this place. It breeds here. That's the part that keeps me walking.",
+		"Eggs by the hundred in the heat of the upper halls, and each one is a dragon someone will have to face one day.",
+	},
+	["brs.muse.w10.006"] = {
+		"The orcs keep a creature of fire chained in the upper spire and feed it heat like a forge. One day the chains won't hold, and I'd rather not be in the room.",
+		"Binding fire with chains and chanting. The Dark Horde has a talent for holding things that should not be held.",
+		"Up there a being of living flame strains against its bonds. The whole spire hums with the effort.",
+	},
+	["brs.muse.w10.007"] = {
+		"Rend built himself an arena in the spire. Of course he did. A warchief nobody chose needs a crowd to tell him he's real.",
+		"Up top there's a stadium where the Dark Horde watches things die for sport. Plenty of seats. I'd rather not take one.",
+		"An orc fortress with a stadium in it. Whatever else the Dark Horde lacks, it isn't a taste for spectacle.",
+	},
+	["brs.muse.w10.008"] = {
+		"Under the orc paint the stonework is dwarven, square and patient. The Dark Iron built this place to last, and it did. They just didn't get to keep it.",
+		"Dwarven runes still sit over some doors, half scraped away by orc axes. The mountain remembers who cut it.",
+		"The orcs sleep in halls the dwarves carved, and the bones of the first garrison are probably still in the walls somewhere.",
+	},
+	["brs.muse.w10.009"] = {
+		"lays a hand on the black wall and pulls it back: the stone is warm, like the flank of some huge sleeping animal.",
+		"listens to the spire creak and settle in the heat, as if the whole mountain were shifting its weight.",
+		"wipes {g:his|her} brow, and the fingers come away black with soot, as everything here does sooner or later.",
+	},
+	["brs.muse.w10.010"] = {
+		"The lower spire is orcs, ogres and their squabbles. Higher up it gets orderly, and orderly is what worries me.",
+		"Each stair in this place leads up, and each floor is meaner than the one below. Somebody planned it that way.",
+		"Taking a fortress from the bottom is a fool's way in. It's also the only way in, so here I am.",
+	},
+	["brs.muse.w10.011"] = {
+		"The black dragons have used orcs before, and they're doing it again. Rend thinks he's an ally. He's a tool with a title.",
+		"Drakkisath handles the orcs the way a smith handles tongs: carefully, and without ever asking their opinion.",
+		"Whoever really owns Blackrock Spire lives above all this smoke and never comes down. That should tell you something.",
+	},
+	["brs.muse.w10.012"] = {
+		"Count heads at every landing. This place loses people between one stair and the next.",
+		"Stay close. The spire likes to split a party up and deal with the pieces.",
+		"Water, bandages, patience. We'll need all three before the top.",
+	},
+	["brs.muse.w10.013"] = {
+		"Orgrim Doomhammer was a Blackrock. His hammer went to Thrall. All the clan kept was the mountain.",
+		"The Blackrock clan gave the old Horde its warchiefs. Now it offers a mountain full of angry orcs to anyone who'll lead them.",
+		"Blackrock banners on every wall. Whatever the Horde became out in the world, in here it's still the year the Dark Portal opened.",
+	},
+	["brs.muse.w10.014"] = {
+		"Whelps underfoot, dragonspawn on the stairs and something bigger snoring upstairs. It's a nursery with a garrison.",
+		"I was after orcs and found dragons. Next time I'm asking for a list before I climb.",
+		"Each dragon in this spire is somebody's child. I'd rather not meet the parents.",
+	},
+	["brs.subzone_enter.w10.001"] = {
+		"enters {subzone}, where Dark Horde banners hang over doorways the dwarves once carved.",
+		"steps into {subzone}; somewhere ahead an orc barks an order, and the echo does the rest.",
+	},
+	["brs.subzone_enter.w10.002"] = {
+		"{subzone}. Another name on the way up. I'll remember this one by the heat.",
+		"{subzone}. The spire names its rooms as if anyone here needed directions.",
+	},
+	["brs.subzone_enter.w10.003"] = {
+		"passes into {subzone} through a drift of smoke, and the air changes taste: more iron, more ash.",
+		"climbs into {subzone}, where the black stone is scored with marks no pick ever made.",
+	},
+	["brs.threat.w10.001"] = {
+		"Turn back. The way down is shorter than you think.",
+		"Go back to your warchief. Tell him the stairs are taken.",
+	},
+	["brs.threat.w10.002"] = {
+		"You don't want this. Look how far I've already climbed.",
+		"One step closer and you take the quick way down.",
+	},
+	["brs.victory.w10.001"] = {
+		"One fewer for Rend's roll call.",
+		"Somebody tell Rend he's short a soldier.",
+	},
+	["brs.victory.w10.002"] = {
+		"kicks the fallen weapon aside; it clatters off across the black stone.",
+		"straightens up in the drifting soot, already looking toward the next stair.",
+	},
+	["brs.victory.w10.003"] = {
+		"Quiet, for now. A breath while the spire allows it.",
+		"One more landing cleared. My legs are counting them even if I'm not.",
+	},
+	["brs.victory.w10.004"] = {
+		"Next floor. The top's getting closer.",
+		"Up there, they'll hear about this one.",
+		"The spire just got a little shorter.",
+	},
+	["brs.victory.w10.005"] = {
+		"Another one dead for Rend's war. He won't even learn the name.",
+		"Whatever it fought for, it was fighting someone else's grudge.",
+	},
+	["brs.victory.w10.006"] = {
+		"Good. Now if someone could open a window.",
+		"Done, and it's still hot. Victories aren't what they used to be.",
+	},
+	["brs.victory.w10.007"] = {
+		"steps over the fallen onto flagstones the dwarves laid long ago.",
+		"rests a moment against a carved dwarven pillar, the orc banners above it stirring in the hot draft.",
+		"looks down at the fallen, then at the dwarven carving behind it, which has outlived every master of this place so far.",
+	},
+	["sch.attack.w10.001"] = {
+		"Back to the ossuary!",
+		"Into the pile with the rest of you!",
+	},
+	["sch.attack.w10.002"] = {
+		"Grade that one yourself!",
+		"Make a note of that!",
+	},
+	["sch.battle.w10.001"] = {
+		"Stitched or summoned, you'll come apart the same!",
+		"Whatever they built you from, I'll take you back to pieces.",
+		"Bone and wire and bad intentions. Come here.",
+	},
+	["sch.battle.w10.002"] = {
+		"Put the book down and fight.",
+		"Your studies end here, necromancer.",
+	},
+	["sch.battle.w10.003"] = {
+		"Don't think about what it's made of. Just fight it.",
+		"Not the moment to wonder whose bones those were.",
+	},
+	["sch.battle.w10.004"] = {
+		"sets {g:his|her} back to a cold stone wall and meets whatever comes through the next door.",
+		"braces against the chill of the hall and meets the attack head-on.",
+	},
+	["sch.battle.w10.005"] = {
+		"Is this an exam? Nobody told me there'd be an exam.",
+		"Another of the headmaster's projects. Lovely.",
+	},
+	["sch.battle.w10.006"] = {
+		"Not one more body for this school.",
+		"This place gets no recruits from me.",
+	},
+	["sch.encounter_end.w10.001"] = {
+		"looks down at {encounter} and then around the cold room, as if checking that nothing else intends to get up.",
+		"stands over {encounter} while the candles gutter, and lets the quiet of the school close back in.",
+		"steps back from {encounter} and listens; somewhere above, the halls go on with their work regardless.",
+	},
+	["sch.lowhp.w10.001"] = {
+		"Not here. They'd have me on a workbench before I'd cooled.",
+		"Out of reach. Breathe. Don't give them the material.",
+		"Too close. This school wastes nothing, and I'm not volunteering.",
+	},
+	["sch.lowhp.w10.002"] = {
+		"I'm nobody's specimen!",
+		"Not on your table. Not ever.",
+	},
+	["sch.muse.w10.001"] = {
+		"The Barov name is carved over half the doorways here. A family that sold its own house, and still put its crest on the bill.",
+		"Lord and Lady Barov still live in these halls, people say, in a manner of speaking. The bargain came with lodgings.",
+		"Heirs of the Barov line still quarrel over who owns Caer Darrow, from what I hear. Neither seems in a hurry to come and claim it.",
+	},
+	["sch.muse.w10.002"] = {
+		"Nobody can say for certain where Gandling is in this place. The rumor is that every room is his, and he simply chooses which one to stand in.",
+		"Darkmaster Gandling, they say, can move anyone inside these walls from one room to another with a thought. I'd rather walk.",
+		"Above or below, the headmaster is listening. Schools like this one don't need bells; they have him.",
+	},
+	["sch.muse.w10.003"] = {
+		"steps around a half-built construct slumped against a wall, its ribs wired together from more than one body.",
+		"pauses at a workbench of stitched limbs and labeled jars, the tidiness of it worse than any mess would be.",
+		"sees a skeleton on a rack twitch once, as if someone had left it half-finished and meant to come back.",
+	},
+	["sch.muse.w10.004"] = {
+		"The students came here on purpose. Somebody applied, so to speak, to learn this.",
+		"Every apprentice in these halls had a reason. Ambition, grief, a debt. None of them good enough.",
+		"Most of these students had ordinary lives, once. Then someone offered them power, and they said yes.",
+	},
+	["sch.muse.w10.005"] = {
+		"There's an ossuary under the school, sorted by size and kind. Someone has the job of sorting bones, and turns up for it.",
+		"Shelves of skulls in neat rows, labeled. Even the dead here have been filed.",
+		"Bones by the cartload in the cellars below. Nothing in Scholomance goes to waste; that's the horror of it.",
+	},
+	["sch.muse.w10.006"] = {
+		"The cold in these halls doesn't come from outside. It seeps out of the stone, as if the walls had been taught to be unkind.",
+		"Frost on the inside of a door, and no window anywhere near. Someone down here works the cold the way a smith works fire.",
+		"Breath clouds in these corridors. Whatever keeps the halls this cold, it isn't the lake.",
+	},
+	["sch.muse.w10.007"] = {
+		"Somebody here wrote a textbook on raising the dead. I'd like a word with the publisher.",
+		"Don't touch the notes on the desks. I'm fairly sure the homework bites.",
+		"A library, a dining hall, dormitories. Take away the corpses and it's almost respectable.",
+	},
+	["sch.muse.w10.008"] = {
+		"The Cult of the Damned didn't begin with soldiers. It began with teachers, and this is where they still train the next ones.",
+		"Kel'Thuzad's cult needed necromancers by the hundred, and necromancers have to learn somewhere. Here, it turns out.",
+	},
+	["sch.muse.w10.009"] = {
+		"hears a quill scratching behind a closed door, steady and unhurried, and decides not to knock.",
+		"notices a chalkboard covered in careful drawings of a ribcage and, beneath them, in a neat hand, a list of what to replace.",
+	},
+	["sch.muse.w10.010"] = {
+		"The dead ask for one thing only, to be left alone, and this whole school is built on refusing them.",
+		"All the dead ever wanted was to stay down. This place exists to tell them no.",
+		"Some grave lies open because a student needed the practice. I'd like to give the bones back.",
+	},
+	["sch.subzone_enter.w10.001"] = {
+		"comes into {subzone} past a row of empty benches, all of them facing the same scorched lectern.",
+		"steps into {subzone}; the air is a breath colder here, and smells of tallow and old paper.",
+	},
+	["sch.subzone_enter.w10.002"] = {
+		"{subzone}. Every room in this school has a purpose, and I don't enjoy guessing this one's.",
+		"{subzone}. Somebody planned this room with care. That's never good news here.",
+	},
+	["sch.threat.w10.001"] = {
+		"Back off, or they'll be sweeping you up for the ossuary.",
+		"Leave now. I'd hate to hand this school more raw material.",
+	},
+	["sch.threat.w10.002"] = {
+		"Go and tell your headmaster I'm coming. Take the long way.",
+		"Run along to class. I'll be there shortly.",
+	},
+	["sch.victory.w10.001"] = {
+		"One less thing the necromancers can patch up and send back out.",
+		"Down. And this time nobody gets to stitch it together.",
+		"Done. Let them try to reassemble that.",
+	},
+	["sch.victory.w10.002"] = {
+		"kicks the pieces apart so nobody can put them back together.",
+		"steps over the wreckage and stops to listen to the halls, where far off a book drops to the floor.",
+	},
+	["sch.victory.w10.003"] = {
+		"Expelled.",
+		"That's one fewer graduate.",
+	},
+	["sch.victory.w10.004"] = {
+		"Quiet again. I don't trust it; this place is never empty for long.",
+		"Nothing moving. Somewhere a door opens anyway.",
+		"Done, and the cold creeps back in as if it had been waiting.",
+	},
+	["str.attack.w10.001"] = {
+		"For the people of this city!",
+		"Out of my road, and out of Stratholme!",
+	},
+	["str.attack.w10.002"] = {
+		"Mind the ash. Oh, too late.",
+		"Here's something hotter than the embers.",
+	},
+	["str.battle.w10.001"] = {
+		"Another one out of the cinders. Come on!",
+		"Out of the rubble and into the fight. Let's have you.",
+		"This city's made of ash. Go and add yourself to the pile.",
+	},
+	["str.battle.w10.002"] = {
+		"Purge this, if you can.",
+		"Your Crusade picked the wrong city, and now the wrong fight.",
+	},
+	["str.battle.w10.003"] = {
+		"The Baron can count you among his losses.",
+		"Go and tell Rivendare he's one servant short.",
+	},
+	["str.battle.w10.004"] = {
+		"Whoever you were, I'm sorry. Not sorry enough to stop.",
+		"Somebody's neighbor, once. Not anymore.",
+	},
+	["str.battle.w10.005"] = {
+		"plants {g:his|her} feet on the scorched cobbles and meets the charge.",
+		"steps over a fallen beam and into the fight, ash rising with every stride.",
+	},
+	["str.battle.w10.006"] = {
+		"Every street in this town has a welcome party.",
+		"Lively place, for a dead one.",
+	},
+	["str.encounter_end.w10.001"] = {
+		"{encounter} is finished. Stratholme won't miss it; the city stopped missing anyone long ago.",
+		"That's the end of {encounter}. One less master for a city that never asked for any.",
+	},
+	["str.encounter_end.w10.002"] = {
+		"The city took that round. It's been taking rounds for years.",
+		"Flattened in the cinders, all of us. Stratholme is good at this; we'll have to be better.",
+	},
+	["str.lowhp.w10.001"] = {
+		"Not in this street. Not with the Baron watching.",
+		"Breathe. Get out of the smoke. Think.",
+		"Too much, too fast. This city won't have me.",
+	},
+	["str.lowhp.w10.002"] = {
+		"I'm not becoming part of the scenery!",
+		"Not here. I won't be one more body in these streets.",
+	},
+	["str.muse.w10.001"] = {
+		"Every house here still has its door. Most were never closed; people left in a hurry, or didn't leave at all.",
+		"Doors hanging open all down the street. Nobody had time to lock up, and nobody came back to try.",
+		"A pot of flowers on a windowsill, long dead and never moved. Someone in that house meant to stay.",
+	},
+	["str.muse.w10.002"] = {
+		"The few who got out of Lordaeron alive agree on one thing: the city was put to the sword before the plague could finish it. Whose sword, some still won't say.",
+		"Ask a refugee from the north about Stratholme and watch the face close. A purge, they say, and a prince who ordered it. Then they change the subject.",
+		"The Argent Dawn won't talk about the culling over a drink, and they'll talk about nearly anything over a drink.",
+	},
+	["str.muse.w10.003"] = {
+		"The Crusade fortified its corner of a dead city and called it a bastion. Of all the places to make a stand, they chose one already lost.",
+		"Scarlet banners over the gate of a burned city. Somebody in that order really doesn't know when a fight is over.",
+	},
+	["str.muse.w10.004"] = {
+		"Grand Crusader Dathrohan leads the zealots in this city. Some say the man died years ago, and what wears his face answers to an older name.",
+		"There's a rumor among the Argent Dawn that the Crusade's commander here isn't a man at all. If it's true, the zealots are kneeling to the wrong master.",
+		"The crusaders follow Dathrohan without a question. Some say they should have asked one: whose voice really speaks through him.",
+	},
+	["str.muse.w10.005"] = {
+		"Baron Rivendare sold his name to the Scourge while his heart still beat. Now he keeps the far half of the city the way a lord keeps an estate.",
+		"The Baron rules the ruins from behind a ziggurat and a gate. A nobleman to the last, even dead: he made sure he'd still have servants.",
+		"Rivendare was a lord of Lordaeron once. He traded his people for a seat at the Scourge's table, and that table is all bone.",
+	},
+	["str.muse.w10.006"] = {
+		"stops as a pale shape drifts across the street ahead, a townsman by his clothes, walking an errand that ended years ago.",
+		"hears a woman's voice calling a name somewhere in the ruins, and finds nobody there when {g:he|she} turns.",
+		"watches a translucent figure stoop at a market stall that no longer exists, pick up nothing, and walk on.",
+	},
+	["str.muse.w10.007"] = {
+		"The ash gets into everything here: hair, food, the creases of a map. A week from now I'll still be finding Stratholme in my pockets.",
+		"Every breath in this city tastes of cinders. I'd stop breathing if that were an option.",
+		"Burned grain, burned timber, burned something else I won't name. The nose stops complaining after an hour, and that's worse.",
+	},
+	["str.muse.w10.008"] = {
+		"Mind the cobbles. Half of them are loose and the other half used to be somebody.",
+		"If anyone spots a street that isn't smoldering, tell me. I'd like to stand in it for a minute.",
+		"Don't linger. This city has a habit of keeping whatever stops moving.",
+	},
+	["str.muse.w10.009"] = {
+		"The Argent Dawn sends people into these ruins knowing who comes back. They keep sending them. Faith or stubbornness; I've stopped seeing the difference.",
+		"Not far off, a chapel holds the line with prayer and plain steel. In here there's no line to hold, only a city to walk through and out of.",
+	},
+	["str.muse.w10.010"] = {
+		"glances up at the ziggurats that rise over the far rooftops, alien stone squatting in the middle of a human city.",
+		"follows a gutter running dark toward the Scourge's side of the city, and decides not to wonder what made it dark.",
+		"pauses beside a cart of bodies left at a street corner, never collected, and steps around it without a word.",
+	},
+	["str.muse.w10.011"] = {
+		"It began with grain: crates of it, shipped north to feed people. The cruelest trick the Cult ever played was a gift.",
+		"A granary in this city held the plague in sacks, and the bakers did the rest without knowing. I can't look at bread the same way here.",
+	},
+	["str.muse.w10.012"] = {
+		"Bakers and clerks and children, once. The kindest thing left to give them is a second, quieter ending.",
+		"Whatever they are now, the people of this city earned some rest. Every one I put down gets a little of it back.",
+	},
+	["str.subzone_enter.w10.001"] = {
+		"enters {subzone}; the smoke thins a little here, enough to see how much is gone.",
+		"comes into {subzone} past an overturned cart, the stones underfoot black and cracked.",
+	},
+	["str.subzone_enter.w10.002"] = {
+		"{subzone}. A name on the old maps, and once a reason to come here. Only the name is left.",
+		"{subzone}. People used to meet here and haggle and gossip. Now things wait here instead.",
+	},
+	["str.threat.w10.001"] = {
+		"Walk away. The fires here could use one more log.",
+		"Turn back. This city has buried better than you.",
+		"One step closer and you join the rubble.",
+	},
+	["str.threat.w10.002"] = {
+		"Pray if you like. I'll wait. Not long.",
+		"Your Crusade has lost this city already. Don't get lost along with it.",
+	},
+	["str.victory.w10.001"] = {
+		"That's one less thing walking these streets.",
+		"Down. The ruins can keep it.",
+		"Done. Stratholme takes everything back sooner or later; it can have this one now.",
+	},
+	["str.victory.w10.002"] = {
+		"Somebody put that on the Baron's tab.",
+		"Next. This city never runs short.",
+	},
+	["str.victory.w10.003"] = {
+		"shakes the ash from {g:his|her} shoulders and looks along the street for the next shape moving in the smoke.",
+		"kicks a smoldering board aside and moves on without looking back.",
+	},
+	["str.victory.w10.004"] = {
+		"All that faith, and it ends on a street like any other.",
+		"The Crusade will call that martyrdom. I'd call it a zealot who went looking for a fight.",
+	},
+	["str.victory.w10.005"] = {
+		"Lie still now. Nobody here gets to wake you again.",
+		"There. Nobody owns you anymore.",
+	},
+	["uld.battle.w10.001"] = {
+		"Stone or flesh, you'll break the same way.",
+		"Troggs in front, statues behind, and me in the middle. Fine. Come on.",
+	},
+	["uld.encounter_end.w10.001"] = {
+		"{encounter} is still. The vault keeps its secrets, with one guard fewer.",
+		"Over. Whatever {encounter} stood watch on, it stood a very long watch.",
+	},
+	["uld.lowhp.w10.001"] = {
+		"I'm not ending up as one more find for the next dig.",
+		"Hold! I'm not leaving my bones for the troggs to gnaw.",
+	},
+	["uld.muse.w10.001"] = {
+		"In these vaults, somewhere, lie discs that tell where the dwarves came from. Some truths are kept under a lot of stone for a reason.",
+		"The dwarves dig half the world looking for their beginnings, and here they are, under the Badlands, watched by things that never tire.",
+	},
+	["uld.muse.w10.002"] = {
+		"Troggs in the lower halls, Dark Iron diggers in the corridors, statues that get up and walk. Lovely spot for a dig.",
+		"Everyone down here is digging for something. The troggs for food, the Dark Iron for treasure, and the dust gets into all of it.",
+	},
+	["uld.subzone_enter.w10.001"] = {
+		"steps into {subzone}, where lines of titan runes run along the walls like an account no living scribe can read.",
+		"passes into {subzone}; the air is dry and still, and every footstep sounds far too loud in it.",
+	},
+	["uld.victory.w10.001"] = {
+		"Back to the dust with you. You'll fit right in.",
+		"One less thing wandering the vault. The archaeologists can thank me later.",
+	},
 ]==])

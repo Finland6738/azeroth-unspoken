@@ -1631,4 +1631,107 @@ NS:AddTexts("itIT", {
 		"{other}. Conosco quel nome come conosco il primo colpo di un tamburo. Il resto torna da sé.",
 		"Ah, {other}. Una faccia che ho messo da qualche parte tra il pesce buono e le giornate storte. Vediamo in quale mucchio.",
 	},
+	["faction.alliance.relation_npc.w10.001"] = {
+		"Colori dell'Alleanza e un volto noto. La bandiera è enorme; sono volti come questo a farla sentire nostra.",
+		"{other}. Re e consigli sono lontani. Le persone conosciute lungo la strada sono quello che l'Alleanza significa ogni giorno.",
+		"Conosco questa persona. Lontano da casa, un alleato conosciuto vale un forte.",
+	},
+	["faction.alliance.relation_player.w10.001"] = {
+		"Alleati per bandiera, e per giunta per scelta: {other} è del secondo tipo, il più raro.",
+		"L'Alleanza ha dato a {other} e a me gli stessi colori. La fiducia abbiamo dovuto costruirla noi.",
+		"{other}. Qualcuno su cui non devo mai ricontrollare niente.",
+	},
+	["faction.alliance.relation_player.w10.002"] = {
+		"Fra tutta la gente sotto la nostra bandiera, {other} è una delle poche persone che accorciano una strada lunga.",
+		"Tanti sconosciuti nell'Alleanza, e poi {other}, felice di vedermi. La giornata migliora.",
+		"{other}! Buona compagnia, e i nostri colori. Non si può chiedere di più.",
+	},
+	["faction.alliance.relation_player.w10.003"] = {
+		"Ho un debito con {other}, e nell'Alleanza i debiti tra di noi si saldano, anche quando i nobili non lo fanno mai.",
+		"Certi alleati lo sono sulla carta. Con {other} l'alleanza vera l'ho vista nel fango, quando contava.",
+	},
+	["faction.alliance.relation_player.w10.004"] = {
+		"{other}! Gli elfi sono rimasti in disparte da tutti per diecimila anni. A questa persona sono bastate poche buone strade per entrare tra i miei amici.",
+		"Darnassus sembra molto più vicina, con un'amicizia come quella di {other} lassù.",
+	},
+	["faction.alliance.relation_player.w10.005"] = {
+		"{other}! Un'amicizia gnomesca vale tre tende: sempre un pezzo di ricambio, sempre un piano, sempre un'opinione.",
+		"Gnomeregan ha perso una città, e il resto dell'Alleanza ha guadagnato persone come {other}. Uno scambio ingiusto per loro; fortunato per noi.",
+	},
+	["faction.alliance.relation_player.w10.006"] = {
+		"Abbiamo tenuto una linea insieme sotto i colori dell'Alleanza, io e {other}. Meglio della presentazione di qualunque araldo.",
+		"Nell'Alleanza, aver combattuto accanto a {other} conta più che venire dallo stesso popolo.",
+		"{other}. Quasi di famiglia, dopo quella mischia.",
+	},
+	["faction.alliance.relation_player.w10.007"] = {
+		"Stessa parte, stessa bandiera, e vorrei comunque arrivare prima di {other}. L'Orda può aspettare il suo turno.",
+		"Avere rivali tra le nostre file mi tiene più in esercizio di qualunque nemico dall'altra parte del campo, e {other} mi tiene in esercizio parecchio.",
+		"{other}. Rivalità amichevole, più o meno.",
+	},
+	["faction.alliance.relation_player.w10.008"] = {
+		"{other} porta i miei stessi colori, il che non prova niente. Anche i Defias un tempo erano tutta gente di Stormwind.",
+		"Dalla stessa parte, ufficialmente. Con {other} sarò cortese, e terrò la borsa dall'altro lato.",
+	},
+	["faction.alliance.relation_player.w10.009"] = {
+		"{other}, dell'Orda. Ci conosciamo già, e nessuno dei due ha dimenticato com'è andata.",
+		"Certi nomi dall'altra parte, nell'Orda, li riconoscerei ovunque. {other} è uno di quelli.",
+		"Ancora {other}. Mani pronte.",
+	},
+	["faction.alliance.relation_player.w10.010"] = {
+		"{other}! Più di un mese. Nel frattempo l'Alleanza avrebbe potuto cambiare idea tre volte.",
+		"Tanto tempo senza {other}. Chissà che notizie ha in serbo quell'angolo di Alleanza.",
+	},
+	["faction.horde.relation_npc.w10.001"] = {
+		"{other}. Una faccia conosciuta con i colori dell'Orda. Il patto è enorme; facce così lo rendono abbastanza piccolo da viverci.",
+		"Ah, ancora {other}. L'Orda è fatta di moltissimi sconosciuti. Aiuta conoscerne qualcuno per nome.",
+		"{other}. Questa persona la conosco. In un'Orda di quattro popoli, essere ricordati è già un modo di essere accolti.",
+	},
+	["faction.horde.relation_player.w10.001"] = {
+		"{other}. L'Orda rende alleati gli sconosciuti per decreto; questa fiducia, invece, l'ho scelta io.",
+		"{other}. Il patto dice che siamo alleati. L'esperienza dice parecchio di più.",
+		"{other}. Se l'Orda fosse fatta solo di gente così, il Capoguerra dormirebbe tranquillo.",
+	},
+	["faction.horde.relation_player.w10.002"] = {
+		"{other}! Un punto luminoso nella lunga, rumorosa giornata dell'Orda.",
+		"Ecco {other}. Certe facce fanno sembrare tutta l'Orda un po' più casa.",
+		"{other}. Buona compagnia, e sotto i colori giusti.",
+	},
+	["faction.horde.relation_player.w10.003"] = {
+		"Ho un debito con {other}, e nell'Orda i debiti fra alleati si pagano allo stesso modo, quando arriva il bisogno.",
+		"Ecco {other}, con cui ho ancora un conto aperto. L'Orda va avanti grazie a debiti così, saldati con onestà.",
+	},
+	["faction.horde.relation_player.w10.004"] = {
+		"{other}. Strade diverse per entrare nell'Orda, lo stesso fuoco alla fine.",
+		"Ecco {other}. Il patto ci ha dato una bandiera, la strada un'amicizia. La seconda ha richiesto più tempo e vale di più.",
+	},
+	["faction.horde.relation_player.w10.005"] = {
+		"{other}. Stessa bandiera. Non vuol dire stesse intenzioni.",
+		"Ecco {other}. L'Orda mi chiede di stare accanto a ogni alleato. Non mi chiede di voltargli le spalle.",
+		"{other}. Dalla mia parte, sì. Da tenere d'occhio, pure.",
+	},
+	["faction.horde.relation_player.w10.006"] = {
+		"{other}. L'Orda ha bisogno di tutti e due, ed è l'unico motivo per cui tengo la bocca chiusa.",
+		"Ecco {other}. Nella vecchia Orda questa faccenda si sarebbe sistemata con le asce. La nuova mi chiede di mandarla giù. La sto mandando giù.",
+	},
+	["faction.horde.relation_player.w10.007"] = {
+		"{other}. Una rivalità dentro l'Orda è un regalo: qualcuno da superare, che però mi coprirà il fianco.",
+		"Ecco {other}. Ci contenderemo ogni onore possibile, e saremo spalla a spalla appena si farà vedere l'Alleanza.",
+	},
+	["faction.horde.relation_player.w10.008"] = {
+		"{other}. Abbiamo sanguinato per la stessa bandiera. È un legame che l'Orda capisce meglio delle parole.",
+		"Ecco {other}, che ha combattuto al mio fianco nella stessa mischia. L'Orda non tiene un elenco di quei nomi. Io sì.",
+		"{other}. Stessa battaglia, stessa parte, stesso fango sugli stivali dopo. L'Orda in un solo ricordo.",
+	},
+	["faction.horde.relation_player.w10.009"] = {
+		"{other}! Quanto tempo. Dovunque ti abbia spedito l'Orda, da lì hai trovato la strada del ritorno.",
+		"Ecco {other}, dopo molte settimane. L'Orda è vasta; fa piacere quando rimette in giro le stesse facce.",
+	},
+	["faction.horde.relation_player.w10.010"] = {
+		"{other}. I colori dell'Orda su una faccia che preferirei non vedere. La bandiera protegge quella persona da me. Per poco.",
+		"Ecco {other}. Sotto qualunque altra bandiera, finirebbe diversamente.",
+	},
+	["faction.horde.relation_player.w10.011"] = {
+		"{other}. Un duello alla maniera dell'Orda: duro, leale, e niente rancori dopo. Quasi.",
+		"Ecco {other}. Il nostro duello non ha deciso niente, ed è proprio quello che deve decidere un duello fra alleati.",
+	},
 }, "base_relations")

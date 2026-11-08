@@ -354,4 +354,12 @@ NS:AddTexts("enUS", {
 		"More strength, more speed, and the tusks are looking good too.",
 		"Look out, world. This troll just grew taller on the inside.",
 	},
+	["band.b60.levelup.w10.001"] = {
+		"This is as high as the road goes. Strange: I expected a view, and what I see is work.",
+		"The top, then. No bells, no crowd. Just a long breath, and the worst of the world still waiting.",
+	},
+	["band.b60.levelup.w10.002"] = {
+		"That's it? No higher? Then I'd better find better boots.",
+		"As strong as I'm going to get. From here on it's all about the gear, apparently.",
+	},
 }, "base_life")

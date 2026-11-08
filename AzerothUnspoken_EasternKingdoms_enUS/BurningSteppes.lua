@@ -394,4 +394,227 @@ AU:RegisterRegionalTexts("burningsteppes", "enUS", "eastern_burningsteppes", [==
 		"looks up as the wind shifts and the smoke thins, and for a while Blackrock Mountain stands out sharp and black against the red sky.",
 		"watches the smoke lift off the plain until even the far fissures can be seen glowing, one by one.",
 	},
+	["bst.a.attack.w10.001"] = {
+		"Here's Redridge's answer!",
+		"That's for the farms by the lake!",
+	},
+	["bst.a.battle.w10.001"] = {
+		"You'll not reach Redridge past me!",
+		"The pass is closed. Turn around!",
+		"No farther south. Not while I'm here.",
+	},
+	["bst.a.battle.w10.002"] = {
+		"Heat on the face, cinders underfoot. Fight the enemy, not the valley.",
+		"Forget the heat. Watch the hands, watch the feet.",
+	},
+	["bst.a.battle.w10.003"] = {
+		"plants {g:his|her} feet between two smoking cracks and waits for the rush.",
+		"lifts {g:his|her} guard, blinking the grit from {g:his|her} eyes as the foe closes.",
+		"drops into a crouch on the hot rock, ready for whatever comes out of the smoke.",
+	},
+	["bst.a.journey.w10.001"] = {
+		"Down at the Vigil. The gryphon starts shaking ash out of its feathers before I've even unbuckled.",
+		"Landed. The first breath tells me exactly where I am, well before my eyes catch up.",
+	},
+	["bst.a.landmark.w10.001"] = {
+		"{landmark}. A Horde camp under the same mountain. Whatever else they are, they didn't come here for the view.",
+		"Horde tents at {landmark}, near enough to Blackrock to smell its forges. Bold, I'll give them that, and nothing more.",
+	},
+	["bst.a.lowhp.w10.001"] = {
+		"Not here. Redridge is too close to lose this.",
+		"Stand! Lakeshire's counting on this pass.",
+		"Not in this furnace. Not yet.",
+	},
+	["bst.a.muse.w10.001"] = {
+		"Down in Lakeshire they watch the northern peaks the way sailors watch the sky. Whatever smoke rises over here, they've learned to dread it.",
+		"In Lakeshire people still look up whenever smoke rises past the ridge. Out here I finally see what they're afraid of.",
+	},
+	["bst.a.muse.w10.002"] = {
+		"Over that pass lies Redridge, and past Redridge, the wheat of Elwynn. That's the whole reason anyone stands guard in this furnace.",
+		"Redridge, then Elwynn, then Stormwind's white walls. All of it downhill from here, and all of it worth keeping.",
+	},
+	["bst.a.muse.w10.003"] = {
+		"Some soldiers at the Vigil mutter that the black dragons have friends in Stormwind's own court. Nobody will say a name aloud.",
+		"There's talk at Morgan's Vigil that the black dragonflight reaches farther than this mountain, all the way to the throne room. Said quietly, and never twice.",
+	},
+	["bst.a.muse.w10.004"] = {
+		"turns over a scorched helm half-buried in the ash: orcish, old, too big for most heads. Its owner is long past needing it.",
+		"steps over a broken spear sunk in the cinders, its haft burned down to a black stump, and leaves it where it lies.",
+	},
+	["bst.a.muse.w10.005"] = {
+		"Somebody in Stormwind has this valley on a map in very small letters. They have no idea.",
+		"I'll tell the folk in Lakeshire it was a pleasant stroll. They'd never sleep again otherwise.",
+		"If Stormwind ever needs to bake bread for a whole army, I know just the valley.",
+	},
+	["bst.a.muse.w10.006"] = {
+		"Most of the orcs were put in camps, and walked out of them behind a new warchief. These never left their mountain, and never stopped fighting the old war.",
+		"Whatever peace the orcs of Durotar want, it never reached this mountain. The Blackrock fight Stormwind as if the Second War had never ended.",
+	},
+	["bst.a.muse.w10.007"] = {
+		"A fisherman in Lakeshire told me Lake Everstill grows a skin of gray whenever the wind blows south from here. Standing in it, I believe him.",
+		"Lakeshire's fishermen swear they can tell when the wind comes from this valley: the lake goes dull with ash. Out here, nobody would laugh at that.",
+	},
+	["bst.a.muse.w10.008"] = {
+		"Hold this valley and Redridge sleeps. Simple to say. Harder to do.",
+		"The Vigil holds, the pass holds, the lake stays blue. That's the job.",
+	},
+	["bst.a.muse.w10.009"] = {
+		"A night elf would see a dead forest here, a dwarf a ruined forge, a gnome a broken machine. The Alliance sends them all just the same.",
+		"Humans, dwarves, gnomes, night elves: every people of the Alliance has someone in this valley, a long way from anything they'd call home.",
+	},
+	["bst.a.npc_meet.w10.001"] = {
+		"A sentry with a scarf over the face and eyes fixed north. The Vigil keeps nobody who looks away.",
+		"A tired salute from the guard, but it comes at once. Nobody here is careless about the mountain.",
+		"The guard's tabard was bright once. Out here everything ends up the color of ash.",
+	},
+	["bst.a.quest_complete.w10.001"] = {
+		"There. Somebody in Lakeshire sleeps easier for that.",
+		"Done. Write it up for Stormwind; they do love their paperwork.",
+	},
+	["bst.a.quest_complete.w10.002"] = {
+		"Done, and the mountain hasn't moved an inch. That was never the measure. Redridge is.",
+		"Finished. The mountain smokes on as before. I don't measure the work against the mountain; I measure it against Lakeshire.",
+	},
+	["bst.a.quest_complete.w10.003"] = {
+		"takes the payment with a nod and stands a moment, not quite ready to head out into the heat.",
+		"folds the reward away and rolls {g:his|her} stiff shoulders, eyes on the smoke to the north.",
+	},
+	["bst.a.quest_progress.w10.001"] = {
+		"That's the lot. Now the long, hot walk to whoever's waiting for it.",
+		"All of it. Now to carry it across the coals to whoever asked.",
+	},
+	["bst.a.subzone_enter.w10.001"] = {
+		"{subzone}. Noted, the way scouts note things: what moves, what burns, where to run.",
+		"{subzone}. One more name to report at the Vigil, if there's anything worth reporting.",
+		"{subzone}. I'd wager half the names on the Vigil's maps have a little skull drawn beside them.",
+	},
+	["bst.a.victory.w10.001"] = {
+		"Tell Lakeshire: one less.",
+		"That one won't see Redridge.",
+		"One fewer reason for Lakeshire to bar its doors.",
+	},
+	["bst.a.victory.w10.002"] = {
+		"Over. The heat carries on as if nothing happened. Out here, nothing much did.",
+		"Done, and the valley couldn't care less. It never does.",
+	},
+	["bst.a.victory.w10.003"] = {
+		"brushes hot cinders from {g:his|her} sleeves and looks south, toward the pass.",
+		"glances toward the pass to Redridge, then back at the fallen, and lets out a slow breath.",
+	},
+	["bst.a.weather_change.w10.001"] = {
+		"The wind swings round from the south and brings, for one breath, a smell of water from over the pass.",
+		"A change in the air. For a moment it comes down the pass from Redridge, cool and clean, before the valley takes it back.",
+	},
+	["bst.h.attack.w10.001"] = {
+		"Orgrimmar's a long way off. This will have to do!",
+		"With Thrall's compliments, from very far away!",
+	},
+	["bst.h.battle.w10.001"] = {
+		"Far from Orgrimmar, and the Horde still bites!",
+		"You thought the Horde wouldn't reach this far?",
+		"A long way from home, and no softer for it!",
+	},
+	["bst.h.battle.w10.002"] = {
+		"One eye on the foe, one on the glowing cracks. Neither forgives a stumble.",
+		"Watch the footing. The cracks glow, and the enemy won't care which way I fall.",
+	},
+	["bst.h.battle.w10.003"] = {
+		"steps off the cinders onto bare rock and sets {g:his|her} stance.",
+		"shifts away from a hissing vent and lets the enemy come across the cinders.",
+		"drops low beside a slab of black rock as the enemy charges out of the shimmering heat.",
+	},
+	["bst.h.journey.w10.001"] = {
+		"The wind rider sets down on the hot rock and lifts each foot in turn, like someone stepping into a bath drawn too warm.",
+		"Down at Flame Crest. Landing is the easy part; it's the first breath after that takes practice.",
+	},
+	["bst.h.landmark.w10.001"] = {
+		"{landmark}. An Alliance post with Redridge at its back. They're here for the same mountain we are, and that doesn't make us friends.",
+		"Alliance banners over {landmark}. Two enemies of Blackrock in one valley, and neither will ever say so to the other.",
+	},
+	["bst.h.lowhp.w10.001"] = {
+		"Not this far from home. Not like this.",
+		"Flame Crest can't spare me. Hold!",
+		"Too far from Orgrimmar to die cheap.",
+	},
+	["bst.h.muse.w10.001"] = {
+		"Orgrimmar lies across a whole sea from this valley. Out here the Horde is a few tents on a hot ridge, and every one of them counts.",
+		"Far from the Warchief's city, and farther still from any harbor we hold. Flame Crest has to be its own small Orgrimmar, and it knows it.",
+		"Nobody at Flame Crest is close to home, whatever home means to each of them. Maybe that's why the camp feels like one.",
+	},
+	["bst.h.muse.w10.002"] = {
+		"Thrall's Horde never shut its door on the old clans. The Blackrock looked at that door from their mountain and stayed where they were.",
+		"Orgrimmar would have taken them in. The Blackrock preferred their mountain, their old chieftains and a dragon's favor. That choice is theirs to answer for.",
+	},
+	["bst.h.muse.w10.003"] = {
+		"Up in the spire, orcs take their orders from a black dragon. Thrall broke one set of chains, and the Blackrock went looking for another.",
+		"Orcs bowing to dragonkin in the high halls. The old Horde already learned what serving a greater master costs. Some never listen.",
+	},
+	["bst.h.muse.w10.004"] = {
+		"The Dark Irons hate Ironforge, and Ironforge hates them back. You'd think that would make them friends of the Horde. It makes them nobody's friends at all.",
+		"Dwarves at war with other dwarves. In Orgrimmar that would sound like good news. Out here it only means the Dark Irons have no friends to spare, and want none.",
+	},
+	["bst.h.muse.w10.005"] = {
+		"turns toward the mountain at a deep, distant boom, like a hammer the size of a house striking far underground.",
+		"feels a dull ring come up through the soles of {g:his|her} boots, steady as a pulse: the forges under the mountain, never resting.",
+	},
+	["bst.h.muse.w10.006"] = {
+		"Supplies come in by wind rider, and half of them taste of smoke before they've touched the ground.",
+		"Somebody in Orgrimmar thinks a posting out here is a reward. I'd like a word with them.",
+		"If anyone asks, tell them Flame Crest is lovely. We could use the company.",
+	},
+	["bst.h.muse.w10.007"] = {
+		"The heat bends everything. A rock looks a stone's throw off and takes the better part of an hour to reach.",
+		"Distances lie out here. The air wavers over the hot ground, and the mountain never seems to come any closer, however long I walk.",
+	},
+	["bst.h.muse.w10.008"] = {
+		"Orc, troll, tauren, Forsaken: this far from home the Horde stops counting who's who and starts counting heads.",
+		"A camp this small can't afford the old quarrels between the Horde's peoples. Everyone holds a spear, or a ladle, or both.",
+	},
+	["bst.h.muse.w10.009"] = {
+		"watches two dragon whelps squabble over something charred, and gives them both a very wide berth.",
+		"stops as a whelp no bigger than a dog hisses from a ledge, all teeth and temper, then steps carefully around it.",
+	},
+	["bst.h.npc_meet.w10.001"] = {
+		"A sentry with soot to the eyebrows, nodding once. Out here a nod is a whole conversation.",
+		"The guard barely glances at me; those eyes stay on the mountain. That's the right place for them.",
+		"Whoever stands watch here does it in plain sight of Blackrock. That takes a particular kind of nerve.",
+	},
+	["bst.h.quest_complete.w10.001"] = {
+		"Done. Send word to Kargath, if anyone's flying that way.",
+		"That's finished. Tell whoever keeps the camp's tally.",
+	},
+	["bst.h.quest_complete.w10.002"] = {
+		"Paid. The coin's warm from sitting in a pouch out here; I'll pretend it's pride.",
+		"A reward and a nod from someone too tired to smile. In this valley, that's a parade.",
+	},
+	["bst.h.quest_complete.w10.003"] = {
+		"listens to the thanks with half an ear, eyes already back on the smoking mountain.",
+		"accepts the reward with a glance north at the mountain, as if it might have been watching.",
+	},
+	["bst.h.quest_progress.w10.001"] = {
+		"Some of it done. The rest is somewhere between here and the mountain.",
+		"Not finished yet. Neither is the heat.",
+	},
+	["bst.h.subzone_enter.w10.001"] = {
+		"comes into {subzone} with one hand raised against the glare of the fissures.",
+		"reaches {subzone}, where the rock is as black and the air as thick as everywhere else.",
+		"arrives in {subzone} and stops to listen; somewhere ahead a hammer rings, or a drum.",
+	},
+	["bst.h.victory.w10.001"] = {
+		"Flame Crest stands. You don't.",
+		"That's for the camp on the ridge.",
+		"One more that Orgrimmar never needs to hear about.",
+	},
+	["bst.h.victory.w10.002"] = {
+		"Down in the cinders, a long way from anyone who'd come looking. Out here that's true of all of us.",
+		"Fallen on burned ground, and nobody coming for it. Nor for me.",
+	},
+	["bst.h.victory.w10.003"] = {
+		"kicks a little ash over the fallen, then turns away without a word.",
+		"stamps out a smoldering patch beside the fallen foe and moves on.",
+	},
+	["bst.h.weather_change.w10.001"] = {
+		"The wind swings round and sends the smoke straight back the way it came. Thank you, valley.",
+		"A change in the wind. In this valley that only decides which way the ash falls.",
+	},
 ]==])

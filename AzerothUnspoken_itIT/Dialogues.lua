@@ -1512,4 +1512,182 @@ NS:AddTexts("itIT", {
 		"La tua gente guarisce in fretta, quindi non ci andrò piano. Oggi lividi, e quando spariscono ti resta l'abilità.",
 		"Un troll. Braccia lunghe, mani svelte e una risata quando le cose vanno storte. Bene: quest'ultima conta più di tutto.",
 	},
+	["faction.alliance.npcd_flightmaster_bye.w10.001"] = {
+		"Su, si parte. Se sorvoli l'Orda, salutala con la mano: la confonde da morire.",
+		"Buon volo. La bestia conosce a memoria ogni posatoio dell'Alleanza: fidati più di lei che della mappa.",
+	},
+	["faction.alliance.npcd_flightmaster_open.w10.001"] = {
+		"Dove si va? Ogni posatoio dell'Alleanza è amico, e i vuoti nel mezzo non sono affar mio.",
+		"Monta. Queste bestie hanno portato tutti i popoli dell'Alleanza e non si sono mai lamentate di nessuno. Dei passeggeri non posso dire lo stesso.",
+	},
+	["faction.alliance.npcd_flightmaster_route.w10.001"] = {
+		"Abbastanza rapido. Tieniti basso in sella sopra le terre dell'Orda: i loro arcieri si annoiano e ci sperano.",
+		"Non molto. Quasi tutto cielo, un po' di terre dell'Orda sotto, e un posatoio amico in fondo.",
+	},
+	["faction.alliance.npcd_guard_bye.w10.001"] = {
+		"Vai pure. Tieni pulito il nome dell'Alleanza là fuori: coi Defias abbiamo già abbastanza guai.",
+		"Buona strada. E se vedi bandiere rosse, grida.",
+	},
+	["faction.alliance.npcd_guard_danger.w10.001"] = {
+		"Predoni dell'Orda sulle strade, i morti al nord, briganti ovunque nel mezzo. Scegli le tue battaglie, e sceglile vicino a degli amici.",
+		"Pericoli? L'Alleanza ha più fronti che soldati. Dovunque tu vada, aspettati che qualcuno con una lama ci sia arrivato prima.",
+	},
+	["faction.alliance.npcd_guard_directions.w10.001"] = {
+		"Segui le bandiere azzurre e non sbaglierai di molto. Dove i colori diventano rossi, fai dietrofront.",
+		"Chiedi a chiunque porti i colori dell'Alleanza: tutti conoscono la strada per la locanda, per la banca e per i guai.",
+		"Bada ai cartelli. Ogni popolo dell'Alleanza ha litigato sull'ortografia, ma indicano tutti giusto.",
+	},
+	["faction.alliance.npcd_guard_open.w10.001"] = {
+		"Colori dell'Alleanza. Per me va bene. Che ti serve? Breve: la ronda non aspetta.",
+		"Una faccia onesta sotto i colori dell'Alleanza. Dimmi che ti serve.",
+		"Da qualunque popolo tu venga, da me avrai una risposta diretta. Chiedi pure.",
+	},
+	["faction.alliance.npcd_innkeeper_bye.w10.001"] = {
+		"Buona strada. Al prossimo villaggio dell'Alleanza di' che i letti erano puliti: fa miracoli per gli affari.",
+		"Vai pure. Se all'orizzonte vedi una bandiera azzurra, è amica; se è rossa, tira dritto.",
+		"Abbi cura di te là fuori. L'Alleanza ha meno brava gente di quanto creda.",
+	},
+	["faction.alliance.npcd_innkeeper_news.w10.001"] = {
+		"Ai miei tavoli ultimamente si parla solo dell'Alterac: gli Stormpike vogliono volontari e i Frostwolf li vogliono fuori dai piedi.",
+		"Un corriere giurava che alle Sentinelle di Ashenvale mancano di nuovo le frecce. Alle asce dei Warsong non sembra mai mancare niente.",
+		"Del re nessuno sa niente. Ogni sera qualcuno con i colori dell'Alleanza alza il boccale alla sua salute, come se servisse a riportarlo a casa.",
+	},
+	["faction.alliance.npcd_innkeeper_open.w10.001"] = {
+		"Avanti, avanti. Da qualunque capitale tu venga, lo stufato è lo stesso e il prezzo pure.",
+		"Siediti dove vuoi. L'Alleanza continua a passare dalla mia porta, e nessuno si è mai pulito gli stivali.",
+	},
+	["faction.alliance.npcd_innkeeper_open.w10.002"] = {
+		"Un'altra anima in cammino sulle strade dell'Alleanza. Una scodella, una panca e le ultime voci: scegline due, o tutte e tre.",
+		"Entra pure. Hai l'aria di chi si porta in spalla le commissioni dell'Alleanza. Posale per un po'.",
+	},
+	["faction.alliance.npcd_innkeeper_rest.w10.001"] = {
+		"La stanza è in cima alle scale. Dormi sonni tranquilli: c'è un chiavistello sulla porta e alleati in ogni stanza intorno.",
+		"Prendi il letto d'angolo. Ci hanno dormito soldati di tutti i popoli dell'Alleanza, e nessuno si è lamentato del materasso. Del russare, sì.",
+	},
+	["faction.alliance.npcd_innkeeper_sit.w10.001"] = {
+		"Ecco. Siediti come si deve: la guerra può fare a meno di te per una scodella.",
+		"Bene, riposa le gambe. L'Alleanza non cadrà mentre finisci di bere, e se cade, ti sveglio io.",
+	},
+	["faction.alliance.npcd_innkeeper_thanks.w10.001"] = {
+		"Non serve. Dar da mangiare a chi tiene aperte le strade è il miglior affare che faccia.",
+		"Di niente. Tieni l'Orda lontana dai miei carri di provviste e siamo pari.",
+	},
+	["faction.alliance.npcd_merchant_bye.w10.001"] = {
+		"Buoni affari. Che ti tengano in vita abbastanza da venire a comprare ancora.",
+		"Arrivederci. Il resto spendilo contro i nemici dell'Alleanza, non nelle sue taverne.",
+		"Vai, e buona fortuna al fronte. Portami notizie: le scambio con uno sconto.",
+	},
+	["faction.alliance.npcd_merchant_news.w10.001"] = {
+		"Le frecce sono di nuovo care: le Sentinelle di Ashenvale comprano ogni asta che trovano.",
+		"Da Ironforge il minerale scende a sud a carrettate. Qualcuno nell'Alleanza si aspetta una guerra lunga.",
+	},
+	["faction.alliance.npcd_merchant_open.w10.001"] = {
+		"Ah, moneta dell'Alleanza! Spendila qui, prima che la spenda la guerra al posto tuo.",
+		"Dai un'occhiata. Provviste per ogni fronte dell'Alleanza, e qualcuna per i fronti che non ha ancora aperto.",
+	},
+	["faction.alliance.npcd_merchant_open.w10.002"] = {
+		"Vieni dal fronte o ci stai andando? In ogni caso ti serviranno bende, e io ho bende.",
+		"Chi combatte per l'Alleanza compra sempre le stesse tre cose: cibo, corda e qualcosa per aggiustare ciò che si è rotto. Oggi quale?",
+	},
+	["faction.alliance.npcd_merchant_thanks.w10.001"] = {
+		"Grazie a te. La moneta dell'Alleanza vale uguale in ogni città, e le buone maniere pure.",
+		"È un piacere. Prima o poi tutta l'Alleanza passa dal mio banco; mi fa piacere vederti per tempo.",
+	},
+	["faction.alliance.npcd_merchant_wares.w10.001"] = {
+		"Razioni da campo, bende, corda, olio per le lanterne. Tutto quello che un soldato dell'Alleanza si dimentica fino al momento in cui gli serve.",
+		"Qualcosa da ogni angolo dell'Alleanza: borracce della montagna, filo dei telai elfici, l'acciarino brevettato di uno gnomo. Scegli pure.",
+	},
+	["faction.alliance.npcd_trainer_open.w10.001"] = {
+		"Bene. L'Alleanza ha bisogno di gente che continui a imparare: l'Orda di sicuro lo fa.",
+		"Avanti. Da qualunque popolo tu venga, la lezione è la stessa: esercitati finché l'Orda non se ne pente.",
+	},
+	["faction.horde.npcd_flightmaster_bye.w10.001"] = {
+		"Tieniti forte e fidati della bestia. Ha portato messaggi persino per il Capoguerra.",
+		"Buon volo. Atterra morbido, e porta i miei saluti al maestro di volo dall'altra parte.",
+	},
+	["faction.horde.npcd_flightmaster_open.w10.001"] = {
+		"Sali. La bestia conosce a memoria ogni posatoio dell'Orda.",
+		"Su, in sella. Corriere, soldato o viandante, il cielo dell'Orda li porta tutti allo stesso modo.",
+	},
+	["faction.horde.npcd_flightmaster_route.w10.001"] = {
+		"Rotta tranquilla, quasi tutta sopra terre dell'Orda. Se vedi i colori dell'Alleanza là sotto, saluta con la mano: lo detestano.",
+		"Abbastanza lunga da appisolarsi. La bestia non atterra in nessun posto che non porti la nostra bandiera.",
+	},
+	["faction.horde.npcd_guard_bye.w10.001"] = {
+		"Vai pure. L'Orda ha occhi su ogni strada: non sei mai {g:solo|sola} quanto sembra.",
+		"Buon cammino. E se l'Alleanza ti chiede che affari hai, non sono affari suoi.",
+	},
+	["faction.horde.npcd_guard_danger.w10.001"] = {
+		"Gli esploratori dell'Alleanza girano a due o tre per volta. Se ne vedi uno, cerca gli altri prima di mettere mano alle armi.",
+		"Al Flagello non importa che bandiera porti. Se vai a nord, vai in compagnia, e brucia quello che cade.",
+	},
+	["faction.horde.npcd_guard_directions.w10.001"] = {
+		"Segui gli stendardi dell'Orda: stanno lungo ogni strada che valga la pena, e quelle senza è meglio evitarle.",
+		"Chiedi a qualunque guardia lungo il cammino. Le strade le conosciamo tutti; quasi tutti le abbiamo pattugliate.",
+		"Sempre dritto, e se ti perdi cerca il fuoco dell'Orda più vicino e chiedi. Qualcuno lo sa sempre.",
+	},
+	["faction.horde.npcd_guard_open.w10.001"] = {
+		"Colori dell'Orda. Bene. Che ti serve, soldato?",
+		"Parla. Se si tratta di guai, preferisco sentirlo da uno dei nostri.",
+		"Riposo. Sei in mezzo all'Orda: chiedi pure.",
+	},
+	["faction.horde.npcd_innkeeper_bye.w10.001"] = {
+		"Strada sicura. Torna con tutti i pezzi: l'Orda non può farne a meno.",
+		"Vai pure. Se incontri l'Alleanza, porta i miei saluti: quelli appuntiti.",
+		"Buon cammino. Ci sarà una scodella ad aspettarti, da qualunque angolo dell'Orda tu torni.",
+	},
+	["faction.horde.npcd_innkeeper_news.w10.001"] = {
+		"Notizie da Ashenvale: le Sentinelle hanno colpito di nuovo i campi dei taglialegna. Orgrimmar vuole il legname lo stesso.",
+		"I viaggiatori dicono che le Plaguelands brulicano peggio della stagione scorsa. La gente della Dama Oscura è partita verso nord con facce cupe.",
+		"I corrieri dall'Alterac raccontano che i Frostwolf si stanno trincerando. Se vai da quelle parti, porta un mantello pesante e poca pazienza.",
+	},
+	["faction.horde.npcd_innkeeper_open.w10.001"] = {
+		"Entra, entra. Chi porta i colori dell'Orda ha la panca calda e il primo mestolo; gli altri aspettano il loro turno.",
+		"Avanti. Qualunque strada tu abbia fatto per l'Orda, per un po' finisce alla mia porta.",
+	},
+	["faction.horde.npcd_innkeeper_open.w10.002"] = {
+		"Siediti dove vuoi. Ho avuto orchi, troll, tauren e Reietti allo stesso tavolo; un posto per te si trova.",
+		"Occhio al tamburo vicino alla porta. L'ha lasciato un grunt la settimana scorsa e nessuno osa spostarlo.",
+	},
+	["faction.horde.npcd_innkeeper_rest.w10.001"] = {
+		"La stanza è tua. I muri sono sottili, ma sotto questo tetto nessuno porta la bandiera sbagliata.",
+		"Riposati. Se qualcosa si muove sulla strada, le guardie dell'Orda lo sentiranno molto prima di te.",
+	},
+	["faction.horde.npcd_innkeeper_sit.w10.001"] = {
+		"Prendi uno sgabello. Ogni soldato dell'Orda si merita di sedersi ogni tanto, checché ne dicano gli ufficiali.",
+		"Siediti, siediti. Metti su i piedi: la guerra può aspettare il tempo di una tazza.",
+	},
+	["faction.horde.npcd_innkeeper_thanks.w10.001"] = {
+		"Non serve ringraziare. Tenere l'Orda sfamata è la mia parte di guerra.",
+		"Bah, figurati. Ripagami tornando con tutte le ossa al loro posto.",
+	},
+	["faction.horde.npcd_merchant_bye.w10.001"] = {
+		"Buoni affari. Il resto spendilo in qualcosa che tenga in piedi l'Orda.",
+		"Addio. Se quella cinghia si rompe in una zuffa con l'Alleanza, voglio sentire la storia.",
+		"Buon cammino. Torna più {g:ricco|ricca}: ti aiuterò volentieri a rimediare.",
+	},
+	["faction.horde.npcd_merchant_news.w10.001"] = {
+		"Il legname è rincarato di nuovo. Ogni volta che le Sentinelle assaltano i campi Warsong, i carpentieri di Orgrimmar piangono.",
+		"Le carovane che attraversano le Barrens continuano a perdere casse per colpa dei centauri. Qualcuno nell'Orda dovrebbe fare qualcosa. Possibilmente qualcuno con spalle come le tue.",
+	},
+	["faction.horde.npcd_merchant_open.w10.001"] = {
+		"Monete dell'Orda, merce dell'Orda. Dai un'occhiata: niente su questi scaffali viene da Stormwind, te lo prometto.",
+		"Ah, i colori giusti. Prenditi il tuo tempo: l'Alleanza al mio banco non fa acquisti.",
+	},
+	["faction.horde.npcd_merchant_open.w10.002"] = {
+		"Avanti. Corde, bende, otri: le cose che le canzoni dell'Orda non nominano e che servono a ogni soldato.",
+		"Vieni, guarda. Se ti tiene in vita fra un avamposto e l'altro, probabilmente ce l'ho.",
+	},
+	["faction.horde.npcd_merchant_thanks.w10.001"] = {
+		"Grazie a te. Monete dell'Orda spese nell'Orda: il commercio migliore che ci sia.",
+		"Il piacere è mio. Di' alla tua banda dove l'hai preso.",
+	},
+	["faction.horde.npcd_merchant_wares.w10.001"] = {
+		"Razioni che si conservano, bende che tengono, e una cote o due. L'Orda marcia con le cose semplici.",
+		"Otri da Mulgore, corde dal Durotar, sale dalla costa. Merce da ogni angolo dell'Orda, tutta su uno scaffale.",
+	},
+	["faction.horde.npcd_trainer_open.w10.001"] = {
+		"{g:Pronto|Pronta} a imparare? Bene. L'Orda ha bisogno di combattenti più affilati a ogni stagione, e tu ne fai parte.",
+		"Mettiti lì e fammi vedere. Da qualunque popolo tu venga, l'Orda addestra tutti allo stesso modo: duro, e con onestà.",
+	},
 }, "base_dialogues")

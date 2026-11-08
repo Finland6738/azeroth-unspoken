@@ -196,4 +196,141 @@ AU:RegisterRegionalTexts("silithus", "enUS", "kalimdor_silithus", [==[
 		"drags a forearm across {g:his|her} brow, smearing sweat and sand, and looks around for the next threat.",
 		"kneels a moment in the hot sand to catch {g:his|her} breath, then rises with a grunt.",
 	},
+	["sil.a.attack.w10.001"] = {
+		"Back under the sand with you!",
+		"Chew on this!",
+	},
+	["sil.a.battle.w10.001"] = {
+		"Out of the sand and into my way. Bad choice.",
+		"Sand in my eyes and you in my face. One of those I can fix.",
+		"Cenarion Hold is behind me. You don't get past.",
+	},
+	["sil.a.battle.w10.002"] = {
+		"A cultist. Watch the hands; they mutter before they strike.",
+		"Twilight's Hammer. Break the chant before it finishes, and the rest is easy.",
+		"Cultist! Your end of the world starts with you.",
+	},
+	["sil.a.battle.w10.003"] = {
+		"kicks free of the sand as the insect bursts up out of it, mandibles wide.",
+		"braces against the rush of chitin and legs, the sand sliding away underfoot.",
+	},
+	["sil.a.battle.w10.004"] = {
+		"Sand and wind with a grudge. The cult called you; I'll send you back.",
+		"Another of the cult's pets. Back to whatever pit they dragged you from!",
+	},
+	["sil.a.journey.w10.001"] = {
+		"Down at Cenarion Hold. The heat comes up off the sand like an open oven door, and the hippogryph looks as unhappy about it as I am.",
+		"On the ground in Silithus. First breath: dust. Second breath: more dust. By the third I stop counting.",
+		"Boots in the sand at the Hold. The hippogryph shakes itself, and a small dune falls out of its feathers.",
+	},
+	["sil.a.landmark.w10.001"] = {
+		"{landmark}. Night elves and dragons raised it together, a thousand years ago. Standing at its foot, I feel very young and very small.",
+		"The Scarab Wall. Every stone in it was set against what lies behind. I touch one, just once, for luck.",
+	},
+	["sil.a.lowhp.w10.001"] = {
+		"Back to the Hold, if I have to crawl the whole way!",
+		"Water, breath, a little luck. I'll take any of them!",
+	},
+	["sil.a.lowhp.w10.002"] = {
+		"Heat in my head, blood in my eyes. Slow down. Think.",
+		"The dunes are swaying. No, they aren't. I am. Steady.",
+	},
+	["sil.a.muse.w10.001"] = {
+		"At Cenarion Hold a tauren druid and a night elf druid share a map table and argue in low voices. The Circle is older than the quarrel between our factions.",
+		"The Cenarion Circle takes druids from both sides. Out here they tend the same wounded land, and they trade herbs without a glance at each other's colors.",
+		"Horde druids inside Cenarion Hold. It sits strangely at first. Then the silithid come over the dunes, and nobody cares who swore to whom.",
+	},
+	["sil.a.muse.w10.002"] = {
+		"A thousand years ago the night elves fought the Qiraji here and barely won. The druids speak of it carefully, like a debt that was never paid off.",
+		"The War of the Shifting Sands ended with a wall and a seal, not a victory. The kaldorei know it. You can hear it in how quietly they say Ahn'Qiraj.",
+	},
+	["sil.a.muse.w10.003"] = {
+		"Word from Ironforge says the Alliance is stockpiling: bandages, metal bars, crates of food. Nobody says what for, but everyone looks south while not saying it.",
+		"The talk at Cenarion Hold is of gates and gongs and an army being gathered back home. Rumor, mostly. Rumor in Silithus has a way of turning true.",
+		"If the gates of Ahn'Qiraj ever open again, the Alliance means to be ready. That's what the quartermasters say, anyway, while they count copper bars.",
+	},
+	["sil.a.muse.w10.004"] = {
+		"The Twilight's Hammer leave their camps littered with tablets and scrawled pages. Most of it is raving about the world cracking open. Some of it reads like a plan, and that's worse.",
+		"In the cult's camps there are standing stones that hum as you pass. Whatever the Twilight's Hammer means to call through them, I'd rather it stayed uncalled.",
+	},
+	["sil.a.muse.w10.005"] = {
+		"Watch a silithid swarm long enough and you stop seeing insects. You see one creature with a thousand legs, and it's thinking.",
+		"The silithid don't fight like beasts. They come in waves, pull back and come again, as if something deep in the hive were counting the cost.",
+	},
+	["sil.a.muse.w10.006"] = {
+		"Bakers' ovens run cooler than this. And the bread would come out half sand anyway.",
+		"Somebody tell the desert it can stop now. I'm cooked through.",
+	},
+	["sil.a.muse.w10.007"] = {
+		"The dwarves at Bronzebeard Encampment dig away in the middle of all this, as calm as if the hives were a passing rumor. Dwarves and old stones: nothing keeps them apart.",
+		"Even here there are dwarves with shovels in the sand. To a dwarf every ruin is a library, and Silithus is full of very old books.",
+	},
+	["sil.a.muse.w10.008"] = {
+		"tips a boot upside down and watches a thin stream of sand pour out, then pulls it back on with an air of resignation.",
+		"ties a strip of cloth over nose and mouth against the grit and walks on, eyes narrowed to slits.",
+	},
+	["sil.a.muse.w10.009"] = {
+		"Stormwind feels like a story from someone else's life out here. Green fields, stone streets, rain. I'd take any one of the three.",
+		"The Alliance's heartlands are a long way north. Out here it's a handful of us at Cenarion Hold, sharing walls and water with whoever else came to hold the line.",
+	},
+	["sil.a.muse.w10.010"] = {
+		"Why would the Twilight's Hammer camp so close to the hives and not be eaten? Either they're very lucky, or something down there knows them.",
+		"The cultists and the silithid leave each other alone. In a desert where everything eats everything, that peace is the most frightening thing here.",
+	},
+	["sil.a.muse.w10.011"] = {
+		"Somebody has to stand between the hives and the rest of Kalimdor. For now, that's whoever holds Cenarion Hold.",
+		"Let the hives buzz. The Hold's still standing, and so are we.",
+	},
+	["sil.a.npc_meet.w10.001"] = {
+		"North, please, somewhere green. The hippogryph looks as keen as I am.",
+		"Take me up over the dunes. I want to see the hives from very high up and very briefly.",
+	},
+	["sil.a.npc_meet.w10.002"] = {
+		"Waterskins, and plenty of them. Anything else this merchant sells is a luxury in Silithus.",
+		"This merchant has watched every kind of traveler stumble in off the dunes. Nothing I buy will surprise anyone.",
+	},
+	["sil.a.quest_complete.w10.001"] = {
+		"Done. Out here nothing goes to waste, least of all help.",
+		"Finished. A nod, a line in a ledger, and back out into the heat. That's thanks, in Silithus.",
+		"That's handled. Silithus is no gentler for it, but it's a little less crowded.",
+	},
+	["sil.a.quest_complete.w10.002"] = {
+		"Tell them in Ironforge and Stormwind: the Alliance did its part in the desert.",
+		"Done. One more reason for Cenarion Hold to be glad the Alliance came.",
+	},
+	["sil.a.quest_complete.w10.003"] = {
+		"shakes the sand out of the reward pouch before tucking it away, already a habit.",
+		"accepts the payment, then simply stands still for a while, letting the hot wind go past.",
+	},
+	["sil.a.quest_progress.w10.001"] = {
+		"That's everything. Now back across the dunes, and may the sand stay quiet underfoot.",
+		"All of it, gathered. Silithus cost me a lot of water for this; let's make it count.",
+	},
+	["sil.a.subzone_enter.w10.001"] = {
+		"{subzone}. I stop and listen before going on. In Silithus the ears see farther than the eyes.",
+		"{subzone}. The sand here looks like the sand everywhere else, which is exactly what worries me.",
+		"{subzone}. Water first, then a look around. The order matters in Silithus.",
+	},
+	["sil.a.victory.w10.001"] = {
+		"Back into the sand. It was always going to have you.",
+		"That's one. The desert keeps count; I don't.",
+		"Stay under this time. The dunes have room.",
+	},
+	["sil.a.victory.w10.002"] = {
+		"One less thing between Cenarion Hold and a little peace.",
+		"That clears some sand around the Hold. The druids can breathe a moment longer.",
+	},
+	["sil.a.victory.w10.003"] = {
+		"crouches to drink, and the water tastes of the fight's dust.",
+		"shields {g:his|her} eyes from the grit and listens. Under the sand, something is still clicking.",
+	},
+	["sil.a.victory.w10.004"] = {
+		"Dead, but the hive doesn't care. It'll send another, and another, and never miss this one.",
+		"Down. For every silithid that falls, the hive lays a hundred eggs.",
+	},
+	["sil.a.weather_change.w10.001"] = {
+		"pulls a cloth over {g:his|her} face as the sandstorm rolls in, a brown wall swallowing the dunes one by one.",
+		"turns {g:his|her} back to the rising wind as the air fills with stinging sand and the hives vanish into the haze.",
+		"half closes {g:his|her} eyes against the driving grit, every bare inch of skin scoured raw.",
+	},
 ]==])

@@ -1683,4 +1683,247 @@ NS:AddTexts("enUS", {
 		"Words given, words kept. Thrall kept his to the Darkspear. I can keep mine to whoever asked.",
 		"Tell me where and what. A troll's word goes as far as a troll's legs, and those go a long way.",
 	},
+	["faction.alliance.npc_meet.w10.001"] = {
+		"The guest book on the counter: a dwarf's heavy scrawl, a gnome's tiny tidy print, an elf's long looping hand. The Alliance, signed in ink.",
+		"Read down any Alliance inn's ledger and you'll find four peoples sleeping under one roof and complaining about the same draft.",
+		"One inn, four kinds of snoring through the walls. Somebody once called it the Alliance's truest choir.",
+	},
+	["faction.alliance.npc_meet.w10.002"] = {
+		"A room, a hot meal and the news from the fronts, in whatever order they come.",
+		"Any word from Ashenvale or Arathi? I'll take the news with the stew, and the stew first.",
+		"What's the talk among the soldiers? Who's winning, who's losing, who owes whom a drink?",
+	},
+	["faction.alliance.npc_meet.w10.003"] = {
+		"A kaldorei keeping an inn for travelers of the whole Alliance. Ten thousand years of history, and here we all are, asking for more bread.",
+		"The keeper moves without a sound and remembers every order. Beside {other}, humans, dwarves and gnomes all sound a little loud.",
+	},
+	["faction.alliance.npc_meet.w10.004"] = {
+		"A gnomish house! Then the taps work, the chimney draws, and there's a device for everything. What does that one do?",
+		"Something hot, please, and don't tell me how the oven works. I'd like to sleep easy.",
+	},
+	["faction.alliance.npc_meet.w10.005"] = {
+		"A grunt, a key, a bowl slid across the counter. Gruff keepers are the same in every Alliance town, and I trust them more than the cheerful ones.",
+		"No welcome, no small talk, just the bill. Alliance soldiers have been treated worse by their own generals.",
+	},
+	["faction.alliance.npc_meet.w10.006"] = {
+		"Gnomish springs, dwarven steel, elven leather, human bread. An Alliance merchant's shelf is a map of who we are.",
+		"Every crate on these shelves crossed half the Alliance to get here: by tram, by boat, by gryphon. Prices to match, naturally.",
+		"Rations from Stormwind, rope from Ironforge, arrows fletched in Darnassus. Whoever says the Alliance agrees on nothing has never shopped here.",
+	},
+	["faction.alliance.npc_meet.w10.007"] = {
+		"Is this the Alliance price or the goblin price? I can never tell, and I suspect that's the point.",
+		"A discount for those who fight? No? Worth asking. The Alliance pays us in thanks, and thanks don't buy rope.",
+	},
+	["faction.alliance.npc_meet.w10.008"] = {
+		"A gnomish stall with every item labeled in neat little letters, prices and all. The Alliance never had better clerks than the people it couldn't save a city for.",
+		"Everything on this counter has a tag, and some tags have tags. The gnomes lost Gnomeregan and kept their bookkeeping; I know which I'd have saved too.",
+	},
+	["faction.alliance.npc_meet.w10.009"] = {
+		"Quiet watch? Good. Keep it dull. Dull is what the rest of us are out there fighting for.",
+		"All well on the wall? Then you're doing the hardest job in the Alliance: nothing, perfectly, for hours.",
+		"Anything to report? No? Then the Alliance is winning, at least on this stretch of wall.",
+	},
+	["faction.alliance.npc_meet.w10.010"] = {
+		"A dwarven guard, far from the mountain. Wherever the Alliance raises a wall, some dwarf has already tapped the mortar and grunted.",
+		"Short, broad, armored to the eyebrows and going nowhere. If the Alliance had a crest for steadiness, this guard would be on it.",
+	},
+	["faction.alliance.npc_meet.w10.011"] = {
+		"A Sentinel's eyes on me for exactly as long as it takes to decide. Then a nod. Allies, then; the elves don't waste a second look.",
+		"The elven guard saw me long before I saw the guard. Among the Alliance's peoples, nobody keeps a watch quite like them.",
+	},
+	["faction.alliance.npc_meet.w10.012"] = {
+		"Horde colors on that guard. I keep my hands where they can be seen and my feet ready to move.",
+		"A guard of the Horde, and me in plain view. Words wouldn't help; we don't even share a language.",
+	},
+	["faction.alliance.npc_meet.w10.013"] = {
+		"returns the guard's nod: the brief, unceremonious nod of two allies who will never learn each other's names.",
+		"gives the guard an ally's nod, and gets one back, short and without fuss.",
+	},
+	["faction.alliance.npc_meet.w10.014"] = {
+		"From up there the Alliance's lands look like patches on a cloak, with the Horde's in between. The beast doesn't care whose patch it crosses.",
+		"Flight routes are the Alliance's real map: every roost a friend, every gap between them somebody else's country.",
+		"Another roost, another tired beast, another keeper who has seen allies of every people turn green in the face.",
+	},
+	["faction.alliance.npc_meet.w10.015"] = {
+		"A hippogryph, then. The elves swear they're gentler than gryphons; the dwarves swear the opposite. I'll swear at whichever one bucks.",
+		"Elven roost, elven beast. Does it understand Common, or should I just smile at it?",
+	},
+	["faction.alliance.npc_meet.w10.016"] = {
+		"The Alliance's teachers have been stealing from each other for years: a human drill, a dwarf's patience, an elf's old tricks. I'll take whatever ended up in this lesson.",
+		"In every Alliance lesson there's something one people learned from another. Nobody admits it, and everybody's better for it.",
+	},
+	["faction.alliance.npc_meet.w10.017"] = {
+		"Teach me what works against the Horde, and then whatever works against everything else.",
+		"Whatever you've got. The Horde isn't waiting, and neither are the dead up north.",
+	},
+	["faction.alliance.npc_meet.w10.018"] = {
+		"Another ally asking for a hand. The Alliance's real treaties are written like this: one favor at a time, between people who'll never meet a king.",
+		"Kings sign the pacts. The rest of the Alliance is held together by errands like this one, done well by strangers.",
+		"Someone of our side needs help. That's reason enough; the details are just directions.",
+	},
+	["faction.alliance.npc_meet.w10.019"] = {
+		"If it helps our side, count me in. If it only helps you, count me in anyway, but tell me which it is.",
+		"Trouble? Good. I mean, not good. I mean: tell me where, and we'll see what the Alliance can do about it.",
+	},
+	["faction.alliance.npc_meet.w10.020"] = {
+		"Coin struck by dwarves, counted by gnomes, spent by humans, and watched by elves with polite amazement. The Alliance's whole economy in one vault.",
+		"Every bank of the Alliance holds treasure from four peoples, and each of those peoples thinks the others count wrong.",
+		"Savings sealed behind dwarven locks, recorded in a gnomish hand. If the Alliance ever falls, the vault will be the last thing standing.",
+	},
+	["faction.alliance.npc_meet.w10.021"] = {
+		"Ordinary folk of the Alliance about their day: bread to buy, a child to scold, a roof to mend. This is what all the banners are for.",
+		"Nobody here is a hero and nobody wants to be. Keeping it that way is most of what the Alliance's soldiers are for.",
+	},
+	["faction.alliance.npc_meet.w10.022"] = {
+		"One of the Alliance's leaders, close enough to hear breathing. All the speeches I'd rehearsed, and not one word left.",
+		"The one whose seal is on half the Alliance's orders, standing right there. Taller than the legend, or shorter; it's hard to tell with the knees shaking.",
+	},
+	["faction.alliance.other_action.w10.001"] = {
+		"A trade between allies. Fair weight, no tricks; the goblins can keep the tricks.",
+		"Coin stays in the Alliance, and so does the goodwill. Fair trade.",
+		"Deal. If this goes badly, we'll blame the goblins, as is tradition.",
+	},
+	["faction.alliance.other_action.w10.002"] = {
+		"Someone of the Horde gestures at me. Without a shared tongue, a bow and an insult look alarmingly alike.",
+		"A sign in my direction from the Horde side. Greeting or challenge? Nobody in the Alliance ever taught me to read their hands.",
+		"A gesture from the other side. I nod back, carefully, the way you'd nod at a bear that hasn't made up its mind.",
+	},
+	["faction.alliance.other_action.w10.003"] = {
+		"returns {other}'s gesture with the easy warmth of allies nobody ever bothered to introduce.",
+		"answers the gesture in kind: one ally to another, no names needed.",
+	},
+	["faction.alliance.other_action.w10.004"] = {
+		"Another errand for the Alliance. Kings sign treaties; people like me run the errands that keep them standing.",
+		"One more task under our banner. Small, probably. The Alliance is mostly small tasks done by people who didn't have to.",
+		"A request from one of ours. I'll do it properly; somebody's opinion of the whole Alliance may hang on it.",
+	},
+	["faction.alliance.other_action.w10.005"] = {
+		"A duel between friends of the Alliance. Loser carries the winner's pack to the next camp.",
+		"Fine, but go easy. The Horde will want what's left of me later.",
+	},
+	["faction.horde.npc_meet.w10.001"] = {
+		"Keep a sharp eye. The Alliance isn't the only thing that crosses a border uninvited.",
+		"Hold steady. Half the Horde sleeps easier because of whoever stands where you stand.",
+	},
+	["faction.horde.npc_meet.w10.002"] = {
+		"A Horde guard, spear grounded, eyes on the road. Whatever the people, the stance is the same: the Horde taught it to all of them.",
+		"The guard's nod is curt and complete. Among the Horde that counts as a whole conversation.",
+	},
+	["faction.horde.npc_meet.w10.003"] = {
+		"Yes, yes, I'm Horde. Stare any harder and you'll wear out your eyes.",
+		"Same side. Save the scowl for whoever comes up the road next.",
+	},
+	["faction.horde.npc_meet.w10.004"] = {
+		"An Alliance guard, and a long look across the gap between us. Neither of us is here to start the war again. Not today.",
+		"Steel in Alliance colors, and eyes that already know which side I'm on. I keep walking; nothing else needs saying.",
+	},
+	["faction.horde.npc_meet.w10.005"] = {
+		"Easy. I'm only passing through, and so is my temper.",
+		"No need for the hand on the hilt. If the Horde wanted this place, it wouldn't send me alone.",
+	},
+	["faction.horde.npc_meet.w10.006"] = {
+		"The Horde's sky roads run from the wind riders of Orgrimmar to the bats of Undercity. Whoever keeps the beasts fed keeps the Horde in one piece.",
+		"A Horde flight master sorting riders with a glance. Every message, every wounded courier, every hurried order passes through hands like these.",
+	},
+	["faction.horde.npc_meet.w10.007"] = {
+		"Fastest beast you've got. Somewhere the Horde needs one more pair of hands, and they're mine.",
+		"Wherever the next Horde post is, take me there. I'll learn its name in the air.",
+	},
+	["faction.horde.npc_meet.w10.008"] = {
+		"Good Horde goods? Then I'll pay a Horde price: fair, and without the speech.",
+		"Show me what keeps a soldier on the road. The rest can stay on the shelf.",
+		"Coin for goods, goods for the road, road for the Horde. Let's keep the chain short.",
+	},
+	["faction.horde.npc_meet.w10.009"] = {
+		"Troll beads beside tauren leather beside Forsaken thread. A Horde merchant's shelf is the pact in miniature.",
+		"The merchant prices everything in the same coin, whoever made it. In the Horde, that's what equality looks like.",
+	},
+	["faction.horde.npc_meet.w10.010"] = {
+		"A Horde inn: the hearth is shared, the benches don't match, and somebody by the fire is always mending something.",
+		"Whatever people keeps this inn, the rule is the same: anyone wearing the Horde's colors gets a place near the fire.",
+		"Every Horde innkeeper seems to know which cups suit tusks, which stools hold a tauren and which corner the Forsaken prefer. Hospitality is a craft, and they've learned it four times over.",
+	},
+	["faction.horde.npc_meet.w10.011"] = {
+		"Something hot and something strong, keeper. The Horde marches on both.",
+		"A bed, a bowl, and news from the front, if you've got any. In that order or any other.",
+	},
+	["faction.horde.npc_meet.w10.012"] = {
+		"Every Horde inn has a corner where the old soldiers sit. You learn more of the Horde's history there than from any chieftain.",
+		"The innkeeper pours without asking where I'm from. In the Horde, my colors have already answered.",
+	},
+	["faction.horde.npc_meet.w10.013"] = {
+		"A trainer of the Horde. Whatever I learn here, I'll use for people who aren't my own kin but are my own side. That still feels new.",
+		"Every skill taught in a Horde hall is a little more strength for the pact. The trainer seems to know it, and teaches like it.",
+	},
+	["faction.horde.npc_meet.w10.014"] = {
+		"Teach me something the Alliance won't see coming.",
+		"I'm listening. The Horde needs me sharper, and so do I.",
+	},
+	["faction.horde.npc_meet.w10.015"] = {
+		"Gold in a Horde vault. My valuables now sleep under the same roof as half the Horde's. That's one way to feel part of something.",
+		"The banker counts without looking up. Whatever wars the Horde fights, somebody has to keep the ledgers straight.",
+	},
+	["faction.horde.npc_meet.w10.016"] = {
+		"If it helps the Horde, I'll hear it. If it only helps you, I'll still hear it, but you're buying the next round.",
+		"What does the Horde need? Say it straight and I'll carry it.",
+		"Another job for the Horde? Good. Idle soldiers start quarrels; busy ones finish them.",
+	},
+	["faction.horde.npc_meet.w10.017"] = {
+		"Someone of the Horde needs help and asks without ceremony. I like that about us: nobody begs, nobody is turned away.",
+		"A Horde outpost always has more trouble than hands. {other} has just found a spare pair.",
+	},
+	["faction.horde.npc_meet.w10.018"] = {
+		"Thrall. A Warchief who grew up among his enemies and still chose peace wherever he could find it. The Horde stands differently in his presence; so do I.",
+		"The Warchief himself. Orcs, tauren, trolls and Forsaken all answer to this one voice. It must weigh more than any hammer.",
+		"Thrall, son of Durotan. He carries the Doomhammer, and all four peoples of the Horde with it. I keep my words few.",
+	},
+	["faction.horde.npc_meet.w10.019"] = {
+		"Cairne Bloodhoof. The Horde's oldest friend in Kalimdor, and its calmest voice. Standing before him I find I have nothing urgent to say.",
+		"The High Chieftain of the tauren. When the Horde first came to these shores, it was his people who held out a hand. The Horde has never forgotten.",
+	},
+	["faction.horde.npc_meet.w10.020"] = {
+		"Vol'jin. The Darkspear's shadow hunter, who kept the oath his father made to the Warchief. Few in the Horde honor a debt for as long as he has.",
+		"Vol'jin of the Darkspear. Quiet, watchful and hard to read. The Horde is lucky to have him on its side, and the Horde knows it.",
+	},
+	["faction.horde.npc_meet.w10.021"] = {
+		"Sylvanas Windrunner. The Horde's most uneasy ally, and perhaps its most determined. Whatever she wants, she wants it very much.",
+		"The Banshee Queen. The Warchief welcomed her people; she welcomed the Warchief's protection. Nobody is quite sure which of them got the better bargain.",
+		"Lady Sylvanas. Cold, sharp and impossible to ignore. The Horde keeps her close, the way you keep a blade you don't fully trust: within reach, edge turned away.",
+	},
+	["faction.horde.npc_meet.w10.022"] = {
+		"steps aside to let one of the Horde's working folk pass under an enormous load, and answers the grunt of thanks with a nod.",
+		"returns a tired nod from one of the Horde's working folk, the kind who never see a battlefield and keep every battlefield supplied.",
+	},
+	["faction.horde.npc_meet.w10.023"] = {
+		"A cheerful face under Horde colors. The pact has hard days; somebody has to remember it has good ones too.",
+		"{other} grins as if the Horde had just won something. Maybe it has, somewhere. I'll take the grin either way.",
+	},
+	["faction.horde.other_action.w10.001"] = {
+		"A war band, then. The Horde is strongest when its peoples walk together, and so am I.",
+		"I'll come. Small bands like this one are how the Horde was rebuilt, fight after fight.",
+	},
+	["faction.horde.other_action.w10.002"] = {
+		"A trade between allies. Fair weights, no tricks; we save those for the Alliance.",
+		"Let's swap. Whatever the Horde can't supply, we supply each other.",
+	},
+	["faction.horde.other_action.w10.003"] = {
+		"And to you. A greeting between Horde folk is never wasted.",
+		"Ha. Good to see you, under the same colors.",
+	},
+	["faction.horde.other_action.w10.004"] = {
+		"answers the gesture with a closed fist raised to the chest, the salute every people of the Horde shares.",
+		"returns the greeting with a short nod and a raised hand, Horde to Horde.",
+	},
+	["faction.horde.other_action.w10.005"] = {
+		"A task taken. Somewhere down the line it'll make the Horde a little stronger, or a little less hungry.",
+		"Another errand. The Horde was built out of errands like this one; I'll add mine to the pile.",
+	},
+	["faction.horde.other_action.w10.006"] = {
+		"You want a bout? Good. Two allies trading blows, and the Horde comes out sharper for it.",
+		"Gladly. Win or lose, we walk back to the fire together.",
+	},
+	["faction.horde.other_action.w10.007"] = {
+		"A rival's challenge, under the same banner. I'll fight it fair and still beat you.",
+		"You again. Fine. Same banner or not, I've been waiting for this.",
+	},
 }, "base_context")

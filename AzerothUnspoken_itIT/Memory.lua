@@ -419,4 +419,8 @@ NS:AddTexts("itIT", {
 		"Conosco {zone}. Gli odori sono gli stessi, i sentieri anche. Un troll dimentica le facce molto prima dei posti.",
 		"{zone}. Ci ho già camminato, e credo che il posto lo sappia. Gli spiriti di una terra ricordano chi è passato con rispetto.",
 	},
+	["mem.ret.weather.clear.w10.001"] = {
+		"Di nuovo {zone}. Con un'aria così pulita posso confrontare il ricordo che ne ho con la realtà, cresta per cresta.",
+		"Ancora {zone}. Niente in cielo a confondere i contorni, e la terra corrisponde a quello che ricordavo, più o meno.",
+	},
 }, "base_memory")

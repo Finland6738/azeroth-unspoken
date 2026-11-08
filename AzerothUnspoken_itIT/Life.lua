@@ -354,4 +354,12 @@ NS:AddTexts("itIT", {
 		"Più forza, più velocità, e anche le zanne stanno benissimo.",
 		"Attento, mondo. Questo troll è appena cresciuto, dentro.",
 	},
+	["band.b60.levelup.w10.001"] = {
+		"La strada non sale più di così. Strano: mi aspettavo un panorama, e quello che vedo è lavoro.",
+		"La cima, dunque. Niente campane, niente folla. Solo un lungo respiro, e il peggio del mondo che aspetta ancora.",
+	},
+	["band.b60.levelup.w10.002"] = {
+		"Tutto qui? Più su non si va? Allora mi servono stivali migliori.",
+		"Più forte di così non diventerò. D'ora in poi, a quanto pare, conta solo l'equipaggiamento.",
+	},
 }, "base_life")

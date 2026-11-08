@@ -1683,4 +1683,247 @@ NS:AddTexts("itIT", {
 		"Parola data, parola mantenuta. Thrall ha mantenuto la sua con i Darkspear. Io posso mantenere la mia con chi me l'ha chiesto.",
 		"Dimmi dove e cosa. La parola di un troll arriva lontano quanto le sue gambe, e quelle arrivano lontano.",
 	},
+	["faction.alliance.npc_meet.w10.001"] = {
+		"Il registro sul banco: lo scarabocchio pesante di un nano, la calligrafia minuta e ordinata di uno gnomo, la grafia lunga e svolazzante di un elfo. L'Alleanza, firmata a inchiostro.",
+		"Scorri il registro di qualunque locanda dell'Alleanza e troverai quattro popoli che dormono sotto lo stesso tetto e si lamentano dello stesso spiffero.",
+		"Una locanda, quattro modi di russare dietro le pareti. Qualcuno l'ha chiamato il coro più sincero dell'Alleanza.",
+	},
+	["faction.alliance.npc_meet.w10.002"] = {
+		"Una stanza, un pasto caldo e le notizie dai fronti, nell'ordine in cui arrivano.",
+		"Novità da Ashenvale o dall'Arathi? Le notizie le prendo con lo stufato, e prima lo stufato.",
+		"Di che si parla tra i soldati? Chi vince, chi perde, chi deve da bere a chi?",
+	},
+	["faction.alliance.npc_meet.w10.003"] = {
+		"Una locanda kaldorei che dà da bere ai viaggiatori di tutta l'Alleanza. Diecimila anni di storia, e noi a chiedere altro pane.",
+		"Chi sta al banco si muove senza un rumore e ricorda ogni ordinazione. Accanto a {other}, umani, nani e gnomi sembrano tutti un po' chiassosi.",
+	},
+	["faction.alliance.npc_meet.w10.004"] = {
+		"Una locanda gnomesca! Allora le spine funzionano, il camino tira e c'è un congegno per ogni cosa. Quello a che serve?",
+		"Qualcosa di caldo, grazie, e non spiegarmi come funziona il forno. Vorrei dormire sonni tranquilli.",
+	},
+	["faction.alliance.npc_meet.w10.005"] = {
+		"Un grugnito, una chiave, una scodella spinta sul banco. Gli osti burberi sono uguali in ogni città dell'Alleanza, e mi fido di loro più che di quelli allegri.",
+		"Niente benvenuto, niente chiacchiere, solo il conto. I soldati dell'Alleanza sono stati trattati peggio dai loro stessi generali.",
+	},
+	["faction.alliance.npc_meet.w10.006"] = {
+		"Molle gnomesche, acciaio dei nani, cuoio degli elfi, pane umano. Lo scaffale di un mercante dell'Alleanza è una mappa di chi siamo.",
+		"Ogni cassa su questi scaffali ha attraversato mezza Alleanza per arrivare qui: in tram, in nave, in grifone. Con prezzi in proporzione, s'intende.",
+		"Razioni da Stormwind, corde da Ironforge, frecce impennate a Darnassus. Chi dice che l'Alleanza non va d'accordo su niente qui non ha mai fatto la spesa.",
+	},
+	["faction.alliance.npc_meet.w10.007"] = {
+		"Questo è il prezzo dell'Alleanza o il prezzo dei goblin? Non riesco mai a capirlo, e sospetto che sia proprio questo il punto.",
+		"Uno sconto per chi combatte? No? Valeva la pena chiedere. L'Alleanza ci paga in ringraziamenti, e coi ringraziamenti non ci compri una corda.",
+	},
+	["faction.alliance.npc_meet.w10.008"] = {
+		"Un banco gnomesco con ogni articolo etichettato in letterine ordinate, prezzo compreso. L'Alleanza non ha mai avuto contabili migliori del popolo per cui non è riuscita a salvare una città.",
+		"Tutto su questo banco ha un cartellino, e certi cartellini hanno un cartellino. Gli gnomi hanno perso Gnomeregan ma non i loro registri; so bene che cosa avrei salvato anch'io.",
+	},
+	["faction.alliance.npc_meet.w10.009"] = {
+		"Turno tranquillo? Bene. Che resti noioso. La noia è proprio quello per cui noialtri combattiamo là fuori.",
+		"Tutto a posto sulle mura? Allora fai il lavoro più difficile dell'Alleanza: niente, alla perfezione, per ore.",
+		"Niente da segnalare? No? Allora l'Alleanza sta vincendo, almeno su questo tratto di muro.",
+	},
+	["faction.alliance.npc_meet.w10.010"] = {
+		"Una guardia dei nani, lontana dalla montagna. Dovunque l'Alleanza alzi un muro, c'è un nano che ha già bussato sulla malta e borbottato.",
+		"Una guardia bassa, larga, corazzata fino alle sopracciglia e decisa a non muoversi. Se l'Alleanza avesse uno stemma per la fermezza, sopra ci starebbe lei.",
+	},
+	["faction.alliance.npc_meet.w10.011"] = {
+		"Gli occhi di una Sentinella su di me, il tempo esatto di decidere. Poi un cenno. Alleati, dunque: gli elfi non sprecano un secondo sguardo.",
+		"La guardia elfica mi ha visto molto prima che io vedessi lei. Tra i popoli dell'Alleanza nessuno fa la guardia come loro.",
+	},
+	["faction.alliance.npc_meet.w10.012"] = {
+		"Colori dell'Orda su quella guardia. Tengo le mani in vista e i piedi pronti a muoversi.",
+		"Una guardia dell'Orda, e io bene in vista. Le parole non servirebbero: non abbiamo nemmeno una lingua in comune.",
+	},
+	["faction.alliance.npc_meet.w10.013"] = {
+		"ricambia il cenno della guardia: il cenno breve e senza cerimonie di due alleati che non sapranno mai come si chiama l'altro.",
+		"rivolge alla guardia un cenno da alleati, e ne riceve uno in cambio, breve e senza storie.",
+	},
+	["faction.alliance.npc_meet.w10.014"] = {
+		"Da lassù le terre dell'Alleanza sembrano toppe su un mantello, con quelle dell'Orda in mezzo. Alla bestia non importa di chi sia la toppa che sorvola.",
+		"Le rotte di volo sono la vera mappa dell'Alleanza: ogni posatoio un amico, ogni vuoto tra l'uno e l'altro il paese di qualcun altro.",
+		"Un altro posatoio, un'altra bestia stanca, un altro custode che ha visto alleati di ogni popolo diventare verdi in faccia.",
+	},
+	["faction.alliance.npc_meet.w10.015"] = {
+		"Un ippogrifo, allora. Gli elfi giurano che è più mansueto di un grifone; i nani giurano il contrario. Io imprecherò contro quello che scalcia.",
+		"Posatoio elfico, bestia elfica. Capisce la lingua comune, o mi limito a sorriderle?",
+	},
+	["faction.alliance.npc_meet.w10.016"] = {
+		"Da anni i maestri dell'Alleanza si rubano qualcosa a vicenda: un esercizio umano, la pazienza di un nano, un vecchio trucco elfico. Prenderò tutto quello che è finito in questa lezione.",
+		"In ogni lezione dell'Alleanza c'è qualcosa che un popolo ha imparato da un altro. Nessuno lo ammette, e tutti ci guadagnano.",
+	},
+	["faction.alliance.npc_meet.w10.017"] = {
+		"Insegnami quel che funziona contro l'Orda, e poi quel che funziona contro tutto il resto.",
+		"Tutto quello che hai. L'Orda non aspetta, e nemmeno i morti lassù al nord.",
+	},
+	["faction.alliance.npc_meet.w10.018"] = {
+		"Un altro alleato che chiede una mano. I veri trattati dell'Alleanza si scrivono così: un favore alla volta, tra persone che un re non lo incontreranno mai.",
+		"I patti li firmano i re. Il resto dell'Alleanza lo tengono insieme commissioni come questa, fatte bene da sconosciuti.",
+		"Qualcuno della nostra parte ha bisogno d'aiuto. Basta questo; i dettagli sono solo indicazioni stradali.",
+	},
+	["faction.alliance.npc_meet.w10.019"] = {
+		"Se aiuta la nostra parte, ci sto. Se aiuta solo te, ci sto lo stesso, ma dimmi quale delle due.",
+		"Guai? Bene. Cioè, non bene. Cioè: dimmi dove, e vediamo cosa può farci l'Alleanza.",
+	},
+	["faction.alliance.npc_meet.w10.020"] = {
+		"Monete coniate dai nani, contate dagli gnomi, spese dagli umani e guardate dagli elfi con educato stupore. Tutta l'economia dell'Alleanza in un solo caveau.",
+		"Ogni banca dell'Alleanza custodisce tesori di quattro popoli, e ognuno di quei popoli pensa che gli altri contino male.",
+		"Risparmi chiusi dietro serrature dei nani, annotati da una mano gnomesca. Se mai l'Alleanza cadesse, il caveau sarebbe l'ultima cosa a restare in piedi.",
+	},
+	["faction.alliance.npc_meet.w10.021"] = {
+		"Gente comune dell'Alleanza alle prese con la sua giornata: pane da comprare, un bambino da sgridare, un tetto da aggiustare. Ecco a cosa servono tutte le bandiere.",
+		"Qui nessuno è un eroe e nessuno vuole esserlo. Fare in modo che resti così è quasi tutto il lavoro dei soldati dell'Alleanza.",
+	},
+	["faction.alliance.npc_meet.w10.022"] = {
+		"Uno dei capi dell'Alleanza, così vicino da sentirne il respiro. Tutti i discorsi che avevo preparato, e non me ne resta una parola.",
+		"Chi mette il sigillo su metà degli ordini dell'Alleanza, proprio lì davanti. Più alto della leggenda, o più basso: è difficile dirlo con le ginocchia che tremano.",
+	},
+	["faction.alliance.other_action.w10.001"] = {
+		"Uno scambio tra alleati. Peso giusto, niente trucchi: i trucchi li lasciamo ai goblin.",
+		"Le monete restano nell'Alleanza, e la buona volontà pure. Scambio onesto.",
+		"Affare fatto. Se va male, daremo la colpa ai goblin, come vuole la tradizione.",
+	},
+	["faction.alliance.other_action.w10.002"] = {
+		"Qualcuno dell'Orda mi fa un gesto. Senza una lingua in comune, un inchino e un insulto si somigliano in modo preoccupante.",
+		"Un segno verso di me dalla parte dell'Orda. Saluto o sfida? Nell'Alleanza nessuno mi ha mai insegnato a leggere le loro mani.",
+		"Un gesto dall'altra parte. Rispondo con un cenno, piano, come si fa con un orso che non ha ancora deciso.",
+	},
+	["faction.alliance.other_action.w10.003"] = {
+		"ricambia il gesto di {other} con il calore spontaneo di alleati che nessuno si è mai preso la briga di presentare.",
+		"risponde al gesto allo stesso modo: tra alleati, senza bisogno di nomi.",
+	},
+	["faction.alliance.other_action.w10.004"] = {
+		"Un'altra commissione per l'Alleanza. I re firmano i trattati; gente come me sbriga le commissioni che li tengono in piedi.",
+		"Un altro compito sotto la nostra bandiera. Piccolo, probabilmente. L'Alleanza è fatta soprattutto di compiti piccoli svolti da chi non era obbligato.",
+		"Una richiesta da uno dei nostri. La farò come si deve: magari da questo dipende ciò che qualcuno pensa di tutta l'Alleanza.",
+	},
+	["faction.alliance.other_action.w10.005"] = {
+		"Un duello tra amici dell'Alleanza. Chi perde porta lo zaino di chi vince fino al prossimo accampamento.",
+		"D'accordo, ma vacci piano. L'Orda vorrà quel che resta di me, più tardi.",
+	},
+	["faction.horde.npc_meet.w10.001"] = {
+		"Tieni gli occhi aperti. L'Alleanza non è l'unica cosa che passa un confine senza invito.",
+		"Tieni duro. Metà dell'Orda dorme più tranquilla grazie a chi sta dove stai tu.",
+	},
+	["faction.horde.npc_meet.w10.002"] = {
+		"Una guardia dell'Orda, lancia piantata a terra, occhi sulla strada. Qualunque sia il popolo, la posa è la stessa: l'Orda l'ha insegnata a tutti.",
+		"Il cenno della guardia è secco e completo. Nell'Orda vale una conversazione intera.",
+	},
+	["faction.horde.npc_meet.w10.003"] = {
+		"Sì, sì, sono dell'Orda. Se mi fissi ancora più forte, ti si consumano gli occhi.",
+		"Stessa parte. Tieni il cipiglio per chi arriverà dalla strada.",
+	},
+	["faction.horde.npc_meet.w10.004"] = {
+		"Una guardia dell'Alleanza, e un lungo sguardo attraverso la distanza fra noi. Nessuno dei due è qui per ricominciare la guerra. Non oggi.",
+		"Acciaio coi colori dell'Alleanza, e occhi che sanno già da che parte sto. Tiro dritto; non serve aggiungere altro.",
+	},
+	["faction.horde.npc_meet.w10.005"] = {
+		"Calma. Sono solo di passaggio, e il mio caratteraccio pure.",
+		"Non serve la mano sull'elsa. Se l'Orda volesse questo posto, non manderebbe me da {g:solo|sola}.",
+	},
+	["faction.horde.npc_meet.w10.006"] = {
+		"Le strade del cielo dell'Orda vanno dalle viverne di Orgrimmar ai pipistrelli di Undercity. Chi tiene le bestie nutrite tiene l'Orda tutta intera.",
+		"Un maestro di volo dell'Orda smista i passeggeri con un'occhiata. Ogni messaggio, ogni corriere ferito, ogni ordine urgente passa per mani come queste.",
+	},
+	["faction.horde.npc_meet.w10.007"] = {
+		"La bestia più veloce che hai. Da qualche parte all'Orda serve un paio di mani in più, e sono le mie.",
+		"Portami al prossimo avamposto dell'Orda, qualunque sia. Il nome lo imparo in volo.",
+	},
+	["faction.horde.npc_meet.w10.008"] = {
+		"Merce buona dell'Orda? Allora pago un prezzo dell'Orda: giusto, e senza discorsi.",
+		"Fammi vedere quello che tiene un soldato in strada. Il resto può restare sullo scaffale.",
+		"Monete per la merce, merce per la strada, strada per l'Orda. Teniamo la catena corta.",
+	},
+	["faction.horde.npc_meet.w10.009"] = {
+		"Perline troll accanto al cuoio tauren accanto al filo dei Reietti. Lo scaffale di un mercante dell'Orda è il patto in miniatura.",
+		"Il mercante dà un prezzo a tutto nella stessa moneta, chiunque l'abbia fatto. Nell'Orda, l'uguaglianza ha questa faccia.",
+	},
+	["faction.horde.npc_meet.w10.010"] = {
+		"Una locanda dell'Orda: il focolare è di tutti, le panche sono spaiate, e accanto al fuoco c'è sempre qualcuno che ripara qualcosa.",
+		"Qualunque popolo tenga questa locanda, la regola è la stessa: chi porta i colori dell'Orda ha un posto vicino al fuoco.",
+		"Ogni locandiere dell'Orda sembra sapere quali tazze vanno bene con le zanne, quali sgabelli reggono un tauren e quale angolo preferiscono i Reietti. L'ospitalità è un mestiere, e loro l'hanno imparata quattro volte.",
+	},
+	["faction.horde.npc_meet.w10.011"] = {
+		"Qualcosa di caldo e qualcosa di forte, oste. L'Orda marcia con tutte e due.",
+		"Un letto, una scodella, e notizie dal fronte, se ne hai. In quest'ordine o in un altro.",
+	},
+	["faction.horde.npc_meet.w10.012"] = {
+		"In ogni locanda dell'Orda c'è un angolo dove siedono i vecchi soldati. Lì si impara più storia dell'Orda che da qualunque capotribù.",
+		"L'oste versa senza chiedermi da dove vengo. Nell'Orda, i miei colori hanno già risposto.",
+	},
+	["faction.horde.npc_meet.w10.013"] = {
+		"Un maestro dell'Orda. Quello che imparo qui lo userò per gente che non è del mio popolo ma è dalla mia parte. Mi sembra ancora una cosa nuova.",
+		"Ogni abilità insegnata in una sala dell'Orda è un po' di forza in più per il patto. Il maestro sembra saperlo, e insegna di conseguenza.",
+	},
+	["faction.horde.npc_meet.w10.014"] = {
+		"Insegnami qualcosa che l'Alleanza non si aspetta.",
+		"Ti ascolto. L'Orda mi vuole più {g:affilato|affilata}, e io pure.",
+	},
+	["faction.horde.npc_meet.w10.015"] = {
+		"Oro in una cassaforte dell'Orda. Le mie cose adesso dormono sotto lo stesso tetto di quelle di mezza Orda. Anche così ci si sente parte di qualcosa.",
+		"Il banchiere conta senza alzare gli occhi. Qualunque guerra combatta l'Orda, qualcuno deve tenere in ordine i registri.",
+	},
+	["faction.horde.npc_meet.w10.016"] = {
+		"Se serve all'Orda, ti ascolto. Se serve solo a te, ti ascolto lo stesso, ma il prossimo giro lo offri tu.",
+		"Di che cosa ha bisogno l'Orda? Dillo chiaro e me ne faccio carico.",
+		"Un altro lavoro per l'Orda? Bene. I soldati con le mani in mano attaccano briga; quelli occupati la chiudono.",
+	},
+	["faction.horde.npc_meet.w10.017"] = {
+		"Qualcuno dell'Orda ha bisogno d'aiuto e lo chiede senza cerimonie. Questo di noi mi piace: nessuno supplica, nessuno viene respinto.",
+		"Un avamposto dell'Orda ha sempre più guai che braccia. {other} ha appena trovato un paio di braccia libere.",
+	},
+	["faction.horde.npc_meet.w10.018"] = {
+		"Thrall. Un Capoguerra cresciuto fra i nemici, che ha scelto comunque la pace ovunque potesse trovarla. Davanti a lui l'Orda sta in piedi in un altro modo; anch'io.",
+		"Il Capoguerra in persona. Orchi, tauren, troll e Reietti rispondono tutti a quest'unica voce. Deve pesare più di qualunque martello.",
+		"Thrall, figlio di Durotan. Porta il Doomhammer, e con esso tutti e quattro i popoli dell'Orda. Faccio economia di parole.",
+	},
+	["faction.horde.npc_meet.w10.019"] = {
+		"Cairne Bloodhoof. Il più vecchio amico dell'Orda a Kalimdor, e la sua voce più calma. Davanti a lui mi accorgo di non avere niente di urgente da dire.",
+		"Il capo supremo dei tauren. Quando l'Orda arrivò su queste coste, fu il suo popolo a tenderle la mano. L'Orda non l'ha mai dimenticato.",
+	},
+	["faction.horde.npc_meet.w10.020"] = {
+		"Vol'jin. Il cacciatore d'ombre dei Darkspear, che ha mantenuto il giuramento fatto da suo padre al Capoguerra. Pochi nell'Orda onorano un debito tanto a lungo.",
+		"Vol'jin dei Darkspear. Silenzioso, attento, difficile da leggere. L'Orda è fortunata ad averlo dalla sua, e lo sa.",
+	},
+	["faction.horde.npc_meet.w10.021"] = {
+		"Sylvanas Windrunner. L'alleata più scomoda dell'Orda, e forse la più determinata. Qualunque cosa voglia, la vuole con tutta sé stessa.",
+		"La Regina Banshee. Il Capoguerra ha accolto il suo popolo; lei ha accolto la protezione del Capoguerra. Nessuno sa bene chi dei due abbia fatto l'affare migliore.",
+		"Lady Sylvanas. Fredda, tagliente, impossibile da ignorare. L'Orda la tiene vicina come si tiene una lama di cui non ci si fida fino in fondo: a portata di mano, col filo rivolto altrove.",
+	},
+	["faction.horde.npc_meet.w10.022"] = {
+		"si scosta per lasciar passare uno dei lavoratori dell'Orda sotto un carico enorme, e risponde con un cenno al suo grugnito di ringraziamento.",
+		"risponde al cenno stanco di uno dei lavoratori dell'Orda, gente che non vede mai un campo di battaglia e li rifornisce tutti.",
+	},
+	["faction.horde.npc_meet.w10.023"] = {
+		"Una faccia allegra sotto i colori dell'Orda. Il patto ha giorni duri; qualcuno deve ricordarsi che ne ha anche di buoni.",
+		"{other} sorride come se l'Orda avesse appena vinto qualcosa. Forse è così, da qualche parte. Il sorriso me lo prendo comunque.",
+	},
+	["faction.horde.other_action.w10.001"] = {
+		"Una banda da guerra, allora. L'Orda è più forte quando i suoi popoli camminano insieme, e io pure.",
+		"Vengo. È con bande piccole come questa che l'Orda si è rimessa in piedi, uno scontro dopo l'altro.",
+	},
+	["faction.horde.other_action.w10.002"] = {
+		"Uno scambio fra alleati. Pesi giusti, niente trucchi: quelli li teniamo per l'Alleanza.",
+		"Scambiamo. Quello che l'Orda non fornisce, ce lo forniamo a vicenda.",
+	},
+	["faction.horde.other_action.w10.003"] = {
+		"Anche a te. Un saluto fra gente dell'Orda non va mai sprecato.",
+		"Ah. Che piacere, sotto gli stessi colori.",
+	},
+	["faction.horde.other_action.w10.004"] = {
+		"risponde al gesto portando il pugno chiuso al petto, il saluto che tutti i popoli dell'Orda hanno in comune.",
+		"ricambia il saluto con un breve cenno e la mano alzata, da Orda a Orda.",
+	},
+	["faction.horde.other_action.w10.005"] = {
+		"Incarico preso. Prima o poi renderà l'Orda un po' più forte, o un po' meno affamata.",
+		"Un'altra commissione. L'Orda è stata costruita con commissioni come questa; aggiungo la mia al mucchio.",
+	},
+	["faction.horde.other_action.w10.006"] = {
+		"Vuoi un incontro? Bene. Due alleati che si scambiano colpi, e l'Orda ne esce più affilata.",
+		"Volentieri. Che si vinca o si perda, al fuoco torniamo insieme.",
+	},
+	["faction.horde.other_action.w10.007"] = {
+		"La sfida di una rivalità, sotto la stessa bandiera. Combatterò lealmente e vincerò lo stesso.",
+		"Ancora tu. Va bene. Stessa bandiera o no, era un pezzo che lo aspettavo.",
+	},
 }, "base_context")
