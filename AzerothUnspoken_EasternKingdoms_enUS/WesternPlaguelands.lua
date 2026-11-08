@@ -400,4 +400,166 @@ AU:RegisterRegionalTexts("westernplaguelands", "enUS", "eastern_westernplaguelan
 		"Rain, and it smells of the cauldrons as it falls. I keep my mouth shut and my head down.",
 		"The rain makes the Plaguelands look almost like Tirisfal. That's not the compliment it sounds like.",
 	},
+	["wpl.a.attack.w11.001"] = {
+		"Here's the harvest you've earned!",
+		"One for every empty farm out here!",
+	},
+	["wpl.a.battle.w11.001"] = {
+		"Back in the furrow with you!",
+		"This field buried you once. Let's do it properly.",
+		"Lordaeron's farmers deserved better than you. Come here.",
+	},
+	["wpl.a.battle.w11.002"] = {
+		"Old plowland underfoot, soft and uneven. Keep low and let it come.",
+		"Mind the fence, mind the ditch. These farms were laid out for plows, not for fighting.",
+	},
+	["wpl.a.journey.w11.001"] = {
+		"The gryphon climbs out of Chillwind and the farms drop away below in their neat dead squares, fence after fence, field after empty field.",
+		"Up over Lordaeron. From this high the farmland still looks tidy, all straight lines and corners, like a ledger nobody will ever balance.",
+	},
+	["wpl.a.landmark.w11.001"] = {
+		"walks the empty lanes of {landmark}, quiet but for the lap of the lake against the stones, with the gate of Scholomance waiting at the island's heart.",
+		"comes among the shuttered houses of Caer Darrow; the town looks merely abandoned, until the eye finds the keep and the school that waits beneath it.",
+	},
+	["wpl.a.lowhp.w11.001"] = {
+		"Not in a furrow, on some dead farmer's field, with nobody left to find me.",
+		"Stay up. Lordaeron has buried enough strangers.",
+	},
+	["wpl.a.muse.w11.001"] = {
+		"Count the faces around the fire at Chillwind: dwarves, gnomes, a night elf or two, a handful of humans. Few of them were born in Lordaeron, and all of them are holding it.",
+		"Hardly anyone at Chillwind Camp grew up in this kingdom. Ironforge beards, Darnassus bows, gnomish tinkers, and they guard a corner of Lordaeron as if it were their own doorstep.",
+		"The Alliance sent what it could spare to Chillwind, and what it could spare came from everywhere. It's a strange army. It's also still here.",
+	},
+	["wpl.a.muse.w11.002"] = {
+		"pauses at the open door of a farmhouse; inside, the table is still laid for a meal, the plates furred with gray dust and one chair pushed back.",
+		"steps around a child's wooden horse lying in the dead grass by a well, its paint long gone, and walks on a little more slowly.",
+		"runs a hand along a dry-stone wall laid by someone patient, every stone fitted just so, around a field where nothing will grow.",
+	},
+	["wpl.a.muse.w11.003"] = {
+		"Scholomance is a school. Under Caer Darrow the Cult of the Damned keeps masters and pupils, lessons and examinations. That's the part that keeps me awake.",
+		"Somewhere beneath that island, students with ink on their fingers are learning to raise the dead the way others learn their letters.",
+		"A school for necromancers, in a lord's old keep. They must have desks down there, and books, and somebody grading the work.",
+	},
+	["wpl.a.muse.w11.004"] = {
+		"I asked at Chillwind where the nearest clean well was. They're still laughing.",
+		"Every day the Argent Dawn tells me to keep my gear clean. Every day I look around and wonder with what.",
+	},
+	["wpl.a.muse.w11.005"] = {
+		"The Argent Dawn takes Scourgestones as proof of the work: little shards cut from the dead. An ugly currency, but what it buys is honest.",
+		"At Chillwind the Argent Dawn doesn't ask who you pray to or which king you serve. Only whether you'll stand against the Scourge, and for how long.",
+	},
+	["wpl.a.npc_meet.w11.001"] = {
+		"Every crate behind this counter came in on a gryphon or on somebody's back. I won't haggle over a copper.",
+		"A trader at the edge of the Plaguelands: arrows, bandages, salt, and nobody pretending the prices are fair. Fair enough.",
+	},
+	["wpl.a.quest_complete.w11.001"] = {
+		"Over and paid. In the Plaguelands, bad news travels on foot and good news by gryphon. This one can take the gryphon.",
+		"That's settled. Somebody at Chillwind will mark it on the big map, and the map won't look any different. I know better.",
+	},
+	["wpl.a.quest_complete.w11.002"] = {
+		"That's my part. I'll take the coin, and a meal that didn't grow anywhere near here.",
+		"There, it's done. Somebody write it down before the wind carries it off.",
+	},
+	["wpl.a.quest_progress.w11.001"] = {
+		"Part of it. The rest is somewhere out among the farms, being difficult on purpose.",
+		"Some done, some not. The Plaguelands hand things over the way a mule hands over a road: slowly, and with a kick.",
+	},
+	["wpl.a.subzone_enter.w11.001"] = {
+		"comes onto Felstone Field, where the farmhouse still has its roof and the ground around it is pale, stony and scratched over by something that digs.",
+		"reaches {subzone}; the house stands, the barn stands, and the field between them has been turned over by hands that were not farming.",
+	},
+	["wpl.a.victory.w11.001"] = {
+		"Stay down. The Argent Dawn will want proof, and you're it.",
+		"One more for the officer at Chillwind to tally.",
+		"There. That's a stone's worth of Scourge off these fields.",
+	},
+	["wpl.a.victory.w11.002"] = {
+		"rights a fallen fence post with one hand before moving on.",
+		"pauses by the fallen foe to stand a toppled fence rail back against its post, out of habit more than hope.",
+	},
+	["wpl.a.weather_change.w11.001"] = {
+		"watches the fog creep in over the dead fields and swallow the fence lines one post after another.",
+		"stands still as a gray fog settles over the farms, until the nearest barn is only a shape and the road a guess.",
+	},
+	["wpl.h.attack.w11.001"] = {
+		"Clear the road to the Bulwark!",
+		"Rot somewhere else!",
+	},
+	["wpl.h.battle.w11.001"] = {
+		"Not one step nearer the Undercity!",
+		"You'll rot out here, not in Tirisfal!",
+		"This is as far west as you go!",
+	},
+	["wpl.h.battle.w11.002"] = {
+		"shoulders through a rotten fence to meet the attack, splinters flying.",
+		"plants {g:his|her} feet among the stubble of a dead wheat field and lets the enemy come the whole way.",
+	},
+	["wpl.h.journey.w11.001"] = {
+		"The bat set me down in Tirisfal and left the rest to my feet. East through the pines, past the gate, and the air changes in a single step.",
+		"No roost waits for the Horde past the Bulwark. The last stretch is boots on the old road, and the old road remembers every cart that used it.",
+	},
+	["wpl.h.landmark.w11.001"] = {
+		"{landmark}. Its walls kept the plague in far better than they ever kept anything out.",
+		"Andorhal. I've walked through ruins before, but ruins are empty. This one is busy.",
+	},
+	["wpl.h.lowhp.w11.001"] = {
+		"Not here. The deathguards would never let me forget it.",
+		"I have a wall waiting for me. Out of my way!",
+	},
+	["wpl.h.muse.w11.001"] = {
+		"In the Second War the Horde marched through Lordaeron with fire and axes. Now the Horde keeps a wall here so something worse can't get out. The world turns in strange directions.",
+		"Lordaeron's knights once rode out to stop orcs burning these farms. Today orcs stand guard so the dead won't finish the job. Nobody planned it this way.",
+		"The humans of this kingdom spent a whole war keeping the Horde out. The Horde is here now, on their own soil, fighting what killed them. History has an odd sense of humor.",
+	},
+	["wpl.h.muse.w11.002"] = {
+		"watches a crow drop onto a fence post, look the dead field over, and leave again without bothering to land anywhere else.",
+		"stops where a farm track forks; one branch ends at a barn whose doors have been chained shut from the outside.",
+		"kneels by a set of tracks in the gray mud: bare feet, dragging, far too many of them, all heading the same way.",
+	},
+	["wpl.h.muse.w11.003"] = {
+		"Somebody at the Bulwark asked me to count the ghouls on my way out. I stopped at forty and started rounding.",
+		"The deathguards wanted a full report. 'Dead, mostly, and walking' seemed to cover it.",
+	},
+	["wpl.h.muse.w11.004"] = {
+		"Some of the deathguards on the Bulwark's wall walked these roads with a heartbeat once. They never say which farm was theirs, and nobody asks.",
+		"The Forsaken at the gate look out over these fields every day. Some of them must know the names of the farms. None of them ever says one.",
+		"A Forsaken on the Bulwark's wall can stare east at these farms for an hour without a word. Nobody asks what they're looking for. Out here, you learn not to.",
+	},
+	["wpl.h.muse.w11.005"] = {
+		"Apples lie under a dead tree in that orchard, whole and untouched. No bird, no beetle, not even a worm will have them. That says all I need about this soil.",
+		"Fallen fruit, months old by the look, and not one bite taken out of it. When the worms refuse a meal, I don't need a druid to explain the ground.",
+	},
+	["wpl.h.npc_meet.w11.001"] = {
+		"The orders here come with a map, a name and a direction, and never a promise. I've had worse employers.",
+		"This one doesn't waste a word on hope, only on where and how many. In the Plaguelands, that's a kindness.",
+	},
+	["wpl.h.quest_complete.w11.001"] = {
+		"counts the coins once, slowly, then rubs the gray grime off each one before putting it away.",
+		"accepts the reward and checks the pouch for anything green before tying it shut.",
+	},
+	["wpl.h.quest_complete.w11.002"] = {
+		"Somewhere in the Undercity this becomes one line in a ledger. Out here it was a long, ugly walk. Both are true.",
+		"That's handed in. The Forsaken keep careful records; I hope someone writes beside this one that it stank.",
+	},
+	["wpl.h.quest_progress.w11.001"] = {
+		"Not yet. Half done, and the other half is hiding somewhere that stinks.",
+		"Getting there. This country makes you earn every last piece of it.",
+	},
+	["wpl.h.subzone_enter.w11.001"] = {
+		"comes into Northridge Lumber Camp, where the saws stand idle and the stacked logs have gone soft and black.",
+		"walks among the sheds of {subzone}; an axe still sits buried in a stump, rusted fast to it.",
+	},
+	["wpl.h.victory.w11.001"] = {
+		"That's one the deathguards won't have to face at the gate.",
+		"Down. One less shape walking out of the fields toward Tirisfal.",
+		"Somewhere east, the Scourge just got a little thinner.",
+	},
+	["wpl.h.victory.w11.002"] = {
+		"And that's your shift over. No pay, I'm afraid.",
+		"There. Your master can find himself another laborer.",
+	},
+	["wpl.h.weather_change.w11.001"] = {
+		"The sky clears over Lordaeron. The cauldron plumes stand straight up, plain as banners, and I can count every one.",
+		"Clear air at last, and it shows me what the haze was hiding: green smoke rising from three farms at once, and a fourth further off.",
+	},
 ]==])

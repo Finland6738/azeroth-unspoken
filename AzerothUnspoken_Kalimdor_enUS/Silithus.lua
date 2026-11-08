@@ -333,4 +333,138 @@ AU:RegisterRegionalTexts("silithus", "enUS", "kalimdor_silithus", [==[
 		"turns {g:his|her} back to the rising wind as the air fills with stinging sand and the hives vanish into the haze.",
 		"half closes {g:his|her} eyes against the driving grit, every bare inch of skin scoured raw.",
 	},
+	["sil.h.attack.w11.001"] = {
+		"From Cenarion Hold, with the Horde's regards!",
+		"The desert's hungry. You'll do!",
+	},
+	["sil.h.battle.w11.001"] = {
+		"Come on, then. The sand's already hot; let's make it hotter.",
+		"Climbed out of the dunes for this? Bad trade.",
+		"No cover, no way out, not for you and not for me. Good. We finish this in the open.",
+	},
+	["sil.h.battle.w11.002"] = {
+		"Twilight's Hammer! The Horde cast your clan out long ago.",
+		"Cho'gall's leftovers. Let's see if you fight better than you chant.",
+		"Your clan marched with the Horde once. Today it meets the Horde again, and it won't enjoy the reunion.",
+	},
+	["sil.h.battle.w11.003"] = {
+		"Legs first. A silithid that can't stand can't swarm.",
+		"Watch the mandibles, not the legs. When they open wide, strike just under them.",
+	},
+	["sil.h.battle.w11.004"] = {
+		"turns the wind to {g:his|her} back and lets the grit fly in the foe's face.",
+		"edges sideways along the dune until the wind is behind {g:him|her}, and now the sand stings the enemy's eyes instead.",
+	},
+	["sil.h.journey.w11.001"] = {
+		"Up from Cenarion Hold. The wind rider climbs hard, as if the heat were chasing it, and the hives shrink to dark warts on the sand.",
+		"Off the ground at last. Below, Silithus turns into a map of yellow and black, and up here the hum of the hives can't reach me.",
+		"The wind rider beats north and I let it. Looking back, the Scarab Wall is the last thing to sink into the haze.",
+	},
+	["sil.h.landmark.w11.001"] = {
+		"Cenarion Hold. Wind riders and hippogryphs roost a few yards apart and pretend not to see each other. Their riders do much the same.",
+		"{landmark}. The wind riders sulk on one side of the roost, the hippogryphs preen on the other, and the druids keep the peace between them, and between us.",
+	},
+	["sil.h.lowhp.w11.001"] = {
+		"My bones stay out of this sand!",
+		"Not for the scorpids. Not today. Up!",
+	},
+	["sil.h.lowhp.w11.002"] = {
+		"The wind rider is far off. The fight is here. Stay with the fight.",
+		"Everything swims. Narrow it down: this foe, this breath, this step.",
+	},
+	["sil.h.muse.w11.001"] = {
+		"The Twilight's Hammer was one of the orc clans once, in the old wars, before it rotted into a cult. Seeing their robes out here, I understand why the Horde rarely says the name.",
+		"Cho'gall's clan marched with the old Horde, and look what became of it: robed madmen waiting in the sand for the world to crack. Not every clan found its way back.",
+		"The Hammer began as a clan with a banner like any other. Now it takes anyone who wants the world broken, and the Horde does not tell that part of its history gladly.",
+	},
+	["sil.h.muse.w11.002"] = {
+		"A shaman passing through the Hold said the earth here answers slowly, like a voice gone hoarse from shouting. The wind, though, answers at once, and it's angry.",
+		"The shamans who come through the Hold say the spirits of this land are sick of being dragged up by the cult. I believe it. The wind lashes at whoever stands nearest.",
+	},
+	["sil.h.muse.w11.003"] = {
+		"I used to grumble about the heat in Orgrimmar. Orgrimmar, I take it back. You were a cool breeze.",
+		"Durotar is dry. The Barrens are dry. Silithus is what dry wants to be when it grows up.",
+	},
+	["sil.h.muse.w11.004"] = {
+		"At Hyjal the Horde and the night elves held the same mountain, because the other choice was the end of everything. Look at that wall long enough and you start to wonder if it will come to that again.",
+		"Those who fought at Hyjal say the Horde and the Alliance stood together once, when the whole world was the prize. If those gates ever open, somebody will have to remember how it was done.",
+		"The Third War ended with old enemies shoulder to shoulder beneath the World Tree. Silithus has that same feel to it: a fight too big for one banner.",
+	},
+	["sil.h.muse.w11.005"] = {
+		"unwinds the cloth from {g:his|her} weapon's grip, shakes a small dune out of it, and winds it back on tighter.",
+		"runs a thumb along every buckle and strap, scraping out the grit before it can chew through the leather.",
+		"rubs at {g:his|her} eyes, blinks hard, and studies the dunes again through lashes caked with dust.",
+	},
+	["sil.h.muse.w11.006"] = {
+		"stops to watch a scorpid drag itself over a dune, tail raised like a question, and lets it go on its way.",
+		"goes very still as the sand a few paces off shivers and settles, then gives that patch a wide berth.",
+	},
+	["sil.h.muse.w11.007"] = {
+		"Not every silithid out here is a fighter. Some only carry: sand, scraps, things I'd rather not name, all of it down into the hives. Whatever lives down there is being fed.",
+		"Watch the small ones. They haul and haul toward the mounds and never rest. Something below is growing fat on all that work.",
+	},
+	["sil.h.muse.w11.008"] = {
+		"The wind moves a dune and leaves a curve of chitin sticking out, bleached and huge. A thousand years old, maybe. The War of the Shifting Sands isn't buried as deep as people think.",
+		"The sand gives things back here: a rusted spearhead, a split shell, a bone too long for anything alive now. The old war left its fallen where they lay.",
+	},
+	["sil.h.muse.w11.009"] = {
+		"Silithus looks far from everything, but it isn't. North of it lie Feralas, then Thousand Needles, then the Barrens and Mulgore. If the swarm ever marches, it marches toward Horde homes.",
+		"In Orgrimmar some talk as if this were somebody else's desert. It sits on the same continent as Orgrimmar. Every hive here is a door that opens north.",
+	},
+	["sil.h.muse.w11.010"] = {
+		"Past the last camp there's nothing but the hiss of sand running down a dune. I've felt lonelier in a crowded city, and more afraid in quieter places.",
+		"No voices, no birds, no water. Only the sand sliding, and me. Silithus is a good place to learn what you think when nobody is listening.",
+	},
+	["sil.h.npc_meet.w11.001"] = {
+		"The innkeeper pours for Horde and Alliance from the same jug. I drink, and I don't ask whose lips touched the cup before mine.",
+		"A bed inside druid walls and a jug of water that isn't warm. Out here the innkeeper is the nearest thing to a friend both factions share.",
+	},
+	["sil.h.npc_meet.w11.002"] = {
+		"Another job in the sand? Tell me where, and how far it is from water.",
+		"Let me guess: something out by the hives. It's always out by the hives.",
+	},
+	["sil.h.quest_complete.w11.001"] = {
+		"Done. If anyone needs me, I'll be in the Hold's one patch of shade.",
+		"Finished. Pay me in water; coin weighs as much and quenches nothing.",
+	},
+	["sil.h.quest_complete.w11.002"] = {
+		"Done. Word travels from the Hold to Thunder Bluff along the druids' roads. Let it say a Horde hand helped.",
+		"Finished. The Circle keeps its own accounts, and the tauren in it will remember which side lent a hand.",
+		"Handled. A druid writes it down, and one day Mulgore hears that the Horde made itself useful in the desert.",
+	},
+	["sil.h.quest_complete.w11.003"] = {
+		"stows the reward and re-knots the cloth at {g:his|her} throat, eyes already on the dunes.",
+		"takes the payment with a short nod, then stands a moment letting the grit sift out of {g:his|her} hair.",
+	},
+	["sil.h.quest_progress.w11.001"] = {
+		"That's all of it. Back to the Hold before the desert decides it wants it back.",
+		"All gathered. The pack is heavier, and so am I, with grit in every fold of my clothes.",
+	},
+	["sil.h.subzone_enter.w11.001"] = {
+		"reaches {subzone} and stops to read the sand: tracks, burrows, the faint ripple of something moving underneath.",
+		"comes into {subzone} with the wind behind and slows, listening to the ground.",
+		"crosses into {subzone}, where the sand lies smooth and unmarked, and trusts it not at all.",
+	},
+	["sil.h.victory.w11.001"] = {
+		"Leave it for the scorpids. They're the only ones in Silithus who eat well.",
+		"Somebody's supper now. The desert never sets a table, but it never clears one either.",
+		"Down. Something under the sand will come up for that soon enough.",
+	},
+	["sil.h.victory.w11.002"] = {
+		"One fewer of them to wander north toward Feralas and the Horde's roads.",
+		"That one will never reach the grass of Mulgore. Small comfort, but I'll take it.",
+	},
+	["sil.h.victory.w11.003"] = {
+		"scours {g:his|her} weapon clean with a fistful of sand, the one thing Silithus never runs short of.",
+		"rubs the weapon down with dry sand until it gleams, then looks toward the hives.",
+	},
+	["sil.h.victory.w11.004"] = {
+		"One voice fewer in the cult's chanting. They'll have to find another throat.",
+		"Another robe in the sand. The Hammer never runs out of fools, but today it's one short.",
+	},
+	["sil.h.weather_change.w11.001"] = {
+		"The horizon goes brown and comes closer. Sandstorm. Cloth over the face, head down, and count the steps.",
+		"Here it comes: the wind picks up half the desert and throws it sideways. In this a silithid could walk right up to me unseen. So could I, to it.",
+		"The air turns thick and gritty and the nearest dune disappears. Everything stings; there's nothing to do but lean into the wind and wait.",
+	},
 ]==])

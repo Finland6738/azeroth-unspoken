@@ -406,4 +406,104 @@ AU:RegisterRegionalTexts("ungorocrater", "itIT", "kalimdor_ungorocrater", [==[
 		"Le nuvole sopra l'orlo si sfilacciano e il cratere si rischiara. Il vapore sale più dritto, e la mia schiena pure.",
 		"Adesso sopra le pareti il cielo è sereno. Al caldo non importa, ma la giungla sembra un po' meno una trappola.",
 	},
+	["ung.a.battle.w11.001"] = {
+		"Non ti muovere! Dopo ho degli appunti da finire.",
+		"Il rifugio vuole un rapporto su di te. Facciamolo breve.",
+		"Denti così stanno bene in un museo di Ironforge. Vediamo di portarceli.",
+	},
+	["ung.a.journey.w11.001"] = {
+		"scende a Marshal's Refuge e resta un momento sull'orlo della cengia, a guardare giù una giungla che a Kalimdor non avrebbe alcun diritto di esistere.",
+		"atterra sulla cengia del rifugio: un muro di caldo umido e, molto più in basso, il muggito di qualcosa di enorme.",
+	},
+	["ung.a.landmark.w11.001"] = {
+		"{landmark}. Ossa nel catrame per cui nessun libro di Ironforge ha un nome. Mi piacerebbe sapere cos'erano. Odierei fargli compagnia.",
+		"I Lakkari Tar Pits. Uno studioso potrebbe passarci una vita a tirar fuori ossa dal nero e a dar loro un nome. Il catrame si terrebbe volentieri anche lo studioso.",
+	},
+	["ung.a.lowhp.w11.001"] = {
+		"Non adesso! Al rifugio aspettano il mio rapporto!",
+		"Indietro! Non finirò come nota a piè di pagina negli appunti di qualcuno!",
+	},
+	["ung.a.muse.w11.001"] = {
+		"Uno degli studiosi del rifugio giura che i titani piantarono questo cratere come un giardino, e poi se ne andarono. Guardando i piloni, non posso dargli torto.",
+		"Gli studiosi del rifugio discutono per ore su chi abbia eretto i piloni. Quelli che dicono i titani alzano di più la voce, e perdono più di rado.",
+		"L'Explorers' League ha una teoria: Un'Goro sarebbe un laboratorio che i titani hanno lasciato aperto. Se è così, quaggiù tutto è ancora un esperimento, me {g:compreso|compresa}, finché ci resto.",
+	},
+	["ung.a.muse.w11.002"] = {
+		"A Elwynn la cosa peggiore nel bosco è un lupo. Quaggiù il lupo sarebbe uno spuntino.",
+		"Perfino le bestie di Ashenvale hanno il buon gusto di essere della misura giusta.",
+	},
+	["ung.a.npc_meet.w11.001"] = {
+		"Un altro degli studiosi del rifugio, terra sotto le unghie e una dozzina di domande. Mi piacciono. Guardano un devilsaur e ci vedono un enigma.",
+		"Vogliono campioni, schizzi, misure. L'Explorers' League li arruolerebbe tutti quanti, se mai tornassero dal cratere.",
+	},
+	["ung.a.quest_complete.w11.001"] = {
+		"accetta la ricompensa e ci si fa vento per un momento, prima di metterla via.",
+		"consegna l'ultima parte del bottino, si asciuga la fronte e si lascia cadere sulla cassa più vicina.",
+	},
+	["ung.a.quest_progress.w11.001"] = {
+		"C'è tutto quello che era sulla lista. Ora riportarlo su al rifugio senza farne cadere niente in una sorgente calda.",
+		"Tutto quanto, avvolto nelle foglie, legato con un rampicante e solo un po' umido. Andrà bene.",
+	},
+	["ung.a.subzone_enter.w11.001"] = {
+		"raggiunge {subzone} aprendosi un varco fra le fronde, e si ferma a prendere la direzione sulla cresta che fuma.",
+		"esce dalle felci e arriva a {subzone}, confronta la mappa con il pennacchio sopra la cresta e corregge un poco la rotta.",
+	},
+	["ung.a.victory.w11.001"] = {
+		"Questa è da raccontare alla Hall of Explorers, se a Ironforge qualcuno mi crede.",
+		"Meriterebbe un disegno. Peccato che sulla carta sembrerà più piccolo.",
+	},
+	["ung.a.weather_change.w11.001"] = {
+		"Finalmente la pioggia, tiepida come l'acqua del bagno e fitta come un muro. Speravo che rinfrescasse un po'. Mi sbagliavo.",
+		"La pioggia cade così forte che le felci si piegano. Sa di terra calda e di verde, e per una volta il cratere sembra quasi gentile.",
+	},
+	["ung.h.battle.w11.001"] = {
+		"Che stazza. Ho già cacciato prede grosse.",
+		"Mezza Orgrimmar mi invidierebbe questa caccia. Fatti sotto!",
+		"Esci da tutto quel verde e vieni a conoscere {g:un cacciatore|una cacciatrice} dell'Orda.",
+	},
+	["ung.h.journey.w11.001"] = {
+		"Giù dal wind rider, al rifugio. Si scrolla l'umido dalle ali e mi guarda storto, come se il cratere fosse stata un'idea mia.",
+		"Piedi sulla cengia, il wind rider imbronciato alle spalle. Sotto, la giungla fuma, e là in mezzo cammina un devilsaur. Bene. Qualcosa che valga il viaggio.",
+	},
+	["ung.h.landmark.w11.001"] = {
+		"Marshal's Refuge. Goblin, esploratori e gente ancora più strana su una cengia sopra la giungla: nessuno stendardo, e tutti benvenuti. Io dormo comunque con la schiena contro la parete.",
+		"{landmark}. Niente fuochi dell'Orda, ma nemmeno dell'Alleanza: solo una grotta, qualche cassa e gente troppo curiosa per avere paura. Tengo l'arma vicina, e le buone maniere ancora di più.",
+	},
+	["ung.h.lowhp.w11.001"] = {
+		"Farmi abbattere da una lucertola? A Orgrimmar non smetterebbero più di ridere!",
+		"Non qui! Non fra le felci!",
+	},
+	["ung.h.muse.w11.001"] = {
+		"Qui spuntano dal terreno cristalli di ogni colore, tiepidi al tatto. Uno stregone dei troll ne riempirebbe un sacco e la chiamerebbe una buona giornata di lavoro.",
+		"I cristalli di Un'Goro vibrano quando ne avvicino uno. Gli sciamani di Orgrimmar saprebbero che spirito ci abita dentro. Io so soltanto che non dorme.",
+		"Rossi, verdi, blu, gialli, che spuntano fra le felci come funghi. Qualcuno nel Drag di Orgrimmar pagherebbe bene per un sacchetto, senza fare domande.",
+	},
+	["ung.h.muse.w11.002"] = {
+		"Un branco di stegodonti attraversa le felci lento e sicuro, come una carovana di kodo senza nessuno a guidarla. Ai tauren queste bestie piacerebbero.",
+		"Gli stegodonti pascolano in cerchio, con i piccoli al centro. Ogni accampamento dell'Orda protegge i suoi bambini allo stesso modo.",
+	},
+	["ung.h.npc_meet.w11.001"] = {
+		"Quale dei tuoi wind rider sopporta meglio l'umido? Allora quello.",
+		"Un posto asciutto, per favore. Scelga il wind rider: la strada la conosce meglio di me.",
+	},
+	["ung.h.quest_complete.w11.001"] = {
+		"Fatto. La prossima volta che vi serve qualcosa dal cratere, chiedete prima all'Orda.",
+		"Eccolo qua. Le felci volevano tenerselo; l'Orda aveva altri piani.",
+	},
+	["ung.h.quest_progress.w11.001"] = {
+		"Ho tutto. Se il catrame lo rivuole, che salga al rifugio a chiederlo.",
+		"C'è tutto. Ora indietro fra le felci, con gli occhi a terra per le tracce e in alto per le ali.",
+	},
+	["ung.h.subzone_enter.w11.001"] = {
+		"{subzone}. Prima si legge il terreno: fronde spezzate, sterco fresco, impronte profonde. Il cratere ti dice chi c'è in casa, se guardi.",
+		"{subzone}. Prima di tutto gli occhi del cacciatore: cosa è passato di qui, quanto pesava, quanto tempo fa.",
+	},
+	["ung.h.victory.w11.001"] = {
+		"posa la mano sulla bestia caduta, come i tauren che ringraziano la preda.",
+		"osserva a lungo la bestia abbattuta, una delle più forti del cratere, e le rivolge il cenno che si deve a un avversario degno.",
+	},
+	["ung.h.weather_change.w11.001"] = {
+		"Pioggia tiepida, pesante come un secchio rovesciato. Non rinfresca niente, fa solo più denso il vapore. Perfino i raptor tacciono, là sotto.",
+		"La pioggia batte sulle felci come un tamburo di guerra. Buona per la caccia: con questo frastuono nessuna bestia sente un passo.",
+	},
 ]==])

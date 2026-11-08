@@ -1147,4 +1147,534 @@ AU:RegisterRegionalTexts("eastern", "enUS", "eastern_dungeons", [==[
 		"Back to the dust with you. You'll fit right in.",
 		"One less thing wandering the vault. The archaeologists can thank me later.",
 	},
+	["abg.attack.w11.001"] = {
+		"Clear the post!",
+		"Off that banner!",
+		"Here's the basin's welcome!",
+	},
+	["abg.battle.w11.001"] = {
+		"Off the banner, or under it!",
+		"Touch that post and you'll lie beside it.",
+		"This base stays as it is. Go and argue with the mine.",
+	},
+	["abg.battle.w11.002"] = {
+		"All the way from the stables for this? You should have stayed with the horses.",
+		"Long run for such a short fight.",
+		"Wrong base. Try the blacksmith; nobody's guarding it.",
+	},
+	["abg.battle.w11.003"] = {
+		"plants {g:himself|herself} between the attackers and the banner post.",
+		"sets {g:his|her} feet in the trampled dirt by the post and meets the rush.",
+	},
+	["abg.battle.w11.004"] = {
+		"Keep them off the post. Nobody touches it.",
+		"Nobody finishes that capture while I'm still on my feet.",
+	},
+	["abg.encounter_end.w11.001"] = {
+		"That clash is ours. Hold the banner and keep your eyes on the road.",
+		"Broken at the post, the lot of them. Now we keep it.",
+	},
+	["abg.encounter_end.w11.002"] = {
+		"The base is gone. The graveyard is close; the anger can wait for the next push.",
+		"Too few at the post, and too late. Next time count heads before charging.",
+	},
+	["abg.lowhp.w11.001"] = {
+		"Too many hits. Toward the graveyard, yes, but not into it.",
+		"Not on this road. Not with the mine still contested.",
+		"Hold on. Lose me, lose the base.",
+	},
+	["abg.muse.w11.001"] = {
+		"Somebody tilled these fields once and meant to bring in a harvest. Now the only thing anyone gathers here is resources.",
+		"The furrows at the farm still run straight. Whoever ploughed them never imagined banners.",
+		"The fences here went up to keep livestock in. Now they mark where one charge ends and the next begins.",
+	},
+	["abg.muse.w11.002"] = {
+		"Three bases held is a win. Five is greed, and greed always gets caught out at the mill.",
+		"Hold three and hold them well. Every time somebody gets greedy for a fourth, the first one falls.",
+	},
+	["abg.muse.w11.003"] = {
+		"counts the banners across the basin under {g:his|her} breath, lips moving, then counts them again to be sure.",
+		"narrows {g:his|her} eyes and reads the far banners one by one, the way a merchant reads a ledger.",
+	},
+	["abg.muse.w11.004"] = {
+		"Every base has its own graveyard. Whoever laid out this valley knew exactly how it would be used.",
+		"A graveyard by the stables, a graveyard by the mine. Even the dead here are kept close to the work.",
+	},
+	["abg.muse.w11.005"] = {
+		"Two thousand resources. I've never once seen a resource. I think somebody made them up.",
+		"Everyone shouts about resources. Nobody has ever shown me a sack of them.",
+		"A war over a number on a board. Still, it's a lovely number when it climbs on the right side.",
+	},
+	["abg.muse.w11.006"] = {
+		"Stables to blacksmith, blacksmith to farm, farm back to the stables. My legs know this basin better than my head does.",
+		"I've run the road from the mill to the forge so often that the ruts ought to know my boots by now.",
+	},
+	["abg.muse.w11.007"] = {
+		"Arathor was the first kingdom of men, or so the scholars of Stromgarde tell it. Now its heartland is a place to settle scores.",
+		"The old crown of Strom ruled from these highlands, the histories say. I wonder what its kings would make of a war over a farm.",
+	},
+	["abg.muse.w11.008"] = {
+		"A banner on a post is just cloth. A banner with somebody standing next to it is a base.",
+		"Nobody holds a base by admiring it from the road. Somebody has to stand by the post.",
+	},
+	["abg.muse.w11.009"] = {
+		"pauses by a trampled field of crops and nudges a flattened stalk upright with the toe of {g:his|her} boot.",
+		"stops at the edge of the crops, where a whole row lies flattened by the last charge, and steps carefully around it.",
+	},
+	["abg.muse.w11.010"] = {
+		"The worst one is the quiet base. Nobody's come for it in a while, and that means somebody's coming.",
+		"A calm mine makes me more nervous than a busy one. Calm is just a fight that hasn't arrived.",
+		"Five banners, and four of them are busy. Guess which one I keep watching.",
+	},
+	["abg.muse.w11.011"] = {
+		"The Defilers and the League of Arathor both say they fight for the people of Arathi. The people of Arathi left a long time ago.",
+		"The League wants the basin back, the Defilers want it kept. The farm would just like to be left alone.",
+	},
+	["abg.subzone_enter.w11.001"] = {
+		"reaches {subzone} and takes stock: who holds it, who's coming, which way out.",
+		"slows at the edge of {subzone}, reading the ground before stepping into the open.",
+	},
+	["abg.subzone_enter.w11.002"] = {
+		"{subzone}. Count the defenders, count the roads in, then decide.",
+		"{subzone}. Whoever holds this spot has to see the next charge coming.",
+	},
+	["abg.threat.w11.001"] = {
+		"Look around. Four other bases, and you picked mine.",
+		"You can leave this base by the road you came in on. That's the kind offer.",
+		"Turn back to the road. This post has company.",
+	},
+	["abg.victory.w11.001"] = {
+		"Go and wait at the graveyard. It's close, at least.",
+		"The graveyard's just over there. Short walk.",
+		"Off to the spirit healer with you. Mind the queue.",
+	},
+	["abg.victory.w11.002"] = {
+		"Down. Now the road, the post, the ridge: who's coming?",
+		"One fewer. Look at the other four bases before chasing the next.",
+		"Done here. Which base is shouting for help now?",
+	},
+	["abg.victory.w11.003"] = {
+		"wipes {g:his|her} weapon on a fence rail and looks across the basin for the next fight.",
+		"leans on the banner post for a moment and counts the colors across the basin.",
+	},
+	["avl.attack.w11.001"] = {
+		"Clear the bridge!",
+		"Take the bunker!",
+		"Up the hill, now!",
+	},
+	["avl.battle.w11.001"] = {
+		"You'll make a fine snowbank.",
+		"Down in the drifts with you!",
+		"The snow's deep. Go and lie in it.",
+	},
+	["avl.battle.w11.002"] = {
+		"Long march, to get beaten this close to a bunker.",
+		"You walked all this way? In this cold?",
+		"Should have waited for spring.",
+	},
+	["avl.battle.w11.003"] = {
+		"lowers {g:his|her} head and wades through the snow into the fight.",
+		"charges down the slope, snow flying from every stride.",
+	},
+	["avl.encounter_end.w11.001"] = {
+		"The captain's down. Their garrison won't hold without a voice to rally it.",
+		"That's the commander done. Now the road to the keep is open.",
+	},
+	["avl.encounter_end.w11.002"] = {
+		"Thrown back from the keep, the whole push. The general's still there, and so is the long walk back.",
+		"Too few to finish the general, too many to call it bad luck. The graveyard, the road, then again.",
+	},
+	["avl.lowhp.w11.001"] = {
+		"Not in this snow. I'd never thaw.",
+		"Hold. The graveyard's too far back to drop here.",
+		"Up. This valley doesn't get to keep me.",
+	},
+	["avl.muse.w11.001"] = {
+		"The Frostwolves came here in exile, the Stormpike dwarves came here to dig. Both of them found a home, and that's the trouble.",
+		"This valley was a refuge before it was a battlefield. Refuges are always what people end up fighting over.",
+	},
+	["avl.muse.w11.002"] = {
+		"Who decided this war should be fought uphill, in snow, both ways?",
+		"Every tower in this valley is uphill. I've checked.",
+	},
+	["avl.muse.w11.003"] = {
+		"knocks the ice off {g:his|her} boots against a fence rail and watches the march wind on toward the far keep.",
+		"pauses to scrape packed snow from {g:his|her} gear, then looks up the valley along the long gray road.",
+	},
+	["avl.muse.w11.004"] = {
+		"Take the tower, burn the banner, move on. By the time the fire's out, nobody remembers who stood on the battlements.",
+		"When a tower falls in this valley, the smoke tells both armies at once.",
+	},
+	["avl.muse.w11.005"] = {
+		"Somebody stay on the graveyard. A march with no graveyard behind it is a march that ends.",
+		"Don't skip the bunkers. Every one we leave is a row of archers at our backs.",
+	},
+	["avl.muse.w11.006"] = {
+		"Hours in this valley. My fingers have stopped complaining, and that worries me more than when they did.",
+		"The march to the far keep is so long I've had time to get cold, warm up, and get cold again.",
+	},
+	["avl.muse.w11.007"] = {
+		"The quartermasters talk of a forest lord and an ice lord who answer if enough is gathered. In this valley I'd believe either.",
+		"Crystals on one side, blood on the other, both traded for a giant. Wars used to have simpler accounts.",
+	},
+	["avl.muse.w11.008"] = {
+		"falls in with the long column trudging up the valley, {g:his|her} steps finding the ruts the others left.",
+		"turns up {g:his|her} collar and starts the long trudge toward the next tower.",
+	},
+	["avl.muse.w11.009"] = {
+		"Troggs in one mine, kobolds in the other. Two armies at war, and nobody has asked the oldest tenants anything.",
+		"Irondeep, Coldtooth. Whoever holds the mines gets richer; whoever lived in them never had a say.",
+	},
+	["avl.muse.w11.010"] = {
+		"Chin up. The snow's soft, the keep's that way, and nobody's dead yet.",
+		"One more tower, and then I'm allowed to think about soup.",
+	},
+	["avl.subzone_enter.w11.001"] = {
+		"trudges into {subzone}, snow caked to the knees, and looks for whoever holds it.",
+		"crunches into {subzone} over packed snow, counting the figures ahead.",
+	},
+	["avl.subzone_enter.w11.002"] = {
+		"{subzone}. One more name on a very long road.",
+		"{subzone}. Halfway, maybe. Nobody in this valley ever knows.",
+	},
+	["avl.threat.w11.001"] = {
+		"Turn around. Your keep is back that way, and so is safety.",
+		"Come closer and you'll be the next thing the snow buries.",
+		"This bunker's taken. Find another.",
+	},
+	["avl.victory.w11.001"] = {
+		"Down. The snow will cover it before the next wave.",
+		"Done. On to the next tower before the cold gets into my bones.",
+	},
+	["avl.victory.w11.002"] = {
+		"Rest there. It's a long walk back from the graveyard.",
+		"Enjoy the snow. You'll be in it a while.",
+		"Back to your keep. Take the long way.",
+	},
+	["avl.victory.w11.003"] = {
+		"stamps the snow from {g:his|her} boots and takes up the road again.",
+		"shakes off the cold, settles {g:his|her} gear and looks for the next tower.",
+	},
+	["bwl.attack.w11.001"] = {
+		"Back to the lab!",
+		"Here's one for the notes!",
+		"Take that to your master!",
+	},
+	["bwl.battle.w11.001"] = {
+		"Back to your vat, whatever you are!",
+		"Another failed experiment. Let's close the file.",
+		"Nefarian's experiment ends here!",
+	},
+	["bwl.battle.w11.002"] = {
+		"Which color are you this time?",
+		"Scales, claws, a bad temper. The house special.",
+		"You're what happens when a dragon gets bored.",
+	},
+	["bwl.battle.w11.003"] = {
+		"Watch for the breath, then strike. The rest is noise.",
+		"Eyes on the claws. Nefarian bred these to kill.",
+	},
+	["bwl.encounter_end.w11.001"] = {
+		"{encounter} is finished. The lair breathes a little differently now.",
+		"{encounter} won't be on Nefarian's rolls anymore. One fewer between me and the top.",
+	},
+	["bwl.encounter_end.w11.002"] = {
+		"Back on our feet. Nefarian enjoyed that more than we did.",
+		"All down. Someone up there is taking notes on us now.",
+	},
+	["bwl.lowhp.w11.001"] = {
+		"Patch me up, I'm not becoming a specimen!",
+		"Heal me! I won't end up in a jar!",
+		"Help! Not up here, not like this!",
+	},
+	["bwl.muse.w11.001"] = {
+		"Goblin technicians, orc handlers, dragon masters. Somebody up here keeps careful records of everything that screamed.",
+		"The benches here are scrubbed clean between experiments. That's what bothers me most.",
+	},
+	["bwl.muse.w11.002"] = {
+		"The Dark Horde's grunts call him Lord Victor Nefarius, a noble in a fine coat. Up here nobody bothers pretending.",
+		"Black dragons love a mortal mask. The son plays a lord in these halls; the daughter, so the rumors go, played one at court.",
+	},
+	["bwl.muse.w11.003"] = {
+		"stops beside a clutch of dark eggs in a nest of scorched rock, and watches one shift by itself.",
+		"steps around rows of black eggs laid out on the scorched floor, each as big as a barrel, something knocking softly inside.",
+	},
+	["bwl.muse.w11.004"] = {
+		"A red dragon chained in a black dragon's house. Whatever Nefarian did to Vaelastrasz, he did it slowly.",
+		"Vaelastrasz was one of Alexstrasza's. Now he's what Nefarian shows his guests to explain the house rules.",
+		"Of everything up here, the red dragon is the one I can't stop thinking about. A guardian of life, bent until it broke.",
+	},
+	["bwl.muse.w11.005"] = {
+		"Black, red, green, blue, bronze, all stitched into one. Someone up here really can't choose.",
+		"A dragon of every color. I've seen tavern signs painted with more restraint.",
+		"Nefarian wanted all five flights in one body. Ambitious. Revolting, but ambitious.",
+	},
+	["bwl.muse.w11.006"] = {
+		"This place doesn't just house monsters. It was laid out to wear down whoever comes for them.",
+		"Somebody thought about intruders here, carefully. Every room is a test, and whoever set them is watching the results.",
+	},
+	["bwl.muse.w11.007"] = {
+		"flattens against a pillar as a file of drakonids passes the far end of the hall, scales clicking like armor plates.",
+		"studies a scaled sentry at a distant doorway, half dragon and half soldier, holding a stillness no living guard could keep.",
+	},
+	["bwl.muse.w11.008"] = {
+		"Nobody pokes the vats. I mean it. Whatever's in them, we've fought enough of it already.",
+		"Keep together up here. This place was built by someone who studies how people come apart.",
+		"If anyone finds the dragon's notes, burn them. Whoever comes next shouldn't learn from them.",
+	},
+	["bwl.subzone_enter.w11.001"] = {
+		"passes into {subzone}, where the air smells of brine and burned hair, and the lanterns hang from chains.",
+		"steps into {subzone}; long tables of glass and metal line the walls, still faintly steaming.",
+	},
+	["bwl.subzone_enter.w11.002"] = {
+		"{subzone}. The higher I climb, the worse the work I find.",
+		"Another of Nefarian's rooms. Each one tidier than the last, and worse.",
+	},
+	["bwl.threat.w11.001"] = {
+		"Step aside. Your master won't miss one drakonid.",
+		"Go and tell Nefarian his guests have arrived.",
+		"Back to your handler, beast.",
+	},
+	["bwl.victory.w11.001"] = {
+		"steps back from the twitching scales until they go still, then a little farther.",
+		"nudges the fallen drakonid with a boot, as if it might stitch itself back together.",
+	},
+	["bwl.victory.w11.002"] = {
+		"One less experiment for the notebooks.",
+		"Mark that one down as a failure, Nefarius.",
+		"Back to the drawing board, dragon.",
+	},
+	["bwl.victory.w11.003"] = {
+		"Down. Whatever it was meant to become, it won't.",
+		"Done. Its scales keep changing color even now.",
+	},
+	["mc.attack.w11.001"] = {
+		"Douse this!",
+		"Cool off, hothead!",
+	},
+	["mc.attack.w11.002"] = {
+		"Back into the lava!",
+		"Down to the slag with you!",
+	},
+	["mc.battle.w11.001"] = {
+		"You're only fire. I've put out fires.",
+		"Come on, then, cinder. Let's see you flicker.",
+		"Tell your Firelord his fire's going out.",
+	},
+	["mc.battle.w11.002"] = {
+		"Does everything down here have to be on fire?",
+		"Lovely. Another one that's mostly lava.",
+		"I'd ask you to cool down, but I doubt you know how.",
+	},
+	["mc.battle.w11.003"] = {
+		"Away from the edge first. Then fight.",
+		"Lava on the left, foe in front. Nothing else matters.",
+		"Steady. It's stone and fire, and stone breaks.",
+	},
+	["mc.battle.w11.004"] = {
+		"Hold them here, away from the healers!",
+		"Hold the line! Nobody gets pushed into the lava!",
+	},
+	["mc.battle.w11.005"] = {
+		"squares up to the burning thing, eyes narrowed against its glare.",
+		"sets {g:his|her} feet on the black crust and raises {g:his|her} guard as the heat rolls over {g:him|her} like an open furnace door.",
+	},
+	["mc.encounter_end.w11.001"] = {
+		"{encounter} takes this round. Cool heads next time, if anyone can keep one down here.",
+		"All of us on the floor, and {encounter} not even singed. Up, and slower.",
+		"We'll be back for {encounter}. The fire isn't going anywhere, and neither are we.",
+	},
+	["mc.lowhp.w11.001"] = {
+		"Healer! I'm cooking over here!",
+		"I'm burning up, and I mean it! Help!",
+		"Water, a heal, anything!",
+	},
+	["mc.lowhp.w11.002"] = {
+		"Back from the edge. Fall now and there's no getting up.",
+		"Too hurt to stand this close to the lava. Move.",
+	},
+	["mc.muse.w11.001"] = {
+		"A Dark Iron sorcerer-king called the Firelord up through the stone to win a war. The war ended long ago. The fire never left.",
+		"The Searing Gorge, the Burning Steppes, every scorched mile up there began with one summoning down here. One man's bad idea, still smoldering.",
+		"The first Thaurissan wanted a weapon against his enemies. He got a master instead, and the Dark Iron have kept the flame fed ever since.",
+	},
+	["mc.muse.w11.002"] = {
+		"The Hydraxian Waterlords want the runes doused, every one. Water's old quarrel with fire, and I'm the bucket they picked.",
+		"The Hydraxians say the runes keep the Firelord's lieutenants strong. Put them out and the court weakens. Water holds a grudge a long time.",
+	},
+	["mc.muse.w11.003"] = {
+		"tilts {g:his|her} head back to take in a molten giant at rest, a hill of slag that shifts its weight like a sleeper.",
+		"goes still as a giant of cooling rock lumbers along the far bank, each step leaving a glowing print behind it.",
+	},
+	["mc.muse.w11.004"] = {
+		"The Thorium Brotherhood wants every core I can carry out of here. Funny how they never come down to fetch them.",
+		"Up in the Searing Gorge a dwarf is waiting for these cores with a smile and an anvil. Must be nice.",
+	},
+	["mc.muse.w11.005"] = {
+		"Up top, fire is a thing you light. Down here it has opinions, servants and a king.",
+		"Anywhere else, fire is a tool. Here it walks, guards doors and answers to a lord.",
+		"Fire for cooking, fire for warming the hands, fire cursed when it won't catch. Never once did I think it might look back.",
+	},
+	["mc.muse.w11.006"] = {
+		"shifts {g:his|her} grip on a weapon whose metal has gone warm enough to sting, and wraps the hilt in a strip of cloth.",
+		"checks the buckles of {g:his|her} gear one by one; down here even the metal fittings hold the heat.",
+	},
+	["mc.muse.w11.007"] = {
+		"The hounds down here are made of the same stuff as the floor. When one lies down by the lava, it's like watching a dog curl up by the hearth.",
+		"Core hounds, they call them. Two heads, a hide like a cooling crust, and they pace the shore as if someone had trained them to it.",
+	},
+	["mc.muse.w11.008"] = {
+		"Ragnaros keeps a proper household: lords, hounds, a majordomo. Even the fire under the world wants someone to answer the door.",
+		"A majordomo. The lord of all flame has a steward, as if this were some baron's manor with a lava problem.",
+		"Past the lords and the hounds, a steward stands at the Firelord's door. Even here, you have to get past the staff first.",
+	},
+	["mc.muse.w11.009"] = {
+		"This isn't a cave. It's a wound the world never closed, and things climbed up out of it.",
+		"Every passage here was made by something molten forcing its way through. Nothing was dug. Everything was burned open.",
+	},
+	["mc.muse.w11.010"] = {
+		"Whoever's got the quintessence, stay close. I'm not walking back for a rune.",
+		"Everyone count the runes as we pass. Missing one means a long walk back through all this.",
+	},
+	["mc.muse.w11.011"] = {
+		"Fall in a river up top and someone might fish you out. Down here there'd be nothing left to bury.",
+		"I keep a pace from the edge at all times. The lava doesn't take prisoners, or bodies.",
+		"The lava takes a careless foot the way a forge takes scrap, without noticing.",
+	},
+	["mc.muse.w11.012"] = {
+		"Under the Dark Iron city, under the emperor's throne, under all of it. Below this there's only whatever the fire calls home.",
+		"Blackrock Depths felt deep. This is the floor under the floor, and the walls hum.",
+	},
+	["mc.muse.w11.013"] = {
+		"steps back from the bank as the lava heaves and something shaped like a wave rises out of it, looks about, and sinks again.",
+		"watches a surge of molten rock lift itself from the river, hold a shape for a moment, and slide back under.",
+	},
+	["mc.subzone_enter.w11.001"] = {
+		"enters {subzone}; the glow from below throws {g:his|her} shadow up the wall, long and shaking.",
+		"crosses into {subzone}, where the rock ticks and creaks as it takes the heat.",
+	},
+	["mc.subzone_enter.w11.002"] = {
+		"Deeper still. The rumble under my feet is louder here.",
+		"{subzone}. Even the names down here sound scorched.",
+	},
+	["mc.threat.w11.001"] = {
+		"Back to your lava, or I'll put you there.",
+		"Stay in your river. Come out and I'll douse you.",
+	},
+	["mc.threat.w11.002"] = {
+		"The Hydraxians would love to hear how I put you out.",
+		"I've doused bigger fires than you. Try me.",
+	},
+	["mc.victory.w11.001"] = {
+		"And out it goes. Who's next for snuffing?",
+		"That one's cooling. Let it set.",
+		"Cooled off at last. Took some persuading.",
+	},
+	["mc.victory.w11.002"] = {
+		"watches the creature crumble into black, glassy chunks.",
+		"kicks a lump of cooling slag aside; a moment ago it was trying to kill {g:him|her}.",
+	},
+	["mc.victory.w11.003"] = {
+		"Down. Now drink something before the next one.",
+		"Done. My hands are shaking, and it isn't fear. It's the heat.",
+	},
+	["mc.victory.w11.004"] = {
+		"Good work. Watch the floor while we regroup.",
+		"One more of the Firelord's court gone. Keep moving.",
+		"Nicely done, all. Check the runes on the way.",
+	},
+	["nax.battle.w11.001"] = {
+		"Stitched together? Then come apart.",
+		"This necropolis is short one soldier, starting now.",
+		"Back to the slab with you.",
+	},
+	["nax.lowhp.w11.001"] = {
+		"No. This place would only put me back to work.",
+		"Not on one of their tables. Not me.",
+	},
+	["nax.muse.w11.001"] = {
+		"Every abomination in these halls was stitched from people who once had names. Someone kept a ledger of them, I'd bet.",
+		"The Cult of the Damned runs this place like a workshop: tools on hooks, tables scrubbed, orders posted. The work is turning the living into soldiers.",
+	},
+	["nax.muse.w11.002"] = {
+		"Kel'Thuzad serves a master far away in the north and runs this necropolis in his name. A lieutenant who never sleeps, and never needs to.",
+		"The Argent Dawn says the plague that took Lordaeron was brewed under a roof like this one. Down below, the Plaguelands are still paying for it.",
+	},
+	["nax.victory.w11.001"] = {
+		"steps back from the remains as the cold seeps up through the floor again.",
+		"looks down at the stitched seams coming apart, then turns away.",
+		"nudges a dropped hook aside with a boot; it skids across the green-lit stone.",
+	},
+	["zg.attack.w11.001"] = {
+		"Down off your altar!",
+		"Here's a sacrifice you didn't plan for!",
+	},
+	["zg.battle.w11.001"] = {
+		"No blood for Hakkar from me today.",
+		"Your priests want blood. They'll get yours.",
+		"The Soulflayer's thirsty. Let him stay thirsty.",
+	},
+	["zg.battle.w11.002"] = {
+		"Another loa's pet. Does anything here come without fangs?",
+		"Fur, scales or feathers? I've lost count in this city.",
+	},
+	["zg.battle.w11.003"] = {
+		"Watch the vines. In this city the green itself attacks.",
+		"Ears open. The drums cover everything, even footsteps.",
+	},
+	["zg.encounter_end.w11.001"] = {
+		"That's the end of {encounter}. Up on the temples the drums missed a beat; I'd swear to it.",
+		"{encounter}, finished. The Zandalar will want to hear about this one soon.",
+		"{encounter} won't climb those altar steps again. The city seems a little less sure of itself.",
+	},
+	["zg.lowhp.w11.001"] = {
+		"No altar for me. Not Hakkar's, not today.",
+		"I won't feed a god I don't even pray to.",
+	},
+	["zg.lowhp.w11.002"] = {
+		"Pull back. Everything that falls here ends up on an altar.",
+		"Too deep, too hurt. The jungle is waiting for me to slip.",
+	},
+	["zg.muse.w11.001"] = {
+		"The Gurubashi ruled half of Stranglethorn from these terraces once. They broke their own empire calling Hakkar in, and now a few of them are trying it again.",
+		"An empire of trolls, gone to vine and rubble because its priests wanted a god at their beck and call. Some lessons never take.",
+		"The stairs are worn hollow in the middle, where generations of Gurubashi climbed to the altars. Few of them came back down by choice.",
+	},
+	["zg.muse.w11.002"] = {
+		"Bat, snake, spider, panther, tiger: each high priest here wears a loa's power like a borrowed coat, and Hakkar holds the other end of every thread.",
+		"The animal loa were honored in these temples long before the Soulflayer. Now their priests have tied them to him, and the jungle's old spirits answer to a thirsty one.",
+		"A troll priest who serves a loa usually haggles with it. The ones in here have stopped haggling. They obey, and the loa obey through them.",
+	},
+	["zg.muse.w11.003"] = {
+		"The Zandalar sent envoys all the way to Yojamba Isle to ask outsiders for help. Trolls that proud asking strangers for anything: that's how bad it is in here.",
+		"On Yojamba Isle the Zandalar say that if Hakkar walks this world whole again, his thirst won't stop at the edge of the jungle. They don't strike me as people who exaggerate.",
+		"The Zandalar pay in favor and old trinkets for every token cut from Hakkar's servants. A tribe that old doesn't trade with outsiders for fun.",
+	},
+	["zg.muse.w11.004"] = {
+		"Every troll in this city keeps a pet the size of a horse. Nobody here does anything small.",
+		"Tigers on the terraces, bats overhead, spiders in every doorway. Somebody here really dislikes guests.",
+		"I came all this way for a blood god, and so far it's mostly been bats.",
+	},
+	["zg.muse.w11.005"] = {
+		"runs a thumb along a carved serpent on the wall; the stone is slick, and the carving's eyes have been painted a fresh red.",
+		"stops at the edge of a terrace and looks down over the canopy, where the river winds dark and slow between the ruined temples.",
+	},
+	["zg.subzone_enter.w11.001"] = {
+		"climbs into {subzone}, where every pillar is carved with a loa's face and every face has been freshly daubed.",
+		"comes into {subzone}; somewhere above, the drums change their rhythm, as if they had noticed.",
+		"pushes through hanging vines into {subzone}, and the air turns close and sweet with rot.",
+	},
+	["zg.threat.w11.001"] = {
+		"Go back to your priests. Tell them the altar stays empty.",
+		"One step more and you're the offering.",
+	},
+	["zg.victory.w11.001"] = {
+		"One less servant for the Soulflayer.",
+		"Hakkar can count his priests again. He's short one.",
+		"Back to your loa. Tell them they picked the wrong master.",
+	},
+	["zg.victory.w11.002"] = {
+		"wipes {g:his|her} hands on a broad leaf and looks up toward the next terrace.",
+		"steps back from the fallen as the jungle noise creeps back in, insects first.",
+	},
 ]==])

@@ -876,7 +876,7 @@ def report():
     check(len(res["cells"]) > 100 and any(c["context"] != "*" for c in res["cells"]), "event x context cells are built")
     check(all(c["eligible"] >= c["intentions"] for c in res["cells"]), "eligible counts the generic intentions of the event too")
     check(res["gaps"] == sorted(res["gaps"], key=lambda c: (c["eligible"], c["event"], c["context"])), "gaps are listed poorest first")
-    strict = coverage.compute(con, dict(th, k=1000))
+    strict = coverage.compute(con, dict(th, k=10 ** 9))  # no cell reaches it (W11: the generic muse has 1,178 intentions)
     loose = coverage.compute(con, dict(th, k=1, k_variants=1))
     check(len(strict["gaps"]) == len(strict["cells"]) and len(loose["gaps"]) < len(res["gaps"]), "the threshold k changes the gaps")
     md = coverage.to_markdown(res)

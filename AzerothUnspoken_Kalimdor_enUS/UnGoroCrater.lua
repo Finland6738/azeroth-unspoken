@@ -406,4 +406,104 @@ AU:RegisterRegionalTexts("ungorocrater", "enUS", "kalimdor_ungorocrater", [==[
 		"The clouds over the rim break up and the crater brightens. The steam rises straighter, and so does my back.",
 		"Clear sky above the cliffs now. The heat doesn't care, but the jungle looks a little less like a trap.",
 	},
+	["ung.a.battle.w11.001"] = {
+		"Hold still! I've notes to finish after this.",
+		"The refuge wants a report on you. Let's keep it short.",
+		"Teeth like those belong in a museum in Ironforge. Let's get you there.",
+	},
+	["ung.a.journey.w11.001"] = {
+		"slides down at Marshal's Refuge and stands a moment at the edge of the ledge, looking down at a jungle that has no business existing in Kalimdor.",
+		"lands on the refuge's ledge to a wall of wet heat and, far below, the bellow of something very large.",
+	},
+	["ung.a.landmark.w11.001"] = {
+		"{landmark}. Bones in the tar that no book in Ironforge has a name for. I'd love to know what they were. I'd hate to join them.",
+		"The Lakkari Tar Pits. A scholar could spend a life here pulling bones from the black and naming them. The tar would happily keep the scholar too.",
+	},
+	["ung.a.lowhp.w11.001"] = {
+		"Not yet! The refuge is still waiting on my report!",
+		"Back! I won't end up a footnote in someone's field notes!",
+	},
+	["ung.a.muse.w11.001"] = {
+		"One of the scholars at the refuge swears the titans planted this crater like a garden and then walked away. Looking at the pylons, I can't say they're wrong.",
+		"The scholars at the refuge argue for hours about who raised the pylons. The ones who say the titans argue loudest, and lose least often.",
+		"The Explorers' League has a theory: that Un'Goro is a workshop the titans left unlocked. If so, everything down here is still an experiment, me included, for as long as I stay.",
+	},
+	["ung.a.muse.w11.002"] = {
+		"In Elwynn the worst thing in the woods is a wolf. Down here the wolf would be a snack.",
+		"Even the beasts of Ashenvale have the decency to be the right size.",
+	},
+	["ung.a.npc_meet.w11.001"] = {
+		"Another of the refuge's scholars, dirt under the nails and a dozen questions. I like them. They look at a devilsaur and see a puzzle.",
+		"They want samples, sketches, measurements. The Explorers' League would sign up every one of them, if they ever came back from the crater.",
+	},
+	["ung.a.quest_complete.w11.001"] = {
+		"accepts the reward and fans {g:him|her}self with it for a moment before tucking it away.",
+		"hands over the last of the haul, mops {g:his|her} brow, and sits down hard on the nearest crate.",
+	},
+	["ung.a.quest_progress.w11.001"] = {
+		"That's everything on the list. Now to carry it back up to the refuge without dropping any of it in a hot spring.",
+		"All of it, wrapped in leaves, tied with vine, and only somewhat damp. It'll do.",
+	},
+	["ung.a.subzone_enter.w11.001"] = {
+		"pushes through a wall of fronds into {subzone} and stops to take a bearing on the smoking ridge.",
+		"steps out of the ferns into {subzone}, checks the map against the plume over the ridge, and corrects course a little.",
+	},
+	["ung.a.victory.w11.001"] = {
+		"One for the Hall of Explorers, if anyone in Ironforge believes me.",
+		"Worth a drawing, that one. A shame the drawing will make it look smaller.",
+	},
+	["ung.a.weather_change.w11.001"] = {
+		"Rain at last, warm as bathwater and falling in sheets. I'd hoped it would cool things down. I was wrong.",
+		"The rain comes down so hard the ferns bow under it. It smells of warm earth and green things, and for once the crater feels almost kind.",
+	},
+	["ung.h.battle.w11.001"] = {
+		"You're big. I've hunted big before.",
+		"Half the hunters in Orgrimmar would envy me this fight. Come on!",
+		"Come out of all that green and meet a hunter of the Horde.",
+	},
+	["ung.h.journey.w11.001"] = {
+		"Off the wind rider at the refuge. It shakes the damp from its wings and glares at me, as if the crater were my idea.",
+		"Feet on the ledge, wind rider sulking behind me. Below, the jungle steams, and somewhere in it a devilsaur is walking. Good. Something worth the trip.",
+	},
+	["ung.h.landmark.w11.001"] = {
+		"Marshal's Refuge. Goblins, explorers and stranger folk on a ledge over the jungle: nobody's banner, and everybody's welcome. I sleep with my back to the cliff anyway.",
+		"{landmark}. No Horde fire here, and no Alliance one either: only a cave, a few crates and people too curious to be afraid. I keep my weapon close and my manners closer.",
+	},
+	["ung.h.lowhp.w11.001"] = {
+		"Felled by a lizard? Orgrimmar would never let me hear the end of it!",
+		"Not here! Not in the ferns!",
+	},
+	["ung.h.muse.w11.001"] = {
+		"Crystals of every color push up out of the soil here, warm to the touch. A troll witch doctor would fill a sack and call it a good day's work.",
+		"The crystals of Un'Goro hum when I hold one close. The shamans in Orgrimmar would know what spirit lives inside. I only know it isn't asleep.",
+		"Red, green, blue, yellow, poking up through the ferns like mushrooms. Someone in Orgrimmar's Drag would pay well for a pouchful and ask no questions.",
+	},
+	["ung.h.muse.w11.002"] = {
+		"A herd of stegodons moves through the ferns slow and sure, like a kodo caravan with nobody driving. The tauren would take to these beasts.",
+		"The stegodons graze in a ring with the young in the middle. Any Horde camp guards its children the same way.",
+	},
+	["ung.h.npc_meet.w11.001"] = {
+		"Which of your wind riders minds the damp least? That one, then.",
+		"Somewhere dry, please. Let the wind rider choose; it knows the way better than I do.",
+	},
+	["ung.h.quest_complete.w11.001"] = {
+		"Done. Next time you need something pulled out of the crater, ask the Horde first.",
+		"There you are. The ferns tried to keep it; the Horde had other plans.",
+	},
+	["ung.h.quest_progress.w11.001"] = {
+		"Got it all. If the tar wants it back, it can climb up to the refuge and ask.",
+		"That's everything. Now back through the ferns, eyes down for tracks and up for wings.",
+	},
+	["ung.h.subzone_enter.w11.001"] = {
+		"{subzone}. Read the ground first: snapped fronds, fresh dung, deep prints. The crater tells you who's home, if you look.",
+		"{subzone}. A hunter's eyes before anything else: what has walked here, how heavy, how long ago.",
+	},
+	["ung.h.victory.w11.001"] = {
+		"rests a hand on the fallen beast a moment, the way the tauren thank a kill.",
+		"looks a long while at the fallen beast, one of the crater's strongest, and gives it the nod owed to a worthy rival.",
+	},
+	["ung.h.weather_change.w11.001"] = {
+		"Warm rain, heavy as thrown water. It cools nothing; it only thickens the steam. Even the raptors go quiet under it.",
+		"Rain on the ferns like a war drum. Good for hunting: no beast hears a step through this.",
+	},
 ]==])
