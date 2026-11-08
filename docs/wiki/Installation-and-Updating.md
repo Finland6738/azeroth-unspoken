@@ -10,11 +10,13 @@ This page explains how to install Azeroth Unspoken, how to check that it loaded,
 
 ## Download
 
-There are no packaged releases yet. To get the addon:
+The first release is **0.1.0**, a development preview: every feature is in, the lines are still growing wave by wave, and it has not been played through in game yet. To get it:
 
-1. Open the [GitHub repository](https://github.com/Finland6738/azeroth-unspoken).
-2. Click the green **Code** button, then **Download ZIP**.
+1. Open the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases).
+2. Under the latest release, download **`AzerothUnspoken-<version>.zip`** (for example `AzerothUnspoken-0.1.0.zip`). It holds only the addon folders.
 3. Unzip the file somewhere on your computer, for example on your desktop.
+
+To try the newest lines before the next release, download the repository itself instead: open the [GitHub repository](https://github.com/Finland6738/azeroth-unspoken), click the green **Code** button, then **Download ZIP**. Only the `AzerothUnspoken` folders inside it go into the game.
 
 ## Install
 

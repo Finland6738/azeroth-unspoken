@@ -4,9 +4,18 @@ All notable changes to this project are recorded here.
 
 The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/) and the project intends to follow [semantic versioning](https://semver.org/) from version 1.0 onwards. Until then, 0.x versions may change in ways that are not backward compatible. The v2 data schema of the phrase packs (step S3) is now stable and described in [PACK_FORMAT.md](AzerothUnspoken/PACK_FORMAT.md), but it may still change before 1.0: any changes will be announced here.
 
-No version has been released yet: there are no distribution packages. The version in the `.toc` file is `0.1.0`.
+Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases). Each one has a zip with only the addon folders, built by `tools/package_release.py`. The first is `0.1.0`, a development preview.
 
 ## [Unreleased]
+
+### Release tooling
+
+- **Added:** `tools/package_release.py` builds `build/AzerothUnspoken-<version>.zip` from a tag or commit. The zip holds every addon folder (`AzerothUnspoken` and each `AzerothUnspoken_*` folder with its own `.toc`) and only the files git tracks. The version comes from the `.toc`.
+- **Docs:** the README (EN and IT) and the wiki page *Installation and Updating* now point to the Releases page.
+
+## [0.1.0] - 2026-11-08
+
+The first tagged release: a development preview of the whole addon, with about 30,000 lines per language after content wave W09. It has not been played through in game yet: the G1 checklist is still the owner's to run. Everything below was built during development, step by step.
 
 ### Content wave W09: the troll, the Forsaken, the orc and the gnome (issue #138)
 
@@ -2501,4 +2510,5 @@ Tools for the owner to run in the real client, so that the decisions D3 (memory 
 - A pack that registers a key that already exists (script, NPC, place, arc) replaces the base one without a warning ([#69](https://github.com/Finland6738/azeroth-unspoken/issues/69)).
 - License to be defined ([issue #2](https://github.com/Finland6738/azeroth-unspoken/issues/2)).
 
-[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/commits/main
+[Unreleased]: https://github.com/Finland6738/azeroth-unspoken/compare/v0.1.0...main
+[0.1.0]: https://github.com/Finland6738/azeroth-unspoken/releases/tag/v0.1.0
