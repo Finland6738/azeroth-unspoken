@@ -73,9 +73,9 @@ Altri client (retail, Classic Era, ecc.) non sono supportati né provati. L'addo
 
 ## Installazione
 
-Non ci sono ancora versioni pacchettizzate (release o pagine di distribuzione). Per ora:
+La prima release è la **0.1.0**, un'anteprima di sviluppo: le funzioni ci sono, le frasi stanno ancora crescendo e non è ancora stata provata a fondo in gioco.
 
-1. Scarica il repository (`Code` → `Download ZIP`, oppure `git clone https://github.com/Finland6738/azeroth-unspoken`).
+1. Scarica `AzerothUnspoken-<versione>.zip` dalla [pagina Releases](https://github.com/Finland6738/azeroth-unspoken/releases) e decomprimilo: contiene solo le cartelle dell'addon. (Lo stato di sviluppo più recente è il repository stesso: `Code` → `Download ZIP`, oppure `git clone https://github.com/Finland6738/azeroth-unspoken`.)
 2. Copia **tutte le cartelle il cui nome comincia con `AzerothUnspoken`** in `World of Warcraft\_forever_\Interface\AddOns\`: l'addon (`AzerothUnspoken`), le frasi di ogni lingua (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) e di ogni continente (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` e le loro cartelle `_enUS`/`_itIT`). L'addon carica da solo solo la lingua scelta e solo il continente in cui ti trovi, fuori dal combattimento: non devi mai scegliere una cartella.
 3. Facoltativo: `AzerothUnspoken_Example`, un pacchetto di frasi di esempio (una frase per la pesca e alcune legate a luoghi), e `AzerothUnspoken_Versi`, un prototipo di forme letterarie: iscrizioni, versi ricordati, filastrocche da locanda, canzoni di viaggio, un inno e un lamento, solo nel tuo narratore privato.
 4. Alla schermata di selezione del personaggio apri **AddOn** e controlla che tutte le voci *Azeroth Unspoken* siano spuntate (le cartelle delle lingue e dei continenti sono segnate *Caricamento su richiesta*: è normale).

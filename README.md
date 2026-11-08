@@ -75,9 +75,9 @@ Other clients (retail, Classic Era, etc.) are neither supported nor tested. The 
 
 ## Installation
 
-There are no packaged releases yet (no release assets, no distribution pages). For now:
+The first release is **0.1.0**, a development preview: the features are in, the lines are still growing, and it has not been played through in game yet.
 
-1. Download the repository (`Code` → `Download ZIP`, or `git clone https://github.com/Finland6738/azeroth-unspoken`).
+1. Download `AzerothUnspoken-<version>.zip` from the [Releases page](https://github.com/Finland6738/azeroth-unspoken/releases) and unzip it. It holds only the addon folders. (The latest development state is the repository itself: `Code` → `Download ZIP`, or `git clone https://github.com/Finland6738/azeroth-unspoken`.)
 2. Copy **every folder whose name starts with `AzerothUnspoken`** into `World of Warcraft\_forever_\Interface\AddOns\`: the addon (`AzerothUnspoken`), the lines of each language (`AzerothUnspoken_enUS`, `AzerothUnspoken_itIT`) and of each continent (`AzerothUnspoken_Kalimdor`, `AzerothUnspoken_EasternKingdoms` and their `_enUS`/`_itIT` folders). The addon loads by itself only the language you chose and only the continent you are on, outside combat: you never pick a folder.
 3. Optional: `AzerothUnspoken_Example`, a sample phrase pack (a line for fishing and a few tied to places), and `AzerothUnspoken_Versi`, a prototype pack of literary forms: inscriptions, remembered verses, inn rhymes, road songs, a hymn and a lament, only in your private narrator.
 4. On the character selection screen open **AddOns** and make sure every *Azeroth Unspoken* entry is ticked (the language and continent folders are marked *Load on demand*: that is expected).
