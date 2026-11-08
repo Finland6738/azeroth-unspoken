@@ -497,11 +497,14 @@ local function Score(entry, key, poolSize, lastTone, ctx, profile, voice)
 end
 
 -- le voci usate di recente restano escluse finché ce ne sono altre disponibili
-local function WeightedPick(items, key)
+local function WeightedPick(items, key, window)
 	local pool, total = {}, 0
-	-- the window as a set, once, not scanned for every item (#157)
-	local recent = {}
-	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
+	-- the window as a set, once, not scanned for every item (#157); C0i: a pool narrowed by a share has its own
+	local recent = window
+	if not recent then
+		recent = {}
+		for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
+	end
 	for _, it in ipairs(items) do
 		-- #138: e is a rule's ord, or a frame
 		local e = it.e
@@ -833,6 +836,7 @@ Engine.SAMPLE_SCAN = 24     -- a tier with at most this many candidates is check
 Engine.SAMPLE_KEEP = 16     -- rules that hold kept from a larger tier
 Engine.SAMPLE_CHECKS = 48   -- rules of a larger tier checked at most
 Engine.SAMPLE_DRAWS = 4     -- random draws per check at most (draws of a rule already drawn, or of another speaker)
+Engine.SAMPLE_PART_MIN = 2  -- C0i: the least budget (scan, keep) of a part of a tier read apart for a pool share
 
 ---The rules that hold of a large event, read by tier with a bounded sample (C0e, see above), or nil when the event has
 ---at most SAMPLE_FROM candidates, when no tier has more than SAMPLE_SCAN, when sampling is off, or when the sample
@@ -856,32 +860,59 @@ function Engine:SampledEligible(event, ctx, form, lang, now, memo, recent, speak
 	-- the lists of each tier, and whether one is large enough to be sampled; if none is, every candidate is checked
 	-- in order of registration, as before (the same pick)
 	local scan = self.SAMPLE_SCAN
+	-- C0i (ADR 0056): the rules a pool share prefers are read apart in each tier, as the tiers are, so three lines of
+	-- an NPC's voice or a few short lines beside thousands of others are always seen and can keep their share (the
+	-- first share that holds in the context; SharePool applies every one on what was kept). Each part has the budget
+	-- of the sample in proportion to its share (at least SAMPLE_PART_MIN), so a pick weighs about as many rules as
+	-- without the share.
+	local active = Engine.ActiveShares(ctx, event)
+	local def = active and active[1].def
+	local budget = { 1 }
+	if def then
+		local sh = math.min(1, active[1].share)
+		budget = { sh, 1 - sh }
+	end
 	local tiers, large = {}, false
 	for t = 0, Engine.MAX_TIER do
-		local lists, size = {}, 0
-		for _, list in ipairs(groups) do
-			local part = Engine.Split(list)[t]
-			if #part > 0 then
-				lists[#lists + 1] = part
-				size = size + #part
+		for part = 1, #budget do
+			local lists, size = {}, 0
+			for _, list in ipairs(groups) do
+				local seg
+				if def then
+					local ss = Engine.SplitShare(list, def, lang)
+					seg = part == 1 and ss.pref[t] or ss.rest[t]
+				else
+					seg = Engine.Split(list)[t]
+				end
+				if #seg > 0 then
+					lists[#lists + 1] = seg
+					size = size + #seg
+				end
 			end
-		end
-		if size > 0 then
-			tiers[#tiers + 1] = { lists = lists, size = size }
-			if size > scan then large = true end
+			if size > 0 then
+				local b, least = budget[part], self.SAMPLE_PART_MIN
+				local seg = { lists = lists, size = size, scan = scan, keep = self.SAMPLE_KEEP, checks = self.SAMPLE_CHECKS }
+				if b < 1 then
+					seg.scan = math.max(least, math.ceil(scan * b))
+					seg.keep = math.max(least, math.ceil(seg.keep * b))
+					seg.checks = math.max(least * 3, math.ceil(seg.checks * b))
+				end
+				tiers[#tiers + 1] = seg
+				if size > seg.scan then large = true end
+			end
 		end
 	end
 	if not large then return nil end
 	local closed = ctx and ctx.closed
 	local literary = NS.Pacing:LiteraryClosed(ctx) and self.LITERARY_CATEGORY or nil
 	local Check = self:RuleCheck(lang, ctx, form, now, memo, closed, literary, self.muted)
-	local keep, checks = self.SAMPLE_KEEP, self.SAMPLE_CHECKS
-	local draws = checks * self.SAMPLE_DRAWS
 	local random = math.random
 	local out, count = {}, 0
 	for _, tier in ipairs(tiers) do
 		local lists, size = tier.lists, tier.size
-		if size <= scan then
+		local keep, checks = tier.keep, tier.checks
+		local draws = checks * self.SAMPLE_DRAWS
+		if size <= tier.scan then
 			-- a small tier: every rule, in order of registration (a rule in two groups once)
 			for _, r in ipairs(Engine.MergeByOrd(lists)) do
 				if (not speaker or SHAPE[r].speaker == speaker) and Check(r) then
@@ -1113,6 +1144,21 @@ function Engine:RenderPhrase(p, lang, ctx)
 		end
 		if #fit > 0 then idx = fit end
 	end
+	-- C0i (ADR 0056): the variants a system prefers in this context, if the rule has any
+	if #idx > 1 and not Engine.R1_COMPAT then
+		for _, h in ipairs(Engine.variantPrefs) do
+			local ok, test = pcall(h.fn, ctx)
+			if ok and type(test) == "function" then
+				local fit = {}
+				for _, i in ipairs(idx) do
+					if test(Engine.VariantText(list[i])) then fit[#fit + 1] = i end
+				end
+				if #fit > 0 then idx = fit end
+			elseif not ok and NS.Diagnostics then
+				NS.Diagnostics:Error("variant:" .. h.name, test)
+			end
+		end
+	end
 	local last = Mem().variant and Mem().variant[p.id]
 	if last and #idx > 1 then
 		for k = #idx, 1, -1 do
@@ -1170,12 +1216,16 @@ end
 ---PickEntry, the related event; then silence. Recent ids still drop out in WeightedPick.
 ---@param items { e: integer|AUPhrase, w: number }[] e: the rule's ord (#138) or its view
 ---@param key string key of the anti-repetition window (the event)
+---@param window? table<string, boolean> the window of a pool narrowed by a share (Engine.SharePool), as a set
 ---@return table items the same list, or a new list with the chosen tiers
 ---@return integer tier the lowest tier kept
-function Engine.TierPool(items, key)
+function Engine.TierPool(items, key, window)
 	-- the recent ids as a set, once
-	local recent = {}
-	for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
+	local recent = window
+	if not recent then
+		recent = {}
+		for _, id in ipairs(Mem().recent[key] or EMPTY) do recent[id] = true end
+	end
 	local fresh, tiers = {}, {}
 	-- #138: the deduced tier once per conditions table in this call (many rules share one, see Engine.Tier)
 	local byWhen = {}
@@ -1248,6 +1298,143 @@ function Engine.TierPool(items, key)
 		if l >= band.lo and l <= band.hi and (l < top or t >= floor) then out[#out + 1] = it end
 	end
 	return out, band.lo < top and band.lo or floor
+end
+
+-- C0i (#138, ADR 0056): pool shares. A system says, for a context, the share of the picks that the candidates it
+-- prefers keep, and which candidates it prefers: the voice of the NPC one talks to (NPCAlive), the short lines in a
+-- battleground, an arena or a boss fight (Place). A weight cannot hold a share while the pool grows (three gruff lines
+-- among thirty, a short line among long ones); a share can, as the tiers of ADR 0051 do. In the order they were set.
+-- `test` reads only the rule (and the language of the texts), never the context, so the bounded pick can read the
+-- preferred rules of a group apart (Engine.SplitShare, as Engine.Split does for the tiers).
+Engine.poolShares = {}
+
+---Adds, replaces or removes (share = nil) a pool share. share(ctx, event) returns nil (no preference in this
+---context) or the share (0-1); test(e, lang, ctx?) says whether a rule is preferred, e being its ord (or its view, in
+---tests): its answer depends only on the rule and the language, ctx (given during a pick) only lets it keep answers.
+---Neither may draw random numbers.
+---@param name string
+---@param share? fun(ctx: table, event: string): number?
+---@param test? fun(e: integer|AUPhrase, lang: string, ctx?: table): boolean
+function Engine:SetPoolShare(name, share, test)
+	local list = Engine.poolShares
+	for i = #list, 1, -1 do
+		if list[i].name == name then table.remove(list, i) end
+	end
+	if type(share) == "function" and type(test) == "function" then
+		list[#list + 1] = { name = name, share = share, test = test }
+	end
+end
+
+---The pool shares that hold in ctx for the event, in order: { def, share }[] (nil: none).
+---@param ctx table
+---@param event string
+---@return table?
+function Engine.ActiveShares(ctx, event)
+	local out
+	for _, h in ipairs(Engine.poolShares) do
+		local ok, share = pcall(h.share, ctx, event)
+		if not ok then
+			if NS.Diagnostics then NS.Diagnostics:Error("share:" .. h.name, share) end
+		elseif type(share) == "number" and share > 0 then
+			out = out or {}
+			out[#out + 1] = { def = h, share = share }
+		end
+	end
+	return out
+end
+
+-- the preferred rules of a group by tier, per share (weak keys: a group no longer in the index takes them with it)
+local shareSplits = setmetatable({}, { __mode = "k" })
+
+---The rules of a group of the index that a pool share prefers, and the others, by tier (C0i, ADR 0056): pref[t] and
+---rest[t], each in the order of the group. Made when a pick first needs them and kept, like Engine.Split; made again
+---when the group or its split changed, or the language of the texts.
+---@param list integer[] a group of the index
+---@param def table a pool share (Engine.poolShares)
+---@param lang string
+---@return { pref: integer[][], rest: integer[][] }
+function Engine.SplitShare(list, def, lang)
+	local base = Engine.Split(list)
+	local byDef = shareSplits[list]
+	if not byDef then
+		byDef = {}
+		shareSplits[list] = byDef
+	end
+	local s = byDef[def]
+	if s and s.base == base and s.n == base.n and s.lang == lang then return s end
+	s = { base = base, n = base.n, lang = lang, pref = {}, rest = {} }
+	local test = def.test
+	for t = 0, Engine.MAX_TIER do
+		local pref, rest = {}, {}
+		for _, r in ipairs(base[t]) do
+			if test(r, lang) then pref[#pref + 1] = r else rest[#rest + 1] = r end
+		end
+		s.pref[t], s.rest[t] = pref, rest
+	end
+	byDef[def] = s
+	return s
+end
+
+---The pool shares (C0i, ADR 0056), before the tiers: for each share that holds in ctx, when the pool has a candidate
+---it prefers outside the anti-repetition window and one it does not, the pick keeps only the preferred candidates
+---with the probability of the share; otherwise every candidate stays (so the preferred ones keep at least their share,
+---and more when their weights earn it). A random number is drawn only when the choice is real.
+---A narrowed pool has the window of its own size: the newest KeepFor(#preferred) of its ids in the event's window (the
+---window itself keeps its size from every candidate). Without that, three lines of an NPC's voice among thirty
+---candidates would sit in a window of eighteen and could never reach their share.
+---@param items { e: integer|AUPhrase, w: number }[]
+---@param key string key of the anti-repetition window (the event)
+---@param ctx table
+---@param lang string the language of the texts
+---@return table items the same list or the preferred candidates
+---@return table<string, boolean>? window the window of the narrowed pool, as a set (nil: the event's)
+function Engine.SharePool(items, key, ctx, lang)
+	if #Engine.poolShares == 0 or #items < 2 then return items, nil end
+	local active = Engine.ActiveShares(ctx, key)
+	if not active then return items, nil end
+	local window
+	for _, a in ipairs(active) do
+		local test = a.def.test
+		local pref, ids, other = {}, {}, false
+		for _, it in ipairs(items) do
+			local e = it.e
+			if test(e, lang, ctx) then
+				pref[#pref + 1] = it
+				ids[ID[e] or e.id] = true
+			else
+				other = true
+			end
+		end
+		if #pref > 0 and other then
+			-- the window of the preferred pool: its newest ids in the event's window
+			local own, n, keep = {}, 0, KeepFor(#pref)
+			for _, id in ipairs(Mem().recent[key] or EMPTY) do
+				if n >= keep then break end
+				if ids[id] then own[id], n = true, n + 1 end
+			end
+			local fresh = false
+			for _, it in ipairs(pref) do
+				if it.w > 0 and not own[ID[it.e] or it.e.id] then fresh = true; break end
+			end
+			if fresh and math.random() < a.share then items, window = pref, own end
+		end
+	end
+	return items, window
+end
+
+-- C0i (ADR 0056): variant preferences. fn(ctx) returns nil or a test of a variant's text: when a rule has variants
+-- that pass it, the variant is drawn among those (a short rule in a battle says its short variant).
+Engine.variantPrefs = {}
+
+---Adds, replaces or removes (fn = nil) a variant preference.
+---@param name string
+---@param fn? fun(ctx: table): (fun(text: string): boolean)?
+function Engine:SetVariantPreference(name, fn)
+	local list = Engine.variantPrefs
+	for i = #list, 1, -1 do
+		if list[i].name == name then table.remove(list, i) end
+	end
+	if type(fn) == "function" then list[#list + 1] = { name = name, fn = fn } end
 end
 
 ---Sceglie e compone una frase. Se l'evento non ha frasi, prova l'evento affine dichiarato (#89: `fallback`), al
@@ -1372,11 +1559,16 @@ function Engine:PickOwn(event, ctx, form, composite)
 	-- #153: a composite pick weighs only the lines written for its situation (usually two); its line joins the window
 	-- of the lead event without cutting what the ordinary picks of that event put there
 	if composite then keep = math.max(keep, #(mem.recent[event] or EMPTY)) end
-	if r3 then items = Engine.TierPool(items, event) end
+	-- C0i (ADR 0056): the pool shares come before the tiers, which then mix the levels of the preferred candidates
+	local window
+	if r3 then
+		items, window = Engine.SharePool(items, event, ctx, lang)
+		items = Engine.TierPool(items, event, window)
+	end
 
 	-- più tentativi: una frase può fallire se manca una voce di vocabolario
 	for _ = 1, 6 do
-		local it = WeightedPick(items, event)
+		local it = WeightedPick(items, event, window)
 		if not it then return nil end
 		local p = Engine.Rule(it.e)
 		local text, variant, parts

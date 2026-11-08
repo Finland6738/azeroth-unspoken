@@ -294,6 +294,52 @@ T.run("campo di battaglia: le frasi brevi pesano di più (fattore C)", function(
 	T.ok(shortHits >= 45, "frasi brevi in battaglia: " .. shortHits .. "/60")
 end)
 
+-- C0i (#138, ADR 0056): a rule with a short and a long variant says the short one in a battle place, and the short
+-- lines keep their share (Place.SHORT_SHARE) however many long battle lines the archive holds
+T.run("C0i: in battaglia la variante breve, e le frasi brevi tengono la quota anche con molte frasi lunghe", function()
+	Fresh()
+	local long = ("Il fragore delle armi mi riempie le orecchie, e ogni passo nel fango pesa come una promessa. "):rep(2)
+	local reg, texts = {}, {}
+	reg["t.c0i.mixed"] = { event = "c0i_mixed", speaker = "character", styles = { "epic" } }
+	texts["t.c0i.mixed"] = { "Avanti!", long }
+	-- three hundred long battle lines with no conditions
+	for i = 1, 300 do
+		local id = ("t.c0i.battle.long.%03d"):format(i)
+		reg[id] = { event = "battle", speaker = "character", styles = { "epic" } }
+		texts[id] = { ("%s (%d)"):format(long, i) }
+	end
+	NS:RegisterPack({ id = "t_c0i_short", name = "C0i short", languages = { "itIT" },
+		events = { c0i_mixed = { category = "reflection" } }, registry = reg, texts = { itIT = texts } })
+	local mixed = Engine.byId["t.c0i.mixed"]
+	local function Variants(ctx, n)
+		local seen = {}
+		for _ = 1, n do
+			NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+			local text = Engine:RenderPhrase(mixed, "it", ctx)
+			seen[text == "Avanti!" and "short" or "long"] = true
+		end
+		return seen
+	end
+	math.randomseed(56)
+	local world = Variants(Ctx(), 40)
+	T.ok(world.short and world.long, "nel mondo aperto le due varianti")
+	P.instance, P.instanceType, P.instanceName = true, "pvp", "Arathi Basin"
+	local bg = Ctx()
+	local fight = Variants(bg, 40)
+	T.ok(fight.short and not fight.long, "in campo di battaglia solo la variante breve")
+	T.ok(Place.HasShort(mixed) and not Place.HasShort(Engine.byId["t.c0i.battle.long.001"]), "HasShort")
+	-- the short lines keep their share among 300 long ones (before C0i: 1.3 x the short lines against 0.4 x the long)
+	local shortHits = 0
+	for _ = 1, 120 do
+		NS.cdb.memory = { uses = {}, last = {}, recent = {}, lastTone = {}, variant = {} }
+		local rec = Engine:PickEntry("battle", Ctx(), "say")
+		if rec and #rec.text <= Place.SHORT_BYTES then shortHits = shortHits + 1 end
+	end
+	T.ok(shortHits >= 120 * (Place.SHORT_SHARE - 0.1), "frasi brevi in battaglia fra molte lunghe: " .. shortHits .. "/120")
+	Engine:DropPack("t_c0i_short")
+	T.ok(Engine.byId["t.c0i.battle.long.001"] == nil, "il pacchetto di prova è tolto")
+end)
+
 ---------------------------------------------------------------------------
 -- Interlocutore: fonti, ruoli, segreti, TRP3
 ---------------------------------------------------------------------------

@@ -376,16 +376,57 @@ end
 ---------------------------------------------------------------------------
 -- Narratore: fattore C, ritmo, impegno
 ---------------------------------------------------------------------------
--- the length of the shortest text of a rule (#138: read in the column store by its ord; the rule given to a weight
--- hook keeps nothing between two calls, so nothing is cached on it)
-local function Shortest(entry)
-	local Engine, lang, best = NS.Engine, NS:Lang(), nil
-	local list = entry.ord and Engine.TextList(entry.ord, lang) or (entry.text and entry.text[lang])
-	for _, v in ipairs(list or EMPTY) do
-		local t = Engine.VariantText(v)
-		if type(t) == "string" and (not best or #t < best) then best = #t end
+-- C0i (ADR 0056): in a battleground, an arena or a boss fight the lines with a short variant keep this share of the
+-- picks however many long lines the archive holds, and such a line says a short variant
+Place.SHORT_SHARE = 0.85
+
+-- a battle place: battleground, arena or boss fight
+local function Battle(ctx)
+	local kind = Place.RhythmKind(ctx.place)
+	return kind == "pvp" or kind == "arena" or kind == "encounter"
+end
+
+-- the length of the shortest text of a rule (#138: read in the column store by its ord, without a copy of the list).
+-- A rule with no texts of its own (a monologue, stanzas) is not short. C0i: kept per context, since the weight hook
+-- and the pool share both ask it for every candidate of a pick (a context lives for one pick, or for a test).
+local shortCache = setmetatable({}, { __mode = "k" })
+local function Shortest(e, lang, ctx)
+	local Engine = NS.Engine
+	local r = type(e) == "number" and e or type(e) == "table" and e.ord or nil
+	local cache = ctx and shortCache[ctx]
+	if cache and cache.lang ~= lang then cache = nil end
+	if r and cache and cache[r] then return cache[r] end
+	local best
+	if r then
+		local v, first, n = Engine.TextRange(r, lang)
+		for i = first, first + n - 1 do
+			local t = Engine.VariantText(v[i])
+			if type(t) == "string" and (not best or #t < best) then best = #t end
+		end
+	else
+		for _, v in ipairs(type(e) == "table" and e.text and e.text[lang] or EMPTY) do
+			local t = Engine.VariantText(v)
+			if type(t) == "string" and (not best or #t < best) then best = #t end
+		end
 	end
-	return best or 0
+	best = best or math.huge
+	if r and ctx then
+		if not cache then
+			cache = { lang = lang }
+			shortCache[ctx] = cache
+		end
+		cache[r] = best
+	end
+	return best
+end
+
+---La frase ha una variante breve (al più SHORT_BYTES byte) nella lingua dei testi? Per un ord o una vista.
+---@param e integer|AUPhrase
+---@param lang? string default: the language of the texts
+---@param ctx? table the context of a pick, to keep the answer during it
+---@return boolean
+function Place.HasShort(e, lang, ctx)
+	return Shortest(e, lang or NS:TextLang(), ctx) <= Place.SHORT_BYTES
 end
 
 ---Fattore C del luogo: tag `place.` delle frasi, e in campo di battaglia (o contro un boss) le frasi brevi.
@@ -396,12 +437,21 @@ function Place.Factor(entry, ctx)
 	local p = ctx.place
 	if type(p) ~= "table" then return 1 end
 	local f = Traits.Evaluate(entry.tags, ctx.placeTraits or Place.Traits(p), "place")
-	local kind = Place.RhythmKind(p)
-	if kind == "pvp" or kind == "arena" or kind == "encounter" then
-		f = f * (Shortest(entry) <= Place.SHORT_BYTES and Place.SHORT_MATCH or Place.SHORT_MISMATCH)
+	if Battle(ctx) then
+		f = f * (Place.HasShort(entry, nil, ctx) and Place.SHORT_MATCH or Place.SHORT_MISMATCH)
 	end
 	return f
 end
+
+-- C0i (ADR 0056): the short lines keep SHORT_SHARE of the picks in a battle place, and say a short variant
+NS.Engine:SetPoolShare("place.short", function(ctx)
+	if type(ctx.place) == "table" and Battle(ctx) then return Place.SHORT_SHARE end
+	return nil
+end, function(e, lang, ctx) return Place.HasShort(e, lang, ctx) end)
+NS.Engine:SetVariantPreference("place.short", function(ctx)
+	if type(ctx.place) ~= "table" or not Battle(ctx) then return nil end
+	return function(text) return #text <= Place.SHORT_BYTES end
+end)
 -- pure (#157) except where the length of the texts counts (battleground, arena, boss)
 Engine:SetWeightHook("C", "place", Place.Factor, function(ctx)
 	local kind = Place.RhythmKind(ctx.place)

@@ -8,7 +8,7 @@
 
 When you deal with an NPC, the addon may offer a short exchange: the NPC says a line, and you pick one of one to three neutral answers. The conversation can go on for a few steps, then ends.
 
-There are five kinds of NPC: **innkeeper**, **merchant**, **guard**, **flight master** and **trainer**, with 169 lines in all. The NPC speaks according to their character (gruff, jovial, warm, formal, terse...) and according to whether **you know each other**: a stranger is greeted differently from a regular customer.
+There are five kinds of NPC: **innkeeper**, **merchant**, **guard**, **flight master** and **trainer**, with 169 lines in all. The NPC speaks according to their character (gruff, jovial, warm, formal, terse...) and according to whether **you know each other**: a stranger is greeted differently from a regular customer. An NPC's own lines (its name, its temperament, its manner of speaking) make up most of what it says, about six lines in ten, however many lines of its trade or for your race the addon holds; the same line never comes twice in a row.
 
 ## How to use it
 
