@@ -330,4 +330,170 @@ AU:RegisterRegionalTexts("felwood", "itIT", "kalimdor_felwood", [==[
 		"Il cielo si rasserena, e in qualche modo Felwood ci fa una figura peggiore: ogni foglia malata in bella vista.",
 		"Cielo sereno sopra le cime degli alberi. La foresta là sotto resta verde e sbagliata come sempre.",
 	},
+	["fel.a.attack.w11.001"] = {
+		"Fermo lì. Sto togliendo le erbacce.",
+		"Ecco un po' di purificazione per te!",
+	},
+	["fel.a.battle.w11.001"] = {
+		"Satiro! Va' a ridere di qualcos'altro.",
+		"Un tempo eri kaldorei. Adesso sei solo corna e cattive maniere.",
+	},
+	["fel.a.battle.w11.002"] = {
+		"si abbassa sotto un ramo che gocciola e si rialza {g:pronto|pronta}, con la linfa verde che {g:gli|le} schizza la manica.",
+		"scivola sulle radici nere e viscide, ritrova l'equilibrio e affronta l'attacco.",
+	},
+	["fel.a.battle.w11.003"] = {
+		"I druidi rivogliono questa radura. Vieni qui!",
+		"Talonbranch conta su una strada tranquilla. E tu sei d'intralcio.",
+	},
+	["fel.a.journey.w11.001"] = {
+		"smonta dall'ippogrifo a Talonbranch Glade, e l'animale scuote forte le penne, come per scrollarsi di dosso l'odore della foresta.",
+		"scivola giù dalla groppa dell'ippogrifo a Talonbranch e resta immobile un momento, lasciando che le gambe si riabituino alla terra.",
+	},
+	["fel.a.landmark.w11.001"] = {
+		"{landmark}. Erba del colore giusto, acqua che berrei davvero. Non mi rendevo conto di quanto mi mancassero tutte e due.",
+		"L'Emerald Sanctuary: un solo angolo di bosco pulito, tenuto pulito da druidi testardi e da un lavoro che non finisce mai. Mi siedo un momento a guardarlo e basta.",
+	},
+	["fel.a.lowhp.w11.001"] = {
+		"Non sotto questi alberi! Se devo cadere, cadrò dove è più verde.",
+		"Indietro! Queste radici non le nutro io.",
+	},
+	["fel.a.muse.w11.001"] = {
+		"Le vecchie mappe chiamavano tutto questo Ashenvale. Qualcuno ha tracciato un confine nuovo quando gli alberi si sono ammalati, come se una foresta si potesse amputare come un arto andato.",
+		"Felwood non ha sempre avuto un nome suo. Era il nord di Ashenvale, finché la malattia non ne ha fatto un posto che nessuno vuole rivendicare.",
+		"Da qualche parte a Darnassus ci saranno mappe dove questo è ancora Ashenvale. Chissà se qualcuno ha il coraggio di ridisegnarle.",
+	},
+	["fel.a.muse.w11.002"] = {
+		"Un orso di Ashenvale si fa gli affari suoi. Un orso di Felwood viene a cercarti, con la bava alla bocca e il verde negli occhi.",
+		"Gli orsi qui si sono guastati insieme al resto della foresta. Non avvertono, non bluffano, arrivano e basta. Da ogni macchia di cespugli sto alla larga.",
+	},
+	["fel.a.muse.w11.003"] = {
+		"sfiora un rampicante che pende dall'alto e si ritrae di scatto, strofinandosi il polso per il bruciore.",
+		"aggira con cautela un fungo largo come uno scudo, con la cappella che si gonfia e si posa come qualcosa che dorme.",
+		"solleva una foglia caduta sulla punta di un dito, osserva il debole bagliore verde nelle venature e la lascia ricadere.",
+	},
+	["fel.a.muse.w11.004"] = {
+		"Ogni druido del Sanctuary mi ha raccomandato pazienza. Comincio a pensare che sia il loro modo di salutare.",
+		"Se il Cenarion Circle cerca volontari per ripulire questa foresta, dovrà distribuire guanti molto più lunghi.",
+		"Uno gnomo annuserebbe quest'aria e chiederebbe una bottiglia per conservarne un po'. Io gli darei la bottiglia e scapperei.",
+	},
+	["fel.a.muse.w11.005"] = {
+		"Parla di Felwood con un elfo della notte e guardagli il viso. Ne parlano come si parla di un parente che si è ammalato: a bassa voce, e mai a lungo.",
+		"Per gli elfi della notte di Talonbranch questo non è un campo di battaglia. È qualcosa di loro che si è ammalato sotto i loro occhi, e che continuano a venire a trovare.",
+	},
+	["fel.a.npc_meet.w11.001"] = {
+		"La sentinella mi lancia un'occhiata sola e torna a sorvegliare il margine del bosco. In questa foresta è la cosa più educata da fare.",
+		"Una guardia che mentre parliamo non distoglie mai del tutto lo sguardo dagli alberi. Bene. A Felwood è dagli alberi che arriva tutto.",
+	},
+	["fel.a.quest_complete.w11.001"] = {
+		"Consegnato. A Felwood una buona giornata è quella in cui la foresta non sta peggio di ieri. Oggi forse sta un po' meglio.",
+		"Una cosa storta in meno in questi boschi. Gli alberi se ne accorgeranno fra anni. Io sì, già adesso.",
+	},
+	["fel.a.quest_complete.w11.002"] = {
+		"Ecco, finito. Se qualcuno chiede, le macchie non vanno più via.",
+		"Il lavoro è fatto. Qualcuno ha dell'acqua che non venga da un ruscello di Felwood?",
+	},
+	["fel.a.quest_progress.w11.001"] = {
+		"Non ho finito. Felwood restituisce le cose come un rovo restituisce una manica.",
+		"Una parte. Il resto è ancora là fuori nel marcio, e il marcio non molla niente senza lottare.",
+	},
+	["fel.a.subzone_enter.w11.001"] = {
+		"entra a Irontree Woods, dove i tronchi sono scuri e duri come metallo vecchio e la malattia si è insinuata lo stesso.",
+		"cammina sotto i grandi alberi di {subzone}; la corteccia risuona sorda sotto le nocche, eppure dalle crepe trasuda un marciume verde.",
+	},
+	["fel.a.victory.w11.001"] = {
+		"I songflower mi ringrazieranno dopo.",
+		"Sdraiati nel muschio e restaci. È la cosa più morbida di Felwood.",
+	},
+	["fel.a.victory.w11.002"] = {
+		"si stacca dalla manica un grumo di linfa verde e lo butta via.",
+		"si allontana dal corpo e si strofina gli stivali in un mucchio di aghi secchi, come se potesse servire.",
+	},
+	["fel.a.weather_change.w11.001"] = {
+		"guarda la nebbia addensarsi fra i tronchi contorti, appena verdastra dove scivola sopra le pozze avvelenate.",
+		"rallenta mentre una nebbia si insinua per Felwood e smussa gli alberi piegati in sagome che sembrano quasi persone.",
+	},
+	["fel.h.attack.w11.001"] = {
+		"Lok'tar! Giù nel fango, tu!",
+		"Torna nel marcio!",
+	},
+	["fel.h.battle.w11.001"] = {
+		"Posa quella candela, cultista. Non risponde nessuno.",
+		"Shadow Council? Credevo che l'Orda avesse chiuso i conti con quelli come te.",
+	},
+	["fel.h.battle.w11.002"] = {
+		"Tienilo lontano dalle pozze. Se uno di noi deve finirci dentro, che sia l'altro.",
+		"Combatti sul sentiero. Qui il sottobosco morde.",
+	},
+	["fel.h.battle.w11.003"] = {
+		"scalcia via un ciuffo di funghi luminosi e serra le distanze.",
+		"avanza tra le radici contorte, la guardia alta, mentre la foresta gocciola verde da ogni lato.",
+	},
+	["fel.h.journey.w11.001"] = {
+		"salta giù dalla viverna a Bloodvenom Post e aspetta che la bestia sbuffi contro l'aria della foresta e scuota la testa.",
+		"atterra a Bloodvenom Post; la viverna stringe le ali contro l'aria pesante, come se preferisse non toccare niente di questo posto.",
+	},
+	["fel.h.landmark.w11.001"] = {
+		"si inoltra con cautela a {landmark}, dove cultisti incappucciati fanno la guardia fra pietre di elfi della notte in rovina e l'aria vibra appena.",
+		"arriva fra le rovine di Jaedenar; antichi archi elfici si chinano sugli stendardi del culto, e le candele non sembrano mai consumarsi.",
+	},
+	["fel.h.lowhp.w11.001"] = {
+		"Non cadere nel muschio. È più morbido di quanto sembri, e non ti lascia andare.",
+		"Su. Se ti sdrai qui, la foresta comincia a crescerti sopra.",
+	},
+	["fel.h.muse.w11.001"] = {
+		"Nemmeno i Warsong vengono a tagliare legna qui. Quando un orco con l'ascia rifiuta legname gratis, c'è qualcosa che non va per niente.",
+		"Tutti questi alberi e nemmeno una squadra di boscaioli. Alla fine anche l'Orda ha i suoi principi.",
+	},
+	["fel.h.muse.w11.002"] = {
+		"Niente di quel che cresce, nuota o corre in questa foresta finisce nella mia pentola. Razioni secche finché durano, e stanno per finire.",
+		"A Felwood la fame è una cattiva consigliera. Ogni bacca sembra matura, e ognuna mente.",
+		"Ancora pane da viaggio. Darei parecchio per un semplice arrosto alla Crossroads, ma qui non c'è niente che si possa cucinare.",
+	},
+	["fel.h.muse.w11.003"] = {
+		"si sfila dallo stivale una spina lunga come un dito, la annusa e la butta via in fretta.",
+		"si scrolla dalle spalle una nuvola di spore malsane e continua a camminare, respirando a denti stretti.",
+		"si ferma a stringere una cinghia con la schiena contro un tronco largo e gli occhi sul sottobosco.",
+	},
+	["fel.h.muse.w11.004"] = {
+		"Gli antichi e i treant che proteggevano questa foresta ci camminano ancora, ma si sono guastati. Un guardiano che ha dimenticato cosa custodisce è la cosa peggiore da incontrare.",
+		"Da qualche parte in questi boschi si muovono ancora i vecchi protettori della foresta, con la corteccia spaccata che cola verde. Adesso custodiscono la malattia, con la stessa dedizione con cui un tempo custodivano gli alberi.",
+		"Oggi ho visto un treant arrancare fra i tronchi. Un tempo si sarebbe preso cura di questo posto. Ora sa soltanto che gli estranei vanno schiacciati.",
+	},
+	["fel.h.muse.w11.005"] = {
+		"Un tempo l'Orda era lo strumento della Legione. Felwood mostra cosa fa la Legione a una terra quando gli strumenti sono consumati.",
+		"I demoni volevano questo mondo per sé, e per prenderselo si sono serviti dell'Orda. Ogni albero marcio qui ricorda cosa saremmo diventati tutti.",
+	},
+	["fel.h.npc_meet.w11.001"] = {
+		"Oggi è uscito qualcosa dagli alberi? ...Già. Certo che sì.",
+		"Turno lungo. Almeno nessuno ti obbliga a bere l'acqua.",
+	},
+	["fel.h.quest_complete.w11.001"] = {
+		"prende la ricompensa e la annusa, come a Felwood tutti imparano ad annusare ogni cosa.",
+		"intasca il compenso e si pulisce le dita sui calzoni, già ben oltre ogni speranza.",
+	},
+	["fel.h.quest_complete.w11.002"] = {
+		"Consegnato. Ancora una settimana qui e smetterò di sobbalzare davanti a ogni cosa verde. Non ancora, però.",
+		"Un'altra chiusa. Felwood mi sta insegnando la pazienza, soprattutto non dandomi mai un motivo per rilassarmi.",
+	},
+	["fel.h.quest_progress.w11.001"] = {
+		"Non ho finito. Il resto Felwood se lo tiene, per adesso.",
+		"A metà. L'altra metà sta sotto un albero sotto cui preferirei non guardare.",
+	},
+	["fel.h.subzone_enter.w11.001"] = {
+		"entra a Jadefire Glen, dove fiamme verdi tremolano basse fra gli alberi e da qualche parte, fuori vista, un satiro ride.",
+		"si fa strada dentro {subzone}; il sottobosco è bruciato a chiazze di uno strano verde, e impronte di zoccoli fessi attraversano la cenere.",
+	},
+	["fel.h.victory.w11.001"] = {
+		"A terra. Qualcuno dica alle viverne che possono atterrare.",
+		"Una cosa in meno fra l'avamposto e la strada per il sud.",
+	},
+	["fel.h.victory.w11.002"] = {
+		"Finita. Adesso controllo negli stivali che non ci sia niente che si muove. Due volte.",
+		"È morto. Ora un po' d'acqua pulita per sciacquarmi... giusto. Non ce n'è.",
+	},
+	["fel.h.weather_change.w11.001"] = {
+		"Finalmente piove. Ma la pioggia non lava Felwood: porta solo la malattia giù dalle foglie fino al fango.",
+		"La pioggia scende attraverso le fronde già tinta, come se i rami si fossero strizzati al suo passaggio.",
+	},
 ]==])

@@ -333,4 +333,138 @@ AU:RegisterRegionalTexts("silithus", "itIT", "kalimdor_silithus", [==[
 		"volta le spalle al vento che si alza, mentre l'aria si riempie di sabbia pungente e gli alveari svaniscono nella foschia.",
 		"socchiude gli occhi contro la polvere sferzante, e ogni lembo di pelle scoperta viene raschiato a vivo.",
 	},
+	["sil.h.attack.w11.001"] = {
+		"Da Cenarion Hold, con i saluti dell'Orda!",
+		"Il deserto ha fame. Andrai bene tu!",
+	},
+	["sil.h.battle.w11.001"] = {
+		"Avanti, allora. La sabbia scotta già; facciamola scottare di più.",
+		"Uscire dalle dune per questo? Pessimo affare.",
+		"Niente riparo, niente scampo, né per te né per me. Bene. Chiudiamola qui, allo scoperto.",
+	},
+	["sil.h.battle.w11.002"] = {
+		"Twilight's Hammer! L'Orda vi ha cacciati via tanto tempo fa.",
+		"Gli avanzi di Cho'gall. Vediamo se combatti meglio di come canti.",
+		"Il tuo clan un tempo marciava con l'Orda. Oggi la ritrova, e la rimpatriata non gli piacerà.",
+	},
+	["sil.h.battle.w11.003"] = {
+		"Prima le zampe. Un silithid che non sta in piedi non può sciamare.",
+		"Guarda le mandibole, non le zampe. Quando si spalancano, colpisci subito lì sotto.",
+	},
+	["sil.h.battle.w11.004"] = {
+		"si mette il vento alle spalle e lascia che la sabbia voli in faccia al nemico.",
+		"scivola di lato lungo la duna finché ha il vento alle spalle, e ora la sabbia punge gli occhi del nemico, non i suoi.",
+	},
+	["sil.h.journey.w11.001"] = {
+		"Su, via da Cenarion Hold. Il wind rider sale deciso, come se il caldo lo inseguisse, e gli alveari si riducono a verruche scure sulla sabbia.",
+		"Finalmente in aria. Sotto, Silithus diventa una mappa gialla e nera, e quassù il ronzio degli alveari non mi raggiunge.",
+		"Il wind rider punta a nord a gran colpi d'ala, e io lo lascio fare. Voltandomi, lo Scarab Wall è l'ultima cosa a sparire nella foschia.",
+	},
+	["sil.h.landmark.w11.001"] = {
+		"Cenarion Hold. Wind rider e ippogrifi si appollaiano a pochi metri di distanza e fingono di non vedersi. I loro cavalieri fanno più o meno lo stesso.",
+		"{landmark}. Da una parte i wind rider tengono il muso, dall'altra gli ippogrifi si lisciano le penne, e i druidi mantengono la pace fra loro, e fra noi.",
+	},
+	["sil.h.lowhp.w11.001"] = {
+		"Le mie ossa in questa sabbia non ci restano!",
+		"Non per gli scorpidi. Non oggi. In piedi!",
+	},
+	["sil.h.lowhp.w11.002"] = {
+		"Il wind rider è lontano. La lotta è qui. Resta nella lotta.",
+		"Tutto ondeggia. Restringi il campo: questo nemico, questo respiro, questo passo.",
+	},
+	["sil.h.muse.w11.001"] = {
+		"Un tempo il Twilight's Hammer era uno dei clan degli orchi, nelle vecchie guerre, prima di marcire in una setta. A vedere le loro tuniche quaggiù, capisco perché l'Orda quel nome lo pronuncia di rado.",
+		"Il clan di Cho'gall marciava con la vecchia Orda, e guarda com'è finito: pazzi in tunica che aspettano nella sabbia che il mondo si spacchi. Non tutti i clan hanno ritrovato la strada.",
+		"Il Twilight's Hammer nacque come un clan qualunque, con il suo stendardo. Oggi accoglie chiunque voglia il mondo in pezzi, e l'Orda quel capitolo della sua storia non lo racconta volentieri.",
+	},
+	["sil.h.muse.w11.002"] = {
+		"Uno sciamano di passaggio alla Hold diceva che qui la terra risponde piano, come una voce rimasta roca a forza di gridare. Il vento invece risponde subito, ed è furioso.",
+		"Gli sciamani che passano dalla Hold dicono che gli spiriti di questa terra non ne possono più di farsi trascinare fuori dalla setta. Ci credo. Il vento frusta chiunque gli capiti più vicino.",
+	},
+	["sil.h.muse.w11.003"] = {
+		"Mi lamentavo del caldo di Orgrimmar. Orgrimmar, ritiro tutto. Eri una brezza fresca.",
+		"Durotar è secco. Le Barrens sono secche. Silithus è quello che il secco sogna di diventare da grande.",
+	},
+	["sil.h.muse.w11.004"] = {
+		"A Hyjal l'Orda e gli elfi della notte difesero la stessa montagna, perché l'alternativa era la fine di tutto. Guarda quel muro abbastanza a lungo e cominci a chiederti se si arriverà di nuovo a tanto.",
+		"Chi ha combattuto a Hyjal racconta che una volta Orda e Alleanza stettero fianco a fianco, quando in palio c'era il mondo intero. Se quelle porte si apriranno, qualcuno dovrà ricordarsi come si fa.",
+		"La Terza Guerra finì con vecchi nemici spalla a spalla sotto l'Albero del Mondo. Silithus ha la stessa aria: una battaglia troppo grande per un solo stendardo.",
+	},
+	["sil.h.muse.w11.005"] = {
+		"srotola la fascia dall'impugnatura dell'arma, ne scuote fuori una piccola duna e la riavvolge più stretta.",
+		"passa il pollice lungo ogni fibbia e ogni cinghia, raschiando via la sabbia prima che si mangi il cuoio.",
+		"si strofina gli occhi, sbatte forte le palpebre e torna a scrutare le dune fra le ciglia incrostate di polvere.",
+	},
+	["sil.h.muse.w11.006"] = {
+		"si ferma a guardare uno scorpide che si trascina su una duna, la coda alzata come un punto di domanda, e lo lascia andare per la sua strada.",
+		"si immobilizza mentre la sabbia a pochi passi trema e poi si assesta, e da quel punto si tiene ben alla larga.",
+	},
+	["sil.h.muse.w11.007"] = {
+		"Non tutti i silithid qui fuori combattono. Alcuni portano e basta: sabbia, avanzi, cose che preferisco non nominare, tutto giù negli alveari. Qualunque cosa viva laggiù, qualcuno la sta nutrendo.",
+		"Guarda quelli piccoli. Trascinano e trascinano verso i cumuli, e non si fermano mai. Là sotto qualcosa ingrassa con tutto quel lavoro.",
+	},
+	["sil.h.muse.w11.008"] = {
+		"Il vento sposta una duna e lascia spuntare una curva di chitina, sbiancata ed enorme. Mille anni, forse. La Guerra delle Sabbie Mobili non è sepolta così a fondo come si crede.",
+		"Qui la sabbia restituisce le cose: una punta di lancia arrugginita, un guscio spaccato, un osso troppo lungo per qualunque creatura viva oggi. La vecchia guerra ha lasciato i suoi caduti dove sono rimasti.",
+	},
+	["sil.h.muse.w11.009"] = {
+		"Silithus sembra lontana da tutto, ma non lo è. A nord ci sono Feralas, poi Thousand Needles, poi le Barrens e Mulgore. Se lo sciame si metterà in marcia, marcerà verso le case dell'Orda.",
+		"A Orgrimmar c'è chi ne parla come del deserto di qualcun altro. Ma sta sullo stesso continente di Orgrimmar. Ogni alveare qui è una porta che si apre verso nord.",
+	},
+	["sil.h.muse.w11.010"] = {
+		"Oltre l'ultimo accampamento non c'è altro che il fruscio della sabbia che scivola giù da una duna. Mi sono {g:sentito|sentita} più {g:solo|sola} in una città affollata, e ho avuto più paura in posti più silenziosi.",
+		"Niente voci, niente uccelli, niente acqua. Solo la sabbia che scorre, e io. Silithus è un buon posto per scoprire cosa pensi quando nessuno ti ascolta.",
+	},
+	["sil.h.npc_meet.w11.001"] = {
+		"L'oste versa a Orda e Alleanza dalla stessa brocca. Io bevo, e non chiedo chi abbia toccato la tazza prima di me.",
+		"Un letto dentro mura di druidi e una brocca d'acqua che non è calda. Quaggiù l'oste è la cosa più simile a un amico che le due fazioni abbiano in comune.",
+	},
+	["sil.h.npc_meet.w11.002"] = {
+		"Un altro lavoro nella sabbia? Dimmi dove, e quanto è lontano dall'acqua.",
+		"Fammi indovinare: qualcosa vicino agli alveari. È sempre vicino agli alveari.",
+	},
+	["sil.h.quest_complete.w11.001"] = {
+		"Fatto. Se qualcuno mi cerca, sono nell'unico angolo d'ombra della Hold.",
+		"Finito. Pagatemi in acqua: le monete pesano uguale e la sete non la tolgono.",
+	},
+	["sil.h.quest_complete.w11.002"] = {
+		"Fatto. Le notizie viaggiano dalla Hold a Thunder Bluff lungo le strade dei druidi. Che dicano che ha aiutato una mano dell'Orda.",
+		"Finito. Il Circle tiene i suoi conti, e i tauren che ne fanno parte si ricorderanno quale parte ha dato una mano.",
+		"Sistemato. Un druido lo mette per iscritto, e un giorno a Mulgore si saprà che nel deserto l'Orda si è resa utile.",
+	},
+	["sil.h.quest_complete.w11.003"] = {
+		"ripone la ricompensa e riannoda la stoffa alla gola, gli occhi già sulle dune.",
+		"accetta il compenso con un breve cenno, poi resta un momento immobile, lasciando che la sabbia scivoli via dai capelli.",
+	},
+	["sil.h.quest_progress.w11.001"] = {
+		"C'è tutto. Torno alla Hold prima che il deserto decida di riprenderselo.",
+		"Tutto raccolto. Lo zaino pesa di più, e anch'io, con la sabbia in ogni piega dei vestiti.",
+	},
+	["sil.h.subzone_enter.w11.001"] = {
+		"raggiunge {subzone} e si ferma a leggere la sabbia: tracce, tane, la debole increspatura di qualcosa che si muove sotto.",
+		"varca il limite di {subzone} col vento alle spalle e rallenta, in ascolto del terreno.",
+		"mette piede nelle sabbie di {subzone}, lisce e senza un'impronta, e non se ne fida per niente.",
+	},
+	["sil.h.victory.w11.001"] = {
+		"Questo è per gli scorpidi. A Silithus sono gli unici che mangiano bene.",
+		"Ora è la cena di qualcuno. Il deserto non apparecchia mai, ma non sparecchia nemmeno.",
+		"Giù. Fra poco qualcosa salirà dalla sabbia a prenderselo.",
+	},
+	["sil.h.victory.w11.002"] = {
+		"Uno in meno che possa risalire verso Feralas e le strade dell'Orda.",
+		"Questo l'erba di Mulgore non la vedrà mai. Poca consolazione, ma me la prendo.",
+	},
+	["sil.h.victory.w11.003"] = {
+		"pulisce l'arma strofinandola con una manciata di sabbia, l'unica cosa che a Silithus non manca mai.",
+		"strofina l'arma con sabbia asciutta finché luccica, poi guarda gli alveari.",
+	},
+	["sil.h.victory.w11.004"] = {
+		"Una voce in meno nel coro della setta. Dovranno trovarsi un'altra gola.",
+		"Un'altra tunica nella sabbia. Al Twilight's Hammer gli sciocchi non mancano mai, ma oggi ne ha uno di meno.",
+	},
+	["sil.h.weather_change.w11.001"] = {
+		"L'orizzonte si fa marrone e si avvicina. Tempesta di sabbia. Stoffa sul viso, testa bassa, e contare i passi.",
+		"Eccola che arriva: il vento solleva mezzo deserto e lo scaglia di traverso. Là dentro un silithid potrebbe arrivarmi addosso senza farsi vedere. E io a lui.",
+		"L'aria si fa densa e granulosa, e la duna più vicina scompare. Punge tutto; non resta che piegarsi contro il vento e aspettare.",
+	},
 ]==])

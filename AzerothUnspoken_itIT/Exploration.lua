@@ -5969,4 +5969,743 @@ NS:AddTexts("itIT", {
 		"{subzone}, a lampi. Non è il posto al suo meglio, e nemmeno io al mio.",
 		"{subzone}, tra un tuono e l'altro. Guarderò meglio quando il cielo smetterà di urlare.",
 	},
+	["muse.w11.body.006"] = {
+		"preme il pollice su un punto dolente della spalla e fa una smorfia: eccolo, trovato.",
+		"tasta con due dita prudenti un punto sensibile lungo le costole, poi decide di non volerne sapere di più.",
+	},
+	["muse.w11.body.014"] = {
+		"fruga nello zaino in cerca di qualcosa da mangiare e ne tira fuori una mela schiacciata, che andrà benissimo.",
+		"rovista nelle borse in cerca di cibo, trova sul fondo un frutto appiattito e lo accoglie con un'alzata di spalle.",
+	},
+	["muse.w11.body.019"] = {
+		"si massaggia la nuca, lavorando su una rigidità che non vuole saperne di andarsene.",
+		"piega piano la testa da un lato e dall'altro, a caccia di un torcicollo.",
+	},
+	["muse.w11.body.028"] = {
+		"tira una cinghia che {g:gli|le} morde la spalla e la allenta di un foro, con un grugnito di sollievo.",
+		"allenta di un buco una fibbia sul fianco, e si vede che la perdona.",
+	},
+	["muse.w11.body.041"] = {
+		"risistema con grande cura il contenuto delle borse, senza guadagnare un dito di spazio.",
+		"sposta roba da una borsa all'altra, come se il problema fosse dove stanno e non quante sono.",
+	},
+	["muse.w11.body.045"] = {
+		"esamina un graffio fresco sull'equipaggiamento con aria acida, già intento a calcolare quanto costerà.",
+		"passa il pollice su un nuovo graffio dell'equipaggiamento e sospira come davanti a un debito.",
+		"scopre un'ammaccatura nuova sull'equipaggiamento, aggrotta la fronte e la aggiunge a una lunga lista mentale.",
+	},
+	["muse.w11.body.051"] = {
+		"solleva verso la luce un oggetto da poco, valuta se valga la pena portarselo dietro e lo tiene per puro ottimismo.",
+		"rigira in mano un ninnolo senza valore, sospira e lo ricaccia in una borsa già stracolma.",
+		"medita di buttare qualcosa, esita e lo rimette nella borsa con aria sconfitta.",
+	},
+	["muse.w11.body.058"] = {
+		"sbatte forte le palpebre un paio di volte, come per scrollarsi la stanchezza dagli occhi.",
+		"si preme per un momento i palmi sugli occhi, poi riprende.",
+		"strizza gli occhi, li spalanca e cerca di sembrare più {g:sveglio|sveglia} di quanto sia.",
+	},
+	["muse.w11.body.067"] = {
+		"si siede di peso, mangia in fretta qualcosa dallo zaino ed è di nuovo in piedi prima che cada l'ultima briciola.",
+		"si lascia cadere sul primo posto libero, ingolla un boccone di qualcosa preso dalla borsa e si rialza subito.",
+	},
+	["muse.w11.body.071"] = {
+		"si affloscia per un momento come un sacco posato a terra, poi si raccoglie di nuovo.",
+		"si incurva un poco dove si trova, poi se ne accorge e si raddrizza, come se qualcuno l'avesse {g:chiamato|chiamata} per nome.",
+	},
+	["muse.w11.body.082"] = {
+		"srotola una benda macchiata, studia con distacco quel che c'è sotto e ne avvolge una pulita.",
+		"annoda una striscia di stoffa pulita attorno all'avambraccio, stringendo il nodo con i denti.",
+		"controlla una fasciatura, decide che reggerà ancora un po' e rimbocca il lembo libero.",
+	},
+	["muse.w11.body.088"] = {
+		"serra la mascella, ignora quello che fa male e raddrizza le spalle.",
+		"si raddrizza con una piccola smorfia, come se rifiutasse un'offerta dei propri dolori.",
+		"scioglie la rigidità del collo, pianta bene i piedi a terra ed è {g:pronto|pronta}.",
+	},
+	["muse.w11.body.096"] = {
+		"rifà un nodo che reggeva benissimo, giusto per sicurezza.",
+		"raddoppia un nodo sullo zaino, poi lo raddoppia ancora, e finalmente ha l'aria soddisfatta.",
+		"scioglie un laccio e lo riallaccia più stretto, con la cura di chi si aspetta che prima o poi ceda.",
+	},
+	["muse.w11.body.105"] = {
+		"si massaggia un polpaccio con entrambe le mani, piano, sciogliendo un nodo.",
+		"siede con i gomiti sulle ginocchia e le mani a penzoloni, aspettando che le gambe smettano di ronzare.",
+	},
+	["muse.w11.body.112"] = {
+		"morde una moneta per saggiarla, come fanno i mercanti, e non ne sa più di prima.",
+		"fa scorrere una moneta sulle nocche, la lascia cadere e finge che fosse quello il trucco.",
+	},
+	["muse.w11.body.119"] = {
+		"stappa una fiaschetta, ne annusa il contenuto con profondo sospetto e beve lo stesso.",
+		"beve un lungo sorso da una fiaschetta, fa una smorfia e riavvita il tappo con un rispetto cupo.",
+	},
+	["muse.w11.body.124"] = {
+		"lucida una fibbia graffiata contro la manica finché non restituisce un riflesso opaco.",
+		"passa uno straccio sull'equipaggiamento con colpi lenti e regolari, senza fretta, come un artigiano.",
+	},
+	["muse.w11.body.131"] = {
+		"risparmia una gamba per qualche passo, poi si ostina a smettere di risparmiarla.",
+		"smaltisce camminando una fitta al ginocchio, rifiutandosi di concederle la soddisfazione di zoppicare.",
+	},
+	["muse.w11.body.137"] = {
+		"si dà una pacca sullo stomaco, ascolta e sembra ricevere brutte notizie.",
+		"guarda nella sacca dei viveri, poi in alto, poi di nuovo dentro, come sperando che si riempia per pietà.",
+		"fruga in cerca di uno spuntino, trova solo briciole e le mangia con dignità.",
+	},
+	["muse.w11.body.141"] = {
+		"appoggia un piede sulla prima cosa a portata e riallaccia lo stivale sopra una caviglia dolorante.",
+		"allenta uno stivale che stringeva, muove il piede dentro e lo richiude di un buco più largo.",
+	},
+	["muse.w11.history.011"] = {
+		"disegna qualcosa nell'aria con un dito, come uno stratega che ripassa una battaglia finita da tempo, poi lascia ricadere la mano.",
+		"muove una mano nell'aria come per disporre eserciti su un tavolo, e si ferma, come chi ricorda come andò a finire.",
+	},
+	["muse.w11.history.019"] = {
+		"china il capo per un momento, un piccolo inchino a nessuno in particolare, di quelli che si rivolgono ai morti delle vecchie guerre.",
+		"si ferma e abbassa appena la testa, come se in qualche luogo stessero leggendo ad alta voce un lungo elenco di caduti.",
+	},
+	["muse.w11.history.033"] = {
+		"studia per un po' il filo consumato della propria arma, come chiedendosi quante vecchie guerre abbia visto lo stesso modello.",
+		"rigira l'arma e la guarda per quello che è: un attrezzo semplice, come le migliaia lasciate ad arrugginire sui vecchi campi di battaglia.",
+	},
+	["muse.w11.history.044"] = {
+		"lancia un'occhiata verso nord senza volerlo davvero, come fanno in tanti dagli anni della pestilenza.",
+		"guarda per un attimo verso nord, come fa la gente quando nei discorsi salta fuori il Flagello, poi distoglie lo sguardo.",
+	},
+	["muse.w11.history.053"] = {
+		"si raddrizza un poco, come si fa quando salta fuori il nome di un vecchio eroe, poi ha l'aria vagamente imbarazzata.",
+		"raddrizza le spalle come sotto lo sguardo di qualche famoso capitano morto da tempo, poi le lascia riposare.",
+	},
+	["muse.w11.history.059"] = {
+		"posa per un momento il palmo a terra, come fa certa gente sui vecchi campi di battaglia, e poi si rialza.",
+		"si accovaccia a sfiorare il suolo con due dita, come per salutare chiunque possa giacerci sotto, e si raddrizza.",
+	},
+	["muse.w11.history.067"] = {
+		"lascia cadere le spalle e scuote la testa, come chi soppesa tutte le vecchie guerre insieme e trova la somma troppo pesante.",
+		"scuote la testa a nessuno in particolare, con la pazienza di chi ascolta una storia sentita troppe volte e mai digerita.",
+	},
+	["muse.w11.history.075"] = {
+		"si porta una mano alla fronte in un breve saluto a nessuno, di quelli che si rivolgono ai vecchi stendardi che passano.",
+		"rivolge all'aria vuota un saluto piccolo e rigido, e poi sembra lievemente {g:sorpreso|sorpresa} di se {g:stesso|stessa}.",
+	},
+	["muse.w11.history.084"] = {
+		"serra la mascella, con la faccia che fa la gente quando il discorso cade sugli anni della pestilenza.",
+		"si fa {g:silenzioso|silenziosa} e duro nello sguardo, come chi ricorda certe notizie arrivate un tempo dal nord.",
+	},
+	["muse.w11.history.091"] = {
+		"resta a fissare la lontananza, come se cercasse di immaginare la terra com'era prima che il mondo si spaccasse.",
+		"studia l'orizzonte lontano aggrottando la fronte, come chi lo confronta con una mappa molto più vecchia.",
+		"resta {g:fermo|ferma} per un po', gli occhi lontanissimi, come chi cerca di vedere com'erano le cose molto prima che qualcuno tenesse il conto.",
+	},
+	["muse.w11.history.099"] = {
+		"muove le labbra senza voce, forse un nome, come per saggiare se abbia ancora un peso.",
+		"mormora qualcosa che somiglia a un nome, piano piano, come si nominano quelli che non ci sono più da tanto.",
+		"tace un momento, le labbra che si muovono su una parola che non esce.",
+	},
+	["muse.w11.history.107"] = {
+		"stringe una cinghia con uno strattone deciso, come chi per oggi ne ha abbastanza delle vecchie guerre e vuole passare a quel che viene dopo.",
+		"si spolvera le mani con energia, come chi chiude un lungo libro di storia e lo rimette sullo scaffale.",
+		"fa un breve cenno col capo, come per dare ragione a qualche vecchio cronista, e passa oltre.",
+	},
+	["muse.w11.history.111"] = {
+		"sbuffa piano, come chi sente un racconto eroico da cui hanno tagliato tutte le parti noiose.",
+		"alza appena gli occhi al cielo, come davanti a qualche vecchia leggenda diventata troppo grandiosa a forza di raccontarla.",
+		"fa un piccolo sorriso asciutto, come chi ascolta qualcuno chiamare gloria quello che fu soprattutto fango.",
+	},
+	["muse.w11.history.112"] = {
+		"solleva un poco il mento, come fa chi decide di mettersi all'altezza di una vecchia storia.",
+		"si pianta meglio sulle gambe, come se una vecchia storia {g:gli|le} avesse appena posto una domanda che merita risposta.",
+		"annuisce piano tra sé, come chi ha deciso che un vecchio esempio vale la pena di seguirlo.",
+	},
+	["muse.w11.history.113"] = {
+		"abbassa lo sguardo sul terreno come chiedendosi cosa ci sia sepolto sotto, e mette i piedi con un po' più di cura.",
+		"struscia il tallone a terra e guarda giù, come se si aspettasse una risposta da qualche vecchio osso.",
+		"per un po' cammina con attenzione, come se tutto quel che calpesta potesse essere la storia di qualcuno.",
+	},
+	["muse.w11.history.114"] = {
+		"resta un momento col mento in mano, con tutta l'aria di {g:uno studente|una studentessa} {g:bloccato|bloccata} su un capitolo difficile di storia.",
+		"si pulisce piano le mani, come uno studioso che ha appena posato qualcosa di molto vecchio e molto fragile.",
+		"aggrotta la fronte, le labbra strette, come chi cerca di mettere in ordine tre vecchie guerre.",
+	},
+	["muse.w11.history.115"] = {
+		"resta così immobile che per un po' potrebbe passare per la statua di un'epoca più antica.",
+		"rimane in un lungo silenzio, paziente come un vecchio monumento che nessuno visita più.",
+		"osserva un silenzio lungo, di quelli che di solito si riservano alle rovine.",
+	},
+	["muse.w11.history.129"] = {
+		"si massaggia la nuca, come chi si è visto consegnare un libro di storia spessissimo da leggere entro domani.",
+		"fa una smorfia a nessuno, la smorfia di un allievo a cui hanno appena detto quante guerre deve imparare a memoria.",
+		"si gratta piano la testa, con l'aria di chi ha perso il filo delle dinastie reali tre re fa.",
+	},
+	["muse.w11.history.130"] = {
+		"si ferma e guarda in basso per un momento, come si guarda una pietra il cui nome si è consumato.",
+		"indugia sul posto un po' più del necessario, con l'aria paziente di chi rende omaggi che nessuno ha chiesto.",
+	},
+	["muse.w11.memory.008"] = {
+		"si ferma di colpo, come se una parola mezza dimenticata {g:gli|le} avesse battuto sulla spalla, poi scuote la testa e riprende.",
+		"apre la bocca per dire un nome, poi la richiude: non ricorda più bene come finisce.",
+	},
+	["muse.w11.memory.017"] = {
+		"si gira per dire qualcosa a qualcuno che non c'è, e lascia le parole dove sono.",
+		"si volta a metà, come per confidare un pensiero a una persona che non {g:gli|le} è accanto, e se lo tiene.",
+	},
+	["muse.w11.memory.025"] = {
+		"muove le labbra senza voce, come chi ripassa qualcosa per non perderlo.",
+		"ripete qualcosa a mezza voce tre volte, come chi fa un nodo a un pensiero.",
+	},
+	["muse.w11.memory.034"] = {
+		"si tocca una tasca dove ormai non tiene più niente, un'abitudine rimasta senza scopo.",
+		"cerca alla cintura qualcosa che non c'è, e non c'è da un pezzo, poi lascia ricadere la mano.",
+	},
+	["muse.w11.memory.045"] = {
+		"traccia una piccola forma sul palmo con un dito, la guarda un momento e chiude la mano sopra.",
+		"disegna qualcosa nell'aria con la punta di un dito, forse il profilo di una porta, poi lascia cadere la mano.",
+		"sorride a niente in particolare, il sorriso di chi si ricorda una battuta sentita molto lontano da qui.",
+	},
+	["muse.w11.memory.054"] = {
+		"si guarda le mani per un momento, come se sapessero qualcosa che {g:lui|lei} ha dimenticato.",
+		"aggrotta la fronte a vuoto, dietro a un pensiero che {g:gli|le} sfugge sempre di un passo.",
+		"si immobilizza, poi schiocca le dita, poi sospira: qualunque cosa fosse, è sparita di nuovo.",
+	},
+	["muse.w11.memory.062"] = {
+		"dispone le sue poche cose in fila ordinata, come chi rende suo un angolo per un po'.",
+		"liscia con una mano il punto dove sta per sedersi, un piccolo rito per farlo proprio.",
+		"si sistema con cura, come se quel posto fosse una stanza in cui tornare.",
+	},
+	["muse.w11.memory.069"] = {
+		"si ferma un momento con lo sguardo lontano di chi conta i giorni all'indietro.",
+		"tace per un po', gli occhi persi, le labbra che si muovono appena come leggendo un elenco di nomi.",
+		"lascia scivolare lo sguardo oltre tutto ciò che ha vicino, verso qualcosa che solo la memoria può mostrare.",
+	},
+	["muse.w11.memory.076"] = {
+		"rallenta per un passo, come davanti alla porta di una casa che un tempo voleva dire qualcosa.",
+		"esita a metà passo, come se qualcuno {g:lo|la} chiamasse con un vecchio nome, poi riprende a camminare.",
+		"sussulta a un piccolo rumore, aspettandosi per metà una voce che non può essere quella, e lascia passare il momento.",
+	},
+	["muse.w11.memory.087"] = {
+		"tira fuori dalla tasca un pezzetto di carta, lo rilegge due volte e lo rimette via senza cambiare espressione.",
+		"estrae qualcosa di piccolo e consunto, lo guarda come si consulta una mappa e lo rimette al suo posto.",
+		"rilegge un biglietto piegato che è stato evidentemente letto molte volte, poi lo ripiega lungo le stesse pieghe stanche.",
+	},
+	["muse.w11.memory.093"] = {
+		"se ne sta un po' col mento sul pugno, del tutto altrove.",
+		"posa il mento su una mano e guarda il nulla, come fa chi va a trovare le stanze che ha nella testa.",
+		"si siede un po' con i gomiti sulle ginocchia, disegnando cerchi distratti con il pollice, con la testa lontana chilometri.",
+	},
+	["muse.w11.memory.100"] = {
+		"dice a mezza voce una parola sola, forse un nome, e dopo non aggiunge altro.",
+		"mormora qualcosa che potrebbe essere un nome, poi serra le labbra come per tenersi dentro il resto.",
+	},
+	["muse.w11.memory.106"] = {
+		"si volta una volta sola, non a lungo, come chi controlla di aver chiuso bene una porta.",
+		"si raddrizza, come se posasse qualcosa di pesante che non teneva affatto in mano.",
+		"fa un piccolo cenno a nessuno, il cenno di chi accetta di lasciar andare qualcosa.",
+	},
+	["muse.w11.memory.112"] = {
+		"si ferma a guardare qualcosa di piccolo e comune, con l'attenzione morbida di chi ha appena ritrovato un ricordo.",
+		"raccoglie un piccolo oggetto qualunque, lo studia come se {g:gli|le} ricordasse qualcosa e lo rimette giù con cura.",
+	},
+	["muse.w11.memory.119"] = {
+		"resta un attimo a capo chino, per un motivo che nessuno saprebbe dire.",
+		"china il capo per un momento, un omaggio privato a qualcuno che non è presente.",
+	},
+	["muse.w11.memory.126"] = {
+		"si siede con i piedi raccolti, come si sta nella propria cucina, senza difese per un momento.",
+		"allenta una cinghia e si appoggia all'indietro, con la faccia, per un momento, di chi è a casa.",
+	},
+	["muse.w11.memory.129"] = {
+		"conta sottovoce sulle dita: non monete, stavolta, ma giorni.",
+		"tiene un conto sulle dita, lo perde, e sembra decidere che comunque è passato abbastanza tempo.",
+		"intravede il proprio riflesso in una fibbia lucida e lo studia, come per controllare chi c'è ancora lì dentro.",
+	},
+	["muse.w11.memory.130"] = {
+		"piega qualcosa con cura e se lo infila sotto i vestiti, vicino, come si tiene una cosa che non si può sostituire.",
+		"controlla, come per vecchia abitudine, che una certa tasca contenga ancora ciò che deve, e si distende.",
+		"posa per un momento la mano aperta su una tasca, come se bastasse sentire cosa c'è dentro.",
+	},
+	["muse.w11.people.007"] = {
+		"alza la mano in un piccolo saluto rivolto a nessuno in particolare, poi sembra vagamente in imbarazzo.",
+		"accenna un saluto con la mano, ci ripensa e finge di sistemare una cinghia.",
+	},
+	["muse.w11.people.018"] = {
+		"si volta come per dire qualcosa a qualcuno al suo fianco, poi richiude la bocca.",
+		"comincia a dire un pensiero ad alta voce, si ferma a metà e tiene per sé il resto.",
+	},
+	["muse.w11.people.026"] = {
+		"borbotta un prezzo a mezza voce, ci toglie un quarto e annuisce, come se un mercante avesse appena accettato.",
+		"prova a bassa voce una contrattazione, facendo entrambe le parti, e sembra perderla.",
+	},
+	["muse.w11.people.033"] = {
+		"mette una moneta in una tasca a parte, separata dalle altre, come fa chi tiene qualcosa da parte per chi ne avrà più bisogno.",
+		"separa un solo rame dagli altri, come se appartenesse già a qualcun altro.",
+	},
+	["muse.w11.people.040"] = {
+		"si massaggia la nuca come chi sta rivivendo parola per parola una conversazione imbarazzante.",
+		"fa una smorfia appena accennata, con l'aria di chi ricorda cosa ha detto invece di cosa intendeva dire.",
+	},
+	["muse.w11.people.046"] = {
+		"si scosta senza pensarci, lasciando posto a qualcuno che non c'è, e lascia che lo spazio resti vuoto.",
+		"lancia un'occhiata di lato, come chi si aspetta una faccia conosciuta, poi torna piano a guardare avanti.",
+	},
+	["muse.w11.people.050"] = {
+		"prova un sorriso cordiale, lo trova un po' rigido e ci lavora finché non calza.",
+		"prova un cenno educato del capo rivolto a nessuno, come per esercitarsi in vista del prossimo incontro.",
+	},
+	["muse.w11.people.056"] = {
+		"annuisce una volta, piano, come per dare ragione a qualcuno che non è lì a sentirlo.",
+		"fa un breve cenno col capo a una voce del ricordo, come per chiudere una vecchia discussione.",
+		"mormora «d'accordo» a nessuno, concedendo un punto segnato tanto tempo fa.",
+	},
+	["muse.w11.people.062"] = {
+		"si tasta in fretta la borsa, come fa chi ha appena sfiorato uno sconosciuto, e si rilassa solo un poco.",
+		"controlla che la borsa sia al suo posto, con il riflesso di chiunque sia passato per un mercato.",
+	},
+	["muse.w11.people.067"] = {
+		"sorride appena a una gentilezza ricordata, piccola e privata, e se la tiene per sé.",
+		"si addolcisce per un momento, come se {g:gli|le} fosse tornato in mente il buon gesto di uno sconosciuto.",
+	},
+	["muse.w11.people.073"] = {
+		"raddrizza le spalle come fa chi sta per entrare in una stanza piena di sconosciuti.",
+		"si drizza e compone il viso in un'espressione calma ed educata, pronta per chiunque arrivi.",
+	},
+	["muse.w11.people.078"] = {
+		"ridacchia per una battuta sentita tanto tempo fa, ancora divertente senza un vero motivo.",
+		"ride piano, una volta sola, per qualcosa che nessun altro ha sentito, poi scuote la testa.",
+	},
+	["muse.w11.people.089"] = {
+		"prova a mezza voce delle scuse, aggrotta la fronte per come suonano e ricomincia.",
+		"muove le labbra su qualche parola di scusa, poi la accorcia, come se la sincerità venisse meglio con meno parole.",
+	},
+	["muse.w11.people.096"] = {
+		"aggrotta la fronte su qualche vecchio torto, poi lo lascia andare con un piccolo scuotere di testa, senza annunciarlo a nessuno.",
+		"lascia cadere un rancore con una scrollata di spalle, come si posa qualcosa di pesante che non valeva la pena portare.",
+	},
+	["muse.w11.people.102"] = {
+		"ripete un nome a mezza voce un paio di volte, come fa chi ha intenzione di ricordarselo.",
+		"mormora tra sé un nome due volte, fissandolo come un nodo tirato stretto.",
+	},
+	["muse.w11.people.108"] = {
+		"imita a mezza voce il modo di parlare tronfio di qualcuno, poi ha l'aria di sentirsi un po' in colpa.",
+		"fa sottovoce un'imitazione poco caritatevole di qualche sconosciuto pieno di sé, e sorride suo malgrado.",
+	},
+	["muse.w11.people.117"] = {
+		"mette da parte il boccone migliore senza averlo davvero deciso, come se lo tenesse per qualcuno.",
+		"spezza un pezzo di qualcosa da mangiare e lo porge per riflesso, poi con un'alzata di spalle se lo mangia da sé.",
+	},
+	["muse.w11.people.123"] = {
+		"sistema l'equipaggiamento con una cura insolita, come se potesse guardare qualcuno il cui giudizio conta.",
+		"si scrolla di dosso la polvere peggiore, come fa chi sta per incontrare qualcuno a cui vuole fare buona impressione.",
+	},
+	["muse.w11.people.129"] = {
+		"borbotta qualche parola scelta su un certo tipo di persona, senza dire quale, e sembra {g:sollevato|sollevata}.",
+		"alza gli occhi al cielo, con grande scrupolo, al ricordo delle vanterie di qualcuno.",
+	},
+	["muse.w11.people.134"] = {
+		"serra la mascella come chi decide di essere {g:quello saldo|quella salda}, per chiunque ne abbia bisogno.",
+		"si raddrizza un poco, con l'aria di chi ha scelto di essere affidabile, oggi.",
+	},
+	["muse.w11.people.140"] = {
+		"si ferma a raccogliere qualcosa che qualcun altro ha perso, si guarda intorno cercando il proprietario e infine lo posa dove sia facile trovarlo.",
+		"sposta col piede un sasso fuori posto, una piccola cortesia per chiunque passi dopo.",
+	},
+	["muse.w11.people.145"] = {
+		"conta sulle dita i favori da restituire e quelli da riscuotere, e aggrotta la fronte davanti al saldo.",
+		"fa un conto a mezza voce, chi ha dato una mano e chi ne aspetta ancora una, e finisce le dita.",
+	},
+	["muse.w11.road.006"] = {
+		"traccia un percorso sul palmo con un dito, aggrotta la fronte e lo ripassa per un'altra via.",
+		"indica una direzione, poi un'altra, e alla fine torna alla prima con un cenno deciso del capo.",
+	},
+	["muse.w11.road.013"] = {
+		"spiega una mappa sgualcita, la gira dal verso giusto, poi dall'altro verso giusto.",
+		"studia una mappa a braccio teso, poi la avvicina, come se la distanza potesse cambiare la risposta.",
+		"ripiega una mappa lungo pieghe che chiaramente non vuole, e si arrende a metà.",
+	},
+	["muse.w11.road.022"] = {
+		"stringe i lacci di uno stivale, poi dell'altro, e batte un piede a terra per assestarli.",
+		"chiude un laccio con un doppio nodo, come si fa prima di una lunga camminata.",
+	},
+	["muse.w11.road.032"] = {
+		"guarda avanti a lungo, come se cercasse di vedere oltre la prossima svolta.",
+		"socchiude gli occhi verso la strada da fare, soppesando quanta ne resta.",
+	},
+	["muse.w11.road.040"] = {
+		"esita, gira a sinistra, torna indietro e prende a destra con grande dignità.",
+		"fa un lento giro su se {g:stesso|stessa} per orientarsi, poi finge che fosse questo il piano fin dall'inizio.",
+	},
+	["muse.w11.road.049"] = {
+		"allunga il collo per vedere meglio la strada davanti, poi torna giù con un piccolo grugnito.",
+		"scruta avanti come se la meta potesse lasciarsi convincere ad avvicinarsi un po'.",
+	},
+	["muse.w11.road.056"] = {
+		"fa qualche passo, si ferma, ne fa qualche altro, come per verificare che le gambe siano d'accordo col piano.",
+		"batte i piedi a terra un paio di volte, per svegliarli in vista del cammino.",
+	},
+	["muse.w11.road.064"] = {
+		"sistema lo zaino con un piccolo saltello, come fanno i viaggiatori prima di un lungo tratto.",
+		"si assesta lo zaino sulle spalle e parte senza voltarsi.",
+		"dà un ultimo strattone alle cinghie dello zaino e si volta verso la strada da fare.",
+	},
+	["muse.w11.road.072"] = {
+		"rallenta, si guarda intorno per orientarsi e fa un piccolo cenno soddisfatto.",
+		"si ferma a capire da che parte è cosa, muovendo le labbra senza suono.",
+	},
+	["muse.w11.road.080"] = {
+		"ripete a mezza voce una serie di indicazioni come una lezione imparata a memoria, e s'inceppa sull'ultima svolta.",
+		"borbotta «a sinistra, poi a sinistra, poi...» e si interrompe con un'aria profondamente sospettosa.",
+	},
+	["muse.w11.road.089"] = {
+		"si spazzola dalle maniche la polvere del cammino, senza grandi speranze che resti via.",
+		"batte gli stivali contro la prima cosa dura che trova per staccarne il fango secco, prima uno, poi l'altro.",
+		"si dà qualche pacca sui vestiti, solleva una nuvoletta di viaggio e lascia perdere.",
+	},
+	["muse.w11.road.097"] = {
+		"si ferma sul punto di partire, un piede già rivolto verso la strada da fare.",
+		"indugia ancora un momento, come per salutare in silenzio quel posto, poi riparte.",
+		"si guarda intorno ancora una volta prima di andare, come chi controlla una stanza per vedere se ha dimenticato qualcosa.",
+	},
+	["muse.w11.road.105"] = {
+		"guarda la strada davanti, poi gli stivali, come per chiedere loro se se la sentono.",
+		"rivolge ai piedi un'occhiata lunga e dubbiosa, e alla strada da fare una ancora più lunga.",
+	},
+	["muse.w11.road.114"] = {
+		"fa qualche passo lungo, poi qualcuno corto, cercando il ritmo del cammino.",
+		"prende un'andatura sciolta, le braccia che dondolano libere.",
+		"si assesta su un passo regolare e senza fretta, di quelli che divorano la distanza senza darlo a vedere.",
+	},
+	["muse.w11.road.122"] = {
+		"fa un cenno del capo verso la strada da fare, come per accordarsi con lei sui termini.",
+		"dà due colpetti allo zaino, un piccolo segnale privato che è ora di muoversi.",
+		"raddrizza le spalle e parte, come se varcasse una linea che vede solo {g:lui|lei}.",
+	},
+	["muse.w11.road.136"] = {
+		"alza una mano in un piccolo saluto al posto, anche se non c'è nessuno a vederlo.",
+		"rivolge al luogo un breve cenno di ringraziamento prima di ripartire, come fanno a volte i viaggiatori.",
+	},
+	["muse.w11.voices.025"] = {
+		"slaccia un borsello, ci sbircia dentro come aspettandosi una sorpresa, e lo richiude senza averne trovate.",
+		"apre un borsello, ne studia a lungo il contenuto e lo richiude con un piccolo cenno del capo.",
+	},
+	["muse.w11.voices.026"] = {
+		"guarda a sinistra, poi a destra, poi di nuovo a sinistra, come se il mondo potesse essersi spostato di nascosto.",
+		"lancia intorno un'occhiata vagamente sospettosa, come per controllare che tutto sia rimasto dov'era.",
+	},
+	["muse.w11.voices.027"] = {
+		"canticchia qualche battuta di niente in particolare, perde il filo e prosegue in un'altra tonalità.",
+		"canterella a bocca chiusa, sempre le stesse quattro note che girano in tondo.",
+		"attacca a canticchiare qualcosa, si ferma a pensare come continuava e ci rinuncia con un'alzata di spalle.",
+	},
+	["muse.w11.voices.028"] = {
+		"batte piano un piede, come chi aspetta qualcosa che è in ritardo.",
+		"scandisce un ritmo lento e spazientito con la punta di uno stivale.",
+	},
+	["muse.w11.voices.029"] = {
+		"divide le monete in piccole pile sul palmo, perde il conto alla terza e ricomincia da capo.",
+		"allinea qualche moneta in ordine di grandezza, ammira un attimo la disposizione e intasca tutto.",
+		"batte una moneta contro i denti, decide che il metallo è onesto e la fa sparire in tasca.",
+	},
+	["muse.w11.voices.030"] = {
+		"intreccia le dita e spinge le braccia in avanti, ben tese, finché le nocche non protestano.",
+		"si piega da un lato e poi dall'altro, a sciogliere la rigidità del busto.",
+	},
+	["muse.w11.voices.031"] = {
+		"stringe una cinghia di un buco, ci riflette su e la riallenta.",
+		"sistema qualcosa alla cintura, poi lo rimette esattamente com'era.",
+		"armeggia con una fibbia finché non sta proprio come deve, con l'aria di chi ha risolto un problema.",
+	},
+	["muse.w11.voices.032"] = {
+		"alza il mento e studia i dintorni come chi legge una pagina scritta male.",
+		"socchiude gli occhi verso la strada davanti, come se quella {g:gli|le} avesse mancato di rispetto.",
+	},
+	["muse.w11.voices.033"] = {
+		"emette un piccolo verso rassegnato, rivolto a nessuno in particolare.",
+		"schiocca la lingua, scuote la testa e lascia correre.",
+	},
+	["muse.w11.voices.034"] = {
+		"si accoscia per un momento, gli avambracci sulle ginocchia, a studiare il nulla.",
+		"si abbassa sui talloni e resta così per un po', con lo sguardo lontano.",
+	},
+	["muse.w11.voices.035"] = {
+		"pulisce l'arma con un angolo di stoffa, più per abitudine che per necessità.",
+		"gira e rigira l'arma, in cerca di qualche intacco o di una crepa.",
+	},
+	["muse.w11.voices.036"] = {
+		"sorride a qualcosa di suo, e se lo tiene.",
+		"ride brevemente di una battuta tutta sua, senza spiegarla a nessuno.",
+	},
+	["muse.w11.voices.037"] = {
+		"svuota una tasca nel palmo: un bottone, un sassolino, un pezzo di spago. Poi rimette tutto a posto.",
+		"trova in una tasca qualcosa di dimenticato, lo guarda con la fronte aggrottata e decide di tenerlo ancora un po'.",
+	},
+	["muse.w11.voices.038"] = {
+		"annuisce una volta, con decisione, come se una questione privata fosse appena stata risolta.",
+		"fa un piccolo cenno risoluto rivolto a nessuno, e raddrizza le spalle.",
+		"serra la mascella e annuisce tra sé, la faccenda ormai decisa.",
+	},
+	["muse.w11.voices.039"] = {
+		"si massaggia la nuca e fa ruotare piano la testa da una parte all'altra.",
+		"si strizza un nodo alla base del collo, con una smorfia che somiglia al sollievo.",
+	},
+	["muse.w11.voices.040"] = {
+		"si fa scrocchiare le nocche una per una, poi ha l'aria vagamente colpevole.",
+		"preme i palmi l'uno contro l'altro finché le nocche non schioccano, e il rumore sembra {g:piacergli|piacerle}.",
+	},
+	["muse.w11.voices.067"] = {
+		"posa lo zaino, ci fruga fino in fondo, e scopre che la cosa stava nella tasca di sopra fin dall'inizio.",
+		"rivolta lo zaino da cima a fondo cercando qualcosa, poi si accorge di averlo già in mano.",
+		"fruga nello zaino con crescente irritazione, borbotta qualcosa e rinuncia a mani vuote.",
+	},
+	["muse.w11.voices.068"] = {
+		"si raddrizza, si sistema i vestiti e cerca di avere l'aria di chi ha un piano.",
+		"si spazzola via di dosso lo sporco peggiore, e per il resto si arrende.",
+	},
+	["muse.w11.voices.069"] = {
+		"muove le labbra su qualche numero, la fronte aggrottata, come se un conto si rifiutasse di tornare.",
+		"fa un calcolo a mente, e il risultato non è per niente quello sperato.",
+	},
+	["muse.w11.voices.070"] = {
+		"borbotta tra sé un commento continuo, per niente lusinghiero.",
+		"brontola piano per qualcosa, a metà perde interesse e smette.",
+	},
+	["muse.w11.voices.071"] = {
+		"esamina un graffio sul dorso della mano, decide che sopravviverà e se ne dimentica.",
+		"gira verso la luce un graffio recente, lo giudica poca cosa e passa oltre.",
+	},
+	["muse.w11.voices.072"] = {
+		"fa roteare gli occhi con tanta forza che quasi si sente.",
+		"fa roteare gli occhi senza un motivo preciso, e sembra trarne sollievo.",
+	},
+	["muse.w11.voices.073"] = {
+		"strofina una macchia ostinata sull'equipaggiamento con il palmo, finché non si arrende.",
+		"sfrega una macchia sulla manica, la peggiora e smette.",
+	},
+	["muse.w11.voices.074"] = {
+		"si siede sui talloni e passa in rassegna l'equipaggiamento sparpagliato intorno, come un generale davanti a una mappa.",
+		"dispone l'equipaggiamento in una fila ordinata, lo esamina e lo rimette via tutto in un ordine diverso.",
+		"divide le sue cose in mucchietti che, a giudicare dall'aria, si chiamano utile, forse e perché.",
+	},
+	["muse.w11.voices.075"] = {
+		"lancia una rapida occhiata alle spalle, non vede niente e la trattiene un istante in più, per sicurezza.",
+		"controlla alle proprie spalle, due volte, per una ragione che non saprebbe spiegare.",
+	},
+	["muse.w11.voices.076"] = {
+		"alza il mento e fissa un punto lontano, con l'aria di chi non si lascia scomporre da niente.",
+		"si erge in tutta la sua altezza e compone il viso in qualcosa che somiglia alla sicurezza.",
+	},
+	["muse.w11.voices.077"] = {
+		"muove le labbra senza voce, come se provasse qualcosa che un giorno intende dire a qualcuno.",
+		"prova in silenzio una conversazione, le labbra che si muovono, e scuote la testa alle proprie battute.",
+	},
+	["muse.w11.voices.078"] = {
+		"scuote le braccia e saltella leggero sul posto, come chi sta per entrare in un'arena.",
+		"fa ruotare il collo, scioglie le mani e pianta bene i piedi.",
+	},
+	["muse.w11.voices.079"] = {
+		"incide un piccolo segno sull'equipaggiamento con l'unghia, come per tenere un conto tutto suo.",
+		"aggiunge un'altra tacca a un conto che sembra capire solo {g:lui|lei}.",
+	},
+	["muse.w11.voices.080"] = {
+		"fa una smorfia rivolta al nulla, poi la cancella prima che qualcuno la veda.",
+		"storce la bocca in una smorfia acida, e la lascia svanire piano.",
+	},
+	["muse.w11.voices.081"] = {
+		"si mordicchia l'interno della guancia, mentre rimugina su qualcosa.",
+		"aggrotta la fronte verso un punto indefinito, masticando un problema.",
+	},
+	["muse.w11.voices.082"] = {
+		"sposta il peso da un piede all'altro, con l'irrequietezza di chi non sa stare fermo.",
+		"non riesce a stare {g:fermo|ferma}: tormenta una cinghia, una tasca, di nuovo la cinghia.",
+	},
+	["muse.w11.voices.083"] = {
+		"china il capo per un momento, come per qualcuno che non c'è.",
+		"abbassa lo sguardo e resta un attimo in un silenzio che sembra appartenere a qualcun altro.",
+	},
+	["muse.w11.voices.084"] = {
+		"appoggia il mento sul pugno e fissa il vuoto, nel mezzo di una discussione con se {g:stesso|stessa}.",
+		"si regge il mento con una mano e lascia che i pensieri se ne vadano a spasso senza di {g:lui|lei}.",
+	},
+	["muse.w11.voices.115"] = {
+		"socchiude gli occhi verso qualcosa in lontananza, decide che non ne vale la pena e distoglie lo sguardo.",
+		"fissa con insistenza un punto lontano, poi alza le spalle, per niente {g:convinto|convinta}.",
+	},
+	["muse.w11.voices.116"] = {
+		"alza le spalle verso nessuno, come chi concede un punto in una discussione che nessun altro ha sentito.",
+		"fa spallucce, non dice niente e lascia andare qualunque cosa fosse.",
+	},
+	["muse.w11.voices.117"] = {
+		"si gratta la testa e aggrotta la fronte, come davanti a un indovinello.",
+		"si massaggia le tempie con due dita, piano, come chi ha un pensiero che non vuole posarsi.",
+	},
+	["muse.w11.voices.118"] = {
+		"intona a bocca chiusa qualcosa di basso e senza parole, che sale e scende come una culla che dondola.",
+		"emette un ronzio basso e stonato, il genere di suono che fa compagnia.",
+	},
+	["muse.w11.voices.119"] = {
+		"tiene in equilibrio una moneta sul dorso di un dito, e la guarda scivolare giù nel palmo.",
+		"fa girare una moneta sul palmo e la guarda rallentare fino a fermarsi.",
+	},
+	["muse.w11.voices.120"] = {
+		"sbatte piano le palpebre, come chi riemerge da un sogno a occhi aperti.",
+		"ha un piccolo sussulto, come destandosi da un pensiero, e si guarda intorno per vedere se qualcuno se n'è accorto.",
+	},
+	["muse.w11.voices.121"] = {
+		"si strofina forte gli occhi con il palmo delle mani, poi sbatte le palpebre finché il mondo non torna a fuoco.",
+		"si stringe la radice del naso e resta così per un lungo momento.",
+	},
+	["muse.w11.voices.122"] = {
+		"si siede di peso, i gomiti sulle ginocchia, e lascia ciondolare la testa per un po'.",
+		"si lascia cadere sulla prima superficie piana a portata e resta lì, le mani a penzoloni tra le ginocchia.",
+		"si mette giù con un grugnito e dà a ogni muscolo il permesso di fermarsi.",
+	},
+	["muse.w11.voices.123"] = {
+		"si avvolge una striscia di stoffa sulle nocche, stretta, e prova la presa.",
+		"riavvolge con calma la fascia consunta sull'impugnatura dell'arma.",
+	},
+	["muse.w11.voices.124"] = {
+		"dà una rapida occhiata all'equipaggiamento: c'è tutto, è tutto allacciato, è tutto lercio.",
+		"si dà un'occhiata veloce: è tutto al suo posto, anche se non proprio presentabile.",
+	},
+	["muse.w11.voices.125"] = {
+		"fa un sorriso storto, come davanti a uno scherzo che il mondo {g:gli|le} ha giocato.",
+		"fa una breve risata amara e scuote la testa.",
+	},
+	["muse.w11.voices.126"] = {
+		"fulmina con lo sguardo la strada davanti, come se fosse in debito con {g:lui|lei}.",
+		"rivolge al cammino davanti un'occhiata lunga e poco amichevole.",
+	},
+	["muse.w11.voices.127"] = {
+		"traccia nell'aria una linea lenta con un dito, seguendo un percorso che vede solo {g:lui|lei}.",
+		"indica vagamente una direzione, poi un'altra, poi abbassa la mano, senza aver deciso.",
+	},
+	["muse.w11.voices.128"] = {
+		"dà un calcio a un sassolino e lo segue per qualche passo, come in un gioco da soli.",
+		"spinge distrattamente un sassolino con la punta dello stivale.",
+	},
+	["muse.w11.voices.129"] = {
+		"annuisce lentamente, d'accordo con una voce interiore, poi scuote la testa, di nuovo in disaccordo.",
+		"discute qualcosa in silenzio, le sopracciglia che salgono e scendono, e sembra avere la peggio.",
+	},
+	["muse.w11.voices.130"] = {
+		"raddrizza una cinghia storta, poi quella accanto, poi tutte quante, in un improvviso accesso d'ordine.",
+		"si rassetta con gesti rapidi ed efficienti, come se fosse imminente un'ispezione.",
+	},
+	["muse.w11.voices.131"] = {
+		"resta immobile per un momento, la mascella contratta, aspettando che qualcosa dentro si posi.",
+		"chiude gli occhi per un istante, e li riapre su un viso più duro di prima.",
+	},
+	["muse.w11.voices.132"] = {
+		"sorride all'improvviso, largo e senza pentimenti, a qualcosa che nessun altro vede.",
+		"si apre in un ghigno, di quelli che promettono guai a qualcuno.",
+	},
+	["muse.w11.voices.133"] = {
+		"batte un piede, poi l'altro, per sistemarsi bene negli stivali.",
+		"dondola dal tallone alla punta e ritorno, assestando il peso.",
+	},
+	["muse.w11.voices.134"] = {
+		"alza un boccale immaginario verso nessuno, e brinda.",
+		"fa un piccolo brindisi a mano vuota, a chiunque stia guardando.",
+	},
+	["muse.w11.voices.141"] = {
+		"si ferma, come se un nome {g:gli|le} fosse arrivato sulla punta della lingua, e lo lascia andare senza dirlo.",
+		"fa per dire qualcosa, ci ripensa e richiude la bocca.",
+		"apre la bocca per parlare a qualcuno che non c'è, e la richiude con un piccolo sorriso storto.",
+	},
+	["muse.w11.voices.142"] = {
+		"stringe la presa sull'arma finché le nocche non sporgono.",
+		"aggiusta la presa sull'arma, finché non sta proprio come deve.",
+		"solleva l'arma, ne studia l'equilibrio con la fronte aggrottata e sposta la presa di un dito.",
+	},
+	["muse.w11.voices.143"] = {
+		"alza una mano in segno di saluto verso nessuno in particolare, così, per sicurezza.",
+		"fa un cenno cortese al nulla, come si fa con uno sconosciuto per strada.",
+		"accenna un saluto con la mano in nessuna direzione precisa, e sembra un po' in imbarazzo.",
+	},
+	["muse.w11.voices.144"] = {
+		"lascia cadere le spalle, poi le rialza a forza di volontà.",
+		"si affloscia per un attimo, poi si riprende e si raddrizza.",
+		"si incurva a vista d'occhio, se ne accorge e si corregge con uno sforzo.",
+	},
+	["muse.w11.wonder.007"] = {
+		"si sfrega i polpastrelli, come per saggiare nell'aria una carica leggerissima.",
+		"alza una mano come per sentire da che parte soffi qualcosa di invisibile, poi la lascia ricadere.",
+		"inclina la testa e aggrotta la fronte, come chi ha appena sentito una nota che nessuno ha suonato.",
+	},
+	["muse.w11.wonder.032"] = {
+		"si ferma per lasciare che uno scarabeo finisca la sua traversata, con grande pazienza.",
+		"segue i progressi di una bestiolina che striscia con aria sinceramente interessata, poi la scavalca con cura.",
+		"si accovaccia a guardare una creaturina che bada ai fatti suoi, e non sembra avere nessuna fretta di badare ai propri.",
+	},
+	["muse.w11.wonder.041"] = {
+		"si volta di scatto a guardare il nulla alle proprie spalle, poi ride piano di sé.",
+		"trasale a un rumore minuscolo, poi scuote la testa con un mezzo sorriso imbarazzato.",
+	},
+	["muse.w11.wonder.052"] = {
+		"raddrizza le spalle come chi sta per entrare in un'acqua gelida, e va avanti.",
+		"serra la mascella, fa un cenno secco a nessuno e avanza di un passo.",
+		"si ferma sull'orlo di qualcosa che vede solo {g:lui|lei}, poi prende la sua decisione.",
+	},
+	["muse.w11.wonder.067"] = {
+		"lancia una moneta, la riprende e la mette via senza guardare quale faccia sia uscita.",
+		"fa roteare una moneta sulle nocche, osservandola con l'aria di chi le sta facendo una domanda.",
+		"lancia una moneta, dà un'occhiata al risultato e alza le spalle, come se avesse solo confermato qualcosa.",
+	},
+	["muse.w11.wonder.068"] = {
+		"si ferma, le labbra che scorrono mute su poche parole, poi riprende come se niente fosse.",
+		"china il capo per il tempo di qualche parola sommessa, e lo rialza senza spiegazioni.",
+	},
+	["muse.w11.wonder.069"] = {
+		"si stacca un riccio di bardana dalla manica, ne studia gli uncini minuscoli con interesse e lo getta via con un colpetto.",
+		"tira fuori da una piega della stoffa un seme vagabondo, lo gira alla luce e invece di buttarlo se lo mette via.",
+	},
+	["muse.w11.wonder.070"] = {
+		"osserva un granello di polvere che gira piano nell'aria, come se fosse la cosa più interessante del mondo.",
+		"segue con gli occhi qualcosa di minuscolo che fluttua nell'aria, finché non sparisce.",
+	},
+	["muse.w11.wonder.082"] = {
+		"tende il palmo aperto come per invitare qualcosa di piccolo e alato a posarsi, e sorride quando non arriva niente.",
+		"porge all'aria una mano distesa, immobile, come chi aspetta che una creatura timida si avvicini.",
+		"tiene una mano aperta e ferma per un po', paziente come un ramo, poi la abbassa con una piccola alzata di spalle.",
+	},
+	["muse.w11.wonder.083"] = {
+		"studia a lungo le linee del proprio palmo, come se potessero essere cambiate.",
+		"gira la mano da una parte e dall'altra, leggendone le pieghe come se nel frattempo qualcuno ci avesse scritto sopra.",
+	},
+	["muse.w11.wonder.084"] = {
+		"bussa due volte sul proprio zaino, rapido e furtivo, come si fa per scaramanzia.",
+		"batte tre volte una nocca contro una fibbia, poi si guarda intorno sperando che nessuno abbia visto.",
+		"incrocia due dita dietro la schiena, con molta discrezione, come se la fortuna stesse guardando.",
+	},
+	["muse.w11.wonder.085"] = {
+		"alza gli occhi per un istante verso niente di preciso, con l'aria di chi fa una domanda.",
+		"solleva lo sguardo per un attimo, come per controllare se lassù qualcuno stia prestando attenzione.",
+	},
+	["muse.w11.wonder.086"] = {
+		"disegna nell'aria un piccolo cerchio con un dito, distrattamente, poi sembra accorgersene e si ferma.",
+		"traccia nell'aria una forma qualunque con la punta del dito, e la lascia incompiuta.",
+	},
+	["muse.w11.wonder.087"] = {
+		"si immobilizza, come se qualcuno avesse pronunciato il suo nome da molto lontano, poi scaccia la sensazione.",
+		"si blocca di colpo e volta la testa verso un suono che non c'è più.",
+		"resta immobile per mezzo istante, ascoltando il silenzio come se avesse appena detto qualcosa.",
+	},
+	["muse.w11.wonder.088"] = {
+		"appoggia per un momento il palmo a terra, come per controllare che ci sia ancora.",
+		"si accovaccia e preme una mano sul suolo, a capo chino, come se ascoltasse attraverso di esso.",
+	},
+	["muse.w11.wonder.089"] = {
+		"chiude qualcosa di minuscolo nel cavo delle mani, lo osserva da vicino, poi le apre e lo lascia andare.",
+		"toglie dalla strada una bestiolina che striscia e la posa altrove con una cura sorprendente.",
+	},
+	["muse.w11.wonder.090"] = {
+		"conta piano fino a tre muovendo appena le labbra, e al tre si muove.",
+		"fa un cenno secco a se {g:stesso|stessa}, il piccolo assenso privato di una decisione che non verrà ridiscussa.",
+	},
+	["muse.w11.wonder.091"] = {
+		"aggrotta la fronte guardando la propria ombra, come se avesse appena fatto qualcosa che non doveva.",
+		"lancia un'occhiata alla propria sagoma scura per terra, poi altrove, con l'aria di chi tiene d'occhio un compagno poco affidabile.",
+	},
+	["muse.w11.wonder.092"] = {
+		"fa un piccolo inchino ironico a nessuno in particolare, come per ringraziare la fortuna dell'ultimo tratto.",
+		"si tocca un cappello immaginario rivolto al mondo intero, per motivi che tiene per sé.",
+	},
 }, "base_exploration")

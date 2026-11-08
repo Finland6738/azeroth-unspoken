@@ -391,4 +391,257 @@ AU:RegisterRegionalTexts("kalimdor", "enUS", "kalimdor_dungeons", [==[
 		"Back to the void, or wherever demons go. Not my concern.",
 		"One less thing the Highborne have to answer for.",
 	},
+	["ony.attack.w11.001"] = {
+		"Out of the nest!",
+		"Back into your egg!",
+	},
+	["ony.battle.w11.001"] = {
+		"Back into the cracks, whelp!",
+		"Small and hot-tempered. Just like your mother.",
+	},
+	["ony.battle.w11.002"] = {
+		"The floor here splits and spits fire. Keep moving.",
+		"Stay at the edge of her reach. Never stand in front of a dragon.",
+	},
+	["ony.encounter_end.w11.001"] = {
+		"{encounter} is down among her own bones. The cave already feels twice as large.",
+		"It's over with {encounter}. Listen: even the whelps in the walls have gone quiet.",
+	},
+	["ony.lowhp.w11.001"] = {
+		"Not in this cave! Somebody pick me up!",
+		"Healer, here! I'm not ending up in her larder!",
+		"Too close to the fire. Back, back!",
+	},
+	["ony.muse.w11.001"] = {
+		"Outside it's all mud and biting flies. A few hundred paces in, the marsh gives up and the dragon's country begins.",
+		"The Wyrmbog's mud follows me into the cave on every boot. Past this point, it's the only thing down here that isn't hers.",
+		"Dustwallow's reeds and frogs stop at the cave mouth like a line scratched in the dirt. Nothing small and green lives past it.",
+	},
+	["ony.muse.w11.002"] = {
+		"Somebody watch the side caves. Those eggs don't stay eggs for long.",
+		"Whelps are small, I know. So are sparks in a hayloft.",
+		"Count the eggs if you like. I'd rather count the ways out.",
+	},
+	["ony.muse.w11.003"] = {
+		"Those who make it down here learn the court's secret: the lady at the regent's side and the dragon in this cave share one cold mind.",
+		"A noblewoman in Stormwind, a broodmother in a swamp. Folk who know swear the two are one, and the cave makes it easy to believe.",
+	},
+	["ony.subzone_enter.w11.001"] = {
+		"follows the sloping tunnel down, past hollows where something small scrabbles and hisses at the light.",
+		"walks down into the broad throat of the cave, where the air turns warm and smells of scorched bone.",
+	},
+	["ony.threat.w11.001"] = {
+		"Go and hide behind your mother, whelp.",
+		"Back to the nest. She won't save you.",
+	},
+	["ony.victory.w11.001"] = {
+		"One less mouth in the nursery.",
+		"That clutch won't be growing up.",
+		"Swatted. Next whelp, please.",
+	},
+	["raq.attack.w11.001"] = {
+		"Shell or no shell, here it comes!",
+		"Off these ruins, bug!",
+	},
+	["raq.battle.w11.001"] = {
+		"Let the swarm come. I'll thin it.",
+		"Bugs, bugs and more bugs. Fine. Next!",
+	},
+	["raq.battle.w11.002"] = {
+		"Keep them off the healers!",
+		"Watch the sand behind us, they come up from below!",
+	},
+	["raq.encounter_end.w11.001"] = {
+		"Everyone up. The ruins won that round, and the sand is already covering our tracks.",
+		"Down to the last of us. Shake out the sand and we try again, slower.",
+	},
+	["raq.lowhp.w11.001"] = {
+		"Not in this sand. It would never give me back.",
+		"Hold on. The desert can wait for my bones.",
+		"The swarm isn't dragging me under. Hold.",
+	},
+	["raq.muse.w11.001"] = {
+		"The Cenarion Circle has held the swarm back from Cenarion Hold for years with too few hands. These ruins are where they hope to finally push back.",
+		"Cenarion scouts say the silithid never retreat, they only regroup. Nothing out here has proved them wrong.",
+		"Druids and soldiers out of Cenarion Hold, marching into the ruins beside whoever came. It's a war, and they know it.",
+	},
+	["raq.muse.w11.002"] = {
+		"The general of these ruins goes by a name that means never wounded. The scouts say no blade has marked him yet, and that the old crystals out here are the only thing he fears.",
+		"Ossirian the Unscarred. A name like that is either a boast or a warning, and out here nobody wastes breath on boasts.",
+	},
+	["raq.muse.w11.003"] = {
+		"Every hole in this sand has something living in it. I've stopped stepping in holes.",
+		"The silithid dig faster than I can walk. That's not a race I mean to lose.",
+		"Count the bugs? I tried. Then the ground started counting me.",
+	},
+	["raq.subzone_enter.w11.001"] = {
+		"{subzone}. Half under the sand, half crawling with legs. Like the rest of these ruins.",
+		"{subzone}. A name for a place the sand is still busy eating.",
+	},
+	["raq.threat.w11.001"] = {
+		"Burrow back down. You'll live longer.",
+		"Go tell the hive the ruins are closed.",
+	},
+	["raq.victory.w11.001"] = {
+		"One less mouth for the hive to feed.",
+		"That's one. The Circle can mark it on the map.",
+		"Crack. Done. Next shell.",
+	},
+	["taq.attack.w11.001"] = {
+		"Feel that through the carapace?",
+		"Here's one the emperors won't like!",
+	},
+	["taq.battle.w11.001"] = {
+		"The gates are open now. Your mistake, not mine.",
+		"Come out of the walls. I'm done waiting.",
+	},
+	["taq.battle.w11.002"] = {
+		"Don't look at the walls. Look at the claws.",
+		"Steady. Whatever is whispering, it isn't here to help.",
+	},
+	["taq.encounter_end.w11.001"] = {
+		"{encounter} has gone still. Somewhere below, something vast has surely noticed.",
+		"{encounter}, finished. Every step deeper the temple gets quieter, and I like it less.",
+	},
+	["taq.lowhp.w11.001"] = {
+		"Not this far down. Nobody would ever find me.",
+		"Back, back. This temple keeps whatever it takes.",
+		"Too far under the sand to fall now.",
+	},
+	["taq.muse.w11.001"] = {
+		"The bronze dragons sealed this temple once and trusted the desert to keep it buried. The desert kept its side of the bargain for a long time.",
+		"A few of the Brood of Nozdormu still keep watch inside these halls. Guards who outlasted their war and never got to go home.",
+		"The war that shut this place was a thousand years ago. Everyone who could tell it first-hand is dead now, or a dragon.",
+	},
+	["taq.muse.w11.002"] = {
+		"The Qiraji build, march and die in perfect order. Order that perfect needs a will behind it, and that will lies at the bottom of this place.",
+		"Every so often the walls seem to say a word just under hearing. I don't answer. I don't think it's the walls doing the talking.",
+		"The Cenarion Circle won't say the name of what sleeps under the temple. Their scouts call it the eye, and leave it there.",
+	},
+	["taq.muse.w11.003"] = {
+		"Two emperors, twins, one throne. I'd love to see how they settle who gets the good chair.",
+		"An empire that needs two emperors and a god underneath. Some people can't make a decision alone.",
+	},
+	["taq.subzone_enter.w11.001"] = {
+		"passes into {subzone}, where the floor slopes down and carved insect kings watch from every pillar.",
+		"comes into {subzone}; the sand underfoot gives way to stone worn smooth by countless clawed feet.",
+	},
+	["taq.threat.w11.001"] = {
+		"Stay in the dark. It suits you better than I will.",
+		"Turn back to your emperors while you still can.",
+	},
+	["taq.victory.w11.001"] = {
+		"The twins just lost another soldier.",
+		"Down. The temple can grow another if it likes.",
+		"Ahn'Qiraj is a little emptier. Good.",
+	},
+	["wsg.attack.w11.001"] = {
+		"Not past the ramp!",
+		"Stop that runner!",
+		"Straight through the middle!",
+	},
+	["wsg.battle.w11.001"] = {
+		"Drop the flag and maybe you walk away.",
+		"That flag isn't leaving the gulch on your back.",
+		"Not one step closer to the flag room.",
+	},
+	["wsg.battle.w11.002"] = {
+		"In a hurry? The gulch is longer than it looks.",
+		"Long field to be slow on.",
+		"Lovely day for a sprint. Pity yours ends here.",
+	},
+	["wsg.battle.w11.003"] = {
+		"cuts across the grass to stand between the carrier and the way home.",
+		"springs out of the tunnel mouth straight into the fight.",
+	},
+	["wsg.battle.w11.004"] = {
+		"Stop them before the ramp. After the ramp it's too late.",
+		"Hit the carrier. Everything else is noise.",
+	},
+	["wsg.encounter_end.w11.001"] = {
+		"Their push broke at the ramp. Get the flag moving.",
+		"That fight's done. Carrier, go; we'll cover the middle.",
+	},
+	["wsg.encounter_end.w11.002"] = {
+		"Swept off midfield, all of us at once. The flag's gone; go and get it back.",
+		"Lost that one in the open. Next time we fight near cover, not in the middle of the grass.",
+	},
+	["wsg.lowhp.w11.001"] = {
+		"Can't drop here. Too far from both graveyards.",
+		"Keep running. The flag room is closer than the graveyard.",
+		"Hold together. Somebody still has to bring that cloth home.",
+	},
+	["wsg.muse.w11.001"] = {
+		"Steal the far flag, guard the near one, run home. Children play this game with sticks. Children stop when someone gets hurt.",
+		"Simple rules. Hard to keep, and harder still with arrows in your back.",
+		"Two flags, two bases and a meadow between them. Most wars should be this easy to explain.",
+	},
+	["wsg.muse.w11.002"] = {
+		"The Warsong came for timber, the Silverwing came for the trees. The gulch is what lies between the two arguments.",
+		"Every stump at the edge of this gulch is lumber to one side and grief to the other.",
+	},
+	["wsg.muse.w11.003"] = {
+		"Two in the flag room, always. One gets bored, the other stays awake.",
+		"Don't all run to midfield. The flag gets stolen while everyone's admiring the fight.",
+	},
+	["wsg.muse.w11.004"] = {
+		"glances up at the tall Ashenvale trees leaning over the gulch, as if they were keeping score.",
+		"rests a hand on the wall of the base and looks out over the open ground beyond.",
+	},
+	["wsg.muse.w11.005"] = {
+		"Carrying the flag is an honor. So is being the one thing everybody on the field wants dead.",
+		"Volunteer to carry the flag, they said. You'll be famous for thirty seconds, they said.",
+		"I'll carry it. I've always wanted to be the most popular one in the gulch.",
+	},
+	["wsg.muse.w11.006"] = {
+		"That strip of open grass in the middle is the longest walk in Ashenvale when a flag is on your back.",
+		"Halfway home with a flag is the worst place in this gulch: too far to turn back, too far from safety.",
+	},
+	["wsg.muse.w11.007"] = {
+		"Nobody wins this alone. The carrier runs, but the gulch is won by whoever runs beside them.",
+		"The flag gets the glory. The capture belongs to the healers and the ones who peel the chasers away.",
+	},
+	["wsg.muse.w11.008"] = {
+		"Every time someone yells that they're in the tunnel, everyone turns to look at the ramp.",
+		"Tunnel, ramp, roof. Three ways into the flag room, and the enemy always finds a fourth.",
+	},
+	["wsg.muse.w11.009"] = {
+		"picks a burr off {g:his|her} sleeve, ears tuned to the shouting from the far end of the gulch.",
+		"drums {g:his|her} fingers on the doorframe of the flag room, waiting for the next warning shout.",
+	},
+	["wsg.muse.w11.010"] = {
+		"Three captures. That's all it takes, and somehow it takes forever.",
+		"First to three. The number is small; the distance between the bases isn't.",
+	},
+	["wsg.muse.w11.011"] = {
+		"The forest keeps growing back over the paths between the bases. Give it one quiet season and the gulch would forget us.",
+		"Moss on the stones, roots under the trodden earth. Ashenvale is patient; it's waiting for everyone to go home.",
+	},
+	["wsg.subzone_enter.w11.001"] = {
+		"passes into {subzone}, fingers tight on {g:his|her} weapon, listening for running feet.",
+		"reaches {subzone} and checks every corner before trusting it.",
+	},
+	["wsg.subzone_enter.w11.002"] = {
+		"{subzone}. Who's here, who's coming, and where is the flag?",
+		"{subzone}. Good place to wait, bad place to be caught.",
+	},
+	["wsg.threat.w11.001"] = {
+		"This is the flag room. Visitors leave without what they came for.",
+		"The tunnel's narrow. So are your chances.",
+		"Turn around. The field behind you is wide open.",
+	},
+	["wsg.victory.w11.001"] = {
+		"Down. Now back to the base, before someone notices the door's open.",
+		"One less runner. The flag room won't guard itself.",
+		"Good. Back to the middle before the next wave.",
+	},
+	["wsg.victory.w11.002"] = {
+		"The graveyard's a long walk from here. Enjoy the trees.",
+		"Go and wait for the next wave. You'll have company.",
+		"Sit this one out. The flag doesn't need you.",
+	},
+	["wsg.victory.w11.003"] = {
+		"shakes grass seed from {g:his|her} boots and searches the gulch for the flag.",
+		"bends over, one hand on {g:his|her} knee, eyes already on the far tunnel.",
+	},
 ]==])

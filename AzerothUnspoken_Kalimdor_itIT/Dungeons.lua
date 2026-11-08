@@ -391,4 +391,257 @@ AU:RegisterRegionalTexts("kalimdor", "itIT", "kalimdor_dungeons", [==[
 		"Torna nel vuoto, o dovunque finiscano i demoni. Non è affar mio.",
 		"Una cosa in meno di cui gli Highborne devono rispondere.",
 	},
+	["ony.attack.w11.001"] = {
+		"Fuori dal nido!",
+		"Torna nel tuo uovo!",
+	},
+	["ony.battle.w11.001"] = {
+		"Torna nelle fessure, draghetto!",
+		"Piccolo e irascibile. Proprio come tua madre.",
+	},
+	["ony.battle.w11.002"] = {
+		"Qui il pavimento si spacca e sputa fuoco. Continua a muoverti.",
+		"Resta ai margini della sua portata. Mai stare davanti a un drago.",
+	},
+	["ony.encounter_end.w11.001"] = {
+		"{encounter} è a terra tra le sue stesse ossa. La caverna sembra già grande il doppio.",
+		"Con {encounter} è finita. Ascolta: perfino i draghetti nelle pareti tacciono.",
+	},
+	["ony.lowhp.w11.001"] = {
+		"Non in questa caverna! Qualcuno mi rimetta in piedi!",
+		"Una cura, qui! Non finirò nella sua dispensa!",
+		"Troppo vicino al fuoco. Indietro, indietro!",
+	},
+	["ony.muse.w11.001"] = {
+		"Fuori è tutto fango e mosche che pungono. Qualche centinaio di passi dentro, la palude si arrende e comincia il paese del drago.",
+		"Il fango del Wyrmbog mi segue nella caverna su ogni stivale. Da qui in poi è l'unica cosa quaggiù che non sia sua.",
+		"Le canne e le rane di Dustwallow finiscono all'imbocco della caverna, come una riga tracciata per terra. Oltre, non vive niente di piccolo e verde.",
+	},
+	["ony.muse.w11.002"] = {
+		"Qualcuno tenga d'occhio le grotte laterali. Quelle uova non restano uova a lungo.",
+		"I draghetti sono piccoli, lo so. Anche le scintille in un fienile.",
+		"Contate le uova, se vi va. Io preferisco contare le uscite.",
+	},
+	["ony.muse.w11.003"] = {
+		"Chi arriva fin quaggiù scopre il segreto della corte: la dama al fianco del reggente e il drago di questa caverna hanno la stessa mente fredda.",
+		"Una nobildonna a Stormwind, una madre di covata in una palude. Chi sa giura che siano la stessa, e la caverna rende facile crederci.",
+	},
+	["ony.subzone_enter.w11.001"] = {
+		"segue la galleria in discesa, oltre cavità dove qualcosa di piccolo raspa e soffia contro la luce.",
+		"scende nell'ampia gola della caverna, dove l'aria si fa tiepida e sa di ossa bruciate.",
+	},
+	["ony.threat.w11.001"] = {
+		"Va' a nasconderti dietro tua madre, draghetto.",
+		"Torna al nido. Lei non ti salverà.",
+	},
+	["ony.victory.w11.001"] = {
+		"Una bocca in meno nel nido.",
+		"Questa covata non crescerà.",
+		"Via uno. Avanti il prossimo draghetto.",
+	},
+	["raq.attack.w11.001"] = {
+		"Guscio o non guscio, arriva lo stesso!",
+		"Via da queste rovine, insetto!",
+	},
+	["raq.battle.w11.001"] = {
+		"Che arrivi pure lo sciame. Lo sfoltisco io.",
+		"Insetti, insetti e altri insetti. Va bene. Il prossimo!",
+	},
+	["raq.battle.w11.002"] = {
+		"Teneteli lontani dai guaritori!",
+		"Occhio alla sabbia alle nostre spalle, salgono da sotto!",
+	},
+	["raq.encounter_end.w11.001"] = {
+		"Tutti in piedi. Questo giro l'hanno vinto le rovine, e la sabbia sta già coprendo le nostre tracce.",
+		"A terra fino all'ultimo. Scuotete via la sabbia e ci riproviamo, più piano.",
+	},
+	["raq.lowhp.w11.001"] = {
+		"Non in questa sabbia. Non mi restituirebbe più.",
+		"Resisti. Il deserto può aspettare le mie ossa.",
+		"Lo sciame non mi trascina sotto. Tieni duro.",
+	},
+	["raq.muse.w11.001"] = {
+		"Il Cenarion Circle tiene lo sciame lontano da Cenarion Hold da anni, con troppe poche braccia. È in queste rovine che spera di poterlo finalmente respingere.",
+		"Gli esploratori del Cenarion Circle dicono che i silitidi non si ritirano mai: si riorganizzano e basta. Finora niente, qui fuori, ha dato loro torto.",
+		"Druidi e soldati partiti da Cenarion Hold entrano nelle rovine accanto a chiunque sia venuto. È una guerra, e loro lo sanno.",
+	},
+	["raq.muse.w11.002"] = {
+		"Il generale di queste rovine porta un nome che vuol dire: mai ferito. Gli esploratori dicono che nessuna lama l'ha ancora segnato, e che i vecchi cristalli qui intorno sono l'unica cosa che teme.",
+		"Ossirian the Unscarred. Un nome così o è una vanteria o è un avvertimento, e qui fuori nessuno spreca fiato a vantarsi.",
+	},
+	["raq.muse.w11.003"] = {
+		"In ogni buco di questa sabbia vive qualcosa. Ho smesso di mettere i piedi nei buchi.",
+		"I silitidi scavano più in fretta di quanto io cammini. Non è una gara che ho intenzione di perdere.",
+		"Contare gli insetti? Ci ho provato. Poi il terreno si è messo a contare me.",
+	},
+	["raq.subzone_enter.w11.001"] = {
+		"{subzone}. Metà sotto la sabbia, metà brulicante di zampe. Come il resto di queste rovine.",
+		"{subzone}. Un nome per un posto che la sabbia si sta ancora mangiando.",
+	},
+	["raq.threat.w11.001"] = {
+		"Torna a scavare giù. Vivrai di più.",
+		"Va' a dire all'alveare che le rovine sono chiuse.",
+	},
+	["raq.victory.w11.001"] = {
+		"Una bocca in meno da sfamare per l'alveare.",
+		"E uno. Il Circle può segnarlo sulla mappa.",
+		"Crac. Fatto. Il prossimo guscio.",
+	},
+	["taq.attack.w11.001"] = {
+		"Lo senti attraverso il carapace?",
+		"Eccone una che agli imperatori non piacerà!",
+	},
+	["taq.battle.w11.001"] = {
+		"Le porte adesso sono aperte. Errore vostro, non mio.",
+		"Esci dalle pareti. Ho finito di aspettare.",
+	},
+	["taq.battle.w11.002"] = {
+		"Non guardare le pareti. Guarda gli artigli.",
+		"Calma. Qualunque cosa sussurri, non è qui per aiutare.",
+	},
+	["taq.encounter_end.w11.001"] = {
+		"{encounter} non si muove più. Più in basso, qualcosa di immenso se ne sarà accorto di sicuro.",
+		"Con {encounter} è chiusa. A ogni passo più in giù il tempio si fa più silenzioso, e mi piace sempre meno.",
+	},
+	["taq.lowhp.w11.001"] = {
+		"Non così in fondo. Nessuno mi ritroverebbe più.",
+		"Indietro, indietro. Questo tempio si tiene tutto quello che prende.",
+		"Troppo sotto la sabbia per crollare adesso.",
+	},
+	["taq.muse.w11.001"] = {
+		"I draghi di bronzo sigillarono questo tempio e si fidarono del deserto perché lo tenesse sepolto. Il deserto ha mantenuto la parola per molto tempo.",
+		"Qualcuno della Brood of Nozdormu monta ancora la guardia in queste sale. Sentinelle sopravvissute alla loro guerra, che a casa non sono mai potute tornare.",
+		"La guerra che chiuse questo posto è di mille anni fa. Chi potrebbe raccontarla di persona oggi è morto, oppure è un drago.",
+	},
+	["taq.muse.w11.002"] = {
+		"I Qiraji costruiscono, marciano e muoiono in un ordine perfetto. Un ordine così perfetto ha bisogno di una volontà dietro, e quella volontà sta in fondo a questo posto.",
+		"Ogni tanto le pareti sembrano dire una parola appena sotto la soglia dell'udito. Non rispondo. Non credo che a parlare siano le pareti.",
+		"Il Cenarion Circle non pronuncia il nome di ciò che dorme sotto il tempio. I suoi esploratori lo chiamano l'occhio, e la chiudono lì.",
+	},
+	["taq.muse.w11.003"] = {
+		"Due imperatori, gemelli, un trono solo. Mi piacerebbe vedere come decidono chi si prende la sedia buona.",
+		"Un impero che ha bisogno di due imperatori e di un dio di sotto. C'è chi proprio non riesce a decidere da solo.",
+	},
+	["taq.subzone_enter.w11.001"] = {
+		"passa in {subzone}, dove il pavimento scende in pendenza e re-insetto scolpiti osservano da ogni colonna.",
+		"arriva in {subzone}; la sabbia sotto i piedi lascia il posto a pietra levigata da innumerevoli zampe artigliate.",
+	},
+	["taq.threat.w11.001"] = {
+		"Resta al buio. Ti si addice più di me.",
+		"Torna dai tuoi imperatori finché puoi.",
+	},
+	["taq.victory.w11.001"] = {
+		"I gemelli hanno appena perso un altro soldato.",
+		"A terra. Se il tempio vuole, se ne faccia crescere un altro.",
+		"Ahn'Qiraj è un po' più vuota. Bene.",
+	},
+	["wsg.attack.w11.001"] = {
+		"Oltre la rampa non passi!",
+		"Fermate chi corre!",
+		"Dritto per il centro!",
+	},
+	["wsg.battle.w11.001"] = {
+		"Molla la bandiera, e forse te ne vai sulle tue gambe.",
+		"Quella bandiera non esce dalla gola sulle tue spalle.",
+		"Non un passo di più verso la stanza della bandiera.",
+	},
+	["wsg.battle.w11.002"] = {
+		"Vai di fretta? La gola è più lunga di quanto sembri.",
+		"Campo lungo, questo, per chi corre piano.",
+		"Bella giornata per una corsa. Peccato che la tua finisca qui.",
+	},
+	["wsg.battle.w11.003"] = {
+		"taglia per il prato e si mette fra chi porta la bandiera e la via di casa.",
+		"scatta fuori dall'imboccatura del tunnel dritto nella mischia.",
+	},
+	["wsg.battle.w11.004"] = {
+		"Fermali prima della rampa. Dopo la rampa è troppo tardi.",
+		"Colpisci chi porta la bandiera. Tutto il resto è rumore.",
+	},
+	["wsg.encounter_end.w11.001"] = {
+		"Respinti alla rampa. Fate muovere la bandiera.",
+		"Scontro finito. Chi ha la bandiera vada: al centro ci pensiamo noi.",
+	},
+	["wsg.encounter_end.w11.002"] = {
+		"Spazzati via dal centrocampo, tutti insieme. La bandiera è andata: tocca riprenderla.",
+		"Persa in campo aperto. La prossima volta si combatte vicino a un riparo, non in mezzo all'erba.",
+	},
+	["wsg.lowhp.w11.001"] = {
+		"Non posso crollare qui. Sono {g:lontano|lontana} da tutti e due i cimiteri.",
+		"Corri. La stanza della bandiera è più vicina del cimitero.",
+		"Tieni duro. Qualcuno deve ancora riportare a casa quello straccio.",
+	},
+	["wsg.muse.w11.001"] = {
+		"Ruba la bandiera lontana, difendi quella vicina, torna a casa di corsa. I bambini ci giocano coi bastoni. Solo che i bambini smettono quando qualcuno si fa male.",
+		"Regole semplici. Difficili da rispettare, e ancora di più con le frecce nella schiena.",
+		"Due bandiere, due basi e un prato nel mezzo. Magari tutte le guerre fossero così facili da spiegare.",
+	},
+	["wsg.muse.w11.002"] = {
+		"Gli orchi del Warsong sono venuti per il legname, le Silverwing Sentinels per difendere gli alberi. La gola è quello che resta fra le due ragioni.",
+		"Ogni ceppo ai margini di questa gola è legname per una parte e lutto per l'altra.",
+	},
+	["wsg.muse.w11.003"] = {
+		"Due nella stanza della bandiera, sempre. Uno si annoia, l'altro resta sveglio.",
+		"Non correte tutti a centrocampo. La bandiera sparisce mentre tutti si godono lo scontro.",
+	},
+	["wsg.muse.w11.004"] = {
+		"alza lo sguardo sui grandi alberi di Ashenvale chini sulla gola, come se tenessero il conto.",
+		"posa una mano sul muro della base e guarda il terreno scoperto più avanti.",
+	},
+	["wsg.muse.w11.005"] = {
+		"Portare la bandiera è un onore. Come essere l'unica cosa che tutto il campo vuole ammazzare.",
+		"Offriti di portare la bandiera, dicevano. Sarai {g:famoso|famosa} per trenta secondi, dicevano.",
+		"La porto io. Ho sempre sognato di essere la persona più ricercata della gola.",
+	},
+	["wsg.muse.w11.006"] = {
+		"Quel tratto d'erba scoperta nel mezzo è la passeggiata più lunga di Ashenvale, quando hai una bandiera sulle spalle.",
+		"A metà strada con una bandiera si sta nel posto peggiore della gola: troppo avanti per tornare, troppo lontano dal riparo.",
+	},
+	["wsg.muse.w11.007"] = {
+		"Qui nessuno vince da solo. Chi porta la bandiera corre, ma la gola la vince chi gli corre accanto.",
+		"La gloria va alla bandiera. La cattura, però, è di chi cura e di chi si stacca di dosso gli inseguitori.",
+	},
+	["wsg.muse.w11.008"] = {
+		"Ogni volta che qualcuno grida che sono nel tunnel, tutti si girano a guardare la rampa.",
+		"Tunnel, rampa, tetto. Tre vie per la stanza della bandiera, e il nemico ne trova sempre una quarta.",
+	},
+	["wsg.muse.w11.009"] = {
+		"si toglie una lappola dalla manica, le orecchie tese verso le grida che arrivano dall'altro capo della gola.",
+		"tamburella con le dita sullo stipite della stanza della bandiera, in attesa del prossimo grido d'allarme.",
+	},
+	["wsg.muse.w11.010"] = {
+		"Tre catture. Basta questo, eppure ci vuole un'eternità.",
+		"Vince chi arriva prima a tre. Il numero è piccolo; la distanza fra le basi no.",
+	},
+	["wsg.muse.w11.011"] = {
+		"La foresta continua a ricrescere sui sentieri fra le basi. Dalle una stagione tranquilla e la gola si scorderebbe di noi.",
+		"Muschio sulle pietre, radici sotto la terra battuta. Ashenvale è paziente: aspetta che ce ne torniamo tutti a casa.",
+	},
+	["wsg.subzone_enter.w11.001"] = {
+		"entra in {subzone}, le dita strette sull'arma, in ascolto di passi di corsa.",
+		"raggiunge {subzone} e controlla ogni angolo prima di fidarsi.",
+	},
+	["wsg.subzone_enter.w11.002"] = {
+		"{subzone}. Chi c'è, chi arriva, e dov'è la bandiera?",
+		"{subzone}. Buon posto per aspettare, pessimo per farsi sorprendere.",
+	},
+	["wsg.threat.w11.001"] = {
+		"Questa è la stanza della bandiera. Chi entra se ne va senza quello che cercava.",
+		"Il tunnel è stretto. Come le tue possibilità.",
+		"Girati. Il campo alle tue spalle è tutto libero.",
+	},
+	["wsg.victory.w11.001"] = {
+		"A terra. Adesso torna alla base, prima che qualcuno si accorga che la porta è aperta.",
+		"Un corridore in meno. La stanza della bandiera non si difende da sola.",
+		"Bene. Torna al centro prima della prossima ondata.",
+	},
+	["wsg.victory.w11.002"] = {
+		"Il cimitero è lontano da qui. Goditi gli alberi.",
+		"Vai ad aspettare la prossima ondata. Avrai compagnia.",
+		"Questo giro lo salti. La bandiera non ha bisogno di te.",
+	},
+	["wsg.victory.w11.003"] = {
+		"si scuote i semi d'erba dagli stivali e cerca la bandiera con lo sguardo lungo la gola.",
+		"si piega, una mano sul ginocchio, gli occhi già sul tunnel lontano.",
+	},
 ]==])

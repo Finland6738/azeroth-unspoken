@@ -1147,4 +1147,534 @@ AU:RegisterRegionalTexts("eastern", "itIT", "eastern_dungeons", [==[
 		"Torna alla polvere. Qui ti troverai benissimo.",
 		"Una cosa in meno a girare per la volta. Gli archeologi mi ringrazieranno dopo.",
 	},
+	["abg.attack.w11.001"] = {
+		"Via dal palo!",
+		"Giù le mani dallo stendardo!",
+		"Ecco il benvenuto della conca!",
+	},
+	["abg.battle.w11.001"] = {
+		"Via dallo stendardo, o ci finisci sotto!",
+		"Tocca quel palo e ti ritrovi a terra lì accanto.",
+		"Questa base resta com'è. Vai a discutere con la miniera.",
+	},
+	["abg.battle.w11.002"] = {
+		"Tutta la strada dalle stalle per questo? Dovevi restare coi cavalli.",
+		"Tanta corsa per uno scontro così corto.",
+		"Base sbagliata. Prova la forgia: non la guarda nessuno.",
+	},
+	["abg.battle.w11.003"] = {
+		"si piazza fra gli assalitori e il palo dello stendardo.",
+		"pianta i piedi nella terra calpestata accanto al palo e va incontro alla carica.",
+	},
+	["abg.battle.w11.004"] = {
+		"Tienili lontani dal palo. Non lo tocca nessuno.",
+		"Nessuno completa quella conquista finché mi reggo in piedi.",
+	},
+	["abg.encounter_end.w11.001"] = {
+		"Lo scontro è nostro. Tenete lo stendardo e occhi sulla strada.",
+		"Spezzati al palo, tutti quanti. Adesso teniamocela.",
+	},
+	["abg.encounter_end.w11.002"] = {
+		"La base è persa. Il cimitero è vicino; la rabbia può aspettare il prossimo assalto.",
+		"Troppo pochi al palo, e troppo tardi. La prossima volta si contano le teste prima di caricare.",
+	},
+	["abg.lowhp.w11.001"] = {
+		"Troppi colpi. Verso il cimitero, sì, ma non dentro.",
+		"Non su questa strada. Non con la miniera ancora contesa.",
+		"Tieni duro. Se cado io, cade la base.",
+	},
+	["abg.muse.w11.001"] = {
+		"Qualcuno ha arato questi campi pensando al raccolto. Adesso l'unica cosa che si raccoglie qui sono le risorse.",
+		"I solchi della fattoria corrono ancora dritti. Chi li ha tracciati non si immaginava certo gli stendardi.",
+		"Questi steccati li hanno piantati per tenere dentro il bestiame. Adesso segnano dove finisce una carica e comincia la successiva.",
+	},
+	["abg.muse.w11.002"] = {
+		"Tre basi tenute sono una vittoria. Cinque sono ingordigia, e l'ingordigia la pizzicano sempre alla segheria.",
+		"Teniamone tre, e teniamole bene. Ogni volta che qualcuno si fa ingordo per la quarta, cade la prima.",
+	},
+	["abg.muse.w11.003"] = {
+		"conta a mezza voce gli stendardi sparsi nella conca, muovendo le labbra, poi li riconta per sicurezza.",
+		"socchiude gli occhi e legge gli stendardi lontani uno per uno, come un mercante scorre il suo libro mastro.",
+	},
+	["abg.muse.w11.004"] = {
+		"Ogni base ha il suo cimitero. Chi ha disegnato questa valle sapeva benissimo come l'avrebbero usata.",
+		"Un cimitero vicino alle stalle, uno vicino alla miniera. Perfino i morti, qui, li tengono a due passi dal lavoro.",
+	},
+	["abg.muse.w11.005"] = {
+		"Duemila risorse. Una risorsa non l'ho mai vista in vita mia. Secondo me se le sono inventate.",
+		"Tutti gridano di risorse. Nessuno mi ha mai fatto vedere un sacco pieno.",
+		"Una guerra per un numero su una lavagna. Però è un numero bellissimo, quando sale dalla parte giusta.",
+	},
+	["abg.muse.w11.006"] = {
+		"Dalle stalle alla forgia, dalla forgia alla fattoria, dalla fattoria di nuovo alle stalle. Le gambe conoscono questa conca meglio della testa.",
+		"Ho fatto la strada dalla segheria alla forgia tante di quelle volte che i solchi dovrebbero riconoscere i miei stivali.",
+	},
+	["abg.muse.w11.007"] = {
+		"Arathor fu il primo regno degli uomini, o così lo raccontano gli studiosi di Stromgarde. Adesso il suo cuore è un posto dove regolare i conti.",
+		"Dagli altopiani regnava la vecchia corona di Strom, dicono le cronache. Chissà cosa penserebbero i suoi re di una guerra per una fattoria.",
+	},
+	["abg.muse.w11.008"] = {
+		"Uno stendardo su un palo è solo stoffa. Uno stendardo con qualcuno accanto è una base.",
+		"Una base non si tiene ammirandola dalla strada. Qualcuno deve restare accanto al palo.",
+	},
+	["abg.muse.w11.009"] = {
+		"si ferma accanto a un campo calpestato e rialza con la punta dello stivale uno stelo schiacciato.",
+		"si arresta al bordo delle coltivazioni, dove un filare intero giace schiacciato dall'ultima carica, e ci gira intorno con cura.",
+	},
+	["abg.muse.w11.010"] = {
+		"La peggiore è la base tranquilla. Nessuno ci viene da un po', e vuol dire che qualcuno sta arrivando.",
+		"Una miniera calma mi innervosisce più di una affollata. La calma è solo uno scontro che non è ancora arrivato.",
+		"Cinque stendardi, e quattro sono nel pieno del trambusto. Indovina quale continuo a tenere d'occhio.",
+	},
+	["abg.muse.w11.011"] = {
+		"I Defilers e la League of Arathor dicono entrambi di combattere per la gente di Arathi. La gente di Arathi se n'è andata da un pezzo.",
+		"La League rivuole la conca, i Defilers vogliono tenersela. La fattoria vorrebbe solo essere lasciata in pace.",
+	},
+	["abg.subzone_enter.w11.001"] = {
+		"raggiunge {subzone} e fa il punto: chi tiene la posizione, chi arriva, da che parte si esce.",
+		"rallenta al margine di {subzone} e studia il terreno prima di uscire allo scoperto.",
+	},
+	["abg.subzone_enter.w11.002"] = {
+		"{subzone}. Conta i difensori, conta le strade d'accesso, poi decidi.",
+		"{subzone}. Chi tiene questo posto deve veder arrivare la prossima carica.",
+	},
+	["abg.threat.w11.001"] = {
+		"Guardati intorno. Altre quattro basi, e hai scelto la mia.",
+		"Puoi lasciare questa base per la strada dell'andata. È l'offerta gentile.",
+		"Torna sulla strada. Questo palo ha compagnia.",
+	},
+	["abg.victory.w11.001"] = {
+		"Vai ad aspettare al cimitero. Almeno è vicino.",
+		"Il cimitero è proprio lì. Due passi.",
+		"Dallo spirito guaritore, su. Occhio alla fila.",
+	},
+	["abg.victory.w11.002"] = {
+		"A terra. Ora la strada, il palo, il crinale: chi arriva?",
+		"Uno in meno. Guarda le altre quattro basi prima di inseguire il prossimo.",
+		"Qui è fatta. Quale base sta chiedendo aiuto, adesso?",
+	},
+	["abg.victory.w11.003"] = {
+		"pulisce l'arma su uno steccato e cerca nella conca il prossimo scontro.",
+		"si appoggia un attimo al palo dello stendardo e conta i colori sparsi per la conca.",
+	},
+	["avl.attack.w11.001"] = {
+		"Sgombrate il ponte!",
+		"All'assalto del bunker!",
+		"Su per la collina, adesso!",
+	},
+	["avl.battle.w11.001"] = {
+		"Farai un bel mucchio di neve.",
+		"Giù tra i cumuli, tu!",
+		"La neve è alta. Vai a sdraiartici.",
+	},
+	["avl.battle.w11.002"] = {
+		"Tanta marcia per prenderle a due passi da un bunker.",
+		"Hai fatto tutta questa strada? Con questo freddo?",
+		"Dovevi aspettare la primavera.",
+	},
+	["avl.battle.w11.003"] = {
+		"abbassa la testa e avanza a fatica nella neve fino alla mischia.",
+		"carica giù per il pendio, la neve che schizza a ogni passo.",
+	},
+	["avl.encounter_end.w11.001"] = {
+		"Il capitano è a terra. Senza una voce a radunarla, la guarnigione non regge.",
+		"Il comandante è sistemato. Adesso la strada per la fortezza è aperta.",
+	},
+	["avl.encounter_end.w11.002"] = {
+		"Respinti dalla fortezza, tutto l'assalto. Il generale è ancora lì, e anche la lunga strada del ritorno.",
+		"Troppo pochi per finire il generale, troppi per chiamarla sfortuna. Il cimitero, la strada, e daccapo.",
+	},
+	["avl.lowhp.w11.001"] = {
+		"Non in questa neve. Non mi scongelerei più.",
+		"Resisti. Il cimitero è troppo indietro per crollare qui.",
+		"Su. Questa valle non mi tiene.",
+	},
+	["avl.muse.w11.001"] = {
+		"I Frostwolf ci arrivarono in esilio, i nani della Stormpike per scavare. Tutti e due ci hanno trovato una casa, ed è proprio questo il guaio.",
+		"Prima di essere un campo di battaglia, la valle era un rifugio. Per i rifugi, prima o poi, si finisce sempre a combattere.",
+	},
+	["avl.muse.w11.002"] = {
+		"Chi ha deciso che questa guerra si combatte in salita, nella neve, all'andata e al ritorno?",
+		"Ogni torre di questa valle è in salita. Ho controllato.",
+	},
+	["avl.muse.w11.003"] = {
+		"batte gli stivali contro uno steccato per staccarne il ghiaccio e guarda la colonna serpeggiare verso la fortezza lontana.",
+		"si ferma a raschiare la neve indurita dall'equipaggiamento, poi alza gli occhi lungo la strada grigia che risale la valle.",
+	},
+	["avl.muse.w11.004"] = {
+		"Prendi la torre, brucia lo stendardo, avanti. Quando il fuoco si spegne, nessuno ricorda più chi stava sui bastioni.",
+		"In questa valle, quando cade una torre, il fumo lo annuncia a tutti e due gli eserciti insieme.",
+	},
+	["avl.muse.w11.005"] = {
+		"Qualcuno resti al cimitero. Una marcia senza un cimitero alle spalle è una marcia che finisce.",
+		"Non saltate i bunker. Ognuno che lasciamo indietro è una fila di arcieri alle nostre spalle.",
+	},
+	["avl.muse.w11.006"] = {
+		"Ore in questa valle. Le dita hanno smesso di lamentarsi, e questo mi preoccupa più di prima.",
+		"La marcia fino alla fortezza in fondo è così lunga che ho fatto in tempo a gelare, scaldarmi e gelare di nuovo.",
+	},
+	["avl.muse.w11.007"] = {
+		"I furieri parlano di un signore della foresta e di un signore del ghiaccio che rispondono, se si raccoglie abbastanza. In questa valle crederei a tutti e due.",
+		"Cristalli da una parte, sangue dall'altra, entrambi barattati per un gigante. Una volta le guerre avevano conti più semplici.",
+	},
+	["avl.muse.w11.008"] = {
+		"si unisce alla lunga colonna che arranca su per la valle, i passi nei solchi lasciati dagli altri.",
+		"si alza il bavero e attacca la lunga salita verso la torre successiva.",
+	},
+	["avl.muse.w11.009"] = {
+		"Trogg in una miniera, coboldi nell'altra. Due eserciti in guerra, e agli inquilini più vecchi nessuno ha chiesto niente.",
+		"Irondeep, Coldtooth. Chi tiene le miniere si arricchisce; chi ci abitava non ha mai avuto voce in capitolo.",
+	},
+	["avl.muse.w11.010"] = {
+		"Su col morale. La neve è soffice, la fortezza è da quella parte, e non è ancora morto nessuno.",
+		"Un'altra torre, e poi mi concedo di pensare alla zuppa.",
+	},
+	["avl.subzone_enter.w11.001"] = {
+		"raggiunge {subzone} arrancando, la neve incrostata fino alle ginocchia, e cerca di capire chi comanda lì.",
+		"avanza fino a {subzone} sulla neve battuta e conta le sagome più avanti.",
+	},
+	["avl.subzone_enter.w11.002"] = {
+		"{subzone}. Un altro nome su una strada lunghissima.",
+		"{subzone}. A metà strada, forse. In questa valle non lo sa mai nessuno.",
+	},
+	["avl.threat.w11.001"] = {
+		"Girati. La tua fortezza è da quella parte, e anche la salvezza.",
+		"Avvicinati, e sarai la prossima cosa che la neve seppellisce.",
+		"Questo bunker è occupato. Trovatene un altro.",
+	},
+	["avl.victory.w11.001"] = {
+		"A terra. La neve lo coprirà prima della prossima ondata.",
+		"Finito. Avanti verso la prossima torre, prima che il freddo entri nelle ossa.",
+	},
+	["avl.victory.w11.002"] = {
+		"Riposa lì. Dal cimitero è una bella camminata.",
+		"Goditi la neve. Ci resterai un pezzo.",
+		"Torna alla tua fortezza. Fai il giro lungo.",
+	},
+	["avl.victory.w11.003"] = {
+		"si scuote la neve dagli stivali e riprende la strada.",
+		"si scrolla di dosso il freddo, si sistema l'equipaggiamento e cerca con gli occhi la prossima torre.",
+	},
+	["bwl.attack.w11.001"] = {
+		"Torna in laboratorio!",
+		"Eccone uno per gli appunti!",
+		"Portalo al tuo padrone!",
+	},
+	["bwl.battle.w11.001"] = {
+		"Torna nella tua vasca, qualunque cosa tu sia!",
+		"Un altro esperimento fallito. Chiudiamo la pratica.",
+		"L'esperimento di Nefarian finisce qui!",
+	},
+	["bwl.battle.w11.002"] = {
+		"E tu di che colore sei stavolta?",
+		"Scaglie, artigli, pessimo carattere. La specialità della casa.",
+		"Tu sei quello che succede quando un drago si annoia.",
+	},
+	["bwl.battle.w11.003"] = {
+		"Aspetta il soffio, poi colpisci. Il resto è rumore.",
+		"Occhi sugli artigli. Nefarian li ha allevati per uccidere.",
+	},
+	["bwl.encounter_end.w11.001"] = {
+		"Con {encounter} è finita. La tana adesso ha un respiro diverso.",
+		"{encounter} non comparirà più nei registri di Nefarian. Uno in meno tra me e la cima.",
+	},
+	["bwl.encounter_end.w11.002"] = {
+		"In piedi. Nefarian se l'è goduta più di noi.",
+		"Tutti a terra. Adesso lassù qualcuno prende appunti su di noi.",
+	},
+	["bwl.lowhp.w11.001"] = {
+		"Rattoppatemi, non diventerò un esemplare!",
+		"Curatemi! Non finirò in un barattolo!",
+		"Aiuto! Non quassù, non così!",
+	},
+	["bwl.muse.w11.001"] = {
+		"Tecnici goblin, addestratori orchi, padroni draghi. Quassù qualcuno tiene un registro preciso di tutto ciò che ha urlato.",
+		"Qui i banconi vengono ripuliti tra un esperimento e l'altro. È questo che mi inquieta più di tutto.",
+	},
+	["bwl.muse.w11.002"] = {
+		"I grugniti della Dark Horde lo chiamano Lord Victor Nefarius, un nobile in un bel cappotto. Quassù nessuno si prende il disturbo di fingere.",
+		"I draghi neri adorano una maschera mortale. Il figlio fa il signore in queste sale; la figlia, così dicono le voci, lo faceva a corte.",
+	},
+	["bwl.muse.w11.003"] = {
+		"si ferma accanto a una covata di uova scure in un nido di roccia bruciata, e ne guarda una muoversi da sola.",
+		"aggira file di uova nere disposte sul pavimento bruciato, ciascuna grande come un barile, con qualcosa che bussa piano dentro.",
+	},
+	["bwl.muse.w11.004"] = {
+		"Un drago rosso in catene nella casa di un drago nero. Qualunque cosa Nefarian abbia fatto a Vaelastrasz, l'ha fatta con calma.",
+		"Vaelastrasz era uno di quelli di Alexstrasza. Ora è ciò che Nefarian mostra agli ospiti per spiegare le regole della casa.",
+		"Di tutto quello che c'è quassù, il drago rosso è il pensiero che non riesco a scacciare. Un custode della vita, piegato finché non si è spezzato.",
+	},
+	["bwl.muse.w11.005"] = {
+		"Nero, rosso, verde, blu, bronzo, tutti cuciti in uno. Qualcuno quassù proprio non sa scegliere.",
+		"Un drago di tutti i colori. Ho visto insegne di taverna dipinte con più sobrietà.",
+		"Nefarian voleva tutti e cinque gli stormi in un solo corpo. Ambizioso. Disgustoso, ma ambizioso.",
+	},
+	["bwl.muse.w11.006"] = {
+		"Questo posto non si limita a ospitare mostri. È stato pensato per logorare chiunque venga a prenderli.",
+		"Qui qualcuno ha pensato agli intrusi, e con cura. Ogni stanza è una prova, e chi le ha preparate ne osserva i risultati.",
+	},
+	["bwl.muse.w11.007"] = {
+		"si appiattisce contro un pilastro mentre una fila di draconidi passa in fondo alla sala, con le scaglie che schioccano come piastre d'armatura.",
+		"osserva una sentinella squamata davanti a una porta lontana, mezza drago e mezza soldato, ferma con un'immobilità che nessuna guardia viva saprebbe tenere.",
+	},
+	["bwl.muse.w11.008"] = {
+		"Nessuno tocchi le vasche. Dico sul serio. Qualunque cosa ci sia dentro, ne abbiamo già combattuta abbastanza.",
+		"Restiamo uniti quassù. Questo posto l'ha costruito uno che studia come si fa a pezzi la gente.",
+		"Se qualcuno trova gli appunti del drago, li bruci. Chi viene dopo non deve impararci niente.",
+	},
+	["bwl.subzone_enter.w11.001"] = {
+		"passa in {subzone}, dove l'aria sa di salamoia e di peli bruciati, e le lanterne pendono da catene.",
+		"mette piede in {subzone}; lunghi tavoli di vetro e metallo corrono lungo le pareti, ancora appena fumanti.",
+	},
+	["bwl.subzone_enter.w11.002"] = {
+		"{subzone}. Più salgo, peggiore è il lavoro che trovo.",
+		"Un'altra delle stanze di Nefarian. Ognuna più ordinata della precedente, e peggiore.",
+	},
+	["bwl.threat.w11.001"] = {
+		"Fatti da parte. Al tuo padrone non mancherà un draconide.",
+		"Va' a dire a Nefarian che gli ospiti sono arrivati.",
+		"Torna dal tuo addestratore, bestia.",
+	},
+	["bwl.victory.w11.001"] = {
+		"arretra dalle scaglie che si contraggono finché non restano ferme, e poi ancora un po'.",
+		"tocca il draconide caduto con lo stivale, come se potesse ricucirsi da solo.",
+	},
+	["bwl.victory.w11.002"] = {
+		"Un esperimento in meno per i quaderni.",
+		"Segnalo come fallimento, Nefarius.",
+		"Si ricomincia da capo, drago.",
+	},
+	["bwl.victory.w11.003"] = {
+		"A terra. Qualunque cosa dovesse diventare, non lo diventerà.",
+		"Fatto. Le sue scaglie continuano a cambiare colore anche adesso.",
+	},
+	["mc.attack.w11.001"] = {
+		"Spegniti!",
+		"Datti una raffreddata, testa calda!",
+	},
+	["mc.attack.w11.002"] = {
+		"Torna nella lava!",
+		"Giù tra le scorie!",
+	},
+	["mc.battle.w11.001"] = {
+		"Sei solo fuoco. Di fuochi ne ho spenti.",
+		"Avanti, brace. Vediamo quanto tremoli.",
+		"Di' al tuo Signore del Fuoco che il suo fuoco si sta spegnendo.",
+	},
+	["mc.battle.w11.002"] = {
+		"Ma quaggiù deve essere tutto in fiamme?",
+		"Splendido. Un altro fatto quasi tutto di lava.",
+		"Ti chiederei di raffreddarti, ma dubito che tu sappia come.",
+	},
+	["mc.battle.w11.003"] = {
+		"Prima lontano dal bordo. Poi combatti.",
+		"La lava a sinistra, il nemico davanti. Il resto non conta.",
+		"Calma. È pietra e fuoco, e la pietra si spacca.",
+	},
+	["mc.battle.w11.004"] = {
+		"Teneteli qui, lontano dai guaritori!",
+		"Tenete la linea! Nessuno finisce spinto nella lava!",
+	},
+	["mc.battle.w11.005"] = {
+		"affronta la cosa che brucia, gli occhi socchiusi contro il riverbero.",
+		"pianta i piedi sulla crosta nera e alza la guardia, mentre il calore arriva a ondate come dalla bocca aperta di una fornace.",
+	},
+	["mc.encounter_end.w11.001"] = {
+		"{encounter} vince questo giro. La prossima volta sangue freddo, se quaggiù qualcuno riesce a tenerlo.",
+		"Tutti a terra, e {encounter} nemmeno strinato. Su, e con più calma.",
+		"Torneremo per {encounter}. Il fuoco non se ne va, e nemmeno noi.",
+	},
+	["mc.lowhp.w11.001"] = {
+		"Guaritori! Qui sto andando arrosto!",
+		"Brucio, e non per modo di dire! Aiuto!",
+		"Acqua, una cura, qualsiasi cosa!",
+	},
+	["mc.lowhp.w11.002"] = {
+		"Via dal bordo. Se cado adesso, non mi rialzo.",
+		"Sono troppo {g:ferito|ferita} per stare così vicino alla lava. Muoviti.",
+	},
+	["mc.muse.w11.001"] = {
+		"Un re stregone dei Dark Iron evocò il Signore del Fuoco attraverso la pietra per vincere una guerra. La guerra è finita da un pezzo. Il fuoco è rimasto.",
+		"La Searing Gorge, le Burning Steppes, ogni miglio bruciato lassù è cominciato con un'unica evocazione quaggiù. La pessima idea di un solo uomo, che fuma ancora.",
+		"Il primo Thaurissan voleva un'arma contro i nemici. Si ritrovò un padrone, e da allora i Dark Iron tengono la fiamma ben nutrita.",
+	},
+	["mc.muse.w11.002"] = {
+		"Gli Hydraxian Waterlords vogliono le rune spente, tutte quante. La vecchia lite dell'acqua col fuoco, e come secchio hanno scelto me.",
+		"Gli Hydraxian dicono che le rune tengono in forze i luogotenenti del Signore del Fuoco. Spegnile e la corte si indebolisce. L'acqua i rancori se li tiene stretti.",
+	},
+	["mc.muse.w11.003"] = {
+		"piega indietro la testa per abbracciare con lo sguardo un gigante fuso a riposo, una collina di scorie che sposta il peso come chi dorme.",
+		"si immobilizza mentre un gigante di roccia che si raffredda avanza pesante sull'altra riva, lasciando a ogni passo un'impronta che brilla.",
+	},
+	["mc.muse.w11.004"] = {
+		"La Thorium Brotherhood vuole ogni nucleo che riesco a portare fuori di qui. Strano che non scendano mai a prenderseli.",
+		"Su nella Searing Gorge c'è un nano che aspetta questi nuclei con un sorriso e un'incudine. Beato lui.",
+	},
+	["mc.muse.w11.005"] = {
+		"Lassù il fuoco è una cosa che accendi. Quaggiù ha opinioni, servitori e un re.",
+		"In qualunque altro posto il fuoco è un attrezzo. Qui cammina, fa la guardia alle porte e risponde a un signore.",
+		"Fuoco per cucinare, fuoco per scaldarsi le mani, fuoco maledetto quando non vuole prendere. Non avevo mai pensato che potesse guardarmi a sua volta.",
+	},
+	["mc.muse.w11.006"] = {
+		"cambia presa su un'arma il cui metallo si è scaldato fino a pungere, e avvolge l'impugnatura in una striscia di stoffa.",
+		"controlla le fibbie dell'equipaggiamento una per una; quaggiù anche le parti di metallo trattengono il calore.",
+	},
+	["mc.muse.w11.007"] = {
+		"I segugi di quaggiù sono fatti della stessa materia del pavimento. Quando uno si accuccia accanto alla lava sembra un cane che si sistema vicino al focolare.",
+		"Segugi del nucleo, li chiamano. Due teste, una pelle come crosta che si raffredda, e camminano su e giù per la riva come se qualcuno li avesse addestrati.",
+	},
+	["mc.muse.w11.008"] = {
+		"Ragnaros tiene una casa come si deve: signori, segugi, un maggiordomo. Anche il fuoco sotto il mondo vuole qualcuno che apra la porta.",
+		"Un maggiordomo. Il signore di tutte le fiamme ha un intendente, come se questo fosse il maniero di un barone con un problema di lava.",
+		"Oltre i signori e i segugi, un intendente sta alla porta del Signore del Fuoco. Anche qui, prima bisogna superare la servitù.",
+	},
+	["mc.muse.w11.009"] = {
+		"Questa non è una caverna. È una ferita che il mondo non ha mai richiuso, e da lì sono risalite delle cose.",
+		"Ogni passaggio qui l'ha aperto qualcosa di fuso che si faceva strada. Niente è stato scavato. Tutto è stato aperto a fuoco.",
+	},
+	["mc.muse.w11.010"] = {
+		"Chi ha la quintessenza non si allontani. Non torno indietro a piedi per una runa.",
+		"Contate le rune mentre passiamo. Saltarne una vuol dire rifarsi tutta questa strada.",
+	},
+	["mc.muse.w11.011"] = {
+		"Se cadi in un fiume lassù, magari qualcuno ti ripesca. Quaggiù non resterebbe niente da seppellire.",
+		"Sto sempre a un passo dal bordo. La lava non fa prigionieri, e nemmeno cadaveri.",
+		"La lava si prende un piede distratto come la forgia si prende un rottame, senza nemmeno accorgersene.",
+	},
+	["mc.muse.w11.012"] = {
+		"Sotto la città dei Dark Iron, sotto il trono dell'imperatore, sotto tutto. Più in basso c'è solo quello che il fuoco chiama casa.",
+		"Blackrock Depths mi sembrava profondo. Questo è il pavimento sotto il pavimento, e le pareti ronzano.",
+	},
+	["mc.muse.w11.013"] = {
+		"indietreggia dalla riva mentre la lava si gonfia e qualcosa a forma d'onda ne emerge, si guarda intorno e torna a sprofondare.",
+		"guarda un'ondata di roccia fusa sollevarsi dal fiume, tenere una forma per un istante e poi scivolare di nuovo sotto.",
+	},
+	["mc.subzone_enter.w11.001"] = {
+		"entra in {subzone}; il bagliore dal basso getta la sua ombra sulla parete, lunga e tremante.",
+		"passa in {subzone}, dove la roccia scricchiola e ticchetta assorbendo il calore.",
+	},
+	["mc.subzone_enter.w11.002"] = {
+		"Ancora più giù. Il brontolio sotto i piedi qui è più forte.",
+		"{subzone}. Perfino i nomi quaggiù sanno di bruciato.",
+	},
+	["mc.threat.w11.001"] = {
+		"Torna nella tua lava, o ti ci rimetto io.",
+		"Resta nel tuo fiume. Se esci, ti spengo.",
+	},
+	["mc.threat.w11.002"] = {
+		"Agli Hydraxian piacerebbe sapere come ti ho spento.",
+		"Ho spento fuochi più grossi di te. Provaci.",
+	},
+	["mc.victory.w11.001"] = {
+		"E si spegne. Chi è il prossimo da smorzare?",
+		"Si sta raffreddando. Che si rapprenda in pace.",
+		"Finalmente si è raffreddato. Ci è voluta un po' di persuasione.",
+	},
+	["mc.victory.w11.002"] = {
+		"guarda la creatura sbriciolarsi in pezzi neri e vetrosi.",
+		"scalcia via un grumo di scorie che si raffredda; un attimo fa voleva la sua pelle.",
+	},
+	["mc.victory.w11.003"] = {
+		"A terra. Ora bevi qualcosa prima del prossimo.",
+		"Fatto. Le mani mi tremano, e non è paura. È il caldo.",
+	},
+	["mc.victory.w11.004"] = {
+		"Bel lavoro. Occhio al pavimento mentre ci ricomponiamo.",
+		"Un altro della corte del Signore del Fuoco se n'è andato. Avanti.",
+		"Ben fatto, tutti. Controlliamo le rune lungo la strada.",
+	},
+	["nax.battle.w11.001"] = {
+		"Cucito insieme? Allora scuciti.",
+		"Da adesso alla necropoli manca un soldato.",
+		"Torna sul tavolaccio, tu.",
+	},
+	["nax.lowhp.w11.001"] = {
+		"No. Questo posto mi rimetterebbe soltanto al lavoro.",
+		"Non su uno dei loro tavoli. Non io.",
+	},
+	["nax.muse.w11.001"] = {
+		"Ogni abominio in queste sale è stato cucito con persone che un tempo avevano un nome. Scommetto che qualcuno ne teneva il registro.",
+		"Il Cult of the Damned manda avanti questo posto come una bottega: attrezzi appesi ai ganci, tavoli strofinati, ordini affissi. Il lavoro è trasformare i vivi in soldati.",
+	},
+	["nax.muse.w11.002"] = {
+		"Kel'Thuzad serve un padrone lontano, a nord, e governa questa necropoli in suo nome. Un luogotenente che non dorme mai, e non ne ha bisogno.",
+		"L'Argent Dawn dice che la piaga che si prese Lordaeron fu preparata sotto un tetto come questo. Laggiù, le Plaguelands la stanno ancora pagando.",
+	},
+	["nax.victory.w11.001"] = {
+		"si allontana dai resti mentre il freddo risale di nuovo dal pavimento.",
+		"guarda le cuciture che si disfano, poi si volta dall'altra parte.",
+		"scosta con lo stivale un uncino caduto, che scivola sulla pietra illuminata di verde.",
+	},
+	["zg.attack.w11.001"] = {
+		"Giù da quell'altare!",
+		"Ecco un sacrificio che non avevi previsto!",
+	},
+	["zg.battle.w11.001"] = {
+		"Oggi da me Hakkar non avrà sangue.",
+		"I tuoi sacerdoti vogliono sangue. Avranno il tuo.",
+		"Il Soulflayer ha sete. Che resti a bocca asciutta.",
+	},
+	["zg.battle.w11.002"] = {
+		"Un'altra bestiola di qualche loa. Qui c'è qualcosa senza zanne?",
+		"Pelo, squame o piume? In questa città ho perso il conto.",
+	},
+	["zg.battle.w11.003"] = {
+		"Occhio ai rampicanti. In questa città attacca perfino il verde.",
+		"Orecchie aperte. I tamburi coprono tutto, anche i passi.",
+	},
+	["zg.encounter_end.w11.001"] = {
+		"È finita per {encounter}. Lassù sui templi i tamburi hanno perso un colpo, ci giurerei.",
+		"Chiuso il conto con {encounter}. Gli Zandalar vorranno saperlo al più presto.",
+		"{encounter} non salirà più i gradini di quegli altari. La città sembra un po' meno sicura di sé.",
+	},
+	["zg.lowhp.w11.001"] = {
+		"Niente altare per me. Non quello di Hakkar, non oggi.",
+		"Non farò da pasto a un dio che nemmeno prego.",
+	},
+	["zg.lowhp.w11.002"] = {
+		"Indietro. Tutto quello che cade qui finisce su un altare.",
+		"Troppo addentro, troppo {g:ferito|ferita}. La giungla aspetta solo che scivoli.",
+	},
+	["zg.muse.w11.001"] = {
+		"Un tempo i Gurubashi governavano mezza Stranglethorn da queste terrazze. Hanno spezzato il loro stesso impero evocando Hakkar, e adesso qualcuno di loro ci riprova.",
+		"Un impero di troll finito tra rampicanti e macerie, perché i suoi sacerdoti volevano un dio pronto a un loro cenno. Certe lezioni non entrano in testa.",
+		"I gradini sono consumati nel mezzo, dove generazioni di Gurubashi sono salite agli altari. Pochi sono ridiscesi per scelta loro.",
+	},
+	["zg.muse.w11.002"] = {
+		"Pipistrello, serpente, ragno, pantera, tigre: ogni sommo sacerdote qui indossa il potere di un loa come una giacca presa in prestito, e Hakkar tiene in mano il capo di ogni filo.",
+		"I loa degli animali erano onorati in questi templi molto prima del Soulflayer. Ora i loro sacerdoti li hanno legati a lui, e i vecchi spiriti della giungla rispondono a uno assetato.",
+		"Un sacerdote troll che serve un loa di solito ci contratta. Quelli di qui hanno smesso di contrattare. Obbediscono, e i loa obbediscono attraverso di loro.",
+	},
+	["zg.muse.w11.003"] = {
+		"Gli Zandalar hanno mandato emissari fino a Yojamba Isle per chiedere aiuto a gente di fuori. Troll così orgogliosi che chiedono qualcosa a degli estranei: ecco quanto è grave qui dentro.",
+		"A Yojamba Isle gli Zandalar dicono che se Hakkar tornasse a camminare intero in questo mondo, la sua sete non si fermerebbe al limite della giungla. Non mi sembrano tipi che esagerano.",
+		"Gli Zandalar ripagano in favori e vecchi ninnoli ogni pegno strappato ai servi di Hakkar. Una tribù così vecchia non commercia con gli estranei per divertimento.",
+	},
+	["zg.muse.w11.004"] = {
+		"Ogni troll di questa città si tiene una bestiola grossa come un cavallo. Qui nessuno fa niente in piccolo.",
+		"Tigri sulle terrazze, pipistrelli sopra la testa, ragni in ogni porta. Qualcuno qui proprio non sopporta gli ospiti.",
+		"Ho fatto tutta questa strada per un dio del sangue, e finora sono stati soprattutto pipistrelli.",
+	},
+	["zg.muse.w11.005"] = {
+		"passa il pollice su un serpente scolpito nella parete; la pietra è viscida, e gli occhi dell'intaglio sono stati ridipinti di rosso da poco.",
+		"si ferma sul bordo di una terrazza e guarda giù, oltre le chiome, dove il fiume scorre scuro e lento fra i templi in rovina.",
+	},
+	["zg.subzone_enter.w11.001"] = {
+		"sale in {subzone}, dove ogni colonna porta scolpito il volto di un loa, e ogni volto è stato imbrattato di fresco.",
+		"arriva in {subzone}; più in alto i tamburi cambiano ritmo, come se se ne fossero accorti.",
+		"si apre la strada fra i rampicanti ed entra in {subzone}; l'aria si fa pesante e dolciastra di marcio.",
+	},
+	["zg.threat.w11.001"] = {
+		"Torna dai tuoi sacerdoti. Digli che l'altare resta vuoto.",
+		"Un passo ancora e l'offerta sei tu.",
+	},
+	["zg.victory.w11.001"] = {
+		"Un servo in meno per il Soulflayer.",
+		"Hakkar può ricontare i suoi sacerdoti. Ne manca uno.",
+		"Torna dai tuoi loa. Digli che hanno scelto il padrone sbagliato.",
+	},
+	["zg.victory.w11.002"] = {
+		"si pulisce le mani su una grande foglia e alza lo sguardo verso la terrazza successiva.",
+		"si scosta dal caduto mentre la giungla torna a farsi sentire, prima gli insetti.",
+	},
 ]==])

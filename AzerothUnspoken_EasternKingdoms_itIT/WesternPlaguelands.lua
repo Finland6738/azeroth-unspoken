@@ -400,4 +400,166 @@ AU:RegisterRegionalTexts("westernplaguelands", "itIT", "eastern_westernplaguelan
 		"Piove, e la pioggia sa di calderoni mentre cade. Tengo la bocca chiusa e la testa bassa.",
 		"Con la pioggia le Plaguelands sembrano quasi Tirisfal. Non è il complimento che sembra.",
 	},
+	["wpl.a.attack.w11.001"] = {
+		"Ecco il raccolto che ti sei meritato!",
+		"Questo è per ogni fattoria vuota qui attorno!",
+	},
+	["wpl.a.battle.w11.001"] = {
+		"Torna nel solco, tu!",
+		"Questo campo ti ha già sepolto una volta. Stavolta facciamolo come si deve.",
+		"I contadini di Lordaeron meritavano di meglio. Vieni qui.",
+	},
+	["wpl.a.battle.w11.002"] = {
+		"Terra arata sotto i piedi, molle e storta. Stai giù e lascialo venire.",
+		"Attento allo steccato, attento al fosso. Queste fattorie le hanno disegnate per l'aratro, non per combattere.",
+	},
+	["wpl.a.journey.w11.001"] = {
+		"Il grifone si alza da Chillwind e le fattorie scivolano giù nei loro quadrati ordinati e morti, uno steccato dopo l'altro, un campo vuoto dopo l'altro.",
+		"In volo sopra Lordaeron. Da quassù le campagne sembrano ancora in ordine, tutte linee dritte e angoli, come un registro che nessuno farà mai quadrare.",
+	},
+	["wpl.a.landmark.w11.001"] = {
+		"percorre i vicoli vuoti di {landmark}, silenziosi se non per il lago che lambisce le pietre, con il portone di Scholomance che aspetta nel cuore dell'isola.",
+		"si inoltra fra le case sbarrate di Caer Darrow; il paese sembra soltanto abbandonato, finché lo sguardo non trova la rocca e la scuola che vi si nasconde sotto.",
+	},
+	["wpl.a.lowhp.w11.001"] = {
+		"Non in un solco, nel campo di un contadino morto, senza nessuno che mi ritrovi.",
+		"In piedi. Lordaeron ha sepolto abbastanza forestieri.",
+	},
+	["wpl.a.muse.w11.001"] = {
+		"Conta le facce attorno al fuoco di Chillwind: nani, gnomi, un elfo della notte o due, una manciata di umani. Pochi sono nati a Lordaeron, e tutti la difendono.",
+		"Quasi nessuno a Chillwind Camp è cresciuto in questo regno. Barbe di Ironforge, archi di Darnassus, inventori gnomi, e custodiscono un angolo di Lordaeron come fosse l'uscio di casa loro.",
+		"L'Alleanza ha mandato a Chillwind quel che poteva risparmiare, e quel che poteva risparmiare veniva da ogni dove. Un esercito strano. Ma è ancora qui.",
+	},
+	["wpl.a.muse.w11.002"] = {
+		"si ferma sulla soglia aperta di una fattoria; dentro, la tavola è ancora apparecchiata, i piatti coperti da una peluria di polvere grigia e una sedia scostata.",
+		"aggira un cavallino di legno abbandonato nell'erba morta accanto a un pozzo, la vernice sparita da tempo, e riprende a camminare un po' più piano.",
+		"passa la mano su un muretto a secco tirato su da qualcuno di paziente, ogni pietra al suo posto, attorno a un campo dove non crescerà più niente.",
+	},
+	["wpl.a.muse.w11.003"] = {
+		"Scholomance è una scuola. Sotto Caer Darrow il Cult of the Damned tiene maestri e allievi, lezioni ed esami. È questo che non mi fa dormire.",
+		"Da qualche parte sotto quell'isola, studenti con le dita sporche d'inchiostro imparano a rialzare i morti come altri imparano l'alfabeto.",
+		"Una scuola di negromanti, nella vecchia rocca di un signore. Laggiù avranno banchi, e libri, e qualcuno che corregge i compiti.",
+	},
+	["wpl.a.muse.w11.004"] = {
+		"A Chillwind ho chiesto dov'era il pozzo pulito più vicino. Stanno ancora ridendo.",
+		"Ogni giorno l'Argent Dawn mi raccomanda di tenere pulita l'attrezzatura. E ogni giorno mi guardo attorno e mi chiedo con cosa.",
+	},
+	["wpl.a.muse.w11.005"] = {
+		"L'Argent Dawn accetta le Scourgestone come prova del lavoro fatto: schegge strappate ai morti. Una moneta brutta, ma quello che compra è onesto.",
+		"A Chillwind l'Argent Dawn non chiede chi preghi o quale re servi. Solo se starai contro il Flagello, e per quanto tempo.",
+	},
+	["wpl.a.npc_meet.w11.001"] = {
+		"Ogni cassa dietro questo banco è arrivata in groppa a un grifone o sulle spalle di qualcuno. Non mi metto a tirare sul prezzo per un rame.",
+		"Un mercante ai margini delle Plaguelands: frecce, bende, sale, e nessuno che finga che i prezzi siano onesti. Mi sta bene.",
+	},
+	["wpl.a.quest_complete.w11.001"] = {
+		"Chiuso e pagato. Nelle Plaguelands le brutte notizie viaggiano a piedi e le buone in grifone. Questa può prendere il grifone.",
+		"Sistemato. Qualcuno a Chillwind lo segnerà sulla mappa grande, e la mappa non sembrerà diversa. Io so che lo è.",
+	},
+	["wpl.a.quest_complete.w11.002"] = {
+		"La mia parte è fatta. Prendo le monete, e un pasto che non sia cresciuto da queste parti.",
+		"Ecco, è fatto. Qualcuno lo metta per iscritto prima che se lo porti via il vento.",
+	},
+	["wpl.a.quest_progress.w11.001"] = {
+		"Una parte. Il resto è là fuori fra le fattorie, a fare il difficile apposta.",
+		"Un po' fatto, un po' no. Le Plaguelands cedono le cose come un mulo cede la strada: piano, e con un calcio.",
+	},
+	["wpl.a.subzone_enter.w11.001"] = {
+		"arriva a Felstone Field, dove la fattoria ha ancora il suo tetto e il terreno attorno è pallido, sassoso e tutto graffiato da qualcosa che scava.",
+		"raggiunge {subzone}; la casa è in piedi, il fienile è in piedi, e il campo in mezzo è stato rivoltato da mani che non stavano coltivando.",
+	},
+	["wpl.a.victory.w11.001"] = {
+		"Resta giù. All'Argent Dawn serve una prova, e la prova sei tu.",
+		"Un altro da segnare per l'ufficiale di Chillwind.",
+		"Ecco. Un'altra pietra di Flagello tolta da questi campi.",
+	},
+	["wpl.a.victory.w11.002"] = {
+		"rimette in piedi con una mano un paletto caduto, poi riparte.",
+		"si ferma accanto al nemico abbattuto per rialzare la traversa di uno steccato contro il suo palo, più per abitudine che per speranza.",
+	},
+	["wpl.a.weather_change.w11.001"] = {
+		"guarda la nebbia avanzare sui campi morti e inghiottire gli steccati, un palo dopo l'altro.",
+		"resta immobile mentre una nebbia grigia si posa sulle fattorie, finché il fienile più vicino è solo una sagoma e la strada un'ipotesi.",
+	},
+	["wpl.h.attack.w11.001"] = {
+		"Libera la strada per il Bulwark!",
+		"Va' a marcire altrove!",
+	},
+	["wpl.h.battle.w11.001"] = {
+		"Non un passo più vicino a Undercity!",
+		"Marcirai qui fuori, non a Tirisfal!",
+		"Più a ovest di così non vai!",
+	},
+	["wpl.h.battle.w11.002"] = {
+		"sfonda di spalla uno steccato marcio e va all'attacco tra le schegge.",
+		"pianta i piedi fra le stoppie di un campo di grano morto e lascia che il nemico faccia tutta la strada.",
+	},
+	["wpl.h.journey.w11.001"] = {
+		"Il pipistrello mi ha lasciato a Tirisfal e il resto l'ha lasciato ai miei piedi. A est fra i pini, oltre il cancello, e l'aria cambia in un solo passo.",
+		"Oltre il Bulwark nessun posatoio aspetta l'Orda. L'ultimo tratto sono stivali sulla vecchia strada, e la vecchia strada ricorda ogni carro che l'ha percorsa.",
+	},
+	["wpl.h.landmark.w11.001"] = {
+		"{landmark}. Le sue mura hanno tenuto dentro la piaga molto meglio di quanto abbiano mai tenuto fuori qualcosa.",
+		"Andorhal. Di rovine ne ho attraversate, ma le rovine sono vuote. Questa è affollata.",
+	},
+	["wpl.h.lowhp.w11.001"] = {
+		"Non qui. Le guardie della morte non me lo farebbero mai dimenticare.",
+		"C'è un muro che mi aspetta. Togliti di mezzo!",
+	},
+	["wpl.h.muse.w11.001"] = {
+		"Nella Seconda Guerra l'Orda attraversò Lordaeron con fuoco e asce. Ora l'Orda presidia un muro perché qui dentro resti qualcosa di peggio. Il mondo gira in direzioni strane.",
+		"Un tempo i cavalieri di Lordaeron uscivano a cavallo per impedire agli orchi di bruciare queste fattorie. Oggi gli orchi montano la guardia perché i morti non finiscano il lavoro. Nessuno l'aveva previsto.",
+		"Gli umani di questo regno hanno passato un'intera guerra a tenere fuori l'Orda. Adesso l'Orda è qui, sulla loro terra, a combattere ciò che li ha uccisi. La storia ha un umorismo tutto suo.",
+	},
+	["wpl.h.muse.w11.002"] = {
+		"osserva un corvo posarsi su un palo dello steccato, squadrare il campo morto e ripartire senza nemmeno provare a posarsi altrove.",
+		"si ferma dove un viottolo di campagna si biforca; un ramo finisce davanti a un fienile con le porte incatenate dall'esterno.",
+		"si inginocchia accanto a una fila di impronte nel fango grigio: piedi nudi, trascinati, troppi, tutti diretti dalla stessa parte.",
+	},
+	["wpl.h.muse.w11.003"] = {
+		"Al Bulwark qualcuno mi ha chiesto di contare i ghoul lungo la strada. A quaranta ho smesso di contare e ho cominciato ad arrotondare.",
+		"Le guardie della morte volevano un rapporto completo. 'Morti, per lo più, e in cammino' mi è sembrato bastare.",
+	},
+	["wpl.h.muse.w11.004"] = {
+		"Alcune guardie della morte sul muro del Bulwark hanno percorso queste strade quando il cuore batteva ancora. Non dicono mai quale fattoria fosse la loro, e nessuno lo chiede.",
+		"I Reietti al cancello guardano questi campi ogni giorno. Qualcuno di loro deve conoscere i nomi delle fattorie. Nessuno ne pronuncia mai uno.",
+		"Un Reietto sul muro del Bulwark può fissare queste fattorie a est per un'ora senza dire una parola. Nessuno gli chiede cosa cerchi. Qui si impara a non farlo.",
+	},
+	["wpl.h.muse.w11.005"] = {
+		"In quel frutteto ci sono mele sotto un albero morto, intere e intatte. Nessun uccello, nessun coleottero, nemmeno un verme le vuole. Mi dice tutto di questa terra.",
+		"Frutta caduta, vecchia di mesi a giudicare dall'aspetto, e nemmeno un morso. Quando perfino i vermi rifiutano un pasto, non mi serve un druido per capire il terreno.",
+	},
+	["wpl.h.npc_meet.w11.001"] = {
+		"Gli ordini qui arrivano con una mappa, un nome e una direzione, e mai una promessa. Ho avuto padroni peggiori.",
+		"Questo non spreca una parola sulla speranza, solo sul dove e sul quanti. Nelle Plaguelands è una gentilezza.",
+	},
+	["wpl.h.quest_complete.w11.001"] = {
+		"conta le monete una volta, con calma, poi strofina via il sudiciume grigio da ciascuna prima di metterle via.",
+		"accetta la ricompensa e controlla che nel sacchetto non ci sia niente di verde prima di chiuderlo.",
+	},
+	["wpl.h.quest_complete.w11.002"] = {
+		"Da qualche parte a Undercity questo diventerà una riga in un registro. Qui fuori è stata una camminata lunga e brutta. Sono vere tutte e due.",
+		"Consegnato. I Reietti tengono registri precisi; spero che qualcuno accanto a questa voce scriva che puzzava.",
+	},
+	["wpl.h.quest_progress.w11.001"] = {
+		"Non ancora. Metà è fatta, e l'altra metà si nasconde da qualche parte dove si puzza.",
+		"Ci siamo quasi. Questo paese ti fa sudare ogni singolo pezzo.",
+	},
+	["wpl.h.subzone_enter.w11.001"] = {
+		"entra a Northridge Lumber Camp, dove le seghe sono ferme e le cataste di tronchi sono diventate molli e nere.",
+		"cammina fra le baracche di {subzone}; un'ascia è ancora piantata in un ceppo, saldata dalla ruggine.",
+	},
+	["wpl.h.victory.w11.001"] = {
+		"Questo le guardie della morte non dovranno affrontarlo al cancello.",
+		"A terra. Una sagoma in meno che esce dai campi verso Tirisfal.",
+		"Da qualche parte a est, il Flagello si è appena assottigliato un poco.",
+	},
+	["wpl.h.victory.w11.002"] = {
+		"E il tuo turno finisce qui. Niente paga, mi spiace.",
+		"Ecco. Il tuo padrone si cercherà un altro bracciante.",
+	},
+	["wpl.h.weather_change.w11.001"] = {
+		"Il cielo si apre su Lordaeron. I pennacchi dei calderoni salgono dritti, chiari come stendardi, e posso contarli uno per uno.",
+		"Aria limpida, finalmente, e mi mostra cosa nascondeva la foschia: fumo verde che sale da tre fattorie insieme, e da una quarta più lontano.",
+	},
 ]==])

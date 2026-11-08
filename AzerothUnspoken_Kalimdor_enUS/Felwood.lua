@@ -330,4 +330,170 @@ AU:RegisterRegionalTexts("felwood", "enUS", "kalimdor_felwood", [==[
 		"The sky clears, and somehow Felwood looks worse for it: every sick leaf on show.",
 		"Clear sky over the treetops. The forest under it stays as green and wrong as ever.",
 	},
+	["fel.a.attack.w11.001"] = {
+		"Hold still. I'm weeding.",
+		"Here's a little cleansing for you!",
+	},
+	["fel.a.battle.w11.001"] = {
+		"Satyr! Laugh at something else.",
+		"You were kaldorei once. Now you're horns and bad manners.",
+	},
+	["fel.a.battle.w11.002"] = {
+		"ducks a dripping branch and comes up ready, sap on {g:his|her} sleeve.",
+		"slides on the slick black roots, catches {g:his|her} balance, and meets the attack.",
+	},
+	["fel.a.battle.w11.003"] = {
+		"The druids want this glade back. Come here!",
+		"Talonbranch is counting on a quiet road. You're in the way.",
+	},
+	["fel.a.journey.w11.001"] = {
+		"climbs down from the hippogryph at Talonbranch Glade, and the bird shakes its feathers hard, as if to throw off the forest's smell.",
+		"slips off the hippogryph's back at Talonbranch and stands a moment, letting {g:his|her} legs remember the ground.",
+	},
+	["fel.a.landmark.w11.001"] = {
+		"{landmark}. Grass the right color, water I'd actually drink. I hadn't noticed how much I missed both.",
+		"The Emerald Sanctuary: one clean patch of forest, kept clean by stubborn druids and endless work. I'll sit a moment and just look at it.",
+	},
+	["fel.a.lowhp.w11.001"] = {
+		"Not under these trees! I'll fall somewhere greener.",
+		"Back! I'm not feeding these roots.",
+	},
+	["fel.a.muse.w11.001"] = {
+		"The old maps called all of this Ashenvale. Someone drew a new border when the trees went sick, as if a forest could be cut off like a bad limb.",
+		"Felwood wasn't always its own name. It was the north of Ashenvale, until the sickness made it something nobody wanted to claim.",
+		"Somewhere in Darnassus there must be maps where this is still Ashenvale. I wonder if anyone has the heart to redraw them.",
+	},
+	["fel.a.muse.w11.002"] = {
+		"A bear in Ashenvale minds its own business. A bear in Felwood comes looking for you, foam at the jaw and green in the eyes.",
+		"The bears here have gone wrong with the rest of the forest. They don't warn, they don't bluff, they just come. I keep my distance from every thicket.",
+	},
+	["fel.a.muse.w11.003"] = {
+		"brushes against a hanging vine and pulls back sharply, rubbing the sting from {g:his|her} wrist.",
+		"steps carefully around a mushroom as broad as a shield, its cap swelling and settling like something asleep.",
+		"lifts a fallen leaf on a fingertip, studies the faint green glow in its veins, and lets it drop.",
+	},
+	["fel.a.muse.w11.004"] = {
+		"Every druid at the Sanctuary has told me to be patient. I'm starting to think it's how they say hello.",
+		"If the Cenarion Circle wants volunteers to clean this forest, they'll need to hand out much longer gloves.",
+		"A gnome would take one sniff of this air and ask for a bottle to keep some. I'd hand over the bottle and run.",
+	},
+	["fel.a.muse.w11.005"] = {
+		"Talk to a night elf about Felwood and watch the face. They speak of it the way people speak of family fallen ill: quietly, and never for long.",
+		"For the night elves at Talonbranch this isn't a battlefield. It's something of theirs that went sick in front of them, and they still visit.",
+	},
+	["fel.a.npc_meet.w11.001"] = {
+		"The sentry gives me one look and goes back to watching the treeline. In this forest, that's the polite thing to do.",
+		"A guard who never quite turns away from the trees while we speak. Good. In Felwood the trees are where it comes from.",
+	},
+	["fel.a.quest_complete.w11.001"] = {
+		"Handed in. In Felwood a good day is one where the forest is no worse than it was yesterday. Today might be a little better.",
+		"That's one less thing wrong with these woods. The trees won't notice for years. I noticed.",
+	},
+	["fel.a.quest_complete.w11.002"] = {
+		"There, finished. If anyone asks, the stains are permanent.",
+		"That's the job. Now, has anyone got water that didn't come out of a Felwood stream?",
+	},
+	["fel.a.quest_progress.w11.001"] = {
+		"Not finished. Felwood gives things up the way a bramble gives back a sleeve.",
+		"Some of it. The rest is still out in the rot, and the rot never lets go of anything without a struggle.",
+	},
+	["fel.a.subzone_enter.w11.001"] = {
+		"comes into Irontree Woods, where the trunks are dark and hard as old metal and the sickness has crept in all the same.",
+		"walks under the great trees of {subzone}; their bark rings dully against a knuckle, and still green rot seeps from the cracks.",
+	},
+	["fel.a.victory.w11.001"] = {
+		"The songflowers can thank me later.",
+		"Lie down in the moss and stay. It's the softest thing in Felwood.",
+	},
+	["fel.a.victory.w11.002"] = {
+		"picks a burr of sticky green sap off {g:his|her} sleeve and flicks it away.",
+		"steps back from the fallen and scrubs {g:his|her} boots through a drift of dry needles, as if that could help.",
+	},
+	["fel.a.weather_change.w11.001"] = {
+		"watches fog gather between the twisted trunks, faintly green wherever it drifts over the poisoned pools.",
+		"slows as a fog creeps through Felwood, softening the bent trees into shapes that look almost like people.",
+	},
+	["fel.h.attack.w11.001"] = {
+		"Lok'tar! Down in the muck with you!",
+		"Back into the rot!",
+	},
+	["fel.h.battle.w11.001"] = {
+		"Put down the candle, cultist. Nobody's answering.",
+		"Shadow Council? I thought the Horde had finished with your kind.",
+	},
+	["fel.h.battle.w11.002"] = {
+		"Keep it away from the pools. If one of us goes in, let it be this one.",
+		"Fight on the path. The undergrowth here bites back.",
+	},
+	["fel.h.battle.w11.003"] = {
+		"kicks a clump of glowing fungus out of the way and closes in.",
+		"steps between the twisted roots, guard up, the forest dripping green on every side.",
+	},
+	["fel.h.journey.w11.001"] = {
+		"drops from the wyvern's back at Bloodvenom Post and waits while the beast snorts at the forest air and shakes its head.",
+		"lands at Bloodvenom Post; the wyvern folds its wings tight against the heavy air, as if it would rather not touch anything here.",
+	},
+	["fel.h.landmark.w11.001"] = {
+		"edges into {landmark}, where robed cultists keep their watch among broken night elf stonework and the air hums faintly.",
+		"comes among the ruins of Jaedenar; old elven arches lean over the cult's banners, and the candles never seem to burn down.",
+	},
+	["fel.h.lowhp.w11.001"] = {
+		"Don't go down in the moss. It's softer than it looks, and it doesn't let go.",
+		"Up. Lie down here and the forest starts growing over you.",
+	},
+	["fel.h.muse.w11.001"] = {
+		"Even the Warsong won't log this place. When an orc with an axe turns down free timber, something's badly wrong.",
+		"All these trees and not one lumber crew. The Horde has standards after all.",
+	},
+	["fel.h.muse.w11.002"] = {
+		"Nothing that grows, swims or runs in this forest goes in my pot. Dry rations until I'm out, and I'm nearly out.",
+		"Hunger is a poor guide in Felwood. Every berry looks ripe, and every one of them is lying.",
+		"Travel bread again. I'd trade a good deal for a plain roast at the Crossroads, but nothing here is fit to cook.",
+	},
+	["fel.h.muse.w11.003"] = {
+		"pulls a thorn as long as a finger out of {g:his|her} boot, sniffs it, and throws it away quickly.",
+		"brushes a drift of sickly spores off {g:his|her} shoulders and keeps walking, breathing through clenched teeth.",
+		"stops to tighten a strap with {g:his|her} back to a broad trunk and {g:his|her} eyes on the undergrowth.",
+	},
+	["fel.h.muse.w11.004"] = {
+		"The ancients and treants that guarded this forest still walk in it, but they've gone sour. A guardian that's forgotten what it guards is the worst kind of thing to meet.",
+		"Somewhere in these woods the forest's old protectors still move, bark split and leaking green. They guard the sickness now, as faithfully as they once guarded the trees.",
+		"I saw a treant today, lumbering between the trunks. Once it would have tended this place. Now it only knows that strangers are to be crushed.",
+	},
+	["fel.h.muse.w11.005"] = {
+		"The Horde was the Legion's tool once. Felwood shows what the Legion does to a land once its tools are used up.",
+		"Demons wanted this world for themselves, and they used the Horde to try for it. Every rotten tree here is a reminder of what we'd all have become.",
+	},
+	["fel.h.npc_meet.w11.001"] = {
+		"Anything come out of the trees today? ...Right. Of course it did.",
+		"Long watch. At least nobody's making you drink the water.",
+	},
+	["fel.h.quest_complete.w11.001"] = {
+		"takes the reward and sniffs it, the way everyone in Felwood learns to sniff everything.",
+		"pockets the payment and wipes {g:his|her} fingers on a trouser leg already well past saving.",
+	},
+	["fel.h.quest_complete.w11.002"] = {
+		"Handed over. Another week here and I'll stop flinching at every green thing. Not yet, though.",
+		"That's another one closed. Felwood is teaching me patience, mostly by never giving me a reason to relax.",
+	},
+	["fel.h.quest_progress.w11.001"] = {
+		"Not done. Felwood's keeping the rest for itself, for now.",
+		"Halfway. The other half is under a tree I'd rather not look under.",
+	},
+	["fel.h.subzone_enter.w11.001"] = {
+		"comes into Jadefire Glen, where green flame flickers low among the trees and somewhere out of sight a satyr is laughing.",
+		"pushes into {subzone}; the undergrowth is scorched in odd green patches, and cloven hoofprints run through the ash.",
+	},
+	["fel.h.victory.w11.001"] = {
+		"Down. Somebody tell the wyverns it's safe to land.",
+		"That's one less thing between the post and the road south.",
+	},
+	["fel.h.victory.w11.002"] = {
+		"Over. Now I check my boots for anything that's still moving. Twice.",
+		"It's dead. Now for some clean water to rinse with... right. There isn't any.",
+	},
+	["fel.h.weather_change.w11.001"] = {
+		"Rain at last. It doesn't wash Felwood clean; it just carries the sickness down from the leaves into the mud.",
+		"The rain comes down through the canopy already tinted, as if the branches had wrung themselves out on the way.",
+	},
 ]==])

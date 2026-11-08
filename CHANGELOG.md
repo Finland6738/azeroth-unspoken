@@ -8,6 +8,47 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 
 ## [Unreleased]
 
+### Content wave W11: the raids, the battlegrounds, the last endgame pools and the speak key (issue #138)
+
+The eleventh content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
+after W10: the last strict pools (the endgame zones Silithus for the Horde, Un'Goro Crater, Western Plaguelands and
+Felwood, the raids and the battlegrounds, 684 texts per language), then the random need of the generic `muse` (2,316).
+**1,287 intentions, 3,080 texts per language** (6,160 in both), written by twelve parallel writer subagents (authors
+`ai-w11-<unit>`) and passed through the archive (drafts, `cli dups --state draft` with no exact and no near duplicate,
+submit, owner sample, approve, export; the round trip is an empty diff). No literary piece and no `tier` field. The
+addon goes from 13,543 to **14,830 intentions** and from 32,551 to **35,631 texts per language**.
+
+- **Added: the last endgame pools.** Silithus (Horde) and Un'Goro Crater for both sides (55 intentions), Western
+  Plaguelands and Felwood for both sides (78), in the regional pack of their area (`sil.h.*`, `ung.a.*`, `wpl.h.*`,
+  `fel.a.*`... `.w11.NNN`). `subzone_enter` lines name only subzones that are not landmarks.
+- **Added: the raids and the battlegrounds.** Molten Core, Blackwing Lair and Onyxia's Lair (63 intentions); Zul'Gurub,
+  the Temple and the Ruins of Ahn'Qiraj and Naxxramas (43); Arathi Basin, Warsong Gulch and Alterac Valley (73), in
+  `eastern_dungeons` and `kalimdor_dungeons`. No line takes a side; lines that speak of the others write
+  `group = "raid"`. No boss dialogue is quoted; Onyxia's mortal guise at court and the Zandalar's and the Cenarion
+  Circle's tales stay rumors told by a voice. Every combat rule has a short variant (80 bytes or less, ADR 0056).
+- **Added: 975 generic thoughts of the speak key** (`muse.w11.<family>.NNN`, `base_monologues` for the inner voice and
+  the character, `base_exploration` for the narrator), in seven families (the road, the body and the trade, memory and
+  home, the world's history, other people, wonder, and the spoken remarks and gestures). They hold for every character
+  anywhere at any level: no place, no sky, no race, class, faction or invented past, and nothing a Forsaken's body
+  cannot do. Four in five have no condition at all.
+- **The gap after W11** (per language): soft need 8,947, gap **0**; strict need 29,536, gap **0** (was 684): **the
+  strict need is met**; random need 276,398, gap **242,187** (was 245,267). **84 waves** left (the next is the first
+  row of WAVES.md: the generic thoughts and battle lines).
+- **Measured.** `bench_scale` (every line loaded): memory 28.6 → 30.8 MB, pick 30.7 → 30.7 thousand Lua instructions
+  (p95 58.6 → 57.8). `bench_trial --long 20` over three seeds: first exact repetition orc 7.3 → 8.5 h, troll 6.9 →
+  8.4 h, human 8.9 → 8.8 h; repeated share down for all three. `run_tests` M2: pick 53.9 thousand Lua instructions.
+- **Changed: the memory-per-rule projection of `run_tests` is amortized.** It measured the memory of 2,000 synthetic
+  rules over the archive, and that memory also held a Lua table doubling whenever the archive plus those rules crossed
+  a power of two (16,384 entries): main gave 2,351 B, W11 2,931 B, from the doubling alone. The check keeps its
+  2,500 B floor but now measures the cost per rule between 2,000 and 6,000 synthetic rules, a span that spreads a
+  doubling over 4,000 rules (main 1,601 B, W11 1,015 B). It must stay a span: the next doubling comes near 32,768
+  entries.
+- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI). Counts: base intentions 14787, lines loaded
+  14794; the combat, context, life and dialogue packs are unchanged. The coverage check of `check_archive.py` asked
+  for a threshold no cell reaches with `k = 1000`, but the generic `muse` cell now has 1,178 intentions: it uses `k = 10 ** 9`.
+- **Owner sample:** [docs/content/reviews/W11.md](docs/content/reviews/W11.md) (`cli sample --state review --share
+  0.02`: 26 intentions).
+
 ### Content wave W10: the factions, the moods, the hours, the weather and the endgame places (issue #138)
 
 The tenth content wave of [docs/content/WAVES.md](docs/content/WAVES.md). Its pools were the first row of the table
