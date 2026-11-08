@@ -11,6 +11,8 @@ Every window of Azeroth Unspoken, one picture each, with a line on what it is fo
 
 *Illustrative mockup: the whole tour as one animation, a few seconds per window.*
 
+Want every case, not one picture per window? The [assets folder](https://github.com/Finland6738/azeroth-unspoken/tree/main/assets) of the repository has one image for each: the narrator box in every voice and prose depth, every step of the first-run guide, each section of the settings, the output of `/au place`, `/au who` and `/au packs`, and the Italian interface.
+
 ## The narrator box
 
 ![Illustrative mockup: the narrator box in its four voices](../design/mockups/png/narrator-voices.png)

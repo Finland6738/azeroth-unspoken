@@ -8,7 +8,7 @@ A distinctive, mysterious narrative companion for World of Warcraft that calls b
 
 ![Illustrative mockup, not an in-game screenshot: an animated tour of the windows of Azeroth Unspoken, from the narrator box and the chat proposals to the NPC dialogue, the journal, the relationships, the character soul, the settings, the first-run guide and the chat output](docs/design/mockups/interface-tour.gif)
 
-*Illustrative mockups built from the addon code, not in-game screenshots: the addon has not been tested in the real client yet. Every window with a caption: the [Interface tour](https://github.com/Finland6738/azeroth-unspoken/wiki/Interface-Tour) in the wiki, and [docs/design/mockups](docs/design/mockups/README.md).*
+*Illustrative mockups built from the addon code, not in-game screenshots: the addon has not been tested in the real client yet. Every window with a caption: the [Interface tour](https://github.com/Finland6738/azeroth-unspoken/wiki/Interface-Tour) in the wiki, and [docs/design/mockups](docs/design/mockups/README.md). One picture for every case of the interface, each with a one-line caption (the narrator in each voice and depth, every wizard step, each settings section, the chat commands, the Italian interface): the [assets](assets/README.md) folder.*
 
 Azeroth Unspoken is an addon for **World of Warcraft: Forever** (Interface `16001`). It bundles a local narrative engine and a database of hand-written lines, in Italian and English, that react to places, events and what your character does: a new zone, a fight, a serious wound, a level gained, a greeting.
 
