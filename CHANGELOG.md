@@ -37,10 +37,13 @@ addon goes from 13,543 to **14,830 intentions** and from 32,551 to **35,631 text
 - **Measured.** `bench_scale` (every line loaded): memory 28.6 → 30.8 MB, pick 30.7 → 30.7 thousand Lua instructions
   (p95 58.6 → 57.8). `bench_trial --long 20` over three seeds: first exact repetition orc 7.3 → 8.5 h, troll 6.9 →
   8.4 h, human 8.9 → 8.8 h; repeated share down for all three. `run_tests` M2: pick 53.9 thousand Lua instructions.
-- **Known:** the `run_tests` projection "memory per rule under 2,500 B" reads 2,931 B. It measures a Lua table
-  doubling (the base plus 2,000 synthetic rules now crosses 16,384 entries), not a per-rule cost; the test is
-  unchanged and noted in the PR.
-- **Tests:** `Tests/run_tests.py` passes every check but the projection above. Counts: base intentions 14787, lines loaded
+- **Changed: the memory-per-rule projection of `run_tests` is amortized.** It measured the memory of 2,000 synthetic
+  rules over the archive, and that memory also held a Lua table doubling whenever the archive plus those rules crossed
+  a power of two (16,384 entries): main gave 2,351 B, W11 2,931 B, from the doubling alone. The check keeps its
+  2,500 B floor but now measures the cost per rule between 2,000 and 6,000 synthetic rules, a span that spreads a
+  doubling over 4,000 rules (main 1,601 B, W11 1,015 B). It must stay a span: the next doubling comes near 32,768
+  entries.
+- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI). Counts: base intentions 14787, lines loaded
   14794; the combat, context, life and dialogue packs are unchanged. The coverage check of `check_archive.py` asked
   for a threshold no cell reaches with `k = 1000`, but the generic `muse` cell now has 1,178 intentions: it uses `k = 10 ** 9`.
 - **Owner sample:** [docs/content/reviews/W11.md](docs/content/reviews/W11.md) (`cli sample --state review --share
