@@ -370,6 +370,9 @@ SET_MODULES = [("personal", True), ("world", True), ("npc", True), ("memory", Tr
 SET_LIVE = {"personal", "world", "npc", "memory", "storyArcs", "relations", "emotion", "publicChat"}   # Config.MODULE_LIVE
 
 
+SETTINGS_SECTION_TOP = {}   # filled by settings(): the top of each section header, in content units
+
+
 def settings(left, top, reload_needed=False, auto_state="off", others_state="off", rpname=True, view=None, scroll=0,
              literary="rare"):
     """rpname: "Name from Total RP 3" on. view None: the whole scrolling content, unrolled under the title. view = a height: the panel that tall, its
@@ -380,6 +383,7 @@ def settings(left, top, reload_needed=False, auto_state="off", others_state="off
 
     def header(key):
         nonlocal y
+        SETTINGS_SECTION_TOP[key] = y   # where each section starts in the scrolling content (tools/build_assets.py)
         out.append(fs(L(key), "gfnl", left=SET_LABEL_X, top=y + 10))
         out.append(f'<div class="abs" style="left:{SET_LABEL_X}px;top:{y + 32}px;width:{SET_CONTENT_W - 2 * SET_LABEL_X}px;'
                    f'height:1px;background:#54451a"></div>')

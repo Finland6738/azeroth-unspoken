@@ -42,6 +42,13 @@ The pinned packages are in [`requirements.txt`](requirements.txt): Pillow for th
 `tools/proposed.py` builds the `proposed-*` pages; `tools/mockkit.py` and `tools/components.py` hold the shared widgets
 and the windows.
 
+## The assets folder
+
+`tools/build_assets.py` (at the repository root) uses these same tools to build [`assets/`](../../../assets/README.md):
+one PNG for every case of the interface, with clear names and an index. It writes its pages to a temporary folder,
+so it does not change anything here, and adds the cases these pages do not draw (the prose depths, the Italian voices
+and wizard steps, each settings section, more chat commands).
+
 ## In the wiki
 
 The manual pages in `docs/wiki/` show the PNG files with a relative link, `../design/mockups/png/<name>.png`, so they
