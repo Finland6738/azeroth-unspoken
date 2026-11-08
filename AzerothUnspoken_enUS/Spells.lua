@@ -1422,4 +1422,508 @@ NS:AddTexts("enUS", {
 		"A whole road folded into a pebble. Somewhere an elder of Mulgore is shaking a horned head at me.",
 		"The stone warms, and a week of walking simply does not happen. The tauren who crossed Kalimdor on foot would call it cheating, and they would be right.",
 	},
+	["race.gnome.attack.w09.001"] = {
+		"Measured twice, struck once!",
+		"Calibrated, aimed, delivered!",
+		"Right on the mark! I checked!",
+	},
+	["race.gnome.attack.w09.002"] = {
+		"Gnomeregan sends this one!",
+		"A small gift from the exiles!",
+	},
+	["race.gnome.attack.w09.003"] = {
+		"Low and fast. Big things always forget to look down.",
+		"Go for the knees. They're at eye level anyway.",
+	},
+	["race.gnome.attack.w09.004"] = {
+		"darts in, strikes, and is already somewhere else before the foe has finished turning.",
+		"lands the blow with a little hop of effort, small and startlingly precise.",
+		"slips in under the foe's reach, strikes, and springs back out like a released catch.",
+	},
+	["race.gnome.buff.w09.001"] = {
+		"Systems primed. Whatever comes next meets a gnome at full capacity.",
+		"Upgrade installed. Feels nice, like a fresh drop of oil in every joint.",
+		"There, settled in. Ready to run.",
+	},
+	["race.gnome.buff.w09.002"] = {
+		"Optimized! Let's go and find something to test it on.",
+		"All tuned up. The road can do its worst; I'll be taking notes.",
+	},
+	["race.gnome.buff.w09.003"] = {
+		"rolls {g:his|her} shoulders and gives a short nod, as if something inside had just clicked into place.",
+		"flexes small fingers one by one, like a tinker checking every joint of a delicate mechanism.",
+		"straightens with a satisfied little hum, ready for whatever is next.",
+	},
+	["race.gnome.buff.w09.004"] = {
+		"Upgrade installed, {target}! No refunds, but also no charge.",
+		"There. You're running at better specs now, {target}.",
+		"All set! Consider that a free improvement, gnome-certified.",
+	},
+	["race.gnome.heal.w09.001"] = {
+		"Patch and proceed. Field repairs are never pretty, only fast.",
+		"Seal the leak, check the pressure, keep going.",
+		"Wound closed. Note to self: fewer wounds.",
+	},
+	["race.gnome.heal.w09.002"] = {
+		"Repaired and running! A few scuffs, but the frame is sound.",
+		"Back in working order! Warranty void, naturally.",
+	},
+	["race.gnome.heal.w09.003"] = {
+		"inspects the closing hurt with the critical eye of someone grading a repair job.",
+		"pokes gingerly at the mended spot and gives it a grudging passing mark.",
+	},
+	["race.gnome.heal.w09.004"] = {
+		"Tastes like a laboratory accident, works like a small miracle. The best ones usually do.",
+		"Bubbly, bitter, faintly glowing. Down it goes; gnomes trust any recipe that glows.",
+	},
+	["race.gnome.heal.w09.005"] = {
+		"Topping up the demon from my own reserves. Even a furnace from the Nether needs feeding.",
+		"My life, trickling into the demon. Maintenance is maintenance, whatever the machine.",
+	},
+	["race.gnome.heal.w09.006"] = {
+		"goes a shade paler as {g:his|her} own strength drains into the demon, and keeps {g:his|her} chin up regardless.",
+		"frowns up at the demon looming over {g:him|her} while feeding it from {g:his|her} own vigor, like someone refueling a very ungrateful engine.",
+	},
+	["race.gnome.travel.w09.001"] = {
+		"A pebble that folds the whole road into a moment. I'd give a great deal to see the enchantment from the inside, and the stone would never forgive me.",
+		"Stone in hand. It's the one gadget in my pocket I'm not tempted to take apart, mostly because it would never work again.",
+		"The stone warms and tugs. I have no idea how it works, which for a gnome is the most irritating kind of magic there is.",
+	},
+	["race.orc.attack.w09.001"] = {
+		"Red earth and green skin, all behind this one!",
+		"Here's some of that orc strength you've heard about!",
+		"Hit hard, hit first: that's how orcs do it!",
+	},
+	["race.orc.attack.w09.002"] = {
+		"bares {g:his|her} tusks, and the attack goes out with a grunt from deep in the gut.",
+		"narrows {g:his|her} eyes, tusks showing, and puts everything into it.",
+		"snarls, low and short, like a Durotar wolf that warns once before it bites.",
+	},
+	["race.orc.attack.w09.003"] = {
+		"Strength without rage. The elders say the Warchief taught us that, and it lands just as hard.",
+		"No fury needed. Steady hands strike truer than a burning head.",
+	},
+	["race.orc.attack.w09.004"] = {
+		"Too slow. Orcs don't wait for permission.",
+		"You were still thinking about it. I wasn't.",
+		"Hesitate in front of an orc once. Just once.",
+	},
+	["race.orc.buff.w09.001"] = {
+		"Ready. Strength isn't something an orc hoards; it's for whoever needs it, and sometimes that's me.",
+		"Set. Whatever comes now meets something prepared.",
+	},
+	["race.orc.buff.w09.002"] = {
+		"rolls {g:his|her} shoulders and gives a low grunt, like a wolf settling before the hunt.",
+		"squares up, tusks set, the readiness of {g:his|her} people plain in the stance.",
+		"plants {g:his|her} feet and lets the readiness settle in, steady as red rock.",
+	},
+	["race.orc.buff.w09.003"] = {
+		"There. Now the road can bring what it likes.",
+		"Good. Whatever's waiting out there is in for an unpleasant surprise.",
+		"Prepared. Durotar teaches you that much: nothing out there waits for you to be ready.",
+	},
+	["race.orc.buff.w09.004"] = {
+		"Preparation is a kind of honor too. You owe it to whoever's counting on you.",
+		"Thrall's orcs don't stumble in unready. That ended with the old Horde.",
+	},
+	["race.orc.heal.w09.001"] = {
+		"Closing up. Orcs heal the way we argue: stubbornly, and with a lot of grumbling.",
+		"Better. The body knows its job; it just complains about it, like any orc.",
+		"Mending. Grumbling about it, too, but mending.",
+	},
+	["race.orc.heal.w09.002"] = {
+		"Pain? I've heard of it. Not impressed.",
+		"That's patched. Pain can wait outside with the rest of the complainers.",
+		"Hurt? A little. Worried? Not at all.",
+	},
+	["race.orc.heal.w09.003"] = {
+		"Teeth clenched round the sting, and then it's gone. Orcs don't make a ceremony of mending.",
+		"No fuss. A wound is a debt the body pays off; I just stand there while it does.",
+	},
+	["race.orc.heal.w09.004"] = {
+		"flexes a green hand, watches the torn skin pull closed, and grunts as if it were owed.",
+		"rolls a shoulder until the stiffness gives, then nods at it, as at a stubborn wolf that finally obeyed.",
+	},
+	["race.orc.heal.w09.005"] = {
+		"Patched up and needed. There's no time to be hurt with work still standing in front of me.",
+		"Mend fast. Whatever's left out there won't wait while I lick my wounds.",
+		"Good enough. The rest of the healing can happen on the move.",
+	},
+	["race.orc.heal.w09.006"] = {
+		"That one would have made a fine scar. Orcs like scars. Pity.",
+		"Almost a scar worth showing off. Almost.",
+	},
+	["race.orc.heal.w09.007"] = {
+		"Careless. I walked straight into that one. The next foe gets more respect and less of my blood.",
+		"My own fault, that. Pride swung first and thought second.",
+	},
+	["race.orc.heal.w09.008"] = {
+		"Good. On my feet and twice as stubborn.",
+		"There. Upright, and in a worse mood for whoever's next.",
+		"Up again. Whatever knocked me down should have finished the job.",
+	},
+	["race.orc.heal.w09.009"] = {
+		"Green hide, hard as a kodo's. The wound's already giving up.",
+		"Orcs mend like the land in Durotar: slowly, harshly, and for good.",
+	},
+	["race.orc.heal.w09.010"] = {
+		"Wrap it tight enough to make the eyes water. If it doesn't sting, it isn't tied.",
+		"Cloth around it, pulled hard. Green skin under white linen; the linen won't stay white long.",
+	},
+	["race.orc.heal.w09.011"] = {
+		"A green stone for a green orc. At least we match.",
+		"Cold in the palm, warm in the gut. Strange little rock. Good little rock.",
+	},
+	["race.orc.heal.w09.012"] = {
+		"Easy, {target}. The spirits of earth and water are listening. Let them work.",
+		"Don't move. The elements owe me nothing, but they're generous today.",
+		"Be still, {target}. The earth has mended worse than you.",
+	},
+	["race.orc.heal.w09.013"] = {
+		"There, {target}. Try to bleed less; I'm not a well.",
+		"All closed up. Next time, duck.",
+		"Mended. You owe me a drink and an explanation.",
+	},
+	["race.orc.heal.w09.014"] = {
+		"murmurs low words to the spirits, one green hand held over the wounded.",
+		"speaks to the elements in a rough, quiet voice, the way an orc speaks to an old friend.",
+	},
+	["race.orc.heal.w09.015"] = {
+		"The shamans' ways were nearly lost, the elders say, until the Warchief called the spirits again. Every wound I close, I owe him a little.",
+		"Breaking is easy. Orcs got very good at it. Mending is the harder craft, and the better.",
+	},
+	["race.orc.heal.w09.016"] = {
+		"Back in it, {target}. The Horde doesn't leave its own in the dirt.",
+		"On your feet. Orcs carry their wounded, but I'd rather you walked.",
+		"Stand, {target}. There's honor in getting up.",
+	},
+	["race.orc.heal.w09.017"] = {
+		"Spirits, I asked and you answered. I'll thank you properly when this is over.",
+		"The elements gave freely. An orc remembers a debt like that.",
+	},
+	["race.orc.heal.w09.018"] = {
+		"A little of my own strength, fed to the demon. Bound and fed, and it serves; the other way round was the old Horde's mistake.",
+		"Feed it from my own veins and keep the leash short. The old Horde let the demons hold the leash. Not me.",
+	},
+	["race.orc.rezother.w09.001"] = {
+		"Not yet. The ancestors can keep your seat warm a while longer.",
+		"Your road isn't done. The ancestors will have to be patient.",
+		"Stay a while longer. There's still work for you on this side.",
+	},
+	["race.orc.rezother.w09.002"] = {
+		"I called, and something answered from very far off. The spirits are kind, the shamans say, when the call is honest.",
+		"Pulled back from the edge. Orcs have lost enough to death already; this one it doesn't get.",
+	},
+	["race.orc.rezother.w09.003"] = {
+		"kneels, one fist pressed to the ground, and waits with grim patience for life to take hold.",
+		"lowers {g:his|her} head and murmurs something rough and low, a plea to whatever spirits listen.",
+	},
+	["race.orc.travel.w09.001"] = {
+		"A hearthstone: the one bit of magic every orc trusts. It knows only one word, and the word is home.",
+		"I squeeze the stone and think of red dust. It is the closest thing an orc has to a prayer that always gets answered.",
+		"The stone pulls. Some orcs grumble that walking builds character. Nobody grumbles on the way home.",
+	},
+	["race.scourge.attack.w09.001"] = {
+		"Here's a chill for you, straight from Tirisfal!",
+		"Brill sends its worst!",
+		"A little Forsaken spite, delivered by hand!",
+	},
+	["race.scourge.attack.w09.002"] = {
+		"strikes with a jerky, puppet-like snap of the arm, no strain on the dead face at all.",
+		"lunges with the unnatural quickness of something that no longer feels its own joints.",
+		"moves in with a rattle of loose bones and a blow that seems to come from nowhere.",
+	},
+	["race.scourge.attack.w09.003"] = {
+		"No need to rest between blows. No lungs to fill, no heart to calm. Keep going.",
+		"The dead don't tire in the arms. Again. And again.",
+	},
+	["race.scourge.attack.w09.004"] = {
+		"And another! I've nowhere else to be.",
+		"Patience is the one thing the grave gave me plenty of. Here's more.",
+		"Don't wait for me to tire. You'll be waiting a long while.",
+	},
+	["race.scourge.buff.w09.001"] = {
+		"Something settles over me, steady and cold. Good. I prefer my readiness cold.",
+		"Prepared. The living get butterflies at a moment like this. I get a pleasant absence of them.",
+		"Ready. No nerves to quiet. That's the one gift the grave gave freely.",
+	},
+	["race.scourge.buff.w09.002"] = {
+		"There. Ready to go, or as ready as a corpse gets.",
+		"All set. Don't tell me I look better; I know exactly how I look.",
+		"Ready. The dead are always early; we have nothing else to do.",
+	},
+	["race.scourge.buff.w09.003"] = {
+		"tightens a loose strap, rolls a stiff neck until it clicks, and turns toward whatever comes next.",
+		"straightens up with a creak of dry sinew, every preparation made, and waits for nothing.",
+	},
+	["race.scourge.buff.w09.004"] = {
+		"Here, {target}. Take a little of what keeps me going. I won't miss it.",
+		"Take this. It will hold you longer than you'd think. Rather like me.",
+		"Go on, {target}. You'll carry it better than I would.",
+	},
+	["race.scourge.buff.w09.005"] = {
+		"Strengthening allies of my own choosing. The Lich King would be appalled; that alone makes it worth doing.",
+		"I hand out protection now, freely, to whom I please. No one ordered it. That's the best part.",
+		"Kindness from one of the dead. Let them make of it what they like; I'll make of it what I like.",
+	},
+	["race.scourge.heal.w09.001"] = {
+		"Hold still, {target}. My hands are cold, but they know what they're doing.",
+		"Easy now. Cold hands, steady work. You'll mend.",
+		"Don't flinch at the chill, {target}. It's only me, putting you back together.",
+	},
+	["race.scourge.heal.w09.002"] = {
+		"There. Mended by a corpse. Tell that one at the inn, {target}.",
+		"Better? Good. Try not to think too hard about who fixed you.",
+		"All patched. Yes, by one of the dead. You're welcome, and you may shudder later.",
+	},
+	["race.scourge.heal.w09.003"] = {
+		"Strange work for one of the dead, this mending. I find I'm good at it, which is stranger still.",
+		"I put others back together the way no one ever put me back together. Carefully. It seems the least I can do.",
+		"Whatever I lost in the grave, the knack for mending came through. Funny, what survives.",
+	},
+	["race.scourge.heal.w09.004"] = {
+		"bends over the wounded one with gray, careful hands, working in a silence that is oddly gentle.",
+		"lays cold fingers on the wound with surprising tenderness, as though afraid of leaving frost behind.",
+	},
+	["race.scourge.heal.w09.005"] = {
+		"The Light still answers me, {target}, though it stings going through. Worth it.",
+		"There. The Light burns a little in my hands; it does its work on you all the same.",
+	},
+	["race.scourge.heal.w09.006"] = {
+		"Stop squirming. I've mended worse, and some of the worst was me.",
+		"Sit. Hold. There. And stop staring at my stitches; yours will be neater.",
+		"Quit fidgeting, {target}. I'm faster when nobody watches my hands.",
+	},
+	["race.scourge.heal.w09.007"] = {
+		"The Horde tolerates us because we are useful. Fine. Let them see how useful, one closed wound after another.",
+		"Every ally I keep standing is an argument for the Forsaken. I intend to win the argument.",
+	},
+	["race.scourge.heal.w09.008"] = {
+		"You'll live, {target}. Take it from an expert in the alternative.",
+		"You'll be fine. I know a great deal about the other outcome, and this isn't it.",
+	},
+	["race.scourge.heal.w09.009"] = {
+		"The dark has enough of us already. It's not getting you.",
+		"Not yet, {target}. Trust me, there's no hurry to get where I've been.",
+	},
+	["race.scourge.heal.w09.010"] = {
+		"The dead have little life to spare, and here I am pouring it into my demon. Someone should audit me.",
+		"Whatever keeps me walking, I'm sharing with the thing at my heel. It had better be grateful. It won't be.",
+	},
+	["race.scourge.heal.w09.011"] = {
+		"lets a thin, sickly thread of {g:his|her} own unlife flow into the demon, and turns a shade more gray for it.",
+		"feeds the demon from {g:his|her} own stitched body, unmoved, as one might pour oil into a lamp.",
+	},
+	["race.scourge.heal.w09.012"] = {
+		"The flesh pulls shut like a drawstring. No warmth comes with it. It never does.",
+		"Torn edges creep back toward each other, slow and patient as roots. Not pretty, but it holds.",
+		"The wound knits closed, cold and tidy. My body mends like furniture: without complaint, without comfort.",
+	},
+	["race.scourge.heal.w09.013"] = {
+		"There. Held together for another day. That's all I ever ask.",
+		"Patched. Not handsome, but nothing about me has been handsome for years.",
+		"Mended enough. The rest can stay ugly; it's used to it.",
+	},
+	["race.scourge.heal.w09.014"] = {
+		"The bones settle back where they belong. The rot steps back a pace. We'll argue again later, the rot and I.",
+		"Decay held off a little longer. It's patient; so am I.",
+		"The rot loses a little ground today. It will be back. It always comes back, and I always meet it.",
+	},
+	["race.scourge.heal.w09.015"] = {
+		"watches a gash seal itself shut, then tugs at the edges as if testing a knot.",
+		"presses the closing wound flat with two fingers, the way a tailor smooths down a fresh seam.",
+	},
+	["race.scourge.heal.w09.016"] = {
+		"Enough of that. Back to it before anything else falls off.",
+		"Closed up. Back in, before I lose interest.",
+	},
+	["race.scourge.heal.w09.017"] = {
+		"Pain comes back to me faintly as the wound closes, like a word half-remembered. I almost miss it when it goes.",
+		"The living feel relief when a wound closes. I feel a dull, distant quiet. It counts, I suppose.",
+	},
+	["race.scourge.heal.w09.018"] = {
+		"That one was my own fault. The dead have no excuse for being careless; we've seen where it leads.",
+		"I let that blow through. Careless. Being dead isn't the same as being invincible, however it feels.",
+	},
+	["race.scourge.heal.w09.019"] = {
+		"Linen round the gash, pulled tight. The dead don't bleed much, but we do come apart. This keeps the pieces honest.",
+		"A bandage for a body that barely bleeds. It's less a dressing than a bit of extra stitching.",
+	},
+	["race.scourge.heal.w09.020"] = {
+		"A stone full of someone's stolen vigor. I won't ask whose. I'm in no position to judge.",
+		"A warlock's stone, closed in the fist. Borrowed life for a body that runs entirely on borrowed time.",
+	},
+	["race.scourge.heal.w09.021"] = {
+		"Closed. Now, where were we? Ah yes: you, losing.",
+		"The stitches hold. Let's try that again, and this time I'm ready.",
+		"That's mended. The Dark Lady didn't free me so I could fall over a scratch.",
+	},
+	["race.scourge.heal.w09.022"] = {
+		"sits with the mending a moment, utterly still, no breath drawn and none needed, until the torn places have quietly gone away.",
+		"flexes the newly closed hand once, twice, and studies it with the detached curiosity of an apothecary.",
+	},
+	["race.scourge.rezother.w09.001"] = {
+		"Up you get. Trust me, it's better this way round; I've tried the other.",
+		"Back with us. Count yourself lucky: when I came back, nobody asked me first.",
+		"On your feet. You're getting the gentle version of what happened to me.",
+	},
+	["race.scourge.rezother.w09.002"] = {
+		"I know what rising feels like. I'm making sure this one is kinder: whole, and still their own.",
+		"Brought back with mind intact and will untouched. That's how it should be done. I would know.",
+	},
+	["race.scourge.rezother.w09.003"] = {
+		"Keep this close. If you fall, you'll get up again. I know the way back; I've walked it.",
+		"Insurance against the grave. Take it from someone who went without.",
+	},
+	["race.scourge.travel.w09.001"] = {
+		"The hearthstone warms in my hand. Strange, to feel warmth coming from a stone and not from my own fingers.",
+		"A stone that pulls me home. Death took me by the hand once, too; this grip is the gentler of the two.",
+		"One squeeze of the stone and the miles vanish. For someone who once walked out of a grave, it's hardly the strangest trip.",
+	},
+	["race.troll.attack.w09.001"] = {
+		"From Sen'jin, tusks and all!",
+		"Take that, and take it home with you!",
+		"Long reach, short temper!",
+	},
+	["race.troll.attack.w09.002"] = {
+		"throws everything behind the attack, tusks bared, with a sharp hiss.",
+		"lets out a short cackle as it hits home.",
+		"grins wide as it lands, tusks first.",
+	},
+	["race.troll.attack.w09.003"] = {
+		"Strike where it's soft. The jungle taught us that before anyone taught us anything.",
+		"Quick and sure. A hunter's patience, then everything at once.",
+		"Wait for it... now. Like stalking in the long grass.",
+	},
+	["race.troll.attack.w09.004"] = {
+		"Try that one on for size!",
+		"How about another, mon? I've got plenty.",
+	},
+	["race.troll.buff.w09.001"] = {
+		"A tingle along the long bones, then quiet. Ready.",
+		"Prepared. A hunter in the jungle readies before the hunt, never during.",
+		"Set. Now whatever comes will find me awake and grinning.",
+	},
+	["race.troll.buff.w09.002"] = {
+		"There. Now I'm a troll with a plan. Rare thing, mon.",
+		"Everything in place, and I'm very pleased with myself.",
+		"Good. Now I'm ready for trouble, and trouble had better be ready for me.",
+	},
+	["race.troll.buff.w09.003"] = {
+		"shakes out {g:his|her} long arms one at a time, loose and ready for the road.",
+		"taps one tusk twice with a fingertip, a small private habit before setting off.",
+	},
+	["race.troll.buff.w09.004"] = {
+		"Here, {target}. A little something to see you through what's coming.",
+		"Take this with you. The road is kinder to those who carry a little extra.",
+		"There. Go well, and come back with all your limbs where they belong.",
+	},
+	["race.troll.buff.w09.005"] = {
+		"Done. The Darkspear share what they have, and this is what I have.",
+		"That'll hold a while. A small gift, and a troll gives gifts gladly.",
+		"Shared. In Sen'jin nobody eats alone, and nobody sets off unready either.",
+	},
+	["race.troll.heal.w09.001"] = {
+		"Closing up. Troll flesh never needed much encouragement, only a moment.",
+		"There. Skin pulls together, knits, forgets. I wish my pride healed as fast.",
+		"Mending. Trolls heal the way the jungle grows back over a path: fast, and without asking.",
+	},
+	["race.troll.heal.w09.002"] = {
+		"Better. I'd have healed anyway, but I'm in a hurry today.",
+		"Good as new. Well, good as yesterday, and yesterday was fine.",
+	},
+	["race.troll.heal.w09.003"] = {
+		"Careless. A raptor that bleeds like that gets eaten by the next raptor. Learn, troll.",
+		"That one was my own fault. The jungle doesn't forgive twice, the hunters say.",
+	},
+	["race.troll.heal.w09.004"] = {
+		"Up and ready. Whoever did that, I'm coming back for them.",
+		"Patched. Whatever comes next, it meets a whole troll.",
+		"Back on my feet. Long legs, short memory for pain.",
+	},
+	["race.troll.heal.w09.005"] = {
+		"runs a long thumb over the closing wound and gives a grunt of approval.",
+		"flexes {g:his|her} long fingers, watching the torn skin draw itself back together.",
+		"rolls one shoulder, then the other, testing the mended flesh with mild interest.",
+	},
+	["race.troll.heal.w09.006"] = {
+		"Better. I thank the spirits for a body this stubborn, though they'd say I give it too much practice.",
+		"The witch doctors say troll blood remembers the jungle. Right now it remembers how to close a wound.",
+	},
+	["race.troll.heal.w09.007"] = {
+		"Cloth on a troll is mostly decoration. Still, it keeps the flies off while the skin gets busy.",
+		"Long arms take a long bandage, and I always run short around the elbow.",
+	},
+	["race.troll.heal.w09.008"] = {
+		"Tastes like swamp water and old coins. Works, though.",
+		"Down in one gulp. A witch doctor's brew tastes worse and does less.",
+	},
+	["race.troll.heal.w09.009"] = {
+		"Trolls hardly scar. Sometimes I wish we did; a few marks might remind me to be careful.",
+		"By tomorrow the wound will be gone, and the lesson with it. That's the trouble with healing fast.",
+		"Shut already. Troll flesh has a short memory; I try to keep a longer one for it.",
+	},
+	["race.troll.heal.w09.010"] = {
+		"Enough fuss. It's closed. Let's go.",
+		"That'll hold. Trolls don't sit around nursing scratches.",
+	},
+	["race.troll.heal.w09.011"] = {
+		"Easy, {target}. The spirits are listening; let them work.",
+		"Hold still a moment. This mends faster if you stop wriggling.",
+		"Breathe. Whatever spirit is listening, it's on your side right now.",
+	},
+	["race.troll.heal.w09.012"] = {
+		"There. You don't heal like a troll, so I'll do the healing for both of us.",
+		"All better. Try ducking next time; ducking is cheaper than me.",
+		"Patched up, {target}. Off you go, and keep your head lower.",
+	},
+	["race.troll.heal.w09.013"] = {
+		"murmurs low over the wounded, long fingers spread wide, swaying a little as the healing takes hold.",
+		"hums a rolling Darkspear tune under {g:his|her} breath while the wound draws closed.",
+		"clicks {g:his|her} tongue against a tusk, intent, as the color comes back to the hurt one's face.",
+	},
+	["race.troll.heal.w09.014"] = {
+		"Trolls heal on their own; most folk don't. Lending them a little of what my people have feels only fair.",
+		"Someone else's wound, closing under my hands. It feels better than closing my own.",
+	},
+	["race.troll.heal.w09.015"] = {
+		"The loa, the Light, the spirits: I don't ask which one answered. I just thank them all.",
+		"Whatever spirit listens, it listened. I'll leave something by the fire for it later.",
+	},
+	["race.troll.heal.w09.016"] = {
+		"Up, {target}. Nobody falls while a Darkspear healer is watching.",
+		"You fight, I mend. That's the deal.",
+	},
+	["race.troll.heal.w09.017"] = {
+		"Stop bleeding on my feet. There. Better.",
+		"You'll live. Try not to make me regret it.",
+		"Quit squirming. I'm good, but I'm not that good.",
+	},
+	["race.troll.heal.w09.018"] = {
+		"So fragile, the ones who don't grow back. I keep them stitched together as best I can.",
+		"Every heal I give is a small argument with death. This one I won.",
+	},
+	["race.troll.heal.w09.019"] = {
+		"leans over the hurt one and blows softly across the wound, a gesture that looks older than any spell.",
+		"spreads both hands and speaks a few rolling words in the trolls' own tongue, steady and unhurried.",
+	},
+	["race.troll.heal.w09.020"] = {
+		"Stay with me, {target}. Eyes up here; the wound can manage without you watching it.",
+		"There we go. Put back together. Mostly.",
+	},
+	["race.troll.rezother.w09.001"] = {
+		"Come back. The loa can wait for you a little longer.",
+		"Up you get. The spirits weren't ready for you, and neither was I.",
+		"Not your time. I asked nicely, and the spirits agreed.",
+	},
+	["race.troll.rezother.w09.002"] = {
+		"The witch doctors say the dead walk a long beach before they go. I just called someone back from it.",
+		"A spirit turned around on its road and came back. It always feels like a small wonder, and like a debt.",
+		"Back from the spirits. Breathe slow. The world is loud after the quiet.",
+	},
+	["race.troll.travel.w09.001"] = {
+		"A turn of the stone and the road folds up behind me. The witch doctors would say the spirits carry me. I say thanks to whoever it is.",
+		"The stone hums in my palm. Shortcut magic. The loa are probably laughing, watching a troll skip a week of walking.",
+		"Close the fist, think of the hearth, and the world smears like wet paint. My people crossed a sea on crowded boats; I cross a continent in a breath.",
+	},
 }, "base_spells")

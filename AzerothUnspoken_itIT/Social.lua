@@ -471,4 +471,166 @@ NS:AddTexts("itIT", {
 		"Alla Madre Terra, che ci nutre, e a chi cucina, che fa la parte faticosa!",
 		"Alle mandrie, alla caccia e alle mani che la cucinano! Che la Madre Terra ne prenda per prima la sua parte.",
 	},
+	["race.gnome.farewell.w09.001"] = {
+		"Ciao per ora! Occhio alla gente alta: non sempre guarda in basso.",
+		"Vai pure! Se si rompe qualcosa, mandala a me. Se sei tu a romperti, rivolgiti a un sacerdote.",
+		"Arrivederci! Si torna al lavoro. Da qualche parte c'è qualcosa da regolare.",
+	},
+	["race.gnome.farewell.w09.002"] = {
+		"Abbi cura di te. Noi gnomi sappiamo quanto in fretta si perde una casa: non perderti anche tu.",
+		"Ciao, e a presto. Vieni a trovarmi a Tinker Town quando puoi. Metterò su il bollitore.",
+		"Buona strada. Scrivimi, se puoi. Mi piacciono le lettere: sono l'unica cosa che non smonterei mai.",
+	},
+	["race.gnome.greet.w09.001"] = {
+		"Ciao! Non badare a me, sono solo quaggiù a essere {g:delizioso|deliziosa}.",
+		"Oh, ciao! È una fibbia nuova, quella? È una buona fibbia.",
+		"Salve! Domanda veloce, senza nesso: quanto misuri, di preciso? Per la scienza.",
+	},
+	["race.gnome.greet.w09.002"] = {
+		"Eccoti! Ottimo, ora ho qualcuno a cui spiegare la mia ultima idea.",
+		"Ciao, ciao! Vieni, siediti, raccontami tutto, soprattutto le parti complicate.",
+		"Che bell'incontro! Gnomeregan ti manda i suoi saluti. Da lontano. Molto lontano, per ora.",
+	},
+	["race.gnome.jest.w09.001"] = {
+		"Quanti gnomi servono per aggiustare una lampada? Uno, ma dopo la lampada suona anche musica e ti dice che tempo fa.",
+		"I nani ci chiamano bassi. Noi li chiamiamo «piacevolmente imbottiti». Tutti contenti.",
+	},
+	["race.gnome.pray.w09.001"] = {
+		"Chiunque mandi avanti questo mondo: un po' meno guasti, oggi, per favore, e un po' più di fortuna. Al resto penso io.",
+		"Se lassù qualcuno ascolta: tieni interi i miei amici e confusi i trogg. È tutta la richiesta. Grazie!",
+	},
+	["race.gnome.thanks.w09.001"] = {
+		"Grazie! Era proprio l'aiuto che mi serviva, fino alla terza cifra decimale.",
+		"Oh, grazie! Mi hai risparmiato un sacco di preoccupazioni, e noi gnomi ci preoccupiamo in modo molto efficiente.",
+		"Ti sono {g:obbligato|obbligata}! Ricambierò con gli interessi. Interessi composti, se hai pazienza.",
+	},
+	["race.gnome.thanks.w09.002"] = {
+		"Grazie. Da quando la città è caduta, la gentilezza degli altri è ciò che ha tenuto in piedi il mio popolo. Ne conto ogni briciola.",
+		"Grazie, davvero. Noi gnomi abbiamo perso molto, ma non le buone maniere. E nemmeno la gratitudine.",
+	},
+	["race.gnome.toast.w09.001"] = {
+		"A Gnomeregan! Che possiamo rivederne le sale, ripulite e ronzanti!",
+		"Alzate i boccali! Alle mani ingegnose, ai piedi veloci, e al giorno in cui torneremo a casa.",
+	},
+	["race.orc.farewell.w09.001"] = {
+		"Buona strada. Che il tuo filo resti affilato e l'acqua ti basti.",
+		"Forza e onore sul tuo cammino. Torna con delle storie.",
+	},
+	["race.orc.farewell.w09.002"] = {
+		"Alla prossima battaglia. Non cominciarla senza di me.",
+		"Vai. Gli spiriti sorvegliano la strada, e anche i banditi: occhio a tutti e due.",
+	},
+	["race.orc.greet.w09.001"] = {
+		"Salute. Siediti, se vuoi: la terra è gratis e la compagnia è onesta.",
+		"Salute a te. Braccio forte, occhio limpido? Bene. Allora andremo d'accordo.",
+	},
+	["race.orc.greet.w09.002"] = {
+		"Eccoti! Cominciavo ad annoiarmi dei miei grugniti.",
+		"Ah, una faccia che vale un saluto. Vieni, raccontami cosa hai preso a botte ultimamente.",
+	},
+	["race.orc.jest.w09.001"] = {
+		"Perché gli orchi sono pessime spie? Pensiamo che sussurrare sia una cosa che fanno gli altri.",
+		"Per un orco, la delicatezza è sfondare una porta sola.",
+	},
+	["race.orc.jest.w09.002"] = {
+		"A Durotar ci sono due stagioni: caldo, e quella in cui ti accorgi che fa caldo.",
+		"I troll dicono che gli orchi ridono come le frane: di rado, forte, e nessuno vuole starci sotto.",
+	},
+	["race.orc.pray.w09.001"] = {
+		"Spiriti della terra e del vento, non chiedo favori. Solo di restare {g:dritto|dritta} quando conta.",
+		"Antenati, la maledizione è uscita dal nostro sangue. Aiutatemi a tenerla fuori, nel mio piccolo.",
+	},
+	["race.orc.thanks.w09.001"] = {
+		"Hai aiutato un orco. I clan hanno cantato per molto meno. Io dico solo grazie.",
+		"Grazie. Le belle parole non mi vengono facili, quindi prendi queste, semplici, e tienitele.",
+		"Grazie. Se mai ti servisse un muro tra te e i guai, chiamami.",
+	},
+	["race.orc.thanks.w09.002"] = {
+		"Grazie. Quando lo racconteremo, l'aiuto non mi serviva.",
+		"Ti sono {g:obbligato|obbligata}. Ma che non diventi un'abitudine: il mio orgoglio si ammacca più della mia pelle.",
+	},
+	["race.scourge.farewell.w09.001"] = {
+		"Addio. Cerca di restare in vita: tornare come sono {g:tornato|tornata} io non vale la fatica.",
+		"Arrivederci. Tieni la carne sulle ossa, e le ossa in ordine. Consiglio di chi se ne intende.",
+	},
+	["race.scourge.farewell.w09.002"] = {
+		"Buona strada. I vivi hanno così poco tempo: spendi bene il tuo, e spendine un po' per tornare.",
+		"Alla prossima. Tienimi un posto da qualche parte: non mi serve, ma mi piace essere {g:atteso|attesa}.",
+	},
+	["race.scourge.greet.w09.001"] = {
+		"Salve. Non badare all'odore: viene insieme alla libertà.",
+		"Saluti. Sì, sto parlando. Sì, sono {g:morto|morta}. Le due cose possono stare insieme.",
+		"Piacere di incontrarti. Ti darei la mano, ma poi conteresti le dita.",
+	},
+	["race.scourge.greet.w09.002"] = {
+		"Ah, una faccia che non si tira indietro. Salve, e grazie per questo.",
+		"Salve, anima affine. Sì, affine: anche i morti sanno dirlo, e pensarlo.",
+		"Che piacere vederti. Davvero. Non lo dico a molti.",
+	},
+	["race.scourge.jest.w09.001"] = {
+		"Il lato buono dell'essere morti? Nessuno mi chiede di aiutare a portare la bara. Conflitto d'interessi.",
+		"Un Reietto entra nella tenda di un guaritore. «Da quanto ce l'ha?» «Dal funerale.» Non gli hanno nemmeno fatto pagare.",
+	},
+	["race.scourge.pray.w09.001"] = {
+		"Luce, se mi ascolti: adesso mi bruci. Ti chiedo lo stesso. Fanne quello che vuoi.",
+		"A ciò che sta lassù, o laggiù, o da nessuna parte: io sono ancora qui. Prendila come una preghiera o come un reclamo.",
+	},
+	["race.scourge.thanks.w09.001"] = {
+		"Grazie. Mi hai aiutato senza prima fare il conto di cosa sono. L'ho notato.",
+		"Ti ringrazio. La gratitudine funziona ancora, in questo corpo, anche se poco altro funziona a dovere.",
+		"Grazie. Me lo ricorderò, e i morti hanno tutto il tempo del mondo per ricordare.",
+	},
+	["race.scourge.thanks.w09.002"] = {
+		"Grazie. Arrossirei, ma ci vorrebbe del sangue che si muove da qualche parte.",
+		"Ti sono {g:obbligato|obbligata}. Ti offrirei da bere, ma poi starei solo a guardarti mentre te lo godi.",
+	},
+	["race.scourge.toast.w09.001"] = {
+		"Alla Dama Oscura, che ci ha restituito la testa! E a chi ce la ricuce dopo.",
+		"Ai vivi di questa tavola: bevete anche per me, io il sapore non lo sento. Mi godrò lo spettacolo.",
+	},
+	["race.troll.farewell.w09.001"] = {
+		"Buon cammino, e che gli spiriti tengano i serpenti fuori dai tuoi stivali.",
+		"Buon viaggio. Se passi da Sen'jin, il pesce lo offro io.",
+		"Alla prossima. Testa bassa e fortuna alta.",
+	},
+	["race.troll.farewell.w09.002"] = {
+		"Che i loa veglino sulla tua strada. Io veglio sulla mia: è più lunga.",
+		"Io vado. Cerca di non farti mangiare prima che ci rivediamo.",
+		"Occhi aperti. Il mondo morde.",
+	},
+	["race.troll.greet.w09.001"] = {
+		"Ehilà! La giornata è buona e gli spiriti si fanno sentire. Li senti anche tu?",
+		"Oh, viandante! Vieni, siediti, racconta a un troll qualcosa di nuovo.",
+		"Salve. Non badare alle zanne: anche loro dicono salve.",
+	},
+	["race.troll.greet.w09.002"] = {
+		"Eccoti! Bene. Adesso la giornata ha qualcuno con cui dividere il pesce.",
+		"Ah, una faccia amica. Oggi i loa hanno lavorato bene.",
+		"Vieni qui, vieni qui. Un saluto Darkspear vuole tutte e due le braccia.",
+	},
+	["race.troll.jest.w09.001"] = {
+		"Perché i troll hanno le braccia lunghe? Per prendere l'ultimo pesce prima che gli altri arrivino alla pentola.",
+		"Un troll entra in una locanda. Si abbassa. Picchia comunque la testa sulla trave. Fine della storia.",
+	},
+	["race.troll.jest.w09.002"] = {
+		"Gli orchi chiedono perché i troll ridono tanto. Semplice: abbiamo visto ballare gli orchi.",
+		"La rigenerazione dei troll è un dono: puoi fare lo stesso errore due volte nella stessa battaglia.",
+	},
+	["race.troll.pray.w09.001"] = {
+		"Loa, non chiedo molto: una strada libera, la pancia piena, e nemici più lenti di me.",
+		"Spiriti della tribù, vegliate sui Darkspear dovunque siamo sparsi, e riportateci a casa, al mare.",
+	},
+	["race.troll.thanks.w09.001"] = {
+		"Grazie. Dirò il tuo nome agli spiriti: tengono i conti meglio di me.",
+		"Grazie. Una buona azione è come una bella pesca: tutta la tribù ne sente parlare.",
+		"Grazie. Hai fatto una gentilezza a un troll, e i troll le restituiscono con gli interessi.",
+	},
+	["race.troll.thanks.w09.002"] = {
+		"Grazie. La carne si sarebbe richiusa comunque, ma con un aiuto fa prima.",
+		"Ti sono {g:obbligato|obbligata}. Adesso ho un debito, e ai troll non piace averne. Sbrigati ad aver bisogno di qualcosa.",
+	},
+	["race.troll.toast.w09.001"] = {
+		"Alle reti piene, alle lance affilate, e agli spiriti che non ce le fanno mai mancare!",
+		"In alto i boccali: ai Darkspear, e a chiunque abbia mai diviso un fuoco con noi!",
+	},
 }, "base_social")

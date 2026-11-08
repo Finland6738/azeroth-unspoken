@@ -399,4 +399,24 @@ NS:AddTexts("enUS", {
 		"I have walked this land before. A tauren passes nowhere lightly; perhaps that is why the earth here seems to know my step.",
 		"Familiar ground. My hooves find their way a little ahead of my thoughts, like a kodo that knows the path to water.",
 	},
+	["mem.ret.gnome.w09.001"] = {
+		"{zone} again. I check my old notes against what I see: a fence moved, a path widened. A gnome likes a place that keeps its figures up to date.",
+		"Back in {zone}. Familiar ground is just a solved problem I get to enjoy a second time.",
+		"I know {zone}. A known place is like a well-oiled hinge: no squeak and, with luck, no surprises.",
+	},
+	["mem.ret.orc.w09.001"] = {
+		"Through {zone} once more. I remember the lay of it, where the cover was, where trouble came from. An orc's memory is mostly a map of fights.",
+		"I know {zone}. An orc does not forget ground already walked: where the water was, where the danger waited.",
+		"{zone}, and the ground knows me now. The old warriors say a place walked twice is a place half won.",
+	},
+	["mem.ret.scourge.w09.001"] = {
+		"I remember {zone}, and that pleases me more than it should. My memory lost so much once that every place it keeps feels like a small victory.",
+		"I've been to {zone} before, and I recall it clearly. After the grave took so much of my past, each new memory I hold on to is mine twice over.",
+		"{zone}. I know this ground. The Forsaken collect memories carefully; the first collection was nearly all spilled.",
+	},
+	["mem.ret.troll.w09.001"] = {
+		"{zone} once more. My feet remember the paths before my head does. Trolls track by habit, even their own old trails.",
+		"I know {zone}. The smells are the same, the paths are the same. A troll forgets faces long before places.",
+		"{zone}. I have walked here before, and I think the place knows it. The spirits of a land remember who passed through with respect.",
+	},
 }, "base_memory")

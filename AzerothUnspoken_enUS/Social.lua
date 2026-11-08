@@ -471,4 +471,166 @@ NS:AddTexts("enUS", {
 		"To the Earth Mother, who feeds us, and to the cook, who does the hard part!",
 		"To the herds, the hunt and the hands that cook it! May the Earth Mother take her share first.",
 	},
+	["race.gnome.farewell.w09.001"] = {
+		"Bye for now! Mind the tall folk; they don't always look down.",
+		"Off you go! If anything breaks, send it to me. If it's you that breaks, send yourself to a priest.",
+		"Farewell! Back to work. Something, somewhere, needs adjusting.",
+	},
+	["race.gnome.farewell.w09.002"] = {
+		"Take care. We gnomes know how fast a home can be lost; don't go losing yourself.",
+		"Goodbye, and soon. Come find me in Tinker Town when you can. I'll put the kettle on.",
+		"Safe roads. Write if you can. I like letters; they're the one thing I'd never take apart.",
+	},
+	["race.gnome.greet.w09.001"] = {
+		"Hello! Don't mind me, I'm just down here being delightful.",
+		"Oh, hello! Is that a new buckle? It's a good buckle.",
+		"Greetings! Quick question, unrelated: how tall are you, exactly? For science.",
+	},
+	["race.gnome.greet.w09.002"] = {
+		"There you are! Excellent, now I've someone to explain my latest idea to.",
+		"Hello, hello! Come, sit, tell me everything, especially the complicated parts.",
+		"Well met! Gnomeregan sends its greetings. From a distance. A long distance, for now.",
+	},
+	["race.gnome.jest.w09.001"] = {
+		"How many gnomes does it take to fix a lamp? One, but afterward the lamp also plays music and tells you the weather.",
+		"Dwarves call us short. We call them 'pleasantly upholstered.' Everyone's happy.",
+	},
+	["race.gnome.pray.w09.001"] = {
+		"Whoever runs this world: a little less breakage today, please, and a little more luck. I'll handle the rest.",
+		"If anyone's listening up there: keep my friends in one piece and the troggs confused. That's the whole request. Thank you!",
+	},
+	["race.gnome.thanks.w09.001"] = {
+		"Thank you! That was precisely the help I needed, to three decimal places.",
+		"Oh, thanks! You've saved me a great deal of fretting, and gnomes fret very efficiently.",
+		"Much obliged! I'll return the favor with interest. Compound interest, if you're patient.",
+	},
+	["race.gnome.thanks.w09.002"] = {
+		"Thank you. Since the city fell, the kindness of others is what has kept my people going. I count every scrap of it.",
+		"Thanks, truly. We gnomes lost a great deal, but not our manners. Nor our gratitude.",
+	},
+	["race.gnome.toast.w09.001"] = {
+		"To Gnomeregan! May we see its halls again, cleaned up and humming!",
+		"Raise your mugs! To clever hands, quick feet, and the day we go home.",
+	},
+	["race.orc.farewell.w09.001"] = {
+		"Safe road. May your edge stay keen and your water last.",
+		"Strength and honor on your road. Come back with stories.",
+	},
+	["race.orc.farewell.w09.002"] = {
+		"Until the next fight. Don't start it without me.",
+		"Off with you. The spirits watch the road, and so do bandits; mind both.",
+	},
+	["race.orc.greet.w09.001"] = {
+		"Well met. Sit, if you like; the ground is free and the company is honest.",
+		"Hail. Strong arm, clear eye? Good. Then we'll get along.",
+	},
+	["race.orc.greet.w09.002"] = {
+		"There you are! I was getting bored of my own grunting.",
+		"Ah, a face worth greeting. Come, tell me what you've been hitting lately.",
+	},
+	["race.orc.jest.w09.001"] = {
+		"Why do orcs make terrible spies? We think whispering is something other people do.",
+		"An orc's idea of subtle is breaking only one door.",
+	},
+	["race.orc.jest.w09.002"] = {
+		"Durotar has two seasons: hot, and the one where you notice it's hot.",
+		"The trolls say orcs laugh like rockslides: rarely, loudly, and nobody wants to be underneath.",
+	},
+	["race.orc.pray.w09.001"] = {
+		"Spirits of earth and wind, I ask no favors. Only that I stand straight when it counts.",
+		"Ancestors, the curse is gone from our blood. Help me keep it gone, in my own small way.",
+	},
+	["race.orc.thanks.w09.001"] = {
+		"You helped an orc. The clans have sung about less. I'll just say thank you.",
+		"Thanks. Fine words don't come easy to me, so take these plain ones and keep them.",
+		"My thanks. If you ever need a wall between you and trouble, call me.",
+	},
+	["race.orc.thanks.w09.002"] = {
+		"Thanks. When we tell it later, I didn't need the help.",
+		"Much obliged. Don't make it a habit; my pride bruises easier than my hide.",
+	},
+	["race.scourge.farewell.w09.001"] = {
+		"Farewell. Try to stay alive; coming back the way I did is more trouble than it's worth.",
+		"Goodbye. Keep your flesh on your bones and your bones in order. Advice from an expert.",
+	},
+	["race.scourge.farewell.w09.002"] = {
+		"Go well. The living have so little time; spend yours carefully, and spend a little of it coming back.",
+		"Until next time. Keep a seat for me somewhere; I don't need it, but I like being expected.",
+	},
+	["race.scourge.greet.w09.001"] = {
+		"Hello. Don't mind the smell; it comes with the freedom.",
+		"Greetings. Yes, I'm talking. Yes, I'm dead. Both can be true.",
+		"Pleased to meet you. I'd offer my hand, but you'd only count the fingers afterward.",
+	},
+	["race.scourge.greet.w09.002"] = {
+		"Ah, a face that doesn't back away. Hello, and thank you for that.",
+		"Hello, kindred spirit. Yes, kindred. The dead can still say it, and mean it.",
+		"Good to see you. Truly. I don't say that to many.",
+	},
+	["race.scourge.jest.w09.001"] = {
+		"The upside of being dead? Nobody asks me to help carry the coffin. Conflict of interest.",
+		"A Forsaken walks into a healer's tent. 'How long have you had this?' 'Since the funeral.' They didn't even charge.",
+	},
+	["race.scourge.pray.w09.001"] = {
+		"Light, if you're listening: you burn me now. I'm asking anyway. Make of that what you will.",
+		"To whatever is up there, or down there, or nowhere: I'm still here. Take it as a prayer or a complaint.",
+	},
+	["race.scourge.thanks.w09.001"] = {
+		"Thank you. You helped without first tallying what I am. I noticed.",
+		"My thanks. Gratitude still works in this body, even if little else works properly.",
+		"Thanks. I'll remember it, and the dead have all the time in the world to remember things.",
+	},
+	["race.scourge.thanks.w09.002"] = {
+		"Thanks. I'd blush, but that takes blood moving somewhere.",
+		"Much obliged. I'd buy you a drink, but I'd only sit and watch you enjoy it.",
+	},
+	["race.scourge.toast.w09.001"] = {
+		"To the Dark Lady, who gave us back our own heads! And to whoever sews them back on afterward.",
+		"To the living at this table: drink for me, I can't taste it. I'll enjoy watching.",
+	},
+	["race.troll.farewell.w09.001"] = {
+		"Walk safe, and may the spirits keep the snakes out of your boots.",
+		"Go well. If you're ever in Sen'jin, the fish is on me.",
+		"Until next time. Keep your head down and your luck up.",
+	},
+	["race.troll.farewell.w09.002"] = {
+		"The loa watch your road. I'll watch mine; it's longer.",
+		"Off I go, mon. Try not to get eaten before we meet again.",
+		"Stay sharp out there. The world bites.",
+	},
+	["race.troll.greet.w09.001"] = {
+		"Hey there! The day is good and the spirits are loud. You hear them too?",
+		"Ho, traveler! Come, sit, tell a troll something new.",
+		"Hello. Mind the tusks; they mean hello too.",
+	},
+	["race.troll.greet.w09.002"] = {
+		"There you are! Good. Now the day has someone to share the fish with.",
+		"Ah, a friendly face. The loa did well today.",
+		"Come close, come close. A Darkspear greeting needs both arms.",
+	},
+	["race.troll.jest.w09.001"] = {
+		"Why do trolls have long arms? To grab the last fish before anyone else reaches the pot.",
+		"A troll walks into an inn. Ducks. Hits the beam anyway. That's the whole story.",
+	},
+	["race.troll.jest.w09.002"] = {
+		"Orcs ask why trolls laugh so much. Simple: we've seen orcs dance.",
+		"Troll regeneration is a gift. It means you can make the same mistake twice in one fight.",
+	},
+	["race.troll.pray.w09.001"] = {
+		"Loa, I don't ask for much: a clear road, a full belly, and enemies slower than me.",
+		"Spirits of the tribe, watch over the Darkspear wherever we've scattered, and bring us home to the sea.",
+	},
+	["race.troll.thanks.w09.001"] = {
+		"Thank you. I'll tell the spirits your name; they keep better accounts than I do.",
+		"My thanks. A good deed is like a good catch: the whole tribe hears about it.",
+		"Thanks. You did a troll a kindness, and trolls pay those back with interest.",
+	},
+	["race.troll.thanks.w09.002"] = {
+		"Thanks, mon. The flesh would have closed up anyway, but help makes it quicker.",
+		"Much obliged. Now I owe you, and trolls hate owing. Better hurry up and need something.",
+	},
+	["race.troll.toast.w09.001"] = {
+		"To full nets, sharp spears, and the spirits who keep both coming!",
+		"Raise it high: to the Darkspear, and to everyone who ever shared a fire with us!",
+	},
 }, "base_social")

@@ -1186,4 +1186,501 @@ NS:AddTexts("itIT", {
 		"Un compito affidato, e accettato. Il mio popolo dice che una promessa è un paletto piantato nel terreno: puoi andartene, ma resta dove l'hai lasciato.",
 		"Un altro guaio sulle spalle. Va bene: sono spalle larghe, ed è a questo che servono.",
 	},
+	["race.gnome.npc_meet.w09.001"] = {
+		"Una stanza, per favore, e uno sgabello per il banco. Di quelli alti. No, più alto.",
+		"Qualcosa di caldo, e un cuscino su cui sedermi per vedere oltre la scodella. Grazie!",
+		"Un letto, un pasto e {g:uno gnomo piccolo|una gnoma piccola}. Quasi non ti accorgerai di me, finché non comincerò a chiederti come tira il camino.",
+	},
+	["race.gnome.npc_meet.w09.002"] = {
+		"Una sala comune calda e piena di chiasso. I vecchi meccanici dicono che le locande di Gnomeregan ronzavano di macchinari invece che di canzoni. Mi manca un ronzio che ricordo appena. Anche le canzoni, però, non sono male.",
+		"Un letto di sopra, e da nessuna parte una porta a misura di gnomo. Da quando abbiamo perso la città, ogni letto in cui dormo è stato fatto per qualcun altro.",
+	},
+	["race.gnome.npc_meet.w09.003"] = {
+		"Ospitalità nanica! La vostra gente ci ha accolti quando la città è caduta, e non ho ancora offerto un solo giro per sdebitarmi. Comincio adesso.",
+		"Gente della montagna alla spina. Allora sarà una versata come si deve, e mi serviranno due mani per il boccale.",
+	},
+	["race.gnome.npc_meet.w09.004"] = {
+		"Puoi tirarmi giù quello dallo scaffale in alto? Non il prezzo. Be', anche quello, se ti va.",
+		"Lo prendo. Ne hai uno grande un terzo? No? Allora lo prendo e lo adatto.",
+		"Prezzo giusto. L'ho controllato entrando: io controllo tutto, entrando. Abitudine di chi è piccolo in un mondo grande.",
+	},
+	["race.gnome.npc_meet.w09.005"] = {
+		"Guarda la cerniera di quel baule. Qualcuno ci ha messo cura. Noi gnomi le notiamo, queste cose, che si armeggi con gli attrezzi o no.",
+		"Il mercante si sporge oltre il banco per trovarmi. Saluto con la mano. Succede una dozzina di volte a settimana: ho imparato a salutare in anticipo.",
+	},
+	["race.gnome.npc_meet.w09.006"] = {
+		"Quel prezzo ha una molla dentro: è scattato appena mi sono {g:avvicinato|avvicinata}. Ingegnoso. Lo ammirerei di più se non dovessi pagarlo io.",
+		"Un mercante che adora le monete. Va bene. Io adoro una bella discussione, e ho la testa piena di numeri.",
+	},
+	["race.gnome.npc_meet.w09.007"] = {
+		"Ehilà, lassù! Sì, quaggiù. Tutto tranquillo durante il tuo turno?",
+		"Bella armatura. Buone cinghie. Chi ha fatto quelle fibbie sapeva il fatto suo.",
+		"Continua così. Noi gnomi dormiamo meglio sapendo che c'è gente alta con le lance che resta sveglia.",
+	},
+	["race.gnome.npc_meet.w09.008"] = {
+		"Una guardia dell'Orda. Sono {g:piccolissimo|piccolissima}, faccio pochissimo rumore, e spero tantissimo che basti.",
+		"Acciaio dell'Orda, e io bene in vista. Noi gnomi abbiamo un talento per sgusciare via da qualunque presa. Potrei averne bisogno a breve.",
+	},
+	["race.gnome.npc_meet.w09.009"] = {
+		"Una guardia nanica. Quando la città cadde, furono i nani alle porte di Ironforge a farci entrare. A questa rivolgo un cenno come si deve.",
+		"Spalle larghe, un martello grosso come un battente, e la pazienza della montagna. Con quella guardia alle spalle mi sento più al sicuro che dietro molti muri.",
+	},
+	["race.gnome.npc_meet.w09.010"] = {
+		"La bestia volante mi guarda come uno spuntino con la sella. Le spiego con fermezza che sono {g:un passeggero|una passeggera}. Non sembra convinta.",
+		"C'è un limite di peso? No? Allora porto lo zaino in più e non lo dico.",
+		"Bella bestia. Legami due volte, per favore. Sono {g:così leggero|così leggera} che una buona raffica ha delle opinioni su di me.",
+	},
+	["race.gnome.npc_meet.w09.011"] = {
+		"Wildhammer o Bronzebeard che sia, la gente della montagna con un grifone conosce il cielo. Di' alla bestia che sono un carico, non un pranzo.",
+		"Gente della montagna al posatoio. Bene. Cinghie robuste, nodi stretti, e niente acrobazie alla Wildhammer per me, grazie.",
+	},
+	["race.gnome.npc_meet.w09.012"] = {
+		"Insegnami tutto. Poi spiegami perché funziona. Poi spiegami perché funziona il perché. Aspetto.",
+		"Ora di lezione! Prenderò appunti. Piccoli, con una calligrafia minuscola, sul dorso della mano se necessario.",
+		"Fammelo vedere una volta piano, una volta veloce, e una volta a testa in giù, se è previsto.",
+	},
+	["race.gnome.npc_meet.w09.013"] = {
+		"Un insegnamento severo. Va bene. A Tinker Town mi hanno raccontato che anche i vecchi maestri di Gnomeregan urlavano agli apprendisti: voleva dire che tenevano al risultato.",
+		"Modi spicci, poche parole, zero lodi. Le lodi me le faccio per conto mio: {g:bravo|brava}, io. E adesso di nuovo.",
+	},
+	["race.gnome.npc_meet.w09.014"] = {
+		"Un deposito, per favore. Occhio a quella scatola: è etichettata, contro-etichettata, e c'è un biglietto che spiega le etichette.",
+		"Tienimeli al sicuro. Tutto ciò che la nostra gente ha lasciato a Gnomeregan è laggiù con i trogg. Questa roba vorrei tenermela.",
+		"La cassaforte è robusta? Lavoro nanico? Allora smetto di preoccuparmi. Quasi. Mi preoccuperò in silenzio.",
+	},
+	["race.gnome.npc_meet.w09.015"] = {
+		"Un problema! Che bello. Descrivimelo per bene, senza tralasciare niente, soprattutto le parti che sembrano sciocche.",
+		"Ti serve una mano? Ne ho due piccole e una testa molto grande. Scegli tu.",
+		"Dimmi cos'è rotto. Gente, bestie, banditi, tubature: è tutto un rompicapo con i denti.",
+	},
+	["race.gnome.npc_meet.w09.016"] = {
+		"Qualcuno del mio popolo che chiede aiuto. Da quando la città è caduta, ci chiediamo aiuto a vicenda di continuo. E rispondiamo sempre.",
+		"Gente nostra con un problema. Gli esuli di Tinker Town si prendono cura dei loro: non ho nemmeno bisogno di sentire prima i dettagli.",
+	},
+	["race.gnome.npc_meet.w09.017"] = {
+		"Gli umani chiedono sempre aiuto come se stesse cadendo il cielo. Avendo perso un'intera città, li prendo sul serio.",
+		"Un volto umano preoccupato. La loro gente ha perso Lordaeron, la mia Gnomeregan. Le nostre facce si capiscono.",
+	},
+	["race.gnome.npc_meet.w09.018"] = {
+		"L'Alto Inventore Mekkatorque. Ha guidato il nostro popolo fuori quando la città è andata perduta, e parla ancora di riprendercela. Lo seguirei nelle gallerie anche domani.",
+		"L'Alto Inventore in persona. Piccolo come tutti noi, e con sulle spalle il peso di un intero popolo. Mi raddrizzo un poco.",
+		"Gelbin Mekkatorque. La nostra guida in esilio, che scarabocchia piani per il giorno in cui torneremo a casa. Spero di esserci, quel giorno.",
+	},
+	["race.gnome.npc_meet.w09.019"] = {
+		"si arrampica sullo sgabello più vicino senza aspettare l'invito e attende, con pazienza e un sorriso, che {other} se ne accorga.",
+		"bussa due volte sul banco da sotto, poi un'altra volta, un po' più forte, finché chi sta al banco non abbassa lo sguardo.",
+	},
+	["race.gnome.npc_meet.w09.020"] = {
+		"Una bottega gnomesca! Prezzi in colonne ordinate, un registro per il registro. Mi sento già a casa.",
+		"Gente nostra che vende. Contratteremo da gnomi come si deve: in fretta, e con i diagrammi.",
+	},
+	["race.gnome.npc_meet.w09.021"] = {
+		"Insegna qualcuno del mio popolo! Allora possiamo saltare la spiegazione lenta e passare direttamente agli errori interessanti.",
+		"Gente nostra in cattedra. Facciamolo alla maniera di Gnomeregan: in fretta, con curiosità, e con una piccola esplosione solo se necessario.",
+	},
+	["race.gnome.npc_meet.w09.022"] = {
+		"Oh, allegria anche da parte tua! Ottimo. In due potremmo alimentare una piccola lampada.",
+		"Buonumore! Contagioso, vero? Noi gnomi andiamo avanti soprattutto con quello. Quello e il tè.",
+	},
+	["race.gnome.other_action.w09.001"] = {
+		"Una compagnia! Splendido. Mettimi dove vedo tutto e dove nessuno mi pesta.",
+		"Ci sto. {g:Piccolo, veloce e pieno|Piccola, veloce e piena} di suggerimenti, quasi tutti buoni.",
+		"Sì! Porto il mio ingegno, e lo terrò puntato su qualunque cosa cerchi di morderci.",
+	},
+	["race.gnome.other_action.w09.002"] = {
+		"Un incontro tra amici! Ottimo. Regole: non si mira al cappello.",
+		"Io e te? Ah! Va bene. Chi vince offre il tè, chi perde spiega com'è andata.",
+		"Volentieri! Ho un trucco nuovo da provare, e su chi provarlo se non su una persona amica?",
+	},
+	["race.gnome.other_action.w09.003"] = {
+		"risponde salutando con entrambe le mani e saltellando un po' sulle punte per farsi vedere.",
+		"ricambia il gesto con un inchino ampio che arriva quasi a terra, il che per uno gnomo non è lontano.",
+		"risponde con un gran sorriso e un saluto rapido, due dita alla fronte.",
+	},
+	["race.gnome.other_action.w09.004"] = {
+		"Uno scambio? Magnifico. Preparo una lista. Una lista corta. Media. Non preoccuparti della lista.",
+		"Scambiamo. Tutto ciò che offro è stato ispezionato, collaudato ed etichettato con lettere piccolissime.",
+	},
+	["race.gnome.other_action.w09.005"] = {
+		"Un nuovo incarico! Problema ricevuto, parametri annotati, soluzione in arrivo. Che bello.",
+		"Un altro lavoro. Ogni commissione portata a termine è un passo in più verso il giorno in cui ci riprenderemo la città. Almeno, io le conto così.",
+	},
+	["race.orc.npc_meet.w09.001"] = {
+		"I vecchi che sono passati per i campi di internamento lo chiamerebbero lusso. Cerco di ricordarmelo quando lo stufato è annacquato.",
+		"Polvere della strada negli stivali, e qualcuno al banco che mi indica una panca. Cose semplici. Gli orchi ne hanno fatto a meno abbastanza a lungo.",
+	},
+	["race.orc.npc_meet.w09.002"] = {
+		"Carne, ossa comprese. Le ossa le lascio. Quasi tutte.",
+		"Il tuo stufato più denso, oste. Che ci stia in piedi il cucchiaio, come lo fanno a Razor Hill.",
+		"Riempi la ciotola e non risparmiare il pepe. Durotar allena la lingua oltre che la pelle.",
+	},
+	["race.orc.npc_meet.w09.003"] = {
+		"Un grugnito e una ciotola spinta sul banco. Finalmente qualcuno che parla la lingua degli orchi.",
+		"Niente sorrisi, niente chiacchiere, misura giusta. C'è chi chiama difetto la franchezza. Per alcuni di noi è onestà.",
+	},
+	["race.orc.npc_meet.w09.004"] = {
+		"Un'accoglienza calorosa. Agli orchi non è sempre toccata. I vecchi ricordano le porte che si chiudevano quando si avvicinava una faccia verde.",
+		"Parole gentili da {other}. Faccio un cenno e tengo la voce bassa: la gentilezza merita una risposta sommessa.",
+	},
+	["race.orc.npc_meet.w09.005"] = {
+		"Questo focolare lo tiene un troll. Orchi e Darkspear siedono agli stessi fuochi da quando Thrall accolse la tribù. Passami il pesce.",
+		"Dietro il banco, zanne più alte delle mie. I troll di Sen'jin mantengono la parola data all'Orda e, pare, anche una buona pentola.",
+	},
+	["race.orc.npc_meet.w09.006"] = {
+		"Prima di guardare il prezzo provo il filo col pollice. I vecchi guerrieri dicono che il prezzo si dimentica molto prima del filo.",
+		"Le mani di un orco sono ruvide con la merce. Prendo le cose con delicatezza, e chi vende sobbalza lo stesso.",
+	},
+	["race.orc.npc_meet.w09.007"] = {
+		"Mi serve acqua da portare e carne che si conservi. Il resto è decorazione.",
+		"Cosa dura? Fammi vedere cosa dura. Quello lo pago.",
+		"Risposta diretta, prezzo diretto. Gli orchi commerciano così, e non ho voglia di imparare un altro modo.",
+	},
+	["race.orc.npc_meet.w09.008"] = {
+		"{other} vede la pelle verde e aggiunge una moneta per il disturbo. Io vedo la moneta e aggiungo un'occhiataccia. Ci incontreremo a metà.",
+		"Quel sorriso sta affilando il prezzo. Per mia fortuna gli orchi sono più bravi a fissare che a contare.",
+	},
+	["race.orc.npc_meet.w09.009"] = {
+		"Merce dai Reietti. Il Capoguerra li ha fatti entrare nell'Orda per ragioni sue. Conto il resto, e tengo i pensieri dietro le zanne.",
+		"Dita fredde, prezzi accurati. I morti di Lordaeron ora combattono per l'Orda. Mi fido dello scambio; per fidarmi di chi vende ci vuole di più.",
+	},
+	["race.orc.npc_meet.w09.010"] = {
+		"Dietro il banco, un paio di corna. Il popolo di Cairne offrì amicizia agli orchi quando l'Orda era appena arrivata su queste coste. Pago senza contrattare.",
+		"Mani grandi, parole lente, peso onesto sulla bilancia. Gli orchi avrebbero qualcosa da imparare dai tauren. Non lo direi mai a un orco.",
+	},
+	["race.orc.npc_meet.w09.011"] = {
+		"{other} ha qualcosa da insegnare. Lo stesso Thrall tornò a imparare dagli sciamani: farsi insegnare non è una vergogna.",
+		"Lo imparerò per bene. I vecchi maestri di spada dicono che chi ha fretta di imparare paga ogni lezione due volte.",
+	},
+	["race.orc.npc_meet.w09.012"] = {
+		"Fammelo vedere una volta. Se sbaglio, fammelo vedere più forte.",
+		"Insegnami come a una recluta alle prime armi. Non mi serve gentile: mi serve giusto.",
+	},
+	["race.orc.npc_meet.w09.013"] = {
+		"Un volatile dell'Orda, tutto denti e ali di cuoio. Non ha niente di gentile, e in una bestia lo rispetto.",
+		"{other} mi assicura alla sella e dà una pacca sul fianco della bestia. Gli orchi sono fatti per correre sulla terra rossa, ma ho imparato ad apprezzare la vista dall'alto.",
+	},
+	["race.orc.npc_meet.w09.014"] = {
+		"La bestia più forte che hai. Peso più di quanto sembri, e sembro pesante.",
+		"Volo dritto e atterraggio morbido, se riesci a organizzarlo. Il mio stomaco è più coraggioso a terra.",
+	},
+	["race.orc.npc_meet.w09.015"] = {
+		"Un caveau per le monete. Un tempo gli orchi si portavano in spalla tutto quello che avevano. Una schiena più leggera è una strana libertà.",
+		"Oro dietro una porta chiusa. Preferirei tenerlo in una borsa alla cintura, dove lo sento. I vecchi dicono che i muri rendono molli gli orchi.",
+	},
+	["race.orc.npc_meet.w09.016"] = {
+		"Una richiesta d'aiuto. Nell'Orda nessuno dovrebbe chiedere due volte. Ascolterò {other}.",
+		"Qualcuno ha bisogno di un braccio forte. La forza che non serve a nessuno è solo rumore: lo dicono i vecchi guerrieri, e su quasi tutto avevano ragione.",
+	},
+	["race.orc.npc_meet.w09.017"] = {
+		"Parla chiaro. Cosa c'è da fare, e dove?",
+		"Dimmi chi sta causando guai. Ci faccio due chiacchiere. Brevi.",
+		"Indicami dove. Le domande le faccio per strada.",
+	},
+	["race.orc.npc_meet.w09.018"] = {
+		"Una guardia dell'Orda al suo posto, piantata come se il terreno le dovesse qualcosa. Lok'tar, penso, e tiro dritto.",
+		"I colori dell'Orda di guardia. I vecchi ricordano quando le uniche guardie che gli orchi conoscevano stavano fuori dai campi, rivolte verso l'interno.",
+	},
+	["race.orc.npc_meet.w09.019"] = {
+		"Buona guardia. L'Orda resta in piedi perché qualcuno sta sempre al cancello.",
+		"Tieni la linea. Gli orchi sanno quanto vale un muro dell'Orda.",
+	},
+	["race.orc.npc_meet.w09.020"] = {
+		"Una guardia dell'Alleanza. I vecchi ci vedrebbero un carceriere. Io provo a vederci solo un soldato. Costa fatica.",
+		"L'acciaio esce a metà dal fodero della guardia mentre mi avvicino. Tengo le mani in vista. Non è paura: semplicemente non ho voglia di cominciare niente qui.",
+	},
+	["race.orc.npc_meet.w09.021"] = {
+		"passa davanti alla guardia dell'Alleanza a passo regolare, mascella serrata, zanne in avanti, senza cedere terreno e senza offendere.",
+		"lascia le mani aperte e sciolte lungo i fianchi, e regge lo sguardo della guardia con la pazienza piatta di un orco abituato a essere fissato.",
+	},
+	["race.orc.npc_meet.w09.022"] = {
+		"Thrall. Il Capoguerra che spalancò i campi e restituì agli orchi i loro spiriti. Vicino a lui ogni orco sta più dritto, e io con loro.",
+		"Il figlio di Durotan, lo chiamano, anche se è cresciuto schiavo. Chino la testa. Gli orchi sono liberi perché lui non volle restarlo.",
+	},
+	["race.orc.npc_meet.w09.023"] = {
+		"{other} parla come i vecchi sciamani: metà a me, metà a qualcosa alle mie spalle. Non mi volto.",
+		"Indovinelli. Gli orchi preferiscono parlare chiaro, ma gli spiriti non l'hanno mai fatto. Ascolto con il doppio dell'attenzione.",
+	},
+	["race.orc.npc_meet.w09.024"] = {
+		"si lascia sfuggire una risata breve come un latrato, quasi senza volerlo, e le zanne si scoprono in qualcosa di simile a un ghigno.",
+		"risponde al buonumore con una pacca pesante sulla spalla più vicina: il modo degli orchi per dire che la battuta è andata a segno.",
+	},
+	["race.orc.npc_meet.w09.025"] = {
+		"{other} porta il dolore come uno zaino pesante. I vecchi nei campi hanno portato il loro per anni. Non dico sciocchezze, e mi fermo accanto.",
+		"Tristezza su quella faccia. Gli orchi non scacciano il dolore a parole. Ci si siede accanto, si affila qualcosa, e si aspetta.",
+	},
+	["race.orc.other_action.w09.001"] = {
+		"Si parte in gruppo? Bene. Dimmi con chi ce l'abbiamo.",
+		"Bene. Un branco caccia meglio di un lupo solitario, e mangia anche meglio.",
+		"Contami. Cammino davanti: mi piace vederlo arrivare.",
+	},
+	["race.orc.other_action.w09.002"] = {
+		"Anche a te. Un saluto si onora, chiunque lo faccia.",
+		"Ah. Ti vedo. È così che gli orchi salutano, quando sono di buon umore.",
+	},
+	["race.orc.other_action.w09.003"] = {
+		"Scambiamo. Dillo chiaro, e ti rispondo chiaro.",
+		"Uno scambio onesto, allora. Gli orchi si ricordano di chi commercia giusto, e di chi imbroglia ancora più a lungo.",
+		"Va bene. Scambiamo, e facciamola breve.",
+	},
+	["race.orc.other_action.w09.004"] = {
+		"Un combattimento tra amici? Bene. Colpisci forte: capirò che era per affetto.",
+		"Io e te? Ah! Chi va giù paga il grog.",
+	},
+	["race.orc.other_action.w09.005"] = {
+		"Tu. Bene. Lo aspettavo, e anche i miei pugni.",
+		"La sfida di un rivale. Accetto, e non mi trattengo. Ti offenderesti se lo facessi.",
+	},
+	["race.orc.other_action.w09.006"] = {
+		"Un compito accettato. La parola data a chi ha bisogno è un debito, e gli orchi pagano i debiti.",
+		"Un altro guaio da spezzare. Bene. Le mani ferme rendono un orco inquieto.",
+	},
+	["race.scourge.npc_meet.w09.001"] = {
+		"Solo una sedia nell'angolo, per favore. Non mangerò, e prometto di non abbassare l'umore più di quanto abbia già fatto.",
+		"Non serve cambiare le lenzuola. Mi stendo più per abitudine che per bisogno, e non mi rigiro nel letto.",
+		"Da bere? Versa il più economico. Tanto non sento la differenza, e la botte buona puoi tenerla per i vivi.",
+	},
+	["race.scourge.npc_meet.w09.002"] = {
+		"In una locanda cerco subito il focolare. Non per il calore: ne sento poco. Per come i vivi gli si radunano intorno.",
+		"Boccali, il vapore dello stufato, qualcuno che ride troppo forte. Un tempo ero {g:vivo|viva} anch'io e sedevo a tavole così. I dettagli non tornano, solo la forma.",
+	},
+	["race.scourge.npc_meet.w09.003"] = {
+		"{other} non sussulta e non sorride. Posa il boccale e passa oltre. A dirla tutta, la migliore accoglienza di tutta la settimana.",
+		"Poche parole, modi spicci, nessuna impressione. Nessun segno di scongiuro, nessuno strillo. Quasi quasi mi ci affeziono, a questo posto.",
+	},
+	["race.scourge.npc_meet.w09.004"] = {
+		"Sì, compro. No, la frutta non la tocco. Possiamo esserne sollevati entrambi.",
+		"Le mie monete valgono come quelle di chiunque. Sono state in una cripta, non in una fogna. Per lo più.",
+		"Puoi smettere di stringere il banco così. Sono qui per fare acquisti, non per infestarti la bottega.",
+	},
+	["race.scourge.npc_meet.w09.005"] = {
+		"Pane, formaggio, carne secca. Ne compro comunque. Masticare dà qualcosa da fare alla mascella, e alle cuciture un po' di esercizio sembra piacere.",
+		"Filo, aghi, un po' di sale da imbalsamazione se il mercante ne ha. La lista della spesa dei morti è corta, e molto pratica.",
+		"Il mercante dice un prezzo e ci aggiunge qualcosa per l'odore, sospetto. Lascio correre. Discutere stanca i vivi molto più di me.",
+	},
+	["race.scourge.npc_meet.w09.006"] = {
+		"{other} mi accoglie con allegria. Allegria vera. O gli affari vanno molto a rilento, o qui c'è uno stomaco più forte della media.",
+		"Un sorriso, da dietro il banco, rivolto a un cadavere. Non so bene cosa fare con la faccia. Del resto, di questi tempi fa poco comunque.",
+	},
+	["race.scourge.npc_meet.w09.007"] = {
+		"Gli occhi della guardia vanno alla mia mascella, poi alle mani, poi di nuovo alla mascella. Tutti controllano la mascella.",
+		"Una guardia mi squadra. Conosco bene quello sguardo: non è odio, è il conto silenzioso di cosa accadrebbe se a un tratto perdessi la ragione.",
+	},
+	["race.scourge.npc_meet.w09.008"] = {
+		"Riposo. Sono dalla tua parte, qualunque cosa suggerisca la mia faccia.",
+		"Stessa bandiera, guardia. L'Orda ci ha accolti: tanto vale che smetti di stringere l'arma.",
+		"Calma. La Dama Oscura ha stretto lo stesso patto del tuo Capoguerra. Ci sono dentro anch'io, marciume compreso.",
+	},
+	["race.scourge.npc_meet.w09.009"] = {
+		"Una guardia dell'Alleanza. Alcuni di noi, un tempo, montavano la guardia in posti come quello sotto i colori di Lordaeron. Ora siamo proprio ciò contro cui quei posti furono costruiti.",
+		"Acciaio dell'Alleanza che mi osserva. I figli di Lordaeron e i suoi morti si squadrano dai due lati di una strada. A nessuno dei due piace il panorama.",
+	},
+	["race.scourge.npc_meet.w09.010"] = {
+		"La bestia volante mi annusa più a lungo del dovuto. Poi abbassa la testa. Qualunque cosa abbia sentito, ha deciso che sono un carico.",
+		"Se cado, probabilmente sopravvivo all'atterraggio. Magari a pezzi. I morti sono molto rilassati quanto all'altezza.",
+		"Chi governa i voli guarda me, poi la cavalcatura, poi le cinghie. Sì. Stringile bene. Preferirei non perdere un braccio sopra le colline.",
+	},
+	["race.scourge.npc_meet.w09.011"] = {
+		"Uno dei nostri al posatoio. Bene. Dammi una cavalcatura a cui non importi che odore ho.",
+		"Ah, gente della nostra stessa cucitura. Scegli una cavalcatura tranquilla, e saltiamo la parte in cui tutti si tappano il naso.",
+	},
+	["race.scourge.npc_meet.w09.012"] = {
+		"Di nuovo a lezione. La mente impara ancora, anche se la carne non cresce più. È stata la prima buona notizia dopo che mi sono {g:rialzato|rialzata}.",
+		"Insegnami. Non ho altro che tempo e una volontà tutta mia, e intendo spenderli entrambi per migliorare.",
+		"Addestramento. Strano, perfezionare un corpo che va lentamente in pezzi. D'altra parte, era la mente che voleva il Re dei Lich, e non l'avrà.",
+	},
+	["race.scourge.npc_meet.w09.013"] = {
+		"Urla pure. Ho passato abbastanza tempo con una voce in testa a darmi ordini. Con la tua, almeno, posso discutere.",
+		"Un insegnamento duro? Bene. Il dolore quasi non mi arriva: dovrai provare con la pazienza.",
+	},
+	["race.scourge.npc_meet.w09.014"] = {
+		"Custodiscilo bene. Non ho fretta di tornare a prenderlo. Non ho fretta di niente.",
+		"Oggetti da depositare. Prima che tu lo chieda: no, nessuno è uscito da una tomba. Di recente.",
+		"Tienimeli al sicuro. Non è che tema di perderli. Mi consola solo che qualcosa di mio resti tutto intero.",
+	},
+	["race.scourge.npc_meet.w09.015"] = {
+		"{other} chiede aiuto, e rabbrividisce solo un poco. Comprensibile. Accetto il lavoro: è così che i morti si guadagnano un posto tra i vivi.",
+		"Qualcuno ha un incarico da affidare e ha scelto il cadavere nella stanza. Forse per disperazione. Forse per fiducia. Farò finta che sia fiducia.",
+		"Una richiesta fatta liberamente, che sono {g:libero|libera} di rifiutare. È una libertà ancora abbastanza nuova da avere un buon sapore. Accetto comunque.",
+	},
+	["race.scourge.npc_meet.w09.016"] = {
+		"Gente nostra. Non serve il discorso sul dovere verso la Dama Oscura: dimmi solo dove.",
+		"Siamo Reietti tutti e due, quindi lascia perdere le distanze educate. Cosa c'è da fare, e chi c'è da seppellire?",
+	},
+	["race.scourge.npc_meet.w09.017"] = {
+		"Un tauren che chiede aiuto ai Reietti, e sul serio. Furono i tauren a parlare per noi quando l'Orda avrebbe potuto voltarci le spalle. Non lo dimentico.",
+		"Quei grandi occhi pazienti che mi guardano senza ribrezzo. Farei il lavoro anche solo per questo.",
+	},
+	["race.scourge.npc_meet.w09.018"] = {
+		"Dietro il banco, una mano verde versa da bere e l'altra resta vicina alla mannaia. Mi offenderei, se non fosse un servizio così sensato.",
+		"Gente orchesca manda avanti la casa. Onore e parole semplici, dicono. Le parole semplici, almeno, le leggo su quella faccia: «non cominciare niente».",
+	},
+	["race.scourge.npc_meet.w09.019"] = {
+		"Fai pure il tuo segno contro i morti, se ti serve. Poi vendimi qualcosa. Le due cose possono succedere insieme.",
+		"Troll e Reietti che commerciano. Nessuno si fida di nessuno, tutti sono educati. L'Orda in miniatura.",
+	},
+	["race.scourge.npc_meet.w09.020"] = {
+		"La Dama Oscura. Ha spezzato la catena che avevamo in testa e ci ha chiesto solo di tenere affilata la volontà. Mi inchino, quanto me lo permettono queste vecchie giunture.",
+		"Lady Sylvanas. La libertà ha un volto, ed è pallido e freddo così. Nessun altro ci avrebbe strappati alla presa del Re dei Lich.",
+		"La Regina Banshee in persona. Alcuni di noi la seguono per amore, altri per paura, altri per semplice gratitudine. Sono qui davanti a lei e non so dire quale sia il mio caso.",
+	},
+	["race.scourge.npc_meet.w09.021"] = {
+		"posa le monete sul banco una alla volta, piano, così che il mercante non debba toccare una mano morta.",
+		"tiene le dita lontane da quelle del mercante e fa scivolare il pagamento con la punta delle unghie.",
+	},
+	["race.scourge.npc_meet.w09.022"] = {
+		"Il dolore, evidente sul volto di {other}. I vivi soffrono con tutto il corpo. Questo lo ricordo, e un po' lo invidio.",
+		"{other} ha l'aspetto che per me hanno le rovine di Lordaeron: qualcosa di rotto, eppure in piedi. Tengo la voce bassa.",
+	},
+	["race.scourge.other_action.w09.001"] = {
+		"Ci sto. Se qualcuno deve entrare per primo, che sia chi è già morto.",
+		"Un invito. Vengo, e cercherò di non gocciolare addosso a nessuno.",
+		"D'accordo. Combatto bene e mi lamento poco. Le lamentele sono finite più o meno quando è finito il respiro.",
+	},
+	["race.scourge.other_action.w09.002"] = {
+		"Un duello? Va bene. Non spaventarti se si stacca qualcosa. Non vuol dire che mi arrendo.",
+		"Accetto. Il dolore mi arriva tardi e leggero. Dovrai essere convincente.",
+		"Uno scontro con un morto. Scelta audace. Mi piace l'audacia.",
+	},
+	["race.scourge.other_action.w09.003"] = {
+		"risponde al gesto con un lento cenno del capo, badando alla mascella.",
+		"alza in risposta una mano grigia; i punti di sutura al polso scricchiolano appena.",
+		"ricambia il saluto con un inchino rigido e breve, quello che giunture come queste ancora concedono.",
+	},
+	["race.scourge.other_action.w09.004"] = {
+		"Uno scambio? Va bene. Tutto quello che ti passo è stato pulito. Più o meno.",
+		"Trattiamo. Dicono che i morti siano duri negli affari. Non abbiamo molto altro in cui mettere i nostri desideri.",
+	},
+	["race.scourge.other_action.w09.005"] = {
+		"Un altro incarico preso. La mia volontà, la mia scelta, la mia commissione. Dopo il Flagello, perfino le faccende sanno di libertà.",
+		"Un lavoro accettato. Dopo, tendo l'orecchio per sentire se un'altra voce ha detto sì al posto mio. Silenzio. Bene.",
+	},
+	["race.troll.npc_meet.w09.001"] = {
+		"Ogni locanda sa di fumo e di birra vecchia. Io continuo a cercare l'odore del sale e del pesce, quello di Sen'jin. Non ci arriva mai.",
+		"Un oste, un focolare, una panca troppo bassa per queste gambe. Va bene così. Un troll si piega in quattro, se il cibo lo merita.",
+		"Le locande sono tutte muri e travi. A Sen'jin una capanna lascia passare il vento del mare, e nessuno la chiama corrente d'aria.",
+	},
+	["race.troll.npc_meet.w09.002"] = {
+		"Pesce, se ne hai. Altrimenti quello che nuotava più vicino alla cucina.",
+		"Qualcosa che morda un po', oste. La lingua di un troll, col pane e basta, si annoia.",
+		"Dammi da mangiare per bene, oste. La carne di un troll si aggiusta in fretta, ma prima qualcuno deve riempire la pentola.",
+	},
+	["race.troll.npc_meet.w09.003"] = {
+		"Neanche un sorriso da chi sta al banco. Una sfida, allora. I troll sono pazienti con le risate: prima o poi arrivano.",
+		"Poche parole e una mano pesante sul banco. Anche certi stregoni parlano così, e sono proprio quelli da ascoltare.",
+	},
+	["race.troll.npc_meet.w09.004"] = {
+		"Al banco c'è qualcuno del popolo di Thrall. Orchi e Darkspear dividono il fuoco da quando hanno passato il mare insieme: qui si versa come tra vecchi alleati.",
+		"Mani d'orco alla spina. Gli anziani di Sen'jin dicono che i Darkspear devono agli orchi un debito e un'amicizia, e che non sono la stessa cosa. Lascio la mancia per tutte e due.",
+	},
+	["race.troll.npc_meet.w09.005"] = {
+		"Al banco, zanne come le mie. Ci scambiamo uno sguardo e un cenno della testa: qui nessuno dovrà spiegare perché voglio il pesce.",
+		"Versa qualcuno della mia gente. La panca sarà comunque troppo bassa, ma almeno in cucina sapranno cos'è il pepe vero.",
+	},
+	["race.troll.npc_meet.w09.006"] = {
+		"Quando paga un troll, chi vende conta le monete due volte. Le dita lunghe mettono in ansia la gente. Lascio contare.",
+		"I prezzi salgono un po' quando il cliente ha le zanne. Io sorrido largo, e i prezzi scendono un po' quando le zanne sorridono.",
+	},
+	["race.troll.npc_meet.w09.007"] = {
+		"Mi serve quello che fa camminare un corpo: bende, cibo, filo. Le cose luccicanti le trovo gratis, per strada.",
+		"Hai niente per una lunga camminata e un caratteraccio? No? Allora solo per la camminata.",
+		"Fammi vedere la roba utile. Di roba bella, la giungla ne ha in abbondanza.",
+	},
+	["race.troll.npc_meet.w09.008"] = {
+		"{other} ha gli occhi di un raptor davanti a una capra lenta. Peccato: questa capra ha le zanne.",
+		"Il sorriso di chi vende qui è tutto denti e niente calore. Conosco lo sguardo. Ce l'ho anch'io, quando passano i banchi di pesce.",
+	},
+	["race.troll.npc_meet.w09.009"] = {
+		"Si compra dai Reietti, stavolta. I nostri stregoni ogni tanto parlano coi morti, ma di rado ci contrattano.",
+		"Mani fredde sulle monete, odore di erbe e di terra di tomba. I troll conoscono gli spiriti: questa è un'altra faccenda. Compro in fretta.",
+	},
+	["race.troll.npc_meet.w09.010"] = {
+		"Braccia lunghe, portata lunga, si impara in fretta. Un troll prende una lezione come prende una ferita: si chiude presto e lascia qualcosa dentro.",
+		"{other} mostra, io copio. Gli stregoni insegnano ai giovani allo stesso modo: guarda le mani, non la bocca.",
+	},
+	["race.troll.npc_meet.w09.011"] = {
+		"Insegnami qualcosa di nuovo. Se sbaglio, niente paura: i troll guariscono presto e ci riprovano.",
+		"Avanti, fammi vedere. Queste braccia imparano piano all'inizio, e poi tutto d'un colpo.",
+	},
+	["race.troll.npc_meet.w09.012"] = {
+		"Questo maestro abbaia come un cacciatore di teste Darkspear in una giornata storta. Bene. Quelli che abbaiano non sprecano mai una lezione.",
+		"Niente lodi, solo correzioni. Gli anziani della tribù insegnano allo stesso modo: brucia, e resta.",
+	},
+	["race.troll.npc_meet.w09.013"] = {
+		"I cavalieri Darkspear volano sui pipistrelli da che la tribù ricordi. Qualsiasi bestia con le ali è una cugina. Più o meno.",
+		"{other} mi indica una sella. I troll sono fatti per arrampicarsi sugli alberi, non sulle nuvole, ma queste gambe lunghe si piegano abbastanza.",
+	},
+	["race.troll.npc_meet.w09.014"] = {
+		"Scegli una bestia con tanta pazienza. Queste gambe vanno ripiegate, e ci vuole un po'.",
+		"Qualcosa di tranquillo, per favore. Un troll si arrampica dappertutto, ma cadere è tutta un'altra arte.",
+	},
+	["race.troll.npc_meet.w09.015"] = {
+		"Monete in custodia, a pagamento. Sulla costa il mio popolo tiene la ricchezza in reti buone e lance affilate. Una cassa chiusa sembra pigra, ma non c'è mai da rammendarla.",
+		"Oro che dorme nel caveau di un altro. Gli stregoni vorrebbero una piccola maledizione sulla serratura, tanto per stare tranquilli.",
+	},
+	["race.troll.npc_meet.w09.016"] = {
+		"Qualcuno ha bisogno d'aiuto e alza gli occhi verso un troll. Buona scelta. Le braccia lunghe arrivano a parecchi guai.",
+		"Un problema, offerto da sopra un tavolo. I Darkspear ricordano chi li aiutò quando la tribù era braccata: posso aiutare questa persona.",
+	},
+	["race.troll.npc_meet.w09.017"] = {
+		"Dimmi cosa non va. Se morde, mordo anch'io. Se è maledetto, conosco gente.",
+		"Avanti. I troll sono bravi in due cose: ascoltare e far sparire i guai. A volte rumorosamente.",
+	},
+	["race.troll.npc_meet.w09.018"] = {
+		"Una guardia dell'Orda, che sorveglia la strada. Quando la tribù non aveva più dove andare, l'Orda le ha dato una costa e uno stendardo. Passando, faccio un cenno.",
+		"I colori dell'Orda sulle spalle di una guardia. Gli anziani di Sen'jin dicono che l'unica alleanza che valga la pena tenere è quella data liberamente. Questa la teniamo.",
+	},
+	["race.troll.npc_meet.w09.019"] = {
+		"Buona guardia. I Darkspear dormono più tranquilli con una lancia come la tua sulla strada.",
+		"Braccio forte, occhio attento. L'Orda è fortunata con le sue guardie.",
+	},
+	["race.troll.npc_meet.w09.020"] = {
+		"Una guardia dell'Alleanza, la mano sull'acciaio, gli occhi sulle mie zanne. Nelle storie degli umani il mostro è un troll da tanto tempo. Passi lenti.",
+		"Quella guardia vede un troll e pensa a Zul'Gurub, o agli Amani. Non sono la mia tribù. Spiegarlo qui mi costerebbe la pelle.",
+	},
+	["race.troll.npc_meet.w09.021"] = {
+		"ripiega le lunghe braccia ben lontano da qualsiasi arma e oltrepassa la guardia dell'Alleanza con un passo lungo, senza fretta.",
+		"tiene le zanne basse e le mani bene in vista, {g:attento|attenta} con ogni palmo del lungo corpo a non sembrare una minaccia.",
+	},
+	["race.troll.npc_meet.w09.022"] = {
+		"{other} parla a cerchi, come uno stregone che legge il fumo. So come si ascolta: si aspetta la parola che ritorna.",
+		"Indovinelli. A Sen'jin i vecchi del voodoo rispondono a una domanda con un'altra domanda e un colpo di sonaglio. Con questa persona posso avere pazienza.",
+	},
+	["race.troll.npc_meet.w09.023"] = {
+		"risponde al saluto allegro con un sorriso largo, tutto zanne, e una risata che sale gorgogliando da molto in fondo.",
+		"ride insieme, una risata da troll, morbida e rotolante, e ondeggia appena sulle lunghe gambe come se lì vicino fosse partito un tamburo.",
+	},
+	["race.troll.npc_meet.w09.024"] = {
+		"Tristezza su quella faccia. I Darkspear sanno cosa vuol dire perdere una casa. Con {other} tengo la voce bassa.",
+		"Un dolore, in questa persona. Il mio popolo piange forte, e poi ride forte. Per {other} la seconda parte non è ancora arrivata.",
+	},
+	["race.troll.npc_meet.w09.025"] = {
+		"Thrall. Il Capoguerra che trovò i Darkspear messi alle strette su un'isoletta e non volle salpare senza di loro. Ogni troll della tribù gli deve questo.",
+		"Il Capoguerra dell'Orda. Vol'jin lo segue, e con lui ogni lancia Darkspear. Mi raddrizzo un poco, zanne in alto.",
+	},
+	["race.troll.other_action.w09.001"] = {
+		"Un gruppo? Bene. I troll cacciano meglio in branco, come i raptor, solo con battute migliori.",
+		"Sì, sì, arrivo. Gambe lunghe, guarigione rapida, canto stonato. Ti prendi tutti e tre.",
+		"Ci sto. Ai loa piace di più un accampamento pieno che uno vuoto.",
+	},
+	["race.troll.other_action.w09.002"] = {
+		"Anche a te! Un gesto gentile è buon mojo, e io il buon mojo non lo spreco mai.",
+		"Ah! Ricambio. I troll rispondono a ogni saluto: gli spiriti ascoltano.",
+	},
+	["race.troll.other_action.w09.003"] = {
+		"Uno scambio, allora. Giusto per giusto: gli stregoni dicono che la fortuna di un imbroglione marcisce come il pesce vecchio.",
+		"Vediamo cos'hai. Io conto piano, tu conti piano, e nessuno si becca una maledizione.",
+	},
+	["race.troll.other_action.w09.004"] = {
+		"Una sfida tra amici? Bene. Chi perde cucina il pesce, e chi vince fa finta di non zoppicare.",
+		"Io e te, eh? Vacci piano. O no: tanto io guarisco in fretta.",
+	},
+	["race.troll.other_action.w09.005"] = {
+		"Ancora tu? Bene. Stavolta gli spiriti guardano, quindi perdi come si deve.",
+		"Una rivincita, eh? Avanti, allora. Le zanne mi prudevano da un pezzo.",
+	},
+	["race.troll.other_action.w09.006"] = {
+		"Un altro lavoro sulle spalle. Va bene. La schiena di un troll è lunga: c'è posto.",
+		"Parola data, parola mantenuta. Thrall ha mantenuto la sua con i Darkspear. Io posso mantenere la mia con chi me l'ha chiesto.",
+		"Dimmi dove e cosa. La parola di un troll arriva lontano quanto le sue gambe, e quelle arrivano lontano.",
+	},
 }, "base_context")

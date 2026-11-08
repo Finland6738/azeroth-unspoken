@@ -2011,4 +2011,788 @@ NS:AddTexts("enUS", {
 		"lets the weight come off {g:his|her} hooves at last, and the whole great frame seems to settle a hand's breadth lower.",
 		"eases down slowly, as large things do, and lets out a long breath that seems to come up from the ground.",
 	},
+	["race.gnome.journey.w09.001"] = {
+		"Wings beat, the ground drops, and every gnomish instinct I have says this needs more rivets.",
+		"Flight by feathers and muscle. Charming, really. Our flying machines in the old wars at least came with a manual.",
+		"Up we go. I've calculated the odds of falling off. I'm choosing not to remember them.",
+	},
+	["race.gnome.journey.w09.002"] = {
+		"clutches the saddle with both hands, feet dangling well short of the stirrups, and puts on a brave, scientific expression.",
+		"settles into a saddle made for someone twice {g:his|her} size and holds on with grim, cheerful determination.",
+		"peers over the side as the ground falls away, scribbles a hasty note about wing angles, then thinks better of it and holds on.",
+	},
+	["race.gnome.journey.w09.003"] = {
+		"From up here the world looks like a model on a workbench, every road and river laid out neatly. I always want to adjust something.",
+		"The land below turns into a map, and maps are a gnome's comfort. Everything in its place, at a safe distance.",
+		"Higher and higher. The towns shrink into tidy little schematics. I wish the real ones were half as orderly.",
+	},
+	["race.gnome.journey.w09.004"] = {
+		"Is there a manual for this creature? No? Of course not.",
+		"Wings, check. Straps, check. Gnome, mostly calm.",
+		"Fly steady, please. Gnomes bounce, but not well.",
+	},
+	["race.gnome.journey.w09.005"] = {
+		"Solid ground. My knees approve; my stomach is still reviewing the matter.",
+		"Down, and in one piece. I'll write up the flight later: excellent speed, questionable comfort, not a single rivet.",
+		"Feet on the ground again. Flying is marvelous, and so is standing on something that doesn't flap.",
+	},
+	["race.gnome.journey.w09.006"] = {
+		"slides down from the saddle, lands with a small hop, and gives the beast a polite, slightly wary pat.",
+		"drops from the saddle a little farther than expected, straightens {g:his|her} coat and carries on as if it were all planned.",
+		"climbs down carefully, checks every pocket in turn, and looks relieved that nothing stayed behind in the sky.",
+	},
+	["race.gnome.journey.w09.007"] = {
+		"Arrived. New ground, new problems, and very likely new things to take apart. Lovely.",
+		"Here at last. The flight was the easy part; now my legs remember they're short.",
+		"Feet down, notes out. Whatever this place needs, I'd like to know before it asks.",
+	},
+	["race.gnome.journey.w09.008"] = {
+		"Thank you, feathered transport. Your landing could use some work.",
+		"Well flown. Mostly. I have notes, if anyone's interested.",
+	},
+	["race.gnome.quest_complete.w09.001"] = {
+		"Finished, and every part I started with is still attached. I call that a flawless run.",
+		"Done! No smoke, no sparks, and only one small yelp, which I'm choosing not to count.",
+	},
+	["race.gnome.quest_complete.w09.002"] = {
+		"Another job done for people who had no reason to need a gnome. Someday I'd like to finish one for Gnomeregan.",
+		"Good work, honest pay. Still not the work I'd most like to do, which is opening the gates of home again.",
+	},
+	["race.gnome.quest_complete.w09.003"] = {
+		"dusts off {g:his|her} small hands with two brisk claps, like a tinker shutting the lid on a finished box.",
+		"stands on tiptoe to hand over the last of it, then rocks back on {g:his|her} heels, thoroughly pleased.",
+		"gives a quick, satisfied nod, the kind a gnome saves for a gear that finally meshes.",
+	},
+	["race.gnome.quest_complete.w09.004"] = {
+		"Problem solved. Please hold your applause; I'm short, and it goes right over my head.",
+		"There, sorted. You may thank me down here, a little below eye level.",
+	},
+	["race.gnome.quest_complete.w09.005"] = {
+		"Done. I've already written down three things I'd do differently. That isn't regret; that's a revision.",
+		"Finished, and the notes run longer than the job did. For a gnome, that's time very well spent.",
+		"Complete. Now the fun part: working out why it worked.",
+	},
+	["race.gnome.quest_complete.w09.006"] = {
+		"Done, and done for the Alliance. Gnomeregan's exiles pay their debts, one task after another.",
+		"Another errand finished for the Alliance. A people in exile has to be twice as useful, and I don't mind one bit.",
+	},
+	["race.gnome.quest_complete.w09.007"] = {
+		"A reward almost too heavy for me to carry. That's the best problem a gnome can have.",
+		"Thank you! I'll need both arms for this purse, which is exactly how I like a purse.",
+	},
+	["race.gnome.quest_complete.w09.008"] = {
+		"counts the reward coin by coin, frowns, and counts it again with the care of someone checking a measurement.",
+		"weighs the payment in one small palm, does a quick sum under {g:his|her} breath, and tucks it away satisfied.",
+	},
+	["race.gnome.quest_complete.w09.009"] = {
+		"The survivors say Thermaplugg advised flooding Gnomeregan with poison to save it. Whatever I fix, I fix so the patient lives.",
+		"Mekkatorque listened to the wrong adviser once, the exiles say, and a city paid. I check my own solutions twice.",
+	},
+	["race.gnome.quest_complete.w09.010"] = {
+		"Task complete. File it under things a small person finished after a big person was asked first.",
+		"All done. Funny how often the job ends up with whoever's closest to the floor.",
+	},
+	["race.gnome.quest_complete.w09.011"] = {
+		"A finished task is proof the world can still be fixed. Gnomes need proof like that, now and then.",
+		"Something was broken, and now it isn't. After Gnomeregan, I never get tired of that feeling.",
+		"One thing put right. It doesn't mend a city, but it mends my mood, which is a start.",
+	},
+	["race.gnome.quest_complete.w09.012"] = {
+		"Done! I'd like a receipt, a sandwich and the next impossible thing, in that order.",
+		"Finished! Now, is there anything to eat, and anything harder to do? Both, ideally.",
+		"That's handled. What else have you got that nobody else wants to touch?",
+	},
+	["race.gnome.quest_complete.w09.013"] = {
+		"climbs onto the nearest crate to deliver the good news from a more dignified height.",
+		"clears {g:his|her} throat, straightens to full height, and reports success to somebody's belt buckle.",
+	},
+	["race.gnome.quest_complete.w09.014"] = {
+		"Somewhere under Dun Morogh, gnomes who never got out still wander the halls, sick and lost. Every good deed up here is a word I'd like to send down to them.",
+		"The leper gnomes still roam what's left of Gnomeregan. I finish my work up here and think of them, every single time.",
+	},
+	["race.gnome.quest_complete.w09.015"] = {
+		"Finished. What's broken next?",
+		"That's sorted. Got anything harder?",
+		"Done. Next problem, please.",
+	},
+	["race.gnome.quest_complete.w09.016"] = {
+		"They handed the job to the smallest person in the room. The smallest person in the room has just finished it.",
+		"Nobody expected much from someone my size. Expectations, it turns out, are adjustable.",
+	},
+	["race.gnome.quest_complete.w09.017"] = {
+		"Glad to help! If anything else breaks, ask for the gnome. There's usually one nearby, underfoot.",
+		"Happy to lend a hand. Small hands, but they get into the places big ones can't.",
+	},
+	["race.gnome.quest_complete.w09.018"] = {
+		"Done, and my legs did twice the walking anyone else's would. Next time I'm borrowing a mechanostrider.",
+		"Finished. Short strides make for long errands; somebody ought to invent a cure for that, and it might as well be a gnome.",
+	},
+	["race.gnome.quest_complete.w09.019"] = {
+		"Problem, attempt, failure, better attempt, solution. The order never changes; only the number of failures does.",
+		"Try, fail, adjust, try again. An old tinker's rhythm, and it got this done too.",
+	},
+	["race.gnome.quest_complete.w09.020"] = {
+		"hums three bright, tuneless notes of triumph and pockets the reward.",
+		"lets out a small, pleased whistle through {g:his|her} teeth and pats the job goodbye.",
+		"beams, a sudden wide gnomish grin that takes up most of a small face.",
+	},
+	["race.gnome.quest_complete.w09.021"] = {
+		"Done, and on the first try. Well, the first try that counted.",
+		"Success at the first attempt! The first attempt anyone saw, at least.",
+	},
+	["race.gnome.quest_complete.w09.022"] = {
+		"A dwarf would shrug and call it an honest day's work. A gnome would draw a chart of it. I'm doing both.",
+		"The dwarves of Ironforge finish a job and go for an ale. Gnomes finish a job and go for a pencil. I may try the ale this once.",
+	},
+	["race.gnome.quest_complete.w09.023"] = {
+		"Tinker Town will hear about this, probably in far more detail than it wants.",
+		"Somebody in Tinker Town is going to get the whole story of this, with diagrams, whether they asked or not.",
+	},
+	["race.gnome.quest_complete.w09.024"] = {
+		"Let it be noted: a gnome did this! Small hands, large results!",
+		"Write it down somewhere: finished by a gnome of Gnomeregan, in exile and in excellent form!",
+		"Put my people's name on that one. Gnomes, the short ones who get it done!",
+	},
+	["race.gnome.quest_complete.w09.025"] = {
+		"Every job finished out here is one more skill the gnomes can carry home, once there's a home to carry it to.",
+		"I keep learning things on these errands. Gnomeregan will be rebuilt by gnomes who learned a great deal while they waited.",
+	},
+	["race.gnome.quest_complete.w09.026"] = {
+		"sketches a quick diagram of what just happened in the air with one finger, then nods at it, satisfied.",
+		"taps {g:his|her} temple twice, as if filing the whole affair somewhere safe for later study.",
+	},
+	["race.gnome.quest_complete.w09.027"] = {
+		"Finished properly, not just finished. There's a difference, and gnomes can always tell.",
+		"It works, and it'll keep working. That second part is the one that counts.",
+		"Done to a standard I'd sign my name under. The High Tinker would ask for nothing less.",
+	},
+	["race.gnome.quest_complete.w09.028"] = {
+		"There you are, all fixed. If it ever goes wrong again, I'll pretend to be surprised.",
+		"All yours, in good order. Mind how you use it, and it'll mind you back.",
+	},
+	["race.gnome.quest_progress.w09.001"] = {
+		"Stage one complete. Stage two: the same thing, only more of it.",
+		"Partial results. Promising ones, too.",
+		"Some of it done. The rest is a matter of iteration.",
+	},
+	["race.gnome.quest_progress.w09.002"] = {
+		"That's every piece! Back to whoever asked; I want to see their face.",
+		"All collected! Time for the delivery run.",
+	},
+	["race.gnome.quest_progress.w09.003"] = {
+		"counts off what's done on small fingers, runs out of fingers, and starts over with a grin.",
+		"crosses off one more line of a list kept entirely in {g:his|her} head, and hums.",
+	},
+	["race.gnome.quest_progress.w09.004"] = {
+		"All done out here. The walk back is the one part of this I can't optimize.",
+		"Finished. Now the long trip back on short legs, the only flaw in an otherwise excellent design.",
+	},
+	["race.gnome.reputation_change.w09.001"] = {
+		"They think better of me now. A people in exile learns that goodwill is worth more than gold.",
+		"A little more trust earned. Gnomes keep careful records, and this goes in the good column.",
+		"My standing improves. Ironforge taught my people what it means when strangers decide to trust you.",
+	},
+	["race.gnome.rest_enter.w09.001"] = {
+		"A place to rest. First I'll find a chair my size, which will take a while, and then I'll rest twice as hard.",
+		"Rest at last. My legs have been doing double work all day just to keep pace with the world.",
+		"Somewhere safe to sit. A gnome recharges quickly, given a cushion and five minutes without explosions.",
+	},
+	["race.gnome.rest_enter.w09.002"] = {
+		"climbs onto a bench meant for taller folk, legs swinging, and lets out a long, contented sigh.",
+		"drags a stool closer to the warmth, pulls a crumpled notebook from a pocket, and promptly forgets to open it.",
+	},
+	["race.gnome.rest_enter.w09.003"] = {
+		"Resting in borrowed rooms is a gnomish specialty by now. Unpack the essentials, claim the warmest spot, and the place is home enough for the hour.",
+		"An inn, a bed, a door that shuts. Simple things. The exile taught us not to call them small.",
+	},
+	["race.orc.journey.w09.001"] = {
+		"Up we go. I check the straps, then check them again. An orc trusts strength, and a strap is only leather.",
+		"The ground falls away. I hold on harder than I need to. Nobody is watching, so nobody will know.",
+		"Hoisted into the air like a sack of grain. An orc's dignity does not survive a flight intact, but the rest of me usually does.",
+	},
+	["race.orc.journey.w09.002"] = {
+		"swings up onto the wind rider and grips the harness with both green fists, jaw set as the wings beat.",
+		"climbs onto the wind rider's back with a grunt, settles {g:his|her} weight, and gives the flight master a single nod.",
+		"hunches low over the wind rider's neck as it springs into the air, tusks bared against the rush of wind.",
+	},
+	["race.orc.journey.w09.003"] = {
+		"From up here the world is a map of colors. I look for red earth out of habit, and if I find it I feel a small tug.",
+		"Below, roads turn to threads and forts to pebbles. I pick out the Horde's from the rest; even up here an orc keeps count.",
+		"Height makes everything small, even war. For a moment, up here, I can see the shape of the world instead of its quarrels.",
+	},
+	["race.orc.journey.w09.004"] = {
+		"Fly straight, beast, and I'll find you something with more meat on it than me.",
+		"Steady, beast. I don't bite, and I'd prefer you didn't either.",
+	},
+	["race.orc.journey.w09.005"] = {
+		"Down. My legs remember what they are for. My stomach takes a little longer.",
+		"Solid ground under me. An orc was not made to hang in the sky, and my knees have been saying so the whole way.",
+		"Feet down, harness off. Flying is fast, I grant it that. Dignified it is not.",
+	},
+	["race.orc.journey.w09.006"] = {
+		"drops from the wind rider's back and lands heavily, rolling {g:his|her} shoulders as if to shake the sky off them.",
+		"slides down from the saddle, stamps once on the ground to make sure it is real, and walks off without looking back.",
+	},
+	["race.orc.journey.w09.007"] = {
+		"Good flying. I'll tell the others you only frightened me twice.",
+		"You did well, beast. A strip of meat for you, if the flight master allows it.",
+		"Thanks for the ride. My stomach may thank you later.",
+	},
+	["race.orc.journey.w09.008"] = {
+		"Off we go. The wind riders serve the Horde as the wolves do: not slaves, partners. The old Horde never understood the difference.",
+		"A wind rider carries an orc because it chooses to work with us. In the old Horde, the elders say, everything was driven with a whip. This is better.",
+	},
+	["race.orc.journey.w09.009"] = {
+		"Landed. Wherever this is, it is a long way from the red dust. I set off on foot, the way an orc should.",
+		"The flight ends and the walking begins. That is how an orc likes it: the last stretch on one's own legs.",
+		"Down at last. I could have walked it, given a week. A wind rider is only a quicker kind of stubborn.",
+	},
+	["race.orc.quest_complete.w09.001"] = {
+		"Finished. Next time, just tell me what needs breaking and stand back.",
+		"Orcs don't need speeches before work, only the work. That's it, handled.",
+		"Handled. Keep the thanks; give me the next job.",
+	},
+	["race.orc.quest_complete.w09.002"] = {
+		"Said I would, and did. In the end that is all honor is: a word, and the legs to carry it.",
+		"Honor isn't a banner. It's a promise kept when nobody would have known you broke it.",
+		"I gave my word, and now it's paid in full. That weighs less than any coin.",
+	},
+	["race.orc.quest_complete.w09.003"] = {
+		"knocks the dust of the road from {g:his|her} boots, and a small, satisfied grunt marks the job as finished.",
+		"rolls {g:his|her} shoulders and grunts once, the plain sound an orc makes over work well done.",
+	},
+	["race.orc.quest_complete.w09.004"] = {
+		"Orcs who lived through the camps talk of whole seasons spent doing nothing worth remembering. Not me. Not today.",
+		"Elders who survived the internment camps say the worst of it was the idleness. I'll take sore feet over that any day.",
+	},
+	["race.orc.quest_complete.w09.005"] = {
+		"Somebody owes me a meal for that, and an orc's meal is not a small thing.",
+		"Finished, and hungry. Payment in roast boar is also accepted.",
+	},
+	["race.orc.quest_complete.w09.006"] = {
+		"Plain work, done plainly. The Warchief asks that of every orc, and it's a fair thing to ask.",
+		"Thrall never asked us for songs about ourselves. He asked for work that holds. This holds.",
+		"Thrall didn't free us from the camps so we could sit and wait to be told. He freed us for things like this, done well.",
+	},
+	["race.orc.quest_complete.w09.007"] = {
+		"Tell it in Orgrimmar if you like: I was asked, and I delivered.",
+		"Carry word to the Valley of Strength if you want. I won't stop anyone bragging on my behalf.",
+	},
+	["race.orc.quest_complete.w09.008"] = {
+		"Sweat dries. The job stays done. That's the trade, and I like it.",
+		"My arms ache, and the thing is finished. An orc can sleep well on that.",
+		"Hands sore, back stiff, task complete. An honest ledger.",
+	},
+	["race.orc.quest_complete.w09.009"] = {
+		"Done right, too. Check it if you like; orcs don't cut corners, but I won't take offense.",
+		"Look it over all you want. I've nothing to hide and even less patience.",
+	},
+	["race.orc.quest_complete.w09.010"] = {
+		"Every honest task is a stone in Orgrimmar's walls. A small stone. Still a stone.",
+		"Durotar wasn't built by heroes. It was built by orcs doing the next thing that needed doing, like this.",
+	},
+	["race.orc.quest_complete.w09.011"] = {
+		"You expected it to take longer? You've been hiring the wrong races.",
+		"Quicker than you thought? Next time, ask an orc first.",
+	},
+	["race.orc.quest_complete.w09.012"] = {
+		"presses a fist to {g:his|her} chest and lets it rest there a moment: promise kept.",
+		"gives one short nod, tusks bared in something close to a smile.",
+	},
+	["race.orc.quest_complete.w09.013"] = {
+		"The elders say our blood ran hot with demon fire once. Mine runs hot only for honest work, and that's the better fever.",
+		"In Orgrimmar they say Hellscream's death bought us this: a task we chose, finished by hands no demon owns.",
+	},
+	["race.orc.quest_complete.w09.014"] = {
+		"Finished. An orc doesn't need to be asked twice, only once and clearly.",
+		"Ask plainly and you get plain work back. Like this.",
+		"Say what you need one time; orcs listen the first time. See?",
+	},
+	["race.orc.quest_complete.w09.015"] = {
+		"Trolls, tauren, even the Forsaken: whoever's on the other end of a job like this, it's how the Horde holds together.",
+		"The Horde is a lot of strange peoples agreeing to help each other. Today I did my share of the agreeing.",
+	},
+	["race.orc.quest_complete.w09.016"] = {
+		"With my own two hands, start to finish. Lok'tar!",
+		"Strength is for using, and I used it well!",
+	},
+	["race.orc.quest_complete.w09.017"] = {
+		"If they start thanking me, I'll nod once and leave. Orcs aren't built for that much gratitude; it itches.",
+		"Let them keep the speeches. A grunt and a handshake, and we're square.",
+	},
+	["race.orc.quest_complete.w09.018"] = {
+		"Strength isn't only for the arena. Most days it's for carrying things where they need to go. Like today.",
+		"Orcs talk of strength as if it lived in the fist. Half of it lives in the patience to finish.",
+	},
+	["race.orc.quest_complete.w09.019"] = {
+		"Job's over. I'll take my pay and the road, in that order.",
+		"Pay me and point me at the next thing. Orcs don't linger.",
+		"That was my part. Settle yours and I'm gone.",
+	},
+	["race.orc.quest_complete.w09.020"] = {
+		"Frostwolf, Warsong, Blackrock once: the clans were proud of different things. Every one of them was proud of a job finished.",
+		"Whatever clan an orc hails from, they agree on one thing: what you take up, you finish.",
+	},
+	["race.orc.quest_complete.w09.021"] = {
+		"cracks {g:his|her} knuckles one by one, looking faintly disappointed that nothing else needs hitting.",
+		"glances around as if hoping the job had a second half, then shrugs and settles for the reward.",
+	},
+	["race.orc.quest_complete.w09.022"] = {
+		"Every task like this leaves a little less room for the Burning Blade to whisper in. Busy orcs don't listen to cults.",
+		"The Burning Blade feeds on orcs with nothing to do and nothing to believe. I have both, for now.",
+	},
+	["race.orc.quest_complete.w09.023"] = {
+		"That's it? I've wrestled wolves that put up more argument.",
+		"Over already? Durotar's scorpids put up more of a fight on a slow day.",
+		"Already? I hadn't even warmed my arms up.",
+	},
+	["race.orc.quest_complete.w09.024"] = {
+		"Next time I see Orgrimmar's gates, I'll walk through them with my head a little higher.",
+		"Something to tell around the fire in Razor Hill, if anyone asks. Orcs always ask.",
+	},
+	["race.orc.quest_complete.w09.025"] = {
+		"My word to you is kept. An orc's word is the one thing nobody can take from us again.",
+		"Promise kept. My people had a great deal taken from them once; never their word.",
+	},
+	["race.orc.quest_complete.w09.026"] = {
+		"A wolf doesn't boast after the hunt. It eats, it rests, it hunts again. Good enough for me.",
+		"Wolves never brag about a kill. They eat and move on. Orcs could learn from them, and the best ones have.",
+	},
+	["race.orc.quest_complete.w09.027"] = {
+		"Good work makes for a good thirst. Where's the grog?",
+		"That's earned me a mug of something strong. Who's pouring?",
+	},
+	["race.orc.quest_complete.w09.028"] = {
+		"Strength grows the way the red rock of Durotar was carved: one hard day after another.",
+		"Nobody turns strong in one afternoon. You stack days like this one until the pile can bear weight.",
+	},
+	["race.orc.quest_progress.w09.001"] = {
+		"That's everything they asked. Now the long walk to tell them, and an orc's legs don't mind it.",
+		"All of it, gathered and done. The road to the one who asked is the easy part.",
+		"Nothing left to do out here. The rest is carrying the news, and I carry well.",
+	},
+	["race.orc.quest_progress.w09.002"] = {
+		"Some of it. Not all. Orcs don't stop at some.",
+		"Part done. The rest is hiding from me, and it won't hide long.",
+		"Not finished. Fine. I wasn't tired yet anyway.",
+	},
+	["race.orc.quest_progress.w09.003"] = {
+		"Some way along. A wolf on a trail doesn't count the steps behind it, only the scent ahead.",
+		"Not there yet. Nose down and feet moving, like a wolf that has the scent.",
+	},
+	["race.orc.quest_progress.w09.004"] = {
+		"gives a grunt of satisfaction: everything is in hand, and only the walk remains.",
+		"squares {g:his|her} shoulders and turns toward whoever is waiting, without a wasted step.",
+	},
+	["race.orc.reputation_change.w09.001"] = {
+		"A little more respect. Orcs earn it the slow way, with deeds, and it lasts the longer for it.",
+		"They think better of me now. Good. An orc's name is built like a wall: heavy stone on heavy stone.",
+		"Respect, earned and not begged. That's the only kind an orc should carry.",
+	},
+	["race.orc.rest_enter.w09.001"] = {
+		"A place to stop. An orc rests the way a wolf does: one ear up, and sound asleep in between.",
+		"Rest. I set my things down where I can reach them without looking. An old habit of a people who slept with one hand near a weapon.",
+		"Time to sit. The elders say an orc who rests without shame fights without fear. I mean to rest very well.",
+	},
+	["race.orc.rest_enter.w09.002"] = {
+		"A roof and a fire. Somebody else's bench, somebody else's walls, but the warmth is the same. I'll take it.",
+		"Indoors. The stools are always too small for an orc, but the fire does not care whose people lit it.",
+		"Four walls and a hearth. Orcs build theirs thicker, but these will do for now.",
+	},
+	["race.orc.rest_enter.w09.003"] = {
+		"lowers {g:himself|herself} onto a seat with a long grunt, stretches out {g:his|her} legs, and lets the weight of the road come off at last.",
+		"sets down {g:his|her} pack and sits, heavy and content, like a boulder that has finally rolled to the bottom of the hill.",
+	},
+	["race.scourge.journey.w09.001"] = {
+		"The ground lets go of me. No lurch in the stomach, only a mild curiosity about the view.",
+		"Airborne. The living grip the harness until their knuckles go white. Mine are already that color, so I simply hold on.",
+		"Up into the wind. The cold up here can't find anything in me that still minds it.",
+	},
+	["race.scourge.journey.w09.002"] = {
+		"settles into the saddle as the beast lifts off, back straight and body perfectly still, like cargo that knows its destination.",
+		"rises into the air without so much as a gasp, cloak snapping, hands resting on the harness.",
+	},
+	["race.scourge.journey.w09.003"] = {
+		"If I fall off, just leave me. I'll walk back.",
+		"Steady, beast. You're carrying a corpse with appointments.",
+	},
+	["race.scourge.journey.w09.004"] = {
+		"From above, the land looks whole. The living see fields and roads. I keep looking for the places where something went wrong, out of habit.",
+		"Below, the roads look like stitches holding the land together. I know a little about stitches.",
+	},
+	["race.scourge.journey.w09.005"] = {
+		"Down. My joints creak a little from sitting still so long. That's the whole of my travel sickness.",
+		"Ground again. A living rider would be stretching and groaning. I only have to check that nothing fell off on the way.",
+		"Landed, and not a hair out of place. Mostly because there aren't many left.",
+	},
+	["race.scourge.journey.w09.006"] = {
+		"climbs down from the saddle stiffly and pats {g:his|her} pockets, and then {g:his|her} seams, to make sure everything arrived.",
+		"steps off the mount and stands a moment, unruffled, the wind still tugging at the cloak and at nothing else.",
+	},
+	["race.scourge.journey.w09.007"] = {
+		"Thank you for the ride. You were very calm about the passenger.",
+		"Good flight. Nobody screamed, not even me.",
+	},
+	["race.scourge.journey.w09.008"] = {
+		"Back on the ground, among the living and their noise. The sky was quieter. The sky doesn't stare.",
+		"On the ground. Now begins the part where people step aside without quite knowing why.",
+	},
+	["race.scourge.journey.w09.009"] = {
+		"Flying, I remember that the living used to feel joy at this. I look for it in myself and find something smaller: a kind of quiet.",
+		"The wind rushes past and I feel nothing of its cold. A pity. I'd like to have felt this once with a living face.",
+	},
+	["race.scourge.journey.w09.010"] = {
+		"Down, and the earth under me again. I spent long enough under it; on top suits me better.",
+		"Ground. Good. I've known the earth from below and from above, and walking on it is still my favorite.",
+	},
+	["race.scourge.journey.w09.011"] = {
+		"Up, beast. And no sudden drops; some of my parts are only tied on.",
+		"Smooth flying, please. I'm held together with thread and good intentions.",
+	},
+	["race.scourge.quest_complete.w09.001"] = {
+		"Here it is, finished. You may count your fingers after we part, if it makes you feel better.",
+		"All done. Go on, check that nothing of mine dropped in there. A finger, an ear. It happens.",
+		"Finished, and nothing of me fell off on the job. I call that a good day.",
+	},
+	["race.scourge.quest_complete.w09.002"] = {
+		"I gave my word and kept it. A small thing for the living. For one of us, a word kept is proof there is still someone inside to keep it.",
+		"Promised, and delivered. Whatever else the grave took, it left me able to keep a promise.",
+		"My word, freely given and freely kept. The dead are supposed to be faithless. I enjoy disappointing people.",
+	},
+	["race.scourge.quest_complete.w09.003"] = {
+		"closes the matter with a short nod, the dry joints of {g:his|her} neck giving a faint creak.",
+		"works stiff fingers open and shut once, as if to make sure the hands that did the work are still attached, and lets them fall.",
+	},
+	["race.scourge.quest_complete.w09.004"] = {
+		"Pay me in coin, not in that look. I've had plenty of the look.",
+		"Coin, please. The face you're making doesn't spend anywhere I've been.",
+		"Your gold, if you don't mind. Keep the shudder; I already have a collection.",
+	},
+	["race.scourge.quest_complete.w09.005"] = {
+		"Finished. For a moment I almost felt the old satisfaction, the warm kind. Then it passed, and the plain kind stayed. I'll take the plain kind.",
+		"The living celebrate this sort of thing with supper and company. I stand here a while, and that is my celebration.",
+	},
+	["race.scourge.quest_complete.w09.006"] = {
+		"Another task for Undercity. The Forsaken are few, so each of us has to count for ten.",
+		"That's one more thing the Forsaken did for themselves. Nobody else was going to.",
+		"Mark it down for the Forsaken. We're used to nobody else keeping score.",
+	},
+	["race.scourge.quest_complete.w09.007"] = {
+		"Nobody fainted when I handed it over. Either I'm getting better at standing politely, or they're getting used to us.",
+		"Not one scream at the hand-over. Progress, for the Forsaken, is measured in screams not screamed.",
+		"They thanked me from ten paces off. A Forsaken learns to hear gratitude at a distance.",
+	},
+	["race.scourge.quest_complete.w09.008"] = {
+		"says nothing for a moment, then gives a dry rasp of a laugh that seems to surprise even {g:him|her}.",
+		"lets out a hoarse sound of approval, the closest thing to a sigh that a body without breath can manage.",
+	},
+	["race.scourge.quest_complete.w09.009"] = {
+		"The apothecaries would want a full report: what I saw, what I touched, what it smelled like. Let them wait. I'm enjoying the finishing.",
+		"Undercity always has an apothecary ready to make me write all this down in a ledger, with measurements. I'll give them a shrug.",
+	},
+	["race.scourge.quest_complete.w09.010"] = {
+		"There. Done by someone with no pulse and all the patience in the world. You got a bargain.",
+		"Finished. No meals, no sleep, no complaints. The dead make excellent hired help.",
+		"All taken care of. I didn't even stop to eat. Then again, I rarely do.",
+	},
+	["race.scourge.quest_complete.w09.011"] = {
+		"The Lich King had me fetch and carry without end, and none of it was mine. This errand was no grander, but I chose it. That is the whole difference, and it's enormous.",
+		"Under the Scourge, every task finished only led to the next order. Now a task ends, and the next one waits until I decide.",
+	},
+	["race.scourge.quest_complete.w09.012"] = {
+		"Tell the orcs a Forsaken did this. They won't believe it, and then they'll have to.",
+		"If anyone in the Horde asks, say it was one of Sylvanas's people. Let them chew on that.",
+	},
+	["race.scourge.quest_complete.w09.013"] = {
+		"I used to finish things because life was short. Now there's no hurry at all, and I finish them anyway. Habit, or something better than habit.",
+		"When I was alive, a task like this was a race against the years. The years have stopped counting me. I did it anyway.",
+	},
+	["race.scourge.quest_complete.w09.014"] = {
+		"sets the last of it aside and pushes a loose jaw back into place with the heel of a hand, plainly satisfied.",
+		"gives a satisfied nod, then has to steady {g:his|her} jaw, which nodded a little more than the rest of {g:him|her}.",
+	},
+	["race.scourge.quest_complete.w09.015"] = {
+		"The Scarlet Crusade calls us abominations. Abominations, it turns out, keep their word.",
+		"Let the Crusade preach about the walking dead. This walking dead finished the job.",
+	},
+	["race.scourge.quest_complete.w09.016"] = {
+		"No one waits to hear how it went. I tell myself anyway, briefly, and the telling is enough.",
+		"Finished, and nobody to tell. I'll tell the stones of Undercity later; they've heard worse.",
+	},
+	["race.scourge.quest_complete.w09.017"] = {
+		"Sorry about the smell. The work's good, at least, and the work's what you asked for.",
+		"It's done. Yes, that smell is me. No, it doesn't come off.",
+		"Finished. I'd stand closer to hand it over, but I'm told embalming oils are an acquired taste.",
+	},
+	["race.scourge.quest_complete.w09.018"] = {
+		"Lordaeron's throne room sits in ruins above Undercity. Every small task like this one is a way of saying the dead still live there, and still mean to.",
+		"Above the city, the old capital crumbles. Below it, we get things done. One more done.",
+	},
+	["race.scourge.quest_complete.w09.019"] = {
+		"You can breathe now. I won't take offense; I've given it up myself.",
+		"Finished. You can unclench now. I don't bite. Rarely.",
+	},
+	["race.scourge.quest_complete.w09.020"] = {
+		"Whoever I was before would have been proud of this, I think. I can't ask them. I'll be proud on their behalf.",
+		"The person I was in Lordaeron might have done this better or worse. I'll never know. This version did it.",
+	},
+	["race.scourge.quest_complete.w09.021"] = {
+		"That's done. Tell whoever's next on the list that the dead are in a working mood.",
+		"Bring me the next one. The dead don't tire, and I'd hate to waste that.",
+	},
+	["race.scourge.quest_complete.w09.022"] = {
+		"stands still a while after the hand-over, unblinking, as though listening for a feeling that is slow to arrive.",
+		"lingers a moment with a faintly puzzled look, the look of someone checking a pocket for something that used to be there.",
+	},
+	["race.scourge.quest_complete.w09.023"] = {
+		"The coin will buy food I can barely taste. I'll buy it anyway; chewing passes the time, and it reminds the jaw what it's for.",
+		"A reward for the living is a hot meal. Mine is a cold one, eaten for the habit. It still feels like a reward.",
+	},
+	["race.scourge.quest_complete.w09.024"] = {
+		"Finished. Don't make a fuss; I wouldn't know what to do with it.",
+		"There. No speeches, please. The dead are poor at accepting compliments.",
+		"Done and delivered. Whatever thanks you had planned, consider it received.",
+	},
+	["race.scourge.quest_complete.w09.025"] = {
+		"Tirisfal taught us one thing early: the Forsaken get what they work for, and little else. Here's a little more, worked for.",
+		"Brill, Deathknell, the Sepulcher: our people built every outpost out of errands like this one. I've laid my brick.",
+	},
+	["race.scourge.quest_complete.w09.026"] = {
+		"I'll admit it: I thought about quitting halfway. Then I remembered nobody can make me quit either.",
+		"Finished. My own will got me through, the same stubborn thing that told the Lich King no.",
+	},
+	["race.scourge.quest_complete.w09.027"] = {
+		"Done, and I didn't even die doing it. Again.",
+		"Another job survived. I use the word loosely.",
+		"Over, and in one piece. Most of one piece.",
+	},
+	["race.scourge.quest_complete.w09.028"] = {
+		"wipes a smear of something dark from {g:his|her} sleeve, inspects the stitching beneath it, and moves on to whatever comes next.",
+		"tugs a frayed stitch at {g:his|her} wrist tight again, the way the living might straighten a collar after a job well done.",
+	},
+	["race.scourge.quest_progress.w09.001"] = {
+		"Some of it done. The rest will keep; most things keep better than I did.",
+		"Partway. Slow and steady, like the rot, only in a useful direction.",
+		"Halfway. I'm in no hurry; the grave cured me of hurry.",
+	},
+	["race.scourge.quest_progress.w09.002"] = {
+		"counts the remainder on stiff fingers, loses a knuckle's worth of patience, and carries on.",
+		"ticks something off on stiff gray fingers and walks on without hurry.",
+	},
+	["race.scourge.quest_progress.w09.003"] = {
+		"All of it. Back to whoever asked, and I'll try not to make them flinch.",
+		"Everything's gathered. Time to collect and watch someone pretend not to stare.",
+		"Finished here. Now the walk back, which for once I don't mind; my legs never tire.",
+	},
+	["race.scourge.quest_progress.w09.004"] = {
+		"Ready to hand over. I don't feel eager, exactly, but I remember eager, and this is close.",
+		"All of it gathered. Some pale cousin of pride stirs. I'll let it come along.",
+	},
+	["race.scourge.reputation_change.w09.001"] = {
+		"They think a little better of one of the Forsaken. I didn't expect it to matter. It does, a bit.",
+		"A sliver more trust, given to the dead. I'll carry it carefully; it's fragile, and so are they.",
+		"Someone has decided I'm less of a monster than they thought. Small victory. I'll keep it.",
+	},
+	["race.scourge.rest_enter.w09.001"] = {
+		"A place to rest. I don't need the bed the way the living do, but I'll take the quiet, and the right to sit without being stared at.",
+		"Safe walls. I don't tire, exactly, but something in me unclenches, a fist I didn't know I was making.",
+		"At last somewhere I can stop being watched. The dead don't need sleep; what we need, now and then, is to be ignored.",
+	},
+	["race.scourge.rest_enter.w09.002"] = {
+		"A chair, no bed. The dead make cheap guests: we don't sleep, we barely eat, and we never complain about the draft.",
+		"No room for me, thanks. A corner will do, and I'll try not to frighten the other guests.",
+	},
+	["race.scourge.rest_enter.w09.003"] = {
+		"sits down with the stiff care of old joints, and goes so still that the room soon forgets {g:he|she} is there.",
+		"finds a corner out of the way, draws up {g:his|her} hood and settles into a patient, unbreathing stillness.",
+		"lowers {g:himself|herself} onto a bench and lays both hands flat on the table, as if to anchor a body that has forgotten how to tire.",
+	},
+	["race.troll.journey.w09.001"] = {
+		"Up into the wind. I hold on with my long fingers and tell my stomach this is perfectly natural for a troll. My stomach is not convinced.",
+		"Off the ground we go. Trolls climb trees, not sky, and my knees would like that noted.",
+		"The beast beats its wings and the world drops away. I grin, mostly so my face has something to do besides panic.",
+	},
+	["race.troll.journey.w09.002"] = {
+		"folds {g:his|her} long legs tight against the beast's flanks as it climbs, tusks bared to the rushing air.",
+		"hunches low in the saddle as the wings take hold, long arms locked around the beast's neck.",
+		"settles into the climb with a troll's easy balance, hair whipping back and eyes narrowed against the wind.",
+	},
+	["race.troll.journey.w09.003"] = {
+		"Fly smooth, friend. I tip well, in fish.",
+		"Easy on the turns, beast. I've got a lot of leg to keep track of.",
+		"Up we go! Try not to drop me, I'm the only troll I've got.",
+	},
+	["race.troll.journey.w09.004"] = {
+		"From up here every patch of blue might be the sea. My eyes go to it first every time, like a needle to the north.",
+		"Below, the land shrinks to a map. I search the edges of it for water, the way my people always search the horizon for home.",
+		"The ground falls away and I find myself hunting for a glint of surf. Wherever a troll flies, some part of the troll is looking for the coast.",
+	},
+	["race.troll.journey.w09.005"] = {
+		"Solid ground. My knees argue about it for a moment, then remember how walking works.",
+		"Down again. I unfold one long leg at a time and check that both still belong to me.",
+		"Feet on the earth, wind out of my ears. A troll is a creature of the ground and the trees, and I am happy to be one again.",
+	},
+	["race.troll.journey.w09.006"] = {
+		"slides down from the saddle in one long, loose motion and shakes the wind out of {g:his|her} hair.",
+		"drops to the ground, stretches until {g:his|her} back cracks, and gives the beast a grateful pat on the neck.",
+		"steps off, wobbles once on long legs, then catches the balance with a short laugh.",
+	},
+	["race.troll.journey.w09.007"] = {
+		"Down again! Somebody give me something that doesn't move.",
+		"Good flight. Never again. Until next time.",
+		"Ground! I missed you, ground. Don't ever change.",
+	},
+	["race.troll.journey.w09.008"] = {
+		"A long flight. The whole way I watched coastlines slide past and named the ones I knew. Now my legs need reminding they are mine.",
+		"So many miles of land and water under the wings. A troll's people crossed one sea in fear; I crossed half a continent sitting down.",
+	},
+	["race.troll.quest_complete.w09.001"] = {
+		"All done. If the reward smells of fish, so much the better.",
+		"Here it is. First the troll works, then the troll eats. That's the order of things.",
+		"Finished. Count it if you like; I'll be over there, looking for something to put on a fire.",
+	},
+	["race.troll.quest_complete.w09.002"] = {
+		"Word kept. The witch doctors of Sen'jin say a broken promise follows you around like a stray dog. Nothing following me.",
+		"Finished as promised. The witch doctors say a kept word is the cheapest charm there is, and the strongest.",
+		"A promise is a little mojo you put on yourself, the witch doctors say. This one's lifted now.",
+	},
+	["race.troll.quest_complete.w09.003"] = {
+		"hands the last of it over with a flourish of long fingers, tusks bared in a pleased grin.",
+		"drums a quick rhythm on one thigh, the kind of beat Darkspear children tap out on overturned boats.",
+		"rolls {g:his|her} long neck from side to side and lets out a short, contented laugh.",
+	},
+	["race.troll.quest_complete.w09.004"] = {
+		"The elders of Sen'jin say our old chief gave his life so the tribe could walk free. Small jobs like this are how the rest of us pay it back.",
+		"Sen'jin died so the Darkspear could have a tomorrow, the elders say. I try to fill mine with something worth it. Today, this.",
+	},
+	["race.troll.quest_complete.w09.005"] = {
+		"There. Next time, ask for something hard. My arms are too long for little jobs.",
+		"Done. You had a worried look. Never worry when a troll says yes.",
+		"Finished, mon. Took me less time than the walk over.",
+	},
+	["race.troll.quest_complete.w09.006"] = {
+		"Job done. Now a fire, a fish on a stick, and nobody asking me for anything until it's crisp.",
+		"Finished. My belly has been doing its own sums all day, and it says supper is overdue.",
+		"Done, and hungry enough to eat a whole basket of crabs. Shells too, maybe.",
+	},
+	["race.troll.quest_complete.w09.007"] = {
+		"A spirit somewhere is nodding at me. Or laughing at me. With the loa it's often both.",
+		"I mutter a thank-you to whatever spirit was watching. Better to thank one that wasn't there than ignore one that was.",
+	},
+	["race.troll.quest_complete.w09.008"] = {
+		"Glad to help. The Darkspear remember who was kind to them, and I'll remember you.",
+		"There, it's handled. May your nets come up heavy and your fire never go out.",
+		"Done. Go well, and if the trouble comes back, send for a troll.",
+	},
+	["race.troll.quest_complete.w09.009"] = {
+		"touches two fingers to a tusk and then to the ground, unhurried, like someone settling a small debt.",
+		"murmurs a few words in the trolls' own tongue over the finished work, half a thanks and half a joke.",
+	},
+	["race.troll.quest_complete.w09.010"] = {
+		"One more thing put right. Like mending a net: no single knot matters, and all of them do.",
+		"Small work, honest work. A canoe is only many little pegs, and it still crosses the sea.",
+		"Done. The sea is made of drops, the beach of grains. I'm content to be one grain that did its part.",
+	},
+	["race.troll.quest_complete.w09.011"] = {
+		"Surprised? Everybody's surprised when the troll comes back with what they asked for.",
+		"Yes, it's all there. I only stopped twice for a nap.",
+	},
+	["race.troll.quest_complete.w09.012"] = {
+		"Another job finished. The Echo Isles are still in the hands of that mad witch doctor, the elders say. Every task feels like one more plank in the boat that takes them back.",
+		"Done. One day the Darkspear will sail home to the Echo Isles. Until then I keep my hands busy and my word good.",
+	},
+	["race.troll.quest_complete.w09.013"] = {
+		"That's Darkspear work. Clean, quick, and finished with a grin.",
+		"Tell whoever asks: a troll of the Darkspear did this, and barely broke a sweat.",
+		"Done, and done well. The Darkspear don't do things by halves.",
+	},
+	["race.troll.quest_complete.w09.014"] = {
+		"The orcs grunt when a job's done. The tauren nod. I prefer to laugh. Same meaning, more noise.",
+		"An orc would just say 'done' and walk off. A troll says 'done' and waits for the story to be told properly.",
+		"The Forsaken would sneer at a job like this, the orcs would grunt. Me, I'll grin about it all the way to the next one.",
+	},
+	["race.troll.quest_complete.w09.015"] = {
+		"Long legs, long reach, long patience. That's what it took, and that's what trolls are made of.",
+		"The job wanted patience. People think trolls are wild, but a hunter in the jungle can wait longer than anyone.",
+	},
+	["race.troll.quest_complete.w09.016"] = {
+		"unfolds to full height, which takes a moment, and gives an idle nod over a job well done.",
+		"hums a scrap of a fishing chant, the sort sung while hauling nets on the Durotar coast.",
+	},
+	["race.troll.quest_complete.w09.017"] = {
+		"Done as you asked. No more, no less.",
+		"It's taken care of. Anything else, say it now; I don't stay in one spot for long.",
+		"Finished. Paid in full, nothing owed on either side.",
+	},
+	["race.troll.quest_complete.w09.018"] = {
+		"Good mojo on this one. I can feel it, the way you feel the tide turn without looking.",
+		"Some jobs leave bad mojo on your hands. Not this one. This one comes away clean.",
+		"The spirits liked that. I can tell by how light my feet feel.",
+	},
+	["race.troll.quest_complete.w09.019"] = {
+		"Finished. The road's calling, and a troll's long legs never learned to say no to it.",
+		"Done here. Next stop is wherever the wind and the next job say.",
+	},
+	["race.troll.quest_complete.w09.020"] = {
+		"Picked up a scratch or two doing it. Don't look for them; they're already gone.",
+		"Cost me some skin. Troll skin grows back, so I won't put it on the bill.",
+	},
+	["race.troll.quest_complete.w09.021"] = {
+		"Our ancestors built empires and forgot how to keep their word. The Darkspear are fewer, and we keep it.",
+		"The Gurubashi had gold and temples. We have a village of huts and a name people can trust. I know which I'd rather carry.",
+		"The Gurubashi empire rotted from its own hunger. Small, honest jobs like this keep the Darkspear off that road.",
+	},
+	["race.troll.quest_complete.w09.022"] = {
+		"For the Horde, for the Darkspear, and a little bit for the coin.",
+		"Thrall gave my people a home; the least a troll can do is make it a better one. Done.",
+		"Someone asked, a troll answered. Thrall's Horde is built on small answers like that.",
+	},
+	["race.troll.quest_complete.w09.023"] = {
+		"A quiet moment. A troll learns to enjoy the space between one job and the next, like the lull between waves.",
+		"Done. I let the moment settle. On the coast you learn the sea is loudest just before it goes still.",
+	},
+	["race.troll.quest_complete.w09.024"] = {
+		"That's the last of it. If you have more trouble, I have more patience. Not much more.",
+		"All done. Don't thank me too long; thanks go stale, coin doesn't.",
+	},
+	["race.troll.quest_complete.w09.025"] = {
+		"Finished. Even a bat knows when to stop hunting and hang upside down for a while. My turn.",
+		"Job's done. Raptors eat, then doze in the warm; there's wisdom in raptors.",
+	},
+	["race.troll.quest_progress.w09.001"] = {
+		"Some of it done. The rest is waiting for me like fish wait for the net. Not that they know it.",
+		"Getting there. Slow and steady, like a canoe against the current.",
+		"Not done, but not stuck. A troll can work with that.",
+	},
+	["race.troll.quest_progress.w09.002"] = {
+		"That's all of it. Time to go collect, and maybe eat on the way.",
+		"Everything's done. Back I go: long legs, short trip.",
+		"Done out here. Somebody's waiting, and trolls don't like to keep people waiting long.",
+	},
+	["race.troll.quest_progress.w09.003"] = {
+		"counts off on long fingers what's left to do, and runs out of fingers less often than before.",
+		"eyes the work still ahead with the patience of someone fishing on a slow tide.",
+	},
+	["race.troll.quest_progress.w09.004"] = {
+		"All of it done. The spirits like a task carried back whole.",
+		"Nothing left but to hand it over. Funny how the walk back always feels shorter.",
+	},
+	["race.troll.reputation_change.w09.001"] = {
+		"They think better of me now. Among trolls, a good name travels faster than a raptor.",
+		"A little more trust earned. The Darkspear were exiles once; we know what being welcome is worth.",
+		"My name sits a little higher with them. Good mojo, that.",
+	},
+	["race.troll.rest_enter.w09.001"] = {
+		"Time to rest. I find the coolest corner, stretch my legs as far as they go, and let them hang off the end of whatever is there.",
+		"A place to stop. Trolls can doze almost anywhere, but we like a breeze and room for the elbows. I'll find both, or complain until I do.",
+		"Rest. My long bones settle one by one, like a camp going quiet after the fire.",
+	},
+	["race.troll.rest_enter.w09.002"] = {
+		"folds down onto the nearest seat in sections, the way only a troll can, and lets out a long, contented sigh.",
+		"sinks into a loose crouch, then all the way down, long limbs sprawling in every direction at once.",
+	},
+	["race.troll.rest_enter.w09.003"] = {
+		"A roof and a fire. The bed is too short and the room too warm, but a troll has slept in worse. Up trees, mostly.",
+		"Indoors, with walls and a door that shuts. I prop it open a crack. A troll sleeps better with the air moving.",
+	},
 }, "base_world")

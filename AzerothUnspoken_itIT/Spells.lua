@@ -1422,4 +1422,508 @@ NS:AddTexts("itIT", {
 		"Una strada intera ripiegata in un sassolino. Da qualche parte un anziano di Mulgore sta scuotendo la testa cornuta.",
 		"La pietra si scalda, e una settimana di cammino semplicemente non succede. I tauren che attraversarono Kalimdor a piedi lo chiamerebbero imbrogliare, e avrebbero ragione.",
 	},
+	["race.gnome.attack.w09.001"] = {
+		"Misurato due volte, colpito una!",
+		"Tarato, puntato, consegnato!",
+		"Proprio nel segno! Ho controllato!",
+	},
+	["race.gnome.attack.w09.002"] = {
+		"Da parte di Gnomeregan, con tanti saluti!",
+		"Un regalino dagli esuli!",
+	},
+	["race.gnome.attack.w09.003"] = {
+		"Basso e veloce. Le cose grosse si scordano sempre di guardare in giù.",
+		"Mira alle ginocchia. Tanto sono all'altezza dei miei occhi.",
+	},
+	["race.gnome.attack.w09.004"] = {
+		"scatta, colpisce, ed è già altrove prima che il nemico abbia finito di voltarsi.",
+		"mette a segno il colpo con un saltello di slancio, piccolo e sorprendentemente preciso.",
+		"s'infila sotto la guardia del nemico, colpisce e schizza fuori come un fermo che scatta.",
+	},
+	["race.gnome.buff.w09.001"] = {
+		"Sistemi pronti. Qualunque cosa arrivi, troverà uno gnomo a pieno regime.",
+		"Miglioria installata. Che bella sensazione, come una goccia d'olio fresco in ogni giuntura.",
+		"Ecco, tutto a posto. Pronti a partire.",
+	},
+	["race.gnome.buff.w09.002"] = {
+		"{g:Ottimizzato|Ottimizzata}! Andiamo a cercare qualcosa su cui provarlo.",
+		"Tutto messo a punto. La strada faccia pure del suo peggio: io prendo appunti.",
+	},
+	["race.gnome.buff.w09.003"] = {
+		"fa ruotare le spalle e annuisce brevemente, come se dentro qualcosa fosse appena scattato al suo posto.",
+		"flette le dita minute una per una, come un artigiano che controlla ogni snodo di un meccanismo delicato.",
+		"si raddrizza con un mormorio soddisfatto, {g:pronto|pronta} a qualunque cosa venga dopo.",
+	},
+	["race.gnome.buff.w09.004"] = {
+		"Miglioria installata, {target}! Niente rimborsi, ma nemmeno spese.",
+		"Ecco. Adesso funzioni con prestazioni migliori, {target}.",
+		"Tutto pronto! Consideralo un potenziamento gratuito, garantito da uno gnomo.",
+	},
+	["race.gnome.heal.w09.001"] = {
+		"Rattoppa e procedi. Le riparazioni sul campo non sono mai belle, solo veloci.",
+		"Chiudi la falla, controlla la pressione, vai avanti.",
+		"Ferita chiusa. Promemoria: meno ferite.",
+	},
+	["race.gnome.heal.w09.002"] = {
+		"{g:Riparato|Riparata} e di nuovo in marcia! Qualche graffio, ma il telaio regge.",
+		"Di nuovo in funzione! Garanzia decaduta, si capisce.",
+	},
+	["race.gnome.heal.w09.003"] = {
+		"esamina la ferita che si chiude con l'occhio critico di chi deve dare il voto a una riparazione.",
+		"tasta con cautela il punto rimesso a posto e gli concede, a malincuore, la sufficienza.",
+	},
+	["race.gnome.heal.w09.004"] = {
+		"Sa di incidente di laboratorio, funziona come un piccolo miracolo. Le migliori fanno quasi sempre così.",
+		"Frizzante, amara, vagamente luminosa. Giù tutta: gli gnomi si fidano di qualunque ricetta che brilli.",
+	},
+	["race.gnome.heal.w09.005"] = {
+		"Rabbocco il demone con le mie riserve. Anche una fornace infernale va alimentata, e il combustibile ce lo metto io.",
+		"La mia vita che gocciola nel demone. La manutenzione è manutenzione, qualunque sia la macchina.",
+	},
+	["race.gnome.heal.w09.006"] = {
+		"impallidisce un poco mentre le sue forze scorrono nel demone, e tiene comunque il mento alto.",
+		"guarda accigliato il demone che incombe su di sé mentre lo nutre del proprio vigore, come chi rifornisce un motore molto ingrato.",
+	},
+	["race.gnome.travel.w09.001"] = {
+		"Un sassolino che ripiega tutta la strada in un istante. Darei molto per vedere l'incanto dall'interno, e la pietra non me lo perdonerebbe mai.",
+		"Pietra in mano. È l'unico aggeggio che ho in tasca che non mi viene voglia di smontare, soprattutto perché poi non funzionerebbe più.",
+		"La pietra si scalda e tira. Non ho idea di come funzioni, e per uno gnomo è il genere di magia più irritante che esista.",
+	},
+	["race.orc.attack.w09.001"] = {
+		"Terra rossa e pelle verde, tutto dietro questo colpo!",
+		"Eccoti un po' di quella forza da orchi di cui hai sentito parlare!",
+		"Colpire forte, colpire subito: così fanno gli orchi!",
+	},
+	["race.orc.attack.w09.002"] = {
+		"scopre le zanne, e l'attacco parte con un grugnito che sale dal fondo della pancia.",
+		"socchiude gli occhi, zanne in vista, e ci mette tutto quello che ha.",
+		"ringhia, basso e breve, come un lupo di Durotar che avverte una volta prima di mordere.",
+	},
+	["race.orc.attack.w09.003"] = {
+		"Forza senza furia. Gli anziani dicono che ce l'ha insegnato il Capoguerra, e colpisce lo stesso.",
+		"Niente furia. Le mani ferme colpiscono più giuste di una testa in fiamme.",
+	},
+	["race.orc.attack.w09.004"] = {
+		"Troppa lentezza. Gli orchi non aspettano il permesso.",
+		"Tu ci stavi ancora pensando. Io no.",
+		"Esita una volta davanti a un orco. Una sola.",
+	},
+	["race.orc.buff.w09.001"] = {
+		"Tutto a posto. La forza non è cosa che un orco tenga per sé: serve a chi ne ha bisogno, e a volte quello sono io.",
+		"Fatto. Qualunque cosa arrivi ora, troverà qualcosa di preparato.",
+	},
+	["race.orc.buff.w09.002"] = {
+		"fa ruotare le spalle ed emette un grugnito basso, come un lupo che si assesta prima della caccia.",
+		"si raddrizza, zanne serrate, e la prontezza della sua gente si legge tutta nella postura.",
+		"pianta i piedi e lascia che la prontezza si posi, salda come roccia rossa.",
+	},
+	["race.orc.buff.w09.003"] = {
+		"Ecco. Ora la strada può portare ciò che vuole.",
+		"Bene. Qualunque cosa aspetti là fuori, avrà una brutta sorpresa.",
+		"Preparativi fatti. Durotar te lo insegna: là fuori niente aspetta i tuoi comodi.",
+	},
+	["race.orc.buff.w09.004"] = {
+		"Anche prepararsi è una forma di onore. Lo devi a chi conta su di te.",
+		"Gli orchi di Thrall non si buttano nella mischia impreparati. Quello è finito con la vecchia Orda.",
+	},
+	["race.orc.heal.w09.001"] = {
+		"Si sta chiudendo. Gli orchi guariscono come litigano: con testardaggine, e brontolando parecchio.",
+		"Meglio. Il corpo sa il suo mestiere; si lamenta, come ogni orco, ma lo fa.",
+		"Guarisco. Brontolando, certo, ma guarisco.",
+	},
+	["race.orc.heal.w09.002"] = {
+		"Il dolore? Ne ho sentito parlare. Non mi fa effetto.",
+		"Sistemata. Il dolore può aspettare fuori insieme agli altri piagnoni.",
+		"Male? Un po'. Paura? Per niente.",
+	},
+	["race.orc.heal.w09.003"] = {
+		"Denti serrati sul bruciore, e poi passa. Gli orchi non fanno cerimonie per guarire.",
+		"Niente storie. Una ferita è un debito che il corpo salda; io resto lì mentre paga.",
+	},
+	["race.orc.heal.w09.004"] = {
+		"flette una mano verde, guarda la pelle lacerata richiudersi e grugnisce come per una cosa dovuta.",
+		"fa ruotare una spalla finché la rigidità non cede, poi le fa un cenno, come a un lupo testardo che alla fine ha obbedito.",
+	},
+	["race.orc.heal.w09.005"] = {
+		"Le ferite si chiudono e c'è bisogno di me. Non c'è tempo per stare male con del lavoro ancora davanti.",
+		"Guarisci in fretta. Quello che resta là fuori non aspetta mentre mi lecco le ferite.",
+		"Basta così. Il resto della guarigione può avvenire camminando.",
+	},
+	["race.orc.heal.w09.006"] = {
+		"Sarebbe venuta una bella cicatrice. Agli orchi piacciono le cicatrici. Peccato.",
+		"Quasi una cicatrice da mostrare in giro. Quasi.",
+	},
+	["race.orc.heal.w09.007"] = {
+		"Imprudenza mia. Ci ho infilato la testa senza pensarci. Il prossimo nemico avrà più rispetto e meno del mio sangue.",
+		"Colpa mia. L'orgoglio ha colpito per primo e ha pensato dopo.",
+	},
+	["race.orc.heal.w09.008"] = {
+		"Bene. In piedi, e con il doppio della testardaggine.",
+		"Ecco. In piedi, e d'umore peggiore per chiunque venga dopo.",
+		"Su di nuovo. Chi mi ha buttato giù avrebbe dovuto finire il lavoro.",
+	},
+	["race.orc.heal.w09.009"] = {
+		"Pelle verde, dura come quella di un kodo. La ferita si sta già arrendendo.",
+		"Gli orchi guariscono come la terra di Durotar: lentamente, duramente, e per sempre.",
+	},
+	["race.orc.heal.w09.010"] = {
+		"Stringila tanto da far lacrimare gli occhi. Se non brucia, non è legata.",
+		"Stoffa intorno, tirata forte. Pelle verde sotto lino bianco; il lino non resterà bianco a lungo.",
+	},
+	["race.orc.heal.w09.011"] = {
+		"Una pietra verde per {g:un orco verde|un'orchessa verde}. Almeno siamo intonati.",
+		"Fredda nel palmo, calda nella pancia. Strana pietruzza. Brava pietruzza.",
+	},
+	["race.orc.heal.w09.012"] = {
+		"Piano, {target}. Gli spiriti della terra e dell'acqua ascoltano. Lasciali lavorare.",
+		"Non muoverti. Gli elementi non mi devono niente, ma oggi sono generosi.",
+		"Calma, {target}. La terra ha rimesso in sesto di peggio.",
+	},
+	["race.orc.heal.w09.013"] = {
+		"Ecco, {target}. Cerca di sanguinare meno: non sono un pozzo senza fondo.",
+		"Tutto chiuso. La prossima volta, abbassati.",
+		"Fatto. Mi devi un boccale e una spiegazione.",
+	},
+	["race.orc.heal.w09.014"] = {
+		"mormora parole basse agli spiriti, una mano verde tesa sopra chi è ferito.",
+		"parla agli elementi con voce ruvida e sommessa, come un orco parla a un vecchio amico.",
+	},
+	["race.orc.heal.w09.015"] = {
+		"Le vie degli sciamani erano quasi perdute, dicono gli anziani, finché il Capoguerra non ha richiamato gli spiriti. Ogni ferita che chiudo, gliela devo un po'.",
+		"Rompere è facile. Gli orchi ci sono diventati bravissimi. Riparare è il mestiere più difficile, e il migliore.",
+	},
+	["race.orc.heal.w09.016"] = {
+		"In campo, {target}. L'Orda non lascia i suoi nella polvere.",
+		"In piedi. Gli orchi si caricano in spalla i feriti, ma preferirei che camminassi.",
+		"Alzati, {target}. C'è onore nel rialzarsi.",
+	},
+	["race.orc.heal.w09.017"] = {
+		"Spiriti, ho chiesto e avete risposto. Vi ringrazierò come si deve quando sarà finita.",
+		"Gli elementi hanno dato senza chiedere. Un orco non dimentica un debito così.",
+	},
+	["race.orc.heal.w09.018"] = {
+		"Un po' della mia forza, data in pasto al demone. Legato e nutrito, e serve: il contrario fu l'errore della vecchia Orda.",
+		"Nutrirlo con le mie vene e tenere il guinzaglio corto. La vecchia Orda il guinzaglio lo lasciò ai demoni. Io no.",
+	},
+	["race.orc.rezother.w09.001"] = {
+		"Non ancora. Gli antenati possono tenerti il posto caldo ancora un po'.",
+		"La tua strada non è finita. Gli antenati dovranno avere pazienza.",
+		"Resta ancora un po'. Da questa parte c'è ancora lavoro per te.",
+	},
+	["race.orc.rezother.w09.002"] = {
+		"Ho chiamato, e qualcosa ha risposto da molto lontano. Gli spiriti sono gentili, dicono gli sciamani, quando la chiamata è sincera.",
+		"Lontano dal baratro. Gli orchi hanno già perso abbastanza per mano della morte; questo non se lo prende.",
+	},
+	["race.orc.rezother.w09.003"] = {
+		"si inginocchia, un pugno premuto a terra, e aspetta con cupa pazienza che la vita riprenda.",
+		"china la testa e mormora qualcosa di basso e ruvido, una supplica agli spiriti che ascoltano.",
+	},
+	["race.orc.travel.w09.001"] = {
+		"Una pietra del ritorno: l'unica magia di cui si fida ogni orco. Conosce una parola sola, e la parola è casa.",
+		"Stringo la pietra e penso alla polvere rossa. È quanto di più simile un orco abbia a una preghiera che riceve sempre risposta.",
+		"La pietra tira. Certi orchi brontolano che camminare tempra il carattere. Sulla strada di casa non brontola nessuno.",
+	},
+	["race.scourge.attack.w09.001"] = {
+		"Ecco un brivido per te, dritto da Tirisfal!",
+		"Brill ti manda il suo peggio!",
+		"Un po' di rancore dei Reietti, consegnato a mano!",
+	},
+	["race.scourge.attack.w09.002"] = {
+		"colpisce con uno scatto del braccio da marionetta, senza il minimo sforzo sul volto morto.",
+		"si slancia con la rapidità innaturale di chi non sente più le proprie giunture.",
+		"si fa avanti con un tintinnio di ossa smosse e un colpo che sembra arrivare dal nulla.",
+	},
+	["race.scourge.attack.w09.003"] = {
+		"Nessun bisogno di riposare tra un colpo e l'altro. Niente polmoni da riempire, niente cuore da calmare. Avanti.",
+		"Ai morti le braccia non si stancano. Ancora. E ancora.",
+	},
+	["race.scourge.attack.w09.004"] = {
+		"E un altro! Non ho nessun altro posto dove stare.",
+		"La tomba mi ha dato pazienza in abbondanza. Eccone ancora.",
+		"Non aspettare che mi stanchi. Aspetteresti parecchio.",
+	},
+	["race.scourge.buff.w09.001"] = {
+		"Qualcosa mi si posa addosso, saldo e freddo. Bene. La prontezza la preferisco fredda.",
+		"Preparativi fatti. I vivi in questi momenti hanno le farfalle nello stomaco. Io ho la piacevole assenza di farfalle.",
+		"Ci siamo. Nessun nervo da calmare. È l'unico regalo che la tomba abbia fatto senza chiedere niente.",
+	},
+	["race.scourge.buff.w09.002"] = {
+		"Ecco. {g:Pronto|Pronta} a partire, o almeno quanto può esserlo un cadavere.",
+		"A posto. Non dirmi che ho un aspetto migliore: so benissimo che aspetto ho.",
+		"Ci sono. I morti arrivano sempre in anticipo: non hanno altro da fare.",
+	},
+	["race.scourge.buff.w09.003"] = {
+		"stringe una cinghia allentata, ruota il collo rigido finché non scrocchia, e si volta verso quel che viene dopo.",
+		"si raddrizza con uno scricchiolio di tendini secchi, ogni preparativo fatto, e non aspetta niente.",
+	},
+	["race.scourge.buff.w09.004"] = {
+		"Ecco, {target}. Prendi un po' di quel che manda avanti me. Non ne sentirò la mancanza.",
+		"Prendi. Ti reggerà più a lungo di quanto credi. Un po' come me.",
+		"Vai pure, {target}. Lo porterai meglio di come lo porterei io.",
+	},
+	["race.scourge.buff.w09.005"] = {
+		"Rafforzo alleati scelti da me. Il Re dei Lich ne sarebbe inorridito; già solo per questo ne vale la pena.",
+		"Adesso distribuisco protezione liberamente, a chi mi pare. Nessuno me l'ha ordinato. È questo il bello.",
+		"Una gentilezza da parte di un morto. Che ne pensino quel che vogliono: io ne penso quel che voglio.",
+	},
+	["race.scourge.heal.w09.001"] = {
+		"Non muoverti, {target}. Ho le mani fredde, ma sanno quello che fanno.",
+		"Piano, ora. Mani fredde, lavoro sicuro. Ti rimetterai.",
+		"Non sussultare per il gelo, {target}. Sono solo io che ti rimetto insieme.",
+	},
+	["race.scourge.heal.w09.002"] = {
+		"Ecco. Ti ha rimesso in sesto un cadavere. Raccontala all'osteria, {target}.",
+		"Meglio? Bene. Cerca di non pensare troppo a chi ci ha messo le mani.",
+		"Tutto ricucito. Sì, da uno dei morti. Prego, e i brividi tienili per dopo.",
+	},
+	["race.scourge.heal.w09.003"] = {
+		"Strano lavoro per un morto, questo del curare. Scopro che mi riesce bene, il che è ancora più strano.",
+		"Rimetto insieme gli altri come nessuno ha mai rimesso insieme me. Con cura. Mi sembra il minimo.",
+		"Qualunque cosa abbia perso nella tomba, il dono di curare è passato indenne. Buffo, quel che sopravvive.",
+	},
+	["race.scourge.heal.w09.004"] = {
+		"si china su chi è ferito con mani grigie e attente, lavorando in un silenzio stranamente gentile.",
+		"posa dita fredde sulla ferita con una tenerezza sorprendente, come se temesse di lasciarvi la brina.",
+	},
+	["race.scourge.heal.w09.005"] = {
+		"La Luce mi risponde ancora, {target}, anche se brucia mentre passa. Ne vale la pena.",
+		"Ecco. La Luce mi pizzica un po' le mani, ma su di te fa il suo lavoro lo stesso.",
+	},
+	["race.scourge.heal.w09.006"] = {
+		"Smettila di agitarti. Ho curato di peggio, e a volte il peggio ero io.",
+		"Siediti. Tieni duro. Ecco. E non fissare le mie cuciture: le tue verranno più ordinate.",
+		"Basta dimenarsi, {target}. Faccio prima se nessuno mi guarda le mani.",
+	},
+	["race.scourge.heal.w09.007"] = {
+		"L'Orda ci tollera perché siamo utili. Bene. Che veda quanto, una ferita chiusa dopo l'altra.",
+		"Ogni alleato che tengo in piedi è un argomento a favore dei Reietti. Intendo vincere la discussione.",
+	},
+	["race.scourge.heal.w09.008"] = {
+		"Te la caverai, {target}. Parola di chi l'alternativa la conosce bene.",
+		"Starai bene. Dell'altro esito so parecchio, e non è questo il caso.",
+	},
+	["race.scourge.heal.w09.009"] = {
+		"Il buio ha già abbastanza dei nostri. Te non lo avrà.",
+		"Non ancora, {target}. Fidati, non c'è nessuna fretta di arrivare dove sono {g:stato|stata} io.",
+	},
+	["race.scourge.heal.w09.010"] = {
+		"I morti hanno poca vita da avanzare, e io la travaso nel mio demone. Qualcuno dovrebbe farmi i conti in tasca.",
+		"Quel che mi tiene in piedi lo divido con la creatura che mi segue. Dovrebbe essermi grata. Non lo sarà.",
+	},
+	["race.scourge.heal.w09.011"] = {
+		"lascia scorrere nel demone un filo sottile e malsano della propria non-vita, e per questo si fa un poco più {g:grigio|grigia}.",
+		"nutre il demone attingendo dal proprio corpo ricucito, impassibile, come chi versa olio in una lucerna.",
+	},
+	["race.scourge.heal.w09.012"] = {
+		"La carne si richiude come una borsa tirata dai lacci. Senza nessun calore. Non ne arriva mai.",
+		"I lembi strappati si cercano di nuovo, lenti e pazienti come radici. Non è bello, ma tiene.",
+		"La ferita si chiude, fredda e ordinata. Il mio corpo si ripara come un mobile: senza lamentarsi, senza conforto.",
+	},
+	["race.scourge.heal.w09.013"] = {
+		"Ecco. Un altro giorno senza cadere a pezzi. Non chiedo altro.",
+		"{g:Rattoppato|Rattoppata}. Non bello, ma di bello in me non c'è niente da anni.",
+		"Basta così. Il resto può restare brutto: c'è abituato.",
+	},
+	["race.scourge.heal.w09.014"] = {
+		"Le ossa tornano al loro posto. Il marciume fa un passo indietro. Ne riparleremo più avanti, io e lui.",
+		"Il disfacimento rimandato ancora un po'. Lui è paziente; io pure.",
+		"Oggi il marciume perde un po' di terreno. Tornerà. Torna sempre, e io lo aspetto sempre.",
+	},
+	["race.scourge.heal.w09.015"] = {
+		"guarda uno squarcio sigillarsi, poi ne tira i bordi come per provare la tenuta di un nodo.",
+		"preme con due dita la ferita che si chiude, come un sarto che spiana una cucitura appena fatta.",
+	},
+	["race.scourge.heal.w09.016"] = {
+		"Basta così. Torniamo al lavoro prima che si stacchi qualcos'altro.",
+		"Chiuso. Torniamo dentro, prima che mi passi la voglia.",
+	},
+	["race.scourge.heal.w09.017"] = {
+		"Mentre la ferita si chiude il dolore mi torna appena, come una parola ricordata a metà. Quando se ne va, quasi mi manca.",
+		"I vivi provano sollievo quando una ferita si chiude. Io sento una quiete sorda e lontana. Immagino che conti.",
+	},
+	["race.scourge.heal.w09.018"] = {
+		"Quella è colpa mia. I morti non hanno scuse per la distrazione: abbiamo visto dove porta.",
+		"Quel colpo l'ho lasciato passare. Distrazione. Essere morti non vuol dire essere invincibili, per quanto sembri.",
+	},
+	["race.scourge.heal.w09.019"] = {
+		"Lino stretto intorno allo squarcio. I morti sanguinano poco, ma si sfasciano. Così i pezzi restano al loro posto.",
+		"Una benda per un corpo che sanguina appena. Più che una medicazione è una cucitura in più.",
+	},
+	["race.scourge.heal.w09.020"] = {
+		"Una pietra piena del vigore rubato a qualcuno. Non chiedo di chi. Non sono nella posizione di giudicare.",
+		"Una pietra da stregone, stretta nel pugno. Vita in prestito, per un corpo che va avanti tutto a tempo in prestito.",
+	},
+	["race.scourge.heal.w09.021"] = {
+		"Chiuso. Dunque, dov'eravamo? Ah sì: tu che perdevi.",
+		"Le cuciture tengono. Riproviamo, e stavolta sono {g:pronto|pronta}.",
+		"Sistemato. La Dama Oscura non mi ha {g:liberato|liberata} perché cadessi per un graffio.",
+	},
+	["race.scourge.heal.w09.022"] = {
+		"lascia che la ferita si ricomponga, del tutto immobile, senza trarre un respiro e senza averne bisogno, finché gli strappi non sono spariti in silenzio.",
+		"apre e chiude la mano appena guarita, una volta, due, e la studia con la curiosità distaccata di uno speziale.",
+	},
+	["race.scourge.rezother.w09.001"] = {
+		"In piedi. Fidati, così è meglio: io ho provato l'altro modo.",
+		"Eccoti di ritorno. Ti è andata bene: quando sono {g:tornato|tornata} io, nessuno mi ha chiesto il permesso.",
+		"Su, alzati. A te tocca la versione gentile di quel che è successo a me.",
+	},
+	["race.scourge.rezother.w09.002"] = {
+		"So cosa vuol dire risorgere. Mi assicuro che stavolta sia più gentile: interi, e ancora padroni di sé.",
+		"Riportati indietro con la mente intatta e la volontà intoccata. È così che va fatto. Io lo so bene.",
+	},
+	["race.scourge.rezother.w09.003"] = {
+		"Tienila vicina. Se cadi, ti rialzerai. La strada del ritorno la conosco: l'ho percorsa.",
+		"Un'assicurazione contro la tomba. Fidati di chi ne ha fatto a meno.",
+	},
+	["race.scourge.travel.w09.001"] = {
+		"La pietra del ritorno si scalda nella mano. Strano, sentire il calore venire da una pietra e non dalle mie dita.",
+		"Una pietra che mi riporta a casa. Una volta anche la morte mi ha preso per mano: questa stretta è la più gentile delle due.",
+		"Una stretta alla pietra e le leghe svaniscono. Per chi una volta è uscito da una tomba, non è certo il viaggio più strano.",
+	},
+	["race.troll.attack.w09.001"] = {
+		"Da Sen'jin, zanne comprese!",
+		"Prendi questo, e portatelo a casa!",
+		"Braccia lunghe, pazienza corta!",
+	},
+	["race.troll.attack.w09.002"] = {
+		"mette tutto nell'attacco, zanne scoperte, con un sibilo secco.",
+		"si lascia sfuggire una breve risatina quando va a segno.",
+		"sorride a tutta bocca quando colpisce, zanne in avanti.",
+	},
+	["race.troll.attack.w09.003"] = {
+		"Colpisci dove è morbido. La giungla ce l'ha insegnato prima che chiunque ci insegnasse altro.",
+		"Rapidità e precisione. La pazienza del cacciatore, poi tutto in un colpo.",
+		"Aspetta... adesso. Come quando si caccia nell'erba alta.",
+	},
+	["race.troll.attack.w09.004"] = {
+		"Prova un po' questa!",
+		"Ne vuoi un'altra? Ne ho in abbondanza.",
+	},
+	["race.troll.buff.w09.001"] = {
+		"Un formicolio lungo le ossa lunghe, poi silenzio. {g:Pronto|Pronta}.",
+		"{g:Preparato|Preparata}. Nella giungla il cacciatore si prepara prima della caccia, mai durante.",
+		"Ci siamo. Adesso qualunque cosa arrivi mi troverà {g:sveglio|sveglia} e sorridente.",
+	},
+	["race.troll.buff.w09.002"] = {
+		"Ecco. Ora sono un troll con un piano. Cosa rara.",
+		"Tutto a posto, e sono molto {g:soddisfatto|soddisfatta} di me.",
+		"Bene. Adesso sono {g:pronto|pronta} per i guai, e i guai farebbero meglio a esserlo per me.",
+	},
+	["race.troll.buff.w09.003"] = {
+		"scuote le lunghe braccia una alla volta, sciolte e pronte per la strada.",
+		"si batte due volte una zanna con la punta del dito, una piccola abitudine prima di rimettersi in cammino.",
+	},
+	["race.troll.buff.w09.004"] = {
+		"Tieni, {target}. Un pensierino per affrontare quello che arriva.",
+		"Porta questo con te. La strada è più gentile con chi ha qualcosa in più.",
+		"Ecco. Va', e torna con braccia e gambe tutte al loro posto.",
+	},
+	["race.troll.buff.w09.005"] = {
+		"Fatto. I Darkspear dividono quello che hanno, e io ho questo.",
+		"Questo reggerà per un po'. Un piccolo dono, e un troll i doni li fa volentieri.",
+		"Condiviso. A Sen'jin nessuno mangia per conto suo, e nessuno parte senza essersi preparato.",
+	},
+	["race.troll.heal.w09.001"] = {
+		"Si sta chiudendo. La carne dei troll non ha mai avuto bisogno di molti incoraggiamenti: solo di un momento.",
+		"Ecco. La pelle si tira, si ricuce, dimentica. Vorrei che l'orgoglio guarisse altrettanto in fretta.",
+		"Si rimargina. I troll guariscono come la giungla si richiude su un sentiero: in fretta, e senza chiedere permesso.",
+	},
+	["race.troll.heal.w09.002"] = {
+		"Meglio. Sarei {g:guarito|guarita} comunque, ma oggi ho fretta.",
+		"Come {g:nuovo|nuova}. Be', come ieri, e ieri andava benissimo.",
+	},
+	["race.troll.heal.w09.003"] = {
+		"Che sbadataggine. Un raptor che sanguina così finisce mangiato dal raptor successivo. Impara, troll.",
+		"Questa me la sono cercata. La giungla non perdona due volte, dicono i cacciatori.",
+	},
+	["race.troll.heal.w09.004"] = {
+		"In piedi e {g:pronto|pronta}. Chiunque sia stato, torno a prenderlo.",
+		"Rattoppo fatto. Qualunque cosa arrivi adesso, troverà un troll tutto intero.",
+		"Di nuovo in piedi. Gambe lunghe, memoria corta per il dolore.",
+	},
+	["race.troll.heal.w09.005"] = {
+		"passa un lungo pollice sulla ferita che si chiude e approva con un grugnito.",
+		"flette le lunghe dita e guarda la pelle lacerata richiudersi da sola.",
+		"fa ruotare una spalla, poi l'altra, saggiando la carne rimessa a posto con blando interesse.",
+	},
+	["race.troll.heal.w09.006"] = {
+		"Va meglio. Ringrazio gli spiriti per un corpo così testardo, anche se direbbero che lo faccio esercitare troppo.",
+		"Gli stregoni vudù dicono che il sangue dei troll ricorda la giungla. In questo momento si ricorda come si chiude una ferita.",
+	},
+	["race.troll.heal.w09.007"] = {
+		"Una benda su un troll è più che altro un ornamento. Però tiene lontane le mosche mentre la pelle si dà da fare.",
+		"Braccia lunghe vogliono bende lunghe, e io resto sempre senza all'altezza del gomito.",
+	},
+	["race.troll.heal.w09.008"] = {
+		"Sa di acqua di palude e di monete vecchie. Però funziona.",
+		"Giù in un sorso. Gli intrugli degli stregoni vudù hanno un sapore peggiore, e fanno meno effetto.",
+	},
+	["race.troll.heal.w09.009"] = {
+		"I troll non tengono quasi cicatrici. A volte vorrei che le tenessimo: qualche segno mi ricorderebbe di stare {g:attento|attenta}.",
+		"Domani la ferita sarà sparita, e con lei la lezione. È questo il guaio di guarire in fretta.",
+		"Già richiusa. La carne dei troll ha la memoria corta; io cerco di averne una più lunga al posto suo.",
+	},
+	["race.troll.heal.w09.010"] = {
+		"Basta storie. È chiusa. Andiamo.",
+		"Reggerà. I troll non stanno lì a coccolarsi i graffi.",
+	},
+	["race.troll.heal.w09.011"] = {
+		"Piano, {target}. Gli spiriti ascoltano: lasciali lavorare.",
+		"Non muoverti un momento. Si aggiusta prima se smetti di dimenarti.",
+		"Respira. Qualunque spirito stia ascoltando, in questo momento è dalla tua parte.",
+	},
+	["race.troll.heal.w09.012"] = {
+		"Ecco. Tu non guarisci come un troll, quindi alla guarigione ci penso io per tutti e due.",
+		"Tutto a posto. La prossima volta prova ad abbassarti: abbassarsi costa meno di me.",
+		"Rattoppo fatto, {target}. Vai, e tieni la testa più bassa.",
+	},
+	["race.troll.heal.w09.013"] = {
+		"mormora piano su chi è ferito, le lunghe dita aperte, ondeggiando appena mentre la cura fa presa.",
+		"canticchia sottovoce un motivo ondeggiante dei Darkspear mentre la ferita si richiude.",
+		"schiocca la lingua contro una zanna, {g:concentrato|concentrata}, mentre il colore torna sul viso di chi era ferito.",
+	},
+	["race.troll.heal.w09.014"] = {
+		"I troll guariscono da soli; quasi tutti gli altri no. Prestare un po' di quello che ha il mio popolo mi sembra giusto.",
+		"La ferita di qualcun altro che si chiude sotto le mie mani. È più bello che chiudere la mia.",
+	},
+	["race.troll.heal.w09.015"] = {
+		"I loa, la Luce, gli spiriti: non chiedo chi abbia risposto. Li ringrazio tutti e basta.",
+		"Qualunque spirito ascolti, ha ascoltato. Più tardi gli lascerò qualcosa accanto al fuoco.",
+	},
+	["race.troll.heal.w09.016"] = {
+		"Su, {target}. Nessuno cade finché c'è un guaritore Darkspear a guardare.",
+		"Tu combatti, io ricucio. Questo è il patto.",
+	},
+	["race.troll.heal.w09.017"] = {
+		"Smettila di sanguinarmi sui piedi. Ecco. Meglio.",
+		"Vivrai. Cerca di non farmene pentire.",
+		"Smettila di contorcerti. Sono {g:bravo|brava}, ma non fino a questo punto.",
+	},
+	["race.troll.heal.w09.018"] = {
+		"Così fragili, quelli che non ricrescono. Li tengo insieme come meglio posso.",
+		"Ogni cura che do è un piccolo litigio con la morte. Questo l'ho vinto io.",
+	},
+	["race.troll.heal.w09.019"] = {
+		"si china su chi è ferito e soffia piano sulla ferita, un gesto che sembra più antico di qualunque incantesimo.",
+		"apre le mani e pronuncia qualche parola cantilenante nella lingua dei troll, con voce ferma e senza fretta.",
+	},
+	["race.troll.heal.w09.020"] = {
+		"Resta con me, {target}. Gli occhi quassù: la ferita se la cava anche senza che tu la guardi.",
+		"Ecco fatto. Ti ho rimesso insieme. Più o meno.",
+	},
+	["race.troll.rezother.w09.001"] = {
+		"Torna indietro. I loa possono aspettarti ancora un po'.",
+		"Su, in piedi. Gli spiriti non erano pronti per te, e io nemmeno.",
+		"Non è la tua ora. Ho chiesto con gentilezza, e gli spiriti hanno acconsentito.",
+	},
+	["race.troll.rezother.w09.002"] = {
+		"Gli stregoni vudù dicono che i morti percorrono una lunga spiaggia prima di andarsene. Io ho appena richiamato qualcuno indietro da lì.",
+		"Uno spirito si è voltato sulla sua strada ed è tornato. Sembra sempre un piccolo prodigio, e un debito.",
+		"Di ritorno dagli spiriti. Respira piano. Il mondo è rumoroso, dopo il silenzio.",
+	},
+	["race.troll.travel.w09.001"] = {
+		"Un giro della pietra e la strada si ripiega alle mie spalle. Gli stregoni direbbero che mi portano gli spiriti. Io ringrazio chiunque sia.",
+		"La pietra mi ronza nel palmo. Magia delle scorciatoie. Probabilmente i loa ridono, a vedere un troll che salta una settimana di cammino.",
+		"Chiudi il pugno, pensa al focolare, e il mondo si sbava come pittura fresca. La mia gente ha attraversato un mare su barche stipate; io attraverso un continente in un respiro.",
+	},
 }, "base_spells")

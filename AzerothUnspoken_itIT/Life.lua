@@ -324,4 +324,34 @@ NS:AddTexts("itIT", {
 		"Ancora più {g:grosso|grossa}, in qualche modo. Porte del mondo, vi chiedo scusa in anticipo.",
 		"Di nuovo più forte. Qualcuno avverta i soffitti bassi.",
 	},
+	["race.gnome.levelup.w09.001"] = {
+		"Aggiornamento completato! Purtroppo l'altezza è sempre quella.",
+		"{g:Migliorato|Migliorata} in tutto tranne una cosa. Certe specifiche sono fissate in fabbrica.",
+	},
+	["race.gnome.levelup.w09.002"] = {
+		"Un po' più forte. Gnomeregan avrà bisogno di ogni gnomo al meglio, quando verrà il momento di riprenderla.",
+		"Meglio di prima. Quando il mio popolo tornerà a Gnomeregan, voglio essere qualcuno che valga la pena di portarsi dietro.",
+	},
+	["race.orc.levelup.w09.001"] = {
+		"Più forte di ieri. Gli orchi non contano gli anni: contano quanto riescono a sollevare.",
+		"In me c'è più di prima. Gli anziani misurano un orco dal peso che porta, e il mio è appena cresciuto.",
+	},
+	["race.scourge.levelup.w09.001"] = {
+		"Più forte. Il corpo non cresce più, quindi la volontà deve crescere per tutti e due.",
+		"Più di prima. Non la carne, che ormai non migliora. Qualcosa sotto, più affilato adesso.",
+		"Un passo avanti. I morti non dovrebbero crescere. Io con i \"dovrebbe\" non sono mai {g:andato|andata} d'accordo.",
+	},
+	["race.scourge.levelup.w09.002"] = {
+		"Guarda un po': migliorare, alla mia età, nelle mie condizioni.",
+		"Miglioro! Non male per un cadavere. Gli speziali vorranno degli appunti.",
+	},
+	["race.troll.levelup.w09.001"] = {
+		"Più forte. Come una barriera di corallo: non la vedi crescere, e poi è lì.",
+		"Un po' più troll di ieri. Gli stregoni vudù dicono che continuiamo a crescere finché continuiamo a imparare.",
+	},
+	["race.troll.levelup.w09.002"] = {
+		"Ah! Lo senti? I loa hanno appena battuto i tamburi un po' più forte.",
+		"Più forza, più velocità, e anche le zanne stanno benissimo.",
+		"Attento, mondo. Questo troll è appena cresciuto, dentro.",
+	},
 }, "base_life")
