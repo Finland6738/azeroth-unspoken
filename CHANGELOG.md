@@ -34,8 +34,13 @@ addon goes from 13,543 to **14,830 intentions** and from 32,551 to **35,631 text
 - **The gap after W11** (per language): soft need 8,947, gap **0**; strict need 29,536, gap **0** (was 684): **the
   strict need is met**; random need 276,398, gap **242,187** (was 245,267). **84 waves** left (the next is the first
   row of WAVES.md: the generic thoughts and battle lines).
-- **Measured.** BENCH_LINE
-- **Tests:** `Tests/run_tests.py` passes (TUTTI I CONTROLLI SUPERATI). Counts: base intentions 14787, lines loaded
+- **Measured.** `bench_scale` (every line loaded): memory 28.6 → 30.8 MB, pick 30.7 → 30.7 thousand Lua instructions
+  (p95 58.6 → 57.8). `bench_trial --long 20` over three seeds: first exact repetition orc 7.3 → 8.5 h, troll 6.9 →
+  8.4 h, human 8.9 → 8.8 h; repeated share down for all three. `run_tests` M2: pick 53.9 thousand Lua instructions.
+- **Known:** the `run_tests` projection "memory per rule under 2,500 B" reads 2,931 B. It measures a Lua table
+  doubling (the base plus 2,000 synthetic rules now crosses 16,384 entries), not a per-rule cost; the test is
+  unchanged and noted in the PR.
+- **Tests:** `Tests/run_tests.py` passes every check but the projection above. Counts: base intentions 14787, lines loaded
   14794; the combat, context, life and dialogue packs are unchanged. The coverage check of `check_archive.py` asked
   for a threshold no cell reaches with `k = 1000`, but the generic `muse` cell now has 1,178 intentions: it uses `k = 10 ** 9`.
 - **Owner sample:** [docs/content/reviews/W11.md](docs/content/reviews/W11.md) (`cli sample --state review --share
