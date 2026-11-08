@@ -13,6 +13,7 @@ Releases are on the [Releases page](https://github.com/Finland6738/azeroth-unspo
 - **Added:** the `assets/` folder: one illustrative mockup PNG for every case of the interface (98 images), with an index, [assets/README.md](assets/README.md), that shows a thumbnail and a one-line caption for each. Beyond the windows of the wiki mockups, it draws the narrator box in each prose depth, the narrator, character and NPC voices and every first-run step in Italian, each of the five settings sections, and the chat output of `/au place`, `/au who`, `/au packs`, `/au stats` with `/au validate`, and the setting commands (captured from the addon itself). They are mockups built from the addon code, not in-game screenshots, on original backgrounds.
 - **Added:** `tools/build_assets.py` regenerates the folder after a change to the interface, with the toolkit of `docs/design/mockups/tools/` and a headless Chromium browser.
 - **Docs:** the README (EN and IT) and the wiki page *Interface Tour* link the folder.
+- **Added:** `assets/curseforge/`: fourteen of the mockups, without the "CURRENT" badge, in the order of a short tour for the CurseForge gallery. Its README has the title and the description to paste for each image, in English and Italian (each description at most 256 characters, the limit of CurseForge; the build stops on a longer one), and a line for the project description saying the images are mockups.
 
 ### Release tooling
 
