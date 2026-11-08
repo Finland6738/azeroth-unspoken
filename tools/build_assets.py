@@ -266,9 +266,9 @@ GALLERY = [
      "screen shows a hand-written line that fits the moment. Only you see it: nothing goes to chat unless you choose. "
      "It works offline, with no AI.",
      "Un narratore che vedi solo tu",
-     "Quando succede qualcosa (una nuova zona, un combattimento, un livello, il tramonto in un bosco), un piccolo "
-     "riquadro in basso mostra una frase scritta a mano adatta al momento. La vedi solo tu: in chat non va nulla, se "
-     "non lo scegli tu. Funziona offline, senza IA."),
+     "Quando succede qualcosa (una nuova zona, un combattimento, un livello, il tramonto in un bosco), un riquadro "
+     "in basso mostra una frase scritta a mano per quel momento. La vedi solo tu: in chat non va nulla, se non lo "
+     "scegli tu. Funziona offline, senza IA."),
     ("02-four-voices", "narrator-voices", "Four voices",
      "The narrator, your character's inner voice, your character and the NPCs each have their own colour, and the "
      "inner voice has its own typeface: you can tell at a glance who is speaking.",
@@ -355,11 +355,16 @@ GALLERY = [
      "proposta per la chat in italiano."),
 ]
 CURSEFORGE = os.path.join(ASSETS, "curseforge")
+DESCRIPTION_MAX = 256   # CurseForge accepts at most 256 characters in the description of a gallery image
 NOTE_EN = "Images: illustrative mockups built from the addon code, not in-game screenshots."
 NOTE_IT = "Immagini: mockup illustrativi costruiti dal codice dell'addon, non screenshot del gioco."
 
 
 def build_gallery():
+    long_ = [(g[0], lang, len(d)) for g in GALLERY for lang, d in (("en", g[3]), ("it", g[5]))
+             if len(d) > DESCRIPTION_MAX]
+    if long_:
+        sys.exit(f"gallery descriptions over {DESCRIPTION_MAX} characters (CurseForge's limit): {long_}")
     for name, src, title, *_ in GALLERY:
         _t, w, h, body, kw = PAGES[src]
         kw = dict(kw, kind="none", caption_extra="")
@@ -370,7 +375,8 @@ def write_gallery_index():
     fence = lambda text: "```text\n" + text + "\n```\n"  # noqa: E731   GitHub shows a copy button on a fence
     out = ["# CurseForge gallery\n",
            "A short tour of Azeroth Unspoken for the project's gallery on CurseForge, in the order to upload it. For each "
-           "image: the title and the description to paste, in English and in Italian. The images are the mockups of "
+           "image: the title and the description to paste, in English and in Italian (each description is at most "
+           f"{DESCRIPTION_MAX} characters, CurseForge's limit: the build stops on a longer one). The images are the mockups of "
            "[the assets folder](../README.md) without the \"CURRENT\" badge; each still says it is a mockup.\n",
            "A line for the project description, so that nobody takes the gallery for screenshots:\n",
            fence(NOTE_EN), fence(NOTE_IT),
@@ -378,8 +384,8 @@ def write_gallery_index():
            "list).\n"]
     for name, _src, title, desc, title_it, desc_it in GALLERY:
         out += [f"## {name}.png\n", f'<a href="{name}.png"><img src="{name}.png" width="480" alt="{title}"></a>\n',
-                "**Title**\n", fence(title), "**Description**\n", fence(desc),
-                "**Titolo**\n", fence(title_it), "**Descrizione**\n", fence(desc_it)]
+                "**Title**\n", fence(title), f"**Description** ({len(desc)} characters)\n", fence(desc),
+                "**Titolo**\n", fence(title_it), f"**Descrizione** ({len(desc_it)} caratteri)\n", fence(desc_it)]
     with open(os.path.join(CURSEFORGE, "README.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(out))
 
