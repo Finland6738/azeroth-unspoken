@@ -38,8 +38,12 @@ BUILD = tempfile.mkdtemp(prefix="au-assets-")
 _page = mockkit.page
 
 
+PAGES = {}   # name -> (title, w, h, body, kw): the CurseForge gallery redraws a page without the "CURRENT" badge
+
+
 def page(name, title, w, h, body, **kw):
     """mockkit.page, writing into the temporary folder."""
+    PAGES[name] = (title, w, h, body, kw)
     return _page(name, title, w, h, body, out_dir=BUILD, **kw)
 
 
@@ -251,6 +255,135 @@ ASSETS_LIST = [
      for s in range(1, 9)]
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# the CurseForge gallery: a few images in the order of a tour, each with a title and a description in English and
+# Italian, ready to paste. The images carry no "CURRENT" badge, only their title and the mockup caption.
+# (file name in assets/curseforge/, page, title, description, Italian title, Italian description)
+# ---------------------------------------------------------------------------------------------------------------
+GALLERY = [
+    ("01-a-narrator-only-you-see", "narrator-in-context", "A narrator only you can see",
+     "When something happens (a new zone, a fight, a level, dusk in a forest), a small box near the bottom of the "
+     "screen shows a hand-written line that fits the moment. Only you see it: nothing goes to chat unless you choose. "
+     "It works offline, with no AI.",
+     "Un narratore che vedi solo tu",
+     "Quando succede qualcosa (una nuova zona, un combattimento, un livello, il tramonto in un bosco), un piccolo "
+     "riquadro in basso mostra una frase scritta a mano adatta al momento. La vedi solo tu: in chat non va nulla, se "
+     "non lo scegli tu. Funziona offline, senza IA."),
+    ("02-four-voices", "narrator-voices", "Four voices",
+     "The narrator, your character's inner voice, your character and the NPCs each have their own colour, and the "
+     "inner voice has its own typeface: you can tell at a glance who is speaking.",
+     "Quattro voci",
+     "Il narratore, la voce interiore, il personaggio e gli NPC hanno ciascuno il proprio colore, e la voce interiore "
+     "il proprio carattere: si capisce a colpo d'occhio chi sta parlando."),
+    ("03-your-pace-your-style", "x-depth-elevated", "Your pace, your style",
+     "Intensity (0-100) sets how often the narrator speaks; the prose depth (Natural, Literary, Elevated) sets its "
+     "tone. Here, the Elevated line for arriving in a forest. Silence is fine too: never a flood of messages.",
+     "Il tuo ritmo, il tuo stile",
+     "L'intensità (0-100) decide quanto spesso parla il narratore; la profondità (Naturale, Letteraria, Elevata) ne "
+     "decide il tono. Qui, la frase Elevata per l'arrivo in un bosco. Anche il silenzio va bene: mai una pioggia di "
+     "messaggi."),
+    ("04-say-it-aloud-if-you-want", "proposal", "Say it aloud, if you want",
+     "Choose the confirm mode and a line your character could say becomes a chat proposal: send it, edit it, ask for "
+     "another or discard it. Nothing is sent without your click, unless you turn on automatic sending yourself.",
+     "Dillo ad alta voce, se vuoi",
+     "Con la modalità di conferma, una frase che il tuo personaggio potrebbe dire diventa una proposta per la chat: "
+     "inviala, modificala, chiedine un'altra o scartala. Senza il tuo clic non parte nulla, a meno che tu non attivi "
+     "l'invio automatico."),
+    ("05-edit-before-you-send", "proposal-editor", "Edit before you send",
+     "The editor opens on the proposed line: change a word, add a name, then send it to /say or /emote.",
+     "Modifica prima di inviare",
+     "L'editor si apre sulla frase proposta: cambia una parola, aggiungi un nome, poi inviala in /say o /emote."),
+    ("06-songs-rhymes-and-verses", "narrator-reading", "Songs, rhymes and verses",
+     "Some moments bring a longer piece, such as an innkeeper's rhyme, a road song or an old inscription, revealed "
+     "line by line. The pieces you hear are kept in the journal's songbook.",
+     "Canzoni, filastrocche e versi",
+     "Alcuni momenti portano un brano più lungo, come la filastrocca di un locandiere, una canzone di strada o "
+     "un'antica iscrizione, che appare riga dopo riga. I brani ascoltati restano nel canzoniere del diario."),
+    ("07-npc-alive", "dialogue-line", "NPC Alive: ambient dialogues",
+     "At a vendor, a flight master or a trainer, or with an innkeeper, a small window offers a short simulated "
+     "conversation: a line from the NPC and up to three answers. It is clearly labelled, never goes to chat and "
+     "changes nothing in the game.",
+     "NPC Alive: dialoghi d'ambiente",
+     "Da un mercante, un maestro di volo o un istruttore, o con un locandiere, una piccola finestra propone una breve "
+     "conversazione simulata: una battuta dell'NPC e fino a tre risposte. È ben segnalata, non va mai in chat e non "
+     "cambia nulla nel gioco."),
+    ("08-a-journal-that-remembers", "journal-memories", "A journal that remembers",
+     "/au journal lists what your character has lived: first visits, returns, deaths, levels, letters from friends. "
+     "Keep a memory, delete it, or export the journal as text. The narrator only recalls what really happened.",
+     "Un diario che ricorda",
+     "/au journal elenca ciò che il tuo personaggio ha vissuto: prime visite, ritorni, morti, livelli, lettere degli "
+     "amici. Tieni un ricordo, cancellalo o esporta il diario come testo. Il narratore ricorda solo ciò che è "
+     "successo davvero."),
+    ("09-personal-stories", "journal-stories", "Personal stories",
+     "Story Arcs are small tellings that begin from real events: a fall and the return, a face you keep meeting, a "
+     "foe that keeps bringing you down. They are not quests: no rewards, and you can pause or skip them at any time.",
+     "Storie personali",
+     "Le Story Arcs sono piccoli racconti che nascono da eventi veri: una caduta e il ritorno, un volto che continui a "
+     "incontrare, un nemico che continua ad abbatterti. Non sono missioni: niente ricompense, e puoi sospenderle o "
+     "saltarle quando vuoi."),
+    ("10-relationships", "relations-detail-npc", "Relationships",
+     "The addon remembers how you stand with NPCs and with the players you choose: trust, respect, affection, a bond "
+     "from Hated to Deep bond, the first meeting, favours and nicknames. Narration only: no NPC behaves differently "
+     "in the game.",
+     "Relazioni",
+     "L'addon ricorda come stai con gli NPC e con i giocatori che scegli tu: fiducia, rispetto, affetto, un legame da "
+     "Odiato a Legame profondo, il primo incontro, i favori e i soprannomi. Solo narrazione: nessun NPC si comporta "
+     "diversamente nel gioco."),
+    ("11-your-characters-soul", "profile", "Your character's soul",
+     "Give your character a personality (idealist or cynical, curious, ambitious, with or without an inner voice), "
+     "and the lines that fit come up more often. With Total RP 3 it can start from your profile.",
+     "L'anima del personaggio",
+     "Dai al tuo personaggio una personalità (idealista o cinico, curioso, ambizioso, con o senza voce interiore) e le "
+     "frasi adatte arrivano più spesso. Con Total RP 3 può partire dal tuo profilo."),
+    ("12-a-guided-first-launch", "wizard-1", "A guided first launch",
+     "A short guide, which you can skip, sets language, experience, intensity, style, modules, chat and keys in "
+     "seven steps (eight with Total RP 3), with a test line along the way.",
+     "Una guida al primo avvio",
+     "Una breve guida, che puoi saltare, imposta lingua, esperienza, intensità, stile, moduli, chat e tasti in sette "
+     "passi (otto con Total RP 3), con una frase di prova lungo il percorso."),
+    ("13-every-part-on-or-off", "x-settings-modules", "Every part on or off",
+     "Each module has its own switch in the settings panel: personal lines, the world, NPC dialogues, memory, "
+     "emotions, relationships, stories, chat proposals. Every option is also a slash command (/au help).",
+     "Ogni parte, accesa o spenta",
+     "Ogni modulo ha il suo interruttore nel pannello delle impostazioni: frasi personali, il mondo, dialoghi con gli "
+     "NPC, memoria, emozioni, relazioni, storie, proposte per la chat. Ogni opzione è anche un comando (/au help)."),
+    ("14-english-and-italian", "narrator-it", "In English and Italian",
+     "Every line and the whole interface exist in English and in Italian. Here, the narrator box and a chat proposal "
+     "in Italian.",
+     "In inglese e in italiano",
+     "Tutte le frasi e tutta l'interfaccia esistono in inglese e in italiano. Qui, il riquadro del narratore e una "
+     "proposta per la chat in italiano."),
+]
+CURSEFORGE = os.path.join(ASSETS, "curseforge")
+NOTE_EN = "Images: illustrative mockups built from the addon code, not in-game screenshots."
+NOTE_IT = "Immagini: mockup illustrativi costruiti dal codice dell'addon, non screenshot del gioco."
+
+
+def build_gallery():
+    for name, src, title, *_ in GALLERY:
+        _t, w, h, body, kw = PAGES[src]
+        kw = dict(kw, kind="none", caption_extra="")
+        _page("g-" + name, title, w, h, body, out_dir=BUILD, **kw)
+
+
+def write_gallery_index():
+    fence = lambda text: "```text\n" + text + "\n```\n"  # noqa: E731   GitHub shows a copy button on a fence
+    out = ["# CurseForge gallery\n",
+           "A short tour of Azeroth Unspoken for the project's gallery on CurseForge, in the order to upload it. For each "
+           "image: the title and the description to paste, in English and in Italian. The images are the mockups of "
+           "[the assets folder](../README.md) without the \"CURRENT\" badge; each still says it is a mockup.\n",
+           "A line for the project description, so that nobody takes the gallery for screenshots:\n",
+           fence(NOTE_EN), fence(NOTE_IT),
+           "Regenerate with `.venv/Scripts/python -I -X utf8 tools/build_assets.py` (the texts are in its `GALLERY` "
+           "list).\n"]
+    for name, _src, title, desc, title_it, desc_it in GALLERY:
+        out += [f"## {name}.png\n", f'<a href="{name}.png"><img src="{name}.png" width="480" alt="{title}"></a>\n',
+                "**Title**\n", fence(title), "**Description**\n", fence(desc),
+                "**Titolo**\n", fence(title_it), "**Descrizione**\n", fence(desc_it)]
+    with open(os.path.join(CURSEFORGE, "README.md"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(out))
+
+
 def write_index():
     groups = {}
     for name, _src, group, caption in ASSETS_LIST:
@@ -266,6 +399,8 @@ def write_index():
            "Regenerate them after a change to the interface (see [`tools/build_assets.py`](../tools/build_assets.py)):\n",
            "```\n.venv/Scripts/python -m pip install -r docs/design/mockups/requirements.txt\n"
            ".venv/Scripts/python -I -X utf8 tools/build_assets.py\n```\n",
+           "For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of these images in the "
+           "order of a tour, each with a title and a description to paste (English and Italian).\n",
            "## Contents\n"]
     out += [f"- [{g}](#{g.lower().replace(' ', '-').replace('(', '').replace(')', '')}) ({len(v)})"
             for g, v in groups.items()]
@@ -317,24 +452,29 @@ def main(names):
     shutil.copy(os.path.join(KIT, "..", "mockups.css"), os.path.join(BUILD, "mockups.css"))
     for build in (bm.build_narrator, bm.build_proposal, bm.build_speak_button, bm.build_wizard, bm.build_settings,
                   bm.build_journal, bm.build_relations, bm.build_consent, bm.build_profile, bm.build_dialogue,
-                  bm.build_chat, build_depths, build_italian, build_settings_sections, build_chat_more):
+                  bm.build_chat, build_depths, build_italian, build_settings_sections, build_chat_more,
+                  build_gallery):
         build()
-    os.makedirs(ASSETS, exist_ok=True)
+    os.makedirs(CURSEFORGE, exist_ok=True)
     exe = render.browser()
-    wanted = [a for a in ASSETS_LIST if not names or a[0] in names]
-    def one(item):
-        name, src = item[0], item[1]
+    jobs = [(name, src) for name, src, *_ in ASSETS_LIST] + [("curseforge/" + g[0], "g-" + g[0]) for g in GALLERY]
+    wanted = [j for j in jobs if not names or j[0] in names]
+
+    def one(job):
+        name, src = job
         shot(os.path.join(BUILD, src + ".html"), os.path.join(ASSETS, name + ".png"), exe)
         print("rendered", name, flush=True)
 
     with ThreadPoolExecutor(max_workers=4) as pool:
         list(pool.map(one, wanted))
     if not names:   # a full run drops the images no case uses any more
-        keep = {a[0] + ".png" for a in ASSETS_LIST}
-        for f in os.listdir(ASSETS):
-            if f.endswith(".png") and f not in keep:
-                os.remove(os.path.join(ASSETS, f))
+        keep = {j[0] + ".png" for j in jobs}
+        for folder, prefix in ((ASSETS, ""), (CURSEFORGE, "curseforge/")):
+            for f in os.listdir(folder):
+                if f.endswith(".png") and prefix + f not in keep:
+                    os.remove(os.path.join(folder, f))
     write_index()
+    write_gallery_index()
     shutil.rmtree(BUILD, ignore_errors=True)
     print(f"{len(wanted)} images in assets/, index in assets/README.md")
 

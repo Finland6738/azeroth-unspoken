@@ -11,6 +11,8 @@ Regenerate them after a change to the interface (see [`tools/build_assets.py`](.
 .venv/Scripts/python -I -X utf8 tools/build_assets.py
 ```
 
+For the CurseForge gallery: [curseforge/](curseforge/README.md) has fourteen of these images in the order of a tour, each with a title and a description to paste (English and Italian).
+
 ## Contents
 
 - [Narrator box](#narrator-box) (15)
